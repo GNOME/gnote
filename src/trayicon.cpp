@@ -57,6 +57,7 @@ namespace gnote {
 		: Gtk::StatusIcon()
 		, m_tray(new Tray(manager, *this))
 		, m_keybinder(new PrefsKeybinder(manager, *this))
+		, m_context_menu(NULL)
 	{
 		int panel_size = 32;
 		Glib::RefPtr<Gdk::Pixbuf> pixbuf = utils::get_icon("gnote", panel_size);
@@ -93,7 +94,8 @@ namespace gnote {
 	void TrayIcon::on_popup_menu(guint button, guint32 /*activate_time*/)
 	{
 		if(button == 3) {
-			utils::popup_menu(get_right_click_menu(), NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
+			Gtk::Menu *menu = get_right_click_menu();
+			utils::popup_menu(menu, NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
 		}
 	}	
 

@@ -22,7 +22,7 @@ namespace gnote {
 		{
 			menu->signal_deactivate().connect(sigc::bind(&deactivate_menu, menu));
 			menu->popup(calc, (ev ? ev->button : NULL), 
-									(ev ? gtk_get_current_event_time() : ev->time));
+									(ev ? ev->time : gtk_get_current_event_time()));
 			if(menu->get_attach_widget()) {
 				menu->get_attach_widget()->set_state(Gtk::STATE_SELECTED);
 			}
