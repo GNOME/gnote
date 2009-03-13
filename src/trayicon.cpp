@@ -75,7 +75,6 @@ namespace gnote {
 	void TrayIcon::show_menu(bool select_first_item)
 	{
 		if(m_context_menu) {
-			m_context_menu->hide();
 			DBG_OUT("context menu found");
 		}
 		// UpdateTrayMenu
@@ -135,38 +134,37 @@ namespace gnote {
 
 	Gtk::Menu * TrayIcon::get_right_click_menu()
 	{
-		if(m_tray->tray_menu()) {
-			m_tray->tray_menu()->hide();
-		}
+		DBG_OUT("get right click menu");
 		if(m_context_menu) {
-			m_context_menu->hide();
+			DBG_OUT("menu already exists");
 			return m_context_menu;
 		}
 		m_context_menu = new Gtk::Menu();
-		
+		DBG_OUT("creating menu");
+
 		Glib::RefPtr<Gtk::AccelGroup> accel_group = Gtk::AccelGroup::create();
 		m_context_menu->set_accel_group(accel_group);
 
 		Gtk::ImageMenuItem * item;
 
-		item = manage(new Gtk::ImageMenuItem(_("_Preferences")));
+		item = manage(new Gtk::ImageMenuItem(_("_Preferences"), true));
 		item->set_image(*manage(new Gtk::Image(Gtk::Stock::PREFERENCES, Gtk::ICON_SIZE_MENU)));
 		item->signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::show_preferences));
 		m_context_menu->append(*item);
 
-		item = manage(new Gtk::ImageMenuItem(_("_Help")));
+		item = manage(new Gtk::ImageMenuItem(_("_Help"), true));
 		item->set_image(*manage(new Gtk::Image(Gtk::Stock::HELP, Gtk::ICON_SIZE_MENU)));
 		item->signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::show_help_contents));
 		m_context_menu->append(*item);
 
-		item = manage(new Gtk::ImageMenuItem(_("_About GNote")));
+		item = manage(new Gtk::ImageMenuItem(_("_About GNote"), true));
 		item->set_image(*manage(new Gtk::Image(Gtk::Stock::ABOUT, Gtk::ICON_SIZE_MENU)));
 		item->signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::show_about));
 		m_context_menu->append(*item);
 
 		m_context_menu->append(*manage(new Gtk::SeparatorMenuItem()));
 
-		item = manage(new Gtk::ImageMenuItem(_("_Quit")));
+		item = manage(new Gtk::ImageMenuItem(_("_Quit"), true));
 		item->set_image(*manage(new Gtk::Image(Gtk::Stock::QUIT, Gtk::ICON_SIZE_MENU)));
 		item->signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::quit));
 		m_context_menu->append(*item);
