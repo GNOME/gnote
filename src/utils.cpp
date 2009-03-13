@@ -5,6 +5,7 @@
 #include <gtkmm/icontheme.h>
 
 #include "utils.hpp"
+#include "debug.hpp"
 
 namespace gnote {
 	namespace utils {
@@ -21,7 +22,7 @@ namespace gnote {
 										Gtk::Menu::SlotPositionCalc calc)
 		{
 			menu->signal_deactivate().connect(sigc::bind(&deactivate_menu, menu));
-			menu->popup(calc, (ev ? ev->button : NULL), 
+			menu->popup(calc, (ev ? ev->button : 0), 
 									(ev ? ev->time : gtk_get_current_event_time()));
 			if(menu->get_attach_widget()) {
 				menu->get_attach_widget()->set_state(Gtk::STATE_SELECTED);
