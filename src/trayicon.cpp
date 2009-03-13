@@ -5,6 +5,7 @@
 #include <gtkmm/menuitem.h>
 
 #include "trayicon.hpp"
+#include "debug.hpp"
 #include "actionmanager.hpp"
 #include "utils.hpp"
 
@@ -25,6 +26,7 @@ namespace gnote {
 		ActionManager * am = ActionManager::get_manager();
 		
 		menu = (Gtk::Menu*)am->get_widget("/TrayIconMenu");
+		DBG_ASSERT(menu, "menu not found");
 		
 		// TODO
 		bool enable_keybindings = true; // Preferences.Get (Preferences.ENABLE_KEYBINDINGS);
@@ -74,11 +76,13 @@ namespace gnote {
 	{
 		if(m_context_menu) {
 			m_context_menu->hide();
+			DBG_OUT("context menu found");
 		}
 		// UpdateTrayMenu
 		if(select_first_item) {
 			m_tray->tray_menu()->select_first(false);
 		}
+		utils::popup_menu(m_tray->tray_menu(), NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
 	}
 
 	TrayIcon::~TrayIcon()
@@ -88,11 +92,13 @@ namespace gnote {
 
 	void TrayIcon::on_activate()
 	{
+		DBG_OUT("activated");
 		show_menu(false);
 	}
 
 	void TrayIcon::on_popup_menu(guint button, guint32 /*activate_time*/)
 	{
+		DBG_OUT("popup");
 		if(button == 3) {
 			Gtk::Menu *menu = get_right_click_menu();
 			utils::popup_menu(menu, NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
@@ -107,20 +113,24 @@ namespace gnote {
 			y = 0;
 			
 			Glib::RefPtr<Gdk::Screen> screen;
+			GdkScreen *cscreen = NULL;
 			Gdk::Rectangle area;
-			Gtk::Orientation orientation;
-			get_geometry (screen, area, orientation);
+			GtkOrientation orientation;
+// using the C++ API seems to crash here on the Gdk::Screen.
+//			get_geometry (screen, area, orientation);
+			gtk_status_icon_get_geometry(gobj(), &cscreen, area.gobj(), &orientation);
 			x = area.get_x();
 			y = area.get_y();
 
 			Gtk::Requisition menu_req;
 			get_right_click_menu()->size_request (menu_req);
-			if (y + menu_req.height >= screen->get_height()) {
+			if (y + menu_req.height >= gdk_screen_get_height(cscreen)/*screen->get_height()*/) {
 				y -= menu_req.height;
 			}
 			else {
 				y += area.get_height();
 			}
+			DBG_OUT("x = %d, y = %d, push_in = %d", x, y, push_in);
 	}
 
 	Gtk::Menu * TrayIcon::get_right_click_menu()

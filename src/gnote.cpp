@@ -46,11 +46,12 @@ namespace gnote {
 
 		// TODO
 		// SyncManager::init()
-		
+
+		ActionManager & am = *ActionManager::get_manager();
+		am.load_interface();
 //		register_remote_control(m_manager);
 		setup_global_actions();
-		ActionManager & am = *ActionManager::get_manager();
-
+		
 		// TODO
 		// addins. load + init
 

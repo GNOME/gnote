@@ -54,6 +54,8 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in) Makefile
 
 man_MANS = tomboy.1
 
+gnotedatadir = @datadir@/gnote
+gnotedata_DATA = UIManagerLayout.xml
 
 noinst_DATA = 			\
 	GNOME_GNoteApplet.xml
@@ -66,8 +68,7 @@ EXTRA_DIST = 					\
 	$(man_MANS)				\
 	$(noinst_DATA)				\
 	GNOME_GNoteApplet.server.in.in		\
-	$(dbusservice_in_files)				\
-	UIManagerLayout.xml
+	$(dbusservice_in_files)
 
 DISTCLEANFILES = 				\
 	$(desktop_files)       			\

@@ -36,6 +36,7 @@
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 
+#include "debug.hpp"
 #include "actionmanager.hpp"
 #include "utils.hpp"
 
@@ -55,8 +56,9 @@ namespace gnote {
 
 	void ActionManager::load_interface()
 	{
-		m_ui->add_ui_from_file("UIManagerLayout.xml");
-		Gtk::Window::set_default_icon_name("tomboy");
+		Gtk::UIManager::ui_merge_id id = m_ui->add_ui_from_file(DATADIR"/gnote/UIManagerLayout.xml");
+		DBG_ASSERT(id, "merge failed");
+		Gtk::Window::set_default_icon_name("gnote");
 
 
 		Gtk::ImageMenuItem *imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget(
@@ -161,6 +163,7 @@ namespace gnote {
 				}
 			}
 		}
+		DBG_OUT("%s not found", n.c_str());
 		return Glib::RefPtr<Gtk::Action>();			
 	}
 
