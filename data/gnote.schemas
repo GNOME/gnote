@@ -2,9 +2,9 @@
 <gconfschemafile>
   <schemalist>
     <schema>
-      <key>/schemas/apps/tomboy/enable_spellchecking</key>
-      <applyto>/apps/tomboy/enable_spellchecking</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/enable_spellchecking</key>
+      <applyto>/apps/gnote/enable_spellchecking</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>true</default>
       <locale name="C">
@@ -17,9 +17,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/enable_wikiwords</key>
-      <applyto>/apps/tomboy/enable_wikiwords</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/enable_wikiwords</key>
+      <applyto>/apps/gnote/enable_wikiwords</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>false</default>
       <locale name="C">
@@ -32,9 +32,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/enable_bulleted_lists</key>
-      <applyto>/apps/tomboy/enable_bulleted_lists</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/enable_bulleted_lists</key>
+      <applyto>/apps/gnote/enable_bulleted_lists</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>true</default>
       <locale name="C">
@@ -46,23 +46,23 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/enable_icon_paste</key>
-      <applyto>/apps/tomboy/enable_icon_paste</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/enable_icon_paste</key>
+      <applyto>/apps/gnote/enable_icon_paste</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>false</default>
       <locale name="C">
          <short>Enable Middle-Click Paste On Icon.</short>
          <long>
-         Enable this option if you want to be able to middle-click the Tomboy icon to paste timestamped content into the Start Here note.
+         Enable this option if you want to be able to middle-click the Gnote icon to paste timestamped content into the Start Here note.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/enable_custom_font</key>
-      <applyto>/apps/tomboy/enable_custom_font</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/enable_custom_font</key>
+      <applyto>/apps/gnote/enable_custom_font</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>false</default>
       <locale name="C">
@@ -76,9 +76,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/custom_font_face</key>
-      <applyto>/apps/tomboy/custom_font_face</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/custom_font_face</key>
+      <applyto>/apps/gnote/custom_font_face</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default>Serif 11</default>
       <locale name="C">
@@ -91,25 +91,25 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/enable_keybindings</key>
-      <applyto>/apps/tomboy/enable_keybindings</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/enable_keybindings</key>
+      <applyto>/apps/gnote/enable_keybindings</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>true</default>
       <locale name="C">
          <short>Enable global keybindings</short>
          <long>
 	   If true, the desktop-global keybindings set in
-	   /apps/tomboy/global_keybindings will be enabled, allowing for useful Tomboy
+	   /apps/gnote/global_keybindings will be enabled, allowing for useful Gnote
 	   actions to be available from any application.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/start_note</key>
-      <applyto>/apps/tomboy/start_note</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/start_note</key>
+      <applyto>/apps/gnote/start_note</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
@@ -117,66 +117,66 @@
          <long>
 	   The note URI of the note that should be considered the
 	   "Start Here" note, which is always placed at the bottom
-	   of the Tomboy note menu and also accessible by hotkey.
+	   of the Gnote note menu and also accessible by hotkey.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/menu_note_count</key>
-      <applyto>/apps/tomboy/menu_note_count</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/menu_note_count</key>
+      <applyto>/apps/gnote/menu_note_count</applyto>
+      <owner>gnote</owner>
       <type>int</type>
       <default>10</default>
       <locale name="C">
          <short>Minimum number of notes to show in menu</short>
          <long>
-           Integer determining the minimum number of notes to show in the Tomboy
+           Integer determining the minimum number of notes to show in the Gnote
            note menu.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/menu_pinned_notes</key>
-      <applyto>/apps/tomboy/menu_pinned_notes</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/menu_pinned_notes</key>
+      <applyto>/apps/gnote/menu_pinned_notes</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
          <short>List of pinned notes.</short>
          <long>
 	   Whitespace-separated list of note URIs for notes that should always
-	   appear in the Tomboy note menu.
+	   appear in the Gnote note menu.
          </long>
       </locale>
     </schema>
     
     <schema>
-      <key>/schemas/apps/tomboy/enable_startup_notes</key>
-      <applyto>/apps/tomboy/enable_startup_notes</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/enable_startup_notes</key>
+      <applyto>/apps/gnote/enable_startup_notes</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>true</default>
       <locale name="C">
          <short>Enable startup notes</short>
          <long>
-	   If enabled, all notes that were open when Tomboy quit will
+	   If enabled, all notes that were open when Gnote quit will
 	   automatically be reopened at startup.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/global_keybindings/show_note_menu</key>
-      <applyto>/apps/tomboy/global_keybindings/show_note_menu</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/global_keybindings/show_note_menu</key>
+      <applyto>/apps/gnote/global_keybindings/show_note_menu</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default>&lt;Alt&gt;F12</default>
       <locale name="C">
          <short>Show applet menu</short>
          <long>
-	   The global keybinding for showing the Tomboy applet's menu.
+	   The global keybinding for showing the Gnote applet's menu.
 
 	   The format looks like "&lt;Control&gt;a" or
           "&lt;Shift&gt;&lt;Alt&gt;F1".  The parser is fairly liberal and allows
@@ -188,9 +188,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/global_keybindings/open_start_here</key>
-      <applyto>/apps/tomboy/global_keybindings/open_start_here</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/global_keybindings/open_start_here</key>
+      <applyto>/apps/gnote/global_keybindings/open_start_here</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default>&lt;Alt&gt;F11</default>
       <locale name="C">
@@ -208,9 +208,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/global_keybindings/create_new_note</key>
-      <applyto>/apps/tomboy/global_keybindings/create_new_note</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/global_keybindings/create_new_note</key>
+      <applyto>/apps/gnote/global_keybindings/create_new_note</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default>disabled</default>
       <locale name="C">
@@ -228,9 +228,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/global_keybindings/open_search</key>
-      <applyto>/apps/tomboy/global_keybindings/open_search</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/global_keybindings/open_search</key>
+      <applyto>/apps/gnote/global_keybindings/open_search</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default>disabled</default>
       <locale name="C">
@@ -248,9 +248,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/global_keybindings/open_recent_changes</key>
-      <applyto>/apps/tomboy/global_keybindings/open_recent_changes</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/global_keybindings/open_recent_changes</key>
+      <applyto>/apps/gnote/global_keybindings/open_recent_changes</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default>disabled</default>
       <locale name="C">
@@ -268,65 +268,65 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/search_window_height</key>
-      <applyto>/apps/tomboy/search_window_height</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/search_window_height</key>
+      <applyto>/apps/gnote/search_window_height</applyto>
+      <owner>gnote</owner>
       <type>int</type>
       <default>0</default>
       <locale name="C">
          <short>Saved height of Search window</short>
          <long>
-           Determines pixel height of Search window; stored on Tomboy exit.
+           Determines pixel height of Search window; stored on Gnote exit.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/search_window_width</key>
-      <applyto>/apps/tomboy/search_window_width</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/search_window_width</key>
+      <applyto>/apps/gnote/search_window_width</applyto>
+      <owner>gnote</owner>
       <type>int</type>
       <default>550</default>
       <locale name="C">
          <short>Saved width of Search window</short>
          <long>
-           Determines pixel width of Search window; stored on Tomboy exit.
+           Determines pixel width of Search window; stored on Gnote exit.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/search_window_x_pos</key>
-      <applyto>/apps/tomboy/search_window_x_pos</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/search_window_x_pos</key>
+      <applyto>/apps/gnote/search_window_x_pos</applyto>
+      <owner>gnote</owner>
       <type>int</type>
       <default>0</default>
       <locale name="C">
          <short>Saved horizontal position of Search window</short>
          <long>
-           Determines X coordinate of Search window; stored on Tomboy exit.
+           Determines X coordinate of Search window; stored on Gnote exit.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/search_window_y_pos</key>
-      <applyto>/apps/tomboy/search_window_y_pos</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/search_window_y_pos</key>
+      <applyto>/apps/gnote/search_window_y_pos</applyto>
+      <owner>gnote</owner>
       <type>int</type>
       <default>0</default>
       <locale name="C">
          <short>Saved vertical position of Search window</short>
          <long>
-           Determines Y coordinate of Search window; stored on Tomboy exit.
+           Determines Y coordinate of Search window; stored on Gnote exit.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/export_html/last_directory</key>
-      <applyto>/apps/tomboy/export_html/last_directory</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/export_html/last_directory</key>
+      <applyto>/apps/gnote/export_html/last_directory</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
@@ -338,9 +338,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/export_html/export_linked</key>
-      <applyto>/apps/tomboy/export_html/export_linked</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/export_html/export_linked</key>
+      <applyto>/apps/gnote/export_html/export_linked</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>true</default>
       <locale name="C">
@@ -352,9 +352,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/export_html/export_linked_all</key>
-      <applyto>/apps/tomboy/export_html/export_linked_all</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/export_html/export_linked_all</key>
+      <applyto>/apps/gnote/export_html/export_linked_all</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>false</default>
       <locale name="C">
@@ -370,39 +370,39 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sticky_note_importer/sticky_importer_first_run</key>
-      <applyto>/apps/tomboy/sticky_note_importer/sticky_importer_first_run</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sticky_note_importer/sticky_importer_first_run</key>
+      <applyto>/apps/gnote/sticky_note_importer/sticky_importer_first_run</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>true</default>
       <locale name="C">
          <short>Sticky Note Importer First Run</short>
          <long>
 	   Indicates that the Sticky Note Importer plugin has not been run, so it should run
-	   automatically the next time Tomboy starts.
+	   automatically the next time Gnote starts.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync/sync_guid</key>
-      <applyto>/apps/tomboy/sync/sync_guid</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync/sync_guid</key>
+      <applyto>/apps/gnote/sync/sync_guid</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
          <short>Synchronization Client ID</short>
          <long>
-	   Unique identifier for this Tomboy client, used when communicating with a
+	   Unique identifier for this Gnote client, used when communicating with a
 	   sychronization server.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync/sync_local_path</key>
-      <applyto>/apps/tomboy/sync/sync_local_path</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync/sync_local_path</key>
+      <applyto>/apps/gnote/sync/sync_local_path</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
@@ -415,9 +415,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync/sync_selected_service_addin</key>
-      <applyto>/apps/tomboy/sync/sync_selected_service_addin</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync/sync_selected_service_addin</key>
+      <applyto>/apps/gnote/sync/sync_selected_service_addin</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
@@ -430,52 +430,52 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync_fuse_mount_timeout_ms</key>
-      <applyto>/apps/tomboy/sync_fuse_mount_timeout_ms</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync_fuse_mount_timeout_ms</key>
+      <applyto>/apps/gnote/sync_fuse_mount_timeout_ms</applyto>
+      <owner>gnote</owner>
       <type>int</type>
       <default>10000</default>
       <locale name="C">
          <short>FUSE Mounting Timeout (ms)</short>
          <long>
-	   Time (in milliseconds) Tomboy should wait for a response when using
+	   Time (in milliseconds) Gnote should wait for a response when using
 	   FUSE to mount a sync share.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync_sshfs_folder</key>
-      <applyto>/apps/tomboy/sync_sshfs_folder</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync_sshfs_folder</key>
+      <applyto>/apps/gnote/sync_sshfs_folder</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
          <short>SSHFS Remote Synchronization Folder</short>
          <long>
-	   Path on SSH server to Tomboy synchronization directory (optional).
+	   Path on SSH server to Gnote synchronization directory (optional).
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync_sshfs_server</key>
-      <applyto>/apps/tomboy/sync_sshfs_server</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync_sshfs_server</key>
+      <applyto>/apps/gnote/sync_sshfs_server</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
          <short>SSHFS Synchronization Server URL</short>
          <long>
-	   URL of SSH server containing Tomboy synchronization directory.
+	   URL of SSH server containing Gnote synchronization directory.
          </long>
       </locale>
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync_sshfs_username</key>
-      <applyto>/apps/tomboy/sync_sshfs_username</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync_sshfs_username</key>
+      <applyto>/apps/gnote/sync_sshfs_username</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default></default>
       <locale name="C">
@@ -487,9 +487,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync_sshfs_port</key>
-      <applyto>/apps/tomboy/sync_sshfs_port</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync_sshfs_port</key>
+      <applyto>/apps/gnote/sync_sshfs_port</applyto>
+      <owner>gnote</owner>
       <type>int</type>
       <default>22</default>
       <locale name="C">
@@ -501,9 +501,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync/wdfs/accept_sslcert</key>
-      <applyto>/apps/tomboy/sync/wdfs/accept_sslcert</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync/wdfs/accept_sslcert</key>
+      <applyto>/apps/gnote/sync/wdfs/accept_sslcert</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>false</default>
       <locale name="C">
@@ -515,9 +515,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/sync/sync_conflict_behavior</key>
-      <applyto>/apps/tomboy/sync/sync_conflict_behavior</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/sync/sync_conflict_behavior</key>
+      <applyto>/apps/gnote/sync/sync_conflict_behavior</applyto>
+      <owner>gnote</owner>
       <type>int</type>
       <default>0</default>
       <locale name="C">
@@ -533,9 +533,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/insert_timestamp/format</key>
-      <applyto>/apps/tomboy/insert_timestamp/format</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/insert_timestamp/format</key>
+      <applyto>/apps/gnote/insert_timestamp/format</applyto>
+      <owner>gnote</owner>
       <type>string</type>
       <default>dddd, MMMM d, h:mm tt</default>
       <locale name="C">
@@ -547,9 +547,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/tomboy/enable_close_note_on_escape</key>
-      <applyto>/apps/tomboy/enable_close_note_on_escape</applyto>
-      <owner>tomboy</owner>
+      <key>/schemas/apps/gnote/enable_close_note_on_escape</key>
+      <applyto>/apps/gnote/enable_close_note_on_escape</applyto>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>true</default>
       <locale name="C">
@@ -563,9 +563,9 @@
     <schema>
       <key>/schemas/desktop/gnome/url-handlers/note/command</key>
       <applyto>/desktop/gnome/url-handlers/note/command</applyto>
-      <owner>tomboy</owner>
+      <owner>gnote</owner>
       <type>string</type>
-      <default>tomboy --open-note '%s'</default>
+      <default>gnote --open-note '%s'</default>
       <locale name="C">
         <short>The handler for "note://" URLs</short>
       </locale>
@@ -574,7 +574,7 @@
     <schema>
       <key>/schemas/desktop/gnome/url-handlers/note/enabled</key>
       <applyto>/desktop/gnome/url-handlers/note/enabled</applyto>
-      <owner>tomboy</owner>
+      <owner>gnote</owner>
       <type>bool</type>
       <default>true</default>
       <locale name="C">

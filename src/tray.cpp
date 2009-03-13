@@ -1,6 +1,7 @@
 
 
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/box.h>
@@ -14,6 +15,7 @@
 #include "utils.hpp"
 #include "note.hpp"
 #include "tag.hpp"
+#include "preferences.hpp"
 
 namespace gnote {
 	bool                      NoteMenuItem::s_static_inited = false;
@@ -171,26 +173,22 @@ namespace gnote {
 		menu = (Gtk::Menu*)am->get_widget("/TrayIconMenu");
 		DBG_ASSERT(menu, "menu not found");
 		
-		// TODO
-		bool enable_keybindings = true; // Preferences.Get (Preferences.ENABLE_KEYBINDINGS);
+		bool enable_keybindings = Preferences::get_preferences()->get<bool>(Preferences::ENABLE_KEYBINDINGS);
 		if (enable_keybindings) {
 			Gtk::MenuItem *item = (Gtk::MenuItem*)am->get_widget("/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
 			if(item) {
-//	GConfKeybindingToAccel.AddAccelerator (
-//					        item,
-//					        Preferences.KEYBINDING_CREATE_NEW_NOTE);
+				GConfKeybindingToAccel::add_accelerator(
+					*item, Preferences::KEYBINDING_CREATE_NEW_NOTE);
 			}
 			item = (Gtk::MenuItem*)am->get_widget("/TrayIconMenu/ShowSearchAllNotes");
 			if(item) {
-//					GConfKeybindingToAccel.AddAccelerator (
-//					        item,
-//					        Preferences.KEYBINDING_OPEN_RECENT_CHANGES);
+				GConfKeybindingToAccel::add_accelerator(
+					*item, Preferences::KEYBINDING_OPEN_RECENT_CHANGES);
 			}
 			item = (Gtk::MenuItem*)am->get_widget("/TrayIconMenu/OpenStartHereNote");
 			if(item) {
-//					GConfKeybindingToAccel.AddAccelerator (
-//					        item,
-//					        Preferences.KEYBINDING_OPEN_START_HERE);
+				GConfKeybindingToAccel::add_accelerator(
+					*item, Preferences::KEYBINDING_OPEN_START_HERE);
 			}
 		}
 
@@ -224,8 +222,7 @@ namespace gnote {
 
 	void Tray::add_recently_changed_notes()
 	{
-		//TODO
-		int min_size = 5;//(int) Preferences.Get (Preferences.MENU_NOTE_COUNT);
+		int min_size = Preferences::get_preferences()->get<int>(Preferences::MENU_NOTE_COUNT);
 		int max_size = 18;
 		int list_size = 0;
 		bool menuOpensUpward = m_trayicon.menu_opens_upward();
@@ -323,13 +320,11 @@ namespace gnote {
 
 			list_size++;
 
-// TODO				
-//			bool enable_keybindings = (bool)
-//				Preferences.Get (Preferences.ENABLE_KEYBINDINGS);
-//				if (enable_keybindings)
-//					GConfKeybindingToAccel.AddAccelerator (
-//					        item,
-//					        Preferences.KEYBINDING_OPEN_START_HERE);
+			bool enable_keybindings = Preferences::get_preferences()->get<bool>(Preferences::ENABLE_KEYBINDINGS);
+			if (enable_keybindings) {
+				GConfKeybindingToAccel::add_accelerator (
+					*item, Preferences::KEYBINDING_OPEN_START_HERE);
+			}
 		}
 
 
@@ -519,19 +514,76 @@ namespace gnote {
 			return open_upwards;
 	}
 
-	Glib::ustring get_tooltip_text()
+	std::string get_tooltip_text()
 	{
-		Glib::ustring tip_text = _("GNote Notes");
+		std::string tip_text = _("GNote Notes");
 		
-//		if ((bool) Preferences.Get (Preferences.ENABLE_KEYBINDINGS)) {
-//			string shortcut =
-//				GConfKeybindingToAccel.GetShortcut (
-//					Preferences.KEYBINDING_SHOW_NOTE_MENU);
-//			if (shortcut != null)
-//				tip_text += String.Format (" ({0})", shortcut);
-//		}
+		if (Preferences::get_preferences()->get<bool>(Preferences::ENABLE_KEYBINDINGS)) {
+			std::string shortcut =
+				GConfKeybindingToAccel::get_shortcut (
+					Preferences::KEYBINDING_SHOW_NOTE_MENU);
+			if (!shortcut.empty())
+				tip_text += str(boost::format(" (%1%)") % shortcut);
+		}
 			
 		return tip_text;
 	}
 
+	//
+	// This is a helper to take the XKeybinding string from GConf, and
+	// convert it to a widget accelerator label, so note menu items can
+	// display their global X keybinding.
+	//
+	// FIXME: It would be totally sweet to allow setting the accelerator
+	// visually through the menuitem, and have the new value be stored in
+	// GConf.
+	//
+	Glib::RefPtr<Gtk::AccelGroup> GConfKeybindingToAccel::s_accel_group;
+
+	
+	Glib::RefPtr<Gtk::AccelGroup>
+	GConfKeybindingToAccel::get_accel_group()
+	{
+		if(!s_accel_group) {
+			s_accel_group = Gtk::AccelGroup::create();
+		}
+		return s_accel_group;
+	}
+
+	std::string GConfKeybindingToAccel::get_shortcut (const std::string & gconf_path)
+	{
+		try {
+			std::string binding = Preferences::get_preferences()->get<std::string>(gconf_path);
+			if (binding.empty() ||
+					binding == "disabled") {
+				return "";
+			}
+			
+			boost::algorithm::replace_all(binding, "<", "");
+			boost::algorithm::replace_all(binding, ">", "-");				
+			
+			return binding;
+		} 
+		catch(...)
+		{
+		}
+		return "";
+	}
+
+	void GConfKeybindingToAccel::add_accelerator (Gtk::MenuItem & item, const std::string & gconf_path)
+	{
+		guint keyval;
+		Gdk::ModifierType mods;
+		
+// TODO
+//		if (Services.Keybinder.GetAccelKeys (gconf_path, out keyval, out mods)) {
+//			item.add_accelerator ("activate",
+//				                     get_accel_group(),
+//				                     keyval,
+//				                     mods,
+//				                     Gtk::ACCEL_VISIBLE);
+//		}
+	}
+
+	
 }

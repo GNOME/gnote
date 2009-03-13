@@ -1,7 +1,7 @@
 
 
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
-	@LIBXMLPP_CFLAGS@ \
+	@LIBXMLPP_CFLAGS@ @GCONF_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\"
 
 bin_PROGRAMS = gnote
@@ -11,6 +11,8 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	utils.hpp utils.cpp \
 	tray.hpp tray.cpp \
 	debug.hpp debug.cpp \
+	preferences.hpp preferences.cpp \
 	notemanager.hpp
 
-gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@
+gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
+	@GCONF_LIBS@

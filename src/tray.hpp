@@ -97,6 +97,16 @@ private:
 	Gtk::Menu               *m_context_menu;
 };
 
+class GConfKeybindingToAccel
+{
+public:
+	static std::string get_shortcut (const std::string & gconf_path);
+	static void add_accelerator (Gtk::MenuItem & item, const std::string & gconf_path);
+
+	static Glib::RefPtr<Gtk::AccelGroup> get_accel_group();
+private:
+	static Glib::RefPtr<Gtk::AccelGroup> s_accel_group;
+};
 
 }
 #endif
