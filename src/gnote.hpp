@@ -13,7 +13,7 @@
 
 #include "notemanager.hpp"
 #include "actionmanager.hpp"
-#include "trayicon.hpp"
+#include "tray.hpp"
 
 namespace gnote {
 

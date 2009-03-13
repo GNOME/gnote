@@ -35,6 +35,9 @@
 #include <gtkmm/imagemenuitem.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
+#include <libxml++/libxml++.h>
+#include <libxml++/parsers/domparser.h>
+
 
 #include "debug.hpp"
 #include "actionmanager.hpp"
@@ -76,6 +79,67 @@ namespace gnote {
 			imageitem->set_image(*manage(new Gtk::Image(m_newNote)));
 		}
 	}
+
+
+	/// <summary>
+	/// Get all widgets represents by XML elements that are children
+	/// of the placeholder element specified by path.
+	/// </summary>
+	/// <param name="path">
+	/// A <see cref="System.String"/> representing the path to
+	/// the placeholder of interest.
+	/// </param>
+	/// <returns>
+	/// A <see cref="IList`1"/> of Gtk.Widget objects corresponding
+	/// to the XML child elements of the placeholder element.
+	/// </returns>
+	std::list<Gtk::Widget*> ActionManager::get_placeholder_children (const std::string & path)
+	{
+		std::list<Gtk::Widget*> children;
+		// Wrap the UIManager XML in a root element
+		// so that it's real parseable XML.
+		std::string xml = "<root>" + m_ui->get_ui() + "</root>";
+			
+		xmlpp::DomParser reader;
+		reader.parse_memory(xml);
+
+		xmlpp::Document *doc = reader.get_document();
+				
+		// Get the element name
+		std::string placeholderName;
+		const char * s = strrchr(path.c_str(), '/');
+		if(s) {
+			s++;
+			placeholderName = s;
+		}
+		DBG_OUT("path = %s placeholdername = %s", path.c_str(), placeholderName.c_str());
+
+		xmlpp::Element *root_node = doc->get_root_node();
+		xmlpp::Node::NodeList nodes(root_node->get_children("placeholder"));
+		// Find the placeholder specified in the path
+		for(xmlpp::Node::NodeList::const_iterator placeholderNode = nodes.begin();
+				placeholderNode != nodes.end(); ++placeholderNode) {
+			
+			xmlpp::Element * element = dynamic_cast<xmlpp::Element*>(*placeholderNode);
+			if (element && (element->get_attribute_value("name") == placeholderName)) {
+
+				// Return each child element's widget
+				xmlpp::Node::NodeList childNodes((*placeholderNode)->get_children());
+
+				for(xmlpp::Node::NodeList::const_iterator widgetNode = childNodes.begin();
+						widgetNode != childNodes.end(); ++widgetNode) {
+
+					xmlpp::Element *element2 = dynamic_cast<xmlpp::Element*>(*widgetNode);
+					if(element2) {
+						std::string widgetName = element2->get_attribute_value("name");
+						children.push_back(get_widget(path + "/" + widgetName));
+					}
+				}
+			}
+		}
+		return children;
+	}
+
 
 	void ActionManager::populate_action_groups()
 	{
