@@ -51,6 +51,7 @@ namespace gnote {
 	{
 		populate_action_groups();
 		m_newNote = utils::get_icon("note-new", 16);
+		DBG_ASSERT(m_newNote, "note-new icon not found");
 	}
 
 
@@ -63,13 +64,14 @@ namespace gnote {
 
 		Gtk::ImageMenuItem *imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget(
 			"/MainWindowMenubar/FileMenu/FileMenuNewNotePlaceholder/NewNote");
+		DBG_ASSERT(imageitem, "Item not found");
 		if (imageitem) {
 			imageitem->set_image(*manage(new Gtk::Image(m_newNote)));
 		}
 			
 		imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget (
 			"/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
-
+		DBG_ASSERT(imageitem, "Item not found");
 		if (imageitem) {
 			imageitem->set_image(*manage(new Gtk::Image(m_newNote)));
 		}
