@@ -5,14 +5,16 @@
 #include <boost/algorithm/string/replace.hpp>
 
 #include <glibmm/thread.h>
+#include <glibmm/i18n.h>
 #include <gtkmm/main.h>
+#include <gtkmm/aboutdialog.h>
 
 #include "config.h"
 
 #include "gnote.hpp"
 #include "actionmanager.hpp"
 #include "preferencesdialog.hpp"
-
+#include "utils.hpp"
 
 int main(int argc, char **argv)
 {
@@ -161,6 +163,7 @@ namespace gnote {
 
 	void Gnote::on_new_note_action()
 	{
+		// TODO
 	}
 
 	void Gnote::on_quit_gnote_action()
@@ -189,10 +192,52 @@ namespace gnote {
 
 	void Gnote::on_show_help_action()
 	{
+		GdkScreen *cscreen;
+		Gdk::Rectangle area;
+		GtkOrientation orientation;
+		gtk_status_icon_get_geometry(m_tray_icon->gobj(), &cscreen, area.gobj(), &orientation);
+		utils::show_help("gnote", "", cscreen, NULL);
 	}
 
 	void Gnote::on_show_about_action()
 	{
+		std::list<Glib::ustring> authors;
+		authors.push_back("Hubert Figuiere <hub@figuiere.net>");
+		authors.push_back(_("and Tomboy original authors."));
+		
+		std::list<Glib::ustring> documenters;
+		documenters.push_back("Alex Graveley <alex@beatniksoftware.com>");
+		documenters.push_back("Boyd Timothy <btimothy@gmail.com>");
+		documenters.push_back("Brent Smith <gnome@nextreality.net>");
+		documenters.push_back("Paul Cutler <pcutler@foresightlinux.org>");
+		documenters.push_back("Sandy Armstrong <sanfordarmstrong@gmail.com>");
+
+		std::string translators(_("translator-credits"));
+		if (translators == "translator-credits")
+			translators = "";
+
+		Gtk::AboutDialog about;
+		about.set_name("GNote");
+		about.set_version(VERSION);
+		about.set_logo(utils::get_icon("gnote", 48));
+		about.set_copyright(_("Copyright (c) 2009 Hubert Figuiere"));
+		about.set_comments(_("A simple and easy to use desktop "
+												 "note-taking application."));
+// I don't think we need a hook.
+//			Gtk.AboutDialog.SetUrlHook (delegate (Gtk.AboutDialog dialog, string link) {
+//				try {
+//					Services.NativeApplication.OpenUrl (link);
+//				} catch (Exception e) {
+//					GuiUtils.ShowOpeningLocationError (dialog, link, e.Message);
+//				}
+//			}); 
+		about.set_website("http://live.gnome.org/GNote");
+		about.set_website_label(_("Homepage"));
+		about.set_authors(authors);
+		about.set_documenters(documenters);
+		about.set_translator_credits(translators);
+//			about.set_icon_name("gnote");
+		about.run();
 	}
 
 	void Gnote::open_search_all()
