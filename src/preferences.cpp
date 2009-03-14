@@ -75,6 +75,17 @@ namespace gnote {
 		self->m_signal_setting_changed(self, entry);
 	}
 
+	template<>
+	void Preferences::set<bool>(const char *p, const bool & v) 
+	{
+		gconf_client_set_bool(m_client, p, v, NULL);
+	}
+
+	template<>
+	void Preferences::set<std::string>(const char *p, const std::string & v) 
+	{
+		gconf_client_set_string(m_client, p, v.c_str(), NULL);
+	}
 
 	template<>
 	bool Preferences::get<bool>(const char *p) 

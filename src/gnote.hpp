@@ -17,10 +17,13 @@
 
 namespace gnote {
 
+class PreferencesDialog;
+
 class Gnote
 {
 public:
 	Gnote();
+	~Gnote();
 	int main(int argc, char **argv);
 	std::string get_note_path(const std::string & override_path);
 
@@ -30,12 +33,14 @@ public:
 
 	void on_new_note_action();
 	void on_quit_gnote_action();
+	void on_preferences_response(int res);
 	void on_show_preferences_action();
 	void on_show_help_action();
 	void on_show_about_action();
 	void open_search_all();
 	void open_note_sync_window();
 
+	static std::string conf_dir();
 private:
 	Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
 	boost::shared_ptr<NoteManager> m_manager;
@@ -43,6 +48,7 @@ private:
 	Glib::RefPtr<TrayIcon> m_tray_icon;
 	boost::shared_ptr<Tray> m_tray;
 	bool m_is_panel_applet;
+	PreferencesDialog *m_prefsdlg;
 };
 
 

@@ -1,5 +1,9 @@
 
 
+#include <stdlib.h>
+
+#include <boost/algorithm/string/replace.hpp>
+
 #include <glibmm/thread.h>
 #include <gtkmm/main.h>
 
@@ -7,6 +11,7 @@
 
 #include "gnote.hpp"
 #include "actionmanager.hpp"
+#include "preferencesdialog.hpp"
 
 
 int main(int argc, char **argv)
@@ -25,7 +30,13 @@ namespace gnote {
 	Gnote::Gnote()
 		: m_tray_icon_showing(false)
 		, m_is_panel_applet(false)
+		, m_prefsdlg(NULL)
 	{
+	}
+
+	Gnote::~Gnote()
+	{
+		delete m_prefsdlg;
 	}
 
 
@@ -84,10 +95,15 @@ namespace gnote {
 			note_path = override_path;
 		}
 		if(note_path.empty()) {
-			// confdir?
+			note_path = Gnote::conf_dir();
 		}
-		// TODO
-		// substitute ~
+		std::string home_dir;
+		const char *s = getenv("HOME");
+		if(s) {
+			home_dir = s;
+			boost::algorithm::replace_first(note_path, "~", home_dir);
+		}
+
 		return note_path;
 	}
 
@@ -155,8 +171,20 @@ namespace gnote {
 		Gtk::Main::quit();
 	}
 
+	void Gnote::on_preferences_response(int /*res*/)
+	{
+		delete m_prefsdlg;
+		m_prefsdlg = NULL;
+	}
+
+
 	void Gnote::on_show_preferences_action()
 	{
+		if(!m_prefsdlg) {
+			m_prefsdlg = new PreferencesDialog(/*addin manager*/);
+			m_prefsdlg->signal_response().connect(sigc::mem_fun(*this, &Gnote::on_preferences_response));
+		}
+		m_prefsdlg->run();
 	}
 
 	void Gnote::on_show_help_action()
@@ -174,6 +202,19 @@ namespace gnote {
 	void Gnote::open_note_sync_window()
 	{
 	}
+
+
+	std::string Gnote::conf_dir()
+	{
+		std::string dir;
+		const char * home = getenv("HOME");
+		if(!home) {
+			home = ".";
+		}
+		dir = std::string(home) + "/.gnote";
+		return dir;
+	}
+
 
 	GnoteCommandLine::GnoteCommandLine(int & argc, char **&argv)
 		:	m_new_note(false)

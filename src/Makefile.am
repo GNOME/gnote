@@ -12,6 +12,8 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	tray.hpp tray.cpp \
 	debug.hpp debug.cpp \
 	preferences.hpp preferences.cpp \
+	preferencesdialog.hpp preferencesdialog.cpp \
+	propertyeditor.hpp propertyeditor.cpp
 	notemanager.hpp
 
 gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
