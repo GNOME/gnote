@@ -164,6 +164,20 @@ namespace gnote {
 	void Gnote::on_new_note_action()
 	{
 		// TODO
+		try {
+			Note::Ptr new_note = m_manager->create();
+			//new_note->window()->show();
+		}
+		catch(const std::exception & e) 
+		{
+			utils::HIGMessageDialog dialog (
+				NULL,	(GtkDialogFlags)0,
+				Gtk::MESSAGE_ERROR,
+				Gtk::BUTTONS_OK,
+				_("Cannot create new note"),
+				e.what());
+			dialog.run ();
+		}		
 	}
 
 	void Gnote::on_quit_gnote_action()

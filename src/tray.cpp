@@ -112,7 +112,7 @@ namespace gnote {
 	{
 		// Replace underscores ("_") with double-underscores ("__")
 		// so Note menuitems are not created with mnemonics.
-		return boost::algorithm::replace_all_copy(name, "-", "--");
+		return boost::replace_all_copy(name, "-", "--");
 	}
 
 
@@ -307,7 +307,7 @@ namespace gnote {
 			}
 		}
 
-		Note::Ptr start = m_manager->find_by_uri(NoteManager::start_note_uri());
+		Note::Ptr start = m_manager->find_by_uri(m_manager->start_note_uri());
 		if (start) {
 			item = Gtk::manage(new NoteMenuItem(start, false));
 			if (menuOpensUpward) {

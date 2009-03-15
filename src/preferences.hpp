@@ -6,7 +6,7 @@
 
 #include <string>
 #include <gconf/gconf-client.h>
-#include <sigc++/slot.h>
+#include <sigc++/signal.h>
 
 namespace gnote {
 
@@ -85,7 +85,7 @@ namespace gnote {
 		
 		static Preferences * get_preferences();
 
-		sigc::slot<void, Preferences*, GConfEntry*> & signal_setting_changed()
+		sigc::signal<void, Preferences*, GConfEntry*> & signal_setting_changed()
 			{
 				return  m_signal_setting_changed;
 			}
@@ -98,7 +98,7 @@ namespace gnote {
 
 		static void gconf_notify_glue(GConfClient *client, guint cid, GConfEntry *entry,
 																	Preferences * self);
-		sigc::slot<void, Preferences*, GConfEntry*> m_signal_setting_changed;
+		sigc::signal<void, Preferences*, GConfEntry*> m_signal_setting_changed;
 	};
 
 

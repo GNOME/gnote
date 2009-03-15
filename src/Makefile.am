@@ -13,8 +13,11 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	debug.hpp debug.cpp \
 	preferences.hpp preferences.cpp \
 	preferencesdialog.hpp preferencesdialog.cpp \
-	propertyeditor.hpp propertyeditor.cpp
-	notemanager.hpp
+	sharp/exception.hpp sharp/exception.cpp \
+	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
+	sharp/directory.hpp sharp/directory.cpp \
+	notemanager.hpp notemanager.cpp \
+	$(NULL)
 
 gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
-	@GCONF_LIBS@
+	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ -luuid

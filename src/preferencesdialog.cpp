@@ -16,7 +16,7 @@
 
 #include "preferencesdialog.hpp"
 #include "preferences.hpp"
-#include "propertyeditor.hpp"
+#include "sharp/propertyeditor.hpp"
 #include "utils.hpp"
 
 namespace gnote {
