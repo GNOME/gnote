@@ -32,11 +32,6 @@ public:
 		OTHER_DATA_CHANGED
 	} ChangeType;
 
-	Note(const std::string & _title, bool pinned = false)
-		: m_title(_title)
-		, m_pinned(pinned)
-		{
-		}
 	// TODO
 	void queue_save(ChangeType c)
 		{
@@ -81,7 +76,7 @@ public:
 		}
 	void save()
 		{}
-	void Delete()
+	void delete_note()
 		{}
 	std::string & xml_content()
 		{
@@ -96,6 +91,12 @@ public:
 	SavedHandler & signal_saved()
 		{ return m_signal_saved; }
 private:
+	Note(const std::string & _title, bool pinned = false)
+		: m_title(_title)
+		, m_pinned(pinned)
+		{
+		}
+
 	std::string m_title;
 	bool m_pinned;
 	std::string m_xml_content;

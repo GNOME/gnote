@@ -54,23 +54,20 @@ namespace gnote {
 		Note::RenamedHandler   signal_note_renamed;
 		Note::SavedHandler     signal_note_saved;
 
-	protected:
-		TrieController *create_trie_controller();
-		AddinManager *create_addin_manager();
-		bool directory_exists (const std::string & directory);
-		bool create_directory (const std::string & directory);
-		bool first_run();
-		void create_notes_dir();
-		void on_note_rename(const Note::Ptr & note, const std::string & old_title);
-		void create_start_notes ();
-		void on_note_save (const Note::Ptr & note);
-		void load_notes();
-
-
 	private:
+		TrieController *create_trie_controller();
+		AddinManager *create_addin_manager() const;
+		bool directory_exists(const std::string & directory) const;
+		bool create_directory(const std::string & directory) const;
+		void on_note_rename(const Note::Ptr & note, const std::string & old_title);
+		void create_start_notes();
+		void on_note_save(const Note::Ptr & note);
+		void load_notes();
+		bool first_run() const;
+		void create_notes_dir() const;
 		void on_exiting_event();
-		std::string make_new_file_name();
-		std::string make_new_file_name(const std::string & guid);
+		std::string make_new_file_name() const;
+		std::string make_new_file_name(const std::string & guid) const;
 		static std::string split_title_from_content (std::string title, std::string & body);
 		Note::Ptr create_new_note (std::string title, const std::string & guid);
 		Note::Ptr create_new_note (const std::string & title, const std::string & xml_content, 

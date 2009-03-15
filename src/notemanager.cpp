@@ -111,41 +111,41 @@ namespace gnote {
 
 
 	// Create the TrieController. For overriding in test methods.
-	TrieController *NoteManager::create_trie_controller ()
+	TrieController *NoteManager::create_trie_controller()
 	{
 		return new TrieController(*this);
 	}
 
-	AddinManager *NoteManager::create_addin_manager()
+	AddinManager *NoteManager::create_addin_manager() const
 	{
 		std::string gnote_conf_dir = Gnote::conf_dir();
 		
-		return new AddinManager (gnote_conf_dir);
+		return new AddinManager(gnote_conf_dir);
 	}
 
 	// For overriding in test methods.
-	bool NoteManager::directory_exists (const std::string & directory)
+	bool NoteManager::directory_exists(const std::string & directory) const
 	{
 		boost::filesystem::path p(directory);
 		return exists(p) && is_directory(p);
 	}
 
 	// For overriding in test methods.
-	bool NoteManager::create_directory (const std::string & directory)
+	bool NoteManager::create_directory(const std::string & directory) const
 	{
 		boost::filesystem::path p(directory);
 		return boost::filesystem::create_directory(p);
 	}
 
-	bool NoteManager::first_run ()
+	bool NoteManager::first_run() const
 	{
-		return !directory_exists (m_notes_dir);
+		return !directory_exists(m_notes_dir);
 	}
 
 	// Create the notes directory if it doesn't exist yet.
-	void NoteManager::create_notes_dir ()
+	void NoteManager::create_notes_dir() const
 	{
-		if (!directory_exists (m_notes_dir)) {
+		if (!directory_exists(m_notes_dir)) {
 			// First run. Create storage directory.
 			create_directory(m_notes_dir);
 		}
@@ -341,7 +341,7 @@ namespace gnote {
 		}
 
 		m_notes.remove(note);
-		note->Delete();
+		note->delete_note();
 
 		DBG_OUT("Deleting note '%s'.", note->title().c_str());
 
@@ -349,12 +349,12 @@ namespace gnote {
 		signal_note_deleted(note);
 	}
 
-	std::string NoteManager::make_new_file_name()
+	std::string NoteManager::make_new_file_name() const
 	{
 		return make_new_file_name (sharp::uuid().string());
 	}
 
-	std::string NoteManager::make_new_file_name(const std::string & guid)
+	std::string NoteManager::make_new_file_name(const std::string & guid) const
 	{
 		return m_notes_dir + "/" + guid + ".note";
 	}
@@ -375,7 +375,7 @@ namespace gnote {
 		return create(temp_title);
 	}
 
-	std::string NoteManager::split_title_from_content (std::string title, std::string & body)
+	std::string NoteManager::split_title_from_content(std::string title, std::string & body)
 	{
 		body = "";
 
@@ -405,18 +405,18 @@ namespace gnote {
 
 	Note::Ptr NoteManager::create (const std::string & title)
 	{
-		return create_new_note (title, "");
+		return create_new_note(title, "");
 	}
 
 
 	Note::Ptr NoteManager::create(const std::string & title, const std::string & xml_content)
 	{
-		return create_new_note (title, xml_content, "");
+		return create_new_note(title, xml_content, "");
 	}
 
 	Note::Ptr NoteManager::create_with_guid (const std::string & title, std::string & guid)
 	{
-		return create_new_note (title, guid);
+		return create_new_note(title, guid);
 	}
 
 	// Create a new note with the specified title, and a simple
@@ -471,7 +471,7 @@ namespace gnote {
 	}
 
 	// Create a new note with the specified Xml content
-	Note::Ptr NoteManager::create_new_note (const std::string & title, const std::string & xml_content, 
+	Note::Ptr NoteManager::create_new_note(const std::string & title, const std::string & xml_content, 
 																				const std::string & guid)
 	{ 
 		if (title.empty())
