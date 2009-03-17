@@ -16,8 +16,13 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	sharp/exception.hpp sharp/exception.cpp \
 	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
+	sharp/datetime.hpp sharp/datetime.cpp \
+	sharp/xmlconvert.hpp sharp/xmlconvert.cpp \
+	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
 	notemanager.hpp notemanager.cpp \
+	note.hpp note.cpp \
 	$(NULL)
 
 gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
-	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ -luuid
+	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_REGEX_LIBS@ \
+	-luuid

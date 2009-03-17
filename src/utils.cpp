@@ -8,6 +8,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
+#include <libxml++/parsers/textreader.h>
 
 #include "utils.hpp"
 #include "debug.hpp"
@@ -232,6 +233,67 @@ namespace gnote {
 																 GDK_Escape, (Gdk::ModifierType)0,
 																 Gtk::ACCEL_VISIBLE);
 			}
+		}
+
+
+		InterruptableTimeout::~InterruptableTimeout()
+		{
+			cancel();
+		}
+
+
+		bool InterruptableTimeout::callback(InterruptableTimeout* self)
+		{
+			if(self)
+				return self->timeout_expired();
+			return false;
+		}
+
+		void InterruptableTimeout::reset(guint timeout_millis)
+		{
+			cancel();
+			m_timeout_id = g_timeout_add(timeout_millis, (GSourceFunc)callback, this);
+		}
+
+		void InterruptableTimeout::cancel()
+		{
+			if(m_timeout_id != 0) {
+				g_source_remove(m_timeout_id);
+				m_timeout_id = 0;
+			}
+		}
+
+		bool InterruptableTimeout::timeout_expired()
+		{
+			signal_timeout();
+			m_timeout_id = 0;
+			return false;
+		}
+
+
+
+		const std::string XmlDecoder::decode(const std::string & source)
+		{
+			// TODO there is probably better than a std::string for that.
+			// this will do for now.
+			std::string builder;
+
+			xmlpp::TextReader xml(source);
+
+			while (xml.read ()) {
+				switch (xml.get_node_type()) {
+				case xmlpp::TextReader::Text:
+				case xmlpp::TextReader::Whitespace:
+					builder += xml.get_value();
+					break;
+				default:
+					break;
+				}
+			}
+
+			xml.close ();
+
+			return builder;
 		}
 
 	}

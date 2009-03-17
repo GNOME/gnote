@@ -14,8 +14,10 @@
 #include "actionmanager.hpp"
 #include "utils.hpp"
 #include "note.hpp"
+#include "notewindow.hpp"
 #include "tag.hpp"
 #include "preferences.hpp"
+#include "sharp/datetime.hpp"
 
 namespace gnote {
 	bool                      NoteMenuItem::s_static_inited = false;
@@ -258,10 +260,8 @@ namespace gnote {
 		m_tray_menu->reorder_child (*searchNotesItem, insertion_point);
 		insertion_point++;
 
-		GDate *days_ago = g_date_new();
-		g_date_set_time_t(days_ago, time(NULL));
-		g_date_add_days(days_ago, -3);
-		
+		sharp::DateTime days_ago(sharp::DateTime::now());
+		days_ago.add_days(-3);
 
 		// Prevent template notes from appearing in the menu
 		//TODO
@@ -288,9 +288,8 @@ namespace gnote {
 			// list.
 			if (note->is_pinned()) {
 					show = true;
-			} else if ((note->is_opened() /*&& note->window()->is_mapped()*/) ||
-								 // TODO
-								 (g_date_compare(note->change_date(), days_ago) > 0) ||
+			} else if ((note->is_opened() && note->get_window()->is_mapped()) ||
+								 (note->change_date() > days_ago) ||
 								 (list_size < min_size)) {
 				if (list_size <= max_size)
 					show = true;
@@ -347,7 +346,6 @@ namespace gnote {
 		Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem());
 		m_tray_menu->insert(*separator, insertion_point);
 		m_recent_notes.push_back(separator);
-		g_date_free(days_ago);
 	}
 
 	TrayIcon::TrayIcon(const boost::shared_ptr<NoteManager> & manager)

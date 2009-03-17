@@ -26,26 +26,25 @@
 #pragma GCC system_header
 #endif
 
-namespace gnote {
 namespace utils {
 
 #ifdef DEBUG
 #define DBG_OUT(x, ...) \
-	utils::dbg_print(x,  __FUNCTION__, ## __VA_ARGS__)
+	::utils::dbg_print(x,  __FUNCTION__, ## __VA_ARGS__)
 #else
 #define DBG_OUT(x, ...) 	
 #endif
 
 #ifdef DEBUG
 #define DBG_ASSERT(cond, reason)	\
-	utils::dbg_assert(cond, #cond, __FILE__, __LINE__, reason)
+	::utils::dbg_assert(cond, #cond, __FILE__, __LINE__, reason)
 #else
 #define DBG_ASSERT(cond, reason)	\
 	assert(cond)
 #endif
 
 #define ERR_OUT(x, ...) \
-	utils::err_print(x,  __FUNCTION__, ## __VA_ARGS__)
+	::utils::err_print(x,  __FUNCTION__, ## __VA_ARGS__)
 
 
 	/** print debug messages. printf format.
@@ -73,7 +72,6 @@ namespace utils {
 	 */
 	void err_print(const char *fmt, const char* func, ...);
 
-}
 }
 
 #endif

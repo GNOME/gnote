@@ -39,7 +39,6 @@
 #include "debug.hpp"
 
 
-namespace gnote {
 namespace utils {
 
 	static void _vprint(const char *prefix, const char *fmt, 
@@ -123,5 +122,4 @@ namespace utils {
 		fprintf(stderr, "\n");
 	}
 
-}
 }

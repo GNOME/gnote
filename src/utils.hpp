@@ -3,8 +3,11 @@
 #ifndef _GNOTE_UTILS_HPP__
 #define _GNOTE_UTILS_HPP__
 
+#include <sigc++/signal.h>
+
 #include <gdkmm/pixbuf.h>
 #include <gtkmm/dialog.h>
+#include <gtkmm/image.h>
 #include <gtkmm/menu.h>
 #include <gtkmm/messagedialog.h>
 
@@ -42,6 +45,30 @@ namespace gnote {
 
 		};
 
+		class InterruptableTimeout
+		{
+		public:
+			InterruptableTimeout()
+				: m_timeout_id(0)
+				{
+				}
+			~InterruptableTimeout();
+			void reset(guint timeout_millis);
+			void cancel();
+			sigc::signal<void> signal_timeout;
+		private:
+			static bool callback(InterruptableTimeout*);
+			bool timeout_expired();
+			guint m_timeout_id;
+		};
+
+
+		class XmlDecoder
+		{
+		public:
+			static const std::string decode(const std::string & source);
+
+		};
 	}
 }
 

@@ -13,6 +13,7 @@
 
 #include "gnote.hpp"
 #include "actionmanager.hpp"
+#include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "utils.hpp"
 
@@ -163,10 +164,9 @@ namespace gnote {
 
 	void Gnote::on_new_note_action()
 	{
-		// TODO
 		try {
 			Note::Ptr new_note = m_manager->create();
-			//new_note->window()->show();
+			new_note->get_window()->show();
 		}
 		catch(const std::exception & e) 
 		{

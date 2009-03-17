@@ -16,28 +16,22 @@
 
 #include "debug.hpp"
 #include "notemanager.hpp"
+#include "notewindow.hpp"
 #include "addinmanager.hpp"
 #include "gnote.hpp"
 #include "trie.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/directory.hpp"
-#include "sharp/foreach.hpp"
 #include "sharp/uuid.hpp"
+#include "sharp/datetime.hpp"
+#include "sharp/foreach.hpp"
 
 namespace gnote {
 
 
 	bool compare_dates(const Note::Ptr & a, const Note::Ptr & b)
 	{
-		GDate * da = a->change_date();
-		GDate * db = b->change_date();
-		if(!da) {
-			return false;
-		}
-		if(!db) {
-			return true;
-		}
-		return (g_date_compare(da, db) < 0);
+		return (a->change_date() > b->change_date());
 	}
 
 	NoteManager::NoteManager(const std::string & directory)
@@ -219,8 +213,7 @@ namespace gnote {
 																links_note_content);
 			links_note->queue_save (Note::CONTENT_CHANGED);
 
-// TODO
-//			start_note->window()->Show ();
+			start_note->get_window()->show();
 		} catch (const std::exception & e) {
 			ERR_OUT("Error creating start notes: %s",
 							e.what());
@@ -487,7 +480,7 @@ namespace gnote {
 			filename = make_new_file_name ();
 
 		Note::Ptr new_note = Note::create_new_note (title, filename, *this);
-		new_note->xml_content() = xml_content;
+		new_note->set_xml_content(xml_content);
 		new_note->signal_renamed().connect(sigc::mem_fun(*this, &NoteManager::on_note_rename));
 		new_note->signal_saved().connect(sigc::mem_fun(*this, &NoteManager::on_note_save));
 
