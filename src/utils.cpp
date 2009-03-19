@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include <boost/format.hpp>
+#include <boost/bind.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/icontheme.h>
@@ -16,22 +17,59 @@
 namespace gnote {
 	namespace utils {
 
-		static void deactivate_menu(Gtk::Menu *menu)
-		{
-			menu->popdown();
-			if(menu->get_attach_widget()) {
-				menu->get_attach_widget()->set_state(Gtk::STATE_NORMAL);
+		namespace {
+			void get_menu_position (Gtk::Menu * menu,
+															int & x,
+															int & y,
+															bool & push_in)
+			{
+				if (menu->get_attach_widget() == NULL ||
+						menu->get_attach_widget()->get_window() == NULL) {
+					// Prevent null exception in weird cases
+					x = 0;
+					y = 0;
+					push_in = true;
+					return;
+				}
+			
+				menu->get_attach_widget()->get_window()->get_origin(x, y);
+				x += menu->get_attach_widget()->get_allocation().get_x();
+				
+				Gtk::Requisition menu_req = menu->size_request();
+				if (y + menu_req.height >= menu->get_attach_widget()->get_screen()->get_height()) {
+					y -= menu_req.height;
+				}
+				else {
+					y += menu->get_attach_widget()->get_allocation().get_height();
+				}
+				
+				push_in = true;
+			}
+
+
+			void deactivate_menu(Gtk::Menu *menu)
+			{
+				menu->popdown();
+				if(menu->get_attach_widget()) {
+					menu->get_attach_widget()->set_state(Gtk::STATE_NORMAL);
+				}
 			}
 		}
 
-		void popup_menu(Gtk::Menu *menu, const GdkEventButton * ev, 
+		void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev)
+		{
+			popup_menu(menu, ev, boost::bind(&get_menu_position, &menu, _1, _2, _3));
+		}
+
+
+		void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev, 
 										Gtk::Menu::SlotPositionCalc calc)
 		{
-			menu->signal_deactivate().connect(sigc::bind(&deactivate_menu, menu));
-			menu->popup(calc, (ev ? ev->button : 0), 
+			menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
+			menu.popup(calc, (ev ? ev->button : 0), 
 									(ev ? ev->time : gtk_get_current_event_time()));
-			if(menu->get_attach_widget()) {
-				menu->get_attach_widget()->set_state(Gtk::STATE_SELECTED);
+			if(menu.get_attach_widget()) {
+				menu.get_attach_widget()->set_state(Gtk::STATE_SELECTED);
 			}
 		}
 
@@ -236,6 +274,33 @@ namespace gnote {
 		}
 
 
+
+
+		const std::string XmlDecoder::decode(const std::string & source)
+		{
+			// TODO there is probably better than a std::string for that.
+			// this will do for now.
+			std::string builder;
+
+			xmlpp::TextReader xml(source);
+
+			while (xml.read ()) {
+				switch (xml.get_node_type()) {
+				case xmlpp::TextReader::Text:
+				case xmlpp::TextReader::Whitespace:
+					builder += xml.get_value();
+					break;
+				default:
+					break;
+				}
+			}
+
+			xml.close ();
+
+			return builder;
+		}
+
+
 		InterruptableTimeout::~InterruptableTimeout()
 		{
 			cancel();
@@ -270,31 +335,55 @@ namespace gnote {
 			return false;
 		}
 
-
-
-		const std::string XmlDecoder::decode(const std::string & source)
+		ToolMenuButton::ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
+																	 const Glib::ustring & label, Gtk::Menu & menu)
+			: Gtk::ToggleToolButton(label)
+			,	m_menu(menu)
 		{
-			// TODO there is probably better than a std::string for that.
-			// this will do for now.
-			std::string builder;
+			set_icon_widget(*manage(new Gtk::Image(stock_image, toolbar.get_icon_size())));
+			property_can_focus().set_value(true);
+			gtk_menu_attach_to_widget(menu.gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
+																NULL);
+//			menu.attach_to_widget(*this);
+			menu.signal_deactivate().connect(sigc::mem_fun(*this, &ToolMenuButton::release_button));
+			show_all();
+		}
 
-			xmlpp::TextReader xml(source);
 
-			while (xml.read ()) {
-				switch (xml.get_node_type()) {
-				case xmlpp::TextReader::Text:
-				case xmlpp::TextReader::Whitespace:
-					builder += xml.get_value();
-					break;
-				default:
-					break;
-				}
+		bool ToolMenuButton::on_button_press_event(GdkEventButton *ev)
+		{
+			popup_menu(m_menu, ev);
+			return true;
+		}
+
+		void ToolMenuButton::on_clicked()
+		{
+			m_menu.select_first(true);
+			popup_menu(m_menu, NULL);
+		}
+
+		bool ToolMenuButton::on_mnemonic_activate(bool group_cycling)
+		{
+			// ToggleButton always grabs focus away from the editor,
+			// so reimplement Widget's version, which only grabs the
+			// focus if we are group cycling.
+			if (!group_cycling) {
+				activate();
+			} 
+			else if (can_focus()) {
+				grab_focus();
 			}
 
-			xml.close ();
-
-			return builder;
+			return true;
 		}
+
+
+		void ToolMenuButton::release_button()
+		{
+			set_active(false);
+		}
+		
+		
 
 	}
 }

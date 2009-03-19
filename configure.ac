@@ -58,6 +58,7 @@ AC_LANG_CPLUSPLUS
 AC_LANG_COMPILER_REQUIRE
 
 PKG_CHECK_MODULES(LIBGLIBMM, [glibmm-2.4])
+PKG_CHECK_MODULES(GTK, [gtk+-2.0])
 PKG_CHECK_MODULES(LIBGTKMM, [gtkmm-2.4 >= $LIBGTKMM_VERSION])
 PKG_CHECK_MODULES(LIBXMLPP, [libxml++-2.6])
 PKG_CHECK_MODULES(GCONF, [gconf-2.0])
@@ -160,6 +161,7 @@ shave
 shave-libtool
 data/Makefile
 data/icons/Makefile
+libtomboy/Makefile
 src/Makefile
 po/Makefile.in
 po/Makefile

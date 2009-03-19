@@ -10,14 +10,19 @@
 #include <gtkmm/image.h>
 #include <gtkmm/menu.h>
 #include <gtkmm/messagedialog.h>
+#include <gtkmm/toggletoolbutton.h>
+#include <gtkmm/toolbar.h>
 
+#include "libtomboy/tomboyutil.h"
 
 namespace gnote {
 	namespace utils {
 
 		Glib::RefPtr<Gdk::Pixbuf> get_icon(const std::string & , int );
 
-		void popup_menu(Gtk::Menu *menu, const GdkEventButton *, Gtk::Menu::SlotPositionCalc calc);
+		
+		void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
+		void popup_menu(Gtk::Menu &menu, const GdkEventButton *, Gtk::Menu::SlotPositionCalc calc);
 
 		void show_help(const std::string & filename, const std::string & link_id,
 									 GdkScreen *screen, Gtk::Window *parent);
@@ -45,6 +50,14 @@ namespace gnote {
 
 		};
 
+		class XmlDecoder
+		{
+		public:
+			static const std::string decode(const std::string & source);
+
+		};
+
+
 		class InterruptableTimeout
 		{
 		public:
@@ -62,13 +75,38 @@ namespace gnote {
 			guint m_timeout_id;
 		};
 
-
-		class XmlDecoder
+		class ForcedPresentWindow 
+			: public Gtk::Window
 		{
 		public:
-			static const std::string decode(const std::string & source);
+			ForcedPresentWindow(const Glib::ustring & title)
+				: Gtk::Window()
+				{
+					set_title(title);
+				}
 
+			void present()
+				{
+					::tomboy_window_present_hardcore(gobj());
+				}
 		};
+
+		class ToolMenuButton
+			: public Gtk::ToggleToolButton
+		{
+		public:
+			ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
+										 const Glib::ustring & label, Gtk::Menu & menu);
+			virtual bool on_button_press_event(GdkEventButton *);
+			virtual void on_clicked();
+			virtual bool on_mnemonic_activate(bool group_cycling);
+
+		private:
+			Gtk::Menu &m_menu;
+			void release_button();				
+		};
+
+
 	}
 }
 

@@ -374,7 +374,7 @@ namespace gnote {
 		if(select_first_item) {
 			m_tray->tray_menu()->select_first(false);
 		}
-		utils::popup_menu(m_tray->tray_menu(), NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
+		utils::popup_menu(*m_tray->tray_menu(), NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
 	}
 
 	TrayIcon::~TrayIcon()
@@ -393,7 +393,7 @@ namespace gnote {
 		DBG_OUT("popup");
 		if(button == 3) {
 			Gtk::Menu *menu = get_right_click_menu();
-			utils::popup_menu(menu, NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
+			utils::popup_menu(*menu, NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
 		}
 	}	
 

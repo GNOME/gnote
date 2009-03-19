@@ -1,5 +1,6 @@
 
 
+INCLUDE = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@LIBXMLPP_CFLAGS@ @GCONF_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\"
@@ -21,8 +22,9 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
 	notemanager.hpp notemanager.cpp \
 	note.hpp note.cpp \
+	notwindow.hpp notewindow.cpp \
 	$(NULL)
 
 gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
 	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_REGEX_LIBS@ \
-	-luuid
+	-luuid -L$(top_builddir)/libtomboy -ltomboy

@@ -62,7 +62,7 @@ public:
 		{
 			return *m_data;
 		}
-	Glib::RefPtr<Gtk::TextBuffer> buffer() const
+	const Glib::RefPtr<NoteBuffer> & buffer() const
 		{
 			return m_buffer;
 		}
@@ -167,7 +167,7 @@ public:
 		{
 			return m_buffer;
 		}
-	const Glib::RefPtr<Gtk::TextBuffer> get_buffer();
+	const Glib::RefPtr<NoteBuffer> & get_buffer();
 	bool has_window() const 
 		{ 
 			return (m_window != NULL); 

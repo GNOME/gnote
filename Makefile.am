@@ -9,4 +9,4 @@ DISTCLEANFILES = intltool-extract \
                  intltool-update \
                  po/.intltool-merge-cache
 
-SUBDIRS = data src po
+SUBDIRS = data libtomboy src po

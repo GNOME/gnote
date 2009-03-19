@@ -47,6 +47,7 @@ namespace gnote {
 		Note::Ptr create_with_guid(const std::string & title, std::string & guid);
 		Note::Ptr get_or_create_template_note();
 		static std::string get_note_template_content(const std::string & title);
+		static std::string split_title_from_content (std::string title, std::string & body);
 
 		ChangedHandler signal_note_deleted;
 		ChangedHandler signal_note_added;
@@ -68,7 +69,6 @@ namespace gnote {
 		void on_exiting_event();
 		std::string make_new_file_name() const;
 		std::string make_new_file_name(const std::string & guid) const;
-		static std::string split_title_from_content (std::string title, std::string & body);
 		Note::Ptr create_new_note (std::string title, const std::string & guid);
 		Note::Ptr create_new_note (const std::string & title, const std::string & xml_content, 
 														 const std::string & guid);

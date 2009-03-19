@@ -13,7 +13,7 @@ namespace gnote {
 	class Preferences 
 	{
 	public:
-
+		typedef sigc::signal<void, Preferences*, GConfEntry*> NotifyChangeSignal;
 		static const char *ENABLE_SPELLCHECKING;
 		static const char *ENABLE_WIKIWORDS;
 		static const char *ENABLE_CUSTOM_FONT;
@@ -98,7 +98,7 @@ namespace gnote {
 
 		static void gconf_notify_glue(GConfClient *client, guint cid, GConfEntry *entry,
 																	Preferences * self);
-		sigc::signal<void, Preferences*, GConfEntry*> m_signal_setting_changed;
+		NotifyChangeSignal m_signal_setting_changed;
 	};
 
 

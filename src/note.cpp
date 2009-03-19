@@ -913,7 +913,7 @@ namespace gnote {
 		return m_tag_table;
 	}
 
-	const Glib::RefPtr<Gtk::TextBuffer> Note::get_buffer()
+	const Glib::RefPtr<NoteBuffer> & Note::get_buffer()
 	{
 		if(!m_buffer) {
 			DBG_OUT("Creating buffer for %s", m_data.data().title().c_str());
