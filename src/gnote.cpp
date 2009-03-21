@@ -2,8 +2,6 @@
 
 #include <stdlib.h>
 
-#include <boost/algorithm/string/replace.hpp>
-
 #include <glibmm/thread.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/main.h>
@@ -16,6 +14,7 @@
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "utils.hpp"
+#include "sharp/string.hpp"
 
 int main(int argc, char **argv)
 {
@@ -104,7 +103,7 @@ namespace gnote {
 		const char *s = getenv("HOME");
 		if(s) {
 			home_dir = s;
-			boost::algorithm::replace_first(note_path, "~", home_dir);
+			note_path = sharp::string_replace_first(note_path, "~", home_dir);
 		}
 
 		return note_path;

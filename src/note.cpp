@@ -6,11 +6,7 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
-#include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/find.hpp>
-#include <boost/algorithm/string/regex.hpp>
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/algorithm/string/split.hpp>
 
 #include <libxml++/parsers/textreader.h>
 #include <libxml++/parsers/domparser.h>
@@ -26,6 +22,7 @@
 #include "utils.hpp"
 #include "debug.hpp"
 #include "sharp/exception.hpp"
+#include "sharp/string.hpp"
 #include "sharp/xmlconvert.hpp"
 #include "sharp/xmlwriter.hpp"
 #include "sharp/foreach.hpp"
@@ -688,7 +685,7 @@ namespace gnote {
 	const std::string Note::id() const
 	{
 		// TODO: Store on Note instantiation
-		return boost::replace_first_copy(m_data.data().uri(), "note://gnote/","");
+		return sharp::string_replace_first(m_data.data().uri(), "note://gnote/","");
 	}
 
 
@@ -991,7 +988,7 @@ namespace gnote {
 		} 
 		else {
 			std::vector<std::string> pinned_split;
-			boost::split(pinned_split, old_pinned, boost::is_any_of(" \t\n"));
+			sharp::string_split(pinned_split, old_pinned, " \t\n");
 			foreach(std::string pin, pinned_split) {
 				if (!pin.empty() && (pin != uri())) {
 					new_pinned += pin + " ";
@@ -1269,15 +1266,16 @@ namespace gnote {
 			str(boost::format("<title>%1%</title>") % old_title);
 		std::string titleTagReplacement =
 			str(boost::format("<title>%1%</title>") % new_title);
-		updated_xml = boost::replace_regex_copy(note_xml, boost::regex(titleTagPattern), titleTagReplacement);
+		updated_xml = sharp::string_replace_regex(note_xml, titleTagPattern, titleTagReplacement);
 
 		std::string titleContentPattern =
 			str(boost::format("<note-content([^>]*)>\\s*%1%") % old_title);
 		std::string titleContentReplacement =
 			str(boost::format("<note-content$1>%1%") % new_title);
-		boost::replace_regex(updated_xml, boost::regex(titleContentPattern), titleContentReplacement);
+		std::string updated_xml2 = sharp::string_replace_regex(updated_xml, titleContentPattern, 
+																													 titleContentReplacement);
 
-		return updated_xml;
+		return updated_xml2;
 
 	}
 

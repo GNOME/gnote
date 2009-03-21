@@ -1,6 +1,5 @@
 
 
-#include <boost/algorithm/string/replace.hpp>
 #include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
@@ -19,6 +18,7 @@
 #include "tag.hpp"
 #include "preferences.hpp"
 #include "sharp/datetime.hpp"
+#include "sharp/string.hpp"
 
 namespace gnote {
 	bool                      NoteMenuItem::s_static_inited = false;
@@ -115,7 +115,7 @@ namespace gnote {
 	{
 		// Replace underscores ("_") with double-underscores ("__")
 		// so Note menuitems are not created with mnemonics.
-		return boost::replace_all_copy(name, "-", "--");
+		return sharp::string_replace_all(name, "-", "--");
 	}
 
 
@@ -128,7 +128,8 @@ namespace gnote {
 			std::string new_string = _(" (new)");
 			max_length -= new_string.size();
 			display_name = ellipsify (display_name, max_length)	+ new_string;
-		} else {
+		} 
+		else {
 			display_name = ellipsify (display_name, max_length);
 		}
 
@@ -558,8 +559,8 @@ namespace gnote {
 				return "";
 			}
 			
-			boost::algorithm::replace_all(binding, "<", "");
-			boost::algorithm::replace_all(binding, ">", "-");				
+			binding = sharp::string_replace_all(binding, "<", "");
+			binding = sharp::string_replace_all(binding, ">", "-");				
 			
 			return binding;
 		} 

@@ -5,11 +5,6 @@
 #include <boost/format.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
-#include <boost/algorithm/string/case_conv.hpp>
-#include <boost/algorithm/string/classification.hpp>
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/algorithm/string/split.hpp>
-#include <boost/algorithm/string/trim.hpp>
 
 #include <glib.h>
 #include <glibmm/i18n.h>
@@ -24,6 +19,7 @@
 #include "sharp/exception.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/uuid.hpp"
+#include "sharp/string.hpp"
 #include "sharp/datetime.hpp"
 #include "sharp/foreach.hpp"
 
@@ -374,16 +370,16 @@ namespace gnote {
 		if (title.empty())
 			return "";
 
-		boost::trim(title);
+		title = sharp::string_trim(title);
 		if (title.empty())
 			return "";
 
 		std::vector<std::string> lines;
-		boost::split(lines, title, boost::is_any_of("\n\r"));
+		sharp::string_split(lines, title, "\n\r");
 		if (lines.size() > 0) {
 			title = lines [0];
-			boost::trim(title);
-			boost::trim_if(title, boost::is_any_of(".,;"));
+			title = sharp::string_trim(title);
+			title = sharp::string_trim(title, ".,;");
 			if (title.empty())
 				return "";
 		}
@@ -427,7 +423,7 @@ namespace gnote {
 		if (note_template) {
 			// Use the body from the "New Note Template" note
 			std::string xml_content =
-				boost::replace_first_copy(note_template->xml_content(), 
+				sharp::string_replace_first(note_template->xml_content(), 
 														 m_note_template_title,
 														 title);
 // TODO
@@ -541,7 +537,7 @@ namespace gnote {
 	Note::Ptr NoteManager::find(const std::string & linked_title) const
 	{
 		foreach (Note::Ptr note, m_notes) {
-			if (boost::to_lower_copy(note->title()) == boost::to_lower_copy(linked_title))
+			if (sharp::string_to_lower(note->title()) == sharp::string_to_lower(linked_title))
 				return note;
 		}
 		return Note::Ptr();

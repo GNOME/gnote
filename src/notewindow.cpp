@@ -1,11 +1,7 @@
 
 
-#include <boost/algorithm/string/case_conv.hpp>
-#include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/find_iterator.hpp>
 #include <boost/algorithm/string/finder.hpp>
-#include <boost/algorithm/string/split.hpp>
-#include <boost/algorithm/string/trim.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/image.h>
@@ -24,6 +20,7 @@
 #include "recentchanges.hpp"
 #include "actionmanager.hpp"
 #include "sharp/exception.hpp"
+#include "sharp/string.hpp"
 #include "sharp/foreach.hpp"
 
 
@@ -822,10 +819,10 @@ namespace gnote {
 		if (text.empty())
 			return;
 
-		boost::to_lower(text);
+		text = sharp::string_to_lower(text);
 
 		std::vector<std::string> words;
-		boost::split(words, text, boost::is_any_of(" \t\n"));
+		sharp::string_split(words, text, " \t\n");
 
 		m_current_matches =	find_matches_in_buffer(m_note.get_buffer(), words);
 
@@ -941,7 +938,7 @@ namespace gnote {
 
 	std::string NoteFindBar::search_text()
 	{
-		return boost::trim_copy(m_entry.get_text());
+		return sharp::string_trim(m_entry.get_text());
 	}
 
 
@@ -1005,7 +1002,7 @@ namespace gnote {
 		std::string note_text = buffer->get_slice (buffer->begin(),
 																							 buffer->end(),
 																							 false /* hidden_chars */);
-		boost::to_lower(note_text);
+		note_text = sharp::string_to_lower(note_text);
 
 		foreach (const std::string & word, words) {
 			int idx = 0;

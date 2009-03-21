@@ -18,6 +18,7 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
+	sharp/string.hpp sharp/string.cpp \
 	sharp/xmlconvert.hpp sharp/xmlconvert.cpp \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
 	notebuffer.hpp notebuffer.cpp \
