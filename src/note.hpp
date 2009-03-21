@@ -162,7 +162,7 @@ public:
 		{
 			return m_manager;
 		}
-	const NoteTagTable * get_tag_table();
+	const Glib::RefPtr<NoteTagTable> & get_tag_table();
 	bool has_buffer() const
 		{
 			return m_buffer;
@@ -233,7 +233,7 @@ private:
 	NoteManager               &m_manager;
 	NoteWindow                *m_window;
 	Glib::RefPtr<NoteBuffer>   m_buffer;
-	NoteTagTable              *m_tag_table;
+	Glib::RefPtr<NoteTagTable> m_tag_table;
 
 	utils::InterruptableTimeout *m_save_timeout;
 	std::queue<ChildWidgetData> m_child_widget_queue;

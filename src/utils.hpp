@@ -10,8 +10,14 @@
 #include <gtkmm/image.h>
 #include <gtkmm/menu.h>
 #include <gtkmm/messagedialog.h>
+#include <gtkmm/textbuffer.h>
+#include <gtkmm/textiter.h>
+#include <gtkmm/textmark.h>
 #include <gtkmm/toggletoolbutton.h>
 #include <gtkmm/toolbar.h>
+
+
+#include "sharp/exception.hpp"
 
 #include "libtomboy/tomboyutil.h"
 
@@ -55,6 +61,59 @@ namespace gnote {
 		public:
 			static const std::string decode(const std::string & source);
 
+		};
+
+
+		class TextRange
+		{
+		public:
+			TextRange(const Gtk::TextIter & start,
+								const Gtk::TextIter & end) throw(sharp::Exception);
+			const Glib::RefPtr<Gtk::TextBuffer> & buffer() const
+				{
+					return m_buffer;
+				}
+			const std::string text() const
+				{
+					return start().get_text(end());
+				}
+			int length() const
+				{
+					return text().size();
+				}
+			Gtk::TextIter start() const;
+			void set_start(const Gtk::TextIter &);
+			Gtk::TextIter end() const;
+			void set_end(const Gtk::TextIter &);	
+			void erase();
+			void destroy();
+			void remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag);
+		private:
+			Glib::RefPtr<Gtk::TextBuffer> m_buffer;
+			Glib::RefPtr<Gtk::TextMark>   m_start_mark;
+			Glib::RefPtr<Gtk::TextMark>   m_end_mark;
+		};
+
+
+		class TextTagEnumerator
+		{
+		public:
+			TextTagEnumerator(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+												const Glib::RefPtr<Gtk::TextTag> & tag);
+			const TextRange & current() const
+				{
+					return m_range;
+				}
+			bool move_next();
+			void reset()
+				{
+					m_buffer->move_mark(m_mark, m_buffer->begin());
+				}
+		private:
+			Glib::RefPtr<Gtk::TextBuffer> m_buffer;
+			Glib::RefPtr<Gtk::TextTag>    m_tag;
+			Glib::RefPtr<Gtk::TextMark>   m_mark;
+			TextRange                     m_range;
 		};
 
 

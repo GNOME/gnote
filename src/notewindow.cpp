@@ -1053,7 +1053,7 @@ namespace gnote {
 	// menuitem depending on the cursor poition.
 	//
 	NoteTextMenu::NoteTextMenu(const Glib::RefPtr<Gtk::AccelGroup>& accel_group,
-														 const Glib::RefPtr<NoteBuffer> & buffer, UndoManager* undo_manager)
+														 const Glib::RefPtr<NoteBuffer> & buffer, UndoManager & undo_manager)
 		: Gtk::Menu()
 		, m_buffer(buffer)
 		, m_undo_manager(undo_manager)
@@ -1071,34 +1071,33 @@ namespace gnote {
 		, m_increase_indent(Gtk::Stock::INDENT)
 		, m_decrease_indent(Gtk::Stock::UNINDENT)
 		{
-			if (undo_manager) {
-				m_undo = manage(new Gtk::ImageMenuItem (Gtk::Stock::UNDO));
-				m_undo->set_accel_group(accel_group);
-				m_undo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_clicked));
-				m_undo->add_accelerator ("activate", accel_group,
+			m_undo = manage(new Gtk::ImageMenuItem (Gtk::Stock::UNDO));
+			m_undo->set_accel_group(accel_group);
+			m_undo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_clicked));
+			m_undo->add_accelerator ("activate", accel_group,
 															 GDK_Z,
 															 Gdk::CONTROL_MASK,
 															 Gtk::ACCEL_VISIBLE);
-				m_undo->show();
-				append(*m_undo);
+			m_undo->show();
+			append(*m_undo);
 
-				m_redo = manage(new Gtk::ImageMenuItem (Gtk::Stock::REDO));
-				m_redo->set_accel_group(accel_group);
-				m_redo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::redo_clicked));
-				m_redo->add_accelerator ("activate", accel_group,
-				                     GDK_Z, (Gdk::CONTROL_MASK |
-																		 Gdk::SHIFT_MASK),
-																Gtk::ACCEL_VISIBLE);
-				m_redo->show();
-				append(*m_redo);
+			m_redo = manage(new Gtk::ImageMenuItem (Gtk::Stock::REDO));
+			m_redo->set_accel_group(accel_group);
+			m_redo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::redo_clicked));
+			m_redo->add_accelerator ("activate", accel_group,
+															 GDK_Z, (Gdk::CONTROL_MASK |
+																			 Gdk::SHIFT_MASK),
+															 Gtk::ACCEL_VISIBLE);
+			m_redo->show();
+			append(*m_redo);
 
-				Gtk::SeparatorMenuItem *undo_spacer = manage(new Gtk::SeparatorMenuItem());
-				append(*undo_spacer);
+			Gtk::SeparatorMenuItem *undo_spacer = manage(new Gtk::SeparatorMenuItem());
+			append(*undo_spacer);
 
-				// Listen to events so we can sensitize and
-				// enable keybinding
-				undo_manager->signal_undo_changed().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_changed));
-			}
+			// Listen to events so we can sensitize and
+			// enable keybinding
+			undo_manager.signal_undo_changed().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_changed));
+
 			Glib::Quark tag_quark("Tag");
 			markup_label(m_bold);
 			m_bold.set_data(tag_quark, (void *)"bold");
@@ -1271,10 +1270,8 @@ namespace gnote {
 
 		refresh_sizing_state ();
 
-		if (m_undo_manager) {
-			m_undo->set_sensitive(m_undo_manager->get_can_undo());
-			m_redo->set_sensitive(m_undo_manager->get_can_redo());
-		}
+		m_undo->set_sensitive(m_undo_manager.get_can_undo());
+		m_redo->set_sensitive(m_undo_manager.get_can_redo());
 
 		m_event_freeze = false;
 	}
@@ -1327,24 +1324,24 @@ namespace gnote {
 
 	void NoteTextMenu::undo_clicked ()
 	{
-		if (m_undo_manager->get_can_undo()) {
+		if (m_undo_manager.get_can_undo()) {
 			DBG_OUT("Running undo...");
-			m_undo_manager->undo();
+			m_undo_manager.undo();
 		}
 	}
 
 	void NoteTextMenu::redo_clicked ()
 	{
-		if (m_undo_manager->get_can_redo()) {
+		if (m_undo_manager.get_can_redo()) {
 			DBG_OUT("Running redo...");
-			m_undo_manager->redo();
+			m_undo_manager.redo();
 		}
 	}
 
 	void NoteTextMenu::undo_changed ()
 	{
-		m_undo->set_sensitive(m_undo_manager->get_can_undo());
-		m_redo->set_sensitive(m_undo_manager->get_can_redo());
+		m_undo->set_sensitive(m_undo_manager.get_can_undo());
+		m_redo->set_sensitive(m_undo_manager.get_can_redo());
 	}
 
 

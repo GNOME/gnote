@@ -9,6 +9,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
+#include <gtkmm/textbuffer.h>
 #include <libxml++/parsers/textreader.h>
 
 #include "utils.hpp"
@@ -300,6 +301,109 @@ namespace gnote {
 			return builder;
 		}
 
+
+		TextRange::TextRange(const Gtk::TextIter & _start,
+												 const Gtk::TextIter & _end) throw(sharp::Exception)
+		{
+			if(_start.get_buffer() != _end.get_buffer()) {
+				throw(sharp::Exception("Start buffer and end buffer do not match"));
+			}
+			m_buffer = _start.get_buffer();
+			m_start_mark = m_buffer->create_mark(_start, true);
+			m_end_mark = m_buffer->create_mark(_end, true);
+		}
+
+		Gtk::TextIter TextRange::start() const
+		{
+			return m_buffer->get_iter_at_mark(m_start_mark);
+		}
+
+
+		void TextRange::set_start(const Gtk::TextIter & value)
+		{
+			m_buffer->move_mark(m_start_mark, value);
+		}
+
+		Gtk::TextIter TextRange::end() const
+		{
+			return m_buffer->get_iter_at_mark(m_end_mark);
+		}
+
+		void TextRange::set_end(const Gtk::TextIter & value)
+		{
+			m_buffer->move_mark(m_end_mark, value);
+		}
+
+		void TextRange::erase()
+		{
+			Gtk::TextIter start_iter = start();
+			Gtk::TextIter end_iter = end();
+			m_buffer->erase(start_iter, end_iter);
+		}
+
+		void TextRange::destroy()
+		{
+			m_buffer->delete_mark(m_start_mark);
+			m_buffer->delete_mark(m_end_mark);
+		}
+
+		void TextRange::remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag)
+		{
+			m_buffer->remove_tag(tag, start(), end());
+		}
+
+
+		TextTagEnumerator::TextTagEnumerator(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+																				 const Glib::RefPtr<Gtk::TextTag> & tag)
+			: m_buffer(buffer)
+			, m_tag(tag)
+			, m_mark(buffer->create_mark(buffer->begin(), true))
+			, m_range(buffer->begin(), buffer->begin())
+		{
+		}
+
+		bool TextTagEnumerator::move_next()
+		{
+			Gtk::TextIter iter = m_buffer->get_iter_at_mark(m_mark);
+
+			if (iter == m_buffer->end()) {
+				m_range.destroy();
+				m_buffer->delete_mark(m_mark);
+				return false;
+			}
+
+			if (!iter.forward_to_tag_toggle(m_tag)) {
+				m_range.destroy();
+				m_buffer->delete_mark(m_mark);
+				return false;
+			}
+
+			if (!iter.begins_tag(m_tag)) {
+				m_buffer->move_mark(m_mark, iter);
+				return move_next();
+			}
+
+			m_range.set_start(iter);
+
+			if (!iter.forward_to_tag_toggle(m_tag)) {
+				m_range.destroy();
+				m_buffer->delete_mark(m_mark);
+				return false;
+			}
+
+			if (!iter.ends_tag(m_tag)) {
+				m_buffer->move_mark(m_mark, iter);
+				return move_next();
+			}
+
+			m_range.set_end(iter);
+
+			m_buffer->move_mark(m_mark, iter);
+
+			return true;
+		}
+
+		
 
 		InterruptableTimeout::~InterruptableTimeout()
 		{

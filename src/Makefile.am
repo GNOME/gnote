@@ -20,6 +20,7 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/xmlconvert.hpp sharp/xmlconvert.cpp \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
+	notebuffer.hpp notebuffer.cpp \
 	notemanager.hpp notemanager.cpp \
 	note.hpp note.cpp \
 	notwindow.hpp notewindow.cpp \

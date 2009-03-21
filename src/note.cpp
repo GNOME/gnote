@@ -893,7 +893,7 @@ namespace gnote {
 		return m_data.data().metadata_change_date();
 	}
 
-	const NoteTagTable * Note::get_tag_table()
+	const Glib::RefPtr<NoteTagTable> & Note::get_tag_table()
 	{
 		if (m_tag_table == NULL) {
 #if FIXED_GTKSPELL
@@ -907,7 +907,7 @@ namespace gnote {
 			// create a new "gtkspell-misspelling"
 			// tag, which fails if one already
 			// exists in the table.
-			m_tag_table = new NoteTagTable();
+			m_tag_table = Glib::RefPtr<NoteTagTable>(new NoteTagTable());
 #endif
 		}
 		return m_tag_table;

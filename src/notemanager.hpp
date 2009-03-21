@@ -5,7 +5,6 @@
 
 #include <string>
 #include <list>
-
 #include <gconf/gconf.h>
 
 #include <sigc++/signal.h>

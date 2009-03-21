@@ -25,7 +25,7 @@ class NoteTextMenu
 {
 public:
 	NoteTextMenu(const Glib::RefPtr<Gtk::AccelGroup>&, 
-							 const Glib::RefPtr<NoteBuffer> & buffer, UndoManager* undo_manager);
+							 const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
 	
 protected:
 	virtual void on_show();
@@ -44,7 +44,7 @@ private:
 	void decrease_indent_clicked();
 
 	Glib::RefPtr<NoteBuffer> m_buffer;
-	UndoManager          *m_undo_manager;
+	UndoManager          &m_undo_manager;
 	bool                  m_event_freeze;
 	Gtk::ImageMenuItem   *m_undo;
 	Gtk::ImageMenuItem   *m_redo;
