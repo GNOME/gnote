@@ -8,6 +8,14 @@
 #include <gtkmm/textbuffer.h>
 #include <gtkmm/texttagtable.h>
 
+namespace sharp {
+	class XmlWriter;
+}
+
+namespace xmlpp {
+	class TextReader;
+}
+
 namespace gnote {
 
 class NoteTag
@@ -21,6 +29,10 @@ public:
 		{ return ""; }
 	Gtk::Widget * get_widget() const
 		{ return NULL; }
+	void write(sharp::XmlWriter &, bool) const
+		{ }
+	void read(xmlpp::TextReader &, bool)
+		{ }
 	Glib::RefPtr<Gtk::TextMark> get_widget_location() const
 		{ return Glib::RefPtr<Gtk::TextMark>(); }
 	void set_widget_location(const Glib::RefPtr<Gtk::TextMark> &)
@@ -57,7 +69,11 @@ public:
 // TODO
 	DepthNoteTag::Ptr get_depth_tag(int depth, PangoDirection direction)
 		{ return DepthNoteTag::Ptr(); }
-	static bool tag_is_serializable(const Glib::RefPtr<Gtk::TextBuffer::Tag> & )
+	static bool is_dynamic_tag_registered(const std::string &)
+		{ return false; }
+	DynamicNoteTag::Ptr create_dynamic_tag(const std::string & )
+		{ return DynamicNoteTag::Ptr(); }
+	static bool tag_is_serializable(const Glib::RefPtr<const Gtk::TextBuffer::Tag> & )
 		{ return false; }
 	static bool tag_is_growable(const Glib::RefPtr<Gtk::TextBuffer::Tag> & )
 		{ return false; }

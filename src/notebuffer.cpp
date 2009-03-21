@@ -5,12 +5,15 @@
 
 #include <pango/pango-bidi-type.h>
 
+#include <libxml++/parsers/textreader.h>
+
 #include "debug.hpp"
 #include "notebuffer.hpp"
 #include "notetag.hpp"
 #include "note.hpp"
 #include "preferences.hpp"
 
+#include "sharp/xmlwriter.hpp"
 #include "sharp/foreach.hpp"
 
 namespace gnote {
@@ -58,7 +61,8 @@ namespace gnote {
 			else {
 				apply_tag(tag, select_start, select_end);
 			}
-		} else {
+		} 
+		else {
 			std::list<Glib::RefPtr<Gtk::TextTag> >::iterator iter = std::find(m_active_tags.begin(), 
 																																	 m_active_tags.end(), tag);
 			if (iter != m_active_tags.end()) {
@@ -93,7 +97,8 @@ namespace gnote {
 
 		if (get_selection_bounds(select_start, select_end)) {
 			remove_tag(tag, select_start, select_end);
-		} else {
+		} 
+		else {
 			std::list<Glib::RefPtr<Gtk::TextTag> >::iterator iter = std::find(m_active_tags.begin(), 
 																																	 m_active_tags.end(), tag);
 			if (iter != m_active_tags.end()) {
@@ -1041,6 +1046,422 @@ namespace gnote {
 		}
 
 		return depth_tag;
+	}
+
+
+	std::string NoteBufferArchiver::serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+	{
+		return serialize(buffer, buffer->begin(), buffer->end());
+	}
+
+
+	std::string NoteBufferArchiver::serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+																						const Gtk::TextIter & start,
+																						const Gtk::TextIter & end)
+	{
+		sharp::XmlWriter xml;
+		
+		serialize(buffer, start, end, xml);
+		std::string serializedBuffer = xml.to_string();
+		// FIXME: there is some sort of attempt to ensure the endline are the
+		// same on all platforms.
+		return serializedBuffer;
+	}
+
+
+	void NoteBufferArchiver::write_tag(const Glib::RefPtr<const Gtk::TextTag> & tag, 
+																		 sharp::XmlWriter & xml, bool start)
+	{
+		NoteTag::ConstPtr note_tag = NoteTag::ConstPtr::cast_dynamic(tag);
+		if (note_tag) {
+			note_tag->write (xml, start);
+		} 
+		else if (NoteTagTable::tag_is_serializable (tag)) {
+			if (start) {
+				xml.write_start_element ("", tag->property_name().get_value(), "");
+			}
+			else {
+				xml.write_end_element ();
+			}
+		}
+	}
+
+	bool NoteBufferArchiver::tag_ends_here (const Glib::RefPtr<const Gtk::TextTag> & tag,
+																					const Gtk::TextIter & iter,
+																					const Gtk::TextIter & next_iter)
+	{
+		return (iter.has_tag (tag) && !next_iter.has_tag (tag)) || next_iter.is_end();
+	}
+
+	
+  // This is taken almost directly from GAIM.  There must be a
+	// better way to do this...
+	void NoteBufferArchiver::serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+																		 const Gtk::TextIter & start,
+																		 const Gtk::TextIter & end, sharp::XmlWriter & xml)
+	{
+		std::stack<Glib::RefPtr<const Gtk::TextTag> > tag_stack;
+		std::stack<Glib::RefPtr<const Gtk::TextTag> > replay_stack;
+		std::stack<Glib::RefPtr<const Gtk::TextTag> > continue_stack;
+
+		Gtk::TextIter iter = start;
+		Gtk::TextIter next_iter = start;
+		next_iter.forward_char();
+
+		bool line_has_depth = false;
+		int prev_depth_line = -1;
+		int prev_depth = -1;
+
+		xml.write_start_element ("", "note-content", "");
+		xml.write_attribute_string ("", "version", "", "0.1");
+
+		// Insert any active tags at start into tag_stack...
+		foreach (const Glib::RefPtr<const Gtk::TextTag> & start_tag, start.get_tags()) {
+			if (!start.toggles_tag (start_tag)) {
+				tag_stack.push (start_tag);
+				write_tag (start_tag, xml, true);
+			}
+		}
+
+		while ((iter != end) && iter.get_char()) {
+			DepthNoteTag::Ptr depth_tag = NoteBuffer::Ptr::cast_static(buffer)->find_depth_tag (iter);
+
+			// If we are at a character with a depth tag we are at the
+			// start of a bulleted line
+			if (depth_tag && iter.starts_line()) {
+				line_has_depth = true;
+
+				if (iter.get_line() == prev_depth_line + 1) {
+					// Line part of existing list
+
+					if (depth_tag->get_depth() == prev_depth) {
+						// Line same depth as previous
+						// Close previous <list-item>
+						xml.write_end_element ();
+
+					}
+					else if (depth_tag->get_depth() > prev_depth) {
+						// Line of greater depth
+						xml.write_start_element ("", "list", "");
+
+						for (int i = prev_depth + 2; i <= depth_tag->get_depth(); i++) {
+							// Start a new nested list
+							xml.write_start_element ("", "list-item", "");
+							xml.write_start_element ("", "list", "");
+						}
+					} 
+					else {
+						// Line of lesser depth
+						// Close previous <list-item>
+						// and nested <list>s
+						xml.write_end_element ();
+
+						for (int i = prev_depth; i > depth_tag->get_depth(); i--) {
+							// Close nested <list>
+							xml.write_end_element ();
+							// Close <list-item>
+							xml.write_end_element ();
+						}
+					}
+				} 
+				else {
+					// Start of new list
+					xml.write_start_element ("", "list", "");
+					for (int i = 1; i <= depth_tag->get_depth(); i++) {
+						xml.write_start_element ("", "list-item", "");
+						xml.write_start_element ("", "list", "");
+					}
+				}
+
+				prev_depth = depth_tag->get_depth();
+
+				// Start a new <list-item>
+				write_tag (depth_tag, xml, true);
+			}
+
+			// Output any tags that begin at the current position
+			foreach (const Glib::RefPtr<Gtk::TextTag> & tag,  iter.get_tags()) {
+				if (iter.begins_tag (tag)) {
+
+					if (!(DepthNoteTag::Ptr::cast_dynamic(tag)) && NoteTagTable::tag_is_serializable(tag)) {
+						write_tag (tag, xml, true);
+						tag_stack.push (tag);
+					}
+				}
+			}
+
+			// Reopen tags that continued across indented lines
+			// or into or out of lines with a depth
+			while (!continue_stack.empty() &&
+						 ((!depth_tag && iter.starts_line ()) || (iter.get_line_offset() == 1)))
+			{
+				Glib::RefPtr<const Gtk::TextTag> continue_tag = continue_stack.top();
+				continue_stack.pop();
+
+				if (!tag_ends_here (continue_tag, iter, next_iter)
+						&& iter.has_tag (continue_tag))
+				{
+					write_tag (continue_tag, xml, true);
+					tag_stack.push (continue_tag);
+				}
+			}
+
+			// Hidden character representing an anchor
+			if (iter.get_char() == 0xFFFC) {
+				DBG_OUT("Got child anchor!!!");
+				if (iter.get_child_anchor()) {
+					const char * serialize = (const char*)(iter.get_child_anchor()->get_data(Glib::Quark("serialize")));
+					if (serialize)
+						xml.write_raw (serialize);
+				}
+				// Line Separator character
+			} 
+			else if (iter.get_char() == 2028) {
+				xml.write_char_entity (2028);
+			} 
+			else if (!depth_tag) {
+				xml.write_string (Glib::ustring(1, (gunichar)iter.get_char()));
+			}
+
+			bool end_of_depth_line = line_has_depth && next_iter.ends_line ();
+
+			bool next_line_has_depth = false;
+			if (iter.get_line() < buffer->get_line_count() - 1) {
+				Gtk::TextIter next_line = buffer->get_iter_at_line(iter.get_line()+1);
+				next_line_has_depth =
+					NoteBuffer::Ptr::cast_static(buffer)->find_depth_tag (next_line);
+			}
+
+			bool at_empty_line = iter.ends_line () && iter.starts_line ();
+
+			if (end_of_depth_line ||
+					(next_line_has_depth && (next_iter.ends_line () || at_empty_line)))
+			{
+				// Close all tags in the tag_stack
+				while (!tag_stack.empty()) {
+					Glib::RefPtr<const Gtk::TextTag> existing_tag;
+					existing_tag = tag_stack.top();
+					tag_stack.pop ();
+
+					// Any tags which continue across the indented
+					// line are added to the continue_stack to be
+					// reopened at the start of the next <list-item>
+					if (!tag_ends_here (existing_tag, iter, next_iter)) {
+						continue_stack.push (existing_tag);
+					}
+
+					write_tag (existing_tag, xml, false);
+				}
+			} 
+			else {
+				foreach (const Glib::RefPtr<Gtk::TextTag> & tag, iter.get_tags()) {
+					if (tag_ends_here (tag, iter, next_iter) &&
+							NoteTagTable::tag_is_serializable(tag) && !(DepthNoteTag::Ptr::cast_dynamic(tag)))
+					{
+						while (!tag_stack.empty()) {
+							Glib::RefPtr<const Gtk::TextTag> existing_tag = tag_stack.top();
+							tag_stack.pop();
+
+							if (!tag_ends_here (existing_tag, iter, next_iter)) {
+								replay_stack.push (existing_tag);
+							}
+
+							write_tag (existing_tag, xml, false);
+						}
+
+						// Replay the replay queue.
+						// Restart any tags that
+						// overlapped with the ended
+						// tag...
+						while (!replay_stack.empty()) {
+							Glib::RefPtr<const Gtk::TextTag> replay_tag = replay_stack.top();
+							replay_stack.pop();
+							tag_stack.push (replay_tag);
+
+							write_tag (replay_tag, xml, true);
+						}
+					}
+				}
+			}
+
+			// At the end of the line record that it
+			// was the last line encountered with a depth
+			if (end_of_depth_line) {
+				line_has_depth = false;
+				prev_depth_line = iter.get_line();
+			}
+
+			// If we are at the end of a line with a depth and the
+			// next line does not have a depth line close all <list>
+			// and <list-item> tags that remain open
+			if (end_of_depth_line && !next_line_has_depth) {
+				for (int i = prev_depth; i > -1; i--) {
+					// Close <list>
+					xml.write_full_end_element ();
+					// Close <list-item>
+					xml.write_full_end_element ();
+				}
+
+				prev_depth = -1;
+			}
+
+			iter.forward_char();
+			next_iter.forward_char();
+		}
+
+		// Empty any trailing tags left in tag_stack..
+		while (!tag_stack.empty()) {
+			Glib::RefPtr<const Gtk::TextTag> tail_tag = tag_stack.top ();
+			tag_stack.pop();
+			write_tag (tail_tag, xml, false);
+		}
+
+		xml.write_end_element (); // </note-content>
+	}
+
+
+	void NoteBufferArchiver::deserialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+																			 const Gtk::TextIter & iter,
+																			 const std::string & content)
+	{
+		xmlpp::TextReader xml((const unsigned char *)content.c_str(), content.size());
+		deserialize(buffer, iter, xml);
+	}
+
+	struct TagStart 
+	{
+		TagStart()
+			: start(0)
+			{}
+		int start;
+		Glib::RefPtr<Gtk::TextTag> tag;
+	};
+
+
+	void NoteBufferArchiver::deserialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+																			 const Gtk::TextIter & start,
+																			 xmlpp::TextReader & xml)
+	{
+		int offset = start.get_offset();
+		std::stack<TagStart> tag_stack;
+		TagStart tag_start;
+
+		NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(buffer->get_tag_table());
+
+		int curr_depth = -1;
+
+		// A stack of boolean values which mark if a
+		// list-item contains content other than another list
+		std::stack<bool> list_stack;
+
+		while (xml.read ()) {
+			Gtk::TextIter insert_at;
+			switch (xml.get_node_type()) {
+			case xmlpp::TextReader::Element:
+				if (xml.get_name() == "note-content")
+					break;
+
+				tag_start = TagStart();
+				tag_start.start = offset;
+
+				if (note_table &&
+						note_table->is_dynamic_tag_registered (xml.get_name())) {
+					tag_start.tag =
+						note_table->create_dynamic_tag (xml.get_name());
+				} 
+				else if (xml.get_name() == "list") {
+					curr_depth++;
+					break;
+				} 
+				else if (xml.get_name() == "list-item") {
+					if (curr_depth >= 0) {
+						if (xml.get_attribute ("dir") == "rtl") {
+							tag_start.tag =
+								note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_RTL);
+						} 
+						else {
+							tag_start.tag =
+								note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_LTR);
+						}
+						list_stack.push (false);
+					} 
+					else {
+						ERR_OUT("</list> tag mismatch");
+					}
+				} 
+				else {
+					tag_start.tag = buffer->get_tag_table()->lookup (xml.get_name());
+				}
+
+				if (NoteTag::Ptr::cast_dynamic(tag_start.tag)) {
+					NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, true);
+				}
+
+				tag_stack.push (tag_start);
+				break;
+			case xmlpp::TextReader::Text:
+			case xmlpp::TextReader::Whitespace:
+			case xmlpp::TextReader::SignificantWhitespace:
+				insert_at = buffer->get_iter_at_offset (offset);
+				buffer->insert (insert_at, xml.get_value());
+
+				offset += xml.get_value().size();
+
+				// If we are inside a <list-item> mark off
+				// that we have encountered some content
+				if (!list_stack.empty()) {
+					list_stack.pop ();
+					list_stack.push (true);
+				}
+
+				break;
+			case xmlpp::TextReader::EndElement:
+				if (xml.get_name() == "note-content")
+					break;
+
+				if (xml.get_name() == "list") {
+					curr_depth--;
+					break;
+				}
+
+				tag_start = tag_stack.top();
+				tag_stack.pop();
+				if (!tag_start.tag)
+					break;
+
+				{
+					Gtk::TextIter apply_start, apply_end;
+					apply_start = buffer->get_iter_at_offset (tag_start.start);
+					apply_end = buffer->get_iter_at_offset (offset);
+
+					if (NoteTag::Ptr::cast_dynamic(tag_start.tag)) {
+						NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, false);
+					}
+
+					// Insert a bullet if we have reached a closing
+					// <list-item> tag, but only if the <list-item>
+					// had content.
+					DepthNoteTag::Ptr depth_tag = DepthNoteTag::Ptr::cast_dynamic(tag_start.tag);
+
+					if (depth_tag && list_stack.top ()) {
+						NoteBuffer::Ptr::cast_dynamic(buffer)->insert_bullet (apply_start,
+																																	depth_tag->get_depth(),
+																																	depth_tag->get_direction());
+						buffer->remove_all_tags (apply_start, apply_start);
+						offset += 2;
+					} 
+					else if (!depth_tag) {
+						buffer->apply_tag (tag_start.tag, apply_start, apply_end);
+					}
+					list_stack.pop();
+				}
+				break;
+			default:
+				DBG_OUT("Unhandled element %d. Value: '%s'",
+								xml.get_node_type(), xml.get_value().c_str());
+				break;
+			}
+		}
 	}
 
 }

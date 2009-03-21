@@ -8,6 +8,7 @@
 
 #include <boost/noncopyable.hpp>
 
+#include <glib.h>
 #include <libxml/xmlwriter.h>
 
 
@@ -33,6 +34,11 @@ namespace sharp {
 				return xmlTextWriterStartElementNS(m_writer, (const xmlChar*)prefix.c_str(), 
 																			 (const xmlChar*)name.c_str(), (const xmlChar*)nsuri.c_str());
 			}
+		int write_full_end_element()
+			{
+				// ???? what is the difference with write_end_element()
+				return xmlTextWriterEndElement(m_writer);
+			}
 		int write_end_element()
 			{
 				return xmlTextWriterEndElement(m_writer);
@@ -48,6 +54,7 @@ namespace sharp {
 			{
 				return xmlTextWriterWriteRaw(m_writer, (const xmlChar*)raw.c_str());
 			}
+		int write_char_entity(gunichar ch);
 		int write_string(const std::string & );
 
 		int close();

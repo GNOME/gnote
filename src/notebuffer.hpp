@@ -15,6 +15,7 @@
 
 #include "undo.hpp"
 #include "notetag.hpp"
+#include "sharp/xmlwriter.hpp"
 
 namespace gnote {
 
@@ -123,20 +124,29 @@ private:
 class NoteBufferArchiver
 {
 public:
-	static std::string serialize(const Glib::RefPtr<Gtk::TextBuffer> & )
-		{
-			return "";
-		}
+	static std::string serialize(const Glib::RefPtr<Gtk::TextBuffer> & );
+	static std::string serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, const Gtk::TextIter &,
+															 const Gtk::TextIter &);
+	static void serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, const Gtk::TextIter &,
+												const Gtk::TextIter &, sharp::XmlWriter & xml);
 	static void deserialize(const Glib::RefPtr<Gtk::TextBuffer> &buffer,
 													const std::string & content)
 		{
 			deserialize(buffer, buffer->begin(), content);
 		}
 	static void deserialize(const Glib::RefPtr<Gtk::TextBuffer> &, const Gtk::TextIter & ,
-													const std::string & )
-		{
-			
-		}
+													const std::string & );
+	static void deserialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+													const Gtk::TextIter & iter, xmlpp::TextReader & xml);
+private:
+
+	static void write_tag(const Glib::RefPtr<const Gtk::TextTag> & tag, sharp::XmlWriter & xml, 
+												bool start);
+	static bool tag_ends_here (const Glib::RefPtr<const Gtk::TextTag> & tag,
+		                         const Gtk::TextIter & iter,
+		                         const Gtk::TextIter & next_iter);
+
+//
 };
 
 
