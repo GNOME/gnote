@@ -312,8 +312,7 @@ namespace gnote {
 	{
 		if(is_text_invalid() && m_buffer) {
 			// Don't create Undo actions during load
-// TODO
-//				m_buffer->Undoer.FreezeUndo ();
+			m_buffer->undoer().freeze_undo ();
 
 			m_buffer->erase(m_buffer->begin(), m_buffer->end());
 
@@ -334,8 +333,7 @@ namespace gnote {
 			m_buffer->place_cursor(cursor);
 
 			// New events should create Undo actions
-// TODO
-//				m_buffer->Undoer.ThawUndo ();
+			m_buffer->undoer().thaw_undo ();
 		}
 	}
 
@@ -677,8 +675,7 @@ namespace gnote {
 		while(!m_child_widget_queue.empty()) {
 			ChildWidgetData & qdata(m_child_widget_queue.front());
 			qdata.widget->show();
-// TODO
-//			m_window->get_editor()->add_child_at_anchor(qdata.widget, qdata.anchor);
+			m_window->editor()->add_child_at_anchor(*qdata.widget, qdata.anchor);
 			m_child_widget_queue.pop();
 		}
 	}
