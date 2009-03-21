@@ -14,6 +14,13 @@
 
 namespace sharp {
 
+
+	inline
+	const xmlChar * to_xmlchar(const std::string & s)
+	{
+		return s.empty() ? NULL : (const xmlChar *)s.c_str();
+	}
+
 	class XmlWriter
 		: public boost::noncopyable
 	{
@@ -31,8 +38,8 @@ namespace sharp {
 			}
 		int write_start_element(const std::string & prefix, const std::string & name, const std::string & nsuri)
 			{
-				return xmlTextWriterStartElementNS(m_writer, (const xmlChar*)prefix.c_str(), 
-																			 (const xmlChar*)name.c_str(), (const xmlChar*)nsuri.c_str());
+				return xmlTextWriterStartElementNS(m_writer, to_xmlchar(prefix), 
+																					 (const xmlChar*)name.c_str(), to_xmlchar(nsuri));
 			}
 		int write_full_end_element()
 			{
@@ -43,12 +50,20 @@ namespace sharp {
 			{
 				return xmlTextWriterEndElement(m_writer);
 			}
+		int write_start_attribute(const std::string & name)
+			{
+				return xmlTextWriterStartAttribute(m_writer, (const xmlChar*)name.c_str());
+			}
 		int write_attribute_string(const std::string & prefix,const std::string & local_name,
 															 const std::string & ns ,const std::string & value)
 			{
-				return xmlTextWriterWriteAttributeNS(m_writer, (const xmlChar*)prefix.c_str(), 
-																				(const xmlChar*)local_name.c_str(),
-																				(const xmlChar*)ns.c_str(), (const xmlChar*)value.c_str());
+				return xmlTextWriterWriteAttributeNS(m_writer, to_xmlchar(prefix), 
+																						 (const xmlChar*)local_name.c_str(),
+																						 to_xmlchar(ns), (const xmlChar*)value.c_str());
+			}
+		int write_end_attribute()
+			{
+				return xmlTextWriterEndAttribute(m_writer);
 			}
 		int write_raw(const std::string & raw)
 			{

@@ -13,6 +13,7 @@
 
 #include <glib.h>
 #include <glibmm/i18n.h>
+#include <gtkmm/main.h>
 
 #include "debug.hpp"
 #include "notemanager.hpp"
@@ -81,8 +82,7 @@ namespace gnote {
 			load_notes ();
 		}
 
-		// TODO
-		//Tomboy.ExitingEvent += on_exiting_event;
+		Gtk::Main::signal_quit().connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event), 1);
 	}
 
 	NoteManager::~NoteManager()
@@ -214,7 +214,8 @@ namespace gnote {
 			links_note->queue_save (Note::CONTENT_CHANGED);
 
 			start_note->get_window()->show();
-		} catch (const std::exception & e) {
+		} 
+		catch (const std::exception & e) {
 			ERR_OUT("Error creating start notes: %s",
 							e.what());
 		}
@@ -224,7 +225,7 @@ namespace gnote {
 	{
 		std::list<std::string> files = sharp::directory_get_files(m_notes_dir, "*.note");
 
-		foreach(std::string file_path, files) {
+		foreach(const std::string & file_path, files) {
 			try {
 				Note::Ptr note = Note::load(file_path, *this);
 				if (note) {
@@ -233,10 +234,9 @@ namespace gnote {
 					m_notes.push_back(note);
 				}
 			} 
-			catch (...) {
-//				Logger.Log ("Error parsing note XML, skipping \"{0}\": {1}",
-//										file_path,
-//										e.Message);
+			catch (const std::exception & e) {
+				ERR_OUT("Error parsing note XML, skipping \"%s\": %s",
+								file_path.c_str(), e.what());
 			}
 		}
 			
@@ -251,15 +251,14 @@ namespace gnote {
 		// Iterating through copy of notes list, because list may be
 		// changed when loading addins.
 		Note::List notesCopy(m_notes);
-		foreach(Note::Ptr note, notesCopy) {
+		foreach(const Note::Ptr & note, notesCopy) {
 
 			m_addin_mgr->LoadAddinsForNote (note);
 
 				// Show all notes that were visible when tomboy was shut down
 			if (note->is_open_on_startup()) {
 				if (startup_notes_enabled) {
-// TODO
-//						note.Window.Show ();
+					note->get_window()->show();
 				}
 				
 				note->set_is_open_on_startup(false);
@@ -282,7 +281,7 @@ namespace gnote {
 		
 	}
 
-	void NoteManager::on_exiting_event()
+	bool NoteManager::on_exiting_event()
 	{
 		// Call ApplicationAddin.Shutdown () on all the known ApplicationAddins
 		// TODO
@@ -302,15 +301,15 @@ namespace gnote {
 		// Use a copy of the notes to prevent bug #510442 (crash on exit
 		// when iterating the notes to save them.
 		Note::List notesCopy(m_notes);
-		foreach (Note::Ptr note, notesCopy) {
+		foreach (const Note::Ptr & note, notesCopy) {
 			// If the note is visible, it will be shown automatically on
 			// next startup
-// TODO
-//				if (note.HasWindow && note.Window.Visible)
-//					note->set_is_open_on_startup(true);
+			if (note->has_window() && note->get_window()->is_visible())
+					note->set_is_open_on_startup(true);
 
 			note->save();
 		}
+		return true;
 	}
 
 	void NoteManager::delete_note(const Note::Ptr & note)

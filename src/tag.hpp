@@ -4,6 +4,8 @@
 #ifndef __TAG_HPP_
 #define __TAG_HPP_
 
+#include <tr1/memory>
+
 namespace gnote {
 
 	class Note;
@@ -11,9 +13,9 @@ namespace gnote {
 	class Tag 
 	{
 	public:
-		typedef boost::shared_ptr<Tag> Ptr;
+		typedef std::tr1::shared_ptr<Tag> Ptr;
 
-		void add_note(Note* n)
+		void add_note(Note* )
 			{ }
 		std::string name()
 			{
@@ -21,7 +23,7 @@ namespace gnote {
 			}
 		std::string normalized_name()
 			{ return ""; }
-		void remove_note(Note* n)
+		void remove_note(Note* )
 			{ }
 
 	};

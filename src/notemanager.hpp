@@ -65,7 +65,7 @@ namespace gnote {
 		void load_notes();
 		bool first_run() const;
 		void create_notes_dir() const;
-		void on_exiting_event();
+		bool on_exiting_event();
 		std::string make_new_file_name() const;
 		std::string make_new_file_name(const std::string & guid) const;
 		Note::Ptr create_new_note (std::string title, const std::string & guid);

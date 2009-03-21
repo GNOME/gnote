@@ -22,6 +22,7 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
 	notebuffer.hpp notebuffer.cpp \
 	notemanager.hpp notemanager.cpp \
+	notetag.hpp notetag.cpp \
 	note.hpp note.cpp \
 	notwindow.hpp notewindow.cpp \
 	$(NULL)
