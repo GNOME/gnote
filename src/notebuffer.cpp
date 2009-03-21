@@ -1324,8 +1324,11 @@ namespace gnote {
 																			 const Gtk::TextIter & iter,
 																			 const std::string & content)
 	{
-		xmlpp::TextReader xml((const unsigned char *)content.c_str(), content.size());
-		deserialize(buffer, iter, xml);
+		if(!content.empty()) {
+			// it looks like an empty string does not really make the cut
+			xmlpp::TextReader xml((const unsigned char *)content.c_str(), content.size());
+			deserialize(buffer, iter, xml);
+		}
 	}
 
 	struct TagStart 

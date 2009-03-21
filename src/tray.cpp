@@ -5,6 +5,7 @@
 
 #include <glibmm/i18n.h>
 #include <gtkmm/box.h>
+#include <gtkmm/main.h>
 #include <gtkmm/menuitem.h>
 #include <gtkmm/stock.h>
 
@@ -54,7 +55,7 @@ namespace gnote {
 	{
 		if(!m_inhibit_activate) {
 			if(m_note) {
-				//m_note->window()->present();
+				m_note->get_window()->present();
 			}
 		}
 	}
@@ -359,8 +360,7 @@ namespace gnote {
 		set(pixbuf);
 		set_tooltip_text(get_tooltip_text());
 		
-		// TODO
-		// 			Tomboy.ExitingEvent += OnExit;
+		Gtk::Main::signal_quit().connect(sigc::mem_fun(*this, &TrayIcon::on_exit), 1);
 		signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::on_activate));
 		signal_popup_menu().connect(sigc::mem_fun(*this, &TrayIcon::on_popup_menu));
 	}
@@ -487,9 +487,10 @@ namespace gnote {
 		(*ActionManager::get_manager())["QuitGNoteAction"]->activate();
 	}
 
-	void TrayIcon::on_exit()
+	bool TrayIcon::on_exit()
 	{
 		set_visible(false);
+		return true;
 	}
 
 	bool TrayIcon::menu_opens_upward()

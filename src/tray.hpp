@@ -84,7 +84,7 @@ public:
 
 	void on_activate();
 	void on_popup_menu(guint button, guint32 activate_time);
-	void on_exit();
+	bool on_exit();
 	bool menu_opens_upward();
 
 	void show_preferences();
