@@ -28,6 +28,7 @@ gnote_SOURCES = gnote.cpp gnote.hpp \
 	note.hpp note.cpp \
 	notewindow.hpp notewindow.cpp \
 	tag.hpp tag.cpp \
+	tagmanager.hpp tagmanager.cpp \
 	$(NULL)
 
 gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \

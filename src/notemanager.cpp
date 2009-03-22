@@ -15,6 +15,7 @@
 #include "notewindow.hpp"
 #include "addinmanager.hpp"
 #include "gnote.hpp"
+#include "tagmanager.hpp"
 #include "trie.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/directory.hpp"
@@ -513,8 +514,7 @@ namespace gnote {
 				buffer->move_mark(buffer->get_insert(), buffer->end());
 			}
 			// Flag this as a template note
-			// TODO
-			Tag::Ptr tag;// = TagManager.GetOrCreateSystemTag (TagManager.TemplateNoteSystemTag);
+			Tag::Ptr tag = TagManager::instance().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 			template_note->add_tag(tag);
 
 			template_note->queue_save(Note::CONTENT_CHANGED);

@@ -7,7 +7,6 @@
 #include <string>
 #include <tr1/memory>
 
-
 namespace gnote {
 
 	class Note;
@@ -63,7 +62,8 @@ namespace gnote {
 		// Returns the number of notes this is currently tagging.
 		// </summary>
 		int popularity() const;
-
+		/// remove all notes. Because the note map is private.
+		void remove_all_notes();
 /////
 
 	private:

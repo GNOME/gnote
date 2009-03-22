@@ -98,7 +98,7 @@ public:
 	typedef sigc::signal<void, const Note::Ptr&, const std::string& > RenamedHandler;
 	typedef sigc::signal<void, const Note::Ptr&>                      SavedHandler;
 	typedef sigc::signal<void, const Note&, const Tag::Ptr&>     TagAddedHandler;
-	typedef sigc::signal<void, const Note&, const Tag::Ptr&>     TagRemovingHandler;	
+	typedef sigc::signal<void, const Note&, const Tag &>         TagRemovingHandler;	
 	typedef sigc::signal<void, const Note&, const std::string&>  TagRemovedHandler;	
 
 	typedef enum {
@@ -124,8 +124,9 @@ public:
 	void save();
 	void queue_save(ChangeType c);
 	void add_tag(const Tag::Ptr &);
+	void remove_tag(Tag &);
 	void remove_tag(const Tag::Ptr &);
-	bool contains_tag(const Tag::Ptr &) const;
+  bool contains_tag(const Tag::Ptr &) const;
 	void add_child_widget(const Glib::RefPtr<Gtk::TextChildAnchor> & child_anchor,
 												Gtk::Widget * widget);
 

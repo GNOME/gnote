@@ -19,6 +19,7 @@
 #include "notemanager.hpp"
 #include "notetag.hpp"
 #include "notewindow.hpp"
+#include "tagmanager.hpp"
 #include "utils.hpp"
 #include "debug.hpp"
 #include "sharp/exception.hpp"
@@ -622,25 +623,30 @@ namespace gnote {
 		}
 	}
 
-	void Note::remove_tag(const Tag::Ptr & tag)
+	void Note::remove_tag(Tag & tag)
 	{
-		if (!tag)
-			throw sharp::Exception ("Note.RemoveTag () called with a null tag.");
-
 		NoteData::TagMap & thetags(m_data.data().tags());
-		NoteData::TagMap::iterator iter = thetags.find(tag->normalized_name());
+		NoteData::TagMap::iterator iter = thetags.find(tag.normalized_name());
 		if (iter == thetags.end())
 			return;
 
 		m_signal_tag_removing(*this, tag);
 
 		thetags.erase(iter);
-		tag->remove_note(*this);
+		tag.remove_note(*this);
 
-		m_signal_tag_removed(*this, tag->normalized_name());
+		m_signal_tag_removed(*this, tag.normalized_name());
 
 		DBG_OUT("Tag removed, queueing save");
 		queue_save(OTHER_DATA_CHANGED);
+	}
+
+
+	void Note::remove_tag(const Tag::Ptr & tag)
+	{
+		if (!tag)
+			throw sharp::Exception ("Note.RemoveTag () called with a null tag.");
+		remove_tag(*tag);
 	}
 		
 	bool Note::contains_tag(const Tag::Ptr & tag) const
@@ -766,8 +772,7 @@ namespace gnote {
 
 		// Remove tags now, since a note with no tags has
 		// no "tags" element in the XML
-// TODO
-		foreach (Tag::Ptr tag, tags()) {
+		foreach (const Tag::Ptr & tag, tags()) {
 			remove_tag(tag);
 		}
 		Glib::ustring name;
@@ -801,10 +806,9 @@ namespace gnote {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = parse_tags (doc2->get_root_node());
 						foreach (std::string tag_str, tag_strings) {
-// TODO
 							DBG_OUT("TODO: create tag %s", tag_str.c_str());
-//							Tag::Ptr tag = TagManager::get_or_create_tag(tag_str);
-//							add_tag(tag);
+							Tag::Ptr tag = TagManager::instance().get_or_create_tag(tag_str);
+							add_tag(tag);
 						}
 					}
 					else {
@@ -1099,10 +1103,9 @@ namespace gnote {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = Note::parse_tags(doc2->get_root_node());
 						foreach (std::string tag_str, tag_strings) {
-// TODO
 							DBG_OUT("TODO: create tag %s", tag_str.c_str());
-//							Tag::Ptr tag = TagManager::get_or_create_tag(tag_str);
-//							add_tag(tag);
+							Tag::Ptr tag = TagManager::instance().get_or_create_tag(tag_str);
+							note->tags()[tag->normalized_name()] = tag;
 						}
 					}
 					else {

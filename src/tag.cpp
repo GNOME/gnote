@@ -5,6 +5,7 @@
 #include "sharp/string.hpp"
 #include "note.hpp"
 #include "tag.hpp"
+#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -66,6 +67,14 @@ namespace gnote {
 	int Tag::popularity() const
 	{
 		return m_notes->size();
+	}
+
+
+	void Tag::remove_all_notes()
+	{
+		foreach (const NoteMap::value_type & value, *m_notes) {
+			value.second->remove_tag(*this);
+		}
 	}
 }
 

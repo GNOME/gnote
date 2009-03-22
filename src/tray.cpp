@@ -16,6 +16,7 @@
 #include "note.hpp"
 #include "notewindow.hpp"
 #include "tag.hpp"
+#include "tagmanager.hpp"
 #include "preferences.hpp"
 #include "sharp/datetime.hpp"
 #include "sharp/string.hpp"
@@ -266,8 +267,8 @@ namespace gnote {
 		days_ago.add_days(-3);
 
 		// Prevent template notes from appearing in the menu
-		//TODO
-		Tag::Ptr template_tag;// = TagManager.GetOrCreateSystemTag (TagManager.TemplateNoteSystemTag);
+		Tag::Ptr template_tag = TagManager::instance()
+			.get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
 		// List the most recently changed notes, any currently
 		// opened notes, and any pinned notes...
