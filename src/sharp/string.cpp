@@ -6,6 +6,7 @@
 
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/regex.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/split.hpp>
@@ -49,6 +50,12 @@ namespace sharp {
 	{
 		return boost::trim_copy_if(source, boost::is_any_of(set_of_char));
 	}
+
+	bool string_starts_with(const std::string & source, const std::string & with)
+	{
+		return boost::starts_with(source, with);
+	}
+
 
 	std::string string_to_lower(const std::string & source)
 	{

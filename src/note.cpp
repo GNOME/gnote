@@ -609,7 +609,7 @@ namespace gnote {
 		if(!tag) {
 			throw sharp::Exception ("Note.AddTag () called with a null tag.");
 		}
-		tag->add_note (this);
+		tag->add_note (*this);
 
 		NoteData::TagMap & thetags(m_data.data().tags());
 		if (thetags.find(tag->normalized_name()) == thetags.end()) {
@@ -635,7 +635,7 @@ namespace gnote {
 		m_signal_tag_removing(*this, tag);
 
 		thetags.erase(iter);
-		tag->remove_note(this);
+		tag->remove_note(*this);
 
 		m_signal_tag_removed(*this, tag->normalized_name());
 
