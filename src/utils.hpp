@@ -34,6 +34,25 @@ namespace gnote {
 									 GdkScreen *screen, Gtk::Window *parent);
 
 
+		class GlobalKeybinder
+		{
+		public:
+			
+			GlobalKeybinder(const Glib::RefPtr<Gtk::AccelGroup> & accel_group)
+				: m_accel_group(accel_group)
+				{
+					m_fake_menu.set_accel_group(accel_group);
+				}
+
+			void add_accelerator(const sigc::slot<void> & , guint, Gdk::ModifierType, 
+													 Gtk::AccelFlags);
+			
+		private:
+			Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
+			Gtk::Menu m_fake_menu;
+		};
+
+
 		class HIGMessageDialog
 			: public Gtk::Dialog 
 		{

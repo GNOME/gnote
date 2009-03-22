@@ -142,7 +142,7 @@ private:
 	NoteFindBar                  *m_find_bar;
 	Gtk::ToolButton              *m_delete_button;
 
-//	GlobalKeybinder               global_keys;
+	utils::GlobalKeybinder       *m_global_keys;
 	utils::InterruptableTimeout  *m_mark_set_timeout;
 	sigc::connection              m_keypress_cid;
 };

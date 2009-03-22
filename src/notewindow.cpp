@@ -29,6 +29,7 @@ namespace gnote {
 	NoteWindow::NoteWindow(Note & note)
 		: ForcedPresentWindow(note.title())
 		, m_note(note)
+		, m_global_keys(NULL)
 	{
 //	this.IconName = "tomboy";
 		set_default_size(450, 360);
@@ -108,18 +109,16 @@ namespace gnote {
 		if (!gtk_key_theme.empty() && (gtk_key_theme == "Emacs"))
 			using_emacs = true;
 
-// TODO
-#if 0
 		// NOTE: Since some of our keybindings are only
 		// available in the context menu, and the context menu
 		// is created on demand, register them with the
 		// global keybinder
-		m_global_keys = new GlobalKeybinder (accel_group);
+		m_global_keys = new utils::GlobalKeybinder (m_accel_group);
 
 		// Close window (Ctrl-W)
 		if (!using_emacs)
-			m_global_keys->add_accelerator (new EventHandler (CloseWindowHandler),
-																			(uint) GDK_W,
+			m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::close_window_handler),
+																			GDK_W,
 																			Gdk::CONTROL_MASK,
 																			Gtk::ACCEL_VISIBLE);
 
@@ -127,37 +126,31 @@ namespace gnote {
 		// Escape can be used to close the FindBar.
 
 		// Close all windows on current Desktop (Ctrl-Q)
-		global_keys.AddAccelerator (new EventHandler (CloseAllWindowsHandler),
-																(uint) Gdk.Key.q,
-																Gdk::CONTROL_MASK,
-																Gtk::AccelFlags.Visible);
+		m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::close_all_windows_handler),
+																	 GDK_Q,
+																	 Gdk::CONTROL_MASK,
+																	 Gtk::ACCEL_VISIBLE);
 
 		// Find Next (Ctrl-G)
-		global_keys.AddAccelerator (new EventHandler (FindNextActivate),
-																(uint) Gdk.Key.g,
-																Gdk::CONTROL_MASK,
-																Gtk::AccelFlags.Visible);
+		m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::find_next_activate),
+																 GDK_G,
+																 Gdk::CONTROL_MASK,
+																 Gtk::ACCEL_VISIBLE);
 
 		// Find Previous (Ctrl-Shift-G)
-		global_keys.AddAccelerator (new EventHandler (FindPreviousActivate),
-																(uint) Gdk.Key.g,
-																(Gdk::CONTROL_MASK |
-																 Gdk::SHIFT_MASK),
-																Gtk::AccelFlags.Visible);
+		m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::find_previous_activate),
+																 GDK_G, (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
+																 Gtk::ACCEL_VISIBLE);
 
 		// Open Help (F1)
-		global_keys.AddAccelerator (new EventHandler (OpenHelpActivate),
-																(uint) Gdk.Key.F1,
-																0,
-																0);
+		m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::open_help_activate),
+																		GDK_F1, (Gdk::ModifierType)0, (Gtk::AccelFlags)0);
 
 		// Create a new note
 		if (!using_emacs)
-			global_keys.AddAccelerator (new EventHandler (CreateNewNote),
-																	(uint) Gdk.Key.n,
-																	Gdk::CONTROL_MASK,
-																	Gtk::AccelFlags.Visible);
-#endif
+			m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::create_new_note),
+																		 GDK_N, Gdk::CONTROL_MASK,
+																		 Gtk::ACCEL_VISIBLE);
 
 		// Have Esc key close the note window
 		if (Preferences::get_preferences()->get<bool>(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE))
@@ -168,28 +161,24 @@ namespace gnote {
 //		Preferences.Client.AddNotify (Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE,
 //																	OnEscapeSettingChanged);
 
-// TODO
-#if 0
 		// Increase Indent
-		global_keys.AddAccelerator (new EventHandler (ChangeDepthRightHandler),
-																(uint) Gdk.Key.Right,
-																Gdk.ModifierType.Mod1Mask,
-																Gtk::AccelFlags.Visible);
+		m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::change_depth_right_handler),
+																	 GDK_Right, Gdk::MOD1_MASK,
+																	 Gtk::ACCEL_VISIBLE);
 
 		// Decrease Indent
-		global_keys.AddAccelerator (new EventHandler (ChangeDepthLeftHandler),
-																(uint) Gdk.Key.Left,
-																Gdk.ModifierType.Mod1Mask,
-																Gtk::AccelFlags.Visible);
-#endif
+		m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::change_depth_left_handler),
+																	 GDK_Left, Gdk::MOD1_MASK,
+																	 Gtk::ACCEL_VISIBLE);
 		add(*box);
-
 	}
+
 
 	NoteWindow::~NoteWindow()
 	{
-		
+		delete m_global_keys;
 	}
+
 
 	bool NoteWindow::on_delete_event(GdkEventAny * /*ev*/)
 	{

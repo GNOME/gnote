@@ -115,6 +115,20 @@ namespace gnote {
 			}
 		}
 
+		void GlobalKeybinder::add_accelerator(const sigc::slot<void> & handler, guint key, 
+																					Gdk::ModifierType modifiers, Gtk::AccelFlags flags)
+		{
+			Gtk::MenuItem *foo = manage(new Gtk::MenuItem ());
+			foo->signal_activate().connect(handler);
+			foo->add_accelerator ("activate",
+			                    m_accel_group,
+			                    key,
+			                    modifiers,
+			                    flags);
+			foo->show ();
+
+			m_fake_menu.append (*foo);
+		}
 
 
 		HIGMessageDialog::HIGMessageDialog(Gtk::Window *parent,
