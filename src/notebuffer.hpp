@@ -53,6 +53,7 @@ public:
 	bool can_make_bulleted_list();
 	bool add_tab();
 	bool remove_tab();
+	bool add_new_line(bool soft_break);
 	bool delete_key_handler();
 	bool backspace_key_handler();
 	void check_selection();
@@ -90,7 +91,6 @@ protected:
 private:
 	void text_insert_event(const Gtk::TextIter & pos, const Glib::ustring & text, int);
 	void range_deleted_event(const Gtk::TextIter &,const Gtk::TextIter &);
-	bool add_new_line(bool soft_break);
 	bool line_needs_bullet(Gtk::TextIter & iter);
 	void augment_selection(Gtk::TextIter &, Gtk::TextIter &);
 	void mark_set_event(const Gtk::TextIter &,const Glib::RefPtr<Gtk::TextBuffer::Mark> &);

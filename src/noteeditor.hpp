@@ -7,7 +7,7 @@
 #include <glibmm/refptr.h>
 #include <gtkmm/textview.h>
 
-#include "notebuffer.hpp"
+#include "preferences.hpp"
 
 namespace gnote {
 
@@ -17,10 +17,25 @@ class NoteEditor
 public:
 	typedef Glib::RefPtr<NoteEditor> Ptr;
 
-	NoteEditor(const NoteBuffer::Ptr &)
+	NoteEditor(const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+	static int default_margin()
 		{
+			return 8;
 		}
 
+protected:
+	virtual void on_drag_data_received (Glib::RefPtr<Gdk::DragContext> & context,
+																			int x, int y,
+																			const Gtk::SelectionData & selection_data,
+																			guint info,	guint time);
+
+private:
+	Pango::FontDescription get_gnome_document_font_description();
+	void on_font_setting_changed (Preferences*, GConfEntry* entry);
+	void update_custom_font_setting();
+	void modify_font_from_string (const std::string & fontString);
+	bool key_pressed (GdkEventKey * ev);
+	bool button_pressed (GdkEventButton * ev);
 };
 
 
