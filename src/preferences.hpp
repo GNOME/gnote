@@ -89,6 +89,10 @@ namespace gnote {
 			{
 				return  m_signal_setting_changed;
 			}
+
+		// this is very hackish. maybe I should just use gconfmm
+		guint add_notify(const char *ns, GConfClientNotifyFunc func, gpointer data);
+		void remove_notify(guint);
 	private:
 		Preferences();
 		Preferences(const Preferences &); // non implemented

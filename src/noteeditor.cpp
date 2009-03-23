@@ -20,10 +20,10 @@ namespace gnote {
 		set_right_margin(default_margin());
 		property_can_default().set_value(true);
 
-// TODO
 		//Set up the GConf client to watch the default document font
-		//	Preferences.Client.AddNotify (DESKTOP_GNOME_INTERFACE_PATH,
-		// OnFontSettingChanged);
+		m_gconf_notify = Preferences::get_preferences()->add_notify(DESKTOP_GNOME_INTERFACE_PATH,
+																																&on_font_setting_changed_gconf,
+																																this);
 
 		// Make sure the cursor position is visible
 		scroll_mark_onscreen (buffer->get_insert());
@@ -52,6 +52,11 @@ namespace gnote {
 		signal_button_press_event().connect(sigc::mem_fun(*this, &NoteEditor::button_pressed));
 	}
 
+	NoteEditor::~NoteEditor()
+	{
+		Preferences::get_preferences()->remove_notify(m_gconf_notify);
+	}
+
 
 	Pango::FontDescription NoteEditor::get_gnome_document_font_description()
 	{
@@ -72,6 +77,14 @@ namespace gnote {
 		// Update the font based on the changed Preference dialog setting.
 		// Also update the font based on the changed GConf GNOME document font setting.
 		//
+	void NoteEditor::on_font_setting_changed_gconf (GConfClient *, 
+																						guint , GConfEntry* entry, gpointer data)
+	{
+		NoteEditor * self = static_cast<NoteEditor*>(data);
+		self->on_font_setting_changed (NULL, entry);
+	}
+
+
 	void NoteEditor::on_font_setting_changed (Preferences*, GConfEntry* entry)
 	{
 		const char * key = gconf_entry_get_key(entry);

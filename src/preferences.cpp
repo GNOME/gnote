@@ -136,4 +136,16 @@ namespace gnote {
 		return i;
 	}
 
+
+	guint Preferences::add_notify(const char *ns, GConfClientNotifyFunc func, gpointer data)
+	{
+		return gconf_client_notify_add(m_client, ns, func, data, NULL, NULL);
+	}
+
+
+	void Preferences::remove_notify(guint cnxid)
+	{
+		gconf_client_notify_remove(m_client, cnxid);
+	}
+
 }
