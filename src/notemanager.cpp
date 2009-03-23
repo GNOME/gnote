@@ -169,7 +169,7 @@ namespace gnote {
 		std::string start_note_content =
 			_("<note-content>"
 				"Start Here\n\n"
-				"<bold>Welcome to Tomboy!</bold>\n\n"
+				"<bold>Welcome to Gnote!</bold>\n\n"
 				"Use this \"Start Here\" note to begin organizing "
 				"your ideas and thoughts.\n\n"
 				"You can create new notes to hold your ideas by "
@@ -187,7 +187,7 @@ namespace gnote {
 
 		std::string links_note_content =
 			_("<note-content>"
-				"Using Links in Tomboy\n\n"
+				"Using Links in Gnote\n\n"
 				"Notes in Tomboy can be linked together by "
 				"highlighting text in the current note and clicking"
 				" the <bold>Link</bold> button above in the toolbar.  "
@@ -206,7 +206,7 @@ namespace gnote {
 			start_note->queue_save (Note::CONTENT_CHANGED);
 			Preferences::get_preferences()->set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
 
-			Note::Ptr links_note = create (_("Using Links in Tomboy"),
+			Note::Ptr links_note = create (_("Using Links in Gnote"),
 																links_note_content);
 			links_note->queue_save (Note::CONTENT_CHANGED);
 
@@ -503,13 +503,11 @@ namespace gnote {
 								get_note_template_content(m_note_template_title));
 					
 			// Select the initial text
-//			NoteBuffer 
-			Glib::RefPtr<Gtk::TextBuffer> buffer = template_note->get_buffer();
-			if(buffer) {
-				Gtk::TextIter iter = buffer->get_iter_at_line_offset(2, 0);
-				buffer->move_mark(buffer->get_selection_bound(), iter);
-				buffer->move_mark(buffer->get_insert(), buffer->end());
-			}
+			Glib::RefPtr<NoteBuffer> buffer = template_note->get_buffer();
+			Gtk::TextIter iter = buffer->get_iter_at_line_offset(2, 0);
+			buffer->move_mark(buffer->get_selection_bound(), iter);
+			buffer->move_mark(buffer->get_insert(), buffer->end());
+
 			// Flag this as a template note
 			Tag::Ptr tag = TagManager::instance().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 			template_note->add_tag(tag);

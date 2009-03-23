@@ -1360,113 +1360,118 @@ namespace gnote {
 		// list-item contains content other than another list
 		std::stack<bool> list_stack;
 
-		while (xml.read ()) {
-			Gtk::TextIter insert_at;
-			switch (xml.get_node_type()) {
-			case xmlpp::TextReader::Element:
-				if (xml.get_name() == "note-content")
-					break;
+		try {
+			while (xml.read ()) {
+				Gtk::TextIter insert_at;
+				switch (xml.get_node_type()) {
+				case xmlpp::TextReader::Element:
+					if (xml.get_name() == "note-content")
+						break;
 
-				tag_start = TagStart();
-				tag_start.start = offset;
+					tag_start = TagStart();
+					tag_start.start = offset;
 
-				if (note_table &&
-						note_table->is_dynamic_tag_registered (xml.get_name())) {
-					tag_start.tag =
-						note_table->create_dynamic_tag (xml.get_name());
-				} 
-				else if (xml.get_name() == "list") {
-					curr_depth++;
-					break;
-				} 
-				else if (xml.get_name() == "list-item") {
-					if (curr_depth >= 0) {
-						if (xml.get_attribute ("dir") == "rtl") {
-							tag_start.tag =
-								note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_RTL);
+					if (note_table &&
+							note_table->is_dynamic_tag_registered (xml.get_name())) {
+						tag_start.tag =
+							note_table->create_dynamic_tag (xml.get_name());
+					} 
+					else if (xml.get_name() == "list") {
+						curr_depth++;
+						break;
+					} 
+					else if (xml.get_name() == "list-item") {
+						if (curr_depth >= 0) {
+							if (xml.get_attribute ("dir") == "rtl") {
+								tag_start.tag =
+									note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_RTL);
+							} 
+							else {
+								tag_start.tag =
+									note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_LTR);
+							}
+							list_stack.push (false);
 						} 
 						else {
-							tag_start.tag =
-								note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_LTR);
+							ERR_OUT("</list> tag mismatch");
 						}
-						list_stack.push (false);
 					} 
 					else {
-						ERR_OUT("</list> tag mismatch");
+						tag_start.tag = buffer->get_tag_table()->lookup (xml.get_name());
 					}
-				} 
-				else {
-					tag_start.tag = buffer->get_tag_table()->lookup (xml.get_name());
-				}
-
-				if (NoteTag::Ptr::cast_dynamic(tag_start.tag)) {
-					NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, true);
-				}
-
-				tag_stack.push (tag_start);
-				break;
-			case xmlpp::TextReader::Text:
-			case xmlpp::TextReader::Whitespace:
-			case xmlpp::TextReader::SignificantWhitespace:
-				insert_at = buffer->get_iter_at_offset (offset);
-				buffer->insert (insert_at, xml.get_value());
-
-				offset += xml.get_value().size();
-
-				// If we are inside a <list-item> mark off
-				// that we have encountered some content
-				if (!list_stack.empty()) {
-					list_stack.pop ();
-					list_stack.push (true);
-				}
-
-				break;
-			case xmlpp::TextReader::EndElement:
-				if (xml.get_name() == "note-content")
-					break;
-
-				if (xml.get_name() == "list") {
-					curr_depth--;
-					break;
-				}
-
-				tag_start = tag_stack.top();
-				tag_stack.pop();
-				if (!tag_start.tag)
-					break;
-
-				{
-					Gtk::TextIter apply_start, apply_end;
-					apply_start = buffer->get_iter_at_offset (tag_start.start);
-					apply_end = buffer->get_iter_at_offset (offset);
 
 					if (NoteTag::Ptr::cast_dynamic(tag_start.tag)) {
-						NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, false);
+						NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, true);
 					}
 
-					// Insert a bullet if we have reached a closing
-					// <list-item> tag, but only if the <list-item>
-					// had content.
-					DepthNoteTag::Ptr depth_tag = DepthNoteTag::Ptr::cast_dynamic(tag_start.tag);
+					tag_stack.push (tag_start);
+					break;
+				case xmlpp::TextReader::Text:
+				case xmlpp::TextReader::Whitespace:
+				case xmlpp::TextReader::SignificantWhitespace:
+					insert_at = buffer->get_iter_at_offset (offset);
+					buffer->insert (insert_at, xml.get_value());
 
-					if (depth_tag && list_stack.top ()) {
-						NoteBuffer::Ptr::cast_dynamic(buffer)->insert_bullet (apply_start,
-																																	depth_tag->get_depth(),
-																																	depth_tag->get_direction());
-						buffer->remove_all_tags (apply_start, apply_start);
-						offset += 2;
-					} 
-					else if (!depth_tag) {
-						buffer->apply_tag (tag_start.tag, apply_start, apply_end);
+					offset += xml.get_value().size();
+
+					// If we are inside a <list-item> mark off
+					// that we have encountered some content
+					if (!list_stack.empty()) {
+						list_stack.pop ();
+						list_stack.push (true);
 					}
-					list_stack.pop();
+
+					break;
+				case xmlpp::TextReader::EndElement:
+					if (xml.get_name() == "note-content")
+						break;
+
+					if (xml.get_name() == "list") {
+						curr_depth--;
+						break;
+					}
+
+					tag_start = tag_stack.top();
+					tag_stack.pop();
+					if (!tag_start.tag)
+						break;
+
+					{
+						Gtk::TextIter apply_start, apply_end;
+						apply_start = buffer->get_iter_at_offset (tag_start.start);
+						apply_end = buffer->get_iter_at_offset (offset);
+
+						if (NoteTag::Ptr::cast_dynamic(tag_start.tag)) {
+							NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, false);
+						}
+
+						// Insert a bullet if we have reached a closing
+						// <list-item> tag, but only if the <list-item>
+						// had content.
+						DepthNoteTag::Ptr depth_tag = DepthNoteTag::Ptr::cast_dynamic(tag_start.tag);
+
+						if (depth_tag && list_stack.top ()) {
+							NoteBuffer::Ptr::cast_dynamic(buffer)->insert_bullet (apply_start,
+																																		depth_tag->get_depth(),
+																																		depth_tag->get_direction());
+							buffer->remove_all_tags (apply_start, apply_start);
+							offset += 2;
+						} 
+						else if (!depth_tag) {
+							buffer->apply_tag (tag_start.tag, apply_start, apply_end);
+						}
+						list_stack.pop();
+					}
+					break;
+				default:
+					DBG_OUT("Unhandled element %d. Value: '%s'",
+									xml.get_node_type(), xml.get_value().c_str());
+					break;
 				}
-				break;
-			default:
-				DBG_OUT("Unhandled element %d. Value: '%s'",
-								xml.get_node_type(), xml.get_value().c_str());
-				break;
 			}
+		}
+		catch(const std::exception & e) {
+			ERR_OUT("Exception, %s", e.what());
 		}
 	}
 
