@@ -361,6 +361,7 @@ namespace gnote {
 	Note::Note(NoteData * _data, const std::string & filepath, NoteManager & _manager)
 		: m_data(_data)
 		, m_filepath(filepath)
+		, m_save_needed(true)
 		, m_is_deleting(false)
 		, m_manager(_manager)
 		, m_window(NULL)
