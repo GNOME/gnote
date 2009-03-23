@@ -63,7 +63,7 @@ namespace gnote {
 
 			int result = dialog.run();
 			if (result == 666) {
-				foreach(Note::Ptr note, notes) {
+				foreach(const Note::Ptr & note, notes) {
 					note->manager().delete_note(note);
 				}
 			}
@@ -308,7 +308,7 @@ namespace gnote {
 
 	void NoteDataBufferSynchronizer::synchronize_buffer()
 	{
-		if(is_text_invalid() && m_buffer) {
+		if(!is_text_invalid() && m_buffer) {
 			// Don't create Undo actions during load
 			m_buffer->undoer().freeze_undo ();
 
@@ -324,7 +324,8 @@ namespace gnote {
 			if (m_data->cursor_position() != 0) {
 				// Move cursor to last-saved position
 				cursor = m_buffer->get_iter_at_offset (m_data->cursor_position());
-			} else {
+			} 
+			else {
 				// Avoid title line
 				cursor = m_buffer->get_iter_at_line(2);
 			}
@@ -367,7 +368,7 @@ namespace gnote {
 		, m_window(NULL)
 		, m_tag_table(NULL)
 	{
-		foreach(NoteData::TagMap::value_type value, _data->tags()) {
+		foreach(const NoteData::TagMap::value_type & value, _data->tags()) {
 			add_tag(value.second);
 		}
 		m_save_timeout = new utils::InterruptableTimeout();
@@ -448,7 +449,7 @@ namespace gnote {
 		m_save_timeout->cancel ();
 		
 		// Remove the note from all the tags
-		foreach(NoteData::TagMap::value_type value, m_data.data().tags()) {
+		foreach(const NoteData::TagMap::value_type & value, m_data.data().tags()) {
 			remove_tag(value.second);
 		}
 
@@ -806,7 +807,7 @@ namespace gnote {
 					if(parser) {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = parse_tags (doc2->get_root_node());
-						foreach (std::string tag_str, tag_strings) {
+						foreach (const std::string & tag_str, tag_strings) {
 							DBG_OUT("TODO: create tag %s", tag_str.c_str());
 							Tag::Ptr tag = TagManager::instance().get_or_create_tag(tag_str);
 							add_tag(tag);
@@ -994,7 +995,7 @@ namespace gnote {
 		else {
 			std::vector<std::string> pinned_split;
 			sharp::string_split(pinned_split, old_pinned, " \t\n");
-			foreach(std::string pin, pinned_split) {
+			foreach(const std::string & pin, pinned_split) {
 				if (!pin.empty() && (pin != uri())) {
 					new_pinned += pin + " ";
 				}
@@ -1021,7 +1022,7 @@ namespace gnote {
 	std::list<Tag::Ptr> Note::tags()
 	{
 		std::list<Tag::Ptr> l;
-		foreach(NoteData::TagMap::value_type val, m_data.data().tags()) {
+		foreach(const NoteData::TagMap::value_type & val, m_data.data().tags()) {
 			l.push_back(val.second);
 		}
 		return l;
@@ -1103,8 +1104,7 @@ namespace gnote {
 					if(parser) {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = Note::parse_tags(doc2->get_root_node());
-						foreach (std::string tag_str, tag_strings) {
-							DBG_OUT("TODO: create tag %s", tag_str.c_str());
+						foreach (const std::string & tag_str, tag_strings) {
 							Tag::Ptr tag = TagManager::instance().get_or_create_tag(tag_str);
 							note->tags()[tag->normalized_name()] = tag;
 						}
@@ -1243,7 +1243,7 @@ namespace gnote {
 
 		if (note.tags().size() > 0) {
 			xml.write_start_element ("", "tags", "");
-			foreach (NoteData::TagMap::value_type val,  note.tags()) {
+			foreach (const NoteData::TagMap::value_type & val,  note.tags()) {
 				xml.write_start_element("", "tag", "");
 				xml.write_string(val.second->name());
 				xml.write_end_element();

@@ -1062,6 +1062,7 @@ namespace gnote {
 		sharp::XmlWriter xml;
 		
 		serialize(buffer, start, end, xml);
+		xml.close();
 		std::string serializedBuffer = xml.to_string();
 		// FIXME: there is some sort of attempt to ensure the endline are the
 		// same on all platforms.
