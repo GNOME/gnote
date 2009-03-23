@@ -449,12 +449,9 @@ namespace gnote {
 		// "Describe..." text so typing will overwrite the body text,
 		//NoteBuffer 
 		Glib::RefPtr<Gtk::TextBuffer> buffer = new_note->get_buffer();
-// TODO this is not supposed to be NULL
-		if(buffer) {
-			Gtk::TextIter iter = buffer->get_iter_at_offset(header.size());
-			buffer->move_mark (buffer->get_selection_bound(), iter);
-			buffer->move_mark (buffer->get_insert(), buffer->end());
-		}
+		Gtk::TextIter iter = buffer->get_iter_at_offset(header.size());
+		buffer->move_mark (buffer->get_selection_bound(), iter);
+		buffer->move_mark (buffer->get_insert(), buffer->end());
 		
 		return new_note;
 	}

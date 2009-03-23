@@ -29,7 +29,8 @@ namespace gnote {
 	
 
 	NoteBuffer::NoteBuffer(const NoteTagTable::Ptr & tags, Note & note)
-		: m_note(note)
+		: Gtk::TextBuffer(tags)
+		, m_note(note)
 	{
 		
 		signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));
@@ -83,7 +84,8 @@ namespace gnote {
 
 		if (get_selection_bounds(select_start, select_end)) {
 			apply_tag(tag, select_start, select_end);
-		} else {
+		} 
+		else {
 			m_active_tags.push_back(tag);
 		}
 	}
@@ -117,7 +119,7 @@ namespace gnote {
 	{
 		// TODO: Is this variables used, or do we just need to
 		// access iter.Tags to work around a bug?
-		foreach (Glib::RefPtr<const Gtk::TextTag> tag, iter.get_tags()) {
+		foreach (const Glib::RefPtr<const Gtk::TextTag> & tag, iter.get_tags()) {
 			DynamicNoteTag::ConstPtr dynamic_tag =  DynamicNoteTag::ConstPtr::cast_dynamic(tag);
 			if (dynamic_tag &&
 					(dynamic_tag->get_element_name() == tag_name)) {

@@ -234,10 +234,6 @@ public:
 			}
 			return *s_instance;
 		}
-	NoteTagTable()
-		{
-			_init_common_tags();
-		}
 	static bool tag_is_serializable(const Glib::RefPtr<const Gtk::TextTag> & );
 	static bool tag_is_growable(const Glib::RefPtr<Gtk::TextTag> & );
 	static bool tag_is_undoable(const Glib::RefPtr<Gtk::TextTag> & );
@@ -250,6 +246,11 @@ public:
 	bool is_dynamic_tag_registered(const std::string &);
 
 protected:
+	NoteTagTable()
+		{
+			_init_common_tags();
+		}
+
 	virtual void on_tag_added(const Glib::RefPtr<Gtk::TextTag> &);
 	virtual void on_tag_removed(const Glib::RefPtr<Gtk::TextTag> &);
 private:

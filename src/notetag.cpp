@@ -20,6 +20,7 @@ namespace gnote {
 	NoteTag::NoteTag(const std::string & tag_name, int flags) throw(sharp::Exception)
 		: Gtk::TextTag(tag_name)
 		, m_element_name(tag_name)
+		, m_widget(NULL)
 		, m_flags(flags | CAN_SERIALIZE | CAN_SPLIT)
 	{
 		if (tag_name.empty()) {
