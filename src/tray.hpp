@@ -50,7 +50,7 @@ private:
 class Tray
 {
 public:
-	Tray(const boost::shared_ptr<NoteManager> &, TrayIcon &);
+	Tray(NoteManager &, TrayIcon &);
 
 	Gtk::Menu * make_tray_notes_menu();
 	Gtk::Menu * tray_menu() 
@@ -59,7 +59,7 @@ public:
 	void remove_recently_changed_notes();
 	void add_recently_changed_notes();
 private:
-	boost::shared_ptr<NoteManager> m_manager;
+	NoteManager & m_manager;
 	TrayIcon & m_trayicon;
 	Gtk::Menu *m_tray_menu;
 	bool       m_menu_added;
@@ -71,7 +71,7 @@ class TrayIcon
 	: public Gtk::StatusIcon
 {
 public:
-	TrayIcon(const boost::shared_ptr<NoteManager> & manager);
+	TrayIcon(NoteManager & manager);
 	~TrayIcon();
 
 	boost::shared_ptr<Tray> tray() const

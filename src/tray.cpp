@@ -160,7 +160,7 @@ namespace gnote {
 		s_static_inited = true;
 	}
 
-	Tray::Tray(const boost::shared_ptr<NoteManager> & manager, TrayIcon & trayicon)
+	Tray::Tray(NoteManager & manager, TrayIcon & trayicon)
 		: m_manager(manager)
 		, m_trayicon(trayicon)
 		, m_menu_added(false)
@@ -272,7 +272,7 @@ namespace gnote {
 
 		// List the most recently changed notes, any currently
 		// opened notes, and any pinned notes...
-		const Note::List & notes = m_manager->get_notes();
+		const Note::List & notes = m_manager.get_notes();
 		for(Note::List::const_iterator iter = notes.begin();
 				iter != notes.end(); ++iter) {
 			Note::Ptr note(*iter);
@@ -309,7 +309,7 @@ namespace gnote {
 			}
 		}
 
-		Note::Ptr start = m_manager->find_by_uri(m_manager->start_note_uri());
+		Note::Ptr start = m_manager.find_by_uri(m_manager.start_note_uri());
 		if (start) {
 			item = Gtk::manage(new NoteMenuItem(start, false));
 			if (menuOpensUpward) {
@@ -351,7 +351,7 @@ namespace gnote {
 		m_recent_notes.push_back(separator);
 	}
 
-	TrayIcon::TrayIcon(const boost::shared_ptr<NoteManager> & manager)
+	TrayIcon::TrayIcon(NoteManager & manager)
 		: Gtk::StatusIcon()
 		, m_tray(new Tray(manager, *this))
 		, m_keybinder(new PrefsKeybinder(manager, *this))

@@ -14,6 +14,9 @@
 #include <gtkmm/stock.h>
 #include <gtkmm/table.h>
 
+#include "gnote.hpp"
+#include "notemanager.hpp"
+#include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "preferences.hpp"
 #include "sharp/propertyeditor.hpp"
@@ -630,14 +633,11 @@ namespace gnote {
 
 		void  PreferencesDialog::open_template_button_clicked()
 		{
-// TODO
-#if 0
-			NoteManager manager = Tomboy.DefaultNoteManager;
-			Note template_note = manager.GetOrCreateTemplateNote ();
+			NoteManager &manager = Gnote::default_note_manager();
+			Note::Ptr template_note = manager.get_or_create_template_note ();
 
 			// Open the template note
-			template_note.Window->show ();
-#endif
+			template_note->get_window()->show ();
 		}
 
 }

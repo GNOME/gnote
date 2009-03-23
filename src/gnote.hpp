@@ -11,13 +11,13 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/statusicon.h>
 
-#include "notemanager.hpp"
 #include "actionmanager.hpp"
 #include "tray.hpp"
 
 namespace gnote {
 
 class PreferencesDialog;
+class NoteManager;
 
 class Gnote
 {
@@ -26,6 +26,10 @@ public:
 	~Gnote();
 	int main(int argc, char **argv);
 	std::string get_note_path(const std::string & override_path);
+	static NoteManager & default_note_manager()
+		{
+			return *s_manager;
+		}
 
 	void setup_global_actions();
 	void start_tray_icon();
@@ -42,8 +46,8 @@ public:
 
 	static std::string conf_dir();
 private:
+	static NoteManager *s_manager;
 	Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
-	boost::shared_ptr<NoteManager> m_manager;
 	bool m_tray_icon_showing;
 	Glib::RefPtr<TrayIcon> m_tray_icon;
 	boost::shared_ptr<Tray> m_tray;

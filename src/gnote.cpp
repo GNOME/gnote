@@ -13,6 +13,7 @@
 #include "actionmanager.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
+#include "recentchanges.hpp"
 #include "utils.hpp"
 #include "sharp/string.hpp"
 
@@ -29,6 +30,8 @@ int main(int argc, char **argv)
 
 namespace gnote {
 
+	NoteManager *Gnote::s_manager = NULL;
+
 	Gnote::Gnote()
 		: m_tray_icon_showing(false)
 		, m_is_panel_applet(false)
@@ -39,6 +42,9 @@ namespace gnote {
 	Gnote::~Gnote()
 	{
 		delete m_prefsdlg;
+// NOTE: this is dangerous. I do it for the sake of cleanup.
+// Safe as long as Gnote is a singleton.
+		delete s_manager;
 	}
 
 
@@ -55,7 +61,7 @@ namespace gnote {
 		m_icon_theme->append_search_path(DATADIR"/gnote/icons");
 
 		std::string note_path = get_note_path(cmd_line.note_path());
-		m_manager.reset(new NoteManager(note_path));
+		s_manager = new NoteManager(note_path);
 
 		// TODO
 		// SyncManager::init()
@@ -112,7 +118,7 @@ namespace gnote {
 	void Gnote::start_tray_icon()
 	{
 		// Create the tray icon and run the main loop
-		m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(m_manager));
+		m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
 		m_tray = m_tray_icon->tray();
 
 		// Give the TrayIcon 2 seconds to appear.  If it
@@ -164,7 +170,7 @@ namespace gnote {
 	void Gnote::on_new_note_action()
 	{
 		try {
-			Note::Ptr new_note = m_manager->create();
+			Note::Ptr new_note = default_note_manager().create();
 			new_note->get_window()->show();
 		}
 		catch(const std::exception & e) 
@@ -255,10 +261,20 @@ namespace gnote {
 
 	void Gnote::open_search_all()
 	{
+		NoteRecentChanges::get_instance(default_note_manager())->present();
 	}
 
 	void Gnote::open_note_sync_window()
 	{
+#if 0
+		// TODO
+		if (sync_dlg == null) {
+			sync_dlg = new SyncDialog ();
+			sync_dlg.Response += OnSyncDialogResponse;
+		}
+
+		sync_dlg.Present 
+#endif
 	}
 
 
@@ -285,6 +301,7 @@ namespace gnote {
 
 	int GnoteCommandLine::execute()
 	{
+		// TODO
 		return 0;
 	}
 
