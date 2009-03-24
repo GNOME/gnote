@@ -1358,7 +1358,8 @@ namespace gnote {
 
 		// A stack of boolean values which mark if a
 		// list-item contains content other than another list
-		std::stack<bool> list_stack;
+    // For some reason, std::stack<bool> cause crashes.
+		std::deque<bool> list_stack;
 
 		try {
 			while (xml.read ()) {
@@ -1390,7 +1391,7 @@ namespace gnote {
 								tag_start.tag =
 									note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_LTR);
 							}
-							list_stack.push (false);
+							list_stack.push_front (false);
 						} 
 						else {
 							ERR_OUT("</list> tag mismatch");
@@ -1417,8 +1418,8 @@ namespace gnote {
 					// If we are inside a <list-item> mark off
 					// that we have encountered some content
 					if (!list_stack.empty()) {
-						list_stack.pop ();
-						list_stack.push (true);
+						list_stack.pop_front ();
+						list_stack.push_front (true);
 					}
 
 					break;
@@ -1450,7 +1451,7 @@ namespace gnote {
 						// had content.
 						DepthNoteTag::Ptr depth_tag = DepthNoteTag::Ptr::cast_dynamic(tag_start.tag);
 
-						if (depth_tag && list_stack.top ()) {
+						if (depth_tag && list_stack.front ()) {
 							NoteBuffer::Ptr::cast_dynamic(buffer)->insert_bullet (apply_start,
 																																		depth_tag->get_depth(),
 																																		depth_tag->get_direction());
@@ -1460,7 +1461,7 @@ namespace gnote {
 						else if (!depth_tag) {
 							buffer->apply_tag (tag_start.tag, apply_start, apply_end);
 						}
-						list_stack.pop();
+						list_stack.pop_front();
 					}
 					break;
 				default:
