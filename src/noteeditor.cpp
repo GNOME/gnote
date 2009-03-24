@@ -3,6 +3,7 @@
 #include "notebuffer.hpp"
 #include "noteeditor.hpp"
 #include "preferences.hpp"
+#include "utils.hpp"
 #include "debug.hpp"
 #include "sharp/string.hpp"
 #include "sharp/foreach.hpp"
@@ -146,7 +147,7 @@ namespace gnote {
 		}
 
 		if (has_url) {
-			Glib::StringArrayHandle uri_list = selection_data.get_uris();
+      utils::UriList uri_list(selection_data);
 			bool more_than_one = false;
 
 			// Place the cursor in the position where the uri was
@@ -161,20 +162,17 @@ namespace gnote {
 
 			Glib::RefPtr<Gtk::TextTag> link_tag = get_buffer()->get_tag_table()->lookup ("link:url");
 
-			foreach (const Glib::ustring & uri, uri_list) {
-				DBG_OUT("Got Dropped URI: %s", uri.c_str());
-				std::string insert = uri;
-// TODO
-#if 0
-				if (uri.IsFile) {
+			foreach (const sharp::Uri & uri, uri_list) {
+				DBG_OUT("Got Dropped URI: %s", uri.to_string().c_str());
+				std::string insert;
+				if (uri.is_file()) {
 					// URL-escape the path in case
 					// there are spaces (bug #303902)
-					insert = System.Uri.EscapeUriString (uri.LocalPath);
+					insert = sharp::Uri::escape_uri_string(uri.local_path());
 				} 
 				else {
-					insert = uri.ToString ();
+					insert = uri.to_string ();
 				}
-#endif
 
 				if (insert.empty() || sharp::string_trim(insert).empty())
 					continue;

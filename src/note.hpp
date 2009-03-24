@@ -247,8 +247,6 @@ private:
 	TagRemovedHandler  m_signal_tag_removed;
 };
 
-
-
 class NoteArchiver
 {
 public:

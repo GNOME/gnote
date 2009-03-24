@@ -427,10 +427,8 @@ namespace gnote {
 			// Use the body from the "New Note Template" note
 			std::string xml_content =
 				sharp::string_replace_first(note_template->xml_content(), 
-														 m_note_template_title,
-														 title);
-// TODO
-//											 XmlEncoder.Encode (title));
+                                    m_note_template_title,
+                                    utils::XmlEncoder::encode (title));
 			return create_new_note (title, xml_content, guid);
 		}
 			
@@ -441,9 +439,8 @@ namespace gnote {
 		std::string header = title + "\n\n";
 		std::string content =
 			boost::str(boost::format("<note-content>%1%%2%</note-content>") %
-								 header % body );
-// TODO
-//										 XmlEncoder.Encode (header) % XmlEncoder.Encode (body));
+								 utils::XmlEncoder::encode (header) 
+                 % utils::XmlEncoder::encode (body));
 		
 		Note::Ptr new_note = create_new_note (title, content, guid);
 		
@@ -525,15 +522,14 @@ namespace gnote {
 		return str(boost::format("<note-content>"
 														 "<note-title>%1%</note-title>\n\n"
 														 "%2%"
-														 "</note-content>") % title
-// TODO
-//			                      XmlEncoder.Encode (title),
+														 "</note-content>") 
+               % utils::XmlEncoder::encode (title)
 							 % _("Describe your new note here."));
 	}
 
 	Note::Ptr NoteManager::find(const std::string & linked_title) const
 	{
-		foreach (Note::Ptr note, m_notes) {
+		foreach (const Note::Ptr & note, m_notes) {
 			if (sharp::string_to_lower(note->title()) == sharp::string_to_lower(linked_title))
 				return note;
 		}
@@ -542,7 +538,7 @@ namespace gnote {
 
 	Note::Ptr NoteManager::find_by_uri(const std::string & uri) const
 	{
-		foreach (Note::Ptr note, m_notes) {
+		foreach (const Note::Ptr & note, m_notes) {
 			if (note->uri() == uri)
 				return note;
 		}
@@ -588,7 +584,7 @@ namespace gnote {
 		}
 		m_title_trie = new TrieTree(false /* !case_sensitive */);
 
-		foreach (Note::Ptr note, m_manager.get_notes()) {
+		foreach (const Note::Ptr & note, m_manager.get_notes()) {
 			m_title_trie->add_keyword (note->title(), note);
 		}
 	}

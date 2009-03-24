@@ -1,6 +1,7 @@
 
 
 #include <iostream>
+#include <algorithm>
 
 #include <boost/format.hpp>
 #include <boost/bind.hpp>
@@ -12,8 +13,13 @@
 #include <gtkmm/textbuffer.h>
 #include <libxml++/parsers/textreader.h>
 
+#include "sharp/xmlwriter.hpp"
+#include "sharp/string.hpp"
+#include "sharp/uri.hpp"
+#include "note.hpp"
 #include "utils.hpp"
 #include "debug.hpp"
+#include "sharp/foreach.hpp"
 
 namespace gnote {
 	namespace utils {
@@ -289,9 +295,85 @@ namespace gnote {
 		}
 
 
+#if 0
+    UriList::UriList(const NoteList & notes)
+    {
+      foreach(const Note::Ptr & note, notes) {
+        push_back(sharp::Uri(note->uri()));
+      }
+    }
+#endif
+
+    void UriList::load_from_string(const std::string & data)
+    {
+      std::vector<std::string> items;
+      sharp::string_split(items, data, "\n");
+      foreach(const std::string & i, items) {
+        if(sharp::string_starts_with(i, "#")) {
+          continue;
+        }
+
+        std::string s = i;
+        if(sharp::string_ends_with(i, "\r")) {
+          s.erase(s.end() - 1, s.end());
+        }
+
+				// Handle evo's broken file urls
+        if(sharp::string_starts_with(s, "file:////")) {
+          s = sharp::string_replace_first(s, "file:////", "file:///");
+        }
+        DBG_OUT("uri = %s", s.c_str());
+        push_back(sharp::Uri(s));
+      }
+    }
+
+    UriList::UriList(const std::string & data)
+    {
+      load_from_string(data);
+    }
+
+    
+    UriList::UriList(const Gtk::SelectionData & selection)
+    {
+      if(selection.get_length() > 0) {
+        load_from_string(selection.get_text());
+      }
+    }
 
 
-		const std::string XmlDecoder::decode(const std::string & source)
+    std::string UriList::to_string()
+    {
+      std::string s;
+      foreach(const sharp::Uri & uri, *this) {
+        s += uri.to_string() + "\r\n";
+      }
+      return s;
+    }
+
+
+    std::list<std::string> UriList::get_local_paths()
+    {
+      std::list<std::string>paths;
+      foreach(const sharp::Uri & uri, *this) {
+        if(uri.is_file()) {
+          paths.push_back(uri.local_path());
+        }
+      }
+      return paths;
+    }
+
+
+    std::string XmlEncoder::encode(const std::string & source)
+    {
+      sharp::XmlWriter xml;
+      xml.write_string(source);
+
+      xml.close();
+      return xml.to_string();
+    }
+
+
+    std::string XmlDecoder::decode(const std::string & source)
 		{
 			// TODO there is probably better than a std::string for that.
 			// this will do for now.

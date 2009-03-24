@@ -56,6 +56,10 @@ namespace sharp {
 		return boost::starts_with(source, with);
 	}
 
+	bool string_ends_with(const std::string & source, const std::string & with)
+	{
+		return boost::ends_with(source, with);
+	}
 
 	std::string string_to_lower(const std::string & source)
 	{

@@ -16,9 +16,8 @@
 #include <gtkmm/toggletoolbutton.h>
 #include <gtkmm/toolbar.h>
 
-
 #include "sharp/exception.hpp"
-
+#include "sharp/uri.hpp"
 #include "libtomboy/tomboyutil.h"
 
 namespace gnote {
@@ -75,10 +74,32 @@ namespace gnote {
 
 		};
 
+
+    class UriList
+      : public std::list<sharp::Uri>
+    {
+    public:
+//      UriList(const NoteList & notes);
+      UriList(const std::string & data);
+      UriList(const Gtk::SelectionData & selection);
+      std::string to_string();
+      std::list<std::string> get_local_paths();
+      
+    private:
+      void load_from_string(const std::string & data);
+      
+    };
+
+    class XmlEncoder
+    {
+    public:
+      static std::string encode(const std::string & source);
+    };
+
 		class XmlDecoder
 		{
 		public:
-			static const std::string decode(const std::string & source);
+			static std::string decode(const std::string & source);
 
 		};
 

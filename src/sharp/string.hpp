@@ -35,6 +35,7 @@ namespace sharp {
 	std::string string_trim(const std::string & source, const char * set_of_char);
 
 	bool string_starts_with(const std::string & source, const std::string & with);
+  bool string_ends_with(const std::string & source, const std::string & with);
 
 	std::string string_to_lower(const std::string & source);
 }
