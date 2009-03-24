@@ -1,5 +1,6 @@
 
 
+#include <sigc++/functors/ptr_fun.h>
 
 #include "preferences.hpp"
 #include "propertyeditor.hpp"
@@ -7,6 +8,23 @@
 
 namespace sharp {
 
+
+  PropertyEditorBase::PropertyEditorBase(const char *key, Gtk::Widget &w)
+    : m_key(key), m_widget(w)
+  {
+    w.set_data(Glib::Quark("sharp::property-editor"), (gpointer)this,
+               &PropertyEditorBase::destroy_notify);
+  }
+
+  PropertyEditorBase::~PropertyEditorBase()
+  {
+  }
+
+  void PropertyEditorBase::destroy_notify(gpointer data)
+  {
+    PropertyEditorBase * self = (PropertyEditorBase*)data;
+    delete self;
+  }
 
 
 	PropertyEditor::PropertyEditor(const char * key, Gtk::Entry &entry)

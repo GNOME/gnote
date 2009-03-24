@@ -15,17 +15,17 @@ namespace sharp {
 	class PropertyEditorBase
 	{
 	public:
+    virtual ~PropertyEditorBase();
 		virtual void setup() = 0;
 
 	protected:
-		PropertyEditorBase(const char *key, Gtk::Widget &w)
-			: m_key(key), m_widget(w)
-			{
-			}
+		PropertyEditorBase(const char *key, Gtk::Widget &w);
 
 		std::string m_key;
 		Gtk::Widget &m_widget;
 		sigc::connection m_connection;
+  private:
+    void static destroy_notify(gpointer data);
 	};
 
 	class PropertyEditor

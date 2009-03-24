@@ -1,5 +1,9 @@
 
 
+#if HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
 
@@ -53,11 +57,11 @@ namespace gnote {
 		notebook->set_border_width(5);
 		notebook->show();
 		
-		notebook->append_page (*make_editing_pane(),
+		notebook->append_page (*manage(make_editing_pane()),
 													 _("Editing"));
 // TODO
 //			if (! (Services.Keybinder is NullKeybinder)) {
-		notebook->append_page (*make_hotkeys_pane(),
+		notebook->append_page (*manage(make_hotkeys_pane()),
 													 _("Hotkeys"));
 //			}
 //		notebook->append_page (make_sync_pane(),
@@ -126,42 +130,40 @@ namespace gnote {
 			// Spell checking...
 
 			#if FIXED_GTKSPELL
-			if (NoteSpellChecker.GtkSpellAvailable) {
-				check = make_check_button (
-				                _("_Spell check while typing"));
-				options_list.PackStart (check, false, false, 0);
+      // TODO when the addins are in
+			if (1) { //(NoteSpellChecker.GtkSpellAvailable) {
+				check = manage(make_check_button (
+                         _("_Spell check while typing")));
+				options_list->pack_start (*check, false, false, 0);
+        peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_SPELLCHECKING, *check);
+        peditor->setup();
 
-				peditor = Services.Factory.CreatePropertyEditorToggleButton (
-				        Preferences.ENABLE_SPELLCHECKING,
-				        check);
-				SetupPropertyEditor (peditor);
-
-				label = make_tip_label (
-				                _("Misspellings will be underlined " +
-				                                   "in red, with correct spelling " +
-				                                   "suggestions shown in the context " +
-				                                   "menu."));
-				options_list.PackStart (label, false, false, 0);
+				label = manage(make_tip_label (
+                         _("Misspellings will be underlined "
+                           "in red, with correct spelling "
+                           "suggestions shown in the context "
+                          "menu.")));
+				options_list->pack_start (*label, false, false, 0);
 			}
 			#endif
 
 
 			// WikiWords...
 
-			check = make_check_button (_("Highlight _WikiWords"));
+			check = manage(make_check_button (_("Highlight _WikiWords")));
 			options_list->pack_start (*check, false, false, 0);
 			peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_WIKIWORDS, *check);
 			peditor->setup();
 
-			label = make_tip_label (
+			label = manage(make_tip_label (
 			                _("Enable this option to highlight "
 												"words <b>ThatLookLikeThis</b>. "
 												"Clicking the word will create a "
-												"note with that name."));
+												"note with that name.")));
 			options_list->pack_start (*label, false, false, 0);
 
 			// Auto bulleted list
-			check = make_check_button (_("Enable auto-_bulleted lists"));
+			check = manage(make_check_button (_("Enable auto-_bulleted lists")));
 			options_list->pack_start (*check, false, false, 0);
 			bullet_peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_AUTO_BULLETED_LISTS, 
 																											 *check);
@@ -169,7 +171,7 @@ namespace gnote {
 
 			// Custom font...
 
-			check = make_check_button (_("Use custom _font"));
+			check = manage(make_check_button (_("Use custom _font")));
 			options_list->pack_start (*check, false, false, 0);
 			font_peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_CUSTOM_FONT, 
 																										 *check);
@@ -179,7 +181,7 @@ namespace gnote {
 			align->show ();
 			options_list->pack_start (*align, false, false, 0);
 
-			font_button = make_font_button();
+			font_button = manage(make_font_button());
 			font_button->set_sensitive(check->get_active());
 			align->add (*font_button);
 
@@ -187,11 +189,11 @@ namespace gnote {
 			
 			// New Note Template
 			// Translators: This is 'New Note' Template, not New 'Note Template'
-			label = make_label (_("New Note Template"));
+			label = manage(make_label (_("New Note Template")));
 			options_list->pack_start (*label, false, false, 0);
 
-			label = make_tip_label (_("Use the new note template to specify the text "
-																"that should be used when creating a new note."));
+			label = manage(make_tip_label (_("Use the new note template to specify the text "
+                                       "that should be used when creating a new note.")));
 			options_list->pack_start (*label, false, false, 0);
 			
 			align = manage(new Gtk::Alignment (0.5f, 0.5f, 0.4f, 1.0f));
@@ -211,7 +213,7 @@ namespace gnote {
 
 	Gtk::Button *PreferencesDialog::make_font_button ()
 	{
-		Gtk::HBox *font_box = new Gtk::HBox (false, 0);
+		Gtk::HBox *font_box = manage(new Gtk::HBox (false, 0));
 		font_box->show ();
 
 		font_face = manage(new Gtk::Label ());
@@ -228,7 +230,7 @@ namespace gnote {
 		font_size->show ();
 		font_box->pack_start (*font_size, false, false, 0);
 
-		Gtk::Button *button = manage(new Gtk::Button ());
+		Gtk::Button *button = new Gtk::Button ();
 		button->signal_clicked().connect(sigc::mem_fun(*this, &PreferencesDialog::on_font_button_clicked));
 		button->add (*font_box);
 		button->show ();
@@ -250,25 +252,25 @@ namespace gnote {
 		sharp::PropertyEditorBool *keybind_peditor;
 		sharp::PropertyEditor *peditor;
 
-		Gtk::VBox* hotkeys_list = manage(new Gtk::VBox (false, 12));
+		Gtk::VBox* hotkeys_list = new Gtk::VBox (false, 12);
 		hotkeys_list->set_border_width(12);
 		hotkeys_list->show ();
 
 
 		// Hotkeys...
 
-		check = make_check_button (_("Listen for _Hotkeys"));
+		check = manage(make_check_button (_("Listen for _Hotkeys")));
 		hotkeys_list->pack_start(*check, false, false, 0);
 
 		keybind_peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_KEYBINDINGS, *check);
 		keybind_peditor->setup();
 
-		label = make_tip_label (
+		label = manage(make_tip_label (
 			_("Hotkeys allow you to quickly access "
 				"your notes from anywhere with a keypress. "
 				"Example Hotkeys: "
 				"<b>&lt;Control&gt;&lt;Shift&gt;F11</b>, "
-				"<b>&lt;Alt&gt;N</b>"));
+				"<b>&lt;Alt&gt;N</b>")));
 		hotkeys_list->pack_start(*label, false, false, 0);
 
 		align = manage(new Gtk::Alignment (0.5f, 0.5f, 0.0f, 1.0f));
@@ -284,7 +286,7 @@ namespace gnote {
 
 		// Show notes menu keybinding...
 
-		label = make_label (_("Show notes _menu"));
+		label = manage(make_label (_("Show notes _menu")));
 		table->attach (*label, 0, 1, 0, 1);
 
 		entry = manage(new Gtk::Entry ());
@@ -300,7 +302,7 @@ namespace gnote {
 
 		// Open Start Here keybinding...
 
-		label = make_label (_("Open \"_Start Here\""));
+		label = manage(make_label (_("Open \"_Start Here\"")));
 		table->attach (*label, 0, 1, 1, 2);
 
 		entry = manage(new Gtk::Entry ());
@@ -315,7 +317,7 @@ namespace gnote {
 
 		// Create new note keybinding...
 
-		label = make_label (_("Create _new note"));
+		label = manage(make_label (_("Create _new note")));
 		table->attach (*label, 0, 1, 2, 3);
 
 		entry = manage(new Gtk::Entry ());
@@ -330,7 +332,7 @@ namespace gnote {
 
 		// Open Search All Notes window keybinding...
 
-		label = make_label (_("Open \"Search _All Notes\""));
+		label = manage(make_label (_("Open \"Search _All Notes\"")));
 		table->attach (*label, 0, 1, 3, 4);
 
 		entry = manage(new Gtk::Entry ());
@@ -350,7 +352,7 @@ namespace gnote {
 	Gtk::Widget *PreferencesDialog::make_sync_pane()
 	{
 #if 0
-		Gtk::VBox *vbox = manage(new Gtk::VBox (false, 0));
+		Gtk::VBox *vbox = new Gtk::VBox (false, 0);
 		vbox->set_spacing(4);
 		vbox->set_border_width(8);
 
@@ -562,7 +564,7 @@ namespace gnote {
 //		if (args.Length > 0)
 //			label_text = String.Format (label_text, args);
 
-		Gtk::Label *label = manage(new Gtk::Label (label_text, true));
+		Gtk::Label *label = new Gtk::Label (label_text, true);
 
 		label->set_use_markup(true);
 		label->set_justify(Gtk::JUSTIFY_LEFT);
@@ -574,9 +576,9 @@ namespace gnote {
 
 	Gtk::CheckButton *PreferencesDialog::make_check_button (const std::string & label_text)
 	{
-		Gtk::Label *label = make_label(label_text);
+		Gtk::Label *label = manage(make_label(label_text));
 		
-		Gtk::CheckButton *check = manage(new Gtk::CheckButton());
+		Gtk::CheckButton *check = new Gtk::CheckButton();
 		check->add(*label);
 		check->show();
 		
@@ -631,14 +633,14 @@ namespace gnote {
 
 
 
-		void  PreferencesDialog::open_template_button_clicked()
-		{
-			NoteManager &manager = Gnote::default_note_manager();
-			Note::Ptr template_note = manager.get_or_create_template_note ();
+  void  PreferencesDialog::open_template_button_clicked()
+  {
+    NoteManager &manager = Gnote::default_note_manager();
+    Note::Ptr template_note = manager.get_or_create_template_note ();
 
-			// Open the template note
-			template_note->get_window()->show ();
-		}
+    // Open the template note
+    template_note->get_window()->show ();
+  }
 
 }
 

@@ -1,5 +1,9 @@
 
 
+#if HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <tr1/functional>
 
 #include <boost/format.hpp>
@@ -897,7 +901,7 @@ namespace gnote {
 	const Glib::RefPtr<NoteTagTable> & Note::get_tag_table()
 	{
 		if (m_tag_table == NULL) {
-#if 1 //FIXED_GTKSPELL
+#if FIXED_GTKSPELL
 			// NOTE: Sharing the same TagTable means
 			// that formatting is duplicated between
 			// buffers.
@@ -1153,6 +1157,7 @@ namespace gnote {
 	void NoteArchiver::write_file(const std::string & _write_file, const NoteData & note)
 	{
 		std::string tmp_file = _write_file + ".tmp";
+    // TODO Xml doc settings
 		sharp::XmlWriter xml(tmp_file); //, XmlEncoder::DocumentSettings);
 		write(xml, note);
 		xml.close ();

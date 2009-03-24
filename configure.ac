@@ -81,6 +81,17 @@ if test "x$PANELAPPLET_SERVER_DIR" = "x" ; then
 fi
 AC_SUBST(PANELAPPLET_SERVER_DIR)
 
+#
+# Check for recent GtkSpell here.  Prior versions require bug workarounds.
+# http://gtkspell.sourceforge.net/
+#
+PKG_CHECK_MODULES(GTKSPELL, gtkspell-2.0 >= 2.0.9, 
+			    [FIXED_GTKSPELL="yes";AC_DEFINE([FIXED_GTKSPELL], [1], [Set if the GtkSpell library is recent enough.])
+			    ], FIXED_GTKSPELL="no")
+AM_CONDITIONAL(FIXED_GTKSPELL, test "$FIXED_GTKSPELL" = "yes")
+
+
+
 BOOST_REQUIRE([$BOOST_VERSION])
 BOOST_BIND
 BOOST_CONVERSION
