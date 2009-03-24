@@ -610,6 +610,8 @@ namespace gnote {
 		, m_note(note)
 		, m_next_button(_("Find _Next"))
 		, m_prev_button(_("_Previous"))
+    , m_entry_changed_timeout(NULL)
+    , m_note_changed_timeout(NULL)
 		, m_shift_key_pressed(false)
 	{
 		set_border_width(2);

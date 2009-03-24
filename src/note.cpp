@@ -377,7 +377,8 @@ namespace gnote {
 
 	Note::~Note()
 	{
-		delete m_save_timeout;
+    delete m_save_timeout;
+    delete m_window;
 	}
 
   /// <summary>
