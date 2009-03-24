@@ -166,8 +166,10 @@ namespace gnote {
 		//string icon_str = Tomboy.TrayIconShowing ?
 		//     Catalog.GetString ("System Tray Icon area") :
 		//     Catalog.GetString ("GNOME Panel");
+
+    // for some reason I have to set the xmlns -- Hub
 		std::string start_note_content =
-			_("<note-content>"
+			_("<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">"
 				"Start Here\n\n"
 				"<bold>Welcome to Gnote!</bold>\n\n"
 				"Use this \"Start Here\" note to begin organizing "
