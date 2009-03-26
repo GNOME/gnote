@@ -18,6 +18,7 @@ gnote_SOURCES = \
 	sharp/xmlconvert.hpp sharp/xmlconvert.cpp \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
 	gnote.cpp gnote.hpp \
+	abstractaddin.hpp abstractaddin.cpp \
 	actionmanager.hpp actionmanager.cpp \
 	utils.hpp utils.cpp \
 	tray.hpp tray.cpp \
@@ -30,6 +31,7 @@ gnote_SOURCES = \
 	notewindow.hpp notewindow.cpp \
 	preferences.hpp preferences.cpp \
 	preferencesdialog.hpp preferencesdialog.cpp \
+	recenttreeview.hpp \
 	recentchanges.hpp recentchanges.cpp \
 	tag.hpp tag.cpp \
 	tagmanager.hpp tagmanager.cpp \
