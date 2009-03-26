@@ -22,7 +22,7 @@ namespace gnote {
 	{
 	public:
 		typedef boost::shared_ptr<NoteManager> Ptr;
-		typedef sigc::signal<void, Note::Ptr> ChangedHandler;
+		typedef sigc::signal<void, const Note::Ptr &> ChangedHandler;
 		
 		NoteManager(const std::string & );
 		NoteManager(const std::string & directory, const std::string & backup);

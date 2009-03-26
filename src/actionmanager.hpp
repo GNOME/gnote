@@ -37,7 +37,10 @@ public:
 	std::list<Gtk::Widget*> get_placeholder_children(const std::string & p);
 	void populate_action_groups();
 	Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n);
-
+  const Glib::RefPtr<Gtk::UIManager> & get_ui()
+    {
+      return m_ui;
+    }
 private:
 	static ActionManager * s_instance;
 	Glib::RefPtr<Gtk::UIManager> m_ui;

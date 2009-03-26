@@ -40,10 +40,45 @@ namespace sharp {
 		return *this;
 	}
 
+  int DateTime::year() const
+  {
+    struct tm result;
+    localtime_r(&m_date.tv_sec, &result);
+    return result.tm_year;
+  }
+
+  int DateTime::day_of_year() const
+  {
+    struct tm result;
+    localtime_r(&m_date.tv_sec, &result);
+    return result.tm_yday;
+  }
+
 	bool DateTime::is_valid() const
 	{
 		return ((m_date.tv_sec != -1) && (m_date.tv_usec != -1));
 	}
+
+  std::string DateTime::_to_string(const char * format, struct tm * t) const
+  {
+    char output[256];
+    strftime(output, sizeof(output), format, t);
+    return output;
+  }
+
+  std::string DateTime::to_string(const char * format) const
+  {
+    struct tm result; 
+    return _to_string(format, localtime_r(&m_date.tv_sec, &result));
+  }
+
+
+  std::string DateTime::to_short_time_string() const
+  {
+    struct tm result;
+    return _to_string("%R", localtime_r(&m_date.tv_sec, &result));
+  }
+
 
 	DateTime DateTime::now()
 	{
@@ -51,6 +86,16 @@ namespace sharp {
 		g_get_current_time(&n);
 		return DateTime(n);
 	}
+
+  int DateTime::compare(const DateTime &a, const DateTime &b)
+  {
+    if(a > b)
+      return +1;
+    if(b > a)
+      return -1;
+    return 0;
+  }
+
 
 	bool DateTime::operator>(const DateTime & dt) const
 	{

@@ -88,6 +88,12 @@ namespace gnote {
 	}
 
 	template<>
+	void Preferences::set<int>(const char *p, const int & v) 
+	{
+		gconf_client_set_int(m_client, p, v, NULL);
+	}
+
+	template<>
 	bool Preferences::get<bool>(const char *p) 
 	{
 		return gconf_client_get_bool(m_client, p, NULL);

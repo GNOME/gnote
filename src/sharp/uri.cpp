@@ -23,6 +23,7 @@ namespace sharp {
   }
 
 
+  /** this is a very minimalistic implementation */
   std::string Uri::escape_uri_string(const std::string &s)
   {
     return string_replace_all(s, " ", "%20");

@@ -1,5 +1,6 @@
 
 
+
 INCLUDE = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@LIBXMLPP_CFLAGS@ @GCONF_CFLAGS@ \
@@ -21,14 +22,15 @@ gnote_SOURCES = \
 	utils.hpp utils.cpp \
 	tray.hpp tray.cpp \
 	debug.hpp debug.cpp \
-	preferences.hpp preferences.cpp \
-	preferencesdialog.hpp preferencesdialog.cpp \
 	notebuffer.hpp notebuffer.cpp \
 	noteeditor.hpp noteeditor.cpp \
 	notemanager.hpp notemanager.cpp \
 	notetag.hpp notetag.cpp \
 	note.hpp note.cpp \
 	notewindow.hpp notewindow.cpp \
+	preferences.hpp preferences.cpp \
+	preferencesdialog.hpp preferencesdialog.cpp \
+	recentchanges.hpp recentchanges.cpp \
 	tag.hpp tag.cpp \
 	tagmanager.hpp tagmanager.cpp \
 	$(NULL)

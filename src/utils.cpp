@@ -16,6 +16,7 @@
 #include "sharp/xmlwriter.hpp"
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
+#include "sharp/datetime.hpp"
 #include "note.hpp"
 #include "utils.hpp"
 #include "debug.hpp"
@@ -120,6 +121,75 @@ namespace gnote {
 				}
 			}
 		}
+
+
+    std::string get_pretty_print_date(const sharp::DateTime & date, bool show_time)
+    {
+      std::string pretty_str;
+      sharp::DateTime now = sharp::DateTime::now();
+      std::string short_time = date.to_short_time_string ();
+
+			if (date.year() == now.year()) {
+				if (date.day_of_year() == now.day_of_year()) {
+					pretty_str = show_time ?
+            str(boost::format(_("Today, %1%")) % short_time) :
+            _("Today");
+        }
+				else if ((date.day_of_year() < now.day_of_year())
+                 && (date.day_of_year() == now.day_of_year() - 1)) {
+					pretty_str = show_time ?
+            str(boost::format(_("Yesterday, %1%")) % short_time) :
+            _("Yesterday");
+        }
+				else if ((date.day_of_year() < now.day_of_year())
+                  && (date.day_of_year() > now.day_of_year() - 6)) {
+					pretty_str = show_time ?
+            str(boost::format(g_dngettext(NULL, "%1% day ago, %2%", 
+                                          "%1% days ago, %2%", 
+                                          now.day_of_year() - date.day_of_year())) 
+                % (now.day_of_year() - date.day_of_year()) % short_time) :
+            str(boost::format(g_dngettext(NULL, "%1% day ago", 
+                                          "%1% days ago",
+                                          now.day_of_year() - date.day_of_year()))
+                % (now.day_of_year() - date.day_of_year()));
+        }
+				else if (date.day_of_year() > now.day_of_year()
+                 && date.day_of_year() == now.day_of_year() + 1) {
+					pretty_str = show_time ?
+            str(boost::format(_("Tomorrow, {0}")) % short_time) :
+            _("Tomorrow");
+        }
+				else if (date.day_of_year() > now.day_of_year()
+                 && date.day_of_year() < now.day_of_year() + 6) {
+					pretty_str = show_time ?
+            str(boost::format(g_dngettext(NULL, 
+                                          "In %1% day, %2%", 
+                                          "In %1% days, %2%",
+                                          date.day_of_year() - now.day_of_year()))
+                % (date.day_of_year() - now.day_of_year()) % short_time) :
+            str(boost::format(g_dngettext(NULL,
+                                          "In %1% day", "In %1% days",
+                                          date.day_of_year() - now.day_of_year()))
+                % (date.day_of_year() - now.day_of_year()));
+        }
+				else {
+					pretty_str = show_time ?
+            date.to_string (_("%B %d, %H:%M %p")) : // "MMMM d, h:mm tt"
+            date.to_string (_("%B %d"));            // "MMMM d"
+        }
+			} 
+      else if (!date.is_valid()) {
+				pretty_str = _("No Date");
+      }
+			else {
+				pretty_str = show_time ?
+          date.to_string (_("%B %d %Y, %H:%M %p")) : // "MMMM d yyyy, h:mm tt"
+          date.to_string (_("%B %d %Y"));            // "MMMM d yyyy"
+      }
+
+			return pretty_str;
+		}
+
 
 		void GlobalKeybinder::add_accelerator(const sigc::slot<void> & handler, guint key, 
 																					Gdk::ModifierType modifiers, Gtk::AccelFlags flags)

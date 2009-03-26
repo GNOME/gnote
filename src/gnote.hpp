@@ -45,10 +45,14 @@ public:
 	void open_note_sync_window();
 
 	static std::string conf_dir();
+  static bool tray_icon_showing()
+    {
+      return s_tray_icon_showing;
+    }
 private:
 	static NoteManager *s_manager;
 	Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
-	bool m_tray_icon_showing;
+	static bool s_tray_icon_showing;
 	Glib::RefPtr<TrayIcon> m_tray_icon;
 	boost::shared_ptr<Tray> m_tray;
 	bool m_is_panel_applet;

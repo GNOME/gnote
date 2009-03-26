@@ -20,6 +20,10 @@
 #include "sharp/uri.hpp"
 #include "libtomboy/tomboyutil.h"
 
+namespace sharp {
+  class DateTime;
+}
+
 namespace gnote {
 	namespace utils {
 
@@ -32,6 +36,7 @@ namespace gnote {
 		void show_help(const std::string & filename, const std::string & link_id,
 									 GdkScreen *screen, Gtk::Window *parent);
 
+    std::string get_pretty_print_date(const sharp::DateTime &, bool show_time);
 
 		class GlobalKeybinder
 		{

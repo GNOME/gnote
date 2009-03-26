@@ -32,9 +32,10 @@ namespace gnote {
 
 	NoteManager *Gnote::s_manager = NULL;
 
+	bool Gnote::s_tray_icon_showing = false;
+
 	Gnote::Gnote()
-		: m_tray_icon_showing(false)
-		, m_is_panel_applet(false)
+		: m_is_panel_applet(false)
 		, m_prefsdlg(NULL)
 	{
 	}
@@ -75,7 +76,7 @@ namespace gnote {
 		// addins. load + init
 
 		if(cmd_line.use_panel_applet()) {
-			m_tray_icon_showing = true;
+			s_tray_icon_showing = true;
 			m_is_panel_applet = true;
 
 			am["CloseWindowAction"]->set_visible(true);
@@ -123,10 +124,10 @@ namespace gnote {
 
 		// Give the TrayIcon 2 seconds to appear.  If it
 		// doesn't by then, open the SearchAllNotes window.
-		m_tray_icon_showing = m_tray_icon->is_embedded() 
+		s_tray_icon_showing = m_tray_icon->is_embedded() 
 			&& m_tray_icon->get_visible();
 			
-		if (!m_tray_icon_showing) {
+		if (!s_tray_icon_showing) {
 			Glib::RefPtr<Glib::TimeoutSource> timeout 
 				= Glib::TimeoutSource::create(2000);
 			timeout->connect(sigc::mem_fun(*this, &Gnote::check_tray_icon_showing));
@@ -138,7 +139,9 @@ namespace gnote {
 
 	bool Gnote::check_tray_icon_showing()
 	{
-		if(!m_tray_icon_showing) {
+    s_tray_icon_showing = m_tray_icon->is_embedded() 
+			&& m_tray_icon->get_visible();
+		if(!s_tray_icon_showing) {
 			ActionManager & am = *ActionManager::get_manager();
 			am["ShowSearchAllNotesAction"]->activate();
 		}
