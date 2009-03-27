@@ -237,7 +237,7 @@ public:
 	static bool tag_is_serializable(const Glib::RefPtr<const Gtk::TextTag> & );
 	static bool tag_is_growable(const Glib::RefPtr<Gtk::TextTag> & );
 	static bool tag_is_undoable(const Glib::RefPtr<Gtk::TextTag> & );
-	static bool tag_is_spell_checkable(const Glib::RefPtr<Gtk::TextTag> & );
+	static bool tag_is_spell_checkable(const Glib::RefPtr<const Gtk::TextTag> & );
 	static bool tag_is_activatable(const Glib::RefPtr<Gtk::TextTag> & );
 	static bool tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & );
 	DepthNoteTag::Ptr get_depth_tag(int depth, PangoDirection direction);

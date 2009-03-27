@@ -335,83 +335,83 @@ namespace gnote {
 		// Font stylings
 
 		tag = NoteTag::create("centered", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_justification().set_value(Gtk::JUSTIFY_CENTER);
+		tag->property_justification() = Gtk::JUSTIFY_CENTER;
 		add (tag);
 
 		tag = NoteTag::create("bold", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_weight().set_value(PANGO_WEIGHT_BOLD);
+		tag->property_weight() = PANGO_WEIGHT_BOLD;
 		add (tag);
 
 		tag = NoteTag::create("italic", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_style().set_value(Pango::STYLE_ITALIC);
+		tag->property_style() = Pango::STYLE_ITALIC;
 		add (tag);
 		
 		tag = NoteTag::create("strikethrough", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_strikethrough().set_value(true);
+		tag->property_strikethrough() = true;
 		add (tag);
 
 		tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_background().set_value("yellow");
+		tag->property_background() = "yellow";
 		add (tag);
 
 		tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
-		tag->property_background().set_value("green");
+		tag->property_background() = "green";
 		tag->set_can_serialize(false);
 		add (tag);
 
 		tag = NoteTag::create("note-title", 0);
-		tag->property_underline().set_value(Pango::UNDERLINE_SINGLE);
+		tag->property_underline() = Pango::UNDERLINE_SINGLE;
 		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_BLUE);
-		tag->property_scale().set_value(Pango::SCALE_XX_LARGE);
+		tag->property_scale() = Pango::SCALE_XX_LARGE;
 		// FiXME: Hack around extra rewrite on open
 		tag->set_can_serialize(false);
 		add (tag);
 			
 		tag = NoteTag::create("related-to", 0);
-		tag->property_scale().set_value(Pango::SCALE_SMALL);
-		tag->property_left_margin().set_value(40);
-		tag->property_editable().set_value(false);
+		tag->property_scale() = Pango::SCALE_SMALL;
+		tag->property_left_margin() = 40;
+		tag->property_editable() = false;
 		add (tag);
 
 		// Used when inserting dropped URLs/text to Start Here
 		tag = NoteTag::create("datetime", 0);
-		tag->property_scale().set_value(Pango::SCALE_SMALL);
-		tag->property_style().set_value(Pango::STYLE_ITALIC);
+		tag->property_scale() = Pango::SCALE_SMALL;
+		tag->property_style() = Pango::STYLE_ITALIC;
 		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_GREY);
 		add (tag);
 
 		// Font sizes
 
 		tag = NoteTag::create("size:huge", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_scale().set_value(Pango::SCALE_XX_LARGE);
+		tag->property_scale() = Pango::SCALE_XX_LARGE;
 		add (tag);
 
 		tag = NoteTag::create("size:large", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_scale().set_value(Pango::SCALE_X_LARGE);
+		tag->property_scale() = Pango::SCALE_X_LARGE;
 		add (tag);
 
 		tag = NoteTag::create("size:normal", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_scale().set_value(Pango::SCALE_MEDIUM);
+		tag->property_scale() = Pango::SCALE_MEDIUM;
 		add (tag);
 
 		tag = NoteTag::create("size:small", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-		tag->property_scale().set_value(Pango::SCALE_SMALL);
+		tag->property_scale() = Pango::SCALE_SMALL;
 		add (tag);
 
 		// Links
 
 		tag = NoteTag::create("link:broken", NoteTag::CAN_ACTIVATE);
-		tag->property_underline().set_value(Pango::UNDERLINE_SINGLE);
+		tag->property_underline() = Pango::UNDERLINE_SINGLE;
 		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_GREY);
 		add (tag);
 
 		tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
-		tag->property_underline().set_value(Pango::UNDERLINE_SINGLE);
+		tag->property_underline() = Pango::UNDERLINE_SINGLE;
 		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_BLUE);
 		add (tag);
 
 		tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
-		tag->property_underline().set_value(Pango::UNDERLINE_SINGLE);
+		tag->property_underline() = Pango::UNDERLINE_SINGLE;
 		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_BLUE);
 		add (tag);
 	}
@@ -445,9 +445,9 @@ namespace gnote {
 	}
 
 
-	bool NoteTagTable::tag_is_spell_checkable(const Glib::RefPtr<Gtk::TextTag> & tag)
+	bool NoteTagTable::tag_is_spell_checkable(const Glib::RefPtr<const Gtk::TextTag> & tag)
 	{
-		NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+		NoteTag::ConstPtr note_tag = NoteTag::ConstPtr::cast_dynamic(tag);
 		if(note_tag) {
 			return note_tag->can_spell_check();
 		}
