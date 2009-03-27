@@ -4,6 +4,7 @@
 INCLUDE = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@LIBXMLPP_CFLAGS@ @GCONF_CFLAGS@ \
+	@GTKSPELL_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\"
 
 bin_PROGRAMS = gnote
@@ -20,9 +21,11 @@ gnote_SOURCES = \
 	gnote.cpp gnote.hpp \
 	abstractaddin.hpp abstractaddin.cpp \
 	actionmanager.hpp actionmanager.cpp \
+	addinmanager.hpp addinmanager.cpp \
 	utils.hpp utils.cpp \
 	tray.hpp tray.cpp \
 	debug.hpp debug.cpp \
+	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \
 	noteeditor.hpp noteeditor.cpp \
 	notemanager.hpp notemanager.cpp \
@@ -35,8 +38,10 @@ gnote_SOURCES = \
 	recentchanges.hpp recentchanges.cpp \
 	tag.hpp tag.cpp \
 	tagmanager.hpp tagmanager.cpp \
+	watchers.hpp watchers.cpp \
 	$(NULL)
 
 gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
 	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_REGEX_LIBS@ \
+	@GTKSPELL_LIBS@ \
 	-luuid -L$(top_builddir)/libtomboy -ltomboy

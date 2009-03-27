@@ -12,7 +12,9 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
+#include "undo.hpp"
 #include "utils.hpp"
+#include "notebuffer.hpp"
 #include "preferences.hpp"
 
 namespace gnote {

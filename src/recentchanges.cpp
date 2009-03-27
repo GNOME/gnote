@@ -254,8 +254,6 @@ namespace gnote {
     column->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
     column->set_resizable(false);
 			
-    const notebooks::NotebookManager::ColumnRecord & column_record(
-      notebooks::NotebookManager::get_column_record());
     renderer = manage(new Gtk::CellRendererPixbuf ());
     column->pack_start (*renderer, false);
     column->set_cell_data_func (*renderer,

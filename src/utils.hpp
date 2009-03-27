@@ -35,7 +35,9 @@ namespace gnote {
 
 		void show_help(const std::string & filename, const std::string & link_id,
 									 GdkScreen *screen, Gtk::Window *parent);
-
+    void show_opening_location_error(Gtk::Window * parent, 
+                                     const std::string & url, 
+                                     const std::string & error);
     std::string get_pretty_print_date(const sharp::DateTime &, bool show_time);
 
 		class GlobalKeybinder

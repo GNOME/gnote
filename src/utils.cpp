@@ -122,6 +122,19 @@ namespace gnote {
 			}
 		}
 
+    void show_opening_location_error(Gtk::Window * parent, 
+                                     const std::string & url, 
+                                     const std::string & error)
+    {
+      std::string message = str(boost::format ("%1%: %2%") % url % error);
+
+      HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
+                              Gtk::MESSAGE_INFO,
+                              Gtk::BUTTONS_OK,
+                              _("Cannot open location"),
+                              message);
+			dialog.run ();
+    }
 
     std::string get_pretty_print_date(const sharp::DateTime & date, bool show_time)
     {

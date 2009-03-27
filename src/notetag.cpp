@@ -192,7 +192,7 @@ namespace gnote {
 			}
 		}
 #endif
-		retval = m_signal_activate(*this, editor, start, end);
+		retval = m_signal_activate(NoteTag::Ptr(this), editor, start, end);
 
 		return retval;
 	}

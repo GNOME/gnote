@@ -33,13 +33,24 @@ namespace sharp {
 	{
 		return boost::replace_regex_copy(source, boost::regex(regex), with);
 	}
-
+  
+  bool string_match_iregex(const std::string & source, const std::string & regex)  
+  {
+    return boost::regex_match(boost::to_lower_copy(source), 
+                              boost::regex(regex,  
+                                           boost::regex_constants::icase));
+  }
 
 	void string_split(std::vector<std::string> & split, const std::string & source,
 										const char * delimiters)
 	{
 		boost::split(split, source, boost::is_any_of(delimiters));
 	}
+
+  std::string string_substring(const std::string & source, int start)
+  {
+    return std::string(source.begin() + start, source.end());
+  }
 
 	std::string string_trim(const std::string & source)
 	{
@@ -60,6 +71,14 @@ namespace sharp {
 	{
 		return boost::ends_with(source, with);
 	}
+
+  int string_last_index_of(const std::string & source, const std::string & search)
+  {
+    boost::iterator_range<std::string::const_iterator> iter
+      = boost::find_last(source, search);
+
+    return iter.begin() - source.begin();
+  }
 
 	std::string string_to_lower(const std::string & source)
 	{

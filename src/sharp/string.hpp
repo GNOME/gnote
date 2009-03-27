@@ -27,15 +27,19 @@ namespace sharp {
 	 * and return a copy */
 	std::string string_replace_regex(const std::string & source, const std::string & regex,
 																	 const std::string & with);
+  bool string_match_iregex(const std::string & source, const std::string & regex);
 
 	void string_split(std::vector<std::string> & split, const std::string & source,
 										const char * delimiters);
+
+  std::string string_substring(const std::string & source, int start);
 
 	std::string string_trim(const std::string & source);
 	std::string string_trim(const std::string & source, const char * set_of_char);
 
 	bool string_starts_with(const std::string & source, const std::string & with);
   bool string_ends_with(const std::string & source, const std::string & with);
+  int string_last_index_of(const std::string & source, const std::string & with);
 
 	std::string string_to_lower(const std::string & source);
 }

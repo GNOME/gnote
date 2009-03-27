@@ -75,7 +75,8 @@ namespace gnote {
 		if (is_first_run) {
 			// First run. Create "Start Here" notes.
 			create_start_notes ();
-		} else {
+		} 
+    else {
 			load_notes ();
 		}
 
@@ -252,7 +253,7 @@ namespace gnote {
 		Note::List notesCopy(m_notes);
 		foreach(const Note::Ptr & note, notesCopy) {
 
-			m_addin_mgr->LoadAddinsForNote (note);
+			m_addin_mgr->load_addins_for_note (note);
 
 				// Show all notes that were visible when tomboy was shut down
 			if (note->is_open_on_startup()) {
@@ -479,7 +480,7 @@ namespace gnote {
 		m_notes.push_back(new_note);
 
 		// Load all the addins for the new note
-		m_addin_mgr->LoadAddinsForNote (new_note);
+		m_addin_mgr->load_addins_for_note (new_note);
 
 		signal_note_added(new_note);
 

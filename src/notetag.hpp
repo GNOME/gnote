@@ -34,7 +34,7 @@ class NoteTag
 public:
 	typedef Glib::RefPtr<NoteTag> Ptr;
 	typedef Glib::RefPtr<const NoteTag> ConstPtr;
-	typedef sigc::signal<bool, const NoteTag &, const NoteEditor &,
+	typedef sigc::signal<bool, const NoteTag::Ptr &, const NoteEditor &,
 											 const Gtk::TextIter &, const Gtk::TextIter &> TagActivatedHandler;
 
 	enum TagFlags {
