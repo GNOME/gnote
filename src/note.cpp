@@ -514,7 +514,7 @@ namespace gnote {
 																	 const Gtk::TextBuffer::iterator &)
 	{
 		if(NoteTagTable::tag_is_serializable(tag)) {
-			DBG_OUT("BufferTagApplied queueing save: %1%", tag->property_name().get_value().c_str());
+			DBG_OUT("BufferTagApplied queueing save: %s", tag->property_name().get_value().c_str());
 			queue_save(CONTENT_CHANGED);
 		}
 	}
@@ -524,7 +524,7 @@ namespace gnote {
 																	 const Gtk::TextBuffer::iterator &)
 	{
 		if(NoteTagTable::tag_is_serializable(tag)) {
-			DBG_OUT("BufferTagRemoved queueing save: %1%", tag->property_name().get_value().c_str());
+			DBG_OUT("BufferTagRemoved queueing save: %s", tag->property_name().get_value().c_str());
 			queue_save(CONTENT_CHANGED);
 		}
 	}
