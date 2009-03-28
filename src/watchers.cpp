@@ -271,7 +271,7 @@ namespace gnote {
     // Do nothing.
   }
 
-
+#if FIXED_GTKSPELL
   void NoteSpellChecker::on_note_opened ()
   {
     Preferences::get_preferences()->signal_setting_changed()
@@ -357,7 +357,7 @@ namespace gnote {
                                start_char, end_char);
     }
   }
-
+#endif
   
   ////////////////////////////////////////////////////////////////////////
 

@@ -74,6 +74,8 @@ namespace gnote {
     virtual void shutdown ();
     virtual void on_note_opened ();
 
+    static bool gtk_spell_available()
+      { return true; }
   protected:
     NoteSpellChecker()
       {}
@@ -87,6 +89,20 @@ namespace gnote {
     GtkSpell *m_obj_ptr;
     sigc::connection  m_tag_applied_cid;
   };
+#else
+  class NoteSpellChecker 
+    : public NoteAddin
+  {
+  public:
+    static NoteAddin * create();    
+    virtual void initialize ();
+    virtual void shutdown ();
+    virtual void on_note_opened ()
+      {}
+
+    static bool gtk_spell_available()
+      { return false; }
+  }
 #endif
 
 

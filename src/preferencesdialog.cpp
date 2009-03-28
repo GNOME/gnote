@@ -18,13 +18,14 @@
 #include <gtkmm/stock.h>
 #include <gtkmm/table.h>
 
+#include "sharp/propertyeditor.hpp"
 #include "gnote.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "preferences.hpp"
-#include "sharp/propertyeditor.hpp"
 #include "utils.hpp"
+#include "watchers.hpp"
 
 namespace gnote {
 
@@ -129,9 +130,10 @@ namespace gnote {
 
 			// Spell checking...
 
-			#if FIXED_GTKSPELL
-      // TODO when the addins are in
-			if (1) { //(NoteSpellChecker.GtkSpellAvailable) {
+#if FIXED_GTKSPELL
+      // TODO I'm not sure there is a proper reason to do that.
+      // it is in or NOT. if not, disable the UI.
+			if (NoteSpellChecker::gtk_spell_available()) {
 				check = manage(make_check_button (
                          _("_Spell check while typing")));
 				options_list->pack_start (*check, false, false, 0);
@@ -145,7 +147,7 @@ namespace gnote {
                           "menu.")));
 				options_list->pack_start (*label, false, false, 0);
 			}
-			#endif
+#endif
 
 
 			// WikiWords...
