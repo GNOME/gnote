@@ -27,6 +27,7 @@ namespace gnote {
     REGISTER_NOTE_ADDIN(NoteSpellChecker);
     REGISTER_NOTE_ADDIN(NoteUrlWatcher);
     REGISTER_NOTE_ADDIN(NoteLinkWatcher);
+    REGISTER_NOTE_ADDIN(NoteWikiWatcher);
   }
 
   void AddinManager::load_addins_for_note(const Note::Ptr & note)

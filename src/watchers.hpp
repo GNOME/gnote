@@ -158,6 +158,35 @@ namespace gnote {
     static bool s_text_event_connected;
   };
 
+
+  class NoteWikiWatcher
+    : public NoteAddin
+  {
+  public:
+    static NoteAddin * create();    
+    virtual void initialize ();
+    virtual void shutdown ();
+    virtual void on_note_opened ();
+
+  protected:
+    NoteWikiWatcher()
+      : m_regex(WIKIWORD_REGEX)
+      {
+      }
+  private:
+    void on_enable_wikiwords_changed(Preferences *, GConfEntry *);
+    static bool is_patronymic_name (const std::string & word);
+    void apply_wikiword_to_block (Gtk::TextIter start, Gtk::TextIter end);
+    void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
+    void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
+
+
+    static const char * WIKIWORD_REGEX;
+    Glib::RefPtr<Gtk::TextTag>   m_broken_link_tag;
+    boost::regex        m_regex;
+    sigc::connection    m_on_insert_text_cid;
+    sigc::connection    m_on_delete_range_cid;
+  };
 }
 
 

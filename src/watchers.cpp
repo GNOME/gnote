@@ -936,7 +936,137 @@ namespace gnote {
   }
 
 
-  
+  ////////////////////////////////////////////////////////////////////////
 
+  // NOTE \\u is upper. \\l is lower. make sure it works with non roman scripts.
+  const char * NoteWikiWatcher::WIKIWORD_REGEX = "\\b((\\u+[\\l0-9]+){2}([\\u\\l0-9])*)\\b";
+
+
+  NoteAddin * NoteWikiWatcher::create()
+  {
+    return new NoteWikiWatcher();
+  }
+
+  void NoteWikiWatcher::initialize ()
+  {
+    m_broken_link_tag = get_note()->get_tag_table()->lookup ("link:broken");
+  }
+
+
+  void NoteWikiWatcher::shutdown ()
+  {
+    // Do nothing.
+  }
+
+
+  void NoteWikiWatcher::on_note_opened ()
+  {
+    if ((bool) Preferences::get_preferences()->get<bool> (Preferences::ENABLE_WIKIWORDS)) {
+      m_on_insert_text_cid = get_buffer()->signal_insert().connect(
+        sigc::mem_fun(*this, &NoteWikiWatcher::on_insert_text));
+      m_on_delete_range_cid = get_buffer()->signal_erase().connect(
+        sigc::mem_fun(*this, &NoteWikiWatcher::on_delete_range));
+    }
+    Preferences::get_preferences()->signal_setting_changed()
+      .connect(sigc::mem_fun(*this, &NoteWikiWatcher::on_enable_wikiwords_changed));
+  }
+
+
+  void NoteWikiWatcher::on_enable_wikiwords_changed(Preferences *, GConfEntry * entry)
+  {
+    const char * key = gconf_entry_get_key(entry);
+    
+    if (strcmp(key, Preferences::ENABLE_WIKIWORDS) == 0) {
+      return;
+    }
+    GConfValue * value = gconf_entry_get_value(entry);
+    if (gconf_value_get_bool(value)) {
+      m_on_insert_text_cid = get_buffer()->signal_insert().connect(
+        sigc::mem_fun(*this, &NoteWikiWatcher::on_insert_text));
+      m_on_delete_range_cid = get_buffer()->signal_erase().connect(
+        sigc::mem_fun(*this, &NoteWikiWatcher::on_delete_range));
+    } 
+    else {
+      m_on_insert_text_cid.disconnect();
+      m_on_delete_range_cid.disconnect();
+    }
+  }
+
+  static const char * PATRONYMIC_PREFIXES[] = { 
+    "Mc", 
+    "Mac", 
+    "Le", 
+    "La", 
+    "De", 
+    "Van",
+    NULL
+  };
+
+  bool NoteWikiWatcher::is_patronymic_name (const std::string & word)
+  {
+    const char **prefix = PATRONYMIC_PREFIXES;
+    while(*prefix) {
+      if (sharp::string_starts_with(word, *prefix) &&
+          isupper(word [strlen(*prefix)])) {
+        return true;
+      }
+      prefix++;
+    }
+
+    return false;
+  }
+
+  void NoteWikiWatcher::apply_wikiword_to_block (Gtk::TextIter start, Gtk::TextIter end)
+  {
+    NoteBuffer::get_block_extents (start,
+                                   end,
+                                   80 /* max wiki name */,
+                                   m_broken_link_tag);
+
+    get_buffer()->remove_tag (m_broken_link_tag, start, end);
+
+    boost::match_results<std::string::const_iterator> m;
+    std::string s(start.get_slice(end));
+    boost::regex_match(s, m, m_regex);
+    int count = 0;
+    /// TODO iterator throught the WHOLE match
+    const boost::sub_match<std::string::const_iterator> & match = m[1];
+
+
+    if (!is_patronymic_name (match.str())) {
+
+      DBG_OUT("Highlighting wikiword: '%s' at offset %d",
+              match.str().c_str(), (match.first - s.begin()));
+      
+      Gtk::TextIter start_cpy = start;
+      start_cpy.forward_chars (match.first - s.begin());
+
+      end = start_cpy;
+      end.forward_chars (match.length());
+
+      if (manager().find (match.str())) {
+        get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
+      }
+    }
+  }
+
+  void NoteWikiWatcher::on_delete_range(const Gtk::TextIter & start, const Gtk::TextIter & end)
+  {
+    apply_wikiword_to_block (start, end);
+  }
+
+
+  void NoteWikiWatcher::on_insert_text(const Gtk::TextIter & pos, const Glib::ustring &, 
+                                       int length)
+  {
+    Gtk::TextIter start = pos;
+    start.backward_chars(length);
+    
+    apply_wikiword_to_block (start, pos);
+  }
+
+  ////////////////////////////////////////////////////////////////////////
+
+  
 }
 
