@@ -31,7 +31,7 @@ namespace gnote {
 		, m_note(note)
 		, m_global_keys(NULL)
 	{
-//	this.IconName = "tomboy";
+//    get_window()->set_icon_name("gnote");
 		set_default_size(450, 360);
 		set_resizable(true);
 

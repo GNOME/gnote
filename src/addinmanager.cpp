@@ -28,6 +28,7 @@ namespace gnote {
     REGISTER_NOTE_ADDIN(NoteUrlWatcher);
     REGISTER_NOTE_ADDIN(NoteLinkWatcher);
     REGISTER_NOTE_ADDIN(NoteWikiWatcher);
+    REGISTER_NOTE_ADDIN(MouseHandWatcher);    
   }
 
   void AddinManager::load_addins_for_note(const Note::Ptr & note)

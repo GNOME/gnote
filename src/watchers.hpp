@@ -15,6 +15,7 @@ extern "C" {
 }
 #include <gconf/gconf-client.h>
 
+#include <gdkmm/cursor.h>
 #include <gtkmm/textiter.h>
 #include <gtkmm/texttag.h>
 
@@ -187,6 +188,35 @@ namespace gnote {
     sigc::connection    m_on_insert_text_cid;
     sigc::connection    m_on_delete_range_cid;
   };
+
+
+  class MouseHandWatcher
+    : public NoteAddin
+  {
+  public:
+    static NoteAddin * create();    
+    virtual void initialize ();
+    virtual void shutdown ();
+    virtual void on_note_opened ();
+
+  protected:
+    MouseHandWatcher()
+      : m_hovering_on_link(false)
+      {
+        _init_static();
+      }
+  private:
+    void _init_static();
+    bool on_editor_key_press(GdkEventKey*);
+    bool on_editor_key_release(GdkEventKey*);
+    bool on_editor_motion(GdkEventMotion *);
+    bool m_hovering_on_link;
+    static bool s_static_inited;
+    static Gdk::Cursor s_normal_cursor;
+		static Gdk::Cursor s_hand_cursor;
+
+  };
+
 }
 
 
