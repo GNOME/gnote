@@ -26,6 +26,25 @@
 
 namespace gnote {
 
+	class TrieController
+	{
+	public:
+		TrieController(NoteManager &);
+		~TrieController();
+
+		void update();
+    TrieTree<Note::Ptr> *title_trie() const
+      {
+        return m_title_trie;
+      }
+	private:
+		void on_note_added (const Note::Ptr & added);
+		void on_note_deleted (const Note::Ptr & deleted);
+		void on_note_renamed (const Note::Ptr & renamed, const std::string & old_title);
+			
+		NoteManager & m_manager;
+		TrieTree<Note::Ptr> *    m_title_trie;
+	};
 
 	bool compare_dates(const Note::Ptr & a, const Note::Ptr & b)
 	{
@@ -528,6 +547,17 @@ namespace gnote {
 							 % _("Describe your new note here."));
 	}
 
+  size_t NoteManager::trie_max_length()
+  {
+    return m_trie_controller->title_trie()->max_length();
+  }
+
+
+  TrieHit<Note::Ptr>::ListPtr NoteManager::find_trie_matches(const std::string & match)
+  {
+    return m_trie_controller->title_trie()->find_matches(match);
+  }
+
 	Note::Ptr NoteManager::find(const std::string & linked_title) const
 	{
 		foreach (const Note::Ptr & note, m_notes) {
@@ -583,7 +613,7 @@ namespace gnote {
 		if(m_title_trie) {
 			delete m_title_trie;
 		}
-		m_title_trie = new TrieTree(false /* !case_sensitive */);
+		m_title_trie = new TrieTree<Note::Ptr>(false /* !case_sensitive */);
 
 		foreach (const Note::Ptr & note, m_manager.get_notes()) {
 			m_title_trie->add_keyword (note->title(), note);

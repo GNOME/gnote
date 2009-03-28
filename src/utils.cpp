@@ -462,7 +462,7 @@ namespace gnote {
 			// this will do for now.
 			std::string builder;
 
-			xmlpp::TextReader xml(source);
+			xmlpp::TextReader xml((const xmlChar *)source.c_str(), source.size());
 
 			while (xml.read ()) {
 				switch (xml.get_node_type()) {

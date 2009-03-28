@@ -19,6 +19,7 @@ extern "C" {
 #include <gtkmm/texttag.h>
 
 #include "noteaddin.hpp"
+#include "triehit.hpp"
 #include "utils.hpp"
 
 namespace gnote {
@@ -120,6 +121,43 @@ namespace gnote {
     static const char * URL_REGEX;
     static bool  s_text_event_connected;
   };
+
+
+  class NoteLinkWatcher
+    : public NoteAddin
+  {
+  public:
+    static NoteAddin * create();    
+    virtual void initialize ();
+    virtual void shutdown ();
+    virtual void on_note_opened ();
+
+  private:
+    bool contains_text(const std::string & text);
+    void on_note_added(const Note::Ptr &);
+    void on_note_deleted(const Note::Ptr &);
+    void on_note_renamed(const Note::Ptr&, const std::string&);
+    void do_highlight(const TrieHit<Note::Ptr> & , const Gtk::TextIter &,const Gtk::TextIter &);
+    void highlight_note_in_block (const Note::Ptr &, const Gtk::TextIter &,
+                                  const Gtk::TextIter &);
+    void highlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
+    void unhighlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
+    void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
+    void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
+    bool open_or_create_link(const Gtk::TextIter &,const Gtk::TextIter &);
+    bool on_link_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
+                               const Gtk::TextIter &, const Gtk::TextIter &);
+
+    NoteTag::Ptr m_url_tag;
+    NoteTag::Ptr m_link_tag;
+    NoteTag::Ptr m_broken_link_tag;
+
+    sigc::connection m_on_note_deleted_cid;
+    sigc::connection m_on_note_added_cid;
+    sigc::connection m_on_note_renamed_cid;
+    static bool s_text_event_connected;
+  };
+
 }
 
 

@@ -14,6 +14,7 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferences.hpp"
+#include "triehit.hpp"
 #include "watchers.hpp"
 #include "sharp/foreach.hpp"
 
@@ -622,6 +623,320 @@ namespace gnote {
     clip->set_text(url);
   }
 
+
+  ////////////////////////////////////////////////////////////////////////
+
+  bool NoteLinkWatcher::s_text_event_connected = false;
+
+  NoteAddin * NoteLinkWatcher::create()
+  {
+    return new NoteLinkWatcher;
+  }
+
+
+  void NoteLinkWatcher::initialize ()
+  {
+    m_on_note_deleted_cid = manager().signal_note_deleted.connect(
+      sigc::mem_fun(*this, &NoteLinkWatcher::on_note_deleted));
+    m_on_note_added_cid = manager().signal_note_added.connect(
+      sigc::mem_fun(*this, &NoteLinkWatcher::on_note_added));
+    m_on_note_renamed_cid = manager().signal_note_renamed.connect(
+      sigc::mem_fun(*this, &NoteLinkWatcher::on_note_renamed));
+
+    m_url_tag = NoteTag::Ptr::cast_dynamic(get_note()
+                                           ->get_tag_table()->lookup ("link:url"));
+    m_link_tag = NoteTag::Ptr::cast_dynamic(get_note()
+                                            ->get_tag_table()->lookup ("link:internal"));
+    m_broken_link_tag = NoteTag::Ptr::cast_dynamic(get_note()
+                                                   ->get_tag_table()->lookup ("link:broken"));
+  }
+
+
+  void NoteLinkWatcher::shutdown ()
+  {
+    m_on_note_deleted_cid.disconnect();
+    m_on_note_added_cid.disconnect();
+    m_on_note_renamed_cid.disconnect();
+  }
+
+
+  void NoteLinkWatcher::on_note_opened ()
+  {
+#if FIXED_GTKSPELL
+    // NOTE: This avoid multiple link opens for cases where
+    // the GtkSpell version is fixed to allow TagTable
+    // sharing.  This is because if the TagTable is shared,
+    // we will connect to the same Tag's event source each
+    // time a note is opened, and get called multiple times
+    // for each button press.  Fixes bug #305813.
+    if (!s_text_event_connected) {
+      m_link_tag->signal_activate().connect(
+        sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
+      m_broken_link_tag->signal_activate().connect(
+        sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
+      s_text_event_connected = true;
+    }
+#else
+    m_link_tag->signal_activate().connect(
+      sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
+    m_broken_link_tag->signal_activate().connect(
+      sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
+#endif
+    get_buffer()->signal_insert().connect(
+      sigc::mem_fun(*this, &NoteLinkWatcher::on_insert_text));
+    get_buffer()->signal_erase().connect(
+      sigc::mem_fun(*this, &NoteLinkWatcher::on_delete_range));
+  }
+
+  
+  bool NoteLinkWatcher::contains_text(const std::string & text)
+  {
+    std::string body = sharp::string_to_lower(get_note()->text_content());
+    std::string match = sharp::string_to_lower(text);
+
+    return sharp::string_index_of(body, match) > -1;
+  }
+
+
+  void NoteLinkWatcher::on_note_added(const Note::Ptr & added)
+  {
+    if (added == get_note()) {
+      return;
+    }
+
+    if (!contains_text (added->title())) {
+      return;
+    }
+
+    // Highlight previously unlinked text
+    highlight_in_block (get_buffer()->begin(), get_buffer()->end());
+  }
+
+  void NoteLinkWatcher::on_note_deleted(const Note::Ptr & deleted)
+  {
+    if (deleted == get_note()) {
+      return;
+    }
+
+    if (!contains_text (deleted->title())) {
+      return;
+    }
+
+    std::string old_title_lower = sharp::string_to_lower(deleted->title());
+
+    // Turn all link:internal to link:broken for the deleted note.
+    utils::TextTagEnumerator enumerator(get_buffer(), m_link_tag);
+    while (enumerator.move_next()) {
+      const utils::TextRange & range(enumerator.current());
+      if (sharp::string_to_lower(enumerator.current().text()) != old_title_lower)
+        continue;
+
+      get_buffer()->remove_tag (m_link_tag, range.start(), range.end());
+      get_buffer()->apply_tag (m_broken_link_tag, range.start(), range.end());
+    }
+  }
+
+
+  void NoteLinkWatcher::on_note_renamed(const Note::Ptr& renamed, const std::string& old_title)
+  {
+    if (renamed == get_note()) {
+      return;
+    }
+
+    // Highlight previously unlinked text
+    if (contains_text (renamed->title())) {
+      highlight_note_in_block (renamed, get_buffer()->begin(), get_buffer()->end());
+    }
+
+    if (!contains_text (old_title)) {
+      return;
+    }
+
+    std::string old_title_lower = sharp::string_to_lower(old_title);
+
+    // Replace existing links with the new title.
+    utils::TextTagEnumerator enumerator(get_buffer(), m_link_tag);
+    while(enumerator.move_next()) {
+      const utils::TextRange & range(enumerator.current());
+      if (sharp::string_to_lower(range.text()) != old_title_lower) {
+        continue;
+      }
+
+      DBG_OUT ("Replacing '%s' with '%s'",
+               range.text().c_str(), renamed->title().c_str());
+
+      Gtk::TextIter start_iter = range.start();
+      Gtk::TextIter end_iter = range.end();
+      get_buffer()->erase (start_iter, end_iter);
+      start_iter = range.start();
+      get_buffer()->insert_with_tag(start_iter, renamed->title(), m_link_tag);
+    }
+  }
+
+  
+  void NoteLinkWatcher::do_highlight(const TrieHit<Note::Ptr> & hit, 
+                                     const Gtk::TextIter & start,
+                                     const Gtk::TextIter &)
+  {
+    // Some of these checks should be replaced with fixes to
+    // TitleTrie.FindMatches, probably.
+    if (!hit.value) {
+      DBG_OUT("DoHighlight: null pointer error for '%s'." , hit.key.c_str());
+      return;
+    }
+			
+    if (!manager().find(hit.key)) {
+      DBG_OUT ("DoHighlight: '%s' links to non-existing note." , hit.key.c_str());
+      return;
+    }
+			
+    Note::Ptr hit_note = hit.value;
+
+    if (sharp::string_to_lower(hit.key) != sharp::string_to_lower(hit_note->title())) { // == 0 if same string  
+      DBG_OUT ("DoHighlight: '%s' links wrongly to note '%s'." , hit.key.c_str(), 
+               hit_note->title().c_str());
+      return;
+    }
+			
+    if (hit_note == get_note())
+      return;
+
+    Gtk::TextIter title_start = start;
+    title_start.forward_chars (hit.start);
+
+    Gtk::TextIter title_end = start;
+    title_end.forward_chars (hit.end);
+
+    // Only link against whole words/phrases
+    if ((!title_start.starts_word () && !title_start.starts_sentence ()) ||
+        (!title_end.ends_word() && !title_end.ends_sentence())) {
+      return;
+    }
+
+    // Don't create links inside URLs
+    if (title_start.has_tag (m_url_tag)) {
+      return;
+    }
+
+    DBG_OUT ("Matching Note title '%s' at %d-%d...",
+             hit.key.c_str(), hit.start, hit.end);
+
+    get_buffer()->remove_tag (m_broken_link_tag, title_start, title_end);
+    get_buffer()->apply_tag (m_link_tag, title_start, title_end);
+  }
+
+  void NoteLinkWatcher::highlight_note_in_block (const Note::Ptr & find_note, 
+                                                 const Gtk::TextIter & start,
+                                                 const Gtk::TextIter & end)
+  {
+    std::string buffer_text = sharp::string_to_lower(start.get_text (end));
+    std::string find_title_lower = sharp::string_to_lower(find_note->title());
+    int idx = 0;
+
+    while (true) {
+      idx = sharp::string_index_of(buffer_text, sharp::string_substring(find_title_lower, idx));
+      if (idx < 0)
+        break;
+
+      TrieHit<Note::Ptr> hit(idx, idx + find_title_lower.length(),
+                             find_title_lower, find_note);
+      do_highlight (hit, start, end);
+
+      idx += find_title_lower.length();
+    }
+
+  }
+
+
+  void NoteLinkWatcher::highlight_in_block(const Gtk::TextIter & start,
+                                           const Gtk::TextIter & end)
+  {
+    TrieHit<Note::Ptr>::ListPtr hits = manager().find_trie_matches (start.get_slice (end));
+    foreach (const TrieHit<Note::Ptr> * hit, *hits) {
+      do_highlight (*hit, start, end);
+    }
+  }
+
+  void NoteLinkWatcher::unhighlight_in_block(const Gtk::TextIter & start,
+                                           const Gtk::TextIter & end)
+  {
+    get_buffer()->remove_tag(m_link_tag, start, end);
+  }
+  
+
+  void NoteLinkWatcher::on_delete_range(const Gtk::TextIter & s,
+                                        const Gtk::TextIter & e)
+  {
+    Gtk::TextIter start = s;
+    Gtk::TextIter end = e;
+
+    NoteBuffer::get_block_extents (start, end,
+                                   manager().trie_max_length(),
+                                   m_link_tag);
+
+    unhighlight_in_block (start, end);
+    highlight_in_block (start, end);
+  }
+  
+
+  void NoteLinkWatcher::on_insert_text(const Gtk::TextIter & pos, 
+                                       const Glib::ustring &, int length)
+  {
+    Gtk::TextIter start = pos;
+    start.backward_chars (length);
+
+    Gtk::TextIter end = pos;
+
+    NoteBuffer::get_block_extents (start, end,
+                                   manager().trie_max_length(),
+                                   m_link_tag);
+
+    unhighlight_in_block (start, end);
+    highlight_in_block (start, end);
+  }
+
+
+  bool NoteLinkWatcher::open_or_create_link(const Gtk::TextIter & start,
+                                            const Gtk::TextIter & end)
+  {
+    std::string link_name = start.get_text (end);
+    Note::Ptr link = manager().find (link_name);
+
+    if (!link) {
+      DBG_OUT("Creating note '%s'...", link_name.c_str());
+      try {
+        link = manager().create (link_name);
+      } 
+      catch(...)
+      {
+				// Fail silently.
+			}
+		}
+
+		// FIXME: We used to also check here for (link != this.Note), but
+		// somehow this was causing problems receiving clicks for the
+		// wrong instance of a note (see bug #413234).  Since a
+		// link:internal tag is never applied around text that's the same
+		// as the current note's title, it's safe to omit this check and
+		// also works around the bug.
+		if (link) {
+      DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
+      link->get_window()->present ();
+      return true;
+    }
+
+    return false;
+  }
+
+  bool NoteLinkWatcher::on_link_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
+                                              const Gtk::TextIter &start, 
+                                              const Gtk::TextIter &end)
+  {
+    return open_or_create_link (start, end);
+  }
+
+
+  
 
 }
 

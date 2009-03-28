@@ -11,12 +11,12 @@
 
 #include "preferences.hpp"
 #include "note.hpp"
+#include "triehit.hpp"
 
 namespace gnote {
 
 	class AddinManager;
 	class TrieController;
-	class TrieTree;
 
 	class NoteManager 
 	{
@@ -33,6 +33,10 @@ namespace gnote {
 			{ 
 				return m_notes;
 			}
+
+    // the trie for the note names
+    size_t trie_max_length();
+    TrieHit<Note::Ptr>::ListPtr find_trie_matches(const std::string &);
 
 		const std::string & start_note_uri() const
 			{ return m_start_note_uri; }
@@ -83,21 +87,6 @@ namespace gnote {
 		std::string m_start_note_uri;
 	};
 
-	class TrieController
-	{
-	public:
-		TrieController(NoteManager &);
-		~TrieController();
-
-		void update();
-	private:
-		void on_note_added (const Note::Ptr & added);
-		void on_note_deleted (const Note::Ptr & deleted);
-		void on_note_renamed (const Note::Ptr & renamed, const std::string & old_title);
-			
-		NoteManager & m_manager;
-		TrieTree *    m_title_trie;
-	};
 
 }
 

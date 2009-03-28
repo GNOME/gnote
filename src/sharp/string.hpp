@@ -32,13 +32,17 @@ namespace sharp {
 	void string_split(std::vector<std::string> & split, const std::string & source,
 										const char * delimiters);
 
+  /** copy the substring for %source, starting at %start until the end */
   std::string string_substring(const std::string & source, int start);
+  /** copy the substring for %source, starting at %start and running for %len */
+  std::string string_substring(const std::string & source, int start, int len);
 
 	std::string string_trim(const std::string & source);
 	std::string string_trim(const std::string & source, const char * set_of_char);
 
 	bool string_starts_with(const std::string & source, const std::string & with);
   bool string_ends_with(const std::string & source, const std::string & with);
+  int string_index_of(const std::string & source, const std::string & with);
   int string_last_index_of(const std::string & source, const std::string & with);
 
 	std::string string_to_lower(const std::string & source);

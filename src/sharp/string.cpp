@@ -52,6 +52,11 @@ namespace sharp {
     return std::string(source.begin() + start, source.end());
   }
 
+  std::string string_substring(const std::string & source, int start, int len)
+  {
+    return std::string(source.begin() + start, source.begin() + start + len);
+  }
+
 	std::string string_trim(const std::string & source)
 	{
 		return boost::trim_copy(source);
@@ -76,9 +81,25 @@ namespace sharp {
   {
     boost::iterator_range<std::string::const_iterator> iter
       = boost::find_last(source, search);
-
+    if(iter.begin() == source.end()) {
+      // NOT FOUND
+      return -1;
+    }
     return iter.begin() - source.begin();
   }
+
+
+  int string_index_of(const std::string & source, const std::string & search)
+  {
+    boost::iterator_range<std::string::const_iterator> iter
+      = boost::find_first(source, search);
+    if(iter.begin() == source.end()) {
+      // NOT FOUND
+      return -1;
+    }
+    return iter.begin() - source.begin();
+  }
+
 
 	std::string string_to_lower(const std::string & source)
 	{

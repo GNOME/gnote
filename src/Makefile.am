@@ -8,6 +8,13 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\"
 
 bin_PROGRAMS = gnote
+check_PROGRAMS = trietest
+TESTS = trietest
+
+
+trietest_SOURCES = test/trietest.cpp \
+	sharp/string.cpp
+trietest_LDADD =  @BOOST_REGEX_LIBS@
 
 gnote_SOURCES = \
 	sharp/datetime.hpp sharp/datetime.cpp \
@@ -38,6 +45,7 @@ gnote_SOURCES = \
 	recentchanges.hpp recentchanges.cpp \
 	tag.hpp tag.cpp \
 	tagmanager.hpp tagmanager.cpp \
+	trie.hpp triehit.hpp \
 	watchers.hpp watchers.cpp \
 	$(NULL)
 
