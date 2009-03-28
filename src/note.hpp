@@ -196,6 +196,12 @@ public:
 		{ return m_signal_renamed; }
 	SavedHandler & signal_saved()
 		{ return m_signal_saved; }
+	TagAddedHandler    & signal_tag_added()
+    { return m_signal_tag_added; }
+	TagRemovingHandler & signal_tag_removing()
+    { return m_signal_tag_removing; }
+	TagRemovedHandler  & signal_tag_removed()
+    { return m_signal_tag_removed; }
 
 private:
 	void on_buffer_changed();

@@ -14,6 +14,7 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferences.hpp"
+#include "tagmanager.hpp"
 #include "triehit.hpp"
 #include "watchers.hpp"
 #include "sharp/foreach.hpp"
@@ -1225,6 +1226,65 @@ namespace gnote {
       }
     }
     return retval;
+  }
+
+  ////////////////////////////////////////////////////////////////////////
+
+
+
+  NoteAddin * NoteTagsWatcher::create()
+  {
+    return new NoteTagsWatcher();
+  }
+
+
+  void NoteTagsWatcher::initialize ()
+  {
+    m_on_tag_added_cid = get_note()->signal_tag_added().connect(
+      sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_added));
+    m_on_tag_removing_cid = get_note()->signal_tag_removing().connect(
+      sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removing));
+    m_on_tag_removed_cid = get_note()->signal_tag_removed().connect(
+      sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removed));      
+  }
+
+
+  void NoteTagsWatcher::shutdown ()
+  {
+    m_on_tag_added_cid.disconnect();
+    m_on_tag_removing_cid.disconnect();
+    m_on_tag_removed_cid.disconnect();
+  }
+
+
+  void NoteTagsWatcher::on_note_opened ()
+  {
+    // FIXME: Just for kicks, spit out the current tags
+    DBG_OUT ("%s tags:", get_note()->title().c_str());
+    foreach (const Tag::Ptr & tag, get_note()->tags()) {
+      DBG_OUT ("\t%s", tag->name().c_str());
+    }
+  }
+
+  void NoteTagsWatcher::on_tag_added(const Note& note, const Tag::Ptr& tag)
+  {
+    DBG_OUT ("Tag added to %s: %s", note.title().c_str(), tag->name().c_str());
+  }
+
+
+  void NoteTagsWatcher::on_tag_removing(const Note& note, const Tag & tag)
+  {
+    DBG_OUT ("Removing tag from %s: %s", note.title().c_str(), tag.name().c_str());
+  }
+
+
+  void NoteTagsWatcher::on_tag_removed(const Note&, const std::string& tag_name)
+  {
+    Tag::Ptr tag = TagManager::instance().get_tag (tag_name);
+    DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag->popularity());
+    if (tag->popularity() == 0) {
+      TagManager::instance().remove_tag (tag);
+    }
   }
 
 }

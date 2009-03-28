@@ -83,7 +83,7 @@ namespace gnote {
     void on_enable_spellcheck_changed(Preferences *, GConfEntry *);
     void tag_applied(const Glib::RefPtr<const Gtk::TextTag> &,
                      const Gtk::TextIter &, const Gtk::TextIter &);
-    ///
+
     GtkSpell *m_obj_ptr;
     sigc::connection  m_tag_applied_cid;
   };
@@ -114,7 +114,6 @@ namespace gnote {
     bool on_popup_menu();
     void copy_link_activate();
     void open_link_activate();
-///
 
     NoteTag::Ptr                m_url_tag;
     Glib::RefPtr<Gtk::TextMark> m_click_mark;
@@ -215,6 +214,26 @@ namespace gnote {
     static Gdk::Cursor s_normal_cursor;
 		static Gdk::Cursor s_hand_cursor;
 
+  };
+
+
+  class NoteTagsWatcher 
+    : public NoteAddin
+  {
+  public:
+    static NoteAddin * create();
+    virtual void initialize ();
+    virtual void shutdown ();
+    virtual void on_note_opened ();
+
+  private:
+    void on_tag_added(const Note&, const Tag::Ptr&);
+    void on_tag_removing(const Note&, const Tag &);
+    void on_tag_removed(const Note&, const std::string&);
+
+    sigc::connection m_on_tag_added_cid;
+    sigc::connection m_on_tag_removing_cid;
+    sigc::connection m_on_tag_removed_cid;
   };
 
 }
