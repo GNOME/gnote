@@ -16,28 +16,32 @@ namespace gnote {
 		return *s_instance;
 	}
 
+  namespace {
+    int compare_tags_sort_func (const Gtk::TreeIter & a, 
+                                const Gtk::TreeIter & b)
+    {
+      Tag::Ptr tag_a;
+      a->get_value(0, tag_a);
+      Tag::Ptr tag_b;
+      b->get_value(0, tag_b);
+
+      if (!tag_a || !tag_b)
+        return 0;
+
+      return strcmp(tag_a->normalized_name().c_str(), 
+                    tag_b->normalized_name().c_str());
+    }
+  }
+
 	TagManager::TagManager()
 		:	m_tags(Gtk::ListStore::create(m_columns))
 		,	m_sorted_tags(Gtk::TreeModelSort::create(m_tags))
 	{
-		//sorted_tags.SetSortFunc (0, new Gtk.TreeIterCompareFunc (CompareTagsSortFunc));
-		//sorted_tags.SetSortColumnId (0, Gtk.SortType.Ascending);
+		m_sorted_tags->set_sort_func (0, sigc::ptr_fun(&compare_tags_sort_func));
+		m_sorted_tags->set_sort_column_id (0, Gtk::SORT_ASCENDING);
 		
 	}
 
-#if 0
-	static int CompareTagsSortFunc (TreeModel model, TreeIter a, TreeIter b)
-		{
-			Tag tag_a = model.GetValue (a, 0) as Tag;
-			Tag tag_b = model.GetValue (b, 0) as Tag;
-
-			if (tag_a == null || tag_b == null)
-				return 0;
-
-			return string.Compare (tag_a.NormalizedName, tag_b.NormalizedName);
-		}
-
-#endif
 
 	// <summary>
 	// Return an existing tag for the specified tag name.  If no Tag exists
