@@ -53,6 +53,7 @@ gnote_SOURCES = \
 	notebooks/notebookapplicationaddin.hp notebooks/notebookapplicationaddin.cpp \
 	notebooks/notebookmanager.hpp notebooks/notebookmanager.cpp \
 	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
+	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	$(NULL)
 
 gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
