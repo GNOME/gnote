@@ -5,6 +5,7 @@
 #include "addinmanager.hpp"
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
+#include "notebooks/notebooknoteaddin.hpp"
 #include "sharp/foreach.hpp"
 
 namespace gnote {
@@ -35,6 +36,7 @@ namespace gnote {
     REGISTER_NOTE_ADDIN(NoteWikiWatcher);
     REGISTER_NOTE_ADDIN(MouseHandWatcher);
     REGISTER_NOTE_ADDIN(NoteTagsWatcher);
+    REGISTER_NOTE_ADDIN(notebooks::NotebookNoteAddin);
    
     REGISTER_APP_ADDIN(notebooks::NotebookApplicationAddin);
   }

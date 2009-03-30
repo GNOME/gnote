@@ -12,6 +12,7 @@
 namespace gnote {
   namespace notebooks {
 
+    class NotebookMenuItem;
 
 class NotebookNewNoteMenuItem
   : public Gtk::ImageMenuItem
@@ -24,9 +25,9 @@ public:
       return m_notebook;
     }
   // the menu item is comparable.
-//  bool operator==(const NotebookNewNoteMenuItem &);
-//  bool operator<(const NotebookNewNoteMenuItem &);
-//  bool operator>(const NotebookNewNoteMenuItem &);
+  bool operator==(const NotebookMenuItem &);
+  bool operator<(const NotebookMenuItem &);
+  bool operator>(const NotebookMenuItem &);
 private:
   Notebook::Ptr m_notebook;
 };

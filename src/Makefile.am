@@ -52,7 +52,9 @@ gnote_SOURCES = \
 	notebooks/notebook.hpp notebooks/notebook.cpp \
 	notebooks/notebookapplicationaddin.hp notebooks/notebookapplicationaddin.cpp \
 	notebooks/notebookmanager.hpp notebooks/notebookmanager.cpp \
+	notebooks/notebookmenuitem.hpp notebooks/notebookmenuitem.cpp \
 	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
+	notebooks/notebooknoteaddin.hpp notebooks/notebooknoteaddin.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	$(NULL)
 

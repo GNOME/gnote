@@ -9,7 +9,7 @@
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
-
+#include "notebooks/notebookmenuitem.hpp"
 #include "notebooks/notebooknewnotemenuitem.hpp"
 
 namespace gnote {
@@ -48,23 +48,23 @@ namespace gnote {
 			note->get_window()->show ();
     }
 
-#if 0
-    bool NotebookNewNoteMenuItem::operator==(const NotebookNewNoteMenuItem & rhs)
+
+    bool NotebookNewNoteMenuItem::operator==(const NotebookMenuItem & rhs)
     {
-      return m_notebook->get_name() == rhs.m_notebook->get_name();
+      return m_notebook->get_name() == rhs.get_notebook()->get_name();
     }
 
 
-    bool NotebookNewNoteMenuItem::operator<(const NotebookNewNoteMenuItem & rhs)
+    bool NotebookNewNoteMenuItem::operator<(const NotebookMenuItem & rhs)
     {
-      return m_notebook->get_name() < rhs.m_notebook->get_name();
+      return m_notebook->get_name() < rhs.get_notebook()->get_name();
     }
 
 
-    bool NotebookNewNoteMenuItem::operator>(const NotebookNewNoteMenuItem & rhs)
+    bool NotebookNewNoteMenuItem::operator>(const NotebookMenuItem & rhs)
     {
-      return m_notebook->get_name() > rhs.m_notebook->get_name();
+      return m_notebook->get_name() > rhs.get_notebook()->get_name();
     }
-#endif
+
   }
 }
