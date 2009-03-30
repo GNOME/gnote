@@ -209,7 +209,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note));
     am ["DeleteNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete_note));
-#if 0 // TODO addins
+#if 1 // TODO addins
     am ["NewNotebookNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_new_notebook_note));
     am ["OpenNotebookTemplateNoteAction"]->signal_activate()
@@ -240,8 +240,8 @@ namespace gnote {
   Gtk::Widget *NoteRecentChanges::make_notebooks_pane()
   {
   	m_notebooksTree = Gtk::manage(
-      new notebooks::NotebooksTreeView (notebooks::NotebookManager::
-                                        get_notebooks_with_special_items()));
+      new notebooks::NotebooksTreeView (notebooks::NotebookManager::instance()
+                                        .get_notebooks_with_special_items()));
 
     m_notebooksTree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);
     m_notebooksTree->set_headers_visible(true);
@@ -591,7 +591,7 @@ namespace gnote {
       // If the note belongs to a notebook, return false
       // since the only notes that should be shown in this
       // case are notes that are unfiled (not in a notebook).
-      if (notebooks::NotebookManager::get_notebook_from_note (note))
+      if (notebooks::NotebookManager::instance().get_notebook_from_note (note))
         return false;
     }
 

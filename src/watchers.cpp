@@ -1266,9 +1266,9 @@ namespace gnote {
     }
   }
 
-  void NoteTagsWatcher::on_tag_added(const Note& note, const Tag::Ptr& tag)
+  void NoteTagsWatcher::on_tag_added(const Note::Ptr& note, const Tag::Ptr& tag)
   {
-    DBG_OUT ("Tag added to %s: %s", note.title().c_str(), tag->name().c_str());
+    DBG_OUT ("Tag added to %s: %s", note->title().c_str(), tag->name().c_str());
   }
 
 
@@ -1278,7 +1278,7 @@ namespace gnote {
   }
 
 
-  void NoteTagsWatcher::on_tag_removed(const Note&, const std::string& tag_name)
+  void NoteTagsWatcher::on_tag_removed(const Note::Ptr&, const std::string& tag_name)
   {
     Tag::Ptr tag = TagManager::instance().get_tag (tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag->popularity());

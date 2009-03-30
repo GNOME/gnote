@@ -72,7 +72,11 @@ namespace gnote {
 											const Glib::ustring & label_text, 
 											Gtk::ResponseType response, bool is_default);
 			void add_button(Gtk::Button *button, Gtk::ResponseType response, bool is_default);
-
+      Gtk::Widget * get_extra_widget() const
+        {
+          return m_extra_widget;
+        }
+      void set_extra_widget(Gtk::Widget *);
 		private:
 			Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
 			Gtk::VBox *m_extra_widget_vbox;

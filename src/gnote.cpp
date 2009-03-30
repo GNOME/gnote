@@ -11,11 +11,14 @@
 
 #include "gnote.hpp"
 #include "actionmanager.hpp"
+#include "addinmanager.hpp"
+#include "applicationaddin.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "recentchanges.hpp"
 #include "utils.hpp"
 #include "sharp/string.hpp"
+#include "sharp/foreach.hpp"
 
 int main(int argc, char **argv)
 {
@@ -72,6 +75,11 @@ namespace gnote {
 //		register_remote_control(m_manager);
 		setup_global_actions();
 		
+    std::list<ApplicationAddin*> addins;
+    addins = s_manager->get_addin_manager().get_application_addins();
+    foreach(ApplicationAddin * addin, addins) {
+      addin->initialize();
+    }
 		// TODO
 		// addins. load + init
 

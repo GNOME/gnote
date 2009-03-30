@@ -19,7 +19,7 @@ public:
   bool is_disposing() const
     { return m_disposing; }
 protected:
-  virtual void dispose(bool disposing) = 0;
+  virtual void dispose(bool disposing);
 
 private:
   bool m_disposing;

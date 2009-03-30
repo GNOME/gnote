@@ -29,6 +29,7 @@ gnote_SOURCES = \
 	abstractaddin.hpp abstractaddin.cpp \
 	actionmanager.hpp actionmanager.cpp \
 	addinmanager.hpp addinmanager.cpp \
+	applicationaddin.hpp \
 	utils.hpp utils.cpp \
 	tray.hpp tray.cpp \
 	debug.hpp debug.cpp \
@@ -47,6 +48,11 @@ gnote_SOURCES = \
 	tagmanager.hpp tagmanager.cpp \
 	trie.hpp triehit.hpp \
 	watchers.hpp watchers.cpp \
+	notebooks/createnotebookdialog.hpp notebooks/createnotebookdialog.cpp \
+	notebooks/notebook.hpp notebooks/notebook.cpp \
+	notebooks/notebookapplicationaddin.hp notebooks/notebookapplicationaddin.cpp \
+	notebooks/notebookmanager.hpp notebooks/notebookmanager.cpp \
+	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
 	$(NULL)
 
 gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \

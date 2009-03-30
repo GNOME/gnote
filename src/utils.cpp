@@ -225,6 +225,7 @@ namespace gnote {
 																			 Gtk::ButtonsType btn_type, const Glib::ustring & header,
 																			 const Glib::ustring & msg)
 			: Gtk::Dialog()
+      , m_extra_widget(NULL)
 		{
 			set_has_separator(false);
 			set_border_width(5);
@@ -376,6 +377,18 @@ namespace gnote {
 																 Gtk::ACCEL_VISIBLE);
 			}
 		}
+
+
+    void HIGMessageDialog::set_extra_widget(Gtk::Widget *value)
+    {
+      if (m_extra_widget) {
+					m_extra_widget_vbox->remove (*m_extra_widget);
+      }
+				
+      m_extra_widget = value;
+      m_extra_widget->show_all ();
+      m_extra_widget_vbox->pack_start (*m_extra_widget, true, true, 0);
+    }
 
 
 #if 0

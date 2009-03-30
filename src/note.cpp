@@ -623,7 +623,7 @@ namespace gnote {
 		if (thetags.find(tag->normalized_name()) == thetags.end()) {
 			thetags[tag->normalized_name()] = tag;
 
-			m_signal_tag_added(*this, tag);
+			m_signal_tag_added(shared_from_this(), tag);
 
 			DBG_OUT ("Tag added, queueing save");
 			queue_save(OTHER_DATA_CHANGED);
@@ -642,7 +642,7 @@ namespace gnote {
 		thetags.erase(iter);
 		tag.remove_note(*this);
 
-		m_signal_tag_removed(*this, tag.normalized_name());
+		m_signal_tag_removed(shared_from_this(), tag.normalized_name());
 
 		DBG_OUT("Tag removed, queueing save");
 		queue_save(OTHER_DATA_CHANGED);

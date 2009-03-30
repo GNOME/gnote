@@ -21,5 +21,10 @@ namespace gnote {
   }
 
 
+  void AbstractAddin::dispose(bool )
+  {
+  }
+
+
 }
 

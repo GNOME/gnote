@@ -75,8 +75,8 @@ namespace gnote {
 			foreach (PreferenceTabAddin tabAddin in addin_manager.GetPreferenceTabAddins ()) {
 				Logger.Debug ("Adding preference tab addin: {0}", tabAddin.GetType ().Name);
 				try {
-					string tabName;
-					Gtk::Widget tabWidget;
+          std::string tabName;
+					Gtk::Widget *tabWidget;
 					if (tabAddin.GetPreferenceTabWidget (this, out tabName, out tabWidget) == true) {
 						notebook->append_page (tabWidget, new Gtk::Label (tabName));
 					}

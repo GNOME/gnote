@@ -50,8 +50,10 @@ private:
 	// <summary>
 	// The key for this dictionary is Tag.Name.ToLower ().
 	// </summary>
-	std::map<std::string, Gtk::TreeIter> m_tag_map;
-	std::map<std::string, Tag::Ptr>  m_internal_tags;
+  typedef std::map<std::string, Gtk::TreeIter> TagMap;
+	TagMap m_tag_map;
+  typedef std::map<std::string, Tag::Ptr> InternalMap;
+	InternalMap m_internal_tags;
 	
 	sigc::signal<void, Tag::Ptr, const Gtk::TreeIter &> m_signal_tag_added;
 	sigc::signal<void, const std::string &> m_signal_tag_removed;

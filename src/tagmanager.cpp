@@ -204,22 +204,24 @@ namespace gnote {
 		}
 	}
   
-#if 0
 	std::list<Tag::Ptr> TagManager::all_tags()
 	{
 		std::list<Tag::Ptr> temp;
 				
 		// Add in the system tags first
-		temp.AddRange (internal_tags.Values);
+    foreach(const InternalMap::value_type & value, m_internal_tags) {
+      temp.push_back(value.second);
+    }
 		
 		// Now all the other tags
-		foreach (const Gtk::TreeIter & iter, m_tag_map){
-			temp.Add(tags.GetValue (iter, 0) as Tag);
+		foreach (const TagMap::value_type & value, m_tag_map){
+      Tag::Ptr tag;
+      value.second->get_value(0, tag);      
+			temp.push_back(tag);
 		}
 				
 		return temp;
 	}
-#endif
 
 }
 

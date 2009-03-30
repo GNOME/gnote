@@ -38,6 +38,10 @@ namespace gnote {
     size_t trie_max_length();
     TrieHit<Note::Ptr>::ListPtr find_trie_matches(const std::string &);
 
+    AddinManager & get_addin_manager()
+      {
+        return *m_addin_mgr;
+      }
 		const std::string & start_note_uri() const
 			{ return m_start_note_uri; }
 		Note::Ptr find(const std::string &) const;

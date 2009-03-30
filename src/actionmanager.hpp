@@ -41,6 +41,10 @@ public:
     {
       return m_ui;
     }
+  Glib::RefPtr<Gdk::Pixbuf> get_new_note() const
+    {
+      return m_newNote;
+    }
 private:
 	static ActionManager * s_instance;
 	Glib::RefPtr<Gtk::UIManager> m_ui;

@@ -78,6 +78,7 @@ namespace gnote {
       { return true; }
   protected:
     NoteSpellChecker()
+      : m_obj_ptr(NULL)
       {}
   private:
     void attach();
@@ -243,9 +244,9 @@ namespace gnote {
     virtual void on_note_opened ();
 
   private:
-    void on_tag_added(const Note&, const Tag::Ptr&);
+    void on_tag_added(const Note::Ptr&, const Tag::Ptr&);
     void on_tag_removing(const Note&, const Tag &);
-    void on_tag_removed(const Note&, const std::string&);
+    void on_tag_removed(const Note::Ptr&, const std::string&);
 
     sigc::connection m_on_tag_added_cid;
     sigc::connection m_on_tag_removing_cid;

@@ -97,9 +97,9 @@ public:
 
 	typedef sigc::signal<void, const Note::Ptr&, const std::string& > RenamedHandler;
 	typedef sigc::signal<void, const Note::Ptr&>                      SavedHandler;
-	typedef sigc::signal<void, const Note&, const Tag::Ptr&>     TagAddedHandler;
+	typedef sigc::signal<void, const Note::Ptr&, const Tag::Ptr&>     TagAddedHandler;
 	typedef sigc::signal<void, const Note&, const Tag &>         TagRemovingHandler;	
-	typedef sigc::signal<void, const Note&, const std::string&>  TagRemovedHandler;	
+	typedef sigc::signal<void, const Note::Ptr&, const std::string&>  TagRemovedHandler;	
 
 	typedef enum {
 		NO_CHANGE,
