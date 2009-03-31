@@ -808,7 +808,7 @@ namespace gnote {
 				}
 				else if(name == "tags") {
 					xmlpp::DomParser parser;
-					parser.parse_memory(xml.read_inner_xml());
+					parser.parse_memory(xml.read_outer_xml());
 					if(parser) {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = parse_tags (doc2->get_root_node());
@@ -1105,7 +1105,7 @@ namespace gnote {
 				}
 				else if(name == "tags") {
 					xmlpp::DomParser parser;
-					parser.parse_memory(xml.read_inner_xml());
+					parser.parse_memory(xml.read_outer_xml());
 					if(parser) {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = Note::parse_tags(doc2->get_root_node());
