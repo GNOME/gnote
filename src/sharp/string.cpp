@@ -36,9 +36,9 @@ namespace sharp {
   
   bool string_match_iregex(const std::string & source, const std::string & regex)  
   {
-    return boost::regex_match(boost::to_lower_copy(source), 
-                              boost::regex(regex,  
-                                           boost::regex_constants::icase));
+    return boost::regex_match(source, 
+                              boost::regex(regex, boost::regex::perl 
+                                           | boost::regex::icase));
   }
 
 	void string_split(std::vector<std::string> & split, const std::string & source,
@@ -116,7 +116,7 @@ namespace sharp {
       // NOT FOUND
       return -1;
     }
-    return iter.begin() - source2.begin();
+    return iter.begin() - source2.begin() + start_at;
   }
 
 
