@@ -5,6 +5,8 @@
 
 #include <string>
 #include <list>
+#include <memory>
+
 #include <gconf/gconf.h>
 
 #include <sigc++/signal.h>
@@ -21,7 +23,7 @@ namespace gnote {
 	class NoteManager 
 	{
 	public:
-		typedef boost::shared_ptr<NoteManager> Ptr;
+		typedef std::tr1::shared_ptr<NoteManager> Ptr;
 		typedef sigc::signal<void, const Note::Ptr &> ChangedHandler;
 		
 		NoteManager(const std::string & );

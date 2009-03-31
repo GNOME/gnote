@@ -3,8 +3,6 @@
 #ifndef _TRAYICON_HPP_
 #define _TRAYICON_HPP_
 
-#include <boost/shared_ptr.hpp>
-
 #include <gtkmm/statusicon.h>
 #include <gtkmm/imagemenuitem.h>
 
@@ -50,6 +48,7 @@ private:
 class Tray
 {
 public:
+  typedef std::tr1::shared_ptr<Tray> Ptr;
 	Tray(NoteManager &, TrayIcon &);
 
 	Gtk::Menu * make_tray_notes_menu();
@@ -74,7 +73,7 @@ public:
 	TrayIcon(NoteManager & manager);
 	~TrayIcon();
 
-	boost::shared_ptr<Tray> tray() const
+  Tray::Ptr tray() const
 		{ return m_tray; }
 
 	void show_menu(bool select_first_item);
@@ -92,8 +91,8 @@ public:
 	void show_about();
 	void quit();
 private:
-	boost::shared_ptr<Tray> m_tray;
-	boost::shared_ptr<PrefsKeybinder> m_keybinder;
+  Tray::Ptr                m_tray;
+  PrefsKeybinder::Ptr      m_keybinder;
 	Gtk::Menu               *m_context_menu;
 };
 

@@ -7,8 +7,7 @@
 #include <list>
 #include <string>
 #include <queue>
-#include <boost/shared_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
+#include <memory>
 
 #include <sigc++/signal.h>
 #include <gtkmm/textbuffer.h>
@@ -89,10 +88,10 @@ private:
 
 
 class Note 
-	: public boost::enable_shared_from_this<Note>
+	: public std::tr1::enable_shared_from_this<Note>
 {
 public:
-	typedef boost::shared_ptr<Note> Ptr;
+	typedef std::tr1::shared_ptr<Note> Ptr;
 	typedef std::list<Ptr> List;
 
 	typedef sigc::signal<void, const Note::Ptr&, const std::string& > RenamedHandler;

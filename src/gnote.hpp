@@ -6,8 +6,6 @@
 
 #include <string>
 
-#include <boost/shared_ptr.hpp>
-
 #include <gtkmm/icontheme.h>
 #include <gtkmm/statusicon.h>
 
@@ -54,7 +52,7 @@ private:
 	Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
 	static bool s_tray_icon_showing;
 	Glib::RefPtr<TrayIcon> m_tray_icon;
-	boost::shared_ptr<Tray> m_tray;
+  Tray::Ptr m_tray;
 	bool m_is_panel_applet;
 	PreferencesDialog *m_prefsdlg;
 };
