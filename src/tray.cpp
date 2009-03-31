@@ -571,10 +571,10 @@ namespace gnote {
 		return "";
 	}
 
-	void GConfKeybindingToAccel::add_accelerator (Gtk::MenuItem & item, const std::string & gconf_path)
+	void GConfKeybindingToAccel::add_accelerator (Gtk::MenuItem & /*item*/, const std::string & /*gconf_path*/)
 	{
-		guint keyval;
-		Gdk::ModifierType mods;
+//		guint keyval;
+//		Gdk::ModifierType mods;
 		
 // TODO
 //		if (Services.Keybinder.GetAccelKeys (gconf_path, out keyval, out mods)) {

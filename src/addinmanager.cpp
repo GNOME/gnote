@@ -1,6 +1,6 @@
 
 
-
+#include <boost/bind.hpp>
 
 #include "addinmanager.hpp"
 #include "watchers.hpp"
@@ -30,9 +30,8 @@ namespace gnote {
       delete value.second;
     }
     foreach(const NoteAddinMap::value_type & value, m_note_addins) {
-//      foreach(const typename NoteAddinMap::data_type::value_type & note_value, value.second) {
-//        delete note_value;
-//      }
+      std::for_each(value.second.begin(), value.second.end(), 
+                    boost::bind(&boost::checked_delete<NoteAddin>, _1));
     }
     foreach(const IdInfoMap::value_type & value, m_note_addin_infos) {
       delete value.second;

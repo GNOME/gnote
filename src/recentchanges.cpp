@@ -745,7 +745,7 @@ namespace gnote {
     m_clickX = ev->x;
     m_clickY = ev->y;
                 	
-    bool retval;
+    bool retval = false;
 
     switch (ev->type) {
     case GDK_2BUTTON_PRESS:

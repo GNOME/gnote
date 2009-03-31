@@ -326,11 +326,11 @@ namespace gnote {
 			!m_open_external_note_path.empty();
 	}
 
-	void GnoteCommandLine::parse(int & argc, char **&argv)
+	void GnoteCommandLine::parse(int & argc, char **& /*argv*/)
 	{
-		bool quit = false;
+//		bool quit = false;
 		for(int i = 0; i < argc; i++) {
-			const char * current = argv[i];
+//			const char * current = argv[i];
 			// TODO
 		}
 	}
