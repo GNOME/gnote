@@ -77,6 +77,12 @@ namespace sharp {
 		return boost::ends_with(source, with);
 	}
 
+
+  bool string_contains(const std::string & source, const std::string &search)
+  {
+    return string_index_of(source, search) != -1;
+  }
+
   int string_last_index_of(const std::string & source, const std::string & search)
   {
     boost::iterator_range<std::string::const_iterator> iter
@@ -98,6 +104,19 @@ namespace sharp {
       return -1;
     }
     return iter.begin() - source.begin();
+  }
+
+
+  int string_index_of(const std::string & source, const std::string & search, int start_at)
+  {
+    std::string source2(source.begin() + start_at, source.end());
+    boost::iterator_range<std::string::const_iterator> iter
+      = boost::find_first(source2, search);
+    if(iter.begin() == source2.end()) {
+      // NOT FOUND
+      return -1;
+    }
+    return iter.begin() - source2.begin();
   }
 
 

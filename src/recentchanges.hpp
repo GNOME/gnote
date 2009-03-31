@@ -129,9 +129,20 @@ private:
     Gtk::TreeModelColumn<std::string>                change_date;
     Gtk::TreeModelColumn<Note::Ptr>                  note;
   };
+  class RecentSearchColumnTypes
+    : public Gtk::TreeModelColumnRecord
+  {
+  public:
+    RecentSearchColumnTypes()
+      {
+        add(text);
+      }
+    Gtk::TreeModelColumn<std::string> text;
+  };
 
   NoteManager &       m_manager;
   Gtk::MenuBar       *m_menubar;
+  RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ComboBoxEntry  m_find_combo;
   Gtk::Button         m_clear_search_button;
   Gtk::CheckButton    m_case_sensitive;

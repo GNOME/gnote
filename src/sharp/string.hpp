@@ -42,7 +42,9 @@ namespace sharp {
 
 	bool string_starts_with(const std::string & source, const std::string & with);
   bool string_ends_with(const std::string & source, const std::string & with);
+  bool string_contains(const std::string & source, const std::string &);
   int string_index_of(const std::string & source, const std::string & with);
+  int string_index_of(const std::string & source, const std::string & with, int);
   int string_last_index_of(const std::string & source, const std::string & with);
 
 	std::string string_to_lower(const std::string & source);

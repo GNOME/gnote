@@ -44,6 +44,7 @@ gnote_SOURCES = \
 	preferencesdialog.hpp preferencesdialog.cpp \
 	recenttreeview.hpp \
 	recentchanges.hpp recentchanges.cpp \
+	search.hpp search.cpp \
 	tag.hpp tag.cpp \
 	tagmanager.hpp tagmanager.cpp \
 	trie.hpp triehit.hpp \

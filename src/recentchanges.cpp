@@ -65,11 +65,13 @@ namespace gnote {
     : utils::ForcedPresentWindow(_("Search All Notes"))
     , m_manager(m)
     , m_menubar(NULL)
+    , m_find_combo(Gtk::ListStore::create(m_find_combo_columns), 0)
     , m_clear_search_button(Gtk::Stock::CLEAR)
     , m_case_sensitive(_("C_ase Sensitive"), true)
     , m_content_vbox(false, 0)
     , m_matches_column(NULL)
     , m_tree(NULL)
+    , m_entry_changed_timeout(NULL)
     , m_clickX(0), m_clickY(0)
   {
     _init_static();
@@ -465,9 +467,9 @@ namespace gnote {
 				selected_notebook = notebooks::Notebook::Ptr();
 			}
 
-      Search::Results results =
+      Search::ResultsPtr results =
 				search.search_notes(text, m_case_sensitive.get_active(), selected_notebook);
-			foreach (const Search::Results::value_type & value, results){
+			foreach (const Search::Results::value_type & value, *results){
 				m_current_matches[value.first->uri()] = value.second;
 			}
 			
@@ -1209,7 +1211,7 @@ namespace gnote {
     if (!repeat) {
       s_previous_searches.push_front(text);
       Gtk::TreeIter iter 
-        = Glib::RefPtr<Gtk::TreeStore>::cast_dynamic(m_find_combo.get_model())->prepend();
+        = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(m_find_combo.get_model())->prepend();
       iter->set_value(0, text);
     }
   }
