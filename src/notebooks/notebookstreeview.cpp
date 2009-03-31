@@ -65,7 +65,7 @@ namespace gnote {
 				if (!note)
 					continue;
 				
-				DBG_OUT ("Dropped into notebook: %s", note->title().c_str());
+				DBG_OUT ("Dropped into notebook: %s", note->get_title().c_str());
 				
 				// TODO: If we ever support selecting multiple notes,
 				// we may want to double-check to see if there will be

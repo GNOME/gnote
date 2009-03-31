@@ -208,7 +208,7 @@ namespace gnote {
       return false;
     }
 
-    DBG_OUT ("Renaming note from %1% to %2%", get_note()->title().c_str(), title.c_str());
+    DBG_OUT ("Renaming note from %1% to %2%", get_note()->get_title().c_str(), title.c_str());
     get_note()->set_title(title);
     return true;
   }
@@ -705,7 +705,7 @@ namespace gnote {
       return;
     }
 
-    if (!contains_text (added->title())) {
+    if (!contains_text (added->get_title())) {
       return;
     }
 
@@ -719,11 +719,11 @@ namespace gnote {
       return;
     }
 
-    if (!contains_text (deleted->title())) {
+    if (!contains_text (deleted->get_title())) {
       return;
     }
 
-    std::string old_title_lower = sharp::string_to_lower(deleted->title());
+    std::string old_title_lower = sharp::string_to_lower(deleted->get_title());
 
     // Turn all link:internal to link:broken for the deleted note.
     utils::TextTagEnumerator enumerator(get_buffer(), m_link_tag);
@@ -745,7 +745,7 @@ namespace gnote {
     }
 
     // Highlight previously unlinked text
-    if (contains_text (renamed->title())) {
+    if (contains_text (renamed->get_title())) {
       highlight_note_in_block (renamed, get_buffer()->begin(), get_buffer()->end());
     }
 
@@ -764,13 +764,13 @@ namespace gnote {
       }
 
       DBG_OUT ("Replacing '%s' with '%s'",
-               range.text().c_str(), renamed->title().c_str());
+               range.text().c_str(), renamed->get_title().c_str());
 
       Gtk::TextIter start_iter = range.start();
       Gtk::TextIter end_iter = range.end();
       get_buffer()->erase (start_iter, end_iter);
       start_iter = range.start();
-      get_buffer()->insert_with_tag(start_iter, renamed->title(), m_link_tag);
+      get_buffer()->insert_with_tag(start_iter, renamed->get_title(), m_link_tag);
     }
   }
 
@@ -793,9 +793,9 @@ namespace gnote {
 			
     Note::Ptr hit_note = hit.value;
 
-    if (sharp::string_to_lower(hit.key) != sharp::string_to_lower(hit_note->title())) { // == 0 if same string  
+    if (sharp::string_to_lower(hit.key) != sharp::string_to_lower(hit_note->get_title())) { // == 0 if same string  
       DBG_OUT ("DoHighlight: '%s' links wrongly to note '%s'." , hit.key.c_str(), 
-               hit_note->title().c_str());
+               hit_note->get_title().c_str());
       return;
     }
 			
@@ -831,7 +831,7 @@ namespace gnote {
                                                  const Gtk::TextIter & end)
   {
     std::string buffer_text = sharp::string_to_lower(start.get_text (end));
-    std::string find_title_lower = sharp::string_to_lower(find_note->title());
+    std::string find_title_lower = sharp::string_to_lower(find_note->get_title());
     int idx = 0;
 
     while (true) {
@@ -1260,7 +1260,7 @@ namespace gnote {
   void NoteTagsWatcher::on_note_opened ()
   {
     // FIXME: Just for kicks, spit out the current tags
-    DBG_OUT ("%s tags:", get_note()->title().c_str());
+    DBG_OUT ("%s tags:", get_note()->get_title().c_str());
     foreach (const Tag::Ptr & tag, get_note()->tags()) {
       DBG_OUT ("\t%s", tag->name().c_str());
     }
@@ -1268,13 +1268,13 @@ namespace gnote {
 
   void NoteTagsWatcher::on_tag_added(const Note::Ptr& note, const Tag::Ptr& tag)
   {
-    DBG_OUT ("Tag added to %s: %s", note->title().c_str(), tag->name().c_str());
+    DBG_OUT ("Tag added to %s: %s", note->get_title().c_str(), tag->name().c_str());
   }
 
 
   void NoteTagsWatcher::on_tag_removing(const Note& note, const Tag & tag)
   {
-    DBG_OUT ("Removing tag from %s: %s", note.title().c_str(), tag.name().c_str());
+    DBG_OUT ("Removing tag from %s: %s", note.get_title().c_str(), tag.name().c_str());
   }
 
 

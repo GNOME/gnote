@@ -40,7 +40,8 @@ namespace gnote {
 			if (templateNote) {
 				// Use the body from the template note
         std::string xmlContent = sharp::string_replace_all(templateNote->xml_content(), 
-                                                       templateNote->title(), note->title());
+                                                           templateNote->get_title(), 
+                                                           note->get_title());
 				note->set_xml_content(xmlContent);
 			}
 			

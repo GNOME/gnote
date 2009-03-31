@@ -27,7 +27,7 @@
 namespace gnote {
 
 	NoteWindow::NoteWindow(Note & note)
-		: ForcedPresentWindow(note.title())
+		: ForcedPresentWindow(note.get_title())
 		, m_note(note)
 		, m_global_keys(NULL)
 	{

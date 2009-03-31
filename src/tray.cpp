@@ -122,7 +122,7 @@ namespace gnote {
 
 	std::string NoteMenuItem::get_display_name(const Note::Ptr & note)
 	{
-		std::string display_name = note->title();
+		std::string display_name = note->get_title();
 		int max_length = 100;
 		
 		if (note->is_new()) {

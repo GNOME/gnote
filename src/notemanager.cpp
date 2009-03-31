@@ -354,7 +354,7 @@ namespace gnote {
 		m_notes.remove(note);
 		note->delete_note();
 
-		DBG_OUT("Deleting note '%s'.", note->title().c_str());
+		DBG_OUT("Deleting note '%s'.", note->get_title().c_str());
 
 //		if (NoteDeleted != null)
 		signal_note_deleted(note);
@@ -561,7 +561,7 @@ namespace gnote {
 	Note::Ptr NoteManager::find(const std::string & linked_title) const
 	{
 		foreach (const Note::Ptr & note, m_notes) {
-			if (sharp::string_to_lower(note->title()) == sharp::string_to_lower(linked_title))
+			if (sharp::string_to_lower(note->get_title()) == sharp::string_to_lower(linked_title))
 				return note;
 		}
 		return Note::Ptr();
@@ -616,7 +616,7 @@ namespace gnote {
 		m_title_trie = new TrieTree<Note::Ptr>(false /* !case_sensitive */);
 
 		foreach (const Note::Ptr & note, m_manager.get_notes()) {
-			m_title_trie->add_keyword (note->title(), note);
+			m_title_trie->add_keyword (note->get_title(), note);
 		}
 	}
 

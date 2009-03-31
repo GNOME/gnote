@@ -135,7 +135,7 @@ public:
 		{
 			return m_filepath;
 		}
-	const std::string & title() const;
+	const std::string & get_title() const;
 	void set_title(const std::string & new_tile);
 	void rename_without_link_update(const std::string & newTitle);
 	const std::string & xml_content()

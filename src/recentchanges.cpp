@@ -390,7 +390,7 @@ namespace gnote {
 
       Gtk::TreeIter iter = m_store->append();
       iter->set_value(0, s_note_icon);  /* icon */
-      iter->set_value(1, note->title()); /* title */
+      iter->set_value(1, note->get_title()); /* title */
       iter->set_value(2, nice_date);  /* change date */
       iter->set_value(3, note);      /* note */
       cnt++;
@@ -699,7 +699,7 @@ namespace gnote {
     selection_data.set ("text/uri-list", uris.c_str());
                 	
     if (selected_notes.size() == 1) {
-      selection_data.set_text(selected_notes.front()->title());
+      selection_data.set_text(selected_notes.front()->get_title());
     }
     else {
       selection_data.set_text(_("Notes"));
@@ -1339,7 +1339,8 @@ namespace gnote {
     if (templateNote) {
       // Use the body from the template note
       std::string xmlContent = sharp::string_replace_first(templateNote->xml_content(), 
-                                                      templateNote->title(), note->title());
+                                                           templateNote->get_title(), 
+                                                           note->get_title());
       note->set_xml_content(xmlContent);
     }
 			

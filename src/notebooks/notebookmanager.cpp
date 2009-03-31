@@ -30,11 +30,11 @@ namespace gnote {
      m_filteredNotebooks->set_visible_func(
        sigc::ptr_fun(&NotebookManager::filter_notebooks));
 			
-     AllNotesNotebook::Ptr allNotesNotebook(new AllNotesNotebook ());
+     Notebook::Ptr allNotesNotebook(new AllNotesNotebook ());
      Gtk::TreeIter iter = m_notebooks->append ();
      iter->set_value(0, Notebook::Ptr(allNotesNotebook));
 			
-     UnfiledNotesNotebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook ());
+     Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook ());
      iter = m_notebooks->append ();
      iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
 
@@ -428,15 +428,8 @@ namespace gnote {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
       if (!notebook || std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook)) {
-        if(notebook) {
-          DBG_OUT("notebook %s = false", notebook->get_name().c_str());
-        }
-        else {
-          DBG_OUT("notebook is null");
-        }
         return false;
       }
-      DBG_OUT("notebook %s = true", notebook->get_name().c_str());
       return true;
     }
 

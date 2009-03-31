@@ -402,7 +402,7 @@ namespace gnote {
 	int Note::get_hash_code() const
 	{
 		std::tr1::hash<std::string> h;
-		return h(title());
+		return h(get_title());
 	}
 
   /// <summary>
@@ -658,11 +658,6 @@ namespace gnote {
 		
 	bool Note::contains_tag(const Tag::Ptr & tag) const
 	{
-		if(!tag) {
-			// REMOVE
-			DBG_OUT("NULL tag");
-			return false;
-		}
 		const NoteData::TagMap & thetags(m_data.data().tags());
 		return (thetags.find(tag->normalized_name()) != thetags.end());
 	}
@@ -702,7 +697,7 @@ namespace gnote {
 	}
 
 
-	const std::string & Note::title() const
+	const std::string & Note::get_title() const
 	{
 		return m_data.data().title();
 	}
