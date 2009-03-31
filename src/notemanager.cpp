@@ -10,6 +10,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/main.h>
 
+#include "applicationaddin.hpp"
 #include "debug.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -303,17 +304,16 @@ namespace gnote {
 	bool NoteManager::on_exiting_event()
 	{
 		// Call ApplicationAddin.Shutdown () on all the known ApplicationAddins
-		// TODO
-#if 0
-		foreach (ApplicationAddin addin in addin_mgr.GetApplicationAddins ()) {
+		foreach (ApplicationAddin* addin, m_addin_mgr->get_application_addins ()) {
 			try {
-				addin.Shutdown ();
-			} catch (Exception e) {
-				Logger.Warn ("Error calling {0}.Shutdown (): {1}",
-										 addin.GetType ().ToString (), e.Message);
+				addin->shutdown ();
+			} 
+      catch (const sharp::Exception & e) {
+        DBG_OUT("Error calling %s.Shutdown (): %s",
+                typeid(*addin).name(), e.what());
 			}
 		}
-#endif
+
 
 		DBG_OUT("Saving unsaved notes...");
 			
