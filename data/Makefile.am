@@ -62,6 +62,7 @@ noinst_DATA = 			\
 
 
 EXTRA_DIST = 					\
+	UIManagerLayout.xml                     \
 	$(desktop_in_files)     		\
 	$(pkgconfig_in_files)			\
 	$(schemas_in_files)     		\

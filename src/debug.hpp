@@ -21,10 +21,12 @@
 #define __UTILS_DEBUG_H__
 
 #ifdef __GNUC__
-// we have too mark this as a system header because otherwise GCC barfs 
+// we have to mark this as a system header because otherwise GCC barfs 
 // on variadic macros.
 #pragma GCC system_header
 #endif
+
+#include <assert.h>
 
 namespace utils {
 

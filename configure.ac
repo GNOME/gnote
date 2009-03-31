@@ -97,8 +97,6 @@ BOOST_BIND
 BOOST_CONVERSION
 BOOST_FILESYSTEM
 BOOST_FORMAT
-BOOST_FUNCTION
-BOOST_SMART_PTR
 BOOST_REGEX
 BOOST_TEST([s])
 
@@ -106,7 +104,7 @@ AC_LANG_PUSH(C++)
 if test "$GCC" = "yes"; then
         GNOTE_BUILD_CONFIG="$GNOTE_BUILD_CONFIG gcc-options="
         for option in -Wall -Wextra -Wsign-compare -Wpointer-arith \
-                      -Wchar-subscripts -Wwrite-strings -Wmissing-noreturn \
+                      -Wchar-subscripts -Wwrite-strings \
                       -Wunused -Wpointer-arith -Wshadow -fshow-column ; do
                 SAVE_CXXFLAGS="$CXXFLAGS"
                 CXXFLAGS="$CXXFLAGS $option"

@@ -1,7 +1,7 @@
 
 
 
-INCLUDE = -I$(top_srcdir)
+INCLUDES = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@LIBXMLPP_CFLAGS@ @GCONF_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ \
@@ -20,9 +20,11 @@ gnote_SOURCES = \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
 	sharp/exception.hpp sharp/exception.cpp \
+	sharp/foreach.hpp \
 	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
 	sharp/string.hpp sharp/string.cpp \
 	sharp/uri.hpp sharp/uri.cpp \
+	sharp/uuid.hpp \
 	sharp/xmlconvert.hpp sharp/xmlconvert.cpp \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
 	gnote.cpp gnote.hpp \
@@ -30,6 +32,7 @@ gnote_SOURCES = \
 	actionmanager.hpp actionmanager.cpp \
 	addinmanager.hpp addinmanager.cpp \
 	applicationaddin.hpp \
+	contrast.hpp \
 	utils.hpp utils.cpp \
 	tray.hpp tray.cpp \
 	debug.hpp debug.cpp \
@@ -42,16 +45,18 @@ gnote_SOURCES = \
 	notewindow.hpp notewindow.cpp \
 	preferences.hpp preferences.cpp \
 	preferencesdialog.hpp preferencesdialog.cpp \
+	prefskeybinder.hpp \
 	recenttreeview.hpp \
 	recentchanges.hpp recentchanges.cpp \
 	search.hpp search.cpp \
 	tag.hpp tag.cpp \
 	tagmanager.hpp tagmanager.cpp \
 	trie.hpp triehit.hpp \
+	undo.hpp \
 	watchers.hpp watchers.cpp \
 	notebooks/createnotebookdialog.hpp notebooks/createnotebookdialog.cpp \
 	notebooks/notebook.hpp notebooks/notebook.cpp \
-	notebooks/notebookapplicationaddin.hp notebooks/notebookapplicationaddin.cpp \
+	notebooks/notebookapplicationaddin.hpp notebooks/notebookapplicationaddin.cpp \
 	notebooks/notebookmanager.hpp notebooks/notebookmanager.cpp \
 	notebooks/notebookmenuitem.hpp notebooks/notebookmenuitem.cpp \
 	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
