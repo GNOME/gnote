@@ -35,6 +35,7 @@ class AddinManager
 {
 public:
 	AddinManager(const std::string & conf_dir);
+  ~AddinManager();
 
 	void load_addins_for_note(const Note::Ptr &);
   std::list<ApplicationAddin*> get_application_addins() const;

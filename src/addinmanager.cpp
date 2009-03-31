@@ -24,6 +24,20 @@ namespace gnote {
     initialize_sharp_addins();
   }
 
+  AddinManager::~AddinManager()
+  {
+    foreach(const AppAddinMap::value_type & value, m_app_addins) {
+      delete value.second;
+    }
+    foreach(const NoteAddinMap::value_type & value, m_note_addins) {
+//      foreach(const typename NoteAddinMap::data_type::value_type & note_value, value.second) {
+//        delete note_value;
+//      }
+    }
+    foreach(const IdInfoMap::value_type & value, m_note_addin_infos) {
+      delete value.second;
+    }
+  }
 
   void AddinManager::initialize_sharp_addins()
   {
