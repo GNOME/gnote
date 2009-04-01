@@ -66,6 +66,10 @@ dnl PKG_CHECK_MODULES(LIBGLADEMM, [libglademm-2.4 >= $LIBGLADEMM_VERSION])
 dnl PKG_CHECK_MODULES(LIBGNOMEUI, [libgnomeui-2.0 >= $LIBGNOMEUI_VERSION])
 dnl PKG_CHECK_MODULES(LIBGCONFMM, [gconfmm-2.6 >= $LIBGCONFMM_VERSION])
 
+dnl check for the ext2 uuid library. TODO replace it with something more portable
+AC_CHECK_HEADER(uuid/uuid.h,,[AC_MSG_ERROR("uuid header is missing (ext2progs)")])
+AC_CHECK_LIB(uuid,uuid_unparse_lower, ,[AC_MSG_ERROR("libuuid library is missing (ext2progs)")])
+
 #
 # If libpanelapplet available, use it to find .server install location.
 #
