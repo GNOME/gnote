@@ -10,7 +10,7 @@
 
 namespace sharp {
 
-	std::list<std::string> directory_get_files(const std::string & dir, const std::string & glob);
+	std::list<std::string> directory_get_files_with_ext(const std::string & dir, const std::string & ext);
 
 }
 

@@ -262,7 +262,7 @@ namespace gnote {
 	
 	void NoteManager::load_notes()
 	{
-		std::list<std::string> files = sharp::directory_get_files(m_notes_dir, "*.note");
+		std::list<std::string> files = sharp::directory_get_files_with_ext(m_notes_dir, ".note");
 
 		foreach(const std::string & file_path, files) {
 			try {
