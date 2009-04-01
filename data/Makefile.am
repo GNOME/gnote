@@ -52,7 +52,7 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in) Makefile
 @INTLTOOL_SERVER_RULE@
 
 
-man_MANS = tomboy.1
+man_MANS = gnote.1
 
 gnotedatadir = @datadir@/gnote
 gnotedata_DATA = UIManagerLayout.xml
