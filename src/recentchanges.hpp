@@ -127,8 +127,8 @@ private:
   void select_all_notes_notebook ();
   bool on_notebooks_tree_button_pressed(GdkEventButton *);
   bool on_notebooks_key_pressed(GdkEventKey *);
-  void on_note_added_to_notebook (const Note::Ptr & note, const notebooks::Notebook::Ptr & notebook);
-  void on_note_removed_to_notebook (const Note::Ptr & note, const notebooks::Notebook::Ptr & notebook);
+  void on_note_added_to_notebook (const Note & note, const notebooks::Notebook::Ptr & notebook);
+  void on_note_removed_to_notebook (const Note & note, const notebooks::Notebook::Ptr & notebook);
   std::string get_search_text();
   void save_position ();
   void restore_position();

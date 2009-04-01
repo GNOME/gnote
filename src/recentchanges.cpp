@@ -211,10 +211,11 @@ namespace gnote {
                         
     // Watch when notes are added to notebooks so the search
     // results will be updated immediately instead of waiting
-    // until the note's QueueSave () kicks in.
-// TODO
-//    Notebooks.NotebookManager.NoteAddedToNotebook += OnNoteAddedToNotebook;
-//    Notebooks.NotebookManager.NoteRemovedFromNotebook += OnNoteRemovedFromNotebook;
+    // until the note's queue_save () kicks in.
+    notebooks::NotebookManager::instance().signal_note_added_to_notebook()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_added_to_notebook));
+    notebooks::NotebookManager::instance().signal_note_added_to_notebook()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_removed_to_notebook));
                         
     Gtk::Main::signal_quit()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_exiting_event));
@@ -230,7 +231,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note));
     am ["DeleteNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete_note));
-#if 1 // TODO addins
+    // from notebook addin
     am ["NewNotebookNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_new_notebook_note));
     am ["OpenNotebookTemplateNoteAction"]->signal_activate()
@@ -239,7 +240,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_new_notebook));
     am ["DeleteNotebookAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete_notebook));
-#endif
+    // end notebook addin
     am ["CloseWindowAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
     if (Gnote::tray_icon_showing() == false)
@@ -1473,13 +1474,13 @@ namespace gnote {
     return false;
   }
 		
-  void NoteRecentChanges::on_note_added_to_notebook (const Note::Ptr & , 
+  void NoteRecentChanges::on_note_added_to_notebook (const Note & , 
                                                      const notebooks::Notebook::Ptr & )
   {
     update_results ();
   }
 		
-  void NoteRecentChanges::on_note_removed_to_notebook (const Note::Ptr & , 
+  void NoteRecentChanges::on_note_removed_to_notebook (const Note & , 
                                                        const notebooks::Notebook::Ptr & )
   {
     update_results ();
