@@ -513,6 +513,11 @@ namespace gnote {
 		}
 
 
+    TextRange::TextRange()
+    {
+    }
+
+
 		TextRange::TextRange(const Gtk::TextIter & _start,
 												 const Gtk::TextIter & _end) throw(sharp::Exception)
 		{

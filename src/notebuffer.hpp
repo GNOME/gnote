@@ -32,7 +32,6 @@
 #include <gtkmm/texttag.h>
 #include <gtkmm/widget.h>
 
-#include "undo.hpp"
 #include "notetag.hpp"
 #include "sharp/xmlwriter.hpp"
 
@@ -48,16 +47,17 @@ class NoteBuffer
 {
 public:
 	typedef Glib::RefPtr<NoteBuffer> Ptr;
-	typedef sigc::signal<void, int, int, PangoDirection> NewBulletHandler;
+	typedef sigc::signal<void, int, int, Pango::Direction> NewBulletHandler;
 	typedef sigc::signal<void, int, bool> ChangeDepthHandler;
 
 	bool get_enable_auto_bulleted_lists() const;
 	NoteBuffer(const NoteTagTable::Ptr &, Note &);
+  ~NoteBuffer();
 
 	// Signal that text has been inserted, and any active tags have
 	// been applied to the text.  This allows undo to pull any
 	// active tags from the inserted text.
-	sigc::signal<void, const Glib::ustring &, int *> signal_insert_text_with_tags;
+	sigc::signal<void, const Gtk::TextIter &, const Glib::ustring &, int> signal_insert_text_with_tags;
 	ChangeDepthHandler                               signal_change_text_depth;
 	NewBulletHandler                                 signal_new_bullet_inserted;
 
@@ -80,7 +80,7 @@ public:
 	void on_tag_changed(const Glib::RefPtr<Gtk::TextTag> &, bool);
 	UndoManager & undoer()
 		{ 
-			return m_undomanager; 
+			return *m_undomanager; 
 		}
 	std::string get_selection() const;
 	static void get_block_extents(Gtk::TextIter &, Gtk::TextIter &,
@@ -95,8 +95,8 @@ public:
 			change_cursor_depth(false);
 		}
 	void change_cursor_depth_directional(bool right);
-	void change_bullet_direction(Gtk::TextIter pos, PangoDirection);
-	void insert_bullet(Gtk::TextIter & iter, int depth, PangoDirection direction);
+	void change_bullet_direction(Gtk::TextIter pos, Pango::Direction);
+	void insert_bullet(Gtk::TextIter & iter, int depth, Pango::Direction direction);
 	void remove_bullet(Gtk::TextIter & iter);
 	void increase_depth(Gtk::TextIter & start);
 	void decrease_depth(Gtk::TextIter & start);
@@ -117,7 +117,7 @@ private:
 										const Gtk::TextIter & end_iter, bool adding);
 	void change_cursor_depth(bool increase);
 
-	UndoManager           m_undomanager;
+	UndoManager           *m_undomanager;
 	static const gunichar s_indent_bullets[];
 
 	// GODDAMN Gtk::TextBuffer. I hate you. Hate Hate Hate.

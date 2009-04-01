@@ -199,20 +199,20 @@ class DepthNoteTag
 public:
 	typedef Glib::RefPtr<DepthNoteTag> Ptr;
 
-	DepthNoteTag(int depth, PangoDirection direction);
+	DepthNoteTag(int depth, Pango::Direction direction);
 
 	int get_depth() const
 		{ 
 			return m_depth; 
 		}
-	PangoDirection get_direction() const
+  Pango::Direction get_direction() const
 		{
-			return PANGO_DIRECTION_LTR;
+			return Pango::DIRECTION_LTR;
 		}
 	virtual void write(sharp::XmlWriter &, bool) const;
 private:
 	int            m_depth;
-	PangoDirection m_direction;
+  Pango::Direction m_direction;
 };
 
 
@@ -259,7 +259,7 @@ public:
 	static bool tag_is_spell_checkable(const Glib::RefPtr<const Gtk::TextTag> & );
 	static bool tag_is_activatable(const Glib::RefPtr<Gtk::TextTag> & );
 	static bool tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & );
-	DepthNoteTag::Ptr get_depth_tag(int depth, PangoDirection direction);
+	DepthNoteTag::Ptr get_depth_tag(int depth, Pango::Direction direction);
 	DynamicNoteTag::Ptr create_dynamic_tag(const std::string & );
 	void register_dynamic_tag (const std::string & tag_name, const TagType & type);
 	bool is_dynamic_tag_registered(const std::string &);

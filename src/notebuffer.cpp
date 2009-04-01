@@ -31,6 +31,7 @@
 #include "notetag.hpp"
 #include "note.hpp"
 #include "preferences.hpp"
+#include "undo.hpp"
 
 #include "sharp/xmlwriter.hpp"
 #include "sharp/foreach.hpp"
@@ -49,6 +50,7 @@ namespace gnote {
 
 	NoteBuffer::NoteBuffer(const NoteTagTable::Ptr & tags, Note & note)
 		: Gtk::TextBuffer(tags)
+    , m_undomanager(new UndoManager(Ptr(this)))
 		, m_note(note)
 	{
 		
@@ -62,6 +64,11 @@ namespace gnote {
 		tags->signal_tag_changed().connect(sigc::mem_fun(*this, &NoteBuffer::on_tag_changed));
 	}
 
+
+  NoteBuffer::~NoteBuffer()
+  {
+    delete m_undomanager;
+  }
 
 	void NoteBuffer::toggle_active_tag(const std::string & tag_name)
 	{
@@ -156,7 +163,7 @@ namespace gnote {
 		DepthNoteTag::Ptr dn_tag = DepthNoteTag::Ptr::cast_dynamic(tag1);
 		if (!dn_tag) {
 			// Remove the tag from any bullets in the selection
-			m_undomanager.freeze_undo();
+			m_undomanager->freeze_undo();
 			Gtk::TextIter iter;
 			for (int i = start_char.get_line(); i <= end_char.get_line(); i++) {
 				iter = get_iter_at_line(i);
@@ -167,11 +174,11 @@ namespace gnote {
 					remove_tag(tag1, iter, next);
 				}
 			}
-			m_undomanager.thaw_undo();
+			m_undomanager->thaw_undo();
 		} 
 		else {
 			// Remove any existing tags when a depth tag is applied
-			m_undomanager.freeze_undo();
+			m_undomanager->freeze_undo();
 			foreach (const Glib::RefPtr<const Gtk::TextTag> & tag, start_char.get_tags()) {
 				DepthNoteTag::ConstPtr dn_tag2 = DepthNoteTag::ConstPtr::cast_dynamic(tag);
 				if (!dn_tag2) {
@@ -180,7 +187,7 @@ namespace gnote {
 					remove_tag(Glib::RefPtr<Gtk::TextTag>::cast_const(tag), start_char, end_char);
 				}
 			}
-			m_undomanager.thaw_undo();
+			m_undomanager->thaw_undo();
 		}
 	}
 
@@ -234,7 +241,7 @@ namespace gnote {
 			Gtk::TextIter insert_start(pos);
 			insert_start.backward_chars (text.size());
 
-			m_undomanager.freeze_undo();
+			m_undomanager->freeze_undo();
 			foreach (const Glib::RefPtr<Gtk::TextTag> & tag, insert_start.get_tags()) {
 				remove_tag(tag, insert_start, pos);
 			}
@@ -242,7 +249,7 @@ namespace gnote {
 			foreach (const Glib::RefPtr<Gtk::TextTag> & tag, m_active_tags) {
 				apply_tag(tag, insert_start, pos);
 			}
-			m_undomanager.thaw_undo();
+			m_undomanager->thaw_undo();
 		}
 
 		// See if we want to change the direction of the bullet
@@ -251,16 +258,16 @@ namespace gnote {
 
 		if (((pos.get_line_offset() - text.size()) == 2) &&
 				find_depth_tag(line_start)) {
-			PangoDirection direction = PANGO_DIRECTION_LTR;
+      Pango::Direction direction = Pango::DIRECTION_LTR;
 
 			if (text.size() > 0) {
-				direction = pango_unichar_direction(text[0]);
+				direction = Pango::Direction(pango_unichar_direction(text[0]));
 			}
 			change_bullet_direction(pos, direction);
 		}
 
 		// TODO make sure these are the right params
-		signal_insert_text_with_tags(text, &bytes);
+		signal_insert_text_with_tags(pos, text, bytes);
 	}
 
 
@@ -283,10 +290,10 @@ namespace gnote {
 				Gtk::TextIter first_char = iter;
 				first_char.set_line_offset(2);
 
-				PangoDirection direction = PANGO_DIRECTION_LTR;
+        Pango::Direction direction = Pango::DIRECTION_LTR;
 
 				if (first_char.get_char() > 0)
-					direction = pango_unichar_direction(first_char.get_char());
+					direction = Pango::Direction(pango_unichar_direction(first_char.get_char()));
 
 				change_bullet_direction(first_char, direction);
 			}
@@ -362,7 +369,7 @@ namespace gnote {
 					erase(prev, iter);
 				}
 					
-				m_undomanager.freeze_undo();
+				m_undomanager->freeze_undo();
 				int offset = iter.get_offset();
 				insert(iter, "\n");
 
@@ -371,13 +378,13 @@ namespace gnote {
 
 				// Set the direction of the bullet to be the same
 				// as the first character on the new line
-				PangoDirection direction = prev_depth->get_direction();
+        Pango::Direction direction = prev_depth->get_direction();
 				if ((iter.get_char() != '\n') && (iter.get_char() > 0)) {
-					direction = pango_unichar_direction(iter.get_char());
+					direction = Pango::Direction(pango_unichar_direction(iter.get_char()));
 				}
 
 				insert_bullet(start, prev_depth->get_depth(), direction);
-				m_undomanager.thaw_undo();
+				m_undomanager->thaw_undo();
 
 				signal_new_bullet_inserted(offset, prev_depth->get_depth(), direction);
 			}
@@ -398,9 +405,9 @@ namespace gnote {
 				
 			// Set the direction of the bullet to be the same as
 			// the first character after the '*' or '-'
-			PangoDirection direction = PANGO_DIRECTION_LTR;
+      Pango::Direction direction = Pango::DIRECTION_LTR;
 			if (end_iter.get_char() > 0)
-				direction = pango_unichar_direction(end_iter.get_char());
+				direction = Pango::Direction(pango_unichar_direction(end_iter.get_char()));
 
 			erase(start, end_iter);
 
@@ -417,9 +424,9 @@ namespace gnote {
 				iter = get_iter_at_mark(insert_mark);
 				iter.set_line_offset(0);
 
-				m_undomanager.freeze_undo();
+				m_undomanager->freeze_undo();
 				insert_bullet (iter, 0, direction);
-				m_undomanager.thaw_undo();
+				m_undomanager->thaw_undo();
 
 				signal_new_bullet_inserted(offset, 0, direction);
 			}
@@ -864,7 +871,7 @@ namespace gnote {
 		start.set_line_offset(0);
 		DepthNoteTag::Ptr start_depth = find_depth_tag (start);
 
-		bool rtl_depth = start_depth && (start_depth->get_direction() == PANGO_DIRECTION_RTL);
+		bool rtl_depth = start_depth && (start_depth->get_direction() == Pango::DIRECTION_RTL);
 		bool first_char_rtl = (start.get_char() > 0) &&
 			(pango_unichar_direction(start.get_char()) == PANGO_DIRECTION_RTL);
 		Gtk::TextIter next = start;
@@ -878,7 +885,7 @@ namespace gnote {
 			next.forward_sentence_end ();
 			next.backward_sentence_start ();
 			first_char_rtl = ((next.get_char() > 0) &&
-												(pango_unichar_direction(next.get_char() == PANGO_DIRECTION_RTL)));
+												(pango_unichar_direction(next.get_char() == Pango::DIRECTION_RTL)));
 		}
 
 		if ((rtl_depth || first_char_rtl) &&
@@ -913,14 +920,14 @@ namespace gnote {
 
 	// Change the writing direction (ie. RTL or LTR) of a bullet.
 	// This makes the bulleted line use the correct indent
-	void NoteBuffer::change_bullet_direction(Gtk::TextIter iter, PangoDirection direction)
+	void NoteBuffer::change_bullet_direction(Gtk::TextIter iter, Pango::Direction direction)
 	{
 		iter.set_line_offset(0);
 
 		DepthNoteTag::Ptr tag = find_depth_tag (iter);
 		if (tag) {
 			if ((tag->get_direction() != direction) &&
-					(direction != PANGO_DIRECTION_NEUTRAL)) {
+					(direction != Pango::DIRECTION_NEUTRAL)) {
 				NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(get_tag_table());
 
 				// Get the depth tag for the given direction
@@ -937,7 +944,7 @@ namespace gnote {
 	}
 
 
-	void NoteBuffer::insert_bullet(Gtk::TextIter & iter, int depth, PangoDirection direction)
+	void NoteBuffer::insert_bullet(Gtk::TextIter & iter, int depth, Pango::Direction direction)
 	{
 		NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(get_tag_table());
 
@@ -997,9 +1004,9 @@ namespace gnote {
 
 			// Insert the bullet using the same direction
 			// as the text on the line
-			PangoDirection direction = PANGO_DIRECTION_LTR;
+      Pango::Direction direction = Pango::DIRECTION_LTR;
 			if ((next.get_char() > 0) && (next.get_line() == start.get_line()))
-				direction = pango_unichar_direction(next.get_char());
+				direction = Pango::Direction(pango_unichar_direction(next.get_char()));
 
 			insert_bullet (start, 0, direction);
 		} 
@@ -1404,11 +1411,11 @@ namespace gnote {
 						if (curr_depth >= 0) {
 							if (xml.get_attribute ("dir") == "rtl") {
 								tag_start.tag =
-									note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_RTL);
+									note_table->get_depth_tag (curr_depth, Pango::DIRECTION_RTL);
 							} 
 							else {
 								tag_start.tag =
-									note_table->get_depth_tag (curr_depth, PANGO_DIRECTION_LTR);
+									note_table->get_depth_tag (curr_depth, Pango::DIRECTION_LTR);
 							}
 							list_stack.push_front (false);
 						} 

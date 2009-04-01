@@ -48,8 +48,6 @@ libgnote_a_SOURCES = \
 	addinmanager.hpp addinmanager.cpp \
 	applicationaddin.hpp \
 	contrast.hpp \
-	utils.hpp utils.cpp \
-	tray.hpp tray.cpp \
 	debug.hpp debug.cpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \
@@ -66,8 +64,10 @@ libgnote_a_SOURCES = \
 	search.hpp search.cpp \
 	tag.hpp tag.cpp \
 	tagmanager.hpp tagmanager.cpp \
+	tray.hpp tray.cpp \
 	trie.hpp triehit.hpp \
-	undo.hpp \
+	undo.hpp undo.cpp \
+	utils.hpp utils.cpp \
 	watchers.hpp watchers.cpp \
 	notebooks/createnotebookdialog.hpp notebooks/createnotebookdialog.cpp \
 	notebooks/notebook.hpp notebooks/notebook.cpp \

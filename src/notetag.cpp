@@ -312,7 +312,7 @@ namespace gnote {
 		}
 	}
 	
-	DepthNoteTag::DepthNoteTag(int depth, PangoDirection direction)
+	DepthNoteTag::DepthNoteTag(int depth, Pango::Direction direction)
 		: NoteTag("depth:" + boost::lexical_cast<std::string>(depth) 
 							+ ":" + boost::lexical_cast<std::string>((int)direction))
 		, m_depth(depth)
@@ -330,7 +330,7 @@ namespace gnote {
 
 				// Write the list items writing direction
 				xml.write_start_attribute ("dir");
-				if (get_direction() == PANGO_DIRECTION_RTL) {
+				if (get_direction() == Pango::DIRECTION_RTL) {
 					xml.write_string ("rtl");
 				}
 				else {
@@ -490,7 +490,7 @@ namespace gnote {
 	}
 	
 
-	DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth, PangoDirection direction)
+	DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth, Pango::Direction direction)
 	{
 		std::string name = "depth:" + boost::lexical_cast<std::string>(depth) 
 			+ ":" + boost::lexical_cast<std::string>((int)direction);
@@ -501,7 +501,7 @@ namespace gnote {
 			tag = DepthNoteTag::Ptr(new DepthNoteTag (depth, direction));
 			tag->property_indent().set_value(-14);
 
-			if (direction == PANGO_DIRECTION_RTL) {
+			if (direction == Pango::DIRECTION_RTL) {
 				tag->property_right_margin().set_value((depth+1) * 25);
 			}
 			else {

@@ -137,6 +137,7 @@ namespace gnote {
 		class TextRange
 		{
 		public:
+      TextRange();
 			TextRange(const Gtk::TextIter & start,
 								const Gtk::TextIter & end) throw(sharp::Exception);
 			const Glib::RefPtr<Gtk::TextBuffer> & buffer() const
