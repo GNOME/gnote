@@ -48,7 +48,7 @@ libgnote_a_SOURCES = \
 	actionmanager.hpp actionmanager.cpp \
 	addinmanager.hpp addinmanager.cpp \
 	applicationaddin.hpp \
-	contrast.hpp \
+	contrast.hpp contrast.cpp \
 	debug.hpp debug.cpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \

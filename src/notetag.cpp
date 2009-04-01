@@ -275,7 +275,7 @@ namespace gnote {
 
 	Gdk::Color NoteTag::render_foreground(ContrastPaletteColor symbol)
 	{
-		return Contrast::render_foreground_color(get_background(), symbol);
+		return contrast_render_foreground_color(get_background(), symbol);
 	}
 
 
@@ -380,7 +380,7 @@ namespace gnote {
 
 		tag = NoteTag::create("note-title", 0);
 		tag->property_underline() = Pango::UNDERLINE_SINGLE;
-		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_BLUE);
+		tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
 		tag->property_scale() = Pango::SCALE_XX_LARGE;
 		// FiXME: Hack around extra rewrite on open
 		tag->set_can_serialize(false);
@@ -396,7 +396,7 @@ namespace gnote {
 		tag = NoteTag::create("datetime", 0);
 		tag->property_scale() = Pango::SCALE_SMALL;
 		tag->property_style() = Pango::STYLE_ITALIC;
-		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_GREY);
+		tag->set_palette_foreground(CONTRAST_COLOR_GREY);
 		add (tag);
 
 		// Font sizes
@@ -421,17 +421,17 @@ namespace gnote {
 
 		tag = NoteTag::create("link:broken", NoteTag::CAN_ACTIVATE);
 		tag->property_underline() = Pango::UNDERLINE_SINGLE;
-		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_GREY);
+		tag->set_palette_foreground(CONTRAST_COLOR_GREY);
 		add (tag);
 
 		tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
 		tag->property_underline() = Pango::UNDERLINE_SINGLE;
-		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_BLUE);
+		tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
 		add (tag);
 
 		tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
 		tag->property_underline() = Pango::UNDERLINE_SINGLE;
-		tag->set_palette_foreground(CONTRAST_PALETTE_COLOR_BLUE);
+		tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
 		add (tag);
 	}
 

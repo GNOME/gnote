@@ -1,0 +1,52 @@
+== Background ==
+
+This is a simple, small library to do color palette optimization.  This is done
+by defining colors as volumetric regions within the CIE L*a*b* color space, and
+then selecting the point within those regions which provides for maximum
+readability.  Contrast is determined via a simple linear distance metric in the
+Lab color space, and the vector is "pushed" a bit further out in the case when
+the two colors are very close together.
+
+There's certainly room for improvement here, but this has worked very well so
+far for theme-based colors in XChat-GNOME (http://xchat-gnome.navi.cx).
+
+
+Some deeper explanation, fancy-pants pictures, and a little bit of history in
+the development of this approach can be found in these two blog entries:
+    http://david.navi.cx/blog/?p=94
+    http://david.navi.cx/blog/?p=99
+
+
+== Usage ==
+
+Feel free to pull these files into your source tree and edit the Makefile as
+needed.  If you have ideas about how to make this svn:externals friendly, please
+let me know!
+
+
+== License ==
+
+This is distributed under the MIT/X11 license.  I'd love to hear how you're
+using this, but you're under no obligations to tell me.
+
+
+Copyright (c) 2006-2007  David Trowbridge <trowbrds@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
