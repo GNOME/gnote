@@ -97,19 +97,19 @@ namespace notebooks {
     update_menu();
   }
 
-  void NotebookNoteAddin::on_note_added_to_notebook(const Note::Ptr & note, 
+  void NotebookNoteAddin::on_note_added_to_notebook(const Note & note, 
                                                     const Notebook::Ptr & notebook)
   {
-    if(note == get_note()) {
+    if(&note == get_note().get()) {
       update_notebook_button_label(notebook);
     }
   }
 
 
-  void NotebookNoteAddin::on_note_removed_from_notebook(const Note::Ptr & note, 
+  void NotebookNoteAddin::on_note_removed_from_notebook(const Note & note, 
                                                       const Notebook::Ptr &)
   {
-    if(note == get_note()) {
+    if(&note == get_note().get()) {
       update_notebook_button_label();
     }
   }

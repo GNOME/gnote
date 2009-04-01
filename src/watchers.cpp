@@ -1266,9 +1266,9 @@ namespace gnote {
     }
   }
 
-  void NoteTagsWatcher::on_tag_added(const Note::Ptr& note, const Tag::Ptr& tag)
+  void NoteTagsWatcher::on_tag_added(const Note& note, const Tag::Ptr& tag)
   {
-    DBG_OUT ("Tag added to %s: %s", note->get_title().c_str(), tag->name().c_str());
+    DBG_OUT ("Tag added to %s: %s", note.get_title().c_str(), tag->name().c_str());
   }
 
 

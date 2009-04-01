@@ -2,6 +2,7 @@
 
 #include "tagmanager.hpp"
 #include "debug.hpp"
+#include "note.hpp"
 #include "sharp/string.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/foreach.hpp"
@@ -194,7 +195,9 @@ namespace gnote {
 					DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
 					tag_removed = true;
 
-					tag->remove_all_notes();
+          foreach(Note * note, tag->get_notes()) {
+            note->remove_tag(tag);
+          }
 				}
 //			}
 		}

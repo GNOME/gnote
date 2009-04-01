@@ -30,8 +30,8 @@ namespace notebooks {
   private:
     void initialize_tool_button();
     void on_menu_shown();
-    void on_note_added_to_notebook(const Note::Ptr &, const Notebook::Ptr &);
-    void on_note_removed_from_notebook(const Note::Ptr &, const Notebook::Ptr &);
+    void on_note_added_to_notebook(const Note &, const Notebook::Ptr &);
+    void on_note_removed_from_notebook(const Note &, const Notebook::Ptr &);
     void on_new_notebook_menu_item();
     void update_notebook_button_label();
     void update_notebook_button_label(const Notebook::Ptr &);

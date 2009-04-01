@@ -112,7 +112,7 @@ namespace gnote {
 				// Since it's possible for the template note to already
 				// exist, we need to make sure it gets tagged.
 				templateNote->add_tag (notebook->get_tag());
-        m_note_added_to_notebook (templateNote, notebook);
+        m_note_added_to_notebook (*templateNote, notebook);
 //			}
 
 			return notebook;
@@ -130,8 +130,9 @@ namespace gnote {
 			
 //			lock (locker) {
         map_iter = m_notebookMap.find (normalized_name);
-			  if (map_iter == m_notebookMap.end())
+			  if (map_iter == m_notebookMap.end()) {
 					return;
+        }
 				
 				Gtk::TreeIter iter = map_iter->second;;
 				m_notebooks->erase (iter);
@@ -139,12 +140,10 @@ namespace gnote {
 				m_notebookMap.erase (map_iter);
 				
 				// Remove the notebook tag from every note that's in the notebook
-        notebook->get_tag()->remove_all_notes();
-        // TODO we MUST signal for each note...
-//				foreach (const Note::Ptr & note, notebook->get_tag()->get_notes()) {
-//					note->remove_tag (notebook->get_tag());
-//          m_note_removed_from_notebook (note, notebook);
-//				}
+				foreach (Note* note, notebook->get_tag()->get_notes()) {
+					note->remove_tag (notebook->get_tag());
+          m_note_removed_from_notebook (*note, notebook);
+				}
 //			}
     }
 
@@ -354,14 +353,14 @@ namespace gnote {
 			
 			if (currentNotebook) {
 				note->remove_tag (currentNotebook->get_tag());
-        m_note_removed_from_notebook(note, currentNotebook);
+        m_note_removed_from_notebook(*note, currentNotebook);
 			}
 			
 			// Only attempt to add the notebook tag when this
 			// menu item is not the "No notebook" menu item.
 			if (notebook && !std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook)) {
 				note->add_tag (notebook->get_tag());
-        m_note_added_to_notebook(note, notebook);
+        m_note_added_to_notebook(*note, notebook);
 			}
 			
 			return true;

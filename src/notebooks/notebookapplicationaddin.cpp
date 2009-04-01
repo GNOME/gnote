@@ -271,7 +271,7 @@ namespace gnote {
     }
 
 
-    void NotebookApplicationAddin::on_tag_added(const Note::Ptr& note, const Tag::Ptr& tag)
+    void NotebookApplicationAddin::on_tag_added(const Note & note, const Tag::Ptr& tag)
     {
       if (NotebookManager::instance().is_adding_notebook()) {
 				return;
@@ -313,7 +313,7 @@ namespace gnote {
 				return;
       }
 			
-      NotebookManager::instance().signal_note_added_to_notebook() (note, notebook);
+      NotebookManager::instance().signal_note_removed_from_notebook() (*note, notebook);
     }
 
     void NotebookApplicationAddin::on_note_added(const Note::Ptr & note)

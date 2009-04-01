@@ -28,7 +28,7 @@ public:
       return *s_instance;
     }
 
-  typedef sigc::signal<void, const Note::Ptr &, const Notebook::Ptr &> NotebookEventHandler;
+  typedef sigc::signal<void, const Note &, const Notebook::Ptr &> NotebookEventHandler;
   bool is_adding_notebook() const
     {
       return m_adding_notebook;

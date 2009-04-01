@@ -12,7 +12,7 @@ namespace gnote {
 	const char * Tag::SYSTEM_TAG_PREFIX = "system:";
 
 	class Tag::NoteMap
-		: public std::map<std::string, Note::Ptr>
+		: public std::map<std::string, Note *>
 	{
 	};
 
@@ -32,7 +32,7 @@ namespace gnote {
 	void Tag::add_note(Note & note)
 	{
 		if(m_notes->find(note.uri()) == m_notes->end()) {
-			(*m_notes)[note.uri()] = note.shared_from_this();
+			(*m_notes)[note.uri()] = &note;
 		}
 	}
 
@@ -64,17 +64,20 @@ namespace gnote {
 	}
 
 
+  std::list<Note *> Tag::get_notes()
+  {
+    std::list<Note *> l;
+		foreach (const NoteMap::value_type & value, *m_notes) {
+      l.push_back(value.second);
+    }
+    return l;
+  }
+
+
 	int Tag::popularity() const
 	{
 		return m_notes->size();
 	}
 
-
-	void Tag::remove_all_notes()
-	{
-		foreach (const NoteMap::value_type & value, *m_notes) {
-			value.second->remove_tag(*this);
-		}
-	}
 }
 

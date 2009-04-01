@@ -14,6 +14,7 @@
 
 #include <libxml++/parsers/textreader.h>
 #include <libxml++/parsers/domparser.h>
+#include <libxml++/nodes/textnode.h>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
@@ -623,7 +624,7 @@ namespace gnote {
 		if (thetags.find(tag->normalized_name()) == thetags.end()) {
 			thetags[tag->normalized_name()] = tag;
 
-			m_signal_tag_added(shared_from_this(), tag);
+			m_signal_tag_added(*this, tag);
 
 			DBG_OUT ("Tag added, queueing save");
 			queue_save(OTHER_DATA_CHANGED);
@@ -659,7 +660,7 @@ namespace gnote {
 	bool Note::contains_tag(const Tag::Ptr & tag) const
 	{
 		const NoteData::TagMap & thetags(m_data.data().tags());
-		return (thetags.find(tag->normalized_name()) != thetags.end());
+    return (thetags.find(tag->normalized_name()) != thetags.end());
 	}
 
 	void Note::add_child_widget(const Glib::RefPtr<Gtk::TextChildAnchor> & child_anchor,
@@ -838,13 +839,19 @@ namespace gnote {
 	std::list<std::string> Note::parse_tags(const xmlpp::Node *tagnodes)
 	{
 		std::list<std::string> tags;
-		xmlpp::NodeSet nodes = tagnodes->find("//tag");
+		xmlpp::NodeSet nodes = tagnodes->find("//*");
 		foreach(const xmlpp::Node * node, nodes) {
-			
-			const xmlpp::ContentNode * content = dynamic_cast<const xmlpp::ContentNode *>(node);
+			if(node->get_name() != "tag") {
+        continue;
+      }
+			const xmlpp::Element * content = dynamic_cast<const xmlpp::Element*>(node);
 			if(content) {
-				std::string tag = content->get_content();
-				tags.push_back(tag);
+        const xmlpp::TextNode * textnode = content->get_child_text();
+        if(textnode) {
+          std::string tag = textnode->get_content();
+          DBG_OUT("found tag %s", tag.c_str());
+          tags.push_back(tag);
+        }
 			}
 		}
 		return tags;
@@ -961,6 +968,8 @@ namespace gnote {
 
 	bool Note::is_special() const
 	{ 
+    DBG_OUT("start note URI = %s, uri = %s", m_manager.start_note_uri().c_str(),
+            m_data.data().uri().c_str());
 		return (m_manager.start_note_uri() == m_data.data().uri());
 	}
 

@@ -244,7 +244,7 @@ namespace gnote {
     virtual void on_note_opened ();
 
   private:
-    void on_tag_added(const Note::Ptr&, const Tag::Ptr&);
+    void on_tag_added(const Note&, const Tag::Ptr&);
     void on_tag_removing(const Note&, const Tag &);
     void on_tag_removed(const Note::Ptr&, const std::string&);
 

@@ -277,12 +277,16 @@ namespace gnote {
 				iter != notes.end(); ++iter) {
 			Note::Ptr note(*iter);
 			
-			if (note->is_special())
+			if (note->is_special()) {
+        DBG_OUT("skipping special note '%s'", note->get_title().c_str());
 				continue;
+      }
 			
 			// Skip template notes
-			if (note->contains_tag (template_tag))
+			if (note->contains_tag (template_tag)) {
+        DBG_OUT("skipping template '%s'", note->get_title().c_str());
 				continue;
+      }
 
 			bool show = false;
 
@@ -291,7 +295,8 @@ namespace gnote {
 			// list.
 			if (note->is_pinned()) {
 					show = true;
-			} else if ((note->is_opened() && note->get_window()->is_mapped()) ||
+			} 
+      else if ((note->is_opened() && note->get_window()->is_mapped()) ||
 								 (note->change_date() > days_ago) ||
 								 (list_size < min_size)) {
 				if (list_size <= max_size)

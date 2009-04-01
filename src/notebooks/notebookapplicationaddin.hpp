@@ -32,7 +32,7 @@ namespace gnote {
       void add_menu_items(Gtk::Menu *);
       void remove_menu_items(Gtk::Menu *);
       void on_new_notebook_menu_item();
-      void on_tag_added(const Note::Ptr&, const Tag::Ptr&);
+      void on_tag_added(const Note&, const Tag::Ptr&);
       void on_tag_removed(const Note::Ptr&, const std::string&);
       void on_note_added(const Note::Ptr &);
       void on_note_deleted(const Note::Ptr &);
