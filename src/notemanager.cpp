@@ -358,7 +358,7 @@ namespace gnote {
 					boost::filesystem::create_directory(m_backup_dir);
 				}
 				std::string backup_path 
-					= m_backup_dir + "/" + boost::filesystem::path(note->file_path()).filename();
+					= m_backup_dir + "/" + boost::filesystem::path(note->file_path()).leaf();
 					
 				if (boost::filesystem::exists(backup_path))
 					boost::filesystem::remove(backup_path);

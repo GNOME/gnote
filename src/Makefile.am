@@ -35,6 +35,7 @@ libgnote_a_SOURCES = \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
 	sharp/exception.hpp sharp/exception.cpp \
+	sharp/files.hpp sharp/files.cpp \
 	sharp/foreach.hpp \
 	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
 	sharp/string.hpp sharp/string.cpp \

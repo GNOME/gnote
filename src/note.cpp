@@ -47,6 +47,7 @@
 #include "utils.hpp"
 #include "debug.hpp"
 #include "sharp/exception.hpp"
+#include "sharp/files.hpp"
 #include "sharp/string.hpp"
 #include "sharp/xmlconvert.hpp"
 #include "sharp/xmlwriter.hpp"
@@ -416,7 +417,7 @@ namespace gnote {
 	/// </returns>
 	std::string Note::url_from_path(const std::string & filepath)
 	{
-		return "note://gnote/" + 	boost::filesystem::path(filepath).stem();
+    return "note://gnote/" + sharp::file_basename(filepath);
 	}
 
 	int Note::get_hash_code() const
