@@ -7,9 +7,15 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\"
 
+GNOTE_LIBS = @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
+	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_REGEX_LIBS@ \
+	@GTKSPELL_LIBS@ libgnote.a \
+	-luuid -L$(top_builddir)/libtomboy -ltomboy
+
+noinst_LIBRARIES = libgnote.a
 bin_PROGRAMS = gnote
-check_PROGRAMS = trietest stringtest
-TESTS = trietest stringtest
+check_PROGRAMS = trietest stringtest notetest
+TESTS = trietest stringtest notetest
 
 
 trietest_SOURCES = test/trietest.cpp \
@@ -20,7 +26,12 @@ stringtest_SOURCES = test/stringtest.cpp \
 	sharp/string.cpp
 stringtest_LDADD =  @BOOST_REGEX_LIBS@
 
-gnote_SOURCES = \
+notetest_SOURCES = test/notetest.cpp
+notetest_LDADD =  $(GNOTE_LIBS)
+
+gnote_SOURCES = main.cpp
+
+libgnote_a_SOURCES = \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
 	sharp/exception.hpp sharp/exception.cpp \
@@ -68,7 +79,5 @@ gnote_SOURCES = \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	$(NULL)
 
-gnote_LDADD =  @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
-	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_REGEX_LIBS@ \
-	@GTKSPELL_LIBS@ \
-	-luuid -L$(top_builddir)/libtomboy -ltomboy
+gnote_LDADD = $(GNOTE_LIBS)
+
