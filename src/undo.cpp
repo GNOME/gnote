@@ -2,6 +2,7 @@
 
 
 #include "sharp/exception.hpp"
+#include "debug.hpp"
 #include "notetag.hpp"
 #include "undo.hpp"
 #include "sharp/foreach.hpp"
@@ -165,7 +166,7 @@ namespace gnote {
   bool InsertAction::can_merge (const EditAction * action) const
   {
     const InsertAction * insert = dynamic_cast<const InsertAction*>(action);
-    if (insert) {
+    if (insert == NULL) {
       return false;
     }
 
@@ -582,7 +583,7 @@ namespace gnote {
       // Lock merges until a new undoable event comes in...
       m_try_merge = false;
 
-      if (!pop_from.empty() || push_to.size() == 1) {
+      if (pop_from.empty() || push_to.size() == 1) {
         m_undo_changed();
       }
     }
@@ -607,6 +608,7 @@ namespace gnote {
 
   void UndoManager::add_undo_action(EditAction * action)
   {
+    DBG_ASSERT(action, "action is NULL");
     if (m_try_merge && !m_undo_stack.empty()) {
       EditAction *top = m_undo_stack.top();
 
