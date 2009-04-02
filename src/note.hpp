@@ -275,7 +275,6 @@ class NoteArchiver
 {
 public:
 	static const char *CURRENT_VERSION;
-	static const char *DATE_TIME_FORMAT;
 	static NoteArchiver & instance();
 
 	static NoteData *read(const std::string & read_file, const std::string & uri);

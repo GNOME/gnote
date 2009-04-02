@@ -41,7 +41,7 @@ class DateTime
 {
 public:
 	DateTime();
-	explicit DateTime(time_t t);
+	explicit DateTime(time_t t, glong _usec = 0);
 	
 	DateTime & add_days(int days);
 	DateTime & add_hours(int hours);
@@ -54,9 +54,22 @@ public:
 
   std::string to_string(const char * format) const;
   std::string to_short_time_string() const;
+  std::string to_iso8601() const;
+
 	static DateTime now();
+  static DateTime from_iso8601(const std::string &);
   static int compare(const DateTime &, const DateTime &);
 
+  bool operator==(const DateTime & dt) const;
+
+  glong sec() const
+    {
+      return m_date.tv_sec;
+    }
+  glong usec() const
+    {
+      return m_date.tv_usec;
+    }
 private:
   // return the string formatted according to strftime
   std::string _to_string(const char * format, struct tm *) const;

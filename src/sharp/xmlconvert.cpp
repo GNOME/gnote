@@ -25,6 +25,7 @@
 
 
 #include <string>
+#include <boost/regex.hpp>
 
 #include "sharp/xmlconvert.hpp"
 
@@ -32,16 +33,14 @@
 
 namespace sharp {
 
-	DateTime XmlConvert::to_date_time(const std::string & date, const std::string & format)
+	DateTime XmlConvert::to_date_time(const std::string & date)
 	{
-		DBG_OUT("NOT IMPLEMENTED");
-		return DateTime();
+    return DateTime::from_iso8601(date);
 	}
 
-	std::string XmlConvert::to_string(const DateTime & date, const std::string & format)
+	std::string XmlConvert::to_string(const DateTime & date)
 	{
-		DBG_OUT("NOT IMPLEMENTED");
-		return "";
+    return date.to_iso8601();
 	}
 
 }

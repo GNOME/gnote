@@ -37,8 +37,8 @@ namespace sharp {
 	class XmlConvert
 	{
 	public:
-		static DateTime to_date_time(const std::string & date, const std::string & format);
-		static std::string to_string(const DateTime & date, const std::string & format);
+		static DateTime to_date_time(const std::string & date);
+		static std::string to_string(const DateTime & date);
 	};
 
 }

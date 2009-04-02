@@ -812,15 +812,15 @@ namespace gnote {
 				}
 				else if (name == "last-change-date") {
 					m_data.data().set_change_date(
-						sharp::XmlConvert::to_date_time(xml.read_string(), NoteArchiver::DATE_TIME_FORMAT));
+						sharp::XmlConvert::to_date_time(xml.read_string()));
 				}
 				else if(name == "last-metadata-change-date") {
 					m_data.data().metadata_change_date() =
-						sharp::XmlConvert::to_date_time(xml.read_string(), NoteArchiver::DATE_TIME_FORMAT);
+						sharp::XmlConvert::to_date_time(xml.read_string());
 				}
 				else if(name == "create-date") {
 					m_data.data().create_date() =
-						sharp::XmlConvert::to_date_time(xml.read_string (), NoteArchiver::DATE_TIME_FORMAT);
+						sharp::XmlConvert::to_date_time(xml.read_string ());
 				}
 				else if(name == "tags") {
 					xmlpp::DomParser parser;
@@ -1058,7 +1058,8 @@ namespace gnote {
 	}
 
 	const char *NoteArchiver::CURRENT_VERSION = "0.3";
-	const char *NoteArchiver::DATE_TIME_FORMAT = "yyyy-MM-ddTHH:mm:ss.fffffffzzz";
+//	const char *NoteArchiver::DATE_TIME_FORMAT = "%Y-%m-%dT%T.@7f@%z"; //"yyyy-MM-ddTHH:mm:ss.fffffffzzz";
+
 	NoteArchiver *NoteArchiver::s_instance = NULL;
 
 	NoteArchiver & NoteArchiver::instance()
@@ -1102,15 +1103,15 @@ namespace gnote {
 				}
 				else if(name == "last-change-date") {
 					note->set_change_date(
-						sharp::XmlConvert::to_date_time (xml.read_string(), DATE_TIME_FORMAT));
+						sharp::XmlConvert::to_date_time (xml.read_string()));
 				}
 				else if(name == "last-metadata-change-date") {
 					note->metadata_change_date() =
-						sharp::XmlConvert::to_date_time(xml.read_string(), DATE_TIME_FORMAT);
+						sharp::XmlConvert::to_date_time(xml.read_string());
 				}
 				else if(name == "create-date") {
 					note->create_date() =
-						sharp::XmlConvert::to_date_time (xml.read_string(), DATE_TIME_FORMAT);
+						sharp::XmlConvert::to_date_time (xml.read_string());
 				}
 				else if(name == "cursor-position") {
 					note->set_cursor_position(boost::lexical_cast<int>(xml.read_string()));
@@ -1236,18 +1237,18 @@ namespace gnote {
 
 		xml.write_start_element ("", "last-change-date", "");
 		xml.write_string (
-			sharp::XmlConvert::to_string (note.change_date(), DATE_TIME_FORMAT));
+			sharp::XmlConvert::to_string (note.change_date()));
 		xml.write_end_element ();
 
 		xml.write_start_element ("", "last-metadata-change-date", "");
 		xml.write_string (
-			sharp::XmlConvert::to_string (note.metadata_change_date(), DATE_TIME_FORMAT));
+			sharp::XmlConvert::to_string (note.metadata_change_date()));
 		xml.write_end_element ();
 
 		if (note.create_date().is_valid()) {
 			xml.write_start_element ("", "create-date", "");
 			xml.write_string (
-				sharp::XmlConvert::to_string (note.create_date(), DATE_TIME_FORMAT));
+				sharp::XmlConvert::to_string (note.create_date()));
 			xml.write_end_element ();
 		}
 

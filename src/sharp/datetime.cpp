@@ -41,10 +41,10 @@ namespace sharp {
 		m_date.tv_usec = -1;
 	}
 
-	DateTime::DateTime(time_t t)
+	DateTime::DateTime(time_t t, glong _usec)
 	{
 		m_date.tv_sec = t;
-		m_date.tv_usec = 0;		
+		m_date.tv_usec = _usec;
 	}
 
 	DateTime::DateTime(const GTimeVal & v)
@@ -103,6 +103,13 @@ namespace sharp {
     return _to_string("%R", localtime_r(&m_date.tv_sec, &result));
   }
 
+  std::string DateTime::to_iso8601() const
+  {
+    char *  iso8601 = g_time_val_to_iso8601(const_cast<GTimeVal*>(&m_date));
+    std::string retval(iso8601);
+    g_free(iso8601);
+    return retval;
+  }
 
 	DateTime DateTime::now()
 	{
@@ -110,6 +117,16 @@ namespace sharp {
 		g_get_current_time(&n);
 		return DateTime(n);
 	}
+
+  DateTime DateTime::from_iso8601(const std::string &iso8601)
+  {
+    DateTime retval;
+    if(g_time_val_from_iso8601(iso8601.c_str(), &retval.m_date)) {
+      return retval;
+    }
+    return DateTime();
+  }
+
 
   int DateTime::compare(const DateTime &a, const DateTime &b)
   {
@@ -120,6 +137,11 @@ namespace sharp {
     return 0;
   }
 
+  bool DateTime::operator==(const DateTime & dt) const
+  {
+    return (m_date.tv_sec == dt.m_date.tv_sec) 
+      && (m_date.tv_usec == dt.m_date.tv_usec);
+  }
 
 	bool DateTime::operator>(const DateTime & dt) const
 	{
