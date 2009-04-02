@@ -42,12 +42,11 @@
 
 namespace gnote {
 
-	NoteManager *Gnote::s_manager = NULL;
-
 	bool Gnote::s_tray_icon_showing = false;
 
 	Gnote::Gnote()
-		: m_is_panel_applet(false)
+    : m_manager(NULL)
+		, m_is_panel_applet(false)
 		, m_prefsdlg(NULL)
 	{
 	}
@@ -55,9 +54,7 @@ namespace gnote {
 	Gnote::~Gnote()
 	{
 		delete m_prefsdlg;
-// NOTE: this is dangerous. I do it for the sake of cleanup.
-// Safe as long as Gnote is a singleton.
-		delete s_manager;
+		delete m_manager;
 	}
 
 
@@ -74,23 +71,21 @@ namespace gnote {
 		m_icon_theme->append_search_path(DATADIR"/gnote/icons");
 
 		std::string note_path = get_note_path(cmd_line.note_path());
-		s_manager = new NoteManager(note_path);
+		m_manager = new NoteManager(note_path);
 
 		// TODO
 		// SyncManager::init()
 
-		ActionManager & am = *ActionManager::get_manager();
+		ActionManager & am(ActionManager::obj());
 		am.load_interface();
 //		register_remote_control(m_manager);
 		setup_global_actions();
 		
     std::list<ApplicationAddin*> addins;
-    addins = s_manager->get_addin_manager().get_application_addins();
+    addins = m_manager->get_addin_manager().get_application_addins();
     foreach(ApplicationAddin * addin, addins) {
       addin->initialize();
     }
-		// TODO
-		// addins. load + init
 
 		if(cmd_line.use_panel_applet()) {
 			s_tray_icon_showing = true;
@@ -159,7 +154,7 @@ namespace gnote {
     s_tray_icon_showing = m_tray_icon->is_embedded() 
 			&& m_tray_icon->get_visible();
 		if(!s_tray_icon_showing) {
-			ActionManager & am = *ActionManager::get_manager();
+			ActionManager & am(ActionManager::obj());
 			am["ShowSearchAllNotesAction"]->activate();
 		}
 		return false;
@@ -168,7 +163,7 @@ namespace gnote {
 
 	void Gnote::setup_global_actions()
 	{
-		ActionManager & am = *ActionManager::get_manager();
+		ActionManager & am(ActionManager::obj());
 		am["NewNoteAction"]->signal_activate()
 			.connect(sigc::mem_fun(*this, &Gnote::on_new_note_action));
 		am["QuitGNoteAction"]->signal_activate()

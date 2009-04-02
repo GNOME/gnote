@@ -30,12 +30,6 @@ namespace gnote {
 
 	const char * TagManager::TEMPLATE_NOTE_SYSTEM_TAG = "template";
 
-	TagManager & TagManager::instance()
-	{
-		static TagManager * s_instance = new TagManager();
-		return *s_instance;
-	}
-
   namespace {
     int compare_tags_sort_func (const Gtk::TreeIter & a, 
                                 const Gtk::TreeIter & b)

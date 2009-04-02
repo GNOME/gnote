@@ -36,7 +36,7 @@ namespace gnote {
 
     NotebooksTreeView::NotebooksTreeView(const Glib::RefPtr<Gtk::TreeModel> & model)
       : Gtk::TreeView(model)
-      , m_note_manager(Gnote::default_note_manager())
+      , m_note_manager(Gnote::obj().default_note_manager())
     {
 			// Set up the notebooksTree as a drag target so that notes
 			// can be dragged into the notebook.

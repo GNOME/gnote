@@ -287,15 +287,15 @@ namespace gnote {
 
   void NoteSpellChecker::shutdown ()
   {
-    // Do nothing.
+    detach();
   }
 
 #if FIXED_GTKSPELL
   void NoteSpellChecker::on_note_opened ()
   {
-    Preferences::get_preferences()->signal_setting_changed()
+    Preferences::obj().signal_setting_changed()
       .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_enable_spellcheck_changed));
-    if(Preferences::get_preferences()->get<bool>(Preferences::ENABLE_SPELLCHECKING)) {
+    if(Preferences::obj().get<bool>(Preferences::ENABLE_SPELLCHECKING)) {
       attach ();
     }
   }
@@ -970,13 +970,13 @@ namespace gnote {
 
   void NoteWikiWatcher::on_note_opened ()
   {
-    if ((bool) Preferences::get_preferences()->get<bool> (Preferences::ENABLE_WIKIWORDS)) {
+    if ((bool) Preferences::obj().get<bool> (Preferences::ENABLE_WIKIWORDS)) {
       m_on_insert_text_cid = get_buffer()->signal_insert().connect(
         sigc::mem_fun(*this, &NoteWikiWatcher::on_insert_text));
       m_on_delete_range_cid = get_buffer()->signal_erase().connect(
         sigc::mem_fun(*this, &NoteWikiWatcher::on_delete_range));
     }
-    Preferences::get_preferences()->signal_setting_changed()
+    Preferences::obj().signal_setting_changed()
       .connect(sigc::mem_fun(*this, &NoteWikiWatcher::on_enable_wikiwords_changed));
   }
 
@@ -1289,10 +1289,10 @@ namespace gnote {
 
   void NoteTagsWatcher::on_tag_removed(const Note::Ptr&, const std::string& tag_name)
   {
-    Tag::Ptr tag = TagManager::instance().get_tag (tag_name);
+    Tag::Ptr tag = TagManager::obj().get_tag (tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag->popularity());
     if (tag->popularity() == 0) {
-      TagManager::instance().remove_tag (tag);
+      TagManager::obj().remove_tag (tag);
     }
   }
 

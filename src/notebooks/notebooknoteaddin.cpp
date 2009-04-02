@@ -99,7 +99,7 @@ namespace notebooks {
       initialize_tool_button();
       m_toolButton->set_menu(*m_menu);
       // Disable the notebook button if this note is a template note
-      Tag::Ptr templateTag = TagManager::instance().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+      Tag::Ptr templateTag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       if (get_note()->contains_tag (templateTag)) {
         m_toolButton->set_sensitive(false);
 				

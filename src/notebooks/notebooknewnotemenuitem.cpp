@@ -54,7 +54,7 @@ namespace gnote {
       Note::Ptr templateNote = m_notebook->get_template_note ();
       Note::Ptr note;
 			
-			NoteManager & noteManager(Gnote::default_note_manager());
+			NoteManager & noteManager(Gnote::obj().default_note_manager());
 			note = noteManager.create ();
 			if (templateNote) {
 				// Use the body from the template note

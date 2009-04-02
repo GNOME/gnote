@@ -90,12 +90,12 @@ namespace gnote {
 		m_addin_mgr = NULL;
 		m_trie_controller = NULL;
 
-		Preferences * prefs = Preferences::get_preferences();
+		Preferences & prefs(Preferences::obj());
 		// Watch the START_NOTE_URI setting and update it so that the
 		// StartNoteUri property doesn't generate a call to
 		// Preferences.Get () each time it's accessed.
-		m_start_note_uri = prefs->get<std::string>(Preferences::START_NOTE_URI);
-		prefs->signal_setting_changed().connect(
+		m_start_note_uri = prefs.get<std::string>(Preferences::START_NOTE_URI);
+		prefs.signal_setting_changed().connect(
 			sigc::mem_fun(*this, &NoteManager::on_setting_changed));
 		m_note_template_title = _("New Note Template");
 
@@ -246,7 +246,7 @@ namespace gnote {
 			Note::Ptr start_note = create (_("Start Here"),
 																start_note_content);
 			start_note->queue_save (Note::CONTENT_CHANGED);
-			Preferences::get_preferences()->set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
+			Preferences::obj().set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
 
 			Note::Ptr links_note = create (_("Using Links in Gnote"),
 																links_note_content);
@@ -284,7 +284,7 @@ namespace gnote {
 		// Update the trie so addins can access it, if they want.
 		m_trie_controller->update ();
 
-		bool startup_notes_enabled = Preferences::get_preferences()->get<bool>(Preferences::ENABLE_STARTUP_NOTES);
+		bool startup_notes_enabled = Preferences::obj().get<bool>(Preferences::ENABLE_STARTUP_NOTES);
 
 		// Load all the addins for our notes.
 		// Iterating through copy of notes list, because list may be
@@ -314,7 +314,7 @@ namespace gnote {
 			// Attempt to find an existing Start Here note
 			Note::Ptr start_note = find (_("Start Here"));
 			if (start_note) {
-				Preferences::get_preferences()->set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
+				Preferences::obj().set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
 			}
 		}
 		
@@ -547,7 +547,7 @@ namespace gnote {
 			buffer->move_mark(buffer->get_insert(), buffer->end());
 
 			// Flag this as a template note
-			Tag::Ptr tag = TagManager::instance().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+			Tag::Ptr tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 			template_note->add_tag(tag);
 
 			template_note->queue_save(Note::CONTENT_CHANGED);

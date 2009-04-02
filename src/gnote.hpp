@@ -28,6 +28,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/statusicon.h>
 
+#include "base/singleton.hpp"
 #include "actionmanager.hpp"
 #include "tray.hpp"
 
@@ -37,15 +38,16 @@ class PreferencesDialog;
 class NoteManager;
 
 class Gnote
+  : public base::Singleton<Gnote>
 {
 public:
 	Gnote();
 	~Gnote();
 	int main(int argc, char **argv);
 	std::string get_note_path(const std::string & override_path);
-	static NoteManager & default_note_manager()
+	NoteManager & default_note_manager()
 		{
-			return *s_manager;
+			return *m_manager;
 		}
 
 	void setup_global_actions();
@@ -67,7 +69,7 @@ public:
       return s_tray_icon_showing;
     }
 private:
-	static NoteManager *s_manager;
+	NoteManager *m_manager;
 	Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
 	static bool s_tray_icon_showing;
 	Glib::RefPtr<TrayIcon> m_tray_icon;

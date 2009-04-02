@@ -256,7 +256,7 @@ namespace gnote {
 		button->add (*font_box);
 		button->show ();
 
-		std::string font_desc = Preferences::get_preferences()->get<std::string>(Preferences::CUSTOM_FONT_FACE);
+		std::string font_desc = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);
 		update_font_button (font_desc);
 
 		return button;
@@ -407,7 +407,7 @@ namespace gnote {
 
 		// Read from Preferences which service is configured and select it
 		// by default.  Otherwise, just select the first one in the list.
-		std::string addin_id = Preferences::get_preferences()->get<std::string>(
+		std::string addin_id = Preferences::obj().get<std::string>(
 			Preferences::SYNC_SELECTED_SERVICE_ADDIN);
 
 		Gtk::TreeIter active_iter;
@@ -620,13 +620,13 @@ namespace gnote {
 		Gtk::FontSelectionDialog *font_dialog =
 			new Gtk::FontSelectionDialog (_("Choose Note Font"));
 
-		std::string font_name = Preferences::get_preferences()->get<std::string>(Preferences::CUSTOM_FONT_FACE);
+		std::string font_name = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);
 		font_dialog->set_font_name(font_name);
 
 		if (Gtk::RESPONSE_OK == font_dialog->run()) {
 			if (font_dialog->get_font_name() != font_name) {
-				Preferences::get_preferences()->set<std::string>(Preferences::CUSTOM_FONT_FACE,
-																												 font_dialog->get_font_name());
+				Preferences::obj().set<std::string>(Preferences::CUSTOM_FONT_FACE,
+                                            font_dialog->get_font_name());
 
 				update_font_button (font_dialog->get_font_name());
 			}
@@ -656,7 +656,7 @@ namespace gnote {
 
   void  PreferencesDialog::open_template_button_clicked()
   {
-    NoteManager &manager = Gnote::default_note_manager();
+    NoteManager &manager = Gnote::obj().default_note_manager();
     Note::Ptr template_note = manager.get_or_create_template_note ();
 
     // Open the template note

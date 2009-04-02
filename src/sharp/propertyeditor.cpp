@@ -62,14 +62,14 @@ namespace sharp {
 	{
 		m_connection.block();
 		static_cast<Gtk::Entry &>(m_widget).set_text(
-			gnote::Preferences::get_preferences()->get<std::string>(m_key));
+			gnote::Preferences::obj().get<std::string>(m_key));
 		m_connection.unblock();				
 	}
 
 	void PropertyEditor::on_changed()
 	{
 		std::string txt = static_cast<Gtk::Entry &>(m_widget).get_text();
-		gnote::Preferences::get_preferences()->set<std::string>(m_key, txt);
+		gnote::Preferences::obj().set<std::string>(m_key, txt);
 	}
 
 
@@ -93,14 +93,14 @@ namespace sharp {
 	{
 		m_connection.block();
 		static_cast<Gtk::ToggleButton &>(m_widget).set_active(
-			gnote::Preferences::get_preferences()->get<bool>(m_key));
+			gnote::Preferences::obj().get<bool>(m_key));
 		m_connection.unblock();				
 	}
 
 	void PropertyEditorBool::on_changed()
 	{
 		bool active = static_cast<Gtk::ToggleButton &>(m_widget).get_active();
-		gnote::Preferences::get_preferences()->set<bool>(m_key, active);
+		gnote::Preferences::obj().set<bool>(m_key, active);
 		guard(active);
 	}
 

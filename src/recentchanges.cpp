@@ -98,7 +98,7 @@ namespace gnote {
     set_default_size(450,400);
     set_resizable(true);
 
-    add_accel_group(ActionManager::get_manager()->get_ui()->get_accel_group());
+    add_accel_group(ActionManager::obj().get_ui()->get_accel_group());
 
     m_menubar = create_menu_bar ();
 
@@ -224,7 +224,7 @@ namespace gnote {
 
   Gtk::MenuBar *NoteRecentChanges::create_menu_bar ()
   {
-    ActionManager &am = *ActionManager::get_manager();
+    ActionManager &am(ActionManager::obj());
     Gtk::MenuBar *menubar = dynamic_cast<Gtk::MenuBar*>(am.get_widget ("/MainWindowMenubar"));
 
     am ["OpenNoteAction"]->signal_activate()
@@ -603,7 +603,7 @@ namespace gnote {
       return false;
                         
     // Don't show the template notes in the list
-    Tag::Ptr template_tag = TagManager::instance().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     if (note->contains_tag (template_tag)) {
       return false;
     }
@@ -729,7 +729,7 @@ namespace gnote {
   void NoteRecentChanges::on_selection_changed()
   {
     Note::List selected_notes = get_selected_notes ();
-    ActionManager &am = *ActionManager::get_manager();
+    ActionManager &am(ActionManager::obj());
 
     if (selected_notes.empty()) {
       am ["OpenNoteAction"]->property_sensitive() = false;
@@ -781,7 +781,7 @@ namespace gnote {
     case GDK_BUTTON_PRESS:
       if (ev->button == 3) {
         Gtk::Menu *menu = dynamic_cast<Gtk::Menu*>(
-          ActionManager::get_manager()->get_widget("/MainWindowContextMenu"));
+          ActionManager::obj().get_widget("/MainWindowContextMenu"));
         popup_context_menu_at_location (menu, ev->x, ev->y);
                 			
         // Return true so that the base handler won't
@@ -1028,9 +1028,8 @@ namespace gnote {
     hide ();
     delete s_instance;
     s_instance = NULL;
-    ActionManager & am = *ActionManager::get_manager();
     if (Gnote::tray_icon_showing() == false) {
-      am ["QuitGNoteAction"]->activate();
+      ActionManager::obj()["QuitGNoteAction"]->activate();
     }
   }
 
@@ -1053,7 +1052,7 @@ namespace gnote {
       // Pop up the context menu if a note is selected
       Note::List selected_notes = get_selected_notes ();
       if (!selected_notes.empty()) {
-        Gtk::Menu *menu = dynamic_cast<Gtk::Menu*>(ActionManager::get_manager()->get_widget (
+        Gtk::Menu *menu = dynamic_cast<Gtk::Menu*>(ActionManager::obj().get_widget (
                                                      "/MainWindowContextMenu"));
         popup_context_menu_at_location (menu, 0, 0);
       }
@@ -1291,7 +1290,7 @@ namespace gnote {
   void NoteRecentChanges::on_notebook_selection_changed()
   {
     notebooks::Notebook::Ptr notebook = get_selected_notebook ();
-    ActionManager & am(*ActionManager::get_manager());
+    ActionManager & am(ActionManager::obj());
     if (!notebook) {
       // Clear out the currently selected tags so that no notebook is selected
       m_selected_tags.clear ();
@@ -1347,7 +1346,7 @@ namespace gnote {
     notebooks::Notebook::Ptr notebook = get_selected_notebook ();
     if (!notebook || std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
       // Just create a standard note (not in a notebook)
-      (*ActionManager::get_manager())["NewNoteAction"]->activate ();
+      ActionManager::obj()["NewNoteAction"]->activate ();
       return;
     }
 			
@@ -1436,11 +1435,11 @@ namespace gnote {
 
       Gtk::Menu *menu = NULL;
       if (rowClicked) {
-        menu = dynamic_cast<Gtk::Menu*>(ActionManager::get_manager()->get_widget (
+        menu = dynamic_cast<Gtk::Menu*>(ActionManager::obj().get_widget (
                                           "/NotebooksTreeContextMenu"));
       }
       else {
-        menu = dynamic_cast<Gtk::Menu*>(ActionManager::get_manager()->get_widget (
+        menu = dynamic_cast<Gtk::Menu*>(ActionManager::obj().get_widget (
                                           "/NotebooksTreeNoRowContextMenu"));
       }
 					
@@ -1465,7 +1464,7 @@ namespace gnote {
       if (!notebook || std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook))
         return true; // Don't pop open a submenu
 					
-      Gtk::Menu *menu = dynamic_cast<Gtk::Menu *>(ActionManager::get_manager()->get_widget (
+      Gtk::Menu *menu = dynamic_cast<Gtk::Menu *>(ActionManager::obj().get_widget (
                                                     "/NotebooksTreeContextMenu"));
       popup_context_menu_at_location (menu, 0, 0);
 
@@ -1518,21 +1517,21 @@ namespace gnote {
     get_position(x, y);
     get_size(width, height);
 		 
-    Preferences * prefs = Preferences::get_preferences();
-    prefs->set<int> (Preferences::SEARCH_WINDOW_X_POS, x);
-    prefs->set<int> (Preferences::SEARCH_WINDOW_Y_POS, y);
-    prefs->set<int> (Preferences::SEARCH_WINDOW_WIDTH, width);
-    prefs->set<int> (Preferences::SEARCH_WINDOW_HEIGHT, height);
+    Preferences & prefs(Preferences::obj());
+    prefs.set<int> (Preferences::SEARCH_WINDOW_X_POS, x);
+    prefs.set<int> (Preferences::SEARCH_WINDOW_Y_POS, y);
+    prefs.set<int> (Preferences::SEARCH_WINDOW_WIDTH, width);
+    prefs.set<int> (Preferences::SEARCH_WINDOW_HEIGHT, height);
   }
         
    
   void NoteRecentChanges::restore_position()
   {
-    Preferences * prefs = Preferences::get_preferences();
-    int x = prefs->get<int> (Preferences::SEARCH_WINDOW_X_POS);
-    int y = prefs->get<int> (Preferences::SEARCH_WINDOW_Y_POS);
-    int width = prefs->get<int> (Preferences::SEARCH_WINDOW_WIDTH);
-    int height = prefs->get<int> (Preferences::SEARCH_WINDOW_HEIGHT);
+    Preferences & prefs(Preferences::obj());
+    int x = prefs.get<int> (Preferences::SEARCH_WINDOW_X_POS);
+    int y = prefs.get<int> (Preferences::SEARCH_WINDOW_Y_POS);
+    int width = prefs.get<int> (Preferences::SEARCH_WINDOW_WIDTH);
+    int height = prefs.get<int> (Preferences::SEARCH_WINDOW_HEIGHT);
         	
 
     if((width == 0) || (height == 0)) {

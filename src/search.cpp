@@ -48,7 +48,7 @@ namespace gnote {
     ResultsPtr temp_matches(new Results);
 			
 			// Skip over notes that are template notes
-    Tag::Ptr template_tag = TagManager::instance().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
     foreach (const Note::Ptr & note, m_manager.get_notes()) {
       // Skip template notes

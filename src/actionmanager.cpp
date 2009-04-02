@@ -64,9 +64,6 @@
 
 namespace gnote {
 
-	ActionManager * ActionManager::s_instance = NULL;
-
-
 	ActionManager::ActionManager()
 		: m_ui(Gtk::UIManager::create())
 		, m_main_window_actions(Gtk::ActionGroup::create("MainWindow"))

@@ -65,16 +65,6 @@ namespace gnote {
 	const char * Preferences::SEARCH_WINDOW_HEIGHT = "/apps/gnote/search_window_height";
 
 
-	Preferences * Preferences::s_instance = NULL;
-
-	Preferences * Preferences::get_preferences()
-	{
-		if(!s_instance) {
-			s_instance = new Preferences();
-		}
-		return s_instance;
-	}
-
 	Preferences::Preferences()
 		: m_client(gconf_client_get_default())
 	{

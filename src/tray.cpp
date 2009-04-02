@@ -192,24 +192,24 @@ namespace gnote {
 	{
 		Gtk::Menu *menu;
 
-		ActionManager * am = ActionManager::get_manager();
+		ActionManager & am(ActionManager::obj());
 		
-		menu = (Gtk::Menu*)am->get_widget("/TrayIconMenu");
+		menu = (Gtk::Menu*)am.get_widget("/TrayIconMenu");
 		DBG_ASSERT(menu, "menu not found");
 		
-		bool enable_keybindings = Preferences::get_preferences()->get<bool>(Preferences::ENABLE_KEYBINDINGS);
+		bool enable_keybindings = Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS);
 		if (enable_keybindings) {
-			Gtk::MenuItem *item = (Gtk::MenuItem*)am->get_widget("/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
+			Gtk::MenuItem *item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
 			if(item) {
 				GConfKeybindingToAccel::add_accelerator(
 					*item, Preferences::KEYBINDING_CREATE_NEW_NOTE);
 			}
-			item = (Gtk::MenuItem*)am->get_widget("/TrayIconMenu/ShowSearchAllNotes");
+			item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/ShowSearchAllNotes");
 			if(item) {
 				GConfKeybindingToAccel::add_accelerator(
 					*item, Preferences::KEYBINDING_OPEN_RECENT_CHANGES);
 			}
-			item = (Gtk::MenuItem*)am->get_widget("/TrayIconMenu/OpenStartHereNote");
+			item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/OpenStartHereNote");
 			if(item) {
 				GConfKeybindingToAccel::add_accelerator(
 					*item, Preferences::KEYBINDING_OPEN_START_HERE);
@@ -246,7 +246,7 @@ namespace gnote {
 
 	void Tray::add_recently_changed_notes()
 	{
-		int min_size = Preferences::get_preferences()->get<int>(Preferences::MENU_NOTE_COUNT);
+		int min_size = Preferences::obj().get<int>(Preferences::MENU_NOTE_COUNT);
 		int max_size = 18;
 		int list_size = 0;
 		bool menuOpensUpward = m_trayicon.menu_opens_upward();
@@ -256,7 +256,7 @@ namespace gnote {
 		remove_recently_changed_notes();
 
 		// Assume menu opens downward, move common items to top of menu
-		ActionManager & am = *ActionManager::get_manager();
+		ActionManager & am(ActionManager::obj());
 		Gtk::MenuItem* newNoteItem = (Gtk::MenuItem*)am.get_widget(
 			"/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
 		Gtk::MenuItem* searchNotesItem = (Gtk::MenuItem*)am.get_widget(
@@ -286,7 +286,7 @@ namespace gnote {
 		days_ago.add_days(-3);
 
 		// Prevent template notes from appearing in the menu
-		Tag::Ptr template_tag = TagManager::instance()
+		Tag::Ptr template_tag = TagManager::obj()
 			.get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
 		// List the most recently changed notes, any currently
@@ -346,7 +346,7 @@ namespace gnote {
 
 			list_size++;
 
-			bool enable_keybindings = Preferences::get_preferences()->get<bool>(Preferences::ENABLE_KEYBINDINGS);
+			bool enable_keybindings = Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS);
 			if (enable_keybindings) {
 				GConfKeybindingToAccel::add_accelerator (
 					*item, Preferences::KEYBINDING_OPEN_START_HERE);
@@ -495,22 +495,22 @@ namespace gnote {
 
 	void TrayIcon::show_preferences()
 	{
-		(*ActionManager::get_manager())["ShowPreferencesAction"]->activate();
+		ActionManager::obj()["ShowPreferencesAction"]->activate();
 	}
 
 	void TrayIcon::show_help_contents()
 	{
-		(*ActionManager::get_manager())["ShowHelpAction"]->activate();
+		ActionManager::obj()["ShowHelpAction"]->activate();
 	}
 
 	void TrayIcon::show_about()
 	{
-		(*ActionManager::get_manager())["ShowAboutAction"]->activate();
+		ActionManager::obj()["ShowAboutAction"]->activate();
 	}
 
 	void TrayIcon::quit()
 	{
-		(*ActionManager::get_manager())["QuitGNoteAction"]->activate();
+		ActionManager::obj()["QuitGNoteAction"]->activate();
 	}
 
 	bool TrayIcon::on_exit()
@@ -543,7 +543,7 @@ namespace gnote {
 	{
 		std::string tip_text = _("GNote Notes");
 		
-		if (Preferences::get_preferences()->get<bool>(Preferences::ENABLE_KEYBINDINGS)) {
+		if (Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS)) {
 			std::string shortcut =
 				GConfKeybindingToAccel::get_shortcut (
 					Preferences::KEYBINDING_SHOW_NOTE_MENU);
@@ -578,7 +578,7 @@ namespace gnote {
 	std::string GConfKeybindingToAccel::get_shortcut (const std::string & gconf_path)
 	{
 		try {
-			std::string binding = Preferences::get_preferences()->get<std::string>(gconf_path);
+			std::string binding = Preferences::obj().get<std::string>(gconf_path);
 			if (binding.empty() ||
 					binding == "disabled") {
 				return "";

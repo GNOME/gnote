@@ -29,6 +29,8 @@ int main(int argc, char **argv)
 //		Glib::thread_init();
 //	}
 	Gtk::Main kit(argc, argv);
-	gnote::Gnote app;
-	return app.main(argc, argv);
+	gnote::Gnote *app = &gnote::Gnote::obj();
+	int retval = app->main(argc, argv);
+  delete app;
+  return retval;
 }

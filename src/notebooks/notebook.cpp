@@ -43,7 +43,7 @@ namespace notebooks {
   Notebook::Notebook(const std::string & name)
   {
     set_name(name);
-    m_tag = TagManager::instance().get_or_create_system_tag (
+    m_tag = TagManager::obj().get_or_create_system_tag (
         std::string(NOTEBOOK_TAG_PREFIX) + name);
   }
 
@@ -98,7 +98,7 @@ namespace notebooks {
 
   Note::Ptr Notebook::get_template_note() const
   {
-    NoteManager & noteManager = Gnote::default_note_manager();
+    NoteManager & noteManager = Gnote::obj().default_note_manager();
     Note::Ptr note = noteManager.find (m_template_note_title);
     if (!note) {
       note =
@@ -113,14 +113,14 @@ namespace notebooks {
       buffer->move_mark (buffer->get_insert(), buffer->end());
 
       // Flag this as a template note
-      Tag::Ptr tag = TagManager::instance()
+      Tag::Ptr tag = TagManager::obj()
         .get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       note->add_tag (tag);
 
       // Add on the notebook system tag so Tomboy
       // will persist the tag/notebook across sessions
       // if no other notes are added to the notebook.
-      tag = TagManager::instance()
+      tag = TagManager::obj()
         .get_or_create_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
       note->add_tag (tag);
 				
@@ -156,7 +156,7 @@ namespace notebooks {
 
   Note::Ptr SpecialNotebook::get_template_note() const
   {
-    return Gnote::default_note_manager().get_or_create_template_note();
+    return Gnote::obj().default_note_manager().get_or_create_template_note();
   }
 
 

@@ -829,8 +829,7 @@ namespace gnote {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = parse_tags (doc2->get_root_node());
 						foreach (const std::string & tag_str, tag_strings) {
-							DBG_OUT("TODO: create tag %s", tag_str.c_str());
-							Tag::Ptr tag = TagManager::instance().get_or_create_tag(tag_str);
+							Tag::Ptr tag = TagManager::obj().get_or_create_tag(tag_str);
 							add_tag(tag);
 						}
 					}
@@ -1001,8 +1000,7 @@ namespace gnote {
 
 	bool Note::is_pinned() const
 	{
-		std::string pinned_uris = Preferences::get_preferences()
-			->get<std::string>(Preferences::MENU_PINNED_NOTES);
+		std::string pinned_uris = Preferences::obj().get<std::string>(Preferences::MENU_PINNED_NOTES);
 		return (boost::find_first(pinned_uris, uri()));
 	}
 
@@ -1011,8 +1009,7 @@ namespace gnote {
 	{
 		std::string new_pinned;
 		// this is like a calle to is_pinned() but we want to reating the gconf value
-		std::string old_pinned = Preferences::get_preferences()
-			->get<std::string>(Preferences::MENU_PINNED_NOTES);
+		std::string old_pinned = Preferences::obj().get<std::string>(Preferences::MENU_PINNED_NOTES);
 		bool is_currently_pinned = (boost::find_first(old_pinned, uri()));
 
 		if (pinned == is_currently_pinned)
@@ -1030,7 +1027,7 @@ namespace gnote {
 				}
 			}
 		}
-		Preferences::get_preferences()->set<std::string>(Preferences::MENU_PINNED_NOTES, new_pinned);
+		Preferences::obj().set<std::string>(Preferences::MENU_PINNED_NOTES, new_pinned);
 	}
 
 	
@@ -1060,19 +1057,9 @@ namespace gnote {
 	const char *NoteArchiver::CURRENT_VERSION = "0.3";
 //	const char *NoteArchiver::DATE_TIME_FORMAT = "%Y-%m-%dT%T.@7f@%z"; //"yyyy-MM-ddTHH:mm:ss.fffffffzzz";
 
-	NoteArchiver *NoteArchiver::s_instance = NULL;
-
-	NoteArchiver & NoteArchiver::instance()
-	{
-		if(!s_instance) {
-			s_instance = new NoteArchiver();
-		}
-		return *s_instance;
-	}
-
 	NoteData *NoteArchiver::read(const std::string & read_file, const std::string & uri)
 	{
-		return instance()._read(read_file, uri);
+		return obj()._read(read_file, uri);
 	}
 
 
@@ -1135,7 +1122,7 @@ namespace gnote {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = Note::parse_tags(doc2->get_root_node());
 						foreach (const std::string & tag_str, tag_strings) {
-							Tag::Ptr tag = TagManager::instance().get_or_create_tag(tag_str);
+							Tag::Ptr tag = TagManager::obj().get_or_create_tag(tag_str);
 							note->tags()[tag->normalized_name()] = tag;
 						}
 					}
@@ -1167,7 +1154,7 @@ namespace gnote {
 	{
 		std::string str;
 		sharp::XmlWriter xml;
-		instance().write(xml, note);
+		obj().write(xml, note);
 		xml.close();
 		str = xml.to_string();
 		return str;
@@ -1176,7 +1163,7 @@ namespace gnote {
 
 	void NoteArchiver::write(const std::string & write_file, const NoteData & data)
 	{
-		instance().write_file(write_file, data);
+		obj().write_file(write_file, data);
 	}
 
 	void NoteArchiver::write_file(const std::string & _write_file, const NoteData & note)

@@ -29,15 +29,17 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/treemodelsort.h>
 
+#include "base/singleton.hpp"
 #include "tag.hpp"
 
 
 namespace gnote {
 
 class TagManager
+  : public  base::Singleton<TagManager>
 {
 public:
-	static TagManager & instance();
+	TagManager();
 
 	static const char * TEMPLATE_NOTE_SYSTEM_TAG;
 	Tag::Ptr get_tag (const std::string & tag_name) const;
@@ -51,7 +53,6 @@ public:
 		}
 	std::list<Tag::Ptr> all_tags();
 private:
-	TagManager();
 
 	class ColumnRecord
 		: public Gtk::TreeModelColumnRecord

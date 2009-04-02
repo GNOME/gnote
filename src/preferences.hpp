@@ -27,9 +27,12 @@
 #include <gconf/gconf-client.h>
 #include <sigc++/signal.h>
 
+#include "base/singleton.hpp"
+
 namespace gnote {
 
 	class Preferences 
+    : public base::Singleton<Preferences>
 	{
 	public:
 		typedef sigc::signal<void, Preferences*, GConfEntry*> NotifyChangeSignal;
@@ -71,7 +74,7 @@ namespace gnote {
 		static const char *SEARCH_WINDOW_WIDTH;
 		static const char *SEARCH_WINDOW_HEIGHT;
 
-
+		Preferences();
 		~Preferences();
 
 		template<typename T>
@@ -102,8 +105,6 @@ namespace gnote {
 				return get_default<T>(p.c_str());
 			}
 		
-		static Preferences * get_preferences();
-
 		sigc::signal<void, Preferences*, GConfEntry*> & signal_setting_changed()
 			{
 				return  m_signal_setting_changed;
@@ -113,9 +114,7 @@ namespace gnote {
 		guint add_notify(const char *ns, GConfClientNotifyFunc func, gpointer data);
 		void remove_notify(guint);
 	private:
-		Preferences();
 		Preferences(const Preferences &); // non implemented
-		static Preferences *s_instance;
 		GConfClient        *m_client;
 		guint               m_cnx;
 

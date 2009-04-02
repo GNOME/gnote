@@ -31,6 +31,7 @@
 #include <sigc++/signal.h>
 #include <gtkmm/textbuffer.h>
 
+#include "base/singleton.hpp"
 #include "tag.hpp"
 #include "notebuffer.hpp"
 #include "utils.hpp"
@@ -272,10 +273,10 @@ private:
 };
 
 class NoteArchiver
+  : public base::Singleton<NoteArchiver>
 {
 public:
 	static const char *CURRENT_VERSION;
-	static NoteArchiver & instance();
 
 	static NoteData *read(const std::string & read_file, const std::string & uri);
 	static std::string write_string(const NoteData & data);
@@ -289,11 +290,6 @@ public:
 
 protected:
 	NoteData *_read(const std::string & read_file, const std::string & uri);
-private:
-	NoteArchiver()
-		{}
-
-	static NoteArchiver *s_instance;
 };
 
 namespace noteutils {

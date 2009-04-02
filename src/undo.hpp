@@ -202,6 +202,7 @@ class UndoManager
 {
 public:
   UndoManager(const NoteBuffer::Ptr & buffer);
+  ~UndoManager();
 	bool get_can_undo()
     {
       return !m_undo_stack.empty();

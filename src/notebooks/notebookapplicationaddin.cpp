@@ -119,7 +119,7 @@ namespace gnote {
                              _("Notebooks"),
                              _("Create a new note in a notebook")));
           
-      ActionManager & am(*ActionManager::get_manager());
+      ActionManager & am(ActionManager::obj());
 			m_notebookUi = am.get_ui()->add_ui_from_string (uixml);
 			
       am.get_ui()->insert_action_group (m_actionGroup, 0);
@@ -163,7 +163,7 @@ namespace gnote {
         imageitem->property_image() = manage(new Gtk::Image(am.get_new_note()));
 			}
 
-      NoteManager & nm(Gnote::default_note_manager());
+      NoteManager & nm(Gnote::obj().default_note_manager());
 					
 			foreach (const Note::Ptr & note, nm.get_notes()) {
 				note->signal_tag_added().connect(
@@ -183,7 +183,7 @@ namespace gnote {
 
     void NotebookApplicationAddin::shutdown ()
     {
-      ActionManager & am(*ActionManager::get_manager());
+      ActionManager & am(ActionManager::obj());
       try {
         am.get_ui()->remove_action_group(m_actionGroup);
 			} 

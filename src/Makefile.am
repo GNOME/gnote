@@ -36,6 +36,7 @@ notetest_LDADD =  $(GNOTE_LIBS)
 gnote_SOURCES = main.cpp
 
 libgnote_a_SOURCES = \
+	base/singleton.hpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
 	sharp/exception.hpp sharp/exception.cpp \

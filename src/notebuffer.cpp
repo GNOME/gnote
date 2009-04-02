@@ -44,7 +44,7 @@ namespace gnote {
 
 	bool NoteBuffer::get_enable_auto_bulleted_lists() const
 	{
-		return Preferences::get_preferences()->get<bool>(Preferences::ENABLE_AUTO_BULLETED_LISTS);
+		return Preferences::obj().get<bool>(Preferences::ENABLE_AUTO_BULLETED_LISTS);
 	}
 	
 

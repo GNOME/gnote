@@ -561,6 +561,12 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &UndoManager::on_tag_removed));
   }
 
+
+  UndoManager::~UndoManager()
+  {
+    clear_action_stack(m_undo_stack);
+    clear_action_stack(m_redo_stack);
+  }
   
   void UndoManager::undo_redo(std::stack<EditAction *> & pop_from,
                               std::stack<EditAction *> & push_to, bool is_undo)

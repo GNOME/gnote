@@ -335,7 +335,7 @@ namespace gnote {
 			// Delete the template note
       Note::Ptr templateNote = notebook->get_template_note ();
 			if (templateNote) {
-				NoteManager & noteManager(Gnote::default_note_manager());
+				NoteManager & noteManager(Gnote::obj().default_note_manager());
 				noteManager.delete_note (templateNote);
 			}
     }
@@ -423,7 +423,7 @@ namespace gnote {
     void NotebookManager::load_notebooks()
 		{
 			Gtk::TreeIter iter;
-			foreach (const Tag::Ptr & tag, TagManager::instance().all_tags()) {
+			foreach (const Tag::Ptr & tag, TagManager::obj().all_tags()) {
 				// Skip over tags that aren't notebooks
 				if (!tag->is_system()
 						|| !sharp::string_starts_with(tag->name(),

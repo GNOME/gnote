@@ -124,7 +124,7 @@ namespace gnote {
 		// Don't set up Ctrl-W or Ctrl-N if Emacs is in use
 		bool using_emacs = false;
 		std::string gtk_key_theme = 
-			Preferences::get_preferences()->get<std::string>("/desktop/gnome/interface/gtk_key_theme");
+			Preferences::obj().get<std::string>("/desktop/gnome/interface/gtk_key_theme");
 		if (!gtk_key_theme.empty() && (gtk_key_theme == "Emacs"))
 			using_emacs = true;
 
@@ -172,12 +172,11 @@ namespace gnote {
 																		 Gtk::ACCEL_VISIBLE);
 
 		// Have Esc key close the note window
-		if (Preferences::get_preferences()->get<bool>(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE))
+		if (Preferences::obj().get<bool>(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE))
 			m_keypress_cid  = signal_key_press_event().connect(sigc::mem_fun(*this, &NoteWindow::on_key_pressed));
 
 		// Watch the escape setting in GConf
-		m_gconf_notify = Preferences::get_preferences()
-			->add_notify(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE,
+		m_gconf_notify = Preferences::obj().add_notify(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE,
 									 &NoteWindow::on_escape_setting_changed, this);
 
 		// Increase Indent
@@ -196,7 +195,7 @@ namespace gnote {
 	NoteWindow::~NoteWindow()
 	{
 		delete m_global_keys;
-		Preferences::get_preferences()->remove_notify(m_gconf_notify);
+		Preferences::obj().remove_notify(m_gconf_notify);
 	}
 
 
@@ -471,7 +470,7 @@ namespace gnote {
 
 	void NoteWindow::sync_item_selected ()
 	{
-		(*ActionManager::get_manager())["NoteSynchronizationAction"]->activate();
+		ActionManager::obj()["NoteSynchronizationAction"]->activate();
 	}
 
 	
@@ -601,7 +600,7 @@ namespace gnote {
 
 	void NoteWindow::create_new_note ()
 	{
-		(*ActionManager::get_manager())["NewNoteAction"]->activate();
+		ActionManager::obj()["NewNoteAction"]->activate();
 	}
 
 	void NoteWindow::search_button_clicked()
