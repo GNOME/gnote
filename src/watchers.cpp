@@ -94,7 +94,7 @@ namespace gnote {
     // event.  This means the window will flash if closed
     // with a name clash.
     get_window()->signal_unmap_event().connect(
-      sigc::mem_fun(*this, &NoteRenameWatcher::on_window_closed));
+      sigc::mem_fun(*this, &NoteRenameWatcher::on_window_closed), false);
 
     // Clean up title line
     buffer->remove_all_tags (get_title_start(), get_title_end());
@@ -227,7 +227,7 @@ namespace gnote {
       return false;
     }
 
-    DBG_OUT ("Renaming note from %1% to %2%", get_note()->get_title().c_str(), title.c_str());
+    DBG_OUT ("Renaming note from %s to %s", get_note()->get_title().c_str(), title.c_str());
     get_note()->set_title(title);
     return true;
   }
@@ -438,11 +438,11 @@ namespace gnote {
 
     Gtk::TextView * editor(get_window()->editor());
     editor->signal_button_press_event().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_button_press));
+      sigc::mem_fun(*this, &NoteUrlWatcher::on_button_press), false);
     editor->signal_populate_popup().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_populate_popup));
     editor->signal_popup_menu().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_popup_menu));
+      sigc::mem_fun(*this, &NoteUrlWatcher::on_popup_menu), false);
   }
 
   std::string NoteUrlWatcher::get_url(const Gtk::TextIter & start, const Gtk::TextIter & end)
@@ -516,24 +516,13 @@ namespace gnote {
 
     get_buffer()->remove_tag (m_url_tag, start, end);
 
-    boost::match_results<std::string::const_iterator> m;
     std::string s(start.get_slice(end));
-    DBG_OUT("matching %s with %s", s.c_str(), URL_REGEX);
-    DBG_OUT("mark count %d", m_regex.mark_count());
-    boost::regex_match(s, m, m_regex);
-    DBG_OUT("# of matches %d", m.size());
-    int count = 0;
-    foreach(const boost::sub_match<std::string::const_iterator> & match, m) {
-      if(!match.matched) {
-        DBG_OUT("No match");
-        continue;
-      }
-//      Match match = regex.Match (start.GetSlice (end));
-//         match.Success;
-//         match = match.NextMatch ()) {
-//      System.Text.RegularExpressions.Group group = match.Groups [1];
-      DBG_OUT("match %d len=%d", count, match.length());
-      DBG_OUT("matched ='%s'", match.str().c_str());
+
+    boost::sregex_iterator m1(s.begin(), s.end(), m_regex);
+    boost::sregex_iterator m2;
+    while(m1 != m2) {
+      const boost::sub_match<std::string::const_iterator> & match = (*m1)[1];
+
       /*
         Logger.Log ("Highlighting url: '{0}' at offset {1}",
         group,
@@ -549,7 +538,7 @@ namespace gnote {
       std::string debug = start_cpy.get_slice(end);
       DBG_OUT("url is %s", debug.c_str());
       get_buffer()->apply_tag (m_url_tag, start_cpy, end);
-      count++;
+      ++m1;
     }
   }
 
@@ -573,7 +562,7 @@ namespace gnote {
   {
     int x, y;
 
-    get_window()->editor()->window_to_buffer_coords (Gtk::TEXT_WINDOW_TOP,
+    get_window()->editor()->window_to_buffer_coords (Gtk::TEXT_WINDOW_TEXT,
                                                      ev->x, ev->y, x, y);
     Gtk::TextIter click_iter;
     get_window()->editor()->get_iter_at_location (click_iter, x, y);
@@ -1045,28 +1034,29 @@ namespace gnote {
 
     get_buffer()->remove_tag (m_broken_link_tag, start, end);
 
-    boost::match_results<std::string::const_iterator> m;
     std::string s(start.get_slice(end));
-    boost::regex_match(s, m, m_regex);
-//    int count = 0;
-    /// TODO iterator throught the WHOLE match
-    const boost::sub_match<std::string::const_iterator> & match = m[1];
+    boost::sregex_iterator m1(s.begin(), s.end(), m_regex);
+    boost::sregex_iterator m2;
+    while(m1 != m2) {
+      /// TODO iterator throught the WHOLE match
+      const boost::sub_match<std::string::const_iterator> & match = (*m1)[1];
 
+      if (match.matched && !is_patronymic_name (match.str())) {
 
-    if (!is_patronymic_name (match.str())) {
-
-      DBG_OUT("Highlighting wikiword: '%s' at offset %d",
-              match.str().c_str(), (match.first - s.begin()));
+        DBG_OUT("Highlighting wikiword: '%s' at offset %d",
+                match.str().c_str(), (match.first - s.begin()));
       
-      Gtk::TextIter start_cpy = start;
-      start_cpy.forward_chars (match.first - s.begin());
+        Gtk::TextIter start_cpy = start;
+        start_cpy.forward_chars (match.first - s.begin());
 
-      end = start_cpy;
-      end.forward_chars (match.length());
+        end = start_cpy;
+        end.forward_chars (match.length());
 
-      if (manager().find (match.str())) {
-        get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
+        if (!manager().find (match.str())) {
+          get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
+        }
       }
+      ++m1;
     }
   }
 
@@ -1124,11 +1114,11 @@ namespace gnote {
   {
     Gtk::TextView *editor = get_window()->editor();
     editor->signal_motion_notify_event()
-      .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_motion));
+      .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_motion), false);
     editor->signal_key_press_event()
-      .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_press));
+      .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_press), false);
     editor->signal_key_release_event()
-      .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_release));
+      .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_release), false);
   }
 
   bool MouseHandWatcher::on_editor_key_press(GdkEventKey* ev)
