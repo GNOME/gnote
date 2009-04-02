@@ -216,30 +216,31 @@ namespace gnote {
 
     void NotebookApplicationAddin::on_tray_notebook_menu_shown()
     {
-      add_menu_items(m_trayNotebookMenu);
+      add_menu_items(m_trayNotebookMenu, m_trayNotebookMenuItems);
     }
 
     void NotebookApplicationAddin::on_tray_notebook_menu_hidden()
     {
-      remove_menu_items(m_trayNotebookMenu);
+      remove_menu_items(m_trayNotebookMenu, m_trayNotebookMenuItems);
     }
 
 
     void NotebookApplicationAddin::on_new_notebook_menu_shown()
     {
-      add_menu_items(m_mainWindowNotebookMenu);
+      add_menu_items(m_mainWindowNotebookMenu, m_mainWindowNotebookMenuItems);
     }
 
 
     void NotebookApplicationAddin::on_new_notebook_menu_hidden()
     {
-      remove_menu_items(m_mainWindowNotebookMenu);
+      remove_menu_items(m_mainWindowNotebookMenu, m_mainWindowNotebookMenuItems);
     }
 
 
-    void NotebookApplicationAddin::add_menu_items(Gtk::Menu * menu)
+    void NotebookApplicationAddin::add_menu_items(Gtk::Menu * menu,   
+                                                  std::list<Gtk::MenuItem*> & menu_items)
     {
-      remove_menu_items (menu);			
+      remove_menu_items (menu, menu_items);			
 
 			NotebookNewNoteMenuItem *item;
 
@@ -254,11 +255,14 @@ namespace gnote {
         .connect(sigc::mem_fun(*this, &NotebookApplicationAddin::on_new_notebook_menu_item));
 			newNotebookMenuItem->show_all ();
 			menu->append (*newNotebookMenuItem);
+      menu_items.push_back(newNotebookMenuItem);
+
 			
 			if (model->children().size() > 0) {
 				Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem ());
 				separator->show_all ();
 				menu->append (*separator);
+        menu_items.push_back(separator);
 				
 				iter = model->children().begin();
         while (iter) {
@@ -267,20 +271,19 @@ namespace gnote {
           item = manage(new NotebookNewNoteMenuItem (notebook));
           item->show_all ();
           menu->append (*item);
+          menu_items.push_back(item);
           iter++;
 				}
 			}
     }
 
-    void NotebookApplicationAddin::remove_menu_items(Gtk::Menu * menu)
+    void NotebookApplicationAddin::remove_menu_items(Gtk::Menu * menu, 
+                                                     std::list<Gtk::MenuItem*> & menu_items)
     {
-      DBG_OUT("removing # %d items", menu->items().size());
-//      std::for_each(menu->items().begin(), menu->items().end(),
-//               boost::bind(&Gtk::Menu::remove, menu, _1));
-      foreach (Gtk::MenuItem & child,  menu->items()) {
-        DBG_OUT("removing menu item %s", child.get_name().c_str());
-				menu->remove (child);
+      foreach (Gtk::MenuItem * child,  menu_items) {
+				menu->remove (*child);
 			}
+      menu_items.clear();
     }
 
 

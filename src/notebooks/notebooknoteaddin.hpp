@@ -58,6 +58,7 @@ namespace notebooks {
     std::list<NotebookMenuItem*> get_notebook_menu_items();
     Gtk::MenuToolButton      *m_toolButton;
     Gtk::Menu                *m_menu;
+    std::list<Gtk::MenuItem *> m_menu_items;
     Gtk::RadioButtonGroup     m_radio_group;
     Glib::RefPtr<Gdk::Pixbuf> m_notebookIcon;
     Glib::RefPtr<Gdk::Pixbuf> m_newNotebookIcon;

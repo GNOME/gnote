@@ -165,9 +165,10 @@ namespace notebooks {
     //
     // Clear out the old list
     //
-    foreach (Gtk::MenuItem & oldItem, m_menu->items()) {
-      m_menu->remove (oldItem);
+    reverse_foreach (Gtk::MenuItem * oldItem, m_menu_items) {
+      m_menu->remove (*oldItem);
     }
+    m_menu_items.clear();
 
     //
     // Build a new menu
@@ -181,12 +182,14 @@ namespace notebooks {
       .connect(sigc::mem_fun(*this,&NotebookNoteAddin::on_new_notebook_menu_item));
     newNotebookMenuItem->show ();
     m_menu->append (*newNotebookMenuItem);
+    m_menu_items.push_back(newNotebookMenuItem);
 			
     // Add the "(no notebook)" item at the top of the list
     NotebookMenuItem *noNotebookMenuItem = manage(new NotebookMenuItem (m_radio_group,
                                                     get_note(), Notebook::Ptr()));
     noNotebookMenuItem->show_all ();
     m_menu->append (*noNotebookMenuItem);
+    m_menu_items.push_back(noNotebookMenuItem);
 			
     // Add in all the real notebooks
     std::list<NotebookMenuItem*> notebookMenuItems = get_notebook_menu_items ();
@@ -194,10 +197,12 @@ namespace notebooks {
       Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem ());
       separator->show_all ();
       m_menu->append (*separator);
+      m_menu_items.push_back(separator);
 				
       foreach (NotebookMenuItem * item, notebookMenuItems) {
         item->show_all ();
         m_menu->append (*item);
+        m_menu_items.push_back(item);
       }
     }
   }

@@ -22,6 +22,8 @@
 #ifndef __NOTEBOOK_APPLICATION_ADDIN_HPP__
 #define __NOTEBOOK_APPLICATION_ADDIN_HPP__
 
+#include <list>
+
 #include <gdkmm/pixbuf.h>
 #include <gtkmm/actiongroup.h>
 
@@ -48,15 +50,13 @@ namespace gnote {
       void on_tray_notebook_menu_hidden();
       void on_new_notebook_menu_shown();
       void on_new_notebook_menu_hidden();
-      void add_menu_items(Gtk::Menu *);
-      void remove_menu_items(Gtk::Menu *);
+      void add_menu_items(Gtk::Menu *, std::list<Gtk::MenuItem*> & menu_items);
+      void remove_menu_items(Gtk::Menu *, std::list<Gtk::MenuItem*> & menu_items);
       void on_new_notebook_menu_item();
       void on_tag_added(const Note&, const Tag::Ptr&);
       void on_tag_removed(const Note::Ptr&, const std::string&);
       void on_note_added(const Note::Ptr &);
       void on_note_deleted(const Note::Ptr &);
-////
-
 
       bool m_initialized;
       guint m_notebookUi;
@@ -64,8 +64,9 @@ namespace gnote {
       Glib::RefPtr<Gdk::Pixbuf>      m_notebookIcon;
       Glib::RefPtr<Gdk::Pixbuf>      m_newNotebookIcon;
       Gtk::Menu                     *m_trayNotebookMenu;
+      std::list<Gtk::MenuItem*>      m_trayNotebookMenuItems;
       Gtk::Menu                     *m_mainWindowNotebookMenu;
-
+      std::list<Gtk::MenuItem*>      m_mainWindowNotebookMenuItems;
     };
 
 
