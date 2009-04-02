@@ -301,8 +301,8 @@ namespace gnote {
 
 	void NoteWindow::on_populate_popup(Gtk::Menu* menu)
 	{
-		Glib::RefPtr<Gtk::AccelGroup> accel_group = menu->get_accel_group();
-		
+    menu->set_accel_group(m_accel_group);
+
 		DBG_OUT("Populating context menu...");
 
 		// Remove the lame-o gigantic Insert Unicode Control
@@ -317,32 +317,32 @@ namespace gnote {
 		spacer1->show ();
 
 		Gtk::ImageMenuItem *search = manage(new Gtk::ImageMenuItem(
-																					_("_Search All Notes")));
+																					_("_Search All Notes"), true));
 		search->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
 		search->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::search_button_clicked));
-		search->add_accelerator ("activate", accel_group, GDK_F,
+		search->add_accelerator ("activate", m_accel_group, GDK_F,
 														 (Gdk::CONTROL_MASK |	Gdk::SHIFT_MASK),
 														 Gtk::ACCEL_VISIBLE);
 		search->show();
 
-		Gtk::ImageMenuItem *link = manage(new Gtk::ImageMenuItem(_("_Link to New Note")));
+		Gtk::ImageMenuItem *link = manage(new Gtk::ImageMenuItem(_("_Link to New Note"), true));
 		link->set_image(*manage(new Gtk::Image (Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_MENU)));
 		link->set_sensitive(!m_note.get_buffer()->get_selection().empty());
 		link->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::link_button_clicked));
-		link->add_accelerator("activate", accel_group, GDK_L,
+		link->add_accelerator("activate", m_accel_group, GDK_L,
 													Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
 		link->show();
 			
-		Gtk::ImageMenuItem *text_item = manage(new Gtk::ImageMenuItem(_("Te_xt")));
+		Gtk::ImageMenuItem *text_item = manage(new Gtk::ImageMenuItem(_("Te_xt"), true));
 		text_item->set_image(*manage(new Gtk::Image(
 																	 Gtk::Stock::SELECT_FONT, 
 																	 Gtk::ICON_SIZE_MENU)));
-		text_item->set_submenu(*manage(new NoteTextMenu(accel_group,
+		text_item->set_submenu(*manage(new NoteTextMenu(m_accel_group,
 																										m_note.get_buffer(),
 																										m_note.get_buffer()->undoer())));
 		text_item->show();
 
-		Gtk::ImageMenuItem *find_item = manage(new Gtk::ImageMenuItem(_("_Find in This Note")));
+		Gtk::ImageMenuItem *find_item = manage(new Gtk::ImageMenuItem(_("_Find in This Note"), true));
 		find_item->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
 		find_item->set_submenu(*manage(make_find_menu()));
 		find_item->show();
@@ -357,19 +357,19 @@ namespace gnote {
 		menu->prepend(*search);
 
 		Gtk::MenuItem *close_all =
-			manage(new Gtk::MenuItem(_("Clos_e All Notes")));
+			manage(new Gtk::MenuItem(_("Clos_e All Notes"), true));
 		close_all->signal_activate().connect(
 			sigc::mem_fun(*this, &NoteWindow::close_all_windows_handler));
-		close_all->add_accelerator("activate", accel_group,
+		close_all->add_accelerator("activate", m_accel_group,
 															 GDK_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
 		close_all->show();
 
 		Gtk::ImageMenuItem *close_window = manage(
-			new Gtk::ImageMenuItem(_("_Close")));
+			new Gtk::ImageMenuItem(_("_Close"), true));
 		close_window->set_image(*manage(new Gtk::Image(Gtk::Stock::CLOSE, Gtk::ICON_SIZE_MENU)));
 		close_window->signal_activate().connect(
 			sigc::mem_fun(*this, &NoteWindow::close_window_handler));
-		close_window->add_accelerator("activate", accel_group,
+		close_window->add_accelerator("activate", m_accel_group,
 																	GDK_W,
 																	Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
 		close_window->show();
@@ -498,7 +498,7 @@ namespace gnote {
 		Gtk::Menu *menu = manage(new Gtk::Menu());
 		menu->set_accel_group(m_accel_group);
 
-		Gtk::ImageMenuItem *find = manage(new Gtk::ImageMenuItem(_("_Find...")));
+		Gtk::ImageMenuItem *find = manage(new Gtk::ImageMenuItem(_("_Find..."), true));
 		find->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
 		find->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_button_clicked));
 		find->add_accelerator("activate", m_accel_group,
@@ -506,7 +506,7 @@ namespace gnote {
 													Gtk::ACCEL_VISIBLE);
 		find->show();
 
-		Gtk::ImageMenuItem *find_next =	manage(new Gtk::ImageMenuItem (_("Find _Next")));
+		Gtk::ImageMenuItem *find_next =	manage(new Gtk::ImageMenuItem (_("Find _Next"), true));
 		find_next->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_FORWARD, Gtk::ICON_SIZE_MENU)));
 		find_next->set_sensitive(get_find_bar().find_next_button().is_sensitive());
 
@@ -516,7 +516,7 @@ namespace gnote {
 															Gtk::ACCEL_VISIBLE);
 		find_next->show();
 
-		Gtk::ImageMenuItem *find_previous = manage(new Gtk::ImageMenuItem (_("Find _Previous")));
+		Gtk::ImageMenuItem *find_previous = manage(new Gtk::ImageMenuItem (_("Find _Previous"), true));
 		find_previous->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_BACK, Gtk::ICON_SIZE_MENU)));
 		find_previous->set_sensitive(get_find_bar().find_previous_button().is_sensitive());
 
