@@ -53,8 +53,6 @@
 #define NDEBUG _SAVENDEBUG
 #endif
 
-#include <boost/thread/recursive_mutex.hpp>
-
 #include "debug.hpp"
 
 
