@@ -285,12 +285,12 @@ namespace gnote {
   }
 
 
+#if FIXED_GTKSPELL
   void NoteSpellChecker::shutdown ()
   {
     detach();
   }
 
-#if FIXED_GTKSPELL
   void NoteSpellChecker::on_note_opened ()
   {
     Preferences::obj().signal_setting_changed()

@@ -118,13 +118,14 @@ namespace gnote {
   public:
     static NoteAddin * create();    
     virtual void initialize ();
-    virtual void shutdown ();
+    virtual void shutdown ()
+      {}
     virtual void on_note_opened ()
       {}
 
     static bool gtk_spell_available()
       { return false; }
-  }
+  };
 #endif
 
 
