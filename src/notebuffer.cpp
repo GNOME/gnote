@@ -40,7 +40,7 @@ namespace gnote {
 
 
 #define NUM_INDENT_BULLETS 3
-	const gunichar NoteBuffer::s_indent_bullets[NUM_INDENT_BULLETS] = { 2022, 2218, 2023 };
+	const gunichar NoteBuffer::s_indent_bullets[NUM_INDENT_BULLETS] = { 0x2022, 0x2218, 0x2023 };
 
 	bool NoteBuffer::get_enable_auto_bulleted_lists() const
 	{
@@ -318,7 +318,7 @@ namespace gnote {
 		// to have multiple lines in a single bullet point
 		if (prev_depth && soft_break) {
 			bool at_end_of_line = insert_iter.ends_line();
-			insert(insert_iter, Glib::ustring(4, (gunichar)2028));
+			insert(insert_iter, Glib::ustring(4, (gunichar)0x2028));
 				
 			// Hack so that the user sees that what they type
 			// next will appear on a new line, otherwise the
@@ -365,7 +365,7 @@ namespace gnote {
 				prev.backward_char();
 					
 				// Remove soft breaks
-				if (prev.get_char() == 2028) {
+				if (prev.get_char() == 0x2028) {
 					erase(prev, iter);
 				}
 					
@@ -579,7 +579,7 @@ namespace gnote {
 				// the previous visible character.
 				prev = start;
 				prev.backward_chars (2);
-				if (prev.get_char() == 2028) {
+				if (prev.get_char() == 0x2028) {
 					Gtk::TextIter end_break = prev;
 					end_break.forward_char();
 					erase(prev, end_break);
@@ -950,10 +950,10 @@ namespace gnote {
 
 		DepthNoteTag::Ptr tag = note_table->get_depth_tag (depth, direction);
 
-		std::string bullet =
-			s_indent_bullets [depth % NUM_INDENT_BULLETS] + " ";
+		Glib::ustring bullet =
+			Glib::ustring(1, s_indent_bullets [depth % NUM_INDENT_BULLETS]) + " ";
 
-		insert_with_tag (iter, bullet, tag);
+		iter = insert_with_tag (iter, bullet, tag);
 	}
 
 	void NoteBuffer::remove_bullet(Gtk::TextIter & iter)
@@ -1245,8 +1245,8 @@ namespace gnote {
 				}
 				// Line Separator character
 			} 
-			else if (iter.get_char() == 2028) {
-				xml.write_char_entity (2028);
+			else if (iter.get_char() == 0x2028) {
+				xml.write_char_entity (0x2028);
 			} 
 			else if (!depth_tag) {
 				xml.write_string (Glib::ustring(1, (gunichar)iter.get_char()));
@@ -1460,10 +1460,8 @@ namespace gnote {
 
 					tag_start = tag_stack.top();
 					tag_stack.pop();
-					if (!tag_start.tag)
-						break;
+					if (tag_start.tag) {
 
-					{
 						Gtk::TextIter apply_start, apply_end;
 						apply_start = buffer->get_iter_at_offset (tag_start.start);
 						apply_end = buffer->get_iter_at_offset (offset);
@@ -1483,11 +1481,11 @@ namespace gnote {
 																																		depth_tag->get_direction());
 							buffer->remove_all_tags (apply_start, apply_start);
 							offset += 2;
+              list_stack.pop_front();
 						} 
 						else if (!depth_tag) {
 							buffer->apply_tag (tag_start.tag, apply_start, apply_end);
 						}
-						list_stack.pop_front();
 					}
 					break;
 				default:
