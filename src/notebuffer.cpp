@@ -366,7 +366,7 @@ namespace gnote {
 					
 				// Remove soft breaks
 				if (prev.get_char() == 0x2028) {
-					erase(prev, iter);
+					iter = erase(prev, iter);
 				}
 					
 				m_undomanager->freeze_undo();
@@ -398,8 +398,9 @@ namespace gnote {
 			Gtk::TextIter end_iter = get_iter_at_line_offset (iter.get_line(), 0);
 
 			// Remove any leading white space
-			while (end_iter.get_char() == ' ')
+			while (end_iter.get_char() == ' ') {
 				end_iter.forward_char();
+      }
 			// Remove the '*' or '-' character and the space after
 			end_iter.forward_chars(2);
 				
@@ -409,8 +410,8 @@ namespace gnote {
 			if (end_iter.get_char() > 0)
 				direction = Pango::Direction(pango_unichar_direction(end_iter.get_char()));
 
-			erase(start, end_iter);
-
+			end_iter = erase(start, end_iter);
+      start = end_iter;
 			if (end_iter.ends_line()) {
 				increase_depth(start);
 			}
@@ -440,7 +441,7 @@ namespace gnote {
 
   // Returns true if line starts with any numbers of leading spaces
 	// followed by '*' or '-' and then by a space
-	bool NoteBuffer::line_needs_bullet(Gtk::TextIter & iter)
+	bool NoteBuffer::line_needs_bullet(Gtk::TextIter iter)
 	{
 		while (!iter.ends_line()) {
 			switch (iter.get_char()) {
@@ -974,7 +975,7 @@ namespace gnote {
 		iter = get_iter_at_line (iter.get_line() - 1);
 		iter.forward_to_line_end ();
 
-		erase(iter, end_iter);
+		iter = erase(iter, end_iter);
 	}
 
 
@@ -1012,7 +1013,7 @@ namespace gnote {
 		} 
 		else {
 			// Remove the previous indent
-			erase (start, end_iter);
+			start = erase (start, end_iter);
 
 			// Insert the indent at the new depth
 			int nextDepth = curr_depth->get_depth() + 1;
@@ -1047,7 +1048,7 @@ namespace gnote {
 		undoer().freeze_undo ();
 		if (curr_depth) {
 			// Remove the previous indent
-			erase(start, end_iter);
+			start = erase(start, end_iter);
 
 			// Insert the indent at the new depth
 			int nextDepth = curr_depth->get_depth() - 1;

@@ -110,7 +110,7 @@ protected:
 private:
 	void text_insert_event(const Gtk::TextIter & pos, const Glib::ustring & text, int);
 	void range_deleted_event(const Gtk::TextIter &,const Gtk::TextIter &);
-	bool line_needs_bullet(Gtk::TextIter & iter);
+	bool line_needs_bullet(Gtk::TextIter iter);
 	void augment_selection(Gtk::TextIter &, Gtk::TextIter &);
 	void mark_set_event(const Gtk::TextIter &,const Glib::RefPtr<Gtk::TextBuffer::Mark> &);
 	void widget_swap (const NoteTag::Ptr & tag, const Gtk::TextIter & start,

@@ -68,8 +68,8 @@ namespace gnote {
 		list->add ("text/uri-list", (Gtk::TargetFlags)0, 1);
 		list->add ("_NETSCAPE_URL", (Gtk::TargetFlags)0, 1);
 
-		signal_key_press_event().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed));
-		signal_button_press_event().connect(sigc::mem_fun(*this, &NoteEditor::button_pressed));
+		signal_key_press_event().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed), false);
+		signal_button_press_event().connect(sigc::mem_fun(*this, &NoteEditor::button_pressed), false);
 	}
 
 	NoteEditor::~NoteEditor()

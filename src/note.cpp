@@ -963,8 +963,10 @@ namespace gnote {
 	{
 		if(!m_window) {
 			m_window = new NoteWindow(*this);
-			m_window->signal_delete_event().connect(sigc::mem_fun(*this, &Note::on_window_destroyed));
-			m_window->signal_configure_event().connect(sigc::mem_fun(*this, &Note::on_window_configure));
+			m_window->signal_delete_event().connect(
+        sigc::mem_fun(*this, &Note::on_window_destroyed), false);
+			m_window->signal_configure_event().connect(
+        sigc::mem_fun(*this, &Note::on_window_configure), false);
 
 			if (m_data.data().has_extent())
 				m_window->set_default_size(m_data.data().width(),
