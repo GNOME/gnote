@@ -29,9 +29,11 @@
 
 #include <boost/regex.hpp>
 
+#if FIXED_GTKSPELL
 extern "C" {
 #include <gtkspell/gtkspell.h>
 }
+#endif
 #include <gconf/gconf-client.h>
 
 #include <gdkmm/cursor.h>
