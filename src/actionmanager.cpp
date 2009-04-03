@@ -58,9 +58,11 @@
 #include <libxml++/parsers/domparser.h>
 
 
+#include "sharp/string.hpp"
 #include "debug.hpp"
 #include "actionmanager.hpp"
 #include "utils.hpp"
+#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -115,37 +117,28 @@ namespace gnote {
 		// Wrap the UIManager XML in a root element
 		// so that it's real parseable XML.
 		std::string xml = "<root>" + m_ui->get_ui() + "</root>";
-			
+
 		xmlpp::DomParser reader;
 		reader.parse_memory(xml);
 
 		xmlpp::Document *doc = reader.get_document();
 				
 		// Get the element name
-		std::string placeholderName;
-		const char * s = strrchr(path.c_str(), '/');
-		if(s) {
-			s++;
-			placeholderName = s;
-		}
+		std::string placeholderName = sharp::string_substring(path, sharp::string_last_index_of(
+                                                            path, "/") + 1);
 		DBG_OUT("path = %s placeholdername = %s", path.c_str(), placeholderName.c_str());
 
 		xmlpp::Element *root_node = doc->get_root_node();
-		xmlpp::Node::NodeList nodes(root_node->get_children("placeholder"));
+		xmlpp::NodeSet nodes(root_node->find("//placeholder"));
 		// Find the placeholder specified in the path
-		for(xmlpp::Node::NodeList::const_iterator placeholderNode = nodes.begin();
-				placeholderNode != nodes.end(); ++placeholderNode) {
+		foreach(xmlpp::Node * placeholderNode, nodes) {
 			
-			xmlpp::Element * element = dynamic_cast<xmlpp::Element*>(*placeholderNode);
+			xmlpp::Element * element = dynamic_cast<xmlpp::Element*>(placeholderNode);
 			if (element && (element->get_attribute_value("name") == placeholderName)) {
-
 				// Return each child element's widget
-				xmlpp::Node::NodeList childNodes((*placeholderNode)->get_children());
+				foreach(xmlpp::Node * widgetNode, placeholderNode->get_children()) {
 
-				for(xmlpp::Node::NodeList::const_iterator widgetNode = childNodes.begin();
-						widgetNode != childNodes.end(); ++widgetNode) {
-
-					xmlpp::Element *element2 = dynamic_cast<xmlpp::Element*>(*widgetNode);
+					xmlpp::Element *element2 = dynamic_cast<xmlpp::Element*>(widgetNode);
 					if(element2) {
 						std::string widgetName = element2->get_attribute_value("name");
 						children.push_back(get_widget(path + "/" + widgetName));
