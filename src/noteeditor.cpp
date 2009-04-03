@@ -275,7 +275,7 @@ namespace gnote {
 	bool NoteEditor::button_pressed (GdkEventButton * )
 	{
 		NoteBuffer::Ptr::cast_static(get_buffer())->check_selection();
-		return true;
+		return false;
 	}
 
 

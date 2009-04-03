@@ -569,7 +569,7 @@ namespace gnote {
 		// Ignore events when maximized.  We don't want notes
 		// popping up maximized the next run.
 		if ((m_window->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) != 0)
-			return true;
+			return false;
 
 		m_window->get_position(cur_x, cur_y);
 		m_window->get_size(cur_width, cur_height);
@@ -578,19 +578,19 @@ namespace gnote {
 				m_data.data().y() == cur_y &&
 				m_data.data().width() == cur_width &&
 				m_data.data().height() == cur_height)
-			return true;
+			return false;
 
 		m_data.data().set_position_extent(cur_x, cur_y, cur_width, cur_height);
 
 		DBG_OUT("WindowConfigureEvent queueing save");
 		queue_save(NO_CHANGE);
-		return true;
+		return false;
 	}
 
 	bool Note::on_window_destroyed(GdkEventAny * /*ev*/)
 	{
 		m_window = NULL;
-		return true;
+		return false;
 	}
 
 	void Note::queue_save (ChangeType changeType)
@@ -964,7 +964,7 @@ namespace gnote {
 		if(!m_window) {
 			m_window = new NoteWindow(*this);
 			m_window->signal_delete_event().connect(
-        sigc::mem_fun(*this, &Note::on_window_destroyed), false);
+        sigc::mem_fun(*this, &Note::on_window_destroyed));
 			m_window->signal_configure_event().connect(
         sigc::mem_fun(*this, &Note::on_window_configure), false);
 
