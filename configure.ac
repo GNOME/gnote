@@ -1,4 +1,4 @@
-AC_INIT(gnote, 0.0.1)
+AC_INIT(gnote, 0.1.0)
 AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR(README)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
@@ -9,8 +9,8 @@ AC_CONFIG_MACRO_DIR(m4)
 m4_pattern_allow([^BOOST_])
 
 MAJOR_VERSION=0
-MINOR_VERSION=0
-MICRO_VERSION=1
+MINOR_VERSION=1
+MICRO_VERSION=0
 
 GNOTE_VERSION="$MAJOR_VERSION.$MINOR_VERSION.$MICRO_VERSION"
 AC_SUBST(GNOTE_VERSION)
@@ -24,6 +24,7 @@ dnl LIBGLADEMM_VERSION=2.6.0
 dnl LIBGCONFMM_VERSION=2.6.0
 LIBGCONF_VERSION=2.0.0
 LIBGNOMEUI_VERSION=2.0.0
+GTKSPELL_VERSION=2.0.9
 BOOST_VERSION=1.34
 
 AC_PROG_CXX
@@ -67,8 +68,8 @@ dnl PKG_CHECK_MODULES(LIBGNOMEUI, [libgnomeui-2.0 >= $LIBGNOMEUI_VERSION])
 dnl PKG_CHECK_MODULES(LIBGCONFMM, [gconfmm-2.6 >= $LIBGCONFMM_VERSION])
 
 dnl check for the ext2 uuid library. TODO replace it with something more portable
-AC_CHECK_HEADER(uuid/uuid.h,,[AC_MSG_ERROR("uuid header is missing (ext2progs)")])
-AC_CHECK_LIB(uuid,uuid_unparse_lower, ,[AC_MSG_ERROR("libuuid library is missing (ext2progs)")])
+AC_CHECK_HEADER(uuid/uuid.h,,[AC_MSG_ERROR("uuid header is missing")])
+AC_CHECK_LIB(uuid,uuid_unparse_lower, ,[AC_MSG_ERROR("libuuid library is missing")])
 
 #
 # If libpanelapplet available, use it to find .server install location.
@@ -89,7 +90,7 @@ AC_SUBST(PANELAPPLET_SERVER_DIR)
 # Check for recent GtkSpell here.  Prior versions require bug workarounds.
 # http://gtkspell.sourceforge.net/
 #
-PKG_CHECK_MODULES(GTKSPELL, gtkspell-2.0 >= 2.0.9, 
+PKG_CHECK_MODULES(GTKSPELL, gtkspell-2.0 >= $GTKSPELL_VERSION, 
 			    [FIXED_GTKSPELL="yes";AC_DEFINE([FIXED_GTKSPELL], [1], [Set if the GtkSpell library is recent enough.])
 			    ], FIXED_GTKSPELL="no")
 AM_CONDITIONAL(FIXED_GTKSPELL, test "$FIXED_GTKSPELL" = "yes")
