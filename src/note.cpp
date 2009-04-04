@@ -927,19 +927,10 @@ namespace gnote {
 	const Glib::RefPtr<NoteTagTable> & Note::get_tag_table()
 	{
 		if (m_tag_table == NULL) {
-#if FIXED_GTKSPELL
 			// NOTE: Sharing the same TagTable means
 			// that formatting is duplicated between
 			// buffers.
 			m_tag_table = NoteTagTable::Ptr(&NoteTagTable::instance());
-#else
-			// NOTE: GtkSpell chokes on shared
-			// TagTables because it blindly tries to
-			// create a new "gtkspell-misspelling"
-			// tag, which fails if one already
-			// exists in the table.
-			m_tag_table = NoteTagTable::Ptr(new NoteTagTable());
-#endif
 		}
 		return m_tag_table;
 	}
