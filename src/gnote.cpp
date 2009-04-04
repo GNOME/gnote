@@ -32,6 +32,7 @@
 #include "actionmanager.hpp"
 #include "addinmanager.hpp"
 #include "applicationaddin.hpp"
+#include "debug.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "recentchanges.hpp"
@@ -143,6 +144,7 @@ namespace gnote {
 			Glib::RefPtr<Glib::TimeoutSource> timeout 
 				= Glib::TimeoutSource::create(2000);
 			timeout->connect(sigc::mem_fun(*this, &Gnote::check_tray_icon_showing));
+      timeout->attach();
 		}
 		
 		Gtk::Main::run();
