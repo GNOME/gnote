@@ -458,13 +458,18 @@ namespace gnote {
 																 std::string filepath,
 																 NoteManager & manager)
 	{
-		if (!data->create_date().is_valid()) {
-			sharp::DateTime d(boost::filesystem::last_write_time(filepath));
-			data->create_date() = d;
-		}
 		if (!data->change_date().is_valid()) {
 			sharp::DateTime d(boost::filesystem::last_write_time(filepath));
 			data->set_change_date(d);
+		}
+		if (!data->create_date().is_valid()) {
+      if(data->change_date().is_valid()) {
+        data->create_date() = data->change_date();
+      }
+      else {
+        sharp::DateTime d(boost::filesystem::last_write_time(filepath));
+        data->create_date() = d;
+      }
 		}
 		return Note::Ptr(new Note(data, filepath, manager));
 	}
@@ -989,15 +994,13 @@ namespace gnote {
 
 	bool Note::is_special() const
 	{ 
-    DBG_OUT("start note URI = %s, uri = %s", m_manager.start_note_uri().c_str(),
-            m_data.data().uri().c_str());
 		return (m_manager.start_note_uri() == m_data.data().uri());
 	}
 
 
 	bool Note::is_new() const
 	{
-		return m_data.data().create_date() > sharp::DateTime::now().add_hours(-24);
+		return m_data.data().create_date().is_valid() && (m_data.data().create_date() > sharp::DateTime::now().add_hours(-24));
 	}
 
 	bool Note::is_pinned() const

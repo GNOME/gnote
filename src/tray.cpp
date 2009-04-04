@@ -318,8 +318,8 @@ namespace gnote {
 					show = true;
 			} 
       else if ((note->is_opened() && note->get_window()->is_mapped()) ||
-								 (note->change_date() > days_ago) ||
-								 (list_size < min_size)) {
+               (note->change_date().is_valid() && (note->change_date() > days_ago)) ||
+               (list_size < min_size)) {
 				if (list_size <= max_size)
 					show = true;
 			}
