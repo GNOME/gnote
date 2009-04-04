@@ -23,7 +23,7 @@
 
 #include <libxml++/parsers/textreader.h>
 
-#include <gtk/gtkrc.h>
+#include <gtk/gtk.h>
 #include <gtkmm/image.h>
 #include <gtkmm/rc.h>
 
@@ -262,7 +262,7 @@ namespace gnote {
 		
 		Glib::RefPtr<Gtk::Style> s = Glib::wrap(gtk_rc_get_style_by_paths(gtk_settings_get_default(),
 																																"GtkTextView", "GtkTextView",
-																																			gtk_text_view_get_type()), true);
+																																			GTK_TYPE_TEXT_VIEW), true);
 		if (!s) {
 			DBG_OUT("get_background: Style for GtkTextView came back null! Returning white...");
 			Gdk::Color color;
