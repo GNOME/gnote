@@ -129,7 +129,7 @@ namespace gnote {
 			if (item) {
         Gtk::ImageMenuItem *image_item = dynamic_cast<Gtk::ImageMenuItem*>(item);
 				if (image_item) {
-					image_item->property_image() = manage(new Gtk::Image(m_notebookIcon));
+					image_item->set_image(*manage(new Gtk::Image(m_notebookIcon)));
 				}
 				m_trayNotebookMenu = manage(new Gtk::Menu());
 				item->set_submenu(*m_trayNotebookMenu);
@@ -145,7 +145,7 @@ namespace gnote {
 			Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
         am.get_widget ("/MainWindowMenubar/FileMenu/FileMenuNewNotePlaceholder/NewNotebookMenu"));
       if (imageitem) {
-        imageitem->property_image() = manage(new Gtk::Image(m_notebookIcon));
+        imageitem->set_image(*manage(new Gtk::Image(m_notebookIcon)));
         m_mainWindowNotebookMenu = manage(new Gtk::Menu ());
         imageitem->set_submenu(*m_mainWindowNotebookMenu);
 
@@ -160,7 +160,7 @@ namespace gnote {
       imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
         am.get_widget ("/NotebooksTreeContextMenu/NewNotebookNote"));
 			if (imageitem) {
-        imageitem->property_image() = manage(new Gtk::Image(am.get_new_note()));
+        imageitem->set_image(*manage(new Gtk::Image(am.get_new_note())));
 			}
 
       NoteManager & nm(Gnote::obj().default_note_manager());

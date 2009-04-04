@@ -1088,7 +1088,7 @@ namespace gnote {
 		, m_decrease_indent(Gtk::Stock::UNINDENT)
 		{
 			m_undo = manage(new Gtk::ImageMenuItem (Gtk::Stock::UNDO));
-			m_undo->set_accel_group(accel_group);
+//			m_undo->set_accel_group(accel_group);
 			m_undo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_clicked));
 			m_undo->add_accelerator ("activate", accel_group,
 															 GDK_Z,
@@ -1098,7 +1098,7 @@ namespace gnote {
 			append(*m_undo);
 
 			m_redo = manage(new Gtk::ImageMenuItem (Gtk::Stock::REDO));
-			m_redo->set_accel_group(accel_group);
+//			m_redo->set_accel_group(accel_group);
 			m_redo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::redo_clicked));
 			m_redo->add_accelerator ("activate", accel_group,
 															 GDK_Z, (Gdk::CONTROL_MASK |
@@ -1186,7 +1186,7 @@ namespace gnote {
 			m_bullets_clicked_cid = m_bullets.signal_activate()
 				.connect(sigc::mem_fun(*this, &NoteTextMenu::toggle_bullets_clicked));
 
-			m_increase_indent.set_accel_group(accel_group);
+//			m_increase_indent.set_accel_group(accel_group);
 			m_increase_indent.add_accelerator ("activate", accel_group,
 																			 GDK_Right,
 																			 Gdk::MOD1_MASK,
@@ -1195,7 +1195,7 @@ namespace gnote {
 				.connect(sigc::mem_fun(*this, &NoteTextMenu::increase_indent_clicked));
 			m_increase_indent.show();
 
-			m_decrease_indent.set_accel_group(accel_group);
+//			m_decrease_indent.set_accel_group(accel_group);
 			m_decrease_indent.add_accelerator ("activate", accel_group,
 																				 GDK_Left,
 																				 Gdk::MOD1_MASK,

@@ -45,6 +45,27 @@
 #include "sharp/foreach.hpp"
 
 namespace gnote {
+
+  namespace {
+
+	std::string tray_util_get_tooltip_text()
+	{
+		std::string tip_text = _("GNote Notes");
+		
+		if (Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS)) {
+			std::string shortcut =
+				GConfKeybindingToAccel::get_shortcut (
+					Preferences::KEYBINDING_SHOW_NOTE_MENU);
+			if (!shortcut.empty())
+				tip_text += str(boost::format(" (%1%)") % shortcut);
+		}
+			
+		return tip_text;
+	}
+
+  }
+
+
 	bool                      NoteMenuItem::s_static_inited = false;
 	Glib::RefPtr<Gdk::Pixbuf> NoteMenuItem::s_note_icon;
 	Glib::RefPtr<Gdk::Pixbuf> NoteMenuItem::s_pinup;
@@ -386,8 +407,10 @@ namespace gnote {
 		int panel_size = 32;
 		Glib::RefPtr<Gdk::Pixbuf> pixbuf = utils::get_icon("gnote", panel_size);
 		set(pixbuf);
-		set_tooltip_text(get_tooltip_text());
-		
+#if GTK_VERSION_GE(2,16)
+		set_tooltip_text(tray_util_get_tooltip_text());
+#endif
+
 		Gtk::Main::signal_quit().connect(sigc::mem_fun(*this, &TrayIcon::on_exit), 1);
 		signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::on_activate));
 		signal_popup_menu().connect(sigc::mem_fun(*this, &TrayIcon::on_popup_menu));
@@ -540,21 +563,6 @@ namespace gnote {
 				open_upwards = true;
 
 			return open_upwards;
-	}
-
-	std::string get_tooltip_text()
-	{
-		std::string tip_text = _("GNote Notes");
-		
-		if (Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS)) {
-			std::string shortcut =
-				GConfKeybindingToAccel::get_shortcut (
-					Preferences::KEYBINDING_SHOW_NOTE_MENU);
-			if (!shortcut.empty())
-				tip_text += str(boost::format(" (%1%)") % shortcut);
-		}
-			
-		return tip_text;
 	}
 
 	//

@@ -454,7 +454,7 @@ namespace gnote {
   void NoteRecentChanges::scroll_to_iter (Gtk::TreeView & tree, const Gtk::TreeIter & iter)
   {
     Gtk::TreePath path = tree.get_model()->get_path(iter);
-    if (path)
+    if (!path.empty())
       tree.scroll_to_row (path);
   }
 
@@ -759,7 +759,7 @@ namespace gnote {
                 	
     m_tree->get_path_at_pos (ev->x, ev->y,
                              dest_path, column, unused, unused);
-    if (!dest_path)
+    if (dest_path.empty())
       return false;
                 	
     m_clickX = ev->x;
@@ -839,7 +839,9 @@ namespace gnote {
     }
                 	
     Gtk::TreePath dest_path;
-    if (!m_tree->get_path_at_pos (ev->x, ev->y, dest_path)) {
+    Gtk::TreeViewColumn * col = NULL; // unused
+    int cell_x, cell_y;               // unused
+    if (!m_tree->get_path_at_pos (ev->x, ev->y, dest_path, col, cell_x, cell_y)) {
       return retval;
     }
                 	
@@ -857,7 +859,9 @@ namespace gnote {
         m_tree->get_selection()->count_selected_rows () > 1) {
                 		
       Gtk::TreePath dest_path;
-      m_tree->get_path_at_pos (ev->x, ev->y, dest_path);
+      Gtk::TreeViewColumn * col = NULL; // unused
+      int cell_x, cell_y;               // unused
+      m_tree->get_path_at_pos (ev->x, ev->y, dest_path, col, cell_x, cell_y);
       m_tree->get_selection()->unselect_all ();
       m_tree->get_selection()->select (dest_path);
     }
@@ -1423,8 +1427,9 @@ namespace gnote {
       Gtk::TreePath p;
 
       bool rowClicked = true;
-
-      if (m_notebooksTree->get_path_at_pos (ev->x, ev->y, p) == false) {
+      Gtk::TreeViewColumn * col = NULL; // unused
+      int cell_x, cell_y;               // unused
+      if (m_notebooksTree->get_path_at_pos (ev->x, ev->y, p, col, cell_x, cell_y) == false) {
         rowClicked = false;
       }
 
