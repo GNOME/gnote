@@ -28,6 +28,7 @@
 #include "notebooks/notebookmanager.hpp"
 #include "debug.hpp"
 #include "gnote.hpp"
+#include "notemanager.hpp"
 #include "tagmanager.hpp"
 #include "sharp/foreach.hpp"
 

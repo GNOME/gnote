@@ -79,8 +79,6 @@ namespace gnote {
 		
 		notebook->append_page (*manage(make_editing_pane()),
 													 _("Editing"));
-// TODO
-//			if (! (Services.Keybinder is NullKeybinder)) {
 		notebook->append_page (*manage(make_hotkeys_pane()),
 													 _("Hotkeys"));
 //			}

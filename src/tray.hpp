@@ -25,13 +25,13 @@
 #include <gtkmm/statusicon.h>
 #include <gtkmm/imagemenuitem.h>
 
-#include "notemanager.hpp"
-#include "prefskeybinder.hpp"
 #include "note.hpp"
 
 namespace gnote {
 
 class TrayIcon;
+class PrefsKeybinder;
+class NoteManager;
 
 class NoteMenuItem 
 	: public Gtk::ImageMenuItem
@@ -64,11 +64,19 @@ private:
 	static Glib::RefPtr<Gdk::Pixbuf> s_pindown;
 };
 
+
+class IGnoteTray
+{
+public:
+  virtual void show_menu(bool select_first_item) = 0;
+  virtual bool menu_opens_upward() = 0;
+};
+
 class Tray
 {
 public:
   typedef std::tr1::shared_ptr<Tray> Ptr;
-	Tray(NoteManager &, TrayIcon &);
+	Tray(NoteManager &, IGnoteTray &);
 
 	Gtk::Menu * make_tray_notes_menu();
 	Gtk::Menu * tray_menu() 
@@ -78,7 +86,7 @@ public:
 	void add_recently_changed_notes();
 private:
 	NoteManager & m_manager;
-	TrayIcon & m_trayicon;
+	IGnoteTray  & m_trayicon;
 	Gtk::Menu *m_tray_menu;
 	bool       m_menu_added;
 	std::list<Gtk::MenuItem*> m_recent_notes;
@@ -87,6 +95,7 @@ private:
 
 class TrayIcon
 	: public Gtk::StatusIcon
+  , public IGnoteTray
 {
 public:
 	TrayIcon(NoteManager & manager);
@@ -111,7 +120,7 @@ public:
 	void quit();
 private:
   Tray::Ptr                m_tray;
-  PrefsKeybinder::Ptr      m_keybinder;
+  PrefsKeybinder          *m_keybinder;
 	Gtk::Menu               *m_context_menu;
 };
 

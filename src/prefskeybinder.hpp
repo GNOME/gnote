@@ -22,27 +22,53 @@
 #ifndef _PREFSKEYBINDER_HPP_
 #define _PREFSKEYBINDER_HPP_
 
-#include <memory>
+#include <string>
+#include <sigc++/signal.h>
+#include <sigc++/slot.h>
 
 namespace gnote {
 
 class TrayIcon;
 class NoteManager;
+class IKeybinder;
 
 
 class PrefsKeybinder
 {
 public:
-  typedef std::tr1::shared_ptr<PrefsKeybinder> Ptr;
-	PrefsKeybinder(NoteManager & manager, TrayIcon & trayicon)
-		: m_manager(manager)
-		, m_trayicon(trayicon)
-		{
-		}
+  PrefsKeybinder();
+  virtual ~PrefsKeybinder();
+  void bind(const std::string & pref_path, const std::string & default_binding, 
+            const sigc::slot<void> & handler);
+  void unbind_all();
+
 private:
-	NoteManager & m_manager;
-	TrayIcon & m_trayicon;
+  class Binding;
+
+  IKeybinder & m_native_keybinder;
+  std::list<Binding*> m_bindings;
 };
+
+class GnotePrefsKeybinder
+  : public PrefsKeybinder
+{
+public:
+	GnotePrefsKeybinder(NoteManager & manager, IGnoteTray & trayicon);
+  ~GnotePrefsKeybinder();
+  void enable_keybindings_changed(Preferences*, GConfEntry* entry);
+  void enable_disable(bool enable);
+  void bind_preference(const std::string & pref_path, const sigc::slot<void> & handler);
+private:
+  void key_show_menu();
+  void key_openstart_here();
+  void key_create_new_note();
+  void key_open_search();
+  void key_open_recent_changes();
+	NoteManager & m_manager;
+	IGnoteTray & m_trayicon;
+  sigc::connection m_prefs_cid;
+};
+
 
 }
 

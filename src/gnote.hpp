@@ -30,6 +30,7 @@
 
 #include "base/singleton.hpp"
 #include "actionmanager.hpp"
+#include "keybinder.hpp"
 #include "tray.hpp"
 
 namespace gnote {
@@ -49,6 +50,10 @@ public:
 		{
 			return *m_manager;
 		}
+  IKeybinder & keybinder()
+    {
+      return *m_keybinder;
+    }
 
 	void setup_global_actions();
 	void start_tray_icon();
@@ -70,6 +75,7 @@ public:
     }
 private:
 	NoteManager *m_manager;
+  IKeybinder  *m_keybinder;
 	Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
 	static bool s_tray_icon_showing;
 	Glib::RefPtr<TrayIcon> m_tray_icon;

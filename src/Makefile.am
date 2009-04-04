@@ -55,6 +55,7 @@ libgnote_a_SOURCES = \
 	applicationaddin.hpp \
 	contrast.hpp contrast.cpp \
 	debug.hpp debug.cpp \
+	keybinder.hpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \
 	noteeditor.hpp noteeditor.cpp \
@@ -64,7 +65,7 @@ libgnote_a_SOURCES = \
 	notewindow.hpp notewindow.cpp \
 	preferences.hpp preferences.cpp \
 	preferencesdialog.hpp preferencesdialog.cpp \
-	prefskeybinder.hpp \
+	prefskeybinder.hpp prefskeybinder.cpp \
 	recenttreeview.hpp \
 	recentchanges.hpp recentchanges.cpp \
 	search.hpp search.cpp \
@@ -75,6 +76,7 @@ libgnote_a_SOURCES = \
 	undo.hpp undo.cpp \
 	utils.hpp utils.cpp \
 	watchers.hpp watchers.cpp \
+	xkeybinder.hpp xkeybinder.cpp \
 	notebooks/createnotebookdialog.hpp notebooks/createnotebookdialog.cpp \
 	notebooks/notebook.hpp notebooks/notebook.cpp \
 	notebooks/notebookapplicationaddin.hpp notebooks/notebookapplicationaddin.cpp \

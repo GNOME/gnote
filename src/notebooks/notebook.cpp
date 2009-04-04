@@ -24,6 +24,7 @@
 
 #include "sharp/string.hpp"
 #include "gnote.hpp"
+#include "notemanager.hpp"
 #include "notebooks/notebook.hpp"
 #include "tagmanager.hpp"
 

@@ -32,8 +32,11 @@
 #include "debug.hpp"
 #include "actionmanager.hpp"
 #include "utils.hpp"
+#include "gnote.hpp"
 #include "note.hpp"
+#include "notemanager.hpp"
 #include "notewindow.hpp"
+#include "prefskeybinder.hpp"
 #include "tag.hpp"
 #include "tagmanager.hpp"
 #include "preferences.hpp"
@@ -180,7 +183,7 @@ namespace gnote {
 		s_static_inited = true;
 	}
 
-	Tray::Tray(NoteManager & manager, TrayIcon & trayicon)
+	Tray::Tray(NoteManager & manager, IGnoteTray & trayicon)
 		: m_manager(manager)
 		, m_trayicon(trayicon)
 		, m_menu_added(false)
@@ -377,7 +380,7 @@ namespace gnote {
 	TrayIcon::TrayIcon(NoteManager & manager)
 		: Gtk::StatusIcon()
 		, m_tray(new Tray(manager, *this))
-		, m_keybinder(new PrefsKeybinder(manager, *this))
+		, m_keybinder(new GnotePrefsKeybinder(manager, *this))
 		, m_context_menu(NULL)
 	{
 		int panel_size = 32;
@@ -405,6 +408,7 @@ namespace gnote {
 	TrayIcon::~TrayIcon()
 	{
 		delete m_context_menu;
+    delete m_keybinder;
 	}
 
 	void TrayIcon::on_activate()
@@ -594,19 +598,19 @@ namespace gnote {
 		return "";
 	}
 
-	void GConfKeybindingToAccel::add_accelerator (Gtk::MenuItem & /*item*/, const std::string & /*gconf_path*/)
+	void GConfKeybindingToAccel::add_accelerator (Gtk::MenuItem & item, 
+                                                const std::string & gconf_path)
 	{
-//		guint keyval;
-//		Gdk::ModifierType mods;
-		
-// TODO
-//		if (Services.Keybinder.GetAccelKeys (gconf_path, out keyval, out mods)) {
-//			item.add_accelerator ("activate",
-//				                     get_accel_group(),
-//				                     keyval,
-//				                     mods,
-//				                     Gtk::ACCEL_VISIBLE);
-//		}
+		guint keyval;
+		Gdk::ModifierType mods;
+
+    if(Gnote::obj().keybinder().get_accel_keys(gconf_path, keyval, mods)) {
+			item.add_accelerator ("activate",
+				                     get_accel_group(),
+				                     keyval,
+				                     mods,
+				                     Gtk::ACCEL_VISIBLE);
+    }
 	}
 
 	

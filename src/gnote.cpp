@@ -33,10 +33,12 @@
 #include "addinmanager.hpp"
 #include "applicationaddin.hpp"
 #include "debug.hpp"
+#include "notemanager.cpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "recentchanges.hpp"
 #include "utils.hpp"
+#include "xkeybinder.hpp"
 #include "sharp/string.hpp"
 #include "sharp/foreach.hpp"
 
@@ -47,6 +49,7 @@ namespace gnote {
 
 	Gnote::Gnote()
     : m_manager(NULL)
+    , m_keybinder(NULL)
 		, m_is_panel_applet(false)
 		, m_prefsdlg(NULL)
 	{
@@ -73,6 +76,7 @@ namespace gnote {
 
 		std::string note_path = get_note_path(cmd_line.note_path());
 		m_manager = new NoteManager(note_path);
+    m_keybinder = new XKeybinder();
 
 		// TODO
 		// SyncManager::init()

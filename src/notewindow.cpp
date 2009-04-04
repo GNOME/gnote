@@ -640,7 +640,7 @@ namespace gnote {
 		button->show ();
 		pack_start(*button, false, false, 4);
 
-		Gtk::Label *label = manage(new Gtk::Label(_("_Find:")));
+		Gtk::Label *label = manage(new Gtk::Label(_("_Find:"), true));
 		label->show();
 		pack_start(*label, false, false, 0);
 
@@ -1024,16 +1024,22 @@ namespace gnote {
 			if (word.empty())
 				continue;
 
-			for(boost::find_iterator<std::string::iterator> iter =
-						boost::make_find_iterator(note_text, boost::first_finder(word, boost::is_equal())) ;
-					iter != boost::find_iterator<std::string::iterator>() ;
-					++iter) {
+      while(true) {
+        idx = sharp::string_index_of(note_text, word, idx);
+        if (idx == -1) {
+          if (this_word_found) {
+            break;
+          }
+          else {
+            return std::list<Match>();
+          }
+        }
 
 				this_word_found = true;
 
 				Gtk::TextIter start = buffer->get_iter_at_offset(idx);
 				Gtk::TextIter end = start;
-				end.forward_chars(word.size());
+				end.forward_chars(word.length());
 
 				Match match;
 				match.buffer = buffer;
@@ -1042,9 +1048,9 @@ namespace gnote {
 				match.highlighting = false;
 
 				matches.push_back(match);
+
+        idx += word.length();
 			}
-			if (!this_word_found)
-				return std::list<Match>();
 		}
 
 		return matches;
@@ -1069,7 +1075,7 @@ namespace gnote {
 		, m_undo_manager(undo_manager)
 		, m_bold(_("<b>_Bold</b>"), true)
 		, m_italic(_("<i>_Italic</i>"), true)
-		, m_strikeout(_("<s>_Strikeout</s>"))
+		, m_strikeout(_("<s>_Strikeout</s>"), true)
 		, m_highlight(_("<span background='yellow'>_Highlight</span>"), true)
 		, m_fontsize_group()
 		, m_normal(m_fontsize_group, _("_Normal"), true)
