@@ -41,11 +41,17 @@ namespace notebooks {
   /// A <see cref="System.String"/>.  This is the name that will be used
   /// to identify the notebook.
   /// </param>
-  Notebook::Notebook(const std::string & name)
+  Notebook::Notebook(const std::string & name, bool is_special)
   {
-    set_name(name);
-    m_tag = TagManager::obj().get_or_create_system_tag (
+    // is special assume the name as is, and we don't want a tag.
+    if(is_special) {
+      m_name = name;
+    }
+    else {
+      set_name(name);
+      m_tag = TagManager::obj().get_or_create_system_tag (
         std::string(NOTEBOOK_TAG_PREFIX) + name);
+    }
   }
 
 	/// <summary>

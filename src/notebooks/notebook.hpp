@@ -40,7 +40,7 @@ class Notebook
 public:
   typedef std::tr1::shared_ptr<Notebook> Ptr;
   static const char * NOTEBOOK_TAG_PREFIX;
-  Notebook(const std::string &);
+  Notebook(const std::string &, bool is_special = false);
   Notebook(const Tag::Ptr &);
   std::string get_name() const
     { return m_name; }
@@ -54,6 +54,8 @@ public:
   virtual ~Notebook()
     {}
 private:
+  Notebook(const Notebook &);
+  Notebook & operator=(const Notebook &);
   std::string m_name;
   std::string m_normalized_name;
   std::string m_template_note_title;
@@ -74,7 +76,7 @@ public:
   typedef std::tr1::shared_ptr<SpecialNotebook> Ptr;
 protected:
   SpecialNotebook(const std::string &s)
-    : Notebook(s)
+    : Notebook(s, true)
     {
     }
   virtual Tag::Ptr    get_tag() const;
