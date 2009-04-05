@@ -1170,25 +1170,31 @@ namespace gnote {
 		write(xml, note);
 		xml.close ();
 
-		if (boost::filesystem::exists(_write_file)) {
-			std::string backup_path = _write_file + "~";
-			if (boost::filesystem::exists(backup_path)) {
-				boost::filesystem::remove(backup_path);
-			}
+    try {
+      if (boost::filesystem::exists(_write_file)) {
+        std::string backup_path = _write_file + "~";
+        if (boost::filesystem::exists(backup_path)) {
+          boost::filesystem::remove(backup_path);
+        }
 			
-			// Backup the to a ~ file, just in case
-			boost::filesystem::rename(_write_file, backup_path);
+        // Backup the to a ~ file, just in case
+        boost::filesystem::rename(_write_file, backup_path);
 			
-			// Move the temp file to write_file
-			boost::filesystem::rename(tmp_file, _write_file);
+        // Move the temp file to write_file
+        boost::filesystem::rename(tmp_file, _write_file);
 
-			// Delete the ~ file
-			boost::filesystem::remove(backup_path);
-		} 
-		else {
-			// Move the temp file to write_file
-			boost::filesystem::rename(tmp_file, _write_file);
-		}
+        // Delete the ~ file
+        boost::filesystem::remove(backup_path);
+      } 
+      else {
+        // Move the temp file to write_file
+        boost::filesystem::rename(tmp_file, _write_file);
+      }
+    }
+    catch(const std::exception & e)
+    {
+      ERR_OUT("filesystem error: '%s'", e.what());
+    }
 	}
 
 	void NoteArchiver::write(sharp::XmlWriter & xml, const NoteData & note)
