@@ -652,7 +652,7 @@ namespace gnote {
     //   // FIXME: Ugh!  NOT an O(1) operation.  Is there a better way?
     std::list<Tag::Ptr> tags = note->tags();
     foreach (const Tag::Ptr & tag, tags) {
-      if(m_selected_tags.find(tag) == m_selected_tags.end()) {
+      if(m_selected_tags.find(tag) != m_selected_tags.end()) {
         return true;
       }
     }
