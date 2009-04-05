@@ -36,6 +36,7 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/trim.hpp>
 
+#include "debug.hpp"
 
 namespace sharp {
 
@@ -73,6 +74,10 @@ namespace sharp {
 
   std::string string_substring(const std::string & source, int start)
   {
+    DBG_ASSERT(start >= 0, "start can't be negative");
+    if(source.size() <= (unsigned int)start) {
+      return "";
+    }
     return std::string(source.begin() + start, source.end());
   }
 
@@ -121,6 +126,9 @@ namespace sharp {
 
   int string_index_of(const std::string & source, const std::string & search)
   {
+    if(search.empty()) {
+      return -1;
+    }
     boost::iterator_range<std::string::const_iterator> iter
       = boost::find_first(source, search);
     if(iter.begin() == source.end()) {
