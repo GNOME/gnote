@@ -102,31 +102,31 @@ namespace gnote {
       Gtk::TreePath treepath;
 			Gtk::TreeViewDropPosition pos;
 			if (get_dest_row_at_pos (x, y, treepath,pos) == false) {
-        set_drag_dest_row (Gtk::TreePath(), Gtk::TREE_VIEW_DROP_INTO_OR_AFTER);
+        gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
 				return false;
 			}
 			
 			Gtk::TreeIter iter = get_model()->get_iter (treepath);
 			if (!iter) {
-        set_drag_dest_row (Gtk::TreePath(), Gtk::TREE_VIEW_DROP_INTO_OR_AFTER);
+        gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
 				return false;
 			}
 			
       Notebook::Ptr destNotebook;
       iter->get_value(0, destNotebook);
 			if (std::tr1::dynamic_pointer_cast<AllNotesNotebook>(destNotebook)) {
-        set_drag_dest_row (Gtk::TreePath(), Gtk::TREE_VIEW_DROP_INTO_OR_AFTER);
+        gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
 				return true;
 			}
 			
-      set_drag_dest_row (Gtk::TreePath(), Gtk::TREE_VIEW_DROP_INTO_OR_AFTER);
+      set_drag_dest_row (treepath , Gtk::TREE_VIEW_DROP_INTO_OR_AFTER);
 			
 			return true;
     }
 
     void NotebooksTreeView::on_drag_leave(const Glib::RefPtr<Gdk::DragContext> & , guint )
     {
-			set_drag_dest_row (Gtk::TreePath(), Gtk::TREE_VIEW_DROP_INTO_OR_AFTER);
+      gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
     }
 
   }
