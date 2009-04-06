@@ -19,16 +19,16 @@ TESTS = trietest stringtest notetest dttest
 
 
 trietest_SOURCES = test/trietest.cpp \
-	sharp/string.cpp
-trietest_LDADD =  @BOOST_REGEX_LIBS@
+	sharp/string.cpp debug.cpp
+trietest_LDADD =  @BOOST_REGEX_LIBS@ @LIBGLIBMM_LIBS@
 
 dttest_SOURCES = test/dttest.cpp \
 	sharp/datetime.cpp debug.cpp
 dttest_LDADD = @LIBGLIBMM_LIBS@ @BOOST_REGEX_LIBS@
 
 stringtest_SOURCES = test/stringtest.cpp \
-	sharp/string.cpp
-stringtest_LDADD =  @BOOST_REGEX_LIBS@
+	sharp/string.cpp debug.cpp
+stringtest_LDADD =  @BOOST_REGEX_LIBS@ @LIBGLIBMM_LIBS@
 
 notetest_SOURCES = test/notetest.cpp
 notetest_LDADD =  $(GNOTE_LIBS)
