@@ -72,6 +72,12 @@ namespace sharp {
 		boost::split(split, source, boost::is_any_of(delimiters));
 	}
 
+	void ustring_split(std::vector<Glib::ustring> & split, const Glib::ustring & source,
+										const char * delimiters)
+  {
+		boost::split(split, source, boost::is_any_of(delimiters));
+  }
+
   std::string string_substring(const std::string & source, int start)
   {
     DBG_ASSERT(start >= 0, "start can't be negative");

@@ -828,14 +828,14 @@ namespace gnote {
 	{
 		cleanup_matches();
 
-		std::string text = search_text();
+		Glib::ustring text = search_text();
 		if (text.empty())
 			return;
 
-		text = sharp::string_to_lower(text);
+		text = text.lowercase();
 
-		std::vector<std::string> words;
-		sharp::string_split(words, text, " \t\n");
+		std::vector<Glib::ustring> words;
+		sharp::ustring_split(words, text, " \t\n");
 
 		m_current_matches =	find_matches_in_buffer(m_note.get_buffer(), words);
 
@@ -949,13 +949,13 @@ namespace gnote {
 		return false;
 	}
 
-	std::string NoteFindBar::search_text()
+	Glib::ustring NoteFindBar::search_text()
 	{
 		return sharp::string_trim(m_entry.get_text());
 	}
 
 
-	void NoteFindBar::set_search_text(const std::string &value)
+	void NoteFindBar::set_search_text(const Glib::ustring &value)
 	{
 		if(!value.empty()) {
 			m_entry.set_text(value);
@@ -1008,25 +1008,25 @@ namespace gnote {
 
 	std::list<NoteFindBar::Match> 
 	NoteFindBar::find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
-																			const std::vector<std::string> & words)
+																			const std::vector<Glib::ustring> & words)
 	{
 		std::list<Match> matches;
 
-		std::string note_text = buffer->get_slice (buffer->begin(),
+    Glib::ustring note_text = buffer->get_slice (buffer->begin(),
 																							 buffer->end(),
 																							 false /* hidden_chars */);
-		note_text = sharp::string_to_lower(note_text);
+		note_text = note_text.lowercase();
 
-		foreach (const std::string & word, words) {
-			int idx = 0;
+		foreach (const Glib::ustring & word, words) {
+			Glib::ustring::size_type idx = 0;
 			bool this_word_found = false;
 
 			if (word.empty())
 				continue;
 
       while(true) {
-        idx = sharp::string_index_of(note_text, word, idx);
-        if (idx == -1) {
+        idx = note_text.find(word, idx);
+        if (idx == Glib::ustring::npos) {
           if (this_word_found) {
             break;
           }

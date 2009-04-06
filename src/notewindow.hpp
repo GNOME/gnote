@@ -183,8 +183,8 @@ public:
 		{
 			return m_prev_button;
 		}
-	std::string search_text();
-	void set_search_text(const std::string &);
+	Glib::ustring search_text();
+	void set_search_text(const Glib::ustring &);
 
 
 protected:
@@ -220,14 +220,14 @@ private:
 	void highlight_matches(bool);
 	void cleanup_matches();
 	std::list<Match> find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
-																					const std::vector<std::string> & words);
+																					const std::vector<Glib::ustring> & words);
 
 	Note           & m_note;
 	Gtk::Entry       m_entry;
 	Gtk::Button      m_next_button;
 	Gtk::Button      m_prev_button;
 	std::list<Match> m_current_matches;
-	std::string      m_prev_search_text;
+	Glib::ustring    m_prev_search_text;
 	utils::InterruptableTimeout * m_entry_changed_timeout;
 	utils::InterruptableTimeout * m_note_changed_timeout;
 	bool             m_shift_key_pressed;
