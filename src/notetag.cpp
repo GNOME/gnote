@@ -317,8 +317,8 @@ namespace gnote {
 							+ ":" + boost::lexical_cast<std::string>((int)direction))
 		, m_depth(depth)
 		, m_direction(direction)
-		{
-		}
+  {
+  }
 
 	
 
@@ -545,7 +545,7 @@ namespace gnote {
 
 		NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
 		if (note_tag) {
-			note_tag->signal_changed().connect(sigc::mem_fun(*this, &NoteTagTable::on_tag_changed));
+//			note_tag->signal_changed().connect(sigc::mem_fun(*this, &NoteTagTable::on_notetag_changed));
 		}
 	}
 
@@ -556,25 +556,18 @@ namespace gnote {
 
 		NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
 		if (note_tag) {
+// TODO disconnect the signal
 //			note_tag.Changed -= OnTagChanged;
 		}
-
 	}
 
 
-
 #if 0
-/// TODO or not?
-		void OnTagChanged (object sender, Gtk.TagChangedArgs args)
-		{
-			if (TagChanged != null) {
-				TagChanged (this, args);
-			}
-		}
-
-		public new event Gtk.TagChangedHandler TagChanged;
-
+	void NoteTagTable::on_notetag_changed(Glib::RefPtr<Gtk::TextTag>& tag, bool size_changed)
+  {
+    m_signal_changed(tag, size_changed);
+  }
 #endif
-//	void NoteTagTable::on_tag_changed
+
 }
 
