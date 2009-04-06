@@ -25,7 +25,7 @@
 
 #include <queue>
 
-#include <pango/pango-bidi-type.h>
+#include <pangomm/context.h>
 
 #include <gtkmm/textbuffer.h>
 #include <gtkmm/textiter.h>

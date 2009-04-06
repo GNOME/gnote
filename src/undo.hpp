@@ -24,6 +24,7 @@
 
 #include <list>
 #include <string>
+#include <stack>
 
 #include <boost/noncopyable.hpp>
 

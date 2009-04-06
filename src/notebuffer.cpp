@@ -22,8 +22,6 @@
 #include <algorithm>
 #include <tr1/array>
 
-#include <pango/pango-bidi-type.h>
-
 #include <libxml++/parsers/textreader.h>
 
 #include "debug.hpp"
