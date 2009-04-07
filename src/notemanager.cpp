@@ -18,6 +18,8 @@
  */
 
 
+#include <string.h>
+
 #include <exception>
 
 #include <boost/bind.hpp>

@@ -18,6 +18,7 @@
  */
 
 
+#include <string.h>
 
 #include "tagmanager.hpp"
 #include "debug.hpp"
