@@ -208,7 +208,8 @@ namespace gnote {
 					DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
 					tag_removed = true;
 
-          std::list<Note*> notes = tag->get_notes();
+          std::list<Note*> notes;
+          tag->get_notes(notes);
           for(std::list<Note*>::const_iterator note_iter = notes.begin();
               note_iter != notes.end(); ++note_iter) {
             (*note_iter)->remove_tag(tag);
@@ -222,14 +223,12 @@ namespace gnote {
 		}
 	}
   
-	std::list<Tag::Ptr> TagManager::all_tags()
+	void TagManager::all_tags(std::list<Tag::Ptr> & tags) const
 	{
-		std::list<Tag::Ptr> temp;
-				
 		// Add in the system tags first
     for(InternalMap::const_iterator iter = m_internal_tags.begin();
         iter != m_internal_tags.end(); ++iter) {
-      temp.push_back(iter->second);
+      tags.push_back(iter->second);
     }
 		
 		// Now all the other tags
@@ -237,10 +236,8 @@ namespace gnote {
         iter != m_tag_map.end(); ++iter) {
       Tag::Ptr tag;
       iter->second->get_value(0, tag);      
-			temp.push_back(tag);
+			tags.push_back(tag);
 		}
-				
-		return temp;
 	}
 
 }

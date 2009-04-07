@@ -219,8 +219,9 @@ private:
 	bool on_key_released(GdkEventKey*);
 	void highlight_matches(bool);
 	void cleanup_matches();
-	std::list<Match> find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
-																					const std::vector<Glib::ustring> & words);
+	void find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
+                              const std::vector<Glib::ustring> & words,
+                              std::list<Match> & matches);
 
 	Note           & m_note;
 	Gtk::Entry       m_entry;

@@ -263,7 +263,8 @@ namespace gnote {
 	
 	void NoteManager::load_notes()
 	{
-		std::list<std::string> files = sharp::directory_get_files_with_ext(m_notes_dir, ".note");
+		std::list<std::string> files;
+    sharp::directory_get_files_with_ext(m_notes_dir, ".note", files);
 
 		for(std::list<std::string>::const_iterator iter = files.begin();
         iter != files.end(); ++iter) {
@@ -328,7 +329,8 @@ namespace gnote {
 	bool NoteManager::on_exiting_event()
 	{
 		// Call ApplicationAddin.Shutdown () on all the known ApplicationAddins
-    std::list<ApplicationAddin*> app_addins = m_addin_mgr->get_application_addins ();
+    std::list<ApplicationAddin*> app_addins;
+    m_addin_mgr->get_application_addins (app_addins);
 		for(std::list<ApplicationAddin*>::const_iterator iter = app_addins.begin();
         iter != app_addins.end(); ++iter) {
       ApplicationAddin* addin = *iter;

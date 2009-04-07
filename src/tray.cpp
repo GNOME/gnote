@@ -292,7 +292,8 @@ namespace gnote {
 		// element.  Make sure those added by add-ins are
 		// properly accounted for and reordered.
 		std::list<Gtk::Widget*> newNotePlaceholderWidgets;
-		std::list<Gtk::Widget*> allChildWidgets(am.get_placeholder_children("/TrayIconMenu/TrayNewNotePlaceholder"));
+		std::list<Gtk::Widget*> allChildWidgets;
+    am.get_placeholder_children("/TrayIconMenu/TrayNewNotePlaceholder", allChildWidgets);
     for(std::list<Gtk::Widget*>::const_iterator iter = allChildWidgets.begin();
         iter != allChildWidgets.end(); ++iter) {
 			Gtk::MenuItem * menuitem = dynamic_cast<Gtk::MenuItem*>(*iter);

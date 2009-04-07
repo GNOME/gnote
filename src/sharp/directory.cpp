@@ -34,11 +34,10 @@
 namespace sharp {
 
 
-	std::list<std::string> directory_get_files_with_ext(const std::string & dir, 
-                                                      const std::string & ext)
+	void directory_get_files_with_ext(const std::string & dir, 
+                                    const std::string & ext,
+                                    std::list<std::string> & list)
 	{
-		std::list<std::string> list;
-
 		boost::filesystem::path p(dir);
 		
 		boost::filesystem::directory_iterator end_itr; 
@@ -52,8 +51,6 @@ namespace sharp {
         list.push_back(itr->string());
 			}
 		}
-
-		return list;
 	}
 
 

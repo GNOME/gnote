@@ -838,7 +838,7 @@ namespace gnote {
 		std::vector<Glib::ustring> words;
 		sharp::ustring_split(words, text, " \t\n");
 
-		m_current_matches =	find_matches_in_buffer(m_note.get_buffer(), words);
+    find_matches_in_buffer(m_note.get_buffer(), words, m_current_matches);
 
 		m_prev_search_text = search_text();
 
@@ -1011,12 +1011,12 @@ namespace gnote {
 	}
 
 
-	std::list<NoteFindBar::Match> 
-	NoteFindBar::find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
-																			const std::vector<Glib::ustring> & words)
-	{
-		std::list<Match> matches;
 
+	void NoteFindBar::find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
+                                           const std::vector<Glib::ustring> & words,
+                                           std::list<NoteFindBar::Match> & matches)
+	{
+    matches.clear();
     Glib::ustring note_text = buffer->get_slice (buffer->begin(),
 																							 buffer->end(),
 																							 false /* hidden_chars */);
@@ -1038,7 +1038,8 @@ namespace gnote {
             break;
           }
           else {
-            return std::list<Match>();
+            matches.clear();
+            return;
           }
         }
 
@@ -1059,8 +1060,6 @@ namespace gnote {
         idx += word.length();
 			}
 		}
-
-		return matches;
 	}
 
 

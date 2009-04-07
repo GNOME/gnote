@@ -112,8 +112,8 @@ namespace gnote {
 //      UriList(const NoteList & notes);
       UriList(const std::string & data);
       UriList(const Gtk::SelectionData & selection);
-      std::string to_string();
-      std::list<std::string> get_local_paths();
+      std::string to_string() const;
+      void get_local_paths(std::list<std::string> &) const;
       
     private:
       void load_from_string(const std::string & data);

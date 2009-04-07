@@ -81,7 +81,7 @@ namespace gnote {
 		// Returns a list of all the notes that this tag is associated with.
     // These pointer are not meant to be freed. They are OWNED.
 		// </summary>
-    std::list<Note *> get_notes();
+    void get_notes(std::list<Note *> &) const;
 		// <summary>
 		// Returns the number of notes this is currently tagging.
 		// </summary>

@@ -165,7 +165,7 @@ public:
 	void set_xml_content(const std::string & xml);
 	std::string get_complete_note_xml();
 	void load_foreign_note_xml(const std::string & foreignNoteXml, ChangeType changeType);
-	static std::list<std::string> parse_tags(const xmlpp::Node *tagnodes);
+	static void parse_tags(const xmlpp::Node *tagnodes, std::list<std::string> & tags);
 	std::string text_content();
 	void set_text_content(const std::string & text);
 	const NoteData & data() const;
@@ -205,9 +205,9 @@ public:
 		}
 	bool is_pinned() const;
 	void set_pinned(bool pinned) const;
-	bool is_open_on_startup();
+	bool is_open_on_startup() const;
 	void set_is_open_on_startup(bool);
-	std::list<Tag::Ptr> tags();
+	void get_tags(std::list<Tag::Ptr> &) const;
 
 	sigc::signal<void,Note&> & signal_opened()
 		{ return m_signal_opened; }

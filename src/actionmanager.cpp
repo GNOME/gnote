@@ -110,9 +110,9 @@ namespace gnote {
 	/// A <see cref="IList`1"/> of Gtk.Widget objects corresponding
 	/// to the XML child elements of the placeholder element.
 	/// </returns>
-	std::list<Gtk::Widget*> ActionManager::get_placeholder_children (const std::string & path)
+  void ActionManager::get_placeholder_children(const std::string & path, 
+                                               std::list<Gtk::Widget*> & children) const
 	{
-		std::list<Gtk::Widget*> children;
 		// Wrap the UIManager XML in a root element
 		// so that it's real parseable XML.
 		std::string xml = "<root>" + m_ui->get_ui() + "</root>";
@@ -151,7 +151,6 @@ namespace gnote {
 				}
 			}
 		}
-		return children;
 	}
 
 
@@ -230,7 +229,7 @@ namespace gnote {
 		m_ui->insert_action_group(m_main_window_actions);
 	}
 
-	Glib::RefPtr<Gtk::Action> ActionManager::find_action_by_name(const std::string & n)
+	Glib::RefPtr<Gtk::Action> ActionManager::find_action_by_name(const std::string & n) const
 	{
 		Glib::ListHandle<Glib::RefPtr<Gtk::ActionGroup> > actiongroups = m_ui->get_action_groups();
 		for(Glib::ListHandle<Glib::RefPtr<Gtk::ActionGroup> >::const_iterator iter(actiongroups.begin()); 

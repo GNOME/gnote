@@ -40,18 +40,18 @@ class ActionManager
 public:
 	ActionManager();
 
-	Glib::RefPtr<Gtk::Action> operator[](const std::string & n)
+	Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const
 		{
 			return find_action_by_name(n);
 		}
-	Gtk::Widget * get_widget(const std::string &n)
+	Gtk::Widget * get_widget(const std::string &n) const
 		{
 			return m_ui->get_widget(n);
 		}
 	void load_interface();
-	std::list<Gtk::Widget*> get_placeholder_children(const std::string & p);
+  void get_placeholder_children(const std::string & p, std::list<Gtk::Widget*> & placeholders) const;
 	void populate_action_groups();
-	Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n);
+	Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n) const;
   const Glib::RefPtr<Gtk::UIManager> & get_ui()
     {
       return m_ui;

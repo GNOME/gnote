@@ -82,15 +82,12 @@ namespace gnote {
 	}
 
 
-  std::list<Note *> Tag::get_notes()
+  void Tag::get_notes(std::list<Note *> & l) const
   {
-    std::list<Note *> l;
-    
     for(NoteMap::const_iterator iter = m_notes->begin();
         iter != m_notes->end(); ++iter) {
       l.push_back(iter->second);
     }
-    return l;
   }
 
 

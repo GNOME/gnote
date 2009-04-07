@@ -654,7 +654,8 @@ namespace gnote {
       return true;
 
     //   // FIXME: Ugh!  NOT an O(1) operation.  Is there a better way?
-    std::list<Tag::Ptr> tags = note->tags();
+    std::list<Tag::Ptr> tags;
+    note->get_tags(tags);
     for(std::list<Tag::Ptr>::const_iterator iter = tags.begin();
         iter != tags.end(); ++iter) {
       if(m_selected_tags.find(*iter) != m_selected_tags.end()) {

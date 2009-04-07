@@ -160,7 +160,8 @@ namespace gnote {
 				m_notebookMap.erase (map_iter);
 				
 				// Remove the notebook tag from every note that's in the notebook
-        std::list<Note *> notes = notebook->get_tag()->get_notes();
+        std::list<Note *> notes;
+        notebook->get_tag()->get_notes(notes);
         for(std::list<Note *>::const_iterator note_iter = notes.begin();
             note_iter != notes.end(); ++note_iter) {
           Note * note = *note_iter;
@@ -211,7 +212,8 @@ namespace gnote {
 		/// </returns>
     Notebook::Ptr NotebookManager::get_notebook_from_note(const Note::Ptr & note)
     {
-      std::list<Tag::Ptr> tags = note->tags();
+      std::list<Tag::Ptr> tags;
+      note->get_tags(tags);
       for(std::list<Tag::Ptr>::const_iterator iter = tags.begin();
           iter != tags.end(); ++iter) {
         Notebook::Ptr notebook = get_notebook_from_tag (*iter);
@@ -430,7 +432,8 @@ namespace gnote {
     void NotebookManager::load_notebooks()
 		{
 			Gtk::TreeIter iter;
-      std::list<Tag::Ptr> tags = TagManager::obj().all_tags();
+      std::list<Tag::Ptr> tags;
+      TagManager::obj().all_tags(tags);
       for(std::list<Tag::Ptr>::const_iterator tag_iter = tags.begin();
           tag_iter != tags.end(); ++tag_iter) {
         

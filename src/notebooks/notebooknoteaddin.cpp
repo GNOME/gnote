@@ -192,7 +192,8 @@ namespace notebooks {
     m_menu_items.push_back(noNotebookMenuItem);
 			
     // Add in all the real notebooks
-    std::list<NotebookMenuItem*> notebookMenuItems = get_notebook_menu_items ();
+    std::list<NotebookMenuItem*> notebookMenuItems;
+    get_notebook_menu_items (notebookMenuItems);
     if (!notebookMenuItems.empty()) {
       Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem ());
       separator->show_all ();
@@ -210,13 +211,13 @@ namespace notebooks {
   }
   
 
-  std::list<NotebookMenuItem*> NotebookNoteAddin::get_notebook_menu_items()
+  void NotebookNoteAddin::get_notebook_menu_items(std::list<NotebookMenuItem*>& items)
   {
-    std::list<NotebookMenuItem*>items;
-			
     Glib::RefPtr<Gtk::TreeModel> model = NotebookManager::instance().get_notebooks();
     Gtk::TreeIter iter;
-			
+
+    items.clear();
+
     iter = model->children().begin();
     for(iter = model->children().begin(); iter != model->children().end(); ++iter) {
       Notebook::Ptr notebook;
@@ -227,8 +228,6 @@ namespace notebooks {
     }
 			
     items.sort ();
-			
-    return items;
   }
 
 

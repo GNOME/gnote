@@ -57,7 +57,7 @@ public:
   ~AddinManager();
 
 	void load_addins_for_note(const Note::Ptr &);
-  std::list<ApplicationAddin*> get_application_addins() const;
+  void get_application_addins(std::list<ApplicationAddin*> &) const;
   /// get_preference_tab_addins();
 
   sigc::signal<void> & signal_application_addin_list_changed();

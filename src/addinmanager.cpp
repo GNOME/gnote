@@ -92,15 +92,12 @@ namespace gnote {
   }
 
 
-  std::list<ApplicationAddin*> AddinManager::get_application_addins() const
+  void AddinManager::get_application_addins(std::list<ApplicationAddin*> & l) const
   {
-    std::list<ApplicationAddin*> l;
-
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
       l.push_back(iter->second);
     }
-    return l;
   }
 
 }

@@ -51,7 +51,7 @@ public:
 		{
 			return m_sorted_tags;
 		}
-	std::list<Tag::Ptr> all_tags();
+	void all_tags(std::list<Tag::Ptr>  &) const;
 private:
 
 	class ColumnRecord

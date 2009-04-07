@@ -838,7 +838,8 @@ namespace gnote {
 					parser.parse_memory(xml.read_outer_xml());
 					if(parser) {
 						const xmlpp::Document * doc2 = parser.get_document();
-						std::list<std::string> tag_strings = parse_tags (doc2->get_root_node());
+						std::list<std::string> tag_strings;
+            parse_tags (doc2->get_root_node(), tag_strings);
             for(std::list<std::string>::const_iterator iter = tag_strings.begin();
                 iter != tag_strings.end(); ++iter) {
 							Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);
@@ -867,9 +868,8 @@ namespace gnote {
 	}
 
 
-	std::list<std::string> Note::parse_tags(const xmlpp::Node *tagnodes)
+	void Note::parse_tags(const xmlpp::Node *tagnodes, std::list<std::string> & tags)
 	{
-		std::list<std::string> tags;
 		xmlpp::NodeSet nodes = tagnodes->find("//*");
     for(xmlpp::NodeSet::const_iterator iter = nodes.begin();
         iter != nodes.end(); ++iter) {
@@ -887,7 +887,6 @@ namespace gnote {
         }
 			}
 		}
-		return tags;
 	}
 
 	std::string Note::text_content()
@@ -1038,7 +1037,7 @@ namespace gnote {
 	}
 
 	
-	bool Note::is_open_on_startup()
+	bool Note::is_open_on_startup() const
 	{
 		return data().is_open_on_startup();
 	}
@@ -1052,14 +1051,12 @@ namespace gnote {
 		}
 	}
 	
-	std::list<Tag::Ptr> Note::tags()
+	void Note::get_tags(std::list<Tag::Ptr> & l) const
 	{
-		std::list<Tag::Ptr> l;
     for(NoteData::TagMap::const_iterator iter = m_data.data().tags().begin();
         iter != m_data.data().tags().end(); ++iter) {
 			l.push_back(iter->second);
 		}
-		return l;
 	}
 
 	const char *NoteArchiver::CURRENT_VERSION = "0.3";
@@ -1128,7 +1125,8 @@ namespace gnote {
 					parser.parse_memory(xml.read_outer_xml());
 					if(parser) {
 						const xmlpp::Document * doc2 = parser.get_document();
-						std::list<std::string> tag_strings = Note::parse_tags(doc2->get_root_node());
+						std::list<std::string> tag_strings;
+            Note::parse_tags(doc2->get_root_node(), tag_strings);
             for(std::list<std::string>::const_iterator iter = tag_strings.begin();
                 iter != tag_strings.end(); ++iter) {
 							Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);

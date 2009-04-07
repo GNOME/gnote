@@ -459,7 +459,7 @@ namespace gnote {
     }
 
 
-    std::string UriList::to_string()
+    std::string UriList::to_string() const
     {
       std::string s;
       for(const_iterator iter = begin(); iter != end(); ++iter) {
@@ -469,9 +469,8 @@ namespace gnote {
     }
 
 
-    std::list<std::string> UriList::get_local_paths()
+    void UriList::get_local_paths(std::list<std::string> & paths) const
     {
-      std::list<std::string>paths;
       for(const_iterator iter = begin(); iter != end(); ++iter) {
 
         const sharp::Uri & uri(*iter);
@@ -480,7 +479,6 @@ namespace gnote {
           paths.push_back(uri.local_path());
         }
       }
-      return paths;
     }
 
 

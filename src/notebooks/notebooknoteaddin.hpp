@@ -55,7 +55,7 @@ namespace notebooks {
     void update_notebook_button_label();
     void update_notebook_button_label(const Notebook::Ptr &);
     void update_menu();
-    std::list<NotebookMenuItem*> get_notebook_menu_items();
+    void get_notebook_menu_items(std::list<NotebookMenuItem*> &);
     Gtk::MenuToolButton      *m_toolButton;
     Gtk::Menu                *m_menu;
     std::list<Gtk::MenuItem *> m_menu_items;

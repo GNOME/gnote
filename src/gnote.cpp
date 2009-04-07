@@ -85,7 +85,7 @@ namespace gnote {
 		setup_global_actions();
 		
     std::list<ApplicationAddin*> addins;
-    addins = m_manager->get_addin_manager().get_application_addins();
+    m_manager->get_addin_manager().get_application_addins(addins);
     for(std::list<ApplicationAddin*>::const_iterator iter = addins.begin();
         iter != addins.end(); ++iter) {
       (*iter)->initialize();
