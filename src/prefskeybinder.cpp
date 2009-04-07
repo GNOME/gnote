@@ -177,7 +177,7 @@ namespace gnote {
   void GnotePrefsKeybinder::enable_keybindings_changed(Preferences*, GConfEntry* entry)
   {
     if(gconf_entry_get_key(entry) == Preferences::ENABLE_KEYBINDINGS) {
-      GConfValue *value;
+      GConfValue *value = gconf_entry_get_value(entry);
       
       bool enabled = gconf_value_get_bool(value);
       enable_disable(enabled);
