@@ -1019,7 +1019,7 @@ namespace gnote {
 		if (pinned == is_currently_pinned)
 			return;
 
-		if (is_currently_pinned) {
+		if (pinned) {
 			new_pinned = uri() + " " + old_pinned;
 		} 
 		else {
