@@ -6,7 +6,6 @@
 #include <boost/test/minimal.hpp>
 
 #include "trie.hpp"
-#include "sharp/foreach.hpp"
 
 int test_main(int /*argc*/, char ** /*argv*/)
 {
@@ -36,7 +35,9 @@ int test_main(int /*argc*/, char ** /*argv*/)
   BOOST_CHECK( (*iter)->start == 0 );
   BOOST_CHECK( (*iter)->end == 5 );
 
-  foreach (const gnote::TrieHit<std::string> * hit, *matches) {
+  for(gnote::TrieTree<std::string>::HitList::const_iterator hit_iter = matches->begin();
+      hit_iter != matches->end(); ++hit_iter) {
+    gnote::TrieHit<std::string> *hit(*hit_iter);
     printf ("*** Match: '%s' at %d-%d\n",
             hit->key.c_str(), hit->start, hit->end);
   }

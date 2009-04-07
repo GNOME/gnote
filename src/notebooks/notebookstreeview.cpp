@@ -29,7 +29,6 @@
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/notebookstreeview.hpp"
 #include "notemanager.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
   namespace notebooks {
@@ -78,8 +77,10 @@ namespace gnote {
 				context->drag_finish (false, false, time_);
 				return;
 			}
-			
-			foreach (const sharp::Uri & uri, uriList) {
+
+      for(utils::UriList::const_iterator uri_iter = uriList.begin();
+          uri_iter != uriList.end(); ++uri_iter) {
+        const sharp::Uri & uri(*uri_iter);
         Note::Ptr note = m_note_manager.find_by_uri (uri.to_string ());
 				if (!note)
 					continue;

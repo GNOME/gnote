@@ -32,8 +32,6 @@
 #include "notetag.hpp"
 #include "noteeditor.hpp"
 
-#include "sharp/foreach.hpp"
-
 namespace gnote {
 
 	NoteTag::NoteTag(const std::string & tag_name, int flags) throw(sharp::Exception)
@@ -285,8 +283,9 @@ namespace gnote {
 			NoteTag::write (xml, start);
 
 			if (start) {
-				foreach (const AttributeMap::value_type & val, m_attributes) {
-					xml.write_attribute_string ("", val.first, "", val.second);
+        for(AttributeMap::const_iterator iter = m_attributes.begin();
+            iter != m_attributes.end(); ++iter) {
+					xml.write_attribute_string ("", iter->first, "", iter->second);
 				}
 			}
 		}

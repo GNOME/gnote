@@ -40,7 +40,6 @@
 #include "actionmanager.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/string.hpp"
-#include "sharp/foreach.hpp"
 
 
 namespace gnote {
@@ -263,15 +262,17 @@ namespace gnote {
 	{
 		int workspace = tomboy_window_get_workspace(gobj());
 		
-		foreach (Note::Ptr iter, m_note.manager().get_notes()) {
-			if (!iter->is_opened())
+    for(Note::List::const_iterator iter = m_note.manager().get_notes().begin();
+        iter != m_note.manager().get_notes().end(); ++iter) {
+      const Note::Ptr & note(*iter);
+			if (!note->is_opened())
 				continue;
 
 			// Close windows on the same workspace, or all
 			// open windows if no workspace.
-			if (workspace < 0 ||
-					tomboy_window_get_workspace (iter->get_window()->gobj()) == workspace) {
-				iter->get_window()->close_window_handler();
+			if ((workspace < 0) ||
+					(tomboy_window_get_workspace (note->get_window()->gobj()) == workspace)) {
+				note->get_window()->close_window_handler();
 			}
 		}
 	}
@@ -970,7 +971,9 @@ namespace gnote {
 			return;
 		}
 
-		foreach(Match &match, m_current_matches) {
+    for(std::list<Match>::iterator iter = m_current_matches.begin();
+        iter != m_current_matches.end(); ++iter) {
+      Match &match(*iter);
 			Glib::RefPtr<NoteBuffer> buffer = match.buffer;
 
 			if (match.highlighting != highlight) {
@@ -995,7 +998,9 @@ namespace gnote {
 		if (!m_current_matches.empty()) {
 			highlight_matches (false /* unhighlight */);
 
-			foreach (const Match & match, m_current_matches) {
+      for(std::list<Match>::const_iterator iter = m_current_matches.begin();
+          iter != m_current_matches.end(); ++iter) {
+        const Match &match(*iter);
 				match.buffer->delete_mark(match.start_mark);
 				match.buffer->delete_mark(match.end_mark);
 			}
@@ -1017,7 +1022,9 @@ namespace gnote {
 																							 false /* hidden_chars */);
 		note_text = note_text.lowercase();
 
-		foreach (const Glib::ustring & word, words) {
+    for(std::vector<Glib::ustring>::const_iterator iter = words.begin();
+        iter != words.end(); ++iter) {
+      const Glib::ustring & word(*iter);
 			Glib::ustring::size_type idx = 0;
 			bool this_word_found = false;
 

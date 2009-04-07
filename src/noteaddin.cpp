@@ -22,7 +22,6 @@
 
 #include "noteaddin.hpp"
 #include "notewindow.hpp"
-#include "sharp/foreach.hpp"
 
 
 namespace gnote {
@@ -42,16 +41,18 @@ namespace gnote {
   void NoteAddin::dispose(bool disposing)
   {
     if (disposing) {
-      foreach (Gtk::Widget * item, m_tools_menu_items) {
-        delete item;
+      for(std::list<Gtk::MenuItem*>::const_iterator iter = m_tools_menu_items.begin();
+          iter != m_tools_menu_items.end(); ++iter) {
+        delete *iter;
       }
-
-      foreach (Gtk::Widget * item, m_text_menu_items) {
-        delete item;
+      for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
+          iter != m_text_menu_items.end(); ++iter) {
+        delete *iter;
       }
 				
-      foreach (const ToolItemMap::value_type & item, m_toolbar_items) {
-        delete item.first;
+      for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
+               iter != m_toolbar_items.end(); ++iter) {
+        delete iter->first;
       }
 
       shutdown ();
@@ -66,13 +67,17 @@ namespace gnote {
     on_note_opened();
     NoteWindow * window = get_window();
 
-    foreach (Gtk::Widget *item, m_tools_menu_items) {
+    for(std::list<Gtk::MenuItem*>::const_iterator iter = m_tools_menu_items.begin();
+        iter != m_tools_menu_items.end(); ++iter) {
+      Gtk::Widget *item= *iter;
       if ((item->get_parent() == NULL) ||
           (item->get_parent() != window->plugin_menu()))
         window->plugin_menu()->add (*item);
     }
 
-    foreach (Gtk::Widget *item, m_text_menu_items) {
+    for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
+        iter != m_text_menu_items.end(); ++iter) {
+      Gtk::Widget *item = *iter;
       if ((item->get_parent() == NULL) ||
           (item->get_parent() != window->text_menu())) {
         window->text_menu()->add (*item);
@@ -80,10 +85,11 @@ namespace gnote {
       }
     }
 			
-    foreach (const ToolItemMap::value_type & item, m_toolbar_items) {
-      if ((item.first->get_parent() == NULL) ||
-          (item.first->get_parent() != window->toolbar())) {
-        window->toolbar()->insert (*item.first, item.second);
+    for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
+        iter != m_toolbar_items.end(); ++iter) {
+      if ((iter->first->get_parent() == NULL) ||
+          (iter->first->get_parent() != window->toolbar())) {
+        window->toolbar()->insert (*(iter->first), iter->second);
       }
     }
   }

@@ -33,15 +33,13 @@
 #include "addinmanager.hpp"
 #include "applicationaddin.hpp"
 #include "debug.hpp"
-#include "notemanager.cpp"
+#include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "recentchanges.hpp"
 #include "utils.hpp"
 #include "xkeybinder.hpp"
 #include "sharp/string.hpp"
-#include "sharp/foreach.hpp"
-
 
 namespace gnote {
 
@@ -88,8 +86,9 @@ namespace gnote {
 		
     std::list<ApplicationAddin*> addins;
     addins = m_manager->get_addin_manager().get_application_addins();
-    foreach(ApplicationAddin * addin, addins) {
-      addin->initialize();
+    for(std::list<ApplicationAddin*>::const_iterator iter = addins.begin();
+        iter != addins.end(); ++iter) {
+      (*iter)->initialize();
     }
 
 		if(cmd_line.use_panel_applet()) {

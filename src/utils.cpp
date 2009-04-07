@@ -39,7 +39,6 @@
 #include "note.hpp"
 #include "utils.hpp"
 #include "debug.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 	namespace utils {
@@ -423,7 +422,11 @@ namespace gnote {
     {
       std::vector<std::string> items;
       sharp::string_split(items, data, "\n");
-      foreach(const std::string & i, items) {
+      for(std::vector<std::string>::const_iterator iter = items.begin();
+          iter != items.end(); ++iter) {
+
+        const std::string & i(*iter);
+
         if(sharp::string_starts_with(i, "#")) {
           continue;
         }
@@ -459,8 +462,8 @@ namespace gnote {
     std::string UriList::to_string()
     {
       std::string s;
-      foreach(const sharp::Uri & uri, *this) {
-        s += uri.to_string() + "\r\n";
+      for(const_iterator iter = begin(); iter != end(); ++iter) {
+        s += iter->to_string() + "\r\n";
       }
       return s;
     }
@@ -469,7 +472,10 @@ namespace gnote {
     std::list<std::string> UriList::get_local_paths()
     {
       std::list<std::string>paths;
-      foreach(const sharp::Uri & uri, *this) {
+      for(const_iterator iter = begin(); iter != end(); ++iter) {
+
+        const sharp::Uri & uri(*iter);
+
         if(uri.is_file()) {
           paths.push_back(uri.local_path());
         }

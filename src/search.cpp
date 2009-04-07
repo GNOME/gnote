@@ -25,7 +25,6 @@
 #include "search.hpp"
 #include "tagmanager.hpp"
 #include "utils.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -50,7 +49,10 @@ namespace gnote {
 			// Skip over notes that are template notes
     Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
-    foreach (const Note::Ptr & note, m_manager.get_notes()) {
+    for(Note::List::const_iterator iter = m_manager.get_notes().begin();
+        iter != m_manager.get_notes().end(); ++iter) {
+      const Note::Ptr & note(*iter);
+
       // Skip template notes
       if (note->contains_tag (template_tag)) {
         continue;
@@ -87,8 +89,9 @@ namespace gnote {
       note_text = sharp::string_to_lower(note_text);
     }
 
-    foreach (const std::string & word, encoded_words) {
-      if (sharp::string_contains(note_text, word) ) {
+    for(std::vector<std::string>::const_iterator iter = encoded_words.begin();
+        iter != encoded_words.end(); ++iter) {
+      if (sharp::string_contains(note_text, *iter) ) {
         continue;
       }
       else {
@@ -109,7 +112,11 @@ namespace gnote {
       note_text = sharp::string_to_lower(note_text);
     }
     
-    foreach (const std::string & word, words) {
+    for(std::vector<std::string>::const_iterator iter = words.begin();
+        iter != words.end(); ++iter) {
+
+      const std::string & word(*iter);
+
       int idx = 0;
       bool this_word_found = false;
 

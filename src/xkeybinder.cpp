@@ -24,7 +24,6 @@
 
 #include "preferences.hpp"
 #include "xkeybinder.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -63,8 +62,9 @@ namespace gnote {
 
   void XKeybinder::unbind_all()
   {
-    foreach(BindingMap::value_type & value, m_bindings) {
-      tomboy_keybinder_unbind (value.first.c_str(), &XKeybinder::keybinding_pressed);
+    for(BindingMap::const_iterator iter = m_bindings.begin();
+        iter != m_bindings.end(); ++iter) {
+      tomboy_keybinder_unbind (iter->first.c_str(), &XKeybinder::keybinding_pressed);
     }
     m_bindings.clear();
   }

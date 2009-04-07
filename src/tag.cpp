@@ -24,7 +24,6 @@
 #include "sharp/string.hpp"
 #include "note.hpp"
 #include "tag.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -86,8 +85,10 @@ namespace gnote {
   std::list<Note *> Tag::get_notes()
   {
     std::list<Note *> l;
-		foreach (const NoteMap::value_type & value, *m_notes) {
-      l.push_back(value.second);
+    
+    for(NoteMap::const_iterator iter = m_notes->begin();
+        iter != m_notes->end(); ++iter) {
+      l.push_back(iter->second);
     }
     return l;
   }

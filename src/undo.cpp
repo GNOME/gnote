@@ -1,3 +1,22 @@
+/*
+ * gnote
+ *
+ * Copyright (C) 2009 Hubert Figuiere
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 
 
 
@@ -5,7 +24,6 @@
 #include "debug.hpp"
 #include "notetag.hpp"
 #include "undo.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -36,8 +54,11 @@ namespace gnote {
   void SplitterAction::split(Gtk::TextIter iter, 
                              const Glib::RefPtr<Gtk::TextBuffer> & buffer)
   {
-    foreach (const Glib::RefPtr<Gtk::TextTag>& tag, iter.get_tags()) {
-      NoteTag::Ptr noteTag = NoteTag::Ptr::cast_dynamic(tag);
+    Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
+		for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+        tag_iter != tag_list.end(); ++tag_iter) {
+      const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
+      NoteTag::ConstPtr noteTag = NoteTag::ConstPtr::cast_dynamic(tag);
       if (noteTag && !noteTag->can_split()) {
         Gtk::TextIter start = iter;
         Gtk::TextIter end = iter;
@@ -77,8 +98,9 @@ namespace gnote {
   int SplitterAction::get_split_offset() const
   {
     int offset = 0;
-    foreach (const TagData & tag, m_splitTags) {
-      NoteTag::Ptr noteTag = NoteTag::Ptr::cast_dynamic(tag.tag);
+    for(std::list<TagData>::const_iterator iter = m_splitTags.begin();
+        iter != m_splitTags.end(); ++iter) {
+      NoteTag::Ptr noteTag = NoteTag::Ptr::cast_dynamic(iter->tag);
       if (noteTag->get_image()) {
         offset++;
       }
@@ -89,7 +111,9 @@ namespace gnote {
 
   void SplitterAction::apply_split_tag(const Glib::RefPtr<Gtk::TextBuffer> & buffer)
   {
-    foreach (const TagData & tag, m_splitTags) {
+    for(std::list<TagData>::const_iterator iter = m_splitTags.begin();
+        iter != m_splitTags.end(); ++iter) {
+      const TagData & tag(*iter);
       int offset = get_split_offset ();
 
       Gtk::TextIter start = buffer->get_iter_at_offset (tag.start - offset);
@@ -101,7 +125,9 @@ namespace gnote {
 
   void SplitterAction::remove_split_tags(const Glib::RefPtr<Gtk::TextBuffer> &buffer)
   {
-    foreach (const TagData & tag, m_splitTags) {
+    for(std::list<TagData>::const_iterator iter = m_splitTags.begin();
+        iter != m_splitTags.end(); ++iter) {
+      const TagData & tag(*iter);
       Gtk::TextIter start = buffer->get_iter_at_offset (tag.start);
       Gtk::TextIter end = buffer->get_iter_at_offset (tag.end);
       buffer->remove_tag(tag.tag, start, end);

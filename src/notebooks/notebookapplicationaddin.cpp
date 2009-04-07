@@ -36,7 +36,6 @@
 #include "debug.hpp"
 #include "gnote.hpp"
 #include "notemanager.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
   namespace notebooks {
@@ -164,8 +163,10 @@ namespace gnote {
 			}
 
       NoteManager & nm(Gnote::obj().default_note_manager());
-					
-			foreach (const Note::Ptr & note, nm.get_notes()) {
+			
+      for(Note::List::const_iterator iter = nm.get_notes().begin();
+          iter != nm.get_notes().end(); ++iter) {
+        const Note::Ptr & note(*iter);
 				note->signal_tag_added().connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_added));
 				note->signal_tag_removed().connect(
@@ -280,9 +281,10 @@ namespace gnote {
     void NotebookApplicationAddin::remove_menu_items(Gtk::Menu * menu, 
                                                      std::list<Gtk::MenuItem*> & menu_items)
     {
-      foreach (Gtk::MenuItem * child,  menu_items) {
-				menu->remove (*child);
-			}
+      for(std::list<Gtk::MenuItem*>::const_iterator iter = menu_items.begin();
+          iter != menu_items.end(); ++iter) {
+        menu->remove(**iter);
+      }
       menu_items.clear();
     }
 

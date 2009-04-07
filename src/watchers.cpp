@@ -36,7 +36,6 @@
 #include "tagmanager.hpp"
 #include "triehit.hpp"
 #include "watchers.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -359,7 +358,10 @@ namespace gnote {
 
     if (tag->property_name() == "gtkspell-misspelled") {
 				// Remove misspelled tag for links & title
-      foreach (const Glib::RefPtr<const Gtk::TextTag> & atag, start_char.get_tags()) {
+      Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> > tag_list = start_char.get_tags();
+      for(Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+          tag_iter != tag_list.end(); ++tag_iter) {
+        const Glib::RefPtr<const Gtk::TextTag>& atag(*tag_iter);
         if ((tag != atag) &&
             !NoteTagTable::tag_is_spell_checkable (atag)) {
           remove = true;
@@ -861,8 +863,9 @@ namespace gnote {
                                            const Gtk::TextIter & end)
   {
     TrieHit<Note::Ptr>::ListPtr hits = manager().find_trie_matches (start.get_slice (end));
-    foreach (const TrieHit<Note::Ptr> * hit, *hits) {
-      do_highlight (*hit, start, end);
+    for(TrieHit<Note::Ptr>::List::const_iterator iter = hits->begin();
+        iter != hits->end(); ++iter) {
+      do_highlight (**iter, start, end);
     }
   }
 
@@ -1146,7 +1149,11 @@ namespace gnote {
     {
       Gtk::TextIter iter = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
 
-      foreach (const Glib::RefPtr<Gtk::TextTag> & tag, iter.get_tags()) {
+      Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
+      for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+          tag_iter != tag_list.end(); ++tag_iter) {
+        const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
+
         if (NoteTagTable::tag_is_activatable (tag)) {
           retval = tag->event (Glib::RefPtr<Gtk::TextView>(get_window()->editor()), 
                                (GdkEvent*)ev, iter);
@@ -1212,7 +1219,11 @@ namespace gnote {
     Gtk::TextIter iter;
     get_window()->editor()->get_iter_at_location (iter, buffer_x, buffer_y);
 
-    foreach (const Glib::RefPtr<Gtk::TextTag> & tag, iter.get_tags()) {
+    Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
+    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+        tag_iter != tag_list.end(); ++tag_iter) {
+      const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
+
       if (NoteTagTable::tag_is_activatable (tag)) {
         hovering = true;
         break;
@@ -1270,9 +1281,9 @@ namespace gnote {
   {
     // FIXME: Just for kicks, spit out the current tags
     DBG_OUT ("%s tags:", get_note()->get_title().c_str());
-    foreach (const Tag::Ptr & tag, get_note()->tags()) {
-      DBG_OUT ("\t%s", tag->name().c_str());
-    }
+//    foreach (const Tag::Ptr & tag, get_note()->tags()) {
+//      DBG_OUT ("\t%s", tag->name().c_str());
+//    }
   }
 
   void NoteTagsWatcher::on_tag_added(const Note& note, const Tag::Ptr& tag)

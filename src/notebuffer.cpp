@@ -32,7 +32,6 @@
 #include "undo.hpp"
 
 #include "sharp/xmlwriter.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -143,7 +142,10 @@ namespace gnote {
 	{
 		// TODO: Is this variables used, or do we just need to
 		// access iter.Tags to work around a bug?
-		foreach (const Glib::RefPtr<const Gtk::TextTag> & tag, iter.get_tags()) {
+    Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> > tag_list = iter.get_tags();
+		for(Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+        tag_iter != tag_list.end(); ++tag_iter) {
+      const Glib::RefPtr<const Gtk::TextTag> & tag(*tag_iter);
 			DynamicNoteTag::ConstPtr dynamic_tag =  DynamicNoteTag::ConstPtr::cast_dynamic(tag);
 			if (dynamic_tag &&
 					(dynamic_tag->get_element_name() == tag_name)) {
@@ -177,7 +179,10 @@ namespace gnote {
 		else {
 			// Remove any existing tags when a depth tag is applied
 			m_undomanager->freeze_undo();
-			foreach (const Glib::RefPtr<const Gtk::TextTag> & tag, start_char.get_tags()) {
+      Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> > tag_list = start_char.get_tags();
+      for(Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+          tag_iter != tag_list.end(); ++tag_iter) {
+        const Glib::RefPtr<const Gtk::TextTag> & tag(*tag_iter);
 				DepthNoteTag::ConstPtr dn_tag2 = DepthNoteTag::ConstPtr::cast_dynamic(tag);
 				if (!dn_tag2) {
 					// here it gets hairy. Gtkmm does not implement remove_tag() on a const.
@@ -240,12 +245,15 @@ namespace gnote {
 			insert_start.backward_chars (text.size());
 
 			m_undomanager->freeze_undo();
-			foreach (const Glib::RefPtr<Gtk::TextTag> & tag, insert_start.get_tags()) {
-				remove_tag(tag, insert_start, pos);
+      Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = insert_start.get_tags();
+      for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+          tag_iter != tag_list.end(); ++tag_iter) {
+				remove_tag(*tag_iter, insert_start, pos);
 			}
 
-			foreach (const Glib::RefPtr<Gtk::TextTag> & tag, m_active_tags) {
-				apply_tag(tag, insert_start, pos);
+			for(std::list<Glib::RefPtr<Gtk::TextTag> >::const_iterator iter = m_active_tags.begin();
+          iter != m_active_tags.end(); ++iter) {
+				apply_tag(*iter, insert_start, pos);
 			}
 			m_undomanager->thaw_undo();
 		}
@@ -278,7 +286,9 @@ namespace gnote {
 		iters[0] = start;
 		iters[1] = end_iter;
 
-		foreach (const Gtk::TextIter & iter, iters) {
+		for(std::tr1::array<Gtk::TextIter, 2>::iterator iter2 = iters.begin();
+        iter2 != iters.end(); ++iter2) {
+      Gtk::TextIter & iter(*iter2);
 			Gtk::TextIter line_start = iter;
 			line_start.set_line_offset(0);
 
@@ -662,14 +672,20 @@ namespace gnote {
 		Gtk::TextIter iter = get_iter_at_mark(mark);
 
 		// Add any growable tags not starting on the next character...
-		foreach (const Glib::RefPtr<Gtk::TextTag> & tag, iter.get_tags()) {
+    const Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list(iter.get_tags());
+    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+        tag_iter != tag_list.end(); ++tag_iter) {
+      const Glib::RefPtr<Gtk::TextTag> & tag(*tag_iter);
 			if (!iter.begins_tag(tag) && NoteTagTable::tag_is_growable(tag)) {
 				m_active_tags.push_back(tag);
 			}
 		}
 
-		// Add any growable tags not ending on the prior character...
-		foreach (const Glib::RefPtr<Gtk::TextTag> & tag, iter.get_toggled_tags(false)) {
+		// Add any growable tags not ending on the prior character..
+    const Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list2(iter.get_toggled_tags(false));
+    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list2.begin();
+        tag_iter != tag_list2.end(); ++tag_iter) {
+      const Glib::RefPtr<Gtk::TextTag> & tag(*tag_iter);
 			if (!iter.ends_tag(tag) && NoteTagTable::tag_is_growable(tag)) {
 				m_active_tags.push_back(tag);
 			}
@@ -1065,7 +1081,10 @@ namespace gnote {
 	{
 		DepthNoteTag::Ptr depth_tag;
 
-		foreach (const Glib::RefPtr<Gtk::TextTag> & tag, iter.get_tags()) {
+    Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
+    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+        tag_iter != tag_list.end(); ++tag_iter) {
+      const Glib::RefPtr<Gtk::TextTag> & tag(*tag_iter);
 			if (NoteTagTable::tag_has_depth (tag)) {
 				depth_tag = DepthNoteTag::Ptr::cast_dynamic(tag);
 				break;
@@ -1144,7 +1163,10 @@ namespace gnote {
 		xml.write_attribute_string ("", "version", "", "0.1");
 
 		// Insert any active tags at start into tag_stack...
-		foreach (const Glib::RefPtr<const Gtk::TextTag> & start_tag, start.get_tags()) {
+    Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> > tag_list = start.get_tags();
+    for(Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+        tag_iter != tag_list.end(); ++tag_iter) {
+      const Glib::RefPtr<const Gtk::TextTag> & start_tag(*tag_iter);
 			if (!start.toggles_tag (start_tag)) {
 				tag_stack.push (start_tag);
 				write_tag (start_tag, xml, true);
@@ -1208,7 +1230,10 @@ namespace gnote {
 			}
 
 			// Output any tags that begin at the current position
-			foreach (const Glib::RefPtr<Gtk::TextTag> & tag,  iter.get_tags()) {
+      Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list2 = iter.get_tags();
+      for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list2.begin();
+          tag_iter != tag_list2.end(); ++tag_iter) {
+        const Glib::RefPtr<Gtk::TextTag> & tag(*tag_iter);
 				if (iter.begins_tag (tag)) {
 
 					if (!(DepthNoteTag::Ptr::cast_dynamic(tag)) && NoteTagTable::tag_is_serializable(tag)) {
@@ -1282,7 +1307,10 @@ namespace gnote {
 				}
 			} 
 			else {
-				foreach (const Glib::RefPtr<Gtk::TextTag> & tag, iter.get_tags()) {
+        Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list3 = iter.get_tags();
+        for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list3.begin();
+            tag_iter != tag_list3.end(); ++tag_iter) {
+          const Glib::RefPtr<Gtk::TextTag> & tag(*tag_iter);
 					if (tag_ends_here (tag, iter, next_iter) &&
 							NoteTagTable::tag_is_serializable(tag) && !(DepthNoteTag::Ptr::cast_dynamic(tag)))
 					{

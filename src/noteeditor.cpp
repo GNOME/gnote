@@ -25,7 +25,6 @@
 #include "utils.hpp"
 #include "debug.hpp"
 #include "sharp/string.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -157,7 +156,10 @@ namespace gnote {
 	{
 		bool has_url = false;
 
-		foreach (const std::string & target, context->get_targets()) {
+    Gdk::ListHandle_AtomString targets = context->get_targets();
+    for(Gdk::ListHandle_AtomString::const_iterator iter = targets.begin();
+        iter != targets.end(); ++iter) {
+      const std::string & target(*iter);
 			if (target == "text/uri-list" ||
 					target == "_NETSCAPE_URL") {
 				has_url = true;
@@ -181,7 +183,9 @@ namespace gnote {
 
 			Glib::RefPtr<Gtk::TextTag> link_tag = get_buffer()->get_tag_table()->lookup ("link:url");
 
-			foreach (const sharp::Uri & uri, uri_list) {
+			for(utils::UriList::const_iterator iter = uri_list.begin();
+          iter != uri_list.end(); ++iter) {
+        const sharp::Uri & uri(*iter);
 				DBG_OUT("Got Dropped URI: %s", uri.to_string().c_str());
 				std::string insert;
 				if (uri.is_file()) {

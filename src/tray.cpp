@@ -42,7 +42,6 @@
 #include "preferences.hpp"
 #include "sharp/datetime.hpp"
 #include "sharp/string.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -294,8 +293,9 @@ namespace gnote {
 		// properly accounted for and reordered.
 		std::list<Gtk::Widget*> newNotePlaceholderWidgets;
 		std::list<Gtk::Widget*> allChildWidgets(am.get_placeholder_children("/TrayIconMenu/TrayNewNotePlaceholder"));
-    foreach(Gtk::Widget* child, allChildWidgets) {
-			Gtk::MenuItem * menuitem = dynamic_cast<Gtk::MenuItem*>(child);
+    for(std::list<Gtk::Widget*>::const_iterator iter = allChildWidgets.begin();
+        iter != allChildWidgets.end(); ++iter) {
+			Gtk::MenuItem * menuitem = dynamic_cast<Gtk::MenuItem*>(*iter);
 
 			if (menuitem && (menuitem != newNoteItem)) {
 				newNotePlaceholderWidgets.push_back(menuitem);
@@ -316,8 +316,11 @@ namespace gnote {
 
 		// List the most recently changed notes, any currently
 		// opened notes, and any pinned notes...
-		const Note::List & notes = m_manager.get_notes();
-		foreach(const Note::Ptr & note, notes) {
+		const Note::List & notes(m_manager.get_notes());
+    for(Note::List::const_iterator iter = notes.begin();
+        iter != notes.end(); ++iter) {
+
+      const Note::Ptr & note(*iter);
 			
 			if (note->is_special()) {
         DBG_OUT("skipping special note '%s'", note->get_title().c_str());

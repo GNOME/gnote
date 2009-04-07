@@ -27,7 +27,6 @@
 #include "preferences.hpp"
 #include "prefskeybinder.hpp"
 #include "recentchanges.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -150,8 +149,9 @@ namespace gnote {
 
   void PrefsKeybinder::unbind_all()
   {
-    foreach (Binding* binding, m_bindings) {
-      delete binding;
+    for(std::list<Binding*>::const_iterator iter = m_bindings.begin();
+        iter != m_bindings.end(); ++iter) {
+      delete *iter;
     }
     m_bindings.clear ();
     m_native_keybinder.unbind_all ();

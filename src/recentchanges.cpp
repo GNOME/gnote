@@ -45,7 +45,6 @@
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/notebookstreeview.hpp"
 
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -116,9 +115,10 @@ namespace gnote {
 
     Glib::RefPtr<Gtk::ListStore> model 
       = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(m_find_combo.get_model());
-    foreach (const std::string&  prev, s_previous_searches) {
+    for(std::list<std::string>::const_iterator liter = s_previous_searches.begin();
+        liter != s_previous_searches.end(); ++liter) {
       Gtk::TreeIter iter = model->append();
-      iter->set_value(0, prev);
+      iter->set_value(0, *liter);
     }
 
     m_clear_search_button.set_sensitive(false);
@@ -404,7 +404,10 @@ namespace gnote {
                                 sigc::mem_fun(*this, &NoteRecentChanges::compare_dates));
 
     int cnt = 0;
-    foreach (const Note::Ptr & note, m_manager.get_notes()) {
+
+    for(Note::List::const_iterator note_iter = m_manager.get_notes().begin();
+        note_iter != m_manager.get_notes().end(); ++note_iter) {
+      const Note::Ptr & note(*note_iter);
       std::string nice_date =
         utils::get_pretty_print_date (note->change_date(), true);
 
@@ -489,8 +492,9 @@ namespace gnote {
 
       Search::ResultsPtr results =
 				search.search_notes(text, m_case_sensitive.get_active(), selected_notebook);
-			foreach (const Search::Results::value_type & value, *results){
-				m_current_matches[value.first->uri()] = value.second;
+      for(Search::Results::const_iterator iter = results->begin();
+          iter != results->end(); ++iter) {
+				m_current_matches[iter->first->uri()] = iter->second;
 			}
 			
 			add_matches_column ();
@@ -651,8 +655,9 @@ namespace gnote {
 
     //   // FIXME: Ugh!  NOT an O(1) operation.  Is there a better way?
     std::list<Tag::Ptr> tags = note->tags();
-    foreach (const Tag::Ptr & tag, tags) {
-      if(m_selected_tags.find(tag) != m_selected_tags.end()) {
+    for(std::list<Tag::Ptr>::const_iterator iter = tags.begin();
+        iter != tags.end(); ++iter) {
+      if(m_selected_tags.find(*iter) != m_selected_tags.end()) {
         return true;
       }
     }
@@ -707,11 +712,12 @@ namespace gnote {
     }
                 	
     std::string uris;
-    foreach (const Note::Ptr & note, selected_notes) {
+    for(Note::List::const_iterator iter = selected_notes.begin();
+        iter != selected_notes.end(); ++iter) {
       if (!uris.empty()) {
         uris += "\n";
       }
-      uris += note->uri();
+      uris += (*iter)->uri();
     }
                 	
     // FIXME: Gtk.SelectionData has no way to get the
@@ -954,10 +960,12 @@ namespace gnote {
 					
     Glib::ListHandle<Gtk::TreePath, Gtk::TreePath_Traits> selected_rows =
       m_tree->get_selection()->get_selected_rows ();
-    foreach (const Gtk::TreePath & selected, selected_rows) {
-      Note::Ptr note = get_note (selected);
-      if (!note)
+    for(Glib::ListHandle<Gtk::TreePath, Gtk::TreePath_Traits>::const_iterator iter
+          = selected_rows.begin(); iter != selected_rows.end(); ++iter) {
+      Note::Ptr note = get_note (*iter);
+      if (!note) {
         continue;
+      }
 						
       selected_notes.push_back(note);
     }
@@ -1224,8 +1232,9 @@ namespace gnote {
     } 
     else {
       std::string lower = sharp::string_to_lower(text);
-      foreach (const std::string & prev, s_previous_searches) {
-        if (sharp::string_to_lower(prev) == lower) {
+      for(std::list<std::string>::const_iterator iter = s_previous_searches.begin();
+          iter != s_previous_searches.end(); ++iter) {
+        if (sharp::string_to_lower(*iter) == lower) {
           repeat = true;
         }
       }

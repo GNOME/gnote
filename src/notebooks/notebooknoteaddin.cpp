@@ -29,7 +29,6 @@
 #include "tagmanager.hpp"
 #include "notewindow.hpp"
 #include "utils.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 namespace notebooks {
@@ -165,8 +164,9 @@ namespace notebooks {
     //
     // Clear out the old list
     //
-    reverse_foreach (Gtk::MenuItem * oldItem, m_menu_items) {
-      m_menu->remove (*oldItem);
+    for(std::list<Gtk::MenuItem *>::const_iterator iter = m_menu_items.begin();
+        iter != m_menu_items.end(); ++iter) {
+      m_menu->remove (**iter);
     }
     m_menu_items.clear();
 
@@ -199,7 +199,9 @@ namespace notebooks {
       m_menu->append (*separator);
       m_menu_items.push_back(separator);
 				
-      foreach (NotebookMenuItem * item, notebookMenuItems) {
+      for(std::list<NotebookMenuItem*>::const_iterator iter = notebookMenuItems.begin();
+          iter != notebookMenuItems.end(); ++iter) {
+        NotebookMenuItem* item = *iter;
         item->show_all ();
         m_menu->append (*item);
         m_menu_items.push_back(item);
@@ -216,9 +218,9 @@ namespace notebooks {
     Gtk::TreeIter iter;
 			
     iter = model->children().begin();
-    foreach(const Gtk::TreeRow & row, model->children()) {
+    for(iter = model->children().begin(); iter != model->children().end(); ++iter) {
       Notebook::Ptr notebook;
-      row.get_value(0, notebook);
+      iter->get_value(0, notebook);
       NotebookMenuItem *item = manage(new NotebookMenuItem (m_radio_group, 
                                                             get_note(), notebook));
       items.push_back (item);

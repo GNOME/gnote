@@ -24,7 +24,6 @@
 #include "note.hpp"
 #include "sharp/string.hpp"
 #include "sharp/exception.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -208,8 +207,10 @@ namespace gnote {
 					DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
 					tag_removed = true;
 
-          foreach(Note * note, tag->get_notes()) {
-            note->remove_tag(tag);
+          std::list<Note*> notes = tag->get_notes();
+          for(std::list<Note*>::const_iterator note_iter = notes.begin();
+              note_iter != notes.end(); ++note_iter) {
+            (*note_iter)->remove_tag(tag);
           }
 				}
 //			}
@@ -225,14 +226,16 @@ namespace gnote {
 		std::list<Tag::Ptr> temp;
 				
 		// Add in the system tags first
-    foreach(const InternalMap::value_type & value, m_internal_tags) {
-      temp.push_back(value.second);
+    for(InternalMap::const_iterator iter = m_internal_tags.begin();
+        iter != m_internal_tags.end(); ++iter) {
+      temp.push_back(iter->second);
     }
 		
 		// Now all the other tags
-		foreach (const TagMap::value_type & value, m_tag_map){
+    for(TagMap::const_iterator iter = m_tag_map.begin();
+        iter != m_tag_map.end(); ++iter) {
       Tag::Ptr tag;
-      value.second->get_value(0, tag);      
+      iter->second->get_value(0, tag);      
 			temp.push_back(tag);
 		}
 				

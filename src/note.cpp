@@ -26,6 +26,7 @@
 #include <tr1/functional>
 
 #include <boost/format.hpp>
+#include <boost/bind.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
@@ -51,7 +52,6 @@
 #include "sharp/string.hpp"
 #include "sharp/xmlconvert.hpp"
 #include "sharp/xmlwriter.hpp"
-#include "sharp/foreach.hpp"
 
 
 namespace gnote {
@@ -88,7 +88,9 @@ namespace gnote {
 
 			int result = dialog.run();
 			if (result == 666) {
-				foreach(const Note::Ptr & note, notes) {
+        for(Note::List::const_iterator iter = notes.begin();
+            iter != notes.end(); ++iter) {
+          const Note::Ptr & note(*iter);
 					note->manager().delete_note(note);
 				}
 			}
@@ -393,8 +395,9 @@ namespace gnote {
 		, m_window(NULL)
 		, m_tag_table(NULL)
 	{
-		foreach(const NoteData::TagMap::value_type & value, _data->tags()) {
-			add_tag(value.second);
+    for(NoteData::TagMap::const_iterator iter = _data->tags().begin();
+        iter != _data->tags().end(); ++iter) {
+			add_tag(iter->second);
 		}
 		m_save_timeout = new utils::InterruptableTimeout();
 		m_save_timeout->signal_timeout.connect(sigc::mem_fun(*this, &Note::on_save_timeout));
@@ -480,8 +483,9 @@ namespace gnote {
 		m_save_timeout->cancel ();
 		
 		// Remove the note from all the tags
-		foreach(const NoteData::TagMap::value_type & value, m_data.data().tags()) {
-			remove_tag(value.second);
+    for(NoteData::TagMap::const_iterator iter = m_data.data().tags().begin();
+        iter != m_data.data().tags().end(); ++iter) {
+			remove_tag(iter->second);
 		}
 
 		if (m_window) {
@@ -800,9 +804,11 @@ namespace gnote {
 
 		// Remove tags now, since a note with no tags has
 		// no "tags" element in the XML
-		foreach (const Tag::Ptr & tag, tags()) {
-			remove_tag(tag);
-		}
+    std::list<Tag::Ptr> tag_list;
+    for(std::list<Tag::Ptr>::const_iterator iter = tag_list.begin();
+        iter != tag_list.end(); ++iter) {
+      remove_tag(*iter);
+    }
 		Glib::ustring name;
 
 		while (xml.read()) {
@@ -833,8 +839,9 @@ namespace gnote {
 					if(parser) {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = parse_tags (doc2->get_root_node());
-						foreach (const std::string & tag_str, tag_strings) {
-							Tag::Ptr tag = TagManager::obj().get_or_create_tag(tag_str);
+            for(std::list<std::string>::const_iterator iter = tag_strings.begin();
+                iter != tag_strings.end(); ++iter) {
+							Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);
 							add_tag(tag);
 						}
 					}
@@ -864,7 +871,9 @@ namespace gnote {
 	{
 		std::list<std::string> tags;
 		xmlpp::NodeSet nodes = tagnodes->find("//*");
-		foreach(const xmlpp::Node * node, nodes) {
+    for(xmlpp::NodeSet::const_iterator iter = nodes.begin();
+        iter != nodes.end(); ++iter) {
+      const xmlpp::Node * node = *iter;
 			if(node->get_name() != "tag") {
         continue;
       }
@@ -1017,7 +1026,9 @@ namespace gnote {
 		else {
 			std::vector<std::string> pinned_split;
 			sharp::string_split(pinned_split, old_pinned, " \t\n");
-			foreach(const std::string & pin, pinned_split) {
+      for(std::vector<std::string>::const_iterator iter = pinned_split.begin();
+          iter != pinned_split.end(); ++iter) {
+        const std::string & pin(*iter);
 				if (!pin.empty() && (pin != uri())) {
 					new_pinned += pin + " ";
 				}
@@ -1044,8 +1055,9 @@ namespace gnote {
 	std::list<Tag::Ptr> Note::tags()
 	{
 		std::list<Tag::Ptr> l;
-		foreach(const NoteData::TagMap::value_type & val, m_data.data().tags()) {
-			l.push_back(val.second);
+    for(NoteData::TagMap::const_iterator iter = m_data.data().tags().begin();
+        iter != m_data.data().tags().end(); ++iter) {
+			l.push_back(iter->second);
 		}
 		return l;
 	}
@@ -1117,8 +1129,9 @@ namespace gnote {
 					if(parser) {
 						const xmlpp::Document * doc2 = parser.get_document();
 						std::list<std::string> tag_strings = Note::parse_tags(doc2->get_root_node());
-						foreach (const std::string & tag_str, tag_strings) {
-							Tag::Ptr tag = TagManager::obj().get_or_create_tag(tag_str);
+            for(std::list<std::string>::const_iterator iter = tag_strings.begin();
+                iter != tag_strings.end(); ++iter) {
+							Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);
 							note->tags()[tag->normalized_name()] = tag;
 						}
 					}
@@ -1263,9 +1276,10 @@ namespace gnote {
 
 		if (note.tags().size() > 0) {
 			xml.write_start_element ("", "tags", "");
-			foreach (const NoteData::TagMap::value_type & val,  note.tags()) {
+      for(NoteData::TagMap::const_iterator iter = note.tags().begin();
+          iter != note.tags().end(); ++iter) {
 				xml.write_start_element("", "tag", "");
-				xml.write_string(val.second->name());
+				xml.write_string(iter->second->name());
 				xml.write_end_element();
 			}
 			xml.write_end_element();

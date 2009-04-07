@@ -25,7 +25,6 @@
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
 #include "notebooks/notebooknoteaddin.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -45,15 +44,18 @@ namespace gnote {
 
   AddinManager::~AddinManager()
   {
-    foreach(const AppAddinMap::value_type & value, m_app_addins) {
-      delete value.second;
+    for(AppAddinMap::const_iterator iter = m_app_addins.begin();
+        iter != m_app_addins.end(); ++iter) {
+      delete iter->second;
     }
-    foreach(const NoteAddinMap::value_type & value, m_note_addins) {
-      std::for_each(value.second.begin(), value.second.end(), 
+    for(NoteAddinMap::const_iterator iter = m_note_addins.begin();
+        iter != m_note_addins.end(); ++iter) {
+      std::for_each(iter->second.begin(), iter->second.end(), 
                     boost::bind(&boost::checked_delete<NoteAddin>, _1));
     }
-    foreach(const IdInfoMap::value_type & value, m_note_addin_infos) {
-      delete value.second;
+    for(IdInfoMap::const_iterator iter = m_note_addin_infos.begin();
+        iter != m_note_addin_infos.end(); ++iter) {
+      delete iter->second;
     }
   }
 
@@ -79,7 +81,10 @@ namespace gnote {
     m_note_addins[note] = loaded_addins;
 
     std::list<NoteAddin *> & loaded(m_note_addins[note]); // avoid copying the whole list
-    foreach(const IdInfoMap::value_type & addin_info, m_note_addin_infos) {
+    for(IdInfoMap::const_iterator iter = m_note_addin_infos.begin();
+        iter != m_note_addin_infos.end(); ++iter) {
+
+      const IdInfoMap::value_type & addin_info(*iter);
       NoteAddin * addin = addin_info.second->factory();
       addin->initialize(note);
       loaded.push_back(addin);
@@ -90,8 +95,10 @@ namespace gnote {
   std::list<ApplicationAddin*> AddinManager::get_application_addins() const
   {
     std::list<ApplicationAddin*> l;
-    foreach(const AppAddinMap::value_type & value, m_app_addins) {
-      l.push_back(value.second);
+
+    for(AppAddinMap::const_iterator iter = m_app_addins.begin();
+        iter != m_app_addins.end(); ++iter) {
+      l.push_back(iter->second);
     }
     return l;
   }

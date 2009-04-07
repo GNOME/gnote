@@ -62,7 +62,6 @@
 #include "debug.hpp"
 #include "actionmanager.hpp"
 #include "utils.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -131,12 +130,18 @@ namespace gnote {
 		xmlpp::Element *root_node = doc->get_root_node();
 		xmlpp::NodeSet nodes(root_node->find("//placeholder"));
 		// Find the placeholder specified in the path
-		foreach(xmlpp::Node * placeholderNode, nodes) {
+		for(xmlpp::NodeSet::const_iterator iter = nodes.begin();
+        iter != nodes.end(); ++iter) {
+      xmlpp::Node * placeholderNode = *iter;
 			
 			xmlpp::Element * element = dynamic_cast<xmlpp::Element*>(placeholderNode);
 			if (element && (element->get_attribute_value("name") == placeholderName)) {
 				// Return each child element's widget
-				foreach(xmlpp::Node * widgetNode, placeholderNode->get_children()) {
+        xmlpp::Node::NodeList children2(placeholderNode->get_children());
+				for(xmlpp::Node::NodeList::const_iterator iter2 = children2.begin();
+            iter2 != children2.end(); ++iter2) {
+
+          xmlpp::Node * widgetNode = *iter2;
 
 					xmlpp::Element *element2 = dynamic_cast<xmlpp::Element*>(widgetNode);
 					if(element2) {

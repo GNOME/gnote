@@ -42,7 +42,6 @@
 #include "sharp/uuid.hpp"
 #include "sharp/string.hpp"
 #include "sharp/datetime.hpp"
-#include "sharp/foreach.hpp"
 
 namespace gnote {
 
@@ -264,7 +263,9 @@ namespace gnote {
 	{
 		std::list<std::string> files = sharp::directory_get_files_with_ext(m_notes_dir, ".note");
 
-		foreach(const std::string & file_path, files) {
+		for(std::list<std::string>::const_iterator iter = files.begin();
+        iter != files.end(); ++iter) {
+      const std::string & file_path(*iter);
 			try {
 				Note::Ptr note = Note::load(file_path, *this);
 				if (note) {
@@ -290,7 +291,9 @@ namespace gnote {
 		// Iterating through copy of notes list, because list may be
 		// changed when loading addins.
 		Note::List notesCopy(m_notes);
-		foreach(const Note::Ptr & note, notesCopy) {
+		for(Note::List::const_iterator iter = notesCopy.begin();
+        iter != notesCopy.end(); ++iter) {
+      const Note::Ptr & note(*iter);
 
 			m_addin_mgr->load_addins_for_note (note);
 
@@ -323,7 +326,10 @@ namespace gnote {
 	bool NoteManager::on_exiting_event()
 	{
 		// Call ApplicationAddin.Shutdown () on all the known ApplicationAddins
-		foreach (ApplicationAddin* addin, m_addin_mgr->get_application_addins ()) {
+    std::list<ApplicationAddin*> app_addins = m_addin_mgr->get_application_addins ();
+		for(std::list<ApplicationAddin*>::const_iterator iter = app_addins.begin();
+        iter != app_addins.end(); ++iter) {
+      ApplicationAddin* addin = *iter;
 			try {
 				addin->shutdown ();
 			} 
@@ -339,7 +345,9 @@ namespace gnote {
 		// Use a copy of the notes to prevent bug #510442 (crash on exit
 		// when iterating the notes to save them.
 		Note::List notesCopy(m_notes);
-		foreach (const Note::Ptr & note, notesCopy) {
+		for(Note::List::const_iterator iter = notesCopy.begin();
+        iter != notesCopy.end(); ++iter) {
+      const Note::Ptr & note(*iter);
 			// If the note is visible, it will be shown automatically on
 			// next startup
 			if (note->has_window() && note->get_window()->is_visible())
@@ -579,7 +587,9 @@ namespace gnote {
 
 	Note::Ptr NoteManager::find(const std::string & linked_title) const
 	{
-		foreach (const Note::Ptr & note, m_notes) {
+    for(Note::List::const_iterator iter = m_notes.begin();
+        iter != m_notes.end(); ++iter) {
+      const Note::Ptr & note(*iter);
 			if (sharp::string_to_lower(note->get_title()) == sharp::string_to_lower(linked_title))
 				return note;
 		}
@@ -588,9 +598,12 @@ namespace gnote {
 
 	Note::Ptr NoteManager::find_by_uri(const std::string & uri) const
 	{
-		foreach (const Note::Ptr & note, m_notes) {
-			if (note->uri() == uri)
+    for(Note::List::const_iterator iter = m_notes.begin();
+        iter != m_notes.end(); ++iter) {
+      const Note::Ptr & note(*iter);
+			if (note->uri() == uri) {
 				return note;
+      }
 		}
 		return Note::Ptr();
 	}
@@ -634,7 +647,9 @@ namespace gnote {
 		}
 		m_title_trie = new TrieTree<Note::Ptr>(false /* !case_sensitive */);
 
-		foreach (const Note::Ptr & note, m_manager.get_notes()) {
+    for(Note::List::const_iterator iter =  m_manager.get_notes().begin();
+        iter !=  m_manager.get_notes().end(); ++iter) {
+      const Note::Ptr & note(*iter);
 			m_title_trie->add_keyword (note->get_title(), note);
 		}
 	}
