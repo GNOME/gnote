@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+/* this file might still contain Tomboy code see the  AUTHORS file for details */
 
 
 #if HAVE_CONFIG_H
