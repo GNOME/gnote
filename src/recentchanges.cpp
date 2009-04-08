@@ -563,10 +563,14 @@ namespace gnote {
       if (miter != m_current_matches.end()) {
         match_count = miter->second;
         if (match_count > 0) {
-          match_str = str(boost::format (
-                            g_dngettext(NULL, "%1% match",
-                                        "%1% matches", match_count))
-                          % match_count);
+          const char * fmt;
+          if(match_count == 1) {
+            fmt = _("%1% match");
+          }
+          else {
+            fmt = _("%1% matches");
+          }
+          match_str = str(boost::format(fmt) % match_count);
         }
       }
     }
@@ -577,21 +581,27 @@ namespace gnote {
 
   void NoteRecentChanges::update_total_note_count (int total)
   {
-    std::string status = str(
-      boost::format (g_dngettext(NULL, "Total: %1% note",
-                                 "Total: %1% notes",
-                                 total)) % total);
-    m_note_count.set_text(status);
+    const char * fmt;
+    if(total == 1) {
+      fmt = _("Total: %1% note");
+    }
+    else {
+      fmt = _("Total: %1% notes");
+    }
+    m_note_count.set_text(str(boost::format (fmt) % total));
   }
                 
   
   void NoteRecentChanges::update_match_note_count (int matches)
   {
-    std::string status = str(
-      boost::format (g_dngettext(NULL, "Matches: %1% note",
-                                 "Matches: %1% notes",
-                                 matches)) % matches);
-    m_note_count.set_text(status);
+    const char * fmt;
+    if(matches == 1) {
+      fmt = _("Matches: %1% note");
+    }
+    else {
+      fmt = _("Matches: %1% notes");
+    }
+    m_note_count.set_text(str(boost::format (fmt) % matches));
   }
                 
 

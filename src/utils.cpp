@@ -123,7 +123,7 @@ namespace gnote {
 
 			if(!gtk_show_uri (screen, uri.c_str(), gtk_get_current_event_time (), &error)) {
 				
-				std::string message = _("The \"GNote Notes Manual\" could "
+				std::string message = _("The \"Gnote Manual\" could "
 																"not be found.  Please verify "
 																"that your installation has been "
 																"completed successfully.");
@@ -174,34 +174,55 @@ namespace gnote {
         }
 				else if ((date.day_of_year() < now.day_of_year())
                   && (date.day_of_year() > now.day_of_year() - 6)) {
-					pretty_str = show_time ?
-            str(boost::format(g_dngettext(NULL, "%1% day ago, %2%", 
-                                          "%1% days ago, %2%", 
-                                          now.day_of_year() - date.day_of_year())) 
-                % (now.day_of_year() - date.day_of_year()) % short_time) :
-            str(boost::format(g_dngettext(NULL, "%1% day ago", 
-                                          "%1% days ago",
-                                          now.day_of_year() - date.day_of_year()))
-                % (now.day_of_year() - date.day_of_year()));
+          int num_days = now.day_of_year() - date.day_of_year();
+          const char * fmt;
+          if(show_time) {
+            if(num_days == 1) {
+              fmt = _("%1% day ago, %2%");
+            }
+            else {
+              fmt = _("%1% days ago, %2%");
+            }
+            pretty_str = str(boost::format(fmt) % num_days % short_time);
+          }
+          else {
+            if(num_days == 1) {
+              fmt = _("%1% day ago");
+            }
+            else {
+              fmt = _("%1% days ago");
+            }
+            pretty_str = str(boost::format(fmt) % num_days);
+          }
         }
 				else if (date.day_of_year() > now.day_of_year()
                  && date.day_of_year() == now.day_of_year() + 1) {
 					pretty_str = show_time ?
-            str(boost::format(_("Tomorrow, {0}")) % short_time) :
+            str(boost::format(_("Tomorrow, %1%")) % short_time) :
             _("Tomorrow");
         }
 				else if (date.day_of_year() > now.day_of_year()
                  && date.day_of_year() < now.day_of_year() + 6) {
-					pretty_str = show_time ?
-            str(boost::format(g_dngettext(NULL, 
-                                          "In %1% day, %2%", 
-                                          "In %1% days, %2%",
-                                          date.day_of_year() - now.day_of_year()))
-                % (date.day_of_year() - now.day_of_year()) % short_time) :
-            str(boost::format(g_dngettext(NULL,
-                                          "In %1% day", "In %1% days",
-                                          date.day_of_year() - now.day_of_year()))
-                % (date.day_of_year() - now.day_of_year()));
+          int num_days = date.day_of_year() - now.day_of_year();
+          const char * fmt;
+          if(show_time) {
+            if(num_days == 1) {
+              fmt = _("In %1% day, %2%");
+            }
+            else {
+              fmt = _("In %1% days, %2%");
+            }
+            pretty_str = str(boost::format(fmt) % num_days % short_time); 
+          }
+          else {
+            if(num_days == 1) {
+              fmt = _("In %1% day");
+            }
+            else {
+              fmt = _("In %1% days");
+            }
+            pretty_str = str(boost::format(fmt) % num_days);
+          }
         }
 				else {
 					pretty_str = show_time ?
