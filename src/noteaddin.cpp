@@ -49,7 +49,7 @@ namespace gnote {
           iter != m_text_menu_items.end(); ++iter) {
         delete *iter;
       }
-				
+        
       for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
                iter != m_toolbar_items.end(); ++iter) {
         delete iter->first;
@@ -84,7 +84,7 @@ namespace gnote {
         window->text_menu()->reorder_child(*(Gtk::MenuItem*)item, 7);
       }
     }
-			
+      
     for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
         iter != m_toolbar_items.end(); ++iter) {
       if ((iter->first->get_parent() == NULL) ||
@@ -106,14 +106,14 @@ namespace gnote {
       get_window()->plugin_menu()->add (*item);
     }
   }
-		
+    
   void NoteAddin::add_tool_item (Gtk::ToolItem *item, int position)
   {
     if (is_disposing())
       throw sharp::Exception ("Add-in is disposing already");
-				
+        
     m_toolbar_items [item] = position;
-			
+      
     if (m_note->is_opened()) {
       get_window()->toolbar()->insert (*item, position);
     }

@@ -119,8 +119,8 @@ namespace gnote {
       }
 
     // Iterate the matches at state %s looking for the first match
-		// containing %c.
-		TrieMatchPtr find_match_at_state (const TrieStatePtr & s, char c) const
+    // containing %c.
+    TrieMatchPtr find_match_at_state (const TrieStatePtr & s, char c) const
       {
         TrieMatchPtr m = s->first_match;
 
@@ -132,18 +132,18 @@ namespace gnote {
       }
   public:
     /*
-		 * final = empty set
-		 * FOR p = 1 TO #pat
-		 *   q = root
-		 *   FOR j = 1 TO m[p]
-		 *     IF g(q, pat[p][j]) == null
-		 *       insert(q, pat[p][j])
-		 *     ENDIF
-		 *     q = g(q, pat[p][j])
-		 *   ENDFOR
-		 *   final = union(final, q)
-		 * ENDFOR
-		 */
+     * final = empty set
+     * FOR p = 1 TO #pat
+     *   q = root
+     *   FOR j = 1 TO m[p]
+     *     IF g(q, pat[p][j]) == null
+     *       insert(q, pat[p][j])
+     *     ENDIF
+     *     q = g(q, pat[p][j])
+     *   ENDFOR
+     *   final = union(final, q)
+     * ENDFOR
+     */
     void add_keyword(const std::string & needle, const value_t & pattern_id)
       {
         TrieStatePtr q = m_root;
@@ -217,24 +217,24 @@ namespace gnote {
       }
 
     /*
-		 * Aho-Corasick
-		 *
-		 * q = root
-		 * FOR i = 1 TO n
-		 *   WHILE q != fail AND g(q, text[i]) == fail
-		 *     q = h(q)
-		 *   ENDWHILE
-		 *   IF q == fail
-		 *     q = root
-		 *   ELSE
-		 *     q = g(q, text[i])
-		 *   ENDIF
-		 *   IF isElement(q, final)
-		 *     RETURN TRUE
-		 *   ENDIF
-		 * ENDFOR
-		 * RETURN FALSE
-		 */
+     * Aho-Corasick
+     *
+     * q = root
+     * FOR i = 1 TO n
+     *   WHILE q != fail AND g(q, text[i]) == fail
+     *     q = h(q)
+     *   ENDWHILE
+     *   IF q == fail
+     *     q = root
+     *   ELSE
+     *     q = g(q, text[i])
+     *   ENDIF
+     *   IF isElement(q, final)
+     *     RETURN TRUE
+     *   ENDIF
+     * ENDFOR
+     * RETURN FALSE
+     */
     HitListPtr find_matches(const std::string & haystack)
       {
         HitListPtr matches(new HitList());
@@ -299,8 +299,8 @@ namespace gnote {
   private:
     TrieStatePtr            m_root;
     std::vector<TrieStatePtr> m_fail_states;
-		bool                    m_case_sensitive;
-		size_t                  m_max_length;
+    bool                    m_case_sensitive;
+    size_t                  m_max_length;
 
   };
 

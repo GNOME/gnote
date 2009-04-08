@@ -25,12 +25,12 @@
 
 int main(int argc, char **argv)
 {
-//	if(!Glib::thread_supported()) {
-//		Glib::thread_init();
-//	}
-	Gtk::Main kit(argc, argv);
-	gnote::Gnote *app = &gnote::Gnote::obj();
-	int retval = app->main(argc, argv);
+//  if(!Glib::thread_supported()) {
+//    Glib::thread_init();
+//  }
+  Gtk::Main kit(argc, argv);
+  gnote::Gnote *app = &gnote::Gnote::obj();
+  int retval = app->main(argc, argv);
   delete app;
   return retval;
 }

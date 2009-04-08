@@ -75,7 +75,7 @@ namespace gnote {
     return get_buffer()->begin();
   }
 
-	
+  
   void NoteRenameWatcher::on_note_opened ()
   {
     const NoteBuffer::Ptr & buffer(get_buffer());
@@ -133,7 +133,7 @@ namespace gnote {
 
     // Avoid lingering note-title after a multi-line insert...
     get_buffer()->remove_tag (m_title_tag, get_title_end(), end);
-			
+      
     //In the case of large copy and paste operations, show the end of the block
     get_window()->editor()->scroll_mark_onscreen (get_buffer()->get_insert());
   }
@@ -172,7 +172,7 @@ namespace gnote {
 
   void NoteRenameWatcher::changed()
   {
-    	// Make sure the title line is big and red...
+      // Make sure the title line is big and red...
     get_buffer()->remove_all_tags (get_title_start(), get_title_end());
     get_buffer()->apply_tag (m_title_tag, get_title_start(), get_title_end());
 
@@ -214,7 +214,7 @@ namespace gnote {
   }
 
 
-	bool NoteRenameWatcher::update_note_title()
+  bool NoteRenameWatcher::update_note_title()
   {
     std::string title = get_window()->get_title();
 
@@ -359,7 +359,7 @@ namespace gnote {
     bool remove = false;
 
     if (tag->property_name() == "gtkspell-misspelled") {
-				// Remove misspelled tag for links & title
+        // Remove misspelled tag for links & title
       Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> > tag_list = start_char.get_tags();
       for(Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
           tag_iter != tag_list.end(); ++tag_iter) {
@@ -424,7 +424,7 @@ namespace gnote {
     // multiple times for each button press.  Fixes bug
     // #305813.
     if (!s_text_event_connected) {
-			m_url_tag->signal_activate().connect(
+      m_url_tag->signal_activate().connect(
         sigc::mem_fun(*this, &NoteUrlWatcher::on_url_tag_activated));
       s_text_event_connected = true;
     }
@@ -512,7 +512,7 @@ namespace gnote {
   }
 
 
-	void NoteUrlWatcher::apply_url_to_block (Gtk::TextIter start, Gtk::TextIter end)
+  void NoteUrlWatcher::apply_url_to_block (Gtk::TextIter start, Gtk::TextIter end)
   {
     NoteBuffer::get_block_extents(start, end,
                                   256 /* max url length */,
@@ -797,12 +797,12 @@ namespace gnote {
       DBG_OUT("DoHighlight: null pointer error for '%s'." , hit.key.c_str());
       return;
     }
-			
+      
     if (!manager().find(hit.key)) {
       DBG_OUT ("DoHighlight: '%s' links to non-existing note." , hit.key.c_str());
       return;
     }
-			
+      
     Note::Ptr hit_note = hit.value;
 
     if (sharp::string_to_lower(hit.key) != sharp::string_to_lower(hit_note->get_title())) { // == 0 if same string  
@@ -810,7 +810,7 @@ namespace gnote {
                hit_note->get_title().c_str());
       return;
     }
-			
+      
     if (hit_note == get_note())
       return;
 
@@ -923,17 +923,17 @@ namespace gnote {
       } 
       catch(...)
       {
-				// Fail silently.
-			}
-		}
+        // Fail silently.
+      }
+    }
 
-		// FIXME: We used to also check here for (link != this.Note), but
-		// somehow this was causing problems receiving clicks for the
-		// wrong instance of a note (see bug #413234).  Since a
-		// link:internal tag is never applied around text that's the same
-		// as the current note's title, it's safe to omit this check and
-		// also works around the bug.
-		if (link) {
+    // FIXME: We used to also check here for (link != this.Note), but
+    // somehow this was causing problems receiving clicks for the
+    // wrong instance of a note (see bug #413234).  Since a
+    // link:internal tag is never applied around text that's the same
+    // as the current note's title, it's safe to omit this check and
+    // also works around the bug.
+    if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
       link->get_window()->present ();
       return true;
@@ -1084,7 +1084,7 @@ namespace gnote {
 
   bool MouseHandWatcher::s_static_inited = false;
   Gdk::Cursor MouseHandWatcher::s_normal_cursor;
-	Gdk::Cursor MouseHandWatcher::s_hand_cursor;
+  Gdk::Cursor MouseHandWatcher::s_hand_cursor;
 
   void MouseHandWatcher::_init_static()
   {

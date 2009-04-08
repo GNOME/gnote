@@ -58,85 +58,85 @@
 
 namespace utils {
 
-	static void _vprint(const char *prefix, const char *fmt, 
-										 const char* func,	va_list marker);
-	static void _print(const char *prefix, const char *fmt, 
-					   const char* func, ...);
+  static void _vprint(const char *prefix, const char *fmt, 
+                     const char* func,  va_list marker);
+  static void _print(const char *prefix, const char *fmt, 
+             const char* func, ...);
 
-	void dbg_print(const char *fmt, const char* func, ...)
-	{
+  void dbg_print(const char *fmt, const char* func, ...)
+  {
 #ifdef DEBUG
 #define DEBUG_MSG "DEBUG: "
-		va_list marker;
-		
-		va_start(marker, func);
-		// TODO make this atomic
-		_vprint(DEBUG_MSG, fmt, func, marker);
+    va_list marker;
+    
+    va_start(marker, func);
+    // TODO make this atomic
+    _vprint(DEBUG_MSG, fmt, func, marker);
 
-		va_end(marker);
-		
+    va_end(marker);
+    
 #undef DEBUG_MSG
 #endif
-	}
+  }
 
 
-	/** assert 
-	 * 
-	 */
-	void dbg_assert(bool condvalue, const char* cond, const char* filen,
-					int linen, const char* reason)
-	{
-		if(!condvalue) {
-			_print("ASSERT: ", "%s:%d %s", cond, filen, linen, reason);
+  /** assert 
+   * 
+   */
+  void dbg_assert(bool condvalue, const char* cond, const char* filen,
+          int linen, const char* reason)
+  {
+    if(!condvalue) {
+      _print("ASSERT: ", "%s:%d %s", cond, filen, linen, reason);
 
-		}
-	}
+    }
+  }
 
 
-	void err_print(const char *fmt, const char* func, ...)
-	{
+  void err_print(const char *fmt, const char* func, ...)
+  {
 #define ERROR_MSG "ERROR: "
-		va_list marker;
-		
-		va_start(marker, func);
-		// TODO make this atomic
-		_vprint(ERROR_MSG, fmt, func, marker);
+    va_list marker;
+    
+    va_start(marker, func);
+    // TODO make this atomic
+    _vprint(ERROR_MSG, fmt, func, marker);
 
-		va_end(marker);
-		
+    va_end(marker);
+    
 #undef ERROR_MSG
-	}
+  }
 
 
-	static void _print(const char *prefix, const char *fmt, 
-							const char* func, ...)
-	{
-		va_list marker;
-		
-		va_start(marker, func);
+  static void _print(const char *prefix, const char *fmt, 
+              const char* func, ...)
+  {
+    va_list marker;
+    
+    va_start(marker, func);
 
-		_vprint(prefix, fmt, func, marker);
+    _vprint(prefix, fmt, func, marker);
 
-		va_end(marker);
-	}
+    va_end(marker);
+  }
 
-	static void _vprint(const char *prefix, const char *fmt, 
-							const char* func,	va_list marker)
-	{
-//		static boost::recursive_mutex mutex;
-//		boost::recursive_mutex::scoped_lock lock(mutex);
-		char buf[128];
-		snprintf(buf, 128, "(%d) ", (int)pthread_self());
-		fwrite(buf, 1, strlen(buf), stderr);
-		fwrite(prefix, 1, strlen(prefix), stderr);
+  static void _vprint(const char *prefix, const char *fmt, 
+              const char* func,  va_list marker)
+  {
+//    static boost::recursive_mutex mutex;
+//    boost::recursive_mutex::scoped_lock lock(mutex);
+    char buf[128];
+    snprintf(buf, 128, "(%d) ", (int)pthread_self());
+    fwrite(buf, 1, strlen(buf), stderr);
+    fwrite(prefix, 1, strlen(prefix), stderr);
 
-		if(func) {
-			fwrite(func, 1, strlen(func), stderr);
-			fwrite(" - ", 1, 3, stderr);
-		}
+    if(func) {
+      fwrite(func, 1, strlen(func), stderr);
+      fwrite(" - ", 1, 3, stderr);
+    }
 
-		vfprintf(stderr, fmt, marker);
-		fprintf(stderr, "\n");
-	}
+    vfprintf(stderr, fmt, marker);
+    fprintf(stderr, "\n");
+  }
 
 }

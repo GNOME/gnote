@@ -159,8 +159,8 @@ namespace gnote {
 
 
   GnotePrefsKeybinder::GnotePrefsKeybinder(NoteManager & manager, IGnoteTray & trayicon)
-		: m_manager(manager)
-		, m_trayicon(trayicon)
+    : m_manager(manager)
+    , m_trayicon(trayicon)
   {
     enable_disable(Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS));
     m_prefs_cid = Preferences::obj().signal_setting_changed()
@@ -251,8 +251,8 @@ namespace gnote {
   {
     /* Find dialog is deprecated in favor of searcable ToC */
     /*
-			NoteFindDialog find_dialog = NoteFindDialog.GetInstance (manager);
-			find_dialog.Present ();
+      NoteFindDialog find_dialog = NoteFindDialog.GetInstance (manager);
+      find_dialog.Present ();
     */
     key_open_recent_changes ();
   }

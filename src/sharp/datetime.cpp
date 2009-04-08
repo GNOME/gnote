@@ -35,34 +35,34 @@ namespace sharp {
 #define SEC_PER_HOUR (SEC_PER_MINUTE * 60)
 #define SEC_PER_DAY (SEC_PER_HOUR * 24)
 
-	DateTime::DateTime()
-	{
-		m_date.tv_sec = -1;
-		m_date.tv_usec = -1;
-	}
+  DateTime::DateTime()
+  {
+    m_date.tv_sec = -1;
+    m_date.tv_usec = -1;
+  }
 
-	DateTime::DateTime(time_t t, glong _usec)
-	{
-		m_date.tv_sec = t;
-		m_date.tv_usec = _usec;
-	}
+  DateTime::DateTime(time_t t, glong _usec)
+  {
+    m_date.tv_sec = t;
+    m_date.tv_usec = _usec;
+  }
 
-	DateTime::DateTime(const GTimeVal & v)
-		: m_date(v)
-	{
-	}
+  DateTime::DateTime(const GTimeVal & v)
+    : m_date(v)
+  {
+  }
 
-	DateTime & DateTime::add_days(int days)
-	{
-		m_date.tv_sec += (days * SEC_PER_DAY);
-		return *this;
-	}
+  DateTime & DateTime::add_days(int days)
+  {
+    m_date.tv_sec += (days * SEC_PER_DAY);
+    return *this;
+  }
 
-	DateTime & DateTime::add_hours(int hours)
-	{
-		m_date.tv_sec += (hours * SEC_PER_HOUR);
-		return *this;
-	}
+  DateTime & DateTime::add_hours(int hours)
+  {
+    m_date.tv_sec += (hours * SEC_PER_HOUR);
+    return *this;
+  }
 
   int DateTime::year() const
   {
@@ -78,10 +78,10 @@ namespace sharp {
     return result.tm_yday;
   }
 
-	bool DateTime::is_valid() const
-	{
-		return ((m_date.tv_sec != -1) && (m_date.tv_usec != -1));
-	}
+  bool DateTime::is_valid() const
+  {
+    return ((m_date.tv_sec != -1) && (m_date.tv_usec != -1));
+  }
 
   std::string DateTime::_to_string(const char * format, struct tm * t) const
   {
@@ -111,12 +111,12 @@ namespace sharp {
     return retval;
   }
 
-	DateTime DateTime::now()
-	{
-		GTimeVal n;
-		g_get_current_time(&n);
-		return DateTime(n);
-	}
+  DateTime DateTime::now()
+  {
+    GTimeVal n;
+    g_get_current_time(&n);
+    return DateTime(n);
+  }
 
   DateTime DateTime::from_iso8601(const std::string &iso8601)
   {
@@ -143,13 +143,13 @@ namespace sharp {
       && (m_date.tv_usec == dt.m_date.tv_usec);
   }
 
-	bool DateTime::operator>(const DateTime & dt) const
-	{
-		if(m_date.tv_sec == dt.m_date.tv_sec) {
-			return (m_date.tv_usec > dt.m_date.tv_usec);
-		}
-		return (m_date.tv_sec > dt.m_date.tv_sec);
-	}
+  bool DateTime::operator>(const DateTime & dt) const
+  {
+    if(m_date.tv_sec == dt.m_date.tv_sec) {
+      return (m_date.tv_usec > dt.m_date.tv_usec);
+    }
+    return (m_date.tv_sec > dt.m_date.tv_sec);
+  }
 
 
 }

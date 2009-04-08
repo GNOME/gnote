@@ -55,7 +55,7 @@ public:
 
   Glib::RefPtr<Gtk::TreeModel> get_notebooks()
     { return m_filteredNotebooks; }
-	/// <summary>
+  /// <summary>
   /// A Gtk.TreeModel that contains all of the items in the
   /// NotebookManager TreeStore including SpecialNotebooks
   /// which are used in the "Search All Notes" window.
@@ -113,7 +113,7 @@ private:
   // The key for this dictionary is Notebook.Name.ToLower ().
   // </summary>
   std::map<std::string, Gtk::TreeIter> m_notebookMap;
-  //object locker = new object ();		
+  //object locker = new object ();    
   bool                                 m_adding_notebook;
   NotebookEventHandler                 m_note_added_to_notebook;
   NotebookEventHandler                 m_note_removed_from_notebook;

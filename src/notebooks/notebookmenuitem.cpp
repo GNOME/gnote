@@ -35,20 +35,20 @@ namespace gnote {
       , m_note(note)
       , m_notebook(notebook)
     {
-     	if (!notebook) {
-				// This is for the "No notebook" menu item
-				
-				// Check to see if the specified note belongs
-				// to a notebook.  If so, don't activate the
-				// radio button.
-				if (!NotebookManager::instance().get_notebook_from_note (note)) {
-					set_active(true);
+       if (!notebook) {
+        // This is for the "No notebook" menu item
+        
+        // Check to see if the specified note belongs
+        // to a notebook.  If so, don't activate the
+        // radio button.
+        if (!NotebookManager::instance().get_notebook_from_note (note)) {
+          set_active(true);
         }
-			} 
+      } 
       else if (notebook->contains_note (note)) {
-				set_active(true);
-			}
-			
+        set_active(true);
+      }
+      
       signal_activate().connect(sigc::mem_fun(*this, &NotebookMenuItem::on_activated));
     }
 

@@ -41,7 +41,7 @@ public:
 
   Search(NoteManager &);
 
-		
+    
   /// <summary>
   /// Search the notes!
   /// </summary>

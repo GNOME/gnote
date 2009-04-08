@@ -41,104 +41,104 @@
 #include "debug.hpp"
 
 namespace gnote {
-	namespace utils {
+  namespace utils {
 
-		namespace {
-			void get_menu_position (Gtk::Menu * menu,
-															int & x,
-															int & y,
-															bool & push_in)
-			{
-				if (menu->get_attach_widget() == NULL ||
-						menu->get_attach_widget()->get_window() == NULL) {
-					// Prevent null exception in weird cases
-					x = 0;
-					y = 0;
-					push_in = true;
-					return;
-				}
-			
-				menu->get_attach_widget()->get_window()->get_origin(x, y);
-				x += menu->get_attach_widget()->get_allocation().get_x();
-				
-				Gtk::Requisition menu_req = menu->size_request();
-				if (y + menu_req.height >= menu->get_attach_widget()->get_screen()->get_height()) {
-					y -= menu_req.height;
-				}
-				else {
-					y += menu->get_attach_widget()->get_allocation().get_height();
-				}
-				
-				push_in = true;
-			}
-
-
-			void deactivate_menu(Gtk::Menu *menu)
-			{
-				menu->popdown();
-				if(menu->get_attach_widget()) {
-					menu->get_attach_widget()->set_state(Gtk::STATE_NORMAL);
-				}
-			}
-		}
-
-		void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev)
-		{
-			popup_menu(menu, ev, boost::bind(&get_menu_position, &menu, _1, _2, _3));
-		}
+    namespace {
+      void get_menu_position (Gtk::Menu * menu,
+                              int & x,
+                              int & y,
+                              bool & push_in)
+      {
+        if (menu->get_attach_widget() == NULL ||
+            menu->get_attach_widget()->get_window() == NULL) {
+          // Prevent null exception in weird cases
+          x = 0;
+          y = 0;
+          push_in = true;
+          return;
+        }
+      
+        menu->get_attach_widget()->get_window()->get_origin(x, y);
+        x += menu->get_attach_widget()->get_allocation().get_x();
+        
+        Gtk::Requisition menu_req = menu->size_request();
+        if (y + menu_req.height >= menu->get_attach_widget()->get_screen()->get_height()) {
+          y -= menu_req.height;
+        }
+        else {
+          y += menu->get_attach_widget()->get_allocation().get_height();
+        }
+        
+        push_in = true;
+      }
 
 
-		void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev, 
-										Gtk::Menu::SlotPositionCalc calc)
-		{
-			menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
-			menu.popup(calc, (ev ? ev->button : 0), 
-									(ev ? ev->time : gtk_get_current_event_time()));
-			if(menu.get_attach_widget()) {
-				menu.get_attach_widget()->set_state(Gtk::STATE_SELECTED);
-			}
-		}
+      void deactivate_menu(Gtk::Menu *menu)
+      {
+        menu->popdown();
+        if(menu->get_attach_widget()) {
+          menu->get_attach_widget()->set_state(Gtk::STATE_NORMAL);
+        }
+      }
+    }
+
+    void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev)
+    {
+      popup_menu(menu, ev, boost::bind(&get_menu_position, &menu, _1, _2, _3));
+    }
 
 
-		Glib::RefPtr<Gdk::Pixbuf> get_icon(const std::string & name, int size)
-		{
-			try {
-				return Gtk::IconTheme::get_default()->load_icon(name, size);
-			}
-			catch(const Glib::Exception & e)
-			{
-				std::cout << e.what().c_str() << std::endl;
-			}
-			return Glib::RefPtr<Gdk::Pixbuf>();
-		}
+    void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev, 
+                    Gtk::Menu::SlotPositionCalc calc)
+    {
+      menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
+      menu.popup(calc, (ev ? ev->button : 0), 
+                  (ev ? ev->time : gtk_get_current_event_time()));
+      if(menu.get_attach_widget()) {
+        menu.get_attach_widget()->set_state(Gtk::STATE_SELECTED);
+      }
+    }
 
-		void show_help(const std::string & filename, const std::string & link_id,
-									 GdkScreen *screen, Gtk::Window *parent)
-		{
-			std::string uri = "ghelp:" + filename;
-			if(!link_id.empty()) {
-				uri += link_id;
-			}
-			GError *error = NULL;
 
-			if(!gtk_show_uri (screen, uri.c_str(), gtk_get_current_event_time (), &error)) {
-				
-				std::string message = _("The \"Gnote Manual\" could "
-																"not be found.  Please verify "
-																"that your installation has been "
-																"completed successfully.");
-				HIGMessageDialog dialog(parent,
-																GTK_DIALOG_DESTROY_WITH_PARENT,
-																Gtk::MESSAGE_ERROR,
-																Gtk::BUTTONS_OK,
-																_("Help not found"),
-																message);
-				dialog.run();
-				if(error) {
-					g_error_free(error);
-				}
-			}
-		}
+    Glib::RefPtr<Gdk::Pixbuf> get_icon(const std::string & name, int size)
+    {
+      try {
+        return Gtk::IconTheme::get_default()->load_icon(name, size);
+      }
+      catch(const Glib::Exception & e)
+      {
+        std::cout << e.what().c_str() << std::endl;
+      }
+      return Glib::RefPtr<Gdk::Pixbuf>();
+    }
+
+    void show_help(const std::string & filename, const std::string & link_id,
+                   GdkScreen *screen, Gtk::Window *parent)
+    {
+      std::string uri = "ghelp:" + filename;
+      if(!link_id.empty()) {
+        uri += link_id;
+      }
+      GError *error = NULL;
+
+      if(!gtk_show_uri (screen, uri.c_str(), gtk_get_current_event_time (), &error)) {
+        
+        std::string message = _("The \"Gnote Manual\" could "
+                                "not be found.  Please verify "
+                                "that your installation has been "
+                                "completed successfully.");
+        HIGMessageDialog dialog(parent,
+                                GTK_DIALOG_DESTROY_WITH_PARENT,
+                                Gtk::MESSAGE_ERROR,
+                                Gtk::BUTTONS_OK,
+                                _("Help not found"),
+                                message);
+        dialog.run();
+        if(error) {
+          g_error_free(error);
+        }
+      }
+    }
 
     void show_opening_location_error(Gtk::Window * parent, 
                                      const std::string & url, 
@@ -151,7 +151,7 @@ namespace gnote {
                               Gtk::BUTTONS_OK,
                               _("Cannot open location"),
                               message);
-			dialog.run ();
+      dialog.run ();
     }
 
     std::string get_pretty_print_date(const sharp::DateTime & date, bool show_time)
@@ -160,19 +160,19 @@ namespace gnote {
       sharp::DateTime now = sharp::DateTime::now();
       std::string short_time = date.to_short_time_string ();
 
-			if (date.year() == now.year()) {
-				if (date.day_of_year() == now.day_of_year()) {
-					pretty_str = show_time ?
+      if (date.year() == now.year()) {
+        if (date.day_of_year() == now.day_of_year()) {
+          pretty_str = show_time ?
             str(boost::format(_("Today, %1%")) % short_time) :
             _("Today");
         }
-				else if ((date.day_of_year() < now.day_of_year())
+        else if ((date.day_of_year() < now.day_of_year())
                  && (date.day_of_year() == now.day_of_year() - 1)) {
-					pretty_str = show_time ?
+          pretty_str = show_time ?
             str(boost::format(_("Yesterday, %1%")) % short_time) :
             _("Yesterday");
         }
-				else if ((date.day_of_year() < now.day_of_year())
+        else if ((date.day_of_year() < now.day_of_year())
                   && (date.day_of_year() > now.day_of_year() - 6)) {
           int num_days = now.day_of_year() - date.day_of_year();
           const char * fmt;
@@ -195,13 +195,13 @@ namespace gnote {
             pretty_str = str(boost::format(fmt) % num_days);
           }
         }
-				else if (date.day_of_year() > now.day_of_year()
+        else if (date.day_of_year() > now.day_of_year()
                  && date.day_of_year() == now.day_of_year() + 1) {
-					pretty_str = show_time ?
+          pretty_str = show_time ?
             str(boost::format(_("Tomorrow, %1%")) % short_time) :
             _("Tomorrow");
         }
-				else if (date.day_of_year() > now.day_of_year()
+        else if (date.day_of_year() > now.day_of_year()
                  && date.day_of_year() < now.day_of_year() + 6) {
           int num_days = date.day_of_year() - now.day_of_year();
           const char * fmt;
@@ -224,206 +224,206 @@ namespace gnote {
             pretty_str = str(boost::format(fmt) % num_days);
           }
         }
-				else {
-					pretty_str = show_time ?
+        else {
+          pretty_str = show_time ?
             date.to_string (_("%B %d, %H:%M %p")) : // "MMMM d, h:mm tt"
             date.to_string (_("%B %d"));            // "MMMM d"
         }
-			} 
+      } 
       else if (!date.is_valid()) {
-				pretty_str = _("No Date");
+        pretty_str = _("No Date");
       }
-			else {
-				pretty_str = show_time ?
+      else {
+        pretty_str = show_time ?
           date.to_string (_("%B %d %Y, %H:%M %p")) : // "MMMM d yyyy, h:mm tt"
           date.to_string (_("%B %d %Y"));            // "MMMM d yyyy"
       }
 
-			return pretty_str;
-		}
+      return pretty_str;
+    }
 
 
-		void GlobalKeybinder::add_accelerator(const sigc::slot<void> & handler, guint key, 
-																					Gdk::ModifierType modifiers, Gtk::AccelFlags flags)
-		{
-			Gtk::MenuItem *foo = manage(new Gtk::MenuItem ());
-			foo->signal_activate().connect(handler);
-			foo->add_accelerator ("activate",
-			                    m_accel_group,
-			                    key,
-			                    modifiers,
-			                    flags);
-			foo->show ();
+    void GlobalKeybinder::add_accelerator(const sigc::slot<void> & handler, guint key, 
+                                          Gdk::ModifierType modifiers, Gtk::AccelFlags flags)
+    {
+      Gtk::MenuItem *foo = manage(new Gtk::MenuItem ());
+      foo->signal_activate().connect(handler);
+      foo->add_accelerator ("activate",
+                          m_accel_group,
+                          key,
+                          modifiers,
+                          flags);
+      foo->show ();
 
-			m_fake_menu.append (*foo);
-		}
+      m_fake_menu.append (*foo);
+    }
 
 
-		HIGMessageDialog::HIGMessageDialog(Gtk::Window *parent,
-																			 GtkDialogFlags flags, Gtk::MessageType msg_type, 
-																			 Gtk::ButtonsType btn_type, const Glib::ustring & header,
-																			 const Glib::ustring & msg)
-			: Gtk::Dialog()
+    HIGMessageDialog::HIGMessageDialog(Gtk::Window *parent,
+                                       GtkDialogFlags flags, Gtk::MessageType msg_type, 
+                                       Gtk::ButtonsType btn_type, const Glib::ustring & header,
+                                       const Glib::ustring & msg)
+      : Gtk::Dialog()
       , m_extra_widget(NULL)
-		{
-			set_has_separator(false);
-			set_border_width(5);
-			set_resizable(false);
-			set_title("");
+    {
+      set_has_separator(false);
+      set_border_width(5);
+      set_resizable(false);
+      set_title("");
 
-			get_vbox()->set_spacing(12);
-			get_action_area()->set_layout(Gtk::BUTTONBOX_END);
+      get_vbox()->set_spacing(12);
+      get_action_area()->set_layout(Gtk::BUTTONBOX_END);
 
-			m_accel_group = Glib::RefPtr<Gtk::AccelGroup>(Gtk::AccelGroup::create());
-			add_accel_group(m_accel_group);
+      m_accel_group = Glib::RefPtr<Gtk::AccelGroup>(Gtk::AccelGroup::create());
+      add_accel_group(m_accel_group);
 
-			Gtk::HBox *hbox = manage(new Gtk::HBox (false, 12));
-			hbox->set_border_width(5);
-			hbox->show();
-			get_vbox()->pack_start(*hbox, false, false, 0);
+      Gtk::HBox *hbox = manage(new Gtk::HBox (false, 12));
+      hbox->set_border_width(5);
+      hbox->show();
+      get_vbox()->pack_start(*hbox, false, false, 0);
 
-			switch (msg_type) {
-			case Gtk::MESSAGE_ERROR:
-				m_image = new Gtk::Image (Gtk::Stock::DIALOG_ERROR,
-																	Gtk::ICON_SIZE_DIALOG);
-				break;
-			case Gtk::MESSAGE_QUESTION:
-				m_image = new Gtk::Image (Gtk::Stock::DIALOG_QUESTION,
-																	Gtk::ICON_SIZE_DIALOG);
-				break;
-			case Gtk::MESSAGE_INFO:
-				m_image = new Gtk::Image (Gtk::Stock::DIALOG_INFO,
-																	Gtk::ICON_SIZE_DIALOG);
-				break;
-			case Gtk::MESSAGE_WARNING:
-				m_image = new Gtk::Image (Gtk::Stock::DIALOG_WARNING,
-																	Gtk::ICON_SIZE_DIALOG);
-				break;
-			default:
-				m_image = new Gtk::Image ();
-				break;
-			}
+      switch (msg_type) {
+      case Gtk::MESSAGE_ERROR:
+        m_image = new Gtk::Image (Gtk::Stock::DIALOG_ERROR,
+                                  Gtk::ICON_SIZE_DIALOG);
+        break;
+      case Gtk::MESSAGE_QUESTION:
+        m_image = new Gtk::Image (Gtk::Stock::DIALOG_QUESTION,
+                                  Gtk::ICON_SIZE_DIALOG);
+        break;
+      case Gtk::MESSAGE_INFO:
+        m_image = new Gtk::Image (Gtk::Stock::DIALOG_INFO,
+                                  Gtk::ICON_SIZE_DIALOG);
+        break;
+      case Gtk::MESSAGE_WARNING:
+        m_image = new Gtk::Image (Gtk::Stock::DIALOG_WARNING,
+                                  Gtk::ICON_SIZE_DIALOG);
+        break;
+      default:
+        m_image = new Gtk::Image ();
+        break;
+      }
 
-			if (m_image) {
-				Gtk::manage(m_image);
-				m_image->show();
-				m_image->property_yalign().set_value(0);
-				hbox->pack_start(*m_image, false, false, 0);
-			}
+      if (m_image) {
+        Gtk::manage(m_image);
+        m_image->show();
+        m_image->property_yalign().set_value(0);
+        hbox->pack_start(*m_image, false, false, 0);
+      }
 
-			Gtk::VBox *label_vbox = manage(new Gtk::VBox (false, 0));
-			label_vbox->show();
-			hbox->pack_start(*label_vbox, true, true, 0);
+      Gtk::VBox *label_vbox = manage(new Gtk::VBox (false, 0));
+      label_vbox->show();
+      hbox->pack_start(*label_vbox, true, true, 0);
 
-			std::string title = str(boost::format("<span weight='bold' size='larger'>%1%"
-																						"</span>\n") % header);
+      std::string title = str(boost::format("<span weight='bold' size='larger'>%1%"
+                                            "</span>\n") % header);
 
-			Gtk::Label *label;
+      Gtk::Label *label;
 
-			label = manage(new Gtk::Label (title));
-			label->set_use_markup(true);
-			label->set_justify(Gtk::JUSTIFY_LEFT);
-			label->set_line_wrap(true);
-			label->set_alignment (0.0f, 0.5f);
-			label->show();
-			label_vbox->pack_start(*label, false, false, 0);
+      label = manage(new Gtk::Label (title));
+      label->set_use_markup(true);
+      label->set_justify(Gtk::JUSTIFY_LEFT);
+      label->set_line_wrap(true);
+      label->set_alignment (0.0f, 0.5f);
+      label->show();
+      label_vbox->pack_start(*label, false, false, 0);
 
-			label = manage(new Gtk::Label(msg));
-			label->set_use_markup(true);
-			label->set_justify(Gtk::JUSTIFY_LEFT);
-			label->set_line_wrap(true);
-			label->set_alignment (0.0f, 0.5f);
-			label->show();
-			label_vbox->pack_start(*label, false, false, 0);
-			
-			m_extra_widget_vbox = manage(new Gtk::VBox (false, 0));
-			m_extra_widget_vbox->show();
-			label_vbox->pack_start(*m_extra_widget_vbox, true, true, 12);
+      label = manage(new Gtk::Label(msg));
+      label->set_use_markup(true);
+      label->set_justify(Gtk::JUSTIFY_LEFT);
+      label->set_line_wrap(true);
+      label->set_alignment (0.0f, 0.5f);
+      label->show();
+      label_vbox->pack_start(*label, false, false, 0);
+      
+      m_extra_widget_vbox = manage(new Gtk::VBox (false, 0));
+      m_extra_widget_vbox->show();
+      label_vbox->pack_start(*m_extra_widget_vbox, true, true, 12);
 
-			switch (btn_type) {
-			case Gtk::BUTTONS_NONE:
-				break;
-			case Gtk::BUTTONS_OK:
-				add_button (Gtk::Stock::OK, Gtk::RESPONSE_OK, true);
-				break;
-			case Gtk::BUTTONS_CLOSE:
-				add_button (Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE, true);
-				break;
-			case Gtk::BUTTONS_CANCEL:
-				add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, true);
-				break;
-			case Gtk::BUTTONS_YES_NO:
-				add_button (Gtk::Stock::NO, Gtk::RESPONSE_NO, false);
-				add_button (Gtk::Stock::YES, Gtk::RESPONSE_YES, true);
-				break;
-			case Gtk::BUTTONS_OK_CANCEL:
-				add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, false);
-				add_button (Gtk::Stock::OK, Gtk::RESPONSE_OK, true);
-				break;
-			}
+      switch (btn_type) {
+      case Gtk::BUTTONS_NONE:
+        break;
+      case Gtk::BUTTONS_OK:
+        add_button (Gtk::Stock::OK, Gtk::RESPONSE_OK, true);
+        break;
+      case Gtk::BUTTONS_CLOSE:
+        add_button (Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE, true);
+        break;
+      case Gtk::BUTTONS_CANCEL:
+        add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, true);
+        break;
+      case Gtk::BUTTONS_YES_NO:
+        add_button (Gtk::Stock::NO, Gtk::RESPONSE_NO, false);
+        add_button (Gtk::Stock::YES, Gtk::RESPONSE_YES, true);
+        break;
+      case Gtk::BUTTONS_OK_CANCEL:
+        add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, false);
+        add_button (Gtk::Stock::OK, Gtk::RESPONSE_OK, true);
+        break;
+      }
 
-			if (parent){
-				set_transient_for(*parent);
-			}
+      if (parent){
+        set_transient_for(*parent);
+      }
 
-			if ((flags & GTK_DIALOG_MODAL) != 0) {
-				set_modal(true);
-			}
+      if ((flags & GTK_DIALOG_MODAL) != 0) {
+        set_modal(true);
+      }
 
-			if ((flags & GTK_DIALOG_DESTROY_WITH_PARENT) != 0) {
-				property_destroy_with_parent().set_value(true);
-			}
-		}
+      if ((flags & GTK_DIALOG_DESTROY_WITH_PARENT) != 0) {
+        property_destroy_with_parent().set_value(true);
+      }
+    }
 
 
-		void HIGMessageDialog::add_button(const Gtk::BuiltinStockID& stock_id, 
-																			 Gtk::ResponseType resp, bool is_default)
-		{
-			Gtk::Button *button = manage(new Gtk::Button (stock_id));
-			button->property_can_default().set_value(true);
-			
-			add_button(button, resp, is_default);
-		}
+    void HIGMessageDialog::add_button(const Gtk::BuiltinStockID& stock_id, 
+                                       Gtk::ResponseType resp, bool is_default)
+    {
+      Gtk::Button *button = manage(new Gtk::Button (stock_id));
+      button->property_can_default().set_value(true);
+      
+      add_button(button, resp, is_default);
+    }
 
-		void HIGMessageDialog::add_button (const Glib::RefPtr<Gdk::Pixbuf> & pixbuf, 
-																			 const Glib::ustring & label_text, 
-																			 Gtk::ResponseType resp, bool is_default)
-		{
-			Gtk::Button *button = manage(new Gtk::Button());
-			Gtk::Image *image = manage(new Gtk::Image(pixbuf));
-			// NOTE: This property is new to GTK+ 2.10, but we don't
-			//       really need the line because we're just setting
-			//       it to the default value anyway.
-			//button.ImagePosition = Gtk::PositionType.Left;
-			button->set_image(*image);
-			button->set_label(label_text);
-			button->set_use_underline(true);
-			button->property_can_default().set_value(true);
-			
-			add_button (button, resp, is_default);
-		}
-		
-		void HIGMessageDialog::add_button (Gtk::Button *button, Gtk::ResponseType resp, bool is_default)
-		{
-			button->show();
+    void HIGMessageDialog::add_button (const Glib::RefPtr<Gdk::Pixbuf> & pixbuf, 
+                                       const Glib::ustring & label_text, 
+                                       Gtk::ResponseType resp, bool is_default)
+    {
+      Gtk::Button *button = manage(new Gtk::Button());
+      Gtk::Image *image = manage(new Gtk::Image(pixbuf));
+      // NOTE: This property is new to GTK+ 2.10, but we don't
+      //       really need the line because we're just setting
+      //       it to the default value anyway.
+      //button.ImagePosition = Gtk::PositionType.Left;
+      button->set_image(*image);
+      button->set_label(label_text);
+      button->set_use_underline(true);
+      button->property_can_default().set_value(true);
+      
+      add_button (button, resp, is_default);
+    }
+    
+    void HIGMessageDialog::add_button (Gtk::Button *button, Gtk::ResponseType resp, bool is_default)
+    {
+      button->show();
 
-			add_action_widget (*button, resp);
+      add_action_widget (*button, resp);
 
-			if (is_default) {
-				set_default_response(resp);
-				button->add_accelerator ("activate", m_accel_group,
-																 GDK_Escape, (Gdk::ModifierType)0,
-																 Gtk::ACCEL_VISIBLE);
-			}
-		}
+      if (is_default) {
+        set_default_response(resp);
+        button->add_accelerator ("activate", m_accel_group,
+                                 GDK_Escape, (Gdk::ModifierType)0,
+                                 Gtk::ACCEL_VISIBLE);
+      }
+    }
 
 
     void HIGMessageDialog::set_extra_widget(Gtk::Widget *value)
     {
       if (m_extra_widget) {
-					m_extra_widget_vbox->remove (*m_extra_widget);
+          m_extra_widget_vbox->remove (*m_extra_widget);
       }
-				
+        
       m_extra_widget = value;
       m_extra_widget->show_all ();
       m_extra_widget_vbox->pack_start (*m_extra_widget, true, true, 0);
@@ -457,7 +457,7 @@ namespace gnote {
           s.erase(s.end() - 1, s.end());
         }
 
-				// Handle evo's broken file urls
+        // Handle evo's broken file urls
         if(sharp::string_starts_with(s, "file:////")) {
           s = sharp::string_replace_first(s, "file:////", "file:///");
         }
@@ -514,28 +514,28 @@ namespace gnote {
 
 
     std::string XmlDecoder::decode(const std::string & source)
-		{
-			// TODO there is probably better than a std::string for that.
-			// this will do for now.
-			std::string builder;
+    {
+      // TODO there is probably better than a std::string for that.
+      // this will do for now.
+      std::string builder;
 
-			xmlpp::TextReader xml((const xmlChar *)source.c_str(), source.size());
+      xmlpp::TextReader xml((const xmlChar *)source.c_str(), source.size());
 
-			while (xml.read ()) {
-				switch (xml.get_node_type()) {
-				case xmlpp::TextReader::Text:
-				case xmlpp::TextReader::Whitespace:
-					builder += xml.get_value();
-					break;
-				default:
-					break;
-				}
-			}
+      while (xml.read ()) {
+        switch (xml.get_node_type()) {
+        case xmlpp::TextReader::Text:
+        case xmlpp::TextReader::Whitespace:
+          builder += xml.get_value();
+          break;
+        default:
+          break;
+        }
+      }
 
-			xml.close ();
+      xml.close ();
 
-			return builder;
-		}
+      return builder;
+    }
 
 
     TextRange::TextRange()
@@ -543,192 +543,192 @@ namespace gnote {
     }
 
 
-		TextRange::TextRange(const Gtk::TextIter & _start,
-												 const Gtk::TextIter & _end) throw(sharp::Exception)
-		{
-			if(_start.get_buffer() != _end.get_buffer()) {
-				throw(sharp::Exception("Start buffer and end buffer do not match"));
-			}
-			m_buffer = _start.get_buffer();
-			m_start_mark = m_buffer->create_mark(_start, true);
-			m_end_mark = m_buffer->create_mark(_end, true);
-		}
+    TextRange::TextRange(const Gtk::TextIter & _start,
+                         const Gtk::TextIter & _end) throw(sharp::Exception)
+    {
+      if(_start.get_buffer() != _end.get_buffer()) {
+        throw(sharp::Exception("Start buffer and end buffer do not match"));
+      }
+      m_buffer = _start.get_buffer();
+      m_start_mark = m_buffer->create_mark(_start, true);
+      m_end_mark = m_buffer->create_mark(_end, true);
+    }
 
-		Gtk::TextIter TextRange::start() const
-		{
-			return m_buffer->get_iter_at_mark(m_start_mark);
-		}
-
-
-		void TextRange::set_start(const Gtk::TextIter & value)
-		{
-			m_buffer->move_mark(m_start_mark, value);
-		}
-
-		Gtk::TextIter TextRange::end() const
-		{
-			return m_buffer->get_iter_at_mark(m_end_mark);
-		}
-
-		void TextRange::set_end(const Gtk::TextIter & value)
-		{
-			m_buffer->move_mark(m_end_mark, value);
-		}
-
-		void TextRange::erase()
-		{
-			Gtk::TextIter start_iter = start();
-			Gtk::TextIter end_iter = end();
-			m_buffer->erase(start_iter, end_iter);
-		}
-
-		void TextRange::destroy()
-		{
-			m_buffer->delete_mark(m_start_mark);
-			m_buffer->delete_mark(m_end_mark);
-		}
-
-		void TextRange::remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag)
-		{
-			m_buffer->remove_tag(tag, start(), end());
-		}
+    Gtk::TextIter TextRange::start() const
+    {
+      return m_buffer->get_iter_at_mark(m_start_mark);
+    }
 
 
-		TextTagEnumerator::TextTagEnumerator(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
-																				 const Glib::RefPtr<Gtk::TextTag> & tag)
-			: m_buffer(buffer)
-			, m_tag(tag)
-			, m_mark(buffer->create_mark(buffer->begin(), true))
-			, m_range(buffer->begin(), buffer->begin())
-		{
-		}
+    void TextRange::set_start(const Gtk::TextIter & value)
+    {
+      m_buffer->move_mark(m_start_mark, value);
+    }
 
-		bool TextTagEnumerator::move_next()
-		{
-			Gtk::TextIter iter = m_buffer->get_iter_at_mark(m_mark);
+    Gtk::TextIter TextRange::end() const
+    {
+      return m_buffer->get_iter_at_mark(m_end_mark);
+    }
 
-			if (iter == m_buffer->end()) {
-				m_range.destroy();
-				m_buffer->delete_mark(m_mark);
-				return false;
-			}
+    void TextRange::set_end(const Gtk::TextIter & value)
+    {
+      m_buffer->move_mark(m_end_mark, value);
+    }
 
-			if (!iter.forward_to_tag_toggle(m_tag)) {
-				m_range.destroy();
-				m_buffer->delete_mark(m_mark);
-				return false;
-			}
+    void TextRange::erase()
+    {
+      Gtk::TextIter start_iter = start();
+      Gtk::TextIter end_iter = end();
+      m_buffer->erase(start_iter, end_iter);
+    }
 
-			if (!iter.begins_tag(m_tag)) {
-				m_buffer->move_mark(m_mark, iter);
-				return move_next();
-			}
+    void TextRange::destroy()
+    {
+      m_buffer->delete_mark(m_start_mark);
+      m_buffer->delete_mark(m_end_mark);
+    }
 
-			m_range.set_start(iter);
-
-			if (!iter.forward_to_tag_toggle(m_tag)) {
-				m_range.destroy();
-				m_buffer->delete_mark(m_mark);
-				return false;
-			}
-
-			if (!iter.ends_tag(m_tag)) {
-				m_buffer->move_mark(m_mark, iter);
-				return move_next();
-			}
-
-			m_range.set_end(iter);
-
-			m_buffer->move_mark(m_mark, iter);
-
-			return true;
-		}
-
-		
-
-		InterruptableTimeout::~InterruptableTimeout()
-		{
-			cancel();
-		}
+    void TextRange::remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag)
+    {
+      m_buffer->remove_tag(tag, start(), end());
+    }
 
 
-		bool InterruptableTimeout::callback(InterruptableTimeout* self)
-		{
-			if(self)
-				return self->timeout_expired();
-			return false;
-		}
+    TextTagEnumerator::TextTagEnumerator(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+                                         const Glib::RefPtr<Gtk::TextTag> & tag)
+      : m_buffer(buffer)
+      , m_tag(tag)
+      , m_mark(buffer->create_mark(buffer->begin(), true))
+      , m_range(buffer->begin(), buffer->begin())
+    {
+    }
 
-		void InterruptableTimeout::reset(guint timeout_millis)
-		{
-			cancel();
-			m_timeout_id = g_timeout_add(timeout_millis, (GSourceFunc)callback, this);
-		}
+    bool TextTagEnumerator::move_next()
+    {
+      Gtk::TextIter iter = m_buffer->get_iter_at_mark(m_mark);
 
-		void InterruptableTimeout::cancel()
-		{
-			if(m_timeout_id != 0) {
-				g_source_remove(m_timeout_id);
-				m_timeout_id = 0;
-			}
-		}
+      if (iter == m_buffer->end()) {
+        m_range.destroy();
+        m_buffer->delete_mark(m_mark);
+        return false;
+      }
 
-		bool InterruptableTimeout::timeout_expired()
-		{
-			signal_timeout();
-			m_timeout_id = 0;
-			return false;
-		}
+      if (!iter.forward_to_tag_toggle(m_tag)) {
+        m_range.destroy();
+        m_buffer->delete_mark(m_mark);
+        return false;
+      }
 
-		ToolMenuButton::ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
-																	 const Glib::ustring & label, Gtk::Menu & menu)
-			: Gtk::ToggleToolButton(label)
-			,	m_menu(menu)
-		{
-			set_icon_widget(*manage(new Gtk::Image(stock_image, toolbar.get_icon_size())));
-			property_can_focus().set_value(true);
-			gtk_menu_attach_to_widget(menu.gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
-																NULL);
-//			menu.attach_to_widget(*this);
-			menu.signal_deactivate().connect(sigc::mem_fun(*this, &ToolMenuButton::release_button));
-			show_all();
-		}
+      if (!iter.begins_tag(m_tag)) {
+        m_buffer->move_mark(m_mark, iter);
+        return move_next();
+      }
 
+      m_range.set_start(iter);
 
-		bool ToolMenuButton::on_button_press_event(GdkEventButton *ev)
-		{
-			popup_menu(m_menu, ev);
-			return true;
-		}
+      if (!iter.forward_to_tag_toggle(m_tag)) {
+        m_range.destroy();
+        m_buffer->delete_mark(m_mark);
+        return false;
+      }
 
-		void ToolMenuButton::on_clicked()
-		{
-			m_menu.select_first(true);
-			popup_menu(m_menu, NULL);
-		}
+      if (!iter.ends_tag(m_tag)) {
+        m_buffer->move_mark(m_mark, iter);
+        return move_next();
+      }
 
-		bool ToolMenuButton::on_mnemonic_activate(bool group_cycling)
-		{
-			// ToggleButton always grabs focus away from the editor,
-			// so reimplement Widget's version, which only grabs the
-			// focus if we are group cycling.
-			if (!group_cycling) {
-				activate();
-			} 
-			else if (can_focus()) {
-				grab_focus();
-			}
+      m_range.set_end(iter);
 
-			return true;
-		}
+      m_buffer->move_mark(m_mark, iter);
+
+      return true;
+    }
+
+    
+
+    InterruptableTimeout::~InterruptableTimeout()
+    {
+      cancel();
+    }
 
 
-		void ToolMenuButton::release_button()
-		{
-			set_active(false);
-		}
-		
-		
+    bool InterruptableTimeout::callback(InterruptableTimeout* self)
+    {
+      if(self)
+        return self->timeout_expired();
+      return false;
+    }
 
-	}
+    void InterruptableTimeout::reset(guint timeout_millis)
+    {
+      cancel();
+      m_timeout_id = g_timeout_add(timeout_millis, (GSourceFunc)callback, this);
+    }
+
+    void InterruptableTimeout::cancel()
+    {
+      if(m_timeout_id != 0) {
+        g_source_remove(m_timeout_id);
+        m_timeout_id = 0;
+      }
+    }
+
+    bool InterruptableTimeout::timeout_expired()
+    {
+      signal_timeout();
+      m_timeout_id = 0;
+      return false;
+    }
+
+    ToolMenuButton::ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
+                                   const Glib::ustring & label, Gtk::Menu & menu)
+      : Gtk::ToggleToolButton(label)
+      ,  m_menu(menu)
+    {
+      set_icon_widget(*manage(new Gtk::Image(stock_image, toolbar.get_icon_size())));
+      property_can_focus().set_value(true);
+      gtk_menu_attach_to_widget(menu.gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
+                                NULL);
+//      menu.attach_to_widget(*this);
+      menu.signal_deactivate().connect(sigc::mem_fun(*this, &ToolMenuButton::release_button));
+      show_all();
+    }
+
+
+    bool ToolMenuButton::on_button_press_event(GdkEventButton *ev)
+    {
+      popup_menu(m_menu, ev);
+      return true;
+    }
+
+    void ToolMenuButton::on_clicked()
+    {
+      m_menu.select_first(true);
+      popup_menu(m_menu, NULL);
+    }
+
+    bool ToolMenuButton::on_mnemonic_activate(bool group_cycling)
+    {
+      // ToggleButton always grabs focus away from the editor,
+      // so reimplement Widget's version, which only grabs the
+      // focus if we are group cycling.
+      if (!group_cycling) {
+        activate();
+      } 
+      else if (can_focus()) {
+        grab_focus();
+      }
+
+      return true;
+    }
+
+
+    void ToolMenuButton::release_button()
+    {
+      set_active(false);
+    }
+    
+    
+
+  }
 }

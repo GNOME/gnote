@@ -33,15 +33,15 @@
 
 namespace sharp {
 
-	DateTime XmlConvert::to_date_time(const std::string & date)
-	{
+  DateTime XmlConvert::to_date_time(const std::string & date)
+  {
     return DateTime::from_iso8601(date);
-	}
+  }
 
-	std::string XmlConvert::to_string(const DateTime & date)
-	{
+  std::string XmlConvert::to_string(const DateTime & date)
+  {
     return date.to_iso8601();
-	}
+  }
 
 }
 

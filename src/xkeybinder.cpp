@@ -97,8 +97,8 @@ namespace gnote {
       mods = (Gdk::ModifierType)pmods;
     } 
     catch  (...) {
-			return false;
-		}
+      return false;
+    }
     return true;
   }
 

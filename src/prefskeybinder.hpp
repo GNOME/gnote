@@ -53,7 +53,7 @@ class GnotePrefsKeybinder
   : public PrefsKeybinder
 {
 public:
-	GnotePrefsKeybinder(NoteManager & manager, IGnoteTray & trayicon);
+  GnotePrefsKeybinder(NoteManager & manager, IGnoteTray & trayicon);
   ~GnotePrefsKeybinder();
   void enable_keybindings_changed(Preferences*, GConfEntry* entry);
   void enable_disable(bool enable);
@@ -64,8 +64,8 @@ private:
   void key_create_new_note();
   void key_open_search();
   void key_open_recent_changes();
-	NoteManager & m_manager;
-	IGnoteTray & m_trayicon;
+  NoteManager & m_manager;
+  IGnoteTray & m_trayicon;
   sigc::connection m_prefs_cid;
 };
 

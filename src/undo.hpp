@@ -42,7 +42,7 @@ namespace gnote {
 class EditAction
 {
 public:
-  virtual	void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer) = 0;
+  virtual  void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer) = 0;
   virtual void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer) = 0;
   virtual void merge (EditAction * action) = 0;
   virtual bool can_merge (const EditAction * action) const = 0;
@@ -199,33 +199,33 @@ private:
 };
 
 class UndoManager
-	: public boost::noncopyable
+  : public boost::noncopyable
 {
 public:
   UndoManager(const NoteBuffer::Ptr & buffer);
   ~UndoManager();
-	bool get_can_undo()
+  bool get_can_undo()
     {
       return !m_undo_stack.empty();
     }
-	bool get_can_redo()
+  bool get_can_redo()
     {
       return !m_redo_stack.empty();
     }
-	void undo()
+  void undo()
     {
       undo_redo(m_undo_stack, m_redo_stack, true);
     }
-	void redo()
+  void redo()
     {
       undo_redo(m_redo_stack, m_undo_stack, false);
     }
-	void freeze_undo()
-		{
+  void freeze_undo()
+    {
       ++m_frozen_cnt;
     }
-	void thaw_undo()
-		{
+  void thaw_undo()
+    {
       --m_frozen_cnt;
     }
 
@@ -233,8 +233,8 @@ public:
   void clear_undo_history();
   void add_undo_action(EditAction * action);
 
-	sigc::signal<void> & signal_undo_changed()
-		{ return m_undo_changed; }
+  sigc::signal<void> & signal_undo_changed()
+    { return m_undo_changed; }
 
 private:
 
@@ -255,7 +255,7 @@ private:
   ChopBuffer::Ptr m_chop_buffer;
   std::stack<EditAction *> m_undo_stack;
   std::stack<EditAction *> m_redo_stack;
-	sigc::signal<void> m_undo_changed;
+  sigc::signal<void> m_undo_changed;
 };
 
 

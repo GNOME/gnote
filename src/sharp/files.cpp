@@ -37,9 +37,9 @@ namespace sharp {
   std::string file_basename(const std::string & p)
   {
 #if BOOST_VERSION >= 103600
-		return boost::filesystem::path(p).stem();
+    return boost::filesystem::path(p).stem();
 #else
-		return boost::filesystem::basename(boost::filesystem::path(p));
+    return boost::filesystem::basename(boost::filesystem::path(p));
 #endif
 
   }

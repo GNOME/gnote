@@ -45,8 +45,8 @@ namespace gnote {
     std::vector<std::string> encoded_words; 
     sharp::string_split(encoded_words, utils::XmlEncoder::encode (query), " \t\n");
     ResultsPtr temp_matches(new Results);
-			
-			// Skip over notes that are template notes
+      
+      // Skip over notes that are template notes
     Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
     for(Note::List::const_iterator iter = m_manager.get_notes().begin();
@@ -57,12 +57,12 @@ namespace gnote {
       if (note->contains_tag (template_tag)) {
         continue;
       }
-				
+        
       // Skip notes that are not in the
       // selected notebook
       if (selected_notebook && !selected_notebook->contains_note (note))
         continue;
-				
+        
       // Check the note's raw XML for at least one
       // match, to avoid deserializing Buffers
       // unnecessarily.

@@ -34,7 +34,7 @@
 
 namespace sharp {
 
-	void directory_get_files_with_ext(const std::string & dir, const std::string & ext,
+  void directory_get_files_with_ext(const std::string & dir, const std::string & ext,
                                     std::list<std::string>  & files);
 
 }

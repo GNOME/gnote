@@ -33,25 +33,25 @@
 
 namespace sharp {
 
-	class uuid
-	{
-	public:
-		uuid()
-			{
-				uuid_generate(m_uuid);
-			}
+  class uuid
+  {
+  public:
+    uuid()
+      {
+        uuid_generate(m_uuid);
+      }
 
-		std::string string()
-			{
-				char out[40];
-				uuid_unparse_lower(m_uuid, out);
-				return out;
-			}
-		
-	private:
+    std::string string()
+      {
+        char out[40];
+        uuid_unparse_lower(m_uuid, out);
+        return out;
+      }
+    
+  private:
 
-		uuid_t m_uuid;
-	};
+    uuid_t m_uuid;
+  };
 
 }
 

@@ -251,7 +251,7 @@ namespace gnote {
     bool m_hovering_on_link;
     static bool s_static_inited;
     static Gdk::Cursor s_normal_cursor;
-		static Gdk::Cursor s_hand_cursor;
+    static Gdk::Cursor s_hand_cursor;
 
   };
 

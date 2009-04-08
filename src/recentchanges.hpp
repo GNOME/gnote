@@ -49,13 +49,13 @@ namespace gnote {
   namespace notebooks {
     class NotebooksTreeView;
   }
-	class NoteManager;
+  class NoteManager;
 
 class NoteRecentChanges
   : public utils::ForcedPresentWindow
 {
 public:
-	static NoteRecentChanges *get_instance(NoteManager& m);
+  static NoteRecentChanges *get_instance(NoteManager& m);
 
   void set_search_text(const std::string & value);
 
@@ -169,9 +169,9 @@ private:
   Gtk::ScrolledWindow m_matches_window;
   Gtk::VBox           m_content_vbox;
   Gtk::TreeViewColumn *m_matches_column;
-				
+        
   notebooks::NotebooksTreeView  *m_notebooksTree;
-				
+        
   // Use the following like a Set
   std::set<Tag::Ptr>  m_selected_tags;
 

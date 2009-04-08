@@ -56,8 +56,8 @@ public:
   virtual void dispose(bool);
 
   /// <summary>
-	/// Called when the NoteAddin is attached to a Note
-	/// </summary>
+  /// Called when the NoteAddin is attached to a Note
+  /// </summary>
   virtual void initialize () = 0;
 
   /// <summary>
@@ -69,7 +69,7 @@ public:
   /// <summary>
   /// Called when the note is opened.
   /// </summary>
-	virtual void on_note_opened () = 0;
+  virtual void on_note_opened () = 0;
 
   const Note::Ptr & get_note() const
     {
@@ -108,7 +108,7 @@ public:
 private:
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
-	std::list<Gtk::MenuItem*>     m_tools_menu_items;
+  std::list<Gtk::MenuItem*>     m_tools_menu_items;
   std::list<Gtk::MenuItem*>     m_text_menu_items;
   typedef std::map<Gtk::ToolItem*, int> ToolItemMap;
   ToolItemMap                   m_toolbar_items;

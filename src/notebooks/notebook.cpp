@@ -54,7 +54,7 @@ namespace notebooks {
     }
   }
 
-	/// <summary>
+  /// <summary>
   /// Construct a new Notebook with the specified notebook system tag.
   /// </summary>
   /// <param name="notebookTag">
@@ -62,7 +62,7 @@ namespace notebooks {
   /// </param>
   Notebook::Notebook(const Tag::Ptr & notebookTag)
   {
-	// Parse the notebook name from the tag name
+  // Parse the notebook name from the tag name
     std::string systemNotebookPrefix = std::string(Tag::SYSTEM_TAG_PREFIX)
       + NOTEBOOK_TAG_PREFIX;
     std::string notebookName = sharp::string_substring(notebookTag->name(), 
@@ -112,7 +112,7 @@ namespace notebooks {
         noteManager.create (m_template_note_title,
                             NoteManager::get_note_template_content (
                               m_template_note_title));
-					
+          
       // Select the initial text
       NoteBuffer::Ptr buffer = note->get_buffer();
       Gtk::TextIter iter = buffer->get_iter_at_line_offset (2, 0);
@@ -130,14 +130,14 @@ namespace notebooks {
       tag = TagManager::obj()
         .get_or_create_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
       note->add_tag (tag);
-				
+        
       note->queue_save (Note::CONTENT_CHANGED);
     }
 
     return note;
   }
 
-	/// <summary>
+  /// <summary>
   /// Returns true when the specified note exists in the notebook
   /// </summary>
   /// <param name="note">

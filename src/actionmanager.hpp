@@ -38,20 +38,20 @@ class ActionManager
   : public base::Singleton<ActionManager>
 {
 public:
-	ActionManager();
+  ActionManager();
 
-	Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const
-		{
-			return find_action_by_name(n);
-		}
-	Gtk::Widget * get_widget(const std::string &n) const
-		{
-			return m_ui->get_widget(n);
-		}
-	void load_interface();
+  Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const
+    {
+      return find_action_by_name(n);
+    }
+  Gtk::Widget * get_widget(const std::string &n) const
+    {
+      return m_ui->get_widget(n);
+    }
+  void load_interface();
   void get_placeholder_children(const std::string & p, std::list<Gtk::Widget*> & placeholders) const;
-	void populate_action_groups();
-	Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n) const;
+  void populate_action_groups();
+  Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n) const;
   const Glib::RefPtr<Gtk::UIManager> & get_ui()
     {
       return m_ui;
@@ -61,9 +61,9 @@ public:
       return m_newNote;
     }
 private:
-	Glib::RefPtr<Gtk::UIManager> m_ui;
-	Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
-	Glib::RefPtr<Gdk::Pixbuf> m_newNote;
+  Glib::RefPtr<Gtk::UIManager> m_ui;
+  Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
+  Glib::RefPtr<Gdk::Pixbuf> m_newNote;
 };
 
 

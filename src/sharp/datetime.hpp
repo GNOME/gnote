@@ -40,23 +40,23 @@ namespace sharp {
 class DateTime
 {
 public:
-	DateTime();
-	explicit DateTime(time_t t, glong _usec = 0);
-	
-	DateTime & add_days(int days);
-	DateTime & add_hours(int hours);
+  DateTime();
+  explicit DateTime(time_t t, glong _usec = 0);
+  
+  DateTime & add_days(int days);
+  DateTime & add_hours(int hours);
 
   int year() const;
   int day_of_year() const;
 
-	bool is_valid() const;
-	bool operator>(const DateTime & dt) const;
+  bool is_valid() const;
+  bool operator>(const DateTime & dt) const;
 
   std::string to_string(const char * format) const;
   std::string to_short_time_string() const;
   std::string to_iso8601() const;
 
-	static DateTime now();
+  static DateTime now();
   static DateTime from_iso8601(const std::string &);
   static int compare(const DateTime &, const DateTime &);
 
@@ -73,9 +73,9 @@ public:
 private:
   // return the string formatted according to strftime
   std::string _to_string(const char * format, struct tm *) const;
-	// implementation detail. really make public if needed.
-	explicit DateTime(const GTimeVal & v);
-	GTimeVal m_date;
+  // implementation detail. really make public if needed.
+  explicit DateTime(const GTimeVal & v);
+  GTimeVal m_date;
 };
 
 

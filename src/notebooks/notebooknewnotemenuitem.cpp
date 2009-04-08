@@ -47,25 +47,25 @@ namespace gnote {
     void NotebookNewNoteMenuItem::on_activated()
     {
       if (!m_notebook) {
-				return;
+        return;
       }
-			
-			// Look for the template note and create a new note
+      
+      // Look for the template note and create a new note
       Note::Ptr templateNote = m_notebook->get_template_note ();
       Note::Ptr note;
-			
-			NoteManager & noteManager(Gnote::obj().default_note_manager());
-			note = noteManager.create ();
-			if (templateNote) {
-				// Use the body from the template note
+      
+      NoteManager & noteManager(Gnote::obj().default_note_manager());
+      note = noteManager.create ();
+      if (templateNote) {
+        // Use the body from the template note
         std::string xmlContent = sharp::string_replace_all(templateNote->xml_content(), 
                                                            templateNote->get_title(), 
                                                            note->get_title());
-				note->set_xml_content(xmlContent);
-			}
-			
-			note->add_tag (m_notebook->get_tag());
-			note->get_window()->show ();
+        note->set_xml_content(xmlContent);
+      }
+      
+      note->add_tag (m_notebook->get_tag());
+      note->get_window()->show ();
     }
 
 

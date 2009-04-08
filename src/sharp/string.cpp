@@ -41,23 +41,23 @@
 namespace sharp {
 
 
-	std::string string_replace_first(const std::string & source, const std::string & from,
-														 const std::string & with)
-	{
-		return boost::replace_first_copy(source, from, with);
-	}
+  std::string string_replace_first(const std::string & source, const std::string & from,
+                             const std::string & with)
+  {
+    return boost::replace_first_copy(source, from, with);
+  }
 
-	std::string string_replace_all(const std::string & source, const std::string & from,
-																 const std::string & with)
-	{
-		return boost::replace_all_copy(source, from, with);
-	}
+  std::string string_replace_all(const std::string & source, const std::string & from,
+                                 const std::string & with)
+  {
+    return boost::replace_all_copy(source, from, with);
+  }
 
-	std::string string_replace_regex(const std::string & source, const std::string & regex,
-																	 const std::string & with)
-	{
-		return boost::replace_regex_copy(source, boost::regex(regex), with);
-	}
+  std::string string_replace_regex(const std::string & source, const std::string & regex,
+                                   const std::string & with)
+  {
+    return boost::replace_regex_copy(source, boost::regex(regex), with);
+  }
   
   bool string_match_iregex(const std::string & source, const std::string & regex)  
   {
@@ -66,16 +66,16 @@ namespace sharp {
                                            | boost::regex::icase));
   }
 
-	void string_split(std::vector<std::string> & split, const std::string & source,
-										const char * delimiters)
-	{
-		boost::split(split, source, boost::is_any_of(delimiters));
-	}
-
-	void ustring_split(std::vector<Glib::ustring> & split, const Glib::ustring & source,
-										const char * delimiters)
+  void string_split(std::vector<std::string> & split, const std::string & source,
+                    const char * delimiters)
   {
-		boost::split(split, source, boost::is_any_of(delimiters));
+    boost::split(split, source, boost::is_any_of(delimiters));
+  }
+
+  void ustring_split(std::vector<Glib::ustring> & split, const Glib::ustring & source,
+                    const char * delimiters)
+  {
+    boost::split(split, source, boost::is_any_of(delimiters));
   }
 
   std::string string_substring(const std::string & source, int start)
@@ -92,25 +92,25 @@ namespace sharp {
     return std::string(source.begin() + start, source.begin() + start + len);
   }
 
-	std::string string_trim(const std::string & source)
-	{
-		return boost::trim_copy(source);
-	}	
+  std::string string_trim(const std::string & source)
+  {
+    return boost::trim_copy(source);
+  }  
 
-	std::string string_trim(const std::string & source, const char * set_of_char)
-	{
-		return boost::trim_copy_if(source, boost::is_any_of(set_of_char));
-	}
+  std::string string_trim(const std::string & source, const char * set_of_char)
+  {
+    return boost::trim_copy_if(source, boost::is_any_of(set_of_char));
+  }
 
-	bool string_starts_with(const std::string & source, const std::string & with)
-	{
-		return boost::starts_with(source, with);
-	}
+  bool string_starts_with(const std::string & source, const std::string & with)
+  {
+    return boost::starts_with(source, with);
+  }
 
-	bool string_ends_with(const std::string & source, const std::string & with)
-	{
-		return boost::ends_with(source, with);
-	}
+  bool string_ends_with(const std::string & source, const std::string & with)
+  {
+    return boost::ends_with(source, with);
+  }
 
 
   bool string_contains(const std::string & source, const std::string &search)
@@ -158,9 +158,9 @@ namespace sharp {
   }
 
 
-	std::string string_to_lower(const std::string & source)
-	{
-		return boost::to_lower_copy(source);
-	}
+  std::string string_to_lower(const std::string & source)
+  {
+    return boost::to_lower_copy(source);
+  }
 
 }

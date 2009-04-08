@@ -58,7 +58,7 @@ namespace gnote {
 
 
 
-	NoteRecentChanges *NoteRecentChanges::get_instance(NoteManager& m)
+  NoteRecentChanges *NoteRecentChanges::get_instance(NoteManager& m)
   {
     if(!s_instance) {
       s_instance = new NoteRecentChanges(m);
@@ -144,7 +144,7 @@ namespace gnote {
     hbox->pack_start (*image, false, false, 4);
     hbox->pack_start (*table, true, true, 0);
     hbox->show_all ();
-						
+            
     // Notebooks Pane
     Gtk::Widget *notebooksPane = Gtk::manage(make_notebooks_pane ());
     notebooksPane->show ();
@@ -261,33 +261,33 @@ namespace gnote {
 
   Gtk::Widget *NoteRecentChanges::make_notebooks_pane()
   {
-  	m_notebooksTree = Gtk::manage(
+    m_notebooksTree = Gtk::manage(
       new notebooks::NotebooksTreeView (notebooks::NotebookManager::instance()
                                         .get_notebooks_with_special_items()));
 
     m_notebooksTree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);
     m_notebooksTree->set_headers_visible(true);
     m_notebooksTree->set_rules_hint(false);
-			
+      
     Gtk::CellRenderer *renderer;
-			
+      
     Gtk::TreeViewColumn *column = manage(new Gtk::TreeViewColumn ());
     column->set_title(_("Notebooks"));
     column->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
     column->set_resizable(false);
-			
+      
     renderer = manage(new Gtk::CellRendererPixbuf ());
     column->pack_start (*renderer, false);
     column->set_cell_data_func (*renderer,
                                 sigc::mem_fun(*this, &NoteRecentChanges::notebook_pixbuf_cell_data_func));
-			
+      
     renderer = manage(new Gtk::CellRendererText ());
     column->pack_start (*renderer, true);
     column->set_cell_data_func (*renderer,
                                 sigc::mem_fun(*this, &NoteRecentChanges::notebook_text_cell_data_func));
-			
+      
     m_notebooksTree->append_column (*column);
-			
+      
     m_notebooksTree->signal_row_activated()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebook_row_activated));
     m_on_notebook_selection_changed_cid = m_notebooksTree->get_selection()->signal_changed()
@@ -296,7 +296,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebooks_tree_button_pressed));
     m_notebooksTree->signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebooks_key_pressed));
-			
+      
     m_notebooksTree->show ();
     Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow ();
     sw->property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
@@ -304,7 +304,7 @@ namespace gnote {
     sw->set_shadow_type(Gtk::SHADOW_IN);
     sw->add (*m_notebooksTree);
     sw->show ();
-			
+      
     return sw;
   }
 
@@ -464,43 +464,43 @@ namespace gnote {
 
   void NoteRecentChanges::perform_search ()
   {
-    	// For some reason, the matches column must be rebuilt
-			// every time because otherwise, it's not sortable.
-			remove_matches_column ();
-			Search search(m_manager);
+      // For some reason, the matches column must be rebuilt
+      // every time because otherwise, it's not sortable.
+      remove_matches_column ();
+      Search search(m_manager);
 
       std::string text = get_search_text();
-			if (text.empty()) {
-				m_current_matches.clear ();
-				m_store_filter->refilter ();
-				update_total_note_count (m_store_sort->children().size());
-				if (m_tree->is_realized()) {
-					m_tree->scroll_to_point (0, 0);
+      if (text.empty()) {
+        m_current_matches.clear ();
+        m_store_filter->refilter ();
+        update_total_note_count (m_store_sort->children().size());
+        if (m_tree->is_realized()) {
+          m_tree->scroll_to_point (0, 0);
         }
-				return;
-			}
-			if (!m_case_sensitive.get_active())
-				text = sharp::string_to_lower(text);
+        return;
+      }
+      if (!m_case_sensitive.get_active())
+        text = sharp::string_to_lower(text);
 
-			m_current_matches.clear ();
-			
-			// Search using the currently selected notebook
+      m_current_matches.clear ();
+      
+      // Search using the currently selected notebook
       notebooks::Notebook::Ptr selected_notebook = get_selected_notebook ();
-			if (std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(selected_notebook)) {
-				selected_notebook = notebooks::Notebook::Ptr();
-			}
+      if (std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(selected_notebook)) {
+        selected_notebook = notebooks::Notebook::Ptr();
+      }
 
       Search::ResultsPtr results =
-				search.search_notes(text, m_case_sensitive.get_active(), selected_notebook);
+        search.search_notes(text, m_case_sensitive.get_active(), selected_notebook);
       for(Search::Results::const_iterator iter = results->begin();
           iter != results->end(); ++iter) {
-				m_current_matches[iter->first->uri()] = iter->second;
-			}
-			
-			add_matches_column ();
-			m_store_filter->refilter ();
-			m_tree->scroll_to_point (0, 0);
-			update_match_note_count (m_current_matches.size());
+        m_current_matches[iter->first->uri()] = iter->second;
+      }
+      
+      add_matches_column ();
+      m_store_filter->refilter ();
+      m_tree->scroll_to_point (0, 0);
+      update_match_note_count (m_current_matches.size());
   }
 
 
@@ -641,15 +641,15 @@ namespace gnote {
     return passes_tag_filter && passes_search_filter;
     // return true;
   }
-		
+    
 #if 0 // TODO seems to be unused
   bool NoteRecentChanges::filter_tags(const Gtk::TreeIter & iter)
   {
-    	Tag t = model.GetValue (iter, 0 /* note */) as Tag;
-						if(t.IsProperty || t.IsSystem)
-							return false;
-						
-						return true;
+      Tag t = model.GetValue (iter, 0 /* note */) as Tag;
+            if(t.IsProperty || t.IsSystem)
+              return false;
+            
+            return true;
 
   }
 #endif
@@ -721,7 +721,7 @@ namespace gnote {
     if (selected_notes.empty()) {
       return;
     }
-                	
+                  
     std::string uris;
     for(Note::List::const_iterator iter = selected_notes.begin();
         iter != selected_notes.end(); ++iter) {
@@ -730,11 +730,11 @@ namespace gnote {
       }
       uris += (*iter)->uri();
     }
-                	
+                  
     // FIXME: Gtk.SelectionData has no way to get the
     //        requested target.
     selection_data.set ("text/uri-list", uris.c_str());
-                	
+                  
     if (selected_notes.size() == 1) {
       selection_data.set_text(selected_notes.front()->get_title());
     }
@@ -769,19 +769,19 @@ namespace gnote {
     if (ev->window != m_tree->get_bin_window()->gobj()) {
       return false;
     }
-                	
+                  
     Gtk::TreePath dest_path;
     Gtk::TreeViewColumn *column = NULL;
     int unused;
-                	
+                  
     m_tree->get_path_at_pos (ev->x, ev->y,
                              dest_path, column, unused, unused);
     if (dest_path.empty())
       return false;
-                	
+                  
     m_clickX = ev->x;
     m_clickY = ev->y;
-                	
+                  
     bool retval = false;
 
     switch (ev->type) {
@@ -790,7 +790,7 @@ namespace gnote {
                              (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) != 0) {
         break;
       }
-                		
+                    
       m_tree->get_selection()->unselect_all ();
       m_tree->get_selection()->select(dest_path);
       m_tree->row_activated(dest_path, *column);
@@ -800,14 +800,14 @@ namespace gnote {
         Gtk::Menu *menu = dynamic_cast<Gtk::Menu*>(
           ActionManager::obj().get_widget("/MainWindowContextMenu"));
         popup_context_menu_at_location (menu, ev->x, ev->y);
-                			
+                      
         // Return true so that the base handler won't
         // run, which causes the selection to change to
         // the row that was right-clicked.
         retval = true;
         break;
       }
-                		
+                    
       if (m_tree->get_selection()->is_selected(dest_path) 
           && (ev->state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0) {
         if (column && (ev->button == 1)) {
@@ -817,21 +817,21 @@ namespace gnote {
           m_tree->get_background_area (dest_path, *column, background_area);
           Gdk::Rectangle cell_area;
           m_tree->get_cell_area (dest_path, *column, cell_area);
-                				
+                        
           renderer->activate ((GdkEvent*)ev, *m_tree,
                               dest_path.to_string (),
                               background_area, cell_area,
                               Gtk::CELL_RENDERER_SELECTED);
-                				
+                        
           Gtk::TreeIter iter = m_tree->get_model()->get_iter (dest_path);
           if (iter) {
             m_tree->get_model()->row_changed(dest_path, iter);
           }
         }
-                			
+                      
         retval = true;
       }
-                		
+                    
       break;
     default:
       retval = false;
@@ -848,20 +848,20 @@ namespace gnote {
     else if (ev->window != m_tree->get_bin_window()->gobj()) {
       return false;
     }
-                	
+                  
     bool retval = true;
-                	
+                  
     if (!m_tree->drag_check_threshold(m_clickX, m_clickY, ev->x, ev->y)) {
       return retval;
     }
-                	
+                  
     Gtk::TreePath dest_path;
     Gtk::TreeViewColumn * col = NULL; // unused
     int cell_x, cell_y;               // unused
     if (!m_tree->get_path_at_pos (ev->x, ev->y, dest_path, col, cell_x, cell_y)) {
       return retval;
     }
-                	
+                  
     m_tree->drag_begin (Gtk::TargetList::create (m_targets),
                         Gdk::ACTION_MOVE, 1, (GdkEvent*)ev);
     return retval;
@@ -874,7 +874,7 @@ namespace gnote {
                                       ev->x, ev->y) &&
         ((ev->state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0) &&
         m_tree->get_selection()->count_selected_rows () > 1) {
-                		
+                    
       Gtk::TreePath dest_path;
       Gtk::TreeViewColumn * col = NULL; // unused
       int cell_x, cell_y;               // unused
@@ -968,7 +968,7 @@ namespace gnote {
   Note::List NoteRecentChanges::get_selected_notes()
   {
     Note::List selected_notes;
-					
+          
     Glib::ListHandle<Gtk::TreePath, Gtk::TreePath_Traits> selected_rows =
       m_tree->get_selection()->get_selected_rows ();
     for(Glib::ListHandle<Gtk::TreePath, Gtk::TreePath_Traits>::const_iterator iter
@@ -977,10 +977,10 @@ namespace gnote {
       if (!note) {
         continue;
       }
-						
+            
       selected_notes.push_back(note);
     }
-					
+          
     return selected_notes;
   }
 
@@ -1003,7 +1003,7 @@ namespace gnote {
     Note::List selected_notes = get_selected_notes ();
     if (selected_notes.size() != 1)
       return;
-                	
+                  
     selected_notes.front()->get_window()->present();
   }
 
@@ -1012,7 +1012,7 @@ namespace gnote {
     Note::List selected_notes = get_selected_notes ();
     if (selected_notes.size() != 1)
       return;
-                	
+                  
     noteutils::show_deletion_dialog(selected_notes, this);
   }
 
@@ -1093,7 +1093,7 @@ namespace gnote {
   {
     // Select "All Notes" in the notebooks list
     select_all_notes_notebook ();
-			
+      
     m_find_combo.get_entry()->grab_focus ();
     utils::ForcedPresentWindow::on_show();
   }
@@ -1273,7 +1273,7 @@ namespace gnote {
     iter->get_value(0, notebook);
     if (!notebook)
       return;
-			
+      
     Gtk::CellRendererPixbuf *crp = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
     if (std::tr1::dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook)) {
       crp->property_pixbuf() = s_all_notes_icon;
@@ -1297,7 +1297,7 @@ namespace gnote {
       crt->property_text() = "";
       return;
     }
-			
+      
     crt->property_text() = notebook->get_name();
 
     if (std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
@@ -1319,7 +1319,7 @@ namespace gnote {
       // Clear out the currently selected tags so that no notebook is selected
       m_selected_tags.clear ();
 
-				
+        
       // Select the "All Notes" item without causing
       // this handler to be called again
       m_on_notebook_selection_changed_cid.block();
@@ -1339,21 +1339,21 @@ namespace gnote {
         am["DeleteNotebookAction"]->set_sensitive(true);
       }
     }
-			
+      
     update_results ();
   }
-		
+    
   void NoteRecentChanges::on_new_notebook()
   {
     notebooks::NotebookManager::prompt_create_new_notebook (this);
   }
-		
+    
   void NoteRecentChanges::on_delete_notebook()
   {
     notebooks::Notebook::Ptr notebook = get_selected_notebook ();
     if (notebook)
       return;
-			
+      
     notebooks::NotebookManager::prompt_delete_notebook (this, notebook);
   }
 
@@ -1373,11 +1373,11 @@ namespace gnote {
       ActionManager::obj()["NewNoteAction"]->activate ();
       return;
     }
-			
+      
     // Look for the template note and create a new note
     Note::Ptr templateNote = notebook->get_template_note ();
     Note::Ptr note;
-			
+      
     note = m_manager.create ();
     if (templateNote) {
       // Use the body from the template note
@@ -1386,28 +1386,28 @@ namespace gnote {
                                                            note->get_title());
       note->set_xml_content(xmlContent);
     }
-			
+      
     note->add_tag(notebook->get_tag());
     note->get_window()->show ();
   }
-		
+    
   void NoteRecentChanges::on_open_notebook_template_note()
   {
     notebooks::Notebook::Ptr notebook = get_selected_notebook ();
     if (!notebook)
       return;
-			
+      
     Note::Ptr templateNote = notebook->get_template_note ();
     if (!templateNote)
       return; // something seriously went wrong
-			
+      
     templateNote->get_window()->present ();
   }
-		
+    
   notebooks::Notebook::Ptr NoteRecentChanges::get_selected_notebook ()
   {
     Gtk::TreeIter iter;
-			
+      
     Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooksTree->get_selection();
     if (!selection) {
       return notebooks::Notebook::Ptr();
@@ -1416,12 +1416,12 @@ namespace gnote {
     if(!iter) {
       return notebooks::Notebook::Ptr(); // Nothing selected
     }
-			
+      
     notebooks::Notebook::Ptr notebook;
     iter->get_value(0, notebook);
     return notebook;
   }
-		
+    
   void NoteRecentChanges::select_all_notes_notebook ()
   {
     Glib::RefPtr<Gtk::TreeModel> model = m_notebooksTree->get_model();
@@ -1443,7 +1443,7 @@ namespace gnote {
       notebooks::Notebook::Ptr notebook = get_selected_notebook ();
       if (!notebook)
         return true; // Don't pop open a submenu
-					
+          
       Gtk::TreePath p;
 
       bool rowClicked = true;
@@ -1467,7 +1467,7 @@ namespace gnote {
         menu = dynamic_cast<Gtk::Menu*>(ActionManager::obj().get_widget (
                                           "/NotebooksTreeNoRowContextMenu"));
       }
-					
+          
       popup_context_menu_at_location (menu,
                                       ev->x, ev->y);
       return true;
@@ -1488,7 +1488,7 @@ namespace gnote {
       notebooks::Notebook::Ptr notebook = get_selected_notebook ();
       if (!notebook || std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook))
         return true; // Don't pop open a submenu
-					
+          
       Gtk::Menu *menu = dynamic_cast<Gtk::Menu *>(ActionManager::obj().get_widget (
                                                     "/NotebooksTreeContextMenu"));
       popup_context_menu_at_location (menu, 0, 0);
@@ -1497,13 +1497,13 @@ namespace gnote {
     }
     return false;
   }
-		
+    
   void NoteRecentChanges::on_note_added_to_notebook (const Note & , 
                                                      const notebooks::Notebook::Ptr & )
   {
     update_results ();
   }
-		
+    
   void NoteRecentChanges::on_note_removed_to_notebook (const Note & , 
                                                        const notebooks::Notebook::Ptr & )
   {
@@ -1541,7 +1541,7 @@ namespace gnote {
 
     get_position(x, y);
     get_size(width, height);
-		 
+     
     Preferences & prefs(Preferences::obj());
     prefs.set<int> (Preferences::SEARCH_WINDOW_X_POS, x);
     prefs.set<int> (Preferences::SEARCH_WINDOW_Y_POS, y);
@@ -1557,12 +1557,12 @@ namespace gnote {
     int y = prefs.get<int> (Preferences::SEARCH_WINDOW_Y_POS);
     int width = prefs.get<int> (Preferences::SEARCH_WINDOW_WIDTH);
     int height = prefs.get<int> (Preferences::SEARCH_WINDOW_HEIGHT);
-        	
+          
 
     if((width == 0) || (height == 0)) {
       return;
     }
-        	
+          
     set_default_size(width, height);
     move (x, y);
   }

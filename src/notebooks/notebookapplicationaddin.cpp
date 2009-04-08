@@ -56,48 +56,48 @@ namespace gnote {
 
 
 
-    static const char * uixml = "					<ui>"
-					"	<menubar name='MainWindowMenubar'>"
-					"		<menu name='FileMenu' action='FileMenuAction'>"
-					"			<placeholder name='FileMenuNewNotePlaceholder'>"
-					"				<menuitem name='NewNotebookMenu' action='NewNotebookMenuAction' />"
-					"			</placeholder>"
-					"		</menu>"
-					"		<menu name='EditMenu' action='EditMenuAction'>"
-					"			<placeholder name='EditMenuDeletePlaceholder'>"
-					"			    <menuitem name='DeleteNotebook' action='DeleteNotebookAction' position='bottom'/>"
-					"			</placeholder>"
-					"		</menu>"
-					"	</menubar>"
-					"	<popup name='NotebooksTreeContextMenu' action='NotebooksTreeContextMenuAction'>"
-					"		<menuitem name='NewNotebookNote' action='NewNotebookNoteAction' />"
-					"		<separator />"
-					"		<menuitem name='OpenNotebookTemplateNote' action='OpenNotebookTemplateNoteAction' />"
-					"		<menuitem name='DeleteNotebook' action='DeleteNotebookAction' />"
-					"	</popup>"
-					"	<popup name='NotebooksTreeNoRowContextMenu' action='NotebooksTreeNoRowContextMenuAction'>"
-					"		<menuitem name='NewNotebook' action='NewNotebookAction' />"
-					"	</popup>"
-					"	<popup name='TrayIconMenu' action='TrayIconMenuAction'>"
-					"		<placeholder name='TrayNewNotePlaceholder'>"
-					"			<menuitem name='TrayNewNotebookMenu' action='TrayNewNotebookMenuAction' position='top' />"
-					"		</placeholder>"
-					"	</popup>"
-					"</ui>";
+    static const char * uixml = "          <ui>"
+          "  <menubar name='MainWindowMenubar'>"
+          "    <menu name='FileMenu' action='FileMenuAction'>"
+          "      <placeholder name='FileMenuNewNotePlaceholder'>"
+          "        <menuitem name='NewNotebookMenu' action='NewNotebookMenuAction' />"
+          "      </placeholder>"
+          "    </menu>"
+          "    <menu name='EditMenu' action='EditMenuAction'>"
+          "      <placeholder name='EditMenuDeletePlaceholder'>"
+          "          <menuitem name='DeleteNotebook' action='DeleteNotebookAction' position='bottom'/>"
+          "      </placeholder>"
+          "    </menu>"
+          "  </menubar>"
+          "  <popup name='NotebooksTreeContextMenu' action='NotebooksTreeContextMenuAction'>"
+          "    <menuitem name='NewNotebookNote' action='NewNotebookNoteAction' />"
+          "    <separator />"
+          "    <menuitem name='OpenNotebookTemplateNote' action='OpenNotebookTemplateNoteAction' />"
+          "    <menuitem name='DeleteNotebook' action='DeleteNotebookAction' />"
+          "  </popup>"
+          "  <popup name='NotebooksTreeNoRowContextMenu' action='NotebooksTreeNoRowContextMenuAction'>"
+          "    <menuitem name='NewNotebook' action='NewNotebookAction' />"
+          "  </popup>"
+          "  <popup name='TrayIconMenu' action='TrayIconMenuAction'>"
+          "    <placeholder name='TrayNewNotePlaceholder'>"
+          "      <menuitem name='TrayNewNotebookMenu' action='TrayNewNotebookMenuAction' position='top' />"
+          "    </placeholder>"
+          "  </popup>"
+          "</ui>";
 
     void NotebookApplicationAddin::initialize ()
     {
       m_actionGroup = Glib::RefPtr<Gtk::ActionGroup>(Gtk::ActionGroup::create("Notebooks"));
-			m_actionGroup->add(
+      m_actionGroup->add(
         Gtk::Action::create ("NewNotebookMenuAction", Gtk::Stock::NEW,
                              _("Note_books"),
                              _("Create a new note in a notebook")));
-				
+        
       m_actionGroup->add(     
         Gtk::Action::create ("NewNotebookAction", Gtk::Stock::NEW,
                              _("New Note_book..."),
                              _("Create a new notebook")));
-					
+          
       m_actionGroup->add(     
         Gtk::Action::create ("NewNotebookNoteAction", Gtk::Stock::NEW,
                              _("_New Note"),
@@ -107,7 +107,7 @@ namespace gnote {
         Gtk::Action::create ("OpenNotebookTemplateNoteAction", Gtk::Stock::OPEN,
                              _("_Open Template Note"),
                              _("Open this notebook's template note")));
-					
+          
       m_actionGroup->add(  
         Gtk::Action::create ("DeleteNotebookAction", Gtk::Stock::DELETE,
                              _("Delete Note_book"),
@@ -119,66 +119,66 @@ namespace gnote {
                              _("Create a new note in a notebook")));
           
       ActionManager & am(ActionManager::obj());
-			m_notebookUi = am.get_ui()->add_ui_from_string (uixml);
-			
+      m_notebookUi = am.get_ui()->add_ui_from_string (uixml);
+      
       am.get_ui()->insert_action_group (m_actionGroup, 0);
-			
-			Gtk::MenuItem *item = dynamic_cast<Gtk::MenuItem*>(
+      
+      Gtk::MenuItem *item = dynamic_cast<Gtk::MenuItem*>(
         am.get_widget ("/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNotebookMenu"));
-			if (item) {
+      if (item) {
         Gtk::ImageMenuItem *image_item = dynamic_cast<Gtk::ImageMenuItem*>(item);
-				if (image_item) {
-					image_item->set_image(*manage(new Gtk::Image(m_notebookIcon)));
-				}
-				m_trayNotebookMenu = manage(new Gtk::Menu());
-				item->set_submenu(*m_trayNotebookMenu);
-				
-				m_trayNotebookMenu->signal_show()
+        if (image_item) {
+          image_item->set_image(*manage(new Gtk::Image(m_notebookIcon)));
+        }
+        m_trayNotebookMenu = manage(new Gtk::Menu());
+        item->set_submenu(*m_trayNotebookMenu);
+        
+        m_trayNotebookMenu->signal_show()
           .connect(sigc::mem_fun(*this, 
                                  &NotebookApplicationAddin::on_tray_notebook_menu_shown));
         m_trayNotebookMenu->signal_hide()
           .connect(sigc::mem_fun(*this, 
                                  &NotebookApplicationAddin::on_tray_notebook_menu_hidden));
-			}
-			
-			Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
+      }
+      
+      Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
         am.get_widget ("/MainWindowMenubar/FileMenu/FileMenuNewNotePlaceholder/NewNotebookMenu"));
       if (imageitem) {
         imageitem->set_image(*manage(new Gtk::Image(m_notebookIcon)));
         m_mainWindowNotebookMenu = manage(new Gtk::Menu ());
         imageitem->set_submenu(*m_mainWindowNotebookMenu);
 
-				m_mainWindowNotebookMenu->signal_show()
+        m_mainWindowNotebookMenu->signal_show()
           .connect(sigc::mem_fun(*this, 
                                  &NotebookApplicationAddin::on_new_notebook_menu_shown));
 
-				m_mainWindowNotebookMenu->signal_hide()
+        m_mainWindowNotebookMenu->signal_hide()
           .connect(sigc::mem_fun(*this, 
                                  &NotebookApplicationAddin::on_new_notebook_menu_hidden));
-			}
+      }
       imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
         am.get_widget ("/NotebooksTreeContextMenu/NewNotebookNote"));
-			if (imageitem) {
+      if (imageitem) {
         imageitem->set_image(*manage(new Gtk::Image(am.get_new_note())));
-			}
+      }
 
       NoteManager & nm(Gnote::obj().default_note_manager());
-			
+      
       for(Note::List::const_iterator iter = nm.get_notes().begin();
           iter != nm.get_notes().end(); ++iter) {
         const Note::Ptr & note(*iter);
-				note->signal_tag_added().connect(
+        note->signal_tag_added().connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_added));
-				note->signal_tag_removed().connect(
+        note->signal_tag_removed().connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_removed));
       }
-			 
+       
       nm.signal_note_added.connect(
         sigc::mem_fun(*this, &NotebookApplicationAddin::on_note_added));
       nm.signal_note_deleted.connect(
         sigc::mem_fun(*this, &NotebookApplicationAddin::on_note_deleted));
-				
-			m_initialized = true;
+        
+      m_initialized = true;
     }
 
 
@@ -187,27 +187,27 @@ namespace gnote {
       ActionManager & am(ActionManager::obj());
       try {
         am.get_ui()->remove_action_group(m_actionGroup);
-			} 
+      } 
       catch (...)
       {
       }
-			try {
+      try {
         am.get_ui()->remove_ui(m_notebookUi);
-			} 
+      } 
       catch (...)
       {
       }
       m_notebookUi = 0;
-			
-			if (m_trayNotebookMenu) {
+      
+      if (m_trayNotebookMenu) {
         delete m_trayNotebookMenu;
-			}
-			
-			if (m_mainWindowNotebookMenu) {
+      }
+      
+      if (m_mainWindowNotebookMenu) {
         delete m_mainWindowNotebookMenu;
-			}
+      }
 
-			m_initialized = false;
+      m_initialized = false;
     }
     
     bool NotebookApplicationAddin::initialized ()
@@ -241,31 +241,31 @@ namespace gnote {
     void NotebookApplicationAddin::add_menu_items(Gtk::Menu * menu,   
                                                   std::list<Gtk::MenuItem*> & menu_items)
     {
-      remove_menu_items (menu, menu_items);			
+      remove_menu_items (menu, menu_items);      
 
-			NotebookNewNoteMenuItem *item;
+      NotebookNewNoteMenuItem *item;
 
       Glib::RefPtr<Gtk::TreeModel> model = NotebookManager::instance().get_notebooks();
-			Gtk::TreeIter iter;
-			
-			// Add in the "New Notebook..." menu item
-			Gtk::ImageMenuItem *newNotebookMenuItem =
-				manage(new Gtk::ImageMenuItem (_("New Note_book..."), true));
-			newNotebookMenuItem->set_image(*manage(new Gtk::Image (m_newNotebookIcon)));
-			newNotebookMenuItem->signal_activate()
+      Gtk::TreeIter iter;
+      
+      // Add in the "New Notebook..." menu item
+      Gtk::ImageMenuItem *newNotebookMenuItem =
+        manage(new Gtk::ImageMenuItem (_("New Note_book..."), true));
+      newNotebookMenuItem->set_image(*manage(new Gtk::Image (m_newNotebookIcon)));
+      newNotebookMenuItem->signal_activate()
         .connect(sigc::mem_fun(*this, &NotebookApplicationAddin::on_new_notebook_menu_item));
-			newNotebookMenuItem->show_all ();
-			menu->append (*newNotebookMenuItem);
+      newNotebookMenuItem->show_all ();
+      menu->append (*newNotebookMenuItem);
       menu_items.push_back(newNotebookMenuItem);
 
-			
-			if (model->children().size() > 0) {
-				Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem ());
-				separator->show_all ();
-				menu->append (*separator);
+      
+      if (model->children().size() > 0) {
+        Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem ());
+        separator->show_all ();
+        menu->append (*separator);
         menu_items.push_back(separator);
-				
-				iter = model->children().begin();
+        
+        iter = model->children().begin();
         while (iter) {
           Notebook::Ptr notebook;
           iter->get_value(0, notebook);
@@ -274,8 +274,8 @@ namespace gnote {
           menu->append (*item);
           menu_items.push_back(item);
           iter++;
-				}
-			}
+        }
+      }
     }
 
     void NotebookApplicationAddin::remove_menu_items(Gtk::Menu * menu, 
@@ -298,21 +298,21 @@ namespace gnote {
     void NotebookApplicationAddin::on_tag_added(const Note & note, const Tag::Ptr& tag)
     {
       if (NotebookManager::instance().is_adding_notebook()) {
-				return;
-			}
+        return;
+      }
       
       std::string megaPrefix(Tag::SYSTEM_TAG_PREFIX);
       megaPrefix += Notebook::NOTEBOOK_TAG_PREFIX;
-			if (!tag->is_system() || !sharp::string_starts_with(tag->name(), megaPrefix)) {
-				return;
-			}
-			
+      if (!tag->is_system() || !sharp::string_starts_with(tag->name(), megaPrefix)) {
+        return;
+      }
+      
       std::string notebookName =
-				sharp::string_substring(tag->name(), megaPrefix.size());
-			
+        sharp::string_substring(tag->name(), megaPrefix.size());
+      
       Notebook::Ptr notebook =
-				NotebookManager::instance().get_or_create_notebook (notebookName);
-				
+        NotebookManager::instance().get_or_create_notebook (notebookName);
+        
       NotebookManager::instance().signal_note_added_to_notebook() (note, notebook);
     }
 
@@ -324,27 +324,27 @@ namespace gnote {
       std::string megaPrefix(Tag::SYSTEM_TAG_PREFIX);
       megaPrefix += Notebook::NOTEBOOK_TAG_PREFIX;
 
-			if (!sharp::string_starts_with(normalizedTagName, megaPrefix)) {
-				return;
+      if (!sharp::string_starts_with(normalizedTagName, megaPrefix)) {
+        return;
       }
-			
+      
       std::string normalizedNotebookName =
-				sharp::string_substring(normalizedTagName, megaPrefix.size());
-			
+        sharp::string_substring(normalizedTagName, megaPrefix.size());
+      
       Notebook::Ptr notebook =
-				NotebookManager::instance().get_notebook (normalizedNotebookName);
-			if (!notebook) {
-				return;
+        NotebookManager::instance().get_notebook (normalizedNotebookName);
+      if (!notebook) {
+        return;
       }
-			
+      
       NotebookManager::instance().signal_note_removed_from_notebook() (*note, notebook);
     }
 
     void NotebookApplicationAddin::on_note_added(const Note::Ptr & note)
     {
-				note->signal_tag_added().connect(
+        note->signal_tag_added().connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_added));
-				note->signal_tag_removed().connect(
+        note->signal_tag_removed().connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_removed));
     }
 

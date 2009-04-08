@@ -55,7 +55,7 @@ namespace gnote {
                              const Glib::RefPtr<Gtk::TextBuffer> & buffer)
   {
     Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
-		for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
         tag_iter != tag_list.end(); ++tag_iter) {
       const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
       NoteTag::ConstPtr noteTag = NoteTag::ConstPtr::cast_dynamic(tag);

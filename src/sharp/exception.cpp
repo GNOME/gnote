@@ -30,14 +30,14 @@
 
 namespace sharp {
 
-	Exception::~Exception() throw()
-	{
-	}
+  Exception::~Exception() throw()
+  {
+  }
 
-	const char *Exception::what() const throw()
-	{
-		return m_what.c_str();
-	}
+  const char *Exception::what() const throw()
+  {
+    return m_what.c_str();
+  }
 
 }
 

@@ -42,76 +42,76 @@ class Gnote
   : public base::Singleton<Gnote>
 {
 public:
-	Gnote();
-	~Gnote();
-	int main(int argc, char **argv);
-	std::string get_note_path(const std::string & override_path);
-	NoteManager & default_note_manager()
-		{
-			return *m_manager;
-		}
+  Gnote();
+  ~Gnote();
+  int main(int argc, char **argv);
+  std::string get_note_path(const std::string & override_path);
+  NoteManager & default_note_manager()
+    {
+      return *m_manager;
+    }
   IKeybinder & keybinder()
     {
       return *m_keybinder;
     }
 
-	void setup_global_actions();
-	void start_tray_icon();
-	bool check_tray_icon_showing();
+  void setup_global_actions();
+  void start_tray_icon();
+  bool check_tray_icon_showing();
 
-	void on_new_note_action();
-	void on_quit_gnote_action();
-	void on_preferences_response(int res);
-	void on_show_preferences_action();
-	void on_show_help_action();
-	void on_show_about_action();
-	void open_search_all();
-	void open_note_sync_window();
+  void on_new_note_action();
+  void on_quit_gnote_action();
+  void on_preferences_response(int res);
+  void on_show_preferences_action();
+  void on_show_help_action();
+  void on_show_about_action();
+  void open_search_all();
+  void open_note_sync_window();
 
-	static std::string conf_dir();
+  static std::string conf_dir();
   static bool tray_icon_showing()
     {
       return s_tray_icon_showing;
     }
 private:
-	NoteManager *m_manager;
+  NoteManager *m_manager;
   IKeybinder  *m_keybinder;
-	Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
-	static bool s_tray_icon_showing;
-	Glib::RefPtr<TrayIcon> m_tray_icon;
+  Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
+  static bool s_tray_icon_showing;
+  Glib::RefPtr<TrayIcon> m_tray_icon;
   Tray::Ptr m_tray;
-	bool m_is_panel_applet;
-	PreferencesDialog *m_prefsdlg;
+  bool m_is_panel_applet;
+  PreferencesDialog *m_prefsdlg;
 };
 
 
 class GnoteCommandLine
 {
 public:
-	GnoteCommandLine(int & argc, char **&argv);
-	int execute();
+  GnoteCommandLine(int & argc, char **&argv);
+  int execute();
 
-	const std::string & note_path() const
-		{
-			return m_note_path;
-		}
-	bool        needs_execute() const;
-	bool        use_panel_applet() const
-		{
-			return m_use_panel;
-		}
+  const std::string & note_path() const
+    {
+      return m_note_path;
+    }
+  bool        needs_execute() const;
+  bool        use_panel_applet() const
+    {
+      return m_use_panel;
+    }
 
 private:
-	void parse(int & argc, char **&argv);
+  void parse(int & argc, char **&argv);
 
-	bool        m_new_note;
-	bool        m_open_search;
-	bool        m_open_start_here;
-	bool        m_use_panel;
-	std::string m_open_note_name;
-	std::string m_open_note_uri;
-	std::string m_open_external_note_path;
-	std::string m_note_path;
+  bool        m_new_note;
+  bool        m_open_search;
+  bool        m_open_start_here;
+  bool        m_use_panel;
+  std::string m_open_note_name;
+  std::string m_open_note_uri;
+  std::string m_open_external_note_path;
+  std::string m_note_path;
 };
 
 }

@@ -53,10 +53,10 @@ public:
 class AddinManager
 {
 public:
-	AddinManager(const std::string & conf_dir);
+  AddinManager(const std::string & conf_dir);
   ~AddinManager();
 
-	void load_addins_for_note(const Note::Ptr &);
+  void load_addins_for_note(const Note::Ptr &);
   void get_application_addins(std::list<ApplicationAddin*> &) const;
   /// get_preference_tab_addins();
 

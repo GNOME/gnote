@@ -101,7 +101,7 @@ namespace notebooks {
       Tag::Ptr templateTag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       if (get_note()->contains_tag (templateTag)) {
         m_toolButton->set_sensitive(false);
-				
+        
         // Also prevent notebook templates from being deleted
         if (NotebookManager::instance().get_notebook_from_note (get_note())) {
           get_note()->get_window()->delete_button()->set_sensitive(false);
@@ -173,7 +173,7 @@ namespace notebooks {
     //
     // Build a new menu
     //
-			
+      
     // Add the "New Notebook..."
     Gtk::ImageMenuItem *newNotebookMenuItem =
       manage(new Gtk::ImageMenuItem (_("_New notebook..."), true));
@@ -183,14 +183,14 @@ namespace notebooks {
     newNotebookMenuItem->show ();
     m_menu->append (*newNotebookMenuItem);
     m_menu_items.push_back(newNotebookMenuItem);
-			
+      
     // Add the "(no notebook)" item at the top of the list
     NotebookMenuItem *noNotebookMenuItem = manage(new NotebookMenuItem (m_radio_group,
                                                     get_note(), Notebook::Ptr()));
     noNotebookMenuItem->show_all ();
     m_menu->append (*noNotebookMenuItem);
     m_menu_items.push_back(noNotebookMenuItem);
-			
+      
     // Add in all the real notebooks
     std::list<NotebookMenuItem*> notebookMenuItems;
     get_notebook_menu_items (notebookMenuItems);
@@ -199,7 +199,7 @@ namespace notebooks {
       separator->show_all ();
       m_menu->append (*separator);
       m_menu_items.push_back(separator);
-				
+        
       for(std::list<NotebookMenuItem*>::const_iterator iter = notebookMenuItems.begin();
           iter != notebookMenuItems.end(); ++iter) {
         NotebookMenuItem* item = *iter;
@@ -226,7 +226,7 @@ namespace notebooks {
                                                             get_note(), notebook));
       items.push_back (item);
     }
-			
+      
     items.sort ();
   }
 
