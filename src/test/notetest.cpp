@@ -21,7 +21,8 @@ int test_main(int /*argc*/, char ** /*argv*/)
     BOOST_CHECK(doc2);
     xmlpp::Element * element = doc2->get_root_node();
     element->remove_attribute("xmlns");
-    std::list<std::string> tags = gnote::Note::parse_tags(element);
+    std::list<std::string> tags;
+    gnote::Note::parse_tags(element, tags);
     BOOST_CHECK(!tags.empty());
   }
 
