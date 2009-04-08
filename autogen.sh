@@ -1,52 +1,20 @@
 #!/bin/sh
+# Run this to generate all the initial makefiles, etc.
 
-#
-# part of niepce
-#
+srcdir=`dirname $0`
+test -z "$srcdir" && srcdir=.
 
+PKG_NAME="gnote"
 
-topsrcdir=`dirname $0`
-if test x$topsrcdir = x ; then
-        topsrcdir=.
-fi
+(test -f $srcdir/configure.ac) || {
+    echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
+    echo " top-level $PKG_NAME directory"
+    exit 1
+}
 
-builddir=`pwd`
+which gnome-autogen.sh || {
+    echo "You need to install gnome-common from the GNOME CVS"
+    exit 1
+}
 
-AUTOCONF=autoconf
-if test -x /usr/bin/glibtool ; then
-    LIBTOOL=glibtool
-else
-    LIBTOOL=libtool
-fi
-if test -x /usr/bin/glibtoolize ; then
-    LIBTOOLIZE=glibtoolize
-else
-    LIBTOOLIZE=libtoolize
-fi
-AUTOMAKE=automake
-ACLOCAL=aclocal
-
-cd $topsrcdir
-
-rm -f autogen.err
-$LIBTOOLIZE --force
-$ACLOCAL -I m4 >> autogen.err 2>&1
-
-intltoolize
-
-autoheader --force
-$AUTOCONF
-$AUTOMAKE --add-missing --copy --foreign 
-
-cd $builddir
-
-if test -z "$NOCONFIGURE" ; then 
-	if test -z "$*"; then
-		echo "I am going to run ./configure with --enable-maintainer-mode"
-		echo "If you wish to pass any to it, please specify them on "
-		echo "the $0 command line."
-	fi
-	echo "Running configure..."
-	$topsrcdir/configure --enable-maintainer-mode "$@"
-fi
-
+REQUIRED_AUTOMAKE_VERSION=1.9 USE_GNOME2_MACROS=1 . gnome-autogen.sh

@@ -3,6 +3,10 @@ AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR(README)
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
+
+GNOME_COMMON_INIT
+GNOME_DOC_INIT
+
 AC_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR(m4)
 
@@ -179,6 +183,7 @@ libtomboy/Makefile
 src/Makefile
 po/Makefile.in
 po/Makefile
+help/Makefile
 ])
 
 
