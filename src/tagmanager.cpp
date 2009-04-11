@@ -74,13 +74,12 @@ namespace gnote {
     std::vector<std::string> splits;
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || sharp::string_starts_with(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)) {
-//      lock (locker) {
+      Glib::Mutex::Lock lock(m_locker);
       std::map<std::string, Tag::Ptr>::const_iterator iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
         return iter->second;
       }
       return Tag::Ptr();
-//      }
     }
     std::map<std::string, Gtk::TreeIter>::const_iterator iter = m_tag_map.find(normalized_tag_name);
     if (iter != m_tag_map.end()) {
@@ -106,7 +105,7 @@ namespace gnote {
     std::vector<std::string> splits;
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || sharp::string_starts_with(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)){
-//        lock (locker) {
+      Glib::Mutex::Lock lock(m_locker);
       std::map<std::string, Tag::Ptr>::iterator iter;
       iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
@@ -117,14 +116,14 @@ namespace gnote {
         m_internal_tags [ t->normalized_name() ] = t;
         return t;
       }
-//        }
     }
     Gtk::TreeIter iter;
     bool tag_added = false;
     Tag::Ptr tag = get_tag (normalized_tag_name);
     if (!tag) {
-// -- Hub - WTF do we lookup twice?
-//      lock (locker) {
+
+      Glib::Mutex::Lock lock(m_locker);
+
       tag = get_tag (normalized_tag_name);
       if (!tag) {
         tag.reset(new Tag (sharp::string_trim(tag_name)));
@@ -134,7 +133,6 @@ namespace gnote {
 
         tag_added = true;
       }
-//      }
     }
 
     if (tag_added) {
@@ -185,38 +183,40 @@ namespace gnote {
       throw sharp::Exception ("TagManager.RemoveTag () called with a null tag");
 
     if(tag->is_property() || tag->is_system()){
-//      lock (locker) {
+
+      Glib::Mutex::Lock lock(m_locker);
+
       m_internal_tags.erase(tag->normalized_name());
-//      }
     }
     bool tag_removed = false;
     std::map<std::string, Gtk::TreeIter>::iterator map_iter;
     map_iter = m_tag_map.find(tag->normalized_name());
     if (map_iter != m_tag_map.end()) {
-//      lock (locker) {
-        map_iter = m_tag_map.find(tag->normalized_name());
-        if (map_iter != m_tag_map.end()) {
-          Gtk::TreeIter iter = map_iter->second;
-          if (!m_tags->erase(iter)) {
-            DBG_OUT("TagManager: Removed tag: %s", tag->normalized_name().c_str());
-          } 
-          else { 
-            // FIXME: For some really weird reason, this block actually gets called sometimes!
-            DBG_OUT("TagManager: Call to remove tag from ListStore failed: %s", tag->normalized_name().c_str());
-          }
 
-          m_tag_map.erase(map_iter);
-          DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
-          tag_removed = true;
+      Glib::Mutex::Lock lock(m_locker);
 
-          std::list<Note*> notes;
-          tag->get_notes(notes);
-          for(std::list<Note*>::const_iterator note_iter = notes.begin();
-              note_iter != notes.end(); ++note_iter) {
-            (*note_iter)->remove_tag(tag);
-          }
+      map_iter = m_tag_map.find(tag->normalized_name());
+      if (map_iter != m_tag_map.end()) {
+        Gtk::TreeIter iter = map_iter->second;
+        if (!m_tags->erase(iter)) {
+          DBG_OUT("TagManager: Removed tag: %s", tag->normalized_name().c_str());
+        } 
+        else { 
+          // FIXME: For some really weird reason, this block actually gets called sometimes!
+          DBG_OUT("TagManager: Call to remove tag from ListStore failed: %s", tag->normalized_name().c_str());
         }
-//      }
+
+        m_tag_map.erase(map_iter);
+        DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
+        tag_removed = true;
+
+        std::list<Note*> notes;
+        tag->get_notes(notes);
+        for(std::list<Note*>::const_iterator note_iter = notes.begin();
+            note_iter != notes.end(); ++note_iter) {
+          (*note_iter)->remove_tag(tag);
+        }
+      }
     }
 
     if (tag_removed) {

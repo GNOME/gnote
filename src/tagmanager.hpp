@@ -26,6 +26,7 @@
 
 #include <sigc++/signal.h>
 
+#include <glibmm/thread.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/treemodelsort.h>
 
@@ -67,13 +68,12 @@ private:
   ColumnRecord                     m_columns;
   Glib::RefPtr<Gtk::ListStore>     m_tags;
   Glib::RefPtr<Gtk::TreeModelSort> m_sorted_tags;
-  // <summary>
   // The key for this dictionary is Tag.Name.ToLower ().
-  // </summary>
   typedef std::map<std::string, Gtk::TreeIter> TagMap;
-  TagMap m_tag_map;
+  TagMap                           m_tag_map;
   typedef std::map<std::string, Tag::Ptr> InternalMap;
-  InternalMap m_internal_tags;
+  InternalMap                      m_internal_tags;
+  mutable Glib::Mutex              m_locker;
   
   sigc::signal<void, Tag::Ptr, const Gtk::TreeIter &> m_signal_tag_added;
   sigc::signal<void, const std::string &> m_signal_tag_removed;
