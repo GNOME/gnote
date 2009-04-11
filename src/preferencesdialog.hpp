@@ -62,6 +62,15 @@ private:
   void on_reset_sync_addin_button();
   void on_save_sync_addin_button();
 
+  void on_addin_tree_selection_changed();
+  void update_addin_buttons();
+  void load_addins();
+  void on_enable_addin_button();
+  void on_disable_addin_button();
+  void on_addin_prefs_button();
+  void on_addin_info_button();
+////
+
   class SyncStoreModel
     : public Gtk::TreeModelColumnRecord
   {
@@ -91,10 +100,10 @@ private:
 
   //Mono.Addins.Gui.AddinTreeWidget addin_tree;
   
-  Gtk::Button enable_addin_button;
-  Gtk::Button disable_addin_button;
-  Gtk::Button addin_prefs_button;
-  Gtk::Button addin_info_button;
+  Gtk::Button *enable_addin_button;
+  Gtk::Button *disable_addin_button;
+  Gtk::Button *addin_prefs_button;
+  Gtk::Button *addin_info_button;
 
   Gtk::RadioButton promptOnConflictRadio;
   Gtk::RadioButton renameOnConflictRadio;

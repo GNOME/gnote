@@ -84,8 +84,8 @@ namespace gnote {
 //      }
 //    notebook->append_page (make_sync_pane(),
 //                           _("Synchronization"));
-//    notebook->append_page (make_addins_pane(),
-//                           _("Add-ins"));
+    notebook->append_page (*manage(make_addins_pane()),
+                           _("Add-ins"));
 
       // TODO: Figure out a way to have these be placed in a specific order
 #if 0
@@ -497,86 +497,215 @@ namespace gnote {
 
   // Page 3
   // Extension Preferences
-  Gtk::Widget *make_addins_pane()
+  Gtk::Widget *PreferencesDialog::make_addins_pane()
   {
-#if 0
-    Gtk::VBox *vbox = manage(new Gtk::VBox (false, 6));
-    vbox.BorderWidth = 6;
-    Gtk::Label *l = manage(new Gtk::Label (_(
-                                             "The following add-ins are installed"), true));
-    l.Xalign = 0;
-    l.Show ();
-    vbox.PackStart (l, false, false, 0);
+    Gtk::VBox *vbox = new Gtk::VBox (false, 6);
+    vbox->set_border_width(6);
+    Gtk::Label *l = manage(new Gtk::Label (_("The following add-ins are installed"), 
+                                           true));
+    l->property_xalign() = 0;
+    l->show ();
+    vbox->pack_start(*l, false, false, 0);
 
-    Gtk::HBox hbox = new Gtk::HBox (false, 6);
+    Gtk::HBox *hbox = manage(new Gtk::HBox (false, 6));
 
     // TreeView of Add-ins
-    Gtk::TreeView tree = new Gtk::TreeView ();
-    addin_tree = new Mono.Addins.Gui.AddinTreeWidget (tree);
+    Gtk::TreeView *tree = manage(new Gtk::TreeView ());
+//    addin_tree = new Mono.Addins.Gui.AddinTreeWidget (tree);
 
-    tree.Show ();
+    tree->show ();
 
-    Gtk::ScrolledWindow sw = new Gtk::ScrolledWindow ();
-    sw.HscrollbarPolicy = Gtk::PolicyType.Automatic;
-    sw.VscrollbarPolicy = Gtk::PolicyType.Automatic;
-    sw.ShadowType = Gtk::ShadowType.In;
-    sw.Add (tree);
-    sw.Show ();
-    hbox.PackStart (sw, true, true, 0);
+    Gtk::ScrolledWindow *sw = manage(new Gtk::ScrolledWindow ());
+    sw->property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
+    sw->property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
+    sw->set_shadow_type(Gtk::SHADOW_IN);
+    sw->add (*tree);
+    sw->show ();
+    hbox->pack_start(*sw, true, true, 0);
 
     // Action Buttons (right of TreeView)
-    Gtk::VButtonBox button_box = new Gtk::VButtonBox ();
-    button_box.Spacing = 4;
-    button_box.Layout = Gtk::ButtonBoxStyle.Start;
+    Gtk::VButtonBox *button_box = manage(new Gtk::VButtonBox ());
+    button_box->set_spacing(4);
+    button_box->set_layout(Gtk::BUTTONBOX_START);
 
     // TODO: In a future version, add in an "Install Add-ins..." button
 
     // TODO: In a future version, add in a "Repositories..." button
 
-    enable_addin_button =
-      new Gtk::Button (_("_Enable"));
-    enable_addin_button.Sensitive = false;
-    enable_addin_button.Clicked += OnEnableAddinButton;
-    enable_addin_button.Show ();
+    enable_addin_button = manage(new Gtk::Button (_("_Enable"), true));
+    enable_addin_button->set_sensitive(false);
+    enable_addin_button->signal_clicked().connect(
+      sigc::mem_fun(*this, &PreferencesDialog::on_enable_addin_button));
+    enable_addin_button->show ();
 
-    disable_addin_button =
-      new Gtk::Button (_("_Disable"));
-    disable_addin_button.Sensitive = false;
-    disable_addin_button.Clicked += OnDisableAddinButton;
-    disable_addin_button.Show ();
+    disable_addin_button = manage(new Gtk::Button (_("_Disable"), true));
+    disable_addin_button->set_sensitive(false);
+    disable_addin_button->signal_clicked().connect(
+      sigc::mem_fun(*this, &PreferencesDialog::on_disable_addin_button));
+    disable_addin_button->show ();
 
-    addin_prefs_button =
-      new Gtk::Button (Gtk::Stock.Preferences);
-    addin_prefs_button.Sensitive = false;
-    addin_prefs_button.Clicked += OnAddinPrefsButton;
-    addin_prefs_button.Show ();
+    addin_prefs_button = manage(new Gtk::Button (Gtk::Stock::PREFERENCES));
+    addin_prefs_button->set_sensitive(false);
+    addin_prefs_button->signal_clicked().connect(
+      sigc::mem_fun(*this, &PreferencesDialog::on_addin_prefs_button));
+    addin_prefs_button->show ();
 
-    addin_info_button =
-      new Gtk::Button (Gtk::Stock.Info);
-    addin_info_button.Sensitive = false;
-    addin_info_button.Clicked += OnAddinInfoButton;
-    addin_info_button.Show ();
+    addin_info_button = manage(new Gtk::Button (Gtk::Stock::INFO));
+    addin_info_button->set_sensitive(false);
+    addin_info_button->signal_clicked().connect(
+      sigc::mem_fun(*this, &PreferencesDialog::on_addin_info_button));
+    addin_info_button->show ();
 
-    button_box.PackStart (enable_addin_button);
-    button_box.PackStart (disable_addin_button);
-    button_box.PackStart (addin_prefs_button);
-    button_box.PackStart (addin_info_button);
+    button_box->pack_start(*enable_addin_button);
+    button_box->pack_start(*disable_addin_button);
+    button_box->pack_start(*addin_prefs_button);
+    button_box->pack_start(*addin_info_button);
 
-    button_box.Show ();
-    hbox.PackStart (button_box, false, false, 0);
+    button_box->show ();
+    hbox->pack_start(*button_box, false, false, 0);
 
-    hbox.Show ();
-    vbox.PackStart (hbox, true, true, 0);
-    vbox.Show ();
+    hbox->show ();
+    vbox->pack_start(*hbox, true, true, 0);
+    vbox->show ();
 
-    tree.Selection.Changed += OnAddinTreeSelectionChanged;
-    LoadAddins ();
+    tree->get_selection()->signal_changed().connect(
+      sigc::mem_fun(*this, &PreferencesDialog::on_addin_tree_selection_changed));
+    load_addins ();
 
     return vbox;
-#endif
-    return NULL;
   }
 
+
+  void PreferencesDialog::on_addin_tree_selection_changed()
+  {
+    update_addin_buttons();
+  }
+
+
+  /// Set the sensitivity of the buttons based on what is selected
+  void PreferencesDialog::update_addin_buttons()
+  {
+    /// TODO really set
+    enable_addin_button->set_sensitive(false);
+    disable_addin_button->set_sensitive(false);
+    addin_prefs_button->set_sensitive(false);
+    addin_info_button->set_sensitive(false);
+  }
+
+
+  void PreferencesDialog::load_addins()
+  {
+    ///// TODO populate
+
+    update_addin_buttons();
+  }
+
+
+  void PreferencesDialog::on_enable_addin_button()
+  {
+//    enable_addin(true);
+  }
+
+  void PreferencesDialog::on_disable_addin_button()
+  {
+//    enable_addin(false);
+  }
+
+
+  void PreferencesDialog::on_addin_prefs_button()
+  {
+#if 0
+    Gtk::Dialog dialog = null;
+//    Mono.Addins.Addin addin =
+//      addin_tree.ActiveAddinData as Mono.Addins.Addin;
+    if (addin == null)
+      return;
+
+    if (addin_prefs_dialogs.ContainsKey (addin.Id) == false) {
+      // A preference dialog isn't open already so create a new one
+      Gtk::Image icon =
+        new Gtk::Image (Gtk::Stock::PREFERENCES, Gtk::IconSize.Dialog);
+      Gtk::Label caption = new Gtk::Label ();
+      caption.Markup = string.Format (
+        "<span size='large' weight='bold'>{0} {1}</span>",
+        addin.Name, addin.Version);
+      caption.Xalign = 0;
+      caption.UseMarkup = true;
+      caption.UseUnderline = false;
+
+      Gtk::Widget pref_widget =
+        addin_manager.CreateAddinPreferenceWidget (addin);
+
+      if (pref_widget == null)
+        pref_widget = new Gtk::Label (Catalog.GetString ("Not Implemented"));
+
+      Gtk::HBox hbox = new Gtk::HBox (false, 6);
+      Gtk::VBox vbox = new Gtk::VBox (false, 6);
+      vbox.BorderWidth = 6;
+
+      hbox.PackStart (icon, false, false, 0);
+      hbox.PackStart (caption, true, true, 0);
+      vbox.PackStart (hbox, false, false, 0);
+
+      vbox.PackStart (pref_widget, true, true, 0);
+      vbox.ShowAll ();
+
+      dialog = new Gtk::Dialog (
+        string.Format (Catalog.GetString ("{0} Preferences"),
+                       addin.Name),
+        this,
+        Gtk::DialogFlags.DestroyWithParent | Gtk::DialogFlags.NoSeparator,
+        Gtk::Stock.Close, Gtk::ResponseType.Close);
+
+      dialog.VBox.PackStart (vbox, true, true, 0);
+      dialog.DeleteEvent += AddinPrefDialogDeleted;
+      dialog.Response += AddinPrefDialogResponse;
+
+      // Store this dialog off in the dictionary so it can be
+      // presented again if the user clicks on the preferences button
+      // again before closing the preferences dialog.
+      dialog.Data ["AddinId"] = addin.Id;
+      addin_prefs_dialogs [addin.Id] = dialog;
+    } else {
+      // It's already opened so just present it again
+      dialog = addin_prefs_dialogs [addin.Id];
+    }
+
+    dialog.Present ();
+#endif
+  }
+
+
+  void PreferencesDialog::on_addin_info_button()
+  {
+#if 0
+    Mono.Addins.Addin addin =
+      addin_tree.ActiveAddinData as Mono.Addins.Addin;
+
+    if (addin == null)
+      return;
+
+    Gtk.Dialog dialog = null;
+    if (addin_info_dialogs.ContainsKey (addin.Id) == false) {
+      dialog = new AddinInfoDialog (
+        Mono.Addins.Setup.SetupService.GetAddinHeader (addin),
+        this);
+      dialog.DeleteEvent += AddinInfoDialogDeleted;
+      dialog.Response += AddinInfoDialogResponse;
+
+      // Store this dialog off in a dictionary so it can be presented
+      // again if the user clicks on the Info button before closing
+      // the original dialog.
+      dialog.Data ["AddinId"] = addin.Id;
+      addin_info_dialogs [addin.Id] = dialog;
+    } else {
+      // It's already opened so just present it again
+      dialog = addin_info_dialogs [addin.Id];
+    }
+
+    dialog.Present ();
+#endif
+  }
 
   Gtk::Label *PreferencesDialog::make_label (const std::string & label_text/*, params object[] args*/)
   {
