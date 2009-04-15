@@ -51,8 +51,13 @@ int test_main(int /*argc*/, char ** /*argv*/)
   BOOST_CHECK(splits[11] == "");
   BOOST_CHECK(splits[12] == "");
 
-  // C# string.Contains matches true on empty strings
+  // Some Empty string tests to mimic C#
   BOOST_CHECK(string_contains(test5, ""));
+  BOOST_CHECK(string_index_of(test5, "") == 0);
+  BOOST_CHECK(string_index_of(test5, "", 4) == 4);
+  BOOST_CHECK(string_index_of("", "") == 0);
+  BOOST_CHECK(string_last_index_of(test5, "") == (signed int)test5.size() - 1);
+  BOOST_CHECK(string_last_index_of("", "") == 0);
 
   BOOST_CHECK(string_substring(test1, 4) == "bar baz");
   BOOST_CHECK(string_substring(test1, 4, 3) == "bar");

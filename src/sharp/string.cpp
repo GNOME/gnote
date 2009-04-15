@@ -115,12 +115,15 @@ namespace sharp {
 
   bool string_contains(const std::string & source, const std::string &search)
   {
-    // C# also matches every string against the empty string
-    return search.empty() || string_index_of(source, search) != -1;
+    return string_index_of(source, search) != -1;
   }
 
   int string_last_index_of(const std::string & source, const std::string & search)
   {
+    if(search.empty()) {
+        // Return last index, unless the source is the empty string, return 0
+        return source.empty() ? 0 : source.size() - 1;
+    }
     boost::iterator_range<std::string::const_iterator> iter
       = boost::find_last(source, search);
     if(iter.begin() == source.end()) {
@@ -133,8 +136,9 @@ namespace sharp {
 
   int string_index_of(const std::string & source, const std::string & search)
   {
+    // C# returns index 0 if looking for the empty string
     if(search.empty()) {
-      return -1;
+      return 0;
     }
     boost::iterator_range<std::string::const_iterator> iter
       = boost::find_first(source, search);
@@ -151,6 +155,11 @@ namespace sharp {
     std::string source2(source.begin() + start_at, source.end());
     boost::iterator_range<std::string::const_iterator> iter
       = boost::find_first(source2, search);
+    // C# returns index 0 if looking for the empty string
+    if(search.empty()) {
+      // Note: check this after 'find_first' so boost will throw an exception if start_at > source.size()
+      return start_at;
+    }
     if(iter.begin() == source2.end()) {
       // NOT FOUND
       return -1;
