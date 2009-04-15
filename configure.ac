@@ -141,7 +141,7 @@ AC_ARG_ENABLE(dbus,
 	      ENABLE_DBUS="$enableval", ENABLE_DBUS="no")
 AM_CONDITIONAL(ENABLE_DBUS, test "x$ENABLE_DBUS" != "xno")
 
-AC_ARG_WITH(dbus_service_dir, [  --with-dbus-service-dir=DIR            Where to install Tomboy's DBus service file.])
+AC_ARG_WITH(dbus_service_dir, [  --with-dbus-service-dir=DIR            Where to install Gnote's DBus service file.])
 AM_CONDITIONAL(WITH_DBUS_SERVICE_DIR, test "x$with_dbus_service_dir" != "x")
 if test "x$with_dbus_service_dir" != "x"; then
 	DBUS_SERVICE_DIR=$with_dbus_service_dir
