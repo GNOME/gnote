@@ -106,7 +106,7 @@ public:
 
   void show_menu(bool select_first_item);
 
-  void get_tray_menu_pos(int & x, int &y, bool & push_in);
+  void get_tray_menu_pos(int & x, int &y, bool & push_in, Gtk::Menu *);
   Gtk::Menu * get_right_click_menu();
 
   void on_activate();

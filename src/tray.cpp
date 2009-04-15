@@ -429,7 +429,9 @@ namespace gnote {
     if(select_first_item) {
       m_tray->tray_menu()->select_first(false);
     }
-    utils::popup_menu(*m_tray->tray_menu(), NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
+    utils::popup_menu(*m_tray->tray_menu(), NULL, 
+                      sigc::bind(sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos), 
+                                 m_tray->tray_menu()));
   }
 
   TrayIcon::~TrayIcon()
@@ -449,12 +451,13 @@ namespace gnote {
     DBG_OUT("popup");
     if(button == 3) {
       Gtk::Menu *menu = get_right_click_menu();
-      utils::popup_menu(*menu, NULL, sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos));
+      utils::popup_menu(*menu, NULL, 
+                        sigc::bind(sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos), menu));
     }
   }  
 
 
-  void TrayIcon::get_tray_menu_pos(int & x, int &y, bool & push_in)
+  void TrayIcon::get_tray_menu_pos(int & x, int &y, bool & push_in, Gtk::Menu * menu)
   {
       push_in = true;
       x = 0;
@@ -471,7 +474,7 @@ namespace gnote {
       y = area.get_y();
 
       Gtk::Requisition menu_req;
-      get_right_click_menu()->size_request (menu_req);
+      menu->size_request (menu_req);
       if (y + menu_req.height >= gdk_screen_get_height(cscreen)/*screen->get_height()*/) {
         y -= menu_req.height;
       }
