@@ -115,7 +115,8 @@ namespace sharp {
 
   bool string_contains(const std::string & source, const std::string &search)
   {
-    return string_index_of(source, search) != -1;
+    // C# also matches every string against the empty string
+    return search.empty() || string_index_of(source, search) != -1;
   }
 
   int string_last_index_of(const std::string & source, const std::string & search)

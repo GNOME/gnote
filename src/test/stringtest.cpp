@@ -14,6 +14,7 @@ int test_main(int /*argc*/, char ** /*argv*/)
   std::string test2("   foo   ");
   std::string test3("** foo ++");
   std::string test4("CamelCase");
+  std::string test5("\t\tjust\na\tbunch of\n\nrandom\t words\n\n\t");
 
   BOOST_CHECK(string_replace_first(test1, "ba", "ft") == "foo ftr baz");
   BOOST_CHECK(string_replace_all(test1, "ba", "ft") == "foo ftr ftz");
@@ -31,6 +32,27 @@ int test_main(int /*argc*/, char ** /*argv*/)
   BOOST_CHECK(splits[0] == "foo");
   BOOST_CHECK(splits[1] == "bar");
   BOOST_CHECK(splits[2] == "baz");
+
+  splits.clear();
+  string_split(splits, test5, " \t\n");
+
+  BOOST_CHECK(splits.size() == 13);
+  BOOST_CHECK(splits[0] == "");
+  BOOST_CHECK(splits[1] == "");
+  BOOST_CHECK(splits[2] == "just");
+  BOOST_CHECK(splits[3] == "a");
+  BOOST_CHECK(splits[4] == "bunch");
+  BOOST_CHECK(splits[5] == "of");
+  BOOST_CHECK(splits[6] == "");
+  BOOST_CHECK(splits[7] == "random");
+  BOOST_CHECK(splits[8] == "");
+  BOOST_CHECK(splits[9] == "words");
+  BOOST_CHECK(splits[10] == "");
+  BOOST_CHECK(splits[11] == "");
+  BOOST_CHECK(splits[12] == "");
+
+  // C# string.Contains matches true on empty strings
+  BOOST_CHECK(string_contains(test5, ""));
 
   BOOST_CHECK(string_substring(test1, 4) == "bar baz");
   BOOST_CHECK(string_substring(test1, 4, 3) == "bar");
