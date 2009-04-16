@@ -60,7 +60,7 @@ namespace gnote {
     set_has_separator(false);
     set_border_width(5);
     set_resizable(true);
-    set_title(_("GNote Preferences"));
+    set_title(_("Gnote Preferences"));
 
     get_vbox()->set_spacing(5);
     get_action_area()->set_layout(Gtk::BUTTONBOX_END);

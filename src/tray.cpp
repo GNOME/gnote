@@ -49,7 +49,7 @@ namespace gnote {
 
   std::string tray_util_get_tooltip_text()
   {
-    std::string tip_text = _("GNote Notes");
+    std::string tip_text = _("Gnote Notes");
     
     if (Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS)) {
       std::string shortcut =
@@ -509,7 +509,7 @@ namespace gnote {
     item->signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::show_help_contents));
     m_context_menu->append(*item);
 
-    item = manage(new Gtk::ImageMenuItem(_("_About GNote"), true));
+    item = manage(new Gtk::ImageMenuItem(_("_About Gnote"), true));
     item->set_image(*manage(new Gtk::Image(Gtk::Stock::ABOUT, Gtk::ICON_SIZE_MENU)));
     item->signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::show_about));
     m_context_menu->append(*item);

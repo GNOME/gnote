@@ -256,7 +256,7 @@ namespace gnote {
       translators = "";
 
     Gtk::AboutDialog about;
-    about.set_name("GNote");
+    about.set_name("Gnote");
     about.set_version(VERSION);
     about.set_logo(utils::get_icon("gnote", 48));
     about.set_copyright(_("Copyright (c) 2009 Hubert Figuiere"));
@@ -270,7 +270,7 @@ namespace gnote {
 //          GuiUtils.ShowOpeningLocationError (dialog, link, e.Message);
 //        }
 //      }); 
-    about.set_website("http://live.gnome.org/GNote");
+    about.set_website("http://live.gnome.org/Gnote");
     about.set_website_label(_("Homepage"));
     about.set_authors(authors);
     about.set_documenters(documenters);

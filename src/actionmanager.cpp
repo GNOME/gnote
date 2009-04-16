@@ -184,7 +184,7 @@ namespace gnote {
 
     action = Gtk::Action::create(
       "QuitGNoteAction", Gtk::Stock::QUIT,
-      _("_Quit"), _("Quit GNote"));
+      _("_Quit"), _("Quit Gnote"));
     m_main_window_actions->add(action, Gtk::AccelKey("<Control>Q"));
 
     action = Gtk::Action::create("EditMenuAction", _("_Edit"));
@@ -192,19 +192,19 @@ namespace gnote {
 
     action = Gtk::Action::create(
       "ShowPreferencesAction", Gtk::Stock::PREFERENCES,
-      _("_Preferences"), _("GNote Preferences"));
+      _("_Preferences"), _("Gnote Preferences"));
     m_main_window_actions->add(action);
 
     action = Gtk::Action::create("HelpMenuAction", _("_Help"));
     m_main_window_actions->add(action);
 
     action = Gtk::Action::create("ShowHelpAction", Gtk::Stock::HELP,
-      _("_Contents"), _("GNote Help"));
+      _("_Contents"), _("Gnote Help"));
     m_main_window_actions->add(action, Gtk::AccelKey("F1"));
 
     action = Gtk::Action::create(
       "ShowAboutAction", Gtk::Stock::ABOUT,
-      _("_About"), _("About GNote"));
+      _("_About"), _("About Gnote"));
     m_main_window_actions->add(action);
 
     action = Gtk::Action::create(
