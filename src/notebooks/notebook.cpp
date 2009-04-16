@@ -82,9 +82,7 @@ namespace notebooks {
       // notebook.  For example, if the name of the notebooks
       // "Meetings", the templateNoteTitle should be "Meetings
       // Notebook Template".  Translators should place the
-      // name of the notebook accordingly using "{0}".
-      // TODO: Figure out how to make this note for
-      // translators appear properly.
+      // name of the notebook accordingly using "%1%".
       std::string format = _("%1% Notebook Template");
       m_template_note_title = str(boost::format(format) % m_name);
     }
