@@ -25,6 +25,8 @@
 #include <boost/format.hpp>
 #include <boost/bind.hpp>
 
+#include <gtk/gtk.h>
+
 #include <glibmm/i18n.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>

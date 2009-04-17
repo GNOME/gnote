@@ -22,6 +22,10 @@ AC_SUBST(GNOTE_VERSION)
 
 dnl all the library version.
 dnl if one is harcoded elsewhere, it is a bug
+
+dnl 2.14 needed for gtk_show_uri(). Possibly replacable by gnomevfs or what not
+dnl to backport.
+GTK_VERSION=2.14
 LIBGLIBMM_VERSION=2.0
 LIBGTKMM_VERSION=2.12.0
 dnl LIBGLADEMM_VERSION=2.6.0
@@ -63,7 +67,7 @@ AC_LANG_CPLUSPLUS
 AC_LANG_COMPILER_REQUIRE
 
 PKG_CHECK_MODULES(LIBGLIBMM, [glibmm-2.4])
-PKG_CHECK_MODULES(GTK, [gtk+-2.0])
+PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= $GTK_VERSION])
 PKG_CHECK_MODULES(LIBGTKMM, [gtkmm-2.4 >= $LIBGTKMM_VERSION])
 PKG_CHECK_MODULES(LIBXMLPP, [libxml++-2.6])
 PKG_CHECK_MODULES(GCONF, [gconf-2.0])
