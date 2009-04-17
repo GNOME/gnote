@@ -226,7 +226,7 @@ namespace gnote {
       m_prefsdlg = new PreferencesDialog(/*addin manager*/);
       m_prefsdlg->signal_response().connect(sigc::mem_fun(*this, &Gnote::on_preferences_response));
     }
-    m_prefsdlg->run();
+    m_prefsdlg->present();
   }
 
   void Gnote::on_show_help_action()
