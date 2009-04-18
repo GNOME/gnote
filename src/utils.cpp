@@ -228,8 +228,8 @@ namespace gnote {
         }
         else {
           pretty_str = show_time ?
-            date.to_string (_("%B %d, %H:%M %p")) : // "MMMM d, h:mm tt"
-            date.to_string (_("%B %d"));            // "MMMM d"
+            date.to_string ("%B %d, %H:%M %p") : // "MMMM d, h:mm tt"
+            date.to_string ("%B %d");            // "MMMM d"
         }
       } 
       else if (!date.is_valid()) {
@@ -237,8 +237,8 @@ namespace gnote {
       }
       else {
         pretty_str = show_time ?
-          date.to_string (_("%B %d %Y, %H:%M %p")) : // "MMMM d yyyy, h:mm tt"
-          date.to_string (_("%B %d %Y"));            // "MMMM d yyyy"
+          date.to_string ("%B %d %Y, %H:%M %p") : // "MMMM d yyyy, h:mm tt"
+          date.to_string ("%B %d %Y");            // "MMMM d yyyy"
       }
 
       return pretty_str;
