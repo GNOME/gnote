@@ -326,13 +326,13 @@ namespace gnote {
     // to have multiple lines in a single bullet point
     if (prev_depth && soft_break) {
       bool at_end_of_line = insert_iter.ends_line();
-      insert(insert_iter, Glib::ustring(4, (gunichar)0x2028));
+      insert_iter = insert(insert_iter, Glib::ustring(4, (gunichar)0x2028));
         
       // Hack so that the user sees that what they type
       // next will appear on a new line, otherwise the
       // cursor stays at the end of the previous line.
       if (at_end_of_line) {
-        insert(insert_iter, " ");
+        insert_iter = insert(insert_iter, " ");
         Gtk::TextIter bound = insert_iter;
         bound.backward_char();
         move_mark(get_selection_bound(), bound);

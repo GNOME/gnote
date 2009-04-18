@@ -527,20 +527,18 @@ namespace gnote {
     while(m1 != m2) {
       const boost::sub_match<std::string::const_iterator> & match = (*m1)[1];
 
-      /*
-        Logger.Log ("Highlighting url: '{0}' at offset {1}",
-        group,
-        group.Index);
-      */
-
       Gtk::TextIter start_cpy = start;
-      start_cpy.forward_chars (match.first - s.begin());
+      // must construct the Glib::ustring from a std:;string.
+      // otherwise it expect the num of chars (UTF-8) instead of bytes.
+      Glib::ustring segment(std::string(s.c_str(), match.first - s.begin()));
+      start_cpy.forward_chars (segment.size());
 
       end = start_cpy;
-      end.forward_chars (match.length());
+      // here match.str() is the std::string we need. All good.
+      Glib::ustring segment2(match.str());
+      end.forward_chars (segment2.length());
 
-      std::string debug = start_cpy.get_slice(end);
-      DBG_OUT("url is %s", debug.c_str());
+      DBG_OUT("url is %s", segment2.c_str());
       get_buffer()->apply_tag (m_url_tag, start_cpy, end);
       ++m1;
     }
