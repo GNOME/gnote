@@ -1041,19 +1041,20 @@ namespace gnote {
     boost::sregex_iterator m1(s.begin(), s.end(), m_regex);
     boost::sregex_iterator m2;
     while(m1 != m2) {
-      /// TODO iterator throught the WHOLE match
       const boost::sub_match<std::string::const_iterator> & match = (*m1)[1];
 
       if (match.matched && !is_patronymic_name (match.str())) {
 
-        DBG_OUT("Highlighting wikiword: '%s' at offset %d",
-                match.str().c_str(), (match.first - s.begin()));
       
         Gtk::TextIter start_cpy = start;
-        start_cpy.forward_chars (match.first - s.begin());
+        Glib::ustring segment(std::string(s.c_str(), match.first - s.begin()));
+        start_cpy.forward_chars (segment.length());
+        DBG_OUT("Highlighting wikiword: '%s' at offset %d",
+                match.str().c_str(), segment.length());
 
         end = start_cpy;
-        end.forward_chars (match.length());
+        segment = match.str();
+        end.forward_chars (segment.length());
 
         if (!manager().find (match.str())) {
           get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
