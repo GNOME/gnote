@@ -23,6 +23,7 @@
 #include "tagmanager.hpp"
 #include "debug.hpp"
 #include "note.hpp"
+#include "sharp/map.hpp"
 #include "sharp/string.hpp"
 #include "sharp/exception.hpp"
 
@@ -226,10 +227,7 @@ namespace gnote {
   void TagManager::all_tags(std::list<Tag::Ptr> & tags) const
   {
     // Add in the system tags first
-    for(InternalMap::const_iterator iter = m_internal_tags.begin();
-        iter != m_internal_tags.end(); ++iter) {
-      tags.push_back(iter->second);
-    }
+    sharp::map_get_values(m_internal_tags, tags);
     
     // Now all the other tags
     for(TagMap::const_iterator iter = m_tag_map.begin();

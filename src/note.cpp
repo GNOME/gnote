@@ -49,6 +49,7 @@
 #include "debug.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/files.hpp"
+#include "sharp/map.hpp"
 #include "sharp/string.hpp"
 #include "sharp/xmlconvert.hpp"
 #include "sharp/xmlwriter.hpp"
@@ -1057,10 +1058,7 @@ namespace gnote {
   
   void Note::get_tags(std::list<Tag::Ptr> & l) const
   {
-    for(NoteData::TagMap::const_iterator iter = m_data.data().tags().begin();
-        iter != m_data.data().tags().end(); ++iter) {
-      l.push_back(iter->second);
-    }
+    sharp::map_get_values(m_data.data().tags(), l);
   }
 
   const char *NoteArchiver::CURRENT_VERSION = "0.3";

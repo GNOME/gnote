@@ -21,6 +21,7 @@
 
 #include <map>
 
+#include "sharp/map.hpp"
 #include "sharp/string.hpp"
 #include "note.hpp"
 #include "tag.hpp"
@@ -84,10 +85,7 @@ namespace gnote {
 
   void Tag::get_notes(std::list<Note *> & l) const
   {
-    for(NoteMap::const_iterator iter = m_notes->begin();
-        iter != m_notes->end(); ++iter) {
-      l.push_back(iter->second);
-    }
+    sharp::map_get_values(*m_notes, l);
   }
 
 
