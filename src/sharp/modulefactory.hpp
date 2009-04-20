@@ -24,37 +24,51 @@
 
 
 
-#include <boost/filesystem/convenience.hpp>
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
+#ifndef __SHARP_MODULE_FACTORY_HPP__
+#define __SHARP_MODULE_FACTORY_HPP__
 
-#include "sharp/directory.hpp"
-#include "sharp/string.hpp"
 
 namespace sharp {
 
-
-  void directory_get_files_with_ext(const std::string & dir, 
-                                    const std::string & ext,
-                                    std::list<std::string> & list)
-  {
-    boost::filesystem::path p(dir);
-    
-    if(!exists(p)) {
-      return;
-    }
-    boost::filesystem::directory_iterator end_itr; 
-    for ( boost::filesystem::directory_iterator itr( p );
-          itr != end_itr;
-          ++itr )
+class IInterface
+{
+public:
+  virtual ~IInterface()
     {
-      // is_regular() is deprecated but is_regular_file isn't in 1.34.
-      if ( is_regular(*itr) && (sharp::string_to_lower(extension(*itr)) == ext) )
-      {
-        list.push_back(itr->string());
-      }
     }
-  }
+protected:
+  IInterface()
+    {
+    }
+};
 
+
+class IfaceFactoryBase
+{
+public:
+  virtual ~IfaceFactoryBase()
+    {}
+  
+  /** instanciate. The returned object pointer is owned by the caller. 
+   * it MAY return NULL
+   */
+  virtual IInterface *operator()() = 0;
+};
+
+
+template <typename _Interface>
+class IfaceFactory
+  : public IfaceFactoryBase
+{
+public:
+  virtual IInterface *operator()()
+    {
+      return _Interface::create();
+    }
+};
 
 }
+
+
+#endif
+

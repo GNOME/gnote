@@ -26,6 +26,8 @@
 
 namespace gnote {
 
+  const char * NoteAddin::IFACE_NAME = "gnote::NoteAddin";
+
   void NoteAddin::initialize(const Note::Ptr & note)
   {
     m_note = note;

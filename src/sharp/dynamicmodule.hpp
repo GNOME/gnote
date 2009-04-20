@@ -24,37 +24,58 @@
 
 
 
-#include <boost/filesystem/convenience.hpp>
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
 
-#include "sharp/directory.hpp"
-#include "sharp/string.hpp"
+#ifndef __SHARP_DYNAMICMODULE_HPP_
+#define __SHARP_DYNAMICMODULE_HPP_
+
+#include <map>
+#include <string>
+
 
 namespace sharp {
 
+class IfaceFactoryBase;
+class DynamicModule;
 
-  void directory_get_files_with_ext(const std::string & dir, 
-                                    const std::string & ext,
-                                    std::list<std::string> & list)
-  {
-    boost::filesystem::path p(dir);
-    
-    if(!exists(p)) {
-      return;
-    }
-    boost::filesystem::directory_iterator end_itr; 
-    for ( boost::filesystem::directory_iterator itr( p );
-          itr != end_itr;
-          ++itr )
-    {
-      // is_regular() is deprecated but is_regular_file isn't in 1.34.
-      if ( is_regular(*itr) && (sharp::string_to_lower(extension(*itr)) == ext) )
-      {
-        list.push_back(itr->string());
-      }
-    }
-  }
+typedef DynamicModule* (*instanciate_func_t)();
+
+#define DECLARE_MODULE(klass) \
+  extern "C" sharp::DynamicModule* dynamic_module_instanciate() \
+  { return new klass; }
+
+class DynamicModule
+{
+public:
+
+  virtual ~DynamicModule();
+
+  virtual const char * id() const = 0;
+  virtual const char * name() const = 0;
+  virtual const char * description() const = 0;
+  virtual const char * authors() const = 0;
+  virtual const char * category() const = 0;
+  virtual const char * version() const = 0;
+  /** Query an "interface" 
+   * may return NULL
+   */
+  IfaceFactoryBase * query_interface(const char *) const;
+  /** Check if the module provide and interface */
+  bool has_interface(const char *) const;
+
+  void load();
+
+protected:
+  DynamicModule();
+
+  /** */
+  void add(const char * iface, IfaceFactoryBase*);
+  
+private:
+  std::map<std::string, IfaceFactoryBase *> m_interfaces;
+};
+
 
 
 }
+
+#endif

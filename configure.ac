@@ -184,6 +184,8 @@ data/Makefile
 data/icons/Makefile
 libtomboy/Makefile
 src/Makefile
+src/addins/Makefile
+src/addins/fixedwidth/Makefile
 po/Makefile.in
 po/Makefile
 help/Makefile

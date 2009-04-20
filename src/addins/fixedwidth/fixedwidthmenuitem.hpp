@@ -19,36 +19,38 @@
 
 
 
+#ifndef __FIXED_WIDTH_MENUITEM_HPP_
+#define __FIXED_WIDTH_MENUITEM_HPP_
 
-#ifndef __ABSTRACT_ADDIN_HPP_
-#define __ABSTRACT_ADDIN_HPP_
-
-#include <sigc++/trackable.h>
-
-#include "sharp/modulefactory.hpp"
+#include <gtkmm/checkmenuitem.h>
 
 namespace gnote {
-
-class AbstractAddin
-  : public sharp::IInterface
-  , public sigc::trackable
-{
-public:
-  AbstractAddin();
-  virtual ~AbstractAddin();
-
-  void dispose();
-  bool is_disposing() const
-    { return m_disposing; }
-protected:
-  virtual void dispose(bool disposing);
-
-private:
-  bool m_disposing;
-};
-
+  class NoteAddin;
 }
 
+
+namespace fixedwidth {
+
+
+class FixedWidthMenuItem
+  : public Gtk::CheckMenuItem
+{
+public:
+  FixedWidthMenuItem(gnote::NoteAddin *);
+  
+protected:
+  virtual void on_activate();
+
+private:
+  void menu_shown();
+
+  gnote::NoteAddin * m_note_addin;
+  bool m_event_freeze;
+};
+
+
+
+}
 
 
 #endif

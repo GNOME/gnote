@@ -29,26 +29,15 @@
 
 #include <sigc++/signal.h>
 
+#include "sharp/modulemanager.hpp"
 #include "note.hpp"
 #include "noteaddin.hpp"
 
 namespace gnote {
 
-  class ApplicationAddin;
+class ApplicationAddin;
+class PreferenceTabAddin;
 
-
-class NoteAddinInfo
-{
-public:
-  NoteAddinInfo(const sigc::slot<NoteAddin*> & f,
-                const char * id)
-    : addin_id(id)
-    {
-      factory.connect(f);
-    }
-  sigc::signal<NoteAddin*> factory;
-  std::string              addin_id;
-};
 
 class AddinManager
 {
@@ -58,7 +47,7 @@ public:
 
   void load_addins_for_note(const Note::Ptr &);
   void get_application_addins(std::list<ApplicationAddin*> &) const;
-  /// get_preference_tab_addins();
+  void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
 
   sigc::signal<void> & signal_application_addin_list_changed();
 private:
@@ -66,14 +55,19 @@ private:
   void initialize_sharp_addins();
     
   const std::string m_gnote_conf_dir;
+  sharp::ModuleManager m_module_manager;
   /// Key = TypeExtensionNode.Id
   typedef std::map<std::string, ApplicationAddin*> AppAddinMap;
   AppAddinMap                               m_app_addins;
   typedef std::map<Note::Ptr, std::list<NoteAddin*> > NoteAddinMap;
   NoteAddinMap                              m_note_addins;
   /// Key = TypeExtensionNode.Id
-  typedef std::map<std::string, NoteAddinInfo*> IdInfoMap;
+  /// the iface factory is not owned by the manager.
+  /// TODO: make sure it is removed if the dynamic module is unloaded.
+  typedef std::map<std::string, sharp::IfaceFactoryBase*> IdInfoMap;
   IdInfoMap                                m_note_addin_infos;
+  typedef std::map<std::string, PreferenceTabAddin*> IdPrefTabAddinMap;
+  IdPrefTabAddinMap                         m_pref_tab_addins;
   sigc::signal<void>         m_application_addin_list_changed;
 };
 

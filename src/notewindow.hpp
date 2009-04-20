@@ -47,12 +47,13 @@ class NoteTextMenu
 public:
   NoteTextMenu(const Glib::RefPtr<Gtk::AccelGroup>&, 
                const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
+
+  static void markup_label (Gtk::MenuItem & item);
   
 protected:
   virtual void on_show();
 
 private:
-  void markup_label (Gtk::MenuItem & item);
   void refresh_sizing_state();
   void refresh_state();
   void font_style_clicked(Gtk::CheckMenuItem * item);

@@ -34,13 +34,13 @@
 namespace gnote {
 
 class SyncServiceAddin;
-
+class AddinManager;
 
 class PreferencesDialog
   : public Gtk::Dialog
 {
 public:
-  PreferencesDialog();
+  PreferencesDialog(AddinManager & addinmanager);
   
 
   Gtk::Widget *make_editing_pane();
@@ -92,7 +92,7 @@ private:
   Gtk::Widget *syncAddinPrefsWidget;
   Gtk::Button *resetSyncAddinButton;
   Gtk::Button *saveSyncAddinButton;
-  //AddinManager addin_manager;
+  AddinManager &m_addin_manager;
     
   Gtk::Button *font_button;
   Gtk::Label  *font_face;

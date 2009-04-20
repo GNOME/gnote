@@ -38,23 +38,27 @@
 #include <gtkmm/table.h>
 
 #include "sharp/propertyeditor.hpp"
+#include "addinmanager.hpp"
+#include "debug.hpp"
 #include "gnote.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "preferences.hpp"
+#include "preferencetabaddin.hpp"
 #include "utils.hpp"
 #include "watchers.hpp"
 
 namespace gnote {
 
-  PreferencesDialog::PreferencesDialog()
+  PreferencesDialog::PreferencesDialog(AddinManager & addinmanager)
     : Gtk::Dialog()
     , syncAddinCombo(NULL)
     , syncAddinPrefsContainer(NULL)
     , syncAddinPrefsWidget(NULL)
     , resetSyncAddinButton(NULL)
     , saveSyncAddinButton(NULL)
+    , m_addin_manager(addinmanager)
   {
 //    set_icon(utils::get_icon("gnote"));
     set_has_separator(false);
@@ -88,20 +92,26 @@ namespace gnote {
                            _("Add-ins"));
 
       // TODO: Figure out a way to have these be placed in a specific order
-#if 0
-      foreach (PreferenceTabAddin tabAddin in addin_manager.GetPreferenceTabAddins ()) {
-        Logger.Debug ("Adding preference tab addin: {0}", tabAddin.GetType ().Name);
+    std::list<PreferenceTabAddin *> tabAddins;
+    m_addin_manager.get_preference_tab_addins(tabAddins);
+    for(std::list<PreferenceTabAddin *>::const_iterator iter = tabAddins.begin();
+          iter != tabAddins.end(); ++iter) {
+      PreferenceTabAddin *tabAddin = *iter;
+      DBG_OUT("Adding preference tab addin: %s", 
+              typeid(*tabAddin).name());
         try {
           std::string tabName;
           Gtk::Widget *tabWidget;
-          if (tabAddin.GetPreferenceTabWidget (this, out tabName, out tabWidget) == true) {
-            notebook->append_page (tabWidget, new Gtk::Label (tabName));
+          if (tabAddin->get_preference_tab_widget (this, tabName, tabWidget)) {
+            notebook->append_page (*manage(tabWidget), tabName);
           }
-        } catch {
-          Logger.Warn ("Problems adding preferences tab addin: {0}", tabAddin.GetType ().Name);
+        } 
+        catch(...)
+        {
+          DBG_OUT("Problems adding preferences tab addin: %s", 
+                  typeid(*tabAddin).name());
         }
       }
-#endif
 
       get_vbox()->pack_start (*notebook, true, true, 0);
 

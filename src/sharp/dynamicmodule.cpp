@@ -24,37 +24,49 @@
 
 
 
-#include <boost/filesystem/convenience.hpp>
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
+#include "sharp/dynamicmodule.hpp"
+#include "sharp/map.hpp"
+#include "sharp/modulefactory.hpp"
 
-#include "sharp/directory.hpp"
-#include "sharp/string.hpp"
 
 namespace sharp {
 
-
-  void directory_get_files_with_ext(const std::string & dir, 
-                                    const std::string & ext,
-                                    std::list<std::string> & list)
+  DynamicModule::DynamicModule()
   {
-    boost::filesystem::path p(dir);
-    
-    if(!exists(p)) {
-      return;
-    }
-    boost::filesystem::directory_iterator end_itr; 
-    for ( boost::filesystem::directory_iterator itr( p );
-          itr != end_itr;
-          ++itr )
-    {
-      // is_regular() is deprecated but is_regular_file isn't in 1.34.
-      if ( is_regular(*itr) && (sharp::string_to_lower(extension(*itr)) == ext) )
-      {
-        list.push_back(itr->string());
-      }
-    }
   }
 
 
+  DynamicModule::~DynamicModule()
+  {
+    sharp::map_delete_all_second(m_interfaces);
+  }
+
+  
+  IfaceFactoryBase * DynamicModule::query_interface(const char * intf) const
+  {
+    std::map<std::string, IfaceFactoryBase *>::const_iterator iter;
+    iter = m_interfaces.find(intf);
+    if(iter == m_interfaces.end()) {
+      return NULL;
+    }
+
+    return iter->second;
+  }
+
+
+  void DynamicModule::add(const char * iface, IfaceFactoryBase* mod)
+  {
+    std::map<std::string, IfaceFactoryBase *>::iterator iter;
+    iter = m_interfaces.find(iface);
+    if(iter == m_interfaces.end()) {
+      m_interfaces.insert(std::make_pair(iface, mod));
+    }
+    else {
+      // replace
+      delete iter->second;
+      iter->second = mod;
+    }
+  }
+
+  
 }

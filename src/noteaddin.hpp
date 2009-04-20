@@ -49,6 +49,7 @@ class NoteAddin
   : public AbstractAddin
 {
 public:
+  static const char * IFACE_NAME;
   /// factory method
 //  static NoteAddin *create() { return NULL; }
   void initialize(const Note::Ptr & note);

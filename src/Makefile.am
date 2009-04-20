@@ -1,12 +1,16 @@
 
 
+SUBDIRS = addins
+
 
 INCLUDES = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@LIBXMLPP_CFLAGS@ @GCONF_CFLAGS@ @GTK_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ \
 	-DGNOTE_LOCALEDIR=\"@GNOTE_LOCALEDIR@\" \
-	-DDATADIR=\"$(datadir)\"
+	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
+
+AM_LDFLAGS=-Wl,--export-dynamic
 
 GNOTE_LIBS = @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
 	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_REGEX_LIBS@ \
@@ -39,9 +43,13 @@ gnote_SOURCES = main.cpp
 libgnote_a_SOURCES = \
 	base/singleton.hpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
+	sharp/dynamicmodule.hpp sharp/dynamicmodule.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
 	sharp/exception.hpp sharp/exception.cpp \
 	sharp/files.hpp sharp/files.cpp \
+	sharp/map.hpp \
+	sharp/modulefactory.hpp \
+	sharp/modulemanager.hpp sharp/modulemanager.cpp \
 	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
 	sharp/string.hpp sharp/string.cpp \
 	sharp/uri.hpp sharp/uri.cpp \
@@ -65,6 +73,7 @@ libgnote_a_SOURCES = \
 	notewindow.hpp notewindow.cpp \
 	preferences.hpp preferences.cpp \
 	preferencesdialog.hpp preferencesdialog.cpp \
+	preferencetabaddin.hpp \
 	prefskeybinder.hpp prefskeybinder.cpp \
 	recenttreeview.hpp \
 	recentchanges.hpp recentchanges.cpp \

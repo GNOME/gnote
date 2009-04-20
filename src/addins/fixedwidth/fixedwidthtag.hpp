@@ -20,35 +20,31 @@
 
 
 
-#ifndef __ABSTRACT_ADDIN_HPP_
-#define __ABSTRACT_ADDIN_HPP_
 
-#include <sigc++/trackable.h>
+#ifndef __ADDIN_FIXED_WIDTH_TAG_HPP_
+#define __ADDIN_FIXED_WIDTH_TAG_HPP_
 
-#include "sharp/modulefactory.hpp"
+#include <string>
 
-namespace gnote {
+#include "notetag.hpp"
 
-class AbstractAddin
-  : public sharp::IInterface
-  , public sigc::trackable
+
+namespace fixedwidth {
+
+
+class FixedWidthTag
+  : public gnote::NoteTag
 {
 public:
-  AbstractAddin();
-  virtual ~AbstractAddin();
-
-  void dispose();
-  bool is_disposing() const
-    { return m_disposing; }
-protected:
-  virtual void dispose(bool disposing);
-
-private:
-  bool m_disposing;
+  FixedWidthTag()
+    : gnote::NoteTag("monospace", CAN_GROW | CAN_UNDO)
+    {
+      property_family() = "monospace";
+    }
 };
 
+
+
 }
-
-
 
 #endif
