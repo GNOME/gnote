@@ -564,12 +564,7 @@ namespace gnote {
         match_count = miter->second;
         if (match_count > 0) {
           const char * fmt;
-          if(match_count == 1) {
-            fmt = _("%1% match");
-          }
-          else {
-            fmt = _("%1% matches");
-          }
+          fmt = ngettext("%1% match", "%1% matches", match_count);
           match_str = str(boost::format(fmt) % match_count);
         }
       }
@@ -582,12 +577,7 @@ namespace gnote {
   void NoteRecentChanges::update_total_note_count (int total)
   {
     const char * fmt;
-    if(total == 1) {
-      fmt = _("Total: %1% note");
-    }
-    else {
-      fmt = _("Total: %1% notes");
-    }
+    fmt = ngettext("Total: %1% note", "Total: %1% notes", total);
     m_note_count.set_text(str(boost::format (fmt) % total));
   }
                 
@@ -595,12 +585,7 @@ namespace gnote {
   void NoteRecentChanges::update_match_note_count (int matches)
   {
     const char * fmt;
-    if(matches == 1) {
-      fmt = _("Matches: %1% note");
-    }
-    else {
-      fmt = _("Matches: %1% notes");
-    }
+    fmt = ngettext("Matches: %1% note", "Matches: %1% notes", matches);
     m_note_count.set_text(str(boost::format (fmt) % matches));
   }
                 

@@ -61,17 +61,21 @@ namespace gnote {
     void show_deletion_dialog (const std::list<Note::Ptr> & notes, Gtk::Window * parent)
     {
       std::string message;
-      
-      if (notes.size() == 1)
-        message = _("Really delete this note?");
-      else
-        message = str(boost::format(_("Really delete these %1% notes?")) % notes.size());
-      
+
+      // %1% is the number of note.
+      message = ngettext("Really delete this note?", "Really delete these %1% notes?", notes.size());
+
+      boost::format format(message);
+      // make sure an exception is not raised for the non-plural form
+      format.exceptions( boost::io::all_error_bits ^ 
+                         ( boost::io::too_many_args_bit | 
+                           boost::io::too_few_args_bit )  );
+
       utils::HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
-              Gtk::MESSAGE_QUESTION,
-              Gtk::BUTTONS_NONE,
-              message,
-              _("If you delete a note it is permanently lost."));
+                                     Gtk::MESSAGE_QUESTION,
+                                     Gtk::BUTTONS_NONE,
+                                     str(format % notes.size()),
+                                     _("If you delete a note it is permanently lost."));
 
       Gtk::Button *button;
 

@@ -179,21 +179,11 @@ namespace gnote {
           int num_days = now.day_of_year() - date.day_of_year();
           const char * fmt;
           if(show_time) {
-            if(num_days == 1) {
-              fmt = _("%1% day ago, %2%");
-            }
-            else {
-              fmt = _("%1% days ago, %2%");
-            }
+            fmt = ngettext("%1% day ago, %2%", "%1% days ago, %2%", num_days);
             pretty_str = str(boost::format(fmt) % num_days % short_time);
           }
           else {
-            if(num_days == 1) {
-              fmt = _("%1% day ago");
-            }
-            else {
-              fmt = _("%1% days ago");
-            }
+            fmt = ngettext("%1% day ago", "%1% days ago", num_days);
             pretty_str = str(boost::format(fmt) % num_days);
           }
         }
@@ -208,21 +198,11 @@ namespace gnote {
           int num_days = date.day_of_year() - now.day_of_year();
           const char * fmt;
           if(show_time) {
-            if(num_days == 1) {
-              fmt = _("In %1% day, %2%");
-            }
-            else {
-              fmt = _("In %1% days, %2%");
-            }
+            fmt = ngettext("In %1% day, %2%", "In %1% days, %2%", num_days);
             pretty_str = str(boost::format(fmt) % num_days % short_time); 
           }
           else {
-            if(num_days == 1) {
-              fmt = _("In %1% day");
-            }
-            else {
-              fmt = _("In %1% days");
-            }
+            fmt = ngettext("In %1% day", "In %1% days", num_days);
             pretty_str = str(boost::format(fmt) % num_days);
           }
         }
