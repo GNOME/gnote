@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 //    Glib::thread_init();
 //  }
 
+  bindtextdomain(GETTEXT_PACKAGE, GNOTE_LOCALEDIR);
   bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
   textdomain(GETTEXT_PACKAGE);
 
