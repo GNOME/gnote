@@ -120,7 +120,7 @@ namespace gnote {
               typeid(*tabAddin).name());
         try {
           std::string tabName;
-          Gtk::Widget *tabWidget;
+          Gtk::Widget *tabWidget = NULL;
           if (tabAddin->get_preference_tab_widget (this, tabName, tabWidget)) {
             notebook->append_page (*manage(tabWidget), tabName);
           }
@@ -671,7 +671,7 @@ namespace gnote {
 
   void PreferencesDialog::on_addin_prefs_button()
   {
-    const sharp::DynamicModule * module = get_selected_addin();
+//    const sharp::DynamicModule * module = get_selected_addin();
 #if 0
     Gtk::Dialog dialog = null;
 //    Mono.Addins.Addin addin =
