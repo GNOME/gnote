@@ -25,63 +25,51 @@
 
 
 
-#ifndef __SHARP_DYNAMICMODULE_HPP_
-#define __SHARP_DYNAMICMODULE_HPP_
+#ifndef __SHARP_ADDINSTREEMODEL_HPP_
+#define __SHARP_ADDINSTREEMODEL_HPP_
 
-#include <map>
-#include <string>
+#include <gtkmm/treestore.h>
+#include <gtkmm/treeview.h>
 
+#include "sharp/dynamicmodule.hpp"
 
 namespace sharp {
 
-class IfaceFactoryBase;
-class DynamicModule;
-
-typedef DynamicModule* (*instanciate_func_t)();
-
-#define DECLARE_MODULE(klass) \
-  extern "C" sharp::DynamicModule* dynamic_module_instanciate() \
-  { return new klass; }
-
-class DynamicModule
+class AddinsTreeModel
+  : public Gtk::TreeStore
 {
 public:
+  typedef Glib::RefPtr<AddinsTreeModel> Ptr;
+  static Ptr create(Gtk::TreeView * treeview);
 
-  virtual ~DynamicModule();
+  const sharp::DynamicModule * get_module(const Gtk::TreeIter &);
 
-  virtual const char * id() const = 0;
-  virtual const char * name() const = 0;
-  virtual const char * description() const = 0;
-  virtual const char * authors() const = 0;
-  virtual const char * category() const = 0;
-  virtual const char * version() const = 0;
-  virtual const char * copyright() const;
-  bool enabled() const
-    {
-      return m_enabled;
-    }
-  /** Query an "interface" 
-   * may return NULL
-   */
-  IfaceFactoryBase * query_interface(const char *) const;
-  /** Check if the module provide and interface */
-  bool has_interface(const char *) const;
+  Gtk::TreeIter append(const sharp::DynamicModule *);
+  class AddinsColumns
+    : public Gtk::TreeModelColumnRecord
+  {
+  public:
+    AddinsColumns()
+      {
+        add(name); 
+        add(description); 
+        add(addin);
+      }
 
-  void load();
+    Gtk::TreeModelColumn<std::string>          name;
+    Gtk::TreeModelColumn<std::string>          description;
+    Gtk::TreeModelColumn<const sharp::DynamicModule *> addin;
+  };
+  AddinsColumns m_columns;
 
 protected:
-  DynamicModule();
-
-  /** */
-  void add(const char * iface, IfaceFactoryBase*);
-  
+  AddinsTreeModel();
+  void set_columns(Gtk::TreeView *v);
 private:
-  bool m_enabled;
-  std::map<std::string, IfaceFactoryBase *> m_interfaces;
+  
 };
 
-
-
 }
+
 
 #endif

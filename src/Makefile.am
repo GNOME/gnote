@@ -42,6 +42,7 @@ gnote_SOURCES = main.cpp
 
 libgnote_a_SOURCES = \
 	base/singleton.hpp \
+	sharp/addinstreemodel.hpp sharp/addinstreemodel.cpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/dynamicmodule.hpp sharp/dynamicmodule.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
@@ -60,6 +61,7 @@ libgnote_a_SOURCES = \
 	abstractaddin.hpp abstractaddin.cpp \
 	actionmanager.hpp actionmanager.cpp \
 	addinmanager.hpp addinmanager.cpp \
+	addinpreferencefactory.hpp addinpreferencefactory.cpp \
 	applicationaddin.hpp \
 	contrast.hpp contrast.cpp \
 	debug.hpp debug.cpp \

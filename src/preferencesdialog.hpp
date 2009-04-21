@@ -31,6 +31,8 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/combobox.h>
 
+#include "sharp/addinstreemodel.hpp"
+
 namespace gnote {
 
 class SyncServiceAddin;
@@ -62,6 +64,7 @@ private:
   void on_reset_sync_addin_button();
   void on_save_sync_addin_button();
 
+  const sharp::DynamicModule * get_selected_addin();
   void on_addin_tree_selection_changed();
   void update_addin_buttons();
   void load_addins();
@@ -69,6 +72,8 @@ private:
   void on_disable_addin_button();
   void on_addin_prefs_button();
   void on_addin_info_button();
+  bool addin_info_dialog_deleted(GdkEventAny*, Gtk::Dialog*);
+  void addin_info_dialog_response(int, Gtk::Dialog*);
 ////
 
   class SyncStoreModel
@@ -98,7 +103,8 @@ private:
   Gtk::Label  *font_face;
   Gtk::Label  *font_size;
 
-  //Mono.Addins.Gui.AddinTreeWidget addin_tree;
+  Gtk::TreeView              *m_addin_tree;
+  sharp::AddinsTreeModel::Ptr m_addin_tree_model;
   
   Gtk::Button *enable_addin_button;
   Gtk::Button *disable_addin_button;
@@ -110,20 +116,16 @@ private:
   Gtk::RadioButton overwriteOnConflictRadio;
 
 
-  /// <summary>
   /// Keep track of the opened addin prefs dialogs so other windows
   /// can be interacted with (as opposed to opening these as modal
   /// dialogs).
   ///
   /// Key = Mono.Addins.Addin.Id
-  /// </summary>
-  std::map<std::string, Gtk::Dialog> addin_prefs_dialogs;
+  std::map<std::string, Gtk::Dialog* > addin_prefs_dialogs;
 
-  /// <summary>
   /// Used to keep track of open AddinInfoDialogs.
   /// Key = Mono.Addins.Addin.Id
-  /// </summary>
-  std::map<std::string, Gtk::Dialog> addin_info_dialogs;
+  std::map<std::string, Gtk::Dialog* > addin_info_dialogs;
 
 };
 

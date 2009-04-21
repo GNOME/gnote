@@ -1,14 +1,7 @@
 
+include $(builddir)/../addins.mk
 
-
-INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/src
-AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
-	@GCONF_CFLAGS@ \
-	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
-
-AM_LDFLAGS = -avoid-version -module -Wl,--export-dynamic
-
-addinsdir = @libdir@/@PACKAGE_NAME@/addins/@VERSION@
+addinsdir = $(ADDINSDIR)
 addins_LTLIBRARIES = fixedwidth.la
 
 

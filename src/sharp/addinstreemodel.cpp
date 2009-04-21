@@ -24,64 +24,57 @@
 
 
 
+#include <glibmm/i18n.h>
 
-#ifndef __SHARP_DYNAMICMODULE_HPP_
-#define __SHARP_DYNAMICMODULE_HPP_
+#include "sharp/addinstreemodel.hpp"
 
-#include <map>
-#include <string>
 
 
 namespace sharp {
 
-class IfaceFactoryBase;
-class DynamicModule;
 
-typedef DynamicModule* (*instanciate_func_t)();
-
-#define DECLARE_MODULE(klass) \
-  extern "C" sharp::DynamicModule* dynamic_module_instanciate() \
-  { return new klass; }
-
-class DynamicModule
-{
-public:
-
-  virtual ~DynamicModule();
-
-  virtual const char * id() const = 0;
-  virtual const char * name() const = 0;
-  virtual const char * description() const = 0;
-  virtual const char * authors() const = 0;
-  virtual const char * category() const = 0;
-  virtual const char * version() const = 0;
-  virtual const char * copyright() const;
-  bool enabled() const
-    {
-      return m_enabled;
+  AddinsTreeModel::Ptr AddinsTreeModel::create(Gtk::TreeView * treeview)
+  {
+    AddinsTreeModel::Ptr p(new AddinsTreeModel());
+    if(treeview) {
+      treeview->set_model(p);
+      p->set_columns(treeview);
     }
-  /** Query an "interface" 
-   * may return NULL
-   */
-  IfaceFactoryBase * query_interface(const char *) const;
-  /** Check if the module provide and interface */
-  bool has_interface(const char *) const;
+    return p;
+  }
 
-  void load();
+  AddinsTreeModel::AddinsTreeModel()
+    : Gtk::TreeStore()
+  {
+    set_column_types(m_columns);
+  }
 
-protected:
-  DynamicModule();
+  const sharp::DynamicModule * AddinsTreeModel::get_module(const Gtk::TreeIter & iter)
+  {
+    const sharp::DynamicModule * module = NULL;
+    if(iter) {
+      iter->get_value(2, module);
+    }
+    return module;
+  }
 
-  /** */
-  void add(const char * iface, IfaceFactoryBase*);
-  
-private:
-  bool m_enabled;
-  std::map<std::string, IfaceFactoryBase *> m_interfaces;
-};
+
+  void AddinsTreeModel::set_columns(Gtk::TreeView *treeview)
+  {
+      treeview->append_column(_("Name"), m_columns.name);
+      treeview->append_column(_("Description"), m_columns.description);
+  }
+
+
+  Gtk::TreeIter AddinsTreeModel::append(const sharp::DynamicModule *module)
+  {
+    Gtk::TreeIter iter = Gtk::TreeStore::append();
+    iter->set_value(0, std::string(module->name()));
+    iter->set_value(1, std::string(module->description()));
+    iter->set_value(2, module);
+    return iter;
+  }
 
 
 
 }
-
-#endif

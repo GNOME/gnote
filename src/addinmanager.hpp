@@ -49,6 +49,11 @@ public:
   void get_application_addins(std::list<ApplicationAddin*> &) const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
 
+  const sharp::ModuleList & get_modules() const
+    { 
+      return m_module_manager.get_modules(); 
+    }
+
   sigc::signal<void> & signal_application_addin_list_changed();
 private:
 

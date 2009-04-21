@@ -32,6 +32,7 @@
 namespace sharp {
 
   DynamicModule::DynamicModule()
+    : m_enabled(true)
   {
   }
 
@@ -39,6 +40,11 @@ namespace sharp {
   DynamicModule::~DynamicModule()
   {
     sharp::map_delete_all_second(m_interfaces);
+  }
+
+  const char * DynamicModule::copyright() const
+  {
+    return "";
   }
 
   
@@ -51,6 +57,13 @@ namespace sharp {
     }
 
     return iter->second;
+  }
+
+  bool DynamicModule::has_interface(const char * intf) const
+  {
+    std::map<std::string, IfaceFactoryBase *>::const_iterator iter;
+    iter = m_interfaces.find(intf);
+    return (iter != m_interfaces.end());
   }
 
 

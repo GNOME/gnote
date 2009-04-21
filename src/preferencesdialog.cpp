@@ -37,8 +37,11 @@
 #include <gtkmm/stock.h>
 #include <gtkmm/table.h>
 
+#include "sharp/addinstreemodel.hpp"
+#include "sharp/modulemanager.hpp"
 #include "sharp/propertyeditor.hpp"
 #include "addinmanager.hpp"
+#include "addinpreferencefactory.hpp"
 #include "debug.hpp"
 #include "gnote.hpp"
 #include "notemanager.hpp"
@@ -50,6 +53,22 @@
 #include "watchers.hpp"
 
 namespace gnote {
+
+  class AddinInfoDialog
+    : public Gtk::Dialog
+  {
+  public:
+    AddinInfoDialog(const sharp::DynamicModule * module, Gtk::Dialog &parent);
+    void set_addin_id(const std::string & id)
+      { m_id = id; }
+    const std::string & get_addin_id() const
+      { return m_id; }
+  private:
+    void fill(Gtk::Label &);
+    const sharp::DynamicModule *m_module;
+    std::string m_id;
+  };
+
 
   PreferencesDialog::PreferencesDialog(AddinManager & addinmanager)
     : Gtk::Dialog()
@@ -520,16 +539,16 @@ namespace gnote {
     Gtk::HBox *hbox = manage(new Gtk::HBox (false, 6));
 
     // TreeView of Add-ins
-    Gtk::TreeView *tree = manage(new Gtk::TreeView ());
-//    addin_tree = new Mono.Addins.Gui.AddinTreeWidget (tree);
+    m_addin_tree = manage(new Gtk::TreeView ());
+    m_addin_tree_model = sharp::AddinsTreeModel::create(m_addin_tree);
 
-    tree->show ();
+    m_addin_tree->show ();
 
     Gtk::ScrolledWindow *sw = manage(new Gtk::ScrolledWindow ());
     sw->property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
     sw->property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
     sw->set_shadow_type(Gtk::SHADOW_IN);
-    sw->add (*tree);
+    sw->add (*m_addin_tree);
     sw->show ();
     hbox->pack_start(*sw, true, true, 0);
 
@@ -578,11 +597,24 @@ namespace gnote {
     vbox->pack_start(*hbox, true, true, 0);
     vbox->show ();
 
-    tree->get_selection()->signal_changed().connect(
+    m_addin_tree->get_selection()->signal_changed().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_tree_selection_changed));
     load_addins ();
 
     return vbox;
+  }
+
+
+  const sharp::DynamicModule * PreferencesDialog::get_selected_addin()
+  {
+    /// TODO really set
+    Glib::RefPtr<Gtk::TreeSelection> select = m_addin_tree->get_selection();
+    Gtk::TreeIter iter = select->get_selected();
+    const sharp::DynamicModule * module = NULL;
+    if(iter) {
+      module = m_addin_tree_model->get_module(iter);
+    }
+    return module;
   }
 
 
@@ -595,17 +627,32 @@ namespace gnote {
   /// Set the sensitivity of the buttons based on what is selected
   void PreferencesDialog::update_addin_buttons()
   {
-    /// TODO really set
-    enable_addin_button->set_sensitive(false);
-    disable_addin_button->set_sensitive(false);
-    addin_prefs_button->set_sensitive(false);
-    addin_info_button->set_sensitive(false);
+    const sharp::DynamicModule * module = get_selected_addin();
+    if(module) {
+      enable_addin_button->set_sensitive(!module->enabled());
+      disable_addin_button->set_sensitive(module->enabled());
+      addin_prefs_button->set_sensitive(
+        module->has_interface(AddinPreferenceFactory::IFACE_NAME));
+      addin_info_button->set_sensitive(true);
+    }
+    else {
+      enable_addin_button->set_sensitive(false);
+      disable_addin_button->set_sensitive(false);
+      addin_prefs_button->set_sensitive(false);
+      addin_info_button->set_sensitive(false);
+    }
   }
 
 
   void PreferencesDialog::load_addins()
   {
     ///// TODO populate
+    const sharp::ModuleList & list(m_addin_manager.get_modules());
+    for(sharp::ModuleList::const_iterator iter = list.begin();
+        iter != list.end(); ++iter) {
+
+      Gtk::TreeIter treeiter = m_addin_tree_model->append(*iter);
+    }
 
     update_addin_buttons();
   }
@@ -624,6 +671,7 @@ namespace gnote {
 
   void PreferencesDialog::on_addin_prefs_button()
   {
+    const sharp::DynamicModule * module = get_selected_addin();
 #if 0
     Gtk::Dialog dialog = null;
 //    Mono.Addins.Addin addin =
@@ -652,7 +700,6 @@ namespace gnote {
       Gtk::HBox hbox = new Gtk::HBox (false, 6);
       Gtk::VBox vbox = new Gtk::VBox (false, 6);
       vbox.BorderWidth = 6;
-
       hbox.PackStart (icon, false, false, 0);
       hbox.PackStart (caption, true, true, 0);
       vbox.PackStart (hbox, false, false, 0);
@@ -688,34 +735,59 @@ namespace gnote {
 
   void PreferencesDialog::on_addin_info_button()
   {
-#if 0
-    Mono.Addins.Addin addin =
-      addin_tree.ActiveAddinData as Mono.Addins.Addin;
+    const sharp::DynamicModule * addin = get_selected_addin();
 
-    if (addin == null)
+    if (addin == NULL) {
       return;
+    }
 
-    Gtk.Dialog dialog = null;
-    if (addin_info_dialogs.ContainsKey (addin.Id) == false) {
-      dialog = new AddinInfoDialog (
-        Mono.Addins.Setup.SetupService.GetAddinHeader (addin),
-        this);
-      dialog.DeleteEvent += AddinInfoDialogDeleted;
-      dialog.Response += AddinInfoDialogResponse;
+    Gtk::Dialog* dialog;
+    std::map<std::string, Gtk::Dialog* >::iterator iter;
+    iter = addin_info_dialogs.find(addin->id());
+    if (iter == addin_info_dialogs.end()) {
+      dialog = manage(new AddinInfoDialog (addin, *this));
+      dialog->signal_delete_event().connect(
+        sigc::bind(
+          sigc::mem_fun(*this, &PreferencesDialog::addin_info_dialog_deleted), 
+          dialog), false);
+      dialog->signal_response().connect(
+        sigc::bind(
+          sigc::mem_fun(*this, &PreferencesDialog::addin_info_dialog_response),
+          dialog));
 
       // Store this dialog off in a dictionary so it can be presented
       // again if the user clicks on the Info button before closing
       // the original dialog.
-      dialog.Data ["AddinId"] = addin.Id;
-      addin_info_dialogs [addin.Id] = dialog;
-    } else {
+      static_cast<AddinInfoDialog*>(dialog)->set_addin_id(addin->id());
+      addin_info_dialogs [addin->id()] = dialog;
+    } 
+    else {
       // It's already opened so just present it again
-      dialog = addin_info_dialogs [addin.Id];
+      dialog = iter->second;
     }
 
-    dialog.Present ();
-#endif
+    dialog->present ();
   }
+
+  bool PreferencesDialog::addin_info_dialog_deleted(GdkEventAny*, 
+                                                    Gtk::Dialog* dialog)
+  {
+    // Remove the addin from the addin_prefs_dialogs Dictionary
+    dialog->hide ();
+
+    AddinInfoDialog *addin_dialog = static_cast<AddinInfoDialog*>(dialog);
+    addin_prefs_dialogs.erase(addin_dialog->get_addin_id());
+
+    return false;
+  }
+
+
+  void PreferencesDialog::addin_info_dialog_response(int, Gtk::Dialog* dlg)
+  {
+    addin_info_dialog_deleted(NULL, dlg);
+  }
+
+
 
   Gtk::Label *PreferencesDialog::make_label (const std::string & label_text/*, params object[] args*/)
   {
@@ -798,6 +870,86 @@ namespace gnote {
 
     // Open the template note
     template_note->get_window()->show ();
+  }
+
+
+
+  AddinInfoDialog::AddinInfoDialog(const sharp::DynamicModule * module,
+                                   Gtk::Dialog &parent)
+    : Gtk::Dialog(module->name(), parent, false, true)
+    , m_module(module)
+  {
+    property_destroy_with_parent() = true;
+    add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
+    
+    // TODO: Change this icon to be an addin/package icon
+    Gtk::Image *icon = manage(new Gtk::Image(Gtk::Stock::INFO, 
+                                             Gtk::ICON_SIZE_DIALOG));
+    icon->property_yalign() = 0;
+
+    Gtk::Label *info_label = manage(new Gtk::Label ());
+    info_label->property_xalign() = 0;
+    info_label->property_yalign() = 0;
+    info_label->set_use_markup(true);
+    info_label->set_use_underline(false);
+    info_label->property_wrap() = true;
+
+    Gtk::HBox *hbox = manage(new Gtk::HBox (false, 6));
+    Gtk::VBox *vbox = manage(new Gtk::VBox (false, 12));
+    hbox->set_border_width(12);
+    vbox->set_border_width(6);
+
+    hbox->pack_start (*icon, false, false, 0);
+    hbox->pack_start (*vbox, true, true, 0);
+
+    vbox->pack_start (*info_label, true, true, 0);
+
+    hbox->show_all ();
+
+    get_vbox()->pack_start(*hbox, true, true, 0);
+
+    fill (*info_label);
+  }
+
+	void AddinInfoDialog::fill(Gtk::Label & info_label)
+  {
+    std::string sb("<b><big>");
+    sb += std::string(m_module->name()) + "</big></b>\n\n";
+
+    const char * s = m_module->description();
+    if (s && *s) {
+      sb += std::string(s) + "\n\n";
+    }
+
+    sb += str(boost::format("<small><b>%1%</b>\n%2%\n\n")
+              % _("Version:") % m_module->version());
+
+    s = m_module->authors();
+    if (s && *s) {
+      sb += str(boost::format("<b>%1%</b>\n%2%\n\n")
+                % _("Author:") % s);
+    }
+    
+    s = m_module->copyright();
+    if (s && *s) {
+      sb += str(boost::format("<b>%1%</b>\n%2%\n\n") 
+                % _("Copyright:") % s);
+    }
+
+#if 0 // TODO handle module dependencies
+    if (info.Dependencies.Count > 0) {
+      sb.Append (string.Format (
+                   "<b>{0}</b>\n",
+                   Catalog.GetString ("Add-in Dependencies:")));
+      foreach (Mono.Addins.Description.Dependency dep in info.Dependencies) {
+        sb.Append (dep.Name + "\n");
+      }
+    }
+#endif
+
+    sb += "</small>";
+
+    info_label.set_markup(sb);
   }
 
 }
