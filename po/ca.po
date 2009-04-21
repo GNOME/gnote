@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-18 22:30+0200\n"
-"PO-Revision-Date: 2009-04-21 14:06+0200\n"
+"POT-Creation-Date: 2009-04-21 14:08+0200\n"
+"PO-Revision-Date: 2009-04-21 14:09+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -943,52 +943,51 @@ msgstr "<i>_Cursiva</i>"
 msgid "<s>_Strikeout</s>"
 msgstr "<i>_Barrat</i>"
 
-#: ../src/notewindow.cpp:1085
-msgid "<span background='yellow'>_Highlight</span>"
-msgstr "<span background='yellow'>_Ressaltat</span>"
+#: ../src/notewindow.cpp:1086
+msgid "_Highlight"
+msgstr "_Ressaltat"
 
-#: ../src/notewindow.cpp:1087
+#: ../src/notewindow.cpp:1088
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:1088
-msgid "<span size=\"x-large\">Hu_ge</span>"
-msgstr "<span size=\"x-large\">_Molt gran</span>"
-
-#: ../src/notewindow.cpp:1089
-msgid "<span size=\"large\">_Large</span>"
-msgstr "<span size=\"large\">_Gran</span>"
-
 #: ../src/notewindow.cpp:1090
-msgid "<span size=\"small\">S_mall</span>"
-msgstr "<span size=\"small\">_Petita</span>"
+msgid "Hu_ge"
+msgstr "_Molt gran"
 
 #: ../src/notewindow.cpp:1092
+msgid "_Large"
+msgstr "_Gran"
+
+#: ../src/notewindow.cpp:1094
+msgid "S_mall"
+msgstr "_Petita"
+
+#: ../src/notewindow.cpp:1096
 msgid "Bullets"
 msgstr "Pics"
 
-#: ../src/notewindow.cpp:1165
+#: ../src/notewindow.cpp:1169
 msgid "Font Size"
 msgstr "Mida de la lletra"
 
+#. %1% is the number of note.
 #: ../src/note.cpp:66
 msgid "Really delete this note?"
-msgstr "Segur que voleu suprimir aquesta nota?"
+msgid_plural "Really delete these %1% notes?"
+msgstr[0] "Segur que voleu suprimir aquesta nota?"
+msgstr[1] "Segur que voleu suprimir aquestesi %1% notes?"
 
-#: ../src/note.cpp:68
-msgid "Really delete these %1% notes?"
-msgstr "Segur que voleu suprimir aquestes %1% notes?"
-
-#: ../src/note.cpp:74
+#: ../src/note.cpp:78
 msgid "If you delete a note it is permanently lost."
 msgstr "Si suprimiu una nota la perdreu definitivament."
 
 #
-#: ../src/note.cpp:110
+#: ../src/note.cpp:114
 msgid "Error saving note data."
 msgstr "S'ha produït un error en desar les dades de la nota."
 
-#: ../src/note.cpp:111
+#: ../src/note.cpp:115
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1028,31 +1027,25 @@ msgid "Matches"
 msgstr "Coincidències"
 
 # csharp-format
-#: ../src/recentchanges.cpp:568
+#: ../src/recentchanges.cpp:567
 msgid "%1% match"
-msgstr "%1% coincidència"
+msgid_plural "%1% matches"
+msgstr[0] "%1% coincidència"
+msgstr[1] "%1% coincidències"
 
-#: ../src/recentchanges.cpp:571
-msgid "%1% matches"
-msgstr "%1% coincidències"
-
-#: ../src/recentchanges.cpp:586
+#: ../src/recentchanges.cpp:580
 msgid "Total: %1% note"
-msgstr "Total: %1% nota"
+msgid_plural "Total: %1% notes"
+msgstr[0] "Total: %1% nota"
+msgstr[1] "Total: %1% notes"
 
-#: ../src/recentchanges.cpp:589
-msgid "Total: %1% notes"
-msgstr "Total: %1% notes"
-
-#: ../src/recentchanges.cpp:599
+#: ../src/recentchanges.cpp:588
 msgid "Matches: %1% note"
-msgstr "Coincidències: %1% nota"
+msgid_plural "Matches: %1% notes"
+msgstr[0] "Coincidències: %1% nota"
+msgstr[1] "Coincidències: %1% notes"
 
-#: ../src/recentchanges.cpp:602
-msgid "Matches: %1% notes"
-msgstr "Coincidències: %1% notes"
-
-#: ../src/recentchanges.cpp:742
+#: ../src/recentchanges.cpp:727
 msgid "Notes"
 msgstr "Notes"
 
@@ -1100,49 +1093,40 @@ msgstr "Ahir, %1%"
 msgid "Yesterday"
 msgstr "Ahir"
 
-#: ../src/utils.cpp:183
+#: ../src/utils.cpp:182
 msgid "%1% day ago, %2%"
-msgstr "Fa %1% dia, %2%"
+msgid_plural "%1% days ago, %2%"
+msgstr[0] "Fa %1% dia, %2%"
+msgstr[1] "Fa %1% dies, %2%"
 
+# csharp-format
 #: ../src/utils.cpp:186
-msgid "%1% days ago, %2%"
-msgstr "Fa %1% dies, %2%"
-
-# csharp-format
-#: ../src/utils.cpp:192
 msgid "%1% day ago"
-msgstr "Fa %1% dia"
+msgid_plural "%1% days ago"
+msgstr[0] "Fa %1% dia"
+msgstr[1] "Fa %1% dies"
 
-# csharp-format
-#: ../src/utils.cpp:195
-msgid "%1% days ago"
-msgstr "Fa %1% dies"
-
-#: ../src/utils.cpp:203
+#: ../src/utils.cpp:193
 msgid "Tomorrow, %1%"
 msgstr "Demà, %1%"
 
-#: ../src/utils.cpp:204
+#: ../src/utils.cpp:194
 msgid "Tomorrow"
 msgstr "Demà"
 
-#: ../src/utils.cpp:212
+#: ../src/utils.cpp:201
 msgid "In %1% day, %2%"
-msgstr "En %1% dia, %2%"
+msgid_plural "In %1% days, %2%"
+msgstr[0] "En %1% dia, %2%"
+msgstr[1] "En %1% dies, %2%"
 
-#: ../src/utils.cpp:215
-msgid "In %1% days, %2%"
-msgstr "En %1% dies, %2%"
-
-#: ../src/utils.cpp:221
+#: ../src/utils.cpp:205
 msgid "In %1% day"
-msgstr "En %1% dia"
+msgid_plural "In %1% days"
+msgstr[0] "En %1% dia"
+msgstr[1] "En %1% dies"
 
-#: ../src/utils.cpp:224
-msgid "In %1% days"
-msgstr "En %1% dies"
-
-#: ../src/utils.cpp:236
+#: ../src/utils.cpp:216
 msgid "No Date"
 msgstr "Sense data"
 
@@ -1280,6 +1264,43 @@ msgstr "Bloc de notes"
 #: ../src/notebooks/notebooknoteaddin.cpp:179
 msgid "_New notebook..."
 msgstr "_Bloc de notes nou..."
+
+#~ msgid "<span background='yellow'>_Highlight</span>"
+#~ msgstr "<span background='yellow'>_Ressaltat</span>"
+
+#~ msgid "<span size=\"x-large\">Hu_ge</span>"
+#~ msgstr "<span size=\"x-large\">_Molt gran</span>"
+
+#~ msgid "<span size=\"large\">_Large</span>"
+#~ msgstr "<span size=\"large\">_Gran</span>"
+
+#~ msgid "<span size=\"small\">S_mall</span>"
+#~ msgstr "<span size=\"small\">_Petita</span>"
+
+#~ msgid "Really delete these %1% notes?"
+#~ msgstr "Segur que voleu suprimir aquestes %1% notes?"
+
+#~ msgid "%1% matches"
+#~ msgstr "%1% coincidències"
+
+#~ msgid "Total: %1% notes"
+#~ msgstr "Total: %1% notes"
+
+#~ msgid "Matches: %1% notes"
+#~ msgstr "Coincidències: %1% notes"
+
+#~ msgid "%1% days ago, %2%"
+#~ msgstr "Fa %1% dies, %2%"
+
+# csharp-format
+#~ msgid "%1% days ago"
+#~ msgstr "Fa %1% dies"
+
+#~ msgid "In %1% days, %2%"
+#~ msgstr "En %1% dies, %2%"
+
+#~ msgid "In %1% days"
+#~ msgstr "En %1% dies"
 
 #~ msgid "Tomboy Notes"
 #~ msgstr "Notes del Tomboy"
@@ -1554,18 +1575,6 @@ msgstr "_Bloc de notes nou..."
 
 #~ msgid "_Bold"
 #~ msgstr "_Negreta"
-
-#~ msgid "_Highlight"
-#~ msgstr "_Ressaltat"
-
-#~ msgid "Hu_ge"
-#~ msgstr "_Molt gran"
-
-#~ msgid "_Large"
-#~ msgstr "_Gran"
-
-#~ msgid "S_mall"
-#~ msgstr "_Petita"
 
 #~ msgid "Synchronization"
 #~ msgstr "Sincronització"
