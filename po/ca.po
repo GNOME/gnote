@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 14:08+0200\n"
-"PO-Revision-Date: 2009-04-21 14:09+0200\n"
+"POT-Creation-Date: 2009-04-22 09:32+0200\n"
+"PO-Revision-Date: 2009-04-22 09:33+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -516,6 +516,16 @@ msgstr ""
 "Llista separada per espais en blanc de URI de les notes que sempre han "
 "d'aparèixer en el menú de notes del Gnote."
 
+#: ../src/sharp/addinstreemodel.cpp:64
+#, fuzzy
+msgid "Name"
+msgstr "Nom del servidor"
+
+#: ../src/sharp/addinstreemodel.cpp:65
+#, fuzzy
+msgid "Description"
+msgstr "Descripció del tipus de lletra"
+
 #: ../src/actionmanager.cpp:160
 msgid "_File"
 msgstr "_Fitxer"
@@ -564,7 +574,7 @@ msgstr "Surt del Gnote"
 msgid "_Edit"
 msgstr "_Edita"
 
-#: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:63
+#: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:86
 msgid "Gnote Preferences"
 msgstr "_Preferències del Gnote"
 
@@ -608,42 +618,42 @@ msgstr "Inicia la sincronització de les notes"
 msgid "Cannot create new note"
 msgstr "No es pot crear una nota nova"
 
-#: ../src/gnote.cpp:245
+#: ../src/gnote.cpp:246
 msgid "and Tomboy original authors."
 msgstr "i als autors del Tomboy."
 
-#: ../src/gnote.cpp:254
+#: ../src/gnote.cpp:255
 msgid "translator-credits"
 msgstr ""
 "Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Gil Forcada <gilforcada@guifi.net>"
 
-#: ../src/gnote.cpp:263
+#: ../src/gnote.cpp:264
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Una senzilla aplicació d'escriptori, fàcil d'usar, per a prendre notes."
 
-#: ../src/gnote.cpp:274
+#: ../src/gnote.cpp:275
 msgid "Homepage"
 msgstr "Pàgina inicial"
 
-#: ../src/preferencesdialog.cpp:81
+#: ../src/preferencesdialog.cpp:104
 msgid "Editing"
 msgstr "Edició"
 
-#: ../src/preferencesdialog.cpp:83
+#: ../src/preferencesdialog.cpp:106
 msgid "Hotkeys"
 msgstr "Dreceres"
 
-#: ../src/preferencesdialog.cpp:88
+#: ../src/preferencesdialog.cpp:111
 msgid "Add-ins"
 msgstr "Complements"
 
-#: ../src/preferencesdialog.cpp:155
+#: ../src/preferencesdialog.cpp:184
 msgid "_Spell check while typing"
 msgstr "_Verifica l'ortografia a mesura que escric"
 
-#: ../src/preferencesdialog.cpp:161
+#: ../src/preferencesdialog.cpp:190
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -653,11 +663,11 @@ msgstr ""
 
 # ViquiParaules ? (josep)
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:172
+#: ../src/preferencesdialog.cpp:201
 msgid "Highlight _WikiWords"
 msgstr "_Ressalta les WikiWords"
 
-#: ../src/preferencesdialog.cpp:178
+#: ../src/preferencesdialog.cpp:207
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -666,22 +676,22 @@ msgstr ""
 "fer clic a la paraula es crearà una nota amb aquest nom."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:185
+#: ../src/preferencesdialog.cpp:214
 msgid "Enable auto-_bulleted lists"
 msgstr "Habilita llistes de vinyetes automàtiques"
 
 #. Custom font...
-#: ../src/preferencesdialog.cpp:193
+#: ../src/preferencesdialog.cpp:222
 msgid "Use custom _font"
 msgstr "_Usa el tipus de lletra personalitzat"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:211 ../src/notemanager.cpp:101
+#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:101
 msgid "New Note Template"
 msgstr "Plantilla de nota nova"
 
-#: ../src/preferencesdialog.cpp:214
+#: ../src/preferencesdialog.cpp:243
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -689,16 +699,16 @@ msgstr ""
 "Utilitzeu la plantilla de nota nova per a especificar el text que s'hauria "
 "d'utilitzar quan es crei una nota nova."
 
-#: ../src/preferencesdialog.cpp:223
+#: ../src/preferencesdialog.cpp:252
 msgid "Open New Note Template"
 msgstr "Obre la plantilla de nota nova"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:281
+#: ../src/preferencesdialog.cpp:310
 msgid "Listen for _Hotkeys"
 msgstr "Presta atenció a les _dreceres"
 
-#: ../src/preferencesdialog.cpp:288
+#: ../src/preferencesdialog.cpp:317
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -709,55 +719,67 @@ msgstr ""
 "Control&gt;&lt;Maj&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:337
 msgid "Show notes _menu"
 msgstr "Mo_stra el menú de les notes"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:324
+#: ../src/preferencesdialog.cpp:353
 msgid "Open \"_Start Here\""
 msgstr "Obre «_Comenceu aquí»"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:339
+#: ../src/preferencesdialog.cpp:368
 msgid "Create _new note"
 msgstr "Crea una _nota nova"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:354
+#: ../src/preferencesdialog.cpp:383
 msgid "Open \"Search _All Notes\""
 msgstr "Obr_e «Cerca totes les notes»"
 
-#: ../src/preferencesdialog.cpp:380
+#: ../src/preferencesdialog.cpp:409
 msgid "Ser_vice:"
 msgstr "Ser_vei:"
 
-#: ../src/preferencesdialog.cpp:437
+#: ../src/preferencesdialog.cpp:466
 msgid "Not configurable"
 msgstr "No configurable"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:457
+#: ../src/preferencesdialog.cpp:486
 msgid "_Advanced..."
 msgstr "_Avançat..."
 
-#: ../src/preferencesdialog.cpp:504
+#: ../src/preferencesdialog.cpp:533
 msgid "The following add-ins are installed"
 msgstr "Els complements següents estan instal·lats"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:535
+#: ../src/preferencesdialog.cpp:564
 msgid "_Enable"
 msgstr "_Habilita"
 
-#: ../src/preferencesdialog.cpp:541
+#: ../src/preferencesdialog.cpp:570
 msgid "_Disable"
 msgstr "_Inhabilita"
 
-#: ../src/preferencesdialog.cpp:748
+#: ../src/preferencesdialog.cpp:830
 msgid "Choose Note Font"
 msgstr "Escolliu el tipus de lletra de la nota"
+
+#: ../src/preferencesdialog.cpp:925
+msgid "Version:"
+msgstr "Versió:"
+
+#: ../src/preferencesdialog.cpp:930
+msgid "Author:"
+msgstr "Autor:"
+
+#: ../src/preferencesdialog.cpp:936
+msgid "Copyright:"
+msgstr "Copyright:"
 
 #: ../src/notemanager.cpp:213
 msgid ""
@@ -972,22 +994,22 @@ msgid "Font Size"
 msgstr "Mida de la lletra"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:66
+#: ../src/note.cpp:67
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "Segur que voleu suprimir aquesta nota?"
 msgstr[1] "Segur que voleu suprimir aquestesi %1% notes?"
 
-#: ../src/note.cpp:78
+#: ../src/note.cpp:79
 msgid "If you delete a note it is permanently lost."
 msgstr "Si suprimiu una nota la perdreu definitivament."
 
 #
-#: ../src/note.cpp:114
+#: ../src/note.cpp:115
 msgid "Error saving note data."
 msgstr "S'ha produït un error en desar les dades de la nota."
 
-#: ../src/note.cpp:115
+#: ../src/note.cpp:116
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1045,7 +1067,7 @@ msgid_plural "Matches: %1% notes"
 msgstr[0] "Coincidències: %1% nota"
 msgstr[1] "Coincidències: %1% notes"
 
-#: ../src/recentchanges.cpp:727
+#: ../src/recentchanges.cpp:723
 msgid "Notes"
 msgstr "Notes"
 
@@ -1265,6 +1287,20 @@ msgstr "Bloc de notes"
 msgid "_New notebook..."
 msgstr "_Bloc de notes nou..."
 
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+msgid "_Fixed Width"
+msgstr "A_mplada fixa"
+
+#. this is the name of the plugin.
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+#, fuzzy
+msgid "Fixed Width"
+msgstr "A_mplada fixa"
+
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+msgid "Adds fixed-width font style."
+msgstr ""
+
 #~ msgid "<span background='yellow'>_Highlight</span>"
 #~ msgstr "<span background='yellow'>_Ressaltat</span>"
 
@@ -1410,9 +1446,6 @@ msgstr "_Bloc de notes nou..."
 
 #~ msgid "Local Folder"
 #~ msgstr "Carpeta local"
-
-#~ msgid "_Fixed Width"
-#~ msgstr "A_mplada fixa"
 
 #~ msgid "Cannot contact '{0}'"
 #~ msgstr "No s'ha pogut establir contacte amb «{0}»"
@@ -1611,8 +1644,8 @@ msgstr "_Bloc de notes nou..."
 #~ "Clearing your synchronization settings is not recommended.  You may be "
 #~ "forced to synchronize all of your notes again when you save new settings."
 #~ msgstr ""
-#~ "No es recomana netejar els paràmeteres de sincronització. Potser us vegeu "
-#~ "forçats a sincronitzar de nou totes les notes al desar els paràmeteres "
+#~ "No es recomana netejar els paràmetres de sincronització. Potser us vegeu "
+#~ "forçats a sincronitzar de nou totes les notes al desar els paràmetres "
 #~ "nous."
 
 #~ msgid "Resetting Synchronization Settings"
@@ -1646,15 +1679,6 @@ msgstr "_Bloc de notes nou..."
 
 #~ msgid "Error connecting :("
 #~ msgstr "S'ha produït un error en connectar: ("
-
-#~ msgid "Version:"
-#~ msgstr "Versió:"
-
-#~ msgid "Author:"
-#~ msgstr "Autor:"
-
-#~ msgid "Copyright:"
-#~ msgstr "Copyright:"
 
 #~ msgid "Add-in Dependencies:"
 #~ msgstr "Dependències del complement:"
@@ -1997,9 +2021,6 @@ msgstr "_Bloc de notes nou..."
 #~ msgid "GnomeFont name to use for the document text (deprecated)"
 #~ msgstr "El tipus de lletra que s'utilitzarà en el document (desaconsellat)"
 
-#~ msgid "Font Description"
-#~ msgstr "Descripció del tipus de lletra"
-
 #~ msgid "Font to use for the document text (e.g. \"Monospace 10\")"
 #~ msgstr ""
 #~ "Tipus de lletra que es farà servir pel text del document (p.ex. «Monospace "
@@ -2081,10 +2102,6 @@ msgstr "_Bloc de notes nou..."
 #, fuzzy
 #~ msgid "Tags:"
 #~ msgstr "Tasques"
-
-#, fuzzy
-#~ msgid "Name"
-#~ msgstr "Nom del servidor"
 
 #, fuzzy
 #~ msgid "Really remove this notebook?"
