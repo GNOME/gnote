@@ -412,7 +412,8 @@ namespace gnote {
     Glib::RefPtr<Gdk::Pixbuf> pixbuf = utils::get_icon("gnote", panel_size);
     set(pixbuf);
 #if GTK_VERSION_GE(2,16)
-    set_tooltip_text(tray_util_get_tooltip_text());
+    gtk_status_icon_set_tooltip_text(gobj(), 
+                                     tray_util_get_tooltip_text().c_str());
 #endif
 
     Gtk::Main::signal_quit().connect(sigc::mem_fun(*this, &TrayIcon::on_exit), 1);
