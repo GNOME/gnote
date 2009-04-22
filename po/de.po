@@ -13,10 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&component=general\n"
-"POT-Creation-Date: 2009-04-21 18:40+0000\n"
-"PO-Revision-Date: 2009-04-21 20:05+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-22 15:57+0200\n"
+"PO-Revision-Date: 2009-04-22 15:58+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -524,6 +523,14 @@ msgstr ""
 "Durch Leerzeichen getrennte Liste von Notiz-Adressen (URIs) für solche "
 "Notizen, die immer im Gnote-Notizenmenü erscheinen sollen."
 
+#: ../src/sharp/addinstreemodel.cpp:64
+msgid "Name"
+msgstr "Name"
+
+#: ../src/sharp/addinstreemodel.cpp:65
+msgid "Description"
+msgstr "Beschreibung"
+
 #: ../src/actionmanager.cpp:160
 msgid "_File"
 msgstr "_Datei"
@@ -572,7 +579,7 @@ msgstr "Gnote Beenden"
 msgid "_Edit"
 msgstr "_Bearbeiten"
 
-#: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:63
+#: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:86
 msgid "Gnote Preferences"
 msgstr "Gnote-Einstellungen"
 
@@ -616,42 +623,42 @@ msgstr "Abgleich der Notizen starten"
 msgid "Cannot create new note"
 msgstr "Neue Notiz konnte nicht angelegt werden"
 
-#: ../src/gnote.cpp:245
+#: ../src/gnote.cpp:246
 msgid "and Tomboy original authors."
 msgstr "und die Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:254
+#: ../src/gnote.cpp:255
 msgid "translator-credits"
 msgstr ""
 "Philipp Meier\n"
 "Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Mario Blättermann <mariobl@gnome.org>"
 
-#: ../src/gnote.cpp:263
+#: ../src/gnote.cpp:264
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Eine einfache und leicht bedienbare Anwendung für Notizen"
 
-#: ../src/gnote.cpp:274
+#: ../src/gnote.cpp:275
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/preferencesdialog.cpp:81
+#: ../src/preferencesdialog.cpp:104
 msgid "Editing"
 msgstr "Bearbeiten"
 
-#: ../src/preferencesdialog.cpp:83
+#: ../src/preferencesdialog.cpp:106
 msgid "Hotkeys"
 msgstr "Tastenkombinationen"
 
-#: ../src/preferencesdialog.cpp:88
+#: ../src/preferencesdialog.cpp:111
 msgid "Add-ins"
 msgstr "Add-Ins"
 
-#: ../src/preferencesdialog.cpp:155
+#: ../src/preferencesdialog.cpp:184
 msgid "_Spell check while typing"
 msgstr "_Rechtschreibprüfung während der Eingabe"
 
-#: ../src/preferencesdialog.cpp:161
+#: ../src/preferencesdialog.cpp:190
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -660,11 +667,11 @@ msgstr ""
 "Kontextmenü angezeigt."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:172
+#: ../src/preferencesdialog.cpp:201
 msgid "Highlight _WikiWords"
 msgstr "_WikiWords hervorheben"
 
-#: ../src/preferencesdialog.cpp:178
+#: ../src/preferencesdialog.cpp:207
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -673,22 +680,22 @@ msgstr ""
 "b>. Ein Klick auf das Wort wird eine Notiz mit diesem Namen erstellen."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:185
+#: ../src/preferencesdialog.cpp:214
 msgid "Enable auto-_bulleted lists"
 msgstr "_Automatische Aufzählungslisten aktivieren"
 
 #. Custom font...
-#: ../src/preferencesdialog.cpp:193
+#: ../src/preferencesdialog.cpp:222
 msgid "Use custom _font"
 msgstr "Eigene _Schriftart verwenden"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:211 ../src/notemanager.cpp:101
+#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:101
 msgid "New Note Template"
 msgstr "Neue Notizbuchvorlage"
 
-#: ../src/preferencesdialog.cpp:214
+#: ../src/preferencesdialog.cpp:243
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -696,16 +703,16 @@ msgstr ""
 "Verwenden Sie die Vorlage für neue Notizen, um festzulegen, welcher Text beim "
 "Anlegen einer neuen Notiz verwendet werden soll."
 
-#: ../src/preferencesdialog.cpp:223
+#: ../src/preferencesdialog.cpp:252
 msgid "Open New Note Template"
 msgstr "Vorlage für neue Notizen öffnen"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:281
+#: ../src/preferencesdialog.cpp:310
 msgid "Listen for _Hotkeys"
 msgstr "_Hotkeys aktivieren"
 
-#: ../src/preferencesdialog.cpp:288
+#: ../src/preferencesdialog.cpp:317
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a keypress. "
 "Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
@@ -715,55 +722,67 @@ msgstr ""
 "Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:337
 msgid "Show notes _menu"
 msgstr "Notiz_menü anzeigen"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:324
+#: ../src/preferencesdialog.cpp:353
 msgid "Open \"_Start Here\""
 msgstr "»Hier _starten« öffnen"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:339
+#: ../src/preferencesdialog.cpp:368
 msgid "Create _new note"
 msgstr "_Neue Notiz anlegen"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:354
+#: ../src/preferencesdialog.cpp:383
 msgid "Open \"Search _All Notes\""
 msgstr "»_Alle Notizen durchsuchen« öffnen"
 
-#: ../src/preferencesdialog.cpp:380
+#: ../src/preferencesdialog.cpp:409
 msgid "Ser_vice:"
 msgstr "_Dienst:"
 
-#: ../src/preferencesdialog.cpp:437
+#: ../src/preferencesdialog.cpp:466
 msgid "Not configurable"
 msgstr "Nicht konfigurierbar"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:457
+#: ../src/preferencesdialog.cpp:486
 msgid "_Advanced..."
 msgstr "_Erweitert …"
 
-#: ../src/preferencesdialog.cpp:504
+#: ../src/preferencesdialog.cpp:533
 msgid "The following add-ins are installed"
 msgstr "Die folgenden Add-Ins sind installiert"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:535
+#: ../src/preferencesdialog.cpp:564
 msgid "_Enable"
 msgstr "_Aktivieren"
 
-#: ../src/preferencesdialog.cpp:541
+#: ../src/preferencesdialog.cpp:570
 msgid "_Disable"
 msgstr "_Deaktivieren"
 
-#: ../src/preferencesdialog.cpp:748
+#: ../src/preferencesdialog.cpp:830
 msgid "Choose Note Font"
 msgstr "Schriftart der Notizen auswählen"
+
+#: ../src/preferencesdialog.cpp:925
+msgid "Version:"
+msgstr "Version:"
+
+#: ../src/preferencesdialog.cpp:930
+msgid "Author:"
+msgstr "Autor:"
+
+#: ../src/preferencesdialog.cpp:936
+msgid "Copyright:"
+msgstr "Copyright:"
 
 #: ../src/notemanager.cpp:213
 msgid ""
@@ -980,21 +999,21 @@ msgid "Font Size"
 msgstr "Schriftgröße"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:66
+#: ../src/note.cpp:67
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "Diese Notiz wirklich löschen?"
 msgstr[1] "Diese %1% Notizen wirklich löschen?"
 
-#: ../src/note.cpp:78
+#: ../src/note.cpp:79
 msgid "If you delete a note it is permanently lost."
 msgstr "Ein gelöschte Notiz ist für immer verloren."
 
-#: ../src/note.cpp:114
+#: ../src/note.cpp:115
 msgid "Error saving note data."
 msgstr "Fehler beim Speichern der Notizdaten."
 
-#: ../src/note.cpp:115
+#: ../src/note.cpp:116
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1051,7 +1070,7 @@ msgid_plural "Matches: %1% notes"
 msgstr[0] "Treffer: %s% Notiz"
 msgstr[1] "Treffer: %s% Notizen"
 
-#: ../src/recentchanges.cpp:727
+#: ../src/recentchanges.cpp:723
 msgid "Notes"
 msgstr "Notizen"
 
@@ -1269,3 +1288,16 @@ msgstr "Notizbuch"
 #: ../src/notebooks/notebooknoteaddin.cpp:179
 msgid "_New notebook..."
 msgstr "Neues Notiz_buch …"
+
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+msgid "_Fixed Width"
+msgstr "_Feste Breite"
+
+#. this is the name of the plugin.
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+msgid "Fixed Width"
+msgstr "Feste Breite"
+
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+msgid "Adds fixed-width font style."
+msgstr "Fügt eine Schrift fester Breite hinzu."
