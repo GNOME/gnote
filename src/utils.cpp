@@ -425,6 +425,11 @@ namespace gnote {
     {
       std::vector<std::string> items;
       sharp::string_split(items, data, "\n");
+      load_from_string_list(items);
+    }
+
+    void UriList::load_from_string_list(const std::vector<std::string> & items)
+    {
       for(std::vector<std::string>::const_iterator iter = items.begin();
           iter != items.end(); ++iter) {
 
@@ -457,7 +462,7 @@ namespace gnote {
     UriList::UriList(const Gtk::SelectionData & selection)
     {
       if(selection.get_length() > 0) {
-        load_from_string(selection.get_text());
+        load_from_string_list(selection.get_uris());
       }
     }
 

@@ -707,18 +707,14 @@ namespace gnote {
       return;
     }
                   
-    std::string uris;
+    std::vector<std::string> uris;
     for(Note::List::const_iterator iter = selected_notes.begin();
         iter != selected_notes.end(); ++iter) {
-      if (!uris.empty()) {
-        uris += "\n";
-      }
-      uris += (*iter)->uri();
+
+      uris.push_back((*iter)->uri());
     }
-                  
-    // FIXME: Gtk.SelectionData has no way to get the
-    //        requested target.
-    selection_data.set ("text/uri-list", uris.c_str());
+    
+    selection_data.set_uris(uris);
                   
     if (selected_notes.size() == 1) {
       selection_data.set_text(selected_notes.front()->get_title());
