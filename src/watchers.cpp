@@ -778,7 +778,7 @@ namespace gnote {
 
       Gtk::TextIter start_iter = range.start();
       Gtk::TextIter end_iter = range.end();
-      get_buffer()->erase (start_iter, end_iter);
+      end_iter = get_buffer()->erase (start_iter, end_iter);
       start_iter = range.start();
       get_buffer()->insert_with_tag(start_iter, renamed->get_title(), m_link_tag);
     }
@@ -845,7 +845,7 @@ namespace gnote {
     int idx = 0;
 
     while (true) {
-      idx = sharp::string_index_of(buffer_text, sharp::string_substring(find_title_lower, idx));
+      idx = sharp::string_index_of(buffer_text, find_title_lower, idx);
       if (idx < 0)
         break;
 
