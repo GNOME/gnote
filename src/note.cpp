@@ -1286,7 +1286,7 @@ namespace gnote {
     }
 
     xml.write_start_element("", "open-on-startup", "");
-    xml.write_string(boost::lexical_cast<std::string>(note.is_open_on_startup()));
+    xml.write_string(note.is_open_on_startup() ? "True" : "False");
     xml.write_end_element();
 
     xml.write_end_element(); // Note
