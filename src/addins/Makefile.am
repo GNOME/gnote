@@ -1,4 +1,4 @@
 
 
 
-SUBDIRS = fixedwidth
+SUBDIRS = fixedwidth printnotes

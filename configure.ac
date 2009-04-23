@@ -188,6 +188,7 @@ src/Makefile
 src/addins/Makefile
 src/addins/addins.mk
 src/addins/fixedwidth/Makefile
+src/addins/printnotes/Makefile
 po/Makefile.in
 po/Makefile
 help/Makefile

@@ -26,6 +26,8 @@
 
 #include <time.h>
 
+#include <glibmm/convert.h>
+
 #include "sharp/datetime.hpp"
 
 
@@ -87,7 +89,7 @@ namespace sharp {
   {
     char output[256];
     strftime(output, sizeof(output), format, t);
-    return output;
+    return Glib::locale_to_utf8(output);
   }
 
   std::string DateTime::to_string(const char * format) const
