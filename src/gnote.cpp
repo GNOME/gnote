@@ -57,6 +57,7 @@ namespace gnote {
   {
     delete m_prefsdlg;
     delete m_manager;
+    delete m_keybinder;
   }
 
 
