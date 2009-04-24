@@ -671,67 +671,90 @@ namespace gnote {
 
   void PreferencesDialog::on_addin_prefs_button()
   {
-//    const sharp::DynamicModule * module = get_selected_addin();
-#if 0
-    Gtk::Dialog dialog = null;
-//    Mono.Addins.Addin addin =
-//      addin_tree.ActiveAddinData as Mono.Addins.Addin;
-    if (addin == null)
+    const sharp::DynamicModule * module = get_selected_addin();
+    Gtk::Dialog *dialog;
+
+    if (!module) {
       return;
+    }
 
-    if (addin_prefs_dialogs.ContainsKey (addin.Id) == false) {
+    std::map<std::string, Gtk::Dialog* >::iterator iter;
+    iter = addin_prefs_dialogs.find(module->id());
+    if (iter == addin_prefs_dialogs.end()) {
       // A preference dialog isn't open already so create a new one
-      Gtk::Image icon =
-        new Gtk::Image (Gtk::Stock::PREFERENCES, Gtk::IconSize.Dialog);
-      Gtk::Label caption = new Gtk::Label ();
-      caption.Markup = string.Format (
-        "<span size='large' weight='bold'>{0} {1}</span>",
-        addin.Name, addin.Version);
-      caption.Xalign = 0;
-      caption.UseMarkup = true;
-      caption.UseUnderline = false;
+      Gtk::Image *icon =
+        manage(new Gtk::Image (Gtk::Stock::PREFERENCES, Gtk::ICON_SIZE_DIALOG));
+      Gtk::Label *caption = manage(new Gtk::Label());
+      caption->set_markup(
+        str(boost::format("<span size='large' weight='bold'>%1% %2%</span>") 
+            % module->name() % module->version()));
+      caption->property_xalign() = 0;
+      caption->set_use_markup(true);
+      caption->set_use_underline(false);
 
-      Gtk::Widget pref_widget =
-        addin_manager.CreateAddinPreferenceWidget (addin);
+      Gtk::Widget * pref_widget =
+        m_addin_manager.create_addin_preference_widget (module->id());
 
-      if (pref_widget == null)
-        pref_widget = new Gtk::Label (Catalog.GetString ("Not Implemented"));
+      if (pref_widget == NULL) {
+        pref_widget = manage(new Gtk::Label (_("Not Implemented")));
+      }
+      
+      Gtk::HBox *hbox = manage(new Gtk::HBox (false, 6));
+      Gtk::VBox *vbox = manage(new Gtk::VBox (false, 6));
+      vbox->set_border_width(6);
+      hbox->pack_start (*icon, false, false, 0);
+      hbox->pack_start (*caption, true, true, 0);
+      vbox->pack_start (*hbox, false, false, 0);
 
-      Gtk::HBox hbox = new Gtk::HBox (false, 6);
-      Gtk::VBox vbox = new Gtk::VBox (false, 6);
-      vbox.BorderWidth = 6;
-      hbox.PackStart (icon, false, false, 0);
-      hbox.PackStart (caption, true, true, 0);
-      vbox.PackStart (hbox, false, false, 0);
+      vbox->pack_start (*pref_widget, true, true, 0);
+      vbox->show_all ();
 
-      vbox.PackStart (pref_widget, true, true, 0);
-      vbox.ShowAll ();
+      dialog = new Gtk::Dialog(
+        str(boost::format(_("%1% Preferences")) % module->name()),
+        *this, false, false);
+      dialog->property_destroy_with_parent() = true;
+      dialog->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
 
-      dialog = new Gtk::Dialog (
-        string.Format (Catalog.GetString ("{0} Preferences"),
-                       addin.Name),
-        this,
-        Gtk::DialogFlags.DestroyWithParent | Gtk::DialogFlags.NoSeparator,
-        Gtk::Stock.Close, Gtk::ResponseType.Close);
-
-      dialog.VBox.PackStart (vbox, true, true, 0);
-      dialog.DeleteEvent += AddinPrefDialogDeleted;
-      dialog.Response += AddinPrefDialogResponse;
+      dialog->get_vbox()->pack_start (*vbox, true, true, 0);
+      dialog->signal_delete_event().connect(
+        sigc::bind(
+          sigc::mem_fun(*this, &PreferencesDialog::addin_pref_dialog_deleted),
+          dialog), false);
+      dialog->signal_response().connect(
+        sigc::bind(
+          sigc::mem_fun(*this, &PreferencesDialog::addin_pref_dialog_response),
+          dialog));
 
       // Store this dialog off in the dictionary so it can be
       // presented again if the user clicks on the preferences button
       // again before closing the preferences dialog.
-      dialog.Data ["AddinId"] = addin.Id;
-      addin_prefs_dialogs [addin.Id] = dialog;
-    } else {
+//      dialog->set_data(Glib::Quark("AddinId"), module->id());
+      addin_prefs_dialogs [module->id()] = dialog;
+    } 
+    else {
       // It's already opened so just present it again
-      dialog = addin_prefs_dialogs [addin.Id];
+      dialog = iter->second;
     }
 
-    dialog.Present ();
-#endif
+    dialog->present ();
   }
 
+
+  bool PreferencesDialog::addin_pref_dialog_deleted(GdkEventAny*, 
+                                                    Gtk::Dialog* dialog)
+  {
+    // Remove the addin from the addin_prefs_dialogs Dictionary
+    dialog->hide ();
+
+//    addin_prefs_dialogs.erase(dialog->get_addin_id());
+
+    return false;
+  }
+
+  void PreferencesDialog::addin_pref_dialog_response(int, Gtk::Dialog* dialog)
+  {
+    addin_pref_dialog_deleted(NULL, dialog);
+  }
 
   void PreferencesDialog::on_addin_info_button()
   {
@@ -776,7 +799,7 @@ namespace gnote {
     dialog->hide ();
 
     AddinInfoDialog *addin_dialog = static_cast<AddinInfoDialog*>(dialog);
-    addin_prefs_dialogs.erase(addin_dialog->get_addin_id());
+    addin_info_dialogs.erase(addin_dialog->get_addin_id());
 
     return false;
   }

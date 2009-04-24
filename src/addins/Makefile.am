@@ -1,4 +1,7 @@
 
 
 
-SUBDIRS = fixedwidth printnotes
+SUBDIRS = fixedwidth \
+	inserttimestamp \
+	printnotes \
+	$(NULL)

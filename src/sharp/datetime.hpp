@@ -53,6 +53,10 @@ public:
   bool operator>(const DateTime & dt) const;
 
   std::string to_string(const char * format) const;
+  std::string to_string(const std::string & format) const
+    {
+      return to_string(format.c_str());
+    }
   std::string to_short_time_string() const;
   std::string to_iso8601() const;
 

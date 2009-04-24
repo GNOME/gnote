@@ -26,6 +26,7 @@
 #include "sharp/dynamicmodule.hpp"
 
 #include "addinmanager.hpp"
+#include "addinpreferencefactory.hpp"
 #include "debug.hpp"
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
@@ -55,6 +56,7 @@ namespace gnote {
       std::for_each(iter->second.begin(), iter->second.end(), 
                     boost::bind(&boost::checked_delete<NoteAddin>, _1));
     }
+    sharp::map_delete_all_second(m_addin_prefs);
   }
 
   void AddinManager::initialize_sharp_addins()
@@ -91,6 +93,11 @@ namespace gnote {
         m_note_addin_infos.insert(std::make_pair(typeid(*f).name(), f));
       }
 
+      f = dmod->query_interface(AddinPreferenceFactory::IFACE_NAME);
+      if(f) {
+        AddinPreferenceFactory * factory = dynamic_cast<AddinPreferenceFactory*>((*f)());
+        m_addin_prefs.insert(std::make_pair((*iter)->id(), factory));
+      }
       
     }
   }
@@ -128,5 +135,14 @@ namespace gnote {
   void AddinManager::get_preference_tab_addins(std::list<PreferenceTabAddin *> &l) const
   {
     sharp::map_get_values(m_pref_tab_addins, l);
+  }
+
+  Gtk::Widget * AddinManager::create_addin_preference_widget(const std::string & id)
+  {
+    IdAddinPrefsMap::const_iterator iter = m_addin_prefs.find(id);
+    if(iter != m_addin_prefs.end()) {
+      return iter->second->create_preference_widget();
+    }
+    return NULL;
   }
 }

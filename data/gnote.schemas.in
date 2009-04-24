@@ -537,11 +537,12 @@
       <applyto>/apps/gnote/insert_timestamp/format</applyto>
       <owner>gnote</owner>
       <type>string</type>
-      <default>dddd, MMMM d, h:mm tt</default>
+      <default>%c</default>
       <locale name="C">
          <short>Timestamp format</short>
          <long>
-	   The date format that is used for the timestamp.
+	   The date format that is used for the timestamp. It followe the format of
+           strftime(3).
          </long>
       </locale>
     </schema>

@@ -37,6 +37,7 @@ namespace gnote {
 
 class ApplicationAddin;
 class PreferenceTabAddin;
+class AddinPreferenceFactory;
 
 
 class AddinManager
@@ -53,6 +54,8 @@ public:
     { 
       return m_module_manager.get_modules(); 
     }
+
+  Gtk::Widget * create_addin_preference_widget(const std::string & id);
 
   sigc::signal<void> & signal_application_addin_list_changed();
 private:
@@ -72,7 +75,9 @@ private:
   typedef std::map<std::string, sharp::IfaceFactoryBase*> IdInfoMap;
   IdInfoMap                                m_note_addin_infos;
   typedef std::map<std::string, PreferenceTabAddin*> IdPrefTabAddinMap;
-  IdPrefTabAddinMap                         m_pref_tab_addins;
+  IdPrefTabAddinMap                        m_pref_tab_addins;
+  typedef std::map<std::string, AddinPreferenceFactory*> IdAddinPrefsMap;
+  IdAddinPrefsMap                          m_addin_prefs;
   sigc::signal<void>         m_application_addin_list_changed;
 };
 
