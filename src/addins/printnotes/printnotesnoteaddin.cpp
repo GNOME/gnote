@@ -36,8 +36,7 @@ namespace printnotes {
 
   PrintNotesModule::PrintNotesModule()
   {
-    add(gnote::NoteAddin::IFACE_NAME, 
-       new sharp::IfaceFactory<PrintNotesNoteAddin>);
+    ADD_INTERFACE_IMPL(PrintNotesNoteAddin);
   }
   const char * PrintNotesModule::id() const
   {

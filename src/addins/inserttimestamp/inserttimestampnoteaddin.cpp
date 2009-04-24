@@ -32,10 +32,8 @@ namespace inserttimestamp {
 
   InsertTimeStampModule::InsertTimeStampModule()
   {
-    add(gnote::NoteAddin::IFACE_NAME, 
-        new sharp::IfaceFactory<InsertTimestampNoteAddin>);
-    add(gnote::AddinPreferenceFactory::IFACE_NAME,
-        new sharp::IfaceFactory<InsertTimestampPreferencesFactory>);
+    ADD_INTERFACE_IMPL(InsertTimestampNoteAddin);
+    ADD_INTERFACE_IMPL(InsertTimestampPreferencesFactory);
   }
   const char * InsertTimeStampModule::id() const
   {

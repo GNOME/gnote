@@ -35,8 +35,7 @@ namespace fixedwidth {
 
   FixedWidthModule::FixedWidthModule()
   {
-    add(gnote::NoteAddin::IFACE_NAME, 
-        new sharp::IfaceFactory<FixedWidthNoteAddin>);
+    ADD_INTERFACE_IMPL(FixedWidthNoteAddin);
   }
 
   const char * FixedWidthModule::id() const

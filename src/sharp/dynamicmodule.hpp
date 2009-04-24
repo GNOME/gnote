@@ -43,6 +43,12 @@ typedef DynamicModule* (*instanciate_func_t)();
   extern "C" sharp::DynamicModule* dynamic_module_instanciate() \
   { return new klass; }
 
+
+#define ADD_INTERFACE_IMPL(klass) \
+    add(klass::IFACE_NAME, \
+        new sharp::IfaceFactory<klass>)
+
+
 class DynamicModule
 {
 public:
