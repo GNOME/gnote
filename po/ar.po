@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 08:51+0200\n"
-"PO-Revision-Date: 2009-04-21 23:16+0300\n"
+"POT-Creation-Date: 2009-04-25 23:36+0300\n"
+"PO-Revision-Date: 2009-04-26 00:31+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: ../data/GNOME_GNoteApplet.server.in.in.h:1
 msgid "Accessories"
-msgstr "كماليات"
+msgstr "الكماليات"
 
 #: ../data/GNOME_GNoteApplet.server.in.in.h:2
 msgid "Gnote Applet Factory"
@@ -39,12 +39,12 @@ msgid "_About"
 msgstr "_عنْ"
 
 #: ../data/GNOME_GNoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:507
+#: ../src/tray.cpp:508
 msgid "_Help"
 msgstr "م_ساعدة"
 
 #: ../data/GNOME_GNoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:502
+#: ../src/tray.cpp:503
 msgid "_Preferences"
 msgstr "الت_فضيلات"
 
@@ -160,8 +160,7 @@ msgid ""
 "If enable_custom_font is true, the font name set here will be used as the "
 "font when displaying notes."
 msgstr ""
-"إن كان enable_custom_font صحيح، فسيستخدم الخط المحدد هنا عند إظهار "
-"الملاحظات."
+"إن كان enable_custom_font صحيح، فسيستخدم الخط المحدد هنا عند إظهار الملاحظات."
 
 #: ../data/gnote.schemas.in.h:24
 msgid ""
@@ -189,9 +188,9 @@ msgid ""
 "global_keybindings will be enabled, allowing for useful Gnote actions to be "
 "available from any application."
 msgstr ""
-"إن كانت صحيحة، مجموعة ارتباطات المفاتيح العامة لسطح المكتب في "
-"/apps/gnote/global_keybindings سيتم تفعيلها، مما سيسمح لبعض إجراءات "
-"ملاحظات‌ج المفيدة بأن تتوفر لأي تطبيق."
+"إن كانت صحيحة، مجموعة ارتباطات المفاتيح العامة لسطح المكتب في /apps/gnote/"
+"global_keybindings سيتم تفعيلها، مما سيسمح لبعض إجراءات ملاحظات‌ج المفيدة بأن "
+"تتوفر لأي تطبيق."
 
 #: ../data/gnote.schemas.in.h:28
 msgid ""
@@ -199,8 +198,7 @@ msgid ""
 "displaying notes. Otherwise the desktop default font will be used."
 msgstr ""
 "إن كانت صحيحة، سيتم استخدام مجموعة اسم الخط في custom_font_face كاسم للخط "
-"عند إظهار الملاحظات. ما عدا ذلك سيتم استخدام الخط الافتراضي للواجهة "
-"الرسومية."
+"عند إظهار الملاحظات. ما عدا ذلك سيتم استخدام الخط الافتراضي للواجهة الرسومية."
 
 #: ../data/gnote.schemas.in.h:29
 msgid ""
@@ -331,7 +329,10 @@ msgid "Synchronization Local Server Path"
 msgstr "مزامنة مسار الخادوم المحلي"
 
 #: ../data/gnote.schemas.in.h:55
-msgid "The date format that is used for the timestamp."
+#, fuzzy
+msgid ""
+"The date format that is used for the timestamp. It followe the format of "
+"strftime(3)."
 msgstr "نسق التاريخ لقالب الوقت."
 
 #: ../data/gnote.schemas.in.h:56
@@ -346,8 +347,8 @@ msgstr ""
 "ارتباط المفاتيح العالمي لإنشاء و عرض ملاحظة جديدة. النمط يكون على النحو "
 "التالي \"&lt;Control&gt;a\" أو \"&lt;Shift&gt;&lt;Alt&gt;F1\". المعرب اللغوي "
 "متحرر بإنصاف و يسمح بحالات الحروف الصغيرة أو الكبيرة، كما يسمح بالاختصارات "
-"مثل \"&lt;Ctl&gt;\" و \"&lt;Ctrl&gt;\". إذا ضبطت الخيار للنص الخاص \"disabled\"، "
-"فحينها لن يكون هناك ارتباط للمفاتيح لهذه العملية"
+"مثل \"&lt;Ctl&gt;\" و \"&lt;Ctrl&gt;\". إذا ضبطت الخيار للنص الخاص \"disabled"
+"\"، فحينها لن يكون هناك ارتباط للمفاتيح لهذه العملية"
 
 #: ../data/gnote.schemas.in.h:57
 msgid ""
@@ -492,6 +493,14 @@ msgstr ""
 "قائمة تفصلها مساحات بيضاء تحتوي على عناوين الملاحظات التي يجب أن تظهر دائمًا "
 "في قائمة ملاحظات ملاحظات‌ج."
 
+#: ../src/sharp/addinstreemodel.cpp:64
+msgid "Name"
+msgstr "الاسم"
+
+#: ../src/sharp/addinstreemodel.cpp:65
+msgid "Description"
+msgstr "الوصف"
+
 #: ../src/actionmanager.cpp:160
 msgid "_File"
 msgstr "_ملف"
@@ -528,7 +537,7 @@ msgstr "أغل_ق"
 msgid "Close this window"
 msgstr "أغلق هذه النافذة"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:519
+#: ../src/actionmanager.cpp:187 ../src/tray.cpp:520
 msgid "_Quit"
 msgstr "أ_نهِ"
 
@@ -540,7 +549,7 @@ msgstr "أغلق ملاحظات‌ج"
 msgid "_Edit"
 msgstr "_حرر"
 
-#: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:63
+#: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:86
 msgid "Gnote Preferences"
 msgstr "تفضيلات ملاحظات‌ج"
 
@@ -580,15 +589,15 @@ msgstr "_زامن الملاحظات"
 msgid "Start synchronizing notes"
 msgstr "ابدأ مزامنة الملاحظات"
 
-#: ../src/gnote.cpp:202
+#: ../src/gnote.cpp:203
 msgid "Cannot create new note"
 msgstr "تعذر إنشاء ملاحظة جديدة"
 
-#: ../src/gnote.cpp:245
+#: ../src/gnote.cpp:247
 msgid "and Tomboy original authors."
 msgstr "ومؤلفي توم‌بوي الأصليين."
 
-#: ../src/gnote.cpp:254
+#: ../src/gnote.cpp:256
 msgid "translator-credits"
 msgstr ""
 "جهاد عفيفي\t<djihed@gmail.com>\n"
@@ -597,31 +606,31 @@ msgstr ""
 "أحمد فرغل\t<ahmad.farghal@gmail.com>\n"
 "أنس عفيف عماد\t<anas.e87@gmail.com>"
 
-#: ../src/gnote.cpp:263
+#: ../src/gnote.cpp:265
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "تطبيق سطح مكتب بسيط و سهل الاستخدام لتسجيل الملاحظات."
 
-#: ../src/gnote.cpp:274
+#: ../src/gnote.cpp:276
 msgid "Homepage"
 msgstr "البداية"
 
-#: ../src/preferencesdialog.cpp:81
+#: ../src/preferencesdialog.cpp:104
 msgid "Editing"
 msgstr "التحرير"
 
-#: ../src/preferencesdialog.cpp:83
+#: ../src/preferencesdialog.cpp:106
 msgid "Hotkeys"
 msgstr "الاختصارات"
 
-#: ../src/preferencesdialog.cpp:88
+#: ../src/preferencesdialog.cpp:111
 msgid "Add-ins"
 msgstr "الملحقات"
 
-#: ../src/preferencesdialog.cpp:155
+#: ../src/preferencesdialog.cpp:184
 msgid "_Spell check while typing"
 msgstr "دقّق الإملاء أثناء ال_كتابة"
 
-#: ../src/preferencesdialog.cpp:161
+#: ../src/preferencesdialog.cpp:190
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -630,11 +639,11 @@ msgstr ""
 "السياق."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:172
+#: ../src/preferencesdialog.cpp:201
 msgid "Highlight _WikiWords"
 msgstr "أبرِز _كلمات الويكي"
 
-#: ../src/preferencesdialog.cpp:178
+#: ../src/preferencesdialog.cpp:207
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -643,96 +652,116 @@ msgstr ""
 "ستُنشأ ملاحظة جديدة بنفس الاسم"
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:185
+#: ../src/preferencesdialog.cpp:214
 msgid "Enable auto-_bulleted lists"
 msgstr "فعّل التر_تيب الآلي للقوائم"
 
 #. Custom font...
-#: ../src/preferencesdialog.cpp:193
+#: ../src/preferencesdialog.cpp:222
 msgid "Use custom _font"
 msgstr "استخدم _خط مخصّص"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:211 ../src/notemanager.cpp:101
+#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:101
 msgid "New Note Template"
 msgstr "قالب ملاحظة جديد"
 
-#: ../src/preferencesdialog.cpp:214
+#: ../src/preferencesdialog.cpp:243
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
-msgstr "استعمل قالب الملاحظات الجديدة لكتابة النص الذي سيظهر في كل ملاحظة جديدة"
+msgstr ""
+"استعمل قالب الملاحظات الجديدة لكتابة النص الذي سيظهر في كل ملاحظة جديدة"
 
-#: ../src/preferencesdialog.cpp:223
+#: ../src/preferencesdialog.cpp:252
 msgid "Open New Note Template"
 msgstr "افتح قالب ملاحظة جديد"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:281
+#: ../src/preferencesdialog.cpp:310
 msgid "Listen for _Hotkeys"
 msgstr "استمع إلى الا_ختصارات"
 
-#: ../src/preferencesdialog.cpp:288
+#: ../src/preferencesdialog.cpp:317
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
 "Alt&gt;N</b>"
 msgstr ""
 "تتيح لك الاختصارات سرعة الوصول من أي مكان من خلال الضغط على المفاتيح. مثال "
-"على الاختصارات: ‪<b>&lt;Control&gt;&lt;Shift&gt;F11</b>‬،‬ "
-"‪<b>&lt;Alt&gt;N</b>"
+"على الاختصارات: ‪<b>&lt;Control&gt;&lt;Shift&gt;F11</b>‬،‬ ‪<b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:337
 msgid "Show notes _menu"
 msgstr "أظهر _قائمة الملاحظات"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:324
+#: ../src/preferencesdialog.cpp:353
 msgid "Open \"_Start Here\""
 msgstr "افتح \"ملاحظة ا_بدأ هنا\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:339
+#: ../src/preferencesdialog.cpp:368
 msgid "Create _new note"
 msgstr "أنشئ ملاحظة _جديدة"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:354
+#: ../src/preferencesdialog.cpp:383
 msgid "Open \"Search _All Notes\""
 msgstr "افتح \"ابحث في _كل الملاحظات\""
 
-#: ../src/preferencesdialog.cpp:380
+#: ../src/preferencesdialog.cpp:409
 msgid "Ser_vice:"
 msgstr "خ_دمة:"
 
-#: ../src/preferencesdialog.cpp:437
+#: ../src/preferencesdialog.cpp:466
 msgid "Not configurable"
 msgstr "غير قابل للإعداد"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:457
+#: ../src/preferencesdialog.cpp:486
 msgid "_Advanced..."
 msgstr "مت_قدّم..."
 
-#: ../src/preferencesdialog.cpp:504
+#: ../src/preferencesdialog.cpp:533
 msgid "The following add-ins are installed"
 msgstr "الملحقات التالية مثبتة"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:535
+#: ../src/preferencesdialog.cpp:564
 msgid "_Enable"
 msgstr "_فعّل"
 
-#: ../src/preferencesdialog.cpp:541
+#: ../src/preferencesdialog.cpp:570
 msgid "_Disable"
 msgstr "ع_طّل"
 
-#: ../src/preferencesdialog.cpp:748
+#: ../src/preferencesdialog.cpp:699
+msgid "Not Implemented"
+msgstr "غير مطبق"
+
+#: ../src/preferencesdialog.cpp:713
+msgid "%1% Preferences"
+msgstr "تفضيلات %1%"
+
+#: ../src/preferencesdialog.cpp:853
 msgid "Choose Note Font"
 msgstr "اختر خط الملاحظات"
+
+#: ../src/preferencesdialog.cpp:948
+msgid "Version:"
+msgstr "النسخة:"
+
+#: ../src/preferencesdialog.cpp:953
+msgid "Author:"
+msgstr "المؤلف:"
+
+#: ../src/preferencesdialog.cpp:959
+msgid "Copyright:"
+msgstr "حقوق النسخ:"
 
 #: ../src/notemanager.cpp:213
 msgid ""
@@ -767,10 +796,10 @@ msgstr ""
 "يمكنك بعدها تنظيم الملاحظات التي تنشئها عن طريق ربط الملاحظات والأفكار التي "
 "لها علاقة ببعضها!\n"
 "\n"
-"لقد أنشأنا ملاحظة تسمى <link:internal>استخدام الروابط في "
-"ملاحظات‌ج</link:internal>.  لاحظ كيف أننا كلما نكتب <link:internal>استخدام "
-"الروابط في ملاحظات‌ج</link:internal> يتم تسطيرها تلقائيًا؟ انقر الرابط لفتح "
-"الملاحظة.</note-content>"
+"لقد أنشأنا ملاحظة تسمى <link:internal>استخدام الروابط في ملاحظات‌ج</link:"
+"internal>.  لاحظ كيف أننا كلما نكتب <link:internal>استخدام الروابط في "
+"ملاحظات‌ج</link:internal> يتم تسطيرها تلقائيًا؟ انقر الرابط لفتح الملاحظة.</"
+"note-content>"
 
 #: ../src/notemanager.cpp:232
 msgid ""
@@ -797,8 +826,8 @@ msgstr ""
 "الملاحظات. يمنع هذا وجود روابط مكسورة في الملاحظات الأخرى عند إعادة تسمية "
 "ملاحظة.\n"
 "\n"
-"بالإضافة إلى هذا، سيتم الربط إلى ملاحظة موجودة تلقائيًا من أجلك إن كتبت "
-"اسمها في ملاحظة أخرى.</note-content>"
+"بالإضافة إلى هذا، سيتم الربط إلى ملاحظة موجودة تلقائيًا من أجلك إن كتبت اسمها "
+"في ملاحظة أخرى.</note-content>"
 
 #. Attempt to find an existing Start Here note
 #: ../src/notemanager.cpp:247 ../src/notemanager.cpp:321
@@ -944,7 +973,7 @@ msgid "Font Size"
 msgstr "حجم الخط"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:66
+#: ../src/note.cpp:67
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "هل تريد حقا حذف هذه الملاحظة؟"
@@ -954,23 +983,23 @@ msgstr[3] "هل تريد حقا حذف هذه الملاحظات ال%1%؟"
 msgstr[4] "هل تريد حقا حذف هذه الملاحظات ال%1%؟"
 msgstr[5] "هل تريد حقا حذف هذه الملاحظات ال%1%؟"
 
-#: ../src/note.cpp:78
+#: ../src/note.cpp:79
 msgid "If you delete a note it is permanently lost."
 msgstr "إذا حذفت الملاحظة فسوف تفقد للأبد."
 
-#: ../src/note.cpp:114
+#: ../src/note.cpp:115
 msgid "Error saving note data."
 msgstr "خطأ أثناء حفظ بيانات الملاحظات."
 
-#: ../src/note.cpp:115
+#: ../src/note.cpp:116
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
 "Error details can be found in ~/.gnote.log."
 msgstr ""
 "حدث خطأ عند محاولة حفظ ملاحظاتك. الرجاء التحقق من أن لديك مساحة القرص "
-"الكافية، وأن لديك التصاريح الصحيحة على ‪~/.gnote‬. تستطيع مطالعة تفاصيل "
-"الخطأ في ‪~/.gnote.log‬."
+"الكافية، وأن لديك التصاريح الصحيحة على ‪~/.gnote‬. تستطيع مطالعة تفاصيل الخطأ "
+"في ‪~/.gnote.log‬."
 
 #: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
@@ -1031,7 +1060,7 @@ msgstr[3] "يطابق: %1% ملاحظات"
 msgstr[4] "يطابق: %1% ملاحظة"
 msgstr[5] "يطابق: %1% ملاحظة"
 
-#: ../src/recentchanges.cpp:727
+#: ../src/recentchanges.cpp:723
 msgid "Notes"
 msgstr "ملاحظات"
 
@@ -1043,7 +1072,7 @@ msgstr "ملاحظات‌ج"
 msgid " (new)"
 msgstr " (جديد)"
 
-#: ../src/tray.cpp:512
+#: ../src/tray.cpp:513
 msgid "_About Gnote"
 msgstr "_عنْ ملاحظات‌ج"
 
@@ -1052,8 +1081,7 @@ msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
-"تعذّر العثور على \"كتيب ملاحظات‌ج\".  رجاءً تأكد من أن البرنامج مثبت بشكل "
-"صحيح."
+"تعذّر العثور على \"كتيب ملاحظات‌ج\".  رجاءً تأكد من أن البرنامج مثبت بشكل صحيح."
 
 #: ../src/utils.cpp:136
 msgid "Help not found"
@@ -1265,6 +1293,71 @@ msgstr "كتيّب"
 msgid "_New notebook..."
 msgstr "_كتيّب جديد"
 
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+msgid "_Fixed Width"
+msgstr "ثابت العر_ض"
+
+#. this is the name of the plugin.
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+msgid "Fixed Width"
+msgstr "ثابت العرض"
+
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+msgid "Adds fixed-width font style."
+msgstr "يضيف طراز خط ثابت العرضز"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
+msgid "Printing Support"
+msgstr "دعم الطباعة"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
+msgid "Allows you to print a note."
+msgstr "يتيح لك طبع الملاحظات."
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "هُربِرت فيجوري ومشروع توم‌بوي"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
+msgid "Print"
+msgstr "اطبع"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:115
+msgid "Error printing note"
+msgstr "خطأ أثناء طبع الملاحظة"
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:275
+msgid "Page %1% of %2%"
+msgstr "صفحة %1% من %2%"
+
+#. Add the menu item when the window is created
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:79
+msgid "Insert Timestamp"
+msgstr "أدرج خاتما زمنيا"
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:50
+msgid "Inserts current date and time at the cursor position."
+msgstr "أدرج التاريخ والوقت الحالي في موقع المؤشر."
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:54
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "هُربِرت فيجوري ومشروع توم‌بوي"
+
+#. Label
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
+msgid "Choose one of the predefined formats or use your own."
+msgstr "استعمل الصيغ المعرّفة مسبّقا أو استعمل ما تريد."
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:71
+msgid "Use _Selected Format"
+msgstr "استعمل التنسيق الم_حدد"
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
+msgid "_Use Custom Format"
+msgstr "اس_تعمل تنسيقا مخصّصا"
+
 #~ msgid "Tomboy Notes"
 #~ msgstr "ملاحظات Tomboy"
 
@@ -1298,9 +1391,6 @@ msgstr "_كتيّب جديد"
 #~ msgstr ""
 #~ "يمكنك استعمال وصلات بغزيلا في ملاحظاتك. اذا اردت ايقونا ما لموقع، اضفه "
 #~ "هنا."
-
-#~ msgid "Host Name"
-#~ msgstr "أسم المضيف"
 
 #~ msgid "Icon"
 #~ msgstr "أيقونة"
@@ -1375,29 +1465,14 @@ msgstr "_كتيّب جديد"
 #~ msgid "Local Folder"
 #~ msgstr "مجلّد محلي"
 
-#~ msgid "_Fixed Width"
-#~ msgstr "ثابت العر_ض"
-
 #~ msgid "Cannot contact '{0}'"
 #~ msgstr "تعذر الاتصال بـ '{0}'"
 
 #~ msgid "Error running gaim-remote: {0}"
 #~ msgstr "خطأ أثناء تشغيل gaim-remote: {0}"
 
-#~ msgid "Insert Timestamp"
-#~ msgstr "أدخل قالبا وقتيا"
-
 #~ msgid "dddd, MMMM d, h:mm tt"
 #~ msgstr "dddd، MMMM d، h:mm tt"
-
-#~ msgid "Choose one of the predefined formats or use your own."
-#~ msgstr "استعمل الصيغ المعرّفة مسبّقا أو استعمل ما تريد."
-
-#~ msgid "Use _Selected Format"
-#~ msgstr "استعمل التنسيق الم_نتقى"
-
-#~ msgid "_Use Custom Format"
-#~ msgstr "اس_تعمل تنسيقا مخصّصا"
 
 #~ msgid "Today: Template"
 #~ msgstr "اليوم: قالب"
@@ -1419,9 +1494,6 @@ msgstr "_كتيّب جديد"
 #~ msgid "_Open Today: Template"
 #~ msgstr "م_فتوحة اليوم: قالب"
 
-#~ msgid "Print"
-#~ msgstr "اطبع"
-
 #~ msgid "Preparing pages..."
 #~ msgstr "يجري تحضير الصفحات..."
 
@@ -1433,9 +1505,6 @@ msgstr "_كتيّب جديد"
 
 #~ msgid "Print preview"
 #~ msgstr "معاينة الطباعة"
-
-#~ msgid "Page %N of %Q"
-#~ msgstr "الصفحة %N من %Q"
 
 #~ msgid "%A %x, %X"
 #~ msgstr "%A %x، %X"
@@ -1475,9 +1544,6 @@ msgstr "_كتيّب جديد"
 
 #~ msgid "GnomeFont name to use for the document text (deprecated)"
 #~ msgstr "اسم خط جنوم الذي يُستخدم لنص المستند (مهجور)"
-
-#~ msgid "Font Description"
-#~ msgstr "وصف الخط"
 
 #~ msgid "Font to use for the document text (e.g. \"Monospace 10\")"
 #~ msgstr "الخط المستخدم لنص المستند (مثل \"Monospace 10\")"
@@ -1619,9 +1685,6 @@ msgstr "_كتيّب جديد"
 #~ msgid "Synchronization"
 #~ msgstr "مزامنة"
 
-#~ msgid "Not Implemented"
-#~ msgstr "غير مطبق"
-
 #~ msgid "{0} Preferences"
 #~ msgstr "{0} تفضيلات"
 
@@ -1679,15 +1742,6 @@ msgstr "_كتيّب جديد"
 
 #~ msgid "Error connecting :("
 #~ msgstr "خطأ في الاتصال :("
-
-#~ msgid "Version:"
-#~ msgstr "النسخة:"
-
-#~ msgid "Author:"
-#~ msgstr "المؤلف:"
-
-#~ msgid "Copyright:"
-#~ msgstr "حقوق النسخ:"
 
 #~ msgid "Add-in Dependencies:"
 #~ msgstr "متطلبات الملحقات:"
