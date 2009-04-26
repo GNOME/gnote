@@ -34,9 +34,18 @@
 
 namespace sharp {
 
-  void directory_get_files_with_ext(const std::string & dir, const std::string & ext,
+  /** 
+   * @param dir the directory to list
+   * @param ext the extension. If empty, then all files are listed.
+   * @retval files the list of files
+   */
+  void directory_get_files_with_ext(const std::string & dir, 
+                                    const std::string & ext,
                                     std::list<std::string>  & files);
 
+
+  void directory_get_files(const std::string & dir, 
+                           std::list<std::string>  & files);
 }
 
 

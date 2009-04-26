@@ -49,11 +49,16 @@ namespace sharp {
           ++itr )
     {
       // is_regular() is deprecated but is_regular_file isn't in 1.34.
-      if ( is_regular(*itr) && (sharp::string_to_lower(extension(*itr)) == ext) )
+      if ( is_regular(*itr) && (ext.empty() || (sharp::string_to_lower(extension(*itr)) == ext)) )
       {
         list.push_back(itr->string());
       }
     }
+  }
+
+  void directory_get_files(const std::string & dir, std::list<std::string>  & files)
+  {
+    directory_get_files_with_ext(dir, "", files);
   }
 
 
