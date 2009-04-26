@@ -142,6 +142,21 @@ namespace gnote {
       }
     }
 
+
+    void open_url(const std::string & url)
+      throw (Glib::Error)
+    {
+      if(!url.empty()) {
+        GError *err = NULL;
+        DBG_OUT("Opening url '%s'...", url.c_str());
+        gtk_show_uri (NULL, url.c_str(), GDK_CURRENT_TIME, &err);
+        if(err) {
+          throw Glib::Error(err, true);
+        }
+      }
+    }
+
+
     void show_opening_location_error(Gtk::Window * parent, 
                                      const std::string & url, 
                                      const std::string & error)

@@ -54,6 +54,7 @@ namespace gnote {
 
     void show_help(const std::string & filename, const std::string & link_id,
                    GdkScreen *screen, Gtk::Window *parent);
+    void open_url(const std::string & url) throw (Glib::Error);
     void show_opening_location_error(Gtk::Window * parent, 
                                      const std::string & url, 
                                      const std::string & error);
