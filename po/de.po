@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-22 15:57+0200\n"
-"PO-Revision-Date: 2009-04-22 15:58+0100\n"
+"POT-Creation-Date: 2009-04-26 11:31+0200\n"
+"PO-Revision-Date: 2009-04-26 11:39+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,12 +40,12 @@ msgid "_About"
 msgstr "_Info"
 
 #: ../data/GNOME_GNoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:507
+#: ../src/tray.cpp:508
 msgid "_Help"
 msgstr "_Hilfe"
 
 #: ../data/GNOME_GNoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:502
+#: ../src/tray.cpp:503
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
@@ -153,7 +153,7 @@ msgstr ""
 
 #: ../data/gnote.schemas.in.h:19
 msgid "FUSE Mounting Timeout (ms)"
-msgstr "Zeitablauf (ms) das für FUSE-Einhängen"
+msgstr "Zeitablauf (ms) für das FUSE-Einhängen"
 
 #: ../data/gnote.schemas.in.h:20
 msgid "HTML Export All Linked Notes"
@@ -161,7 +161,7 @@ msgstr "HTML-Export: Alle verknüpften Notizen"
 
 #: ../data/gnote.schemas.in.h:21
 msgid "HTML Export Last Directory"
-msgstr "HTML-Export: Letztes Verzeichnis"
+msgstr "HTML-Export: Letzter Ordner"
 
 #: ../data/gnote.schemas.in.h:22
 msgid "HTML Export Linked Notes"
@@ -345,8 +345,12 @@ msgid "Synchronization Local Server Path"
 msgstr "Lokaler Pfad des Abgleich-Server"
 
 #: ../data/gnote.schemas.in.h:55
-msgid "The date format that is used for the timestamp."
-msgstr "Das Datumsformat, das für den Zeitstempel verwendet wird."
+msgid ""
+"The date format that is used for the timestamp. It followe the format of "
+"strftime(3)."
+msgstr ""
+"Das Datumsformat, das für den Zeitstempel verwendet wird. Es folgt den "
+"Vorgaben von strftime(3)."
 
 #: ../data/gnote.schemas.in.h:56
 msgid ""
@@ -431,8 +435,8 @@ msgstr "Die Verarbeitungsroutine für »note://«-Adressen"
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
-"Das letzte Verzeichnis, in das eine Notiz über das »In HTML exportieren«-"
-"Plugin exportiert wurde."
+"Der letzte Ordner, in das eine Notiz über das »In HTML exportieren«-Plugin "
+"exportiert wurde."
 
 #: ../data/gnote.schemas.in.h:63
 msgid ""
@@ -567,13 +571,13 @@ msgstr "S_chließen"
 msgid "Close this window"
 msgstr "Dieses Fenster schließen"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:519
+#: ../src/actionmanager.cpp:187 ../src/tray.cpp:520
 msgid "_Quit"
 msgstr "_Beenden"
 
 #: ../src/actionmanager.cpp:187
 msgid "Quit Gnote"
-msgstr "Gnote Beenden"
+msgstr "Gnote beenden"
 
 #: ../src/actionmanager.cpp:190
 msgid "_Edit"
@@ -585,7 +589,7 @@ msgstr "Gnote-Einstellungen"
 
 #: ../src/actionmanager.cpp:202
 msgid "_Contents"
-msgstr "_Inhaltsverzeichnis"
+msgstr "_Inhalt"
 
 #: ../src/actionmanager.cpp:202
 msgid "Gnote Help"
@@ -619,26 +623,26 @@ msgstr "Notizen abglei_chen"
 msgid "Start synchronizing notes"
 msgstr "Abgleich der Notizen starten"
 
-#: ../src/gnote.cpp:202
+#: ../src/gnote.cpp:203
 msgid "Cannot create new note"
 msgstr "Neue Notiz konnte nicht angelegt werden"
 
-#: ../src/gnote.cpp:246
+#: ../src/gnote.cpp:247
 msgid "and Tomboy original authors."
 msgstr "und die Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:255
+#: ../src/gnote.cpp:256
 msgid "translator-credits"
 msgstr ""
 "Philipp Meier\n"
 "Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Mario Blättermann <mariobl@gnome.org>"
 
-#: ../src/gnote.cpp:264
+#: ../src/gnote.cpp:265
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Eine einfache und leicht bedienbare Anwendung für Notizen"
 
-#: ../src/gnote.cpp:275
+#: ../src/gnote.cpp:276
 msgid "Homepage"
 msgstr "Homepage"
 
@@ -768,19 +772,27 @@ msgstr "_Aktivieren"
 msgid "_Disable"
 msgstr "_Deaktivieren"
 
-#: ../src/preferencesdialog.cpp:830
+#: ../src/preferencesdialog.cpp:699
+msgid "Not Implemented"
+msgstr "Nicht implementiert"
+
+#: ../src/preferencesdialog.cpp:713
+msgid "%1% Preferences"
+msgstr "%1%-Einstellungen"
+
+#: ../src/preferencesdialog.cpp:853
 msgid "Choose Note Font"
 msgstr "Schriftart der Notizen auswählen"
 
-#: ../src/preferencesdialog.cpp:925
+#: ../src/preferencesdialog.cpp:948
 msgid "Version:"
 msgstr "Version:"
 
-#: ../src/preferencesdialog.cpp:930
+#: ../src/preferencesdialog.cpp:953
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:936
+#: ../src/preferencesdialog.cpp:959
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -1082,7 +1094,7 @@ msgstr "Gnote-Notizen"
 msgid " (new)"
 msgstr " (neu)"
 
-#: ../src/tray.cpp:512
+#: ../src/tray.cpp:513
 msgid "_About Gnote"
 msgstr "_Info zu Gnote"
 
@@ -1098,59 +1110,59 @@ msgstr ""
 msgid "Help not found"
 msgstr "Hilfe wurde nicht gefunden"
 
-#: ../src/utils.cpp:154
+#: ../src/utils.cpp:169
 msgid "Cannot open location"
 msgstr "Ort kann nicht geöffnet werden"
 
-#: ../src/utils.cpp:168
+#: ../src/utils.cpp:183
 msgid "Today, %1%"
 msgstr "Heute, %1%"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:184
 msgid "Today"
 msgstr "Heute"
 
-#: ../src/utils.cpp:174
+#: ../src/utils.cpp:189
 msgid "Yesterday, %1%"
 msgstr "Gestern, %1%"
 
-#: ../src/utils.cpp:175
+#: ../src/utils.cpp:190
 msgid "Yesterday"
 msgstr "Gestern"
 
-#: ../src/utils.cpp:182
+#: ../src/utils.cpp:197
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "Vor %1% Tag, %2%"
 msgstr[1] "Vor %1% Tagen, %2%"
 
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:201
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "vor %1% Tag"
 msgstr[1] "vor %1% Tagen"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:208
 msgid "Tomorrow, %1%"
 msgstr "Morgen, %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:209
 msgid "Tomorrow"
 msgstr "Morgen"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:216
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "In %1% Tag, %2%"
 msgstr[1] "In %1% Tagen, %2%"
 
-#: ../src/utils.cpp:205
+#: ../src/utils.cpp:220
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "In %1% Tag"
 msgstr[1] "In %1% Tagen"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:231
 msgid "No Date"
 msgstr "Kein Datum"
 
@@ -1170,11 +1182,11 @@ msgstr ""
 msgid "Note title taken"
 msgstr "Titel der Notiz übernommen"
 
-#: ../src/watchers.cpp:590
+#: ../src/watchers.cpp:577
 msgid "_Copy Link Address"
 msgstr "Link-Adresse _kopieren"
 
-#: ../src/watchers.cpp:596
+#: ../src/watchers.cpp:583
 msgid "_Open Link"
 msgstr "Link ö_ffnen"
 
@@ -1301,3 +1313,55 @@ msgstr "Feste Breite"
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
 msgid "Adds fixed-width font style."
 msgstr "Fügt eine Schrift fester Breite hinzu."
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
+msgid "Printing Support"
+msgstr "Druckunterstützung"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
+msgid "Allows you to print a note."
+msgstr "Ermöglicht Ihnen das Drucken einer Notiz."
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "Hubert Figuiere und das Tomboy-Projekt"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
+msgid "Print"
+msgstr "Drucken"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:115
+msgid "Error printing note"
+msgstr "Fehler beim Drucken der Notiz."
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:275
+msgid "Page %1% of %2%"
+msgstr "Seite %1% von %2%"
+
+#. Add the menu item when the window is created
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:79
+msgid "Insert Timestamp"
+msgstr "Zeitstempel einfügen"
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:50
+msgid "Inserts current date and time at the cursor position."
+msgstr "Fügt die aktuelle Zeit und das Datum an der Position des Cursors ein."
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:54
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "Hubert Figuiere und das Tomboy-Projekt"
+
+#. Label
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
+msgid "Choose one of the predefined formats or use your own."
+msgstr "Wählen Sie eines der vordefinierten Formate aus."
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:71
+msgid "Use _Selected Format"
+msgstr "Au_sgewähltes Format verwenden"
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
+msgid "_Use Custom Format"
+msgstr "Ben_utzerdefiniertes Format verwenden"
