@@ -18,6 +18,9 @@
  */
 
 
+#if HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 #include <iostream>
 #include <algorithm>
@@ -28,6 +31,7 @@
 #include <gtk/gtk.h>
 
 #include <glibmm/i18n.h>
+#include <glibmm/spawn.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
@@ -105,7 +109,7 @@ namespace gnote {
     Glib::RefPtr<Gdk::Pixbuf> get_icon(const std::string & name, int size)
     {
       try {
-        return Gtk::IconTheme::get_default()->load_icon(name, size);
+        return Gtk::IconTheme::get_default()->load_icon(name, size, (Gtk::IconLookupFlags) 0);
       }
       catch(const Glib::Exception & e)
       {
@@ -123,6 +127,7 @@ namespace gnote {
       }
       GError *error = NULL;
 
+#ifdef HAVE_GTK_SHOW_URI
       if(!gtk_show_uri (screen, uri.c_str(), gtk_get_current_event_time (), &error)) {
         
         std::string message = _("The \"Gnote Manual\" could "
@@ -140,6 +145,9 @@ namespace gnote {
           g_error_free(error);
         }
       }
+#else
+      Glib::spawn_command_line_async ("xdg-open " + uri);
+#endif
     }
 
 
@@ -149,7 +157,11 @@ namespace gnote {
       if(!url.empty()) {
         GError *err = NULL;
         DBG_OUT("Opening url '%s'...", url.c_str());
+#ifdef HAVE_GTK_SHOW_URI
         gtk_show_uri (NULL, url.c_str(), GDK_CURRENT_TIME, &err);
+#else
+        Glib::spawn_command_line_async ("xdg-open " + url);
+#endif
         if(err) {
           throw Glib::Error(err, true);
         }

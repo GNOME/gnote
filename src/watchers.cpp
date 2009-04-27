@@ -445,8 +445,10 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteUrlWatcher::on_button_press), false);
     editor->signal_populate_popup().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_populate_popup));
+#ifdef HAVE_CLASS_GTK__WIDGET_SIGNAL_POPUP_MENU
     editor->signal_popup_menu().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_popup_menu), false);
+#endif
   }
 
   std::string NoteUrlWatcher::get_url(const Gtk::TextIter & start, const Gtk::TextIter & end)

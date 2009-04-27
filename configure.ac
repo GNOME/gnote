@@ -23,9 +23,7 @@ AC_SUBST(GNOTE_VERSION)
 dnl all the library version.
 dnl if one is harcoded elsewhere, it is a bug
 
-dnl 2.14 needed for gtk_show_uri(). Possibly replacable by gnomevfs or what not
-dnl to backport.
-GTK_VERSION=2.14
+GTK_VERSION=2.12
 LIBGLIBMM_VERSION=2.0
 LIBGTKMM_VERSION=2.12.0
 dnl LIBGLADEMM_VERSION=2.6.0
@@ -75,6 +73,13 @@ PKG_CHECK_MODULES(GCONF, [gconf-2.0])
 dnl PKG_CHECK_MODULES(LIBGLADEMM, [libglademm-2.4 >= $LIBGLADEMM_VERSION])
 dnl PKG_CHECK_MODULES(LIBGNOMEUI, [libgnomeui-2.0 >= $LIBGNOMEUI_VERSION])
 dnl PKG_CHECK_MODULES(LIBGCONFMM, [gconfmm-2.6 >= $LIBGCONFMM_VERSION])
+
+PKG_CHECK_EXISTS(gtk+-2.0 >= 2.14.0,
+  [AC_DEFINE(HAVE_GTK_SHOW_URI, 1, [Define to 1 if you have gtk_show_uri])],
+  [])
+PKG_CHECK_EXISTS(gtkmm-2.4 >= 2.14.0,
+  [AC_DEFINE(HAVE_CLASS_GTK__WIDGET_SIGNAL_POPUP_MENU, 1, [Define to 1 if class Gtk::Widget has signal_popup_menu])],
+  [])
 
 dnl check for the ext2 uuid library. TODO replace it with something more portable
 AC_CHECK_HEADER(uuid/uuid.h,,[AC_MSG_ERROR("uuid header is missing")])
