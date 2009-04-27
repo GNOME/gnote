@@ -46,6 +46,7 @@ namespace sharp {
       }
     bool is_file() const;
     std::string local_path() const;
+    std::string get_host() const;
     static std::string escape_uri_string(const std::string &);
   private:
     std::string m_uri;

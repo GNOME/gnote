@@ -17,49 +17,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef __BUGZILLA_INSERT_BUG_ACTION_HPP_
+#define __BUGZILLA_INSERT_BUG_ACTION_HPP_
 
+#include <string>
 
+#include "undo.hpp"
 
-#ifndef __ADDIN_PREFERENCE_FACTORY_HPP_
-#define __ADDIN_PREFERENCE_FACTORY_HPP_
+#include "bugzillalink.hpp"
 
-#include <gtkmm/widget.h>
+namespace bugzilla {
 
-#include "sharp/modulefactory.hpp"
-
-
-namespace gnote {
-
-
-/** the base class for the preference dialog factory */
-class AddinPreferenceFactoryBase
-  : public sharp::IInterface
+class InsertBugAction
+  : public gnote::SplitterAction
 {
 public:
-  static const char * IFACE_NAME;
-  virtual Gtk::Widget * create_preference_widget() = 0;
+  InsertBugAction(const Gtk::TextIter & start, const std::string & id,
+                  const Glib::RefPtr<Gtk::TextBuffer> & buffer,
+                  const BugzillaLink::Ptr & tag);
+  void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  void merge (EditAction * action);
+  bool can_merge (const EditAction * action) const;
+  void destroy ();
+
+private:
+  BugzillaLink::Ptr m_tag;
+  int               m_offset;
+  std::string       m_id;
 };
 
 
-/** the template version */
-template <typename _AddinType>
-class AddinPreferenceFactory
-  : public AddinPreferenceFactoryBase
-{
-public:
-  static AddinPreferenceFactoryBase * create()
-    {
-      return new AddinPreferenceFactory<_AddinType>();
-    }
-  virtual Gtk::Widget * create_preference_widget()
-    {
-      return Gtk::manage(new _AddinType);
-    }
-};
-
-
-};
+}
 
 
 #endif
-

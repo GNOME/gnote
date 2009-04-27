@@ -1,7 +1,8 @@
 
 
 
-SUBDIRS = fixedwidth \
+SUBDIRS = bugzilla \
+	fixedwidth \
 	inserttimestamp \
 	printnotes \
 	$(NULL)

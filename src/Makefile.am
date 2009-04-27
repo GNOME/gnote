@@ -47,6 +47,7 @@ libgnote_a_SOURCES = \
 	sharp/dynamicmodule.hpp sharp/dynamicmodule.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
 	sharp/exception.hpp sharp/exception.cpp \
+	sharp/fileinfo.hpp sharp/fileinfo.cpp \
 	sharp/files.hpp sharp/files.cpp \
 	sharp/map.hpp \
 	sharp/modulefactory.hpp \

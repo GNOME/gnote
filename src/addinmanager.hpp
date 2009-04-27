@@ -37,7 +37,7 @@ namespace gnote {
 
 class ApplicationAddin;
 class PreferenceTabAddin;
-class AddinPreferenceFactory;
+class AddinPreferenceFactoryBase;
 
 
 class AddinManager
@@ -76,7 +76,7 @@ private:
   IdInfoMap                                m_note_addin_infos;
   typedef std::map<std::string, PreferenceTabAddin*> IdPrefTabAddinMap;
   IdPrefTabAddinMap                        m_pref_tab_addins;
-  typedef std::map<std::string, AddinPreferenceFactory*> IdAddinPrefsMap;
+  typedef std::map<std::string, AddinPreferenceFactoryBase*> IdAddinPrefsMap;
   IdAddinPrefsMap                          m_addin_prefs;
   sigc::signal<void>         m_application_addin_list_changed;
 };

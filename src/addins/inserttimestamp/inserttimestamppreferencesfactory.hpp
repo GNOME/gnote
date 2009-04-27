@@ -28,17 +28,9 @@ namespace inserttimestamp {
 
 
   class InsertTimestampPreferencesFactory
-    : public gnote::AddinPreferenceFactory
+    : public gnote::AddinPreferenceFactory<InsertTimestampPreferences>
   {
   public:
-    static gnote::AddinPreferenceFactory * create()
-      {
-        return new InsertTimestampPreferencesFactory;
-      }
-    virtual Gtk::Widget * create_preference_widget()
-      {
-        return Gtk::manage(new InsertTimestampPreferences());
-      }
   };
 
 

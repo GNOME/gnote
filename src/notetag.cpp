@@ -45,7 +45,24 @@ namespace gnote {
                               "DynamicNoteTag for constructing "
                               "anonymous tags.");
     }
+    
   }
+
+  
+  NoteTag::NoteTag()
+    : Gtk::TextTag()
+    , m_widget(NULL)
+    , m_flags(0)
+  {
+  }
+
+
+  void NoteTag::initialize(const std::string & element_name)
+  {
+    m_element_name = element_name;
+    m_flags = CAN_SERIALIZE | CAN_SPLIT;
+  }
+  
 
 
   void NoteTag::set_can_serialize(bool value)
@@ -517,19 +534,20 @@ namespace gnote {
       
   DynamicNoteTag::Ptr NoteTagTable::create_dynamic_tag(const std::string & tag_name)
   {
-    std::map<std::string, TagType>::iterator iter = m_tag_types.find(tag_name);
+    std::map<std::string, Factory>::iterator iter = m_tag_types.find(tag_name);
     if(iter == m_tag_types.end()) {
       return DynamicNoteTag::Ptr();
     }
-    DynamicNoteTag::Ptr tag(iter->second.create(tag_name));
+    DynamicNoteTag::Ptr tag(iter->second());
+    tag->initialize(tag_name);
     add(tag);
     return tag;
   }
 
  
-  void NoteTagTable::register_dynamic_tag(const std::string & tag_name, const TagType & type)
+  void NoteTagTable::register_dynamic_tag(const std::string & tag_name, const FactorySlot & factory)
   {
-    m_tag_types[tag_name] = type;
+    m_tag_types[tag_name].connect(factory);
   }
 
 

@@ -45,6 +45,16 @@ namespace sharp {
   }
 
 
+  void file_delete(const std::string & p)
+  {
+    boost::filesystem::remove(p);
+  }
+
+
+  void file_copy(const std::string & source, const std::string & dest)
+  {
+    boost::filesystem::copy_file(source, dest);
+  }
 
 
 }

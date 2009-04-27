@@ -43,9 +43,12 @@ namespace sharp {
                                     const std::string & ext,
                                     std::list<std::string>  & files);
 
-
   void directory_get_files(const std::string & dir, 
                            std::list<std::string>  & files);
+
+  bool directory_exists(const std::string & dir);
+  bool directory_create(const std::string & dir);
+
 }
 
 

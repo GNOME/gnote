@@ -21,11 +21,22 @@
 
 
 
+#ifndef __BUGZILLA_PREFERENCES_FACTORY_HPP_
+#define __BUGZILLA_PREFERENCES_FACTORY_HPP_
+
 #include "addinpreferencefactory.hpp"
+#include "bugzillapreferences.hpp"
 
-namespace gnote {
-  
-const char * AddinPreferenceFactoryBase::IFACE_NAME = "gnote::AddinPreferenceFactoryBase";
+namespace bugzilla {
 
+
+class BugzillaPreferencesFactory
+  : public gnote::AddinPreferenceFactory<BugzillaPreferences>
+{
+
+};
 
 }
+
+
+#endif

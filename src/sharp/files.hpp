@@ -32,9 +32,9 @@
 
 namespace sharp {
 
-
+  void file_delete(const std::string & p);
   std::string file_basename(const std::string & p);
-
+  void file_copy(const std::string & source, const std::string & dest);
 }
 
 

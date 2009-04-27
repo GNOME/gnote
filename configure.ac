@@ -1,4 +1,4 @@
-AC_INIT(gnote, 0.3.0)
+AC_INIT(gnote, 0.2.1)
 AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR(README)
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
@@ -13,8 +13,8 @@ AC_CONFIG_MACRO_DIR(m4)
 m4_pattern_allow([^BOOST_])
 
 MAJOR_VERSION=0
-MINOR_VERSION=3
-MICRO_VERSION=0
+MINOR_VERSION=2
+MICRO_VERSION=1
 
 GNOTE_VERSION="$MAJOR_VERSION.$MINOR_VERSION.$MICRO_VERSION"
 AC_SUBST(GNOTE_VERSION)
@@ -192,6 +192,7 @@ libtomboy/Makefile
 src/Makefile
 src/addins/Makefile
 src/addins/addins.mk
+src/addins/bugzilla/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
 src/addins/printnotes/Makefile

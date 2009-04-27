@@ -23,42 +23,29 @@
  */
 
 
+#include <boost/filesystem/path.hpp>
+#include <boost/filesystem/convenience.hpp>
+#include "sharp/fileinfo.hpp"
 
-
-#include "sharp/string.hpp"
-#include "sharp/uri.hpp"
-
-#define FILE_URI_SCHEME "file://"
 
 namespace sharp {
 
-  bool Uri::is_file() const
+  FileInfo::FileInfo(const std::string & s)
+    : m_path(s)
   {
-    return string_starts_with(m_uri, FILE_URI_SCHEME);
   }
 
 
-  std::string Uri::local_path() const
+  std::string FileInfo::get_name() const
   {
-    if(!is_file()) {
-      return m_uri;
-    }
-    return string_replace_first(m_uri, FILE_URI_SCHEME, "");
-  }
-
-  std::string Uri::get_host() const
-  {
-    std::string host;
-    
-    return host;
+    return boost::filesystem::path(m_path).filename();
   }
 
 
-  /** this is a very minimalistic implementation */
-  std::string Uri::escape_uri_string(const std::string &s)
+  std::string FileInfo::get_extension() const
   {
-    return string_replace_all(s, " ", "%20");
+    return boost::filesystem::extension(m_path);
   }
+
 
 }
-

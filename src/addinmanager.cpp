@@ -93,9 +93,9 @@ namespace gnote {
         m_note_addin_infos.insert(std::make_pair(typeid(*f).name(), f));
       }
 
-      f = dmod->query_interface(AddinPreferenceFactory::IFACE_NAME);
+      f = dmod->query_interface(AddinPreferenceFactoryBase::IFACE_NAME);
       if(f) {
-        AddinPreferenceFactory * factory = dynamic_cast<AddinPreferenceFactory*>((*f)());
+        AddinPreferenceFactoryBase * factory = dynamic_cast<AddinPreferenceFactoryBase*>((*f)());
         m_addin_prefs.insert(std::make_pair((*iter)->id(), factory));
       }
       

@@ -632,7 +632,7 @@ namespace gnote {
       enable_addin_button->set_sensitive(!module->enabled());
       disable_addin_button->set_sensitive(module->enabled());
       addin_prefs_button->set_sensitive(
-        module->has_interface(AddinPreferenceFactory::IFACE_NAME));
+        module->has_interface(AddinPreferenceFactoryBase::IFACE_NAME));
       addin_info_button->set_sensitive(true);
     }
     else {

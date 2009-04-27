@@ -61,5 +61,20 @@ namespace sharp {
     directory_get_files_with_ext(dir, "", files);
   }
 
+  bool directory_exists(const std::string & dir)
+  {
+    boost::filesystem::path p(dir);
+    return (exists(p) && is_directory(p));
+  }
+
+  bool directory_create(const std::string & dir)
+  {
+    try {
+      return boost::filesystem::create_directories(dir);
+    }
+    catch(...) {
+    }
+    return false;
+  }
 
 }

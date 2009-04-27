@@ -145,6 +145,10 @@ public:
     }
 protected:
   NoteTag(const std::string & tag_name, int flags = 0) throw(sharp::Exception);
+  NoteTag();
+  virtual void initialize(const std::string & element_name);
+
+  friend class NoteTagTable;
 
   virtual bool on_event(const Glib::RefPtr<Glib::Object> &, GdkEvent *, const Gtk::TextIter & );
   virtual bool on_activate(const NoteEditor & , const Gtk::TextIter &, const Gtk::TextIter &);
@@ -171,6 +175,10 @@ public:
   typedef std::map<std::string, std::string> AttributeMap;
 
   const AttributeMap & get_attributes() const
+    {
+      return m_attributes;
+    }
+  AttributeMap & get_attributes()
     {
       return m_attributes;
     }
@@ -216,6 +224,7 @@ private:
 };
 
 
+#if 0
 class TagType 
 {
 public:
@@ -238,6 +247,7 @@ public:
 private:
   Factory m_factory;
 };
+#endif
 
 
 class NoteTagTable
@@ -245,6 +255,8 @@ class NoteTagTable
 {
 public:
   typedef Glib::RefPtr<NoteTagTable> Ptr;
+  typedef sigc::signal<DynamicNoteTag::Ptr> Factory;
+  typedef sigc::slot<DynamicNoteTag::Ptr> FactorySlot;
 
   static NoteTagTable & instance() 
     {
@@ -261,7 +273,7 @@ public:
   static bool tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & );
   DepthNoteTag::Ptr get_depth_tag(int depth, Pango::Direction direction);
   DynamicNoteTag::Ptr create_dynamic_tag(const std::string & );
-  void register_dynamic_tag (const std::string & tag_name, const TagType & type);
+  void register_dynamic_tag (const std::string & tag_name, const FactorySlot & factory);
   bool is_dynamic_tag_registered(const std::string &);
 
 protected:
@@ -278,7 +290,7 @@ private:
   void _init_common_tags();
 
   static NoteTagTable                   *s_instance;
-  std::map<std::string, TagType>         m_tag_types;
+  std::map<std::string, Factory>     m_tag_types;
   std::list<Glib::RefPtr<Gtk::TextTag> > m_added_tags;
 };
 
