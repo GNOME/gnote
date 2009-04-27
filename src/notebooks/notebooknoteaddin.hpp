@@ -60,11 +60,14 @@ namespace notebooks {
     Gtk::Menu                *m_menu;
     std::list<Gtk::MenuItem *> m_menu_items;
     Gtk::RadioButtonGroup     m_radio_group;
-    Glib::RefPtr<Gdk::Pixbuf> m_notebookIcon;
-    Glib::RefPtr<Gdk::Pixbuf> m_newNotebookIcon;
     sigc::connection          m_show_menu_cid;
     sigc::connection          m_note_added_cid;
     sigc::connection          m_note_removed_cid;
+
+    static void _init_static();
+    static bool               s_static_inited;
+    static Glib::RefPtr<Gdk::Pixbuf> s_notebookIcon;
+    static Glib::RefPtr<Gdk::Pixbuf> s_newNotebookIcon;
   };
 
 }

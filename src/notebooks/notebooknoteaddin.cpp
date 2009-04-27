@@ -33,13 +33,25 @@
 namespace gnote {
 namespace notebooks {
 
+  bool               NotebookNoteAddin::s_static_inited = false;
+  Glib::RefPtr<Gdk::Pixbuf> NotebookNoteAddin::s_notebookIcon;
+  Glib::RefPtr<Gdk::Pixbuf> NotebookNoteAddin::s_newNotebookIcon;
+
+  void NotebookNoteAddin::_init_static()
+  {
+    if(!s_static_inited) {
+      s_notebookIcon = utils::get_icon("notebook", 22);
+      s_newNotebookIcon =  utils::get_icon("notebook-new", 16);
+      s_static_inited = true;
+    }
+  }
+  
 
   NotebookNoteAddin::NotebookNoteAddin()
     : m_toolButton(NULL)
     , m_menu(NULL)
   {
-    m_notebookIcon = utils::get_icon("notebook", 22);
-    m_newNotebookIcon =  utils::get_icon("notebook-new", 16);
+    _init_static();
   }
 
 
@@ -55,7 +67,7 @@ namespace notebooks {
 
   void NotebookNoteAddin::initialize_tool_button()
   {
-    m_toolButton = manage(new Gtk::MenuToolButton(*manage(new Gtk::Image(m_notebookIcon))));
+    m_toolButton = manage(new Gtk::MenuToolButton(*manage(new Gtk::Image(s_notebookIcon))));
     Gtk::Label * l = manage(new Gtk::Label());
     // Ellipsize names longer than 12 chars in length
     // TODO: Should we hardcode the ellipsized notebook name to 12 chars?
@@ -177,7 +189,7 @@ namespace notebooks {
     // Add the "New Notebook..."
     Gtk::ImageMenuItem *newNotebookMenuItem =
       manage(new Gtk::ImageMenuItem (_("_New notebook..."), true));
-    newNotebookMenuItem->set_image(*manage(new Gtk::Image (m_newNotebookIcon)));
+    newNotebookMenuItem->set_image(*manage(new Gtk::Image (s_newNotebookIcon)));
     newNotebookMenuItem->signal_activate()
       .connect(sigc::mem_fun(*this,&NotebookNoteAddin::on_new_notebook_menu_item));
     newNotebookMenuItem->show ();
