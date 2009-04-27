@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-26 11:31+0200\n"
-"PO-Revision-Date: 2009-04-26 11:39+0100\n"
+"POT-Creation-Date: 2009-04-27 14:43+0200\n"
+"PO-Revision-Date: 2009-04-27 14:50+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -94,11 +94,11 @@ msgstr ""
 "gespeichert wurde."
 
 #: ../data/gnote.schemas.in.h:8
-msgid "Enable Auto bulleted lists."
-msgstr "Automatische Aufzählungslisten aktivieren."
+msgid "Enable Auto bulleted lists"
+msgstr "Automatische Aufzählungslisten aktivieren"
 
 #: ../data/gnote.schemas.in.h:9
-msgid "Enable Middle-Click Paste On Icon."
+msgid "Enable Middle-Click Paste On Icon"
 msgstr ""
 "Einfügen durch Klicken der mittleren Maustaste auf das Symbol aktivieren"
 
@@ -107,8 +107,8 @@ msgid "Enable WikiWord highlighting"
 msgstr "WikiWord-Hervorhebung ermöglichen"
 
 #: ../data/gnote.schemas.in.h:11
-msgid "Enable closing notes with escape."
-msgstr "Schließen von Notizen mit Escape aktivieren."
+msgid "Enable closing notes with escape"
+msgstr "Schließen von Notizen mit Escape aktivieren"
 
 #: ../data/gnote.schemas.in.h:12
 msgid "Enable custom font"
@@ -250,8 +250,8 @@ msgstr ""
 "mit der Konfliktsituation umgegangen werden soll."
 
 #: ../data/gnote.schemas.in.h:32
-msgid "List of pinned notes."
-msgstr "Liste der angehefteten Notizen."
+msgid "List of pinned notes"
+msgstr "Liste der angehefteten Notizen"
 
 #: ../data/gnote.schemas.in.h:33
 msgid "Minimum number of notes to show in menu"
@@ -1098,7 +1098,7 @@ msgstr " (neu)"
 msgid "_About Gnote"
 msgstr "_Info zu Gnote"
 
-#: ../src/utils.cpp:128
+#: ../src/utils.cpp:133
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -1106,63 +1106,63 @@ msgstr ""
 "Das »Gnote-Notizen-Handbuch« konnte nicht gefunden werden. Bitte stellen Sie "
 "sicher, dass Ihre Installation erfolgreich abgeschlossen wurde."
 
-#: ../src/utils.cpp:136
+#: ../src/utils.cpp:141
 msgid "Help not found"
 msgstr "Hilfe wurde nicht gefunden"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:181
 msgid "Cannot open location"
 msgstr "Ort kann nicht geöffnet werden"
 
-#: ../src/utils.cpp:183
+#: ../src/utils.cpp:195
 msgid "Today, %1%"
 msgstr "Heute, %1%"
 
-#: ../src/utils.cpp:184
+#: ../src/utils.cpp:196
 msgid "Today"
 msgstr "Heute"
 
-#: ../src/utils.cpp:189
+#: ../src/utils.cpp:201
 msgid "Yesterday, %1%"
 msgstr "Gestern, %1%"
 
-#: ../src/utils.cpp:190
+#: ../src/utils.cpp:202
 msgid "Yesterday"
 msgstr "Gestern"
 
-#: ../src/utils.cpp:197
+#: ../src/utils.cpp:209
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "Vor %1% Tag, %2%"
 msgstr[1] "Vor %1% Tagen, %2%"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:213
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "vor %1% Tag"
 msgstr[1] "vor %1% Tagen"
 
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:220
 msgid "Tomorrow, %1%"
 msgstr "Morgen, %1%"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:221
 msgid "Tomorrow"
 msgstr "Morgen"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:228
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "In %1% Tag, %2%"
 msgstr[1] "In %1% Tagen, %2%"
 
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:232
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "In %1% Tag"
 msgstr[1] "In %1% Tagen"
 
-#: ../src/utils.cpp:231
+#: ../src/utils.cpp:243
 msgid "No Date"
 msgstr "Kein Datum"
 
@@ -1182,11 +1182,11 @@ msgstr ""
 msgid "Note title taken"
 msgstr "Titel der Notiz übernommen"
 
-#: ../src/watchers.cpp:577
+#: ../src/watchers.cpp:579
 msgid "_Copy Link Address"
 msgstr "Link-Adresse _kopieren"
 
-#: ../src/watchers.cpp:583
+#: ../src/watchers.cpp:585
 msgid "_Open Link"
 msgstr "Link ö_ffnen"
 
@@ -1301,55 +1301,121 @@ msgstr "Notizbuch"
 msgid "_New notebook..."
 msgstr "Neues Notiz_buch …"
 
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
+msgid "Bugzilla Links"
+msgstr "Bugzilla-Links"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:54
+msgid ""
+"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
+"note.  The bug number is inserted as a link with a little bug icon next to it."
+msgstr ""
+"Ermöglicht Ihnen, eine Bugzilla-Adresse aus Ihrem Browser direkt in eine "
+"Gnote-Notiz zu ziehen. Die Bug-Nummer wird als Link in Form eines kleinen "
+"Symbols daneben dargestellt."
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "Hubert Figuiere und das Tomboy-Projekt"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:58
+msgid ""
+"You can use any bugzilla just by dragging links into notes.  If you want a "
+"special icon for certain hosts, add them here."
+msgstr ""
+"Sie können jedes Bugzilla-Fehlererfassungssystem zum Ziehen von Links in "
+"Notizen verwenden. Falls Sie ein bestimmtes, vom Bugzilla-Rechnernamen "
+"abhängiges Symbol verwenden wollen, können Sie es hier ańgeben."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:75
+msgid "Host Name"
+msgstr "Rechnername"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:88
+msgid "Icon"
+msgstr "Symbol"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:203
+msgid "Select an icon..."
+msgstr "Symbol wählen …"
+
+#. Extra Widget
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:218
+msgid "_Host name:"
+msgstr "_Rechnername:"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:246
+msgid "No host name specified"
+msgstr "Kein Rechnername angegeben"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:247
+msgid "You must specify the Bugzilla host name to use with this icon."
+msgstr ""
+"Sie müssen den mit diesem Symbol zu verwendenden Bugzilla-Rechnernamen "
+"angeben."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:266
+msgid "Error saving icon"
+msgstr "Fehler beim Speichern desSymbols"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:267
+msgid "Could not save the icon file."
+msgstr "Symboldatei konnte nicht gespeichert werden."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:339
+msgid "Really remove this icon?"
+msgstr "Dieses Symbol wirklich löschen?"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:340
+msgid "If you remove an icon it is permanently lost."
+msgstr "Ein gelöschtes Symbol ist für immer verloren."
+
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
 msgid "_Fixed Width"
 msgstr "_Feste Breite"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
 msgid "Fixed Width"
 msgstr "Feste Breite"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
 msgid "Adds fixed-width font style."
 msgstr "Fügt eine Schrift fester Breite hinzu."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
 msgid "Printing Support"
 msgstr "Druckunterstützung"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
 msgid "Allows you to print a note."
 msgstr "Ermöglicht Ihnen das Drucken einer Notiz."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
-msgid "Hubert Figuiere and the Tomboy Project"
-msgstr "Hubert Figuiere und das Tomboy-Projekt"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
 msgid "Print"
 msgstr "Drucken"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:115
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:114
 msgid "Error printing note"
 msgstr "Fehler beim Drucken der Notiz."
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:275
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
 msgid "Page %1% of %2%"
 msgstr "Seite %1% von %2%"
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:79
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:44
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:77
 msgid "Insert Timestamp"
 msgstr "Zeitstempel einfügen"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:50
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:48
 msgid "Inserts current date and time at the cursor position."
 msgstr "Fügt die aktuelle Zeit und das Datum an der Position des Cursors ein."
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:54
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:52
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere und das Tomboy-Projekt"
 
