@@ -30,6 +30,7 @@ dnl LIBGLADEMM_VERSION=2.6.0
 dnl LIBGCONFMM_VERSION=2.6.0
 LIBGCONF_VERSION=2.0.0
 LIBGNOMEUI_VERSION=2.0.0
+LIBPANELAPPLETMM_VERSION=2.22.0
 GTKSPELL_VERSION=2.0.9
 BOOST_VERSION=1.34
 
@@ -84,6 +85,17 @@ PKG_CHECK_EXISTS(gtkmm-2.4 >= 2.14.0,
 dnl check for the ext2 uuid library. TODO replace it with something more portable
 AC_CHECK_HEADER(uuid/uuid.h,,[AC_MSG_ERROR("uuid header is missing")])
 AC_CHECK_LIB(uuid,uuid_unparse_lower, ,[AC_MSG_ERROR("libuuid library is missing")])
+
+PKG_CHECK_EXISTS(libpanelappletmm-2.6 >= $LIBPANELAPPLETMM_VERSION,
+    [
+     AC_DEFINE(HAVE_PANELAPPLETMM, 1, [Define to 1 if panelapplet is available])
+     have_panelapplet=1
+     PKG_CHECK_MODULES(LIBPANELAPPLETMM, [libpanelappletmm-2.6 >= $LIBPANELAPPLETMM_VERSION])
+    ],
+    [have_panelapplet=0]
+)
+
+AM_CONDITIONAL(HAVE_PANELAPPLETMM, test $have_panelapplet == "1")
 
 #
 # If libpanelapplet available, use it to find .server install location.
@@ -196,6 +208,7 @@ src/addins/bugzilla/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
 src/addins/printnotes/Makefile
+src/gnote-applet
 po/Makefile.in
 po/Makefile
 help/Makefile

@@ -25,6 +25,7 @@
 
 #include <string>
 
+#include <glibmm/optioncontext.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/statusicon.h>
 
@@ -73,6 +74,14 @@ public:
     {
       return s_tray_icon_showing;
     }
+  bool is_panel_applet()
+    {
+      return m_is_panel_applet;
+    }
+  void set_tray(const Tray::Ptr & tray)
+    {
+      m_tray = tray;
+    }
 private:
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
@@ -86,9 +95,10 @@ private:
 
 
 class GnoteCommandLine
+  : public Glib::OptionGroup
 {
 public:
-  GnoteCommandLine(int & argc, char **&argv);
+  GnoteCommandLine();
   int execute();
 
   const std::string & note_path() const
@@ -102,7 +112,6 @@ public:
     }
 
 private:
-  void parse(int & argc, char **&argv);
 
   bool        m_new_note;
   bool        m_open_search;

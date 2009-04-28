@@ -26,10 +26,13 @@
 #include <sigc++/signal.h>
 #include <sigc++/slot.h>
 
+#include "preferences.hpp"
+
 namespace gnote {
 
 class TrayIcon;
 class NoteManager;
+class IGnoteTray;
 class IKeybinder;
 
 

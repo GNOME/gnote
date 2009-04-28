@@ -19,14 +19,19 @@
 
 
 
+#include "config.h"
+
 #include <stdlib.h>
 
 #include <glibmm/thread.h>
 #include <glibmm/i18n.h>
+#include <glibmm/optionentry.h>
 #include <gtkmm/main.h>
 #include <gtkmm/aboutdialog.h>
 
-#include "config.h"
+#if HAVE_PANELAPPLETMM
+#include <libpanelappletmm/init.h>
+#endif
 
 #include "gnote.hpp"
 #include "actionmanager.hpp"
@@ -40,6 +45,10 @@
 #include "utils.hpp"
 #include "xkeybinder.hpp"
 #include "sharp/string.hpp"
+
+#if HAVE_PANELAPPLETMM
+#include "applet.hpp"
+#endif
 
 namespace gnote {
 
@@ -63,7 +72,18 @@ namespace gnote {
 
   int Gnote::main(int argc, char **argv)
   {
-    GnoteCommandLine cmd_line(argc, argv);
+    GnoteCommandLine cmd_line;
+
+
+    Glib::OptionContext context;
+    context.set_ignore_unknown_options(true);
+    context.set_main_group(cmd_line);
+    try {
+      context.parse(argc, argv);
+    }
+    catch(...)
+    {
+    }
 
     if(cmd_line.needs_execute()) {
       cmd_line.execute();
@@ -93,6 +113,7 @@ namespace gnote {
     }
 
     if(cmd_line.use_panel_applet()) {
+      DBG_OUT("starting applet");
       s_tray_icon_showing = true;
       m_is_panel_applet = true;
 
@@ -100,10 +121,16 @@ namespace gnote {
       am["QuitGNoteAction"]->set_visible(false);
       
       // register panel applet factory
+#if HAVE_PANELAPPLETMM
+      Gnome::Panel::init("gnote", VERSION, argc, argv);
+
+      panel::register_applet();
+#endif
       return 0;
 
     }
     else {
+      DBG_OUT("starting tray icon");
       //register session manager restart
       start_tray_icon();
     }
@@ -312,13 +339,17 @@ namespace gnote {
   }
 
 
-  GnoteCommandLine::GnoteCommandLine(int & argc, char **&argv)
-    :  m_new_note(false)
-    ,  m_open_search(false)
+  GnoteCommandLine::GnoteCommandLine()
+    : Glib::OptionGroup("Gnote", _("A note taking application"))
+    , m_new_note(false)
+    , m_open_search(false)
     , m_open_start_here(false)
     , m_use_panel(false)
   {
-    parse(argc, argv);
+    Glib::OptionEntry entry;
+    entry.set_long_name("panel-applet");
+    entry.set_description(_("Run Gnote as a GNOME panel applet"));
+    add_entry(entry, m_use_panel);
   }
 
   int GnoteCommandLine::execute()
@@ -337,12 +368,5 @@ namespace gnote {
       !m_open_external_note_path.empty();
   }
 
-  void GnoteCommandLine::parse(int & argc, char **& /*argv*/)
-  {
-//    bool quit = false;
-    for(int i = 0; i < argc; i++) {
-//      const char * current = argv[i];
-      // TODO
-    }
-  }
+
 }

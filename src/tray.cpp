@@ -45,8 +45,6 @@
 
 namespace gnote {
 
-  namespace {
-
   std::string tray_util_get_tooltip_text()
   {
     std::string tip_text = _("Gnote Notes");
@@ -62,7 +60,6 @@ namespace gnote {
     return tip_text;
   }
 
-  }
 
 
   bool                      NoteMenuItem::s_static_inited = false;

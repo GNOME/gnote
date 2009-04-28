@@ -135,5 +135,9 @@ private:
   static Glib::RefPtr<Gtk::AccelGroup> s_accel_group;
 };
 
+
+
+std::string tray_util_get_tooltip_text();
+
 }
 #endif

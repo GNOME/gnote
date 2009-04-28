@@ -2,6 +2,7 @@
 
 SUBDIRS = addins
 
+EXTRA_DIST = gnote-applet
 
 INCLUDES = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
@@ -39,6 +40,15 @@ notetest_SOURCES = test/notetest.cpp
 notetest_LDADD =  $(GNOTE_LIBS)
 
 gnote_SOURCES = main.cpp
+
+
+if HAVE_PANELAPPLETMM
+APPLET_SOURCES=applet.hpp applet.cpp
+AM_CPPFLAGS+=@LIBPANELAPPLETMM_CFLAGS@
+GNOTE_LIBS+=@LIBPANELAPPLETMM_LIBS@
+
+bin_SCRIPTS=gnote-applet
+endif
 
 libgnote_a_SOURCES = \
 	base/singleton.hpp \
@@ -97,6 +107,7 @@ libgnote_a_SOURCES = \
 	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
 	notebooks/notebooknoteaddin.hpp notebooks/notebooknoteaddin.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
+	$(APPLET_SOURCES)
 	$(NULL)
 
 gnote_LDADD = $(GNOTE_LIBS)

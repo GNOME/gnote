@@ -1,5 +1,5 @@
 <oaf_info>
-<oaf_server iid="OAFIID:TomboyApplet_Factory" 
+<oaf_server iid="OAFIID:GnoteApplet_Factory" 
 	    type="exe"
             location="@bindir@/@wrapper@">
 
@@ -11,9 +11,9 @@
 	<oaf_attribute name="description" type="string" _value="Gnote Applet Factory"/>
 </oaf_server>
 
-<oaf_server iid="OAFIID:TomboyApplet" 
+<oaf_server iid="OAFIID:GnoteApplet" 
 	    type="factory"
-            location="OAFIID:TomboyApplet_Factory">
+            location="OAFIID:GnoteApplet_Factory">
 
         <oaf_attribute name="repo_ids" type="stringv">
                 <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
@@ -25,7 +25,7 @@
         <oaf_attribute name="panel:category" type="string" _value="Accessories"/>
         <oaf_attribute name="panel:icon" type="string" value="gnote.png"/>
 
-	<oaf_attribute name="bugzilla:bugzilla" type="string" value="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FIXME?"/>
+	<oaf_attribute name="bugzilla:bugzilla" type="string" value="gnote"/>
         <oaf_attribute name="bugzilla:product" type="string" value="Gnote"/>
         <oaf_attribute name="bugzilla:component" type="string" value="General"/>
         <oaf_attribute name="bugzilla:other_binaries" type="string" value="gnote"/>

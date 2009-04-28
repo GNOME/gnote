@@ -35,19 +35,19 @@ dbusservice_DATA     = $(dbusservice_in_files:.service.in=.service)
 
 $(dbusservice_DATA): $(dbusservice_in_files) Makefile
 	sed -e "s|\@bindir\@|$(bindir)|g"	\
-	    -e "s|\@wrapper\@|gnote|g"		\
+	    -e "s|\@wrapper\@|gnote-applet|g"		\
 	    < $< > $@
 endif
 
 
-#serverdir       = $(PANELAPPLET_SERVER_DIR)
-#server_in_files = GNOME_GNoteApplet.server.in
-#server_DATA     = $(server_in_files:.server.in=.server)
+serverdir       = $(PANELAPPLET_SERVER_DIR)
+server_in_files = GNOME_GnoteApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
 
-#$(server_in_files): $(server_in_files:.server.in=.server.in.in) Makefile
-#	sed -e "s|\@bindir\@|$(bindir)|g"	\
-#	    -e "s|\@wrapper\@|gnote-panel|g"		\
-#	    < $< > $@
+$(server_in_files): $(server_in_files:.server.in=.server.in.in) Makefile
+	sed -e "s|\@bindir\@|$(bindir)|g"	\
+	    -e "s|\@wrapper\@|gnote-applet|g"		\
+	    < $< > $@
 
 @INTLTOOL_SERVER_RULE@
 
@@ -55,10 +55,10 @@ endif
 man_MANS = gnote.1
 
 gnotedatadir = @datadir@/gnote
-gnotedata_DATA = UIManagerLayout.xml
+gnotedata_DATA = UIManagerLayout.xml \
+	GNOME_GnoteApplet.xml
 
-noinst_DATA = 			\
-	GNOME_GNoteApplet.xml
+noinst_DATA = 			
 
 
 EXTRA_DIST = 					\
@@ -68,7 +68,7 @@ EXTRA_DIST = 					\
 	$(schemas_in_files)     		\
 	$(man_MANS)				\
 	$(noinst_DATA)				\
-	GNOME_GNoteApplet.server.in.in		\
+	GNOME_GnoteApplet.server.in.in		\
 	$(dbusservice_in_files)
 
 DISTCLEANFILES = 				\
