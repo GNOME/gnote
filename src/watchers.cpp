@@ -576,13 +576,13 @@ namespace gnote {
       item->show ();
       menu->prepend (*item);
 
-      item = manage(new Gtk::MenuItem (_("_Copy Link Address")));
+      item = manage(new Gtk::MenuItem (_("_Copy Link Address"), true));
       item->signal_activate().connect(
         sigc::mem_fun(*this, &NoteUrlWatcher::copy_link_activate));
       item->show ();
       menu->prepend (*item);
 
-      item = manage(new Gtk::MenuItem (_("_Open Link")));
+      item = manage(new Gtk::MenuItem (_("_Open Link"), true));
       item->signal_activate().connect(
         sigc::mem_fun(*this, &NoteUrlWatcher::open_link_activate));
       item->show ();
