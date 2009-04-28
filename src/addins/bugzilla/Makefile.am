@@ -1,6 +1,8 @@
 
 include $(builddir)/../addins.mk
 
+EXTRA_DIST = bug.png
+
 addinsdir = $(ADDINSDIR)
 addins_LTLIBRARIES = bugzilla.la
 

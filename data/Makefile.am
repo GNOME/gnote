@@ -39,7 +39,7 @@ $(dbusservice_DATA): $(dbusservice_in_files) Makefile
 	    < $< > $@
 endif
 
-
+if HAVE_PANELAPPLETMM
 serverdir       = $(PANELAPPLET_SERVER_DIR)
 server_in_files = GNOME_GnoteApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
@@ -48,6 +48,7 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in) Makefile
 	sed -e "s|\@bindir\@|$(bindir)|g"	\
 	    -e "s|\@wrapper\@|gnote-applet|g"		\
 	    < $< > $@
+endif
 
 @INTLTOOL_SERVER_RULE@
 
@@ -63,6 +64,7 @@ noinst_DATA =
 
 EXTRA_DIST = 					\
 	UIManagerLayout.xml                     \
+	GNOME_GnoteApplet.xml                   \
 	$(desktop_in_files)     		\
 	$(pkgconfig_in_files)			\
 	$(schemas_in_files)     		\
