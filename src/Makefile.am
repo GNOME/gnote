@@ -51,6 +51,8 @@ bin_SCRIPTS=gnote-applet
 gnote-applet: gnote-applet.in Makefile
 	sed -e "s|\@bindir\@|$(bindir)|g"	\
 	    < $< > $@
+
+CLEANFILES = gnote-applet
 endif
 
 libgnote_a_SOURCES = \
