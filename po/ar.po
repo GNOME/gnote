@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-25 23:36+0300\n"
-"PO-Revision-Date: 2009-04-26 00:31+0300\n"
+"POT-Creation-Date: 2009-04-29 23:51+0300\n"
+"PO-Revision-Date: 2009-04-29 23:56+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -22,29 +22,29 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.3.1\n"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:1
+#: ../data/GNOME_GnoteApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "الكماليات"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:2
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2
 msgid "Gnote Applet Factory"
 msgstr "مصنع بريمجات ملاحظات‌ج"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:3
+#: ../data/GNOME_GnoteApplet.server.in.in.h:3
 msgid "Simple and easy to use note-taking"
 msgstr "تسجيل ملاحظات بسيط وسهل الاستخدام"
 
-#: ../data/GNOME_GNoteApplet.xml.h:1 ../src/actionmanager.cpp:207
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:207
 msgid "_About"
 msgstr "_عنْ"
 
-#: ../data/GNOME_GNoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:508
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:198
+#: ../src/tray.cpp:505
 msgid "_Help"
 msgstr "م_ساعدة"
 
-#: ../data/GNOME_GNoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:503
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:195
+#: ../src/tray.cpp:500
 msgid "_Preferences"
 msgstr "الت_فضيلات"
 
@@ -85,11 +85,13 @@ msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 
 #: ../data/gnote.schemas.in.h:8
-msgid "Enable Auto bulleted lists."
+#, fuzzy
+msgid "Enable Auto bulleted lists"
 msgstr "فعّل الترتيب الآلي للقوائم."
 
 #: ../data/gnote.schemas.in.h:9
-msgid "Enable Middle-Click Paste On Icon."
+#, fuzzy
+msgid "Enable Middle-Click Paste On Icon"
 msgstr "فعّل أيقونة اللصق بالنقر الأوسط."
 
 #: ../data/gnote.schemas.in.h:10
@@ -97,7 +99,8 @@ msgid "Enable WikiWord highlighting"
 msgstr "فعّل تظليل كلمات الويكي"
 
 #: ../data/gnote.schemas.in.h:11
-msgid "Enable closing notes with escape."
+#, fuzzy
+msgid "Enable closing notes with escape"
 msgstr "فعّل غلق الملاحظات بالزر ESC"
 
 #: ../data/gnote.schemas.in.h:12
@@ -230,7 +233,8 @@ msgstr ""
 "حالته."
 
 #: ../data/gnote.schemas.in.h:32
-msgid "List of pinned notes."
+#, fuzzy
+msgid "List of pinned notes"
 msgstr "قائمة الملاحظات المثبتة."
 
 #: ../data/gnote.schemas.in.h:33
@@ -537,7 +541,7 @@ msgstr "أغل_ق"
 msgid "Close this window"
 msgstr "أغلق هذه النافذة"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:520
+#: ../src/actionmanager.cpp:187 ../src/tray.cpp:517
 msgid "_Quit"
 msgstr "أ_نهِ"
 
@@ -589,15 +593,15 @@ msgstr "_زامن الملاحظات"
 msgid "Start synchronizing notes"
 msgstr "ابدأ مزامنة الملاحظات"
 
-#: ../src/gnote.cpp:203
+#: ../src/gnote.cpp:230
 msgid "Cannot create new note"
 msgstr "تعذر إنشاء ملاحظة جديدة"
 
-#: ../src/gnote.cpp:247
+#: ../src/gnote.cpp:274
 msgid "and Tomboy original authors."
 msgstr "ومؤلفي توم‌بوي الأصليين."
 
-#: ../src/gnote.cpp:256
+#: ../src/gnote.cpp:283
 msgid "translator-credits"
 msgstr ""
 "جهاد عفيفي\t<djihed@gmail.com>\n"
@@ -606,13 +610,21 @@ msgstr ""
 "أحمد فرغل\t<ahmad.farghal@gmail.com>\n"
 "أنس عفيف عماد\t<anas.e87@gmail.com>"
 
-#: ../src/gnote.cpp:265
+#: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "تطبيق سطح مكتب بسيط و سهل الاستخدام لتسجيل الملاحظات."
 
-#: ../src/gnote.cpp:276
+#: ../src/gnote.cpp:303
 msgid "Homepage"
 msgstr "البداية"
+
+#: ../src/gnote.cpp:343
+msgid "A note taking application"
+msgstr "تطبيق لتسجيل الملاحظات"
+
+#: ../src/gnote.cpp:351
+msgid "Run Gnote as a GNOME panel applet"
+msgstr "شغّل ملاحظات‌ج كبريمج في شريط جنوم"
 
 #: ../src/preferencesdialog.cpp:104
 msgid "Editing"
@@ -1064,50 +1076,50 @@ msgstr[5] "يطابق: %1% ملاحظة"
 msgid "Notes"
 msgstr "ملاحظات"
 
-#: ../src/tray.cpp:52
+#: ../src/tray.cpp:50
 msgid "Gnote Notes"
 msgstr "ملاحظات‌ج"
 
-#: ../src/tray.cpp:172
+#: ../src/tray.cpp:169
 msgid " (new)"
 msgstr " (جديد)"
 
-#: ../src/tray.cpp:513
+#: ../src/tray.cpp:510
 msgid "_About Gnote"
 msgstr "_عنْ ملاحظات‌ج"
 
-#: ../src/utils.cpp:128
+#: ../src/utils.cpp:133
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
 "تعذّر العثور على \"كتيب ملاحظات‌ج\".  رجاءً تأكد من أن البرنامج مثبت بشكل صحيح."
 
-#: ../src/utils.cpp:136
+#: ../src/utils.cpp:141
 msgid "Help not found"
 msgstr "لم يُعثر على المساعدة"
 
-#: ../src/utils.cpp:154
+#: ../src/utils.cpp:181
 msgid "Cannot open location"
 msgstr "تعذر فتح الموقع"
 
-#: ../src/utils.cpp:168
+#: ../src/utils.cpp:195
 msgid "Today, %1%"
 msgstr "اليوم، %1%"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:196
 msgid "Today"
 msgstr "اليوم"
 
-#: ../src/utils.cpp:174
+#: ../src/utils.cpp:201
 msgid "Yesterday, %1%"
 msgstr "أمس، %1%"
 
-#: ../src/utils.cpp:175
+#: ../src/utils.cpp:202
 msgid "Yesterday"
 msgstr "أمس"
 
-#: ../src/utils.cpp:182
+#: ../src/utils.cpp:209
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "اليوم، %2%"
@@ -1117,7 +1129,7 @@ msgstr[3] "منذ %1% أيام، %2%"
 msgstr[4] "منذ %1% يوما، %2%"
 msgstr[5] "منذ %1% يوم، %2%"
 
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:213
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "اليوم"
@@ -1127,15 +1139,15 @@ msgstr[3] "منذ %1% أيام"
 msgstr[4] "منذ %1% يوما"
 msgstr[5] "منذ %1% يوم"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:220
 msgid "Tomorrow, %1%"
 msgstr "غدًا، %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:221
 msgid "Tomorrow"
 msgstr "غدًا"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:228
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "في %1% يوم، %2%"
@@ -1145,7 +1157,7 @@ msgstr[3] "في %1% أيام، %2%"
 msgstr[4] "في %1% يوما، %2%"
 msgstr[5] "في %1% يوم، %2%"
 
-#: ../src/utils.cpp:205
+#: ../src/utils.cpp:232
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "في %1% يوم"
@@ -1155,7 +1167,7 @@ msgstr[3] "في %1% أيام"
 msgstr[4] "في %1% يوما"
 msgstr[5] "في %1% يوم"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:243
 msgid "No Date"
 msgstr "لا تاريخ"
 
@@ -1175,11 +1187,11 @@ msgstr ""
 msgid "Note title taken"
 msgstr "عنوان الملاحظة مأخوذ"
 
-#: ../src/watchers.cpp:590
+#: ../src/watchers.cpp:579
 msgid "_Copy Link Address"
 msgstr "انس_خ عنوان الرابط"
 
-#: ../src/watchers.cpp:596
+#: ../src/watchers.cpp:585
 msgid "_Open Link"
 msgstr "ا_فتح الرابط"
 
@@ -1281,67 +1293,129 @@ msgstr "ملاحظة \"%1%\" جديدة"
 msgid "No notebook"
 msgstr "لا كتيّب"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:67
+#: ../src/notebooks/notebooknoteaddin.cpp:79
 msgid "Place this note into a notebook"
 msgstr "ضع هذه الملاحظة في كتيّب"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:154
+#: ../src/notebooks/notebooknoteaddin.cpp:166
 msgid "Notebook"
 msgstr "كتيّب"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:179
+#: ../src/notebooks/notebooknoteaddin.cpp:191
 msgid "_New notebook..."
 msgstr "_كتيّب جديد"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
+msgid "Bugzilla Links"
+msgstr "وصلات بجزيلّا"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:54
+msgid ""
+"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
+msgstr ""
+"يتيح لك سحب مسارات بجزيلا مباشرة من المتصفح إلى ملاحظة. سيُدرج رقم العلّة "
+"كوصلة مع أيقونة بقّة صغيرة بجوارها."
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "هُربِرت فيجوري ومشروع توم‌بوي"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:58
+msgid ""
+"You can use any bugzilla just by dragging links into notes.  If you want a "
+"special icon for certain hosts, add them here."
+msgstr ""
+"يمكنك استعمال وصلات بغزيلا في ملاحظاتك. اذا اردت ايقونا ما لموقع، اضفه هنا."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:75
+msgid "Host Name"
+msgstr "ا_سم المستضيف:"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:88
+msgid "Icon"
+msgstr "أيقونة"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:203
+msgid "Select an icon..."
+msgstr "أختر أيقونة..."
+
+#. Extra Widget
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:218
+msgid "_Host name:"
+msgstr "_أسم المضيف:"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:246
+msgid "No host name specified"
+msgstr "لم يحدد أسم مضيف"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:247
+msgid "You must specify the Bugzilla host name to use with this icon."
+msgstr "عليك أن تحدد اسم مضيف Bugzilla لاستخدامه مع هذه الأيقونة."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:266
+msgid "Error saving icon"
+msgstr "خطأ أثناء حفظ الأيقونة"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:267
+msgid "Could not save the icon file."
+msgstr "تعذّر حفظ ملف الأيقونة."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:339
+msgid "Really remove this icon?"
+msgstr "هل تريد حقا حذف هذه الأيقونة؟"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:340
+msgid "If you remove an icon it is permanently lost."
+msgstr "إذا حذفت أيقونة فسوف تضيع للأبد."
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
 msgid "_Fixed Width"
 msgstr "ثابت العر_ض"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
 msgid "Fixed Width"
 msgstr "ثابت العرض"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
 msgid "Adds fixed-width font style."
 msgstr "يضيف طراز خط ثابت العرضز"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
 msgid "Printing Support"
 msgstr "دعم الطباعة"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
 msgid "Allows you to print a note."
 msgstr "يتيح لك طبع الملاحظات."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
-msgid "Hubert Figuiere and the Tomboy Project"
-msgstr "هُربِرت فيجوري ومشروع توم‌بوي"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
 msgid "Print"
 msgstr "اطبع"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:115
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:114
 msgid "Error printing note"
 msgstr "خطأ أثناء طبع الملاحظة"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:275
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
 msgid "Page %1% of %2%"
 msgstr "صفحة %1% من %2%"
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:79
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:44
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:77
 msgid "Insert Timestamp"
 msgstr "أدرج خاتما زمنيا"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:50
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:48
 msgid "Inserts current date and time at the cursor position."
 msgstr "أدرج التاريخ والوقت الحالي في موقع المؤشر."
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:54
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:52
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "هُربِرت فيجوري ومشروع توم‌بوي"
 
@@ -1384,40 +1458,6 @@ msgstr "اس_تعمل تنسيقا مخصّصا"
 
 #~ msgid "(none)"
 #~ msgstr "(لا شيء)"
-
-#~ msgid ""
-#~ "You can use any bugzilla just by dragging links into notes.  If you want "
-#~ "a special icon for certain hosts, add them here."
-#~ msgstr ""
-#~ "يمكنك استعمال وصلات بغزيلا في ملاحظاتك. اذا اردت ايقونا ما لموقع، اضفه "
-#~ "هنا."
-
-#~ msgid "Icon"
-#~ msgstr "أيقونة"
-
-#~ msgid "Select an icon..."
-#~ msgstr "أختر أيقونة..."
-
-#~ msgid "_Host name:"
-#~ msgstr "_أسم المضيف:"
-
-#~ msgid "No host name specified"
-#~ msgstr "لم يحدد أسم مضيف"
-
-#~ msgid "You must specify the Bugzilla host name to use with this icon."
-#~ msgstr "عليك أن تحدد اسم مضيف Bugzilla لاستخدامه مع هذه الأيقونة."
-
-#~ msgid "Error saving icon"
-#~ msgstr "خطأ أثناء حفظ الأيقونة"
-
-#~ msgid "Could not save the icon file.  "
-#~ msgstr "غير قادر على حفظ ملف الأيقونة."
-
-#~ msgid "Really remove this icon?"
-#~ msgstr "هل تريد حقا حذف هذه الأيقونة؟"
-
-#~ msgid "If you remove an icon it is permanently lost."
-#~ msgstr "إذا حذفت أيقونة فسوف تضيع للأبد."
 
 #~ msgid "Export to HTML"
 #~ msgstr "صدّر إلى HTML"
