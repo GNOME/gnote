@@ -2,7 +2,7 @@
 
 SUBDIRS = addins
 
-EXTRA_DIST = gnote-applet
+EXTRA_DIST = gnote-applet.in
 
 INCLUDES = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
@@ -48,6 +48,9 @@ AM_CPPFLAGS+=@LIBPANELAPPLETMM_CFLAGS@
 GNOTE_LIBS+=@LIBPANELAPPLETMM_LIBS@
 
 bin_SCRIPTS=gnote-applet
+gnote-applet: gnote-applet.in Makefile
+	sed -e "s|\@bindir\@|$(bindir)|g"	\
+	    < $< > $@
 endif
 
 libgnote_a_SOURCES = \

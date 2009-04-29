@@ -208,7 +208,6 @@ src/addins/bugzilla/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
 src/addins/printnotes/Makefile
-src/gnote-applet
 po/Makefile.in
 po/Makefile
 help/Makefile
