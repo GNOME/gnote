@@ -104,11 +104,17 @@ namespace sharp {
 
   bool string_starts_with(const std::string & source, const std::string & with)
   {
+    if(source.empty()) {
+      return false;
+    }
     return boost::starts_with(source, with);
   }
 
   bool string_ends_with(const std::string & source, const std::string & with)
   {
+    if(source.empty()) {
+      return false;
+    }
     return boost::ends_with(source, with);
   }
 
