@@ -576,17 +576,29 @@ namespace gnote {
 
   void NoteRecentChanges::update_total_note_count (int total)
   {
-    const char * fmt;
-    fmt = ngettext("Total: %1% note", "Total: %1% notes", total);
-    m_note_count.set_text(str(boost::format (fmt) % total));
+    try {
+      const char * fmt;
+      fmt = ngettext("Total: %1% note", "Total: %1% notes", total);
+      m_note_count.set_text(str(boost::format (fmt) % total));
+    } 
+    catch(const std::exception & e)
+    {
+      ERR_OUT("exception: %s", e.what());
+    }
   }
                 
   
   void NoteRecentChanges::update_match_note_count (int matches)
   {
-    const char * fmt;
-    fmt = ngettext("Matches: %1% note", "Matches: %1% notes", matches);
-    m_note_count.set_text(str(boost::format (fmt) % matches));
+    try {
+      const char * fmt;
+      fmt = ngettext("Matches: %1% note", "Matches: %1% notes", matches);
+      m_note_count.set_text(str(boost::format (fmt) % matches));
+    }
+    catch(const std::exception & e)
+    {
+      ERR_OUT("exception: %s", e.what());
+    }
   }
                 
 
