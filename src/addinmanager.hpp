@@ -64,6 +64,7 @@ private:
     
   const std::string m_gnote_conf_dir;
   sharp::ModuleManager m_module_manager;
+  std::list<sharp::IfaceFactoryBase*> m_builtin_ifaces;
   /// Key = TypeExtensionNode.Id
   typedef std::map<std::string, ApplicationAddin*> AppAddinMap;
   AppAddinMap                               m_app_addins;

@@ -34,9 +34,10 @@
 
 namespace gnote {
 
-#define REGISTER_NOTE_ADDIN(klass) \
-  m_note_addin_infos.insert(std::make_pair(typeid(klass).name(),        \
-                                           new sharp::IfaceFactory<klass>))
+#define REGISTER_BUILTIN_NOTE_ADDIN(klass) \
+  do { sharp::IfaceFactoryBase *iface = new sharp::IfaceFactory<klass>; \
+  m_builtin_ifaces.push_back(iface); \
+  m_note_addin_infos.insert(std::make_pair(typeid(klass).name(),iface)); } while(0)
 
 #define REGISTER_APP_ADDIN(klass) \
   m_app_addins.insert(std::make_pair(typeid(klass).name(),        \
@@ -57,20 +58,24 @@ namespace gnote {
                     boost::bind(&boost::checked_delete<NoteAddin>, _1));
     }
     sharp::map_delete_all_second(m_addin_prefs);
+    for(std::list<sharp::IfaceFactoryBase*>::iterator iter = m_builtin_ifaces.begin();
+        iter != m_builtin_ifaces.end(); ++iter) {
+      delete *iter;
+    }
   }
 
   void AddinManager::initialize_sharp_addins()
   {
     // get the factory
 
-    REGISTER_NOTE_ADDIN(NoteRenameWatcher);
-    REGISTER_NOTE_ADDIN(NoteSpellChecker);
-    REGISTER_NOTE_ADDIN(NoteUrlWatcher);
-    REGISTER_NOTE_ADDIN(NoteLinkWatcher);
-    REGISTER_NOTE_ADDIN(NoteWikiWatcher);
-    REGISTER_NOTE_ADDIN(MouseHandWatcher);
-    REGISTER_NOTE_ADDIN(NoteTagsWatcher);
-    REGISTER_NOTE_ADDIN(notebooks::NotebookNoteAddin);
+    REGISTER_BUILTIN_NOTE_ADDIN(NoteRenameWatcher);
+    REGISTER_BUILTIN_NOTE_ADDIN(NoteSpellChecker);
+    REGISTER_BUILTIN_NOTE_ADDIN(NoteUrlWatcher);
+    REGISTER_BUILTIN_NOTE_ADDIN(NoteLinkWatcher);
+    REGISTER_BUILTIN_NOTE_ADDIN(NoteWikiWatcher);
+    REGISTER_BUILTIN_NOTE_ADDIN(MouseHandWatcher);
+    REGISTER_BUILTIN_NOTE_ADDIN(NoteTagsWatcher);
+    REGISTER_BUILTIN_NOTE_ADDIN(notebooks::NotebookNoteAddin);
    
     REGISTER_APP_ADDIN(notebooks::NotebookApplicationAddin);
 

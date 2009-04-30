@@ -194,6 +194,7 @@ namespace gnote {
   NoteWindow::~NoteWindow()
   {
     delete m_global_keys;
+    delete m_mark_set_timeout;
     Preferences::obj().remove_notify(m_gconf_notify);
   }
 
