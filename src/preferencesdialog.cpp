@@ -768,7 +768,7 @@ namespace gnote {
     std::map<std::string, Gtk::Dialog* >::iterator iter;
     iter = addin_info_dialogs.find(addin->id());
     if (iter == addin_info_dialogs.end()) {
-      dialog = manage(new AddinInfoDialog (addin, *this));
+      dialog = new AddinInfoDialog (addin, *this);
       dialog->signal_delete_event().connect(
         sigc::bind(
           sigc::mem_fun(*this, &PreferencesDialog::addin_info_dialog_deleted), 
@@ -800,6 +800,7 @@ namespace gnote {
 
     AddinInfoDialog *addin_dialog = static_cast<AddinInfoDialog*>(dialog);
     addin_info_dialogs.erase(addin_dialog->get_addin_id());
+    delete dialog;
 
     return false;
   }
