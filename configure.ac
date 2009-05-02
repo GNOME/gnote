@@ -199,6 +199,7 @@ Makefile
 shave
 shave-libtool
 data/Makefile
+data/gnote.desktop.in
 data/icons/Makefile
 libtomboy/Makefile
 src/Makefile
