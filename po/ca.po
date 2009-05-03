@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-22 09:32+0200\n"
-"PO-Revision-Date: 2009-04-22 09:33+0200\n"
+"POT-Creation-Date: 2009-05-03 10:49+0200\n"
+"PO-Revision-Date: 2009-05-03 10:50+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,29 +16,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:1
+#: ../data/GNOME_GnoteApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "Accessoris"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:2
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2
 msgid "Gnote Applet Factory"
 msgstr "Factoria de miniaplicacions Gnote"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:3
+#: ../data/GNOME_GnoteApplet.server.in.in.h:3
 msgid "Simple and easy to use note-taking"
 msgstr "Una forma senzilla i fàcil de prendre notes"
 
-#: ../data/GNOME_GNoteApplet.xml.h:1 ../src/actionmanager.cpp:207
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:207
 msgid "_About"
 msgstr "_Quant a"
 
-#: ../data/GNOME_GNoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:507
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:198
+#: ../src/tray.cpp:505
 msgid "_Help"
 msgstr "A_juda"
 
-#: ../data/GNOME_GNoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:502
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:195
+#: ../src/tray.cpp:500
 msgid "_Preferences"
 msgstr "_Preferències"
 
@@ -87,11 +87,13 @@ msgstr ""
 "Gnote surti."
 
 #: ../data/gnote.schemas.in.h:8
-msgid "Enable Auto bulleted lists."
+#, fuzzy
+msgid "Enable Auto bulleted lists"
 msgstr "Habilita les llistes de pics automàtiques."
 
 #: ../data/gnote.schemas.in.h:9
-msgid "Enable Middle-Click Paste On Icon."
+#, fuzzy
+msgid "Enable Middle-Click Paste On Icon"
 msgstr "Habilita la icona enganxa amb el botó central del ratolí."
 
 #: ../data/gnote.schemas.in.h:10
@@ -99,7 +101,8 @@ msgid "Enable WikiWord highlighting"
 msgstr "Habilita el ressaltat WikiWord"
 
 #: ../data/gnote.schemas.in.h:11
-msgid "Enable closing notes with escape."
+#, fuzzy
+msgid "Enable closing notes with escape"
 msgstr "Habilita el tancament de les notes amb la tecla d'escapament."
 
 #: ../data/gnote.schemas.in.h:12
@@ -239,7 +242,8 @@ msgstr ""
 "conflicte cas per cas."
 
 #: ../data/gnote.schemas.in.h:32
-msgid "List of pinned notes."
+#, fuzzy
+msgid "List of pinned notes"
 msgstr "Llista de notes recordatòries"
 
 #: ../data/gnote.schemas.in.h:33
@@ -336,7 +340,10 @@ msgid "Synchronization Local Server Path"
 msgstr "Camí del servidor local de sincronització"
 
 #: ../data/gnote.schemas.in.h:55
-msgid "The date format that is used for the timestamp."
+#, fuzzy
+msgid ""
+"The date format that is used for the timestamp. It followe the format of "
+"strftime(3)."
 msgstr "El format de data que s'utilitza per la marca horària."
 
 #: ../data/gnote.schemas.in.h:56
@@ -554,7 +561,7 @@ msgstr "_Suprimeix"
 msgid "Delete the selected note"
 msgstr "Suprimeix la nota seleccionada"
 
-#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:369
+#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:370
 msgid "_Close"
 msgstr "_Tanca"
 
@@ -562,7 +569,7 @@ msgstr "_Tanca"
 msgid "Close this window"
 msgstr "Tanca aquesta finestra"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:519
+#: ../src/actionmanager.cpp:187 ../src/tray.cpp:517
 msgid "_Quit"
 msgstr "_Surt"
 
@@ -576,7 +583,7 @@ msgstr "_Edita"
 
 #: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:86
 msgid "Gnote Preferences"
-msgstr "_Preferències del Gnote"
+msgstr "Preferències del Gnote"
 
 #: ../src/actionmanager.cpp:202
 msgid "_Contents"
@@ -598,7 +605,7 @@ msgstr "Safata del sistema"
 msgid "Create _New Note"
 msgstr "Crea una _nota nova"
 
-#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:321
+#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:322
 msgid "_Search All Notes"
 msgstr "Ce_rca totes les notes"
 
@@ -614,28 +621,36 @@ msgstr "S_incronitza les notes"
 msgid "Start synchronizing notes"
 msgstr "Inicia la sincronització de les notes"
 
-#: ../src/gnote.cpp:202
+#: ../src/gnote.cpp:230
 msgid "Cannot create new note"
 msgstr "No es pot crear una nota nova"
 
-#: ../src/gnote.cpp:246
+#: ../src/gnote.cpp:274
 msgid "and Tomboy original authors."
 msgstr "i als autors del Tomboy."
 
-#: ../src/gnote.cpp:255
+#: ../src/gnote.cpp:283
 msgid "translator-credits"
 msgstr ""
 "Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Gil Forcada <gilforcada@guifi.net>"
 
-#: ../src/gnote.cpp:264
+#: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Una senzilla aplicació d'escriptori, fàcil d'usar, per a prendre notes."
 
-#: ../src/gnote.cpp:275
+#: ../src/gnote.cpp:303
 msgid "Homepage"
 msgstr "Pàgina inicial"
+
+#: ../src/gnote.cpp:343
+msgid "A note taking application"
+msgstr ""
+
+#: ../src/gnote.cpp:351
+msgid "Run Gnote as a GNOME panel applet"
+msgstr ""
 
 #: ../src/preferencesdialog.cpp:104
 msgid "Editing"
@@ -765,19 +780,28 @@ msgstr "_Habilita"
 msgid "_Disable"
 msgstr "_Inhabilita"
 
-#: ../src/preferencesdialog.cpp:830
+#: ../src/preferencesdialog.cpp:699
+msgid "Not Implemented"
+msgstr "Encara no està implementat"
+
+#: ../src/preferencesdialog.cpp:713
+#, fuzzy
+msgid "%1% Preferences"
+msgstr "_Preferències"
+
+#: ../src/preferencesdialog.cpp:853
 msgid "Choose Note Font"
 msgstr "Escolliu el tipus de lletra de la nota"
 
-#: ../src/preferencesdialog.cpp:925
+#: ../src/preferencesdialog.cpp:948
 msgid "Version:"
 msgstr "Versió:"
 
-#: ../src/preferencesdialog.cpp:930
+#: ../src/preferencesdialog.cpp:953
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:936
+#: ../src/preferencesdialog.cpp:959
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -873,123 +897,123 @@ msgstr "Descriviu la vostra nota nova aquí."
 msgid "Find in This Note"
 msgstr "Cerca en aquesta nota"
 
-#: ../src/notewindow.cpp:329
+#: ../src/notewindow.cpp:330
 msgid "_Link to New Note"
 msgstr "_Enllaça a una nota nova"
 
-#: ../src/notewindow.cpp:337
+#: ../src/notewindow.cpp:338
 msgid "Te_xt"
 msgstr "Te_xt"
 
-#: ../src/notewindow.cpp:346
+#: ../src/notewindow.cpp:347
 msgid "_Find in This Note"
 msgstr "_Cerca en aquesta nota"
 
-#: ../src/notewindow.cpp:361
+#: ../src/notewindow.cpp:362
 msgid "Clos_e All Notes"
 msgstr "Tanca tot_es les notes"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:397
 msgid "Search"
 msgstr "Cerca"
 
-#: ../src/notewindow.cpp:400
+#: ../src/notewindow.cpp:401
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "Cerca les vostres notes (Ctrl-Maj-F)"
 
-#: ../src/notewindow.cpp:410
+#: ../src/notewindow.cpp:411
 msgid "Link"
 msgstr "Enllaça"
 
-#: ../src/notewindow.cpp:416
+#: ../src/notewindow.cpp:417
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Enllaça el text seleccionat a una nota nova (Ctrl-L)"
 
-#: ../src/notewindow.cpp:425
+#: ../src/notewindow.cpp:426
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:432
 msgid "Set properties of text"
 msgstr "Estableix les propietats del text"
 
-#: ../src/notewindow.cpp:436
+#: ../src/notewindow.cpp:437
 msgid "T_ools"
 msgstr "E_ines"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:442
 msgid "Use tools on this note"
 msgstr "Usa les eines en aquesta nota"
 
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:452
 msgid "Delete this note"
 msgstr "Suprimeix aquesta nota"
 
-#: ../src/notewindow.cpp:460
+#: ../src/notewindow.cpp:461
 msgid "Synchronize Notes"
 msgstr "Sincronitza les notes"
 
-#: ../src/notewindow.cpp:502
+#: ../src/notewindow.cpp:503
 msgid "_Find..."
 msgstr "_Cerca..."
 
-#: ../src/notewindow.cpp:510 ../src/notewindow.cpp:630
+#: ../src/notewindow.cpp:511 ../src/notewindow.cpp:631
 msgid "Find _Next"
 msgstr "Cerca la s_egüent"
 
-#: ../src/notewindow.cpp:520
+#: ../src/notewindow.cpp:521
 msgid "Find _Previous"
 msgstr "Cerca l'_anterior"
 
-#: ../src/notewindow.cpp:588
+#: ../src/notewindow.cpp:589
 msgid "Cannot create note"
 msgstr "No es pot crear una nota nova"
 
-#: ../src/notewindow.cpp:631
+#: ../src/notewindow.cpp:632
 msgid "_Previous"
 msgstr "_Anterior"
 
-#: ../src/notewindow.cpp:644
+#: ../src/notewindow.cpp:645
 msgid "_Find:"
 msgstr "_Cerca:"
 
-#: ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:1083
 msgid "<b>_Bold</b>"
 msgstr "<b>_Negreta</b>"
 
-#: ../src/notewindow.cpp:1083
+#: ../src/notewindow.cpp:1084
 msgid "<i>_Italic</i>"
 msgstr "<i>_Cursiva</i>"
 
-#: ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:1085
 msgid "<s>_Strikeout</s>"
 msgstr "<i>_Barrat</i>"
 
-#: ../src/notewindow.cpp:1086
+#: ../src/notewindow.cpp:1087
 msgid "_Highlight"
 msgstr "_Ressaltat"
 
-#: ../src/notewindow.cpp:1088
+#: ../src/notewindow.cpp:1089
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:1090
+#: ../src/notewindow.cpp:1091
 msgid "Hu_ge"
 msgstr "_Molt gran"
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1093
 msgid "_Large"
 msgstr "_Gran"
 
-#: ../src/notewindow.cpp:1094
+#: ../src/notewindow.cpp:1095
 msgid "S_mall"
 msgstr "_Petita"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1097
 msgid "Bullets"
 msgstr "Pics"
 
-#: ../src/notewindow.cpp:1169
+#: ../src/notewindow.cpp:1170
 msgid "Font Size"
 msgstr "Mida de la lletra"
 
@@ -1055,35 +1079,35 @@ msgid_plural "%1% matches"
 msgstr[0] "%1% coincidència"
 msgstr[1] "%1% coincidències"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Total: %1% nota"
 msgstr[1] "Total: %1% notes"
 
-#: ../src/recentchanges.cpp:588
+#: ../src/recentchanges.cpp:595
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Coincidències: %1% nota"
 msgstr[1] "Coincidències: %1% notes"
 
-#: ../src/recentchanges.cpp:723
+#: ../src/recentchanges.cpp:735
 msgid "Notes"
 msgstr "Notes"
 
-#: ../src/tray.cpp:52
+#: ../src/tray.cpp:50
 msgid "Gnote Notes"
 msgstr "Notes del Gnote"
 
-#: ../src/tray.cpp:172
+#: ../src/tray.cpp:169
 msgid " (new)"
 msgstr " (nova) "
 
-#: ../src/tray.cpp:512
+#: ../src/tray.cpp:510
 msgid "_About Gnote"
 msgstr "_Quant al Gnote"
 
-#: ../src/utils.cpp:128
+#: ../src/utils.cpp:133
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -1091,64 +1115,64 @@ msgstr ""
 "No s'ha pogut trobar el «manual del Gnote». Comproveu que la instal·lació "
 "s'ha realitzat correctament."
 
-#: ../src/utils.cpp:136
+#: ../src/utils.cpp:141
 msgid "Help not found"
 msgstr "No s'ha trobat l'ajuda"
 
-#: ../src/utils.cpp:154
+#: ../src/utils.cpp:181
 msgid "Cannot open location"
 msgstr "No es pot obrir la ubicació"
 
-#: ../src/utils.cpp:168
+#: ../src/utils.cpp:195
 msgid "Today, %1%"
 msgstr "Avui, %1%"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:196
 msgid "Today"
 msgstr "Avui"
 
-#: ../src/utils.cpp:174
+#: ../src/utils.cpp:201
 msgid "Yesterday, %1%"
 msgstr "Ahir, %1%"
 
-#: ../src/utils.cpp:175
+#: ../src/utils.cpp:202
 msgid "Yesterday"
 msgstr "Ahir"
 
-#: ../src/utils.cpp:182
+#: ../src/utils.cpp:209
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "Fa %1% dia, %2%"
 msgstr[1] "Fa %1% dies, %2%"
 
 # csharp-format
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:213
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "Fa %1% dia"
 msgstr[1] "Fa %1% dies"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:220
 msgid "Tomorrow, %1%"
 msgstr "Demà, %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:221
 msgid "Tomorrow"
 msgstr "Demà"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:228
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "En %1% dia, %2%"
 msgstr[1] "En %1% dies, %2%"
 
-#: ../src/utils.cpp:205
+#: ../src/utils.cpp:232
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "En %1% dia"
 msgstr[1] "En %1% dies"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:243
 msgid "No Date"
 msgstr "Sense data"
 
@@ -1168,11 +1192,11 @@ msgstr ""
 msgid "Note title taken"
 msgstr "El títol de la nota ja és en ús"
 
-#: ../src/watchers.cpp:590
+#: ../src/watchers.cpp:579
 msgid "_Copy Link Address"
 msgstr "_Copia l'adreça de l'enllaç"
 
-#: ../src/watchers.cpp:596
+#: ../src/watchers.cpp:585
 msgid "_Open Link"
 msgstr "_Obre l'enllaç"
 
@@ -1274,32 +1298,150 @@ msgstr "Nota «%1%» nova"
 msgid "No notebook"
 msgstr "Cap bloc de notes"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:67
+#: ../src/notebooks/notebooknoteaddin.cpp:79
 msgid "Place this note into a notebook"
 msgstr "Posa aquesta nota al bloc de notes"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:154
+#: ../src/notebooks/notebooknoteaddin.cpp:166
 msgid "Notebook"
 msgstr "Bloc de notes"
 
 #
-#: ../src/notebooks/notebooknoteaddin.cpp:179
+#: ../src/notebooks/notebooknoteaddin.cpp:191
 msgid "_New notebook..."
 msgstr "_Bloc de notes nou..."
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
+msgid "Bugzilla Links"
+msgstr ""
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:54
+msgid ""
+"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
+msgstr ""
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr ""
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:58
+msgid ""
+"You can use any bugzilla just by dragging links into notes.  If you want a "
+"special icon for certain hosts, add them here."
+msgstr ""
+"Podeu utilitzar qualsevol bugzilla simplement arrossegant els enllaços a les "
+"notes. Si voleu icones especials per a determinats servidors, afegiu-les "
+"aquí."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:75
+msgid "Host Name"
+msgstr "Nom del servidor"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:88
+msgid "Icon"
+msgstr "Icona"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:203
+msgid "Select an icon..."
+msgstr "Seleccioneu una icona..."
+
+#. Extra Widget
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:218
+msgid "_Host name:"
+msgstr "_Nom del servidor:"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:246
+msgid "No host name specified"
+msgstr "No s'ha especificat cap nom per al servidor"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:247
+msgid "You must specify the Bugzilla host name to use with this icon."
+msgstr ""
+"Heu d'especificar el nom del servidor Bugzilla per a utilitzar amb aquesta "
+"icona."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:266
+msgid "Error saving icon"
+msgstr "S'ha produït un error en desar la icona"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:267
+msgid "Could not save the icon file."
+msgstr "No s'ha pogut desar el fitxer de la icona."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:339
+msgid "Really remove this icon?"
+msgstr "Segur que voleu eliminar aquesta icona?"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:340
+msgid "If you remove an icon it is permanently lost."
+msgstr "Si elimineu una icona la perdreu definitivament."
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
 msgid "_Fixed Width"
 msgstr "A_mplada fixa"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
 #, fuzzy
 msgid "Fixed Width"
 msgstr "A_mplada fixa"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
 msgid "Adds fixed-width font style."
 msgstr ""
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+msgid "Printing Support"
+msgstr ""
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+msgid "Allows you to print a note."
+msgstr ""
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+msgid "Print"
+msgstr "Imprimeix"
+
+#
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:114
+msgid "Error printing note"
+msgstr "S'ha produït un error en imprimir la nota"
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
+#, fuzzy
+msgid "Page %1% of %2%"
+msgstr "En %1% dia, %2%"
+
+#. Add the menu item when the window is created
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+msgid "Insert Timestamp"
+msgstr "Insereix marca horària"
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+msgid "Inserts current date and time at the cursor position."
+msgstr ""
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr ""
+
+#. Label
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
+msgid "Choose one of the predefined formats or use your own."
+msgstr "Escolliu un dels formats predefinits o utilitzeu el vostre propi."
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:71
+msgid "Use _Selected Format"
+msgstr "Utilitza el format _seleccionat"
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
+msgid "_Use Custom Format"
+msgstr "_Utilitza el format personalitzat"
 
 #~ msgid "<span background='yellow'>_Highlight</span>"
 #~ msgstr "<span background='yellow'>_Ressaltat</span>"
@@ -1355,46 +1497,6 @@ msgstr ""
 
 #~ msgid "(none)"
 #~ msgstr "(cap)"
-
-#~ msgid ""
-#~ "You can use any bugzilla just by dragging links into notes.  If you want "
-#~ "a special icon for certain hosts, add them here."
-#~ msgstr ""
-#~ "Podeu utilitzar qualsevol bugzilla simplement arrossegant els enllaços a "
-#~ "les notes. Si voleu icones especials per a determinats servidors, afegiu-"
-#~ "les aquí."
-
-#~ msgid "Host Name"
-#~ msgstr "Nom del servidor"
-
-#~ msgid "Icon"
-#~ msgstr "Icona"
-
-#~ msgid "Select an icon..."
-#~ msgstr "Seleccioneu una icona..."
-
-#~ msgid "_Host name:"
-#~ msgstr "_Nom del servidor:"
-
-#~ msgid "No host name specified"
-#~ msgstr "No s'ha especificat cap nom per al servidor"
-
-#~ msgid "You must specify the Bugzilla host name to use with this icon."
-#~ msgstr ""
-#~ "Heu d'especificar el nom del servidor Bugzilla per a utilitzar amb "
-#~ "aquesta icona."
-
-#~ msgid "Error saving icon"
-#~ msgstr "S'ha produït un error en desar la icona"
-
-#~ msgid "Could not save the icon file."
-#~ msgstr "No s'ha pogut desar el fitxer de la icona."
-
-#~ msgid "Really remove this icon?"
-#~ msgstr "Segur que voleu eliminar aquesta icona?"
-
-#~ msgid "If you remove an icon it is permanently lost."
-#~ msgstr "Si elimineu una icona la perdreu definitivament."
 
 #~ msgid "Export to HTML"
 #~ msgstr "Exporta a HTML"
@@ -1453,20 +1555,8 @@ msgstr ""
 #~ msgid "Error running gaim-remote: {0}"
 #~ msgstr "S'ha produït un error en executar el gaim-remote: «{0}»"
 
-#~ msgid "Insert Timestamp"
-#~ msgstr "Insereix marca horària"
-
 #~ msgid "dddd, MMMM d, h:mm tt"
 #~ msgstr "dddd, MMMM d, h:mm tt"
-
-#~ msgid "Choose one of the predefined formats or use your own."
-#~ msgstr "Escolliu un dels formats predefinits o utilitzeu el vostre propi."
-
-#~ msgid "Use _Selected Format"
-#~ msgstr "Utilitza el format _seleccionat"
-
-#~ msgid "_Use Custom Format"
-#~ msgstr "_Utilitza el format personalitzat"
 
 #~ msgid "Today: Template"
 #~ msgstr "Avui: plantilla"
@@ -1489,13 +1579,6 @@ msgstr ""
 
 #~ msgid "_Open Today: Template"
 #~ msgstr "_Obre Avui: plantilla"
-
-#~ msgid "Print"
-#~ msgstr "Imprimeix"
-
-#
-#~ msgid "Error printing note"
-#~ msgstr "S'ha produït un error en imprimir la nota"
 
 #~ msgid "Page {0} of {1}"
 #~ msgstr "Pàgina {0} de {1}"
@@ -1611,9 +1694,6 @@ msgstr ""
 
 #~ msgid "Synchronization"
 #~ msgstr "Sincronització"
-
-#~ msgid "Not Implemented"
-#~ msgstr "Encara no està implementat"
 
 #~ msgid "{0} Preferences"
 #~ msgstr "{0} Preferències"
