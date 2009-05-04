@@ -597,7 +597,7 @@ namespace gnote {
 
   void NoteWindow::open_help_activate()
   {
-    utils::show_help("gnote.xml", "editing-notes", get_screen()->gobj(), this);
+    utils::show_help("gnote", "editing-notes", get_screen()->gobj(), this);
   }
 
   void NoteWindow::create_new_note ()

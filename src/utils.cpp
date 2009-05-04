@@ -123,7 +123,7 @@ namespace gnote {
     {
       std::string uri = "ghelp:" + filename;
       if(!link_id.empty()) {
-        uri += link_id;
+        uri += "#" + link_id;
       }
       GError *error = NULL;
 
