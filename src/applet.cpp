@@ -290,7 +290,7 @@ void GnotePanelAppletEventBox::init_pixbuf()
   else if (icon_size <= 47)
     icon_size = 32;
 
-  Glib::RefPtr<Gdk::Pixbuf> new_icon = utils::get_icon("tomboy", icon_size);
+  Glib::RefPtr<Gdk::Pixbuf> new_icon = utils::get_icon("gnote", icon_size);
   m_image.property_pixbuf() = new_icon;
 }
 
