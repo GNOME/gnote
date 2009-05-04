@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-22 09:31+0200\n"
-"PO-Revision-Date: 2009-04-22 09:49+0200\n"
+"POT-Creation-Date: 2009-05-04 02:47+0200\n"
+"PO-Revision-Date: 2009-05-04 02:44+0200\n"
 "Last-Translator: Stéphane Raimbault <stephane.raimbault@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,29 +25,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:1
+#: ../data/GNOME_GnoteApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "Accessoires"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:2
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2
 msgid "Gnote Applet Factory"
 msgstr "Fabrique d'applet Gnote"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:3
+#: ../data/GNOME_GnoteApplet.server.in.in.h:3
 msgid "Simple and easy to use note-taking"
 msgstr "Une application de prise de notes simple et facile à utiliser"
 
-#: ../data/GNOME_GNoteApplet.xml.h:1 ../src/actionmanager.cpp:207
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:207
 msgid "_About"
 msgstr "À _propos"
 
-#: ../data/GNOME_GNoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:507
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:198
+#: ../src/tray.cpp:505
 msgid "_Help"
 msgstr "Aid_e"
 
-#: ../data/GNOME_GNoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:502
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:195
+#: ../src/tray.cpp:500
 msgid "_Preferences"
 msgstr "_Préférences"
 
@@ -96,20 +96,20 @@ msgstr ""
 "Gnote est quitté."
 
 #: ../data/gnote.schemas.in.h:8
-msgid "Enable Auto bulleted lists."
-msgstr "Activer les listes à puces automatiques."
+msgid "Enable Auto bulleted lists"
+msgstr "Activer les listes à puces automatiques"
 
 #: ../data/gnote.schemas.in.h:9
-msgid "Enable Middle-Click Paste On Icon."
-msgstr "Activer le collage du presse-papiers par clic-milieu sur l'icône."
+msgid "Enable Middle-Click Paste On Icon"
+msgstr "Activer le collage du presse-papiers par clic-milieu sur l'icône"
 
 #: ../data/gnote.schemas.in.h:10
 msgid "Enable WikiWord highlighting"
 msgstr "Activer le surlignage des mots Wiki"
 
 #: ../data/gnote.schemas.in.h:11
-msgid "Enable closing notes with escape."
-msgstr "Activer la fermeture des notes avec la touche Échap."
+msgid "Enable closing notes with escape"
+msgstr "Activer la fermeture des notes avec la touche Échap"
 
 #: ../data/gnote.schemas.in.h:12
 msgid "Enable custom font"
@@ -248,8 +248,8 @@ msgstr ""
 "situation au cas par cas."
 
 #: ../data/gnote.schemas.in.h:32
-msgid "List of pinned notes."
-msgstr "Liste des notes épinglées."
+msgid "List of pinned notes"
+msgstr "Liste des notes épinglées"
 
 #: ../data/gnote.schemas.in.h:33
 msgid "Minimum number of notes to show in menu"
@@ -347,9 +347,13 @@ msgstr "ID de synchronisation du client"
 msgid "Synchronization Local Server Path"
 msgstr "Chemin du serveur local de synchronisation"
 
+# Voir #581239
 #: ../data/gnote.schemas.in.h:55
-msgid "The date format that is used for the timestamp."
-msgstr "Le format de date utilisé pour l'horodatage."
+msgid ""
+"The date format that is used for the timestamp. It followe the format of "
+"strftime(3)."
+msgstr ""
+"Le format de date utilisé pour l'horodatage, selon le format strftime(3)."
 
 #: ../data/gnote.schemas.in.h:56
 msgid ""
@@ -569,7 +573,7 @@ msgstr "_Supprimer"
 msgid "Delete the selected note"
 msgstr "Supprime la note sélectionnée"
 
-#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:369
+#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:370
 msgid "_Close"
 msgstr "_Fermer"
 
@@ -577,7 +581,7 @@ msgstr "_Fermer"
 msgid "Close this window"
 msgstr "Ferme cette fenêtre"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:519
+#: ../src/actionmanager.cpp:187 ../src/tray.cpp:517
 msgid "_Quit"
 msgstr "_Quitter"
 
@@ -613,7 +617,7 @@ msgstr "Icône de notification"
 msgid "Create _New Note"
 msgstr "Créer une _nouvelle note"
 
-#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:321
+#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:322
 msgid "_Search All Notes"
 msgstr "_Rechercher dans toutes les notes"
 
@@ -629,15 +633,15 @@ msgstr "S_ynchronisation des notes"
 msgid "Start synchronizing notes"
 msgstr "Démarrer la synchronisation des notes"
 
-#: ../src/gnote.cpp:202
+#: ../src/gnote.cpp:230
 msgid "Cannot create new note"
 msgstr "Impossible de créer une nouvelle note"
 
-#: ../src/gnote.cpp:246
+#: ../src/gnote.cpp:274
 msgid "and Tomboy original authors."
 msgstr "ainsi que les auteurs originaux de Tomboy."
 
-#: ../src/gnote.cpp:255
+#: ../src/gnote.cpp:283
 msgid "translator-credits"
 msgstr ""
 "Benoît Dejean <benoit@placenet.org>\n"
@@ -648,14 +652,22 @@ msgstr ""
 "Claude Paroz <claude@2xlibre.net>\n"
 "Bruno Brouard <annoa.b@gmail.com>"
 
-#: ../src/gnote.cpp:264
+#: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Une application de prise de notes de bureau simple et facile à utiliser."
 
-#: ../src/gnote.cpp:275
+#: ../src/gnote.cpp:303
 msgid "Homepage"
 msgstr "Page d'accueil"
+
+#: ../src/gnote.cpp:343
+msgid "A note taking application"
+msgstr "Une application de prise de notes"
+
+#: ../src/gnote.cpp:351
+msgid "Run Gnote as a GNOME panel applet"
+msgstr "Lance Gnote comme applet du panneau GNOME"
 
 #: ../src/preferencesdialog.cpp:104
 msgid "Editing"
@@ -785,19 +797,27 @@ msgstr "_Activer"
 msgid "_Disable"
 msgstr "_Désactiver"
 
-#: ../src/preferencesdialog.cpp:830
+#: ../src/preferencesdialog.cpp:699
+msgid "Not Implemented"
+msgstr "Non implémenté"
+
+#: ../src/preferencesdialog.cpp:713
+msgid "%1% Preferences"
+msgstr "Préférences de %1%"
+
+#: ../src/preferencesdialog.cpp:854
 msgid "Choose Note Font"
 msgstr "Choisir une police pour les notes"
 
-#: ../src/preferencesdialog.cpp:925
+#: ../src/preferencesdialog.cpp:949
 msgid "Version:"
 msgstr "Version :"
 
-#: ../src/preferencesdialog.cpp:930
+#: ../src/preferencesdialog.cpp:954
 msgid "Author:"
 msgstr "Auteur :"
 
-#: ../src/preferencesdialog.cpp:936
+#: ../src/preferencesdialog.cpp:960
 msgid "Copyright:"
 msgstr "Copyright :"
 
@@ -822,17 +842,26 @@ msgid ""
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
-"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Démarrer ici\n"
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Démarrer "
+"ici\n"
 "\n"
 "<bold>Bienvenue dans Gnote !</bold>\n"
 "\n"
-"Utilisez cette note « Démarrer ici » pour commencer à organiser vos idées et vos réflexions.\n"
+"Utilisez cette note « Démarrer ici » pour commencer à organiser vos idées et "
+"vos réflexions.\n"
 "\n"
-"Vous pouvez créer de nouvelles notes contenant vos idées en choisissant l'élément « Créer une nouvelle note » dans le menu de Notes Gnote dans le tableau de bord de GNOME. Votre note sera enregistrée automatiquement.\n"
+"Vous pouvez créer de nouvelles notes contenant vos idées en choisissant "
+"l'élément « Créer une nouvelle note » dans le menu de Notes Gnote dans le "
+"tableau de bord de GNOME. Votre note sera enregistrée automatiquement.\n"
 "\n"
-"Ensuite, organisez les notes que vous créez en les reliant les unes aux autres !\n"
+"Ensuite, organisez les notes que vous créez en les reliant les unes aux "
+"autres !\n"
 "\n"
-"Nous avons créé une note appelée <link:internal>Utilisation des liens dans Gnote</link:internal>. Avez-vous remarqué que chaque fois que nous écrivons <link:internal>Utilisation des liens dans Gnote</link:internal>, le texte est automatiquement souligné ?  Cliquez sur le lien pour ouvrir la note.</note-content>"
+"Nous avons créé une note appelée <link:internal>Utilisation des liens dans "
+"Gnote</link:internal>. Avez-vous remarqué que chaque fois que nous écrivons "
+"<link:internal>Utilisation des liens dans Gnote</link:internal>, le texte "
+"est automatiquement souligné ?  Cliquez sur le lien pour ouvrir la note.</"
+"note-content>"
 
 #: ../src/notemanager.cpp:232
 msgid ""
@@ -886,123 +915,123 @@ msgstr "Décrivez votre nouvelle note ici."
 msgid "Find in This Note"
 msgstr "Chercher dans cette note"
 
-#: ../src/notewindow.cpp:329
+#: ../src/notewindow.cpp:330
 msgid "_Link to New Note"
 msgstr "_Lier à une nouvelle note"
 
-#: ../src/notewindow.cpp:337
+#: ../src/notewindow.cpp:338
 msgid "Te_xt"
 msgstr "Te_xte"
 
-#: ../src/notewindow.cpp:346
+#: ../src/notewindow.cpp:347
 msgid "_Find in This Note"
 msgstr "_Chercher dans cette note"
 
-#: ../src/notewindow.cpp:361
+#: ../src/notewindow.cpp:362
 msgid "Clos_e All Notes"
 msgstr "Fermer _toutes les notes"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:397
 msgid "Search"
 msgstr "Rechercher"
 
-#: ../src/notewindow.cpp:400
+#: ../src/notewindow.cpp:401
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "Recherche dans vos notes (Ctrl+Maj+F)"
 
-#: ../src/notewindow.cpp:410
+#: ../src/notewindow.cpp:411
 msgid "Link"
 msgstr "Lier"
 
-#: ../src/notewindow.cpp:416
+#: ../src/notewindow.cpp:417
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Lie le texte sélectionné à une nouvelle note (Ctrl+L)"
 
-#: ../src/notewindow.cpp:425
+#: ../src/notewindow.cpp:426
 msgid "_Text"
 msgstr "_Texte"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:432
 msgid "Set properties of text"
 msgstr "Définit les propriétés du texte"
 
-#: ../src/notewindow.cpp:436
+#: ../src/notewindow.cpp:437
 msgid "T_ools"
 msgstr "_Outils"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:442
 msgid "Use tools on this note"
 msgstr "Utilise des outils sur cette note"
 
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:452
 msgid "Delete this note"
 msgstr "Supprime cette note"
 
-#: ../src/notewindow.cpp:460
+#: ../src/notewindow.cpp:461
 msgid "Synchronize Notes"
 msgstr "Synchroniser les notes"
 
-#: ../src/notewindow.cpp:502
+#: ../src/notewindow.cpp:503
 msgid "_Find..."
 msgstr "_Rechercher..."
 
-#: ../src/notewindow.cpp:510 ../src/notewindow.cpp:630
+#: ../src/notewindow.cpp:511 ../src/notewindow.cpp:631
 msgid "Find _Next"
 msgstr "Rechercher le _suivant"
 
-#: ../src/notewindow.cpp:520
+#: ../src/notewindow.cpp:521
 msgid "Find _Previous"
 msgstr "Rechercher le _précédent"
 
-#: ../src/notewindow.cpp:588
+#: ../src/notewindow.cpp:589
 msgid "Cannot create note"
 msgstr "Impossible de créer la note"
 
-#: ../src/notewindow.cpp:631
+#: ../src/notewindow.cpp:632
 msgid "_Previous"
 msgstr "_Précédent"
 
-#: ../src/notewindow.cpp:644
+#: ../src/notewindow.cpp:645
 msgid "_Find:"
 msgstr "_Rechercher :"
 
-#: ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:1083
 msgid "<b>_Bold</b>"
 msgstr "<b>_Bold</b>"
 
-#: ../src/notewindow.cpp:1083
+#: ../src/notewindow.cpp:1084
 msgid "<i>_Italic</i>"
 msgstr "<i>_Italique</i>"
 
-#: ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:1085
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Barré</s>"
 
-#: ../src/notewindow.cpp:1086
+#: ../src/notewindow.cpp:1087
 msgid "_Highlight"
 msgstr "_Surligné"
 
-#: ../src/notewindow.cpp:1088
+#: ../src/notewindow.cpp:1089
 msgid "_Normal"
 msgstr "_Normale"
 
-#: ../src/notewindow.cpp:1090
+#: ../src/notewindow.cpp:1091
 msgid "Hu_ge"
 msgstr "Énorm_e"
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1093
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:1094
+#: ../src/notewindow.cpp:1095
 msgid "S_mall"
 msgstr "_Petite"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1097
 msgid "Bullets"
 msgstr "Puces"
 
-#: ../src/notewindow.cpp:1169
+#: ../src/notewindow.cpp:1170
 msgid "Font Size"
 msgstr "Taille de la police"
 
@@ -1067,97 +1096,99 @@ msgid_plural "%1% matches"
 msgstr[0] "%1% occurrence"
 msgstr[1] "%1% occurrences"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Total : %1% note"
 msgstr[1] "Total : %1% notes"
 
-#: ../src/recentchanges.cpp:588
+#: ../src/recentchanges.cpp:595
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "%1% note correspondante"
 msgstr[1] "%1% notes correspondantes"
 
-#: ../src/recentchanges.cpp:723
+#: ../src/recentchanges.cpp:735
 msgid "Notes"
 msgstr "Notes"
 
-#: ../src/tray.cpp:52
+#: ../src/tray.cpp:50
 msgid "Gnote Notes"
 msgstr "Notes Gnote"
 
-#: ../src/tray.cpp:172
+#: ../src/tray.cpp:169
 msgid " (new)"
 msgstr " (nouveau)"
 
-#: ../src/tray.cpp:512
+#: ../src/tray.cpp:510
 msgid "_About Gnote"
 msgstr "À _propos de Gnote"
 
-#: ../src/utils.cpp:128
+#: ../src/utils.cpp:133
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
-msgstr "Le « manuel de Gnote » n'a pas été trouvé. Vérifiez que votre installation a été effectuée correctement."
+msgstr ""
+"Le « manuel de Gnote » n'a pas été trouvé. Vérifiez que votre installation a "
+"été effectuée correctement."
 
-#: ../src/utils.cpp:136
+#: ../src/utils.cpp:141
 msgid "Help not found"
 msgstr "L'aide n'a pas été trouvée"
 
-#: ../src/utils.cpp:154
+#: ../src/utils.cpp:181
 msgid "Cannot open location"
 msgstr "Impossible d'ouvrir l'emplacement"
 
-#: ../src/utils.cpp:168
+#: ../src/utils.cpp:195
 msgid "Today, %1%"
 msgstr "Aujourd'hui, %1%"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:196
 msgid "Today"
 msgstr "Aujourd'hui"
 
-#: ../src/utils.cpp:174
+#: ../src/utils.cpp:201
 msgid "Yesterday, %1%"
 msgstr "Hier, %1%"
 
-#: ../src/utils.cpp:175
+#: ../src/utils.cpp:202
 msgid "Yesterday"
 msgstr "Hier"
 
-#: ../src/utils.cpp:182
+#: ../src/utils.cpp:209
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "Il y a %1% jour, %2%"
 msgstr[1] "Il y a %1% jours, %2%"
 
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:213
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "Il y a %1% jour"
 msgstr[1] "Il y a %1% jours"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:220
 msgid "Tomorrow, %1%"
 msgstr "Aujourd'hui, %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:221
 msgid "Tomorrow"
 msgstr "Demain"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:228
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "Dans %1% jour, %2%"
 msgstr[1] "Dans %1% jours, %2%"
 
-#: ../src/utils.cpp:205
+#: ../src/utils.cpp:232
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "Dans %1% jour"
 msgstr[1] "Dans %1% jours"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:243
 msgid "No Date"
 msgstr "Sans date"
 
@@ -1177,11 +1208,11 @@ msgstr ""
 msgid "Note title taken"
 msgstr "Ce titre de note est déjà utilisé"
 
-#: ../src/watchers.cpp:590
+#: ../src/watchers.cpp:579
 msgid "_Copy Link Address"
 msgstr "_Copier l'adresse du lien"
 
-#: ../src/watchers.cpp:596
+#: ../src/watchers.cpp:585
 msgid "_Open Link"
 msgstr "_Ouvrir le lien"
 
@@ -1284,30 +1315,148 @@ msgstr "Nouvelle note « %1% »"
 msgid "No notebook"
 msgstr "Aucun bloc-notes"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:67
+#: ../src/notebooks/notebooknoteaddin.cpp:79
 msgid "Place this note into a notebook"
 msgstr "Placer cette note dans un bloc-notes"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:154
+#: ../src/notebooks/notebooknoteaddin.cpp:166
 msgid "Notebook"
 msgstr "Bloc-notes"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:179
+#: ../src/notebooks/notebooknoteaddin.cpp:191
 msgid "_New notebook..."
 msgstr "Nouveau _bloc-notes..."
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
+msgid "Bugzilla Links"
+msgstr "Liens Bugzilla"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:54
+msgid ""
+"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
+msgstr ""
+"Permet de glisser un URL Bugzilla depuis votre navigateur dans une note de "
+"Gnote. Le numéro de bogue est inséré comme un lien avec une petite icône à "
+"côté."
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "Hubert Figuiere et le projet Tomboy"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:58
+msgid ""
+"You can use any bugzilla just by dragging links into notes.  If you want a "
+"special icon for certain hosts, add them here."
+msgstr ""
+"Vous pouvez utiliser n'importe quel Bugzilla en glissant des liens dans des "
+"notes. Si vous désirez une icône spécifique pour certains hôtes, ajoutez-les "
+"ici."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:75
+msgid "Host Name"
+msgstr "Nom d'hôte"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:88
+msgid "Icon"
+msgstr "Icône"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:203
+msgid "Select an icon..."
+msgstr "Sélectionner une icône..."
+
+#. Extra Widget
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:218
+msgid "_Host name:"
+msgstr "Nom d'_hôte :"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:246
+msgid "No host name specified"
+msgstr "Aucun nom d'hôte indiqué"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:247
+msgid "You must specify the Bugzilla host name to use with this icon."
+msgstr ""
+"Vous devez indiquer le nom d'hôte Bugzilla à utiliser avec cette icône."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:266
+msgid "Error saving icon"
+msgstr "Erreur d'enregistrement de l'icône"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:267
+msgid "Could not save the icon file."
+msgstr "Impossible d'enregistrer le fichier icône."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:339
+msgid "Really remove this icon?"
+msgstr "Voulez-vous vraiment supprimer cette icône ?"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:340
+msgid "If you remove an icon it is permanently lost."
+msgstr "Si vous supprimez une icône, elle sera définitivement perdue."
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
 msgid "_Fixed Width"
 msgstr "Taille _fixe"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
 msgid "Fixed Width"
 msgstr "Taille fixe"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
 msgid "Adds fixed-width font style."
 msgstr "Ajoute une police à chasse fixe."
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+msgid "Printing Support"
+msgstr "Prise en charge de l'impression"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+msgid "Allows you to print a note."
+msgstr "Permet d'imprimer une note."
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+msgid "Print"
+msgstr "Imprimer"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:114
+msgid "Error printing note"
+msgstr "Erreur lors de l'impression de la note"
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
+msgid "Page %1% of %2%"
+msgstr "Page %1% sur %2%"
+
+#. Add the menu item when the window is created
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+msgid "Insert Timestamp"
+msgstr "Insérer la date"
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+msgid "Inserts current date and time at the cursor position."
+msgstr "Insère la date et l'heure actuelle à la position du curseur."
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "Hubert Figuire et le projet Tomboy"
+
+#. Label
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
+msgid "Choose one of the predefined formats or use your own."
+msgstr "Choisissez l'un des formats prédéfinis ou utilisez le vôtre."
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:71
+msgid "Use _Selected Format"
+msgstr "Utiliser le format _sélectionné"
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
+msgid "_Use Custom Format"
+msgstr "_Utiliser un format personnalisé"
 
 # Les messages obsolètes seront utiles aux prochaines versions de Gnote
 #~ msgid "What links here?"
@@ -1315,42 +1464,6 @@ msgstr "Ajoute une police à chasse fixe."
 
 #~ msgid "(none)"
 #~ msgstr "(aucun)"
-
-#~ msgid ""
-#~ "You can use any bugzilla just by dragging links into notes.  If you want "
-#~ "a special icon for certain hosts, add them here."
-#~ msgstr ""
-#~ "Vous pouvez utiliser n'importe quel Bugzilla en glissant des liens dans "
-#~ "des notes. Si vous désirez une icône spécifique pour certains hôtes, "
-#~ "ajoutez-les ici."
-
-#~ msgid "Icon"
-#~ msgstr "Icône"
-
-#~ msgid "Select an icon..."
-#~ msgstr "Sélectionner une icône..."
-
-#~ msgid "_Host name:"
-#~ msgstr "Nom d'_hôte :"
-
-#~ msgid "No host name specified"
-#~ msgstr "Aucun nom d'hôte indiqué"
-
-#~ msgid "You must specify the Bugzilla host name to use with this icon."
-#~ msgstr ""
-#~ "Vous devez indiquer le nom d'hôte Bugzilla à utiliser avec cette icône."
-
-#~ msgid "Error saving icon"
-#~ msgstr "Erreur d'enregistrement de l'icône"
-
-#~ msgid "Could not save the icon file."
-#~ msgstr "Impossible d'enregistrer le fichier icône."
-
-#~ msgid "Really remove this icon?"
-#~ msgstr "Voulez-vous vraiment supprimer cette icône ?"
-
-#~ msgid "If you remove an icon it is permanently lost."
-#~ msgstr "Si vous supprimez une icône, elle sera définitivement perdue."
 
 #~ msgid "Export to HTML"
 #~ msgstr "Exporter en HTML"
@@ -1408,20 +1521,8 @@ msgstr "Ajoute une police à chasse fixe."
 #~ msgid "Error running gaim-remote: %1%"
 #~ msgstr "Erreur pendant l'exécution de gaim-remote : %1%"
 
-#~ msgid "Insert Timestamp"
-#~ msgstr "Insérer la date"
-
 #~ msgid "dddd, MMMM d, h:mm tt"
 #~ msgstr "dddd d MMMM, H:mm"
-
-#~ msgid "Choose one of the predefined formats or use your own."
-#~ msgstr "Choisissez l'un des formats prédéfinis ou utilisez le vôtre."
-
-#~ msgid "Use _Selected Format"
-#~ msgstr "Utiliser le format _sélectionné"
-
-#~ msgid "_Use Custom Format"
-#~ msgstr "_Utiliser un format personnalisé"
 
 #~ msgid "Today: Template"
 #~ msgstr "Aujourd'hui : modèle"
@@ -1447,15 +1548,6 @@ msgstr "Ajoute une police à chasse fixe."
 
 #~ msgid "_Open Today: Template"
 #~ msgstr "_Ouvrir « Aujourd'hui : modèle »"
-
-#~ msgid "Print"
-#~ msgstr "Imprimer"
-
-#~ msgid "Error printing note"
-#~ msgstr "Erreur lors de l'impression de la note"
-
-#~ msgid "Page %1% of %2%"
-#~ msgstr "Page %1% sur %2%"
 
 #~ msgid "dddd MM/dd/yyyy, hh:mm:ss tt"
 #~ msgstr "dddd dd/MM/yyyy, hh:mm:ss tt"
@@ -1563,12 +1655,6 @@ msgstr "Ajoute une police à chasse fixe."
 
 #~ msgid "Synchronization"
 #~ msgstr "Synchronisation"
-
-#~ msgid "Not Implemented"
-#~ msgstr "Non implémenté"
-
-#~ msgid "%1% Preferences"
-#~ msgstr "Préférences de %1%"
 
 #~ msgid "Other Synchronization Options"
 #~ msgstr "Autres options de synchronisation"
