@@ -1344,7 +1344,7 @@ namespace gnote {
   void NoteRecentChanges::on_delete_notebook()
   {
     notebooks::Notebook::Ptr notebook = get_selected_notebook ();
-    if (notebook)
+    if (!notebook)
       return;
       
     notebooks::NotebookManager::prompt_delete_notebook (this, notebook);
