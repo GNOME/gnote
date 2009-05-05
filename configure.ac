@@ -89,13 +89,13 @@ AC_CHECK_LIB(uuid,uuid_unparse_lower, ,[AC_MSG_ERROR("libuuid library is missing
 PKG_CHECK_EXISTS(libpanelappletmm-2.6 >= $LIBPANELAPPLETMM_VERSION,
     [
      AC_DEFINE(HAVE_PANELAPPLETMM, 1, [Define to 1 if panelapplet is available])
-     have_panelapplet=1
+     have_panelapplet="yes"
      PKG_CHECK_MODULES(LIBPANELAPPLETMM, [libpanelappletmm-2.6 >= $LIBPANELAPPLETMM_VERSION])
     ],
-    [have_panelapplet=0]
+    [have_panelapplet="no"]
 )
 
-AM_CONDITIONAL(HAVE_PANELAPPLETMM, test $have_panelapplet == "1")
+AM_CONDITIONAL(HAVE_PANELAPPLETMM, test $have_panelapplet == "yes")
 
 #
 # If libpanelapplet available, use it to find .server install location.
@@ -162,6 +162,9 @@ AC_ARG_ENABLE(dbus,
 	      [  --enable-dbus[[=no/yes]]    compile with dbus support [[default: no]]],
 	      ENABLE_DBUS="$enableval", ENABLE_DBUS="no")
 AM_CONDITIONAL(ENABLE_DBUS, test "x$ENABLE_DBUS" != "xno")
+if test "x$ENABLE_DBUS" != "xno"; then
+   AC_ERROR("DBus support not implemented yet");
+fi
 
 AC_ARG_WITH(dbus_service_dir, [  --with-dbus-service-dir=DIR            Where to install Gnote's DBus service file.])
 AM_CONDITIONAL(WITH_DBUS_SERVICE_DIR, test "x$with_dbus_service_dir" != "x")
@@ -216,3 +219,12 @@ help/Makefile
 
 
 AC_OUTPUT
+
+
+echo "
+Options:
+
+  Spellchecking support:       ${FIXED_GTKSPELL}
+  GNOME Panel Appplet support: ${have_panelapplet}
+
+"
