@@ -293,7 +293,7 @@ namespace gnote {
     m_on_notebook_selection_changed_cid = m_notebooksTree->get_selection()->signal_changed()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebook_selection_changed));
     m_notebooksTree->signal_button_press_event()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebooks_tree_button_pressed));
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebooks_tree_button_pressed), false);
     m_notebooksTree->signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebooks_key_pressed));
       
@@ -330,9 +330,9 @@ namespace gnote {
     m_tree->get_selection()->signal_changed().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_selection_changed));
     m_tree->signal_button_press_event().connect(
-      sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_button_pressed));
+      sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_button_pressed), false);
     m_tree->signal_motion_notify_event().connect(
-      sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_motion_notify));
+      sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_motion_notify), false);
     m_tree->signal_button_release_event().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_button_released));
     m_tree->signal_drag_data_get().connect(
