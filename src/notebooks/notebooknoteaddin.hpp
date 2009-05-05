@@ -30,6 +30,7 @@
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmenuitem.hpp"
 #include "note.hpp"
+#include "utils.hpp"
 
 namespace gnote {
 namespace notebooks {
@@ -56,7 +57,7 @@ namespace notebooks {
     void update_notebook_button_label(const Notebook::Ptr &);
     void update_menu();
     void get_notebook_menu_items(std::list<NotebookMenuItem*> &);
-    Gtk::MenuToolButton      *m_toolButton;
+    gnote::utils::ToolMenuButton  *m_toolButton;
     Gtk::Menu                *m_menu;
     std::list<Gtk::MenuItem *> m_menu_items;
     Gtk::RadioButtonGroup     m_radio_group;

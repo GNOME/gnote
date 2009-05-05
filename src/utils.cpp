@@ -695,30 +695,46 @@ namespace gnote {
     }
 
     ToolMenuButton::ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
-                                   const Glib::ustring & label, Gtk::Menu & menu)
+                                   const Glib::ustring & label, 
+                                   Gtk::Menu * menu)
       : Gtk::ToggleToolButton(label)
       ,  m_menu(menu)
     {
-      set_icon_widget(*manage(new Gtk::Image(stock_image, toolbar.get_icon_size())));
-      property_can_focus().set_value(true);
-      gtk_menu_attach_to_widget(menu.gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
+      _common_init(*manage(new Gtk::Image(stock_image, toolbar.get_icon_size())));
+    }
+
+    ToolMenuButton::ToolMenuButton(Gtk::Image& image, 
+                                   const Glib::ustring & label, 
+                                   Gtk::Menu * menu)
+      : Gtk::ToggleToolButton(label)
+      ,  m_menu(menu)
+    {
+      _common_init(image);
+    }
+
+
+    void ToolMenuButton::_common_init(Gtk::Image& image)
+    {
+      set_icon_widget(image);
+      property_can_focus() = true;
+      gtk_menu_attach_to_widget(m_menu->gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
                                 NULL);
 //      menu.attach_to_widget(*this);
-      menu.signal_deactivate().connect(sigc::mem_fun(*this, &ToolMenuButton::release_button));
+      m_menu->signal_deactivate().connect(sigc::mem_fun(*this, &ToolMenuButton::release_button));
       show_all();
     }
 
 
     bool ToolMenuButton::on_button_press_event(GdkEventButton *ev)
     {
-      popup_menu(m_menu, ev);
+      popup_menu(*m_menu, ev);
       return true;
     }
 
     void ToolMenuButton::on_clicked()
     {
-      m_menu.select_first(true);
-      popup_menu(m_menu, NULL);
+      m_menu->select_first(true);
+      popup_menu(*m_menu, NULL);
     }
 
     bool ToolMenuButton::on_mnemonic_activate(bool group_cycling)

@@ -226,14 +226,19 @@ namespace gnote {
       : public Gtk::ToggleToolButton
     {
     public:
-      ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
-                     const Glib::ustring & label, Gtk::Menu & menu);
+      ToolMenuButton(Gtk::Toolbar& toolbar, 
+                     const Gtk::BuiltinStockID& stock_image, 
+                     const Glib::ustring & label, Gtk::Menu * menu);
+      ToolMenuButton(Gtk::Image& image, 
+                     const Glib::ustring & label, Gtk::Menu * menu);
       virtual bool on_button_press_event(GdkEventButton *);
       virtual void on_clicked();
       virtual bool on_mnemonic_activate(bool group_cycling);
 
     private:
-      Gtk::Menu &m_menu;
+      void _common_init(Gtk::Image& image);
+      // managed by gtkmm
+      Gtk::Menu *m_menu;
       void release_button();        
     };
 

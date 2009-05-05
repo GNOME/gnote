@@ -67,7 +67,9 @@ namespace notebooks {
 
   void NotebookNoteAddin::initialize_tool_button()
   {
-    m_toolButton = manage(new Gtk::MenuToolButton(*manage(new Gtk::Image(s_notebookIcon))));
+    m_toolButton = Gtk::manage(
+      new gnote::utils::ToolMenuButton(*manage(new Gtk::Image(s_notebookIcon)), "",
+                                       m_menu));
     Gtk::Label * l = manage(new Gtk::Label());
     // Ellipsize names longer than 12 chars in length
     // TODO: Should we hardcode the ellipsized notebook name to 12 chars?
@@ -81,7 +83,7 @@ namespace notebooks {
     m_show_menu_cid = m_menu->signal_show()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_menu_shown));
     m_toolButton->show_all();
-    get_note()->get_window()->toolbar()->append(*m_toolButton);
+    add_tool_item(m_toolButton, -1);
     update_notebook_button_label();
     
     m_note_added_cid = NotebookManager::instance().signal_note_added_to_notebook()
@@ -108,7 +110,7 @@ namespace notebooks {
     }
     if(!m_toolButton) {
       initialize_tool_button();
-      m_toolButton->set_menu(*m_menu);
+
       // Disable the notebook button if this note is a template note
       Tag::Ptr templateTag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       if (get_note()->contains_tag (templateTag)) {

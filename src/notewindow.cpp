@@ -422,9 +422,9 @@ namespace gnote {
     tb->insert(*m_link_button, -1);
 
     utils::ToolMenuButton *text_button = manage(new utils::ToolMenuButton(*tb,
-                                                            Gtk::Stock::SELECT_FONT,
-                                                            _("_Text"),
-                                                            *m_text_menu));
+                                                  Gtk::Stock::SELECT_FONT,
+                                                  _("_Text"),
+                                                  m_text_menu));
     text_button->set_use_underline(true);
     text_button->set_is_important(true);
     text_button->show_all();
@@ -432,10 +432,9 @@ namespace gnote {
     text_button->set_tooltip_text(_("Set properties of text"));
 
     utils::ToolMenuButton *plugin_button = Gtk::manage(
-      new utils::ToolMenuButton (*tb,
-                          Gtk::Stock::EXECUTE,
-                          _("T_ools"),
-                          *m_plugin_menu));
+      new utils::ToolMenuButton (*tb, Gtk::Stock::EXECUTE,
+                                 _("T_ools"),
+                                 m_plugin_menu));
     plugin_button->set_use_underline(true);
     plugin_button->show_all();
     tb->insert(*plugin_button, -1);
