@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-27 14:43+0200\n"
-"PO-Revision-Date: 2009-04-30 11:22-0400\n"
+"POT-Creation-Date: 2009-05-06 20:29+0200\n"
+"PO-Revision-Date: 2009-05-06 20:30+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,37 +23,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:1
+#: ../data/GNOME_GnoteApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "Zubehör"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:2
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/GNOME_GnoteApplet.server.in.in.h:3
 msgid "Gnote Applet Factory"
 msgstr "Gnote Applet Factory"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:3
+#: ../data/GNOME_GnoteApplet.server.in.in.h:4
 msgid "Simple and easy to use note-taking"
 msgstr "Einfache und leicht benutzbare Notizzettel"
 
-#: ../data/GNOME_GNoteApplet.xml.h:1 ../src/actionmanager.cpp:207
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:207
 msgid "_About"
 msgstr "_Info"
 
-#: ../data/GNOME_GNoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:508
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:198
+#: ../src/tray.cpp:505
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: ../data/GNOME_GNoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:503
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:195
+#: ../src/tray.cpp:500
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
-#: ../data/gnote.desktop.in.h:1
+#: ../data/gnote.desktop.in.in.h:2
 msgid "Note-taker"
 msgstr "Notizanwendung"
 
-#: ../data/gnote.desktop.in.h:2
+#: ../data/gnote.desktop.in.in.h:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Notizen aufnehmen, Ideen verknüpfen und den Überblick behalten"
 
@@ -346,7 +350,7 @@ msgstr "Lokaler Pfad des Abgleich-Server"
 
 #: ../data/gnote.schemas.in.h:55
 msgid ""
-"The date format that is used for the timestamp. It followe the format of "
+"The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "Das Datumsformat, das für den Zeitstempel verwendet wird. Es folgt den "
@@ -563,7 +567,7 @@ msgstr "_Löschen"
 msgid "Delete the selected note"
 msgstr "Ausgewählte Notiz löschen"
 
-#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:369
+#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:370
 msgid "_Close"
 msgstr "S_chließen"
 
@@ -571,7 +575,7 @@ msgstr "S_chließen"
 msgid "Close this window"
 msgstr "Dieses Fenster schließen"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:520
+#: ../src/actionmanager.cpp:187 ../src/tray.cpp:517
 msgid "_Quit"
 msgstr "_Beenden"
 
@@ -607,7 +611,7 @@ msgstr "Benachrichtigungsfeld"
 msgid "Create _New Note"
 msgstr "_Neue Notiz anlegen"
 
-#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:321
+#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:322
 msgid "_Search All Notes"
 msgstr "_Alle Notizen durchsuchen"
 
@@ -623,28 +627,40 @@ msgstr "Notizen abglei_chen"
 msgid "Start synchronizing notes"
 msgstr "Abgleich der Notizen starten"
 
-#: ../src/gnote.cpp:203
+#: ../src/gnote.cpp:230
 msgid "Cannot create new note"
 msgstr "Neue Notiz konnte nicht angelegt werden"
 
-#: ../src/gnote.cpp:247
+#: ../src/gnote.cpp:274
 msgid "and Tomboy original authors."
 msgstr "und die Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:256
+#: ../src/gnote.cpp:283
 msgid "translator-credits"
 msgstr ""
 "Philipp Meier\n"
 "Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Mario Blättermann <mariobl@gnome.org>"
 
-#: ../src/gnote.cpp:265
+#: ../src/gnote.cpp:291
+msgid "Copyright © 2009 Hubert Figuiere"
+msgstr "Copyright © 2009 Hubert Figuiere"
+
+#: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Eine einfache und leicht bedienbare Anwendung für Notizen"
 
-#: ../src/gnote.cpp:276
+#: ../src/gnote.cpp:303
 msgid "Homepage"
 msgstr "Homepage"
+
+#: ../src/gnote.cpp:343
+msgid "A note taking application"
+msgstr "Eine Notizzettel-Anwendung"
+
+#: ../src/gnote.cpp:351
+msgid "Run Gnote as a GNOME panel applet"
+msgstr "Gnote als Applet im GNOME-Panel ausführen"
 
 #: ../src/preferencesdialog.cpp:104
 msgid "Editing"
@@ -780,19 +796,19 @@ msgstr "Nicht implementiert"
 msgid "%1% Preferences"
 msgstr "%1%-Einstellungen"
 
-#: ../src/preferencesdialog.cpp:853
+#: ../src/preferencesdialog.cpp:854
 msgid "Choose Note Font"
 msgstr "Schriftart der Notizen auswählen"
 
-#: ../src/preferencesdialog.cpp:948
+#: ../src/preferencesdialog.cpp:949
 msgid "Version:"
 msgstr "Version:"
 
-#: ../src/preferencesdialog.cpp:953
+#: ../src/preferencesdialog.cpp:954
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:959
+#: ../src/preferencesdialog.cpp:960
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -890,43 +906,43 @@ msgstr "Beschreiben Sie ihre neue Notiz hier."
 msgid "Find in This Note"
 msgstr "In dieser Notiz suchen"
 
-#: ../src/notewindow.cpp:329
+#: ../src/notewindow.cpp:330
 msgid "_Link to New Note"
 msgstr "_Verknüpfung zu neuer Notiz"
 
-#: ../src/notewindow.cpp:337
+#: ../src/notewindow.cpp:338
 msgid "Te_xt"
 msgstr "Te_xt"
 
-#: ../src/notewindow.cpp:346
+#: ../src/notewindow.cpp:347
 msgid "_Find in This Note"
 msgstr "In dieser Notiz _suchen"
 
-#: ../src/notewindow.cpp:361
+#: ../src/notewindow.cpp:362
 msgid "Clos_e All Notes"
 msgstr "Alle Notizen schli_eßen"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:397
 msgid "Search"
 msgstr "Suchen"
 
-#: ../src/notewindow.cpp:400
+#: ../src/notewindow.cpp:401
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "Ihre Notizen durchsuchen (Strg+Umsch+F)"
 
-#: ../src/notewindow.cpp:410
+#: ../src/notewindow.cpp:411
 msgid "Link"
 msgstr "Verknüpfung"
 
-#: ../src/notewindow.cpp:416
+#: ../src/notewindow.cpp:417
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Gewählten Text mit einer neuen Notiz verknüpfen (Strg+L)"
 
-#: ../src/notewindow.cpp:425
+#: ../src/notewindow.cpp:426
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:432
 msgid "Set properties of text"
 msgstr "Text-Einstellungen"
 
@@ -1070,31 +1086,31 @@ msgid_plural "%1% matches"
 msgstr[0] "(%1% Treffer)"
 msgstr[1] "(%1% Treffer)"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Gesamt: %1% Notiz"
 msgstr[1] "Gesamt: %1% Notizen"
 
-#: ../src/recentchanges.cpp:588
+#: ../src/recentchanges.cpp:595
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Treffer: %1% Notiz"
 msgstr[1] "Treffer: %1% Notizen"
 
-#: ../src/recentchanges.cpp:723
+#: ../src/recentchanges.cpp:735
 msgid "Notes"
 msgstr "Notizen"
 
-#: ../src/tray.cpp:52
+#: ../src/tray.cpp:50
 msgid "Gnote Notes"
 msgstr "Gnote-Notizen"
 
-#: ../src/tray.cpp:172
+#: ../src/tray.cpp:169
 msgid " (new)"
 msgstr " (neu)"
 
-#: ../src/tray.cpp:513
+#: ../src/tray.cpp:510
 msgid "_About Gnote"
 msgstr "_Info zu Gnote"
 
@@ -1289,15 +1305,15 @@ msgstr "Neue Notiz »%1%«"
 msgid "No notebook"
 msgstr "Kein Notizbuch"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:67
+#: ../src/notebooks/notebooknoteaddin.cpp:81
 msgid "Place this note into a notebook"
 msgstr "Diese Notiz in einem Notizbuch ablegen"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:154
+#: ../src/notebooks/notebooknoteaddin.cpp:168
 msgid "Notebook"
 msgstr "Notizbuch"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:179
+#: ../src/notebooks/notebooknoteaddin.cpp:193
 msgid "_New notebook..."
 msgstr "Neues Notiz_buch …"
 
@@ -1406,16 +1422,16 @@ msgid "Page %1% of %2%"
 msgstr "Seite %1% von %2%"
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:44
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:77
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
 msgid "Insert Timestamp"
 msgstr "Zeitstempel einfügen"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:48
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
 msgstr "Fügt die aktuelle Zeit und das Datum an der Position des Cursors ein."
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:52
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere und das Tomboy-Projekt"
 
