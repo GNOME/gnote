@@ -26,6 +26,7 @@
 #include <string>
 
 #include <glibmm/optioncontext.h>
+#include <glibmm/ustring.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/statusicon.h>
 
@@ -101,7 +102,7 @@ public:
   GnoteCommandLine();
   int execute();
 
-  const std::string & note_path() const
+  const Glib::ustring & note_path() const
     {
       return m_note_path;
     }
@@ -112,15 +113,17 @@ public:
     }
 
 private:
+  void        print_version();
 
   bool        m_new_note;
-  bool        m_open_search;
   bool        m_open_start_here;
   bool        m_use_panel;
+  bool        m_show_version;
   std::string m_open_note_name;
   std::string m_open_note_uri;
   std::string m_open_external_note_path;
-  std::string m_note_path;
+  Glib::ustring m_search;
+  Glib::ustring m_note_path;
 };
 
 }

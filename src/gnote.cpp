@@ -23,6 +23,10 @@
 
 #include <stdlib.h>
 
+#include <iostream>
+
+#include <boost/format.hpp>
+
 #include <glibmm/thread.h>
 #include <glibmm/i18n.h>
 #include <glibmm/optionentry.h>
@@ -85,9 +89,6 @@ namespace gnote {
     {
     }
 
-    if(cmd_line.needs_execute()) {
-      cmd_line.execute();
-    }
 
     m_icon_theme = Gtk::IconTheme::get_default();
     m_icon_theme->append_search_path(DATADIR"/icons");
@@ -110,6 +111,10 @@ namespace gnote {
     for(std::list<ApplicationAddin*>::const_iterator iter = addins.begin();
         iter != addins.end(); ++iter) {
       (*iter)->initialize();
+    }
+
+    if(cmd_line.needs_execute()) {
+      cmd_line.execute();
     }
 
     if(cmd_line.use_panel_applet()) {
@@ -342,30 +347,75 @@ namespace gnote {
   GnoteCommandLine::GnoteCommandLine()
     : Glib::OptionGroup("Gnote", _("A note taking application"))
     , m_new_note(false)
-    , m_open_search(false)
     , m_open_start_here(false)
     , m_use_panel(false)
+    , m_show_version(false)
   {
     Glib::OptionEntry entry;
     entry.set_long_name("panel-applet");
-    entry.set_description(_("Run Gnote as a GNOME panel applet"));
+    entry.set_description(_("Run Gnote as a GNOME panel applet."));
     add_entry(entry, m_use_panel);
+
+    Glib::OptionEntry entry2;
+    entry2.set_long_name("note-path");
+    entry2.set_description(_("Specify the path of the directory containing the notes."));
+    add_entry(entry2, m_note_path);
+
+    Glib::OptionEntry entry3;
+    entry3.set_long_name("search");
+    entry3.set_description(_("Open the search all notes window with the search text."));
+    add_entry(entry3, m_search);
+
+    Glib::OptionEntry entry4;
+    entry4.set_long_name("version");
+    entry4.set_description(_("Print version information."));
+    add_entry(entry4, m_show_version);
   }
 
   int GnoteCommandLine::execute()
+
   {
-    // TODO
+    bool quit = false;
+#ifndef ENABLE_DBUS
+      // as long as we don't have the DBus support.
+    if(!m_search.empty()) {
+      NoteRecentChanges * recent_changes
+        = NoteRecentChanges::get_instance(
+          Gnote::obj().default_note_manager());
+
+      recent_changes->set_search_text(m_search);
+
+      recent_changes->present ();
+    }
+#endif
+    if(m_show_version) {
+      print_version();
+      quit = true;
+    }
+
+    if(quit) {
+      exit(0);
+    }
     return 0;
   }
+
+  void GnoteCommandLine::print_version()
+  {
+    Glib::ustring version = str(boost::format(_("Version %1%"))
+                                % VERSION);
+    std::cerr << version << std::endl;
+  }
+
 
   bool GnoteCommandLine::needs_execute() const
   {
     return m_new_note ||
       !m_open_note_name.empty() ||
       !m_open_note_uri.empty() ||
-      m_open_search ||
+      !m_search.empty() ||
       m_open_start_here ||
-      !m_open_external_note_path.empty();
+      !m_open_external_note_path.empty() ||
+      m_show_version;
   }
 
 
