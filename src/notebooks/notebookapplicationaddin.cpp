@@ -273,7 +273,7 @@ namespace gnote {
           item->show_all ();
           menu->append (*item);
           menu_items.push_back(item);
-          iter++;
+          ++iter;
         }
       }
     }
