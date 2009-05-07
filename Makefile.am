@@ -13,7 +13,7 @@ DISTCLEANFILES = intltool-extract \
 
 SUBDIRS = data libtomboy src po help
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --disable-scrollkeeper
+DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --disable-scrollkeeper --enable-applet
 
 # Ignore scrollkeeper issues for now.  @#*$& scrollkeeper (from Evince)
 distuninstallcheck_listfiles = find . -type f -print | grep -v scrollkeeper | grep -v /share/gnome/help/ | grep -v \.omf

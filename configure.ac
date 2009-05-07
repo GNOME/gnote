@@ -86,30 +86,38 @@ dnl check for the ext2 uuid library. TODO replace it with something more portabl
 AC_CHECK_HEADER(uuid/uuid.h,,[AC_MSG_ERROR("uuid header is missing")])
 AC_CHECK_LIB(uuid,uuid_unparse_lower, ,[AC_MSG_ERROR("libuuid library is missing")])
 
-PKG_CHECK_EXISTS(libpanelappletmm-2.6 >= $LIBPANELAPPLETMM_VERSION,
-    [
-     AC_DEFINE(HAVE_PANELAPPLETMM, 1, [Define to 1 if panelapplet is available])
-     have_panelapplet="yes"
-     PKG_CHECK_MODULES(LIBPANELAPPLETMM, [libpanelappletmm-2.6 >= $LIBPANELAPPLETMM_VERSION])
-    ],
-    [have_panelapplet="no"]
-)
+AC_ARG_ENABLE([applet],
+	AS_HELP_STRING([--disable-applet],[Disable panel applet]),
+	[],[enable_applet=yes])
 
-AM_CONDITIONAL(HAVE_PANELAPPLETMM, test $have_panelapplet == "yes")
+if test $enable_applet = "yes"; then
+	PKG_CHECK_EXISTS(libpanelappletmm-2.6 >= $LIBPANELAPPLETMM_VERSION,
+	  [
+		AC_DEFINE(HAVE_PANELAPPLETMM, 1, [Define to 1 if panelapplet is available])
+		have_panelapplet="yes"
+		PKG_CHECK_MODULES(LIBPANELAPPLETMM, [libpanelappletmm-2.6 >= $LIBPANELAPPLETMM_VERSION])
+	  ], [
+		have_panelapplet="no"]
+	)
 
-#
-# If libpanelapplet available, use it to find .server install location.
-#
-if test "x$prefix" = "x$ac_default_prefix"; then
-   PANELAPPLET_LIBDIR=`$PKG_CONFIG --variable=libdir libpanelapplet-2.0`
+	#
+	# If libpanelapplet available, use it to find .server install location.
+	#
+	if test "x$prefix" = "x$ac_default_prefix"; then
+		PANELAPPLET_LIBDIR=`$PKG_CONFIG --variable=libdir libpanelapplet-2.0`
+	fi
+	if test "x$PANELAPPLET_LIBDIR" != "x"; then
+		PANELAPPLET_SERVER_DIR="$PANELAPPLET_LIBDIR/bonobo/servers"
+	fi
+	# Set PANELAPPLET_SERVER_DIR default if it's not already set
+	if test "x$PANELAPPLET_SERVER_DIR" = "x" ; then
+		PANELAPPLET_SERVER_DIR="$libdir/bonobo/servers"
+	fi
+else
+	have_panelapplet="no"
 fi
-if test "x$PANELAPPLET_LIBDIR" != "x"; then
-   PANELAPPLET_SERVER_DIR="$PANELAPPLET_LIBDIR/bonobo/servers"
-fi
-# Set PANELAPPLET_SERVER_DIR default if it's not already set
-if test "x$PANELAPPLET_SERVER_DIR" = "x" ; then
-        PANELAPPLET_SERVER_DIR="$libdir/bonobo/servers"
-fi
+
+AM_CONDITIONAL(HAVE_PANELAPPLETMM, test $have_panelapplet = "yes")
 AC_SUBST(PANELAPPLET_SERVER_DIR)
 
 #
