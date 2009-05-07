@@ -109,6 +109,7 @@ private:
 
 class Note 
   : public std::tr1::enable_shared_from_this<Note>
+  , public sigc::trackable
 {
 public:
   typedef std::tr1::shared_ptr<Note> Ptr;
