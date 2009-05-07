@@ -109,7 +109,7 @@ namespace gnote {
     set_focus_child(*m_editor);
 
     m_find_bar = manage(new NoteFindBar(note));
-    m_find_bar->property_visible().set_value(false);
+    m_find_bar->property_visible() = false;
     m_find_bar->set_no_show_all(true);
     m_find_bar->signal_hide().connect(sigc::mem_fun(*this, &NoteWindow::find_bar_hidden));
 
@@ -538,7 +538,7 @@ namespace gnote {
   void NoteWindow::find_button_clicked()
   {
     get_find_bar().show_all();
-    get_find_bar().property_visible().set_value(true);
+    get_find_bar().property_visible() = true;
     get_find_bar().set_search_text(m_note.get_buffer()->get_selection());
   }
 

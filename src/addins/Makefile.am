@@ -1,7 +1,8 @@
 
 
 
-SUBDIRS = bugzilla \
+SUBDIRS = backlinks \
+	bugzilla \
 	fixedwidth \
 	inserttimestamp \
 	printnotes \

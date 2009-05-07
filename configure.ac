@@ -208,6 +208,7 @@ libtomboy/Makefile
 src/Makefile
 src/addins/Makefile
 src/addins/addins.mk
+src/addins/backlinks/Makefile
 src/addins/bugzilla/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
