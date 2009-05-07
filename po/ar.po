@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 23:51+0300\n"
-"PO-Revision-Date: 2009-04-29 23:56+0300\n"
+"POT-Creation-Date: 2009-05-07 03:01+0300\n"
+"PO-Revision-Date: 2009-05-07 03:08+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -26,11 +26,15 @@ msgstr ""
 msgid "Accessories"
 msgstr "الكماليات"
 
-#: ../data/GNOME_GnoteApplet.server.in.in.h:2
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
+msgid "Gnote"
+msgstr "ملاحظات‌ج"
+
+#: ../data/GNOME_GnoteApplet.server.in.in.h:3
 msgid "Gnote Applet Factory"
 msgstr "مصنع بريمجات ملاحظات‌ج"
 
-#: ../data/GNOME_GnoteApplet.server.in.in.h:3
+#: ../data/GNOME_GnoteApplet.server.in.in.h:4
 msgid "Simple and easy to use note-taking"
 msgstr "تسجيل ملاحظات بسيط وسهل الاستخدام"
 
@@ -48,11 +52,11 @@ msgstr "م_ساعدة"
 msgid "_Preferences"
 msgstr "الت_فضيلات"
 
-#: ../data/gnote.desktop.in.h:1
+#: ../data/gnote.desktop.in.in.h:2
 msgid "Note-taker"
 msgstr "مسجل الملاحظات"
 
-#: ../data/gnote.desktop.in.h:2
+#: ../data/gnote.desktop.in.in.h:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr "سجّل الملاحظات، واربط الأفكار ونظّم أفكارك"
 
@@ -85,21 +89,18 @@ msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 
 #: ../data/gnote.schemas.in.h:8
-#, fuzzy
 msgid "Enable Auto bulleted lists"
-msgstr "فعّل الترتيب الآلي للقوائم."
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:9
-#, fuzzy
 msgid "Enable Middle-Click Paste On Icon"
-msgstr "فعّل أيقونة اللصق بالنقر الأوسط."
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:10
 msgid "Enable WikiWord highlighting"
 msgstr "فعّل تظليل كلمات الويكي"
 
 #: ../data/gnote.schemas.in.h:11
-#, fuzzy
 msgid "Enable closing notes with escape"
 msgstr "فعّل غلق الملاحظات بالزر ESC"
 
@@ -233,7 +234,6 @@ msgstr ""
 "حالته."
 
 #: ../data/gnote.schemas.in.h:32
-#, fuzzy
 msgid "List of pinned notes"
 msgstr "قائمة الملاحظات المثبتة."
 
@@ -268,24 +268,20 @@ msgid ""
 msgstr "المسار في الخادوم المزامن عند استخدام ملحقة خدمة مزامنة نظام الملفات."
 
 #: ../data/gnote.schemas.in.h:40
-#, fuzzy
 msgid "SSHFS Remote Synchronization Folder"
-msgstr "اختر مجلد المزامنة..."
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:41
-#, fuzzy
 msgid "SSHFS Remote Synchronization User Name"
-msgstr "ملحقة خدمة المزامنة المحددة"
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:42
-#, fuzzy
 msgid "SSHFS Synchronization Server Port"
-msgstr "خطأ في خدمة المزامنة"
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:43
-#, fuzzy
 msgid "SSHFS Synchronization Server URL"
-msgstr "خطأ في خدمة المزامنة"
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:44
 msgid "Saved height of Search window"
@@ -300,9 +296,8 @@ msgid "Saved vertical position of Search window"
 msgstr ""
 
 #: ../data/gnote.schemas.in.h:47
-#, fuzzy
 msgid "Saved width of Search window"
-msgstr "افتح نافذة البحث في كل الملاحظات"
+msgstr "احفظ عرض نافذة البحث"
 
 #: ../data/gnote.schemas.in.h:48
 msgid "Selected Synchronization Service Addin"
@@ -333,11 +328,10 @@ msgid "Synchronization Local Server Path"
 msgstr "مزامنة مسار الخادوم المحلي"
 
 #: ../data/gnote.schemas.in.h:55
-#, fuzzy
 msgid ""
-"The date format that is used for the timestamp. It followe the format of "
+"The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
-msgstr "نسق التاريخ لقالب الوقت."
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:56
 msgid ""
@@ -448,9 +442,8 @@ msgstr ""
 "قائمة ملاحظات‌ج ويمكن أيضًا الوصول لها بمفتاح اختصار."
 
 #: ../data/gnote.schemas.in.h:66
-#, fuzzy
 msgid "The port to use when connecting to the synchronization server via SSH."
-msgstr "خطأ أثناء الاتصال بخدمة المزامنة. رجاءً حاول ثانية."
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:67
 msgid ""
@@ -485,9 +478,8 @@ msgid ""
 msgstr ""
 
 #: ../data/gnote.schemas.in.h:73
-#, fuzzy
 msgid "User name to use when connecting to the synchronization server via SSH."
-msgstr "خطأ أثناء الاتصال بخدمة المزامنة. رجاءً حاول ثانية."
+msgstr ""
 
 #: ../data/gnote.schemas.in.h:74
 msgid ""
@@ -533,7 +525,7 @@ msgstr "_احذف"
 msgid "Delete the selected note"
 msgstr "احذف الملاحظة المحددة"
 
-#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:369
+#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:370
 msgid "_Close"
 msgstr "أغل_ق"
 
@@ -577,7 +569,7 @@ msgstr "أيقونة اللوحة"
 msgid "Create _New Note"
 msgstr "أ_نشئ ملاحظة جديدة"
 
-#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:321
+#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:322
 msgid "_Search All Notes"
 msgstr "اب_حث في كل الملاحظات"
 
@@ -609,6 +601,10 @@ msgstr ""
 "خالد حسني\t<khaledhosny@eglug.org>\n"
 "أحمد فرغل\t<ahmad.farghal@gmail.com>\n"
 "أنس عفيف عماد\t<anas.e87@gmail.com>"
+
+#: ../src/gnote.cpp:291
+msgid "Copyright © 2009 Hubert Figuiere"
+msgstr "حقوق النشر © 2009 هُبِرت فيجوري"
 
 #: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
@@ -759,19 +755,19 @@ msgstr "غير مطبق"
 msgid "%1% Preferences"
 msgstr "تفضيلات %1%"
 
-#: ../src/preferencesdialog.cpp:853
+#: ../src/preferencesdialog.cpp:854
 msgid "Choose Note Font"
 msgstr "اختر خط الملاحظات"
 
-#: ../src/preferencesdialog.cpp:948
+#: ../src/preferencesdialog.cpp:949
 msgid "Version:"
 msgstr "النسخة:"
 
-#: ../src/preferencesdialog.cpp:953
+#: ../src/preferencesdialog.cpp:954
 msgid "Author:"
 msgstr "المؤلف:"
 
-#: ../src/preferencesdialog.cpp:959
+#: ../src/preferencesdialog.cpp:960
 msgid "Copyright:"
 msgstr "حقوق النسخ:"
 
@@ -864,43 +860,43 @@ msgstr "صِف ملاحظتك الجديدة هنا."
 msgid "Find in This Note"
 msgstr "ابحث في هذه الملاحظة"
 
-#: ../src/notewindow.cpp:329
+#: ../src/notewindow.cpp:330
 msgid "_Link to New Note"
 msgstr "ا_ربط إلى ملاحظة جديدة"
 
-#: ../src/notewindow.cpp:337
+#: ../src/notewindow.cpp:338
 msgid "Te_xt"
 msgstr "_نص"
 
-#: ../src/notewindow.cpp:346
+#: ../src/notewindow.cpp:347
 msgid "_Find in This Note"
 msgstr "اب_حث في هذه الملاحظة"
 
-#: ../src/notewindow.cpp:361
+#: ../src/notewindow.cpp:362
 msgid "Clos_e All Notes"
 msgstr "أ_غلق جميع الملاحظات"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:397
 msgid "Search"
 msgstr "ابحث"
 
-#: ../src/notewindow.cpp:400
+#: ../src/notewindow.cpp:401
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "ابحث في ملاحظاتك (Ctrl-Shift-F)"
 
-#: ../src/notewindow.cpp:410
+#: ../src/notewindow.cpp:411
 msgid "Link"
 msgstr "اربط"
 
-#: ../src/notewindow.cpp:416
+#: ../src/notewindow.cpp:417
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "اربط النص المحدد بملاحظة جديدة (Ctrl-L)"
 
-#: ../src/notewindow.cpp:425
+#: ../src/notewindow.cpp:426
 msgid "_Text"
 msgstr "ن_ص"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:432
 msgid "Set properties of text"
 msgstr "حدّد خصائص النص"
 
@@ -1052,7 +1048,7 @@ msgstr[3] "%1% مطابقات"
 msgstr[4] "%1% مطابقة"
 msgstr[5] "%1% مطابقة"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "المجموع: لا ملاحظات"
@@ -1062,7 +1058,7 @@ msgstr[3] "المجموع: %1% ملاحظات"
 msgstr[4] "المجموع: %1% ملاحظة"
 msgstr[5] "المجموع: %1% ملاحظة"
 
-#: ../src/recentchanges.cpp:588
+#: ../src/recentchanges.cpp:595
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "يطابق: لا مطابقة"
@@ -1072,7 +1068,7 @@ msgstr[3] "يطابق: %1% ملاحظات"
 msgstr[4] "يطابق: %1% ملاحظة"
 msgstr[5] "يطابق: %1% ملاحظة"
 
-#: ../src/recentchanges.cpp:723
+#: ../src/recentchanges.cpp:735
 msgid "Notes"
 msgstr "ملاحظات"
 
@@ -1293,15 +1289,15 @@ msgstr "ملاحظة \"%1%\" جديدة"
 msgid "No notebook"
 msgstr "لا كتيّب"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:79
+#: ../src/notebooks/notebooknoteaddin.cpp:81
 msgid "Place this note into a notebook"
 msgstr "ضع هذه الملاحظة في كتيّب"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:166
+#: ../src/notebooks/notebooknoteaddin.cpp:168
 msgid "Notebook"
 msgstr "كتيّب"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:191
+#: ../src/notebooks/notebooknoteaddin.cpp:193
 msgid "_New notebook..."
 msgstr "_كتيّب جديد"
 
@@ -1321,14 +1317,15 @@ msgstr ""
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
 msgid "Hubert Figuiere and the Tomboy Project"
-msgstr "هُربِرت فيجوري ومشروع توم‌بوي"
+msgstr "هُبِرت فيجوري ومشروع توم‌بوي"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:58
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
 msgstr ""
-"يمكنك استعمال وصلات بغزيلا في ملاحظاتك. اذا اردت ايقونا ما لموقع، اضفه هنا."
+"يمكنك استعمال وصلات بجزيلا في ملاحظاتك. إذا أردت أيقونة خاصة لمستضيف معين "
+"فأضفها هنا."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:75
 msgid "Host Name"
@@ -1336,7 +1333,7 @@ msgstr "ا_سم المستضيف:"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:88
 msgid "Icon"
-msgstr "أيقونة"
+msgstr "الأيقونة"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:203
 msgid "Select an icon..."
@@ -1345,15 +1342,15 @@ msgstr "أختر أيقونة..."
 #. Extra Widget
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:218
 msgid "_Host name:"
-msgstr "_أسم المضيف:"
+msgstr "ا_سم المستضيف:"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:246
 msgid "No host name specified"
-msgstr "لم يحدد أسم مضيف"
+msgstr "لم يحدد اسم مستضيف"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:247
 msgid "You must specify the Bugzilla host name to use with this icon."
-msgstr "عليك أن تحدد اسم مضيف Bugzilla لاستخدامه مع هذه الأيقونة."
+msgstr "عليك أن تحدد اسم مستضيف بجزيلا لاستخدامه مع هذه الأيقونة."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:266
 msgid "Error saving icon"
@@ -1406,18 +1403,18 @@ msgid "Page %1% of %2%"
 msgstr "صفحة %1% من %2%"
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:44
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:77
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
 msgid "Insert Timestamp"
 msgstr "أدرج خاتما زمنيا"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:48
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
 msgstr "أدرج التاريخ والوقت الحالي في موقع المؤشر."
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:52
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
 msgid "Hubert Figuiere and Tomboy Project"
-msgstr "هُربِرت فيجوري ومشروع توم‌بوي"
+msgstr "هُبِرت فيجوري ومشروع توم‌بوي"
 
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
@@ -1785,9 +1782,6 @@ msgstr "اس_تعمل تنسيقا مخصّصا"
 
 #~ msgid "Add-in Dependencies:"
 #~ msgstr "متطلبات الملحقات:"
-
-#~ msgid "Copyright © 2004-2007 Alex Graveley"
-#~ msgstr "حقوق النسخ © 2004-2007 أليكس جرافيلي"
 
 #~ msgid ""
 #~ "Tomboy: A simple, easy to use desktop note-taking application.\n"
