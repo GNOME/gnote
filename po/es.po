@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&component=general\n"
-"POT-Creation-Date: 2009-04-29 19:17+0000\n"
-"PO-Revision-Date: 2009-05-01 21:22+0200\n"
+"POT-Creation-Date: 2009-05-05 00:55+0000\n"
+"PO-Revision-Date: 2009-05-08 20:43+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,16 @@ msgstr ""
 msgid "Accessories"
 msgstr "Accesorios"
 
-#: ../data/GNOME_GnoteApplet.server.in.in.h:2
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
+#| msgid "Quit Gnote"
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/GNOME_GnoteApplet.server.in.in.h:3
 msgid "Gnote Applet Factory"
 msgstr "Fábrica de la miniaplicación Gnote"
 
-#: ../data/GNOME_GnoteApplet.server.in.in.h:3
+#: ../data/GNOME_GnoteApplet.server.in.in.h:4
 msgid "Simple and easy to use note-taking"
 msgstr "Toma de notas simple y fácil de usar"
 
@@ -44,11 +49,11 @@ msgstr "Ay_uda"
 msgid "_Preferences"
 msgstr "Prefere_ncias"
 
-#: ../data/gnote.desktop.in.h:1
+#: ../data/gnote.desktop.in.in.h:2
 msgid "Note-taker"
 msgstr "Anotador"
 
-#: ../data/gnote.desktop.in.h:2
+#: ../data/gnote.desktop.in.in.h:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Tome notas, enlace ideas y manténgase organizado"
 
@@ -67,26 +72,32 @@ msgstr "Personalizar tipografía"
 #: ../data/gnote.schemas.in.h:4
 msgid "Determines X coordinate of Search window; stored on Gnote exit."
 msgstr ""
+"Determina la coordenada X de la ventana de búsqueda; almacenado en Gnote al "
+"salir."
 
 #: ../data/gnote.schemas.in.h:5
 msgid "Determines Y coordinate of Search window; stored on Gnote exit."
 msgstr ""
+"Determina la coordenada Y de la ventana de búsqueda; almacenado en Gnote al "
+"salir."
 
 #: ../data/gnote.schemas.in.h:6
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
+"Determina la altura de píxeles de la ventana de búsqeuda; almacenado en "
+"Gnote al salir."
 
 #: ../data/gnote.schemas.in.h:7
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
+"Determina la anchura de píxeles de la ventana de búsqeuda; almacenado en "
+"Gnote al salir."
 
 #: ../data/gnote.schemas.in.h:8
-#| msgid "Enable Auto bulleted lists."
 msgid "Enable Auto bulleted lists"
 msgstr "Activar listas de topos automáticas"
 
 #: ../data/gnote.schemas.in.h:9
-#| msgid "Enable Middle-Click Paste On Icon."
 msgid "Enable Middle-Click Paste On Icon"
 msgstr "Activar pegar con el botón del medio del ratón"
 
@@ -95,7 +106,6 @@ msgid "Enable WikiWord highlighting"
 msgstr "Activar resaltado de WikiPalabras"
 
 #: ../data/gnote.schemas.in.h:11
-#| msgid "Enable closing notes with escape."
 msgid "Enable closing notes with escape"
 msgstr "Activar cerrar las notas con escape"
 
@@ -128,6 +138,8 @@ msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
 msgstr ""
+"Active esta opción si quiere poder pegar contenido con marca de tiempo en la "
+"nota Comenzar aquí, pulsando con el botón del medio en el icono de Gnote."
 
 #: ../data/gnote.schemas.in.h:18
 msgid ""
@@ -207,6 +219,8 @@ msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr ""
+"Entero que determina el mínimo número de notas que mostrar en el menú de "
+"notas de Gnote."
 
 #: ../data/gnote.schemas.in.h:31
 msgid ""
@@ -223,7 +237,6 @@ msgstr ""
 "usuario manejará cada situación de conflicto caso por caso."
 
 #: ../data/gnote.schemas.in.h:32
-#| msgid "List of pinned notes."
 msgid "List of pinned notes"
 msgstr "Lista de notas pinchadas"
 
@@ -322,9 +335,11 @@ msgid "Synchronization Local Server Path"
 msgstr "Ruta al servidor local de sincronización"
 
 #: ../data/gnote.schemas.in.h:55
-#| msgid "The date format that is used for the timestamp."
+#| msgid ""
+#| "The date format that is used for the timestamp. It followe the format of "
+#| "strftime(3)."
 msgid ""
-"The date format that is used for the timestamp. It followe the format of "
+"The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "El formato de la fecha que se usa para la marca de tiempo. Sigue el formato "
@@ -534,7 +549,7 @@ msgstr "_Borrar"
 msgid "Delete the selected note"
 msgstr "Borrar la nota seleccionada"
 
-#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:369
+#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:370
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -578,7 +593,7 @@ msgstr "Icono del área de notificación"
 msgid "Create _New Note"
 msgstr "Crear una nota _nueva"
 
-#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:321
+#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:322
 msgid "_Search All Notes"
 msgstr "_Buscar en todas las notas"
 
@@ -605,6 +620,10 @@ msgstr "y los autores originales de Tomboy."
 #: ../src/gnote.cpp:283
 msgid "translator-credits"
 msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008"
+
+#: ../src/gnote.cpp:291
+msgid "Copyright © 2009 Hubert Figuiere"
+msgstr ""
 
 #: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
@@ -755,23 +774,22 @@ msgid "Not Implemented"
 msgstr "No implementado"
 
 #: ../src/preferencesdialog.cpp:713
-#| msgid "_Preferences"
 msgid "%1% Preferences"
 msgstr "%1% Preferencias"
 
-#: ../src/preferencesdialog.cpp:853
+#: ../src/preferencesdialog.cpp:854
 msgid "Choose Note Font"
 msgstr "Elegir la tipografía de la nota"
 
-#: ../src/preferencesdialog.cpp:948
+#: ../src/preferencesdialog.cpp:949
 msgid "Version:"
 msgstr "Versión:"
 
-#: ../src/preferencesdialog.cpp:953
+#: ../src/preferencesdialog.cpp:954
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:959
+#: ../src/preferencesdialog.cpp:960
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -849,43 +867,43 @@ msgstr "Describa aquí su nota nueva."
 msgid "Find in This Note"
 msgstr "Buscar en esta nota"
 
-#: ../src/notewindow.cpp:329
+#: ../src/notewindow.cpp:330
 msgid "_Link to New Note"
 msgstr "_Enlazar a una nota nueva"
 
-#: ../src/notewindow.cpp:337
+#: ../src/notewindow.cpp:338
 msgid "Te_xt"
 msgstr "Te_xto"
 
-#: ../src/notewindow.cpp:346
+#: ../src/notewindow.cpp:347
 msgid "_Find in This Note"
 msgstr "_Buscar en esta nota"
 
-#: ../src/notewindow.cpp:361
+#: ../src/notewindow.cpp:362
 msgid "Clos_e All Notes"
 msgstr "C_errar todas las notas"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:397
 msgid "Search"
 msgstr "Buscar"
 
-#: ../src/notewindow.cpp:400
+#: ../src/notewindow.cpp:401
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "Buscar en sus notas  (Ctrl-Mayús-F)"
 
-#: ../src/notewindow.cpp:410
+#: ../src/notewindow.cpp:411
 msgid "Link"
 msgstr "Enlace"
 
-#: ../src/notewindow.cpp:416
+#: ../src/notewindow.cpp:417
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Enlazar el texto seleccionado a una nota nueva (Ctrl-L)"
 
-#: ../src/notewindow.cpp:425
+#: ../src/notewindow.cpp:426
 msgid "_Text"
 msgstr "_Texto"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:432
 msgid "Set properties of text"
 msgstr "Establecer las propiedades del texto"
 
@@ -1026,19 +1044,19 @@ msgid_plural "%1% matches"
 msgstr[0] "%1% coincidencia"
 msgstr[1] "%1% coincidencias"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/recentchanges.cpp:588
+#: ../src/recentchanges.cpp:595
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/recentchanges.cpp:723
+#: ../src/recentchanges.cpp:735
 msgid "Notes"
 msgstr "Notas"
 
@@ -1240,15 +1258,15 @@ msgstr "Nota «%1%» nueva"
 msgid "No notebook"
 msgstr "Sin cuadernos de notas"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:79
+#: ../src/notebooks/notebooknoteaddin.cpp:81
 msgid "Place this note into a notebook"
 msgstr "Meter esta nota en un cuaderno de notas"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:166
+#: ../src/notebooks/notebooknoteaddin.cpp:168
 msgid "Notebook"
 msgstr "Cuaderno de notas"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:191
+#: ../src/notebooks/notebooknoteaddin.cpp:193
 msgid "_New notebook..."
 msgstr "Cuaderno de _notas nuevo…"
 
@@ -1275,12 +1293,10 @@ msgid ""
 msgstr ""
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:75
-#| msgid "Name"
 msgid "Host Name"
 msgstr "Nombre del servidor"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:88
-#| msgid "TrayIcon"
 msgid "Icon"
 msgstr "Icono"
 
@@ -1290,7 +1306,6 @@ msgstr ""
 
 #. Extra Widget
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:218
-#| msgid "N_otebook name:"
 msgid "_Host name:"
 msgstr "Nombre del _servidor:"
 
@@ -1303,7 +1318,6 @@ msgid "You must specify the Bugzilla host name to use with this icon."
 msgstr ""
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:266
-#| msgid "Error saving note data."
 msgid "Error saving icon"
 msgstr "Error al guardar el icono"
 
@@ -1312,13 +1326,10 @@ msgid "Could not save the icon file."
 msgstr ""
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:339
-#| msgid "Really delete this note?"
-#| msgid_plural "Really delete these %1% notes?"
 msgid "Really remove this icon?"
 msgstr "¿Quiere quitar este icono?"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:340
-#| msgid "If you delete a note it is permanently lost."
 msgid "If you remove an icon it is permanently lost."
 msgstr "Si quita un icono se perderá permanentemente."
 
@@ -1348,7 +1359,6 @@ msgid "Print"
 msgstr ""
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:114
-#| msgid "Error saving note data."
 msgid "Error printing note"
 msgstr "Error al imprimir la nota"
 
@@ -1358,16 +1368,16 @@ msgid "Page %1% of %2%"
 msgstr ""
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:44
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:77
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
 msgid "Insert Timestamp"
 msgstr ""
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:48
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
 msgstr ""
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:52
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr ""
 
@@ -1381,6 +1391,5 @@ msgid "Use _Selected Format"
 msgstr ""
 
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
-#| msgid "Use custom _font"
 msgid "_Use Custom Format"
 msgstr "_Usar formato personalizado"
