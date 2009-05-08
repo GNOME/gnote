@@ -156,7 +156,7 @@ namespace gnote {
   {
     // Replace underscores ("_") with double-underscores ("__")
     // so Note menuitems are not created with mnemonics.
-    return sharp::string_replace_all(name, "-", "--");
+    return sharp::string_replace_all(name, "_", "__");
   }
 
 
