@@ -10,10 +10,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-11 07:54+0200\n"
-"PO-Revision-Date: 2009-05-11 08:00+0200\n"
-"Last-Translator: István Nyitrai <sianis@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&component=general\n"
+"POT-Creation-Date: 2009-05-08 18:44+0000\n"
+"PO-Revision-Date: 2009-05-11 10:11+0200\n"
+"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@fsf.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,13 +73,11 @@ msgstr "Egyéni jegyzet-betűkészlet"
 
 #: ../data/gnote.schemas.in.h:4
 msgid "Determines X coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"Meghatározza a Keresés ablak X koordinátáját, a Gnote kilépésekor tárolódik."
+msgstr "Meghatározza a Keresés ablak X koordinátáját, a Gnote kilépésekor tárolódik."
 
 #: ../data/gnote.schemas.in.h:5
 msgid "Determines Y coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"Meghatározza a Keresés ablak Y koordinátáját, a Gnote kilépésekor tárolódik."
+msgstr "Meghatározza a Keresés ablak Y koordinátáját, a Gnote kilépésekor tárolódik."
 
 #: ../data/gnote.schemas.in.h:6
 msgid "Determines pixel height of Search window; stored on Gnote exit."
@@ -203,8 +201,8 @@ msgid ""
 "available from any application."
 msgstr ""
 "Ha be van állítva, az /apps/gnote/global_keybindings alatt beállított "
-"globális billentyű-hozzárendelések engedélyezve lesznek, így a hasznos "
-"Gnote műveletek bármely alkalmazásból elérhetőek lesznek."
+"globális billentyű-hozzárendelések engedélyezve lesznek, így a hasznos Gnote "
+"műveletek bármely alkalmazásból elérhetőek lesznek."
 
 #: ../data/gnote.schemas.in.h:28
 msgid ""
@@ -419,20 +417,19 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"A Gnote kisalkalmazás menüjének mutatásához rendelt globális "
-"gyorsbillentyű. A formátum: „&lt;Control&gt;a” vagy „&lt;Shift&gt;&lt;Alt&gt;"
-"F1”. A feldolgozás elég liberális, megengedi kis- vagy nagybetűk használatát "
-"és rövidítéseket is, mint például: „&lt;Ctl&gt;” és „&lt;Ctrl&gt;”. Ha ezt "
-"az opciót „disabled” értékűre állítja, nem lesz billentyű hozzárendelve "
-"ehhez a művelethez."
+"A Gnote kisalkalmazás menüjének mutatásához rendelt globális gyorsbillentyű. "
+"A formátum: „&lt;Control&gt;a” vagy „&lt;Shift&gt;&lt;Alt&gt;F1”. A "
+"feldolgozás elég liberális, megengedi kis- vagy nagybetűk használatát és "
+"rövidítéseket is, mint például: „&lt;Ctl&gt;” és „&lt;Ctrl&gt;”. Ha ezt az "
+"opciót „disabled” értékűre állítja, nem lesz billentyű hozzárendelve ehhez a "
+"művelethez."
 
 #: ../data/gnote.schemas.in.h:61
 msgid "The handler for \"note://\" URLs"
 msgstr "A „note://” URL címek kezelője"
 
 #: ../data/gnote.schemas.in.h:62
-msgid ""
-"The last directory a note was exported to using the Export To HTML plugin."
+msgid "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "A HTML-be exportálás bővítménnyel jegyzet exportálására legutóbb használt "
 "könyvtár."
@@ -486,8 +483,7 @@ msgstr "Időbélyeg formátuma"
 
 #: ../data/gnote.schemas.in.h:69
 msgid "URL of SSH server containing Gnote synchronization directory."
-msgstr ""
-"A Gnote szinkronizálási könyvtárat tartalmazó SSH kiszolgáló URL címe."
+msgstr "A Gnote szinkronizálási könyvtárat tartalmazó SSH kiszolgáló URL címe."
 
 #: ../data/gnote.schemas.in.h:70
 msgid ""
@@ -533,7 +529,7 @@ msgstr "Gépnév"
 
 #: ../src/sharp/addinstreemodel.cpp:65
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 #: ../src/actionmanager.cpp:160
 msgid "_File"
@@ -577,7 +573,7 @@ msgstr "_Kilépés"
 
 #: ../src/actionmanager.cpp:187
 msgid "Quit Gnote"
-msgstr ""
+msgstr "Kilépés a Gnote-ból"
 
 #: ../src/actionmanager.cpp:190
 msgid "_Edit"
@@ -593,7 +589,7 @@ msgstr "_Tartalom"
 
 #: ../src/actionmanager.cpp:202
 msgid "Gnote Help"
-msgstr ""
+msgstr "Gnote súgó"
 
 #: ../src/actionmanager.cpp:207
 msgid "About Gnote"
@@ -652,11 +648,11 @@ msgstr "Honlap"
 
 #: ../src/gnote.cpp:343
 msgid "A note taking application"
-msgstr ""
+msgstr "Jegyzetkezelő alkalmazás"
 
 #: ../src/gnote.cpp:351
 msgid "Run Gnote as a GNOME panel applet"
-msgstr ""
+msgstr "A Gnote futtatása GNOME panel kisalkalmazásként"
 
 #: ../src/preferencesdialog.cpp:104
 msgid "Editing"
@@ -790,9 +786,8 @@ msgid "Not Implemented"
 msgstr "Nincs megvalósítva"
 
 #: ../src/preferencesdialog.cpp:713
-#, fuzzy
 msgid "%1% Preferences"
-msgstr "_Beállítások"
+msgstr "%1% beállításai"
 
 #: ../src/preferencesdialog.cpp:854
 msgid "Choose Note Font"
@@ -838,9 +833,8 @@ msgstr ""
 "Használja ezt a „Kezdje itt” jegyzetet ötletei és gondolatai "
 "rendszerezésének megkezdésére.\n"
 "\n"
-"A GNOME panel Gnote jegyzetek menüjének „Új jegyzet” menüpontja "
-"segítségével hozhat létre új jegyzeteket. A jegyzet automatikusan mentésre "
-"kerül.\n"
+"A GNOME panel Gnote jegyzetek menüjének „Új jegyzet” menüpontja segítségével "
+"hozhat létre új jegyzeteket. A jegyzet automatikusan mentésre kerül.\n"
 "\n"
 "A jegyzeteket a kapcsolódó jegyzetek és ötletek összekapcsolásával "
 "rendszerezheti!\n"
@@ -985,7 +979,7 @@ msgstr "Ke_resés:"
 
 #: ../src/notewindow.cpp:1082
 msgid "<b>_Bold</b>"
-msgstr ""
+msgstr "<b>_Félkövér</b>"
 
 #: ../src/notewindow.cpp:1083
 msgid "<i>_Italic</i>"
@@ -1025,11 +1019,10 @@ msgstr "Betűméret"
 
 #. %1% is the number of note.
 #: ../src/note.cpp:67
-#, fuzzy
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "Biztosan törli ezt a jegyzetet?"
-msgstr[1] "Biztosan törli ezt a jegyzetet?"
+msgstr[1] "Biztosan törli ezt a(z) %1% jegyzetet?"
 
 #: ../src/note.cpp:79
 msgid "If you delete a note it is permanently lost."
@@ -1046,8 +1039,8 @@ msgid ""
 "Error details can be found in ~/.gnote.log."
 msgstr ""
 "Hiba történt a jegyzetek mentésekor. Ellenőrizze, hogy van-e szabad "
-"lemezterület és rendelkezik jogosultságokkal a ~/.gnote könyvtár írásához. "
-"A hiba részletei a ~/.gnote.log fájlban találhatók."
+"lemezterület és rendelkezik jogosultságokkal a ~/.gnote könyvtár írásához. A "
+"hiba részletei a ~/.gnote.log fájlban találhatók."
 
 #: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
@@ -1079,25 +1072,22 @@ msgid "Matches"
 msgstr "Találat"
 
 #: ../src/recentchanges.cpp:567
-#, fuzzy
 msgid "%1% match"
 msgid_plural "%1% matches"
-msgstr[0] "{0} találat"
-msgstr[1] "{0} találat"
+msgstr[0] "%1% találat"
+msgstr[1] "%1% találat"
 
 #: ../src/recentchanges.cpp:581
-#, fuzzy
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
-msgstr[0] "Összesen {0} jegyzet"
-msgstr[1] "Összesen {0} jegyzet"
+msgstr[0] "Összesen %1% jegyzet"
+msgstr[1] "Összesen %1% jegyzet"
 
 #: ../src/recentchanges.cpp:595
-#, fuzzy
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
-msgstr[0] "Találat: {0} jegyzet"
-msgstr[1] "Találat: {0} jegyzet"
+msgstr[0] "Találat: %1% jegyzet"
+msgstr[1] "Találat: %1% jegyzet"
 
 #: ../src/recentchanges.cpp:735
 msgid "Notes"
@@ -1191,8 +1181,7 @@ msgstr "(Névtelen %1%)"
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
-msgstr ""
-"Már létezik <b>%1%</b> nevű jegyzet. A folytatáshoz válasszon másik nevet."
+msgstr "Már létezik <b>%1%</b> nevű jegyzet. A folytatáshoz válasszon másik nevet."
 
 #: ../src/watchers.cpp:257
 msgid "Note title taken"
@@ -1326,7 +1315,7 @@ msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
-msgstr ""
+msgstr "Lehetővé teszi Bugzilla URL behúzását a böngészőből közvetlenül Gnote jegyzetbe. A hibaszám hivatkozásként kerül beszúrásra, mellette egy kis hiba ikonnal."
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
@@ -1397,11 +1386,11 @@ msgstr "Rögzített szélességű betűtípus hozzáadása"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
 msgid "Printing Support"
-msgstr ""
+msgstr "Nyomtatás támogatása"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
 msgid "Allows you to print a note."
-msgstr ""
+msgstr "Lehetővé teszi jegyzet kinyomtatását."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
 msgid "Print"
@@ -1424,7 +1413,7 @@ msgstr "Időbélyeg beillesztése"
 
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
-msgstr ""
+msgstr "Beszúrja az aktuális dátumot és időt a kurzorpozícióba."
 
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
 msgid "Hubert Figuiere and Tomboy Project"
@@ -1433,8 +1422,7 @@ msgstr "Hubert Figuiere és a Tomboy projekt"
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
 msgid "Choose one of the predefined formats or use your own."
-msgstr ""
-"Válasszon egyet az előre definiált formátumok közül, vagy használja sajátját."
+msgstr "Válasszon egyet az előre definiált formátumok közül, vagy használja sajátját."
 
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:71
 msgid "Use _Selected Format"
@@ -1443,3 +1431,4 @@ msgstr "A _kijelölt formátum használata"
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
 msgid "_Use Custom Format"
 msgstr "_Egyéni formátum használata"
+
