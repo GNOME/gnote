@@ -25,38 +25,39 @@
 
 
 
-#ifndef __SHARP_URI_HPP_
-#define __SHARP_URI_HPP_
+#ifndef __SHARP_XSLTRANSFORM_HPP_
+#define __SHARP_XSLTRANSFORM_HPP_
 
-
+#include <map>
 #include <string>
+
+#include <libxml/tree.h>
+#include <libxslt/transform.h>
+
+#include "sharp/streamwriter.hpp"
+#include "sharp/xmlresolver.hpp"
+#include "sharp/xsltargumentlist.hpp"
+
 
 namespace sharp {
 
-  class Uri
-  {
-  public:
-    Uri(const std::string & u)
-      : m_uri(u)
-      {
-      }
-    const std::string & to_string() const
-      { 
-        return m_uri; 
-      }
-    bool is_file() const;
-    std::string local_path() const;
-    std::string get_host() const;
-    std::string get_absolute_uri() const;
-    static std::string escape_uri_string(const std::string &);
-  private:
-    bool _is_scheme(const std::string & scheme) const;
+class XslTransform
+{
+public:
+  XslTransform();
+  ~XslTransform();
 
-    std::string m_uri;
-  };
+  /** load the stylesheet */
+  void load(const std::string &);
+  /** run the XLS transformation */
+  void transform(xmlDocPtr, const XsltArgumentList &, StreamWriter &, const XmlResolver &);
+
+private:
+  xsltStylesheetPtr m_stylesheet;
+};
+
 
 }
 
 
 #endif
-

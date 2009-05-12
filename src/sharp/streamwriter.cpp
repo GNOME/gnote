@@ -25,38 +25,47 @@
 
 
 
-#ifndef __SHARP_URI_HPP_
-#define __SHARP_URI_HPP_
 
+#include "sharp/streamwriter.hpp"
 
-#include <string>
+#include "debug.hpp"
 
 namespace sharp {
 
-  class Uri
-  {
-  public:
-    Uri(const std::string & u)
-      : m_uri(u)
-      {
-      }
-    const std::string & to_string() const
-      { 
-        return m_uri; 
-      }
-    bool is_file() const;
-    std::string local_path() const;
-    std::string get_host() const;
-    std::string get_absolute_uri() const;
-    static std::string escape_uri_string(const std::string &);
-  private:
-    bool _is_scheme(const std::string & scheme) const;
+StreamWriter::StreamWriter()
+  : m_file(NULL)
+{
+}
 
-    std::string m_uri;
-  };
+StreamWriter::~StreamWriter()
+{
+  if(m_file) {
+    fclose(m_file);
+  }
+}
 
+void StreamWriter::init(const std::string & filename)
+{
+  m_file = fopen(filename.c_str(), "wb");
 }
 
 
-#endif
+void StreamWriter::write(const std::string & text)
+{
+  fprintf(m_file, "%s", text.c_str());
+}
 
+  void StreamWriter::write(const xmlBufferPtr buffer)
+{
+  xmlBufferDump(m_file, buffer);
+}
+
+
+void StreamWriter::close()
+{
+  fclose(m_file);
+  m_file = NULL;
+}
+
+
+}

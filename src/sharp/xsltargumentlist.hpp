@@ -25,38 +25,46 @@
 
 
 
-#ifndef __SHARP_URI_HPP_
-#define __SHARP_URI_HPP_
+#ifndef __SHARP_XSLTARGUMENTLIST_HPP_
+#define __SHARP_XSLTARGUMENTLIST_HPP_
 
-
+#include <list>
 #include <string>
+#include <utility>
 
 namespace sharp {
 
-  class Uri
-  {
-  public:
-    Uri(const std::string & u)
-      : m_uri(u)
-      {
-      }
-    const std::string & to_string() const
-      { 
-        return m_uri; 
-      }
-    bool is_file() const;
-    std::string local_path() const;
-    std::string get_host() const;
-    std::string get_absolute_uri() const;
-    static std::string escape_uri_string(const std::string &);
-  private:
-    bool _is_scheme(const std::string & scheme) const;
+/** argument list for %XslTransform */
+class XsltArgumentList
+{
+public:
+  typedef std::list<std::pair<std::string,std::string> > container_t;
+  typedef container_t::const_iterator const_iterator;
 
-    std::string m_uri;
-  };
+  /** add a string parameter */
+  void add_param(const char* name, const char *uri, const std::string &);
+  /** add a bool parameter */
+  void add_param(const char* name, const char *uri, bool);
+
+  /** returns a param array suitable for libxslt. Caller 
+   *  must call free().
+   */
+  const char ** get_xlst_params() const;
+
+  /** */
+  size_t size() const
+    { return m_args.size(); }
+  const_iterator begin() const
+    { return m_args.begin(); }
+  const_iterator end() const
+    { return m_args.end(); }
+private:
+
+  container_t m_args;
+};
+
 
 }
 
 
 #endif
-

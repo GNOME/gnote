@@ -24,39 +24,41 @@
 
 
 
+#ifndef __SHARP_STREAMWRITER_HPP_
+#define __SHARP_STREAMWRITER_HPP_
 
-#ifndef __SHARP_URI_HPP_
-#define __SHARP_URI_HPP_
-
+#include <stdio.h>
 
 #include <string>
 
+#include <libxml/tree.h>
+
 namespace sharp {
 
-  class Uri
-  {
-  public:
-    Uri(const std::string & u)
-      : m_uri(u)
-      {
-      }
-    const std::string & to_string() const
-      { 
-        return m_uri; 
-      }
-    bool is_file() const;
-    std::string local_path() const;
-    std::string get_host() const;
-    std::string get_absolute_uri() const;
-    static std::string escape_uri_string(const std::string &);
-  private:
-    bool _is_scheme(const std::string & scheme) const;
 
-    std::string m_uri;
-  };
+class StreamWriter
+//  : public TextWriter
+{
+public:
+  StreamWriter();
+  ~StreamWriter();
+
+  void init(const std::string &);
+
+  FILE * file()
+    {
+      return m_file;
+    }
+
+  void write(const std::string & );
+  void write(const xmlBufferPtr);
+
+  void close();
+private:
+  FILE * m_file;
+};
 
 }
 
 
 #endif
-

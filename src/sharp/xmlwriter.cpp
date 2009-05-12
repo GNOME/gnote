@@ -42,6 +42,14 @@ namespace sharp {
     m_writer = xmlNewTextWriterFilename(filename.c_str(), 0);
   }
 
+  
+  XmlWriter::XmlWriter(xmlDocPtr doc)
+    : m_buf(NULL)
+  {
+    m_writer = xmlNewTextWriterTree(doc, NULL, 0);
+  }
+
+
   XmlWriter::~XmlWriter()
   {
     xmlFreeTextWriter(m_writer);

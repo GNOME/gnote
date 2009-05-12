@@ -69,6 +69,7 @@ PKG_CHECK_MODULES(LIBGLIBMM, [glibmm-2.4])
 PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= $GTK_VERSION])
 PKG_CHECK_MODULES(LIBGTKMM, [gtkmm-2.4 >= $LIBGTKMM_VERSION])
 PKG_CHECK_MODULES(LIBXML, [libxml-2.0])
+PKG_CHECK_MODULES(LIBXSLT, [libxslt])
 PKG_CHECK_MODULES(LIBXMLPP, [libxml++-2.6])
 PKG_CHECK_MODULES(GCONF, [gconf-2.0])
 dnl PKG_CHECK_MODULES(LIBGLADEMM, [libglademm-2.4 >= $LIBGLADEMM_VERSION])
@@ -210,6 +211,7 @@ src/addins/Makefile
 src/addins/addins.mk
 src/addins/backlinks/Makefile
 src/addins/bugzilla/Makefile
+src/addins/exporttohtml/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
 src/addins/printnotes/Makefile

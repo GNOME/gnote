@@ -23,40 +23,47 @@
  */
 
 
+#include <stdlib.h>
 
+#include <boost/format.hpp>
 
-#ifndef __SHARP_URI_HPP_
-#define __SHARP_URI_HPP_
-
-
-#include <string>
+#include "sharp/map.hpp"
+#include "sharp/xsltargumentlist.hpp"
 
 namespace sharp {
 
-  class Uri
-  {
-  public:
-    Uri(const std::string & u)
-      : m_uri(u)
-      {
-      }
-    const std::string & to_string() const
-      { 
-        return m_uri; 
-      }
-    bool is_file() const;
-    std::string local_path() const;
-    std::string get_host() const;
-    std::string get_absolute_uri() const;
-    static std::string escape_uri_string(const std::string &);
-  private:
-    bool _is_scheme(const std::string & scheme) const;
 
-    std::string m_uri;
-  };
-
+void XsltArgumentList::add_param(const char* name, const char * /*uri*/, const std::string & value)
+{
+  std::string pv = str(boost::format("\"%1%\"") % value);
+  m_args.push_back(std::make_pair(name, pv));
 }
 
 
-#endif
+void XsltArgumentList::add_param(const char* name, const char * /*uri*/, bool value)
+{
+  m_args.push_back(std::make_pair(name, value?"1":"0"));
+}
 
+
+const char ** XsltArgumentList::get_xlst_params() const
+{
+  const char **params = NULL;
+
+  params = (const char**)calloc(m_args.size() * 2 + 1, sizeof(char*));
+  const_iterator iter(m_args.begin());
+  const_iterator e(m_args.end());
+
+  const char **cur = params;
+  for( ; iter != e; ++iter) {
+    *cur = iter->first.c_str();
+    ++cur;
+    *cur = iter->second.c_str();
+    ++cur;
+  }
+
+  return params;
+}
+
+
+}

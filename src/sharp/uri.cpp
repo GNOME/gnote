@@ -80,6 +80,12 @@ namespace sharp {
   }
 
 
+  std::string Uri::get_absolute_uri() const
+  {
+    return m_uri;
+  }
+
+
   /** this is a very minimalistic implementation */
   std::string Uri::escape_uri_string(const std::string &s)
   {

@@ -50,7 +50,8 @@ namespace sharp {
   {
   public:
     XmlWriter();
-    XmlWriter(const std::string & filename);    
+    XmlWriter(const std::string & filename);
+    XmlWriter(xmlDocPtr doc);
     ~XmlWriter();
     int write_start_document()
       {

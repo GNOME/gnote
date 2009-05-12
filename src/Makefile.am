@@ -72,11 +72,14 @@ libgnote_a_SOURCES = \
 	sharp/modulefactory.hpp \
 	sharp/modulemanager.hpp sharp/modulemanager.cpp \
 	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
+	sharp/streamwriter.hpp sharp/streamwriter.cpp \
 	sharp/string.hpp sharp/string.cpp \
 	sharp/uri.hpp sharp/uri.cpp \
 	sharp/uuid.hpp \
 	sharp/xmlconvert.hpp sharp/xmlconvert.cpp \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
+	sharp/xsltargumentlist.hpp sharp/xsltargumentlist.cpp \
+	sharp/xsltransform.hpp sharp/xsltransform.cpp \
 	gnote.cpp gnote.hpp \
 	abstractaddin.hpp abstractaddin.cpp \
 	actionmanager.hpp actionmanager.cpp \
