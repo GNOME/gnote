@@ -774,13 +774,13 @@ namespace gnote {
   }
 
   
-  void NoteLinkWatcher::do_highlight(const TrieHit<Note::Ptr> & hit, 
+  void NoteLinkWatcher::do_highlight(const TrieHit<Note::WeakPtr> & hit,
                                      const Gtk::TextIter & start,
                                      const Gtk::TextIter &)
   {
     // Some of these checks should be replaced with fixes to
     // TitleTrie.FindMatches, probably.
-    if (!hit.value) {
+    if (hit.value.expired()) {
       DBG_OUT("DoHighlight: null pointer error for '%s'." , hit.key.c_str());
       return;
     }
@@ -790,7 +790,7 @@ namespace gnote {
       return;
     }
       
-    Note::Ptr hit_note = hit.value;
+    Note::Ptr hit_note(hit.value);
 
     if (sharp::string_to_lower(hit.key) != sharp::string_to_lower(hit_note->get_title())) { // == 0 if same string  
       DBG_OUT ("DoHighlight: '%s' links wrongly to note '%s'." , hit.key.c_str(), 
@@ -838,7 +838,7 @@ namespace gnote {
       if (idx < 0)
         break;
 
-      TrieHit<Note::Ptr> hit(idx, idx + find_title_lower.length(),
+      TrieHit<Note::WeakPtr> hit(idx, idx + find_title_lower.length(),
                              find_title_lower, find_note);
       do_highlight (hit, start, end);
 
@@ -851,8 +851,8 @@ namespace gnote {
   void NoteLinkWatcher::highlight_in_block(const Gtk::TextIter & start,
                                            const Gtk::TextIter & end)
   {
-    TrieHit<Note::Ptr>::ListPtr hits = manager().find_trie_matches (start.get_slice (end));
-    for(TrieHit<Note::Ptr>::List::const_iterator iter = hits->begin();
+    TrieHit<Note::WeakPtr>::ListPtr hits = manager().find_trie_matches (start.get_slice (end));
+    for(TrieHit<Note::WeakPtr>::List::const_iterator iter = hits->begin();
         iter != hits->end(); ++iter) {
       do_highlight (**iter, start, end);
     }

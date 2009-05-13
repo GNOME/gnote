@@ -113,6 +113,7 @@ class Note
 {
 public:
   typedef std::tr1::shared_ptr<Note> Ptr;
+  typedef std::tr1::weak_ptr<Note> WeakPtr;
   typedef std::list<Ptr> List;
 
   typedef sigc::signal<void, const Note::Ptr&, const std::string& > RenamedHandler;

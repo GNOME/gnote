@@ -175,7 +175,7 @@ namespace gnote {
     void on_note_added(const Note::Ptr &);
     void on_note_deleted(const Note::Ptr &);
     void on_note_renamed(const Note::Ptr&, const std::string&);
-    void do_highlight(const TrieHit<Note::Ptr> & , const Gtk::TextIter &,const Gtk::TextIter &);
+    void do_highlight(const TrieHit<Note::WeakPtr> & , const Gtk::TextIter &,const Gtk::TextIter &);
     void highlight_note_in_block (const Note::Ptr &, const Gtk::TextIter &,
                                   const Gtk::TextIter &);
     void highlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);

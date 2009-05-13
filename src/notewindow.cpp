@@ -1088,7 +1088,7 @@ namespace gnote {
     , m_normal(m_fontsize_group, _("_Normal"), true)
     , m_huge(m_fontsize_group, Glib::ustring("<span size=\"x-large\">")
              + _("Hu_ge") + "</span>", true)
-  , m_large(m_fontsize_group, Glib::ustring("<span size=\"large\">")
+    , m_large(m_fontsize_group, Glib::ustring("<span size=\"large\">")
             + _("_Large") + "</span>", true)
        ,  m_small(m_fontsize_group, Glib::ustring("<span size=\"small\">")
                   + _("S_mall") + "</span>", true)

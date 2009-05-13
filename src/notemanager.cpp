@@ -54,7 +54,7 @@ namespace gnote {
     ~TrieController();
 
     void update();
-    TrieTree<Note::Ptr> *title_trie() const
+    TrieTree<Note::WeakPtr> *title_trie() const
       {
         return m_title_trie;
       }
@@ -64,7 +64,7 @@ namespace gnote {
     void on_note_renamed (const Note::Ptr & renamed, const std::string & old_title);
       
     NoteManager & m_manager;
-    TrieTree<Note::Ptr> *    m_title_trie;
+    TrieTree<Note::WeakPtr> *    m_title_trie;
   };
 
   bool compare_dates(const Note::Ptr & a, const Note::Ptr & b)
@@ -584,7 +584,7 @@ namespace gnote {
   }
 
 
-  TrieHit<Note::Ptr>::ListPtr NoteManager::find_trie_matches(const std::string & match)
+  TrieHit<Note::WeakPtr>::ListPtr NoteManager::find_trie_matches(const std::string & match)
   {
     return m_trie_controller->title_trie()->find_matches(match);
   }
@@ -649,7 +649,7 @@ namespace gnote {
     if(m_title_trie) {
       delete m_title_trie;
     }
-    m_title_trie = new TrieTree<Note::Ptr>(false /* !case_sensitive */);
+    m_title_trie = new TrieTree<Note::WeakPtr>(false /* !case_sensitive */);
 
     for(Note::List::const_iterator iter =  m_manager.get_notes().begin();
         iter !=  m_manager.get_notes().end(); ++iter) {

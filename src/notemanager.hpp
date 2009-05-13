@@ -57,7 +57,7 @@ namespace gnote {
 
     // the trie for the note names
     size_t trie_max_length();
-    TrieHit<Note::Ptr>::ListPtr find_trie_matches(const std::string &);
+    TrieHit<Note::WeakPtr>::ListPtr find_trie_matches(const std::string &);
 
     AddinManager & get_addin_manager()
       {
