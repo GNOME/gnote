@@ -152,14 +152,6 @@ namespace gnote {
     return Gtk::ImageMenuItem::on_leave_notify_event(ev);
   }
 
-  std::string NoteMenuItem::format_for_label (const std::string & name)
-  {
-    // Replace underscores ("_") with double-underscores ("__")
-    // so Note menuitems are not created with mnemonics.
-    return sharp::string_replace_all(name, "_", "__");
-  }
-
-
   std::string NoteMenuItem::get_display_name(const Note::Ptr & note)
   {
     std::string display_name = note->get_title();
@@ -174,7 +166,7 @@ namespace gnote {
       display_name = ellipsify (display_name, max_length);
     }
 
-    return format_for_label(display_name);
+    return display_name;
   }
 
   std::string NoteMenuItem::ellipsify (const std::string & str, size_t max)

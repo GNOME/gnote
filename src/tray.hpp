@@ -52,7 +52,6 @@ private:
   bool        m_pinned;
   bool        m_inhibit_activate;
 
-  static std::string format_for_label (const std::string & name);
   static std::string get_display_name(const Note::Ptr & n);
   static std::string ellipsify (const std::string & str, size_t max);
   static void _init_static();
