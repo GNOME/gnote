@@ -20,8 +20,8 @@ GNOTE_LIBS = libgnote.a @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
 
 noinst_LIBRARIES = libgnote.a
 bin_PROGRAMS = gnote
-check_PROGRAMS = trietest stringtest notetest dttest
-TESTS = trietest stringtest notetest dttest
+check_PROGRAMS = trietest stringtest notetest dttest uritest
+TESTS = trietest stringtest notetest dttest uritest
 
 
 trietest_SOURCES = test/trietest.cpp \
@@ -35,6 +35,10 @@ dttest_LDADD = @LIBGLIBMM_LIBS@ @BOOST_REGEX_LIBS@
 stringtest_SOURCES = test/stringtest.cpp \
 	sharp/string.cpp debug.cpp
 stringtest_LDADD =  @BOOST_REGEX_LIBS@ @LIBGLIBMM_LIBS@
+
+uritest_SOURCES = test/uritest.cpp \
+	sharp/string.cpp  sharp/uri.cpp debug.cpp
+uritest_LDADD =  @BOOST_REGEX_LIBS@ @LIBGLIBMM_LIBS@
 
 notetest_SOURCES = test/notetest.cpp
 notetest_LDADD =  $(GNOTE_LIBS)

@@ -28,7 +28,11 @@
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
 
-#define FILE_URI_SCHEME "file://"
+#define FILE_URI_SCHEME   "file:"
+#define MAILTO_URI_SCHEME "mailto:"
+#define HTTP_URI_SCHEME   "http:"
+#define HTTPS_URI_SCHEME  "https:"
+#define FTP_URI_SCHEME    "ftp:"
 
 namespace sharp {
 
@@ -38,18 +42,40 @@ namespace sharp {
   }
 
 
+  /// TODO this function does not behave as expected.
+  // it does not handle local_path for non file URI.
   std::string Uri::local_path() const
   {
     if(!is_file()) {
       return m_uri;
     }
-    return string_replace_first(m_uri, FILE_URI_SCHEME, "");
+    return string_replace_first(m_uri, std::string(FILE_URI_SCHEME) + "//", "");
+  }
+
+  bool Uri::_is_scheme(const std::string & scheme) const
+  {
+    return string_starts_with(m_uri, scheme);
   }
 
   std::string Uri::get_host() const
   {
     std::string host;
-    
+
+    if(!is_file()) {
+      if(_is_scheme(HTTP_URI_SCHEME) || _is_scheme(HTTPS_URI_SCHEME)
+         || _is_scheme(FTP_URI_SCHEME)) {
+        int idx = string_index_of(m_uri, "://");
+        if(idx != -1) {
+          std::string sub(m_uri.begin() + idx + 3, m_uri.end());
+          idx = string_index_of(sub, "/");
+          if(idx != -1) {
+            sub.erase(sub.begin() + idx, sub.end());
+            host = sub;
+          }
+        }
+      }
+    }
+
     return host;
   }
 

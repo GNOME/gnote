@@ -49,6 +49,8 @@ namespace sharp {
     std::string get_host() const;
     static std::string escape_uri_string(const std::string &);
   private:
+    bool _is_scheme(const std::string & scheme) const;
+
     std::string m_uri;
   };
 
