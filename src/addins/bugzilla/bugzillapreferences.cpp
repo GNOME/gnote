@@ -198,6 +198,25 @@ namespace bugzilla {
     remove_button->set_sensitive(icon_tree->get_selection()->count_selected_rows() > 0);
   }
   
+  namespace {
+
+    /** sanitize the hostname. Return false if nothing could be done */
+    bool sanitize_hostname(std::string & hostname)
+    {
+      if(sharp::string_contains(hostname, "/") 
+         || sharp::string_contains(hostname, ":")) {
+        sharp::Uri uri(hostname);
+        std::string new_host = uri.get_host();
+        if(new_host.empty()) {
+          return false;
+        }
+        hostname = new_host;
+      }
+      return true;
+    }
+
+  }
+
   void BugzillaPreferences::add_clicked()
   {
     Gtk::FileChooserDialog dialog(_("Select an icon..."),
@@ -234,8 +253,12 @@ namespace bugzilla {
       icon_file = dialog.get_filename();
       host = sharp::string_trim(host_entry->get_text());
 
+
       if (response == (int) Gtk::RESPONSE_OK) {
-        if(!host.empty()) {
+
+        bool valid = sanitize_hostname(host);
+      
+        if(valid && !host.empty()) {
           break;
         }
         // Let the user know that they
@@ -243,8 +266,8 @@ namespace bugzilla {
         gnote::utils::HIGMessageDialog warn(
           NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
           Gtk::MESSAGE_WARNING, Gtk::BUTTONS_OK,
-          _("No host name specified"),
-          _("You must specify the Bugzilla "
+          _("Host name invalid"),
+          _("You must specify a valid Bugzilla "
             "host name to use with this icon."));
         warn.run ();
 
@@ -288,7 +311,7 @@ namespace bugzilla {
 
       sharp::file_copy (file_path, saved_path);
     } 
-    catch (const sharp::Exception & e) {
+    catch (const std::exception & e) {
       err_msg = e.what();
       return false;
     }
