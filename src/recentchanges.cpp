@@ -338,7 +338,6 @@ namespace gnote {
     m_tree->signal_drag_data_get().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_drag_data_get));
 
-    // this cause a frakkin' warning.
     m_tree->enable_model_drag_source(m_targets,
       Gdk::BUTTON1_MASK | Gdk::BUTTON3_MASK, Gdk::ACTION_MOVE);
 
@@ -977,16 +976,11 @@ namespace gnote {
     return selected_notes;
   }
 
-  Note::Ptr NoteRecentChanges::get_note(const Gtk::TreeIter & iter)
-  {
-    return (*iter)[m_column_types.note];
-  }
-
   Note::Ptr NoteRecentChanges::get_note(const Gtk::TreePath & p)
   {
-    Gtk::TreeIter iter = m_store->get_iter(p); 
+    Gtk::TreeIter iter = m_store_sort->get_iter(p); 
     if(iter) {
-      return get_note(iter);
+      return (*iter)[m_column_types.note];
     }
     return Note::Ptr();
   }
