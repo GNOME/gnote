@@ -135,10 +135,50 @@ namespace inserttimestamp {
     }
 
     // Register Toggled event for one radio button only
-//    selected_radio.Toggled += OnSelectedRadioToggled;
-//    tv.Selection.Changed += OnSelectionChanged;
-
+    selected_radio->signal_toggled().connect(
+      sigc::mem_fun(*this, 
+                    &InsertTimestampPreferences::on_selected_radio_toggled));
+    tv->get_selection()->signal_changed().connect(
+      sigc::mem_fun(*this, 
+                    &InsertTimestampPreferences::on_selection_changed));
     show_all ();
+  }
+
+
+  /// Called when toggling between radio buttons.
+  /// Activate/deactivate widgets depending on selection.
+  void InsertTimestampPreferences::on_selected_radio_toggled ()
+  {
+    if (selected_radio->get_active()) {
+      scroll->set_sensitive(true);
+      custom_entry->set_sensitive(false);
+      // select 1st row
+      Gtk::TreeIter iter;
+      iter = store->children().begin();
+      tv->get_selection()->select(iter);
+      Gtk::TreePath treepath = store->get_path(iter);				
+      tv->scroll_to_row(treepath);
+    } 
+    else {
+      scroll->set_sensitive(false);
+      custom_entry->set_sensitive(true);
+      tv->get_selection()->unselect_all ();
+    }
+  }
+
+  /// Called when a different format is selected in the TreeView.
+  /// Set the GConf key to selected format.
+  void InsertTimestampPreferences::on_selection_changed ()
+  {
+    Gtk::TreeIter iter;
+
+    iter = tv->get_selection()->get_selected();
+    if (iter) {
+      std::string format;
+      iter->get_value(1, format);
+      Preferences::obj().set<std::string>(Preferences::INSERT_TIMESTAMP_FORMAT,
+                                          format);
+    }
   }
 
 }

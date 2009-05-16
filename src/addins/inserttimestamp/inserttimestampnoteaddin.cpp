@@ -58,7 +58,7 @@ namespace inserttimestamp {
   }
   const char * InsertTimeStampModule::version() const
   {
-    return "0.1";
+    return "0.1.1";
   }
 
 
