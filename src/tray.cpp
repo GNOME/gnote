@@ -419,9 +419,9 @@ namespace gnote {
     if(select_first_item) {
       m_tray->tray_menu()->select_first(false);
     }
-    utils::popup_menu(*m_tray->tray_menu(), NULL, 
-                      sigc::bind(sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos), 
-                                 m_tray->tray_menu()));
+    
+    popup_menu_at_position(*m_tray->tray_menu(), 0, 
+                           gtk_get_current_event_time());
   }
 
   TrayIcon::~TrayIcon()
@@ -436,43 +436,14 @@ namespace gnote {
     show_menu(false);
   }
 
-  void TrayIcon::on_popup_menu(guint button, guint32 /*activate_time*/)
+  void TrayIcon::on_popup_menu(guint button, guint32 activate_time)
   {
     DBG_OUT("popup");
     if(button == 3) {
       Gtk::Menu *menu = get_right_click_menu();
-      utils::popup_menu(*menu, NULL, 
-                        sigc::bind(sigc::mem_fun(*this, &TrayIcon::get_tray_menu_pos), menu));
+      popup_menu_at_position(*menu, button, activate_time);
     }
   }  
-
-
-  void TrayIcon::get_tray_menu_pos(int & x, int &y, bool & push_in, Gtk::Menu * menu)
-  {
-      push_in = true;
-      x = 0;
-      y = 0;
-      
-//      Glib::RefPtr<Gdk::Screen> screen;
-      GdkScreen *cscreen = NULL;
-      Gdk::Rectangle area;
-      GtkOrientation orientation;
-// using the C++ API seems to crash here on the Gdk::Screen.
-//      get_geometry (screen, area, orientation);
-      gtk_status_icon_get_geometry(gobj(), &cscreen, area.gobj(), &orientation);
-      x = area.get_x();
-      y = area.get_y();
-
-      Gtk::Requisition menu_req;
-      menu->size_request (menu_req);
-      if (y + menu_req.height >= gdk_screen_get_height(cscreen)/*screen->get_height()*/) {
-        y -= menu_req.height;
-      }
-      else {
-        y += area.get_height();
-      }
-      DBG_OUT("x = %d, y = %d, push_in = %d", x, y, push_in);
-  }
 
   Gtk::Menu * TrayIcon::get_right_click_menu()
   {

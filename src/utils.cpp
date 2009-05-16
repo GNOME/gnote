@@ -88,18 +88,13 @@ namespace gnote {
       }
     }
 
+
     void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev)
     {
-      popup_menu(menu, ev, boost::bind(&get_menu_position, &menu, _1, _2, _3));
-    }
-
-
-    void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev, 
-                    Gtk::Menu::SlotPositionCalc calc)
-    {
       menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
-      menu.popup(calc, (ev ? ev->button : 0), 
-                  (ev ? ev->time : gtk_get_current_event_time()));
+      menu.popup(boost::bind(&get_menu_position, &menu, _1, _2, _3), 
+                 (ev ? ev->button : 0), 
+                 (ev ? ev->time : gtk_get_current_event_time()));
       if(menu.get_attach_widget()) {
         menu.get_attach_widget()->set_state(Gtk::STATE_SELECTED);
       }

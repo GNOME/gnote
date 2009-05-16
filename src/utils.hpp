@@ -50,7 +50,6 @@ namespace gnote {
 
     
     void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
-    void popup_menu(Gtk::Menu &menu, const GdkEventButton *, Gtk::Menu::SlotPositionCalc calc);
 
     void show_help(const std::string & filename, const std::string & link_id,
                    GdkScreen *screen, Gtk::Window *parent);
