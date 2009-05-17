@@ -51,7 +51,7 @@ APPLET_SOURCES=applet.hpp applet.cpp
 AM_CPPFLAGS+=@LIBPANELAPPLETMM_CFLAGS@
 GNOTE_LIBS+=@LIBPANELAPPLETMM_LIBS@
 
-bin_SCRIPTS=gnote-applet
+libexec_SCRIPTS=gnote-applet
 gnote-applet: gnote-applet.in Makefile
 	sed -e "s|\@bindir\@|$(bindir)|g"	\
 	    < $< > $@

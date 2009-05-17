@@ -34,7 +34,7 @@ dbusservice_in_files = org.gnome.GNote.service.in
 dbusservice_DATA     = $(dbusservice_in_files:.service.in=.service)
 
 $(dbusservice_DATA): $(dbusservice_in_files) Makefile
-	sed -e "s|\@bindir\@|$(bindir)|g"	\
+	sed -e "s|\@libexecdir\@|$(libexecdir)|g"	\
 	    -e "s|\@wrapper\@|gnote-applet|g"		\
 	    < $< > $@
 endif
@@ -45,7 +45,7 @@ server_in_files = GNOME_GnoteApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
 $(server_in_files): $(server_in_files:.server.in=.server.in.in) Makefile
-	sed -e "s|\@bindir\@|$(bindir)|g"	\
+	sed -e "s|\@libexecdir\@|$(libexecdir)|g"	\
 	    -e "s|\@wrapper\@|gnote-applet|g"		\
 	    < $< > $@
 endif
