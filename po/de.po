@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-12 21:58+0200\n"
-"PO-Revision-Date: 2009-05-12 22:00+0100\n"
+"POT-Creation-Date: 2009-05-17 17:03+0200\n"
+"PO-Revision-Date: 2009-05-17 17:04+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -44,12 +44,12 @@ msgid "_About"
 msgstr "_Info"
 
 #: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:505
+#: ../src/tray.cpp:468
 msgid "_Help"
 msgstr "_Hilfe"
 
 #: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:500
+#: ../src/tray.cpp:463
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
@@ -575,7 +575,7 @@ msgstr "S_chließen"
 msgid "Close this window"
 msgstr "Dieses Fenster schließen"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:517
+#: ../src/actionmanager.cpp:187 ../src/tray.cpp:480
 msgid "_Quit"
 msgstr "_Beenden"
 
@@ -1084,37 +1084,37 @@ msgstr "_Suchen:"
 msgid "Notebooks"
 msgstr "Notizbücher"
 
-#: ../src/recentchanges.cpp:348
+#: ../src/recentchanges.cpp:347
 msgid "Note"
 msgstr "Notiz"
 
-#: ../src/recentchanges.cpp:369
+#: ../src/recentchanges.cpp:368
 msgid "Last Changed"
 msgstr "Zuletzt geändert"
 
-#: ../src/recentchanges.cpp:513
+#: ../src/recentchanges.cpp:512
 msgid "Matches"
 msgstr "Stimmt überein"
 
-#: ../src/recentchanges.cpp:567
+#: ../src/recentchanges.cpp:566
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "(%1% Treffer)"
 msgstr[1] "(%1% Treffer)"
 
-#: ../src/recentchanges.cpp:581
+#: ../src/recentchanges.cpp:580
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Gesamt: %1% Notiz"
 msgstr[1] "Gesamt: %1% Notizen"
 
-#: ../src/recentchanges.cpp:595
+#: ../src/recentchanges.cpp:594
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Treffer: %1% Notiz"
 msgstr[1] "Treffer: %1% Notizen"
 
-#: ../src/recentchanges.cpp:735
+#: ../src/recentchanges.cpp:734
 msgid "Notes"
 msgstr "Notizen"
 
@@ -1122,15 +1122,15 @@ msgstr "Notizen"
 msgid "Gnote Notes"
 msgstr "Gnote-Notizen"
 
-#: ../src/tray.cpp:169
+#: ../src/tray.cpp:161
 msgid " (new)"
 msgstr " (neu)"
 
-#: ../src/tray.cpp:510
+#: ../src/tray.cpp:473
 msgid "_About Gnote"
 msgstr "_Info zu Gnote"
 
-#: ../src/utils.cpp:133
+#: ../src/utils.cpp:128
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -1138,63 +1138,63 @@ msgstr ""
 "Das »Gnote-Notizen-Handbuch« konnte nicht gefunden werden. Bitte stellen Sie "
 "sicher, dass Ihre Installation erfolgreich abgeschlossen wurde."
 
-#: ../src/utils.cpp:141
+#: ../src/utils.cpp:136
 msgid "Help not found"
 msgstr "Hilfe wurde nicht gefunden"
 
-#: ../src/utils.cpp:181
+#: ../src/utils.cpp:176
 msgid "Cannot open location"
 msgstr "Ort kann nicht geöffnet werden"
 
-#: ../src/utils.cpp:195
+#: ../src/utils.cpp:190
 msgid "Today, %1%"
 msgstr "Heute, %1%"
 
-#: ../src/utils.cpp:196
+#: ../src/utils.cpp:191
 msgid "Today"
 msgstr "Heute"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:196
 msgid "Yesterday, %1%"
 msgstr "Gestern, %1%"
 
-#: ../src/utils.cpp:202
+#: ../src/utils.cpp:197
 msgid "Yesterday"
 msgstr "Gestern"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:204
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "Vor %1% Tag, %2%"
 msgstr[1] "Vor %1% Tagen, %2%"
 
-#: ../src/utils.cpp:213
+#: ../src/utils.cpp:208
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "vor %1% Tag"
 msgstr[1] "vor %1% Tagen"
 
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:215
 msgid "Tomorrow, %1%"
 msgstr "Morgen, %1%"
 
-#: ../src/utils.cpp:221
+#: ../src/utils.cpp:216
 msgid "Tomorrow"
 msgstr "Morgen"
 
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:223
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "In %1% Tag, %2%"
 msgstr[1] "In %1% Tagen, %2%"
 
-#: ../src/utils.cpp:232
+#: ../src/utils.cpp:227
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "In %1% Tag"
 msgstr[1] "In %1% Tagen"
 
-#: ../src/utils.cpp:243
+#: ../src/utils.cpp:238
 msgid "No Date"
 msgstr "Kein Datum"
 
@@ -1368,38 +1368,38 @@ msgstr "Rechnername"
 msgid "Icon"
 msgstr "Symbol"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:203
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:222
 msgid "Select an icon..."
 msgstr "Symbol wählen …"
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:218
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:237
 msgid "_Host name:"
 msgstr "_Rechnername:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:246
-msgid "No host name specified"
-msgstr "Kein Rechnername angegeben"
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:269
+msgid "Host name invalid"
+msgstr "Ungültiger Rechnername"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:247
-msgid "You must specify the Bugzilla host name to use with this icon."
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Sie müssen den mit diesem Symbol zu verwendenden Bugzilla-Rechnernamen "
 "angeben."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:266
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:289
 msgid "Error saving icon"
 msgstr "Fehler beim Speichern desSymbols"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:267
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
 msgid "Could not save the icon file."
 msgstr "Symboldatei konnte nicht gespeichert werden."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:339
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:362
 msgid "Really remove this icon?"
 msgstr "Dieses Symbol wirklich löschen?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:340
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
 msgid "If you remove an icon it is permanently lost."
 msgstr "Ein gelöschtes Symbol ist für immer verloren."
 
@@ -1463,3 +1463,6 @@ msgstr "Au_sgewähltes Format verwenden"
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
 msgid "_Use Custom Format"
 msgstr "Ben_utzerdefiniertes Format verwenden"
+
+#~ msgid "No host name specified"
+#~ msgstr "Kein Rechnername angegeben"
