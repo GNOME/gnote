@@ -23,11 +23,14 @@
 #include <gtkmm/stock.h>
 #include <gtkmm/table.h>
 
+#include "sharp/files.hpp"
 #include "exporttohtmldialog.hpp"
-
+#include "preferences.hpp"
 
 namespace exporttohtml {
 
+
+using gnote::Preferences;
 
 ExportToHtmlDialog::ExportToHtmlDialog(const std::string & default_file)
   : Gtk::FileChooserDialog(_("Destination for HTML Export"),
@@ -65,19 +68,50 @@ bool ExportToHtmlDialog::get_export_linked() const
   return m_export_linked.get_active();
 }
 
+
+void ExportToHtmlDialog::set_export_linked(bool value)
+{
+  m_export_linked.set_active(value);
+}
+
+
 bool ExportToHtmlDialog::get_export_linked_all() const
 {
   return m_export_linked_all.get_active();
 }
 
 
-void ExportToHtmlDialog::save_preferences()
+void ExportToHtmlDialog::set_export_linked_all(bool value)
 {
+  m_export_linked_all.set_active(value);
 }
 
 
-void ExportToHtmlDialog::load_preferences(const std::string & )
+void ExportToHtmlDialog::save_preferences()
 {
+  std::string dir = sharp::file_dirname(get_filename());
+  
+  Preferences::obj().set<std::string>(Preferences::EXPORTHTML_LAST_DIRECTORY, 
+                                      dir);
+
+  Preferences::obj().set<bool>(Preferences::EXPORTHTML_EXPORT_LINKED, 
+                               get_export_linked());
+  Preferences::obj().set<bool>(Preferences::EXPORTHTML_EXPORT_LINKED_ALL, 
+                               get_export_linked_all());
+}
+
+
+void ExportToHtmlDialog::load_preferences(const std::string & default_file)
+{
+  std::string last_dir = Preferences::obj().get<std::string>(Preferences::EXPORTHTML_LAST_DIRECTORY);
+  if (last_dir.empty()) {
+    last_dir = Glib::get_home_dir();
+  }
+  set_current_folder (last_dir);
+  set_current_name(default_file);
+
+  set_export_linked(Preferences::obj().get<bool>(Preferences::EXPORTHTML_EXPORT_LINKED));
+  set_export_linked_all(Preferences::obj().get<bool>(Preferences::EXPORTHTML_EXPORT_LINKED_ALL));
 }
 
 

@@ -37,7 +37,9 @@ public:
   void save_preferences();
 
   bool get_export_linked() const;
+  void set_export_linked(bool);
   bool get_export_linked_all() const;
+  void set_export_linked_all(bool);
 
 private:
   void on_export_linked_toggled();

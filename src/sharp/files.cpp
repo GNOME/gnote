@@ -41,9 +41,12 @@ namespace sharp {
 #else
     return boost::filesystem::basename(boost::filesystem::path(p));
 #endif
-
   }
 
+  std::string file_dirname(const std::string & p)
+  {
+    return boost::filesystem::path(p).branch_path().string();
+  }
 
   void file_delete(const std::string & p)
   {
