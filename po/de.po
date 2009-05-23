@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 17:03+0200\n"
-"PO-Revision-Date: 2009-05-17 17:04+0100\n"
+"POT-Creation-Date: 2009-05-24 01:26+0200\n"
+"PO-Revision-Date: 2009-05-24 01:31+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -849,7 +849,8 @@ msgid ""
 "link:internal> it automatically gets underlined?  Click on the link to open "
 "the note.</note-content>"
 msgstr ""
-"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Hier starten\n"
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Hier "
+"starten\n"
 "\n"
 "<bold>Willkommen bei Gnote!</bold>\n"
 "\n"
@@ -1333,6 +1334,29 @@ msgstr "Notizbuch"
 msgid "_New notebook..."
 msgstr "Neues Notiz_buch …"
 
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+msgid "Backlinks"
+msgstr "Backlinks"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+msgid "See which notes link to the one you're currently viewing."
+msgstr ""
+"Anzeigen der Notizen, deren Links auf die gegenwärtig betrachtete Notiz "
+"verweisen."
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "Hubert Figuiere und das Tomboy-Projekt"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+msgid "What links here?"
+msgstr "Was verweist hierauf?"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+msgid "(none)"
+msgstr " (kein)"
+
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
 msgid "Bugzilla Links"
 msgstr "Bugzilla-Links"
@@ -1347,6 +1371,7 @@ msgstr ""
 "Symbols daneben dargestellt."
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere und das Tomboy-Projekt"
@@ -1403,6 +1428,40 @@ msgstr "Dieses Symbol wirklich löschen?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Ein gelöschtes Symbol ist für immer verloren."
 
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:36
+msgid "Destination for HTML Export"
+msgstr "Ziel für HTML-Export"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:38
+msgid "Export linked notes"
+msgstr "Verknüpfte Notizen exportieren"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:39
+msgid "Include all other linked notes"
+msgstr "Alle anderen verknüpften Notizen einschließen"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+msgid "Export to HTML"
+msgstr "HTML exportieren"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+msgid "Exports individual notes to HTML."
+msgstr "Individuelle Notizen in HTML exportieren."
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+msgid "Your note was exported to \"%1%\"."
+msgstr "Ihre Notiz wurde nach »%1%« exportiert."
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+msgid "Note exported successfully"
+msgstr "Notizen wurden erfolgreich exportiert"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+#, c-format
+msgid "Could not save the file \"%s\""
+msgstr "Datei »%s« konnte nicht gespeichert werden."
+
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
 msgid "_Fixed Width"
 msgstr "_Feste Breite"
@@ -1446,10 +1505,6 @@ msgstr "Zeitstempel einfügen"
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
 msgstr "Fügt die aktuelle Zeit und das Datum an der Position des Cursors ein."
-
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
-msgid "Hubert Figuiere and Tomboy Project"
-msgstr "Hubert Figuiere und das Tomboy-Projekt"
 
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
