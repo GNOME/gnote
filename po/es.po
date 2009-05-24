@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&component=general\n"
 "POT-Creation-Date: 2009-05-21 00:11+0000\n"
-"PO-Revision-Date: 2009-05-24 15:50+0200\n"
+"PO-Revision-Date: 2009-05-24 20:18+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -475,6 +475,8 @@ msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr ""
+"Tiempo (en milisegudos) que Gnote deberá esperar una respuesta al usar FUSE "
+"para montar una compartición sincronizada."
 
 #: ../data/gnote.schemas.in.h:68
 msgid "Timestamp format"
@@ -654,7 +656,7 @@ msgstr "Ejecutar Gnote como una miniaplicación del panel de GNOME."
 
 #: ../src/gnote.cpp:361
 msgid "Specify the path of the directory containing the notes."
-msgstr ""
+msgstr "Especificar la ruta del directorio que contiene las notas."
 
 #: ../src/gnote.cpp:366
 #| msgid "Open the Search All Notes window"
@@ -1037,6 +1039,9 @@ msgid ""
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
 "Error details can be found in ~/.gnote.log."
 msgstr ""
+"Ocurrió un error al guardar sus notas. Compruebe que tiene suficiente "
+"espacio libre en el disco y que tiene los permisos adecuados sobre ~/.gnote. "
+"Los detalles del error se pueden encontrar en ~/.gnote.log."
 
 #: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
@@ -1082,8 +1087,8 @@ msgstr[1] "Total: %1% notas"
 #: ../src/recentchanges.cpp:594
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Coincidencias: %1% nota"
+msgstr[1] "Coincidencias: %1% notas"
 
 #: ../src/recentchanges.cpp:734
 msgid "Notes"
@@ -1106,6 +1111,8 @@ msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
+"No se pudo encontrar el «Manual de Gnote». Compruebe que su instalación se "
+"completó satisfactoriamente."
 
 #: ../src/utils.cpp:136
 msgid "Help not found"
@@ -1134,18 +1141,18 @@ msgstr "Ayer"
 #: ../src/utils.cpp:204
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Hace %1% día, %2%"
+msgstr[1] "Hace %1% días, %2%"
 
 #: ../src/utils.cpp:208
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Hace %1% día"
+msgstr[1] "Hace %1% días"
 
 #: ../src/utils.cpp:215
 msgid "Tomorrow, %1%"
-msgstr ""
+msgstr "Mañana, %1%"
 
 #: ../src/utils.cpp:216
 msgid "Tomorrow"
@@ -1154,14 +1161,14 @@ msgstr "Mañana"
 #: ../src/utils.cpp:223
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "En %1% día, %2%"
+msgstr[1] "En %1% días, %2%"
 
 #: ../src/utils.cpp:227
 msgid "In %1% day"
 msgid_plural "In %1% days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "En %1% día"
+msgstr[1] "En %1% días"
 
 #: ../src/utils.cpp:238
 msgid "No Date"
@@ -1169,13 +1176,15 @@ msgstr "Sin fecha"
 
 #: ../src/watchers.cpp:208
 msgid "(Untitled %1%)"
-msgstr ""
+msgstr "(Sin título %1%)"
 
 #: ../src/watchers.cpp:243
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
+"Ya existe una nota con el título <b>%1%</b>. Por favor, escoja otro nombre "
+"para esta nota antes de continuar."
 
 #: ../src/watchers.cpp:257
 msgid "Note title taken"
@@ -1305,16 +1314,16 @@ msgstr "Retroenlaces"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
 msgid "See which notes link to the one you're currently viewing."
-msgstr ""
+msgstr "Ver qué notas enlazan con la que está viendo actualmente."
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
 msgid "Hubert Figuiere and Tomboy Project"
-msgstr ""
+msgstr "Hubert Figuiere y el Proyecto Tomboy"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
 msgid "What links here?"
-msgstr ""
+msgstr "¿Qué enlaza aquí?"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
 #| msgid " (new)"
@@ -1323,7 +1332,7 @@ msgstr "(ninguna)"
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
 msgid "Bugzilla Links"
-msgstr ""
+msgstr "Enlaces Bugzilla"
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:54
 msgid ""
@@ -1343,6 +1352,8 @@ msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
 msgstr ""
+"Puede usar cualquier bugzilla simplemente arrastrando los enlaces en las "
+"notas. Si quiere un icono especial para algunos servidores, añádalos aquí."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:75
 msgid "Host Name"
@@ -1412,7 +1423,7 @@ msgstr "Exportar notas individuales a HTML."
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
 msgid "Your note was exported to \"%1%\"."
-msgstr "Su nota se exportó a «{0}»."
+msgstr "Su nota se exportó a «%1%»."
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
 msgid "Note exported successfully"
