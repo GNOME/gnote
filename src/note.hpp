@@ -28,6 +28,8 @@
 #include <queue>
 #include <memory>
 
+#include <libxml/tree.h>
+
 #include <sigc++/signal.h>
 #include <gtkmm/textbuffer.h>
 
@@ -36,10 +38,6 @@
 #include "notebuffer.hpp"
 #include "utils.hpp"
 #include "sharp/datetime.hpp"
-
-namespace xmlpp {
-  class Node;
-}
 
 namespace sharp {
   class XmlWriter;
@@ -167,7 +165,7 @@ public:
   void set_xml_content(const std::string & xml);
   std::string get_complete_note_xml();
   void load_foreign_note_xml(const std::string & foreignNoteXml, ChangeType changeType);
-  static void parse_tags(const xmlpp::Node *tagnodes, std::list<std::string> & tags);
+  static void parse_tags(const xmlNodePtr tagnodes, std::list<std::string> & tags);
   std::string text_content();
   void set_text_content(const std::string & text);
   const NoteData & data() const;

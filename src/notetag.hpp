@@ -38,10 +38,6 @@ namespace sharp {
   class XmlReader;
 }
 
-namespace xmlpp {
-  class TextReader;
-}
-
 namespace gnote {
   class NoteEditor;
 

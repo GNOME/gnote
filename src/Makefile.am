@@ -86,6 +86,7 @@ libgnote_a_SOURCES = \
 	sharp/string.hpp sharp/string.cpp \
 	sharp/uri.hpp sharp/uri.cpp \
 	sharp/uuid.hpp \
+	sharp/xml.hpp sharp/xml.cpp \
 	sharp/xmlconvert.hpp sharp/xmlconvert.cpp \
 	sharp/xmlreader.hpp sharp/xmlreader.cpp \
 	sharp/xmlresolver.hpp \

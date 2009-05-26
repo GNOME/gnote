@@ -54,7 +54,6 @@
 #include <gtkmm/imagemenuitem.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
-#include <libxml++/libxml++.h>
 #include <libxml++/parsers/domparser.h>
 
 

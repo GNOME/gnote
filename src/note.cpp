@@ -32,8 +32,7 @@
 #include <boost/filesystem/path.hpp>
 #include <boost/algorithm/string/find.hpp>
 
-#include <libxml++/parsers/domparser.h>
-#include <libxml++/nodes/textnode.h>
+#include <libxml/parser.h>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
@@ -50,6 +49,7 @@
 #include "sharp/files.hpp"
 #include "sharp/map.hpp"
 #include "sharp/string.hpp"
+#include "sharp/xml.hpp"
 #include "sharp/xmlconvert.hpp"
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
@@ -809,13 +809,12 @@ namespace gnote {
     // were to throw an XmlException in the middle of processing,
     // a note could be damaged.  Therefore, we check for parseability
     // ahead of time, and throw early.
-    {
-      xmlpp::DomParser parser;
-      parser.parse_memory(foreignNoteXml);
-      if(!parser) {
-        throw sharp::Exception("invalid XML in foreignNoteXml");
-      }
+    xmlDocPtr doc = xmlParseDoc((const xmlChar *)foreignNoteXml.c_str());
+
+    if(!doc) {
+      throw sharp::Exception("invalid XML in foreignNoteXml");
     }
+    xmlFreeDoc(doc);
 
     sharp::XmlReader xml;
     xml.load_buffer(foreignNoteXml);
@@ -827,7 +826,7 @@ namespace gnote {
         iter != tag_list.end(); ++iter) {
       remove_tag(*iter);
     }
-    Glib::ustring name;
+    std::string name;
 
     while (xml.read()) {
       switch (xml.get_node_type()) {
@@ -852,17 +851,16 @@ namespace gnote {
             sharp::XmlConvert::to_date_time(xml.read_string ());
         }
         else if(name == "tags") {
-          xmlpp::DomParser parser;
-          parser.parse_memory(xml.read_outer_xml());
-          if(parser) {
-            const xmlpp::Document * doc2 = parser.get_document();
+          xmlDocPtr doc2 = xmlParseDoc((const xmlChar*)xml.read_outer_xml().c_str());
+          if(doc2) {
             std::list<std::string> tag_strings;
-            parse_tags (doc2->get_root_node(), tag_strings);
+            parse_tags (doc2->children, tag_strings);
             for(std::list<std::string>::const_iterator iter = tag_strings.begin();
                 iter != tag_strings.end(); ++iter) {
               Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);
               add_tag(tag);
             }
+            xmlFreeDoc(doc2);
           }
           else {
             DBG_OUT("loading tag subtree failed");
@@ -886,22 +884,23 @@ namespace gnote {
   }
 
 
-  void Note::parse_tags(const xmlpp::Node *tagnodes, std::list<std::string> & tags)
+  void Note::parse_tags(const xmlNodePtr tagnodes, std::list<std::string> & tags)
   {
-    xmlpp::NodeSet nodes = tagnodes->find("//*");
-    for(xmlpp::NodeSet::const_iterator iter = nodes.begin();
+    sharp::XmlNodeSet nodes = sharp::xml_node_xpath_find(tagnodes, "//*");
+    
+    if(nodes.empty()) {
+      return;
+    }
+    for(sharp::XmlNodeSet::const_iterator iter = nodes.begin();
         iter != nodes.end(); ++iter) {
-      const xmlpp::Node * node = *iter;
-      if(node->get_name() != "tag") {
-        continue;
-      }
-      const xmlpp::Element * content = dynamic_cast<const xmlpp::Element*>(node);
-      if(content) {
-        const xmlpp::TextNode * textnode = content->get_child_text();
-        if(textnode) {
-          std::string tag = textnode->get_content();
-          DBG_OUT("found tag %s", tag.c_str());
-          tags.push_back(tag);
+
+      const xmlNodePtr node = *iter;
+      if(xmlStrEqual(node->name, (const xmlChar*)"tag") && (node->type == XML_ELEMENT_NODE)) {
+        xmlChar * content = xmlNodeGetContent(node);
+        if(content) {
+          DBG_OUT("found tag %s", content);
+          tags.push_back((const char*)content);
+          xmlFree(content);
         }
       }
     }
@@ -1090,7 +1089,7 @@ namespace gnote {
 
     sharp::XmlReader xml(read_file);
 
-    Glib::ustring name;
+    std::string name;
 
     while (xml.read ()) {
       switch (xml.get_node_type()) {
@@ -1136,17 +1135,17 @@ namespace gnote {
           note->y() = boost::lexical_cast<int>(xml.read_string());
         }
         else if(name == "tags") {
-          xmlpp::DomParser parser;
-          parser.parse_memory(xml.read_outer_xml());
-          if(parser) {
-            const xmlpp::Document * doc2 = parser.get_document();
+          xmlDocPtr doc2 = xmlParseDoc((const xmlChar*)xml.read_outer_xml().c_str());
+
+          if(doc2) {
             std::list<std::string> tag_strings;
-            Note::parse_tags(doc2->get_root_node(), tag_strings);
+            Note::parse_tags(doc2->children, tag_strings);
             for(std::list<std::string>::const_iterator iter = tag_strings.begin();
                 iter != tag_strings.end(); ++iter) {
               Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);
               note->tags()[tag->normalized_name()] = tag;
             }
+            xmlFreeDoc(doc2);
           }
           else {
             DBG_OUT("loading tag subtree failed");
