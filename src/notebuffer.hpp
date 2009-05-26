@@ -33,7 +33,11 @@
 #include <gtkmm/widget.h>
 
 #include "notetag.hpp"
-#include "sharp/xmlwriter.hpp"
+
+namespace sharp {
+  class XmlReader;
+  class XmlWriter;
+}
 
 namespace gnote {
 
@@ -156,7 +160,7 @@ public:
   static void deserialize(const Glib::RefPtr<Gtk::TextBuffer> &, const Gtk::TextIter & ,
                           const std::string & );
   static void deserialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
-                          const Gtk::TextIter & iter, xmlpp::TextReader & xml);
+                          const Gtk::TextIter & iter, sharp::XmlReader & xml);
 private:
 
   static void write_tag(const Glib::RefPtr<const Gtk::TextTag> & tag, sharp::XmlWriter & xml, 

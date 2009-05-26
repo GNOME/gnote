@@ -21,12 +21,11 @@
 
 #include <boost/lexical_cast.hpp>
 
-#include <libxml++/parsers/textreader.h>
-
 #include <gtk/gtk.h>
 #include <gtkmm/image.h>
 #include <gtkmm/rc.h>
 
+#include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 #include "debug.hpp"
 #include "notetag.hpp"
@@ -149,7 +148,7 @@ namespace gnote {
     }
   }
 
-  void NoteTag::read(xmlpp::TextReader & xml, bool start)
+  void NoteTag::read(sharp::XmlReader & xml, bool start)
   {
     if (can_serialize()) {
       if (start) {
@@ -308,7 +307,7 @@ namespace gnote {
     }
   }
 
-  void DynamicNoteTag::read(xmlpp::TextReader & xml, bool start)
+  void DynamicNoteTag::read(sharp::XmlReader & xml, bool start)
   {
     if (can_serialize()) {
       NoteTag::read (xml, start);

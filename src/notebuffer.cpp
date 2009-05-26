@@ -22,7 +22,6 @@
 #include <algorithm>
 #include <tr1/array>
 
-#include <libxml++/parsers/textreader.h>
 
 #include "debug.hpp"
 #include "notebuffer.hpp"
@@ -31,6 +30,7 @@
 #include "preferences.hpp"
 #include "undo.hpp"
 
+#include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 
 namespace gnote {
@@ -1382,7 +1382,8 @@ namespace gnote {
   {
     if(!content.empty()) {
       // it looks like an empty string does not really make the cut
-      xmlpp::TextReader xml((const unsigned char *)content.c_str(), content.size());
+      sharp::XmlReader xml;
+      xml.load_buffer(content);
       deserialize(buffer, iter, xml);
     }
   }
@@ -1399,7 +1400,7 @@ namespace gnote {
 
   void NoteBufferArchiver::deserialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
                                        const Gtk::TextIter & start,
-                                       xmlpp::TextReader & xml)
+                                       sharp::XmlReader & xml)
   {
     int offset = start.get_offset();
     std::stack<TagStart> tag_stack;
@@ -1418,7 +1419,7 @@ namespace gnote {
       while (xml.read ()) {
         Gtk::TextIter insert_at;
         switch (xml.get_node_type()) {
-        case xmlpp::TextReader::Element:
+        case XML_READER_TYPE_ELEMENT:
           if (xml.get_name() == "note-content")
             break;
 
@@ -1460,9 +1461,9 @@ namespace gnote {
 
           tag_stack.push (tag_start);
           break;
-        case xmlpp::TextReader::Text:
-        case xmlpp::TextReader::Whitespace:
-        case xmlpp::TextReader::SignificantWhitespace:
+        case XML_READER_TYPE_TEXT:
+        case XML_READER_TYPE_WHITESPACE:
+        case XML_READER_TYPE_SIGNIFICANT_WHITESPACE:
           insert_at = buffer->get_iter_at_offset (offset);
           buffer->insert (insert_at, xml.get_value());
 
@@ -1476,7 +1477,7 @@ namespace gnote {
           }
 
           break;
-        case xmlpp::TextReader::EndElement:
+        case XML_READER_TYPE_END_ELEMENT:
           if (xml.get_name() == "note-content")
             break;
 

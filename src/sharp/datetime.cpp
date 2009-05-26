@@ -107,9 +107,12 @@ namespace sharp {
 
   std::string DateTime::to_iso8601() const
   {
+    std::string retval;
     char *  iso8601 = g_time_val_to_iso8601(const_cast<GTimeVal*>(&m_date));
-    std::string retval(iso8601);
-    g_free(iso8601);
+    if(iso8601) {
+      retval = iso8601;
+      g_free(iso8601);
+    }
     return retval;
   }
 

@@ -20,8 +20,10 @@ GNOTE_LIBS = libgnote.a @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ @LIBXMLPP_LIBS@ \
 
 noinst_LIBRARIES = libgnote.a
 bin_PROGRAMS = gnote
-check_PROGRAMS = trietest stringtest notetest dttest uritest filestest
-TESTS = trietest stringtest notetest dttest uritest filestest
+check_PROGRAMS = trietest stringtest notetest dttest uritest filestest \
+	xmlreadertest
+TESTS = trietest stringtest notetest dttest uritest filestest \
+	xmlreadertest
 
 
 trietest_SOURCES = test/trietest.cpp \
@@ -43,6 +45,10 @@ filestest_LDADD = @BOOST_FILESYSTEM_LIBS@
 uritest_SOURCES = test/uritest.cpp \
 	sharp/string.cpp  sharp/uri.cpp debug.cpp
 uritest_LDADD =  @BOOST_REGEX_LIBS@ @LIBGLIBMM_LIBS@
+
+xmlreadertest_SOURCES = test/xmlreadertest.cpp \
+	sharp/xmlreader.cpp debug.cpp
+xmlreadertest_LDADD = @LIBXML_LIBS@
 
 notetest_SOURCES = test/notetest.cpp
 notetest_LDADD =  $(GNOTE_LIBS)
@@ -81,6 +87,7 @@ libgnote_a_SOURCES = \
 	sharp/uri.hpp sharp/uri.cpp \
 	sharp/uuid.hpp \
 	sharp/xmlconvert.hpp sharp/xmlconvert.cpp \
+	sharp/xmlreader.hpp sharp/xmlreader.cpp \
 	sharp/xmlresolver.hpp \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
 	sharp/xsltargumentlist.hpp sharp/xsltargumentlist.cpp \

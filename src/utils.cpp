@@ -36,8 +36,8 @@
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/textbuffer.h>
-#include <libxml++/parsers/textreader.h>
 
+#include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
@@ -528,12 +528,13 @@ namespace gnote {
       // this will do for now.
       std::string builder;
 
-      xmlpp::TextReader xml((const xmlChar *)source.c_str(), source.size());
+      sharp::XmlReader xml;
+      xml.load_buffer(source);
 
       while (xml.read ()) {
         switch (xml.get_node_type()) {
-        case xmlpp::TextReader::Text:
-        case xmlpp::TextReader::Whitespace:
+        case XML_READER_TYPE_TEXT:
+        case XML_READER_TYPE_WHITESPACE:
           builder += xml.get_value();
           break;
         default:

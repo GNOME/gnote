@@ -35,6 +35,7 @@
 
 namespace sharp {
   class XmlWriter;
+  class XmlReader;
 }
 
 namespace xmlpp {
@@ -108,7 +109,7 @@ public:
   void get_extents(const Gtk::TextIter & iter, Gtk::TextIter & start,
                    Gtk::TextIter & end);
   virtual void write(sharp::XmlWriter &, bool) const;
-  virtual void read(xmlpp::TextReader &, bool);
+  virtual void read(sharp::XmlReader &, bool);
   virtual Glib::RefPtr<Gdk::Pixbuf> get_image() const;
   virtual void set_image(const Glib::RefPtr<Gdk::Pixbuf> &);
   virtual Gtk::Widget * get_widget() const
@@ -183,7 +184,7 @@ public:
       return m_attributes;
     }
   virtual void write(sharp::XmlWriter &, bool) const;
-  virtual void read(xmlpp::TextReader &, bool);
+  virtual void read(sharp::XmlReader &, bool);
   /// <summary>
   /// Derived classes should override this if they desire
   /// to be notified when a tag attribute is read in.

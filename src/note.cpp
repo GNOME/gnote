@@ -32,7 +32,6 @@
 #include <boost/filesystem/path.hpp>
 #include <boost/algorithm/string/find.hpp>
 
-#include <libxml++/parsers/textreader.h>
 #include <libxml++/parsers/domparser.h>
 #include <libxml++/nodes/textnode.h>
 
@@ -52,6 +51,7 @@
 #include "sharp/map.hpp"
 #include "sharp/string.hpp"
 #include "sharp/xmlconvert.hpp"
+#include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 
 
@@ -817,8 +817,8 @@ namespace gnote {
       }
     }
 
-    xmlpp::TextReader xml((const unsigned char*)foreignNoteXml.c_str(), 
-                          foreignNoteXml.size());
+    sharp::XmlReader xml;
+    xml.load_buffer(foreignNoteXml);
 
     // Remove tags now, since a note with no tags has
     // no "tags" element in the XML
@@ -831,7 +831,7 @@ namespace gnote {
 
     while (xml.read()) {
       switch (xml.get_node_type()) {
-      case xmlpp::TextReader::Element:
+      case XML_READER_TYPE_ELEMENT:
         name = xml.get_name();
         if (name == "title") {
           set_title(xml.read_string());
@@ -1088,13 +1088,13 @@ namespace gnote {
     NoteData *note = new NoteData(uri);
     std::string version;
 
-    xmlpp::TextReader xml(read_file);
+    sharp::XmlReader xml(read_file);
 
     Glib::ustring name;
 
     while (xml.read ()) {
       switch (xml.get_node_type()) {
-      case xmlpp::TextReader::Element:
+      case XML_READER_TYPE_ELEMENT:
         name = xml.get_name();
         
         if(name == "note") {
@@ -1166,7 +1166,7 @@ namespace gnote {
     if (version != NoteArchiver::CURRENT_VERSION) {
       // Note has old format, so rewrite it.  No need
       // to reread, since we are not adding anything.
-      DBG_OUT("Updating note XML to newest format...");
+      DBG_OUT("Updating note XML from %s to newest format...", version.c_str());
       NoteArchiver::write (read_file, *note);
     }
     return note;
@@ -1333,11 +1333,13 @@ namespace gnote {
   std::string NoteArchiver::get_title_from_note_xml(const std::string & noteXml) const
   {
     if (!noteXml.empty()) {
-      xmlpp::TextReader xml((const unsigned char*)noteXml.c_str(), noteXml.size());
+      sharp::XmlReader xml;
+
+      xml.load_buffer(noteXml);
 
       while (xml.read ()) {
         switch (xml.get_node_type()) {
-        case xmlpp::TextReader::Element:
+        case XML_READER_TYPE_ELEMENT:
           if (xml.get_name() == "title") {
             return xml.read_string ();
           }

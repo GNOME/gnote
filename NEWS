@@ -8,9 +8,7 @@ New features:
 
 Fixes:
 
-  * Hard require on libxml++ 2.26. Should prevent some bugs (Bug #583807, 
-    Bug #583808, Bug #579292, Bug #579316)
-    See: http://git.gnome.org/cgit/libxml++/commit/?id=24b3ec06f5c5ebd0529100a5506a8038f14bac5b
+  * Remove libxml++ TextReader. (Closes #579292) Possibly closes bug #579316.
   * Note is now trackable. Should avoid a crash related to signals.
     (Closes #581618)
   * Remove obsolete UTF-8 keyword in .desktop (Closes #581623) 
