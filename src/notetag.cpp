@@ -545,9 +545,9 @@ namespace gnote {
   }
 
  
-  void NoteTagTable::register_dynamic_tag(const std::string & tag_name, const FactorySlot & factory)
+  void NoteTagTable::register_dynamic_tag(const std::string & tag_name, const Factory & factory)
   {
-    m_tag_types[tag_name].connect(factory);
+    m_tag_types[tag_name] = factory;
   }
 
 

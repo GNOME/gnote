@@ -255,8 +255,7 @@ class NoteTagTable
 {
 public:
   typedef Glib::RefPtr<NoteTagTable> Ptr;
-  typedef sigc::signal<DynamicNoteTag::Ptr> Factory;
-  typedef sigc::slot<DynamicNoteTag::Ptr> FactorySlot;
+  typedef sigc::slot<DynamicNoteTag::Ptr> Factory;
 
   static NoteTagTable & instance() 
     {
@@ -273,7 +272,7 @@ public:
   static bool tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & );
   DepthNoteTag::Ptr get_depth_tag(int depth, Pango::Direction direction);
   DynamicNoteTag::Ptr create_dynamic_tag(const std::string & );
-  void register_dynamic_tag (const std::string & tag_name, const FactorySlot & factory);
+  void register_dynamic_tag (const std::string & tag_name, const Factory & factory);
   bool is_dynamic_tag_registered(const std::string &);
 
 protected:
