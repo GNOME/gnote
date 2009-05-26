@@ -2,7 +2,7 @@
  * gnote
  *
  * Copyright (C) 2009 Hubert Figuiere
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
@@ -72,7 +72,7 @@ namespace sharp {
   }
 
 
-  /** load the buffer from the s 
+  /** load the buffer from the s
    *  The parser is reset.
    */
   void XmlReader::load_buffer(const std::string &s)
@@ -82,7 +82,7 @@ namespace sharp {
      * are copy on write.
      */
     m_buffer = s;
-    m_reader = xmlReaderForMemory(m_buffer.c_str(), m_buffer.size(), "", 
+    m_reader = xmlReaderForMemory(m_buffer.c_str(), m_buffer.size(), "",
                                   "UTF-8", 0);//XML_PARSE_RECOVER);
     m_error = (m_reader == NULL);
     if(m_reader) {
@@ -185,7 +185,7 @@ namespace sharp {
 
 
   void XmlReader::error_handler(void* arg, const char* msg, 
-                                int severity, void* locator)
+                                int /*severity*/, void* /*locator*/)
   {
     XmlReader* self = (XmlReader*)arg;
     self->m_error = true;
