@@ -17,9 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
-
 #ifndef __ACTIONMANAGER_HPP_
 #define __ACTIONMANAGER_HPP_
 
