@@ -24,6 +24,8 @@
 
 #include <map>
 
+#include <sigc++/slot.h>
+
 #include "keybinder.hpp"
 
 namespace gnote {
@@ -41,7 +43,7 @@ public:
 private:
   static void keybinding_pressed(char *keystring, gpointer user_data);
 
-  typedef sigc::signal<void> Handler;
+  typedef sigc::slot<void> Handler;
   typedef std::map<std::string, Handler> BindingMap;
   BindingMap m_bindings;
   

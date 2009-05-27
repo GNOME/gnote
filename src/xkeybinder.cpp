@@ -45,7 +45,7 @@ namespace gnote {
 
   void XKeybinder::bind(const std::string & keystring, const sigc::slot<void> & handler)
   {
-    m_bindings[keystring].connect(handler);
+    m_bindings[keystring] = handler;
     tomboy_keybinder_bind(keystring.c_str(), &XKeybinder::keybinding_pressed, this);
   }
 
