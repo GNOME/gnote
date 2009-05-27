@@ -35,11 +35,12 @@
 #include <libxslt/transform.h>
 
 #include "sharp/streamwriter.hpp"
-#include "sharp/xmlresolver.hpp"
 #include "sharp/xsltargumentlist.hpp"
 
 
 namespace sharp {
+
+class XmlResolver;
 
 class XslTransform
 {

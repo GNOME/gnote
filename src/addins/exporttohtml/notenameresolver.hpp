@@ -20,8 +20,9 @@
 
 
 
-#include <note.hpp>
-#include <notemanager.hpp>
+#include "sharp/xmlresolver.hpp"
+#include "note.hpp"
+#include "notemanager.hpp"
 
 namespace exporttohtml {
 
