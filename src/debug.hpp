@@ -17,25 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * niepce - utils/debug.h
- *
- * Copyright (C) 2007 Hubert Figuiere
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #ifndef __UTILS_DEBUG_H__
 #define __UTILS_DEBUG_H__
 
@@ -46,6 +27,7 @@
 #endif
 
 #include <assert.h>
+#include "base/macros.hpp"
 
 namespace utils {
 
@@ -74,7 +56,8 @@ namespace utils {
    * @param fmt the formt string, printf style
    * @param func the func name
    */
-  void dbg_print(const char* fmt, const char* func, ...);
+  void dbg_print(const char* fmt, const char* func, ...)
+    _PRINTF_FORMAT(1,3);
 
   /** assert 
    * @param condvalue the value of the assert, true, assert
@@ -91,7 +74,8 @@ namespace utils {
    * @param fmt the formt string, printf style
    * @param func the func name
    */
-  void err_print(const char *fmt, const char* func, ...);
+  void err_print(const char *fmt, const char* func, ...)
+    _PRINTF_FORMAT(1,3);
 
 }
 
