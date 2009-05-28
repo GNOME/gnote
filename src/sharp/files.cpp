@@ -22,8 +22,6 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-
-
 #include <boost/version.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/convenience.hpp>
@@ -32,6 +30,14 @@
 
 
 namespace sharp {
+
+
+  bool file_exists(const std::string & file)
+  {
+    boost::filesystem::path p(file);
+    // is_regular_file isn't in 1.34. is_regular is deprecated.
+    return (exists(p) && is_regular(p));
+  }
 
 
   std::string file_basename(const std::string & p)
@@ -48,6 +54,12 @@ namespace sharp {
     return boost::filesystem::path(p).branch_path().string();
   }
 
+
+  std::string file_filename(const std::string & p)
+  {
+    return boost::filesystem::path(p).leaf();
+  }
+
   void file_delete(const std::string & p)
   {
     boost::filesystem::remove(p);
@@ -59,6 +71,9 @@ namespace sharp {
     boost::filesystem::copy_file(source, dest);
   }
 
-
+  void file_move(const std::string & from, const std::string & to)
+  {
+    boost::filesystem::rename(from, to);
+  }
 }
 

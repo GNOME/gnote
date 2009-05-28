@@ -22,9 +22,6 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-
-
-
 #ifndef __SHARP_FILES_HPP_
 #define __SHARP_FILES_HPP_
 
@@ -32,9 +29,15 @@
 
 namespace sharp {
 
+  bool file_exists(const std::string & p);
   void file_delete(const std::string & p);
+  void file_move(const std::string & from, const std::string & to);
+  /** return the basename of the file path */
   std::string file_basename(const std::string & p);
+  /** return the directory from the file path */
   std::string file_dirname(const std::string & p);
+  /** return the filename from the file path */
+  std::string file_filename(const std::string & p);
   void file_copy(const std::string & source, const std::string & dest);
 }
 

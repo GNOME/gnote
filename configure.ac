@@ -214,6 +214,7 @@ src/addins/exporttohtml/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
 src/addins/printnotes/Makefile
+src/addins/stickynoteimport/Makefile
 po/Makefile.in
 po/Makefile
 help/Makefile

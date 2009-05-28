@@ -7,4 +7,5 @@ SUBDIRS = backlinks \
 	fixedwidth \
 	inserttimestamp \
 	printnotes \
+	stickynoteimport \
 	$(NULL)
