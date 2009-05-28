@@ -30,6 +30,10 @@
 
 namespace sharp {
 
+
+  bool FileInfoLink_ = true;
+
+
   FileInfo::FileInfo(const std::string & s)
     : m_path(s)
   {

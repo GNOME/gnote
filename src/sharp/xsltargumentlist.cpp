@@ -32,6 +32,7 @@
 
 namespace sharp {
 
+  bool XsltArgumentListLink_ = true;
 
 void XsltArgumentList::add_param(const char* name, const char * /*uri*/, const std::string & value)
 {

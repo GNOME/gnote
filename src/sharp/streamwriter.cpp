@@ -32,6 +32,9 @@
 
 namespace sharp {
 
+
+  bool StreamWriterLink_ = true;
+
 StreamWriter::StreamWriter()
   : m_file(NULL)
 {

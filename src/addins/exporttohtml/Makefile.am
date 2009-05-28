@@ -15,9 +15,6 @@ exporttohtml_la_LIBADD = @LIBXSLT_LIBS@
 exporttohtml_la_SOURCES = exporttohtmlnoteaddin.hpp exporttohtmlnoteaddin.cpp \
 	exporttohtmldialog.hpp exporttohtmldialog.cpp \
 	notenameresolver.hpp \
-	$(srcdir)/../../sharp/streamwriter.cpp \
-	$(srcdir)/../../sharp/xsltransform.cpp \
-	$(srcdir)/../../sharp/xsltargumentlist.cpp \
 	$(NULL)
 
 EXTRA_DIST = exporttohtml.xsl

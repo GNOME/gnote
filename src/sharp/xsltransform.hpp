@@ -40,6 +40,8 @@
 
 namespace sharp {
 
+  extern bool XslTransformLink_;
+
 class XmlResolver;
 
 class XslTransform

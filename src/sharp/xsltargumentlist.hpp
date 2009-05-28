@@ -34,6 +34,8 @@
 
 namespace sharp {
 
+  extern bool XsltArgumentListLink_;
+
 /** argument list for %XslTransform */
 class XsltArgumentList
 {

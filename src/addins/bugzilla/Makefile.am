@@ -14,5 +14,4 @@ bugzilla_la_SOURCES = bugzillanoteaddin.hpp bugzillanoteaddin.cpp \
 	bugzillalink.hpp bugzillalink.cpp \
 	bugzillapreferencesfactory.hpp \
 	bugzillapreferences.hpp bugzillapreferences.cpp \
-	$(srcdir)/../../sharp/fileinfo.cpp \
 	$(NULL)

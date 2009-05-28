@@ -32,6 +32,9 @@
 namespace sharp {
 
 
+  extern bool FileInfoLink_;
+
+
 class FileInfo
 {
 public:

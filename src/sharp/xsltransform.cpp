@@ -33,6 +33,8 @@
 
 namespace sharp {
 
+  bool XslTransformLink_ = true;;
+
 
 XslTransform:: XslTransform()
   : m_stylesheet(NULL)

@@ -36,6 +36,8 @@
 namespace sharp {
 
 
+  extern bool StreamWriterLink_;
+
 class StreamWriter
 //  : public TextWriter
 {
