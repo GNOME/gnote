@@ -38,7 +38,7 @@ int test_main(int /*argc*/, char ** /*argv*/)
 
   if(doc) {
     std::list<std::string> tags;
-    gnote::Note::parse_tags(doc->children, tags);
+    gnote::Note::parse_tags(xmlDocGetRootElement(doc), tags);
     BOOST_CHECK(!tags.empty());
 
     xmlFreeDoc(doc);

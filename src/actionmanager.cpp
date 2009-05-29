@@ -127,7 +127,8 @@ namespace gnote {
                                                             path, "/") + 1);
     DBG_OUT("path = %s placeholdername = %s", path.c_str(), placeholderName.c_str());
 
-    sharp::XmlNodeSet nodes = sharp::xml_node_xpath_find(doc->children, "//placeholder");
+    sharp::XmlNodeSet nodes = sharp::xml_node_xpath_find(xmlDocGetRootElement(doc), 
+                                                         "//placeholder");
     // Find the placeholder specified in the path
     for(sharp::XmlNodeSet::const_iterator iter = nodes.begin();
         iter != nodes.end(); ++iter) {
