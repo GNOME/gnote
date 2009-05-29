@@ -39,8 +39,9 @@
 #include "gnote.hpp"
 #include "tagmanager.hpp"
 #include "trie.hpp"
-#include "sharp/exception.hpp"
 #include "sharp/directory.hpp"
+#include "sharp/exception.hpp"
+#include "sharp/files.hpp"
 #include "sharp/uuid.hpp"
 #include "sharp/string.hpp"
 #include "sharp/datetime.hpp"
@@ -370,7 +371,7 @@ namespace gnote {
           boost::filesystem::create_directory(m_backup_dir);
         }
         std::string backup_path 
-          = m_backup_dir + "/" + boost::filesystem::path(note->file_path()).leaf();
+          = Glib::build_filename(m_backup_dir, sharp::file_filename(note->file_path()));
           
         if (boost::filesystem::exists(backup_path))
           boost::filesystem::remove(backup_path);
@@ -398,7 +399,7 @@ namespace gnote {
 
   std::string NoteManager::make_new_file_name(const std::string & guid) const
   {
-    return m_notes_dir + "/" + guid + ".note";
+    return Glib::build_filename(m_notes_dir, guid + ".note");
   }
 
   Note::Ptr NoteManager::create()
