@@ -6,21 +6,24 @@
 # Khandakar Mujahidul Islam <suzan@bengalinux.org>, 2006.
 # Runa Bhattacharjee <runabh@gmail.com>, 2006, 2007.
 # Runa Bhattacharjee <runab@redhat.com>, 2008, 2009.
+# Sankarshan Mukhopadhyay <sankarshan.mukhopadhyay@gmail.com>, 2009.
+# sankarshan mukhopadhyay <sankarshan@fedoraproject.org>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: bn_IN\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&component=general\n"
-"POT-Creation-Date: 2009-05-12 20:03+0000\n"
-"PO-Revision-Date: 2009-05-13 17:59+0530\n"
-"Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
-"Language-Team: Bengali INDIA <discuss@lists.ankur.org.in>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gnote&component=general\n"
+"POT-Creation-Date: 2009-05-29 04:31+0000\n"
+"PO-Revision-Date: 2009-05-28 11:44+0000\n"
+"Last-Translator: sankarshan mukhopadhyay <sankarshan@fedoraproject.org>\n"
+"Language-Team: Bengali India  <discuss@lists.ankur.org.in>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "\n"
 "\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:1
 msgid "Accessories"
@@ -38,17 +41,17 @@ msgstr "Gnote অ্যাপ্লেট ফ্যাক্টরি"
 msgid "Simple and easy to use note-taking"
 msgstr "নোট তৈরি করার সহজ সরল উপায়"
 
-#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:207
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:216
 msgid "_About"
 msgstr "পরিচিতি (_A)"
 
-#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:505
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:207
+#: ../src/tray.cpp:468
 msgid "_Help"
 msgstr "সাহায্য (_H)"
 
-#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:500
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:204
+#: ../src/tray.cpp:463
 msgid "_Preferences"
 msgstr "পছন্দ (_P)"
 
@@ -58,7 +61,7 @@ msgstr "নোট-গ্রহণ ব্যবস্থা"
 
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Take notes, link ideas, and stay organized"
-msgstr ""
+msgstr "নোট নিন, আইডিয়া যোগ করুন, গুছিয়ে রাখুন"
 
 #: ../data/gnote.schemas.in.h:1
 msgid "Accept SSL Certificates"
@@ -142,7 +145,7 @@ msgstr ""
 
 #: ../data/gnote.schemas.in.h:19
 msgid "FUSE Mounting Timeout (ms)"
-msgstr ""
+msgstr "FUSE Mounting Timeout (ms)"
 
 #: ../data/gnote.schemas.in.h:20
 msgid "HTML Export All Linked Notes"
@@ -169,12 +172,12 @@ msgid ""
 "If enabled, all notes that were open when Gnote quit will automatically be "
 "reopened at startup."
 msgstr ""
-"সক্রিয় করা হলে, Gnote প্রস্থানকালে খোলা অবস্থায় থাকা সব নোটগুলি পুনরাম্ভের সময় "
-"খোলা হবে।"
+"সক্রিয় করা হলে, Gnote প্রস্থানকালে খোলা অবস্থায় থাকা সব নোটগুলি পুনরাম্ভের সময় খোলা "
+"হবে।"
 
 #: ../data/gnote.schemas.in.h:25
 msgid "If enabled, an opened note can be closed by hitting the escape key."
-msgstr ""
+msgstr "সক্রিয় করা হলে, একটি খোলা নোট-কে escape কী এর সাহায্যে বন্ধ করা যাবে।"
 
 #: ../data/gnote.schemas.in.h:26
 msgid ""
@@ -190,9 +193,9 @@ msgid ""
 "global_keybindings will be enabled, allowing for useful Gnote actions to be "
 "available from any application."
 msgstr ""
-"মান true (সত্য) হলে, /apps/gnote/global_keybindings'এ নির্ধারিত desktop-"
-"global কি-বাইন্ডিং সক্রিয় করা হবে যার ফলে অন্যান্য অ্যাপ্লিকেশন থেকে Gnote-র "
-"গুরুত্বপূর্ণ কর্ম প্রয়োগ করা যাবে।"
+"মান true (সত্য) হলে, /apps/gnote/global_keybindings'এ নির্ধারিত desktop-global "
+"কি-বাইন্ডিং সক্রিয় করা হবে যার ফলে অন্যান্য অ্যাপ্লিকেশন থেকে Gnote-র গুরুত্বপূর্ণ কর্ম "
+"প্রয়োগ করা যাবে।"
 
 #: ../data/gnote.schemas.in.h:28
 msgid ""
@@ -214,7 +217,8 @@ msgstr ""
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
-msgstr "Gnote নোটের মেনুর মধ্যে প্রদর্শনযোগ্য সর্বনিম্ন নোট সংখ্যা নির্ধারণকারী পূর্ণসংখ্যা মান।"
+msgstr ""
+"Gnote নোটের মেনুর মধ্যে প্রদর্শনযোগ্য সর্বনিম্ন নোট সংখ্যা নির্ধারণকারী পূর্ণসংখ্যা মান।"
 
 #: ../data/gnote.schemas.in.h:31
 msgid ""
@@ -405,14 +409,17 @@ msgid "The handler for \"note://\" URLs"
 msgstr "\"note://\" URL'র জন্য হ্যান্ডলার"
 
 #: ../data/gnote.schemas.in.h:62
-msgid "The last directory a note was exported to using the Export To HTML plugin."
-msgstr "Export To HTML প্লাগ-ইন সহযোগে সর্বশেষ যে ডিরেক্টরির মধ্যে নোট এক্সপোর্ট করা হয়েছে।"
+msgid ""
+"The last directory a note was exported to using the Export To HTML plugin."
+msgstr ""
+"Export To HTML প্লাগ-ইন সহযোগে সর্বশেষ যে ডিরেক্টরির মধ্যে নোট এক্সপোর্ট করা হয়েছে।"
 
 #: ../data/gnote.schemas.in.h:63
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
-msgstr "Export to HTML প্লাগ-ইনের 'Export linked notes' চেকবক্সের সর্বশেষ নির্ধারিত মান।"
+msgstr ""
+"Export to HTML প্লাগ-ইনের 'Export linked notes' চেকবক্সের সর্বশেষ নির্ধারিত মান।"
 
 #: ../data/gnote.schemas.in.h:64
 msgid ""
@@ -483,91 +490,91 @@ msgstr "নাম"
 msgid "Description"
 msgstr "বিবরণ"
 
-#: ../src/actionmanager.cpp:160
+#: ../src/actionmanager.cpp:169
 msgid "_File"
 msgstr "ফাইল (_F)"
 
-#: ../src/actionmanager.cpp:164
+#: ../src/actionmanager.cpp:173
 msgid "_New"
 msgstr "নতুন (_N)"
 
-#: ../src/actionmanager.cpp:165 ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:174 ../src/actionmanager.cpp:225
 msgid "Create a new note"
 msgstr "নতুন নোট লিখুন"
 
-#: ../src/actionmanager.cpp:170
+#: ../src/actionmanager.cpp:179
 msgid "_Open..."
 msgstr "খুলুন...(_O)"
 
-#: ../src/actionmanager.cpp:170
+#: ../src/actionmanager.cpp:179
 msgid "Open the selected note"
 msgstr "নির্বাচিত নোট খুলুন"
 
-#: ../src/actionmanager.cpp:176
+#: ../src/actionmanager.cpp:185
 msgid "_Delete"
 msgstr "মুছে ফেলুন (_D)"
 
-#: ../src/actionmanager.cpp:176
+#: ../src/actionmanager.cpp:185
 msgid "Delete the selected note"
 msgstr "নির্বাচিত নোট মুছে ফেলুন"
 
-#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:370
+#: ../src/actionmanager.cpp:191 ../src/notewindow.cpp:370
 msgid "_Close"
 msgstr "বন্ধ করুন (_C)"
 
-#: ../src/actionmanager.cpp:182
+#: ../src/actionmanager.cpp:191
 msgid "Close this window"
 msgstr "বর্তমান উইন্ডো বন্ধ করুন"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:517
+#: ../src/actionmanager.cpp:196 ../src/tray.cpp:480
 msgid "_Quit"
 msgstr "প্রস্থান (_Q)"
 
-#: ../src/actionmanager.cpp:187
+#: ../src/actionmanager.cpp:196
 msgid "Quit Gnote"
-msgstr ""
+msgstr "Gnote থেকে প্রস্থান করুন"
 
-#: ../src/actionmanager.cpp:190
+#: ../src/actionmanager.cpp:199
 msgid "_Edit"
 msgstr "সম্পাদনা (_E)"
 
-#: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:86
+#: ../src/actionmanager.cpp:204 ../src/preferencesdialog.cpp:86
 msgid "Gnote Preferences"
 msgstr "Gnote সংক্রান্ত পছন্দ"
 
-#: ../src/actionmanager.cpp:202
+#: ../src/actionmanager.cpp:211
 msgid "_Contents"
 msgstr "সূচিপত্র (_C)"
 
-#: ../src/actionmanager.cpp:202
+#: ../src/actionmanager.cpp:211
 msgid "Gnote Help"
-msgstr ""
+msgstr "Gnote সহায়িকা"
 
-#: ../src/actionmanager.cpp:207
+#: ../src/actionmanager.cpp:216
 msgid "About Gnote"
 msgstr "Gnote পরিচিতি"
 
-#: ../src/actionmanager.cpp:211
+#: ../src/actionmanager.cpp:220
 msgid "TrayIcon"
 msgstr "ট্রে-আইকন"
 
-#: ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:225
 msgid "Create _New Note"
 msgstr "নতুন নোট লিখুন (_N)"
 
-#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:322
+#: ../src/actionmanager.cpp:230 ../src/notewindow.cpp:322
 msgid "_Search All Notes"
 msgstr "সকল নোট অনুসন্ধান করুন (_S)"
 
-#: ../src/actionmanager.cpp:221
+#: ../src/actionmanager.cpp:230
 msgid "Open the Search All Notes window"
 msgstr "সকল নোট অনুসন্ধানের উইন্ডো খুলুন"
 
-#: ../src/actionmanager.cpp:226
+#: ../src/actionmanager.cpp:235
 msgid "S_ynchronize Notes"
 msgstr "নোট সুসংগত করুন (_y)"
 
-#: ../src/actionmanager.cpp:226
+#: ../src/actionmanager.cpp:235
 msgid "Start synchronizing notes"
 msgstr "নোট সুসংগতি আরম্ভ করুন"
 
@@ -577,14 +584,15 @@ msgstr "নতুন নোট নির্মাণ করতে ব্যর�
 
 #: ../src/gnote.cpp:279
 msgid "and Tomboy original authors."
-msgstr ""
+msgstr "ও টম্বয়-এর মূল লেখক সমূহ।"
 
 #: ../src/gnote.cpp:288
 msgid "translator-credits"
 msgstr ""
 "অঙ্কুর গ্রুপের পক্ষ থেকে খন্দকার মুজাহিদুল ইসলাম সুজন <suzan@bengalinux.org>\n"
 "বৈশম্পায়ন ঘোষ <b.ghose@gnu.org.in>, ২০০৬।\n"
-"রুণা ভট্টাচার্য্য <runabh@gmail.com>"
+"রুণা ভট্টাচার্য্য <runabh@gmail.com> সঙ্কর্ষণ মুখোপাধ্যায় <sankarshan@fedoraproject."
+"org>"
 
 #: ../src/gnote.cpp:296
 msgid "Copyright © 2009 Hubert Figuiere"
@@ -596,27 +604,27 @@ msgstr "নোট লেখার একটি সহজ ডেস্কটপ �
 
 #: ../src/gnote.cpp:308
 msgid "Homepage"
-msgstr ""
+msgstr "হোমপেজ"
 
 #: ../src/gnote.cpp:348
 msgid "A note taking application"
-msgstr ""
+msgstr "একটি নোট লেখার অ্যাপ্লিকেশন"
 
 #: ../src/gnote.cpp:356
 msgid "Run Gnote as a GNOME panel applet."
-msgstr ""
+msgstr "GNOME প্যানেল অ্যাপ্লেট রূপে Gnote চালান।"
 
 #: ../src/gnote.cpp:361
 msgid "Specify the path of the directory containing the notes."
-msgstr ""
+msgstr "যে ডিরেক্টরি-তে নোট উপস্থিত তার স্থান উল্লেখ করুন।"
 
 #: ../src/gnote.cpp:366
 msgid "Open the search all notes window with the search text."
-msgstr ""
+msgstr "নির্বাচিত বাক্য অনুযায়ী সকল নোট খোঁজার উইন্ডো খুলুন।"
 
 #: ../src/gnote.cpp:371
 msgid "Print version information."
-msgstr ""
+msgstr "সংস্করণ তথ্য প্রিন্ট করুন।"
 
 #: ../src/gnote.cpp:404
 msgid "Version %1%"
@@ -632,7 +640,7 @@ msgstr "হট-কি"
 
 #: ../src/preferencesdialog.cpp:111
 msgid "Add-ins"
-msgstr ""
+msgstr "সহায়ক সমূহ"
 
 #: ../src/preferencesdialog.cpp:184
 msgid "_Spell check while typing"
@@ -671,7 +679,7 @@ msgstr "স্বনির্বাচিত ফন্ট ব্যবহার 
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:101
+#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:102
 msgid "New Note Template"
 msgstr "নতুন নোটের টেমপ্লেট"
 
@@ -680,6 +688,8 @@ msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr ""
+"নতুন নোট তৈরী হওয়ার সময় যে বাক্য ব্যবহৃত হবে সেটি নতুন নোট টেমপ্লেট-এর সাহায্যে "
+"নির্ধারণ করুন।"
 
 #: ../src/preferencesdialog.cpp:252
 msgid "Open New Note Template"
@@ -735,7 +745,7 @@ msgstr "উন্নত কনফিগ...(_A)"
 
 #: ../src/preferencesdialog.cpp:533
 msgid "The following add-ins are installed"
-msgstr ""
+msgstr "উল্লেখিত সহায়ক সমূহ উপস্থিত"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
@@ -749,7 +759,7 @@ msgstr "নিষ্ক্রিয় করুন (_D)"
 
 #: ../src/preferencesdialog.cpp:699
 msgid "Not Implemented"
-msgstr ""
+msgstr "অনুপস্থিত"
 
 #: ../src/preferencesdialog.cpp:713
 msgid "%1% Preferences"
@@ -765,13 +775,13 @@ msgstr "সংস্করণ:"
 
 #: ../src/preferencesdialog.cpp:954
 msgid "Author:"
-msgstr ""
+msgstr "লেখক পরিচিতি:"
 
 #: ../src/preferencesdialog.cpp:960
 msgid "Copyright:"
-msgstr ""
+msgstr "সত্ত্বাধিকার:"
 
-#: ../src/notemanager.cpp:213
+#: ../src/notemanager.cpp:214
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -793,7 +803,7 @@ msgid ""
 "to open the note.</note-content>"
 msgstr ""
 
-#: ../src/notemanager.cpp:232
+#: ../src/notemanager.cpp:233
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -810,21 +820,21 @@ msgid ""
 msgstr ""
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:247 ../src/notemanager.cpp:321
+#: ../src/notemanager.cpp:248 ../src/notemanager.cpp:322
 msgid "Start Here"
 msgstr "প্রারম্ভিক স্থান"
 
-#: ../src/notemanager.cpp:252
+#: ../src/notemanager.cpp:253
 msgid "Using Links in Gnote"
 msgstr "Gnote-র মধ্যে লিংকের ব্যবহার"
 
-#: ../src/notemanager.cpp:411
+#: ../src/notemanager.cpp:412
 msgid "New Note %1%"
 msgstr "নতুন নোট %1%"
 
 #. Use a simple "Describe..." body and highlight
 #. it so it can be easily overwritten
-#: ../src/notemanager.cpp:488 ../src/notemanager.cpp:578
+#: ../src/notemanager.cpp:489 ../src/notemanager.cpp:579
 msgid "Describe your new note here."
 msgstr "নতুন নোটের বিবরণ এই স্থানে লিখুন।"
 
@@ -914,7 +924,7 @@ msgstr "অনুসন্ধান :(_F)"
 
 #: ../src/notewindow.cpp:1082
 msgid "<b>_Bold</b>"
-msgstr ""
+msgstr "<b>গাঢ় (_B)</b>"
 
 #: ../src/notewindow.cpp:1083
 msgid "<i>_Italic</i>"
@@ -973,6 +983,8 @@ msgid ""
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
 "Error details can be found in ~/.gnote.log."
 msgstr ""
+"আপনার নোট সংরক্ষণ করতে সমস্যা হয়েছে। যথেষ্ট ডিস্ক স্পেস, বা ~/.gnote এ নির্ধারিত "
+"অধিকার আছে কিনা যাচাই করে নিন। সমস্যার বিবরণ ~/.gnote.log এ পাওয়া যাবে।"
 
 #: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
@@ -991,37 +1003,37 @@ msgstr "অনুসন্ধান: (_S)"
 msgid "Notebooks"
 msgstr "নোটবই"
 
-#: ../src/recentchanges.cpp:348
+#: ../src/recentchanges.cpp:347
 msgid "Note"
 msgstr "নোট"
 
-#: ../src/recentchanges.cpp:369
+#: ../src/recentchanges.cpp:368
 msgid "Last Changed"
 msgstr "সর্বশেষ পরিবর্তন"
 
-#: ../src/recentchanges.cpp:513
+#: ../src/recentchanges.cpp:512
 msgid "Matches"
-msgstr ""
+msgstr "মিলের সংখ্যা"
 
-#: ../src/recentchanges.cpp:567
+#: ../src/recentchanges.cpp:566
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1%-টি মিল"
 msgstr[1] "%1%-টি মিল"
 
-#: ../src/recentchanges.cpp:581
+#: ../src/recentchanges.cpp:580
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "সর্বমোট: %1%-টি নোট"
 msgstr[1] "সর্বমোট: %1%-টি নোট"
 
-#: ../src/recentchanges.cpp:595
+#: ../src/recentchanges.cpp:594
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "মিল: %1%-টি নোট"
 msgstr[1] "মিল: %1%-টি নোট"
 
-#: ../src/recentchanges.cpp:735
+#: ../src/recentchanges.cpp:734
 msgid "Notes"
 msgstr "নোট"
 
@@ -1029,77 +1041,79 @@ msgstr "নোট"
 msgid "Gnote Notes"
 msgstr "Gnote নোট"
 
-#: ../src/tray.cpp:169
+#: ../src/tray.cpp:161
 msgid " (new)"
 msgstr " (নতুন)"
 
-#: ../src/tray.cpp:510
+#: ../src/tray.cpp:473
 msgid "_About Gnote"
 msgstr "Gnote পরিচিতি (_A)"
 
-#: ../src/utils.cpp:133
+#: ../src/utils.cpp:128
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
+"‌\"Gnote Manual\" টি খুঁজে পাওয়া যায়নি। আপনার ইন্সটলেশনটি সম্পূর্ণ হয়েছে কিনা যাচাই "
+"করে নিন।"
 
-#: ../src/utils.cpp:141
+#: ../src/utils.cpp:136
 msgid "Help not found"
 msgstr "সহায়ক তথ্য পাওয়া যায়নি"
 
-#: ../src/utils.cpp:181
+#: ../src/utils.cpp:176
 msgid "Cannot open location"
 msgstr "অবস্থান প্রদর্শন করতে ব্যর্থ"
 
-#: ../src/utils.cpp:195
+#: ../src/utils.cpp:190
 msgid "Today, %1%"
 msgstr "আজ, %1%"
 
-#: ../src/utils.cpp:196
+#: ../src/utils.cpp:191
 msgid "Today"
 msgstr "আজ"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:196
 msgid "Yesterday, %1%"
 msgstr "গতকাল, %1%"
 
-#: ../src/utils.cpp:202
+#: ../src/utils.cpp:197
 msgid "Yesterday"
 msgstr "গতকাল"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:204
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% দিন পূর্বে, %2%"
 msgstr[1] "%1% দিন পূর্বে, %2%"
 
-#: ../src/utils.cpp:213
+#: ../src/utils.cpp:208
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% দিন পূর্বে"
 msgstr[1] "%1% দিন পূর্বে"
 
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:215
 msgid "Tomorrow, %1%"
 msgstr "আগামী কাল, %1%"
 
-#: ../src/utils.cpp:221
+#: ../src/utils.cpp:216
 msgid "Tomorrow"
-msgstr ""
+msgstr "আগামী কাল"
 
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:223
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "%1% দিন পরে, %2%"
 msgstr[1] "%1% দিন পরে, %2%"
 
-#: ../src/utils.cpp:232
+#: ../src/utils.cpp:227
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "%1% দিন পরে"
 msgstr[1] "%1% দিন পরে"
 
-#: ../src/utils.cpp:243
+#: ../src/utils.cpp:238
 msgid "No Date"
 msgstr "তারিখ অনুপস্থিত"
 
@@ -1214,6 +1228,8 @@ msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
 msgstr ""
+"এই নোটবুকের সাথে যুক্ত নোটগুলি মুছে ফেলা হবে না,তবে সেগুলি এই নোটবুকের সাথে যুক্ত "
+"থাকবে না। এই কর্ম বাতিল করা যাবে না।"
 
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:38
 msgid "New \"%1%\" Note"
@@ -1225,7 +1241,7 @@ msgstr "কোনো নোটবই নেই"
 
 #: ../src/notebooks/notebooknoteaddin.cpp:81
 msgid "Place this note into a notebook"
-msgstr ""
+msgstr "এই নোটটি একটি নোটবুকে যোগ করুন"
 
 #: ../src/notebooks/notebooknoteaddin.cpp:168
 msgid "Notebook"
@@ -1235,9 +1251,32 @@ msgstr "নোটবই"
 msgid "_New notebook..."
 msgstr "নতুন নোটবই...(_N)"
 
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+msgid "Backlinks"
+msgstr ""
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+msgid "See which notes link to the one you're currently viewing."
+msgstr ""
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "হুবের্ট ফিগেরে ও টম্বয় প্রজেক্ট"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+msgid "What links here?"
+msgstr ""
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+#, fuzzy
+#| msgid " (new)"
+msgid "(none)"
+msgstr " (নতুন)"
+
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
 msgid "Bugzilla Links"
-msgstr ""
+msgstr "বাগজিলার লিংক সমূহ"
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:54
 msgid ""
@@ -1245,17 +1284,23 @@ msgid ""
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
 msgstr ""
+"ব্রাউজার থেকে সরাসরি একটি Bugzilla URL কে Gnote নোট-এ যোগ করতে অনুমতি দেয়। bug "
+"নম্বরটি একটি লিংক রূপে একটি ছোট bug আইকনের পাশে থাকে।"
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:61
 msgid "Hubert Figuiere and the Tomboy Project"
-msgstr ""
+msgstr "হুবার্ট ফিগেরে ও টম্বয় প্রজেক্ট"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:58
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
 msgstr ""
+"নোট-এর মধ্যে লিংক সংরক্ষণ করে আপনি যে কোন bugzilla ব্যবহার করতে পারেন। নির্বাচিত "
+"হোস্ট-এর জন্য বিশেষ আইকন দরকার হলে এখানে যোগ করুন।"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:75
 msgid "Host Name"
@@ -1265,38 +1310,79 @@ msgstr "হোস্টের নাম"
 msgid "Icon"
 msgstr "আইকন"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:203
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:222
 msgid "Select an icon..."
 msgstr "একটি আইকন নির্বাচন করুন..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:218
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:237
 msgid "_Host name:"
 msgstr "হোস্টের নাম: (_H)"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:246
-msgid "No host name specified"
-msgstr "হোস্টের নাম উল্লিখিত হয়নি"
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:269
+#, fuzzy
+#| msgid "_Host name:"
+msgid "Host name invalid"
+msgstr "হোস্টের নাম: (_H)"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:247
-msgid "You must specify the Bugzilla host name to use with this icon."
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+#, fuzzy
+#| msgid "You must specify the Bugzilla host name to use with this icon."
+msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr "চিহ্নিত আইকনের সাথে ব্যবহারযোগ্য Bugzilla হোস্টের নাম উল্লেখ করা আবশ্যক।"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:266
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:289
 msgid "Error saving icon"
 msgstr "আইকন সংরক্ষণ করতে ব্যর্থ"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:267
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
 msgid "Could not save the icon file."
 msgstr "আইকন ফাইল সংরক্ষণ করতে ব্যর্থ।"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:339
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:362
 msgid "Really remove this icon?"
 msgstr "চিহ্নিত আইকন নিশ্চিতরূপে মুছে ফেলা হবে কি?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:340
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
 msgid "If you remove an icon it is permanently lost."
-msgstr "আইকন মুছে ফেলা হলে তা পুনরুদ্ধার করা সম্ভব নয়।"
+msgstr "আপনি যদি আইকন মুছে ফেলেন তাহলে পুনরুদ্ধার করা অসম্ভব।"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:36
+msgid "Destination for HTML Export"
+msgstr ""
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:38
+#, fuzzy
+#| msgid "HTML Export Linked Notes"
+msgid "Export linked notes"
+msgstr "HTML Export'এ লিঙ্ক করা নোট"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:39
+msgid "Include all other linked notes"
+msgstr ""
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+msgid "Export to HTML"
+msgstr ""
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+msgid "Exports individual notes to HTML."
+msgstr ""
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+msgid "Your note was exported to \"%1%\"."
+msgstr ""
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+msgid "Note exported successfully"
+msgstr ""
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+#, fuzzy, c-format
+#| msgid "Could not save the icon file."
+msgid "Could not save the file \"%s\""
+msgstr "আইকন ফাইল সংরক্ষণ করতে ব্যর্থ।"
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
 msgid "_Fixed Width"
@@ -1309,42 +1395,17 @@ msgstr "প্রস্থের সুনির্দিষ্ট মাপ"
 
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
 msgid "Adds fixed-width font style."
-msgstr ""
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
-msgid "Printing Support"
-msgstr ""
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
-msgid "Allows you to print a note."
-msgstr ""
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
-msgid "Print"
-msgstr "প্রিন্ট করুন"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:114
-msgid "Error printing note"
-msgstr "নোটের তথ্য প্রিন্ট করতে সমস্যা"
-
-#. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
-msgid "Page %1% of %2%"
-msgstr "পৃষ্ঠা %1%, সর্বমোট %2%"
+msgstr "প্রস্থের সুনির্দিষ্ট ফন্ট বিন্যাস যোগ করে।"
 
 #. Add the menu item when the window is created
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
 msgid "Insert Timestamp"
-msgstr ""
+msgstr "সময়চিহ্ন যুক্ত করুন"
 
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
-msgstr ""
-
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
-msgid "Hubert Figuiere and Tomboy Project"
-msgstr ""
+msgstr "কার্সার-এর স্থানে বর্তমান সময় ও তারিখ যুক্ত করুন।"
 
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
@@ -1359,3 +1420,70 @@ msgstr "নির্বাচিত বিন্যাস ব্যবহার 
 msgid "_Use Custom Format"
 msgstr "স্বনির্ধারিত বিন্যাস ব্যবহার করুন (_U)"
 
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+msgid "Printing Support"
+msgstr "প্রিন্টিং সাহায্য"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+msgid "Allows you to print a note."
+msgstr "আপনাকে নোট প্রিন্ট করতে অনুমতি দেয়।"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+msgid "Print"
+msgstr "প্রিন্ট করুন"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:114
+msgid "Error printing note"
+msgstr "নোট প্রিন্ট করতে সমস্যা হয়েছে"
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
+msgid "Page %1% of %2%"
+msgstr "পৃষ্ঠা %1%, সর্বমোট %2%"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:53
+#, fuzzy
+#| msgid "Sticky Note Importer First Run"
+msgid "Sticky Notes Importer"
+msgstr "Sticky Notes ইম্পোর্ট প্রথম চালনা"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:57
+msgid "Import your notes from the Sticky Notes applet."
+msgstr ""
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:101
+msgid "Import from Sticky Notes"
+msgstr ""
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:182
+msgid "No Sticky Notes found"
+msgstr ""
+
+#. %1% is a the file name
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:184
+msgid "No suitable Sticky Notes file was found at \"%1%\"."
+msgstr ""
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:192
+#, fuzzy
+#| msgid "Sticky Note Importer First Run"
+msgid "Sticky Notes import completed"
+msgstr "Sticky Notes ইম্পোর্ট প্রথম চালনা"
+
+#. here %1% is the number of notes imported, %2% the total number of notes.
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:194
+msgid "<b>%1%</b> of <b>%s%</b> Sticky Notes were successfully imported."
+msgstr ""
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:211
+#, fuzzy
+#| msgid "(Untitled %1%)"
+msgid "Untitled"
+msgstr "(শিরোনামবিহীন %1%)"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:257
+msgid "Sticky Note: "
+msgstr ""
+
+#~ msgid "No host name specified"
+#~ msgstr "হোস্টের নাম উল্লিখিত হয়নি"
