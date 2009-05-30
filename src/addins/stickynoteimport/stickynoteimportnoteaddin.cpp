@@ -191,7 +191,7 @@ void StickNoteImportNoteAddin::show_results_dialog(int numNotesImported, int num
 	show_message_dialog (
     _("Sticky Notes import completed"),
     // here %1% is the number of notes imported, %2% the total number of notes.
-    str(boost::format(_("<b>%1%</b> of <b>%s%</b> Sticky Notes "
+    str(boost::format(_("<b>%1%</b> of <b>%2%</b> Sticky Notes "
                         "were successfully imported.")) 
         % numNotesImported % numNotesTotal), Gtk::MESSAGE_INFO);
 }
