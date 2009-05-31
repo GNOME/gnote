@@ -106,6 +106,7 @@ libgnote_a_SOURCES = \
 	applicationaddin.hpp \
 	contrast.hpp contrast.cpp \
 	debug.hpp debug.cpp \
+	importaddin.hpp importaddin.cpp \
 	keybinder.hpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \

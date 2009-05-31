@@ -126,7 +126,12 @@ namespace gnote {
         AddinPreferenceFactoryBase * factory = dynamic_cast<AddinPreferenceFactoryBase*>((*f)());
         m_addin_prefs.insert(std::make_pair((*iter)->id(), factory));
       }
-      
+
+      f = dmod->query_interface(ImportAddin::IFACE_NAME);
+      if(f) {
+        ImportAddin * factory = dynamic_cast<ImportAddin*>((*f)());
+        m_import_addins.insert(std::make_pair((*iter)->id(), factory));
+      }
     }
   }
 
@@ -164,6 +169,13 @@ namespace gnote {
   {
     sharp::map_get_values(m_pref_tab_addins, l);
   }
+
+
+  void AddinManager::get_import_addins(std::list<ImportAddin*> & l) const
+  {
+    sharp::map_get_values(m_import_addins, l);
+  }
+
 
   Gtk::Widget * AddinManager::create_addin_preference_widget(const std::string & id)
   {

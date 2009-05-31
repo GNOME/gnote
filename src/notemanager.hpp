@@ -66,8 +66,14 @@ namespace gnote {
       {
         return *m_addin_mgr;
       }
+    const std::string & get_notes_dir() const
+      {
+        return m_notes_dir;
+      }
     const std::string & start_note_uri() const
-      { return m_start_note_uri; }
+      { 
+        return m_start_note_uri; 
+      }
     Note::Ptr find(const std::string &) const;
     Note::Ptr find_by_uri(const std::string &) const;
     void delete_note(const Note::Ptr & note);
@@ -75,6 +81,9 @@ namespace gnote {
     Note::Ptr create();
     Note::Ptr create(const std::string & title);
     Note::Ptr create(const std::string & title, const std::string & xml_content);
+    // Import a note read from file_path
+    // Will ensure the sanity including the unique title.
+    Note::Ptr import_note(const std::string & file_path);
     Note::Ptr create_with_guid(const std::string & title, std::string & guid);
     Note::Ptr get_or_create_template_note();
     static std::string get_note_template_content(const std::string & title);
@@ -107,7 +116,8 @@ namespace gnote {
     Note::Ptr create_new_note (std::string title, const std::string & guid);
     Note::Ptr create_new_note (const std::string & title, const std::string & xml_content, 
                              const std::string & guid);
-
+    /** add the note to the manager and setup signals */
+    void add_note(const Note::Ptr &);
     void _common_init(const std::string & directory, const std::string & backup);
 
     std::string m_notes_dir;

@@ -18,8 +18,6 @@
  */
 
 
-
-
 #ifndef __ADDINMANAGER_HPP__
 #define __ADDINMANAGER_HPP__
 
@@ -32,6 +30,8 @@
 #include "sharp/modulemanager.hpp"
 #include "note.hpp"
 #include "noteaddin.hpp"
+#include "importaddin.hpp"
+
 
 namespace gnote {
 
@@ -49,6 +49,7 @@ public:
   void load_addins_for_note(const Note::Ptr &);
   void get_application_addins(std::list<ApplicationAddin*> &) const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
+  void get_import_addins(std::list<ImportAddin*> &) const;
 
   const sharp::ModuleList & get_modules() const
     { 
@@ -77,6 +78,8 @@ private:
   IdInfoMap                                m_note_addin_infos;
   typedef std::map<std::string, PreferenceTabAddin*> IdPrefTabAddinMap;
   IdPrefTabAddinMap                        m_pref_tab_addins;
+  typedef std::map<std::string, ImportAddin *> IdImportAddinMap;
+  IdImportAddinMap                         m_import_addins;
   typedef std::map<std::string, AddinPreferenceFactoryBase*> IdAddinPrefsMap;
   IdAddinPrefsMap                          m_addin_prefs;
   sigc::signal<void>         m_application_addin_list_changed;

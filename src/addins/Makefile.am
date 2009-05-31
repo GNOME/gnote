@@ -8,4 +8,5 @@ SUBDIRS = backlinks \
 	inserttimestamp \
 	printnotes \
 	stickynoteimport \
+	tomboyimport \
 	$(NULL)

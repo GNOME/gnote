@@ -119,6 +119,23 @@ namespace gnote {
     m_addin_mgr = create_addin_manager ();
 
     if (is_first_run) {
+      std::list<ImportAddin*> l;
+      m_addin_mgr->get_import_addins(l);
+      bool has_imported = false;
+
+      if(l.empty()) {
+        DBG_OUT("no import plugins");
+      }
+
+      for(std::list<ImportAddin*>::iterator iter = l.begin();
+          iter != l.end(); ++iter) {
+
+        DBG_OUT("importing");
+        (*iter)->initialize();
+        has_imported |= (*iter)->first_run(*this);
+        (*iter)->shutdown();
+      }
+
       // First run. Create "Start Here" notes.
       create_start_notes ();
     } 
@@ -264,6 +281,16 @@ namespace gnote {
               e.what());
     }
   }
+
+
+  void NoteManager::add_note(const Note::Ptr & note)
+  {
+    if (note) {
+      note->signal_renamed().connect(sigc::mem_fun(*this, &NoteManager::on_note_rename));
+      note->signal_saved().connect(sigc::mem_fun(*this, &NoteManager::on_note_save));
+      m_notes.push_back(note);
+    }
+  }
   
   void NoteManager::load_notes()
   {
@@ -275,11 +302,7 @@ namespace gnote {
       const std::string & file_path(*iter);
       try {
         Note::Ptr note = Note::load(file_path, *this);
-        if (note) {
-          note->signal_renamed().connect(sigc::mem_fun(*this, &NoteManager::on_note_rename));
-          note->signal_saved().connect(sigc::mem_fun(*this, &NoteManager::on_note_save));
-          m_notes.push_back(note);
-        }
+        add_note(note);
       } 
       catch (const std::exception & e) {
         ERR_OUT("Error parsing note XML, skipping \"%s\": %s",
@@ -459,6 +482,29 @@ namespace gnote {
   {
     return create_new_note(title, xml_content, "");
   }
+
+  Note::Ptr NoteManager::import_note(const std::string & file_path)
+  {
+    std::string dest_file = Glib::build_filename(m_notes_dir, 
+                                                 sharp::file_filename(file_path));
+    
+    if(sharp::file_exists(dest_file)) {
+      dest_file = make_new_file_name();
+    }
+    Note::Ptr note;
+    try {
+      sharp::file_copy(file_path, dest_file);
+
+      // TODO: make sure the title IS unique.
+      note = Note::load(dest_file, *this);
+      add_note(note);
+    }
+    catch(...)
+    {
+    }
+    return note;
+  }
+
 
   Note::Ptr NoteManager::create_with_guid (const std::string & title, std::string & guid)
   {
