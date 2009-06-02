@@ -47,7 +47,6 @@ public:
   Gnote();
   ~Gnote();
   int main(int argc, char **argv);
-  std::string get_note_path(const std::string & override_path);
   NoteManager & default_note_manager()
     {
       return *m_manager;
@@ -70,7 +69,6 @@ public:
   void open_search_all();
   void open_note_sync_window();
 
-  static std::string conf_dir();
   static bool tray_icon_showing()
     {
       return s_tray_icon_showing;
@@ -84,6 +82,9 @@ public:
       m_tray = tray;
     }
 private:
+  static std::string conf_dir();
+  std::string get_note_path(const std::string & override_path);
+
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;

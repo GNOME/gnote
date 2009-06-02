@@ -151,9 +151,7 @@ namespace gnote {
 
   AddinManager *NoteManager::create_addin_manager() const
   {
-    std::string gnote_conf_dir = Gnote::conf_dir();
-    
-    return new AddinManager(gnote_conf_dir);
+    return new AddinManager(m_notes_dir);
   }
 
   // For overriding in test methods.
