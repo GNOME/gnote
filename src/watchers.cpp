@@ -385,13 +385,12 @@ namespace gnote {
   ////////////////////////////////////////////////////////////////////////
 
 
-  const char * NoteUrlWatcher::URL_REGEX = "((\\b((news|http|https|ftp|file|irc)://|mailto:|(www|ftp)\\.|\\S*@\\S*\\.)|/\\S+/|~/\\S+)\\S*\\b/?)";
-
+  const char * NoteUrlWatcher::URL_REGEX = "((\\b((news|http|https|ftp|file|irc)://|mailto:|(www|ftp)\\.|\\S*@\\S*\\.)|(?<=^|\\s)/\\S+/|(?<=^|\\s)~/\\S+)\\S*\\b/?)";
   bool NoteUrlWatcher::s_text_event_connected = false;
   
 
   NoteUrlWatcher::NoteUrlWatcher()
-    : m_regex(URL_REGEX, boost::regex::extended|boost::regex_constants::icase)
+    : m_regex(URL_REGEX, boost::regex::perl|boost::regex_constants::icase)
   {
   }
 
