@@ -47,10 +47,10 @@ namespace gnote {
 
   NoteBuffer::NoteBuffer(const NoteTagTable::Ptr & tags, Note & note)
     : Gtk::TextBuffer(tags)
-    , m_undomanager(new UndoManager(Ptr(this)))
+    , m_undomanager(NULL)
     , m_note(note)
   {
-    
+    m_undomanager = new UndoManager(this);
     signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));
     signal_erase().connect(sigc::mem_fun(*this, &NoteBuffer::range_deleted_event));
     signal_mark_set().connect(sigc::mem_fun(*this, &NoteBuffer::mark_set_event));

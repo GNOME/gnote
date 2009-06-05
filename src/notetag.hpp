@@ -254,12 +254,12 @@ public:
   typedef Glib::RefPtr<NoteTagTable> Ptr;
   typedef sigc::slot<DynamicNoteTag::Ptr> Factory;
 
-  static NoteTagTable & instance() 
+  static const NoteTagTable::Ptr & instance() 
     {
       if(!s_instance) {
-        s_instance = new NoteTagTable;
+        s_instance = NoteTagTable::Ptr(new NoteTagTable);
       }
-      return *s_instance;
+      return s_instance;
     }
   static bool tag_is_serializable(const Glib::RefPtr<const Gtk::TextTag> & );
   static bool tag_is_growable(const Glib::RefPtr<Gtk::TextTag> & );
@@ -285,7 +285,7 @@ protected:
 private:
   void _init_common_tags();
 
-  static NoteTagTable                   *s_instance;
+  static NoteTagTable::Ptr           s_instance;
   std::map<std::string, Factory>     m_tag_types;
   std::list<Glib::RefPtr<Gtk::TextTag> > m_added_tags;
 };

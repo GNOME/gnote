@@ -27,7 +27,6 @@ using gnote::InsertAction;
 namespace bugzilla {
 
   InsertBugAction::InsertBugAction(const Gtk::TextIter & start, const std::string & id,
-                                   const Glib::RefPtr<Gtk::TextBuffer> &,
                                    const BugzillaLink::Ptr & tag)
     : m_tag(tag)
     , m_offset(start.get_offset())
@@ -36,7 +35,7 @@ namespace bugzilla {
     
   }
 
-  void InsertBugAction::undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void InsertBugAction::undo (Gtk::TextBuffer * buffer)
   {
     // Tag images change the offset by one, but only when deleting.
     Gtk::TextIter start_iter = buffer->get_iter_at_offset(m_offset);
@@ -51,7 +50,7 @@ namespace bugzilla {
   }
 
 
-  void InsertBugAction::redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void InsertBugAction::redo (Gtk::TextBuffer * buffer)
   {
     remove_split_tags (buffer);
 

@@ -52,7 +52,7 @@ namespace gnote {
   }
 
   void SplitterAction::split(Gtk::TextIter iter, 
-                             const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+                             Gtk::TextBuffer * buffer)
   {
     Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
     for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
@@ -109,7 +109,7 @@ namespace gnote {
   }
 
 
-  void SplitterAction::apply_split_tag(const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void SplitterAction::apply_split_tag(Gtk::TextBuffer * buffer)
   {
     for(std::list<TagData>::const_iterator iter = m_splitTags.begin();
         iter != m_splitTags.end(); ++iter) {
@@ -123,7 +123,7 @@ namespace gnote {
   }
 
 
-  void SplitterAction::remove_split_tags(const Glib::RefPtr<Gtk::TextBuffer> &buffer)
+  void SplitterAction::remove_split_tags(Gtk::TextBuffer *buffer)
   {
     for(std::list<TagData>::const_iterator iter = m_splitTags.begin();
         iter != m_splitTags.end(); ++iter) {
@@ -147,7 +147,7 @@ namespace gnote {
   }
 
 
-  void InsertAction::undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void InsertAction::undo (Gtk::TextBuffer * buffer)
   {
     int tag_images = get_split_offset ();
 
@@ -164,7 +164,7 @@ namespace gnote {
   }
 
 
-  void InsertAction::redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void InsertAction::redo (Gtk::TextBuffer * buffer)
   {
     remove_split_tags (buffer);
 
@@ -244,7 +244,7 @@ namespace gnote {
   }
 
 
-  void EraseAction::undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void EraseAction::undo (Gtk::TextBuffer * buffer)
   {
     int tag_images = get_split_offset ();
 
@@ -262,7 +262,7 @@ namespace gnote {
   }
 
 
-  void EraseAction::redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void EraseAction::redo (Gtk::TextBuffer * buffer)
   {
     remove_split_tags (buffer);
 
@@ -360,7 +360,7 @@ namespace gnote {
   }
 
 
-  void TagApplyAction::undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void TagApplyAction::undo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter start_iter, end_iter;
     start_iter = buffer->get_iter_at_offset (m_start);
@@ -372,7 +372,7 @@ namespace gnote {
   }
 
 
-  void TagApplyAction::redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void TagApplyAction::redo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter start_iter, end_iter;
     start_iter = buffer->get_iter_at_offset (m_start);
@@ -411,7 +411,7 @@ namespace gnote {
   }
 
 
-  void TagRemoveAction::undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void TagRemoveAction::undo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter start_iter, end_iter;
     start_iter = buffer->get_iter_at_offset (m_start);
@@ -423,7 +423,7 @@ namespace gnote {
   }
 
 
-  void TagRemoveAction::redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void TagRemoveAction::redo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter start_iter, end_iter;
     start_iter = buffer->get_iter_at_offset (m_start);
@@ -459,37 +459,41 @@ namespace gnote {
   }
 
 
-  void ChangeDepthAction::undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void ChangeDepthAction::undo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter iter = buffer->get_iter_at_line (m_line);
 
-    NoteBuffer::Ptr note_buffer = NoteBuffer::Ptr::cast_dynamic(buffer);
-    if (m_direction) {
-      note_buffer->decrease_depth (iter);
-    }
-    else {
-      note_buffer->increase_depth (iter);
-    }
+    NoteBuffer* note_buffer = dynamic_cast<NoteBuffer*>(buffer);
+    if(note_buffer) {
+      if (m_direction) {
+        note_buffer->decrease_depth (iter);
+      }
+      else {
+        note_buffer->increase_depth (iter);
+      }
 
-    buffer->move_mark (buffer->get_insert(), iter);
-    buffer->move_mark (buffer->get_selection_bound(), iter);
+      buffer->move_mark (buffer->get_insert(), iter);
+      buffer->move_mark (buffer->get_selection_bound(), iter);
+    }
   }
 
 
-  void ChangeDepthAction::redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void ChangeDepthAction::redo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter iter = buffer->get_iter_at_line (m_line);
 
-    NoteBuffer::Ptr note_buffer = NoteBuffer::Ptr::cast_dynamic(buffer);
-    if (m_direction) {
-      note_buffer->increase_depth (iter);
-    } 
-    else {
-      note_buffer->decrease_depth (iter);
-    }
+    NoteBuffer* note_buffer = dynamic_cast<NoteBuffer*>(buffer);
+    if(note_buffer) {    
+      if (m_direction) {
+        note_buffer->increase_depth (iter);
+      } 
+      else {
+        note_buffer->decrease_depth (iter);
+      }
 
-    buffer->move_mark (buffer->get_insert(), iter);
-    buffer->move_mark (buffer->get_selection_bound(), iter);
+      buffer->move_mark (buffer->get_insert(), iter);
+      buffer->move_mark (buffer->get_selection_bound(), iter);
+    }
   }
 
 
@@ -520,13 +524,13 @@ namespace gnote {
   }
 
 
-  void InsertBulletAction::undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void InsertBulletAction::undo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter iter = buffer->get_iter_at_offset (m_offset);
     iter.forward_line ();
     iter = buffer->get_iter_at_line (iter.get_line());
 
-    NoteBuffer::Ptr::cast_dynamic(buffer)->remove_bullet (iter);
+    dynamic_cast<NoteBuffer*>(buffer)->remove_bullet (iter);
 
     iter.forward_to_line_end ();
 
@@ -535,14 +539,14 @@ namespace gnote {
   }
 
 
-  void InsertBulletAction::redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  void InsertBulletAction::redo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter iter = buffer->get_iter_at_offset (m_offset);
 
     buffer->insert (iter, "\n");
 
-    NoteBuffer::Ptr::cast_dynamic(buffer)->insert_bullet (iter, 
-                                                          m_depth, m_direction);
+    dynamic_cast<NoteBuffer*>(buffer)->insert_bullet (iter, 
+                                                      m_depth, m_direction);
 
     buffer->move_mark (buffer->get_insert(), iter);
     buffer->move_mark (buffer->get_selection_bound(), iter);
@@ -566,7 +570,7 @@ namespace gnote {
   }
   
 
-  UndoManager::UndoManager(const NoteBuffer::Ptr & buffer)
+  UndoManager::UndoManager(NoteBuffer * buffer)
     : m_frozen_cnt(0)
     , m_try_merge(false)
     , m_buffer(buffer)

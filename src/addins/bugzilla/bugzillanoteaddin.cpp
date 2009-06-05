@@ -163,7 +163,6 @@ namespace bugzilla {
       std::string string_id = boost::lexical_cast<std::string>(id);
       buffer->undoer().add_undo_action (new InsertBugAction (cursor, 
                                                              string_id, 
-                                                             buffer,
                                                              link_tag));
 
       std::vector<Glib::RefPtr<Gtk::TextTag> > tags;

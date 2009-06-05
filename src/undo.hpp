@@ -42,8 +42,8 @@ namespace gnote {
 class EditAction
 {
 public:
-  virtual  void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer) = 0;
-  virtual void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer) = 0;
+  virtual  void undo (Gtk::TextBuffer * buffer) = 0;
+  virtual void redo (Gtk::TextBuffer * buffer) = 0;
   virtual void merge (EditAction * action) = 0;
   virtual bool can_merge (const EditAction * action) const = 0;
   virtual void destroy () = 0;
@@ -77,14 +77,14 @@ public:
     {
       return m_splitTags;
     }
-  void split(Gtk::TextIter iter, const Glib::RefPtr<Gtk::TextBuffer> &);
+  void split(Gtk::TextIter iter, Gtk::TextBuffer *);
   void add_split_tag(const Gtk::TextIter &, const Gtk::TextIter &, 
                      const Glib::RefPtr<Gtk::TextTag> tag);
 protected:
   SplitterAction();
   int get_split_offset() const;
-  void apply_split_tag(const Glib::RefPtr<Gtk::TextBuffer> &);
-  void remove_split_tags(const Glib::RefPtr<Gtk::TextBuffer> &);
+  void apply_split_tag(Gtk::TextBuffer *);
+  void remove_split_tags(Gtk::TextBuffer *);
   std::list<TagData> m_splitTags;
   utils::TextRange   m_chop;
 };
@@ -97,8 +97,8 @@ class InsertAction
 public:
   InsertAction(const Gtk::TextIter & start, const std::string & text, int length,
                const ChopBuffer::Ptr & chop_buf);
-  virtual void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
-  virtual void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  virtual void undo (Gtk::TextBuffer * buffer);
+  virtual void redo (Gtk::TextBuffer * buffer);
   virtual void merge (EditAction * action);
   virtual bool can_merge (const EditAction * action) const;
   virtual void destroy ();
@@ -115,8 +115,8 @@ class EraseAction
 public:
   EraseAction(const Gtk::TextIter & start_iter, const Gtk::TextIter & end_iter,
                const ChopBuffer::Ptr & chop_buf);
-  virtual void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
-  virtual void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  virtual void undo (Gtk::TextBuffer * buffer);
+  virtual void redo (Gtk::TextBuffer * buffer);
   virtual void merge (EditAction * action);
   virtual bool can_merge (const EditAction * action) const;
   virtual void destroy ();
@@ -135,8 +135,8 @@ class TagApplyAction
 {
 public:
   TagApplyAction(const Glib::RefPtr<Gtk::TextTag> &, const Gtk::TextIter & start, const Gtk::TextIter & end);
-  virtual void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
-  virtual void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  virtual void undo (Gtk::TextBuffer * buffer);
+  virtual void redo (Gtk::TextBuffer * buffer);
   virtual void merge (EditAction * action);
   virtual bool can_merge (const EditAction * action) const;
   virtual void destroy ();
@@ -153,8 +153,8 @@ class TagRemoveAction
 {
 public:
   TagRemoveAction(const Glib::RefPtr<Gtk::TextTag> &, const Gtk::TextIter & start, const Gtk::TextIter & end);
-  virtual void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
-  virtual void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  virtual void undo (Gtk::TextBuffer * buffer);
+  virtual void redo (Gtk::TextBuffer * buffer);
   virtual void merge (EditAction * action);
   virtual bool can_merge (const EditAction * action) const;
   virtual void destroy ();
@@ -170,8 +170,8 @@ class ChangeDepthAction
 {
 public:
   ChangeDepthAction(int line, bool direction);
-  virtual void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
-  virtual void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  virtual void undo (Gtk::TextBuffer * buffer);
+  virtual void redo (Gtk::TextBuffer * buffer);
   virtual void merge (EditAction * action);
   virtual bool can_merge (const EditAction * action) const;
   virtual void destroy ();
@@ -187,8 +187,8 @@ class InsertBulletAction
 {
 public:
   InsertBulletAction(int offset, int depth, Pango::Direction direction);
-  virtual void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
-  virtual void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  virtual void undo (Gtk::TextBuffer * buffer);
+  virtual void redo (Gtk::TextBuffer * buffer);
   virtual void merge (EditAction * action);
   virtual bool can_merge (const EditAction * action) const;
   virtual void destroy ();
@@ -202,7 +202,11 @@ class UndoManager
   : public boost::noncopyable
 {
 public:
-  UndoManager(const NoteBuffer::Ptr & buffer);
+  /** the buffer it NOT owned by the UndoManager
+   *  it is assume to have a longer life than UndoManager
+   *  Actually the UndoManager belong to the buffer.
+   */
+  UndoManager(NoteBuffer * buffer);
   ~UndoManager();
   bool get_can_undo()
     {
@@ -251,7 +255,7 @@ private:
 
   guint m_frozen_cnt;
   bool m_try_merge;
-  NoteBuffer::Ptr m_buffer;
+  NoteBuffer * m_buffer;
   ChopBuffer::Ptr m_chop_buffer;
   std::stack<EditAction *> m_undo_stack;
   std::stack<EditAction *> m_redo_stack;

@@ -955,7 +955,7 @@ namespace gnote {
       // NOTE: Sharing the same TagTable means
       // that formatting is duplicated between
       // buffers.
-      m_tag_table = NoteTagTable::Ptr(&NoteTagTable::instance());
+      m_tag_table = NoteTagTable::instance();
     }
     return m_tag_table;
   }
@@ -964,7 +964,7 @@ namespace gnote {
   {
     if(!m_buffer) {
       DBG_OUT("Creating buffer for %s", m_data.data().title().c_str());
-      m_buffer = Glib::RefPtr<NoteBuffer>(new NoteBuffer(get_tag_table(), *this));
+      m_buffer = NoteBuffer::create(get_tag_table(), *this);
       m_data.set_buffer(m_buffer);
 
       m_buffer->signal_changed().connect(

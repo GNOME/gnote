@@ -33,10 +33,9 @@ class InsertBugAction
 {
 public:
   InsertBugAction(const Gtk::TextIter & start, const std::string & id,
-                  const Glib::RefPtr<Gtk::TextBuffer> & buffer,
                   const BugzillaLink::Ptr & tag);
-  void undo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
-  void redo (const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  void undo (Gtk::TextBuffer * buffer);
+  void redo (Gtk::TextBuffer * buffer);
   void merge (EditAction * action);
   bool can_merge (const EditAction * action) const;
   void destroy ();

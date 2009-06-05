@@ -41,7 +41,6 @@ namespace sharp {
 
 namespace gnote {
 
-  class NoteTagTable;
   class Note;
   class UndoManager;
 
@@ -55,7 +54,10 @@ public:
   typedef sigc::signal<void, int, bool> ChangeDepthHandler;
 
   bool get_enable_auto_bulleted_lists() const;
-  NoteBuffer(const NoteTagTable::Ptr &, Note &);
+  static Ptr create(const NoteTagTable::Ptr & table, Note & note)
+    {
+      return Ptr(new NoteBuffer(table, note));
+    }
   ~NoteBuffer();
 
   // Signal that text has been inserted, and any active tags have
@@ -107,6 +109,8 @@ public:
   DepthNoteTag::Ptr find_depth_tag(Gtk::TextIter &);
 
 protected: 
+  NoteBuffer(const NoteTagTable::Ptr &, Note &);
+
   virtual void on_apply_tag(const Glib::RefPtr<Gtk::TextTag> & tag,
                        const Gtk::TextIter &,  const Gtk::TextIter &);
   virtual void on_remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag,

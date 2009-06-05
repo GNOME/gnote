@@ -360,7 +360,7 @@ namespace gnote {
   }
 
 
-  NoteTagTable *NoteTagTable::s_instance = NULL;
+  NoteTagTable::Ptr NoteTagTable::s_instance;
 
   void NoteTagTable::_init_common_tags()
   {
