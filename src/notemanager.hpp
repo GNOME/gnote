@@ -44,9 +44,12 @@ namespace gnote {
   public:
     typedef std::tr1::shared_ptr<NoteManager> Ptr;
     typedef sigc::signal<void, const Note::Ptr &> ChangedHandler;
+    typedef sigc::slot<void, const Note::Ptr &> NoteChangedSlot;
     
-    NoteManager(const std::string & );
-    NoteManager(const std::string & directory, const std::string & backup);
+    NoteManager(const std::string & ,
+                const NoteChangedSlot & start_created = NoteChangedSlot() );
+    NoteManager(const std::string & directory, const std::string & backup,
+                const NoteChangedSlot & start_created = NoteChangedSlot());
     ~NoteManager();
 
     void on_setting_changed(Preferences*, GConfEntry*);
@@ -79,6 +82,10 @@ namespace gnote {
 
     ChangedHandler signal_note_deleted;
     ChangedHandler signal_note_added;
+    /** this signal is emitted when the start note has been created
+     *  This is supposed to happen once in a life time *sigh*
+     *  This to avoid relying a the Gnote class for that.
+     */
 
     Note::RenamedHandler   signal_note_renamed;
     Note::SavedHandler     signal_note_saved;
@@ -110,6 +117,7 @@ namespace gnote {
     TrieController *m_trie_controller;
     std::string m_note_template_title;
     std::string m_start_note_uri;
+    NoteChangedSlot m_signal_start_note_created;
   };
 
 

@@ -82,6 +82,7 @@ public:
       m_tray = tray;
     }
 private:
+  void start_note_created(const Note::Ptr & start_note);
   static std::string conf_dir();
   std::string get_note_path(const std::string & override_path);
 

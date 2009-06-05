@@ -89,13 +89,14 @@ namespace gnote {
     {
     }
 
+    m_is_panel_applet = cmd_line.use_panel_applet();
 
     m_icon_theme = Gtk::IconTheme::get_default();
     m_icon_theme->append_search_path(DATADIR"/icons");
     m_icon_theme->append_search_path(DATADIR"/gnote/icons");
 
     std::string note_path = get_note_path(cmd_line.note_path());
-    m_manager = new NoteManager(note_path);
+    m_manager = new NoteManager(note_path, sigc::mem_fun(*this, &Gnote::start_note_created));
     m_keybinder = new XKeybinder();
 
     // TODO
@@ -117,10 +118,9 @@ namespace gnote {
       cmd_line.execute();
     }
 
-    if(cmd_line.use_panel_applet()) {
+    if(m_is_panel_applet) {
       DBG_OUT("starting applet");
       s_tray_icon_showing = true;
-      m_is_panel_applet = true;
 
       am["CloseWindowAction"]->set_visible(true);
       am["QuitGNoteAction"]->set_visible(false);
@@ -140,6 +140,15 @@ namespace gnote {
       start_tray_icon();
     }
     return 0;
+  }
+
+
+  void Gnote::start_note_created(const Note::Ptr & start_note)
+  {
+    DBG_OUT("we will show the start note: %d", !is_panel_applet());
+    if(!is_panel_applet()) {
+      start_note->get_window()->show();
+    }
   }
 
   std::string Gnote::get_note_path(const std::string & override_path)
