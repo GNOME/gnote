@@ -31,10 +31,11 @@
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/regex.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/trim.hpp>
+
+#include <pcrecpp.h>
 
 #include "debug.hpp"
 
@@ -53,17 +54,20 @@ namespace sharp {
     return boost::replace_all_copy(source, from, with);
   }
 
-  std::string string_replace_regex(const std::string & source, const std::string & regex,
+  std::string string_replace_regex(const std::string & source,
+                                   const std::string & regex,
                                    const std::string & with)
   {
-    return boost::replace_regex_copy(source, boost::regex(regex), with);
+    pcrecpp::RE re(regex);
+    std::string result = source;
+    re.Replace(with, &result);
+    return result;
   }
   
   bool string_match_iregex(const std::string & source, const std::string & regex)  
   {
-    return boost::regex_match(source, 
-                              boost::regex(regex, boost::regex::perl 
-                                           | boost::regex::icase));
+    pcrecpp::RE re(regex, pcrecpp::RE_Options(PCRE_CASELESS|PCRE_UTF8));
+    return re.FullMatch(source);
   }
 
   void string_split(std::vector<std::string> & split, const std::string & source,

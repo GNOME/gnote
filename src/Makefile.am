@@ -32,15 +32,15 @@ TESTS = trietest stringtest notetest dttest uritest filestest \
 
 trietest_SOURCES = test/trietest.cpp \
 	sharp/string.cpp debug.cpp
-trietest_LDADD =  @BOOST_REGEX_LIBS@ @LIBGLIBMM_LIBS@
+trietest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
 dttest_SOURCES = test/dttest.cpp \
 	sharp/datetime.cpp debug.cpp
-dttest_LDADD = @LIBGLIBMM_LIBS@ @BOOST_REGEX_LIBS@
+dttest_LDADD = @LIBGLIBMM_LIBS@
 
 stringtest_SOURCES = test/stringtest.cpp \
 	sharp/string.cpp debug.cpp
-stringtest_LDADD =  @BOOST_REGEX_LIBS@ @LIBGLIBMM_LIBS@
+stringtest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
 filestest_SOURCES = test/filestest.cpp \
 	sharp/files.cpp
@@ -48,7 +48,7 @@ filestest_LDADD = @BOOST_FILESYSTEM_LIBS@
 
 uritest_SOURCES = test/uritest.cpp \
 	sharp/string.cpp  sharp/uri.cpp debug.cpp
-uritest_LDADD =  @BOOST_REGEX_LIBS@ @LIBGLIBMM_LIBS@
+uritest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
 xmlreadertest_SOURCES = test/xmlreadertest.cpp \
 	sharp/xmlreader.cpp debug.cpp

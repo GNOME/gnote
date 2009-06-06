@@ -25,7 +25,6 @@
 
 
 #include <string>
-#include <boost/regex.hpp>
 
 #include "sharp/xmlconvert.hpp"
 
