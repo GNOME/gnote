@@ -138,6 +138,11 @@ BOOST_CONVERSION
 BOOST_FILESYSTEM
 BOOST_FORMAT
 BOOST_TEST([s])
+AC_CHECK_HEADER(tr1/memory,,[
+	CXXFLAGS="$CXXFLAGS -I/usr/include/boost/tr1";
+	AC_MSG_NOTICE([using boost tr1 implementation.])
+])
+
 
 AC_LANG_PUSH(C++)
 if test "$GCC" = "yes"; then
