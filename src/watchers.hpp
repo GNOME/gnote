@@ -29,6 +29,8 @@
 
 #include <boost/regex.hpp>
 
+#include <pcrecpp.h>
+
 #if FIXED_GTKSPELL
 extern "C" {
 #include <gtkspell/gtkspell.h>
@@ -155,7 +157,7 @@ namespace gnote {
 
     NoteTag::Ptr                m_url_tag;
     Glib::RefPtr<Gtk::TextMark> m_click_mark;
-    boost::regex                m_regex;
+    pcrecpp::RE                 m_regex;
     static const char * URL_REGEX;
     static bool  s_text_event_connected;
   };

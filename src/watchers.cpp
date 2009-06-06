@@ -390,7 +390,7 @@ namespace gnote {
   
 
   NoteUrlWatcher::NoteUrlWatcher()
-    : m_regex(URL_REGEX, boost::regex::perl|boost::regex_constants::icase)
+    : m_regex(URL_REGEX, pcrecpp::RE_Options(PCRE_CASELESS|PCRE_UTF8))
   {
   }
 
@@ -509,26 +509,30 @@ namespace gnote {
     get_buffer()->remove_tag (m_url_tag, start, end);
 
     std::string s(start.get_slice(end));
+    std::string match1;
 
-    boost::sregex_iterator m1(s.begin(), s.end(), m_regex);
-    boost::sregex_iterator m2;
-    while(m1 != m2) {
-      const boost::sub_match<std::string::const_iterator> & match = (*m1)[1];
+    DBG_OUT("input is %s", s.c_str());
+    const char *p = s.c_str();
+    pcrecpp::StringPiece input(p);
+
+    while(m_regex.FindAndConsume(&input, &match1)) {
+
+      DBG_OUT("match1 '%s'", match1.c_str());
 
       Gtk::TextIter start_cpy = start;
-      // must construct the Glib::ustring from a std:;string.
+      // must construct the Glib::ustring from a char *.
       // otherwise it expect the num of chars (UTF-8) instead of bytes.
-      Glib::ustring segment(std::string(s.c_str(), match.first - s.begin()));
+      // here we compute the index of the URL. It is anchor - start - match.
+      Glib::ustring segment(p, input.data() - p - match1.size());
       start_cpy.forward_chars (segment.size());
 
       end = start_cpy;
       // here match.str() is the std::string we need. All good.
-      Glib::ustring segment2(match.str());
+      Glib::ustring segment2(match1);
       end.forward_chars (segment2.length());
 
       DBG_OUT("url is %s", segment2.c_str());
       get_buffer()->apply_tag (m_url_tag, start_cpy, end);
-      ++m1;
     }
   }
 
