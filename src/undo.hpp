@@ -42,7 +42,8 @@ namespace gnote {
 class EditAction
 {
 public:
-  virtual  void undo (Gtk::TextBuffer * buffer) = 0;
+  virtual ~EditAction() {}
+  virtual void undo (Gtk::TextBuffer * buffer) = 0;
   virtual void redo (Gtk::TextBuffer * buffer) = 0;
   virtual void merge (EditAction * action) = 0;
   virtual bool can_merge (const EditAction * action) const = 0;

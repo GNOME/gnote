@@ -197,7 +197,7 @@ public:
   bool is_new() const;
   bool is_loaded() const
     {
-      return (m_buffer != NULL);
+      return (m_buffer);
     }
   bool is_opened() const
     { 
