@@ -27,8 +27,6 @@
 #include <config.h>
 #endif
 
-#include <boost/regex.hpp>
-
 #include <pcrecpp.h>
 
 #if FIXED_GTKSPELL
@@ -210,7 +208,7 @@ namespace gnote {
 
   protected:
     NoteWikiWatcher()
-      : m_regex(WIKIWORD_REGEX)
+      : m_regex(WIKIWORD_REGEX, pcrecpp::RE_Options(PCRE_UTF8))
       {
       }
   private:
@@ -223,7 +221,7 @@ namespace gnote {
 
     static const char * WIKIWORD_REGEX;
     Glib::RefPtr<Gtk::TextTag>   m_broken_link_tag;
-    boost::regex        m_regex;
+    pcrecpp::RE         m_regex;
     sigc::connection    m_on_insert_text_cid;
     sigc::connection    m_on_delete_range_cid;
   };

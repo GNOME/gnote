@@ -25,7 +25,6 @@
 #include <string.h>
 
 #include <boost/format.hpp>
-#include <boost/regex.hpp>
 
 #include <glibmm/i18n.h>
 
@@ -942,8 +941,8 @@ namespace gnote {
 
   ////////////////////////////////////////////////////////////////////////
 
-  // NOTE \\u is upper. \\l is lower. make sure it works with non roman scripts.
-  const char * NoteWikiWatcher::WIKIWORD_REGEX = "\\b((\\u+[\\l0-9]+){2}([\\u\\l0-9])*)\\b";
+  // This is a PCRE regex.
+  const char * NoteWikiWatcher::WIKIWORD_REGEX = "\\b((\\p{Lu}+[\\p{Ll}0-9]+){2}([\\p{Lu}\\p{Ll}0-9])*)\\b";
 
 
   NoteAddin * NoteWikiWatcher::create()
@@ -1030,29 +1029,30 @@ namespace gnote {
     get_buffer()->remove_tag (m_broken_link_tag, start, end);
 
     std::string s(start.get_slice(end));
-    boost::sregex_iterator m1(s.begin(), s.end(), m_regex);
-    boost::sregex_iterator m2;
-    while(m1 != m2) {
-      const boost::sub_match<std::string::const_iterator> & match = (*m1)[1];
+    std::string match;
+    const char * p = s.c_str();
+    pcrecpp::StringPiece input(p);
 
-      if (match.matched && !is_patronymic_name (match.str())) {
 
+    while(m_regex.FindAndConsume(&input, &match)) {
+
+      if (!is_patronymic_name (match)) {
       
         Gtk::TextIter start_cpy = start;
-        Glib::ustring segment(std::string(s.c_str(), match.first - s.begin()));
+        Glib::ustring segment(std::string(p, input.data() - p - match.size()));
         start_cpy.forward_chars (segment.length());
+
         DBG_OUT("Highlighting wikiword: '%s' at offset %d",
-                match.str().c_str(), segment.length());
+                match.c_str(), segment.length());
 
         end = start_cpy;
-        segment = match.str();
+        segment = match;
         end.forward_chars (segment.length());
 
-        if (!manager().find (match.str())) {
+        if (!manager().find(match)) {
           get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
         }
       }
-      ++m1;
     }
   }
 
