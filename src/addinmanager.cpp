@@ -21,6 +21,7 @@
 #include <config.h>
 
 #include <boost/bind.hpp>
+#include <boost/checked_delete.hpp>
 
 #include "sharp/map.hpp"
 #include "sharp/dynamicmodule.hpp"
