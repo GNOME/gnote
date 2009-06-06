@@ -19,8 +19,9 @@
 
 
 
-#include <boost/regex.hpp>
 #include <boost/lexical_cast.hpp>
+
+#include <pcrecpp.h>
 
 #include <glibmm/i18n.h>
 
@@ -122,21 +123,17 @@ namespace bugzilla {
 
     const char * regexString = "\\bhttps?://.*/show_bug\\.cgi\\?(\\S+\\&){0,1}id=(\\d{1,})";
 
-    boost::regex re(regexString, boost::regex::extended|boost::regex_constants::icase);
-    boost::match_results<std::string::const_iterator> m;
-    if(regex_match(uriString, m, re) && m[2].matched) {
-      try {
-        int bugId = boost::lexical_cast<int>(std::string(m[2].first, m[2].second));
+    pcrecpp::RE re(regexString, pcrecpp::RE_Options(PCRE_CASELESS|PCRE_UTF8));
+    int m;
 
-        if (insert_bug (x, y, uriString, bugId)) {
-          context->drag_finish(true, false, time);
-          g_signal_stop_emission_by_name(get_window()->editor()->gobj(),
-                                         "drag_data_received");
-        }
-      }
-      catch(const std::exception & e) {
-        ERR_OUT("exception while converting URL '%s': %s",
-                uriString.c_str(), e.what());
+    if(re.FullMatch(uriString, (void*)NULL, &m)) {
+
+      int bugId = m;
+
+      if (insert_bug (x, y, uriString, bugId)) {
+        context->drag_finish(true, false, time);
+        g_signal_stop_emission_by_name(get_window()->editor()->gobj(),
+                                       "drag_data_received");
       }
     }
   }

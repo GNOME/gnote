@@ -510,13 +510,10 @@ namespace gnote {
     std::string s(start.get_slice(end));
     std::string match1;
 
-    DBG_OUT("input is %s", s.c_str());
     const char *p = s.c_str();
     pcrecpp::StringPiece input(p);
 
     while(m_regex.FindAndConsume(&input, &match1)) {
-
-      DBG_OUT("match1 '%s'", match1.c_str());
 
       Gtk::TextIter start_cpy = start;
       // must construct the Glib::ustring from a char *.
