@@ -68,6 +68,7 @@ namespace gnote {
   Preferences::Preferences()
     : m_client(gconf_client_get_default())
   {
+    gconf_client_add_dir(m_client, "/apps/gnote", GCONF_CLIENT_PRELOAD_NONE, NULL);
     m_cnx = gconf_client_notify_add(m_client, "/apps/gnote" , 
                             GConfClientNotifyFunc(&Preferences::gconf_notify_glue),
                             this, NULL, NULL);
@@ -75,6 +76,7 @@ namespace gnote {
   
   Preferences::~Preferences()
   {
+    gconf_client_remove_dir(m_client, "/apps/gnote", NULL);
     gconf_client_notify_remove(m_client, m_cnx);
   }
 
