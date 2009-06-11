@@ -40,31 +40,31 @@ namespace stickynote {
   using gnote::Note;
 
 
-StickNoteImportModule::StickNoteImportModule()
+StickyNoteImportModule::StickyNoteImportModule()
 {
-  ADD_INTERFACE_IMPL(StickNoteImportNoteAddin);
+  ADD_INTERFACE_IMPL(StickyNoteImportNoteAddin);
 }
-const char * StickNoteImportModule::id() const
+const char * StickyNoteImportModule::id() const
 {
-  return "StickNoteImportAddin";
+  return "StickyNoteImportAddin";
 }
-const char * StickNoteImportModule::name() const
+const char * StickyNoteImportModule::name() const
 {
   return _("Sticky Notes Importer");
 }
-const char * StickNoteImportModule::description() const
+const char * StickyNoteImportModule::description() const
 {
   return _("Import your notes from the Sticky Notes applet.");
 }
-const char * StickNoteImportModule::authors() const
+const char * StickyNoteImportModule::authors() const
 {
   return _("Hubert Figuiere and the Tomboy Project");
 }
-const char * StickNoteImportModule::category() const
+const char * StickyNoteImportModule::category() const
 {
   return "Tools";
 }
-const char * StickNoteImportModule::version() const
+const char * StickyNoteImportModule::version() const
 {
   return "0.1";
 }
@@ -77,13 +77,13 @@ static const char * DEBUG_FIRST_RUN_DETECTED = "StickyNoteImporter: Detecting th
 //static const char * DEBUG_GCONF_SET_ERROR_BASE = "StickyNoteImporter: Error setting initial GConf first run key value: %s";
 
 
-bool StickNoteImportNoteAddin::s_static_inited = false;
-bool StickNoteImportNoteAddin::s_sticky_file_might_exist = true;
-bool StickNoteImportNoteAddin::s_sticky_file_existence_confirmed = false;
-std::string StickNoteImportNoteAddin::s_sticky_xml_path;
+bool StickyNoteImportNoteAddin::s_static_inited = false;
+bool StickyNoteImportNoteAddin::s_sticky_file_might_exist = true;
+bool StickyNoteImportNoteAddin::s_sticky_file_existence_confirmed = false;
+std::string StickyNoteImportNoteAddin::s_sticky_xml_path;
 
 
-void StickNoteImportNoteAddin::_init_static()
+void StickyNoteImportNoteAddin::_init_static()
 {
   if(!s_static_inited) {
     s_sticky_xml_path = Glib::get_home_dir() + STICKY_XML_REL_PATH;
@@ -91,44 +91,48 @@ void StickNoteImportNoteAddin::_init_static()
   }
 }
 
-void StickNoteImportNoteAddin::initialize()
+void StickyNoteImportNoteAddin::initialize()
 {
 	// Don't add item to tools menu if Sticky Notes XML file does not
   // exist. Only check for the file once, since Initialize is called
-  // for each note when Tomboy starts up.
+  // for each note when Gnote starts up.
   if (s_sticky_file_might_exist) {
     if (s_sticky_file_existence_confirmed || sharp::file_exists (s_sticky_xml_path)) {
+#if 0
       m_item = manage(new Gtk::ImageMenuItem (_("Import from Sticky Notes")));
       m_item->set_image(*manage(new Gtk::Image (Gtk::Stock::CONVERT, Gtk::ICON_SIZE_MENU)));
       m_item->signal_activate().connect(
-        sigc::mem_fun(*this, &StickNoteImportNoteAddin::import_button_clicked));
+        sigc::bind(sigc::mem_fun(*this, &StickyNoteImportNoteAddin::import_button_clicked));
       m_item->show ();
       add_plugin_menu_item (m_item);
-
+#endif
       s_sticky_file_existence_confirmed = true;
-      check_for_first_run();
     } 
     else {
       s_sticky_file_might_exist = false;
       DBG_OUT(DEBUG_NO_STICKY_FILE);
     }
   }
-
 }
 
 
 
-void StickNoteImportNoteAddin::shutdown()
+void StickyNoteImportNoteAddin::shutdown()
 {
 }
 
 
-void StickNoteImportNoteAddin::on_note_opened()
+
+bool StickyNoteImportNoteAddin::want_to_run()
 {
+  if(s_sticky_file_might_exist) {
+    return Preferences::obj().get<bool>(Preferences::STICKYNOTEIMPORTER_FIRST_RUN);
+  }
+  return false;  
 }
 
 
-void StickNoteImportNoteAddin::check_for_first_run()
+bool StickyNoteImportNoteAddin::first_run(gnote::NoteManager & manager)
 {
   bool firstRun = Preferences::obj().get<bool> (Preferences::STICKYNOTEIMPORTER_FIRST_RUN);
 
@@ -140,15 +144,18 @@ void StickNoteImportNoteAddin::check_for_first_run()
     xmlDocPtr xml_doc = get_sticky_xml_doc();
     if (xml_doc) {
       // Don't show dialog when automatically importing
-      import_notes (xml_doc, false);
+      import_notes (xml_doc, false, manager);
       xmlFreeDoc(xml_doc);
     }
+    else {
+      firstRun = false;
+    }
   }
-
+  return firstRun;
 }
 
 
-xmlDocPtr StickNoteImportNoteAddin::get_sticky_xml_doc()
+xmlDocPtr StickyNoteImportNoteAddin::get_sticky_xml_doc()
 {
   if (sharp::file_exists(s_sticky_xml_path)) {
     xmlDocPtr xml_doc = xmlReadFile(s_sticky_xml_path.c_str(), "UTF-8", 0);
@@ -164,11 +171,11 @@ xmlDocPtr StickNoteImportNoteAddin::get_sticky_xml_doc()
 }
 
 
-void StickNoteImportNoteAddin::import_button_clicked()
+void StickyNoteImportNoteAddin::import_button_clicked(gnote::NoteManager & manager)
 {
   xmlDocPtr xml_doc = get_sticky_xml_doc();
   if(xml_doc) {
-    import_notes (xml_doc, true);
+    import_notes (xml_doc, true, manager);
   }
   else {
     show_no_sticky_xml_dialog(s_sticky_xml_path);
@@ -176,7 +183,7 @@ void StickNoteImportNoteAddin::import_button_clicked()
 }
 
 
-void StickNoteImportNoteAddin::show_no_sticky_xml_dialog(const std::string & xml_path)
+void StickyNoteImportNoteAddin::show_no_sticky_xml_dialog(const std::string & xml_path)
 {
   show_message_dialog (
     _("No Sticky Notes found"),
@@ -186,7 +193,7 @@ void StickNoteImportNoteAddin::show_no_sticky_xml_dialog(const std::string & xml
 }
 
 
-void StickNoteImportNoteAddin::show_results_dialog(int numNotesImported, int numNotesTotal)
+void StickyNoteImportNoteAddin::show_results_dialog(int numNotesImported, int numNotesTotal)
 {
 	show_message_dialog (
     _("Sticky Notes import completed"),
@@ -197,7 +204,9 @@ void StickNoteImportNoteAddin::show_results_dialog(int numNotesImported, int num
 }
 
 
-void StickNoteImportNoteAddin::import_notes(xmlDocPtr xml_doc, bool showResultsDialog)
+void StickyNoteImportNoteAddin::import_notes(xmlDocPtr xml_doc,
+                                             bool showResultsDialog,
+                                             gnote::NoteManager & manager)
 {
   xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
   if(!root_node) {
@@ -225,7 +234,7 @@ void StickNoteImportNoteAddin::import_notes(xmlDocPtr xml_doc, bool showResultsD
     xmlChar * stickyContent = xmlNodeGetContent(node);
 
     if(stickyContent) {
-      if (create_note_from_sticky ((const char*)stickyTitle, (const char*)stickyContent)) {
+      if (create_note_from_sticky ((const char*)stickyTitle, (const char*)stickyContent, manager)) {
         numSuccessful++;
       }
       xmlFree(stickyContent);
@@ -242,8 +251,9 @@ void StickNoteImportNoteAddin::import_notes(xmlDocPtr xml_doc, bool showResultsD
 }
 
 
-bool StickNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle, 
-                                                       const char* content)
+bool StickyNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle,
+                                                        const char* content,
+                                                        gnote::NoteManager & manager)
 {
   // There should be no XML in the content
   // TODO: Report the error in the results dialog
@@ -259,7 +269,7 @@ bool StickNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle,
   std::string title = preferredTitle;
 
   int i = 2; // Append numbers to create unique title, starting with 2
-  while (manager().find(title)){
+  while (manager.find(title)){
     title = str(boost::format("%1% (#%2%)") % preferredTitle % i);
     i++;
   }
@@ -268,7 +278,7 @@ bool StickNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle,
                                           "%2%</note-content>") % title % content);
 
   try {
-    Note::Ptr newNote = manager().create(title, noteXml);
+    Note::Ptr newNote = manager.create(title, noteXml);
     newNote->queue_save (Note::NO_CHANGE);
     newNote->save();
     return true;
@@ -280,11 +290,11 @@ bool StickNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle,
 }
 
 
-void StickNoteImportNoteAddin::show_message_dialog(const std::string & title, 
+void StickyNoteImportNoteAddin::show_message_dialog(const std::string & title,
                                                    const std::string & message,
                                                    Gtk::MessageType messageType)
 {
-  gnote::utils::HIGMessageDialog dialog(get_window(),
+  gnote::utils::HIGMessageDialog dialog(NULL,
                                         GTK_DIALOG_DESTROY_WITH_PARENT,
                                         messageType,
                                         Gtk::BUTTONS_OK,

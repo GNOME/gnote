@@ -25,18 +25,19 @@
 #include <libxml/tree.h>
 
 #include <gtkmm/imagemenuitem.h>
+#include <gtkmm/messagedialog.h>
 
 #include "sharp/dynamicmodule.hpp"
-#include "noteaddin.hpp"
+#include "importaddin.hpp"
 
 namespace stickynote {
 
 
-class StickNoteImportModule
+class StickyNoteImportModule
   : public sharp::DynamicModule
 {
 public:
-  StickNoteImportModule();
+  StickyNoteImportModule();
   virtual const char * id() const;
   virtual const char * name() const;
   virtual const char * description() const;
@@ -46,34 +47,37 @@ public:
 };
 
 
-DECLARE_MODULE(StickNoteImportModule);
+DECLARE_MODULE(StickyNoteImportModule);
 
-class StickNoteImportNoteAddin
-  : public gnote::NoteAddin
+class StickyNoteImportNoteAddin
+  : public gnote::ImportAddin
 {
 public:
 
-  static StickNoteImportNoteAddin * create()
+  static StickyNoteImportNoteAddin * create()
     {
-      return new StickNoteImportNoteAddin;
+      return new StickyNoteImportNoteAddin;
     }
 
-  StickNoteImportNoteAddin()
+  StickyNoteImportNoteAddin()
     {
       _init_static();
     }
   virtual void initialize();
   virtual void shutdown();
-  virtual void on_note_opened();
+
+  virtual bool want_to_run();
+  virtual bool first_run(gnote::NoteManager & manager);
 
 private:
-  void check_for_first_run();
+  void check_for_first_run(gnote::NoteManager & manager);
   xmlDocPtr get_sticky_xml_doc();
-  void import_button_clicked();
+  void import_button_clicked(gnote::NoteManager & manager);
   void show_no_sticky_xml_dialog(const std::string & xml_path);
   void show_results_dialog(int numNotesImported, int numNotesTotal);
-  void import_notes(xmlDocPtr xml_doc, bool showResultsDialog);
-  bool create_note_from_sticky(const char * stickyTitle, const char* content);
+  void import_notes(xmlDocPtr xml_doc, bool showResultsDialog, gnote::NoteManager & manager);
+  bool create_note_from_sticky(const char * stickyTitle, const char* content,
+                               gnote::NoteManager & manager);
   void show_message_dialog(const std::string & title, const std::string & message, 
                            Gtk::MessageType messageType);
 
