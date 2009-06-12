@@ -326,7 +326,7 @@ namespace gnote {
   {
     m_tag_applied_cid.disconnect();
     
-    if(!m_obj_ptr) {
+    if(m_obj_ptr) {
       gtkspell_detach(m_obj_ptr);
       m_obj_ptr = NULL;
     }
@@ -337,7 +337,7 @@ namespace gnote {
   {
     const char * key = gconf_entry_get_key(entry);
     
-    if (strcmp(key, Preferences::ENABLE_SPELLCHECKING) == 0) {
+    if (strcmp(key, Preferences::ENABLE_SPELLCHECKING) != 0) {
       return;
     }
     GConfValue *value = gconf_entry_get_value(entry);
