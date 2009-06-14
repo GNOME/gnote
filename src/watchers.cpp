@@ -976,7 +976,7 @@ namespace gnote {
   {
     const char * key = gconf_entry_get_key(entry);
     
-    if (strcmp(key, Preferences::ENABLE_WIKIWORDS) == 0) {
+    if (strcmp(key, Preferences::ENABLE_WIKIWORDS) != 0) {
       return;
     }
     GConfValue * value = gconf_entry_get_value(entry);
