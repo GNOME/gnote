@@ -76,6 +76,8 @@ static const char * DEBUG_CREATE_ERROR_BASE = "StickyNoteImporter: Error while t
 static const char * DEBUG_FIRST_RUN_DETECTED = "StickyNoteImporter: Detecting that importer has never been run...";
 //static const char * DEBUG_GCONF_SET_ERROR_BASE = "StickyNoteImporter: Error setting initial GConf first run key value: %s";
 
+const char * TB_STICKYNOTEIMPORTER_FIRST_RUN =
+  "/apps/tomboy/sticky_note_importer/sticky_importer_first_run";
 
 bool StickyNoteImportNoteAddin::s_static_inited = false;
 bool StickyNoteImportNoteAddin::s_sticky_file_might_exist = true;
@@ -125,10 +127,37 @@ void StickyNoteImportNoteAddin::shutdown()
 
 bool StickyNoteImportNoteAddin::want_to_run()
 {
+  bool want_run;
+
   if(s_sticky_file_might_exist) {
-    return Preferences::obj().get<bool>(Preferences::STICKYNOTEIMPORTER_FIRST_RUN);
+    want_run = Preferences::obj().get<bool>(Preferences::STICKYNOTEIMPORTER_FIRST_RUN);
+    if(want_run) {
+      // we think we want to run
+      // so we check for Tomboy. If Tomboy wants to run then we want
+
+      GConfClient * client = Preferences::obj().get_client();
+      GError * error = NULL;
+      gboolean tb_must_run = gconf_client_get_bool(client,
+                                                   TB_STICKYNOTEIMPORTER_FIRST_RUN,
+                                                   &error);
+      if(error) {
+        // the key don't exist. Tomboy has not been installed.
+        // we want to run.
+        DBG_OUT("gconf error %s", error->message);
+        tb_must_run = true;
+        g_error_free(error);
+      }
+      DBG_OUT("tb_must_run %d", tb_must_run);
+      // we decided that if Tomboy don't want to run then SticjyNotes are
+      // probably already imported.
+      if(!tb_must_run) {
+        // Mark like we already ran.
+        Preferences::obj().set<bool>(Preferences::STICKYNOTEIMPORTER_FIRST_RUN, false);
+        want_run = false;
+      }
+    }
   }
-  return false;  
+  return want_run;
 }
 
 

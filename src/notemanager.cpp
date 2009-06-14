@@ -132,8 +132,9 @@ namespace gnote {
 
         DBG_OUT("importing");
         (*iter)->initialize();
-        has_imported |= (*iter)->first_run(*this);
-        (*iter)->shutdown();
+        if((*iter)->want_to_run()) {
+          has_imported |= (*iter)->first_run(*this);
+        }
       }
 
       // First run. Create "Start Here" notes.

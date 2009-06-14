@@ -113,6 +113,10 @@ namespace gnote {
     // this is very hackish. maybe I should just use gconfmm
     guint add_notify(const char *ns, GConfClientNotifyFunc func, gpointer data);
     void remove_notify(guint);
+    GConfClient * get_client() const
+      {
+        return m_client;
+      }
   private:
     Preferences(const Preferences &); // non implemented
     GConfClient        *m_client;
