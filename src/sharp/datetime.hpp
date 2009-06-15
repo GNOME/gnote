@@ -74,6 +74,10 @@ public:
     {
       return m_date.tv_usec;
     }
+  void set_usec(glong _usec) 
+    {
+      m_date.tv_usec = _usec;
+    }
 private:
   // return the string formatted according to strftime
   std::string _to_string(const char * format, struct tm *) const;

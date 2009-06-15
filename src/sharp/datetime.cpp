@@ -114,6 +114,12 @@ namespace sharp {
     char *  iso8601 = g_time_val_to_iso8601(const_cast<GTimeVal*>(&m_date));
     if(iso8601) {
       retval = iso8601;
+      if(m_date.tv_usec == 0) {
+        // see http://bugzilla.gnome.org/show_bug.cgi?id=581844
+        // when usec is 0, glib/libc does NOT add the usec values
+        // to the output
+        retval.insert(19, ".000000");
+      }
       g_free(iso8601);
     }
     return retval;

@@ -41,6 +41,13 @@ int test_main(int /*argc*/, char ** /*argv*/)
   sharp::DateTime d3 = sharp::DateTime::from_iso8601("2009-03-24T03:34:35.2914680-04:00");
   BOOST_CHECK(d3.is_valid());
 
+  // check when usec is 0.
+  // see http://bugzilla.gnome.org/show_bug.cgi?id=581844
+  d3.set_usec(0);
+
+  date_string = sharp::XmlConvert::to_string(d3);
+  BOOST_CHECK(date_string == "2009-03-24T07:34:35.000000Z");
+
   return 0;
 }
 
