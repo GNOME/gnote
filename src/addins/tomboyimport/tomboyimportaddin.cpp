@@ -80,7 +80,7 @@ void TomboyImportAddin::shutdown()
 }
 
 
-bool TomboyImportAddin::want_to_run()
+bool TomboyImportAddin::want_to_run(gnote::NoteManager & )
 {
   return sharp::directory_exists(m_tomboy_path);
 }

@@ -60,8 +60,6 @@ namespace gnote {
     static const char *EXPORTHTML_EXPORT_LINKED;
     static const char *EXPORTHTML_EXPORT_LINKED_ALL;
 
-    static const char *STICKYNOTEIMPORTER_FIRST_RUN;
-
     static const char *SYNC_CLIENT_ID;
     static const char *SYNC_LOCAL_PATH;
     static const char *SYNC_SELECTED_SERVICE_ADDIN;

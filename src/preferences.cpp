@@ -50,8 +50,6 @@ namespace gnote {
   const char * Preferences::EXPORTHTML_EXPORT_LINKED = "/apps/gnote/export_html/export_linked";
   const char * Preferences::EXPORTHTML_EXPORT_LINKED_ALL = "/apps/gnote/export_html/export_linked_all";
 
-  const char * Preferences::STICKYNOTEIMPORTER_FIRST_RUN = "/apps/gnote/sticky_note_importer/sticky_importer_first_run";
-
   const char * Preferences::SYNC_CLIENT_ID = "/apps/gnote/sync/sync_guid";
   const char * Preferences::SYNC_LOCAL_PATH = "/apps/gnote/sync/sync_local_path";
   const char * Preferences::SYNC_SELECTED_SERVICE_ADDIN = "/apps/gnote/sync/sync_selected_service_addin";

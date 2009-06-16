@@ -76,6 +76,7 @@ endif
 libgnote_a_SOURCES = \
 	base/singleton.hpp \
 	base/macros.hpp \
+	base/inifile.hpp base/inifile.cpp \
 	sharp/addinstreemodel.hpp sharp/addinstreemodel.cpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/dynamicmodule.hpp sharp/dynamicmodule.cpp \

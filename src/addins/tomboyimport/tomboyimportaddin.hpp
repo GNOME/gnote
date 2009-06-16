@@ -58,7 +58,7 @@ public:
     }
   virtual void initialize();
   virtual void shutdown();
-  virtual bool want_to_run();
+  virtual bool want_to_run(gnote::NoteManager & manager);
   virtual bool first_run(gnote::NoteManager & manager);
 
 private:

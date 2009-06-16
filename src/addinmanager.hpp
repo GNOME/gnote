@@ -46,6 +46,11 @@ public:
   AddinManager(const std::string & conf_dir);
   ~AddinManager();
 
+  std::string & get_prefs_dir()
+    {
+      return m_addins_prefs_dir;
+    }
+
   void load_addins_for_note(const Note::Ptr &);
   void get_application_addins(std::list<ApplicationAddin*> &) const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
@@ -64,6 +69,7 @@ private:
   void initialize_sharp_addins();
     
   const std::string m_gnote_conf_dir;
+  std::string m_addins_prefs_dir;
   sharp::ModuleManager m_module_manager;
   std::list<sharp::IfaceFactoryBase*> m_builtin_ifaces;
   /// Key = TypeExtensionNode.Id

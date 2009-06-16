@@ -132,7 +132,7 @@ namespace gnote {
 
         DBG_OUT("importing");
         (*iter)->initialize();
-        if((*iter)->want_to_run()) {
+        if((*iter)->want_to_run(*this)) {
           has_imported |= (*iter)->first_run(*this);
         }
       }

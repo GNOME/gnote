@@ -24,6 +24,7 @@
 #include <boost/checked_delete.hpp>
 
 #include "sharp/map.hpp"
+#include "sharp/directory.hpp"
 #include "sharp/dynamicmodule.hpp"
 
 #include "addinmanager.hpp"
@@ -37,13 +38,14 @@
 #if 1
 
 // HACK to make sure we link the modules needed only for addins
-
+#include "base/inifile.hpp"
 #include "sharp/fileinfo.hpp"
 #include "sharp/streamwriter.hpp"
 #include "sharp/xsltransform.hpp"
 #include "sharp/xsltargumentlist.hpp"
 
 bool links[] = {
+  base::IniFileLink_,
   sharp::FileInfoLink_,
   sharp::StreamWriterLink_,
   sharp::XslTransformLink_,
@@ -69,6 +71,7 @@ namespace gnote {
   AddinManager::AddinManager(const std::string & conf_dir)
     : m_gnote_conf_dir(conf_dir)
   {
+    m_addins_prefs_dir = Glib::build_filename(conf_dir, "addins");
     initialize_sharp_addins();
   }
 
@@ -89,6 +92,15 @@ namespace gnote {
 
   void AddinManager::initialize_sharp_addins()
   {
+
+    try {
+      if(!sharp::directory_exists(m_addins_prefs_dir)) {
+        sharp::directory_create(m_addins_prefs_dir);
+      }
+    }
+    catch(...) {
+
+    }
     // get the factory
 
     REGISTER_BUILTIN_NOTE_ADDIN(NoteRenameWatcher);

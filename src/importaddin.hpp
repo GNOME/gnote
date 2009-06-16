@@ -40,12 +40,12 @@ public:
 
   /** Return whether the importer want to run at startup or not 
    */
-  virtual bool want_to_run() = 0;
+  virtual bool want_to_run(NoteManager & manager) = 0;
   /** Run import during first run.
    *  @param manager the NoteManager to import into.
    *  @return true in case of success.
    */
-  virtual bool first_run(gnote::NoteManager & manager) = 0;
+  virtual bool first_run(NoteManager & manager) = 0;
 
 protected:
   bool m_initialized;

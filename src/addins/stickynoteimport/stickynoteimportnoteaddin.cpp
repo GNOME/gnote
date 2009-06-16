@@ -20,13 +20,16 @@
 #include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
+#include <glibmm/keyfile.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 
+#include "base/inifile.hpp"
 #include "stickynoteimportnoteaddin.hpp"
 #include "sharp/files.hpp"
 #include "sharp/string.hpp"
 #include "sharp/xml.hpp"
+#include "addinmanager.hpp"
 #include "debug.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
@@ -75,6 +78,8 @@ static const char * DEBUG_NO_STICKY_FILE = "StickyNoteImporter: Sticky Notes XML
 static const char * DEBUG_CREATE_ERROR_BASE = "StickyNoteImporter: Error while trying to create note \"%s\": %s";
 static const char * DEBUG_FIRST_RUN_DETECTED = "StickyNoteImporter: Detecting that importer has never been run...";
 //static const char * DEBUG_GCONF_SET_ERROR_BASE = "StickyNoteImporter: Error setting initial GConf first run key value: %s";
+
+static const char * PREFS_FILE = "stickynoteimport.ini";
 
 const char * TB_STICKYNOTEIMPORTER_FIRST_RUN =
   "/apps/tomboy/sticky_note_importer/sticky_importer_first_run";
@@ -125,12 +130,18 @@ void StickyNoteImportNoteAddin::shutdown()
 
 
 
-bool StickyNoteImportNoteAddin::want_to_run()
+bool StickyNoteImportNoteAddin::want_to_run(gnote::NoteManager & manager)
 {
   bool want_run;
+  std::string prefs_file =
+    Glib::build_filename(manager.get_addin_manager().get_prefs_dir(),
+                         PREFS_FILE);
+  base::IniFile ini_file(prefs_file);
+  ini_file.load();
 
   if(s_sticky_file_might_exist) {
-    want_run = Preferences::obj().get<bool>(Preferences::STICKYNOTEIMPORTER_FIRST_RUN);
+    want_run = !ini_file.get_bool("status", "first_run");
+
     if(want_run) {
       // we think we want to run
       // so we check for Tomboy. If Tomboy wants to run then we want
@@ -152,7 +163,8 @@ bool StickyNoteImportNoteAddin::want_to_run()
       // probably already imported.
       if(!tb_must_run) {
         // Mark like we already ran.
-        Preferences::obj().set<bool>(Preferences::STICKYNOTEIMPORTER_FIRST_RUN, false);
+        ini_file.set_bool("status", "first_run", true);
+//        Preferences::obj().set<bool>(Preferences::STICKYNOTEIMPORTER_FIRST_RUN, false);
         want_run = false;
       }
     }
@@ -163,10 +175,19 @@ bool StickyNoteImportNoteAddin::want_to_run()
 
 bool StickyNoteImportNoteAddin::first_run(gnote::NoteManager & manager)
 {
-  bool firstRun = Preferences::obj().get<bool> (Preferences::STICKYNOTEIMPORTER_FIRST_RUN);
+  base::IniFile ini_file(Glib::build_filename(
+                           manager.get_addin_manager().get_prefs_dir(), 
+                           PREFS_FILE));
+  
+  ini_file.load();
+
+  bool firstRun = !ini_file.get_bool("status", "first_run");
+//Preferences::obj().get<bool> (Preferences::STICKYNOTEIMPORTER_FIRST_RUN);
 
   if (firstRun) {
-    Preferences::obj().set<bool> (Preferences::STICKYNOTEIMPORTER_FIRST_RUN, false);
+    ini_file.set_bool("status", "first_run", true);
+
+//    Preferences::obj().set<bool> (Preferences::STICKYNOTEIMPORTER_FIRST_RUN, false);
 
     DBG_OUT(DEBUG_FIRST_RUN_DETECTED);
 
