@@ -38,12 +38,16 @@ class IniFile
 public:
   
   IniFile(const std::string & filename)
-    : m_filename(filename)
+    : m_dirty(false)
+    , m_filename(filename)
     , m_keyfile(g_key_file_new())
     {
     }
   ~IniFile()
     {
+      if(m_dirty) {
+        save();
+      }
       g_key_file_free(m_keyfile);
     }
 
@@ -53,7 +57,8 @@ public:
   void set_bool(const char * group, const char * key, bool value);
 
 private:
-  std::string m_filename;
+  bool         m_dirty;
+  std::string  m_filename;
   GKeyFile    *m_keyfile;
 };
 

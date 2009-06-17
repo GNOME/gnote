@@ -101,6 +101,7 @@ bool IniFile::get_bool(const char * group, const char * key, bool dflt)
 void IniFile::set_bool(const char * group, const char * key, bool value)
 {
   g_key_file_set_boolean(m_keyfile, group, key, value);
+  m_dirty = true;
 }
 
 
