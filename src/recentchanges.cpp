@@ -768,7 +768,10 @@ namespace gnote {
                   
     m_tree->get_path_at_pos (ev->x, ev->y,
                              dest_path, column, unused, unused);
-    if (dest_path.empty())
+    // we need to test gobj() isn't NULL.
+    // See Gtkmm bug 586437
+    // https://bugzilla.gnome.org/show_bug.cgi?id=586437
+    if (dest_path.empty() || !dest_path.gobj())
       return false;
                   
     m_clickX = ev->x;
@@ -785,7 +788,12 @@ namespace gnote {
                     
       m_tree->get_selection()->unselect_all ();
       m_tree->get_selection()->select(dest_path);
-      m_tree->row_activated(dest_path, *column);
+      // apparently Gtk::TreeView::row_activated() require a dest_path
+      // while get_path_at_pos() can return a NULL pointer.
+      // See Gtkmm bug 586438
+      // https://bugzilla.gnome.org/show_bug.cgi?id=586438
+      gtk_tree_view_row_activated(m_tree->gobj(), dest_path.gobj(), 
+                                  column?column->gobj():NULL);
       break;
     case GDK_BUTTON_PRESS:
       if (ev->button == 3) {
