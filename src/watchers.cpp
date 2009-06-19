@@ -519,7 +519,8 @@ namespace gnote {
       // must construct the Glib::ustring from a char *.
       // otherwise it expect the num of chars (UTF-8) instead of bytes.
       // here we compute the index of the URL. It is anchor - start - match.
-      Glib::ustring segment(p, input.data() - p - match1.size());
+      Glib::ustring::size_type len = input.data() - p - match1.size();
+      Glib::ustring segment(p, p + len);
       start_cpy.forward_chars (segment.size());
 
       end = start_cpy;
@@ -1036,7 +1037,8 @@ namespace gnote {
       if (!is_patronymic_name (match)) {
       
         Gtk::TextIter start_cpy = start;
-        Glib::ustring segment(std::string(p, input.data() - p - match.size()));
+        Glib::ustring::size_type len = input.data() - p - match.size();
+        Glib::ustring segment(p, p + len);
         start_cpy.forward_chars (segment.length());
 
         DBG_OUT("Highlighting wikiword: '%s' at offset %d",
