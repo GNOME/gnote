@@ -136,6 +136,8 @@ namespace gnote {
           has_imported |= (*iter)->first_run(*this);
         }
       }
+      // we MUST call this after import
+      post_load();
 
       // First run. Create "Start Here" notes.
       create_start_notes ();
@@ -310,7 +312,24 @@ namespace gnote {
                 file_path.c_str(), e.what());
       }
     }
-      
+    post_load();
+    // Make sure that a Start Note Uri is set in the preferences, and
+    // make sure that the Uri is valid to prevent bug #508982. This
+    // has to be done here for long-time Tomboy users who won't go
+    // through the create_start_notes () process.
+    if (start_note_uri().empty() ||
+        !find_by_uri(start_note_uri())) {
+      // Attempt to find an existing Start Here note
+      Note::Ptr start_note = find (_("Start Here"));
+      if (start_note) {
+        Preferences::obj().set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
+      }
+    }
+  }
+
+
+  void NoteManager::post_load()
+  {
     m_notes.sort (boost::bind(&compare_dates, _1, _2));
 
     // Update the trie so addins can access it, if they want.
@@ -338,20 +357,6 @@ namespace gnote {
         note->queue_save (Note::NO_CHANGE);
       }
     }
-
-    // Make sure that a Start Note Uri is set in the preferences, and
-    // make sure that the Uri is valid to prevent bug #508982. This
-    // has to be done here for long-time Tomboy users who won't go
-    // through the create_start_notes () process.
-    if (start_note_uri().empty() ||
-        !find_by_uri(start_note_uri())) {
-      // Attempt to find an existing Start Here note
-      Note::Ptr start_note = find (_("Start Here"));
-      if (start_note) {
-        Preferences::obj().set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
-      }
-    }
-    
   }
 
   bool NoteManager::on_exiting_event()

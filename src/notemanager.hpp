@@ -108,6 +108,7 @@ namespace gnote {
     void create_start_notes();
     void on_note_save(const Note::Ptr & note);
     void load_notes();
+    void post_load();
     bool first_run() const;
     void create_notes_dir() const;
     bool on_exiting_event();

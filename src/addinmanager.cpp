@@ -149,6 +149,10 @@ namespace gnote {
 
   void AddinManager::load_addins_for_note(const Note::Ptr & note)
   {
+    if(m_note_addins.find(note) != m_note_addins.end()) {
+      ERR_OUT("trying to load addins when they are already loaded");
+      return;
+    }
     std::list<NoteAddin *> loaded_addins;
     m_note_addins[note] = loaded_addins;
 
