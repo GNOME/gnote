@@ -134,7 +134,7 @@ void StickyNoteImportNoteAddin::shutdown()
 
 bool StickyNoteImportNoteAddin::want_to_run(gnote::NoteManager & manager)
 {
-  bool want_run;
+  bool want_run = false;
   std::string prefs_file =
     Glib::build_filename(manager.get_addin_manager().get_prefs_dir(),
                          PREFS_FILE);
