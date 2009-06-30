@@ -1,3 +1,22 @@
+0.5.2 "Canada day" - 2009/07/01
+
+Fixes:
+
+  * Avoid a crash in a race condition when deleting a note.
+  (Closes #587395)
+  * Fix a leak with libxml2 usage once in the lifetime.
+  * Free the import addins at the end.
+  * Can now delete several notes in the list at once. (Closes #587350)
+  * List were broken when not in ASCII. (Closes #587070 and dupes)
+  * Prevent a crash in the destruction chain NoteWindow (Closes #586084)
+  * Remove the synchronisation menu item until Sync is implemented 
+    (Closes #585610)
+
+Translations:
+
+  * Updated translations:
+    - Arabic (ar)
+
 0.5.1 - 2009/06/24
 
 Fixes:
