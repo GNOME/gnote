@@ -197,6 +197,8 @@ namespace gnote {
     m_global_keys = NULL;
     delete m_mark_set_timeout;
     m_mark_set_timeout = NULL;
+    // make sure editor is NULL. See bug 586084
+    m_editor = NULL;
     Preferences::obj().remove_notify(m_gconf_notify);
   }
 
@@ -560,7 +562,9 @@ namespace gnote {
   {
     // Reposition the current focus back to the editor so the
     // cursor will be ready for typing.
-    m_editor->grab_focus();
+    if(m_editor) {
+      m_editor->grab_focus();
+    }
   }
 
   //
