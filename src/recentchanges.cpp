@@ -1005,8 +1005,9 @@ namespace gnote {
   void NoteRecentChanges::on_delete_note()
   {
     Note::List selected_notes = get_selected_notes ();
-    if (selected_notes.size() != 1)
+    if (selected_notes.empty()) {
       return;
+    }
                   
     noteutils::show_deletion_dialog(selected_notes, this);
   }
