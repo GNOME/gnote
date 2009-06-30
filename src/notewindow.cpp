@@ -461,7 +461,8 @@ namespace gnote {
       m_delete_button->set_sensitive(false);
     }
     tb->insert(*manage(new Gtk::SeparatorToolItem()), -1);
-    
+
+#if 0    // Disable because of bug 585610
     Gtk::ImageMenuItem *item =
       manage(new Gtk::ImageMenuItem (_("Synchronize Notes")));
     item->set_image(*manage(new Gtk::Image(Gtk::Stock::CONVERT, Gtk::ICON_SIZE_MENU)));
@@ -469,6 +470,7 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteWindow::sync_item_selected));
     item->show();
     m_plugin_menu->add(*item);
+#endif
 
     tb->show_all();
     return tb;
