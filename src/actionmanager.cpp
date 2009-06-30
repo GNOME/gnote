@@ -160,6 +160,7 @@ namespace gnote {
         xmlFree(prop);
       }
     }
+    xmlFreeDoc(doc);
   }
 
 

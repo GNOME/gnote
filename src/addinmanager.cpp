@@ -84,6 +84,7 @@ namespace gnote {
                     boost::bind(&boost::checked_delete<NoteAddin>, _1));
     }
     sharp::map_delete_all_second(m_addin_prefs);
+    sharp::map_delete_all_second(m_import_addins);
     for(std::list<sharp::IfaceFactoryBase*>::iterator iter = m_builtin_ifaces.begin();
         iter != m_builtin_ifaces.end(); ++iter) {
       delete *iter;
