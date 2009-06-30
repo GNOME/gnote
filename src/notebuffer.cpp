@@ -1405,6 +1405,7 @@ namespace gnote {
     int offset = start.get_offset();
     std::stack<TagStart> tag_stack;
     TagStart tag_start;
+    Glib::ustring value;
 
     NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(buffer->get_tag_table());
 
@@ -1465,9 +1466,12 @@ namespace gnote {
         case XML_READER_TYPE_WHITESPACE:
         case XML_READER_TYPE_SIGNIFICANT_WHITESPACE:
           insert_at = buffer->get_iter_at_offset (offset);
-          buffer->insert (insert_at, xml.get_value());
+          value = xml.get_value();
+          buffer->insert (insert_at, value);
 
-          offset += xml.get_value().size();
+          // we need the # of chars *Unicode) and not bytes (ASCII)
+          // see bug #587070
+          offset += value.length();
 
           // If we are inside a <list-item> mark off
           // that we have encountered some content
