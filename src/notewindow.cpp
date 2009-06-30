@@ -194,7 +194,9 @@ namespace gnote {
   NoteWindow::~NoteWindow()
   {
     delete m_global_keys;
+    m_global_keys = NULL;
     delete m_mark_set_timeout;
+    m_mark_set_timeout = NULL;
     Preferences::obj().remove_notify(m_gconf_notify);
   }
 
@@ -293,7 +295,9 @@ namespace gnote {
   void NoteWindow::on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&)
   {
     // FIXME: Process in a timeout due to GTK+ bug #172050.
-    m_mark_set_timeout->reset(0);
+    if(m_mark_set_timeout) {
+      m_mark_set_timeout->reset(0);
+    }
   }
 
   void NoteWindow::update_link_button_sensitivity()
