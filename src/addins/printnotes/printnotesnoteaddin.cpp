@@ -60,7 +60,7 @@ namespace printnotes {
   }
   const char * PrintNotesModule::version() const
   {
-    return "0.2";
+    return "0.3";
   }
 
   void PrintNotesNoteAddin::initialize()
@@ -93,6 +93,25 @@ namespace printnotes {
     try {
       m_print_op = Gtk::PrintOperation::create();
       m_print_op->set_job_name(get_note()->get_title());
+
+      Glib::RefPtr<Gtk::PrintSettings> settings = Gtk::PrintSettings::create();
+
+      Glib::ustring dir = Glib::get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS);
+      if (dir.empty()) {
+        dir = Glib::get_home_dir();
+      }
+      Glib::ustring ext;
+      if (settings->get(Gtk::PrintSettings::Keys::OUTPUT_FILE_FORMAT) == "ps") {
+        ext = ".ps";
+      }
+      else {
+        ext = ".pdf";
+      }
+
+      Glib::ustring uri = "file://";
+      uri += dir + "/gnotes" + ext;
+      settings->set (Gtk::PrintSettings::Keys::OUTPUT_URI, uri);
+      m_print_op->set_print_settings (settings);
 
       m_print_op->signal_begin_print().connect(
         sigc::mem_fun(*this, &PrintNotesNoteAddin::on_begin_print));
@@ -335,7 +354,6 @@ namespace printnotes {
     bool done = position.compare (end_iter) >= 0;
     while (!done) {
       int line_number = position.get_line();
-      DBG_OUT("line_number = %d", line_number);
 
       Gtk::TextIter line_end = position;
       if (!line_end.ends_line ()) {
@@ -354,7 +372,6 @@ namespace printnotes {
       if ((page_height + logical_rect.get_height()) > height) {
         m_page_breaks.push_back (line_number);
         page_height = 0;
-        DBG_OUT("new page at line %d", line_number);
       }
 
       page_height += logical_rect.get_height();
