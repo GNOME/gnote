@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-31 15:20+0900\n"
-"PO-Revision-Date: 2009-05-31 15:20+0900\n"
+"POT-Creation-Date: 2009-07-02 11:59+0900\n"
+"PO-Revision-Date: 2009-07-02 11:59+0900\n"
 "Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -33,16 +33,16 @@ msgstr "Gnote アプレットのファクトリ"
 msgid "Simple and easy to use note-taking"
 msgstr "シンプルで使いやすいデスクトップ・メモのアプリケーションです"
 
-#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:216
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:217
 msgid "_About"
 msgstr "情報(_A)"
 
-#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:207
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:208
 #: ../src/tray.cpp:468
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:204
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:205
 #: ../src/tray.cpp:463
 msgid "_Preferences"
 msgstr "設定(_P)"
@@ -204,19 +204,11 @@ msgstr ""
 
 #: ../data/gnote.schemas.in.h:29
 msgid ""
-"Indicates that the Sticky Note Importer plugin has not been run, so it "
-"should run automatically the next time Gnote starts."
-msgstr ""
-"付箋紙アプレットのインポートを行っていないことを表しています。そのため、次回 "
-"Gnote を起動したら自動的にインポートを行うことになります。"
-
-#: ../data/gnote.schemas.in.h:30
-msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr "Gnote のメニューの中に表示するメモの個数 (最小値) を表す整数値です。"
 
-#: ../data/gnote.schemas.in.h:31
+#: ../data/gnote.schemas.in.h:30
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -227,107 +219,103 @@ msgstr ""
 "メモの内容に矛盾が発生した際に実施する対応法を表した整数値です。0 は矛盾が発"
 "生した時にユーザに問い合わせを行います。"
 
-#: ../data/gnote.schemas.in.h:32
+#: ../data/gnote.schemas.in.h:31
 msgid "List of pinned notes"
 msgstr "画鋲付きのメモの一覧"
 
-#: ../data/gnote.schemas.in.h:33
+#: ../data/gnote.schemas.in.h:32
 msgid "Minimum number of notes to show in menu"
 msgstr "メニューに表示するメモの個数 (最小値)"
 
-#: ../data/gnote.schemas.in.h:34
+#: ../data/gnote.schemas.in.h:33
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "メモの同期で矛盾が発生した時の対応"
 
-#: ../data/gnote.schemas.in.h:35
+#: ../data/gnote.schemas.in.h:34
 msgid "Open Recent Changes"
 msgstr "最近変更したメモを開くキー"
 
-#: ../data/gnote.schemas.in.h:36
+#: ../data/gnote.schemas.in.h:35
 msgid "Open Search Dialog"
 msgstr "検索ダイアログを開くキー"
 
-#: ../data/gnote.schemas.in.h:37
+#: ../data/gnote.schemas.in.h:36
 msgid "Open Start Here"
 msgstr "\"ここから開始\" のメモを開くキー"
 
-#: ../data/gnote.schemas.in.h:38
+#: ../data/gnote.schemas.in.h:37
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "リモートにある Gnote の同期フォルダのパス名です (オプション)。"
 
-#: ../data/gnote.schemas.in.h:39
+#: ../data/gnote.schemas.in.h:38
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
 msgstr "ファイルシステムの同期サービスで使用するサーバのパスです。"
 
-#: ../data/gnote.schemas.in.h:40
+#: ../data/gnote.schemas.in.h:39
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "SSHFS で使うリモートの同期フォルダ"
 
-#: ../data/gnote.schemas.in.h:41
+#: ../data/gnote.schemas.in.h:40
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "SSHFS で使うユーザ名"
 
-#: ../data/gnote.schemas.in.h:42
+#: ../data/gnote.schemas.in.h:41
 msgid "SSHFS Synchronization Server Port"
 msgstr "SSHFS で使う SSH サーバのポート番号"
 
-#: ../data/gnote.schemas.in.h:43
+#: ../data/gnote.schemas.in.h:42
 msgid "SSHFS Synchronization Server URL"
 msgstr "SSHFS で使う同期先の URL"
 
-#: ../data/gnote.schemas.in.h:44
+#: ../data/gnote.schemas.in.h:43
 msgid "Saved height of Search window"
 msgstr "検索ウィンドウの高さ"
 
-#: ../data/gnote.schemas.in.h:45
+#: ../data/gnote.schemas.in.h:44
 msgid "Saved horizontal position of Search window"
 msgstr "検索ウィンドウの位置 (Ｘ座標)"
 
-#: ../data/gnote.schemas.in.h:46
+#: ../data/gnote.schemas.in.h:45
 msgid "Saved vertical position of Search window"
 msgstr "検索ウィンドウの位置 (Ｙ座標)"
 
-#: ../data/gnote.schemas.in.h:47
+#: ../data/gnote.schemas.in.h:46
 msgid "Saved width of Search window"
 msgstr "検索ウィンドウの幅"
 
-#: ../data/gnote.schemas.in.h:48
+#: ../data/gnote.schemas.in.h:47
 msgid "Selected Synchronization Service Addin"
 msgstr "選択した同期サービスのプラグイン"
 
-#: ../data/gnote.schemas.in.h:49
+#: ../data/gnote.schemas.in.h:48
 msgid "Set to TRUE to activate"
 msgstr "有効にする場合は TRUE にする"
 
-#: ../data/gnote.schemas.in.h:50
+#: ../data/gnote.schemas.in.h:49
 msgid "Show applet menu"
 msgstr "アプレット・メニューを表示するキー"
 
-#: ../data/gnote.schemas.in.h:51
+#: ../data/gnote.schemas.in.h:50
 msgid "Start Here Note"
 msgstr "ここから開始のメモ"
 
-#: ../data/gnote.schemas.in.h:52
-msgid "Sticky Note Importer First Run"
-msgstr "初回起動時に付箋紙アプレットのインポートを行うかどうか"
-
-#: ../data/gnote.schemas.in.h:53
+#: ../data/gnote.schemas.in.h:51
 msgid "Synchronization Client ID"
 msgstr "同期クライアントの ID"
 
-#: ../data/gnote.schemas.in.h:54
+#: ../data/gnote.schemas.in.h:52
 msgid "Synchronization Local Server Path"
 msgstr "同期するローカルのサーバへのパス"
 
-#: ../data/gnote.schemas.in.h:55
+#: ../data/gnote.schemas.in.h:53
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "タイムスタンプに使用する日時の書式で、strftime(3) の書式に準じます。"
 
-#: ../data/gnote.schemas.in.h:56
+#: ../data/gnote.schemas.in.h:54
 msgid ""
 "The global keybinding for creating and displaying a new Note. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -343,7 +331,7 @@ msgstr ""
 "て特殊な文字列 \"disabled\" を指定すると、このアクションに対するキーの割り当"
 "ては行われません。"
 
-#: ../data/gnote.schemas.in.h:57
+#: ../data/gnote.schemas.in.h:55
 msgid ""
 "The global keybinding for opening the \"Start Here\" note. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -359,7 +347,7 @@ msgstr ""
 "て特殊な文字列 \"disabled\" を指定すると、このアクションに対するキーの割り当"
 "ては行われません。"
 
-#: ../data/gnote.schemas.in.h:58
+#: ../data/gnote.schemas.in.h:56
 msgid ""
 "The global keybinding for opening the Note Search dialog. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -375,7 +363,7 @@ msgstr ""
 "として特殊な文字列 \"disabled\" を指定すると、このアクションに対するキーの割"
 "り当ては行われません。"
 
-#: ../data/gnote.schemas.in.h:59
+#: ../data/gnote.schemas.in.h:57
 msgid ""
 "The global keybinding for opening the Recent Changes dialog. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -391,7 +379,7 @@ msgstr ""
 "として特殊な文字列 \"disabled\" を指定すると、このアクションに対するキーの割"
 "り当ては行われません"
 
-#: ../data/gnote.schemas.in.h:60
+#: ../data/gnote.schemas.in.h:58
 msgid ""
 "The global keybinding for showing the Gnote applet's menu. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -407,18 +395,18 @@ msgstr ""
 "ションとして特殊な文字列 \"disabled\" を指定すると、このアクションに対する"
 "キーの割り当ては行われません"
 
-#: ../data/gnote.schemas.in.h:61
+#: ../data/gnote.schemas.in.h:59
 msgid "The handler for \"note://\" URLs"
 msgstr "URI \"note://\" で使用するハンドラ"
 
-#: ../data/gnote.schemas.in.h:62
+#: ../data/gnote.schemas.in.h:60
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "\"HTMLのエキスポート\" プラグインを使って、最後にエキスポートしたメモの HTML "
 "を格納したフォルダです。"
 
-#: ../data/gnote.schemas.in.h:63
+#: ../data/gnote.schemas.in.h:61
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -426,7 +414,7 @@ msgstr ""
 "\"HTML へエキスポート\" プラグインの \"メモのエキスポート\" で最後に設定した"
 "チェックボックスの状態です。"
 
-#: ../data/gnote.schemas.in.h:64
+#: ../data/gnote.schemas.in.h:62
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -438,7 +426,7 @@ msgstr ""
 "HTML にエキスポートする\" 設定と連動して、(再帰的に検出した) メモを全て HTML "
 "形式にエキスポートするかどうかを指定する際に使用します。"
 
-#: ../data/gnote.schemas.in.h:65
+#: ../data/gnote.schemas.in.h:63
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -448,12 +436,12 @@ msgstr ""
 "ニューの最下位に表示されるようになっており、ホットキーでアクセスできるように"
 "なっています。"
 
-#: ../data/gnote.schemas.in.h:66
+#: ../data/gnote.schemas.in.h:64
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Tomboy の同期フォルダを持つサーバに接続する際に使用するポート番号です。"
 
-#: ../data/gnote.schemas.in.h:67
+#: ../data/gnote.schemas.in.h:65
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -461,21 +449,21 @@ msgstr ""
 "FUSE を使って共有メモをマウントする際に Gnote が応答待ちする時間 (ミリ秒単"
 "位) です。"
 
-#: ../data/gnote.schemas.in.h:68
+#: ../data/gnote.schemas.in.h:66
 msgid "Timestamp format"
 msgstr "タイムスタンプの書式"
 
-#: ../data/gnote.schemas.in.h:69
+#: ../data/gnote.schemas.in.h:67
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "Gnote の同期フォルダを格納した SSH サーバの URL です。"
 
-#: ../data/gnote.schemas.in.h:70
+#: ../data/gnote.schemas.in.h:68
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr "メモの同期サービス・プラグインで現在設定している重複しない識別子です。"
 
-#: ../data/gnote.schemas.in.h:71
+#: ../data/gnote.schemas.in.h:69
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
@@ -483,7 +471,7 @@ msgstr ""
 "Gnote クライアントを識別する重複しない ID です (サーバと同期する際に使用しま"
 "す)。"
 
-#: ../data/gnote.schemas.in.h:72
+#: ../data/gnote.schemas.in.h:70
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -491,11 +479,11 @@ msgstr ""
 "ユーザに問い合わせを行うことなく SSL の証明書を受け入れる \"-ac\" オプション"
 "を使うかどうかです。"
 
-#: ../data/gnote.schemas.in.h:73
+#: ../data/gnote.schemas.in.h:71
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr "Tomboy の同期フォルダを持つサーバに接続する際に使用するユーザ名です。"
 
-#: ../data/gnote.schemas.in.h:74
+#: ../data/gnote.schemas.in.h:72
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -511,142 +499,142 @@ msgstr "名前"
 msgid "Description"
 msgstr "説明"
 
-#: ../src/actionmanager.cpp:169
+#: ../src/actionmanager.cpp:170
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: ../src/actionmanager.cpp:173
+#: ../src/actionmanager.cpp:174
 msgid "_New"
 msgstr "新規(_N)"
 
-#: ../src/actionmanager.cpp:174 ../src/actionmanager.cpp:225
+#: ../src/actionmanager.cpp:175 ../src/actionmanager.cpp:226
 msgid "Create a new note"
 msgstr "新しいメモを作成します"
 
-#: ../src/actionmanager.cpp:179
+#: ../src/actionmanager.cpp:180
 msgid "_Open..."
 msgstr "開く(_O)..."
 
-#: ../src/actionmanager.cpp:179
+#: ../src/actionmanager.cpp:180
 msgid "Open the selected note"
 msgstr "選択したメモを開きます"
 
-#: ../src/actionmanager.cpp:185
+#: ../src/actionmanager.cpp:186
 msgid "_Delete"
 msgstr "削除(_D)"
 
-#: ../src/actionmanager.cpp:185
+#: ../src/actionmanager.cpp:186
 msgid "Delete the selected note"
 msgstr "選択したメモを削除します"
 
-#: ../src/actionmanager.cpp:191 ../src/notewindow.cpp:370
+#: ../src/actionmanager.cpp:192 ../src/notewindow.cpp:376
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: ../src/actionmanager.cpp:191
+#: ../src/actionmanager.cpp:192
 msgid "Close this window"
 msgstr "このウィンドウを閉じます"
 
-#: ../src/actionmanager.cpp:196 ../src/tray.cpp:480
+#: ../src/actionmanager.cpp:197 ../src/tray.cpp:480
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: ../src/actionmanager.cpp:196
+#: ../src/actionmanager.cpp:197
 msgid "Quit Gnote"
 msgstr "Gnote を終了します"
 
-#: ../src/actionmanager.cpp:199
+#: ../src/actionmanager.cpp:200
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../src/actionmanager.cpp:204 ../src/preferencesdialog.cpp:86
+#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:86
 msgid "Gnote Preferences"
-msgstr "設定(_P)"
+msgstr "設定"
 
-#: ../src/actionmanager.cpp:211
+#: ../src/actionmanager.cpp:212
 msgid "_Contents"
 msgstr "目次(_C)"
 
-#: ../src/actionmanager.cpp:211
+#: ../src/actionmanager.cpp:212
 msgid "Gnote Help"
 msgstr "Gnote のヘルプ"
 
-#: ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:217
 msgid "About Gnote"
 msgstr "Gnote について"
 
-#: ../src/actionmanager.cpp:220
+#: ../src/actionmanager.cpp:221
 msgid "TrayIcon"
 msgstr "TrayIcon"
 
-#: ../src/actionmanager.cpp:225
+#: ../src/actionmanager.cpp:226
 msgid "Create _New Note"
 msgstr "新しいメモの作成(_N)"
 
-#: ../src/actionmanager.cpp:230 ../src/notewindow.cpp:322
+#: ../src/actionmanager.cpp:231 ../src/notewindow.cpp:328
 msgid "_Search All Notes"
 msgstr "全てのメモの検索(_S)"
 
-#: ../src/actionmanager.cpp:230
+#: ../src/actionmanager.cpp:231
 msgid "Open the Search All Notes window"
 msgstr "\"全てのメモの検索\" ウィンドウを開きます"
 
-#: ../src/actionmanager.cpp:235
+#: ../src/actionmanager.cpp:236
 msgid "S_ynchronize Notes"
 msgstr "メモの同期(_Y)"
 
-#: ../src/actionmanager.cpp:235
+#: ../src/actionmanager.cpp:236
 msgid "Start synchronizing notes"
 msgstr "メモの同期を開始します"
 
-#: ../src/gnote.cpp:235
+#: ../src/gnote.cpp:244
 msgid "Cannot create new note"
 msgstr "新しいメモを作成できません"
 
-#: ../src/gnote.cpp:279
+#: ../src/gnote.cpp:288
 msgid "and Tomboy original authors."
 msgstr "と Tomboy の開発者"
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:297
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
 "佐藤 暁 <ss@gnome.gr.jp>\n"
 "日本GNOMEユーザー会 http://www.gnome.gr.jp"
 
-#: ../src/gnote.cpp:296
+#: ../src/gnote.cpp:305
 msgid "Copyright © 2009 Hubert Figuiere"
 msgstr "Copyright © 2009 Hubert Figuiere"
 
-#: ../src/gnote.cpp:297
+#: ../src/gnote.cpp:306
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "シンプルで使いやすいデスクトップ・メモです。"
 
-#: ../src/gnote.cpp:308
+#: ../src/gnote.cpp:317
 msgid "Homepage"
 msgstr "ホームページ"
 
-#: ../src/gnote.cpp:348
+#: ../src/gnote.cpp:357
 msgid "A note taking application"
 msgstr "メモを取るアプリケーションです。"
 
-#: ../src/gnote.cpp:356
+#: ../src/gnote.cpp:365
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "GNOME パネルのアプレットとして起動する"
 
-#: ../src/gnote.cpp:361
+#: ../src/gnote.cpp:370
 msgid "Specify the path of the directory containing the notes."
 msgstr "メモを保存したフォルダを指定する"
 
-#: ../src/gnote.cpp:366
+#: ../src/gnote.cpp:375
 msgid "Open the search all notes window with the search text."
 msgstr "任意の文字列を指定したら \"全てのメモの検索\" ウィンドウを開く"
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:380
 msgid "Print version information."
 msgstr "バージョン情報を表示する"
 
-#: ../src/gnote.cpp:404
+#: ../src/gnote.cpp:413
 msgid "Version %1%"
 msgstr "バージョン %1%"
 
@@ -699,7 +687,7 @@ msgstr "フォントを指定する(_F)"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:102
+#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:107
 msgid "New Note Template"
 msgstr "新しいメモのテンプレート"
 
@@ -800,7 +788,7 @@ msgstr "作者:"
 msgid "Copyright:"
 msgstr "著作権:"
 
-#: ../src/notemanager.cpp:214
+#: ../src/notemanager.cpp:237
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -840,7 +828,7 @@ msgstr ""
 "internal> と入力する度に下線が自動的に付与されることに気づきましたか？ リンク"
 "をクリックしてメモを開いてみて下さい。</note-content>"
 
-#: ../src/notemanager.cpp:233
+#: ../src/notemanager.cpp:256
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -868,21 +856,21 @@ msgstr ""
 "す。</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:248 ../src/notemanager.cpp:322
+#: ../src/notemanager.cpp:271 ../src/notemanager.cpp:323
 msgid "Start Here"
 msgstr "ここから開始"
 
-#: ../src/notemanager.cpp:253
+#: ../src/notemanager.cpp:276
 msgid "Using Links in Gnote"
 msgstr "Gnote でリンクを利用する"
 
-#: ../src/notemanager.cpp:412
+#: ../src/notemanager.cpp:444
 msgid "New Note %1%"
 msgstr "新しいメモ %1%"
 
 #. Use a simple "Describe..." body and highlight
 #. it so it can be easily overwritten
-#: ../src/notemanager.cpp:489 ../src/notemanager.cpp:579
+#: ../src/notemanager.cpp:544 ../src/notemanager.cpp:634
 msgid "Describe your new note here."
 msgstr "新しいメモをここに記述して下さい。"
 
@@ -890,123 +878,123 @@ msgstr "新しいメモをここに記述して下さい。"
 msgid "Find in This Note"
 msgstr "このメモの中を検索する"
 
-#: ../src/notewindow.cpp:330
+#: ../src/notewindow.cpp:336
 msgid "_Link to New Note"
 msgstr "新しいメモへのリンク(_L)"
 
-#: ../src/notewindow.cpp:338
+#: ../src/notewindow.cpp:344
 msgid "Te_xt"
 msgstr "文字の種類(_X)"
 
-#: ../src/notewindow.cpp:347
+#: ../src/notewindow.cpp:353
 msgid "_Find in This Note"
 msgstr "このメモの中を検索する(_F)"
 
-#: ../src/notewindow.cpp:362
+#: ../src/notewindow.cpp:368
 msgid "Clos_e All Notes"
 msgstr "全てのメモを閉じる(_E)"
 
-#: ../src/notewindow.cpp:397
+#: ../src/notewindow.cpp:403
 msgid "Search"
 msgstr "検索"
 
-#: ../src/notewindow.cpp:401
+#: ../src/notewindow.cpp:407
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "メモを検索します (Ctrl-Shift-F)"
 
-#: ../src/notewindow.cpp:411
+#: ../src/notewindow.cpp:417
 msgid "Link"
 msgstr "リンク"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:423
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "指定した部分を新しいメモへリンクします (Ctrl-L)"
 
-#: ../src/notewindow.cpp:426
+#: ../src/notewindow.cpp:432
 msgid "_Text"
 msgstr "文字の種類(_T)"
 
-#: ../src/notewindow.cpp:432
+#: ../src/notewindow.cpp:438
 msgid "Set properties of text"
 msgstr "文字のプロパティを変更します"
 
-#: ../src/notewindow.cpp:436
+#: ../src/notewindow.cpp:442
 msgid "T_ools"
 msgstr "ツール(_O)"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:447
 msgid "Use tools on this note"
 msgstr "いろいろなツールを利用します"
 
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:457
 msgid "Delete this note"
 msgstr "このメモを削除します"
 
-#: ../src/notewindow.cpp:460
+#: ../src/notewindow.cpp:467
 msgid "Synchronize Notes"
 msgstr "メモの同期"
 
-#: ../src/notewindow.cpp:502
+#: ../src/notewindow.cpp:510
 msgid "_Find..."
 msgstr "検索(_F)..."
 
-#: ../src/notewindow.cpp:510 ../src/notewindow.cpp:630
+#: ../src/notewindow.cpp:518 ../src/notewindow.cpp:640
 msgid "Find _Next"
 msgstr "前方検索(_N)"
 
-#: ../src/notewindow.cpp:520
+#: ../src/notewindow.cpp:528
 msgid "Find _Previous"
 msgstr "後方検索(_P)"
 
-#: ../src/notewindow.cpp:588
+#: ../src/notewindow.cpp:598
 msgid "Cannot create note"
 msgstr "メモを作成できません"
 
-#: ../src/notewindow.cpp:631
+#: ../src/notewindow.cpp:641
 msgid "_Previous"
 msgstr "前の検索(_P)"
 
-#: ../src/notewindow.cpp:644
+#: ../src/notewindow.cpp:654
 msgid "_Find:"
 msgstr "検索(_F):"
 
-#: ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:1092
 msgid "<b>_Bold</b>"
 msgstr "<b>太字(_B)</b>"
 
-#: ../src/notewindow.cpp:1083
+#: ../src/notewindow.cpp:1093
 msgid "<i>_Italic</i>"
 msgstr "<i>イタリック(_I)</i>"
 
-#: ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:1094
 msgid "<s>_Strikeout</s>"
 msgstr "<s>打ち消し線(_S)</s>"
 
-#: ../src/notewindow.cpp:1086
+#: ../src/notewindow.cpp:1096
 msgid "_Highlight"
 msgstr "強調(_H)"
 
-#: ../src/notewindow.cpp:1088
+#: ../src/notewindow.cpp:1098
 msgid "_Normal"
 msgstr "標準(_N)"
 
-#: ../src/notewindow.cpp:1090
+#: ../src/notewindow.cpp:1100
 msgid "Hu_ge"
 msgstr "巨大(_G)"
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1102
 msgid "_Large"
 msgstr "大きい(_L)"
 
-#: ../src/notewindow.cpp:1094
+#: ../src/notewindow.cpp:1104
 msgid "S_mall"
 msgstr "小さい(_M)"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1106
 msgid "Bullets"
 msgstr "箇条書き"
 
-#: ../src/notewindow.cpp:1169
+#: ../src/notewindow.cpp:1179
 msgid "Font Size"
 msgstr "フォント"
 
@@ -1166,11 +1154,11 @@ msgstr[1] "%1%日内"
 msgid "No Date"
 msgstr "日付なし"
 
-#: ../src/watchers.cpp:208
+#: ../src/watchers.cpp:207
 msgid "(Untitled %1%)"
 msgstr "(タイトルなし %1%)"
 
-#: ../src/watchers.cpp:243
+#: ../src/watchers.cpp:242
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -1178,7 +1166,7 @@ msgstr ""
 "<b>%1%</b> というタイトルのメモは既に存在します。続行する前に別のタイトルを選"
 "択して下さい。"
 
-#: ../src/watchers.cpp:257
+#: ../src/watchers.cpp:256
 msgid "Note title taken"
 msgstr "メモのタイトル"
 
@@ -1321,11 +1309,11 @@ msgstr "リンクしている情報"
 msgid "(none)"
 msgstr "(なし)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:51
 msgid "Bugzilla Links"
 msgstr "Bugzilla のリンク"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:54
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:55
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -1335,10 +1323,10 @@ msgstr ""
 "ることができます。すると、バグ番号はリンクとして挿入され、その横に小さなアイ"
 "コンが付与されます。"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:59
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:61
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere 氏と Tomboy プロジェクト"
 
@@ -1485,40 +1473,52 @@ msgstr "ノートの印刷エラー"
 msgid "Page %1% of %2%"
 msgstr "%1%/%2% ページ"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:53
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
 msgid "Sticky Notes Importer"
 msgstr "付箋紙のインポート"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:57
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "付箋紙アプレットからメモを取り込みます。"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:101
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
 msgid "Import from Sticky Notes"
 msgstr "付箋紙からのインポート"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:182
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:241
 msgid "No Sticky Notes found"
 msgstr "付箋紙が見つかりませんでした"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:184
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "\"%1%\" に付箋紙ファイルがありませんでした。"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:192
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
 msgid "Sticky Notes import completed"
 msgstr "インポート完了"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:194
-msgid "<b>%1%</b> of <b>%s%</b> Sticky Notes were successfully imported."
-msgstr "<b>%1%</b>/<b>%s%</b> 個の付箋紙をインポートしました。"
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
+msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
+msgstr "<b>%1%</b> / <b>%2%</b> 個の付箋紙をインポートしました。"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:211
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
 msgid "Untitled"
 msgstr "タイトルなし"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:257
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:319
 msgid "Sticky Note: "
 msgstr "付箋紙: "
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
+msgid "Tomboy Importer"
+msgstr "Tomboy のインポート"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
+msgid "Import your notes from Tomboy."
+msgstr "お使いの Tomboy からメモを取り込みます。"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
+msgid "Hubert Figuiere"
+msgstr "Hubert Figuiere"
