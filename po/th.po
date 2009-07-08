@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tomboy VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-27 14:59+0700\n"
-"PO-Revision-Date: 2009-07-07 16:21+0700\n"
+"POT-Creation-Date: 2009-07-08 11:56+0700\n"
+"PO-Revision-Date: 2009-07-08 12:15+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,37 +21,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:1
+#: ../data/GNOME_GnoteApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "อุปกรณ์เสริม"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:2
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/GNOME_GnoteApplet.server.in.in.h:3
 msgid "Gnote Applet Factory"
 msgstr "โรงงานแอพเพล็ต Gnote"
 
-#: ../data/GNOME_GNoteApplet.server.in.in.h:3
+#: ../data/GNOME_GnoteApplet.server.in.in.h:4
 msgid "Simple and easy to use note-taking"
 msgstr "เครื่องมือเขียนบันทึกข้อความสะดวกใช้"
 
-#: ../data/GNOME_GNoteApplet.xml.h:1 ../src/actionmanager.cpp:207
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:217
 msgid "_About"
 msgstr "เ_กี่ยวกับ"
 
-#: ../data/GNOME_GNoteApplet.xml.h:2 ../src/actionmanager.cpp:198
-#: ../src/tray.cpp:508
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:208
+#: ../src/tray.cpp:468
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: ../data/GNOME_GNoteApplet.xml.h:3 ../src/actionmanager.cpp:195
-#: ../src/tray.cpp:503
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:205
+#: ../src/tray.cpp:463
 msgid "_Preferences"
 msgstr "_ปรับแต่ง"
 
-#: ../data/gnote.desktop.in.h:1
+#: ../data/gnote.desktop.in.in.h:2
 msgid "Note-taker"
 msgstr "เครื่องมือบันทึกข้อความ"
 
-#: ../data/gnote.desktop.in.h:2
+#: ../data/gnote.desktop.in.in.h:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr "จดบันทึก, เชื่อมโยงความคิด, และจัดระเบียบ"
 
@@ -195,19 +199,11 @@ msgstr ""
 
 #: ../data/gnote.schemas.in.h:29
 msgid ""
-"Indicates that the Sticky Note Importer plugin has not been run, so it "
-"should run automatically the next time Gnote starts."
-msgstr ""
-"ระบุว่าปลั๊กอินนำเข้าบันทึกจากโน้ตติดกาวยังไม่เคยถูกเรียกมาก่อน จึงควรเรียกโดยอัตโนมัติในการใช้ "
-"Gnote ครั้งต่อไป"
-
-#: ../data/gnote.schemas.in.h:30
-msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr "เลขจำนวนเต็มระบุจำนวนบันทึกอย่างต่ำที่จะแสดงในเมนูบันทึกของ Gnote"
 
-#: ../data/gnote.schemas.in.h:31
+#: ../data/gnote.schemas.in.h:30
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -219,107 +215,103 @@ msgstr ""
 "แทนที่จะถามผู้ใช้หรือไม่ ค่านี้จะมีความหมายตรงกับรายการค่าคงที่ที่กำหนดไว้เป็นการภายใน ค่า 0 "
 "หมายถึงการถามผู้ใช้เมื่อมีข้อขัดแย้ง เพื่อให้สามารถจัดการข้อขัดแย้งเป็นกรณีๆ ไป"
 
-#: ../data/gnote.schemas.in.h:32
+#: ../data/gnote.schemas.in.h:31
 msgid "List of pinned notes"
 msgstr "รายการบันทึกปักหมุด"
 
-#: ../data/gnote.schemas.in.h:33
+#: ../data/gnote.schemas.in.h:32
 msgid "Minimum number of notes to show in menu"
 msgstr "จำนวนบันทึกอย่างต่ำที่จะแสดงในเมนู"
 
-#: ../data/gnote.schemas.in.h:34
+#: ../data/gnote.schemas.in.h:33
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "พฤติกรรมที่จดจำไว้สำหรับใช้กับกรณีที่การปรับข้อมูลบันทึกให้ตรงกันเกิดข้อขัดแย้ง"
 
-#: ../data/gnote.schemas.in.h:35
+#: ../data/gnote.schemas.in.h:34
 msgid "Open Recent Changes"
 msgstr "เปิดหน้าการเปลี่ยนแปลงล่าสุด"
 
-#: ../data/gnote.schemas.in.h:36
+#: ../data/gnote.schemas.in.h:35
 msgid "Open Search Dialog"
 msgstr "เปิดกล่องโต้ตอบค้นหา"
 
-#: ../data/gnote.schemas.in.h:37
+#: ../data/gnote.schemas.in.h:36
 msgid "Open Start Here"
 msgstr "เปิดหน้า \"เริ่มที่นี่ \""
 
-#: ../data/gnote.schemas.in.h:38
+#: ../data/gnote.schemas.in.h:37
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "พาธในเซิร์ฟเวอร์ SSH ไปยังไดเรกทอรีที่ Gnote จะใช้ปรับข้อมูลให้ตรงกัน (มีหรือไม่ก็ได้)"
 
-#: ../data/gnote.schemas.in.h:39
+#: ../data/gnote.schemas.in.h:38
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
 msgstr "พาธสำหรับเซิร์ฟเวอร์ปรับข้อมูล เมื่อใช้บริการเสริมการปรับข้อมูลระบบแฟ้ม"
 
-#: ../data/gnote.schemas.in.h:40
+#: ../data/gnote.schemas.in.h:39
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "โฟลเดอร์ SSHFS ในเครือข่ายที่จะใช้ปรับข้อมูลให้ตรงกัน"
 
-#: ../data/gnote.schemas.in.h:41
+#: ../data/gnote.schemas.in.h:40
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "ชื่อผู้ใช้ SSHFS ในเครือข่ายที่จะใช้ปรับข้อมูลให้ตรงกัน"
 
-#: ../data/gnote.schemas.in.h:42
+#: ../data/gnote.schemas.in.h:41
 msgid "SSHFS Synchronization Server Port"
 msgstr "พอร์ตของเซิร์ฟเวอร์ SSHFS ที่จะใช้ปรับข้อมูลให้ตรงกัน"
 
-#: ../data/gnote.schemas.in.h:43
+#: ../data/gnote.schemas.in.h:42
 msgid "SSHFS Synchronization Server URL"
 msgstr "URL ของเซิร์ฟเวอร์ SSHFS ที่จะใช้ปรับข้อมูลให้ตรงกัน"
 
-#: ../data/gnote.schemas.in.h:44
+#: ../data/gnote.schemas.in.h:43
 msgid "Saved height of Search window"
 msgstr "ความสูงที่บันทึกไว้ของหน้าต่างค้นหา"
 
-#: ../data/gnote.schemas.in.h:45
+#: ../data/gnote.schemas.in.h:44
 msgid "Saved horizontal position of Search window"
 msgstr "ตำแหน่งแนวนอนที่บันทึกไว้ของหน้าต่างค้นหา"
 
-#: ../data/gnote.schemas.in.h:46
+#: ../data/gnote.schemas.in.h:45
 msgid "Saved vertical position of Search window"
 msgstr "ตำแหน่งแนวตั้งที่บันทึกไว้ของหน้าต่างค้นหา"
 
-#: ../data/gnote.schemas.in.h:47
+#: ../data/gnote.schemas.in.h:46
 msgid "Saved width of Search window"
 msgstr "ความกว้างที่บันทึกไว้ของหน้าต่างค้นหา"
 
-#: ../data/gnote.schemas.in.h:48
+#: ../data/gnote.schemas.in.h:47
 msgid "Selected Synchronization Service Addin"
 msgstr "บริการเสริมสำหรับปรับข้อมูลให้ตรงกันที่เลือก"
 
-#: ../data/gnote.schemas.in.h:49
+#: ../data/gnote.schemas.in.h:48
 msgid "Set to TRUE to activate"
 msgstr "ตั้งค่าจริงเพื่อใช้งาน"
 
-#: ../data/gnote.schemas.in.h:50
+#: ../data/gnote.schemas.in.h:49
 msgid "Show applet menu"
 msgstr "แสดงเมนูแอพเพล็ต"
 
-#: ../data/gnote.schemas.in.h:51
+#: ../data/gnote.schemas.in.h:50
 msgid "Start Here Note"
 msgstr "บันทึก \"เริ่มที่นี่\""
 
-#: ../data/gnote.schemas.in.h:52
-msgid "Sticky Note Importer First Run"
-msgstr "เรียกเครื่องมือนำเข้าบันทึกจากโน้ตติดกาวครั้งแรก"
-
-#: ../data/gnote.schemas.in.h:53
+#: ../data/gnote.schemas.in.h:51
 msgid "Synchronization Client ID"
 msgstr "ID ลูกข่าย การปรับข้อมูลให้ตรงกัน"
 
-#: ../data/gnote.schemas.in.h:54
+#: ../data/gnote.schemas.in.h:52
 msgid "Synchronization Local Server Path"
 msgstr "พาธของเซิร์ฟเวอร์ในเครื่อง ที่ใช้ปรับข้อมูลให้ตรงกัน"
 
-#: ../data/gnote.schemas.in.h:55
+#: ../data/gnote.schemas.in.h:53
 msgid ""
-"The date format that is used for the timestamp. It followe the format of "
+"The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "รูปแบบวันที่ที่จะใช้ลงบันทึกเวลา ใช้ตามรูปแบบของ strftime(3)"
 
-#: ../data/gnote.schemas.in.h:56
+#: ../data/gnote.schemas.in.h:54
 msgid ""
 "The global keybinding for creating and displaying a new Note. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -333,7 +325,7 @@ msgstr ""
 "และเข้าใจชื่อย่อ เช่น \"&lt;Ctl&gt;\" และ \"&lt;Ctrl&gt;\"  คุณสามารถตั้งค่าตัวเลือกเป็น "
 "\"disabled\" ได้ ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
 
-#: ../data/gnote.schemas.in.h:57
+#: ../data/gnote.schemas.in.h:55
 msgid ""
 "The global keybinding for opening the \"Start Here\" note. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -347,7 +339,7 @@ msgstr ""
 "และเข้าใจชื่อย่อ เช่น \"&lt;Ctl&gt;\" และ \"&lt;Ctrl&gt;\"  คุณสามารถตั้งค่าตัวเลือกเป็น "
 "\"disabled\" ได้ ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
 
-#: ../data/gnote.schemas.in.h:58
+#: ../data/gnote.schemas.in.h:56
 msgid ""
 "The global keybinding for opening the Note Search dialog. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -361,7 +353,7 @@ msgstr ""
 "และเข้าใจชื่อย่อ เช่น \"&lt;Ctl&gt;\" และ \"&lt;Ctrl&gt;\"  คุณสามารถตั้งค่าตัวเลือกเป็น "
 "\"disabled\" ได้ ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
 
-#: ../data/gnote.schemas.in.h:59
+#: ../data/gnote.schemas.in.h:57
 msgid ""
 "The global keybinding for opening the Recent Changes dialog. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -376,7 +368,7 @@ msgstr ""
 "\"&lt;Ctrl&gt;\"  คุณสามารถตั้งค่าตัวเลือกเป็น \"disabled\" ได้ "
 "ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
 
-#: ../data/gnote.schemas.in.h:60
+#: ../data/gnote.schemas.in.h:58
 msgid ""
 "The global keybinding for showing the Gnote applet's menu. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -390,23 +382,23 @@ msgstr ""
 "และเข้าใจชื่อย่อ เช่น \"&lt;Ctl&gt;\" และ \"&lt;Ctrl&gt;\"  คุณสามารถตั้งค่าตัวเลือกเป็น "
 "\"disabled\" ได้ ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
 
-#: ../data/gnote.schemas.in.h:61
+#: ../data/gnote.schemas.in.h:59
 msgid "The handler for \"note://\" URLs"
 msgstr "คำสั่งสำหรับจัดการ  \"note://\" URLs"
 
-#: ../data/gnote.schemas.in.h:62
+#: ../data/gnote.schemas.in.h:60
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr "ไดเรกทอรีล่าสุดที่ส่งออกบันทึกด้วยปลั๊กอิน \"ส่งออกเป็น HTML\""
 
-#: ../data/gnote.schemas.in.h:63
+#: ../data/gnote.schemas.in.h:61
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr ""
 "ค่าสุดท้ายที่ตั้งไว้สำหรับกล่องกากบาท 'ส่งออกบันทึกที่เชื่อมโยง' ในปลั๊กอิน \"ส่งออกเป็น HTML\""
 
-#: ../data/gnote.schemas.in.h:64
+#: ../data/gnote.schemas.in.h:62
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -417,7 +409,7 @@ msgstr ""
 "HTML\" ค่านี้ใช้ร่วมกับค่าตั้ง 'HTML ส่งออกบันทึกที่เชื่อมโยง' "
 "โดยใช้ระบุว่าจะรวมโน้ตทั้งหมดที่พบทุกระดับความลึกในหน้า HTML ที่ส่งออกหรือไม่"
 
-#: ../data/gnote.schemas.in.h:65
+#: ../data/gnote.schemas.in.h:63
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -426,11 +418,11 @@ msgstr ""
 "URI ของบันทึกที่จะถือเป็นบันทึก \"เริ่มที่นี่\" ซึ่งจะวางไว้ที่ท้ายเมนูบันทึกของ Gnote เสมอ "
 "และสามารถเรียกได้ด้วยปุ่มลัด"
 
-#: ../data/gnote.schemas.in.h:66
+#: ../data/gnote.schemas.in.h:64
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "พอร์ตที่จะใช้เชื่อมต่อไปยังเซิร์ฟเวอร์สำหรับปรับข้อมูลให้ตรงกันผ่าน SSH"
 
-#: ../data/gnote.schemas.in.h:67
+#: ../data/gnote.schemas.in.h:65
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -438,37 +430,37 @@ msgstr ""
 "เวลา (เป็นมิลลิวินาที) ที่ Gnote จะรอการตอบสนอง เมื่อใช้ FUSE "
 "ในการเมานท์แหล่งใช้ร่วมสำหรับการปรับข้อมูลให้ตรงกัน"
 
-#: ../data/gnote.schemas.in.h:68
+#: ../data/gnote.schemas.in.h:66
 msgid "Timestamp format"
 msgstr "รูปแบบการลงบันทึกเวลา"
 
-#: ../data/gnote.schemas.in.h:69
+#: ../data/gnote.schemas.in.h:67
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "URL ของเซิร์ฟเวอร์ SSH ที่เก็บไดเรกทอรีสำหรับปรับข้อมูลให้ตรงกันของ Gnote"
 
-#: ../data/gnote.schemas.in.h:70
+#: ../data/gnote.schemas.in.h:68
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr "ชื่อเรียกเฉพาะสำหรับบริการเสริมสำหรับปรับข้อมูลบันทึกให้ตรงกันที่ตั้งค่าไว้"
 
-#: ../data/gnote.schemas.in.h:71
+#: ../data/gnote.schemas.in.h:69
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
 msgstr "ชื่อเรียกเฉพาะของลูกข่าย Gnote นี้ ใช้เมื่อสื่อสารกับเซิร์ฟเวอร์ปรับข้อมูล"
 
-#: ../data/gnote.schemas.in.h:72
+#: ../data/gnote.schemas.in.h:70
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr "ใช้ตัวเลือก \"-ac\" กับ wdfs เพื่อยอมรับใบรับรอง SSL โดยไม่ต้องถามผู้ใช้"
 
-#: ../data/gnote.schemas.in.h:73
+#: ../data/gnote.schemas.in.h:71
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr "ชื่อผู้ใช้ที่จะใช้เชื่อมต่อไปยังเซิร์ฟเวอร์สำหรับปรับข้อมูลให้ตรงกันผ่าน SSH"
 
-#: ../data/gnote.schemas.in.h:74
+#: ../data/gnote.schemas.in.h:72
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -482,103 +474,103 @@ msgstr "ชื่อ"
 msgid "Description"
 msgstr "คำบรรยาย"
 
-#: ../src/actionmanager.cpp:160
+#: ../src/actionmanager.cpp:170
 msgid "_File"
 msgstr "แ_ฟ้ม"
 
-#: ../src/actionmanager.cpp:164
+#: ../src/actionmanager.cpp:174
 msgid "_New"
 msgstr "ใ_หม่"
 
-#: ../src/actionmanager.cpp:165 ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:175 ../src/actionmanager.cpp:226
 msgid "Create a new note"
 msgstr "สร้างบันทึกใหม่"
 
-#: ../src/actionmanager.cpp:170
+#: ../src/actionmanager.cpp:180
 msgid "_Open..."
 msgstr "_เปิด..."
 
-#: ../src/actionmanager.cpp:170
+#: ../src/actionmanager.cpp:180
 msgid "Open the selected note"
 msgstr "เปิดบันทึกที่เลือก"
 
-#: ../src/actionmanager.cpp:176
+#: ../src/actionmanager.cpp:186
 msgid "_Delete"
 msgstr "_ลบ"
 
-#: ../src/actionmanager.cpp:176
+#: ../src/actionmanager.cpp:186
 msgid "Delete the selected note"
 msgstr "ลบบันทึกที่เลือก"
 
-#: ../src/actionmanager.cpp:182 ../src/notewindow.cpp:369
+#: ../src/actionmanager.cpp:192 ../src/notewindow.cpp:376
 msgid "_Close"
 msgstr "ปิ_ด"
 
-#: ../src/actionmanager.cpp:182
+#: ../src/actionmanager.cpp:192
 msgid "Close this window"
 msgstr "ปิดหน้าต่างนี้"
 
-#: ../src/actionmanager.cpp:187 ../src/tray.cpp:520
+#: ../src/actionmanager.cpp:197 ../src/tray.cpp:480
 msgid "_Quit"
 msgstr "_ออก"
 
-#: ../src/actionmanager.cpp:187
+#: ../src/actionmanager.cpp:197
 msgid "Quit Gnote"
 msgstr "ออกจาก Gnote"
 
-#: ../src/actionmanager.cpp:190
+#: ../src/actionmanager.cpp:200
 msgid "_Edit"
 msgstr "แ_ก้ไข"
 
-#: ../src/actionmanager.cpp:195 ../src/preferencesdialog.cpp:86
+#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:86
 msgid "Gnote Preferences"
 msgstr "ปรับแต่ง Gnote"
 
-#: ../src/actionmanager.cpp:202
+#: ../src/actionmanager.cpp:212
 msgid "_Contents"
 msgstr "เนื้อ_หา"
 
-#: ../src/actionmanager.cpp:202
+#: ../src/actionmanager.cpp:212
 msgid "Gnote Help"
 msgstr "วิธีใช้ Gnote"
 
-#: ../src/actionmanager.cpp:207
+#: ../src/actionmanager.cpp:217
 msgid "About Gnote"
 msgstr "เกี่ยวกับ Gnote"
 
-#: ../src/actionmanager.cpp:211
+#: ../src/actionmanager.cpp:221
 msgid "TrayIcon"
 msgstr "ไอคอนถาด"
 
-#: ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:226
 msgid "Create _New Note"
 msgstr "สร้าง_บันทึกใหม่"
 
-#: ../src/actionmanager.cpp:221 ../src/notewindow.cpp:321
+#: ../src/actionmanager.cpp:231 ../src/notewindow.cpp:328
 msgid "_Search All Notes"
 msgstr "_ค้นบันทึกทั้งหมด"
 
-#: ../src/actionmanager.cpp:221
+#: ../src/actionmanager.cpp:231
 msgid "Open the Search All Notes window"
 msgstr "เปิดหน้าต่าง \"ค้นบันทึกทั้งหมด\""
 
-#: ../src/actionmanager.cpp:226
+#: ../src/actionmanager.cpp:236
 msgid "S_ynchronize Notes"
 msgstr "ป_รับข้อมูลบันทึก"
 
-#: ../src/actionmanager.cpp:226
+#: ../src/actionmanager.cpp:236
 msgid "Start synchronizing notes"
 msgstr "เริ่มปรับข้อมูลบันทึก"
 
-#: ../src/gnote.cpp:203
+#: ../src/gnote.cpp:244
 msgid "Cannot create new note"
 msgstr "ไม่สามารถสร้างบันทึกใหม่ได้"
 
-#: ../src/gnote.cpp:247
+#: ../src/gnote.cpp:288
 msgid "and Tomboy original authors."
 msgstr "และผู้เขียนเริ่มแรกของ Tomboy"
 
-#: ../src/gnote.cpp:256
+#: ../src/gnote.cpp:297
 msgid "translator-credits"
 msgstr ""
 "Isriya Paireepairit <markpeak@gmail.com>\n"
@@ -586,13 +578,41 @@ msgstr ""
 "Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "aka.ape <aka.ape@gmail.com>"
 
-#: ../src/gnote.cpp:265
+#: ../src/gnote.cpp:305
+msgid "Copyright © 2009 Hubert Figuiere"
+msgstr "Copyright © 2009 Hubert Figuiere"
+
+#: ../src/gnote.cpp:306
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "โปรแกรมบันทึกข้อความที่เรียบง่ายใช้สะดวก"
 
-#: ../src/gnote.cpp:276
+#: ../src/gnote.cpp:317
 msgid "Homepage"
 msgstr "โฮมเพจ"
+
+#: ../src/gnote.cpp:357
+msgid "A note taking application"
+msgstr "โปรแกรมเขียนบันทึกข้อความ"
+
+#: ../src/gnote.cpp:365
+msgid "Run Gnote as a GNOME panel applet."
+msgstr "เปิด Gnote ในรูปแอพเพล็ตบนพาเนลของ GNOME"
+
+#: ../src/gnote.cpp:370
+msgid "Specify the path of the directory containing the notes."
+msgstr "ระบุไดเรกทอรีที่เก็บบันทึกข้อความ"
+
+#: ../src/gnote.cpp:375
+msgid "Open the search all notes window with the search text."
+msgstr "เปิดหน้าต่างสำหรับค้นบันทึกทั้งหมดด้วยคำค้นที่ระบุ"
+
+#: ../src/gnote.cpp:380
+msgid "Print version information."
+msgstr "แสดงรุ่นของโปรแกรม"
+
+#: ../src/gnote.cpp:413
+msgid "Version %1%"
+msgstr "รุ่น %1%"
 
 #: ../src/preferencesdialog.cpp:104
 msgid "Editing"
@@ -608,7 +628,7 @@ msgstr "โปรแกรมเสริม"
 
 #: ../src/preferencesdialog.cpp:184
 msgid "_Spell check while typing"
-msgstr "ตรวจ_สะกดขณะพิมพ์"
+msgstr "ตรวจตัว_สะกดขณะพิมพ์"
 
 #: ../src/preferencesdialog.cpp:190
 msgid ""
@@ -641,7 +661,7 @@ msgstr "ใช้แ_บบอักษรที่กำหนด"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:101
+#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:107
 msgid "New Note Template"
 msgstr "แผ่นแบบสำหรับบันทึกใหม่"
 
@@ -724,23 +744,23 @@ msgstr "ยังไม่รองรับ"
 msgid "%1% Preferences"
 msgstr "ปรับแต่ง %1%"
 
-#: ../src/preferencesdialog.cpp:853
+#: ../src/preferencesdialog.cpp:854
 msgid "Choose Note Font"
 msgstr "เลือกขนาดอักษรสำหรับบันทึก"
 
-#: ../src/preferencesdialog.cpp:948
+#: ../src/preferencesdialog.cpp:949
 msgid "Version:"
 msgstr "รุ่น:"
 
-#: ../src/preferencesdialog.cpp:953
+#: ../src/preferencesdialog.cpp:954
 msgid "Author:"
 msgstr "ผู้แต่ง:"
 
-#: ../src/preferencesdialog.cpp:959
+#: ../src/preferencesdialog.cpp:960
 msgid "Copyright:"
 msgstr "สงวนลิขสิทธิ์:"
 
-#: ../src/notemanager.cpp:213
+#: ../src/notemanager.cpp:237
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -776,7 +796,7 @@ msgstr ""
 "ว่าทุกครั้งที่คุณพิมพ์ <link:internal>การใช้ลิงก์ใน Gnote</link:internal> "
 "ข้อความดังกล่าวจะถูกขีดเส้นใต้โดยอัตโนมัติ? คลิกที่ลิงก์เพื่อเปิดดูบันทึกดังกล่าวได้</note-content>"
 
-#: ../src/notemanager.cpp:232
+#: ../src/notemanager.cpp:256
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -804,21 +824,21 @@ msgstr ""
 "content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:247 ../src/notemanager.cpp:321
+#: ../src/notemanager.cpp:271 ../src/notemanager.cpp:323
 msgid "Start Here"
 msgstr "เริ่มที่นี่"
 
-#: ../src/notemanager.cpp:252
+#: ../src/notemanager.cpp:276
 msgid "Using Links in Gnote"
 msgstr "การใช้ลิงก์ใน Gnote"
 
-#: ../src/notemanager.cpp:411
+#: ../src/notemanager.cpp:444
 msgid "New Note %1%"
 msgstr "บันทึกใหม่ %1%"
 
 #. Use a simple "Describe..." body and highlight
 #. it so it can be easily overwritten
-#: ../src/notemanager.cpp:488 ../src/notemanager.cpp:578
+#: ../src/notemanager.cpp:544 ../src/notemanager.cpp:634
 msgid "Describe your new note here."
 msgstr "บรรยายบันทึกใหม่ของคุณที่นี่"
 
@@ -826,123 +846,123 @@ msgstr "บรรยายบันทึกใหม่ของคุณที
 msgid "Find in This Note"
 msgstr "หาในบันทึกนี้"
 
-#: ../src/notewindow.cpp:329
+#: ../src/notewindow.cpp:336
 msgid "_Link to New Note"
 msgstr "_ลิงก์ไปยังบันทึกใหม่"
 
-#: ../src/notewindow.cpp:337
+#: ../src/notewindow.cpp:344
 msgid "Te_xt"
 msgstr "_ข้อความ"
 
-#: ../src/notewindow.cpp:346
+#: ../src/notewindow.cpp:353
 msgid "_Find in This Note"
 msgstr "_หาในบันทึกนี้"
 
-#: ../src/notewindow.cpp:361
+#: ../src/notewindow.cpp:368
 msgid "Clos_e All Notes"
 msgstr "ปิ_ดบันทึกทั้งหมด"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:403
 msgid "Search"
 msgstr "ค้นหา"
 
-#: ../src/notewindow.cpp:400
+#: ../src/notewindow.cpp:407
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "ค้นบันทึก (Ctrl-Shift-F)"
 
-#: ../src/notewindow.cpp:410
+#: ../src/notewindow.cpp:417
 msgid "Link"
 msgstr "ลิงก์"
 
-#: ../src/notewindow.cpp:416
+#: ../src/notewindow.cpp:423
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "ลิงก์ข้อความที่เลือกไปยังบันทึกใหม่ (Ctrl-L)"
 
-#: ../src/notewindow.cpp:425
+#: ../src/notewindow.cpp:432
 msgid "_Text"
 msgstr "_ข้อความ"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:438
 msgid "Set properties of text"
 msgstr "ปรับแต่งตัวอักษร"
 
-#: ../src/notewindow.cpp:436
+#: ../src/notewindow.cpp:442
 msgid "T_ools"
 msgstr "เครื่อง_มือ"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:447
 msgid "Use tools on this note"
 msgstr "ใช้เครื่องมือกับบันทึกนี้"
 
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:457
 msgid "Delete this note"
 msgstr "ลบบันทึกนี้"
 
-#: ../src/notewindow.cpp:460
+#: ../src/notewindow.cpp:467
 msgid "Synchronize Notes"
 msgstr "ปรับข้อมูลบันทึกให้ตรงกัน"
 
-#: ../src/notewindow.cpp:502
+#: ../src/notewindow.cpp:510
 msgid "_Find..."
 msgstr "_หา..."
 
-#: ../src/notewindow.cpp:510 ../src/notewindow.cpp:630
+#: ../src/notewindow.cpp:518 ../src/notewindow.cpp:640
 msgid "Find _Next"
 msgstr "หา_ต่อ"
 
-#: ../src/notewindow.cpp:520
+#: ../src/notewindow.cpp:528
 msgid "Find _Previous"
 msgstr "หา_ก่อนหน้า"
 
-#: ../src/notewindow.cpp:588
+#: ../src/notewindow.cpp:598
 msgid "Cannot create note"
 msgstr "ไม่สามารถสร้างบันทึกได้"
 
-#: ../src/notewindow.cpp:631
+#: ../src/notewindow.cpp:641
 msgid "_Previous"
 msgstr "_ก่อนหน้า"
 
-#: ../src/notewindow.cpp:644
+#: ../src/notewindow.cpp:654
 msgid "_Find:"
 msgstr "_หา:"
 
-#: ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:1092
 msgid "<b>_Bold</b>"
 msgstr "<b>ตัว_หนา</b>"
 
-#: ../src/notewindow.cpp:1083
+#: ../src/notewindow.cpp:1093
 msgid "<i>_Italic</i>"
 msgstr "<i>ตัวเ_อียง</i>"
 
-#: ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:1094
 msgid "<s>_Strikeout</s>"
 msgstr "<s>ขี_ดฆ่า</s>"
 
-#: ../src/notewindow.cpp:1086
+#: ../src/notewindow.cpp:1096
 msgid "_Highlight"
 msgstr "เ_น้น"
 
-#: ../src/notewindow.cpp:1088
+#: ../src/notewindow.cpp:1098
 msgid "_Normal"
 msgstr "_ปกติ"
 
-#: ../src/notewindow.cpp:1090
+#: ../src/notewindow.cpp:1100
 msgid "Hu_ge"
 msgstr "ใหญ่_มาก"
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1102
 msgid "_Large"
 msgstr "ใ_หญ่"
 
-#: ../src/notewindow.cpp:1094
+#: ../src/notewindow.cpp:1104
 msgid "S_mall"
 msgstr "เ_ล็ก"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1106
 msgid "Bullets"
 msgstr "รายการ"
 
-#: ../src/notewindow.cpp:1169
+#: ../src/notewindow.cpp:1179
 msgid "Font Size"
 msgstr "ขนาดอักษร"
 
@@ -986,19 +1006,19 @@ msgstr "_ค้นหา:"
 msgid "Notebooks"
 msgstr "สมุดบันทึก"
 
-#: ../src/recentchanges.cpp:348
+#: ../src/recentchanges.cpp:347
 msgid "Note"
 msgstr "บันทึก"
 
-#: ../src/recentchanges.cpp:369
+#: ../src/recentchanges.cpp:368
 msgid "Last Changed"
 msgstr "เปลี่ยนแปลงล่าสุด"
 
-#: ../src/recentchanges.cpp:513
+#: ../src/recentchanges.cpp:512
 msgid "Matches"
 msgstr "ผลการค้นหา"
 
-#: ../src/recentchanges.cpp:567
+#: ../src/recentchanges.cpp:566
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "พบ %1% รายการ"
@@ -1008,100 +1028,100 @@ msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "บันทึกทั้งหมด: %1% รายการ"
 
-#: ../src/recentchanges.cpp:588
+#: ../src/recentchanges.cpp:594
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "บันทึกที่พบ: %1% รายการ"
 
-#: ../src/recentchanges.cpp:723
+#: ../src/recentchanges.cpp:734
 msgid "Notes"
 msgstr "บันทึก"
 
-#: ../src/tray.cpp:52
+#: ../src/tray.cpp:50
 msgid "Gnote Notes"
 msgstr "บันทึกของ Gnote"
 
-#: ../src/tray.cpp:172
+#: ../src/tray.cpp:161
 msgid " (new)"
 msgstr " (ใหม่)"
 
-#: ../src/tray.cpp:513
+#: ../src/tray.cpp:473
 msgid "_About Gnote"
 msgstr "เ_กี่ยวกับ Gnote"
 
-#: ../src/utils.cpp:133
+#: ../src/utils.cpp:128
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr "ไม่พบ \"คู่มือวิธีใช้ Gnote\" กรุณาตรวจสอบการติดตั้งของคุณว่าครบถ้วนสมบูรณ์หรือไม่"
 
-#: ../src/utils.cpp:141
+#: ../src/utils.cpp:136
 msgid "Help not found"
 msgstr "ไม่พบคู่มือวิธีใช้"
 
-#: ../src/utils.cpp:181
+#: ../src/utils.cpp:176
 msgid "Cannot open location"
 msgstr "ไม่สามารถเปิดตำแหน่ง"
 
-#: ../src/utils.cpp:195
+#: ../src/utils.cpp:190
 msgid "Today, %1%"
 msgstr "วันนี้ %1%"
 
-#: ../src/utils.cpp:196
+#: ../src/utils.cpp:191
 msgid "Today"
 msgstr "วันนี้"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:196
 msgid "Yesterday, %1%"
 msgstr "เมื่อวานนี้ %1%"
 
-#: ../src/utils.cpp:202
+#: ../src/utils.cpp:197
 msgid "Yesterday"
 msgstr "เมื่อวาน"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:204
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% วันก่อน %2%"
 
-#: ../src/utils.cpp:213
+#: ../src/utils.cpp:208
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% วันก่อน"
 
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:215
 msgid "Tomorrow, %1%"
 msgstr "พรุ่งนี้ %1%"
 
-#: ../src/utils.cpp:221
+#: ../src/utils.cpp:216
 msgid "Tomorrow"
 msgstr "พรุ่งนี้"
 
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:223
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "อีก %1% วัน %2%"
 
-#: ../src/utils.cpp:232
+#: ../src/utils.cpp:227
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "อีก %1% วัน"
 
-#: ../src/utils.cpp:243
+#: ../src/utils.cpp:238
 msgid "No Date"
 msgstr "ไม่ระบุวันที่"
 
-#: ../src/watchers.cpp:208
+#: ../src/watchers.cpp:207
 msgid "(Untitled %1%)"
 msgstr "(ไม่มีหัวข้อ %1%)"
 
-#: ../src/watchers.cpp:243
+#: ../src/watchers.cpp:242
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr "มีบันทึกที่หัวข้อ <b>%1%</b> อยู่ก่อนแล้ว กรุณาตั้งชื่ออื่นสำหรับบันทึกนี้ ก่อนที่จะดำเนินการต่อไป"
 
-#: ../src/watchers.cpp:257
+#: ../src/watchers.cpp:256
 msgid "Note title taken"
 msgstr "หัวข้อนี้ถูกใช้แล้ว"
 
@@ -1211,33 +1231,56 @@ msgstr "บันทึกใหม่สำหรับ \"%1%\""
 msgid "No notebook"
 msgstr "ไม่มีสมุดบันทึก"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:67
+#: ../src/notebooks/notebooknoteaddin.cpp:81
 msgid "Place this note into a notebook"
 msgstr "ใส่บันทึกนี้เข้าในสมุดบันทึก"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:154
+#: ../src/notebooks/notebooknoteaddin.cpp:168
 msgid "Notebook"
 msgstr "สมุดบันทึก"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:179
+#: ../src/notebooks/notebooknoteaddin.cpp:193
 msgid "_New notebook..."
 msgstr "_สมุดบันทึกใหม่..."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:50
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+msgid "Backlinks"
+msgstr "ลิงก์ย้อนกลับ"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+msgid "See which notes link to the one you're currently viewing."
+msgstr "ดูบันทึกข้อความที่ลิงก์มายังบันทึกที่คุณกำลังดู"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "Hubert Figuiere และโครงการ Tomboy"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+msgid "What links here?"
+msgstr "ใครเชื่อมโยงมาที่นี่บ้าง?"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+msgid "(none)"
+msgstr "(ไม่มี)"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:51
 msgid "Bugzilla Links"
 msgstr "ลิงก์ Bugzilla"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:54
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:55
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
 msgstr ""
-"ช่วยให้คุณสามารถลาก URL ของ Bugzilla จากเบราว์เซอร์มาวางลงในบันทึกของ Gnote ได้โดยตรง "
-"โดยจะแทรกหมายเลขบั๊กพร้อมลิงก์ และมีไอคอนรูปบั๊กอยู่ข้างๆ ด้วย"
+"ช่วยให้คุณสามารถลาก URL ของ Bugzilla จากเบราว์เซอร์มาวางลงในบันทึกของ Gnote "
+"ได้โดยตรง โดยจะแทรกหมายเลขบั๊กพร้อมลิงก์ และมีไอคอนรูปบั๊กอยู่ข้างๆ ด้วย"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:59
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere และโครงการ Tomboy"
 
@@ -1257,38 +1300,71 @@ msgstr "ชื่อโฮสต์"
 msgid "Icon"
 msgstr "ไอคอน"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:203
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:222
 msgid "Select an icon..."
 msgstr "เลือกไอคอน..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:218
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:237
 msgid "_Host name:"
 msgstr "_ชื่อโฮสต์:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:246
-msgid "No host name specified"
-msgstr "ไม่ได้ระบุชื่อโฮสต์"
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:269
+msgid "Host name invalid"
+msgstr "ชื่อโฮสต์ผิดพลาด"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:247
-msgid "You must specify the Bugzilla host name to use with this icon."
-msgstr "คุณต้องระบุชื่อโฮสต์ Bugzilla ที่จะใช้กับไอคอนนี้"
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+msgid "You must specify a valid Bugzilla host name to use with this icon."
+msgstr "คุณต้องระบุชื่อโฮสต์ Bugzilla ที่ใช้การได้ เพื่อใช้กับไอคอนนี้"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:266
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:289
 msgid "Error saving icon"
 msgstr "เกิดข้อผิดพลาดขณะบันทึกไอคอน"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:267
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
 msgid "Could not save the icon file."
 msgstr "ไม่สามารถบันทึกแฟ้มไอคอนได้"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:339
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:362
 msgid "Really remove this icon?"
 msgstr "ยืนยันว่าจะลบไอคอนนี้หรือไม่?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:340
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
 msgid "If you remove an icon it is permanently lost."
 msgstr "ถ้าลบ ไอคอนจะถูกลบอย่างถาวร"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:36
+msgid "Destination for HTML Export"
+msgstr "ตำแหน่งที่จะส่งออก HTML"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:38
+msgid "Export linked notes"
+msgstr "ส่งออกบันทึกที่เชื่อมโยง"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:39
+msgid "Include all other linked notes"
+msgstr "ส่งออกบันทึกที่เชื่อมโยงอื่นทั้งหมด"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+msgid "Export to HTML"
+msgstr "ส่งออกเป็น HTML"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+msgid "Exports individual notes to HTML."
+msgstr "ส่งออกบันทึกแต่ละรายการเป็น HTML"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+msgid "Your note was exported to \"%1%\"."
+msgstr "ส่งออกบันทึกของคุณไปที่ \"%1%\" แล้ว"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+msgid "Note exported successfully"
+msgstr "ส่งออกบันทึกสำเร็จแล้ว"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+msgid "Could not save the file \"%s\""
+msgstr "ไม่สามารถบันทึกแฟ้ม \"%s\""
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
 msgid "_Fixed Width"
@@ -1303,40 +1379,15 @@ msgstr "ตัวพิมพ์ดีด"
 msgid "Adds fixed-width font style."
 msgstr "ใช้ตัวอักษรแบบพิมพ์ดีดความกว้างคงที่"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
-msgid "Printing Support"
-msgstr "การรองรับการพิมพ์"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
-msgid "Allows you to print a note."
-msgstr "ช่วยคุณจัดพิมพ์บันทึกข้อความ"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
-msgid "Print"
-msgstr "พิมพ์"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:114
-msgid "Error printing note"
-msgstr "เกิดข้อผิดพลาดขณะพิมพ์บันทึก"
-
-#. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
-msgid "Page %1% of %2%"
-msgstr "หน้า %1% จาก %2%"
-
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:44
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:77
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
 msgid "Insert Timestamp"
 msgstr "ลงบันทึกเวลา"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:48
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
 msgstr "แทรกวันที่และเวลาปัจจุบันลง ณ ตำแหน่งเคอร์เซอร์"
-
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:52
-msgid "Hubert Figuiere and Tomboy Project"
-msgstr "Hubert Figuiere และโครงการ Tomboy"
 
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
@@ -1351,8 +1402,86 @@ msgstr "ใช้รูปแบบที่เ_ลือก"
 msgid "_Use Custom Format"
 msgstr "ใช้รูปแบบ_กำหนดเอง"
 
-#~ msgid "Tomboy Notes"
-#~ msgstr "บันทึกของ Tomboy"
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+msgid "Printing Support"
+msgstr "การรองรับการพิมพ์"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+msgid "Allows you to print a note."
+msgstr "ช่วยคุณจัดพิมพ์บันทึกข้อความ"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+msgid "Print"
+msgstr "พิมพ์"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:133
+msgid "Error printing note"
+msgstr "เกิดข้อผิดพลาดขณะพิมพ์บันทึก"
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:293
+msgid "Page %1% of %2%"
+msgstr "หน้า %1% จาก %2%"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
+msgid "Sticky Notes Importer"
+msgstr "เครื่องมือนำเข้าบันทึกจากโน้ตติดกาว"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
+msgid "Import your notes from the Sticky Notes applet."
+msgstr "นำเข้าบันทึกข้อความของคุณจากแอพเพล็ตโน้ตติดกาว"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
+msgid "Import from Sticky Notes"
+msgstr "นำเข้าจากแอพเพล็ตโน้ตติดกาว"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:241
+msgid "No Sticky Notes found"
+msgstr "ไม่พบบันทึกจากโน้ตติดกาว"
+
+#. %1% is a the file name
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+msgid "No suitable Sticky Notes file was found at \"%1%\"."
+msgstr "ไม่พบบันทึกของแอพเพล็ตโน้ตติดกาวที่เหมาะสมที่ \"%1%\""
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
+msgid "Sticky Notes import completed"
+msgstr "นำเข้าบันทึกจากโน้ตติดกาวสำเร็จแล้ว"
+
+#. here %1% is the number of notes imported, %2% the total number of notes.
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
+msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
+msgstr "นำเข้าบันทึกของโน้ตติดกาวสำเร็จ <b>%1%</b> รายการ จาก <b>%2%</b> รายการ"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
+msgid "Untitled"
+msgstr "ไม่มีหัวข้อ"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:319
+msgid "Sticky Note: "
+msgstr "โน้ตติดกาว: "
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
+msgid "Tomboy Importer"
+msgstr "เครื่องมือนำเข้าบันทึกจาก Tomboy"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
+msgid "Import your notes from Tomboy."
+msgstr "นำเข้าบันทึกข้อความของคุณจาก Tomboy"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
+msgid "Hubert Figuiere"
+msgstr "Hubert Figuiere"
+
+#~ msgid ""
+#~ "Indicates that the Sticky Note Importer plugin has not been run, so it "
+#~ "should run automatically the next time Gnote starts."
+#~ msgstr ""
+#~ "ระบุว่าปลั๊กอินนำเข้าบันทึกจากโน้ตติดกาวยังไม่เคยถูกเรียกมาก่อน "
+#~ "จึงควรเรียกโดยอัตโนมัติในการใช้ Gnote ครั้งต่อไป"
+
+#~ msgid "No host name specified"
+#~ msgstr "ไม่ได้ระบุชื่อโฮสต์"
 
 #~ msgid "Quit Tomboy"
 #~ msgstr "ออกจาก Tomboy"
@@ -1363,38 +1492,11 @@ msgstr "ใช้รูปแบบ_กำหนดเอง"
 #~ msgid "Tomboy Help"
 #~ msgstr "วิธีใช้ Tomboy"
 
-#~ msgid "What links here?"
-#~ msgstr "ใครเชื่อมโยงมาที่นี่บ้าง?"
-
-#~ msgid "(none)"
-#~ msgstr "(ไม่มี)"
-
-#~ msgid "Export to HTML"
-#~ msgstr "ส่งออกเป็น HTML"
-
-#~ msgid "Your note was exported to \"{0}\"."
-#~ msgstr "ส่งออกบันทึกของคุณไปที่ \"{0}\""
-
-#~ msgid "Note exported successfully"
-#~ msgstr "ส่งออกบันทึกสำเร็จแล้ว"
-
 #~ msgid "Access denied."
 #~ msgstr "ไม่มีสิทธิ์เข้าถึง"
 
 #~ msgid "Folder does not exist."
 #~ msgstr "ไม่มีโฟลเดอร์อยู่"
-
-#~ msgid "Could not save the file \"{0}\""
-#~ msgstr "ไม่สามารถบันทึกแฟ้ม \"{0}\""
-
-#~ msgid "Destination for HTML Export"
-#~ msgstr "ตำแหน่งที่จะส่งออก HTML"
-
-#~ msgid "Export linked notes"
-#~ msgstr "ส่งออกบันทึกที่เชื่อมโยง"
-
-#~ msgid "Include all other linked notes"
-#~ msgstr "ส่งออกบันทึกที่เชื่อมโยงอื่นทั้งหมด"
 
 #~ msgid "Cannot open email"
 #~ msgstr "ไม่สามารถเปิดอีเมล"
@@ -1483,27 +1585,6 @@ msgstr "ใช้รูปแบบ_กำหนดเอง"
 #~ msgstr ""
 #~ "หมดเวลาคอยขณะเชื่อมต่อไปยังเซิร์ฟเวอร์ กรุณาตรวจดูให้แน่ใจว่าได้เพิ่มกุญแจ SSH เข้าในดีมอน "
 #~ "SSH ที่กำลังทำงานอยู่"
-
-#~ msgid "Import from Sticky Notes"
-#~ msgstr "นำเข้าจากแอพเพล็ตโน้ตติดกาว"
-
-#~ msgid "No Sticky Notes found"
-#~ msgstr "ไม่พบบันทึกจากโน้ตติดกาว"
-
-#~ msgid "No suitable Sticky Notes file was found at \"{0}\"."
-#~ msgstr "ไม่พบบันทึกของแอพเพล็ตโน้ตติดกาวที่เหมาะสมที่ \"{0}\""
-
-#~ msgid "Sticky Notes import completed"
-#~ msgstr "นำเข้าบันทึกจากโน้ตติดกาวสำเร็จแล้ว"
-
-#~ msgid "<b>{0}</b> of <b>{1}</b> Sticky Notes were successfully imported."
-#~ msgstr "นำเข้าบันทึกของโน้ตติดกาวสำเร็จ <b>{0}</b> รายการ จาก <b>{1}</b> รายการ"
-
-#~ msgid "Untitled"
-#~ msgstr "ไม่มีหัวข้อ"
-
-#~ msgid "Sticky Note: "
-#~ msgstr "โน้ตติดกาว: "
 
 #~ msgid "Tasque"
 #~ msgstr "Tasque"
@@ -1616,9 +1697,6 @@ msgstr "ใช้รูปแบบ_กำหนดเอง"
 
 #~ msgid "Add-in Dependencies:"
 #~ msgstr "สิ่งที่โปรแกรมเสริมต้องใช้:"
-
-#~ msgid "Copyright © 2004-2007 Alex Graveley"
-#~ msgstr "สงวนลิขสิทธิ์ © 2004-2007 Alex Graveley"
 
 #~ msgid ""
 #~ "Tomboy: A simple, easy to use desktop note-taking application.\n"
@@ -1897,9 +1975,6 @@ msgstr "ใช้รูปแบบ_กำหนดเอง"
 #~ msgid "Add-in"
 #~ msgstr "โปรแกรมเสริม"
 
-#~ msgid "Version"
-#~ msgstr "รุ่น"
-
 #~ msgid "Other"
 #~ msgstr "อื่นๆ"
 
@@ -2056,9 +2131,6 @@ msgstr "ใช้รูปแบบ_กำหนดเอง"
 
 #~ msgid "Open Associated _Note"
 #~ msgstr "เปิดบัน_ทึกที่เกี่ยวข้อง"
-
-#~ msgid "Open the note containing the task"
-#~ msgstr "เปิดบันทึกที่บรรยายงานนี้"
 
 #~ msgid "Tasks Help"
 #~ msgstr "วิธีใช้งาน"
