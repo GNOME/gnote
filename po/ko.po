@@ -1,0 +1,1447 @@
+# gnote korean translation.
+# This file is distributed under the same license as the gnote package.
+#
+# Changwoo Ryu <cwryu@debian.org>, 2009.
+#
+# Based on Tomboy translation.
+#
+# Young-Ho Cha <ganadist@gmail.com>, 2006, 2007.
+# Changwoo Ryu <cwryu@debian.org>, 2007, 2008, 2009.
+#
+# 새로 번역하신 분은 아래 "translator-credits"에 추가하세요.
+#
+# 주의:
+# - 이 프로그램의 이름인 Gnote는 "G노트"로 음역.
+# - 이 프로그램의 이름인 Tomboy는 "톰보이"로 음역.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tomboy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-12 13:51+0900\n"
+"PO-Revision-Date: 2009-07-12 14:19+0900\n"
+"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
+"Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../data/GNOME_GnoteApplet.server.in.in.h:1
+msgid "Accessories"
+msgstr "보조 프로그램"
+
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
+msgid "Gnote"
+msgstr "G노트"
+
+#: ../data/GNOME_GnoteApplet.server.in.in.h:3
+msgid "Gnote Applet Factory"
+msgstr "G노트 애플릿 팩토리"
+
+#: ../data/GNOME_GnoteApplet.server.in.in.h:4
+msgid "Simple and easy to use note-taking"
+msgstr "이용하기 쉽고 간단한 쪽지"
+
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:217
+msgid "_About"
+msgstr "정보(_A)"
+
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:208
+#: ../src/tray.cpp:468
+msgid "_Help"
+msgstr "도움말(_H)"
+
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:205
+#: ../src/tray.cpp:463
+msgid "_Preferences"
+msgstr "기본 설정(_P)"
+
+#: ../data/gnote.desktop.in.in.h:2
+msgid "Note-taker"
+msgstr "쪽지 만들기"
+
+#: ../data/gnote.desktop.in.in.h:3
+msgid "Take notes, link ideas, and stay organized"
+msgstr "쪽지를 쓰고, 아이디어를 연결하고, 정리합니다"
+
+#: ../data/gnote.schemas.in.h:1
+msgid "Accept SSL Certificates"
+msgstr "SSL 인증서 허용"
+
+#: ../data/gnote.schemas.in.h:2
+msgid "Create a new Note"
+msgstr "새 쪽지 만들기"
+
+#: ../data/gnote.schemas.in.h:3
+msgid "Custom Font Face"
+msgstr "사용자 글꼴"
+
+#: ../data/gnote.schemas.in.h:4
+msgid "Determines X coordinate of Search window; stored on Gnote exit."
+msgstr "검색 창의 X 좌표, G노트가 끝날 때 저장합니다."
+
+#: ../data/gnote.schemas.in.h:5
+msgid "Determines Y coordinate of Search window; stored on Gnote exit."
+msgstr "검색 창의 Y 좌표, G노트가 끝날 때 저장합니다."
+
+#: ../data/gnote.schemas.in.h:6
+msgid "Determines pixel height of Search window; stored on Gnote exit."
+msgstr "검색 창의 픽셀 높이, G노트가 끝날 때 저장합니다."
+
+#: ../data/gnote.schemas.in.h:7
+msgid "Determines pixel width of Search window; stored on Gnote exit."
+msgstr "검색 창의 픽셀 너비, G노트가 끝날 때 저장합니다."
+
+#: ../data/gnote.schemas.in.h:8
+msgid "Enable Auto bulleted lists"
+msgstr "자동 목록 만들기 사용"
+
+#: ../data/gnote.schemas.in.h:9
+msgid "Enable Middle-Click Paste On Icon"
+msgstr "아이콘에 가운데 단추 붙여넣기 사용"
+
+#: ../data/gnote.schemas.in.h:10
+msgid "Enable WikiWord highlighting"
+msgstr "위키문법 강조 사용"
+
+#: ../data/gnote.schemas.in.h:11
+msgid "Enable closing notes with escape"
+msgstr "Esc 키로 쪽지 닫기"
+
+#: ../data/gnote.schemas.in.h:12
+msgid "Enable custom font"
+msgstr "사용자 글꼴 사용"
+
+#: ../data/gnote.schemas.in.h:13
+msgid "Enable global keybindings"
+msgstr "전체 키보드 바로가기 사용"
+
+#: ../data/gnote.schemas.in.h:14
+msgid "Enable spellchecking"
+msgstr "맞춤법검사 켜기"
+
+#: ../data/gnote.schemas.in.h:15
+msgid "Enable startup notes"
+msgstr "시작 쪽지 사용"
+
+#: ../data/gnote.schemas.in.h:16
+msgid ""
+"Enable this option if you want bulleted lists to be automatic when you place "
+"- or * at the beginning of a line."
+msgstr ""
+"이 옵션을 사용하면 줄을 시작할 때 - 혹은 * 문자를 쓰면 자동으로 목록으로 바뀝"
+"니다."
+
+#: ../data/gnote.schemas.in.h:17
+msgid ""
+"Enable this option if you want to be able to middle-click the Gnote icon to "
+"paste timestamped content into the Start Here note."
+msgstr "이 옵션을 사용하면 G노트 아이콘에 가운데 단추를 누르면 복사한 내용을 현재 시각과 같이 \"여기서 시작\" 쪽지에 붙여넣습니다."
+
+#: ../data/gnote.schemas.in.h:18
+msgid ""
+"Enable this option to highlight words ThatLookLikeThis. Clicking the word "
+"will create a note with that name."
+msgstr ""
+"이 옵션을 켜면 ThatLookLikeThis 같은 문장을 강조합니다. 문장을 누르면 그 이름"
+"에 해당하는 쪽지를 만들어 줍니다."
+
+#: ../data/gnote.schemas.in.h:19
+msgid "FUSE Mounting Timeout (ms)"
+msgstr "FUSE 마운트 시간 제한 (밀리초)"
+
+#: ../data/gnote.schemas.in.h:20
+msgid "HTML Export All Linked Notes"
+msgstr "HTML 내보내기 - 모든 연결된 쪽지"
+
+#: ../data/gnote.schemas.in.h:21
+msgid "HTML Export Last Directory"
+msgstr "HTML 내보내기 - 마지막 디렉터리"
+
+#: ../data/gnote.schemas.in.h:22
+msgid "HTML Export Linked Notes"
+msgstr "HTML 내보내기 - 연결된 쪽지"
+
+#: ../data/gnote.schemas.in.h:23
+msgid ""
+"If enable_custom_font is true, the font name set here will be used as the "
+"font when displaying notes."
+msgstr "enable_custom_font이 참이면 여기에 설정된 글꼴로 쪽지를 나타냅니다."
+
+#: ../data/gnote.schemas.in.h:24
+msgid ""
+"If enabled, all notes that were open when Gnote quit will automatically be "
+"reopened at startup."
+msgstr "참이면 G노트가 끝날때 열려있던 모든 쪽지가 다음에 시작할 때 자동으로 모두 열립니다."
+
+#: ../data/gnote.schemas.in.h:25
+msgid "If enabled, an opened note can be closed by hitting the escape key."
+msgstr "참이면 Esc 키를 눌렀을 때 열려 있는 쪽지를 닫습니다."
+
+#: ../data/gnote.schemas.in.h:26
+msgid ""
+"If true, misspellings will be underlined in red, and correct spelling "
+"suggestions shown in the right-click menu."
+msgstr ""
+"참이면 맞춤법이 틀릴 때 빨간색으로 보이고, 오른쪽 마우스 단추를 누르면 올바"
+"른 맞춤법으로 된 단어가 보입니다."
+
+#: ../data/gnote.schemas.in.h:27
+msgid ""
+"If true, the desktop-global keybindings set in /apps/gnote/"
+"global_keybindings will be enabled, allowing for useful Gnote actions to be "
+"available from any application."
+msgstr "참이면 /apps/gnote/global_keybindings이 데스크탑 전체 바로가기 키로 설정되며 모든 응용프로그램에서 G노트를 사용할 수 있게됩니다."
+
+#: ../data/gnote.schemas.in.h:28
+msgid ""
+"If true, the font name set in custom_font_face will be used as the font when "
+"displaying notes. Otherwise the desktop default font will be used."
+msgstr ""
+"참이면 custom_font_face에 설정된 글꼴이름이 쪽지를 보이는 기본 글꼴로 됩니"
+"다. 그렇지 않으면 데스크탑 기본 글꼴로 쪽지를 보여줍니다."
+
+#: ../data/gnote.schemas.in.h:29
+msgid ""
+"Integer determining the minimum number of notes to show in the Gnote note "
+"menu."
+msgstr "G노트 쪽지 메뉴에 표시할 쪽지의 최소 개수를 결정하는 숫자."
+
+#: ../data/gnote.schemas.in.h:30
+msgid ""
+"Integer value indicating if there is a preference to always perform a "
+"specific behavior when a conflict is detected, instead of prompting the "
+"user. The values map to an internal enumeration. 0 indicates that the user "
+"wishes to be prompted when a conflict occurs, so that they may handle each "
+"conflict situation on a case-by-case basis."
+msgstr ""
+"충돌이 발생했을 때 사용자에게 확인하지 않고 지정한 방식대로 수행하는 지 여부"
+"를 나타내는 정수 값. 이 값은 내부의 열거형을 나타냅니다. 값이 0이면 충돌이 발"
+"생했을 때 사용자에게 확인해서 충돌 상황에 따라 개별적으로 처리할 수 있습니다."
+
+#: ../data/gnote.schemas.in.h:31
+msgid "List of pinned notes"
+msgstr "고정한 쪽지 목록"
+
+#: ../data/gnote.schemas.in.h:32
+msgid "Minimum number of notes to show in menu"
+msgstr "메뉴에서 표시할 쪽지 최대 개수"
+
+#: ../data/gnote.schemas.in.h:33
+msgid "Note Synchronization Conflict Saved Behavior"
+msgstr "쪽지 동기화 충돌 저장 방식"
+
+#: ../data/gnote.schemas.in.h:34
+msgid "Open Recent Changes"
+msgstr "마지막으로 바뀐 것 열기"
+
+#: ../data/gnote.schemas.in.h:35
+msgid "Open Search Dialog"
+msgstr "검색 대화상자 열기"
+
+#: ../data/gnote.schemas.in.h:36
+msgid "Open Start Here"
+msgstr "'여기서 시작' 열기"
+
+#: ../data/gnote.schemas.in.h:37
+msgid "Path on SSH server to Gnote synchronization directory (optional)."
+msgstr "SSH 서버에서 G노트 동기화 디렉터리의 경로 (옵션)."
+
+#: ../data/gnote.schemas.in.h:38
+msgid ""
+"Path to the synchronization server when using the filesystem synchronization "
+"service addin."
+msgstr "파일 시스템 동기화 서비스 추가기능을 사용할 때 동기화 서버의 경로."
+
+#: ../data/gnote.schemas.in.h:39
+msgid "SSHFS Remote Synchronization Folder"
+msgstr "SSHFS 원격 동기화 폴더"
+
+#: ../data/gnote.schemas.in.h:40
+msgid "SSHFS Remote Synchronization User Name"
+msgstr "SSHFS 원격 동기화 사용자 이름"
+
+#: ../data/gnote.schemas.in.h:41
+msgid "SSHFS Synchronization Server Port"
+msgstr "SSHFS 동기화 서버 포트"
+
+#: ../data/gnote.schemas.in.h:42
+msgid "SSHFS Synchronization Server URL"
+msgstr "SSHFS 동기화 서버 URL"
+
+#: ../data/gnote.schemas.in.h:43
+msgid "Saved height of Search window"
+msgstr "검색 창의 높이 저장"
+
+#: ../data/gnote.schemas.in.h:44
+msgid "Saved horizontal position of Search window"
+msgstr "검색 창의 가로 위치 저장"
+
+#: ../data/gnote.schemas.in.h:45
+msgid "Saved vertical position of Search window"
+msgstr "검색 창의 세로 위치 저장"
+
+#: ../data/gnote.schemas.in.h:46
+msgid "Saved width of Search window"
+msgstr "검색 창의 너비 저장"
+
+#: ../data/gnote.schemas.in.h:47
+msgid "Selected Synchronization Service Addin"
+msgstr "선택한 동기화 서비스 추가기능"
+
+#: ../data/gnote.schemas.in.h:48
+msgid "Set to TRUE to activate"
+msgstr "활성시키려면 참으로 설정"
+
+#: ../data/gnote.schemas.in.h:49
+msgid "Show applet menu"
+msgstr "애플릿 메뉴 보이기"
+
+#: ../data/gnote.schemas.in.h:50
+msgid "Start Here Note"
+msgstr "여기서 시작 쪽지"
+
+#: ../data/gnote.schemas.in.h:51
+msgid "Synchronization Client ID"
+msgstr "동기화 클라이언트 ID"
+
+#: ../data/gnote.schemas.in.h:52
+msgid "Synchronization Local Server Path"
+msgstr "동기화 로컬 서버 경로"
+
+#: ../data/gnote.schemas.in.h:53
+msgid ""
+"The date format that is used for the timestamp. It follows the format of "
+"strftime(3)."
+msgstr "타임스탬프에 사용할 시각 형식. strftime(3) 형식을 따릅니다."
+
+#: ../data/gnote.schemas.in.h:54
+msgid ""
+"The global keybinding for creating and displaying a new Note. The format "
+"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+"parser is fairly liberal and allows lower or upper case, and also "
+"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
+"option to the special string \"disabled\", then there will be no keybinding "
+"for this action."
+msgstr "새 쪽지를 만들고 보여줄 때 쓸 바로가기 키. \"&lt;Control&gt;a\" 또는 \"&lt;Shift&gt;&lt;Alt&gt;F1\" 같은 형식을 씁니다. 대소문자는 가리지 않으며 \"&lt;Ctl&gt;\"와 \"&lt;Ctrl&gt;\"같은 약어를 쓸 수도 있습니다. \"disabled\"라고 설정하면 바로가기 키를 쓰지 않습니다."
+
+#: ../data/gnote.schemas.in.h:55
+msgid ""
+"The global keybinding for opening the \"Start Here\" note. The format looks "
+"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
+"fairly liberal and allows lower or upper case, and also abbreviations such "
+"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
+"special string \"disabled\", then there will be no keybinding for this "
+"action."
+msgstr "\"여기서 시작\"에 쓸 바로가기 키. \"&lt;Control&gt;a\" 또는 \"&lt;Shift&gt;&lt;Alt&gt;F1\" 같은 형식을 씁니다. 대소문자는 가리지 않으며 \"&lt;Ctl&gt;\"와 \"&lt;Ctrl&gt;\"같은 약어를 쓸 수도 있습니다. \"disabled\"라고 설정하면 바로가기 키를 쓰지 않습니다."
+
+#: ../data/gnote.schemas.in.h:56
+msgid ""
+"The global keybinding for opening the Note Search dialog. The format looks "
+"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
+"fairly liberal and allows lower or upper case, and also abbreviations such "
+"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
+"special string \"disabled\", then there will be no keybinding for this "
+"action."
+msgstr "쪽지 검색 창을 열 때 쓸 바로가기 키. \"&lt;Control&gt;a\" 또는 \"&lt;Shift&gt;&lt;Alt&gt;F1\" 같은 형식을 씁니다. 대소문자는 가리지 않으며 \"&lt;Ctl&gt;\"와 \"&lt;Ctrl&gt;\"같은 약어를 쓸 수도 있습니다. \"disabled\"라고 설정하면 바로가기 키를 쓰지 않습니다."
+
+#: ../data/gnote.schemas.in.h:57
+msgid ""
+"The global keybinding for opening the Recent Changes dialog. The format "
+"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+"parser is fairly liberal and allows lower or upper case, and also "
+"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
+"option to the special string \"disabled\", then there will be no keybinding "
+"for this action."
+msgstr "최근 바뀐 창을 열 때 쓸 바로가기 키. \"&lt;Control&gt;a\" 또는 \"&lt;Shift&gt;&lt;Alt&gt;F1\" 같은 형식을 씁니다. 대소문자는 가리지 않으며 \"&lt;Ctl&gt;\"와 \"&lt;Ctrl&gt;\"같은 약어를 쓸 수도 있습니다. \"disabled\"라고 설정하면 바로가기 키를 쓰지 않습니다."
+
+#: ../data/gnote.schemas.in.h:58
+msgid ""
+"The global keybinding for showing the Gnote applet's menu. The format looks "
+"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
+"fairly liberal and allows lower or upper case, and also abbreviations such "
+"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
+"special string \"disabled\", then there will be no keybinding for this "
+"action."
+msgstr "G노트 애플릿 메뉴를 볼 때 쓸 바로가기 키. \"&lt;Control&gt;a\" 또는 \"&lt;Shift&gt;&lt;Alt&gt;F1\" 같은 형식을 씁니다. 대소문자는 가리지 않으며 \"&lt;Ctl&gt;\"와 \"&lt;Ctrl&gt;\"같은 약어를 쓸 수도 있습니다. \"disabled\"라고 설정하면 바로가기 키를 쓰지 않습니다."
+
+#: ../data/gnote.schemas.in.h:59
+msgid "The handler for \"note://\" URLs"
+msgstr "\"note://\" URL의 처리 프로그램"
+
+#: ../data/gnote.schemas.in.h:60
+msgid ""
+"The last directory a note was exported to using the Export To HTML plugin."
+msgstr "HTML 내보내기 플러그인으로 쪽지를 내보낸 마지막 디렉터리."
+
+#: ../data/gnote.schemas.in.h:61
+msgid ""
+"The last setting for the 'Export linked notes' checkbox in the Export to "
+"HTML plugin."
+msgstr ""
+"HTML 내보내기 플러그인에서 '연결된 쪽지 내보내기' 체크박스의 마지막 설정."
+
+#: ../data/gnote.schemas.in.h:62
+msgid ""
+"The last setting for the 'Include all other linked notes' checkbox in the "
+"Export to HTML plugin. This setting is used in conjunction with the 'HTML "
+"Export Linked Notes' setting and is used to specify whether all notes (found "
+"recursively) should be included during an export to HTML."
+msgstr ""
+"HTML 내보내기 플러그인에서 '기타 연결된 쪽지 모두 포함' 체크박스의 마지막 설"
+"정. 이 설정은 'HTML 내보내기 - 연결된 쪽지' 설정과 함께 사용해서 (재귀적으로 "
+"발견되는) 모든 쪽지를 HTML로 내보낼 때 포함할 지 여부를 지정합니다."
+
+#: ../data/gnote.schemas.in.h:63
+msgid ""
+"The note URI of the note that should be considered the \"Start Here\" note, "
+"which is always placed at the bottom of the Gnote note menu and also "
+"accessible by hotkey."
+msgstr "\"여기서 시작\" 쪽지로 취급할 쪽지의 URI. 이 쪽지는 항상 G노트 쪽지 메뉴의 맨 아래에 있고 단축 키로도 접근할 수 있습니다."
+
+#: ../data/gnote.schemas.in.h:64
+msgid "The port to use when connecting to the synchronization server via SSH."
+msgstr "SSH를 통한 동기화 서버에 연결할 때 사용할 포트."
+
+#: ../data/gnote.schemas.in.h:65
+msgid ""
+"Time (in milliseconds) Gnote should wait for a response when using FUSE to "
+"mount a sync share."
+msgstr ""
+"FUSE로 동기화할 위치를 연결할 때 응답을 기다리는 시간 제한 (밀리초 단위)."
+
+#: ../data/gnote.schemas.in.h:66
+msgid "Timestamp format"
+msgstr "시각 형식"
+
+#: ../data/gnote.schemas.in.h:67
+msgid "URL of SSH server containing Gnote synchronization directory."
+msgstr "SSH 서버에서 G노트 동기화 디렉터리의 URL."
+
+#: ../data/gnote.schemas.in.h:68
+msgid ""
+"Unique identifier for the currently configured note synchronization service "
+"addin."
+msgstr "동기화 서비스 추가기능에 설정된 유일한 인식자."
+
+#: ../data/gnote.schemas.in.h:69
+msgid ""
+"Unique identifier for this Gnote client, used when communicating with a "
+"sychronization server."
+msgstr "동기화 서버와 통신할 때 사용되는 G노트 클라이언트의 유일한 ID."
+
+#: ../data/gnote.schemas.in.h:70
+msgid ""
+"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
+"user."
+msgstr "wdfs에 \"-ac\" 옵션을 사용해 물어보지 않고 SSL 인증서를 허용합니다."
+
+#: ../data/gnote.schemas.in.h:71
+msgid "User name to use when connecting to the synchronization server via SSH."
+msgstr "SSH를 통한 동기화 서버에 연결할 때 사용할 사용자 이름."
+
+#: ../data/gnote.schemas.in.h:72
+msgid ""
+"Whitespace-separated list of note URIs for notes that should always appear "
+"in the Gnote note menu."
+msgstr "G노트 쪽지 메뉴에 항상 나타날 쪽지의 URI 목록, 공백으로 구분."
+
+#: ../src/sharp/addinstreemodel.cpp:64
+msgid "Name"
+msgstr "이름"
+
+#: ../src/sharp/addinstreemodel.cpp:65
+msgid "Description"
+msgstr "설명"
+
+#: ../src/actionmanager.cpp:170
+msgid "_File"
+msgstr "파일(_F)"
+
+#: ../src/actionmanager.cpp:174
+msgid "_New"
+msgstr "새로 만들기(_N)"
+
+#: ../src/actionmanager.cpp:175 ../src/actionmanager.cpp:226
+msgid "Create a new note"
+msgstr "새 쪽지를 만듭니다"
+
+#: ../src/actionmanager.cpp:180
+msgid "_Open..."
+msgstr "열기(_O)..."
+
+#: ../src/actionmanager.cpp:180
+msgid "Open the selected note"
+msgstr "선택한 쪽지를 엽니다"
+
+#: ../src/actionmanager.cpp:186
+msgid "_Delete"
+msgstr "삭제(_D)"
+
+#: ../src/actionmanager.cpp:186
+msgid "Delete the selected note"
+msgstr "선택한 쪽지를 삭제합니다"
+
+#: ../src/actionmanager.cpp:192 ../src/notewindow.cpp:376
+msgid "_Close"
+msgstr "닫기(_C)"
+
+#: ../src/actionmanager.cpp:192
+msgid "Close this window"
+msgstr "이 창을 닫습니다"
+
+#: ../src/actionmanager.cpp:197 ../src/tray.cpp:480
+msgid "_Quit"
+msgstr "끝내기(_Q)"
+
+#: ../src/actionmanager.cpp:197
+msgid "Quit Gnote"
+msgstr "G노트 끝내기"
+
+#: ../src/actionmanager.cpp:200
+msgid "_Edit"
+msgstr "편집(_E)"
+
+#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:86
+msgid "Gnote Preferences"
+msgstr "G노트 기본 설정"
+
+#: ../src/actionmanager.cpp:212
+msgid "_Contents"
+msgstr "차례(_C)"
+
+#: ../src/actionmanager.cpp:212
+msgid "Gnote Help"
+msgstr "G노트 도움말"
+
+#: ../src/actionmanager.cpp:217
+msgid "About Gnote"
+msgstr "G노트 정보"
+
+#: ../src/actionmanager.cpp:221
+msgid "TrayIcon"
+msgstr "트레이 아이콘"
+
+#: ../src/actionmanager.cpp:226
+msgid "Create _New Note"
+msgstr "새 쪽지 만들기(_N)"
+
+#: ../src/actionmanager.cpp:231 ../src/notewindow.cpp:328
+msgid "_Search All Notes"
+msgstr "모든 쪽지 검색(_S)"
+
+#: ../src/actionmanager.cpp:231
+msgid "Open the Search All Notes window"
+msgstr "모든 쪽지 검색 창을 엽니다"
+
+#: ../src/actionmanager.cpp:236
+msgid "S_ynchronize Notes"
+msgstr "쪽지 동기화(_Y)"
+
+#: ../src/actionmanager.cpp:236
+msgid "Start synchronizing notes"
+msgstr "쪽지 동기화를 시작합니다"
+
+#: ../src/gnote.cpp:244
+msgid "Cannot create new note"
+msgstr "새 쪽지를 만들 수 없습니다"
+
+#: ../src/gnote.cpp:288
+msgid "and Tomboy original authors."
+msgstr "및 톰보이 개발자."
+
+#: ../src/gnote.cpp:297
+msgid "translator-credits"
+msgstr ""
+"차영호 <ganadist@gmail.com>, 2005-2007\n"
+"류창우 <cwryu@debian.org>, 2007, 2008, 2009"
+
+#: ../src/gnote.cpp:305
+msgid "Copyright © 2009 Hubert Figuiere"
+msgstr "Copyright © 2009 Hubert Figuiere"
+
+#: ../src/gnote.cpp:306
+msgid "A simple and easy to use desktop note-taking application."
+msgstr "사용하기 쉽고 간단한 데스크탑 쪽지 프로그램."
+
+#: ../src/gnote.cpp:317
+msgid "Homepage"
+msgstr "홈페이지"
+
+#: ../src/gnote.cpp:357
+msgid "A note taking application"
+msgstr "쪽지 처리 프로그램"
+
+#: ../src/gnote.cpp:365
+msgid "Run Gnote as a GNOME panel applet."
+msgstr "G노트를 그놈 패널 애플릿으로 실행합니다."
+
+#: ../src/gnote.cpp:370
+msgid "Specify the path of the directory containing the notes."
+msgstr "쪽지가 들어 있는 디렉터리 경로를 지정합니다."
+
+#: ../src/gnote.cpp:375
+msgid "Open the search all notes window with the search text."
+msgstr "검색어에 대한 모든 쪽지 검색 창을 엽니다."
+
+#: ../src/gnote.cpp:380
+msgid "Print version information."
+msgstr "버전 번호를 표시합니다."
+
+#: ../src/gnote.cpp:413
+msgid "Version %1%"
+msgstr "버전 %1%"
+
+#: ../src/preferencesdialog.cpp:104
+msgid "Editing"
+msgstr "편집하기"
+
+#: ../src/preferencesdialog.cpp:106
+msgid "Hotkeys"
+msgstr "단축키"
+
+#: ../src/preferencesdialog.cpp:111
+msgid "Add-ins"
+msgstr "추가 기능"
+
+#: ../src/preferencesdialog.cpp:184
+msgid "_Spell check while typing"
+msgstr "입력할 때 맞춤법 검사(_S)"
+
+#: ../src/preferencesdialog.cpp:190
+msgid ""
+"Misspellings will be underlined in red, with correct spelling suggestions "
+"shown in the context menu."
+msgstr ""
+"맞춤법이 틀리면 빨간 밑줄이 쳐지고, 오른쪽 마우스 단추를 누르면 나오는 메뉴"
+"에 올바른 단어 목록이 나옵니다."
+
+#. WikiWords...
+#: ../src/preferencesdialog.cpp:201
+msgid "Highlight _WikiWords"
+msgstr "위키문법 강조(_W)"
+
+#: ../src/preferencesdialog.cpp:207
+msgid ""
+"Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
+"word will create a note with that name."
+msgstr ""
+"이 옵션을 켜면 <b>ThatLookLikeThis</b>같은 단어를 강조합니다. 단어를 누르면 "
+"그 이름에 해당하는 쪽지를 만들어 줍니다."
+
+#. Auto bulleted list
+#: ../src/preferencesdialog.cpp:214
+msgid "Enable auto-_bulleted lists"
+msgstr "자동 목록 만들기 사용(_B)"
+
+#. Custom font...
+#: ../src/preferencesdialog.cpp:222
+msgid "Use custom _font"
+msgstr "사용자 글꼴 사용(_F)"
+
+#. New Note Template
+#. Translators: This is 'New Note' Template, not New 'Note Template'
+#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:107
+msgid "New Note Template"
+msgstr "새 쪽지 템플리트"
+
+#: ../src/preferencesdialog.cpp:243
+msgid ""
+"Use the new note template to specify the text that should be used when "
+"creating a new note."
+msgstr ""
+"새 쪽지 템플리트를 이용해 새 쪽지를 만들 때 사용할 텍스트를 지정합니다."
+
+#: ../src/preferencesdialog.cpp:252
+msgid "Open New Note Template"
+msgstr "새 쪽지 템플리트 열기"
+
+#. Hotkeys...
+#: ../src/preferencesdialog.cpp:310
+msgid "Listen for _Hotkeys"
+msgstr "단축키 사용(_H)"
+
+#: ../src/preferencesdialog.cpp:317
+msgid ""
+"Hotkeys allow you to quickly access your notes from anywhere with a "
+"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+"Alt&gt;N</b>"
+msgstr ""
+"단축키를 이용하면 어디서나 키를 눌러서 쪽지에 재빨리 접근할 수 있습니다. 예"
+"제 단축키: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
+
+#. Show notes menu keybinding...
+#: ../src/preferencesdialog.cpp:337
+msgid "Show notes _menu"
+msgstr "쪽지 메뉴 보기(_M)"
+
+#. Open Start Here keybinding...
+#: ../src/preferencesdialog.cpp:353
+msgid "Open \"_Start Here\""
+msgstr "\"여기서 시작\" 열기(_S)"
+
+#. Create new note keybinding...
+#: ../src/preferencesdialog.cpp:368
+msgid "Create _new note"
+msgstr "새 쪽지 만들기(_N)"
+
+#. Open Search All Notes window keybinding...
+#: ../src/preferencesdialog.cpp:383
+msgid "Open \"Search _All Notes\""
+msgstr "\"모든 쪽지 검색\" 열기(_A)"
+
+#: ../src/preferencesdialog.cpp:409
+msgid "Ser_vice:"
+msgstr "서비스(_V):"
+
+#: ../src/preferencesdialog.cpp:466
+msgid "Not configurable"
+msgstr "설정 없음"
+
+#. "Advanced..." button to bring up extra sync config dialog
+#: ../src/preferencesdialog.cpp:486
+msgid "_Advanced..."
+msgstr "고급(_A)..."
+
+#: ../src/preferencesdialog.cpp:533
+msgid "The following add-ins are installed"
+msgstr "아래와 같은 추가 기능이 설치되었습니다"
+
+#. TODO: In a future version, add in an "Install Add-ins..." button
+#. TODO: In a future version, add in a "Repositories..." button
+#: ../src/preferencesdialog.cpp:564
+msgid "_Enable"
+msgstr "사용(_E)"
+
+#: ../src/preferencesdialog.cpp:570
+msgid "_Disable"
+msgstr "사용하지 않음(_D)"
+
+#: ../src/preferencesdialog.cpp:699
+msgid "Not Implemented"
+msgstr "구현되지 않음"
+
+#: ../src/preferencesdialog.cpp:713
+msgid "%1% Preferences"
+msgstr "%1% 기본 설정"
+
+#: ../src/preferencesdialog.cpp:854
+msgid "Choose Note Font"
+msgstr "쪽지 글꼴 고르기"
+
+#: ../src/preferencesdialog.cpp:949
+msgid "Version:"
+msgstr "버전:"
+
+#: ../src/preferencesdialog.cpp:954
+msgid "Author:"
+msgstr "만든이:"
+
+#: ../src/preferencesdialog.cpp:960
+msgid "Copyright:"
+msgstr "저작권:"
+
+#: ../src/notemanager.cpp:237
+msgid ""
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
+"Here\n"
+"\n"
+"<bold>Welcome to Gnote!</bold>\n"
+"\n"
+"Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
+"\n"
+"You can create new notes to hold your ideas by selecting the \"Create New "
+"Note\" item from the Gnote Notes menu in your GNOME Panel. Your note will be "
+"saved automatically.\n"
+"\n"
+"Then organize the notes you create by linking related notes and ideas "
+"together!\n"
+"\n"
+"We've created a note called <link:internal>Using Links in Gnote</link:"
+"internal>.  Notice how each time we type <link:internal>Using Links in "
+"Gnote</link:internal> it automatically gets underlined?  Click on the link "
+"to open the note.</note-content>"
+msgstr ""
+"<note-content xmlns:link=\\\"http://beatniksoftware.com/tomboy/link\\\">여기서 시작\n"
+"\n"
+"<bold>G노트를 사용하게 되신 것을 환영합니다!</bold>\n"
+"\n"
+"바로 이 \"여기서 시작\" 쪽지에서부터 아이디어와 생각들을 정리해 나가십시오.\n"
+"\n"
+"그놈 패널의 G노트 쪽지 메뉴에서 \"새 쪽지 만들기\"를 선택하면 새로운 쪽지를 만들어서 거기에 자기 아이디어를 적을 수 있습니다. 쪽지의 내용은 자동으로 저장됩니다.\n"
+"\n"
+"그리고 관련된 쪽지와 관련된 아이디어 사이에 연결을 만들어서 정리해 나가십시오!\n"
+"\n"
+"<link:internal>G노트에서 연결 사용하기</link:internal>라는 쪽지가 있습니다. <link:internal>G노트에서 연결 사용하기</link:internal>라고 입력하기만 하면 밑줄이 만들어지는 것을 보셨나요?  이 쪽지를 열려면 해당 연결을 누르십시오.</note-content>"
+
+#: ../src/notemanager.cpp:256
+msgid ""
+"<note-content>Using Links in Gnote\n"
+"\n"
+"Notes in Gnote can be linked together by highlighting text in the current "
+"note and clicking the <bold>Link</bold> button above in the toolbar.  Doing "
+"so will create a new note and also underline the note's title in the current "
+"note.\n"
+"\n"
+"Changing the title of a note will update links present in other notes.  This "
+"prevents broken links from occurring when a note is renamed.\n"
+"\n"
+"Also, if you type the name of another note in your current note, it will "
+"automatically be linked for you.</note-content>"
+msgstr ""
+"<note-content>G노트에서 연결 사용하기\n"
+"\n"
+"G노트의 쪽지를 서로 연결할 수 있습니다. 현재 쪽지의 글을 선택한 다음 도구 모음에 있는 <bold>연결</bold> 단추를 누르면 됩니다. 이렇게 하면 새 쪽지를 만들면서 현재 쪽지에 있는 새 쪽지의 제목에 밑줄을 만듭니다.\n"
+"\n"
+"쪽지의 제목을 바꾸면 이 쪽지를 연결한 다른 쪽지도 업데이트됩니다. 즉 쪽지의 이름을 바꾸더라도 연결은 깨지지 않습니다.\n"
+"\n"
+"또 현재 쪽지에서 다른 쪽지의 이름을 입력하면, 자동으로 연결이 만들어 집니다.</note-content>"
+
+#. Attempt to find an existing Start Here note
+#: ../src/notemanager.cpp:271 ../src/notemanager.cpp:323
+msgid "Start Here"
+msgstr "여기서 시작"
+
+#: ../src/notemanager.cpp:276
+msgid "Using Links in Gnote"
+msgstr "G노트에서 연결 사용하기"
+
+#: ../src/notemanager.cpp:444
+msgid "New Note %1%"
+msgstr "새 쪽지 %1%"
+
+#. Use a simple "Describe..." body and highlight
+#. it so it can be easily overwritten
+#: ../src/notemanager.cpp:544 ../src/notemanager.cpp:634
+msgid "Describe your new note here."
+msgstr "새 쪽지를 적으십시오."
+
+#: ../src/notewindow.cpp:72
+msgid "Find in This Note"
+msgstr "이 쪽지에서 찾기"
+
+#: ../src/notewindow.cpp:336
+msgid "_Link to New Note"
+msgstr "새 쪽지로 연결(_L)"
+
+#: ../src/notewindow.cpp:344
+msgid "Te_xt"
+msgstr "텍스트(_X)"
+
+#: ../src/notewindow.cpp:353
+msgid "_Find in This Note"
+msgstr "이 쪽지에서 찾기(_F)"
+
+#: ../src/notewindow.cpp:368
+msgid "Clos_e All Notes"
+msgstr "모든 쪽지 닫기(_E)"
+
+#: ../src/notewindow.cpp:403
+msgid "Search"
+msgstr "검색"
+
+#: ../src/notewindow.cpp:407
+msgid "Search your notes (Ctrl-Shift-F)"
+msgstr "쪽지에서 검색합니다 (Ctrl-Shift-F)"
+
+#: ../src/notewindow.cpp:417
+msgid "Link"
+msgstr "연결"
+
+#: ../src/notewindow.cpp:423
+msgid "Link selected text to a new note (Ctrl-L)"
+msgstr "선택한 텍스트를 새 쪽지로 연결합니다 (Ctrl-L)"
+
+#: ../src/notewindow.cpp:432
+msgid "_Text"
+msgstr "텍스트(_T)"
+
+#: ../src/notewindow.cpp:438
+msgid "Set properties of text"
+msgstr "텍스트 등록정보 설정"
+
+#: ../src/notewindow.cpp:442
+msgid "T_ools"
+msgstr "도구(_O)"
+
+#: ../src/notewindow.cpp:447
+msgid "Use tools on this note"
+msgstr "이 쪽지에 도구를 씁니다"
+
+#: ../src/notewindow.cpp:457
+msgid "Delete this note"
+msgstr "이 쪽지를 삭제합니다"
+
+#: ../src/notewindow.cpp:467
+msgid "Synchronize Notes"
+msgstr "쪽지 동기화"
+
+#: ../src/notewindow.cpp:510
+msgid "_Find..."
+msgstr "찾기(_F)..."
+
+#: ../src/notewindow.cpp:518 ../src/notewindow.cpp:640
+msgid "Find _Next"
+msgstr "다음 찾기(_N)"
+
+#: ../src/notewindow.cpp:528
+msgid "Find _Previous"
+msgstr "이전 찾기(_P)"
+
+#: ../src/notewindow.cpp:598
+msgid "Cannot create note"
+msgstr "새 쪽지 만들 수 없음"
+
+#: ../src/notewindow.cpp:641
+msgid "_Previous"
+msgstr "이전(_P)"
+
+#: ../src/notewindow.cpp:654
+msgid "_Find:"
+msgstr "찾기(_F):"
+
+#: ../src/notewindow.cpp:1092
+msgid "<b>_Bold</b>"
+msgstr "<b>굵게(_B)</b>"
+
+#: ../src/notewindow.cpp:1093
+msgid "<i>_Italic</i>"
+msgstr "<i>기울임(_I)</i>"
+
+#: ../src/notewindow.cpp:1094
+msgid "<s>_Strikeout</s>"
+msgstr "<s>취소선(_S)</s>"
+
+#: ../src/notewindow.cpp:1096
+msgid "_Highlight"
+msgstr "강조(_H)"
+
+#: ../src/notewindow.cpp:1098
+msgid "_Normal"
+msgstr "보통(_N)"
+
+#: ../src/notewindow.cpp:1100
+msgid "Hu_ge"
+msgstr "아주 크게(_G)"
+
+#: ../src/notewindow.cpp:1102
+msgid "_Large"
+msgstr "크게(_L)"
+
+#: ../src/notewindow.cpp:1104
+msgid "S_mall"
+msgstr "작게(_M)"
+
+#: ../src/notewindow.cpp:1106
+msgid "Bullets"
+msgstr "목록 표시"
+
+#: ../src/notewindow.cpp:1179
+msgid "Font Size"
+msgstr "글꼴 크기"
+
+#. %1% is the number of note.
+#: ../src/note.cpp:67
+msgid "Really delete this note?"
+msgid_plural "Really delete these %1% notes?"
+msgstr[0] "정말로 이 쪽지 %1%개를 삭제하시겠습니까?"
+
+#: ../src/note.cpp:79
+msgid "If you delete a note it is permanently lost."
+msgstr "쪽지를 삭제하면 되살릴 수 없습니다."
+
+#: ../src/note.cpp:115
+msgid "Error saving note data."
+msgstr "쪽지 데이터 저장에 오류."
+
+#: ../src/note.cpp:116
+msgid ""
+"An error occurred while saving your notes. Please check that you have "
+"sufficient disk space, and that you have appropriate rights on ~/.gnote. "
+"Error details can be found in ~/.gnote.log."
+msgstr "쪽지를 저장하는데 오류가 발생했습니다. 디스크 공간이 충분한 지 확인하시고, ~/.gnote의 권한이 올바른지 확인하십시오. 자세한 오류 내용은 ~/.gnote.log 파일에 있습니다."
+
+#: ../src/recentchanges.cpp:83
+msgid "Search All Notes"
+msgstr "모든 쪽지 검색"
+
+#: ../src/recentchanges.cpp:88
+msgid "C_ase Sensitive"
+msgstr "대소문자 구별(_A)"
+
+#: ../src/recentchanges.cpp:106
+msgid "_Search:"
+msgstr "검색(_S):"
+
+#: ../src/recentchanges.cpp:275
+#: ../src/notebooks/notebookapplicationaddin.cpp:118
+msgid "Notebooks"
+msgstr "쪽지함"
+
+#: ../src/recentchanges.cpp:347
+msgid "Note"
+msgstr "쪽지"
+
+# 최근 바뀐 날짜를 표시하는 데 쓰인다
+#: ../src/recentchanges.cpp:368
+msgid "Last Changed"
+msgstr "최근 바뀜"
+
+#: ../src/recentchanges.cpp:512
+msgid "Matches"
+msgstr "일치"
+
+#: ../src/recentchanges.cpp:566
+msgid "%1% match"
+msgid_plural "%1% matches"
+msgstr[0] "%1%개 일치"
+
+#: ../src/recentchanges.cpp:580
+msgid "Total: %1% note"
+msgid_plural "Total: %1% notes"
+msgstr[0] "모두: %1%개 쪽지"
+
+#: ../src/recentchanges.cpp:594
+msgid "Matches: %1% note"
+msgid_plural "Matches: %1% notes"
+msgstr[0] "일치: %1%개 쪽지"
+
+#: ../src/recentchanges.cpp:734
+msgid "Notes"
+msgstr "쪽지"
+
+#: ../src/tray.cpp:50
+msgid "Gnote Notes"
+msgstr "G노트 쪽지"
+
+#: ../src/tray.cpp:161
+msgid " (new)"
+msgstr " (새 쪽지)"
+
+#: ../src/tray.cpp:473
+msgid "_About Gnote"
+msgstr "G노트 정보(_A)"
+
+#: ../src/utils.cpp:128
+msgid ""
+"The \"Gnote Manual\" could not be found.  Please verify that your "
+"installation has been completed successfully."
+msgstr "\"G노트 설명서\"를 찾을 수 없습니다.  설치를 성공적으로 마쳤는 지 확인하십시오."
+
+#: ../src/utils.cpp:136
+msgid "Help not found"
+msgstr "도움말을 찾지 못했습니다"
+
+#: ../src/utils.cpp:176
+msgid "Cannot open location"
+msgstr "위치를 열 수 없음"
+
+#: ../src/utils.cpp:190
+msgid "Today, %1%"
+msgstr "오늘, %1%"
+
+#: ../src/utils.cpp:191
+msgid "Today"
+msgstr "오늘"
+
+#: ../src/utils.cpp:196
+msgid "Yesterday, %1%"
+msgstr "어제, %1%"
+
+#: ../src/utils.cpp:197
+msgid "Yesterday"
+msgstr "어제"
+
+#: ../src/utils.cpp:204
+msgid "%1% day ago, %2%"
+msgid_plural "%1% days ago, %2%"
+msgstr[0] "%1%일 전, %2%"
+
+#: ../src/utils.cpp:208
+msgid "%1% day ago"
+msgid_plural "%1% days ago"
+msgstr[0] "%1%일 전"
+
+#: ../src/utils.cpp:215
+msgid "Tomorrow, %1%"
+msgstr "내일, %1%"
+
+#: ../src/utils.cpp:216
+msgid "Tomorrow"
+msgstr "내일"
+
+#: ../src/utils.cpp:223
+msgid "In %1% day, %2%"
+msgid_plural "In %1% days, %2%"
+msgstr[0] "%1%일 내, %2%"
+
+#: ../src/utils.cpp:227
+msgid "In %1% day"
+msgid_plural "In %1% days"
+msgstr[0] "%1%일 내"
+
+#: ../src/utils.cpp:238
+msgid "No Date"
+msgstr "날짜 없음"
+
+#: ../src/watchers.cpp:207
+msgid "(Untitled %1%)"
+msgstr "(제목 없음 %1%)"
+
+#: ../src/watchers.cpp:242
+msgid ""
+"A note with the title <b>%1%</b> already exists. Please choose another name "
+"for this note before continuing."
+msgstr "제목이 <b>%1%</b>인 쪽지가 이미 있습니다. 계속하려면 쪽지의 이름을 다르게 해주십시오."
+
+#: ../src/watchers.cpp:256
+msgid "Note title taken"
+msgstr "가져온 쪽지 제목"
+
+#: ../src/watchers.cpp:579
+msgid "_Copy Link Address"
+msgstr "연결 주소 복사(_C)"
+
+#: ../src/watchers.cpp:585
+msgid "_Open Link"
+msgstr "연결 열기(_O)"
+
+#: ../src/notebooks/createnotebookdialog.cpp:38
+#: ../src/notebooks/notebookapplicationaddin.cpp:99
+msgid "Create a new notebook"
+msgstr "새 쪽지함을 만듭니다"
+
+#: ../src/notebooks/createnotebookdialog.cpp:39
+msgid "Type the name of the notebook you'd like to create."
+msgstr "만드려는 쪽지함 이름을 입력하십시오."
+
+#: ../src/notebooks/createnotebookdialog.cpp:47
+msgid "N_otebook name:"
+msgstr "쪽지함 이름(_O):"
+
+#: ../src/notebooks/createnotebookdialog.cpp:60
+msgid "Name already taken"
+msgstr "이름을 이미 사용 중입니다"
+
+#. Translation note: This is the Create button in the Create
+#. New Note Dialog.
+#: ../src/notebooks/createnotebookdialog.cpp:73
+msgid "C_reate"
+msgstr "만들기(_R)"
+
+#. The templateNoteTite should show the name of the
+#. notebook.  For example, if the name of the notebooks
+#. "Meetings", the templateNoteTitle should be "Meetings
+#. Notebook Template".  Translators should place the
+#. name of the notebook accordingly using "%1%".
+#: ../src/notebooks/notebook.cpp:86
+msgid "%1% Notebook Template"
+msgstr "%1% 쪽지함 서식"
+
+#: ../src/notebooks/notebook.cpp:169
+msgid "All Notes"
+msgstr "모든 쪽지"
+
+#: ../src/notebooks/notebook.cpp:181
+msgid "Unfiled Notes"
+msgstr "분류하지 않은 쪽지"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:93
+msgid "Note_books"
+msgstr "쪽지함(_B)"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:94
+#: ../src/notebooks/notebookapplicationaddin.cpp:119
+msgid "Create a new note in a notebook"
+msgstr "쪽지함에서 새 쪽지를 만듭니다"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:98
+#: ../src/notebooks/notebookapplicationaddin.cpp:253
+msgid "New Note_book..."
+msgstr "새 쪽지함(_B)..."
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:103
+msgid "_New Note"
+msgstr "새 쪽지(_N)"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:104
+msgid "Create a new note in this notebook"
+msgstr "이 쪽지함에서 새 쪽지를 만듭니다"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:108
+msgid "_Open Template Note"
+msgstr "템플리트 쪽지 열기(_O)"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:109
+msgid "Open this notebook's template note"
+msgstr "이 쪽지함의 템플리트 쪽지를 엽니다"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:113
+msgid "Delete Note_book"
+msgstr "쪽지함을 삭제(_B)"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:114
+msgid "Delete the selected notebook"
+msgstr "선택한 쪽지함을 삭제합니다"
+
+#: ../src/notebooks/notebookmanager.cpp:332
+msgid "Really delete this notebook?"
+msgstr "이 쪽지함을 정말로 삭제하시겠습니까?"
+
+#: ../src/notebooks/notebookmanager.cpp:333
+msgid ""
+"The notes that belong to this notebook will not be deleted, but they will no "
+"longer be associated with this notebook.  This action cannot be undone."
+msgstr ""
+"이 쪽지함에 들어 있는 쪽지는 삭제하지 않습니다. 하지만 그 쪽지는 이제 이 쪽지"
+"함과 연결되어 있지 않습니다. 이 동작은 취소할 수 없습니다."
+
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:38
+msgid "New \"%1%\" Note"
+msgstr "새 \"%1%\" 쪽지"
+
+#: ../src/notebooks/notebookmenuitem.cpp:34
+msgid "No notebook"
+msgstr "쪽지함 없음"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:81
+msgid "Place this note into a notebook"
+msgstr "이 쪽지를 쪽지함에 놓습니다"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:168
+msgid "Notebook"
+msgstr "쪽지함"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:193
+msgid "_New notebook..."
+msgstr "새 쪽지함(_N)..."
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+msgid "Backlinks"
+msgstr "역링크"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+msgid "See which notes link to the one you're currently viewing."
+msgstr "어떤 쪽지가 현재 쪽지에 연결을 걸었는지 봅니다."
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "Hubert Figuiere 및 톰보이 프로젝트"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+msgid "What links here?"
+msgstr "여기로 연결되는 쪽지?"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+msgid "(none)"
+msgstr "(없음)"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:51
+msgid "Bugzilla Links"
+msgstr "버그질라 링크"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:55
+msgid ""
+"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
+msgstr "브라우저에서 버그질라 URL을 G노트 쪽지로 끌어옵니다. 그러면 버그 번호가 링크로 입력되고 옆에 작은 벌레 아이콘이 생깁니다."
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:59
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "Hubert Figuiere 및 톰보이 프로젝트"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:58
+msgid ""
+"You can use any bugzilla just by dragging links into notes.  If you want a "
+"special icon for certain hosts, add them here."
+msgstr ""
+"노트에 버그질라 링크를 끌어놓아서 사용할 수 있습니다. 특정 호스트에 대해 아이"
+"콘을 넣고 싶다면 여기서 더하십시오."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:75
+msgid "Host Name"
+msgstr "호스트 이름"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:88
+msgid "Icon"
+msgstr "아이콘"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:222
+msgid "Select an icon..."
+msgstr "아이콘 선택..."
+
+#. Extra Widget
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:237
+msgid "_Host name:"
+msgstr "호스트 이름(_H):"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:269
+msgid "Host name invalid"
+msgstr "호스트 이름이 잘못되었습니다"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+msgid "You must specify a valid Bugzilla host name to use with this icon."
+msgstr "이 아이콘을 사용하려면 올바른 버그질라 호스트 이름을 지정해야 합니다."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:289
+msgid "Error saving icon"
+msgstr "아이콘 저장에 오류"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
+msgid "Could not save the icon file."
+msgstr "아이콘 파일을 저장할 수 없습니다."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:362
+msgid "Really remove this icon?"
+msgstr "이 아이콘을 정말로 제거하시겠습니까?"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
+msgid "If you remove an icon it is permanently lost."
+msgstr "아이콘을 제거하면 되살릴 수 없습니다."
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:36
+msgid "Destination for HTML Export"
+msgstr "HTML로 보낼 위치"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:38
+msgid "Export linked notes"
+msgstr "연결된 쪽지 내보내기"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:39
+msgid "Include all other linked notes"
+msgstr "기타 연결된 쪽지 모두 포함"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+msgid "Export to HTML"
+msgstr "HTML로 내보내기"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+msgid "Exports individual notes to HTML."
+msgstr "개별 쪽지를 HTML로 내보냅니다."
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+msgid "Your note was exported to \"%1%\"."
+msgstr "쪽지를 \"%1%\"에 내보냈습니다."
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+msgid "Note exported successfully"
+msgstr "쪽지를 성공적으로 내보냈습니다."
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+#, c-format
+msgid "Could not save the file \"%s\""
+msgstr "\"%s\" 파일을 저장할 수 없습니다"
+
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+msgid "_Fixed Width"
+msgstr "고정폭(_F)"
+
+#. this is the name of the plugin.
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
+msgid "Fixed Width"
+msgstr "고정폭"
+
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
+msgid "Adds fixed-width font style."
+msgstr "고정폭 글꼴 스타일을 추가합니다."
+
+#. Add the menu item when the window is created
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+msgid "Insert Timestamp"
+msgstr "시각 입력"
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+msgid "Inserts current date and time at the cursor position."
+msgstr "커서 위치에 현재 날짜와 시각을 입력합니다."
+
+#. Label
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
+msgid "Choose one of the predefined formats or use your own."
+msgstr "미리 지정된 형식이나 직접 사용자 정의한 형식을 선택하십시오."
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:71
+msgid "Use _Selected Format"
+msgstr "선택한 형식 사용(_S)"
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
+msgid "_Use Custom Format"
+msgstr "사용자 정의 형식 사용(_U)"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+msgid "Printing Support"
+msgstr "인쇄 기능"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+msgid "Allows you to print a note."
+msgstr "쪽지를 인쇄합니다."
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+msgid "Print"
+msgstr "인쇄"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:133
+msgid "Error printing note"
+msgstr "쪽지 인쇄에 오류"
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:293
+msgid "Page %1% of %2%"
+msgstr "페이지 %1% (전체 %2%)"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
+msgid "Sticky Notes Importer"
+msgstr "메모지 가져오기"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
+msgid "Import your notes from the Sticky Notes applet."
+msgstr "메모지 애플릿에서 쪽지를 가져옵니다."
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
+msgid "Import from Sticky Notes"
+msgstr "메모지에서 가져오기"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:241
+msgid "No Sticky Notes found"
+msgstr "메모를 찾지 못했습니다"
+
+#. %1% is a the file name
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+msgid "No suitable Sticky Notes file was found at \"%1%\"."
+msgstr "\"%1%\"에서 메모지 애플릿 파일을 찾지 못했습니다."
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
+msgid "Sticky Notes import completed"
+msgstr "메모지에서 모두 가져왔습니다"
+
+#. here %1% is the number of notes imported, %2% the total number of notes.
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
+msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
+msgstr "<b>%2%</b>개 중 <b>%1%</b>개의 메모지를 가져왔습니다."
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
+msgid "Untitled"
+msgstr "제목 없음"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:319
+msgid "Sticky Note: "
+msgstr "메모지:"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
+msgid "Tomboy Importer"
+msgstr "톰보이 가져오기"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
+msgid "Import your notes from Tomboy."
+msgstr "톰보이에서 쪽지를 가져옵니다."
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
+msgid "Hubert Figuiere"
+msgstr "Hubert Figuiere"
