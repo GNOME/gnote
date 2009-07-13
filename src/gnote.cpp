@@ -274,10 +274,12 @@ namespace gnote {
 
   void Gnote::on_show_help_action()
   {
-    GdkScreen *cscreen;
-    Gdk::Rectangle area;
-    GtkOrientation orientation;
-    gtk_status_icon_get_geometry(m_tray_icon->gobj(), &cscreen, area.gobj(), &orientation);
+    GdkScreen *cscreen = NULL;
+    if(m_tray_icon) {
+      Gdk::Rectangle area;
+      GtkOrientation orientation;
+      gtk_status_icon_get_geometry(m_tray_icon->gobj(), &cscreen, area.gobj(), &orientation);
+    }
     utils::show_help("gnote", "", cscreen, NULL);
   }
 
