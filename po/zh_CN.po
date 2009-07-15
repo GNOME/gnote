@@ -1,9 +1,11 @@
-# zh_CN translation of gnote.
-# Copyright (C) 2009 THE gnote'S COPYRIGHT HOLDER
+# Simplified Chinese translation of gnote.
+# Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnote package.
+#
 # Funda Wang <fundawang@gmail.com>, 2004, 2008.
-# Aron Xu <aronmalache@163.com>, 2009.
 # Ray Wang <raywang@gnome.org>, 2009.
+# Aron Xu <aronmalache@163.com>, 2009.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
@@ -22,14 +24,12 @@ msgid "Accessories"
 msgstr "附件"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
-#, fuzzy
 msgid "Gnote"
-msgstr "便笺"
+msgstr "Gnote"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:3
-#, fuzzy
 msgid "Gnote Applet Factory"
-msgstr "阿帖小程序工厂"
+msgstr "Gnote 小程序工厂"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:4
 msgid "Simple and easy to use note-taking"
@@ -510,7 +510,7 @@ msgstr "退出(_Q)"
 
 #: ../src/actionmanager.cpp:197
 msgid "Quit Gnote"
-msgstr ""
+msgstr "退出 Gnote"
 
 #: ../src/actionmanager.cpp:200
 msgid "_Edit"
@@ -562,7 +562,7 @@ msgstr "无法创建新便笺"
 
 #: ../src/gnote.cpp:288
 msgid "and Tomboy original authors."
-msgstr ""
+msgstr "以及 Tomboy 原作者。"
 
 #: ../src/gnote.cpp:297
 msgid "translator-credits"
@@ -573,7 +573,7 @@ msgstr ""
 
 #: ../src/gnote.cpp:305
 msgid "Copyright © 2009 Hubert Figuiere"
-msgstr ""
+msgstr "版权所有 © 2009 Hubert Figuiere"
 
 #: ../src/gnote.cpp:306
 msgid "A simple and easy to use desktop note-taking application."
@@ -585,7 +585,7 @@ msgstr "主页"
 
 #: ../src/gnote.cpp:357
 msgid "A note taking application"
-msgstr ""
+msgstr "一个笔记程序"
 
 #: ../src/gnote.cpp:365
 msgid "Run Gnote as a GNOME panel applet."
@@ -593,21 +593,19 @@ msgstr "将 Gnote 作为 GNOME 面板小程序运行。"
 
 #: ../src/gnote.cpp:370
 msgid "Specify the path of the directory containing the notes."
-msgstr ""
+msgstr "给出包含便笺的目录路径。"
 
 #: ../src/gnote.cpp:375
-#, fuzzy
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口"
 
 #: ../src/gnote.cpp:380
 msgid "Print version information."
-msgstr ""
+msgstr "显示版本信息。"
 
 #: ../src/gnote.cpp:413
-#, fuzzy
 msgid "Version %1%"
-msgstr "版本"
+msgstr "版本 %1%"
 
 #: ../src/preferencesdialog.cpp:104
 msgid "Editing"
@@ -735,9 +733,8 @@ msgid "Not Implemented"
 msgstr "尚未实现"
 
 #: ../src/preferencesdialog.cpp:713
-#, fuzzy
 msgid "%1% Preferences"
-msgstr "首选项(_P)"
+msgstr "%1% 首选项"
 
 #: ../src/preferencesdialog.cpp:854
 msgid "Choose Note Font"
@@ -756,7 +753,6 @@ msgid "Copyright:"
 msgstr "版权所有："
 
 #: ../src/notemanager.cpp:237
-#, fuzzy
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -779,21 +775,20 @@ msgid ""
 msgstr ""
 "<note-content>从这里开始\n"
 "\n"
-"<bold>欢迎使用阿帖</bold>\n"
+"<bold>欢迎使用 Gnote</bold>\n"
 "\n"
 "使用“从这里开始”便笺可以帮助您组织思路。\n"
 "\n"
-"如果您想要创建一则新便笺，可以从 GNOME 面板的阿帖便笺菜单中选择“创建新便笺”命"
+"如果您想要创建一则新便笺，可以从 GNOME 面板的Gnote 便笺菜单中选择“创建新便笺”命"
 "令。您所创建的便笺将会自动保存。\n"
 "\n"
 "此外，您还可以在相关的便笺之间创建链接！\n"
 "\n"
-"我们也创建了一则称为<link:internal>在阿帖中使用链接</link:internal>的便笺。您"
-"是否已经注意到，我们每次输入<link:internal>在阿帖中使用链接</link:internal>的"
+"我们也创建了一则称为<link:internal>在 Gnote 中使用链接</link:internal>的便笺。您"
+"是否已经注意到，我们每次输入<link:internal>在 Gnote 中使用链接</link:internal>的"
 "时候，都会自动加下划线？单击链接即可打开该便笺。</note-content>"
 
 #: ../src/notemanager.cpp:256
-#, fuzzy
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -808,9 +803,9 @@ msgid ""
 "Also, if you type the name of another note in your current note, it will "
 "automatically be linked for you.</note-content>"
 msgstr ""
-"<note-content>在阿帖中使用链接\n"
+"<note-content>在 Gnote 中使用链接\n"
 "\n"
-"如果要将阿帖中的便笺互相链接，应该在当前便笺中选中相应的文本，然后单击上方工"
+"如果要将 Gnote 中的便笺互相链接，应该在当前便笺中选中相应的文本，然后单击上方工"
 "具栏中的<bold>链接</bold>按钮。执行此操作后，将创建一则新便笺，并将当前便笺中"
 "的选中文本作为新便笺的标题。\n"
 "\n"
@@ -826,14 +821,12 @@ msgid "Start Here"
 msgstr "从这里开始"
 
 #: ../src/notemanager.cpp:276
-#, fuzzy
 msgid "Using Links in Gnote"
-msgstr "在阿帖中使用链接"
+msgstr "在 Gnote 中使用链接"
 
 #: ../src/notemanager.cpp:444
-#, fuzzy
 msgid "New Note %1%"
-msgstr "新建便笺(_N)"
+msgstr "新建便笺 %1%"
 
 #. Use a simple "Describe..." body and highlight
 #. it so it can be easily overwritten
@@ -927,21 +920,19 @@ msgstr "查找(_F)："
 
 #: ../src/notewindow.cpp:1092
 msgid "<b>_Bold</b>"
-msgstr ""
+msgstr "<b>粗体(_B)</b>"
 
 #: ../src/notewindow.cpp:1093
-#, fuzzy
 msgid "<i>_Italic</i>"
-msgstr "斜体(_I)"
+msgstr "<i>斜体(_I)</i>"
 
 #: ../src/notewindow.cpp:1094
-#, fuzzy
 msgid "<s>_Strikeout</s>"
-msgstr "删除线(_S)"
+msgstr "<s>删除线(_S)</s>"
 
 #: ../src/notewindow.cpp:1096
 msgid "_Highlight"
-msgstr "高亮显示(_H)"
+msgstr "高亮(_H)"
 
 #: ../src/notewindow.cpp:1098
 msgid "_Normal"
@@ -969,10 +960,9 @@ msgstr "字体大小"
 
 #. %1% is the number of note.
 #: ../src/note.cpp:67
-#, fuzzy
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
-msgstr[0] "真的要删除此便笺吗？"
+msgstr[0] "真的要删除这些便笺吗？"
 
 #: ../src/note.cpp:79
 msgid "If you delete a note it is permanently lost."
@@ -983,14 +973,13 @@ msgid "Error saving note data."
 msgstr "保存便笺数据时出错。"
 
 #: ../src/note.cpp:116
-#, fuzzy
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
 "Error details can be found in ~/.gnote.log."
 msgstr ""
-"保存您的便笺时发生了错误。请检查您是否有足够的磁盘空间，以及您在 ~/.tomboy 是"
-"否有足够的权限。错误细节可在 ~/.tomboy.log 中找到。"
+"保存您的便笺时发生了错误。请检查您是否有足够的磁盘空间，以及您在 ~/.gnote 是"
+"否有足够的权限。错误细节可在 ~/.gnote.log 中找到。"
 
 #: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
@@ -1022,47 +1011,41 @@ msgid "Matches"
 msgstr "匹配项"
 
 #: ../src/recentchanges.cpp:566
-#, fuzzy
 msgid "%1% match"
 msgid_plural "%1% matches"
-msgstr[0] "{0} 个匹配项"
+msgstr[0] "%1% 个匹配项"
 
 #: ../src/recentchanges.cpp:580
-#, fuzzy
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
-msgstr[0] "总计：{0} 个便笺"
+msgstr[0] "总计：%1% 个便笺"
 
 #: ../src/recentchanges.cpp:594
-#, fuzzy
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
-msgstr[0] "匹配：{0} 个便笺"
+msgstr[0] "匹配：%1% 个便笺"
 
 #: ../src/recentchanges.cpp:734
 msgid "Notes"
 msgstr "便笺"
 
 #: ../src/tray.cpp:50
-#, fuzzy
 msgid "Gnote Notes"
-msgstr "未分类便笺"
+msgstr "Gnote 便笺"
 
 #: ../src/tray.cpp:161
 msgid " (new)"
 msgstr " (新)"
 
 #: ../src/tray.cpp:473
-#, fuzzy
 msgid "_About Gnote"
-msgstr "关于(_A)"
+msgstr "关于 Gnote(_A)"
 
 #: ../src/utils.cpp:128
-#, fuzzy
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
-msgstr "找不到“阿帖便笺手册”。请检查您的安装是否已成功完成。"
+msgstr "找不到“Gnote 便笺手册”。请检查您的安装是否已成功完成。"
 
 #: ../src/utils.cpp:136
 msgid "Help not found"
@@ -1073,71 +1056,62 @@ msgid "Cannot open location"
 msgstr "无法打开位置"
 
 #: ../src/utils.cpp:190
-#, fuzzy
 msgid "Today, %1%"
-msgstr "今天："
+msgstr "今天，%1%"
 
 #: ../src/utils.cpp:191
 msgid "Today"
-msgstr "今日"
+msgstr "今天"
 
 #: ../src/utils.cpp:196
-#, fuzzy
 msgid "Yesterday, %1%"
-msgstr "昨天，{0}"
+msgstr "昨天，%1%"
 
 #: ../src/utils.cpp:197
 msgid "Yesterday"
 msgstr "昨天"
 
 #: ../src/utils.cpp:204
-#, fuzzy
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
-msgstr[0] "{0} 天前，{1}"
+msgstr[0] "%1% 天前，%2%"
 
 #: ../src/utils.cpp:208
-#, fuzzy
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
-msgstr[0] "{0} 天前"
+msgstr[0] "%1% 天前"
 
 #: ../src/utils.cpp:215
-#, fuzzy
 msgid "Tomorrow, %1%"
-msgstr "明天，{0}"
+msgstr "明天，%1%"
 
 #: ../src/utils.cpp:216
 msgid "Tomorrow"
 msgstr "明天"
 
 #: ../src/utils.cpp:223
-#, fuzzy
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
-msgstr[0] "{0} 天内，{1}"
+msgstr[0] "%1% 天内，%2%"
 
 #: ../src/utils.cpp:227
-#, fuzzy
 msgid "In %1% day"
 msgid_plural "In %1% days"
-msgstr[0] "{0} 天内"
+msgstr[0] "%1% 天内"
 
 #: ../src/utils.cpp:238
 msgid "No Date"
 msgstr "没有日期"
 
 #: ../src/watchers.cpp:207
-#, fuzzy
 msgid "(Untitled %1%)"
-msgstr "(无标题 {0})"
+msgstr "(无标题 %1%)"
 
 #: ../src/watchers.cpp:242
-#, fuzzy
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
-msgstr "已经存在标题为 <b>{0}</b> 的便笺。请在继续前为此便笺选择另外的名称。"
+msgstr "已经存在标题为 <b>%1%</b> 的便笺。请在继续前为此便笺选择另外的名称。"
 
 #: ../src/watchers.cpp:256
 msgid "Note title taken"
@@ -1180,9 +1154,8 @@ msgstr "创建(_R)"
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
 #: ../src/notebooks/notebook.cpp:86
-#, fuzzy
 msgid "%1% Notebook Template"
-msgstr "{0} 个笔记本模板"
+msgstr "%1% 个笔记本模板"
 
 #: ../src/notebooks/notebook.cpp:169
 msgid "All Notes"
@@ -1242,9 +1215,8 @@ msgstr ""
 "属于此笔记本的便笺不会被删除，但它们将不再属于此笔记本。此动作不可撤消。"
 
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:38
-#, fuzzy
 msgid "New \"%1%\" Note"
-msgstr "新建“{0}”便笺"
+msgstr "新建“%1%”便笺"
 
 #: ../src/notebooks/notebookmenuitem.cpp:34
 msgid "No notebook"
@@ -1264,16 +1236,16 @@ msgstr "新建笔记本(_N)..."
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
 msgid "Backlinks"
-msgstr ""
+msgstr "反向链接"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
 msgid "See which notes link to the one you're currently viewing."
-msgstr ""
+msgstr "查看哪些便笺链接到了您当前查看的这个。"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
 msgid "Hubert Figuiere and Tomboy Project"
-msgstr ""
+msgstr "Hubert Figuiere 和 Tomboy 项目"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
 msgid "What links here?"
@@ -1285,21 +1257,22 @@ msgstr "(无)"
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:51
 msgid "Bugzilla Links"
-msgstr ""
+msgstr "Bugzilla 链接"
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:55
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
-msgstr ""
+msgstr "允许您将一个 Bugzilla URL 直接从浏览器拖拽至 Gnote 便笺中。"
+"Bug 号码将被与一个小的 bug 图标一起被插入。"
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:59
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
 msgid "Hubert Figuiere and the Tomboy Project"
-msgstr ""
+msgstr "Hubert Figuiere 和 Tomboy 项目"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:58
 msgid ""
@@ -1327,14 +1300,12 @@ msgid "_Host name:"
 msgstr "主机名(_H)："
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:269
-#, fuzzy
 msgid "Host name invalid"
-msgstr "主机名(_H)："
+msgstr "主机名无效"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:270
-#, fuzzy
 msgid "You must specify a valid Bugzilla host name to use with this icon."
-msgstr "要使用此图标，您必须指定 Bugzilla 主机名。"
+msgstr "要使用此图标，您必须指定一个有效的 Bugzilla 主机名。"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:289
 msgid "Error saving icon"
@@ -1370,38 +1341,34 @@ msgid "Export to HTML"
 msgstr "导出为 HTML"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
-#, fuzzy
 msgid "Exports individual notes to HTML."
-msgstr "导出链接的便笺"
+msgstr "导出便笺为独立的 HTML。"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
-#, fuzzy
 msgid "Your note was exported to \"%1%\"."
-msgstr "您的便笺已导出为“{0}”。"
+msgstr "您的便笺已导出为“%1%”。"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
 msgid "Note exported successfully"
 msgstr "便笺导出成功"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file \"%s\""
-msgstr "无法保存文件“{0}”"
+msgstr "无法保存文件“%s”"
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
-#, fuzzy
 msgid "_Fixed Width"
-msgstr "固定宽度(_T)"
+msgstr "等宽(_F)"
 
 #. this is the name of the plugin.
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
-#, fuzzy
 msgid "Fixed Width"
-msgstr "固定宽度(_T)"
+msgstr "等宽"
 
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
 msgid "Adds fixed-width font style."
-msgstr ""
+msgstr "添加等宽字体样式"
 
 #. Add the menu item when the window is created
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
@@ -1411,7 +1378,7 @@ msgstr "插入时间戳"
 
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
-msgstr ""
+msgstr "在光标出插入当前日期和时间。"
 
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
@@ -1428,11 +1395,11 @@ msgstr "使用自定义字体(_U)"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
 msgid "Printing Support"
-msgstr ""
+msgstr "打印支持"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
 msgid "Allows you to print a note."
-msgstr ""
+msgstr "允许您打印便笺。"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
 msgid "Print"
@@ -1444,17 +1411,14 @@ msgstr "打印便笺时出错"
 
 #. %1% is the page number, %2% is the total number of pages
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:293
-#, fuzzy
 msgid "Page %1% of %2%"
-msgstr "第 {0} 页，共 {1} 页"
+msgstr "第 %1% 页，共 %2% 页"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
-#, fuzzy
 msgid "Sticky Notes Importer"
-msgstr "置顶便笺导入器首次运行"
+msgstr "置顶便笺导入器"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
-#, fuzzy
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "从置顶便笺中导入"
 
@@ -1468,9 +1432,8 @@ msgstr "未找到置顶便笺"
 
 #. %1% is a the file name
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
-#, fuzzy
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
-msgstr "“{0}”中未找到合适的置顶便笺文件。"
+msgstr "“%1%”中未找到合适的置顶便笺文件。"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
 msgid "Sticky Notes import completed"
@@ -1478,9 +1441,8 @@ msgstr "置顶便笺导入成功"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
-#, fuzzy
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
-msgstr "共成功导入了 <b>{1}</b> 个置顶便笺中的 <b>{0}</b> 个。"
+msgstr "共成功导入了 <b>%1%</b> 个置顶便笺中的 <b>%2%</b> 个。"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
 msgid "Untitled"
@@ -1491,32 +1453,31 @@ msgid "Sticky Note: "
 msgstr "置顶便笺："
 
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
-#, fuzzy
 msgid "Tomboy Importer"
-msgstr "阿帖便笺"
+msgstr "Tomboy 便笺导入器"
 
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
 msgid "Import your notes from Tomboy."
-msgstr ""
+msgstr "从 Tomboy 中导入便笺。"
 
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
 msgid "Hubert Figuiere"
-msgstr ""
+msgstr "Hubert Figuiere"
 
 #~ msgid ""
 #~ "Indicates that the Sticky Note Importer plugin has not been run, so it "
 #~ "should run automatically the next time Tomboy starts."
 #~ msgstr ""
-#~ "表明置顶便笺导入器插件从未运行过，所以下次阿帖启动时会自动运行该插件。"
+#~ "表明置顶便笺导入器插件从未运行过，所以下次 Gnote 启动时会自动运行该插件。"
 
 #~ msgid "Quit Tomboy"
-#~ msgstr "退出阿帖"
+#~ msgstr "退出 Gnote "
 
 #~ msgid "Tomboy Preferences"
-#~ msgstr "阿帖首选项"
+#~ msgstr " Gnote 首选项"
 
 #~ msgid "Tomboy Help"
-#~ msgstr "阿帖帮助"
+#~ msgstr " Gnote 帮助"
 
 #~ msgid "No host name specified"
 #~ msgstr "未指定主机名"
@@ -1544,7 +1505,7 @@ msgstr ""
 
 #~ msgid ""
 #~ "Specified folder path does not exist, and Tomboy was unable to create it."
-#~ msgstr "特殊文件夹路径不存在，阿帖无法创建它。"
+#~ msgstr "特殊文件夹路径不存在， Gnote 无法创建它。"
 
 #~ msgid "Local Folder"
 #~ msgstr "本地文件夹"
@@ -1648,7 +1609,7 @@ msgstr ""
 #~ msgstr "将配置保存到 GNOME 密钥环时失败，出错信息如下："
 
 #~ msgid "Tomboy Web"
-#~ msgstr "阿帖网站"
+#~ msgstr " Gnote 网站"
 
 #, fuzzy
 #~| msgid "Connecting to the server..."
@@ -1763,7 +1724,7 @@ msgstr ""
 #~ "Copyright (C) 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
 #~ "\n"
 #~ msgstr ""
-#~ "阿帖：简单易用的桌面随意帖应用程序。\n"
+#~ " Gnote ：简单易用的桌面随意帖应用程序。\n"
 #~ "版权所有 (C) 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
 #~ "\n"
 
@@ -1806,12 +1767,12 @@ msgstr ""
 #~ "Try 'tomboy --help' for more information.\n"
 #~ "D-BUS remote control disabled."
 #~ msgstr ""
-#~ "阿帖：不支持的选项“{0}”\n"
+#~ " Gnote ：不支持的选项“{0}”\n"
 #~ "使用“tomboy --help”可获得更多信息。\n"
 #~ "D-BUS 远程控制被禁用。"
 
 #~ msgid "_About Tomboy"
-#~ msgstr "关于阿帖(_A)"
+#~ msgstr "关于 Gnote (_A)"
 
 #~ msgid "Today, {0}"
 #~ msgstr "今日，{0}"
