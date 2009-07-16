@@ -822,6 +822,7 @@ namespace gnote {
     // Remove tags now, since a note with no tags has
     // no "tags" element in the XML
     std::list<Tag::Ptr> tag_list;
+    get_tags(tag_list);
     for(std::list<Tag::Ptr>::const_iterator iter = tag_list.begin();
         iter != tag_list.end(); ++iter) {
       remove_tag(*iter);
