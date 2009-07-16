@@ -650,7 +650,7 @@ namespace gnote {
   void Note::add_tag(const Tag::Ptr & tag)
   {
     if(!tag) {
-      throw sharp::Exception ("Note.AddTag () called with a null tag.");
+      throw sharp::Exception ("note::add_tag() called with a NULL tag.");
     }
     tag->add_note (*this);
 
@@ -821,12 +821,7 @@ namespace gnote {
 
     // Remove tags now, since a note with no tags has
     // no "tags" element in the XML
-    std::list<Tag::Ptr> tag_list;
-    get_tags(tag_list);
-    for(std::list<Tag::Ptr>::const_iterator iter = tag_list.begin();
-        iter != tag_list.end(); ++iter) {
-      remove_tag(*iter);
-    }
+    std::list<Tag::Ptr> new_tags;
     std::string name;
 
     while (xml.read()) {
@@ -859,7 +854,7 @@ namespace gnote {
             for(std::list<std::string>::const_iterator iter = tag_strings.begin();
                 iter != tag_strings.end(); ++iter) {
               Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);
-              add_tag(tag);
+              new_tags.push_back(tag);
             }
             xmlFreeDoc(doc2);
           }
@@ -880,6 +875,20 @@ namespace gnote {
 
     xml.close ();
 
+    std::list<Tag::Ptr> tag_list;
+    get_tags(tag_list);
+    
+    for(std::list<Tag::Ptr>::const_iterator iter = tag_list.begin();
+        iter != tag_list.end(); ++iter) {
+      if(find(new_tags.begin(), new_tags.end(), *iter) == new_tags.end()) {
+        remove_tag(*iter);
+      }
+    }
+    for(std::list<Tag::Ptr>::const_iterator iter = new_tags.begin();
+        iter != new_tags.end(); ++iter) {
+      add_tag(*iter);
+    }
+    
     // Allow method caller to specify ChangeType (mostly needed by sync)
     queue_save (changeType);
   }
