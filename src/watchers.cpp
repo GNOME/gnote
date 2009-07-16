@@ -413,9 +413,8 @@ namespace gnote {
 
   void NoteUrlWatcher::on_note_opened ()
   {
-#if FIXED_GTKSPELL
-    // NOTE: This hack helps avoid multiple URL opens for
-    // cases where the GtkSpell version is fixed to allow
+    // NOTE: This hack helps avoid multiple URL opens
+    // now that Notes always perform
     // TagTable sharing.  This is because if the TagTable is
     // shared, we will connect to the same Tag's event
     // source each time a note is opened, and get called
@@ -426,10 +425,6 @@ namespace gnote {
         sigc::mem_fun(*this, &NoteUrlWatcher::on_url_tag_activated));
       s_text_event_connected = true;
     }
-#else
-    m_url_tag->signal_activate().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_url_tag_activated));
-#endif
 
     m_click_mark = get_buffer()->create_mark(get_buffer()->begin(), true);
 
@@ -662,9 +657,8 @@ namespace gnote {
 
   void NoteLinkWatcher::on_note_opened ()
   {
-#if FIXED_GTKSPELL
-    // NOTE: This avoid multiple link opens for cases where
-    // the GtkSpell version is fixed to allow TagTable
+    // NOTE: This avoid multiple link opens
+    // now that notes always perform TagTable
     // sharing.  This is because if the TagTable is shared,
     // we will connect to the same Tag's event source each
     // time a note is opened, and get called multiple times
@@ -676,12 +670,6 @@ namespace gnote {
         sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
       s_text_event_connected = true;
     }
-#else
-    m_link_tag->signal_activate().connect(
-      sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
-    m_broken_link_tag->signal_activate().connect(
-      sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
-#endif
     get_buffer()->signal_insert().connect(
       sigc::mem_fun(*this, &NoteLinkWatcher::on_insert_text));
     get_buffer()->signal_erase().connect(
