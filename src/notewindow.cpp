@@ -23,6 +23,7 @@
 #include <boost/algorithm/string/finder.hpp>
 
 #include <glibmm/i18n.h>
+#include <gtkmm/arrow.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/separatortoolitem.h>
@@ -637,7 +638,7 @@ namespace gnote {
   NoteFindBar::NoteFindBar(Note & note)
     : Gtk::HBox(false, 0)
     , m_note(note)
-    , m_next_button(_("Find _Next"))
+    , m_next_button(_("_Next"))
     , m_prev_button(_("_Previous"))
     , m_entry_changed_timeout(NULL)
     , m_note_changed_timeout(NULL)
@@ -659,9 +660,10 @@ namespace gnote {
     m_entry.signal_changed().connect(sigc::mem_fun(*this, &NoteFindBar::on_find_entry_changed));
     m_entry.signal_activate().connect(sigc::mem_fun(*this, &NoteFindBar::on_find_entry_activated));
     m_entry.show();
-    pack_start(m_entry, false, false, 0);
+    pack_start(m_entry, true, true, 0);
 
-    m_prev_button.set_image(*manage(new Gtk::Image (Gtk::Stock::GO_BACK, Gtk::ICON_SIZE_MENU)));
+    m_prev_button.set_image(*manage(new Gtk::Arrow (Gtk::ARROW_LEFT, 
+                                                    Gtk::SHADOW_NONE)));
     m_prev_button.set_relief(Gtk::RELIEF_NONE);
     m_prev_button.set_sensitive(false);
     m_prev_button.set_focus_on_click(false);
@@ -669,7 +671,8 @@ namespace gnote {
     m_prev_button.show();
     pack_start(m_prev_button, false, false, 0);
 
-    m_next_button.set_image(*manage(new Gtk::Image (Gtk::Stock::GO_FORWARD, Gtk::ICON_SIZE_MENU)));
+    m_next_button.set_image(*manage(new Gtk::Arrow (Gtk::ARROW_RIGHT, 
+                                                    Gtk::SHADOW_NONE)));
     m_next_button.set_relief(Gtk::RELIEF_NONE);
     m_next_button.set_sensitive(false);
     m_next_button.set_focus_on_click(false);
