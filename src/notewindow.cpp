@@ -1092,6 +1092,8 @@ namespace gnote {
     , m_bullets(_("Bullets"))
     , m_increase_indent(Gtk::Stock::INDENT)
     , m_decrease_indent(Gtk::Stock::UNINDENT)
+    , m_increase_font(_("Increase Font Size"), true)
+    , m_decrease_font(_("Decrease Font Size"), true)
     {
       m_undo = manage(new Gtk::ImageMenuItem (Gtk::Stock::UNDO));
 //      m_undo->set_accel_group(accel_group);
@@ -1187,6 +1189,22 @@ namespace gnote {
 
       m_hidden_no_size.hide();
 
+      m_increase_font.add_accelerator ("activate",
+                                       accel_group,
+                                       GDK_plus,
+                                       Gdk::CONTROL_MASK,
+                                       Gtk::ACCEL_VISIBLE);
+      m_increase_font.signal_activate()
+        .connect(sigc::mem_fun(*this, &NoteTextMenu::increase_font_clicked));
+
+      m_decrease_font.add_accelerator ("activate",
+                                       accel_group,
+                                       GDK_minus,
+                                       Gdk::CONTROL_MASK,
+                                       Gtk::ACCEL_VISIBLE);
+      m_decrease_font.signal_activate()
+        .connect(sigc::mem_fun(*this, &NoteTextMenu::decrease_font_clicked));
+
       Gtk::SeparatorMenuItem *spacer2 = manage(new Gtk::SeparatorMenuItem());
 
       m_bullets_clicked_cid = m_bullets.signal_activate()
@@ -1222,6 +1240,8 @@ namespace gnote {
       append(m_normal);
       append(m_large);
       append(m_huge);
+      append(m_increase_font);
+      append(m_decrease_font);
       append(*spacer2);
       append(m_bullets);
       append(m_increase_indent);
@@ -1342,6 +1362,48 @@ namespace gnote {
     const char * tag = (const char *)item->get_data(Glib::Quark("Tag"));
     if (tag)
       m_buffer->set_active_tag(tag);
+  }
+
+  void NoteTextMenu::increase_font_clicked ()
+  {
+    if (m_event_freeze)
+      return;
+
+    if (m_buffer->is_active_tag ("size:small")) {
+      m_buffer->remove_active_tag ("size:small");
+    } 
+    else if (m_buffer->is_active_tag ("size:large")) {
+      m_buffer->remove_active_tag ("size:large");
+      m_buffer->set_active_tag ("size:huge");
+    } 
+    else if (m_buffer->is_active_tag ("size:huge")) {
+      // Maximum font size, do nothing
+    } 
+    else {
+      // Current font size is normal
+      m_buffer->set_active_tag ("size:large");
+    }
+ }
+
+  void NoteTextMenu::decrease_font_clicked ()
+  {
+    if (m_event_freeze)
+      return;
+
+    if (m_buffer->is_active_tag ("size:small")) {
+// Minimum font size, do nothing
+    } 
+    else if (m_buffer->is_active_tag ("size:large")) {
+      m_buffer->remove_active_tag ("size:large");
+    } 
+    else if (m_buffer->is_active_tag ("size:huge")) {
+      m_buffer->remove_active_tag ("size:huge");
+      m_buffer->set_active_tag ("size:large");
+    } 
+    else {
+// Current font size is normal
+      m_buffer->set_active_tag ("size:small");
+    }
   }
 
   void NoteTextMenu::undo_clicked ()

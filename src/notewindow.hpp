@@ -64,6 +64,8 @@ private:
   void toggle_bullets_clicked();
   void increase_indent_clicked();
   void decrease_indent_clicked();
+  void increase_font_clicked();
+  void decrease_font_clicked();
 
   Glib::RefPtr<NoteBuffer> m_buffer;
   UndoManager          &m_undo_manager;
@@ -85,6 +87,8 @@ private:
   Gtk::CheckMenuItem    m_bullets;
   Gtk::ImageMenuItem    m_increase_indent;
   Gtk::ImageMenuItem    m_decrease_indent;
+  Gtk::MenuItem         m_increase_font;
+  Gtk::MenuItem         m_decrease_font;
   sigc::connection      m_bullets_clicked_cid;
 };
 
