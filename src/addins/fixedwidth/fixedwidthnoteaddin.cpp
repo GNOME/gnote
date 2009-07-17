@@ -61,7 +61,7 @@ namespace fixedwidth {
   }
   const char * FixedWidthModule::version() const
   {
-    return "0.1";
+    return "0.2";
   }
 
 
