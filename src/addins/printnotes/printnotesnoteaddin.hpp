@@ -52,30 +52,32 @@ public:
 
 DECLARE_MODULE(PrintNotesModule);
 
-struct PrintMargins
+class PageBreak
 {
-  int top;
-  int left;
-  int right;
-  int bottom;
-
-  PrintMargins()
-    : top(0), left(0), right(0), bottom(0)
+public:
+  PageBreak(int paragraph, int line)
+    : m_break_paragraph(paragraph)
+    , m_break_line(line)
     {
     }
-  void clear()
+  PageBreak()
+    : m_break_paragraph(0)
+    , m_break_line(0)
     {
-      top = left = right = bottom = 0;
     }
-  int vertical_margins()
+  int get_paragraph() const
     {
-      return top + bottom;
+      return m_break_paragraph;
     }
-  int horizontal_margins()
+  int get_line() const
     {
-      return left + right;
+      return m_break_line;
     }
+private:
+  int m_break_paragraph;
+  int m_break_line;
 };
+
 
 class PrintNotesNoteAddin
   : public gnote::NoteAddin
@@ -93,19 +95,24 @@ public:
 		{
 			return (int) (cm * dpi / 2.54);
 		}
+  static int inch_to_pixel(double inch, double dpi)
+		{
+			return (int) (inch * dpi);
+		}
 
 private:
   void get_paragraph_attributes(const Glib::RefPtr<Pango::Layout> & layout,
-                                double dpiX, PrintMargins & margins,
+                                double dpiX, int & indentation,
                                 Gtk::TextIter & position, 
-                                Gtk::TextIter & limit,
+                                const Gtk::TextIter & limit,
                                 std::list<Pango::Attribute> & attributes);
   Glib::RefPtr<Pango::Layout> create_layout_for_paragraph(const Glib::RefPtr<Gtk::PrintContext> & context, 
                                                           Gtk::TextIter p_start,
                                                           Gtk::TextIter p_end,
-                                                          PrintMargins & margins);
+                                                          int & indentation);
   Glib::RefPtr<Pango::Layout> create_layout_for_pagenumbers(const Glib::RefPtr<Gtk::PrintContext> & context, int page_number, int total_pages);
   Glib::RefPtr<Pango::Layout> create_layout_for_timestamp(const Glib::RefPtr<Gtk::PrintContext> & context);
+  int compute_footer_height(const Glib::RefPtr<Gtk::PrintContext> & context);
   void on_begin_print(const Glib::RefPtr<Gtk::PrintContext>&);
   void print_footer(const Glib::RefPtr<Gtk::PrintContext>&, guint);
 
@@ -114,11 +121,13 @@ private:
 /////
   void print_button_clicked();
   Gtk::ImageMenuItem * m_item;
-  PrintMargins         m_page_margins;
-  int                  m_footer_offset;
-  std::vector<int>     m_page_breaks;
+  int                  m_margin_top;
+  int                  m_margin_left;
+  int                  m_margin_right;
+  int                  m_margin_bottom;
+  std::vector<PageBreak> m_page_breaks;
   Glib::RefPtr<Gtk::PrintOperation> m_print_op;
-  std::string          m_timestamp;
+  Glib::RefPtr<Pango::Layout> m_timestamp_footer;
 };
 
 }
