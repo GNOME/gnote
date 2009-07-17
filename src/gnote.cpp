@@ -304,7 +304,8 @@ namespace gnote {
     about.set_name("Gnote");
     about.set_version(VERSION);
     about.set_logo(utils::get_icon("gnote", 48));
-    about.set_copyright(_("Copyright \xc2\xa9 2009 Hubert Figuiere"));
+    about.set_copyright(_("Copyright \xc2\xa9 2009 Hubert Figuiere\n"
+                          "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
     about.set_comments(_("A simple and easy to use desktop "
                          "note-taking application."));
 // I don't think we need a hook.
