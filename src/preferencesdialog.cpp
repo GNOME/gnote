@@ -906,7 +906,7 @@ namespace gnote {
     add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
     
     // TODO: Change this icon to be an addin/package icon
-    Gtk::Image *icon = manage(new Gtk::Image(Gtk::Stock::INFO, 
+    Gtk::Image *icon = manage(new Gtk::Image(Gtk::Stock::DIALOG_INFO, 
                                              Gtk::ICON_SIZE_DIALOG));
     icon->property_yalign() = 0;
 
