@@ -129,7 +129,6 @@ protected:
   virtual bool on_delete_event(GdkEventAny *ev);
   virtual void on_hide();
 private:
-  static void on_escape_setting_changed(GConfClient *, guint cnxid, GConfEntry* entry, gpointer data);
   bool on_key_pressed(GdkEventKey*);
   void close_window_handler();
   void close_all_windows_handler();
@@ -166,7 +165,6 @@ private:
 
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;
-  sigc::connection              m_keypress_cid;
   guint                         m_gconf_notify;
 };
 

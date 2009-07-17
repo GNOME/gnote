@@ -171,13 +171,8 @@ namespace gnote {
                                      GDK_N, Gdk::CONTROL_MASK,
                                      Gtk::ACCEL_VISIBLE);
 
-    // Have Esc key close the note window
-    if (Preferences::obj().get<bool>(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE))
-      m_keypress_cid  = signal_key_press_event().connect(sigc::mem_fun(*this, &NoteWindow::on_key_pressed));
+    signal_key_press_event().connect(sigc::mem_fun(*this, &NoteWindow::on_key_pressed));
 
-    // Watch the escape setting in GConf
-    m_gconf_notify = Preferences::obj().add_notify(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE,
-                   &NoteWindow::on_escape_setting_changed, this);
 
     // Increase Indent
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::change_depth_right_handler),
@@ -222,29 +217,17 @@ namespace gnote {
     move(x, y);
   }
 
-  void NoteWindow::on_escape_setting_changed(GConfClient *, guint /*cnxid*/, 
-                                             GConfEntry* entry, gpointer data)
-  {
-    NoteWindow * self = static_cast<NoteWindow*>(data);
-
-    GConfValue * value = gconf_entry_get_value(entry);
-    if(!value) {
-      return;
-    }
-
-    if(gconf_value_get_bool(value)) {
-      self->m_keypress_cid  = self->signal_key_press_event().connect(
-        sigc::mem_fun(*self, &NoteWindow::on_key_pressed));
-    }
-    else {
-      self->m_keypress_cid.disconnect();
-    }
-  }
 
   bool NoteWindow::on_key_pressed(GdkEventKey *ev)
   {
     if(ev->keyval == GDK_Escape) {
-      close_window_handler();
+      if (m_find_bar && m_find_bar->is_visible()) {
+        m_find_bar->hide();
+      }
+      else if (Preferences::obj().get<bool>(
+                 Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE)) {
+        close_window_handler();
+      }
       return true;
     }
     return false;
