@@ -36,6 +36,7 @@
 #include <gtkmm/menubar.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/selectiondata.h>
+#include <gtkmm/statusbar.h>
 #include <gtkmm/treemodelfilter.h>
 #include <gtkmm/treemodelsort.h>
 #include <gtkmm/treepath.h>
@@ -164,7 +165,7 @@ private:
   Gtk::ComboBoxEntry  m_find_combo;
   Gtk::Button         m_clear_search_button;
   Gtk::CheckButton    m_case_sensitive;
-  Gtk::Label          m_note_count;
+  Gtk::Statusbar      m_status_bar;
   Gtk::ScrolledWindow m_matches_window;
   Gtk::VBox           m_content_vbox;
   Gtk::TreeViewColumn *m_matches_column;

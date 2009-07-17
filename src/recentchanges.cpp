@@ -153,8 +153,8 @@ namespace gnote {
     m_tree = manage(m_tree);
     m_tree->show ();
 
-    m_note_count.property_xalign() = 0;
-    m_note_count.show ();
+    m_status_bar.set_has_resize_grip(true);
+    m_status_bar.show();
 
     // Update on changes to notes
     m.signal_note_deleted.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_changed));
@@ -187,15 +187,11 @@ namespace gnote {
     hpaned->add2 (m_matches_window);
     hpaned->show ();
 
-    Gtk::HBox *status_box = manage(new Gtk::HBox (false, 8));
-    status_box->pack_start (m_note_count, true, true, 0);
-    status_box->show ();
-
     Gtk::VBox *vbox = manage(new Gtk::VBox (false, 8));
     vbox->set_border_width(6);
     vbox->pack_start (*hbox, false, false, 0);
     vbox->pack_start (*hpaned, true, true, 0);
-    vbox->pack_start (*status_box, false, false, 0);
+    vbox->pack_start (m_status_bar, false, false, 0);
     vbox->show ();
 
     // Use another VBox to place the MenuBar
@@ -578,7 +574,9 @@ namespace gnote {
     try {
       const char * fmt;
       fmt = ngettext("Total: %1% note", "Total: %1% notes", total);
-      m_note_count.set_text(str(boost::format (fmt) % total));
+      std::string status = str(boost::format (fmt) % total);
+      m_status_bar.pop(0);
+      m_status_bar.push(status, 0);
     } 
     catch(const std::exception & e)
     {
@@ -592,7 +590,9 @@ namespace gnote {
     try {
       const char * fmt;
       fmt = ngettext("Matches: %1% note", "Matches: %1% notes", matches);
-      m_note_count.set_text(str(boost::format (fmt) % matches));
+      std::string status = str(boost::format (fmt) % matches);
+      m_status_bar.pop(0);
+      m_status_bar.push(status, 0);
     }
     catch(const std::exception & e)
     {
