@@ -248,8 +248,7 @@ namespace gnote {
       align->show();
       options_list->pack_start (*align, false, false, 0);
       
-      Gtk::LinkButton *open_template_button = manage(new Gtk::LinkButton (
-                                                      "",  _("Open New Note Template")));
+      Gtk::Button *open_template_button = manage(new Gtk::Button (_("Open New Note Template")));
 
       open_template_button->signal_clicked().connect(
         sigc::mem_fun(*this, &PreferencesDialog::open_template_button_clicked));
