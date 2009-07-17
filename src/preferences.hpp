@@ -71,6 +71,7 @@ namespace gnote {
     static const char *SEARCH_WINDOW_Y_POS;
     static const char *SEARCH_WINDOW_WIDTH;
     static const char *SEARCH_WINDOW_HEIGHT;
+    static const char *SEARCH_WINDOW_SPLITTER_POS;
 
     Preferences();
     ~Preferences();

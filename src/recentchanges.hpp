@@ -34,6 +34,7 @@
 #include <gtkmm/comboboxentry.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/menubar.h>
+#include <gtkmm/paned.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/selectiondata.h>
 #include <gtkmm/statusbar.h>
@@ -167,6 +168,7 @@ private:
   Gtk::CheckButton    m_case_sensitive;
   Gtk::Statusbar      m_status_bar;
   Gtk::ScrolledWindow m_matches_window;
+  Gtk::HPaned         m_hpaned;
   Gtk::VBox           m_content_vbox;
   Gtk::TreeViewColumn *m_matches_column;
         

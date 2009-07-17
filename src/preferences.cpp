@@ -61,6 +61,7 @@ namespace gnote {
   const char * Preferences::SEARCH_WINDOW_Y_POS = "/apps/gnote/search_window_y_pos";
   const char * Preferences::SEARCH_WINDOW_WIDTH = "/apps/gnote/search_window_width";
   const char * Preferences::SEARCH_WINDOW_HEIGHT = "/apps/gnote/search_window_height";
+  const char * Preferences::SEARCH_WINDOW_SPLITTER_POS = "/apps/gnote/search_window_splitter_pos";
 
 
   Preferences::Preferences()

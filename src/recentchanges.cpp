@@ -24,7 +24,6 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/image.h>
 #include <gtkmm/main.h>
-#include <gtkmm/paned.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/table.h>
 #include <gtkmm/treestore.h>
@@ -174,23 +173,22 @@ namespace gnote {
     m_tree->get_size_request (h,w);
     m_matches_window.set_size_request(std::min(h, 420), std::min(w, 480));
                         
-    restore_position ();
-
     m_matches_window.property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
     m_matches_window.property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
     m_matches_window.add (*m_tree);
     m_matches_window.show ();
 
-    Gtk::HPaned *hpaned = manage(new Gtk::HPaned ());
-    hpaned->set_position(150);
-    hpaned->add1 (*notebooksPane);
-    hpaned->add2 (m_matches_window);
-    hpaned->show ();
+    m_hpaned.set_position(150);
+    m_hpaned.add1 (*notebooksPane);
+    m_hpaned.add2 (m_matches_window);
+    m_hpaned.show ();
+
+    restore_position ();
 
     Gtk::VBox *vbox = manage(new Gtk::VBox (false, 8));
     vbox->set_border_width(6);
     vbox->pack_start (*hbox, false, false, 0);
-    vbox->pack_start (*hpaned, true, true, 0);
+    vbox->pack_start (m_hpaned, true, true, 0);
     vbox->pack_start (m_status_bar, false, false, 0);
     vbox->show ();
 
@@ -1543,6 +1541,8 @@ namespace gnote {
     prefs.set<int> (Preferences::SEARCH_WINDOW_Y_POS, y);
     prefs.set<int> (Preferences::SEARCH_WINDOW_WIDTH, width);
     prefs.set<int> (Preferences::SEARCH_WINDOW_HEIGHT, height);
+    prefs.set<int> (Preferences::SEARCH_WINDOW_SPLITTER_POS, 
+                    m_hpaned.get_position());
   }
         
    
@@ -1553,7 +1553,7 @@ namespace gnote {
     int y = prefs.get<int> (Preferences::SEARCH_WINDOW_Y_POS);
     int width = prefs.get<int> (Preferences::SEARCH_WINDOW_WIDTH);
     int height = prefs.get<int> (Preferences::SEARCH_WINDOW_HEIGHT);
-          
+    int pos = prefs.get<int> (Preferences::SEARCH_WINDOW_SPLITTER_POS);
 
     if((width == 0) || (height == 0)) {
       return;
@@ -1561,6 +1561,9 @@ namespace gnote {
           
     set_default_size(width, height);
     move (x, y);
+    if(pos) {
+      m_hpaned.set_position(pos);
+    }
   }
 
 
