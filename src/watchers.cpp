@@ -401,7 +401,7 @@ namespace gnote {
 
   void NoteUrlWatcher::initialize ()
   {
-    m_url_tag = NoteTag::Ptr::cast_dynamic(get_note()->get_tag_table()->lookup("link:url"));
+    m_url_tag = get_note()->get_tag_table()->get_url_tag();
   }
 
 
@@ -638,12 +638,9 @@ namespace gnote {
     m_on_note_renamed_cid = manager().signal_note_renamed.connect(
       sigc::mem_fun(*this, &NoteLinkWatcher::on_note_renamed));
 
-    m_url_tag = NoteTag::Ptr::cast_dynamic(get_note()
-                                           ->get_tag_table()->lookup ("link:url"));
-    m_link_tag = NoteTag::Ptr::cast_dynamic(get_note()
-                                            ->get_tag_table()->lookup ("link:internal"));
-    m_broken_link_tag = NoteTag::Ptr::cast_dynamic(get_note()
-                                                   ->get_tag_table()->lookup ("link:broken"));
+    m_url_tag = get_note()->get_tag_table()->get_url_tag();
+    m_link_tag = get_note()->get_tag_table()->get_link_tag();
+    m_broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
   }
 
 
@@ -938,7 +935,7 @@ namespace gnote {
 
   void NoteWikiWatcher::initialize ()
   {
-    m_broken_link_tag = get_note()->get_tag_table()->lookup ("link:broken");
+    m_broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
   }
 
 

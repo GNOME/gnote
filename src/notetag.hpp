@@ -272,6 +272,20 @@ public:
   void register_dynamic_tag (const std::string & tag_name, const Factory & factory);
   bool is_dynamic_tag_registered(const std::string &);
 
+
+  NoteTag::Ptr get_url_tag() const
+    {
+      return m_url_tag;
+    }
+  NoteTag::Ptr get_link_tag() const
+    {
+      return m_link_tag;
+    }
+  NoteTag::Ptr get_broken_link_tag() const
+    {
+      return m_broken_link_tag;
+    }
+  
 protected:
   NoteTagTable()
     {
@@ -288,6 +302,10 @@ private:
   static NoteTagTable::Ptr           s_instance;
   std::map<std::string, Factory>     m_tag_types;
   std::list<Glib::RefPtr<Gtk::TextTag> > m_added_tags;
+
+  NoteTag::Ptr m_url_tag;
+  NoteTag::Ptr m_link_tag;
+  NoteTag::Ptr m_broken_link_tag;
 };
 
 

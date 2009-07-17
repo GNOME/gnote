@@ -438,16 +438,19 @@ namespace gnote {
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
     tag->set_palette_foreground(CONTRAST_COLOR_GREY);
     add (tag);
+    m_broken_link_tag = tag;
 
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
     tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
     add (tag);
+    m_link_tag = tag;
 
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
     tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
     add (tag);
+    m_url_tag = tag;
   }
 
 
