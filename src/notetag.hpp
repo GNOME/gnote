@@ -156,6 +156,7 @@ private:
   std::string         m_element_name;
   Glib::RefPtr<Gtk::TextMark> m_widget_location;
   Gtk::Widget       * m_widget;
+  bool                m_allow_middle_activate;
   int                 m_flags;
   TagActivatedHandler m_signal_activate;
   ContrastPaletteColor m_palette_foreground;

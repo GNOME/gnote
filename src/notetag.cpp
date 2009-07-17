@@ -37,6 +37,7 @@ namespace gnote {
     : Gtk::TextTag(tag_name)
     , m_element_name(tag_name)
     , m_widget(NULL)
+    , m_allow_middle_activate(false)
     , m_flags(flags | CAN_SERIALIZE | CAN_SPLIT)
   {
     if (tag_name.empty()) {
@@ -51,6 +52,7 @@ namespace gnote {
   NoteTag::NoteTag()
     : Gtk::TextTag()
     , m_widget(NULL)
+    , m_allow_middle_activate(false)
     , m_flags(0)
   {
   }
@@ -174,6 +176,7 @@ namespace gnote {
       // Do not insert selected text when activating links with
       // middle mouse button
       if (button_ev->button == 2) {
+        m_allow_middle_activate = true;
         return true;
       }
 
@@ -193,6 +196,15 @@ namespace gnote {
       // Prevent activation when selecting links with the mouse
       if (editor->get_buffer()->get_has_selection()) {
         return false;
+      }
+
+      // Don't activate if the link has just been pasted with the
+      // middle mouse button (no preceding ButtonPress event)
+      if (button_ev->button == 2 && !m_allow_middle_activate) {
+        return false;
+      }
+      else {
+        m_allow_middle_activate = false;
       }
 
       get_extents (iter, start, end);
