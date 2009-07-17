@@ -1,3 +1,29 @@
+0.5.4 -
+
+Fixes:
+
+  * Fixes a potential problem with tags when reading a note. (Maybe 
+    Closes #585048)
+  * Add COPYING-DOCS. (Closes #582381)
+  * Fix build on non-Linux systems: add boot system lib, don't pass 
+    linker flags with -Wl, link libtomboy directly. (Closes #587228) 
+    (Closes #587261) (Closes #587262)
+  * Make naming consistent: it is Gnote, not Gnote Notes. (Closes #587644)
+  * Fixed some internal inconsistencies with the "TagTable" that is now
+    shared.
+  * Speedup in Note::load_foreign_note_xml() to avoid flooding with 
+    unneeded notifications.
+  * Fix print formatting issues. (Tomboy bug #572024)
+  * Update copyright from Tomboy.
+  * Use a button for "Open New Note Template". (Tomboy bug #581582).
+  * Avoid a lookup for the TextTag when loading addins.
+  * Display first bullet in HTML export (Tomboy bug #422954)
+
+Translations:
+
+  * Updated translations:
+    - Simplified Chinese (zh_CN)
+
 0.5.3 "Bastille Day" - 2009/07/14
 
 Fixes:
