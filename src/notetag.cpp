@@ -171,6 +171,17 @@ namespace gnote {
     {
       GdkEventButton *button_ev = (GdkEventButton*)ev;
 
+      // Do not insert selected text when activating links with
+      // middle mouse button
+      if (button_ev->button == 2) {
+        return true;
+      }
+
+      return false;
+    }
+    case GDK_BUTTON_RELEASE:
+    {
+      GdkEventButton *button_ev = (GdkEventButton*)ev;
       if ((button_ev->button != 1) && (button_ev->button != 2))
         return false;
 
@@ -179,15 +190,21 @@ namespace gnote {
                                Gdk::CONTROL_MASK)) != 0)
         return false;
 
+      // Prevent activation when selecting links with the mouse
+      if (editor->get_buffer()->get_has_selection()) {
+        return false;
+      }
+
       get_extents (iter, start, end);
       bool success = on_activate (*(editor.operator->()), start, end);
 
+      // Hide note if link is activated with middle mouse button
       if (success && (button_ev->button == 2)) {
         Glib::RefPtr<Gtk::Widget> widget = Glib::RefPtr<Gtk::Widget>::cast_static(sender);
         widget->get_toplevel()->hide ();
       }
 
-      return success;
+      return false;
     }
     case GDK_KEY_PRESS:
     {
