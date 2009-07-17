@@ -978,30 +978,6 @@ namespace gnote {
     }
   }
 
-  static const char * PATRONYMIC_PREFIXES[] = { 
-    "Mc", 
-    "Mac", 
-    "Le", 
-    "La", 
-    "De", 
-    "Van",
-    NULL
-  };
-
-  bool NoteWikiWatcher::is_patronymic_name (const std::string & word)
-  {
-    const char **prefix = PATRONYMIC_PREFIXES;
-    while(*prefix) {
-      if (sharp::string_starts_with(word, *prefix) &&
-          isupper(word [strlen(*prefix)])) {
-        return true;
-      }
-      prefix++;
-    }
-
-    return false;
-  }
-
   void NoteWikiWatcher::apply_wikiword_to_block (Gtk::TextIter start, Gtk::TextIter end)
   {
     NoteBuffer::get_block_extents (start,
@@ -1019,23 +995,20 @@ namespace gnote {
 
     while(m_regex.FindAndConsume(&input, &match)) {
 
-      if (!is_patronymic_name (match)) {
-      
-        Gtk::TextIter start_cpy = start;
-        Glib::ustring::size_type len = input.data() - p - match.size();
-        Glib::ustring segment(p, p + len);
-        start_cpy.forward_chars (segment.length());
+      Gtk::TextIter start_cpy = start;
+      Glib::ustring::size_type len = input.data() - p - match.size();
+      Glib::ustring segment(p, p + len);
+      start_cpy.forward_chars (segment.length());
 
-        DBG_OUT("Highlighting wikiword: '%s' at offset %d",
-                match.c_str(), segment.length());
+      DBG_OUT("Highlighting wikiword: '%s' at offset %d",
+              match.c_str(), segment.length());
 
-        end = start_cpy;
-        segment = match;
-        end.forward_chars (segment.length());
+      end = start_cpy;
+      segment = match;
+      end.forward_chars (segment.length());
 
-        if (!manager().find(match)) {
-          get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
-        }
+      if (!manager().find(match)) {
+        get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
       }
     }
   }
