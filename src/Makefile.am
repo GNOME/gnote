@@ -13,14 +13,15 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	-DGNOTE_LOCALEDIR=\"@GNOTE_LOCALEDIR@\" \
 	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
 
-AM_LDFLAGS=-Wl,--export-dynamic
+AM_LDFLAGS=-export-dynamic
 
-GNOTE_LIBS = libgnote.a @LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
-	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ \
+GNOTE_LIBS = libgnote.a $(top_builddir)/libtomboy/libtomboy.la \
+	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
+	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_SYSTEM_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@PCRE_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
-	-luuid -L$(top_builddir)/libtomboy -ltomboy
+	-luuid
 
 noinst_LIBRARIES = libgnote.a
 bin_PROGRAMS = gnote

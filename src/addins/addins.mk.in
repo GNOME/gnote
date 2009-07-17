@@ -7,6 +7,6 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@GCONF_CFLAGS@ @LIBXML_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
 
-AM_LDFLAGS = -avoid-version -module -Wl,--export-dynamic
+AM_LDFLAGS = -avoid-version -module -export-dynamic
 
 ADDINSDIR = @libdir@/@PACKAGE_NAME@/addins/@VERSION@
