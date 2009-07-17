@@ -38,7 +38,7 @@ int test_main(int /*argc*/, char ** /*argv*/)
                   "your ideas and thoughts.\n\n"
                   "You can create new notes to hold your ideas by "
                   "selecting the \"Create New Note\" item from the "
-                  "Gnote Notes menu in your GNOME Panel. "
+                  "Gnote menu in your GNOME Panel. "
                   "Your note will be saved automatically.\n\n"
                   "Then organize the notes you create by linking "
                   "related notes and ideas together!\n\n"
