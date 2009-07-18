@@ -81,6 +81,7 @@ if HAVE_DBUS
 SUBDIRS += dbus
 DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/remotecontrol.hpp dbus/remotecontrol.cpp \
+	dbus/remotecontrolclient.hpp dbus/remotecontrolclient.cpp \
 	$(NULL)
 endif
 

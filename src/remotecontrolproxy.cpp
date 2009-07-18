@@ -19,7 +19,9 @@
 
 #include <dbus-c++/glib-integration.h>
 
+#include "debug.hpp"
 #include "dbus/remotecontrol.hpp"
+#include "dbus/remotecontrolclient.hpp"
 #include "remotecontrolproxy.hpp"
 
 
@@ -28,8 +30,13 @@ namespace gnote {
 const char *RemoteControlProxy::GNOTE_SERVER_NAME = "org.gnome.Gnote";
 const char *RemoteControlProxy::GNOTE_SERVER_PATH = "/org/gnome/Gnote/RemoteControl";
 
-IRemoteControl *RemoteControlProxy::get_instance()
+RemoteControlClient *RemoteControlProxy::get_instance()
 {
+  DBus::Connection conn = DBus::Connection::SessionBus();
+	if(conn.has_name(GNOTE_SERVER_NAME)) {
+    return new RemoteControlClient(conn, GNOTE_SERVER_PATH, GNOTE_SERVER_NAME);
+  }
+
   return NULL;
 }
 
@@ -38,13 +45,20 @@ DBus::Glib::BusDispatcher dispatcher;
 
 RemoteControl *RemoteControlProxy::register_remote(NoteManager & manager)
 {
+  RemoteControl *remote_control = NULL;
   DBus::default_dispatcher = &dispatcher;
 	dispatcher.attach(NULL);
 
 	DBus::Connection conn = DBus::Connection::SessionBus();
-	conn.request_name(GNOTE_SERVER_NAME);
+  // NOTE: I find no way to check whether we connected or not
+  // using DBus-C++
+  if(!conn.has_name(GNOTE_SERVER_NAME)) {
+    
+    conn.request_name(GNOTE_SERVER_NAME);
+    DBG_ASSERT(conn.connected(), "must be connected");
 
-  RemoteControl *remote_control = new RemoteControl (conn, manager);
+    remote_control = new RemoteControl (conn, manager);
+  }
 
   return remote_control;
 }

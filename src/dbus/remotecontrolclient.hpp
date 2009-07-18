@@ -18,28 +18,30 @@
  */
 
 
-#ifndef _REMOTECONTROL_PROXY_HPP_
-#define _REMOTECONTROL_PROXY_HPP_
+#ifndef __GNOTE_REMOTECONTROLCLIENT_HPP_
+#define __GNOTE_REMOTECONTROLCLIENT_HPP_
 
+#include "dbus/remotecontrol-client-glue.hpp"
 
 namespace gnote {
 
-class RemoteControl;
-class RemoteControlClient;
-class NoteManager;
 
-class RemoteControlProxy 
+class RemoteControlClient
+  : public org::gnome::Gnote::RemoteControl_proxy
+  , public DBus::IntrospectableProxy
+  , public DBus::ObjectProxy
 {
 public:
-  static const char *GNOTE_SERVER_PATH;
-  static const char *GNOTE_SERVER_NAME;
+  RemoteControlClient(DBus::Connection &connection, const char *path, const char *name);
 
-  /** Get a dbus client */
-  static RemoteControlClient *get_instance();
+  virtual void NoteAdded(const std::string&) {}
+  virtual void NoteDeleted(const std::string&, const std::string&) {}
+  virtual void NoteSaved(const std::string&) {}
 
-  static RemoteControl *register_remote(NoteManager & manager);
+
 };
 
 }
+
 
 #endif

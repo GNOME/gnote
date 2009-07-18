@@ -56,6 +56,7 @@
 
 #if ENABLE_DBUS
 #include "remotecontrolproxy.hpp"
+#include "dbus/remotecontrolclient.hpp"
 #endif
 
 namespace gnote {
@@ -221,13 +222,16 @@ namespace gnote {
         DBG_OUT("Gnote remote control active.");
       } 
       else {
-        // If Tomboy is already running, open the search window
+        // If Gnote is already running, open the search window
         // so the user gets some sort of feedback when they
-        // attempt to run Tomboy again.
-        IRemoteControl *m_remote;
+        // attempt to run Gnote again.
+        RemoteControlClient *remote;
         try {
-          m_remote = RemoteControlProxy::get_instance();
-          m_remote->DisplaySearch();
+          remote = RemoteControlProxy::get_instance();
+          DBG_ASSERT(remote, "remote is NULL, something is wrong");
+          if(remote) {
+            remote->DisplaySearch();
+          }
         } 
         catch (...)
         {
