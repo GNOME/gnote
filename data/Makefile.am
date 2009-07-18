@@ -28,14 +28,14 @@ install-data-local:
 endif
 
 
-if ENABLE_DBUS
+if HAVE_DBUS
 dbusservicedir       = $(DBUS_SERVICE_DIR)
-dbusservice_in_files = org.gnome.GNote.service.in
+dbusservice_in_files = org.gnome.Gnote.service.in
 dbusservice_DATA     = $(dbusservice_in_files:.service.in=.service)
 
 $(dbusservice_DATA): $(dbusservice_in_files) Makefile
-	sed -e "s|\@libexecdir\@|$(libexecdir)|g"	\
-	    -e "s|\@wrapper\@|gnote-applet|g"		\
+	sed -e "s|\@libexecdir\@|$(bindir)|g"	\
+	    -e "s|\@wrapper\@|gnote|g"		\
 	    < $< > $@
 endif
 

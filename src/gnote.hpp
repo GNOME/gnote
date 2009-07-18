@@ -39,6 +39,7 @@ namespace gnote {
 
 class PreferencesDialog;
 class NoteManager;
+class RemoteControl;
 
 class Gnote
   : public base::Singleton<Gnote>
@@ -85,6 +86,7 @@ private:
   void start_note_created(const Note::Ptr & start_note);
   static std::string conf_dir();
   std::string get_note_path(const std::string & override_path);
+  void register_remote_control(NoteManager & manager);
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
@@ -94,6 +96,7 @@ private:
   Tray::Ptr m_tray;
   bool m_is_panel_applet;
   PreferencesDialog *m_prefsdlg;
+  RemoteControl     *m_remote_control;
 };
 
 

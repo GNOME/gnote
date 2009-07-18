@@ -10,6 +10,7 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ @LIBXML_CFLAGS@ \
 	@LIBXSLT_CFLAGS@ \
 	@PCRE_CFLAGS@ \
+	@DBUS_CFLAGS@ \
 	-DGNOTE_LOCALEDIR=\"@GNOTE_LOCALEDIR@\" \
 	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
 
@@ -20,6 +21,7 @@ GNOTE_LIBS = libgnote.a $(top_builddir)/libtomboy/libtomboy.la \
 	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_SYSTEM_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@PCRE_LIBS@ \
+	@DBUS_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
 	-luuid
 
@@ -72,6 +74,14 @@ gnote-applet: gnote-applet.in Makefile
 	    < $< > $@
 
 CLEANFILES = gnote-applet
+endif
+
+
+if HAVE_DBUS
+SUBDIRS += dbus
+DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
+	dbus/remotecontrol.hpp dbus/remotecontrol.cpp \
+	$(NULL)
 endif
 
 libgnote_a_SOURCES = \
@@ -140,7 +150,8 @@ libgnote_a_SOURCES = \
 	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
 	notebooks/notebooknoteaddin.hpp notebooks/notebooknoteaddin.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
-	$(APPLET_SOURCES)
+	$(DBUS_SOURCES)   \
+	$(APPLET_SOURCES) \
 	$(NULL)
 
 gnote_LDADD = $(GNOTE_LIBS)

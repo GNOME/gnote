@@ -28,9 +28,21 @@
 #define __SHARP_MAP_HPP_
 
 #include <list>
+#include <vector>
 #include <map>
 
 namespace sharp {
+
+  /** get all the keys from the map. */
+  template <typename _Map>
+  void map_get_keys(const _Map & m, std::vector<typename _Map::mapped_type> & l) 
+  {
+    l.clear();
+    for(typename _Map::const_iterator iter = m.begin();
+        iter != m.end(); ++iter) {
+      l.push_back(iter->first);
+    }
+  }
 
 
   /** get all the mapped elements from the map. */

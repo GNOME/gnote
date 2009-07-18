@@ -54,6 +54,10 @@
 #include "applet.hpp"
 #endif
 
+#if ENABLE_DBUS
+#include "remotecontrolproxy.hpp"
+#endif
+
 namespace gnote {
 
   bool Gnote::s_tray_icon_showing = false;
@@ -104,7 +108,7 @@ namespace gnote {
 
     ActionManager & am(ActionManager::obj());
     am.load_interface();
-//    register_remote_control(m_manager);
+    register_remote_control(*m_manager);
     setup_global_actions();
     
     std::list<ApplicationAddin*> addins;
@@ -206,6 +210,40 @@ namespace gnote {
     }
     return false;
   }
+
+
+  void Gnote::register_remote_control(NoteManager & manager)
+  {
+#if ENABLE_DBUS
+    try {
+      m_remote_control = RemoteControlProxy::register_remote(manager);
+      if (m_remote_control) {
+        DBG_OUT("Gnote remote control active.");
+      } 
+      else {
+        // If Tomboy is already running, open the search window
+        // so the user gets some sort of feedback when they
+        // attempt to run Tomboy again.
+        IRemoteControl *m_remote;
+        try {
+          m_remote = RemoteControlProxy::get_instance();
+          m_remote->DisplaySearch();
+        } 
+        catch (...)
+        {
+        }
+
+        ERR_OUT ("Gnote is already running.  Exiting...");
+        ::exit(-1);
+      }
+    } 
+    catch (const std::exception & e) {
+      ERR_OUT("Gnote remote control disabled (DBus exception): %s",
+              e.what());
+    }
+#endif
+  }
+
 
 
   void Gnote::setup_global_actions()

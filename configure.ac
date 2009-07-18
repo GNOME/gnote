@@ -166,12 +166,16 @@ AC_LANG_POP
 # Use DBus to export our remote control if available.
 #
 AC_ARG_ENABLE(dbus, 
-	      [  --enable-dbus[[=no/yes]]    compile with dbus support [[default: no]]],
-	      ENABLE_DBUS="$enableval", ENABLE_DBUS="no")
-AM_CONDITIONAL(ENABLE_DBUS, test "x$ENABLE_DBUS" != "xno")
+	      [  --enable-dbus[[=no/yes]]    compile with dbus support [[default: yes]]],
+	      ENABLE_DBUS="$enableval", ENABLE_DBUS="yes")
 if test "x$ENABLE_DBUS" != "xno"; then
-   AC_ERROR("DBus support not implemented yet");
+        PKG_CHECK_MODULES(DBUS, dbus-c++-1, [
+              have_dbus="yes";AC_DEFINE([ENABLE_DBUS], [1], [Define to 1 if DBus is enabled])
+           ], have_dbus="no")
+        AM_CONDITIONAL(HAVE_DBUS, test "$have_dbus" = "yes")
 fi
+
+
 
 AC_ARG_WITH(dbus_service_dir, [  --with-dbus-service-dir=DIR            Where to install Gnote's DBus service file.])
 AM_CONDITIONAL(WITH_DBUS_SERVICE_DIR, test "x$with_dbus_service_dir" != "x")
@@ -223,6 +227,7 @@ src/addins/inserttimestamp/Makefile
 src/addins/printnotes/Makefile
 src/addins/stickynoteimport/Makefile
 src/addins/tomboyimport/Makefile
+src/dbus/Makefile
 po/Makefile.in
 po/Makefile
 help/Makefile
