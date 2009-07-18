@@ -17,6 +17,10 @@
       <arg type="s" name="uri" direction="in"/>
       <arg type="b" name="ret" direction="out"/>
     </method>
+    <method name="DisplayNote">
+      <arg type="s" name="uri" direction="in"/>
+      <arg type="b" name="ret" direction="out"/>
+    </method>
     <method name="DisplayNoteWithSearch">
       <arg type="s" name="uri" direction="in"/>
       <arg type="s" name="search" direction="in"/>
@@ -31,7 +35,7 @@
       <arg type="s" name="linked_title" direction="in"/>
       <arg type="s" name="ret" direction="out"/>
     </method>
-    <method name="FindNoteStartHereNote">
+    <method name="FindStartHereNote">
       <arg type="s" name="ret" direction="out"/>
     </method>
     <method name="GetAllNotesWithTag">

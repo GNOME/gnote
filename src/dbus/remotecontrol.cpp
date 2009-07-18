@@ -106,6 +106,20 @@ namespace gnote {
 
   }
 
+  bool RemoteControl::DisplayNote(const std::string& uri)
+  {
+    Note::Ptr note;
+
+    note = m_manager.find_by_uri (uri);
+    if (!note) {
+      return false;
+    }
+
+    note->get_window()->present();
+    return true;
+  }
+
+
   bool RemoteControl::DisplayNoteWithSearch(const std::string& uri, const std::string& search)
   {
     Note::Ptr note;
@@ -152,7 +166,7 @@ namespace gnote {
   }
 
 
-  std::string RemoteControl::FindNoteStartHereNote()
+  std::string RemoteControl::FindStartHereNote()
   {
     Note::Ptr note = m_manager.find_by_uri (m_manager.start_note_uri());
     return (!note) ? "" : note->uri();

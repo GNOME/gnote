@@ -46,11 +46,12 @@ public:
   virtual std::string CreateNamedNote(const std::string& linked_title);
   virtual std::string CreateNote();
   virtual bool DeleteNote(const std::string& uri);
+  virtual bool DisplayNote(const std::string& uri);
   virtual bool DisplayNoteWithSearch(const std::string& uri, const std::string& search);
   virtual void DisplaySearch();
   virtual void DisplaySearchWithText(const std::string& search_text);
   virtual std::string FindNote(const std::string& linked_title);
-  virtual std::string FindNoteStartHereNote();
+  virtual std::string FindStartHereNote();
   virtual std::vector< std::string > GetAllNotesWithTag(const std::string& tag_name);
   virtual int32_t GetNoteChangeDate(const std::string& uri);
   virtual std::string GetNoteCompleteXml(const std::string& uri);
