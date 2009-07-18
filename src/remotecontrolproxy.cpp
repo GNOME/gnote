@@ -30,8 +30,14 @@ namespace gnote {
 const char *RemoteControlProxy::GNOTE_SERVER_NAME = "org.gnome.Gnote";
 const char *RemoteControlProxy::GNOTE_SERVER_PATH = "/org/gnome/Gnote/RemoteControl";
 
+DBus::Glib::BusDispatcher dispatcher;
+
 RemoteControlClient *RemoteControlProxy::get_instance()
 {
+  if(!DBus::default_dispatcher) {
+    DBus::default_dispatcher = &dispatcher;
+    dispatcher.attach(NULL);
+  }
   DBus::Connection conn = DBus::Connection::SessionBus();
 	if(conn.has_name(GNOTE_SERVER_NAME)) {
     return new RemoteControlClient(conn, GNOTE_SERVER_PATH, GNOTE_SERVER_NAME);
@@ -41,13 +47,13 @@ RemoteControlClient *RemoteControlProxy::get_instance()
 }
 
 
-DBus::Glib::BusDispatcher dispatcher;
-
 RemoteControl *RemoteControlProxy::register_remote(NoteManager & manager)
 {
   RemoteControl *remote_control = NULL;
-  DBus::default_dispatcher = &dispatcher;
-	dispatcher.attach(NULL);
+  if(!DBus::default_dispatcher) {
+    DBus::default_dispatcher = &dispatcher;
+    dispatcher.attach(NULL);
+  }
 
 	DBus::Connection conn = DBus::Connection::SessionBus();
   // NOTE: I find no way to check whether we connected or not
