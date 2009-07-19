@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&component=general\n"
-"POT-Creation-Date: 2009-07-17 23:44+0000\n"
-"PO-Revision-Date: 2009-07-18 13:42+0200\n"
+"POT-Creation-Date: 2009-07-19 03:29+0000\n"
+"PO-Revision-Date: 2009-07-19 13:18+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -554,7 +554,7 @@ msgstr "_Borrar"
 msgid "Delete the selected note"
 msgstr "Borrar la nota seleccionada"
 
-#: ../src/actionmanager.cpp:192 ../src/notewindow.cpp:376
+#: ../src/actionmanager.cpp:192 ../src/notewindow.cpp:360
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -598,7 +598,7 @@ msgstr "Icono del área de notificación"
 msgid "Create _New Note"
 msgstr "Crear una nota _nueva"
 
-#: ../src/actionmanager.cpp:231 ../src/notewindow.cpp:328
+#: ../src/actionmanager.cpp:231 ../src/notewindow.cpp:312
 msgid "_Search All Notes"
 msgstr "_Buscar en todas las notas"
 
@@ -614,19 +614,19 @@ msgstr "S_incronizar las notas"
 msgid "Start synchronizing notes"
 msgstr "Comenzar a sincronizar las notas"
 
-#: ../src/gnote.cpp:244
+#: ../src/gnote.cpp:288
 msgid "Cannot create new note"
 msgstr "No se puede crear una nota nueva"
 
-#: ../src/gnote.cpp:290
+#: ../src/gnote.cpp:334
 msgid "and Tomboy original authors."
 msgstr "y los autores originales de Tomboy."
 
-#: ../src/gnote.cpp:299
+#: ../src/gnote.cpp:343
 msgid "translator-credits"
 msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008"
 
-#: ../src/gnote.cpp:307
+#: ../src/gnote.cpp:351
 msgid ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
@@ -634,37 +634,73 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 los autores originales de Tomboy."
 
-#: ../src/gnote.cpp:309
+#: ../src/gnote.cpp:353
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Una aplicación simple y fácil de usar para tomar notas en el escritorio."
 
-#: ../src/gnote.cpp:320
+#: ../src/gnote.cpp:364
 msgid "Homepage"
 msgstr "Página web"
 
-#: ../src/gnote.cpp:360
-msgid "A note taking application"
-msgstr "Una aplicación para tomar notas"
-
-#: ../src/gnote.cpp:368
+#: ../src/gnote.cpp:417
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Ejecutar Gnote como una miniaplicación del panel de GNOME."
 
-#: ../src/gnote.cpp:373
+#: ../src/gnote.cpp:418
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especificar la ruta del directorio que contiene las notas."
 
-#: ../src/gnote.cpp:378
+#: ../src/gnote.cpp:418
+msgid "path"
+msgstr "ruta"
+
+#: ../src/gnote.cpp:419
 msgid "Open the search all notes window with the search text."
 msgstr ""
 "Abrir la ventana de búsqueda en todas las notas con el texto de búsqueda."
 
-#: ../src/gnote.cpp:383
+#: ../src/gnote.cpp:419 ../src/gnote.cpp:424 ../src/gnote.cpp:425
+msgid "text"
+msgstr "texto"
+
+#: ../src/gnote.cpp:420
 msgid "Print version information."
 msgstr "Imprimir la información de la versión."
 
-#: ../src/gnote.cpp:416
+#: ../src/gnote.cpp:422
+msgid "Create and display a new note, with a optional title."
+msgstr "Crear y mostrar una nota nueva, con un título opcional"
+
+#: ../src/gnote.cpp:422
+msgid "title"
+msgstr "título"
+
+#: ../src/gnote.cpp:423
+msgid "Display the existing note matching title."
+msgstr "Mostrar el título de la nota correspondiente."
+
+#: ../src/gnote.cpp:423
+msgid "title/url"
+msgstr "título/url"
+
+#: ../src/gnote.cpp:424
+msgid "Display the 'Start Here' note."
+msgstr "Mostrar la nota «Comenzar aquí»."
+
+#: ../src/gnote.cpp:425
+msgid "Search and highlight text in the opened note."
+msgstr "Mostrar y resaltar texto en la nota abierta."
+
+#: ../src/gnote.cpp:430
+msgid "A note taking application"
+msgstr "Una aplicación para tomar notas"
+
+#: ../src/gnote.cpp:430
+msgid "Gnote options at launch"
+msgstr "Opciones de Gnote al iniciar"
+
+#: ../src/gnote.cpp:623
 msgid "Version %1%"
 msgstr "Versión %1%"
 
@@ -908,127 +944,139 @@ msgstr "Nota nueva %1%"
 msgid "Describe your new note here."
 msgstr "Describa aquí su nota nueva."
 
-#: ../src/notewindow.cpp:72
+#: ../src/notewindow.cpp:73
 msgid "Find in This Note"
 msgstr "Buscar en esta nota"
 
-#: ../src/notewindow.cpp:336
+#: ../src/notewindow.cpp:320
 msgid "_Link to New Note"
 msgstr "_Enlazar a una nota nueva"
 
-#: ../src/notewindow.cpp:344
+#: ../src/notewindow.cpp:328
 msgid "Te_xt"
 msgstr "Te_xto"
 
-#: ../src/notewindow.cpp:353
+#: ../src/notewindow.cpp:337
 msgid "_Find in This Note"
 msgstr "_Buscar en esta nota"
 
-#: ../src/notewindow.cpp:368
+#: ../src/notewindow.cpp:352
 msgid "Clos_e All Notes"
 msgstr "C_errar todas las notas"
 
-#: ../src/notewindow.cpp:403
+#: ../src/notewindow.cpp:387
 msgid "Search"
 msgstr "Buscar"
 
-#: ../src/notewindow.cpp:407
+#: ../src/notewindow.cpp:391
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "Buscar en sus notas  (Ctrl-Mayús-F)"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:401
 msgid "Link"
 msgstr "Enlace"
 
-#: ../src/notewindow.cpp:423
+#: ../src/notewindow.cpp:407
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Enlazar el texto seleccionado a una nota nueva (Ctrl-L)"
 
-#: ../src/notewindow.cpp:432
+#: ../src/notewindow.cpp:416
 msgid "_Text"
 msgstr "_Texto"
 
-#: ../src/notewindow.cpp:438
+#: ../src/notewindow.cpp:422
 msgid "Set properties of text"
 msgstr "Establecer las propiedades del texto"
 
-#: ../src/notewindow.cpp:442
+#: ../src/notewindow.cpp:426
 msgid "T_ools"
 msgstr "_Herramientas"
 
-#: ../src/notewindow.cpp:447
+#: ../src/notewindow.cpp:431
 msgid "Use tools on this note"
 msgstr "Usar las herramientas en esta nota"
 
-#: ../src/notewindow.cpp:457
+#: ../src/notewindow.cpp:441
 msgid "Delete this note"
 msgstr "Borrar esta nota"
 
-#: ../src/notewindow.cpp:467
+#: ../src/notewindow.cpp:451
 msgid "Synchronize Notes"
 msgstr "Sincronizar las notas"
 
-#: ../src/notewindow.cpp:510
+#: ../src/notewindow.cpp:494
 msgid "_Find..."
 msgstr "_Buscar…"
 
-#: ../src/notewindow.cpp:518 ../src/notewindow.cpp:640
+#: ../src/notewindow.cpp:502
 msgid "Find _Next"
 msgstr "Buscar _siguiente"
 
-#: ../src/notewindow.cpp:528
+#: ../src/notewindow.cpp:512
 msgid "Find _Previous"
 msgstr "Buscar _anterior"
 
-#: ../src/notewindow.cpp:598
+#: ../src/notewindow.cpp:582
 msgid "Cannot create note"
 msgstr "No se puede crear la nota"
 
-#: ../src/notewindow.cpp:641
+#: ../src/notewindow.cpp:624
+msgid "_Next"
+msgstr "_Siguiente"
+
+#: ../src/notewindow.cpp:625
 msgid "_Previous"
 msgstr "_Anterior"
 
-#: ../src/notewindow.cpp:654
+#: ../src/notewindow.cpp:638
 msgid "_Find:"
 msgstr "_Buscar:"
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1078
 msgid "<b>_Bold</b>"
 msgstr "<b>_Negrita</b>"
 
-#: ../src/notewindow.cpp:1093
+#: ../src/notewindow.cpp:1079
 msgid "<i>_Italic</i>"
 msgstr "<i>_Cursiva</i>"
 
-#: ../src/notewindow.cpp:1094
+#: ../src/notewindow.cpp:1080
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Tachado</s>"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1082
 msgid "_Highlight"
 msgstr "_Resaltado"
 
-#: ../src/notewindow.cpp:1098
+#: ../src/notewindow.cpp:1084
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:1100
+#: ../src/notewindow.cpp:1086
 msgid "Hu_ge"
 msgstr "_Enorme"
 
-#: ../src/notewindow.cpp:1102
+#: ../src/notewindow.cpp:1088
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:1104
+#: ../src/notewindow.cpp:1090
 msgid "S_mall"
 msgstr "_Pequeña"
 
-#: ../src/notewindow.cpp:1106
+#: ../src/notewindow.cpp:1092
 msgid "Bullets"
 msgstr "Topos"
 
-#: ../src/notewindow.cpp:1179
+#: ../src/notewindow.cpp:1095
+msgid "Increase Font Size"
+msgstr "Aumentar tamaño de la tipografía"
+
+#: ../src/notewindow.cpp:1096
+msgid "Decrease Font Size"
+msgstr "Reducir tamaño de la tipografía"
+
+#: ../src/notewindow.cpp:1167
 msgid "Font Size"
 msgstr "Tamaño de la tipografía"
 
@@ -1057,54 +1105,54 @@ msgstr ""
 "espacio libre en el disco y que tiene los permisos adecuados sobre ~/.gnote. "
 "Los detalles del error se pueden encontrar en ~/.gnote.log."
 
-#: ../src/recentchanges.cpp:83
+#: ../src/recentchanges.cpp:82
 msgid "Search All Notes"
 msgstr "Buscar en todas las notas"
 
-#: ../src/recentchanges.cpp:88
+#: ../src/recentchanges.cpp:87
 msgid "C_ase Sensitive"
 msgstr "Coi_ncidir con capitalización"
 
-#: ../src/recentchanges.cpp:106
+#: ../src/recentchanges.cpp:105
 msgid "_Search:"
 msgstr "_Buscar:"
 
-#: ../src/recentchanges.cpp:275
+#: ../src/recentchanges.cpp:269
 #: ../src/notebooks/notebookapplicationaddin.cpp:118
 msgid "Notebooks"
 msgstr "Cuadernos de notas"
 
-#: ../src/recentchanges.cpp:347
+#: ../src/recentchanges.cpp:341
 msgid "Note"
 msgstr "Nota"
 
-#: ../src/recentchanges.cpp:368
+#: ../src/recentchanges.cpp:362
 msgid "Last Changed"
 msgstr "Último cambio"
 
-#: ../src/recentchanges.cpp:512
+#: ../src/recentchanges.cpp:506
 msgid "Matches"
 msgstr "Coincidencias"
 
-#: ../src/recentchanges.cpp:566
+#: ../src/recentchanges.cpp:560
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% coincidencia"
 msgstr[1] "%1% coincidencias"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:574
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Total: %1% nota"
 msgstr[1] "Total: %1% notas"
 
-#: ../src/recentchanges.cpp:594
+#: ../src/recentchanges.cpp:590
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Coincidencias: %1% nota"
 msgstr[1] "Coincidencias: %1% notas"
 
-#: ../src/recentchanges.cpp:734
+#: ../src/recentchanges.cpp:732
 msgid "Notes"
 msgstr "Notas"
 
@@ -1446,8 +1494,8 @@ msgid "Could not save the file \"%s\""
 msgstr "No se pudo guardar el archivo «%s»"
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
-msgid "_Fixed Width"
-msgstr "Anchura _fija"
+msgid "Fixed Wid_th"
+msgstr "Anchura fi_ja"
 
 #. this is the name of the plugin.
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
@@ -1551,6 +1599,9 @@ msgstr "Importar sus notas de Tomboy."
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
+
+#~ msgid "_Fixed Width"
+#~ msgstr "Anchura _fija"
 
 #~ msgid "Copyright © 2009 Hubert Figuiere"
 #~ msgstr "Copyright © 2009 Hubert Figuiere"
