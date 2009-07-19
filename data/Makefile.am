@@ -34,7 +34,7 @@ dbusservice_in_files = org.gnome.Gnote.service.in
 dbusservice_DATA     = $(dbusservice_in_files:.service.in=.service)
 
 $(dbusservice_DATA): $(dbusservice_in_files) Makefile
-	sed -e "s|\@libexecdir\@|$(bindir)|g"	\
+	sed -e "s|\@bindir\@|$(bindir)|g"	\
 	    -e "s|\@wrapper\@|gnote|g"		\
 	    < $< > $@
 endif
