@@ -9,4 +9,5 @@ SUBDIRS = backlinks \
 	printnotes \
 	stickynoteimport \
 	tomboyimport \
+	underline \
 	$(NULL)
