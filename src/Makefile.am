@@ -100,6 +100,7 @@ libgnote_a_SOURCES = \
 	sharp/modulefactory.hpp \
 	sharp/modulemanager.hpp sharp/modulemanager.cpp \
 	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
+	sharp/streamreader.hpp sharp/streamreader.cpp \
 	sharp/streamwriter.hpp sharp/streamwriter.cpp \
 	sharp/string.hpp sharp/string.cpp \
 	sharp/uri.hpp sharp/uri.cpp \

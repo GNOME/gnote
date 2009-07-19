@@ -49,6 +49,8 @@
 #include "utils.hpp"
 #include "xkeybinder.hpp"
 #include "sharp/string.hpp"
+#include "sharp/streamreader.hpp"
+#include "sharp/files.hpp"
 
 #if HAVE_PANELAPPLETMM
 #include "applet.hpp"
@@ -90,11 +92,19 @@ namespace gnote {
     try {
       context.parse(argc, argv);
     }
-    catch(...)
+    catch(const Glib::Error & e)
     {
+      ERR_OUT("error parsing: %s", e.what().c_str());
     }
 
     m_is_panel_applet = cmd_line.use_panel_applet();
+
+#ifdef ENABLE_DBUS
+    if(cmd_line.needs_execute()) {
+      cmd_line.execute();
+      return 0;
+    }
+#endif
 
     m_icon_theme = Gtk::IconTheme::get_default();
     m_icon_theme->append_search_path(DATADIR"/icons");
@@ -119,9 +129,11 @@ namespace gnote {
       (*iter)->initialize();
     }
 
+#ifndef ENABLE_DBUS
     if(cmd_line.needs_execute()) {
       cmd_line.execute();
     }
+#endif
 
     if(m_is_panel_applet) {
       DBG_OUT("starting applet");
@@ -404,33 +416,171 @@ namespace gnote {
     , m_open_start_here(false)
     , m_use_panel(false)
     , m_show_version(false)
+    , m_open_search(false)
   {
     Glib::OptionEntry entry;
     entry.set_long_name("panel-applet");
+    entry.set_flags(Glib::OptionEntry::FLAG_HIDDEN);
     entry.set_description(_("Run Gnote as a GNOME panel applet."));
     add_entry(entry, m_use_panel);
 
     Glib::OptionEntry entry2;
     entry2.set_long_name("note-path");
     entry2.set_description(_("Specify the path of the directory containing the notes."));
+    // name of the command line argument
+    entry2.set_arg_description(_("path"));
     add_entry(entry2, m_note_path);
 
     Glib::OptionEntry entry3;
     entry3.set_long_name("search");
+    entry3.set_flags(Glib::OptionEntry::FLAG_OPTIONAL_ARG);
     entry3.set_description(_("Open the search all notes window with the search text."));
+    // name of the command line argument
+    entry3.set_arg_description(_("text"));
     add_entry(entry3, m_search);
 
     Glib::OptionEntry entry4;
     entry4.set_long_name("version");
     entry4.set_description(_("Print version information."));
     add_entry(entry4, m_show_version);
+
+#ifdef ENABLE_DBUS
+    Glib::OptionEntry entry5;
+    entry5.set_long_name("new-note");
+    entry5.set_flags(Glib::OptionEntry::FLAG_OPTIONAL_ARG);
+    entry5.set_description(_("Create and display a new note, with a optional title."));
+    // name of the command line argument
+    entry5.set_arg_description(_("title"));
+    DBG_OUT("flags are %d", entry5.gobj()->flags);
+    add_entry(entry5, m_new_note_name);
+
+    Glib::OptionEntry entry6;
+    entry6.set_long_name("open-note");
+    entry6.set_description(_("Display the existing note matching title."));
+    // name of the command line argument
+    entry6.set_arg_description(_("title/url"));
+    add_entry(entry6, m_open_note);
+
+    Glib::OptionEntry entry7;
+    entry7.set_long_name("start-here");
+    entry7.set_description(_("Display the 'Start Here' note."));
+    add_entry(entry7, m_open_start_here);
+
+    Glib::OptionEntry entry8;
+    entry8.set_long_name("highlight-search");
+    entry8.set_description(_("Search and highlight text in the opened note."));
+    // name of the command line argument
+    entry8.set_arg_description(_("text"));
+    add_entry(entry8, m_highlight_search);
+#endif
   }
 
   int GnoteCommandLine::execute()
 
   {
     bool quit = false;
-#ifndef ENABLE_DBUS
+    DBG_OUT("running args");
+#ifdef ENABLE_DBUS
+    RemoteControlClient * remote = RemoteControlProxy::get_instance();
+    if(!remote) {
+      ERR_OUT("couldn't get remote client");
+      return 1;
+    }
+    if (m_new_note) {
+      std::string new_uri;
+
+      if (!m_new_note_name.empty()) {
+        new_uri = remote->FindNote (m_new_note_name);
+
+        if (new_uri.empty()) {
+          new_uri = remote->CreateNamedNote(m_new_note_name);
+        }
+      } 
+      else {
+        new_uri = remote->CreateNote ();
+      }
+
+      if (!new_uri.empty()) {
+        remote->DisplayNote (new_uri);
+      }
+    }
+
+    if (m_open_start_here) {
+      m_open_note_uri = remote->FindStartHereNote ();
+    }
+    if (!m_open_note_name.empty()) {
+      m_open_note_uri = remote->FindNote (m_open_note_name);
+    }
+    if (!m_open_note_uri.empty()) {
+      if (!m_highlight_search.empty()) {
+        remote->DisplayNoteWithSearch (m_open_note_uri,
+                                       m_highlight_search);
+      }
+      else {
+        remote->DisplayNote (m_open_note_uri);
+      }
+    }
+
+    if (!m_open_external_note_path.empty()) {
+      std::string note_id = sharp::file_basename(m_open_external_note_path);
+      if (!note_id.empty()) {
+        // Attempt to load the note, assuming it might already
+        // be part of our notes list.
+        if (remote->DisplayNote (
+              str(boost::format("note://gnote/%1%") % note_id)) == false) {
+
+          sharp::StreamReader sr;
+          sr.init(m_open_external_note_path);
+          if (sr.file()) {
+            std::string noteTitle;
+            std::string noteXml;
+            sr.read_to_end (noteXml);
+
+            // Make sure noteXml is parseable
+            xmlDocPtr doc = xmlParseDoc((const xmlChar*)noteXml.c_str());
+            if(doc) {
+              xmlFreeDoc(doc);
+            }
+            else {
+              noteXml = "";
+            }
+
+						if (!noteXml.empty()) {
+              noteTitle = NoteArchiver::obj().get_title_from_note_xml (noteXml);
+              if (!noteTitle.empty()) {
+                // Check for conflicting titles
+                std::string baseTitle = noteTitle;
+                for (int i = 1; !remote->FindNote (noteTitle).empty(); i++) {
+                  noteTitle = str(boost::format("%1% (%2%)") % baseTitle % i);
+                }
+
+                std::string note_uri = remote->CreateNamedNote (noteTitle);
+
+                // Update title in the note XML
+                noteXml = NoteArchiver::obj().get_renamed_note_xml (noteXml, baseTitle, noteTitle);
+
+                if (!note_uri.empty()) {
+                  // Load in the XML contents of the note file
+                  if (remote->SetNoteCompleteXml (note_uri, noteXml)) {
+                    remote->DisplayNote (note_uri);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (m_open_search) {
+      if (!m_search.empty()) {
+        remote->DisplaySearchWithText(m_search);
+      }
+      else {
+        remote->DisplaySearch();
+      }
+    }
+#else
       // as long as we don't have the DBus support.
     if(!m_search.empty()) {
       NoteRecentChanges * recent_changes
@@ -453,6 +603,32 @@ namespace gnote {
     return 0;
   }
 
+  bool GnoteCommandLine::on_post_parse(Glib::OptionContext& context,
+                                       Glib::OptionGroup&	group)
+  {
+    DBG_OUT("post parse");
+    if(!OptionGroup::on_post_parse(context, group)) {
+      return false;
+    }
+
+    if(!m_open_note.empty()) {
+      if (sharp::string_starts_with(m_open_note, "note://gnote/")) {
+        DBG_OUT("is URI");
+        m_open_note_uri = m_open_note;
+      }
+      else if (sharp::file_exists(m_open_note)) {
+        // This is potentially a note file
+        DBG_OUT("is file");
+        m_open_external_note_path = m_open_note;
+      } 
+      else {
+        m_open_note_name = m_open_note;
+      }
+    }
+    
+    return true;
+  }
+
   void GnoteCommandLine::print_version()
   {
     Glib::ustring version = str(boost::format(_("Version %1%"))
@@ -463,7 +639,9 @@ namespace gnote {
 
   bool GnoteCommandLine::needs_execute() const
   {
+    DBG_OUT("needs execute?");
     return m_new_note ||
+//      !m_open_note.empty() ||
       !m_open_note_name.empty() ||
       !m_open_note_uri.empty() ||
       !m_search.empty() ||

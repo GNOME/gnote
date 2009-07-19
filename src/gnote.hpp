@@ -117,6 +117,8 @@ public:
       return m_use_panel;
     }
 
+  virtual bool on_post_parse(Glib::OptionContext& context, OptionGroup&	group);
+
 private:
   void        print_version();
 
@@ -124,11 +126,16 @@ private:
   bool        m_open_start_here;
   bool        m_use_panel;
   bool        m_show_version;
+  bool        m_open_search;
+  Glib::ustring m_new_note_name;
+  Glib::ustring m_open_note;
+  // depend on m_open_note, set in on_post_parse
   std::string m_open_note_name;
   std::string m_open_note_uri;
   std::string m_open_external_note_path;
   Glib::ustring m_search;
   Glib::ustring m_note_path;
+  Glib::ustring m_highlight_search;
 };
 
 }
