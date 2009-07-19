@@ -7,6 +7,12 @@ New Features:
   * Prevent starting a second Gnote using DBus. (Closes #585773)
   * Support --new-note. (Closes #585774)
   * Support --open-note with a URL. (Close #585775)
+  * Add a shortcut for the Fixed Width and make mnemonic consistent.
+    (Tomboy bug #418964 and Tomboy bug #357426)
+  * Allow to hide the Find bar with ESC. (Tomboy bug #540822)
+  * Save the splitter position for the search window (Tomboy bug #563744).
+  * Add menu items for increasing and decreasing the font size. 
+    (Tomboy bug #488822)
 
 Fixes:
 
@@ -26,11 +32,22 @@ Fixes:
   * Use a button for "Open New Note Template". (Tomboy bug #581582).
   * Avoid a lookup for the TextTag when loading addins.
   * Display first bullet in HTML export (Tomboy bug #422954)
+  * Change the Find bar to match the rest of GNOME. (Tomboy Bug #483297)
+  * Remove exclusion list for prefixes in WikiWords (Tomboy Bug #392627)
+  * Use a status bar in the "Search All Notes" and add a resize grip
+    at the same time (Tomboy bug #500513)
+  * Allow drag and select within links by activating only with button
+    release. (Tomboy bug #414029).
+  * Prevent activation of links that have just been middle-click pasted 
+    to a note. (Tomboy bug #414029) 
+  * Change the icon AddinInfoDialog to use the stock DIALOG_INFO. 
+    (Tomboy bug #508844)
 
 Translations:
 
   * Updated translations:
     - Simplified Chinese (zh_CN)
+    - Spanish (es)
 
 0.5.3 "Bastille Day" - 2009/07/14
 
