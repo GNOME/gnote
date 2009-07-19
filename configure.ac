@@ -30,6 +30,7 @@ LIBGCONF_VERSION=2.0.0
 LIBPANELAPPLETMM_VERSION=2.22.0
 GTKSPELL_VERSION=2.0.9
 BOOST_VERSION=1.34
+DBUSCPP_VERSION=0.5.0
 
 AC_PROG_CXX
 AC_GNU_SOURCE
@@ -169,7 +170,7 @@ AC_ARG_ENABLE(dbus,
 	      [  --enable-dbus[[=no/yes]]    compile with dbus support [[default: yes]]],
 	      ENABLE_DBUS="$enableval", ENABLE_DBUS="yes")
 if test "x$ENABLE_DBUS" != "xno"; then
-        PKG_CHECK_MODULES(DBUS, dbus-c++-1, [
+        PKG_CHECK_MODULES(DBUS, dbus-c++-1 >= $DBUSCPP_VERSION, [
               have_dbus="yes";AC_DEFINE([ENABLE_DBUS], [1], [Define to 1 if DBus is enabled])
            ], have_dbus="no")
         AM_CONDITIONAL(HAVE_DBUS, test "$have_dbus" = "yes")
