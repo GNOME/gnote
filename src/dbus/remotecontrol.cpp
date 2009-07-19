@@ -75,7 +75,8 @@ namespace gnote {
       note = m_manager.create (linked_title);
       return note->uri();
     } 
-    catch (...) {
+    catch (const std::exception & e) {
+      ERR_OUT("create throw: %s", e.what());
     }
     return "";
   }

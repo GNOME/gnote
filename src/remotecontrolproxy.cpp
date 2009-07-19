@@ -30,20 +30,18 @@ namespace gnote {
 const char *RemoteControlProxy::GNOTE_SERVER_NAME = "org.gnome.Gnote";
 const char *RemoteControlProxy::GNOTE_SERVER_PATH = "/org/gnome/Gnote/RemoteControl";
 
-DBus::Glib::BusDispatcher dispatcher;
+DBus::BusDispatcher dispatcher;
+
+DBus::Glib::BusDispatcher glib_dispatcher;
 
 RemoteControlClient *RemoteControlProxy::get_instance()
 {
+  // we likely won't have a Glib main loop at the point.
   if(!DBus::default_dispatcher) {
     DBus::default_dispatcher = &dispatcher;
-    dispatcher.attach(NULL);
   }
   DBus::Connection conn = DBus::Connection::SessionBus();
-	if(conn.has_name(GNOTE_SERVER_NAME)) {
-    return new RemoteControlClient(conn, GNOTE_SERVER_PATH, GNOTE_SERVER_NAME);
-  }
-
-  return NULL;
+  return new RemoteControlClient(conn, GNOTE_SERVER_PATH, GNOTE_SERVER_NAME);
 }
 
 
@@ -51,8 +49,8 @@ RemoteControl *RemoteControlProxy::register_remote(NoteManager & manager)
 {
   RemoteControl *remote_control = NULL;
   if(!DBus::default_dispatcher) {
-    DBus::default_dispatcher = &dispatcher;
-    dispatcher.attach(NULL);
+    DBus::default_dispatcher = &glib_dispatcher;
+    glib_dispatcher.attach(NULL);
   }
 
 	DBus::Connection conn = DBus::Connection::SessionBus();

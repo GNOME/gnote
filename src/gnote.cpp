@@ -85,17 +85,7 @@ namespace gnote {
   {
     GnoteCommandLine cmd_line;
 
-
-    Glib::OptionContext context;
-    context.set_ignore_unknown_options(true);
-    context.set_main_group(cmd_line);
-    try {
-      context.parse(argc, argv);
-    }
-    catch(const Glib::Error & e)
-    {
-      ERR_OUT("error parsing: %s", e.what().c_str());
-    }
+    cmd_line.parse(argc, argv);
 
     m_is_panel_applet = cmd_line.use_panel_applet();
 
@@ -410,83 +400,111 @@ namespace gnote {
   }
 
 
+
   GnoteCommandLine::GnoteCommandLine()
-    : Glib::OptionGroup("Gnote", _("A note taking application"))
-    , m_new_note(false)
-    , m_open_start_here(false)
+    : m_context(g_option_context_new("Foobar"))
     , m_use_panel(false)
+    , m_note_path(NULL)
+    , m_do_search(false)
     , m_show_version(false)
-    , m_open_search(false)
+    , m_do_new_note(false)
+    , m_open_note(NULL)
+    , m_open_start_here(false)
+    , m_highlight_search(NULL)
   {
-    Glib::OptionEntry entry;
-    entry.set_long_name("panel-applet");
-    entry.set_flags(Glib::OptionEntry::FLAG_HIDDEN);
-    entry.set_description(_("Run Gnote as a GNOME panel applet."));
-    add_entry(entry, m_use_panel);
-
-    Glib::OptionEntry entry2;
-    entry2.set_long_name("note-path");
-    entry2.set_description(_("Specify the path of the directory containing the notes."));
-    // name of the command line argument
-    entry2.set_arg_description(_("path"));
-    add_entry(entry2, m_note_path);
-
-    Glib::OptionEntry entry3;
-    entry3.set_long_name("search");
-    entry3.set_flags(Glib::OptionEntry::FLAG_OPTIONAL_ARG);
-    entry3.set_description(_("Open the search all notes window with the search text."));
-    // name of the command line argument
-    entry3.set_arg_description(_("text"));
-    add_entry(entry3, m_search);
-
-    Glib::OptionEntry entry4;
-    entry4.set_long_name("version");
-    entry4.set_description(_("Print version information."));
-    add_entry(entry4, m_show_version);
-
+    static const GOptionEntry entries[] =
+      {
+        { "panel-applet", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_use_panel, _("Run Gnote as a GNOME panel applet."), NULL },
+        { "note-path", 0, 0, G_OPTION_ARG_STRING, &m_note_path, _("Specify the path of the directory containing the notes."), _("path") },
+        { "search", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Open the search all notes window with the search text."), _("text") },
+        { "version", 0, 0, G_OPTION_ARG_NONE, &m_show_version, _("Print version information."), NULL },
 #ifdef ENABLE_DBUS
-    Glib::OptionEntry entry5;
-    entry5.set_long_name("new-note");
-    entry5.set_flags(Glib::OptionEntry::FLAG_OPTIONAL_ARG);
-    entry5.set_description(_("Create and display a new note, with a optional title."));
-    // name of the command line argument
-    entry5.set_arg_description(_("title"));
-    DBG_OUT("flags are %d", entry5.gobj()->flags);
-    add_entry(entry5, m_new_note_name);
+        { "new-note", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Create and display a new note, with a optional title."), _("title") },
+        { "open-note", 0, 0, G_OPTION_ARG_STRING, &m_open_note, _("Display the existing note matching title."), _("title/url") },
+        { "start-here", 0, 0, G_OPTION_ARG_NONE, &m_open_start_here, _("Display the 'Start Here' note."), _("text") },
+        { "highlight-search", 0, 0, G_OPTION_ARG_STRING, &m_highlight_search, _("Search and highlight text in the opened note."), _("text") },
+#endif        
+        { NULL, 0, 0, (GOptionArg)0, NULL, NULL, NULL }
+      };
 
-    Glib::OptionEntry entry6;
-    entry6.set_long_name("open-note");
-    entry6.set_description(_("Display the existing note matching title."));
-    // name of the command line argument
-    entry6.set_arg_description(_("title/url"));
-    add_entry(entry6, m_open_note);
-
-    Glib::OptionEntry entry7;
-    entry7.set_long_name("start-here");
-    entry7.set_description(_("Display the 'Start Here' note."));
-    add_entry(entry7, m_open_start_here);
-
-    Glib::OptionEntry entry8;
-    entry8.set_long_name("highlight-search");
-    entry8.set_description(_("Search and highlight text in the opened note."));
-    // name of the command line argument
-    entry8.set_arg_description(_("text"));
-    add_entry(entry8, m_highlight_search);
-#endif
+    GOptionGroup *group = g_option_group_new("Gnote", _("A note taking application"), _("Gnote options at launch"), this, NULL);
+    g_option_group_add_entries(group, entries);
+    g_option_context_set_main_group (m_context, group);
   }
+
+  
+  GnoteCommandLine::~GnoteCommandLine()
+  {
+    g_option_context_free(m_context);
+  }
+
+  gboolean GnoteCommandLine::parse_func(const gchar *option_name,
+                                        const gchar *value,
+                                        gpointer data,
+                                        GError ** /*error*/)
+  {
+    GnoteCommandLine * self = (GnoteCommandLine*)data;
+  
+    if(g_str_equal (option_name, "--search")) {
+      self->m_do_search = true;
+      if(value) {
+        self->m_search = value;
+      }
+    }
+    else if(g_str_equal (option_name, "--new-note")) {
+      self->m_do_new_note = true;
+      if(value) {
+        self->m_new_note_name = value;
+      }
+    }
+    return TRUE;
+  }
+
+
+  void GnoteCommandLine::parse(int &argc, gchar ** & argv)
+  {
+    GError *error = NULL;
+
+    if(!g_option_context_parse (m_context, &argc, &argv, &error)) {
+      g_print ("option parsing failed: %s\n", error->message);
+      exit (1);
+    }
+
+    if(m_open_note && *m_open_note) {
+      if (sharp::string_starts_with(m_open_note, "note://gnote/")) {
+        m_open_note_uri = m_open_note;
+      }
+      else if (sharp::file_exists(m_open_note)) {
+        // This is potentially a note file
+        m_open_external_note_path = m_open_note;
+      } 
+      else {
+        m_open_note_name = m_open_note;
+      }
+    }
+    
+  }
+
 
   int GnoteCommandLine::execute()
 
   {
     bool quit = false;
     DBG_OUT("running args");
+
+    if(m_show_version) {
+      print_version();
+      quit = true;
+      exit(0);
+    }
+
 #ifdef ENABLE_DBUS
     RemoteControlClient * remote = RemoteControlProxy::get_instance();
     if(!remote) {
       ERR_OUT("couldn't get remote client");
       return 1;
     }
-    if (m_new_note) {
+    if (m_do_new_note) {
       std::string new_uri;
 
       if (!m_new_note_name.empty()) {
@@ -512,7 +530,7 @@ namespace gnote {
       m_open_note_uri = remote->FindNote (m_open_note_name);
     }
     if (!m_open_note_uri.empty()) {
-      if (!m_highlight_search.empty()) {
+      if (m_highlight_search) {
         remote->DisplayNoteWithSearch (m_open_note_uri,
                                        m_highlight_search);
       }
@@ -572,7 +590,7 @@ namespace gnote {
       }
     }
 
-    if (m_open_search) {
+    if (m_do_search) {
       if (!m_search.empty()) {
         remote->DisplaySearchWithText(m_search);
       }
@@ -582,7 +600,7 @@ namespace gnote {
     }
 #else
       // as long as we don't have the DBus support.
-    if(!m_search.empty()) {
+    if(m_do_search) {
       NoteRecentChanges * recent_changes
         = NoteRecentChanges::get_instance(
           Gnote::obj().default_note_manager());
@@ -592,10 +610,6 @@ namespace gnote {
       recent_changes->present ();
     }
 #endif
-    if(m_show_version) {
-      print_version();
-      quit = true;
-    }
 
     if(quit) {
       exit(0);
@@ -603,31 +617,6 @@ namespace gnote {
     return 0;
   }
 
-  bool GnoteCommandLine::on_post_parse(Glib::OptionContext& context,
-                                       Glib::OptionGroup&	group)
-  {
-    DBG_OUT("post parse");
-    if(!OptionGroup::on_post_parse(context, group)) {
-      return false;
-    }
-
-    if(!m_open_note.empty()) {
-      if (sharp::string_starts_with(m_open_note, "note://gnote/")) {
-        DBG_OUT("is URI");
-        m_open_note_uri = m_open_note;
-      }
-      else if (sharp::file_exists(m_open_note)) {
-        // This is potentially a note file
-        DBG_OUT("is file");
-        m_open_external_note_path = m_open_note;
-      } 
-      else {
-        m_open_note_name = m_open_note;
-      }
-    }
-    
-    return true;
-  }
 
   void GnoteCommandLine::print_version()
   {
@@ -640,13 +629,11 @@ namespace gnote {
   bool GnoteCommandLine::needs_execute() const
   {
     DBG_OUT("needs execute?");
-    return m_new_note ||
-//      !m_open_note.empty() ||
-      !m_open_note_name.empty() ||
-      !m_open_note_uri.empty() ||
-      !m_search.empty() ||
+    return m_do_new_note ||
+      m_open_note ||
+      m_do_search ||
       m_open_start_here ||
-      !m_open_external_note_path.empty() ||
+      m_highlight_search ||
       m_show_version;
   }
 

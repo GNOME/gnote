@@ -101,41 +101,48 @@ private:
 
 
 class GnoteCommandLine
-  : public Glib::OptionGroup
 {
 public:
   GnoteCommandLine();
+  ~GnoteCommandLine();
   int execute();
 
-  const Glib::ustring & note_path() const
+  const gchar * note_path() const
     {
-      return m_note_path;
+      return m_note_path ? m_note_path : "";
     }
   bool        needs_execute() const;
   bool        use_panel_applet() const
     {
       return m_use_panel;
     }
+  void parse(int &argc, gchar ** & argv);
 
-  virtual bool on_post_parse(Glib::OptionContext& context, OptionGroup&	group);
-
+  static gboolean parse_func(const gchar *option_name,
+                             const gchar *value,
+                             gpointer data,
+                             GError **error);
 private:
   void        print_version();
 
-  bool        m_new_note;
-  bool        m_open_start_here;
+  GOptionContext *m_context;
+
   bool        m_use_panel;
+  gchar *     m_note_path;
+  bool        m_do_search;
+  std::string m_search;
   bool        m_show_version;
-  bool        m_open_search;
-  Glib::ustring m_new_note_name;
-  Glib::ustring m_open_note;
+  bool        m_do_new_note;
+  std::string m_new_note_name;
+  gchar*      m_open_note;
+  bool        m_open_start_here;
+  gchar*      m_highlight_search;
+
+
   // depend on m_open_note, set in on_post_parse
   std::string m_open_note_name;
   std::string m_open_note_uri;
   std::string m_open_external_note_path;
-  Glib::ustring m_search;
-  Glib::ustring m_note_path;
-  Glib::ustring m_highlight_search;
 };
 
 }
