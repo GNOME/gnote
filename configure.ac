@@ -244,5 +244,6 @@ Options:
 
   Spellchecking support:       ${FIXED_GTKSPELL}
   GNOME Panel Applet support:  ${have_panelapplet}
+  DBus support:                ${have_dbus}
 
 "
