@@ -77,6 +77,7 @@ namespace notebooks {
     l->set_ellipsize(Pango::ELLIPSIZE_END);
     l->show_all ();
     m_toolButton->set_label_widget(*l);
+    m_toolButton->set_is_important(true);
     m_toolButton->set_homogeneous(false);
     m_toolButton->set_tooltip_text(_("Place this note into a notebook"));
 
