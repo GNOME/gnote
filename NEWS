@@ -1,4 +1,4 @@
-0.6.0 -
+0.6.0 "We believe in D-Bus" - 2009/07/29
 
 New Features:
 
@@ -7,6 +7,7 @@ New Features:
   * Prevent starting a second Gnote using DBus. (Closes #585773)
   * Support --new-note. (Closes #585774)
   * Support --open-note with a URL. (Close #585775)
+  * Underline addin.
   * Add a shortcut for the Fixed Width and make mnemonic consistent.
     (Tomboy bug #418964 and Tomboy bug #357426)
   * Allow to hide the Find bar with ESC. (Tomboy bug #540822)
@@ -16,8 +17,7 @@ New Features:
 
 Fixes:
 
-  * Fixes a potential problem with tags when reading a note. (Maybe 
-    Closes #585048)
+  * Fixes a potential problem with tags when reading a note.
   * Add COPYING-DOCS. (Closes #582381)
   * Fix build on non-Linux systems: add boot system lib, don't pass 
     linker flags with -Wl, link libtomboy directly. (Closes #587228) 
@@ -25,6 +25,7 @@ Fixes:
   * Make naming consistent: it is Gnote, not Gnote Notes. (Closes #587644)
   * Fixed some internal inconsistencies with the "TagTable" that is now
     shared.
+  * Don't save the notes needlessly. (Closes #586594)
   * Speedup in Note::load_foreign_note_xml() to avoid flooding with 
     unneeded notifications.
   * Fix print formatting issues. (Tomboy bug #572024)
@@ -46,8 +47,13 @@ Fixes:
 Translations:
 
   * Updated translations:
+    - Arabic (ar)
+    - German (de)
     - Simplified Chinese (zh_CN)
     - Spanish (es)
+
+  * Added translations:
+    - Hebrew (he)
 
 0.5.3 "Bastille Day" - 2009/07/14
 
