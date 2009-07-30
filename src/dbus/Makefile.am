@@ -12,3 +12,4 @@ CLEANFILES = $(BUILT_SOURCES)
 dist-hook:
 	cd $(distdir); rm -f $(BUILT_SOURCES)
 
+EXTRA_DIST = gnote-introspect.xml

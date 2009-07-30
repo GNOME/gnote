@@ -82,6 +82,7 @@ SUBDIRS += dbus
 DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/remotecontrol.hpp dbus/remotecontrol.cpp \
 	dbus/remotecontrolclient.hpp dbus/remotecontrolclient.cpp \
+	dbus/iremotecontrol.hpp \
 	$(NULL)
 endif
 
