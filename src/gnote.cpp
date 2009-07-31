@@ -430,6 +430,9 @@ namespace gnote {
     GOptionGroup *group = g_option_group_new("Gnote", _("A note taking application"), _("Gnote options at launch"), this, NULL);
     g_option_group_add_entries(group, entries);
     g_option_context_set_main_group (m_context, group);
+
+    // we need this for the panel support.
+    g_option_context_set_ignore_unknown_options(m_context, TRUE);
   }
 
   
