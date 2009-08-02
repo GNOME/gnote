@@ -166,15 +166,17 @@ AC_LANG_POP
 #
 # Use DBus to export our remote control if available.
 #
-AC_ARG_ENABLE(dbus, 
-	      [  --enable-dbus[[=no/yes]]    compile with dbus support [[default: yes]]],
-	      ENABLE_DBUS="$enableval", ENABLE_DBUS="yes")
-if test "x$ENABLE_DBUS" != "xno"; then
-        PKG_CHECK_MODULES(DBUS, dbus-c++-1 >= $DBUSCPP_VERSION, [
-              have_dbus="yes";AC_DEFINE([ENABLE_DBUS], [1], [Define to 1 if DBus is enabled])
-           ], have_dbus="no")
-        AM_CONDITIONAL(HAVE_DBUS, test "$have_dbus" = "yes")
+AC_ARG_ENABLE(dbus,
+	AS_HELP_STRING([--enable-dbus],[compile with dbus support @<:@default: yes@:>@]),
+	[],[enable_dbus=yes])
+
+if test "$enable_dbus" != "no"; then
+	PKG_CHECK_MODULES(DBUS, dbus-c++-1 >= $DBUSCPP_VERSION, [
+		have_dbus="yes"
+		AC_DEFINE([ENABLE_DBUS], [1], [Define to 1 if DBus is enabled])
+	], have_dbus="no")
 fi
+AM_CONDITIONAL(HAVE_DBUS, test "$have_dbus" = "yes")
 
 
 
