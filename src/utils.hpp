@@ -235,7 +235,7 @@ namespace gnote {
       virtual bool on_mnemonic_activate(bool group_cycling);
 
     private:
-      void _common_init(Gtk::Image& image);
+      void _common_init(Gtk::Image& image, const Glib::ustring & l);
       // managed by gtkmm
       Gtk::Menu *m_menu;
       void release_button();        

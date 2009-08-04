@@ -34,6 +34,7 @@
 #include <glibmm/spawn.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
+#include <gtkmm/label.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/textbuffer.h>
 
@@ -693,25 +694,27 @@ namespace gnote {
     ToolMenuButton::ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
                                    const Glib::ustring & label, 
                                    Gtk::Menu * menu)
-      : Gtk::ToggleToolButton(label)
+      : Gtk::ToggleToolButton()
       ,  m_menu(menu)
     {
-      _common_init(*manage(new Gtk::Image(stock_image, toolbar.get_icon_size())));
+      _common_init(*manage(new Gtk::Image(stock_image, toolbar.get_icon_size())),
+                   label);
     }
 
     ToolMenuButton::ToolMenuButton(Gtk::Image& image, 
                                    const Glib::ustring & label, 
                                    Gtk::Menu * menu)
-      : Gtk::ToggleToolButton(label)
+      : Gtk::ToggleToolButton()
       ,  m_menu(menu)
     {
-      _common_init(image);
+      _common_init(image, label);
     }
 
 
-    void ToolMenuButton::_common_init(Gtk::Image& image)
+    void ToolMenuButton::_common_init(Gtk::Image& image, const Glib::ustring & label)
     {
       set_icon_widget(image);
+      set_label_widget(*manage(new Gtk::Label(label, true)));
       property_can_focus() = true;
       gtk_menu_attach_to_widget(m_menu->gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
                                 NULL);
