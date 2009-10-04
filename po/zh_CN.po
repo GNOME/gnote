@@ -10,13 +10,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-11 12:42+0800\n"
-"PO-Revision-Date: 2009-06-23 14:01+0800\n"
-"Last-Translator: Aron Xu <aronmalache@163.com>\n"
+"POT-Creation-Date: 2009-10-04 17:41+0800\n"
+"PO-Revision-Date: 2009-09-29 19:44+1000\n"
+"Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:1
@@ -24,6 +24,7 @@ msgid "Accessories"
 msgstr "附件"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
+#: ../src/tray.cpp:50
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -129,8 +130,8 @@ msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
 msgstr ""
-"如果您希望用鼠标中键单击 Gnote 图标时将带有时间戳的内容粘贴到“从这里开始”便笺，"
-"请启用此选项。"
+"如果您希望用鼠标中键单击 Gnote 图标时将带有时间戳的内容粘贴到“从这里开始”便"
+"笺，请启用此选项。"
 
 #: ../data/gnote.schemas.in.h:18
 msgid ""
@@ -164,7 +165,8 @@ msgstr "若 enable_custom_font 为真，在此设定的字体名称将用作显�
 msgid ""
 "If enabled, all notes that were open when Gnote quit will automatically be "
 "reopened at startup."
-msgstr "如果启用此选项，Gnote 退出时打开的全部便笺将会在下次启动时自动重新打开。"
+msgstr ""
+"如果启用此选项，Gnote 退出时打开的全部便笺将会在下次启动时自动重新打开。"
 
 #: ../data/gnote.schemas.in.h:25
 msgid "If enabled, an opened note can be closed by hitting the escape key."
@@ -410,8 +412,8 @@ msgid ""
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
 msgstr ""
-"应被视为“从这里开始”便笺的 URI，它将总显示在 Gnote 菜单的底端，并且可以用快"
-"捷键访问。"
+"应被视为“从这里开始”便笺的 URI，它将总显示在 Gnote 菜单的底端，并且可以用快捷"
+"键访问。"
 
 #: ../data/gnote.schemas.in.h:64
 msgid "The port to use when connecting to the synchronization server via SSH."
@@ -421,8 +423,7 @@ msgstr "通过·SSH·连接同步服务器时使用的端口。"
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
-msgstr ""
-"时间 (毫秒) 当使用 FUSE 来挂载一个同步共享时，Gnote 需要等待一个回应。"
+msgstr "时间 (毫秒) 当使用 FUSE 来挂载一个同步共享时，Gnote 需要等待一个回应。"
 
 #: ../data/gnote.schemas.in.h:66
 msgid "Timestamp format"
@@ -496,7 +497,7 @@ msgstr "删除(_D)"
 msgid "Delete the selected note"
 msgstr "删除选中便笺"
 
-#: ../src/actionmanager.cpp:192 ../src/notewindow.cpp:376
+#: ../src/actionmanager.cpp:192 ../src/notewindow.cpp:360
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -540,7 +541,7 @@ msgstr "托盘图标"
 msgid "Create _New Note"
 msgstr "创建新便笺(_N)"
 
-#: ../src/actionmanager.cpp:231 ../src/notewindow.cpp:328
+#: ../src/actionmanager.cpp:231 ../src/notewindow.cpp:312
 msgid "_Search All Notes"
 msgstr "搜索全部便笺(_S)"
 
@@ -556,54 +557,94 @@ msgstr "同步便笺(_Y)"
 msgid "Start synchronizing notes"
 msgstr "开始同步便笺"
 
-#: ../src/gnote.cpp:244
+#: ../src/gnote.cpp:288
 msgid "Cannot create new note"
 msgstr "无法创建新便笺"
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:334
 msgid "and Tomboy original authors."
 msgstr "以及 Tomboy 原作者。"
 
-#: ../src/gnote.cpp:297
+#: ../src/gnote.cpp:343
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@gmail.com>, 2005-2008.\n"
 "Ray Wang <wanglei1123@gmail.com>, 2009.\n"
 "Aron Xu <aronmalache@163.com>, 2009."
 
-#: ../src/gnote.cpp:305
-msgid "Copyright © 2009 Hubert Figuiere"
-msgstr "版权所有 © 2009 Hubert Figuiere"
+#: ../src/gnote.cpp:351
+msgid ""
+"Copyright © 2009 Hubert Figuiere\n"
+"Copyright © 2004-2009 the Tomboy original authors."
+msgstr ""
+"版权所有 © 2009 Hubert Figuiere\n"
+"版权所有 © 2004-2009 Tomboy 原作者"
 
-#: ../src/gnote.cpp:306
+#: ../src/gnote.cpp:353
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
-#: ../src/gnote.cpp:317
+#: ../src/gnote.cpp:364
 msgid "Homepage"
 msgstr "主页"
 
-#: ../src/gnote.cpp:357
-msgid "A note taking application"
-msgstr "一个笔记程序"
-
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:417
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "将 Gnote 作为 GNOME 面板小程序运行。"
 
-#: ../src/gnote.cpp:370
+#: ../src/gnote.cpp:418
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: ../src/gnote.cpp:375
+#: ../src/gnote.cpp:418
+msgid "path"
+msgstr "路径"
+
+#: ../src/gnote.cpp:419
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口"
 
-#: ../src/gnote.cpp:380
+#: ../src/gnote.cpp:419 ../src/gnote.cpp:424 ../src/gnote.cpp:425
+msgid "text"
+msgstr "文本"
+
+#: ../src/gnote.cpp:420
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: ../src/gnote.cpp:413
+#: ../src/gnote.cpp:422
+msgid "Create and display a new note, with a optional title."
+msgstr "创建并显示一个带有可选标题的新便笺。"
+
+#: ../src/gnote.cpp:422
+msgid "title"
+msgstr "标题"
+
+#: ../src/gnote.cpp:423
+msgid "Display the existing note matching title."
+msgstr "显示匹配标题的现存便笺。"
+
+#: ../src/gnote.cpp:423
+msgid "title/url"
+msgstr "标题/url"
+
+#: ../src/gnote.cpp:424
+msgid "Display the 'Start Here' note."
+msgstr "显示“从这里开始”"
+
+#: ../src/gnote.cpp:425
+msgid "Search and highlight text in the opened note."
+msgstr "在开启的便笺中搜索文本(高亮显示)"
+
+#: ../src/gnote.cpp:430
+msgid "A note taking application"
+msgstr "一个笔记程序"
+
+#: ../src/gnote.cpp:430
+msgid "Gnote options at launch"
+msgstr "Gnote 启动选项"
+
+#: ../src/gnote.cpp:626
 msgid "Version %1%"
 msgstr "版本 %1%"
 
@@ -663,16 +704,16 @@ msgid ""
 "creating a new note."
 msgstr "创建新的便笺时使用新的便笺模板来设定应使用的文字。"
 
-#: ../src/preferencesdialog.cpp:252
+#: ../src/preferencesdialog.cpp:251
 msgid "Open New Note Template"
 msgstr "打开新的便笺模板"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:310
+#: ../src/preferencesdialog.cpp:309
 msgid "Listen for _Hotkeys"
 msgstr "监听热键(_H)"
 
-#: ../src/preferencesdialog.cpp:317
+#: ../src/preferencesdialog.cpp:316
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -682,73 +723,73 @@ msgstr ""
 "b>，<b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:337
+#: ../src/preferencesdialog.cpp:336
 msgid "Show notes _menu"
 msgstr "显示便笺菜单(_M)"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:353
+#: ../src/preferencesdialog.cpp:352
 msgid "Open \"_Start Here\""
 msgstr "打开“从这里开始”(_S)"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:368
+#: ../src/preferencesdialog.cpp:367
 msgid "Create _new note"
 msgstr "创建新便笺(_N)"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:383
+#: ../src/preferencesdialog.cpp:382
 msgid "Open \"Search _All Notes\""
 msgstr "打开“搜索全部便笺”(_A)"
 
-#: ../src/preferencesdialog.cpp:409
+#: ../src/preferencesdialog.cpp:408
 msgid "Ser_vice:"
 msgstr "服务(_V)："
 
-#: ../src/preferencesdialog.cpp:466
+#: ../src/preferencesdialog.cpp:465
 msgid "Not configurable"
 msgstr "不可配置"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:486
+#: ../src/preferencesdialog.cpp:485
 msgid "_Advanced..."
 msgstr "高级(_A)..."
 
-#: ../src/preferencesdialog.cpp:533
+#: ../src/preferencesdialog.cpp:532
 msgid "The following add-ins are installed"
 msgstr "已安装以下添加项"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:564
+#: ../src/preferencesdialog.cpp:563
 msgid "_Enable"
 msgstr "启用(_E)"
 
-#: ../src/preferencesdialog.cpp:570
+#: ../src/preferencesdialog.cpp:569
 msgid "_Disable"
 msgstr "禁用(_D)"
 
-#: ../src/preferencesdialog.cpp:699
+#: ../src/preferencesdialog.cpp:698
 msgid "Not Implemented"
 msgstr "尚未实现"
 
-#: ../src/preferencesdialog.cpp:713
+#: ../src/preferencesdialog.cpp:712
 msgid "%1% Preferences"
 msgstr "%1% 首选项"
 
-#: ../src/preferencesdialog.cpp:854
+#: ../src/preferencesdialog.cpp:853
 msgid "Choose Note Font"
 msgstr "选择便笺字体"
 
-#: ../src/preferencesdialog.cpp:949
+#: ../src/preferencesdialog.cpp:948
 msgid "Version:"
 msgstr "版本："
 
-#: ../src/preferencesdialog.cpp:954
+#: ../src/preferencesdialog.cpp:953
 msgid "Author:"
 msgstr "作者："
 
-#: ../src/preferencesdialog.cpp:960
+#: ../src/preferencesdialog.cpp:959
 msgid "Copyright:"
 msgstr "版权所有："
 
@@ -762,8 +803,8 @@ msgid ""
 "Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
 "\n"
 "You can create new notes to hold your ideas by selecting the \"Create New "
-"Note\" item from the Gnote Notes menu in your GNOME Panel. Your note will be "
-"saved automatically.\n"
+"Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
+"automatically.\n"
 "\n"
 "Then organize the notes you create by linking related notes and ideas "
 "together!\n"
@@ -773,20 +814,21 @@ msgid ""
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
-"<note-content>从这里开始\n"
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">从这里开"
+"始\n"
 "\n"
 "<bold>欢迎使用 Gnote</bold>\n"
 "\n"
 "使用“从这里开始”便笺可以帮助您组织思路。\n"
 "\n"
-"如果您想要创建一则新便笺，可以从 GNOME 面板的Gnote 便笺菜单中选择“创建新便笺”命"
-"令。您所创建的便笺将会自动保存。\n"
+"如果您想要创建一则新便笺，可以从 GNOME 面板的Gnote 便笺菜单中选择“创建新便"
+"笺”命令。您所创建的便笺将会自动保存。\n"
 "\n"
 "此外，您还可以在相关的便笺之间创建链接！\n"
 "\n"
-"我们也创建了一则称为<link:internal>在 Gnote 中使用链接</link:internal>的便笺。您"
-"是否已经注意到，我们每次输入<link:internal>在 Gnote 中使用链接</link:internal>的"
-"时候，都会自动加下划线？单击链接即可打开该便笺。</note-content>"
+"我们也创建了一则称为<link:internal>在 Gnote 中使用链接</link:internal>的便"
+"笺。您是否已经注意到，我们每次输入<link:internal>在 Gnote 中使用链接</link:"
+"internal>的时候，都会自动加下划线？单击链接即可打开该便笺。</note-content>"
 
 #: ../src/notemanager.cpp:256
 msgid ""
@@ -805,9 +847,9 @@ msgid ""
 msgstr ""
 "<note-content>在 Gnote 中使用链接\n"
 "\n"
-"如果要将 Gnote 中的便笺互相链接，应该在当前便笺中选中相应的文本，然后单击上方工"
-"具栏中的<bold>链接</bold>按钮。执行此操作后，将创建一则新便笺，并将当前便笺中"
-"的选中文本作为新便笺的标题。\n"
+"如果要将 Gnote 中的便笺互相链接，应该在当前便笺中选中相应的文本，然后单击上方"
+"工具栏中的<bold>链接</bold>按钮。执行此操作后，将创建一则新便笺，并将当前便笺"
+"中的选中文本作为新便笺的标题。\n"
 "\n"
 "更改便笺的标题将更新其它便笺中存在的链接。这可以保证重命名便笺时链接不会断"
 "开。\n"
@@ -834,127 +876,139 @@ msgstr "新建便笺 %1%"
 msgid "Describe your new note here."
 msgstr "在此描述您的新便笺。"
 
-#: ../src/notewindow.cpp:72
+#: ../src/notewindow.cpp:73
 msgid "Find in This Note"
 msgstr "在此便笺中查找"
 
-#: ../src/notewindow.cpp:336
+#: ../src/notewindow.cpp:320
 msgid "_Link to New Note"
 msgstr "链接到新便笺(_L)"
 
-#: ../src/notewindow.cpp:344
+#: ../src/notewindow.cpp:328
 msgid "Te_xt"
 msgstr "文本(_X)"
 
-#: ../src/notewindow.cpp:353
+#: ../src/notewindow.cpp:337
 msgid "_Find in This Note"
 msgstr "在此便笺中查找(_F)"
 
-#: ../src/notewindow.cpp:368
+#: ../src/notewindow.cpp:352
 msgid "Clos_e All Notes"
 msgstr "关闭全部便笺(_E)"
 
-#: ../src/notewindow.cpp:403
+#: ../src/notewindow.cpp:387
 msgid "Search"
 msgstr "搜索"
 
-#: ../src/notewindow.cpp:407
+#: ../src/notewindow.cpp:391
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "搜索您的便笺(Ctrl-Shift-F)"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:401
 msgid "Link"
 msgstr "链接"
 
-#: ../src/notewindow.cpp:423
+#: ../src/notewindow.cpp:407
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "将选中文本链接到新便笺(Ctrl-L)"
 
-#: ../src/notewindow.cpp:432
+#: ../src/notewindow.cpp:416
 msgid "_Text"
 msgstr "文本(_T)"
 
-#: ../src/notewindow.cpp:438
+#: ../src/notewindow.cpp:422
 msgid "Set properties of text"
 msgstr "设置文本属性"
 
-#: ../src/notewindow.cpp:442
+#: ../src/notewindow.cpp:426
 msgid "T_ools"
 msgstr "工具(_O)"
 
-#: ../src/notewindow.cpp:447
+#: ../src/notewindow.cpp:431
 msgid "Use tools on this note"
 msgstr "在此便笺上使用工具"
 
-#: ../src/notewindow.cpp:457
+#: ../src/notewindow.cpp:441
 msgid "Delete this note"
 msgstr "删除此便笺"
 
-#: ../src/notewindow.cpp:467
+#: ../src/notewindow.cpp:451
 msgid "Synchronize Notes"
 msgstr "同步便笺"
 
-#: ../src/notewindow.cpp:510
+#: ../src/notewindow.cpp:494
 msgid "_Find..."
 msgstr "查找(_F)..."
 
-#: ../src/notewindow.cpp:518 ../src/notewindow.cpp:640
+#: ../src/notewindow.cpp:502
 msgid "Find _Next"
 msgstr "查找下一个(_N)"
 
-#: ../src/notewindow.cpp:528
+#: ../src/notewindow.cpp:512
 msgid "Find _Previous"
 msgstr "查找上一个(_P)"
 
-#: ../src/notewindow.cpp:598
+#: ../src/notewindow.cpp:582
 msgid "Cannot create note"
 msgstr "无法创建便笺"
 
-#: ../src/notewindow.cpp:641
+#: ../src/notewindow.cpp:624
+msgid "_Next"
+msgstr "下一个(_N)"
+
+#: ../src/notewindow.cpp:625
 msgid "_Previous"
 msgstr "上一个(_P)"
 
-#: ../src/notewindow.cpp:654
+#: ../src/notewindow.cpp:638
 msgid "_Find:"
 msgstr "查找(_F)："
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1078
 msgid "<b>_Bold</b>"
 msgstr "<b>粗体(_B)</b>"
 
-#: ../src/notewindow.cpp:1093
+#: ../src/notewindow.cpp:1079
 msgid "<i>_Italic</i>"
 msgstr "<i>斜体(_I)</i>"
 
-#: ../src/notewindow.cpp:1094
+#: ../src/notewindow.cpp:1080
 msgid "<s>_Strikeout</s>"
 msgstr "<s>删除线(_S)</s>"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1082
 msgid "_Highlight"
 msgstr "高亮(_H)"
 
-#: ../src/notewindow.cpp:1098
+#: ../src/notewindow.cpp:1084
 msgid "_Normal"
 msgstr "普通(_N)"
 
-#: ../src/notewindow.cpp:1100
+#: ../src/notewindow.cpp:1086
 msgid "Hu_ge"
 msgstr "巨大(_G)"
 
-#: ../src/notewindow.cpp:1102
+#: ../src/notewindow.cpp:1088
 msgid "_Large"
 msgstr "大(_L)"
 
-#: ../src/notewindow.cpp:1104
+#: ../src/notewindow.cpp:1090
 msgid "S_mall"
 msgstr "小(_M)"
 
-#: ../src/notewindow.cpp:1106
+#: ../src/notewindow.cpp:1092
 msgid "Bullets"
 msgstr "项目符号"
 
-#: ../src/notewindow.cpp:1179
+#: ../src/notewindow.cpp:1095
+msgid "Increase Font Size"
+msgstr "增大字号"
+
+#: ../src/notewindow.cpp:1096
+msgid "Decrease Font Size"
+msgstr "减小字号"
+
+#: ../src/notewindow.cpp:1167
 msgid "Font Size"
 msgstr "字体大小"
 
@@ -981,57 +1035,53 @@ msgstr ""
 "保存您的便笺时发生了错误。请检查您是否有足够的磁盘空间，以及您在 ~/.gnote 是"
 "否有足够的权限。错误细节可在 ~/.gnote.log 中找到。"
 
-#: ../src/recentchanges.cpp:83
+#: ../src/recentchanges.cpp:82
 msgid "Search All Notes"
 msgstr "搜索全部便笺"
 
-#: ../src/recentchanges.cpp:88
+#: ../src/recentchanges.cpp:87
 msgid "C_ase Sensitive"
 msgstr "区分大小写(_A)"
 
-#: ../src/recentchanges.cpp:106
+#: ../src/recentchanges.cpp:105
 msgid "_Search:"
 msgstr "搜索(_S)："
 
-#: ../src/recentchanges.cpp:275
+#: ../src/recentchanges.cpp:269
 #: ../src/notebooks/notebookapplicationaddin.cpp:118
 msgid "Notebooks"
 msgstr "笔记本"
 
-#: ../src/recentchanges.cpp:347
+#: ../src/recentchanges.cpp:341
 msgid "Note"
 msgstr "便笺"
 
-#: ../src/recentchanges.cpp:368
+#: ../src/recentchanges.cpp:362
 msgid "Last Changed"
 msgstr "最近更改"
 
-#: ../src/recentchanges.cpp:512
+#: ../src/recentchanges.cpp:506
 msgid "Matches"
 msgstr "匹配项"
 
-#: ../src/recentchanges.cpp:566
+#: ../src/recentchanges.cpp:560
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% 个匹配项"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:574
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "总计：%1% 个便笺"
 
-#: ../src/recentchanges.cpp:594
+#: ../src/recentchanges.cpp:590
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "匹配：%1% 个便笺"
 
-#: ../src/recentchanges.cpp:734
+#: ../src/recentchanges.cpp:732
 msgid "Notes"
 msgstr "便笺"
-
-#: ../src/tray.cpp:50
-msgid "Gnote Notes"
-msgstr "Gnote 便笺"
 
 #: ../src/tray.cpp:161
 msgid " (new)"
@@ -1041,65 +1091,65 @@ msgstr " (新)"
 msgid "_About Gnote"
 msgstr "关于 Gnote(_A)"
 
-#: ../src/utils.cpp:128
+#: ../src/utils.cpp:129
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr "找不到“Gnote 便笺手册”。请检查您的安装是否已成功完成。"
 
-#: ../src/utils.cpp:136
+#: ../src/utils.cpp:137
 msgid "Help not found"
 msgstr "帮助未找到"
 
-#: ../src/utils.cpp:176
+#: ../src/utils.cpp:177
 msgid "Cannot open location"
 msgstr "无法打开位置"
 
-#: ../src/utils.cpp:190
+#: ../src/utils.cpp:191
 msgid "Today, %1%"
 msgstr "今天，%1%"
 
-#: ../src/utils.cpp:191
+#: ../src/utils.cpp:192
 msgid "Today"
 msgstr "今天"
 
-#: ../src/utils.cpp:196
+#: ../src/utils.cpp:197
 msgid "Yesterday, %1%"
 msgstr "昨天，%1%"
 
-#: ../src/utils.cpp:197
+#: ../src/utils.cpp:198
 msgid "Yesterday"
 msgstr "昨天"
 
-#: ../src/utils.cpp:204
+#: ../src/utils.cpp:205
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% 天前，%2%"
 
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% 天前"
 
-#: ../src/utils.cpp:215
+#: ../src/utils.cpp:216
 msgid "Tomorrow, %1%"
 msgstr "明天，%1%"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:217
 msgid "Tomorrow"
 msgstr "明天"
 
-#: ../src/utils.cpp:223
+#: ../src/utils.cpp:224
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "%1% 天内，%2%"
 
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:228
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "%1% 天内"
 
-#: ../src/utils.cpp:238
+#: ../src/utils.cpp:239
 msgid "No Date"
 msgstr "没有日期"
 
@@ -1117,11 +1167,11 @@ msgstr "已经存在标题为 <b>%1%</b> 的便笺。请在继续前为此便笺
 msgid "Note title taken"
 msgstr "便笺标题已被使用"
 
-#: ../src/watchers.cpp:579
+#: ../src/watchers.cpp:574
 msgid "_Copy Link Address"
 msgstr "复制链接地址(_C)"
 
-#: ../src/watchers.cpp:585
+#: ../src/watchers.cpp:580
 msgid "_Open Link"
 msgstr "打开链接(_O)"
 
@@ -1222,15 +1272,15 @@ msgstr "新建“%1%”便笺"
 msgid "No notebook"
 msgstr "没有笔记本"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:81
+#: ../src/notebooks/notebooknoteaddin.cpp:82
 msgid "Place this note into a notebook"
 msgstr "将此便笺放入一个笔记本"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:168
+#: ../src/notebooks/notebooknoteaddin.cpp:169
 msgid "Notebook"
 msgstr "笔记本"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:193
+#: ../src/notebooks/notebooknoteaddin.cpp:194
 msgid "_New notebook..."
 msgstr "新建笔记本(_N)..."
 
@@ -1264,8 +1314,9 @@ msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
-msgstr "允许您将一个 Bugzilla URL 直接从浏览器拖拽至 Gnote 便笺中。"
-"Bug 号码将被与一个小的 bug 图标一起被插入。"
+msgstr ""
+"允许您将一个 Bugzilla URL 直接从浏览器拖拽至 Gnote 便笺中。Bug 号码将被与一个"
+"小的 bug 图标一起被插入。"
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:59
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
@@ -1358,8 +1409,8 @@ msgid "Could not save the file \"%s\""
 msgstr "无法保存文件“%s”"
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
-msgid "_Fixed Width"
-msgstr "等宽(_F)"
+msgid "Fixed Wid_th"
+msgstr "等宽(_T)"
 
 #. this is the name of the plugin.
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
@@ -1410,7 +1461,7 @@ msgid "Error printing note"
 msgstr "打印便笺时出错"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:293
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:297
 msgid "Page %1% of %2%"
 msgstr "第 %1% 页，共 %2% 页"
 
@@ -1463,6 +1514,32 @@ msgstr "从 Tomboy 中导入便笺。"
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
+
+#: ../src/addins/underline/underlinemenuitem.cpp:34
+msgid "_Underline"
+msgstr "下划线(_U)"
+
+#. this is the name of the plugin.
+#: ../src/addins/underline/underlinenoteaddin.cpp:47
+msgid "Underline"
+msgstr "下划线"
+
+#: ../src/addins/underline/underlinenoteaddin.cpp:51
+msgid "Adds ability to underline text."
+msgstr "添加“文本下划线”功能。"
+
+#: ../src/addins/underline/underlinenoteaddin.cpp:55
+msgid "Hubert Figuière and the Tomboy Project"
+msgstr "Hubert Figuière 和 Tomboy 项目"
+
+#~ msgid "Copyright © 2009 Hubert Figuiere"
+#~ msgstr "版权所有 © 2009 Hubert Figuiere"
+
+#~ msgid "Gnote Notes"
+#~ msgstr "Gnote 便笺"
+
+#~ msgid "_Fixed Width"
+#~ msgstr "等宽(_F)"
 
 #~ msgid ""
 #~ "Indicates that the Sticky Note Importer plugin has not been run, so it "
@@ -1583,9 +1660,6 @@ msgstr "Hubert Figuiere"
 #~ msgid "--- Tasque is not running ---"
 #~ msgstr "--- Tasque 未运行 ---"
 
-#~ msgid "_Underline"
-#~ msgstr "下划线(_U)"
-
 #~ msgid "_URL:"
 #~ msgstr "_URL："
 
@@ -1610,479 +1684,3 @@ msgstr "Hubert Figuiere"
 
 #~ msgid "Tomboy Web"
 #~ msgstr " Gnote 网站"
-
-#, fuzzy
-#~| msgid "Connecting to the server..."
-#~ msgid "_Connect to Server"
-#~ msgstr "正在连接到服务器..."
-
-#, fuzzy
-#~| msgid "Connecting to the server..."
-#~ msgid "Connect to Server"
-#~ msgstr "正在连接到服务器..."
-
-#, fuzzy
-#~| msgid "Synchronization Failed"
-#~ msgid "Authorization Failed, Try Again"
-#~ msgstr "同步失败"
-
-#~ msgid "_Window"
-#~ msgstr "窗口(_W)"
-
-#~ msgid "Really delete this {0} note?"
-#~ msgid_plural "Really delete these {0} notes?"
-#~ msgstr[0] "真的要删除 {0} 个便笺吗？"
-
-#~ msgid "New Note {0}"
-#~ msgstr "新便笺 {0}"
-
-#~ msgid "_Next"
-#~ msgstr "下一个(_N)"
-
-#~ msgid "_Bold"
-#~ msgstr "粗体(_B)"
-
-#~ msgid "Increase Font Size"
-#~ msgstr "增大字号"
-
-#~ msgid "Decrease Font Size"
-#~ msgstr "减小字号"
-
-#~ msgid "Synchronization"
-#~ msgstr "同步"
-
-#~ msgid "{0} Preferences"
-#~ msgstr "{0} 首选项"
-
-#~ msgid "Other Synchronization Options"
-#~ msgstr "其它同步选项"
-
-#~ msgid ""
-#~ "When a conflict is detected between a local note and a note on the "
-#~ "configured synchronization server:"
-#~ msgstr "当检测到本地便笺和所配置的同步服务器上的便笺有冲突时："
-
-#~ msgid "Always ask me what to do."
-#~ msgstr "问我该怎么做。"
-
-#~ msgid "Rename my local note."
-#~ msgstr "重命名我的本地便笺。"
-
-#~ msgid "Replace my local note with the server's update."
-#~ msgstr "用服务器上的便笺更新我的本地便笺。"
-
-#~ msgid "WARNING: Are you sure?"
-#~ msgstr "警告：您确定吗？"
-
-#~ msgid ""
-#~ "Clearing your synchronization settings is not recommended.  You may be "
-#~ "forced to synchronize all of your notes again when you save new settings."
-#~ msgstr ""
-#~ "不推荐清空您的同步设置。当您保存新设置时可能再次被强制同步你的所有便笺。"
-
-#~ msgid "Resetting Synchronization Settings"
-#~ msgstr "重置同步设置"
-
-#~ msgid ""
-#~ "You have disabled the configured synchronization service.  Your "
-#~ "synchronization settings will now be cleared.  You may be forced to "
-#~ "synchronize all of your notes again when you save new settings"
-#~ msgstr ""
-#~ "您已关闭所配置的同步服务。您的同步设置现在将被清空。当您保存新设置时可能再"
-#~ "次被强制同步你的所有便笺"
-
-#~ msgid "Success! You're connected!"
-#~ msgstr "成功！您已连接上！"
-
-#~ msgid ""
-#~ "Tomboy is ready to synchronize your notes. Would you like to synchronize "
-#~ "them now?"
-#~ msgstr "Tomboy 已经准备好同步您的便笺。您想要现在同步它们吗？"
-
-#~ msgid ""
-#~ "Sorry, but something went wrong.  Please check your information and try "
-#~ "again.  The ~/.tomboy.log might be useful too."
-#~ msgstr ""
-#~ "对不起，发生了错误。请检查您的信息并重试。查看 ~/.tomboy.log 也许会有帮"
-#~ "助。"
-
-#~ msgid "Error connecting :("
-#~ msgstr "连接出错 :("
-
-#~ msgid "Add-in Dependencies:"
-#~ msgstr "插件依赖："
-
-#~ msgid ""
-#~ "Copyright © 2004-2007 Alex Graveley\n"
-#~ "Copyright © 2004-2009 Others\n"
-#~ msgstr ""
-#~ "版权所有 © 2004-2007 Alex Graveley\n"
-#~ "版权所有 ©·2004-2009·其他人\n"
-
-#~ msgid ""
-#~ "Tomboy: A simple, easy to use desktop note-taking application.\n"
-#~ "Copyright (C) 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
-#~ "\n"
-#~ msgstr ""
-#~ " Gnote ：简单易用的桌面随意帖应用程序。\n"
-#~ "版权所有 (C) 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "Usage:\n"
-#~ "  --version\t\t\tPrint version information.\n"
-#~ "  --help\t\t\tPrint this usage message.\n"
-#~ "  --note-path [path]\t\tLoad/store note data in this directory.\n"
-#~ "  --search [text]\t\tOpen the search all notes window with the search "
-#~ "text.\n"
-#~ msgstr ""
-#~ "用法：\n"
-#~ "  --version\t\t\t显示版本信息。\n"
-#~ "  --help\t\t\t显示此用法信息。\n"
-#~ "  --note-path [路径]\t\t装入/保存此目录中的便笺数据。\n"
-#~ "  --search [文本]\t\t打开搜索全部便笺窗口，并预置搜索文本。\n"
-
-#~ msgid ""
-#~ "  --new-note\t\t\tCreate and display a new note.\n"
-#~ "  --new-note [title]\t\tCreate and display a new note, with a title.\n"
-#~ "  --open-note [title/url]\tDisplay the existing note matching title.\n"
-#~ "  --start-here\t\t\tDisplay the 'Start Here' note.\n"
-#~ "  --highlight-search [text]\tSearch and highlight text in the opened "
-#~ "note.\n"
-#~ msgstr ""
-#~ "  --new-note\t\t\t创建并显示新便笺。\n"
-#~ "  --new-note [标题]\t\t创建并显示带有标题的便笺。\n"
-#~ "  --open-note [标题/url]\t显示与标题匹配的已有便笺。\n"
-#~ "  --start-here\t\t\t显示“从这里开始”便笺。\n"
-#~ "  --highlight-search [文本]\t在打开的便笺中搜索突出显示的文本。\n"
-
-#~ msgid "D-BUS remote control disabled.\n"
-#~ msgstr "D-BUS 远程控制已禁用。\n"
-
-#~ msgid "Version {0}"
-#~ msgstr "{0} 版本"
-
-#~ msgid ""
-#~ "Tomboy: unsupported option '{0}'\n"
-#~ "Try 'tomboy --help' for more information.\n"
-#~ "D-BUS remote control disabled."
-#~ msgstr ""
-#~ " Gnote ：不支持的选项“{0}”\n"
-#~ "使用“tomboy --help”可获得更多信息。\n"
-#~ "D-BUS 远程控制被禁用。"
-
-#~ msgid "_About Tomboy"
-#~ msgstr "关于 Gnote (_A)"
-
-#~ msgid "Today, {0}"
-#~ msgstr "今日，{0}"
-
-#~ msgid "MMMM d, h:mm tt"
-#~ msgstr "M 月 d 日，h:mm tt"
-
-#~ msgid "MMMM d"
-#~ msgstr "M 月 d 日"
-
-#~ msgid "MMMM d yyyy, h:mm tt"
-#~ msgstr "yyyy 年 M 月 d 日，h:mm tt"
-
-#~ msgid "MMMM d yyyy"
-#~ msgstr "yyyy 年 M 月 d 日"
-
-#~ msgid ""
-#~ "This synchronization addin is not supported on your computer. Please make "
-#~ "sure you have FUSE and {0} correctly installed and configured"
-#~ msgstr ""
-#~ "您的电脑不支持同步插件。请确保您已安装 FUSE 支持并且正确安装并配置 {0}"
-
-#~ msgid "Could not read testfile."
-#~ msgstr "无法读取测试文件。"
-
-#~ msgid "Write test failed."
-#~ msgstr "写测试失败。"
-
-#~ msgid "Timeout connecting to server."
-#~ msgstr "连接到服务器超时。"
-
-#~ msgid "Error connecting to server."
-#~ msgstr "连接到服务器出错。"
-
-#~ msgid "FUSE could not be enabled."
-#~ msgstr "FUSE 无法开启。"
-
-#~ msgid "An error ocurred while connecting to the specified server:"
-#~ msgstr "连接到指定服务器时出错："
-
-#~ msgid "Details"
-#~ msgstr "细节"
-
-#~ msgid "Note Title"
-#~ msgstr "便笺标题"
-
-#~ msgid "Status"
-#~ msgstr "状态"
-
-#~ msgid "Acquiring sync lock..."
-#~ msgstr "正在请求同步锁..."
-
-#~ msgid "Committing changes..."
-#~ msgstr "正在提交更改..."
-
-#~ msgid "Synchronizing Notes"
-#~ msgstr "同步便笺"
-
-#~ msgid "Synchronizing your notes..."
-#~ msgstr "正在同步您的便笺..."
-
-#~ msgid "This may take a while, kick back and enjoy!"
-#~ msgstr "这可能需要花一些时间，请稍候。"
-
-#~ msgid "Connecting to the server..."
-#~ msgstr "正在连接到服务器..."
-
-#~ msgid "Deleting notes off of the server..."
-#~ msgstr "正在从服务器删除便笺..."
-
-#~ msgid "Downloading new/updated notes..."
-#~ msgstr "正在下载新的/已更新的便笺..."
-
-#~ msgid "Server Locked"
-#~ msgstr "服务器已锁定"
-
-#~ msgid "Server is locked"
-#~ msgstr "服务器已被锁定"
-
-#~ msgid ""
-#~ "One of your other computers is currently synchronizing.  Please wait 2 "
-#~ "minutes and try again."
-#~ msgstr "您的其它电脑正在同步中。请等2分钟后重试。"
-
-#~ msgid "Preparing to download updates from server..."
-#~ msgstr "正在准备从服务器下载更新..."
-
-#~ msgid "Preparing to upload updates to server..."
-#~ msgstr "正在准备向服务器上传更新..."
-
-#~ msgid "Uploading notes to server..."
-#~ msgstr "正在向服务器上传更新..."
-
-#~ msgid "Synchronization Failed"
-#~ msgstr "同步失败"
-
-#~ msgid "Failed to synchronize"
-#~ msgstr "同步失败"
-
-#~ msgid "Could not synchronize notes.  Check the details below and try again."
-#~ msgstr "无法同步便笺。请检查以下细节并重试。"
-
-#~ msgid "Synchronization Complete"
-#~ msgstr "同步完成"
-
-#~ msgid "Synchronization is complete"
-#~ msgstr "同步已完成"
-
-#~ msgid "{0} note updated."
-#~ msgid_plural "{0} notes updated."
-#~ msgstr[0] "已更新 {0} 个便笺。"
-
-#~ msgid "Your notes are now up to date."
-#~ msgstr "您的便笺已经是最新的了。"
-
-#~ msgid "Synchronization Canceled"
-#~ msgstr "同步已取消"
-
-#~ msgid "Synchronization was canceled"
-#~ msgstr "同步已被取消"
-
-#~ msgid "You canceled the synchronization.  You may close the window now."
-#~ msgstr "您取消了同步。您现在可以关闭窗口。"
-
-#~ msgid "Synchronization Not Configured"
-#~ msgstr "同步未配置"
-
-#~ msgid "Synchronization is not configured"
-#~ msgstr "同步尚未配置好"
-
-#~ msgid "Please configure synchronization in the preferences dialog."
-#~ msgstr "请在首选项对话框中配置同步。"
-
-#~ msgid "Synchronization Service Error"
-#~ msgstr "同步服务器出错"
-
-#~ msgid "Service error"
-#~ msgstr "服务错误"
-
-#~ msgid "Error connecting to the synchronization service.  Please try again."
-#~ msgstr "连接到同步服务出错。请重试。"
-
-#~ msgid "Deleted locally"
-#~ msgstr "已从本地删除"
-
-#~ msgid "Deleted from server"
-#~ msgstr "已从服务器删除"
-
-#~ msgid "Updated"
-#~ msgstr "已更新"
-
-#~ msgid "Added"
-#~ msgstr "已添加"
-
-#~ msgid "Uploaded changes to server"
-#~ msgstr "已将更改上传到服务器"
-
-#~ msgid "Uploaded new note to server"
-#~ msgstr "已将新便笺上传到服务器"
-
-#~ msgid "Note Conflict"
-#~ msgstr "便笺冲突"
-
-#~ msgid " (old)"
-#~ msgstr " (旧)"
-
-#~ msgid "Rename local note:"
-#~ msgstr "重命名本地便笺："
-
-#~ msgid "Update links in referencing notes"
-#~ msgstr "更新引用便笺中的链接"
-
-#~ msgid "Overwrite local note"
-#~ msgstr "覆盖本地便笺"
-
-#~ msgid "Always perform this action"
-#~ msgstr "总是执行这一操作"
-
-#~ msgid "Note conflict detected"
-#~ msgstr "检测到便笺冲突"
-
-#~ msgid ""
-#~ "The server version of \"{0}\" conflicts with your local note.  What do "
-#~ "you want to do with your local note?"
-#~ msgstr "“{0}”的服务器版本与您的本地便笺冲突。您希望如何处理您的本地便笺？"
-
-#~ msgid "_Tools"
-#~ msgstr "工具(_T)"
-
-#~ msgid "Could not enable FUSE"
-#~ msgstr "无法启用 FUSE"
-
-#~ msgid ""
-#~ "The FUSE module could not be loaded. Please check that it is installed "
-#~ "properly and try again."
-#~ msgstr "无法加载 FUSE 模块。请检查它已正确安装并重试。"
-
-#~ msgid "Enable FUSE?"
-#~ msgstr "启用 FUSE？"
-
-#~ msgid ""
-#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
-#~ "\n"
-#~ "To avoid getting this prompt in the future, you should load FUSE at "
-#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-#~ "etc/modules."
-#~ msgstr ""
-#~ "您所选择的同步要求加载 FUSE 模块。\n"
-#~ "\n"
-#~ "为了避免将来弹出这个消息，您应该在启动时加载 FUSE 。添加“modprobe "
-#~ "fuse”到 /etc/init.d/boot.local 或者“fuse”到 /etc/modules 。"
-
-#~ msgid "Add-in"
-#~ msgstr "插件"
-
-#~ msgid "Other"
-#~ msgstr "其它"
-
-#~ msgid "Preparing pages..."
-#~ msgstr "正在准备页面..."
-
-#~ msgid "Rendering page %d of %d..."
-#~ msgstr "正在渲染第%d页，共%d页..."
-
-#~ msgid "Printing page %d of %d..."
-#~ msgstr "正在打印第%d页，共%d页..."
-
-#~ msgid "Print preview"
-#~ msgstr "打印预览"
-
-#~ msgid "%A %x, %X"
-#~ msgstr "%x%A %X"
-
-#~ msgid "Configuration"
-#~ msgstr "配置"
-
-#~ msgid "Configuration options for the print job"
-#~ msgstr "打印任务配置选项"
-
-#~ msgid "Source Buffer"
-#~ msgstr "来源缓冲"
-
-#~ msgid "GtkTextBuffer object to print"
-#~ msgstr "用于打印的 GtkTextBuffer 对象"
-
-#~ msgid "Tabs Width"
-#~ msgstr "标签宽度"
-
-#~ msgid "Width in equivalent space characters of tabs"
-#~ msgstr "与标签空格字符等宽的宽度"
-
-#~ msgid "Wrap Mode"
-#~ msgstr "折行模式"
-
-#~ msgid "Word wrapping mode"
-#~ msgstr "文字折行模式"
-
-#~ msgid "Highlight"
-#~ msgstr "高亮显示"
-
-#~ msgid "Whether to print the document with highlighted syntax"
-#~ msgstr "是否以高亮语法打印该文档"
-
-#~ msgid "Font"
-#~ msgstr "字体"
-
-#~ msgid "GnomeFont name to use for the document text (deprecated)"
-#~ msgstr "用于文档文本的 GnomeFont 字体名称(不建议使用)"
-
-#~ msgid "Font to use for the document text (e.g. \"Monospace 10\")"
-#~ msgstr "用于文档文本的字体(比如“Monospace 10”)"
-
-#~ msgid "Numbers Font"
-#~ msgstr "数字字体"
-
-#~ msgid "GnomeFont name to use for the line numbers (deprecated)"
-#~ msgstr "用于行号的 GnomeFont 字体名称(不建议使用)"
-
-#~ msgid "Font description to use for the line numbers"
-#~ msgstr "用于行号的字体说明"
-
-#~ msgid "Print Line Numbers"
-#~ msgstr "打印行号"
-
-#~ msgid "Interval of printed line numbers (0 means no numbers)"
-#~ msgstr "打印行号的间隔(0表示无间隔)"
-
-#~ msgid "Print Header"
-#~ msgstr "打印头"
-
-#~ msgid "Whether to print a header in each page"
-#~ msgstr "是否在每页打印页眉"
-
-#~ msgid "Print Footer"
-#~ msgstr "打印页脚"
-
-#~ msgid "Whether to print a footer in each page"
-#~ msgstr "是否在每页打印页脚"
-
-#~ msgid "Header and Footer Font"
-#~ msgstr "页眉页脚的字体"
-
-#~ msgid "GnomeFont name to use for the header and footer (deprecated)"
-#~ msgstr "用于页眉页脚的 GnomeFont 字体名称(不建议使用)"
-
-#~ msgid "Header and Footer Font Description"
-#~ msgstr "页眉页脚的字体说明"
-
-#~ msgid "Font to use for headers and footers (e.g. \"Monospace 10\")"
-#~ msgstr "用于页眉页脚的字体(比如“Monospace 10”)"
-
-#~ msgid "Really delete these notes?"
-#~ msgstr "真的要删除这些便笺吗？"
