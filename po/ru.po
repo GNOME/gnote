@@ -5,19 +5,23 @@
 # Dmitry Kostenko <bis0n@mail.ru>, 2004.
 # Vasiliy Faronov <qvvx@yandex.ru>, 2007, 2008.
 # Alexandre Prokoudine <alexandre.prokoudine@gmail.com>, 2006, 2007, 2009.
+# Eugenia Vlasova <jane.vlasova@gmail.com>, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: tomboy trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-29 21:24+0400\n"
-"PO-Revision-Date: 2009-07-29 21:33+0400\n"
-"Last-Translator: Alexandre Prokoudine <alexandre.prokoudine@gmail.com>\n"
+"POT-Creation-Date: 2009-10-05 10:42+0300\n"
+"PO-Revision-Date: 2009-10-05 14:26+0600\n"
+"Last-Translator: Eugenia Vlasova <jane.vlasova@gmail.com>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:1
 msgid "Accessories"
@@ -34,7 +38,7 @@ msgstr "Фабрика апплета Gnote"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:4
 msgid "Simple and easy to use note-taking"
-msgstr "Простая в использовании программа для создания заметок"
+msgstr "Простая и легкая в использовании программа для создания заметок"
 
 #: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:217
 msgid "_About"
@@ -56,7 +60,7 @@ msgstr "Записная книжка"
 
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Take notes, link ideas, and stay organized"
-msgstr ""
+msgstr "Делай заметки, связывай идеи, организуй себя"
 
 #: ../data/gnote.schemas.in.h:1
 msgid "Accept SSL Certificates"
@@ -72,19 +76,21 @@ msgstr "Другой шрифт"
 
 #: ../data/gnote.schemas.in.h:4
 msgid "Determines X coordinate of Search window; stored on Gnote exit."
-msgstr ""
+msgstr "Определяет координату X окна поиска; сохраняется по закрытию Gnote."
 
 #: ../data/gnote.schemas.in.h:5
 msgid "Determines Y coordinate of Search window; stored on Gnote exit."
-msgstr ""
+msgstr "Определяет координату Y окна поиска; сохраняется по закрытию Gnote."
 
 #: ../data/gnote.schemas.in.h:6
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
+"Определяет высоту окна поиска в пикселях; сохраняется по закрытию Gnote."
 
 #: ../data/gnote.schemas.in.h:7
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
+"Определяет ширину окна поиска в пикселях; сохраняется по закрытию Gnote. "
 
 #: ../data/gnote.schemas.in.h:8
 msgid "Enable Auto bulleted lists"
@@ -127,27 +133,25 @@ msgstr ""
 "при вводе символа - или * в начале строки."
 
 #: ../data/gnote.schemas.in.h:17
-#, fuzzy
 msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
 msgstr ""
-"Установите этот ключ, если хотите, чтобы при щелчке средней кнопкой мыши на "
-"значке Tomboy в вашу «Первую заметку» вставлялось содержимое вместе с "
-"пометкой времени."
+"Активируйте этот параметр,  чтобы по щелчку средней кнопкой мыши на значке "
+"Gnote в вашу «Первую заметку» вставлялось содержимое вместе с меткой времени."
 
 #: ../data/gnote.schemas.in.h:18
 msgid ""
 "Enable this option to highlight words ThatLookLikeThis. Clicking the word "
 "will create a note with that name."
 msgstr ""
-"Установите этот ключ, чтобы автоматически выделялись слова, "
+"Установите этот параметр, чтобы автоматически выделялись слова, "
 "КоторыеВыглядятВотТак. Если щёлкнуть по такому слову, то будет создана "
 "заметка с этим именем."
 
 #: ../data/gnote.schemas.in.h:19
 msgid "FUSE Mounting Timeout (ms)"
-msgstr ""
+msgstr "Таймаут монтирования FUSE (мс)"
 
 #: ../data/gnote.schemas.in.h:20
 msgid "HTML Export All Linked Notes"
@@ -166,17 +170,16 @@ msgid ""
 "If enable_custom_font is true, the font name set here will be used as the "
 "font when displaying notes."
 msgstr ""
-"Если ключ enable_custom_font установлен, то указанное здесь имя шрифта будет "
-"использовано для показа заметок."
+"Если параметр enable_custom_font установлен, то указанное здесь имя шрифта "
+"будет использовано для показа заметок."
 
 #: ../data/gnote.schemas.in.h:24
-#, fuzzy
 msgid ""
 "If enabled, all notes that were open when Gnote quit will automatically be "
 "reopened at startup."
 msgstr ""
-"Если этот ключ установлен, все заметки, оставленные открытыми перед выходом, "
-"будут восстановлены при следующем запуске."
+"Если этот параметр активирован, все заметки, оставленные открытыми перед "
+"выходом, будут заново открыты при следующем запуске."
 
 #: ../data/gnote.schemas.in.h:25
 msgid "If enabled, an opened note can be closed by hitting the escape key."
@@ -194,15 +197,14 @@ msgstr ""
 "контекстном меню по щелчку правой кнопкой мыши."
 
 #: ../data/gnote.schemas.in.h:27
-#, fuzzy
 msgid ""
 "If true, the desktop-global keybindings set in /apps/gnote/"
 "global_keybindings will be enabled, allowing for useful Gnote actions to be "
 "available from any application."
 msgstr ""
-"Если этот ключ установлен, будут включены глобальные комбинации клавиш из /"
-"apps/tomboy/global_keybindings, что позволит выполнять некоторые полезные "
-"действия с Tomboy во время работы в других приложениях."
+"Если этот параметр активирован, будут включены глобальные комбинации клавиш "
+"из /apps/gnote/global_keybindings, что позволит эффективно использовать "
+"Gnote во время работы в других приложениях."
 
 #: ../data/gnote.schemas.in.h:28
 msgid ""
@@ -213,13 +215,12 @@ msgstr ""
 "заданный в custom_font_face. Иначе будет использоваться системный шрифт."
 
 #: ../data/gnote.schemas.in.h:29
-#, fuzzy
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr ""
-"Целое число, определяющее минимальное количество заметок, которые должны "
-"показываться в меню заметок Tomboy."
+"Число, определяющее минимальное количество заметок, которые должны "
+"показываться в меню заметок Gnote."
 
 #: ../data/gnote.schemas.in.h:30
 msgid ""
@@ -262,6 +263,7 @@ msgstr "Открыть «Первую заметку»"
 #: ../data/gnote.schemas.in.h:37
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr ""
+"Путь до директории синхронизации Gnote на сервере SSH (не обязательно). "
 
 #: ../data/gnote.schemas.in.h:38
 msgid ""
@@ -271,41 +273,36 @@ msgstr ""
 "Путь к серверу синхронизации при использовании модуля службы синхронизации."
 
 #: ../data/gnote.schemas.in.h:39
-#, fuzzy
 msgid "SSHFS Remote Synchronization Folder"
-msgstr "Выберите папку для синхронизации"
+msgstr "Папка удаленной SSHFS-синхронизации"
 
 #: ../data/gnote.schemas.in.h:40
-#, fuzzy
 msgid "SSHFS Remote Synchronization User Name"
-msgstr "Выбранный модуль службы синхронизации"
+msgstr "Имя пользователя для удаленной SSHFS-синхронизации"
 
 #: ../data/gnote.schemas.in.h:41
-#, fuzzy
 msgid "SSHFS Synchronization Server Port"
-msgstr "Ошибка службы синхронизации"
+msgstr "Порт сервера SSHFS-синхронизации"
 
 #: ../data/gnote.schemas.in.h:42
-#, fuzzy
 msgid "SSHFS Synchronization Server URL"
-msgstr "Ошибка службы синхронизации"
+msgstr "Адрес сервера SSHFS-синхронизации"
 
 #: ../data/gnote.schemas.in.h:43
 msgid "Saved height of Search window"
-msgstr ""
+msgstr "Записанная высота окна поиска"
 
 #: ../data/gnote.schemas.in.h:44
 msgid "Saved horizontal position of Search window"
-msgstr ""
+msgstr "Записанная горизонтальная позиция окна поиска"
 
 #: ../data/gnote.schemas.in.h:45
 msgid "Saved vertical position of Search window"
-msgstr ""
+msgstr "Записанная вертикальная позиция окна поиска"
 
 #: ../data/gnote.schemas.in.h:46
-#, fuzzy
 msgid "Saved width of Search window"
-msgstr "Открыть окно поиска во всех заметках"
+msgstr "Сохраненная ширина окна поиска"
 
 #: ../data/gnote.schemas.in.h:47
 msgid "Selected Synchronization Service Addin"
@@ -332,11 +329,12 @@ msgid "Synchronization Local Server Path"
 msgstr "Путь к локальному серверу для синхронизации"
 
 #: ../data/gnote.schemas.in.h:53
-#, fuzzy
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
-msgstr "Формат даты, который используется для пометки времени."
+msgstr ""
+"Формат даты, который используется для пометки времени. Он следует за "
+"форматом времени(3)."
 
 #: ../data/gnote.schemas.in.h:54
 msgid ""
@@ -403,7 +401,6 @@ msgstr ""
 "действия."
 
 #: ../data/gnote.schemas.in.h:58
-#, fuzzy
 msgid ""
 "The global keybinding for showing the Gnote applet's menu. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -412,7 +409,7 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"Глобальная комбинация клавиш для вызова меню апплета Tomboy. Значение должно "
+"Глобальная комбинация клавиш для вызова меню апплета Gnote. Значение должно "
 "выглядеть как «&lt;Control&gt;a» или «&lt;Shift&gt;&lt;Alt&gt;F1». Формат "
 "выражения не очень строг и позволяет использовать как заглавные, так и "
 "строчные буквы, а также аббревиатуры вроде «&lt;Ctl&gt;» и «&lt;Ctrl&gt;». "
@@ -451,26 +448,26 @@ msgstr ""
 "включать все заметки (найденные рекурсивно) при экспорте в HTML."
 
 #: ../data/gnote.schemas.in.h:63
-#, fuzzy
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
 msgstr ""
-"Идентификатор (URI) заметки, которая считается «Первой заметкой». Она всегда "
-"помещается внизу меню заметок Tomboy и доступна через комбинацию клавиш."
+"Идентификатор (URI) заметки, которая должна считаться \"Первой заметкой\". "
+"Она всегда помещается внизу меню заметок Gnote и доступна через комбинацию "
+"клавиш."
 
 #: ../data/gnote.schemas.in.h:64
-#, fuzzy
 msgid "The port to use when connecting to the synchronization server via SSH."
-msgstr ""
-"Произошла ошибка при соединении со службой синхронизации. Попытайтесь снова."
+msgstr "Порт для соединения с сервером синхронизации через SSH."
 
 #: ../data/gnote.schemas.in.h:65
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr ""
+"Время (в милисекундах), в течение которого Gnote должен ждать ответа при "
+"использовании FUSE для монтирования совместной синхронизации. "
 
 #: ../data/gnote.schemas.in.h:66
 msgid "Timestamp format"
@@ -478,7 +475,7 @@ msgstr "Формат пометки времени"
 
 #: ../data/gnote.schemas.in.h:67
 msgid "URL of SSH server containing Gnote synchronization directory."
-msgstr ""
+msgstr "URL сервера SSH, содержащего директорию Gnote для синхронизации."
 
 #: ../data/gnote.schemas.in.h:68
 msgid ""
@@ -489,12 +486,11 @@ msgstr ""
 "синхронизации."
 
 #: ../data/gnote.schemas.in.h:69
-#, fuzzy
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
 msgstr ""
-"Уникальный идентификатор этого клиента Tomboy, используемый для связи с "
+"Уникальный идентификатор данного клиента Gnote, используемый для связи с "
 "сервером синхронизации."
 
 #: ../data/gnote.schemas.in.h:70
@@ -502,21 +498,22 @@ msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr ""
+"Используйте параметр wdfs \"-ac\" , чтобы принять SSL сертификаты без "
+"участия пользователя."
 
 #: ../data/gnote.schemas.in.h:71
-#, fuzzy
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
-"Произошла ошибка при соединении со службой синхронизации. Попытайтесь снова."
+"Имя пользователя, необходимое для соединения с сервером синхронизации через "
+"SSH."
 
 #: ../data/gnote.schemas.in.h:72
-#, fuzzy
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
 msgstr ""
-"Разделённый пробелами список идентификаторов (URI) заметок, которое должны "
-"быть всегда видны в меню заметок Tomboy."
+"Разделённый пробелами список идентификаторов (URI) заметок, которые должны "
+"быть всегда видны в меню заметок Gnote."
 
 #: ../src/sharp/addinstreemodel.cpp:64
 msgid "Name"
@@ -627,7 +624,8 @@ msgid "translator-credits"
 msgstr ""
 "Дмитрий Костенко <bis0n@mail.ru>\n"
 "Александр Прокудин <alexandre.prokoudine@gmail.com>\n"
-"Василий Фаронов <qvvx@yandex.ru>"
+"Василий Фаронов <qvvx@yandex.ru>\n"
+"Евгения Власова <jane.vlasova@gmail.com>"
 
 #: ../src/gnote.cpp:351
 msgid ""
@@ -651,21 +649,19 @@ msgstr "Запустить Gnote как апплет панели GNOME"
 
 #: ../src/gnote.cpp:418
 msgid "Specify the path of the directory containing the notes."
-msgstr ""
+msgstr "Укажите путь к директории с заметками."
 
 #: ../src/gnote.cpp:418
 msgid "path"
-msgstr ""
+msgstr "путь"
 
 #: ../src/gnote.cpp:419
-#, fuzzy
 msgid "Open the search all notes window with the search text."
-msgstr "Открыть окно поиска во всех заметках"
+msgstr "Открыть окно поиска по всем заметкам с помощью текста поиска."
 
 #: ../src/gnote.cpp:419 ../src/gnote.cpp:424 ../src/gnote.cpp:425
-#, fuzzy
 msgid "text"
-msgstr "Те_кст"
+msgstr "те_кст"
 
 #: ../src/gnote.cpp:420
 msgid "Print version information."
@@ -673,20 +669,19 @@ msgstr "Вывести информацию о версии."
 
 #: ../src/gnote.cpp:422
 msgid "Create and display a new note, with a optional title."
-msgstr ""
+msgstr "Создать и показать новую заметку с произвольным заголовком."
 
 #: ../src/gnote.cpp:422
-#, fuzzy
 msgid "title"
-msgstr "Без названия"
+msgstr "заголовок"
 
 #: ../src/gnote.cpp:423
 msgid "Display the existing note matching title."
-msgstr ""
+msgstr "Показать существующую заметку с соответствующим заголовком."
 
 #: ../src/gnote.cpp:423
 msgid "title/url"
-msgstr ""
+msgstr "Заголовок/ссылка"
 
 #: ../src/gnote.cpp:424
 msgid "Display the 'Start Here' note."
@@ -694,7 +689,7 @@ msgstr "Показывать самую первую заметку"
 
 #: ../src/gnote.cpp:425
 msgid "Search and highlight text in the opened note."
-msgstr ""
+msgstr "Искать и выделить текст в открытой заметке."
 
 #: ../src/gnote.cpp:430
 msgid "A note taking application"
@@ -702,9 +697,9 @@ msgstr "Программа для ведения заметок"
 
 #: ../src/gnote.cpp:430
 msgid "Gnote options at launch"
-msgstr ""
+msgstr "Параметры Gnote при запуске"
 
-#: ../src/gnote.cpp:623
+#: ../src/gnote.cpp:626
 msgid "Version %1%"
 msgstr "Версия %1%"
 
@@ -902,7 +897,6 @@ msgstr ""
 "content>"
 
 #: ../src/notemanager.cpp:256
-#, fuzzy
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -917,10 +911,10 @@ msgid ""
 "Also, if you type the name of another note in your current note, it will "
 "automatically be linked for you.</note-content>"
 msgstr ""
-"<note-content>Использование ссылок в Tomboy\n"
+"<note-content>Использование ссылок в Gnote\n"
 "\n"
-"В Tomboy можно связывать заметки между собой, выделяя текст в одной заметке "
-"и нажимая кнопку <bold>Связать</bold> на панели инструментов. После этого "
+"В Gnote можно связывать заметки между собой, выделяя текст в одной заметке и "
+"нажимая кнопку <bold>Связать</bold> на панели инструментов. После этого "
 "возникает новая заметка, а выделенный текст в текущей заметке "
 "подчёркивается.\n"
 "\n"
@@ -1027,9 +1021,8 @@ msgid "Cannot create note"
 msgstr "Не удалось создать заметку"
 
 #: ../src/notewindow.cpp:624
-#, fuzzy
 msgid "_Next"
-msgstr "_Текст"
+msgstr "Сл_едующий"
 
 #: ../src/notewindow.cpp:625
 msgid "_Previous"
@@ -1175,7 +1168,7 @@ msgstr " (новая)"
 msgid "_About Gnote"
 msgstr "_О программе"
 
-#: ../src/utils.cpp:128
+#: ../src/utils.cpp:129
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -1183,67 +1176,67 @@ msgstr ""
 "Руководство по Gnote не найдено. Убедитесь, что установка была выполнена "
 "успешно."
 
-#: ../src/utils.cpp:136
+#: ../src/utils.cpp:137
 msgid "Help not found"
 msgstr "Справка не найдена"
 
-#: ../src/utils.cpp:176
+#: ../src/utils.cpp:177
 msgid "Cannot open location"
 msgstr "Не удалось открыть местоположение"
 
-#: ../src/utils.cpp:190
+#: ../src/utils.cpp:191
 msgid "Today, %1%"
 msgstr "Сегодня, %1%"
 
-#: ../src/utils.cpp:191
+#: ../src/utils.cpp:192
 msgid "Today"
 msgstr "Сегодня"
 
-#: ../src/utils.cpp:196
+#: ../src/utils.cpp:197
 msgid "Yesterday, %1%"
 msgstr "Вчера, %1%"
 
-#: ../src/utils.cpp:197
+#: ../src/utils.cpp:198
 msgid "Yesterday"
 msgstr "Вчера"
 
-#: ../src/utils.cpp:204
+#: ../src/utils.cpp:205
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% день назад, %2%"
 msgstr[1] "%1% дня назад, %2%"
 msgstr[2] "%1% дней назад, %2%"
 
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% день назад"
 msgstr[1] "%1% дня назад"
 msgstr[2] "%1%  дней назад"
 
-#: ../src/utils.cpp:215
+#: ../src/utils.cpp:216
 msgid "Tomorrow, %1%"
 msgstr "Завтра, %1%"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:217
 msgid "Tomorrow"
 msgstr "Завтра"
 
-#: ../src/utils.cpp:223
+#: ../src/utils.cpp:224
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "Через %1% день, %2%"
 msgstr[1] "Через %1% дня, %2%"
 msgstr[2] "Через %1% дней, %2%"
 
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:228
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "Через %1% день"
 msgstr[1] "Через %1% дня"
 msgstr[2] "Через %1% дней"
 
-#: ../src/utils.cpp:238
+#: ../src/utils.cpp:239
 msgid "No Date"
 msgstr "Без даты"
 
@@ -1369,15 +1362,15 @@ msgstr "Новая заметка «%1%»"
 msgid "No notebook"
 msgstr "Нет блокнотов"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:81
+#: ../src/notebooks/notebooknoteaddin.cpp:82
 msgid "Place this note into a notebook"
 msgstr "Поместить эту заметку в блокнот"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:168
+#: ../src/notebooks/notebooknoteaddin.cpp:169
 msgid "Notebook"
 msgstr "Блокнот"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:193
+#: ../src/notebooks/notebooknoteaddin.cpp:194
 msgid "_New notebook..."
 msgstr "_Новый блокнот..."
 
@@ -1450,9 +1443,10 @@ msgid "Host name invalid"
 msgstr "Некорректное имя узла"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:270
-#, fuzzy
 msgid "You must specify a valid Bugzilla host name to use with this icon."
-msgstr "Вы должны указать имя узла Bugzilla для использования с этим значком."
+msgstr ""
+"Вы должны указать имя действующего узла Bugzilla для использования с этим "
+"значком."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:289
 msgid "Error saving icon"
