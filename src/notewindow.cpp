@@ -721,10 +721,11 @@ namespace gnote {
       Match & match(*iter);
       
       Glib::RefPtr<NoteBuffer> buffer = match.buffer;
-      Gtk::TextIter cursor = buffer->get_iter_at_mark(buffer->get_insert());
+      Gtk::TextIter selection_start, selection_end;
+      buffer->get_selection_bounds(selection_start, selection_end);
       Gtk::TextIter end = buffer->get_iter_at_mark(match.start_mark);
 
-      if (end.get_offset() < cursor.get_offset()) {
+      if (end.get_offset() < selection_start.get_offset()) {
         jump_to_match(match);
         return;
       }
@@ -744,10 +745,11 @@ namespace gnote {
       Match & match(*iter);
 
       Glib::RefPtr<NoteBuffer> buffer = match.buffer;
-      Gtk::TextIter cursor = buffer->get_iter_at_mark(buffer->get_insert());
+      Gtk::TextIter selection_start, selection_end;
+      buffer->get_selection_bounds(selection_start, selection_end);
       Gtk::TextIter start = buffer->get_iter_at_mark(match.start_mark);
 
-      if (start.get_offset() >= cursor.get_offset()) {
+      if (start.get_offset() >= selection_end.get_offset()) {
         jump_to_match(match);
         return;
       }
