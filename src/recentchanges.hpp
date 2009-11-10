@@ -99,7 +99,6 @@ private:
   bool on_treeview_button_released(GdkEventButton *);  
   void popup_context_menu_at_location(Gtk::Menu *, int, int);
   void position_context_menu(int & x, int & y, bool & push_in);
-  void get_widget_screen_pos(Gtk::Widget &, int &, int &);
   Note::List get_selected_notes();
   Note::Ptr get_note(const Gtk::TreePath & p);
   void on_open_note();
