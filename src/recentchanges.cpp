@@ -902,66 +902,43 @@ namespace gnote {
   // the context menu with the keyboard.
   void NoteRecentChanges::position_context_menu(int & x, int & y, bool & push_in)
   {
-    Gtk::TreeIter iter;
-    Gtk::TreePath dest_path;
-    Glib::RefPtr<Gtk::TreeSelection> selection;
-
     // Set default "return" values
     push_in = false; // not used
     x = 0;
     y = 0;
 
-    selection = m_tree->get_selection();
-    iter = selection->get_selected();
-    if (!iter)
+    Gtk::Widget * const focus_widget = this->get_focus();
+    if (!focus_widget)
+      return;
+    focus_widget->get_window()->get_origin(x, y);
+
+    Gtk::TreeView * const tree = dynamic_cast<Gtk::TreeView*>(
+                                   focus_widget);
+    if (!tree)
+      return;
+    const Glib::RefPtr<Gdk::Window> tree_area
+                                      = tree->get_bin_window();
+    if (!tree_area)
+      return;
+    tree_area->get_origin(x, y);
+
+    const Glib::RefPtr<Gtk::TreeSelection> selection
+                                             = tree->get_selection();
+    const std::list<Gtk::TreePath> selected_rows
+                                     = selection->get_selected_rows();
+    if (selected_rows.empty())
       return;
 
-    dest_path = m_store_sort->get_path (iter);
-
-    int pos_x = 0;
-    int pos_y = 0;
-
-    get_widget_screen_pos (*m_tree, pos_x, pos_y);
+    const Gtk::TreePath & dest_path = selected_rows.front();
+    const std::list<Gtk::TreeViewColumn *> columns
+                                             = tree->get_columns();
     Gdk::Rectangle cell_rect;
-    m_tree->get_cell_area (dest_path, **m_tree->get_columns().begin(), cell_rect);
+    tree->get_cell_area (dest_path, *columns.front(), cell_rect);
 
-    // Add 100 to x so it's not be at the far left
-    x = pos_x + cell_rect.get_x() + 100;
-    y = pos_y + cell_rect.get_y();
+    x += cell_rect.get_x();
+    y += cell_rect.get_y();
   }
 
-
-  // Walk the widget hiearchy to figure out
-  // where to position the context menu.
-  void NoteRecentChanges::get_widget_screen_pos(Gtk::Widget & widget, int & x, int & y)
-  {
-    int widget_x;
-    int widget_y;
-    Gtk::Window *win;
-
-    win = dynamic_cast<Gtk::Window*>(&widget);
-    if (win) {
-      win->get_position (widget_x, widget_y);
-    } 
-    else {
-      get_widget_screen_pos(*widget.get_parent(), x, y);
-
-      // Special case the TreeView because it adds
-      // too much since it's in a scrolled window.
-      if (&widget == m_tree) {
-        widget_x = 2;
-        widget_y = 2;
-      } 
-      else {
-        Gdk::Rectangle widget_rect = widget.get_allocation();
-        widget_x = widget_rect.get_x();
-        widget_y = widget_rect.get_y();
-      }
-    }
-
-    x += widget_x;
-    y += widget_y;
-  }
 
   Note::List NoteRecentChanges::get_selected_notes()
   {
