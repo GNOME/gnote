@@ -1105,8 +1105,9 @@ namespace gnote {
         const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
 
         if (NoteTagTable::tag_is_activatable (tag)) {
-          retval = tag->event (Glib::RefPtr<Gtk::TextView>(get_window()->editor()), 
-                               (GdkEvent*)ev, iter);
+          Glib::RefPtr<Gtk::TextView> editor(get_window()->editor());
+          editor->reference();
+          retval = tag->event (editor, (GdkEvent*)ev, iter);
           if (retval) {
             break;
           }
