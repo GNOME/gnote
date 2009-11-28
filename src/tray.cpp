@@ -47,7 +47,7 @@ namespace gnote {
 
   std::string tray_util_get_tooltip_text()
   {
-    std::string tip_text = _("Gnote");
+    std::string tip_text = _("Take notes");
     
     if (Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS)) {
       std::string shortcut =
