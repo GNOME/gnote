@@ -33,6 +33,7 @@
 #include "debug.hpp"
 #include "utils.hpp"
 
+#include "bugzillanoteaddin.hpp"
 #include "bugzillapreferences.hpp"
 
 
@@ -44,7 +45,7 @@ namespace bugzilla {
   void BugzillaPreferences::_init_static()
   {
     if(!s_static_inited) {
-      s_image_dir = Glib::get_home_dir() + "/.gnote/BugzillaIcons";
+      s_image_dir = BugzillaNoteAddin::images_dir();
       s_static_inited = true;
     }
   }

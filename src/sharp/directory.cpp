@@ -67,6 +67,44 @@ namespace sharp {
     return (exists(p) && is_directory(p));
   }
 
+  void directory_copy(const Glib::RefPtr<Gio::File> & src,
+                      const Glib::RefPtr<Gio::File> & dest)
+                      throw(Gio::Error)
+  {
+    if (false == dest->query_exists()
+        || Gio::FILE_TYPE_DIRECTORY
+             != dest->query_file_type(Gio::FILE_QUERY_INFO_NONE))
+        return;
+
+    if (Gio::FILE_TYPE_REGULAR
+          == src->query_file_type(Gio::FILE_QUERY_INFO_NONE)) {
+      src->copy(dest->get_child(src->get_basename()),
+                Gio::FILE_COPY_OVERWRITE);
+    }
+    else if (Gio::FILE_TYPE_DIRECTORY
+                 == src->query_file_type(Gio::FILE_QUERY_INFO_NONE)) {
+      const Glib::RefPtr<Gio::File> dest_dir
+        = dest->get_child(src->get_basename());
+
+      if (false == dest_dir->query_exists())
+        dest_dir->make_directory_with_parents();
+
+      Glib::Dir src_dir(src->get_path());
+
+      for (Glib::Dir::iterator it = src_dir.begin();
+           src_dir.end() != it; it++) {
+        const Glib::RefPtr<Gio::File> file = src->get_child(*it);
+
+        if (Gio::FILE_TYPE_DIRECTORY == file->query_file_type(
+                                          Gio::FILE_QUERY_INFO_NONE))
+          directory_copy(file, dest_dir);
+        else
+          file->copy(dest_dir->get_child(file->get_basename()),
+                                         Gio::FILE_COPY_OVERWRITE);
+      }
+    }
+  }
+
   bool directory_create(const std::string & dir)
   {
     try {

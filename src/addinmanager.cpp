@@ -30,6 +30,7 @@
 #include "addinmanager.hpp"
 #include "addinpreferencefactory.hpp"
 #include "debug.hpp"
+#include "gnote.hpp"
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
 #include "notebooks/notebooknoteaddin.hpp"
@@ -72,6 +73,22 @@ namespace gnote {
     : m_gnote_conf_dir(conf_dir)
   {
     m_addins_prefs_dir = Glib::build_filename(conf_dir, "addins");
+
+    const bool is_first_run
+                 = !sharp::directory_exists(m_addins_prefs_dir);
+    const std::string old_addins_dir
+                        = Glib::build_filename(Gnote::old_note_dir(),
+                                               "addins");
+    const bool migration_needed
+                 = is_first_run
+                   && sharp::directory_exists(old_addins_dir);
+
+    if (is_first_run)
+      sharp::directory_create(m_addins_prefs_dir);
+
+    if (migration_needed)
+      migrate_addins(old_addins_dir);
+
     initialize_sharp_addins();
   }
 
@@ -201,5 +218,20 @@ namespace gnote {
       return iter->second->create_preference_widget();
     }
     return NULL;
+  }
+
+  void AddinManager::migrate_addins(const std::string & old_addins_dir)
+  {
+    const Glib::RefPtr<Gio::File> src
+      = Gio::File::create_for_path(old_addins_dir);
+    const Glib::RefPtr<Gio::File> dest
+      = Gio::File::create_for_path(m_gnote_conf_dir);
+
+    try {
+      sharp::directory_copy(src, dest);
+    }
+    catch (const Gio::Error & e) {
+      DBG_OUT("AddinManager: migrating addins: %s", e.what().c_str());
+    }
   }
 }

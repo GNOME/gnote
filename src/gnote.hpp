@@ -70,6 +70,11 @@ public:
   void open_search_all();
   void open_note_sync_window();
 
+  static std::string cache_dir();
+  static std::string conf_dir();
+  static std::string data_dir();
+  static std::string old_note_dir();
+
   static bool tray_icon_showing()
     {
       return s_tray_icon_showing;
@@ -84,7 +89,6 @@ public:
     }
 private:
   void start_note_created(const Note::Ptr & start_note);
-  static std::string conf_dir();
   std::string get_note_path(const std::string & override_path);
   void register_remote_control(NoteManager & manager);
 

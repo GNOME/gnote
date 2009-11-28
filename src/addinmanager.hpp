@@ -67,6 +67,7 @@ public:
 private:
 
   void initialize_sharp_addins();
+  void migrate_addins(const std::string & old_addins_dir);
     
   const std::string m_gnote_conf_dir;
   std::string m_addins_prefs_dir;

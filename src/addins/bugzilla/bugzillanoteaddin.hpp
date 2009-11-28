@@ -43,8 +43,6 @@ public:
   virtual const char * version() const;
 };
 
-DECLARE_MODULE(BugzillaModule);
-
 class BugzillaNoteAddin
   : public gnote::NoteAddin
 {
@@ -53,10 +51,14 @@ public:
     {
       return new BugzillaNoteAddin;
     }
+  static std::string images_dir();
   virtual void initialize();
   virtual void shutdown();
   virtual void on_note_opened();
 private:
+  BugzillaNoteAddin();
+  void migrate_images(const std::string & old_images_dir);
+
   static const char * TAG_NAME;
 
   void on_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData &,

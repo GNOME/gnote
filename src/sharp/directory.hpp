@@ -31,6 +31,8 @@
 #include <list>
 #include <string>
 
+#include <glibmm.h>
+#include <giomm.h>
 
 namespace sharp {
 
@@ -47,6 +49,15 @@ namespace sharp {
                            std::list<std::string>  & files);
 
   bool directory_exists(const std::string & dir);
+
+  /**
+   * @param src The source directory (or file)
+   * @param dest The destination directory (should exist)
+   */
+  void directory_copy(const Glib::RefPtr<Gio::File> & src,
+                      const Glib::RefPtr<Gio::File> & dest)
+                      throw(Gio::Error);
+
   bool directory_create(const std::string & dir);
 
 }

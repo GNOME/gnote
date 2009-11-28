@@ -22,6 +22,7 @@
 #include "debug.hpp"
 #include "utils.hpp"
 #include "bugzillalink.hpp"
+#include "bugzillanoteaddin.hpp"
 
 namespace bugzilla {
 
@@ -78,7 +79,7 @@ namespace bugzilla {
 
     std::string host = uri.get_host();
 
-    std::string imageDir = Glib::get_home_dir() + "/.gnote/BugzillaIcons/";
+    std::string imageDir = BugzillaNoteAddin::images_dir();
     std::string imagePath = imageDir + host + ".png";
     Glib::RefPtr<Gdk::Pixbuf> image;
     try {

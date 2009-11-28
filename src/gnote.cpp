@@ -169,13 +169,7 @@ namespace gnote {
       note_path = override_path;
     }
     if(note_path.empty()) {
-      note_path = Gnote::conf_dir();
-    }
-    std::string home_dir;
-    const char *s = getenv("HOME");
-    if(s) {
-      home_dir = s;
-      note_path = sharp::string_replace_first(note_path, "~", home_dir);
+      note_path = Gnote::data_dir();
     }
 
     return note_path;
@@ -388,15 +382,32 @@ namespace gnote {
   }
 
 
+  std::string Gnote::cache_dir()
+  {
+    return Glib::get_user_cache_dir() + "/gnote";
+  }
+
+
   std::string Gnote::conf_dir()
   {
-    std::string dir;
-    const char * home = getenv("HOME");
-    if(!home) {
-      home = ".";
-    }
-    dir = std::string(home) + "/.gnote";
-    return dir;
+    return Glib::get_user_config_dir() + "/gnote";
+  }
+
+
+  std::string Gnote::data_dir()
+  {
+    return Glib::get_user_data_dir() + "/gnote";
+  }
+
+
+  std::string Gnote::old_note_dir()
+  {
+    std::string home_dir = Glib::get_home_dir();
+
+    if (home_dir.empty())
+      home_dir = Glib::get_current_dir();
+
+    return home_dir + "/.gnote";
   }
 
 

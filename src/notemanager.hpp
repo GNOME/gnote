@@ -108,6 +108,7 @@ namespace gnote {
     void create_start_notes();
     void on_note_save(const Note::Ptr & note);
     void load_notes();
+    void migrate_notes(const std::string & old_note_dir);
     void post_load();
     bool first_run() const;
     void create_notes_dir() const;

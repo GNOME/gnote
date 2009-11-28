@@ -26,7 +26,10 @@
 #include <glibmm/i18n.h>
 
 
+#include "sharp/directory.hpp"
+
 #include "debug.hpp"
+#include "gnote.hpp"
 #include "notebuffer.hpp"
 #include "notewindow.hpp"
 
@@ -36,6 +39,8 @@
 #include "insertbugaction.hpp"
 
 namespace bugzilla {
+
+  DECLARE_MODULE(BugzillaModule);
 
   BugzillaModule::BugzillaModule()
   {
@@ -70,6 +75,31 @@ namespace bugzilla {
 
   const char * BugzillaNoteAddin::TAG_NAME = "link:bugzilla";
 
+  BugzillaNoteAddin::BugzillaNoteAddin()
+    : gnote::NoteAddin()
+  {
+    const bool is_first_run
+                 = !sharp::directory_exists(images_dir());
+    const std::string old_images_dir
+      = Glib::build_filename(gnote::Gnote::old_note_dir(),
+                             "BugzillaIcons");
+    const bool migration_needed
+                 = is_first_run
+                   && sharp::directory_exists(old_images_dir);
+
+    if (is_first_run)
+      sharp::directory_create(images_dir());
+
+    if (migration_needed)
+      migrate_images(old_images_dir);
+  }
+
+  std::string BugzillaNoteAddin::images_dir()
+  {
+    return Glib::build_filename(gnote::Gnote::conf_dir(),
+                                "BugzillaIcons");
+  }
+
   void BugzillaNoteAddin::initialize()
   {
     if(!get_note()->get_tag_table()->is_dynamic_tag_registered(TAG_NAME)) {
@@ -78,6 +108,22 @@ namespace bugzilla {
     }
   }
 
+  void BugzillaNoteAddin::migrate_images(
+                            const std::string & old_images_dir)
+  {
+    const Glib::RefPtr<Gio::File> src
+      = Gio::File::create_for_path(old_images_dir);
+    const Glib::RefPtr<Gio::File> dest
+      = Gio::File::create_for_path(gnote::Gnote::conf_dir());
+
+    try {
+      sharp::directory_copy(src, dest);
+    }
+    catch (const Gio::Error & e) {
+      DBG_OUT("BugzillaNoteAddin: migrating images: %s",
+              e.what().c_str());
+    }
+  }
 
 
   void BugzillaNoteAddin::shutdown()

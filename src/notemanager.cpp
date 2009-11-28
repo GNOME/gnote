@@ -115,6 +115,16 @@ namespace gnote {
     bool is_first_run = first_run ();
     create_notes_dir ();
 
+    const std::string old_note_dir = Gnote::old_note_dir();
+    const bool migration_needed
+                 = is_first_run
+                   && sharp::directory_exists(old_note_dir);
+
+    if (migration_needed) {
+      migrate_notes(old_note_dir);
+      is_first_run = false;
+    }
+
     m_trie_controller = create_trie_controller ();
     m_addin_mgr = create_addin_manager ();
 
@@ -176,7 +186,7 @@ namespace gnote {
 
   AddinManager *NoteManager::create_addin_manager() const
   {
-    return new AddinManager(m_notes_dir);
+    return new AddinManager(Gnote::conf_dir());
   }
 
   // For overriding in test methods.
@@ -204,6 +214,9 @@ namespace gnote {
     if (!directory_exists(m_notes_dir)) {
       // First run. Create storage directory.
       create_directory(m_notes_dir);
+    }
+    if (!directory_exists(m_backup_dir)) {
+      create_directory(m_backup_dir);
     }
   }
   
@@ -356,6 +369,43 @@ namespace gnote {
         note->set_is_open_on_startup(false);
         note->queue_save (Note::NO_CHANGE);
       }
+    }
+  }
+
+  void NoteManager::migrate_notes(const std::string & old_note_dir)
+  {
+    std::list<std::string> files;
+    sharp::directory_get_files_with_ext(old_note_dir, ".note", files);
+
+    for (std::list<std::string>::const_iterator iter = files.begin();
+         files.end() != iter; ++iter) {
+      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(
+                                                       *iter);
+      const std::string dest_path
+          = Glib::build_filename(m_notes_dir,
+                                 Glib::path_get_basename(*iter));
+      const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(
+                                                        dest_path);
+      src->copy(dest, Gio::FILE_COPY_NONE);
+    }
+
+    files.clear();
+    const std::string old_backup_dir = Glib::build_filename(
+                                         old_note_dir,
+                                         "Backup");
+    sharp::directory_get_files_with_ext(old_backup_dir,
+                                        ".note", files);
+
+    for (std::list<std::string>::const_iterator iter = files.begin();
+         files.end() != iter; ++iter) {
+      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(
+                                            *iter);
+      const std::string dest_path
+          = Glib::build_filename(m_backup_dir,
+                                 Glib::path_get_basename(*iter));
+      const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(
+                                                        dest_path);
+      src->copy(dest, Gio::FILE_COPY_NONE);
     }
   }
 
