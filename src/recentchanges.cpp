@@ -795,6 +795,19 @@ namespace gnote {
       break;
     case GDK_BUTTON_PRESS:
       if (ev->button == 3) {
+        const Glib::RefPtr<Gtk::TreeSelection> selection
+          = m_tree->get_selection();
+
+        if(selection->get_selected_rows().size() <= 1) {
+          Gtk::TreeViewColumn * col = 0; // unused
+          Gtk::TreePath p;
+          int cell_x, cell_y;            // unused
+          if (m_tree->get_path_at_pos(ev->x, ev->y, p, col,
+                                      cell_x, cell_y)) {
+            selection->unselect_all();
+            selection->select(p);
+          }
+        }
         Gtk::Menu *menu = dynamic_cast<Gtk::Menu*>(
           ActionManager::obj().get_widget("/MainWindowContextMenu"));
         popup_context_menu_at_location (menu, ev->x, ev->y);
@@ -1411,20 +1424,26 @@ namespace gnote {
   {
     if(ev->button == 3) {
       // third mouse button (right-click)
+      Gtk::TreeViewColumn * col = 0; // unused
+      Gtk::TreePath p;
+      int cell_x, cell_y;            // unused
+      const Glib::RefPtr<Gtk::TreeSelection> selection
+        = m_notebooksTree->get_selection();
+
+      if (m_notebooksTree->get_path_at_pos(ev->x, ev->y, p, col,
+                                           cell_x, cell_y)) {
+        selection->select(p);
+      }
+
       notebooks::Notebook::Ptr notebook = get_selected_notebook ();
       if (!notebook)
         return true; // Don't pop open a submenu
           
-      Gtk::TreePath p;
 
       bool rowClicked = true;
-      Gtk::TreeViewColumn * col = NULL; // unused
-      int cell_x, cell_y;               // unused
       if (m_notebooksTree->get_path_at_pos (ev->x, ev->y, p, col, cell_x, cell_y) == false) {
         rowClicked = false;
       }
-
-      Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooksTree->get_selection();
       if (selection->count_selected_rows () == 0) {
         rowClicked = false;
       }
