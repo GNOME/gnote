@@ -465,7 +465,8 @@ namespace gnote {
     else if (sharp::string_starts_with(url, "~/")) {
       const char * home = getenv("HOME");
       if(home) {
-        url = std::string("file://") + home + sharp::string_substring(url, 2);
+        url = std::string("file://") + home + "/" +
+          sharp::string_substring(url, 2);
       }
     }
     else if (sharp::string_match_iregex(url, 
