@@ -227,6 +227,7 @@ src/addins/bugzilla/Makefile
 src/addins/exporttohtml/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
+src/addins/noteoftheday/Makefile
 src/addins/printnotes/Makefile
 src/addins/stickynoteimport/Makefile
 src/addins/tomboyimport/Makefile

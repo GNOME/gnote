@@ -66,6 +66,20 @@ namespace sharp {
     return *this;
   }
 
+  int DateTime::day() const
+  {
+    struct tm result;
+    localtime_r(&m_date.tv_sec, &result);
+    return result.tm_mday;
+  }
+
+  int DateTime::month() const
+  {
+    struct tm result;
+    localtime_r(&m_date.tv_sec, &result);
+    return result.tm_mon + 1;
+  }
+
   int DateTime::year() const
   {
     struct tm result;

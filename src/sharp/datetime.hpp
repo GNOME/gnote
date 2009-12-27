@@ -46,6 +46,8 @@ public:
   DateTime & add_days(int days);
   DateTime & add_hours(int hours);
 
+  int day() const;
+  int month() const;
   int year() const;
   int day_of_year() const;
 

@@ -6,6 +6,7 @@ SUBDIRS = backlinks \
 	exporttohtml \
 	fixedwidth \
 	inserttimestamp \
+	noteoftheday \
 	printnotes \
 	stickynoteimport \
 	tomboyimport \

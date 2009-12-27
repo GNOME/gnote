@@ -119,6 +119,7 @@ libgnote_a_SOURCES = \
 	addinmanager.hpp addinmanager.cpp \
 	addinpreferencefactory.hpp addinpreferencefactory.cpp \
 	applicationaddin.hpp \
+	applicationaddin.cpp \
 	contrast.hpp contrast.cpp \
 	debug.hpp debug.cpp \
 	importaddin.hpp importaddin.cpp \

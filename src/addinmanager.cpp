@@ -162,6 +162,12 @@ namespace gnote {
         ImportAddin * factory = dynamic_cast<ImportAddin*>((*f)());
         m_import_addins.insert(std::make_pair((*iter)->id(), factory));
       }
+
+      f = dmod->query_interface(ApplicationAddin::IFACE_NAME);
+      if(f) {
+        ApplicationAddin * factory = dynamic_cast<ApplicationAddin*>((*f)());
+        m_app_addins.insert(std::make_pair((*iter)->id(), factory));
+      }
     }
   }
 
