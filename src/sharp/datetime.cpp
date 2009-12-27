@@ -70,7 +70,7 @@ namespace sharp {
   {
     struct tm result;
     localtime_r(&m_date.tv_sec, &result);
-    return result.tm_year;
+    return result.tm_year + 1900;
   }
 
   int DateTime::day_of_year() const
