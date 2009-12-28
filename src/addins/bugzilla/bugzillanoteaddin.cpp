@@ -144,18 +144,8 @@ namespace bugzilla {
                                                 guint, guint time)
   {
     DBG_OUT("Bugzilla.OnDragDataReceived");
-    Gdk::ListHandle_AtomString targets = context->get_targets();
-
-    for(Gdk::ListHandle_AtomString::const_iterator iter = targets.begin();
-        iter != targets.end(); ++iter) {
-      
-      std::string atom(*iter);
-      DBG_OUT("atom is %s", atom.c_str());
-      if((atom == "text/uri-list") || (atom == "_NETSCAPE_URL")) {
-        drop_uri_list(context, x, y, selection_data, time);
-        return;
-      }
-    }
+    drop_uri_list(context, x, y, selection_data, time);
+    return;
   }
 
 
