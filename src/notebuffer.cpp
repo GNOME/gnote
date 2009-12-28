@@ -1161,6 +1161,14 @@ namespace gnote {
 
     xml.write_start_element ("", "note-content", "");
     xml.write_attribute_string ("", "version", "", "0.1");
+    xml.write_attribute_string("xmlns",
+                               "link",
+                               "",
+                               "http://beatniksoftware.com/tomboy/link");
+    xml.write_attribute_string("xmlns",
+                               "size",
+                               "",
+                               "http://beatniksoftware.com/tomboy/size");
 
     // Insert any active tags at start into tag_stack...
     Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> > tag_list = start.get_tags();
