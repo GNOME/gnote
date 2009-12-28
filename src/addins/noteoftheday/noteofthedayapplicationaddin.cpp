@@ -76,7 +76,7 @@ NoteOfTheDayApplicationAddin::~NoteOfTheDayApplicationAddin()
 {
 }
 
-bool NoteOfTheDayApplicationAddin::check_new_day() const
+void NoteOfTheDayApplicationAddin::check_new_day() const
 {
   Glib::Date date;
   date.set_time_current();
@@ -87,20 +87,26 @@ bool NoteOfTheDayApplicationAddin::check_new_day() const
     // Create a new NotD if the day has changed
     NoteOfTheDay::create(*m_manager, date);
   }
-
-  return true;
 }
 
 void NoteOfTheDayApplicationAddin::initialize()
 {
   if (!m_timeout) {
     m_timeout
-        = Glib::signal_timeout().connect_seconds(
-              sigc::mem_fun(*this,
-                            &NoteOfTheDayApplicationAddin::check_new_day),
-              60,
-              Glib::PRIORITY_DEFAULT);
+      = Glib::signal_timeout().connect_seconds(
+          sigc::bind_return(
+            sigc::mem_fun(
+              *this,
+              &NoteOfTheDayApplicationAddin::check_new_day),
+            true),
+          60,
+          Glib::PRIORITY_DEFAULT);
   }
+
+  Glib::signal_idle().connect_once(
+    sigc::mem_fun(*this,
+                  &NoteOfTheDayApplicationAddin::check_new_day),
+    Glib::PRIORITY_DEFAULT);
 
   m_initialized = true;
   m_manager = &gnote::Gnote::obj().default_note_manager();

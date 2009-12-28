@@ -65,7 +65,7 @@ public:
 private:
 
   NoteOfTheDayApplicationAddin();
-  bool check_new_day() const;
+  void check_new_day() const;
 
   bool m_initialized;
   gnote::NoteManager * m_manager;
