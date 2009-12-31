@@ -2,6 +2,8 @@
 *.o
 *.lo
 *.la
+*.tar.bz2
+*.tar.gz
 .deps
 .libs
 config.sub
@@ -10,6 +12,7 @@ config.log
 config.status
 config.h*
 configure
+gnote-*
 install-sh
 intltool-*
 libtool
@@ -44,6 +47,8 @@ data/gnote.desktop.in
 data/gnote.schemas
 data/GNOME_GnoteApplet.server
 data/GNOME_GnoteApplet.server.in
+data/org.gnome.Gnote.service
+src/dbus/remotecontrol*glue.hpp
 src/dttest
 src/filestest
 src/gnote
