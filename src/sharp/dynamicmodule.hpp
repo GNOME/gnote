@@ -66,6 +66,9 @@ public:
     {
       return m_enabled;
     }
+
+  void enabled(bool enable=true);
+
   /** Query an "interface" 
    * may return NULL
    */

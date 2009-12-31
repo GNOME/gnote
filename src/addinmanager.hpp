@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -46,12 +47,17 @@ public:
   AddinManager(const std::string & conf_dir);
   ~AddinManager();
 
+  void add_note_addin_info(const sharp::DynamicModule * dmod);
+  void erase_note_addin_info(const sharp::DynamicModule * dmod);
+
   std::string & get_prefs_dir()
     {
       return m_addins_prefs_dir;
     }
 
   void load_addins_for_note(const Note::Ptr &);
+  ApplicationAddin * get_application_addin(const std::string & id)
+                                           const;
   void get_application_addins(std::list<ApplicationAddin*> &) const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
   void get_import_addins(std::list<ImportAddin*> &) const;
@@ -76,7 +82,8 @@ private:
   /// Key = TypeExtensionNode.Id
   typedef std::map<std::string, ApplicationAddin*> AppAddinMap;
   AppAddinMap                               m_app_addins;
-  typedef std::map<Note::Ptr, std::list<NoteAddin*> > NoteAddinMap;
+  typedef std::map<std::string, NoteAddin *> IdAddinMap;
+  typedef std::map<Note::Ptr, IdAddinMap> NoteAddinMap;
   NoteAddinMap                              m_note_addins;
   /// Key = TypeExtensionNode.Id
   /// the iface factory is not owned by the manager.

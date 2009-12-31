@@ -56,6 +56,8 @@ private:
   Gtk::Label *make_label (const std::string & label_text/*, params object[] args*/);
   Gtk::CheckButton *make_check_button (const std::string & label_text);
 
+  void enable_addin(bool enable);
+
   void open_template_button_clicked();
   void on_font_button_clicked();
   void update_font_button(const std::string & font_desc);
@@ -64,7 +66,7 @@ private:
   void on_reset_sync_addin_button();
   void on_save_sync_addin_button();
 
-  const sharp::DynamicModule * get_selected_addin();
+  sharp::DynamicModule * get_selected_addin();
   void on_addin_tree_selection_changed();
   void update_addin_buttons();
   void load_addins();

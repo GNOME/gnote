@@ -48,6 +48,11 @@ namespace sharp {
   }
 
   
+  void DynamicModule::enabled(bool enable)
+  {
+    m_enabled = enable;
+  }
+
   IfaceFactoryBase * DynamicModule::query_interface(const char * intf) const
   {
     std::map<std::string, IfaceFactoryBase *>::const_iterator iter;

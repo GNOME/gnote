@@ -49,9 +49,9 @@ namespace sharp {
     set_column_types(m_columns);
   }
 
-  const sharp::DynamicModule * AddinsTreeModel::get_module(const Gtk::TreeIter & iter)
+  sharp::DynamicModule * AddinsTreeModel::get_module(const Gtk::TreeIter & iter)
   {
-    const sharp::DynamicModule * module = NULL;
+    sharp::DynamicModule * module = NULL;
     if(iter) {
       iter->get_value(2, module);
     }

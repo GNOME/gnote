@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -97,14 +98,90 @@ namespace gnote {
     sharp::map_delete_all_second(m_app_addins);
     for(NoteAddinMap::const_iterator iter = m_note_addins.begin();
         iter != m_note_addins.end(); ++iter) {
-      std::for_each(iter->second.begin(), iter->second.end(), 
-                    boost::bind(&boost::checked_delete<NoteAddin>, _1));
+      sharp::map_delete_all_second(iter->second);
     }
     sharp::map_delete_all_second(m_addin_prefs);
     sharp::map_delete_all_second(m_import_addins);
     for(std::list<sharp::IfaceFactoryBase*>::iterator iter = m_builtin_ifaces.begin();
         iter != m_builtin_ifaces.end(); ++iter) {
       delete *iter;
+    }
+  }
+
+  void AddinManager::add_note_addin_info(
+                       const sharp::DynamicModule * dmod)
+  {
+    const char * const id = dmod->id();
+
+    {
+      const IdInfoMap::const_iterator iter
+                                        = m_note_addin_infos.find(id);
+      if (m_note_addin_infos.end() != iter) {
+        ERR_OUT("NoteAddin info %s already present", id);
+        return;
+      }
+    }
+
+    sharp::IfaceFactoryBase * const f = dmod->query_interface(
+                                          NoteAddin::IFACE_NAME);
+    if(!f) {
+      ERR_OUT("does not implement %s", NoteAddin::IFACE_NAME);
+      return;
+    }
+
+    m_note_addin_infos.insert(std::make_pair(std::string(id), f));
+
+    {
+      for(NoteAddinMap::iterator iter = m_note_addins.begin();
+          iter != m_note_addins.end(); ++iter) {
+        IdAddinMap & id_addin_map = iter->second;
+        IdAddinMap::const_iterator it = id_addin_map.find(id);
+        if (id_addin_map.end() != it) {
+          ERR_OUT("NoteAddin %s already present", id);
+          continue;
+        }
+
+        const Note::Ptr & note = iter->first;
+        NoteAddin * const addin = dynamic_cast<NoteAddin *>((*f)());
+        if (addin) {
+         addin->initialize(note);
+         id_addin_map.insert(std::make_pair(id, addin));
+        }
+      }
+    }
+  }
+
+  void AddinManager::erase_note_addin_info(
+                       const sharp::DynamicModule * dmod)
+  {
+    const char * const id = dmod->id();
+
+    {
+      const IdInfoMap::iterator iter = m_note_addin_infos.find(id);
+      if (m_note_addin_infos.end() == iter) {
+        ERR_OUT("NoteAddin info %s absent", id);
+        return;
+      }
+
+      m_note_addin_infos.erase(iter);
+    }
+
+    {
+      for(NoteAddinMap::iterator iter = m_note_addins.begin();
+          iter != m_note_addins.end(); ++iter) {
+        IdAddinMap & id_addin_map = iter->second;
+        IdAddinMap::iterator it = id_addin_map.find(id);
+        if (id_addin_map.end() == it) {
+          ERR_OUT("NoteAddin %s absent", id);
+          continue;
+        }
+
+        NoteAddin * const addin = it->second;
+        if (addin) {
+          addin->dispose(true);
+          id_addin_map.erase(it);
+        }
+      }
     }
   }
 
@@ -148,7 +225,7 @@ namespace gnote {
 
       sharp::IfaceFactoryBase * f = dmod->query_interface(NoteAddin::IFACE_NAME);
       if(f) {
-        m_note_addin_infos.insert(std::make_pair(typeid(*f).name(), f));
+        m_note_addin_infos.insert(std::make_pair(dmod->id(), f));
       }
 
       f = dmod->query_interface(AddinPreferenceFactoryBase::IFACE_NAME);
@@ -177,10 +254,10 @@ namespace gnote {
       ERR_OUT("trying to load addins when they are already loaded");
       return;
     }
-    std::list<NoteAddin *> loaded_addins;
+    IdAddinMap loaded_addins;
     m_note_addins[note] = loaded_addins;
 
-    std::list<NoteAddin *> & loaded(m_note_addins[note]); // avoid copying the whole list
+    IdAddinMap & loaded(m_note_addins[note]); // avoid copying the whole map
     for(IdInfoMap::const_iterator iter = m_note_addin_infos.begin();
         iter != m_note_addin_infos.end(); ++iter) {
 
@@ -189,7 +266,7 @@ namespace gnote {
       NoteAddin * addin = dynamic_cast<NoteAddin *>(iface);
       if(addin) {
         addin->initialize(note);
-        loaded.push_back(addin);
+        loaded.insert(std::make_pair(addin_info.first, addin));
       }
       else {
         DBG_OUT("wrong type for the interface: %s", typeid(*iface).name());
@@ -198,6 +275,23 @@ namespace gnote {
     }
   }
 
+  ApplicationAddin * AddinManager::get_application_addin(
+                                     const std::string & id) const
+  {
+    const IdImportAddinMap::const_iterator import_iter
+      = m_import_addins.find(id);
+
+    if (m_import_addins.end() != import_iter)
+      return import_iter->second;
+
+    const AppAddinMap::const_iterator app_iter
+      = m_app_addins.find(id);
+
+    if (m_app_addins.end() != app_iter)
+      return app_iter->second;
+
+    return 0;
+  }
 
   void AddinManager::get_application_addins(std::list<ApplicationAddin*> & l) const
   {

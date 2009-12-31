@@ -42,7 +42,7 @@ public:
   typedef Glib::RefPtr<AddinsTreeModel> Ptr;
   static Ptr create(Gtk::TreeView * treeview);
 
-  const sharp::DynamicModule * get_module(const Gtk::TreeIter &);
+  sharp::DynamicModule * get_module(const Gtk::TreeIter &);
 
   Gtk::TreeIter append(const sharp::DynamicModule *);
   class AddinsColumns

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -158,6 +159,36 @@ namespace gnote {
 
   }
 
+  void PreferencesDialog::enable_addin(bool enable)
+  {
+    sharp::DynamicModule * const module = get_selected_addin();
+    if (!module)
+      return;
+
+    if (module->has_interface(NoteAddin::IFACE_NAME)) {
+      if (enable)
+        m_addin_manager.add_note_addin_info(module);
+      else
+        m_addin_manager.erase_note_addin_info(module);
+    }
+    else {
+      const char * const id = module->id();
+
+      ApplicationAddin * const addin
+        = m_addin_manager.get_application_addin(id);
+      if (!addin) {
+        ERR_OUT("ApplicationAddin %s absent", id);
+        return;
+      }
+
+      if (enable)
+        addin->initialize();
+      else
+        addin->shutdown();
+    }
+
+    module->enabled(enable);
+  }
   
   
   // Page 1
@@ -604,12 +635,12 @@ namespace gnote {
   }
 
 
-  const sharp::DynamicModule * PreferencesDialog::get_selected_addin()
+  sharp::DynamicModule * PreferencesDialog::get_selected_addin()
   {
     /// TODO really set
     Glib::RefPtr<Gtk::TreeSelection> select = m_addin_tree->get_selection();
     Gtk::TreeIter iter = select->get_selected();
-    const sharp::DynamicModule * module = NULL;
+    sharp::DynamicModule * module = NULL;
     if(iter) {
       module = m_addin_tree_model->get_module(iter);
     }
@@ -659,12 +690,14 @@ namespace gnote {
 
   void PreferencesDialog::on_enable_addin_button()
   {
-//    enable_addin(true);
+    enable_addin(true);
+    update_addin_buttons();
   }
 
   void PreferencesDialog::on_disable_addin_button()
   {
-//    enable_addin(false);
+    enable_addin(false);
+    update_addin_buttons();
   }
 
 
