@@ -154,19 +154,19 @@ namespace gnote {
       f = dmod->query_interface(AddinPreferenceFactoryBase::IFACE_NAME);
       if(f) {
         AddinPreferenceFactoryBase * factory = dynamic_cast<AddinPreferenceFactoryBase*>((*f)());
-        m_addin_prefs.insert(std::make_pair((*iter)->id(), factory));
+        m_addin_prefs.insert(std::make_pair(dmod->id(), factory));
       }
 
       f = dmod->query_interface(ImportAddin::IFACE_NAME);
       if(f) {
-        ImportAddin * factory = dynamic_cast<ImportAddin*>((*f)());
-        m_import_addins.insert(std::make_pair((*iter)->id(), factory));
+        ImportAddin * addin = dynamic_cast<ImportAddin*>((*f)());
+        m_import_addins.insert(std::make_pair(dmod->id(), addin));
       }
 
       f = dmod->query_interface(ApplicationAddin::IFACE_NAME);
       if(f) {
-        ApplicationAddin * factory = dynamic_cast<ApplicationAddin*>((*f)());
-        m_app_addins.insert(std::make_pair((*iter)->id(), factory));
+        ApplicationAddin * addin = dynamic_cast<ApplicationAddin*>((*f)());
+        m_app_addins.insert(std::make_pair(dmod->id(), addin));
       }
     }
   }
