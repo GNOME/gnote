@@ -324,6 +324,7 @@ namespace gnote {
   void Gnote::on_show_about_action()
   {
     std::list<Glib::ustring> authors;
+    authors.push_back("Debarshi Ray <debarshir@src.gnome.org>");
     authors.push_back("Hubert Figuiere <hub@figuiere.net>");
     authors.push_back(_("and Tomboy original authors."));
     
@@ -342,7 +343,8 @@ namespace gnote {
     about.set_name("Gnote");
     about.set_version(VERSION);
     about.set_logo(utils::get_icon("gnote", 48));
-    about.set_copyright(_("Copyright \xc2\xa9 2009 Hubert Figuiere\n"
+    about.set_copyright(_("Copyright \xc2\xa9 2009 Debarshi Ray\n"
+                          "Copyright \xc2\xa9 2009 Hubert Figuiere\n"
                           "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
     about.set_comments(_("A simple and easy to use desktop "
                          "note-taking application."));
