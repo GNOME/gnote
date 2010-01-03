@@ -151,14 +151,14 @@ std::string NoteOfTheDay::get_template_content(
                             const std::string & title)
 {
   return Glib::ustring::compose(
-    _("<note-content xmlns:size=\"http://beatniksoftware.com/tomboy/size\">"
-      "<note-title>%1</note-title>\n\n\n\n"
-      "<size:huge>%2</size:huge>\n\n\n"
-      "<size:huge>%3</size:huge>\n\n\n"
-      "</note-content>"),
-      title,
-      _("Tasks"),
-      _("Appointments"));
+    "<note-content xmlns:size=\"http://beatniksoftware.com/tomboy/size\">"
+    "<note-title>%1</note-title>\n\n\n\n"
+    "<size:huge>%2</size:huge>\n\n\n"
+    "<size:huge>%3</size:huge>\n\n\n"
+    "</note-content>",
+    title,
+    _("Tasks"),
+    _("Appointments"));
 }
 
 std::string NoteOfTheDay::get_title(const Glib::Date & date)
