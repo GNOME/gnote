@@ -458,17 +458,17 @@ namespace gnote {
 
         const std::string & i(*iter);
 
-        if(sharp::string_starts_with(i, "#")) {
+        if(Glib::str_has_prefix(i, "#")) {
           continue;
         }
 
         std::string s = i;
-        if(sharp::string_ends_with(i, "\r")) {
+        if(Glib::str_has_suffix(i, "\r")) {
           s.erase(s.end() - 1, s.end());
         }
 
         // Handle evo's broken file urls
-        if(sharp::string_starts_with(s, "file:////")) {
+        if(Glib::str_has_prefix(s, "file:////")) {
           s = sharp::string_replace_first(s, "file:////", "file:///");
         }
         DBG_OUT("uri = %s", s.c_str());

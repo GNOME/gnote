@@ -455,14 +455,14 @@ namespace gnote {
     // Simple url massaging.  Add to 'http://' to the front
     // of www.foo.com, 'mailto:' to alex@foo.com, 'file://'
     // to /home/alex/foo.
-    if (sharp::string_starts_with(url, "www.")) {
+    if (Glib::str_has_prefix(url, "www.")) {
       url = "http://" + url;
     }
-    else if (sharp::string_starts_with(url, "/") &&
+    else if (Glib::str_has_prefix(url, "/") &&
              sharp::string_last_index_of(url, "/") > 1) {
       url = "file://" + url;
     }
-    else if (sharp::string_starts_with(url, "~/")) {
+    else if (Glib::str_has_prefix(url, "~/")) {
       const char * home = getenv("HOME");
       if(home) {
         url = std::string("file://") + home + "/" +

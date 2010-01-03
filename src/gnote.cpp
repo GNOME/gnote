@@ -48,7 +48,6 @@
 #include "recentchanges.hpp"
 #include "utils.hpp"
 #include "xkeybinder.hpp"
-#include "sharp/string.hpp"
 #include "sharp/streamreader.hpp"
 #include "sharp/files.hpp"
 
@@ -487,7 +486,7 @@ namespace gnote {
     }
 
     if(m_open_note && *m_open_note) {
-      if (sharp::string_starts_with(m_open_note, "note://gnote/")) {
+      if (Glib::str_has_prefix(m_open_note, "note://gnote/")) {
         m_open_note_uri = m_open_note;
       }
       else if (sharp::file_exists(m_open_note)) {

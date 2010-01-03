@@ -23,7 +23,7 @@
  */
 
 
-
+#include <glibmm.h>
 
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
@@ -38,7 +38,7 @@ namespace sharp {
 
   bool Uri::is_file() const
   {
-    return string_starts_with(m_uri, FILE_URI_SCHEME);
+    return Glib::str_has_prefix(m_uri, FILE_URI_SCHEME);
   }
 
 
@@ -54,7 +54,7 @@ namespace sharp {
 
   bool Uri::_is_scheme(const std::string & scheme) const
   {
-    return string_starts_with(m_uri, scheme);
+    return Glib::str_has_prefix(m_uri, scheme);
   }
 
   std::string Uri::get_host() const

@@ -20,6 +20,7 @@
 
 #include <string.h>
 
+#include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/treemodelsort.h>
 
@@ -265,9 +266,9 @@ namespace gnote {
     bool NotebookManager::is_notebook_tag(const Tag::Ptr & tag)
     {
       std::string fullTagName = tag->name();
-      return sharp::string_starts_with(fullTagName, 
-                                       std::string(Tag::SYSTEM_TAG_PREFIX) 
-                                       + Notebook::NOTEBOOK_TAG_PREFIX);
+      return Glib::str_has_prefix(fullTagName,
+                                  std::string(Tag::SYSTEM_TAG_PREFIX)
+                                  + Notebook::NOTEBOOK_TAG_PREFIX);
     }
 
 
@@ -440,9 +441,9 @@ namespace gnote {
         const Tag::Ptr & tag(*tag_iter);
         // Skip over tags that aren't notebooks
         if (!tag->is_system()
-            || !sharp::string_starts_with(tag->name(),
-                                          std::string(Tag::SYSTEM_TAG_PREFIX)
-                                          + Notebook::NOTEBOOK_TAG_PREFIX)) {
+            || !Glib::str_has_prefix(tag->name(),
+                                     std::string(Tag::SYSTEM_TAG_PREFIX)
+                                     + Notebook::NOTEBOOK_TAG_PREFIX)) {
           continue;
         }
         Notebook::Ptr notebook(new Notebook (tag));

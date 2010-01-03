@@ -21,6 +21,8 @@
 
 #include <map>
 
+#include <glibmm.h>
+
 #include "sharp/map.hpp"
 #include "sharp/string.hpp"
 #include "note.hpp"
@@ -72,7 +74,7 @@ namespace gnote {
       if (!trimmed_name.empty()) {
         m_name = trimmed_name;
         m_normalized_name = sharp::string_to_lower(trimmed_name);
-        if(sharp::string_starts_with(m_normalized_name, SYSTEM_TAG_PREFIX)) {
+        if(Glib::str_has_prefix(m_normalized_name, SYSTEM_TAG_PREFIX)) {
           m_issystem = true;
         }
         std::vector<std::string> splits;

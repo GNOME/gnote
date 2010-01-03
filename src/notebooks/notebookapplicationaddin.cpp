@@ -21,6 +21,7 @@
 
 #include <boost/bind.hpp>
 
+#include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/treeiter.h>
@@ -303,7 +304,7 @@ namespace gnote {
       
       std::string megaPrefix(Tag::SYSTEM_TAG_PREFIX);
       megaPrefix += Notebook::NOTEBOOK_TAG_PREFIX;
-      if (!tag->is_system() || !sharp::string_starts_with(tag->name(), megaPrefix)) {
+      if (!tag->is_system() || !Glib::str_has_prefix(tag->name(), megaPrefix)) {
         return;
       }
       
@@ -324,7 +325,7 @@ namespace gnote {
       std::string megaPrefix(Tag::SYSTEM_TAG_PREFIX);
       megaPrefix += Notebook::NOTEBOOK_TAG_PREFIX;
 
-      if (!sharp::string_starts_with(normalizedTagName, megaPrefix)) {
+      if (!Glib::str_has_prefix(normalizedTagName, megaPrefix)) {
         return;
       }
       
