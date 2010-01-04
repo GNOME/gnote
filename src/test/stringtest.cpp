@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,6 +21,7 @@
 #include <iostream>
 
 #include <boost/test/minimal.hpp>
+#include <glibmm.h>
 
 #include "sharp/string.hpp"
 
@@ -82,9 +84,9 @@ int test_main(int /*argc*/, char ** /*argv*/)
   BOOST_CHECK(string_trim(test2) == "foo");
   BOOST_CHECK(string_trim(test3, "*+") == " foo ");
 
-  BOOST_CHECK(string_starts_with(test1, "foo"));
+  BOOST_CHECK(Glib::str_has_prefix(test1, "foo"));
 
-  BOOST_CHECK(string_ends_with(test1, "baz"));
+  BOOST_CHECK(Glib::str_has_suffix(test1, "baz"));
 
   BOOST_CHECK(string_contains(test1, "ba"));
   BOOST_CHECK(!string_contains(test1, "CD"));
