@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -329,6 +330,9 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_motion_notify), false);
     m_tree->signal_button_release_event().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_button_released));
+    m_tree->signal_key_press_event().connect(
+      sigc::mem_fun(*this,
+                    &NoteRecentChanges::on_treeview_key_pressed));
     m_tree->signal_drag_data_get().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_drag_data_get));
 
@@ -896,6 +900,29 @@ namespace gnote {
     return false;
   }
                 
+  bool NoteRecentChanges::on_treeview_key_pressed(GdkEventKey * ev)
+  {
+    switch (ev->keyval) {
+    case GDK_Menu:
+    {
+      // Pop up the context menu if a note is selected
+      Note::List selected_notes = get_selected_notes();
+      if (!selected_notes.empty()) {
+        ActionManager & manager = ActionManager::obj();
+        Gtk::Menu * const menu
+          = dynamic_cast<Gtk::Menu*>(manager.get_widget(
+                                       "/MainWindowContextMenu"));
+        popup_context_menu_at_location(menu, 0, 0);
+      }
+      break;
+    }
+    default:
+      break;
+    }
+
+    return false; // Let Escape be handled by the window.
+  }
+
   void NoteRecentChanges::popup_context_menu_at_location(Gtk::Menu *menu, int x, int y)
   {
     menu->show_all ();
@@ -1054,18 +1081,6 @@ namespace gnote {
       // Allow Escape to close the window
       on_close_window ();
       break;
-    case GDK_Menu:
-    {
-      // Pop up the context menu if a note is selected
-      Note::List selected_notes = get_selected_notes ();
-      if (!selected_notes.empty()) {
-        Gtk::Menu *menu = dynamic_cast<Gtk::Menu*>(ActionManager::obj().get_widget (
-                                                     "/MainWindowContextMenu"));
-        popup_context_menu_at_location (menu, 0, 0);
-      }
-
-      break;
-    }
     default:
       break;
     }
@@ -1469,15 +1484,12 @@ namespace gnote {
   bool NoteRecentChanges::on_notebooks_key_pressed(GdkEventKey * ev)
   {
     switch (ev->keyval) {
-    case GDK_Escape:
-      // Allow Escape to close the window
-      on_close_window ();
-      break;
     case GDK_Menu:
+    {
       // Pop up the context menu if a notebook is selected
       notebooks::Notebook::Ptr notebook = get_selected_notebook ();
       if (!notebook || std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook))
-        return true; // Don't pop open a submenu
+        break; // Don't pop open a submenu
           
       Gtk::Menu *menu = dynamic_cast<Gtk::Menu *>(ActionManager::obj().get_widget (
                                                     "/NotebooksTreeContextMenu"));
@@ -1485,7 +1497,11 @@ namespace gnote {
 
       break;
     }
-    return false;
+    default:
+      break;
+    }
+
+    return false; // Let Escape be handled by the window.
   }
     
   void NoteRecentChanges::on_note_added_to_notebook (const Note & , 

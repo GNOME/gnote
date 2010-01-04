@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -97,6 +98,7 @@ private:
   bool on_treeview_button_pressed(GdkEventButton *);
   bool on_treeview_motion_notify(GdkEventMotion *);
   bool on_treeview_button_released(GdkEventButton *);  
+  bool on_treeview_key_pressed(GdkEventKey *);
   void popup_context_menu_at_location(Gtk::Menu *, int, int);
   void position_context_menu(int & x, int & y, bool & push_in);
   Note::List get_selected_notes();
