@@ -8,13 +8,14 @@
 # Pavel Šefránek <ps@pjoul.cz>, 2008, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2008, 2009.
 # Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009.
-# Marek Černocký <marek@manet.cz>, 2009.
+# Marek Černocký <marek@manet.cz>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-13 00:38+0100\n"
-"PO-Revision-Date: 2009-11-04 00:00+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gnote&component=general\n"
+"POT-Creation-Date: 2010-01-12 23:38+0000\n"
+"PO-Revision-Date: 2010-01-13 10:56+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -623,12 +624,12 @@ msgstr ""
 "Lucas Lommer <llommer@svn.gnome.org>"
 
 #: ../src/gnote.cpp:346
-#, fuzzy
 msgid ""
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 původní autoři Tomboy."
 
@@ -1154,7 +1155,7 @@ msgstr "Poznámky"
 
 #: ../src/tray.cpp:50
 msgid "Take notes"
-msgstr ""
+msgstr "Probrat poznámky"
 
 #: ../src/tray.cpp:161
 msgid " (new)"
@@ -1539,9 +1540,8 @@ msgid "Today: Template"
 msgstr "Dnes: Šablona"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:34
-#, fuzzy
 msgid "Today: "
-msgstr "Dnes"
+msgstr "Dnes:"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:160
 msgid "Tasks"
@@ -1554,21 +1554,22 @@ msgstr "Události"
 #. Format: "Today: Friday, July 01 2005"
 #: ../src/addins/noteoftheday/noteoftheday.cpp:167
 msgid "%A, %B %d %Y"
-msgstr ""
+msgstr "%A, %e. %B %Y"
 
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:43
 msgid "Note of the Day"
-msgstr ""
+msgstr "Poznámka dne"
 
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:47
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
+"Automaticky vytváří poznámku „Dnes“ pro snadné poznamenávání průběžných "
+"nápadů a myšlenek"
 
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:52
-#, fuzzy
 msgid "Debarshi Ray and the Tomboy Project"
-msgstr "Hubert Figuiere a projekt Tomboy"
+msgstr "Debarshi Ray a projekt Tomboy"
 
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:34
 msgid "_Open Today: Template"
@@ -1670,504 +1671,3 @@ msgstr "Přidává možnost podtržení textu."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière a projekt Tomboy"
 
-#~ msgid ""
-#~ "Indicates that the Sticky Note Importer plugin has not been run, so it "
-#~ "should run automatically the next time Gnote starts."
-#~ msgstr ""
-#~ "Značí, že import lepicích poznámek nebyl spuštěn, takže by měl být "
-#~ "spuštěn automaticky při dalším spuštění aplikace Gnote."
-
-#~ msgid "Gnote Notes"
-#~ msgstr "Poznámky Gnote"
-
-#~ msgid "_Fixed Width"
-#~ msgstr "_Pevná šířka"
-
-#~ msgid "Quit Tomboy"
-#~ msgstr "Ukončit Tomboy"
-
-#~ msgid "Tomboy Preferences"
-#~ msgstr "Nastavení Tomboy"
-
-#~ msgid "Tomboy Help"
-#~ msgstr "Nápověda pro Tomboy"
-
-#~ msgid "Access denied."
-#~ msgstr "Přístup odmítnut."
-
-#~ msgid "Folder does not exist."
-#~ msgstr "Složka neexistuje."
-
-#~ msgid "Cannot open email"
-#~ msgstr "Nelze otevřít e-mail"
-
-#~ msgid "_Folder Path:"
-#~ msgstr "_Umístění složky:"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Procházet..."
-
-#~ msgid "Select Synchronization Folder..."
-#~ msgstr "Vyberte synchronizační složku..."
-
-#~ msgid "Folder path field is empty."
-#~ msgstr "Nezadali jste umístění složky."
-
-#~ msgid ""
-#~ "Specified folder path does not exist, and Tomboy was unable to create it."
-#~ msgstr "Zadané umístění složky neexistuje a Tomboy ho nemohl vytvořit."
-
-#~ msgid "Local Folder"
-#~ msgstr "Místní složka"
-
-#~ msgid "Cannot contact '{0}'"
-#~ msgstr "Nelze kontaktovat „{0}“"
-
-#~ msgid "Error running gaim-remote: {0}"
-#~ msgstr "Nepodařilo se spustit gaim-remote: {0}"
-
-#~ msgid "dddd, MMMM d, h:mm tt"
-#~ msgstr "dddd d. MMMM, h:mm tt"
-
-#~ msgid "dddd, MMMM d yyyy"
-#~ msgstr "dddd d. MMMM yyyy"
-
-#~ msgid "dddd MM/dd/yyyy, hh:mm:ss tt"
-#~ msgstr "dddd, d. M. yyyy H.mm:ss"
-
-#~ msgid "Add a sketch"
-#~ msgstr "Kreslit"
-
-#~ msgid "Se_rver:"
-#~ msgstr "Se_rver:"
-
-#~ msgid "User_name:"
-#~ msgstr "Uživatelské jmé_no:"
-
-#~ msgid "_Folder Path (optional):"
-#~ msgstr "U_místění složky (volitelné):"
-
-#~ msgid ""
-#~ "SSH synchronization requires an existing SSH key for this server and "
-#~ "user, added to a running SSH daemon."
-#~ msgstr ""
-#~ "Synchronizace pomocí SSH vyžaduje existující klíče SSH tohoto serveru a "
-#~ "uživatele přidané do běžícího démona SSH."
-
-#~ msgid "Server or username field is empty."
-#~ msgstr "Není zadán server nebo uživatelské jméno."
-
-#~ msgid "SSH (sshfs FUSE)"
-#~ msgstr "SSH (sshfs FUSE)"
-
-#~ msgid ""
-#~ "Timeout connecting to server. Please ensure that your SSH key has been "
-#~ "added to a running SSH daemon."
-#~ msgstr ""
-#~ "Časový limit pro připojení k serveru vypršel. Ujistěte se, že démon SSH "
-#~ "běží a máte v něm přidán svůj klíč SSH."
-
-#~ msgid "Tasque"
-#~ msgstr "Tasque"
-
-#~ msgid "All"
-#~ msgstr "Všechny"
-
-#~ msgid "--- Tasque is not running ---"
-#~ msgstr "--- Aplikace Tasque neběží ---"
-
-#~ msgid "_URL:"
-#~ msgstr "_URL:"
-
-#~ msgid "_Password:"
-#~ msgstr "_Heslo:"
-
-#~ msgid "URL, username, or password field is empty."
-#~ msgstr "Položky URL, přihlašovací jméno nebo heslo nejsou vyplněny!"
-
-#~ msgid "WebDAV (wdfs FUSE)"
-#~ msgstr "WebDAV (pomocí wdfs)"
-
-#~ msgid ""
-#~ "There was an error connecting to the server.  This may be caused by using "
-#~ "an incorrect user name and/or password."
-#~ msgstr ""
-#~ "Při připojování k serveru došlo k chybě. To může být způsobeno špatně "
-#~ "zadaným uživatelským jménem a/nebo heslem."
-
-#~ msgid ""
-#~ "Saving configuration to the GNOME keyring failed with the following "
-#~ "message:"
-#~ msgstr "Nepodařilo se uložit nastavení do klíčenky GNOME:"
-
-#~ msgid "_Window"
-#~ msgstr "_Okno"
-
-#~ msgid "Really delete this {0} note?"
-#~ msgid_plural "Really delete these {0} notes?"
-#~ msgstr[0] "Opravdu odstranit tuto poznámku?"
-#~ msgstr[1] "Opravdu odstranit tyto {0} poznámky?"
-#~ msgstr[2] "Opravdu odstranit těchto {0} poznámek?"
-
-#~ msgid "New Note {0}"
-#~ msgstr "Nová poznámka {0}"
-
-#~ msgid "_Bold"
-#~ msgstr "_Tučné"
-
-#~ msgid "Synchronization"
-#~ msgstr "Synchronizace"
-
-#~ msgid "{0} Preferences"
-#~ msgstr "{0} Nastavení"
-
-#~ msgid "Other Synchronization Options"
-#~ msgstr "Další nastavení synchronizace"
-
-#~ msgid ""
-#~ "When a conflict is detected between a local note and a note on the "
-#~ "configured synchronization server:"
-#~ msgstr ""
-#~ "Když nastane konflikt mezi místní poznámkou a poznámkou na "
-#~ "synchronizačním serveru:"
-
-#~ msgid "Always ask me what to do."
-#~ msgstr "Vždy se mě zeptat, co dělat."
-
-#~ msgid "Rename my local note."
-#~ msgstr "Přejmenovat místní poznámku."
-
-#~ msgid "Replace my local note with the server's update."
-#~ msgstr "Zaměnit místní poznámku s poznámkou na serveru."
-
-#~ msgid "WARNING: Are you sure?"
-#~ msgstr "VAROVÁNÍ: Jste si jisti?"
-
-#~ msgid ""
-#~ "Clearing your synchronization settings is not recommended.  You may be "
-#~ "forced to synchronize all of your notes again when you save new settings."
-#~ msgstr ""
-#~ "Nedoporučuje se mazat nastavení synchronizace. Při příští synchronizaci "
-#~ "můžete být znovu vyzváni k synchronizaci všech svých poznámek."
-
-#~ msgid "Resetting Synchronization Settings"
-#~ msgstr "Obnovuje se nastavení synchronizace"
-
-#~ msgid ""
-#~ "You have disabled the configured synchronization service.  Your "
-#~ "synchronization settings will now be cleared.  You may be forced to "
-#~ "synchronize all of your notes again when you save new settings"
-#~ msgstr ""
-#~ "Zakázali jste synchronizační službu. Veškeré její nastavení bude nyní "
-#~ "smazáno. Může se stát, že při další synchronizaci budete muset "
-#~ "synchronizovat všechny své položky znovu."
-
-#~ msgid "Success! You're connected!"
-#~ msgstr "Úspěšné! Jste připojeni!"
-
-#~ msgid ""
-#~ "Tomboy is ready to synchronize your notes. Would you like to synchronize "
-#~ "them now?"
-#~ msgstr ""
-#~ "Aplikace Tomboy je připravena synchronizovat vaše poznámky. Chcete je "
-#~ "synchronizovat právě teď?"
-
-#~ msgid ""
-#~ "Sorry, but something went wrong.  Please check your information and try "
-#~ "again.  The ~/.tomboy.log might be useful too."
-#~ msgstr ""
-#~ "Vyskytla se neočekávaná situace. Zkontrolujte zadané informace. Můžete se "
-#~ "také zkusit podívat do souboru ~/.tomboy.log."
-
-#~ msgid "Error connecting :("
-#~ msgstr "Nepodařilo se připojit"
-
-#~ msgid "Add-in Dependencies:"
-#~ msgstr "Závislosti rozšíření:"
-
-#~ msgid "Copyright © 2004-2007 Alex Graveley"
-#~ msgstr "Copyright © 2004-2007 Alex Graveley"
-
-#~ msgid ""
-#~ "Tomboy: A simple, easy to use desktop note-taking application.\n"
-#~ "Copyright (C) 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Tomboy: Jednoduchá, snadno použitelná aplikace pro poznámky na pracovní "
-#~ "ploše.\n"
-#~ "Copyright © 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "Usage:\n"
-#~ "  --version\t\t\tPrint version information.\n"
-#~ "  --help\t\t\tPrint this usage message.\n"
-#~ "  --note-path [path]\t\tLoad/store note data in this directory.\n"
-#~ "  --search [text]\t\tOpen the search all notes window with the search "
-#~ "text.\n"
-#~ msgstr ""
-#~ "Použití:\n"
-#~ "  --version\t\t\tVypíše informace o verzi.\n"
-#~ "  --help\t\t\tVypíše tuto zprávu o použití.\n"
-#~ "  --note-path [cesta]\t\tNačte/uloží data poznámek v tomto adresáři.\n"
-#~ "  --search [text]\t\tOtevře okno Prohledat všechny poznámky s hledaným "
-#~ "textem.\n"
-
-#~ msgid ""
-#~ "  --new-note\t\t\tCreate and display a new note.\n"
-#~ "  --new-note [title]\t\tCreate and display a new note, with a title.\n"
-#~ "  --open-note [title/url]\tDisplay the existing note matching title.\n"
-#~ "  --start-here\t\t\tDisplay the 'Start Here' note.\n"
-#~ "  --highlight-search [text]\tSearch and highlight text in the opened "
-#~ "note.\n"
-#~ msgstr ""
-#~ "  --new-note\t\t\tVytvoří a zobrazí novou poznámku.\n"
-#~ "  --new-note [název]\t\tVytvoří a zobrazí novou poznámku s názvem.\n"
-#~ "  --open-note [název/url]\tZobrazí existující poznámku odpovídající "
-#~ "názvu.\n"
-#~ "  --start-here\t\t\tZobrazí poznámku „Začněte Zde“.\n"
-#~ "  --highlight-search [text]\tVyhledá a zvýrazní text v otevřené "
-#~ "poznámce.\n"
-
-#~ msgid "D-BUS remote control disabled.\n"
-#~ msgstr "Vzdálené ovládání přes D-BUS zakázáno.\n"
-
-#~ msgid "Version {0}"
-#~ msgstr "Verze {0}"
-
-#~ msgid ""
-#~ "Tomboy: unsupported option '{0}'\n"
-#~ "Try 'tomboy --help' for more information.\n"
-#~ "D-BUS remote control disabled."
-#~ msgstr ""
-#~ "Tomboy: nepodporovaný přepínač „{0}“\n"
-#~ "Více informací viz „tomboy --help“.\n"
-#~ "Vzdálené ovládání D-BUS je zakázáno."
-
-#~ msgid "_About Tomboy"
-#~ msgstr "O _aplikaci Tomboy"
-
-#~ msgid "Today, {0}"
-#~ msgstr "Dnes, {0}"
-
-#~ msgid "MMMM d, h:mm tt"
-#~ msgstr "d. MMMM, h:mm tt"
-
-#~ msgid "MMMM d"
-#~ msgstr "MMMM d"
-
-#~ msgid "MMMM d yyyy, h:mm tt"
-#~ msgstr "d. MMMM yyyy, h:mm tt"
-
-#~ msgid "MMMM d yyyy"
-#~ msgstr "MMMM d rrrr"
-
-#~ msgid ""
-#~ "This synchronization addin is not supported on your computer. Please make "
-#~ "sure you have FUSE and {0} correctly installed and configured"
-#~ msgstr ""
-#~ "Toto synchronizační rozšíření není na vašem počítači podporováno. "
-#~ "Ujistěte se, že máte nainstalovány a správně nastaveny FUSE a {0}."
-
-#~ msgid "Could not read testfile."
-#~ msgstr "Nepodařilo se přečíst testovací soubor."
-
-#~ msgid "Write test failed."
-#~ msgstr "Nepodařilo se vytvořit testovací soubor."
-
-#~ msgid "Timeout connecting to server."
-#~ msgstr "Časový limit pro připojení k serveru vypršel."
-
-#~ msgid "Error connecting to server."
-#~ msgstr "Nepodařilo se připojit k serveru."
-
-#~ msgid "FUSE could not be enabled."
-#~ msgstr "FUSE nemůže být povoleno."
-
-#~ msgid "An error ocurred while connecting to the specified server:"
-#~ msgstr "Během pokusu připojit se k serveru došlo k chybě:"
-
-#~ msgid "Details"
-#~ msgstr "Detaily"
-
-#~ msgid "Note Title"
-#~ msgstr "Název poznámky"
-
-#~ msgid "Status"
-#~ msgstr "Stav"
-
-#~ msgid "Acquiring sync lock..."
-#~ msgstr "Získává se synchronizační zámek..."
-
-#~ msgid "Committing changes..."
-#~ msgstr "Zapisují se změny..."
-
-#~ msgid "Synchronizing Notes"
-#~ msgstr "Synchronizace poznámek"
-
-#~ msgid "Synchronizing your notes..."
-#~ msgstr "Vaše poznámky se synchronizují..."
-
-#~ msgid "This may take a while, kick back and enjoy!"
-#~ msgstr "Tato operace může chvíli trvat, zkuste to později!"
-
-#~ msgid "Connecting to the server..."
-#~ msgstr "Připojuje se k serveru..."
-
-#~ msgid "Deleting notes off of the server..."
-#~ msgstr "Ze serveru se odstraňují poznámky..."
-
-#~ msgid "Downloading new/updated notes..."
-#~ msgstr "Stahují se nové/aktualizované poznámky..."
-
-#~ msgid "Server Locked"
-#~ msgstr "Server zamknut"
-
-#~ msgid "Server is locked"
-#~ msgstr "Server je zamknutý"
-
-#~ msgid ""
-#~ "One of your other computers is currently synchronizing.  Please wait 2 "
-#~ "minutes and try again."
-#~ msgstr ""
-#~ "Jeden z vašich počítačů se právě synchronizuje. Počkejte 2 minuty a poté "
-#~ "to zkuste znovu."
-
-#~ msgid "Preparing to download updates from server..."
-#~ msgstr "Připravuje se stažení změn ze serveru..."
-
-#~ msgid "Preparing to upload updates to server..."
-#~ msgstr "Připravuje se nahrání změn na server..."
-
-#~ msgid "Uploading notes to server..."
-#~ msgstr "Poznámky se nahrávají na server..."
-
-#~ msgid "Synchronization Failed"
-#~ msgstr "Synchronizace selhala"
-
-#~ msgid "Failed to synchronize"
-#~ msgstr "Nepodařilo se synchronizovat"
-
-#~ msgid "Could not synchronize notes.  Check the details below and try again."
-#~ msgstr ""
-#~ "Nelze synchronizovat poznámky. Zkontrolujte podrobnosti a zkuste to znovu."
-
-#~ msgid "Synchronization Complete"
-#~ msgstr "Synchronizace hotova"
-
-#~ msgid "Synchronization is complete"
-#~ msgstr "Synchronizace proběhla úspěšně"
-
-#~ msgid "{0} note updated."
-#~ msgid_plural "{0} notes updated."
-#~ msgstr[0] "{0} poznámka byla aktualizována."
-#~ msgstr[1] "{0} poznámky byly aktualizovány."
-#~ msgstr[2] "{0} poznámek bylo aktualizováno."
-
-#~ msgid "Your notes are now up to date."
-#~ msgstr "Vaše poznámky jsou zaktualizovány."
-
-#~ msgid "Synchronization Canceled"
-#~ msgstr "Synchronizace zastavena"
-
-#~ msgid "Synchronization was canceled"
-#~ msgstr "Synchronizace byla zastavena"
-
-#~ msgid "You canceled the synchronization.  You may close the window now."
-#~ msgstr "Zastavili jste synchronizaci. Nyní můžete okno zavřít."
-
-#~ msgid "Synchronization Not Configured"
-#~ msgstr "Synchronizace není nakonfigurována"
-
-#~ msgid "Synchronization is not configured"
-#~ msgstr "Synchronizace není nastavena"
-
-#~ msgid "Please configure synchronization in the preferences dialog."
-#~ msgstr "Nastavte synchronizaci v nastavení."
-
-#~ msgid "Synchronization Service Error"
-#~ msgstr "Chyba synchronizace"
-
-#~ msgid "Service error"
-#~ msgstr "Chyba služby"
-
-#~ msgid "Error connecting to the synchronization service.  Please try again."
-#~ msgstr ""
-#~ "Během pokusu připojit se k synchronizační službě došlo k chybě. Zkuste to "
-#~ "znovu."
-
-#~ msgid "Deleted locally"
-#~ msgstr "Smazáno z disku"
-
-#~ msgid "Deleted from server"
-#~ msgstr "Smazáno ze serveru"
-
-#~ msgid "Updated"
-#~ msgstr "Aktualizováno"
-
-#~ msgid "Added"
-#~ msgstr "Přidáno"
-
-#~ msgid "Uploaded changes to server"
-#~ msgstr "Změny byly nahrány na server"
-
-#~ msgid "Uploaded new note to server"
-#~ msgstr "Nová poznámka byla nahrána na server"
-
-#~ msgid "Note Conflict"
-#~ msgstr "Konflikt poznámky"
-
-#~ msgid " (old)"
-#~ msgstr " (stará)"
-
-#~ msgid "Rename local note:"
-#~ msgstr "Přejmenovat místní poznámku:"
-
-#~ msgid "Update links in referencing notes"
-#~ msgstr "Aktualizovat odkazy v souvisejících poznámkách"
-
-#~ msgid "Overwrite local note"
-#~ msgstr "Přepsat místní poznámku"
-
-#~ msgid "Always perform this action"
-#~ msgstr "Vždy provádět tuto akci"
-
-#~ msgid "Note conflict detected"
-#~ msgstr "Nalezen konflikt poznámek"
-
-#~ msgid ""
-#~ "The server version of \"{0}\" conflicts with your local note.  What do "
-#~ "you want to do with your local note?"
-#~ msgstr ""
-#~ "Poznámka na serveru „{0}“ koliduje s místní. Co chcete udělat s místní "
-#~ "poznámkou?"
-
-#~ msgid "_Tools"
-#~ msgstr "Ná_stroje"
-
-#~ msgid "Could not enable FUSE"
-#~ msgstr "Nelze povolit FUSE"
-
-#~ msgid ""
-#~ "The FUSE module could not be loaded. Please check that it is installed "
-#~ "properly and try again."
-#~ msgstr ""
-#~ "Modul FUSE nemohl být načten. Zkontrolujte, zda je správně nainstalován a "
-#~ "zkuste to znovu."
-
-#~ msgid "Enable FUSE?"
-#~ msgstr "Povolit FUSE?"
-
-#~ msgid ""
-#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
-#~ "\n"
-#~ "To avoid getting this prompt in the future, you should load FUSE at "
-#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-#~ "etc/modules."
-#~ msgstr ""
-#~ "Způsob synchronizace, který jste zvolili, vyžaduje, aby byl načten modul "
-#~ "FUSE.\n"
-#~ "\n"
-#~ "Abyste příště zamezili tomuto varování, bylo by vhodné spouštět FUSE při "
-#~ "startu systému. Přidejte řádek „modprobe fuse“ do souboru /etc/init.d/"
-#~ "boot.local nebo „fuse“ do /etc/modules."
