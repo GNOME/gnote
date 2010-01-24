@@ -9,9 +9,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-04 17:41+0800\n"
-"PO-Revision-Date: 2009-09-29 19:44+1000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gnote&component=general\n"
+"POT-Creation-Date: 2010-01-04 14:44+0000\n"
+"PO-Revision-Date: 2010-01-24 14:01+0800\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +25,6 @@ msgid "Accessories"
 msgstr "附件"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
-#: ../src/tray.cpp:50
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -517,7 +517,7 @@ msgstr "退出 Gnote"
 msgid "_Edit"
 msgstr "编辑(_E)"
 
-#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:86
+#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:87
 msgid "Gnote Preferences"
 msgstr "Gnote 首选项"
 
@@ -557,125 +557,131 @@ msgstr "同步便笺(_Y)"
 msgid "Start synchronizing notes"
 msgstr "开始同步便笺"
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:282
 msgid "Cannot create new note"
 msgstr "无法创建新便笺"
 
-#: ../src/gnote.cpp:334
+#: ../src/gnote.cpp:329
 msgid "and Tomboy original authors."
 msgstr "以及 Tomboy 原作者。"
 
-#: ../src/gnote.cpp:343
+#: ../src/gnote.cpp:338
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@gmail.com>, 2005-2008.\n"
 "Ray Wang <wanglei1123@gmail.com>, 2009.\n"
 "Aron Xu <aronmalache@163.com>, 2009."
 
-#: ../src/gnote.cpp:351
+#: ../src/gnote.cpp:346
+#| msgid ""
+#| "Copyright © 2009 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
+"Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"版权所有 © 2009-2010 Debarshi Ray\n"
 "版权所有 © 2009 Hubert Figuiere\n"
 "版权所有 © 2004-2009 Tomboy 原作者"
 
-#: ../src/gnote.cpp:353
+#: ../src/gnote.cpp:349
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
-#: ../src/gnote.cpp:364
+#: ../src/gnote.cpp:360
 msgid "Homepage"
 msgstr "主页"
 
-#: ../src/gnote.cpp:417
+#: ../src/gnote.cpp:430
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "将 Gnote 作为 GNOME 面板小程序运行。"
 
-#: ../src/gnote.cpp:418
+#: ../src/gnote.cpp:431
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: ../src/gnote.cpp:418
+#: ../src/gnote.cpp:431
 msgid "path"
 msgstr "路径"
 
-#: ../src/gnote.cpp:419
+#: ../src/gnote.cpp:432
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口"
 
-#: ../src/gnote.cpp:419 ../src/gnote.cpp:424 ../src/gnote.cpp:425
+#: ../src/gnote.cpp:432 ../src/gnote.cpp:437 ../src/gnote.cpp:438
 msgid "text"
 msgstr "文本"
 
-#: ../src/gnote.cpp:420
+#: ../src/gnote.cpp:433
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: ../src/gnote.cpp:422
+#: ../src/gnote.cpp:435
 msgid "Create and display a new note, with a optional title."
 msgstr "创建并显示一个带有可选标题的新便笺。"
 
-#: ../src/gnote.cpp:422
+#: ../src/gnote.cpp:435
 msgid "title"
 msgstr "标题"
 
-#: ../src/gnote.cpp:423
+#: ../src/gnote.cpp:436
 msgid "Display the existing note matching title."
 msgstr "显示匹配标题的现存便笺。"
 
-#: ../src/gnote.cpp:423
+#: ../src/gnote.cpp:436
 msgid "title/url"
 msgstr "标题/url"
 
-#: ../src/gnote.cpp:424
+#: ../src/gnote.cpp:437
 msgid "Display the 'Start Here' note."
 msgstr "显示“从这里开始”"
 
-#: ../src/gnote.cpp:425
+#: ../src/gnote.cpp:438
 msgid "Search and highlight text in the opened note."
 msgstr "在开启的便笺中搜索文本(高亮显示)"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:443
 msgid "A note taking application"
 msgstr "一个笔记程序"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:443
 msgid "Gnote options at launch"
 msgstr "Gnote 启动选项"
 
-#: ../src/gnote.cpp:626
+#: ../src/gnote.cpp:639
 msgid "Version %1%"
 msgstr "版本 %1%"
 
-#: ../src/preferencesdialog.cpp:104
+#: ../src/preferencesdialog.cpp:105
 msgid "Editing"
 msgstr "编辑"
 
-#: ../src/preferencesdialog.cpp:106
+#: ../src/preferencesdialog.cpp:107
 msgid "Hotkeys"
 msgstr "热键"
 
-#: ../src/preferencesdialog.cpp:111
+#: ../src/preferencesdialog.cpp:112
 msgid "Add-ins"
 msgstr "添加项"
 
-#: ../src/preferencesdialog.cpp:184
+#: ../src/preferencesdialog.cpp:215
 msgid "_Spell check while typing"
 msgstr "输入时检查拼写(_S)"
 
-#: ../src/preferencesdialog.cpp:190
+#: ../src/preferencesdialog.cpp:221
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
 msgstr "拼错的单词将以红色显示，而纠正拼写错误的建议将显示在右键菜单中。"
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:201
+#: ../src/preferencesdialog.cpp:232
 msgid "Highlight _WikiWords"
 msgstr "加亮 _WikiWords"
 
-#: ../src/preferencesdialog.cpp:207
+#: ../src/preferencesdialog.cpp:238
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -683,37 +689,37 @@ msgstr ""
 "启用此选项将加亮类似 <b>WikiWords</b> 的单词。单击此单词将以该名称创建便笺。"
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:214
+#: ../src/preferencesdialog.cpp:245
 msgid "Enable auto-_bulleted lists"
 msgstr "允许对列表自动编号(_B)"
 
 #. Custom font...
-#: ../src/preferencesdialog.cpp:222
+#: ../src/preferencesdialog.cpp:253
 msgid "Use custom _font"
 msgstr "使用自定义字体(_F)"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:107
+#: ../src/preferencesdialog.cpp:271 ../src/notemanager.cpp:107
 msgid "New Note Template"
 msgstr "新建便笺模板"
 
-#: ../src/preferencesdialog.cpp:243
+#: ../src/preferencesdialog.cpp:274
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr "创建新的便笺时使用新的便笺模板来设定应使用的文字。"
 
-#: ../src/preferencesdialog.cpp:251
+#: ../src/preferencesdialog.cpp:282
 msgid "Open New Note Template"
 msgstr "打开新的便笺模板"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:309
+#: ../src/preferencesdialog.cpp:340
 msgid "Listen for _Hotkeys"
 msgstr "监听热键(_H)"
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:347
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -723,77 +729,77 @@ msgstr ""
 "b>，<b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:336
+#: ../src/preferencesdialog.cpp:367
 msgid "Show notes _menu"
 msgstr "显示便笺菜单(_M)"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:352
+#: ../src/preferencesdialog.cpp:383
 msgid "Open \"_Start Here\""
 msgstr "打开“从这里开始”(_S)"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:367
+#: ../src/preferencesdialog.cpp:398
 msgid "Create _new note"
 msgstr "创建新便笺(_N)"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:382
+#: ../src/preferencesdialog.cpp:413
 msgid "Open \"Search _All Notes\""
 msgstr "打开“搜索全部便笺”(_A)"
 
-#: ../src/preferencesdialog.cpp:408
+#: ../src/preferencesdialog.cpp:439
 msgid "Ser_vice:"
 msgstr "服务(_V)："
 
-#: ../src/preferencesdialog.cpp:465
+#: ../src/preferencesdialog.cpp:496
 msgid "Not configurable"
 msgstr "不可配置"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:485
+#: ../src/preferencesdialog.cpp:516
 msgid "_Advanced..."
 msgstr "高级(_A)..."
 
-#: ../src/preferencesdialog.cpp:532
+#: ../src/preferencesdialog.cpp:563
 msgid "The following add-ins are installed"
 msgstr "已安装以下添加项"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:563
+#: ../src/preferencesdialog.cpp:594
 msgid "_Enable"
 msgstr "启用(_E)"
 
-#: ../src/preferencesdialog.cpp:569
+#: ../src/preferencesdialog.cpp:600
 msgid "_Disable"
 msgstr "禁用(_D)"
 
-#: ../src/preferencesdialog.cpp:698
+#: ../src/preferencesdialog.cpp:731
 msgid "Not Implemented"
 msgstr "尚未实现"
 
-#: ../src/preferencesdialog.cpp:712
+#: ../src/preferencesdialog.cpp:745
 msgid "%1% Preferences"
 msgstr "%1% 首选项"
 
-#: ../src/preferencesdialog.cpp:853
+#: ../src/preferencesdialog.cpp:886
 msgid "Choose Note Font"
 msgstr "选择便笺字体"
 
-#: ../src/preferencesdialog.cpp:948
+#: ../src/preferencesdialog.cpp:981
 msgid "Version:"
 msgstr "版本："
 
-#: ../src/preferencesdialog.cpp:953
+#: ../src/preferencesdialog.cpp:986
 msgid "Author:"
 msgstr "作者："
 
-#: ../src/preferencesdialog.cpp:959
+#: ../src/preferencesdialog.cpp:992
 msgid "Copyright:"
 msgstr "版权所有："
 
-#: ../src/notemanager.cpp:237
+#: ../src/notemanager.cpp:250
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -830,7 +836,7 @@ msgstr ""
 "笺。您是否已经注意到，我们每次输入<link:internal>在 Gnote 中使用链接</link:"
 "internal>的时候，都会自动加下划线？单击链接即可打开该便笺。</note-content>"
 
-#: ../src/notemanager.cpp:256
+#: ../src/notemanager.cpp:269
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -858,21 +864,21 @@ msgstr ""
 "</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:271 ../src/notemanager.cpp:323
+#: ../src/notemanager.cpp:284 ../src/notemanager.cpp:336
 msgid "Start Here"
 msgstr "从这里开始"
 
-#: ../src/notemanager.cpp:276
+#: ../src/notemanager.cpp:289
 msgid "Using Links in Gnote"
 msgstr "在 Gnote 中使用链接"
 
-#: ../src/notemanager.cpp:444
+#: ../src/notemanager.cpp:494
 msgid "New Note %1%"
 msgstr "新建便笺 %1%"
 
 #. Use a simple "Describe..." body and highlight
 #. it so it can be easily overwritten
-#: ../src/notemanager.cpp:544 ../src/notemanager.cpp:634
+#: ../src/notemanager.cpp:594 ../src/notemanager.cpp:684
 msgid "Describe your new note here."
 msgstr "在此描述您的新便笺。"
 
@@ -964,51 +970,51 @@ msgstr "上一个(_P)"
 msgid "_Find:"
 msgstr "查找(_F)："
 
-#: ../src/notewindow.cpp:1078
+#: ../src/notewindow.cpp:1080
 msgid "<b>_Bold</b>"
 msgstr "<b>粗体(_B)</b>"
 
-#: ../src/notewindow.cpp:1079
+#: ../src/notewindow.cpp:1081
 msgid "<i>_Italic</i>"
 msgstr "<i>斜体(_I)</i>"
 
-#: ../src/notewindow.cpp:1080
+#: ../src/notewindow.cpp:1082
 msgid "<s>_Strikeout</s>"
 msgstr "<s>删除线(_S)</s>"
 
-#: ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:1084
 msgid "_Highlight"
 msgstr "高亮(_H)"
 
-#: ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:1086
 msgid "_Normal"
 msgstr "普通(_N)"
 
-#: ../src/notewindow.cpp:1086
+#: ../src/notewindow.cpp:1088
 msgid "Hu_ge"
 msgstr "巨大(_G)"
 
-#: ../src/notewindow.cpp:1088
+#: ../src/notewindow.cpp:1090
 msgid "_Large"
 msgstr "大(_L)"
 
-#: ../src/notewindow.cpp:1090
+#: ../src/notewindow.cpp:1092
 msgid "S_mall"
 msgstr "小(_M)"
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1094
 msgid "Bullets"
 msgstr "项目符号"
 
-#: ../src/notewindow.cpp:1095
+#: ../src/notewindow.cpp:1097
 msgid "Increase Font Size"
 msgstr "增大字号"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1098
 msgid "Decrease Font Size"
 msgstr "减小字号"
 
-#: ../src/notewindow.cpp:1167
+#: ../src/notewindow.cpp:1169
 msgid "Font Size"
 msgstr "字体大小"
 
@@ -1035,53 +1041,57 @@ msgstr ""
 "保存您的便笺时发生了错误。请检查您是否有足够的磁盘空间，以及您在 ~/.gnote 是"
 "否有足够的权限。错误细节可在 ~/.gnote.log 中找到。"
 
-#: ../src/recentchanges.cpp:82
+#: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
 msgstr "搜索全部便笺"
 
-#: ../src/recentchanges.cpp:87
+#: ../src/recentchanges.cpp:88
 msgid "C_ase Sensitive"
 msgstr "区分大小写(_A)"
 
-#: ../src/recentchanges.cpp:105
+#: ../src/recentchanges.cpp:106
 msgid "_Search:"
 msgstr "搜索(_S)："
 
-#: ../src/recentchanges.cpp:269
-#: ../src/notebooks/notebookapplicationaddin.cpp:118
+#: ../src/recentchanges.cpp:270
+#: ../src/notebooks/notebookapplicationaddin.cpp:120
 msgid "Notebooks"
 msgstr "笔记本"
 
-#: ../src/recentchanges.cpp:341
+#: ../src/recentchanges.cpp:345
 msgid "Note"
 msgstr "便笺"
 
-#: ../src/recentchanges.cpp:362
+#: ../src/recentchanges.cpp:366
 msgid "Last Changed"
 msgstr "最近更改"
 
-#: ../src/recentchanges.cpp:506
+#: ../src/recentchanges.cpp:510
 msgid "Matches"
 msgstr "匹配项"
 
-#: ../src/recentchanges.cpp:560
+#: ../src/recentchanges.cpp:564
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% 个匹配项"
 
-#: ../src/recentchanges.cpp:574
+#: ../src/recentchanges.cpp:578
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "总计：%1% 个便笺"
 
-#: ../src/recentchanges.cpp:590
+#: ../src/recentchanges.cpp:594
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "匹配：%1% 个便笺"
 
-#: ../src/recentchanges.cpp:732
+#: ../src/recentchanges.cpp:736
 msgid "Notes"
 msgstr "便笺"
+
+#: ../src/tray.cpp:50
+msgid "Take notes"
+msgstr "记笔记"
 
 #: ../src/tray.cpp:161
 msgid " (new)"
@@ -1091,92 +1101,92 @@ msgstr " (新)"
 msgid "_About Gnote"
 msgstr "关于 Gnote(_A)"
 
-#: ../src/utils.cpp:129
+#: ../src/utils.cpp:130
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr "找不到“Gnote 便笺手册”。请检查您的安装是否已成功完成。"
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:138
 msgid "Help not found"
 msgstr "帮助未找到"
 
-#: ../src/utils.cpp:177
+#: ../src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "无法打开位置"
 
-#: ../src/utils.cpp:191
+#: ../src/utils.cpp:192
 msgid "Today, %1%"
 msgstr "今天，%1%"
 
-#: ../src/utils.cpp:192
+#: ../src/utils.cpp:193
 msgid "Today"
 msgstr "今天"
 
-#: ../src/utils.cpp:197
+#: ../src/utils.cpp:198
 msgid "Yesterday, %1%"
 msgstr "昨天，%1%"
 
-#: ../src/utils.cpp:198
+#: ../src/utils.cpp:199
 msgid "Yesterday"
 msgstr "昨天"
 
-#: ../src/utils.cpp:205
+#: ../src/utils.cpp:206
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% 天前，%2%"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:210
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% 天前"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "明天，%1%"
 
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:218
 msgid "Tomorrow"
 msgstr "明天"
 
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:225
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "%1% 天内，%2%"
 
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:229
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "%1% 天内"
 
-#: ../src/utils.cpp:239
+#: ../src/utils.cpp:240
 msgid "No Date"
 msgstr "没有日期"
 
-#: ../src/watchers.cpp:207
+#: ../src/watchers.cpp:208
 msgid "(Untitled %1%)"
 msgstr "(无标题 %1%)"
 
-#: ../src/watchers.cpp:242
+#: ../src/watchers.cpp:243
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr "已经存在标题为 <b>%1%</b> 的便笺。请在继续前为此便笺选择另外的名称。"
 
-#: ../src/watchers.cpp:256
+#: ../src/watchers.cpp:257
 msgid "Note title taken"
 msgstr "便笺标题已被使用"
 
-#: ../src/watchers.cpp:574
+#: ../src/watchers.cpp:576
 msgid "_Copy Link Address"
 msgstr "复制链接地址(_C)"
 
-#: ../src/watchers.cpp:580
+#: ../src/watchers.cpp:582
 msgid "_Open Link"
 msgstr "打开链接(_O)"
 
 #: ../src/notebooks/createnotebookdialog.cpp:38
-#: ../src/notebooks/notebookapplicationaddin.cpp:99
+#: ../src/notebooks/notebookapplicationaddin.cpp:101
 msgid "Create a new notebook"
 msgstr "创建新笔记本"
 
@@ -1215,49 +1225,49 @@ msgstr "全部便笺"
 msgid "Unfiled Notes"
 msgstr "未分类便笺"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:93
+#: ../src/notebooks/notebookapplicationaddin.cpp:95
 msgid "Note_books"
 msgstr "笔记本(_B)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:94
-#: ../src/notebooks/notebookapplicationaddin.cpp:119
+#: ../src/notebooks/notebookapplicationaddin.cpp:96
+#: ../src/notebooks/notebookapplicationaddin.cpp:121
 msgid "Create a new note in a notebook"
 msgstr "在笔记本中创建新便笺"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:98
-#: ../src/notebooks/notebookapplicationaddin.cpp:253
+#: ../src/notebooks/notebookapplicationaddin.cpp:100
+#: ../src/notebooks/notebookapplicationaddin.cpp:255
 msgid "New Note_book..."
 msgstr "新建笔记本(_B)..."
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:103
+#: ../src/notebooks/notebookapplicationaddin.cpp:105
 msgid "_New Note"
 msgstr "新建便笺(_N)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:104
+#: ../src/notebooks/notebookapplicationaddin.cpp:106
 msgid "Create a new note in this notebook"
 msgstr "在此笔记本中创建新便笺"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:108
+#: ../src/notebooks/notebookapplicationaddin.cpp:110
 msgid "_Open Template Note"
 msgstr "打开模板便笺(_O)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:109
+#: ../src/notebooks/notebookapplicationaddin.cpp:111
 msgid "Open this notebook's template note"
 msgstr "打开此笔记本的模板便笺"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:113
+#: ../src/notebooks/notebookapplicationaddin.cpp:115
 msgid "Delete Note_book"
 msgstr "删除此笔记本(_B)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:114
+#: ../src/notebooks/notebookapplicationaddin.cpp:116
 msgid "Delete the selected notebook"
 msgstr "删除选中笔记本"
 
-#: ../src/notebooks/notebookmanager.cpp:332
+#: ../src/notebooks/notebookmanager.cpp:334
 msgid "Really delete this notebook?"
 msgstr "真的要删除此笔记本？"
 
-#: ../src/notebooks/notebookmanager.cpp:333
+#: ../src/notebooks/notebookmanager.cpp:335
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1305,11 +1315,11 @@ msgstr "反向链接"
 msgid "(none)"
 msgstr "(无)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:51
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:56
 msgid "Bugzilla Links"
 msgstr "Bugzilla 链接"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:55
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -1318,14 +1328,14 @@ msgstr ""
 "允许您将一个 Bugzilla URL 直接从浏览器拖拽至 Gnote 便笺中。Bug 号码将被与一个"
 "小的 bug 图标一起被插入。"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:59
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere 和 Tomboy 项目"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:58
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:59
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -1333,44 +1343,44 @@ msgstr ""
 "您可以使用任何 Bugzilla 项目，只需将其链接拖曳到便笺中。如果你希望为特定主机"
 "使用特殊图标，请在此处添加。"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:75
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:76
 msgid "Host Name"
 msgstr "主机名"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:88
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:89
 msgid "Icon"
 msgstr "图标"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:222
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:223
 msgid "Select an icon..."
 msgstr "选择图标..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:237
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:238
 msgid "_Host name:"
 msgstr "主机名(_H)："
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:269
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
 msgid "Host name invalid"
 msgstr "主机名无效"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:271
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr "要使用此图标，您必须指定一个有效的 Bugzilla 主机名。"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:289
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
 msgid "Error saving icon"
 msgstr "保存图标时出错"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:291
 msgid "Could not save the icon file."
 msgstr "无法保存图标文件。"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:362
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
 msgid "Really remove this icon?"
 msgstr "真的要删除此图标吗？"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:364
 msgid "If you remove an icon it is permanently lost."
 msgstr "如果您删除了图标，其内容将永久丢失。"
 
@@ -1443,6 +1453,53 @@ msgstr "使用选中的格式(_S)"
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
 msgid "_Use Custom Format"
 msgstr "使用自定义字体(_U)"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:32
+msgid "Today: Template"
+msgstr "今天：模板"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:34
+msgid "Today: "
+msgstr "今天"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+msgid "Tasks"
+msgstr "任务"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:161
+msgid "Appointments"
+msgstr "约会"
+
+#. Format: "Today: Friday, July 01 2005"
+#: ../src/addins/noteoftheday/noteoftheday.cpp:167
+msgid "%A, %B %d %Y"
+msgstr "%A, %B %d %Y"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:43
+#, fuzzy
+msgid "Note of the Day"
+msgstr "日志"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:47
+#, fuzzy
+msgid ""
+"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
+msgstr "自动创建一个“今天”的笔记，以便容易接合每天的想法"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:52
+msgid "Debarshi Ray and the Tomboy Project"
+msgstr "Debarshi Ray 和 Tomboy 项目"
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:34
+msgid "_Open Today: Template"
+msgstr "打开今天：模板(_O)"
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+msgid ""
+"Change the <span weight=\"bold\">Today: Template</span> note to customize "
+"the text that new Today notes have."
+msgstr ""
+"修改<span weight=\"bold\">今天：模板</span>便笺以便自定义新的今天便笺文本。"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
 msgid "Printing Support"
@@ -1532,6 +1589,33 @@ msgstr "添加“文本下划线”功能。"
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière 和 Tomboy 项目"
 
+#~ msgid ""
+#~ "<note-content xmlns:size=\"http://beatniksoftware.com/tomboy/size\"><note-"
+#~ "title>%1</note-title>\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "<size:huge>%2</size:huge>\n"
+#~ "\n"
+#~ "\n"
+#~ "<size:huge>%3</size:huge>\n"
+#~ "\n"
+#~ "\n"
+#~ "</note-content>"
+#~ msgstr ""
+#~ "<note-content xmlns:size=\"http://beatniksoftware.com/tomboy/size\"><note-"
+#~ "title>%1</note-title>\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "<size:huge>%2</size:huge>\n"
+#~ "\n"
+#~ "\n"
+#~ "<size:huge>%3</size:huge>\n"
+#~ "\n"
+#~ "\n"
+#~ "</note-content>"
+
 #~ msgid "Copyright © 2009 Hubert Figuiere"
 #~ msgstr "版权所有 © 2009 Hubert Figuiere"
 
@@ -1596,27 +1680,8 @@ msgstr "Hubert Figuière 和 Tomboy 项目"
 #~ msgid "dddd, MMMM d, h:mm tt"
 #~ msgstr "M 月 dd 日 dddd h:mm tt"
 
-#~ msgid "Today: Template"
-#~ msgstr "今天：模板"
-
 #~ msgid "dddd, MMMM d yyyy"
 #~ msgstr "yyyy 年 M 月 d 日，dddd"
-
-#~ msgid "Tasks"
-#~ msgstr "任务"
-
-#~ msgid "Appointments"
-#~ msgstr "约会"
-
-#~ msgid ""
-#~ "Change the <span weight=\"bold\">Today: Template</span> note to customize "
-#~ "the text that new Today notes have."
-#~ msgstr ""
-#~ "修改<span weight=\"bold\">今天：模板</span>便笺以便自定义新的今天便笺文"
-#~ "本。"
-
-#~ msgid "_Open Today: Template"
-#~ msgstr "打开今天：模板(_O)"
 
 #~ msgid "dddd MM/dd/yyyy, hh:mm:ss tt"
 #~ msgstr "yyyy 年 MM 月 dd 日 dddd hh:mm:ss tt"
