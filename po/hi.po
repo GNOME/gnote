@@ -1,20 +1,22 @@
-# translation of hi.po to Hindi
+# translation of gnote.master.po to Hindi
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Rajesh Ranjan <rajesh672@gmail.com>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: hi\n"
+"Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&component=general\n"
 "POT-Creation-Date: 2010-01-18 16:48+0000\n"
-"PO-Revision-Date: 2010-01-22 17:32+0530\n"
+"PO-Revision-Date: 2010-01-27 16:21+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Hindi <hindi.sf.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
+"\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:1
@@ -207,7 +209,7 @@ msgid ""
 "user. The values map to an internal enumeration. 0 indicates that the user "
 "wishes to be prompted when a conflict occurs, so that they may handle each "
 "conflict situation on a case-by-case basis."
-msgstr ""
+msgstr "पूर्णांक मान यह दिखाता है कि यदि कोई विशेष आचरण के लिए हमेशा कोई वरीयता रहती है जब विरोध पता चलता है, बजाय उपयोक्ता को प्राँप्ट करने के. ये मान आंतरिक गणना को मैप करता है. 0 बताता है कि उपयोक्ता को प्रांप्ट किया जाना होता है जब विरोध पैदा होता है, ताकि वे हर विरोध स्थिति को केस दर केस आधार पर नियंत्रित कर सके."
 
 #: ../data/gnote.schemas.in.h:31
 msgid "List of pinned notes"
@@ -235,13 +237,13 @@ msgstr "यहां आरंभ खोलें"
 
 #: ../data/gnote.schemas.in.h:37
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
-msgstr ""
+msgstr "SSH सर्वर पर पथ Gnote तुल्यकालन निर्देशिका में (वैकल्पिक)."
 
 #: ../data/gnote.schemas.in.h:38
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
-msgstr ""
+msgstr "तुल्यकालन सर्वर में पथ जब फ़ाइल सिस्टम तुल्यकालन सेवा प्रशासन से उपयोग किया जाता है."
 
 #: ../data/gnote.schemas.in.h:39
 msgid "SSHFS Remote Synchronization Folder"
@@ -303,7 +305,7 @@ msgstr "लोकल सर्वर पाथ का तुल्यकाल�
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
-msgstr ""
+msgstr "तिथि प्रारूप जो कि टाइमस्टैंप के लिए उपयोग किया जाता है. यह टाइम स्टैंप का प्रारूप strftime(3) का अनुसरण करता है."
 
 #: ../data/gnote.schemas.in.h:54
 msgid ""
@@ -373,7 +375,7 @@ msgid ""
 "as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
-msgstr ""
+msgstr "Gnote एप्लेट मेन्यू दिखाने के लिए वैश्विक कुंजीबाइंडिंग. प्रारूप \"&lt;Control&gt;a\" या \"&lt;Shift&gt;&lt;Alt&gt;F1\" की तरह दिखता है. विश्लेषक मोटे तौर पर उदार है और लोअर और अपर केस की अनुमति देता है, और साथ ही संक्षिप्ताक्षर जैसे कि \"&lt;Ctl&gt;\" और \"&lt;Ctrl&gt;\". यदि आप विशेष स्ट्रिंग में विकल्प \"disabled\"  सेट करते हैं, तब इस क्रिया के लिए कोई कुंजीबाइंडिंग नहीं होगा."
 
 #: ../data/gnote.schemas.in.h:59
 msgid "The handler for \"note://\" URLs"
@@ -396,23 +398,26 @@ msgid ""
 "Export Linked Notes' setting and is used to specify whether all notes (found "
 "recursively) should be included during an export to HTML."
 msgstr ""
+"'Include all other linked notes' जाँच पेटी के लिए अंतिम सेटिंग HTML प्लगिन में निर्यात करने में. यह सेटिंग 'HTML "
+"Export Linked Notes' सेटिंग के साथ संयोग में प्रयोग होता है यह निर्धारित करने के लिए कि क्या सभी नोट्स (found "
+"recursively) को HTML में निर्यात के दौरान शामिल किए जाने चाहिए."
 
 #: ../data/gnote.schemas.in.h:63
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
-msgstr ""
+msgstr "नोट URI का नोट जो कि \"Start Here\" नोट माना जाना चाहिए, जो कि हमेशा जीनोच मेन्यू के तल में रखा जाना चाहिए और साथ ही हॉटकी से जुड़ा हुआ."
 
 #: ../data/gnote.schemas.in.h:64
 msgid "The port to use when connecting to the synchronization server via SSH."
-msgstr ""
+msgstr "उपयोग के लिए पोर्ट जब SSH से होकर तुल्यकालन सर्वर से जुड़ता है."
 
 #: ../data/gnote.schemas.in.h:65
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
-msgstr ""
+msgstr "समय (मिलीसेकेंड में) जिसमें जीनोट को अनुक्रिया के लिए प्रतीक्षा करनी चाहिए जब फ्यूज का उपयोग तुल्यकालन साझा आरोहित करने के लिए हो."
 
 #: ../data/gnote.schemas.in.h:66
 msgid "Timestamp format"
@@ -426,19 +431,19 @@ msgstr "SSH सर्वर का URL जीनोट तुल्यकाल�
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
-msgstr ""
+msgstr "मौजूदा विन्यस्त नोट तुल्यकालन सेवा प्रशासन के लिए अद्वितीय पहचानकर्ता."
 
 #: ../data/gnote.schemas.in.h:69
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
-msgstr ""
+msgstr "जीनोट क्लाइंट के लिए अद्वितीय पहचानकर्ता, तब प्रयुक्त जब किसी तुल्यकालन सर्वर के साथ प्रयुक्त होता है."
 
 #: ../data/gnote.schemas.in.h:70
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
-msgstr ""
+msgstr "wdfs option \"-ac\" का उपयोग SSL प्रमाणपत्र स्वीकारने के लिए बिना उपयोक्ता को प्रांप्ट किए."
 
 #: ../data/gnote.schemas.in.h:71
 msgid "User name to use when connecting to the synchronization server via SSH."
@@ -448,7 +453,7 @@ msgstr "उपयोग के लिए प्रयोक्ता नाम �
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
-msgstr ""
+msgstr "नोट URI का खाली स्थान से अलग किए सूची जो कि जीनोट मेन्यू में हमेशा प्रकट होना चाहिए."
 
 #: ../src/sharp/addinstreemodel.cpp:64
 msgid "Name"
@@ -524,7 +529,7 @@ msgstr "जीनोट के बारे में"
 
 #: ../src/actionmanager.cpp:221
 msgid "TrayIcon"
-msgstr "TrayIcon"
+msgstr "ट्रेआइकन"
 
 #: ../src/actionmanager.cpp:226
 msgid "Create _New Note"
@@ -556,7 +561,7 @@ msgstr "और टॉमब्वॉय मूल लेखक"
 
 #: ../src/gnote.cpp:338
 msgid "translator-credits"
-msgstr "संगीता कुमारी (sangeeta09@gmail.com)"
+msgstr "राजेश रंजन (rranjan@redhat.com)"
 
 #: ../src/gnote.cpp:346
 msgid ""
@@ -582,7 +587,7 @@ msgstr "जीनोट चलाएँ जैसे गनोम पटल ए�
 
 #: ../src/gnote.cpp:431
 msgid "Specify the path of the directory containing the notes."
-msgstr ""
+msgstr "नोट्स समाहित करते हुए निर्देशिका के पथ निर्दिष्ट करें।"
 
 #: ../src/gnote.cpp:431
 msgid "path"
@@ -590,7 +595,7 @@ msgstr "पाथ"
 
 #: ../src/gnote.cpp:432
 msgid "Open the search all notes window with the search text."
-msgstr ""
+msgstr "खोज पाठ से सभी नोट्स विंडो खोज को खोलें."
 
 #: ../src/gnote.cpp:432 ../src/gnote.cpp:437 ../src/gnote.cpp:438
 msgid "text"
@@ -602,7 +607,7 @@ msgstr "छपाई संस्करण सूचना."
 
 #: ../src/gnote.cpp:435
 msgid "Create and display a new note, with a optional title."
-msgstr ""
+msgstr "वैकल्पिक शीर्षक से नया नोट दिखाएँ और बनाएँ."
 
 #: ../src/gnote.cpp:435
 msgid "title"
@@ -610,7 +615,7 @@ msgstr "शीर्षक"
 
 #: ../src/gnote.cpp:436
 msgid "Display the existing note matching title."
-msgstr "प्रदर्शक टिप्पणी."
+msgstr "मौजूदा नोट मिलान शीर्षक से दिखाएँ."
 
 #: ../src/gnote.cpp:436
 msgid "title/url"
@@ -618,11 +623,11 @@ msgstr "शीर्षक/यूआरएल"
 
 #: ../src/gnote.cpp:437
 msgid "Display the 'Start Here' note."
-msgstr ""
+msgstr "'Start Here' नोट दिखाएँ."
 
 #: ../src/gnote.cpp:438
 msgid "Search and highlight text in the opened note."
-msgstr ""
+msgstr "खुले नोट में आलोकित पाठ खोजें."
 
 #: ../src/gnote.cpp:443
 msgid "A note taking application"
@@ -691,7 +696,7 @@ msgstr "नया नोट टेंपलेट"
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
-msgstr ""
+msgstr "पाठ निर्दिष्ट करने के लिए नया नोट नमूना का उपयोग करें जिसे तब प्रयोग किया जाएगा जब नया नोट बनाया जाए."
 
 #: ../src/preferencesdialog.cpp:282
 msgid "Open New Note Template"
@@ -804,6 +809,20 @@ msgid ""
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">यहाँ आरंभ करें\n"
+"\n"
+"<bold>जीनोट में स्वागत है!</bold>\n"
+"\n"
+"इस \"Start Here\" नोट को अपने विचारों और सोचों को व्यवस्थित रखने के लिए बना सकते हैं.\n"
+"\n"
+"आप नया नोट बना सकते हैं अपने विचारों को पकड़े रहने के लिए\"Create New "
+"Note\" मद को चुनकर और गनोम पैनल में जीनोट मेन्यू से. आपका नोट स्वतः सहेजा जाएगा.\n"
+"\n"
+"फिर नोट संगठित करें जिसे आपने बनाया है संबंधित नोट और व विचारों को एक साथ लिंक करके!\n"
+"\n"
+"हमने एक नोट बनाया है जो आपके विचारों को रखते हैं <link:internal>Using Links in Gnote</link:"
+"internal>.  ध्यान दें कि कैसे हर बार हम <link:internal>Using Links in "
+"Gnote</link:internal> टाइप करके यह स्वतः रेखांकित हो जाता है?  नोट खोलने के लिए लिंक पर क्लकि करें.</note-content>"
 
 #: ../src/notemanager.cpp:269
 msgid ""
@@ -820,6 +839,13 @@ msgid ""
 "Also, if you type the name of another note in your current note, it will "
 "automatically be linked for you.</note-content>"
 msgstr ""
+"<note-content>जीनोट में लिंक का उपयोग\n"
+"\n"
+"जीनोट में नोट्स को मौजूदा नोट्स में पाठ आलोकित करके लिंक किया जा सकता है और <bold>Link</bold> बटन को औजारपट्टी में ऊपर.  ऐसा करना नया नोट बनाएगा और मौजूदा नोट में टिप्पणी के शीर्षक को साथ ही रेखांकित करेगा.\n"
+"\n"
+"किसी नोट के शीर्षक को बदलना दूसरे नोट में उपस्थित कड़ी को प्रस्तुत करेगा.  यह टूटे लिंक को पैदा होने से रोकता है जब नोट को फिर नाम दिया जाता है.\n"
+"\n"
+"साथ ही, यदि आप अपने मौजूदा नोट में दूसरे नोट के नाम टाइप करते हैं, यह स्वतः आपसे लिंक किया जाएगा.</note-content>"
 
 #. Attempt to find an existing Start Here note
 #: ../src/notemanager.cpp:284 ../src/notemanager.cpp:336
@@ -997,6 +1023,8 @@ msgid ""
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
 "Error details can be found in ~/.gnote.log."
 msgstr ""
+"एक त्रुटि आई जब आपके नोट को सहेजना होता है. कृपया जाँचे कि आपके पास पर्याप्त डिस्क स्थान है और आपके पास ~/.gnote. "
+"त्रुटि पर उचित अधिकार है जो कि  ~/.gnote.log पर पाया जा सकता है."
 
 #: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
@@ -1036,14 +1064,14 @@ msgstr[1] "%1% मिलान"
 #: ../src/recentchanges.cpp:578
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
-msgstr[0] "%1% कुल टिप्पणी"
-msgstr[1] "%1% कुल टिप्पणी"
+msgstr[0] "कुल: %1% नोट"
+msgstr[1] "कुल: %1% नोट"
 
 #: ../src/recentchanges.cpp:594
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
-msgstr[0] "%1%मिलान टिप्पणी"
-msgstr[1] "%1%मिलान टिप्पणी"
+msgstr[0] "मिलान: %1% नोट"
+msgstr[1] "मिलान: %1% नोट"
 
 #: ../src/recentchanges.cpp:736
 msgid "Notes"
@@ -1065,7 +1093,7 @@ msgstr "जीनोट के बारे में (_A)"
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
-msgstr ""
+msgstr "\"Gnote Manual\" नहीं मिल सका.  कृपया जाँचें कि आपका संस्थापन को सफलतापूर्वक पूरा किया गया है."
 
 #: ../src/utils.cpp:138
 msgid "Help not found"
@@ -1120,7 +1148,7 @@ msgstr[1] "अन्दर %1%  दिन, %2%"
 #: ../src/utils.cpp:229
 msgid "In %1% day"
 msgid_plural "In %1% days"
-msgstr[0] "अन्दर दिन%1% "
+msgstr[0] "अन्दर दिन"
 msgstr[1] "अन्दर दिन%1% "
 
 #: ../src/utils.cpp:240
@@ -1135,7 +1163,7 @@ msgstr "(बिना शीर्षक %1%)"
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
-msgstr ""
+msgstr "<b>%1%</b> शीर्षक के साथ नोट पहले से मौजूद है. कृपया इस नोट के लिए दूसरा नाम चुनें जारी रखने के पहले."
 
 #: ../src/watchers.cpp:257
 msgid "Note title taken"
@@ -1156,7 +1184,7 @@ msgstr "नया नोटबुक बनाएँ"
 
 #: ../src/notebooks/createnotebookdialog.cpp:39
 msgid "Type the name of the notebook you'd like to create."
-msgstr ""
+msgstr "नोट बुक का नाम टाइप करें जिसे आप बनाना चाहते हैं."
 
 #: ../src/notebooks/createnotebookdialog.cpp:47
 msgid "N_otebook name:"
@@ -1235,7 +1263,7 @@ msgstr "वाकई यह नोटबुक मिटाना चाहत�
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
-msgstr ""
+msgstr "नोट्स जो इस नोटबुक का अवयव है को मिटाया नहीं जाएगा, लेकिन वे इस नोट बुक के साथ अब जुड़े नहीं है. क्रिया वापस नहीं ली जा सकती है."
 
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:38
 msgid "New \"%1%\" Note"
@@ -1263,7 +1291,7 @@ msgstr "ब्लैकलिंक"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
 msgid "See which notes link to the one you're currently viewing."
-msgstr ""
+msgstr "देखें कि कौन सा नोट्स आपके मौजूदा दृश्य के साथ कड़ीबद्ध करता है."
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
@@ -1287,7 +1315,7 @@ msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
-msgstr ""
+msgstr "आपको बगजिला URL खींचना चाहिए सीधे जीनोट में.  बग संख्या को बतौर कड़ी जोड़ा जाता है इसे निकट कोई छोटा बग चिह्न के साथ."
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
@@ -1300,7 +1328,7 @@ msgstr "हर्बर्ट फिग्यूरे और टामब्व
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
-msgstr ""
+msgstr "आप किसी बगजिला को लिंक को नोट्स में खींचकर उपयोग कर सकते हैं.  यदि आपको कोई खास मेजबान के लिए विशेष चिह्न चाहिए उन्हें यहाँ जोड़ें."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:76
 msgid "Host Name"
@@ -1325,7 +1353,7 @@ msgstr "होस्ट नाम अवैध"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:271
 msgid "You must specify a valid Bugzilla host name to use with this icon."
-msgstr ""
+msgstr "आपको जरूर एक वैध बगजिला को निर्दिष्ट करना चाहिए इस प्रतीक के साथ उपयोग के लिए."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:290
 msgid "Error saving icon"
@@ -1388,13 +1416,13 @@ msgstr "स्थिर चौड़ाई"
 
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
 msgid "Adds fixed-width font style."
-msgstr ""
+msgstr "स्थिर चौड़ाई फ़ॉन्ट शैली जोड़ता है"
 
 #. Add the menu item when the window is created
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
 msgid "Insert Timestamp"
-msgstr ""
+msgstr "टाइमस्टैंप जोड़ें"
 
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
@@ -1403,11 +1431,11 @@ msgstr "संकेतक के स्थान पर वर्तमान �
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
 msgid "Choose one of the predefined formats or use your own."
-msgstr ""
+msgstr "किसी पूर्वनिर्धारित प्रारूप में से एक चुनें या अपना कोई उपयोग करें."
 
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:71
 msgid "Use _Selected Format"
-msgstr ""
+msgstr "चयनित प्रारूप का उपयोग करें (_S)"
 
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
 msgid "_Use Custom Format"
@@ -1440,7 +1468,7 @@ msgstr "दिन का नोट"
 
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:47
 msgid "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
-msgstr ""
+msgstr "स्वतः \"Today\" नोट बनाता है दैनिक विचारों को आसानी से नजर रखने के लिए"
 
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:52
 msgid "Debarshi Ray and the Tomboy Project"
@@ -1454,7 +1482,7 @@ msgstr "आज खोलें (_O): नमूना खाका"
 msgid ""
 "Change the <span weight=\"bold\">Today: Template</span> note to customize "
 "the text that new Today notes have."
-msgstr ""
+msgstr "<span weight=\"bold\">Today: Template</span> नोट को पाठ के लिए बदलें जो नया आज का नोट्स रखता है."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
 msgid "Printing Support"
@@ -1462,7 +1490,7 @@ msgstr "मुद्रण समर्थन"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
 msgid "Allows you to print a note."
-msgstr ""
+msgstr "आपको एक टिप्पणी छापने की अनुमति देता है."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
 msgid "Print"
@@ -1475,15 +1503,15 @@ msgstr "नोट छापने में त्रुटि"
 #. %1% is the page number, %2% is the total number of pages
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:297
 msgid "Page %1% of %2%"
-msgstr ""
+msgstr "पृष्ठ %1% %2% का"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
 msgid "Sticky Notes Importer"
-msgstr ""
+msgstr "स्टिकी टिप्पणी आयातक"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
 msgid "Import your notes from the Sticky Notes applet."
-msgstr ""
+msgstr "आपके नोट को स्टिकी नोट एप्लेट से आयात करता है."
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
 msgid "Import from Sticky Notes"
@@ -1496,7 +1524,7 @@ msgstr "कोई स्टिकी नोट नहीं मिला"
 #. %1% is a the file name
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
-msgstr ""
+msgstr "कोई उपयुक्त स्टिकी नोट \"%1%\" पर नहीं पाया गया."
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
 msgid "Sticky Notes import completed"
@@ -1505,7 +1533,7 @@ msgstr "स्टिकी नोट आयात पूर्ण"
 #. here %1% is the number of notes imported, %2% the total number of notes.
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
-msgstr ""
+msgstr "<b>%1%</b> of <b>%2%</b> स्टिरी नोट्स को सफलतापूर्वक आयात किया गया."
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
 msgid "Untitled"
@@ -1538,7 +1566,7 @@ msgstr "रेखांकित"
 
 #: ../src/addins/underline/underlinenoteaddin.cpp:51
 msgid "Adds ability to underline text."
-msgstr ""
+msgstr "पाठ रेखांकित करने की क्षमता जोड़ता है."
 
 #: ../src/addins/underline/underlinenoteaddin.cpp:55
 msgid "Hubert Figuière and the Tomboy Project"
