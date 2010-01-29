@@ -3,19 +3,20 @@
 # Copyright (C) 2009 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 #
-# Krishna Babu K <kkrothap@redhat.com>, 2009.
+# Krishna Babu K <kkrothap@redhat.com>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master.te\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&component=general\n"
-"POT-Creation-Date: 2009-07-22 02:47+0000\n"
-"PO-Revision-Date: 2009-08-20 23:57+0530\n"
+"POT-Creation-Date: 2010-01-04 14:44+0000\n"
+"PO-Revision-Date: 2010-01-29 20:35+0530\n"
 "Last-Translator: Krishna Babu K <kkrothap@redhat.com>\n"
 "Language-Team: Telugu <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
 "\n"
 "\n"
 "\n"
@@ -28,7 +29,6 @@ msgid "Accessories"
 msgstr "అనుబంధితాలు"
 
 #: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
-#: ../src/tray.cpp:50
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -534,7 +534,7 @@ msgstr "Gnote నిష్క్రమించుము"
 msgid "_Edit"
 msgstr "సరికూర్చు (_E)"
 
-#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:86
+#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:87
 msgid "Gnote Preferences"
 msgstr "Gnote అభీష్టాలు"
 
@@ -574,114 +574,116 @@ msgstr "సింక్రోనైజ్ నోట్లు (_y)"
 msgid "Start synchronizing notes"
 msgstr "సింక్రొనైజింగ్ నోట్లను ప్రారంభించుము"
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:282
 msgid "Cannot create new note"
 msgstr "కొత్త నోట్ సృష్టించుటకు వీలుకాదు"
 
-#: ../src/gnote.cpp:334
+#: ../src/gnote.cpp:329
 msgid "and Tomboy original authors."
 msgstr "మరియు Tomboy యదార్ధ మూలకర్తలు."
 
-#: ../src/gnote.cpp:343
+#: ../src/gnote.cpp:338
 msgid "translator-credits"
 msgstr "కృష్ణబాబు కె <kkrothap@redhat.com> 2009."
 
-#: ../src/gnote.cpp:351
+#: ../src/gnote.cpp:346
+#| msgid ""
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
+"Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 
-#: ../src/gnote.cpp:353
+#: ../src/gnote.cpp:349
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "సాధారణ మరియు సులభమైన డెస్కుటాప్ నో-తీసుకొను అనువర్తనము."
 
-#: ../src/gnote.cpp:364
+#: ../src/gnote.cpp:360
 msgid "Homepage"
 msgstr "నివాసపేజీ"
 
-#: ../src/gnote.cpp:417
+#: ../src/gnote.cpp:430
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "GNOME ప్యానల్ ఆప్లెట్ వలె Gnoteను నడుపుము."
 
-#: ../src/gnote.cpp:418
+#: ../src/gnote.cpp:431
 msgid "Specify the path of the directory containing the notes."
 msgstr "నోట్లను కలిగివున్న డైరెక్టరీయొక్క పాత్‌ను తెలుపుము."
 
-#: ../src/gnote.cpp:418
+#: ../src/gnote.cpp:431
 msgid "path"
 msgstr "పాత్"
 
-#: ../src/gnote.cpp:419
+#: ../src/gnote.cpp:432
 msgid "Open the search all notes window with the search text."
 msgstr "శోధన పాఠ్యముతో అన్ని నోట్లను శోధించు విండోను తెరువుము."
 
-#: ../src/gnote.cpp:419 ../src/gnote.cpp:424 ../src/gnote.cpp:425
-#| msgid "Te_xt"
+#: ../src/gnote.cpp:432 ../src/gnote.cpp:437 ../src/gnote.cpp:438
 msgid "text"
 msgstr "పాఠ్యము"
 
-#: ../src/gnote.cpp:420
+#: ../src/gnote.cpp:433
 msgid "Print version information."
 msgstr "వర్షన్ సమాచారమును ముద్రించుము."
 
-#: ../src/gnote.cpp:422
+#: ../src/gnote.cpp:435
 msgid "Create and display a new note, with a optional title."
 msgstr "ఐచ్చిక శీర్షికతో, కొత్త నోట్‌ను సృష్టించుము మరియు ప్రదర్శించుము."
 
-#: ../src/gnote.cpp:422
-#| msgid "Untitled"
+#: ../src/gnote.cpp:435
 msgid "title"
 msgstr "శీర్షిక"
 
-#: ../src/gnote.cpp:423
+#: ../src/gnote.cpp:436
 msgid "Display the existing note matching title."
 msgstr "ఉన్న నోటు సరిపోలు శీర్షికను ప్రదర్శించుము."
 
-#: ../src/gnote.cpp:423
+#: ../src/gnote.cpp:436
 msgid "title/url"
 msgstr "శీర్షిక/url"
 
-#: ../src/gnote.cpp:424
-#| msgid "Start Here Note"
+#: ../src/gnote.cpp:437
 msgid "Display the 'Start Here' note."
 msgstr "'ఇక్కడ మొదలుపెట్టు' నోటును ప్రదర్శించుము."
 
-#: ../src/gnote.cpp:425
+#: ../src/gnote.cpp:438
 msgid "Search and highlight text in the opened note."
 msgstr "తెరిచిన నోటునందలి పాఠ్యమును శోధించి వుద్దీపనము చేయుము."
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:443
 msgid "A note taking application"
 msgstr "నోటు తీసుకొను అనువర్తనము"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:443
 msgid "Gnote options at launch"
 msgstr "ఆరంభము వద్ద Gnote ఐచ్చికములు"
 
-#: ../src/gnote.cpp:623
+#: ../src/gnote.cpp:639
 msgid "Version %1%"
 msgstr "వర్షన్ %1%"
 
-#: ../src/preferencesdialog.cpp:104
+#: ../src/preferencesdialog.cpp:105
 msgid "Editing"
 msgstr "సరికూర్చుచున్నది"
 
-#: ../src/preferencesdialog.cpp:106
+#: ../src/preferencesdialog.cpp:107
 msgid "Hotkeys"
 msgstr "హాట్‌కీలు"
 
-#: ../src/preferencesdialog.cpp:111
+#: ../src/preferencesdialog.cpp:112
 msgid "Add-ins"
 msgstr "యాడ్-యిన్స్"
 
-#: ../src/preferencesdialog.cpp:184
+#: ../src/preferencesdialog.cpp:215
 msgid "_Spell check while typing"
 msgstr "టైపుచేయుచున్నప్పుడు స్పెల్ పరిశీలించుము (_S)"
 
-#: ../src/preferencesdialog.cpp:190
+#: ../src/preferencesdialog.cpp:221
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -690,11 +692,11 @@ msgstr ""
 "మెనూనందు అందిచబడతాయి."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:201
+#: ../src/preferencesdialog.cpp:232
 msgid "Highlight _WikiWords"
 msgstr "వికీ పదములను ఉద్దీపనము చేయుము (_W)"
 
-#: ../src/preferencesdialog.cpp:207
+#: ../src/preferencesdialog.cpp:238
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -703,37 +705,37 @@ msgstr ""
 "నొక్కుట ద్వారా ఆ నామముతో వొక నోట్ సృష్టిస్తుంది."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:214
+#: ../src/preferencesdialog.cpp:245
 msgid "Enable auto-_bulleted lists"
 msgstr "స్వయంచాలక-బుల్లెటెడ్ జాబితాలను చేతనము చేయుము (_b)"
 
 #. Custom font...
-#: ../src/preferencesdialog.cpp:222
+#: ../src/preferencesdialog.cpp:253
 msgid "Use custom _font"
 msgstr "మలచిన ఆక్షరశైలి వాడుము (_f)"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:240 ../src/notemanager.cpp:107
+#: ../src/preferencesdialog.cpp:271 ../src/notemanager.cpp:107
 msgid "New Note Template"
 msgstr "కొత్త నోట్ మాదిరి"
 
-#: ../src/preferencesdialog.cpp:243
+#: ../src/preferencesdialog.cpp:274
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr "కొత్త నోట్ సృష్టించునప్పుడు వుపయోగించవలసిన పాఠ్యమును తెలుపుటకు కొత్త నోట్ మాదిరిని వుపయోగించుము."
 
-#: ../src/preferencesdialog.cpp:251
+#: ../src/preferencesdialog.cpp:282
 msgid "Open New Note Template"
 msgstr "కొత్త నోట్ మాదిరిని తెరువుము"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:309
+#: ../src/preferencesdialog.cpp:340
 msgid "Listen for _Hotkeys"
 msgstr "హాట్‌కీల కొరకు వినుము (_H)"
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:347
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -743,97 +745,77 @@ msgstr ""
 "<b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:336
+#: ../src/preferencesdialog.cpp:367
 msgid "Show notes _menu"
 msgstr "నోట్స్ జాబితా చూపుము (_m)"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:352
+#: ../src/preferencesdialog.cpp:383
 msgid "Open \"_Start Here\""
 msgstr "\"ఇక్కడ మొదలుపెట్టు\"  తెరువుము (_S)"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:367
+#: ../src/preferencesdialog.cpp:398
 msgid "Create _new note"
 msgstr "కొత్త నోట్ సృష్టించుము (_n)"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:382
+#: ../src/preferencesdialog.cpp:413
 msgid "Open \"Search _All Notes\""
 msgstr "\"అన్ని నోట్లు వెతుకు\" తెరువుము (_A)"
 
-#: ../src/preferencesdialog.cpp:408
+#: ../src/preferencesdialog.cpp:439
 msgid "Ser_vice:"
 msgstr "సేవ (_v):"
 
-#: ../src/preferencesdialog.cpp:465
+#: ../src/preferencesdialog.cpp:496
 msgid "Not configurable"
 msgstr "ఆకృతీకరించుటకు వీలుకానిది"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:485
+#: ../src/preferencesdialog.cpp:516
 msgid "_Advanced..."
 msgstr "అదునాతన... (_A)"
 
-#: ../src/preferencesdialog.cpp:532
+#: ../src/preferencesdialog.cpp:563
 msgid "The following add-ins are installed"
 msgstr "ఈ క్రింది యాడ్-యిన్స్ సంస్థాపించబడినవి"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:563
+#: ../src/preferencesdialog.cpp:594
 msgid "_Enable"
 msgstr "చేతనముచేయి (_E)"
 
-#: ../src/preferencesdialog.cpp:569
+#: ../src/preferencesdialog.cpp:600
 msgid "_Disable"
 msgstr "అచేతనముచేయి (_D)"
 
-#: ../src/preferencesdialog.cpp:698
+#: ../src/preferencesdialog.cpp:731
 msgid "Not Implemented"
 msgstr "అభివృద్దిపరచ లేదు"
 
-#: ../src/preferencesdialog.cpp:712
+#: ../src/preferencesdialog.cpp:745
 msgid "%1% Preferences"
 msgstr "%1% అభీష్టాలు"
 
-#: ../src/preferencesdialog.cpp:853
+#: ../src/preferencesdialog.cpp:886
 msgid "Choose Note Font"
 msgstr "నోట్ ఫాంట్ యెంచుకొనుము"
 
-#: ../src/preferencesdialog.cpp:948
+#: ../src/preferencesdialog.cpp:981
 msgid "Version:"
 msgstr "వర్షన్:"
 
-#: ../src/preferencesdialog.cpp:953
+#: ../src/preferencesdialog.cpp:986
 msgid "Author:"
 msgstr "మూలకర్త:"
 
-#: ../src/preferencesdialog.cpp:959
+#: ../src/preferencesdialog.cpp:992
 msgid "Copyright:"
 msgstr "కాపీరైట్:"
 
-#: ../src/notemanager.cpp:237
-#| msgid ""
-#| "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
-#| "Here\n"
-#| "\n"
-#| "<bold>Welcome to Gnote!</bold>\n"
-#| "\n"
-#| "Use this \"Start Here\" note to begin organizing your ideas and "
-#| "thoughts.\n"
-#| "\n"
-#| "You can create new notes to hold your ideas by selecting the \"Create New "
-#| "Note\" item from the Gnote Notes menu in your GNOME Panel. Your note will "
-#| "be saved automatically.\n"
-#| "\n"
-#| "Then organize the notes you create by linking related notes and ideas "
-#| "together!\n"
-#| "\n"
-#| "We've created a note called <link:internal>Using Links in Gnote</link:"
-#| "internal>.  Notice how each time we type <link:internal>Using Links in "
-#| "Gnote</link:internal> it automatically gets underlined?  Click on the "
-#| "link to open the note.</note-content>"
+#: ../src/notemanager.cpp:250
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -867,11 +849,11 @@ msgstr ""
 "ఇంకా నోట్సును మీ అభిప్రాయాలతో మరియు సంభందిత నోట్సుతో కలిపి నిర్వహించుము!\n"
 "\n"
 "మేము వొక నోట్‌ను సృష్టించాము <link:internal>Gnoteనందు లింకులను వుపయోగించుట</link:"
-"internal>.  మనము టైపు చేసిన ప్రతిసారి <link:internal>Gnote నందు లింకులను "
-"వుపయోగించుట</link:internal> అది  స్వయంచాలకంగా యెలా అండర్‌లైను చేయబడుతుందో గుర్తించాలా? నోట్‌ను "
-"తెరుచుటకు లింకుపైన నొక్కుము.</note-content>"
+"internal>.  మనము టైపు చేసిన ప్రతిసారి <link:internal>Gnote నందు లింకులను వుపయోగించుట</"
+"link:internal> అది  స్వయంచాలకంగా యెలా అండర్‌లైను చేయబడుతుందో గుర్తించాలా? నోట్‌ను తెరుచుటకు "
+"లింకుపైన నొక్కుము.</note-content>"
 
-#: ../src/notemanager.cpp:256
+#: ../src/notemanager.cpp:269
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -899,21 +881,21 @@ msgstr ""
 "చేయబడుతుంది.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:271 ../src/notemanager.cpp:323
+#: ../src/notemanager.cpp:284 ../src/notemanager.cpp:336
 msgid "Start Here"
 msgstr "ఇక్కడ మొదలుపెట్టు"
 
-#: ../src/notemanager.cpp:276
+#: ../src/notemanager.cpp:289
 msgid "Using Links in Gnote"
 msgstr "Gnote నందు లింకులను వుపయోగించుట"
 
-#: ../src/notemanager.cpp:444
+#: ../src/notemanager.cpp:494
 msgid "New Note %1%"
 msgstr "కొత్త నోట్ %1%"
 
 #. Use a simple "Describe..." body and highlight
 #. it so it can be easily overwritten
-#: ../src/notemanager.cpp:544 ../src/notemanager.cpp:634
+#: ../src/notemanager.cpp:594 ../src/notemanager.cpp:684
 msgid "Describe your new note here."
 msgstr "మీ కొత్త నోట్‌ను వివరించుము."
 
@@ -994,7 +976,6 @@ msgid "Cannot create note"
 msgstr "నోట్ సృష్టించుట వీలుకాదు"
 
 #: ../src/notewindow.cpp:624
-#| msgid "_Text"
 msgid "_Next"
 msgstr "తరువాత (_N)"
 
@@ -1006,53 +987,51 @@ msgstr "ముందలి (_P)"
 msgid "_Find:"
 msgstr "కనుగొనుము (_F):"
 
-#: ../src/notewindow.cpp:1078
+#: ../src/notewindow.cpp:1080
 msgid "<b>_Bold</b>"
 msgstr "<b>బోల్డ్ (_B)</b>"
 
-#: ../src/notewindow.cpp:1079
+#: ../src/notewindow.cpp:1081
 msgid "<i>_Italic</i>"
 msgstr "<i>ఇటాలిక్ (_I)</i>"
 
-#: ../src/notewindow.cpp:1080
+#: ../src/notewindow.cpp:1082
 msgid "<s>_Strikeout</s>"
 msgstr "<s>కొట్టిపారేయుము (_S)</s>"
 
-#: ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:1084
 msgid "_Highlight"
 msgstr "ఉద్దేపించు (_H)"
 
-#: ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:1086
 msgid "_Normal"
 msgstr "సాదారణ (_N)"
 
-#: ../src/notewindow.cpp:1086
+#: ../src/notewindow.cpp:1088
 msgid "Hu_ge"
 msgstr "పెద్ద (_g)"
 
-#: ../src/notewindow.cpp:1088
+#: ../src/notewindow.cpp:1090
 msgid "_Large"
 msgstr "పెద్దది (_L)"
 
-#: ../src/notewindow.cpp:1090
+#: ../src/notewindow.cpp:1092
 msgid "S_mall"
 msgstr "చిన్న (_m)"
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1094
 msgid "Bullets"
 msgstr "బుల్లెట్స్"
 
-#: ../src/notewindow.cpp:1095
-#| msgid "Font Size"
+#: ../src/notewindow.cpp:1097
 msgid "Increase Font Size"
 msgstr "ఫాంటు పరిమాణము పెంచుము"
 
-#: ../src/notewindow.cpp:1096
-#| msgid "Font Size"
+#: ../src/notewindow.cpp:1098
 msgid "Decrease Font Size"
 msgstr "ఫాంటు పరిమాణము తగ్గించుము"
 
-#: ../src/notewindow.cpp:1167
+#: ../src/notewindow.cpp:1169
 msgid "Font Size"
 msgstr "ఫాంటు పరిమాణము"
 
@@ -1081,56 +1060,60 @@ msgstr ""
 "చూసుకోండి, మరియు ~/.gnote పై సరైన హక్కులు కలిగివున్నారేమో చూసుకోండి. దోషపు వివరములు ~/.gnote."
 "log నందు కనుగొనగలరు."
 
-#: ../src/recentchanges.cpp:82
+#: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
 msgstr "అన్ని నోట్లను శోధించుము"
 
-#: ../src/recentchanges.cpp:87
+#: ../src/recentchanges.cpp:88
 msgid "C_ase Sensitive"
 msgstr "చిన్నిపెద్ద అక్షరములతేడా (_a)"
 
-#: ../src/recentchanges.cpp:105
+#: ../src/recentchanges.cpp:106
 msgid "_Search:"
 msgstr "శోధించుము (_S):"
 
-#: ../src/recentchanges.cpp:269
-#: ../src/notebooks/notebookapplicationaddin.cpp:118
+#: ../src/recentchanges.cpp:270
+#: ../src/notebooks/notebookapplicationaddin.cpp:120
 msgid "Notebooks"
 msgstr "నోట్‌పుస్తకములు"
 
-#: ../src/recentchanges.cpp:341
+#: ../src/recentchanges.cpp:345
 msgid "Note"
 msgstr "నోట్"
 
-#: ../src/recentchanges.cpp:362
+#: ../src/recentchanges.cpp:366
 msgid "Last Changed"
 msgstr "చివరగా మార్చబడిన"
 
-#: ../src/recentchanges.cpp:506
+#: ../src/recentchanges.cpp:510
 msgid "Matches"
 msgstr "పోలికలు"
 
-#: ../src/recentchanges.cpp:560
+#: ../src/recentchanges.cpp:564
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% పోలిక"
 msgstr[1] "%1% పోలికలు"
 
-#: ../src/recentchanges.cpp:574
+#: ../src/recentchanges.cpp:578
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "మొత్తము: %1% నోట్"
 msgstr[1] "మొత్తము:%1% నోట్లు"
 
-#: ../src/recentchanges.cpp:590
+#: ../src/recentchanges.cpp:594
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "సరిపోలింది: %1% నోట్"
 msgstr[1] "సరిపోలింది: %1% నోట్లు"
 
-#: ../src/recentchanges.cpp:732
+#: ../src/recentchanges.cpp:736
 msgid "Notes"
 msgstr "నోట్లు"
+
+#: ../src/tray.cpp:50
+msgid "Take notes"
+msgstr "గమనికలను తిసుకొనుము"
 
 #: ../src/tray.cpp:161
 msgid " (new)"
@@ -1140,77 +1123,77 @@ msgstr " (కొత్త)"
 msgid "_About Gnote"
 msgstr "Gnote గురించి (_A)"
 
-#: ../src/utils.cpp:128
+#: ../src/utils.cpp:130
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr "\"Gnote మాన్యువల్\" కనుగొనబడలేదు.  మీ సంస్థాపన సరిగ్గా పూర్తైనదేమో దయచేసి సరిచూసుకొనండి."
 
-#: ../src/utils.cpp:136
+#: ../src/utils.cpp:138
 msgid "Help not found"
 msgstr "సహాయము దొరకలేదు"
 
-#: ../src/utils.cpp:176
+#: ../src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "స్థానము తెరచుటకు వీలుకాదు"
 
-#: ../src/utils.cpp:190
+#: ../src/utils.cpp:192
 msgid "Today, %1%"
 msgstr "ఈరోజు, %1%"
 
-#: ../src/utils.cpp:191
+#: ../src/utils.cpp:193
 msgid "Today"
 msgstr "ఈరోజు"
 
-#: ../src/utils.cpp:196
+#: ../src/utils.cpp:198
 msgid "Yesterday, %1%"
 msgstr "నిన్న, %1%"
 
-#: ../src/utils.cpp:197
+#: ../src/utils.cpp:199
 msgid "Yesterday"
 msgstr "నిన్న"
 
-#: ../src/utils.cpp:204
+#: ../src/utils.cpp:206
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% రోజు క్రితం, %2%"
 msgstr[1] "%1% రోజుల క్రితం, %2%"
 
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:210
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% రోజు క్రితంo"
 msgstr[1] "%1% రోజుల క్రితం"
 
-#: ../src/utils.cpp:215
+#: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "మరునాడు, %1%"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:218
 msgid "Tomorrow"
 msgstr "మరునాడు"
 
-#: ../src/utils.cpp:223
+#: ../src/utils.cpp:225
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "%1% రోజులో, %2%"
 msgstr[1] "%1% రోజులలో, %2%"
 
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:229
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "%1% రోజు"
 msgstr[1] "%1% రోజులలో"
 
-#: ../src/utils.cpp:238
+#: ../src/utils.cpp:240
 msgid "No Date"
 msgstr "తేది లేదు"
 
-#: ../src/watchers.cpp:207
+#: ../src/watchers.cpp:208
 msgid "(Untitled %1%)"
 msgstr "(శీర్షికలేని %1%)"
 
-#: ../src/watchers.cpp:242
+#: ../src/watchers.cpp:243
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -1218,20 +1201,20 @@ msgstr ""
 "<b>%1%</b> శీర్షికతో వొక నోటు యిప్పటికే వుంది. కొనసాగుటకు ముందుగా ఈ నోటు కొరకు దయచేసి వేరొక "
 "నామమును యెంచుకొనుము."
 
-#: ../src/watchers.cpp:256
+#: ../src/watchers.cpp:257
 msgid "Note title taken"
 msgstr "నోటు శీర్షిక తీసుకొనబడింది"
 
-#: ../src/watchers.cpp:574
+#: ../src/watchers.cpp:576
 msgid "_Copy Link Address"
 msgstr "లింకు చిరునామా నకలుతీయుము (_C)"
 
-#: ../src/watchers.cpp:580
+#: ../src/watchers.cpp:582
 msgid "_Open Link"
 msgstr "లింకు తెరువుము (_O)"
 
 #: ../src/notebooks/createnotebookdialog.cpp:38
-#: ../src/notebooks/notebookapplicationaddin.cpp:99
+#: ../src/notebooks/notebookapplicationaddin.cpp:101
 msgid "Create a new notebook"
 msgstr "కొత్త నోటుపుస్తుకం సృష్టించుము"
 
@@ -1270,49 +1253,49 @@ msgstr "అన్ని నోట్లు"
 msgid "Unfiled Notes"
 msgstr "ఫైలుచేయని నోట్లు"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:93
+#: ../src/notebooks/notebookapplicationaddin.cpp:95
 msgid "Note_books"
 msgstr "నోటుపుస్తకములు (_b)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:94
-#: ../src/notebooks/notebookapplicationaddin.cpp:119
+#: ../src/notebooks/notebookapplicationaddin.cpp:96
+#: ../src/notebooks/notebookapplicationaddin.cpp:121
 msgid "Create a new note in a notebook"
 msgstr "నోటుపుస్తకం నందు కొత్త నోట్ సృష్టించుము"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:98
-#: ../src/notebooks/notebookapplicationaddin.cpp:253
+#: ../src/notebooks/notebookapplicationaddin.cpp:100
+#: ../src/notebooks/notebookapplicationaddin.cpp:255
 msgid "New Note_book..."
 msgstr "కొత్త నోటుపుస్తకం... (_b)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:103
+#: ../src/notebooks/notebookapplicationaddin.cpp:105
 msgid "_New Note"
 msgstr "కొత్త నోటు (_N)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:104
+#: ../src/notebooks/notebookapplicationaddin.cpp:106
 msgid "Create a new note in this notebook"
 msgstr "ఈ నోటుపుస్తకం నందు కొత్త నోటును సృష్టించుము"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:108
+#: ../src/notebooks/notebookapplicationaddin.cpp:110
 msgid "_Open Template Note"
 msgstr "మాదిరి నోటును తెరువుము (_O)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:109
+#: ../src/notebooks/notebookapplicationaddin.cpp:111
 msgid "Open this notebook's template note"
 msgstr "ఈ నోటుపుస్తకం మాదిరి నోటును తెరువుము"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:113
+#: ../src/notebooks/notebookapplicationaddin.cpp:115
 msgid "Delete Note_book"
 msgstr "నోటుపుస్తకం తొలగించుము (_b)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:114
+#: ../src/notebooks/notebookapplicationaddin.cpp:116
 msgid "Delete the selected notebook"
 msgstr "ఎంపికకాబడిన నోటుపుస్తకమును తొలగించుము"
 
-#: ../src/notebooks/notebookmanager.cpp:332
+#: ../src/notebooks/notebookmanager.cpp:334
 msgid "Really delete this notebook?"
 msgstr "ఈ నోటుపుస్తకమును నిజంగా తొలగించాలా?"
 
-#: ../src/notebooks/notebookmanager.cpp:333
+#: ../src/notebooks/notebookmanager.cpp:335
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1328,15 +1311,15 @@ msgstr "కొత్త \"%1%\" నోట్"
 msgid "No notebook"
 msgstr "ఏ నోటుపుస్తకం లేదు"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:81
+#: ../src/notebooks/notebooknoteaddin.cpp:82
 msgid "Place this note into a notebook"
 msgstr "ఈ నోటును నోటుపుస్తకములో వుంచుము"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:168
+#: ../src/notebooks/notebooknoteaddin.cpp:169
 msgid "Notebook"
 msgstr "నోటుపుస్తకం"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:193
+#: ../src/notebooks/notebooknoteaddin.cpp:194
 msgid "_New notebook..."
 msgstr "కొత్త నోటుపుస్తకం... (_N)"
 
@@ -1361,11 +1344,11 @@ msgstr "ఇక్కడకు యే లింకులు?"
 msgid "(none)"
 msgstr "(ఏదీకాదు)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:51
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:56
 msgid "Bugzilla Links"
 msgstr "Bugzilla లింకులు"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:55
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -1374,14 +1357,14 @@ msgstr ""
 "మీ బ్రౌజర్‌నుండి బగ్‌జిల్లా URLను Gnote నోట్‌నకు లాగుటకు మిమ్ములను అనుమతిస్తుంది. దాని ప్రక్కనే బగ్ "
 "సంఖ్య వొక లింకువలె చిన్న బగ్ ప్రతిమతో చేర్చబడుతుంది."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:59
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "హ్యూబర్ట్ పిగుయిరీ మరియు టామ్బాయ్ ప్రోజెక్ట్"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:58
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:59
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -1389,44 +1372,44 @@ msgstr ""
 "లింకులను నోట్లకు లాగుట ద్వారా మీరు ఏ బగ్‌జిల్లానైనా వుపయోగించవచ్చు.  కొన్ని హోస్టులకు మీకు ప్రత్యేకమైన "
 "ప్రతిమ కావాలంటే, వాటిని యిక్కడ జతచేయుము."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:75
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:76
 msgid "Host Name"
 msgstr "హోస్టు నామము"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:88
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:89
 msgid "Icon"
 msgstr "ప్రతిమ"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:222
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:223
 msgid "Select an icon..."
 msgstr "వొక ప్రతిమను యెంపికచేయుము..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:237
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:238
 msgid "_Host name:"
 msgstr "హోస్టు నామము (_H):"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:269
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
 msgid "Host name invalid"
 msgstr "హోస్టునామము చెల్లనిది"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:271
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr "ఈ ప్రతిమతో వుపయోగించుటకు మీరు తప్పక వొక విలువైన బగ్‌జిల్లా హోస్టు నామమును తెలుపవలెను."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:289
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
 msgid "Error saving icon"
 msgstr "ప్రతిమను దాయుటలో దోషము"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:291
 msgid "Could not save the icon file."
 msgstr "ప్రతిమ ఫైలును దాయలేక పోయింది."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:362
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
 msgid "Really remove this icon?"
 msgstr "ఈ ప్రతిమ నిజంగా తొలగించాలా?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:364
 msgid "If you remove an icon it is permanently lost."
 msgstr "ఒకవేళ నీవు ఒక ప్రతిమను తొలగించినట్టయితే అది శాశ్వతంగా పోగొట్టుకుంటావు."
 
@@ -1465,7 +1448,6 @@ msgid "Could not save the file \"%s\""
 msgstr "ఫైలు \"%s\"ను దాయలేక పోయింది "
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
-#| msgid "Fixed Width"
 msgid "Fixed Wid_th"
 msgstr "నిర్దష్ట వెడల్పు (_t)"
 
@@ -1500,6 +1482,54 @@ msgstr "ఎంపికచేసిన ఫార్మాట్ ఉపయోగ�
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
 msgid "_Use Custom Format"
 msgstr "మలచుకొనిన ఫార్మాట్‌ను ఉపయోగించుము (_U)"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:32
+#| msgid "New Note Template"
+msgid "Today: Template"
+msgstr "ఈరోజు: మాదిరి"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:34
+#| msgid "Today"
+msgid "Today: "
+msgstr "ఈరోజు: "
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+msgid "Tasks"
+msgstr "కర్తవ్యాలు"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:161
+#| msgid "_Contents"
+msgid "Appointments"
+msgstr "నియామకములు"
+
+#. Format: "Today: Friday, July 01 2005"
+#: ../src/addins/noteoftheday/noteoftheday.cpp:167
+msgid "%A, %B %d %Y"
+msgstr "%A, %B %d %Y"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:43
+msgid "Note of the Day"
+msgstr "రోజు యొక్క గమనిక"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:47
+msgid "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
+msgstr "సులువుగా నోటు చేసుకొనుటకు వీలుగా \"ఈరోజు\" నోటును స్వయంచాలకంగా సృష్టిస్తుంది"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:52
+#| msgid "Hubert Figuiere and the Tomboy Project"
+msgid "Debarshi Ray and the Tomboy Project"
+msgstr "దేబర్షి రే మరియు టామ్బాయ్ ప్రోజెక్ట్"
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:34
+#| msgid "_Open Template Note"
+msgid "_Open Today: Template"
+msgstr "ఈరోజు తెరువుము: మాదిరి (_O)"
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+msgid ""
+"Change the <span weight=\"bold\">Today: Template</span> note to customize "
+"the text that new Today notes have."
+msgstr "కొత్త ఈరోజు గమనికలు కలిగివున్న పాఠ్యమును మలచుకొనుటకు <span weight=\"bold\">ఈరోజు: మాదిరి</span> గమనికను మార్చుము."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
 msgid "Printing Support"
@@ -1586,7 +1616,6 @@ msgid "Adds ability to underline text."
 msgstr "పాఠ్యముకు క్రిందిగీతవుంచు సామర్ద్యమును జతచేయుము."
 
 #: ../src/addins/underline/underlinenoteaddin.cpp:55
-#| msgid "Hubert Figuiere and the Tomboy Project"
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "హ్యూబర్ట్ పిగుయిరీ మరియు టామ్బాయ్ ప్రోజెక్టు"
 
