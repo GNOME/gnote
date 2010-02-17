@@ -158,5 +158,7 @@ libgnote_a_SOURCES = \
 	$(APPLET_SOURCES) \
 	$(NULL)
 
-gnote_LDADD = $(GNOTE_LIBS)
-
+gnote_LDADD = \
+	$(GNOTE_LIBS) \
+	-lX11 \
+	$(NULL)
