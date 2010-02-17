@@ -65,6 +65,8 @@ namespace gnote {
     static const char *SYNC_SELECTED_SERVICE_ADDIN;
     static const char *SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
 
+    static const char *NOTE_RENAME_BEHAVIOR;
+
     static const char *INSERT_TIMESTAMP_FORMAT;
     
     static const char *SEARCH_WINDOW_X_POS;

@@ -229,7 +229,7 @@ namespace gnote {
     }
 
     DBG_OUT ("Renaming note from %s to %s", get_note()->get_title().c_str(), title.c_str());
-    get_note()->set_title(title);
+    get_note()->set_title(title, true);
     return true;
   }
 
@@ -733,30 +733,6 @@ namespace gnote {
     // Highlight previously unlinked text
     if (contains_text (renamed->get_title())) {
       highlight_note_in_block (renamed, get_buffer()->begin(), get_buffer()->end());
-    }
-
-    if (!contains_text (old_title)) {
-      return;
-    }
-
-    std::string old_title_lower = sharp::string_to_lower(old_title);
-
-    // Replace existing links with the new title.
-    utils::TextTagEnumerator enumerator(get_buffer(), m_link_tag);
-    while(enumerator.move_next()) {
-      const utils::TextRange & range(enumerator.current());
-      if (sharp::string_to_lower(range.text()) != old_title_lower) {
-        continue;
-      }
-
-      DBG_OUT ("Replacing '%s' with '%s'",
-               range.text().c_str(), renamed->get_title().c_str());
-
-      Gtk::TextIter start_iter = range.start();
-      Gtk::TextIter end_iter = range.end();
-      end_iter = get_buffer()->erase (start_iter, end_iter);
-      start_iter = range.start();
-      get_buffer()->insert_with_tag(start_iter, renamed->get_title(), m_link_tag);
     }
   }
 

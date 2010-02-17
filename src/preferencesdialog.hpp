@@ -30,6 +30,7 @@
 #include <gtkmm/treeiter.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/combobox.h>
+#include <gtkmm/comboboxtext.h>
 
 #include "sharp/addinstreemodel.hpp"
 
@@ -66,6 +67,10 @@ private:
   void on_reset_sync_addin_button();
   void on_save_sync_addin_button();
 
+  void on_preferences_setting_changed(Preferences * preferences,
+                                      GConfEntry * entry);
+  void on_rename_behavior_changed();
+
   sharp::DynamicModule * get_selected_addin();
   void on_addin_tree_selection_changed();
   void update_addin_buttons();
@@ -101,6 +106,7 @@ private:
   Gtk::Widget *syncAddinPrefsWidget;
   Gtk::Button *resetSyncAddinButton;
   Gtk::Button *saveSyncAddinButton;
+  Gtk::ComboBoxText *renameBehaviorCombo;
   AddinManager &m_addin_manager;
     
   Gtk::Button *font_button;

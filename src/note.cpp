@@ -40,6 +40,7 @@
 
 #include "note.hpp"
 #include "notemanager.hpp"
+#include "noterenamedialog.hpp"
 #include "notetag.hpp"
 #include "notewindow.hpp"
 #include "tagmanager.hpp"
@@ -753,6 +754,13 @@ namespace gnote {
 
   void Note::set_title(const std::string & new_title)
   {
+    set_title(new_title, false);
+  }
+
+
+  void Note::set_title(const std::string & new_title,
+                       bool from_user_action)
+  {
     if (m_data.data().title() != new_title) {
       if (m_window) {
         m_window->set_title(new_title);
@@ -761,9 +769,142 @@ namespace gnote {
       std::string old_title = m_data.data().title();
       m_data.data().title() = new_title;
 
+      if (from_user_action) {
+        process_rename_link_update(old_title);
+      }
+
       m_signal_renamed(shared_from_this(), old_title);
 
       queue_save (CONTENT_CHANGED); // TODO: Right place for this?
+    }
+  }
+
+
+  void Note::process_rename_link_update(const std::string & old_title)
+  {
+    Note::List linking_notes;
+    const Note::List & manager_notes = m_manager.get_notes();
+    const Note::Ptr self = shared_from_this();
+
+    for (Note::List::const_iterator iter = manager_notes.begin();
+         manager_notes.end() != iter;
+         iter++) {
+      // Technically, containing text does not imply linking,
+      // but this is less work
+      const Note::Ptr note = *iter;
+      if (note != self && note->contains_text(old_title))
+        linking_notes.push_back(note);
+    }
+
+    if (!linking_notes.empty()) {
+      Preferences & preferences = Preferences::obj();
+      const NoteRenameBehavior behavior
+        = static_cast<NoteRenameBehavior>(
+            preferences.get<int>(Preferences::NOTE_RENAME_BEHAVIOR));
+
+      if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
+        NoteRenameDialog dlg(linking_notes, old_title, self);
+        const int response = dlg.run();
+        const NoteRenameBehavior selected_behavior
+                                   = dlg.get_selected_behavior();
+        if (Gtk::RESPONSE_CANCEL != response
+            && NOTE_RENAME_ALWAYS_SHOW_DIALOG
+                 != selected_behavior) {
+          preferences.set<int>(Preferences::NOTE_RENAME_BEHAVIOR,
+                               selected_behavior);
+        }
+
+        const NoteRenameDialog::MapPtr notes = dlg.get_notes();
+
+        for (std::map<Note::Ptr, bool>::const_iterator iter
+               = notes->begin();
+             notes->end() != iter;
+             iter++) {
+          const std::pair<Note::Ptr, bool> p = *iter;
+          if (p.second && response == Gtk::RESPONSE_YES) // Rename
+            p.first->rename_links(old_title, self);
+          else
+            p.first->remove_links(old_title, self);
+        }
+        dlg.hide();
+      }
+      else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
+        for (Note::List::const_iterator iter = linking_notes.begin();
+             linking_notes.end() != iter;
+             iter++) {
+          (*iter)->remove_links(old_title, self);
+        }
+      }
+      else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
+        for (Note::List::const_iterator iter = linking_notes.begin();
+             linking_notes.end() != iter;
+             iter++) {
+          (*iter)->rename_links(old_title, self);
+        }
+      }
+    }
+  }
+
+
+  bool Note::contains_text(const std::string & text)
+  {
+    const std::string text_lower = sharp::string_to_lower(text);
+    const std::string text_content_lower
+                        = sharp::string_to_lower(text_content());
+    return sharp::string_index_of(text_content_lower, text_lower) > -1;
+  }
+
+
+  void Note::rename_links(const std::string & old_title,
+                          const Ptr & renamed)
+  {
+    handle_link_rename(old_title, renamed, true);
+  }
+
+
+  void Note::remove_links(const std::string & old_title,
+                          const Ptr & renamed)
+  {
+    handle_link_rename(old_title, renamed, false);
+  }
+
+
+  void Note::handle_link_rename(const std::string & old_title,
+                                const Ptr & renamed,
+                                bool rename)
+  {
+    // Check again, things may have changed
+    if (!contains_text(old_title))
+      return;
+
+    const std::string old_title_lower
+                        = sharp::string_to_lower(old_title);
+
+    const NoteTag::Ptr link_tag = m_tag_table->get_link_tag();
+
+    // Replace existing links with the new title.
+    utils::TextTagEnumerator enumerator(m_buffer, link_tag);
+    while (enumerator.move_next()) {
+      const utils::TextRange & range(enumerator.current());
+      if (sharp::string_to_lower(range.text()) != old_title_lower)
+        continue;
+
+      if (!rename) {
+        DBG_OUT("Removing link tag from text %s",
+                range.text().c_str());
+        m_buffer->remove_tag(link_tag, range.start(), range.end());
+      }
+      else {
+        DBG_OUT("Replacing %s with %s",
+                range.text().c_str(),
+                renamed->get_title().c_str());
+        const Gtk::TextIter start_iter = range.start();
+        const Gtk::TextIter end_iter = range.end();
+        m_buffer->erase(start_iter, end_iter);
+        m_buffer->insert_with_tag(range.start(),
+                                  renamed->get_title(),
+                                  link_tag);
+      }
     }
   }
 

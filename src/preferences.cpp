@@ -55,6 +55,8 @@ namespace gnote {
   const char * Preferences::SYNC_SELECTED_SERVICE_ADDIN = "/apps/gnote/sync/sync_selected_service_addin";
   const char * Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "/apps/gnote/sync/sync_conflict_behavior";
 
+  const char * Preferences::NOTE_RENAME_BEHAVIOR = "/apps/gnote/note_rename_behavior";
+
   const char * Preferences::INSERT_TIMESTAMP_FORMAT = "/apps/gnote/insert_timestamp/format";
     
   const char * Preferences::SEARCH_WINDOW_X_POS = "/apps/gnote/search_window_x_pos";

@@ -157,6 +157,7 @@ public:
     }
   const std::string & get_title() const;
   void set_title(const std::string & new_tile);
+  void set_title(const std::string & new_title, bool from_user_action);
   void rename_without_link_update(const std::string & newTitle);
   const std::string & xml_content()
     {
@@ -223,6 +224,10 @@ public:
     { return m_signal_tag_removed; }
 
 private:
+  bool contains_text(const std::string & text);
+  void handle_link_rename(const std::string & old_title,
+                          const Ptr & renamed,
+                          bool rename);
   void on_buffer_changed();
   void on_buffer_tag_applied(const Glib::RefPtr<Gtk::TextTag> &tag, 
                              const Gtk::TextBuffer::iterator &, 
@@ -236,6 +241,11 @@ private:
   bool on_window_destroyed(GdkEventAny *ev);
   void on_save_timeout();
   void process_child_widget_queue();
+  void process_rename_link_update(const std::string & old_title);
+  void rename_links(const std::string & old_title,
+                    const Ptr & renamed);
+  void remove_links(const std::string & old_title,
+                    const Ptr & renamed);
 
   Note(NoteData * data, const std::string & filepath, NoteManager & manager);
 

@@ -128,6 +128,7 @@ libgnote_a_SOURCES = \
 	notebuffer.hpp notebuffer.cpp \
 	noteeditor.hpp noteeditor.cpp \
 	notemanager.hpp notemanager.cpp \
+	noterenamedialog.hpp noterenamedialog.cpp \
 	notetag.hpp notetag.cpp \
 	note.hpp note.cpp \
 	notewindow.hpp notewindow.cpp \

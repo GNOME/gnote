@@ -78,6 +78,7 @@ namespace gnote {
     , syncAddinPrefsWidget(NULL)
     , resetSyncAddinButton(NULL)
     , saveSyncAddinButton(NULL)
+    , renameBehaviorCombo(NULL)
     , m_addin_manager(addinmanager)
   {
 //    set_icon(utils::get_icon("gnote"));
@@ -157,6 +158,10 @@ namespace gnote {
       add_action_widget (*button, Gtk::RESPONSE_CLOSE);
       set_default_response(Gtk::RESPONSE_CLOSE);
 
+    Preferences::obj().signal_setting_changed().connect(
+      sigc::mem_fun(
+        *this,
+        &PreferencesDialog::on_preferences_setting_changed));
   }
 
   void PreferencesDialog::enable_addin(bool enable)
@@ -250,22 +255,51 @@ namespace gnote {
 
       // Custom font...
 
+      Gtk::HBox * const font_box = manage(new Gtk::HBox(false, 0));
       check = manage(make_check_button (_("Use custom _font")));
-      options_list->pack_start (*check, false, false, 0);
+      font_box->pack_start(*check, Gtk::PACK_EXPAND_WIDGET, 0);
       font_peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_CUSTOM_FONT, 
                                                      *check);
       font_peditor->setup();
 
-      align = manage(new Gtk::Alignment(0.5f, 0.5f, 0.4f, 1.0f));
-      align->show ();
-      options_list->pack_start (*align, false, false, 0);
-
       font_button = manage(make_font_button());
       font_button->set_sensitive(check->get_active());
-      align->add (*font_button);
+      font_box->pack_start(*font_button, Gtk::PACK_EXPAND_WIDGET, 0);
+      font_box->show_all();
+      options_list->pack_start(*font_box, false, false, 0);
 
       font_peditor->add_guard (font_button);
       
+      // Note renaming behavior
+      Gtk::HBox * const rename_behavior_box = manage(new Gtk::HBox(
+                                                           false, 0));
+      label = manage(make_label(_("When renaming a linked note: ")));
+      rename_behavior_box->pack_start(*label,
+                                      Gtk::PACK_EXPAND_WIDGET,
+                                      0);
+      renameBehaviorCombo = manage(new Gtk::ComboBoxText());
+      renameBehaviorCombo->append_text(_("Ask me what to do"));
+      renameBehaviorCombo->append_text(_("Never rename links"));
+      renameBehaviorCombo->append_text(_("Always rename links"));
+      Preferences & preferences = Preferences::obj();
+      int rename_behavior = preferences.get<int>(
+                              Preferences::NOTE_RENAME_BEHAVIOR);
+      if (0 > rename_behavior || 2 < rename_behavior) {
+        rename_behavior = 0;
+        preferences.set<int>(Preferences::NOTE_RENAME_BEHAVIOR,
+                             rename_behavior);
+      }
+      renameBehaviorCombo->set_active(rename_behavior);
+      renameBehaviorCombo->signal_changed().connect(
+        sigc::mem_fun(
+          *this,
+          &PreferencesDialog::on_rename_behavior_changed));
+      rename_behavior_box->pack_start(*renameBehaviorCombo,
+                                      Gtk::PACK_EXPAND_WIDGET,
+                                      0);
+      rename_behavior_box->show_all();
+      options_list->pack_start(*rename_behavior_box, false, false, 0);
+
       // New Note Template
       // Translators: This is 'New Note' Template, not New 'Note Template'
       label = manage(make_label (_("New Note Template")));
@@ -926,6 +960,38 @@ namespace gnote {
 
     // Open the template note
     template_note->get_window()->show ();
+  }
+
+
+
+  void  PreferencesDialog::on_preferences_setting_changed(
+                             Preferences * preferences,
+                             GConfEntry * entry)
+  {
+    const char * const key = gconf_entry_get_key(entry);
+
+    if (strcmp(key, Preferences::NOTE_RENAME_BEHAVIOR) == 0) {
+      const GConfValue * const value = gconf_entry_get_value(entry);
+      int rename_behavior = gconf_value_get_int(value);
+      if (0 > rename_behavior || 2 < rename_behavior) {
+        rename_behavior = 0;
+        preferences->set<int>(Preferences::NOTE_RENAME_BEHAVIOR,
+                              rename_behavior);
+      }
+      if (renameBehaviorCombo->get_active_row_number()
+            != rename_behavior) {
+        renameBehaviorCombo->set_active(rename_behavior);
+      }
+    }
+  }
+
+
+
+  void  PreferencesDialog::on_rename_behavior_changed()
+  {
+    Preferences::obj().set<int>(
+      Preferences::NOTE_RENAME_BEHAVIOR,
+      renameBehaviorCombo->get_active_row_number());
   }
 
 
