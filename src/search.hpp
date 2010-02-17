@@ -25,6 +25,10 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <vector>
+
+#include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/split.hpp>
 
 #include "note.hpp"
 #include "notebooks/notebook.hpp"
@@ -38,6 +42,10 @@ class Search
 public:
   typedef std::map<Note::Ptr,int> Results;
   typedef std::tr1::shared_ptr<Results> ResultsPtr;
+
+  template<typename T>
+  static void split_watching_quotes(std::vector<T> & split,
+                                    const T & source);
 
   Search(NoteManager &);
 
@@ -70,6 +78,36 @@ private:
   NoteManager &m_manager;
 };
 
+template<typename T>
+void Search::split_watching_quotes(std::vector<T> & split,
+                                   const T & source)
+{
+  boost::split(split, source, boost::is_any_of("\""));
+
+  std::vector<T> tmp;
+
+  for (typename std::vector<T>::iterator i = split.begin();
+       split.end() != i;
+       i++) {
+    const T & part = *i;
+    std::vector<T> parts;
+    boost::split(parts, part, boost::is_any_of(" \t\n"));
+
+    for (typename std::vector<T>::const_iterator j = parts.begin();
+         parts.end() != j;
+         j++) {
+      const T & s = *j;
+      if (!s.empty())
+        tmp.push_back(s);
+    }
+
+    i = split.erase(i);
+    if (split.end() == i)
+      break;
+  }
+
+  split.insert(split.end(), tmp.begin(), tmp.end());
+}
 
 }
 

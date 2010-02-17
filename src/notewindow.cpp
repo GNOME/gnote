@@ -38,6 +38,7 @@
 #include "utils.hpp"
 #include "undo.hpp"
 #include "recentchanges.hpp"
+#include "search.hpp"
 #include "actionmanager.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/string.hpp"
@@ -834,7 +835,7 @@ namespace gnote {
     text = text.lowercase();
 
     std::vector<Glib::ustring> words;
-    sharp::ustring_split(words, text, " \t\n");
+    Search::split_watching_quotes(words, text);
 
     find_matches_in_buffer(m_note.get_buffer(), words, m_current_matches);
 

@@ -39,11 +39,11 @@ namespace gnote {
                                   const notebooks::Notebook::Ptr & selected_notebook)
   {
     std::vector<std::string> words;
-    sharp::string_split(words, query, " \t\n");
+    Search::split_watching_quotes(words, query);
 
     // Used for matching in the raw note XML
     std::vector<std::string> encoded_words; 
-    sharp::string_split(encoded_words, utils::XmlEncoder::encode (query), " \t\n");
+    Search::split_watching_quotes(encoded_words, utils::XmlEncoder::encode (query));
     ResultsPtr temp_matches(new Results);
       
       // Skip over notes that are template notes

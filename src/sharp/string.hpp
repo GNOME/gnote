@@ -56,8 +56,6 @@ namespace sharp {
 
   void string_split(std::vector<std::string> & split, const std::string & source,
                     const char * delimiters);
-  void ustring_split(std::vector<Glib::ustring> & split, const Glib::ustring & source,
-                    const char * delimiters);
 
   /** copy the substring for %source, starting at %start until the end */
   std::string string_substring(const std::string & source, int start);
