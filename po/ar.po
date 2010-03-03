@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-20 22:49+0200\n"
-"PO-Revision-Date: 2010-02-20 22:49+0300\n"
+"POT-Creation-Date: 2010-03-03 19:34+0200\n"
+"PO-Revision-Date: 2010-03-03 19:34+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
@@ -226,102 +226,122 @@ msgstr ""
 "حالته."
 
 #: ../data/gnote.schemas.in.h:31
+#, fuzzy
+msgid ""
+"Integer value indicating if there is a preference to always perform a "
+"specific link updating behavior when a note is renamed, instead of prompting "
+"the user. The values map to an internal enumeration. 0 indicates that the "
+"user wishes to be prompted when renaming a note may impact links that exist "
+"in other notes. 1 indicates that links should automatically be removed. 2 "
+"indicates that link text should be updated to the new note name so that it "
+"will continue linking to the renamed note."
+msgstr ""
+"قيمة عدد صحيح تشير إلى وجود تفضيل للتصرف دائمًا بسلوك معين في حال اكتشاف "
+"تضارب، عوضًا عن سؤال المستخدم. هذه القيم معينة وفق ترقيم داخلي. 0 يشير إلى أن "
+"المستخدم يريد أن يُسأل عندما يحدث التضارب، بحيث يمكنه التعامل مع كل تضارب حسب "
+"حالته."
+
+#: ../data/gnote.schemas.in.h:32
+msgid "Link Updating Behavior on Note Rename"
+msgstr "سلوك تحديث الروابط عند تغيير أسماء الملاحظات"
+
+#: ../data/gnote.schemas.in.h:33
 msgid "List of pinned notes"
 msgstr "قائمة الملاحظات المثبتة."
 
-#: ../data/gnote.schemas.in.h:32
+#: ../data/gnote.schemas.in.h:34
 msgid "Minimum number of notes to show in menu"
 msgstr "أقل عدد من الملاحظات يمكن إظهاره في القائمة"
 
-#: ../data/gnote.schemas.in.h:33
+#: ../data/gnote.schemas.in.h:35
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "السلوك المحفوظ عند تصارب مزامنة الملاحظات"
 
-#: ../data/gnote.schemas.in.h:34
+#: ../data/gnote.schemas.in.h:36
 msgid "Open Recent Changes"
 msgstr "افتح التعديلات الأخيرة"
 
-#: ../data/gnote.schemas.in.h:35
+#: ../data/gnote.schemas.in.h:37
 msgid "Open Search Dialog"
 msgstr "افتح مربع حوار البحث"
 
-#: ../data/gnote.schemas.in.h:36
+#: ../data/gnote.schemas.in.h:38
 msgid "Open Start Here"
 msgstr "افتح ابدأ هنا"
 
-#: ../data/gnote.schemas.in.h:37
+#: ../data/gnote.schemas.in.h:39
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "مسار على خادوم SSH لمجلد مزامنة ملاحظات‌ج (اختياري)."
 
-#: ../data/gnote.schemas.in.h:38
+#: ../data/gnote.schemas.in.h:40
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
 msgstr "المسار في الخادوم المزامن عند استخدام ملحقة خدمة مزامنة نظام الملفات."
 
-#: ../data/gnote.schemas.in.h:39
+#: ../data/gnote.schemas.in.h:41
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "مجلد مزامنة SSHFS البعيد"
 
-#: ../data/gnote.schemas.in.h:40
+#: ../data/gnote.schemas.in.h:42
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "اسم مستخدم مزامنة SSHFS البعيد"
 
-#: ../data/gnote.schemas.in.h:41
+#: ../data/gnote.schemas.in.h:43
 msgid "SSHFS Synchronization Server Port"
 msgstr "منفذ خادوم مزامنة SSHFS"
 
-#: ../data/gnote.schemas.in.h:42
+#: ../data/gnote.schemas.in.h:44
 msgid "SSHFS Synchronization Server URL"
 msgstr "مسار خادوم مزامنة SSHFS"
 
-#: ../data/gnote.schemas.in.h:43
+#: ../data/gnote.schemas.in.h:45
 msgid "Saved height of Search window"
 msgstr "ارتفاع نافذة البحث المحفوظ"
 
-#: ../data/gnote.schemas.in.h:44
+#: ../data/gnote.schemas.in.h:46
 msgid "Saved horizontal position of Search window"
 msgstr "الموضع الأفقي المحفوظ لنافذة البحث"
 
-#: ../data/gnote.schemas.in.h:45
+#: ../data/gnote.schemas.in.h:47
 msgid "Saved vertical position of Search window"
 msgstr "الموضع الرأسي المحفوظ لنافذة البحث"
 
-#: ../data/gnote.schemas.in.h:46
+#: ../data/gnote.schemas.in.h:48
 msgid "Saved width of Search window"
 msgstr "احفظ عرض نافذة البحث"
 
-#: ../data/gnote.schemas.in.h:47
+#: ../data/gnote.schemas.in.h:49
 msgid "Selected Synchronization Service Addin"
 msgstr "ملحقة خدمة المزامنة المحددة"
 
-#: ../data/gnote.schemas.in.h:48
+#: ../data/gnote.schemas.in.h:50
 msgid "Set to TRUE to activate"
 msgstr "اضبط إلى صحيح للتنشيط"
 
-#: ../data/gnote.schemas.in.h:49
+#: ../data/gnote.schemas.in.h:51
 msgid "Show applet menu"
 msgstr "أظهر قائمة البريمج"
 
-#: ../data/gnote.schemas.in.h:50
+#: ../data/gnote.schemas.in.h:52
 msgid "Start Here Note"
 msgstr "ابدأ الملاحظة هنا"
 
-#: ../data/gnote.schemas.in.h:51
+#: ../data/gnote.schemas.in.h:53
 msgid "Synchronization Client ID"
 msgstr "مزامنة هوية العميل"
 
-#: ../data/gnote.schemas.in.h:52
+#: ../data/gnote.schemas.in.h:54
 msgid "Synchronization Local Server Path"
 msgstr "مزامنة مسار الخادوم المحلي"
 
-#: ../data/gnote.schemas.in.h:53
+#: ../data/gnote.schemas.in.h:55
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "تنسيق التاريخ المستخدم لختم الوقت. يتبع تنسيق ‪strftime(3)‬."
 
-#: ../data/gnote.schemas.in.h:54
+#: ../data/gnote.schemas.in.h:56
 msgid ""
 "The global keybinding for creating and displaying a new Note. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -336,7 +356,7 @@ msgstr ""
 "\"&lt;Ctrl&gt;\". إذا ضبطت الخيار للنص الخاص \"disabled\"، فحينها لن يكون "
 "هناك ارتباط للمفاتيح لهذه العملية."
 
-#: ../data/gnote.schemas.in.h:55
+#: ../data/gnote.schemas.in.h:57
 msgid ""
 "The global keybinding for opening the \"Start Here\" note. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -351,7 +371,7 @@ msgstr ""
 "\"&lt;Ctrl&gt;\". إذا ضبطت الخيار للنص الخاص \"disabled\"، فحينها لن يكون "
 "هناك ارتباط للمفاتيح لهذه العملية."
 
-#: ../data/gnote.schemas.in.h:56
+#: ../data/gnote.schemas.in.h:58
 msgid ""
 "The global keybinding for opening the Note Search dialog. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -366,7 +386,7 @@ msgstr ""
 "\"&lt;Ctrl&gt;\". إذا ضبطت الخيار للنص الخاص \"disabled\"، فحينها لن يكون "
 "هناك ارتباط للمفاتيح لهذه العملية."
 
-#: ../data/gnote.schemas.in.h:57
+#: ../data/gnote.schemas.in.h:59
 msgid ""
 "The global keybinding for opening the Recent Changes dialog. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -381,7 +401,7 @@ msgstr ""
 "\"&lt;Ctrl&gt;\". إذا ضبطت الخيار للنص الخاص \"disabled\"، فحينها لن يكون "
 "هناك ارتباط للمفاتيح لهذه العملية."
 
-#: ../data/gnote.schemas.in.h:58
+#: ../data/gnote.schemas.in.h:60
 msgid ""
 "The global keybinding for showing the Gnote applet's menu. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -396,16 +416,16 @@ msgstr ""
 "\"&lt;Ctrl&gt;\". إذا ضبطت الخيار للنص الخاص \"disabled\"، فحينها لن يكون "
 "هناك ارتباط للمفاتيح لهذه العملية."
 
-#: ../data/gnote.schemas.in.h:59
+#: ../data/gnote.schemas.in.h:61
 msgid "The handler for \"note://\" URLs"
 msgstr "العامل الخاص لعناوين \"‪note://‬\""
 
-#: ../data/gnote.schemas.in.h:60
+#: ../data/gnote.schemas.in.h:62
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr "آخر دليل تم تصدير ملاحظة إليه باستخدام ملحق التصدير بصيغة HTML"
 
-#: ../data/gnote.schemas.in.h:61
+#: ../data/gnote.schemas.in.h:63
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -413,7 +433,7 @@ msgstr ""
 "آخر الإعدادات لـصندوق الاختيار \"صدّر الملاحظات المرتبطة\" في ملحق التصدير "
 "بصيغة HTML"
 
-#: ../data/gnote.schemas.in.h:62
+#: ../data/gnote.schemas.in.h:64
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -425,7 +445,7 @@ msgstr ""
 "HTML' لتحديد ما إذا كان سيتم تضمين كل الملاحظات (التي تم العثور عليها بصورة "
 "رجعية) عند التصدير لـHTML."
 
-#: ../data/gnote.schemas.in.h:63
+#: ../data/gnote.schemas.in.h:65
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -434,11 +454,11 @@ msgstr ""
 "عنوان الملاحظة التي يجب اعتبارها ملاحظة \"ابدأ هنا\" والتي توضع دائمًا في آخر "
 "قائمة ملاحظات‌ج ويمكن أيضًا الوصول لها بمفتاح اختصار."
 
-#: ../data/gnote.schemas.in.h:64
+#: ../data/gnote.schemas.in.h:66
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "المنفذ المستخدم عند الاتصال بخادوم مزامنة عبر SSH."
 
-#: ../data/gnote.schemas.in.h:65
+#: ../data/gnote.schemas.in.h:67
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -446,37 +466,37 @@ msgstr ""
 "الوقت (بالملي ثانية) الذي ستنتظره ملاحظات‌ج للحصول على استجابة عند استخدام "
 "FUSE لوصل مشاركة مزامنة."
 
-#: ../data/gnote.schemas.in.h:66
+#: ../data/gnote.schemas.in.h:68
 msgid "Timestamp format"
 msgstr "تنسيق ختم الوقت"
 
-#: ../data/gnote.schemas.in.h:67
+#: ../data/gnote.schemas.in.h:69
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "مسار خادوم SSH يحتوي على مجلد مزامنة ملاحظات‌ج."
 
-#: ../data/gnote.schemas.in.h:68
+#: ../data/gnote.schemas.in.h:70
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr "معرّف فريد لملحقة خدمة مزامنة الملاحظات المعدّة حاليًا."
 
-#: ../data/gnote.schemas.in.h:69
+#: ../data/gnote.schemas.in.h:71
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
 msgstr "معرّف فريد لعميل ملاحظات‌ج هذا، يُستخدم عند الاتصال بخادوم مزامنة."
 
-#: ../data/gnote.schemas.in.h:70
+#: ../data/gnote.schemas.in.h:72
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr "استخدم خيار ‪\"-ac\"‬ ل wdfs لقبول شهادات SSL دون سؤال المستخدم."
 
-#: ../data/gnote.schemas.in.h:71
+#: ../data/gnote.schemas.in.h:73
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr "اسم المستخدم عند الاتصال بخادوم مزامنة عبر SSH."
 
-#: ../data/gnote.schemas.in.h:72
+#: ../data/gnote.schemas.in.h:74
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -540,7 +560,7 @@ msgstr "أغلق ملاحظات‌ج"
 msgid "_Edit"
 msgstr "_حرر"
 
-#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:87
+#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:88
 msgid "Gnote Preferences"
 msgstr "تفضيلات ملاحظات‌ج"
 
@@ -675,23 +695,23 @@ msgstr "خيارات ملاحظات‌ج"
 msgid "Version %1%"
 msgstr "الإصدارة %1%"
 
-#: ../src/preferencesdialog.cpp:105
+#: ../src/preferencesdialog.cpp:106
 msgid "Editing"
 msgstr "التحرير"
 
-#: ../src/preferencesdialog.cpp:107
+#: ../src/preferencesdialog.cpp:108
 msgid "Hotkeys"
 msgstr "الاختصارات"
 
-#: ../src/preferencesdialog.cpp:112
+#: ../src/preferencesdialog.cpp:113
 msgid "Add-ins"
 msgstr "الملحقات"
 
-#: ../src/preferencesdialog.cpp:215
+#: ../src/preferencesdialog.cpp:220
 msgid "_Spell check while typing"
 msgstr "دقّق الإملاء أثناء ال_كتابة"
 
-#: ../src/preferencesdialog.cpp:221
+#: ../src/preferencesdialog.cpp:226
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -700,11 +720,11 @@ msgstr ""
 "السياق."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:232
+#: ../src/preferencesdialog.cpp:237
 msgid "Highlight _WikiWords"
 msgstr "أبرِز _كلمات الويكي"
 
-#: ../src/preferencesdialog.cpp:238
+#: ../src/preferencesdialog.cpp:243
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -713,38 +733,53 @@ msgstr ""
 "ستُنشأ ملاحظة جديدة بنفس الاسم"
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:245
+#: ../src/preferencesdialog.cpp:250
 msgid "Enable auto-_bulleted lists"
 msgstr "فعّل القوائم المنق_طة آليا"
 
-#. Custom font...
-#: ../src/preferencesdialog.cpp:253
+#: ../src/preferencesdialog.cpp:259
 msgid "Use custom _font"
 msgstr "استخدم _خط مخصّص"
 
+#: ../src/preferencesdialog.cpp:276
+msgid "When renaming a linked note: "
+msgstr "عند تغيير اسم ملاحظة مرتبطة:"
+
+#: ../src/preferencesdialog.cpp:281
+msgid "Ask me what to do"
+msgstr "اسألني ما العمل"
+
+#: ../src/preferencesdialog.cpp:282
+msgid "Never rename links"
+msgstr "لا تغير أسماء الروابط أبدا"
+
+#: ../src/preferencesdialog.cpp:283
+msgid "Always rename links"
+msgstr "غيّر أسماء الروابط دائما"
+
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:271 ../src/notemanager.cpp:107
+#: ../src/preferencesdialog.cpp:305 ../src/notemanager.cpp:107
 msgid "New Note Template"
 msgstr "قالب ملاحظة جديدة"
 
-#: ../src/preferencesdialog.cpp:274
+#: ../src/preferencesdialog.cpp:308
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr ""
 "استعمل قالب الملاحظات الجديدة لكتابة النص الذي سيظهر في كل ملاحظة جديدة"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:316
 msgid "Open New Note Template"
 msgstr "افتح قالب ملاحظة جديد"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:340
+#: ../src/preferencesdialog.cpp:374
 msgid "Listen for _Hotkeys"
 msgstr "استمع إلى الا_ختصارات"
 
-#: ../src/preferencesdialog.cpp:347
+#: ../src/preferencesdialog.cpp:381
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -754,73 +789,73 @@ msgstr ""
 "على الاختصارات: ‪<b>&lt;Control&gt;&lt;Shift&gt;F11</b>‬،‬ ‪<b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:367
+#: ../src/preferencesdialog.cpp:401
 msgid "Show notes _menu"
 msgstr "أظهر _قائمة الملاحظات"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:383
+#: ../src/preferencesdialog.cpp:417
 msgid "Open \"_Start Here\""
 msgstr "افتح \"ملاحظة ا_بدأ هنا\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:398
+#: ../src/preferencesdialog.cpp:432
 msgid "Create _new note"
 msgstr "أنشئ ملاحظة _جديدة"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:413
+#: ../src/preferencesdialog.cpp:447
 msgid "Open \"Search _All Notes\""
 msgstr "افتح \"ابحث في _كل الملاحظات\""
 
-#: ../src/preferencesdialog.cpp:439
+#: ../src/preferencesdialog.cpp:473
 msgid "Ser_vice:"
 msgstr "خ_دمة:"
 
-#: ../src/preferencesdialog.cpp:496
+#: ../src/preferencesdialog.cpp:530
 msgid "Not configurable"
 msgstr "غير قابل للإعداد"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:516
+#: ../src/preferencesdialog.cpp:550
 msgid "_Advanced..."
 msgstr "مت_قدّم..."
 
-#: ../src/preferencesdialog.cpp:563
+#: ../src/preferencesdialog.cpp:597
 msgid "The following add-ins are installed"
 msgstr "الملحقات التالية مثبتة"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:594
+#: ../src/preferencesdialog.cpp:628
 msgid "_Enable"
 msgstr "_فعّل"
 
-#: ../src/preferencesdialog.cpp:600
+#: ../src/preferencesdialog.cpp:634
 msgid "_Disable"
 msgstr "ع_طّل"
 
-#: ../src/preferencesdialog.cpp:731
+#: ../src/preferencesdialog.cpp:765
 msgid "Not Implemented"
 msgstr "غير مطبق"
 
-#: ../src/preferencesdialog.cpp:745
+#: ../src/preferencesdialog.cpp:779
 msgid "%1% Preferences"
 msgstr "تفضيلات %1%"
 
-#: ../src/preferencesdialog.cpp:886
+#: ../src/preferencesdialog.cpp:920
 msgid "Choose Note Font"
 msgstr "اختر خط الملاحظات"
 
-#: ../src/preferencesdialog.cpp:981
+#: ../src/preferencesdialog.cpp:1047
 msgid "Version:"
 msgstr "النسخة:"
 
-#: ../src/preferencesdialog.cpp:986
+#: ../src/preferencesdialog.cpp:1052
 msgid "Author:"
 msgstr "المؤلف:"
 
-#: ../src/preferencesdialog.cpp:992
+#: ../src/preferencesdialog.cpp:1058
 msgid "Copyright:"
 msgstr "حقوق النسخ:"
 
@@ -909,6 +944,62 @@ msgstr "ملاحظة جديدة %1%"
 #: ../src/notemanager.cpp:594 ../src/notemanager.cpp:684
 msgid "Describe your new note here."
 msgstr "صِف ملاحظتك الجديدة هنا."
+
+#: ../src/noterenamedialog.cpp:151
+msgid "Rename Note Links?"
+msgstr "أأغير تسمية روابط الملاحظة؟"
+
+#: ../src/noterenamedialog.cpp:156
+msgid "_Don't Rename Links"
+msgstr "لا _تغير تسمية الروابط"
+
+#: ../src/noterenamedialog.cpp:157
+msgid "_Rename Links"
+msgstr "_غير تسمية الروابط"
+
+#: ../src/noterenamedialog.cpp:158
+msgid "Select All"
+msgstr "اختر الكل"
+
+#: ../src/noterenamedialog.cpp:159
+msgid "Select None"
+msgstr "لا تختر شيء"
+
+#: ../src/noterenamedialog.cpp:160
+msgid "Always show this _window"
+msgstr "أ_ظهر هذه النافذة دائما"
+
+#: ../src/noterenamedialog.cpp:161
+msgid "Alwa_ys rename links"
+msgstr "غيّر أسماء الروابط _دائما"
+
+#: ../src/noterenamedialog.cpp:163
+msgid "Never rename _links"
+msgstr "لا تغير أ_سماء الروابط أبدا"
+
+#: ../src/noterenamedialog.cpp:182
+msgid ""
+"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
+"\"<span underline=\"single\">%2</span>\"?\n"
+"\n"
+"If you do not rename the links, they will no longer link to anything."
+msgstr ""
+"أأغير تسمية الروابط في الملاحظات الأخرى من \"<span underline=\"single\">%1</"
+"span>\" إلى \"<span underline=\"single\">%2</span>\"؟\n"
+"\n"
+"إذا لم تغير أسماء الروابط فستربط إلى لا شيء؟"
+
+#: ../src/noterenamedialog.cpp:215
+msgid "Rename Links"
+msgstr "غير تسمية الروابط"
+
+#: ../src/noterenamedialog.cpp:230
+msgid "Note Title"
+msgstr "عنوان الملاحظة"
+
+#: ../src/noterenamedialog.cpp:266
+msgid "Ad_vanced"
+msgstr "مت_قدّم..."
 
 #: ../src/notewindow.cpp:74
 msgid "Find in This Note"
@@ -1047,7 +1138,7 @@ msgid "Font Size"
 msgstr "حجم الخط"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:67
+#: ../src/note.cpp:68
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "هل تريد حقا حذف هذه الملاحظة؟"
@@ -1057,15 +1148,15 @@ msgstr[3] "هل تريد حقا حذف هذه الملاحظات ال%1%؟"
 msgstr[4] "هل تريد حقا حذف هذه الملاحظات ال%1%؟"
 msgstr[5] "هل تريد حقا حذف هذه الملاحظات ال%1%؟"
 
-#: ../src/note.cpp:79
+#: ../src/note.cpp:80
 msgid "If you delete a note it is permanently lost."
 msgstr "إذا حذفت الملاحظة فسوف تفقد للأبد."
 
-#: ../src/note.cpp:115
+#: ../src/note.cpp:116
 msgid "Error saving note data."
 msgstr "خطأ أثناء حفظ بيانات الملاحظات."
 
-#: ../src/note.cpp:116
+#: ../src/note.cpp:117
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1915,9 +2006,6 @@ msgstr "هُبِرت فيجوري ومشروع توم‌بوي"
 #~ msgstr ""
 #~ "عندما يُكتشف تضارب بين ملاحظة محلية وملاحظة على خادوم المزامنة المُعدّ:"
 
-#~ msgid "Always ask me what to do."
-#~ msgstr "اسألني دائمًا ماذا يجب أن أفعل."
-
 #~ msgid "Rename my local note."
 #~ msgstr "أعد تسمية الملاحظة المحلية."
 
@@ -2058,9 +2146,6 @@ msgstr "هُبِرت فيجوري ومشروع توم‌بوي"
 
 #~ msgid "Details"
 #~ msgstr "التفاصيل"
-
-#~ msgid "Note Title"
-#~ msgstr "عنوان الملاحظة"
 
 #~ msgid "Status"
 #~ msgstr "الحالة"
