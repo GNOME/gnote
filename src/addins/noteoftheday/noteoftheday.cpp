@@ -113,14 +113,12 @@ std::string NoteOfTheDay::get_content(
 std::string NoteOfTheDay::get_content_without_title(
                               const std::string & content)
 {
-  std::string str = "";
-  try {
-    str = content.substr(content.find("\n", 0), std::string::npos);
-  }
-  catch (const std::exception &) {
-  }
+  const std::string::size_type nl = content.find("\n");
 
-  return str;
+  if (std::string::npos != nl)
+    return std::string(content, nl, std::string::npos);
+  else
+    return std::string();
 }
 
 gnote::Note::Ptr NoteOfTheDay::get_note_by_date(
