@@ -59,7 +59,7 @@ dnl Ultrix and Pyramid sh refuse to redirect output of eval, so use subshell.
 (eval "$ac_cpp conftest.$ac_ext") 2>&AS_MESSAGE_LOG_FD |
   $SED -n -e "$1" >conftest.i 2>&1],
   [$3],
-  [$4])dnl
+  [$4])
 rm -f conftest*
 ])# AC_EGREP_CPP
 
