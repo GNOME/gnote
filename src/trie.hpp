@@ -67,7 +67,7 @@ namespace gnote {
         }
       TrieMatchPtr next;
       TrieStatePtr state;
-      char         value;
+      gunichar     value;
     };
 
   public:
@@ -90,7 +90,7 @@ namespace gnote {
       }
 
   private:
-    TrieStatePtr insert_match_at_state(size_t depth, const TrieStatePtr & q, char c)
+    TrieStatePtr insert_match_at_state(size_t depth, const TrieStatePtr & q, gunichar c)
       {
         // Create a new state with a failure at %root
         TrieStatePtr new_q(new TrieState ());
@@ -120,7 +120,7 @@ namespace gnote {
 
     // Iterate the matches at state %s looking for the first match
     // containing %c.
-    TrieMatchPtr find_match_at_state (const TrieStatePtr & s, char c) const
+    TrieMatchPtr find_match_at_state (const TrieStatePtr & s, gunichar c) const
       {
         TrieMatchPtr m = s->first_match;
 
@@ -144,7 +144,7 @@ namespace gnote {
      *   final = union(final, q)
      * ENDFOR
      */
-    void add_keyword(const std::string & needle, const value_t & pattern_id)
+    void add_keyword(const Glib::ustring & needle, const value_t & pattern_id)
       {
         TrieStatePtr q = m_root;
         int depth = 0;
@@ -152,9 +152,9 @@ namespace gnote {
         // Step 1: add the pattern to the trie...
 
         for (size_t idx = 0; idx < needle.size(); idx++) {
-          char c = needle [idx];
+          gunichar c = needle [idx];
           if (!m_case_sensitive)
-            c = ::tolower(c);
+            c = g_unichar_tolower(c);
 
           TrieMatchPtr m = find_match_at_state (q, c);
           if (m == NULL) {
@@ -235,16 +235,16 @@ namespace gnote {
      * ENDFOR
      * RETURN FALSE
      */
-    HitListPtr find_matches(const std::string & haystack)
+    HitListPtr find_matches(const Glib::ustring & haystack)
       {
         HitListPtr matches(new HitList());
         TrieStatePtr q = m_root;
         TrieMatchPtr m;
         size_t idx = 0, start_idx = 0, last_idx = 0;
         while (idx < haystack.size()) {
-          char c = haystack [idx++];
+          gunichar c = haystack [idx++];
           if (!m_case_sensitive)
-            c = ::tolower (c);
+            c = g_unichar_tolower(c);
 
           while (q) {
             m = find_match_at_state (q, c);

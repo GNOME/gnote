@@ -9,7 +9,7 @@
 
 int test_main(int /*argc*/, char ** /*argv*/)
 {
-  std::string src = "bazar this is some foo, bar, and baz bazbarfoofoo bazbazarbaz end bazar";
+  std::string src = "bazar this is some foo, bar, and baz BazBarFooFoo bazbazarbaz end bazar ąČęĖįŠųŪž";
 	printf("Searching in '%s':\n", src.c_str());
 
   gnote::TrieTree<std::string> trie(false);
@@ -17,12 +17,13 @@ int test_main(int /*argc*/, char ** /*argv*/)
   trie.add_keyword ("bar", "bar");
   trie.add_keyword ("baz", "baz");
   trie.add_keyword ("bazar", "bazar");
+  trie.add_keyword ("ąčęėįšųūž", "ąčęėįšųūž");
 
   printf ("Starting search...\n");
   gnote::TrieTree<std::string>::HitListPtr matches(trie.find_matches (src));
   BOOST_CHECK( matches.get() );
 
-  BOOST_CHECK( matches->size() == 15 );
+  BOOST_CHECK( matches->size() == 16 );
   gnote::TrieTree<std::string>::HitList::const_iterator iter = matches->begin();
 
   BOOST_CHECK( *iter );
