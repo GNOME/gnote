@@ -23,7 +23,7 @@ AC_SUBST(GNOTE_VERSION)
 dnl all the library version.
 dnl if one is harcoded elsewhere, it is a bug
 
-GTK_VERSION=2.18
+GTK_VERSION=2.20
 LIBGLIBMM_VERSION=2.0
 LIBGTKMM_VERSION=2.12.0
 LIBGCONF_VERSION=2.0.0
