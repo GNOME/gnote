@@ -153,9 +153,9 @@ tomboy_window_override_user_time (GtkWindow *window)
 void
 tomboy_window_present_hardcore (GtkWindow *window)
 {
-	if (!GTK_WIDGET_REALIZED (window))
+	if (!gtk_widget_get_realized (GTK_WIDGET (window)))
 		gtk_widget_realize (GTK_WIDGET (window));
-	else if (GTK_WIDGET_VISIBLE (window))
+	else if (gtk_widget_get_visible (GTK_WIDGET (window)))
 		tomboy_window_move_to_current_workspace (window);
 
 	tomboy_window_override_user_time (window);
