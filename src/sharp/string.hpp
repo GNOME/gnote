@@ -60,9 +60,9 @@ namespace sharp {
                     const char * delimiters);
 
   /** copy the substring for %source, starting at %start until the end */
-  std::string string_substring(const std::string & source, int start);
+  Glib::ustring string_substring(const Glib::ustring & source, int start);
   /** copy the substring for %source, starting at %start and running for %len */
-  std::string string_substring(const std::string & source, int start, int len);
+  Glib::ustring string_substring(const Glib::ustring & source, int start, int len);
 
   std::string string_trim(const std::string & source);
   std::string string_trim(const std::string & source, const char * set_of_char);
@@ -74,7 +74,7 @@ namespace sharp {
   int string_index_of(const std::string & source, const std::string & with, int);
   int string_last_index_of(const std::string & source, const std::string & with);
 
-  std::string string_to_lower(const std::string & source);
+  Glib::ustring string_to_lower(const Glib::ustring & source);
 }
 
 

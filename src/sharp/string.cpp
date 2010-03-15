@@ -82,18 +82,18 @@ namespace sharp {
     boost::split(split, source, boost::is_any_of(delimiters));
   }
 
-  std::string string_substring(const std::string & source, int start)
+  Glib::ustring string_substring(const Glib::ustring & source, int start)
   {
     DBG_ASSERT(start >= 0, "start can't be negative");
     if(source.size() <= (unsigned int)start) {
       return "";
     }
-    return std::string(source.begin() + start, source.end());
+    return Glib::ustring(source, start, std::string::npos);
   }
 
-  std::string string_substring(const std::string & source, int start, int len)
+  Glib::ustring string_substring(const Glib::ustring & source, int start, int len)
   {
-    return std::string(source.begin() + start, source.begin() + start + len);
+    return Glib::ustring(source, start, len);
   }
 
   std::string string_trim(const std::string & source)
@@ -178,9 +178,9 @@ namespace sharp {
   }
 
 
-  std::string string_to_lower(const std::string & source)
+  Glib::ustring string_to_lower(const Glib::ustring & source)
   {
-    return boost::to_lower_copy(source);
+    return source.lowercase();
   }
 
 }
