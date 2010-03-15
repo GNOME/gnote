@@ -324,8 +324,10 @@ namespace gnote {
   void Gnote::on_show_about_action()
   {
     std::list<Glib::ustring> authors;
+    authors.push_back("Aurimas Černius <aurisc4@gmail.com>");
     authors.push_back("Debarshi Ray <debarshir@src.gnome.org>");
     authors.push_back("Hubert Figuiere <hub@figuiere.net>");
+    authors.push_back("Iain Nicol <iainn@src.gnome.org>");
     authors.push_back(_("and Tomboy original authors."));
     
     std::list<Glib::ustring> documenters;
