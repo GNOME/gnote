@@ -543,7 +543,7 @@ namespace gnote {
     // it so it can be easily overwritten
     body = _("Describe your new note here.");
     
-    std::string header = title + "\n\n";
+    Glib::ustring header = title + "\n\n";
     std::string content =
       boost::str(boost::format("<note-content>%1%%2%</note-content>") %
                  utils::XmlEncoder::encode (header) 
