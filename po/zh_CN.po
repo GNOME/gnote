@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&component=general\n"
-"POT-Creation-Date: 2010-02-26 10:17+0000\n"
-"PO-Revision-Date: 2010-02-16 10:00+0800\n"
+"POT-Creation-Date: 2010-06-09 04:50+0000\n"
+"PO-Revision-Date: 2010-06-10 00:10+0800\n"
 "Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -73,27 +73,27 @@ msgstr "自定义字体"
 
 #: ../data/gnote.schemas.in.h:4
 msgid "Determines X coordinate of Search window; stored on Gnote exit."
-msgstr "决定搜索窗口的 X 坐标； 当 Gnote 退出时保存。"
+msgstr "决定搜索窗口的 X 坐标；当 Gnote 退出时保存。"
 
 #: ../data/gnote.schemas.in.h:5
 msgid "Determines Y coordinate of Search window; stored on Gnote exit."
-msgstr "决定搜索窗口的·Y·坐标；·当·Gnote·退出时保存。"
+msgstr "决定搜索窗口的 Y 坐标；当 Gnote 退出时保存。"
 
 #: ../data/gnote.schemas.in.h:6
 msgid "Determines pixel height of Search window; stored on Gnote exit."
-msgstr "决定搜索窗口的像素高度；·当·Gnote·退出时保存。"
+msgstr "决定搜索窗口的像素高度；当 Gnote 退出时保存。"
 
 #: ../data/gnote.schemas.in.h:7
 msgid "Determines pixel width of Search window; stored on Gnote exit."
-msgstr "决定搜索窗口的像素宽度；·当·Gnote·退出时保存。"
+msgstr "决定搜索窗口的像素宽度；当 Gnote 退出时保存。"
 
 #: ../data/gnote.schemas.in.h:8
 msgid "Enable Auto bulleted lists"
-msgstr "允许自动列表格式。"
+msgstr "允许自动列表格式"
 
 #: ../data/gnote.schemas.in.h:9
 msgid "Enable Middle-Click Paste On Icon"
-msgstr "允许在图标上单击中键粘贴。"
+msgstr "允许在图标上单击中键粘贴"
 
 #: ../data/gnote.schemas.in.h:10
 msgid "Enable WikiWord highlighting"
@@ -101,7 +101,7 @@ msgstr "启用 WikiWord 高亮显示"
 
 #: ../data/gnote.schemas.in.h:11
 msgid "Enable closing notes with escape"
-msgstr "允许用 Esc 关闭便笺。"
+msgstr "允许用 Esc 关闭便笺"
 
 #: ../data/gnote.schemas.in.h:12
 msgid "Enable custom font"
@@ -202,7 +202,7 @@ msgstr ""
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
-msgstr "决定在 Gnote 菜单中显示的最少便笺数。"
+msgstr "整数值，决定在 Gnote 菜单中显示的最少便笺数。"
 
 #: ../data/gnote.schemas.in.h:30
 msgid ""
@@ -212,18 +212,10 @@ msgid ""
 "wishes to be prompted when a conflict occurs, so that they may handle each "
 "conflict situation on a case-by-case basis."
 msgstr ""
-"此整数值代表了检测到冲突时是否总是执行特定的行为，而不是提示用户。此值将会映"
-"射到内部枚举量上。0 代表用户希望发生冲突时得到提示，以便可以逐一处理这些冲"
-"突。"
+"整数值，代表检测到冲突时是否总是执行特定的行为，而不是提示用户。此值将会映射"
+"到内部枚举量上。0 代表用户希望发生冲突时得到提示，以便可以逐一处理这些冲突。"
 
 #: ../data/gnote.schemas.in.h:31
-#, fuzzy
-#| msgid ""
-#| "Integer value indicating if there is a preference to always perform a "
-#| "specific behavior when a conflict is detected, instead of prompting the "
-#| "user. The values map to an internal enumeration. 0 indicates that the "
-#| "user wishes to be prompted when a conflict occurs, so that they may "
-#| "handle each conflict situation on a case-by-case basis."
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -233,17 +225,18 @@ msgid ""
 "indicates that link text should be updated to the new note name so that it "
 "will continue linking to the renamed note."
 msgstr ""
-"此整数值代表了检测到冲突时是否总是执行特定的行为，而不是提示用户。此值将会映"
-"射到内部枚举量上。0 代表用户希望发生冲突时得到提示，以便可以逐一处理这些冲"
-"突。"
+"整数值，代表重命名便笺时是否总是执行指定的链接更新动作，而不是提示用户。此值"
+"将会映射到内部枚举量上。0 代表用户希望在可能影响到其它便笺中存在的链接时得到"
+"提示。1 代表自动删除链接。2 代表将链接更新到新便笺名的文本，以便可以继续链接"
+"到重命名后的便笺。"
 
 #: ../data/gnote.schemas.in.h:32
 msgid "Link Updating Behavior on Note Rename"
-msgstr ""
+msgstr "重命名便笺时更新链接的行为"
 
 #: ../data/gnote.schemas.in.h:33
 msgid "List of pinned notes"
-msgstr "加钉便笺列表。"
+msgstr "加钉便笺列表"
 
 #: ../data/gnote.schemas.in.h:34
 msgid "Minimum number of notes to show in menu"
@@ -267,7 +260,7 @@ msgstr "打开“从这里开始”"
 
 #: ../data/gnote.schemas.in.h:39
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
-msgstr "SSH 服务器到 Gnote 同步目录的路径 (可选)。"
+msgstr "SSH 服务器到 Gnote 同步目录的路径(可选)。"
 
 #: ../data/gnote.schemas.in.h:40
 msgid ""
@@ -443,7 +436,7 @@ msgstr ""
 
 #: ../data/gnote.schemas.in.h:66
 msgid "The port to use when connecting to the synchronization server via SSH."
-msgstr "通过·SSH·连接同步服务器时使用的端口。"
+msgstr "通过 SSH 连接同步服务器时使用的端口。"
 
 #: ../data/gnote.schemas.in.h:67
 msgid ""
@@ -457,13 +450,13 @@ msgstr "时间戳格式"
 
 #: ../data/gnote.schemas.in.h:69
 msgid "URL of SSH server containing Gnote synchronization directory."
-msgstr "包含 Gnote·同步目录的 SSH·服务器 URL。"
+msgstr "包含 Gnote 同步目录的 SSH 服务器 URL。"
 
 #: ../data/gnote.schemas.in.h:70
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
-msgstr "目前已配置的便笺同步服务插件的唯一标识符"
+msgstr "目前已配置的便笺同步服务插件的唯一标识符。"
 
 #: ../data/gnote.schemas.in.h:71
 msgid ""
@@ -475,7 +468,7 @@ msgstr "此 Gnote 客户端的唯一标识符，用于与同步服务器通讯�
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
-msgstr "使用·wdfs·选项·\"-ac\"·让用户接受·SSL·证书时不出现提示信息。"
+msgstr "使用 wdfs 选项“-ac”让用户接受 SSL 证书时不出现提示信息。"
 
 #: ../data/gnote.schemas.in.h:73
 msgid "User name to use when connecting to the synchronization server via SSH."
@@ -489,11 +482,11 @@ msgstr "总是出现在 Gnote 菜单中的 URI 列表，以空格分开。"
 
 #: ../src/sharp/addinstreemodel.cpp:64
 msgid "Name"
-msgstr "主机名"
+msgstr "名称"
 
 #: ../src/sharp/addinstreemodel.cpp:65
 msgid "Description"
-msgstr "字体描述"
+msgstr "描述"
 
 #: ../src/actionmanager.cpp:170
 msgid "_File"
@@ -587,19 +580,19 @@ msgstr "开始同步便笺"
 msgid "Cannot create new note"
 msgstr "无法创建新便笺"
 
-#: ../src/gnote.cpp:329
+#: ../src/gnote.cpp:331
 msgid "and Tomboy original authors."
 msgstr "以及 Tomboy 原作者。"
 
-#: ../src/gnote.cpp:338
+#: ../src/gnote.cpp:340
 msgid "translator-credits"
 msgstr ""
-"Funda Wang <fundawang@gmail.com>, 2005-2008.\n"
-"Ray Wang <wanglei1123@gmail.com>, 2009.\n"
-"Aron Xu <aronmalache@163.com>, 2009.\n"
-"YunQiang Su <wzssyqa@gmail.com>, 2010."
+"Funda Wang <fundawang@gmail.com>, 2005-2008。\n"
+"Ray Wang <wanglei1123@gmail.com>, 2009。\n"
+"Aron Xu <aronmalache@163.com>, 2009。\n"
+"YunQiang Su <wzssyqa@gmail.com>, 2010。"
 
-#: ../src/gnote.cpp:346
+#: ../src/gnote.cpp:348
 msgid ""
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
@@ -607,73 +600,73 @@ msgid ""
 msgstr ""
 "版权所有 © 2009-2010 Debarshi Ray\n"
 "版权所有 © 2009 Hubert Figuiere\n"
-"版权所有 © 2004-2009 Tomboy 原作者"
+"版权所有 © 2004-2009 Tomboy 原作者。"
 
-#: ../src/gnote.cpp:349
+#: ../src/gnote.cpp:351
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
-#: ../src/gnote.cpp:360
+#: ../src/gnote.cpp:362
 msgid "Homepage"
 msgstr "主页"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:432
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "将 Gnote 作为 GNOME 面板小程序运行。"
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:433
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:433
 msgid "path"
 msgstr "路径"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:434
 msgid "Open the search all notes window with the search text."
-msgstr "打开搜索全部便笺窗口"
+msgstr "打开搜索全部便笺窗口。"
 
-#: ../src/gnote.cpp:432 ../src/gnote.cpp:437 ../src/gnote.cpp:438
+#: ../src/gnote.cpp:434 ../src/gnote.cpp:439 ../src/gnote.cpp:440
 msgid "text"
 msgstr "文本"
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:435
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:437
 msgid "Create and display a new note, with a optional title."
 msgstr "创建并显示一个带有可选标题的新便笺。"
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:437
 msgid "title"
 msgstr "标题"
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:438
 msgid "Display the existing note matching title."
-msgstr "显示匹配标题的现存便笺。"
+msgstr "显示匹配标题的现有便笺。"
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:438
 msgid "title/url"
 msgstr "标题/url"
 
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:439
 msgid "Display the 'Start Here' note."
-msgstr "显示“从这里开始”"
+msgstr "显示“从这里开始”便笺。"
 
-#: ../src/gnote.cpp:438
+#: ../src/gnote.cpp:440
 msgid "Search and highlight text in the opened note."
-msgstr "在开启的便笺中搜索文本(高亮显示)"
+msgstr "在开启的便笺中搜索文本(高亮显示)。"
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:445
 msgid "A note taking application"
 msgstr "一个便笺程序"
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:445
 msgid "Gnote options at launch"
 msgstr "Gnote 启动选项"
 
-#: ../src/gnote.cpp:639
+#: ../src/gnote.cpp:641
 msgid "Version %1%"
 msgstr "版本 %1%"
 
@@ -722,19 +715,19 @@ msgstr "使用自定义字体(_F)"
 
 #: ../src/preferencesdialog.cpp:276
 msgid "When renaming a linked note: "
-msgstr ""
+msgstr "重命名有链接的便笺时："
 
 #: ../src/preferencesdialog.cpp:281
 msgid "Ask me what to do"
-msgstr ""
+msgstr "询问我怎么做"
 
 #: ../src/preferencesdialog.cpp:282
 msgid "Never rename links"
-msgstr ""
+msgstr "不重命名链接"
 
 #: ../src/preferencesdialog.cpp:283
 msgid "Always rename links"
-msgstr ""
+msgstr "总是重命名链接"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
@@ -922,41 +915,35 @@ msgstr "在此描述您的新便笺。"
 
 #: ../src/noterenamedialog.cpp:151
 msgid "Rename Note Links?"
-msgstr ""
+msgstr "重命名便笺链接吗？"
 
 #: ../src/noterenamedialog.cpp:156
 msgid "_Don't Rename Links"
-msgstr ""
+msgstr "不重命名链接(_D)"
 
 #: ../src/noterenamedialog.cpp:157
-#, fuzzy
-#| msgid "_Open Link"
 msgid "_Rename Links"
-msgstr "打开链接(_O)"
+msgstr "重命名链接(_R)"
 
 #: ../src/noterenamedialog.cpp:158
 msgid "Select All"
-msgstr ""
+msgstr "全选"
 
 #: ../src/noterenamedialog.cpp:159
-#, fuzzy
-#| msgid "Select an icon..."
 msgid "Select None"
-msgstr "选择图标..."
+msgstr "全部不选"
 
 #: ../src/noterenamedialog.cpp:160
-#, fuzzy
-#| msgid "Close this window"
 msgid "Always show this _window"
-msgstr "关闭此窗口"
+msgstr "总是显示此窗口(_W)"
 
 #: ../src/noterenamedialog.cpp:161
 msgid "Alwa_ys rename links"
-msgstr ""
+msgstr "总是重命名链接(_Y)"
 
 #: ../src/noterenamedialog.cpp:163
 msgid "Never rename _links"
-msgstr ""
+msgstr "决不重命名链接(_L)"
 
 #: ../src/noterenamedialog.cpp:182
 msgid ""
@@ -965,24 +952,22 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
+"将其它便笺中的链接从“<span underline=\"single\">%1</span>”重命名为“<span "
+"underline=\"single\">%2</span>”吗？\n"
+"\n"
+"如果不想重命名这些链接，它们将指向死链。"
 
 #: ../src/noterenamedialog.cpp:215
-#, fuzzy
-#| msgid "_Open Link"
 msgid "Rename Links"
-msgstr "打开链接(_O)"
+msgstr "重命名链接"
 
 #: ../src/noterenamedialog.cpp:230
-#, fuzzy
-#| msgid "Note title taken"
 msgid "Note Title"
-msgstr "便笺标题已被使用"
+msgstr "便笺标题"
 
 #: ../src/noterenamedialog.cpp:266
-#, fuzzy
-#| msgid "_Advanced..."
 msgid "Ad_vanced"
-msgstr "高级(_A)..."
+msgstr "高级(_V)"
 
 #: ../src/notewindow.cpp:74
 msgid "Find in This Note"
@@ -1124,7 +1109,7 @@ msgstr "字体大小"
 #: ../src/note.cpp:68
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
-msgstr[0] "真的要删除这些便笺吗？"
+msgstr[0] "真的要删除这 %1% 个便笺吗？"
 
 #: ../src/note.cpp:80
 msgid "If you delete a note it is permanently lost."
@@ -1531,7 +1516,7 @@ msgstr "等宽"
 
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
 msgid "Adds fixed-width font style."
-msgstr "添加等宽字体样式"
+msgstr "添加等宽字体样式。"
 
 #. Add the menu item when the window is created
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
@@ -1562,18 +1547,18 @@ msgstr "今天：模板"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:34
 msgid "Today: "
-msgstr "今日"
+msgstr "今天："
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+#: ../src/addins/noteoftheday/noteoftheday.cpp:158
 msgid "Tasks"
 msgstr "任务"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:161
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
 msgid "Appointments"
 msgstr "约会"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:167
+#: ../src/addins/noteoftheday/noteoftheday.cpp:165
 msgid "%A, %B %d %Y"
 msgstr "%Y年%m月%d日%A"
 
@@ -1628,7 +1613,7 @@ msgstr "置顶便笺导入器"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
 msgid "Import your notes from the Sticky Notes applet."
-msgstr "从置顶便笺中导入"
+msgstr "从置顶便笺中导入。"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
 msgid "Import from Sticky Notes"
@@ -1662,7 +1647,7 @@ msgstr "置顶便笺："
 
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
 msgid "Tomboy Importer"
-msgstr "Tomboy 便笺导入器"
+msgstr "Tomboy 导入器"
 
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
 msgid "Import your notes from Tomboy."
@@ -1688,164 +1673,3 @@ msgstr "添加“文本下划线”功能。"
 #: ../src/addins/underline/underlinenoteaddin.cpp:55
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière 和 Tomboy 项目"
-
-#~ msgid ""
-#~ "<note-content xmlns:size=\"http://beatniksoftware.com/tomboy/size\"><note-"
-#~ "title>%1</note-title>\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<size:huge>%2</size:huge>\n"
-#~ "\n"
-#~ "\n"
-#~ "<size:huge>%3</size:huge>\n"
-#~ "\n"
-#~ "\n"
-#~ "</note-content>"
-#~ msgstr ""
-#~ "<note-content xmlns:size=\"http://beatniksoftware.com/tomboy/size\"><note-"
-#~ "title>%1</note-title>\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<size:huge>%2</size:huge>\n"
-#~ "\n"
-#~ "\n"
-#~ "<size:huge>%3</size:huge>\n"
-#~ "\n"
-#~ "\n"
-#~ "</note-content>"
-
-#~ msgid "Copyright © 2009 Hubert Figuiere"
-#~ msgstr "版权所有 © 2009 Hubert Figuiere"
-
-#~ msgid "Gnote Notes"
-#~ msgstr "Gnote 便笺"
-
-#~ msgid "_Fixed Width"
-#~ msgstr "等宽(_F)"
-
-#~ msgid ""
-#~ "Indicates that the Sticky Note Importer plugin has not been run, so it "
-#~ "should run automatically the next time Tomboy starts."
-#~ msgstr ""
-#~ "表明置顶便笺导入器插件从未运行过，所以下次 Gnote 启动时会自动运行该插件。"
-
-#~ msgid "Quit Tomboy"
-#~ msgstr "退出 Gnote "
-
-#~ msgid "Tomboy Preferences"
-#~ msgstr " Gnote 首选项"
-
-#~ msgid "Tomboy Help"
-#~ msgstr " Gnote 帮助"
-
-#~ msgid "No host name specified"
-#~ msgstr "未指定主机名"
-
-#~ msgid "Access denied."
-#~ msgstr "访问被禁止。"
-
-#~ msgid "Folder does not exist."
-#~ msgstr "文件夹不存在。"
-
-#~ msgid "Cannot open email"
-#~ msgstr "无法打开电子邮件"
-
-#~ msgid "_Folder Path:"
-#~ msgstr "文件夹路径(_F)："
-
-#~ msgid "_Browse..."
-#~ msgstr "浏览(_B)..."
-
-#~ msgid "Select Synchronization Folder..."
-#~ msgstr "选择同步文件夹..."
-
-#~ msgid "Folder path field is empty."
-#~ msgstr "文件夹路径为空。"
-
-#~ msgid ""
-#~ "Specified folder path does not exist, and Tomboy was unable to create it."
-#~ msgstr "特殊文件夹路径不存在， Gnote 无法创建它。"
-
-#~ msgid "Local Folder"
-#~ msgstr "本地文件夹"
-
-#~ msgid "Cannot contact '{0}'"
-#~ msgstr "无法联系“{0}”"
-
-#~ msgid "Error running gaim-remote: {0}"
-#~ msgstr "运行 gaim-remote 出错：{0}"
-
-#~ msgid "dddd, MMMM d, h:mm tt"
-#~ msgstr "M 月 dd 日 dddd h:mm tt"
-
-#~ msgid "dddd, MMMM d yyyy"
-#~ msgstr "yyyy 年 M 月 d 日，dddd"
-
-#~ msgid "dddd MM/dd/yyyy, hh:mm:ss tt"
-#~ msgstr "yyyy 年 MM 月 dd 日 dddd hh:mm:ss tt"
-
-#~ msgid "Add a sketch"
-#~ msgstr "添加草图"
-
-#~ msgid "Se_rver:"
-#~ msgstr "服务器(_R)："
-
-#~ msgid "User_name:"
-#~ msgstr "用户名(_N)："
-
-#~ msgid "_Folder Path (optional):"
-#~ msgstr "文件夹路径(可选)(_F)："
-
-#~ msgid ""
-#~ "SSH synchronization requires an existing SSH key for this server and "
-#~ "user, added to a running SSH daemon."
-#~ msgstr ""
-#~ "SSH 同步需要将该服务器和用户的已有 SSH 钥匙添加到正在运行的 SSH 守护进程。"
-
-#~ msgid "Server or username field is empty."
-#~ msgstr "服务器或用户名为空。"
-
-#~ msgid "SSH (sshfs FUSE)"
-#~ msgstr "SSH (sshfs FUSE)"
-
-#~ msgid ""
-#~ "Timeout connecting to server. Please ensure that your SSH key has been "
-#~ "added to a running SSH daemon."
-#~ msgstr ""
-#~ "连接到服务器超时。请保证您的 SSH 密钥已经被添加到正在运行的 SSH 守护进程。"
-
-#~ msgid "Tasque"
-#~ msgstr "Tasque"
-
-#~ msgid "All"
-#~ msgstr "全部"
-
-#~ msgid "--- Tasque is not running ---"
-#~ msgstr "--- Tasque 未运行 ---"
-
-#~ msgid "_URL:"
-#~ msgstr "_URL："
-
-#~ msgid "_Password:"
-#~ msgstr "密码(_P)："
-
-#~ msgid "URL, username, or password field is empty."
-#~ msgstr "URL、用户名或密码为空。"
-
-#~ msgid "WebDAV (wdfs FUSE)"
-#~ msgstr "WebDAV (wdfs FUSE)"
-
-#~ msgid ""
-#~ "There was an error connecting to the server.  This may be caused by using "
-#~ "an incorrect user name and/or password."
-#~ msgstr "连接到服务器出错。可能是因为用户名或密码错误。"
-
-#~ msgid ""
-#~ "Saving configuration to the GNOME keyring failed with the following "
-#~ "message:"
-#~ msgstr "将配置保存到 GNOME 密钥环时失败，出错信息如下："
-
-#~ msgid "Tomboy Web"
-#~ msgstr " Gnote 网站"
