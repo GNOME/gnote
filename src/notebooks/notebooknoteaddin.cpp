@@ -241,8 +241,6 @@ namespace notebooks {
                                                             get_note(), notebook));
       items.push_back (item);
     }
-      
-    items.sort ();
   }
 
 
