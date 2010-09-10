@@ -155,7 +155,7 @@ void ExportToHtmlNoteAddin::export_button_clicked()
       gnote::utils::HIGMessageDialog msg_dialog(
         get_window(),
         GTK_DIALOG_DESTROY_WITH_PARENT,
-        Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK,
+        Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK,
         _("Note exported successfully"),
         detail);
       msg_dialog.run();
