@@ -140,7 +140,7 @@ void ExportToHtmlNoteAddin::export_button_clicked()
 
     try {
       sharp::Uri output_uri(output_path);
-      gnote::utils::open_url(output_uri.get_absolute_uri());
+      gnote::utils::open_url("file://" + output_uri.get_absolute_uri());
     } 
     catch (const Glib::Exception & ex) {
       ERR_OUT ("Could not open exported note in a web browser: %s",
