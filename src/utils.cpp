@@ -124,7 +124,6 @@ namespace gnote {
       }
       GError *error = NULL;
 
-#ifdef HAVE_GTK_SHOW_URI
       if(!gtk_show_uri (screen, uri.c_str(), gtk_get_current_event_time (), &error)) {
         
         std::string message = _("The \"Gnote Manual\" could "
@@ -142,9 +141,6 @@ namespace gnote {
           g_error_free(error);
         }
       }
-#else
-      Glib::spawn_command_line_async ("xdg-open " + uri);
-#endif
     }
 
 
@@ -154,11 +150,7 @@ namespace gnote {
       if(!url.empty()) {
         GError *err = NULL;
         DBG_OUT("Opening url '%s'...", url.c_str());
-#ifdef HAVE_GTK_SHOW_URI
         gtk_show_uri (NULL, url.c_str(), GDK_CURRENT_TIME, &err);
-#else
-        Glib::spawn_command_line_async ("xdg-open " + url);
-#endif
         if(err) {
           throw Glib::Error(err, true);
         }

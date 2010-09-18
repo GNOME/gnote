@@ -71,9 +71,6 @@ PKG_CHECK_MODULES(LIBXSLT, [libxslt])
 PKG_CHECK_MODULES(GCONF, [gconf-2.0])
 PKG_CHECK_MODULES(PCRE, [libpcrecpp])
 
-PKG_CHECK_EXISTS(gtk+-2.0 >= 2.14.0,
-  [AC_DEFINE(HAVE_GTK_SHOW_URI, 1, [Define to 1 if you have gtk_show_uri])],
-  [])
 PKG_CHECK_EXISTS(gtkmm-2.4 >= 2.14.0,
   [AC_DEFINE(HAVE_CLASS_GTK__WIDGET_SIGNAL_POPUP_MENU, 1, [Define to 1 if class Gtk::Widget has signal_popup_menu])],
   [])
