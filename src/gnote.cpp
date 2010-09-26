@@ -111,13 +111,8 @@ namespace gnote {
     am.load_interface();
     register_remote_control(*m_manager);
     setup_global_actions();
-    
-    std::list<ApplicationAddin*> addins;
-    m_manager->get_addin_manager().get_application_addins(addins);
-    for(std::list<ApplicationAddin*>::const_iterator iter = addins.begin();
-        iter != addins.end(); ++iter) {
-      (*iter)->initialize();
-    }
+
+    m_manager->get_addin_manager().initialize_application_addins();
 
 #ifndef ENABLE_DBUS
     if(cmd_line.needs_execute()) {

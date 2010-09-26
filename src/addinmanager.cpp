@@ -310,6 +310,15 @@ namespace gnote {
     sharp::map_get_values(m_import_addins, l);
   }
 
+  void AddinManager::initialize_application_addins() const
+  {
+    for(AppAddinMap::const_iterator iter = m_app_addins.begin();
+        iter != m_app_addins.end(); ++iter) {
+      ApplicationAddin * addin = iter->second;
+      addin->initialize();
+    }
+  }
+
 
   Gtk::Widget * AddinManager::create_addin_preference_widget(const std::string & id)
   {
