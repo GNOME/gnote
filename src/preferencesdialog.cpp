@@ -693,8 +693,8 @@ namespace gnote {
   {
     const sharp::DynamicModule * module = get_selected_addin();
     if(module) {
-      enable_addin_button->set_sensitive(!module->enabled());
-      disable_addin_button->set_sensitive(module->enabled());
+      enable_addin_button->set_sensitive(!module->is_enabled());
+      disable_addin_button->set_sensitive(module->is_enabled());
       addin_prefs_button->set_sensitive(
         module->has_interface(AddinPreferenceFactoryBase::IFACE_NAME));
       addin_info_button->set_sensitive(true);

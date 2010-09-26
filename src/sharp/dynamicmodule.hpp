@@ -62,7 +62,7 @@ public:
   virtual const char * category() const = 0;
   virtual const char * version() const = 0;
   virtual const char * copyright() const;
-  bool enabled() const
+  bool is_enabled() const
     {
       return m_enabled;
     }

@@ -108,7 +108,8 @@ namespace gnote {
     for(sharp::ModuleList::const_iterator iter = list.begin();
         iter != list.end(); ++iter) {
       const sharp::DynamicModule* dmod = *iter;
-      global_addins_prefs.set_boolean("Enabled", dmod->id(), dmod->enabled());
+      global_addins_prefs.set_boolean("Enabled", dmod->id(),
+                                      dmod->is_enabled());
     }
 
     Glib::RefPtr<Gio::File> prefs_file = Gio::File::create_for_path(
@@ -348,7 +349,7 @@ namespace gnote {
       ApplicationAddin * addin = iter->second;
       const sharp::DynamicModule * dmod
         = m_module_manager.get_module(iter->first);
-      if (!dmod || dmod->enabled()) {
+      if (!dmod || dmod->is_enabled()) {
         addin->initialize();
       }
     }
@@ -361,7 +362,7 @@ namespace gnote {
       ApplicationAddin * addin = iter->second;
       const sharp::DynamicModule * dmod
         = m_module_manager.get_module(iter->first);
-      if (!dmod || dmod->enabled()) {
+      if (!dmod || dmod->is_enabled()) {
         try {
           addin->shutdown();
         }
