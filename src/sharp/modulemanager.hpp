@@ -48,6 +48,7 @@ public:
   
   const ModuleList & get_modules() const
     { return m_modules; }
+  const DynamicModule * get_module(const std::string & id) const;
 private:
   std::set<std::string> m_dirs;
 

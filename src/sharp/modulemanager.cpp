@@ -95,4 +95,14 @@ namespace sharp {
     }
   }
 
+const DynamicModule * ModuleManager::get_module(const std::string & id) const
+{
+  for(ModuleList::const_iterator iter = m_modules.begin();
+      iter != m_modules.end(); ++iter) {
+    if (id == (*iter)->id())
+      return *iter;
+  }
+  return 0;
+}
+
 }

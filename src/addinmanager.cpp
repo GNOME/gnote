@@ -346,7 +346,11 @@ namespace gnote {
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
       ApplicationAddin * addin = iter->second;
-      addin->initialize();
+      const sharp::DynamicModule * dmod
+        = m_module_manager.get_module(iter->first);
+      if (!dmod || dmod->enabled()) {
+        addin->initialize();
+      }
     }
   }
 
@@ -355,12 +359,16 @@ namespace gnote {
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
       ApplicationAddin * addin = iter->second;
-      try {
-        addin->shutdown();
-      }
-      catch (const sharp::Exception & e) {
-        DBG_OUT("Error calling %s.Shutdown (): %s",
-                typeid(*addin).name(), e.what());
+      const sharp::DynamicModule * dmod
+        = m_module_manager.get_module(iter->first);
+      if (!dmod || dmod->enabled()) {
+        try {
+          addin->shutdown();
+        }
+        catch (const sharp::Exception & e) {
+          DBG_OUT("Error calling %s.Shutdown (): %s",
+                  typeid(*addin).name(), e.what());
+        }
       }
     }
   }
