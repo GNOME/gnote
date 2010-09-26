@@ -69,7 +69,6 @@ NoteOfTheDayApplicationAddin::NoteOfTheDayApplicationAddin()
   , m_manager(0)
   , m_timeout()
 {
-  initialize();
 }
 
 NoteOfTheDayApplicationAddin::~NoteOfTheDayApplicationAddin()
