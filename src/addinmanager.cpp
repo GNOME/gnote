@@ -262,7 +262,7 @@ namespace gnote {
       }
 
       sharp::IfaceFactoryBase * f = dmod->query_interface(NoteAddin::IFACE_NAME);
-      if(f) {
+      if(f && dmod->is_enabled()) {
         m_note_addin_infos.insert(std::make_pair(dmod->id(), f));
       }
 
