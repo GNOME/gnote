@@ -74,6 +74,8 @@ namespace gnote {
     : m_gnote_conf_dir(conf_dir)
   {
     m_addins_prefs_dir = Glib::build_filename(conf_dir, "addins");
+    m_addins_prefs_file = Glib::build_filename(m_addins_prefs_dir,
+                                               "global.ini");
 
     const bool is_first_run
                  = !sharp::directory_exists(m_addins_prefs_dir);
@@ -95,6 +97,27 @@ namespace gnote {
 
   AddinManager::~AddinManager()
   {
+    Glib::KeyFile global_addins_prefs;
+    try {
+      global_addins_prefs.load_from_file(m_addins_prefs_file);
+    }
+    catch (Glib::Error & not_loaded_ignored) {
+    }
+
+    const sharp::ModuleList & list = m_module_manager.get_modules();
+    for(sharp::ModuleList::const_iterator iter = list.begin();
+        iter != list.end(); ++iter) {
+      const sharp::DynamicModule* dmod = *iter;
+      global_addins_prefs.set_boolean("Enabled", dmod->id(), dmod->enabled());
+    }
+
+    Glib::RefPtr<Gio::File> prefs_file = Gio::File::create_for_path(
+                                           m_addins_prefs_file);
+    Glib::RefPtr<Gio::FileOutputStream> prefs_file_stream
+                                          = prefs_file->append_to();
+    prefs_file_stream->truncate(0);
+    prefs_file_stream->write(global_addins_prefs.to_data());
+
     sharp::map_delete_all_second(m_app_addins);
     for(NoteAddinMap::const_iterator iter = m_note_addins.begin();
         iter != m_note_addins.end(); ++iter) {
@@ -214,6 +237,15 @@ namespace gnote {
 
     m_module_manager.load_modules();
 
+    bool global_addins_prefs_loaded = true;
+    Glib::KeyFile global_addins_prefs;
+    try {
+      global_addins_prefs.load_from_file(m_addins_prefs_file);
+    }
+    catch (Glib::Error & not_loaded) {
+      global_addins_prefs_loaded = false;
+    }
+
     const sharp::ModuleList & list = m_module_manager.get_modules();
     for(sharp::ModuleList::const_iterator iter = list.begin();
         iter != list.end(); ++iter) {
@@ -221,6 +253,11 @@ namespace gnote {
       sharp::DynamicModule* dmod = *iter;
       if(!dmod) {
         continue;
+      }
+
+      if(global_addins_prefs_loaded &&
+         global_addins_prefs.has_key("Enabled", dmod->id())) {
+        dmod->enabled(global_addins_prefs.get_boolean("Enabled", dmod->id()));
       }
 
       sharp::IfaceFactoryBase * f = dmod->query_interface(NoteAddin::IFACE_NAME);

@@ -78,6 +78,7 @@ private:
     
   const std::string m_gnote_conf_dir;
   std::string m_addins_prefs_dir;
+  std::string m_addins_prefs_file;
   sharp::ModuleManager m_module_manager;
   std::list<sharp::IfaceFactoryBase*> m_builtin_ifaces;
   /// Key = TypeExtensionNode.Id
