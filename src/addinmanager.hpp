@@ -58,7 +58,6 @@ public:
   void load_addins_for_note(const Note::Ptr &);
   ApplicationAddin * get_application_addin(const std::string & id)
                                            const;
-  void get_application_addins(std::list<ApplicationAddin*> &) const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
   void get_import_addins(std::list<ImportAddin*> &) const;
   void initialize_application_addins() const;

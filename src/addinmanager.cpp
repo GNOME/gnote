@@ -293,12 +293,6 @@ namespace gnote {
     return 0;
   }
 
-  void AddinManager::get_application_addins(std::list<ApplicationAddin*> & l) const
-  {
-    sharp::map_get_values(m_app_addins, l);
-  }
-
-
   void AddinManager::get_preference_tab_addins(std::list<PreferenceTabAddin *> &l) const
   {
     sharp::map_get_values(m_pref_tab_addins, l);
