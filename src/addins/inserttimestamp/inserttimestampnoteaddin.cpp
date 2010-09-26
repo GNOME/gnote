@@ -35,6 +35,7 @@ namespace inserttimestamp {
   {
     ADD_INTERFACE_IMPL(InsertTimestampNoteAddin);
     ADD_INTERFACE_IMPL(InsertTimestampPreferencesFactory);
+    enabled(false);
   }
   const char * InsertTimeStampModule::id() const
   {

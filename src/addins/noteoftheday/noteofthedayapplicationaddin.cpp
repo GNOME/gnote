@@ -33,6 +33,7 @@ NoteOfTheDayModule::NoteOfTheDayModule()
 {
   ADD_INTERFACE_IMPL(NoteOfTheDayApplicationAddin);
   ADD_INTERFACE_IMPL(NoteOfTheDayPreferencesFactory);
+  enabled(false);
 }
 const char * NoteOfTheDayModule::id() const
 {

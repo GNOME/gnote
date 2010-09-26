@@ -46,6 +46,7 @@ namespace bugzilla {
   {
     ADD_INTERFACE_IMPL(BugzillaNoteAddin);
     ADD_INTERFACE_IMPL(BugzillaPreferencesFactory);
+    enabled(false);
   }
   const char * BugzillaModule::id() const
   {

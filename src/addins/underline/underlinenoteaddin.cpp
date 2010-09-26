@@ -35,6 +35,7 @@ namespace underline {
   UnderlineModule::UnderlineModule()
   {
     ADD_INTERFACE_IMPL(UnderlineNoteAddin);
+    enabled(false);
   }
 
   const char * UnderlineModule::id() const
