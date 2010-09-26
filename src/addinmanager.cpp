@@ -319,6 +319,20 @@ namespace gnote {
     }
   }
 
+  void AddinManager::shutdown_application_addins() const
+  {
+    for(AppAddinMap::const_iterator iter = m_app_addins.begin();
+        iter != m_app_addins.end(); ++iter) {
+      ApplicationAddin * addin = iter->second;
+      try {
+        addin->shutdown();
+      }
+      catch (const sharp::Exception & e) {
+        DBG_OUT("Error calling %s.Shutdown (): %s",
+                typeid(*addin).name(), e.what());
+      }
+    }
+  }
 
   Gtk::Widget * AddinManager::create_addin_preference_widget(const std::string & id)
   {

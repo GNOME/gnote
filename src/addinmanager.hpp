@@ -62,6 +62,7 @@ public:
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
   void get_import_addins(std::list<ImportAddin*> &) const;
   void initialize_application_addins() const;
+  void shutdown_application_addins() const;
 
   const sharp::ModuleList & get_modules() const
     { 

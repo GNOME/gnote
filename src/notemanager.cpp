@@ -411,21 +411,7 @@ namespace gnote {
 
   bool NoteManager::on_exiting_event()
   {
-    // Call ApplicationAddin.Shutdown () on all the known ApplicationAddins
-    std::list<ApplicationAddin*> app_addins;
-    m_addin_mgr->get_application_addins (app_addins);
-    for(std::list<ApplicationAddin*>::const_iterator iter = app_addins.begin();
-        iter != app_addins.end(); ++iter) {
-      ApplicationAddin* addin = *iter;
-      try {
-        addin->shutdown ();
-      } 
-      catch (const sharp::Exception & e) {
-        DBG_OUT("Error calling %s.Shutdown (): %s",
-                typeid(*addin).name(), e.what());
-      }
-    }
-
+    m_addin_mgr->shutdown_application_addins();
 
     DBG_OUT("Saving unsaved notes...");
       
