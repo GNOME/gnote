@@ -181,12 +181,14 @@ namespace gnote {
       if (date.year() == now.year()) {
         if (date.day_of_year() == now.day_of_year()) {
           pretty_str = show_time ?
+            /* TRANSLATORS: argument is time. */
             str(boost::format(_("Today, %1%")) % short_time) :
             _("Today");
         }
         else if ((date.day_of_year() < now.day_of_year())
                  && (date.day_of_year() == now.day_of_year() - 1)) {
           pretty_str = show_time ?
+            /* TRANSLATORS: argument is time. */
             str(boost::format(_("Yesterday, %1%")) % short_time) :
             _("Yesterday");
         }
@@ -195,10 +197,14 @@ namespace gnote {
           int num_days = now.day_of_year() - date.day_of_year();
           const char * fmt;
           if(show_time) {
+            /* TRANSLATORS: 2 or more days ago, up to one week.
+               First argument is number of days, second is time. */
             fmt = ngettext("%1% day ago, %2%", "%1% days ago, %2%", num_days);
             pretty_str = str(boost::format(fmt) % num_days % short_time);
           }
           else {
+            /* TRANSLATORS: 2 or more days ago, up to one week.
+               Argument is number of days. */
             fmt = ngettext("%1% day ago", "%1% days ago", num_days);
             pretty_str = str(boost::format(fmt) % num_days);
           }
@@ -206,6 +212,7 @@ namespace gnote {
         else if (date.day_of_year() > now.day_of_year()
                  && date.day_of_year() == now.day_of_year() + 1) {
           pretty_str = show_time ?
+            /* TRANSLATORS: argument is time. */
             str(boost::format(_("Tomorrow, %1%")) % short_time) :
             _("Tomorrow");
         }
@@ -214,10 +221,14 @@ namespace gnote {
           int num_days = date.day_of_year() - now.day_of_year();
           const char * fmt;
           if(show_time) {
+            /* TRANSLATORS: In 2 or more days, up to one week.
+               First argument is number of days, second is time. */
             fmt = ngettext("In %1% day, %2%", "In %1% days, %2%", num_days);
             pretty_str = str(boost::format(fmt) % num_days % short_time); 
           }
           else {
+            /* TRANSLATORS: In 2 or more days, up to one week.
+               Argument is number of days. */
             fmt = ngettext("In %1% day", "In %1% days", num_days);
             pretty_str = str(boost::format(fmt) % num_days);
           }
