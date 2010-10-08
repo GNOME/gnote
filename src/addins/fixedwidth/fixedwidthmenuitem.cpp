@@ -52,7 +52,8 @@ namespace fixedwidth {
   void FixedWidthMenuItem::on_activate()
   {
     if (!m_event_freeze)
-				m_note_addin->get_buffer()->toggle_active_tag ("monospace");
+      m_note_addin->get_buffer()->toggle_active_tag ("monospace");
+    Gtk::CheckMenuItem::on_activate();
   }
 
 
