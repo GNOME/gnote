@@ -52,7 +52,8 @@ namespace underline {
   void UnderlineMenuItem::on_activate()
   {
     if (!m_event_freeze)
-				m_note_addin->get_buffer()->toggle_active_tag ("underline");
+      m_note_addin->get_buffer()->toggle_active_tag ("underline");
+    Gtk::CheckMenuItem::on_activate();
   }
 
 
