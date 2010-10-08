@@ -37,7 +37,7 @@ class FixedWidthTag
 {
 public:
   FixedWidthTag()
-    : gnote::NoteTag("monospace", CAN_GROW | CAN_UNDO)
+    : gnote::NoteTag("monospace", CAN_GROW | CAN_UNDO | CAN_SPELL_CHECK)
     {
       property_family() = "monospace";
     }
