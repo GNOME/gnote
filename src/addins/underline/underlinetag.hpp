@@ -37,7 +37,7 @@ class UnderlineTag
 {
 public:
   UnderlineTag()
-    : gnote::NoteTag("underline", CAN_GROW | CAN_UNDO)
+    : gnote::NoteTag("underline", CAN_GROW | CAN_UNDO | CAN_SPELL_CHECK)
     {
       property_underline() = Pango::UNDERLINE_SINGLE;
     }
