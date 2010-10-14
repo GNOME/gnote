@@ -542,8 +542,7 @@ namespace gnote {
   void InsertBulletAction::redo (Gtk::TextBuffer * buffer)
   {
     Gtk::TextIter iter = buffer->get_iter_at_offset (m_offset);
-
-    buffer->insert (iter, "\n");
+    iter = buffer->insert (iter, "\n");
 
     dynamic_cast<NoteBuffer*>(buffer)->insert_bullet (iter, 
                                                       m_depth, m_direction);
