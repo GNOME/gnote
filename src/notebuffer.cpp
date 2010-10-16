@@ -862,7 +862,7 @@ namespace gnote {
       if (toggle_on && !find_depth_tag(curr_line)) {
         increase_depth(curr_line);
       } 
-      else if (!toggle_on && !find_depth_tag(curr_line)) {
+      else if (!toggle_on && find_depth_tag(curr_line)) {
         Gtk::TextIter bullet_end = get_iter_at_line_offset(curr_line.get_line(), 2);
         erase(curr_line, bullet_end);
       }
