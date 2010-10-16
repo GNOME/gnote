@@ -59,7 +59,7 @@ public:
   virtual const char * name() const = 0;
   virtual const char * description() const = 0;
   virtual const char * authors() const = 0;
-  virtual const char * category() const = 0;
+  virtual int          category() const = 0;
   virtual const char * version() const = 0;
   virtual const char * copyright() const;
   bool is_enabled() const

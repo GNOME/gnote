@@ -52,9 +52,9 @@ const char * NoteOfTheDayModule::authors() const
 {
   return _("Debarshi Ray and the Tomboy Project");
 }
-const char * NoteOfTheDayModule::category() const
+int NoteOfTheDayModule::category() const
 {
-  return "Tools";
+  return gnote::ADDIN_CATEGORY_TOOLS;
 }
 const char * NoteOfTheDayModule::version() const
 {

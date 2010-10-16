@@ -53,9 +53,9 @@ namespace inserttimestamp {
   {
     return _("Hubert Figuiere and Tomboy Project");
   }
-  const char * InsertTimeStampModule::category() const
+  int InsertTimeStampModule::category() const
   {
-    return "Tools";
+    return gnote::ADDIN_CATEGORY_TOOLS;
   }
   const char * InsertTimeStampModule::version() const
   {

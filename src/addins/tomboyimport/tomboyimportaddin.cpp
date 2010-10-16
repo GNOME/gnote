@@ -54,9 +54,9 @@ const char * TomboyImportModule::authors() const
 {
   return _("Hubert Figuiere");
 }
-const char * TomboyImportModule::category() const
+int TomboyImportModule::category() const
 {
-  return "Tools";
+  return gnote::ADDIN_CATEGORY_TOOLS;
 }
 const char * TomboyImportModule::version() const
 {

@@ -54,9 +54,9 @@ namespace printnotes {
   {
     return _("Hubert Figuiere and the Tomboy Project");
   }
-  const char * PrintNotesModule::category() const
+  int PrintNotesModule::category() const
   {
-    return "Desktop Integration";
+    return gnote::ADDIN_CATEGORY_DESKTOP_INTEGRATION;
   }
   const char * PrintNotesModule::version() const
   {

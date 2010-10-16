@@ -49,9 +49,9 @@ const char * BacklinksModule::authors() const
 {
   return _("Hubert Figuiere and Tomboy Project");
 }
-const char * BacklinksModule::category() const
+int BacklinksModule::category() const
 {
-  return "Tools";
+  return gnote::ADDIN_CATEGORY_TOOLS;
 }
 const char * BacklinksModule::version() const
 {

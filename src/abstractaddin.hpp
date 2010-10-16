@@ -29,6 +29,12 @@
 
 namespace gnote {
 
+enum {
+  ADDIN_CATEGORY_TOOLS,
+  ADDIN_CATEGORY_FORMATTING,
+  ADDIN_CATEGORY_DESKTOP_INTEGRATION
+};
+
 class AbstractAddin
   : public sharp::IInterface
   , public sigc::trackable

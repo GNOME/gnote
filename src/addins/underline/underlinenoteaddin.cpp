@@ -55,9 +55,9 @@ namespace underline {
   {
     return _("Hubert Figuière and the Tomboy Project");
   }
-  const char * UnderlineModule::category() const
+  int UnderlineModule::category() const
   {
-    return "Formatting";
+    return gnote::ADDIN_CATEGORY_FORMATTING;
   }
   const char * UnderlineModule::version() const
   {

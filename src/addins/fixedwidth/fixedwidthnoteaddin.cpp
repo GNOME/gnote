@@ -55,9 +55,9 @@ namespace fixedwidth {
   {
     return "";
   }
-  const char * FixedWidthModule::category() const
+  int FixedWidthModule::category() const
   {
-    return "Formatting";
+    return gnote::ADDIN_CATEGORY_FORMATTING;
   }
   const char * FixedWidthModule::version() const
   {

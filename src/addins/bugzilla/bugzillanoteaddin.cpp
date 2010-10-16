@@ -64,9 +64,9 @@ namespace bugzilla {
   {
     return _("Hubert Figuiere and the Tomboy Project");
   }
-  const char * BugzillaModule::category() const
+  int BugzillaModule::category() const
   {
-    return "Desktop Integration";
+    return gnote::ADDIN_CATEGORY_DESKTOP_INTEGRATION;
   }
   const char * BugzillaModule::version() const
   {

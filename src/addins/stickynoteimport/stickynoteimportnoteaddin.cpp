@@ -65,9 +65,9 @@ const char * StickyNoteImportModule::authors() const
 {
   return _("Hubert Figuiere and the Tomboy Project");
 }
-const char * StickyNoteImportModule::category() const
+int StickyNoteImportModule::category() const
 {
-  return "Tools";
+  return gnote::ADDIN_CATEGORY_TOOLS;
 }
 const char * StickyNoteImportModule::version() const
 {

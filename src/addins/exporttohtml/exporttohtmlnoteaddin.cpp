@@ -70,9 +70,9 @@ const char * ExportToHtmlModule::authors() const
 {
   return _("Hubert Figuiere and the Tomboy Project");
 }
-const char * ExportToHtmlModule::category() const
+int ExportToHtmlModule::category() const
 {
-  return "Tools";
+  return gnote::ADDIN_CATEGORY_TOOLS;
 }
 const char * ExportToHtmlModule::version() const
 {
