@@ -8,4 +8,4 @@ DOC_INCLUDES = legal.xml
 DOC_FIGURES =
 
 DOC_LINGUAS = de el es sv zh_CN
-#ca de el en_GB es eu fr it oc pl pt_BR ru sv uk
+#ca de el en_GB es eu fr it oc pl pt_BR ru sl sv uk
