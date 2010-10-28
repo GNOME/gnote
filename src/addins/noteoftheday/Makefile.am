@@ -2,9 +2,9 @@
 include $(builddir)/../addins.mk
 
 addinsdir = $(ADDINSDIR)
-addins_LTLIBRARIES = libnoteoftheday.la
+addins_LTLIBRARIES = noteoftheday.la
 
-libnoteoftheday_la_SOURCES = \
+noteoftheday_la_SOURCES = \
 	noteoftheday.hpp \
 	noteoftheday.cpp \
 	noteofthedayapplicationaddin.hpp \
