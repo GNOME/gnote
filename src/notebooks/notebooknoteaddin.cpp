@@ -116,11 +116,6 @@ namespace notebooks {
       Tag::Ptr templateTag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       if (get_note()->contains_tag (templateTag)) {
         m_toolButton->set_sensitive(false);
-        
-        // Also prevent notebook templates from being deleted
-        if (NotebookManager::instance().get_notebook_from_note (get_note())) {
-          get_note()->get_window()->delete_button()->set_sensitive(false);
-        }
       }
     }
   }
