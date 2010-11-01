@@ -266,6 +266,7 @@ namespace gnote {
       case GDK_Right:
       case GDK_Up:
       case GDK_Down:
+      case GDK_End:
         ret_value = false;
         break;
       default:
