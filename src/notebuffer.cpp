@@ -903,11 +903,6 @@ namespace gnote {
                         (pango_unichar_direction(next.get_char() == Pango::DIRECTION_RTL)));
     }
 
-    if ((rtl_depth || first_char_rtl) &&
-        ((next.get_line() == start.get_line()) && !next.ends_line ())) {
-      increase = !right;
-    }
-        
     change_cursor_depth(increase);
   }
 
