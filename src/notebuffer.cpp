@@ -886,9 +886,6 @@ namespace gnote {
     start.set_line_offset(0);
     DepthNoteTag::Ptr start_depth = find_depth_tag (start);
 
-    bool rtl_depth = start_depth && (start_depth->get_direction() == Pango::DIRECTION_RTL);
-    bool first_char_rtl = (start.get_char() > 0) &&
-      (pango_unichar_direction(start.get_char()) == PANGO_DIRECTION_RTL);
     Gtk::TextIter next = start;
 
     if (start_depth) {
@@ -899,8 +896,6 @@ namespace gnote {
       // and use that to determine what direction we should go
       next.forward_sentence_end ();
       next.backward_sentence_start ();
-      first_char_rtl = ((next.get_char() > 0) &&
-                        (pango_unichar_direction(next.get_char() == Pango::DIRECTION_RTL)));
     }
 
     change_cursor_depth(increase);
