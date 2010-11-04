@@ -47,7 +47,7 @@ stringtest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
 filestest_SOURCES = test/filestest.cpp \
 	sharp/files.cpp
-filestest_LDADD = @BOOST_FILESYSTEM_LIBS@
+filestest_LDADD = @BOOST_FILESYSTEM_LIBS@ -lboost_system-mt
 
 uritest_SOURCES = test/uritest.cpp \
 	sharp/string.cpp  sharp/uri.cpp debug.cpp
@@ -58,7 +58,7 @@ xmlreadertest_SOURCES = test/xmlreadertest.cpp \
 xmlreadertest_LDADD = @LIBXML_LIBS@
 
 notetest_SOURCES = test/notetest.cpp
-notetest_LDADD =  $(GNOTE_LIBS)
+notetest_LDADD =  $(GNOTE_LIBS) -lX11
 
 gnote_SOURCES = main.cpp
 
