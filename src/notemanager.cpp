@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -199,8 +200,7 @@ namespace gnote {
   // For overriding in test methods.
   bool NoteManager::create_directory(const std::string & directory) const
   {
-    boost::filesystem::path p(directory);
-    return boost::filesystem::create_directory(p);
+    return g_mkdir_with_parents(directory.c_str(), S_IRWXU) == 0;
   }
 
   bool NoteManager::first_run() const
