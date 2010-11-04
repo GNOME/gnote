@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,6 +20,7 @@
 
 
 
+#include <glib.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/buttonbox.h>
 #include <gtkmm/filechooserdialog.h>
@@ -307,7 +309,7 @@ namespace bugzilla {
     std::string saved_path = s_image_dir + "/" + host + ext;
     try {
       if (!sharp::directory_exists (s_image_dir)) {
-        sharp::directory_create (s_image_dir);
+        g_mkdir_with_parents(s_image_dir.c_str(), S_IRWXU);
       }
 
       sharp::file_copy (file_path, saved_path);

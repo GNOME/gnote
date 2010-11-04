@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,6 +24,7 @@
 
 #include <pcrecpp.h>
 
+#include <glib.h>
 #include <glibmm/i18n.h>
 
 
@@ -89,7 +91,7 @@ namespace bugzilla {
                    && sharp::directory_exists(old_images_dir);
 
     if (is_first_run)
-      sharp::directory_create(images_dir());
+      g_mkdir_with_parents(images_dir().c_str(), S_IRWXU);
 
     if (migration_needed)
       migrate_images(old_images_dir);

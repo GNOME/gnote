@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2009 Debarshi Ray
+ * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,6 +23,8 @@
 
 #include <boost/bind.hpp>
 #include <boost/checked_delete.hpp>
+
+#include <glib.h>
 
 #include "sharp/map.hpp"
 #include "sharp/directory.hpp"
@@ -87,7 +89,7 @@ namespace gnote {
                    && sharp::directory_exists(old_addins_dir);
 
     if (is_first_run)
-      sharp::directory_create(m_addins_prefs_dir);
+      g_mkdir_with_parents(m_addins_prefs_dir.c_str(), S_IRWXU);
 
     if (migration_needed)
       migrate_addins(old_addins_dir);
@@ -211,15 +213,9 @@ namespace gnote {
 
   void AddinManager::initialize_sharp_addins()
   {
+    if (!sharp::directory_exists (m_addins_prefs_dir))
+      g_mkdir_with_parents(m_addins_prefs_dir.c_str(), S_IRWXU);
 
-    try {
-      if(!sharp::directory_exists(m_addins_prefs_dir)) {
-        sharp::directory_create(m_addins_prefs_dir);
-      }
-    }
-    catch(...) {
-
-    }
     // get the factory
 
     REGISTER_BUILTIN_NOTE_ADDIN(NoteRenameWatcher);
