@@ -193,6 +193,7 @@ namespace gnote {
     }
 
     module->enabled(enable);
+    m_addin_manager.save_addins_prefs();
   }
   
   

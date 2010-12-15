@@ -99,28 +99,6 @@ namespace gnote {
 
   AddinManager::~AddinManager()
   {
-    Glib::KeyFile global_addins_prefs;
-    try {
-      global_addins_prefs.load_from_file(m_addins_prefs_file);
-    }
-    catch (Glib::Error & not_loaded_ignored) {
-    }
-
-    const sharp::ModuleList & list = m_module_manager.get_modules();
-    for(sharp::ModuleList::const_iterator iter = list.begin();
-        iter != list.end(); ++iter) {
-      const sharp::DynamicModule* dmod = *iter;
-      global_addins_prefs.set_boolean("Enabled", dmod->id(),
-                                      dmod->is_enabled());
-    }
-
-    Glib::RefPtr<Gio::File> prefs_file = Gio::File::create_for_path(
-                                           m_addins_prefs_file);
-    Glib::RefPtr<Gio::FileOutputStream> prefs_file_stream
-                                          = prefs_file->append_to();
-    prefs_file_stream->truncate(0);
-    prefs_file_stream->write(global_addins_prefs.to_data());
-
     sharp::map_delete_all_second(m_app_addins);
     for(NoteAddinMap::const_iterator iter = m_note_addins.begin();
         iter != m_note_addins.end(); ++iter) {
@@ -368,6 +346,31 @@ namespace gnote {
         }
       }
     }
+  }
+
+  void AddinManager::save_addins_prefs() const
+  {
+    Glib::KeyFile global_addins_prefs;
+    try {
+      global_addins_prefs.load_from_file(m_addins_prefs_file);
+    }
+    catch (Glib::Error & not_loaded_ignored) {
+    }
+
+    const sharp::ModuleList & list = m_module_manager.get_modules();
+    for(sharp::ModuleList::const_iterator iter = list.begin();
+        iter != list.end(); ++iter) {
+      const sharp::DynamicModule* dmod = *iter;
+      global_addins_prefs.set_boolean("Enabled", dmod->id(),
+                                      dmod->is_enabled());
+    }
+
+    Glib::RefPtr<Gio::File> prefs_file = Gio::File::create_for_path(
+                                           m_addins_prefs_file);
+    Glib::RefPtr<Gio::FileOutputStream> prefs_file_stream
+                                          = prefs_file->append_to();
+    prefs_file_stream->truncate(0);
+    prefs_file_stream->write(global_addins_prefs.to_data());
   }
 
   Gtk::Widget * AddinManager::create_addin_preference_widget(const std::string & id)

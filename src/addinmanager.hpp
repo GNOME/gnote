@@ -62,6 +62,7 @@ public:
   void get_import_addins(std::list<ImportAddin*> &) const;
   void initialize_application_addins() const;
   void shutdown_application_addins() const;
+  void save_addins_prefs() const;
 
   const sharp::ModuleList & get_modules() const
     { 
