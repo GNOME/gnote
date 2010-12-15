@@ -116,6 +116,8 @@ public:
   void show_help_contents();
   void show_about();
   void quit();
+protected:
+  virtual bool on_size_changed(int size);
 private:
   Tray::Ptr                m_tray;
   PrefsKeybinder          *m_keybinder;

@@ -397,9 +397,6 @@ namespace gnote {
     , m_keybinder(new GnotePrefsKeybinder(manager, *this))
     , m_context_menu(NULL)
   {
-    int panel_size = 32;
-    Glib::RefPtr<Gdk::Pixbuf> pixbuf = utils::get_icon("gnote", panel_size);
-    set(pixbuf);
 #if GTK_VERSION_GE(2,16)
     gtk_status_icon_set_tooltip_text(gobj(), 
                                      tray_util_get_tooltip_text().c_str());
@@ -531,6 +528,23 @@ namespace gnote {
         open_upwards = true;
 
       return open_upwards;
+  }
+
+  bool TrayIcon::on_size_changed(int size)
+  {
+    if(size < 24) {
+      size = 22;
+    }
+    else if(size < 32) {
+      size = 24;
+    }
+    else if(size < 48) {
+      size = 32;
+    }
+    else size = 48;
+    Glib::RefPtr<Gdk::Pixbuf> pixbuf = utils::get_icon("gnote", size);
+    set(pixbuf);
+    return Gtk::StatusIcon::on_size_changed(size);
   }
 
   //
