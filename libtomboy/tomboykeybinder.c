@@ -1,4 +1,6 @@
 /* tomboykeybinder.c
+ *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2008 Alex Graveley
  *
  * Permission is hereby granted, free of charge, to any person obtaining 
