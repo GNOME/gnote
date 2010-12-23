@@ -103,6 +103,7 @@ private:
   RemoteControl     *m_remote_control;
 };
 
+class RemoteControlClient;
 
 class GnoteCommandLine
 {
@@ -128,6 +129,8 @@ public:
                              GError **error);
 private:
   void        print_version();
+  bool        display_note(RemoteControlClient * remote,
+                           std::string uri);
 
   GOptionContext *m_context;
 

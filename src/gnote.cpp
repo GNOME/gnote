@@ -544,13 +544,7 @@ namespace gnote {
       m_open_note_uri = remote->FindNote (m_open_note_name);
     }
     if (!m_open_note_uri.empty()) {
-      if (m_highlight_search) {
-        remote->DisplayNoteWithSearch (m_open_note_uri,
-                                       m_highlight_search);
-      }
-      else {
-        remote->DisplayNote (m_open_note_uri);
-      }
+      display_note(remote, m_open_note_uri);
     }
 
     if (!m_open_external_note_path.empty()) {
@@ -558,9 +552,7 @@ namespace gnote {
       if (!note_id.empty()) {
         // Attempt to load the note, assuming it might already
         // be part of our notes list.
-        if (remote->DisplayNote (
-              str(boost::format("note://gnote/%1%") % note_id)) == false) {
-
+        if (!display_note(remote, str(boost::format("note://gnote/%1%") % note_id))) {
           sharp::StreamReader sr;
           sr.init(m_open_external_note_path);
           if (sr.file()) {
@@ -577,7 +569,7 @@ namespace gnote {
               noteXml = "";
             }
 
-						if (!noteXml.empty()) {
+            if (!noteXml.empty()) {
               noteTitle = NoteArchiver::obj().get_title_from_note_xml (noteXml);
               if (!noteTitle.empty()) {
                 // Check for conflicting titles
@@ -594,7 +586,7 @@ namespace gnote {
                 if (!note_uri.empty()) {
                   // Load in the XML contents of the note file
                   if (remote->SetNoteCompleteXml (note_uri, noteXml)) {
-                    remote->DisplayNote (note_uri);
+                    display_note(remote, note_uri);
                   }
                 }
               }
@@ -637,6 +629,22 @@ namespace gnote {
     Glib::ustring version = str(boost::format(_("Version %1%"))
                                 % VERSION);
     std::cerr << version << std::endl;
+  }
+
+
+  bool GnoteCommandLine::display_note(RemoteControlClient * remote,
+                                      std::string uri)
+  {
+#ifdef ENABLE_DBUS
+    if (m_highlight_search) {
+      return remote->DisplayNoteWithSearch(uri, m_highlight_search);
+    }
+    else {
+      return remote->DisplayNote (uri);
+    }
+#else
+    return false;
+#endif
   }
 
 
