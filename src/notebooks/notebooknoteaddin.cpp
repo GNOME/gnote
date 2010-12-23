@@ -201,6 +201,9 @@ namespace notebooks {
     noNotebookMenuItem->show_all ();
     m_menu->append (*noNotebookMenuItem);
     m_menu_items.push_back(noNotebookMenuItem);
+
+    NotebookMenuItem *active_menu_item = noNotebookMenuItem;
+    Notebook::Ptr current_notebook = NotebookManager::instance().get_notebook_from_note(get_note());
       
     // Add in all the real notebooks
     std::list<NotebookMenuItem*> notebookMenuItems;
@@ -217,8 +220,12 @@ namespace notebooks {
         item->show_all ();
         m_menu->append (*item);
         m_menu_items.push_back(item);
+        if(current_notebook == item->get_notebook())
+          active_menu_item = item;
       }
     }
+
+    active_menu_item->set_active(true);
   }
   
 
