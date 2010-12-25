@@ -6,18 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&component=general\n"
-"POT-Creation-Date: 2010-02-26 20:30+0000\n"
-"PO-Revision-Date: 2010-07-28 18:59+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&component=general\n"
+"POT-Creation-Date: 2010-12-23 22:26+0000\n"
+"PO-Revision-Date: 2010-12-25 15:43+0100\n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: utf-8\n"
 "Language: Slovenian\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\\n\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\\n\n"
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -26,7 +24,8 @@ msgstr ""
 msgid "Accessories"
 msgstr "Pripomočki"
 
-#: ../data/GNOME_GnoteApplet.server.in.in.h:2 ../data/gnote.desktop.in.in.h:1
+#: ../data/GNOME_GnoteApplet.server.in.in.h:2
+#: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -39,14 +38,19 @@ msgid "Simple and easy to use note-taking"
 msgstr "Preprosto in enostavno pisanje sporočilc"
 
 #: ../data/GNOME_GnoteApplet.xml.h:1
+#: ../src/actionmanager.cpp:217
 msgid "_About"
 msgstr "_O programu"
 
-#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/tray.cpp:468
+#: ../data/GNOME_GnoteApplet.xml.h:2
+#: ../src/actionmanager.cpp:208
+#: ../src/tray.cpp:466
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/tray.cpp:463
+#: ../data/GNOME_GnoteApplet.xml.h:3
+#: ../src/actionmanager.cpp:205
+#: ../src/tray.cpp:461
 msgid "_Preferences"
 msgstr "_Možnosti"
 
@@ -119,28 +123,16 @@ msgid "Enable startup notes"
 msgstr "Omogoči sporočilca ob zagonu"
 
 #: ../data/gnote.schemas.in.h:16
-msgid ""
-"Enable this option if you want bulleted lists to be automatic when you place "
-"- or * at the beginning of a line."
-msgstr ""
-"Izbrana možnost omogoča samodejno vrstično označene sezname ob postavitvi - "
-"ali * na začetek vrstice."
+msgid "Enable this option if you want bulleted lists to be automatic when you place - or * at the beginning of a line."
+msgstr "Izbrana možnost omogoča samodejno vrstično označene sezname ob postavitvi - ali * na začetek vrstice."
 
 #: ../data/gnote.schemas.in.h:17
-msgid ""
-"Enable this option if you want to be able to middle-click the Gnote icon to "
-"paste timestamped content into the Start Here note."
-msgstr ""
-"Izbrana možnost določa, da se s klikom srednjega gumba miške na ikono Gnote, "
-"prilepi časovni žig v sporočilce začnite tukaj."
+msgid "Enable this option if you want to be able to middle-click the Gnote icon to paste timestamped content into the Start Here note."
+msgstr "Izbrana možnost določa, da se s klikom srednjega gumba miške na ikono Gnote, prilepi časovni žig v sporočilce začnite tukaj."
 
 #: ../data/gnote.schemas.in.h:18
-msgid ""
-"Enable this option to highlight words ThatLookLikeThis. Clicking the word "
-"will create a note with that name."
-msgstr ""
-"Izbrana možnost določa, da bodo poudarjene besede KiImajoTakVidez. S klikom "
-"na besedo bo ustvarjeno sporočilce s tem imenom."
+msgid "Enable this option to highlight words ThatLookLikeThis. Clicking the word will create a note with that name."
+msgstr "Izbrana možnost določa, da bodo poudarjene besede KiImajoTakVidez. S klikom na besedo bo ustvarjeno sporočilce s tem imenom."
 
 #: ../data/gnote.schemas.in.h:19
 msgid "FUSE Mounting Timeout (ms)"
@@ -159,90 +151,40 @@ msgid "HTML Export Linked Notes"
 msgstr "HTML izvoz povezanih zapiskov"
 
 #: ../data/gnote.schemas.in.h:23
-msgid ""
-"If enable_custom_font is true, the font name set here will be used as the "
-"font when displaying notes."
-msgstr ""
-"Izbrana možnost omogoča, da bo nastavljena pisava uporabljena za prikaz "
-"sporočilc."
+msgid "If enable_custom_font is true, the font name set here will be used as the font when displaying notes."
+msgstr "Izbrana možnost omogoča, da bo nastavljena pisava uporabljena za prikaz sporočilc."
 
 #: ../data/gnote.schemas.in.h:24
-msgid ""
-"If enabled, all notes that were open when Gnote quit will automatically be "
-"reopened at startup."
-msgstr ""
-"Izbrana možnost določa, da bodo vsa sporočilca, ki so bila odprta ob izhodu "
-"iz Gnote samodejno odprta ob zagonu."
+msgid "If enabled, all notes that were open when Gnote quit will automatically be reopened at startup."
+msgstr "Izbrana možnost določa, da bodo vsa sporočilca, ki so bila odprta ob izhodu iz Gnote samodejno odprta ob zagonu."
 
 #: ../data/gnote.schemas.in.h:25
 msgid "If enabled, an opened note can be closed by hitting the escape key."
-msgstr ""
-"Izbrana možnost omogoča, da se odprto sporočilce lahko zapre s pritiskom na "
-"ubežno tipko."
+msgstr "Izbrana možnost omogoča, da se odprto sporočilce lahko zapre s pritiskom na ubežno tipko."
 
 #: ../data/gnote.schemas.in.h:26
-msgid ""
-"If true, misspellings will be underlined in red, and correct spelling "
-"suggestions shown in the right-click menu."
-msgstr ""
-"Izbrana možnost omogoča, da bo napačno črkovanje podčrtano, predlogi "
-"pravilnega črkovanja pa bodo prikazani v meniju desnega klika."
+msgid "If true, misspellings will be underlined in red, and correct spelling suggestions shown in the right-click menu."
+msgstr "Izbrana možnost omogoča, da bo napačno črkovanje podčrtano, predlogi pravilnega črkovanja pa bodo prikazani v meniju desnega klika."
 
 #: ../data/gnote.schemas.in.h:27
-msgid ""
-"If true, the desktop-global keybindings set in /apps/gnote/"
-"global_keybindings will be enabled, allowing for useful Gnote actions to be "
-"available from any application."
-msgstr ""
-"Izbrana možnost omogoča, da bodo splošne tipkovne bližnjice nastavljene v /"
-"apps/gnote/global_keybindings omogočene, kar pomeni da bodo uporabna dejanja "
-"Gnote dostopna iz vsakega programa."
+msgid "If true, the desktop-global keybindings set in /apps/gnote/global_keybindings will be enabled, allowing for useful Gnote actions to be available from any application."
+msgstr "Izbrana možnost omogoča, da bodo splošne tipkovne bližnjice nastavljene v /apps/gnote/global_keybindings omogočene, kar pomeni da bodo uporabna dejanja Gnote dostopna iz vsakega programa."
 
 #: ../data/gnote.schemas.in.h:28
-msgid ""
-"If true, the font name set in custom_font_face will be used as the font when "
-"displaying notes. Otherwise the desktop default font will be used."
-msgstr ""
-"Izbrana možnost omogoča, da bo pisava po meri uporabljena kot pisava za "
-"prikazovanje sporočilc. V nasprotnem primeru bo uporabljena privzeta pisava. "
+msgid "If true, the font name set in custom_font_face will be used as the font when displaying notes. Otherwise the desktop default font will be used."
+msgstr "Izbrana možnost omogoča, da bo pisava po meri uporabljena kot pisava za prikazovanje sporočilc. V nasprotnem primeru bo uporabljena privzeta pisava. "
 
 #: ../data/gnote.schemas.in.h:29
-msgid ""
-"Integer determining the minimum number of notes to show in the Gnote note "
-"menu."
-msgstr ""
-"Številka, ki določa najmanjše število sporočilc za prikaz v meniju sporočilc "
-"Gnote."
+msgid "Integer determining the minimum number of notes to show in the Gnote note menu."
+msgstr "Številka, ki določa najmanjše število sporočilc za prikaz v meniju sporočilc Gnote."
 
 #: ../data/gnote.schemas.in.h:30
-msgid ""
-"Integer value indicating if there is a preference to always perform a "
-"specific behavior when a conflict is detected, instead of prompting the "
-"user. The values map to an internal enumeration. 0 indicates that the user "
-"wishes to be prompted when a conflict occurs, so that they may handle each "
-"conflict situation on a case-by-case basis."
-msgstr ""
-"Številčna vrednost določa ali naj sistem vedno samodejno izvede določeno "
-"dejanje, kadar je zaznan spor, namesto da vpraša uporabnika. Vrednosti so "
-"notranje oštevilčene. Vrednost 0 določi, da je uporabnik vedno obveščen o "
-"napaki in ima možnost vsako težavo reševati posebej."
+msgid "Integer value indicating if there is a preference to always perform a specific behavior when a conflict is detected, instead of prompting the user. The values map to an internal enumeration. 0 indicates that the user wishes to be prompted when a conflict occurs, so that they may handle each conflict situation on a case-by-case basis."
+msgstr "Številčna vrednost določa ali naj sistem vedno samodejno izvede določeno dejanje, kadar je zaznan spor, namesto da vpraša uporabnika. Vrednosti so notranje oštevilčene. Vrednost 0 določi, da je uporabnik vedno obveščen o napaki in ima možnost vsako težavo reševati posebej."
 
 #: ../data/gnote.schemas.in.h:31
-msgid ""
-"Integer value indicating if there is a preference to always perform a "
-"specific link updating behavior when a note is renamed, instead of prompting "
-"the user. The values map to an internal enumeration. 0 indicates that the "
-"user wishes to be prompted when renaming a note may impact links that exist "
-"in other notes. 1 indicates that links should automatically be removed. 2 "
-"indicates that link text should be updated to the new note name so that it "
-"will continue linking to the renamed note."
-msgstr ""
-"Številčna vrednost določa ali naj program samodejno posodablja povezave, "
-"namesto spraševanja uporabnika. Te vrednosti sledijo notranjemu številčenju. "
-"0 določi da bo uporabnik obveščen ob preimenovanju sporočilca, ki lahko "
-"vpliva na povezave v drugih sporočilnih. 1 določi, da so povezave samodejno "
-"odstranjene. 2 določi, da je povezava posodobljena tako, da bo povezovala na "
-"preimenovano sporočilce."
+msgid "Integer value indicating if there is a preference to always perform a specific link updating behavior when a note is renamed, instead of prompting the user. The values map to an internal enumeration. 0 indicates that the user wishes to be prompted when renaming a note may impact links that exist in other notes. 1 indicates that links should automatically be removed. 2 indicates that link text should be updated to the new note name so that it will continue linking to the renamed note."
+msgstr "Številčna vrednost določa ali naj program samodejno posodablja povezave, namesto spraševanja uporabnika. Te vrednosti sledijo notranjemu številčenju. 0 določi da bo uporabnik obveščen ob preimenovanju sporočilca, ki lahko vpliva na povezave v drugih sporočilnih. 1 določi, da so povezave samodejno odstranjene. 2 določi, da je povezava posodobljena tako, da bo povezovala na preimenovano sporočilce."
 
 #: ../data/gnote.schemas.in.h:32
 msgid "Link Updating Behavior on Note Rename"
@@ -277,12 +219,8 @@ msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "Pot do uskaditvene mape Gnote na strežniku SSH (izbirno)."
 
 #: ../data/gnote.schemas.in.h:40
-msgid ""
-"Path to the synchronization server when using the filesystem synchronization "
-"service addin."
-msgstr ""
-"Pot do uskladitvenega strežnika ob uporabi vstavka storitve usklajevanja "
-"datotečnega sistema."
+msgid "Path to the synchronization server when using the filesystem synchronization service addin."
+msgstr "Pot do uskladitvenega strežnika ob uporabi vstavka storitve usklajevanja datotečnega sistema."
 
 #: ../data/gnote.schemas.in.h:41
 msgid "SSHFS Remote Synchronization Folder"
@@ -341,136 +279,56 @@ msgid "Synchronization Local Server Path"
 msgstr "Pot krajevnega uskladitvenega strežnika"
 
 #: ../data/gnote.schemas.in.h:55
-msgid ""
-"The date format that is used for the timestamp. It follows the format of "
-"strftime(3)."
+msgid "The date format that is used for the timestamp. It follows the format of strftime(3)."
 msgstr "Oblika datuma v časovnem žigu. Sledi obliki strftime(3)."
 
 #: ../data/gnote.schemas.in.h:56
-msgid ""
-"The global keybinding for creating and displaying a new Note. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Splošne tipkovne bližnjice za ustvarjanje in prikaz novega sporočilca. "
-"Oblika je podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter "
-"okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Neizbrana možnost "
-"onemogoči uporabo tipkovnih bližnjic za to dejanje."
+msgid "The global keybinding for creating and displaying a new Note. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
+msgstr "Splošne tipkovne bližnjice za ustvarjanje in prikaz novega sporočilca. Oblika je podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Neizbrana možnost onemogoči uporabo tipkovnih bližnjic za to dejanje."
 
 #: ../data/gnote.schemas.in.h:57
-msgid ""
-"The global keybinding for opening the \"Start Here\" note. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Splošne tipkovne bližnjice za odpiranje sporočilca \"Začnite tukaj\". Oblika "
-"je podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter "
-"okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Neizbrana možnost "
-"onemogoči uporabo tipkovnih bližnjic za to dejanje."
+msgid "The global keybinding for opening the \"Start Here\" note. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
+msgstr "Splošne tipkovne bližnjice za odpiranje sporočilca \"Začnite tukaj\". Oblika je podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Neizbrana možnost onemogoči uporabo tipkovnih bližnjic za to dejanje."
 
 #: ../data/gnote.schemas.in.h:58
-msgid ""
-"The global keybinding for opening the Note Search dialog. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Splošne tipkovne bližnjice za odpiranje okna iskanja sporočilc. Oblika je "
-"podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter "
-"okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Neizbrana možnost "
-"onemogoči uporabo tipkovnih bližnjic za to dejanje."
+msgid "The global keybinding for opening the Note Search dialog. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
+msgstr "Splošne tipkovne bližnjice za odpiranje okna iskanja sporočilc. Oblika je podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Neizbrana možnost onemogoči uporabo tipkovnih bližnjic za to dejanje."
 
 #: ../data/gnote.schemas.in.h:59
-msgid ""
-"The global keybinding for opening the Recent Changes dialog. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Splošne tipkovne bližnjice za odpiranje pogovornega okna nedavnih sprememb. "
-"Oblika je podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter "
-"okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". ČNeizbrana možnost "
-"onemogoči uporabo tipkovnih bližnjic za to dejanje."
+msgid "The global keybinding for opening the Recent Changes dialog. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
+msgstr "Splošne tipkovne bližnjice za odpiranje pogovornega okna nedavnih sprememb. Oblika je podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". ČNeizbrana možnost onemogoči uporabo tipkovnih bližnjic za to dejanje."
 
 #: ../data/gnote.schemas.in.h:60
-msgid ""
-"The global keybinding for showing the Gnote applet's menu. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Splošne tipkovne bližnjice za prikaz menija apleta Gnote. Oblika je podobna "
-"\"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". Razčlenjevalnik je "
-"dokaj liberalen, saj dovoli majhne in velike črke ter okrajšave kot sta "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Neizbrana možnost onemogoči uporabo "
-"tipkovnih bližnjic za to dejanje."
+msgid "The global keybinding for showing the Gnote applet's menu. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
+msgstr "Splošne tipkovne bližnjice za prikaz menija apleta Gnote. Oblika je podobna \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1\". Razčlenjevalnik je dokaj liberalen, saj dovoli majhne in velike črke ter okrajšave kot sta \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Neizbrana možnost onemogoči uporabo tipkovnih bližnjic za to dejanje."
 
 #: ../data/gnote.schemas.in.h:61
 msgid "The handler for \"note://\" URLs"
 msgstr "Upravljalnik za URL-je \"note://\""
 
 #: ../data/gnote.schemas.in.h:62
-msgid ""
-"The last directory a note was exported to using the Export To HTML plugin."
-msgstr ""
-"Zadnja mapa v katero so bila izvožena sporočilca z vstavkom izvoz v HTML."
+msgid "The last directory a note was exported to using the Export To HTML plugin."
+msgstr "Zadnja mapa v katero so bila izvožena sporočilca z vstavkom izvoz v HTML."
 
 #: ../data/gnote.schemas.in.h:63
-msgid ""
-"The last setting for the 'Export linked notes' checkbox in the Export to "
-"HTML plugin."
-msgstr ""
-"Zadnja nastavitev za potrditveno polje 'Izvozi povezana sporočilca' v "
-"vstavku izvoz v HTML."
+msgid "The last setting for the 'Export linked notes' checkbox in the Export to HTML plugin."
+msgstr "Zadnja nastavitev za potrditveno polje 'Izvozi povezana sporočilca' v vstavku izvoz v HTML."
 
 #: ../data/gnote.schemas.in.h:64
-msgid ""
-"The last setting for the 'Include all other linked notes' checkbox in the "
-"Export to HTML plugin. This setting is used in conjunction with the 'HTML "
-"Export Linked Notes' setting and is used to specify whether all notes (found "
-"recursively) should be included during an export to HTML."
-msgstr ""
-"Zadnja nastavitev za potrditveno polje 'Vključi vsa povezana sporočilca' v "
-"vstavku izvoz v HTML. Ta nastavitev je uporabljena skupaj z nastavitvijo "
-"'HTML izvoz povezanih sporočilc' in se uporablja za določanje ali bi morala "
-"biti vsa sporočila (najdena rekurzivno) vključena med izvozom v HTML."
+msgid "The last setting for the 'Include all other linked notes' checkbox in the Export to HTML plugin. This setting is used in conjunction with the 'HTML Export Linked Notes' setting and is used to specify whether all notes (found recursively) should be included during an export to HTML."
+msgstr "Zadnja nastavitev za potrditveno polje 'Vključi vsa povezana sporočilca' v vstavku izvoz v HTML. Ta nastavitev je uporabljena skupaj z nastavitvijo 'HTML izvoz povezanih sporočilc' in se uporablja za določanje ali bi morala biti vsa sporočila (najdena rekurzivno) vključena med izvozom v HTML."
 
 #: ../data/gnote.schemas.in.h:65
-msgid ""
-"The note URI of the note that should be considered the \"Start Here\" note, "
-"which is always placed at the bottom of the Gnote note menu and also "
-"accessible by hotkey."
-msgstr ""
-"URI sporočilca obravnavanega kot sporočilce \"Začnite tukaj\", ki je vedno "
-"na dnu menija sporočilc Gnote, dostopen pa je tudi preko hitre tipke. "
+msgid "The note URI of the note that should be considered the \"Start Here\" note, which is always placed at the bottom of the Gnote note menu and also accessible by hotkey."
+msgstr "URI sporočilca obravnavanega kot sporočilce \"Začnite tukaj\", ki je vedno na dnu menija sporočilc Gnote, dostopen pa je tudi preko hitre tipke. "
 
 #: ../data/gnote.schemas.in.h:66
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "Vrata za povezovanje z uskladitvenim strežnikom preko SSH."
 
 #: ../data/gnote.schemas.in.h:67
-msgid ""
-"Time (in milliseconds) Gnote should wait for a response when using FUSE to "
-"mount a sync share."
-msgstr ""
-"Čas (v milisekundah) čakanja Gnote na odziv ob uporabi FUSE za priklop "
-"uskladitvene mape v souporabi."
+msgid "Time (in milliseconds) Gnote should wait for a response when using FUSE to mount a sync share."
+msgstr "Čas (v milisekundah) čakanja Gnote na odziv ob uporabi FUSE za priklop uskladitvene mape v souporabi."
 
 #: ../data/gnote.schemas.in.h:68
 msgid "Timestamp format"
@@ -481,40 +339,24 @@ msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "URL strežnika SSH, ki vsebuje uskladitveno mapo Gnote."
 
 #: ../data/gnote.schemas.in.h:70
-msgid ""
-"Unique identifier for the currently configured note synchronization service "
-"addin."
-msgstr ""
-"Enoznačno določilo za trenutno nastavljen vstavek storitve uskladitve "
-"sporočilc. "
+msgid "Unique identifier for the currently configured note synchronization service addin."
+msgstr "Enoznačno določilo za trenutno nastavljen vstavek storitve uskladitve sporočilc. "
 
 #: ../data/gnote.schemas.in.h:71
-msgid ""
-"Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
-msgstr ""
-"Enoznačno določilo za ta odjemalec Gnote, uporabljeno ob komunikaciji z "
-"uskladitvenim strežnikom."
+msgid "Unique identifier for this Gnote client, used when communicating with a sychronization server."
+msgstr "Enoznačno določilo za ta odjemalec Gnote, uporabljeno ob komunikaciji z uskladitvenim strežnikom."
 
 #: ../data/gnote.schemas.in.h:72
-msgid ""
-"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
-"user."
-msgstr ""
-"Uporabite wdfs možnost \"-ac\" za sprejem potrdil SSL brez vprašanj "
-"uporabniku."
+msgid "Use wdfs option \"-ac\" to accept SSL certificates without prompting the user."
+msgstr "Uporabite wdfs možnost \"-ac\" za sprejem potrdil SSL brez vprašanj uporabniku."
 
 #: ../data/gnote.schemas.in.h:73
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr "Uporabniško ime za povezavo z uskladitvenim strežnikom preko SSH."
 
 #: ../data/gnote.schemas.in.h:74
-msgid ""
-"Whitespace-separated list of note URIs for notes that should always appear "
-"in the Gnote note menu."
-msgstr ""
-"S presledki ločen seznam URI-jev sporočilc, ki naj bi se vedno pojavil v "
-"meniju sporočilc Gnote."
+msgid "Whitespace-separated list of note URIs for notes that should always appear in the Gnote note menu."
+msgstr "S presledki ločen seznam URI-jev sporočilc, ki naj bi se vedno pojavil v meniju sporočilc Gnote."
 
 #: ../src/sharp/addinstreemodel.cpp:64
 msgid "Name"
@@ -533,6 +375,7 @@ msgid "_New"
 msgstr "_Novo"
 
 #: ../src/actionmanager.cpp:175
+#: ../src/actionmanager.cpp:226
 msgid "Create a new note"
 msgstr "Ustvari novo sporočilce"
 
@@ -553,6 +396,7 @@ msgid "Delete the selected note"
 msgstr "Izbriši izbrano sporočilce"
 
 #: ../src/actionmanager.cpp:192
+#: ../src/notewindow.cpp:361
 msgid "_Close"
 msgstr "_Zapri"
 
@@ -561,6 +405,7 @@ msgid "Close this window"
 msgstr "Zapre to okno"
 
 #: ../src/actionmanager.cpp:197
+#: ../src/tray.cpp:478
 msgid "_Quit"
 msgstr "_Končaj"
 
@@ -573,6 +418,7 @@ msgid "_Edit"
 msgstr "_Uredi"
 
 #: ../src/actionmanager.cpp:205
+#: ../src/preferencesdialog.cpp:89
 msgid "Gnote Preferences"
 msgstr "Možnosti Gnote"
 
@@ -597,6 +443,7 @@ msgid "Create _New Note"
 msgstr "Ustvari _novo sporočilce"
 
 #: ../src/actionmanager.cpp:231
+#: ../src/notewindow.cpp:313
 msgid "_Search All Notes"
 msgstr "_Išči po vseh sporočilcih"
 
@@ -612,333 +459,296 @@ msgstr "U_skladi sporočilca"
 msgid "Start synchronizing notes"
 msgstr "Začne usklajevanje sporočilc"
 
-#: ../src/gnote.cpp:282
+#: ../src/gnote.cpp:277
 msgid "Cannot create new note"
 msgstr "Ni mogoče ustvariti novega sporočilca"
 
-#: ../src/gnote.cpp:329
+#: ../src/gnote.cpp:326
 msgid "and Tomboy original authors."
 msgstr "in avtorji izvirnega Tomboy"
 
-#: ../src/gnote.cpp:338
+#: ../src/gnote.cpp:335
 msgid "translator-credits"
 msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com>"
 
-#: ../src/gnote.cpp:346
+#: ../src/gnote.cpp:343
 msgid ""
+"Copyright © 2010 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"Avtorske pravice © 2010 Aurimas Cernius\n"
 "Avtorske pravice © 2009-2010 Debarshi Ray\n"
 "Avtorske pravice © 2009 Hubert Figuiere\n"
 "Avtorske pravice © 2004-2009 avtorji izvornega Tomboy."
 
-#: ../src/gnote.cpp:349
+#: ../src/gnote.cpp:347
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Preprost in enostaven program za pisanje sporočilc. "
 
-#: ../src/gnote.cpp:360
+#: ../src/gnote.cpp:358
 msgid "Homepage"
 msgstr "Domača stran"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:428
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Zaženi Gnote kot aplet pladnja GNOME."
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:429
 msgid "Specify the path of the directory containing the notes."
 msgstr "Določi pot mape, ki vsebuje sporočilca."
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:429
 msgid "path"
 msgstr "pot"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:430
 msgid "Open the search all notes window with the search text."
 msgstr "Odpre okno za iskanje vseh sporočilc z izbranim besedilom."
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:436
 msgid "text"
 msgstr "Besedilo"
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:431
 msgid "Print version information."
 msgstr "Izpiši podrobnosti o različici"
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:433
 msgid "Create and display a new note, with a optional title."
 msgstr "Ustvari in prikaže novo sporočilce z naslovom po meri."
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:433
 msgid "title"
 msgstr "naslov"
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:434
 msgid "Display the existing note matching title."
 msgstr "Prikaže obstoječe sporočilce, ki se sklada z naslovom."
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:434
 msgid "title/url"
 msgstr "naslov/url"
 
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:435
 msgid "Display the 'Start Here' note."
 msgstr "Prikaz sporočilca 'Začnite tukaj'."
 
-#: ../src/gnote.cpp:438
+#: ../src/gnote.cpp:436
 msgid "Search and highlight text in the opened note."
 msgstr "Išče in poudari besedilo v odprtem sporočilcu."
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:441
 msgid "A note taking application"
 msgstr "Program za pisanje sporočilc"
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:441
 msgid "Gnote options at launch"
 msgstr "Možnosti gnote ob zagonu"
 
-#: ../src/gnote.cpp:639
+#: ../src/gnote.cpp:629
 msgid "Version %1%"
 msgstr "Različica %1%"
 
-#: ../src/preferencesdialog.cpp:106
+#: ../src/preferencesdialog.cpp:107
 msgid "Editing"
 msgstr "Urejanje"
 
-#: ../src/preferencesdialog.cpp:108
+#: ../src/preferencesdialog.cpp:109
 msgid "Hotkeys"
 msgstr "Hitre tipke"
 
-#: ../src/preferencesdialog.cpp:113
+#: ../src/preferencesdialog.cpp:114
 msgid "Add-ins"
 msgstr "Vstavki"
 
-#: ../src/preferencesdialog.cpp:220
+#: ../src/preferencesdialog.cpp:222
 msgid "_Spell check while typing"
 msgstr "Preverjaj _črkovanje med tipkanjem"
 
-#: ../src/preferencesdialog.cpp:226
-msgid ""
-"Misspellings will be underlined in red, with correct spelling suggestions "
-"shown in the context menu."
-msgstr ""
-"Napačno črkovanje bo podčrtano z rdečo barvo, predlogi pravilnega črkovanja "
-"bodo prikazani v priročnem meniju."
+#: ../src/preferencesdialog.cpp:228
+msgid "Misspellings will be underlined in red, with correct spelling suggestions shown in the context menu."
+msgstr "Napačno črkovanje bo podčrtano z rdečo barvo, predlogi pravilnega črkovanja bodo prikazani v priročnem meniju."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:237
+#: ../src/preferencesdialog.cpp:239
 msgid "Highlight _WikiWords"
 msgstr "Poudarjanje _WikiWords"
 
-#: ../src/preferencesdialog.cpp:243
-msgid ""
-"Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
-"word will create a note with that name."
-msgstr ""
-"Omogočite to možnost za poudarjanje besed <b>KiImajoTakVidez</b>. S klikom "
-"na besedo bo ustvarjeno sporočilce s tem imenom."
+#: ../src/preferencesdialog.cpp:245
+msgid "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the word will create a note with that name."
+msgstr "Omogočite to možnost za poudarjanje besed <b>KiImajoTakVidez</b>. S klikom na besedo bo ustvarjeno sporočilce s tem imenom."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:250
+#: ../src/preferencesdialog.cpp:252
 msgid "Enable auto-_bulleted lists"
 msgstr "Omogoči samodejno _vrstično označene sezname"
 
-#: ../src/preferencesdialog.cpp:259
+#: ../src/preferencesdialog.cpp:261
 msgid "Use custom _font"
 msgstr "Uporabi p_isavo po meri"
 
-#: ../src/preferencesdialog.cpp:276
+#: ../src/preferencesdialog.cpp:278
 msgid "When renaming a linked note: "
 msgstr "Ob preimenovanju povezanega sporočilca:"
 
-#: ../src/preferencesdialog.cpp:281
+#: ../src/preferencesdialog.cpp:283
 msgid "Ask me what to do"
 msgstr "Vedno vprašaj za potrditev"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:284
 msgid "Never rename links"
 msgstr "Nikoli ne preimenuj povezav"
 
-#: ../src/preferencesdialog.cpp:283
+#: ../src/preferencesdialog.cpp:285
 msgid "Always rename links"
 msgstr "Vedno preimenuj povezave"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:305
+#: ../src/preferencesdialog.cpp:307
+#: ../src/notemanager.cpp:108
 msgid "New Note Template"
 msgstr "Nova predloga sporočilca"
 
-#: ../src/preferencesdialog.cpp:308
-msgid ""
-"Use the new note template to specify the text that should be used when "
-"creating a new note."
-msgstr ""
-"Uporabite predlogo novega sporočilca za navedbo besedila, ki naj bo "
-"uporabljeno ob ustvarjanju novega sporočilca."
+#: ../src/preferencesdialog.cpp:310
+msgid "Use the new note template to specify the text that should be used when creating a new note."
+msgstr "Uporabite predlogo novega sporočilca za navedbo besedila, ki naj bo uporabljeno ob ustvarjanju novega sporočilca."
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:318
 msgid "Open New Note Template"
 msgstr "Odpri predlogo novega sporočilca"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:374
+#: ../src/preferencesdialog.cpp:376
 msgid "Listen for _Hotkeys"
 msgstr "Čakaj na _hitre tipke"
 
-#: ../src/preferencesdialog.cpp:381
-msgid ""
-"Hotkeys allow you to quickly access your notes from anywhere with a "
-"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-"Alt&gt;N</b>"
-msgstr ""
-"Hitre tipke omogočajo hiter dostop do sporočilc od kjerkoli s pritiskom na "
-"tipko. Primer hitrih tipk: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-"Alt&gt;N</b>"
+#: ../src/preferencesdialog.cpp:383
+msgid "Hotkeys allow you to quickly access your notes from anywhere with a keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
+msgstr "Hitre tipke omogočajo hiter dostop do sporočilc od kjerkoli s pritiskom na tipko. Primer hitrih tipk: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:401
+#: ../src/preferencesdialog.cpp:403
 msgid "Show notes _menu"
 msgstr "Pokaži _meni sporočilc"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:417
+#: ../src/preferencesdialog.cpp:419
 msgid "Open \"_Start Here\""
 msgstr "Odpri \"_Začnite tukaj\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:432
+#: ../src/preferencesdialog.cpp:434
 msgid "Create _new note"
 msgstr "Ustvari _novo sporočilce"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:447
+#: ../src/preferencesdialog.cpp:449
 msgid "Open \"Search _All Notes\""
 msgstr "Odpri \"Išči po _vseh sporočilcih\""
 
-#: ../src/preferencesdialog.cpp:473
+#: ../src/preferencesdialog.cpp:475
 msgid "Ser_vice:"
 msgstr "S_toritev:"
 
-#: ../src/preferencesdialog.cpp:530
+#: ../src/preferencesdialog.cpp:532
 msgid "Not configurable"
 msgstr "Ni nastavljivo"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:550
+#: ../src/preferencesdialog.cpp:552
 msgid "_Advanced..."
 msgstr "_Napredno ..."
 
-#: ../src/preferencesdialog.cpp:597
+#: ../src/preferencesdialog.cpp:599
 msgid "The following add-ins are installed"
 msgstr "Naslednji vstavki so nameščeni"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:628
+#: ../src/preferencesdialog.cpp:630
 msgid "_Enable"
 msgstr "_Omogoči"
 
-#: ../src/preferencesdialog.cpp:634
+#: ../src/preferencesdialog.cpp:636
 msgid "_Disable"
 msgstr "O_nemogoči"
 
-#: ../src/preferencesdialog.cpp:765
+#: ../src/preferencesdialog.cpp:767
 msgid "Not Implemented"
 msgstr "Ni del programa"
 
-#: ../src/preferencesdialog.cpp:779
+#: ../src/preferencesdialog.cpp:781
 msgid "%1% Preferences"
 msgstr "Možnosti %1%"
 
-#: ../src/preferencesdialog.cpp:920
+#: ../src/preferencesdialog.cpp:922
 msgid "Choose Note Font"
 msgstr "Izberi pisavo sporočilca"
 
-#: ../src/preferencesdialog.cpp:1047
+#: ../src/preferencesdialog.cpp:1049
 msgid "Version:"
 msgstr "Različica:"
 
-#: ../src/preferencesdialog.cpp:1052
+#: ../src/preferencesdialog.cpp:1054
 msgid "Author:"
 msgstr "Avtor:"
 
-#: ../src/preferencesdialog.cpp:1058
+#: ../src/preferencesdialog.cpp:1060
 msgid "Copyright:"
 msgstr "Avtorske pravice:"
 
 #: ../src/notemanager.cpp:250
 msgid ""
-"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
-"Here\n"
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start Here\n"
 "\n"
 "<bold>Welcome to Gnote!</bold>\n"
 "\n"
 "Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
 "\n"
-"You can create new notes to hold your ideas by selecting the \"Create New "
-"Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
-"automatically.\n"
+"You can create new notes to hold your ideas by selecting the \"Create New Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved automatically.\n"
 "\n"
-"Then organize the notes you create by linking related notes and ideas "
-"together!\n"
+"Then organize the notes you create by linking related notes and ideas together!\n"
 "\n"
-"We've created a note called <link:internal>Using Links in Gnote</link:"
-"internal>.  Notice how each time we type <link:internal>Using Links in "
-"Gnote</link:internal> it automatically gets underlined?  Click on the link "
-"to open the note.</note-content>"
+"We've created a note called <link:internal>Using Links in Gnote</link:internal>.  Notice how each time we type <link:internal>Using Links in Gnote</link:internal> it automatically gets underlined?  Click on the link to open the note.</note-content>"
 msgstr ""
-"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Začnite "
-"tukaj\n"
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Začnite tukaj\n"
 "\n"
 "<bold>Dobrodošli v Gnote!</bold>\n"
 "\n"
-"Uporabite sporočilce \"Začnite tukaj\" za začetek organizacije vaših idej in "
-"misli.\n"
+"Uporabite sporočilce \"Začnite tukaj\" za začetek organizacije vaših idej in misli.\n"
 "\n"
-"Ustvarite lahko nova sporočilca z izbiro predmeta \"Ustvari novo sporočilce"
-"\" v meniju Gnote v vašemu pultu GNOME. Vaše sporočilce bo samodejno "
-"shranjeno.\n"
+"Ustvarite lahko nova sporočilca z izbiro predmeta \"Ustvari novo sporočilce\" v meniju Gnote v vašemu pultu GNOME. Vaše sporočilce bo samodejno shranjeno.\n"
 "\n"
-"Sporočilca lahko organizirate s povezovanjem sorodnih sporočilc in misli "
-"skupaj!\n"
+"Sporočilca lahko organizirate s povezovanjem sorodnih sporočilc in misli skupaj!\n"
 "\n"
-"Ustvarili smo sporočilce imenovano <link:internal>Uporaba povezav v Gnote</"
-"link:internal>.  Kadarkoli vnesemo <link:internal>Uporaba povezav v Gnote</"
-"link:internal> postane besedilo samodejno podčrtano. Kliknite na povezavo za "
-"odpiranje sporočilca.</note-content>"
+"Ustvarili smo sporočilce imenovano <link:internal>Uporaba povezav v Gnote</link:internal>.  Kadarkoli vnesemo <link:internal>Uporaba povezav v Gnote</link:internal> postane besedilo samodejno podčrtano. Kliknite na povezavo za odpiranje sporočilca.</note-content>"
 
 #: ../src/notemanager.cpp:269
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
-"Notes in Gnote can be linked together by highlighting text in the current "
-"note and clicking the <bold>Link</bold> button above in the toolbar.  Doing "
-"so will create a new note and also underline the note's title in the current "
-"note.\n"
+"Notes in Gnote can be linked together by highlighting text in the current note and clicking the <bold>Link</bold> button above in the toolbar.  Doing so will create a new note and also underline the note's title in the current note.\n"
 "\n"
-"Changing the title of a note will update links present in other notes.  This "
-"prevents broken links from occurring when a note is renamed.\n"
+"Changing the title of a note will update links present in other notes.  This prevents broken links from occurring when a note is renamed.\n"
 "\n"
-"Also, if you type the name of another note in your current note, it will "
-"automatically be linked for you.</note-content>"
+"Also, if you type the name of another note in your current note, it will automatically be linked for you.</note-content>"
 msgstr ""
 "<note-content>Uporaba povezav v Gnote\n"
 "\n"
-"Sporočilca v Gnote je mogoče povezati skupaj s poudarjanjem besedila v "
-"trenutnem sporočilcu in klikom na gumb <bold>Poveži</blod> v orodni vrstici. "
-"To bo ustvarilo novo sporočilce in v trenutnem sporočilcu podčrtalo naslov "
-"sporočilca.\n"
+"Sporočilca v Gnote je mogoče povezati skupaj s poudarjanjem besedila v trenutnem sporočilcu in klikom na gumb <bold>Poveži</blod> v orodni vrstici. To bo ustvarilo novo sporočilce in v trenutnem sporočilcu podčrtalo naslov sporočilca.\n"
 "\n"
-"Sprememba naslova sporočilca bo posodobila povezave v ostalih sporočilcih. "
-"To prepreči pojav zlomljenih povezav ob preimenovanju sporočilca .\n"
+"Sprememba naslova sporočilca bo posodobila povezave v ostalih sporočilcih. To prepreči pojav zlomljenih povezav ob preimenovanju sporočilca .\n"
 "\n"
-"Ob vnosu imena drugega sporočilca v trenutno sporočilce, bo samodejno "
-"povezano.</note-content> "
+"Ob vnosu imena drugega sporočilca v trenutno sporočilce, bo samodejno povezano.</note-content> "
 
 #. Attempt to find an existing Start Here note
 #: ../src/notemanager.cpp:284
+#: ../src/notemanager.cpp:336
 msgid "Start Here"
 msgstr "Začnite tukaj"
 
@@ -946,13 +756,14 @@ msgstr "Začnite tukaj"
 msgid "Using Links in Gnote"
 msgstr "Uporaba povezav v Gnote"
 
-#: ../src/notemanager.cpp:494
+#: ../src/notemanager.cpp:480
 msgid "New Note %1%"
 msgstr "Novo sporočilce %1%"
 
 #. Use a simple "Describe..." body and highlight
 #. it so it can be easily overwritten
-#: ../src/notemanager.cpp:594
+#: ../src/notemanager.cpp:580
+#: ../src/notemanager.cpp:670
 msgid "Describe your new note here."
 msgstr "Tukaj opišite svoje novo sporočilce."
 
@@ -990,13 +801,11 @@ msgstr "Nikoli ne preimenuj po_vezav"
 
 #: ../src/noterenamedialog.cpp:182
 msgid ""
-"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
-"\"<span underline=\"single\">%2</span>\"?\n"
+"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Preimenuj povezave v drugih sporočilcih iz \"<span underline=\"single\">%1</"
-"span>\"v\"<span underline=\"single\">%2</span>\"?\n"
+"Preimenuj povezave v drugih sporočilcih iz \"<span underline=\"single\">%1</span>\"v\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "V primeru da povezav ne preimenujete, ne bodo povezovale ničesar."
 
@@ -1166,14 +975,8 @@ msgid "Error saving note data."
 msgstr "Napaka med shranjevanjem podatkov sporočilca."
 
 #: ../src/note.cpp:117
-msgid ""
-"An error occurred while saving your notes. Please check that you have "
-"sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-"Error details can be found in ~/.gnote.log."
-msgstr ""
-"Med shranjevanjem sporočilc je prišlo do napake. Preverite, da imate na "
-"voljo dovolj prostora na disku in da imate ustrezne pravice v ~/.gnote. "
-"Podrobnosti o napaki so zapisane v ~/.gnote.log"
+msgid "An error occurred while saving your notes. Please check that you have sufficient disk space, and that you have appropriate rights on ~/.gnote. Error details can be found in ~/.gnote.log."
+msgstr "Med shranjevanjem sporočilc je prišlo do napake. Preverite, da imate na voljo dovolj prostora na disku in da imate ustrezne pravice v ~/.gnote. Podrobnosti o napaki so zapisane v ~/.gnote.log"
 
 #: ../src/recentchanges.cpp:83
 msgid "Search All Notes"
@@ -1232,51 +1035,51 @@ msgstr[3] "Sklada se z: %1% sporočilci"
 msgid "Notes"
 msgstr "Sporočilca"
 
-#: ../src/tray.cpp:50
+#: ../src/tray.cpp:51
 msgid "Take notes"
 msgstr "Zapiši sporočilca"
 
-#: ../src/tray.cpp:161
+#: ../src/tray.cpp:162
 msgid " (new)"
 msgstr "(novo)"
 
-#: ../src/tray.cpp:473
+#: ../src/tray.cpp:471
 msgid "_About Gnote"
 msgstr "_O Gnote"
 
 #: ../src/utils.cpp:130
-msgid ""
-"The \"Gnote Manual\" could not be found.  Please verify that your "
-"installation has been completed successfully."
-msgstr ""
-" \"Gnote priročnika\" ni mogoče najti. Preverite, da je namestitev uspešno "
-"končana."
+msgid "The \"Gnote Manual\" could not be found.  Please verify that your installation has been completed successfully."
+msgstr " \"Gnote priročnika\" ni mogoče najti. Preverite, da je namestitev uspešno končana."
 
 #: ../src/utils.cpp:138
 msgid "Help not found"
 msgstr "Pomoči ni mogoče najti"
 
-#: ../src/utils.cpp:178
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "Ni mogoče odpreti mesta"
 
-#: ../src/utils.cpp:192
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
 msgstr "Danes, %1%"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "Danes"
 
-#: ../src/utils.cpp:198
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
 msgstr "Včeraj, %1%"
 
-#: ../src/utils.cpp:199
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "Včeraj"
 
-#: ../src/utils.cpp:206
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% dni nazaj, %2%"
@@ -1284,7 +1087,9 @@ msgstr[1] "%1% dan nazaj, %2%"
 msgstr[2] "%1% dneva nazaj, %2%"
 msgstr[3] "%1% dni nazaj, %2%"
 
-#: ../src/utils.cpp:210
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% dni nazaj"
@@ -1292,6 +1097,7 @@ msgstr[1] "%1% dan nazaj"
 msgstr[2] "%1% dneva nazaj"
 msgstr[3] "%1% dni nazaj"
 
+#. TRANSLATORS: argument is time.
 #: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "Jutri, %1%"
@@ -1300,7 +1106,9 @@ msgstr "Jutri, %1%"
 msgid "Tomorrow"
 msgstr "Jutri"
 
-#: ../src/utils.cpp:225
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "V %1% dneh, %2%"
@@ -1308,7 +1116,9 @@ msgstr[1] "V %1% dnevu, %2%"
 msgstr[2] "V %1% dneh, %2%"
 msgstr[3] "V %1% dneh, %2%"
 
-#: ../src/utils.cpp:229
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "V %1% dneh"
@@ -1316,7 +1126,7 @@ msgstr[1] "V %1% dnevu"
 msgstr[2] "V %1% dneh"
 msgstr[3] "V %1% dneh"
 
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "Brez datuma"
 
@@ -1325,12 +1135,8 @@ msgid "(Untitled %1%)"
 msgstr "(Neimenovano %1%)"
 
 #: ../src/watchers.cpp:243
-msgid ""
-"A note with the title <b>%1%</b> already exists. Please choose another name "
-"for this note before continuing."
-msgstr ""
-"Sporočilce z naslovom <b>%1%</b> že obstaja. Pred nadaljevanjem izberite "
-"drugo ime za to sporočilce."
+msgid "A note with the title <b>%1%</b> already exists. Please choose another name for this note before continuing."
+msgstr "Sporočilce z naslovom <b>%1%</b> že obstaja. Pred nadaljevanjem izberite drugo ime za to sporočilce."
 
 #: ../src/watchers.cpp:257
 msgid "Note title taken"
@@ -1427,12 +1233,8 @@ msgid "Really delete this notebook?"
 msgstr "Ali naj bo beležka zares izbrisana?"
 
 #: ../src/notebooks/notebookmanager.cpp:335
-msgid ""
-"The notes that belong to this notebook will not be deleted, but they will no "
-"longer be associated with this notebook.  This action cannot be undone."
-msgstr ""
-"Sporočilca, ki spadajo v to beležko, ne bodo izbrisana, vendar pa ne bodo "
-"več povezana s to beležko. Dejanja ni mogoče razveljaviti."
+msgid "The notes that belong to this notebook will not be deleted, but they will no longer be associated with this notebook.  This action cannot be undone."
+msgstr "Sporočilca, ki spadajo v to beležko, ne bodo izbrisana, vendar pa ne bodo več povezana s to beležko. Dejanja ni mogoče razveljaviti."
 
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:38
 msgid "New \"%1%\" Note"
@@ -1442,108 +1244,96 @@ msgstr "Novo sporočilce \"%1%\""
 msgid "No notebook"
 msgstr "Ni beležke"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:82
+#: ../src/notebooks/notebooknoteaddin.cpp:83
 msgid "Place this note into a notebook"
 msgstr "Postavi to sporočilce v beležko"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:169
+#: ../src/notebooks/notebooknoteaddin.cpp:165
 msgid "Notebook"
 msgstr "Beležnica"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:194
+#: ../src/notebooks/notebooknoteaddin.cpp:190
 msgid "_New notebook..."
 msgstr "_Nova beležnica ..."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
 msgid "Backlinks"
 msgstr "Povratne povezave"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
 msgid "See which notes link to the one you're currently viewing."
-msgstr ""
-"Ogled sporočilc, ki se povezujejo s sporočilcem, ki ga trenutno gledate."
+msgstr "Ogled sporočilc, ki se povezujejo s sporočilcem, ki ga trenutno gledate."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:55
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere in projekt Tomboy"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
 msgid "What links here?"
 msgstr "Kaj se povezuje sem?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
 msgid "(none)"
 msgstr "(brez)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:56
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
 msgid "Bugzilla Links"
 msgstr "Povezave Bugzilla"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
-msgid ""
-"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
-"note.  The bug number is inserted as a link with a little bug icon next to "
-"it."
-msgstr ""
-"Omogoči vleko Bugzilla URL naslova iz spletnega brskalnika neposredno v "
-"sporočilce Gnote. Številka hrošča je vstavljena kot povezava z majhno ikono "
-"hrošča poleg nje."
-
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
+msgid "Allows you to drag a Bugzilla URL from your browser directly into a Gnote note.  The bug number is inserted as a link with a little bug icon next to it."
+msgstr "Omogoči vleko Bugzilla URL naslova iz spletnega brskalnika neposredno v sporočilce Gnote. Številka hrošča je vstavljena kot povezava z majhno ikono hrošča poleg nje."
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere in projekt Tomboy"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:59
-msgid ""
-"You can use any bugzilla just by dragging links into notes.  If you want a "
-"special icon for certain hosts, add them here."
-msgstr ""
-"Mogoče je uporabiti katerokoli bugzillo z vleko povezav v sporočilca. V "
-"primeru, da želite imeti posebno ikono za določene gostitelje, jih dodajte "
-"tukaj."
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:61
+msgid "You can use any bugzilla just by dragging links into notes.  If you want a special icon for certain hosts, add them here."
+msgstr "Mogoče je uporabiti katerokoli bugzillo z vleko povezav v sporočilca. V primeru, da želite imeti posebno ikono za določene gostitelje, jih dodajte tukaj."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:76
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:78
 msgid "Host Name"
 msgstr "Ime gostitelja"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:89
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:91
 msgid "Icon"
 msgstr "Ikona"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:223
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:225
 msgid "Select an icon..."
 msgstr "Izberi ikono ..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:238
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:240
 msgid "_Host name:"
 msgstr "_Ime gostitelja:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:272
 msgid "Host name invalid"
 msgstr "Ime gostitelja je neveljavno"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:271
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr "Navesti morate veljavno ime Bugzilla gostitelja za uporabo s to ikono."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:292
 msgid "Error saving icon"
 msgstr "Napaka med shranjevanjem ikone"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:291
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
 msgid "Could not save the icon file."
 msgstr "Ni mogoče shraniti datoteke ikone."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:365
 msgid "Really remove this icon?"
 msgstr "Ali naj se ta ikona zares odstrani?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:364
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
 msgid "If you remove an icon it is permanently lost."
 msgstr "V primeru, da ikono odstranite, bo trajno izgubljena."
 
@@ -1559,48 +1349,48 @@ msgstr "Izvozi povezana sporočilca"
 msgid "Include all other linked notes"
 msgstr "Vključi vsa ostala povezana sporočilca"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
 msgid "Export to HTML"
 msgstr "Izvozi v HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
 msgid "Exports individual notes to HTML."
 msgstr "Izvozi posamezna sporočilca v HTML."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
 msgid "Your note was exported to \"%1%\"."
 msgstr "Vaše sporočilce je bilo izvoženo v \"%1%\"."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 msgid "Note exported successfully"
 msgstr "Sporočilce je bilo uspešno izvoženo"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:185
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Ni mogoče shraniti datoteke \"%s\""
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
 msgid "Fixed Wid_th"
 msgstr "Stalna širi_na"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
 msgid "Fixed Width"
 msgstr "Stalna širina"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
 msgid "Adds fixed-width font style."
 msgstr "Doda obliko pisave s stalno širino."
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:47
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:80
 msgid "Insert Timestamp"
 msgstr "Vstavi časovni žig"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:51
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vstavi trenutni datum in čas na položaj kazalke."
 
@@ -1625,31 +1415,28 @@ msgstr "Danes: Predloga"
 msgid "Today: "
 msgstr "Danes:"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+#: ../src/addins/noteoftheday/noteoftheday.cpp:158
 msgid "Tasks"
 msgstr "Naloge"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:161
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
 msgid "Appointments"
 msgstr "Sestanki"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:167
+#: ../src/addins/noteoftheday/noteoftheday.cpp:165
 msgid "%A, %B %d %Y"
 msgstr "%A, %d. %m. %Y"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:43
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
 msgstr "Sporočilce dne"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:47
-msgid ""
-"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
-msgstr ""
-"Samodejno ustvari sporočilce \"Danes\" za enostavno zapisovanje dnevnih "
-"misli."
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
+msgid "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
+msgstr "Samodejno ustvari sporočilce \"Danes\" za enostavno zapisovanje dnevnih misli."
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:52
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray in projekt Tomboy"
 
@@ -1658,98 +1445,94 @@ msgid "_Open Today: Template"
 msgstr "_Odpri danes: Predloga"
 
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
-msgid ""
-"Change the <span weight=\"bold\">Today: Template</span> note to customize "
-"the text that new Today notes have."
-msgstr ""
-"Spremenite <span weight=\"bold\">Danes: Predloga</span> za prilagoditev "
-"besedila, ki ga imajo vsa današnja sporočilca."
+msgid "Change the <span weight=\"bold\">Today: Template</span> note to customize the text that new Today notes have."
+msgstr "Spremenite <span weight=\"bold\">Danes: Predloga</span> za prilagoditev besedila, ki ga imajo vsa današnja sporočilca."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
 msgid "Printing Support"
 msgstr "Podpora tiskanju"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
 msgid "Allows you to print a note."
 msgstr "Omogoča tiskanje sporočilc."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
 msgid "Print"
 msgstr "Natisni"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:133
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
 msgid "Error printing note"
 msgstr "Napaka med tiskanjem sporočilca"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:297
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
 msgid "Page %1% of %2%"
 msgstr "Stran %1% od %2%"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
 msgstr "Uvoznik lepljivih sporočilc"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Uvozi vaša sporočilca iz apleta lepljivih sporočilc."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:112
 msgid "Import from Sticky Notes"
 msgstr "Uvozi iz lepljivih sporočilc"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:241
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:242
 msgid "No Sticky Notes found"
 msgstr "Lepljivih sporočilc ni bilo mogoče najti"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:244
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
-msgstr ""
-"Datoteke z ustreznimi lepljivimi sporočilci ni bilo mogoče najti v \"%1%\"."
+msgstr "Datoteke z ustreznimi lepljivimi sporočilci ni bilo mogoče najti v \"%1%\"."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:252
 msgid "Sticky Notes import completed"
 msgstr "Uvoz lepljivih sporočilc je končan"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:254
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "<b>%1%</b> od <b>%2%</b> lepljivih sporočilc je bilo uspešno uvoženih."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:273
 msgid "Untitled"
 msgstr "Neimenovano"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:319
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:320
 msgid "Sticky Note: "
 msgstr "Lepljivo sporočilce:"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
 msgid "Tomboy Importer"
 msgstr "Tomboy uvoznik"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
 msgid "Import your notes from Tomboy."
 msgstr "Uvozi sporočilca iz programa Tomboy."
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:34
+#: ../src/addins/underline/underlinemenuitem.cpp:35
 msgid "_Underline"
 msgstr "_Podčrtaj"
 
 #. this is the name of the plugin.
-#: ../src/addins/underline/underlinenoteaddin.cpp:47
+#: ../src/addins/underline/underlinenoteaddin.cpp:49
 msgid "Underline"
 msgstr "Podčrtaj"
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:51
+#: ../src/addins/underline/underlinenoteaddin.cpp:53
 msgid "Adds ability to underline text."
 msgstr "Doda možnost podčrtovanja besedila."
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:55
+#: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière in projekt Tomboy"
+
