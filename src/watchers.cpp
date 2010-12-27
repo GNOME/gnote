@@ -688,6 +688,8 @@ namespace gnote {
     }
     get_buffer()->signal_insert().connect(
       sigc::mem_fun(*this, &NoteLinkWatcher::on_insert_text));
+    get_buffer()->signal_apply_tag().connect(
+      sigc::mem_fun(*this, &NoteLinkWatcher::on_apply_tag));
     get_buffer()->signal_erase().connect(
       sigc::mem_fun(*this, &NoteLinkWatcher::on_delete_range));
   }
@@ -874,6 +876,16 @@ namespace gnote {
 
     unhighlight_in_block (start, end);
     highlight_in_block (start, end);
+  }
+
+
+  void NoteLinkWatcher::on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
+                                     const Gtk::TextIter & start, const Gtk::TextIter &end)
+  {
+    std::string link_name = start.get_text (end);
+    Note::Ptr link = manager().find (link_name);
+    if(!link)
+        unhighlight_in_block(start, end);
   }
 
 

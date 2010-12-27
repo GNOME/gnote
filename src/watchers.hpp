@@ -185,6 +185,9 @@ namespace gnote {
     void unhighlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
+    void on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
+                      const Gtk::TextIter & start, const Gtk::TextIter &end);
+
     bool open_or_create_link(const Gtk::TextIter &,const Gtk::TextIter &);
     bool on_link_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
                                const Gtk::TextIter &, const Gtk::TextIter &);
