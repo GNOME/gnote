@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -145,6 +146,8 @@ namespace gnote {
     bool on_url_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
                               const Gtk::TextIter &, const Gtk::TextIter &);
     void apply_url_to_block (Gtk::TextIter start, Gtk::TextIter end);
+    void on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
+                      const Gtk::TextIter & start, const Gtk::TextIter &end);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
     bool on_button_press(GdkEventButton *);

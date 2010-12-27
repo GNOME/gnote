@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -431,6 +432,8 @@ namespace gnote {
 
     get_buffer()->signal_insert().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_insert_text));
+    get_buffer()->signal_apply_tag().connect(
+      sigc::mem_fun(*this, &NoteUrlWatcher::on_apply_tag));
     get_buffer()->signal_erase().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_delete_range));
 
@@ -544,6 +547,20 @@ namespace gnote {
 
     apply_url_to_block (start, pos);
   }
+
+  void NoteUrlWatcher::on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
+                                    const Gtk::TextIter & start, const Gtk::TextIter & end)
+  {
+    if(tag != m_url_tag)
+      return;
+    std::string s(start.get_slice(end));
+    std::string match1;
+    const char *p = s.c_str();
+    pcrecpp::StringPiece input(p);
+    if(!m_regex.FindAndConsume(&input, &match1))
+      get_buffer()->remove_tag (m_url_tag, start, end);
+  }
+
 
 
   bool NoteUrlWatcher::on_button_press(GdkEventButton *ev)
