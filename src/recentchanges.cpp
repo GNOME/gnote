@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -276,13 +277,15 @@ namespace gnote {
     column->set_cell_data_func (*renderer,
                                 sigc::mem_fun(*this, &NoteRecentChanges::notebook_pixbuf_cell_data_func));
       
-    renderer = manage(new Gtk::CellRendererText ());
-    column->pack_start (*renderer, true);
-    column->set_cell_data_func (*renderer,
+    Gtk::CellRendererText *text_renderer = manage(new Gtk::CellRendererText ());
+    text_renderer->property_editable() = true;
+    column->pack_start (*text_renderer, true);
+    column->set_cell_data_func (*text_renderer,
                                 sigc::mem_fun(*this, &NoteRecentChanges::notebook_text_cell_data_func));
-      
+    text_renderer->signal_edited().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebook_row_edited));
+
     m_notebooksTree->append_column (*column);
-      
+
     m_notebooksTree->signal_row_activated()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notebook_row_activated));
     m_on_notebook_selection_changed_cid = m_notebooksTree->get_selection()->signal_changed()
@@ -734,6 +737,34 @@ namespace gnote {
     }
     else {
       selection_data.set_text(_("Notes"));
+    }
+  }
+
+  void NoteRecentChanges::on_notebook_row_edited(const Glib::ustring& tree_path,
+                                                 const Glib::ustring& new_text)
+  {
+    if (notebooks::NotebookManager::instance().notebook_exists(new_text) ||
+        new_text == "") {
+      return;
+    }
+    notebooks::Notebook::Ptr old_notebook = this->get_selected_notebook ();
+    if (std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(old_notebook)) {
+      return;
+    }
+    notebooks::Notebook::Ptr new_notebook = notebooks::NotebookManager::instance()
+      .get_or_create_notebook (new_text);
+    DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook->get_name().c_str(),
+            new_text.c_str());
+    std::list<Note *> notes;
+    old_notebook->get_tag()->get_notes(notes);
+    for(std::list<Note *>::const_iterator note = notes.begin(); note != notes.end(); ++note) {
+      notebooks::NotebookManager::instance().move_note_to_notebook (
+          (*note)->shared_from_this(), new_notebook);
+    }
+    notebooks::NotebookManager::instance().delete_notebook (old_notebook);
+    Gtk::TreeIter iter;
+    if (notebooks::NotebookManager::instance().get_notebook_iter (new_notebook, iter)) {
+      m_notebooksTree->get_selection()->select(iter);
     }
   }
 

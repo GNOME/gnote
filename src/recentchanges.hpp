@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -119,6 +120,7 @@ private:
   void clear_search_clicked();
   void notebook_pixbuf_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter &);
   void notebook_text_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter &);
+  void on_notebook_row_edited(const Glib::ustring& path, const Glib::ustring& new_text);
   void on_notebook_selection_changed();
   void on_new_notebook();
   void on_delete_notebook();
