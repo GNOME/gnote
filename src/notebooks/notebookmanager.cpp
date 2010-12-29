@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -190,12 +191,15 @@ namespace gnote {
     bool NotebookManager::get_notebook_iter(const Notebook::Ptr & notebook, 
                                             Gtk::TreeIter & iter)
     {
-      std::string normalized_name = notebook->get_normalized_name();
-      std::map<std::string, Gtk::TreeIter>::iterator map_iter 
-        = m_notebookMap.find (normalized_name);
-      if (map_iter != m_notebookMap.end()) {
-        iter = map_iter->second;
-        return true;
+      Gtk::TreeNodeChildren notebooks = m_sortedNotebooks->children();
+      for (Gtk::TreeIter notebooks_iter = notebooks.begin();
+           notebooks_iter != notebooks.end(); ++notebooks_iter) {
+        Notebook::Ptr current_notebook;
+        notebooks_iter->get_value(0, current_notebook);
+        if (current_notebook == notebook) {
+          iter = notebooks_iter;
+          return true;
+        }
       }
       
       iter = Gtk::TreeIter();
