@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-13 12:21+0100\n"
-"PO-Revision-Date: 2010-03-13 12:26+0100\n"
+"POT-Creation-Date: 2010-12-29 12:47+0100\n"
+"PO-Revision-Date: 2010-12-29 12:47+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,13 +42,13 @@ msgstr "_Om"
 
 #: ../data/GNOME_GnoteApplet.xml.h:2
 #: ../src/actionmanager.cpp:208
-#: ../src/tray.cpp:468
+#: ../src/tray.cpp:466
 msgid "_Help"
 msgstr "_Hjälp"
 
 #: ../data/GNOME_GnoteApplet.xml.h:3
 #: ../src/actionmanager.cpp:205
-#: ../src/tray.cpp:463
+#: ../src/tray.cpp:461
 msgid "_Preferences"
 msgstr "_Inställningar"
 
@@ -402,7 +403,7 @@ msgid "Close this window"
 msgstr "Stäng det här fönstret"
 
 #: ../src/actionmanager.cpp:197
-#: ../src/tray.cpp:480
+#: ../src/tray.cpp:478
 msgid "_Quit"
 msgstr "_Avsluta"
 
@@ -415,7 +416,7 @@ msgid "_Edit"
 msgstr "R_edigera"
 
 #: ../src/actionmanager.cpp:205
-#: ../src/preferencesdialog.cpp:88
+#: ../src/preferencesdialog.cpp:89
 msgid "Gnote Preferences"
 msgstr "Inställningar för Gnote"
 
@@ -456,250 +457,252 @@ msgstr "S_ynkronisera anteckningar"
 msgid "Start synchronizing notes"
 msgstr "Starta synkronisering av anteckningar"
 
-#: ../src/gnote.cpp:282
+#: ../src/gnote.cpp:278
 msgid "Cannot create new note"
 msgstr "Kan inte skapa ny anteckning"
 
-#: ../src/gnote.cpp:329
+#: ../src/gnote.cpp:327
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: ../src/gnote.cpp:338
+#: ../src/gnote.cpp:336
 msgid "translator-credits"
 msgstr ""
-"Daniel Nylander\n"
+"Daniel Nylander <po@danielnylander.se>\n"
 "Sergej Kotliar\n"
 "Christian Rose\n"
 "\n"
-"Skicka synpunkter på översättningen till\n"
-"tp-sv@listor.tp-sv.se"
+"Skicka synpunkter på översättningen\n"
+"till <tp-sv@listor.tp-sv.se>."
 
-#: ../src/gnote.cpp:346
+#: ../src/gnote.cpp:344
 msgid ""
+"Copyright © 2010 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"Copyright © 2010 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: ../src/gnote.cpp:349
+#: ../src/gnote.cpp:348
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
-#: ../src/gnote.cpp:360
+#: ../src/gnote.cpp:359
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:429
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Kör Gnote som ett panelprogram i GNOME."
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:430
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:430
 msgid "path"
 msgstr "sökväg"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:431
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna \"Sök i alla anteckningar\"-fönstret med söktexten."
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:436
 #: ../src/gnote.cpp:437
-#: ../src/gnote.cpp:438
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:432
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:434
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:434
 msgid "title"
 msgstr "titel"
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:435
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:435
 msgid "title/url"
 msgstr "titel/url"
 
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:436
 msgid "Display the 'Start Here' note."
 msgstr "Visa \"Börja här\"-anteckningen."
 
-#: ../src/gnote.cpp:438
+#: ../src/gnote.cpp:437
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:442
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:442
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
-#: ../src/gnote.cpp:639
+#: ../src/gnote.cpp:630
 msgid "Version %1%"
 msgstr "Version %1%"
 
-#: ../src/preferencesdialog.cpp:106
+#: ../src/preferencesdialog.cpp:107
 msgid "Editing"
 msgstr "Redigering"
 
-#: ../src/preferencesdialog.cpp:108
+#: ../src/preferencesdialog.cpp:109
 msgid "Hotkeys"
 msgstr "Snabbtangenter"
 
-#: ../src/preferencesdialog.cpp:113
+#: ../src/preferencesdialog.cpp:114
 msgid "Add-ins"
 msgstr "Tillägg"
 
-#: ../src/preferencesdialog.cpp:220
+#: ../src/preferencesdialog.cpp:222
 msgid "_Spell check while typing"
 msgstr "_Stavningskontroll när text skrivs in"
 
-#: ../src/preferencesdialog.cpp:226
+#: ../src/preferencesdialog.cpp:228
 msgid "Misspellings will be underlined in red, with correct spelling suggestions shown in the context menu."
 msgstr "Felstavningar kommer att strykas under i rött, och korrekta stavningsförslag visas i sammanhangsmenyn."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:237
+#: ../src/preferencesdialog.cpp:239
 msgid "Highlight _WikiWords"
 msgstr "Färgmarkera _WikiOrd"
 
-#: ../src/preferencesdialog.cpp:243
+#: ../src/preferencesdialog.cpp:245
 msgid "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the word will create a note with that name."
 msgstr "Aktivera detta alternativ för att färgmarkera ord <b>SomSerUtSomDetta</b>. Att klicka på ett sådant kommer att skapa en anteckning med dess namn."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:250
+#: ../src/preferencesdialog.cpp:252
 msgid "Enable auto-_bulleted lists"
 msgstr "Aktivera a_utomatiska punktlistor"
 
-#: ../src/preferencesdialog.cpp:259
+#: ../src/preferencesdialog.cpp:261
 msgid "Use custom _font"
 msgstr "Använd anpassat _typsnitt"
 
-#: ../src/preferencesdialog.cpp:276
+#: ../src/preferencesdialog.cpp:278
 msgid "When renaming a linked note: "
 msgstr "När en länkad anteckning byter namn: "
 
-#: ../src/preferencesdialog.cpp:281
+#: ../src/preferencesdialog.cpp:283
 msgid "Ask me what to do"
 msgstr "Fråga mig vad som ska göras"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:284
 msgid "Never rename links"
 msgstr "Byt aldrig namn på länkar"
 
-#: ../src/preferencesdialog.cpp:283
+#: ../src/preferencesdialog.cpp:285
 msgid "Always rename links"
 msgstr "Byt alltid namn på länkar"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:305
-#: ../src/notemanager.cpp:107
+#: ../src/preferencesdialog.cpp:307
+#: ../src/notemanager.cpp:108
 msgid "New Note Template"
 msgstr "Ny anteckningsmall"
 
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:310
 msgid "Use the new note template to specify the text that should be used when creating a new note."
 msgstr "Använd den nya anteckningsmallen för att ange texten som ska användas när en ny anteckning skapas."
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:318
 msgid "Open New Note Template"
 msgstr "Öppna ny anteckningsmall"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:374
+#: ../src/preferencesdialog.cpp:376
 msgid "Listen for _Hotkeys"
 msgstr "Lyssna efter _snabbtangenter"
 
-#: ../src/preferencesdialog.cpp:381
+#: ../src/preferencesdialog.cpp:383
 msgid "Hotkeys allow you to quickly access your notes from anywhere with a keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 msgstr "Snabbtangenter låter dig snabbt få tillgång till dina anteckningar varifrån som helst. Exempel på snabbtangenter: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:401
+#: ../src/preferencesdialog.cpp:403
 msgid "Show notes _menu"
 msgstr "Visa antecknings_meny"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:417
+#: ../src/preferencesdialog.cpp:419
 msgid "Open \"_Start Here\""
 msgstr "Öppna \"_Börja här\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:432
+#: ../src/preferencesdialog.cpp:434
 msgid "Create _new note"
 msgstr "Skapa _ny anteckning"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:447
+#: ../src/preferencesdialog.cpp:449
 msgid "Open \"Search _All Notes\""
 msgstr "Öppna \"Sök i _alla anteckningar\""
 
-#: ../src/preferencesdialog.cpp:473
+#: ../src/preferencesdialog.cpp:475
 msgid "Ser_vice:"
 msgstr "T_jänst:"
 
-#: ../src/preferencesdialog.cpp:530
+#: ../src/preferencesdialog.cpp:532
 msgid "Not configurable"
 msgstr "Inte konfigurerbar"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:550
+#: ../src/preferencesdialog.cpp:552
 msgid "_Advanced..."
 msgstr "_Avancerat..."
 
-#: ../src/preferencesdialog.cpp:597
+#: ../src/preferencesdialog.cpp:599
 msgid "The following add-ins are installed"
 msgstr "Följande tillägg är installerade"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:628
+#: ../src/preferencesdialog.cpp:630
 msgid "_Enable"
 msgstr "_Aktivera"
 
-#: ../src/preferencesdialog.cpp:634
+#: ../src/preferencesdialog.cpp:636
 msgid "_Disable"
 msgstr "_Inaktivera"
 
-#: ../src/preferencesdialog.cpp:765
+#: ../src/preferencesdialog.cpp:767
 msgid "Not Implemented"
 msgstr "Inte implementerad"
 
-#: ../src/preferencesdialog.cpp:779
+#: ../src/preferencesdialog.cpp:781
 msgid "%1% Preferences"
 msgstr "Inställningar för %1%"
 
-#: ../src/preferencesdialog.cpp:920
+#: ../src/preferencesdialog.cpp:922
 msgid "Choose Note Font"
 msgstr "Välj anteckningstypsnitt"
 
-#: ../src/preferencesdialog.cpp:1047
+#: ../src/preferencesdialog.cpp:1049
 msgid "Version:"
 msgstr "Version:"
 
-#: ../src/preferencesdialog.cpp:1052
+#: ../src/preferencesdialog.cpp:1054
 msgid "Author:"
 msgstr "Upphovsman:"
 
-#: ../src/preferencesdialog.cpp:1058
+#: ../src/preferencesdialog.cpp:1060
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -757,14 +760,14 @@ msgstr "Börja här"
 msgid "Using Links in Gnote"
 msgstr "Användning av länkar i Gnote"
 
-#: ../src/notemanager.cpp:494
+#: ../src/notemanager.cpp:480
 msgid "New Note %1%"
 msgstr "Ny anteckning %1%"
 
 #. Use a simple "Describe..." body and highlight
 #. it so it can be easily overwritten
-#: ../src/notemanager.cpp:594
-#: ../src/notemanager.cpp:684
+#: ../src/notemanager.cpp:580
+#: ../src/notemanager.cpp:670
 msgid "Describe your new note here."
 msgstr "Beskriv din nya anteckning här."
 
@@ -1029,15 +1032,15 @@ msgstr[1] "Sökträffar: %1% anteckningar"
 msgid "Notes"
 msgstr "Anteckningar"
 
-#: ../src/tray.cpp:50
+#: ../src/tray.cpp:51
 msgid "Take notes"
 msgstr "Skriv anteckningar"
 
-#: ../src/tray.cpp:161
+#: ../src/tray.cpp:162
 msgid " (new)"
 msgstr " (ny)"
 
-#: ../src/tray.cpp:473
+#: ../src/tray.cpp:471
 msgid "_About Gnote"
 msgstr "_Om Gnote"
 
@@ -1049,38 +1052,45 @@ msgstr "\"Handbok för Gnote-anteckningar\" kunde inte hittas.  Verifiera att di
 msgid "Help not found"
 msgstr "Hjälp hittades inte"
 
-#: ../src/utils.cpp:178
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "Kan inte öppna plats"
 
-#: ../src/utils.cpp:192
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
 msgstr "Idag, %1%"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "Idag"
 
-#: ../src/utils.cpp:198
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
 msgstr "Igår, %1%"
 
-#: ../src/utils.cpp:199
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "Igår"
 
-#: ../src/utils.cpp:206
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% dag sedan, %2%"
 msgstr[1] "%1% dagar sedan, %2%"
 
-#: ../src/utils.cpp:210
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% dag sedan"
 msgstr[1] "%1% dagar sedan"
 
+#. TRANSLATORS: argument is time.
 #: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "Imorgon, %1%"
@@ -1089,39 +1099,43 @@ msgstr "Imorgon, %1%"
 msgid "Tomorrow"
 msgstr "Imorgon"
 
-#: ../src/utils.cpp:225
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "Inom %1% dag, %2%"
 msgstr[1] "Inom %1% dagar, %2%"
 
-#: ../src/utils.cpp:229
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "Inom %1% dag"
 msgstr[1] "Inom %1% dagar"
 
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "Inget datum"
 
-#: ../src/watchers.cpp:208
+#: ../src/watchers.cpp:209
 msgid "(Untitled %1%)"
 msgstr "(Namnlös %1%)"
 
-#: ../src/watchers.cpp:243
+#: ../src/watchers.cpp:244
 msgid "A note with the title <b>%1%</b> already exists. Please choose another name for this note before continuing."
 msgstr "En anteckning med titeln <b>%1%</b> finns redan. Välj ett annat namn för denna anteckning innan du fortsätter."
 
-#: ../src/watchers.cpp:257
+#: ../src/watchers.cpp:258
 msgid "Note title taken"
 msgstr "Anteckningstiteln är upptagen"
 
-#: ../src/watchers.cpp:576
+#: ../src/watchers.cpp:593
 msgid "_Copy Link Address"
 msgstr "_Kopiera länkadress"
 
-#: ../src/watchers.cpp:582
+#: ../src/watchers.cpp:599
 msgid "_Open Link"
 msgstr "_Öppna länk"
 
@@ -1215,100 +1229,100 @@ msgstr "Anteckningarna som tillhör detta anteckningsblock kommer inte att tas b
 msgid "New \"%1%\" Note"
 msgstr "Ny \"%1%\"-anteckning"
 
-#: ../src/notebooks/notebookmenuitem.cpp:34
+#: ../src/notebooks/notebookmenuitem.cpp:35
 msgid "No notebook"
 msgstr "Inget anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:82
+#: ../src/notebooks/notebooknoteaddin.cpp:83
 msgid "Place this note into a notebook"
 msgstr "Placera denna anteckning i ett anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:169
+#: ../src/notebooks/notebooknoteaddin.cpp:165
 msgid "Notebook"
 msgstr "Anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:194
+#: ../src/notebooks/notebooknoteaddin.cpp:190
 msgid "_New notebook..."
 msgstr "_Nytt anteckningsblock..."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
 msgid "Backlinks"
 msgstr "Baklänkar"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
 msgid "See which notes link to the one you're currently viewing."
 msgstr "Se vilka anteckningar som länkar till den som du ser på just nu."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:55
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere och Tomboy-projektet"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
 msgid "What links here?"
 msgstr "Vad länkar hit?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
 msgid "(none)"
 msgstr "(ingen)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:56
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
 msgid "Bugzilla Links"
 msgstr "Bugzilla-länkar"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
 msgid "Allows you to drag a Bugzilla URL from your browser directly into a Gnote note.  The bug number is inserted as a link with a little bug icon next to it."
 msgstr "Låter dig dra en Bugzilla-URL från din webbläsare direkt in i en Gnote-anteckning.  Felnumret infogas som en länk med en liten \"bug\"-ikon bredvid sig."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere och Tomboy-projektet"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:59
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:61
 msgid "You can use any bugzilla just by dragging links into notes.  If you want a special icon for certain hosts, add them here."
 msgstr "Du kan använda en valfri bugzilla helt enkelt genom att dra länkar till anteckningar.  Om du vill ha en speciell ikon för vissa värddatorer kan du lägga till dem här."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:76
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:78
 msgid "Host Name"
 msgstr "Värdnamn"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:89
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:91
 msgid "Icon"
 msgstr "Ikon"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:223
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:225
 msgid "Select an icon..."
 msgstr "Välj en ikon..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:238
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:240
 msgid "_Host name:"
 msgstr "_Värdnamn:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:272
 msgid "Host name invalid"
 msgstr "Värdnamnet är ogiltigt"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:271
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr "Du måste ange ett giltigt värdnamn för den Bugzilla som ska användas med den här ikonen."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:292
 msgid "Error saving icon"
 msgstr "Fel vid sparandet av ikon"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:291
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
 msgid "Could not save the icon file."
 msgstr "Kunde inte spara ikonfilen.  "
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:365
 msgid "Really remove this icon?"
 msgstr "Verkligen ta bort den här ikonen?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:364
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
 msgid "If you remove an icon it is permanently lost."
 msgstr "Om du tar bort en ikon försvinner den för alltid."
 
@@ -1324,48 +1338,48 @@ msgstr "Exportera länkade anteckningar"
 msgid "Include all other linked notes"
 msgstr "Inkludera alla andra länkade anteckningar"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
 msgid "Export to HTML"
 msgstr "Exportera till HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
 msgid "Exports individual notes to HTML."
 msgstr "Exportera individuella anteckningar till HTML."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
 msgid "Your note was exported to \"%1%\"."
 msgstr "Din anteckning exporterades till \"%1%\"."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 msgid "Note exported successfully"
 msgstr "Anteckningen exporterades"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:185
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Kunde inte spara filen \"%s\""
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
 msgid "Fixed Wid_th"
 msgstr "Fast _bredd"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
 msgid "Fixed Width"
 msgstr "Fast bredd"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
 msgid "Adds fixed-width font style."
 msgstr "Lägger till en typsnittsstil med fast bredd."
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:47
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:80
 msgid "Insert Timestamp"
 msgstr "Infoga tidsstämpel"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:51
 msgid "Inserts current date and time at the cursor position."
 msgstr "Infogar aktuellt datum och tid vid markörens position."
 
@@ -1403,15 +1417,15 @@ msgstr "Möten"
 msgid "%A, %B %d %Y"
 msgstr "%A, %d %B %Y"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:43
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
 msgstr "Dagens anteckning"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:47
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
 msgid "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr "Skapar automatiskt en \"Idag\"-anteckning för att enklare plita ner dagliga tankar"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:52
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray och Tomboy-projektet"
 
@@ -1423,91 +1437,91 @@ msgstr "_Öppna Idag: Mall"
 msgid "Change the <span weight=\"bold\">Today: Template</span> note to customize the text that new Today notes have."
 msgstr "Ändra anteckningen <span weight=\"bold\">Idag: Mall</span> för att anpassa texten som nya Idag-anteckningar använder."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
 msgid "Printing Support"
 msgstr "Utskriftsstöd"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
 msgid "Allows you to print a note."
 msgstr "Låter dig skriva ut en anteckning."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
 msgid "Print"
 msgstr "Skriv ut"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:133
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
 msgid "Error printing note"
 msgstr "Fel vid utskrift av anteckning"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:297
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
 msgid "Page %1% of %2%"
 msgstr "Sida %1% av %2%"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
 msgstr "Importera från Klisterlappar"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Importera dina anteckningar från panelprogrammet Klisterlappar."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:112
 msgid "Import from Sticky Notes"
 msgstr "Importera från Klisterlappar"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:241
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:242
 msgid "No Sticky Notes found"
 msgstr "Inga klisterlappar hittades"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:244
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "Ingen lämplig Klisterlappar-fil hittades i \"%1%\"."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:252
 msgid "Sticky Notes import completed"
 msgstr "Importeringen från Klisterlappar är färdig"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:254
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "<b>%1%</b> av <b>%2%</b> klisterlappar blev importerade."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:273
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:319
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:320
 msgid "Sticky Note: "
 msgstr "Klisterlapp: "
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
 msgid "Tomboy Importer"
 msgstr "Tomboy-importerare"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
 msgid "Import your notes from Tomboy."
 msgstr "Importera dina anteckningar från Tomboy."
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:34
+#: ../src/addins/underline/underlinemenuitem.cpp:35
 msgid "_Underline"
 msgstr "_Understryk"
 
 #. this is the name of the plugin.
-#: ../src/addins/underline/underlinenoteaddin.cpp:47
+#: ../src/addins/underline/underlinenoteaddin.cpp:49
 msgid "Underline"
 msgstr "Understryk"
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:51
+#: ../src/addins/underline/underlinenoteaddin.cpp:53
 msgid "Adds ability to underline text."
 msgstr "Lägger till möjligheten att stryka under text."
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:55
+#: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière och Tomboy-projektet"
 
