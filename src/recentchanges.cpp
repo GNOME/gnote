@@ -1362,11 +1362,22 @@ namespace gnote {
       if (notebook->get_tag()) {
         m_selected_tags.insert(notebook->get_tag());
       }
+      bool allow_edit = false;
       if (std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
         am["DeleteNotebookAction"]->set_sensitive(false);
       } 
       else {
         am["DeleteNotebookAction"]->set_sensitive(true);
+        allow_edit = true;
+      }
+
+      Glib::ListHandle<Gtk::CellRenderer*> renderers = m_notebooksTree->get_column(0)->get_cell_renderers();
+      for (Glib::ListHandle<Gtk::CellRenderer*>::iterator renderer = renderers.begin();
+           renderer != renderers.end(); ++renderer) {
+        Gtk::CellRendererText *text_rederer = dynamic_cast<Gtk::CellRendererText*>(*renderer);
+        if (text_rederer) {
+          text_rederer->property_editable() = allow_edit;
+        }
       }
     }
       
