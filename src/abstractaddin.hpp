@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,6 +31,7 @@
 namespace gnote {
 
 enum {
+  ADDIN_CATEGORY_UNKNOWN,
   ADDIN_CATEGORY_TOOLS,
   ADDIN_CATEGORY_FORMATTING,
   ADDIN_CATEGORY_DESKTOP_INTEGRATION

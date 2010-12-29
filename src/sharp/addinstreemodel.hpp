@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -51,22 +52,27 @@ public:
   public:
     AddinsColumns()
       {
-        add(name); 
-        add(description); 
+        add(name);
+        add(version);
         add(addin);
+        add(category);
       }
 
     Gtk::TreeModelColumn<std::string>          name;
-    Gtk::TreeModelColumn<std::string>          description;
+    Gtk::TreeModelColumn<std::string>          version;
     Gtk::TreeModelColumn<const sharp::DynamicModule *> addin;
+    Gtk::TreeModelColumn<int>                  category;
   };
   AddinsColumns m_columns;
 
+  static std::string get_addin_category_name(int category);
+  static int ensure_valid_addin_category(int category);
 protected:
   AddinsTreeModel();
   void set_columns(Gtk::TreeView *v);
 private:
-  
+  void name_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter & iter);
+  void name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter & iter);
 };
 
 }
