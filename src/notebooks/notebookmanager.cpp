@@ -344,11 +344,13 @@ namespace gnote {
       if (response != Gtk::RESPONSE_YES) {
         return;
       }
+
+      // Grab the template note before removing all the notebook tags
+      Note::Ptr templateNote = notebook->get_template_note ();
       
       instance().delete_notebook (notebook);
 
       // Delete the template note
-      Note::Ptr templateNote = notebook->get_template_note ();
       if (templateNote) {
         NoteManager & noteManager(Gnote::obj().default_note_manager());
         noteManager.delete_note (templateNote);

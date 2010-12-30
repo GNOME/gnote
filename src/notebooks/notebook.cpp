@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -84,7 +85,7 @@ namespace notebooks {
       // Notebook Template".  Translators should place the
       // name of the notebook accordingly using "%1%".
       std::string format = _("%1% Notebook Template");
-      m_template_note_title = str(boost::format(format) % m_name);
+      m_default_template_note_title = str(boost::format(format) % m_name);
     }
   }
 
@@ -104,12 +105,28 @@ namespace notebooks {
   Note::Ptr Notebook::get_template_note() const
   {
     NoteManager & noteManager = Gnote::obj().default_note_manager();
-    Note::Ptr note = noteManager.find (m_template_note_title);
+    Note::Ptr note;
+    Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr notebook_tag = TagManager::obj().get_or_create_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
+    std::list<Note*> notes;
+    template_tag->get_notes(notes);
+    for (std::list<Note*>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
+      if ((*iter)->contains_tag (notebook_tag)) {
+        note = (*iter)->shared_from_this();
+        break;
+      }
+    }
+
     if (!note) {
+      std::string title = m_default_template_note_title;
+      if (noteManager.find(title)) {
+        std::list<Note*> tag_notes;
+        m_tag->get_notes(tag_notes);
+        title = noteManager.get_unique_name (title, tag_notes.size());
+      }
       note =
-        noteManager.create (m_template_note_title,
-                            NoteManager::get_note_template_content (
-                              m_template_note_title));
+        noteManager.create (title,
+                            NoteManager::get_note_template_content (title));
           
       // Select the initial text
       NoteBuffer::Ptr buffer = note->get_buffer();
@@ -118,19 +135,37 @@ namespace notebooks {
       buffer->move_mark (buffer->get_insert(), buffer->end());
 
       // Flag this as a template note
-      Tag::Ptr tag = TagManager::obj()
-        .get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      note->add_tag (tag);
+      note->add_tag (template_tag);
 
       // Add on the notebook system tag so Tomboy
       // will persist the tag/notebook across sessions
       // if no other notes are added to the notebook.
-      tag = TagManager::obj()
-        .get_or_create_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
-      note->add_tag (tag);
+      note->add_tag (notebook_tag);
         
       note->queue_save (Note::CONTENT_CHANGED);
     }
+
+    return note;
+  }
+
+  Note::Ptr Notebook::create_notebook_note()
+  {
+    std::string temp_title;
+    Note::Ptr template_note = get_template_note();
+    NoteManager & note_manager = Gnote::obj().default_note_manager();
+
+    temp_title = note_manager.get_unique_name (_("New Note"), note_manager.get_notes().size());
+
+    // Grab the template body
+    std::string xml_content =
+        sharp::string_replace_first(template_note->xml_content(),
+                                    template_note->get_title(),
+                                    utils::XmlEncoder::encode (temp_title));
+
+    Note::Ptr note = note_manager.create (temp_title, xml_content);
+
+    // Add the notebook tag
+    note->add_tag (m_tag);
 
     return note;
   }

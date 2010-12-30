@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -51,20 +52,7 @@ namespace gnote {
       }
       
       // Look for the template note and create a new note
-      Note::Ptr templateNote = m_notebook->get_template_note ();
-      Note::Ptr note;
-      
-      NoteManager & noteManager(Gnote::obj().default_note_manager());
-      note = noteManager.create ();
-      if (templateNote) {
-        // Use the body from the template note
-        std::string xmlContent = sharp::string_replace_all(templateNote->xml_content(), 
-                                                           templateNote->get_title(), 
-                                                           note->get_title());
-        note->set_xml_content(xmlContent);
-      }
-      
-      note->add_tag (m_notebook->get_tag());
+      Note::Ptr note = m_notebook->create_notebook_note ();
       note->get_window()->show ();
     }
 

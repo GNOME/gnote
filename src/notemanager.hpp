@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -76,6 +77,7 @@ namespace gnote {
       }
     Note::Ptr find(const std::string &) const;
     Note::Ptr find_by_uri(const std::string &) const;
+    std::string get_unique_name (std::string basename, int id) const;
     void delete_note(const Note::Ptr & note);
 
     Note::Ptr create();
@@ -127,7 +129,7 @@ namespace gnote {
     Note::List m_notes;
     AddinManager   *m_addin_mgr;
     TrieController *m_trie_controller;
-    std::string m_note_template_title;
+    std::string m_default_note_template_title;
     std::string m_start_note_uri;
     NoteChangedSlot m_signal_start_note_created;
   };

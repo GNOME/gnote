@@ -1416,19 +1416,7 @@ namespace gnote {
     }
       
     // Look for the template note and create a new note
-    Note::Ptr templateNote = notebook->get_template_note ();
-    Note::Ptr note;
-      
-    note = m_manager.create ();
-    if (templateNote) {
-      // Use the body from the template note
-      std::string xmlContent = sharp::string_replace_first(templateNote->xml_content(), 
-                                                           templateNote->get_title(), 
-                                                           note->get_title());
-      note->set_xml_content(xmlContent);
-    }
-      
-    note->add_tag(notebook->get_tag());
+    Note::Ptr note = notebook->create_notebook_note ();
     note->get_window()->show ();
   }
     

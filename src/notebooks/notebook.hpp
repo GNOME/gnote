@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -48,6 +49,7 @@ public:
   virtual std::string get_normalized_name() const;
   virtual Tag::Ptr    get_tag() const;
   virtual Note::Ptr   get_template_note() const;
+  Note::Ptr create_notebook_note();
   bool contains_note(const Note::Ptr &);
   static std::string normalize(const std::string & s);
 ////
@@ -58,7 +60,7 @@ private:
   Notebook & operator=(const Notebook &);
   std::string m_name;
   std::string m_normalized_name;
-  std::string m_template_note_title;
+  std::string m_default_template_note_title;
   Tag::Ptr    m_tag;
 };
 

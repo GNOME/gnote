@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -46,6 +47,7 @@
 #include "sharp/uuid.hpp"
 #include "sharp/string.hpp"
 #include "sharp/datetime.hpp"
+#include "notebooks/notebookmanager.hpp"
 
 namespace gnote {
 
@@ -105,7 +107,7 @@ namespace gnote {
     m_start_note_uri = prefs.get<std::string>(Preferences::START_NOTE_URI);
     prefs.signal_setting_changed().connect(
       sigc::mem_fun(*this, &NoteManager::on_setting_changed));
-    m_note_template_title = _("New Note Template");
+    m_default_note_template_title = _("New Note Template");
 
 
     DBG_OUT("NoteManager created with note path \"%s\".", directory.c_str());
@@ -472,18 +474,7 @@ namespace gnote {
 
   Note::Ptr NoteManager::create()
   {
-    int new_num = m_notes.size();
-    std::string temp_title;
-    
-    while (true) {
-      ++new_num;
-      temp_title = str(boost::format(_("New Note %1%")) %  new_num);
-      if (!find(temp_title)) {
-        break;
-      }
-    }
-
-    return create(temp_title);
+    return create("");
   }
 
   std::string NoteManager::split_title_from_content(std::string title, std::string & body)
@@ -553,32 +544,28 @@ namespace gnote {
     return create_new_note(title, guid);
   }
 
-  // Create a new note with the specified title, and a simple
-  // "Describe..." body or the body from the "New Note Template"
-  // note if it exists.  If the "New Note Template" body is found
-  // the text will not automatically be highlighted.
+  // Create a new note with the specified title from the default
+  // template note. Optionally the body can be overridden.
   Note::Ptr NoteManager::create_new_note (std::string title, const std::string & guid)
   {
     std::string body;
-    
+
+    Note::Ptr template_note = get_or_create_template_note();
     title = split_title_from_content (title, body);
-    if (title.empty())
-      return Note::Ptr();
       
-    Note::Ptr note_template = find(m_note_template_title);
-    if (note_template) {
-      // Use the body from the "New Note Template" note
+    if (title.empty()) {
+      title = get_unique_name(_("New Note"), m_notes.size());
+    }
+
+    if (body.empty()) {
+      // Use the body from the template note
       std::string xml_content =
-        sharp::string_replace_first(note_template->xml_content(), 
-                                    m_note_template_title,
+        sharp::string_replace_first(template_note->xml_content(),
+                                    template_note->get_title(),
                                     utils::XmlEncoder::encode (title));
       return create_new_note (title, xml_content, guid);
     }
       
-    // Use a simple "Describe..." body and highlight
-    // it so it can be easily overwritten
-    body = _("Describe your new note here.");
-    
     Glib::ustring header = title + "\n\n";
     std::string content =
       boost::str(boost::format("<note-content>%1%%2%</note-content>") %
@@ -588,8 +575,6 @@ namespace gnote {
     Note::Ptr new_note = create_new_note (title, content, guid);
     
     // Select the inital
-    // "Describe..." text so typing will overwrite the body text,
-    //NoteBuffer 
     Glib::RefPtr<Gtk::TextBuffer> buffer = new_note->get_buffer();
     Gtk::TextIter iter = buffer->get_iter_at_offset(header.size());
     buffer->move_mark (buffer->get_selection_bound(), iter);
@@ -638,11 +623,26 @@ namespace gnote {
   /// </returns>
   Note::Ptr NoteManager::get_or_create_template_note()
   {
-    Note::Ptr template_note = find(m_note_template_title);
+    Note::Ptr template_note;
+    Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    std::list<Note*> notes;
+    template_tag->get_notes(notes);
+    for (std::list<Note*>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
+      Note::Ptr note = (*iter)->shared_from_this();
+      if (!notebooks::NotebookManager::instance().get_notebook_from_note (note)) {
+        template_note = note;
+        break;
+      }
+    }
+
     if (!template_note) {
+      std::string title = m_default_note_template_title;
+      if (find(title)) {
+        title = get_unique_name(title, m_notes.size());
+      }
       template_note =
-        create (m_note_template_title,
-                get_note_template_content(m_note_template_title));
+        create (title,
+                get_note_template_content(title));
           
       // Select the initial text
       Glib::RefPtr<NoteBuffer> buffer = template_note->get_buffer();
@@ -651,8 +651,7 @@ namespace gnote {
       buffer->move_mark(buffer->get_insert(), buffer->end());
 
       // Flag this as a template note
-      Tag::Ptr tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      template_note->add_tag(tag);
+      template_note->add_tag(template_tag);
 
       template_note->queue_save(Note::CONTENT_CHANGED);
     }
@@ -702,6 +701,21 @@ namespace gnote {
       }
     }
     return Note::Ptr();
+  }
+
+  // Find a title that does not exist using basename and id as
+  // a starting point
+  std::string NoteManager::get_unique_name (std::string basename, int id) const
+  {
+    std::string title;
+    while (true) {
+      title = str(boost::format("%1% %2%") % basename % id++);
+      if (!find (title)) {
+        break;
+      }
+    }
+
+    return title;
   }
 
 

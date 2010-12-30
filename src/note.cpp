@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2010 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -707,6 +708,9 @@ namespace gnote {
     
   bool Note::contains_tag(const Tag::Ptr & tag) const
   {
+    if(!tag) {
+      return false;
+    }
     const NoteData::TagMap & thetags(m_data.data().tags());
     return (thetags.find(tag->normalized_name()) != thetags.end());
   }
