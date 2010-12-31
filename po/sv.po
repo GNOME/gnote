@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 12:47+0100\n"
-"PO-Revision-Date: 2010-12-29 12:47+0100\n"
+"POT-Creation-Date: 2010-12-31 12:14+0100\n"
+"PO-Revision-Date: 2010-12-31 12:14+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -356,13 +356,33 @@ msgstr "Användarnamnet att använda vid anslutning till synkroniseringsservern 
 msgid "Whitespace-separated list of note URIs for notes that should always appear in the Gnote note menu."
 msgstr "Blankstegsseparerad lista över URI:er för anteckningar som alltid ska visas i Gnotes anteckningsmeny."
 
-#: ../src/sharp/addinstreemodel.cpp:64
+#: ../src/sharp/addinstreemodel.cpp:93
 msgid "Name"
 msgstr "Namn"
 
-#: ../src/sharp/addinstreemodel.cpp:65
-msgid "Description"
-msgstr "Beskrivning"
+#: ../src/sharp/addinstreemodel.cpp:105
+msgid "Version"
+msgstr "Version"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:138
+msgid "Formatting"
+msgstr "Formatering"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:141
+msgid "Desktop integration"
+msgstr "Skrivbordsintegration"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:144
+msgid "Tools"
+msgstr "Verktyg"
+
+#. TRANSLATORS: Addin category is unknown.
+#: ../src/sharp/addinstreemodel.cpp:148
+msgid "Unknown"
+msgstr "Okänd"
 
 #: ../src/actionmanager.cpp:170
 msgid "_File"
@@ -614,7 +634,7 @@ msgstr "Byt alltid namn på länkar"
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
 #: ../src/preferencesdialog.cpp:307
-#: ../src/notemanager.cpp:108
+#: ../src/notemanager.cpp:110
 msgid "New Note Template"
 msgstr "Ny anteckningsmall"
 
@@ -706,7 +726,7 @@ msgstr "Upphovsman:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/notemanager.cpp:250
+#: ../src/notemanager.cpp:252
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start Here\n"
 "\n"
@@ -732,7 +752,7 @@ msgstr ""
 "\n"
 "Vi har skapat en anteckning kallad <link:internal>Användning av länkar i Gnote</link:internal>.  Observera att varje gång vi skriver <link:internal>Användning av länkar i Gnote</link:internal> så blir den automatiskt understruken?  Klicka på länken för att öppna anteckningen.</note-content>"
 
-#: ../src/notemanager.cpp:269
+#: ../src/notemanager.cpp:271
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -751,23 +771,21 @@ msgstr ""
 "Om du skriver in namnet på en annan anteckning i din aktuella anteckning, kommer den automatiskt att länkas åt dig.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:284
-#: ../src/notemanager.cpp:336
+#: ../src/notemanager.cpp:286
+#: ../src/notemanager.cpp:338
 msgid "Start Here"
 msgstr "Börja här"
 
-#: ../src/notemanager.cpp:289
+#: ../src/notemanager.cpp:291
 msgid "Using Links in Gnote"
 msgstr "Användning av länkar i Gnote"
 
-#: ../src/notemanager.cpp:480
-msgid "New Note %1%"
-msgstr "Ny anteckning %1%"
+#: ../src/notemanager.cpp:557
+#: ../src/notebooks/notebook.cpp:157
+msgid "New Note"
+msgstr "Ny anteckning"
 
-#. Use a simple "Describe..." body and highlight
-#. it so it can be easily overwritten
-#: ../src/notemanager.cpp:580
-#: ../src/notemanager.cpp:670
+#: ../src/notemanager.cpp:669
 msgid "Describe your new note here."
 msgstr "Beskriv din nya anteckning här."
 
@@ -963,72 +981,72 @@ msgid "Font Size"
 msgstr "Typsnittsstorlek"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:68
+#: ../src/note.cpp:69
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "Verkligen ta bort denna anteckning?"
 msgstr[1] "Verkligen ta bort dessa %1% anteckningar?"
 
-#: ../src/note.cpp:80
+#: ../src/note.cpp:81
 msgid "If you delete a note it is permanently lost."
 msgstr "Om du tar bort en anteckning försvinner den för alltid."
 
-#: ../src/note.cpp:116
+#: ../src/note.cpp:117
 msgid "Error saving note data."
 msgstr "Fel vid sparande av anteckningsdata."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:118
 msgid "An error occurred while saving your notes. Please check that you have sufficient disk space, and that you have appropriate rights on ~/.gnote. Error details can be found in ~/.gnote.log."
 msgstr "Ett fel inträffade när dina anteckningar sparades. Kontrollera att du har tillräckligt mycket diskutrymme och att du har lämpliga rättigheter på ~/.gnote. Mer information kan hittas i ~/.gnote.log."
 
-#: ../src/recentchanges.cpp:83
+#: ../src/recentchanges.cpp:84
 msgid "Search All Notes"
 msgstr "Sök i alla anteckningar"
 
-#: ../src/recentchanges.cpp:88
+#: ../src/recentchanges.cpp:89
 msgid "C_ase Sensitive"
 msgstr "Skiftlä_geskänslig"
 
-#: ../src/recentchanges.cpp:106
+#: ../src/recentchanges.cpp:107
 msgid "_Search:"
 msgstr "_Sök:"
 
-#: ../src/recentchanges.cpp:270
+#: ../src/recentchanges.cpp:271
 #: ../src/notebooks/notebookapplicationaddin.cpp:120
 msgid "Notebooks"
 msgstr "Anteckningsblock"
 
-#: ../src/recentchanges.cpp:345
+#: ../src/recentchanges.cpp:348
 msgid "Note"
 msgstr "Anteckning"
 
-#: ../src/recentchanges.cpp:366
+#: ../src/recentchanges.cpp:369
 msgid "Last Changed"
 msgstr "Senast ändrad"
 
-#: ../src/recentchanges.cpp:510
+#: ../src/recentchanges.cpp:513
 msgid "Matches"
 msgstr "Träffar"
 
-#: ../src/recentchanges.cpp:564
+#: ../src/recentchanges.cpp:567
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% träff"
 msgstr[1] "%1% träffar"
 
-#: ../src/recentchanges.cpp:578
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Totalt: %1% anteckning"
 msgstr[1] "Totalt: %1% anteckningar"
 
-#: ../src/recentchanges.cpp:594
+#: ../src/recentchanges.cpp:597
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Sökträffar: %1% anteckning"
 msgstr[1] "Sökträffar: %1% anteckningar"
 
-#: ../src/recentchanges.cpp:736
+#: ../src/recentchanges.cpp:739
 msgid "Notes"
 msgstr "Anteckningar"
 
@@ -1167,15 +1185,15 @@ msgstr "S_kapa"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:86
+#: ../src/notebooks/notebook.cpp:87
 msgid "%1% Notebook Template"
 msgstr "Anteckningsmall för %1%"
 
-#: ../src/notebooks/notebook.cpp:169
+#: ../src/notebooks/notebook.cpp:204
 msgid "All Notes"
 msgstr "Alla anteckningar"
 
-#: ../src/notebooks/notebook.cpp:181
+#: ../src/notebooks/notebook.cpp:216
 msgid "Unfiled Notes"
 msgstr "Ej arkiverade anteckningar"
 
@@ -1217,15 +1235,15 @@ msgstr "Ta bort antecknings_block"
 msgid "Delete the selected notebook"
 msgstr "Ta bort det valda anteckningsblocket"
 
-#: ../src/notebooks/notebookmanager.cpp:334
+#: ../src/notebooks/notebookmanager.cpp:338
 msgid "Really delete this notebook?"
 msgstr "Verkligen ta bort detta anteckningsblock?"
 
-#: ../src/notebooks/notebookmanager.cpp:335
+#: ../src/notebooks/notebookmanager.cpp:339
 msgid "The notes that belong to this notebook will not be deleted, but they will no longer be associated with this notebook.  This action cannot be undone."
 msgstr "Anteckningarna som tillhör detta anteckningsblock kommer inte att tas bort men de kommer inte längre att vara associerade med detta anteckningsblock.  Denna åtgärd kan inte ångras."
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:38
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
 msgid "New \"%1%\" Note"
 msgstr "Ny \"%1%\"-anteckning"
 
@@ -1525,6 +1543,10 @@ msgstr "Lägger till möjligheten att stryka under text."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière och Tomboy-projektet"
 
+#~ msgid "Description"
+#~ msgstr "Beskrivning"
+#~ msgid "New Note %1%"
+#~ msgstr "Ny anteckning %1%"
 #~ msgid "Copyright © 2009 Hubert Figuiere"
 #~ msgstr "Copyright © 2009 Hubert Figuiere"
 #~ msgid "Gnote Notes"
@@ -1899,8 +1921,6 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ msgstr ""
 #~ "Serverversionen av \"{0}\" står i konflikt med din lokala anteckning.  "
 #~ "Vad vill du göra med din lokala anteckning?"
-#~ msgid "_Tools"
-#~ msgstr "_Verktyg"
 #~ msgid "Could not enable FUSE"
 #~ msgstr "Kunde inte aktivera FUSE"
 #~ msgid ""
