@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&component=general\n"
-"POT-Creation-Date: 2010-12-21 21:45+0000\n"
-"PO-Revision-Date: 2010-12-22 19:53+0100\n"
+"POT-Creation-Date: 2010-12-30 20:44+0000\n"
+"PO-Revision-Date: 2010-12-31 09:56+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -534,13 +534,33 @@ msgstr ""
 "Seznam URI poznámek, které by vždy měly být zobrazeny v nabídce poznámek "
 "Gnote. Položky seznamu jsou odděleny mezerami."
 
-#: ../src/sharp/addinstreemodel.cpp:64
+#: ../src/sharp/addinstreemodel.cpp:93
 msgid "Name"
 msgstr "Název"
 
-#: ../src/sharp/addinstreemodel.cpp:65
-msgid "Description"
-msgstr "Popis"
+#: ../src/sharp/addinstreemodel.cpp:105
+msgid "Version"
+msgstr "Verze"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:138
+msgid "Formatting"
+msgstr "Formátování"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:141
+msgid "Desktop integration"
+msgstr "Integrace do pracovního prostředí"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:144
+msgid "Tools"
+msgstr "Nástroje"
+
+#. TRANSLATORS: Addin category is unknown.
+#: ../src/sharp/addinstreemodel.cpp:148
+msgid "Unknown"
+msgstr "Neznámá"
 
 #: ../src/actionmanager.cpp:170
 msgid "_File"
@@ -630,15 +650,15 @@ msgstr "S_ynchronizovat poznámky"
 msgid "Start synchronizing notes"
 msgstr "Začít synchronizovat poznámky"
 
-#: ../src/gnote.cpp:277
+#: ../src/gnote.cpp:278
 msgid "Cannot create new note"
 msgstr "Nelze vytvořit novou poznámku"
 
-#: ../src/gnote.cpp:326
+#: ../src/gnote.cpp:327
 msgid "and Tomboy original authors."
 msgstr "a původní autoři aplikace Tomboy."
 
-#: ../src/gnote.cpp:335
+#: ../src/gnote.cpp:336
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -647,7 +667,7 @@ msgstr ""
 "Petr Kovář <pknbe@volny.cz>\n"
 "Lucas Lommer <llommer@svn.gnome.org>"
 
-#: ../src/gnote.cpp:343
+#: ../src/gnote.cpp:344
 msgid ""
 "Copyright © 2010 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
@@ -659,72 +679,72 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 původní autoři Tomboy."
 
-#: ../src/gnote.cpp:347
+#: ../src/gnote.cpp:348
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Jednoduchá a snadno použitelná aplikace pro poznámky na pracovní ploše."
 
-#: ../src/gnote.cpp:358
+#: ../src/gnote.cpp:359
 msgid "Homepage"
 msgstr "Domovská stránka"
 
-#: ../src/gnote.cpp:428
+#: ../src/gnote.cpp:429
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Spustit Gnote jako applet pro panel GNOME."
 
-#: ../src/gnote.cpp:429
+#: ../src/gnote.cpp:430
 msgid "Specify the path of the directory containing the notes."
 msgstr "Určit cestu ke složce obsahující poznámky."
 
-#: ../src/gnote.cpp:429
+#: ../src/gnote.cpp:430
 msgid "path"
 msgstr "cesta"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:431
 msgid "Open the search all notes window with the search text."
 msgstr "Otevřít okno Prohledat všechny poznámky s hledaným textem."
 
-#: ../src/gnote.cpp:430 ../src/gnote.cpp:435 ../src/gnote.cpp:436
+#: ../src/gnote.cpp:431 ../src/gnote.cpp:436 ../src/gnote.cpp:437
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:432
 msgid "Print version information."
 msgstr "Vypsat informace o verzi."
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:434
 msgid "Create and display a new note, with a optional title."
 msgstr "Vytvořit a zobrazit novou poznámku s volitelným názvem."
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:434
 msgid "title"
 msgstr "název"
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:435
 msgid "Display the existing note matching title."
 msgstr "Zobrazit existující poznámku odpovídající názvem."
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:435
 msgid "title/url"
 msgstr "název/url"
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:436
 msgid "Display the 'Start Here' note."
 msgstr "Zobrazit poznámku „Začněte zde“."
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:437
 msgid "Search and highlight text in the opened note."
 msgstr "Hledat a zvýraznit text v otevřené poznámce."
 
-#: ../src/gnote.cpp:441
+#: ../src/gnote.cpp:442
 msgid "A note taking application"
 msgstr "Aplikace na dělání poznámek"
 
-#: ../src/gnote.cpp:441
+#: ../src/gnote.cpp:442
 msgid "Gnote options at launch"
 msgstr "Volby Gnote při spouštění"
 
-#: ../src/gnote.cpp:637
+#: ../src/gnote.cpp:630
 msgid "Version %1%"
 msgstr "Verze %1%"
 
@@ -792,7 +812,7 @@ msgstr "Odkazy vždy přejmenovat"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:307 ../src/notemanager.cpp:108
+#: ../src/preferencesdialog.cpp:307 ../src/notemanager.cpp:110
 msgid "New Note Template"
 msgstr "Nová šablona"
 
@@ -892,7 +912,7 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/notemanager.cpp:250
+#: ../src/notemanager.cpp:252
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -916,7 +936,7 @@ msgstr ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Začněte "
 "zde\n"
 "\n"
-"<bold>Vítejte v Gnotei!</bold>\n"
+"<bold>Vítejte v Gnote!</bold>\n"
 "\n"
 "Použijte poznámku „Začněte zde!“ k organizaci svých nápadů a myšlenek.\n"
 "\n"
@@ -932,7 +952,7 @@ msgstr ""
 "internal>Používání odkazů v Gnote</link:internal>, tak se text podtrhne? "
 "Klikněte na odkaz a zjistěte, jak se používají odkazy.</note-content>"
 
-#: ../src/notemanager.cpp:269
+#: ../src/notemanager.cpp:271
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -947,9 +967,9 @@ msgid ""
 "Also, if you type the name of another note in your current note, it will "
 "automatically be linked for you.</note-content>"
 msgstr ""
-"<note-content>Používání odkazů v Gnotei\n"
+"<note-content>Používání odkazů v Gnote\n"
 "\n"
-"Poznámky v Gnotei mohou být vzájemně propojeny označením textu v aktuální "
+"Poznámky v Gnote mohou být vzájemně propojeny označením textu v aktuální "
 "poznámce a kliknutím na tlačítko <bold>Odkaz</bold> v liště nástrojů. Tímto "
 "vytvoříte novou poznámku s vyznačeným názvem a s tím také odkaz na ni.\n"
 "\n"
@@ -960,21 +980,19 @@ msgstr ""
 "automaticky převeden na odkaz.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:284 ../src/notemanager.cpp:336
+#: ../src/notemanager.cpp:286 ../src/notemanager.cpp:338
 msgid "Start Here"
 msgstr "Začněte zde"
 
-#: ../src/notemanager.cpp:289
+#: ../src/notemanager.cpp:291
 msgid "Using Links in Gnote"
-msgstr "Používání odkazů v Gnotei"
+msgstr "Používání odkazů v Gnote"
 
-#: ../src/notemanager.cpp:480
-msgid "New Note %1%"
-msgstr "Nová poznámka %1%"
+#: ../src/notemanager.cpp:557 ../src/notebooks/notebook.cpp:157
+msgid "New Note"
+msgstr "Nová poznámka"
 
-#. Use a simple "Describe..." body and highlight
-#. it so it can be easily overwritten
-#: ../src/notemanager.cpp:580 ../src/notemanager.cpp:670
+#: ../src/notemanager.cpp:669
 msgid "Describe your new note here."
 msgstr "Sem napište svou novou poznámku."
 
@@ -1171,22 +1189,22 @@ msgid "Font Size"
 msgstr "Velikost písma"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:68
+#: ../src/note.cpp:69
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "Opravdu odstranit tuto poznámku?"
 msgstr[1] "Opravdu odstranit tyto %1% poznámky?"
 msgstr[2] "Opravdu odstranit těchto %1% poznámek?"
 
-#: ../src/note.cpp:80
+#: ../src/note.cpp:81
 msgid "If you delete a note it is permanently lost."
 msgstr "Pokud odstraníte poznámku, bude navždy ztracena."
 
-#: ../src/note.cpp:116
+#: ../src/note.cpp:117
 msgid "Error saving note data."
 msgstr "Nepodařilo se uložit poznámku."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:118
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1196,57 +1214,57 @@ msgstr ""
 "volného místa a můžete zapisovat do složky ~/.gnote. Chybové hlášení "
 "naleznete v ~/.gnote.log."
 
-#: ../src/recentchanges.cpp:83
+#: ../src/recentchanges.cpp:84
 msgid "Search All Notes"
 msgstr "Hledat ve všech poznámkách"
 
-#: ../src/recentchanges.cpp:88
+#: ../src/recentchanges.cpp:89
 msgid "C_ase Sensitive"
 msgstr "_Rozlišovat velikost písmen"
 
-#: ../src/recentchanges.cpp:106
+#: ../src/recentchanges.cpp:107
 msgid "_Search:"
 msgstr "_Hledat:"
 
-#: ../src/recentchanges.cpp:270
+#: ../src/recentchanges.cpp:271
 #: ../src/notebooks/notebookapplicationaddin.cpp:120
 msgid "Notebooks"
 msgstr "Sešity"
 
-#: ../src/recentchanges.cpp:345
+#: ../src/recentchanges.cpp:348
 msgid "Note"
 msgstr "Poznámka"
 
-#: ../src/recentchanges.cpp:366
+#: ../src/recentchanges.cpp:369
 msgid "Last Changed"
 msgstr "Naposledy změněno"
 
-#: ../src/recentchanges.cpp:510
+#: ../src/recentchanges.cpp:513
 msgid "Matches"
 msgstr "Odpovídá"
 
-#: ../src/recentchanges.cpp:564
+#: ../src/recentchanges.cpp:567
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% odpovídá"
 msgstr[1] "%1% odpovídají"
 msgstr[2] "%1% odpovídá"
 
-#: ../src/recentchanges.cpp:578
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Celkem: %1% poznámka"
 msgstr[1] "Celkem: %1% poznámky"
 msgstr[2] "Celkem: %1% poznámek"
 
-#: ../src/recentchanges.cpp:594
+#: ../src/recentchanges.cpp:597
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Celkem: %1% poznámka"
 msgstr[1] "Celkem: %1% poznámky"
 msgstr[2] "Celkem: %1% poznámek"
 
-#: ../src/recentchanges.cpp:736
+#: ../src/recentchanges.cpp:739
 msgid "Notes"
 msgstr "Poznámky"
 
@@ -1345,11 +1363,11 @@ msgstr[2] "Za %1% dní"
 msgid "No Date"
 msgstr "Žádný termín"
 
-#: ../src/watchers.cpp:208
+#: ../src/watchers.cpp:209
 msgid "(Untitled %1%)"
 msgstr "(Bez názvu %1%)"
 
-#: ../src/watchers.cpp:243
+#: ../src/watchers.cpp:244
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -1357,15 +1375,15 @@ msgstr ""
 "Poznámka s názvem <b>%1%</b> již existuje. Než budete pokračovat, zvolte pro "
 "tuto poznámku jiný název."
 
-#: ../src/watchers.cpp:257
+#: ../src/watchers.cpp:258
 msgid "Note title taken"
 msgstr "Název poznámky používán"
 
-#: ../src/watchers.cpp:576
+#: ../src/watchers.cpp:593
 msgid "_Copy Link Address"
 msgstr "_Kopírovat adresu odkazu"
 
-#: ../src/watchers.cpp:582
+#: ../src/watchers.cpp:599
 msgid "_Open Link"
 msgstr "_Otevřít odkaz"
 
@@ -1397,15 +1415,15 @@ msgstr "_Vytvořit"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:86
+#: ../src/notebooks/notebook.cpp:87
 msgid "%1% Notebook Template"
 msgstr "Šablona sešitu %1%"
 
-#: ../src/notebooks/notebook.cpp:169
+#: ../src/notebooks/notebook.cpp:204
 msgid "All Notes"
 msgstr "Všechny poznámky"
 
-#: ../src/notebooks/notebook.cpp:181
+#: ../src/notebooks/notebook.cpp:216
 msgid "Unfiled Notes"
 msgstr "Nezařazené poznámky"
 
@@ -1447,11 +1465,11 @@ msgstr "Odstranit _sešit"
 msgid "Delete the selected notebook"
 msgstr "Smazat vybraný sešit"
 
-#: ../src/notebooks/notebookmanager.cpp:334
+#: ../src/notebooks/notebookmanager.cpp:338
 msgid "Really delete this notebook?"
 msgstr "Opravdu odstranit tento sešit?"
 
-#: ../src/notebooks/notebookmanager.cpp:335
+#: ../src/notebooks/notebookmanager.cpp:339
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1459,11 +1477,11 @@ msgstr ""
 "Poznámky, které patří do tohoto sešitu, nebudou smazány, avšak už do něj "
 "nebudou patřit. Tato akce nemůže být vrácena zpět."
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:38
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
 msgid "New \"%1%\" Note"
 msgstr "Nová poznámka „%1%“"
 
-#: ../src/notebooks/notebookmenuitem.cpp:34
+#: ../src/notebooks/notebookmenuitem.cpp:35
 msgid "No notebook"
 msgstr "Žádný sešit"
 
@@ -1752,7 +1770,7 @@ msgstr "Lepicí poznámka: "
 
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
 msgid "Tomboy Importer"
-msgstr "Import z Tomboy"
+msgstr "Import z aplikace Tomboy"
 
 #: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
 msgid "Import your notes from Tomboy."
