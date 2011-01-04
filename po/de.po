@@ -1,22 +1,23 @@
 # German translation of Gnote.
 # Copyright (C) 2004 Alex Graveley <alex@beatniksoftware.com>
 # This file is distributed under the same license as the Gnote package.
+#
+# This translation is a fork of Tomboy.
+#
 # Philipp Meier <meier@fnogol.de>, 2004.
 # Frank Arnold <frank@scirocco-5v-turbo.de>, 2004-2006.
 # Jochen Skulj <jochen@jochenskulj.de>, 2006-2009.
-# Hendrik Richter <hendrikr@gnome.org>, 2006, 2007, 2008, 2009.
+# Hendrik Richter <hendrikr@gnome.org>, 2006-2009.
 # Andre Klapper <ak-47@gmx.net>, 2008.
-# Mario Blättermann <mariobl@gnome.org>, 2009, 2010.
-#
-# This translation is a fork of Tomboy.
+# Mario Blättermann <mariobl@gnome.org>, 2009-2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&component=general\n"
-"POT-Creation-Date: 2010-02-26 10:17+0000\n"
-"PO-Revision-Date: 2010-02-26 21:27+0100\n"
+"POT-Creation-Date: 2010-12-30 20:44+0000\n"
+"PO-Revision-Date: 2011-01-04 16:46+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -47,12 +48,12 @@ msgid "_About"
 msgstr "_Info"
 
 #: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:208
-#: ../src/tray.cpp:468
+#: ../src/tray.cpp:466
 msgid "_Help"
 msgstr "_Hilfe"
 
 #: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:205
-#: ../src/tray.cpp:463
+#: ../src/tray.cpp:461
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
@@ -201,9 +202,9 @@ msgid ""
 "If true, misspellings will be underlined in red, and correct spelling "
 "suggestions shown in the right-click menu."
 msgstr ""
-"Wenn diese Option auf »true« gesetzt ist, werden Fehler in der Rechtschreibung "
-"werden rot unterstrichen und bei einem Rechtsklick darauf wird ein Vorschlag "
-"zur Korrektur angezeigt."
+"Wenn diese Option auf »true« gesetzt ist, werden Fehler in der "
+"Rechtschreibung werden rot unterstrichen und bei einem Rechtsklick darauf "
+"wird ein Vorschlag zur Korrektur angezeigt."
 
 #: ../data/gnote.schemas.in.h:27
 msgid ""
@@ -211,9 +212,10 @@ msgid ""
 "will be enabled, allowing for useful Gnote actions to be available from any "
 "application."
 msgstr ""
-"Wenn diese Option auf »WAHR« gesetzt ist, werden die globalen Tastenbelegungen "
-"aktiviert, welche in »/apps/gnote/global_keybindings« definiert sind. Dies "
-"ermöglicht nützliche Tomboy-Aktionen aus jeder Anwendung heraus."
+"Wenn diese Option auf »WAHR« gesetzt ist, werden die globalen "
+"Tastenbelegungen aktiviert, welche in »/apps/gnote/global_keybindings« "
+"definiert sind. Dies ermöglicht nützliche Tomboy-Aktionen aus jeder Anwendung "
+"heraus."
 
 #: ../data/gnote.schemas.in.h:28
 msgid ""
@@ -249,12 +251,6 @@ msgstr ""
 "mit der Konfliktsituation umgegangen werden soll."
 
 #: ../data/gnote.schemas.in.h:31
-#| msgid ""
-#| "Integer value indicating if there is a preference to always perform a "
-#| "specific behavior when a conflict is detected, instead of prompting the "
-#| "user. The values map to an internal enumeration. 0 indicates that the user "
-#| "wishes to be prompted when a conflict occurs, so that they may handle each "
-#| "conflict situation on a case-by-case basis."
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -387,11 +383,11 @@ msgid ""
 "string \"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Die globale Tastenbelegung zum Erstellen und Anzeigen einer neuen Notiz. Das "
-"Format sieht zum Beispiel wie »&lt;Control&gt;a« oder »&lt;Shift&gt;&lt;Alt&gt;"
-"F1« aus. Dabei werden auch Groß- und Kleinschreibung sowie Abkürzungen wie "
-"»&lt;Ctl&gt;« und »&lt;Ctrl&gt;« berücksichtigt. Wenn diese Option mit der "
-"speziellen Zeichenkette »disabled« belegt wird, gibt es keine Tastenbelegung "
-"für diese Aktion."
+"Format sieht zum Beispiel wie »&lt;Control&gt;a« oder »&lt;Shift&gt;&lt;"
+"Alt&gt;F1« aus. Dabei werden auch Groß- und Kleinschreibung sowie Abkürzungen "
+"wie »&lt;Ctl&gt;« und »&lt;Ctrl&gt;« berücksichtigt. Wenn diese Option mit "
+"der speziellen Zeichenkette »disabled« belegt wird, gibt es keine "
+"Tastenbelegung für diese Aktion."
 
 #: ../data/gnote.schemas.in.h:57
 msgid ""
@@ -433,10 +429,10 @@ msgid ""
 msgstr ""
 "Die globale Tastenbelegung für den Dialog zum Anzeigen der letzten "
 "Änderungen. Das Format sieht zum Beispiel wie »&lt;Control&gt;a« oder »&lt;"
-"Shift&gt;&lt;Alt&gt;F1« aus. Dabei werden auch Groß- und Kleinschreibung sowie "
-"Abkürzungen wie »&lt;Ctl&gt;« und »&lt;Ctrl&gt;« berücksichtigt. Wenn diese "
-"Option mit der speziellen Zeichenkette »disabled« belegt wird, gibt es keine "
-"Tastenbelegung für diese Aktion."
+"Shift&gt;&lt;Alt&gt;F1« aus. Dabei werden auch Groß- und Kleinschreibung "
+"sowie Abkürzungen wie »&lt;Ctl&gt;« und »&lt;Ctrl&gt;« berücksichtigt. Wenn "
+"diese Option mit der speziellen Zeichenkette »disabled« belegt wird, gibt es "
+"keine Tastenbelegung für diese Aktion."
 
 #: ../data/gnote.schemas.in.h:60
 msgid ""
@@ -479,10 +475,10 @@ msgid ""
 "Export Linked Notes' setting and is used to specify whether all notes (found "
 "recursively) should be included during an export to HTML."
 msgstr ""
-"Die letzte Einstellung für das Ankreuzfeld »Verknüpfte Notizen exportieren« im "
-"HTML-Export-Plugin. Diese Einstellung wird in Verbinduung mit der Einstellung "
-"für »HTML-Export: Verknüpfte Notizen« genutzt, um festzulegen, ob alle"
-"(rekursiv gefundenen) Notizen in den Export nach HTML einbezogen werden "
+"Die letzte Einstellung für das Ankreuzfeld »Verknüpfte Notizen exportieren« "
+"im HTML-Export-Plugin. Diese Einstellung wird in Verbinduung mit der "
+"Einstellung für »HTML-Export: Verknüpfte Notizen« genutzt, um festzulegen, ob "
+"alle(rekursiv gefundenen) Notizen in den Export nach HTML einbezogen werden "
 "sollen."
 
 #: ../data/gnote.schemas.in.h:65
@@ -553,13 +549,33 @@ msgstr ""
 "Durch Leerzeichen getrennte Liste von Notiz-Adressen (URIs) für solche "
 "Notizen, die immer im Gnote-Notizenmenü erscheinen sollen."
 
-#: ../src/sharp/addinstreemodel.cpp:64
+#: ../src/sharp/addinstreemodel.cpp:93
 msgid "Name"
 msgstr "Name"
 
-#: ../src/sharp/addinstreemodel.cpp:65
-msgid "Description"
-msgstr "Beschreibung"
+#: ../src/sharp/addinstreemodel.cpp:105
+msgid "Version"
+msgstr "Version"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:138
+msgid "Formatting"
+msgstr "Formatierung"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:141
+msgid "Desktop integration"
+msgstr "Integration in die Arbeitsumgebung"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:144
+msgid "Tools"
+msgstr "Werkzeuge"
+
+#. TRANSLATORS: Addin category is unknown.
+#: ../src/sharp/addinstreemodel.cpp:148
+msgid "Unknown"
+msgstr "Unbekannt"
 
 #: ../src/actionmanager.cpp:170
 msgid "_File"
@@ -597,7 +613,7 @@ msgstr "S_chließen"
 msgid "Close this window"
 msgstr "Dieses Fenster schließen"
 
-#: ../src/actionmanager.cpp:197 ../src/tray.cpp:480
+#: ../src/actionmanager.cpp:197 ../src/tray.cpp:478
 msgid "_Quit"
 msgstr "_Beenden"
 
@@ -609,7 +625,7 @@ msgstr "Gnote beenden"
 msgid "_Edit"
 msgstr "_Bearbeiten"
 
-#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:88
+#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:89
 msgid "Gnote Preferences"
 msgstr "Gnote-Einstellungen"
 
@@ -649,15 +665,15 @@ msgstr "Notizen abglei_chen"
 msgid "Start synchronizing notes"
 msgstr "Abgleich der Notizen starten"
 
-#: ../src/gnote.cpp:282
+#: ../src/gnote.cpp:278
 msgid "Cannot create new note"
 msgstr "Neue Notiz konnte nicht angelegt werden"
 
-#: ../src/gnote.cpp:329
+#: ../src/gnote.cpp:327
 msgid "and Tomboy original authors."
 msgstr "und die Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:338
+#: ../src/gnote.cpp:336
 msgid "translator-credits"
 msgstr ""
 "Philipp Meier <meier@fnogol.de>\n"
@@ -667,101 +683,103 @@ msgstr ""
 "Andre Klapper <ak-47@gmx.net>\n"
 "Mario Blättermann <mariobl@gnome.org>"
 
-#: ../src/gnote.cpp:346
+#: ../src/gnote.cpp:344
 msgid ""
+"Copyright © 2010 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"Copyright © 2010 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:349
+#: ../src/gnote.cpp:348
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Eine einfache und leicht bedienbare Anwendung für Notizen"
 
-#: ../src/gnote.cpp:360
+#: ../src/gnote.cpp:359
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:429
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Gnote als Applet im GNOME-Panel ausführen."
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:430
 msgid "Specify the path of the directory containing the notes."
 msgstr "Pfad zum Ordner angeben, der die Notizen enthält."
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:430
 msgid "path"
 msgstr "path"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:431
 msgid "Open the search all notes window with the search text."
 msgstr "Fenster zum Durchsuchen aller Notizen öffnen."
 
-#: ../src/gnote.cpp:432 ../src/gnote.cpp:437 ../src/gnote.cpp:438
+#: ../src/gnote.cpp:431 ../src/gnote.cpp:436 ../src/gnote.cpp:437
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:432
 msgid "Print version information."
 msgstr "Versionsinformationen anzeigen."
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:434
 msgid "Create and display a new note, with a optional title."
 msgstr "Eine neue Notiz anlegen und anzeigen, mit einem optionalen Titel."
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:434
 msgid "title"
 msgstr "title"
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:435
 msgid "Display the existing note matching title."
 msgstr "Eine vorhandene Notiz dieses Titels anzeigen."
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:435
 msgid "title/url"
 msgstr "title/url"
 
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:436
 msgid "Display the 'Start Here' note."
 msgstr "Zeigt die »Hier starten«-Notiz an."
 
-#: ../src/gnote.cpp:438
+#: ../src/gnote.cpp:437
 msgid "Search and highlight text in the opened note."
 msgstr "Text in einer geöffneten Notiz suchen und hervorheben."
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:442
 msgid "A note taking application"
 msgstr "Eine Notizzettel-Anwendung"
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:442
 msgid "Gnote options at launch"
 msgstr "Optionen beim Start von Gnote"
 
-#: ../src/gnote.cpp:639
+#: ../src/gnote.cpp:630
 msgid "Version %1%"
 msgstr "Version %1%"
 
-#: ../src/preferencesdialog.cpp:106
+#: ../src/preferencesdialog.cpp:107
 msgid "Editing"
 msgstr "Bearbeiten"
 
-#: ../src/preferencesdialog.cpp:108
+#: ../src/preferencesdialog.cpp:109
 msgid "Hotkeys"
 msgstr "Tastenkombinationen"
 
-#: ../src/preferencesdialog.cpp:113
+#: ../src/preferencesdialog.cpp:114
 msgid "Add-ins"
 msgstr "Add-Ins"
 
-#: ../src/preferencesdialog.cpp:220
+#: ../src/preferencesdialog.cpp:222
 msgid "_Spell check while typing"
 msgstr "_Rechtschreibprüfung während der Eingabe"
 
-#: ../src/preferencesdialog.cpp:226
+#: ../src/preferencesdialog.cpp:228
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -770,11 +788,11 @@ msgstr ""
 "Kontextmenü angezeigt."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:237
+#: ../src/preferencesdialog.cpp:239
 msgid "Highlight _WikiWords"
 msgstr "_WikiWords hervorheben"
 
-#: ../src/preferencesdialog.cpp:243
+#: ../src/preferencesdialog.cpp:245
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -783,37 +801,37 @@ msgstr ""
 "b>. Ein Klick auf das Wort wird eine Notiz mit diesem Namen erstellen."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:250
+#: ../src/preferencesdialog.cpp:252
 msgid "Enable auto-_bulleted lists"
 msgstr "_Automatische Aufzählungslisten aktivieren"
 
-#: ../src/preferencesdialog.cpp:259
+#: ../src/preferencesdialog.cpp:261
 msgid "Use custom _font"
 msgstr "Eigene _Schriftart verwenden"
 
-#: ../src/preferencesdialog.cpp:276
+#: ../src/preferencesdialog.cpp:278
 msgid "When renaming a linked note: "
 msgstr "Wenn eine verknüpfte Notiz umbenannt wird:"
 
-#: ../src/preferencesdialog.cpp:281
+#: ../src/preferencesdialog.cpp:283
 msgid "Ask me what to do"
 msgstr "Immer fragen, was zu tun ist"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:284
 msgid "Never rename links"
 msgstr "Verknüpfungen nie umbenennen"
 
-#: ../src/preferencesdialog.cpp:283
+#: ../src/preferencesdialog.cpp:285
 msgid "Always rename links"
 msgstr "Verknüpfungen immer umbenennen"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:305 ../src/notemanager.cpp:107
+#: ../src/preferencesdialog.cpp:307 ../src/notemanager.cpp:110
 msgid "New Note Template"
 msgstr "Neue Notizbuchvorlage"
 
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:310
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -821,16 +839,16 @@ msgstr ""
 "Verwenden Sie die Vorlage für neue Notizen, um festzulegen, welcher Text beim "
 "Anlegen einer neuen Notiz verwendet werden soll."
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:318
 msgid "Open New Note Template"
 msgstr "Vorlage für neue Notizen öffnen"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:374
+#: ../src/preferencesdialog.cpp:376
 msgid "Listen for _Hotkeys"
 msgstr "_Hotkeys aktivieren"
 
-#: ../src/preferencesdialog.cpp:381
+#: ../src/preferencesdialog.cpp:383
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a keypress. "
 "Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
@@ -840,77 +858,77 @@ msgstr ""
 "Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:401
+#: ../src/preferencesdialog.cpp:403
 msgid "Show notes _menu"
 msgstr "Notiz_menü anzeigen"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:417
+#: ../src/preferencesdialog.cpp:419
 msgid "Open \"_Start Here\""
 msgstr "»Hier _starten« öffnen"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:432
+#: ../src/preferencesdialog.cpp:434
 msgid "Create _new note"
 msgstr "_Neue Notiz anlegen"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:447
+#: ../src/preferencesdialog.cpp:449
 msgid "Open \"Search _All Notes\""
 msgstr "»_Alle Notizen durchsuchen« öffnen"
 
-#: ../src/preferencesdialog.cpp:473
+#: ../src/preferencesdialog.cpp:475
 msgid "Ser_vice:"
 msgstr "_Dienst:"
 
-#: ../src/preferencesdialog.cpp:530
+#: ../src/preferencesdialog.cpp:532
 msgid "Not configurable"
 msgstr "Nicht konfigurierbar"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:550
+#: ../src/preferencesdialog.cpp:552
 msgid "_Advanced..."
 msgstr "_Erweitert …"
 
-#: ../src/preferencesdialog.cpp:597
+#: ../src/preferencesdialog.cpp:599
 msgid "The following add-ins are installed"
 msgstr "Die folgenden Add-Ins sind installiert"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:628
+#: ../src/preferencesdialog.cpp:630
 msgid "_Enable"
 msgstr "_Aktivieren"
 
-#: ../src/preferencesdialog.cpp:634
+#: ../src/preferencesdialog.cpp:636
 msgid "_Disable"
 msgstr "_Deaktivieren"
 
-#: ../src/preferencesdialog.cpp:765
+#: ../src/preferencesdialog.cpp:767
 msgid "Not Implemented"
 msgstr "Nicht implementiert"
 
-#: ../src/preferencesdialog.cpp:779
+#: ../src/preferencesdialog.cpp:781
 msgid "%1% Preferences"
 msgstr "%1%-Einstellungen"
 
-#: ../src/preferencesdialog.cpp:920
+#: ../src/preferencesdialog.cpp:922
 msgid "Choose Note Font"
 msgstr "Schriftart der Notizen auswählen"
 
-#: ../src/preferencesdialog.cpp:1047
+#: ../src/preferencesdialog.cpp:1049
 msgid "Version:"
 msgstr "Version:"
 
-#: ../src/preferencesdialog.cpp:1052
+#: ../src/preferencesdialog.cpp:1054
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:1058
+#: ../src/preferencesdialog.cpp:1060
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/notemanager.cpp:250
+#: ../src/notemanager.cpp:252
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -952,7 +970,7 @@ msgstr ""
 "automatisch unterstrichen wird. Klicken Sie auf diese Verknüpfung, um die "
 "Notiz zu öffnen.</note-content>"
 
-#: ../src/notemanager.cpp:269
+#: ../src/notemanager.cpp:271
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -983,21 +1001,19 @@ msgstr ""
 "content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:284 ../src/notemanager.cpp:336
+#: ../src/notemanager.cpp:286 ../src/notemanager.cpp:338
 msgid "Start Here"
 msgstr "Hier starten"
 
-#: ../src/notemanager.cpp:289
+#: ../src/notemanager.cpp:291
 msgid "Using Links in Gnote"
 msgstr "Verknüpfungen nutzen in Gnote"
 
-#: ../src/notemanager.cpp:494
-msgid "New Note %1%"
-msgstr "Neue Notiz %1%"
+#: ../src/notemanager.cpp:557 ../src/notebooks/notebook.cpp:157
+msgid "New Note"
+msgstr "Neue Notiz"
 
-#. Use a simple "Describe..." body and highlight
-#. it so it can be easily overwritten
-#: ../src/notemanager.cpp:594 ../src/notemanager.cpp:684
+#: ../src/notemanager.cpp:669
 msgid "Describe your new note here."
 msgstr "Beschreiben Sie ihre neue Notiz hier."
 
@@ -1010,7 +1026,6 @@ msgid "_Don't Rename Links"
 msgstr "Verknüpfungen _nicht umbenennen"
 
 #: ../src/noterenamedialog.cpp:157
-#| msgid "_Open Link"
 msgid "_Rename Links"
 msgstr "Verknüpfungen _umbenennen"
 
@@ -1019,12 +1034,10 @@ msgid "Select All"
 msgstr "Alle auswählen"
 
 #: ../src/noterenamedialog.cpp:159
-#| msgid "Select an icon..."
 msgid "Select None"
 msgstr "Nichts auswählen"
 
 #: ../src/noterenamedialog.cpp:160
-#| msgid "Close this window"
 msgid "Always show this _window"
 msgstr "Dieses Fenster immer an_zeigen"
 
@@ -1043,24 +1056,21 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Verknüpfungen in anderen Notizen umbenennen von »<span underline=\"single\">%"
-"1</span>« nach »<span underline=\"single\">%2</span>«?\n"
+"Verknüpfungen in anderen Notizen umbenennen von »<span underline=\"single\">"
+"%1</span>« nach »<span underline=\"single\">%2</span>«?\n"
 "\n"
 "Falls Sie die Verknüpfungen nicht umbennen, werden sie nicht länger "
 "funktionieren."
 
 #: ../src/noterenamedialog.cpp:215
-#| msgid "_Open Link"
 msgid "Rename Links"
 msgstr "Verknüpfungen umbenennen"
 
 #: ../src/noterenamedialog.cpp:230
-#| msgid "Note title taken"
 msgid "Note Title"
 msgstr "Notiztitel"
 
 #: ../src/noterenamedialog.cpp:266
-#| msgid "_Advanced..."
 msgid "Ad_vanced"
 msgstr "Er_weitert"
 
@@ -1201,21 +1211,21 @@ msgid "Font Size"
 msgstr "Schriftgröße"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:68
+#: ../src/note.cpp:69
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "Diese Notiz wirklich löschen?"
 msgstr[1] "Diese %1% Notizen wirklich löschen?"
 
-#: ../src/note.cpp:80
+#: ../src/note.cpp:81
 msgid "If you delete a note it is permanently lost."
 msgstr "Ein gelöschte Notiz ist für immer verloren."
 
-#: ../src/note.cpp:116
+#: ../src/note.cpp:117
 msgid "Error saving note data."
 msgstr "Fehler beim Speichern der Notizdaten."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:118
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1225,66 +1235,66 @@ msgstr ""
 "Ihnen ausreichend Speicherplatz und die notwendigen Zugriffsrechte in ~/."
 "gnote zur Verfügung stehen. Details zu dem Fehler finden Sie in ~/.gnote.log."
 
-#: ../src/recentchanges.cpp:83
+#: ../src/recentchanges.cpp:84
 msgid "Search All Notes"
 msgstr "Alle Notizen durchsuchen"
 
-#: ../src/recentchanges.cpp:88
+#: ../src/recentchanges.cpp:89
 msgid "C_ase Sensitive"
 msgstr "_Groß-/Kleinschreibung berücksichtigen"
 
-#: ../src/recentchanges.cpp:106
+#: ../src/recentchanges.cpp:107
 msgid "_Search:"
 msgstr "_Suchen:"
 
-#: ../src/recentchanges.cpp:270
+#: ../src/recentchanges.cpp:271
 #: ../src/notebooks/notebookapplicationaddin.cpp:120
 msgid "Notebooks"
 msgstr "Notizbücher"
 
-#: ../src/recentchanges.cpp:345
+#: ../src/recentchanges.cpp:348
 msgid "Note"
 msgstr "Notiz"
 
-#: ../src/recentchanges.cpp:366
+#: ../src/recentchanges.cpp:369
 msgid "Last Changed"
 msgstr "Zuletzt geändert"
 
-#: ../src/recentchanges.cpp:510
+#: ../src/recentchanges.cpp:513
 msgid "Matches"
 msgstr "Stimmt überein"
 
-#: ../src/recentchanges.cpp:564
+#: ../src/recentchanges.cpp:567
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "(%1% Treffer)"
 msgstr[1] "(%1% Treffer)"
 
-#: ../src/recentchanges.cpp:578
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Gesamt: %1% Notiz"
 msgstr[1] "Gesamt: %1% Notizen"
 
-#: ../src/recentchanges.cpp:594
+#: ../src/recentchanges.cpp:597
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Treffer: %1% Notiz"
 msgstr[1] "Treffer: %1% Notizen"
 
-#: ../src/recentchanges.cpp:736
+#: ../src/recentchanges.cpp:739
 msgid "Notes"
 msgstr "Notizen"
 
-#: ../src/tray.cpp:50
+#: ../src/tray.cpp:51
 msgid "Take notes"
 msgstr "Notizen aufnehmen"
 
-#: ../src/tray.cpp:161
+#: ../src/tray.cpp:162
 msgid " (new)"
 msgstr " (neu)"
 
-#: ../src/tray.cpp:473
+#: ../src/tray.cpp:471
 msgid "_About Gnote"
 msgstr "_Info zu Gnote"
 
@@ -1300,38 +1310,45 @@ msgstr ""
 msgid "Help not found"
 msgstr "Hilfe wurde nicht gefunden"
 
-#: ../src/utils.cpp:178
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "Ort kann nicht geöffnet werden"
 
-#: ../src/utils.cpp:192
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
 msgstr "Heute, %1%"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "Heute"
 
-#: ../src/utils.cpp:198
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
 msgstr "Gestern, %1%"
 
-#: ../src/utils.cpp:199
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "Gestern"
 
-#: ../src/utils.cpp:206
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "Vor %1% Tag, %2%"
 msgstr[1] "Vor %1% Tagen, %2%"
 
-#: ../src/utils.cpp:210
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "vor %1% Tag"
 msgstr[1] "vor %1% Tagen"
 
+#. TRANSLATORS: argument is time.
 #: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "Morgen, %1%"
@@ -1340,27 +1357,31 @@ msgstr "Morgen, %1%"
 msgid "Tomorrow"
 msgstr "Morgen"
 
-#: ../src/utils.cpp:225
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "In %1% Tag, %2%"
 msgstr[1] "In %1% Tagen, %2%"
 
-#: ../src/utils.cpp:229
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "In %1% Tag"
 msgstr[1] "In %1% Tagen"
 
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "Kein Datum"
 
-#: ../src/watchers.cpp:208
+#: ../src/watchers.cpp:209
 msgid "(Untitled %1%)"
 msgstr "(Unbenannt %1%)"
 
-#: ../src/watchers.cpp:243
+#: ../src/watchers.cpp:244
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -1368,15 +1389,15 @@ msgstr ""
 "Es gibt bereits eine Notiz mit dem Titel <b>%1%</b>. Bitte wählen Sie einen "
 "anderen Namen für diese Notiz."
 
-#: ../src/watchers.cpp:257
+#: ../src/watchers.cpp:258
 msgid "Note title taken"
 msgstr "Titel der Notiz übernommen"
 
-#: ../src/watchers.cpp:576
+#: ../src/watchers.cpp:593
 msgid "_Copy Link Address"
 msgstr "Link-Adresse _kopieren"
 
-#: ../src/watchers.cpp:582
+#: ../src/watchers.cpp:599
 msgid "_Open Link"
 msgstr "Link ö_ffnen"
 
@@ -1408,15 +1429,15 @@ msgstr "_Anlegen"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:86
+#: ../src/notebooks/notebook.cpp:87
 msgid "%1% Notebook Template"
 msgstr "Notizbuch-Vorlage %1%"
 
-#: ../src/notebooks/notebook.cpp:169
+#: ../src/notebooks/notebook.cpp:204
 msgid "All Notes"
 msgstr "Alle Notizen"
 
-#: ../src/notebooks/notebook.cpp:181
+#: ../src/notebooks/notebook.cpp:216
 msgid "Unfiled Notes"
 msgstr "Nicht zugeordnete Notizen"
 
@@ -1458,11 +1479,11 @@ msgstr "Notiz_buch löschen"
 msgid "Delete the selected notebook"
 msgstr "Das ausgewählte Notizbuch löschen"
 
-#: ../src/notebooks/notebookmanager.cpp:334
+#: ../src/notebooks/notebookmanager.cpp:338
 msgid "Really delete this notebook?"
 msgstr "Dieses Notizbuch wirklich löschen?"
 
-#: ../src/notebooks/notebookmanager.cpp:335
+#: ../src/notebooks/notebookmanager.cpp:339
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1471,54 +1492,54 @@ msgstr ""
 "aber nicht länger diesem Notizbuch zugeordnet. Diese Aktion kann nicht "
 "rückgängig gemacht werden."
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:38
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
 msgid "New \"%1%\" Note"
 msgstr "Neue Notiz »%1%«"
 
-#: ../src/notebooks/notebookmenuitem.cpp:34
+#: ../src/notebooks/notebookmenuitem.cpp:35
 msgid "No notebook"
 msgstr "Kein Notizbuch"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:82
+#: ../src/notebooks/notebooknoteaddin.cpp:83
 msgid "Place this note into a notebook"
 msgstr "Diese Notiz in einem Notizbuch ablegen"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:169
+#: ../src/notebooks/notebooknoteaddin.cpp:165
 msgid "Notebook"
 msgstr "Notizbuch"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:194
+#: ../src/notebooks/notebooknoteaddin.cpp:190
 msgid "_New notebook..."
 msgstr "Neues Notiz_buch …"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
 msgid "Backlinks"
 msgstr "Backlinks"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
 msgid "See which notes link to the one you're currently viewing."
 msgstr ""
 "Anzeigen der Notizen, deren Links auf die gegenwärtig betrachtete Notiz "
 "verweisen."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:55
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere und das Tomboy-Projekt"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
 msgid "What links here?"
 msgstr "Was verweist hierauf?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
 msgid "(none)"
 msgstr " (kein)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:56
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
 msgid "Bugzilla Links"
 msgstr "Bugzilla-Links"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to it."
@@ -1527,14 +1548,14 @@ msgstr ""
 "Gnote-Notiz zu ziehen. Die Bug-Nummer wird als Link in Form eines kleinen "
 "Symbols daneben dargestellt."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere und das Tomboy-Projekt"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:59
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:61
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -1543,46 +1564,46 @@ msgstr ""
 "Notizen verwenden. Falls Sie ein bestimmtes, vom Bugzilla-Rechnernamen "
 "abhängiges Symbol verwenden wollen, können Sie es hier ańgeben."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:76
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:78
 msgid "Host Name"
 msgstr "Rechnername"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:89
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:91
 msgid "Icon"
 msgstr "Symbol"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:223
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:225
 msgid "Select an icon..."
 msgstr "Symbol wählen …"
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:238
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:240
 msgid "_Host name:"
 msgstr "_Rechnername:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:272
 msgid "Host name invalid"
 msgstr "Ungültiger Rechnername"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:271
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Sie müssen den mit diesem Symbol zu verwendenden Bugzilla-Rechnernamen "
 "angeben."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:292
 msgid "Error saving icon"
 msgstr "Fehler beim Speichern desSymbols"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:291
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
 msgid "Could not save the icon file."
 msgstr "Symboldatei konnte nicht gespeichert werden."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:365
 msgid "Really remove this icon?"
 msgstr "Dieses Symbol wirklich löschen?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:364
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
 msgid "If you remove an icon it is permanently lost."
 msgstr "Ein gelöschtes Symbol ist für immer verloren."
 
@@ -1598,48 +1619,48 @@ msgstr "Verknüpfte Notizen exportieren"
 msgid "Include all other linked notes"
 msgstr "Alle anderen verknüpften Notizen einschließen"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
 msgid "Export to HTML"
 msgstr "HTML exportieren"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
 msgid "Exports individual notes to HTML."
 msgstr "Individuelle Notizen in HTML exportieren."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
 msgid "Your note was exported to \"%1%\"."
 msgstr "Ihre Notiz wurde nach »%1%« exportiert."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 msgid "Note exported successfully"
 msgstr "Notizen wurden erfolgreich exportiert"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:185
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Datei »%s« konnte nicht gespeichert werden."
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
 msgid "Fixed Wid_th"
 msgstr "Feste _Breite"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
 msgid "Fixed Width"
 msgstr "Feste Breite"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
 msgid "Adds fixed-width font style."
 msgstr "Fügt eine Schrift fester Breite hinzu."
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:47
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:80
 msgid "Insert Timestamp"
 msgstr "Zeitstempel einfügen"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:51
 msgid "Inserts current date and time at the cursor position."
 msgstr "Fügt die aktuelle Zeit und das Datum an der Position des Cursors ein."
 
@@ -1664,31 +1685,31 @@ msgstr "Vorlage »Heute:«"
 msgid "Today: "
 msgstr "Heute:"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+#: ../src/addins/noteoftheday/noteoftheday.cpp:158
 msgid "Tasks"
 msgstr "Aufgaben"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:161
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
 msgid "Appointments"
 msgstr "Termine"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:167
+#: ../src/addins/noteoftheday/noteoftheday.cpp:165
 msgid "%A, %B %d %Y"
 msgstr "%A, %d. %B %Y"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:43
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
 msgstr "Notiz des Tages"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:47
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
 "Legt automatisch eine »Heute:«-Notiz zum einfachen Festhalten alltäglicher "
 "Gedanken an"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:52
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray und das Tomboy-Projekt"
 
@@ -1704,93 +1725,99 @@ msgstr ""
 "Ändern Sie die Notiz <span weight=\"bold\">Vorlage »Heute:«</span>, um den "
 "Text neuer »Heute:«-Notizen anzupassen."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
 msgid "Printing Support"
 msgstr "Druckunterstützung"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
 msgid "Allows you to print a note."
 msgstr "Ermöglicht Ihnen das Drucken einer Notiz."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
 msgid "Print"
 msgstr "Drucken"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:133
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
 msgid "Error printing note"
 msgstr "Fehler beim Drucken der Notiz."
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:297
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
 msgid "Page %1% of %2%"
 msgstr "Seite %1% von %2%"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
 msgstr "Import aus dem Klebezettel-Applet"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Importieren Ihrer Notizen aus dem Klebezettel-Applet."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:112
 msgid "Import from Sticky Notes"
 msgstr "Import aus dem Klebezettel-Applet"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:241
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:242
 msgid "No Sticky Notes found"
 msgstr "Keine Klebezettel gefunden"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:244
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "Es wurde keine nutzbare Klebezettel-Datei in »%1%« gefunden."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:252
 msgid "Sticky Notes import completed"
 msgstr "Import aus dem Klebezettel-Applet ist abgeschlossen"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:254
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "<b>%1%</b> von <b>%2%</b> Klebezetteln wurden erfolgreich importiert."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:273
 msgid "Untitled"
 msgstr "Unbenannt"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:319
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:320
 msgid "Sticky Note: "
 msgstr "Klebezettel:"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
 msgid "Tomboy Importer"
 msgstr "Tomboy-Import"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
 msgid "Import your notes from Tomboy."
 msgstr "Importieren Ihrer Notizen aus Tomboy."
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:34
+#: ../src/addins/underline/underlinemenuitem.cpp:35
 msgid "_Underline"
 msgstr "_Unterstreichen"
 
 #. this is the name of the plugin.
-#: ../src/addins/underline/underlinenoteaddin.cpp:47
+#: ../src/addins/underline/underlinenoteaddin.cpp:49
 msgid "Underline"
 msgstr "Unterstreichen"
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:51
+#: ../src/addins/underline/underlinenoteaddin.cpp:53
 msgid "Adds ability to underline text."
 msgstr "Fügt die Möglichkeit zum Unterstreichen von Text hinzu."
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:55
+#: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière und das Tomboy-Projekt"
+
+#~ msgid "Description"
+#~ msgstr "Beschreibung"
+
+#~ msgid "New Note %1%"
+#~ msgstr "Neue Notiz %1%"
 
 #~ msgid "Copyright © 2009 Hubert Figuiere"
 #~ msgstr "Copyright © 2009 Hubert Figuiere"
