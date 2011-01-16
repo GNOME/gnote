@@ -533,10 +533,7 @@ namespace gnote {
 
   bool TrayIcon::on_size_changed(int size)
   {
-    if(size < 24) {
-      size = 22;
-    }
-    else if(size < 32) {
+    if(size < 32) {
       size = 24;
     }
     else if(size < 48) {
