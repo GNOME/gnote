@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 10:56+0300\n"
-"PO-Revision-Date: 2010-06-24 11:32+0200\n"
+"POT-Creation-Date: 2011-01-23 22:46+0200\n"
+"PO-Revision-Date: 2011-01-23 22:47+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,12 +38,12 @@ msgid "_About"
 msgstr "על _אודות"
 
 #: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:208
-#: ../src/tray.cpp:468
+#: ../src/tray.cpp:466
 msgid "_Help"
 msgstr "_עזרה"
 
 #: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:205
-#: ../src/tray.cpp:463
+#: ../src/tray.cpp:461
 msgid "_Preferences"
 msgstr "ה_עדפות"
 
@@ -522,13 +522,33 @@ msgstr ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
 
-#: ../src/sharp/addinstreemodel.cpp:64
+#: ../src/sharp/addinstreemodel.cpp:93
 msgid "Name"
 msgstr "שם"
 
-#: ../src/sharp/addinstreemodel.cpp:65
-msgid "Description"
-msgstr "תיאור"
+#: ../src/sharp/addinstreemodel.cpp:105
+msgid "Version"
+msgstr "גרסה"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:138
+msgid "Formatting"
+msgstr "עיצוב"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:141
+msgid "Desktop integration"
+msgstr "שילוב בשולחן העבודה"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:144
+msgid "Tools"
+msgstr "כלים"
+
+#. TRANSLATORS: Addin category is unknown.
+#: ../src/sharp/addinstreemodel.cpp:148
+msgid "Unknown"
+msgstr "בלתי ידוע"
 
 #: ../src/actionmanager.cpp:170
 msgid "_File"
@@ -566,7 +586,7 @@ msgstr "_סגירה"
 msgid "Close this window"
 msgstr "סגירת חלון זה"
 
-#: ../src/actionmanager.cpp:197 ../src/tray.cpp:480
+#: ../src/actionmanager.cpp:197 ../src/tray.cpp:478
 msgid "_Quit"
 msgstr "י_ציאה"
 
@@ -578,7 +598,7 @@ msgstr "יציאה מ־Gnote"
 msgid "_Edit"
 msgstr "ע_ריכה"
 
-#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:88
+#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:89
 msgid "Gnote Preferences"
 msgstr "העדפות Gnote"
 
@@ -618,15 +638,15 @@ msgstr "_סנכרון פתקיות"
 msgid "Start synchronizing notes"
 msgstr "התחלת סנכרון פתקיות"
 
-#: ../src/gnote.cpp:282
+#: ../src/gnote.cpp:278
 msgid "Cannot create new note"
 msgstr "לא ניתן ליצור פתקית חדשה"
 
-#: ../src/gnote.cpp:331
+#: ../src/gnote.cpp:327
 msgid "and Tomboy original authors."
 msgstr "והיוצרים המקוריים של Tomboy."
 
-#: ../src/gnote.cpp:340
+#: ../src/gnote.cpp:336
 msgid "translator-credits"
 msgstr ""
 "יאיר הרשקוביץ <yairhr@gmail.com>\n"
@@ -636,112 +656,114 @@ msgstr ""
 "פרוייקט תרגום GNOME לעברית:\n"
 "‏http://gnome-il.berlios.de"
 
-#: ../src/gnote.cpp:348
+#: ../src/gnote.cpp:344
 msgid ""
+"Copyright © 2010 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"Copyright © 2010 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 היוצרים המקוריים של Tomboy."
 
-#: ../src/gnote.cpp:351
+#: ../src/gnote.cpp:348
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "יישום פתקיות שולחן עבודה פשוט וקל לשימוש."
 
-#: ../src/gnote.cpp:362
+#: ../src/gnote.cpp:359
 msgid "Homepage"
 msgstr "דף הבית"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:429
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Run Gnote as a GNOME panel applet."
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:430
 msgid "Specify the path of the directory containing the notes."
 msgstr "Specify the path of the directory containing the notes."
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:430
 msgid "path"
 msgstr "path"
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:431
 msgid "Open the search all notes window with the search text."
 msgstr "Open the search all notes window with the search text."
 
-#: ../src/gnote.cpp:434 ../src/gnote.cpp:439 ../src/gnote.cpp:440
+#: ../src/gnote.cpp:431 ../src/gnote.cpp:436 ../src/gnote.cpp:437
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:432
 msgid "Print version information."
 msgstr "Print version information."
 
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:434
 msgid "Create and display a new note, with a optional title."
 msgstr "Create and display a new note, with a optional title."
 
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:434
 msgid "title"
 msgstr "title"
 
-#: ../src/gnote.cpp:438
+#: ../src/gnote.cpp:435
 msgid "Display the existing note matching title."
 msgstr "Display the existing note matching title."
 
-#: ../src/gnote.cpp:438
+#: ../src/gnote.cpp:435
 msgid "title/url"
 msgstr "title/url"
 
-#: ../src/gnote.cpp:439
+#: ../src/gnote.cpp:436
 msgid "Display the 'Start Here' note."
 msgstr "Display the 'Start Here' note."
 
-#: ../src/gnote.cpp:440
+#: ../src/gnote.cpp:437
 msgid "Search and highlight text in the opened note."
 msgstr "Search and highlight text in the opened note."
 
-#: ../src/gnote.cpp:445
+#: ../src/gnote.cpp:442
 msgid "A note taking application"
 msgstr "יישום ליצירת פתקיות"
 
-#: ../src/gnote.cpp:445
+#: ../src/gnote.cpp:442
 msgid "Gnote options at launch"
 msgstr "Gnote options at launch"
 
-#: ../src/gnote.cpp:641
+#: ../src/gnote.cpp:630
 msgid "Version %1%"
 msgstr "Version %1%"
 
-#: ../src/preferencesdialog.cpp:106
+#: ../src/preferencesdialog.cpp:107
 msgid "Editing"
 msgstr "עריכה"
 
-#: ../src/preferencesdialog.cpp:108
+#: ../src/preferencesdialog.cpp:109
 msgid "Hotkeys"
 msgstr "מקשים חמים"
 
-#: ../src/preferencesdialog.cpp:113
+#: ../src/preferencesdialog.cpp:114
 msgid "Add-ins"
 msgstr "תוספים"
 
-#: ../src/preferencesdialog.cpp:220
+#: ../src/preferencesdialog.cpp:222
 msgid "_Spell check while typing"
 msgstr "ביצוע בדיקת _איות בזמן הקלדה"
 
-#: ../src/preferencesdialog.cpp:226
+#: ../src/preferencesdialog.cpp:228
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
 msgstr "שגיאות כתיב יסומנו בקו תחתון אדום, עם הצעות תיקון שיוצגו בתפריט התוכן."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:237
+#: ../src/preferencesdialog.cpp:239
 msgid "Highlight _WikiWords"
 msgstr "הדגשת מילות _ויקי"
 
-#: ../src/preferencesdialog.cpp:243
+#: ../src/preferencesdialog.cpp:245
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -750,53 +772,53 @@ msgstr ""
 "<b>NoSpaceFirstLetterIsCapital</b>. לחיצה על המילה תיצור פתקית בשם זהה."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:250
+#: ../src/preferencesdialog.cpp:252
 msgid "Enable auto-_bulleted lists"
 msgstr "אפשור רשימות _תבליטים אוטומטיות"
 
-#: ../src/preferencesdialog.cpp:259
+#: ../src/preferencesdialog.cpp:261
 msgid "Use custom _font"
 msgstr "שימוש _בגופן מותאם אישית"
 
-#: ../src/preferencesdialog.cpp:276
+#: ../src/preferencesdialog.cpp:278
 msgid "When renaming a linked note: "
 msgstr "בעת שינוי שם של פתקית מקושרת:"
 
-#: ../src/preferencesdialog.cpp:281
+#: ../src/preferencesdialog.cpp:283
 msgid "Ask me what to do"
 msgstr "הצגת שאלה מה לעשות"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:284
 msgid "Never rename links"
 msgstr "לא לשנות את שמות הקישורים"
 
-#: ../src/preferencesdialog.cpp:283
+#: ../src/preferencesdialog.cpp:285
 msgid "Always rename links"
 msgstr "תמיד לשנות את שמות הקישורים"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:305 ../src/notemanager.cpp:107
+#: ../src/preferencesdialog.cpp:307 ../src/notemanager.cpp:110
 msgid "New Note Template"
 msgstr "פתקית תבנית חדשה"
 
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:310
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr ""
 "ניתן להשתמש בתבנית הפתקית החדשה עבור טקסט ברירת המחדל בעת יצירת פתקית חדשה."
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:318
 msgid "Open New Note Template"
 msgstr "פתיחת תבנית של פתקית חדשה"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:374
+#: ../src/preferencesdialog.cpp:376
 msgid "Listen for _Hotkeys"
 msgstr "האזנה למקשים _חמים"
 
-#: ../src/preferencesdialog.cpp:381
+#: ../src/preferencesdialog.cpp:383
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -806,77 +828,77 @@ msgstr ""
 "לדוגמה: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:401
+#: ../src/preferencesdialog.cpp:403
 msgid "Show notes _menu"
 msgstr "הצגת _תפריט הפתקיות"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:417
+#: ../src/preferencesdialog.cpp:419
 msgid "Open \"_Start Here\""
 msgstr "פתיחת \"ה_התחלה כאן\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:432
+#: ../src/preferencesdialog.cpp:434
 msgid "Create _new note"
 msgstr "יצירת _פתקית חדשה"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:447
+#: ../src/preferencesdialog.cpp:449
 msgid "Open \"Search _All Notes\""
 msgstr "פתיחת \"חיפוש ב_כול הפתקיות\""
 
-#: ../src/preferencesdialog.cpp:473
+#: ../src/preferencesdialog.cpp:475
 msgid "Ser_vice:"
 msgstr "_שירות:"
 
-#: ../src/preferencesdialog.cpp:530
+#: ../src/preferencesdialog.cpp:532
 msgid "Not configurable"
 msgstr "לא ניתן לשינוי"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:550
+#: ../src/preferencesdialog.cpp:552
 msgid "_Advanced..."
 msgstr "מ_תקדם..."
 
-#: ../src/preferencesdialog.cpp:597
+#: ../src/preferencesdialog.cpp:599
 msgid "The following add-ins are installed"
 msgstr "התוספים הבאים מותקנים"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:628
+#: ../src/preferencesdialog.cpp:630
 msgid "_Enable"
 msgstr "ה_פעלה"
 
-#: ../src/preferencesdialog.cpp:634
+#: ../src/preferencesdialog.cpp:636
 msgid "_Disable"
 msgstr "_כיבוי"
 
-#: ../src/preferencesdialog.cpp:765
+#: ../src/preferencesdialog.cpp:767
 msgid "Not Implemented"
 msgstr "לא ממומש"
 
-#: ../src/preferencesdialog.cpp:779
+#: ../src/preferencesdialog.cpp:781
 msgid "%1% Preferences"
 msgstr "העדפות %1%"
 
-#: ../src/preferencesdialog.cpp:920
+#: ../src/preferencesdialog.cpp:922
 msgid "Choose Note Font"
 msgstr "בחירת שם גופן"
 
-#: ../src/preferencesdialog.cpp:1047
+#: ../src/preferencesdialog.cpp:1049
 msgid "Version:"
 msgstr "גרסה:"
 
-#: ../src/preferencesdialog.cpp:1052
+#: ../src/preferencesdialog.cpp:1054
 msgid "Author:"
 msgstr "יוצר:"
 
-#: ../src/preferencesdialog.cpp:1058
+#: ../src/preferencesdialog.cpp:1060
 msgid "Copyright:"
 msgstr "זכויות יוצרים:"
 
-#: ../src/notemanager.cpp:250
+#: ../src/notemanager.cpp:252
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -917,7 +939,7 @@ msgstr ""
 "internal> מופיע קו תחתי באופן אוטומטי.  יש ללחוץ על הקישור כדי לפתוח את "
 "הפתקית.</note-content>"
 
-#: ../src/notemanager.cpp:269
+#: ../src/notemanager.cpp:271
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -945,21 +967,19 @@ msgstr ""
 "זאת.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:284 ../src/notemanager.cpp:336
+#: ../src/notemanager.cpp:286 ../src/notemanager.cpp:338
 msgid "Start Here"
 msgstr "ההתחלה כאן"
 
-#: ../src/notemanager.cpp:289
+#: ../src/notemanager.cpp:291
 msgid "Using Links in Gnote"
 msgstr "שימוש בקישורים ב־Gnote"
 
-#: ../src/notemanager.cpp:494
-msgid "New Note %1%"
-msgstr "פתקית חדשה %1%"
+#: ../src/notemanager.cpp:557 ../src/notebooks/notebook.cpp:157
+msgid "New Note"
+msgstr "פתקית חדשה"
 
-#. Use a simple "Describe..." body and highlight
-#. it so it can be easily overwritten
-#: ../src/notemanager.cpp:594 ../src/notemanager.cpp:684
+#: ../src/notemanager.cpp:669
 msgid "Describe your new note here."
 msgstr "יש לתאר את הפתקית החדשה כאן."
 
@@ -1156,21 +1176,21 @@ msgid "Font Size"
 msgstr "גודל גופן"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:68
+#: ../src/note.cpp:69
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "האם באמת למחוק פתקית זו?"
 msgstr[1] "האם באמת למחוק %1% פתקיות אלו?"
 
-#: ../src/note.cpp:80
+#: ../src/note.cpp:81
 msgid "If you delete a note it is permanently lost."
 msgstr "אם הפתקית תימחק היא תאבד לתמיד."
 
-#: ../src/note.cpp:116
+#: ../src/note.cpp:117
 msgid "Error saving note data."
 msgstr "שגיאה בשמירת נתוני הפתקית."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:118
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1179,66 +1199,66 @@ msgstr ""
 "ארעה שגיאה במהלך שמירת הפתקיות שלך. נא לבדוק שיש מספיק מקום בכונן, ושיש "
 "הרשאות מספיקות ב־gnote./~. ניתן למצוא את פרטי השגיאה תחת ‎~/.gnote.log."
 
-#: ../src/recentchanges.cpp:83
+#: ../src/recentchanges.cpp:84
 msgid "Search All Notes"
 msgstr "חיפוש בכל הפתקיות"
 
-#: ../src/recentchanges.cpp:88
+#: ../src/recentchanges.cpp:89
 msgid "C_ase Sensitive"
 msgstr "תלוי רי_שיות"
 
-#: ../src/recentchanges.cpp:106
+#: ../src/recentchanges.cpp:107
 msgid "_Search:"
 msgstr "_חיפוש:"
 
-#: ../src/recentchanges.cpp:270
+#: ../src/recentchanges.cpp:271
 #: ../src/notebooks/notebookapplicationaddin.cpp:120
 msgid "Notebooks"
 msgstr "פנקסים"
 
-#: ../src/recentchanges.cpp:345
+#: ../src/recentchanges.cpp:348
 msgid "Note"
 msgstr "פתקית"
 
-#: ../src/recentchanges.cpp:366
+#: ../src/recentchanges.cpp:369
 msgid "Last Changed"
 msgstr "שונה לאחרונה"
 
-#: ../src/recentchanges.cpp:510
+#: ../src/recentchanges.cpp:513
 msgid "Matches"
 msgstr "התאמות"
 
-#: ../src/recentchanges.cpp:564
+#: ../src/recentchanges.cpp:567
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% התאמות"
 msgstr[1] "%1% התאמות"
 
-#: ../src/recentchanges.cpp:578
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "סך הכל: פתקית אחת"
 msgstr[1] "סך הכל: %1% פתקיות"
 
-#: ../src/recentchanges.cpp:594
+#: ../src/recentchanges.cpp:597
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "התאמות: פתקית אחת"
 msgstr[1] "התאמות: %1% פתקיות"
 
-#: ../src/recentchanges.cpp:736
+#: ../src/recentchanges.cpp:739
 msgid "Notes"
 msgstr "פתקיות"
 
-#: ../src/tray.cpp:50
+#: ../src/tray.cpp:51
 msgid "Take notes"
 msgstr "רישום פתקיות"
 
-#: ../src/tray.cpp:161
+#: ../src/tray.cpp:162
 msgid " (new)"
 msgstr " (חדש)"
 
-#: ../src/tray.cpp:473
+#: ../src/tray.cpp:471
 msgid "_About Gnote"
 msgstr "על _אודות Gnote"
 
@@ -1252,38 +1272,45 @@ msgstr "\"המדריך של Gnote\" לא נמצא. נא לוודא שההתקנ�
 msgid "Help not found"
 msgstr "לא נמצאה עזרה"
 
-#: ../src/utils.cpp:178
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "לא ניתן לפתוח את המיקום"
 
-#: ../src/utils.cpp:192
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
 msgstr "היום, %1%"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "היום"
 
-#: ../src/utils.cpp:198
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
 msgstr "אתמול, %1%"
 
-#: ../src/utils.cpp:199
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "אתמול"
 
-#: ../src/utils.cpp:206
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "אתמול, %2%"
 msgstr[1] "לפני %1% ימים, %2%"
 
-#: ../src/utils.cpp:210
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "אתמול"
 msgstr[1] "לפני %1% ימים"
 
+#. TRANSLATORS: argument is time.
 #: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "מחר, %1%"
@@ -1292,41 +1319,45 @@ msgstr "מחר, %1%"
 msgid "Tomorrow"
 msgstr "מחר"
 
-#: ../src/utils.cpp:225
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "בעוד יום אחד, %2%"
 msgstr[1] "בעוד %1% ימים, %2%"
 
-#: ../src/utils.cpp:229
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "בעוד יום אחד"
 msgstr[1] "בעוד %1% ימים"
 
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "אין תאריך"
 
-#: ../src/watchers.cpp:208
+#: ../src/watchers.cpp:209
 msgid "(Untitled %1%)"
 msgstr "(ללא שם %1%)"
 
-#: ../src/watchers.cpp:243
+#: ../src/watchers.cpp:244
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr "פתקית בשם <b>%1%</b> כבר קיימת. נא לבחור שם אחר."
 
-#: ../src/watchers.cpp:257
+#: ../src/watchers.cpp:258
 msgid "Note title taken"
 msgstr "שם הפתקית תפוס"
 
-#: ../src/watchers.cpp:576
+#: ../src/watchers.cpp:593
 msgid "_Copy Link Address"
 msgstr "ה_עתקת מיקום הקישור"
 
-#: ../src/watchers.cpp:582
+#: ../src/watchers.cpp:599
 msgid "_Open Link"
 msgstr "_פתיחת קישור"
 
@@ -1358,15 +1389,15 @@ msgstr "י_צירה"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:86
+#: ../src/notebooks/notebook.cpp:87
 msgid "%1% Notebook Template"
 msgstr "תבנית פתקית %1%"
 
-#: ../src/notebooks/notebook.cpp:169
+#: ../src/notebooks/notebook.cpp:204
 msgid "All Notes"
 msgstr "כל הפתקיות"
 
-#: ../src/notebooks/notebook.cpp:181
+#: ../src/notebooks/notebook.cpp:216
 msgid "Unfiled Notes"
 msgstr "פתקיות ריקות"
 
@@ -1408,11 +1439,11 @@ msgstr "מחיקת פנ_קס"
 msgid "Delete the selected notebook"
 msgstr "מחיקת את הפנקס הנבחר"
 
-#: ../src/notebooks/notebookmanager.cpp:334
+#: ../src/notebooks/notebookmanager.cpp:338
 msgid "Really delete this notebook?"
 msgstr "באמת למחוק את פנקס זה?"
 
-#: ../src/notebooks/notebookmanager.cpp:335
+#: ../src/notebooks/notebookmanager.cpp:339
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1420,52 +1451,52 @@ msgstr ""
 "הפתקיות ששייכות לפנקס זה לא ימחקו, אבל הן לא ישויכו יותר לפנקס זה. לא ניתן "
 "לבטל פעולה זאת."
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:38
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
 msgid "New \"%1%\" Note"
 msgstr "פתקית \"%1%\" חדשה"
 
-#: ../src/notebooks/notebookmenuitem.cpp:34
+#: ../src/notebooks/notebookmenuitem.cpp:35
 msgid "No notebook"
 msgstr "אין פנקס"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:82
+#: ../src/notebooks/notebooknoteaddin.cpp:83
 msgid "Place this note into a notebook"
 msgstr "מיקום פתקית זו בפנקס"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:169
+#: ../src/notebooks/notebooknoteaddin.cpp:165
 msgid "Notebook"
 msgstr "פנקס"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:194
+#: ../src/notebooks/notebooknoteaddin.cpp:190
 msgid "_New notebook..."
 msgstr "פנקס _חדש..."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
 msgid "Backlinks"
 msgstr "קישור מפנה"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
 msgid "See which notes link to the one you're currently viewing."
 msgstr "צפייה בפתקיות המקשרות לפתקית שאתה כרגע צופה בה."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:55
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere ומיזם Tomboy"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
 msgid "What links here?"
 msgstr "מה מקושר לכאן?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
 msgid "(none)"
 msgstr "(כלום)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:56
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
 msgid "Bugzilla Links"
 msgstr "קישורי Bugzilla"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -1474,14 +1505,14 @@ msgstr ""
 "מאפשר לך לגרור כתובות מערכות ניהול באגים (Bugzilla) מהדפדפן של ישר לתוך "
 "פתקית של Gnote. מספר הבאג יוכנס כקישור ולידו סמל קטן של באג לידה."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere and the Tomboy Project"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:59
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:61
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -1489,45 +1520,45 @@ msgstr ""
 "תוכל להשתמש בכל מערכת ניהול באגים על ידי גרירת הקישורים אל הפתקים. אם ברצונך "
 "בסמל מיוחד עבור מארחים מסוימים, הוסף אותם כאן."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:76
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:78
 msgid "Host Name"
 msgstr "שם מארח"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:89
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:91
 msgid "Icon"
 msgstr "סמל"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:223
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:225
 msgid "Select an icon..."
 msgstr "בחר סמל..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:238
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:240
 msgid "_Host name:"
 msgstr "שם _מארח:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:272
 msgid "Host name invalid"
 msgstr "שם מארח לא תקין"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:271
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "עליך לציין את שם מארח תקין למערכת ניהול הבאגים (Bugzilla) לשימוש עם סמל זה."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:292
 msgid "Error saving icon"
 msgstr "שגיאה בשמירת סמל"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:291
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
 msgid "Could not save the icon file."
 msgstr "לא ניתן לשמור את קובץ הסמל."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:365
 msgid "Really remove this icon?"
 msgstr "להסיר את סמל זה?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:364
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
 msgid "If you remove an icon it is permanently lost."
 msgstr "אם הסמל יוסר הוא יאבד לתמיד."
 
@@ -1543,48 +1574,48 @@ msgstr "ייצא פתקיות מקושרות"
 msgid "Include all other linked notes"
 msgstr "כלול את כל הפתקיות המקושרות"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
 msgid "Export to HTML"
 msgstr "ייצוא ל־HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
 msgid "Exports individual notes to HTML."
 msgstr "מייצא פתקיות בודדות ל־HTML."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
 msgid "Your note was exported to \"%1%\"."
 msgstr "הפתקית שלך יוצאה ל־\"%1%\"."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 msgid "Note exported successfully"
 msgstr "הפתקית יוצאה בהצלחה"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:185
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "לא ניתן לשמור את הקובץ \"%s\""
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
 msgid "Fixed Wid_th"
 msgstr "רו_חב קבוע"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
 msgid "Fixed Width"
 msgstr "רוחב קבוע"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
 msgid "Adds fixed-width font style."
 msgstr "הוספת סגנון גופן בעל רוחב קבוע."
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:47
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:80
 msgid "Insert Timestamp"
 msgstr "הוספת חותמת זמן"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:51
 msgid "Inserts current date and time at the cursor position."
 msgstr "הוספת התאריך והשעה במיקום האחרון של סמן העבר."
 
@@ -1622,16 +1653,16 @@ msgstr "פגישות"
 msgid "%A, %B %d %Y"
 msgstr "%A, %B %d %Y"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:43
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
 msgstr "פתקית היום"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:47
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr "יצירת פתקית \"היום\" באופן אוטומטי לרישום הגיגי היום יום בקלות"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:52
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray ומיזם Tomboy"
 
@@ -1647,93 +1678,99 @@ msgstr ""
 "ניתן לשנות את הפתקית <span weight=\"bold\">תבנית היום:</span> כדי להתאים את "
 "הטקסט שמופיע בפתקיות היום חדשות."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
 msgid "Printing Support"
 msgstr "תמיכה בהדפסה"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
 msgid "Allows you to print a note."
 msgstr "מאפשר לך להדפיס פתקית."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
 msgid "Print"
 msgstr "הדפסה"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:133
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
 msgid "Error printing note"
 msgstr "שגיאה בהדפסת הפתקית"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:297
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
 msgid "Page %1% of %2%"
 msgstr "עמוד %1% מתוך %2%"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
 msgstr "מייבא פתקיות דביקות"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "ייבא את פתקיות שלך מיישומון הפתקיות הדביקות."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:112
 msgid "Import from Sticky Notes"
 msgstr "ייבא מפתקיות דביקות"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:241
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:242
 msgid "No Sticky Notes found"
 msgstr "לא נמצאו פתקיות דביקות"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:244
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "לא נמצא קובץ פתקיות דביקות ראוי ב־\"%1%\"."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:252
 msgid "Sticky Notes import completed"
 msgstr "ייבוא פתקיות דביקות הסתיים"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:254
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "‏<b>%1%</b> מתוך <b>%2%</b> פתקיות דביקות יובאו בהצלחה."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:273
 msgid "Untitled"
 msgstr "ללא שם"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:319
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:320
 msgid "Sticky Note: "
 msgstr "פתקית דביקה: "
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
 msgid "Tomboy Importer"
 msgstr "ייבוא מ־Tomboy."
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
 msgid "Import your notes from Tomboy."
 msgstr "ייבוא הפתקיות שלך מ־Tomboy."
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:34
+#: ../src/addins/underline/underlinemenuitem.cpp:35
 msgid "_Underline"
 msgstr "קו _תחתון"
 
 #. this is the name of the plugin.
-#: ../src/addins/underline/underlinenoteaddin.cpp:47
+#: ../src/addins/underline/underlinenoteaddin.cpp:49
 msgid "Underline"
 msgstr "קו תחתון"
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:51
+#: ../src/addins/underline/underlinenoteaddin.cpp:53
 msgid "Adds ability to underline text."
 msgstr "הוספת היכולת להוסיף קו תחתון לטקסט."
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:55
+#: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière ומיזם Tomboy"
+
+#~ msgid "Description"
+#~ msgstr "תיאור"
+
+#~ msgid "New Note %1%"
+#~ msgstr "פתקית חדשה %1%"
 
 #~ msgid "_Fixed Width"
 #~ msgstr "רוחב _קבוע"
