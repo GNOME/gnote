@@ -40,6 +40,15 @@ namespace gnote {
 #define NUM_INDENT_BULLETS 3
   const gunichar NoteBuffer::s_indent_bullets[NUM_INDENT_BULLETS] = { 0x2022, 0x2218, 0x2023 };
 
+  bool NoteBuffer::is_bullet(gunichar c)
+  {
+    for (int i = 0; i < NUM_INDENT_BULLETS; ++i)
+      if (c == s_indent_bullets[i])
+        return true;
+
+    return false;
+  }
+
   bool NoteBuffer::get_enable_auto_bulleted_lists() const
   {
     return Preferences::obj().get<bool>(Preferences::ENABLE_AUTO_BULLETED_LISTS);

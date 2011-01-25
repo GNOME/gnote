@@ -107,7 +107,7 @@ public:
   void increase_depth(Gtk::TextIter & start);
   void decrease_depth(Gtk::TextIter & start);
   DepthNoteTag::Ptr find_depth_tag(Gtk::TextIter &);
-
+  static bool is_bullet(gunichar c);
 protected: 
   NoteBuffer(const NoteTagTable::Ptr &, Note &);
 
