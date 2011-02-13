@@ -144,7 +144,7 @@ namespace gnote {
         {
           return m_buffer;
         }
-      const std::string text() const
+      const Glib::ustring text() const
         {
           return start().get_text(end());
         }
