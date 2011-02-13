@@ -155,8 +155,8 @@ void BacklinksNoteAddin::update_menu()
 void BacklinksNoteAddin::get_backlink_menu_items(std::list<BacklinkMenuItem*> & items)
 {
   std::string search_title = get_note()->get_title();
-  std::string encoded_title 
-    = gnote::utils::XmlEncoder::encode(sharp::string_to_lower(search_title));
+  std::string encoded_title = sharp::string_trim(
+      gnote::utils::XmlEncoder::encode(sharp::string_to_lower(search_title)));
 
   // Go through each note looking for
   // notes that link to this one.
