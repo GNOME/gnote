@@ -249,41 +249,52 @@ namespace gnote {
   // Apply active_tags to inserted text
   void NoteBuffer::text_insert_event(const Gtk::TextIter & pos, const Glib::ustring & text, int bytes)
   {
-    // Only apply active tags when typing, not on paste.
-    if (text.size() == 1) {
-      Gtk::TextIter insert_start(pos);
-      insert_start.backward_chars (text.size());
-
-      m_undomanager->freeze_undo();
-      Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = insert_start.get_tags();
-      for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
-          tag_iter != tag_list.end(); ++tag_iter) {
-        remove_tag(*tag_iter, insert_start, pos);
-      }
-
-      for(std::list<Glib::RefPtr<Gtk::TextTag> >::const_iterator iter = m_active_tags.begin();
-          iter != m_active_tags.end(); ++iter) {
-        apply_tag(*iter, insert_start, pos);
-      }
-      m_undomanager->thaw_undo();
+    // Check for bullet paste
+    if(text.size() == 2 && is_bullet(text[0])) {
+      signal_change_text_depth(pos.get_line(), true);
     }
+    else {
+      // Only apply active tags when typing, not on paste.
+      if (text.size() == 1) {
+        Gtk::TextIter insert_start(pos);
+        insert_start.backward_chars (text.size());
 
-    // See if we want to change the direction of the bullet
-    Gtk::TextIter line_start(pos);
-    line_start.set_line_offset(0);
+        m_undomanager->freeze_undo();
+        Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = insert_start.get_tags();
+        for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
+            tag_iter != tag_list.end(); ++tag_iter) {
+          remove_tag(*tag_iter, insert_start, pos);
+        }
 
-    if (((pos.get_line_offset() - text.size()) == 2) &&
-        find_depth_tag(line_start)) {
-      Pango::Direction direction = Pango::DIRECTION_LTR;
-
-      if (text.size() > 0) {
-        direction = Pango::Direction(pango_unichar_direction(text[0]));
+        for(std::list<Glib::RefPtr<Gtk::TextTag> >::const_iterator iter = m_active_tags.begin();
+            iter != m_active_tags.end(); ++iter) {
+          apply_tag(*iter, insert_start, pos);
+        }
+        m_undomanager->thaw_undo();
       }
-      change_bullet_direction(pos, direction);
-    }
+      else {
+        DepthNoteTag::Ptr depth_tag;
+        Gtk::TextIter line_start(pos);
+        line_start.backward_chars(text.size());
+        if(line_start.get_line_offset() == 2) {
+          line_start.set_line_offset(0);
+          depth_tag = find_depth_tag(line_start);
+        }
 
-    // TODO make sure these are the right params
-    signal_insert_text_with_tags(pos, text, bytes);
+        if(depth_tag) {
+          Pango::Direction direction = Pango::DIRECTION_LTR;
+          if(text.size() > 0) {
+            direction = Pango::Direction(pango_unichar_direction(text[0]));
+          }
+          change_bullet_direction(pos, direction);
+          for(int i = 0; i < depth_tag->get_depth(); ++i) {
+            signal_change_text_depth(line_start.get_line(), true);
+          }
+        }
+      }
+
+      signal_insert_text_with_tags(pos, text, bytes);
+    }
   }
 
 
