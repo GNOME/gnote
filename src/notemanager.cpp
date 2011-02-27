@@ -614,17 +614,13 @@ namespace gnote {
     return new_note;
   }
 
-  /// <summary>
-  /// Get the existing template note or create a new one
-  /// if it doesn't already exist.
-  /// </summary>
-  /// <returns>
-  /// A <see cref="Note"/>
-  /// </returns>
-  Note::Ptr NoteManager::get_or_create_template_note()
+  Note::Ptr NoteManager::find_template_note() const
   {
     Note::Ptr template_note;
-    Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr template_tag = TagManager::obj().get_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    if(!template_tag) {
+      return template_note;
+    }
     std::list<Note*> notes;
     template_tag->get_notes(notes);
     for (std::list<Note*>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
@@ -635,6 +631,19 @@ namespace gnote {
       }
     }
 
+    return template_note;
+  }
+
+  /// <summary>
+  /// Get the existing template note or create a new one
+  /// if it doesn't already exist.
+  /// </summary>
+  /// <returns>
+  /// A <see cref="Note"/>
+  /// </returns>
+  Note::Ptr NoteManager::get_or_create_template_note()
+  {
+    Note::Ptr template_note = find_template_note();
     if (!template_note) {
       std::string title = m_default_note_template_title;
       if (find(title)) {
@@ -651,6 +660,7 @@ namespace gnote {
       buffer->move_mark(buffer->get_insert(), buffer->end());
 
       // Flag this as a template note
+      Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       template_note->add_tag(template_tag);
 
       template_note->queue_save(Note::CONTENT_CHANGED);

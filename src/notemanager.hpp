@@ -87,6 +87,7 @@ namespace gnote {
     // Will ensure the sanity including the unique title.
     Note::Ptr import_note(const std::string & file_path);
     Note::Ptr create_with_guid(const std::string & title, std::string & guid);
+    Note::Ptr find_template_note() const;
     Note::Ptr get_or_create_template_note();
     static std::string get_note_template_content(const std::string & title);
     static std::string split_title_from_content (std::string title, std::string & body);
