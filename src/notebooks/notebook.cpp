@@ -102,12 +102,14 @@ namespace notebooks {
   }
 
 
-  Note::Ptr Notebook::get_template_note() const
+  Note::Ptr Notebook::find_template_note() const
   {
-    NoteManager & noteManager = Gnote::obj().default_note_manager();
     Note::Ptr note;
-    Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    Tag::Ptr notebook_tag = TagManager::obj().get_or_create_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
+    Tag::Ptr template_tag = TagManager::obj().get_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr notebook_tag = TagManager::obj().get_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
+    if(!template_tag || !notebook_tag) {
+      return note;
+    }
     std::list<Note*> notes;
     template_tag->get_notes(notes);
     for (std::list<Note*>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
@@ -116,6 +118,14 @@ namespace notebooks {
         break;
       }
     }
+
+    return note;
+  }
+
+  Note::Ptr Notebook::get_template_note() const
+  {
+    NoteManager & noteManager = Gnote::obj().default_note_manager();
+    Note::Ptr note = find_template_note();
 
     if (!note) {
       std::string title = m_default_template_note_title;
@@ -135,11 +145,13 @@ namespace notebooks {
       buffer->move_mark (buffer->get_insert(), buffer->end());
 
       // Flag this as a template note
+      Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       note->add_tag (template_tag);
 
       // Add on the notebook system tag so Tomboy
       // will persist the tag/notebook across sessions
       // if no other notes are added to the notebook.
+      Tag::Ptr notebook_tag = TagManager::obj().get_or_create_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
       note->add_tag (notebook_tag);
         
       note->queue_save (Note::CONTENT_CHANGED);

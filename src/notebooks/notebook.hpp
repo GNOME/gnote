@@ -48,6 +48,7 @@ public:
   void set_name(const std::string &);
   virtual std::string get_normalized_name() const;
   virtual Tag::Ptr    get_tag() const;
+  Note::Ptr find_template_note() const;
   virtual Note::Ptr   get_template_note() const;
   Note::Ptr create_notebook_note();
   bool contains_note(const Note::Ptr &);
