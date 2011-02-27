@@ -140,9 +140,7 @@ namespace notebooks {
           
       // Select the initial text
       NoteBuffer::Ptr buffer = note->get_buffer();
-      Gtk::TextIter iter = buffer->get_iter_at_line_offset (2, 0);
-      buffer->move_mark (buffer->get_selection_bound(), iter);
-      buffer->move_mark (buffer->get_insert(), buffer->end());
+      buffer->select_note_body();
 
       // Flag this as a template note
       Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
