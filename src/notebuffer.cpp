@@ -1105,6 +1105,15 @@ namespace gnote {
     return depth_tag;
   }
 
+  void NoteBuffer::select_note_body()
+  {
+    Glib::ustring title = m_note.get_title();
+    Gtk::TextIter iter = get_iter_at_offset(title.length());
+    while(isspace(*iter))
+      iter.forward_char();
+    move_mark(get_selection_bound(), iter);
+    move_mark(get_insert(), end());
+  }
 
   std::string NoteBufferArchiver::serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer)
   {
