@@ -549,8 +549,6 @@ namespace gnote {
   Note::Ptr NoteManager::create_new_note (std::string title, const std::string & guid)
   {
     std::string body;
-
-    Note::Ptr template_note = get_or_create_template_note();
     title = split_title_from_content (title, body);
       
     if (title.empty()) {
@@ -558,29 +556,37 @@ namespace gnote {
     }
 
     if (body.empty()) {
+      std::string content = get_note_template_content(title);
+      Note::Ptr new_note = create_new_note (title, content, guid);
+      new_note->get_buffer()->select_note_body();
       // Use the body from the template note
-      std::string xml_content =
-        sharp::string_replace_first(template_note->xml_content(),
-                                    template_note->get_title(),
-                                    utils::XmlEncoder::encode (title));
-      return create_new_note (title, xml_content, guid);
+      Note::Ptr template_note = find_template_note();
+      if(template_note)
+        replace_body_if_differ(new_note, template_note);
+      return new_note;
     }
-      
+
     Glib::ustring header = title + "\n\n";
     std::string content =
       boost::str(boost::format("<note-content>%1%%2%</note-content>") %
                  utils::XmlEncoder::encode (header) 
                  % utils::XmlEncoder::encode (body));
-    
-    Note::Ptr new_note = create_new_note (title, content, guid);
-    
-    // Select the inital
-    Glib::RefPtr<Gtk::TextBuffer> buffer = new_note->get_buffer();
-    Gtk::TextIter iter = buffer->get_iter_at_offset(header.size());
-    buffer->move_mark (buffer->get_selection_bound(), iter);
-    buffer->move_mark (buffer->get_insert(), buffer->end());
-    
-    return new_note;
+    return create_new_note (title, content, guid);
+  }
+
+  //replace dest body by src one, if the text is different
+  void NoteManager::replace_body_if_differ(Note::Ptr dest, const Note::Ptr src)
+  {
+    std::string dest_body = sharp::string_trim(sharp::string_replace_first(dest->text_content(),
+                                                                           dest->get_title(), ""));
+    std::string src_body = sharp::string_trim(sharp::string_replace_first(src->text_content(),
+                                                                          src->get_title(), ""));
+    if(dest_body != src_body) {
+      std::string xml_content = sharp::string_replace_first(src->xml_content(),
+        sharp::string_trim(utils::XmlEncoder::encode(src->get_title())),
+        sharp::string_trim(utils::XmlEncoder::encode(dest->get_title())));
+      dest->set_xml_content(xml_content);
+    }
   }
 
   // Create a new note with the specified Xml content
