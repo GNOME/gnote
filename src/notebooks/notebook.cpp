@@ -162,19 +162,12 @@ namespace notebooks {
 
   Note::Ptr Notebook::create_notebook_note()
   {
-    std::string temp_title;
-    Note::Ptr template_note = get_template_note();
+    Note::Ptr template_note = find_template_note();
     NoteManager & note_manager = Gnote::obj().default_note_manager();
 
-    temp_title = note_manager.get_unique_name (_("New Note"), note_manager.get_notes().size());
-
-    // Grab the template body
-    std::string xml_content =
-        sharp::string_replace_first(template_note->xml_content(),
-                                    template_note->get_title(),
-                                    utils::XmlEncoder::encode (temp_title));
-
-    Note::Ptr note = note_manager.create (temp_title, xml_content);
+    Note::Ptr note = note_manager.create();
+    if(template_note)
+      NoteManager::replace_body_if_differ(note, template_note);
 
     // Add the notebook tag
     note->add_tag (m_tag);
