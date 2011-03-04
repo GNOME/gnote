@@ -30,6 +30,7 @@
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/separatortoolitem.h>
+#include <gtkmm/separatormenuitem.h>
 
 #include "libtomboy/tomboyutil.h"
 #include "debug.hpp"
