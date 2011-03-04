@@ -162,7 +162,6 @@ private:
   Note                        & m_note;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::Toolbar                 *m_toolbar;
-  Gtk::Tooltips                *m_toolbar_tips;
   Gtk::ToolButton              *m_link_button;
   NoteTextMenu                 *m_text_menu;
   Gtk::Menu                    *m_plugin_menu;
