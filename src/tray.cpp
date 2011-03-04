@@ -28,6 +28,7 @@
 #include <gtkmm/box.h>
 #include <gtkmm/main.h>
 #include <gtkmm/menuitem.h>
+#include <gtkmm/separatormenuitem.h>
 #include <gtkmm/stock.h>
 
 
