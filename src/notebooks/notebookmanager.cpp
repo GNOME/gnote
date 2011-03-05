@@ -47,7 +47,7 @@ namespace gnote {
      m_sortedNotebooks = Gtk::TreeModelSort::create (m_notebooks);
      m_sortedNotebooks->set_sort_func (
        0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
-     m_sortedNotebooks->set_sort_column_id (0, Gtk::SORT_ASCENDING);
+     m_sortedNotebooks->set_sort_column (0, Gtk::SORT_ASCENDING);
       
      m_filteredNotebooks = Gtk::TreeModelFilter::create (m_sortedNotebooks);
      m_filteredNotebooks->set_visible_func(
