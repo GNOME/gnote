@@ -137,7 +137,7 @@ namespace gnote {
     get_buffer()->remove_tag (m_title_tag, get_title_end(), end);
       
     //In the case of large copy and paste operations, show the end of the block
-    get_window()->editor()->scroll_mark_onscreen (get_buffer()->get_insert());
+    get_window()->editor()->scroll_to (get_buffer()->get_insert());
   }
   
 
