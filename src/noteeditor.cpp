@@ -47,7 +47,7 @@ namespace gnote {
                                                                 this);
 
     // Make sure the cursor position is visible
-    scroll_mark_onscreen (buffer->get_insert());
+    scroll_to (buffer->get_insert());
 
     // Set Font from GConf preference
     if (Preferences::obj().get<bool>(Preferences::ENABLE_CUSTOM_FONT)) {
@@ -243,21 +243,21 @@ namespace gnote {
           else {
             ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->add_new_line (false);
           }          
-          scroll_mark_onscreen (get_buffer()->get_insert());
+          scroll_to (get_buffer()->get_insert());
         }
         break;
       case GDK_KEY_Tab:
         ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->add_tab ();
-        scroll_mark_onscreen (get_buffer()->get_insert());
+        scroll_to (get_buffer()->get_insert());
         break;
       case GDK_KEY_ISO_Left_Tab:
         ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->remove_tab ();
-        scroll_mark_onscreen (get_buffer()->get_insert());
+        scroll_to (get_buffer()->get_insert());
         break;
       case GDK_KEY_Delete:
         if (Gdk::SHIFT_MASK != (ev->state & Gdk::SHIFT_MASK)) {
           ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->delete_key_handler();
-          scroll_mark_onscreen (get_buffer()->get_insert());
+          scroll_to (get_buffer()->get_insert());
         }
         break;
       case GDK_KEY_BackSpace:
