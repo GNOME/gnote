@@ -167,7 +167,7 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
   set_default_response(Gtk::RESPONSE_CANCEL);
   set_border_width(10);
 
-  Gtk::VBox * const vbox = get_vbox();
+  Gtk::Box * const vbox = get_vbox();
 
   add_action_widget(m_rename_button, Gtk::RESPONSE_YES);
   add_action_widget(m_dont_rename_button, Gtk::RESPONSE_NO);
