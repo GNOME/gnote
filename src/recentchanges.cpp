@@ -360,7 +360,7 @@ namespace gnote {
     static_cast<Gtk::CellRendererText*>(renderer)->property_ellipsize() = Pango::ELLIPSIZE_END;
     title->pack_start (*renderer, true);
     title->add_attribute (*renderer, "text", 1 /* title */);
-    title->set_sort_column_id(1); /* title */
+    title->set_sort_column(1); /* title */
     title->set_sort_indicator(false);
     title->set_reorderable(false);
     title->set_sort_order(Gtk::SORT_ASCENDING);
@@ -376,7 +376,7 @@ namespace gnote {
     renderer->property_xalign() = 1.0;
     change->pack_start (*renderer, false);
     change->add_attribute (*renderer, "text", 2 /* change date */);
-    change->set_sort_column_id(2); /* change date */
+    change->set_sort_column(2); /* change date */
     change->set_sort_indicator(false);
     change->set_reorderable(false);
     change->set_sort_order(Gtk::SORT_DESCENDING);
@@ -428,7 +428,7 @@ namespace gnote {
     if (sort_column >= 0) {
       // Set the sort column after loading data, since we
       // don't want to resort on every append.
-      m_store_sort->set_sort_column_id (sort_column, sort_type);
+      m_store_sort->set_sort_column(sort_column, sort_type);
     }
 
     // Restore the previous selection
@@ -522,7 +522,7 @@ namespace gnote {
       m_matches_column->set_cell_data_func (
         *renderer,
         sigc::mem_fun(*this, &NoteRecentChanges::matches_column_data_func));
-      m_matches_column->set_sort_column_id(4);
+      m_matches_column->set_sort_column(4);
       m_matches_column->set_sort_indicator(true);
       m_matches_column->set_reorderable(false);
       m_matches_column->set_sort_order(Gtk::SORT_DESCENDING);
@@ -531,7 +531,7 @@ namespace gnote {
                                   sigc::mem_fun(*this, &NoteRecentChanges::compare_search_hits));
 
       m_tree->append_column (*m_matches_column);
-      m_store_sort->set_sort_column_id (4, Gtk::SORT_DESCENDING);
+      m_store_sort->set_sort_column(4, Gtk::SORT_DESCENDING);
     }
   }
 
@@ -544,7 +544,7 @@ namespace gnote {
     m_tree->remove_column (*m_matches_column);
     m_matches_column = NULL;
 
-    m_store_sort->set_sort_column_id (2, Gtk::SORT_DESCENDING);
+    m_store_sort->set_sort_column(2, Gtk::SORT_DESCENDING);
   }
 
 
