@@ -476,7 +476,7 @@ namespace gnote {
         m_current_matches.clear ();
         m_store_filter->refilter ();
         update_total_note_count (m_store_sort->children().size());
-        if (m_tree->is_realized()) {
+        if (m_tree->get_realized()) {
           m_tree->scroll_to_point (0, 0);
         }
         return;
