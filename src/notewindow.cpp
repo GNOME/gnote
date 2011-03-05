@@ -226,7 +226,7 @@ namespace gnote {
   bool NoteWindow::on_key_pressed(GdkEventKey *ev)
   {
     if(ev->keyval == GDK_KEY_Escape) {
-      if (m_find_bar && m_find_bar->is_visible()) {
+      if (m_find_bar && m_find_bar->get_visible()) {
         m_find_bar->hide();
       }
       else if (Preferences::obj().get<bool>(
