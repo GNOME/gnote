@@ -276,7 +276,6 @@ namespace gnote {
       : Gtk::Dialog()
       , m_extra_widget(NULL)
     {
-      set_has_separator(false);
       set_border_width(5);
       set_resizable(false);
       set_title("");
