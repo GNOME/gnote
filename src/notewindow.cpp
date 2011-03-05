@@ -776,7 +776,7 @@ namespace gnote {
     buffer->move_mark(buffer->get_selection_bound(), start);
 
     Gtk::TextView *editor = m_note.get_window()->editor();
-    editor->scroll_mark_onscreen(buffer->get_insert());
+    editor->scroll_to(buffer->get_insert());
   }
 
 
