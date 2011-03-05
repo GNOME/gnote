@@ -749,7 +749,7 @@ namespace gnote {
       if (!group_cycling) {
         activate();
       } 
-      else if (can_focus()) {
+      else if (get_can_focus()) {
         grab_focus();
       }
 
