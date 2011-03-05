@@ -425,7 +425,7 @@ namespace gnote {
       const Note::Ptr & note(*iter);
       // If the note is visible, it will be shown automatically on
       // next startup
-      if (note->has_window() && note->get_window()->is_visible())
+      if (note->has_window() && note->get_window()->get_visible())
           note->set_is_open_on_startup(true);
 
       note->save();
