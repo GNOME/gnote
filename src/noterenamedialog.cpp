@@ -217,7 +217,7 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
     column->add_attribute(*toggle_cell,
                           "active",
                           model_column_record.get_column_selected());
-    column->set_sort_column_id(
+    column->set_sort_column(
               model_column_record.get_column_selected());
     column->set_resizable(true);
     notes_view->append_column(*column);
@@ -229,7 +229,7 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
           new Gtk::TreeViewColumn(
                 _("Note Title"),
                 model_column_record.get_column_title()));
-    column->set_sort_column_id(model_column_record.get_column_title());
+    column->set_sort_column(model_column_record.get_column_title());
     column->set_resizable(true);
     notes_view->append_column(*column);
   }
