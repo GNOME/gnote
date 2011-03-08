@@ -28,9 +28,9 @@ GNOTE_LIBS = libgnote.a $(top_builddir)/libtomboy/libtomboy.la \
 noinst_LIBRARIES = libgnote.a
 bin_PROGRAMS = gnote
 check_PROGRAMS = trietest stringtest notetest dttest uritest filestest \
-	xmlreadertest
+	fileinfotest xmlreadertest
 TESTS = trietest stringtest notetest dttest uritest filestest \
-	xmlreadertest
+	fileinfotest xmlreadertest
 
 
 trietest_SOURCES = test/trietest.cpp \
@@ -47,7 +47,11 @@ stringtest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
 filestest_SOURCES = test/filestest.cpp \
 	sharp/files.cpp
-filestest_LDADD = @BOOST_FILESYSTEM_LIBS@ -lboost_system-mt
+filestest_LDADD = @BOOST_FILESYSTEM_LIBS@ @LIBGLIBMM_LIBS@ -lboost_system-mt
+
+fileinfotest_SOURCES = test/fileinfotest.cpp \
+	sharp/fileinfo.cpp
+fileinfotest_LDADD = @BOOST_FILESYSTEM_LIBS@ @LIBGLIBMM_LIBS@ -lboost_system-mt
 
 uritest_SOURCES = test/uritest.cpp \
 	sharp/string.cpp  sharp/uri.cpp debug.cpp

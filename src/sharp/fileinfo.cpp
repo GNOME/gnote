@@ -23,8 +23,7 @@
  */
 
 
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/convenience.hpp>
+#include <glibmm.h>
 #include "sharp/fileinfo.hpp"
 
 
@@ -42,17 +41,19 @@ namespace sharp {
 
   std::string FileInfo::get_name() const
   {
-#if BOOST_VERSION >= 103600
-    return boost::filesystem::path(m_path).filename();
-#else
-    return boost::filesystem::path(m_path).leaf();
-#endif
+    return Glib::path_get_basename(m_path);
   }
 
 
   std::string FileInfo::get_extension() const
   {
-    return boost::filesystem::extension(m_path);
+    const std::string & name = get_name();
+
+    if ("." == name || ".." == name)
+      return "";
+
+    const std::string::size_type pos = name.find_last_of('.');
+    return (std::string::npos == pos) ? "" : std::string(name, pos);
   }
 
 

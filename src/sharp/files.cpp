@@ -24,7 +24,7 @@
 
 #include <boost/version.hpp>
 #include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/convenience.hpp>
+#include <glibmm.h>
 
 #include "files.hpp"
 
@@ -34,30 +34,28 @@ namespace sharp {
 
   bool file_exists(const std::string & file)
   {
-    boost::filesystem::path p(file);
-    // is_regular_file isn't in 1.34. is_regular is deprecated.
-    return (exists(p) && is_regular(p));
+    return Glib::file_test(file, Glib::FILE_TEST_EXISTS)
+           && Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR);
   }
 
 
   std::string file_basename(const std::string & p)
   {
-#if BOOST_VERSION >= 103600
-    return boost::filesystem::path(p).stem();
-#else
-    return boost::filesystem::basename(boost::filesystem::path(p));
-#endif
+    const std::string & filename = Glib::path_get_basename(p);
+    const std::string::size_type pos = filename.find_last_of('.');
+
+    return std::string(filename, 0, pos);
   }
 
   std::string file_dirname(const std::string & p)
   {
-    return boost::filesystem::path(p).branch_path().string();
+    return Glib::path_get_dirname(p);
   }
 
 
   std::string file_filename(const std::string & p)
   {
-    return boost::filesystem::path(p).leaf();
+    return Glib::path_get_basename(p);
   }
 
   void file_delete(const std::string & p)

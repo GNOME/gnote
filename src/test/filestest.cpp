@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,6 +21,7 @@
 #include <iostream>
 
 #include <boost/test/minimal.hpp>
+#include <glibmm.h>
 
 #include "sharp/files.hpp"
 
@@ -27,10 +29,46 @@ using namespace sharp;
 
 int test_main(int /*argc*/, char ** /*argv*/)
 {
-  std::string path = "/foo/bar/baz.txt";
+  {
+    std::string path = "/foo/bar/baz.txt";
 
-  BOOST_CHECK(file_basename(path) == "baz");
-  BOOST_CHECK(file_dirname(path) == "/foo/bar");
+    BOOST_CHECK(file_basename(path) == "baz");
+    BOOST_CHECK(file_dirname(path) == "/foo/bar");
+    BOOST_CHECK(file_filename(path) == "baz.txt");
+  }
+
+  {
+    std::string path = "/foo/bar/baz";
+
+    BOOST_CHECK(file_basename(path) == "baz");
+    BOOST_CHECK(file_dirname(path) == "/foo/bar");
+    BOOST_CHECK(file_filename(path) == "baz");
+  }
+
+  {
+    std::string path = "/foo/bar/..";
+
+    BOOST_CHECK(file_basename(path) == ".");
+    BOOST_CHECK(file_dirname(path) == "/foo/bar");
+    BOOST_CHECK(file_filename(path) == "..");
+  }
+
+  {
+    std::string path = "/foo/bar/";
+
+    BOOST_CHECK(file_basename(path) == "bar");
+    BOOST_CHECK(file_dirname(path) == "/foo/bar");
+    BOOST_CHECK(file_filename(path) == "bar");
+  }
+
+  {
+    std::string dir = Glib::get_current_dir();
+
+    BOOST_CHECK(file_exists(dir) == false);
+    // Very unlikely to exist.
+    BOOST_CHECK(file_exists(__FILE__ __FILE__) == false);
+    BOOST_CHECK(file_exists(__FILE__) == true);
+  }
 
   return 0;
 }

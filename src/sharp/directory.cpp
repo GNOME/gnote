@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -27,8 +28,10 @@
 #include <boost/filesystem/convenience.hpp>
 #include <boost/filesystem/path.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <glibmm.h>
 
 #include "sharp/directory.hpp"
+#include "sharp/fileinfo.hpp"
 #include "sharp/string.hpp"
 
 namespace sharp {
@@ -38,20 +41,21 @@ namespace sharp {
                                     const std::string & ext,
                                     std::list<std::string> & list)
   {
-    boost::filesystem::path p(dir);
-    
-    if(!exists(p)) {
+    if (!Glib::file_test(dir, Glib::FILE_TEST_EXISTS))
       return;
-    }
-    boost::filesystem::directory_iterator end_itr; 
-    for ( boost::filesystem::directory_iterator itr( p );
-          itr != end_itr;
-          ++itr )
-    {
-      // is_regular() is deprecated but is_regular_file isn't in 1.34.
-      if ( is_regular(*itr) && (ext.empty() || (sharp::string_to_lower(extension(*itr)) == ext)) )
-      {
-        list.push_back(itr->string());
+
+    if (!Glib::file_test(dir, Glib::FILE_TEST_IS_DIR))
+      return;
+
+    Glib::Dir d(dir);
+
+    for (Glib::Dir::iterator itr = d.begin(); itr != d.end(); ++itr) {
+      const sharp::FileInfo file_info(*itr);
+      const std::string & extension = file_info.get_extension();
+
+      if (Glib::file_test(*itr, Glib::FILE_TEST_IS_REGULAR)
+          && (ext.empty() || (sharp::string_to_lower(extension) == ext))) {
+        list.push_back(*itr);
       }
     }
   }
