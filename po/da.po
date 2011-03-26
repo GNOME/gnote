@@ -1,7 +1,7 @@
 # Danish translation for gnote.
-# Copyright (C) 2010 gnotes & Joe Hansen.
+# Copyright (C) 2011 gnotes & Joe Hansen.
 # This file is distributed under the same license as the gnote package.
-# Joe Hansen (joedalton2@yahoo.dk), 2009, 2010.
+# Joe Hansen (joedalton2@yahoo.dk), 2009, 2010, 2011.
 # Korrektur: Torben Grøn Helligsø, 2009, 2010.
 #
 # linked -> forbundne (alternativ sammenkædede)
@@ -9,10 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 12:04+0100\n"
-"PO-Revision-Date: 2010-12-11 23:46+0100\n"
+"POT-Creation-Date: 2011-03-26 14:36+0100\n"
+"PO-Revision-Date: 2011-03-17 23:46+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -535,13 +536,33 @@ msgstr ""
 "Mellemrumssepareret liste over note-uri'er for noter som altid bør fremgå i "
 "notemenuen i Gnote."
 
-#: ../src/sharp/addinstreemodel.cpp:64
+#: ../src/sharp/addinstreemodel.cpp:93
 msgid "Name"
 msgstr "Navn"
 
-#: ../src/sharp/addinstreemodel.cpp:65
-msgid "Description"
-msgstr "Beskrivelse"
+#: ../src/sharp/addinstreemodel.cpp:105
+msgid "Version"
+msgstr "Version"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:138
+msgid "Formatting"
+msgstr "Formatering"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:141
+msgid "Desktop integration"
+msgstr "Skrivebordsintegration"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:144
+msgid "Tools"
+msgstr "Værktøjer"
+
+#. TRANSLATORS: Addin category is unknown.
+#: ../src/sharp/addinstreemodel.cpp:148
+msgid "Unknown"
+msgstr "Ukendt"
 
 #: ../src/actionmanager.cpp:170
 msgid "_File"
@@ -642,19 +663,19 @@ msgstr "og Tomboys oprindelige udviklere."
 #: ../src/gnote.cpp:336
 msgid "translator-credits"
 msgstr ""
-"Joe Hansen <joedalton2@yahoo.dk>, 2009, 2010.\n"
+"Joe Hansen, 2009, 2010, 2011.\n"
 "\n"
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
 #: ../src/gnote.cpp:344
-#, fuzzy
 msgid ""
-"Copyright © 2010 Aurimas Cernius\n"
+"Copyright © 2010-2011 Aurimas Cernius\n"
 "Copyright © 2009-2010 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"Ophavsret © 2010-2011 Aurimas Cernius\n"
 "Ophavsret © 2009-2010 Debarshi Ray\n"
 "Ophavsret © 2009 Hubert Figuiere\n"
 "Ophavsret © 2004-2009 Tomboys oprindelige udviklere."
@@ -792,7 +813,7 @@ msgstr "Omdøb aldrig henvisninger"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:307 ../src/notemanager.cpp:108
+#: ../src/preferencesdialog.cpp:307 ../src/notemanager.cpp:110
 msgid "New Note Template"
 msgstr "Ny noteskabelon"
 
@@ -896,7 +917,7 @@ msgstr "Forfatter:"
 msgid "Copyright:"
 msgstr "Ophavsret:"
 
-#: ../src/notemanager.cpp:250
+#: ../src/notemanager.cpp:252
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -937,7 +958,7 @@ msgstr ""
 "af henvisningeri Gnote</link:internal> så bliver det automatisk "
 "understreget? Klik på henvisningen for at åbne noten.</note-content>"
 
-#: ../src/notemanager.cpp:269
+#: ../src/notemanager.cpp:271
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -966,21 +987,19 @@ msgstr ""
 "automatisk blive forbundet.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:284 ../src/notemanager.cpp:336
+#: ../src/notemanager.cpp:286 ../src/notemanager.cpp:338
 msgid "Start Here"
 msgstr "Start her"
 
-#: ../src/notemanager.cpp:289
+#: ../src/notemanager.cpp:291
 msgid "Using Links in Gnote"
 msgstr "Brug af henvisninger i Gnote"
 
-#: ../src/notemanager.cpp:480
-msgid "New Note %1%"
-msgstr "Ny note %1%"
+#: ../src/notemanager.cpp:555
+msgid "New Note"
+msgstr "Ny note"
 
-#. Use a simple "Describe..." body and highlight
-#. it so it can be easily overwritten
-#: ../src/notemanager.cpp:580 ../src/notemanager.cpp:670
+#: ../src/notemanager.cpp:683
 msgid "Describe your new note here."
 msgstr "Beskriv din nye note her."
 
@@ -1179,21 +1198,21 @@ msgid "Font Size"
 msgstr "Skriftstørrelse"
 
 #. %1% is the number of note.
-#: ../src/note.cpp:68
+#: ../src/note.cpp:69
 msgid "Really delete this note?"
 msgid_plural "Really delete these %1% notes?"
 msgstr[0] "Slet denne note?"
 msgstr[1] "Slet disse %1% noter?"
 
-#: ../src/note.cpp:80
+#: ../src/note.cpp:81
 msgid "If you delete a note it is permanently lost."
 msgstr "Hvis du sletter en note, er den tabt."
 
-#: ../src/note.cpp:116
+#: ../src/note.cpp:117
 msgid "Error saving note data."
 msgstr "Fejl ved gemning af notedata."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:118
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1203,55 +1222,55 @@ msgstr ""
 "med diskplads, og du har de korrekte rettigheder til ~/.gnote. Fejldetaljer "
 "kan ses i ~/.gnote.log."
 
-#: ../src/recentchanges.cpp:83
+#: ../src/recentchanges.cpp:84
 msgid "Search All Notes"
 msgstr "Søg i alle noter"
 
 # versalfølsom
-#: ../src/recentchanges.cpp:88
+#: ../src/recentchanges.cpp:89
 msgid "C_ase Sensitive"
 msgstr "Forskel på store og små bogst_aver"
 
-#: ../src/recentchanges.cpp:106
+#: ../src/recentchanges.cpp:107
 msgid "_Search:"
 msgstr "_Søg:"
 
-#: ../src/recentchanges.cpp:270
+#: ../src/recentchanges.cpp:271
 #: ../src/notebooks/notebookapplicationaddin.cpp:120
 msgid "Notebooks"
 msgstr "Notesbøger"
 
-#: ../src/recentchanges.cpp:345
+#: ../src/recentchanges.cpp:348
 msgid "Note"
 msgstr "Note"
 
-#: ../src/recentchanges.cpp:366
+#: ../src/recentchanges.cpp:369
 msgid "Last Changed"
 msgstr "Sidst ændret"
 
-#: ../src/recentchanges.cpp:510
+#: ../src/recentchanges.cpp:513
 msgid "Matches"
 msgstr "Resultater"
 
-#: ../src/recentchanges.cpp:564
+#: ../src/recentchanges.cpp:567
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% resultat"
 msgstr[1] "%1% resultater"
 
-#: ../src/recentchanges.cpp:578
+#: ../src/recentchanges.cpp:581
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Totalt: %1% note"
 msgstr[1] "Totalt: %1% noter"
 
-#: ../src/recentchanges.cpp:594
+#: ../src/recentchanges.cpp:597
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Resultater: %1% note"
 msgstr[1] "Resultater: %1% noter"
 
-#: ../src/recentchanges.cpp:736
+#: ../src/recentchanges.cpp:739
 msgid "Notes"
 msgstr "Noter"
 
@@ -1398,15 +1417,15 @@ msgstr "_Opret"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:86
+#: ../src/notebooks/notebook.cpp:87
 msgid "%1% Notebook Template"
 msgstr "%1% - notesbogskabelon"
 
-#: ../src/notebooks/notebook.cpp:169
+#: ../src/notebooks/notebook.cpp:207
 msgid "All Notes"
 msgstr "Alle noter"
 
-#: ../src/notebooks/notebook.cpp:181
+#: ../src/notebooks/notebook.cpp:219
 msgid "Unfiled Notes"
 msgstr "Ikke arkiverede noter"
 
@@ -1448,11 +1467,11 @@ msgstr "Slet note_bog"
 msgid "Delete the selected notebook"
 msgstr "Slet den valgte notesbog"
 
-#: ../src/notebooks/notebookmanager.cpp:334
+#: ../src/notebooks/notebookmanager.cpp:338
 msgid "Really delete this notebook?"
 msgstr "Slet denne notesbog?"
 
-#: ../src/notebooks/notebookmanager.cpp:335
+#: ../src/notebooks/notebookmanager.cpp:339
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1460,7 +1479,7 @@ msgstr ""
 "Noterne i denne notesbog vil ikke blive slettet, men de vil ikke længere "
 "være associeret med denne notesbog. Denne handling kan ikke fortrydes."
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:38
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
 msgid "New \"%1%\" Note"
 msgstr "Ny \"%1%\" note"
 
@@ -1778,3 +1797,9 @@ msgstr "Gør det muligt at understrege tekst."
 #: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière og Tomboyprojektet"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivelse"
+
+#~ msgid "New Note %1%"
+#~ msgstr "Ny note %1%"
