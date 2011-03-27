@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -50,12 +51,13 @@ namespace sharp {
     Glib::Dir d(dir);
 
     for (Glib::Dir::iterator itr = d.begin(); itr != d.end(); ++itr) {
-      const sharp::FileInfo file_info(*itr);
+      const std::string file(dir + "/" + *itr);
+      const sharp::FileInfo file_info(file);
       const std::string & extension = file_info.get_extension();
 
-      if (Glib::file_test(*itr, Glib::FILE_TEST_IS_REGULAR)
+      if (Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR)
           && (ext.empty() || (sharp::string_to_lower(extension) == ext))) {
-        list.push_back(*itr);
+        list.push_back(file);
       }
     }
   }
