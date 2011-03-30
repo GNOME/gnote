@@ -26,9 +26,6 @@
 
 
 
-#include <boost/filesystem/convenience.hpp>
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
 #include <glibmm.h>
 
 #include "sharp/directory.hpp"
@@ -69,8 +66,7 @@ namespace sharp {
 
   bool directory_exists(const std::string & dir)
   {
-    boost::filesystem::path p(dir);
-    return (exists(p) && is_directory(p));
+    return Glib::file_test(dir, Glib::FILE_TEST_EXISTS) && Glib::file_test(dir, Glib::FILE_TEST_IS_DIR);
   }
 
   void directory_copy(const Glib::RefPtr<Gio::File> & src,
@@ -113,12 +109,7 @@ namespace sharp {
 
   bool directory_create(const std::string & dir)
   {
-    try {
-      return boost::filesystem::create_directories(dir);
-    }
-    catch(...) {
-    }
-    return false;
+    return Gio::File::create_for_path(dir)->make_directory_with_parents();
   }
 
 }
