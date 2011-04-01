@@ -18,7 +18,7 @@ AM_LDFLAGS=-export-dynamic
 
 GNOTE_LIBS = libgnote.a $(top_builddir)/libtomboy/libtomboy.la \
 	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
-	@GCONF_LIBS@ @BOOST_FILESYSTEM_LIBS@ @BOOST_SYSTEM_LIBS@ \
+	@GCONF_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@PCRE_LIBS@ \
 	@DBUS_LIBS@ \
@@ -47,11 +47,12 @@ stringtest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
 filestest_SOURCES = test/filestest.cpp \
 	sharp/files.cpp
-filestest_LDADD = @BOOST_FILESYSTEM_LIBS@ @LIBGLIBMM_LIBS@ -lboost_system-mt
+filestest_LDADD = @LIBGLIBMM_LIBS@ -lgiomm-2.4
 
 fileinfotest_SOURCES = test/fileinfotest.cpp \
-	sharp/fileinfo.cpp
-fileinfotest_LDADD = @BOOST_FILESYSTEM_LIBS@ @LIBGLIBMM_LIBS@ -lboost_system-mt
+	sharp/fileinfo.cpp \
+	sharp/datetime.cpp
+fileinfotest_LDADD = @LIBGLIBMM_LIBS@ -lgiomm-2.4
 
 uritest_SOURCES = test/uritest.cpp \
 	sharp/string.cpp  sharp/uri.cpp debug.cpp
