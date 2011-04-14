@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,6 +29,9 @@
 #include <gtkmm/toolbar.h>
 #include <gtkmm/toolbutton.h>
 #include <gtkmm/menu.h>
+#include <gtkmm/checkmenuitem.h>
+#include <gtkmm/radiomenuitem.h>
+#include <gtkmm/imagemenuitem.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
