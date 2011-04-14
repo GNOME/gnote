@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +24,6 @@
 
 #include <gtk/gtk.h>
 #include <gtkmm/image.h>
-#include <gtkmm/rc.h>
 
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
