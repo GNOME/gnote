@@ -1,4 +1,5 @@
 /* tomboyutil.c
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2008 Alex Graveley
  *
  * Permission is hereby granted, free of charge, to any person obtaining 
@@ -103,7 +104,7 @@ tomboy_window_move_to_current_workspace (GtkWindow *window)
 	xev.xclient.serial = 0;
 	xev.xclient.send_event = True;
 	xev.xclient.display = GDK_WINDOW_XDISPLAY (gdkwin);
-	xev.xclient.window = GDK_WINDOW_XWINDOW (gdkwin);
+	xev.xclient.window = GDK_WINDOW_XID (gdkwin);
 	xev.xclient.message_type = 
 		gdk_x11_atom_to_xatom_for_display(
 			gdk_drawable_get_display (gdkwin),
@@ -114,7 +115,7 @@ tomboy_window_move_to_current_workspace (GtkWindow *window)
 	xev.xclient.data.l[2] = 0;
 
 	XSendEvent (GDK_WINDOW_XDISPLAY (rootwin),
-		    GDK_WINDOW_XWINDOW (rootwin),
+		    GDK_WINDOW_XID (rootwin),
 		    False,
 		    SubstructureRedirectMask | SubstructureNotifyMask,
 		    &xev);
