@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -29,6 +29,7 @@
 #include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
+#include <gtkmm/separatormenuitem.h>
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
