@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -25,6 +26,7 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/stock.h>
+#include <gtkmm/separatormenuitem.h>
 #include <gtkmm/treeiter.h>
 #include <gtkmm/treemodel.h>
 #include <gtkmm/uimanager.h>
