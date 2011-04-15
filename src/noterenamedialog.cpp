@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -150,7 +151,6 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
                                    const Note::Ptr & renamed_note)
   : Gtk::Dialog(_("Rename Note Links?"),
                 *renamed_note->get_window(),
-                false,
                 false)
   , m_notes_model(Gtk::ListStore::create(ModelColumnRecord()))
   , m_dont_rename_button(_("_Don't Rename Links"), true)
