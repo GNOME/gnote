@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -43,6 +43,7 @@
 #include <gtkmm/treemodelfilter.h>
 #include <gtkmm/treemodelsort.h>
 #include <gtkmm/treepath.h>
+#include <gtkmm/treeview.h>
 
 #include "note.hpp"
 #include "tag.hpp"
