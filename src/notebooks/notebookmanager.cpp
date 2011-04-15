@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -289,8 +289,7 @@ namespace gnote {
       // Prompt the user for the name of a new notebook
       CreateNotebookDialog dialog(parent,
                                   (GtkDialogFlags)(GTK_DIALOG_MODAL
-                                                   | GTK_DIALOG_DESTROY_WITH_PARENT
-                                                   | GTK_DIALOG_NO_SEPARATOR));
+                                                   | GTK_DIALOG_DESTROY_WITH_PARENT));
       
       
       int response = dialog.run ();
