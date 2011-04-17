@@ -401,10 +401,8 @@ namespace gnote {
     , m_keybinder(new GnotePrefsKeybinder(manager, *this))
     , m_context_menu(NULL)
   {
-#if GTK_VERSION_GE(2,16)
     gtk_status_icon_set_tooltip_text(gobj(), 
                                      tray_util_get_tooltip_text().c_str());
-#endif
 
     Gtk::Main::signal_quit().connect(sigc::mem_fun(*this, &TrayIcon::on_exit), 1);
     signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::on_activate));
