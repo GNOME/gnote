@@ -29,8 +29,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
 
 #include <glib.h>
 #include <glibmm/i18n.h>
@@ -198,8 +196,7 @@ namespace gnote {
   // For overriding in test methods.
   bool NoteManager::directory_exists(const std::string & directory) const
   {
-    boost::filesystem::path p(directory);
-    return exists(p) && is_directory(p);
+    return sharp::directory_exists(directory);
   }
 
   // For overriding in test methods.
@@ -438,21 +435,21 @@ namespace gnote {
 
   void NoteManager::delete_note(const Note::Ptr & note)
   {
-    if (boost::filesystem::exists(note->file_path())) {
+    if (sharp::file_exists(note->file_path())) {
       if (!m_backup_dir.empty()) {
-        if (!boost::filesystem::exists(m_backup_dir)) {
-          boost::filesystem::create_directory(m_backup_dir);
+        if (!sharp::directory_exists(m_backup_dir)) {
+          sharp::directory_create(m_backup_dir);
         }
         std::string backup_path 
           = Glib::build_filename(m_backup_dir, sharp::file_filename(note->file_path()));
-          
-        if (boost::filesystem::exists(backup_path))
-          boost::filesystem::remove(backup_path);
 
-        boost::filesystem::rename(note->file_path(), backup_path);
+        if (sharp::file_exists(backup_path))
+          sharp::file_delete(backup_path);
+
+        sharp::file_move(note->file_path(), backup_path);
       } 
       else {
-        boost::filesystem::remove(note->file_path());
+        sharp::file_delete(note->file_path());
       }
     }
 
