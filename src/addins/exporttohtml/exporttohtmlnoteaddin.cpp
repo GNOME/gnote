@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,6 @@
  */
 
 
-#include <boost/filesystem/operations.hpp>
 #include <boost/format.hpp>
 
 #include <libxml/xmlmemory.h>
@@ -30,6 +29,7 @@
 #include <gtkmm/stock.h>
 
 #include "sharp/exception.hpp"
+#include "sharp/files.hpp"
 #include "sharp/streamwriter.hpp"
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
@@ -122,14 +122,8 @@ void ExportToHtmlNoteAddin::export_button_clicked()
   std::string error_message;
 
   try {
-    try {
-      // FIXME: Warn about file existing.  Allow overwrite.
-      boost::filesystem::remove(output_path);
-    } 
-    catch(...)
-    {
-      
-    }
+    // FIXME: Warn about file existing.  Allow overwrite.
+    sharp::file_delete(output_path);
 
     writer.init(output_path);
     write_html_for_note (writer, get_note(), dialog.get_export_linked(), 
@@ -220,7 +214,7 @@ sharp::XslTransform & ExportToHtmlNoteAddin::get_note_xsl()
     s_xsl = new sharp::XslTransform;
     std::string stylesheet_file = DATADIR "/gnote/" STYLESHEET_NAME;
 
-    if (boost::filesystem::exists (stylesheet_file)) {
+    if (sharp::file_exists (stylesheet_file)) {
       DBG_OUT("ExportToHTML: Using user-custom %s file.", STYLESHEET_NAME);
       s_xsl->load(stylesheet_file);
     } 
