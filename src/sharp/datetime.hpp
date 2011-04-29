@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -32,7 +33,7 @@
 
 #include <string>
 
-#include <glib.h>
+#include <glibmm/timeval.h>
 
 namespace sharp {
 
@@ -42,6 +43,7 @@ class DateTime
 public:
   DateTime();
   explicit DateTime(time_t t, glong _usec = 0);
+  explicit DateTime(const Glib::TimeVal & v);
   
   DateTime & add_days(int days);
   DateTime & add_hours(int hours);
@@ -83,9 +85,7 @@ public:
 private:
   // return the string formatted according to strftime
   std::string _to_string(const char * format, struct tm *) const;
-  // implementation detail. really make public if needed.
-  explicit DateTime(const GTimeVal & v);
-  GTimeVal m_date;
+  Glib::TimeVal m_date;
 };
 
 

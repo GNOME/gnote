@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -49,7 +50,7 @@ namespace sharp {
     m_date.tv_usec = _usec;
   }
 
-  DateTime::DateTime(const GTimeVal & v)
+  DateTime::DateTime(const Glib::TimeVal & v)
     : m_date(v)
   {
   }
@@ -125,7 +126,7 @@ namespace sharp {
     if(!is_valid()) {
       return retval;
     }
-    char *  iso8601 = g_time_val_to_iso8601(const_cast<GTimeVal*>(&m_date));
+    char *  iso8601 = g_time_val_to_iso8601(const_cast<Glib::TimeVal*>(&m_date));
     if(iso8601) {
       retval = iso8601;
       if(m_date.tv_usec == 0) {
