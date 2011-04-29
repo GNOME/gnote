@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,6 @@
 #include <boost/format.hpp>
 #include <boost/bind.hpp>
 #include <boost/lexical_cast.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
 #include <boost/algorithm/string/find.hpp>
 
 #include <libxml/parser.h>
@@ -48,6 +46,7 @@
 #include "utils.hpp"
 #include "debug.hpp"
 #include "sharp/exception.hpp"
+#include "sharp/fileinfo.hpp"
 #include "sharp/files.hpp"
 #include "sharp/map.hpp"
 #include "sharp/string.hpp"
@@ -469,7 +468,7 @@ namespace gnote {
                                  NoteManager & manager)
   {
     if (!data->change_date().is_valid()) {
-      sharp::DateTime d(boost::filesystem::last_write_time(filepath));
+      sharp::DateTime d(sharp::file_modification_time(filepath));
       data->set_change_date(d);
     }
     if (!data->create_date().is_valid()) {
@@ -477,7 +476,7 @@ namespace gnote {
         data->create_date() = data->change_date();
       }
       else {
-        sharp::DateTime d(boost::filesystem::last_write_time(filepath));
+        sharp::DateTime d(sharp::file_modification_time(filepath));
         data->create_date() = d;
       }
     }
@@ -1351,24 +1350,24 @@ namespace gnote {
     xml.close ();
 
     try {
-      if (boost::filesystem::exists(_write_file)) {
+      if (sharp::file_exists(_write_file)) {
         std::string backup_path = _write_file + "~";
-        if (boost::filesystem::exists(backup_path)) {
-          boost::filesystem::remove(backup_path);
+        if (sharp::file_exists(backup_path)) {
+          sharp::file_delete(backup_path);
         }
       
         // Backup the to a ~ file, just in case
-        boost::filesystem::rename(_write_file, backup_path);
+        sharp::file_move(_write_file, backup_path);
       
         // Move the temp file to write_file
-        boost::filesystem::rename(tmp_file, _write_file);
+        sharp::file_move(tmp_file, _write_file);
 
         // Delete the ~ file
-        boost::filesystem::remove(backup_path);
+        sharp::file_delete(backup_path);
       } 
       else {
         // Move the temp file to write_file
-        boost::filesystem::rename(tmp_file, _write_file);
+        sharp::file_move(tmp_file, _write_file);
       }
     }
     catch(const std::exception & e)
