@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -24,6 +25,8 @@
 
 
 #include <glibmm.h>
+#include <giomm/file.h>
+#include <giomm/fileinfo.h>
 #include "sharp/fileinfo.hpp"
 
 
@@ -57,4 +60,12 @@ namespace sharp {
   }
 
 
+  DateTime file_modification_time(const std::string &path)
+  {
+    Glib::RefPtr<Gio::FileInfo> file_info = Gio::File::create_for_path(path)->query_info(
+        G_FILE_ATTRIBUTE_TIME_MODIFIED + std::string(",") + G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC);
+    if(file_info)
+      return DateTime(file_info->modification_time());
+    return DateTime();
+  }
 }
