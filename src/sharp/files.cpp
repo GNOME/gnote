@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -22,9 +23,9 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-#include <boost/version.hpp>
-#include <boost/filesystem/operations.hpp>
+#include <glib/gstdio.h>
 #include <glibmm.h>
+#include <giomm/file.h>
 
 #include "files.hpp"
 
@@ -60,18 +61,18 @@ namespace sharp {
 
   void file_delete(const std::string & p)
   {
-    boost::filesystem::remove(p);
+    g_unlink(p.c_str());
   }
 
 
   void file_copy(const std::string & source, const std::string & dest)
   {
-    boost::filesystem::copy_file(source, dest);
+    Gio::File::create_for_path(source)->copy(Gio::File::create_for_path(dest), Gio::FILE_COPY_OVERWRITE);
   }
 
   void file_move(const std::string & from, const std::string & to)
   {
-    boost::filesystem::rename(from, to);
+    g_rename(from.c_str(), to.c_str());
   }
 }
 
