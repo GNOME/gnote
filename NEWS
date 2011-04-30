@@ -1,3 +1,55 @@
+0.7.4 "The 80 YO Mr.Spock" - 2011/04/30
+
+New features:
+
+  * Show addin categories and versions in addin preferences tab (#620402)
+  * Implemented notebook rename (#610194)
+  * Drop dependency on Boost filesystem (#641416)
+  * Require Glibmm  2.18 or newer
+
+Fixes:
+
+  * Do not crash when $XDG_DATA_HOME is absent, create configuration directories as S_IRWXU (#631408)
+  * Fix documentation for creating notebook (#633976)
+  * Instance save addin preferences (#637051)
+  * Use only icons of certain size in tray (#594932)
+  * Do not lose notebook using notebook toolbar button (#585048)
+  * Fix --highlight-search with non-uri --open-note (#608713)
+  * Fix paste of URL part (#633951)
+  * Fix paste of link part (#634026)
+  * Fix template note rename (#627539)
+  * Fix redo with multiline paste and bullets (#588098)
+  * Fix undo with multibyte characters (#641545)
+  * Backlinks doesn't work with newer versions libxml (#638321)
+  * Select new note body selection whith default content (#627073)
+  * Select new notebook note body selection whith default content (#627075)
+  * Fix template note selection on creation (#627418)
+  * Fix notebook template note selection on create (#627417)
+  * Upgrade to newer boost.m4
+  * Add missing #include <config.h> to make translations work (#646051)
+  * Some GTK 3 compilation fixes (without affect to dependencies and behaviour)
+
+Translations:
+
+  * Updated translations:
+    - Arabic (ar)
+    - British English (en_GB)
+    - Catalan (ca)
+    - Czech (cs)
+    - Danish (da)
+    - French (fr)
+    - German (de)
+    - Hebrew (he)
+    - Hungarian (hu)
+    - Korean (ko)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Portuguese Brazil (pt_BR)
+    - Simplified Chinese (zh_CN)
+    - Slovenian (sl)
+    - Spanish (es)
+    - Swedish (sv)
+
 0.7.3 "It is not the age but the base that changes" - 2010/11/04
 
 Fixes:
