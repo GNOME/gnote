@@ -1,15 +1,15 @@
 # gnote ja.po.
-# Copyright (C) 2004-2010 Free Software Foundation, Inc.
+# Copyright (C) 2004-2011 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gote package.
-# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2004-2010.
+# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2004-2011.
 # Satoru SATOH <ss@gnome.gr.jp>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnote master\n"
+"Project-Id-Version: gnote stable-0.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-25 07:28+0900\n"
-"PO-Revision-Date: 2010-10-25 07:28+0900\n"
+"POT-Creation-Date: 2011-05-06 07:48+0900\n"
+"PO-Revision-Date: 2011-05-06 07:48+0900\n"
 "Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -34,17 +34,17 @@ msgstr "Gnote アプレットのファクトリ"
 msgid "Simple and easy to use note-taking"
 msgstr "シンプルで使いやすいデスクトップ・メモのアプリケーションです"
 
-#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:217
+#: ../data/GNOME_GnoteApplet.xml.h:1 ../src/actionmanager.cpp:221
 msgid "_About"
 msgstr "情報(_A)"
 
-#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:208
-#: ../src/tray.cpp:468
+#: ../data/GNOME_GnoteApplet.xml.h:2 ../src/actionmanager.cpp:212
+#: ../src/tray.cpp:467
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:205
-#: ../src/tray.cpp:463
+#: ../data/GNOME_GnoteApplet.xml.h:3 ../src/actionmanager.cpp:209
+#: ../src/tray.cpp:462
 msgid "_Preferences"
 msgstr "設定(_P)"
 
@@ -513,212 +513,234 @@ msgstr ""
 "ホワイトスペース (空白) で区切ったメモの URI の一覧を Gnote のメニューの中に"
 "常に表示します。"
 
-#: ../src/sharp/addinstreemodel.cpp:64
+#: ../src/sharp/addinstreemodel.cpp:93
 msgid "Name"
 msgstr "名前"
 
-#: ../src/sharp/addinstreemodel.cpp:65
-msgid "Description"
-msgstr "説明"
+#: ../src/sharp/addinstreemodel.cpp:105
+msgid "Version"
+msgstr "バージョン"
 
-#: ../src/actionmanager.cpp:170
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:138
+msgid "Formatting"
+msgstr "書式"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:141
+msgid "Desktop integration"
+msgstr "デスクトップの統合"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:144
+msgid "Tools"
+msgstr "ツール"
+
+#. TRANSLATORS: Addin category is unknown.
+#: ../src/sharp/addinstreemodel.cpp:148
+msgid "Unknown"
+msgstr "不明"
+
+#: ../src/actionmanager.cpp:174
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: ../src/actionmanager.cpp:174
+#: ../src/actionmanager.cpp:178
 msgid "_New"
 msgstr "新規(_N)"
 
-#: ../src/actionmanager.cpp:175 ../src/actionmanager.cpp:226
+#: ../src/actionmanager.cpp:179 ../src/actionmanager.cpp:230
 msgid "Create a new note"
 msgstr "新しいメモを作成します"
 
-#: ../src/actionmanager.cpp:180
+#: ../src/actionmanager.cpp:184
 msgid "_Open..."
 msgstr "開く(_O)..."
 
-#: ../src/actionmanager.cpp:180
+#: ../src/actionmanager.cpp:184
 msgid "Open the selected note"
 msgstr "選択したメモを開きます"
 
-#: ../src/actionmanager.cpp:186
+#: ../src/actionmanager.cpp:190
 msgid "_Delete"
 msgstr "削除(_D)"
 
-#: ../src/actionmanager.cpp:186
+#: ../src/actionmanager.cpp:190
 msgid "Delete the selected note"
 msgstr "選択したメモを削除します"
 
-#: ../src/actionmanager.cpp:192 ../src/notewindow.cpp:361
+#: ../src/actionmanager.cpp:196 ../src/notewindow.cpp:365
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: ../src/actionmanager.cpp:192
+#: ../src/actionmanager.cpp:196
 msgid "Close this window"
 msgstr "このウィンドウを閉じます"
 
-#: ../src/actionmanager.cpp:197 ../src/tray.cpp:480
+#: ../src/actionmanager.cpp:201 ../src/tray.cpp:479
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: ../src/actionmanager.cpp:197
+#: ../src/actionmanager.cpp:201
 msgid "Quit Gnote"
 msgstr "Gnote を終了します"
 
-#: ../src/actionmanager.cpp:200
+#: ../src/actionmanager.cpp:204
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../src/actionmanager.cpp:205 ../src/preferencesdialog.cpp:88
+#: ../src/actionmanager.cpp:209 ../src/preferencesdialog.cpp:89
 msgid "Gnote Preferences"
 msgstr "設定"
 
-#: ../src/actionmanager.cpp:212
+#: ../src/actionmanager.cpp:216
 msgid "_Contents"
 msgstr "目次(_C)"
 
-#: ../src/actionmanager.cpp:212
+#: ../src/actionmanager.cpp:216
 msgid "Gnote Help"
 msgstr "Gnote のヘルプ"
 
-#: ../src/actionmanager.cpp:217
+#: ../src/actionmanager.cpp:221
 msgid "About Gnote"
 msgstr "Gnote について"
 
-#: ../src/actionmanager.cpp:221
+#: ../src/actionmanager.cpp:225
 msgid "TrayIcon"
 msgstr "TrayIcon"
 
-#: ../src/actionmanager.cpp:226
+#: ../src/actionmanager.cpp:230
 msgid "Create _New Note"
 msgstr "新しいメモの作成(_N)"
 
-#: ../src/actionmanager.cpp:231 ../src/notewindow.cpp:313
+#: ../src/actionmanager.cpp:235 ../src/notewindow.cpp:317
 msgid "_Search All Notes"
 msgstr "全てのメモの検索(_S)"
 
-#: ../src/actionmanager.cpp:231
+#: ../src/actionmanager.cpp:235
 msgid "Open the Search All Notes window"
 msgstr "\"全てのメモの検索\" ウィンドウを開きます"
 
-#: ../src/actionmanager.cpp:236
+#: ../src/actionmanager.cpp:240
 msgid "S_ynchronize Notes"
 msgstr "メモの同期(_Y)"
 
-#: ../src/actionmanager.cpp:236
+#: ../src/actionmanager.cpp:240
 msgid "Start synchronizing notes"
 msgstr "メモの同期を開始します"
 
-#: ../src/gnote.cpp:277
+#: ../src/gnote.cpp:278
 msgid "Cannot create new note"
 msgstr "新しいメモを作成できません"
 
-#: ../src/gnote.cpp:326
+#: ../src/gnote.cpp:327
 msgid "and Tomboy original authors."
 msgstr "と Tomboy の開発者"
 
-#: ../src/gnote.cpp:335
+#: ../src/gnote.cpp:336
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
 "佐藤 暁 <ss@gnome.gr.jp>\n"
 "日本GNOMEユーザー会 http://www.gnome.gr.jp"
 
-#: ../src/gnote.cpp:343
+#: ../src/gnote.cpp:344
 msgid ""
-"Copyright © 2009-2010 Debarshi Ray\n"
+"Copyright © 2010-2011 Aurimas Cernius\n"
+"Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2009-2010 Debarshi Ray\n"
+"Copyright © 2010-2011 Aurimas Cernius\n"
+"Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Tomboy の作者"
 
-#: ../src/gnote.cpp:346
+#: ../src/gnote.cpp:348
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "シンプルで使いやすいデスクトップ・メモです。"
 
-#: ../src/gnote.cpp:357
+#: ../src/gnote.cpp:359
 msgid "Homepage"
 msgstr "ホームページ"
 
-#: ../src/gnote.cpp:427
+#: ../src/gnote.cpp:429
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "GNOME パネルのアプレットとして起動する"
 
-#: ../src/gnote.cpp:428
+#: ../src/gnote.cpp:430
 msgid "Specify the path of the directory containing the notes."
 msgstr "メモを保存したフォルダをで指定する"
 
-#: ../src/gnote.cpp:428
+#: ../src/gnote.cpp:430
 msgid "path"
 msgstr "path"
 
-#: ../src/gnote.cpp:429
+#: ../src/gnote.cpp:431
 msgid "Open the search all notes window with the search text."
 msgstr "任意の文字列を指定したら \"全てのメモの検索\" ウィンドウを開く"
 
-#: ../src/gnote.cpp:429 ../src/gnote.cpp:434 ../src/gnote.cpp:435
+#: ../src/gnote.cpp:431 ../src/gnote.cpp:436 ../src/gnote.cpp:437
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:432
 msgid "Print version information."
 msgstr "バージョン情報を表示する"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:434
 msgid "Create and display a new note, with a optional title."
 msgstr "タイトルを指定して新しいメモを作成し表示する"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:434
 msgid "title"
 msgstr "title"
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:435
 msgid "Display the existing note matching title."
 msgstr "指定したタイトルを持つ既存のメモを表示する"
 
-#: ../src/gnote.cpp:433
+#: ../src/gnote.cpp:435
 msgid "title/url"
 msgstr "title/url"
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:436
 msgid "Display the 'Start Here' note."
 msgstr "\"ここから開始のメモ\" を表示する"
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:437
 msgid "Search and highlight text in the opened note."
 msgstr "開いているメモから文字列を検索して強調表示する"
 
-#: ../src/gnote.cpp:440
+#: ../src/gnote.cpp:442
 msgid "A note taking application"
 msgstr "メモを取るアプリケーションです。"
 
-#: ../src/gnote.cpp:440
+#: ../src/gnote.cpp:442
 msgid "Gnote options at launch"
 msgstr "Gnote の起動オプション"
 
-#: ../src/gnote.cpp:636
+#: ../src/gnote.cpp:630
 msgid "Version %1%"
 msgstr "バージョン %1%"
 
-#: ../src/preferencesdialog.cpp:106
+#: ../src/preferencesdialog.cpp:107
 msgid "Editing"
 msgstr "編集"
 
-#: ../src/preferencesdialog.cpp:108
+#: ../src/preferencesdialog.cpp:109
 msgid "Hotkeys"
 msgstr "ホットキー"
 
-#: ../src/preferencesdialog.cpp:113
+#: ../src/preferencesdialog.cpp:114
 msgid "Add-ins"
 msgstr "プラグイン"
 
-#: ../src/preferencesdialog.cpp:220
+#: ../src/preferencesdialog.cpp:222
 msgid "_Spell check while typing"
 msgstr "入力中にスペルをチェックする(_S)"
 
-#: ../src/preferencesdialog.cpp:226
+#: ../src/preferencesdialog.cpp:228
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -727,11 +749,11 @@ msgstr ""
 "ルを提示します。"
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:237
+#: ../src/preferencesdialog.cpp:239
 msgid "Highlight _WikiWords"
 msgstr "WikiWord を強調表示する(_W)"
 
-#: ../src/preferencesdialog.cpp:243
+#: ../src/preferencesdialog.cpp:245
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -740,37 +762,37 @@ msgstr ""
 "をクリックすると、それをタイトルにした新しいメモを作成します。"
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:250
+#: ../src/preferencesdialog.cpp:252
 msgid "Enable auto-_bulleted lists"
 msgstr "箇条書きに自動変換する(_B)"
 
-#: ../src/preferencesdialog.cpp:259
+#: ../src/preferencesdialog.cpp:261
 msgid "Use custom _font"
 msgstr "フォントを指定する(_F)"
 
-#: ../src/preferencesdialog.cpp:276
+#: ../src/preferencesdialog.cpp:278
 msgid "When renaming a linked note: "
 msgstr "リンクされているメモの名前を変更した時: "
 
-#: ../src/preferencesdialog.cpp:281
+#: ../src/preferencesdialog.cpp:283
 msgid "Ask me what to do"
 msgstr "問い合わせる"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:284
 msgid "Never rename links"
 msgstr "リンクの名前を変更しない"
 
-#: ../src/preferencesdialog.cpp:283
+#: ../src/preferencesdialog.cpp:285
 msgid "Always rename links"
 msgstr "リンクの名前も変更する"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:305 ../src/notemanager.cpp:107
+#: ../src/preferencesdialog.cpp:307 ../src/notemanager.cpp:111
 msgid "New Note Template"
 msgstr "新しいメモのテンプレート"
 
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:310
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -778,16 +800,16 @@ msgstr ""
 "メモのテンプレートを利用して、新しく作成するメモに記録する情報をあらかじめ指"
 "定しておくことが可能です。"
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:318
 msgid "Open New Note Template"
 msgstr "新しいテンプレートを開く"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:374
+#: ../src/preferencesdialog.cpp:376
 msgid "Listen for _Hotkeys"
 msgstr "ホットキーを監視する(_H)"
 
-#: ../src/preferencesdialog.cpp:381
+#: ../src/preferencesdialog.cpp:383
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -797,77 +819,77 @@ msgstr ""
 "ホットキーの例: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>、<b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:401
+#: ../src/preferencesdialog.cpp:403
 msgid "Show notes _menu"
 msgstr "メモのメニューを表示する(_M)"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:417
+#: ../src/preferencesdialog.cpp:419
 msgid "Open \"_Start Here\""
 msgstr "\"ここから開始\" を開く(_S)"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:432
+#: ../src/preferencesdialog.cpp:434
 msgid "Create _new note"
 msgstr "新しいメモを作成する(_N)"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:447
+#: ../src/preferencesdialog.cpp:449
 msgid "Open \"Search _All Notes\""
 msgstr "\"全てのメモの検索\" を開く(_A)"
 
-#: ../src/preferencesdialog.cpp:473
+#: ../src/preferencesdialog.cpp:475
 msgid "Ser_vice:"
 msgstr "サービス(_V): "
 
-#: ../src/preferencesdialog.cpp:530
+#: ../src/preferencesdialog.cpp:532
 msgid "Not configurable"
 msgstr "設定できません"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:550
+#: ../src/preferencesdialog.cpp:552
 msgid "_Advanced..."
 msgstr "拡張(_A)..."
 
-#: ../src/preferencesdialog.cpp:597
+#: ../src/preferencesdialog.cpp:599
 msgid "The following add-ins are installed"
 msgstr "次のプラグインが拡張機能としてインストールされています"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:628
+#: ../src/preferencesdialog.cpp:630
 msgid "_Enable"
 msgstr "有効にする(_E)"
 
-#: ../src/preferencesdialog.cpp:634
+#: ../src/preferencesdialog.cpp:636
 msgid "_Disable"
 msgstr "無効にする(_D)"
 
-#: ../src/preferencesdialog.cpp:765
+#: ../src/preferencesdialog.cpp:767
 msgid "Not Implemented"
 msgstr "実装されていません"
 
-#: ../src/preferencesdialog.cpp:779
+#: ../src/preferencesdialog.cpp:781
 msgid "%1% Preferences"
 msgstr "%1% の設定"
 
-#: ../src/preferencesdialog.cpp:920
+#: ../src/preferencesdialog.cpp:922
 msgid "Choose Note Font"
 msgstr "メモで使用するフォントの選択"
 
-#: ../src/preferencesdialog.cpp:1047
+#: ../src/preferencesdialog.cpp:1049
 msgid "Version:"
 msgstr "バージョン:"
 
-#: ../src/preferencesdialog.cpp:1052
+#: ../src/preferencesdialog.cpp:1054
 msgid "Author:"
 msgstr "作者:"
 
-#: ../src/preferencesdialog.cpp:1058
+#: ../src/preferencesdialog.cpp:1060
 msgid "Copyright:"
 msgstr "著作権:"
 
-#: ../src/notemanager.cpp:250
+#: ../src/notemanager.cpp:252
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -907,7 +929,7 @@ msgstr ""
 "る度に下線が自動的に付与されることに気づきましたか？ リンクをクリックしてメモ"
 "を開いてみて下さい。</note-content>"
 
-#: ../src/notemanager.cpp:269
+#: ../src/notemanager.cpp:271
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -935,25 +957,23 @@ msgstr ""
 "す。</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:284 ../src/notemanager.cpp:336
+#: ../src/notemanager.cpp:286 ../src/notemanager.cpp:338
 msgid "Start Here"
 msgstr "ここから開始"
 
-#: ../src/notemanager.cpp:289
+#: ../src/notemanager.cpp:291
 msgid "Using Links in Gnote"
 msgstr "Gnote でリンクを利用する"
 
-#: ../src/notemanager.cpp:480
-msgid "New Note %1%"
-msgstr "新しいメモ %1%"
+#: ../src/notemanager.cpp:555
+msgid "New Note"
+msgstr "新しいメモ"
 
-#. Use a simple "Describe..." body and highlight
-#. it so it can be easily overwritten
-#: ../src/notemanager.cpp:580 ../src/notemanager.cpp:670
+#: ../src/notemanager.cpp:683
 msgid "Describe your new note here."
 msgstr "新しいメモをここに記述して下さい。"
 
-#: ../src/noterenamedialog.cpp:151
+#: ../src/noterenamedialog.cpp:152
 msgid "Rename Note Links?"
 msgstr "リンク名の変更"
 
@@ -1009,139 +1029,139 @@ msgstr "メモのタイトル"
 msgid "Ad_vanced"
 msgstr "拡張(_V)"
 
-#: ../src/notewindow.cpp:74
+#: ../src/notewindow.cpp:78
 msgid "Find in This Note"
 msgstr "このメモの中を検索する"
 
-#: ../src/notewindow.cpp:321
+#: ../src/notewindow.cpp:325
 msgid "_Link to New Note"
 msgstr "新しいメモへのリンク(_L)"
 
-#: ../src/notewindow.cpp:329
+#: ../src/notewindow.cpp:333
 msgid "Te_xt"
 msgstr "文字の種類(_X)"
 
-#: ../src/notewindow.cpp:338
+#: ../src/notewindow.cpp:342
 msgid "_Find in This Note"
 msgstr "このメモの中を検索する(_F)"
 
-#: ../src/notewindow.cpp:353
+#: ../src/notewindow.cpp:357
 msgid "Clos_e All Notes"
 msgstr "全てのメモを閉じる(_E)"
 
-#: ../src/notewindow.cpp:388
+#: ../src/notewindow.cpp:392
 msgid "Search"
 msgstr "検索"
 
-#: ../src/notewindow.cpp:392
+#: ../src/notewindow.cpp:396
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "メモを検索します (Ctrl-Shift-F)"
 
-#: ../src/notewindow.cpp:402
+#: ../src/notewindow.cpp:406
 msgid "Link"
 msgstr "リンク"
 
-#: ../src/notewindow.cpp:408
+#: ../src/notewindow.cpp:412
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "指定した部分を新しいメモへリンクします (Ctrl-L)"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:421
 msgid "_Text"
 msgstr "文字の種類(_T)"
 
-#: ../src/notewindow.cpp:423
+#: ../src/notewindow.cpp:427
 msgid "Set properties of text"
 msgstr "文字のプロパティを変更します"
 
-#: ../src/notewindow.cpp:427
+#: ../src/notewindow.cpp:431
 msgid "T_ools"
 msgstr "ツール(_O)"
 
-#: ../src/notewindow.cpp:432
+#: ../src/notewindow.cpp:436
 msgid "Use tools on this note"
 msgstr "いろいろなツールを利用します"
 
-#: ../src/notewindow.cpp:442
+#: ../src/notewindow.cpp:446
 msgid "Delete this note"
 msgstr "このメモを削除します"
 
-#: ../src/notewindow.cpp:452
+#: ../src/notewindow.cpp:456
 msgid "Synchronize Notes"
 msgstr "メモの同期"
 
-#: ../src/notewindow.cpp:495
+#: ../src/notewindow.cpp:499
 msgid "_Find..."
 msgstr "検索(_F)..."
 
-#: ../src/notewindow.cpp:503
+#: ../src/notewindow.cpp:507
 msgid "Find _Next"
 msgstr "前方検索(_N)"
 
-#: ../src/notewindow.cpp:513
+#: ../src/notewindow.cpp:517
 msgid "Find _Previous"
 msgstr "後方検索(_P)"
 
-#: ../src/notewindow.cpp:583
+#: ../src/notewindow.cpp:587
 msgid "Cannot create note"
 msgstr "メモを作成できません"
 
-#: ../src/notewindow.cpp:625
+#: ../src/notewindow.cpp:629
 msgid "_Next"
 msgstr "次の検索(_N)"
 
-#: ../src/notewindow.cpp:626
+#: ../src/notewindow.cpp:630
 msgid "_Previous"
 msgstr "前の検索(_P)"
 
-#: ../src/notewindow.cpp:639
+#: ../src/notewindow.cpp:643
 msgid "_Find:"
 msgstr "検索(_F):"
 
-#: ../src/notewindow.cpp:1081
+#: ../src/notewindow.cpp:1085
 msgid "<b>_Bold</b>"
 msgstr "<b>太字(_B)</b>"
 
-#: ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:1086
 msgid "<i>_Italic</i>"
 msgstr "<i>イタリック(_I)</i>"
 
-#: ../src/notewindow.cpp:1083
+#: ../src/notewindow.cpp:1087
 msgid "<s>_Strikeout</s>"
 msgstr "<s>打ち消し線(_S)</s>"
 
-#: ../src/notewindow.cpp:1085
+#: ../src/notewindow.cpp:1089
 msgid "_Highlight"
 msgstr "強調(_H)"
 
-#: ../src/notewindow.cpp:1087
+#: ../src/notewindow.cpp:1091
 msgid "_Normal"
 msgstr "標準(_N)"
 
-#: ../src/notewindow.cpp:1089
+#: ../src/notewindow.cpp:1093
 msgid "Hu_ge"
 msgstr "巨大(_G)"
 
-#: ../src/notewindow.cpp:1091
+#: ../src/notewindow.cpp:1095
 msgid "_Large"
 msgstr "大きい(_L)"
 
-#: ../src/notewindow.cpp:1093
+#: ../src/notewindow.cpp:1097
 msgid "S_mall"
 msgstr "小さい(_M)"
 
-#: ../src/notewindow.cpp:1095
+#: ../src/notewindow.cpp:1099
 msgid "Bullets"
 msgstr "箇条書き"
 
-#: ../src/notewindow.cpp:1098
+#: ../src/notewindow.cpp:1102
 msgid "Increase Font Size"
 msgstr "フォントを大きくする"
 
-#: ../src/notewindow.cpp:1099
+#: ../src/notewindow.cpp:1103
 msgid "Decrease Font Size"
 msgstr "フォントを小さくする"
 
-#: ../src/notewindow.cpp:1170
+#: ../src/notewindow.cpp:1174
 msgid "Font Size"
 msgstr "フォント"
 
@@ -1170,70 +1190,70 @@ msgstr ""
 "妥当な書き込み権限になっているか確認してみて下さい。エラーの詳細については "
 "~/.gnote.log を参照して下さい。"
 
-#: ../src/recentchanges.cpp:83
+#: ../src/recentchanges.cpp:86
 msgid "Search All Notes"
 msgstr "全てのメモの検索"
 
-#: ../src/recentchanges.cpp:88
+#: ../src/recentchanges.cpp:91
 msgid "C_ase Sensitive"
 msgstr "大/小文字を区別する(_A)"
 
-#: ../src/recentchanges.cpp:106
+#: ../src/recentchanges.cpp:109
 msgid "_Search:"
 msgstr "検索(_S):"
 
-#: ../src/recentchanges.cpp:270
-#: ../src/notebooks/notebookapplicationaddin.cpp:120
+#: ../src/recentchanges.cpp:273
+#: ../src/notebooks/notebookapplicationaddin.cpp:122
 msgid "Notebooks"
 msgstr "ノート"
 
-#: ../src/recentchanges.cpp:345
+#: ../src/recentchanges.cpp:350
 msgid "Note"
 msgstr "メモ"
 
-#: ../src/recentchanges.cpp:366
+#: ../src/recentchanges.cpp:371
 msgid "Last Changed"
 msgstr "変更日時"
 
-#: ../src/recentchanges.cpp:510
+#: ../src/recentchanges.cpp:515
 msgid "Matches"
 msgstr "検索結果"
 
-#: ../src/recentchanges.cpp:564
+#: ../src/recentchanges.cpp:569
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "(%1%個見つかりました)"
 msgstr[1] "(%1%個見つかりました)"
 
-#: ../src/recentchanges.cpp:578
+#: ../src/recentchanges.cpp:583
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "メモの総数: %1%個"
 msgstr[1] "メモの総数: %1%個"
 
-#: ../src/recentchanges.cpp:594
+#: ../src/recentchanges.cpp:599
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "該当したメモ: %1%個"
 msgstr[1] "該当したメモ: %1%個"
 
-#: ../src/recentchanges.cpp:736
+#: ../src/recentchanges.cpp:741
 msgid "Notes"
 msgstr "メモ"
 
-#: ../src/tray.cpp:50
+#: ../src/tray.cpp:54
 msgid "Take notes"
 msgstr "メモをとります"
 
-#: ../src/tray.cpp:161
+#: ../src/tray.cpp:165
 msgid " (new)"
 msgstr " (新規)"
 
-#: ../src/tray.cpp:473
+#: ../src/tray.cpp:472
 msgid "_About Gnote"
 msgstr "情報(_A)"
 
-#: ../src/utils.cpp:129
+#: ../src/utils.cpp:130
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -1241,35 +1261,35 @@ msgstr ""
 "\"Gnote メモのマニュアル\" が見つかりませんでした。インストールが問題なく行わ"
 "れているかどうか確認してみて下さい。"
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:138
 msgid "Help not found"
 msgstr "ヘルプが見つかりませんでした"
 
-#: ../src/utils.cpp:170
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "指定した場所を開けません"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:185
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
 msgstr "今日の%1%"
 
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "今日"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:192
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
 msgstr "昨日の%1%"
 
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "昨日"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:202
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1%日前の%2%"
@@ -1277,24 +1297,24 @@ msgstr[1] "%1%日前の%2%"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1%日前"
 msgstr[1] "%1%日前"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "明日の%1%"
 
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:218
 msgid "Tomorrow"
 msgstr "明日"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:226
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "%1%日内の%2%"
@@ -1302,21 +1322,21 @@ msgstr[1] "%1%日内の%2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:232
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "%1%日内"
 msgstr[1] "%1%日内"
 
-#: ../src/utils.cpp:243
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "日付なし"
 
-#: ../src/watchers.cpp:208
+#: ../src/watchers.cpp:210
 msgid "(Untitled %1%)"
 msgstr "(タイトルなし %1%)"
 
-#: ../src/watchers.cpp:243
+#: ../src/watchers.cpp:245
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -1324,20 +1344,20 @@ msgstr ""
 "<b>%1%</b> というタイトルのメモは既に存在します。続行する前に別のタイトルを選"
 "択して下さい。"
 
-#: ../src/watchers.cpp:257
+#: ../src/watchers.cpp:259
 msgid "Note title taken"
 msgstr "メモのタイトル"
 
-#: ../src/watchers.cpp:576
+#: ../src/watchers.cpp:594
 msgid "_Copy Link Address"
 msgstr "リンク先のアドレスのコピー(_C)"
 
-#: ../src/watchers.cpp:582
+#: ../src/watchers.cpp:600
 msgid "_Open Link"
 msgstr "リンクを開く(_O)"
 
 #: ../src/notebooks/createnotebookdialog.cpp:38
-#: ../src/notebooks/notebookapplicationaddin.cpp:101
+#: ../src/notebooks/notebookapplicationaddin.cpp:103
 msgid "Create a new notebook"
 msgstr "新しいノートを作成します"
 
@@ -1364,61 +1384,61 @@ msgstr "作成する(_R)"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:86
+#: ../src/notebooks/notebook.cpp:87
 msgid "%1% Notebook Template"
 msgstr "%1% ノートのテンプレート"
 
-#: ../src/notebooks/notebook.cpp:169
+#: ../src/notebooks/notebook.cpp:207
 msgid "All Notes"
 msgstr "全てのメモ"
 
-#: ../src/notebooks/notebook.cpp:181
+#: ../src/notebooks/notebook.cpp:219
 msgid "Unfiled Notes"
 msgstr "未ファイルのメモ"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:95
+#: ../src/notebooks/notebookapplicationaddin.cpp:97
 msgid "Note_books"
 msgstr "ノート(_B)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:96
-#: ../src/notebooks/notebookapplicationaddin.cpp:121
+#: ../src/notebooks/notebookapplicationaddin.cpp:98
+#: ../src/notebooks/notebookapplicationaddin.cpp:123
 msgid "Create a new note in a notebook"
 msgstr "ノートの中に新しいメモを作成します"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:100
-#: ../src/notebooks/notebookapplicationaddin.cpp:255
+#: ../src/notebooks/notebookapplicationaddin.cpp:102
+#: ../src/notebooks/notebookapplicationaddin.cpp:257
 msgid "New Note_book..."
 msgstr "新しいノート(_B)..."
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:105
+#: ../src/notebooks/notebookapplicationaddin.cpp:107
 msgid "_New Note"
 msgstr "新しいメモ(_N)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:106
+#: ../src/notebooks/notebookapplicationaddin.cpp:108
 msgid "Create a new note in this notebook"
 msgstr "このノートの中に新しいメモを作成します"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:110
+#: ../src/notebooks/notebookapplicationaddin.cpp:112
 msgid "_Open Template Note"
 msgstr "テンプレートを開く(_O)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:111
+#: ../src/notebooks/notebookapplicationaddin.cpp:113
 msgid "Open this notebook's template note"
 msgstr "このノートのテンプレートを開きます"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:115
+#: ../src/notebooks/notebookapplicationaddin.cpp:117
 msgid "Delete Note_book"
 msgstr "ノートの削除(_B)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:116
+#: ../src/notebooks/notebookapplicationaddin.cpp:118
 msgid "Delete the selected notebook"
 msgstr "選択したノートを削除します"
 
-#: ../src/notebooks/notebookmanager.cpp:334
+#: ../src/notebooks/notebookmanager.cpp:337
 msgid "Really delete this notebook?"
 msgstr "このノートを本当に削除してもよろしいですか？"
 
-#: ../src/notebooks/notebookmanager.cpp:335
+#: ../src/notebooks/notebookmanager.cpp:338
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1426,52 +1446,52 @@ msgstr ""
 "このノートの中にあるメモは削除されません (単にこのノートとの関連付けがなくな"
 "るだけです)。但し、この操作を取り消して元に戻すことはできません。"
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:38
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
 msgid "New \"%1%\" Note"
 msgstr "新しい \"%1%\" のメモ"
 
-#: ../src/notebooks/notebookmenuitem.cpp:34
+#: ../src/notebooks/notebookmenuitem.cpp:35
 msgid "No notebook"
 msgstr "ノートなし"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:82
+#: ../src/notebooks/notebooknoteaddin.cpp:84
 msgid "Place this note into a notebook"
 msgstr "このメモをノートに入れます"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:169
+#: ../src/notebooks/notebooknoteaddin.cpp:166
 msgid "Notebook"
 msgstr "ノート"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:194
+#: ../src/notebooks/notebooknoteaddin.cpp:191
 msgid "_New notebook..."
 msgstr "新しいノート(_N)..."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:42
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
 msgid "Backlinks"
 msgstr "バックリンク"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:46
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
 msgid "See which notes link to the one you're currently viewing."
 msgstr "現在表示しているメモにリンクしている情報の一覧です。"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:50
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:54
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:55
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere 氏と Tomboy プロジェクト"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:88
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
 msgid "What links here?"
 msgstr "リンクしている情報"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:144
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
 msgid "(none)"
 msgstr "(なし)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:57
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
 msgid "Bugzilla Links"
 msgstr "Bugzilla のリンク"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:61
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -1481,14 +1501,14 @@ msgstr ""
 "ることができます (すると、バグ番号はリンクとして挿入されてその横に小さなアイ"
 "コンが付与されます)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:65
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:71
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:55
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:66
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere 氏と Tomboy プロジェクト"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:59
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:61
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -1497,45 +1517,45 @@ msgstr ""
 "定のホストに対して特別なアイコンを用意したい場合は、ここでアイコンを追加して"
 "おいて下さい。"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:76
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:78
 msgid "Host Name"
 msgstr "ホスト名"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:89
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:91
 msgid "Icon"
 msgstr "アイコン"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:223
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:225
 msgid "Select an icon..."
 msgstr "アイコンの選択..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:238
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:240
 msgid "_Host name:"
 msgstr "ホスト名(_H):"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:270
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:272
 msgid "Host name invalid"
 msgstr "ホスト名が間違っています"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:271
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "このアイコンと一緒に利用する Bugzilla の妥当なホスト名を指定して下さい。"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:290
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:292
 msgid "Error saving icon"
 msgstr "アイコンの保存エラー"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:291
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
 msgid "Could not save the icon file."
 msgstr "アイコン・ファイルを保存できませんでした。"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:363
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:365
 msgid "Really remove this icon?"
 msgstr "このアイコンを削除しますか？"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:364
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
 msgid "If you remove an icon it is permanently lost."
 msgstr "アイコンを削除すると、設定情報を完全に失うことになります。"
 
@@ -1551,48 +1571,48 @@ msgstr "リンクしているメモもエキスポートする"
 msgid "Include all other linked notes"
 msgstr "１つの HTML にまとめてエキスポートする"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:63
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:98
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
 msgid "Export to HTML"
 msgstr "HTML でエキスポート"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:67
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
 msgid "Exports individual notes to HTML."
 msgstr "メモを HTML 形式のファイルにエキスポートします"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:145
 msgid "Your note was exported to \"%1%\"."
 msgstr "メモを \"%1%\" にエキスポートしました。"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
 msgid "Note exported successfully"
 msgstr "エキスポート完了"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:184
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:179
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "ファイルを保存できませんでした: %s"
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:34
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
 msgid "Fixed Wid_th"
 msgstr "固定幅(_T)"
 
 #. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:48
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
 msgid "Fixed Width"
 msgstr "固定幅"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:52
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
 msgid "Adds fixed-width font style."
 msgstr "固定幅のフォントスタイルを追加します"
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:79
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:47
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:80
 msgid "Insert Timestamp"
 msgstr "タイムスタンプの挿入"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:50
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:51
 msgid "Inserts current date and time at the cursor position."
 msgstr "メモのカーソル位置に現在の日付と時刻を挿入します"
 
@@ -1631,17 +1651,17 @@ msgstr "予定"
 msgid "%A, %B %d %Y"
 msgstr "%Y年%B%e日 %A"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:44
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
 msgstr "今日のメモ"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:48
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
 "日々のアイディアを簡単に書き留めておける \"今日のメモ\" を自動的に生成します"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:53
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray 氏と Tomboy プロジェクト"
 
@@ -1657,90 +1677,90 @@ msgstr ""
 "<span weight=\"bold\">今日: テンプレート</span>のメモを変更して、今日のメモの"
 "新しい定型文を指定できます。"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:47
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
 msgid "Printing Support"
 msgstr "印刷のサポート"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:51
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
 msgid "Allows you to print a note."
 msgstr "メモを印刷できるようにします"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:78
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
 msgid "Print"
 msgstr "印刷"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:133
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
 msgid "Error printing note"
 msgstr "ノートの印刷エラー"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:297
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
 msgid "Page %1% of %2%"
 msgstr "%1%/%2% ページ"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:58
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
 msgstr "付箋紙のインポート"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:62
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "付箋紙アプレットからメモを取り込みます"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:111
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:112
 msgid "Import from Sticky Notes"
 msgstr "付箋紙からのインポート"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:241
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:242
 msgid "No Sticky Notes found"
 msgstr "付箋紙が見つかりませんでした"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:244
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "\"%1%\" に付箋紙ファイルがありませんでした。"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:251
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:252
 msgid "Sticky Notes import completed"
 msgstr "インポート完了"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:253
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:254
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "<b>%1%</b> / <b>%2%</b> 個の付箋紙をインポートしました。"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:272
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:273
 msgid "Untitled"
 msgstr "タイトルなし"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:319
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:320
 msgid "Sticky Note: "
 msgstr "付箋紙: "
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:47
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
 msgid "Tomboy Importer"
 msgstr "Tomboy のインポート"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:51
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
 msgid "Import your notes from Tomboy."
 msgstr "お使いの Tomboy からメモを取り込みます"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:55
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:34
+#: ../src/addins/underline/underlinemenuitem.cpp:35
 msgid "_Underline"
 msgstr "下線(_U)"
 
 #. this is the name of the plugin.
-#: ../src/addins/underline/underlinenoteaddin.cpp:48
+#: ../src/addins/underline/underlinenoteaddin.cpp:49
 msgid "Underline"
 msgstr "下線"
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:52
+#: ../src/addins/underline/underlinenoteaddin.cpp:53
 msgid "Adds ability to underline text."
 msgstr "文字列に下線を付与します"
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:56
+#: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière と Tomboy プロジェクト"
