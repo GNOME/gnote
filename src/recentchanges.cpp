@@ -936,7 +936,7 @@ namespace gnote {
   bool NoteRecentChanges::on_treeview_key_pressed(GdkEventKey * ev)
   {
     switch (ev->keyval) {
-    case GDK_Menu:
+    case GDK_KEY_Menu:
     {
       // Pop up the context menu if a note is selected
       Note::List selected_notes = get_selected_notes();
@@ -1110,7 +1110,7 @@ namespace gnote {
   bool NoteRecentChanges::on_key_pressed(GdkEventKey * ev)
   {
     switch (ev->keyval) {
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       // Allow Escape to close the window
       on_close_window ();
       break;
@@ -1516,7 +1516,7 @@ namespace gnote {
   bool NoteRecentChanges::on_notebooks_key_pressed(GdkEventKey * ev)
   {
     switch (ev->keyval) {
-    case GDK_Menu:
+    case GDK_KEY_Menu:
     {
       // Pop up the context menu if a notebook is selected
       notebooks::Notebook::Ptr notebook = get_selected_notebook ();
