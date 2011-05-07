@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -233,8 +233,8 @@ namespace gnote {
 
       switch (ev->keyval)
       {
-      case GDK_KP_Enter:
-      case GDK_Return:
+      case GDK_KEY_KP_Enter:
+      case GDK_KEY_Return:
         // Allow opening notes with Ctrl + Enter
         if (ev->state != Gdk::CONTROL_MASK) {
           if (ev->state & Gdk::SHIFT_MASK) {
@@ -246,28 +246,28 @@ namespace gnote {
           scroll_mark_onscreen (get_buffer()->get_insert());
         }
         break;
-      case GDK_Tab:
+      case GDK_KEY_Tab:
         ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->add_tab ();
         scroll_mark_onscreen (get_buffer()->get_insert());
         break;
-      case GDK_ISO_Left_Tab:
+      case GDK_KEY_ISO_Left_Tab:
         ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->remove_tab ();
         scroll_mark_onscreen (get_buffer()->get_insert());
         break;
-      case GDK_Delete:
+      case GDK_KEY_Delete:
         if (Gdk::SHIFT_MASK != (ev->state & Gdk::SHIFT_MASK)) {
           ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->delete_key_handler();
           scroll_mark_onscreen (get_buffer()->get_insert());
         }
         break;
-      case GDK_BackSpace:
+      case GDK_KEY_BackSpace:
         ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->backspace_key_handler();
         break;
-      case GDK_Left:
-      case GDK_Right:
-      case GDK_Up:
-      case GDK_Down:
-      case GDK_End:
+      case GDK_KEY_Left:
+      case GDK_KEY_Right:
+      case GDK_KEY_Up:
+      case GDK_KEY_Down:
+      case GDK_KEY_End:
         ret_value = false;
         break;
       default:
