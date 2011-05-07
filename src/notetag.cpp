@@ -226,8 +226,8 @@ namespace gnote {
       if ((key_ev->state & Gdk::CONTROL_MASK) == 0)
         return false;
 
-      if (key_ev->keyval != GDK_Return &&
-          key_ev->keyval != GDK_KP_Enter)
+      if (key_ev->keyval != GDK_KEY_Return &&
+          key_ev->keyval != GDK_KEY_KP_Enter)
         return false;
 
       get_extents (iter, start, end);
