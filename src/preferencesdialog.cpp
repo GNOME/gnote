@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -152,7 +152,7 @@ namespace gnote {
 
       button->add_accelerator ("activate",
                                accel_group,
-                               GDK_Escape,
+                               GDK_KEY_Escape,
                                (Gdk::ModifierType)0,
                                (Gtk::AccelFlags)0);
 
