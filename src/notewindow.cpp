@@ -80,7 +80,7 @@ namespace gnote {
     find_item->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_button_clicked));
     find_item->add_accelerator ("activate",
                                 m_accel_group,
-                                GDK_F,
+                                GDK_KEY_F,
                                 Gdk::CONTROL_MASK,
                                 Gtk::ACCEL_VISIBLE);
     find_item->show ();
@@ -142,7 +142,7 @@ namespace gnote {
     // Close window (Ctrl-W)
     if (!using_emacs)
       m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::close_window_handler),
-                                      GDK_W,
+                                      GDK_KEY_W,
                                       Gdk::CONTROL_MASK,
                                       Gtk::ACCEL_VISIBLE);
 
@@ -151,29 +151,29 @@ namespace gnote {
 
     // Close all windows on current Desktop (Ctrl-Q)
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::close_all_windows_handler),
-                                   GDK_Q,
+                                   GDK_KEY_Q,
                                    Gdk::CONTROL_MASK,
                                    Gtk::ACCEL_VISIBLE);
 
     // Find Next (Ctrl-G)
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::find_next_activate),
-                                 GDK_G,
+                                 GDK_KEY_G,
                                  Gdk::CONTROL_MASK,
                                  Gtk::ACCEL_VISIBLE);
 
     // Find Previous (Ctrl-Shift-G)
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::find_previous_activate),
-                                 GDK_G, (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
+                                 GDK_KEY_G, (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
                                  Gtk::ACCEL_VISIBLE);
 
     // Open Help (F1)
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::open_help_activate),
-                                    GDK_F1, (Gdk::ModifierType)0, (Gtk::AccelFlags)0);
+                                    GDK_KEY_F1, (Gdk::ModifierType)0, (Gtk::AccelFlags)0);
 
     // Create a new note
     if (!using_emacs)
       m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::create_new_note),
-                                     GDK_N, Gdk::CONTROL_MASK,
+                                     GDK_KEY_N, Gdk::CONTROL_MASK,
                                      Gtk::ACCEL_VISIBLE);
 
     signal_key_press_event().connect(sigc::mem_fun(*this, &NoteWindow::on_key_pressed));
@@ -181,12 +181,12 @@ namespace gnote {
 
     // Increase Indent
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::change_depth_right_handler),
-                                   GDK_Right, Gdk::MOD1_MASK,
+                                   GDK_KEY_Right, Gdk::MOD1_MASK,
                                    Gtk::ACCEL_VISIBLE);
 
     // Decrease Indent
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::change_depth_left_handler),
-                                   GDK_Left, Gdk::MOD1_MASK,
+                                   GDK_KEY_Left, Gdk::MOD1_MASK,
                                    Gtk::ACCEL_VISIBLE);
     add(*box);
   }
@@ -225,7 +225,7 @@ namespace gnote {
 
   bool NoteWindow::on_key_pressed(GdkEventKey *ev)
   {
-    if(ev->keyval == GDK_Escape) {
+    if(ev->keyval == GDK_KEY_Escape) {
       if (m_find_bar && m_find_bar->is_visible()) {
         m_find_bar->hide();
       }
@@ -317,7 +317,7 @@ namespace gnote {
                                           _("_Search All Notes"), true));
     search->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
     search->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::search_button_clicked));
-    search->add_accelerator ("activate", m_accel_group, GDK_F,
+    search->add_accelerator ("activate", m_accel_group, GDK_KEY_F,
                              (Gdk::CONTROL_MASK |  Gdk::SHIFT_MASK),
                              Gtk::ACCEL_VISIBLE);
     search->show();
@@ -326,7 +326,7 @@ namespace gnote {
     link->set_image(*manage(new Gtk::Image (Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_MENU)));
     link->set_sensitive(!m_note.get_buffer()->get_selection().empty());
     link->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::link_button_clicked));
-    link->add_accelerator("activate", m_accel_group, GDK_L,
+    link->add_accelerator("activate", m_accel_group, GDK_KEY_L,
                           Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     link->show();
       
@@ -358,7 +358,7 @@ namespace gnote {
     close_all->signal_activate().connect(
       sigc::mem_fun(*this, &NoteWindow::close_all_windows_handler));
     close_all->add_accelerator("activate", m_accel_group,
-                               GDK_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+                               GDK_KEY_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     close_all->show();
 
     Gtk::ImageMenuItem *close_window = manage(
@@ -367,7 +367,7 @@ namespace gnote {
     close_window->signal_activate().connect(
       sigc::mem_fun(*this, &NoteWindow::close_window_handler));
     close_window->add_accelerator("activate", m_accel_group,
-                                  GDK_W,
+                                  GDK_KEY_W,
                                   Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     close_window->show();
 
@@ -395,7 +395,7 @@ namespace gnote {
     search->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::search_button_clicked));
     search->set_tooltip_text(_("Search your notes (Ctrl-Shift-F)"));
     search->add_accelerator("clicked", m_accel_group,
-                             GDK_F,
+                             GDK_KEY_F,
                              (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
                              Gtk::ACCEL_VISIBLE);
     search->show_all();
@@ -411,7 +411,7 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteWindow::link_button_clicked));
     m_link_button->set_tooltip_text(_("Link selected text to a new note (Ctrl-L)"));
     m_link_button->add_accelerator("clicked", m_accel_group,
-                                   GDK_L, Gdk::CONTROL_MASK,
+                                   GDK_KEY_L, Gdk::CONTROL_MASK,
                                    Gtk::ACCEL_VISIBLE);
     m_link_button->show_all();
     tb->insert(*m_link_button, -1);
@@ -500,7 +500,7 @@ namespace gnote {
     find->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
     find->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_button_clicked));
     find->add_accelerator("activate", m_accel_group,
-                          GDK_F, Gdk::CONTROL_MASK,
+                          GDK_KEY_F, Gdk::CONTROL_MASK,
                           Gtk::ACCEL_VISIBLE);
     find->show();
 
@@ -510,7 +510,7 @@ namespace gnote {
 
     find_next->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_next_activate));
     find_next->add_accelerator("activate", m_accel_group,
-                              GDK_G, Gdk::CONTROL_MASK,
+                              GDK_KEY_G, Gdk::CONTROL_MASK,
                               Gtk::ACCEL_VISIBLE);
     find_next->show();
 
@@ -520,7 +520,7 @@ namespace gnote {
 
     find_previous->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_previous_activate));
     find_previous->add_accelerator("activate", m_accel_group,
-                                  GDK_G, (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
+                                  GDK_KEY_G, (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
                                   Gtk::ACCEL_VISIBLE);
     find_previous->show();
 
@@ -921,15 +921,15 @@ namespace gnote {
   {
     switch (ev->keyval)
     {
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       hide();
       break;
-    case GDK_Shift_L:
-    case GDK_Shift_R:
+    case GDK_KEY_Shift_L:
+    case GDK_KEY_Shift_R:
       m_shift_key_pressed = true;
       return false;
       break;
-    case GDK_Return:
+    case GDK_KEY_Return:
       if (m_shift_key_pressed)
         m_prev_button.clicked();
       break;
@@ -945,8 +945,8 @@ namespace gnote {
   {
     switch (ev->keyval)
     {
-    case GDK_Shift_L:
-    case GDK_Shift_R:
+    case GDK_KEY_Shift_L:
+    case GDK_KEY_Shift_R:
       m_shift_key_pressed = false;
       break;
     }
@@ -1106,7 +1106,7 @@ namespace gnote {
 //      m_undo->set_accel_group(accel_group);
       m_undo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_clicked));
       m_undo->add_accelerator ("activate", accel_group,
-                               GDK_Z,
+                               GDK_KEY_Z,
                                Gdk::CONTROL_MASK,
                                Gtk::ACCEL_VISIBLE);
       m_undo->show();
@@ -1116,7 +1116,7 @@ namespace gnote {
 //      m_redo->set_accel_group(accel_group);
       m_redo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::redo_clicked));
       m_redo->add_accelerator ("activate", accel_group,
-                               GDK_Z, (Gdk::CONTROL_MASK |
+                               GDK_KEY_Z, (Gdk::CONTROL_MASK |
                                        Gdk::SHIFT_MASK),
                                Gtk::ACCEL_VISIBLE);
       m_redo->show();
@@ -1135,7 +1135,7 @@ namespace gnote {
       m_bold.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_bold));
       m_bold.add_accelerator ("activate", accel_group,
-                           GDK_B,
+                           GDK_KEY_B,
                            Gdk::CONTROL_MASK,
                            Gtk::ACCEL_VISIBLE);
 
@@ -1145,7 +1145,7 @@ namespace gnote {
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_italic));
       m_italic.add_accelerator ("activate",
                              accel_group,
-                             GDK_I,
+                             GDK_KEY_I,
                              Gdk::CONTROL_MASK,
                              Gtk::ACCEL_VISIBLE);
 
@@ -1155,7 +1155,7 @@ namespace gnote {
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_strikeout));
       m_strikeout.add_accelerator ("activate",
                                 accel_group,
-                                GDK_S,
+                                GDK_KEY_S,
                                 Gdk::CONTROL_MASK,
                                 Gtk::ACCEL_VISIBLE);
 
@@ -1165,7 +1165,7 @@ namespace gnote {
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_highlight));
       m_highlight.add_accelerator ("activate",
                                 accel_group,
-                                GDK_H,
+                                GDK_KEY_H,
                                 Gdk::CONTROL_MASK,
                                 Gtk::ACCEL_VISIBLE);
 
@@ -1198,7 +1198,7 @@ namespace gnote {
 
       m_increase_font.add_accelerator ("activate",
                                        accel_group,
-                                       GDK_plus,
+                                       GDK_KEY_plus,
                                        Gdk::CONTROL_MASK,
                                        Gtk::ACCEL_VISIBLE);
       m_increase_font.signal_activate()
@@ -1206,7 +1206,7 @@ namespace gnote {
 
       m_decrease_font.add_accelerator ("activate",
                                        accel_group,
-                                       GDK_minus,
+                                       GDK_KEY_minus,
                                        Gdk::CONTROL_MASK,
                                        Gtk::ACCEL_VISIBLE);
       m_decrease_font.signal_activate()
@@ -1219,7 +1219,7 @@ namespace gnote {
 
 //      m_increase_indent.set_accel_group(accel_group);
       m_increase_indent.add_accelerator ("activate", accel_group,
-                                       GDK_Right,
+                                       GDK_KEY_Right,
                                        Gdk::MOD1_MASK,
                                        Gtk::ACCEL_VISIBLE);
       m_increase_indent.signal_activate()
@@ -1228,7 +1228,7 @@ namespace gnote {
 
 //      m_decrease_indent.set_accel_group(accel_group);
       m_decrease_indent.add_accelerator ("activate", accel_group,
-                                         GDK_Left,
+                                         GDK_KEY_Left,
                                          Gdk::MOD1_MASK,
                                          Gtk::ACCEL_VISIBLE);
       m_decrease_indent.signal_activate()
