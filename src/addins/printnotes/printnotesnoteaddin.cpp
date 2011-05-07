@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -82,7 +82,7 @@ namespace printnotes {
     m_item->signal_activate().connect(
       sigc::mem_fun(*this, &PrintNotesNoteAddin::print_button_clicked));
     m_item->add_accelerator ("activate", get_window()->get_accel_group(),
-                             GDK_P, Gdk::CONTROL_MASK,
+                             GDK_KEY_P, Gdk::CONTROL_MASK,
                              Gtk::ACCEL_VISIBLE);
     m_item->show ();
     add_plugin_menu_item (m_item);
