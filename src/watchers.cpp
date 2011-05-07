@@ -1087,10 +1087,10 @@ namespace gnote {
     bool retval = false;
 
     switch (ev->keyval) {
-    case GDK_Shift_L:
-    case GDK_Shift_R:
-    case GDK_Control_L:
-    case GDK_Control_R:
+    case GDK_KEY_Shift_L:
+    case GDK_KEY_Shift_R:
+    case GDK_KEY_Control_L:
+    case GDK_KEY_Control_R:
     {
       // Control or Shift when hovering over a link
       // swiches to a bar cursor...
@@ -1102,8 +1102,8 @@ namespace gnote {
       win->set_cursor(s_normal_cursor);
       break;
     }
-    case GDK_Return:
-    case GDK_KP_Enter:
+    case GDK_KEY_Return:
+    case GDK_KEY_KP_Enter:
     {
       Gtk::TextIter iter = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
 
@@ -1134,10 +1134,10 @@ namespace gnote {
   {
     bool retval = false;
     switch (ev->keyval) {
-    case GDK_Shift_L:
-    case GDK_Shift_R:
-    case GDK_Control_L:
-    case GDK_Control_R:
+    case GDK_KEY_Shift_L:
+    case GDK_KEY_Shift_R:
+    case GDK_KEY_Control_L:
+    case GDK_KEY_Control_R:
     {
       if (!m_hovering_on_link)
         break;
