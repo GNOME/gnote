@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ namespace underline {
 
     add_accelerator ("activate",
                      addin->get_window()->get_accel_group(),
-                     GDK_U,
+                     GDK_KEY_U,
                      Gdk::CONTROL_MASK,
                      Gtk::ACCEL_VISIBLE);
 
