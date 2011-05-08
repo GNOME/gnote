@@ -33,37 +33,6 @@
 
 namespace gnote {
 
-class ModelColumnRecord
-  : public Gtk::TreeModelColumnRecord
-{
-public:
-
-  ModelColumnRecord();
-  virtual ~ModelColumnRecord();
-
-  const Gtk::TreeModelColumn<bool> & get_column_selected() const;
-  gint get_column_selected_num() const;
-
-  const Gtk::TreeModelColumn<std::string> & get_column_title() const;
-  gint get_column_title_num() const;
-
-  const Gtk::TreeModelColumn<Note::Ptr> & get_column_note() const;
-  gint get_column_note_num() const;
-
-private:
-
-  enum {
-    COLUMN_BOOL = 0,
-    COLUMN_TITLE,
-    COLUMN_NOTE,
-    COLUMN_COUNT
-  };
-
-  Gtk::TreeModelColumn<bool> m_column_selected;
-  Gtk::TreeModelColumn<std::string> m_column_title;
-  Gtk::TreeModelColumn<Note::Ptr> m_column_note;
-};
-
 ModelColumnRecord::ModelColumnRecord()
   : Gtk::TreeModelColumnRecord()
   , m_column_selected()
@@ -152,7 +121,7 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
   : Gtk::Dialog(_("Rename Note Links?"),
                 *renamed_note->get_window(),
                 false)
-  , m_notes_model(Gtk::ListStore::create(ModelColumnRecord()))
+  , m_notes_model(Gtk::ListStore::create(m_model_column_record))
   , m_dont_rename_button(_("_Don't Rename Links"), true)
   , m_rename_button(_("_Rename Links"), true)
   , m_select_all_button(_("Select All"))

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -38,6 +39,37 @@ enum NoteRenameBehavior {
   NOTE_RENAME_ALWAYS_RENAME_LINKS = 2
 };
 
+class ModelColumnRecord
+  : public Gtk::TreeModelColumnRecord
+{
+public:
+
+  ModelColumnRecord();
+  virtual ~ModelColumnRecord();
+
+  const Gtk::TreeModelColumn<bool> & get_column_selected() const;
+  gint get_column_selected_num() const;
+
+  const Gtk::TreeModelColumn<std::string> & get_column_title() const;
+  gint get_column_title_num() const;
+
+  const Gtk::TreeModelColumn<Note::Ptr> & get_column_note() const;
+  gint get_column_note_num() const;
+
+private:
+
+  enum {
+    COLUMN_BOOL = 0,
+    COLUMN_TITLE,
+    COLUMN_NOTE,
+    COLUMN_COUNT
+  };
+
+  Gtk::TreeModelColumn<bool> m_column_selected;
+  Gtk::TreeModelColumn<std::string> m_column_title;
+  Gtk::TreeModelColumn<Note::Ptr> m_column_note;
+};
+
 class NoteRenameDialog
   : public Gtk::Dialog
 {
@@ -68,6 +100,7 @@ private:
   void on_select_all_button_clicked(bool select);
   void on_toggle_cell_toggled(const std::string & p);
 
+  ModelColumnRecord m_model_column_record;
   Glib::RefPtr<Gtk::ListStore> m_notes_model;
   Gtk::Button m_dont_rename_button;
   Gtk::Button m_rename_button;
