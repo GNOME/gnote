@@ -70,14 +70,11 @@ PKG_CHECK_MODULES(LIBXML, [libxml-2.0])
 PKG_CHECK_MODULES(LIBXSLT, [libxslt])
 PKG_CHECK_MODULES(GCONF, [gconf-2.0])
 PKG_CHECK_MODULES(PCRE, [libpcrecpp])
+PKG_CHECK_MODULES(UUID, [uuid])
 
 PKG_CHECK_EXISTS(gtkmm-2.4 >= 2.14.0,
   [AC_DEFINE(HAVE_CLASS_GTK__WIDGET_SIGNAL_POPUP_MENU, 1, [Define to 1 if class Gtk::Widget has signal_popup_menu])],
   [])
-
-dnl check for the ext2 uuid library. TODO replace it with something more portable
-AC_CHECK_HEADER(uuid/uuid.h,,[AC_MSG_ERROR("uuid header is missing")])
-AC_CHECK_LIB(uuid,uuid_unparse_lower, ,[AC_MSG_ERROR("libuuid library is missing")])
 
 AC_ARG_ENABLE([applet],
 	AS_HELP_STRING([--disable-applet],[Disable panel applet]),

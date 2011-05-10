@@ -11,6 +11,7 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@LIBXSLT_CFLAGS@ \
 	@PCRE_CFLAGS@ \
 	@DBUS_CFLAGS@ \
+	@UUID_CFLAGS@ \
 	-DGNOTE_LOCALEDIR=\"@GNOTE_LOCALEDIR@\" \
 	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
 
@@ -23,7 +24,7 @@ GNOTE_LIBS = libgnote.a $(top_builddir)/libtomboy/libtomboy.la \
 	@PCRE_LIBS@ \
 	@DBUS_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
-	-luuid
+	@UUID_LIBS@
 
 noinst_LIBRARIES = libgnote.a
 bin_PROGRAMS = gnote

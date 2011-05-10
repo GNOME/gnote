@@ -28,7 +28,7 @@
 #ifndef __SHARP_UUID_HPP_
 #define __SHARP_UUID_HPP_
 
-#include <uuid/uuid.h>
+#include <uuid.h>
 #include <string>
 
 namespace sharp {
