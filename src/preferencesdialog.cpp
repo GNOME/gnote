@@ -83,7 +83,6 @@ namespace gnote {
     , m_addin_manager(addinmanager)
   {
 //    set_icon(utils::get_icon("gnote"));
-    set_has_separator(false);
     set_border_width(5);
     set_resizable(true);
     set_title(_("Gnote Preferences"));
@@ -779,7 +778,7 @@ namespace gnote {
 
       dialog = new Gtk::Dialog(
         str(boost::format(_("%1% Preferences")) % module->name()),
-        *this, false, false);
+        *this, false);
       dialog->property_destroy_with_parent() = true;
       dialog->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
 
@@ -1000,7 +999,7 @@ namespace gnote {
 
   AddinInfoDialog::AddinInfoDialog(const sharp::DynamicModule * module,
                                    Gtk::Dialog &parent)
-    : Gtk::Dialog(module->name(), parent, false, true)
+    : Gtk::Dialog(module->name(), parent, false)
     , m_module(module)
   {
     property_destroy_with_parent() = true;
