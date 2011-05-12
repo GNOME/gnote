@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -56,7 +57,7 @@ namespace gnote {
     ,  m_sorted_tags(Gtk::TreeModelSort::create(m_tags))
   {
     m_sorted_tags->set_sort_func (0, sigc::ptr_fun(&compare_tags_sort_func));
-    m_sorted_tags->set_sort_column_id (0, Gtk::SORT_ASCENDING);
+    m_sorted_tags->set_sort_column(0, Gtk::SORT_ASCENDING);
     
   }
 
