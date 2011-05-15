@@ -134,14 +134,14 @@ namespace gnote {
 
       panel::register_applet();
 #endif
-      return 0;
-
     }
     else {
       DBG_OUT("starting tray icon");
       //register session manager restart
       start_tray_icon();
     }
+
+    signal_quit();
     return 0;
   }
 

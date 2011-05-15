@@ -88,6 +88,7 @@ public:
     {
       m_tray = tray;
     }
+  sigc::signal<void> signal_quit;
 private:
   void start_note_created(const Note::Ptr & start_note);
   std::string get_note_path(const std::string & override_path);
