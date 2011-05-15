@@ -160,7 +160,7 @@ namespace gnote {
       load_notes ();
     }
 
-    Gtk::Main::signal_quit().connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event), 1);
+    Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
   }
 
   NoteManager::~NoteManager()
@@ -411,7 +411,7 @@ namespace gnote {
     }
   }
 
-  bool NoteManager::on_exiting_event()
+  void NoteManager::on_exiting_event()
   {
     m_addin_mgr->shutdown_application_addins();
 
@@ -430,7 +430,6 @@ namespace gnote {
 
       note->save();
     }
-    return true;
   }
 
   void NoteManager::delete_note(const Note::Ptr & note)
