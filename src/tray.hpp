@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -110,7 +110,7 @@ public:
 
   void on_activate();
   void on_popup_menu(guint button, guint32 activate_time);
-  bool on_exit();
+  void on_exit();
   bool menu_opens_upward();
 
   void show_preferences();

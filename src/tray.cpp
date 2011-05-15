@@ -404,7 +404,7 @@ namespace gnote {
     gtk_status_icon_set_tooltip_text(gobj(), 
                                      tray_util_get_tooltip_text().c_str());
 
-    Gtk::Main::signal_quit().connect(sigc::mem_fun(*this, &TrayIcon::on_exit), 1);
+    Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &TrayIcon::on_exit));
     signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::on_activate));
     signal_popup_menu().connect(sigc::mem_fun(*this, &TrayIcon::on_popup_menu));
   }
@@ -506,10 +506,9 @@ namespace gnote {
     ActionManager::obj()["QuitGNoteAction"]->activate();
   }
 
-  bool TrayIcon::on_exit()
+  void TrayIcon::on_exit()
   {
     set_visible(false);
-    return true;
   }
 
   bool TrayIcon::menu_opens_upward()
