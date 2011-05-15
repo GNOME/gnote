@@ -137,7 +137,7 @@ private:
   std::string get_search_text();
   void save_position ();
   void restore_position();
-  bool on_exiting_event();
+  void on_exiting_event();
 
   class RecentNotesColumnTypes
     : public Gtk::TreeModelColumnRecord

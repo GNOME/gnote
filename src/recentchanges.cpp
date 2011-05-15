@@ -215,8 +215,7 @@ namespace gnote {
     notebooks::NotebookManager::instance().signal_note_added_to_notebook()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_removed_to_notebook));
                         
-    Gtk::Main::signal_quit()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_exiting_event));
+    Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_exiting_event));
 
   }
 
@@ -1611,10 +1610,9 @@ namespace gnote {
   }
 
 
-  bool NoteRecentChanges::on_exiting_event()
+  void NoteRecentChanges::on_exiting_event()
   {
     save_position();
-    return false;
   }
 
 }
