@@ -802,12 +802,7 @@ namespace gnote {
                   
     m_tree->get_path_at_pos (ev->x, ev->y,
                              dest_path, column, unused, unused);
-    // we need to test gobj() isn't NULL.
-    // See Gtkmm bug 586437
-    // https://bugzilla.gnome.org/show_bug.cgi?id=586437
-    if (dest_path.empty() || !dest_path.gobj())
-      return false;
-                  
+
     m_clickX = ev->x;
     m_clickY = ev->y;
                   
@@ -1484,26 +1479,10 @@ namespace gnote {
       notebooks::Notebook::Ptr notebook = get_selected_notebook ();
       if (!notebook)
         return true; // Don't pop open a submenu
-          
 
-      bool rowClicked = true;
-      if (m_notebooksTree->get_path_at_pos (ev->x, ev->y, p, col, cell_x, cell_y) == false) {
-        rowClicked = false;
-      }
-      if (selection->count_selected_rows () == 0) {
-        rowClicked = false;
-      }
+      Gtk::Menu *menu = dynamic_cast<Gtk::Menu*>(ActionManager::obj().get_widget (
+                                                 "/NotebooksTreeContextMenu"));
 
-      Gtk::Menu *menu = NULL;
-      if (rowClicked) {
-        menu = dynamic_cast<Gtk::Menu*>(ActionManager::obj().get_widget (
-                                          "/NotebooksTreeContextMenu"));
-      }
-      else {
-        menu = dynamic_cast<Gtk::Menu*>(ActionManager::obj().get_widget (
-                                          "/NotebooksTreeNoRowContextMenu"));
-      }
-          
       popup_context_menu_at_location (menu,
                                       ev->x, ev->y);
       return true;
