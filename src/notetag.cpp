@@ -303,9 +303,7 @@ namespace gnote {
       return property_background_gdk().get_value();
 
     
-    Glib::RefPtr<Gtk::Style> s = Glib::wrap(gtk_rc_get_style_by_paths(gtk_settings_get_default(),
-                                                                "GtkTextView", "GtkTextView",
-                                                                      GTK_TYPE_TEXT_VIEW), true);
+    GtkStyle * s = gtk_rc_get_style_by_paths(gtk_settings_get_default(), "GtkTextView", "GtkTextView", GTK_TYPE_TEXT_VIEW);
     if (!s) {
       DBG_OUT("get_background: Style for GtkTextView came back null! Returning white...");
       Gdk::Color color;
@@ -313,7 +311,7 @@ namespace gnote {
       return color;
     }
     else
-      return s->get_background(Gtk::STATE_NORMAL);
+      return Glib::wrap(&(s->bg[GTK_STATE_NORMAL]), true);
   }
 
   Gdk::Color NoteTag::render_foreground(ContrastPaletteColor symbol)
