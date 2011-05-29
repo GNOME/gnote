@@ -157,7 +157,7 @@ namespace gnote {
     m_tree = manage(m_tree);
     m_tree->show ();
 
-    m_status_bar.set_has_resize_grip(true);
+    set_has_resize_grip(true);
     m_status_bar.show();
 
     // Update on changes to notes
