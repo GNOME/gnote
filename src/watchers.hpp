@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -254,8 +254,8 @@ namespace gnote {
     bool on_editor_motion(GdkEventMotion *);
     bool m_hovering_on_link;
     static bool s_static_inited;
-    static Gdk::Cursor s_normal_cursor;
-    static Gdk::Cursor s_hand_cursor;
+    static Glib::RefPtr<Gdk::Cursor> s_normal_cursor;
+    static Glib::RefPtr<Gdk::Cursor> s_hand_cursor;
 
   };
 

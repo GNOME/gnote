@@ -1039,14 +1039,14 @@ namespace gnote {
   ////////////////////////////////////////////////////////////////////////
 
   bool MouseHandWatcher::s_static_inited = false;
-  Gdk::Cursor MouseHandWatcher::s_normal_cursor;
-  Gdk::Cursor MouseHandWatcher::s_hand_cursor;
+  Glib::RefPtr<Gdk::Cursor> MouseHandWatcher::s_normal_cursor;
+  Glib::RefPtr<Gdk::Cursor> MouseHandWatcher::s_hand_cursor;
 
   void MouseHandWatcher::_init_static()
   {
     if(!s_static_inited) {
-      s_normal_cursor = Gdk::Cursor(Gdk::XTERM);
-      s_hand_cursor = Gdk::Cursor(Gdk::HAND2);
+      s_normal_cursor = Gdk::Cursor::create(Gdk::XTERM);
+      s_hand_cursor = Gdk::Cursor::create(Gdk::HAND2);
       s_static_inited = true;
     }
   }
