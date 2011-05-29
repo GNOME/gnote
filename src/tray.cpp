@@ -524,7 +524,8 @@ namespace gnote {
       gtk_status_icon_get_geometry(gobj(), &cscreen, area.gobj(), &orientation);
       val = area.get_y();
 
-      Gtk::Requisition menu_req = m_tray->tray_menu()->size_request();
+      Gtk::Requisition menu_req, unused;
+      m_tray->tray_menu()->get_preferred_size(unused, menu_req);
       if (val + menu_req.height >= gdk_screen_get_height(cscreen))
         open_upwards = true;
 
