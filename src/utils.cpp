@@ -70,7 +70,8 @@ namespace gnote {
         menu->get_attach_widget()->get_window()->get_origin(x, y);
         x += menu->get_attach_widget()->get_allocation().get_x();
         
-        Gtk::Requisition menu_req = menu->size_request();
+        Gtk::Requisition menu_req, unused;
+        menu->get_preferred_size(unused, menu_req);
         if (y + menu_req.height >= menu->get_attach_widget()->get_screen()->get_height()) {
           y -= menu_req.height;
         }
@@ -452,12 +453,17 @@ namespace gnote {
     {
       std::vector<std::string> items;
       sharp::string_split(items, data, "\n");
-      load_from_string_list(items);
+      std::vector<Glib::ustring> uitems;
+      for(std::vector<std::string>::iterator iter = items.begin();
+          iter != items.end(); ++iter) {
+        uitems.push_back(*iter);
+      }
+      load_from_string_list(uitems);
     }
 
-    void UriList::load_from_string_list(const std::vector<std::string> & items)
+    void UriList::load_from_string_list(const std::vector<Glib::ustring> & items)
     {
-      for(std::vector<std::string>::const_iterator iter = items.begin();
+      for(std::vector<Glib::ustring>::const_iterator iter = items.begin();
           iter != items.end(); ++iter) {
 
         const std::string & i(*iter);

@@ -118,7 +118,7 @@ namespace gnote {
       
     private:
       void load_from_string(const std::string & data);
-      void load_from_string_list(const std::vector<std::string> & items);
+      void load_from_string_list(const std::vector<Glib::ustring> & items);
     };
 
     class XmlEncoder
