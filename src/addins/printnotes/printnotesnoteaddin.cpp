@@ -240,7 +240,7 @@ namespace printnotes {
     Glib::RefPtr<Pango::Layout> layout = context->create_pango_layout();
 
     layout->set_font_description(
-      get_window()->editor()->get_style()->get_font());
+      get_window()->editor()->get_pango_context()->get_font_description());
     int start_index = p_start.get_line_index();
     indentation = 0;
 
@@ -288,7 +288,7 @@ namespace printnotes {
                                 int page_number, int total_pages)
   {
     Glib::RefPtr<Pango::Layout> layout = context->create_pango_layout();
-    Pango::FontDescription font_desc = get_window()->editor()->get_style()->get_font();
+    Pango::FontDescription font_desc = get_window()->editor()->get_pango_context()->get_font_description();
     font_desc.set_style(Pango::STYLE_NORMAL);
     font_desc.set_weight(Pango::WEIGHT_LIGHT);
     layout->set_font_description(font_desc);
@@ -310,7 +310,7 @@ namespace printnotes {
     std::string timestamp = sharp::DateTime::now().to_string ("%c");
 
     Glib::RefPtr<Pango::Layout> layout = context->create_pango_layout ();
-    Pango::FontDescription font_desc = get_window()->editor()->get_style()->get_font();
+    Pango::FontDescription font_desc = get_window()->editor()->get_pango_context()->get_font_description();
     font_desc.set_style(Pango::STYLE_NORMAL);
     font_desc.set_weight(Pango::WEIGHT_LIGHT);
     layout->set_font_description(font_desc);
