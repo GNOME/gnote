@@ -33,7 +33,7 @@
 #include <gdkmm/pixbuf.h>
 #include <gtkmm/cellrenderer.h>
 #include <gtkmm/checkbutton.h>
-#include <gtkmm/comboboxentry.h>
+#include <gtkmm/combobox.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/menubar.h>
 #include <gtkmm/paned.h>
@@ -161,13 +161,13 @@ private:
       {
         add(text);
       }
-    Gtk::TreeModelColumn<std::string> text;
+    Gtk::TreeModelColumn<Glib::ustring> text;
   };
 
   NoteManager &       m_manager;
   Gtk::MenuBar       *m_menubar;
   RecentSearchColumnTypes m_find_combo_columns;
-  Gtk::ComboBoxEntry  m_find_combo;
+  Gtk::ComboBox       m_find_combo;
   Gtk::Button         m_clear_search_button;
   Gtk::CheckButton    m_case_sensitive;
   Gtk::Statusbar      m_status_bar;

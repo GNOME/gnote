@@ -86,7 +86,7 @@ namespace gnote {
     : utils::ForcedPresentWindow(_("Search All Notes"))
     , m_manager(m)
     , m_menubar(NULL)
-    , m_find_combo(Gtk::ListStore::create(m_find_combo_columns), 0)
+    , m_find_combo(Glib::RefPtr<Gtk::TreeModel>::cast_static(Gtk::ListStore::create(m_find_combo_columns)), true)
     , m_clear_search_button(Gtk::Stock::CLEAR)
     , m_case_sensitive(_("C_ase Sensitive"), true)
     , m_content_vbox(false, 0)
@@ -110,6 +110,7 @@ namespace gnote {
     label->property_xalign() = 1;
 
     label->set_mnemonic_widget(m_find_combo);
+    m_find_combo.set_entry_text_column(0);
     m_find_combo.signal_changed()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_changed));
     m_find_combo.get_entry()->set_activates_default(false);
