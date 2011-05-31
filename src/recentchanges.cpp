@@ -992,13 +992,13 @@ namespace gnote {
 
     const Glib::RefPtr<Gtk::TreeSelection> selection
                                              = tree->get_selection();
-    const std::list<Gtk::TreePath> selected_rows
+    const std::vector<Gtk::TreePath> selected_rows
                                      = selection->get_selected_rows();
     if (selected_rows.empty())
       return;
 
     const Gtk::TreePath & dest_path = selected_rows.front();
-    const std::list<Gtk::TreeViewColumn *> columns
+    const std::vector<Gtk::TreeViewColumn *> columns
                                              = tree->get_columns();
     Gdk::Rectangle cell_rect;
     tree->get_cell_area (dest_path, *columns.front(), cell_rect);
