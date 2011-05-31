@@ -1012,9 +1012,9 @@ namespace gnote {
   {
     Note::List selected_notes;
           
-    Glib::ListHandle<Gtk::TreePath, Gtk::TreePath_Traits> selected_rows =
+    std::vector<Gtk::TreePath> selected_rows =
       m_tree->get_selection()->get_selected_rows ();
-    for(Glib::ListHandle<Gtk::TreePath, Gtk::TreePath_Traits>::const_iterator iter
+    for(std::vector<Gtk::TreePath>::const_iterator iter
           = selected_rows.begin(); iter != selected_rows.end(); ++iter) {
       Note::Ptr note = get_note (*iter);
       if (!note) {
@@ -1368,8 +1368,8 @@ namespace gnote {
         allow_edit = true;
       }
 
-      Glib::ListHandle<Gtk::CellRenderer*> renderers = m_notebooksTree->get_column(0)->get_cell_renderers();
-      for (Glib::ListHandle<Gtk::CellRenderer*>::iterator renderer = renderers.begin();
+      std::vector<Gtk::CellRenderer*> renderers = m_notebooksTree->get_column(0)->get_cells();
+      for (std::vector<Gtk::CellRenderer*>::iterator renderer = renderers.begin();
            renderer != renderers.end(); ++renderer) {
         Gtk::CellRendererText *text_rederer = dynamic_cast<Gtk::CellRendererText*>(*renderer);
         if (text_rederer) {
