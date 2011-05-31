@@ -108,13 +108,17 @@ fi
 AM_CONDITIONAL(HAVE_PANELAPPLETMM, test $have_panelapplet = "yes")
 AC_SUBST(PANELAPPLET_SERVER_DIR)
 
+#GtkSpell disabled until GTK 3.0 is supported
 #
 # Check for recent GtkSpell here.  Prior versions require bug workarounds.
 # http://gtkspell.sourceforge.net/
 #
-PKG_CHECK_MODULES(GTKSPELL, gtkspell-2.0 >= $GTKSPELL_VERSION, 
-			    [FIXED_GTKSPELL="yes";AC_DEFINE([FIXED_GTKSPELL], [1], [Set if the GtkSpell library is recent enough.])
-			    ], FIXED_GTKSPELL="no")
+#PKG_CHECK_MODULES(GTKSPELL, gtkspell-2.0 >= $GTKSPELL_VERSION,
+#			    [FIXED_GTKSPELL="yes";AC_DEFINE([FIXED_GTKSPELL], [1], [Set if the GtkSpell library is recent enough.])
+#			    ], FIXED_GTKSPELL="no")
+FIXED_GTKSPELL="no"
+AC_SUBST(GTKSPELL_CFLAGS)
+AC_SUBST(GTKSPELL_LIBS)
 AM_CONDITIONAL(FIXED_GTKSPELL, test "$FIXED_GTKSPELL" = "yes")
 
 
