@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -39,7 +40,7 @@ namespace gnote {
     {
       // Set up the notebooksTree as a drag target so that notes
       // can be dragged into the notebook.
-      std::list<Gtk::TargetEntry> targets;
+      std::vector<Gtk::TargetEntry> targets;
       targets.push_back(Gtk::TargetEntry ("text/uri-list",
                                           Gtk::TARGET_SAME_APP,
                                           1));
