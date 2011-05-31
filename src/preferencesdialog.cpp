@@ -279,9 +279,9 @@ namespace gnote {
                                       Gtk::PACK_EXPAND_WIDGET,
                                       0);
       renameBehaviorCombo = manage(new Gtk::ComboBoxText());
-      renameBehaviorCombo->append_text(_("Ask me what to do"));
-      renameBehaviorCombo->append_text(_("Never rename links"));
-      renameBehaviorCombo->append_text(_("Always rename links"));
+      renameBehaviorCombo->append(_("Ask me what to do"));
+      renameBehaviorCombo->append(_("Never rename links"));
+      renameBehaviorCombo->append(_("Always rename links"));
       Preferences & preferences = Preferences::obj();
       int rename_behavior = preferences.get<int>(
                               Preferences::NOTE_RENAME_BEHAVIOR);
