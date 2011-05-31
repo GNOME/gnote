@@ -122,10 +122,10 @@ void BacklinksNoteAddin::update_menu()
   //
   // Clear out the old list
   //
-  Gtk::MenuShell::MenuList menu_items = m_menu->items();
-  for(Gtk::MenuShell::MenuList::reverse_iterator iter = menu_items.rbegin();
+  std::vector<Gtk::Widget*> menu_items = m_menu->get_children();
+  for(std::vector<Gtk::Widget*>::reverse_iterator iter = menu_items.rbegin();
       iter != menu_items.rend(); ++iter) {
-    m_menu->remove(*iter);
+    m_menu->remove(**iter);
   }
 
   //
@@ -141,7 +141,7 @@ void BacklinksNoteAddin::update_menu()
   }
 
   // If nothing was found, add in a "dummy" item
-  if (m_menu->items().size() == 0) {
+  if (m_menu->get_children().size() == 0) {
     Gtk::MenuItem *blank_item = manage(new Gtk::MenuItem(_("(none)")));
     blank_item->set_sensitive(false);
     blank_item->show_all ();
