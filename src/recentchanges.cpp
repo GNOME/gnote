@@ -854,8 +854,7 @@ namespace gnote {
       if (m_tree->get_selection()->is_selected(dest_path) 
           && (ev->state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0) {
         if (column && (ev->button == 1)) {
-          Glib::ListHandle<Gtk::CellRenderer *> renderers = column->get_cell_renderers();
-          Gtk::CellRenderer *renderer = *renderers.begin();
+          Gtk::CellRenderer *renderer = column->get_first_cell();
           Gdk::Rectangle background_area;
           m_tree->get_background_area (dest_path, *column, background_area);
           Gdk::Rectangle cell_area;
