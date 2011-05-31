@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -67,7 +68,7 @@ namespace bugzilla {
     pack_start(*l, false, false, 0);
 
     icon_store = Gtk::ListStore::create(m_columns);
-    icon_store->set_sort_column_id(m_columns.host, Gtk::SORT_ASCENDING);
+    icon_store->set_sort_column(m_columns.host, Gtk::SORT_ASCENDING);
 
     icon_tree = manage(new Gtk::TreeView (icon_store));
     icon_tree->set_headers_visible(true);
