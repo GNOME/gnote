@@ -725,7 +725,7 @@ namespace gnote {
       return;
     }
                   
-    std::vector<std::string> uris;
+    std::vector<Glib::ustring> uris;
     for(Note::List::const_iterator iter = selected_notes.begin();
         iter != selected_notes.end(); ++iter) {
 
