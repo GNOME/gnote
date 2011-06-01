@@ -107,7 +107,7 @@ tomboy_window_move_to_current_workspace (GtkWindow *window)
 	xev.xclient.window = GDK_WINDOW_XID (gdkwin);
 	xev.xclient.message_type = 
 		gdk_x11_atom_to_xatom_for_display(
-			gdk_drawable_get_display (gdkwin),
+			gdk_window_get_display (gdkwin),
 			wm_desktop);
 	xev.xclient.format = 32;
 	xev.xclient.data.l[0] = workspace;
