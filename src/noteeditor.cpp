@@ -158,8 +158,8 @@ namespace gnote {
   {
     bool has_url = false;
 
-    Gdk::ListHandle_AtomString targets = context->get_targets();
-    for(Gdk::ListHandle_AtomString::const_iterator iter = targets.begin();
+    std::vector<std::string> targets = context->list_targets();
+    for(std::vector<std::string>::const_iterator iter = targets.begin();
         iter != targets.end(); ++iter) {
       const std::string & target(*iter);
       if (target == "text/uri-list" ||
