@@ -73,7 +73,7 @@ tomboy_window_move_to_current_workspace (GtkWindow *window)
 {
 	GdkWindow *gdkwin = gtk_widget_get_window(GTK_WIDGET (window));
 	GdkWindow *rootwin = 
-		gdk_screen_get_root_window (gdk_drawable_get_screen (gdkwin));
+		gdk_screen_get_root_window (gdk_window_get_screen (gdkwin));
 
 	GdkAtom current_desktop = 
 		gdk_atom_intern ("_NET_CURRENT_DESKTOP", FALSE);
