@@ -232,8 +232,8 @@ namespace bugzilla {
     dialog.set_local_only(true);
     dialog.set_current_folder (last_opened_dir);
 
-    Gtk::FileFilter filter;
-    filter.add_pixbuf_formats ();
+    Glib::RefPtr<Gtk::FileFilter> filter = Gtk::FileFilter::create();
+    filter->add_pixbuf_formats ();
 
     dialog.add_filter(filter);
 
