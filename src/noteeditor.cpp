@@ -52,10 +52,10 @@ namespace gnote {
     // Set Font from GConf preference
     if (Preferences::obj().get<bool>(Preferences::ENABLE_CUSTOM_FONT)) {
       std::string font_string = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);
-      modify_font (Pango::FontDescription(font_string));
+      override_font (Pango::FontDescription(font_string));
     }
     else {
-      modify_font (get_gnome_document_font_description ());
+      override_font (get_gnome_document_font_description ());
     }
 
     Preferences::obj().signal_setting_changed()
@@ -135,7 +135,7 @@ namespace gnote {
     } 
     else {
       DBG_OUT("Switching back to the default font");
-      modify_font (get_gnome_document_font_description());
+      override_font (get_gnome_document_font_description());
     }
   }
 
@@ -143,7 +143,7 @@ namespace gnote {
   void NoteEditor::modify_font_from_string (const std::string & fontString)
   {
     DBG_OUT("Switching note font to '%s'...", fontString.c_str());
-    modify_font (Pango::FontDescription(fontString));
+    override_font (Pango::FontDescription(fontString));
   }
 
   
