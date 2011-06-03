@@ -46,9 +46,6 @@ namespace gnote {
                                                                 &on_font_setting_changed_gconf,
                                                                 this);
 
-    // Make sure the cursor position is visible
-    scroll_to (buffer->get_insert());
-
     // Set Font from GConf preference
     if (Preferences::obj().get<bool>(Preferences::ENABLE_CUSTOM_FONT)) {
       std::string font_string = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);

@@ -136,6 +136,7 @@ public:
 protected:
   virtual bool on_delete_event(GdkEventAny *ev);
   virtual void on_hide();
+  virtual void on_show();
 private:
   bool on_key_pressed(GdkEventKey*);
   void close_window_handler();

@@ -622,6 +622,13 @@ namespace gnote {
     Glib::RefPtr<NoteBuffer>::cast_static(m_editor->get_buffer())->change_cursor_depth_directional(false);
   }
 
+  void NoteWindow::on_show()
+  {
+    utils::ForcedPresentWindow::on_show();
+    // Make sure the cursor position is visible
+    m_editor->scroll_to (m_editor->get_buffer()->get_insert());
+  }
+
   
   NoteFindBar::NoteFindBar(Note & note)
     : Gtk::HBox(false, 0)
