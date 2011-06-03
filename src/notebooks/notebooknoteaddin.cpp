@@ -72,15 +72,7 @@ namespace notebooks {
     m_toolButton = Gtk::manage(
       new gnote::utils::ToolMenuButton(*manage(new Gtk::Image(s_notebookIcon)), "",
                                        m_menu));
-    Gtk::Label * l = manage(new Gtk::Label());
-    // Ellipsize names longer than 12 chars in length
-    // TODO: Should we hardcode the ellipsized notebook name to 12 chars?
-    l->set_max_width_chars(12);
-    l->set_ellipsize(Pango::ELLIPSIZE_END);
-    l->show_all ();
-    m_toolButton->set_label_widget(*l);
     m_toolButton->set_is_important(true);
-    m_toolButton->set_homogeneous(false);
     m_toolButton->set_tooltip_text(_("Place this note into a notebook"));
 
     m_show_menu_cid = m_menu->signal_show()
@@ -168,6 +160,7 @@ namespace notebooks {
     Gtk::Label * l = dynamic_cast<Gtk::Label*>(m_toolButton->get_label_widget());
     if (l) {
       l->set_text(labelText);
+      m_toolButton->show_all();
     }
   }
 
