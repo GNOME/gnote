@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -69,7 +69,7 @@ const char * TomboyImportModule::version() const
 void TomboyImportAddin::initialize()
 {
   m_tomboy_path =
-    Glib::build_filename(Glib::get_home_dir(), ".tomboy");
+    Glib::build_filename(Glib::get_user_data_dir(), "tomboy");
 
   m_initialized = true;
 }
