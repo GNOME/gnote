@@ -72,8 +72,6 @@ PKG_CHECK_MODULES(GCONF, [gconf-2.0])
 PKG_CHECK_MODULES(PCRE, [libpcrecpp])
 PKG_CHECK_MODULES(UUID, [uuid])
 
-AC_DEFINE(HAVE_CLASS_GTK__WIDGET_SIGNAL_POPUP_MENU, 1, [Define to 1 if class Gtk::Widget has signal_popup_menu])
-
 AC_ARG_ENABLE([applet],
 	AS_HELP_STRING([--disable-applet],[Disable panel applet]),
 	[],[enable_applet=yes])
