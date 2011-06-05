@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,9 +27,8 @@
 #include <gtkmm/eventbox.h>
 #include <gtkmm/selectiondata.h>
 
-#include <libpanelappletmm/applet.h>
-#include <libpanelappletmm/enums.h>
-#include <libpanelappletmm/factory.h>
+#include <panel-applet.h>
+#include <glibmm/i18n.h>
 
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
@@ -46,8 +46,8 @@ namespace gnote {
 namespace panel {
 
 
-#define IID "OAFIID:GnoteApplet"
-#define FACTORY_IID "OAFIID:GnoteApplet_Factory"
+#define IID "GnoteApplet"
+#define FACTORY_IID "GnoteAppletFactory"
 
 enum PanelOrientation
 {
@@ -120,7 +120,7 @@ GnotePanelAppletEventBox::~GnotePanelAppletEventBox()
 bool GnotePanelAppletEventBox::button_press(GdkEventButton *ev)
 {
   Gtk::Widget * parent = get_parent();
-  switch (ev->button) 
+  switch (ev->button)
   {
   case 1:
     m_tray->update_tray_menu(parent);
@@ -213,7 +213,7 @@ void GnotePanelAppletEventBox::show_menu(bool select_first_item)
 // Support dropping text/uri-lists and _NETSCAPE_URLs currently.
 void GnotePanelAppletEventBox::setup_drag_and_drop()
 {
-  std::list<Gtk::TargetEntry> targets;
+  std::vector<Gtk::TargetEntry> targets;
 
   targets.push_back(Gtk::TargetEntry ("text/uri-list", (Gtk::TargetFlags)0, 0));
   targets.push_back(Gtk::TargetEntry ("_NETSCAPE_URL", (Gtk::TargetFlags)0, 0));
@@ -325,12 +325,12 @@ void GnotePanelAppletEventBox::on_size_allocate(Gtk::Allocation& allocation)
     }
 
     m_panel_size = get_allocation().get_height();
-  } 
+  }
   else {
     if (m_panel_size == get_allocation().get_width()) {
       return;
     }
-    
+
     m_panel_size = get_allocation().get_width();
   }
 
@@ -349,7 +349,8 @@ bool GnotePanelAppletEventBox::menu_opens_upward()
   val = y;
   screen = get_screen();
 
-  Gtk::Requisition req = m_tray->tray_menu()->size_request();
+  Gtk::Requisition req, unused;
+  m_tray->tray_menu()->get_preferred_size(unused, req);
   if ((val + req.height) >= screen->get_height()) {
     open_upwards = true;
   }
@@ -358,108 +359,75 @@ bool GnotePanelAppletEventBox::menu_opens_upward()
 }
 
 
-class GnoteApplet
-  : public Gnome::Panel::Applet
-{
-public:
-  explicit GnoteApplet(PanelApplet *);
-  virtual ~GnoteApplet();
-
-protected:
-  virtual void on_change_background(Gnome::Panel::AppletBackgroundType type, const Gdk::Color & color, const Glib::RefPtr<const Gdk::Pixmap>& pixmap);
-  virtual void on_change_size(int size);
-private:
-  static void show_preferences_verb(BonoboUIComponent*, void*, const char*);
-  static void show_help_verb(BonoboUIComponent*, void*, const char*);
-  static void show_about_verb(BonoboUIComponent*, void*, const char*);
-
-
-  NoteManager & m_manager;
-  GnotePanelAppletEventBox m_applet_event_box;
-  PrefsKeybinder *m_keybinder;
-};
-
-
-GnoteApplet::GnoteApplet(PanelApplet *castitem)
-  : Gnome::Panel::Applet(castitem)
-  , m_manager(Gnote::obj().default_note_manager())
-  , m_applet_event_box(m_manager)
-  , m_keybinder(new GnotePrefsKeybinder(m_manager, m_applet_event_box))
-{
-  static const BonoboUIVerb menu_verbs[] = {
-    BONOBO_UI_VERB("Props", &GnoteApplet::show_preferences_verb),
-    BONOBO_UI_VERB("Help", &GnoteApplet::show_help_verb),
-    BONOBO_UI_VERB("About", &GnoteApplet::show_about_verb),
-    BONOBO_UI_VERB_END
-  };
-
-  setup_menu(DATADIR"/gnote", "GNOME_GnoteApplet.xml", "", menu_verbs, this);
-
-  add (m_applet_event_box);
-  Gnote::obj().set_tray(m_applet_event_box.get_tray());
-  on_change_size (get_size());
-
-  set_flags(Gnome::Panel::APPLET_EXPAND_MINOR);
-
-  show_all ();
-}
-
-
-GnoteApplet::~GnoteApplet()
-{
-  delete m_keybinder;
-}
-
-void GnoteApplet::show_preferences_verb(BonoboUIComponent*, void*, const char*)
+static void show_preferences_action(GtkAction*, gpointer)
 {
   ActionManager::obj()["ShowPreferencesAction"]->activate();
 }
 
-void GnoteApplet::show_help_verb(BonoboUIComponent*, void* data, const char*)
+
+static void show_help_action(GtkAction*, gpointer data)
 {
-  GnoteApplet* applet = static_cast<GnoteApplet*>(data);
   // Don't use the ActionManager in this case because
   // the handler won't know about the Screen.
-  utils::show_help("gnote", "", applet->get_screen()->gobj(), NULL);
+  utils::show_help("gnote", "", gtk_widget_get_screen(GTK_WIDGET(data)), NULL);
 }
 
-void GnoteApplet::show_about_verb(BonoboUIComponent*, void*, const char*)
+static void show_about_action(GtkAction*, gpointer)
 {
   ActionManager::obj()["ShowAboutAction"]->activate();
 }
 
-  void GnoteApplet::on_change_background(Gnome::Panel::AppletBackgroundType type, 
-                                       const Gdk::Color & color, 
-                                       const Glib::RefPtr<const Gdk::Pixmap>& pixmap)
-{
-  Glib::RefPtr<Gtk::RcStyle> rcstyle(Gtk::RcStyle::create());
-  m_applet_event_box.unset_style();
-  m_applet_event_box.modify_style (rcstyle);
 
-  switch (type) {
-  case Gnome::Panel::COLOR_BACKGROUND:
-    m_applet_event_box.modify_bg(Gtk::STATE_NORMAL, color);
-    break;
-  case Gnome::Panel::NO_BACKGROUND:
-    break;
-  case Gnome::Panel::PIXMAP_BACKGROUND:
-    Glib::RefPtr<Gtk::Style> copy = m_applet_event_box.get_style()->copy();
-    copy->set_bg_pixmap(Gtk::STATE_NORMAL, pixmap);
-    m_applet_event_box.set_style(copy);
-    break;
-  }
+static const GtkActionEntry applet_menu_actions[] = {
+  { "Props", GTK_STOCK_PREFERENCES, N_("_Preferences"), NULL, NULL, G_CALLBACK(show_preferences_action) },
+  { "Help", GTK_STOCK_HELP, N_("_Help"), NULL, NULL, G_CALLBACK(show_help_action) },
+  { "About", GTK_STOCK_ABOUT, N_("_About"), NULL, NULL, G_CALLBACK(show_about_action) }
+};
+
+
+
+static void on_applet_change_size(PanelApplet*, gint size, gpointer data)
+{
+  static_cast<GnotePanelAppletEventBox*>(data)->set_size_request(size, size);
 }
 
 
-void GnoteApplet::on_change_size(int size)
+gboolean gnote_applet_fill(PanelApplet *applet, const gchar *iid, gpointer data)
 {
-  m_applet_event_box.set_size_request (size, size);
+  if(strcmp(iid, IID) != 0)
+    return FALSE;
+
+  GnotePanelAppletEventBox *applet_event_box = static_cast<GnotePanelAppletEventBox*>(data);
+  gtk_container_add(GTK_CONTAINER(applet), GTK_WIDGET(applet_event_box->gobj()));
+  Gnote::obj().set_tray(applet_event_box->get_tray());
+  g_signal_connect(G_OBJECT(applet), "change-size",
+                   G_CALLBACK(on_applet_change_size), applet_event_box);
+  Gdk::RGBA color;
+  color.set_alpha(1.0);
+  applet_event_box->override_background_color(color);
+
+  GtkActionGroup *action_group = gtk_action_group_new("Gnote Applet Actions");
+  gtk_action_group_set_translation_domain(action_group, GETTEXT_PACKAGE);
+  gtk_action_group_add_actions(action_group, applet_menu_actions,
+                               G_N_ELEMENTS(applet_menu_actions), applet);
+  std::string ui_path = Glib::build_filename(DATADIR"/gnote", "GNOME_GnoteApplet.xml");
+  panel_applet_setup_menu_from_file(applet, ui_path.c_str(), action_group);
+  g_object_unref(action_group);
+
+  gtk_widget_show_all(GTK_WIDGET(applet));
+  // Set initial icon size according current panel size
+  g_signal_emit_by_name(applet, "change-size", panel_applet_get_size(applet));
+  return TRUE;
 }
 
 
 int register_applet()
 {
-  int returncode = Gnome::Panel::factory_main<GnoteApplet>(FACTORY_IID);
+  NoteManager &manager = Gnote::obj().default_note_manager();
+  GnotePanelAppletEventBox applet_event_box(manager);
+  GnotePrefsKeybinder key_binder(manager, applet_event_box);
+  int returncode = panel_applet_factory_main(FACTORY_IID, PANEL_TYPE_APPLET,
+                                             gnote_applet_fill, &applet_event_box);
   return returncode;
 }
 

@@ -35,8 +35,8 @@
 #include <gtkmm/main.h>
 #include <gtkmm/aboutdialog.h>
 
-#if HAVE_PANELAPPLETMM
-#include <libpanelappletmm/init.h>
+#if HAVE_PANELAPPLET
+#include <panel-applet.h>
 #endif
 
 #include "gnote.hpp"
@@ -53,7 +53,7 @@
 #include "sharp/streamreader.hpp"
 #include "sharp/files.hpp"
 
-#if HAVE_PANELAPPLETMM
+#if HAVE_PANELAPPLET
 #include "applet.hpp"
 #endif
 
@@ -129,10 +129,10 @@ namespace gnote {
       am["QuitGNoteAction"]->set_visible(false);
       
       // register panel applet factory
-#if HAVE_PANELAPPLETMM
-      Gnome::Panel::init("gnote", VERSION, argc, argv);
-
-      panel::register_applet();
+#if HAVE_PANELAPPLET
+      return panel::register_applet();
+#else
+      return 0;
 #endif
     }
     else {
