@@ -15,17 +15,9 @@ desktop_DATA = $(desktop_files)
 #pkgconfig_DATA = $(pkgconfig_in_files:.pc.in=.pc)
 
 
-schemasdir	 = $(GCONF_SCHEMA_FILE_DIR)
-schemas_in_files = gnote.schemas.in
-schemas_DATA     = $(schemas_in_files:.schemas.in=.schemas)
-
-@INTLTOOL_SCHEMAS_RULE@
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) \
-	$(GCONFTOOL) --makefile-install-rule $(schemas_DATA)
-endif
+gsettings_SCHEMAS = org.gnome.gnote.gschema.xml
+@INTLTOOL_XML_NOMERGE_RULE@
+@GSETTINGS_RULES@
 
 
 if HAVE_DBUS
@@ -78,7 +70,7 @@ EXTRA_DIST = 					\
 	GNOME_GnoteApplet.xml                   \
 	$(desktop_in_files)     		\
 	$(pkgconfig_in_files)			\
-	$(schemas_in_files)     		\
+	org.gnome.gnote.gschema.xml		\
 	$(man_MANS)				\
 	$(noinst_DATA)				\
 	$(service_in_files)                     \
@@ -88,8 +80,8 @@ EXTRA_DIST = 					\
 DISTCLEANFILES = 				\
 	$(desktop_files)       			\
 	$(pkgconfig_DATA)			\
-	$(schemas_DATA)				\
 	$(applet_DATA)                          \
 	$(applet_DATA).in                       \
 	$(service_DATA)                         \
-	$(dbusservice_DATA)
+	$(dbusservice_DATA)			\
+	$(gsettings_SCHEMAS)

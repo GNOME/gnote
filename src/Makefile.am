@@ -6,7 +6,7 @@ EXTRA_DIST = gnote-applet.in
 
 INCLUDES = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
-	@GCONF_CFLAGS@ @GTK_CFLAGS@ \
+	@GTK_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ @LIBXML_CFLAGS@ \
 	@LIBXSLT_CFLAGS@ \
 	@PCRE_CFLAGS@ \
@@ -19,7 +19,6 @@ AM_LDFLAGS=-export-dynamic
 
 GNOTE_LIBS = libgnote.a $(top_builddir)/libtomboy/libtomboy.la \
 	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
-	@GCONF_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@PCRE_LIBS@ \
 	@DBUS_LIBS@ \
