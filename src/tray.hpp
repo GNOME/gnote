@@ -125,11 +125,11 @@ private:
   Gtk::Menu               *m_context_menu;
 };
 
-class GConfKeybindingToAccel
+class KeybindingToAccel
 {
 public:
-  static std::string get_shortcut (const std::string & gconf_path);
-  static void add_accelerator (Gtk::MenuItem & item, const std::string & gconf_path);
+  static std::string get_shortcut (const std::string & key);
+  static void add_accelerator (Gtk::MenuItem & item, const std::string & key);
 
   static Glib::RefPtr<Gtk::AccelGroup> get_accel_group();
 private:
