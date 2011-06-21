@@ -130,7 +130,8 @@ bool GnotePanelAppletEventBox::button_press(GdkEventButton *ev)
     return true;
     break;
   case 2:
-    if (Preferences::obj().get<bool>(Preferences::ENABLE_ICON_PASTE)) {
+    if (Preferences::obj().get_schema_settings(
+            Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_ICON_PASTE)) {
       // Give some visual feedback
       drag_highlight();
       bool retval = paste_primary_clipboard ();
