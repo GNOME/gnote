@@ -35,7 +35,6 @@ extern "C" {
 #include <gtkspell/gtkspell.h>
 }
 #endif
-#include <gconf/gconf-client.h>
 
 #include <gdkmm/cursor.h>
 #include <gtkmm/textiter.h>
@@ -105,7 +104,7 @@ namespace gnote {
   private:
     void attach();
     void detach();
-    void on_enable_spellcheck_changed(Preferences *, GConfEntry *);
+    void on_enable_spellcheck_changed(const Glib::ustring & key);
     void tag_applied(const Glib::RefPtr<const Gtk::TextTag> &,
                      const Gtk::TextIter &, const Gtk::TextIter &);
 
@@ -218,7 +217,7 @@ namespace gnote {
       {
       }
   private:
-    void on_enable_wikiwords_changed(Preferences *, GConfEntry *);
+    void on_enable_wikiwords_changed(const Glib::ustring & key);
     void apply_wikiword_to_block (Gtk::TextIter start, Gtk::TextIter end);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);

@@ -296,9 +296,11 @@ namespace gnote {
 
   void NoteSpellChecker::on_note_opened ()
   {
-    Preferences::obj().signal_setting_changed()
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+    settings->signal_changed()
       .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_enable_spellcheck_changed));
-    if(Preferences::obj().get<bool>(Preferences::ENABLE_SPELLCHECKING)) {
+    if(settings->get_boolean(Preferences::ENABLE_SPELLCHECKING)) {
       attach ();
     }
   }
@@ -336,16 +338,15 @@ namespace gnote {
   }
   
 
-  void NoteSpellChecker::on_enable_spellcheck_changed(Preferences *, GConfEntry * entry)
+  void NoteSpellChecker::on_enable_spellcheck_changed(const Glib::ustring & key)
   {
-    const char * key = gconf_entry_get_key(entry);
-    
-    if (strcmp(key, Preferences::ENABLE_SPELLCHECKING) != 0) {
+    if (key != Preferences::ENABLE_SPELLCHECKING) {
       return;
     }
-    GConfValue *value = gconf_entry_get_value(entry);
+    bool value = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(key);
     
-    if (gconf_value_get_bool(value)) {
+    if (value) {
       attach ();
     } 
     else {
@@ -953,26 +954,27 @@ namespace gnote {
 
   void NoteWikiWatcher::on_note_opened ()
   {
-    if ((bool) Preferences::obj().get<bool> (Preferences::ENABLE_WIKIWORDS)) {
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(
+        Preferences::SCHEMA_GNOTE);
+    if (settings->get_boolean(Preferences::ENABLE_WIKIWORDS)) {
       m_on_insert_text_cid = get_buffer()->signal_insert().connect(
         sigc::mem_fun(*this, &NoteWikiWatcher::on_insert_text));
       m_on_delete_range_cid = get_buffer()->signal_erase().connect(
         sigc::mem_fun(*this, &NoteWikiWatcher::on_delete_range));
     }
-    Preferences::obj().signal_setting_changed()
+    settings->signal_changed()
       .connect(sigc::mem_fun(*this, &NoteWikiWatcher::on_enable_wikiwords_changed));
   }
 
 
-  void NoteWikiWatcher::on_enable_wikiwords_changed(Preferences *, GConfEntry * entry)
+  void NoteWikiWatcher::on_enable_wikiwords_changed(const Glib::ustring & key)
   {
-    const char * key = gconf_entry_get_key(entry);
-    
-    if (strcmp(key, Preferences::ENABLE_WIKIWORDS) != 0) {
+    if(key != Preferences::ENABLE_WIKIWORDS) {
       return;
     }
-    GConfValue * value = gconf_entry_get_value(entry);
-    if (gconf_value_get_bool(value)) {
+    bool value = Preferences::obj().get_schema_settings(
+        Preferences::SCHEMA_GNOTE)->get_boolean(key);
+    if (value) {
       m_on_insert_text_cid = get_buffer()->signal_insert().connect(
         sigc::mem_fun(*this, &NoteWikiWatcher::on_insert_text));
       m_on_delete_range_cid = get_buffer()->signal_erase().connect(
