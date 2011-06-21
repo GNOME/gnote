@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -67,8 +68,7 @@ private:
   void on_reset_sync_addin_button();
   void on_save_sync_addin_button();
 
-  void on_preferences_setting_changed(Preferences * preferences,
-                                      GConfEntry * entry);
+  void on_preferences_setting_changed(const Glib::ustring & key);
   void on_rename_behavior_changed();
 
   sharp::DynamicModule * get_selected_addin();

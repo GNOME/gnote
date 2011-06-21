@@ -158,10 +158,9 @@ namespace gnote {
       add_action_widget (*button, Gtk::RESPONSE_CLOSE);
       set_default_response(Gtk::RESPONSE_CLOSE);
 
-    Preferences::obj().signal_setting_changed().connect(
-      sigc::mem_fun(
-        *this,
-        &PreferencesDialog::on_preferences_setting_changed));
+    Preferences::obj().get_schema_settings(
+      Preferences::SCHEMA_GNOTE)->signal_changed().connect(
+        sigc::mem_fun(*this, &PreferencesDialog::on_preferences_setting_changed));
   }
 
   void PreferencesDialog::enable_addin(bool enable)
@@ -205,6 +204,7 @@ namespace gnote {
       Gtk::CheckButton *check;
       Gtk::Alignment *align;
       sharp::PropertyEditorBool *peditor, *font_peditor,* bullet_peditor;
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
 
       Gtk::VBox *options_list = manage(new Gtk::VBox(false, 12));
       options_list->set_border_width(12);
@@ -237,7 +237,7 @@ namespace gnote {
 
       check = manage(make_check_button (_("Highlight _WikiWords")));
       options_list->pack_start (*check, false, false, 0);
-      peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_WIKIWORDS, *check);
+      peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_WIKIWORDS, *check);
       peditor->setup();
 
       label = manage(make_tip_label (
@@ -250,7 +250,7 @@ namespace gnote {
       // Auto bulleted list
       check = manage(make_check_button (_("Enable auto-_bulleted lists")));
       options_list->pack_start (*check, false, false, 0);
-      bullet_peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_AUTO_BULLETED_LISTS, 
+      bullet_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_AUTO_BULLETED_LISTS, 
                                                        *check);
       bullet_peditor->setup();
 
@@ -259,7 +259,7 @@ namespace gnote {
       Gtk::HBox * const font_box = manage(new Gtk::HBox(false, 0));
       check = manage(make_check_button (_("Use custom _font")));
       font_box->pack_start(*check, Gtk::PACK_EXPAND_WIDGET, 0);
-      font_peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_CUSTOM_FONT, 
+      font_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_CUSTOM_FONT, 
                                                      *check);
       font_peditor->setup();
 
@@ -282,13 +282,10 @@ namespace gnote {
       renameBehaviorCombo->append(_("Ask me what to do"));
       renameBehaviorCombo->append(_("Never rename links"));
       renameBehaviorCombo->append(_("Always rename links"));
-      Preferences & preferences = Preferences::obj();
-      int rename_behavior = preferences.get<int>(
-                              Preferences::NOTE_RENAME_BEHAVIOR);
+      int rename_behavior = settings->get_int(Preferences::NOTE_RENAME_BEHAVIOR);
       if (0 > rename_behavior || 2 < rename_behavior) {
         rename_behavior = 0;
-        preferences.set<int>(Preferences::NOTE_RENAME_BEHAVIOR,
-                             rename_behavior);
+        settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, rename_behavior);
       }
       renameBehaviorCombo->set_active(rename_behavior);
       renameBehaviorCombo->signal_changed().connect(
@@ -348,7 +345,8 @@ namespace gnote {
     button->add (*font_box);
     button->show ();
 
-    std::string font_desc = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);
+    std::string font_desc = Preferences::obj().get_schema_settings(
+        Preferences::SCHEMA_GNOTE)->get_string(Preferences::CUSTOM_FONT_FACE);
     update_font_button (font_desc);
 
     return button;
@@ -364,6 +362,9 @@ namespace gnote {
     Gtk::Entry* entry;
     sharp::PropertyEditorBool *keybind_peditor;
     sharp::PropertyEditor *peditor;
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    Glib::RefPtr<Gio::Settings> keybindings_settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_KEYBINDINGS);
 
     Gtk::VBox* hotkeys_list = new Gtk::VBox (false, 12);
     hotkeys_list->set_border_width(12);
@@ -375,7 +376,7 @@ namespace gnote {
     check = manage(make_check_button (_("Listen for _Hotkeys")));
     hotkeys_list->pack_start(*check, false, false, 0);
 
-    keybind_peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_KEYBINDINGS, *check);
+    keybind_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_KEYBINDINGS, *check);
     keybind_peditor->setup();
 
     label = manage(make_tip_label (
@@ -407,8 +408,9 @@ namespace gnote {
     entry->show ();
     table->attach (*entry, 1, 2, 0, 1);
 
-    peditor = new sharp::PropertyEditor(Preferences::KEYBINDING_SHOW_NOTE_MENU,
-                                 *entry);
+    peditor = new sharp::PropertyEditor(keybindings_settings,
+                                        Preferences::KEYBINDING_SHOW_NOTE_MENU,
+                                        *entry);
     peditor->setup();
     keybind_peditor->add_guard (entry);
 
@@ -423,8 +425,9 @@ namespace gnote {
     entry->show ();
     table->attach (*entry, 1, 2, 1, 2);
 
-    peditor = new sharp::PropertyEditor(Preferences::KEYBINDING_OPEN_START_HERE,
-                                 *entry);
+    peditor = new sharp::PropertyEditor(keybindings_settings,
+                                        Preferences::KEYBINDING_OPEN_START_HERE,
+                                        *entry);
     peditor->setup();
     keybind_peditor->add_guard (entry);
 
@@ -438,8 +441,9 @@ namespace gnote {
     entry->show ();
     table->attach (*entry, 1, 2, 2, 3);
     
-    peditor = new sharp::PropertyEditor(Preferences::KEYBINDING_CREATE_NEW_NOTE,
-                                 *entry);
+    peditor = new sharp::PropertyEditor(keybindings_settings,
+                                        Preferences::KEYBINDING_CREATE_NEW_NOTE,
+                                        *entry);
     peditor->setup();
     keybind_peditor->add_guard (entry);
 
@@ -453,7 +457,8 @@ namespace gnote {
     entry->show ();
     table->attach(*entry, 1, 2, 3, 4);
 
-    peditor = new sharp::PropertyEditor(Preferences::KEYBINDING_OPEN_RECENT_CHANGES,
+    peditor = new sharp::PropertyEditor(keybindings_settings,
+                                        Preferences::KEYBINDING_OPEN_RECENT_CHANGES,
                                         *entry);
     peditor->setup();
     keybind_peditor->add_guard (entry);
@@ -920,13 +925,13 @@ namespace gnote {
     Gtk::FontSelectionDialog *font_dialog =
       new Gtk::FontSelectionDialog (_("Choose Note Font"));
 
-    std::string font_name = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    std::string font_name = settings->get_string(Preferences::CUSTOM_FONT_FACE);
     font_dialog->set_font_name(font_name);
 
     if (Gtk::RESPONSE_OK == font_dialog->run()) {
       if (font_dialog->get_font_name() != font_name) {
-        Preferences::obj().set<std::string>(Preferences::CUSTOM_FONT_FACE,
-                                            font_dialog->get_font_name());
+        settings->set_string(Preferences::CUSTOM_FONT_FACE, font_dialog->get_font_name());
 
         update_font_button (font_dialog->get_font_name());
       }
@@ -965,19 +970,15 @@ namespace gnote {
 
 
 
-  void  PreferencesDialog::on_preferences_setting_changed(
-                             Preferences * preferences,
-                             GConfEntry * entry)
+  void  PreferencesDialog::on_preferences_setting_changed(const Glib::ustring & key)
   {
-    const char * const key = gconf_entry_get_key(entry);
-
-    if (strcmp(key, Preferences::NOTE_RENAME_BEHAVIOR) == 0) {
-      const GConfValue * const value = gconf_entry_get_value(entry);
-      int rename_behavior = gconf_value_get_int(value);
+    if (key == Preferences::NOTE_RENAME_BEHAVIOR) {
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+        .get_schema_settings(Preferences::SCHEMA_GNOTE);
+      int rename_behavior = settings->get_int(key);
       if (0 > rename_behavior || 2 < rename_behavior) {
         rename_behavior = 0;
-        preferences->set<int>(Preferences::NOTE_RENAME_BEHAVIOR,
-                              rename_behavior);
+        settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, rename_behavior);
       }
       if (renameBehaviorCombo->get_active_row_number()
             != rename_behavior) {
@@ -990,9 +991,8 @@ namespace gnote {
 
   void  PreferencesDialog::on_rename_behavior_changed()
   {
-    Preferences::obj().set<int>(
-      Preferences::NOTE_RENAME_BEHAVIOR,
-      renameBehaviorCombo->get_active_row_number());
+    Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_int(
+        Preferences::NOTE_RENAME_BEHAVIOR, renameBehaviorCombo->get_active_row_number());
   }
 
 
