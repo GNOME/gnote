@@ -800,10 +800,9 @@ namespace gnote {
     }
 
     if (!linking_notes.empty()) {
-      Preferences & preferences = Preferences::obj();
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
       const NoteRenameBehavior behavior
-        = static_cast<NoteRenameBehavior>(
-            preferences.get<int>(Preferences::NOTE_RENAME_BEHAVIOR));
+        = static_cast<NoteRenameBehavior>(settings->get_int(Preferences::NOTE_RENAME_BEHAVIOR));
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
         NoteRenameDialog dlg(linking_notes, old_title, self);
@@ -813,8 +812,7 @@ namespace gnote {
         if (Gtk::RESPONSE_CANCEL != response
             && NOTE_RENAME_ALWAYS_SHOW_DIALOG
                  != selected_behavior) {
-          preferences.set<int>(Preferences::NOTE_RENAME_BEHAVIOR,
-                               selected_behavior);
+          settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, selected_behavior);
         }
 
         const NoteRenameDialog::MapPtr notes = dlg.get_notes();
@@ -1175,7 +1173,8 @@ namespace gnote {
 
   bool Note::is_pinned() const
   {
-    std::string pinned_uris = Preferences::obj().get<std::string>(Preferences::MENU_PINNED_NOTES);
+    std::string pinned_uris = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(Preferences::MENU_PINNED_NOTES);
     return (boost::find_first(pinned_uris, uri()));
   }
 
@@ -1183,8 +1182,8 @@ namespace gnote {
   void Note::set_pinned(bool pinned) const
   {
     std::string new_pinned;
-    // this is like a calle to is_pinned() but we want to reating the gconf value
-    std::string old_pinned = Preferences::obj().get<std::string>(Preferences::MENU_PINNED_NOTES);
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    std::string old_pinned = settings->get_string(Preferences::MENU_PINNED_NOTES);
     bool is_currently_pinned = (boost::find_first(old_pinned, uri()));
 
     if (pinned == is_currently_pinned)
@@ -1204,7 +1203,7 @@ namespace gnote {
         }
       }
     }
-    Preferences::obj().set<std::string>(Preferences::MENU_PINNED_NOTES, new_pinned);
+    settings->set_string(Preferences::MENU_PINNED_NOTES, new_pinned);
   }
 
   
