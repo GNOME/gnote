@@ -1557,25 +1557,26 @@ namespace gnote {
 
     get_position(x, y);
     get_size(width, height);
-     
-    Preferences & prefs(Preferences::obj());
-    prefs.set<int> (Preferences::SEARCH_WINDOW_X_POS, x);
-    prefs.set<int> (Preferences::SEARCH_WINDOW_Y_POS, y);
-    prefs.set<int> (Preferences::SEARCH_WINDOW_WIDTH, width);
-    prefs.set<int> (Preferences::SEARCH_WINDOW_HEIGHT, height);
-    prefs.set<int> (Preferences::SEARCH_WINDOW_SPLITTER_POS, 
-                    m_hpaned.get_position());
+
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+    settings->set_int(Preferences::SEARCH_WINDOW_X_POS, x);
+    settings->set_int(Preferences::SEARCH_WINDOW_Y_POS, y);
+    settings->set_int(Preferences::SEARCH_WINDOW_WIDTH, width);
+    settings->set_int(Preferences::SEARCH_WINDOW_HEIGHT, height);
+    settings->set_int(Preferences::SEARCH_WINDOW_SPLITTER_POS, m_hpaned.get_position());
   }
         
    
   void NoteRecentChanges::restore_position()
   {
-    Preferences & prefs(Preferences::obj());
-    int x = prefs.get<int> (Preferences::SEARCH_WINDOW_X_POS);
-    int y = prefs.get<int> (Preferences::SEARCH_WINDOW_Y_POS);
-    int width = prefs.get<int> (Preferences::SEARCH_WINDOW_WIDTH);
-    int height = prefs.get<int> (Preferences::SEARCH_WINDOW_HEIGHT);
-    int pos = prefs.get<int> (Preferences::SEARCH_WINDOW_SPLITTER_POS);
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+    int x = settings->get_int(Preferences::SEARCH_WINDOW_X_POS);
+    int y = settings->get_int(Preferences::SEARCH_WINDOW_Y_POS);
+    int width = settings->get_int(Preferences::SEARCH_WINDOW_WIDTH);
+    int height = settings->get_int(Preferences::SEARCH_WINDOW_HEIGHT);
+    int pos = settings->get_int(Preferences::SEARCH_WINDOW_SPLITTER_POS);
 
     if((width == 0) || (height == 0)) {
       return;
