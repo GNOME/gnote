@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -26,15 +27,14 @@
 
 #include <sigc++/functors/ptr_fun.h>
 
-#include "preferences.hpp"
 #include "propertyeditor.hpp"
 
 
 namespace sharp {
 
 
-  PropertyEditorBase::PropertyEditorBase(const char *key, Gtk::Widget &w)
-    : m_key(key), m_widget(w)
+  PropertyEditorBase::PropertyEditorBase(Glib::RefPtr<Gio::Settings> & settings, const char *key, Gtk::Widget &w)
+    : m_key(key), m_widget(w), m_settings(settings)
   {
     w.set_data(Glib::Quark("sharp::property-editor"), (gpointer)this,
                &PropertyEditorBase::destroy_notify);
@@ -51,8 +51,8 @@ namespace sharp {
   }
 
 
-  PropertyEditor::PropertyEditor(const char * key, Gtk::Entry &entry)
-    : PropertyEditorBase(key, entry)
+  PropertyEditor::PropertyEditor(Glib::RefPtr<Gio::Settings> & settings, const char * key, Gtk::Entry &entry)
+    : PropertyEditorBase(settings, key, entry)
   {
     m_connection = entry.property_text().signal_changed().connect(
       sigc::mem_fun(*this, &PropertyEditor::on_changed));
@@ -61,20 +61,19 @@ namespace sharp {
   void PropertyEditor::setup()
   {
     m_connection.block();
-    static_cast<Gtk::Entry &>(m_widget).set_text(
-      gnote::Preferences::obj().get<std::string>(m_key));
+    static_cast<Gtk::Entry &>(m_widget).set_text(m_settings->get_string(m_key));
     m_connection.unblock();        
   }
 
   void PropertyEditor::on_changed()
   {
     std::string txt = static_cast<Gtk::Entry &>(m_widget).get_text();
-    gnote::Preferences::obj().set<std::string>(m_key, txt);
+    m_settings->set_string(m_key, txt);
   }
 
 
-  PropertyEditorBool::PropertyEditorBool(const char * key, Gtk::ToggleButton &button)
-    : PropertyEditorBase(key, button)
+  PropertyEditorBool::PropertyEditorBool(Glib::RefPtr<Gio::Settings> & settings, const char * key, Gtk::ToggleButton &button)
+    : PropertyEditorBase(settings, key, button)
   {
     m_connection = button.property_active().signal_changed().connect(
       sigc::mem_fun(*this, &PropertyEditorBool::on_changed));
@@ -92,15 +91,14 @@ namespace sharp {
   void PropertyEditorBool::setup()
   {
     m_connection.block();
-    static_cast<Gtk::ToggleButton &>(m_widget).set_active(
-      gnote::Preferences::obj().get<bool>(m_key));
+    static_cast<Gtk::ToggleButton &>(m_widget).set_active(m_settings->get_boolean(m_key));
     m_connection.unblock();        
   }
 
   void PropertyEditorBool::on_changed()
   {
     bool active = static_cast<Gtk::ToggleButton &>(m_widget).get_active();
-    gnote::Preferences::obj().set<bool>(m_key, active);
+    m_settings->set_boolean(m_key, active);
     guard(active);
   }
 

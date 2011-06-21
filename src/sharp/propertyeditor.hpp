@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -31,6 +32,7 @@
 
 #include <vector>
 
+#include <giomm/settings.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/togglebutton.h>
 
@@ -43,11 +45,12 @@ namespace sharp {
     virtual void setup() = 0;
 
   protected:
-    PropertyEditorBase(const char *key, Gtk::Widget &w);
+    PropertyEditorBase(Glib::RefPtr<Gio::Settings> & settings, const char *key, Gtk::Widget &w);
 
     std::string m_key;
     Gtk::Widget &m_widget;
     sigc::connection m_connection;
+    Glib::RefPtr<Gio::Settings> m_settings;
   private:
     void static destroy_notify(gpointer data);
   };
@@ -56,7 +59,7 @@ namespace sharp {
       : public PropertyEditorBase
   {
   public:
-    PropertyEditor(const char * key, Gtk::Entry &entry);
+    PropertyEditor(Glib::RefPtr<Gio::Settings> & settings, const char * key, Gtk::Entry &entry);
 
     virtual void setup();
 
@@ -68,7 +71,7 @@ namespace sharp {
     : public PropertyEditorBase
   {
   public:
-    PropertyEditorBool(const char * key, Gtk::ToggleButton &button);
+    PropertyEditorBool(Glib::RefPtr<Gio::Settings> & settings, const char * key, Gtk::ToggleButton &button);
     void add_guard(Gtk::Widget* w)
       {
         m_guarded.push_back(w);
