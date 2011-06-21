@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -36,7 +37,7 @@ class IGnoteTray;
 class IKeybinder;
 
 
-class PrefsKeybinder
+class PrefsKeybinder : public sigc::trackable
 {
 public:
   PrefsKeybinder();
@@ -57,10 +58,8 @@ class GnotePrefsKeybinder
 {
 public:
   GnotePrefsKeybinder(NoteManager & manager, IGnoteTray & trayicon);
-  ~GnotePrefsKeybinder();
-  void enable_keybindings_changed(Preferences*, GConfEntry* entry);
+  void enable_keybindings_changed(const Glib::ustring & key);
   void enable_disable(bool enable);
-  void bind_preference(const std::string & pref_path, const sigc::slot<void> & handler);
 private:
   void key_show_menu();
   void key_openstart_here();
@@ -69,7 +68,6 @@ private:
   void key_open_recent_changes();
   NoteManager & m_manager;
   IGnoteTray & m_trayicon;
-  sigc::connection m_prefs_cid;
 };
 
 

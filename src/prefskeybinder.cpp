@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,6 +29,14 @@
 #include "prefskeybinder.hpp"
 #include "recentchanges.hpp"
 
+
+#define KEYBINDING_SHOW_NOTE_MENU_DEFAULT "&lt;Alt&gt;F12"
+#define KEYBINDING_OPEN_START_HERE_DEFAULT "&lt;Alt&gt;F11"
+#define KEYBINDING_CREATE_NEW_NOTE_DEFAULT "disabled"
+#define KEYBINDING_OPEN_SEARCH_DEFAULT "disabled"
+#define KEYBINDING_OPEN_RECENT_CHANGES_DEFAULT "disabled"
+
+
 namespace gnote {
 
 
@@ -36,14 +45,10 @@ namespace gnote {
   public:
     Binding(const std::string & pref_path, const std::string & default_binding,
             const sigc::slot<void> & handler, IKeybinder & native_keybinder);
-    ~Binding();
-    void remove_notify();
     void set_binding();
     void unset_binding();
   private:
-
-    static void on_binding_changed_gconf(GConfClient *, guint , 
-                                         GConfEntry* entry, gpointer data);
+    void on_binding_changed(const Glib::ustring & key);
 
     std::string m_pref_path;
     std::string m_key_sequence;
@@ -62,45 +67,24 @@ namespace gnote {
     , m_native_keybinder(native_keybinder)
     , m_notify_cnx(0)
   {
-    m_key_sequence = Preferences::obj().get<std::string>(pref_path);
+    Glib::RefPtr<Gio::Settings> keybindings_settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_KEYBINDINGS);
+    m_key_sequence = keybindings_settings->get_string(pref_path);
     set_binding();
-    m_notify_cnx = Preferences::obj()
-      .add_notify(pref_path.c_str(), &PrefsKeybinder::Binding::on_binding_changed_gconf, 
-                  this);
+    keybindings_settings->signal_changed()
+      .connect(sigc::mem_fun(*this, &PrefsKeybinder::Binding::on_binding_changed));
   }
 
-  PrefsKeybinder::Binding::~Binding()
+  void PrefsKeybinder::Binding::on_binding_changed(const Glib::ustring & key)
   {
-    remove_notify();
-  }
+    if (key == m_pref_path) {
+      std::string value = Preferences::obj().get_schema_settings(Preferences::SCHEMA_KEYBINDINGS)->get_string(key);
+      DBG_OUT("Binding for '%s' changed to '%s'!", m_pref_path.c_str(), value.c_str());
 
+      unset_binding ();
 
-  void PrefsKeybinder::Binding::remove_notify()
-  {
-    if(m_notify_cnx) {
-      Preferences::obj().remove_notify(m_notify_cnx);
-      m_notify_cnx = 0;
-    }
-  }
-
-  void PrefsKeybinder::Binding::on_binding_changed_gconf(GConfClient *, guint , 
-                                                         GConfEntry* entry, gpointer data)
-  {
-    Binding* self = static_cast<Binding*>(data);
-    if(self == NULL) {
-      return;
-    }
-    const char * key = gconf_entry_get_key(entry);
-    if (key == self->m_pref_path) {
-      GConfValue *value = gconf_entry_get_value(entry);
-      const char *string_val = gconf_value_get_string(value);
-      DBG_OUT("Binding for '%s' changed to '%s'!",
-              self->m_pref_path.c_str(), string_val);
-
-      self->unset_binding ();
-
-      self->m_key_sequence = string_val;
-      self->set_binding ();
+      m_key_sequence = value;
+      set_binding ();
     }
   }
 
@@ -162,24 +146,21 @@ namespace gnote {
     : m_manager(manager)
     , m_trayicon(trayicon)
   {
-    enable_disable(Preferences::obj().get<bool>(Preferences::ENABLE_KEYBINDINGS));
-    m_prefs_cid = Preferences::obj().signal_setting_changed()
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+    enable_disable(settings->get_boolean(Preferences::ENABLE_KEYBINDINGS));
+    settings->signal_changed()
       .connect(sigc::mem_fun(*this, &GnotePrefsKeybinder::enable_keybindings_changed));
   }
 
 
-  GnotePrefsKeybinder::~GnotePrefsKeybinder()
+  void GnotePrefsKeybinder::enable_keybindings_changed(const Glib::ustring & key)
   {
-    m_prefs_cid.disconnect();
-  }
-
-
-  void GnotePrefsKeybinder::enable_keybindings_changed(Preferences*, GConfEntry* entry)
-  {
-    if(gconf_entry_get_key(entry) == Preferences::ENABLE_KEYBINDINGS) {
-      GConfValue *value = gconf_entry_get_value(entry);
+    if(key == Preferences::ENABLE_KEYBINDINGS) {
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+        .get_schema_settings(Preferences::SCHEMA_GNOTE);
       
-      bool enabled = gconf_value_get_bool(value);
+      bool enabled = settings->get_boolean(key);
       enable_disable(enabled);
     }
   }
@@ -189,30 +170,24 @@ namespace gnote {
   {
     DBG_OUT("EnableDisable Called: enabling... %s", enable ? "true" : "false");
     if(enable) {
-      bind_preference (Preferences::KEYBINDING_SHOW_NOTE_MENU,
-                       sigc::mem_fun(*this, &GnotePrefsKeybinder::key_show_menu));
+      bind(Preferences::KEYBINDING_SHOW_NOTE_MENU, KEYBINDING_SHOW_NOTE_MENU_DEFAULT,
+           sigc::mem_fun(*this, &GnotePrefsKeybinder::key_show_menu));
 
-      bind_preference (Preferences::KEYBINDING_OPEN_START_HERE,
+      bind(Preferences::KEYBINDING_OPEN_START_HERE, KEYBINDING_OPEN_START_HERE_DEFAULT,
                        sigc::mem_fun(*this, &GnotePrefsKeybinder::key_openstart_here));
 
-      bind_preference (Preferences::KEYBINDING_CREATE_NEW_NOTE,
+      bind(Preferences::KEYBINDING_CREATE_NEW_NOTE, KEYBINDING_CREATE_NEW_NOTE_DEFAULT,
                        sigc::mem_fun(*this, &GnotePrefsKeybinder::key_create_new_note));
 
-      bind_preference (Preferences::KEYBINDING_OPEN_SEARCH,
+      bind(Preferences::KEYBINDING_OPEN_SEARCH, KEYBINDING_OPEN_SEARCH_DEFAULT,
                        sigc::mem_fun(*this, &GnotePrefsKeybinder::key_open_search));
 
-      bind_preference (Preferences::KEYBINDING_OPEN_RECENT_CHANGES,
+      bind(Preferences::KEYBINDING_OPEN_RECENT_CHANGES, KEYBINDING_OPEN_RECENT_CHANGES_DEFAULT,
                        sigc::mem_fun(*this, &GnotePrefsKeybinder::key_open_recent_changes));
     }
     else {
       unbind_all();
     }
-  }
-
-
-  void GnotePrefsKeybinder::bind_preference(const std::string & pref_path, const sigc::slot<void> & handler)
-  {
-    bind(pref_path, Preferences::obj().get_default<std::string>(pref_path), handler);
   }
 
 
