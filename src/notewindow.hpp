@@ -173,7 +173,6 @@ private:
 
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;
-  guint                         m_gconf_notify;
 };
 
 class NoteFindBar

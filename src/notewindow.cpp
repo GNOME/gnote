@@ -128,10 +128,14 @@ namespace gnote {
 
     // Don't set up Ctrl-W or Ctrl-N if Emacs is in use
     bool using_emacs = false;
-    std::string gtk_key_theme = 
-      Preferences::obj().get<std::string>("/desktop/gnome/interface/gtk_key_theme");
+    Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
+      .get_or_load_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+    if(desktop_settings) {
+      std::string gtk_key_theme = 
+        desktop_settings->get_string(Preferences::DESKTOP_GNOME_KEY_THEME);
     if (!gtk_key_theme.empty() && (gtk_key_theme == "Emacs"))
       using_emacs = true;
+    }
 
     // NOTE: Since some of our keybindings are only
     // available in the context menu, and the context menu
@@ -200,7 +204,6 @@ namespace gnote {
     m_mark_set_timeout = NULL;
     // make sure editor is NULL. See bug 586084
     m_editor = NULL;
-    Preferences::obj().remove_notify(m_gconf_notify);
   }
 
 
@@ -229,7 +232,7 @@ namespace gnote {
       if (m_find_bar && m_find_bar->get_visible()) {
         m_find_bar->hide();
       }
-      else if (Preferences::obj().get<bool>(
+      else if (Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
                  Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE)) {
         close_window_handler();
       }
