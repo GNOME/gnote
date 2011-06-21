@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -70,14 +71,15 @@ namespace gnote {
   }
 
 
-  bool XKeybinder::get_accel_keys(const std::string & gconf_path, guint & keyval, 
+  bool XKeybinder::get_accel_keys(const std::string & key, guint & keyval, 
                               Gdk::ModifierType & mods)
   {
     keyval = 0;
     mods = (Gdk::ModifierType)0;
 
     try {
-      std::string binding = Preferences::obj().get<std::string> (gconf_path);
+      std::string binding = Preferences::obj().get_schema_settings(
+          Preferences::SCHEMA_KEYBINDINGS)->get_string(key);
       if (binding.empty() || binding == "disabled") {
         return false;
       }
