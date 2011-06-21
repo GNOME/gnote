@@ -101,13 +101,13 @@ namespace gnote {
     m_addin_mgr = NULL;
     m_trie_controller = NULL;
 
-    Preferences & prefs(Preferences::obj());
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
     // Watch the START_NOTE_URI setting and update it so that the
     // StartNoteUri property doesn't generate a call to
     // Preferences.Get () each time it's accessed.
-    m_start_note_uri = prefs.get<std::string>(Preferences::START_NOTE_URI);
-    prefs.signal_setting_changed().connect(
-      sigc::mem_fun(*this, &NoteManager::on_setting_changed));
+    m_start_note_uri = settings->get_string(Preferences::START_NOTE_URI);
+    settings->signal_changed().connect(sigc::mem_fun(*this, &NoteManager::on_setting_changed));
     m_default_note_template_title = _("New Note Template");
 
 
@@ -169,15 +169,11 @@ namespace gnote {
     delete m_addin_mgr;
   }
 
-  void NoteManager::on_setting_changed(Preferences* , GConfEntry* entry)
+  void NoteManager::on_setting_changed(const Glib::ustring & key)
   {
-    const char * key = gconf_entry_get_key(entry);
-    if(strcmp(key, Preferences::START_NOTE_URI) == 0) {
-      GConfValue *v = gconf_entry_get_value(entry);
-      if(v) {
-        const char * s = gconf_value_get_string(v);
-        m_start_note_uri = (s ? s : "");
-      }
+    if(key == Preferences::START_NOTE_URI) {
+      m_start_note_uri = Preferences::obj()
+        .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(Preferences::START_NOTE_URI);
     }
   }
 
@@ -286,7 +282,8 @@ namespace gnote {
       Note::Ptr start_note = create (_("Start Here"),
                                 start_note_content);
       start_note->queue_save (Note::CONTENT_CHANGED);
-      Preferences::obj().set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
+      Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
+          Preferences::START_NOTE_URI, start_note->uri());
 
       Note::Ptr links_note = create (_("Using Links in Gnote"),
                                 links_note_content);
@@ -337,7 +334,8 @@ namespace gnote {
       // Attempt to find an existing Start Here note
       Note::Ptr start_note = find (_("Start Here"));
       if (start_note) {
-        Preferences::obj().set<std::string>(Preferences::START_NOTE_URI, start_note->uri());
+        Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
+            Preferences::START_NOTE_URI, start_note->uri());
       }
     }
   }
@@ -350,7 +348,8 @@ namespace gnote {
     // Update the trie so addins can access it, if they want.
     m_trie_controller->update ();
 
-    bool startup_notes_enabled = Preferences::obj().get<bool>(Preferences::ENABLE_STARTUP_NOTES);
+    bool startup_notes_enabled = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_STARTUP_NOTES);
 
     // Load all the addins for our notes.
     // Iterating through copy of notes list, because list may be

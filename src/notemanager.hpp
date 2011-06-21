@@ -27,8 +27,6 @@
 #include <list>
 #include <memory>
 
-#include <gconf/gconf.h>
-
 #include <sigc++/signal.h>
 
 #include "preferences.hpp"
@@ -53,7 +51,7 @@ namespace gnote {
                 const NoteChangedSlot & start_created = NoteChangedSlot());
     ~NoteManager();
 
-    void on_setting_changed(Preferences*, GConfEntry*);
+    void on_setting_changed(const Glib::ustring & key);
     const Note::List & get_notes() const
       { 
         return m_notes;
