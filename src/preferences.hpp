@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,9 +24,10 @@
 #ifndef __PREFERENCES_HPP_
 #define __PREFERENCES_HPP_
 
+#include <map>
 #include <string>
-#include <gconf/gconf-client.h>
 #include <sigc++/signal.h>
+#include <giomm/settings.h>
 
 #include "base/singleton.hpp"
 
@@ -35,7 +37,11 @@ namespace gnote {
     : public base::Singleton<Preferences>
   {
   public:
-    typedef sigc::signal<void, Preferences*, GConfEntry*> NotifyChangeSignal;
+    static const char *SCHEMA_GNOTE;
+    static const char *SCHEMA_KEYBINDINGS;
+    static const char *SCHEMA_SYNC;
+    static const char *SCHEMA_DESKTOP_GNOME_INTERFACE;
+
     static const char *ENABLE_SPELLCHECKING;
     static const char *ENABLE_WIKIWORDS;
     static const char *ENABLE_CUSTOM_FONT;
@@ -50,82 +56,35 @@ namespace gnote {
     static const char *MENU_NOTE_COUNT;
     static const char *MENU_PINNED_NOTES;
 
-    static const char *KEYBINDING_SHOW_NOTE_MENU;
-    static const char *KEYBINDING_OPEN_START_HERE;
-    static const char *KEYBINDING_CREATE_NEW_NOTE;
-    static const char *KEYBINDING_OPEN_SEARCH;
-    static const char *KEYBINDING_OPEN_RECENT_CHANGES;
-
-    static const char *EXPORTHTML_LAST_DIRECTORY;
-    static const char *EXPORTHTML_EXPORT_LINKED;
-    static const char *EXPORTHTML_EXPORT_LINKED_ALL;
-
-    static const char *SYNC_CLIENT_ID;
-    static const char *SYNC_LOCAL_PATH;
-    static const char *SYNC_SELECTED_SERVICE_ADDIN;
-    static const char *SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
-
     static const char *NOTE_RENAME_BEHAVIOR;
 
-    static const char *INSERT_TIMESTAMP_FORMAT;
-    
     static const char *SEARCH_WINDOW_X_POS;
     static const char *SEARCH_WINDOW_Y_POS;
     static const char *SEARCH_WINDOW_WIDTH;
     static const char *SEARCH_WINDOW_HEIGHT;
     static const char *SEARCH_WINDOW_SPLITTER_POS;
 
+    static const char *KEYBINDING_SHOW_NOTE_MENU;
+    static const char *KEYBINDING_OPEN_START_HERE;
+    static const char *KEYBINDING_CREATE_NEW_NOTE;
+    static const char *KEYBINDING_OPEN_SEARCH;
+    static const char *KEYBINDING_OPEN_RECENT_CHANGES;
+
+    static const char *SYNC_CLIENT_ID;
+    static const char *SYNC_LOCAL_PATH;
+    static const char *SYNC_SELECTED_SERVICE_ADDIN;
+    static const char *SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
+
+    static const char *DESKTOP_GNOME_FONT;
+    static const char *DESKTOP_GNOME_KEY_THEME;
+
     Preferences();
-    ~Preferences();
 
-    template<typename T>
-    void set(const char * p, const T&);
-
-    template<typename T>
-    void set(const std::string & p, const T&v)
-      {
-        set<T>(p.c_str(),v);
-      }
-
-
-    template<typename T>
-    T get(const char * p);
-
-    template<typename T>
-    T get(const std::string & p)
-      {
-        return get<T>(p.c_str());
-      }
-
-    template<typename T>
-    T get_default(const char * p);
-
-    template<typename T>
-    T get_default(const std::string & p)
-      {
-        return get_default<T>(p.c_str());
-      }
-    
-    sigc::signal<void, Preferences*, GConfEntry*> & signal_setting_changed()
-      {
-        return  m_signal_setting_changed;
-      }
-
-    // this is very hackish. maybe I should just use gconfmm
-    guint add_notify(const char *ns, GConfClientNotifyFunc func, gpointer data);
-    void remove_notify(guint);
-    GConfClient * get_client() const
-      {
-        return m_client;
-      }
+    Glib::RefPtr<Gio::Settings> get_schema_settings(const std::string & schema);
+    Glib::RefPtr<Gio::Settings> get_or_load_schema_settings(const std::string & schema);
   private:
     Preferences(const Preferences &); // non implemented
-    GConfClient        *m_client;
-    guint               m_cnx;
-
-    static void gconf_notify_glue(GConfClient *client, guint cid, GConfEntry *entry,
-                                  Preferences * self);
-    NotifyChangeSignal m_signal_setting_changed;
+    std::map<std::string, Glib::RefPtr<Gio::Settings> > m_schemas;
   };
 
 
