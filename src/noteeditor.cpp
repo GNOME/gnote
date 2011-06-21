@@ -30,9 +30,6 @@
 
 namespace gnote {
 
-#define DESKTOP_GNOME_INTERFACE_PATH "/desktop/gnome/interface"
-#define GNOME_DOCUMENT_FONT_KEY  DESKTOP_GNOME_INTERFACE_PATH"/document_font_name"
-
   NoteEditor::NoteEditor(const Glib::RefPtr<Gtk::TextBuffer> & buffer)
     : Gtk::TextView(buffer)
   {
@@ -41,22 +38,25 @@ namespace gnote {
     set_right_margin(default_margin());
     property_can_default().set_value(true);
 
-    //Set up the GConf client to watch the default document font
-    m_gconf_notify = Preferences::obj().add_notify(DESKTOP_GNOME_INTERFACE_PATH,
-                                                                &on_font_setting_changed_gconf,
-                                                                this);
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    //Set up the schema to watch the default document font
+    Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
+      .get_or_load_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+    if(desktop_settings) {
+      desktop_settings->signal_changed().connect(
+        sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
+    }
 
-    // Set Font from GConf preference
-    if (Preferences::obj().get<bool>(Preferences::ENABLE_CUSTOM_FONT)) {
-      std::string font_string = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);
+    // Set Font from preference
+    if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
+      std::string font_string = settings->get_string(Preferences::CUSTOM_FONT_FACE);
       override_font (Pango::FontDescription(font_string));
     }
     else {
       override_font (get_gnome_document_font_description ());
     }
 
-    Preferences::obj().signal_setting_changed()
-      .connect(sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
+    settings->signal_changed().connect(sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
 
     // Set extra editor drag targets supported (in addition
     // to the default TextView's various text formats)...
@@ -70,18 +70,17 @@ namespace gnote {
     signal_button_press_event().connect(sigc::mem_fun(*this, &NoteEditor::button_pressed), false);
   }
 
-  NoteEditor::~NoteEditor()
-  {
-    Preferences::obj().remove_notify(m_gconf_notify);
-  }
-
 
   Pango::FontDescription NoteEditor::get_gnome_document_font_description()
   {
     try {
-      std::string doc_font_string =
-        Preferences::obj().get<std::string>(GNOME_DOCUMENT_FONT_KEY);
-      return Pango::FontDescription(doc_font_string);
+      Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
+        .get_or_load_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+      if(desktop_settings) {
+        std::string doc_font_string =
+          desktop_settings->get_string(Preferences::DESKTOP_GNOME_FONT);
+        return Pango::FontDescription(doc_font_string);
+      }
     } 
     catch (...) {
 
@@ -91,31 +90,18 @@ namespace gnote {
   }
 
 
-//
-    // Update the font based on the changed Preference dialog setting.
-    // Also update the font based on the changed GConf GNOME document font setting.
-    //
-  void NoteEditor::on_font_setting_changed_gconf (GConfClient *, 
-                                            guint , GConfEntry* entry, gpointer data)
+  void NoteEditor::on_font_setting_changed (const Glib::ustring & key)
   {
-    NoteEditor * self = static_cast<NoteEditor*>(data);
-    self->on_font_setting_changed (NULL, entry);
-  }
-
-
-  void NoteEditor::on_font_setting_changed (Preferences*, GConfEntry* entry)
-  {
-    const char * key = gconf_entry_get_key(entry);
-
-    if((strcmp(key, Preferences::ENABLE_CUSTOM_FONT) == 0)
-       || (strcmp(key, Preferences::CUSTOM_FONT_FACE) == 0)) {
+    if(key == Preferences::ENABLE_CUSTOM_FONT || key == Preferences::CUSTOM_FONT_FACE) {
       update_custom_font_setting ();
     }
-    else if(strcmp(key, GNOME_DOCUMENT_FONT_KEY) == 0) {
-      if (!Preferences::obj().get<bool>(Preferences::ENABLE_CUSTOM_FONT)) {
-        GConfValue * v = gconf_entry_get_value(entry);
-        const char * value = gconf_value_get_string(v);
-        if(value) {
+    else if(key == Preferences::DESKTOP_GNOME_FONT) {
+      if (!Preferences::obj().get_schema_settings(
+          Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
+        Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
+          .get_or_load_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+        if(desktop_settings) {
+          std::string value = desktop_settings->get_string(key);
           modify_font_from_string(value);
         }
       }
@@ -125,8 +111,11 @@ namespace gnote {
 
   void NoteEditor::update_custom_font_setting()
   {
-    if (Preferences::obj().get<bool>(Preferences::ENABLE_CUSTOM_FONT)) {
-      std::string fontString = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+
+    if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
+      std::string fontString = settings->get_string(Preferences::CUSTOM_FONT_FACE);
       DBG_OUT( "Switching note font to '%s'...", fontString.c_str());
       modify_font_from_string (fontString);
     } 
