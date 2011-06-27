@@ -253,10 +253,9 @@ void ExportToHtmlNoteAddin::write_html_for_note (sharp::StreamWriter & writer,
   args.add_param ("export-linked-all", "", export_linked_all);
   args.add_param ("root-note", "", note->get_title());
 
-
-  if (Preferences::obj().get<bool>(Preferences::ENABLE_CUSTOM_FONT)) {
-    std::string font_face 
-      = Preferences::obj().get<std::string>(Preferences::CUSTOM_FONT_FACE);
+  Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
+    std::string font_face = settings->get_string(Preferences::CUSTOM_FONT_FACE);
     Pango::FontDescription font_desc (font_face);
     std::string font = str(boost::format("font-family:'%1%';")
                            % font_desc.get_family());

@@ -29,15 +29,17 @@
 
 namespace exporttohtml {
 
+const char * SCHEMA_EXPORTHTML = "org.gnome.gnote.export-html";
+const char * EXPORTHTML_LAST_DIRECTORY = "last-directory";
+const char * EXPORTHTML_EXPORT_LINKED = "export-linked";
+const char * EXPORTHTML_EXPORT_LINKED_ALL = "export-linked-all";
 
-using gnote::Preferences;
 
 ExportToHtmlDialog::ExportToHtmlDialog(const std::string & default_file)
   : Gtk::FileChooserDialog(_("Destination for HTML Export"),
                            Gtk::FILE_CHOOSER_ACTION_SAVE)
   , m_export_linked(_("Export linked notes"))
   , m_export_linked_all(_("Include all other linked notes"))
-
 {
   add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
   add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_OK);
@@ -90,28 +92,27 @@ void ExportToHtmlDialog::set_export_linked_all(bool value)
 void ExportToHtmlDialog::save_preferences()
 {
   std::string dir = sharp::file_dirname(get_filename());
-  
-  Preferences::obj().set<std::string>(Preferences::EXPORTHTML_LAST_DIRECTORY, 
-                                      dir);
-
-  Preferences::obj().set<bool>(Preferences::EXPORTHTML_EXPORT_LINKED, 
-                               get_export_linked());
-  Preferences::obj().set<bool>(Preferences::EXPORTHTML_EXPORT_LINKED_ALL, 
-                               get_export_linked_all());
+  Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj()
+    .get_or_load_schema_settings(SCHEMA_EXPORTHTML);
+  settings->set_string(EXPORTHTML_LAST_DIRECTORY, dir);
+  settings->set_boolean(EXPORTHTML_EXPORT_LINKED, get_export_linked());
+  settings->set_boolean(EXPORTHTML_EXPORT_LINKED_ALL, get_export_linked_all());
 }
 
 
 void ExportToHtmlDialog::load_preferences(const std::string & default_file)
 {
-  std::string last_dir = Preferences::obj().get<std::string>(Preferences::EXPORTHTML_LAST_DIRECTORY);
+  Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj()
+    .get_or_load_schema_settings(SCHEMA_EXPORTHTML);
+  std::string last_dir = settings->get_string(EXPORTHTML_LAST_DIRECTORY);
   if (last_dir.empty()) {
     last_dir = Glib::get_home_dir();
   }
   set_current_folder (last_dir);
   set_current_name(default_file);
 
-  set_export_linked(Preferences::obj().get<bool>(Preferences::EXPORTHTML_EXPORT_LINKED));
-  set_export_linked_all(Preferences::obj().get<bool>(Preferences::EXPORTHTML_EXPORT_LINKED_ALL));
+  set_export_linked(settings->get_boolean(EXPORTHTML_EXPORT_LINKED));
+  set_export_linked_all(settings->get_boolean(EXPORTHTML_EXPORT_LINKED_ALL));
 }
 
 
