@@ -57,6 +57,7 @@ namespace gnote {
     static const char *MENU_PINNED_NOTES;
 
     static const char *NOTE_RENAME_BEHAVIOR;
+    static const char *USE_STATUS_ICON;
 
     static const char *SEARCH_WINDOW_X_POS;
     static const char *SEARCH_WINDOW_Y_POS;

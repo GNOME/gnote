@@ -133,9 +133,18 @@ namespace gnote {
 #endif
     }
     else {
-      DBG_OUT("starting tray icon");
-      //register session manager restart
-      start_tray_icon();
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+        .get_schema_settings(Preferences::SCHEMA_GNOTE);
+      settings->signal_changed()
+        .connect(sigc::mem_fun(*this, &Gnote::on_setting_changed));
+      if(settings->get_boolean(Preferences::USE_STATUS_ICON)) {
+        DBG_OUT("starting tray icon");
+        start_tray_icon();
+      }
+      else {
+        am["ShowSearchAllNotesAction"]->activate();
+        Gtk::Main::run();
+      }
     }
 
     signal_quit();
@@ -237,6 +246,27 @@ namespace gnote {
 #endif
   }
 
+
+  void Gnote::on_setting_changed(const Glib::ustring & key)
+  {
+    if(key != Preferences::USE_STATUS_ICON) {
+      return;
+    }
+
+    bool use_status_icon = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(key);
+    if(use_status_icon) {
+      if(!m_tray_icon) {
+        m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
+      }
+      m_tray_icon->set_visible(true);
+    }
+    else {
+      if(m_tray_icon)
+        m_tray_icon->set_visible(false);
+      ActionManager::obj()["ShowSearchAllNotesAction"]->activate();
+    }
+  }
 
 
   void Gnote::setup_global_actions()

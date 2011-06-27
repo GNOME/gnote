@@ -58,6 +58,7 @@ namespace gnote {
   const char * Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "sync-conflict-behavior";
 
   const char * Preferences::NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
+  const char * Preferences::USE_STATUS_ICON = "use-status-icon";
 
   const char * Preferences::SEARCH_WINDOW_X_POS = "search-window-x-pos";
   const char * Preferences::SEARCH_WINDOW_Y_POS = "search-window-y-pos";
