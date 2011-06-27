@@ -358,6 +358,11 @@ namespace gnote {
     about.set_documenters(documenters);
     about.set_translator_credits(translators);
 //      about.set_icon_name("gnote");
+    NoteRecentChanges *recent_changes = NoteRecentChanges::get_instance();
+    if(recent_changes && recent_changes->get_visible()) {
+      about.set_transient_for(*recent_changes);
+      recent_changes->present();
+    }
     about.run();
   }
 
