@@ -23,12 +23,10 @@
 #include <glibmm/i18n.h>
 
 #include "sharp/datetime.hpp"
+#include "inserttimestamppreferences.hpp"
 #include "inserttimestamppreferencesfactory.hpp"
 #include "inserttimestampnoteaddin.hpp"
 #include "notewindow.hpp"
-#include "preferences.hpp"
-
-using gnote::Preferences;
 
 namespace inserttimestamp {
 
@@ -86,12 +84,11 @@ namespace inserttimestamp {
     m_item->show ();
     add_plugin_menu_item (m_item);
 
-    // Get the format from GConf and subscribe to changes
-    m_date_format = Preferences::obj().get<std::string>(
-      Preferences::INSERT_TIMESTAMP_FORMAT);
-    Preferences::obj().signal_setting_changed().connect(
-      sigc::mem_fun(
-        *this, &InsertTimestampNoteAddin::on_format_setting_changed));
+    Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj()
+      .get_or_load_schema_settings(SCHEMA_INSERT_TIMESTAMP);
+    m_date_format = settings->get_string(INSERT_TIMESTAMP_FORMAT);
+    settings->signal_changed().connect(
+      sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_format_setting_changed));
   }
 
 
@@ -105,14 +102,11 @@ namespace inserttimestamp {
   }
 
 
-  void InsertTimestampNoteAddin::on_format_setting_changed(gnote::Preferences*, 
-                                                           GConfEntry* entry)
+  void InsertTimestampNoteAddin::on_format_setting_changed(const Glib::ustring & key)
   {
-    const gchar *key = gconf_entry_get_key(entry);
-    if(strcmp(key, Preferences::INSERT_TIMESTAMP_FORMAT) == 0) {
-      GConfValue * conf_value = gconf_entry_get_value(entry);
-      const gchar *value = gconf_value_get_string(conf_value);
-      m_date_format = value ? value : "";
+    if(key == INSERT_TIMESTAMP_FORMAT) {
+      m_date_format = gnote::Preferences::obj().get_or_load_schema_settings(
+          SCHEMA_INSERT_TIMESTAMP)->get_string(INSERT_TIMESTAMP_FORMAT);
     }
   }
 

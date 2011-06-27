@@ -32,6 +32,9 @@ using gnote::Preferences;
 
 namespace inserttimestamp {
 
+  const char * SCHEMA_INSERT_TIMESTAMP = "org.gnome.gnote.insert-timestamp";
+  const char * INSERT_TIMESTAMP_FORMAT = "format";
+
   bool InsertTimestampPreferences::s_static_inited = false;
   std::vector<std::string> InsertTimestampPreferences::s_formats;
 
@@ -54,8 +57,9 @@ namespace inserttimestamp {
   {
     _init_static();
     // Get current values
-    std::string dateFormat = Preferences::obj().get<std::string> (
-      Preferences::INSERT_TIMESTAMP_FORMAT);
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_or_load_schema_settings(
+        SCHEMA_INSERT_TIMESTAMP);
+    std::string dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
 
     sharp::DateTime now = sharp::DateTime::now();
 
@@ -104,7 +108,7 @@ namespace inserttimestamp {
     customBox->pack_start (*custom_entry);
 
     sharp::PropertyEditor *  entryEditor = new sharp::PropertyEditor(
-      Preferences::INSERT_TIMESTAMP_FORMAT, *custom_entry);
+      settings, INSERT_TIMESTAMP_FORMAT, *custom_entry);
     entryEditor->setup ();
 
     // Activate/deactivate widgets
@@ -119,7 +123,7 @@ namespace inserttimestamp {
         // Found format in list
         useCustom = false;
         break;
-      }	
+      }
     }
 
     if (useCustom) {
@@ -176,8 +180,8 @@ namespace inserttimestamp {
     if (iter) {
       std::string format;
       iter->get_value(1, format);
-      Preferences::obj().set<std::string>(Preferences::INSERT_TIMESTAMP_FORMAT,
-                                          format);
+      Preferences::obj().get_or_load_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(
+          INSERT_TIMESTAMP_FORMAT, format);
     }
   }
 

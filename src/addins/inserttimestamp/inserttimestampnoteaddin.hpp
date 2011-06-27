@@ -29,7 +29,6 @@
 
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
-#include "preferences.hpp"
 
 namespace inserttimestamp {
 
@@ -63,7 +62,7 @@ public:
   virtual void on_note_opened();
 private:
   void on_menu_item_activated();
-  void on_format_setting_changed(gnote::Preferences*, GConfEntry*);
+  void on_format_setting_changed(const Glib::ustring & key);
 
   std::string    m_date_format;
   Gtk::MenuItem *m_item;
