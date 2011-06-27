@@ -60,6 +60,7 @@ class NoteRecentChanges
   : public utils::ForcedPresentWindow
 {
 public:
+  static NoteRecentChanges *get_instance();
   static NoteRecentChanges *get_instance(NoteManager& m);
 
   void set_search_text(const std::string & value);

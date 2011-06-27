@@ -61,6 +61,12 @@ namespace gnote {
 
 
 
+  NoteRecentChanges *NoteRecentChanges::get_instance()
+  {
+    return s_instance;
+  }
+
+
   NoteRecentChanges *NoteRecentChanges::get_instance(NoteManager& m)
   {
     if(!s_instance) {
