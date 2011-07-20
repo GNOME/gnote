@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -76,9 +76,10 @@ public:
   static std::string data_dir();
   static std::string old_note_dir();
 
-  static bool tray_icon_showing()
+  bool tray_icon_showing()
     {
-      return s_tray_icon_showing;
+      return m_is_panel_applet
+             || (m_tray_icon && m_tray_icon->is_embedded() && m_tray_icon->get_visible());
     }
   bool is_panel_applet()
     {
@@ -96,7 +97,6 @@ private:
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
-  static bool s_tray_icon_showing;
   Glib::RefPtr<TrayIcon> m_tray_icon;
   Tray::Ptr m_tray;
   bool m_is_panel_applet;

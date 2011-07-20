@@ -241,7 +241,7 @@ namespace gnote {
     // end notebook addin
     am ["CloseWindowAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
-    if (Gnote::tray_icon_showing() == false)
+    if (Gnote::obj().tray_icon_showing() == false)
       am ["CloseWindowAction"]->set_visible(false);
 
     // Allow Escape to close the window as well as <Control>W
@@ -1090,7 +1090,7 @@ namespace gnote {
     hide ();
     delete s_instance;
     s_instance = NULL;
-    if (Gnote::tray_icon_showing() == false) {
+    if (Gnote::obj().tray_icon_showing() == false) {
       ActionManager::obj()["QuitGNoteAction"]->activate();
     }
   }
