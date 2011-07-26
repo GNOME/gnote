@@ -218,8 +218,8 @@ namespace gnote {
     // until the note's queue_save () kicks in.
     notebooks::NotebookManager::instance().signal_note_added_to_notebook()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_added_to_notebook));
-    notebooks::NotebookManager::instance().signal_note_added_to_notebook()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_removed_to_notebook));
+    notebooks::NotebookManager::instance().signal_note_removed_from_notebook()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_removed_from_notebook));
                         
     Gtk::Main::signal_quit()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_exiting_event));
@@ -1527,7 +1527,7 @@ namespace gnote {
     update_results ();
   }
     
-  void NoteRecentChanges::on_note_removed_to_notebook (const Note & , 
+  void NoteRecentChanges::on_note_removed_from_notebook (const Note & , 
                                                        const notebooks::Notebook::Ptr & )
   {
     update_results ();
