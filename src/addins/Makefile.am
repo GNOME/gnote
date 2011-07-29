@@ -8,6 +8,7 @@ SUBDIRS = backlinks \
 	inserttimestamp \
 	noteoftheday \
 	printnotes \
+	replacetitle \
 	stickynoteimport \
 	tomboyimport \
 	underline \
