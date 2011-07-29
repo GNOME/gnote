@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="working-with-notebooks">
+
+
+  <info>
+    <link type="guide" xref="index#organizing-notes"/>
+    <desc>Organizing your notes</desc>
+    <license><p>GNU Free Documentation License (GFDL), Version 1.1</p></license>
+    <credit type="author">
+      <name>Pierre-Yves Luyten</name>
+      <years>2011</years>
+    </credit>
+    <credit type="editor">
+      <name>Aurimas Cernius</name>
+      <years>2011</years>
+    </credit>
+  </info>
+
+  <title>Working With Notebooks</title>
+    <p>Notebooks allow you to group related notes together. You can add a note to a notebook in the <gui>Search All Notes</gui> window or directly inside of a Note.</p>
+
+    <section id="creating-notebooks"><title>Creating Notebooks</title>
+      <p>You can create new notebooks using one of the following methods</p>
+      <steps>
+        <item>
+          <p>In <app>Search All Notes</app> window select <guiseq><gui>File</gui><gui>Notebooks</gui><gui>New Notebook</gui></guiseq> from main menu.</p>
+        </item>
+        <item>
+            <p>Enter a name for the new notebook.</p>
+        </item>
+      </steps>
+      <figure>
+        <title>New Notebook</title>
+        <media type="image" src="figures/new-notebook.png" mime="image/png" style="right"><p>New Notebook.</p>
+        </media>
+      </figure>  
+      <p>To create a new notebook context menu</p>
+      <steps>
+        <item>
+          <p>In <gui>Search All Notes</gui>, right click in the left hand box and choose <gui>New Notebook</gui>.</p>
+        </item>
+        <item>
+          <p>Enter a name for the new notebook.</p>
+        </item>
+      </steps>
+      <figure>
+        <title>New Notebook from context menu</title>
+        <media type="image" src="figures/add-notebook-search.png" mime="image/png" style="right">
+        <p>New Notebook</p>
+      </media>
+      </figure>  
+    </section>
+
+    <section id="adding-notes-to-a-notebook"><title>Adding Notes to a Notebook</title>
+      <p>To add notes to a notebook, you can add a note from the <gui>Search All Notes</gui> dialog or directly within a note.</p>
+      <p>To move an existing note from the <gui>Search All Notes</gui> dialog use one of the following:</p>
+      <list>
+        <item><p>Drag the note(s) onto a notebook on the left using mouse.</p></item>
+        <item><p>Right click on a notebook and select <gui>New Note</gui> from context menu. A new note will be created and added to notebook.</p></item>
+      </list>
+      <p>As you type a note, you can add the note directly to an existing notebook using the <gui>Notebook</gui> button. The Notebook button is represented by the <media type="image" src="figures/notebook-icon.png" mime="image/png" style="right"></media> icon.</p>
+      <figure>
+        <title>Adding Notes to a Notebook</title>
+        <media type="image" src="figures/add-to-notebook.png" mime="image/png" style="right"><p>Add to Notebook.</p></media>
+      </figure>
+      <p>To remove note from notebook, use one of the following:</p>
+      <list>
+        <item><p>Move note to <gui>Unfiled notes</gui> notebook in <gui>Search All Notes</gui> window.</p></item>
+        <item><p>Select the <gui>No Notebook</gui> option from menu, presented when you press the <gui>Notebook</gui> button in opened note.</p></item>
+      </list>
+    </section>
+
+    <section id="creating-notebook-templates"><title>Creating Notebook Templates</title>
+      <p>After you create a notebook, you can create a template for each new note that you create in a specific notebook.</p>
+      <steps>
+        <item><p>In <gui>Search All Notes</gui> right click on a Notebook that you have created and choose <gui>Open Template Note</gui>.</p>
+        </item>
+        <item><p>This will open a new note that will be used as the template. Any text typed in this note will appear in all notes created in this Notebook.</p></item>
+      </steps>
+      <figure>
+        <title>Creating Notebook Template</title>
+        <media type="image" src="figures/note-template.png" mime="image/png" style="right"><p>Note Template.</p></media>
+      </figure>
+    </section>
+
+  <section id="deleting-a-notebook"><title>Deleting a Notebook</title>
+    <p>Deleting a notebook will not delete any of the notes which are currently inside the notebook. After deleting a notebook, the notes will not be associated with any notebook and can be seen by highlighting <gui>Unfiled Notes</gui> in the <gui>Search All Notes</gui> window.</p>
+    <p>You can delete a notebook you have created by one of two methods:</p>
+    <p>To delete a notebook, go to <gui>Search All Notes</gui> window and do one of the following:</p>
+    <list>
+      <item><p>Right click on a notebook and choose <gui>Delete Notebook</gui>.</p></item>
+      <item><p>From the menu, choose <keyseq><key>Edit</key><key>Delete Notebook</key></keyseq></p></item>
+    </list>
+    <figure>
+      <title>Deleting notes from Search All Notes</title>
+        <media type="image" src="figures/delete-notebook.png" mime="image/png" style="right">
+          <p>Delete Notebook.</p>
+        </media>
+    </figure>
+  </section>
+
+</page>

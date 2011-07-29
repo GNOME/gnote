@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:e="http://projectmallard.org/experimental/" type="guide" id="editing-notes" xml:lang="en_GB">
+
+  <info>
+    <link type="guide" xref="index#managing-notes"/>
+    <license><p>GNU Free Documentation License (GFDL), Version 1.1</p></license>
+    <desc>Editing Notes Content</desc>
+    <credit type="author">
+      <name>Pierre-Yves Luyten</name>
+      <years>2011</years>
+    </credit>
+    <credit type="editor">
+      <name>Aurimas Cernius</name>
+      <years>2011</years>
+    </credit>
+  </info>
+
+  <title>Editing Notes</title>
+
+    <p>After creating a new note, a new window will appear with the title "New Note N". At the top of the note is a toolbar with several buttons and text. Directly below this toolbar is the content area of the note. </p>
+    <figure>
+      <title><gui>New Note</gui>  window</title>
+      <desc><app>Gnote</app> New Notew</desc>
+      <media type="image" src="figures/gnote-new-note.png" mime="image/png" style="right">
+        <p><app>Gnote</app> Note window.</p>
+      </media>
+    </figure>
+
+    <p>The note can be edited by clicking in the content area and using the keyboard to add and remove content. The first line is considered the title of the note. By default this is populated with the text "New Note N". The title is changed by clicking in the content area on the first line and using the keyboard to change the title. By default, focus is given to the content area upon creation of a new note, so you can immediately start editing the note without the need to click on the content area with the mouse.</p>
+    <p>Formatting text within your notes can be done using the <gui>Text</gui> button. The <gui>Text</gui> button will display a menu with several options from which you can choose. Each menu item is explained next.</p>
+
+    <list>
+      <item><title>Undo</title>
+        <p>Support for “Undo” is available in <app>Gnote</app> through this menu item. The Undo function allows you to revert previous changes made to your note during the current session. To undo your last change using the keyboard, use the standard keybinding, <keyseq><key>Ctrl</key><key>Z</key></keyseq>.</p>
+      </item>
+      <item><title>Redo</title>
+        <p>The “Redo” function is used to put back changes that were removed using the “Undo” feature. To redo your last change using the keyboard, use the standard keybinding, <keyseq><key>Shift</key><key>Ctrl</key><key>Z</key></keyseq> .</p>
+      </item>
+      <item><title>Bold</title>
+        <p>To make text within your note bold, first select the text you want to modify. Then select the Bold option from the <gui>Text</gui> menu. You may also use the keybinding <keyseq><key>Ctrl</key><key>B</key></keyseq> after selecting the text.</p>
+      </item>
+      <item><title>Italic</title>
+        <p>To make text within your note italic, first select the text you want to modify. Then select the Italic option from the Text menu. You may also use the keybinding <keyseq><key>Ctrl</key><key>I</key></keyseq>  after selecting the text.</p>
+     </item>
+     <item><title>Strikeout</title>
+       <p>The strikeout style will put a line through the selected text. To add a strikeout, select the text and then select the <gui>Strikeout</gui> option from the <gui>Text</gui> menu. You may also use the keybinding <keyseq><key>Ctrl</key><key>S</key></keyseq> after selecting the text.</p>
+     </item>
+     <item><title>Highlight</title>
+       <p>The highlight style will put a different background around the selected text. To add a highlight, select the text and then select the <gui>Highlight</gui> option from the <gui>Text</gui> menu. You may also use the keybinding <keyseq><key>Ctrl</key><key>H</key></keyseq>  after selecting the text.</p>
+     </item>
+     <item><title>Font size</title>
+       <p>There are actually four options in this part of the menu: Small, Normal, Large, Huge. Each one of these options represents a font size to use for the selected text in the note. To modify the font size, select the text and then select one of <gui>Small</gui>, <gui>Normal</gui>, <gui>Large</gui>, <gui>Huge</gui> options from the Text menu.</p>
+     </item>
+     <item><title>Bullets</title>
+       <p>Select the Bullets option from the Text menu to begin or end a bulleted list. If the cursor is inside a bulleted list, the <gui>Increase Indent</gui>, <gui>Decrease Indent</gui> options will be enabled.</p>
+       <p>With the cursor on a bulleted list line, select the <gui>Increase Indent</gui> option to shift the current line to the right or the <gui>Decrease Indent</gui> option to shift the current line to the left.</p>
+       <p>For more information on bullets, <link xref="bulleted-lists"/>.</p>
+     </item>
+     <item><title>Find in This Note</title>
+       <p>Use this to search for text within the current note. A small find bar will open up at the bottom of the note. To open the find bar using the keyboard, use the standard keybinding, <keyseq><key>Ctrl</key><key>F</key></keyseq> . Enter text to find. After entering text, the matches will be highlighted. Click <gui>Find Next</gui> to highlight the next match and place the cursor there. Click <gui>Previous</gui> to move to the previous match.
+To close the find bar, click X (Close Button) on the far left or press the <key>Escape</key> key.</p>
+     </item>
+   </list>
+
+   <section id="note-content" style="2column">
+     <title>Rich Note Content</title>
+   </section>
+
+</page>

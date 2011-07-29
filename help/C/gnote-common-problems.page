@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="common-problems">
+
+  <info>
+    <link type="guide" xref="index#common-problems"/>
+    <license><p>GNU Free Documentation License (GFDL), Version 1.1</p></license>
+    <desc>Frequently Asked Questions</desc>
+    <credit type="author">
+      <name>Pierre-Yves Luyten</name>
+      <years>2011</years>
+    </credit>
+    <credit type="editor">
+      <name>Aurimas Cernius</name>
+      <years>2011</years>
+    </credit>
+  </info>
+
+  <title>Gnote Common Issues</title>
+    <list>
+      <item><title>Does <app>Gnote</app> work with <app>Tomboy</app>?</title><p>You can import <app>Tomboy</app> Notes. An add-in has to be activated.</p>
+      </item>
+      <item><title>How to Synchronize Notes?</title>
+        <p>There is no Synchronization feature. However, your notes are stored into <file>~/.local/share/gnote</file> folder, so may synchronize this folder.</p>
+      </item>
+      <item><title>I can not find the Gnote status icon</title>
+        <p>You can activate the <app>Gnote</app> status icon using a command from <app>terminal</app> : <cmd>gsettings set org.gnome.gnote use-status-icon true</cmd> .</p></item>
+      <item><title>How to automatically start <app>Gnote</app> when I log in?</title>
+        <p>To start Gnote automatically when you log into GNOME, run <app>gnome-session-properties</app></p>
+      </item>
+    </list>
+
+</page>
