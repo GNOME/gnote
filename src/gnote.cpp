@@ -529,7 +529,10 @@ namespace gnote {
         m_open_note_name = m_open_note;
       }
     }
-    
+    else if(!m_open_note && argc > 1 && Glib::str_has_prefix(argv[argc - 1], "note://gnote/")) {
+      m_open_note = argv[argc -1];
+      m_open_note_uri = m_open_note;
+    }
   }
 
 
