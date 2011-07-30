@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -209,7 +209,7 @@ namespace gnote {
     REGISTER_APP_ADDIN(notebooks::NotebookApplicationAddin);
 
     m_module_manager.add_path(LIBDIR"/"PACKAGE_NAME"/addins/"PACKAGE_VERSION);
-    m_module_manager.add_path(m_gnote_conf_dir);
+    m_module_manager.add_path(m_gnote_conf_dir + "/addins");
 
     m_module_manager.load_modules();
 
