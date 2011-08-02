@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-06-27 20:41+0000\n"
-"PO-Revision-Date: 2011-06-28 12:07+0200\n"
+"POT-Creation-Date: 2011-07-31 16:34+0000\n"
+"PO-Revision-Date: 2011-08-01 10:10+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,6 @@ msgid "Custom Font Face"
 msgstr "Personalizar tipografía"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:4
-#| msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
@@ -315,7 +314,6 @@ msgid "Saved horizontal position of Search window"
 msgstr "Posición horizontal guardada de la ventana de búsqueda"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:49
-#| msgid "Saved vertical position of Search window"
 msgid "Saved splitter position of Search window splitter."
 msgstr "Posición guardada del divisor de la ventana de búsqueda."
 
@@ -757,7 +755,7 @@ msgstr "Una aplicación para tomar notas"
 msgid "Gnote options at launch"
 msgstr "Opciones de Gnote al iniciar"
 
-#: ../src/gnote.cpp:662
+#: ../src/gnote.cpp:665
 msgid "Version %1%"
 msgstr "Versión %1%"
 
@@ -1738,6 +1736,20 @@ msgstr "Error al imprimir la nota"
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
 msgid "Page %1% of %2%"
 msgstr "Página %1% de %2%"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
+msgid "Replace title"
+msgstr "Reemplazar título"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
+#| msgid "Delete the selected note"
+msgid "Replace title with selection."
+msgstr "Reemplazar título con la selección."
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
+msgid "Pierre-Yves Luyten"
+msgstr "Pierre-Yves Luyten"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
