@@ -40,4 +40,4 @@ DOC_PAGES = \
 	gnote-searching-notes.page \
 	gnote-working-with-notebooks.page \
 	index.page
-DOC_LINGUAS = de es zh_CN
+DOC_LINGUAS = de es fr zh_CN
