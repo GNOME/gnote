@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,8 +51,9 @@ public:
   Search(NoteManager &);
 
     
-  /// <summary>
-  /// Search the notes!
+  /// Search the notes! A match number of
+  /// INT_MAX indicates that the note
+  /// title contains the search term.
   /// </summary>
   /// <param name="query">
   /// A <see cref="System.String"/>
@@ -65,7 +67,9 @@ public:
   /// be searched.
   /// </param>
   /// <returns>
-  /// A <see cref="IDictionary`2"/>
+  /// A <see cref="IDictionary`2"/> with the relevant Notes
+  /// and a match number. If the search term is in the title,
+  /// number will be INT_MAX.
   /// </returns>  
   ResultsPtr search_notes(const std::string &, bool, 
                           const notebooks::Notebook::Ptr & );

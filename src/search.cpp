@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -63,10 +64,16 @@ namespace gnote {
       if (selected_notebook && !selected_notebook->contains_note (note))
         continue;
         
-      // Check the note's raw XML for at least one
-      // match, to avoid deserializing Buffers
-      // unnecessarily.
-      if (check_note_has_match (note, encoded_words,
+      // First check the note's title for a match,
+      // if there is no match check the note's raw
+      // XML for at least one match, to avoid
+      // deserializing Buffers unnecessarily.
+      if (0 < find_match_count_in_note (note->get_title(),
+                                        words,
+                                        case_sensitive)) {
+        temp_matches->insert(std::make_pair(note, INT_MAX));
+      }
+      else if (check_note_has_match (note, encoded_words,
                                 case_sensitive)) {
         int match_count =
           find_match_count_in_note (note->text_content(),

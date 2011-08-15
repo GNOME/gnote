@@ -570,7 +570,11 @@ namespace gnote {
         = m_current_matches.find(note->uri());
       if (miter != m_current_matches.end()) {
         match_count = miter->second;
-        if (match_count > 0) {
+        if(match_count == INT_MAX) {
+          //TRANSLATORS: search found a match in note title
+          match_str = _("Title match");
+        }
+        else if (match_count > 0) {
           const char * fmt;
           fmt = ngettext("%1% match", "%1% matches", match_count);
           match_str = str(boost::format(fmt) % match_count);
