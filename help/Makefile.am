@@ -26,6 +26,7 @@ DOC_PAGES = \
 	gnote-addin-noteoftheday.page \
 	gnote-addin-print.page \
 	gnote-addins-preferences.page \
+	gnote-addin-replacetitle.page \
 	gnote-addin-timestamp.page \
 	gnote-addin-underline.page \
 	gnote-bulleted-lists.page \
