@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-08 14:32+0000\n"
+"POT-Creation-Date: 2011-08-16 21:16+0000\n"
 "PO-Revision-Date: 2011-08-15 15:12+0200\n"
 "Last-Translator: Bruno Brouard <annoa.b@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -25,9 +25,10 @@ msgstr ""
 #: C/gnote-deleting-notes.page:8(p) C/gnote-creating-notes.page:8(p)
 #: C/gnote-common-problems.page:8(p) C/gnote-bulleted-lists.page:9(p)
 #: C/gnote-addin-underline.page:9(p) C/gnote-addin-timestamp.page:10(p)
-#: C/gnote-addins-preferences.page:9(p) C/gnote-addin-print.page:9(p)
-#: C/gnote-addin-noteoftheday.page:9(p) C/gnote-addin-html.page:9(p)
-#: C/gnote-addin-fixedwidth.page:9(p) C/gnote-addin-bugzillalink.page:10(p)
+#: C/gnote-addin-replacetitle.page:9(p) C/gnote-addins-preferences.page:9(p)
+#: C/gnote-addin-print.page:9(p) C/gnote-addin-noteoftheday.page:9(p)
+#: C/gnote-addin-html.page:9(p) C/gnote-addin-fixedwidth.page:9(p)
+#: C/gnote-addin-bugzillalink.page:10(p)
 msgid "GNU Free Documentation License (GFDL), Version 1.1"
 msgstr "GNU Free Documentation License (GFDL), Version 1.1"
 
@@ -39,6 +40,7 @@ msgstr "GNU Free Documentation License (GFDL), Version 1.1"
 #: C/gnote-creating-notes.page:11(name) C/gnote-common-problems.page:11(name)
 #: C/gnote-bulleted-lists.page:11(name) C/gnote-addin-underline.page:11(name)
 #: C/gnote-addin-timestamp.page:12(name)
+#: C/gnote-addin-replacetitle.page:11(name)
 #: C/gnote-addins-preferences.page:11(name) C/gnote-addin-print.page:11(name)
 #: C/gnote-addin-noteoftheday.page:11(name) C/gnote-addin-html.page:11(name)
 #: C/gnote-addin-fixedwidth.page:11(name)
@@ -66,6 +68,8 @@ msgstr "Pierre-Yves Luyten"
 #: C/gnote-addin-underline.page:16(years)
 #: C/gnote-addin-timestamp.page:13(years)
 #: C/gnote-addin-timestamp.page:17(years)
+#: C/gnote-addin-replacetitle.page:12(years)
+#: C/gnote-addin-replacetitle.page:16(years)
 #: C/gnote-addins-preferences.page:12(years)
 #: C/gnote-addins-preferences.page:16(years)
 #: C/gnote-addin-print.page:12(years) C/gnote-addin-print.page:16(years)
@@ -86,6 +90,7 @@ msgstr "2011"
 #: C/gnote-creating-notes.page:15(name) C/gnote-common-problems.page:15(name)
 #: C/gnote-bulleted-lists.page:15(name) C/gnote-addin-underline.page:15(name)
 #: C/gnote-addin-timestamp.page:16(name)
+#: C/gnote-addin-replacetitle.page:15(name)
 #: C/gnote-addins-preferences.page:15(name) C/gnote-addin-print.page:15(name)
 #: C/gnote-addin-noteoftheday.page:15(name) C/gnote-addin-html.page:15(name)
 #: C/gnote-addin-fixedwidth.page:15(name)
@@ -453,8 +458,7 @@ msgid ""
 "Highlight a note by selecting it and then select <gui>Open</gui> from the "
 "<gui>File</gui> menu."
 msgstr ""
-"sélectionnez une note puis <gui>Ouvrir</gui> dans le menu "
-"<gui>Fichier</gui>,"
+"sélectionnez une note puis <gui>Ouvrir</gui> dans le menu <gui>Fichier</gui>,"
 
 #: C/gnote-searching-notes.page:28(p)
 msgid ""
@@ -608,7 +612,8 @@ msgstr "Réglages avancés"
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-links.page:26(None) C/gnote-addin-timestamp.page:22(None)
-#: C/gnote-addin-print.page:21(None) C/gnote-addin-html.page:21(None)
+#: C/gnote-addin-replacetitle.page:21(None) C/gnote-addin-print.page:21(None)
+#: C/gnote-addin-html.page:21(None)
 msgid ""
 "@@image: 'figures/gnote-tools.png'; md5=6a1c7800cd20071381ea591f49c32b6c"
 msgstr ""
@@ -632,10 +637,10 @@ msgid ""
 "the new “FinalExam” note."
 msgstr ""
 "Le bouton <gui>Lier</gui> sert à lier une nouvelle note à la note actuelle. "
-"Par exemple, si celle-ci contient le terme « Examen Final », en "
-"sélectionnant ce texte et en cliquant sur <gui>Lier</gui> une nouvelle note "
-"intitulée « Examen Final » est créée. Un lien sera introduit dans la note "
-"actuelle : en cliquant dessus, vous ouvrez la nouvelle note « Examen Final »."
+"Par exemple, si celle-ci contient le terme « Examen Final », en sélectionnant "
+"ce texte et en cliquant sur <gui>Lier</gui> une nouvelle note intitulée "
+"« Examen Final » est créée. Un lien sera introduit dans la note actuelle : en "
+"cliquant dessus, vous ouvrez la nouvelle note « Examen Final »."
 
 #: C/gnote-links.page:23(p)
 msgid ""
@@ -778,8 +783,8 @@ msgid ""
 "Enter the key combination to open the “Start Here” note, which is "
 "preinstalled with Gnote."
 msgstr ""
-"Saisissez ici la combinaison de touches pour ouvrir la note « Démarrer "
-"ici », pré-installée dans Gnote."
+"Saisissez ici la combinaison de touches pour ouvrir la note « Démarrer ici », "
+"pré-installée dans Gnote."
 
 #: C/gnote-hotkeys.page:25(title)
 msgid "Create New Note"
@@ -861,8 +866,8 @@ msgid ""
 msgstr ""
 "En cliquant dans la zone du contenu de la note, il est possible de la "
 "modifier en ajoutant ou retirant du texte avec le clavier. La première ligne "
-"constitue le titre qui est par défaut « Nouvelle note N ». En cliquant sur "
-"la première ligne, vous pourrez changer le titre à l'aide du clavier. Par "
+"constitue le titre qui est par défaut « Nouvelle note N ». En cliquant sur la "
+"première ligne, vous pourrez changer le titre à l'aide du clavier. Par "
 "défaut, à l'ouverture d'une nouvelle note, le focus est mis dans la zone de "
 "contenu textuel ; ainsi vous pouvez immédiatement commencer la rédaction de "
 "la note sans avoir à cliquer dans la zone du contenu."
@@ -888,10 +893,10 @@ msgid ""
 "during the current session. To undo your last change using the keyboard, use "
 "the standard keybinding, <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
 msgstr ""
-"La fonction « Annuler » de <app>Gnote</app> est disponible dans ce menu. "
-"Elle vous permet de revenir à une rédaction antérieure de la note dans le "
-"cours d'une session. Le raccourci clavier standard <keyseq><key>Ctrl</"
-"key><key>Z</key></keyseq> vous permet d'annuler la dernière modification."
+"La fonction « Annuler » de <app>Gnote</app> est disponible dans ce menu. Elle "
+"vous permet de revenir à une rédaction antérieure de la note dans le cours "
+"d'une session. Le raccourci clavier standard <keyseq><key>Ctrl</key><key>Z</"
+"key></keyseq> vous permet d'annuler la dernière modification."
 
 #: C/gnote-editing-notes.page:36(title)
 msgid "Redo"
@@ -1391,6 +1396,43 @@ msgstr ""
 #: C/gnote-addin-timestamp.page:24(p)
 msgid "Click on this option to insert current date and time."
 msgstr "Cliquez sur cette option pour insérer la date et l'heure actuelle."
+
+#: C/gnote-addin-replacetitle.page:8(desc)
+msgid "Rename note title"
+msgstr "Renommer le titre d'une note"
+
+#: C/gnote-addin-replacetitle.page:20(title)
+msgid "Replace title"
+msgstr "Remplacement du titre"
+
+#: C/gnote-addin-replacetitle.page:21(p)
+msgid ""
+"The Tools button is represented by the <media type=\"image\" src=\"figures/"
+"gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. When this add-"
+"in is installed, the option <gui>Replace title</gui> is present in "
+"<gui>Tools</gui> menu."
+msgstr ""
+"Le bouton <gui>Outils</gui> est matérialisé par l'icône <media type=\"image"
+"\" src=\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"></"
+"media>. Lorsque ce greffon est activé, l'option <gui>Remplacer le titre</"
+"gui> est présente dans le menu <gui>Outils</gui>."
+
+#: C/gnote-addin-replacetitle.page:22(p)
+msgid ""
+"When the <gui>Replace title</gui> option is selected, the note title will be "
+"replaced by currently selected text in any application."
+msgstr ""
+"Lorsque l'option <gui>Remplacer le titre</gui> est sélectionnée, le titre de "
+"la note est remplacé par le texte actuellement sélectionné dans toute "
+"application."
+
+#: C/gnote-addin-replacetitle.page:23(p)
+msgid ""
+"Alternatively, you can use <keyseq><key>Ctrl</key><key>R</key></keyseq> "
+"shortcut."
+msgstr ""
+"Autrement, utilisez le raccourci clavier <keyseq><key>Ctrl</key><key>R</"
+"key></keyseq>."
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
