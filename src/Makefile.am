@@ -10,7 +10,6 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ @LIBXML_CFLAGS@ \
 	@LIBXSLT_CFLAGS@ \
 	@PCRE_CFLAGS@ \
-	@DBUS_CFLAGS@ \
 	@UUID_CFLAGS@ \
 	-DGNOTE_LOCALEDIR=\"@GNOTE_LOCALEDIR@\" \
 	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
@@ -21,7 +20,6 @@ GNOTE_LIBS = libgnote.a $(top_builddir)/libtomboy/libtomboy.la \
 	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@PCRE_LIBS@ \
-	@DBUS_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
 	@UUID_LIBS@
 
@@ -82,14 +80,14 @@ CLEANFILES = gnote-applet
 endif
 
 
-if HAVE_DBUS
 SUBDIRS += dbus
 DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/remotecontrol.hpp dbus/remotecontrol.cpp \
 	dbus/remotecontrolclient.hpp dbus/remotecontrolclient.cpp \
 	dbus/iremotecontrol.hpp \
+	dbus/remotecontrol-client-glue.cpp \
+	dbus/remotecontrol-glue.cpp \
 	$(NULL)
-endif
 
 libgnote_a_SOURCES = \
 	base/singleton.hpp \

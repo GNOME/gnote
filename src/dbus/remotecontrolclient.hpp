@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,6 +22,8 @@
 #ifndef __GNOTE_REMOTECONTROLCLIENT_HPP_
 #define __GNOTE_REMOTECONTROLCLIENT_HPP_
 
+#include <giomm/dbusconnection.h>
+
 #include "dbus/remotecontrol-client-glue.hpp"
 
 namespace gnote {
@@ -28,11 +31,11 @@ namespace gnote {
 
 class RemoteControlClient
   : public org::gnome::Gnote::RemoteControl_proxy
-  , public DBus::IntrospectableProxy
-  , public DBus::ObjectProxy
 {
 public:
-  RemoteControlClient(DBus::Connection &connection, const char *path, const char *name);
+  RemoteControlClient(const Glib::RefPtr<Gio::DBus::Connection> & connection, const char *path,
+                      const char *name, const char *interface_name,
+                      const Glib::RefPtr<Gio::DBus::InterfaceInfo> & gnote_interface);
 
   virtual void NoteAdded(const std::string&) {}
   virtual void NoteDeleted(const std::string&, const std::string&) {}

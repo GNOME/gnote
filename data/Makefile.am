@@ -20,7 +20,6 @@ gsettings_SCHEMAS = org.gnome.gnote.gschema.xml
 @GSETTINGS_RULES@
 
 
-if HAVE_DBUS
 dbusservicedir       = $(DBUS_SERVICE_DIR)
 dbusservice_in_files = org.gnome.Gnote.service.in
 dbusservice_DATA     = $(dbusservice_in_files:.service.in=.service)
@@ -29,7 +28,6 @@ $(dbusservice_DATA): $(dbusservice_in_files) Makefile
 	sed -e "s|\@bindir\@|$(bindir)|g"	\
 	    -e "s|\@wrapper\@|gnote|g"		\
 	    < $< > $@
-endif
 
 if HAVE_PANELAPPLET
 appletdir       = $(datadir)/gnome-panel/4.0/applets

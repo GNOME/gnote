@@ -29,7 +29,6 @@ LIBGTKMM_VERSION=3.0
 LIBPANELAPPLET_VERSION=3.0
 GTKSPELL_VERSION=2.0.9
 BOOST_VERSION=1.34
-DBUSCPP_VERSION=0.5.0
 
 AC_PROG_CXX
 AC_GNU_SOURCE
@@ -140,22 +139,6 @@ if test "$GCC" = "yes"; then
 fi
 AC_LANG_POP
 
-#
-# Use DBus to export our remote control if available.
-#
-AC_ARG_ENABLE(dbus,
-	AS_HELP_STRING([--enable-dbus],[compile with dbus support @<:@default: yes@:>@]),
-	[],[enable_dbus=yes])
-
-if test "$enable_dbus" != "no"; then
-	PKG_CHECK_MODULES(DBUS, dbus-c++-1 >= $DBUSCPP_VERSION, [
-		have_dbus="yes"
-		AC_DEFINE([ENABLE_DBUS], [1], [Define to 1 if DBus is enabled])
-	], have_dbus="no")
-fi
-AM_CONDITIONAL(HAVE_DBUS, test "$have_dbus" = "yes")
-
-
 
 AC_ARG_WITH(dbus_service_dir, [  --with-dbus-service-dir=DIR            Where to install Gnote's DBus service file.])
 AM_CONDITIONAL(WITH_DBUS_SERVICE_DIR, test "x$with_dbus_service_dir" != "x")
@@ -221,6 +204,5 @@ Options:
 
   Spellchecking support:       ${FIXED_GTKSPELL}
   GNOME Panel Applet support:  ${have_panelapplet}
-  DBus support:                ${have_dbus}
 
 "

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +24,7 @@
 #include <string>
 #include <vector>
 
-#include <dbus-c++/dbus.h>
+#include <giomm/dbusconnection.h>
 
 #include "dbus/iremotecontrol.hpp"
 #include "note.hpp"
@@ -35,11 +36,10 @@ class NoteManager;
 
 class RemoteControl
   : public IRemoteControl
-  , public DBus::IntrospectableAdaptor
-  , public DBus::ObjectAdaptor
 {
 public:
-  RemoteControl(DBus::Connection&, gnote::NoteManager&);
+  RemoteControl(const Glib::RefPtr<Gio::DBus::Connection> &, gnote::NoteManager&, const char *, const char *,
+                const Glib::RefPtr<Gio::DBus::InterfaceInfo> &);
   virtual ~RemoteControl();
 
   virtual bool AddTagToNote(const std::string& uri, const std::string& tag_name);

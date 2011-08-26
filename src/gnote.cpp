@@ -48,8 +48,11 @@
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "recentchanges.hpp"
+#include "remotecontrolproxy.hpp"
 #include "utils.hpp"
 #include "xkeybinder.hpp"
+#include "dbus/remotecontrol.hpp"
+#include "dbus/remotecontrolclient.hpp"
 #include "sharp/streamreader.hpp"
 #include "sharp/files.hpp"
 
@@ -57,10 +60,6 @@
 #include "applet.hpp"
 #endif
 
-#if ENABLE_DBUS
-#include "remotecontrolproxy.hpp"
-#include "dbus/remotecontrolclient.hpp"
-#endif
 
 namespace gnote {
 
@@ -82,19 +81,13 @@ namespace gnote {
 
   int Gnote::main(int argc, char **argv)
   {
-    GnoteCommandLine cmd_line;
-
     cmd_line.parse(argc, argv);
-
-    m_is_panel_applet = cmd_line.use_panel_applet();
-
-#ifdef ENABLE_DBUS
-    if(cmd_line.needs_execute()) {
-      cmd_line.execute();
+    if(cmd_line.needs_immediate_execute()) {
+      cmd_line.immediate_execute();
       return 0;
     }
-#endif
 
+    m_is_panel_applet = cmd_line.use_panel_applet();
     m_icon_theme = Gtk::IconTheme::get_default();
     m_icon_theme->append_search_path(DATADIR"/icons");
     m_icon_theme->append_search_path(DATADIR"/gnote/icons");
@@ -108,47 +101,77 @@ namespace gnote {
 
     ActionManager & am(ActionManager::obj());
     am.load_interface();
-    register_remote_control(*m_manager);
+    register_remote_control(*m_manager, sigc::mem_fun(*this, &Gnote::end_main));
     setup_global_actions();
-
     m_manager->get_addin_manager().initialize_application_addins();
 
-#ifndef ENABLE_DBUS
-    if(cmd_line.needs_execute()) {
-      cmd_line.execute();
-    }
-#endif
-
     if(m_is_panel_applet) {
-      DBG_OUT("starting applet");
-
       am["CloseWindowAction"]->set_visible(true);
       am["QuitGNoteAction"]->set_visible(false);
-      
-      // register panel applet factory
-#if HAVE_PANELAPPLET
-      return panel::register_applet();
-#else
-      return 0;
-#endif
     }
     else {
       Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
         .get_schema_settings(Preferences::SCHEMA_GNOTE);
       settings->signal_changed()
         .connect(sigc::mem_fun(*this, &Gnote::on_setting_changed));
+    }
+
+    if(m_is_panel_applet) {
+#if HAVE_PANELAPPLET
+      panel::register_applet();
+#endif
+    }
+    else {
+      Gtk::Main::run();
+    }
+    signal_quit();
+    return 0;
+  }
+
+
+  void Gnote::end_main(bool bus_acquired, bool name_acquired)
+  {
+    if(cmd_line.needs_execute()) {
+      cmd_line.execute();
+    }
+
+    if(bus_acquired) {
+      if(name_acquired) {
+        DBG_OUT("Gnote remote control active.");
+      } 
+      else {
+        // If Gnote is already running, open the search window
+        // so the user gets some sort of feedback when they
+        // attempt to run Gnote again.
+        Glib::RefPtr<RemoteControlClient> remote;
+        try {
+          remote = RemoteControlProxy::get_instance();
+          DBG_ASSERT(remote, "remote is NULL, something is wrong");
+          if(remote) {
+            remote->DisplaySearch();
+          }
+        } 
+        catch (...)
+        {
+        }
+
+        ERR_OUT ("Gnote is already running.  Exiting...");
+        ::exit(-1);
+      }
+    }
+
+    if(!m_is_panel_applet) {
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+        .get_schema_settings(Preferences::SCHEMA_GNOTE);
       if(settings->get_boolean(Preferences::USE_STATUS_ICON)) {
         DBG_OUT("starting tray icon");
         start_tray_icon();
       }
       else {
+        ActionManager & am(ActionManager::obj());
         am["ShowSearchAllNotesAction"]->activate();
-        Gtk::Main::run();
       }
     }
-
-    signal_quit();
-    return 0;
   }
 
 
@@ -194,8 +217,6 @@ namespace gnote {
       timeout->connect(sigc::mem_fun(*this, &Gnote::check_tray_icon_showing));
       timeout->attach();
     }
-    
-    Gtk::Main::run();
   }
 
 
@@ -211,39 +232,9 @@ namespace gnote {
   }
 
 
-  void Gnote::register_remote_control(NoteManager & manager)
+  void Gnote::register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish)
   {
-#if ENABLE_DBUS
-    try {
-      m_remote_control = RemoteControlProxy::register_remote(manager);
-      if (m_remote_control) {
-        DBG_OUT("Gnote remote control active.");
-      } 
-      else {
-        // If Gnote is already running, open the search window
-        // so the user gets some sort of feedback when they
-        // attempt to run Gnote again.
-        RemoteControlClient *remote;
-        try {
-          remote = RemoteControlProxy::get_instance();
-          DBG_ASSERT(remote, "remote is NULL, something is wrong");
-          if(remote) {
-            remote->DisplaySearch();
-          }
-        } 
-        catch (...)
-        {
-        }
-
-        ERR_OUT ("Gnote is already running.  Exiting...");
-        ::exit(-1);
-      }
-    } 
-    catch (const std::exception & e) {
-      ERR_OUT("Gnote remote control disabled (DBus exception): %s",
-              e.what());
-    }
-#endif
+    RemoteControlProxy::register_remote(manager, on_finish);
   }
 
 
@@ -537,23 +528,42 @@ namespace gnote {
 
 
   int GnoteCommandLine::execute()
-
   {
-    bool quit = false;
     DBG_OUT("running args");
 
+    RemoteControl *remote_control = RemoteControlProxy::get_remote_control();
+    if(remote_control) {
+      execute(remote_control);
+    }
+    else {
+      //gnote already running, execute via D-Bus and exit this instance
+      Glib::RefPtr<RemoteControlClient> remote = RemoteControlProxy::get_instance();
+      if(!remote) {
+        ERR_OUT("Could not connect to remote instance.");
+      }
+      else {
+        execute(remote);
+      }
+      Gtk::Main::quit();
+    }
+    return 0;
+  }
+
+
+  int GnoteCommandLine::immediate_execute()
+  {
     if(m_show_version) {
       print_version();
-      quit = true;
       exit(0);
     }
 
-#ifdef ENABLE_DBUS
-    RemoteControlClient * remote = RemoteControlProxy::get_instance();
-    if(!remote) {
-      ERR_OUT("couldn't get remote client");
-      return 1;
-    }
+    return 0;
+  }
+
+
+  template <typename T>
+  void GnoteCommandLine::execute(T & remote)
+  {
     if (m_do_new_note) {
       std::string new_uri;
 
@@ -640,23 +650,6 @@ namespace gnote {
         remote->DisplaySearch();
       }
     }
-#else
-      // as long as we don't have the DBus support.
-    if(m_do_search) {
-      NoteRecentChanges * recent_changes
-        = NoteRecentChanges::get_instance(
-          Gnote::obj().default_note_manager());
-
-      recent_changes->set_search_text(m_search);
-
-      recent_changes->present ();
-    }
-#endif
-
-    if(quit) {
-      exit(0);
-    }
-    return 0;
   }
 
 
@@ -668,19 +661,15 @@ namespace gnote {
   }
 
 
-  bool GnoteCommandLine::display_note(RemoteControlClient * remote,
-                                      std::string uri)
+  template <typename T>
+  bool GnoteCommandLine::display_note(T & remote, std::string uri)
   {
-#ifdef ENABLE_DBUS
     if (m_highlight_search) {
       return remote->DisplayNoteWithSearch(uri, m_highlight_search);
     }
     else {
       return remote->DisplayNote (uri);
     }
-#else
-    return false;
-#endif
   }
 
 
@@ -691,9 +680,12 @@ namespace gnote {
       m_open_note ||
       m_do_search ||
       m_open_start_here ||
-      m_highlight_search ||
-      m_show_version;
+      m_highlight_search;
   }
 
+  bool GnoteCommandLine::needs_immediate_execute() const
+  {
+    return m_show_version;
+  }
 
 }

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,13 +25,12 @@ namespace gnote {
 
 
 
-  RemoteControlClient::RemoteControlClient(DBus::Connection &connection, 
-                                           const char *p, const char *name)
-    : DBus::ObjectProxy(connection, p, name)
+  RemoteControlClient::RemoteControlClient(const Glib::RefPtr<Gio::DBus::Connection> & connection,
+                                           const char *path, const char *name, const char *interface_name,
+                                           const Glib::RefPtr<Gio::DBus::InterfaceInfo> & gnote_interface)
+    : RemoteControl_proxy(connection, name, path, interface_name, gnote_interface)
   {
   }
-
-
 
 }
 

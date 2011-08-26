@@ -34,13 +34,66 @@
 #include "base/singleton.hpp"
 #include "actionmanager.hpp"
 #include "keybinder.hpp"
+#include "remotecontrolproxy.hpp"
 #include "tray.hpp"
 
 namespace gnote {
 
 class PreferencesDialog;
 class NoteManager;
-class RemoteControl;
+class RemoteControlClient;
+
+class GnoteCommandLine
+{
+public:
+  GnoteCommandLine();
+  ~GnoteCommandLine();
+  int execute();
+  int immediate_execute();
+
+  const gchar * note_path() const
+    {
+      return m_note_path ? m_note_path : "";
+    }
+  bool        needs_execute() const;
+  bool        needs_immediate_execute() const;
+  bool        use_panel_applet() const
+    {
+      return m_use_panel;
+    }
+  void parse(int &argc, gchar ** & argv);
+
+  static gboolean parse_func(const gchar *option_name,
+                             const gchar *value,
+                             gpointer data,
+                             GError **error);
+private:
+  void        print_version();
+  template <typename T>
+  bool        display_note(T & remote, std::string uri);
+  template <typename T>
+  void execute(T & remote);
+
+  GOptionContext *m_context;
+
+  bool        m_use_panel;
+  gchar *     m_note_path;
+  bool        m_do_search;
+  std::string m_search;
+  bool        m_show_version;
+  bool        m_do_new_note;
+  std::string m_new_note_name;
+  gchar*      m_open_note;
+  bool        m_open_start_here;
+  gchar*      m_highlight_search;
+
+
+  // depend on m_open_note, set in on_post_parse
+  std::string m_open_note_name;
+  std::string m_open_note_uri;
+  std::string m_open_external_note_path;
+};
+
 
 class Gnote
   : public base::Singleton<Gnote>
@@ -90,11 +143,12 @@ public:
       m_tray = tray;
     }
   sigc::signal<void> signal_quit;
+  static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
 private:
   void start_note_created(const Note::Ptr & start_note);
   std::string get_note_path(const std::string & override_path);
-  void register_remote_control(NoteManager & manager);
   void on_setting_changed(const Glib::ustring & key);
+  void end_main(bool bus_aquired, bool name_acquired);
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
@@ -103,57 +157,9 @@ private:
   Tray::Ptr m_tray;
   bool m_is_panel_applet;
   PreferencesDialog *m_prefsdlg;
-  RemoteControl     *m_remote_control;
+  GnoteCommandLine cmd_line;
 };
 
-class RemoteControlClient;
-
-class GnoteCommandLine
-{
-public:
-  GnoteCommandLine();
-  ~GnoteCommandLine();
-  int execute();
-
-  const gchar * note_path() const
-    {
-      return m_note_path ? m_note_path : "";
-    }
-  bool        needs_execute() const;
-  bool        use_panel_applet() const
-    {
-      return m_use_panel;
-    }
-  void parse(int &argc, gchar ** & argv);
-
-  static gboolean parse_func(const gchar *option_name,
-                             const gchar *value,
-                             gpointer data,
-                             GError **error);
-private:
-  void        print_version();
-  bool        display_note(RemoteControlClient * remote,
-                           std::string uri);
-
-  GOptionContext *m_context;
-
-  bool        m_use_panel;
-  gchar *     m_note_path;
-  bool        m_do_search;
-  std::string m_search;
-  bool        m_show_version;
-  bool        m_do_new_note;
-  std::string m_new_note_name;
-  gchar*      m_open_note;
-  bool        m_open_start_here;
-  gchar*      m_highlight_search;
-
-
-  // depend on m_open_note, set in on_post_parse
-  std::string m_open_note_name;
-  std::string m_open_note_uri;
-  std::string m_open_external_note_path;
-};
 
 }
 
