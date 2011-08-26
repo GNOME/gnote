@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-06-27 20:41+0000\n"
-"PO-Revision-Date: 2011-06-28 23:49+0300\n"
+"POT-Creation-Date: 2011-08-15 12:02+0000\n"
+"PO-Revision-Date: 2011-08-26 21:27+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lithuanian <>\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,6 @@ msgid "Custom Font Face"
 msgstr "Pasirinktinis šriftas"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:4
-#| msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgid "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr "Nustato paieškos lango skirtuko padėtį pikseliais; įrašoma uždarant Gnote."
 
@@ -226,7 +225,6 @@ msgid "Saved horizontal position of Search window"
 msgstr "Įrašyta paieškos lango horizontali padėtis"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:49
-#| msgid "Saved vertical position of Search window"
 msgid "Saved splitter position of Search window splitter."
 msgstr "Įrašyta paieškos lango skirtuko padėtis"
 
@@ -568,7 +566,7 @@ msgstr "Raštelių rašymo programa"
 msgid "Gnote options at launch"
 msgstr "Gnote parinktys paleidžiant"
 
-#: ../src/gnote.cpp:662
+#: ../src/gnote.cpp:665
 msgid "Version %1%"
 msgstr "Versija %1%"
 
@@ -1022,28 +1020,35 @@ msgstr "Paskutinis pakeitimas"
 msgid "Matches"
 msgstr "Atitikmenys"
 
+#. TRANSLATORS: search found a match in note title
 #: ../src/recentchanges.cpp:575
+#| msgid "%1% match"
+#| msgid_plural "%1% matches"
+msgid "Title match"
+msgstr "Atitikmuo pavadinime"
+
+#: ../src/recentchanges.cpp:579
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% atitikmuo"
 msgstr[1] "%1% atitikmenys"
 msgstr[2] "%1% atitkmenų"
 
-#: ../src/recentchanges.cpp:589
+#: ../src/recentchanges.cpp:593
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Iš viso: %1% raštelis"
 msgstr[1] "Iš viso: %1% rašteliai"
 msgstr[2] "Iš viso: %1% raštelių"
 
-#: ../src/recentchanges.cpp:605
+#: ../src/recentchanges.cpp:609
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Atitinka: %1% raštelį"
 msgstr[1] "Atitinka: %1% raštelius"
 msgstr[2] "Atitinka: %1% raštelių"
 
-#: ../src/recentchanges.cpp:747
+#: ../src/recentchanges.cpp:751
 msgid "Notes"
 msgstr "Rašteliai"
 
@@ -1476,6 +1481,20 @@ msgstr "Klaida spausdinant raštelį"
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
 msgid "Page %1% of %2%"
 msgstr "%1% puslapis iš %2%"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
+msgid "Replace title"
+msgstr "Replace title"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
+#| msgid "Delete the selected note"
+msgid "Replace title with selection."
+msgstr "Pakeisti pavadinimą pažymėjimu."
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
+msgid "Pierre-Yves Luyten"
+msgstr "Pierre-Yves Luyten"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
