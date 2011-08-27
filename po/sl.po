@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-02 15:40+0000\n"
-"PO-Revision-Date: 2011-08-06 08:23+0100\n"
+"POT-Creation-Date: 2011-08-26 18:34+0000\n"
+"PO-Revision-Date: 2011-08-27 09:10+0100\n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: Slovenian\n"
@@ -474,19 +474,19 @@ msgstr "U_skladi sporočilca"
 msgid "Start synchronizing notes"
 msgstr "Začne usklajevanje sporočilc"
 
-#: ../src/gnote.cpp:305
+#: ../src/gnote.cpp:296
 msgid "Cannot create new note"
 msgstr "Ni mogoče ustvariti novega sporočilca"
 
-#: ../src/gnote.cpp:354
+#: ../src/gnote.cpp:345
 msgid "and Tomboy original authors."
 msgstr "in avtorji izvirnega Tomboy"
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:354
 msgid "translator-credits"
 msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com>"
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:362
 msgid ""
 "Copyright © 2010-2011 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -498,73 +498,73 @@ msgstr ""
 "Avtorske pravice © 2009 Hubert Figuiere\n"
 "Avtorske pravice © 2004-2009 avtorji izvornega Tomboy."
 
-#: ../src/gnote.cpp:375
+#: ../src/gnote.cpp:366
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Preprost in enostaven program za pisanje sporočilc. "
 
-#: ../src/gnote.cpp:386
+#: ../src/gnote.cpp:377
 msgid "Homepage"
 msgstr "Domača stran"
 
-#: ../src/gnote.cpp:461
+#: ../src/gnote.cpp:452
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Zaženi Gnote kot aplet pladnja GNOME."
 
-#: ../src/gnote.cpp:462
+#: ../src/gnote.cpp:453
 msgid "Specify the path of the directory containing the notes."
 msgstr "Določi pot mape, ki vsebuje sporočilca."
 
-#: ../src/gnote.cpp:462
+#: ../src/gnote.cpp:453
 msgid "path"
 msgstr "pot"
 
-#: ../src/gnote.cpp:463
+#: ../src/gnote.cpp:454
 msgid "Open the search all notes window with the search text."
 msgstr "Odpre okno za iskanje vseh sporočilc z izbranim besedilom."
 
-#: ../src/gnote.cpp:463
-#: ../src/gnote.cpp:468
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:454
+#: ../src/gnote.cpp:459
+#: ../src/gnote.cpp:460
 msgid "text"
 msgstr "Besedilo"
 
-#: ../src/gnote.cpp:464
+#: ../src/gnote.cpp:455
 msgid "Print version information."
 msgstr "Izpiši podrobnosti o različici"
 
-#: ../src/gnote.cpp:466
+#: ../src/gnote.cpp:457
 msgid "Create and display a new note, with a optional title."
 msgstr "Ustvari in prikaže novo sporočilce z naslovom po meri."
 
-#: ../src/gnote.cpp:466
+#: ../src/gnote.cpp:457
 msgid "title"
 msgstr "naslov"
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:458
 msgid "Display the existing note matching title."
 msgstr "Prikaže obstoječe sporočilce, ki se sklada z naslovom."
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:458
 msgid "title/url"
 msgstr "naslov/url"
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:459
 msgid "Display the 'Start Here' note."
 msgstr "Prikaz sporočilca 'Začnite tukaj'."
 
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:460
 msgid "Search and highlight text in the opened note."
 msgstr "Išče in poudari besedilo v odprtem sporočilcu."
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:465
 msgid "A note taking application"
 msgstr "Program za pisanje sporočilc"
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:465
 msgid "Gnote options at launch"
 msgstr "Možnosti gnote ob zagonu"
 
-#: ../src/gnote.cpp:665
+#: ../src/gnote.cpp:658
 msgid "Version %1%"
 msgstr "Različica %1%"
 
@@ -1019,7 +1019,12 @@ msgstr "Zadnjič spremenjeno"
 msgid "Matches"
 msgstr "Zadetki"
 
+#. TRANSLATORS: search found a match in note title
 #: ../src/recentchanges.cpp:575
+msgid "Title match"
+msgstr "Ujemanje naslovov"
+
+#: ../src/recentchanges.cpp:579
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% zadetkov"
@@ -1027,7 +1032,7 @@ msgstr[1] "%1% zadetek"
 msgstr[2] "%1% zadetka"
 msgstr[3] "%1% zadetki"
 
-#: ../src/recentchanges.cpp:589
+#: ../src/recentchanges.cpp:593
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Skupaj: %1% sporočilc"
@@ -1035,7 +1040,7 @@ msgstr[1] "Skupaj: %1% sporočilce"
 msgstr[2] "Skupaj: %1% sporočilci"
 msgstr[3] "Skupaj: %1% sporočilca"
 
-#: ../src/recentchanges.cpp:605
+#: ../src/recentchanges.cpp:609
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Sklada se z: %1% sporočilci"
@@ -1043,7 +1048,7 @@ msgstr[1] "Sklada se z: %1% sporočilcem"
 msgstr[2] "Sklada se z: %1% sporočilcema"
 msgstr[3] "Sklada se z: %1% sporočilci"
 
-#: ../src/recentchanges.cpp:747
+#: ../src/recentchanges.cpp:751
 msgid "Notes"
 msgstr "Sporočilca"
 
@@ -1200,7 +1205,7 @@ msgstr "Vsa sporočilca"
 
 #: ../src/notebooks/notebook.cpp:219
 msgid "Unfiled Notes"
-msgstr "Nezapolnjena sporočilca"
+msgstr "Sporočilca brez beležke"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:103
 msgid "Note_books"
