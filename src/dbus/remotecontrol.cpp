@@ -71,7 +71,7 @@ namespace gnote {
     Note::Ptr note;
 
     note = m_manager.find (linked_title);
-    if (!note)
+    if (note)
       return "";
 
     try {
