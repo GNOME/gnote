@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote-help.master\n"
-"POT-Creation-Date: 2011-08-06 10:41+0000\n"
-"PO-Revision-Date: 2011-08-10 10:55+0200\n"
+"POT-Creation-Date: 2011-08-15 12:02+0000\n"
+"PO-Revision-Date: 2011-08-29 12:12+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,11 +24,12 @@ msgstr ""
 #: C/gnote-deleting-notes.page:8(p) C/gnote-creating-notes.page:8(p)
 #: C/gnote-common-problems.page:8(p) C/gnote-bulleted-lists.page:9(p)
 #: C/gnote-addin-underline.page:9(p) C/gnote-addin-timestamp.page:10(p)
-#: C/gnote-addins-preferences.page:9(p) C/gnote-addin-print.page:9(p)
-#: C/gnote-addin-noteoftheday.page:9(p) C/gnote-addin-html.page:9(p)
-#: C/gnote-addin-fixedwidth.page:9(p) C/gnote-addin-bugzillalink.page:10(p)
+#: C/gnote-addin-replacetitle.page:9(p) C/gnote-addins-preferences.page:9(p)
+#: C/gnote-addin-print.page:9(p) C/gnote-addin-noteoftheday.page:9(p)
+#: C/gnote-addin-html.page:9(p) C/gnote-addin-fixedwidth.page:9(p)
+#: C/gnote-addin-bugzillalink.page:10(p)
 msgid "GNU Free Documentation License (GFDL), Version 1.1"
-msgstr ""
+msgstr "Licencia libre de documentación de GNU (GFDL), Versión 1.1"
 
 #: C/index.page:9(name) C/gnote-working-with-notebooks.page:12(name)
 #: C/gnote-searching-notes.page:11(name)
@@ -38,6 +39,7 @@ msgstr ""
 #: C/gnote-creating-notes.page:11(name) C/gnote-common-problems.page:11(name)
 #: C/gnote-bulleted-lists.page:11(name) C/gnote-addin-underline.page:11(name)
 #: C/gnote-addin-timestamp.page:12(name)
+#: C/gnote-addin-replacetitle.page:11(name)
 #: C/gnote-addins-preferences.page:11(name) C/gnote-addin-print.page:11(name)
 #: C/gnote-addin-noteoftheday.page:11(name) C/gnote-addin-html.page:11(name)
 #: C/gnote-addin-fixedwidth.page:11(name)
@@ -65,6 +67,8 @@ msgstr "Pierre-Yves Luyten"
 #: C/gnote-addin-underline.page:16(years)
 #: C/gnote-addin-timestamp.page:13(years)
 #: C/gnote-addin-timestamp.page:17(years)
+#: C/gnote-addin-replacetitle.page:12(years)
+#: C/gnote-addin-replacetitle.page:16(years)
 #: C/gnote-addins-preferences.page:12(years)
 #: C/gnote-addins-preferences.page:16(years)
 #: C/gnote-addin-print.page:12(years) C/gnote-addin-print.page:16(years)
@@ -85,6 +89,7 @@ msgstr "2011"
 #: C/gnote-creating-notes.page:15(name) C/gnote-common-problems.page:15(name)
 #: C/gnote-bulleted-lists.page:15(name) C/gnote-addin-underline.page:15(name)
 #: C/gnote-addin-timestamp.page:16(name)
+#: C/gnote-addin-replacetitle.page:15(name)
 #: C/gnote-addins-preferences.page:15(name) C/gnote-addin-print.page:15(name)
 #: C/gnote-addin-noteoftheday.page:15(name) C/gnote-addin-html.page:15(name)
 #: C/gnote-addin-fixedwidth.page:15(name)
@@ -110,11 +115,11 @@ msgstr "Organizar notas"
 
 #: C/index.page:33(title)
 msgid "Advanced"
-msgstr ""
+msgstr "Avanzado"
 
 #: C/index.page:37(title)
 msgid "Customizing"
-msgstr ""
+msgstr "Personalización"
 
 #: C/index.page:41(title)
 msgid "Common Problems"
@@ -249,9 +254,6 @@ msgid "Adding Notes to a Notebook"
 msgstr "Añadir notas a un cuaderno de notas"
 
 #: C/gnote-working-with-notebooks.page:57(p)
-#| msgid ""
-#| "To add notes to a notebook, you can add a note from the <guilabel>Search "
-#| "All Notes</guilabel> dialog or directly within a note."
 msgid ""
 "To add notes to a notebook, you can add a note from the <gui>Search All "
 "Notes</gui> dialog or directly within a note."
@@ -261,7 +263,6 @@ msgstr ""
 "nota."
 
 #: C/gnote-working-with-notebooks.page:58(p)
-#| msgid "To move an existing note from the Search All Notes dialog:"
 msgid ""
 "To move an existing note from the <gui>Search All Notes</gui> dialog use one "
 "of the following:"
@@ -270,11 +271,10 @@ msgstr ""
 "notas</gui> use uno de las siguientes métodos:"
 
 #: C/gnote-working-with-notebooks.page:60(p)
-#, fuzzy
 #| msgid "Using your mouse, drag the note(s) onto a notebook on the left."
 msgid "Drag the note(s) onto a notebook on the left using mouse."
 msgstr ""
-"Usando su ratón, arrastre la(s) nota(s) dentro de un cuaderno de notas a la "
+"Usando su ratón, arrastre las notas dentro de un cuaderno de notas a la "
 "izquierda."
 
 #: C/gnote-working-with-notebooks.page:61(p)
@@ -284,7 +284,6 @@ msgid ""
 msgstr ""
 
 #: C/gnote-working-with-notebooks.page:63(p)
-#, fuzzy
 #| msgid ""
 #| "As you type a note, you can add the note directly to an existing notebook "
 #| "using the <guimenu>Notebook</guimenu> button. The <guimenu>Notebook</"
@@ -297,16 +296,15 @@ msgid ""
 "\" style=\"right\"/> icon."
 msgstr ""
 "Según escribe una nota, puede añadir directamente la nota a un cuaderno de "
-"notas existente usando el botón <guimenu>Cuaderno de notas</guimenu>. El "
-"botón <guimenu>Cuaderno de notas</guimenu> está representado por el icono "
-"<inlinegraphic fileref=\"figures/notebook-icon.png\"/>."
+"notas existente usando el botón <gui>Cuaderno de notas</gui>. El botón "
+"Cuaderno de notas está representado por el icono <media type=\"image\" src="
+"\"figures/notebook-icon.png\" mime=\"image/png\" style=\"right\"/>."
 
 #: C/gnote-working-with-notebooks.page:66(p)
 msgid "Add to Notebook."
 msgstr "Añadir a un cuaderno de notas."
 
 #: C/gnote-working-with-notebooks.page:68(p)
-#| msgid "You can create new notebooks using one of the following methods:"
 msgid "To remove note from notebook, use one of the following:"
 msgstr ""
 "Para quitar una nota de un cuaderno de notas use uno de los siguientes "
@@ -382,7 +380,7 @@ msgstr "Crear plantillas en los Cuadernos de notas"
 
 #: C/gnote-working-with-notebooks.page:88(title)
 msgid "Deleting a Notebook"
-msgstr "Borrar un Cuaderno de notas"
+msgstr "Eliminar un Cuaderno de notas"
 
 #: C/gnote-working-with-notebooks.page:89(p)
 #, fuzzy
@@ -409,7 +407,7 @@ msgstr ""
 #: C/gnote-working-with-notebooks.page:90(p)
 msgid "You can delete a notebook you have created by one of two methods:"
 msgstr ""
-"Puede borrar un cuaderno de notas que haya creado de dos formas distintas:"
+"Puede eliminar un cuaderno de notas que haya creado de dos formas distintas:"
 
 #: C/gnote-working-with-notebooks.page:91(p)
 #, fuzzy
@@ -426,9 +424,10 @@ msgstr ""
 #: C/gnote-working-with-notebooks.page:93(p)
 msgid "Right click on a notebook and choose <gui>Delete Notebook</gui>."
 msgstr ""
+"Pulse con el botón derecho sobre un cuaderno de notas y elija <gui>Eliminar "
+"cuaderno de notas</gui>."
 
 #: C/gnote-working-with-notebooks.page:94(p)
-#, fuzzy
 #| msgid ""
 #| "From the menu, choose <menuchoice><guimenuitem>Edit</"
 #| "guimenuitem><guimenuitem>Delete Notebook</guimenuitem></menuchoice>"
@@ -436,14 +435,13 @@ msgid ""
 "From the menu, choose <keyseq><key>Edit</key><key>Delete Notebook</key></"
 "keyseq>"
 msgstr ""
-"Desde el menú, elija <menuchoice><guimenuitem>Editar</"
-"guimenuitem><guimenuitem>Borrar cuaderno de notas</guimenuitem></menuchoice>."
+"Desde el menú, elija <keyseq><key>Editar</key><key>Eliminar cuaderno de "
+"notas</key></keyseq>"
 
 #: C/gnote-working-with-notebooks.page:97(title)
-#, fuzzy
 #| msgid "Create a new notebook from Search All Notes"
 msgid "Deleting notes from Search All Notes"
-msgstr "Crear un cuaderno de notas nuevo desde Buscar en todas las notas"
+msgstr "Eliminar notas desde Buscar en todas las notas"
 
 #: C/gnote-working-with-notebooks.page:99(p)
 msgid "Delete Notebook."
@@ -580,6 +578,8 @@ msgid ""
 "To set preferences for <app>Gnote</app>, right-click on the icon in the "
 "panel, and select <gui>Preferences</gui> from the menu."
 msgstr ""
+"Para establecer las preferencias de <app>Gnote</app>, pulse con el botón "
+"derecho en el icono del panel y elija <gui>Preferencias</gui> en el menú."
 
 #: C/gnote-notes-preferences.page:25(p)
 msgid ""
@@ -602,7 +602,6 @@ msgid "Spellcheck While Typing"
 msgstr "Corregir ortografía al escribir"
 
 #: C/gnote-notes-preferences.page:28(p)
-#, fuzzy
 #| msgid ""
 #| "Enable this checkbox to underline misspellings in red, and provide "
 #| "suggestions in the right click context menu. Enable or disable the "
@@ -617,14 +616,9 @@ msgstr ""
 "Active esta casilla para que los errores ortográficos se subrayen en rojo, y "
 "se proporcionen sugerencias en el menú contextual al pulsar con el botón "
 "derecho del ratón. Active o desactive esta casilla usando el ratón o la "
-"combinación de teclas <keycombo><keycap>Alt</keycap><keycap>S</keycap></"
-"keycombo>."
+"combinación de teclas <keyseq><key>Alt</key><key>S</key></keyseq>."
 
 #: C/gnote-notes-preferences.page:28(p)
-#| msgid ""
-#| "The spellcheck option is only available if you have the "
-#| "<application>GtkSpell</application> package for your distribution "
-#| "installed."
 msgid ""
 "The spellcheck option is only available if you have the GtkSpell package for "
 "your distribution installed."
@@ -637,7 +631,6 @@ msgid "Highlight WikiWords"
 msgstr "Resaltado de WikiPalabras"
 
 #: C/gnote-notes-preferences.page:29(p)
-#, fuzzy
 #| msgid ""
 #| "Enable this checkbox to create links for phrases "
 #| "<literal>ThatLookLikeThis</literal>. Clicking on the link will create a "
@@ -650,11 +643,10 @@ msgid ""
 "text. Enable or disable this checkbox using the mouse or the key combination "
 "<keyseq><key>Alt</key><key>W</key></keyseq>."
 msgstr ""
-"Active esta casilla para crear enlaces para frases <literal>QueSeVenAsí</"
-"literal>. Al pulsar en el enlace se creará una nota nueva con el título "
-"correspondiente al texto del enlace. Active o desactive esta casilla usando "
-"el ratón o la combinación de teclas <keycombo><keycap>Alt</keycap><keycap>W</"
-"keycap></keycombo>."
+"Active esta casilla para crear enlaces para frases QueSeVenAsí. Al pulsar en "
+"el enlace se creará una nota nueva con el título correspondiente al texto "
+"del enlace. Active o desactive esta casilla usando el ratón o la combinación "
+"de teclas <keyseq><key>Alt</key><key>F</key></keyseq>."
 
 #: C/gnote-notes-preferences.page:30(title)
 msgid "Enable auto-bulleted lists"
@@ -672,7 +664,6 @@ msgid "Use Custom Font"
 msgstr "Usar tipografía personalizada"
 
 #: C/gnote-notes-preferences.page:31(p)
-#, fuzzy
 #| msgid ""
 #| "Enable this checkbox to set a custom font to be used in your notes. If "
 #| "this option is disabled, the default system font will be used. Enable or "
@@ -684,18 +675,16 @@ msgid ""
 "this checkbox using the mouse or the key combination <keyseq><key>Alt</"
 "key><key>F</key></keyseq>."
 msgstr ""
-"Active esta casilla para definir una tipografía personalizada a ser usada en "
-"sus notas. Si esta opción está desactivada, se utilizará la fuente "
+"Active esta casilla para definir una tipografía personalizada que usar en "
+"sus notas. Si esta opción está desactivada, se utilizará la tipografía "
 "predeterminada del sistema. Active o desactive esta casilla usando el ratón "
-"o la combinación de teclas <keycombo><keycap>Alt</keycap><keycap>F</keycap></"
-"keycombo>."
+"o la combinación de teclas <keyseq><key>Alt</key><key>F</key></keyseq>."
 
 #: C/gnote-notes-preferences.page:33(title)
 msgid "<gui>Preferences</gui> window"
 msgstr "Ventana <gui>Preferencias</gui>"
 
 #: C/gnote-notes-preferences.page:34(desc)
-#| msgid "Gnote Editing Preferences"
 msgid "Editing Gnote Preferences"
 msgstr "Preferencias de edición de Gnote"
 
@@ -706,14 +695,14 @@ msgstr "Configuración avanzada"
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-links.page:26(None) C/gnote-addin-timestamp.page:22(None)
-#: C/gnote-addin-print.page:21(None) C/gnote-addin-html.page:21(None)
+#: C/gnote-addin-replacetitle.page:21(None) C/gnote-addin-print.page:21(None)
+#: C/gnote-addin-html.page:21(None)
 msgid ""
 "@@image: 'figures/gnote-tools.png'; md5=6a1c7800cd20071381ea591f49c32b6c"
 msgstr ""
 "@@image: 'figures/gnote-tools.png'; md5=6a1c7800cd20071381ea591f49c32b6c"
 
 #: C/gnote-links.page:9(desc)
-#| msgid "Working With Notes"
 msgid "Linking to Other Notes"
 msgstr "Enlazar con otras notas"
 
@@ -757,7 +746,6 @@ msgstr ""
 "una nota."
 
 #: C/gnote-links.page:25(title)
-#| msgid "Backlinks"
 msgid "Backlinks Add-in"
 msgstr "Complemento «Retroenlaces»"
 
@@ -815,10 +803,9 @@ msgid "Inline Spell Checking"
 msgstr "Revisor ortográfico en línea"
 
 #: C/gnote-introduction.page:26(p)
-#, fuzzy
 #| msgid "Auto-linking Web &amp; Email Addresses"
 msgid "Auto-linking Web and Email Addresses"
-msgstr "Auto enlazado de páginas web y correos electrónicos"
+msgstr "Auto enlazado de páginas web y direcciones de correo-e"
 
 #: C/gnote-introduction.page:27(p)
 msgid "Undo/Redo Support"
@@ -836,7 +823,7 @@ msgstr "Lista de topos"
 
 #: C/gnote-introduction.page:32(title)
 msgid "<gui>Gnote</gui> Search All Notes window"
-msgstr ""
+msgstr "Ventana Buscar en todas las notas de <gui>Gnote</gui>"
 
 #: C/gnote-introduction.page:33(desc)
 msgid "<app>Gnote</app> main window"
@@ -844,7 +831,7 @@ msgstr "Ventana principal de <app>Gnote</app>"
 
 #: C/gnote-introduction.page:35(p)
 msgid "<app>Gnotes</app> Search All Notes window."
-msgstr ""
+msgstr "Ventana Buscar en todas las notas de <app>Gnote</app>"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -898,9 +885,6 @@ msgid "Open \"Start Here\""
 msgstr "Abrir «Comenzar aquí»"
 
 #: C/gnote-hotkeys.page:24(p)
-#| msgid ""
-#| "Enter the key combination to open the <quote>Start Here</quote> note, "
-#| "which is preinstalled with Gnote."
 msgid ""
 "Enter the key combination to open the “Start Here” note, which is "
 "preinstalled with Gnote."
@@ -917,19 +901,17 @@ msgid "Enter the key combination to create a new note."
 msgstr "Introduzca la combinación de teclas para crear una nota nueva."
 
 #: C/gnote-hotkeys.page:26(title)
-#| msgid "Search notes"
 msgid "Open \"Search All Notes\""
 msgstr "Abrir «Buscar en todas las notas»"
 
 #: C/gnote-hotkeys.page:26(p)
-#, fuzzy
 #| msgid ""
 #| "Enter the key combination to open the <interface>Search All Notes</"
 #| "interface> dialog."
 msgid "Enter the key combination to open the Search All Notes dialog."
 msgstr ""
-"Introduzca la combinación de teclas para abrir el diálogo <interface>Buscar "
-"en todas las notas</interface>."
+"Introduzca la combinación de teclas para abrir el diálogo Buscar en todas "
+"las notas."
 
 #: C/gnote-hotkeys.page:30(title)
 msgid "<gui>Hotkeys Preferences</gui> window"
@@ -1224,8 +1206,8 @@ msgstr "Topos"
 #| msgid ""
 #| "Select the <menuchoice><guimenuitem>Bullets</guimenuitem></menuchoice> "
 #| "option from the <guibutton>Text</guibutton> menu to begin or end a "
-#| "bulleted list. If the cursor is inside a bulleted list, the "
-#| "<placeholder-1/> options will be enabled."
+#| "bulleted list. If the cursor is inside a bulleted list, the <placeholder-"
+#| "1/> options will be enabled."
 msgid ""
 "Select the Bullets option from the Text menu to begin or end a bulleted "
 "list. If the cursor is inside a bulleted list, the <gui>Increase Indent</"
@@ -1375,7 +1357,6 @@ msgid "Frequently Asked Questions"
 msgstr "Preguntas más frecuentes"
 
 #: C/gnote-common-problems.page:20(title)
-#| msgid "Gnote Notes"
 msgid "Gnote Common Issues"
 msgstr "Problemas comunes de Gnote"
 
@@ -1475,9 +1456,8 @@ msgid ""
 "Select <gui>Decrease Indent</gui> from the Text menu in succession until the "
 "current line is no longer part of the bulleted list."
 msgstr ""
-"Seleccione <gui>Disminuir sangría</gui>, desde el menú «Texto», "
-"sucesivamente hasta que la línea actual no siga formando parte de la lista "
-"de topos."
+"Seleccione <gui>Disminuir sangría</gui>, desde el menú «Texto», sucesivamente "
+"hasta que la línea actual no siga formando parte de la lista de topos."
 
 #: C/gnote-bulleted-lists.page:37(p)
 #, fuzzy
@@ -1646,7 +1626,50 @@ msgstr ""
 
 #: C/gnote-addin-timestamp.page:24(p)
 msgid "Click on this option to insert current date and time."
+msgstr "Pulse en esta opción para insertar la fecha y la hora actuales."
+
+#: C/gnote-addin-replacetitle.page:8(desc)
+msgid "Rename note title"
+msgstr "Renombrar título de la nota"
+
+#: C/gnote-addin-replacetitle.page:20(title)
+msgid "Replace title"
+msgstr "Reemplazar título"
+
+#: C/gnote-addin-replacetitle.page:21(p)
+#, fuzzy
+#| msgid ""
+#| "The <guibutton>Tools</guibutton> button is represented by the "
+#| "<inlinegraphic fileref=\"figures/gnote-tools.png\"/> icon. When you click "
+#| "the <guiicon>Tools</guiicon> icon on the toolbar present on your note, a "
+#| "menu will appear with the following items:"
+msgid ""
+"The Tools button is represented by the <media type=\"image\" src=\"figures/"
+"gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. When this add-"
+"in is installed, the option <gui>Replace title</gui> is present in "
+"<gui>Tools</gui> menu."
 msgstr ""
+"El botón <guibutton>Herramientas</guibutton> está representado por el icono "
+"<inlinegraphic fileref=\"figures/gnote-tools.pngg\"/>. Cuando pulse en el "
+"icono <guiicon>Herramientas</guiicon> en la barra de herramientas presente "
+"en su nota, aparecerá un menú con los siguientes elementos:"
+
+#: C/gnote-addin-replacetitle.page:22(p)
+msgid ""
+"When the <gui>Replace title</gui> option is selected, the note title will be "
+"replaced by currently selected text in any application."
+msgstr ""
+
+#: C/gnote-addin-replacetitle.page:23(p)
+#| msgid ""
+#| "Press the key combination <keycombo><keycap>Shift</keycap><keycap>Tab</"
+#| "keycap></keycombo>."
+msgid ""
+"Alternatively, you can use <keyseq><key>Ctrl</key><key>R</key></keyseq> "
+"shortcut."
+msgstr ""
+"Alternativamente, puede usar el atajo <keyseq><key>Ctrl</key><key>R</key></"
+"keyseq>."
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -1663,7 +1686,6 @@ msgid "Settings for Gnote add-ins"
 msgstr ""
 
 #: C/gnote-addins-preferences.page:20(title)
-#| msgid "Gnote Add-in Preferences"
 msgid "Add-in Preferences"
 msgstr "Preferencias de los complementos"
 
@@ -1681,7 +1703,6 @@ msgid ""
 msgstr ""
 
 #: C/gnote-addins-preferences.page:23(title)
-#| msgid "Gnote Add-in Preferences"
 msgid "<gui>Gnote</gui> Addin Preferences"
 msgstr "Preferencias de los complementos de <gui>Gnote</gui>"
 
@@ -1871,7 +1892,6 @@ msgid "Bugzilla Links Add-in"
 msgstr "Complemento «Insertar enlaces de bugzilla»"
 
 #: C/gnote-addin-bugzillalink.page:22(p)
-#, fuzzy
 #| msgid ""
 #| "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 #| "note. The bug number is inserted as a link with a small bug icon next to "
@@ -1882,9 +1902,8 @@ msgid ""
 "bug number is inserted as a link with a little bug icon next to it."
 msgstr ""
 "Le permite arrastrar un URL de Bugzilla desde su navegador directamente a "
-"una nota de Gnote. El número del fallo se insertará como un enlace con un "
-"pequeño icono de un bicho junto a él. Una vez que el enlace de Bugzilla se "
-"ha insertado en la nota, pulse en él para abrir el URL en su navegador web."
+"una nota de <app>Gnote</app>. El número del error se insertará como un "
+"enlace con un pequeño icono de un bicho junto a él."
 
 #: C/gnote-addin-bugzillalink.page:23(p)
 msgid "In the preferences, you can add special icons for certain hosts."
@@ -2386,12 +2405,12 @@ msgstr ""
 #~ "that look like this: <inlinegraphic fileref=\"figures/gnote-pinup.png\"/>."
 #~ msgstr ""
 #~ "Para forzar a una nota a estar siempre en el panel, sin importar cuando "
-#~ "se utilizó por última vez, pulse en el icono para «pincharla» al menú. "
-#~ "Las notas que están pinchadas en el menú del panel tendrán un icono de "
-#~ "pegado que se ve así: <inlinegraphic fileref=\"figures/gnote-pindown.png"
-#~ "\"/>. Las notas que no están pinchadas al menú del panel tendrán iconos "
-#~ "de pegado que se ven así: <inlinegraphic fileref=\"figures/gnote-pinup.png"
-#~ "\"/>."
+#~ "se utilizó por última vez, pulse en el icono para «pincharla» al menú. Las "
+#~ "notas que están pinchadas en el menú del panel tendrán un icono de pegado "
+#~ "que se ve así: <inlinegraphic fileref=\"figures/gnote-pindown.png\"/>. "
+#~ "Las notas que no están pinchadas al menú del panel tendrán iconos de "
+#~ "pegado que se ven así: <inlinegraphic fileref=\"figures/gnote-pinup.png\"/"
+#~ ">."
 
 #~ msgid "Gnote Panel Menu"
 #~ msgstr "Menú del panel de Gnote"
@@ -2686,9 +2705,9 @@ msgstr ""
 #~ msgstr "e importar Notas adhesivas."
 
 #~ msgid ""
-#~ "By default, Gnote comes with several pre-installed add-ins: "
-#~ "<placeholder-1/> Since these are preinstalled, they are ready to use and "
-#~ "are automatically loaded into the Gnote interface."
+#~ "By default, Gnote comes with several pre-installed add-ins: <placeholder-"
+#~ "1/> Since these are preinstalled, they are ready to use and are "
+#~ "automatically loaded into the Gnote interface."
 #~ msgstr ""
 #~ "De forma predeterminada, Gnote incluye varios complementos preinstalados: "
 #~ "<placeholder-1/> Dado que estos vienen preinstalados, están listos para "
