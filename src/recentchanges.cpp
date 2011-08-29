@@ -343,7 +343,7 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_button_released));
     m_tree->signal_key_press_event().connect(
       sigc::mem_fun(*this,
-                    &NoteRecentChanges::on_treeview_key_pressed));
+                    &NoteRecentChanges::on_treeview_key_pressed), false);
     m_tree->signal_drag_data_get().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_treeview_drag_data_get));
 
@@ -789,7 +789,7 @@ namespace gnote {
       am ["OpenNoteAction"]->property_sensitive() = false;
       am ["DeleteNoteAction"]->property_sensitive() = false;
     } 
-    else if (selected_notes.size() == 1) {
+    else if (selected_notes.size() > 1) {
       am ["OpenNoteAction"]->property_sensitive() = true;
       am ["DeleteNoteAction"]->property_sensitive() = true;
     } 
@@ -953,6 +953,11 @@ namespace gnote {
       }
       break;
     }
+    case GDK_KEY_Return:
+    case GDK_KEY_KP_Enter:
+      // Open all selected notes
+      on_open_note();
+      return true;
     default:
       break;
     }
@@ -1048,10 +1053,9 @@ namespace gnote {
   void NoteRecentChanges::on_open_note()
   {
     Note::List selected_notes = get_selected_notes ();
-    if (selected_notes.size() != 1)
-      return;
-                  
-    selected_notes.front()->get_window()->present();
+    for(Note::List::iterator iter = selected_notes.begin(); iter != selected_notes.end(); ++iter) {
+      (*iter)->get_window()->present();
+    }
   }
 
   void NoteRecentChanges::on_delete_note()
