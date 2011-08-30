@@ -64,19 +64,19 @@ namespace gnote {
     {
       std::string message;
 
-      // %1% is the number of note.
-      message = ngettext("Really delete this note?", "Really delete these %1% notes?", notes.size());
-
-      boost::format format(message);
-      // make sure an exception is not raised for the non-plural form
-      format.exceptions( boost::io::all_error_bits ^ 
-                         ( boost::io::too_many_args_bit | 
-                           boost::io::too_few_args_bit )  );
+      if(notes.size() == 1) {
+        // TRANSLATORS: %1% will be replaced by note title
+        message = str(boost::format("Really delete \"%1%\"?") % notes.front()->get_title());
+      }
+      else {
+        // TRANSLATORS: %1% is number of notes
+        message = str(boost::format(ngettext("Really delete %1% note?", "Really delete %1% notes?", notes.size())) % notes.size());
+      }
 
       utils::HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
                                      Gtk::MESSAGE_QUESTION,
                                      Gtk::BUTTONS_NONE,
-                                     str(format % notes.size()),
+                                     message,
                                      _("If you delete a note it is permanently lost."));
 
       Gtk::Button *button;
