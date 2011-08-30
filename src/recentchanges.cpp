@@ -752,7 +752,7 @@ namespace gnote {
     }
   }
 
-  void NoteRecentChanges::on_notebook_row_edited(const Glib::ustring& tree_path,
+  void NoteRecentChanges::on_notebook_row_edited(const Glib::ustring& /*tree_path*/,
                                                  const Glib::ustring& new_text)
   {
     if (notebooks::NotebookManager::instance().notebook_exists(new_text) ||

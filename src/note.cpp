@@ -1103,7 +1103,7 @@ namespace gnote {
 
   const Glib::RefPtr<NoteTagTable> & Note::get_tag_table()
   {
-    if (m_tag_table == NULL) {
+    if (!m_tag_table) {
       // NOTE: Sharing the same TagTable means
       // that formatting is duplicated between
       // buffers.

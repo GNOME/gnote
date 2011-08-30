@@ -743,7 +743,7 @@ namespace gnote {
   }
 
 
-  void NoteLinkWatcher::on_note_renamed(const Note::Ptr& renamed, const std::string& old_title)
+  void NoteLinkWatcher::on_note_renamed(const Note::Ptr& renamed, const std::string& /*old_title*/)
   {
     if (renamed == get_note()) {
       return;
@@ -879,7 +879,7 @@ namespace gnote {
   }
 
 
-  void NoteLinkWatcher::on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
+  void NoteLinkWatcher::on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & /*tag*/,
                                      const Gtk::TextIter & start, const Gtk::TextIter &end)
   {
     std::string link_name = start.get_text (end);

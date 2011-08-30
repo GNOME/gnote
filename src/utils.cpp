@@ -58,8 +58,7 @@ namespace gnote {
                               int & y,
                               bool & push_in)
       {
-        if (menu->get_attach_widget() == NULL ||
-            menu->get_attach_widget()->get_window() == NULL) {
+        if (!menu->get_attach_widget() || !menu->get_attach_widget()->get_window()) {
           // Prevent null exception in weird cases
           x = 0;
           y = 0;

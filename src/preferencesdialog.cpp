@@ -721,7 +721,7 @@ namespace gnote {
     for(sharp::ModuleList::const_iterator iter = list.begin();
         iter != list.end(); ++iter) {
 
-      Gtk::TreeIter treeiter = m_addin_tree_model->append(*iter);
+      m_addin_tree_model->append(*iter);
     }
 
     update_addin_buttons();
