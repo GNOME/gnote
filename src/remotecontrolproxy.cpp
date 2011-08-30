@@ -92,7 +92,7 @@ void RemoteControlProxy::on_name_acquired(const Glib::RefPtr<Gio::DBus::Connecti
     }
   }
   catch(Glib::Exception & e) {
-    DBG_OUT("Failed to acquire name: " + e.what());
+    DBG_OUT(("Failed to acquire name: " + e.what()).c_str());
   }
 
   s_on_name_acquire_finish(false, false);
