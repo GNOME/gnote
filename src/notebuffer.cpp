@@ -545,7 +545,12 @@ namespace gnote {
     else if (start.ends_line() && start.get_line() < get_line_count()) {
       Gtk::TextIter next = get_iter_at_line (start.get_line() + 1);
       end_iter = start;
-      end_iter.forward_chars(3);
+      if(is_bulleted_list_active()) {
+        end_iter.forward_chars(3);
+      }
+      else {
+        end_iter.forward_chars(1);
+      }
 
       DepthNoteTag::Ptr depth = find_depth_tag(next);
 
