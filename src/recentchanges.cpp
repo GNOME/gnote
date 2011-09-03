@@ -347,6 +347,7 @@ namespace gnote {
 
     Gtk::TreeViewColumn *title = manage(new Gtk::TreeViewColumn ());
     title->set_title(_("Note"));
+    title->set_min_width(150);
     title->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
     title->set_expand(true);
     title->set_resizable(true);
