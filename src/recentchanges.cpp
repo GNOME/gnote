@@ -177,13 +177,6 @@ namespace gnote {
 
     m_matches_window.set_shadow_type(Gtk::SHADOW_IN);
 
-    // Reign in the window size if there are notes with long
-    // names, or a lot of notes...
-
-    int h, w;
-    m_tree->get_size_request (h,w);
-    m_matches_window.set_size_request(std::min(h, 420), std::min(w, 480));
-                        
     m_matches_window.property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
     m_matches_window.property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
     m_matches_window.add (*m_tree);
