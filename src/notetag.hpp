@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -268,6 +269,7 @@ public:
   static bool tag_is_spell_checkable(const Glib::RefPtr<const Gtk::TextTag> & );
   static bool tag_is_activatable(const Glib::RefPtr<Gtk::TextTag> & );
   static bool tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & );
+  bool has_link_tag(const Gtk::TextIter & iter);
   DepthNoteTag::Ptr get_depth_tag(int depth, Pango::Direction direction);
   DynamicNoteTag::Ptr create_dynamic_tag(const std::string & );
   void register_dynamic_tag (const std::string & tag_name, const Factory & factory);

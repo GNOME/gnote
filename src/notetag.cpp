@@ -533,6 +533,12 @@ namespace gnote {
   {
     return DepthNoteTag::Ptr::cast_dynamic(tag);
   }
+
+
+  bool NoteTagTable::has_link_tag(const Gtk::TextIter & iter)
+  {
+    return iter.has_tag(get_link_tag()) || iter.has_tag(get_url_tag()) || iter.has_tag(get_broken_link_tag());
+  }
   
 
   DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth, Pango::Direction direction)

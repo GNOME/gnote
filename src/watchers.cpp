@@ -796,7 +796,7 @@ namespace gnote {
     }
 
     // Don't create links inside URLs
-    if (title_start.has_tag (m_url_tag)) {
+    if(get_note()->get_tag_table()->has_link_tag(title_start)) {
       return;
     }
 
@@ -1008,12 +1008,16 @@ namespace gnote {
       Glib::ustring segment(p, p + len);
       start_cpy.forward_chars (segment.length());
 
-      DBG_OUT("Highlighting wikiword: '%s' at offset %d",
-              match.c_str(), segment.length());
-
       end = start_cpy;
       segment = match;
       end.forward_chars (segment.length());
+
+      if(get_note()->get_tag_table()->has_link_tag(start_cpy)) {
+        break;
+      }
+
+      DBG_OUT("Highlighting wikiword: '%s' at offset %d",
+              match.c_str(), segment.length());
 
       if (!manager().find(match)) {
         get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
