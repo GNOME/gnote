@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-26 18:34+0000\n"
-"PO-Revision-Date: 2011-08-27 09:10+0100\n"
-"Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
+"POT-Creation-Date: 2011-09-06 19:34+0000\n"
+"PO-Revision-Date: 2011-09-07 21:23+0100\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: Slovenian\n"
 "MIME-Version: 1.0\n"
@@ -523,8 +523,8 @@ msgid "Open the search all notes window with the search text."
 msgstr "Odpre okno za iskanje vseh sporočilc z izbranim besedilom."
 
 #: ../src/gnote.cpp:454
+#: ../src/gnote.cpp:458
 #: ../src/gnote.cpp:459
-#: ../src/gnote.cpp:460
 msgid "text"
 msgstr "Besedilo"
 
@@ -532,39 +532,39 @@ msgstr "Besedilo"
 msgid "Print version information."
 msgstr "Izpiši podrobnosti o različici"
 
-#: ../src/gnote.cpp:457
+#: ../src/gnote.cpp:456
 msgid "Create and display a new note, with a optional title."
 msgstr "Ustvari in prikaže novo sporočilce z naslovom po meri."
 
-#: ../src/gnote.cpp:457
+#: ../src/gnote.cpp:456
 msgid "title"
 msgstr "naslov"
 
-#: ../src/gnote.cpp:458
+#: ../src/gnote.cpp:457
 msgid "Display the existing note matching title."
 msgstr "Prikaže obstoječe sporočilce, ki se sklada z naslovom."
 
-#: ../src/gnote.cpp:458
+#: ../src/gnote.cpp:457
 msgid "title/url"
 msgstr "naslov/url"
 
-#: ../src/gnote.cpp:459
+#: ../src/gnote.cpp:458
 msgid "Display the 'Start Here' note."
 msgstr "Prikaz sporočilca 'Začnite tukaj'."
 
-#: ../src/gnote.cpp:460
+#: ../src/gnote.cpp:459
 msgid "Search and highlight text in the opened note."
 msgstr "Išče in poudari besedilo v odprtem sporočilcu."
 
-#: ../src/gnote.cpp:465
+#: ../src/gnote.cpp:463
 msgid "A note taking application"
 msgstr "Program za pisanje sporočilc"
 
-#: ../src/gnote.cpp:465
+#: ../src/gnote.cpp:463
 msgid "Gnote options at launch"
 msgstr "Možnosti gnote ob zagonu"
 
-#: ../src/gnote.cpp:658
+#: ../src/gnote.cpp:656
 msgid "Version %1%"
 msgstr "Različica %1%"
 
@@ -969,14 +969,14 @@ msgstr "Pomanjšaj velikost pisave"
 msgid "Font Size"
 msgstr "Velikost pisave"
 
-#. %1% is the number of note.
-#: ../src/note.cpp:68
-msgid "Really delete this note?"
-msgid_plural "Really delete these %1% notes?"
-msgstr[0] "Ali naj se zares izbriše %1% sporočilc?"
-msgstr[1] "Ali naj se zares izbriše %1% sporočilce?"
-msgstr[2] "Ali naj se zares izbrišeta %1% sporočilci?"
-msgstr[3] "Ali naj se zares izbrišejo %1% sporočilca?"
+#. TRANSLATORS: %1% is number of notes
+#: ../src/note.cpp:73
+msgid "Really delete %1% note?"
+msgid_plural "Really delete %1% notes?"
+msgstr[0] "Ali res želite izbrisati %1% sporočilc?"
+msgstr[1] "Ali res želite izbrisati %1% sporočilce?"
+msgstr[2] "Ali res želite izbrisati %1% sporočilci?"
+msgstr[3] "Ali res želite izbrisati %1% sporočilca?"
 
 #: ../src/note.cpp:80
 msgid "If you delete a note it is permanently lost."
@@ -1002,29 +1002,29 @@ msgstr "_Upoštevaj velikost črk"
 msgid "_Search:"
 msgstr "_Išči:"
 
-#: ../src/recentchanges.cpp:279
+#: ../src/recentchanges.cpp:272
 #: ../src/notebooks/notebookapplicationaddin.cpp:128
 msgid "Notebooks"
 msgstr "Beležnice"
 
-#: ../src/recentchanges.cpp:356
+#: ../src/recentchanges.cpp:349
 msgid "Note"
 msgstr "Sporočilce"
 
-#: ../src/recentchanges.cpp:377
+#: ../src/recentchanges.cpp:371
 msgid "Last Changed"
 msgstr "Zadnjič spremenjeno"
 
-#: ../src/recentchanges.cpp:521
+#: ../src/recentchanges.cpp:515
 msgid "Matches"
 msgstr "Zadetki"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/recentchanges.cpp:575
+#: ../src/recentchanges.cpp:569
 msgid "Title match"
 msgstr "Ujemanje naslovov"
 
-#: ../src/recentchanges.cpp:579
+#: ../src/recentchanges.cpp:573
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% zadetkov"
@@ -1032,7 +1032,7 @@ msgstr[1] "%1% zadetek"
 msgstr[2] "%1% zadetka"
 msgstr[3] "%1% zadetki"
 
-#: ../src/recentchanges.cpp:593
+#: ../src/recentchanges.cpp:587
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Skupaj: %1% sporočilc"
@@ -1040,7 +1040,7 @@ msgstr[1] "Skupaj: %1% sporočilce"
 msgstr[2] "Skupaj: %1% sporočilci"
 msgstr[3] "Skupaj: %1% sporočilca"
 
-#: ../src/recentchanges.cpp:609
+#: ../src/recentchanges.cpp:603
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Sklada se z: %1% sporočilci"
@@ -1048,7 +1048,7 @@ msgstr[1] "Sklada se z: %1% sporočilcem"
 msgstr[2] "Sklada se z: %1% sporočilcema"
 msgstr[3] "Sklada se z: %1% sporočilci"
 
-#: ../src/recentchanges.cpp:751
+#: ../src/recentchanges.cpp:745
 msgid "Notes"
 msgstr "Sporočilca"
 
@@ -1064,39 +1064,39 @@ msgstr "(novo)"
 msgid "_About Gnote"
 msgstr "_O Gnote"
 
-#: ../src/utils.cpp:131
+#: ../src/utils.cpp:130
 msgid "The \"Gnote Manual\" could not be found.  Please verify that your installation has been completed successfully."
 msgstr " \"Gnote priročnika\" ni mogoče najti. Preverite, da je namestitev uspešno končana."
 
-#: ../src/utils.cpp:139
+#: ../src/utils.cpp:138
 msgid "Help not found"
 msgstr "Pomoči ni mogoče najti"
 
-#: ../src/utils.cpp:172
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "Ni mogoče odpreti mesta"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:187
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
 msgstr "Danes, %1%"
 
-#: ../src/utils.cpp:188
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "Danes"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
 msgstr "Včeraj, %1%"
 
-#: ../src/utils.cpp:195
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "Včeraj"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:204
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% dni nazaj, %2%"
@@ -1106,7 +1106,7 @@ msgstr[3] "%1% dni nazaj, %2%"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% dni nazaj"
@@ -1115,17 +1115,17 @@ msgstr[2] "%1% dneva nazaj"
 msgstr[3] "%1% dni nazaj"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:218
+#: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "Jutri, %1%"
 
-#: ../src/utils.cpp:219
+#: ../src/utils.cpp:218
 msgid "Tomorrow"
 msgstr "Jutri"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "V %1% dneh, %2%"
@@ -1135,7 +1135,7 @@ msgstr[3] "V %1% dneh, %2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:234
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "V %1% dneh"
@@ -1143,7 +1143,7 @@ msgstr[1] "V %1% dnevu"
 msgstr[2] "V %1% dneh"
 msgstr[3] "V %1% dneh"
 
-#: ../src/utils.cpp:245
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "Brez datuma"
 
@@ -1568,16 +1568,21 @@ msgstr "Hubert Figuière in projekt Tomboy"
 
 #~ msgid "Accessories"
 #~ msgstr "Pripomočki"
+
 #~ msgid "Gnote Applet Factory"
 #~ msgstr "Gnote tovarna apletov"
+
 #~ msgid "Simple and easy to use note-taking"
 #~ msgstr "Preprosto in enostavno pisanje sporočilc"
+
 #~ msgid "Set to TRUE to activate"
 #~ msgstr "Nastavite TRUE za aktivacijo"
+
 #~ msgid "The handler for \"note://\" URLs"
 #~ msgstr "Upravljalnik za URL-je \"note://\""
+
 #~ msgid "Description"
 #~ msgstr "Opis"
+
 #~ msgid "New Note %1%"
 #~ msgstr "Novo sporočilce %1%"
-
