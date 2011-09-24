@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-15 12:02+0000\n"
-"PO-Revision-Date: 2011-08-27 20:47+0300\n"
+"POT-Creation-Date: 2011-08-30 20:02+0000\n"
+"PO-Revision-Date: 2011-09-24 14:30+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lithuanian <>\n"
 "MIME-Version: 1.0\n"
@@ -474,21 +474,21 @@ msgstr "S_inchronizuoti raštelius"
 msgid "Start synchronizing notes"
 msgstr "Pradėti raštelių sinchronizavimą"
 
-#: ../src/gnote.cpp:305
+#: ../src/gnote.cpp:296
 msgid "Cannot create new note"
 msgstr "Nepavyko sukurti naujo raštelio"
 
-#: ../src/gnote.cpp:354
+#: ../src/gnote.cpp:345
 msgid "and Tomboy original authors."
 msgstr "ir Tomboy kūrėjai."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:354
 msgid "translator-credits"
 msgstr ""
 "Giedrius Slavinskas <giedrius25@gmail.com>\n"
 "Žygimantas Beručka <zygis@gnome.org>"
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:362
 msgid ""
 "Copyright © 2010-2011 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -500,73 +500,73 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 
-#: ../src/gnote.cpp:375
+#: ../src/gnote.cpp:366
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Paprasta ir lengvai naudojama aplinkos užrašinė."
 
-#: ../src/gnote.cpp:386
+#: ../src/gnote.cpp:377
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: ../src/gnote.cpp:461
+#: ../src/gnote.cpp:452
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Paleisti Gnote kaip GNOME skydelio įtaisą."
 
-#: ../src/gnote.cpp:462
+#: ../src/gnote.cpp:453
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: ../src/gnote.cpp:462
+#: ../src/gnote.cpp:453
 msgid "path"
 msgstr "kelias"
 
-#: ../src/gnote.cpp:463
+#: ../src/gnote.cpp:454
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: ../src/gnote.cpp:463
-#: ../src/gnote.cpp:468
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:454
+#: ../src/gnote.cpp:458
+#: ../src/gnote.cpp:459
 msgid "text"
 msgstr "tekstas"
 
-#: ../src/gnote.cpp:464
+#: ../src/gnote.cpp:455
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: ../src/gnote.cpp:466
+#: ../src/gnote.cpp:456
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: ../src/gnote.cpp:466
+#: ../src/gnote.cpp:456
 msgid "title"
 msgstr "pavadinimas"
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:457
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:457
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:458
 msgid "Display the 'Start Here' note."
 msgstr "Raštelis „Pradėkite čia“"
 
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:459
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:463
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:463
 msgid "Gnote options at launch"
 msgstr "Gnote parinktys paleidžiant"
 
-#: ../src/gnote.cpp:665
+#: ../src/gnote.cpp:656
 msgid "Version %1%"
 msgstr "Versija %1%"
 
@@ -971,13 +971,15 @@ msgstr "Sumažinti šriftą"
 msgid "Font Size"
 msgstr "Šrifto dydis"
 
-#. %1% is the number of note.
-#: ../src/note.cpp:68
-msgid "Really delete this note?"
-msgid_plural "Really delete these %1% notes?"
-msgstr[0] "Tikrai ištrinti šį raštelį?"
-msgstr[1] "Tikrai ištrinti šiuos %1% raštelius?"
-msgstr[2] "Tikrai ištrinti šiuos %1% raštelių?"
+#. TRANSLATORS: %1% is number of notes
+#: ../src/note.cpp:73
+#| msgid "Really delete this note?"
+#| msgid_plural "Really delete these %1% notes?"
+msgid "Really delete %1% note?"
+msgid_plural "Really delete %1% notes?"
+msgstr[0] "Tikrai ištrinti %1% raštelį?"
+msgstr[1] "Tikrai ištrinti %1% raštelius?"
+msgstr[2] "Tikrai ištrinti %1% raštelių?"
 
 #: ../src/note.cpp:80
 msgid "If you delete a note it is permanently lost."
@@ -1022,8 +1024,6 @@ msgstr "Atitikmenys"
 
 #. TRANSLATORS: search found a match in note title
 #: ../src/recentchanges.cpp:575
-#| msgid "%1% match"
-#| msgid_plural "%1% matches"
 msgid "Title match"
 msgstr "Atitikmuo pavadinime"
 
@@ -1032,7 +1032,7 @@ msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% atitikmuo"
 msgstr[1] "%1% atitikmenys"
-msgstr[2] "%1% atitkmenų"
+msgstr[2] "%1% atitikmenų"
 
 #: ../src/recentchanges.cpp:593
 msgid "Total: %1% note"
@@ -1064,39 +1064,39 @@ msgstr " (naujas)"
 msgid "_About Gnote"
 msgstr "_Apie Gnote"
 
-#: ../src/utils.cpp:131
+#: ../src/utils.cpp:130
 msgid "The \"Gnote Manual\" could not be found.  Please verify that your installation has been completed successfully."
 msgstr "„Gnote žinynas“ nerastas. Patikrinkite, ar programa buvo įdiegta sėkmingai."
 
-#: ../src/utils.cpp:139
+#: ../src/utils.cpp:138
 msgid "Help not found"
 msgstr "Žinynas nerastas"
 
-#: ../src/utils.cpp:172
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "Nepavyko atverti vietos"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:187
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
 msgstr "Šiandien: %1%"
 
-#: ../src/utils.cpp:188
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "Šiandien"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
 msgstr "Vakar, %1%"
 
-#: ../src/utils.cpp:195
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "Vakar"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:204
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "prieš %1% dieną, %2%"
@@ -1105,7 +1105,7 @@ msgstr[2] "prieš %1% dienų, %2%"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "prieš %1% dieną"
@@ -1113,17 +1113,17 @@ msgstr[1] "prieš %1% dienas"
 msgstr[2] "prieš %1% dienų"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:218
+#: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "Rytoj, %1%"
 
-#: ../src/utils.cpp:219
+#: ../src/utils.cpp:218
 msgid "Tomorrow"
 msgstr "Rytoj"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "Po %1% dienos, %2%"
@@ -1132,14 +1132,14 @@ msgstr[2] "Po %1% dienų, %2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:234
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "Po %1% dienos"
 msgstr[1] "Po %1% dienų"
 msgstr[2] "Po %1% dienų"
 
-#: ../src/utils.cpp:245
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "Nėra datos"
 
@@ -1488,7 +1488,6 @@ msgid "Replace title"
 msgstr "Pakeisti pavadinimą"
 
 #: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
-#| msgid "Delete the selected note"
 msgid "Replace title with selection."
 msgstr "Pakeisti pavadinimą pažymėjimu."
 
