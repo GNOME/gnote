@@ -1,3 +1,59 @@
+0.8.0 "We believe in GNOME 3" - 2011/09/24
+
+New features:
+
+  * Ported to GTK 3.0
+  * New documentation in Mallard format
+  * Handle x-scheme-handler/note mime-type
+  * Use pkg-config for uuid (#649486)
+  * Build only shared libraries for addins (#620015)
+  * Search window context menus rework (#601852)
+  * Disabled GtkSpell
+  * Ported panel applet to libpanelapplet-4 (#639779)
+  * Ported configuration to Gio::Settings
+  * Status icon presence is now configurable
+  * About dialog is now a child of Search All Notes
+  * Added replace title addin (#639938)
+  * Changed search to prioritize note titles
+  * Ported D-Bus support to Gio::DBus (also fixes #618330)
+  * Open all selected notes
+  * Show note title when deleting only 1 note
+  * Removed minimum size on Search All Notes Window
+  * Set min width of note title column to 150
+
+Fixes:
+
+  * Place user local addins in addins subdirectory (#619867)
+  * Change tomboyimport according recent Tomboy
+  * Import sticky notes when Tomboy is not installed (#605382)
+  * Use actual visibility of status icon (#650001)
+  * Fix dragging notes to Unfiled notes (#655208)
+  * Fix command line option --new-note with argument
+  * Fix delete key behaviour in bulleted list
+  * Don't create nested links
+
+Translations:
+
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - French (fr)
+    - German (de)
+    - Hebrew (he)
+    - Hungarian (hu)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Russian (ru)
+    - Slovenian (sl)
+    - Spanish (es)
+  * Added translations:
+    - Czech documentation (cs)
+    - French (fr)
+    - German documentation (de)
+    - Latvian (lv)
+    - Ukranian (uk)
+    - Serbian (sr)
+
 0.7.5 "Little things matter" - 2011/07/30
 
 New features:
