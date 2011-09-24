@@ -68,7 +68,7 @@ EXTRA_DIST = 					\
 	GNOME_GnoteApplet.xml                   \
 	$(desktop_in_files)     		\
 	$(pkgconfig_in_files)			\
-	org.gnome.gnote.gschema.xml		\
+	org.gnome.gnote.gschema.xml.in		\
 	$(man_MANS)				\
 	$(noinst_DATA)				\
 	$(service_in_files)                     \
