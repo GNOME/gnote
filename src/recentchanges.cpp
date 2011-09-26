@@ -783,7 +783,7 @@ namespace gnote {
       am ["OpenNoteAction"]->property_sensitive() = false;
       am ["DeleteNoteAction"]->property_sensitive() = false;
     } 
-    else if (selected_notes.size() > 1) {
+    else if (selected_notes.size()) {
       am ["OpenNoteAction"]->property_sensitive() = true;
       am ["DeleteNoteAction"]->property_sensitive() = true;
     } 
