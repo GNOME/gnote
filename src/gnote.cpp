@@ -357,6 +357,7 @@ namespace gnote {
 
     Gtk::AboutDialog about;
     about.set_name("Gnote");
+    about.set_program_name("Gnote");
     about.set_version(VERSION);
     about.set_logo(utils::get_icon("gnote", 48));
     about.set_copyright(_("Copyright \xc2\xa9 2010-2011 Aurimas Cernius\n"
