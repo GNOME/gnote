@@ -58,6 +58,7 @@ namespace gnote {
     TrieController(NoteManager &);
     ~TrieController();
 
+    void add_note(const Note::Ptr & note);
     void update();
     TrieTree<Note::WeakPtr> *title_trie() const
       {
@@ -749,9 +750,9 @@ namespace gnote {
     delete m_title_trie;
   }
 
-  void TrieController::on_note_added (const Note::Ptr & )
+  void TrieController::on_note_added (const Note::Ptr & note)
   {
-    update ();
+    add_note (note);
   }
 
   void TrieController::on_note_deleted (const Note::Ptr & )
@@ -762,6 +763,12 @@ namespace gnote {
   void TrieController::on_note_renamed (const Note::Ptr & , const std::string & )
   {
     update ();
+  }
+
+  void TrieController::add_note(const Note::Ptr & note)
+  {
+    m_title_trie->add_keyword (note->get_title(), note);
+    m_title_trie->compute_failure_graph();
   }
 
   void TrieController::update ()
