@@ -94,7 +94,6 @@ namespace gnote {
     , m_menubar(NULL)
     , m_find_combo(Glib::RefPtr<Gtk::TreeModel>::cast_static(Gtk::ListStore::create(m_find_combo_columns)), true)
     , m_clear_search_button(Gtk::Stock::CLEAR)
-    , m_case_sensitive(_("C_ase Sensitive"), true)
     , m_content_vbox(false, 0)
     , m_matches_column(NULL)
     , m_tree(NULL)
@@ -109,8 +108,6 @@ namespace gnote {
     add_accel_group(ActionManager::obj().get_ui()->get_accel_group());
 
     m_menubar = create_menu_bar ();
-
-    Gtk::Image *image = manage(new Gtk::Image (utils::get_icon ("system-search", 48)));
 
     Gtk::Label *label = manage(new Gtk::Label (_("_Search:"), true));
     label->property_xalign() = 1;
@@ -136,13 +133,9 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::clear_search_clicked));
     m_clear_search_button.show ();
 
-    m_case_sensitive.signal_toggled()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_case_sensitive_toggled));
-
     Gtk::Table *table = manage(new Gtk::Table (2, 3, false));
     table->attach (*label, 0, 1, 0, 1, Gtk::SHRINK, (Gtk::AttachOptions)0, 0, 0);
     table->attach (m_find_combo, 1, 2, 0, 1);
-    table->attach (m_case_sensitive, 1, 2, 1, 2);
     table->attach (m_clear_search_button,
                   2, 3, 0, 1,
                   Gtk::SHRINK, (Gtk::AttachOptions)0, 0, 0);
@@ -150,11 +143,9 @@ namespace gnote {
     table->show_all ();
 
     Gtk::HBox *hbox = manage(new Gtk::HBox (false, 2));
-    hbox->set_border_width(8);
-    hbox->pack_start (*image, false, false, 4);
     hbox->pack_start (*table, true, true, 0);
     hbox->show_all ();
-            
+
     // Notebooks Pane
     Gtk::Widget *notebooksPane = Gtk::manage(make_notebooks_pane ());
     notebooksPane->show ();
@@ -481,8 +472,7 @@ namespace gnote {
         }
         return;
       }
-      if (!m_case_sensitive.get_active())
-        text = sharp::string_to_lower(text);
+      text = sharp::string_to_lower(text);
 
       m_current_matches.clear ();
       
@@ -492,8 +482,7 @@ namespace gnote {
         selected_notebook = notebooks::Notebook::Ptr();
       }
 
-      Search::ResultsPtr results =
-        search.search_notes(text, m_case_sensitive.get_active(), selected_notebook);
+      Search::ResultsPtr results = search.search_notes(text, false, selected_notebook);
       for(Search::Results::const_iterator iter = results->begin();
           iter != results->end(); ++iter) {
         m_current_matches[iter->first->uri()] = iter->second;
@@ -699,11 +688,6 @@ namespace gnote {
     return note && (m_current_matches.find(note->uri()) != m_current_matches.end());
   }
 
-
-  void NoteRecentChanges::on_case_sensitive_toggled()
-  {
-    perform_search ();
-  }
 
   void NoteRecentChanges::on_notes_changed(const Note::Ptr &)
   {
@@ -1272,16 +1256,11 @@ namespace gnote {
     // list, or shuffling an existing term to the top...
     bool repeat = false;
 
-    if (m_case_sensitive.get_active()) {
-      repeat = (find(s_previous_searches.begin(), s_previous_searches.end(), text) != s_previous_searches.end());
-    } 
-    else {
-      std::string lower = sharp::string_to_lower(text);
-      for(std::list<std::string>::const_iterator iter = s_previous_searches.begin();
-          iter != s_previous_searches.end(); ++iter) {
-        if (sharp::string_to_lower(*iter) == lower) {
-          repeat = true;
-        }
+    std::string lower = sharp::string_to_lower(text);
+    for(std::list<std::string>::const_iterator iter = s_previous_searches.begin();
+        iter != s_previous_searches.end(); ++iter) {
+      if (sharp::string_to_lower(*iter) == lower) {
+        repeat = true;
       }
     }
 

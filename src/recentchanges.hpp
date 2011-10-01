@@ -91,7 +91,6 @@ private:
   bool filter_tags(const Gtk::TreeIter & );
   bool filter_by_tag (const Note::Ptr &);
   bool filter_by_search(const Note::Ptr &);
-  void on_case_sensitive_toggled();
   void on_notes_changed(const Note::Ptr &);
   void on_note_renamed(const Note::Ptr&, const std::string&);
   void on_note_saved(const Note::Ptr&);
@@ -170,7 +169,6 @@ private:
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ComboBox       m_find_combo;
   Gtk::Button         m_clear_search_button;
-  Gtk::CheckButton    m_case_sensitive;
   Gtk::Statusbar      m_status_bar;
   Gtk::ScrolledWindow m_matches_window;
   Gtk::HPaned         m_hpaned;
