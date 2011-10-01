@@ -774,6 +774,7 @@ namespace gnote {
       const Note::Ptr & note(*iter);
       m_title_trie->add_keyword (note->get_title(), note);
     }
+    m_title_trie->compute_failure_graph();
   }
 
 }
