@@ -158,8 +158,8 @@ namespace gnote {
     m_status_bar.show();
 
     // Update on changes to notes
-    m.signal_note_deleted.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_changed));
-    m.signal_note_added.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_changed));
+    m.signal_note_deleted.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_deleted));
+    m.signal_note_added.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_added));
     m.signal_note_renamed.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_renamed));
     m.signal_note_saved.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_saved));
 
@@ -398,6 +398,42 @@ namespace gnote {
     m_tree->append_column (*change);
   }
 
+  void NoteRecentChanges::add_note(const Note::Ptr & note)
+  {
+    std::string nice_date =
+      utils::get_pretty_print_date(note->change_date(), true);
+    Gtk::TreeIter iter = m_store->append();
+    iter->set_value(m_column_types.icon, s_note_icon);
+    iter->set_value(m_column_types.title, note->get_title());
+    iter->set_value(m_column_types.change_date, nice_date);
+    iter->set_value(m_column_types.note, note);
+  }
+
+  void NoteRecentChanges::delete_note(const Note::Ptr & note)
+  {
+    Gtk::TreeModel::Children rows = m_store->children();
+
+    for (Gtk::TreeModel::iterator iter = rows.begin();
+         rows.end() != iter; iter++) {
+      if (note == iter->get_value(m_column_types.note)) {
+        m_store->erase(iter);
+        break;
+      }
+    }
+  }
+
+  void NoteRecentChanges::rename_note(const Note::Ptr & note)
+  {
+    Gtk::TreeModel::Children rows = m_store->children();
+
+    for (Gtk::TreeModel::iterator iter = rows.begin();
+         rows.end() != iter; iter++) {
+      if (note == iter->get_value(m_column_types.note)) {
+        iter->set_value(m_column_types.title, note->get_title());
+        break;
+      }
+    }
+  }
 
   void NoteRecentChanges::update_results()
   {
@@ -712,14 +748,25 @@ namespace gnote {
   }
 
 
-  void NoteRecentChanges::on_notes_changed(const Note::Ptr &)
+  void NoteRecentChanges::on_case_sensitive_toggled()
   {
-    update_results ();
+    perform_search ();
   }
 
-  void NoteRecentChanges::on_note_renamed(const Note::Ptr&, const std::string&)
+  void NoteRecentChanges::on_note_added(const Note::Ptr & note)
   {
-    update_results ();
+    add_note(note);
+  }
+
+  void NoteRecentChanges::on_note_deleted(const Note::Ptr & note)
+  {
+    delete_note(note);
+  }
+
+  void NoteRecentChanges::on_note_renamed(const Note::Ptr & note,
+                                          const std::string &)
+  {
+    rename_note(note);
   }
 
   void NoteRecentChanges::on_note_saved(const Note::Ptr&)

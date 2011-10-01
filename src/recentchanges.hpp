@@ -78,6 +78,9 @@ private:
   Gtk::MenuBar *create_menu_bar ();
   Gtk::Widget  *make_notebooks_pane();
   void make_recent_tree ();
+  void add_note(const Note::Ptr & note);
+  void delete_note(const Note::Ptr & note);
+  void rename_note(const Note::Ptr & note);
   void update_results();
   void select_notes(const Note::List &);
   static void scroll_to_iter (Gtk::TreeView & tree, const Gtk::TreeIter & iter);
@@ -91,7 +94,9 @@ private:
   bool filter_tags(const Gtk::TreeIter & );
   bool filter_by_tag (const Note::Ptr &);
   bool filter_by_search(const Note::Ptr &);
-  void on_notes_changed(const Note::Ptr &);
+  void on_case_sensitive_toggled();
+  void on_note_added(const Note::Ptr & note);
+  void on_note_deleted(const Note::Ptr & note);
   void on_note_renamed(const Note::Ptr&, const std::string&);
   void on_note_saved(const Note::Ptr&);
   void on_treeview_drag_data_get(const Glib::RefPtr<Gdk::DragContext> &,
