@@ -205,6 +205,29 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_added_to_notebook));
     notebooks::NotebookManager::instance().signal_note_removed_from_notebook()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_note_removed_from_notebook));
+
+    // Set the focus chain for the top-most containers
+    std::vector<Gtk::Widget*> focus_chain;
+    focus_chain.push_back(hbox);
+    focus_chain.push_back(&m_hpaned);
+    vbox->set_focus_chain(focus_chain);
+
+    // Set focus chain for sub widgets of first top-most container
+    focus_chain.clear();
+    focus_chain.push_back(&m_find_combo);
+    focus_chain.push_back(&m_matches_window);
+    hbox->set_focus_chain(focus_chain);
+
+    // set focus chain for sub widgets of second top-most container
+    focus_chain.clear();
+    focus_chain.push_back(&m_matches_window);
+    focus_chain.push_back(notebooksPane);
+    m_hpaned.set_focus_chain(focus_chain);
+
+    // get back to the beginning of the focus chain
+    focus_chain.clear();
+    focus_chain.push_back(m_tree);
+    m_matches_window.set_focus_chain(focus_chain);
                         
     Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_exiting_event));
 
