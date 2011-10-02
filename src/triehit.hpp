@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,50 +18,59 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
 #ifndef __TRIEHIT_HPP_
 #define __TRIEHIT_HPP_
 
 #include <list>
-#include <string>
 #include <tr1/memory>
+
+#include <glibmm.h>
 
 namespace gnote {
 
-  template<class value_t>
-  class TrieHitList
-    : public std::list<value_t*>
+template<class value_t>
+class TrieHit
+{
+public:
+  typedef std::tr1::shared_ptr<TrieHit> Ptr;
+  typedef std::list<Ptr> List;
+  typedef std::tr1::shared_ptr<List> ListPtr;
+
+  TrieHit(int s, int e, const Glib::ustring & k, const value_t & v)
+    : m_start(s)
+    , m_end(e)
+    , m_key(k)
+    , m_value(v)
+    {
+    }
+
+  int start() const
   {
-  public:
-    ~TrieHitList()
-      {
-        typename TrieHitList::iterator iter;
-        for(iter = this->begin(); iter != this->end(); ++iter) {
-          delete *iter;
-        }
-      }
-  };
+    return m_start;
+  }
 
-
-  template<class value_t>
-  class TrieHit
+  int end() const
   {
-  public:
-    typedef TrieHitList<TrieHit<value_t> > List;
-    typedef std::tr1::shared_ptr<List>      ListPtr;
-    
-    int         start;
-    int         end;
-    std::string key;
-    value_t     value;
+    return m_end;
+  }
 
-    TrieHit(int s, int e, const std::string & k, const value_t & v)
-      : start(s), end(e), key(k), value(v)
-      {
-      }
-  };
+  Glib::ustring key() const
+  {
+    return m_key;
+  }
 
+  value_t value() const
+  {
+    return m_value;
+  }
+
+private:
+
+  int           m_start;
+  int           m_end;
+  Glib::ustring m_key;
+  value_t       m_value;
+};
 
 }
 

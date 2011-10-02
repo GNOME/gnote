@@ -763,20 +763,22 @@ namespace gnote {
   {
     // Some of these checks should be replaced with fixes to
     // TitleTrie.FindMatches, probably.
-    if (hit.value.expired()) {
-      DBG_OUT("DoHighlight: null pointer error for '%s'." , hit.key.c_str());
+    if (hit.value().expired()) {
+      DBG_OUT("DoHighlight: null pointer error for '%s'." , hit.key().c_str());
       return;
     }
       
-    if (!manager().find(hit.key)) {
-      DBG_OUT ("DoHighlight: '%s' links to non-existing note." , hit.key.c_str());
+    if (!manager().find(hit.key())) {
+      DBG_OUT ("DoHighlight: '%s' links to non-existing note." ,
+               hit.key().c_str());
       return;
     }
       
-    Note::Ptr hit_note(hit.value);
+    Note::Ptr hit_note(hit.value());
 
-    if (sharp::string_to_lower(hit.key) != sharp::string_to_lower(hit_note->get_title())) { // == 0 if same string  
-      DBG_OUT ("DoHighlight: '%s' links wrongly to note '%s'." , hit.key.c_str(), 
+    if (sharp::string_to_lower(hit.key()) != sharp::string_to_lower(hit_note->get_title())) { // == 0 if same string
+      DBG_OUT ("DoHighlight: '%s' links wrongly to note '%s'." ,
+               hit.key().c_str(),
                hit_note->get_title().c_str());
       return;
     }
@@ -785,10 +787,10 @@ namespace gnote {
       return;
 
     Gtk::TextIter title_start = start;
-    title_start.forward_chars (hit.start);
+    title_start.forward_chars (hit.start());
 
     Gtk::TextIter title_end = start;
-    title_end.forward_chars (hit.end);
+    title_end.forward_chars (hit.end());
 
     // Only link against whole words/phrases
     if ((!title_start.starts_word () && !title_start.starts_sentence ()) ||
@@ -802,7 +804,7 @@ namespace gnote {
     }
 
     DBG_OUT ("Matching Note title '%s' at %d-%d...",
-             hit.key.c_str(), hit.start, hit.end);
+             hit.key().c_str(), hit.start(), hit.end());
 
     get_buffer()->remove_tag (m_broken_link_tag, title_start, title_end);
     get_buffer()->apply_tag (m_link_tag, title_start, title_end);
