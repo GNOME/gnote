@@ -90,6 +90,9 @@ private:
   void matches_column_data_func(Gtk::CellRenderer *, const Gtk::TreeIter &);
   void update_total_note_count (int);
   void update_match_note_count (int);
+  void no_matches_found_action();
+  void restore_matches_window();
+  bool show_all_search_results();
   bool filter_notes(const Gtk::TreeIter & );
   bool filter_tags(const Gtk::TreeIter & );
   bool filter_by_tag (const Note::Ptr &);
@@ -179,9 +182,11 @@ private:
   Gtk::HPaned         m_hpaned;
   Gtk::VBox           m_content_vbox;
   Gtk::TreeViewColumn *m_matches_column;
-        
+
+  Gtk::HBox           *m_no_matches_box;
+
   notebooks::NotebooksTreeView  *m_notebooksTree;
-        
+
   // Use the following like a Set
   std::set<Tag::Ptr>  m_selected_tags;
 

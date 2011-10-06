@@ -27,6 +27,7 @@
 
 #include <glibmm/i18n.h>
 #include <gtkmm/image.h>
+#include <gtkmm/linkbutton.h>
 #include <gtkmm/main.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/table.h>
@@ -96,6 +97,7 @@ namespace gnote {
     , m_clear_search_button(Gtk::Stock::CLEAR)
     , m_content_vbox(false, 0)
     , m_matches_column(NULL)
+    , m_no_matches_box(NULL)
     , m_tree(NULL)
     , m_entry_changed_timeout(NULL)
     , m_clickX(0), m_clickY(0)
@@ -542,15 +544,22 @@ namespace gnote {
       }
 
       Search::ResultsPtr results = search.search_notes(text, false, selected_notebook);
-      for(Search::Results::const_iterator iter = results->begin();
-          iter != results->end(); ++iter) {
-        m_current_matches[iter->first->uri()] = iter->second;
+      // if no results found in current notebook ask user whether
+      // to search in all notebooks
+      if(results->size() == 0 && selected_notebook != NULL) {
+        no_matches_found_action();
       }
+      else {
+        for(Search::Results::const_iterator iter = results->begin();
+            iter != results->end(); ++iter) {
+          m_current_matches[iter->first->uri()] = iter->second;
+        }
       
-      add_matches_column ();
-      m_store_filter->refilter ();
-      m_tree->scroll_to_point (0, 0);
-      update_match_note_count (m_current_matches.size());
+        add_matches_column ();
+        m_store_filter->refilter ();
+        m_tree->scroll_to_point (0, 0);
+        update_match_note_count (m_current_matches.size());
+      }
   }
 
 
@@ -658,6 +667,49 @@ namespace gnote {
       ERR_OUT("exception: %s", e.what());
     }
   }
+
+  // called when no search results are found in the selected notebook
+  void NoteRecentChanges::no_matches_found_action()
+  {
+    m_hpaned.remove(m_matches_window);
+    if(!m_no_matches_box) {
+      Glib::ustring message = _("No results found in the selected notebook.\nClick here to search across all notes.");
+      Gtk::LinkButton *link_button = manage(new Gtk::LinkButton("", message));
+      link_button->signal_activate_link()
+        .connect(sigc::mem_fun(*this, &NoteRecentChanges::show_all_search_results));
+      link_button->set_tooltip_text(_("Click here to search across all notebooks"));
+      link_button->show();
+      Gtk::Table *no_matches_found_table = manage(new Gtk::Table(1, 3, false));
+      no_matches_found_table->attach(*link_button, 1, 2, 0, 1,
+        Gtk::FILL | Gtk::SHRINK,
+        Gtk::SHRINK,
+        0, 0
+      );
+
+      no_matches_found_table->set_col_spacings(4);
+      no_matches_found_table->show_all();
+      m_no_matches_box = manage(new Gtk::HBox(false, 0));
+      m_no_matches_box->pack_start(*no_matches_found_table, true, true, 0);
+      m_no_matches_box->show();
+    }
+    m_hpaned.add2(*m_no_matches_box);
+  }
+
+  void NoteRecentChanges::restore_matches_window()
+  {
+    if(m_no_matches_box && m_hpaned.get_child2() == m_no_matches_box) {
+      m_hpaned.remove(*m_no_matches_box);
+      m_hpaned.add2(m_matches_window);
+      restore_position();
+    }	
+  }
+
+  bool NoteRecentChanges::show_all_search_results()
+  {
+    Gtk::TreeIter iter = m_notebooksTree->get_model()->children().begin();
+    m_notebooksTree->get_selection()->select(iter);
+    return false;
+  }
                 
 
   /// <summary>
@@ -755,22 +807,26 @@ namespace gnote {
 
   void NoteRecentChanges::on_note_added(const Note::Ptr & note)
   {
+    restore_matches_window();
     add_note(note);
   }
 
   void NoteRecentChanges::on_note_deleted(const Note::Ptr & note)
   {
+    restore_matches_window();
     delete_note(note);
   }
 
   void NoteRecentChanges::on_note_renamed(const Note::Ptr & note,
                                           const std::string &)
   {
+    restore_matches_window();
     rename_note(note);
   }
 
   void NoteRecentChanges::on_note_saved(const Note::Ptr&)
   {
+    restore_matches_window();
     update_results ();
   }
 
@@ -1305,6 +1361,8 @@ namespace gnote {
       m_entry_changed_timeout->reset (500);
       m_clear_search_button.set_sensitive(true);
     }
+
+    restore_matches_window();
   }
 
   // Called in after .5 seconds of typing inactivity, or on
@@ -1396,6 +1454,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_notebook_selection_changed()
   {
+    restore_matches_window();
     notebooks::Notebook::Ptr notebook = get_selected_notebook ();
     ActionManager & am(ActionManager::obj());
     if (!notebook) {
@@ -1574,12 +1633,14 @@ namespace gnote {
   void NoteRecentChanges::on_note_added_to_notebook (const Note & , 
                                                      const notebooks::Notebook::Ptr & )
   {
+    restore_matches_window();
     update_results ();
   }
     
   void NoteRecentChanges::on_note_removed_from_notebook (const Note & , 
                                                        const notebooks::Notebook::Ptr & )
   {
+    restore_matches_window();
     update_results ();
   }
 
