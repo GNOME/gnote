@@ -62,6 +62,7 @@ namespace gnote {
   {
     m_element_name = element_name;
     m_flags = CAN_SERIALIZE | CAN_SPLIT;
+    m_save_type = CONTENT;
   }
   
 
@@ -418,6 +419,7 @@ namespace gnote {
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = "green";
     tag->set_can_serialize(false);
+    tag->set_save_type(META);
     add (tag);
 
     tag = NoteTag::create("note-title", 0);
@@ -426,12 +428,14 @@ namespace gnote {
     tag->property_scale() = Pango::SCALE_XX_LARGE;
     // FiXME: Hack around extra rewrite on open
     tag->set_can_serialize(false);
+    tag->set_save_type(META);
     add (tag);
       
     tag = NoteTag::create("related-to", 0);
     tag->property_scale() = Pango::SCALE_SMALL;
     tag->property_left_margin() = 40;
     tag->property_editable() = false;
+    tag->set_save_type(META);
     add (tag);
 
     // Used when inserting dropped URLs/text to Start Here
@@ -439,6 +443,7 @@ namespace gnote {
     tag->property_scale() = Pango::SCALE_SMALL;
     tag->property_style() = Pango::STYLE_ITALIC;
     tag->set_palette_foreground(CONTRAST_COLOR_GREY);
+    tag->set_save_type(META);
     add (tag);
 
     // Font sizes
@@ -464,18 +469,21 @@ namespace gnote {
     tag = NoteTag::create("link:broken", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
     tag->set_palette_foreground(CONTRAST_COLOR_GREY);
+    tag->set_save_type(META);
     add (tag);
     m_broken_link_tag = tag;
 
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
     tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
+    tag->set_save_type(META);
     add (tag);
     m_link_tag = tag;
 
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
     tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
+    tag->set_save_type(META);
     add (tag);
     m_url_tag = tag;
   }
@@ -538,6 +546,35 @@ namespace gnote {
   bool NoteTagTable::has_link_tag(const Gtk::TextIter & iter)
   {
     return iter.has_tag(get_link_tag()) || iter.has_tag(get_url_tag()) || iter.has_tag(get_broken_link_tag());
+  }
+
+
+  ChangeType NoteTagTable::get_change_type(const Glib::RefPtr<Gtk::TextTag> &tag)
+  {
+    ChangeType change;
+
+    // Use tag Name for Gtk.TextTags
+    // For extensibility, add Gtk.TextTag names here
+    change = OTHER_DATA_CHANGED;
+
+    // Use SaveType for NoteTags
+    Glib::RefPtr<NoteTag> note_tag = Glib::RefPtr<NoteTag>::cast_dynamic(tag);
+    if(note_tag) {
+      switch(note_tag->save_type()) {
+        case META:
+          change = OTHER_DATA_CHANGED;
+          break;
+        case CONTENT:
+          change = CONTENT_CHANGED;
+          break;
+        case NO_SAVE:
+        default:
+          change = NO_CHANGE;
+        break;
+      }
+    }
+
+    return change;
   }
   
 

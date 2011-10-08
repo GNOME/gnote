@@ -152,7 +152,7 @@ namespace notebooks {
       Tag::Ptr notebook_tag = TagManager::obj().get_or_create_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
       note->add_tag (notebook_tag);
         
-      note->queue_save (Note::CONTENT_CHANGED);
+      note->queue_save (CONTENT_CHANGED);
     }
 
     return note;

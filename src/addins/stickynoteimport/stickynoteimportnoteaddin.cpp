@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010-2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -299,7 +299,7 @@ bool StickyNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle
 
   try {
     Note::Ptr newNote = manager.create(title, noteXml);
-    newNote->queue_save (Note::NO_CHANGE);
+    newNote->queue_save (gnote::NO_CHANGE);
     newNote->save();
     return true;
   } 

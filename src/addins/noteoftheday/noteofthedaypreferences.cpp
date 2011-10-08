@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -64,7 +65,7 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
                                 NoteOfTheDay::s_template_title,
                                 NoteOfTheDay::get_template_content(
                                   NoteOfTheDay::s_template_title));
-      template_note->queue_save(gnote::Note::CONTENT_CHANGED);
+      template_note->queue_save(gnote::CONTENT_CHANGED);
     }
     catch (const sharp::Exception & e) {
       ERR_OUT("NoteOfTheDay could not create %s: %s",

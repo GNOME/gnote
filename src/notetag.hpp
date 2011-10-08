@@ -43,6 +43,18 @@ namespace gnote {
   class NoteEditor;
 
 
+enum TagSaveType {
+  NO_SAVE,
+  META,
+  CONTENT
+};
+
+enum ChangeType {
+  NO_CHANGE,
+  CONTENT_CHANGED,
+  OTHER_DATA_CHANGED
+};
+
 
 
 class NoteTag
@@ -71,6 +83,14 @@ public:
   const std::string & get_element_name() const
     { 
       return m_element_name;
+    }
+  TagSaveType save_type() const
+    {
+      return m_save_type;
+    }
+  void set_save_type(TagSaveType type)
+    {
+      m_save_type = type;
     }
   bool can_serialize() const
     {
@@ -162,6 +182,7 @@ private:
   TagActivatedHandler m_signal_activate;
   ContrastPaletteColor m_palette_foreground;
   sigc::signal<void,const Glib::RefPtr<Gtk::TextTag>&,bool> m_signal_changed;
+  TagSaveType         m_save_type;
 };
 
 
@@ -270,6 +291,14 @@ public:
   static bool tag_is_activatable(const Glib::RefPtr<Gtk::TextTag> & );
   static bool tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & );
   bool has_link_tag(const Gtk::TextIter & iter);
+
+  /// <summary>
+  /// Maps a Gtk.TextTag to ChangeType for saving notes
+  /// </summary>
+  /// <param name="tag">Gtk.TextTag to map</param>
+  /// <returns>ChangeType to save this NoteTag</returns>
+  ChangeType get_change_type(const Glib::RefPtr<Gtk::TextTag> &tag);
+
   DepthNoteTag::Ptr get_depth_tag(int depth, Pango::Direction direction);
   DynamicNoteTag::Ptr create_dynamic_tag(const std::string & );
   void register_dynamic_tag (const std::string & tag_name, const Factory & factory);

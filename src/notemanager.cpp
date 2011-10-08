@@ -282,13 +282,13 @@ namespace gnote {
     try {
       Note::Ptr start_note = create (_("Start Here"),
                                 start_note_content);
-      start_note->queue_save (Note::CONTENT_CHANGED);
+      start_note->queue_save (CONTENT_CHANGED);
       Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
           Preferences::START_NOTE_URI, start_note->uri());
 
       Note::Ptr links_note = create (_("Using Links in Gnote"),
                                 links_note_content);
-      links_note->queue_save (Note::CONTENT_CHANGED);
+      links_note->queue_save (CONTENT_CHANGED);
 
       m_signal_start_note_created(start_note);
     } 
@@ -369,7 +369,7 @@ namespace gnote {
         }
         
         note->set_is_open_on_startup(false);
-        note->queue_save (Note::NO_CHANGE);
+        note->queue_save (NO_CHANGE);
       }
     }
   }
@@ -666,7 +666,7 @@ namespace gnote {
       Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       template_note->add_tag(template_tag);
 
-      template_note->queue_save(Note::CONTENT_CHANGED);
+      template_note->queue_save(CONTENT_CHANGED);
     }
       
     return template_note;

@@ -347,7 +347,7 @@ bool RemoteControl::SetNoteCompleteXml(const std::string& uri,
     return false;
   }
     
-  note->load_foreign_note_xml(xml_contents, Note::CONTENT_CHANGED);
+  note->load_foreign_note_xml(xml_contents, CONTENT_CHANGED);
   return true;
 }
 

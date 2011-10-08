@@ -551,7 +551,7 @@ namespace gnote {
   {
     if(NoteTagTable::tag_is_serializable(tag)) {
       DBG_OUT("BufferTagApplied queueing save: %s", tag->property_name().get_value().c_str());
-      queue_save(CONTENT_CHANGED);
+      queue_save(get_tag_table()->get_change_type(tag));
     }
   }
 
@@ -561,7 +561,7 @@ namespace gnote {
   {
     if(NoteTagTable::tag_is_serializable(tag)) {
       DBG_OUT("BufferTagRemoved queueing save: %s", tag->property_name().get_value().c_str());
-      queue_save(CONTENT_CHANGED);
+      queue_save(get_tag_table()->get_change_type(tag));
     }
   }
 

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -119,12 +120,6 @@ public:
   typedef sigc::signal<void, const Note&, const Tag::Ptr&>     TagAddedHandler;
   typedef sigc::signal<void, const Note&, const Tag &>         TagRemovingHandler;  
   typedef sigc::signal<void, const Note::Ptr&, const std::string&>  TagRemovedHandler;  
-
-  typedef enum {
-    NO_CHANGE,
-    CONTENT_CHANGED,
-    OTHER_DATA_CHANGED
-  } ChangeType;
 
   ~Note();
 
