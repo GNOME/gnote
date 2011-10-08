@@ -908,6 +908,12 @@ namespace gnote {
       }
     }
 
+    Glib::RefPtr<Gtk::TextTag> broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
+    if(start.begins_tag(broken_link_tag)) {
+      get_note()->get_buffer()->remove_tag(broken_link_tag, start, end);
+      get_note()->get_buffer()->apply_tag(get_note()->get_tag_table()->get_link_tag(), start, end);
+    }
+
     // FIXME: We used to also check here for (link != this.Note), but
     // somehow this was causing problems receiving clicks for the
     // wrong instance of a note (see bug #413234).  Since a
