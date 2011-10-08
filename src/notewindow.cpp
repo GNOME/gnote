@@ -592,6 +592,12 @@ namespace gnote {
         return;
       }
     }
+    else {
+      Gtk::TextIter start, end;
+      m_note.get_buffer()->get_selection_bounds(start, end);
+      m_note.get_buffer()->remove_tag(m_note.get_tag_table()->get_broken_link_tag(), start, end);
+      m_note.get_buffer()->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
+    }
 
     match->get_window()->present();
   }
