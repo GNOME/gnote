@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-18 01:06+0300\n"
-"PO-Revision-Date: 2011-07-18 01:26+0300\n"
+"POT-Creation-Date: 2011-10-13 12:36+0300\n"
+"PO-Revision-Date: 2011-10-13 12:40+0300\n"
 "Last-Translator: Korostil Daniel <ted.korostiled@gmail.com>\n"
 "Language-Team: translation@linux.org.ua\n"
 "Language: uk\n"
@@ -216,7 +216,7 @@ msgid ""
 msgstr ""
 "Ціле значення, що вказує на те, що бажано завжди виконувати дії при "
 "виявленні конфлікту, або на те, що треба питати користувача. Значення "
-"відображається на внутрішню структуру. 0 означає необхідність запиту "
+"відбивається на внутрішню структуру. 0 означає необхідність запиту "
 "підтвердження, таким чином користувач може обробляти кожну конфліктну "
 "ситуацію окремо."
 
@@ -231,7 +231,7 @@ msgid ""
 "will continue linking to the renamed note."
 msgstr ""
 "Ціле значення, що вказує: завжди виконувати дії при виявленні конфлікту, або "
-"ж питати користувача. Значення відображається на внутрішню структуру. 0 "
+"ж питати користувача. Значення відбивається на внутрішню структуру. 0 "
 "означає, що користувач хоче отримати запит, якщо перейменування примітки "
 "може вплинути на посилання з інших приміток. 2 означає, що посилання у "
 "тексті треба замінити на нову назву примітки, щоб воно залишилось вказувати "
@@ -327,7 +327,7 @@ msgstr "Перша примітка"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:55
 msgid "Synchronization Client ID"
-msgstr "Ідентифіактор клієнта синхронізації"
+msgstr "Ідентифікатор клієнта синхронізації"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:56
 msgid "Synchronization Local Server Path"
@@ -641,21 +641,21 @@ msgstr "С_инхронізувати примітки"
 msgid "Start synchronizing notes"
 msgstr "Запустити синхронізування приміток"
 
-#: ../src/gnote.cpp:305
+#: ../src/gnote.cpp:296
 msgid "Cannot create new note"
 msgstr "Не вдалось створити нову примітку"
 
-#: ../src/gnote.cpp:354
+#: ../src/gnote.cpp:345
 msgid "and Tomboy original authors."
 msgstr "й автори Tomboy."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:354
 msgid "translator-credits"
 msgstr ""
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:363
 msgid ""
 "Copyright © 2010-2011 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -667,71 +667,71 @@ msgstr ""
 "© 2009 Hubert Figuiere\n"
 "© 2004-2009 й автори Tomboy"
 
-#: ../src/gnote.cpp:375
+#: ../src/gnote.cpp:367
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Проста програма створення приміток."
 
-#: ../src/gnote.cpp:386
+#: ../src/gnote.cpp:378
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: ../src/gnote.cpp:461
+#: ../src/gnote.cpp:453
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Запустити Gnote як аплет панелі GNOME"
 
-#: ../src/gnote.cpp:462
+#: ../src/gnote.cpp:454
 msgid "Specify the path of the directory containing the notes."
 msgstr "Вкажіть шлях до каталогу із примітками."
 
-#: ../src/gnote.cpp:462
+#: ../src/gnote.cpp:454
 msgid "path"
 msgstr "шлях"
 
-#: ../src/gnote.cpp:463
+#: ../src/gnote.cpp:455
 msgid "Open the search all notes window with the search text."
 msgstr "Відкрити вікно пошуку в усіх примітках за допомогою тексту пошуку."
 
-#: ../src/gnote.cpp:463 ../src/gnote.cpp:468 ../src/gnote.cpp:469
+#: ../src/gnote.cpp:455 ../src/gnote.cpp:460
 msgid "text"
 msgstr "Текст"
 
-#: ../src/gnote.cpp:464
+#: ../src/gnote.cpp:456
 msgid "Print version information."
 msgstr "Показати інформацію про версію."
 
-#: ../src/gnote.cpp:466
+#: ../src/gnote.cpp:457
 msgid "Create and display a new note, with a optional title."
 msgstr "Створити та показати нову примітку з довільним заголовком."
 
-#: ../src/gnote.cpp:466
+#: ../src/gnote.cpp:457
 msgid "title"
 msgstr "заголовок"
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:458
 msgid "Display the existing note matching title."
 msgstr "Показати наявну примітку з відповідним заголовком."
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:458
 msgid "title/url"
 msgstr "Заголовок/посилання"
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:459
 msgid "Display the 'Start Here' note."
 msgstr "Показувати першу примітку"
 
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:460
 msgid "Search and highlight text in the opened note."
 msgstr "Шукати та виділити текст у відкритій примітці."
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:464
 msgid "A note taking application"
 msgstr "Програма для роботи з примітками"
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:464
 msgid "Gnote options at launch"
 msgstr "Параметри Gnote під час запуску"
 
-#: ../src/gnote.cpp:662
+#: ../src/gnote.cpp:657
 msgid "Version %1%"
 msgstr "Версія %1%"
 
@@ -800,7 +800,7 @@ msgstr "Завжди перейменовувати посилання"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:303 ../src/notemanager.cpp:111
+#: ../src/preferencesdialog.cpp:303 ../src/notemanager.cpp:112
 msgid "New Note Template"
 msgstr "Шаблон нової примітки"
 
@@ -902,7 +902,7 @@ msgstr "Автор:"
 msgid "Copyright:"
 msgstr "Авторські права:"
 
-#: ../src/notemanager.cpp:248
+#: ../src/notemanager.cpp:249
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -944,7 +944,7 @@ msgstr ""
 "автоматично підкреслюється. Клацніть на посланні, щоб відкрити примітку.</"
 "note-content>"
 
-#: ../src/notemanager.cpp:267
+#: ../src/notemanager.cpp:268
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -974,19 +974,19 @@ msgstr ""
 "примітки, автоматично виникає посилання на неї.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:282 ../src/notemanager.cpp:335
+#: ../src/notemanager.cpp:283 ../src/notemanager.cpp:336
 msgid "Start Here"
 msgstr "Перша примітка"
 
-#: ../src/notemanager.cpp:288
+#: ../src/notemanager.cpp:289
 msgid "Using Links in Gnote"
 msgstr "Використання посилань у Gnote"
 
-#: ../src/notemanager.cpp:553
+#: ../src/notemanager.cpp:554
 msgid "New Note"
 msgstr "Створити примітку"
 
-#: ../src/notemanager.cpp:681
+#: ../src/notemanager.cpp:682
 msgid "Describe your new note here."
 msgstr "Опишіть тут вашу примітку."
 
@@ -1122,73 +1122,73 @@ msgstr "Знайти _попередню"
 msgid "Cannot create note"
 msgstr "Не вдалось створити примітку"
 
-#: ../src/notewindow.cpp:639
+#: ../src/notewindow.cpp:645
 msgid "_Next"
 msgstr "_Далі"
 
-#: ../src/notewindow.cpp:640
+#: ../src/notewindow.cpp:646
 msgid "_Previous"
 msgstr "_Попередня"
 
-#: ../src/notewindow.cpp:653
+#: ../src/notewindow.cpp:659
 msgid "_Find:"
 msgstr "З_найти:"
 
-#: ../src/notewindow.cpp:1095
+#: ../src/notewindow.cpp:1101
 msgid "<b>_Bold</b>"
 msgstr "<b>_Жирний</b>"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1102
 msgid "<i>_Italic</i>"
 msgstr "<i>_Курсив</i>"
 
-#: ../src/notewindow.cpp:1097
+#: ../src/notewindow.cpp:1103
 msgid "<s>_Strikeout</s>"
 msgstr "<s>За_креслений</s>"
 
-#: ../src/notewindow.cpp:1099
+#: ../src/notewindow.cpp:1105
 msgid "_Highlight"
 msgstr "Під_свічений"
 
-#: ../src/notewindow.cpp:1101
+#: ../src/notewindow.cpp:1107
 msgid "_Normal"
 msgstr "_Звичайний"
 
-#: ../src/notewindow.cpp:1103
+#: ../src/notewindow.cpp:1109
 msgid "Hu_ge"
 msgstr "В_еличезний"
 
-#: ../src/notewindow.cpp:1105
+#: ../src/notewindow.cpp:1111
 msgid "_Large"
 msgstr "_Великий"
 
-#: ../src/notewindow.cpp:1107
+#: ../src/notewindow.cpp:1113
 msgid "S_mall"
 msgstr "_Маленький"
 
-#: ../src/notewindow.cpp:1109
+#: ../src/notewindow.cpp:1115
 msgid "Bullets"
 msgstr "Позначки"
 
-#: ../src/notewindow.cpp:1112
+#: ../src/notewindow.cpp:1118
 msgid "Increase Font Size"
 msgstr "Збільшити розмір шрифту"
 
-#: ../src/notewindow.cpp:1113
+#: ../src/notewindow.cpp:1119
 msgid "Decrease Font Size"
 msgstr "Зменшити розмір шрифту"
 
-#: ../src/notewindow.cpp:1184
+#: ../src/notewindow.cpp:1190
 msgid "Font Size"
 msgstr "Розмір шрифту"
 
-#. %1% is the number of note.
-#: ../src/note.cpp:68
-msgid "Really delete this note?"
-msgid_plural "Really delete these %1% notes?"
+#. TRANSLATORS: %1% is number of notes
+#: ../src/note.cpp:73
+msgid "Really delete %1% note?"
+msgid_plural "Really delete %1% notes?"
 msgstr[0] "Вилучити примітку?"
 msgstr[1] "Вилучити %1% примітки?"
-msgstr[2] "Вилучитии %1% приміток?"
+msgstr[2] "Вилучити %1% приміток?"
 
 #: ../src/note.cpp:80
 msgid "If you delete a note it is permanently lost."
@@ -1208,57 +1208,70 @@ msgstr ""
 "простору та права на ~/.gnote. Подробиці про помилку можна знайти у ~/.gnote."
 "log."
 
-#: ../src/recentchanges.cpp:92
+#: ../src/recentchanges.cpp:93
 msgid "Search All Notes"
 msgstr "Пошук в усіх примітках"
 
-#: ../src/recentchanges.cpp:97
-msgid "C_ase Sensitive"
-msgstr "Вра_ховувати регістр"
-
-#: ../src/recentchanges.cpp:115
+#: ../src/recentchanges.cpp:114
 msgid "_Search:"
 msgstr "З_найти:"
 
-#: ../src/recentchanges.cpp:279
+#: ../src/recentchanges.cpp:288
 #: ../src/notebooks/notebookapplicationaddin.cpp:128
 msgid "Notebooks"
 msgstr "Блокноти"
 
-#: ../src/recentchanges.cpp:356
+#: ../src/recentchanges.cpp:365
 msgid "Note"
 msgstr "Примітка"
 
-#: ../src/recentchanges.cpp:377
+#: ../src/recentchanges.cpp:387
 msgid "Last Changed"
 msgstr "Час останньої зміни"
 
-#: ../src/recentchanges.cpp:521
+#: ../src/recentchanges.cpp:572
 msgid "Matches"
 msgstr "Збіги"
 
-#: ../src/recentchanges.cpp:575
+#. TRANSLATORS: search found a match in note title
+#: ../src/recentchanges.cpp:626
+msgid "Title match"
+msgstr "Збіг назв"
+
+#: ../src/recentchanges.cpp:630
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% збіг"
 msgstr[1] "%1% збіги"
 msgstr[2] "%1% збігів"
 
-#: ../src/recentchanges.cpp:589
+#: ../src/recentchanges.cpp:644
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Всього: %1% примітка"
 msgstr[1] "Всього: %1% примітки"
 msgstr[2] "Всього: %1% приміток"
 
-#: ../src/recentchanges.cpp:605
+#: ../src/recentchanges.cpp:660
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Збігається: %1% примітка"
 msgstr[1] "Збігається: %1% примітки"
 msgstr[2] "Збігається: %1% приміток"
 
-#: ../src/recentchanges.cpp:747
+#: ../src/recentchanges.cpp:676
+msgid ""
+"No results found in the selected notebook.\n"
+"Click here to search across all notes."
+msgstr ""
+"Не знайдено результатів у вибраному записнику.\n"
+"Натисніть тут, щоб шукати по всіх примітках. "
+
+#: ../src/recentchanges.cpp:680
+msgid "Click here to search across all notebooks"
+msgstr "Натисніть тут, щоб шукати по всіх записниках"
+
+#: ../src/recentchanges.cpp:855
 msgid "Notes"
 msgstr "Примітки"
 
@@ -1274,7 +1287,7 @@ msgstr " (нова)"
 msgid "_About Gnote"
 msgstr "_Про Gnote"
 
-#: ../src/utils.cpp:131
+#: ../src/utils.cpp:130
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -1282,35 +1295,35 @@ msgstr ""
 "«Посібник до приміток Gnote» не знайдено. Перевірте, що встановлення було "
 "виконано успішно."
 
-#: ../src/utils.cpp:139
+#: ../src/utils.cpp:138
 msgid "Help not found"
 msgstr "Довідку не знайдено"
 
-#: ../src/utils.cpp:172
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "Не вдалось відкрити адресу"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:187
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
 msgstr "Сьогодні, %1%"
 
-#: ../src/utils.cpp:188
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "Сьогодні"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
 msgstr "Вчора, %1%"
 
-#: ../src/utils.cpp:195
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "Вчора"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:204
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% день тому, %2%"
@@ -1319,7 +1332,7 @@ msgstr[2] "%1% днів тому, %2%"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% день тому"
@@ -1327,17 +1340,17 @@ msgstr[1] "%1% дні тому"
 msgstr[2] "%1% днів тому"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:218
+#: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
 msgstr "Завтра, %1%"
 
-#: ../src/utils.cpp:219
+#: ../src/utils.cpp:218
 msgid "Tomorrow"
 msgstr "Завтра"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "Через %1% день, %2%"
@@ -1346,14 +1359,14 @@ msgstr[2] "Через %1% днів, %2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:234
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "Через %1% день"
 msgstr[1] "Через %1% дні"
 msgstr[2] "Через %1% днів"
 
-#: ../src/utils.cpp:245
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "Без дати"
 
@@ -1688,11 +1701,11 @@ msgstr ""
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray і проект Tomboy"
 
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:34
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
 msgid "_Open Today: Template"
 msgstr "_Відкрити Сьогодні: Шаблон"
 
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:36
 msgid ""
 "Change the <span weight=\"bold\">Today: Template</span> note to customize "
 "the text that new Today notes have."
@@ -1720,6 +1733,19 @@ msgstr "Помилка друкування примітки"
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
 msgid "Page %1% of %2%"
 msgstr "Сторінка %1% з %2%"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
+msgid "Replace title"
+msgstr "Замінити назву"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
+msgid "Replace title with selection."
+msgstr "Замінити назву на вибрану."
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
+msgid "Pierre-Yves Luyten"
+msgstr "Pierre-Yves Luyten"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
@@ -1787,6 +1813,9 @@ msgstr "Додає функцію підкреслення тексту"
 #: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière та проект Tomboy"
+
+#~ msgid "C_ase Sensitive"
+#~ msgstr "Вра_ховувати регістр"
 
 #~ msgid "Accessories"
 #~ msgstr "Стандартні"
