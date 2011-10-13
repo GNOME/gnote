@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2011-10-12 20:33+0000\n"
-"PO-Revision-Date: 2011-10-13 01:01+0300\n"
+"PO-Revision-Date: 2011-10-13 11:07+0300\n"
 "Last-Translator: Muhammet Kara <muhammet.k@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,55 +45,46 @@ msgid "Custom Font Face"
 msgstr "Özel Yazı Tipi"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:4
-#, fuzzy
 #| msgid ""
 #| "Determines pixel width of \"Search All Notes\" window; stored on Tomboy "
 #| "exit."
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
-"\"Tüm Notlarda Ara\" penceresinin piksel genişliğini belirler; Tomboy "
-"kapandığında saklanır."
+"Arama penceresi ayracının piksel cinsinden konumunu belirtir; Gnote "
+"kapandığında saklanır."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:5
-#, fuzzy
 #| msgid ""
 #| "Determines X coordinate of \"Search All Notes\" window; stored on Tomboy "
 #| "exit."
 msgid "Determines X coordinate of Search window; stored on Gnote exit."
 msgstr ""
-"\"Tüm Notlarda Ara\" penceresinin X koordinatını belirler; Tomboy "
-"kapandığında saklanır."
+"Arama penceresinin X koordinatını belirtir; Gnote kapandığında saklanır."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:6
-#, fuzzy
 #| msgid ""
 #| "Determines Y coordinate of \"Search All Notes\" window; stored on Tomboy "
 #| "exit."
 msgid "Determines Y coordinate of Search window; stored on Gnote exit."
 msgstr ""
-"\"Tüm Notlarda Ara\" penceresinin Y koordinatını belirler; Tomboy "
-"kapandığında saklanır."
+"Arama penceresinin Y koordinatını belirtir; Gnote kapandığında saklanır."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:7
-#, fuzzy
 #| msgid ""
 #| "Determines pixel height of \"Search All Notes\" window; stored on Tomboy "
 #| "exit."
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
-"\"Tüm Notlarda Ara\" penceresinin piksel yüksekliğini belirler; Tomboy "
-"kapandığında saklanır."
+"Arama penceresinin piksel yüksekliğini belirtir; Gnote kapandığında saklanır."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:8
-#, fuzzy
 #| msgid ""
 #| "Determines pixel width of \"Search All Notes\" window; stored on Tomboy "
 #| "exit."
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
-"\"Tüm Notlarda Ara\" penceresinin piksel genişliğini belirler; Tomboy "
-"kapandığında saklanır."
+"Arama penceresinin piksel genişliğini belirtir; Gnote kapandığında saklanır."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:9
 #| msgid "Enable auto-_bulleted lists"
@@ -139,7 +130,6 @@ msgstr ""
 "kendiliğinden etkinleşmesi için etkinleştirin."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:18
-#, fuzzy
 #| msgid ""
 #| "Enable this option if you want to be able to middle-click the Tomboy icon "
 #| "to paste timestamped content into the Start Here note."
@@ -147,7 +137,7 @@ msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
 msgstr ""
-"Bu seçeneği Tomboy simgesine orta tuşla bastığında Buradan Başla notuna "
+"Bu seçeneği Gnote simgesine orta tuşla bastığında Buradan Başla notuna "
 "zaman belirtici yapıştırılmasını mümkün kılabilmek için etkinleştirin."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:19
@@ -181,6 +171,12 @@ msgid ""
 "status icon. If set to FALSE, Search All Notes window is used as main "
 "application window, closing which makes application to exit."
 msgstr ""
+"Sadece uygulama olarak başlatıldığında etkilidir. DOĞRU (TRUE) olarak "
+"ayarlandığında, "
+"bir durum simgesi gösterir. Eğer YANLIŞ (FALSE) olarak ayarlanırsa, Tüm "
+"Notlarda Ara penceresi "
+"ana uygulama penceresi olarak kullanılır ve bu pencereyi kapatmak uygulamayı "
+"da kapatır."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:25
 msgid ""
@@ -237,7 +233,6 @@ msgstr ""
 "tipi kullanılacak. Aksi taktirde masaüstünde öntanımlı yazıtipi kullanılacak."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:31
-#, fuzzy
 #| msgid ""
 #| "Integer determining the minimum number of notes to show in the Tomboy "
 #| "note menu."
@@ -245,7 +240,7 @@ msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr ""
-"Tomboy not menüsünde gösterilecek asgari not sayısını belirten tamsayı."
+"Gnote not menüsünde gösterilecek asgari not sayısını belirleyen tamsayı."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:32
 msgid ""
@@ -311,10 +306,9 @@ msgid "Open Start Here"
 msgstr "Buradan Başla'yı Aç"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:41
-#, fuzzy
 #| msgid "Path on SSH server to Tomboy synchronization directory (optional)."
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
-msgstr "SSH sunucusundaki Tomboy eşzamanlama dizininin yolu (isteğe bağlı)."
+msgstr "SSH sunucusundaki Gnote eşzamanlama dizininin yolu (isteğe bağlı)."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:42
 msgid ""
@@ -351,10 +345,9 @@ msgid "Saved horizontal position of Search window"
 msgstr "Arama penceresinin kaydedilmiş yatay konumu"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:49
-#, fuzzy
 #| msgid "Saved vertical position of \"Search All Notes\" window"
 msgid "Saved splitter position of Search window splitter."
-msgstr "\"Tüm Notlarda Ara\" penceresinin kaydedilmiş dikey konumu"
+msgstr "Arama penceresi ayracının kaydedilmiş ayraç konumu."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:50
 #| msgid "Saved vertical position of \"Search All Notes\" window"
@@ -387,12 +380,12 @@ msgid "Synchronization Local Server Path"
 msgstr "Eşzamanlandırma Yerel Sunucu Yolu"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:57
-#, fuzzy
 #| msgid "The date format that is used for the timestamp."
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
-msgstr "Zaman etiketi için kullanılacak tarih biçimi."
+msgstr ""
+"Zaman damgası için kullanılan tarih biçimi. strftime(3) biçimine göre yazılır."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid ""
@@ -519,16 +512,14 @@ msgstr ""
 "erişilebilecek \"Buradan Başla\" notu için not URI'si."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:67
-#, fuzzy
 #| msgid ""
 #| "User name to use when connecting to the synchronization server via SSH."
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr ""
-"Eşzamanlama hizmetine SSH aracılığıyla bağlanılırken kullanılacak kullanıcı "
-"adı."
+"Eşzamanlama sunucusuna SSH aracılığıyla bağlanılırken kullanılacak liman "
+"(port)."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:68
-#, fuzzy
 #| msgid ""
 #| "Time (in milliseconds) Tomboy should wait for a response when using FUSE "
 #| "to mount a sync share."
@@ -536,7 +527,7 @@ msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr ""
-"Bir eşzamanlama paylaşımına FUSE kullanarak bağlandığında Tomboy'un bir "
+"Bir eşzamanlama paylaşımına FUSE kullanarak bağlandığında Gnote'un bir "
 "cevap için beklemesi gereken zaman (milisaniye olarak)."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:69
@@ -544,10 +535,9 @@ msgid "Timestamp format"
 msgstr "Zaman etiketi biçimi"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:70
-#, fuzzy
 #| msgid "URL of SSH server containing Tomboy synchronization directory."
 msgid "URL of SSH server containing Gnote synchronization directory."
-msgstr "Tomboy eşzamanlama dizinini içeren SSH sunucusunun adresi (URL)."
+msgstr "Gnote eşzamanlama dizinini içeren SSH sunucusunun adresi (URL)."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid ""
@@ -558,7 +548,6 @@ msgstr ""
 "belirteç."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:72
-#, fuzzy
 #| msgid ""
 #| "Unique identifier for this Tomboy client, used when communicating with a "
 #| "sychronization server."
@@ -566,12 +555,12 @@ msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
 msgstr ""
-"Bir eşzamanlandırma servisi ile bağlantı kurulduğunda kullanılacak bu Tomboy "
-"istemcisi için tekil beliteç."
+"Bu Gnote istemcisi için, bir eşzamanlama sunucusu ile iletişime geçilirken "
+"kullanılacak benzersiz tanımlayıcı."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid "Use status icon, when started as an application"
-msgstr ""
+msgstr "Uygulama olarak başlatıldığında durum simgesi kullan"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid ""
@@ -588,7 +577,6 @@ msgstr ""
 "adı."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:76
-#, fuzzy
 #| msgid ""
 #| "Whitespace-separated list of note URIs for notes that should always "
 #| "appear in the Tomboy note menu."
@@ -596,8 +584,8 @@ msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
 msgstr ""
-"Tomboy not menüsünde görünmesi gereken URI'lerin boşluk karakterleri ile "
-"ayırılmış listesi."
+"Gnote not menüsünde her zaman görünmesi gereken not URI'lerinin boşluk "
+"karakterleri ile ayırılmış listesi."
 
 #: ../src/sharp/addinstreemodel.cpp:93
 #| msgid "Host Name"
