@@ -75,13 +75,14 @@ namespace gnote {
       }
     Note::Ptr find(const std::string &) const;
     Note::Ptr find_by_uri(const std::string &) const;
-    std::string get_unique_name (std::string basename, int id) const;
+    static std::string sanitize_xml_content(const std::string & xml_content);
+    Note::Ptr create_note_from_template(const std::string & title, const Note::Ptr & template_note);
+    std::string get_unique_name (const std::string & basename, int id) const;
     void delete_note(const Note::Ptr & note);
 
     Note::Ptr create();
     Note::Ptr create(const std::string & title);
     Note::Ptr create(const std::string & title, const std::string & xml_content);
-    static void replace_body_if_differ(Note::Ptr dest, const Note::Ptr src);
     // Import a note read from file_path
     // Will ensure the sanity including the unique title.
     Note::Ptr import_note(const std::string & file_path);
@@ -120,6 +121,7 @@ namespace gnote {
     Note::Ptr create_new_note (std::string title, const std::string & guid);
     Note::Ptr create_new_note (const std::string & title, const std::string & xml_content, 
                              const std::string & guid);
+    Note::Ptr create_note_from_template(const std::string & title, const Note::Ptr & template_note, const std::string & guid);
     /** add the note to the manager and setup signals */
     void add_note(const Note::Ptr &);
     void _common_init(const std::string & directory, const std::string & backup);

@@ -38,6 +38,7 @@ namespace notebooks {
   bool               NotebookNoteAddin::s_static_inited = false;
   Glib::RefPtr<Gdk::Pixbuf> NotebookNoteAddin::s_notebookIcon;
   Glib::RefPtr<Gdk::Pixbuf> NotebookNoteAddin::s_newNotebookIcon;
+  Tag::Ptr           NotebookNoteAddin::s_templateTag;
 
   void NotebookNoteAddin::_init_static()
   {
@@ -46,6 +47,15 @@ namespace notebooks {
       s_newNotebookIcon =  utils::get_icon("notebook-new", 16);
       s_static_inited = true;
     }
+  }
+
+
+  Tag::Ptr NotebookNoteAddin::get_template_tag()
+  {
+    if(!s_templateTag) {
+      s_templateTag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    }
+    return s_templateTag;
   }
   
 
@@ -85,6 +95,30 @@ namespace notebooks {
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_added_to_notebook));
     m_note_removed_cid = NotebookManager::instance().signal_note_removed_from_notebook()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_removed_from_notebook));
+
+    get_note()->signal_tag_added()
+      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_tag_added));
+
+    // TODO: Make sure this is handled in NotebookNoteAddin, too
+    get_note()->signal_tag_removed()
+      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_tag_removed));
+  }
+
+
+  void NotebookNoteAddin::on_note_tag_added(const Note & note, const Tag::Ptr & tag)
+  {
+    Note::Ptr taggedNote = const_cast<Note&>(note).shared_from_this();
+    if(taggedNote == get_note() && tag == get_template_tag()) {
+      update_button_sensitivity(true);
+    }
+  }
+
+
+  void NotebookNoteAddin::on_note_tag_removed(const Note::Ptr & taggedNote, const std::string & tag)
+  {
+    if(taggedNote == get_note() && tag == get_template_tag()->normalized_name()) {
+      update_button_sensitivity(false);
+    }
   }
 
 
@@ -105,14 +139,18 @@ namespace notebooks {
     }
     if(!m_toolButton) {
       initialize_tool_button();
-
-      // Disable the notebook button if this note is a template note
-      Tag::Ptr templateTag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      if (get_note()->contains_tag (templateTag)) {
-        m_toolButton->set_sensitive(false);
-      }
+      update_button_sensitivity(get_note()->contains_tag(get_template_tag()));
     }
   }
+
+
+  void NotebookNoteAddin::update_button_sensitivity(bool isTemplate)
+  {
+    if(m_toolButton) {
+      m_toolButton->set_sensitive(!isTemplate);
+    }
+  }
+
 
   void NotebookNoteAddin::on_menu_shown()
   {

@@ -43,6 +43,9 @@ public:
   TagManager();
 
   static const char * TEMPLATE_NOTE_SYSTEM_TAG;
+  static const char * TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG;
+  static const char * TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG;
+  static const char * TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG;
   Tag::Ptr get_tag (const std::string & tag_name) const;
   Tag::Ptr get_or_create_tag(const std::string &);
   Tag::Ptr get_system_tag (const std::string & tag_name) const;

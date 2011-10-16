@@ -35,10 +35,12 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
+#include "note.hpp"
 #include "undo.hpp"
 #include "utils.hpp"
 #include "notebuffer.hpp"
 #include "preferences.hpp"
+#include "tag.hpp"
 
 namespace gnote {
 
@@ -148,6 +150,13 @@ private:
   Gtk::Toolbar * make_toolbar();
   void sync_item_selected();
   Gtk::Menu * make_plugin_menu();
+  Gtk::Box * make_template_bar();
+  void on_untemplate_button_click();
+  void on_save_size_check_button_toggled();
+  void on_save_selection_check_button_toggled();
+  void on_save_title_check_button_toggled();
+  void on_note_tag_added(const Note&, const Tag::Ptr&);
+  void on_note_tag_removed(const Note::Ptr&, const std::string&);
   Gtk::Menu * make_find_menu();
   void find_button_clicked();
   void find_next_activate();
@@ -170,9 +179,18 @@ private:
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindBar                  *m_find_bar;
   Gtk::ToolButton              *m_delete_button;
+  Gtk::Box                     *m_template_widget;
+  Gtk::CheckButton             *m_save_size_check_button;
+  Gtk::CheckButton             *m_save_selection_check_button;
+  Gtk::CheckButton             *m_save_title_check_button;
 
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;
+
+  Tag::Ptr m_template_tag;
+  Tag::Ptr m_template_save_size_tag;
+  Tag::Ptr m_template_save_selection_tag;
+  Tag::Ptr m_template_save_title_tag;
 };
 
 class NoteFindBar

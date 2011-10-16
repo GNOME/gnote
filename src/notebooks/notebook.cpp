@@ -160,15 +160,15 @@ namespace notebooks {
 
   Note::Ptr Notebook::create_notebook_note()
   {
-    Note::Ptr template_note = find_template_note();
+    std::string temp_title;
+    Note::Ptr note_template = get_template_note();
     NoteManager & note_manager = Gnote::obj().default_note_manager();
 
-    Note::Ptr note = note_manager.create();
-    if(template_note)
-      NoteManager::replace_body_if_differ(note, template_note);
+    temp_title = note_manager.get_unique_name(_("New Note"), note_manager.get_notes().size());
+    Note::Ptr note = note_manager.create_note_from_template(temp_title, note_template);
 
     // Add the notebook tag
-    note->add_tag (m_tag);
+    note->add_tag(m_tag);
 
     return note;
   }

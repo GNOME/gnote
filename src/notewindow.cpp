@@ -44,6 +44,7 @@
 #include "recentchanges.hpp"
 #include "search.hpp"
 #include "actionmanager.hpp"
+#include "tagmanager.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/string.hpp"
 
@@ -55,6 +56,11 @@ namespace gnote {
     , m_note(note)
     , m_global_keys(NULL)
   {
+    m_template_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    m_template_save_size_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
+    m_template_save_selection_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
+    m_template_save_title_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
+
 //    get_window()->set_icon_name("gnote");
     set_default_size(450, 360);
     set_resizable(true);
@@ -91,6 +97,8 @@ namespace gnote {
     m_toolbar = manage(make_toolbar());
     m_toolbar->show();
 
+    m_template_widget = make_template_bar();
+
     // The main editor widget
     m_editor = manage(new NoteEditor(note.get_buffer()));
     m_editor->signal_populate_popup().connect(sigc::mem_fun(*this, &NoteWindow::on_populate_popup));
@@ -121,6 +129,7 @@ namespace gnote {
 
     Gtk::VBox *box = manage(new Gtk::VBox (false, 2));
     box->pack_start(*m_toolbar, false, false, 0);
+    box->pack_start(*m_template_widget, false, false, 0);
     box->pack_start(*m_editor_window, true, true, 0);
     box->pack_start(*m_find_bar, false, false, 0);
 
@@ -484,6 +493,101 @@ namespace gnote {
   {
     Gtk::Menu *menu = new Gtk::Menu();
     return menu;
+  }
+
+
+  Gtk::Box * NoteWindow::make_template_bar()
+  {
+    Gtk::VBox * bar = manage(new Gtk::VBox());
+
+    Gtk::Label * infoLabel = manage(new Gtk::Label(
+      _("This note is a template note. It determines the default content of regular notes, and will not show up in the note menu or search window.")));
+    infoLabel->set_line_wrap(true);
+
+    Gtk::Button * untemplateButton = manage(new Gtk::Button(_("Convert to regular note")));
+    untemplateButton->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_untemplate_button_click));
+
+    m_save_size_check_button = manage(new Gtk::CheckButton(_("Save Si_ze"), true));
+    m_save_size_check_button->set_active(m_note.contains_tag(m_template_save_size_tag));
+    m_save_size_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_size_check_button_toggled));
+
+    m_save_selection_check_button = manage(new Gtk::CheckButton(_("Save Se_lection"), true));
+    m_save_selection_check_button->set_active(m_note.contains_tag(m_template_save_selection_tag));
+    m_save_selection_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_selection_check_button_toggled));
+
+    m_save_title_check_button = manage(new Gtk::CheckButton(_("Save _Title"), true));
+    m_save_title_check_button->set_active(m_note.contains_tag(m_template_save_title_tag));
+    m_save_title_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_title_check_button_toggled));
+
+    bar->pack_start(*infoLabel);
+    bar->pack_start(*untemplateButton);
+    bar->pack_start(*m_save_size_check_button);
+    bar->pack_start(*m_save_selection_check_button);
+    bar->pack_start(*m_save_title_check_button);
+
+    if(m_note.contains_tag(m_template_tag)) {
+      bar->show_all();
+    }
+
+    m_note.signal_tag_added().connect(sigc::mem_fun(*this, &NoteWindow::on_note_tag_added));
+    m_note.signal_tag_removed().connect(sigc::mem_fun(*this, &NoteWindow::on_note_tag_removed));
+
+    return bar;
+  }
+
+
+  void NoteWindow::on_untemplate_button_click()
+  {
+    m_note.remove_tag(m_template_tag);
+  }
+
+
+  void NoteWindow::on_save_size_check_button_toggled()
+  {
+    if(m_save_size_check_button->get_active()) {
+      m_note.add_tag(m_template_save_size_tag);
+    }
+    else {
+      m_note.remove_tag(m_template_save_size_tag);
+    }
+  }
+
+
+  void NoteWindow::on_save_selection_check_button_toggled()
+  {
+    if(m_save_selection_check_button->get_active()) {
+      m_note.add_tag(m_template_save_selection_tag);
+    }
+    else {
+      m_note.remove_tag(m_template_save_selection_tag);
+    }
+  }
+
+
+  void NoteWindow::on_save_title_check_button_toggled()
+  {
+    if(m_save_title_check_button->get_active()) {
+      m_note.add_tag(m_template_save_title_tag);
+    }
+    else {
+      m_note.remove_tag(m_template_save_title_tag);
+    }
+  }
+
+
+  void NoteWindow::on_note_tag_added(const Note&, const Tag::Ptr & tag)
+  {
+    if(tag == m_template_tag) {
+      m_template_widget->show_all();
+    }
+  }
+
+
+  void NoteWindow::on_note_tag_removed(const Note::Ptr&, const std::string & tag)
+  {
+    if(tag == m_template_tag->normalized_name()) {
+      m_template_widget->hide();
+    }
   }
 
 

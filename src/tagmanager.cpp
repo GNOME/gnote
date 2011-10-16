@@ -34,6 +34,9 @@
 namespace gnote {
 
   const char * TagManager::TEMPLATE_NOTE_SYSTEM_TAG = "template";
+  const char * TagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG = "template:save-size";
+  const char * TagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG = "template:save-selection";
+  const char * TagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG = "template:save-title";
 
   namespace {
     int compare_tags_sort_func (const Gtk::TreeIter & a, 

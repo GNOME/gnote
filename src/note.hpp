@@ -48,9 +48,148 @@ namespace gnote {
 
 class NoteManager;
 
-class NoteData;
 class NoteWindow;
 class NoteTagTable;
+
+
+class NoteData
+{
+public:
+  typedef std::map<std::string, Tag::Ptr> TagMap;
+  NoteData(const std::string & _uri);
+
+  const std::string & uri() const
+    {
+      return m_uri;
+    }
+  const std::string & title() const
+    {
+      return m_title;
+    }
+  std::string & title()
+    {
+      return m_title;
+    }
+  const std::string & text() const
+    { 
+      return m_text;
+    }
+  std::string & text()
+    { 
+      return m_text;
+    }
+  const sharp::DateTime & create_date() const
+    {
+      return m_create_date;
+    }
+  sharp::DateTime & create_date()
+    {
+      return m_create_date;
+    }
+  const sharp::DateTime & change_date() const
+    {
+      return m_change_date;
+    }
+  void set_change_date(const sharp::DateTime & date)
+    {
+      m_change_date = date;
+      m_metadata_change_date = date;
+    }
+  const sharp::DateTime & metadata_change_date() const
+    {
+      return m_metadata_change_date;
+    }
+  sharp::DateTime & metadata_change_date()
+    {
+      return m_metadata_change_date;
+    }
+  int cursor_position() const
+    {
+      return m_cursor_pos;
+    }
+  void set_cursor_position(int new_pos)
+    {
+      m_cursor_pos = new_pos;
+    }
+  int selection_bound_position() const
+    {
+      return m_selection_bound_pos;
+    }
+  void set_selection_bound_position(int pos)
+    {
+      m_selection_bound_pos = pos;
+    }
+  int width() const
+    {
+      return m_width;
+    }
+  int & width()
+    {
+      return m_width;
+    }
+  int height() const
+    {
+      return m_height;
+    }
+  int & height()
+    {
+      return m_height;
+    }
+  int x() const
+    {
+      return m_x;
+    }
+  int & x()
+    {
+      return m_x;
+    }
+  int y() const
+    {
+      return m_y;
+    }
+  int & y()
+    {
+      return m_y;
+    }
+  const TagMap & tags() const
+    {
+      return m_tags;
+    }
+  TagMap & tags()
+    {
+      return m_tags;
+    }
+
+  bool is_open_on_startup() const
+    {
+      return m_open_on_startup;
+    }
+  void set_is_open_on_startup(bool v)
+    {
+      m_open_on_startup = v;
+    }
+  void set_position_extent(int x, int y, int width, int height);
+  bool has_position();
+  bool has_extent();
+
+private:
+  const std::string m_uri;
+  std::string       m_title;
+  std::string       m_text;
+  sharp::DateTime             m_create_date;
+  sharp::DateTime             m_change_date;
+  sharp::DateTime             m_metadata_change_date;
+  int               m_cursor_pos;
+  int               m_selection_bound_pos;
+  int               m_width, m_height;
+  int               m_x, m_y;
+  bool              m_open_on_startup;
+
+  TagMap m_tags;
+ 
+  static const int  s_noPosition;
+};
+
 
 class NoteDataBufferSynchronizer
 {
@@ -230,8 +369,8 @@ private:
   void on_buffer_tag_removed(const Glib::RefPtr<Gtk::TextTag> &tag,
                              const Gtk::TextBuffer::iterator &, 
                              const Gtk::TextBuffer::iterator &);
-  void on_buffer_insert_mark_set(const Gtk::TextBuffer::iterator & iter,
-                                 const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert);
+  void on_buffer_mark_set(const Gtk::TextBuffer::iterator & iter,
+                          const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert);
   bool on_window_configure(GdkEventConfigure *ev);
   bool on_window_destroyed(GdkEventAny *ev);
   void on_save_timeout();

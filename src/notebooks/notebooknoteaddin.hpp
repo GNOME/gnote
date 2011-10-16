@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -39,7 +40,8 @@ namespace notebooks {
     : public NoteAddin
   {
   public:
-    static NoteAddin * create();    
+    static NoteAddin * create();
+    static Tag::Ptr get_template_tag();
     virtual void initialize ();
     virtual void shutdown ();
     virtual void on_note_opened ();
@@ -49,6 +51,9 @@ namespace notebooks {
 
   private:
     void initialize_tool_button();
+    void on_note_tag_added(const Note &, const Tag::Ptr &);
+    void on_note_tag_removed(const Note::Ptr &, const std::string &);
+    void update_button_sensitivity(bool);
     void on_menu_shown();
     void on_note_added_to_notebook(const Note &, const Notebook::Ptr &);
     void on_note_removed_from_notebook(const Note &, const Notebook::Ptr &);
@@ -69,6 +74,7 @@ namespace notebooks {
     static bool               s_static_inited;
     static Glib::RefPtr<Gdk::Pixbuf> s_notebookIcon;
     static Glib::RefPtr<Gdk::Pixbuf> s_newNotebookIcon;
+    static Tag::Ptr           s_templateTag;
   };
 
 }

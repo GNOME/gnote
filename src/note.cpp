@@ -124,141 +124,13 @@ namespace gnote {
 
   }
 
-  class NoteData
-  {
-  public:
-    typedef std::map<std::string, Tag::Ptr> TagMap;
-    NoteData(const std::string & _uri);
-
-    const std::string & uri() const
-      {
-        return m_uri;
-      }
-    const std::string & title() const
-      {
-        return m_title;
-      }
-    std::string & title()
-      {
-        return m_title;
-      }
-    const std::string & text() const
-      { 
-        return m_text;
-      }
-    std::string & text()
-      { 
-        return m_text;
-      }
-    const sharp::DateTime & create_date() const
-      {
-        return m_create_date;
-      }
-    sharp::DateTime & create_date()
-      {
-        return m_create_date;
-      }
-    const sharp::DateTime & change_date() const
-      {
-        return m_change_date;
-      }
-    void set_change_date(const sharp::DateTime & date)
-      {
-        m_change_date = date;
-        m_metadata_change_date = date;
-      }
-    const sharp::DateTime & metadata_change_date() const
-      {
-        return m_metadata_change_date;
-      }
-    sharp::DateTime & metadata_change_date()
-      {
-        return m_metadata_change_date;
-      }
-    int cursor_position() const
-      {
-        return m_cursor_pos;
-      }
-    void set_cursor_position(int new_pos)
-      {
-        m_cursor_pos = new_pos;
-      }
-    int width() const
-      {
-        return m_width;
-      }
-    int & width()
-      {
-        return m_width;
-      }
-    int height() const
-      {
-        return m_height;
-      }
-    int & height()
-      {
-        return m_height;
-      }
-    int x() const
-      {
-        return m_x;
-      }
-    int & x()
-      {
-        return m_x;
-      }
-    int y() const
-      {
-        return m_y;
-      }
-    int & y()
-      {
-        return m_y;
-      }
-    const TagMap & tags() const
-      {
-        return m_tags;
-      }
-    TagMap & tags()
-      {
-        return m_tags;
-      }
-    
-    bool is_open_on_startup() const
-      {
-        return m_open_on_startup;
-      }
-    void set_is_open_on_startup(bool v)
-      {
-        m_open_on_startup = v;
-      }
-    void set_position_extent(int x, int y, int width, int height);
-    bool has_position();
-    bool has_extent();
-
-  private:
-    const std::string m_uri;
-    std::string       m_title;
-    std::string       m_text;
-    sharp::DateTime             m_create_date;
-    sharp::DateTime             m_change_date;
-    sharp::DateTime             m_metadata_change_date;
-    int               m_cursor_pos;
-    int               m_width, m_height;
-    int               m_x, m_y;
-    bool              m_open_on_startup;
-
-    TagMap m_tags;
-  
-    static const int  s_noPosition;
-  };
-
 
   const int  NoteData::s_noPosition = -1;
 
   NoteData::NoteData(const std::string & _uri)
     : m_uri(_uri)
     , m_cursor_pos(0)
+    , m_selection_bound_pos(s_noPosition)
     , m_width(0)
     , m_height(0)
     , m_x(s_noPosition)
@@ -363,6 +235,13 @@ namespace gnote {
         cursor = m_buffer->get_iter_at_line(2);
       }
       m_buffer->place_cursor(cursor);
+
+      if(m_data->selection_bound_position() >= 0) {
+        // Move selection bound to last-saved position
+        Gtk::TextIter selection_bound;
+        selection_bound = m_buffer->get_iter_at_offset(m_data->selection_bound_position());
+        m_buffer->move_mark(m_buffer->get_selection_bound(), selection_bound);
+      }
 
       // New events should create Undo actions
       m_buffer->undoer().thaw_undo ();
@@ -565,14 +444,20 @@ namespace gnote {
     }
   }
 
-  void Note::on_buffer_insert_mark_set(const Gtk::TextBuffer::iterator & iter,
-                                       const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert)
+  void Note::on_buffer_mark_set(const Gtk::TextBuffer::iterator & iter,
+                                const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert)
   {
-    if(insert != m_buffer->get_insert()) {
+    if(insert == m_buffer->get_insert()) {
+      m_data.data().set_cursor_position(iter.get_offset());
+    }
+    else if(insert == m_buffer->get_selection_bound()) {
+      m_data.data().set_selection_bound_position(iter.get_offset());
+    }
+    else {
       return;
     }
-    m_data.data().set_cursor_position(iter.get_offset());
-    DBG_OUT("BufferInsertSetMark queueing save");
+
+    DBG_OUT("OnBufferSetMark queueing save");
     queue_save(NO_CHANGE);
   }
 
@@ -1126,7 +1011,7 @@ namespace gnote {
       m_buffer->signal_remove_tag().connect(
         sigc::mem_fun(*this, &Note::on_buffer_tag_removed));
       m_buffer->signal_mark_set().connect(
-        sigc::mem_fun(*this, &Note::on_buffer_insert_mark_set));
+        sigc::mem_fun(*this, &Note::on_buffer_mark_set));
     }
     return m_buffer;
   }
@@ -1275,6 +1160,9 @@ namespace gnote {
         else if(name == "cursor-position") {
           note->set_cursor_position(boost::lexical_cast<int>(xml.read_string()));
         }
+        else if(name == "selection-bound-position") {
+          note->set_selection_bound_position(boost::lexical_cast<int>(xml.read_string()));
+        }
         else if(name == "width") {
           note->width() = boost::lexical_cast<int>(xml.read_string());
         }
@@ -1422,6 +1310,10 @@ namespace gnote {
     xml.write_start_element ("", "cursor-position", "");
     xml.write_string (boost::lexical_cast<std::string>(note.cursor_position()));
     xml.write_end_element ();
+
+    xml.write_start_element("", "selection-bound-position", "");
+    xml.write_string(boost::lexical_cast<std::string>(note.selection_bound_position()));
+    xml.write_end_element();
 
     xml.write_start_element ("", "width", "");
     xml.write_string (boost::lexical_cast<std::string>(note.width()));

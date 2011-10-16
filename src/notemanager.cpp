@@ -548,44 +548,28 @@ namespace gnote {
   Note::Ptr NoteManager::create_new_note (std::string title, const std::string & guid)
   {
     std::string body;
+
     title = split_title_from_content (title, body);
       
     if (title.empty()) {
       title = get_unique_name(_("New Note"), m_notes.size());
     }
 
+    Note::Ptr template_note = get_or_create_template_note();
+
     if (body.empty()) {
-      std::string content = get_note_template_content(title);
-      Note::Ptr new_note = create_new_note (title, content, guid);
-      new_note->get_buffer()->select_note_body();
-      // Use the body from the template note
-      Note::Ptr template_note = find_template_note();
-      if(template_note)
-        replace_body_if_differ(new_note, template_note);
-      return new_note;
+      return create_note_from_template(title, template_note, guid);
     }
 
-    Glib::ustring header = title + "\n\n";
-    std::string content =
-      boost::str(boost::format("<note-content>%1%%2%</note-content>") %
-                 utils::XmlEncoder::encode (header) 
-                 % utils::XmlEncoder::encode (body));
-    return create_new_note (title, content, guid);
-  }
+    // Use a simple "Describe..." body and highlight
+    // it so it can be easily overwritten
+    std::string content = get_note_template_content(title);
+    Note::Ptr new_note = create_new_note (title, content, guid);
 
-  //replace dest body by src one, if the text is different
-  void NoteManager::replace_body_if_differ(Note::Ptr dest, const Note::Ptr src)
-  {
-    std::string dest_body = sharp::string_trim(sharp::string_replace_first(dest->text_content(),
-                                                                           dest->get_title(), ""));
-    std::string src_body = sharp::string_trim(sharp::string_replace_first(src->text_content(),
-                                                                          src->get_title(), ""));
-    if(dest_body != src_body) {
-      std::string xml_content = sharp::string_replace_first(src->xml_content(),
-        sharp::string_trim(utils::XmlEncoder::encode(src->get_title())),
-        sharp::string_trim(utils::XmlEncoder::encode(dest->get_title())));
-      dest->set_xml_content(xml_content);
-    }
+    // Select the inital text so typing will overwrite the body text
+    new_note->get_buffer()->select_note_body();
+
+    return new_note;
   }
 
   // Create a new note with the specified Xml content
@@ -716,9 +700,95 @@ namespace gnote {
     return Note::Ptr();
   }
 
+  std::string NoteManager::sanitize_xml_content(const std::string & xml_content)
+  {
+    std::string::size_type pos = xml_content.find('\n');
+    int i = (pos == std::string::npos) ? -1 : pos;
+    std::string result(xml_content);
+
+    while (--i >= 0) {
+      if(xml_content[i] == '\r') {
+        continue;
+      }
+
+      if(std::isspace(result[i])) {
+        result.erase(i, 1);
+      }
+      else {
+        break;
+      }
+    }
+
+    return result;
+  }
+
+  /// <summary>
+  /// Creates a new note with the given titel based on the template note.
+  /// </summary>
+  /// <param name="title">
+  /// A <see cref="System.String"/>
+  /// </param>
+  /// <param name="template_note">
+  /// A <see cref="Note"/>
+  /// </param>
+  /// <returns>
+  /// A <see cref="Note"/>
+  /// </returns>
+  Note::Ptr NoteManager::create_note_from_template(const std::string & title, const Note::Ptr & template_note)
+  {
+    return create_note_from_template(title, template_note, "");
+  }
+
+  // Creates a new note with the given title and guid with body based on
+  // the template note.
+  Note::Ptr NoteManager::create_note_from_template(const std::string & title, const Note::Ptr & template_note, const std::string & guid)
+  {
+    std::string new_title(title);
+    Tag::Ptr template_save_title = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
+    if(template_note->contains_tag(template_save_title)) {
+      new_title = get_unique_name(template_note->get_title(), m_notes.size());
+    }
+
+    // Use the body from the template note
+    std::string xml_content = sharp::string_replace_first(template_note->xml_content(),
+                                                          utils::XmlEncoder::encode(template_note->get_title()),
+                                                          utils::XmlEncoder::encode(new_title));
+    xml_content = sanitize_xml_content(xml_content);
+
+    Note::Ptr new_note = create_new_note(new_title, xml_content, guid);
+
+    // Copy template note's properties
+    Tag::Ptr template_save_size = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
+    if(template_note->data().has_extent() && template_note->contains_tag(template_save_size)) {
+      new_note->data().height() = template_note->data().height();
+      new_note->data().width() = template_note->data().width();
+    }
+
+    Tag::Ptr template_save_selection = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
+    if(template_note->data().cursor_position() > 0 && template_note->contains_tag(template_save_selection)) {
+      Glib::RefPtr<Gtk::TextBuffer> buffer = new_note->get_buffer();
+      Gtk::TextIter iter;
+
+      // Because the titles will be different between template and
+      // new note, we can't just drop the cursor at template's
+      // CursorPosition. Whitespace after the title makes this more
+      // complicated so let's just start counting from the line after the title.
+      int title_offset_difference = buffer->get_iter_at_line(1).get_offset()
+                                    - template_note->get_buffer()->get_iter_at_line(1).get_offset();
+
+      iter = buffer->get_iter_at_offset(template_note->data().cursor_position() + title_offset_difference);
+      buffer->place_cursor(iter);
+
+      iter = buffer->get_iter_at_offset(template_note->data().selection_bound_position() + title_offset_difference);
+      buffer->move_mark(buffer->get_selection_bound(), iter);
+    }
+
+    return new_note;
+  }
+
   // Find a title that does not exist using basename and id as
   // a starting point
-  std::string NoteManager::get_unique_name (std::string basename, int id) const
+  std::string NoteManager::get_unique_name(const std::string & basename, int id) const
   {
     std::string title;
     while (true) {
