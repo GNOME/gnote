@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-09 10:23+0200\n"
-"PO-Revision-Date: 2011-04-09 10:23+0100\n"
+"POT-Creation-Date: 2011-10-17 10:50+0200\n"
+"PO-Revision-Date: 2011-10-17 10:55+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,39 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/GNOME_GnoteApplet.server.in.in.h:1
-msgid "Accessories"
-msgstr "Tillbehör"
-
-#: ../data/GNOME_GnoteApplet.server.in.in.h:2
 #: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
 msgstr "Gnote"
-
-#: ../data/GNOME_GnoteApplet.server.in.in.h:3
-msgid "Gnote Applet Factory"
-msgstr "Gnote-panelprogramsfabrik"
-
-#: ../data/GNOME_GnoteApplet.server.in.in.h:4
-msgid "Simple and easy to use note-taking"
-msgstr "Enkelt och lättanvänt anteckningsblock"
-
-#: ../data/GNOME_GnoteApplet.xml.h:1
-#: ../src/actionmanager.cpp:221
-msgid "_About"
-msgstr "_Om"
-
-#: ../data/GNOME_GnoteApplet.xml.h:2
-#: ../src/actionmanager.cpp:212
-#: ../src/tray.cpp:468
-msgid "_Help"
-msgstr "_Hjälp"
-
-#: ../data/GNOME_GnoteApplet.xml.h:3
-#: ../src/actionmanager.cpp:209
-#: ../src/tray.cpp:463
-msgid "_Preferences"
-msgstr "_Inställningar"
 
 #: ../data/gnote.desktop.in.in.h:2
 msgid "Note-taker"
@@ -60,299 +30,307 @@ msgstr "Anteckningsverktyg"
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Skriv ner anteckningar, länka till idéer och håll dig organiserad"
 
-#: ../data/gnote.schemas.in.h:1
+#: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Accept SSL Certificates"
 msgstr "Acceptera SSL-certifikat"
 
-#: ../data/gnote.schemas.in.h:2
+#: ../data/org.gnome.gnote.gschema.xml.in.h:2
 msgid "Create a new Note"
 msgstr "Skapa en ny anteckning"
 
-#: ../data/gnote.schemas.in.h:3
+#: ../data/org.gnome.gnote.gschema.xml.in.h:3
 msgid "Custom Font Face"
 msgstr "Anpassat typsnitt"
 
-#: ../data/gnote.schemas.in.h:4
+#: ../data/org.gnome.gnote.gschema.xml.in.h:4
+msgid "Determines Search window splitter position in pixels; stored on Gnote exit."
+msgstr "Bestämmer delningsposition för sökfönstret (i bildpunkter); lagras när Gnote avslutas."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:5
 msgid "Determines X coordinate of Search window; stored on Gnote exit."
 msgstr "Bestämmer X-koordinaten för sökfönstret; lagras när Gnote avslutas."
 
-#: ../data/gnote.schemas.in.h:5
+#: ../data/org.gnome.gnote.gschema.xml.in.h:6
 msgid "Determines Y coordinate of Search window; stored on Gnote exit."
 msgstr "Bestämmer Y-koordinaten för sökfönstret; lagras när Gnote avslutas."
 
-#: ../data/gnote.schemas.in.h:6
+#: ../data/org.gnome.gnote.gschema.xml.in.h:7
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr "Bestämmer bildpunktshöjd för sökfönstret; lagras när Gnote avslutas."
 
-#: ../data/gnote.schemas.in.h:7
+#: ../data/org.gnome.gnote.gschema.xml.in.h:8
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr "Bestämmer bildpunktsbredd för sökfönstret; lagras när Gnote avslutas."
 
-#: ../data/gnote.schemas.in.h:8
+#: ../data/org.gnome.gnote.gschema.xml.in.h:9
 msgid "Enable Auto bulleted lists"
 msgstr "Aktivera automatiska punktlistor"
 
-#: ../data/gnote.schemas.in.h:9
+#: ../data/org.gnome.gnote.gschema.xml.in.h:10
 msgid "Enable Middle-Click Paste On Icon"
 msgstr "Aktivera inklistring vid mittenklick på ikon"
 
-#: ../data/gnote.schemas.in.h:10
+#: ../data/org.gnome.gnote.gschema.xml.in.h:11
 msgid "Enable WikiWord highlighting"
 msgstr "Aktivera WikiOrd-färgmarkering"
 
-#: ../data/gnote.schemas.in.h:11
+#: ../data/org.gnome.gnote.gschema.xml.in.h:12
 msgid "Enable closing notes with escape"
 msgstr "Aktivera stängning av anteckningar med escape-tangenten"
 
-#: ../data/gnote.schemas.in.h:12
+#: ../data/org.gnome.gnote.gschema.xml.in.h:13
 msgid "Enable custom font"
 msgstr "Aktivera anpassat typsnitt"
 
-#: ../data/gnote.schemas.in.h:13
+#: ../data/org.gnome.gnote.gschema.xml.in.h:14
 msgid "Enable global keybindings"
 msgstr "Aktivera globala tangentmappningar"
 
-#: ../data/gnote.schemas.in.h:14
+#: ../data/org.gnome.gnote.gschema.xml.in.h:15
 msgid "Enable spellchecking"
 msgstr "Aktivera stavningskontroll"
 
-#: ../data/gnote.schemas.in.h:15
+#: ../data/org.gnome.gnote.gschema.xml.in.h:16
 msgid "Enable startup notes"
 msgstr "Aktivera anteckningar vid uppstart"
 
-#: ../data/gnote.schemas.in.h:16
+#: ../data/org.gnome.gnote.gschema.xml.in.h:17
 msgid "Enable this option if you want bulleted lists to be automatic when you place - or * at the beginning of a line."
 msgstr "Aktivera detta alternativ om du vill att punktlistor ska vara automatiska när du placerar ett - eller * i början av en rad."
 
-#: ../data/gnote.schemas.in.h:17
+#: ../data/org.gnome.gnote.gschema.xml.in.h:18
 msgid "Enable this option if you want to be able to middle-click the Gnote icon to paste timestamped content into the Start Here note."
 msgstr "Aktivera detta alternativ om du vill kunna klistra in tidsstämplat innehåll i Börja här-anteckningen genom att mittenklicka på Gnote-ikonen."
 
-#: ../data/gnote.schemas.in.h:18
+#: ../data/org.gnome.gnote.gschema.xml.in.h:19
 msgid "Enable this option to highlight words ThatLookLikeThis. Clicking the word will create a note with that name."
 msgstr "Aktivera detta alternativ för att färgmarkera ord som SerUtSomDetta. Att klicka på ett sådant ord kommer att skapa en anteckning med det namnet."
 
-#: ../data/gnote.schemas.in.h:19
+#: ../data/org.gnome.gnote.gschema.xml.in.h:20
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "Tidsgräns för FUSE-montering (ms)"
 
-#: ../data/gnote.schemas.in.h:20
+#: ../data/org.gnome.gnote.gschema.xml.in.h:21
 msgid "HTML Export All Linked Notes"
 msgstr "HTML-exportera alla länkade anteckningar"
 
-#: ../data/gnote.schemas.in.h:21
+#: ../data/org.gnome.gnote.gschema.xml.in.h:22
 msgid "HTML Export Last Directory"
 msgstr "HTML-exportera senaste katalogen"
 
-#: ../data/gnote.schemas.in.h:22
+#: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "HTML Export Linked Notes"
 msgstr "HTML-exportera länkade anteckningar"
 
-#: ../data/gnote.schemas.in.h:23
+#: ../data/org.gnome.gnote.gschema.xml.in.h:24
+msgid "Has affect only when started as an application. When set to TRUE, shows a status icon. If set to FALSE, Search All Notes window is used as main application window, closing which makes application to exit."
+msgstr "Har endast effekt när startad som ett program. När inställd till TRUE så visas en statusikon. Om inställd till FALSE kommer Sök i alla anteckningar-fönstret att användas som huvudfönster för programmet, vilket gör att programmet avslutas om fönstret stängs."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:25
 msgid "If enable_custom_font is true, the font name set here will be used as the font when displaying notes."
 msgstr "Om enable_custom_font är sant så kommer typsnittet som ställs in här att användas för att visa anteckningar."
 
-#: ../data/gnote.schemas.in.h:24
+#: ../data/org.gnome.gnote.gschema.xml.in.h:26
 msgid "If enabled, all notes that were open when Gnote quit will automatically be reopened at startup."
 msgstr "Om aktiverad kommer alla anteckningar som var öppnade när Gnote avslutades att öppnas igen vid nästa uppstart."
 
-#: ../data/gnote.schemas.in.h:25
+#: ../data/org.gnome.gnote.gschema.xml.in.h:27
 msgid "If enabled, an opened note can be closed by hitting the escape key."
 msgstr "Om aktiverad kan en öppnad anteckning stängas genom att trycka på escape-tangenten."
 
-#: ../data/gnote.schemas.in.h:26
+#: ../data/org.gnome.gnote.gschema.xml.in.h:28
 msgid "If true, misspellings will be underlined in red, and correct spelling suggestions shown in the right-click menu."
 msgstr "Om sant, så kommer felstavningar att understrykas med rött och förslag på korrekta stavningar visas i högerklicksmenyn."
 
-#: ../data/gnote.schemas.in.h:27
+#: ../data/org.gnome.gnote.gschema.xml.in.h:29
 msgid "If true, the desktop-global keybindings set in /apps/gnote/global_keybindings will be enabled, allowing for useful Gnote actions to be available from any application."
 msgstr "Om sant, så kommer de globala tangentbordsgenvägarna satta i /apps/gnote/global_keybindings att aktiveras, och tillåta Gnote-genvägar från vilket program som helst"
 
-#: ../data/gnote.schemas.in.h:28
+#: ../data/org.gnome.gnote.gschema.xml.in.h:30
 msgid "If true, the font name set in custom_font_face will be used as the font when displaying notes. Otherwise the desktop default font will be used."
 msgstr "Om sant, så kommer typsnittet satt i custom_font_face att användas för att visa anteckningar. Annars används skrivbordets standardtypsnitt."
 
-#: ../data/gnote.schemas.in.h:29
+#: ../data/org.gnome.gnote.gschema.xml.in.h:31
 msgid "Integer determining the minimum number of notes to show in the Gnote note menu."
 msgstr "Heltal som bestämmer minimalt antal anteckningar att visa i Gnotes anteckningsmeny."
 
-#: ../data/gnote.schemas.in.h:30
+#: ../data/org.gnome.gnote.gschema.xml.in.h:32
 msgid "Integer value indicating if there is a preference to always perform a specific behavior when a conflict is detected, instead of prompting the user. The values map to an internal enumeration. 0 indicates that the user wishes to be prompted when a conflict occurs, so that they may handle each conflict situation on a case-by-case basis."
 msgstr "Heltalsvärde som indikerar om det finns en inställning för att alltid genomföra ett specifikt beteende när en konflikt har upptäckts, istället för att fråga användaren. Värdena mappas till en intern numrering. 0 indikerar att användaren önskar att bli tillfrågad när en konflikt uppstår, så att användaren kan hantera konflikten från fall till fall."
 
-#: ../data/gnote.schemas.in.h:31
+#: ../data/org.gnome.gnote.gschema.xml.in.h:33
 msgid "Integer value indicating if there is a preference to always perform a specific link updating behavior when a note is renamed, instead of prompting the user. The values map to an internal enumeration. 0 indicates that the user wishes to be prompted when renaming a note may impact links that exist in other notes. 1 indicates that links should automatically be removed. 2 indicates that link text should be updated to the new note name so that it will continue linking to the renamed note."
 msgstr "Heltalsvärde som indikerar om det finns en inställning för att alltid genomföra ett specifikt beteende för länkuppdateringar när en anteckning byter namn, istället för att fråga användaren. Värdena mappas till en intern numrering. 0 indikerar att användaren önskar att bli tillfrågad när en anteckning byter namn som kan påverka länkar som finns i andra anteckningar så att det nya anteckningsnamnet fortsätter att länka till anteckningen med nytt namn."
 
-#: ../data/gnote.schemas.in.h:32
+#: ../data/org.gnome.gnote.gschema.xml.in.h:34
 msgid "Link Updating Behavior on Note Rename"
 msgstr "Beteende för länkuppdatering vid namnbyte"
 
-#: ../data/gnote.schemas.in.h:33
+#: ../data/org.gnome.gnote.gschema.xml.in.h:35
 msgid "List of pinned notes"
 msgstr "Lista över nålade anteckningar"
 
-#: ../data/gnote.schemas.in.h:34
+#: ../data/org.gnome.gnote.gschema.xml.in.h:36
 msgid "Minimum number of notes to show in menu"
 msgstr "Minimal antal anteckningar att visa i menyn"
 
-#: ../data/gnote.schemas.in.h:35
+#: ../data/org.gnome.gnote.gschema.xml.in.h:37
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Sparat beteende för synkroniseringskonflikter för anteckningar"
 
-#: ../data/gnote.schemas.in.h:36
+#: ../data/org.gnome.gnote.gschema.xml.in.h:38
 msgid "Open Recent Changes"
 msgstr "Öppna senaste ändringarna"
 
-#: ../data/gnote.schemas.in.h:37
+#: ../data/org.gnome.gnote.gschema.xml.in.h:39
 msgid "Open Search Dialog"
 msgstr "Öppna sökdialog"
 
-#: ../data/gnote.schemas.in.h:38
+#: ../data/org.gnome.gnote.gschema.xml.in.h:40
 msgid "Open Start Here"
 msgstr "Öppna \"Börja här\""
 
-#: ../data/gnote.schemas.in.h:39
+#: ../data/org.gnome.gnote.gschema.xml.in.h:41
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "Sökväg på SSH-servern för Gnotes synkroniseringskatalog (valfritt)."
 
-#: ../data/gnote.schemas.in.h:40
+#: ../data/org.gnome.gnote.gschema.xml.in.h:42
 msgid "Path to the synchronization server when using the filesystem synchronization service addin."
 msgstr "Sökväg till synkroniseringsservern när tilläggstjänsten för synkronisering av filsystem används."
 
-#: ../data/gnote.schemas.in.h:41
+#: ../data/org.gnome.gnote.gschema.xml.in.h:43
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "Mapp för SSHFS-fjärrsynkronisering"
 
-#: ../data/gnote.schemas.in.h:42
+#: ../data/org.gnome.gnote.gschema.xml.in.h:44
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "Användarnamn för SSHFS-fjärrsynkronisering"
 
-#: ../data/gnote.schemas.in.h:43
+#: ../data/org.gnome.gnote.gschema.xml.in.h:45
 msgid "SSHFS Synchronization Server Port"
 msgstr "Serverport för SSHFS-synkronisering"
 
-#: ../data/gnote.schemas.in.h:44
+#: ../data/org.gnome.gnote.gschema.xml.in.h:46
 msgid "SSHFS Synchronization Server URL"
 msgstr "Server-URL för SSHFS-synkronisering"
 
-#: ../data/gnote.schemas.in.h:45
+#: ../data/org.gnome.gnote.gschema.xml.in.h:47
 msgid "Saved height of Search window"
 msgstr "Sparad höjd för sökfönstret"
 
-#: ../data/gnote.schemas.in.h:46
+#: ../data/org.gnome.gnote.gschema.xml.in.h:48
 msgid "Saved horizontal position of Search window"
 msgstr "Sparad horisontell position för sökfönstret"
 
-#: ../data/gnote.schemas.in.h:47
+#: ../data/org.gnome.gnote.gschema.xml.in.h:49
+msgid "Saved splitter position of Search window splitter."
+msgstr "Sparad delningsposition för sökfönstret."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:50
 msgid "Saved vertical position of Search window"
 msgstr "Sparad vertikal position för sökfönstret"
 
-#: ../data/gnote.schemas.in.h:48
+#: ../data/org.gnome.gnote.gschema.xml.in.h:51
 msgid "Saved width of Search window"
 msgstr "Sparad bredd för sökfönstret"
 
-#: ../data/gnote.schemas.in.h:49
+#: ../data/org.gnome.gnote.gschema.xml.in.h:52
 msgid "Selected Synchronization Service Addin"
 msgstr "Valde tillägget synkroniseringstjänst"
 
-#: ../data/gnote.schemas.in.h:50
-msgid "Set to TRUE to activate"
-msgstr "Ställ in till TRUE för att aktivera"
-
-#: ../data/gnote.schemas.in.h:51
+#: ../data/org.gnome.gnote.gschema.xml.in.h:53
 msgid "Show applet menu"
 msgstr "Visa panelprogramsmenyn"
 
-#: ../data/gnote.schemas.in.h:52
+#: ../data/org.gnome.gnote.gschema.xml.in.h:54
 msgid "Start Here Note"
 msgstr "\"Börja här\"-anteckning"
 
-#: ../data/gnote.schemas.in.h:53
+#: ../data/org.gnome.gnote.gschema.xml.in.h:55
 msgid "Synchronization Client ID"
 msgstr "Id för synkroniseringsklient"
 
-#: ../data/gnote.schemas.in.h:54
+#: ../data/org.gnome.gnote.gschema.xml.in.h:56
 msgid "Synchronization Local Server Path"
 msgstr "Lokal serversökväg för synkronisering"
 
-#: ../data/gnote.schemas.in.h:55
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "The date format that is used for the timestamp. It follows the format of strftime(3)."
 msgstr "Datumformatet som används för tidsstämpeln. Den följer formatet för strftime(3)."
 
-#: ../data/gnote.schemas.in.h:56
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid "The global keybinding for creating and displaying a new Note. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
 msgstr "Den globala tangentmappningen för att skapa och visa en ny anteckning. Formatet ser ut som \"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\". Läsaren är ganska öppen och tillåter stora och små bokstäver, såvälsom förkortningar såsom \"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Ställer du in alternativet till specialsträngen \"disabled\" så blir det ingen tangentbordsbindning för denna handling."
 
-#: ../data/gnote.schemas.in.h:57
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "The global keybinding for opening the \"Start Here\" note. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
 msgstr "Den globala tangentmappningen för att öppna \"Börja Här\"-anteckningen. Formatet ser ut som \"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\".  Läsaren är ganska öppen och tillåter stora och små bokstäver, såvälsom förkortningar såsom \"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Ställer du in alternativet till specialsträngen \"disabled\" så blir det ingen tangentbordsbindning för denna handling."
 
-#: ../data/gnote.schemas.in.h:58
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid "The global keybinding for opening the Note Search dialog. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
 msgstr "Den globala tangentmappningen för att öppna Sök-dialogen. Formatet ser ut som \"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\".  Läsaren är ganska öppen och tillåter stora och små bokstäver, såvälsom förkortningar såsom \"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Ställer du in alternativet till specialsträngen \"disabled\" så blir det ingen tangentbordsbindning för denna handling."
 
-#: ../data/gnote.schemas.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid "The global keybinding for opening the Recent Changes dialog. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
 msgstr "Den globala tangentmappningen för att öppna \"Senaste ändringar\"-dialogen. Formatet ser ut som \"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\".  Läsaren är ganska öppen och tillåter stora och små bokstäver, såvälsom förkortningar såsom \"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Ställer du in alternativet till specialsträngen \"disabled\" så blir det ingen tangentbordsbindning för denna handling."
 
-#: ../data/gnote.schemas.in.h:60
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid "The global keybinding for showing the Gnote applet's menu. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
 msgstr "Den globala tangentmappningen för att öppna Gnotes panelprogramsmeny. Formatet ser ut som \"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\".  Läsaren är ganska öppen och tillåter stora och små bokstäver, såvälsom förkortningar såsom \"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Ställer du in alternativet till specialsträngen \"disabled\" så blir det ingen tangentbordsbindning för denna handling."
 
-#: ../data/gnote.schemas.in.h:61
-msgid "The handler for \"note://\" URLs"
-msgstr "Hanteraren för \"note://\"-url:er"
-
-#: ../data/gnote.schemas.in.h:62
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid "The last directory a note was exported to using the Export To HTML plugin."
 msgstr "Senaste katalogen som en anteckning exporterades till med insticksmodulen \"Exportera till HTML\"."
 
-#: ../data/gnote.schemas.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid "The last setting for the 'Export linked notes' checkbox in the Export to HTML plugin."
 msgstr "Senaste inställningen för kryssrutan \"Exportera länkade anteckningar\" i insticksmodulen \"Exportera till HTML\"."
 
-#: ../data/gnote.schemas.in.h:64
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid "The last setting for the 'Include all other linked notes' checkbox in the Export to HTML plugin. This setting is used in conjunction with the 'HTML Export Linked Notes' setting and is used to specify whether all notes (found recursively) should be included during an export to HTML."
 msgstr "Den senaste inställningen för kryssrutan \"Inkludera alla andra länkade anteckningar\" i insticksmodulen \"Exportera till HTML\". Den här inställningen används i kombination med inställningen för \"HTML-exportera länkade anteckningar\" och används för att ange huruvida alla anteckningar (rekursivt hittade) ska inkluderas vid en HTML-exportering."
 
-#: ../data/gnote.schemas.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid "The note URI of the note that should be considered the \"Start Here\" note, which is always placed at the bottom of the Gnote note menu and also accessible by hotkey."
 msgstr "Antecknings-uri:n för anteckningen som ska anses vara \"Börja här\"-anteckningen, vilken alltid placeras i nederkant av Gnote-anteckningsmenyn och även är åtkomlig med en snabbtangent."
 
-#: ../data/gnote.schemas.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "Porten att använda vid anslutning till synkroniseringsservern via SSH."
 
-#: ../data/gnote.schemas.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid "Time (in milliseconds) Gnote should wait for a response when using FUSE to mount a sync share."
 msgstr "Tid (i millisekunder) som Gnote ska vänta på ett svar när FUSE används för att montera en synkroniseringsutdelning."
 
-#: ../data/gnote.schemas.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid "Timestamp format"
 msgstr "Format för tidsstämpel"
 
-#: ../data/gnote.schemas.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "URL för SSH-servern som innehåller Gnotes synkroniseringskatalog."
 
-#: ../data/gnote.schemas.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid "Unique identifier for the currently configured note synchronization service addin."
 msgstr "Unik identifierare för den för närvarande konfigurerade tilläggstjänsten för synkronisering av anteckningar."
 
-#: ../data/gnote.schemas.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid "Unique identifier for this Gnote client, used when communicating with a sychronization server."
 msgstr "Unik identifierare för den den här Gnote-klienten, används vid kommunikation med en synkroniseringsserver."
 
-#: ../data/gnote.schemas.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+msgid "Use status icon, when started as an application"
+msgstr "Använd statusikon, när startad som ett program"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid "Use wdfs option \"-ac\" to accept SSL certificates without prompting the user."
 msgstr "Använd wdfs-flaggan \"-ac\" för att acceptera SSL-certifikat utan att tillfråga användaren."
 
-#: ../data/gnote.schemas.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr "Användarnamnet att använda vid anslutning till synkroniseringsservern via SSH."
 
-#: ../data/gnote.schemas.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid "Whitespace-separated list of note URIs for notes that should always appear in the Gnote note menu."
 msgstr "Blankstegsseparerad lista över URI:er för anteckningar som alltid ska visas i Gnotes anteckningsmeny."
 
@@ -414,7 +392,7 @@ msgid "Delete the selected note"
 msgstr "Ta bort den valda anteckningen"
 
 #: ../src/actionmanager.cpp:196
-#: ../src/notewindow.cpp:364
+#: ../src/notewindow.cpp:368
 msgid "_Close"
 msgstr "S_täng"
 
@@ -423,7 +401,7 @@ msgid "Close this window"
 msgstr "Stäng det här fönstret"
 
 #: ../src/actionmanager.cpp:201
-#: ../src/tray.cpp:480
+#: ../src/tray.cpp:477
 msgid "_Quit"
 msgstr "_Avsluta"
 
@@ -436,9 +414,21 @@ msgid "_Edit"
 msgstr "R_edigera"
 
 #: ../src/actionmanager.cpp:209
-#: ../src/preferencesdialog.cpp:89
+#: ../src/applet.cpp:383
+#: ../src/tray.cpp:460
+msgid "_Preferences"
+msgstr "_Inställningar"
+
+#: ../src/actionmanager.cpp:209
+#: ../src/preferencesdialog.cpp:88
 msgid "Gnote Preferences"
 msgstr "Inställningar för Gnote"
+
+#: ../src/actionmanager.cpp:212
+#: ../src/applet.cpp:384
+#: ../src/tray.cpp:465
+msgid "_Help"
+msgstr "_Hjälp"
 
 #: ../src/actionmanager.cpp:216
 msgid "_Contents"
@@ -447,6 +437,11 @@ msgstr "_Innehåll"
 #: ../src/actionmanager.cpp:216
 msgid "Gnote Help"
 msgstr "Hjälp för Gnote"
+
+#: ../src/actionmanager.cpp:221
+#: ../src/applet.cpp:385
+msgid "_About"
+msgstr "_Om"
 
 #: ../src/actionmanager.cpp:221
 msgid "About Gnote"
@@ -461,7 +456,7 @@ msgid "Create _New Note"
 msgstr "Skapa _ny anteckning"
 
 #: ../src/actionmanager.cpp:235
-#: ../src/notewindow.cpp:316
+#: ../src/notewindow.cpp:320
 msgid "_Search All Notes"
 msgstr "_Sök i alla anteckningar"
 
@@ -477,15 +472,15 @@ msgstr "S_ynkronisera anteckningar"
 msgid "Start synchronizing notes"
 msgstr "Starta synkronisering av anteckningar"
 
-#: ../src/gnote.cpp:278
+#: ../src/gnote.cpp:296
 msgid "Cannot create new note"
 msgstr "Kan inte skapa ny anteckning"
 
-#: ../src/gnote.cpp:327
+#: ../src/gnote.cpp:345
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: ../src/gnote.cpp:336
+#: ../src/gnote.cpp:354
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -495,7 +490,7 @@ msgstr ""
 "Skicka synpunkter på översättningen\n"
 "till <tp-sv@listor.tp-sv.se>."
 
-#: ../src/gnote.cpp:344
+#: ../src/gnote.cpp:363
 msgid ""
 "Copyright © 2010-2011 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -507,142 +502,141 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: ../src/gnote.cpp:348
+#: ../src/gnote.cpp:367
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
-#: ../src/gnote.cpp:359
+#: ../src/gnote.cpp:378
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: ../src/gnote.cpp:429
+#: ../src/gnote.cpp:453
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Kör Gnote som ett panelprogram i GNOME."
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:454
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: ../src/gnote.cpp:430
+#: ../src/gnote.cpp:454
 msgid "path"
 msgstr "sökväg"
 
-#: ../src/gnote.cpp:431
+#: ../src/gnote.cpp:455
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna \"Sök i alla anteckningar\"-fönstret med söktexten."
 
-#: ../src/gnote.cpp:431
-#: ../src/gnote.cpp:436
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:455
+#: ../src/gnote.cpp:460
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:456
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:457
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:457
 msgid "title"
 msgstr "titel"
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:458
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: ../src/gnote.cpp:435
+#: ../src/gnote.cpp:458
 msgid "title/url"
 msgstr "titel/url"
 
-#: ../src/gnote.cpp:436
+#: ../src/gnote.cpp:459
 msgid "Display the 'Start Here' note."
 msgstr "Visa \"Börja här\"-anteckningen."
 
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:460
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: ../src/gnote.cpp:442
+#: ../src/gnote.cpp:464
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: ../src/gnote.cpp:442
+#: ../src/gnote.cpp:464
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
-#: ../src/gnote.cpp:630
+#: ../src/gnote.cpp:657
 msgid "Version %1%"
 msgstr "Version %1%"
 
-#: ../src/preferencesdialog.cpp:107
+#: ../src/preferencesdialog.cpp:106
 msgid "Editing"
 msgstr "Redigering"
 
-#: ../src/preferencesdialog.cpp:109
+#: ../src/preferencesdialog.cpp:108
 msgid "Hotkeys"
 msgstr "Snabbtangenter"
 
-#: ../src/preferencesdialog.cpp:114
+#: ../src/preferencesdialog.cpp:113
 msgid "Add-ins"
 msgstr "Tillägg"
 
-#: ../src/preferencesdialog.cpp:222
+#: ../src/preferencesdialog.cpp:221
 msgid "_Spell check while typing"
 msgstr "_Stavningskontroll när text skrivs in"
 
-#: ../src/preferencesdialog.cpp:228
+#: ../src/preferencesdialog.cpp:227
 msgid "Misspellings will be underlined in red, with correct spelling suggestions shown in the context menu."
 msgstr "Felstavningar kommer att strykas under i rött, och korrekta stavningsförslag visas i sammanhangsmenyn."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:239
+#: ../src/preferencesdialog.cpp:238
 msgid "Highlight _WikiWords"
 msgstr "Färgmarkera _WikiOrd"
 
-#: ../src/preferencesdialog.cpp:245
+#: ../src/preferencesdialog.cpp:244
 msgid "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the word will create a note with that name."
 msgstr "Aktivera detta alternativ för att färgmarkera ord <b>SomSerUtSomDetta</b>. Att klicka på ett sådant kommer att skapa en anteckning med dess namn."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:252
+#: ../src/preferencesdialog.cpp:251
 msgid "Enable auto-_bulleted lists"
 msgstr "Aktivera a_utomatiska punktlistor"
 
-#: ../src/preferencesdialog.cpp:261
+#: ../src/preferencesdialog.cpp:260
 msgid "Use custom _font"
 msgstr "Använd anpassat _typsnitt"
 
-#: ../src/preferencesdialog.cpp:278
+#: ../src/preferencesdialog.cpp:277
 msgid "When renaming a linked note: "
 msgstr "När en länkad anteckning byter namn: "
 
-#: ../src/preferencesdialog.cpp:283
+#: ../src/preferencesdialog.cpp:282
 msgid "Ask me what to do"
 msgstr "Fråga mig vad som ska göras"
 
-#: ../src/preferencesdialog.cpp:284
+#: ../src/preferencesdialog.cpp:283
 msgid "Never rename links"
 msgstr "Byt aldrig namn på länkar"
 
-#: ../src/preferencesdialog.cpp:285
+#: ../src/preferencesdialog.cpp:284
 msgid "Always rename links"
 msgstr "Byt alltid namn på länkar"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:307
-#: ../src/notemanager.cpp:113
+#: ../src/preferencesdialog.cpp:303
+#: ../src/notemanager.cpp:112
 msgid "New Note Template"
 msgstr "Ny anteckningsmall"
 
-#: ../src/preferencesdialog.cpp:310
+#: ../src/preferencesdialog.cpp:306
 msgid "Use the new note template to specify the text that should be used when creating a new note."
 msgstr "Använd den nya anteckningsmallen för att ange texten som ska användas när en ny anteckning skapas."
 
-#: ../src/preferencesdialog.cpp:318
+#: ../src/preferencesdialog.cpp:314
 msgid "Open New Note Template"
 msgstr "Öppna ny anteckningsmall"
 
@@ -661,72 +655,72 @@ msgid "Show notes _menu"
 msgstr "Visa antecknings_meny"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:419
+#: ../src/preferencesdialog.cpp:420
 msgid "Open \"_Start Here\""
 msgstr "Öppna \"_Börja här\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:434
+#: ../src/preferencesdialog.cpp:436
 msgid "Create _new note"
 msgstr "Skapa _ny anteckning"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:449
+#: ../src/preferencesdialog.cpp:452
 msgid "Open \"Search _All Notes\""
 msgstr "Öppna \"Sök i _alla anteckningar\""
 
-#: ../src/preferencesdialog.cpp:475
+#: ../src/preferencesdialog.cpp:479
 msgid "Ser_vice:"
 msgstr "T_jänst:"
 
-#: ../src/preferencesdialog.cpp:532
+#: ../src/preferencesdialog.cpp:536
 msgid "Not configurable"
 msgstr "Inte konfigurerbar"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:552
+#: ../src/preferencesdialog.cpp:556
 msgid "_Advanced..."
 msgstr "_Avancerat..."
 
-#: ../src/preferencesdialog.cpp:599
+#: ../src/preferencesdialog.cpp:603
 msgid "The following add-ins are installed"
 msgstr "Följande tillägg är installerade"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:630
+#: ../src/preferencesdialog.cpp:634
 msgid "_Enable"
 msgstr "_Aktivera"
 
-#: ../src/preferencesdialog.cpp:636
+#: ../src/preferencesdialog.cpp:640
 msgid "_Disable"
 msgstr "_Inaktivera"
 
-#: ../src/preferencesdialog.cpp:767
+#: ../src/preferencesdialog.cpp:771
 msgid "Not Implemented"
 msgstr "Inte implementerad"
 
-#: ../src/preferencesdialog.cpp:781
+#: ../src/preferencesdialog.cpp:785
 msgid "%1% Preferences"
 msgstr "Inställningar för %1%"
 
-#: ../src/preferencesdialog.cpp:922
+#: ../src/preferencesdialog.cpp:926
 msgid "Choose Note Font"
 msgstr "Välj anteckningstypsnitt"
 
-#: ../src/preferencesdialog.cpp:1049
+#: ../src/preferencesdialog.cpp:1048
 msgid "Version:"
 msgstr "Version:"
 
-#: ../src/preferencesdialog.cpp:1054
+#: ../src/preferencesdialog.cpp:1053
 msgid "Author:"
 msgstr "Upphovsman:"
 
-#: ../src/preferencesdialog.cpp:1060
+#: ../src/preferencesdialog.cpp:1059
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/notemanager.cpp:255
+#: ../src/notemanager.cpp:249
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start Here\n"
 "\n"
@@ -752,7 +746,7 @@ msgstr ""
 "\n"
 "Vi har skapat en anteckning kallad <link:internal>Användning av länkar i Gnote</link:internal>.  Observera att varje gång vi skriver <link:internal>Användning av länkar i Gnote</link:internal> så blir den automatiskt understruken?  Klicka på länken för att öppna anteckningen.</note-content>"
 
-#: ../src/notemanager.cpp:274
+#: ../src/notemanager.cpp:268
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -771,56 +765,56 @@ msgstr ""
 "Om du skriver in namnet på en annan anteckning i din aktuella anteckning, kommer den automatiskt att länkas åt dig.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:289
-#: ../src/notemanager.cpp:341
+#: ../src/notemanager.cpp:283
+#: ../src/notemanager.cpp:336
 msgid "Start Here"
 msgstr "Börja här"
 
-#: ../src/notemanager.cpp:294
+#: ../src/notemanager.cpp:289
 msgid "Using Links in Gnote"
 msgstr "Användning av länkar i Gnote"
 
-#: ../src/notemanager.cpp:558
+#: ../src/notemanager.cpp:554
 msgid "New Note"
 msgstr "Ny anteckning"
 
-#: ../src/notemanager.cpp:686
+#: ../src/notemanager.cpp:682
 msgid "Describe your new note here."
 msgstr "Beskriv din nya anteckning här."
 
-#: ../src/noterenamedialog.cpp:151
+#: ../src/noterenamedialog.cpp:121
 msgid "Rename Note Links?"
 msgstr "Byt namn på anteckningslänkar?"
 
-#: ../src/noterenamedialog.cpp:156
+#: ../src/noterenamedialog.cpp:125
 msgid "_Don't Rename Links"
 msgstr "Byt _inte namn på länkar"
 
-#: ../src/noterenamedialog.cpp:157
+#: ../src/noterenamedialog.cpp:126
 msgid "_Rename Links"
 msgstr "_Byt namn på länkar"
 
-#: ../src/noterenamedialog.cpp:158
+#: ../src/noterenamedialog.cpp:127
 msgid "Select All"
 msgstr "Markera allt"
 
-#: ../src/noterenamedialog.cpp:159
+#: ../src/noterenamedialog.cpp:128
 msgid "Select None"
 msgstr "Markera inget"
 
-#: ../src/noterenamedialog.cpp:160
+#: ../src/noterenamedialog.cpp:129
 msgid "Always show this _window"
 msgstr "Visa alltid _det här fönstret"
 
-#: ../src/noterenamedialog.cpp:161
+#: ../src/noterenamedialog.cpp:130
 msgid "Alwa_ys rename links"
 msgstr "Byt allt_id namn på länkar"
 
-#: ../src/noterenamedialog.cpp:163
+#: ../src/noterenamedialog.cpp:132
 msgid "Never rename _links"
 msgstr "Byt aldrig namn på _länkar"
 
-#: ../src/noterenamedialog.cpp:182
+#: ../src/noterenamedialog.cpp:151
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
@@ -830,226 +824,239 @@ msgstr ""
 "\n"
 "Om du inte byter namn på länkarna så kommer de inte längre att länka till någonting."
 
-#: ../src/noterenamedialog.cpp:215
+#: ../src/noterenamedialog.cpp:184
 msgid "Rename Links"
 msgstr "Byt namn på länkar"
 
-#: ../src/noterenamedialog.cpp:230
+#: ../src/noterenamedialog.cpp:199
 msgid "Note Title"
 msgstr "Anteckningstitel"
 
-#: ../src/noterenamedialog.cpp:266
+#: ../src/noterenamedialog.cpp:235
 msgid "Ad_vanced"
 msgstr "A_vancerat"
 
-#: ../src/notewindow.cpp:77
+#: ../src/notewindow.cpp:78
 msgid "Find in This Note"
 msgstr "Sök i den här anteckningen"
 
-#: ../src/notewindow.cpp:324
+#: ../src/notewindow.cpp:328
 msgid "_Link to New Note"
 msgstr "_Länka till ny anteckning"
 
-#: ../src/notewindow.cpp:332
+#: ../src/notewindow.cpp:336
 msgid "Te_xt"
 msgstr "Te_xt"
 
-#: ../src/notewindow.cpp:341
+#: ../src/notewindow.cpp:345
 msgid "_Find in This Note"
 msgstr "_Sök i den här anteckningen"
 
-#: ../src/notewindow.cpp:356
+#: ../src/notewindow.cpp:360
 msgid "Clos_e All Notes"
 msgstr "S_täng alla anteckningar"
 
-#: ../src/notewindow.cpp:391
+#: ../src/notewindow.cpp:395
 msgid "Search"
 msgstr "Sök"
 
-#: ../src/notewindow.cpp:395
+#: ../src/notewindow.cpp:399
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "Sök i dina anteckningar (Ctrl-Skift-F)"
 
 # Hoppas detta är verbet...
-#: ../src/notewindow.cpp:405
+#: ../src/notewindow.cpp:409
 msgid "Link"
 msgstr "Länka"
 
-#: ../src/notewindow.cpp:411
+#: ../src/notewindow.cpp:415
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Länka markerad text till en ny anteckning (Ctrl-L)"
 
-#: ../src/notewindow.cpp:420
+#: ../src/notewindow.cpp:424
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/notewindow.cpp:426
+#: ../src/notewindow.cpp:430
 msgid "Set properties of text"
 msgstr "Ställ in textegenskaper"
 
-#: ../src/notewindow.cpp:430
+#: ../src/notewindow.cpp:434
 msgid "T_ools"
 msgstr "_Verktyg"
 
-#: ../src/notewindow.cpp:435
+#: ../src/notewindow.cpp:439
 msgid "Use tools on this note"
 msgstr "Använd verktyg på denna anteckning."
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:449
 msgid "Delete this note"
 msgstr "Ta bort denna anteckning"
 
-#: ../src/notewindow.cpp:455
+#: ../src/notewindow.cpp:459
 msgid "Synchronize Notes"
 msgstr "Synkronisera anteckningar"
 
-#: ../src/notewindow.cpp:498
+#: ../src/notewindow.cpp:502
 msgid "_Find..."
 msgstr "_Sök..."
 
-#: ../src/notewindow.cpp:506
+#: ../src/notewindow.cpp:510
 msgid "Find _Next"
 msgstr "Sök _nästa"
 
-#: ../src/notewindow.cpp:516
+#: ../src/notewindow.cpp:520
 msgid "Find _Previous"
 msgstr "Sök _föregående"
 
-#: ../src/notewindow.cpp:586
+#: ../src/notewindow.cpp:590
 msgid "Cannot create note"
 msgstr "Kan inte skapa anteckning"
 
-#: ../src/notewindow.cpp:628
+#: ../src/notewindow.cpp:645
 msgid "_Next"
 msgstr "_Nästa"
 
-#: ../src/notewindow.cpp:629
+#: ../src/notewindow.cpp:646
 msgid "_Previous"
 msgstr "_Föregående"
 
-#: ../src/notewindow.cpp:642
+#: ../src/notewindow.cpp:659
 msgid "_Find:"
 msgstr "_Sök:"
 
-#: ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:1101
 msgid "<b>_Bold</b>"
 msgstr "<b>_Fet</b>"
 
-#: ../src/notewindow.cpp:1085
+#: ../src/notewindow.cpp:1102
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kursiv</i>"
 
-#: ../src/notewindow.cpp:1086
+#: ../src/notewindow.cpp:1103
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Genomstruken</s>"
 
-#: ../src/notewindow.cpp:1088
+#: ../src/notewindow.cpp:1105
 msgid "_Highlight"
 msgstr "_Markera"
 
-#: ../src/notewindow.cpp:1090
+#: ../src/notewindow.cpp:1107
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:1092
+#: ../src/notewindow.cpp:1109
 msgid "Hu_ge"
 msgstr "_Enorm"
 
-#: ../src/notewindow.cpp:1094
+#: ../src/notewindow.cpp:1111
 msgid "_Large"
 msgstr "_Stor"
 
-#: ../src/notewindow.cpp:1096
+#: ../src/notewindow.cpp:1113
 msgid "S_mall"
 msgstr "_Liten"
 
-#: ../src/notewindow.cpp:1098
+#: ../src/notewindow.cpp:1115
 msgid "Bullets"
 msgstr "Punkter"
 
-#: ../src/notewindow.cpp:1101
+#: ../src/notewindow.cpp:1118
 msgid "Increase Font Size"
 msgstr "Öka typsnittsstorlek"
 
-#: ../src/notewindow.cpp:1102
+#: ../src/notewindow.cpp:1119
 msgid "Decrease Font Size"
 msgstr "Minska typsnittsstorlek"
 
-#: ../src/notewindow.cpp:1173
+#: ../src/notewindow.cpp:1190
 msgid "Font Size"
 msgstr "Typsnittsstorlek"
 
-#. %1% is the number of note.
-#: ../src/note.cpp:69
-msgid "Really delete this note?"
-msgid_plural "Really delete these %1% notes?"
-msgstr[0] "Verkligen ta bort denna anteckning?"
-msgstr[1] "Verkligen ta bort dessa %1% anteckningar?"
+#. TRANSLATORS: %1% is number of notes
+#: ../src/note.cpp:73
+msgid "Really delete %1% note?"
+msgid_plural "Really delete %1% notes?"
+msgstr[0] "Verkligen ta bort %1% anteckning?"
+msgstr[1] "Verkligen ta bort %1% anteckningar?"
 
-#: ../src/note.cpp:81
+#: ../src/note.cpp:80
 msgid "If you delete a note it is permanently lost."
 msgstr "Om du tar bort en anteckning försvinner den för alltid."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:116
 msgid "Error saving note data."
 msgstr "Fel vid sparande av anteckningsdata."
 
-#: ../src/note.cpp:118
+#: ../src/note.cpp:117
 msgid "An error occurred while saving your notes. Please check that you have sufficient disk space, and that you have appropriate rights on ~/.gnote. Error details can be found in ~/.gnote.log."
 msgstr "Ett fel inträffade när dina anteckningar sparades. Kontrollera att du har tillräckligt mycket diskutrymme och att du har lämpliga rättigheter på ~/.gnote. Mer information kan hittas i ~/.gnote.log."
 
-#: ../src/recentchanges.cpp:86
+#: ../src/recentchanges.cpp:93
 msgid "Search All Notes"
 msgstr "Sök i alla anteckningar"
 
-#: ../src/recentchanges.cpp:91
-msgid "C_ase Sensitive"
-msgstr "Skiftlä_geskänslig"
-
-#: ../src/recentchanges.cpp:109
+#: ../src/recentchanges.cpp:114
 msgid "_Search:"
 msgstr "_Sök:"
 
-#: ../src/recentchanges.cpp:273
-#: ../src/notebooks/notebookapplicationaddin.cpp:120
+#: ../src/recentchanges.cpp:288
+#: ../src/notebooks/notebookapplicationaddin.cpp:128
 msgid "Notebooks"
 msgstr "Anteckningsblock"
 
-#: ../src/recentchanges.cpp:350
+#: ../src/recentchanges.cpp:365
 msgid "Note"
 msgstr "Anteckning"
 
-#: ../src/recentchanges.cpp:371
+#: ../src/recentchanges.cpp:387
 msgid "Last Changed"
 msgstr "Senast ändrad"
 
-#: ../src/recentchanges.cpp:515
+#: ../src/recentchanges.cpp:572
 msgid "Matches"
 msgstr "Träffar"
 
-#: ../src/recentchanges.cpp:569
+#. TRANSLATORS: search found a match in note title
+#: ../src/recentchanges.cpp:626
+msgid "Title match"
+msgstr "Titelmatchning"
+
+#: ../src/recentchanges.cpp:630
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% träff"
 msgstr[1] "%1% träffar"
 
-#: ../src/recentchanges.cpp:583
+#: ../src/recentchanges.cpp:644
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Totalt: %1% anteckning"
 msgstr[1] "Totalt: %1% anteckningar"
 
-#: ../src/recentchanges.cpp:599
+#: ../src/recentchanges.cpp:660
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Sökträffar: %1% anteckning"
 msgstr[1] "Sökträffar: %1% anteckningar"
 
-#: ../src/recentchanges.cpp:741
+#: ../src/recentchanges.cpp:676
+msgid ""
+"No results found in the selected notebook.\n"
+"Click here to search across all notes."
+msgstr ""
+"Inga resultat hittades i markerad anteckningsbok.\n"
+"Klicka här för att söka igenom alla anteckningar."
+
+#: ../src/recentchanges.cpp:680
+msgid "Click here to search across all notebooks"
+msgstr "Klicka här för att söka igenom alla anteckningsböcker"
+
+#: ../src/recentchanges.cpp:855
 msgid "Notes"
 msgstr "Anteckningar"
 
-#: ../src/tray.cpp:53
+#: ../src/tray.cpp:54
 msgid "Take notes"
 msgstr "Skriv anteckningar"
 
@@ -1057,7 +1064,7 @@ msgstr "Skriv anteckningar"
 msgid " (new)"
 msgstr " (ny)"
 
-#: ../src/tray.cpp:473
+#: ../src/tray.cpp:470
 msgid "_About Gnote"
 msgstr "_Om Gnote"
 
@@ -1136,15 +1143,15 @@ msgstr[1] "Inom %1% dagar"
 msgid "No Date"
 msgstr "Inget datum"
 
-#: ../src/watchers.cpp:209
+#: ../src/watchers.cpp:210
 msgid "(Untitled %1%)"
 msgstr "(Namnlös %1%)"
 
-#: ../src/watchers.cpp:244
+#: ../src/watchers.cpp:245
 msgid "A note with the title <b>%1%</b> already exists. Please choose another name for this note before continuing."
 msgstr "En anteckning med titeln <b>%1%</b> finns redan. Välj ett annat namn för denna anteckning innan du fortsätter."
 
-#: ../src/watchers.cpp:258
+#: ../src/watchers.cpp:259
 msgid "Note title taken"
 msgstr "Anteckningstiteln är upptagen"
 
@@ -1157,7 +1164,7 @@ msgid "_Open Link"
 msgstr "_Öppna länk"
 
 #: ../src/notebooks/createnotebookdialog.cpp:38
-#: ../src/notebooks/notebookapplicationaddin.cpp:101
+#: ../src/notebooks/notebookapplicationaddin.cpp:109
 msgid "Create a new notebook"
 msgstr "Skapa ett nytt anteckningsblock"
 
@@ -1196,49 +1203,49 @@ msgstr "Alla anteckningar"
 msgid "Unfiled Notes"
 msgstr "Ej arkiverade anteckningar"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:95
+#: ../src/notebooks/notebookapplicationaddin.cpp:103
 msgid "Note_books"
 msgstr "Antecknings_block"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:96
-#: ../src/notebooks/notebookapplicationaddin.cpp:121
+#: ../src/notebooks/notebookapplicationaddin.cpp:104
+#: ../src/notebooks/notebookapplicationaddin.cpp:129
 msgid "Create a new note in a notebook"
 msgstr "Skapa en ny anteckning i ett anteckningsblock"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:100
-#: ../src/notebooks/notebookapplicationaddin.cpp:255
+#: ../src/notebooks/notebookapplicationaddin.cpp:108
+#: ../src/notebooks/notebookapplicationaddin.cpp:263
 msgid "New Note_book..."
 msgstr "Nytt antecknings_block..."
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:105
+#: ../src/notebooks/notebookapplicationaddin.cpp:113
 msgid "_New Note"
 msgstr "_Ny anteckning"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:106
+#: ../src/notebooks/notebookapplicationaddin.cpp:114
 msgid "Create a new note in this notebook"
 msgstr "Skapa en ny anteckning i detta anteckningsblock"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:110
+#: ../src/notebooks/notebookapplicationaddin.cpp:118
 msgid "_Open Template Note"
 msgstr "_Öppna anteckningsmall"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:111
+#: ../src/notebooks/notebookapplicationaddin.cpp:119
 msgid "Open this notebook's template note"
 msgstr "Öppna anteckningsmallen för detta anteckningsblock"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:115
+#: ../src/notebooks/notebookapplicationaddin.cpp:123
 msgid "Delete Note_book"
 msgstr "Ta bort antecknings_block"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:116
+#: ../src/notebooks/notebookapplicationaddin.cpp:124
 msgid "Delete the selected notebook"
 msgstr "Ta bort det valda anteckningsblocket"
 
-#: ../src/notebooks/notebookmanager.cpp:338
+#: ../src/notebooks/notebookmanager.cpp:337
 msgid "Really delete this notebook?"
 msgstr "Verkligen ta bort detta anteckningsblock?"
 
-#: ../src/notebooks/notebookmanager.cpp:339
+#: ../src/notebooks/notebookmanager.cpp:338
 msgid "The notes that belong to this notebook will not be deleted, but they will no longer be associated with this notebook.  This action cannot be undone."
 msgstr "Anteckningarna som tillhör detta anteckningsblock kommer inte att tas bort men de kommer inte längre att vara associerade med detta anteckningsblock.  Denna åtgärd kan inte ångras."
 
@@ -1250,15 +1257,15 @@ msgstr "Ny \"%1%\"-anteckning"
 msgid "No notebook"
 msgstr "Inget anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:83
+#: ../src/notebooks/notebooknoteaddin.cpp:76
 msgid "Place this note into a notebook"
 msgstr "Placera denna anteckning i ett anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:165
+#: ../src/notebooks/notebooknoteaddin.cpp:158
 msgid "Notebook"
 msgstr "Anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:190
+#: ../src/notebooks/notebooknoteaddin.cpp:184
 msgid "_New notebook..."
 msgstr "_Nytt anteckningsblock..."
 
@@ -1271,7 +1278,7 @@ msgid "See which notes link to the one you're currently viewing."
 msgstr "Se vilka anteckningar som länkar till den som du ser på just nu."
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:55
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere och Tomboy-projektet"
 
@@ -1298,60 +1305,60 @@ msgstr "Låter dig dra en Bugzilla-URL från din webbläsare direkt in i en Gnot
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere och Tomboy-projektet"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:61
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:62
 msgid "You can use any bugzilla just by dragging links into notes.  If you want a special icon for certain hosts, add them here."
 msgstr "Du kan använda en valfri bugzilla helt enkelt genom att dra länkar till anteckningar.  Om du vill ha en speciell ikon för vissa värddatorer kan du lägga till dem här."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:78
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:79
 msgid "Host Name"
 msgstr "Värdnamn"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:91
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:92
 msgid "Icon"
 msgstr "Ikon"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:225
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:226
 msgid "Select an icon..."
 msgstr "Välj en ikon..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:240
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:241
 msgid "_Host name:"
 msgstr "_Värdnamn:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:272
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
 msgid "Host name invalid"
 msgstr "Värdnamnet är ogiltigt"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:274
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr "Du måste ange ett giltigt värdnamn för den Bugzilla som ska användas med den här ikonen."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:292
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
 msgid "Error saving icon"
 msgstr "Fel vid sparandet av ikon"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:294
 msgid "Could not save the icon file."
 msgstr "Kunde inte spara ikonfilen.  "
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:365
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
 msgid "Really remove this icon?"
 msgstr "Verkligen ta bort den här ikonen?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:367
 msgid "If you remove an icon it is permanently lost."
 msgstr "Om du tar bort en ikon försvinner den för alltid."
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:36
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:39
 msgid "Destination for HTML Export"
 msgstr "Mål för HTML-export"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:38
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
 msgid "Export linked notes"
 msgstr "Exportera länkade anteckningar"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:39
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Include all other linked notes"
 msgstr "Inkludera alla andra länkade anteckningar"
 
@@ -1364,15 +1371,15 @@ msgstr "Exportera till HTML"
 msgid "Exports individual notes to HTML."
 msgstr "Exportera individuella anteckningar till HTML."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:145
 msgid "Your note was exported to \"%1%\"."
 msgstr "Din anteckning exporterades till \"%1%\"."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
 msgid "Note exported successfully"
 msgstr "Anteckningen exporterades"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:185
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:179
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Kunde inte spara filen \"%s\""
@@ -1391,25 +1398,25 @@ msgid "Adds fixed-width font style."
 msgstr "Lägger till en typsnittsstil med fast bredd."
 
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:47
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:80
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
 msgid "Insert Timestamp"
 msgstr "Infoga tidsstämpel"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:51
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
 msgid "Inserts current date and time at the cursor position."
 msgstr "Infogar aktuellt datum och tid vid markörens position."
 
 #. Label
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:63
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:67
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Välj ett av de fördefinierade formaten eller använd ditt egna format."
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:71
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:75
 msgid "Use _Selected Format"
 msgstr "Använd _valt format"
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:100
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:104
 msgid "_Use Custom Format"
 msgstr "Använd anpassat t_ypsnitt"
 
@@ -1446,11 +1453,11 @@ msgstr "Skapar automatiskt en \"Idag\"-anteckning för att enklare plita ner dag
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray och Tomboy-projektet"
 
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:34
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
 msgid "_Open Today: Template"
 msgstr "_Öppna Idag: Mall"
 
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:36
 msgid "Change the <span weight=\"bold\">Today: Template</span> note to customize the text that new Today notes have."
 msgstr "Ändra anteckningen <span weight=\"bold\">Idag: Mall</span> för att anpassa texten som nya Idag-anteckningar använder."
 
@@ -1475,6 +1482,19 @@ msgstr "Fel vid utskrift av anteckning"
 msgid "Page %1% of %2%"
 msgstr "Sida %1% av %2%"
 
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
+msgid "Replace title"
+msgstr "Ersätt titel"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
+msgid "Replace title with selection."
+msgstr "Ersätt titeln med markeringen."
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
+msgid "Pierre-Yves Luyten"
+msgstr "Pierre-Yves Luyten"
+
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
 msgstr "Importera från Klisterlappar"
@@ -1483,33 +1503,33 @@ msgstr "Importera från Klisterlappar"
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Importera dina anteckningar från panelprogrammet Klisterlappar."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:112
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:109
 msgid "Import from Sticky Notes"
 msgstr "Importera från Klisterlappar"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:242
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:209
 msgid "No Sticky Notes found"
 msgstr "Inga klisterlappar hittades"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:244
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:211
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "Ingen lämplig Klisterlappar-fil hittades i \"%1%\"."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:252
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:219
 msgid "Sticky Notes import completed"
 msgstr "Importeringen från Klisterlappar är färdig"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:254
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:221
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "<b>%1%</b> av <b>%2%</b> klisterlappar blev importerade."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:273
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:240
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:320
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:287
 msgid "Sticky Note: "
 msgstr "Klisterlapp: "
 
@@ -1542,167 +1562,256 @@ msgstr "Lägger till möjligheten att stryka under text."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière och Tomboy-projektet"
 
+#~ msgid "Accessories"
+#~ msgstr "Tillbehör"
+
+#~ msgid "Gnote Applet Factory"
+#~ msgstr "Gnote-panelprogramsfabrik"
+
+#~ msgid "Simple and easy to use note-taking"
+#~ msgstr "Enkelt och lättanvänt anteckningsblock"
+
+#~ msgid "Set to TRUE to activate"
+#~ msgstr "Ställ in till TRUE för att aktivera"
+
+#~ msgid "The handler for \"note://\" URLs"
+#~ msgstr "Hanteraren för \"note://\"-url:er"
+
+#~ msgid "Really delete this note?"
+
+#~ msgid_plural "Really delete these %1% notes?"
+#~ msgstr[0] "Verkligen ta bort denna anteckning?"
+#~ msgstr[1] "Verkligen ta bort dessa %1% anteckningar?"
+
+#~ msgid "C_ase Sensitive"
+#~ msgstr "Skiftlä_geskänslig"
+
 #~ msgid "Description"
 #~ msgstr "Beskrivning"
+
 #~ msgid "New Note %1%"
 #~ msgstr "Ny anteckning %1%"
+
 #~ msgid "Copyright © 2009 Hubert Figuiere"
 #~ msgstr "Copyright © 2009 Hubert Figuiere"
+
 #~ msgid "Gnote Notes"
 #~ msgstr "Gnote-anteckningar"
+
 #~ msgid "_Fixed Width"
 #~ msgstr "_Fast bredd"
+
 #~ msgid ""
 #~ "Indicates that the Sticky Note Importer plugin has not been run, so it "
 #~ "should run automatically the next time Gnote starts."
 #~ msgstr ""
 #~ "Indikerar att importeringsinsticksmodulen för Klisterlappar inte har "
 #~ "körts, så den bör starta automatiskt nästa gång Gnote startas."
+
 #~ msgid "Sticky Note Importer First Run"
 #~ msgstr "Första importeringen från Klisterlappar"
+
 #~ msgid "<span background='yellow'>_Highlight</span>"
 #~ msgstr "<span background='yellow'>_Markera</span>"
+
 #~ msgid "<span size=\"x-large\">Hu_ge</span>"
 #~ msgstr "<span size=\"x-large\">_Mycket stor</span>"
+
 #~ msgid "<span size=\"large\">_Large</span>"
 #~ msgstr "<span size=\"large\">_Stor</span>"
+
 #~ msgid "<span size=\"small\">S_mall</span>"
 #~ msgstr "<span size=\"small\">_Liten</span>"
-#~ msgid "Really delete these %1% notes?"
-#~ msgstr "Verkligen ta bort dessa %1% anteckningar?"
+
 #~ msgid "%1% matches"
 #~ msgstr "%1% träffar"
+
 #~ msgid "Matches: %1% notes"
 #~ msgstr "Sökträffar: %1% anteckningar"
+
 #~ msgid "%1% days ago, %2%"
 #~ msgstr "%1% dagar sedan, %2%"
+
 #~ msgid "%1% days ago"
 #~ msgstr "%1% dagar sedan"
+
 #~ msgid "In %1% days, %2%"
 #~ msgstr "Inom %1% dagar, %2%"
+
 #~ msgid "In %1% days"
 #~ msgstr "Inom %1% dagar"
+
 #~ msgid "Quit Tomboy"
 #~ msgstr "Avsluta Tomboy"
+
 #~ msgid "Tomboy Preferences"
 #~ msgstr "Inställningar för Tomboy"
+
 #~ msgid "Tomboy Help"
 #~ msgstr "Hjälp för Tomboy"
+
 #~ msgid "No host name specified"
 #~ msgstr "Inget värdnamn angavs"
+
 #~ msgid "Access denied."
 #~ msgstr "Åtkomst nekas."
+
 #~ msgid "Folder does not exist."
 #~ msgstr "Mappen finns inte."
+
 #~ msgid "Cannot open email"
 #~ msgstr "Kan inte öppna e-post"
+
 #~ msgid "_Folder Path:"
 #~ msgstr "_Mappsökväg:"
+
 #~ msgid "_Browse..."
 #~ msgstr "_Bläddra..."
+
 #~ msgid "Select Synchronization Folder..."
 #~ msgstr "Välj synkroniseringsmapp..."
+
 #~ msgid "Folder path field is empty."
 #~ msgstr "Fältet för mappsökväg är tomt."
+
 #~ msgid ""
 #~ "Specified folder path does not exist, and Tomboy was unable to create it."
 #~ msgstr "Angiven mappsökväg finns inte och Tomboy kunde inte skapa den."
+
 #~ msgid "Local Folder"
 #~ msgstr "Lokal mapp"
+
 #~ msgid "Cannot contact '{0}'"
 #~ msgstr "Kan inte kontakta \"{0}\""
+
 #~ msgid "Error running gaim-remote: {0}"
 #~ msgstr "Fel vid körning av gaim-remote: {0}"
+
 #~ msgid "dddd, MMMM d, h:mm tt"
 #~ msgstr "dddd, MMMM d, H:mm"
+
 #~ msgid "dddd, MMMM d yyyy"
 #~ msgstr "dddd, d MMMM yyyy"
+
 #~ msgid "Page {0} of {1}"
 #~ msgstr "Sida {0} av {1}"
+
 #~ msgid "dddd MM/dd/yyyy, hh:mm:ss tt"
 #~ msgstr "dddd yyyy-MM-dd, hh.mm.ss"
+
 #~ msgid "Add a sketch"
 #~ msgstr "Lägg till en skiss"
+
 #~ msgid "Se_rver:"
 #~ msgstr "Se_rver:"
+
 #~ msgid "User_name:"
 #~ msgstr "Användar_namn:"
+
 #~ msgid "_Folder Path (optional):"
 #~ msgstr "_Mappsökväg (valfritt):"
+
 #~ msgid ""
 #~ "SSH synchronization requires an existing SSH key for this server and "
 #~ "user, added to a running SSH daemon."
 #~ msgstr ""
 #~ "SSH-synkronisering kräver en befintlig SSH-nyckel för den här servern "
 #~ "samt en användare, tillagd till en körande SSH-demon."
+
 #~ msgid "Server or username field is empty."
 #~ msgstr "Fältet för server eller användarnamn är tomt."
+
 #~ msgid "SSH (sshfs FUSE)"
 #~ msgstr "SSH (sshfs FUSE)"
+
 #~ msgid ""
 #~ "Timeout connecting to server. Please ensure that your SSH key has been "
 #~ "added to a running SSH daemon."
 #~ msgstr ""
 #~ "\"Tidsgränsen överstegs vid anslutning till server. Försäkra dig om att "
 #~ "din SSH-nyckel har lagts till i en körande SSH-demon."
+
 #~ msgid "Tasque"
 #~ msgstr "Tasque"
+
 #~ msgid "All"
 #~ msgstr "Alla"
+
 #~ msgid "--- Tasque is not running ---"
 #~ msgstr "--- Tasque är inte igång ---"
+
 #~ msgid "_URL:"
 #~ msgstr "_Url:"
+
 #~ msgid "_Password:"
 #~ msgstr "_Lösenord:"
+
 #~ msgid "URL, username, or password field is empty."
 #~ msgstr "Fältet för url, användarnamn eller lösenord är tomt."
+
 #~ msgid "WebDAV (wdfs FUSE)"
 #~ msgstr "WebDAV (wdfs FUSE)"
+
 #~ msgid ""
 #~ "There was an error connecting to the server.  This may be caused by using "
 #~ "an incorrect user name and/or password."
 #~ msgstr ""
 #~ "Det inträffade ett fel vid anslutning till servern.  Det kan ha orsakats "
 #~ "av ett felaktigt användarnamn och/eller lösenord."
+
 #~ msgid ""
 #~ "Saving configuration to the GNOME keyring failed with the following "
 #~ "message:"
 #~ msgstr ""
 #~ "Sparning av konfiguration till GNOME-nyckelringen misslyckades med "
 #~ "följande meddelande:"
+
 #~ msgid "_Window"
 #~ msgstr "_Fönster"
+
 #~ msgid "Really delete this {0} note?"
+
 #~ msgid_plural "Really delete these {0} notes?"
 #~ msgstr[0] "Verkligen ta bort {0} anteckning?"
 #~ msgstr[1] "Verkligen ta bort dessa {0} anteckningar?"
+
 #~ msgid "New Note {0}"
 #~ msgstr "Ny anteckning {0}"
+
 #~ msgid "_Bold"
 #~ msgstr "_Fet"
+
 #~ msgid "_Italic"
 #~ msgstr "_Kursiv"
+
 #~ msgid "_Strikeout"
 #~ msgstr "_Genomstruken"
+
 #~ msgid "Synchronization"
 #~ msgstr "Synkronisering"
+
 #~ msgid "{0} Preferences"
 #~ msgstr "Inställningar för {0}"
+
 #~ msgid "Other Synchronization Options"
 #~ msgstr "Andra synkroniseringsalternativ"
+
 #~ msgid ""
 #~ "When a conflict is detected between a local note and a note on the "
 #~ "configured synchronization server:"
 #~ msgstr ""
 #~ "När en konflikt upptäcks mellan en lokal anteckning och en anteckning på "
 #~ "den konfigurerade synkroniseringsservern:"
+
 #~ msgid "Rename my local note."
 #~ msgstr "Byt namn på min lokala anteckning."
+
 #~ msgid "Replace my local note with the server's update."
 #~ msgstr "Ersätt min lokal anteckning med serverns uppdatering."
+
 #~ msgid "WARNING: Are you sure?"
 #~ msgstr "VARNING: Är du säker?"
+
 #~ msgid ""
 #~ "Clearing your synchronization settings is not recommended.  You may be "
 #~ "forced to synchronize all of your notes again when you save new settings."
@@ -1710,8 +1819,10 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "Tömning av dina synkroniseringsinställningar rekommenderas inte. Du kan "
 #~ "tvingas att synkronisera alla dina anteckningar igen när du sparar nya "
 #~ "inställningar."
+
 #~ msgid "Resetting Synchronization Settings"
 #~ msgstr "Återställer synkroniseringsinställningar"
+
 #~ msgid ""
 #~ "You have disabled the configured synchronization service.  Your "
 #~ "synchronization settings will now be cleared.  You may be forced to "
@@ -1720,24 +1831,30 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "Du har inaktiverat den konfigurerade synkroniseringstjänsten.  Dina "
 #~ "synkroniseringsinställningar kommer nu att tömmas. Du kan tvingas att "
 #~ "synkronisera alla dina anteckningar igen när du sparar nya inställningar."
+
 #~ msgid "Success! You're connected!"
 #~ msgstr "Lyckades! Du är nu ansluten!"
+
 #~ msgid ""
 #~ "Tomboy is ready to synchronize your notes. Would you like to synchronize "
 #~ "them now?"
 #~ msgstr ""
 #~ "Tomboy är redo att synkronisera dina anteckningar. Vill du synkronisera "
 #~ "dem nu?"
+
 #~ msgid ""
 #~ "Sorry, but something went wrong.  Please check your information and try "
 #~ "again.  The ~/.tomboy.log might be useful too."
 #~ msgstr ""
 #~ "Tyvärr, någonting gick fel.  Kontrollera din information och försök "
 #~ "igen.  Filen ~/.tomboy.log kan också vara behjälplig."
+
 #~ msgid "Error connecting :("
 #~ msgstr "Fel vid anslutning :("
+
 #~ msgid "Add-in Dependencies:"
 #~ msgstr "Tilläggsberoenden:"
+
 #~ msgid ""
 #~ "Tomboy: A simple, easy to use desktop note-taking application.\n"
 #~ "Copyright (C) 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
@@ -1746,6 +1863,7 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "Tomboy: Ett enkelt program för att ta anteckningar på ditt skrivbord\n"
 #~ "Copyright © 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
 #~ "\n"
+
 #~ msgid ""
 #~ "Usage:\n"
 #~ "  --version\t\t\tPrint version information.\n"
@@ -1760,6 +1878,7 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "  --note-path [sökväg]\t\tLäs in/Spara anteckningsdata i denna katalog\n"
 #~ "  --search [text]\t\tÖppna sökfönster för att anteckningar med angiven "
 #~ "text.\n"
+
 #~ msgid ""
 #~ "  --new-note\t\t\tCreate and display a new note.\n"
 #~ "  --new-note [title]\t\tCreate and display a new note, with a title.\n"
@@ -1774,10 +1893,13 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "  --start-here\t\t\tVisa \"Börja här\"-anteckningen.\n"
 #~ "  --highlight-search [text]\tSök och färgmarkera text i den öppnade "
 #~ "anteckningen\n"
+
 #~ msgid "D-BUS remote control disabled.\n"
 #~ msgstr "D-BUS-fjärrkontroll inaktiverad.\n"
+
 #~ msgid "Version {0}"
 #~ msgstr "Version {0}"
+
 #~ msgid ""
 #~ "Tomboy: unsupported option '{0}'\n"
 #~ "Try 'tomboy --help' for more information.\n"
@@ -1786,150 +1908,214 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "Tomboy: ogiltig flagga \"{0}\"\n"
 #~ "Prova \"tomboy --help\" för mer information.\n"
 #~ "D-BUS-fjärrkontroll inaktiverad."
+
 #~ msgid "_About Tomboy"
 #~ msgstr "_Om Tomboy"
+
 #~ msgid "Today, {0}"
 #~ msgstr "Idag, {0}"
+
 #~ msgid "MMMM d, h:mm tt"
 #~ msgstr "d MMMM, H.mm"
+
 #~ msgid "MMMM d"
 #~ msgstr "d MMMM"
+
 #~ msgid "MMMM d yyyy, h:mm tt"
 #~ msgstr "yyyy d MMMM, H.mm"
+
 #~ msgid "MMMM d yyyy"
 #~ msgstr "d MMMM yyyy"
+
 #~ msgid ""
 #~ "This synchronization addin is not supported on your computer. Please make "
 #~ "sure you have FUSE and {0} correctly installed and configured"
 #~ msgstr ""
 #~ "Det här synkroniseringstillägget stöds inte på din dator. Försäkra dig om "
 #~ "att du har FUSE och {0} korrekt installerade och konfigurerade"
+
 #~ msgid "Could not read testfile."
 #~ msgstr "Kunde inte läsa testfilen.  "
+
 #~ msgid "Write test failed."
 #~ msgstr "Skrivtestet misslyckades."
+
 #~ msgid "Timeout connecting to server."
 #~ msgstr "Tidsgränsen överstegs vid anslutning till server."
+
 #~ msgid "Error connecting to server."
 #~ msgstr "Fel vid anslutning till servern."
+
 #~ msgid "FUSE could not be enabled."
 #~ msgstr "FUSE kunde inte aktiveras."
+
 #~ msgid "An error ocurred while connecting to the specified server:"
 #~ msgstr "Ett fel inträffade vid anslutning till den angivna servern:"
+
 #~ msgid "Details"
 #~ msgstr "Detaljer"
+
 #~ msgid "Status"
 #~ msgstr "Status"
+
 #~ msgid "Acquiring sync lock..."
 #~ msgstr "Tar över synkroniseringslås..."
+
 #~ msgid "Committing changes..."
 #~ msgstr "Verkställer ändringar..."
+
 #~ msgid "Synchronizing Notes"
 #~ msgstr "Synkroniserar anteckningar"
+
 #~ msgid "Synchronizing your notes..."
 #~ msgstr "Synkroniserar dina anteckningar..."
+
 #~ msgid "This may take a while, kick back and enjoy!"
 #~ msgstr "Det här kan ta en stund, luta dig tillbaka och njut!"
+
 #~ msgid "Connecting to the server..."
 #~ msgstr "Ansluter till servern..."
+
 #~ msgid "Deleting notes off of the server..."
 #~ msgstr "Tar bort anteckningar från servern..."
+
 #~ msgid "Downloading new/updated notes..."
 #~ msgstr "Hämtar nya/uppdaterade anteckningar..."
+
 #~ msgid "Server Locked"
 #~ msgstr "Servern är låst"
+
 #~ msgid "Server is locked"
 #~ msgstr "Servern är låst"
+
 #~ msgid ""
 #~ "One of your other computers is currently synchronizing.  Please wait 2 "
 #~ "minutes and try again."
 #~ msgstr ""
 #~ "En av dina andra datorer synkroniserar för tillfället.  Vänta 2 minuter "
 #~ "och försök igen."
+
 #~ msgid "Preparing to download updates from server..."
 #~ msgstr "Förbereder att hämta uppdateringar från servern..."
+
 #~ msgid "Preparing to upload updates to server..."
 #~ msgstr "Förbereder för att skicka upp uppdateringar till servern..."
+
 #~ msgid "Uploading notes to server..."
 #~ msgstr "Skickar upp anteckningar till servern..."
+
 #~ msgid "Synchronization Failed"
 #~ msgstr "Synkroniseringen misslyckades"
+
 #~ msgid "Failed to synchronize"
 #~ msgstr "Misslyckades med att synkronisera"
+
 #~ msgid "Could not synchronize notes.  Check the details below and try again."
 #~ msgstr ""
 #~ "Kunde inte synkronisera anteckningar.  Kontrollera detaljerna nedan och "
 #~ "försök igen."
+
 #~ msgid "Synchronization Complete"
 #~ msgstr "Synkroniseringen är färdig"
+
 #~ msgid "Synchronization is complete"
 #~ msgstr "Synkroniseringen är färdig"
+
 #~ msgid "{0} note updated."
+
 #~ msgid_plural "{0} notes updated."
 #~ msgstr[0] "{0} anteckning uppdaterad."
 #~ msgstr[1] "{0} anteckningar uppdaterade."
+
 #~ msgid "Your notes are now up to date."
 #~ msgstr "Dina anteckningar är nu uppdaterade."
+
 #~ msgid "Synchronization Canceled"
 #~ msgstr "Synkroniseringen avbröts"
+
 #~ msgid "Synchronization was canceled"
 #~ msgstr "Synkroniseringen har avbrutits"
+
 #~ msgid "You canceled the synchronization.  You may close the window now."
 #~ msgstr "Du avbröt synkroniseringen.  Du kan stänga fönstret nu."
+
 #~ msgid "Synchronization Not Configured"
 #~ msgstr "Synkronisering är inte konfigurerad"
+
 #~ msgid "Synchronization is not configured"
 #~ msgstr "Synkronisering är inte konfigurerad"
+
 #~ msgid "Please configure synchronization in the preferences dialog."
 #~ msgstr "Konfigurera synkronisering i inställningsdialogrutan."
+
 #~ msgid "Synchronization Service Error"
 #~ msgstr "Fel i synkroniseringstjänsten"
+
 #~ msgid "Service error"
 #~ msgstr "Fel i tjänst"
+
 #~ msgid "Error connecting to the synchronization service.  Please try again."
 #~ msgstr "Fel vid anslutning till synkroniseringstjänsten.  Försök igen."
+
 #~ msgid "Deleted locally"
 #~ msgstr "Tar bort lokalt"
+
 #~ msgid "Deleted from server"
 #~ msgstr "Borttagen från servern"
+
 #~ msgid "Updated"
 #~ msgstr "Uppdaterad"
+
 #~ msgid "Added"
 #~ msgstr "Tillagd"
+
 #~ msgid "Uploaded changes to server"
 #~ msgstr "Skickade upp ändringar till servern"
+
 #~ msgid "Uploaded new note to server"
 #~ msgstr "Skickade upp ny anteckning till servern"
+
 #~ msgid "Note Conflict"
 #~ msgstr "Anteckningskonflikt"
+
 #~ msgid " (old)"
 #~ msgstr " (gammal)"
+
 #~ msgid "Rename local note:"
 #~ msgstr "Byt namn på lokal anteckning:"
+
 #~ msgid "Update links in referencing notes"
 #~ msgstr "Uppdatera länkar i refererande anteckningar"
+
 #~ msgid "Overwrite local note"
 #~ msgstr "Skriv över lokal anteckning"
+
 #~ msgid "Always perform this action"
 #~ msgstr "Genomför alltid den här åtgärden"
+
 #~ msgid "Note conflict detected"
 #~ msgstr "Anteckningskonflikt upptäcktes"
+
 #~ msgid ""
 #~ "The server version of \"{0}\" conflicts with your local note.  What do "
 #~ "you want to do with your local note?"
 #~ msgstr ""
 #~ "Serverversionen av \"{0}\" står i konflikt med din lokala anteckning.  "
 #~ "Vad vill du göra med din lokala anteckning?"
+
 #~ msgid "Could not enable FUSE"
 #~ msgstr "Kunde inte aktivera FUSE"
+
 #~ msgid ""
 #~ "The FUSE module could not be loaded. Please check that it is installed "
 #~ "properly and try again."
 #~ msgstr ""
 #~ "FUSE-modulen kunde inte läsas in. Kontrollera att den är korrekt "
 #~ "installerad och försök igen."
+
 #~ msgid "Enable FUSE?"
 #~ msgstr "Aktivera FUSE?"
+
 #~ msgid ""
 #~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 #~ "\n"
@@ -1942,76 +2128,112 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "För att undvika att få den här prompten i framtiden bör du läsa in FUSE "
 #~ "vid uppstart.  Lägg till \"modprobe fuse\" till /etc/init.d/boot.local "
 #~ "eller \"fuse\" till /etc/modules."
+
 #~ msgid "Add-in"
 #~ msgstr "Tillägg"
+
 #~ msgid "Other"
 #~ msgstr "Annat"
+
 #~ msgid "Preparing pages..."
 #~ msgstr "Förbereder sidor..."
+
 #~ msgid "Rendering page %d of %d..."
 #~ msgstr "Renderar sida %d av %d..."
+
 #~ msgid "Printing page %d of %d..."
 #~ msgstr "Skriver ut sida %d av %d..."
+
 #~ msgid "Print preview"
 #~ msgstr "Förhandsgranska utskrift"
+
 #~ msgid "%A %x, %X"
 #~ msgstr "%A %x, %X"
+
 #~ msgid "Configuration"
 #~ msgstr "Konfiguration"
+
 #~ msgid "Configuration options for the print job"
 #~ msgstr "Konfigurationsalternativ för utskriftsjobbet"
+
 #~ msgid "Source Buffer"
 #~ msgstr "Källbuffert"
+
 #~ msgid "GtkTextBuffer object to print"
 #~ msgstr "GtkTextBuffer-objekt att skriv ut"
+
 #~ msgid "Tabs Width"
 #~ msgstr "Tabulatorbredd"
+
 #~ msgid "Width in equivalent space characters of tabs"
 #~ msgstr "Tabulatorbredd i motsvarande blankstegstecken"
+
 #~ msgid "Wrap Mode"
 #~ msgstr "Radbrytning"
+
 #~ msgid "Word wrapping mode"
 #~ msgstr "Radbrytningsläge"
+
 #~ msgid "Highlight"
 #~ msgstr "Färgmarkera"
+
 #~ msgid "Whether to print the document with highlighted syntax"
 #~ msgstr "Huruvida dokumentet ska skrivas ut med färgmarkerad syntax"
+
 #~ msgid "Font"
 #~ msgstr "Typsnitt"
+
 #~ msgid "GnomeFont name to use for the document text (deprecated)"
 #~ msgstr "GnomeFont-namn att använda för dokumenttexten (föråldrad)"
+
 #~ msgid "Font to use for the document text (e.g. \"Monospace 10\")"
 #~ msgstr "Typsnitt att använda för dokumenttexten (t.ex. \"Monospace 10\")"
+
 #~ msgid "Numbers Font"
 #~ msgstr "Typsnitt för nummer"
+
 #~ msgid "GnomeFont name to use for the line numbers (deprecated)"
 #~ msgstr "GnomeFont-namn att använda för radnumren (föråldrad)"
+
 #~ msgid "Font description to use for the line numbers"
 #~ msgstr "Typsnittsbeskrivning att använda för radnumren"
+
 #~ msgid "Print Line Numbers"
 #~ msgstr "Skriv ut radnummer"
+
 #~ msgid "Interval of printed line numbers (0 means no numbers)"
 #~ msgstr "Intervall för utskrivna radnummer (0 betyder inga nummer)"
+
 #~ msgid "Print Header"
 #~ msgstr "Skriv ut sidhuvud"
+
 #~ msgid "Whether to print a header in each page"
 #~ msgstr "Huruvida ett sidhuvud ska skrivas ut på varje sida"
+
 #~ msgid "Print Footer"
 #~ msgstr "Skriv ut sidfot"
+
 #~ msgid "Whether to print a footer in each page"
 #~ msgstr "Huruvida en sidfot ska skrivas ut på varje sida"
+
 #~ msgid "Header and Footer Font"
 #~ msgstr "Typsnitt för sidhuvud och -fot"
+
 #~ msgid "GnomeFont name to use for the header and footer (deprecated)"
 #~ msgstr "GnomeFont-namn att använda för sidhuvud och -fot (föråldrad)"
+
 #~ msgid "Header and Footer Font Description"
 #~ msgstr "Typsnittsbeskrivning för sidhuvud och -fot"
+
 #~ msgid "Font to use for headers and footers (e.g. \"Monospace 10\")"
 #~ msgstr "Typsnitt att använda för sidhuvud och -fot (t.ex. \"Monospace 10\")"
+
 #~ msgid "_Open New Note Template..."
 #~ msgstr "_Öppna mall för ny anteckning..."
+
 #~ msgid "Case _sensitive"
 #~ msgstr "Skiftläges_känslig"
+
 #~ msgid ""
 #~ "<note-content>Tagging In Tomboy\n"
 #~ "\n"
@@ -2025,69 +2247,100 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "Tryck på <bold>Tab</bold> i taggraden för att automatiskt komplettera "
 #~ "till passande tagg.  Tryck på <bold>Enter</bold> för att bekräfta den "
 #~ "visade taggen.</note-content>"
+
 #~ msgid "Tags in Tomboy"
 #~ msgstr "Taggar i Tomboy"
+
 #~ msgid "Delete"
 #~ msgstr "Ta bort"
+
 #~ msgid "Add/Remove note tags"
 #~ msgstr "Lägg till/ta bort anteckningstaggar"
+
 #~ msgid "Tags:"
 #~ msgstr "Taggar:"
+
 #~ msgid "Local File System Path"
 #~ msgstr "Lokal filsystemssökväg"
+
 #~ msgid ""
 #~ "Your notes are up to date.  See the details below or close the window."
 #~ msgstr ""
 #~ "Dina anteckningar är uppdaterade.  Se detaljerna nedan eller stäng "
 #~ "fönstret."
+
 #~ msgid "Downloading updates from server"
 #~ msgstr "Hämtar uppdateringar från servern"
+
 #~ msgid "Downloading new note from server"
 #~ msgstr "Hämtar ny anteckning från servern"
+
 #~ msgid "To Do List"
 #~ msgstr "Att göra-lista"
+
 #~ msgid "New _Task"
 #~ msgstr "Ny _uppgift"
+
 #~ msgid "Create a new task"
 #~ msgstr "Skapa en ny uppgift"
+
 #~ msgid "_Options..."
 #~ msgstr "Al_ternativ..."
+
 #~ msgid "Open the selected task"
 #~ msgstr "Öppna den valda uppgiften"
+
 #~ msgid "Delete the selected task"
 #~ msgstr "Ta bort den valda uppgiften"
+
 #~ msgid "Open Associated _Note"
 #~ msgstr "Öppna associerad ant_eckning"
+
 #~ msgid "Tasks Help"
 #~ msgstr "Uppgiftshjälp"
+
 #~ msgid "Summary"
 #~ msgstr "Sammanfattning"
+
 #~ msgid "Due Date"
 #~ msgstr "Slutdatum"
+
 #~ msgid "Completion Date"
 #~ msgstr "Färdig den"
+
 #~ msgid "Priority"
 #~ msgstr "Prioritet"
+
 #~ msgid "None"
 #~ msgstr "Inget"
+
 #~ msgid "Low"
 #~ msgstr "Låg"
+
 #~ msgid "Normal"
 #~ msgstr "Normal"
+
 #~ msgid "High"
 #~ msgstr "Hög"
+
 #~ msgid "Total: {0} task"
+
 #~ msgid_plural "Total: {0} tasks"
 #~ msgstr[0] "Totalt: {0} uppgift"
 #~ msgstr[1] "Totalt: {0} uppgifter"
+
 #~ msgid "New Task {0}"
 #~ msgstr "Ny uppgift {0}"
+
 #~ msgid "Really delete this task?"
 #~ msgstr "Verkligen ta bort denna uppgift?"
+
 #~ msgid "If you delete a task it is permanently lost."
 #~ msgstr "Om du tar bort en uppgift försvinner den för alltid."
+
 #~ msgid "Learn About Tomboy"
 #~ msgstr "Läs mer om Tomboy"
+
 #~ msgid ""
 #~ "Click on the Tomboy icon in your panel and select \"Start Here\".  You'll "
 #~ "see more instructions on how to use Tomboy inside the \"Start Here\" "
@@ -2102,146 +2355,212 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "\n"
 #~ "När du har öppnat anteckningen \"Börja här\" kan du markera den här "
 #~ "uppgiften som färdig."
+
 #~ msgid "Task Options"
 #~ msgstr "Alternativ för uppgifter"
+
 #~ msgid "_Summary:"
 #~ msgstr "_Sammanfattning:"
+
 #~ msgid "_Details:"
 #~ msgstr "_Detaljer:"
+
 #~ msgid "_Completed:"
 #~ msgstr "_Färdig:"
+
 #~ msgid "_Complete"
 #~ msgstr "_Färdig"
+
 #~ msgid "Due Date:"
 #~ msgstr "Slutdatum:"
+
 #~ msgid "Priority:"
 #~ msgstr "Prioritet:"
+
 #~ msgid "todo"
 #~ msgstr "attgöra"
+
 #~ msgid "Open To Do List"
 #~ msgstr "Öppna Att göra-lista"
+
 #~ msgid "To Do Options"
 #~ msgstr "Alternativ för Att göra"
+
 #~ msgid "Mark Undone"
 #~ msgstr "Markera som ofärdig"
+
 #~ msgid "Mark Complete"
 #~ msgstr "Markera som färdig"
+
 #~ msgid "All registered repositories"
 #~ msgstr "Alla registrerade förråd"
+
 #~ msgid "Are you sure you want to cancel the installation?"
 #~ msgstr "Är du säker på att du vill avbryta installationen?"
+
 #~ msgid "The following packages will be uninstalled:"
 #~ msgstr "Följande paket kommer att avinstalleras:"
+
 #~ msgid ""
 #~ "There are other add-ins that depend on the previous ones which will also "
 #~ "be uninstalled:"
 #~ msgstr ""
 #~ "Det finns andra tillägg som är beroende av de föregående tilläggen, vilka "
 #~ "också kommer att avinstalleras:"
+
 #~ msgid ""
 #~ "The selected add-ins can't be installed because there are dependency "
 #~ "conflicts."
 #~ msgstr ""
 #~ "De valda tilläggen kan inte installeras på grund av att det finns "
 #~ "beroendekonflikter."
+
 #~ msgid "The following packages will be installed:"
 #~ msgstr "Följande paket kommer att installeras:"
+
 #~ msgid " (in user directory)"
 #~ msgstr " (i användarkatalogen)"
+
 #~ msgid "The following packages need to be uninstalled:"
 #~ msgstr "Följande paket behöver avinstalleras:"
+
 #~ msgid "The following dependencies could not be resolved:"
 #~ msgstr "Följande beroenden kunde inte lösas:"
+
 #~ msgid "The installation has been successfully completed."
 #~ msgstr "Installationen lyckades."
+
 #~ msgid "The installation failed!"
 #~ msgstr "Installationen misslyckades!"
+
 #~ msgid "The uninstallation has been successfully completed."
 #~ msgstr "Avinstallationen lyckades."
+
 #~ msgid "The uninstallation failed!"
 #~ msgstr "Avinstallationen misslyckades!"
+
 #~ msgid "Repository"
 #~ msgstr "Förråd"
+
 #~ msgid "Some of the required add-ins were not found"
 #~ msgstr "Några av de nödvändiga tilläggen kunde inte hittas"
+
 #~ msgid "Installation failed"
 #~ msgstr "Installationen misslyckades"
+
 #~ msgid "Url"
 #~ msgstr "Url"
+
 #~ msgid "Exception occurred: {0}"
 #~ msgstr "Undantag inträffade: {0}"
+
 #~ msgid "MonoDevelop Package"
 #~ msgstr "MonoDevelop-paket"
+
 #~ msgid "Add-in Installation"
 #~ msgstr "Tilläggsinstallation"
+
 #~ msgid "<b>Select the add-ins to install and click on Next</b>"
 #~ msgstr "<b>Välj tilläggen att installera och klicka på Nästa</b>"
+
 #~ msgid "Install from:"
 #~ msgstr "Installera från:"
+
 #~ msgid "_Repositories..."
 #~ msgstr "_Förråd..."
+
 #~ msgid "Show all packages"
 #~ msgstr "Visa alla paket"
+
 #~ msgid "Show new versions only"
 #~ msgstr "Visa endast nya versioner"
+
 #~ msgid "Show updates only"
 #~ msgstr "Visa endast uppdateringar"
+
 #~ msgid "_Unselect All"
 #~ msgstr "A_vmarkera allt"
+
 #~ msgid "label124"
 #~ msgstr "etikett124"
+
 #~ msgid "Overall Progress:"
 #~ msgstr "Totalt förlopp:"
+
 #~ msgid "Add-in Manager"
 #~ msgstr "Tilläggshanterare"
+
 #~ msgid "Additional extensions are required to perform this operation."
 #~ msgstr ""
 #~ "Ytterligare tillägg är nödvändiga för att genomföra den här åtgärden."
+
 #~ msgid "The following add-ins will be installed:"
 #~ msgstr "Följande tillägg kommer att installeras:"
+
 #~ msgid "MonoDevelop Add-in Manager"
 #~ msgstr "Hanterare för MonoDevelop-tillägg"
+
 #~ msgid "<big><b>MonoDevelop Add-in Manager</b></big>"
 #~ msgstr "<big><b>Hanterare för MonoDevelop-tillägg</b></big>"
+
 #~ msgid "The following add-ins are currently installed:"
 #~ msgstr "Följande tillägg är för närvarande installerade:"
+
 #~ msgid "_Install Add-ins..."
 #~ msgstr "_Installera tillägg..."
+
 #~ msgid "_Uninstall..."
 #~ msgstr "_Avinstallera..."
+
 #~ msgid "Disable"
 #~ msgstr "Inaktivera"
+
 #~ msgid "MonoDevelop"
 #~ msgstr "MonoDevelop"
+
 #~ msgid "Add-in Repository Management"
 #~ msgstr "Hantering av tilläggsförråd"
+
 #~ msgid "Add New Repository"
 #~ msgstr "Lägg till nytt förråd"
+
 #~ msgid "Select the location of the repository you want to register:"
 #~ msgstr "Välj platsen för förrådet som du vill registrera:"
+
 #~ msgid "Register an on-line repository"
 #~ msgstr "Registrera ett förråd på nätet"
+
 #~ msgid "Url:"
 #~ msgstr "Url:"
+
 #~ msgid "Register a local repository"
 #~ msgstr "Registrera ett lokalt förråd"
+
 #~ msgid "(provided by {0})"
 #~ msgstr "(tillhandahålls av {0})"
+
 #~ msgid "Disabled add-ins can't be loaded."
 #~ msgstr "Inaktiverade tillägg kan inte läsas in."
+
 #~ msgid "Loading {0} add-in"
 #~ msgstr "Läser in tillägget {0}"
+
 #~ msgid "The required addin '{0}' is disabled."
 #~ msgstr "Det nödvändiga tillägget \"{0}\" är inaktiverat."
+
 #~ msgid "The required addin '{0}' is not installed."
 #~ msgstr "Det nödvändiga tillägget \"{0}\" är inte installerat."
+
 #~ msgid "Currently enabled plugins."
 #~ msgstr "För närvarande aktiverade insticksmoduler."
+
 #~ msgid "List containing the names of currently enabled plugins."
 #~ msgstr ""
 #~ "Lista innehållande namnen på de för närvarande aktiverade insticksmoduler."
+
 #~ msgid "Cannot fully disable {0}."
 #~ msgstr "Kan inte fullständigt inaktivera {0}."
+
 #~ msgid ""
 #~ "Cannot fully disable {0} as there still are at least {1} reference to "
 #~ "this addin. This indicates a programming error. Contact the addin's "
@@ -2260,10 +2579,13 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "tilläggets Dispose-metod misslyckas att koppla från alla "
 #~ "händelsehanterare. Minnesprofileraren heap-shot ({2}) kan hjälpa till att "
 #~ "identifiera läckande referenser."
+
 #~ msgid "<b><span foreground=\"red\">"
 #~ msgstr "<b><span foreground=\"red\">"
+
 #~ msgid "Tomboy Project"
 #~ msgstr "Tomboy-projektet"
+
 #~ msgid ""
 #~ "Cannot fully disable {0} as there still are at least {1} reference to "
 #~ "this plugin. This indicates a programming error. Contact the plugin's "
@@ -2282,104 +2604,144 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 #~ "insticksmodulens Dispose-metod misslyckas att koppla från alla "
 #~ "händelsehanterare. Minnesprofileraren heap-shot ({2}) kan hjälpa till att "
 #~ "identifiera läckande referenser."
+
 #~ msgid "Plugins"
 #~ msgstr "Insticksmoduler"
+
 #~ msgid "Written by:"
 #~ msgstr "Skrivet av:"
+
 #~ msgid "Web site:"
 #~ msgstr "Webbsida:"
+
 #~ msgid "Settings"
 #~ msgstr "Inställningar"
+
 #~ msgid "_Open Plugins Folder"
 #~ msgstr "_Öppna insticksmodulmappen"
+
 #~ msgid "{0} Settings"
 #~ msgstr "Inställningar för {0}"
+
 #~ msgid ""
 #~ "  --check-plugin-unloading\tCheck if plugins are unloaded properly.\n"
 #~ msgstr ""
 #~ "  --check-plugin-unloading\tKontrollera om insticksmoduler är korrekt "
 #~ "urlästa.\n"
+
 #~ msgid "</span></b>\n"
 #~ msgstr "</span></b>\n"
+
 #~ msgid "Homepage & Donations"
 #~ msgstr "Hemsida och donationer"
+
 #~ msgid "Default Plugins"
 #~ msgstr "Standardinsticksmoduler"
+
 #~ msgid "Directory containing system-installed Plugins"
 #~ msgstr ""
 #~ "Katalog som innehåller de insticksmoduler som är installerade på systemet"
+
 #~ msgid "Use the following:"
 #~ msgstr "Använd följande:"
+
 #~ msgid "NotD: "
 #~ msgstr "Dagens anteckning:"
+
 #~ msgid "Welcome to Tomboy!"
 #~ msgstr "Välkommen till Tomboy!"
+
 #~ msgid ""
 #~ "Use this page as a Start Page for organizing your notes and keeping "
 #~ "unorganized ideas around."
 #~ msgstr ""
 #~ "Använd denna sida som en startsida för att organisera dina anteckningar "
 #~ "och hålla reda på oorganiserade idéer."
+
 #~ msgid "Quick and handy note-taker"
 #~ msgstr "Snabbt och praktiskt anteckningsverktyg"
+
 #~ msgid "_Open Table of Contents"
 #~ msgstr "_Öppna innehållsförteckning"
+
 #~ msgid "Find"
 #~ msgstr "Sök"
+
 #~ msgid "ToC"
 #~ msgstr "Innehåll"
+
 #~ msgid "Open Table of Contents"
 #~ msgstr "Öppna innehållsförteckning"
+
 #~ msgid "Open \"_Table of Contents\""
 #~ msgstr "Öppna \"_Innehållsförteckning\""
+
 #~ msgid "Table of Contents"
 #~ msgstr "Innehållsförteckning"
+
 #~ msgid "_Table of Contents"
 #~ msgstr "Innehålls_förteckning"
+
 #~ msgid "_Search..."
 #~ msgstr "_Sök..."
+
 #~ msgid "S_earch notes"
 #~ msgstr "S_ök anteckningar"
+
 #~ msgid ""
 #~ "<b>Table of Contents</b> lists all your notes.\n"
 #~ "Double click to open a note."
 #~ msgstr ""
 #~ "<b>Innehållsförteckningen</b> är en lista på dina anteckningar.\n"
 #~ "Dubbelklicka på en anteckning för att öppna den."
+
 #~ msgid "Search Note"
 #~ msgstr "Sök i anteckning"
+
 #~ msgid "Search _Results"
 #~ msgstr "Sök_resultat"
+
 #~ msgid "No notes found"
 #~ msgstr "Inga anteckningar hittade"
+
 #~ msgid "_Search Notes..."
 #~ msgstr "_Sök anteckningar..."
+
 #~ msgid "%A %D, %I:%M %p"
 #~ msgstr "%A·%D,·%I:%M·%p"
+
 #~ msgid "_About Tomboy..."
 #~ msgstr "_Om Tomboy..."
+
 #~ msgid "Run Plugin actions"
 #~ msgstr "Kör åtgärder i insticksmoduler"
+
 #~ msgid "Recent Changes"
 #~ msgstr "Senaste ändringar"
+
 #~ msgid "_Recent Changes"
 #~ msgstr "_Senaste ändringar"
+
 #~ msgid "Related to: "
 #~ msgstr "Relaterad till: "
+
 #~ msgid "Recent changes"
 #~ msgstr "Senaste ändringar"
+
 #~ msgid "Search Results"
 #~ msgstr "Sökresultat"
+
 #~ msgid "Related to:"
 #~ msgstr "Relaterad till:"
 
 #, fuzzy
 #~ msgid "({0} matches)"
 #~ msgstr "Inga träffar."
+
 #~ msgid "Previous"
 #~ msgstr "Föregående"
+
 #~ msgid "translator_credits"
 #~ msgstr ""
 #~ "Christian Rose\n"
 #~ "Skicka synpunkter på översättningen till sv@li.org"
-
