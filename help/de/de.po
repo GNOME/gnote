@@ -1,16 +1,16 @@
 # German translation of the Gnotes manual.
 # Jochen Skulj <jochen@jochenskulj.de>, 2008.
 # Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009.
-# Mario Blättermann <mariobl@freenet.de>, 2009, 2011.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2009, 2011.
 #
 # This translation is forked from the Tomboy manual.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2011-07-31 18:10+0000\n"
-"PO-Revision-Date: 2011-08-01 20:43+0100\n"
-"Last-Translator: Mario Blättermann <mariobl@freenet.de>\n"
+"POT-Creation-Date: 2011-10-21 11:54+0000\n"
+"PO-Revision-Date: 2011-10-21 13:54+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,9 +25,10 @@ msgstr ""
 #: C/gnote-deleting-notes.page:8(p) C/gnote-creating-notes.page:8(p)
 #: C/gnote-common-problems.page:8(p) C/gnote-bulleted-lists.page:9(p)
 #: C/gnote-addin-underline.page:9(p) C/gnote-addin-timestamp.page:10(p)
-#: C/gnote-addins-preferences.page:9(p) C/gnote-addin-print.page:9(p)
-#: C/gnote-addin-noteoftheday.page:9(p) C/gnote-addin-html.page:9(p)
-#: C/gnote-addin-fixedwidth.page:9(p) C/gnote-addin-bugzillalink.page:10(p)
+#: C/gnote-addin-replacetitle.page:9(p) C/gnote-addins-preferences.page:9(p)
+#: C/gnote-addin-print.page:9(p) C/gnote-addin-noteoftheday.page:9(p)
+#: C/gnote-addin-html.page:9(p) C/gnote-addin-fixedwidth.page:9(p)
+#: C/gnote-addin-bugzillalink.page:10(p)
 msgid "GNU Free Documentation License (GFDL), Version 1.1"
 msgstr "GNU Free Documentation License (GFDL), Version 1.1"
 
@@ -39,6 +40,7 @@ msgstr "GNU Free Documentation License (GFDL), Version 1.1"
 #: C/gnote-creating-notes.page:11(name) C/gnote-common-problems.page:11(name)
 #: C/gnote-bulleted-lists.page:11(name) C/gnote-addin-underline.page:11(name)
 #: C/gnote-addin-timestamp.page:12(name)
+#: C/gnote-addin-replacetitle.page:11(name)
 #: C/gnote-addins-preferences.page:11(name) C/gnote-addin-print.page:11(name)
 #: C/gnote-addin-noteoftheday.page:11(name) C/gnote-addin-html.page:11(name)
 #: C/gnote-addin-fixedwidth.page:11(name)
@@ -64,6 +66,8 @@ msgstr "Pierre-Yves Luyten"
 #: C/gnote-addin-underline.page:16(years)
 #: C/gnote-addin-timestamp.page:13(years)
 #: C/gnote-addin-timestamp.page:17(years)
+#: C/gnote-addin-replacetitle.page:12(years)
+#: C/gnote-addin-replacetitle.page:16(years)
 #: C/gnote-addins-preferences.page:12(years)
 #: C/gnote-addins-preferences.page:16(years) C/gnote-addin-print.page:12(years)
 #: C/gnote-addin-print.page:16(years) C/gnote-addin-noteoftheday.page:12(years)
@@ -83,6 +87,7 @@ msgstr "2011"
 #: C/gnote-creating-notes.page:15(name) C/gnote-common-problems.page:15(name)
 #: C/gnote-bulleted-lists.page:15(name) C/gnote-addin-underline.page:15(name)
 #: C/gnote-addin-timestamp.page:16(name)
+#: C/gnote-addin-replacetitle.page:15(name)
 #: C/gnote-addins-preferences.page:15(name) C/gnote-addin-print.page:15(name)
 #: C/gnote-addin-noteoftheday.page:15(name) C/gnote-addin-html.page:15(name)
 #: C/gnote-addin-fixedwidth.page:15(name)
@@ -595,7 +600,8 @@ msgstr "Erweiterte Einstellungen"
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-links.page:26(None) C/gnote-addin-timestamp.page:22(None)
-#: C/gnote-addin-print.page:21(None) C/gnote-addin-html.page:21(None)
+#: C/gnote-addin-replacetitle.page:21(None) C/gnote-addin-print.page:21(None)
+#: C/gnote-addin-html.page:21(None)
 msgid "@@image: 'figures/gnote-tools.png'; md5=6a1c7800cd20071381ea591f49c32b6c"
 msgstr "original"
 
@@ -793,7 +799,7 @@ msgid "<app>Gnote</app> hotkeys"
 msgstr "<app>Gnote</app>-Tastenkombinationen"
 
 #: C/gnote-hotkeys.page:33(p)
-msgid "Setting up<app>Gnote</app> keyboard shortcuts."
+msgid "Setting up <app>Gnote</app> keyboard shortcuts."
 msgstr "Einrichten von Tastenkombinationen für <app>Gnote</app>."
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
@@ -1387,6 +1393,42 @@ msgid "Click on this option to insert current date and time."
 msgstr ""
 "Klicken Sie auf diese Option, um die aktuelle Zeit und das Datum einzufügen."
 
+#: C/gnote-addin-replacetitle.page:8(desc)
+msgid "Rename note title"
+msgstr "Notiztitel umbenennen"
+
+#: C/gnote-addin-replacetitle.page:20(title)
+msgid "Replace title"
+msgstr "Titel ersetzen"
+
+#: C/gnote-addin-replacetitle.page:21(p)
+msgid ""
+"The Tools button is represented by the <media type=\"image\" src=\"figures/"
+"gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. When this add-in "
+"is installed, the option <gui>Replace title</gui> is present in <gui>Tools</"
+"gui> menu."
+msgstr ""
+"Der Werkzeugknopf wird durch das Symbol <media type=\"image\" src=\"figures/"
+"gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> dargestellt. "
+"Wenn dieses Add-In installiert ist, dann enthält das <gui>Werkzeuge</gui>-"
+"Menü den Eintrag <gui>Titel ersetzen</gui>. "
+
+#: C/gnote-addin-replacetitle.page:22(p)
+msgid ""
+"When the <gui>Replace title</gui> option is selected, the note title will be "
+"replaced by currently selected text in any application."
+msgstr ""
+"Wenn die Option <gui>Titel ersetzen</gui> aktiviert ist, dann wird der "
+"Notiztitel in jeder Anwendung durch den aktuell ausgewählten Text ersetzt."
+
+#: C/gnote-addin-replacetitle.page:23(p)
+msgid ""
+"Alternatively, you can use <keyseq><key>Ctrl</key><key>R</key></keyseq> "
+"shortcut."
+msgstr ""
+"Drücken Sie alternativ die Tastenkombination <key><key>Strg</key><key>R</"
+"key></keyseq>."
+
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-addins-preferences.page:25(None)
@@ -1405,7 +1447,7 @@ msgstr "Add-In-Einstellungen"
 
 #: C/gnote-addins-preferences.page:21(p)
 msgid ""
-"You can activate or deactivate add-ins in this tab. Do do this, select an add-"
+"You can activate or deactivate add-ins in this tab. To do this, select an add-"
 "in and click the <gui>Enable</gui> button. The button caption will change to "
 "<gui>Disable</gui>, this button can now be used to disable add-in."
 msgstr ""
@@ -1607,5 +1649,4 @@ msgid "translator-credits"
 msgstr ""
 "Jochen Skulj <jochen@jochenskulj.de>, 2008\n"
 "Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009\n"
-"Mario Blättermann <mariobl@freenet.de>, 2009, 2011"
-
+"Mario Blättermann <mario.blaettermann@gmail.com>, 2009, 2011"
