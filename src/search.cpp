@@ -38,12 +38,17 @@ namespace gnote {
   Search::ResultsPtr Search::search_notes(const std::string & query, bool case_sensitive, 
                                   const notebooks::Notebook::Ptr & selected_notebook)
   {
+    std::string search_text = query;
+    if(!case_sensitive) {
+      search_text = sharp::string_to_lower(search_text);
+    }
+
     std::vector<std::string> words;
-    Search::split_watching_quotes(words, query);
+    Search::split_watching_quotes(words, search_text);
 
     // Used for matching in the raw note XML
     std::vector<std::string> encoded_words; 
-    Search::split_watching_quotes(encoded_words, utils::XmlEncoder::encode (query));
+    Search::split_watching_quotes(encoded_words, utils::XmlEncoder::encode (search_text));
     ResultsPtr temp_matches(new Results);
       
       // Skip over notes that are template notes
