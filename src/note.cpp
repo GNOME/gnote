@@ -1062,10 +1062,10 @@ namespace gnote {
 
   std::string Note::text_content()
   {
-    if(m_buffer) {
-      return m_buffer->get_slice(m_buffer->begin(), m_buffer->end());
+    if(!m_buffer) {
+      get_buffer();
     }
-    return utils::XmlDecoder::decode(xml_content());
+    return m_buffer->get_slice(m_buffer->begin(), m_buffer->end());
   }
 
   void Note::set_text_content(const std::string & text)
