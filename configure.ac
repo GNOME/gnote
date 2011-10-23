@@ -48,7 +48,7 @@ AC_ARG_ENABLE(debug,[  --enable-debug    Turn on debugging],[
 AM_CONDITIONAL(DEBUG, test x$debug = xtrue)
 
 
-CPPFLAGS="$CPPFLAGS $DEBUG_CFLAGS -Wall -Wcast-align -Wcast-qual -Wpointer-arith -Wreturn-type"
+CPPFLAGS="$CPPFLAGS $DEBUG_CFLAGS -Wall -Wcast-align -Wcast-qual -Wformat-security -Wpointer-arith -Wreturn-type"
 CFLAGS="$CFLAGS $DEBUG_CFLAGS $OPTIMIZE_CFLAGS"
 CXXFLAGS="$CXXFLAGS $DEBUG_CFLAGS $OPTIMIZE_CFLAGS"
 dnl CFLAGS=""

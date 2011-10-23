@@ -133,7 +133,7 @@ Glib::VariantContainerBase RemoteControl_proxy::call_remote(const Glib::ustring 
     return call_sync(method_name, parameters);
   }
   catch(...) {
-    ERR_OUT(("Remote call failed: " + method_name).c_str());
+    ERR_OUT("Remote call failed: %s", method_name.c_str());
     return Glib::VariantContainerBase();
   }
 }

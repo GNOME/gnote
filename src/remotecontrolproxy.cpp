@@ -92,7 +92,7 @@ void RemoteControlProxy::on_name_acquired(const Glib::RefPtr<Gio::DBus::Connecti
     }
   }
   catch(Glib::Exception & e) {
-    DBG_OUT(("Failed to acquire name: " + e.what()).c_str());
+    DBG_OUT("Failed to acquire name: %s", e.what().c_str());
   }
 
   s_on_name_acquire_finish(false, false);
@@ -126,7 +126,7 @@ void RemoteControlProxy::load_introspection_xml()
     s_gnote_interface = node->lookup_interface(GNOTE_INTERFACE_NAME);
   }
   catch(Glib::Error & e) {
-    ERR_OUT(("Failed to load interface: " + e.what()).c_str());
+    ERR_OUT("Failed to load interface: %s", e.what().c_str());
   }
 }
 

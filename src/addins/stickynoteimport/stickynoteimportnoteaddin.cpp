@@ -117,7 +117,7 @@ void StickyNoteImportNoteAddin::initialize()
     } 
     else {
       s_sticky_file_might_exist = false;
-      DBG_OUT(DEBUG_NO_STICKY_FILE);
+      DBG_OUT("%s", DEBUG_NO_STICKY_FILE);
     }
   }
 }
@@ -159,7 +159,7 @@ bool StickyNoteImportNoteAddin::first_run(gnote::NoteManager & manager)
   if (firstRun) {
     ini_file.set_bool("status", "first_run", true);
 
-    DBG_OUT(DEBUG_FIRST_RUN_DETECTED);
+    DBG_OUT("%s", DEBUG_FIRST_RUN_DETECTED);
 
     xmlDocPtr xml_doc = get_sticky_xml_doc();
     if (xml_doc) {
@@ -180,12 +180,12 @@ xmlDocPtr StickyNoteImportNoteAddin::get_sticky_xml_doc()
   if (sharp::file_exists(s_sticky_xml_path)) {
     xmlDocPtr xml_doc = xmlReadFile(s_sticky_xml_path.c_str(), "UTF-8", 0);
     if(xml_doc == NULL) {
-      DBG_OUT(DEBUG_NO_STICKY_FILE);
+      DBG_OUT("%s", DEBUG_NO_STICKY_FILE);
     }
     return xml_doc;
   }
   else {
-    DBG_OUT(DEBUG_NO_STICKY_FILE);
+    DBG_OUT("%s", DEBUG_NO_STICKY_FILE);
     return NULL;
   }
 }
