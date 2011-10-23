@@ -1,3 +1,44 @@
+0.8.1 "Dennis Ritchie" - 2011/10/23
+
+New features:
+  * Removed case-sensitive search from Search All Notes window
+  * Focus chain for Search All Notes
+  * Optimized note creation, renaming and deletion (#660653, #660663)
+  * Search in notebook suggests to search all notes, when there are no matches
+
+Fixes:
+  * Open note action availability
+  * Program name in about dialog
+  * Help for --start-here
+  * Don't change content modification time when autolinking
+  * Link not created when linking to existing note
+  * Broken link activation does not make link normal
+  * GetNoteContents D-Bus API returns wrong text for notes not displayed (#647888)
+  * Case-insensitive search via SearchNotes D-Bus API (#662426)
+  * Added -Wformat-security to compilation flags (#662490)
+
+Translations:
+  * Updated translation:
+    - Czech (cs)
+    - Danish (da)
+    - French (fr)
+    - German (de)
+    - Hungarian (hu)
+    - Indonesian (id)
+    - Japanese (ja)
+    - Latvian (lv)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Russian (ru)
+    - Slovenian (sl)
+    - Spanish (es)
+    - Swedish (sv)
+    - Ukranian (uk)
+  * Added translations:
+    - Turkish (tr)
+  * Added Danish (da) manual
+  * Added Lithuanian (lt) manual
+
 0.8.0 "We believe in GNOME 3" - 2011/09/24
 
 New features:
