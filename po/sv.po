@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-17 10:50+0200\n"
-"PO-Revision-Date: 2011-10-17 10:55+0100\n"
+"POT-Creation-Date: 2011-10-25 08:42+0200\n"
+"PO-Revision-Date: 2011-10-25 08:43+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -392,7 +392,7 @@ msgid "Delete the selected note"
 msgstr "Ta bort den valda anteckningen"
 
 #: ../src/actionmanager.cpp:196
-#: ../src/notewindow.cpp:368
+#: ../src/notewindow.cpp:377
 msgid "_Close"
 msgstr "S_täng"
 
@@ -456,7 +456,7 @@ msgid "Create _New Note"
 msgstr "Skapa _ny anteckning"
 
 #: ../src/actionmanager.cpp:235
-#: ../src/notewindow.cpp:320
+#: ../src/notewindow.cpp:329
 msgid "_Search All Notes"
 msgstr "_Sök i alla anteckningar"
 
@@ -774,11 +774,12 @@ msgstr "Börja här"
 msgid "Using Links in Gnote"
 msgstr "Användning av länkar i Gnote"
 
-#: ../src/notemanager.cpp:554
+#: ../src/notemanager.cpp:555
+#: ../src/notebooks/notebook.cpp:167
 msgid "New Note"
 msgstr "Ny anteckning"
 
-#: ../src/notemanager.cpp:682
+#: ../src/notemanager.cpp:666
 msgid "Describe your new note here."
 msgstr "Beskriv din nya anteckning här."
 
@@ -836,140 +837,160 @@ msgstr "Anteckningstitel"
 msgid "Ad_vanced"
 msgstr "A_vancerat"
 
-#: ../src/notewindow.cpp:78
+#: ../src/notewindow.cpp:84
 msgid "Find in This Note"
 msgstr "Sök i den här anteckningen"
 
-#: ../src/notewindow.cpp:328
+#: ../src/notewindow.cpp:337
 msgid "_Link to New Note"
 msgstr "_Länka till ny anteckning"
 
-#: ../src/notewindow.cpp:336
+#: ../src/notewindow.cpp:345
 msgid "Te_xt"
 msgstr "Te_xt"
 
-#: ../src/notewindow.cpp:345
+#: ../src/notewindow.cpp:354
 msgid "_Find in This Note"
 msgstr "_Sök i den här anteckningen"
 
-#: ../src/notewindow.cpp:360
+#: ../src/notewindow.cpp:369
 msgid "Clos_e All Notes"
 msgstr "S_täng alla anteckningar"
 
-#: ../src/notewindow.cpp:395
+#: ../src/notewindow.cpp:404
 msgid "Search"
 msgstr "Sök"
 
-#: ../src/notewindow.cpp:399
+#: ../src/notewindow.cpp:408
 msgid "Search your notes (Ctrl-Shift-F)"
 msgstr "Sök i dina anteckningar (Ctrl-Skift-F)"
 
 # Hoppas detta är verbet...
-#: ../src/notewindow.cpp:409
+#: ../src/notewindow.cpp:418
 msgid "Link"
 msgstr "Länka"
 
-#: ../src/notewindow.cpp:415
+#: ../src/notewindow.cpp:424
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Länka markerad text till en ny anteckning (Ctrl-L)"
 
-#: ../src/notewindow.cpp:424
+#: ../src/notewindow.cpp:433
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/notewindow.cpp:430
+#: ../src/notewindow.cpp:439
 msgid "Set properties of text"
 msgstr "Ställ in textegenskaper"
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:443
 msgid "T_ools"
 msgstr "_Verktyg"
 
-#: ../src/notewindow.cpp:439
+#: ../src/notewindow.cpp:448
 msgid "Use tools on this note"
 msgstr "Använd verktyg på denna anteckning."
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:458
 msgid "Delete this note"
 msgstr "Ta bort denna anteckning"
 
-#: ../src/notewindow.cpp:459
+#: ../src/notewindow.cpp:468
 msgid "Synchronize Notes"
 msgstr "Synkronisera anteckningar"
 
-#: ../src/notewindow.cpp:502
+#: ../src/notewindow.cpp:504
+msgid "This note is a template note. It determines the default content of regular notes, and will not show up in the note menu or search window."
+msgstr "Denna anteckning är en mallanteckning. Den bestämmer standardinnehållet för vanliga anteckningar och kommer inte att visas i anteckningsmenyn eller sökfönster."
+
+#: ../src/notewindow.cpp:507
+msgid "Convert to regular note"
+msgstr "Konvertera till vanlig anteckning"
+
+#: ../src/notewindow.cpp:510
+msgid "Save Si_ze"
+msgstr "Spara st_orlek"
+
+#: ../src/notewindow.cpp:514
+msgid "Save Se_lection"
+msgstr "Spara ma_rkering"
+
+#: ../src/notewindow.cpp:518
+msgid "Save _Title"
+msgstr "Spara _titel"
+
+#: ../src/notewindow.cpp:606
 msgid "_Find..."
 msgstr "_Sök..."
 
-#: ../src/notewindow.cpp:510
+#: ../src/notewindow.cpp:614
 msgid "Find _Next"
 msgstr "Sök _nästa"
 
-#: ../src/notewindow.cpp:520
+#: ../src/notewindow.cpp:624
 msgid "Find _Previous"
 msgstr "Sök _föregående"
 
-#: ../src/notewindow.cpp:590
+#: ../src/notewindow.cpp:694
 msgid "Cannot create note"
 msgstr "Kan inte skapa anteckning"
 
-#: ../src/notewindow.cpp:645
+#: ../src/notewindow.cpp:749
 msgid "_Next"
 msgstr "_Nästa"
 
-#: ../src/notewindow.cpp:646
+#: ../src/notewindow.cpp:750
 msgid "_Previous"
 msgstr "_Föregående"
 
-#: ../src/notewindow.cpp:659
+#: ../src/notewindow.cpp:763
 msgid "_Find:"
 msgstr "_Sök:"
 
-#: ../src/notewindow.cpp:1101
+#: ../src/notewindow.cpp:1205
 msgid "<b>_Bold</b>"
 msgstr "<b>_Fet</b>"
 
-#: ../src/notewindow.cpp:1102
+#: ../src/notewindow.cpp:1206
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kursiv</i>"
 
-#: ../src/notewindow.cpp:1103
+#: ../src/notewindow.cpp:1207
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Genomstruken</s>"
 
-#: ../src/notewindow.cpp:1105
+#: ../src/notewindow.cpp:1209
 msgid "_Highlight"
 msgstr "_Markera"
 
-#: ../src/notewindow.cpp:1107
+#: ../src/notewindow.cpp:1211
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:1109
+#: ../src/notewindow.cpp:1213
 msgid "Hu_ge"
 msgstr "_Enorm"
 
-#: ../src/notewindow.cpp:1111
+#: ../src/notewindow.cpp:1215
 msgid "_Large"
 msgstr "_Stor"
 
-#: ../src/notewindow.cpp:1113
+#: ../src/notewindow.cpp:1217
 msgid "S_mall"
 msgstr "_Liten"
 
-#: ../src/notewindow.cpp:1115
+#: ../src/notewindow.cpp:1219
 msgid "Bullets"
 msgstr "Punkter"
 
-#: ../src/notewindow.cpp:1118
+#: ../src/notewindow.cpp:1222
 msgid "Increase Font Size"
 msgstr "Öka typsnittsstorlek"
 
-#: ../src/notewindow.cpp:1119
+#: ../src/notewindow.cpp:1223
 msgid "Decrease Font Size"
 msgstr "Minska typsnittsstorlek"
 
-#: ../src/notewindow.cpp:1190
+#: ../src/notewindow.cpp:1294
 msgid "Font Size"
 msgstr "Typsnittsstorlek"
 
@@ -1257,15 +1278,15 @@ msgstr "Ny \"%1%\"-anteckning"
 msgid "No notebook"
 msgstr "Inget anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:76
+#: ../src/notebooks/notebooknoteaddin.cpp:86
 msgid "Place this note into a notebook"
 msgstr "Placera denna anteckning i ett anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:158
+#: ../src/notebooks/notebooknoteaddin.cpp:196
 msgid "Notebook"
 msgstr "Anteckningsblock"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:184
+#: ../src/notebooks/notebooknoteaddin.cpp:222
 msgid "_New notebook..."
 msgstr "_Nytt anteckningsblock..."
 
