@@ -45,6 +45,8 @@ public:
   static Glib::RefPtr<RemoteControlClient> get_instance();
   static RemoteControl *get_remote_control();
   static void register_remote(NoteManager & manager, const slot_name_acquire_finish & on_finish);
+  static void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, NoteManager & manager,
+                              const slot_name_acquire_finish & on_finish);
 private:
   static void on_bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
   static void on_name_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);

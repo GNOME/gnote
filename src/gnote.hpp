@@ -39,6 +39,7 @@
 
 namespace gnote {
 
+typedef GtkApplication GnoteApp;
 class PreferencesDialog;
 class NoteManager;
 class RemoteControlClient;
@@ -102,6 +103,8 @@ public:
   Gnote();
   ~Gnote();
   int main(int argc, char **argv);
+  void startup();
+  int command_line(int argc, char **argv);
   NoteManager & default_note_manager()
     {
       return *m_manager;
@@ -123,6 +126,8 @@ public:
   void on_show_about_action();
   void open_search_all();
   void open_note_sync_window();
+  void add_window(Gtk::Window * window);
+  void remove_window(Gtk::Window * window);
 
   static std::string cache_dir();
   static std::string conf_dir();
@@ -138,16 +143,22 @@ public:
     {
       return m_is_panel_applet;
     }
+  bool windowed()
+    {
+      return !tray_icon_showing();
+    }
   void set_tray(const Tray::Ptr & tray)
     {
       m_tray = tray;
     }
   sigc::signal<void> signal_quit;
   static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
+  static void register_object();
 private:
   void start_note_created(const Note::Ptr & start_note);
   std::string get_note_path(const std::string & override_path);
   void on_setting_changed(const Glib::ustring & key);
+  void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
 
   NoteManager *m_manager;
@@ -158,6 +169,7 @@ private:
   bool m_is_panel_applet;
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
+  GnoteApp *m_app;
 };
 
 

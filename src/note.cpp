@@ -37,6 +37,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/stock.h>
 
+#include "gnote.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "noterenamedialog.hpp"
@@ -1025,6 +1026,10 @@ namespace gnote {
         sigc::mem_fun(*this, &Note::on_window_destroyed));
       m_window->signal_configure_event().connect(
         sigc::mem_fun(*this, &Note::on_window_configure), false);
+      m_window->signal_show().connect(
+        sigc::mem_fun(*this, &Note::on_window_show));
+      m_window->signal_hide().connect(
+        sigc::mem_fun(*this, &Note::on_window_hide));
 
       if (m_data.data().has_extent())
         m_window->set_default_size(m_data.data().width(),
@@ -1042,6 +1047,17 @@ namespace gnote {
       process_child_widget_queue();
     }
     return m_window;
+  }
+
+  void Note::on_window_show()
+  {
+    Gnote::obj().add_window(m_window);
+  }
+
+
+  void Note::on_window_hide()
+  {
+    Gnote::obj().remove_window(m_window);
   }
 
 

@@ -102,6 +102,7 @@ namespace gnote {
     , m_entry_changed_timeout(NULL)
     , m_clickX(0), m_clickY(0)
   {
+    Gnote::obj().add_window(this);
     _init_static();
 //    get_window()->set_icon_name("gnote");
     set_default_size(450,400);
@@ -234,6 +235,13 @@ namespace gnote {
     Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_exiting_event));
 
   }
+
+
+  NoteRecentChanges::~NoteRecentChanges()
+  {
+    Gnote::obj().remove_window(this);
+  }
+
 
   Gtk::MenuBar *NoteRecentChanges::create_menu_bar ()
   {
@@ -1205,10 +1213,9 @@ namespace gnote {
 //    Tomboy.ExitingEvent -= OnExitingEvent;
 
     hide ();
-    delete s_instance;
-    s_instance = NULL;
-    if (Gnote::obj().tray_icon_showing() == false) {
-      ActionManager::obj()["QuitGNoteAction"]->activate();
+    if(Gnote::obj().windowed()) {
+      delete s_instance;
+      s_instance = NULL;
     }
   }
 

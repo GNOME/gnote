@@ -63,11 +63,57 @@
 
 namespace gnote {
 
+  namespace {
+
+    typedef GtkApplicationClass GnoteAppClass;
+
+    G_DEFINE_TYPE(GnoteApp, gnote_app, GTK_TYPE_APPLICATION)
+
+    static void gnote_app_init(GnoteApp *)
+    {}
+
+    static void gnote_app_activate(GApplication *)
+    {
+      Gnote::obj().open_search_all();
+    }
+
+    static void gnote_app_startup(GApplication *)
+    {
+      Gnote::obj().startup();
+    }
+
+    static int gnote_app_command_line(GApplication *, GApplicationCommandLine * command_line)
+    {
+      int argc;
+      char **argv = g_application_command_line_get_arguments(command_line, &argc);
+      return Gnote::obj().command_line(argc, argv);
+    }
+
+    static void gnote_app_class_init(GnoteAppClass * klass)
+    {
+      G_APPLICATION_CLASS(klass)->activate = gnote_app_activate;
+      G_APPLICATION_CLASS(klass)->startup = gnote_app_startup;
+      G_APPLICATION_CLASS(klass)->command_line = gnote_app_command_line;
+    }
+
+    GnoteApp * gnote_app_new()
+    {
+      g_type_init();
+      return static_cast<GnoteApp*>(g_object_new(gnote_app_get_type(),
+                                                 "application-id", "org.gnome.Gnote",
+                                                 "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
+                                                 NULL));
+    }
+
+}
+
+
   Gnote::Gnote()
     : m_manager(NULL)
     , m_keybinder(NULL)
     , m_is_panel_applet(false)
     , m_prefsdlg(NULL)
+    , m_app(NULL)
   {
   }
 
@@ -81,17 +127,76 @@ namespace gnote {
 
   int Gnote::main(int argc, char **argv)
   {
-    cmd_line.parse(argc, argv);
-    if(cmd_line.needs_immediate_execute()) {
+    bool handle = false;
+    for(int i = 0; i < argc; ++i) {
+      if(!strcmp(argv[i], "--help") || !strcmp(argv[i], "--version")) {
+        handle = true;
+        break;
+      }
+      else if(!strcmp(argv[i], "--panel-applet")) {
+        m_is_panel_applet = true;
+        break;
+      }
+    }
+
+    if(handle) {
+      cmd_line.parse(argc, argv);
       cmd_line.immediate_execute();
       return 0;
     }
 
-    m_is_panel_applet = cmd_line.use_panel_applet();
+    if(m_is_panel_applet) {
+#if HAVE_PANELAPPLET
+      common_init();
+      ActionManager & am(ActionManager::obj());
+      am["CloseWindowAction"]->set_visible(true);
+      am["QuitGNoteAction"]->set_visible(false);
+      register_remote_control(*m_manager, sigc::mem_fun(*this, &Gnote::end_main));
+      panel::register_applet();
+#endif
+    }
+    else {
+      m_app = gnote_app_new();
+      g_application_run(G_APPLICATION(m_app), argc, argv);
+      g_object_unref(m_app);
+      m_app = NULL;
+    }
+    signal_quit();
+    return 0;
+  }
+
+
+  void Gnote::startup()
+  {
     m_icon_theme = Gtk::IconTheme::get_default();
     m_icon_theme->append_search_path(DATADIR"/icons");
     m_icon_theme->append_search_path(DATADIR"/gnote/icons");
+  }
 
+
+  int Gnote::command_line(int argc, char **argv) {
+    cmd_line.parse(argc, argv);
+    if(!m_manager) {
+      common_init();
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+        .get_schema_settings(Preferences::SCHEMA_GNOTE);
+      settings->signal_changed()
+        .connect(sigc::mem_fun(*this, &Gnote::on_setting_changed));
+      register_object();
+    }
+    else if(cmd_line.needs_execute()) {
+      cmd_line.execute();
+    }
+    else {
+      ActionManager::obj()["ShowSearchAllNotesAction"]->activate();
+    }
+
+    return 0;
+  }
+
+
+  void Gnote::common_init()
+  {
     std::string note_path = get_note_path(cmd_line.note_path());
     m_manager = new NoteManager(note_path, sigc::mem_fun(*this, &Gnote::start_note_created));
     m_keybinder = new XKeybinder();
@@ -99,33 +204,9 @@ namespace gnote {
     // TODO
     // SyncManager::init()
 
-    ActionManager & am(ActionManager::obj());
-    am.load_interface();
-    register_remote_control(*m_manager, sigc::mem_fun(*this, &Gnote::end_main));
+    ActionManager::obj().load_interface();
     setup_global_actions();
     m_manager->get_addin_manager().initialize_application_addins();
-
-    if(m_is_panel_applet) {
-      am["CloseWindowAction"]->set_visible(true);
-      am["QuitGNoteAction"]->set_visible(false);
-    }
-    else {
-      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
-        .get_schema_settings(Preferences::SCHEMA_GNOTE);
-      settings->signal_changed()
-        .connect(sigc::mem_fun(*this, &Gnote::on_setting_changed));
-    }
-
-    if(m_is_panel_applet) {
-#if HAVE_PANELAPPLET
-      panel::register_applet();
-#endif
-    }
-    else {
-      Gtk::Main::run();
-    }
-    signal_quit();
-    return 0;
   }
 
 
@@ -202,6 +283,9 @@ namespace gnote {
 
   void Gnote::start_tray_icon()
   {
+    // Create Search All Notes window as we need it present for application to run
+    NoteRecentChanges::get_instance(default_note_manager());
+
     // Create the tray icon and run the main loop
     m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
     m_tray = m_tray_icon->tray();
@@ -235,6 +319,14 @@ namespace gnote {
   void Gnote::register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish)
   {
     RemoteControlProxy::register_remote(manager, on_finish);
+  }
+
+
+  void Gnote::register_object()
+  {
+    RemoteControlProxy::register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION),
+                                        Gnote::obj().default_note_manager(),
+                                        sigc::mem_fun(Gnote::obj(), &Gnote::end_main));
   }
 
 
@@ -404,6 +496,22 @@ namespace gnote {
 
     sync_dlg.Present 
 #endif
+  }
+
+
+  void Gnote::add_window(Gtk::Window * window)
+  {
+    if(m_app) {
+      gtk_application_add_window(GTK_APPLICATION(m_app), GTK_WINDOW(window->gobj()));
+    }
+  }
+
+
+  void Gnote::remove_window(Gtk::Window * window)
+  {
+    if(m_app) {
+      gtk_application_remove_window(GTK_APPLICATION(m_app), GTK_WINDOW(window->gobj()));
+    }
   }
 
 

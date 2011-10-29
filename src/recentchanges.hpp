@@ -63,6 +63,7 @@ public:
   static NoteRecentChanges *get_instance();
   static NoteRecentChanges *get_instance(NoteManager& m);
 
+  virtual ~NoteRecentChanges();
   void set_search_text(const std::string & value);
 
 //////

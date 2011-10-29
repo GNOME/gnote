@@ -383,6 +383,9 @@ private:
 
   Note(NoteData * data, const std::string & filepath, NoteManager & manager);
 
+  void on_window_show();
+  void on_window_hide();
+
   struct ChildWidgetData
   {
     ChildWidgetData(const Glib::RefPtr<Gtk::TextChildAnchor> & _anchor,

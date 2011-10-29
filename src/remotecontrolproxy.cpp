@@ -85,9 +85,7 @@ void RemoteControlProxy::on_name_acquired(const Glib::RefPtr<Gio::DBus::Connecti
 {
   try {
     if(s_bus_acquired) {
-      load_introspection_xml();
-      s_remote_control = new RemoteControl(conn, *s_manager, GNOTE_SERVER_PATH, GNOTE_INTERFACE_NAME, s_gnote_interface);
-      s_on_name_acquire_finish(true, true);
+      register_object(conn, *s_manager, s_on_name_acquire_finish);
       return;
     }
   }
@@ -96,6 +94,15 @@ void RemoteControlProxy::on_name_acquired(const Glib::RefPtr<Gio::DBus::Connecti
   }
 
   s_on_name_acquire_finish(false, false);
+}
+
+
+void RemoteControlProxy::register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, NoteManager & manager,
+                                         const slot_name_acquire_finish & on_finish)
+{
+  load_introspection_xml();
+  s_remote_control = new RemoteControl(conn, manager, GNOTE_SERVER_PATH, GNOTE_INTERFACE_NAME, s_gnote_interface);
+  on_finish(true, true);
 }
 
 
