@@ -70,8 +70,8 @@ PKG_CHECK_MODULES(PCRE, [libpcrecpp])
 PKG_CHECK_MODULES(UUID, [uuid])
 
 AC_ARG_ENABLE([applet],
-	AS_HELP_STRING([--disable-applet],[Disable panel applet]),
-	[],[enable_applet=yes])
+	AS_HELP_STRING([--enable-applet],[Enable panel applet]),
+	[],[enable_applet=no])
 
 if test $enable_applet = "yes"; then
 	PKG_CHECK_EXISTS(libpanelapplet-4.0 >= $LIBPANELAPPLET_VERSION,
