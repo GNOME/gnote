@@ -103,7 +103,7 @@ namespace gnote {
     notebook->show();
     
     notebook->append_page (*manage(make_editing_pane()),
-                           _("Editing"));
+                           _("General"));
     notebook->append_page (*manage(make_hotkeys_pane()),
                            _("Hotkeys"));
 //      }
@@ -209,6 +209,13 @@ namespace gnote {
       Gtk::VBox *options_list = manage(new Gtk::VBox(false, 12));
       options_list->set_border_width(12);
       options_list->show();
+
+
+      // Status icon
+      check = manage(make_check_button(_("Use status _icon")));
+      options_list->pack_start(*check, false, false, 0);
+      peditor = new sharp::PropertyEditorBool(settings, Preferences::USE_STATUS_ICON, *check);
+      peditor->setup();
 
 
       // Spell checking...
