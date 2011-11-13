@@ -1197,7 +1197,9 @@ namespace gnote {
     // The following code has to be done for the MenuBar to
     // appear properly the next time this window is opened.
     if (m_menubar) {
-      m_content_vbox.remove (*m_menubar);
+      if(Gnote::obj().windowed()) {
+        m_content_vbox.remove (*m_menubar);
+      }
 #if 0
       am ["OpenNoteAction"].Activated -= OnOpenNote;
       am ["DeleteNoteAction"].Activated -= OnDeleteNote;
