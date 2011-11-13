@@ -121,7 +121,6 @@ public:
 
   void setup_global_actions();
   void start_tray_icon();
-  bool check_tray_icon_showing();
 
   void on_new_note_action();
   void on_quit_gnote_action();
