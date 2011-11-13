@@ -112,6 +112,7 @@ namespace gnote {
     : m_manager(NULL)
     , m_keybinder(NULL)
     , m_is_panel_applet(false)
+    , m_is_background(false)
     , m_prefsdlg(NULL)
     , m_app(NULL)
   {
@@ -212,6 +213,11 @@ namespace gnote {
 
   void Gnote::end_main(bool bus_acquired, bool name_acquired)
   {
+    ActionManager & am(ActionManager::obj());
+    if((m_is_background = cmd_line.background())) {
+      am["CloseWindowAction"]->set_visible(true);
+      am["QuitGNoteAction"]->set_visible(false);
+    }
     if(cmd_line.needs_execute()) {
       cmd_line.execute();
     }
@@ -248,8 +254,11 @@ namespace gnote {
         DBG_OUT("starting tray icon");
         start_tray_icon();
       }
+      else if(m_is_background) {
+        // Create Search All Notes window as we need it present for application to run
+        NoteRecentChanges::get_instance(default_note_manager());
+      }
       else {
-        ActionManager & am(ActionManager::obj());
         am["ShowSearchAllNotesAction"]->activate();
       }
     }
@@ -548,6 +557,7 @@ namespace gnote {
   GnoteCommandLine::GnoteCommandLine()
     : m_context(g_option_context_new("Foobar"))
     , m_use_panel(false)
+    , m_background(false)
     , m_note_path(NULL)
     , m_do_search(false)
     , m_show_version(false)
@@ -559,6 +569,7 @@ namespace gnote {
     static const GOptionEntry entries[] =
       {
         { "panel-applet", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_use_panel, _("Run Gnote as a GNOME panel applet."), NULL },
+        { "background", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_background, _("Run Gnote in background."), NULL },
         { "note-path", 0, 0, G_OPTION_ARG_STRING, &m_note_path, _("Specify the path of the directory containing the notes."), _("path") },
         { "search", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Open the search all notes window with the search text."), _("text") },
         { "version", 0, 0, G_OPTION_ARG_NONE, &m_show_version, _("Print version information."), NULL },

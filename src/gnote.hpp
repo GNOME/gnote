@@ -62,6 +62,10 @@ public:
     {
       return m_use_panel;
     }
+  bool        background()
+    {
+      return m_background;
+    }
   void parse(int &argc, gchar ** & argv);
 
   static gboolean parse_func(const gchar *option_name,
@@ -78,6 +82,7 @@ private:
   GOptionContext *m_context;
 
   bool        m_use_panel;
+  bool        m_background;
   gchar *     m_note_path;
   bool        m_do_search;
   std::string m_search;
@@ -143,9 +148,13 @@ public:
     {
       return m_is_panel_applet;
     }
+  bool is_background() const
+    {
+      return m_is_background;
+    }
   bool windowed()
     {
-      return !tray_icon_showing();
+      return !tray_icon_showing() && !is_background();
     }
   void set_tray(const Tray::Ptr & tray)
     {
@@ -167,6 +176,7 @@ private:
   Glib::RefPtr<TrayIcon> m_tray_icon;
   Tray::Ptr m_tray;
   bool m_is_panel_applet;
+  bool m_is_background;
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
   GnoteApp *m_app;
