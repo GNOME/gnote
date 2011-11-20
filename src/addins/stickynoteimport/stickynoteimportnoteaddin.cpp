@@ -275,15 +275,6 @@ bool StickyNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle
                                                         const char* content,
                                                         gnote::NoteManager & manager)
 {
-  // There should be no XML in the content
-  // TODO: Report the error in the results dialog
-  //  (this error should only happen if somebody has messed with the XML file)
-  if(strchr(content, '>') || strchr(content, '<')) {
-    DBG_OUT(DEBUG_CREATE_ERROR_BASE, stickyTitle,
-            "Invalid characters in note XML");
-    return false;
-  }
-
   std::string preferredTitle = _("Sticky Note: ");
   preferredTitle += stickyTitle;
   std::string title = preferredTitle;
@@ -293,9 +284,11 @@ bool StickyNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle
     title = str(boost::format("%1% (#%2%)") % preferredTitle % i);
     i++;
   }
-  
+
   std::string noteXml = str(boost::format("<note-content><note-title>%1%</note-title>\n\n"
-                                          "%2%</note-content>") % title % content);
+                                          "%2%</note-content>")
+                                          % gnote::utils::XmlEncoder::encode(title)
+                                          % gnote::utils::XmlEncoder::encode(content));
 
   try {
     Note::Ptr newNote = manager.create(title, noteXml);
