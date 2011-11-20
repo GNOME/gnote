@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-10-30 15:16+0000\n"
-"PO-Revision-Date: 2011-11-03 20:01+0100\n"
+"POT-Creation-Date: 2011-11-13 16:07+0000\n"
+"PO-Revision-Date: 2011-11-20 12:34+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -655,15 +655,15 @@ msgstr "S_ynchronizovat poznámky"
 msgid "Start synchronizing notes"
 msgstr "Začít synchronizovat poznámky"
 
-#: ../src/gnote.cpp:388
+#: ../src/gnote.cpp:373
 msgid "Cannot create new note"
 msgstr "Nelze vytvořit novou poznámku"
 
-#: ../src/gnote.cpp:437
+#: ../src/gnote.cpp:422
 msgid "and Tomboy original authors."
 msgstr "a původní autoři aplikace Tomboy."
 
-#: ../src/gnote.cpp:446
+#: ../src/gnote.cpp:431
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -672,7 +672,7 @@ msgstr ""
 "Petr Kovář <pknbe@volny.cz>\n"
 "Lucas Lommer <llommer@svn.gnome.org>"
 
-#: ../src/gnote.cpp:455
+#: ../src/gnote.cpp:440
 msgid ""
 "Copyright © 2010-2011 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -684,78 +684,82 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004 – 2009 původní autoři Tomboy."
 
-#: ../src/gnote.cpp:459
+#: ../src/gnote.cpp:444
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Jednoduchá a snadno použitelná aplikace pro poznámky na pracovní ploše."
 
-#: ../src/gnote.cpp:470
+#: ../src/gnote.cpp:455
 msgid "Homepage"
 msgstr "Domovská stránka"
 
-#: ../src/gnote.cpp:561
+#: ../src/gnote.cpp:547
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Spustit Gnote jako applet pro panel GNOME."
 
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:548
+msgid "Run Gnote in background."
+msgstr "Spustit Gnote na pozadí"
+
+#: ../src/gnote.cpp:549
 msgid "Specify the path of the directory containing the notes."
 msgstr "Určit cestu ke složce obsahující poznámky."
 
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:549
 msgid "path"
 msgstr "cesta"
 
-#: ../src/gnote.cpp:563
+#: ../src/gnote.cpp:550
 msgid "Open the search all notes window with the search text."
 msgstr "Otevřít okno Prohledat všechny poznámky s hledaným textem."
 
-#: ../src/gnote.cpp:563 ../src/gnote.cpp:568
+#: ../src/gnote.cpp:550 ../src/gnote.cpp:555
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:551
 msgid "Print version information."
 msgstr "Vypsat informace o verzi."
 
-#: ../src/gnote.cpp:565
+#: ../src/gnote.cpp:552
 msgid "Create and display a new note, with a optional title."
 msgstr "Vytvořit a zobrazit novou poznámku s volitelným názvem."
 
-#: ../src/gnote.cpp:565
+#: ../src/gnote.cpp:552
 msgid "title"
 msgstr "název"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:553
 msgid "Display the existing note matching title."
 msgstr "Zobrazit existující poznámku odpovídající názvem."
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:553
 msgid "title/url"
 msgstr "název/url"
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:554
 msgid "Display the 'Start Here' note."
 msgstr "Zobrazit poznámku „Začněte zde“."
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:555
 msgid "Search and highlight text in the opened note."
 msgstr "Hledat a zvýraznit text v otevřené poznámce."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:559
 msgid "A note taking application"
 msgstr "Aplikace na dělání poznámek"
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:559
 msgid "Gnote options at launch"
 msgstr "Volby Gnote při spouštění"
 
-#: ../src/gnote.cpp:765
+#: ../src/gnote.cpp:752
 msgid "Version %1%"
 msgstr "Verze %1%"
 
 #: ../src/preferencesdialog.cpp:106
-msgid "Editing"
-msgstr "Úpravy"
+msgid "General"
+msgstr "Obecné"
 
 #: ../src/preferencesdialog.cpp:108
 msgid "Hotkeys"
@@ -765,11 +769,17 @@ msgstr "Klávesové zkratky"
 msgid "Add-ins"
 msgstr "Rozšíření"
 
-#: ../src/preferencesdialog.cpp:221
+#. Status icon
+#: ../src/preferencesdialog.cpp:215
+#| msgid "Use custom _font"
+msgid "Use status _icon"
+msgstr "Používat stavovou _ikonu"
+
+#: ../src/preferencesdialog.cpp:228
 msgid "_Spell check while typing"
 msgstr "_Kontrola překlepů během psaní"
 
-#: ../src/preferencesdialog.cpp:227
+#: ../src/preferencesdialog.cpp:234
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -778,11 +788,11 @@ msgstr ""
 "kontextové nabídce."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:238
+#: ../src/preferencesdialog.cpp:245
 msgid "Highlight _WikiWords"
 msgstr "Zvýrazňovat _WikiSlova"
 
-#: ../src/preferencesdialog.cpp:244
+#: ../src/preferencesdialog.cpp:251
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -791,52 +801,52 @@ msgstr ""
 "Kliknutí na slovo vytvoří poznámku s takovým názvem."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:251
+#: ../src/preferencesdialog.cpp:258
 msgid "Enable auto-_bulleted lists"
 msgstr "Po_volit automatické seznamy s odrážkami"
 
-#: ../src/preferencesdialog.cpp:260
+#: ../src/preferencesdialog.cpp:267
 msgid "Use custom _font"
 msgstr "Používat vlastní _písmo"
 
-#: ../src/preferencesdialog.cpp:277
+#: ../src/preferencesdialog.cpp:284
 msgid "When renaming a linked note: "
 msgstr "Při přejmenování odkazované poznámky:"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:289
 msgid "Ask me what to do"
 msgstr "Dotázat se mě, co udělat"
 
-#: ../src/preferencesdialog.cpp:283
+#: ../src/preferencesdialog.cpp:290
 msgid "Never rename links"
 msgstr "Odkazy nikdy nepřejmenovat"
 
-#: ../src/preferencesdialog.cpp:284
+#: ../src/preferencesdialog.cpp:291
 msgid "Always rename links"
 msgstr "Odkazy vždy přejmenovat"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:303 ../src/notemanager.cpp:112
+#: ../src/preferencesdialog.cpp:310 ../src/notemanager.cpp:112
 msgid "New Note Template"
 msgstr "Nová šablona"
 
-#: ../src/preferencesdialog.cpp:306
+#: ../src/preferencesdialog.cpp:313
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr "Použijte šablonu k upřesnění, jaký text se má vložit do nové poznámky."
 
-#: ../src/preferencesdialog.cpp:314
+#: ../src/preferencesdialog.cpp:321
 msgid "Open New Note Template"
 msgstr "Otevřít šablonu"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:376
+#: ../src/preferencesdialog.cpp:383
 msgid "Listen for _Hotkeys"
 msgstr "Používat _klávesové zkratky"
 
-#: ../src/preferencesdialog.cpp:383
+#: ../src/preferencesdialog.cpp:390
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -847,73 +857,73 @@ msgstr ""
 "Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:403
+#: ../src/preferencesdialog.cpp:410
 msgid "Show notes _menu"
 msgstr "Zobrazit nabídku pozná_mek"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:420
+#: ../src/preferencesdialog.cpp:427
 msgid "Open \"_Start Here\""
 msgstr "Otevřít „_Začněte zde“"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:436
+#: ../src/preferencesdialog.cpp:443
 msgid "Create _new note"
 msgstr "Vytvořit _novou poznámku"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:452
+#: ../src/preferencesdialog.cpp:459
 msgid "Open \"Search _All Notes\""
 msgstr "Otevřít „_Prohledat všechny poznámky“"
 
-#: ../src/preferencesdialog.cpp:479
+#: ../src/preferencesdialog.cpp:486
 msgid "Ser_vice:"
 msgstr "Služ_ba:"
 
-#: ../src/preferencesdialog.cpp:536
+#: ../src/preferencesdialog.cpp:543
 msgid "Not configurable"
 msgstr "Nedostupné"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:556
+#: ../src/preferencesdialog.cpp:563
 msgid "_Advanced..."
 msgstr "P_okročilé…"
 
-#: ../src/preferencesdialog.cpp:603
+#: ../src/preferencesdialog.cpp:610
 msgid "The following add-ins are installed"
 msgstr "Máte nainstalována následující rozšíření"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:634
+#: ../src/preferencesdialog.cpp:641
 msgid "_Enable"
 msgstr "_Povolit"
 
-#: ../src/preferencesdialog.cpp:640
+#: ../src/preferencesdialog.cpp:647
 msgid "_Disable"
 msgstr "_Zakázat"
 
-#: ../src/preferencesdialog.cpp:771
+#: ../src/preferencesdialog.cpp:778
 msgid "Not Implemented"
 msgstr "Není implementováno"
 
-#: ../src/preferencesdialog.cpp:785
+#: ../src/preferencesdialog.cpp:792
 msgid "%1% Preferences"
 msgstr "Předvolby %1%"
 
-#: ../src/preferencesdialog.cpp:926
+#: ../src/preferencesdialog.cpp:933
 msgid "Choose Note Font"
 msgstr "Zvolte písmo poznámek"
 
-#: ../src/preferencesdialog.cpp:1048
+#: ../src/preferencesdialog.cpp:1055
 msgid "Version:"
 msgstr "Verze:"
 
-#: ../src/preferencesdialog.cpp:1053
+#: ../src/preferencesdialog.cpp:1060
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:1059
+#: ../src/preferencesdialog.cpp:1066
 msgid "Copyright:"
 msgstr "Copyright:"
 
