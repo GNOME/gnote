@@ -525,10 +525,19 @@ namespace gnote {
     std::string XmlEncoder::encode(const std::string & source)
     {
       sharp::XmlWriter xml;
+      //need element so that source is properly escaped
+      xml.write_start_element("", "x", "");
       xml.write_string(source);
+      xml.write_end_element();
 
       xml.close();
-      return xml.to_string();
+      std::string result = xml.to_string();
+      unsigned end_pos = result.find("</x>");
+      if(end_pos == result.npos) {
+        return "";
+      }
+      result.resize(end_pos);
+      return result.substr(3);
     }
 
 
