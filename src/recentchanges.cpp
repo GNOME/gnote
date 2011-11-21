@@ -558,9 +558,9 @@ namespace gnote {
         no_matches_found_action();
       }
       else {
-        for(Search::Results::const_iterator iter = results->begin();
-            iter != results->end(); ++iter) {
-          m_current_matches[iter->first->uri()] = iter->second;
+        for(Search::Results::const_reverse_iterator iter = results->rbegin();
+            iter != results->rend(); iter++) {
+          m_current_matches[iter->second->uri()] = iter->first;
         }
       
         add_matches_column ();

@@ -76,7 +76,7 @@ namespace gnote {
       if (0 < find_match_count_in_note (note->get_title(),
                                         words,
                                         case_sensitive)) {
-        temp_matches->insert(std::make_pair(note, INT_MAX));
+        temp_matches->insert(std::make_pair(INT_MAX, note));
       }
       else if (check_note_has_match (note, encoded_words,
                                 case_sensitive)) {
@@ -85,7 +85,7 @@ namespace gnote {
                                     words, case_sensitive);
         if (match_count > 0) {
           // TODO: Improve note.GetHashCode()
-          temp_matches->insert(std::make_pair(note, match_count));
+          temp_matches->insert(std::make_pair(match_count, note));
         }
       }
     }

@@ -41,7 +41,7 @@ namespace gnote {
 class Search 
 {
 public:
-  typedef std::map<Note::Ptr,int> Results;
+  typedef std::multimap<int,Note::Ptr> Results;
   typedef std::tr1::shared_ptr<Results> ResultsPtr;
 
   template<typename T>

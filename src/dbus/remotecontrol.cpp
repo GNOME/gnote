@@ -328,10 +328,10 @@ std::vector< std::string > RemoteControl::SearchNotes(const std::string& query,
   Search::ResultsPtr results =
     search.search_notes(query, case_sensitive, notebooks::Notebook::Ptr());
 
-  for(Search::Results::const_iterator iter = results->begin();
-      iter != results->end(); ++iter) {
+  for(Search::Results::const_reverse_iterator iter = results->rbegin();
+      iter != results->rend(); iter++) {
 
-    list.push_back(iter->first->uri());
+    list.push_back(iter->second->uri());
   }
 
   return list;
