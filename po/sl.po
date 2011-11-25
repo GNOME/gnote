@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-10-25 06:44+0000\n"
-"PO-Revision-Date: 2011-10-25 20:34+0100\n"
+"POT-Creation-Date: 2011-11-24 19:31+0000\n"
+"PO-Revision-Date: 2011-11-25 17:55+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: Slovenian\n"
@@ -129,7 +129,7 @@ msgid "Has affect only when started as an application. When set to TRUE, shows a
 msgstr "Ima učinek le ob zagonu kot program. Ko je nastavljeno na PRAV, pokaže ikono stanja. Ko je nastavljeno na NAPAK, je okno Išči vsa sporočilca uporabljeno kot glavno okno programa. Zaprtje tega okna konča program."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:25
-msgid "If enable_custom_font is true, the font name set here will be used as the font when displaying notes."
+msgid "If enable-custom-font is true, the font name set here will be used as the font when displaying notes."
 msgstr "Izbrana možnost omogoča, da bo nastavljena pisava uporabljena za prikaz sporočilc."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:26
@@ -145,12 +145,12 @@ msgid "If true, misspellings will be underlined in red, and correct spelling sug
 msgstr "Izbrana možnost omogoča, da bo napačno črkovanje podčrtano, predlogi pravilnega črkovanja pa bodo prikazani v meniju desnega klika."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:29
-msgid "If true, the desktop-global keybindings set in /apps/gnote/global_keybindings will be enabled, allowing for useful Gnote actions to be available from any application."
-msgstr "Izbrana možnost omogoča, da bodo splošne tipkovne bližnjice nastavljene v /apps/gnote/global_keybindings omogočene, kar pomeni da bodo uporabna dejanja Gnote dostopna iz vsakega programa."
+msgid "If true, the desktop-global keybindings set in /org/gnome/gnote/global-keybindings will be enabled, allowing for useful Gnote actions to be available from any application."
+msgstr "Izbrana možnost omogoča, da bodo splošne tipkovne bližnjice nastavljene v /org/gnome/gnote/global-keybindings omogočene, kar pomeni da bodo uporabna dejanja Gnote dostopna iz vsakega programa."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:30
-msgid "If true, the font name set in custom_font_face will be used as the font when displaying notes. Otherwise the desktop default font will be used."
-msgstr "Izbrana možnost omogoča, da bo pisava po meri uporabljena kot pisava za prikazovanje sporočilc. V nasprotnem primeru bo uporabljena privzeta pisava. "
+msgid "If true, the font name set in custom-font-face will be used as the font when displaying notes. Otherwise the desktop default font will be used."
+msgstr "Izbrana možnost omogoča, da bo pisava po meri uporabljena kot pisava za prikazovanje sporočilc. V nasprotnem primeru bo uporabljena privzeta pisava namizja. "
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:31
 msgid "Integer determining the minimum number of notes to show in the Gnote note menu."
@@ -474,19 +474,19 @@ msgstr "U_skladi sporočilca"
 msgid "Start synchronizing notes"
 msgstr "Začne usklajevanje sporočilc"
 
-#: ../src/gnote.cpp:296
+#: ../src/gnote.cpp:373
 msgid "Cannot create new note"
 msgstr "Ni mogoče ustvariti novega sporočilca"
 
-#: ../src/gnote.cpp:345
+#: ../src/gnote.cpp:422
 msgid "and Tomboy original authors."
 msgstr "in avtorji izvirnega Tomboy"
 
-#: ../src/gnote.cpp:354
+#: ../src/gnote.cpp:431
 msgid "translator-credits"
 msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com>"
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:440
 msgid ""
 "Copyright © 2010-2011 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -498,78 +498,82 @@ msgstr ""
 "Avtorske pravice © 2009 Hubert Figuiere\n"
 "Avtorske pravice © 2004-2009 avtorji izvornega Tomboy."
 
-#: ../src/gnote.cpp:367
+#: ../src/gnote.cpp:444
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Preprost in enostaven program za pisanje sporočilc. "
 
-#: ../src/gnote.cpp:378
+#: ../src/gnote.cpp:455
 msgid "Homepage"
 msgstr "Domača stran"
 
-#: ../src/gnote.cpp:453
+#: ../src/gnote.cpp:547
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Zaženi Gnote kot aplet pladnja GNOME."
 
-#: ../src/gnote.cpp:454
+#: ../src/gnote.cpp:548
+msgid "Run Gnote in background."
+msgstr "Zaženi gnote v ozadju."
+
+#: ../src/gnote.cpp:549
 msgid "Specify the path of the directory containing the notes."
 msgstr "Določi pot mape, ki vsebuje sporočilca."
 
-#: ../src/gnote.cpp:454
+#: ../src/gnote.cpp:549
 msgid "path"
 msgstr "pot"
 
-#: ../src/gnote.cpp:455
+#: ../src/gnote.cpp:550
 msgid "Open the search all notes window with the search text."
 msgstr "Odpre okno za iskanje vseh sporočilc z izbranim besedilom."
 
-#: ../src/gnote.cpp:455
-#: ../src/gnote.cpp:460
+#: ../src/gnote.cpp:550
+#: ../src/gnote.cpp:555
 msgid "text"
 msgstr "Besedilo"
 
-#: ../src/gnote.cpp:456
+#: ../src/gnote.cpp:551
 msgid "Print version information."
 msgstr "Izpiši podrobnosti o različici"
 
-#: ../src/gnote.cpp:457
+#: ../src/gnote.cpp:552
 msgid "Create and display a new note, with a optional title."
 msgstr "Ustvari in prikaže novo sporočilce z naslovom po meri."
 
-#: ../src/gnote.cpp:457
+#: ../src/gnote.cpp:552
 msgid "title"
 msgstr "naslov"
 
-#: ../src/gnote.cpp:458
+#: ../src/gnote.cpp:553
 msgid "Display the existing note matching title."
 msgstr "Prikaže obstoječe sporočilce, ki se sklada z naslovom."
 
-#: ../src/gnote.cpp:458
+#: ../src/gnote.cpp:553
 msgid "title/url"
 msgstr "naslov/url"
 
-#: ../src/gnote.cpp:459
+#: ../src/gnote.cpp:554
 msgid "Display the 'Start Here' note."
 msgstr "Prikaz sporočilca 'Začnite tukaj'."
 
-#: ../src/gnote.cpp:460
+#: ../src/gnote.cpp:555
 msgid "Search and highlight text in the opened note."
 msgstr "Išče in poudari besedilo v odprtem sporočilcu."
 
-#: ../src/gnote.cpp:464
+#: ../src/gnote.cpp:559
 msgid "A note taking application"
 msgstr "Program za pisanje sporočilc"
 
-#: ../src/gnote.cpp:464
+#: ../src/gnote.cpp:559
 msgid "Gnote options at launch"
 msgstr "Možnosti gnote ob zagonu"
 
-#: ../src/gnote.cpp:657
+#: ../src/gnote.cpp:752
 msgid "Version %1%"
 msgstr "Različica %1%"
 
 #: ../src/preferencesdialog.cpp:106
-msgid "Editing"
-msgstr "Urejanje"
+msgid "General"
+msgstr "Splošno"
 
 #: ../src/preferencesdialog.cpp:108
 msgid "Hotkeys"
@@ -579,140 +583,145 @@ msgstr "Hitre tipke"
 msgid "Add-ins"
 msgstr "Vstavki"
 
-#: ../src/preferencesdialog.cpp:221
+#. Status icon
+#: ../src/preferencesdialog.cpp:215
+msgid "Use status _icon"
+msgstr "Uporabi ikono _stanja"
+
+#: ../src/preferencesdialog.cpp:228
 msgid "_Spell check while typing"
 msgstr "Preverjaj _črkovanje med tipkanjem"
 
-#: ../src/preferencesdialog.cpp:227
+#: ../src/preferencesdialog.cpp:234
 msgid "Misspellings will be underlined in red, with correct spelling suggestions shown in the context menu."
 msgstr "Napačno črkovanje bo podčrtano z rdečo barvo, predlogi pravilnega črkovanja bodo prikazani v priročnem meniju."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:238
+#: ../src/preferencesdialog.cpp:245
 msgid "Highlight _WikiWords"
 msgstr "Poudarjanje _WikiWords"
 
-#: ../src/preferencesdialog.cpp:244
+#: ../src/preferencesdialog.cpp:251
 msgid "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the word will create a note with that name."
 msgstr "Omogočite to možnost za poudarjanje besed <b>KiImajoTakVidez</b>. S klikom na besedo bo ustvarjeno sporočilce s tem imenom."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:251
+#: ../src/preferencesdialog.cpp:258
 msgid "Enable auto-_bulleted lists"
 msgstr "Omogoči samodejno _vrstično označene sezname"
 
-#: ../src/preferencesdialog.cpp:260
+#: ../src/preferencesdialog.cpp:267
 msgid "Use custom _font"
 msgstr "Uporabi p_isavo po meri"
 
-#: ../src/preferencesdialog.cpp:277
+#: ../src/preferencesdialog.cpp:284
 msgid "When renaming a linked note: "
 msgstr "Ob preimenovanju povezanega sporočilca:"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:289
 msgid "Ask me what to do"
 msgstr "Vedno vprašaj za potrditev"
 
-#: ../src/preferencesdialog.cpp:283
+#: ../src/preferencesdialog.cpp:290
 msgid "Never rename links"
 msgstr "Nikoli ne preimenuj povezav"
 
-#: ../src/preferencesdialog.cpp:284
+#: ../src/preferencesdialog.cpp:291
 msgid "Always rename links"
 msgstr "Vedno preimenuj povezave"
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:303
+#: ../src/preferencesdialog.cpp:310
 #: ../src/notemanager.cpp:112
 msgid "New Note Template"
 msgstr "Nova predloga sporočilca"
 
-#: ../src/preferencesdialog.cpp:306
+#: ../src/preferencesdialog.cpp:313
 msgid "Use the new note template to specify the text that should be used when creating a new note."
 msgstr "Uporabite predlogo novega sporočilca za navedbo besedila, ki naj bo uporabljeno ob ustvarjanju novega sporočilca."
 
-#: ../src/preferencesdialog.cpp:314
+#: ../src/preferencesdialog.cpp:321
 msgid "Open New Note Template"
 msgstr "Odpri predlogo novega sporočilca"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:376
+#: ../src/preferencesdialog.cpp:383
 msgid "Listen for _Hotkeys"
 msgstr "Čakaj na _hitre tipke"
 
-#: ../src/preferencesdialog.cpp:383
+#: ../src/preferencesdialog.cpp:390
 msgid "Hotkeys allow you to quickly access your notes from anywhere with a keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 msgstr "Hitre tipke omogočajo hiter dostop do sporočilc od kjerkoli s pritiskom na tipko. Primer hitrih tipk: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:403
+#: ../src/preferencesdialog.cpp:410
 msgid "Show notes _menu"
 msgstr "Pokaži _meni sporočilc"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:420
+#: ../src/preferencesdialog.cpp:427
 msgid "Open \"_Start Here\""
 msgstr "Odpri \"_Začnite tukaj\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:436
+#: ../src/preferencesdialog.cpp:443
 msgid "Create _new note"
 msgstr "Ustvari _novo sporočilce"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:452
+#: ../src/preferencesdialog.cpp:459
 msgid "Open \"Search _All Notes\""
 msgstr "Odpri \"Išči po _vseh sporočilcih\""
 
-#: ../src/preferencesdialog.cpp:479
+#: ../src/preferencesdialog.cpp:486
 msgid "Ser_vice:"
 msgstr "S_toritev:"
 
-#: ../src/preferencesdialog.cpp:536
+#: ../src/preferencesdialog.cpp:543
 msgid "Not configurable"
 msgstr "Ni nastavljivo"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:556
+#: ../src/preferencesdialog.cpp:563
 msgid "_Advanced..."
 msgstr "_Napredno ..."
 
-#: ../src/preferencesdialog.cpp:603
+#: ../src/preferencesdialog.cpp:610
 msgid "The following add-ins are installed"
 msgstr "Naslednji vstavki so nameščeni"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:634
+#: ../src/preferencesdialog.cpp:641
 msgid "_Enable"
 msgstr "_Omogoči"
 
-#: ../src/preferencesdialog.cpp:640
+#: ../src/preferencesdialog.cpp:647
 msgid "_Disable"
 msgstr "O_nemogoči"
 
-#: ../src/preferencesdialog.cpp:771
+#: ../src/preferencesdialog.cpp:778
 msgid "Not Implemented"
 msgstr "Ni del programa"
 
-#: ../src/preferencesdialog.cpp:785
+#: ../src/preferencesdialog.cpp:792
 msgid "%1% Preferences"
 msgstr "Možnosti %1%"
 
-#: ../src/preferencesdialog.cpp:926
+#: ../src/preferencesdialog.cpp:933
 msgid "Choose Note Font"
 msgstr "Izberi pisavo sporočilca"
 
-#: ../src/preferencesdialog.cpp:1048
+#: ../src/preferencesdialog.cpp:1055
 msgid "Version:"
 msgstr "Različica:"
 
-#: ../src/preferencesdialog.cpp:1053
+#: ../src/preferencesdialog.cpp:1060
 msgid "Author:"
 msgstr "Avtor:"
 
-#: ../src/preferencesdialog.cpp:1059
+#: ../src/preferencesdialog.cpp:1066
 msgid "Copyright:"
 msgstr "Avtorske pravice:"
 
@@ -990,7 +999,7 @@ msgid "Font Size"
 msgstr "Velikost pisave"
 
 #. TRANSLATORS: %1% is number of notes
-#: ../src/note.cpp:73
+#: ../src/note.cpp:74
 msgid "Really delete %1% note?"
 msgid_plural "Really delete %1% notes?"
 msgstr[0] "Ali res želite izbrisati %1% sporočilc?"
@@ -998,15 +1007,15 @@ msgstr[1] "Ali res želite izbrisati %1% sporočilce?"
 msgstr[2] "Ali res želite izbrisati %1% sporočilci?"
 msgstr[3] "Ali res želite izbrisati %1% sporočilca?"
 
-#: ../src/note.cpp:80
+#: ../src/note.cpp:81
 msgid "If you delete a note it is permanently lost."
 msgstr "Izbrisana sporočilca so bila trajno izgubljena."
 
-#: ../src/note.cpp:116
+#: ../src/note.cpp:117
 msgid "Error saving note data."
 msgstr "Napaka med shranjevanjem podatkov sporočilca."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:118
 msgid "An error occurred while saving your notes. Please check that you have sufficient disk space, and that you have appropriate rights on ~/.gnote. Error details can be found in ~/.gnote.log."
 msgstr "Med shranjevanjem sporočilc je prišlo do napake. Preverite, da imate na voljo dovolj prostora na disku in da imate ustrezne pravice v ~/.gnote. Podrobnosti o napaki so zapisane v ~/.gnote.log"
 
@@ -1014,33 +1023,33 @@ msgstr "Med shranjevanjem sporočilc je prišlo do napake. Preverite, da imate n
 msgid "Search All Notes"
 msgstr "Išči po vseh sporočilcih"
 
-#: ../src/recentchanges.cpp:114
+#: ../src/recentchanges.cpp:115
 msgid "_Search:"
 msgstr "_Išči:"
 
-#: ../src/recentchanges.cpp:288
+#: ../src/recentchanges.cpp:296
 #: ../src/notebooks/notebookapplicationaddin.cpp:128
 msgid "Notebooks"
 msgstr "Beležnice"
 
-#: ../src/recentchanges.cpp:365
+#: ../src/recentchanges.cpp:373
 msgid "Note"
 msgstr "Sporočilce"
 
-#: ../src/recentchanges.cpp:387
+#: ../src/recentchanges.cpp:395
 msgid "Last Changed"
 msgstr "Zadnjič spremenjeno"
 
-#: ../src/recentchanges.cpp:572
+#: ../src/recentchanges.cpp:580
 msgid "Matches"
 msgstr "Zadetki"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/recentchanges.cpp:626
+#: ../src/recentchanges.cpp:634
 msgid "Title match"
 msgstr "Ujemanje naslovov"
 
-#: ../src/recentchanges.cpp:630
+#: ../src/recentchanges.cpp:638
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% zadetkov"
@@ -1048,7 +1057,7 @@ msgstr[1] "%1% zadetek"
 msgstr[2] "%1% zadetka"
 msgstr[3] "%1% zadetki"
 
-#: ../src/recentchanges.cpp:644
+#: ../src/recentchanges.cpp:652
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Skupaj: %1% sporočilc"
@@ -1056,7 +1065,7 @@ msgstr[1] "Skupaj: %1% sporočilce"
 msgstr[2] "Skupaj: %1% sporočilci"
 msgstr[3] "Skupaj: %1% sporočilca"
 
-#: ../src/recentchanges.cpp:660
+#: ../src/recentchanges.cpp:668
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Sklada se z: %1% sporočilci"
@@ -1064,7 +1073,7 @@ msgstr[1] "Sklada se z: %1% sporočilcem"
 msgstr[2] "Sklada se z: %1% sporočilcema"
 msgstr[3] "Sklada se z: %1% sporočilci"
 
-#: ../src/recentchanges.cpp:676
+#: ../src/recentchanges.cpp:684
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1072,11 +1081,11 @@ msgstr ""
 "Ni najdenih zadetkov v izbrani beležnici.\n"
 "Kliknite tu za iskanje med vsemi beležkami."
 
-#: ../src/recentchanges.cpp:680
+#: ../src/recentchanges.cpp:688
 msgid "Click here to search across all notebooks"
 msgstr "Kliknite tu za iskanje med vsemi beležkami."
 
-#: ../src/recentchanges.cpp:855
+#: ../src/recentchanges.cpp:863
 msgid "Notes"
 msgstr "Sporočilca"
 
@@ -1561,7 +1570,7 @@ msgstr "<b>%1%</b> od <b>%2%</b> lepljivih sporočilc je bilo uspešno uvoženih
 msgid "Untitled"
 msgstr "Neimenovano"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:287
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:278
 msgid "Sticky Note: "
 msgstr "Lepljivo sporočilce:"
 
@@ -1593,6 +1602,9 @@ msgstr "Doda možnost podčrtovanja besedila."
 #: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière in projekt Tomboy"
+
+#~ msgid "Editing"
+#~ msgstr "Urejanje"
 
 #~ msgid "C_ase Sensitive"
 #~ msgstr "_Upoštevaj velikost črk"
