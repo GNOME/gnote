@@ -212,7 +212,7 @@ namespace gnote {
 
 
       // Status icon
-      check = manage(make_check_button(_("Use status _icon")));
+      check = manage(make_check_button(_("Use Status _Icon")));
       options_list->pack_start(*check, false, false, 0);
       peditor = new sharp::PropertyEditorBool(settings, Preferences::USE_STATUS_ICON, *check);
       peditor->setup();
