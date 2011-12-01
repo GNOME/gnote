@@ -24,6 +24,7 @@
 #define __NOTE_TAG_HPP_
 
 #include <string>
+#include <map>
 
 #include <sigc++/signal.h>
 #include <glibmm/refptr.h>
