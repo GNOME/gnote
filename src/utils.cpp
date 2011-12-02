@@ -532,7 +532,7 @@ namespace gnote {
 
       xml.close();
       std::string result = xml.to_string();
-      unsigned end_pos = result.find("</x>");
+      std::string::size_type end_pos = result.find("</x>");
       if(end_pos == result.npos) {
         return "";
       }
