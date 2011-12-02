@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote-help.master\n"
-"POT-Creation-Date: 2011-11-03 19:07+0000\n"
-"PO-Revision-Date: 2011-11-04 11:06+0100\n"
+"POT-Creation-Date: 2011-11-29 20:48+0000\n"
+"PO-Revision-Date: 2011-12-02 18:10+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -486,13 +486,16 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/gnote-notes-preferences.page:34(None)
+#: C/gnote-notes-preferences.page:35(None)
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-editing.png'; "
+#| "md5=f9bf6f13197dcad9d442a9b7ea524f3a"
 msgid ""
 "@@image: 'figures/gnote-preferences-editing.png'; "
-"md5=f9bf6f13197dcad9d442a9b7ea524f3a"
+"md5=527d776d4f432ebc824afbe618b46a25"
 msgstr ""
 "@@image: 'figures/gnote-preferences-editing.png'; "
-"md5=f9bf6f13197dcad9d442a9b7ea524f3a"
+"md5=527d776d4f432ebc824afbe618b46a25"
 
 #: C/gnote-notes-preferences.page:9(desc)
 msgid "Gnote Settings"
@@ -503,8 +506,9 @@ msgid "Gnote Preferences"
 msgstr "Preferencias de Gnote"
 
 #: C/gnote-notes-preferences.page:23(title)
-msgid "Editing preferences"
-msgstr "Preferencias de edición"
+#| msgid "Gnote Preferences"
+msgid "General preferences"
+msgstr "Preferencias generales"
 
 #: C/gnote-notes-preferences.page:24(p)
 msgid ""
@@ -516,29 +520,56 @@ msgstr ""
 "gui> del menú."
 
 #: C/gnote-notes-preferences.page:25(p)
+#| msgid ""
+#| "There are three categories of preferences, <gui>Editing</gui>, "
+#| "<gui>Hotkeys</gui> and <gui>Add-Ins</gui>. Preferences for each tab will "
+#| "be described below."
 msgid ""
-"There are three categories of preferences, <gui>Editing</gui>, <gui>Hotkeys</"
+"There are three categories of preferences, <gui>General</gui>, <gui>Hotkeys</"
 "gui> and <gui>Add-Ins</gui>. Preferences for each tab will be described "
 "below."
 msgstr ""
-"Hay tres categorías de preferencias: <gui>Editando</gui>, <gui>Teclas "
+"Hay tres categorías de preferencias: <gui>General</gui>, <gui>Teclas "
 "rápidas</gui> y <gui>Complementos</gui>. Las preferencias de cada pestaña se "
 "describirán abajo."
 
 #: C/gnote-notes-preferences.page:26(p)
+#| msgid ""
+#| "The editing tab will allow you to set preferences related to editing "
+#| "notes. There are three checkboxes on this tab, which can either be turned "
+#| "on or off."
 msgid ""
-"The editing tab will allow you to set preferences related to editing notes. "
-"There are three checkboxes on this tab, which can either be turned on or off."
+"The general tab will allow you to set preferences related to application "
+"behaviour and editing notes. There are few checkboxes on this tab, which can "
+"either be turned on or off."
 msgstr ""
-"La sección de edición le permite definir preferencias relacionadas a la "
-"edición de notas. Existen tres casillas en esta pestaña, las cuales pueden "
-"ser activadas o desactivadas."
+"La pestaña «General» le permite establecer preferencias relacionadas con el "
+"comportamiento de la aplicación y la edición de notas. Hay unas pocas "
+"casillas en esta pestaña, que se pueden activar o desactivar."
 
 #: C/gnote-notes-preferences.page:28(title)
+#| msgid "Use Custom Font"
+msgid "Use Status Icon"
+msgstr "Usar icono de estado"
+
+#: C/gnote-notes-preferences.page:28(p)
+msgid ""
+"Enable this checkbox to show <app>Gnote</app> status icon when running. In "
+"this mode <app>Gnote</app> will remain present even after all it's windows "
+"are closed. Recently used notes and other windows can be opened from menu, "
+"that appears after clicking or right-clicking status icon."
+msgstr ""
+"Active esta casilla para mostrar el icono de estado de <app>Gnote</app> "
+"cuando esté en ejecución. En este modo, <app>Gnote</app> estará presente "
+"incluso después de cerrar sus ventanas. Las notas usadas recientemente y "
+"otras ventanas se pueden abrir desde el menú, que aparece al pulsar con el "
+"botón derecho sobre el icono de estado."
+
+#: C/gnote-notes-preferences.page:29(title)
 msgid "Spellcheck While Typing"
 msgstr "Corregir ortografía al escribir"
 
-#: C/gnote-notes-preferences.page:28(p)
+#: C/gnote-notes-preferences.page:29(p)
 msgid ""
 "Enable this checkbox to underline misspellings in red, and provide "
 "suggestions in the right click context menu. Enable or disable the checkbox "
@@ -550,7 +581,7 @@ msgstr ""
 "del ratón. Active o desactive esta casilla usando el ratón o la combinación "
 "de teclas <keyseq><key>Alt</key><key>S</key></keyseq>."
 
-#: C/gnote-notes-preferences.page:28(p)
+#: C/gnote-notes-preferences.page:29(p)
 msgid ""
 "The spellcheck option is only available if you have the GtkSpell package for "
 "your distribution installed."
@@ -558,11 +589,11 @@ msgstr ""
 "La opción de corrección ortográfica sólo está disponible si tiene instalado "
 "el paquete «GtkSpell» para su distribución."
 
-#: C/gnote-notes-preferences.page:29(title)
+#: C/gnote-notes-preferences.page:30(title)
 msgid "Highlight WikiWords"
 msgstr "Resaltado de WikiPalabras"
 
-#: C/gnote-notes-preferences.page:29(p)
+#: C/gnote-notes-preferences.page:30(p)
 msgid ""
 "Enable this checkbox to create links for phrases ThatLookLikeThis. Clicking "
 "on the link will create a new note with the title corresponding to the link "
@@ -574,11 +605,11 @@ msgstr ""
 "del enlace. Active o desactive esta casilla usando el ratón o la combinación "
 "de teclas <keyseq><key>Alt</key><key>F</key></keyseq>."
 
-#: C/gnote-notes-preferences.page:30(title)
+#: C/gnote-notes-preferences.page:31(title)
 msgid "Enable auto-bulleted lists"
 msgstr "Activar listas de topos automáticos"
 
-#: C/gnote-notes-preferences.page:30(p)
+#: C/gnote-notes-preferences.page:31(p)
 msgid ""
 "Enable this checkbox, if you want create bulleted list by starting lines "
 "with dash character <key>-</key>. Read more about <link xref=\"bulleted-lists"
@@ -588,11 +619,11 @@ msgstr ""
 "partir de las líneas que comienzan con el carácter guión <key>-</key>. Lea "
 "más sobre esto en la <link xref=\"bulleted-lists\"/>."
 
-#: C/gnote-notes-preferences.page:31(title)
+#: C/gnote-notes-preferences.page:32(title)
 msgid "Use Custom Font"
 msgstr "Usar tipografía personalizada"
 
-#: C/gnote-notes-preferences.page:31(p)
+#: C/gnote-notes-preferences.page:32(p)
 msgid ""
 "Enable this checkbox to set a custom font to be used in your notes. If this "
 "option is disabled, the default system font will be used. Enable or disable "
@@ -604,15 +635,15 @@ msgstr ""
 "predeterminada del sistema. Active o desactive esta casilla usando el ratón "
 "o la combinación de teclas <keyseq><key>Alt</key><key>F</key></keyseq>."
 
-#: C/gnote-notes-preferences.page:33(title)
+#: C/gnote-notes-preferences.page:34(title)
 msgid "<gui>Preferences</gui> window"
 msgstr "Ventana <gui>Preferencias</gui>"
 
-#: C/gnote-notes-preferences.page:34(desc)
+#: C/gnote-notes-preferences.page:35(desc)
 msgid "Editing Gnote Preferences"
 msgstr "Preferencias de edición de Gnote"
 
-#: C/gnote-notes-preferences.page:39(title)
+#: C/gnote-notes-preferences.page:40(title)
 msgid "Advanced Settings"
 msgstr "Configuración avanzada"
 
@@ -748,12 +779,15 @@ msgstr "Ventana «Buscar en todas las notas» de <app>Gnote</app>."
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-hotkeys.page:32(None)
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-hotkeys.png'; "
+#| "md5=6f0c88327cb06b626267ef1c46c2c553"
 msgid ""
 "@@image: 'figures/gnote-preferences-hotkeys.png'; "
-"md5=6f0c88327cb06b626267ef1c46c2c553"
+"md5=f9fd21fc0ce6d836e5dee4590099b21a"
 msgstr ""
 "@@image: 'figures/gnote-preferences-hotkeys.png'; "
-"md5=6f0c88327cb06b626267ef1c46c2c553"
+"md5=f9fd21fc0ce6d836e5dee4590099b21a"
 
 #: C/gnote-hotkeys.page:8(desc)
 msgid "Gnote Hotkey Settings"
@@ -1451,12 +1485,15 @@ msgstr ""
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-addins-preferences.page:25(None)
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-add-ins.png'; "
+#| "md5=ba42ccdcc7389da4a72bd648b33c1320"
 msgid ""
 "@@image: 'figures/gnote-preferences-add-ins.png'; "
-"md5=ba42ccdcc7389da4a72bd648b33c1320"
+"md5=be31b216768913e50f8f21b0ff512c05"
 msgstr ""
 "@@image: 'figures/gnote-preferences-add-ins.png'; "
-"md5=ba42ccdcc7389da4a72bd648b33c1320"
+"md5=be31b216768913e50f8f21b0ff512c05"
 
 #: C/gnote-addins-preferences.page:8(desc)
 msgid "Settings for Gnote add-ins"
@@ -1672,6 +1709,9 @@ msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2011\n"
 "Jorge González <jorgegonz@svn.gnome.org>, 2009"
+
+#~ msgid "Editing preferences"
+#~ msgstr "Preferencias de edición"
 
 #~ msgid "<gui>Gnote</gui> Search All Notes window"
 #~ msgstr "Ventana Buscar en todas las notas de <gui>Gnote</gui>"
