@@ -20,6 +20,7 @@
 
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/table.h>
 

@@ -23,6 +23,7 @@
 #include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <gtkmm/image.h>
 #include <gtkmm/printoperation.h>
 #include <gtkmm/stock.h>

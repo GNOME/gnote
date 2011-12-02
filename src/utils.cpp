@@ -33,7 +33,7 @@
 #include <gtk/gtk.h>
 
 #include <glibmm/i18n.h>
-#include <glibmm/spawn.h>
+#include <glibmm/stringutils.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
