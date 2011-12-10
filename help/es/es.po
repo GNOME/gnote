@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote-help.master\n"
-"POT-Creation-Date: 2011-11-29 20:48+0000\n"
-"PO-Revision-Date: 2011-12-02 18:10+0100\n"
+"POT-Creation-Date: 2011-12-10 18:48+0000\n"
+"PO-Revision-Date: 2011-12-10 20:56+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,16 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #: C/index.page:6(p) C/gnote-working-with-notebooks.page:10(p)
-#: C/gnote-searching-notes.page:8(p) C/gnote-notes-preferences.page:10(p)
-#: C/gnote-links.page:8(p) C/gnote-introduction.page:10(p)
-#: C/gnote-hotkeys.page:9(p) C/gnote-editing-notes.page:6(p)
-#: C/gnote-deleting-notes.page:8(p) C/gnote-creating-notes.page:8(p)
-#: C/gnote-common-problems.page:8(p) C/gnote-bulleted-lists.page:9(p)
-#: C/gnote-addin-underline.page:9(p) C/gnote-addin-timestamp.page:10(p)
-#: C/gnote-addin-replacetitle.page:9(p) C/gnote-addins-preferences.page:9(p)
-#: C/gnote-addin-print.page:9(p) C/gnote-addin-noteoftheday.page:9(p)
-#: C/gnote-addin-html.page:9(p) C/gnote-addin-fixedwidth.page:9(p)
-#: C/gnote-addin-bugzillalink.page:10(p)
+#: C/gnote-template-notes.page:10(p) C/gnote-searching-notes.page:8(p)
+#: C/gnote-notes-preferences.page:10(p) C/gnote-links.page:8(p)
+#: C/gnote-introduction.page:10(p) C/gnote-hotkeys.page:9(p)
+#: C/gnote-editing-notes.page:6(p) C/gnote-deleting-notes.page:8(p)
+#: C/gnote-creating-notes.page:8(p) C/gnote-common-problems.page:8(p)
+#: C/gnote-bulleted-lists.page:9(p) C/gnote-addin-underline.page:9(p)
+#: C/gnote-addin-timestamp.page:10(p) C/gnote-addin-replacetitle.page:9(p)
+#: C/gnote-addins-preferences.page:9(p) C/gnote-addin-print.page:9(p)
+#: C/gnote-addin-noteoftheday.page:9(p) C/gnote-addin-html.page:9(p)
+#: C/gnote-addin-fixedwidth.page:9(p) C/gnote-addin-bugzillalink.page:10(p)
 msgid "GNU Free Documentation License (GFDL), Version 1.1"
 msgstr "Licencia libre de documentación de GNU (GFDL), Versión 1.1"
 
@@ -52,6 +52,7 @@ msgstr "Pierre-Yves Luyten"
 #: C/index.page:10(years) C/index.page:14(years)
 #: C/gnote-working-with-notebooks.page:13(years)
 #: C/gnote-working-with-notebooks.page:17(years)
+#: C/gnote-template-notes.page:13(years)
 #: C/gnote-searching-notes.page:12(years)
 #: C/gnote-searching-notes.page:16(years)
 #: C/gnote-notes-preferences.page:13(years)
@@ -84,7 +85,7 @@ msgid "2011"
 msgstr "2011"
 
 #: C/index.page:13(name) C/gnote-working-with-notebooks.page:16(name)
-#: C/gnote-searching-notes.page:15(name)
+#: C/gnote-template-notes.page:12(name) C/gnote-searching-notes.page:15(name)
 #: C/gnote-notes-preferences.page:16(name) C/gnote-links.page:15(name)
 #: C/gnote-introduction.page:16(name) C/gnote-hotkeys.page:15(name)
 #: C/gnote-editing-notes.page:13(name) C/gnote-deleting-notes.page:15(name)
@@ -171,7 +172,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/gnote-working-with-notebooks.page:98(None)
+#: C/gnote-working-with-notebooks.page:99(None)
 msgid ""
 "@@image: 'figures/delete-notebook.png'; md5=1c7ca666f1fe986c0b943e49f5108eee"
 msgstr ""
@@ -339,7 +340,7 @@ msgid ""
 msgstr ""
 "En <gui>Buscar en todas las notas</gui>, pulse el botón derecho del ratón "
 "sobre un cuaderno de notas creado y elija <menuchoice><guimenuitem>Abrir la "
-"nota de plantilla</guimenuitem></menuchoice>."
+"plantilla de nota</guimenuitem></menuchoice>."
 
 #: C/gnote-working-with-notebooks.page:80(p)
 msgid ""
@@ -358,11 +359,16 @@ msgstr "Crear plantillas en los cuadernos de notas"
 msgid "Note Template."
 msgstr "Plantilla de notas."
 
-#: C/gnote-working-with-notebooks.page:88(title)
+#: C/gnote-working-with-notebooks.page:86(p)
+msgid "For more, see <link xref=\"gnote-template-notes\"/>."
+msgstr ""
+"Para obtener más información, consulte <link xref=\"gnote-template-notes\"/>."
+
+#: C/gnote-working-with-notebooks.page:89(title)
 msgid "Deleting a Notebook"
 msgstr "Eliminar un cuaderno de notas"
 
-#: C/gnote-working-with-notebooks.page:89(p)
+#: C/gnote-working-with-notebooks.page:90(p)
 msgid ""
 "Deleting a notebook will not delete any of the notes which are currently "
 "inside the notebook. After deleting a notebook, the notes will not be "
@@ -376,12 +382,12 @@ msgstr ""
 "guimenuitem></menuchoice> en la ventana <menuchoice><guimenuitem>Buscar en "
 "todas las notas</guimenuitem></menuchoice>."
 
-#: C/gnote-working-with-notebooks.page:90(p)
+#: C/gnote-working-with-notebooks.page:91(p)
 msgid "You can delete a notebook you have created by one of two methods:"
 msgstr ""
 "Puede eliminar un cuaderno de notas que haya creado de dos formas distintas:"
 
-#: C/gnote-working-with-notebooks.page:91(p)
+#: C/gnote-working-with-notebooks.page:92(p)
 msgid ""
 "To delete a notebook, go to <gui>Search All Notes</gui> window and do one of "
 "the following:"
@@ -389,13 +395,13 @@ msgstr ""
 "Para eliminar un cuaderno de notas, abra la ventana <interface>Buscar en "
 "todas las notas</interface> y realice una de las siguientes acciones:"
 
-#: C/gnote-working-with-notebooks.page:93(p)
+#: C/gnote-working-with-notebooks.page:94(p)
 msgid "Right click on a notebook and choose <gui>Delete Notebook</gui>."
 msgstr ""
 "Pulse con el botón derecho sobre un cuaderno de notas y elija <gui>Eliminar "
 "cuaderno de notas</gui>."
 
-#: C/gnote-working-with-notebooks.page:94(p)
+#: C/gnote-working-with-notebooks.page:95(p)
 msgid ""
 "From the menu, choose <guiseq><gui>Edit</gui><gui>Delete Notebook</gui></"
 "guiseq>"
@@ -403,13 +409,198 @@ msgstr ""
 "Desde el menú, elija <guiseq><gui>Editar</gui><gui>Eliminar cuaderno de "
 "notas</gui></guiseq>"
 
-#: C/gnote-working-with-notebooks.page:97(title)
+#: C/gnote-working-with-notebooks.page:98(title)
 msgid "Deleting notes from Search All Notes"
 msgstr "Eliminar notas desde «Buscar en todas las notas»"
 
-#: C/gnote-working-with-notebooks.page:99(p)
+#: C/gnote-working-with-notebooks.page:100(p)
 msgid "Delete Notebook."
 msgstr "Eliminar un cuaderno de notas."
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnote-template-notes.page:36(None)
+#| msgid ""
+#| "@@image: 'figures/note-template.png'; md5=a27d800d069d880cba494982b9a0e49a"
+msgid ""
+"@@image: 'figures/gnote-template-note.png'; "
+"md5=fa0a6345708f1b55df2ba401ebf2a05d"
+msgstr ""
+"@@image: 'figures/gnote-template-note.png'; "
+"md5=fa0a6345708f1b55df2ba401ebf2a05d"
+
+#: C/gnote-template-notes.page:9(desc)
+#| msgid "Template Note"
+msgid "Using Template Notes"
+msgstr "Usar plantillas de notas"
+
+#: C/gnote-template-notes.page:17(title)
+#| msgid "Template Note"
+msgid "Template Notes"
+msgstr "Plantilla de notas"
+
+#: C/gnote-template-notes.page:19(title)
+#| msgid "Template Note"
+msgid "Template Note Usage"
+msgstr "Uso de las plantillas de notas"
+
+#: C/gnote-template-notes.page:20(p)
+msgid ""
+"Template notes are used to define the content for newly created notes. "
+"Templates are just like regular notes with some additional features."
+msgstr ""
+"Las plantillas de notas se usan para definir el contenido de las notas "
+"nuevas creadas. Las plantillas son como notas normales con algunas "
+"características adicionales."
+
+#: C/gnote-template-notes.page:21(p)
+msgid ""
+"You can define a single template note for <app>Gnote</app> and one for each "
+"notebook you have. These templates define the content of every new note you "
+"create:"
+msgstr ""
+"Puede definir una plantilla de nota para <app>Gnote</app> y otra para "
+"cuaderno de notas que tenga. Estas plantillas definen el contenido de cada "
+"nota que cree:"
+
+#: C/gnote-template-notes.page:23(p)
+msgid ""
+"Every new note you create in <app>Gnote</app>, but not in any of notebooks, "
+"will have have a content of main application template. If template is not "
+"created, the default content is used."
+msgstr ""
+"Cada nota nueva que cree en <app>Gnote</app>, pero no en un cuaderno de "
+"notas, tendrá el contenido de la plantilla principal. Si la plantilla no "
+"está creada, se usa el contenido predeterminado."
+
+#: C/gnote-template-notes.page:24(p)
+msgid ""
+"Every new note created in a notebook will have a content of template note, "
+"if it is present for that notebook. If template note for a notebook is not "
+"defined, the default note content will be used."
+msgstr ""
+"Cada nota nueva que creada en un cuaderno de notas, tendrá el contenido de "
+"la plantilla de nota, si existe para ese cuaderno de notas. Si la plantilla "
+"de nota para el cuaderno de notas no está creada, se usa el contenido "
+"predeterminado de la nota."
+
+#: C/gnote-template-notes.page:26(p)
+msgid "To create or modify template note:"
+msgstr "Para crear o modificar una plantilla de nota:"
+
+#: C/gnote-template-notes.page:28(title)
+#| msgid "Template Note"
+msgid "Main template note"
+msgstr "Plantilla de nota principal"
+
+#: C/gnote-template-notes.page:28(p)
+msgid ""
+"Open <app>Gnote</app> preferences and in <gui>General</gui> tab press the "
+"<gui>Open Template Note</gui> button."
+msgstr ""
+"Abra las preferencias de <app>Gnote</app> y, en la pestaña <gui>General</"
+"gui>, pulse el botón <gui>Abrir plantilla de nota</gui>."
+
+#: C/gnote-template-notes.page:29(title)
+#| msgid "Creating Notebook Template"
+msgid "Notebook template note"
+msgstr "Plantillas de nota de cuaderno de notas"
+
+#: C/gnote-template-notes.page:29(p)
+#| msgid ""
+#| "Select the note in <gui>Search All Notes</gui> and from menu select "
+#| "<gui>Edit</gui>, then <gui>Delete</gui>."
+msgid ""
+"Right click on notebook in <gui>Search All Notes</gui> window and select "
+"<gui>Open Template Note</gui>."
+msgstr ""
+"Pulse con el botón derecho en el cuaderno en la ventana <gui>Buscar en todas "
+"las notas</gui> y elija <gui>Abrir plantilla de nota</gui>."
+
+#: C/gnote-template-notes.page:33(title)
+#| msgid "Template Note"
+msgid "Template Note Features"
+msgstr "Caracterísitcas de las plantillas de notas"
+
+#: C/gnote-template-notes.page:34(p)
+msgid ""
+"Template note is like an ordinary note except that it is not shown in a note "
+"list and has a template bar at the top."
+msgstr ""
+"Una plantilla de nota es como una nota normal salvo que no se muestra en la "
+"lista de notas y que tiene una barra de plantilla en la parte superior."
+
+#: C/gnote-template-notes.page:35(title)
+#| msgid "Template Note"
+msgid "Template note"
+msgstr "Plantilla de nota"
+
+#: C/gnote-template-notes.page:36(desc)
+#| msgid "Template Note"
+msgid "Template note window"
+msgstr "Ventana de la plantilal de nota"
+
+#: C/gnote-template-notes.page:38(p)
+msgid "Template bar has the following features:"
+msgstr "La barra de la plantilla tiene las siguientes características:"
+
+#: C/gnote-template-notes.page:40(title)
+msgid "Convert to regular note"
+msgstr "Convertir a una nota normal"
+
+#: C/gnote-template-notes.page:40(p)
+msgid ""
+"Press this button to turn the template into a regular note, visible in the "
+"list of notes. This action is similar to deleting template note."
+msgstr ""
+"Pulse este botón para convertir la plantilla en una nota normal, visble en "
+"la lista de notas. Esta acción es similar a la de eliminar la plantilla de "
+"nota."
+
+#: C/gnote-template-notes.page:41(title)
+msgid "Save Size"
+msgstr "Guardar tamaño"
+
+#: C/gnote-template-notes.page:41(p)
+msgid ""
+"If you check this box, the size of newly created note will be identical to "
+"that of template note. When this checkbox is not checked, the window of new "
+"note is of default size."
+msgstr ""
+"Si marca esta casilla, el tamaño de la nota nueva creada será el mismo que "
+"el de la plantilla de nota. Si esta casilla no está activada, la ventana de "
+"la nota nueva tiene el tamaño predeterminado."
+
+#: C/gnote-template-notes.page:42(title)
+msgid "Save Selection"
+msgstr "Guardar selección"
+
+#: C/gnote-template-notes.page:42(p)
+msgid ""
+"If this box is checked, new notes will not only have the content of template "
+"note, but also the initial selection. Use this option if you want certain "
+"part of content in the new note to be initialy selected."
+msgstr ""
+"si esta casilla está marcadaa, las notas nuevas no sólo tendrán el contenido "
+"de la plantilla de nota, sino que también tendrán la selección inicial. Use "
+"esta opción si quiere asegurarse de que se seleccione inicialmente parte del "
+"contenido de la nota nueva."
+
+#: C/gnote-template-notes.page:43(title)
+#| msgid "Replace title"
+msgid "Save Title"
+msgstr "Guardar título"
+
+#: C/gnote-template-notes.page:43(p)
+msgid ""
+"This checkbox allows to base the title of new note on a title of template "
+"note. With this box checked, new note will have a title of template note "
+"with a unique number appended. Otherwise the default title will be used."
+msgstr ""
+"Esta casilla permite basar el título de la nota nueva en el título de la "
+"nota de la plantilla. Si esta casilla está marcada, la noeta nueva tendrá el "
+"título de la plantilla de nota con un número único añadido. Si no, se usará "
+"el título predeterminado."
 
 #: C/gnote-searching-notes.page:9(desc)
 msgid "Searching Notes"
@@ -487,9 +678,6 @@ msgstr ""
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-notes-preferences.page:35(None)
-#| msgid ""
-#| "@@image: 'figures/gnote-preferences-editing.png'; "
-#| "md5=f9bf6f13197dcad9d442a9b7ea524f3a"
 msgid ""
 "@@image: 'figures/gnote-preferences-editing.png'; "
 "md5=527d776d4f432ebc824afbe618b46a25"
@@ -506,7 +694,6 @@ msgid "Gnote Preferences"
 msgstr "Preferencias de Gnote"
 
 #: C/gnote-notes-preferences.page:23(title)
-#| msgid "Gnote Preferences"
 msgid "General preferences"
 msgstr "Preferencias generales"
 
@@ -520,10 +707,6 @@ msgstr ""
 "gui> del menú."
 
 #: C/gnote-notes-preferences.page:25(p)
-#| msgid ""
-#| "There are three categories of preferences, <gui>Editing</gui>, "
-#| "<gui>Hotkeys</gui> and <gui>Add-Ins</gui>. Preferences for each tab will "
-#| "be described below."
 msgid ""
 "There are three categories of preferences, <gui>General</gui>, <gui>Hotkeys</"
 "gui> and <gui>Add-Ins</gui>. Preferences for each tab will be described "
@@ -534,10 +717,6 @@ msgstr ""
 "describirán abajo."
 
 #: C/gnote-notes-preferences.page:26(p)
-#| msgid ""
-#| "The editing tab will allow you to set preferences related to editing "
-#| "notes. There are three checkboxes on this tab, which can either be turned "
-#| "on or off."
 msgid ""
 "The general tab will allow you to set preferences related to application "
 "behaviour and editing notes. There are few checkboxes on this tab, which can "
@@ -548,7 +727,6 @@ msgstr ""
 "casillas en esta pestaña, que se pueden activar o desactivar."
 
 #: C/gnote-notes-preferences.page:28(title)
-#| msgid "Use Custom Font"
 msgid "Use Status Icon"
 msgstr "Usar icono de estado"
 
@@ -779,9 +957,6 @@ msgstr "Ventana «Buscar en todas las notas» de <app>Gnote</app>."
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-hotkeys.page:32(None)
-#| msgid ""
-#| "@@image: 'figures/gnote-preferences-hotkeys.png'; "
-#| "md5=6f0c88327cb06b626267ef1c46c2c553"
 msgid ""
 "@@image: 'figures/gnote-preferences-hotkeys.png'; "
 "md5=f9fd21fc0ce6d836e5dee4590099b21a"
@@ -884,9 +1059,9 @@ msgid ""
 "Directly below this toolbar is the content area of the note."
 msgstr ""
 "Después de crear una nota nueva, aparecerá una ventana nueva con el título "
-"«Nueva nota N». En la parte superior de la nota hay una barra de herramientas "
-"con varios botones y texto. Directamente debajo de esta barra de "
-"herramientas está el área de contenidos de la nota."
+"«Nueva nota N». En la parte superior de la nota hay una barra de "
+"herramientas con varios botones y texto. Directamente debajo de esta barra "
+"de herramientas está el área de contenidos de la nota."
 
 #: C/gnote-editing-notes.page:22(title)
 msgid "<gui>New Note</gui> window"
@@ -941,10 +1116,10 @@ msgid ""
 "during the current session. To undo your last change using the keyboard, use "
 "the standard keybinding, <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
 msgstr ""
-"El soporte para «Deshacer» está disponible en Gnote a través de este elemento "
-"del menú. La función deshacer le permite revertir cambios hechos previamente "
-"en su nota durante la sesión actual. Para deshacer el último cambio usando "
-"el teclado, utilice el atajo de teclado predeterminado "
+"El soporte para «Deshacer» está disponible en Gnote a través de este "
+"elemento del menú. La función deshacer le permite revertir cambios hechos "
+"previamente en su nota durante la sesión actual. Para deshacer el último "
+"cambio usando el teclado, utilice el atajo de teclado predeterminado "
 "<keycombo><keycap>Ctrl</keycap><keycap>Z</keycap></keycombo>."
 
 #: C/gnote-editing-notes.page:36(title)
@@ -1049,8 +1224,8 @@ msgid ""
 "<gui>Huge</gui> options from the Text menu."
 msgstr ""
 "Actualmente existen cuatro opciones en esta parte del menú: «Pequeña», "
-"«Normal», «Grande» y «Enorme». Cada una de estas opciones representa un tamaño "
-"de tipografía que utilizar con el texto seleccionado en la nota. Para "
+"«Normal», «Grande» y «Enorme». Cada una de estas opciones representa un "
+"tamaño de tipografía que utilizar con el texto seleccionado en la nota. Para "
 "modificar el tamaño de la tipografía, seleccione el texto y luego seleccione "
 "una de las opciones <gui>Pequeña</gui>, <gui>Normal</gui>, <gui>Grande</"
 "gui>, <gui>Enorme</gui> del menú <guibutton>Texto</guibutton>."
@@ -1304,8 +1479,9 @@ msgid ""
 "Select <gui>Decrease Indent</gui> from the Text menu in succession until the "
 "current line is no longer part of the bulleted list."
 msgstr ""
-"Seleccione <gui>Disminuir sangría</gui>, desde el menú «Texto», sucesivamente "
-"hasta que la línea actual no siga formando parte de la lista de topos."
+"Seleccione <gui>Disminuir sangría</gui>, desde el menú «Texto», "
+"sucesivamente hasta que la línea actual no siga formando parte de la lista "
+"de topos."
 
 #: C/gnote-bulleted-lists.page:37(p)
 msgid ""
@@ -1485,9 +1661,6 @@ msgstr ""
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-addins-preferences.page:25(None)
-#| msgid ""
-#| "@@image: 'figures/gnote-preferences-add-ins.png'; "
-#| "md5=ba42ccdcc7389da4a72bd648b33c1320"
 msgid ""
 "@@image: 'figures/gnote-preferences-add-ins.png'; "
 "md5=be31b216768913e50f8f21b0ff512c05"
@@ -1565,7 +1738,7 @@ msgstr ""
 
 #: C/gnote-addin-noteoftheday.page:8(desc)
 msgid "Template Note"
-msgstr "Nota de plantilla"
+msgstr "Plantilla de nota"
 
 #: C/gnote-addin-noteoftheday.page:20(title)
 msgid "Note of the Day"
@@ -2203,12 +2376,12 @@ msgstr ""
 #~ "that look like this: <inlinegraphic fileref=\"figures/gnote-pinup.png\"/>."
 #~ msgstr ""
 #~ "Para forzar a una nota a estar siempre en el panel, sin importar cuando "
-#~ "se utilizó por última vez, pulse en el icono para «pincharla» al menú. Las "
-#~ "notas que están pinchadas en el menú del panel tendrán un icono de pegado "
-#~ "que se ve así: <inlinegraphic fileref=\"figures/gnote-pindown.png\"/>. "
-#~ "Las notas que no están pinchadas al menú del panel tendrán iconos de "
-#~ "pegado que se ven así: <inlinegraphic fileref=\"figures/gnote-pinup.png\"/"
-#~ ">."
+#~ "se utilizó por última vez, pulse en el icono para «pincharla» al menú. "
+#~ "Las notas que están pinchadas en el menú del panel tendrán un icono de "
+#~ "pegado que se ve así: <inlinegraphic fileref=\"figures/gnote-pindown.png"
+#~ "\"/>. Las notas que no están pinchadas al menú del panel tendrán iconos "
+#~ "de pegado que se ven así: <inlinegraphic fileref=\"figures/gnote-pinup.png"
+#~ "\"/>."
 
 #~ msgid "Gnote Panel Menu"
 #~ msgstr "Menú del panel de Gnote"
@@ -2503,9 +2676,9 @@ msgstr ""
 #~ msgstr "e importar Notas adhesivas."
 
 #~ msgid ""
-#~ "By default, Gnote comes with several pre-installed add-ins: <placeholder-"
-#~ "1/> Since these are preinstalled, they are ready to use and are "
-#~ "automatically loaded into the Gnote interface."
+#~ "By default, Gnote comes with several pre-installed add-ins: "
+#~ "<placeholder-1/> Since these are preinstalled, they are ready to use and "
+#~ "are automatically loaded into the Gnote interface."
 #~ msgstr ""
 #~ "De forma predeterminada, Gnote incluye varios complementos preinstalados: "
 #~ "<placeholder-1/> Dado que estos vienen preinstalados, están listos para "

@@ -2,22 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2009, 2010, 2011.
 # Jorge González <jorgegonz@svn.gnome.org>, 2009, 2010, 2011.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-11-29 20:47+0000\n"
-"PO-Revision-Date: 2011-12-03 12:20+0100\n"
-"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
-"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2011-12-10 18:24+0000\n"
+"PO-Revision-Date: 2011-12-10 20:52+0100\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../data/gnote.desktop.in.in.h:1
@@ -777,7 +777,6 @@ msgstr "Complementos"
 
 #. Status icon
 #: ../src/preferencesdialog.cpp:215
-#| msgid "Use status _icon"
 msgid "Use Status _Icon"
 msgstr "Usar _icono de estado"
 
@@ -835,7 +834,7 @@ msgstr "Siempre renombrar enlaces"
 #. Translators: This is 'New Note' Template, not New 'Note Template'
 #: ../src/preferencesdialog.cpp:310 ../src/notemanager.cpp:112
 msgid "New Note Template"
-msgstr "Plantilla de Nota nueva"
+msgstr "Plantilla de nota nueva"
 
 #: ../src/preferencesdialog.cpp:313
 msgid ""
@@ -1144,12 +1143,12 @@ msgid ""
 "notes, and will not show up in the note menu or search window."
 msgstr ""
 "Esta nota es una plantilla de notas. Determina el contenido predeterminado "
-"de las notas regulares, y no se mostrará en el menú de notas ni en la "
-"ventana de búsqueda."
+"de las notas normales, y no se mostrará en el menú de notas ni en la ventana "
+"de búsqueda."
 
 #: ../src/notewindow.cpp:507
 msgid "Convert to regular note"
-msgstr "Convertir a nota regular"
+msgstr "Convertir a nota normal"
 
 #: ../src/notewindow.cpp:510
 msgid "Save Si_ze"
@@ -1507,11 +1506,11 @@ msgstr "Crear una nota nueva en éste portátil"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:118
 msgid "_Open Template Note"
-msgstr "_Abrir la nota de plantilla"
+msgstr "_Abrir la plantilla de nota"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:119
 msgid "Open this notebook's template note"
-msgstr "Abrir la nota de plantilla de este cuaderno de notas"
+msgstr "Abrir la plantilla de nota de este cuaderno de notas"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:123
 msgid "Delete Note_book"
@@ -1590,7 +1589,7 @@ msgstr ""
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:57
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere y el Proyecto Tomboy"
@@ -1646,15 +1645,15 @@ msgstr "¿Quiere quitar este icono?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Si quita un icono se perderá permanentemente."
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:39
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:40
 msgid "Destination for HTML Export"
 msgstr "Destino para la exportación a HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Export linked notes"
 msgstr "Exportar las notas enlazadas"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:42
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:43
 msgid "Include all other linked notes"
 msgstr "Incluir todas las notas enlazadas"
 
@@ -1764,24 +1763,24 @@ msgstr ""
 "Cambiar la nota <span weight=\"bold\">Hoy: plantilla</span> para "
 "personalizar el texto que las nuevas notas Hoy tendrán."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:49
 msgid "Printing Support"
 msgstr "Soporte para impresión"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:53
 msgid "Allows you to print a note."
 msgstr "Le permite imprimir una nota."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:80
 msgid "Print"
 msgstr "Imprimir"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
 msgid "Error printing note"
 msgstr "Error al imprimir la nota"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:299
 msgid "Page %1% of %2%"
 msgstr "Página %1% de %2%"
 
