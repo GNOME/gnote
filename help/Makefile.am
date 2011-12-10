@@ -15,6 +15,7 @@ DOC_FIGURES = \
 	figures/gnote-preferences-hotkeys.png \
 	figures/gnote-preferences-synchronization.png \
 	figures/gnote-search-all-notes.png \
+	figures/gnote-template-note.png \
 	figures/gnote-tools.png \
 	figures/new-notebook.png \
 	figures/notebook-icon.png \
@@ -39,6 +40,7 @@ DOC_PAGES = \
 	gnote-links.page \
 	gnote-notes-preferences.page \
 	gnote-searching-notes.page \
+	gnote-template-notes.page \
 	gnote-working-with-notebooks.page \
 	index.page
 DOC_LINGUAS = da de es fr lt zh_CN
