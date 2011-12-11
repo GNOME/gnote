@@ -325,7 +325,7 @@ namespace gnote {
       hbox->pack_start(*label_vbox, true, true, 0);
 
       std::string title = str(boost::format("<span weight='bold' size='larger'>%1%"
-                                            "</span>\n") % header);
+                                            "</span>\n") % header.c_str());
 
       Gtk::Label *label;
 
