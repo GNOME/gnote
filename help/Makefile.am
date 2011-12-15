@@ -43,4 +43,4 @@ DOC_PAGES = \
 	gnote-template-notes.page \
 	gnote-working-with-notebooks.page \
 	index.page
-DOC_LINGUAS = da de es fr lt zh_CN
+DOC_LINGUAS = cs da de es fr lt zh_CN
