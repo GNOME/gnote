@@ -1,3 +1,44 @@
+0.8.2 "Lil' early XMas gift" - 2011/12/19
+
+New Features:
+  * Added template bar to template notes
+  * Integrated with GtkApplication (#640430)
+  * Gnote remains present while at least one window is present
+  * Panel applet disabled by default
+  * Added option for status icon to preferences (#663817)
+  * Added background mode
+  * Return ordered note list when using D-BUS search (#662246)
+
+Fixes:
+  * Fixed keys in GSettings schema descriptions
+  * Manual fixes
+  * Updated man page to current behaviour
+  * Do not open Search Window in status icon mode (#653447)
+  * Fixed special XML character encoding
+  * Make sticky note importer support special chars
+  * Show in all desktop environements (#664609)
+  * src/notetag.hpp must include <map> (#655340)
+  * Add missing includes (#665344)
+  * Fixed a warning about a condition never reached
+  * Fixed note deletion with international characters
+
+Translations:
+  * Updated translations:
+    - British English (en_GB)
+    - Catalan (ca)
+    - Czech (cs)
+    - Esperanto (eo)
+    - French (fr)
+    - German (de)
+    - Hungarian (hu)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Punjabi (pa)
+    - Russian (ru)
+    - Slovenian (sl)
+    - Spanish (es)
+    - Swedish (sv)
+
 0.8.1 "Dennis Ritchie" - 2011/10/23
 
 New features:
