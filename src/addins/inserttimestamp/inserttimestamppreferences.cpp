@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -57,8 +58,7 @@ namespace inserttimestamp {
   {
     _init_static();
     // Get current values
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_or_load_schema_settings(
-        SCHEMA_INSERT_TIMESTAMP);
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
     std::string dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
 
     sharp::DateTime now = sharp::DateTime::now();
@@ -180,7 +180,7 @@ namespace inserttimestamp {
     if (iter) {
       std::string format;
       iter->get_value(1, format);
-      Preferences::obj().get_or_load_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(
+      Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(
           INSERT_TIMESTAMP_FORMAT, format);
     }
   }

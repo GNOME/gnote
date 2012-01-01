@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -82,7 +82,6 @@ namespace gnote {
     Preferences();
 
     Glib::RefPtr<Gio::Settings> get_schema_settings(const std::string & schema);
-    Glib::RefPtr<Gio::Settings> get_or_load_schema_settings(const std::string & schema);
   private:
     Preferences(const Preferences &); // non implemented
     std::map<std::string, Glib::RefPtr<Gio::Settings> > m_schemas;

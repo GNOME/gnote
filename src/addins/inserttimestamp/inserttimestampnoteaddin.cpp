@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -84,8 +84,7 @@ namespace inserttimestamp {
     m_item->show ();
     add_plugin_menu_item (m_item);
 
-    Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj()
-      .get_or_load_schema_settings(SCHEMA_INSERT_TIMESTAMP);
+    Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
     m_date_format = settings->get_string(INSERT_TIMESTAMP_FORMAT);
     settings->signal_changed().connect(
       sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_format_setting_changed));
@@ -105,7 +104,7 @@ namespace inserttimestamp {
   void InsertTimestampNoteAddin::on_format_setting_changed(const Glib::ustring & key)
   {
     if(key == INSERT_TIMESTAMP_FORMAT) {
-      m_date_format = gnote::Preferences::obj().get_or_load_schema_settings(
+      m_date_format = gnote::Preferences::obj().get_schema_settings(
           SCHEMA_INSERT_TIMESTAMP)->get_string(INSERT_TIMESTAMP_FORMAT);
     }
   }

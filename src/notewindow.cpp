@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -138,7 +138,7 @@ namespace gnote {
     // Don't set up Ctrl-W or Ctrl-N if Emacs is in use
     bool using_emacs = false;
     Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
-      .get_or_load_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+      .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
     if(desktop_settings) {
       std::string gtk_key_theme = 
         desktop_settings->get_string(Preferences::DESKTOP_GNOME_KEY_THEME);

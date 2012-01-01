@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,7 @@ namespace gnote {
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
     //Set up the schema to watch the default document font
     Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
-      .get_or_load_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+      .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
     if(desktop_settings) {
       desktop_settings->signal_changed().connect(
         sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
@@ -75,7 +75,7 @@ namespace gnote {
   {
     try {
       Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
-        .get_or_load_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+        .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
       if(desktop_settings) {
         std::string doc_font_string =
           desktop_settings->get_string(Preferences::DESKTOP_GNOME_FONT);
@@ -99,7 +99,7 @@ namespace gnote {
       if (!Preferences::obj().get_schema_settings(
           Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
         Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
-          .get_or_load_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+          .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
         if(desktop_settings) {
           std::string value = desktop_settings->get_string(key);
           modify_font_from_string(value);
