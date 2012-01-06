@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <tr1/array>
 
+#include <glibmm/main.h>
 
 #include "debug.hpp"
 #include "notebuffer.hpp"
