@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -142,6 +142,9 @@ namespace sharp {
       case gnote::ADDIN_CATEGORY_TOOLS:
         /* TRANSLATORS: Addin category. */
         return _("Tools");
+      case gnote::ADDIN_CATEGORY_SYNCHRONIZATION:
+        /* TRANSLATORS: Addin category. */
+        return _("Synchronization");
       case gnote::ADDIN_CATEGORY_UNKNOWN:
       default:
         /* TRANSLATORS: Addin category is unknown. */
@@ -155,6 +158,7 @@ namespace sharp {
       case gnote::ADDIN_CATEGORY_FORMATTING:
       case gnote::ADDIN_CATEGORY_DESKTOP_INTEGRATION:
       case gnote::ADDIN_CATEGORY_TOOLS:
+      case gnote::ADDIN_CATEGORY_SYNCHRONIZATION:
         return category;
       case gnote::ADDIN_CATEGORY_UNKNOWN:
       default:
