@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -35,6 +35,8 @@
 
 #include <glibmm/timeval.h>
 
+#include "timespan.hpp"
+
 namespace sharp {
 
 
@@ -54,7 +56,6 @@ public:
   int day_of_year() const;
 
   bool is_valid() const;
-  bool operator>(const DateTime & dt) const;
 
   std::string to_string(const char * format) const;
   std::string to_string(const std::string & format) const
@@ -69,6 +70,25 @@ public:
   static int compare(const DateTime &, const DateTime &);
 
   bool operator==(const DateTime & dt) const;
+  bool operator!=(const DateTime & dt) const
+    {
+      return !(*this == dt);
+    }
+  bool operator>(const DateTime & dt) const;
+  bool operator>=(const DateTime & dt) const
+    {
+      return (*this == dt) || (*this > dt);
+    }
+  bool operator<(const DateTime & dt) const
+    {
+      return !(*this >= dt);
+    }
+  bool operator<=(const DateTime & dt) const
+    {
+      return (*this < dt) || (*this == dt);
+    }
+  TimeSpan operator-(const DateTime & dt) const;
+  DateTime operator-(const TimeSpan & ts) const;
 
   glong sec() const
     {
