@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,6 +29,7 @@
 #ifndef __SHARP_XML_HPP_
 #define __SHARP_XML_HPP_
 
+#include <string>
 #include <vector>
 
 #include <libxml/tree.h>
@@ -39,6 +41,15 @@ namespace sharp {
 
   XmlNodeSet xml_node_xpath_find(const xmlNodePtr node,
                                  const char * xpath);
+
+  std::string xml_node_xpath_find_single(const xmlNodePtr node,
+                                         const char * xpath);
+
+  xmlNodePtr xml_node_xpath_find_single_node(const xmlNodePtr node,
+                                             const char * xpath);
+
+  std::string xml_node_get_attribute(const xmlNodePtr node,
+                                     const char * attr_name);
 
 }
 

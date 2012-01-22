@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -62,6 +63,53 @@ namespace sharp {
     }
 
     return nodes;
+  }
+
+
+  std::string xml_node_xpath_find_single(const xmlNodePtr node,
+                                         const char * xpath)
+  {
+    xmlNodePtr n = xml_node_xpath_find_single_node(node, xpath);
+    if(!n) {
+      return "";
+    }
+
+    return reinterpret_cast<char*>(XML_GET_CONTENT(n));
+  }
+
+
+  xmlNodePtr xml_node_xpath_find_single_node(const xmlNodePtr node,
+                                             const char * xpath)
+  {
+    xmlXPathContext* ctxt = xmlXPathNewContext(node->doc);
+    ctxt->node = node;
+
+    xmlXPathObject* result = xmlXPathEval((const xmlChar*)xpath, ctxt);
+
+    xmlNodePtr result_node = NULL;
+    if(result && (result->type == XPATH_NODESET)) {
+      xmlNodeSetPtr nodeset = result->nodesetval;
+
+      if(nodeset && nodeset->nodeNr) {
+          result_node = nodeset->nodeTab[0];
+      }
+    }
+
+    if(result) {
+      xmlXPathFreeObject(result);
+    }
+    if(ctxt) {
+      xmlXPathFreeContext(ctxt);
+    }
+
+    return result_node;
+  }
+
+
+  std::string xml_node_get_attribute(const xmlNodePtr node,
+                                     const char * attr_name)
+  {
+    return reinterpret_cast<char*>(xmlGetProp(node, reinterpret_cast<const xmlChar*>(attr_name)));
   }
 
 }
