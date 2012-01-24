@@ -56,6 +56,7 @@ namespace gnote {
   const char * Preferences::SYNC_LOCAL_PATH = "sync-local-path";
   const char * Preferences::SYNC_SELECTED_SERVICE_ADDIN = "sync-selected-service-addin";
   const char * Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "sync-conflict-behavior";
+  const char * Preferences::SYNC_AUTOSYNC_TIMEOUT = "autosync-timeout";
 
   const char * Preferences::NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
   const char * Preferences::USE_STATUS_ICON = "use-status-icon";

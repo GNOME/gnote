@@ -190,6 +190,11 @@
       <_summary>Note Synchronization Conflict Saved Behavior</_summary>
       <_description>Integer value indicating if there is a preference to always perform a specific behavior when a conflict is detected, instead of prompting the user. The values map to an internal enumeration. 0 indicates that the user wishes to be prompted when a conflict occurs, so that they may handle each conflict situation on a case-by-case basis.</_description>
     </key>
+    <key name="autosync-timeout" type="i">
+      <default>-1</default>
+      <_summary>Automatic Background Synchronization Timeout</_summary>
+      <_description>Integer value indicating how frequently to perform a background sync of your notes (when sync is configured).  Any value less than 1 indicates that autosync is disabled.  The lowest acceptable positive value is 5.  Value is in minutes.</_description>
+    </key>
     <child name="wdfs" schema="org.gnome.gnote.sync.wdfs" />
   </schema>
   <schema id="org.gnome.gnote.sync.wdfs" path="/org/gnome/gnote/sync/wdfs/">

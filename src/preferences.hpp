@@ -75,6 +75,7 @@ namespace gnote {
     static const char *SYNC_LOCAL_PATH;
     static const char *SYNC_SELECTED_SERVICE_ADDIN;
     static const char *SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
+    static const char *SYNC_AUTOSYNC_TIMEOUT;
 
     static const char *DESKTOP_GNOME_FONT;
     static const char *DESKTOP_GNOME_KEY_THEME;
