@@ -2,7 +2,6 @@
  * gnote
  *
  * Copyright (C) 2012 Aurimas Cernius
- * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,30 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
 
-#include <glibmm/i18n.h>
-#include <gtkmm/main.h>
+#include "syncserviceaddin.hpp"
 
-#include "gnote.hpp"
+namespace gnote {
+namespace sync {
 
-int main(int argc, char **argv)
-{
-//  if(!Glib::thread_supported()) {
-//    Glib::thread_init();
-//  }
+const char * SyncServiceAddin::IFACE_NAME = "gnote::sync::SyncServiceAddin";
 
-  bindtextdomain(GETTEXT_PACKAGE, GNOTE_LOCALEDIR);
-  bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-  textdomain(GETTEXT_PACKAGE);
-
-  if(!g_thread_supported()) {
-    g_thread_init(NULL);
-  }
-  gdk_threads_init();
-  Gtk::Main kit(argc, argv);
-  gnote::Gnote *app = &gnote::Gnote::obj();
-  int retval = app->main(argc, argv);
-  delete app;
-  return retval;
+}
 }

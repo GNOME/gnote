@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -38,6 +38,7 @@
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
 #include "notebooks/notebooknoteaddin.hpp"
+#include "synchronization/syncserviceaddin.hpp"
 
 
 #if 1
@@ -258,6 +259,11 @@ namespace gnote {
         ApplicationAddin * addin = dynamic_cast<ApplicationAddin*>((*f)());
         m_app_addins.insert(std::make_pair(dmod->id(), addin));
       }
+      f = dmod->query_interface(sync::SyncServiceAddin::IFACE_NAME);
+      if(f) {
+        sync::SyncServiceAddin * addin = dynamic_cast<sync::SyncServiceAddin*>((*f)());
+        m_sync_service_addins.insert(std::make_pair(dmod->id(), addin));
+      }
     }
   }
 
@@ -309,6 +315,12 @@ namespace gnote {
   void AddinManager::get_preference_tab_addins(std::list<PreferenceTabAddin *> &l) const
   {
     sharp::map_get_values(m_pref_tab_addins, l);
+  }
+
+
+  void AddinManager::get_sync_service_addins(std::list<sync::SyncServiceAddin *> &l) const
+  {
+    sharp::map_get_values(m_sync_service_addins, l);
   }
 
 

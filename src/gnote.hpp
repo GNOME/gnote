@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -36,6 +36,7 @@
 #include "keybinder.hpp"
 #include "remotecontrolproxy.hpp"
 #include "tray.hpp"
+#include "synchronization/syncdialog.hpp"
 
 namespace gnote {
 
@@ -162,12 +163,17 @@ public:
   sigc::signal<void> signal_quit;
   static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
   static void register_object();
+  sync::SyncDialog::Ptr sync_dialog()
+    {
+      return m_sync_dlg;
+    }
 private:
   void start_note_created(const Note::Ptr & start_note);
   std::string get_note_path(const std::string & override_path);
   void on_setting_changed(const Glib::ustring & key);
   void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
+  void on_sync_dialog_response(int response_id);
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
@@ -179,6 +185,7 @@ private:
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
   GnoteApp *m_app;
+  sync::SyncDialog::Ptr m_sync_dlg;
 };
 
 

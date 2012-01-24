@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2012 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -41,6 +41,10 @@ class ApplicationAddin;
 class PreferenceTabAddin;
 class AddinPreferenceFactoryBase;
 
+namespace sync {
+class SyncServiceAddin;
+}
+
 
 class AddinManager
 {
@@ -60,6 +64,7 @@ public:
   ApplicationAddin * get_application_addin(const std::string & id)
                                            const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
+  void get_sync_service_addins(std::list<sync::SyncServiceAddin *> &) const;
   void get_import_addins(std::list<ImportAddin*> &) const;
   void initialize_application_addins() const;
   void shutdown_application_addins() const;
@@ -96,6 +101,8 @@ private:
   IdInfoMap                                m_note_addin_infos;
   typedef std::map<std::string, PreferenceTabAddin*> IdPrefTabAddinMap;
   IdPrefTabAddinMap                        m_pref_tab_addins;
+  typedef std::map<std::string, sync::SyncServiceAddin*> IdSyncServiceAddinMap;
+  IdSyncServiceAddinMap                    m_sync_service_addins;
   typedef std::map<std::string, ImportAddin *> IdImportAddinMap;
   IdImportAddinMap                         m_import_addins;
   typedef std::map<std::string, AddinPreferenceFactoryBase*> IdAddinPrefsMap;

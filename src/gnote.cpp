@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -55,6 +55,7 @@
 #include "dbus/remotecontrolclient.hpp"
 #include "sharp/streamreader.hpp"
 #include "sharp/files.hpp"
+#include "synchronization/syncmanager.hpp"
 
 #if HAVE_PANELAPPLET
 #include "applet.hpp"
@@ -158,7 +159,9 @@ namespace gnote {
     }
     else {
       m_app = gnote_app_new();
+      gdk_threads_enter();
       g_application_run(G_APPLICATION(m_app), argc, argv);
+      gdk_threads_leave();
       g_object_unref(m_app);
       m_app = NULL;
     }
@@ -201,11 +204,8 @@ namespace gnote {
     std::string note_path = get_note_path(cmd_line.note_path());
     m_manager = new NoteManager(note_path, sigc::mem_fun(*this, &Gnote::start_note_created));
     m_keybinder = new XKeybinder();
-
-    // TODO
-    // SyncManager::init()
-
     ActionManager::obj().load_interface();
+    sync::SyncManager::init();
     setup_global_actions();
     m_manager->get_addin_manager().initialize_application_addins();
   }
@@ -472,15 +472,18 @@ namespace gnote {
 
   void Gnote::open_note_sync_window()
   {
-#if 0
-    // TODO
-    if (sync_dlg == null) {
-      sync_dlg = new SyncDialog ();
-      sync_dlg.Response += OnSyncDialogResponse;
+    if(m_sync_dlg == 0) {
+      m_sync_dlg = sync::SyncDialog::create();
+      m_sync_dlg->signal_response().connect(sigc::mem_fun(*this, &Gnote::on_sync_dialog_response));
     }
 
-    sync_dlg.Present 
-#endif
+    m_sync_dlg->present();
+  }
+
+
+  void Gnote::on_sync_dialog_response(int)
+  {
+    m_sync_dlg.reset();
   }
 
 

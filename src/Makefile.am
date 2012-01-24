@@ -16,14 +16,14 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 
 AM_LDFLAGS=-export-dynamic
 
-GNOTE_LIBS = libgnote.a $(top_builddir)/libtomboy/libtomboy.la \
+GNOTE_LIBS = libgnote.la $(top_builddir)/libtomboy/libtomboy.la \
 	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@PCRE_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
 	@UUID_LIBS@
 
-noinst_LIBRARIES = libgnote.a
+lib_LTLIBRARIES = libgnote.la
 bin_PROGRAMS = gnote
 check_PROGRAMS = trietest stringtest notetest dttest uritest filestest \
 	fileinfotest xmlreadertest
@@ -31,39 +31,29 @@ TESTS = trietest stringtest notetest dttest uritest filestest \
 	fileinfotest xmlreadertest
 
 
-trietest_SOURCES = test/trietest.cpp \
-	sharp/string.cpp debug.cpp
-trietest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
+trietest_SOURCES = test/trietest.cpp
+trietest_LDADD = libgnote.la @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
-dttest_SOURCES = test/dttest.cpp \
-	sharp/datetime.cpp debug.cpp
-dttest_LDADD = @LIBGLIBMM_LIBS@
+dttest_SOURCES = test/dttest.cpp
+dttest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
 
-stringtest_SOURCES = test/stringtest.cpp \
-	sharp/string.cpp debug.cpp
-stringtest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
+stringtest_SOURCES = test/stringtest.cpp
+stringtest_LDADD = libgnote.la @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
-filestest_SOURCES = test/filestest.cpp \
-	sharp/files.cpp
-filestest_LDADD = @LIBGLIBMM_LIBS@ -lgiomm-2.4
+filestest_SOURCES = test/filestest.cpp
+filestest_LDADD = libgnote.la @LIBGLIBMM_LIBS@ -lgiomm-2.4
 
-fileinfotest_SOURCES = test/fileinfotest.cpp \
-	sharp/fileinfo.cpp \
-	sharp/datetime.cpp
-fileinfotest_LDADD = @LIBGLIBMM_LIBS@ -lgiomm-2.4
+fileinfotest_SOURCES = test/fileinfotest.cpp
+fileinfotest_LDADD = libgnote.la @LIBGLIBMM_LIBS@ -lgiomm-2.4
 
-uritest_SOURCES = test/uritest.cpp \
-	sharp/string.cpp  sharp/uri.cpp debug.cpp
-uritest_LDADD =  @PCRE_LIBS@ @LIBGLIBMM_LIBS@
+uritest_SOURCES = test/uritest.cpp
+uritest_LDADD = libgnote.la @PCRE_LIBS@ @LIBGLIBMM_LIBS@
 
-xmlreadertest_SOURCES = test/xmlreadertest.cpp \
-	sharp/xmlreader.cpp debug.cpp
-xmlreadertest_LDADD = @LIBXML_LIBS@
+xmlreadertest_SOURCES = test/xmlreadertest.cpp
+xmlreadertest_LDADD = libgnote.la @LIBXML_LIBS@
 
 notetest_SOURCES = test/notetest.cpp
 notetest_LDADD =  $(GNOTE_LIBS) -lX11
-
-gnote_SOURCES = main.cpp
 
 
 if HAVE_PANELAPPLET
@@ -89,7 +79,7 @@ DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/remotecontrol-glue.cpp \
 	$(NULL)
 
-libgnote_a_SOURCES = \
+libgnote_la_SOURCES = \
 	base/singleton.hpp \
 	base/macros.hpp \
 	base/inifile.hpp base/inifile.cpp \
@@ -107,6 +97,7 @@ libgnote_a_SOURCES = \
 	sharp/streamreader.hpp sharp/streamreader.cpp \
 	sharp/streamwriter.hpp sharp/streamwriter.cpp \
 	sharp/string.hpp sharp/string.cpp \
+	sharp/timespan.hpp sharp/timespan.cpp \
 	sharp/uri.hpp sharp/uri.cpp \
 	sharp/uuid.hpp \
 	sharp/xml.hpp sharp/xml.cpp \
@@ -158,6 +149,19 @@ libgnote_a_SOURCES = \
 	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
 	notebooks/notebooknoteaddin.hpp notebooks/notebooknoteaddin.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
+	synchronization/filesystemsyncserver.hpp synchronization/filesystemsyncserver.cpp \
+	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
+	synchronization/silentui.hpp synchronization/silentui.cpp \
+	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
+	synchronization/syncmanager.hpp synchronization/syncmanager.cpp \
+	synchronization/syncui.hpp synchronization/syncui.cpp \
+        synchronization/syncutils.hpp synchronization/syncutils.cpp \
+	synchronization/syncserviceaddin.hpp synchronization/syncserviceaddin.cpp \
+	$(NULL)
+
+
+gnote_SOURCES = \
+	main.cpp \
 	$(DBUS_SOURCES)   \
 	$(APPLET_SOURCES) \
 	$(NULL)

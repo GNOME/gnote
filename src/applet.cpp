@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -427,8 +427,10 @@ int register_applet()
   NoteManager &manager = Gnote::obj().default_note_manager();
   GnotePanelAppletEventBox applet_event_box(manager);
   GnotePrefsKeybinder key_binder(manager, applet_event_box);
+  gdk_threads_enter();
   int returncode = panel_applet_factory_main(FACTORY_IID, PANEL_TYPE_APPLET,
                                              gnote_applet_fill, &applet_event_box);
+  gdk_threads_leave();
   return returncode;
 }
 
