@@ -181,6 +181,7 @@ src/addins/addins.mk
 src/addins/backlinks/Makefile
 src/addins/bugzilla/Makefile
 src/addins/exporttohtml/Makefile
+src/addins/filesystemsyncservice/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
 src/addins/noteoftheday/Makefile

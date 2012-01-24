@@ -4,6 +4,7 @@
 SUBDIRS = backlinks \
 	bugzilla \
 	exporttohtml \
+	filesystemsyncservice \
 	fixedwidth \
 	inserttimestamp \
 	noteoftheday \
