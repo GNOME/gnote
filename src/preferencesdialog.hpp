@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -66,6 +66,7 @@ private:
   void on_sync_addin_combo_changed();
   void on_advanced_sync_config_button();
   void on_reset_sync_addin_button();
+  void reset_sync_addin_button(bool signal);
   void on_save_sync_addin_button();
 
   void on_preferences_setting_changed(const Glib::ustring & key);
@@ -83,6 +84,9 @@ private:
   void on_addin_info_button();
   bool addin_info_dialog_deleted(GdkEventAny*, Gtk::Dialog*);
   void addin_info_dialog_response(int, Gtk::Dialog*);
+  void on_sync_addin_prefs_changed();
+  void on_conflict_option_toggle();
+  void combo_box_text_data_func(const Gtk::TreeIter & iter);
 ////
 
   class SyncStoreModel
@@ -94,19 +98,19 @@ private:
         add(m_col1);
       }
 
-    Gtk::TreeModelColumn<std::string> m_col1;
+    Gtk::TreeModelColumn<sync::SyncServiceAddin*> m_col1;
   };
 
-  SyncStoreModel syncAddinStoreRecord;
-  Glib::RefPtr<Gtk::ListStore> syncAddinStore;
-  std::map<std::string, Gtk::TreeIter> syncAddinIters;
-  Gtk::ComboBox *syncAddinCombo;
-  SyncServiceAddin *selectedSyncAddin;
-  Gtk::VBox   *syncAddinPrefsContainer;
-  Gtk::Widget *syncAddinPrefsWidget;
-  Gtk::Button *resetSyncAddinButton;
-  Gtk::Button *saveSyncAddinButton;
-  Gtk::ComboBoxText *renameBehaviorCombo;
+  SyncStoreModel m_sync_addin_store_record;
+  Glib::RefPtr<Gtk::ListStore> m_sync_addin_store;
+  std::map<std::string, Gtk::TreeIter> m_sync_addin_iters;
+  Gtk::ComboBox *m_sync_addin_combo;
+  sync::SyncServiceAddin *m_selected_sync_addin;
+  Gtk::VBox   *m_sync_addin_prefs_container;
+  Gtk::Widget *m_sync_addin_prefs_widget;
+  Gtk::Button *m_reset_sync_addin_button;
+  Gtk::Button *m_save_sync_addin_button;
+  Gtk::ComboBoxText *m_rename_behavior_combo;
   AddinManager &m_addin_manager;
     
   Gtk::Button *font_button;
@@ -121,9 +125,10 @@ private:
   Gtk::Button *addin_prefs_button;
   Gtk::Button *addin_info_button;
 
-  Gtk::RadioButton promptOnConflictRadio;
-  Gtk::RadioButton renameOnConflictRadio;
-  Gtk::RadioButton overwriteOnConflictRadio;
+  Gtk::RadioButton::Group conflictRadioGroup;
+  Gtk::RadioButton *promptOnConflictRadio;
+  Gtk::RadioButton *renameOnConflictRadio;
+  Gtk::RadioButton *overwriteOnConflictRadio;
 
 
   /// Keep track of the opened addin prefs dialogs so other windows
