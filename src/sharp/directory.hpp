@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -45,6 +46,9 @@ namespace sharp {
                                     const std::string & ext,
                                     std::list<std::string>  & files);
 
+  void directory_get_directories(const std::string & dir,
+                                 std::list<std::string>  & files);
+
   void directory_get_files(const std::string & dir, 
                            std::list<std::string>  & files);
 
@@ -59,6 +63,8 @@ namespace sharp {
                       throw(Gio::Error);
 
   bool directory_create(const std::string & dir);
+
+  bool directory_delete(const std::string & dir, bool recursive);
 
 }
 

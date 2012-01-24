@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -26,6 +26,7 @@
 
 
 
+#include <glib/gstdio.h>
 #include <glibmm.h>
 
 #include "sharp/directory.hpp"
@@ -55,6 +56,24 @@ namespace sharp {
       if (Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR)
           && (ext.empty() || (sharp::string_to_lower(extension) == ext))) {
         list.push_back(file);
+      }
+    }
+  }
+
+  void directory_get_directories(const std::string & dir,
+                                 std::list<std::string>  & files)
+  {
+    if(!Glib::file_test(dir, Glib::FILE_TEST_EXISTS | Glib::FILE_TEST_IS_DIR)) {
+      return;
+    }
+
+    Glib::Dir d(dir);
+
+    for(Glib::Dir::iterator iter = d.begin(); iter != d.end(); ++iter) {
+      const std::string file(dir + "/" + *iter);
+
+      if(Glib::file_test(file, Glib::FILE_TEST_IS_DIR)) {
+        files.push_back(file);
       }
     }
   }
@@ -110,6 +129,19 @@ namespace sharp {
   bool directory_create(const std::string & dir)
   {
     return Gio::File::create_for_path(dir)->make_directory_with_parents();
+  }
+
+  bool directory_delete(const std::string & dir, bool recursive)
+  {
+    if(!recursive) {
+      std::list<std::string> files;
+      directory_get_files(dir, files);
+      if(files.size()) {
+        return false;
+      }
+    }
+
+    return g_remove(dir.c_str()) == 0;
   }
 
 }
