@@ -277,6 +277,7 @@ namespace gnote {
     , m_filepath(filepath)
     , m_save_needed(false)
     , m_is_deleting(false)
+    , m_enabled(true)
     , m_focus_widget(NULL)
     , m_manager(_manager)
     , m_window(NULL)
