@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -343,6 +343,11 @@ public:
   bool is_open_on_startup() const;
   void set_is_open_on_startup(bool);
   void get_tags(std::list<Tag::Ptr> &) const;
+  bool enabled() const
+    {
+      return m_enabled;
+    }
+  void enabled(bool is_enabled);
 
   sigc::signal<void,Note&> & signal_opened()
     { return m_signal_opened; }
@@ -402,7 +407,9 @@ private:
   std::string                m_filepath;
   bool                       m_save_needed;
   bool                       m_is_deleting;
-  
+  bool                       m_enabled;
+
+  Gtk::Widget               *m_focus_widget;
   NoteManager               &m_manager;
   NoteWindow                *m_window;
   Glib::RefPtr<NoteBuffer>   m_buffer;
@@ -428,6 +435,8 @@ public:
   static NoteData *read(const std::string & read_file, const std::string & uri);
   static std::string write_string(const NoteData & data);
   static void write(const std::string & write_file, const NoteData & data);
+  NoteData *read_file(const std::string & file, const std::string & uri);
+  NoteData *read(sharp::XmlReader & xml, const std::string & uri);
   void write_file(const std::string & write_file, const NoteData & data);
   void write(sharp::XmlWriter & xml, const NoteData & note);
 
@@ -436,7 +445,7 @@ public:
   std::string get_title_from_note_xml(const std::string & noteXml) const;
 
 protected:
-  NoteData *_read(const std::string & read_file, const std::string & uri);
+  NoteData *_read(sharp::XmlReader & xml, const std::string & uri, std::string & version);
 };
 
 namespace noteutils {

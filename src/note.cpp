@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -277,6 +277,7 @@ namespace gnote {
     , m_filepath(filepath)
     , m_save_needed(false)
     , m_is_deleting(false)
+    , m_focus_widget(NULL)
     , m_manager(_manager)
     , m_window(NULL)
     , m_tag_table(NULL)
@@ -1031,6 +1032,7 @@ namespace gnote {
       m_window->signal_hide().connect(
         sigc::mem_fun(*this, &Note::on_window_hide));
 
+      m_window->editor()->set_sensitive(enabled());
       if (m_data.data().has_extent())
         m_window->set_default_size(m_data.data().width(),
                                    m_data.data().height());
@@ -1127,21 +1129,54 @@ namespace gnote {
     sharp::map_get_values(m_data.data().tags(), l);
   }
 
+  void Note::enabled(bool is_enabled)
+  {
+    m_enabled = is_enabled;
+    if(m_window) {
+      if(!m_enabled) {
+        m_focus_widget = m_window->get_focus();
+      }
+      m_window->set_sensitive(m_enabled);
+      if(m_enabled) {
+        m_window->set_focus(*m_focus_widget);
+      }
+    }
+  }
+
   const char *NoteArchiver::CURRENT_VERSION = "0.3";
 //  const char *NoteArchiver::DATE_TIME_FORMAT = "%Y-%m-%dT%T.@7f@%z"; //"yyyy-MM-ddTHH:mm:ss.fffffffzzz";
 
   NoteData *NoteArchiver::read(const std::string & read_file, const std::string & uri)
   {
-    return obj()._read(read_file, uri);
+    return obj().read_file(read_file, uri);
   }
 
 
-  NoteData *NoteArchiver::_read(const std::string & read_file, const std::string & uri)
+  NoteData *NoteArchiver::read_file(const std::string & file, const std::string & uri)
+  {
+    std::string version;
+    sharp::XmlReader xml(file);
+    NoteData *data = _read(xml, uri, version);
+    if(version != NoteArchiver::CURRENT_VERSION) {
+      // Note has old format, so rewrite it.  No need
+      // to reread, since we are not adding anything.
+      DBG_OUT("Updating note XML from %s to newest format...", version.c_str());
+      NoteArchiver::write(file, *data);
+    }
+    return data;
+  }
+
+
+  NoteData *NoteArchiver::read(sharp::XmlReader & xml, const std::string & uri)
+  {
+    std::string version; // discarded
+    return _read(xml, uri, version);
+  }
+
+
+  NoteData *NoteArchiver::_read(sharp::XmlReader & xml, const std::string & uri, std::string & version)
   {
     NoteData *note = new NoteData(uri);
-    std::string version;
-
-    sharp::XmlReader xml(read_file);
 
     std::string name;
 
@@ -1219,12 +1254,6 @@ namespace gnote {
     }
     xml.close ();
 
-    if (version != NoteArchiver::CURRENT_VERSION) {
-      // Note has old format, so rewrite it.  No need
-      // to reread, since we are not adding anything.
-      DBG_OUT("Updating note XML from %s to newest format...", version.c_str());
-      NoteArchiver::write (read_file, *note);
-    }
     return note;
   }
 

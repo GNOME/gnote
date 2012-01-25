@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -73,6 +73,14 @@ namespace gnote {
       { 
         return m_start_note_uri; 
       }
+    void read_only(bool ro)
+      {
+        m_read_only = ro;
+      }
+    bool read_only() const
+      {
+        return m_read_only;
+      }
     Note::Ptr find(const std::string &) const;
     Note::Ptr find_by_uri(const std::string &) const;
     static std::string sanitize_xml_content(const std::string & xml_content);
@@ -94,6 +102,7 @@ namespace gnote {
 
     ChangedHandler signal_note_deleted;
     ChangedHandler signal_note_added;
+    ChangedHandler signal_note_buffer_changed;
     /** this signal is emitted when the start note has been created
      *  This is supposed to happen once in a life time *sigh*
      *  This to avoid relying a the Gnote class for that.
@@ -134,6 +143,7 @@ namespace gnote {
     std::string m_default_note_template_title;
     std::string m_start_note_uri;
     NoteChangedSlot m_signal_start_note_created;
+    bool m_read_only;
   };
 
 
