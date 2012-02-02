@@ -234,7 +234,8 @@ bool FileSystemSyncServiceAddin::is_configured()
 
 std::string FileSystemSyncServiceAddin::name()
 {
-  return _("Local Folder");
+  char *res = _("Local Folder");
+  return res ? res : "";
 }
 
 
