@@ -256,12 +256,12 @@ bool FileSystemSyncServer::commit_sync_transaction()
     }
 
     // Write out the new manifest file
-    sharp::XmlWriter xml(manifestFilePath);
+    sharp::XmlWriter *xml = new sharp::XmlWriter(manifestFilePath);
     try {
-      xml.write_start_document();
-      xml.write_start_element("", "sync", "");
-      xml.write_attribute_string("", "revision", "", boost::lexical_cast<std::string>(m_new_revision));
-      xml.write_attribute_string("", "server-id", "", m_server_id);
+      xml->write_start_document();
+      xml->write_start_element("", "sync", "");
+      xml->write_attribute_string("", "revision", "", boost::lexical_cast<std::string>(m_new_revision));
+      xml->write_attribute_string("", "server-id", "", m_server_id);
 
       for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
         std::string note_id = sharp::xml_node_xpath_find_single(*iter, "@id");
@@ -277,27 +277,29 @@ bool FileSystemSyncServer::commit_sync_transaction()
           continue;
         }
 
-        xml.write_start_element("", "note", "");
-        xml.write_attribute_string("", "id", "", note_id);
-        xml.write_attribute_string("", "rev", "", rev);
-        xml.write_end_element();
+        xml->write_start_element("", "note", "");
+        xml->write_attribute_string("", "id", "", note_id);
+        xml->write_attribute_string("", "rev", "", rev);
+        xml->write_end_element();
       }
 
       // Write out all the updated notes
       for(std::list<std::string>::iterator iter = m_updated_notes.begin(); iter != m_updated_notes.end(); ++iter) {
-        xml.write_start_element("", "note", "");
-        xml.write_attribute_string("", "id", "", *iter);
-        xml.write_attribute_string("", "rev", "", boost::lexical_cast<std::string>(m_new_revision));
-        xml.write_end_element();
+        xml->write_start_element("", "note", "");
+        xml->write_attribute_string("", "id", "", *iter);
+        xml->write_attribute_string("", "rev", "", boost::lexical_cast<std::string>(m_new_revision));
+        xml->write_end_element();
       }
 
-      xml.write_end_element();
-      xml.write_end_document();
-      xml.close();
+      xml->write_end_element();
+      xml->write_end_document();
+      xml->close();
       xmlFreeDoc(xml_doc);
+      delete xml;
     }
     catch(...) {
-      xml.close();
+      xml->close();
+      delete xml;
       throw;
     }
 
