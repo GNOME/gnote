@@ -36,12 +36,15 @@ namespace sharp {
   XmlNodeSet xml_node_xpath_find(const xmlNodePtr node, 
                                  const char * xpath)
   {
+    XmlNodeSet nodes;
+
+    if(!node) {
+      return nodes;
+    }
     xmlXPathContext* ctxt = xmlXPathNewContext(node->doc);
     ctxt->node = node;
 
     xmlXPathObject* result = xmlXPathEval((const xmlChar*)xpath, ctxt);
-
-    XmlNodeSet nodes;
 
     if(result && (result->type == XPATH_NODESET)) {
       xmlNodeSetPtr nodeset = result->nodesetval;
@@ -109,7 +112,8 @@ namespace sharp {
   std::string xml_node_get_attribute(const xmlNodePtr node,
                                      const char * attr_name)
   {
-    return reinterpret_cast<char*>(xmlGetProp(node, reinterpret_cast<const xmlChar*>(attr_name)));
+    char *res = reinterpret_cast<char*>(xmlGetProp(node, reinterpret_cast<const xmlChar*>(attr_name)));
+    return res ? res : "";
   }
 
 }
