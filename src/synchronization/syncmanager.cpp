@@ -773,46 +773,66 @@ namespace sync {
 
   void SyncManager::on_delete_notes(GObject*, gpointer serv, gpointer)
   {
-    SyncServer::Ptr & server = *static_cast<SyncServer::Ptr*>(serv);
-    // Make list of all local notes
-    std::list<Note::Ptr> localNotes = SyncManager::obj().note_mgr().get_notes();
+    try {
+      SyncServer::Ptr & server = *static_cast<SyncServer::Ptr*>(serv);
+      // Make list of all local notes
+      std::list<Note::Ptr> localNotes = SyncManager::obj().note_mgr().get_notes();
 
-    // Get all notes currently on server
-    std::list<std::string> serverNotes = server->get_all_note_uuids();
+      // Get all notes currently on server
+      std::list<std::string> serverNotes = server->get_all_note_uuids();
 
-    // Delete notes locally that have been deleted on the server
-    for(std::list<Note::Ptr>::iterator iter = localNotes.begin(); iter != localNotes.end(); ++iter) {
-      if(SyncManager::obj().m_client->get_revision(*iter) != -1
-         && std::find(serverNotes.begin(), serverNotes.end(), (*iter)->id()) == serverNotes.end()) {
-        if(SyncManager::obj().m_sync_ui != 0) {
-          SyncManager::obj().m_sync_ui->note_synchronized((*iter)->get_title(), DELETE_FROM_CLIENT);
-        }
-        SyncManager::obj().note_mgr().delete_note(*iter);
+      // Delete notes locally that have been deleted on the server
+      for(std::list<Note::Ptr>::iterator iter = localNotes.begin(); iter != localNotes.end(); ++iter) {
+	if(SyncManager::obj().m_client->get_revision(*iter) != -1
+	   && std::find(serverNotes.begin(), serverNotes.end(), (*iter)->id()) == serverNotes.end()) {
+	  if(SyncManager::obj().m_sync_ui != 0) {
+	    SyncManager::obj().m_sync_ui->note_synchronized((*iter)->get_title(), DELETE_FROM_CLIENT);
+	  }
+	  SyncManager::obj().note_mgr().delete_note(*iter);
+	}
       }
+    }
+    catch(...) {
+      DBG_OUT("Exception caught in %s\n", __func__);
     }
   }
 
 
   void SyncManager::on_create_note(GObject*, gpointer note_update, gpointer)
   {
-    NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
-    Note::Ptr existingNote = SyncManager::obj().note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
-    SyncManager::obj().update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
+    try {
+      NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
+      Note::Ptr existingNote = SyncManager::obj().note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
+      SyncManager::obj().update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
+    }
+    catch(...) {
+      DBG_OUT("Exception caught in %s\n", __func__);
+    }
   }
 
 
   void SyncManager::on_update_note(GObject*, gpointer existing_note, gpointer note_update, gpointer)
   {
-    Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
-    NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
-    SyncManager::obj().update_local_note(*existingNote, noteUpdate, DOWNLOAD_MODIFIED);
+    try {
+      Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
+      NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
+      SyncManager::obj().update_local_note(*existingNote, noteUpdate, DOWNLOAD_MODIFIED);
+    }
+    catch(...) {
+      DBG_OUT("Exception caught in %s\n", __func__);
+    }
   }
 
 
   void SyncManager::on_delete_note(GObject*, gpointer existing_note, gpointer)
   {
-    Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
-    SyncManager::obj().note_mgr().delete_note(*existingNote);
+    try {
+      Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
+      SyncManager::obj().note_mgr().delete_note(*existingNote);
+    }
+    catch(...) {
+      DBG_OUT("Exception caught in %s\n", __func__);
+    }
   }
 
 

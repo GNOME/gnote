@@ -518,7 +518,12 @@ void SyncDialog::sync_state_changed(SyncState state)
 
 void SyncDialog::on_sync_state_changed(GObject*, int state, gpointer data)
 {
-  static_cast<SyncDialog*>(data)->sync_state_changed_(static_cast<SyncState>(state));
+  try {
+    static_cast<SyncDialog*>(data)->sync_state_changed_(static_cast<SyncState>(state));
+  }
+  catch(...) {
+    DBG_OUT("Exception caught in %s\n", __func__);
+  }
 }
 
 
@@ -622,7 +627,12 @@ void SyncDialog::note_synchronized(const std::string & noteTitle, NoteSyncType t
 
 void SyncDialog::on_note_synchronized(GObject*, const char * noteTitle, int type, gpointer data)
 {
-  static_cast<SyncDialog*>(data)->note_synchronized_(noteTitle, static_cast<NoteSyncType>(type));
+  try {
+    static_cast<SyncDialog*>(data)->note_synchronized_(noteTitle, static_cast<NoteSyncType>(type));
+  }
+  catch(...) {
+    DBG_OUT("Exception caught in %s\n", __func__);
+  }
 }
 
 
