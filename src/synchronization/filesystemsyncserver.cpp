@@ -38,13 +38,17 @@ namespace {
 
 std::string xml_node_content(xmlNodePtr node)
 {
-  xmlNodePtr child = xmlFirstElementChild(node);
-  if(child) {
-    char *res = reinterpret_cast<char*>(XML_GET_CONTENT(child));
-    return res ? res : "";
+  if(!node) {
+    return "";
   }
-
-  return "";
+  if(node->type == XML_ATTRIBUTE_NODE) {
+    node = xmlGetLastChild(node);
+    if(!node) {
+      return "";
+    }
+  }
+  char *res = reinterpret_cast<char*>(XML_GET_CONTENT(node));
+  return res ? res : "";
 }
 
 int str_to_int(const std::string & s)
