@@ -69,14 +69,10 @@ void gnote_sync_dialog_class_init(GnoteSyncDialogClass *klass)
                    GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
                    0, NULL, NULL, g_cclosure_marshal_VOID__INT,
                    G_TYPE_NONE, 1, G_TYPE_INT, NULL);
-  g_signal_new("note-synchronized", G_TYPE_FROM_CLASS(klass),
-                   GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
-                   0, NULL, NULL, g_cclosure_marshal_generic,
-                   G_TYPE_NONE, 2, G_TYPE_STRING, G_TYPE_INT, NULL);
   g_signal_new("note-conflict-detected", G_TYPE_FROM_CLASS(klass),
                    GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
                    0, NULL, NULL, g_cclosure_marshal_VOID__VOID,
-                   G_TYPE_NONE, 0, NULL);
+                   G_TYPE_NONE, 1, G_TYPE_POINTER, NULL);
 }
 
 GObject *gnote_sync_dialog_new()
@@ -91,7 +87,7 @@ struct NoteConflictDetectedArgs
   NoteManager *manager;
   Note::Ptr localConflictNote;
   NoteUpdate *remoteNote;
-  const std::list<std::string> *noteUpdateTitles;
+  std::list<std::string> noteUpdateTitles;
   SyncTitleConflictResolution savedBehavior;
   SyncTitleConflictResolution resolution;
   std::exception *mainThreadException;
@@ -116,7 +112,8 @@ public:
     , m_note_update_titles(noteUpdateTitles)
     {
       // Suggest renaming note by appending " (old)" to the existing title
-      std::string suggestedRenameBase = existingNote->get_title() + _(" (old)");
+      char *old = _(" (old)");
+      std::string suggestedRenameBase = existingNote->get_title() + old;
       std::string suggestedRename = suggestedRenameBase;
       for(int i = 1; !is_note_title_available(suggestedRename); i++) {
         suggestedRename = suggestedRenameBase + " " + boost::lexical_cast<std::string>(i);
@@ -275,7 +272,6 @@ SyncDialog::SyncDialog()
 {
   m_obj = gnote_sync_dialog_new();
   g_signal_connect(m_obj, "sync-state-changed", G_CALLBACK(on_sync_state_changed), this);
-  g_signal_connect(m_obj, "note-synchronized", G_CALLBACK(on_note_synchronized), this);
   g_signal_connect(m_obj, "note-conflict-detected", G_CALLBACK(on_note_conflict_detected), this);
   m_progress_bar_timeout_id = 0;
 
@@ -618,26 +614,6 @@ void SyncDialog::sync_state_changed_(SyncState state)
 
 void SyncDialog::note_synchronized(const std::string & noteTitle, NoteSyncType type)
 {
-  // This event handler will be called by the synchronization thread
-  gdk_threads_enter();
-  g_signal_emit_by_name(m_obj, "note-synchronized", noteTitle.c_str(), static_cast<int>(type));
-  gdk_threads_leave();
-}
-
-
-void SyncDialog::on_note_synchronized(GObject*, const char * noteTitle, int type, gpointer data)
-{
-  try {
-    static_cast<SyncDialog*>(data)->note_synchronized_(noteTitle, static_cast<NoteSyncType>(type));
-  }
-  catch(...) {
-    DBG_OUT("Exception caught in %s\n", __func__);
-  }
-}
-
-
-void SyncDialog::note_synchronized_(const std::string & noteTitle, NoteSyncType type)
-{
   // FIXME: Change these strings to be more user-friendly
   // TODO: Update status for a note when status changes ("Uploading" -> "Uploaded", etc)
   std::string statusText;
@@ -670,36 +646,37 @@ void SyncDialog::note_conflict_detected(NoteManager & manager,
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> & noteUpdateTitles)
 {
-  NoteConflictDetectedArgs args;
-  args.savedBehavior = CANCEL;
+  NoteConflictDetectedArgs *args = new NoteConflictDetectedArgs;
+  args->savedBehavior = CANCEL;
   int dlgBehaviorPref = Preferences::obj()
     .get_schema_settings(Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
   // TODO: Check range of this int
-  args.savedBehavior = static_cast<SyncTitleConflictResolution>(dlgBehaviorPref);
+  args->savedBehavior = static_cast<SyncTitleConflictResolution>(dlgBehaviorPref);
 
-  args.resolution = OVERWRITE_EXISTING;
-  args.manager = &manager;
-  args.localConflictNote = localConflictNote;
-  args.remoteNote = &remoteNote;
-  args.noteUpdateTitles = &noteUpdateTitles;
+  args->resolution = OVERWRITE_EXISTING;
+  args->manager = &manager;
+  args->localConflictNote = localConflictNote;
+  args->remoteNote = &remoteNote;
+  args->noteUpdateTitles = noteUpdateTitles;
   // This event handler will be called by the synchronization thread
   // so we have to use the delegate here to manipulate the GUI.
   // To be consistent, any exceptions in the delgate will be caught
   // and then rethrown in the synchronization thread.
   gdk_threads_enter();
-  g_signal_emit_by_name(m_obj, "note-conflict-detected", &args);
+  g_signal_emit_by_name(m_obj, "note-conflict-detected", args);
   gdk_threads_leave();
-  if(args.mainThreadException != NULL) {
-    throw *args.mainThreadException;
+  if(args->mainThreadException != NULL) {
+    std::auto_ptr<NoteConflictDetectedArgs> for_deletion(args);
+    throw *for_deletion->mainThreadException;
   }
 }
 
 
-void SyncDialog::on_note_conflict_detected(GObject*, gpointer data)
+void SyncDialog::on_note_conflict_detected(GObject*, gpointer data, gpointer)
 {
   NoteConflictDetectedArgs *args = static_cast<NoteConflictDetectedArgs*>(data);
   try {
-    SyncTitleConflictDialog conflictDlg(args->localConflictNote, *args->noteUpdateTitles);
+    SyncTitleConflictDialog conflictDlg(args->localConflictNote, args->noteUpdateTitles);
     Gtk::ResponseType reponse = Gtk::RESPONSE_OK;
 
     bool noteSyncBitsMatch = SyncManager::obj().synchronized_note_xml_matches(

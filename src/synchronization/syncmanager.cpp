@@ -305,7 +305,7 @@ namespace sync {
         if(!find_note_by_uuid(iter->second.m_uuid) != 0) {
           Note::Ptr existingNote = note_mgr().find(iter->second.m_title);
           if(existingNote != 0 && !iter->second.basically_equal_to(existingNote)) {
-            // Logger.Debug ("Sync: Early conflict detection for '{0}'", noteUpdate.Title);
+            DBG_OUT("Sync: Early conflict detection for '%s'", iter->second.m_title.c_str());
             if(m_sync_ui != 0) {
               m_sync_ui->note_conflict_detected(note_mgr(), existingNote, iter->second, noteUpdateTitles);
 
@@ -387,14 +387,14 @@ namespace sync {
           (*iter)->save();
           newOrModifiedNotes.push_back(*iter);
           if(m_sync_ui != 0)
-            m_sync_ui->note_synchronized((*iter)->get_title(), UPLOAD_NEW);
+            m_sync_ui->note_synchronized_th((*iter)->get_title(), UPLOAD_NEW);
         }
         else if(m_client->get_revision(*iter) <= m_client->last_synchronized_revision()
                 && (*iter)->metadata_change_date() > m_client->last_sync_date()) {
           (*iter)->save();
           newOrModifiedNotes.push_back(*iter);
           if(m_sync_ui != 0) {
-            m_sync_ui->note_synchronized((*iter)->get_title(), UPLOAD_MODIFIED);
+            m_sync_ui->note_synchronized_th((*iter)->get_title(), UPLOAD_MODIFIED);
           }
         }
       }
@@ -418,7 +418,7 @@ namespace sync {
             if(deleted_note_titles.find(*iter) != deleted_note_titles.end()) {
               deletedTitle = deleted_note_titles[*iter];
             }
-            m_sync_ui->note_synchronized(deletedTitle, DELETE_FROM_SERVER);
+            m_sync_ui->note_synchronized_th(deletedTitle, DELETE_FROM_SERVER);
           }
         }
       }
@@ -715,7 +715,7 @@ namespace sync {
 
   Note::Ptr SyncManager::find_note_by_uuid(const std::string & uuid)
   {
-    return note_mgr().find_by_uri("note://tomboy/" + uuid);
+    return note_mgr().find_by_uri("note://gnote/" + uuid);
   }
 
 

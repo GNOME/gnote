@@ -61,8 +61,7 @@ namespace sync {
   private:
     static void on_expander_activated(GtkExpander*, gpointer);
     static void on_sync_state_changed(GObject*, int, gpointer);
-    static void on_note_synchronized(GObject*, const char*, int, gpointer);
-    static void on_note_conflict_detected(GObject*, gpointer);
+    static void on_note_conflict_detected(GObject*, gpointer, gpointer);
     static void rename_note(const Note::Ptr & note, const std::string & newTitle, bool updateReferencingNotes);
 
     SyncDialog();
@@ -71,7 +70,6 @@ namespace sync {
     void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
     void treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
     void sync_state_changed_(SyncState state);
-    void note_synchronized_(const std::string & noteTitle, NoteSyncType type);
 
     Gtk::Image *m_image;
     Gtk::Label *m_header_label;

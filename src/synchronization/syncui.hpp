@@ -43,6 +43,7 @@ namespace sync {
     typedef sigc::slot<void> SlotIdle;
 
     virtual void sync_state_changed(SyncState state) = 0;
+    void note_synchronized_th(const std::string & noteTitle, NoteSyncType type);
     virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) = 0;
     virtual void note_conflict_detected(NoteManager & manager,
                                         const Note::Ptr & localConflictNote,
@@ -58,6 +59,7 @@ namespace sync {
   private:
     static void on_signal_connecting(GObject*, gpointer);
     static void on_signal_idle(GObject*, gpointer);
+    static void on_signal_note_synchronized(GObject*, const char*, int, gpointer);
 
     sigc::signal<void> m_signal_connecting;
     sigc::signal<void> m_signal_idle;

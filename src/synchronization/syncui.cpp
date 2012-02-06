@@ -18,6 +18,7 @@
  */
 
 
+#include "debug.hpp"
 #include "syncui.hpp"
 
 
@@ -42,6 +43,10 @@ namespace {
                  GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
                  0, NULL, NULL, g_cclosure_marshal_VOID__VOID,
                  G_TYPE_NONE, 0, NULL);
+    g_signal_new("note-synchronized", G_TYPE_FROM_CLASS(klass),
+                 GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
+                 0, NULL, NULL, g_cclosure_marshal_generic,
+                 G_TYPE_NONE, 2, G_TYPE_STRING, G_TYPE_INT, NULL);
   }
 
   GnoteSyncUI * gnote_sync_ui_new()
@@ -61,6 +66,7 @@ namespace sync {
   {
     g_signal_connect(m_obj, "connecting", G_CALLBACK(SyncUI::on_signal_connecting), this);
     g_signal_connect(m_obj, "idle", G_CALLBACK(SyncUI::on_signal_idle), this);
+    g_signal_connect(m_obj, "note-synchronized", G_CALLBACK(SyncUI::on_signal_note_synchronized), this);
   }
 
 
@@ -73,6 +79,25 @@ namespace sync {
   void SyncUI::on_signal_idle(GObject*, gpointer data)
   {
     static_cast<SyncUI*>(data)->m_signal_idle.emit();
+  }
+
+
+  void SyncUI::on_signal_note_synchronized(GObject*, const char *noteTitle, int type, gpointer data)
+  {
+    try {
+      static_cast<SyncUI*>(data)->note_synchronized(noteTitle, static_cast<NoteSyncType>(type));
+    }
+    catch(...) {
+      DBG_OUT("Exception caught in %s\n", __func__);
+    }
+  }
+
+
+  void SyncUI::note_synchronized_th(const std::string & noteTitle, NoteSyncType type)
+  {
+    gdk_threads_enter();
+    g_signal_emit_by_name(m_obj, "note-synchronized", noteTitle.c_str(), static_cast<int>(type));
+    gdk_threads_leave();
   }
 
 
