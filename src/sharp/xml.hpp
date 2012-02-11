@@ -48,6 +48,8 @@ namespace sharp {
   xmlNodePtr xml_node_xpath_find_single_node(const xmlNodePtr node,
                                              const char * xpath);
 
+  std::string xml_node_content(xmlNodePtr node);
+
   std::string xml_node_get_attribute(const xmlNodePtr node,
                                      const char * attr_name);
 

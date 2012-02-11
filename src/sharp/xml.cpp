@@ -109,6 +109,22 @@ namespace sharp {
   }
 
 
+  std::string xml_node_content(xmlNodePtr node)
+  {
+    if(!node) {
+      return "";
+    }
+    if(node->type == XML_ATTRIBUTE_NODE) {
+      node = xmlGetLastChild(node);
+      if(!node) {
+	return "";
+      }
+    }
+    char *res = reinterpret_cast<char*>(XML_GET_CONTENT(node));
+    return res ? res : "";
+  }
+
+
   std::string xml_node_get_attribute(const xmlNodePtr node,
                                      const char * attr_name)
   {
