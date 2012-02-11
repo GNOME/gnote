@@ -56,6 +56,10 @@ namespace sync {
   private:
     static const char *LOCAL_MANIFEST_FILE_NAME;
 
+    void note_deleted_handler(const Note::Ptr &);
+    void parse(const std::string & manifest_path);
+    void write(const std::string & manifest_path);
+
     sharp::DateTime m_last_sync_date;
     int m_last_sync_rev;
     std::string m_server_id;
