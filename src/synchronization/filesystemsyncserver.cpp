@@ -36,21 +36,6 @@
 
 namespace {
 
-std::string xml_node_content(xmlNodePtr node)
-{
-  if(!node) {
-    return "";
-  }
-  if(node->type == XML_ATTRIBUTE_NODE) {
-    node = xmlGetLastChild(node);
-    if(!node) {
-      return "";
-    }
-  }
-  char *res = reinterpret_cast<char*>(XML_GET_CONTENT(node));
-  return res ? res : "";
-}
-
 int str_to_int(const std::string & s)
 {
   try {
@@ -125,7 +110,7 @@ std::list<std::string> FileSystemSyncServer::get_all_note_uuids()
     sharp::XmlNodeSet noteIds = sharp::xml_node_xpath_find(root_node, "//note/@id");
     DBG_OUT("get_all_note_uuids has %d notes", noteIds.size());
     for(sharp::XmlNodeSet::iterator iter = noteIds.begin(); iter != noteIds.end(); ++iter) {
-      noteUUIDs.push_back(xml_node_content(xmlFirstElementChild(*iter)));
+      noteUUIDs.push_back(sharp::xml_node_content(*iter));
     }
     xmlFreeDoc(xml_doc);
   }
@@ -168,8 +153,8 @@ std::map<std::string, NoteUpdate> FileSystemSyncServer::get_note_updates_since(i
     sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, xpath.c_str());
     DBG_OUT("get_note_updates_since xpath returned %d nodes", noteNodes.size());
     for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
-      std::string note_id = xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@id"));
-      int rev = str_to_int(xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@rev")));
+      std::string note_id = sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@id"));
+      int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@rev")));
       if(noteUpdates.find(note_id) == noteUpdates.end()) {
         // Copy the file from the server to the temp directory
         std::string revDir = get_revision_dir_path(rev);
@@ -483,31 +468,31 @@ SyncLockInfo FileSystemSyncServer::current_sync_lock()
 
     xmlNodePtr node = sharp::xml_node_xpath_find_single_node(root_node, "//transaction-id/text ()");
     if(node != NULL) {
-      std::string transaction_id_txt = xml_node_content(node);
+      std::string transaction_id_txt = sharp::xml_node_content(node);
       syncLockInfo.transaction_id = transaction_id_txt;
     }
 
     node = sharp::xml_node_xpath_find_single_node(root_node, "//client-id/text ()");
     if(node != NULL) {
-      std::string client_id_txt = xml_node_content(node);
+      std::string client_id_txt = sharp::xml_node_content(node);
       syncLockInfo.client_id = client_id_txt;
     }
 
     node = sharp::xml_node_xpath_find_single_node(root_node, "renew-count/text ()");
     if(node != NULL) {
-      std::string renew_txt = xml_node_content(node);
+      std::string renew_txt = sharp::xml_node_content(node);
       syncLockInfo.renew_count = str_to_int(renew_txt);
     }
 
     node = sharp::xml_node_xpath_find_single_node(root_node, "lock-expiration-duration/text ()");
     if(node != NULL) {
-      std::string span_txt = xml_node_content(node);
+      std::string span_txt = sharp::xml_node_content(node);
       syncLockInfo.duration = sharp::TimeSpan::parse(span_txt);
     }
 
     node = sharp::xml_node_xpath_find_single_node(root_node, "revision/text ()");
     if(node != NULL) {
-      std::string revision_txt = xml_node_content(node);
+      std::string revision_txt = sharp::xml_node_content(node);
       syncLockInfo.revision = str_to_int(revision_txt);
     }
 
