@@ -483,6 +483,7 @@ namespace gnote {
 
   void Gnote::on_sync_dialog_response(int)
   {
+    m_sync_dlg->hide();
     m_sync_dlg.reset();
   }
 
