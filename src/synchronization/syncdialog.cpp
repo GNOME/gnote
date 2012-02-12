@@ -585,8 +585,8 @@ void SyncDialog::sync_state_changed_(SyncState state)
       int count = m_model->children().size();
       set_title(_("Synchronization Complete"));
       header_text(_("Synchronization is complete"));
-      std::string numNotesUpdated = ngettext("%d note updated.", "%d notes updated.", count);
-      message_text(numNotesUpdated + "  " + _("Your notes are now up to date."));
+      std::string numNotesUpdated = ngettext("%1% note updated.", "%1% notes updated.", count);
+      message_text(str(boost::format(numNotesUpdated) % count) + "  " + _("Your notes are now up to date."));
       progress_text("");
     }
     break;
