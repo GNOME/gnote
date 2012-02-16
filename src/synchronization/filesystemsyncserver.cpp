@@ -259,12 +259,17 @@ bool FileSystemSyncServer::commit_sync_transaction()
       sharp::directory_create(m_new_revision_path);
     }
 
-    sharp::XmlNodeSet noteNodes;
-    xmlDocPtr xml_doc = NULL;
+    std::map<std::string, std::string> notes;
     if(is_valid_xml_file(m_manifest_path) == true) {
-      xml_doc = xmlReadFile(manifestFilePath.c_str(), "UTF-8", 0);
+      xmlDocPtr xml_doc = xmlReadFile(m_manifest_path.c_str(), "UTF-8", 0);
       xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
-      noteNodes = sharp::xml_node_xpath_find(root_node, "//note");
+      sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, "//note");
+      for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
+        std::string note_id = sharp::xml_node_get_attribute(*iter, "id");
+        std::string rev = sharp::xml_node_get_attribute(*iter, "rev");
+        notes[note_id] = rev;
+      }
+      xmlFreeDoc(xml_doc);
     }
 
     // Write out the new manifest file
@@ -275,23 +280,20 @@ bool FileSystemSyncServer::commit_sync_transaction()
       xml->write_attribute_string("", "revision", "", boost::lexical_cast<std::string>(m_new_revision));
       xml->write_attribute_string("", "server-id", "", m_server_id);
 
-      for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
-        std::string note_id = sharp::xml_node_xpath_find_single(*iter, "@id");
-        std::string rev = sharp::xml_node_xpath_find_single(*iter, "@rev");
-
+      for(std::map<std::string, std::string>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
         // Don't write out deleted notes
-        if(std::find(m_deleted_notes.begin(), m_deleted_notes.end(), note_id) != m_deleted_notes.end()) {
+        if(std::find(m_deleted_notes.begin(), m_deleted_notes.end(), iter->first) != m_deleted_notes.end()) {
           continue;
         }
 
         // Skip updated notes, we'll update them in a sec
-        if(std::find(m_updated_notes.begin(), m_updated_notes.end(), note_id) != m_updated_notes.end()) {
+        if(std::find(m_updated_notes.begin(), m_updated_notes.end(), iter->first) != m_updated_notes.end()) {
           continue;
         }
 
         xml->write_start_element("", "note", "");
-        xml->write_attribute_string("", "id", "", note_id);
-        xml->write_attribute_string("", "rev", "", rev);
+        xml->write_attribute_string("", "id", "", iter->first);
+        xml->write_attribute_string("", "rev", "", iter->second);
         xml->write_end_element();
       }
 
@@ -306,7 +308,6 @@ bool FileSystemSyncServer::commit_sync_transaction()
       xml->write_end_element();
       xml->write_end_document();
       xml->close();
-      xmlFreeDoc(xml_doc);
       delete xml;
     }
     catch(...) {
