@@ -1105,6 +1105,7 @@ namespace gnote {
       m_sync_addin_prefs_container->remove(*m_sync_addin_prefs_widget);
       m_sync_addin_prefs_widget->hide();
       delete m_sync_addin_prefs_widget;
+      m_sync_addin_prefs_widget = NULL;
     }
 
     Gtk::TreeIter iter = m_sync_addin_combo->get_active();
@@ -1189,11 +1190,9 @@ namespace gnote {
     sync::SyncManager::obj().reset_client();
 
     m_sync_addin_combo->set_sensitive(true);
+    m_sync_addin_combo->unset_active();
     m_reset_sync_addin_button->set_sensitive(false);
     m_save_sync_addin_button->set_sensitive(true);
-    if(m_sync_addin_prefs_widget != NULL) {
-      m_sync_addin_prefs_widget->set_sensitive(true);
-    }
   }
 
   void PreferencesDialog::on_save_sync_addin_button()
