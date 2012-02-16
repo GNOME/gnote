@@ -1073,6 +1073,7 @@ namespace gnote {
 
     advancedDlg->get_vbox()->pack_start(*label, false, false, 6);
     advancedDlg->get_vbox()->pack_start(*vbox, false, false, 0);
+    advancedDlg->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_OK);
 
     advancedDlg->show_all();
 
