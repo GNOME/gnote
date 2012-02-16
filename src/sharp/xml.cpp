@@ -77,7 +77,8 @@ namespace sharp {
       return "";
     }
 
-    return reinterpret_cast<char*>(XML_GET_CONTENT(n));
+    char *res = reinterpret_cast<char*>(XML_GET_CONTENT(n));
+    return res ? res : "";
   }
 
 
