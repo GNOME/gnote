@@ -384,7 +384,9 @@ namespace sync {
           // This is a new note that has never been synchronized to the server
           // TODO: *OR* this is a note that we lost revision info for!!!
           // TODO: Do the above NOW!!! (don't commit this dummy)
+          gdk_threads_enter();
           (*iter)->save();
+          gdk_threads_leave();
           newOrModifiedNotes.push_back(*iter);
           if(m_sync_ui != 0)
             m_sync_ui->note_synchronized_th((*iter)->get_title(), UPLOAD_NEW);
