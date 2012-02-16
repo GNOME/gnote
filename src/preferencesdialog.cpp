@@ -573,7 +573,7 @@ namespace gnote {
     
     m_sync_addin_prefs_widget->show ();
     m_sync_addin_prefs_container = manage(new Gtk::VBox (false, 0));
-    m_sync_addin_prefs_container->pack_start(*m_sync_addin_prefs_widget, true, true, 0);
+    m_sync_addin_prefs_container->pack_start(*m_sync_addin_prefs_widget, false, false, 0);
     m_sync_addin_prefs_container->show();
     vbox->pack_start(*m_sync_addin_prefs_container, true, true, 0);
 
