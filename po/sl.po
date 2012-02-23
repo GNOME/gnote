@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-02-16 18:45+0000\n"
-"PO-Revision-Date: 2012-02-17 21:23+0100\n"
+"POT-Creation-Date: 2012-02-21 12:24+0000\n"
+"PO-Revision-Date: 2012-02-23 20:28+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: Slovenian\n"
@@ -322,14 +322,12 @@ msgid "Integer value indicating if there is a preference to always perform a spe
 msgstr "Številčna vrednost določa ali naj sistem vedno samodejno izvede določeno dejanje, kadar je zaznan spor, namesto da vpraša uporabnika. Vrednosti so notranje oštevilčene. Vrednost 0 določi, da je uporabnik vedno obveščen o napaki in ima možnost vsako težavo reševati posebej."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:73
-#, fuzzy
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Zakasnitev samodejnega usklajevanja v ozadju"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:74
-#, fuzzy
 msgid "Integer value indicating how frequently to perform a background sync of your notes (when sync is configured). Any value less than 1 indicates that autosync is disabled. The lowest acceptable positive value is 5. Value is in minutes."
-msgstr "Številčna vrednost določa kako pogosto naj se izvede usklajevanje sporočilc v ozadju. Vrednosti pod 1 onemogočijo samodejno usklajevanje. Najnižja sprejemljiva vrednost je 5 minut."
+msgstr "Številčna vrednost določa, kako pogosto naj se izvede usklajevanje sporočilc v ozadju. Vrednosti pod 1 onemogočijo samodejno usklajevanje. Najnižja sprejemljiva vrednost je 5 minut."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid "Accept SSL Certificates"
@@ -573,37 +571,32 @@ msgid "Could not save the file \"%s\""
 msgstr "Ni mogoče shraniti datoteke \"%s\""
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
-#, fuzzy
 msgid "Local Directory Sync Service Add-in"
-msgstr "Vstavek uskladitvene storitve je izbran"
+msgstr "Vstavek storitve za usklajevanje krajevne mape"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:53
 msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "Uskladi sporočilca Gnote s krajevnim datotečnim sistemom"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
-#, fuzzy
 msgid "Aurimas Cernius and the Tomboy Project"
-msgstr "Hubert Figuiere in projekt Tomboy"
+msgstr "Aurimas Cernius in projekt Tomboy"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:124
 msgid "_Folder Path:"
 msgstr "_Pot mape:"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:131
-#, fuzzy
 msgid "Select Synchronization Folder..."
 msgstr "Izbor mape usklajevanja ..."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:154
-#, fuzzy
 msgid "Folder path field is empty."
 msgstr "Polje poti mape je prazno."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:161
-#, fuzzy
 msgid "Specified folder path does not exist, and Gnote was unable to create it."
-msgstr "Navedena pot mape ne obstaja. Program Tomboy je ne more ustvariti."
+msgstr "Navedena pot mape ne obstaja. Program Gnote je ne more ustvariti."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:237
 msgid "Local Folder"
@@ -1442,68 +1435,55 @@ msgstr "Izberi pisavo sporočilca"
 
 #. Create dialog
 #: ../src/preferencesdialog.cpp:1036
-#, fuzzy
 msgid "Other Synchronization Options"
 msgstr "Druge možnosti usklajevanja"
 
 #: ../src/preferencesdialog.cpp:1039
-#, fuzzy
 msgid "When a conflict is detected between a local note and a note on the configured synchronization server:"
 msgstr "Ko je zaznan spor med krajevno in oddaljeno kopijo na strežniku usklajevanja:"
 
 #. label.Xalign = 0;
 #: ../src/preferencesdialog.cpp:1043
-#, fuzzy
 msgid "Always ask me what to do."
-msgstr "Vedno me vprašaj za potrditev dejanja."
+msgstr "Vedno vprašaj za potrditev dejanja."
 
 #: ../src/preferencesdialog.cpp:1047
-#, fuzzy
 msgid "Rename my local note."
 msgstr "Preimenuj krajevno sporočilce."
 
 #: ../src/preferencesdialog.cpp:1051
-#, fuzzy
 msgid "Replace my local note with the server's update."
 msgstr "Zamenjaj krajevno sporočilce s posodobljenim sporočilcem na strežniku."
 
 #: ../src/preferencesdialog.cpp:1159
-#, fuzzy
 msgid "Are you sure?"
 msgstr "Ali ste prepričani?"
 
 #: ../src/preferencesdialog.cpp:1160
-#, fuzzy
 msgid "Clearing your synchronization settings is not recommended.  You may be forced to synchronize all of your notes again when you save new settings."
 msgstr "Čiščenje nastavitev usklajevanja ni priporočeno. Lahko se zgodi, da boste morali po shranjevanju novih nastavitev ponovno uskladiti vsa sporočilca."
 
 #: ../src/preferencesdialog.cpp:1169
-#, fuzzy
 msgid "Resetting Synchronization Settings"
 msgstr "Ponastavljanje nastavitev usklajevanja"
 
 #: ../src/preferencesdialog.cpp:1170
-#, fuzzy
 msgid "You have disabled the configured synchronization service.  Your synchronization settings will now be cleared.  You may be forced to synchronize all of your notes again when you save new settings."
 msgstr "Onemogočili ste nastavitev storitev usklajevanja. Vaše nastavitve usklajevanja bodo počiščene. Lahko se zgodi, da bo treba vsa sporočilca znova uskladiti z novimi nastavitvami."
 
 #: ../src/preferencesdialog.cpp:1236
-#, fuzzy
 msgid "Connection successful"
 msgstr "Povezava je uspešno vzpostavljena"
 
 #: ../src/preferencesdialog.cpp:1237
-#, fuzzy
 msgid "Gnote is ready to synchronize your notes. Would you like to synchronize them now?"
-msgstr "Program Tomboy je pripravljen na usklajevanje sporočilc. Ali želite takoj zagnati usklajevanje?"
+msgstr "Program Gnote je pripravljen na usklajevanje sporočilc. Ali želite takoj zagnati usklajevanje?"
 
 #: ../src/preferencesdialog.cpp:1260
-#, fuzzy
 msgid "Please check your information and try again.  The log file {0} may contain more information about the error."
 msgstr "Preverite svoje podatke in poskusite znova. Več podrobnosti je mogoče najti tudi v dnevniški datoteki {0}."
 
 #: ../src/preferencesdialog.cpp:1267
-#, fuzzy
 msgid "Error connecting"
 msgstr "Napaka med povezovanjem"
 
@@ -1613,7 +1593,6 @@ msgid "Unknown"
 msgstr "Neznano"
 
 #: ../src/synchronization/syncdialog.cpp:110
-#, fuzzy
 msgid "Note Conflict"
 msgstr "Spor sporočilc"
 
@@ -1623,39 +1602,32 @@ msgid " (old)"
 msgstr " (staro)"
 
 #: ../src/synchronization/syncdialog.cpp:157
-#, fuzzy
 msgid "Rename local note:"
 msgstr "Preimenuj krajevno sporočilce:"
 
 #: ../src/synchronization/syncdialog.cpp:164
-#, fuzzy
 msgid "Update links in referencing notes"
-msgstr "Posodobi povezave v povezanih sporočilcih"
+msgstr "Posodobi povezave v sporočilcih s sklici"
 
 #: ../src/synchronization/syncdialog.cpp:171
-#, fuzzy
 msgid "Overwrite local note"
 msgstr "Prepiši krajevno sporočilce"
 
 #: ../src/synchronization/syncdialog.cpp:175
-#, fuzzy
 msgid "Always perform this action"
 msgstr "Vedno izvedi to dejanje"
 
 #. Set initial dialog text
 #: ../src/synchronization/syncdialog.cpp:181
-#, fuzzy
 msgid "Note conflict detected"
 msgstr "Zaznan je spor sporočilc"
 
 #: ../src/synchronization/syncdialog.cpp:183
-#, fuzzy
 msgid "The server version of \"%1%\" conflicts with your local note.  What do you want to do with your local note?"
-msgstr "Različica strežnika  \"{0}\" je v sporu z vašim krajevnim sporočilcem. Kaj želite storiti s svojim krajevnim sporočilcem?"
+msgstr "Strežniška različica \"%1%\" se ne sklada z vašim krajevnim sporočilcem. Kaj želite storiti s svojim krajevnim sporočilcem?"
 
 #. Expander containing TreeView
 #: ../src/synchronization/syncdialog.cpp:337
-#, fuzzy
 msgid "Details"
 msgstr "Podrobnosti"
 
@@ -1664,42 +1636,34 @@ msgid "Status"
 msgstr "Stanje"
 
 #: ../src/synchronization/syncdialog.cpp:531
-#, fuzzy
 msgid "Acquiring sync lock..."
 msgstr "Pridobivanje zaklepa za usklajevanje ..."
 
 #: ../src/synchronization/syncdialog.cpp:534
-#, fuzzy
 msgid "Committing changes..."
 msgstr "Uveljavljanje sprememb ..."
 
 #: ../src/synchronization/syncdialog.cpp:537
-#, fuzzy
 msgid "Synchronizing Notes"
 msgstr "Usklajevanje sporočilc"
 
 #: ../src/synchronization/syncdialog.cpp:538
-#, fuzzy
 msgid "Synchronizing your notes..."
 msgstr "Usklajevanje sporočilc ..."
 
 #: ../src/synchronization/syncdialog.cpp:539
-#, fuzzy
 msgid "This may take a while, kick back and enjoy!"
-msgstr "Postopek lahko traja nekaj časa."
+msgstr "Postopek lahko traja nekaj časa. Počakajte in uživajte!"
 
 #: ../src/synchronization/syncdialog.cpp:541
-#, fuzzy
 msgid "Connecting to the server..."
 msgstr "Povezovanje s strežnikom ..."
 
 #: ../src/synchronization/syncdialog.cpp:547
-#, fuzzy
 msgid "Deleting notes off of the server..."
 msgstr "Brisanje sporočilc s strežnika ..."
 
 #: ../src/synchronization/syncdialog.cpp:551
-#, fuzzy
 msgid "Downloading new/updated notes..."
 msgstr "Prejemanje novih/posodobljenih sporočilc ..."
 
@@ -1712,39 +1676,32 @@ msgid "Server is locked"
 msgstr "Strežnik je zaklenjen"
 
 #: ../src/synchronization/syncdialog.cpp:565
-#, fuzzy
 msgid "One of your other computers is currently synchronizing.  Please wait 2 minutes and try again."
 msgstr "Eden izmed vaših preostalih računalnikov je trenutno v postopku osveževanja. Počakajte nekaj minut in poskusite znova."
 
 #: ../src/synchronization/syncdialog.cpp:569
-#, fuzzy
 msgid "Preparing to download updates from server..."
-msgstr "Priprava za prejem posodobitev iz strežnika ..."
+msgstr "Priprava na prejem posodobitev iz strežnika ..."
 
 #: ../src/synchronization/syncdialog.cpp:572
-#, fuzzy
 msgid "Preparing to upload updates to server..."
-msgstr "Priprava za pošiljanje posodobitev na strežnik ..."
+msgstr "Priprava na pošiljanje posodobitev na strežnik ..."
 
 #: ../src/synchronization/syncdialog.cpp:575
-#, fuzzy
 msgid "Uploading notes to server..."
 msgstr "Pošiljanje sporočilc na strežnik ..."
 
 #: ../src/synchronization/syncdialog.cpp:578
-#, fuzzy
 msgid "Synchronization Failed"
-msgstr "Napaka usklajevanja"
+msgstr "Usklajevanje je spodletelo"
 
 #: ../src/synchronization/syncdialog.cpp:579
-#, fuzzy
 msgid "Failed to synchronize"
-msgstr "Usklajevanje ni bilo uspešno"
+msgstr "Usklajevanje je spodletelo"
 
 #: ../src/synchronization/syncdialog.cpp:580
-#, fuzzy
 msgid "Could not synchronize notes.  Check the details below and try again."
-msgstr "Ni mogoče uskladiti sporočilc. Preverite zapisane podrobnosti in poskusite znova."
+msgstr "Sporočilc ni mogoče uskladiti. Preverite spodnje podrobnosti in poskusite znova."
 
 #: ../src/synchronization/syncdialog.cpp:586
 msgid "Synchronization Complete"
@@ -1755,97 +1712,80 @@ msgid "Synchronization is complete"
 msgstr "Usklajevanje je uspešno končano"
 
 #: ../src/synchronization/syncdialog.cpp:588
-#, fuzzy
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
-msgstr[0] "{0} sporočilc posodobljenih."
-msgstr[1] "%1% predloga beležke"
-msgstr[2] "%1% predloga beležke"
-msgstr[3] "%1% predloga beležke"
+msgstr[0] "%1% sporočilc posodobljenih."
+msgstr[1] "%1% sporočilce posodobljeno."
+msgstr[2] "%1% sporočilci posodobljeni."
+msgstr[3] "%1% sporočilca posodobljena."
 
 #: ../src/synchronization/syncdialog.cpp:589
-#, fuzzy
 msgid "Your notes are now up to date."
-msgstr "Vaša sporočilca so posodobljena."
+msgstr "Vaša sporočilca so zdaj posodobljena."
 
 #: ../src/synchronization/syncdialog.cpp:594
 msgid "Synchronization Canceled"
 msgstr "Usklajevanje je preklicano"
 
 #: ../src/synchronization/syncdialog.cpp:595
-#, fuzzy
 msgid "Synchronization was canceled"
 msgstr "Usklajevanje je bilo preklicano."
 
 #: ../src/synchronization/syncdialog.cpp:596
-#, fuzzy
 msgid "You canceled the synchronization.  You may close the window now."
-msgstr "Preklicali ste usklajevanje. Sedaj lahko zaprete okno."
+msgstr "Preklicali ste usklajevanje. Zdaj lahko zaprete okno."
 
 #: ../src/synchronization/syncdialog.cpp:600
-#, fuzzy
 msgid "Synchronization Not Configured"
 msgstr "Usklajevanje ni nastavljeno"
 
 #: ../src/synchronization/syncdialog.cpp:601
-#, fuzzy
 msgid "Synchronization is not configured"
 msgstr "Usklajevanje ni nastavljeno"
 
 #: ../src/synchronization/syncdialog.cpp:602
-#, fuzzy
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Nastavite usklajevanje v pogovornemu oknu možnosti."
 
 #: ../src/synchronization/syncdialog.cpp:606
-#, fuzzy
 msgid "Synchronization Service Error"
 msgstr "Napaka storitve usklajevanja"
 
 #: ../src/synchronization/syncdialog.cpp:607
-#, fuzzy
 msgid "Service error"
 msgstr "Napaka storitve"
 
 #: ../src/synchronization/syncdialog.cpp:608
-#, fuzzy
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Napaka med povezovanjem s storitvijo usklajevanja. Poskusite znova."
 
 #: ../src/synchronization/syncdialog.cpp:622
-#, fuzzy
 msgid "Deleted locally"
 msgstr "Izbrisano krajevno"
 
 #: ../src/synchronization/syncdialog.cpp:625
-#, fuzzy
 msgid "Deleted from server"
 msgstr "Izbrisano s strežnika"
 
 #: ../src/synchronization/syncdialog.cpp:628
-#, fuzzy
 msgid "Updated"
 msgstr "Posodobljeno"
 
 #: ../src/synchronization/syncdialog.cpp:631
-#, fuzzy
 msgid "Added"
 msgstr "Dodano"
 
 #: ../src/synchronization/syncdialog.cpp:634
-#, fuzzy
 msgid "Uploaded changes to server"
 msgstr "Spremembe so bile prenesene na strežnik"
 
 #: ../src/synchronization/syncdialog.cpp:637
-#, fuzzy
 msgid "Uploaded new note to server"
 msgstr "Novo sporočilce je bilo poslano na strežnik"
 
 #: ../src/synchronization/syncmanager.cpp:135
-#, fuzzy
 msgid "_Tools"
-msgstr "_Orodja"
+msgstr "O_rodja"
 
 #: ../src/tray.cpp:54
 msgid "Take notes"
@@ -1961,30 +1901,3 @@ msgstr "_Kopiraj mesto povezave"
 #: ../src/watchers.cpp:599
 msgid "_Open Link"
 msgstr "_Odpri povezavo"
-
-#~ msgid "Editing"
-#~ msgstr "Urejanje"
-
-#~ msgid "C_ase Sensitive"
-#~ msgstr "_Upoštevaj velikost črk"
-
-#~ msgid "Accessories"
-#~ msgstr "Pripomočki"
-
-#~ msgid "Gnote Applet Factory"
-#~ msgstr "Gnote tovarna apletov"
-
-#~ msgid "Simple and easy to use note-taking"
-#~ msgstr "Preprosto in enostavno pisanje sporočilc"
-
-#~ msgid "Set to TRUE to activate"
-#~ msgstr "Nastavite TRUE za aktivacijo"
-
-#~ msgid "The handler for \"note://\" URLs"
-#~ msgstr "Upravljalnik za URL-je \"note://\""
-
-#~ msgid "Description"
-#~ msgstr "Opis"
-
-#~ msgid "New Note %1%"
-#~ msgstr "Novo sporočilce %1%"
