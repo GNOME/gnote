@@ -71,7 +71,7 @@ void gnote_sync_dialog_class_init(GnoteSyncDialogClass *klass)
                    G_TYPE_NONE, 1, G_TYPE_INT, NULL);
   g_signal_new("note-conflict-detected", G_TYPE_FROM_CLASS(klass),
                    GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
-                   0, NULL, NULL, g_cclosure_marshal_VOID__VOID,
+                   0, NULL, NULL, g_cclosure_marshal_VOID__POINTER,
                    G_TYPE_NONE, 1, G_TYPE_POINTER, NULL);
 }
 
