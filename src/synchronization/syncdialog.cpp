@@ -228,7 +228,7 @@ private:
     }
   bool is_note_title_available(const std::string & renamedTitle)
     {
-      return std::find(m_note_update_titles.begin(), m_note_update_titles.end(), renamedTitle) != m_note_update_titles.end()
+      return std::find(m_note_update_titles.begin(), m_note_update_titles.end(), renamedTitle) == m_note_update_titles.end()
              && m_existing_note->manager().find(renamedTitle) == 0;
     }
   void radio_toggled()
