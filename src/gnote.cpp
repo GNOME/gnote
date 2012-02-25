@@ -77,8 +77,9 @@ namespace gnote {
       Gnote::obj().open_search_all();
     }
 
-    static void gnote_app_startup(GApplication *)
+    static void gnote_app_startup(GApplication * application)
     {
+      G_APPLICATION_CLASS(gnote_app_parent_class)->startup(application);
       Gnote::obj().startup();
     }
 
