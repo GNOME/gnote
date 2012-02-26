@@ -1412,7 +1412,7 @@ namespace gnote {
     std::string titleContentPattern =
       str(boost::format("<note-content([^>]*)>\\s*%1%") % old_title);
     std::string titleContentReplacement =
-      str(boost::format("<note-content$1>%1%") % new_title);
+      str(boost::format("<note-content\\1>%1%") % new_title);
     std::string updated_xml2 = sharp::string_replace_regex(updated_xml, titleContentPattern, 
                                                            titleContentReplacement);
 
