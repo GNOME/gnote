@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -56,6 +56,8 @@ class NoteData
 {
 public:
   typedef std::map<std::string, Tag::Ptr> TagMap;
+  static const int s_noPosition;
+
   NoteData(const std::string & _uri);
 
   const std::string & uri() const
@@ -186,8 +188,6 @@ private:
   bool              m_open_on_startup;
 
   TagMap m_tags;
- 
-  static const int  s_noPosition;
 };
 
 
