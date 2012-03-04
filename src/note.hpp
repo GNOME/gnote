@@ -56,6 +56,8 @@ class NoteData
 {
 public:
   typedef std::map<std::string, Tag::Ptr> TagMap;
+  static const int s_noPosition;
+
   NoteData(const std::string & _uri);
 
   const std::string & uri() const
@@ -186,8 +188,6 @@ private:
   bool              m_open_on_startup;
 
   TagMap m_tags;
- 
-  static const int  s_noPosition;
 };
 
 

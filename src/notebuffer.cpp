@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -541,6 +541,8 @@ namespace gnote {
     if (selection) {
       augment_selection(start, end_iter);
       erase(start, end_iter);
+      m_note.data().set_cursor_position(get_insert()->get_iter().get_offset());
+      m_note.data().set_selection_bound_position(NoteData::s_noPosition);
       return true;
     } 
     else if (start.ends_line() && start.get_line() < get_line_count()) {
@@ -590,6 +592,8 @@ namespace gnote {
     if (selection) {
       augment_selection(start, end_iter);
       erase(start, end_iter);
+      m_note.data().set_cursor_position(get_insert()->get_iter().get_offset());
+      m_note.data().set_selection_bound_position(NoteData::s_noPosition);
       return true;
     } 
     else {
