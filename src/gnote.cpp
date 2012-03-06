@@ -382,7 +382,11 @@ namespace gnote {
     if(m_is_panel_applet) {
       return;
     }
+#ifdef HAVE_GLIB_2_32
+    g_application_quit(G_APPLICATION(m_app));
+#else
     Gtk::Main::quit();
+#endif
   }
 
   void Gnote::on_preferences_response(int /*res*/)
@@ -643,7 +647,7 @@ namespace gnote {
       else {
         execute(remote);
       }
-      Gtk::Main::quit();
+      Gnote::obj().on_quit_gnote_action();
     }
     return 0;
   }
