@@ -79,6 +79,7 @@ DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/remotecontrol-glue.cpp \
 	$(NULL)
 
+libgnote_la_LDFLAGS = -release 0.9 -version-info 0:0:0
 libgnote_la_SOURCES = \
 	base/singleton.hpp \
 	base/macros.hpp \
