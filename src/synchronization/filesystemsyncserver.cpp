@@ -31,6 +31,7 @@
 #include "sharp/files.hpp"
 #include "sharp/uuid.hpp"
 #include "sharp/xml.hpp"
+#include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 
 
@@ -510,13 +511,12 @@ std::string FileSystemSyncServer::id()
 
   // Attempt to read from manifest file first
   if(is_valid_xml_file(m_manifest_path)) {
-    xmlDocPtr xml_doc = xmlReadFile(m_lock_path.c_str(), "UTF-8", 0);
-    xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
-
-    xmlNodePtr syncNode = sharp::xml_node_xpath_find_single_node(root_node, "//sync");
-    m_server_id = sharp::xml_node_get_attribute(syncNode, "server-id");
-
-    xmlFreeDoc(xml_doc);
+    sharp::XmlReader reader(m_manifest_path);
+    if(reader.read()) {
+      if(reader.get_node_type() == XML_READER_TYPE_ELEMENT && reader.get_name() == "sync") {
+	m_server_id = reader.get_attribute("server-id");
+      }
+    }
   }
 
   // Generate a new ID if there isn't already one
