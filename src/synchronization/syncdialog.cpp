@@ -125,7 +125,7 @@ public:
 
       Gtk::HBox *hbox = manage(new Gtk::HBox(false, 8));
       Gtk::Image *image = manage(new Gtk::Image);
-      image->set(Gtk::Stock::DIALOG_WARNING, Gtk::IconSize(48)); // TODO: Is this the right icon?
+      image->set(Gtk::Stock::DIALOG_WARNING, Gtk::IconSize(Gtk::ICON_SIZE_DIALOG));
       image->show();
       hbox->pack_start(*image, false, false, 0);
 
