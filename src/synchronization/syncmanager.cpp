@@ -384,16 +384,14 @@ namespace sync {
           // This is a new note that has never been synchronized to the server
           // TODO: *OR* this is a note that we lost revision info for!!!
           // TODO: Do the above NOW!!! (don't commit this dummy)
-          gdk_threads_enter();
-          (*iter)->save();
-          gdk_threads_leave();
+          note_save(*iter);
           newOrModifiedNotes.push_back(*iter);
           if(m_sync_ui != 0)
             m_sync_ui->note_synchronized_th((*iter)->get_title(), UPLOAD_NEW);
         }
         else if(m_client->get_revision(*iter) <= m_client->last_synchronized_revision()
                 && (*iter)->metadata_change_date() > m_client->last_sync_date()) {
-          (*iter)->save();
+          note_save(*iter);
           newOrModifiedNotes.push_back(*iter);
           if(m_sync_ui != 0) {
             m_sync_ui->note_synchronized_th((*iter)->get_title(), UPLOAD_MODIFIED);
@@ -835,6 +833,14 @@ namespace sync {
     catch(...) {
       DBG_OUT("Exception caught in %s\n", __func__);
     }
+  }
+
+
+  void SyncManager::note_save(const Note::Ptr & note)
+  {
+    gdk_threads_enter();
+    note->save();
+    gdk_threads_leave();
   }
 
 

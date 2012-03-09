@@ -95,6 +95,7 @@ namespace sync {
     static void on_create_note(GObject*, gpointer, gpointer);
     static void on_update_note(GObject*, gpointer, gpointer, gpointer);
     static void on_delete_note(GObject*, gpointer, gpointer);
+    static void note_save(const Note::Ptr & note);
 
     SyncUI::Ptr m_sync_ui;
     SyncClient::Ptr m_client;
