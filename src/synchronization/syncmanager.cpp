@@ -792,6 +792,9 @@ namespace sync {
 	}
       }
     }
+    catch(std::exception & e) {
+      DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
+    }
     catch(...) {
       DBG_OUT("Exception caught in %s\n", __func__);
     }
@@ -804,6 +807,9 @@ namespace sync {
       NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
       Note::Ptr existingNote = SyncManager::obj().note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
       SyncManager::obj().update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
+    }
+    catch(std::exception & e) {
+      DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
     }
     catch(...) {
       DBG_OUT("Exception caught in %s\n", __func__);
@@ -818,6 +824,9 @@ namespace sync {
       NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
       SyncManager::obj().update_local_note(*existingNote, noteUpdate, DOWNLOAD_MODIFIED);
     }
+    catch(std::exception & e) {
+      DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
+    }
     catch(...) {
       DBG_OUT("Exception caught in %s\n", __func__);
     }
@@ -829,6 +838,9 @@ namespace sync {
     try {
       Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
       SyncManager::obj().note_mgr().delete_note(*existingNote);
+    }
+    catch(std::exception & e) {
+      DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
     }
     catch(...) {
       DBG_OUT("Exception caught in %s\n", __func__);
