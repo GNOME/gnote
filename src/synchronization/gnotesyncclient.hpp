@@ -63,6 +63,9 @@ namespace sync {
                     Gio::FileMonitorEvent);
     void parse(const std::string & manifest_path);
     void write(const std::string & manifest_path);
+    void read_updated_note_atts(sharp::XmlReader & reader);
+    void read_deleted_note_atts(sharp::XmlReader & reader);
+    void read_notes(sharp::XmlReader & reader, void (GnoteSyncClient::*read_note_atts)(sharp::XmlReader&));
 
     Glib::RefPtr<Gio::FileMonitor> m_file_watcher;
     sharp::DateTime m_last_sync_date;

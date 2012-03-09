@@ -29,7 +29,7 @@
 #include "gnotesyncclient.hpp"
 #include "notemanager.hpp"
 #include "sharp/files.hpp"
-#include "sharp/xml.hpp"
+#include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 
 
@@ -72,94 +72,106 @@ namespace sync {
   }
 
 
+  void GnoteSyncClient::read_updated_note_atts(sharp::XmlReader & reader)
+  {
+    std::string guid, rev;
+    while(reader.move_to_next_attribute()) {
+      if(reader.get_name() == "guid") {
+	guid = reader.get_value();
+      }
+      else if(reader.get_name() == "latest-revision") {
+	rev = reader.get_value();
+      }
+    }
+    int revision = -1;
+    try {
+      revision = boost::lexical_cast<int>(rev);
+    }
+    catch(...) {}
+    if(guid != "") {
+      m_file_revisions[guid] = revision;
+    }
+  }
+
+
+  void GnoteSyncClient::read_deleted_note_atts(sharp::XmlReader & reader)
+  {
+    std::string guid, title;
+    while(reader.move_to_next_attribute()) {
+      if(reader.get_name() == "guid") {
+	guid = reader.get_value();
+      }
+      else if(reader.get_name() == "title") {
+	title = reader.get_value();
+      }
+    }
+    if(guid != "") {
+      m_deleted_notes[guid] = title;
+    }
+  }
+
+
+  void GnoteSyncClient::read_notes(sharp::XmlReader & reader, void (GnoteSyncClient::*read_note_atts)(sharp::XmlReader&))
+  {
+    while(reader.read()) {
+      if(reader.get_node_type() == XML_READER_TYPE_END_ELEMENT) {
+	return;
+      }
+      if(reader.get_node_type() == XML_READER_TYPE_ELEMENT) {
+	if(reader.get_name() == "note") {
+	  std::string guid, rev;
+	  (this->*read_note_atts)(reader);
+	}
+      }
+    }
+  }
+
+
   void GnoteSyncClient::parse(const std::string & manifest_path)
   {
     // Set defaults before parsing
     m_last_sync_date = sharp::DateTime::now().add_days(-1);
     m_last_sync_rev = -1;
+    m_file_revisions.clear();
+    m_deleted_notes.clear();
+    m_server_id = "";
 
     if(!sharp::file_exists(manifest_path)) {
       m_last_sync_date = sharp::DateTime();
       write(manifest_path);
     }
 
-    xmlDocPtr xml_doc = xmlReadFile(manifest_path.c_str(), "UTF-8", 0);
-    if(xml_doc == NULL) {
-      DBG_OUT("Invalid XML in %s.  Recreating from scratch.", manifest_path.c_str());
-      m_last_sync_date = sharp::DateTime();
-      write(manifest_path);
-      xml_doc = xmlReadFile(manifest_path.c_str(), "UTF-8", 0);
-    }
-    try {
-      xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
-      sharp::XmlNodeSet note_revisions = sharp::xml_node_xpath_find(root_node, "//note-revisions");
-      // TODO: Error checking
-      for(sharp::XmlNodeSet::iterator revisionsNode = note_revisions.begin();
-          revisionsNode != note_revisions.end(); ++revisionsNode) {
-        if((*revisionsNode)->children) {
-          int i = 0;
-	  do {
-	    xmlNodePtr noteNode = &(*revisionsNode)->children[i];
-	    std::string guid = sharp::xml_node_get_attribute(noteNode, "guid");
-	    int revision = -1;
-	    try {
-	      revision = boost::lexical_cast<int>(sharp::xml_node_get_attribute(noteNode, "latest-revision"));
-	    }
-            catch(...) {}
-
-	    m_file_revisions[guid] = revision;
+    sharp::XmlReader reader(manifest_path);
+    while(reader.read()) {
+      if(reader.get_node_type() == XML_READER_TYPE_ELEMENT) {
+	if(reader.get_name() == "last-sync-date") {
+	  std::string value = reader.read_string();
+	  try {
+	    m_last_sync_date = sharp::DateTime::from_iso8601(value);
 	  }
-          while((*revisionsNode)->last != &(*revisionsNode)->children[i++]);
-	}
-      }
-
-      sharp::XmlNodeSet note_deletions = sharp::xml_node_xpath_find(root_node, "//note-deletions");
-      for(sharp::XmlNodeSet::iterator deletionsNode = note_deletions.begin();
-          deletionsNode != note_deletions.end(); ++deletionsNode) {
-        if((*deletionsNode)->children) {
-          int i = 0;
-          do {
-            xmlNodePtr noteNode = &(*deletionsNode)->children[i];
-	    std::string guid = sharp::xml_node_get_attribute(noteNode, "guid");
-	    std::string title = sharp::xml_node_get_attribute(noteNode, "title");
-	    m_deleted_notes[guid] = title;
+	  catch(...) {
+	    ERR_OUT("Unparsable last-sync-date element in %s", manifest_path.c_str());
 	  }
-          while((*deletionsNode)->last != &(*deletionsNode)->children[i++]);
-        }
-      }
-
-      sharp::XmlNodeSet last_sync_rev = sharp::xml_node_xpath_find(root_node, "//last-sync-rev");
-      for(sharp::XmlNodeSet::iterator node = last_sync_rev.begin();
-          node != last_sync_rev.end(); ++node) {
-	try {
-	  m_last_sync_rev = boost::lexical_cast<int>(sharp::xml_node_content(*node));
 	}
-        catch(...) {
-	  ERR_OUT("Unparsable last-sync-rev element in %s", manifest_path.c_str());
+	else if(reader.get_name() == "last-sync-rev") {
+	  std::string value = reader.read_string();
+	  try {
+	    m_last_sync_rev = boost::lexical_cast<int>(value);
+	  }
+	  catch(...) {
+	    ERR_OUT("Unparsable last-sync-rev element in %s", manifest_path.c_str());
+	  }
 	}
-      }
-
-      sharp::XmlNodeSet server_id = sharp::xml_node_xpath_find(root_node, "//server-id");
-      for(sharp::XmlNodeSet::iterator node = server_id.begin();
-          node != server_id.end(); ++node) {
-        m_server_id = sharp::xml_node_content(*node);
-      }
-
-      sharp::XmlNodeSet sync_date = sharp::xml_node_xpath_find(root_node, "//last-sync-date");
-      for(sharp::XmlNodeSet::iterator node = sync_date.begin();
-          node != sync_date.end(); ++node) {
-	try {
-	  m_last_sync_date = sharp::DateTime::from_iso8601(sharp::xml_node_content(*node));
+	else if(reader.get_name() == "server-id") {
+	  m_server_id = reader.read_string();
 	}
-        catch(...) {
-	  ERR_OUT("Unparsable last-sync-date element in %s", manifest_path.c_str());
+	else if(reader.get_name() == "note-revisions") {
+	  read_notes(reader, &GnoteSyncClient::read_updated_note_atts);
+	}
+	else if(reader.get_name() == "note-deletions") {
+	  read_notes(reader, &GnoteSyncClient::read_deleted_note_atts);
 	}
       }
-      xmlFreeDoc(xml_doc);
-    }
-    catch(...) {
-      xmlFreeDoc(xml_doc);
-      throw;
     }
   }
 
