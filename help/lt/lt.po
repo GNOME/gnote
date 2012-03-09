@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2011-12-10 18:48+0000\n"
-"PO-Revision-Date: 2011-12-10 21:00+0300\n"
+"POT-Creation-Date: 2012-03-04 19:53+0000\n"
+"PO-Revision-Date: 2012-03-09 22:34+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
@@ -72,13 +72,11 @@ msgstr "Pierre-Yves Luyten"
 #: C/gnote-searching-notes.page:12(years)
 #: C/gnote-searching-notes.page:16(years)
 #: C/gnote-notes-preferences.page:13(years)
-#: C/gnote-notes-preferences.page:17(years)
 #: C/gnote-links.page:12(years)
 #: C/gnote-links.page:16(years)
 #: C/gnote-introduction.page:13(years)
 #: C/gnote-introduction.page:17(years)
 #: C/gnote-hotkeys.page:12(years)
-#: C/gnote-hotkeys.page:16(years)
 #: C/gnote-editing-notes.page:10(years)
 #: C/gnote-editing-notes.page:14(years)
 #: C/gnote-deleting-notes.page:12(years)
@@ -353,23 +351,18 @@ msgstr "Užrašinės ištrynimas"
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-template-notes.page:36(None)
-#| msgid ""
-#| "@@image: 'figures/note-template.png'; md5=a27d800d069d880cba494982b9a0e49a"
 msgid "@@image: 'figures/gnote-template-note.png'; md5=fa0a6345708f1b55df2ba401ebf2a05d"
 msgstr "gnote-template-note.png"
 
 #: C/gnote-template-notes.page:9(desc)
-#| msgid "Template Note"
 msgid "Using Template Notes"
 msgstr "Raštelių šablonų naudojimas"
 
 #: C/gnote-template-notes.page:17(title)
-#| msgid "Template Note"
 msgid "Template Notes"
 msgstr "Raštelių šablonai"
 
 #: C/gnote-template-notes.page:19(title)
-#| msgid "Template Note"
 msgid "Template Note Usage"
 msgstr "Šablono naudojimas"
 
@@ -394,7 +387,6 @@ msgid "To create or modify template note:"
 msgstr "Šablonui sukurti ar pakeisti:"
 
 #: C/gnote-template-notes.page:28(title)
-#| msgid "Template Note"
 msgid "Main template note"
 msgstr "Pagrindinis raštelio šablonas"
 
@@ -403,19 +395,14 @@ msgid "Open <app>Gnote</app> preferences and in <gui>General</gui> tab press the
 msgstr "Atverkite <app>Gnote</app> nustatymus ir kortelėje <gui>Esmė</gui> paspauskite mygtuką <gui>Atverti naujo raštelio šabloną</gui>."
 
 #: C/gnote-template-notes.page:29(title)
-#| msgid "Creating Notebook Template"
 msgid "Notebook template note"
 msgstr "Užrašinės raštelio šablonas"
 
 #: C/gnote-template-notes.page:29(p)
-#| msgid ""
-#| "Select the note in <gui>Search All Notes</gui> and from menu select "
-#| "<gui>Edit</gui>, then <gui>Delete</gui>."
 msgid "Right click on notebook in <gui>Search All Notes</gui> window and select <gui>Open Template Note</gui>."
 msgstr "Spauskite dešinį klavišą virš užrašinės lange <gui>Ieškoti visuose rašteliuose</gui> ir iš meniu pasirinkite <gui>Atverti šablono raštelį</gui>."
 
 #: C/gnote-template-notes.page:33(title)
-#| msgid "Template Note"
 msgid "Template Note Features"
 msgstr "Raštelio šablono galimybės"
 
@@ -424,12 +411,10 @@ msgid "Template note is like an ordinary note except that it is not shown in a n
 msgstr "Raštelio šablonas yra panašus į įprastinį raštelį, tik jis nerodomas raštelių sąraše ir turi šablono juostą viršuje."
 
 #: C/gnote-template-notes.page:35(title)
-#| msgid "Template Note"
 msgid "Template note"
 msgstr "Raštelio šablonas"
 
 #: C/gnote-template-notes.page:36(desc)
-#| msgid "Template Note"
 msgid "Template note window"
 msgstr "Raštelio šablono langas"
 
@@ -462,7 +447,6 @@ msgid "If this box is checked, new notes will not only have the content of templ
 msgstr "Jei šis langelis pažymėjimas, nauji rašteliai ne tik turės šablono turinį, bet ir pradinį žymėjimą. Naudokite šį nustatymą, jei norite, kad tam tikra naujo raštelio turinio dalis būtų pažymėta jį sukūrus."
 
 #: C/gnote-template-notes.page:43(title)
-#| msgid "Replace title"
 msgid "Save Title"
 msgstr "Įrašyti pavadinimą"
 
@@ -516,6 +500,12 @@ msgstr "gnote-preferences-editing.png"
 msgid "Gnote Settings"
 msgstr "Gnote nustatymai"
 
+#: C/gnote-notes-preferences.page:17(years)
+#: C/gnote-hotkeys.page:16(years)
+#| msgid "2011"
+msgid "2011-2012"
+msgstr "2011-2012"
+
 #: C/gnote-notes-preferences.page:21(title)
 msgid "Gnote Preferences"
 msgstr "Gnote parinktys"
@@ -549,8 +539,13 @@ msgid "Spellcheck While Typing"
 msgstr "Rašybos tikrinimas rašant"
 
 #: C/gnote-notes-preferences.page:29(p)
-msgid "Enable this checkbox to underline misspellings in red, and provide suggestions in the right click context menu. Enable or disable the checkbox using the mouse or the key combination <keyseq><key>Alt</key><key>S</key></keyseq>."
-msgstr "Pažymėkite šį langelį, kad klaidingai parašyti žodžiai būtų pabraukti raudonai ir kontekstiniame meniu būtų pateikti pasiūlymai. Keiskite langelio būseną pele arba klavišų kombinacija <keyseq><key>Alt</key><key>S</key></keyseq>."
+#| msgid ""
+#| "Enable this checkbox to underline misspellings in red, and provide "
+#| "suggestions in the right click context menu. Enable or disable the "
+#| "checkbox using the mouse or the key combination <keyseq><key>Alt</"
+#| "key><key>S</key></keyseq>."
+msgid "Enable this checkbox to underline misspellings in red, and provide suggestions in the right click context menu."
+msgstr "Pažymėkite šį langelį, kad klaidingai parašyti žodžiai būtų pabraukti raudonai ir kontekstiniame meniu būtų pateikti pasiūlymai."
 
 #: C/gnote-notes-preferences.page:29(p)
 msgid "The spellcheck option is only available if you have the GtkSpell package for your distribution installed."
@@ -561,8 +556,13 @@ msgid "Highlight WikiWords"
 msgstr "Paryškinti VikiŽodžius"
 
 #: C/gnote-notes-preferences.page:30(p)
-msgid "Enable this checkbox to create links for phrases ThatLookLikeThis. Clicking on the link will create a new note with the title corresponding to the link text. Enable or disable this checkbox using the mouse or the key combination <keyseq><key>Alt</key><key>W</key></keyseq>."
-msgstr "Pažymėkite šį langelį, kad ŠitaipAtrodančiomsFrazėms būtų sukurti saitai. Paspaudus ant saito bus sukurtas naujas raštelis su atitinkamu pavadinimu. Šio langelio būseną galite keisti pele arba klavišų kombinaciją <keyseq><key>Alt</key><key>V</eky></keyseq>."
+#| msgid ""
+#| "Enable this checkbox to create links for phrases ThatLookLikeThis. "
+#| "Clicking on the link will create a new note with the title corresponding "
+#| "to the link text. Enable or disable this checkbox using the mouse or the "
+#| "key combination <keyseq><key>Alt</key><key>W</key></keyseq>."
+msgid "Enable this checkbox to create links for phrases ThatLookLikeThis. Clicking on the link will create a new note with the title corresponding to the link text."
+msgstr "Pažymėkite šį langelį, kad ŠitaipAtrodančiomsFrazėms būtų sukurti saitai. Paspaudus ant saito bus sukurtas naujas raštelis su atitinkamu pavadinimu."
 
 #: C/gnote-notes-preferences.page:31(title)
 msgid "Enable auto-bulleted lists"
@@ -577,8 +577,13 @@ msgid "Use Custom Font"
 msgstr "Naudoti pasirinktinį šriftą"
 
 #: C/gnote-notes-preferences.page:32(p)
-msgid "Enable this checkbox to set a custom font to be used in your notes. If this option is disabled, the default system font will be used. Enable or disable this checkbox using the mouse or the key combination <keyseq><key>Alt</key><key>F</key></keyseq>."
-msgstr "Pažymėkite šį langelį, jei norite rašteliams nustatyti pasirinktinį šriftą. Jei ši parinktis išjungta, bus naudojamas numatytasis sistemos šriftas. Keiskite langelio būseną pele arba klavišų kombinacija <keyseq><key>Alt</key><key>F</key><keyseq>."
+#| msgid ""
+#| "Enable this checkbox to set a custom font to be used in your notes. If "
+#| "this option is disabled, the default system font will be used. Enable or "
+#| "disable this checkbox using the mouse or the key combination "
+#| "<keyseq><key>Alt</key><key>F</key></keyseq>."
+msgid "Enable this checkbox to set a custom font to be used in your notes. If this option is disabled, the default system font will be used."
+msgstr "Pažymėkite šį langelį, jei norite rašteliams nustatyti pasirinktinį šriftą. Jei ši parinktis išjungta, bus naudojamas numatytasis sistemos šriftas."
 
 #: C/gnote-notes-preferences.page:34(title)
 msgid "<gui>Preferences</gui> window"
@@ -696,8 +701,13 @@ msgid "Hotkeys"
 msgstr "Spartieji klavišai"
 
 #: C/gnote-hotkeys.page:21(p)
-msgid "The hotkeys tab allows you to set global key combinations to perform different functions in <app>Gnote</app>. In order to set key combinations, you must have the Listen for Hotkeys checkbox enabled. Use <keyseq><key>Alt</key><key>H</key></keyseq> to toggle this option."
-msgstr "Sparčiųjų klavišų kortelė leidžia nustatyti visuotines klavišų kombinacijas įvairiems veiksmas su <app>Gnote</app> atlikti. Norėdami nustatyti klavišų kombinacijas turite pažymėti langelį „Priimti sparčiuosius klavišus“. Šiai parinkčiai pakeisti naudokite klavišų kombinaciją <keyseq><key>Alt</key><key>S</key></keyseq>."
+#| msgid ""
+#| "The hotkeys tab allows you to set global key combinations to perform "
+#| "different functions in <app>Gnote</app>. In order to set key "
+#| "combinations, you must have the Listen for Hotkeys checkbox enabled. Use "
+#| "<keyseq><key>Alt</key><key>H</key></keyseq> to toggle this option."
+msgid "The hotkeys tab allows you to set global key combinations to perform different functions in <app>Gnote</app>. In order to set key combinations, you must have the Listen for Hotkeys checkbox enabled."
+msgstr "Sparčiųjų klavišų kortelė leidžia nustatyti visuotines klavišų kombinacijas įvairiems veiksmas su <app>Gnote</app> atlikti. Norėdami nustatyti klavišų kombinacijas turite pažymėti langelį „Priimti sparčiuosius klavišus“."
 
 #: C/gnote-hotkeys.page:23(title)
 msgid "Show notes menu"
