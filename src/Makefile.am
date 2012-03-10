@@ -16,12 +16,13 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 
 AM_LDFLAGS=-export-dynamic
 
-GNOTE_LIBS = libgnote.la $(top_builddir)/libtomboy/libtomboy.la \
+LIBGNOTE_LIBS = $(top_builddir)/libtomboy/libtomboy.la \
 	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@PCRE_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
 	@UUID_LIBS@
+GNOTE_LIBS = libgnote.la $(LIBGNOTE_LIBS)
 
 lib_LTLIBRARIES = libgnote.la
 bin_PROGRAMS = gnote
@@ -59,7 +60,7 @@ notetest_LDADD =  $(GNOTE_LIBS) -lX11
 if HAVE_PANELAPPLET
 APPLET_SOURCES=applet.hpp applet.cpp
 AM_CPPFLAGS+=@LIBPANELAPPLET_CFLAGS@
-GNOTE_LIBS+=@LIBPANELAPPLET_LIBS@
+LIBGNOTE_LIBS+=@LIBPANELAPPLET_LIBS@
 
 libexec_SCRIPTS=gnote-applet
 gnote-applet: gnote-applet.in Makefile
@@ -80,6 +81,7 @@ DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	$(NULL)
 
 libgnote_la_LDFLAGS = -release 0.9 -version-info 0:0:0
+libgnote_la_LIBADD = $(LIBGNOTE_LIBS)
 libgnote_la_SOURCES = \
 	base/singleton.hpp \
 	base/macros.hpp \
@@ -158,13 +160,13 @@ libgnote_la_SOURCES = \
 	synchronization/syncui.hpp synchronization/syncui.cpp \
         synchronization/syncutils.hpp synchronization/syncutils.cpp \
 	synchronization/syncserviceaddin.hpp synchronization/syncserviceaddin.cpp \
+	$(DBUS_SOURCES)   \
+	$(APPLET_SOURCES) \
 	$(NULL)
 
 
 gnote_SOURCES = \
 	main.cpp \
-	$(DBUS_SOURCES)   \
-	$(APPLET_SOURCES) \
 	$(NULL)
 
 gnote_LDADD = \
