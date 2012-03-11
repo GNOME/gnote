@@ -160,9 +160,7 @@ namespace gnote {
     }
     else {
       m_app = gnote_app_new();
-      gdk_threads_enter();
       g_application_run(G_APPLICATION(m_app), argc, argv);
-      gdk_threads_leave();
       g_object_unref(m_app);
       m_app = NULL;
     }
