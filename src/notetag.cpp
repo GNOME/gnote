@@ -303,16 +303,10 @@ namespace gnote {
     if (property_background_set().get_value())
       return property_background_gdk().get_value();
 
-    
-    GtkStyle * s = gtk_rc_get_style_by_paths(gtk_settings_get_default(), "GtkTextView", "GtkTextView", GTK_TYPE_TEXT_VIEW);
-    if (!s) {
-      DBG_OUT("get_background: Style for GtkTextView came back null! Returning white...");
-      Gdk::Color color;
-      color.set_rgb(0xff, 0xff, 0xff); //white, for lack of a better idea
-      return color;
-    }
-    else
-      return Glib::wrap(&(s->bg[GTK_STATE_NORMAL]), true);
+    Gdk::RGBA rgba = Gtk::TextView().get_style_context()->get_background_color();
+    Gdk::Color color;
+    color.set_rgb(rgba.get_red_u(), rgba.get_green_u(), rgba.get_blue_u());
+    return color;
   }
 
   Gdk::Color NoteTag::render_foreground(ContrastPaletteColor symbol)
