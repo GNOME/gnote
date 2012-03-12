@@ -26,6 +26,7 @@
 #include <map>
 #include <string>
 
+#include <glibmm/main.h>
 #include <glibmm/thread.h>
 
 #include "note.hpp"
