@@ -1251,7 +1251,7 @@ namespace gnote {
 
       Glib::Quark tag_quark("Tag");
       markup_label(m_bold);
-      m_bold.set_data(tag_quark, (void *)"bold");
+      m_bold.set_data(tag_quark, const_cast<char*>("bold"));
       m_bold.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_bold));
       m_bold.add_accelerator ("activate", accel_group,
@@ -1260,7 +1260,7 @@ namespace gnote {
                            Gtk::ACCEL_VISIBLE);
 
       markup_label (m_italic);
-      m_italic.set_data(tag_quark, (void *)"italic");
+      m_italic.set_data(tag_quark, const_cast<char*>("italic"));
       m_italic.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_italic));
       m_italic.add_accelerator ("activate",
@@ -1270,7 +1270,7 @@ namespace gnote {
                              Gtk::ACCEL_VISIBLE);
 
       markup_label (m_strikeout);
-      m_strikeout.set_data(tag_quark, (void *)"strikethrough");
+      m_strikeout.set_data(tag_quark, const_cast<char*>("strikethrough"));
       m_strikeout.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_strikeout));
       m_strikeout.add_accelerator ("activate",
@@ -1280,7 +1280,7 @@ namespace gnote {
                                 Gtk::ACCEL_VISIBLE);
 
       markup_label (m_highlight);
-      m_highlight.set_data(tag_quark, (void *)"highlight");
+      m_highlight.set_data(tag_quark, const_cast<char*>("highlight"));
       m_highlight.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_highlight));
       m_highlight.add_accelerator ("activate",
@@ -1300,17 +1300,17 @@ namespace gnote {
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_size_activated), &m_normal));
 
       markup_label(m_huge);
-      m_huge.set_data(tag_quark, (void*)"size:huge");
+      m_huge.set_data(tag_quark, const_cast<char*>("size:huge"));
       m_huge.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_size_activated), &m_huge));
 
       markup_label(m_large);
-      m_large.set_data(tag_quark, (void*)"size:large");
+      m_large.set_data(tag_quark, const_cast<char*>("size:large"));
       m_large.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_size_activated), &m_large));
 
       markup_label(m_small);
-      m_small.set_data(tag_quark, (void*)"size:small");
+      m_small.set_data(tag_quark, const_cast<char*>("size:small"));
       m_small.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_size_activated), &m_small));
 
