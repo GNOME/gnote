@@ -144,7 +144,7 @@ namespace gnote {
         if(!prop) {
           continue;
         }
-        if(xmlStrEqual(prop, (xmlChar*)placeholderName.c_str())) {
+        if(xmlStrEqual(prop, (const xmlChar*)placeholderName.c_str())) {
 
           // Return each child element's widget
           for(xmlNodePtr widgetNode = placeholderNode->children;
