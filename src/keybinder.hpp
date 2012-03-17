@@ -36,6 +36,7 @@ namespace gnote {
 class IKeybinder
 {
 public:
+  virtual ~IKeybinder(){}
   virtual void bind(const std::string & keystring, const sigc::slot<void> & handler) = 0;
   virtual void unbind(const std::string & keystring) = 0;
   virtual void unbind_all() = 0;
