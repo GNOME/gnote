@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -45,6 +45,10 @@
 #include <gtkmm/treepath.h>
 #include <gtkmm/treeview.h>
 
+#if HAVE_GTKMM_3_4
+  #include <gtkmm/applicationwindow.h>
+#endif
+
 #include "note.hpp"
 #include "tag.hpp"
 #include "utils.hpp"
@@ -56,8 +60,14 @@ namespace gnote {
   }
   class NoteManager;
 
+#if HAVE_GTKMM_3_4
+  typedef utils::ForcedPresentWindow<Gtk::ApplicationWindow> NoteRecentChangesParent;
+#else
+  typedef utils::ForcedPresentWindow<Gtk::Window> NoteRecentChangesParent;
+#endif
+
 class NoteRecentChanges
-  : public utils::ForcedPresentWindow
+  : public NoteRecentChangesParent
 {
 public:
   static NoteRecentChanges *get_instance();

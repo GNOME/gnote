@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -90,7 +90,7 @@ namespace gnote {
   }
 
   NoteRecentChanges::NoteRecentChanges(NoteManager& m)
-    : utils::ForcedPresentWindow(_("Search All Notes"))
+    : NoteRecentChangesParent(_("Search All Notes"))
     , m_manager(m)
     , m_menubar(NULL)
     , m_find_combo(Glib::RefPtr<Gtk::TreeModel>::cast_static(Gtk::ListStore::create(m_find_combo_columns)), true)
@@ -1248,7 +1248,7 @@ namespace gnote {
     select_all_notes_notebook ();
       
     m_find_combo.get_entry()->grab_focus ();
-    utils::ForcedPresentWindow::on_show();
+    NoteRecentChangesParent::on_show();
   }
 
   

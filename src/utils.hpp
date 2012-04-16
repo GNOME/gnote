@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -206,19 +206,20 @@ namespace gnote {
       guint m_timeout_id;
     };
 
+    template<typename ParentT>
     class ForcedPresentWindow 
-      : public Gtk::Window
+      : public ParentT
     {
     public:
       ForcedPresentWindow(const Glib::ustring & title)
-        : Gtk::Window()
+        : ParentT()
         {
-          set_title(title);
+          ParentT::set_title(title);
         }
 
       void present()
         {
-          ::tomboy_window_present_hardcore(gobj());
+          ::tomboy_window_present_hardcore(GTK_WINDOW(ParentT::gobj()));
         }
     };
 

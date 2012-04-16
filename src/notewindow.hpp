@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -100,7 +100,7 @@ private:
 
 
 class NoteWindow 
-  : public utils::ForcedPresentWindow
+  : public utils::ForcedPresentWindow<Gtk::Window>
 {
 public:
   NoteWindow(Note &);
