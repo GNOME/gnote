@@ -10,6 +10,7 @@ public_icons = \
 	hicolor_apps_24x24_gnote.png \
 	hicolor_apps_32x32_gnote.png \
 	hicolor_apps_48x48_gnote.png \
+	hicolor_apps_256x256_gnote.png \
 	hicolor_apps_scalable_gnote.svg \
 	$(NULL)
 
