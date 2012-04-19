@@ -1,7 +1,8 @@
 AC_INIT(gnote, 0.9.1)
 AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR(README)
-AM_INIT_AUTOMAKE([foreign dist-bzip2])
+AM_INIT_AUTOMAKE([1.11 foreign dist-bzip2])
+AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
 
 GNOME_COMMON_INIT
@@ -175,12 +176,8 @@ AC_SUBST(GNOTE_LOCALEDIR)
 
 AC_DEFINE_UNQUOTED([GNOTE_BUILD_CONFIG], ["$GNOTE_BUILD_CONFIG"], [The string used to hardcode the build config.])
 
-SHAVE_INIT
-
 AC_CONFIG_FILES([
 Makefile
-shave
-shave-libtool
 data/Makefile
 data/gnote.desktop.in
 data/icons/Makefile
