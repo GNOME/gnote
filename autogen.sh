@@ -17,4 +17,4 @@ which gnome-autogen.sh || {
     exit 1
 }
 
-REQUIRED_AUTOMAKE_VERSION=1.9 . gnome-autogen.sh
+REQUIRED_AUTOMAKE_VERSION=1.11 . gnome-autogen.sh
