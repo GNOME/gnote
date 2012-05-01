@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@
 
 #include "sharp/datetime.hpp"
 #include "debug.hpp"
+#include "notetag.hpp"
 #include "notewindow.hpp"
 #include "printnotesnoteaddin.hpp"
 #include "utils.hpp"
@@ -245,13 +246,12 @@ namespace printnotes {
     int start_index = p_start.get_line_index();
     indentation = 0;
 
+    double dpiX = context->get_dpi_x();
     {
       Pango::AttrList attr_list;
 
       Gtk::TextIter segm_start = p_start;
       Gtk::TextIter segm_end;
-
-      double dpiX = context->get_dpi_x();
 
       while (segm_start.compare (p_end) < 0) {
         segm_end = segm_start;
@@ -276,6 +276,10 @@ namespace printnotes {
       layout->set_attributes(attr_list);
     }
 
+    gnote::DepthNoteTag::Ptr depth = get_buffer()->find_depth_tag(p_start);
+    if(depth != 0) {
+        indentation += ((int) (dpiX / 3)) * depth->get_depth();
+    }
     layout->set_width(pango_units_from_double((int)context->get_width() -
                                               m_margin_left - m_margin_right - indentation));
     layout->set_wrap (Pango::WRAP_WORD_CHAR);
