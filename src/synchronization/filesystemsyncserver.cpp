@@ -80,7 +80,7 @@ void FileSystemSyncServer::upload_notes(const std::list<Note::Ptr> & notes)
   if(sharp::directory_exists(m_new_revision_path) == false) {
     sharp::directory_create(m_new_revision_path);
   }
-  DBG_OUT("UploadNotes: notes.Count = %d", notes.size());
+  DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
   for(std::list<Note::Ptr>::const_iterator iter = notes.begin(); iter != notes.end(); ++iter) {
     try {
       std::string serverNotePath = Glib::build_filename(m_new_revision_path, sharp::file_filename((*iter)->file_path()));
@@ -109,7 +109,7 @@ std::list<std::string> FileSystemSyncServer::get_all_note_uuids()
     xmlDocPtr xml_doc = xmlReadFile(m_manifest_path.c_str(), "UTF-8", 0);
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
     sharp::XmlNodeSet noteIds = sharp::xml_node_xpath_find(root_node, "//note/@id");
-    DBG_OUT("get_all_note_uuids has %d notes", noteIds.size());
+    DBG_OUT("get_all_note_uuids has %d notes", int(noteIds.size()));
     for(sharp::XmlNodeSet::iterator iter = noteIds.begin(); iter != noteIds.end(); ++iter) {
       noteUUIDs.push_back(sharp::xml_node_content(*iter));
     }
@@ -152,7 +152,7 @@ std::map<std::string, NoteUpdate> FileSystemSyncServer::get_note_updates_since(i
 
     std::string xpath = str(boost::format("//note[@rev > %1%]") % revision);
     sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, xpath.c_str());
-    DBG_OUT("get_note_updates_since xpath returned %d nodes", noteNodes.size());
+    DBG_OUT("get_note_updates_since xpath returned %d nodes", int(noteNodes.size()));
     for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
       std::string note_id = sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@id"));
       int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@rev")));
@@ -185,7 +185,7 @@ std::map<std::string, NoteUpdate> FileSystemSyncServer::get_note_updates_since(i
     xmlFreeDoc(xml_doc);
   }
 
-  DBG_OUT("get_note_updates_since (%d) returning: %d", revision, noteUpdates.size());
+  DBG_OUT("get_note_updates_since (%d) returning: %d", revision, int(noteUpdates.size()));
   return noteUpdates;
 }
 
