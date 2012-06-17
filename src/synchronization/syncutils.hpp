@@ -23,8 +23,10 @@
 
 
 #include <string>
+#include <vector>
 
 #include "note.hpp"
+#include "base/singleton.hpp"
 
 
 namespace gnote {
@@ -77,6 +79,21 @@ namespace sync {
   private:
     std::string get_inner_content(const std::string & full_content_element) const;
     bool compare_tags(const std::map<std::string, Tag::Ptr> set1, const std::map<std::string, Tag::Ptr> set2) const;
+  };
+
+
+  class SyncUtils
+    : public base::Singleton<SyncUtils>
+  {
+  public:
+    bool is_fuse_enabled();
+    bool enable_fuse();
+    std::string find_first_executable_in_path(const std::vector<std::string> & executableNames);
+    std::string find_first_executable_in_path(const std::string & executableName);
+  private:
+    static const char *common_paths[];
+    std::string m_guisu_tool;
+    std::string m_modprobe_tool;
   };
 
 }
