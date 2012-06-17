@@ -283,7 +283,7 @@ namespace sync {
       // Handle notes modified or added on server
       DBG_OUT("Sync: GetNoteUpdatesSince rev %d", m_client->last_synchronized_revision());
       std::map<std::string, NoteUpdate> noteUpdates = server->get_note_updates_since(m_client->last_synchronized_revision());
-      DBG_OUT("Sync: %d updates since rev %d", noteUpdates.size(), m_client->last_synchronized_revision());
+      DBG_OUT("Sync: %d updates since rev %d", int(noteUpdates.size()), m_client->last_synchronized_revision());
 
       // Gather list of new/updated note titles
       // for title conflict handling purposes.
@@ -399,7 +399,7 @@ namespace sync {
         }
       }
 
-      DBG_OUT("Sync: Uploading %d note updates", newOrModifiedNotes.size());
+      DBG_OUT("Sync: Uploading %d note updates", int(newOrModifiedNotes.size()));
       if(newOrModifiedNotes.size() > 0) {
         set_state(UPLOADING);
         server->upload_notes(newOrModifiedNotes); // TODO: Callbacks to update GUI as upload progresses

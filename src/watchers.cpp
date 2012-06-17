@@ -1025,7 +1025,7 @@ namespace gnote {
       }
 
       DBG_OUT("Highlighting wikiword: '%s' at offset %d",
-              match.c_str(), segment.length());
+              match.c_str(), int(segment.length()));
 
       if (!manager().find(match)) {
         get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
