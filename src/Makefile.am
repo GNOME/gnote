@@ -88,6 +88,12 @@ libgnote_la_SOURCES = \
 	base/singleton.hpp \
 	base/macros.hpp \
 	base/inifile.hpp base/inifile.cpp \
+	gnome_keyring/genericitemdata.hpp gnome_keyring/genericitemdata.cpp \
+	gnome_keyring/itemdata.hpp gnome_keyring/itemdata.cpp \
+	gnome_keyring/netitemdata.hpp gnome_keyring/netitemdata.cpp \
+	gnome_keyring/noteitemdata.hpp \
+	gnome_keyring/keyringexception.hpp gnome_keyring/keyringexception.cpp \
+	gnome_keyring/ring.hpp gnome_keyring/ring.cpp \
 	sharp/addinstreemodel.hpp sharp/addinstreemodel.cpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/dynamicmodule.hpp sharp/dynamicmodule.cpp \
