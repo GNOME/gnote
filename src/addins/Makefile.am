@@ -13,4 +13,5 @@ SUBDIRS = backlinks \
 	stickynoteimport \
 	tomboyimport \
 	underline \
+	webdavsyncservice \
 	$(NULL)

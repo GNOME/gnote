@@ -201,6 +201,7 @@ src/addins/replacetitle/Makefile
 src/addins/stickynoteimport/Makefile
 src/addins/tomboyimport/Makefile
 src/addins/underline/Makefile
+src/addins/webdavsyncservice/Makefile
 src/dbus/Makefile
 po/Makefile.in
 po/Makefile
