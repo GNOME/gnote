@@ -5,6 +5,7 @@ INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/src
 
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@LIBXML_CFLAGS@ \
+	@GNOME_KEYRING_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
 
 AM_LDFLAGS = -avoid-version -module -export-dynamic
