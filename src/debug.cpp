@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -40,6 +41,7 @@
 #include <string.h>
 #include <stdarg.h>
 
+#include <glibmm.h>
 #include <pthread.h>
 
 #if defined(NDEBUG)
@@ -59,6 +61,8 @@
 namespace utils {
 
   static void _vprint(const char *prefix, const char *fmt, 
+                     const char* func,  va_list marker);
+  static void _vfprint(FILE *file, const char *prefix, const char *fmt, 
                      const char* func,  va_list marker);
   static void _print(const char *prefix, const char *fmt, 
              const char* func, ...);
@@ -108,6 +112,27 @@ namespace utils {
   }
 
 
+  void log_print(const char *fmt, const char *func, ...)
+  {
+#ifdef DEBUG
+#define LOG_MSG "LOG: "
+    Glib::ustring filename = Glib::build_filename(Glib::get_home_dir(), "gnote.log");
+    FILE *file = fopen(filename.c_str(), "a");
+    if(!file) {
+      return;
+    }
+    va_list marker;
+
+    va_start(marker, func);
+    _vfprint(file, LOG_MSG, fmt, func, marker);
+
+   va_end(marker);
+   fclose(file);
+#undef LOG_MSG
+#endif
+  }
+
+
   static void _print(const char *prefix, const char *fmt, 
               const char* func, ...)
   {
@@ -123,20 +148,26 @@ namespace utils {
   static void _vprint(const char *prefix, const char *fmt, 
               const char* func,  va_list marker)
   {
+    _vfprint(stderr, prefix, fmt, func, marker);
+  }
+
+  static void _vfprint(FILE *file, const char *prefix, const char *fmt, 
+                     const char* func,  va_list marker)
+  {
 //    static boost::recursive_mutex mutex;
 //    boost::recursive_mutex::scoped_lock lock(mutex);
     char buf[128];
     snprintf(buf, 128, "(%lu) ", (pthread_t)pthread_self());
-    fwrite(buf, 1, strlen(buf), stderr);
-    fwrite(prefix, 1, strlen(prefix), stderr);
+    fwrite(buf, 1, strlen(buf), file);
+    fwrite(prefix, 1, strlen(prefix), file);
 
     if(func) {
-      fwrite(func, 1, strlen(func), stderr);
-      fwrite(" - ", 1, 3, stderr);
+      fwrite(func, 1, strlen(func), file);
+      fwrite(" - ", 1, 3, file);
     }
 
-    vfprintf(stderr, fmt, marker);
-    fprintf(stderr, "\n");
+    vfprintf(file, fmt, marker);
+    fprintf(file, "\n");
   }
 
 }
