@@ -30,6 +30,7 @@ namespace gnote {
   const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
   const char * Preferences::SCHEMA_KEYBINDINGS = "org.gnome.gnote.global-keybindings";
   const char * Preferences::SCHEMA_SYNC = "org.gnome.gnote.sync";
+  const char * Preferences::SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
   const char * Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 
   const char * Preferences::ENABLE_SPELLCHECKING = "enable-spellchecking";
@@ -66,6 +67,9 @@ namespace gnote {
   const char * Preferences::SEARCH_WINDOW_WIDTH = "search-window-width";
   const char * Preferences::SEARCH_WINDOW_HEIGHT = "search-window-height";
   const char * Preferences::SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
+
+  const char * Preferences::SYNC_FUSE_MOUNT_TIMEOUT = "sync-fuse-mount-timeout-ms";
+  const char * Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";
 
   const char * Preferences::DESKTOP_GNOME_FONT = "document-font-name";
   const char * Preferences::DESKTOP_GNOME_KEY_THEME = "gtk-key-theme";

@@ -40,6 +40,7 @@ namespace gnote {
     static const char *SCHEMA_GNOTE;
     static const char *SCHEMA_KEYBINDINGS;
     static const char *SCHEMA_SYNC;
+    static const char *SCHEMA_SYNC_WDFS;
     static const char *SCHEMA_DESKTOP_GNOME_INTERFACE;
 
     static const char *ENABLE_SPELLCHECKING;
@@ -76,6 +77,9 @@ namespace gnote {
     static const char *SYNC_SELECTED_SERVICE_ADDIN;
     static const char *SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
     static const char *SYNC_AUTOSYNC_TIMEOUT;
+
+    static const char *SYNC_FUSE_MOUNT_TIMEOUT;
+    static const char *SYNC_FUSE_WDFS_ACCEPT_SSLCERT;
 
     static const char *DESKTOP_GNOME_FONT;
     static const char *DESKTOP_GNOME_KEY_THEME;
