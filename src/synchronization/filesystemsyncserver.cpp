@@ -61,7 +61,7 @@ SyncServer::Ptr FileSystemSyncServer::create(const std::string & path)
 
 FileSystemSyncServer::FileSystemSyncServer(const std::string & localSyncPath)
   : m_server_path(localSyncPath)
-  , m_cache_path("/tmp/gnote")
+  , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
 {
   if(!sharp::directory_exists(m_server_path)) {
     throw std::invalid_argument(("Directory not found: " + m_server_path).c_str());
