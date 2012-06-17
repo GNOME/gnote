@@ -1242,7 +1242,8 @@ namespace gnote {
         // TODO: Put this voodoo in a method somewhere
         ActionManager::obj()["NoteSynchronizationAction"]->activate();
       }
-    } else {
+    }
+    else {
       // TODO: Change the SyncServiceAddin API so the call to
       // SaveConfiguration has a way of passing back an exception
       // or other text so it can be displayed to the user.
@@ -1257,11 +1258,9 @@ namespace gnote {
       // Give the user a visual letting them know that connecting
       // was successful.
       if(errorMsg == "") {
-        errorMsg = _("Please check your information and try again.  The log file {0} may contain more information about the error.");
-        /*errorMsg = _("Please check your information and try again.  The log file {0} may contain more information about the error.");
-        string logPath = System.IO.Path.Combine (Services.NativeApplication.LogDirectory,
-                                                 "tomboy.log");
-        errorMsg = String.Format (errorMsg, logPath);*/
+        errorMsg = _("Please check your information and try again.  The log file %1% may contain more information about the error.");
+        std::string logPath = Glib::build_filename(Glib::get_home_dir(), "gnote.log");
+        errorMsg = str(boost::format(errorMsg) % logPath);
       }
       dialog = new utils::HIGMessageDialog(this, GTK_DIALOG_MODAL, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE,
         _("Error connecting"), errorMsg);
