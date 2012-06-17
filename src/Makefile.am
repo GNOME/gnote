@@ -162,6 +162,7 @@ libgnote_la_SOURCES = \
 	notebooks/notebooknoteaddin.hpp notebooks/notebooknoteaddin.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	synchronization/filesystemsyncserver.hpp synchronization/filesystemsyncserver.cpp \
+	synchronization/fusesyncserviceaddin.hpp synchronization/fusesyncserviceaddin.cpp \
 	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
 	synchronization/silentui.hpp synchronization/silentui.cpp \
 	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
