@@ -151,7 +151,6 @@ namespace sync {
   {
   public:
     GnoteSyncException(const char * what_arg) : std::runtime_error(what_arg){}
-    GnoteSyncException(const std::string & what_arg) : std::runtime_error(what_arg){}
   };
 
 }
