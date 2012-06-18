@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-06-17 17:54+0000\n"
-"PO-Revision-Date: 2012-06-17 21:24+0100\n"
+"POT-Creation-Date: 2012-06-18 12:06+0000\n"
+"PO-Revision-Date: 2012-06-18 19:12+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: Slovenian\n"
@@ -579,6 +579,7 @@ msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "Uskladi sporočilca Gnote s krajevnim datotečnim sistemom"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
 msgid "Aurimas Cernius and the Tomboy Project"
 msgstr "Aurimas Cernius in projekt Tomboy"
 
@@ -779,6 +780,53 @@ msgstr "Doda možnost podčrtovanja besedila."
 #: ../src/addins/underline/underlinenoteaddin.cpp:57
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière in projekt Tomboy"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+msgid "WebDav Sync Service Add-in"
+msgstr "Vstavek storitve WebDav"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+msgid "Synchronize Tomboy Notes to a WebDav URL"
+msgstr "Usklajevanje sporočilc Tomboy na naslov URL WebDav"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "Naslov _URL:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr "Uporab_niško ime:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr "_Geslo:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid "There was an error connecting to the server.  This may be caused by using an incorrect user name and/or password."
+msgstr "Prišlo je do napake med povezovanjem s strežnikom. Morda ste vnesli napačno uporabniško ime ali geslo."
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+msgid "URL, username, or password field is empty."
+msgstr "Polje naslova URL, uporabniškega imena ali gesla je prazno."
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:306
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following message:\n"
+"\n"
+"%1%"
+msgstr ""
+"Neuspešno shranjevanje nastavitev v zbirko ključev GNOME:\n"
+"\n"
+"%1%"
 
 #: ../src/gnote.cpp:372
 msgid "Cannot create new note"
@@ -1592,6 +1640,34 @@ msgstr "Orodja"
 msgid "Unknown"
 msgstr "Neznano"
 
+#: ../src/synchronization/fusesyncserviceaddin.cpp:109
+msgid "This synchronization addin is not supported on your computer. Please make sure you have FUSE and %1% correctly installed and configured"
+msgstr "Vstavek usklajevanja ni podprt na vašem računalniku. Prepričajte se, da je nameščen modul FUSE in da je %1% pravilno nameščen in nastavljen."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:152
+msgid "Could not read testfile."
+msgstr "Ni mogoče prebrati preizkusne datoteke."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:161
+msgid "Write test failed."
+msgstr "Preizkus zapisovanja je spodletel."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:190
+msgid "Timeout connecting to server."
+msgstr "Povezovanje s strežnikom je časovno poteklo."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:196
+msgid "Error connecting to server."
+msgstr "Napaka povezovanja s strežnikom."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:209
+msgid "FUSE could not be enabled."
+msgstr "Ni mogoče omogočiti okolja FUSE."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:240
+msgid "An error ocurred while connecting to the specified server"
+msgstr "Prišlo je do napake med povezovanjem z navedenim strežnikom"
+
 #: ../src/synchronization/syncdialog.cpp:110
 msgid "Note Conflict"
 msgstr "Spor sporočilc"
@@ -1786,6 +1862,32 @@ msgstr "Novo sporočilce je bilo poslano na strežnik"
 #: ../src/synchronization/syncmanager.cpp:135
 msgid "_Tools"
 msgstr "O_rodja"
+
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
+msgid "Could not enable FUSE"
+msgstr "Ni mogoče omogočiti FUSE."
+
+#: ../src/synchronization/syncutils.cpp:144
+#: ../src/synchronization/syncutils.cpp:176
+msgid "The FUSE module could not be loaded. Please check that it is installed properly and try again."
+msgstr "Modula FUSE ni mogoče naložiti. Preverite, če je modul pravilno nameščen in poskusite znova."
+
+#: ../src/synchronization/syncutils.cpp:152
+msgid "Enable FUSE?"
+msgstr "Ali naj bo FUSE omogočen?"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:155
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /etc/modules."
+msgstr ""
+"Način usklajevanja, ki ste ga izbrali zahteva naložen modul FUSE.\n"
+"\n"
+"Sporočilu se lahko izognete, če bo modul FUSE naložen ob zagonu računalnika. Dodajte \"modprobe fuse\" v datoteko /etc/init.d/boot.local ali \"fuse\" v /etc/modules."
 
 #: ../src/tray.cpp:54
 msgid "Take notes"
