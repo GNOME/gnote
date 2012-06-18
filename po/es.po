@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-04 20:26+0000\n"
-"PO-Revision-Date: 2012-03-05 10:49+0100\n"
+"POT-Creation-Date: 2012-06-17 19:30+0000\n"
+"PO-Revision-Date: 2012-06-18 13:46+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -687,7 +687,7 @@ msgstr ""
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:57
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere y el Proyecto Tomboy"
@@ -787,6 +787,7 @@ msgstr ""
 "Sincronizar las notas de Gnote con una ruta local del sistema de archivos"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
 msgid "Aurimas Cernius and the Tomboy Project"
 msgstr "Aurimas Cernius y el Proyecto Tomboy"
 
@@ -895,24 +896,24 @@ msgstr ""
 "Cambiar la nota <span weight=\"bold\">Hoy: plantilla</span> para "
 "personalizar el texto que las nuevas notas Hoy tendrán."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:49
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
 msgid "Printing Support"
 msgstr "Soporte para impresión"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:53
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
 msgid "Allows you to print a note."
 msgstr "Le permite imprimir una nota."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:80
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
 msgid "Print"
 msgstr "Imprimir"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
 msgid "Error printing note"
 msgstr "Error al imprimir la nota"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:299
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
 msgid "Page %1% of %2%"
 msgstr "Página %1% de %2%"
 
@@ -996,27 +997,71 @@ msgstr "Añade la posibilidad de subrayar texto."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière y el Proyecto Tomboy"
 
-#: ../src/gnote.cpp:374
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+#| msgid "Local Directory Sync Service Add-in"
+msgid "WebDav Sync Service Add-in"
+msgstr "Complemento del servicio de sincronización de WebDav"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+msgid "Synchronize Tomboy Notes to a WebDav URL"
+msgstr ""
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "_URL:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr ""
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr ""
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid ""
+"There was an error connecting to the server.  This may be caused by using an "
+"incorrect user name and/or password."
+msgstr ""
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+#| msgid "Folder path field is empty."
+msgid "URL, username, or password field is empty."
+msgstr "El campo del URL, nombre de usuario o contraseña está vacío."
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:306
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
+"\n"
+"%1%"
+msgstr ""
+
+#: ../src/gnote.cpp:372
 msgid "Cannot create new note"
 msgstr "No se puede crear una nota nueva"
 
-#: ../src/gnote.cpp:423
+#: ../src/gnote.cpp:425
 msgid "and Tomboy original authors."
 msgstr "y los autores originales de Tomboy."
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:434
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2009-2010\n"
 "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008\n"
 "QA: Jorge González <jorgegonz@svn.gnome.org>, 2009-2010"
 
-#: ../src/gnote.cpp:441
-#| msgid ""
-#| "Copyright © 2010-2011 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: ../src/gnote.cpp:443
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1028,77 +1073,77 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 los autores originales de Tomboy."
 
-#: ../src/gnote.cpp:445
+#: ../src/gnote.cpp:447
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Una aplicación simple y fácil de usar para tomar notas en el escritorio."
 
-#: ../src/gnote.cpp:456
+#: ../src/gnote.cpp:458
 msgid "Homepage"
 msgstr "Página web"
 
-#: ../src/gnote.cpp:552
+#: ../src/gnote.cpp:554
 msgid "Run Gnote as a GNOME panel applet."
 msgstr "Ejecutar Gnote como una miniaplicación del panel de GNOME."
 
-#: ../src/gnote.cpp:553
+#: ../src/gnote.cpp:555
 msgid "Run Gnote in background."
 msgstr "Ejecutar Gnote en segundo plano."
 
-#: ../src/gnote.cpp:554
+#: ../src/gnote.cpp:556
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especificar la ruta de la carpeta que contiene las notas."
 
-#: ../src/gnote.cpp:554
+#: ../src/gnote.cpp:556
 msgid "path"
 msgstr "ruta"
 
-#: ../src/gnote.cpp:555
+#: ../src/gnote.cpp:557
 msgid "Open the search all notes window with the search text."
 msgstr ""
 "Abrir la ventana de búsqueda en todas las notas con el texto de búsqueda."
 
-#: ../src/gnote.cpp:555 ../src/gnote.cpp:560
+#: ../src/gnote.cpp:557 ../src/gnote.cpp:562
 msgid "text"
 msgstr "texto"
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:558
 msgid "Print version information."
 msgstr "Imprimir la información de la versión."
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:559
 msgid "Create and display a new note, with a optional title."
 msgstr "Crear y mostrar una nota nueva, con un título opcional"
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:559
 msgid "title"
 msgstr "título"
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:560
 msgid "Display the existing note matching title."
 msgstr "Mostrar el título de la nota correspondiente."
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:560
 msgid "title/url"
 msgstr "título/url"
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:561
 msgid "Display the 'Start Here' note."
 msgstr "Mostrar la nota «Comenzar aquí»."
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:562
 msgid "Search and highlight text in the opened note."
 msgstr "Mostrar y resaltar texto en la nota abierta."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:566
 msgid "A note taking application"
 msgstr "Una aplicación para tomar notas"
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:566
 msgid "Gnote options at launch"
 msgstr "Opciones de Gnote al iniciar"
 
-#: ../src/gnote.cpp:757
+#: ../src/gnote.cpp:759
 msgid "Version %1%"
 msgstr "Versión %1%"
 
@@ -1774,27 +1819,30 @@ msgstr ""
 "Gnote está preparado para sincronizar sus notas. ¿Quiere sincronizarlas "
 "ahora?"
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
+#| msgid ""
+#| "Please check your information and try again.  The log file {0} may "
+#| "contain more information about the error."
 msgid ""
-"Please check your information and try again.  The log file {0} may contain "
+"Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
 msgstr ""
-"Compruebe su información e inténtelo de nuevo. El archivo {0} puede contener "
-"información útil sobre el error."
+"Compruebe su información e inténtelo de nuevo. El archivo de registro %1% "
+"puede contener más información sobre el error."
 
-#: ../src/preferencesdialog.cpp:1267
+#: ../src/preferencesdialog.cpp:1266
 msgid "Error connecting"
 msgstr "Error al conectar"
 
-#: ../src/preferencesdialog.cpp:1331
+#: ../src/preferencesdialog.cpp:1330
 msgid "Version:"
 msgstr "Versión:"
 
-#: ../src/preferencesdialog.cpp:1336
+#: ../src/preferencesdialog.cpp:1335
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:1342
+#: ../src/preferencesdialog.cpp:1341
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -1884,6 +1932,41 @@ msgstr "Herramientas"
 #: ../src/sharp/addinstreemodel.cpp:151
 msgid "Unknown"
 msgstr "Desconocida"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:109
+msgid ""
+"This synchronization addin is not supported on your computer. Please make "
+"sure you have FUSE and %1% correctly installed and configured"
+msgstr ""
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:152
+#| msgid "Could not save the icon file."
+msgid "Could not read testfile."
+msgstr "No se pudo leer el archivo de prueba."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:161
+msgid "Write test failed."
+msgstr ""
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:190
+#| msgid "Connecting to the server..."
+msgid "Timeout connecting to server."
+msgstr "Expiró el tiempo de conexión al servidor."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:196
+#| msgid "Error connecting"
+msgid "Error connecting to server."
+msgstr "Error al conectar al servidor."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:209
+msgid "FUSE could not be enabled."
+msgstr "No se pudo activar FUSE."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:240
+#| msgid ""
+#| "The port to use when connecting to the synchronization server via SSH."
+msgid "An error ocurred while connecting to the specified server"
+msgstr "Ocurrió un error al conectar con el servidor especificado"
 
 #: ../src/synchronization/syncdialog.cpp:110
 msgid "Note Conflict"
@@ -2088,6 +2171,41 @@ msgstr "Se subió la nota nueva al servidor"
 #: ../src/synchronization/syncmanager.cpp:135
 msgid "_Tools"
 msgstr "Herramien_tas"
+
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
+msgid "Could not enable FUSE"
+msgstr "No se pudo activar FUSE"
+
+#: ../src/synchronization/syncutils.cpp:144
+#: ../src/synchronization/syncutils.cpp:176
+msgid ""
+"The FUSE module could not be loaded. Please check that it is installed "
+"properly and try again."
+msgstr ""
+"No se pudo cargar el módulo FUSE. Compruebe que está instalado correctamente "
+"e inténtelo de nuevo."
+
+#: ../src/synchronization/syncutils.cpp:152
+#| msgid "_Enable"
+msgid "Enable FUSE?"
+msgstr "¿Activar FUSE?"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:155
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
+msgstr ""
+"La sincronización que ha elegido requiere cargar el módulo FUSE.\n"
+"\n"
+"Para evitar que se le muestre este mensaje en el futuro, debería cargar FUSE "
+"al inicio. Añada «modprobe fuse» a /etc/init.d/boot.local o «fuse» a /etc/"
+"modules."
 
 #: ../src/tray.cpp:54
 msgid "Take notes"
