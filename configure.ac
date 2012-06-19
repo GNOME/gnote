@@ -27,7 +27,6 @@ dnl if one is harcoded elsewhere, it is a bug
 GTK_VERSION=3.0
 LIBGLIBMM_VERSION=2.28
 LIBGTKMM_VERSION=3.0
-LIBPANELAPPLET_VERSION=3.0
 GTKSPELL_VERSION=2.0.9
 BOOST_VERSION=1.34
 GNOME_KEYRING_VERSION=3.0
@@ -80,26 +79,6 @@ PKG_CHECK_MODULES(LIBXML, [libxml-2.0])
 PKG_CHECK_MODULES(LIBXSLT, [libxslt])
 PKG_CHECK_MODULES(PCRE, [libpcrecpp])
 PKG_CHECK_MODULES(UUID, [uuid])
-
-AC_ARG_ENABLE([applet],
-	AS_HELP_STRING([--enable-applet],[Enable panel applet]),
-	[],[enable_applet=no])
-
-if test $enable_applet = "yes"; then
-	PKG_CHECK_EXISTS(libpanelapplet-4.0 >= $LIBPANELAPPLET_VERSION,
-	  [
-		AC_DEFINE(HAVE_PANELAPPLET, 1, [Define to 1 if panelapplet is available])
-		have_panelapplet="yes"
-		PKG_CHECK_MODULES(LIBPANELAPPLET, [libpanelapplet-4.0 >= $LIBPANELAPPLET_VERSION])
-	  ], [
-		have_panelapplet="no"]
-	)
-else
-	have_panelapplet="no"
-fi
-
-AM_CONDITIONAL(HAVE_PANELAPPLET, test $have_panelapplet = "yes")
-AC_SUBST(PANELAPPLET_SERVER_DIR)
 
 #GtkSpell disabled until GTK 3.0 is supported
 #
@@ -216,6 +195,5 @@ echo "
 Options:
 
   Spellchecking support:       ${FIXED_GTKSPELL}
-  GNOME Panel Applet support:  ${have_panelapplet}
 
 "

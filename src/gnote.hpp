@@ -59,10 +59,6 @@ public:
     }
   bool        needs_execute() const;
   bool        needs_immediate_execute() const;
-  bool        use_panel_applet() const
-    {
-      return m_use_panel;
-    }
   bool        background()
     {
       return m_background;
@@ -141,12 +137,7 @@ public:
 
   bool tray_icon_showing()
     {
-      return m_is_panel_applet
-             || (m_tray_icon && m_tray_icon->is_embedded() && m_tray_icon->get_visible());
-    }
-  bool is_panel_applet()
-    {
-      return m_is_panel_applet;
+      return m_tray_icon && m_tray_icon->is_embedded() && m_tray_icon->get_visible();
     }
   bool is_background() const
     {
@@ -180,7 +171,6 @@ private:
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
   Glib::RefPtr<TrayIcon> m_tray_icon;
   Tray::Ptr m_tray;
-  bool m_is_panel_applet;
   bool m_is_background;
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;

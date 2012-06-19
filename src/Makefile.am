@@ -2,8 +2,6 @@
 
 SUBDIRS = addins
 
-EXTRA_DIST = gnote-applet.in
-
 INCLUDES = -I$(top_srcdir)
 AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@GTK_CFLAGS@ \
@@ -57,20 +55,6 @@ xmlreadertest_LDADD = libgnote.la @LIBXML_LIBS@
 
 notetest_SOURCES = test/notetest.cpp
 notetest_LDADD =  $(GNOTE_LIBS) -lX11
-
-
-if HAVE_PANELAPPLET
-APPLET_SOURCES=applet.hpp applet.cpp
-AM_CPPFLAGS+=@LIBPANELAPPLET_CFLAGS@
-LIBGNOTE_LIBS+=@LIBPANELAPPLET_LIBS@
-
-libexec_SCRIPTS=gnote-applet
-gnote-applet: gnote-applet.in Makefile
-	sed -e "s|\@bindir\@|$(bindir)|g"	\
-	    < $< > $@
-
-CLEANFILES = gnote-applet
-endif
 
 
 SUBDIRS += dbus
@@ -171,7 +155,6 @@ libgnote_la_SOURCES = \
         synchronization/syncutils.hpp synchronization/syncutils.cpp \
 	synchronization/syncserviceaddin.hpp synchronization/syncserviceaddin.cpp \
 	$(DBUS_SOURCES)   \
-	$(APPLET_SOURCES) \
 	$(NULL)
 
 

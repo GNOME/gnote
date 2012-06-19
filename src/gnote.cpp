@@ -35,10 +35,6 @@
 #include <gtkmm/main.h>
 #include <gtkmm/aboutdialog.h>
 
-#if HAVE_PANELAPPLET
-#include <panel-applet.h>
-#endif
-
 #include "gnote.hpp"
 #include "actionmanager.hpp"
 #include "addinmanager.hpp"
@@ -56,10 +52,6 @@
 #include "sharp/streamreader.hpp"
 #include "sharp/files.hpp"
 #include "synchronization/syncmanager.hpp"
-
-#if HAVE_PANELAPPLET
-#include "applet.hpp"
-#endif
 
 
 namespace gnote {
@@ -113,7 +105,6 @@ namespace gnote {
   Gnote::Gnote()
     : m_manager(NULL)
     , m_keybinder(NULL)
-    , m_is_panel_applet(false)
     , m_is_background(false)
     , m_prefsdlg(NULL)
     , m_app(NULL)
@@ -136,10 +127,6 @@ namespace gnote {
         handle = true;
         break;
       }
-      else if(!strcmp(argv[i], "--panel-applet")) {
-        m_is_panel_applet = true;
-        break;
-      }
     }
 
     if(handle) {
@@ -148,22 +135,10 @@ namespace gnote {
       return 0;
     }
 
-    if(m_is_panel_applet) {
-#if HAVE_PANELAPPLET
-      common_init();
-      ActionManager & am(ActionManager::obj());
-      am["CloseWindowAction"]->set_visible(true);
-      am["QuitGNoteAction"]->set_visible(false);
-      register_remote_control(*m_manager, sigc::mem_fun(*this, &Gnote::end_main));
-      panel::register_applet();
-#endif
-    }
-    else {
-      m_app = gnote_app_new();
-      g_application_run(G_APPLICATION(m_app), argc, argv);
-      g_object_unref(m_app);
-      m_app = NULL;
-    }
+    m_app = gnote_app_new();
+    g_application_run(G_APPLICATION(m_app), argc, argv);
+    g_object_unref(m_app);
+    m_app = NULL;
     signal_quit();
     return 0;
   }
@@ -246,30 +221,26 @@ namespace gnote {
       }
     }
 
-    if(!m_is_panel_applet) {
-      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
-        .get_schema_settings(Preferences::SCHEMA_GNOTE);
-      if(settings->get_boolean(Preferences::USE_STATUS_ICON)) {
-        DBG_OUT("starting tray icon");
-        start_tray_icon();
-      }
-      else if(m_is_background) {
-        // Create Search All Notes window as we need it present for application to run
-        NoteRecentChanges::get_instance(default_note_manager());
-      }
-      else {
-        am["ShowSearchAllNotesAction"]->activate();
-      }
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+    if(settings->get_boolean(Preferences::USE_STATUS_ICON)) {
+      DBG_OUT("starting tray icon");
+      start_tray_icon();
+    }
+    else if(m_is_background) {
+      // Create Search All Notes window as we need it present for application to run
+      NoteRecentChanges::get_instance(default_note_manager());
+    }
+    else {
+      am["ShowSearchAllNotesAction"]->activate();
     }
   }
 
 
   void Gnote::start_note_created(const Note::Ptr & start_note)
   {
-    DBG_OUT("we will show the start note: %d", !is_panel_applet());
-    if(!is_panel_applet()) {
-      start_note->get_window()->show();
-    }
+    DBG_OUT("we will show the start note");
+    start_note->get_window()->show();
   }
 
   std::string Gnote::get_note_path(const std::string & override_path)
@@ -377,9 +348,6 @@ namespace gnote {
 
   void Gnote::on_quit_gnote_action()
   {
-    if(m_is_panel_applet) {
-      return;
-    }
 #ifdef HAVE_GLIB_2_32
     g_application_quit(G_APPLICATION(m_app));
 #else
@@ -551,7 +519,6 @@ namespace gnote {
   {
     static const GOptionEntry entries[] =
       {
-        { "panel-applet", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_use_panel, _("Run Gnote as a GNOME panel applet."), NULL },
         { "background", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_background, _("Run Gnote in background."), NULL },
         { "note-path", 0, 0, G_OPTION_ARG_STRING, &m_note_path, _("Specify the path of the directory containing the notes."), _("path") },
         { "search", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Open the search all notes window with the search text."), _("text") },
