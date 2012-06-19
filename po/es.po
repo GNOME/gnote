@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-06-17 19:30+0000\n"
-"PO-Revision-Date: 2012-06-18 13:46+0200\n"
+"POT-Creation-Date: 2012-06-18 12:06+0000\n"
+"PO-Revision-Date: 2012-06-19 14:30+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -998,13 +998,12 @@ msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière y el Proyecto Tomboy"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
-#| msgid "Local Directory Sync Service Add-in"
 msgid "WebDav Sync Service Add-in"
 msgstr "Complemento del servicio de sincronización de WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
 msgid "Synchronize Tomboy Notes to a WebDav URL"
-msgstr ""
+msgstr "Sincronizar notas de Tomboy con un URL de WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
 msgid "_URL:"
@@ -1012,11 +1011,11 @@ msgstr "_URL:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
 msgid "User_name:"
-msgstr ""
+msgstr "Nombre de _usuario:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "_Password:"
-msgstr ""
+msgstr "C_ontraseña:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
 msgid "WebDAV"
@@ -1027,9 +1026,10 @@ msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
 msgstr ""
+"Ocurrió un error al conectar al servidor. Esto pudo ocurrir por usar un "
+"nombre de usuario y/o contraseña incorrectos."
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
-#| msgid "Folder path field is empty."
 msgid "URL, username, or password field is empty."
 msgstr "El campo del URL, nombre de usuario o contraseña está vacío."
 
@@ -1045,6 +1045,10 @@ msgid ""
 "\n"
 "%1%"
 msgstr ""
+"Falló al guardar la configuración en el depósito de claves de GNOME con el "
+"siguiente mensaje:\n"
+"\n"
+"%1%"
 
 #: ../src/gnote.cpp:372
 msgid "Cannot create new note"
@@ -1820,9 +1824,6 @@ msgstr ""
 "ahora?"
 
 #: ../src/preferencesdialog.cpp:1261
-#| msgid ""
-#| "Please check your information and try again.  The log file {0} may "
-#| "contain more information about the error."
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -1938,23 +1939,22 @@ msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1% correctly installed and configured"
 msgstr ""
+"Su equipo no soporta este complemento de sincronización. Asegúrese de que "
+"tiene FUSE instalado y %1% correctamente instalado y configurado"
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:152
-#| msgid "Could not save the icon file."
 msgid "Could not read testfile."
 msgstr "No se pudo leer el archivo de prueba."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:161
 msgid "Write test failed."
-msgstr ""
+msgstr "Falló la prueba de escritura."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:190
-#| msgid "Connecting to the server..."
 msgid "Timeout connecting to server."
 msgstr "Expiró el tiempo de conexión al servidor."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:196
-#| msgid "Error connecting"
 msgid "Error connecting to server."
 msgstr "Error al conectar al servidor."
 
@@ -1963,8 +1963,6 @@ msgid "FUSE could not be enabled."
 msgstr "No se pudo activar FUSE."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:240
-#| msgid ""
-#| "The port to use when connecting to the synchronization server via SSH."
 msgid "An error ocurred while connecting to the specified server"
 msgstr "Ocurrió un error al conectar con el servidor especificado"
 
@@ -2187,7 +2185,6 @@ msgstr ""
 "e inténtelo de nuevo."
 
 #: ../src/synchronization/syncutils.cpp:152
-#| msgid "_Enable"
 msgid "Enable FUSE?"
 msgstr "¿Activar FUSE?"
 
