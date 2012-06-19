@@ -44,10 +44,7 @@
 #include <gtkmm/treemodelsort.h>
 #include <gtkmm/treepath.h>
 #include <gtkmm/treeview.h>
-
-#if HAVE_GTKMM_3_4
-  #include <gtkmm/applicationwindow.h>
-#endif
+#include <gtkmm/applicationwindow.h>
 
 #include "note.hpp"
 #include "tag.hpp"
@@ -60,11 +57,7 @@ namespace gnote {
   }
   class NoteManager;
 
-#if HAVE_GTKMM_3_4
-  typedef utils::ForcedPresentWindow<Gtk::ApplicationWindow> NoteRecentChangesParent;
-#else
-  typedef utils::ForcedPresentWindow<Gtk::Window> NoteRecentChangesParent;
-#endif
+typedef utils::ForcedPresentWindow<Gtk::ApplicationWindow> NoteRecentChangesParent;
 
 class NoteRecentChanges
   : public NoteRecentChangesParent

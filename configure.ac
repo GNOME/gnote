@@ -26,7 +26,7 @@ dnl if one is harcoded elsewhere, it is a bug
 
 GTK_VERSION=3.0
 LIBGLIBMM_VERSION=2.28
-LIBGTKMM_VERSION=3.0
+LIBGTKMM_VERSION=3.4
 GTKSPELL_VERSION=2.0.9
 BOOST_VERSION=1.34
 GNOME_KEYRING_VERSION=3.0
@@ -65,11 +65,6 @@ AC_LANG_COMPILER_REQUIRE
 PKG_CHECK_MODULES(LIBGLIBMM, [glibmm-2.4])
 PKG_CHECK_MODULES(GTK, [gtk+-3.0 >= $GTK_VERSION])
 PKG_CHECK_MODULES(LIBGTKMM, [gtkmm-3.0 >= $LIBGTKMM_VERSION])
-# Check for gtkmm 3.4 or higher for extra features
-PKG_CHECK_EXISTS(gtkmm-3.0 >= 3.4,
-  [
-    AC_DEFINE(HAVE_GTKMM_3_4, 1, [Define to 1 if gtkmm version is at least 3.4])
-  ])
 # Check for glib 2.32 or higher, which have certain incompatibilities with older ones
 PKG_CHECK_EXISTS(glib-2.0 >= 2.32,
   [
