@@ -2,21 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011, 2012.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-05-01 10:19+0000\n"
-"PO-Revision-Date: 2012-05-14 11:48+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-06-20 20:53+0300\n"
+"PO-Revision-Date: 2012-06-20 20:57+0300\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
-"Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
+"Language-Team: Latviešu <lata-l10n@googlegroups.com>\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"Language: lv\n"
 "X-Generator: Lokalize 1.4\n"
 
 #: ../data/gnote.desktop.in.in.h:1
@@ -85,9 +86,6 @@ msgid "Enable custom font"
 msgstr "Izmantot izvēles fontu"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:10
-#| msgid ""
-#| "If true, the font name set in custom_font_face will be used as the font "
-#| "when displaying notes. Otherwise the desktop default font will be used."
 msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
@@ -100,9 +98,6 @@ msgid "Custom Font Face"
 msgstr "Pielāgots fonta veidols"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:12
-#| msgid ""
-#| "If enable_custom_font is true, the font name set here will be used as the "
-#| "font when displaying notes."
 msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
@@ -115,18 +110,13 @@ msgid "Enable global keybindings"
 msgstr "Aktivizēt globālos taustiņus"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:14
-#| msgid ""
-#| "If true, the desktop-global keybindings set in /apps/gnote/"
-#| "global_keybindings will be enabled, allowing for useful Gnote actions to "
-#| "be available from any application."
 msgid ""
 "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
 "keybindings will be enabled, allowing for useful Gnote actions to be "
 "available from any application."
 msgstr ""
-"Ja patiess, desktop-global taustiņsaite, kas iestatīta "
-"/org/gnome/gnote/global-"
-"keybindings, tiks aktivizēta, atļaujot noderīgām Gnote darbībām būt  "
+"Ja patiess, desktop-global taustiņsaite, kas iestatīta /org/gnome/gnote/"
+"global-keybindings, tiks aktivizēta, atļaujot noderīgām Gnote darbībām būt  "
 "izmantojamām no jebkuras programmas."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:15
@@ -255,7 +245,8 @@ msgstr "SSHFS attālinātās sinhronizācijas lietotājvārds"
 #: ../data/org.gnome.gnote.gschema.xml.in.h:40
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
-"Lietotājvārds, ko izmantot, savienojoties ar sinhronizācijas serveri caur SSH."
+"Lietotājvārds, ko izmantot, savienojoties ar sinhronizācijas serveri caur "
+"SSH."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:41
 msgid "SSHFS Synchronization Server Port"
@@ -761,7 +752,6 @@ msgid "Could not save the file \"%s\""
 msgstr "Neizdevās saglabāt failu \"%s\""
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
-#| msgid "Selected Synchronization Service Addin"
 msgid "Local Directory Sync Service Add-in"
 msgstr "Vietējās direktorijas sinhronizācijas servisa pielikums"
 
@@ -770,7 +760,7 @@ msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "Sinhronizēt Gnote piezīmes ar lokālo failsistēmas ceļu"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
-#| msgid "Hubert Figuiere and the Tomboy Project"
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
 msgid "Aurimas Cernius and the Tomboy Project"
 msgstr "Aurimas Cernius un Tomboy Project"
 
@@ -779,7 +769,6 @@ msgid "_Folder Path:"
 msgstr "_Mapes ceļš:"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:131
-#| msgid "SSHFS Remote Synchronization Folder"
 msgid "Select Synchronization Folder..."
 msgstr "Izvēlēties sinhronizācijas mapi..."
 
@@ -983,6 +972,59 @@ msgstr "Dod iespēju pasvītrot tekstu."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière un Tomboy Project"
 
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+msgid "WebDav Sync Service Add-in"
+msgstr "WebDav sinhronizācijas servisa pielikums"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+msgid "Synchronize Tomboy Notes to a WebDav URL"
+msgstr "Sinhronizēt Tomboy piezīmes ar WebDav URL"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "_URL:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr "Lietotāj_vārds:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr "_Parole:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid ""
+"There was an error connecting to the server.  This may be caused by using an "
+"incorrect user name and/or password."
+msgstr ""
+"Notikusi kļūda pieslēdzoties serverim. Kļūdas iemesls, nepareizs "
+"lietotājvārds un/vai parole."
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+msgid "URL, username, or password field is empty."
+msgstr "URL, lietotājvārda, vai paroles lauks ir tukšs."
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:306
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
+"\n"
+"%1%"
+msgstr ""
+"Konfigurācijas saglabāšana GNOME atslēgu saišķī neizdevās. Saņemts "
+"sekojošais ziņojums:\n"
+"\n"
+"%1%"
+
 #: ../src/gnote.cpp:372
 msgid "Cannot create new note"
 msgstr "Nevar izveidot jaunu piezīmi"
@@ -1007,11 +1049,6 @@ msgstr ""
 "  tm https://launchpad.net/~toms-baugis"
 
 #: ../src/gnote.cpp:443
-#| msgid ""
-#| "Copyright © 2010-2011 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1236,9 +1273,9 @@ msgid ""
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
 "Error details can be found in ~/.gnote.log."
 msgstr ""
-"Kļūda saglabājot jūsu piezīmes. Lūdzu, pārliecinieties, ka jums ir pietiekami "
-"daudz brīvās diska vietas un ka jums ir nepieciešamās atļaujas mapei ~/."
-"gnote. Sīkāka informācija par kļūdu pieejama  ~/.gnote.log."
+"Kļūda saglabājot jūsu piezīmes. Lūdzu, pārliecinieties, ka jums ir "
+"pietiekami daudz brīvās diska vietas un ka jums ir nepieciešamās atļaujas "
+"mapei ~/.gnote. Sīkāka informācija par kļūdu pieejama  ~/.gnote.log."
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
@@ -1283,9 +1320,8 @@ msgstr ""
 "\n"
 "Mēs esam izveidojuši piezīmi, kas saucās <link:internal>Gnote saišu "
 "izmantošana</link:internal>.  Ievērojiet, katru reizi, kad jūs uzrakstāt "
-"<link:internal>Gnote saišu izmantošana</link:internal>, tas tiek "
-"automātiski pasvītrots?  Klikšķiniet uz šīs saites, lai atvērtu piezīmi.</"
-"note-content>"
+"<link:internal>Gnote saišu izmantošana</link:internal>, tas tiek automātiski "
+"pasvītrots?  Klikšķiniet uz šīs saites, lai atvērtu piezīmi.</note-content>"
 
 #: ../src/notemanager.cpp:268
 msgid ""
@@ -1460,12 +1496,10 @@ msgid "Save Si_ze"
 msgstr "Saglabāt i_zmēru"
 
 #: ../src/notewindow.cpp:514
-#| msgid "Select None"
 msgid "Save Se_lection"
 msgstr "Sag_labāt izvēli"
 
 #: ../src/notewindow.cpp:518
-#| msgid "Note Title"
 msgid "Save _Title"
 msgstr "Saglabā_t virsrakstu"
 
@@ -1555,7 +1589,6 @@ msgstr "Karstie taustiņi"
 
 #. TRANSLATORS: Addin category.
 #: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:147
-#| msgid "Synchronization Client ID"
 msgid "Synchronization"
 msgstr "Sinhronizācija"
 
@@ -1565,7 +1598,6 @@ msgstr "Pielikumi"
 
 #. Status icon
 #: ../src/preferencesdialog.cpp:228
-#| msgid "Use custom _font"
 msgid "Use Status _Icon"
 msgstr "Lietot statusa _ikonu"
 
@@ -1706,7 +1738,6 @@ msgstr "Izvēlieties piezīmju fontu"
 
 #. Create dialog
 #: ../src/preferencesdialog.cpp:1036
-#| msgid "Synchronization Client ID"
 msgid "Other Synchronization Options"
 msgstr "Citas sinhronizācijas opcijas"
 
@@ -1720,7 +1751,6 @@ msgstr ""
 
 #. label.Xalign = 0;
 #: ../src/preferencesdialog.cpp:1043
-#| msgid "Ask me what to do"
 msgid "Always ask me what to do."
 msgstr "Vienmēr jautāt man kā rīkoties."
 
@@ -1746,7 +1776,6 @@ msgstr ""
 "saglabāšanas."
 
 #: ../src/preferencesdialog.cpp:1169
-#| msgid "Selected Synchronization Service Addin"
 msgid "Resetting Synchronization Settings"
 msgstr "Atstata sinhronizācijas iestatījumus"
 
@@ -1772,28 +1801,27 @@ msgstr ""
 "Gnote ir gatavs sinhronizēt jūsu piezīmes. Vai vēlaties tās sinhronizēt "
 "tagad?"
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
 msgid ""
-"Please check your information and try again.  The log file {0} may contain "
+"Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
 msgstr ""
-"Lūdzu, pārbaudiet savu informāciju un mēģiniet vēlreiz. Iespējams, {0} satur "
+"Lūdzu, pārbaudiet savu informāciju un mēģiniet vēlreiz. Iespējams, %1% satur "
 "vairāk informācijas par kļūdu."
 
-#: ../src/preferencesdialog.cpp:1267
-#| msgid "Error printing note"
+#: ../src/preferencesdialog.cpp:1266
 msgid "Error connecting"
 msgstr "Kļūda savienojoties"
 
-#: ../src/preferencesdialog.cpp:1331
+#: ../src/preferencesdialog.cpp:1330
 msgid "Version:"
 msgstr "Versija:"
 
-#: ../src/preferencesdialog.cpp:1336
+#: ../src/preferencesdialog.cpp:1335
 msgid "Author:"
 msgstr "Autors:"
 
-#: ../src/preferencesdialog.cpp:1342
+#: ../src/preferencesdialog.cpp:1341
 msgid "Copyright:"
 msgstr "Autortiesības:"
 
@@ -1887,8 +1915,40 @@ msgstr "Rīki"
 msgid "Unknown"
 msgstr "Nezināms"
 
+#: ../src/synchronization/fusesyncserviceaddin.cpp:109
+msgid ""
+"This synchronization addin is not supported on your computer. Please make "
+"sure you have FUSE and %1% correctly installed and configured"
+msgstr ""
+"Šim sinhronizācijas pielikumam nav atbalsta jūsu datorā. Lūdzu, "
+"pārliecinieties, ka jums ir FUSE un %1% ir pareizi uzinstalēts un "
+"nokonfigurēts"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:152
+msgid "Could not read testfile."
+msgstr "Nevar nolasīt testa failu."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:161
+msgid "Write test failed."
+msgstr "Rakstīšanas tests neizdevās."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:190
+msgid "Timeout connecting to server."
+msgstr "Noildze, savienojoties ar serveri."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:196
+msgid "Error connecting to server."
+msgstr "Kļūda, savienojoties ar serveri."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:209
+msgid "FUSE could not be enabled."
+msgstr "FUSE nevarēja aktivēt."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:240
+msgid "An error ocurred while connecting to the specified server"
+msgstr "Kļūda savienojumā ar norādīto serveri"
+
 #: ../src/synchronization/syncdialog.cpp:110
-#| msgid "Note Title"
 msgid "Note Conflict"
 msgstr "Piezīmju konflikts"
 
@@ -1910,7 +1970,6 @@ msgid "Overwrite local note"
 msgstr "Pārrakstīt lokālo piezīmi"
 
 #: ../src/synchronization/syncdialog.cpp:175
-#| msgid "Always show this _window"
 msgid "Always perform this action"
 msgstr "Vienmēr izpildīt šo darbību"
 
@@ -1945,12 +2004,10 @@ msgid "Committing changes..."
 msgstr "Saskaņo izmaiņas..."
 
 #: ../src/synchronization/syncdialog.cpp:537
-#| msgid "Synchronize Notes"
 msgid "Synchronizing Notes"
 msgstr "Sinhronizē piezīmes"
 
 #: ../src/synchronization/syncdialog.cpp:538
-#| msgid "Start synchronizing notes"
 msgid "Synchronizing your notes..."
 msgstr "Sinhronizē jūsu piezīmes..."
 
@@ -1999,12 +2056,10 @@ msgid "Uploading notes to server..."
 msgstr "Augšupielādē piezīmes serverī..."
 
 #: ../src/synchronization/syncdialog.cpp:578
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Failed"
 msgstr "Sinhronizācija neizdevās"
 
 #: ../src/synchronization/syncdialog.cpp:579
-#| msgid "Start synchronizing notes"
 msgid "Failed to synchronize"
 msgstr "Neizdevās sinhronizēt"
 
@@ -2014,17 +2069,14 @@ msgstr ""
 "Nevarēja sinhronizēt piezīmes. Pārbaudiet detaļas zemāk un mēģiniet vēlreiz."
 
 #: ../src/synchronization/syncdialog.cpp:586
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Complete"
 msgstr "Sinhronizācija beigusies"
 
 #: ../src/synchronization/syncdialog.cpp:587
-#| msgid "Synchronization Client ID"
 msgid "Synchronization is complete"
 msgstr "Sinhronizācija ir pabeigta"
 
 #: ../src/synchronization/syncdialog.cpp:588
-#| msgid "%1% Notebook Template"
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% piezīme atjaunināta."
@@ -2036,12 +2088,10 @@ msgid "Your notes are now up to date."
 msgstr "Jūsu piezīmes ir atjauninātas."
 
 #: ../src/synchronization/syncdialog.cpp:594
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Canceled"
 msgstr "Sinhronizācija atcelta"
 
 #: ../src/synchronization/syncdialog.cpp:595
-#| msgid "Synchronization Client ID"
 msgid "Synchronization was canceled"
 msgstr "Sinhronizācija ir atcelta"
 
@@ -2050,12 +2100,10 @@ msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Jūs atcēlāt sinhronizāciju. Tagad jūs varat aizvērt logu."
 
 #: ../src/synchronization/syncdialog.cpp:600
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Not Configured"
 msgstr "Sinhronizācija nenokonfigurēta"
 
 #: ../src/synchronization/syncdialog.cpp:601
-#| msgid "Synchronization Client ID"
 msgid "Synchronization is not configured"
 msgstr "Sinhronizācija nav nokonfigurēta"
 
@@ -2064,18 +2112,14 @@ msgid "Please configure synchronization in the preferences dialog."
 msgstr "Lūdzu, nokonfigurējiet sinhronizāciju iestatījumu logā."
 
 #: ../src/synchronization/syncdialog.cpp:606
-#| msgid "SSHFS Synchronization Server Port"
 msgid "Synchronization Service Error"
 msgstr "Sinhronizācijas servisa kļūda"
 
 #: ../src/synchronization/syncdialog.cpp:607
-#| msgid "Ser_vice:"
 msgid "Service error"
 msgstr "Servisa kļūda"
 
 #: ../src/synchronization/syncdialog.cpp:608
-#| msgid ""
-#| "The port to use when connecting to the synchronization server via SSH."
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "Kļūda, savienojoties ar sinhronizācijas servisi. Lūdzu, mēģiniet vēlreiz."
@@ -2105,9 +2149,42 @@ msgid "Uploaded new note to server"
 msgstr "Jaunā piezīme augšupielādēta serverī"
 
 #: ../src/synchronization/syncmanager.cpp:135
-#| msgid "Tools"
 msgid "_Tools"
 msgstr "_Rīki"
+
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
+msgid "Could not enable FUSE"
+msgstr "Nevarēja aktivēt FUSE"
+
+#: ../src/synchronization/syncutils.cpp:144
+#: ../src/synchronization/syncutils.cpp:176
+msgid ""
+"The FUSE module could not be loaded. Please check that it is installed "
+"properly and try again."
+msgstr ""
+"Nevar ielādēt FUSE moduli. Lūdzu pārliecinieties, ka tas ir uzinstalēts kā "
+"nākas un mēģiniet atkal."
+
+#: ../src/synchronization/syncutils.cpp:152
+msgid "Enable FUSE?"
+msgstr "Aktivēt FUSE?"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:155
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
+msgstr ""
+"Jūsu izvēlētajai sinhronizācijas metodei ir nepieciešams FUSE modulis.\n"
+"\n"
+"Lai izvairītos no šī paziņojuma nākotne, jums vajadzētu ielādēt FUSE moduli "
+"datora ielādes laikā. Pievienojiet \"modprobe fuse\" failā/etc/init.d/boot."
+"local vai \"fuse\" failā /etc/modules."
 
 #: ../src/tray.cpp:54
 msgid "Take notes"
