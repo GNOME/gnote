@@ -54,7 +54,7 @@ const char * WebDavSyncServiceModule::name() const
 
 const char * WebDavSyncServiceModule::description() const
 {
-  return _("Synchronize Tomboy Notes to a WebDav URL");
+  return _("Synchronize Gnote Notes to a WebDav URL");
 }
 
 const char * WebDavSyncServiceModule::authors() const
