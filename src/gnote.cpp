@@ -56,58 +56,14 @@
 
 namespace gnote {
 
-  namespace {
-
-    typedef GtkApplicationClass GnoteAppClass;
-
-    G_DEFINE_TYPE(GnoteApp, gnote_app, GTK_TYPE_APPLICATION)
-
-    static void gnote_app_init(GnoteApp *)
-    {}
-
-    static void gnote_app_activate(GApplication *)
-    {
-      Gnote::obj().open_search_all();
-    }
-
-    static void gnote_app_startup(GApplication * application)
-    {
-      G_APPLICATION_CLASS(gnote_app_parent_class)->startup(application);
-      Gnote::obj().startup();
-    }
-
-    static int gnote_app_command_line(GApplication *, GApplicationCommandLine * command_line)
-    {
-      int argc;
-      char **argv = g_application_command_line_get_arguments(command_line, &argc);
-      return Gnote::obj().command_line(argc, argv);
-    }
-
-    static void gnote_app_class_init(GnoteAppClass * klass)
-    {
-      G_APPLICATION_CLASS(klass)->activate = gnote_app_activate;
-      G_APPLICATION_CLASS(klass)->startup = gnote_app_startup;
-      G_APPLICATION_CLASS(klass)->command_line = gnote_app_command_line;
-    }
-
-    GnoteApp * gnote_app_new()
-    {
-      g_type_init();
-      return static_cast<GnoteApp*>(g_object_new(gnote_app_get_type(),
-                                                 "application-id", "org.gnome.Gnote",
-                                                 "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
-                                                 NULL));
-    }
-
-}
-
+  Gnote *Gnote::s_obj = NULL;
 
   Gnote::Gnote()
-    : m_manager(NULL)
+    : Gtk::Application("org.gnome.Gnote", Gio::APPLICATION_HANDLES_COMMAND_LINE)
+    , m_manager(NULL)
     , m_keybinder(NULL)
     , m_is_background(false)
     , m_prefsdlg(NULL)
-    , m_app(NULL)
   {
   }
 
@@ -135,24 +91,33 @@ namespace gnote {
       return 0;
     }
 
-    m_app = gnote_app_new();
-    g_application_run(G_APPLICATION(m_app), argc, argv);
-    g_object_unref(m_app);
-    m_app = NULL;
+    int retval = run(argc, argv);
     signal_quit();
-    return 0;
+    return retval;
   }
 
 
-  void Gnote::startup()
+  void Gnote::on_startup()
   {
+    Gtk::Application::on_startup();
     m_icon_theme = Gtk::IconTheme::get_default();
     m_icon_theme->append_search_path(DATADIR"/icons");
     m_icon_theme->append_search_path(DATADIR"/gnote/icons");
   }
 
 
-  int Gnote::command_line(int argc, char **argv) {
+  void Gnote::on_activate()
+  {
+    Gtk::Application::on_activate();
+    open_search_all();
+  }
+
+
+  int Gnote::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line)
+  {
+    Gtk::Application::on_command_line(command_line);
+    int argc = 0;
+    char **argv = command_line->get_arguments(argc);
     cmd_line.parse(argc, argv);
     if(!m_manager) {
       common_init();
@@ -348,11 +313,7 @@ namespace gnote {
 
   void Gnote::on_quit_gnote_action()
   {
-#ifdef HAVE_GLIB_2_32
-    g_application_quit(G_APPLICATION(m_app));
-#else
-    Gtk::Main::quit();
-#endif
+    quit();
   }
 
   void Gnote::on_preferences_response(int /*res*/)
@@ -456,22 +417,6 @@ namespace gnote {
   {
     m_sync_dlg->hide();
     m_sync_dlg.reset();
-  }
-
-
-  void Gnote::add_window(Gtk::Window * window)
-  {
-    if(m_app) {
-      gtk_application_add_window(GTK_APPLICATION(m_app), GTK_WINDOW(window->gobj()));
-    }
-  }
-
-
-  void Gnote::remove_window(Gtk::Window * window)
-  {
-    if(m_app) {
-      gtk_application_remove_window(GTK_APPLICATION(m_app), GTK_WINDOW(window->gobj()));
-    }
   }
 
 

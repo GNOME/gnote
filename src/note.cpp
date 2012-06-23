@@ -1054,13 +1054,13 @@ namespace gnote {
 
   void Note::on_window_show()
   {
-    Gnote::obj().add_window(m_window);
+    Gnote::obj().add_window(*m_window);
   }
 
 
   void Note::on_window_hide()
   {
-    Gnote::obj().remove_window(m_window);
+    Gnote::obj().remove_window(*m_window);
   }
 
 

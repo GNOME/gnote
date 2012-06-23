@@ -27,10 +27,6 @@
 
 int main(int argc, char **argv)
 {
-//  if(!Glib::thread_supported()) {
-//    Glib::thread_init();
-//  }
-
   bindtextdomain(GETTEXT_PACKAGE, GNOTE_LOCALEDIR);
   bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
   textdomain(GETTEXT_PACKAGE);
@@ -39,9 +35,7 @@ int main(int argc, char **argv)
     g_thread_init(NULL);
   }
   gdk_threads_init();
-  Gtk::Main kit(argc, argv);
-  gnote::Gnote *app = &gnote::Gnote::obj();
-  int retval = app->main(argc, argv);
-  delete app;
-  return retval;
+
+  Glib::RefPtr<gnote::Gnote> app = gnote::Gnote::create();
+  return app->main(argc, argv);
 }

@@ -102,7 +102,7 @@ namespace gnote {
     , m_entry_changed_timeout(NULL)
     , m_clickX(0), m_clickY(0)
   {
-    Gnote::obj().add_window(this);
+    Gnote::obj().add_window(*this);
     _init_static();
 //    get_window()->set_icon_name("gnote");
     set_default_size(450,400);
@@ -239,7 +239,7 @@ namespace gnote {
 
   NoteRecentChanges::~NoteRecentChanges()
   {
-    Gnote::obj().remove_window(this);
+    Gnote::obj().remove_window(*this);
   }
 
 

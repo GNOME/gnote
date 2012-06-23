@@ -40,7 +40,6 @@
 
 namespace gnote {
 
-typedef GtkApplication GnoteApp;
 class PreferencesDialog;
 class NoteManager;
 class RemoteControlClient;
@@ -99,14 +98,21 @@ private:
 
 
 class Gnote
-  : public base::Singleton<Gnote>
+  : public Gtk::Application
 {
 public:
-  Gnote();
+  static Gnote& obj()
+    {
+      return *s_obj;
+    }
+  static Glib::RefPtr<Gnote> create()
+    {
+      s_obj = new Gnote;
+      return Glib::RefPtr<Gnote>(s_obj);
+    }
+
   ~Gnote();
   int main(int argc, char **argv);
-  void startup();
-  int command_line(int argc, char **argv);
   NoteManager & default_note_manager()
     {
       return *m_manager;
@@ -127,8 +133,6 @@ public:
   void on_show_about_action();
   void open_search_all();
   void open_note_sync_window();
-  void add_window(Gtk::Window * window);
-  void remove_window(Gtk::Window * window);
 
   static std::string cache_dir();
   static std::string conf_dir();
@@ -158,7 +162,14 @@ public:
     {
       return m_sync_dlg;
     }
+protected:
+  virtual void on_activate();
+  virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line);
+  virtual void on_startup();
 private:
+  static Gnote *s_obj;
+
+  Gnote();
   void start_note_created(const Note::Ptr & start_note);
   std::string get_note_path(const std::string & override_path);
   void on_setting_changed(const Glib::ustring & key);
@@ -174,7 +185,6 @@ private:
   bool m_is_background;
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
-  GnoteApp *m_app;
   sync::SyncDialog::Ptr m_sync_dlg;
 };
 
