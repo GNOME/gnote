@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-04 19:52+0000\n"
-"PO-Revision-Date: 2012-03-09 23:06+0300\n"
+"POT-Creation-Date: 2012-06-23 21:29+0000\n"
+"PO-Revision-Date: 2012-06-24 00:37+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lithuanian <>\n"
 "MIME-Version: 1.0\n"
@@ -396,7 +396,6 @@ msgid "_Edit"
 msgstr "_Taisyti"
 
 #: ../src/actionmanager.cpp:209
-#: ../src/applet.cpp:383
 #: ../src/tray.cpp:460
 msgid "_Preferences"
 msgstr "_Nustatymai"
@@ -407,7 +406,6 @@ msgid "Gnote Preferences"
 msgstr "Gnote nustatymai"
 
 #: ../src/actionmanager.cpp:212
-#: ../src/applet.cpp:384
 #: ../src/tray.cpp:465
 msgid "_Help"
 msgstr "_Žinynas"
@@ -421,7 +419,6 @@ msgid "Gnote Help"
 msgstr "Gnote pagalba"
 
 #: ../src/actionmanager.cpp:221
-#: ../src/applet.cpp:385
 msgid "_About"
 msgstr "_Apie"
 
@@ -485,7 +482,7 @@ msgstr "Leidžia nuvilkti Bugzilla URL tiesiai iš naršyklės į Gnote raštel�
 
 #: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:57
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere ir Tomboy projektas"
@@ -570,7 +567,6 @@ msgid "Could not save the file \"%s\""
 msgstr "Nepavyko išsaugoti failo „%s“"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
-#| msgid "Selected Synchronization Service Addin"
 msgid "Local Directory Sync Service Add-in"
 msgstr "Vietinio aplanko sinchronizacijos tarnybos priedas"
 
@@ -579,7 +575,7 @@ msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "Sinchronizuokite Gnote raštelius į vietinės failų sistemos kelią"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
-#| msgid "Hubert Figuiere and the Tomboy Project"
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
 msgid "Aurimas Cernius and the Tomboy Project"
 msgstr "Aurimas Cernius ir Tomboy projektas"
 
@@ -588,7 +584,6 @@ msgid "_Folder Path:"
 msgstr "_Aplanko kelias:"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:131
-#| msgid "SSHFS Remote Synchronization Folder"
 msgid "Select Synchronization Folder..."
 msgstr "Pasirinkite sinchronizacijos aplanką..."
 
@@ -681,24 +676,24 @@ msgstr "_Atverti Šiandien: šabloną"
 msgid "Change the <span weight=\"bold\">Today: Template</span> note to customize the text that new Today notes have."
 msgstr "Pakeiskite raštelį <span weight=\"bold\">Šiandien: šablonas</span>, jei norite pakeisti naujų Šiandien raštelių tekstą."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:49
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
 msgid "Printing Support"
 msgstr "Spausdinimo palaikymas"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:53
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
 msgid "Allows you to print a note."
 msgstr "Leidžia spausdinti raštelius."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:80
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
 msgid "Print"
 msgstr "Spausdinti"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
 msgid "Error printing note"
 msgstr "Klaida spausdinant raštelį"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:299
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
 msgid "Page %1% of %2%"
 msgstr "%1% puslapis iš %2%"
 
@@ -782,27 +777,72 @@ msgstr "Prideda galimybę pabraukti tekstą."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière and the Tomboy Project"
 
-#: ../src/gnote.cpp:374
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+#| msgid "Local Directory Sync Service Add-in"
+msgid "WebDav Sync Service Add-in"
+msgstr "WebDav sinchronizacijos tarnybos priedas"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+#| msgid "Synchronize Gnote Notes to a local file system path"
+msgid "Synchronize Gnote Notes to a WebDav URL"
+msgstr "Sinchronizuokite Gnote raštelius į WebDav URL"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "_URL:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr "_Naudotojo vardas:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr "Sla_ptažodis"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid "There was an error connecting to the server.  This may be caused by using an incorrect user name and/or password."
+msgstr "Kilo klaida jungiantis prie serverio.  Tą galėjo sukelti neteisingo naudotojo vardo ar slaptažodžio naudojimas."
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+#| msgid "Folder path field is empty."
+msgid "URL, username, or password field is empty."
+msgstr "URL, naudotojo vardo arba slaptažodžio laukas yra tuščias."
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:306
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following message:\n"
+"\n"
+"%1%"
+msgstr ""
+"Nepavyko išsaugoti konfigūracijos GNOME raktinėje su šiuo pranešimu:\n"
+"\n"
+"%1%"
+
+#: ../src/gnote.cpp:308
 msgid "Cannot create new note"
 msgstr "Nepavyko sukurti naujo raštelio"
 
-#: ../src/gnote.cpp:423
+#: ../src/gnote.cpp:354
 msgid "and Tomboy original authors."
 msgstr "ir Tomboy kūrėjai."
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:363
 msgid "translator-credits"
 msgstr ""
 "Aurimas Černius <aurisc4@gmail.com>\n"
 "Giedrius Slavinskas <giedrius25@gmail.com>\n"
 "Žygimantas Beručka <zygis@gnome.org>"
 
-#: ../src/gnote.cpp:441
-#| msgid ""
-#| "Copyright © 2010-2011 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: ../src/gnote.cpp:372
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -814,76 +854,72 @@ msgstr ""
 "Autorinės teisės priklauso © 2009 Hubert Figuiere\n"
 "Autorinės teisės priklauso © 2004-2009 Tomboy originalo autoriams."
 
-#: ../src/gnote.cpp:445
+#: ../src/gnote.cpp:376
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 
-#: ../src/gnote.cpp:456
+#: ../src/gnote.cpp:387
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: ../src/gnote.cpp:552
-msgid "Run Gnote as a GNOME panel applet."
-msgstr "Paleisti Gnote kaip GNOME skydelio įtaisą."
-
-#: ../src/gnote.cpp:553
+#: ../src/gnote.cpp:467
 msgid "Run Gnote in background."
 msgstr "Paleisti Gnote fone."
 
-#: ../src/gnote.cpp:554
+#: ../src/gnote.cpp:468
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: ../src/gnote.cpp:554
+#: ../src/gnote.cpp:468
 msgid "path"
 msgstr "kelias"
 
-#: ../src/gnote.cpp:555
+#: ../src/gnote.cpp:469
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: ../src/gnote.cpp:555
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:474
 msgid "text"
 msgstr "tekstas"
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:470
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:471
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:471
 msgid "title"
 msgstr "pavadinimas"
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:472
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:472
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:473
 msgid "Display the 'Start Here' note."
 msgstr "Raštelis „Pradėkite čia“"
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:474
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:478
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:478
 msgid "Gnote options at launch"
 msgstr "Gnote parinktys paleidžiant"
 
-#: ../src/gnote.cpp:757
+#: ../src/gnote.cpp:671
 msgid "Version %1%"
 msgstr "Versija %1%"
 
@@ -1311,7 +1347,6 @@ msgstr "Spartieji klavišai"
 #. TRANSLATORS: Addin category.
 #: ../src/preferencesdialog.cpp:124
 #: ../src/sharp/addinstreemodel.cpp:147
-#| msgid "Synchronization Client ID"
 msgid "Synchronization"
 msgstr "Sinchronizacija"
 
@@ -1445,7 +1480,6 @@ msgstr "Pasirinkite raštelio šriftą"
 
 #. Create dialog
 #: ../src/preferencesdialog.cpp:1036
-#| msgid "Synchronization Client ID"
 msgid "Other Synchronization Options"
 msgstr "Kitos sinchronizacijos parinktys"
 
@@ -1455,7 +1489,6 @@ msgstr "Kai aptinkamas konfliktas tarp vietinio raštelio ir raštelio nustatyta
 
 #. label.Xalign = 0;
 #: ../src/preferencesdialog.cpp:1043
-#| msgid "Ask me what to do"
 msgid "Always ask me what to do."
 msgstr "Visada klausti, ką daryti"
 
@@ -1476,7 +1509,6 @@ msgid "Clearing your synchronization settings is not recommended.  You may be fo
 msgstr "Sinchronizacijos nustatymų išvalymas yra nerekomenduojamas.  Gali tekti iš naujo sinchronizuoti visus jūsų raštelius po to, kai įrašysite naujus nustatymus."
 
 #: ../src/preferencesdialog.cpp:1169
-#| msgid "Selected Synchronization Service Addin"
 msgid "Resetting Synchronization Settings"
 msgstr "Išvalomi sinchronizacijos nustatymai"
 
@@ -1492,24 +1524,26 @@ msgstr "Prisijungimas sėkmingas"
 msgid "Gnote is ready to synchronize your notes. Would you like to synchronize them now?"
 msgstr "Gnote yra pasiruošusi sinchronizuoti jūsų raštelius. Ar norite dabar juos sinchronizuoti?"
 
-#: ../src/preferencesdialog.cpp:1260
-msgid "Please check your information and try again.  The log file {0} may contain more information about the error."
-msgstr "Patikrinkite savo informaciją ir bandykite vėl.  Žurnalo failas {0} gali turėti daugiau informacijos apie klaidą."
+#: ../src/preferencesdialog.cpp:1261
+#| msgid ""
+#| "Please check your information and try again.  The log file {0} may "
+#| "contain more information about the error."
+msgid "Please check your information and try again.  The log file %1% may contain more information about the error."
+msgstr "Patikrinkite savo informaciją ir bandykite vėl.  Žurnalo failas %1% gali turėti daugiau informacijos apie klaidą."
 
-#: ../src/preferencesdialog.cpp:1267
-#| msgid "Error printing note"
+#: ../src/preferencesdialog.cpp:1266
 msgid "Error connecting"
 msgstr "Klaida jungiantis"
 
-#: ../src/preferencesdialog.cpp:1331
+#: ../src/preferencesdialog.cpp:1330
 msgid "Version:"
 msgstr "Versija:"
 
-#: ../src/preferencesdialog.cpp:1336
+#: ../src/preferencesdialog.cpp:1335
 msgid "Author:"
 msgstr "Autorius:"
 
-#: ../src/preferencesdialog.cpp:1342
+#: ../src/preferencesdialog.cpp:1341
 msgid "Copyright:"
 msgstr "Autorinės teisės:"
 
@@ -1603,8 +1637,40 @@ msgstr "Įrankiai"
 msgid "Unknown"
 msgstr "Nežinoma"
 
+#: ../src/synchronization/fusesyncserviceaddin.cpp:109
+msgid "This synchronization addin is not supported on your computer. Please make sure you have FUSE and %1% correctly installed and configured"
+msgstr "Šis sinchronizacijos priedas nepalaikomas jūsų kompiuteryje. Įsitikinkite, kad turite savo sistemoje teisingai įdiegtus FUSE ir %1%"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:152
+#| msgid "Could not save the icon file."
+msgid "Could not read testfile."
+msgstr "Nepavyko perskaityti testinio failo."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:161
+msgid "Write test failed."
+msgstr "Rašymo testas nepavyko."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:190
+#| msgid "Connecting to the server..."
+msgid "Timeout connecting to server."
+msgstr "Baigėsi jungiamosi prie serverio laikas."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:196
+#| msgid "Error connecting"
+msgid "Error connecting to server."
+msgstr "Klaida jungiantis prie serverio."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:209
+msgid "FUSE could not be enabled."
+msgstr "Nepavyko įjungti FUSE."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:240
+#| msgid ""
+#| "The port to use when connecting to the synchronization server via SSH."
+msgid "An error ocurred while connecting to the specified server"
+msgstr "Kilo klaida jungiantis prie nurodyto serverio"
+
 #: ../src/synchronization/syncdialog.cpp:110
-#| msgid "Note Title"
 msgid "Note Conflict"
 msgstr "Raštelio konfliktas"
 
@@ -1626,7 +1692,6 @@ msgid "Overwrite local note"
 msgstr "Perrašyti vietinį raštelį"
 
 #: ../src/synchronization/syncdialog.cpp:175
-#| msgid "Always show this _window"
 msgid "Always perform this action"
 msgstr "Visada vykdyti šį veiksmą"
 
@@ -1657,12 +1722,10 @@ msgid "Committing changes..."
 msgstr "Patvirtinami pakeitimai..."
 
 #: ../src/synchronization/syncdialog.cpp:537
-#| msgid "Synchronize Notes"
 msgid "Synchronizing Notes"
 msgstr "Sinchronizuojami rašteliai"
 
 #: ../src/synchronization/syncdialog.cpp:538
-#| msgid "Start synchronizing notes"
 msgid "Synchronizing your notes..."
 msgstr "Sinchronizuojami jūsų rašteliai..."
 
@@ -1707,12 +1770,10 @@ msgid "Uploading notes to server..."
 msgstr "Siunčiami rašteliai į serverį..."
 
 #: ../src/synchronization/syncdialog.cpp:578
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Failed"
 msgstr "Sinchronizavimas nepavyko"
 
 #: ../src/synchronization/syncdialog.cpp:579
-#| msgid "Start synchronizing notes"
 msgid "Failed to synchronize"
 msgstr "Sinchronizavimas nepavyko"
 
@@ -1721,17 +1782,14 @@ msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr "Nepavyko sinchronizuoti raštelių.  Patikrinkite detales žemiau ir bandykite vėl."
 
 #: ../src/synchronization/syncdialog.cpp:586
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Complete"
 msgstr "Sinchronizavimas baigtas"
 
 #: ../src/synchronization/syncdialog.cpp:587
-#| msgid "Synchronization Client ID"
 msgid "Synchronization is complete"
 msgstr "Sinchronizavimas baigtas"
 
 #: ../src/synchronization/syncdialog.cpp:588
-#| msgid "%1% Notebook Template"
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% raštelis nusiųstas"
@@ -1743,12 +1801,10 @@ msgid "Your notes are now up to date."
 msgstr "Jūsų rašteliai yra naujausi."
 
 #: ../src/synchronization/syncdialog.cpp:594
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Canceled"
 msgstr "Sinchronizavimas atšauktas"
 
 #: ../src/synchronization/syncdialog.cpp:595
-#| msgid "Synchronization Client ID"
 msgid "Synchronization was canceled"
 msgstr "Sinchronizavimas atšauktas"
 
@@ -1757,12 +1813,10 @@ msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Jūs atšaukėte sinchronizaciją.  Galite dabar užverti langą."
 
 #: ../src/synchronization/syncdialog.cpp:600
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Not Configured"
 msgstr "Sinchronizacija nenustatyta"
 
 #: ../src/synchronization/syncdialog.cpp:601
-#| msgid "Synchronization Client ID"
 msgid "Synchronization is not configured"
 msgstr "Sinchronizacija nenustatyta"
 
@@ -1771,18 +1825,14 @@ msgid "Please configure synchronization in the preferences dialog."
 msgstr "Nustatykite sinchronizaciją nustatymų dialoge."
 
 #: ../src/synchronization/syncdialog.cpp:606
-#| msgid "SSHFS Synchronization Server Port"
 msgid "Synchronization Service Error"
 msgstr "Sinchronizavimo tarnybos klaida"
 
 #: ../src/synchronization/syncdialog.cpp:607
-#| msgid "Ser_vice:"
 msgid "Service error"
 msgstr "Tarnybos klaida"
 
 #: ../src/synchronization/syncdialog.cpp:608
-#| msgid ""
-#| "The port to use when connecting to the synchronization server via SSH."
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Klaida jungiantis prie sinchronizacijos tarnybos.  Mėginkite vėl."
 
@@ -1811,9 +1861,35 @@ msgid "Uploaded new note to server"
 msgstr "Nusiųstas naujas raštelis į serverį"
 
 #: ../src/synchronization/syncmanager.cpp:135
-#| msgid "Tools"
 msgid "_Tools"
 msgstr "_Įrankiai"
+
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
+msgid "Could not enable FUSE"
+msgstr "Nepavyko įjungti FUSE"
+
+#: ../src/synchronization/syncutils.cpp:144
+#: ../src/synchronization/syncutils.cpp:176
+msgid "The FUSE module could not be loaded. Please check that it is installed properly and try again."
+msgstr "Nepavyko įkelti FUSE modulio. Patikrinkite, ar jis įdiegtas, ir mėginkite vėl."
+
+#: ../src/synchronization/syncutils.cpp:152
+#| msgid "_Enable"
+msgid "Enable FUSE?"
+msgstr "Įjungti FUSE?"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:155
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /etc/modules."
+msgstr ""
+"Jūsų pasirinkta sinchronizacija reikalauja įkelti FUSE modulį.\n"
+"\n"
+"Norėdami išvengti šio pranešimo ateityje, turėtumėte įkelti FUSE kartu su sistema.  Pridėkite „modprobe fuse“ į /etc/init.d/boot.local arba „fuse“ į /etc/modules."
 
 #: ../src/tray.cpp:54
 msgid "Take notes"
