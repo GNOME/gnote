@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-06-18 12:06+0000\n"
-"PO-Revision-Date: 2012-06-18 19:12+0100\n"
+"POT-Creation-Date: 2012-06-23 21:39+0000\n"
+"PO-Revision-Date: 2012-06-26 19:19+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: Slovenian\n"
@@ -397,7 +397,6 @@ msgid "_Edit"
 msgstr "_Uredi"
 
 #: ../src/actionmanager.cpp:209
-#: ../src/applet.cpp:383
 #: ../src/tray.cpp:460
 msgid "_Preferences"
 msgstr "_Možnosti"
@@ -408,7 +407,6 @@ msgid "Gnote Preferences"
 msgstr "Možnosti Gnote"
 
 #: ../src/actionmanager.cpp:212
-#: ../src/applet.cpp:384
 #: ../src/tray.cpp:465
 msgid "_Help"
 msgstr "Pomo_č"
@@ -422,7 +420,6 @@ msgid "Gnote Help"
 msgstr "Pomoč Gnote"
 
 #: ../src/actionmanager.cpp:221
-#: ../src/applet.cpp:385
 msgid "_About"
 msgstr "_O programu"
 
@@ -786,8 +783,8 @@ msgid "WebDav Sync Service Add-in"
 msgstr "Vstavek storitve WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
-msgid "Synchronize Tomboy Notes to a WebDav URL"
-msgstr "Usklajevanje sporočilc Tomboy na naslov URL WebDav"
+msgid "Synchronize Gnote Notes to a WebDav URL"
+msgstr "Usklajevanje sporočilc Gnote na naslov URL WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
 msgid "_URL:"
@@ -828,19 +825,19 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:372
+#: ../src/gnote.cpp:308
 msgid "Cannot create new note"
 msgstr "Ni mogoče ustvariti novega sporočilca"
 
-#: ../src/gnote.cpp:425
+#: ../src/gnote.cpp:354
 msgid "and Tomboy original authors."
 msgstr "in avtorji izvirnega Tomboy"
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:363
 msgid "translator-credits"
 msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com>"
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:372
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -852,76 +849,72 @@ msgstr ""
 "Avtorske pravice © 2009 Hubert Figuiere\n"
 "Avtorske pravice © 2004-2009 avtorji izvornega Tomboy."
 
-#: ../src/gnote.cpp:447
+#: ../src/gnote.cpp:376
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Preprost in enostaven program za pisanje sporočilc. "
 
-#: ../src/gnote.cpp:458
+#: ../src/gnote.cpp:387
 msgid "Homepage"
 msgstr "Domača stran"
 
-#: ../src/gnote.cpp:554
-msgid "Run Gnote as a GNOME panel applet."
-msgstr "Zaženi Gnote kot aplet pladnja GNOME."
-
-#: ../src/gnote.cpp:555
+#: ../src/gnote.cpp:467
 msgid "Run Gnote in background."
 msgstr "Zaženi gnote v ozadju."
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:468
 msgid "Specify the path of the directory containing the notes."
 msgstr "Določi pot mape, ki vsebuje sporočilca."
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:468
 msgid "path"
 msgstr "pot"
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:469
 msgid "Open the search all notes window with the search text."
 msgstr "Odpre okno za iskanje vseh sporočilc z izbranim besedilom."
 
-#: ../src/gnote.cpp:557
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:474
 msgid "text"
 msgstr "Besedilo"
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:470
 msgid "Print version information."
 msgstr "Izpiši podrobnosti o različici"
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:471
 msgid "Create and display a new note, with a optional title."
 msgstr "Ustvari in prikaže novo sporočilce z naslovom po meri."
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:471
 msgid "title"
 msgstr "naslov"
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:472
 msgid "Display the existing note matching title."
 msgstr "Prikaže obstoječe sporočilce, ki se sklada z naslovom."
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:472
 msgid "title/url"
 msgstr "naslov/url"
 
-#: ../src/gnote.cpp:561
+#: ../src/gnote.cpp:473
 msgid "Display the 'Start Here' note."
 msgstr "Prikaz sporočilca 'Začnite tukaj'."
 
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:474
 msgid "Search and highlight text in the opened note."
 msgstr "Išče in poudari besedilo v odprtem sporočilcu."
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:478
 msgid "A note taking application"
 msgstr "Program za pisanje sporočilc"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:478
 msgid "Gnote options at launch"
 msgstr "Možnosti gnote ob zagonu"
 
-#: ../src/gnote.cpp:759
+#: ../src/gnote.cpp:671
 msgid "Version %1%"
 msgstr "Različica %1%"
 
@@ -2004,3 +1997,5 @@ msgstr "_Kopiraj mesto povezave"
 msgid "_Open Link"
 msgstr "_Odpri povezavo"
 
+#~ msgid "Run Gnote as a GNOME panel applet."
+#~ msgstr "Zaženi Gnote kot aplet pladnja GNOME."
