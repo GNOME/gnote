@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-23 13:31+0200\n"
+"POT-Creation-Date: 2012-06-27 14:22+0200\n"
 "PO-Revision-Date: 2012-06-23 13:31+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -550,7 +550,7 @@ msgstr "أغلق ملاحظات‌ج"
 msgid "_Edit"
 msgstr "_حرر"
 
-#: ../src/actionmanager.cpp:209 ../src/applet.cpp:383 ../src/tray.cpp:460
+#: ../src/actionmanager.cpp:209 ../src/tray.cpp:460
 msgid "_Preferences"
 msgstr "الت_فضيلات"
 
@@ -558,7 +558,7 @@ msgstr "الت_فضيلات"
 msgid "Gnote Preferences"
 msgstr "تفضيلات ملاحظات‌ج"
 
-#: ../src/actionmanager.cpp:212 ../src/applet.cpp:384 ../src/tray.cpp:465
+#: ../src/actionmanager.cpp:212 ../src/tray.cpp:465
 msgid "_Help"
 msgstr "م_ساعدة"
 
@@ -570,7 +570,7 @@ msgstr "_المحتويات"
 msgid "Gnote Help"
 msgstr "مساعدة ملاحظات‌ج"
 
-#: ../src/actionmanager.cpp:221 ../src/applet.cpp:385
+#: ../src/actionmanager.cpp:221
 msgid "_About"
 msgstr "_عنْ"
 
@@ -946,7 +946,7 @@ msgid "WebDav Sync Service Add-in"
 msgstr "ملحقة خدمة مزامنة WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
-msgid "Synchronize Tomboy Notes to a WebDav URL"
+msgid "Synchronize Gnote Notes to a WebDav URL"
 msgstr "زامن ملاحظات‌ج مع مسار WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
@@ -993,15 +993,15 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:372
+#: ../src/gnote.cpp:308
 msgid "Cannot create new note"
 msgstr "تعذر إنشاء ملاحظة جديدة"
 
-#: ../src/gnote.cpp:425
+#: ../src/gnote.cpp:354
 msgid "and Tomboy original authors."
 msgstr "ومؤلفي توم‌بوي الأصليين."
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:363
 msgid "translator-credits"
 msgstr ""
 "جهاد عفيفي <djihed@gmail.com>\n"
@@ -1010,7 +1010,7 @@ msgstr ""
 "أحمد فرغل <ahmad.farghal@gmail.com>\n"
 "أنس عفيف عماد <anas.e87@gmail.com>"
 
-#: ../src/gnote.cpp:443
+#: ../src/gnote.cpp:372
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1022,75 +1022,71 @@ msgstr ""
 "حقوق النشر © 2009 هُبِرت فيجوري\n"
 "حقوق النشر © 2004-2009 مؤلفي توم‌بوي الأصليين."
 
-#: ../src/gnote.cpp:447
+#: ../src/gnote.cpp:376
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "تطبيق سطح مكتب بسيط و سهل الاستخدام لتسجيل الملاحظات."
 
-#: ../src/gnote.cpp:458
+#: ../src/gnote.cpp:387
 msgid "Homepage"
 msgstr "البداية"
 
-#: ../src/gnote.cpp:554
-msgid "Run Gnote as a GNOME panel applet."
-msgstr "شغّل ملاحظات‌ج كبريمج في شريط جنوم."
-
-#: ../src/gnote.cpp:555
+#: ../src/gnote.cpp:467
 msgid "Run Gnote in background."
 msgstr "شغّل ملاحظات‌ج في الخلفية."
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:468
 msgid "Specify the path of the directory containing the notes."
 msgstr "حدد مسار المجلد الذي يحتوي الملاحظات."
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:468
 msgid "path"
 msgstr "مسار"
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:469
 msgid "Open the search all notes window with the search text."
 msgstr "افتح نافذة البحث في كل الملاحظات بنص البحث."
 
-#: ../src/gnote.cpp:557 ../src/gnote.cpp:562
+#: ../src/gnote.cpp:469 ../src/gnote.cpp:474
 msgid "text"
 msgstr "نص"
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:470
 msgid "Print version information."
 msgstr "اطبع معلومات الإصدارة."
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:471
 msgid "Create and display a new note, with a optional title."
 msgstr "أنشئ واعرض ملاحظة جديدة، بعنوان اختياري."
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:471
 msgid "title"
 msgstr "عنوان"
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:472
 msgid "Display the existing note matching title."
 msgstr "اعرض ملاحظة موجودة تحمل هذا العنوان."
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:472
 msgid "title/url"
 msgstr "عنوان/مسار"
 
-#: ../src/gnote.cpp:561
+#: ../src/gnote.cpp:473
 msgid "Display the 'Start Here' note."
 msgstr "اعرض ملاحظة 'ابدأ هنا'."
 
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:474
 msgid "Search and highlight text in the opened note."
 msgstr "ابحث وأبرز النص في الملاحظة المفتوحة."
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:478
 msgid "A note taking application"
 msgstr "تطبيق لتسجيل الملاحظات"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:478
 msgid "Gnote options at launch"
 msgstr "خيارات ملاحظات‌ج"
 
-#: ../src/gnote.cpp:759
+#: ../src/gnote.cpp:671
 msgid "Version %1%"
 msgstr "الإصدارة %1%"
 
@@ -2278,6 +2274,9 @@ msgstr "انس_خ عنوان الرابط"
 #: ../src/watchers.cpp:599
 msgid "_Open Link"
 msgstr "ا_فتح الرابط"
+
+#~ msgid "Run Gnote as a GNOME panel applet."
+#~ msgstr "شغّل ملاحظات‌ج كبريمج في شريط جنوم."
 
 #~ msgid "Accessories"
 #~ msgstr "الكماليات"
