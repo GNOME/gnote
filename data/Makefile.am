@@ -42,7 +42,6 @@ noinst_DATA =
 
 EXTRA_DIST = 					\
 	UIManagerLayout.xml                     \
-	GNOME_GnoteApplet.xml                   \
 	$(desktop_in_files)     		\
 	$(pkgconfig_in_files)			\
 	org.gnome.gnote.gschema.xml.in		\

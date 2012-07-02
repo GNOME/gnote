@@ -1,3 +1,42 @@
+0.9.1 - 2012/07/02
+
+New Features:
+  * Gtkmm 3.4 is required
+  * Derived Search window from Gtk::ApplicationWindow
+  * Replace shave with automake's silent rules (#673710)
+  * Added 256x256 app icon (#674267)
+  * Added log to file capability in debug mode
+  * Added gnome-keyring dependency
+  * Added WebDAV synchronization
+  * Droped support for panel applet
+  * Migrated to Gtk::Application
+
+Fixes:
+  * Fix quit application for glib >= 2.32 (#670104)
+  * Removed use of deprecated GtkStyle (#667395)
+  * Fixed missing include for Glibmm 2.32 (#671787)
+  * Fixed multiple compiler warnings
+  * Fix bullet indentation when printing (#674904)
+
+Translations:
+  * Updated translations:
+    - Arabic (ar)
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - French (fr)
+    - Galician (gl)
+    - Gujarati (gu)
+    - Hungarian (hu)
+    - Indonesian (id)
+    - Latvian (lv)
+    - Lithuanian (lt)
+    - Punjabi (pa)
+    - Simplified Chinese (zh_CN)
+    - Slovenian (sl)
+    - Spanish (es)
+    - Swedish (sv)
+    - Ukranian (uk)
+
 0.9.0 - 2012/03/10
 
 New Features:
