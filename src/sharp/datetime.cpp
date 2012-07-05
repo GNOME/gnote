@@ -67,6 +67,12 @@ namespace sharp {
     return *this;
   }
 
+  DateTime & DateTime::add_seconds(int seconds)
+  {
+    m_date.add_seconds(seconds);
+    return *this;
+  }
+
   int DateTime::day() const
   {
     struct tm result;

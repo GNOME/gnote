@@ -46,9 +46,10 @@ public:
   DateTime();
   explicit DateTime(time_t t, glong _usec = 0);
   explicit DateTime(const Glib::TimeVal & v);
-  
+ 
   DateTime & add_days(int days);
   DateTime & add_hours(int hours);
+  DateTime & add_seconds(int seconds);
 
   int day() const;
   int month() const;
