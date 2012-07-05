@@ -50,7 +50,7 @@ namespace sharp {
       {
         return m_seconds;
       }
-    int misiseconds() const
+    int microseconds() const
       {
         return m_usecs;
       }
