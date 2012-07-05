@@ -538,7 +538,7 @@ namespace gnote {
   }
 
 
-  Note::Ptr NoteManager::create_with_guid (const std::string & title, std::string & guid)
+  Note::Ptr NoteManager::create_with_guid (const std::string & title, const std::string & guid)
   {
     return create_new_note(title, guid);
   }
