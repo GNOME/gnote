@@ -74,13 +74,13 @@ namespace sharp {
 
   double TimeSpan::total_seconds() const
   {
-    return _total_seconds() + m_usecs / 1000.0;
+    return _total_seconds() + m_usecs / 1000000.0;
   }
 
 
   double TimeSpan::total_milliseconds() const
   {
-    return _total_seconds() * 60.0 + m_usecs;
+    return _total_seconds() * 60.0 + m_usecs / 1000.0;
   }
 
 
@@ -159,7 +159,7 @@ namespace sharp {
 
   double TimeSpan::_remaining_seconds() const
   {
-    return m_seconds + m_usecs / 1000.0;
+    return m_seconds + m_usecs / 1000000.0;
   }
 
 }
