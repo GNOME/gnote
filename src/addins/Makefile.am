@@ -7,6 +7,7 @@ SUBDIRS = backlinks \
 	filesystemsyncservice \
 	fixedwidth \
 	inserttimestamp \
+	notedirectorywatcher \
 	noteoftheday \
 	printnotes \
 	replacetitle \

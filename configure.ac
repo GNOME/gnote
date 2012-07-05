@@ -169,6 +169,7 @@ src/addins/exporttohtml/Makefile
 src/addins/filesystemsyncservice/Makefile
 src/addins/fixedwidth/Makefile
 src/addins/inserttimestamp/Makefile
+src/addins/notedirectorywatcher/Makefile
 src/addins/noteoftheday/Makefile
 src/addins/printnotes/Makefile
 src/addins/replacetitle/Makefile
