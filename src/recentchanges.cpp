@@ -90,7 +90,7 @@ namespace gnote {
   }
 
   NoteRecentChanges::NoteRecentChanges(NoteManager& m)
-    : NoteRecentChangesParent(_("Search All Notes"))
+    : NoteRecentChangesParent(_("Notes"))
     , m_manager(m)
     , m_menubar(NULL)
     , m_find_combo(Glib::RefPtr<Gtk::TreeModel>::cast_static(Gtk::ListStore::create(m_find_combo_columns)), true)
