@@ -64,6 +64,7 @@ AC_LANG_COMPILER_REQUIRE
 
 PKG_CHECK_MODULES(LIBGLIBMM, [glibmm-2.4])
 PKG_CHECK_MODULES(GTK, [gtk+-3.0 >= $GTK_VERSION])
+PKG_CHECK_MODULES(X, [x11])
 PKG_CHECK_MODULES(LIBGTKMM, [gtkmm-3.0 >= $LIBGTKMM_VERSION])
 # Check for glib 2.32 or higher, which have certain incompatibilities with older ones
 PKG_CHECK_EXISTS(glib-2.0 >= 2.32,
