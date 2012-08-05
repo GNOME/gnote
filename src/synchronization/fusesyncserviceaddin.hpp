@@ -23,6 +23,7 @@
 #include <glibmm.h>
 
 #include "syncserviceaddin.hpp"
+#include "utils.hpp"
 
 
 namespace gnote {
@@ -62,13 +63,11 @@ private:
   void set_up_mount_path();
   void prepare_mount_path();
   void gnote_exit_handler();
-  bool unmount_timeout();
+  void unmount_timeout();
   bool is_mounted();
-  void unmount_timeout_reset(int timeout);
-  void unmount_timeout_cancel();
 
   std::string m_mount_path;
-  Glib::RefPtr<Glib::TimeoutSource> m_unmount_timeout;
+  utils::InterruptableTimeout m_unmount_timeout;
 
   std::string m_fuse_mount_exe_path;
   std::string m_fuse_unmount_exe_path;

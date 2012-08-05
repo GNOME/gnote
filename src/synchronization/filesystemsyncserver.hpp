@@ -22,6 +22,7 @@
 #define _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 
 #include "syncmanager.hpp"
+#include "utils.hpp"
 #include "sharp/datetime.hpp"
 
 
@@ -52,6 +53,7 @@ private:
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);
   void update_lock_file(const SyncLockInfo & syncLockInfo);
   bool is_valid_xml_file(const std::string & xmlFilePath);
+  void lock_timeout();
 
   std::list<std::string> m_updated_notes;
   std::list<std::string> m_deleted_notes;
@@ -68,7 +70,7 @@ private:
 
   sharp::DateTime m_initial_sync_attempt;
   std::string m_last_sync_lock_hash;
-  Glib::RefPtr<Glib::TimeoutSource> m_lock_timeout;
+  utils::InterruptableTimeout m_lock_timeout;
   SyncLockInfo m_sync_lock;
 };
 

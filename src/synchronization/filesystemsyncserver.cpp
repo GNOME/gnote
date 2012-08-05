@@ -72,6 +72,9 @@ FileSystemSyncServer::FileSystemSyncServer(const std::string & localSyncPath)
 
   m_new_revision = latest_revision() + 1;
   m_new_revision_path = get_revision_dir_path(m_new_revision);
+
+  m_lock_timeout.signal_timeout
+    .connect(sigc::mem_fun(*this, &FileSystemSyncServer::lock_timeout));
 }
 
 
@@ -240,7 +243,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
   // TODO: Verify that the lockTimeout is actually working or figure
   // out some other way to automatically update the lock file.
   // Reset the timer to 20 seconds sooner than the sync lock duration
-  m_lock_timeout = Glib::TimeoutSource::create(m_sync_lock.duration.total_milliseconds() - 20000);
+  m_lock_timeout.reset(m_sync_lock.duration.total_milliseconds() - 20000);
 
   m_updated_notes.clear();
   m_deleted_notes.clear();
@@ -369,6 +372,7 @@ there may be some excess files floating around.  Here's the error:%s\n", e.what(
     // * * * End Cleanup Code * * *
   }
 
+  m_lock_timeout.cancel();
   sharp::file_delete(m_lock_path);// TODO: Errors?
   commitSucceeded = true;// TODO: When return false?
   return commitSucceeded;
@@ -377,7 +381,7 @@ there may be some excess files floating around.  Here's the error:%s\n", e.what(
 
 bool FileSystemSyncServer::cancel_sync_transaction()
 {
-  //m_lock_timeout.cancel(); TODO: what to do with this?
+  m_lock_timeout.cancel();
   sharp::file_delete(m_lock_path);
   return true;
 }
@@ -624,6 +628,15 @@ bool FileSystemSyncServer::is_valid_xml_file(const std::string & xmlFilePath)
   }
   xmlFreeDoc(xml_doc);
   return true;
+}
+
+
+void FileSystemSyncServer::lock_timeout()
+{
+  m_sync_lock.renew_count++;
+  update_lock_file(m_sync_lock);
+  // Reset the timer to 20 seconds sooner than the sync lock duration
+  m_lock_timeout.reset(m_sync_lock.duration.total_milliseconds() - 20000);
 }
 
 

@@ -60,6 +60,9 @@ void FuseSyncServiceAddin::initialize()
   if(is_supported()) {
     // Determine mount path, etc
     set_up_mount_path();
+
+    m_unmount_timeout.signal_timeout
+      .connect(sigc::mem_fun(*this, &FuseSyncServiceAddin::unmount_timeout));
   }
   m_initialized = true;
 }
@@ -69,7 +72,7 @@ SyncServer::Ptr FuseSyncServiceAddin::create_sync_server()
   SyncServer::Ptr server;
 
   // Cancel timer
-  m_unmount_timeout.clear();
+  m_unmount_timeout.cancel();
 
   // Mount if necessary
   if(is_configured()) {
@@ -88,7 +91,7 @@ SyncServer::Ptr FuseSyncServiceAddin::create_sync_server()
 void FuseSyncServiceAddin::post_sync_cleanup()
 {
   // Set unmount timeout to 5 minutes or something
-  unmount_timeout_reset(1000 * 60 * 5);
+  m_unmount_timeout.reset(1000 * 60 * 5);
 }
 
 bool FuseSyncServiceAddin::is_supported()
@@ -299,7 +302,7 @@ void FuseSyncServiceAddin::gnote_exit_handler()
   unmount_timeout();
 }
 
-bool FuseSyncServiceAddin::unmount_timeout()
+void FuseSyncServiceAddin::unmount_timeout()
 {
   if(is_mounted()) {
     sharp::Process p;
@@ -315,14 +318,13 @@ bool FuseSyncServiceAddin::unmount_timeout()
     // TODO: What does this return if it was not mounted?
     if(p.exit_code() != 0) {
       DBG_OUT("Error unmounting %s", id().c_str());
-      unmount_timeout_reset(1000 * 60 * 5); // Try again in five minutes
+      m_unmount_timeout.reset(1000 * 60 * 5); // Try again in five minutes
     }
     else {
       DBG_OUT("Successfully unmounted %s", id().c_str());
-      unmount_timeout_cancel();
+      m_unmount_timeout.cancel();
     }
   }
-  return true;
 }
 
 // Checks to see if the mount is actually mounted and alive
@@ -353,20 +355,6 @@ bool FuseSyncServiceAddin::is_mounted()
   }
 
   return false;
-}
-
-void FuseSyncServiceAddin::unmount_timeout_reset(int timeout)
-{
-  m_unmount_timeout = Glib::TimeoutSource::create(timeout);
-  m_unmount_timeout->connect(sigc::mem_fun(*this, &FuseSyncServiceAddin::unmount_timeout));
-  Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &FuseSyncServiceAddin::gnote_exit_handler));
-  m_unmount_timeout->attach();
-}
-
-void FuseSyncServiceAddin::unmount_timeout_cancel()
-{
-  m_unmount_timeout->destroy();
-  m_unmount_timeout.reset();
 }
 
 }
