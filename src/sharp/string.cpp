@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,14 +29,13 @@
 
 #include "sharp/string.hpp"
 
+#include <glibmm.h>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/trim.hpp>
-
-#include <pcrecpp.h>
 
 #include "debug.hpp"
 
@@ -58,16 +58,18 @@ namespace sharp {
                                    const std::string & regex,
                                    const std::string & with)
   {
-    pcrecpp::RE re(regex);
-    std::string result = source;
-    re.Replace(with, &result);
-    return result;
+    Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex);
+    return re->replace(source, 0, with, static_cast<Glib::RegexMatchFlags>(0));
   }
   
   bool string_match_iregex(const std::string & source, const std::string & regex)  
   {
-    pcrecpp::RE re(regex, pcrecpp::RE_Options(PCRE_CASELESS|PCRE_UTF8));
-    return re.FullMatch(source);
+    Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex, Glib::REGEX_CASELESS);
+    Glib::MatchInfo match_info;
+    if(re->match(source)) {
+      return match_info.fetch(0) == source;
+    }
+    return false;
   }
 
   void string_split(std::vector<std::string> & split, const std::string & source,

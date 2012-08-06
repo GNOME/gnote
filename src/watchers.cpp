@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -393,7 +393,7 @@ namespace gnote {
   
 
   NoteUrlWatcher::NoteUrlWatcher()
-    : m_regex(URL_REGEX, pcrecpp::RE_Options(PCRE_CASELESS|PCRE_UTF8))
+    : m_regex(Glib::Regex::create(URL_REGEX, Glib::REGEX_CASELESS))
   {
   }
 
@@ -507,29 +507,23 @@ namespace gnote {
 
     get_buffer()->remove_tag (m_url_tag, start, end);
 
-    std::string s(start.get_slice(end));
-    std::string match1;
-
-    const char *p = s.c_str();
-    pcrecpp::StringPiece input(p);
-
-    while(m_regex.FindAndConsume(&input, &match1)) {
+    Glib::ustring s(start.get_slice(end));
+    Glib::MatchInfo match_info;
+    while(m_regex->match(s, match_info)) {
+      Glib::ustring match = match_info.fetch(0);
+      Glib::ustring::size_type start_pos = s.find(match);
 
       Gtk::TextIter start_cpy = start;
-      // must construct the Glib::ustring from a char *.
-      // otherwise it expect the num of chars (UTF-8) instead of bytes.
-      // here we compute the index of the URL. It is anchor - start - match.
-      Glib::ustring::size_type len = input.data() - p - match1.size();
-      Glib::ustring segment(p, p + len);
-      start_cpy.forward_chars (segment.size());
+      start_cpy.forward_chars(start_pos);
 
-      end = start_cpy;
-      // here match.str() is the std::string we need. All good.
-      Glib::ustring segment2(match1);
-      end.forward_chars (segment2.length());
+      Gtk::TextIter end_cpy = start_cpy;
+      end_cpy.forward_chars(match.size());
 
-      DBG_OUT("url is %s", segment2.c_str());
-      get_buffer()->apply_tag (m_url_tag, start_cpy, end);
+      DBG_OUT("url is %s", start_cpy.get_slice(end_cpy).c_str());
+      get_buffer()->apply_tag(m_url_tag, start_cpy, end_cpy);
+
+      start = end_cpy;
+      s = start.get_slice(end);
     }
   }
 
@@ -553,12 +547,10 @@ namespace gnote {
   {
     if(tag != m_url_tag)
       return;
-    std::string s(start.get_slice(end));
-    std::string match1;
-    const char *p = s.c_str();
-    pcrecpp::StringPiece input(p);
-    if(!m_regex.FindAndConsume(&input, &match1))
-      get_buffer()->remove_tag (m_url_tag, start, end);
+    Glib::ustring s(start.get_slice(end));
+    if(!m_regex->match(s)) {
+      get_buffer()->remove_tag(m_url_tag, start, end);
+    }
   }
 
 
@@ -1003,33 +995,31 @@ namespace gnote {
 
     get_buffer()->remove_tag (m_broken_link_tag, start, end);
 
-    std::string s(start.get_slice(end));
-    std::string match;
-    const char * p = s.c_str();
-    pcrecpp::StringPiece input(p);
-
-
-    while(m_regex.FindAndConsume(&input, &match)) {
+    Glib::ustring s(start.get_slice(end));
+    Glib::MatchInfo match_info;
+    while(m_regex->match(s, match_info)) {
+      Glib::ustring match = match_info.fetch(0);
+      Glib::ustring::size_type start_pos = s.find(match);
 
       Gtk::TextIter start_cpy = start;
-      Glib::ustring::size_type len = input.data() - p - match.size();
-      Glib::ustring segment(p, p + len);
-      start_cpy.forward_chars (segment.length());
+      start_cpy.forward_chars(start_pos);
 
-      end = start_cpy;
-      segment = match;
-      end.forward_chars (segment.length());
+      Gtk::TextIter end_cpy = start_cpy;
+      end_cpy.forward_chars(match.size());
 
       if(get_note()->get_tag_table()->has_link_tag(start_cpy)) {
-        break;
+	break;
       }
 
       DBG_OUT("Highlighting wikiword: '%s' at offset %d",
-              match.c_str(), int(segment.length()));
+              start_cpy.get_slice(end_cpy).c_str(), int(start_pos));
 
-      if (!manager().find(match)) {
-        get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end);
+      if(!manager().find(match)) {
+	get_buffer()->apply_tag (m_broken_link_tag, start_cpy, end_cpy);
       }
+
+      start = end_cpy;
+      s = start.get_slice(end);
     }
   }
 

@@ -7,7 +7,6 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@GTK_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ @LIBXML_CFLAGS@ \
 	@LIBXSLT_CFLAGS@ \
-	@PCRE_CFLAGS@ \
 	@UUID_CFLAGS@ \
 	@GNOME_KEYRING_CFLAGS@ \
 	-DGNOTE_LOCALEDIR=\"@GNOTE_LOCALEDIR@\" \
@@ -18,7 +17,6 @@ AM_LDFLAGS=-export-dynamic
 LIBGNOTE_LIBS = $(top_builddir)/libtomboy/libtomboy.la \
 	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
 	@LIBXSLT_LIBS@ \
-	@PCRE_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
 	@UUID_LIBS@ \
 	@GNOME_KEYRING_LIBS@
@@ -33,13 +31,13 @@ TESTS = trietest stringtest notetest dttest uritest filestest \
 
 
 trietest_SOURCES = test/trietest.cpp
-trietest_LDADD = libgnote.la @PCRE_LIBS@ @LIBGLIBMM_LIBS@
+trietest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
 
 dttest_SOURCES = test/dttest.cpp
 dttest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
 
 stringtest_SOURCES = test/stringtest.cpp
-stringtest_LDADD = libgnote.la @PCRE_LIBS@ @LIBGLIBMM_LIBS@
+stringtest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
 
 filestest_SOURCES = test/filestest.cpp
 filestest_LDADD = libgnote.la @LIBGLIBMM_LIBS@ -lgiomm-2.4
@@ -48,7 +46,7 @@ fileinfotest_SOURCES = test/fileinfotest.cpp
 fileinfotest_LDADD = libgnote.la @LIBGLIBMM_LIBS@ -lgiomm-2.4
 
 uritest_SOURCES = test/uritest.cpp
-uritest_LDADD = libgnote.la @PCRE_LIBS@ @LIBGLIBMM_LIBS@
+uritest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
 
 xmlreadertest_SOURCES = test/xmlreadertest.cpp
 xmlreadertest_LDADD = libgnote.la @LIBXML_LIBS@

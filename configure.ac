@@ -73,7 +73,6 @@ PKG_CHECK_EXISTS(glib-2.0 >= 2.32,
   ])
 PKG_CHECK_MODULES(LIBXML, [libxml-2.0])
 PKG_CHECK_MODULES(LIBXSLT, [libxslt])
-PKG_CHECK_MODULES(PCRE, [libpcrecpp])
 PKG_CHECK_MODULES(UUID, [uuid])
 
 #GtkSpell disabled until GTK 3.0 is supported

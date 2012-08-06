@@ -24,7 +24,6 @@
 
 #include <glibmm.h>
 #include <glibmm/i18n.h>
-#include <pcrecpp.h>
 
 #include "debug.hpp"
 #include "syncutils.hpp"
@@ -121,8 +120,8 @@ namespace sync {
           fsOutput += "\n" + line;
         }
         file.close();
-        pcrecpp::RE re("\\s+fuse\\s+", pcrecpp::RE_Options(PCRE_MULTILINE|PCRE_UTF8));
-        return re.PartialMatch(fsOutput);
+        Glib::RefPtr<Glib::Regex> re = Glib::Regex::create("\\s+fuse\\s+", Glib::REGEX_MULTILINE);
+        return re->match(fsOutput);
       }
     }
     catch(...) {}

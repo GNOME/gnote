@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -22,8 +22,6 @@
 
 
 #include <boost/lexical_cast.hpp>
-
-#include <pcrecpp.h>
 
 #include <glib.h>
 #include <glibmm/i18n.h>
@@ -163,18 +161,21 @@ namespace bugzilla {
 
     const char * regexString = "\\bhttps?://.*/show_bug\\.cgi\\?(\\S+\\&){0,1}id=(\\d{1,})";
 
-    pcrecpp::RE re(regexString, pcrecpp::RE_Options(PCRE_CASELESS|PCRE_UTF8));
-    int m;
+    Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regexString, Glib::REGEX_CASELESS);
+    Glib::MatchInfo match_info;
 
-    if(re.FullMatch(uriString, (void*)NULL, &m)) {
+    if(re->match(uriString, match_info) && match_info.get_match_count() >= 3) {
+      try {
+        int bugId = boost::lexical_cast<int>(match_info.fetch(2));
 
-      int bugId = m;
-
-      if (insert_bug (x, y, uriString, bugId)) {
-        context->drag_finish(true, false, time);
-        g_signal_stop_emission_by_name(get_window()->editor()->gobj(),
-                                       "drag_data_received");
+        if (insert_bug (x, y, uriString, bugId)) {
+          context->drag_finish(true, false, time);
+          g_signal_stop_emission_by_name(get_window()->editor()->gobj(),
+                                         "drag_data_received");
+        }
       }
+      catch(std::bad_cast&)
+      {}
     }
   }
 

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -40,7 +41,7 @@ int test_main(int /*argc*/, char ** /*argv*/)
 #if 0
   BOOST_CHECK(string_match_iregex(test4, "^Camel"));
 #endif
-  BOOST_CHECK(string_replace_regex(test4, "([aem])", "Xx") == "CXxmelCase");
+  BOOST_CHECK(string_replace_regex(test4, "([aem])", "Xx") == "CXxXxXxlCXxsXx");
   std::cout << string_replace_regex(test4, "([aem])", "Xx") << std::endl;
   BOOST_CHECK(string_replace_regex(test4, "ame", "Xx") == "CXxlCase");
   std::cout << string_replace_regex(test4, "ame", "Xx") << std::endl;
