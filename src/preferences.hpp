@@ -80,6 +80,8 @@ namespace gnote {
 
     static const char *SYNC_FUSE_MOUNT_TIMEOUT;
     static const char *SYNC_FUSE_WDFS_ACCEPT_SSLCERT;
+    static const char *SYNC_FUSE_WDFS_URL;
+    static const char *SYNC_FUSE_WDFS_USERNAME;
 
     static const char *DESKTOP_GNOME_FONT;
     static const char *DESKTOP_GNOME_KEY_THEME;

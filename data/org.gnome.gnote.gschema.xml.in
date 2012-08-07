@@ -203,6 +203,16 @@
       <_summary>Accept SSL Certificates</_summary>
       <_description>Use wdfs option "-ac" to accept SSL certificates without prompting the user.</_description>
     </key>
+    <key name="url" type="s">
+      <default>''</default>
+      <_summary>Share URL</_summary>
+      <_description>WebDAV share URL where notes are synchronized to.</_description>
+    </key>
+    <key name="username" type="s">
+      <default>''</default>
+      <_summary>Share username</_summary>
+      <_description>Username to access WebDAV share.</_description>
+    </key>
   </schema>
   <schema id="org.gnome.gnote.insert-timestamp" path="/org/gnome/gnote/insert-timestamp/">
     <key name="format" type="s">

@@ -30,9 +30,9 @@
 #include "synchronization/syncmanager.hpp"
 
 
-using gnome::keyring::ItemData;
 using gnome::keyring::KeyringException;
 using gnome::keyring::Ring;
+using gnote::Preferences;
 
 
 namespace webdavsyncserviceaddin {
@@ -243,33 +243,22 @@ std::vector<std::string> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const s
 
 bool WebDavSyncServiceAddin::get_config_settings(std::string & url, std::string & username, std::string & password)
 {
-  // Retrieve configuration from the GNOME Keyring
+  // Retrieve configuration from the GNOME Keyring and GSettings
   url = "";
   username = "";
   password = "";
 
   try {
-    std::vector<ItemData::Ptr> data = Ring::find(gnome::keyring::NETWORK_PASSWORD, s_request_attributes);
-    for(std::vector<ItemData::Ptr>::iterator iter = data.begin(); iter != data.end(); ++iter) {
-      ItemData::Ptr result = *iter;
-      if(result->attributes["name"] != KEYRING_ITEM_NAME) {
-	continue;
-      }
-
-      username = sharp::string_trim(result->attributes["user"]);
-      url = sharp::string_trim(result->attributes["url"]);
-      password = sharp::string_trim(result->secret);
+    password = sharp::string_trim(Ring::find_password(s_request_attributes));
+    if(password != "") {
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+        .get_schema_settings(Preferences::SCHEMA_SYNC_WDFS);
+      username = sharp::string_trim(settings->get_string(Preferences::SYNC_FUSE_WDFS_USERNAME));
+      url = sharp::string_trim(settings->get_string(Preferences::SYNC_FUSE_WDFS_URL));
     }
   }
   catch(KeyringException & ke) {
     DBG_OUT("Getting configuration from the GNOME keyring failed with the following message: %s", ke.what());
-    // TODO: If the following fails, retrieve all but password from GConf,
-    //       and prompt user for password. (some password caching would be nice, too)
-    // Retrieve configuration from GConf
-    //url = Preferences.Get ("/apps/tomboy/sync_wdfs_url") as String;
-    //username = Preferences.Get ("/apps/tomboy/sync_wdfs_username") as String;
-    //password = null; // TODO: Prompt user for password
-    //throw;
   }
 
   return url != "" && username != "" && password != "";
@@ -277,24 +266,14 @@ bool WebDavSyncServiceAddin::get_config_settings(std::string & url, std::string 
 
 void WebDavSyncServiceAddin::save_config_settings(const std::string & url, const std::string & username, const std::string & password)
 {
-  // Save configuration into the GNOME Keyring
+  // Save configuration into the GNOME Keyring and GSettings
   try {
-    std::map<std::string, std::string> update_request_attributes = s_request_attributes;
-    update_request_attributes["user"] = username;
-    update_request_attributes["url"] = url;
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_SYNC_WDFS);
+    settings->set_string(Preferences::SYNC_FUSE_WDFS_USERNAME, username);
+    settings->set_string(Preferences::SYNC_FUSE_WDFS_URL, url);
 
-    std::vector<ItemData::Ptr> items = Ring::find(gnome::keyring::NETWORK_PASSWORD, s_request_attributes);
-    std::string keyring = Ring::default_keyring();
-
-    if(items.size() == 0) {
-      Ring::create_item(keyring, gnome::keyring::NETWORK_PASSWORD, KEYRING_ITEM_NAME,
-		       update_request_attributes, password, true);
-    }
-    else {
-      Ring::set_item_info(keyring, items[0]->item_id, gnome::keyring::NETWORK_PASSWORD,
-			KEYRING_ITEM_NAME, password);
-      Ring::set_item_attributes(keyring, items[0]->item_id, update_request_attributes);
-    }
+    Ring::create_password(Ring::default_keyring(), KEYRING_ITEM_NAME, s_request_attributes, password);
   }
   catch(KeyringException & ke) {
     DBG_OUT("Saving configuration to the GNOME keyring failed with the following message: %s", ke.what());
@@ -320,9 +299,8 @@ bool WebDavSyncServiceAddin::get_pref_widget_settings(std::string & url, std::st
 bool WebDavSyncServiceAddin::accept_ssl_cert()
 {
   try {
-    return gnote::Preferences::obj()
-      .get_schema_settings(gnote::Preferences::SCHEMA_SYNC_WDFS)->get_boolean(
-        gnote::Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT);
+    return Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC_WDFS)->get_boolean(
+        Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT);
   }
   catch(...) {
     return false;

@@ -8,7 +8,7 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ @LIBXML_CFLAGS@ \
 	@LIBXSLT_CFLAGS@ \
 	@UUID_CFLAGS@ \
-	@GNOME_KEYRING_CFLAGS@ \
+	@LIBSECRET_CFLAGS@ \
 	-DGNOTE_LOCALEDIR=\"@GNOTE_LOCALEDIR@\" \
 	-DDATADIR=\"$(datadir)\" -DLIBDIR=\"$(libdir)\"
 
@@ -19,7 +19,7 @@ LIBGNOTE_LIBS = $(top_builddir)/libtomboy/libtomboy.la \
 	@LIBXSLT_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
 	@UUID_LIBS@ \
-	@GNOME_KEYRING_LIBS@
+	@LIBSECRET_LIBS@
 GNOTE_LIBS = libgnote.la $(LIBGNOTE_LIBS)
 
 lib_LTLIBRARIES = libgnote.la
@@ -70,11 +70,7 @@ libgnote_la_SOURCES = \
 	base/singleton.hpp \
 	base/macros.hpp \
 	base/inifile.hpp base/inifile.cpp \
-	gnome_keyring/genericitemdata.hpp gnome_keyring/genericitemdata.cpp \
-	gnome_keyring/itemdata.hpp gnome_keyring/itemdata.cpp \
-	gnome_keyring/netitemdata.hpp gnome_keyring/netitemdata.cpp \
-	gnome_keyring/noteitemdata.hpp \
-	gnome_keyring/keyringexception.hpp gnome_keyring/keyringexception.cpp \
+	gnome_keyring/keyringexception.hpp \
 	gnome_keyring/ring.hpp gnome_keyring/ring.cpp \
 	sharp/addinstreemodel.hpp sharp/addinstreemodel.cpp \
 	sharp/datetime.hpp sharp/datetime.cpp \

@@ -70,6 +70,8 @@ namespace gnote {
 
   const char * Preferences::SYNC_FUSE_MOUNT_TIMEOUT = "sync-fuse-mount-timeout-ms";
   const char * Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";
+  const char * Preferences::SYNC_FUSE_WDFS_URL = "url";
+  const char * Preferences::SYNC_FUSE_WDFS_USERNAME = "username";
 
   const char * Preferences::DESKTOP_GNOME_FONT = "document-font-name";
   const char * Preferences::DESKTOP_GNOME_KEY_THEME = "gtk-key-theme";

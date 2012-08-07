@@ -22,10 +22,10 @@
 #define _GNOME_KEYRING_RING_HPP_
 
 #include <vector>
+#include <map>
 
-#include <gnome-keyring.h>
+#include <libsecret/secret.h>
 
-#include "itemdata.hpp"
 
 
 namespace gnome {
@@ -34,19 +34,15 @@ namespace keyring {
 class Ring
 {
 public:
-  static std::vector<ItemData::Ptr> find(ItemType type, const std::map<std::string, std::string> & atts);
+  static std::string find_password(const std::map<std::string, std::string> & atts);
   static std::string default_keyring();
-  static int create_item(const std::string & keyring, ItemType type, const std::string & displayName,
-                         const std::map<std::string, std::string> & attributes,
-                         const std::string & secret, bool updateIfExists);
-  static void set_item_info(const std::string & keyring, int id, ItemType type,
-                            const std::string & displayName, const std::string & secret);
-  static void set_item_attributes(const std::string & keyring, int id, const std::map<std::string, std::string> & atts);
+  static void create_password(const std::string & keyring, const std::string & displayName,
+                              const std::map<std::string, std::string> & attributes,
+                              const std::string & secret);
 private:
-  static GnomeKeyringItemType keyring_item_type(ItemType type);
-  static GnomeKeyringAttributeList *keyring_attributes(const std::map<std::string, std::string> & atts);
-  static void transfer_attributes(ItemData::Ptr, GnomeKeyringFound*);
-  static const char * keyring_c_str(const std::string &);
+  static GHashTable *keyring_attributes(const std::map<std::string, std::string> & atts);
+
+  static SecretSchema s_schema;
 };
 
 }

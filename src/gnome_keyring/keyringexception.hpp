@@ -23,8 +23,6 @@
 
 #include <stdexcept>
 
-#include <gnome-keyring.h>
-
 
 
 namespace gnome {
@@ -34,20 +32,16 @@ class KeyringException
   : public std::exception
 {
 public:
-  KeyringException(GnomeKeyringResult);
-  GnomeKeyringResult result() const
+  KeyringException(const std::string & msg)
+    : m_what(msg)
+    {}
+  virtual ~KeyringException() throw() {}
+  virtual const char *what() const throw()
     {
-      return m_result;
-    }
-  virtual const char * what() const throw()
-    {
-      return m_what;
+      return m_what.c_str();
     }
 private:
-  static const char * get_msg(GnomeKeyringResult);
-
-  GnomeKeyringResult m_result;
-  const char * m_what;
+  std::string m_what;
 };
 
 }
