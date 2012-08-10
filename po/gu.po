@@ -9,10 +9,11 @@ msgstr ""
 "Project-Id-Version: gnote.master.gu\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-04 19:52+0000\n"
-"PO-Revision-Date: 2012-03-30 16:23+0530\n"
+"POT-Creation-Date: 2012-08-07 18:30+0000\n"
+"PO-Revision-Date: 2012-08-10 17:44+0530\n"
 "Last-Translator: \n"
 "Language-Team: gu_IN <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -512,10 +513,26 @@ msgstr ""
 "ને વાપરો."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:77
+msgid "Share URL"
+msgstr ""
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "WebDAV share URL where notes are synchronized to."
+msgstr ""
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "Share username"
+msgstr ""
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+msgid "Username to access WebDAV share."
+msgstr ""
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Timestamp format"
 msgstr "ટાઇમસ્ટેમ્પ બંધારણ"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -569,7 +586,7 @@ msgstr "Gnote માંથી બહાર નીકળો"
 msgid "_Edit"
 msgstr "ફેરફાર કરો (_E)"
 
-#: ../src/actionmanager.cpp:209 ../src/applet.cpp:383 ../src/tray.cpp:460
+#: ../src/actionmanager.cpp:209 ../src/tray.cpp:460
 msgid "_Preferences"
 msgstr "પસંદગીઓ (_P)"
 
@@ -577,7 +594,7 @@ msgstr "પસંદગીઓ (_P)"
 msgid "Gnote Preferences"
 msgstr "Gnote પસંદગીઓ"
 
-#: ../src/actionmanager.cpp:212 ../src/applet.cpp:384 ../src/tray.cpp:465
+#: ../src/actionmanager.cpp:212 ../src/tray.cpp:465
 msgid "_Help"
 msgstr "મદદ (_H)"
 
@@ -589,7 +606,7 @@ msgstr "સમાવિષ્ટો (_C)"
 msgid "Gnote Help"
 msgstr "Gnote મદદ"
 
-#: ../src/actionmanager.cpp:221 ../src/applet.cpp:385
+#: ../src/actionmanager.cpp:221
 msgid "_About"
 msgstr "વિશે (_A)"
 
@@ -642,11 +659,11 @@ msgstr "અહિંયા કઇ કડીઓ છે?"
 msgid "(none)"
 msgstr "(કંઇ નહિં)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
 msgid "Bugzilla Links"
 msgstr "બગઝીલા કડીઓ"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:62
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -655,9 +672,9 @@ msgstr ""
 "Gnote નોંધમાં સીધુ જ તમારા બ્રાઉઝર માંથી બગઝીલા URL ને ખેંચવા માટે તમને પરવાનગી આપે છે.  "
 "તેનાં પછીનાં નાનાં બગ ચિહ્ન સાથે કડી તરીકે બગ નંબર દાખલ થયેલ છે."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:66
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:57
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere અને Tomboy Project"
@@ -756,6 +773,7 @@ msgid "Synchronize Gnote Notes to a local file system path"
 msgstr ""
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
 #, fuzzy
 #| msgid "Hubert Figuiere and the Tomboy Project"
 msgid "Aurimas Cernius and the Tomboy Project"
@@ -766,7 +784,6 @@ msgid "_Folder Path:"
 msgstr "ફોલ્ડર પાથ (_F):"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:131
-#| msgid "SSHFS Remote Synchronization Folder"
 msgid "Select Synchronization Folder..."
 msgstr "સુમેળ ફોલ્ડરને પસંદ કરો..."
 
@@ -783,7 +800,6 @@ msgid "Local Folder"
 msgstr "સ્થાનિક ફોલ્ડર"
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
-#| msgid "Fixed Width"
 msgid "Fixed Wid_th"
 msgstr "સુધારેલ પહોળાઇ (_t)"
 
@@ -819,6 +835,20 @@ msgstr "પસંદ થયેલ બંધારણને વાપરો (_S)"
 msgid "_Use Custom Format"
 msgstr "વૈવિધ્ય બંધારણને વાપરો (_U)"
 
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:47
+msgid "Note Directory Watcher"
+msgstr ""
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:52
+msgid "Watch your Gnote note directory for changes to your notes."
+msgstr ""
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
+#, fuzzy
+#| msgid "and Tomboy original authors."
+msgid "Aurimas Černius and Tomboy original authors"
+msgstr "અને Tomboy મૂળ લેખકો."
+
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
 msgstr "દિવસની નોંધ"
@@ -834,12 +864,10 @@ msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Hubert Figuiere અને Tomboy Project"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:32
-#| msgid "New Note Template"
 msgid "Today: Template"
 msgstr "આજે: ટૅમ્પલેટ"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:34
-#| msgid "Today"
 msgid "Today: "
 msgstr "આજે: "
 
@@ -848,7 +876,6 @@ msgid "Tasks"
 msgstr "કાર્યો"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:159
-#| msgid "_Contents"
 msgid "Appointments"
 msgstr "મુલાકાત"
 
@@ -858,10 +885,9 @@ msgid "%A, %B %d %Y"
 msgstr "%A, %B %d %Y"
 
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
-#, fuzzy
 #| msgid "_Open Template Note"
 msgid "_Open Today: Template"
-msgstr "ટેમ્પલેટ નોંધને ખોલો (_O)"
+msgstr "આજે ખોલો (_O): ટૅમ્પલેટ"
 
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:36
 msgid ""
@@ -869,24 +895,24 @@ msgid ""
 "the text that new Today notes have."
 msgstr ""
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:49
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
 msgid "Printing Support"
 msgstr "છાપવાનું આધાર"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:53
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
 msgid "Allows you to print a note."
 msgstr "નોંધ ને છાપવા માટે તમને પરવાનગી આપે છે."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:80
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
 msgid "Print"
 msgstr "છાપો"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
 msgid "Error printing note"
 msgstr "નોંધને છાપતી વખતે ભૂલ"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:299
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
 msgid "Page %1% of %2%"
 msgstr "%2% માંનું પાનું %1%"
 
@@ -896,13 +922,12 @@ msgid "Replace title"
 msgstr "શીર્ષકને બદલો"
 
 #: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
-#| msgid "Delete the selected note"
 msgid "Replace title with selection."
 msgstr "પસંદગી સાથે શીર્ષકને બદલો."
 
 #: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
 msgid "Pierre-Yves Luyten"
-msgstr ""
+msgstr "Pierre-Yves Luyten"
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
@@ -973,19 +998,71 @@ msgstr "લખાણની નીચે લીટી દોરવા માટ�
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuiere અને Tomboy Project"
 
-#: ../src/gnote.cpp:374
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+#, fuzzy
+#| msgid "Selected Synchronization Service Addin"
+msgid "WebDav Sync Service Add-in"
+msgstr "પસંદ થયેલ સુમેળ સેવા ઉમેરો"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+#, fuzzy
+#| msgid "Synchronize Notes"
+msgid "Synchronize Gnote Notes to a WebDav URL"
+msgstr "નોંધોને સુમેળ કરો"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "URL (_U):"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr "વપરાશકર્તા નામ (_n):"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr "પાસવર્ડ (_P):"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid ""
+"There was an error connecting to the server.  This may be caused by using an "
+"incorrect user name and/or password."
+msgstr ""
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+#| msgid "Folder path field is empty."
+msgid "URL, username, or password field is empty."
+msgstr "URL, વપરાશકર્તાનામ, અથવા પાસવર્ડ ક્ષેત્ર ખાલી છે."
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:285
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
+"\n"
+"%1%"
+msgstr ""
+
+#: ../src/gnote.cpp:308
 msgid "Cannot create new note"
 msgstr "નવી નોંધને બનાવી શકાતુ નથી"
 
-#: ../src/gnote.cpp:423
+#: ../src/gnote.cpp:354
 msgid "and Tomboy original authors."
 msgstr "અને Tomboy મૂળ લેખકો."
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:363
 msgid "translator-credits"
 msgstr "શ્ર્વેતા કોઠારી <swkothar@redhat.com>"
 
-#: ../src/gnote.cpp:441
+#: ../src/gnote.cpp:372
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -997,79 +1074,73 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 
-#: ../src/gnote.cpp:445
+#: ../src/gnote.cpp:376
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "ડેસ્કટોપ નોંધ-લેવાનાં કાર્યક્રમને વાપરવાનું સાદુ અને સરળ છે."
 
-#: ../src/gnote.cpp:456
+#: ../src/gnote.cpp:387
 msgid "Homepage"
 msgstr "ઘરપાનું"
 
-#: ../src/gnote.cpp:552
-msgid "Run Gnote as a GNOME panel applet."
-msgstr "GNOME પેનલ એપલેટ તરીકે Gnote ને ચલાવો."
-
-#: ../src/gnote.cpp:553
+#: ../src/gnote.cpp:467
 msgid "Run Gnote in background."
 msgstr "પાશ્ર્વભાગમાં Gnote ચલાવો"
 
-#: ../src/gnote.cpp:554
+#: ../src/gnote.cpp:468
 msgid "Specify the path of the directory containing the notes."
 msgstr "નોંધોને સમાવતી ડિરેક્ટરીનાં પાથને સ્પષ્ટ કરો."
 
-#: ../src/gnote.cpp:554
+#: ../src/gnote.cpp:468
 msgid "path"
 msgstr "પાથ"
 
-#: ../src/gnote.cpp:555
+#: ../src/gnote.cpp:469
 msgid "Open the search all notes window with the search text."
 msgstr "શોધ લખાણ સાથે બધી નોંધો વિન્ડોને શોધવા ખોલો."
 
-#: ../src/gnote.cpp:555 ../src/gnote.cpp:560
-#| msgid "Te_xt"
+#: ../src/gnote.cpp:469 ../src/gnote.cpp:474
 msgid "text"
 msgstr "લખાણ"
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:470
 msgid "Print version information."
 msgstr "આવૃત્તિ જાણકારીને છાપો."
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:471
 msgid "Create and display a new note, with a optional title."
 msgstr "વૈકલ્પિક શીર્ષક સાથે નવી નોંધને બનાવો અને દર્શાવો."
 
-#: ../src/gnote.cpp:557
-#| msgid "Untitled"
+#: ../src/gnote.cpp:471
 msgid "title"
 msgstr "શીર્ષક"
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:472
 msgid "Display the existing note matching title."
 msgstr "હાલની નોંધને બંધબેસતા શીર્ષકને દર્શાવો."
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:472
 msgid "title/url"
 msgstr "શીર્ષક/url"
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:473
 #, fuzzy
 #| msgid "Start Here Note"
 msgid "Display the 'Start Here' note."
 msgstr "નોંધને અહિંયા શરૂ કરો"
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:474
 msgid "Search and highlight text in the opened note."
 msgstr "ખોલેલ નોંધમાં લખાણને શોધો અને પ્રકાશિત કરો."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:478
 msgid "A note taking application"
 msgstr "નોંધ કાર્યક્રમને લઇ રહ્યા છે"
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:478
 msgid "Gnote options at launch"
 msgstr "શરૂઆતથી Gnote વિકલ્પો"
 
-#: ../src/gnote.cpp:757
+#: ../src/gnote.cpp:671
 msgid "Version %1%"
 msgstr "આવૃત્તિ %1%"
 
@@ -1149,7 +1220,6 @@ msgid "%1% Notebook Template"
 msgstr "%1% નોંધબુક ટેમ્પલેટ"
 
 #: ../src/notebooks/notebook.cpp:167 ../src/notemanager.cpp:555
-#| msgid "_New Note"
 msgid "New Note"
 msgstr "નવી  નોંધ"
 
@@ -1195,8 +1265,6 @@ msgstr "નવી નોંધબુક (_N)..."
 
 #. TRANSLATORS: %1% is number of notes
 #: ../src/note.cpp:74
-#| msgid "Really delete this note?"
-#| msgid_plural "Really delete these %1% notes?"
 msgid "Really delete %1% note?"
 msgid_plural "Really delete %1% notes?"
 msgstr[0] "ખરેખર %1% નોંધને કાઢી નાંખો?"
@@ -1315,7 +1383,6 @@ msgid "_Don't Rename Links"
 msgstr "કડીઓનું નામ બદલો નહિં (_D)"
 
 #: ../src/noterenamedialog.cpp:126
-#| msgid "_Open Link"
 msgid "_Rename Links"
 msgstr "કડીઓનું નામ બદલો (_R)"
 
@@ -1324,12 +1391,10 @@ msgid "Select All"
 msgstr "બધુ પસંદ કરો"
 
 #: ../src/noterenamedialog.cpp:128
-#| msgid "Select an icon..."
 msgid "Select None"
 msgstr "કંઇ પસંદ કરો નહિ"
 
 #: ../src/noterenamedialog.cpp:129
-#| msgid "Close this window"
 msgid "Always show this _window"
 msgstr "હંમેશા આ વિન્ડોને બતાવો (_w)"
 
@@ -1350,17 +1415,14 @@ msgid ""
 msgstr ""
 
 #: ../src/noterenamedialog.cpp:184
-#| msgid "_Open Link"
 msgid "Rename Links"
 msgstr "કડીનું નામ બદલો"
 
 #: ../src/noterenamedialog.cpp:199 ../src/synchronization/syncdialog.cpp:367
-#| msgid "Note title taken"
 msgid "Note Title"
 msgstr "નોંધ શીર્ષક"
 
 #: ../src/noterenamedialog.cpp:235
-#| msgid "_Advanced..."
 msgid "Ad_vanced"
 msgstr "ઉન્નત (_v)"
 
@@ -1439,12 +1501,10 @@ msgid "Save Si_ze"
 msgstr "માપ સંગ્રહો (_z)"
 
 #: ../src/notewindow.cpp:514
-#| msgid "Select an icon..."
 msgid "Save Se_lection"
 msgstr "પસંદગીને સંગ્રહો (_l)"
 
 #: ../src/notewindow.cpp:518
-#| msgid "Note title taken"
 msgid "Save _Title"
 msgstr "શીર્ષક સંગ્રહો (_T)"
 
@@ -1465,7 +1525,6 @@ msgid "Cannot create note"
 msgstr "નોંધને બનાવી શકાતુ નથી"
 
 #: ../src/notewindow.cpp:749
-#| msgid "_Text"
 msgid "_Next"
 msgstr "આગળ (_N)"
 
@@ -1514,12 +1573,10 @@ msgid "Bullets"
 msgstr "બુલેટો"
 
 #: ../src/notewindow.cpp:1222
-#| msgid "Font Size"
 msgid "Increase Font Size"
 msgstr "ફોન્ટ માપ વધારો"
 
 #: ../src/notewindow.cpp:1223
-#| msgid "Font Size"
 msgid "Decrease Font Size"
 msgstr "ફોન્ટ માપ ઘટાડો"
 
@@ -1537,7 +1594,6 @@ msgstr "ટૂંકી કીઓ"
 
 #. TRANSLATORS: Addin category.
 #: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:147
-#| msgid "Synchronization Client ID"
 msgid "Synchronization"
 msgstr "સુમેળ"
 
@@ -1687,7 +1743,6 @@ msgstr "નોંધ ફોન્ટને પસંદ કરો"
 
 #. Create dialog
 #: ../src/preferencesdialog.cpp:1036
-#| msgid "Synchronization Client ID"
 msgid "Other Synchronization Options"
 msgstr "બીજા સુમેળ વિકલ્પો"
 
@@ -1721,7 +1776,6 @@ msgid ""
 msgstr ""
 
 #: ../src/preferencesdialog.cpp:1169
-#| msgid "Selected Synchronization Service Addin"
 msgid "Resetting Synchronization Settings"
 msgstr "સુમેળ સુયોજનોને પુન:સુયોજિત કરી રહ્યા છે"
 
@@ -1742,26 +1796,25 @@ msgid ""
 "now?"
 msgstr ""
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
 msgid ""
-"Please check your information and try again.  The log file {0} may contain "
+"Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
 msgstr ""
 
-#: ../src/preferencesdialog.cpp:1267
-#| msgid "Error printing note"
+#: ../src/preferencesdialog.cpp:1266
 msgid "Error connecting"
 msgstr "જોડી રહ્યા હોય ત્યારે ભૂલ"
 
-#: ../src/preferencesdialog.cpp:1331
+#: ../src/preferencesdialog.cpp:1330
 msgid "Version:"
 msgstr "આવૃત્તિ:"
 
-#: ../src/preferencesdialog.cpp:1336
+#: ../src/preferencesdialog.cpp:1335
 msgid "Author:"
 msgstr "લેખક:"
 
-#: ../src/preferencesdialog.cpp:1342
+#: ../src/preferencesdialog.cpp:1341
 msgid "Copyright:"
 msgstr "કોપીરાઇટ:"
 
@@ -1830,7 +1883,6 @@ msgid "Name"
 msgstr "નામ"
 
 #: ../src/sharp/addinstreemodel.cpp:105
-#| msgid "Version:"
 msgid "Version"
 msgstr "આવૃત્તિ"
 
@@ -1846,7 +1898,6 @@ msgstr "ડેસ્કટોપ એકત્રિકરણ"
 
 #. TRANSLATORS: Addin category.
 #: ../src/sharp/addinstreemodel.cpp:144
-#| msgid "T_ools"
 msgid "Tools"
 msgstr "સાધનો"
 
@@ -1854,6 +1905,42 @@ msgstr "સાધનો"
 #: ../src/sharp/addinstreemodel.cpp:151
 msgid "Unknown"
 msgstr "અજ્ઞાત"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:112
+msgid ""
+"This synchronization addin is not supported on your computer. Please make "
+"sure you have FUSE and %1% correctly installed and configured"
+msgstr ""
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:155
+#| msgid "Could not save the icon file."
+msgid "Could not read testfile."
+msgstr "ચકાસણી ફાઇલને વાંચી શક્યા નહિં."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:164
+msgid "Write test failed."
+msgstr ""
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:193
+#| msgid "Connecting to the server..."
+msgid "Timeout connecting to server."
+msgstr "સર્વર સાથે જોડતી વખતે સમયસમાપ્તિ."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:199
+#| msgid "Error connecting"
+msgid "Error connecting to server."
+msgstr "સર્વર સાથે જોડવામાં ભૂલ."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:212
+msgid "FUSE could not be enabled."
+msgstr "FUSE ને સક્રિય કરી શક્યા નહિં."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:243
+#, fuzzy
+#| msgid ""
+#| "The port to use when connecting to the synchronization server via SSH."
+msgid "An error ocurred while connecting to the specified server"
+msgstr "વાપરવા માટે પોર્ટ જ્યારે SSH મારફતે સુમેળ સર્વર સાથે જોડાઇ રહ્યા હોય."
 
 #: ../src/synchronization/syncdialog.cpp:110
 #, fuzzy
@@ -1879,7 +1966,6 @@ msgid "Overwrite local note"
 msgstr ""
 
 #: ../src/synchronization/syncdialog.cpp:175
-#| msgid "Close this window"
 msgid "Always perform this action"
 msgstr "હંમેશા આ ક્રિયાને ચલાવો"
 
@@ -1912,12 +1998,10 @@ msgid "Committing changes..."
 msgstr ""
 
 #: ../src/synchronization/syncdialog.cpp:537
-#| msgid "Synchronize Notes"
 msgid "Synchronizing Notes"
 msgstr "નોંધોનો સુમેળ કરી રહ્યા છે"
 
 #: ../src/synchronization/syncdialog.cpp:538
-#| msgid "Start synchronizing notes"
 msgid "Synchronizing your notes..."
 msgstr "તમારી નોંધોનો સુમેળ કરી રહ્યા છે..."
 
@@ -1950,8 +2034,8 @@ msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
 msgstr ""
-"તમારા બીજા કમ્પ્યૂટરોમાંનુ એક હાલાં સુમેળ કરી રહ્યા છે. મહેરબાની કરીને 2 મિનિટ રાહ જુઓ અને ફરી "
-"પ્રયત્ન કરો."
+"તમારા બીજા કમ્પ્યૂટરોમાંનુ એક હાલાં સુમેળ કરી રહ્યા છે. મહેરબાની કરીને 2 મિનિટ રાહ જુઓ અને "
+"ફરી પ્રયત્ન કરો."
 
 #: ../src/synchronization/syncdialog.cpp:569
 msgid "Preparing to download updates from server..."
@@ -1966,12 +2050,10 @@ msgid "Uploading notes to server..."
 msgstr "સર્વરમાં નોંધોને અપલોડ કરી રહ્યા છે..."
 
 #: ../src/synchronization/syncdialog.cpp:578
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Failed"
 msgstr "સુમેળ નિષ્ફળ"
 
 #: ../src/synchronization/syncdialog.cpp:579
-#| msgid "Start synchronizing notes"
 msgid "Failed to synchronize"
 msgstr "સુમેળ કરવામાં નિષ્ફળતા"
 
@@ -1980,17 +2062,14 @@ msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr "નોંધોને સુમેળ કરી શક્યા નહિં. નીચે વિગતોને ચકાસો અને ફરીથી પ્રયત્ન કરો."
 
 #: ../src/synchronization/syncdialog.cpp:586
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Complete"
 msgstr "સુમેળ સમાપ્ત"
 
 #: ../src/synchronization/syncdialog.cpp:587
-#| msgid "Synchronization Client ID"
 msgid "Synchronization is complete"
 msgstr "સુમેળ સમાપ્ત છે"
 
 #: ../src/synchronization/syncdialog.cpp:588
-#| msgid "%1% Notebook Template"
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% નોંધ સુધારેલ."
@@ -2001,12 +2080,10 @@ msgid "Your notes are now up to date."
 msgstr ""
 
 #: ../src/synchronization/syncdialog.cpp:594
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Canceled"
 msgstr "સુમેળ રદ થયેલ છે"
 
 #: ../src/synchronization/syncdialog.cpp:595
-#| msgid "Synchronization Client ID"
 msgid "Synchronization was canceled"
 msgstr "સુમેળ રદ થયેલ હતુ"
 
@@ -2015,12 +2092,10 @@ msgid "You canceled the synchronization.  You may close the window now."
 msgstr "તમે સુમેળને રદ કરેલ છે. તમે હવે વિન્ડોને બંધ કરી શકો છો."
 
 #: ../src/synchronization/syncdialog.cpp:600
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Not Configured"
 msgstr "સુમેળ રૂપરેખાંકિત થયેલ નથી"
 
 #: ../src/synchronization/syncdialog.cpp:601
-#| msgid "Synchronization Client ID"
 msgid "Synchronization is not configured"
 msgstr "સુમેળ રૂપરેખાંકિત થયેલ નથી"
 
@@ -2029,12 +2104,10 @@ msgid "Please configure synchronization in the preferences dialog."
 msgstr "મહેરબાની કરીને પસંદગી સંવાદમાં સુમેળને રૂપરેખાંકિત કરો."
 
 #: ../src/synchronization/syncdialog.cpp:606
-#| msgid "SSHFS Synchronization Server Port"
 msgid "Synchronization Service Error"
 msgstr "સુમેળ સેવા ભૂલ"
 
 #: ../src/synchronization/syncdialog.cpp:607
-#| msgid "Ser_vice:"
 msgid "Service error"
 msgstr "સેવા ભૂલ"
 
@@ -2070,9 +2143,36 @@ msgid "Uploaded new note to server"
 msgstr "સર્વરમાં અપલોડ થયેલ નવી નોંધ"
 
 #: ../src/synchronization/syncmanager.cpp:135
-#| msgid "T_ools"
 msgid "_Tools"
 msgstr "સાધનો (_T)"
+
+#: ../src/synchronization/syncutils.cpp:142
+#: ../src/synchronization/syncutils.cpp:174
+msgid "Could not enable FUSE"
+msgstr "FUSE ને સક્રિય કરી શક્યા નહિં"
+
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
+msgid ""
+"The FUSE module could not be loaded. Please check that it is installed "
+"properly and try again."
+msgstr ""
+
+#: ../src/synchronization/syncutils.cpp:151
+#| msgid "_Enable"
+msgid "Enable FUSE?"
+msgstr "શું FUSE ને સક્રિય કરવુ છે?"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:154
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
+msgstr ""
 
 #: ../src/tray.cpp:54
 msgid "Take notes"
@@ -2181,13 +2281,16 @@ msgstr ""
 msgid "Note title taken"
 msgstr "નોંધ શીર્ષક લીધેલ છે"
 
-#: ../src/watchers.cpp:593
+#: ../src/watchers.cpp:585
 msgid "_Copy Link Address"
 msgstr "કડી સરનામાંની નકલ કરો (_C)"
 
-#: ../src/watchers.cpp:599
+#: ../src/watchers.cpp:591
 msgid "_Open Link"
 msgstr "કડીને ખોલો (_O)"
+
+#~ msgid "Run Gnote as a GNOME panel applet."
+#~ msgstr "GNOME પેનલ એપલેટ તરીકે Gnote ને ચલાવો."
 
 #~ msgid "Accessories"
 #~ msgstr "સહાયક સામગ્રી"
