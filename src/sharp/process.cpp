@@ -240,8 +240,10 @@ const char *Process::execv_error(int error)
     return "EINVAL";
   case EISDIR:
     return "EISDIR";
+#ifdef ELIBBAD
   case ELIBBAD:
     return "ELIBBAD";
+#endif
   default:
     return "Unknown";
   }
