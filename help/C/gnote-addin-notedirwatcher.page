@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="addin-notedirwatcher">
+
+  <info>
+    <link type="guide" xref="index#advanced"/>
+    <desc>Watch for note changes on file system</desc>
+    <license><p>GNU Free Documentation License (GFDL), Version 1.1</p></license>
+    <credit type="author">
+      <name>Aurimas Cernius</name>
+      <years>2012</years>
+    </credit>
+  </info>
+  
+  <title>Note Directory Watcher</title>
+    <p>This addin allows you to work with notes on a file system while <app>Gnote</app> is running. When enabled, this addin monitors note files for changes and reloads them, once any change is detected. This way external change to a note file is automatically reflected in <app>Gnote</app>.</p>
+    <p><app>Gnote</app> stores notes into <file>~/.local/share/gnote</file> folder. With this addin enabled, you can perform actions at file system level on this directory, such as synchronizing contents with some other location, while <app>Gnote</app> is running.</p>
+
+</page>

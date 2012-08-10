@@ -24,6 +24,7 @@ DOC_PAGES = \
 	gnote-addin-bugzillalink.page \
 	gnote-addin-fixedwidth.page \
 	gnote-addin-html.page \
+	gnote-addin-notedirwatcher.page \
 	gnote-addin-noteoftheday.page \
 	gnote-addin-print.page \
 	gnote-addins-preferences.page \
