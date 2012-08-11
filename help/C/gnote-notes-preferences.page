@@ -39,5 +39,25 @@
   <section id="advanced" style="2column">
     <title>Advanced Settings</title>
   </section>
+  <section id="sync">
+    <title>Synchronization Settings</title>
+    <section id="sync-addins" style="2column">
+      <title>Synchronization services</title>
+    </section>
+    <section id="sync-advanced">
+      <title>Advanced</title>
+      <p>Clicking <gui>Advanced</gui> button in <gui>Synchronization</gui> tab of <gui>Preferences</gui> dialog brings another dialog for setting up conflict resolution.</p>
+      <figure>
+        <title>Advanced Synchronization Settings</title>
+        <media type="image" src="figures/gnote-syncprefs-advanced.png" mime="image/png"/>
+      </figure>
+      <p>This dialog lets you choose what to do, when a conflict occurrs. A conflict happends, when the note is modified before synchronizing and it has been also modified on other device (and synchronized to synchronization storage). You can select one of these options:</p>
+      <list>
+        <item><title>Rename existing note by appending &quot;(Old)&quot; to it's title and download the one from storage</title></item>
+        <item><title>Replace existing note by the one from storage, losing all modifications</title></item>
+        <item><title>Get the choice for earch conflicting note individually</title></item>
+      </list>
+    </section>
+  </section>
 
 </page>
