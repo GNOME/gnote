@@ -15,6 +15,10 @@ DOC_FIGURES = \
 	figures/gnote-preferences-hotkeys.png \
 	figures/gnote-preferences-synchronization.png \
 	figures/gnote-search-all-notes.png \
+	figures/gnote-syncprefs-advanced.png \
+	figures/gnote-syncprefs-local.png \
+	figures/gnote-syncprefs-webdav.png \
+	figures/gnote-sync-progress.png \
 	figures/gnote-template-note.png \
 	figures/gnote-tools.png \
 	figures/new-notebook.png \
@@ -29,6 +33,8 @@ DOC_PAGES = \
 	gnote-addin-print.page \
 	gnote-addins-preferences.page \
 	gnote-addin-replacetitle.page \
+	gnote-addin-sync-local.page \
+	gnote-addin-sync-webdav.page \
 	gnote-addin-timestamp.page \
 	gnote-addin-underline.page \
 	gnote-bulleted-lists.page \
@@ -41,6 +47,7 @@ DOC_PAGES = \
 	gnote-links.page \
 	gnote-notes-preferences.page \
 	gnote-searching-notes.page \
+	gnote-synchronization.page \
 	gnote-template-notes.page \
 	gnote-working-with-notebooks.page \
 	index.page
