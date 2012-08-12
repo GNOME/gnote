@@ -39,7 +39,6 @@ SecretSchema Ring::s_schema = {
 
 std::string Ring::find_password(const std::map<std::string, std::string> & atts)
 {
-  GList *list = NULL;
   GHashTable *attributes = keyring_attributes(atts);
   GError *error = NULL;
   gchar *result = secret_password_lookupv_sync(&s_schema, attributes, NULL, &error);
@@ -71,6 +70,19 @@ void Ring::create_password(const std::string & keyring, const std::string & disp
   GError *error = NULL;
   secret_password_storev_sync(&s_schema, atts, keyring.c_str(), displayName.c_str(),
                               secret.c_str(), NULL, &error);
+  g_hash_table_unref(atts);
+  if(error) {
+    KeyringException e(error->message);
+    g_error_free(error);
+    throw e;
+  }
+}
+
+void Ring::clear_password(const std::map<std::string, std::string> & attributes)
+{
+  GHashTable *atts = keyring_attributes(attributes);
+  GError *error = NULL;
+  secret_password_clearv_sync(&s_schema, atts, NULL, &error);
   g_hash_table_unref(atts);
   if(error) {
     KeyringException e(error->message);

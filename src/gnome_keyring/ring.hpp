@@ -39,6 +39,7 @@ public:
   static void create_password(const std::string & keyring, const std::string & displayName,
                               const std::map<std::string, std::string> & attributes,
                               const std::string & secret);
+  static void clear_password(const std::map<std::string, std::string> & attributes);
 private:
   static GHashTable *keyring_attributes(const std::map<std::string, std::string> & atts);
 

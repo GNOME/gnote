@@ -273,7 +273,12 @@ void WebDavSyncServiceAddin::save_config_settings(const std::string & url, const
     settings->set_string(Preferences::SYNC_FUSE_WDFS_USERNAME, username);
     settings->set_string(Preferences::SYNC_FUSE_WDFS_URL, url);
 
-    Ring::create_password(Ring::default_keyring(), KEYRING_ITEM_NAME, s_request_attributes, password);
+    if(password != "") {
+      Ring::create_password(Ring::default_keyring(), KEYRING_ITEM_NAME, s_request_attributes, password);
+    }
+    else {
+      Ring::clear_password(s_request_attributes);
+    }
   }
   catch(KeyringException & ke) {
     DBG_OUT("Saving configuration to the GNOME keyring failed with the following message: %s", ke.what());
