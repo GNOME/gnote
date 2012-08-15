@@ -76,6 +76,7 @@ private:
   Gtk::FileChooserButton *m_path_button;
   std::string m_path;
   bool m_initialized;
+  bool m_enabled;
 };
 
 }

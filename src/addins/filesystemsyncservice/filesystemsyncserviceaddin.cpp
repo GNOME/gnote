@@ -70,16 +70,19 @@ const char * FileSystemSyncServiceModule::version() const
 
 FileSystemSyncServiceAddin::FileSystemSyncServiceAddin()
   : m_initialized(false)
+  , m_enabled(false)
 {
 }
 
 void FileSystemSyncServiceAddin::initialize()
 {
   m_initialized = true;
+  m_enabled = true;
 }
 
 void FileSystemSyncServiceAddin::shutdown()
 {
+  m_enabled = false;
 }
 
 gnote::sync::SyncServer::Ptr FileSystemSyncServiceAddin::create_sync_server()
@@ -253,7 +256,7 @@ bool FileSystemSyncServiceAddin::is_supported()
 
 bool FileSystemSyncServiceAddin::initialized()
 {
-  return m_initialized;
+  return m_initialized && m_enabled;
 }
 
 

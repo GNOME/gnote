@@ -73,6 +73,7 @@ private:
   std::string m_fuse_unmount_exe_path;
   std::string m_mount_exe_path;
   bool m_initialized;
+  bool m_enabled;
 };
 
 }

@@ -42,16 +42,18 @@ const int FuseSyncServiceAddin::DEFAULT_MOUNT_TIMEOUT_MS = 10000;
 
 FuseSyncServiceAddin::FuseSyncServiceAddin()
   : m_initialized(false)
+  , m_enabled(false)
 {}
 
 void FuseSyncServiceAddin::shutdown()
 {
+  m_enabled = false;
   // TODO: Consider replacing GnoteExitHandler with this!
 }
 
 bool FuseSyncServiceAddin::initialized()
 {
-  return m_initialized;
+  return m_initialized && m_enabled;
 }
 
 void FuseSyncServiceAddin::initialize()
@@ -61,10 +63,13 @@ void FuseSyncServiceAddin::initialize()
     // Determine mount path, etc
     set_up_mount_path();
 
-    m_unmount_timeout.signal_timeout
-      .connect(sigc::mem_fun(*this, &FuseSyncServiceAddin::unmount_timeout));
+    if(!m_initialized) {
+      m_unmount_timeout.signal_timeout
+	.connect(sigc::mem_fun(*this, &FuseSyncServiceAddin::unmount_timeout));
+    }
   }
   m_initialized = true;
+  m_enabled = true;
 }
 
 SyncServer::Ptr FuseSyncServiceAddin::create_sync_server()
