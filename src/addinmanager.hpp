@@ -61,12 +61,13 @@ public:
     }
 
   void load_addins_for_note(const Note::Ptr &);
-  ApplicationAddin * get_application_addin(const std::string & id)
-                                           const;
+  ApplicationAddin *get_application_addin(const std::string & id) const;
+  sync::SyncServiceAddin *get_sync_service_addin(const std::string & id) const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
   void get_sync_service_addins(std::list<sync::SyncServiceAddin *> &) const;
   void get_import_addins(std::list<ImportAddin*> &) const;
   void initialize_application_addins() const;
+  void initialize_sync_service_addins() const;
   void shutdown_application_addins() const;
   void save_addins_prefs() const;
 
@@ -76,8 +77,6 @@ public:
     }
 
   Gtk::Widget * create_addin_preference_widget(const std::string & id);
-
-  sigc::signal<void> & signal_application_addin_list_changed();
 private:
 
   void initialize_sharp_addins();

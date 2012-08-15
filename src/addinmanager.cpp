@@ -312,6 +312,16 @@ namespace gnote {
     return 0;
   }
 
+  sync::SyncServiceAddin *AddinManager::get_sync_service_addin(const std::string & id) const
+  {
+    const IdSyncServiceAddinMap::const_iterator iter = m_sync_service_addins.find(id);
+    if(iter != m_sync_service_addins.end()) {
+      return iter->second;
+    }
+
+    return NULL;
+  }
+
   void AddinManager::get_preference_tab_addins(std::list<PreferenceTabAddin *> &l) const
   {
     sharp::map_get_values(m_pref_tab_addins, l);
@@ -338,6 +348,26 @@ namespace gnote {
         = m_module_manager.get_module(iter->first);
       if (!dmod || dmod->is_enabled()) {
         addin->initialize();
+      }
+    }
+  }
+
+  void AddinManager::initialize_sync_service_addins() const
+  {
+    for(IdSyncServiceAddinMap::const_iterator iter = m_sync_service_addins.begin();
+        iter != m_sync_service_addins.end(); ++iter) {
+      sync::SyncServiceAddin *addin = NULL;
+      try {
+        addin = iter->second;
+        const sharp::DynamicModule *dmod = m_module_manager.get_module(iter->first);
+        if(!dmod || dmod->is_enabled()) {
+          addin->initialize();
+        }
+      }
+      catch(std::exception & e) {
+        DBG_OUT("Error calling %s.initialize (): %s", addin->id().c_str(), e.what());
+
+        // TODO: Call something like AddinManager.Disable (addin)
       }
     }
   }
