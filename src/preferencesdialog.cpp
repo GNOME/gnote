@@ -25,6 +25,7 @@
 #include <config.h>
 #endif
 
+#include <boost/bind.hpp>
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
 
@@ -149,10 +150,6 @@ namespace gnote {
 
       get_vbox()->pack_start (*notebook, true, true, 0);
 
-// TODO
-//      addin_manager.ApplicationAddinListChanged += OnAppAddinListChanged;
-
-
       // Ok button...
 
       Gtk::Button *button = manage(new Gtk::Button(Gtk::Stock::CLOSE));
@@ -191,21 +188,35 @@ namespace gnote {
     else {
       const char * const id = module->id();
 
-      ApplicationAddin * const addin
-        = m_addin_manager.get_application_addin(id);
-      if (!addin) {
-        ERR_OUT("ApplicationAddin %s absent", id);
-        return;
+      ApplicationAddin * const addin = m_addin_manager.get_application_addin(id);
+      if(addin) {
+        enable_addin(addin, enable);
       }
-
-      if (enable)
-        addin->initialize();
-      else
-        addin->shutdown();
+      else {
+        sync::SyncServiceAddin * const sync_addin = m_addin_manager.get_sync_service_addin(id);
+        if(sync_addin) {
+          enable_addin(sync_addin, enable);
+        }
+        else {
+          ERR_OUT("Addin %s absent", id);
+          return;
+        }
+      }
     }
 
     module->enabled(enable);
     m_addin_manager.save_addins_prefs();
+  }
+
+  template <typename T>
+  void PreferencesDialog::enable_addin(T *addin, bool enable)
+  {
+    if(enable) {
+      addin->initialize();
+    }
+    else {
+      addin->shutdown();
+    }
   }
   
   
@@ -517,9 +528,11 @@ namespace gnote {
     Gnote::obj().default_note_manager().get_addin_manager().get_sync_service_addins(addins);
     addins.sort(CompareSyncAddinsByName());
     for(std::list<sync::SyncServiceAddin*>::iterator addin = addins.begin(); addin != addins.end(); ++addin) {
-      Gtk::TreeIter iter = m_sync_addin_store->append();
-      iter->set_value(0, (*addin));
-      m_sync_addin_iters[(*addin)->id()] = iter;
+      if((*addin)->initialized()) {
+	Gtk::TreeIter iter = m_sync_addin_store->append();
+	iter->set_value(0, (*addin));
+	m_sync_addin_iters[(*addin)->id()] = iter;
+      }
     }
 
     m_sync_addin_combo = manage(new Gtk::ComboBox (Glib::RefPtr<Gtk::TreeModel>::cast_static(m_sync_addin_store)));
@@ -591,7 +604,7 @@ namespace gnote {
 
     m_reset_sync_addin_button = manage(new Gtk::Button(Gtk::Stock::CLEAR));
     m_reset_sync_addin_button->signal_clicked().connect(
-      sigc::mem_fun(*this, &PreferencesDialog::on_reset_sync_addin_button));
+      boost::bind(sigc::mem_fun(*this, &PreferencesDialog::on_reset_sync_addin_button), true));
     m_reset_sync_addin_button->set_sensitive(m_selected_sync_addin &&
                                         addin_id == m_selected_sync_addin->id() &&
                                         m_selected_sync_addin->is_configured());
@@ -759,12 +772,14 @@ namespace gnote {
   {
     enable_addin(true);
     update_addin_buttons();
+    update_sync_services();
   }
 
   void PreferencesDialog::on_disable_addin_button()
   {
     enable_addin(false);
     update_addin_buttons();
+    update_sync_services();
   }
 
 
@@ -1137,15 +1152,10 @@ namespace gnote {
   }
 
 
-  void PreferencesDialog::on_reset_sync_addin_button()
-  {
-    reset_sync_addin_button(true);
-  }
-
-
-  void PreferencesDialog::reset_sync_addin_button(bool signal)
+  void PreferencesDialog::on_reset_sync_addin_button(bool signal)
   {
     if(m_selected_sync_addin == NULL) {
+DBG_OUT("no addin");
       return;
     }
 
@@ -1164,7 +1174,8 @@ namespace gnote {
       if(dialog_response != Gtk::RESPONSE_YES) {
         return;
       }
-    } else { // FIXME: Weird place for this to go.  User should be able to cancel disabling of addin, anyway
+    }
+    else { // FIXME: Weird place for this to go.  User should be able to cancel disabling of addin, anyway
       utils::HIGMessageDialog *dialog = new utils::HIGMessageDialog(NULL, GTK_DIALOG_MODAL, Gtk::MESSAGE_INFO,
         Gtk::BUTTONS_OK, _("Resetting Synchronization Settings"),
         _("You have disabled the configured synchronization service.  "
@@ -1355,6 +1366,69 @@ namespace gnote {
     sb += "</small>";
 
     info_label.set_markup(sb);
+  }
+
+  void PreferencesDialog::update_sync_services()
+  {
+    std::list<sync::SyncServiceAddin*> new_addins;
+    m_addin_manager.get_sync_service_addins(new_addins);
+    std::list<sync::SyncServiceAddin*>::iterator remove_iter = new_addins.begin();
+    while(remove_iter != new_addins.end()) {
+      if(!(*remove_iter)->initialized()) {
+        remove_iter = new_addins.erase(remove_iter);
+      }
+      else {
+        ++remove_iter;
+      }
+    }
+    new_addins.sort(CompareSyncAddinsByName());
+
+    // Build easier-to-navigate list if addins currently in the combo
+    std::list<sync::SyncServiceAddin*> current_addins;
+    for(Gtk::TreeIter iter = m_sync_addin_store->children().begin();
+        iter != m_sync_addin_store->children().end(); ++iter) {
+      sync::SyncServiceAddin *current_addin = NULL;
+      iter->get_value(0, current_addin);
+      if(current_addin != NULL) {
+        current_addins.push_back(current_addin);
+      }
+    }
+
+    // Add new addins
+    // TODO: Would be nice to insert these alphabetically instead
+    for(std::list<sync::SyncServiceAddin*>::iterator iter = new_addins.begin();
+        iter != new_addins.end(); ++iter) {
+      if(std::find(current_addins.begin(), current_addins.end(), *iter) == current_addins.end()) {
+	Gtk::TreeIter iterator = m_sync_addin_store->append();
+	iterator->set_value(0, *iter);
+	m_sync_addin_iters[(*iter)->id()] = iterator;
+      }
+    }
+
+    // Remove deleted addins
+    for(std::list<sync::SyncServiceAddin*>::iterator current_addin = current_addins.begin();
+        current_addin != current_addins.end(); ++current_addin) {
+      if(std::find(new_addins.begin(), new_addins.end(), *current_addin) == new_addins.end()) {
+	Gtk::TreeIter iter = m_sync_addin_iters[(*current_addin)->id()];
+	m_sync_addin_store->erase(iter);
+	m_sync_addin_iters.erase((*current_addin)->id());
+
+	// FIXME: Lots of hacky stuff in here...rushing before freeze
+	if(*current_addin == m_selected_sync_addin) {
+	  if(m_sync_addin_prefs_widget != NULL && !m_sync_addin_prefs_widget->get_sensitive()) {
+	    on_reset_sync_addin_button(false);
+          }
+
+	  Gtk::TreeIter active_iter = m_sync_addin_store->children().begin();
+	  if(active_iter != m_sync_addin_store->children().end()) {
+	    m_sync_addin_combo->set_active(active_iter);
+	  }
+          else {
+	    on_reset_sync_addin_button(false);
+	  }
+	}
+      }
+    }
   }
 
 }

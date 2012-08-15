@@ -59,14 +59,15 @@ private:
   Gtk::CheckButton *make_check_button (const std::string & label_text);
 
   void enable_addin(bool enable);
+  template <typename T>
+  void enable_addin(T *addin, bool enable);
 
   void open_template_button_clicked();
   void on_font_button_clicked();
   void update_font_button(const std::string & font_desc);
   void on_sync_addin_combo_changed();
   void on_advanced_sync_config_button();
-  void on_reset_sync_addin_button();
-  void reset_sync_addin_button(bool signal);
+  void on_reset_sync_addin_button(bool signal);
   void on_save_sync_addin_button();
 
   void on_preferences_setting_changed(const Glib::ustring & key);
@@ -87,6 +88,7 @@ private:
   void on_sync_addin_prefs_changed();
   void on_conflict_option_toggle();
   void combo_box_text_data_func(const Gtk::TreeIter & iter);
+  void update_sync_services();
 ////
 
   class SyncStoreModel
