@@ -152,18 +152,7 @@ namespace sync {
     ActionManager::obj().get_ui()->insert_action_group(action_group, 0);
 
     // Initialize all the SyncServiceAddins
-    std::list<SyncServiceAddin*> addins;
-    Gnote::obj().default_note_manager().get_addin_manager().get_sync_service_addins(addins);
-    for(std::list<SyncServiceAddin*>::iterator iter = addins.begin(); iter != addins.end(); ++iter) {
-      try {
-        (*iter)->initialize();
-      }
-      catch(std::exception & e) {
-        DBG_OUT("Error calling %s.initialize (): %s", (*iter)->id().c_str(), e.what());
-
-        // TODO: Call something like AddinManager.Disable (addin)
-      }
-    }
+    Gnote::obj().default_note_manager().get_addin_manager().initialize_sync_service_addins();
 
     Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
       .connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
