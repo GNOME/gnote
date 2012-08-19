@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: tomboy.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-04 19:52+0000\n"
-"PO-Revision-Date: 2012-03-17 17:12+0530\n"
+"POT-Creation-Date: 2012-08-07 18:30+0000\n"
+"PO-Revision-Date: 2012-08-19 15:17+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <kde-i18n-doc@kde.org>\n"
+"Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
-"Language: pa\n"
+"X-Generator: Lokalize 1.4\n"
 
 #: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
@@ -88,9 +88,6 @@ msgid "Enable custom font"
 msgstr "ਕਸਟਮ ਫੋਂਟ ਯੋਗ"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:10
-#| msgid ""
-#| "If true, the font name set in custom_font_face will be used as the font "
-#| "when displaying notes. Otherwise the desktop default font will be used."
 msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
@@ -104,9 +101,6 @@ msgid "Custom Font Face"
 msgstr "ਪਸੰਦੀਦਾ ਫੋਂਟ ਸ਼ਕਲ"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:12
-#| msgid ""
-#| "If enable_custom_font is true, the font name set here will be used as the "
-#| "font when displaying notes."
 msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
@@ -120,18 +114,14 @@ msgid "Enable global keybindings"
 msgstr "ਗਲੋਬਲ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਦੀ ਵਰਤੋਂ ਯੋਗ"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:14
-#| msgid ""
-#| "If true, the desktop-global keybindings set in /apps/gnote/"
-#| "global_keybindings will be enabled, allowing for useful Gnote actions to "
-#| "be available from any application."
 msgid ""
 "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
 "keybindings will be enabled, allowing for useful Gnote actions to be "
 "available from any application."
 msgstr ""
 "ਜੇ ਸਹੀਂ ਕੀਤਾ ਤਾਂ desktop-global ਨੂੰ /org/gnome/gnote/global-keybindings ਵਿੱਚ "
-"ਯੋਗ ਕੀਤਾ "
-"ਜਾਵੇਗਾ, ਜੋ ਕਿ ਫਾਇਦੇਮੰਦ ਜੀਨੋਟ ਐਕਸ਼ਨਾਂ ਨੂੰ ਕਿਸੇ ਵੀ ਐਪਲੀਕੇਸ਼ਨਾਂ ਤੋਂ ਵਰਤਣ ਲਈ "
+"ਯੋਗ "
+"ਕੀਤਾ ਜਾਵੇਗਾ, ਜੋ ਕਿ ਫਾਇਦੇਮੰਦ ਜੀਨੋਟ ਐਕਸ਼ਨਾਂ ਨੂੰ ਕਿਸੇ ਵੀ ਐਪਲੀਕੇਸ਼ਨਾਂ ਤੋਂ ਵਰਤਣ ਲਈ "
 "ਸਹਾਇਕ ਹੋਵੇਗਾ।"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:15
@@ -216,12 +206,10 @@ msgid "Determines Y coordinate of Search window; stored on Gnote exit."
 msgstr "ਖੋਜ ਵਿੰਡੋ ਲਈ X ਧੁਰਾ ਦਿਓ; ਬੰਦ ਕਰਨ ਸਮੇਂ ਜੀਨੋਟ ਵਿੱਚ ਸੰਭਾਲਿਆ ਜਾਵੇਗਾ।"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:31
-#| msgid "Saved vertical position of Search window"
 msgid "Saved splitter position of Search window splitter."
 msgstr "ਖੋਜ ਵਿੰਡੋ ਵੰਡਕਾਰ ਦੀ ਸੰਭਾਲੀ ਵੰਡ ਸਥਿਤੀ"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:32
-#| msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
@@ -319,9 +307,10 @@ msgid ""
 "application window, closing which makes application to exit."
 msgstr ""
 "ਤਾਂ ਹੀ ਪ੍ਰਭਾਵੀ ਹੁੰਦਾ ਹੈ, ਜਦੋਂ ਐਪਲੀਕੇਸ਼ਨ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ। ਜਦੋਂ ਸਹੀ ਸੈੱਟ ਕੀਤਾ "
-"ਜਾਂਦਾ ਹੈ ਤਾਂ ਇੱਕ "
-"ਹਾਲਤ ਆਈਕਾਨ ਵੇਖਾਇਆ ਜਾਂਦਾ ਹੈ। ਜੇ ਗਲਤ ਸੈੱਟ ਕੀਤਾ ਤਾਂ ਸਭ ਨੋਟਿਸ ਖੋਜ ਵਿੰਡੋ ਨੂੰ ਮੁੱਖ "
-"ਐਪਲੀਕੇਸ਼ਨ ਵਜੋਂ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਨੂੰ ਬੰਦ ਕਰਨ ਨਾਲ ਐਪਲੀਕੇਸ਼ਨ ਬੰਦ ਹੋ ਜਾਂਦੀ ਹੈ।"
+"ਜਾਂਦਾ ਹੈ ਤਾਂ ਇੱਕ ਹਾਲਤ "
+"ਆਈਕਾਨ ਵੇਖਾਇਆ ਜਾਂਦਾ ਹੈ। ਜੇ ਗਲਤ ਸੈੱਟ ਕੀਤਾ ਤਾਂ ਸਭ ਨੋਟਿਸ ਖੋਜ ਵਿੰਡੋ ਨੂੰ ਮੁੱਖ "
+"ਐਪਲੀਕੇਸ਼ਨ ਵਜੋਂ ਵਰਤਿਆ "
+"ਜਾਂਦਾ ਹੈ, ਜਿਸ ਨੂੰ ਬੰਦ ਕਰਨ ਨਾਲ ਐਪਲੀਕੇਸ਼ਨ ਬੰਦ ਹੋ ਜਾਂਦੀ ਹੈ।"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:49
 msgid "Show applet menu"
@@ -550,10 +539,26 @@ msgstr ""
 "ਬਿਨਾਂ ਯੂਜ਼ਰ ਨੂੰ ਪੁੱਛੇ SSL ਸਰਟੀਫਿਕੇਟ ਮਨਜ਼ੂਰ ਕਰਨ ਵਾਸਤੇ wdfs ਚੋਣ \"-ac\" ਵਰਤੋਂ।"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:77
+msgid "Share URL"
+msgstr "ਸ਼ੇਅਰ URL"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "WebDAV share URL where notes are synchronized to."
+msgstr "WebDAV ਸ਼ੇਅਰ URL, ਜਿੱਥੇ ਨੋਟਿਸਾਂ ਨੂੰ ਸੈਕਰੋਨਾਈਜ਼ ਕਰਨਾ ਹੈ।"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "Share username"
+msgstr "ਸ਼ੇਅਰ ਯੂਜ਼ਰਨਾਂ"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+msgid "Username to access WebDAV share."
+msgstr "WebDAV ਸ਼ੇਅਰ ਵਰਤਣ ਲਈ ਯੂਜ਼ਰ ਨਾਂ"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Timestamp format"
 msgstr "ਟਾਈਮ-ਸਟੈਂਪ ਫਾਰਮੈਟ"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -609,7 +614,7 @@ msgstr "ਜੀ-ਨੋਟ ਬੰਦ ਕਰੋ"
 msgid "_Edit"
 msgstr "ਸੋਧ(_E)"
 
-#: ../src/actionmanager.cpp:209 ../src/applet.cpp:383 ../src/tray.cpp:460
+#: ../src/actionmanager.cpp:209 ../src/tray.cpp:460
 msgid "_Preferences"
 msgstr "ਮੇਰੀ ਪਸੰਦ(_P)"
 
@@ -617,7 +622,7 @@ msgstr "ਮੇਰੀ ਪਸੰਦ(_P)"
 msgid "Gnote Preferences"
 msgstr "ਜੀਨੋਟ ਪਸੰਦ"
 
-#: ../src/actionmanager.cpp:212 ../src/applet.cpp:384 ../src/tray.cpp:465
+#: ../src/actionmanager.cpp:212 ../src/tray.cpp:465
 msgid "_Help"
 msgstr "ਮੱਦਦ(_H)"
 
@@ -629,7 +634,7 @@ msgstr "ਸਮੱਗਰੀ(_C)"
 msgid "Gnote Help"
 msgstr "ਜੀਨੋਟ ਮੱਦਦ"
 
-#: ../src/actionmanager.cpp:221 ../src/applet.cpp:385
+#: ../src/actionmanager.cpp:221
 msgid "_About"
 msgstr "ਇਸ ਬਾਰੇ(_A)"
 
@@ -682,11 +687,11 @@ msgstr "ਇੱਥੇ ਕਿਹੜਾ ਲਿੰਕ?"
 msgid "(none)"
 msgstr "(ਕੋਈ ਨਹੀਂ)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
 msgid "Bugzilla Links"
 msgstr "ਬੱਗਜ਼ੀਲਾ ਲਿੰਕ"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:62
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -696,9 +701,9 @@ msgstr ""
 "ਬੱਗ ਨੰਬਰ ਨੂੰ ਇੱਕ ਲਿੰਕ "
 "ਵਜੋਂ ਬੱਗ ਆਈਕਾਨ ਨਾਲ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:66
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:57
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "ਹੁਬਰਟ ਫਿਗੁਈਰੀ ਅਤੇ ਟੋਮਬਏ ਪਰੋਜੈਕਟ"
@@ -789,7 +794,6 @@ msgid "Could not save the file \"%s\""
 msgstr "ਫਾਇਲ  \"%s\" ਸੰਭਾਲੀ ਨਹੀਂ ਜਾ ਸਕੀ"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
-#| msgid "Selected Synchronization Service Addin"
 msgid "Local Directory Sync Service Add-in"
 msgstr "ਲੋਕਲ ਡਾਇਰੈਕਟਰੀ ਸਿੰਕ ਸਰਵਿਸ addin"
 
@@ -798,7 +802,7 @@ msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "ਜੀਨੋਟ ਨੋਟਿਸ ਨੂੰ ਲੋਕਲ ਫਾਇਲ ਸਿਸਟਮ ਪਾਥ ਨਾਲ ਸੈਕਰੋਨਾਈਜ਼ ਕਰੋ"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
-#| msgid "Hubert Figuiere and the Tomboy Project"
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
 msgid "Aurimas Cernius and the Tomboy Project"
 msgstr "ਉਰੀਮਸ ਸਿਰਨਿਸ ਅਤੇ ਟੋਮਬਏ ਪਰੋਜੈਕਟ"
 
@@ -807,7 +811,6 @@ msgid "_Folder Path:"
 msgstr "ਫੋਲਡਰ ਪਾਥ(_F):"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:131
-#| msgid "SSHFS Remote Synchronization Folder"
 msgid "Select Synchronization Folder..."
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਫੋਲਡਰ ਚੁਣੋ..."
 
@@ -860,6 +863,19 @@ msgstr "ਚੁਣਿਆ ਫਾਰਮੈਟ ਵਰਤੋਂ(_S)"
 msgid "_Use Custom Format"
 msgstr "ਕਸਟਮ ਫੋਂਟ ਵਰਤੋਂ(_U)"
 
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:47
+msgid "Note Directory Watcher"
+msgstr "ਨੋਟ ਡਾਇਰੈਕਟਰੀ ਵਾਂਚਰ"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:52
+msgid "Watch your Gnote note directory for changes to your notes."
+msgstr "ਆਪਣੇ ਨੋਟਿਸ ਵਿੱਚ ਬਦਲਾਅ ਵੇਖਣ ਲਈ ਆਪਣੀ ਜੀਨੋਟ ਡਾਇਰੈਕਟਰੀ ਵੇਖੋ।"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
+#| msgid "and Tomboy original authors."
+msgid "Aurimas Černius and Tomboy original authors"
+msgstr "Aurimas Černius ਅਤੇ ਟੋਮਬਾਏ ਦੇ ਅਸਲੀ ਲੇਖਕ"
+
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
 msgstr "ਦਿਨ ਦਾ ਨੋਟ"
@@ -907,24 +923,24 @@ msgstr ""
 "ਨਵਾਂ ਅੱਜ "
 "ਨੋਟਿਸ ਵਿੱਚ ਹੋਵੇ।"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:49
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
 msgid "Printing Support"
 msgstr "ਪਰਿੰਟਿੰਗ ਸਹਿਯੋਗ"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:53
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
 msgid "Allows you to print a note."
 msgstr "ਤੁਹਾਨੂੰ ਨੋਟ ਪਰਿੰਟ ਕਰਨ ਦਿੰਦਾ ਹੈ।"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:80
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
 msgid "Print"
 msgstr "ਪਰਿੰਟ ਕਰੋ"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
 msgid "Error printing note"
 msgstr "ਪਰਿੰਟ ਨੋਟ ਗਲਤੀ"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:299
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
 msgid "Page %1% of %2%"
 msgstr "%2% ਵਿੱਚੋਂ %1% ਪੇਜ਼"
 
@@ -1008,27 +1024,78 @@ msgstr "ਟੈਕਸਟ ਦੇ ਹੇਠਾਂ ਲਾਈਨ ਲਗਾਉਣ ਦ�
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "ਹੁਬਰਟ ਫਿਗੁਈਰੀ ਅਤੇ ਟੋਮਬਏ ਪਰੋਜੈਕਟ"
 
-#: ../src/gnote.cpp:374
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+#| msgid "Local Directory Sync Service Add-in"
+msgid "WebDav Sync Service Add-in"
+msgstr "WebDav ਸਿੰਕ ਸਰਵਿਸ ਐਡ-ਇਨ"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+#| msgid "Synchronize Gnote Notes to a local file system path"
+msgid "Synchronize Gnote Notes to a WebDav URL"
+msgstr "ਜੀਨੋਟ ਨੋਟਿਸ ਨੂੰ WebDav URL ਨਾਲ ਸੈਕਰੋਨਾਈਜ਼ ਕਰੋ"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "_URL:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr "ਯੂਜ਼ਰ ਨਾਂ(_n):"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr "ਪਾਸਵਰਡ(_P):"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid ""
+"There was an error connecting to the server.  This may be caused by using an "
+"incorrect user name and/or password."
+msgstr ""
+"ਸਰਵਰ ਨਾਲ ਕੁਨੈਕਟ ਕਰਨ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਹੈ।  ਇਹ ਆਮ ਤੌਰ ਉੱਤੇ ਯੂਜ਼ਰ ਨਾਂ ਅਤੇ/ਜਾਂ "
+"ਪਾਸਵਰਡ ਗਲਤ ਹੋਣ "
+"ਕਰਕੇ ਹੋ ਸਕਦਾ ਹੈ।"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+#| msgid "Folder path field is empty."
+msgid "URL, username, or password field is empty."
+msgstr "URL, ਯੂਜ਼ਰ ਨਾਂ ਅਤੇ ਪਾਸਵਰਡ ਖੇਤਰ ਖਾਲੀ ਹੈ।"
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:285
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
+"\n"
+"%1%"
+msgstr ""
+"ਗਨੋਮ ਕੀ-ਰਿੰਗ ਵਿੱਚ ਸੰਰਚਨਾ ਸੰਭਾਲਣ ਲਈ ਅੱਗੇ ਦਿੱਤੇ ਸੁਨੇਹੇ ਕਰਕੇ ਫੇਲ੍ਹ ਹੈ:\n"
+"\n"
+"%1%"
+
+#: ../src/gnote.cpp:308
 msgid "Cannot create new note"
 msgstr "ਨਵਾਂ ਨੋਟਿਸ ਨਹੀਂ ਬਣਾਇਆ ਜਾ ਸਕਦਾ"
 
-#: ../src/gnote.cpp:423
+#: ../src/gnote.cpp:354
 msgid "and Tomboy original authors."
 msgstr "ਅਤੇ ਟੋਮਬਾਏ ਦੇ ਅਸਲੀ ਲੇਖਕ।"
 
-#: ../src/gnote.cpp:432
+#: ../src/gnote.cpp:363
 msgid "translator-credits"
 msgstr ""
 "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ\n"
 "ਪੰਜਾਬੀ ਓਪਨ ਸੋਰਸ ਟੀਮ ਵਲੋਂ\n"
 "http://www.satluj.com"
 
-#: ../src/gnote.cpp:441
-#| msgid ""
-#| "Copyright © 2010-2011 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: ../src/gnote.cpp:372
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1040,75 +1107,71 @@ msgstr ""
 "Copyright © ੨੦੦੯ Hubert Figuiere\n"
 "Copyright © ੨੦੦੪-੨੦੦੯ the Tomboy original authors."
 
-#: ../src/gnote.cpp:445
+#: ../src/gnote.cpp:376
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "ਇੱਕ ਸਧਾਰਨ ਅਤੇ ਵਰਤਣ ਲਈ ਸੌਖਾ ਡੈਸਕਟਾਪ ਨੋਟ-ਲਿਖਣ ਕਾਰਜ ਹੈ।"
 
-#: ../src/gnote.cpp:456
+#: ../src/gnote.cpp:387
 msgid "Homepage"
 msgstr "ਮੁੱਖ ਸਫ਼ਾ"
 
-#: ../src/gnote.cpp:552
-msgid "Run Gnote as a GNOME panel applet."
-msgstr "ਜੀਨੋਟ ਨੂੰ ਗਨੋਮ ਪੈਨਲ ਐਪਲਿਟ ਵਜੋਂ ਚਲਾਓ।"
-
-#: ../src/gnote.cpp:553
+#: ../src/gnote.cpp:467
 msgid "Run Gnote in background."
 msgstr "ਜੀਨੋਟ ਬੈਕਗਰਾਊਂਡ ਵਿੱਚ ਚਲਾਉ।"
 
-#: ../src/gnote.cpp:554
+#: ../src/gnote.cpp:468
 msgid "Specify the path of the directory containing the notes."
 msgstr "ਨੋਟ ਰੱਖਣ ਵਾਲੀ ਡਾਇਰੈਕਟਰੀ ਦਾ ਪਾਥ ਦਿਓ।"
 
-#: ../src/gnote.cpp:554
+#: ../src/gnote.cpp:468
 msgid "path"
 msgstr "ਪਾਥ"
 
-#: ../src/gnote.cpp:555
+#: ../src/gnote.cpp:469
 msgid "Open the search all notes window with the search text."
 msgstr "ਖੋਜ ਟੈਕਸਟ ਨਾਲ ਸਭ ਨੋਟ ਵਿੰਡੋ ਦੀ ਖੋਜ ਖੋਲ੍ਹੋ।"
 
-#: ../src/gnote.cpp:555 ../src/gnote.cpp:560
+#: ../src/gnote.cpp:469 ../src/gnote.cpp:474
 msgid "text"
 msgstr "ਟੈਕਸਟ"
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:470
 msgid "Print version information."
 msgstr "ਵਰਜਨ ਜਾਣਕਾਰੀ ਛਾਪੋ।"
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:471
 msgid "Create and display a new note, with a optional title."
 msgstr "ਨਵਾਂ ਨੋਟ ਬਣਾਓ ਅਤੇ ਵੇਖੋ, ਚੋਣਵੇਂ ਟਾਈਟਲ ਨਾਲ।"
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:471
 msgid "title"
 msgstr "ਟਾਈਟਲ"
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:472
 msgid "Display the existing note matching title."
 msgstr "ਮੌਜੂਦਾ ਨੋਟ ਮੇਲ ਟਾਈਟਲ ਵੇਖੋ।"
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:472
 msgid "title/url"
 msgstr "ਟਾਈਟਲ/url"
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:473
 msgid "Display the 'Start Here' note."
 msgstr "'ਇੱਥੋਂ ਸਟਾਰਟ' ਨੋਟ ਵੇਖੋ।"
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:474
 msgid "Search and highlight text in the opened note."
 msgstr "ਖੁੱਲ੍ਹੇ ਨੋਟ ਵਿੱਚ ਟੈਕਸਟ ਖੋਜ ਅਤੇ ਹਾਈਲਾਈਟ ਕਰੋ।"
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:478
 msgid "A note taking application"
 msgstr "ਨੋਟ ਲੈਣ ਵਾਲੀ ਐਪਲੀਕੇਸ਼ਨ"
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:478
 msgid "Gnote options at launch"
 msgstr "ਚਲਾਉਣ ਲਈ ਜੀਨੋਟ ਚੋਣਾਂ"
 
-#: ../src/gnote.cpp:757
+#: ../src/gnote.cpp:671
 msgid "Version %1%"
 msgstr "ਵਰਜਨ %1%"
 
@@ -1579,7 +1642,6 @@ msgstr "ਹਾਟ-ਸਵਿੱਚਾਂ"
 
 #. TRANSLATORS: Addin category.
 #: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:147
-#| msgid "Synchronization Client ID"
 msgid "Synchronization"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ"
 
@@ -1732,7 +1794,6 @@ msgstr "ਨੋਟ ਫੋਂਟ ਚੁਣੋ"
 
 #. Create dialog
 #: ../src/preferencesdialog.cpp:1036
-#| msgid "Synchronization Client ID"
 msgid "Other Synchronization Options"
 msgstr "ਹੋਰ ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਚੋਣਾਂ"
 
@@ -1745,7 +1806,6 @@ msgstr ""
 
 #. label.Xalign = 0;
 #: ../src/preferencesdialog.cpp:1043
-#| msgid "Ask me what to do"
 msgid "Always ask me what to do."
 msgstr "ਮੈਨੂੰ ਪੁੱਛੋ ਕਿ ਕੀ ਕਰਨਾ ਹੈ।"
 
@@ -1771,7 +1831,6 @@ msgstr ""
 "ਸੰਭਾਲਣ ਸਮੇਂ ਤੁਹਾਨੂੰ ਸਭ ਨੋਟ ਸਿਕਰੋਨਾਈਜ਼ ਕਰਨ ਲਈ ਮਜ਼ਬੂਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।"
 
 #: ../src/preferencesdialog.cpp:1169
-#| msgid "Selected Synchronization Service Addin"
 msgid "Resetting Synchronization Settings"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਸੈਟਿੰਗ ਮੁੜ-ਸੈੱਟ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
 
@@ -1799,29 +1858,31 @@ msgstr ""
 "ਜੀਨੋਟ ਤੁਹਾਡੇ ਨੋਟ ਸਿਕਰੋਨਾਈਜ਼ ਕਰਨ ਲਈ ਤਿਆਰ ਹੈ। ਕੀ ਤੁਸੀਂ ਹੁਣੇ ਸੈਕਰੋਨਾਈਜ਼ ਕਰਨੇ "
 "ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
+#| msgid ""
+#| "Please check your information and try again.  The log file {0} may "
+#| "contain more information about the error."
 msgid ""
-"Please check your information and try again.  The log file {0} may contain "
+"Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
 msgstr ""
-"ਆਪਣੀ ਜਾਣਕਾਰੀ ਚੈੱਕ ਕਰਕੇ ਮੁੜ ਟਰਾਈ ਮਾਰੋ ਜੀ।  ਸ਼ਾਇਦ ਲਾਗ ਫਾਇਲ {0} ਇਸ ਗਲਤੀ ਬਾਰੇ ਕੋਈ "
+"ਆਪਣੀ ਜਾਣਕਾਰੀ ਚੈੱਕ ਕਰਕੇ ਮੁੜ ਟਰਾਈ ਮਾਰੋ ਜੀ।  ਸ਼ਾਇਦ ਲਾਗ ਫਾਇਲ %1% ਇਸ ਗਲਤੀ ਬਾਰੇ ਕੋਈ "
 "ਮੱਦਦ ਕਰ "
 "ਸਕੇ।"
 
-#: ../src/preferencesdialog.cpp:1267
-#| msgid "Error printing note"
+#: ../src/preferencesdialog.cpp:1266
 msgid "Error connecting"
 msgstr "ਕੁਨੈਕਟ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: ../src/preferencesdialog.cpp:1331
+#: ../src/preferencesdialog.cpp:1330
 msgid "Version:"
 msgstr "ਵਰਜਨ:"
 
-#: ../src/preferencesdialog.cpp:1336
+#: ../src/preferencesdialog.cpp:1335
 msgid "Author:"
 msgstr "ਲੇਖਕ:"
 
-#: ../src/preferencesdialog.cpp:1342
+#: ../src/preferencesdialog.cpp:1341
 msgid "Copyright:"
 msgstr "ਕਾਪੀਰਾਈਟ:"
 
@@ -1912,8 +1973,45 @@ msgstr "ਟੂਲ"
 msgid "Unknown"
 msgstr "ਅਣਜਾਣ"
 
+#: ../src/synchronization/fusesyncserviceaddin.cpp:112
+msgid ""
+"This synchronization addin is not supported on your computer. Please make "
+"sure you have FUSE and %1% correctly installed and configured"
+msgstr ""
+"ਇਹ ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਐਡਆਨ ਤੁਹਾਡੇ ਕੰਪਿਊਟਰ ਉੱਤੇ ਸਹਾਇਕ ਨਹੀਂ ਹੈ।  ਇਹ ਚੈੱਕ ਕਰ ਲਵੋ ਕਿ "
+"ਤੁਹਾਡੇ FUSE ਅਤੇ "
+"%1% ਠੀਕ ਤਰ੍ਹਾਂ ਇੰਸਟਾਲ ਅਤੇ ਸੰਰਚਿਤ ਹੈ।"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:155
+#| msgid "Could not save the icon file."
+msgid "Could not read testfile."
+msgstr "ਟੈਸਟਫਾਇਲ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ।"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:164
+msgid "Write test failed."
+msgstr "ਟੈਸਟ ਲਿਖਣ ਲਈ ਫੇਲ੍ਹ ਹੈ।"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:193
+#| msgid "Connecting to the server..."
+msgid "Timeout connecting to server."
+msgstr "ਸਰਵਰ ਨਾਲ ਕੁਨੈਕਟ ਕਰਨ ਸਮੇਂ ਟਾਇਮ-ਆਉਟ।"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:199
+#| msgid "Error connecting"
+msgid "Error connecting to server."
+msgstr "ਸਰਵਰ ਨਾਲ ਕੁਨੈਕਟ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ।"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:212
+msgid "FUSE could not be enabled."
+msgstr "FUSE ਯੋਗ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:243
+#| msgid ""
+#| "The port to use when connecting to the synchronization server via SSH."
+msgid "An error ocurred while connecting to the specified server"
+msgstr "ਦਿੱਤੇ ਸਰਵਰ ਨਾਲ ਕੁਨੈਕਟ ਕਰਨ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
+
 #: ../src/synchronization/syncdialog.cpp:110
-#| msgid "Note Title"
 msgid "Note Conflict"
 msgstr "ਨੋਟ ਅਪਵਾਦ"
 
@@ -1935,7 +2033,6 @@ msgid "Overwrite local note"
 msgstr "ਲੋਕਲ ਨੋਟ ਉੱਤੇ ਲਿਖੋ"
 
 #: ../src/synchronization/syncdialog.cpp:175
-#| msgid "Always show this _window"
 msgid "Always perform this action"
 msgstr "ਇਹ ਐਕਸ਼ਨ ਹਮੇਸ਼ਾਂ ਕਰੋ"
 
@@ -1971,12 +2068,10 @@ msgid "Committing changes..."
 msgstr "ਬਦਲਾਅ ਕਮਿਟ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ..."
 
 #: ../src/synchronization/syncdialog.cpp:537
-#| msgid "Synchronize Notes"
 msgid "Synchronizing Notes"
 msgstr "ਨੋਟਿਸ ਸਿਕਰੋਨਾਈਜ਼ਿੰਗ"
 
 #: ../src/synchronization/syncdialog.cpp:538
-#| msgid "Start synchronizing notes"
 msgid "Synchronizing your notes..."
 msgstr "ਤੁਹਾਡੇ ਨੋਟ ਸਿਕਰੋਨਾਈਜ਼ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ..."
 
@@ -2025,12 +2120,10 @@ msgid "Uploading notes to server..."
 msgstr "ਨੋਟ ਸਰਵਰ ਉੱਤੇ ਅੱਪਲੋਡ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ..."
 
 #: ../src/synchronization/syncdialog.cpp:578
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Failed"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਫੇਲ੍ਹ ਹੋਈ"
 
 #: ../src/synchronization/syncdialog.cpp:579
-#| msgid "Start synchronizing notes"
 msgid "Failed to synchronize"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ ਕਰਨ ਲਈ ਫੇਲ੍ਹ"
 
@@ -2039,17 +2132,14 @@ msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr "ਨੋਟ ਸਿਕਰੋਨਾਈਜ਼ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕੇ।  ਹੇਠਾਂ ਵੇਰਵਾ ਚੈੱਕ ਕਰਕੇ ਮੁੜ-ਟਰਾਈ ਮਾਰੋ।"
 
 #: ../src/synchronization/syncdialog.cpp:586
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Complete"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਪੂਰੀ ਹੋਈ"
 
 #: ../src/synchronization/syncdialog.cpp:587
-#| msgid "Synchronization Client ID"
 msgid "Synchronization is complete"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਪੂਰੀ ਹੋਈ"
 
 #: ../src/synchronization/syncdialog.cpp:588
-#| msgid "%1% Notebook Template"
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% ਨੋਟ ਅੱਪਡੇਟ ਕੀਤਾ"
@@ -2060,12 +2150,10 @@ msgid "Your notes are now up to date."
 msgstr "ਤੁਹਾਡੇ ਨੋਟ ਅੱਪਡੇਟ ਹਨ"
 
 #: ../src/synchronization/syncdialog.cpp:594
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Canceled"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਰੱਦ ਕੀਤੀ"
 
 #: ../src/synchronization/syncdialog.cpp:595
-#| msgid "Synchronization Client ID"
 msgid "Synchronization was canceled"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਰੱਦ ਕੀਤੀ ਗਈ"
 
@@ -2074,12 +2162,10 @@ msgid "You canceled the synchronization.  You may close the window now."
 msgstr "ਤੁਸੀਂ ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਰੱਦ ਕੀਤੀ ਸੀ।  ਹੁਣ ਤੁਸੀਂ ਵਿੰਡੋ ਬੰਦ ਕਰ ਸਕਦੇ ਹੋ"
 
 #: ../src/synchronization/syncdialog.cpp:600
-#| msgid "Synchronization Client ID"
 msgid "Synchronization Not Configured"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਸੰਰਚਿਤ ਨਹੀਂ ਹੈ"
 
 #: ../src/synchronization/syncdialog.cpp:601
-#| msgid "Synchronization Client ID"
 msgid "Synchronization is not configured"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਸੰਰਚਿਤ ਨਹੀਂ ਹੈ"
 
@@ -2088,18 +2174,14 @@ msgid "Please configure synchronization in the preferences dialog."
 msgstr "ਪਸੰਦ ਡਾਈਲਾਗ ਵਿੱਚ ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਸੰਰਚਨਾ ਕਰੋ ਜੀ।"
 
 #: ../src/synchronization/syncdialog.cpp:606
-#| msgid "SSHFS Synchronization Server Port"
 msgid "Synchronization Service Error"
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਸਰਵਰ ਗਲਤੀ"
 
 #: ../src/synchronization/syncdialog.cpp:607
-#| msgid "Ser_vice:"
 msgid "Service error"
 msgstr "ਸਰਵਿਸ ਗਲਤੀ"
 
 #: ../src/synchronization/syncdialog.cpp:608
-#| msgid ""
-#| "The port to use when connecting to the synchronization server via SSH."
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਸਰਵਿਸ ਨਾਲ ਕੁਨੈਕਟ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ।  ਬਾਅਦ 'ਚ ਟਰਾਈ ਕਰੋ।"
 
@@ -2128,9 +2210,45 @@ msgid "Uploaded new note to server"
 msgstr "ਸਰਵਰ ਉੱਤੇ ਨਵਾਂ ਨੋਟ ਅੱਪਲੋਡ ਕੀਤਾ"
 
 #: ../src/synchronization/syncmanager.cpp:135
-#| msgid "Tools"
 msgid "_Tools"
 msgstr "ਟੂਲ(_T)"
+
+#: ../src/synchronization/syncutils.cpp:142
+#: ../src/synchronization/syncutils.cpp:174
+msgid "Could not enable FUSE"
+msgstr "FUSE ਚਾਲੂ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"
+
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
+msgid ""
+"The FUSE module could not be loaded. Please check that it is installed "
+"properly and try again."
+msgstr ""
+"FUSE ਮੋਡੀਊਲ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਚੈੱਕ ਕਰੋ ਕਿ ਇਸ ਦੀ ਇੰਸਟਾਲੇਸ਼ਨ ਠੀਕ ਹੈ ਅਤੇ "
+"ਮੁੜ-ਟਰਾਈ ਮਾਰੋ।"
+
+#: ../src/synchronization/syncutils.cpp:151
+#| msgid "_Enable"
+msgid "Enable FUSE?"
+msgstr "FUSE ਯੋਗ ਕਰਨਾ ਹੈ?"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:154
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
+msgstr ""
+"ਸਿਕਰੋਨਾਈਜ਼ੇਸ਼ਨ, ਜੋ ਤੁਸੀਂ ਚੁਣੀ ਹੈ, ਲਈ FUSE ਮੋਡੀਊਲ ਲੋਡ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।\n"
+"\n"
+"ਇਹ ਸਵਾਲ ਨੂੰ ਆਉਣ ਵਾਲੇ ਟਾਇਮ ਵਿੱਚ ਨਾਲ ਵੇਖਣ ਵਾਸਤੇ, ਤੁਹਾਨੂੰ ਸਟਾਰਟ ਕਰਨ ਸਮੇਂ FUSE "
+"ਲੋਡ ਕਰਨਾ "
+"ਚਾਹੀਦਾ ਹੈ। /etc/init.d/boot.local ਵਿੱਚ \"modprobe fuse\" ਜਾਂ /etc/modules "
+"ਵਿੱਚ "
+"\"fuse\" ਸ਼ਾਮਲ ਕਰੋ।"
 
 #: ../src/tray.cpp:54
 msgid "Take notes"
@@ -2239,13 +2357,16 @@ msgstr ""
 msgid "Note title taken"
 msgstr "ਨੋਟ ਟਾਈਟਲ ਲਿਆ"
 
-#: ../src/watchers.cpp:593
+#: ../src/watchers.cpp:585
 msgid "_Copy Link Address"
 msgstr "ਲਿੰਕ ਐਡਰੈੱਸ ਕਾਪੀ ਕਰੋ(_C)"
 
-#: ../src/watchers.cpp:599
+#: ../src/watchers.cpp:591
 msgid "_Open Link"
 msgstr "ਲਿੰਕ ਖੋਲ੍ਹੋ(_O)"
+
+#~ msgid "Run Gnote as a GNOME panel applet."
+#~ msgstr "ਜੀਨੋਟ ਨੂੰ ਗਨੋਮ ਪੈਨਲ ਐਪਲਿਟ ਵਜੋਂ ਚਲਾਓ।"
 
 #~ msgid "Accessories"
 #~ msgstr "ਸਹਾਇਕ"
