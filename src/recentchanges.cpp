@@ -239,6 +239,9 @@ namespace gnote {
 
   NoteRecentChanges::~NoteRecentChanges()
   {
+    if(m_entry_changed_timeout) {
+      delete m_entry_changed_timeout;
+    }
     Gnote::obj().remove_window(*this);
   }
 
