@@ -41,26 +41,6 @@
 #include "synchronization/syncserviceaddin.hpp"
 
 
-#if 1
-
-// HACK to make sure we link the modules needed only for addins
-#include "base/inifile.hpp"
-#include "sharp/fileinfo.hpp"
-#include "sharp/streamwriter.hpp"
-#include "sharp/xsltransform.hpp"
-#include "sharp/xsltargumentlist.hpp"
-
-bool links[] = {
-  base::IniFileLink_,
-  sharp::FileInfoLink_,
-  sharp::StreamWriterLink_,
-  sharp::XslTransformLink_,
-  sharp::XsltArgumentListLink_,
-  false
-};
-
-
-#endif
 
 
 namespace gnote {
