@@ -427,11 +427,8 @@ namespace gnote {
     authors.push_back(_("and Tomboy original authors."));
     
     std::vector<Glib::ustring> documenters;
-    documenters.push_back("Alex Graveley <alex@beatniksoftware.com>");
-    documenters.push_back("Boyd Timothy <btimothy@gmail.com>");
-    documenters.push_back("Brent Smith <gnome@nextreality.net>");
-    documenters.push_back("Paul Cutler <pcutler@foresightlinux.org>");
-    documenters.push_back("Sandy Armstrong <sanfordarmstrong@gmail.com>");
+    documenters.push_back("Pierre-Yves Luyten <py@luyten.fr>");
+    documenters.push_back("Aurimas Černius <aurisc4@gmail.com>");
 
     std::string translators(_("translator-credits"));
     if (translators == "translator-credits")
