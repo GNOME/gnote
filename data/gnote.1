@@ -35,14 +35,20 @@ highlighting, bold, italics, undo/redo, and variable font sizes are
 supported.
 .PP
 Global keybindings exist to allow fast access to Gnote notes and
-dialogs.  These keybindings are set in GConf (see below) and may be
-activated from any application.
+dialogs.  These keybindings are set in GSettings (see below) and may
+be activated from any application.
 
 .SH OPTIONS
 The program follows the usual GNU command line syntax, with
 options starting with two dashes (`--').
 A summary of options are included below.
 .\"For a complete description, see the Info files.
+.TP
+.B \-\-background
+Run Gnote in background.
+.TP
+.B \-\-note-path PATH
+Specify the path of the directory containing the notes.
 .TP
 .B \-\-new-note
 Create and display a new note.
@@ -52,6 +58,9 @@ Create and display a new note with the title given.
 .TP
 .B \-\-open-note TITLE/URL
 Display the existing note matching TITLE or URL.
+.TP
+.B \-\-search
+Open the search all notes window with the search text.
 .TP
 .B \-\-start-here
 Display the "Start Here" note.
@@ -65,26 +74,29 @@ Show summary of options.
 .B \-\-version
 Show version of program.
 
-.SH "GCONF SETTINGS"
-Gnote has several preference settings stored in GConf.  Changes to
-Settings are applied instantly to any running Gnote instance. A
+.SH "GSETTINGS SETTINGS"
+Gnote has several preference settings stored in GSettings.  Changes
+to Settings are applied instantly to any running Gnote instance. A
 summary of the GConf settings and their purpose are described below.
 .TP
-.B /apps/gnote/global_keybindings/open_start_here
+.B org.gnome.gnote.global-keybindings
+A GSettings schema for key bindings. Keys are listed below.
+.TP
+.B open-start-here
 Global X keybinding for displaying the "Start Here" note.
 The default keybinding is <Alt>F11.
 .TP
-.B /apps/gnote/global_keybindings/show_note_menu
+.B show-note-menu
 Global X keybinding for displaying the Gnote applet's note menu.
 The default keybinding is <Alt>F12.
 .TP
-.B /apps/gnote/global_keybindings/create_new_note
+.B create-new-note
 Global X keybinding for creating and displaying a new note.
 .TP
-.B /apps/gnote/global_keybindings/open_recent_changes
+.B open-recent-changes
 Global X keybinding for opening the recent changes dialog.
 .TP
-.B /apps/gnote/global_keybindings/open_search
+.B open-search
 Global X keybinding for opening the note search dialog.
 
 .SH "SEE ALSO"
@@ -94,8 +106,12 @@ Global X keybinding for opening the note search dialog.
 Please enter bug reports in the Gnome Bugzilla
 bug tracker (http://bugzilla.gnome.org/enter_bug.cgi?product=Gnote).
 
-.SH AUTHOR
+.SH AUTHORS
 Hubert Figuiere <hub@figuiere.net>
+.TP
+Debarshi Ray <debarshir@src.gnome.org>
+.TP
+Aurimas Cernius <aurisc4@gmail.com>
 
 This manual page was originally written by Luca Capello <luca@pca.it>.
-Adapted to Gnote by Hubert Figuiere
+Adapted to Gnote by Hubert Figuiere and Aurimas Cernius
