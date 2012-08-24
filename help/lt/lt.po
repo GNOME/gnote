@@ -6,10 +6,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2012-03-04 19:53+0000\n"
-"PO-Revision-Date: 2012-03-09 22:34+0300\n"
+"POT-Creation-Date: 2012-08-19 09:48+0000\n"
+"PO-Revision-Date: 2012-08-24 22:54+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,6 +19,7 @@ msgstr ""
 #: C/index.page:6(p)
 #: C/gnote-working-with-notebooks.page:10(p)
 #: C/gnote-template-notes.page:10(p)
+#: C/gnote-synchronization.page:9(p)
 #: C/gnote-searching-notes.page:8(p)
 #: C/gnote-notes-preferences.page:10(p)
 #: C/gnote-links.page:8(p)
@@ -30,10 +32,13 @@ msgstr ""
 #: C/gnote-bulleted-lists.page:9(p)
 #: C/gnote-addin-underline.page:9(p)
 #: C/gnote-addin-timestamp.page:10(p)
+#: C/gnote-addin-sync-webdav.page:10(p)
+#: C/gnote-addin-sync-local.page:10(p)
 #: C/gnote-addin-replacetitle.page:9(p)
 #: C/gnote-addins-preferences.page:9(p)
 #: C/gnote-addin-print.page:9(p)
 #: C/gnote-addin-noteoftheday.page:9(p)
+#: C/gnote-addin-notedirwatcher.page:9(p)
 #: C/gnote-addin-html.page:9(p)
 #: C/gnote-addin-fixedwidth.page:9(p)
 #: C/gnote-addin-bugzillalink.page:10(p)
@@ -84,7 +89,6 @@ msgstr "Pierre-Yves Luyten"
 #: C/gnote-creating-notes.page:12(years)
 #: C/gnote-creating-notes.page:16(years)
 #: C/gnote-common-problems.page:12(years)
-#: C/gnote-common-problems.page:16(years)
 #: C/gnote-bulleted-lists.page:12(years)
 #: C/gnote-bulleted-lists.page:16(years)
 #: C/gnote-addin-underline.page:12(years)
@@ -111,6 +115,7 @@ msgstr "2011"
 #: C/index.page:13(name)
 #: C/gnote-working-with-notebooks.page:16(name)
 #: C/gnote-template-notes.page:12(name)
+#: C/gnote-synchronization.page:11(name)
 #: C/gnote-searching-notes.page:15(name)
 #: C/gnote-notes-preferences.page:16(name)
 #: C/gnote-links.page:15(name)
@@ -123,10 +128,13 @@ msgstr "2011"
 #: C/gnote-bulleted-lists.page:15(name)
 #: C/gnote-addin-underline.page:15(name)
 #: C/gnote-addin-timestamp.page:16(name)
+#: C/gnote-addin-sync-webdav.page:12(name)
+#: C/gnote-addin-sync-local.page:12(name)
 #: C/gnote-addin-replacetitle.page:15(name)
 #: C/gnote-addins-preferences.page:15(name)
 #: C/gnote-addin-print.page:15(name)
 #: C/gnote-addin-noteoftheday.page:15(name)
+#: C/gnote-addin-notedirwatcher.page:11(name)
 #: C/gnote-addin-html.page:15(name)
 #: C/gnote-addin-fixedwidth.page:15(name)
 #: C/gnote-addin-bugzillalink.page:16(name)
@@ -150,6 +158,7 @@ msgid "Organizing Notes"
 msgstr "Raštelių tvarkymas"
 
 #: C/index.page:33(title)
+#: C/gnote-notes-preferences.page:48(title)
 msgid "Advanced"
 msgstr "Sudėtingesni"
 
@@ -454,6 +463,68 @@ msgstr "Įrašyti pavadinimą"
 msgid "This checkbox allows to base the title of new note on a title of template note. With this box checked, new note will have a title of template note with a unique number appended. Otherwise the default title will be used."
 msgstr "Šis langelis leidžia naujo raštelio pavadinimą padaryti panašų į šablono. Kai šis langelis pažymėtas, nauji rašteliai turės šablono pavadinimą su unikaliu numeriu pabaigoje. Jei langelis nepažymėtas, bus naudojamas numatytasis pavadinimas."
 
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnote-synchronization.page:32(None)
+#| msgid ""
+#| "@@image: 'figures/gnote-tools.png'; md5=6a1c7800cd20071381ea591f49c32b6c"
+msgid "@@image: 'figures/gnote-sync-progress.png'; md5=562763250ce45698f4c0cd1231b0e68f"
+msgstr "gnote-tools.png"
+
+#: C/gnote-synchronization.page:8(desc)
+#| msgid "How to Synchronize Notes?"
+msgid "Synchronize Notes"
+msgstr "Sinchronizuokite raštelius"
+
+#: C/gnote-synchronization.page:12(years)
+#: C/gnote-addin-sync-webdav.page:13(years)
+#: C/gnote-addin-sync-local.page:13(years)
+#: C/gnote-addin-notedirwatcher.page:12(years)
+#| msgid "2011-2012"
+msgid "2012"
+msgstr "2012"
+
+#: C/gnote-synchronization.page:16(title)
+msgid "Synchronization"
+msgstr "Sinchronizacija"
+
+#: C/gnote-synchronization.page:18(title)
+msgid "About synchronization"
+msgstr "Apie sinchronizaciją"
+
+#: C/gnote-synchronization.page:19(p)
+msgid "<app>Gnote</app> allows you to synchronize notes accross multiple machines, so that you could use it on multiple devices and work with the same notes on all of them."
+msgstr "<app>Gnote</app> leidžia sinchronizuoti raštelius tarp kelių kompiuterių, kad galėtumėte ją naudoti keliuose įrenginiuose ir dirbti juose visuose su tais pačiais rašteliais."
+
+#: C/gnote-synchronization.page:20(p)
+msgid "In order to use synchronization, you have to configure it first in <app>Gnote</app> configuration dialog."
+msgstr "Norint naudoti sinchronizaciją, pirma turite ją sukonfigūruoti <app>Gnote</app> nustatymų dialoge."
+
+#: C/gnote-synchronization.page:21(p)
+msgid "Notes are synchronized to one location, common to all <app>Gnote</app> installations. This location stores the history of your notes. When synchronizing, each <app>Gnote</app> instance uploads new and updated notes to this location, downloads new and updated notes on other installations. The synchronization location also contains information on deleted notes: when synchronizing, <app>Gnote</app> publishes all deleted notes and deletes the ones, that are published as such. This way multiple <app>Gnote</app> installations can keep the same set of notes."
+msgstr "Rašteliai yra sinchronizuojami į vieną vietą, bendrą visoms <app>Gnote</app> įdiegtims. Ši vieta saugo raštelių istoriją. Sinchronizuojant kiekviena paleista <app>Gnote</app> nusiunčia naujus ir atnaujintus raštelius į šią vieta, parsiunčia naujus bei kitose įdiegtyse atnaujintus raštelius. Sinchronizacijos vieta taip pat turi informaciją apie ištrintus raštelius: sinchronizuojant <app>Gnote</app> paviešina visus ištrintus raštelius bei ištrina tuos, kurie yra paviešinti kaip tokie. Šitaip kelios <app>Gnote</app> įdiegtys gali turėti tuos pačius raštelius."
+
+#: C/gnote-synchronization.page:24(title)
+msgid "Configure synchronization"
+msgstr "Konfigūruoti sinchronizaciją"
+
+#: C/gnote-synchronization.page:27(title)
+#| msgid "How to Synchronize Notes?"
+msgid "Synchronize"
+msgstr "Sinchronizuokite"
+
+#: C/gnote-synchronization.page:28(p)
+msgid "To synchronize, select <guiseq><gui>Tools</gui><gui>Synchronize Notes</gui></guiseq> from main menu. This item is only available, if synchronization is configured."
+msgstr "Norėdami sinchronizuoti pasirinkite <guiseq><gui>Įrankiai</gui><gui>Sinchronizuoti raštelius<gui></guiseq> iš pagrindinio meniu. Šis punktas prieinamas tik jei sinchronizacija yra sukonfigūruota."
+
+#: C/gnote-synchronization.page:29(p)
+msgid "After selected the <gui>Synchronize Notes</gui> menu item, a progress dialog will be displayed, which will let you know, when synchronization is complete. Also, all notes will be disabled for editing while synchronization is in progress."
+msgstr "Pasirinkus meniu punktą <gui>Sinchronizuoti raštelius</gui> bus parodytas eigos dialogas, kuris jums praneš, kada sinchronizacija bus baigta. Taip pat negalėsite redaguoti raštelių, kol vyksta sinchronizacija."
+
+#: C/gnote-synchronization.page:31(title)
+msgid "Synchronization progress"
+msgstr "Sinchronizacijos eiga"
+
 #: C/gnote-searching-notes.page:9(desc)
 msgid "Searching Notes"
 msgstr "Raštelių paieška"
@@ -493,7 +564,19 @@ msgstr "Pažymėkite raštelį ir paspauskite klavišų kombinaciją <keyseq><ke
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-notes-preferences.page:35(None)
-msgid "@@image: 'figures/gnote-preferences-editing.png'; md5=527d776d4f432ebc824afbe618b46a25"
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-editing.png'; "
+#| "md5=527d776d4f432ebc824afbe618b46a25"
+msgid "@@image: 'figures/gnote-preferences-editing.png'; md5=5d08c814a55ebdf06b8f91af5c7a2348"
+msgstr "gnote-preferences-editing.png"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnote-notes-preferences.page:52(None)
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-editing.png'; "
+#| "md5=527d776d4f432ebc824afbe618b46a25"
+msgid "@@image: 'figures/gnote-syncprefs-advanced.png'; md5=6ad4dea34c8852eb4218c4957fab3e0a"
 msgstr "gnote-preferences-editing.png"
 
 #: C/gnote-notes-preferences.page:9(desc)
@@ -502,7 +585,7 @@ msgstr "Gnote nustatymai"
 
 #: C/gnote-notes-preferences.page:17(years)
 #: C/gnote-hotkeys.page:16(years)
-#| msgid "2011"
+#: C/gnote-common-problems.page:16(years)
 msgid "2011-2012"
 msgstr "2011-2012"
 
@@ -539,11 +622,6 @@ msgid "Spellcheck While Typing"
 msgstr "Rašybos tikrinimas rašant"
 
 #: C/gnote-notes-preferences.page:29(p)
-#| msgid ""
-#| "Enable this checkbox to underline misspellings in red, and provide "
-#| "suggestions in the right click context menu. Enable or disable the "
-#| "checkbox using the mouse or the key combination <keyseq><key>Alt</"
-#| "key><key>S</key></keyseq>."
 msgid "Enable this checkbox to underline misspellings in red, and provide suggestions in the right click context menu."
 msgstr "Pažymėkite šį langelį, kad klaidingai parašyti žodžiai būtų pabraukti raudonai ir kontekstiniame meniu būtų pateikti pasiūlymai."
 
@@ -556,11 +634,6 @@ msgid "Highlight WikiWords"
 msgstr "Paryškinti VikiŽodžius"
 
 #: C/gnote-notes-preferences.page:30(p)
-#| msgid ""
-#| "Enable this checkbox to create links for phrases ThatLookLikeThis. "
-#| "Clicking on the link will create a new note with the title corresponding "
-#| "to the link text. Enable or disable this checkbox using the mouse or the "
-#| "key combination <keyseq><key>Alt</key><key>W</key></keyseq>."
 msgid "Enable this checkbox to create links for phrases ThatLookLikeThis. Clicking on the link will create a new note with the title corresponding to the link text."
 msgstr "Pažymėkite šį langelį, kad ŠitaipAtrodančiomsFrazėms būtų sukurti saitai. Paspaudus ant saito bus sukurtas naujas raštelis su atitinkamu pavadinimu."
 
@@ -577,11 +650,6 @@ msgid "Use Custom Font"
 msgstr "Naudoti pasirinktinį šriftą"
 
 #: C/gnote-notes-preferences.page:32(p)
-#| msgid ""
-#| "Enable this checkbox to set a custom font to be used in your notes. If "
-#| "this option is disabled, the default system font will be used. Enable or "
-#| "disable this checkbox using the mouse or the key combination "
-#| "<keyseq><key>Alt</key><key>F</key></keyseq>."
 msgid "Enable this checkbox to set a custom font to be used in your notes. If this option is disabled, the default system font will be used."
 msgstr "Pažymėkite šį langelį, jei norite rašteliams nustatyti pasirinktinį šriftą. Jei ši parinktis išjungta, bus naudojamas numatytasis sistemos šriftas."
 
@@ -596,6 +664,40 @@ msgstr "Gnote nustatymų keitimas"
 #: C/gnote-notes-preferences.page:40(title)
 msgid "Advanced Settings"
 msgstr "Sudėtingesni nustatymai"
+
+#: C/gnote-notes-preferences.page:43(title)
+#| msgid "Gnote Settings"
+msgid "Synchronization Settings"
+msgstr "Sinchronizacijos nustatymai"
+
+#: C/gnote-notes-preferences.page:45(title)
+msgid "Synchronization services"
+msgstr "Sinchronizacijos tarnybos"
+
+#: C/gnote-notes-preferences.page:49(p)
+msgid "Clicking <gui>Advanced</gui> button in <gui>Synchronization</gui> tab of <gui>Preferences</gui> dialog brings another dialog for setting up conflict resolution."
+msgstr "Dialoge <gui>Nustatymai</gui> kortelėje <gui>Sinchronizacija</gui> paspaudus mygtuką <gui>Sudėtingesni</gui> pateikiamas dar vienas dialogas su konfliktų sprendimu."
+
+#: C/gnote-notes-preferences.page:51(title)
+#| msgid "Advanced Settings"
+msgid "Advanced Synchronization Settings"
+msgstr "Sudėtingesni sinchronizacijos nustatymai"
+
+#: C/gnote-notes-preferences.page:54(p)
+msgid "This dialog lets you choose what to do, when a conflict occurrs. A conflict happends, when the note is modified before synchronizing and it has been also modified on other device (and synchronized to synchronization storage). You can select one of these options:"
+msgstr "Šis dialogas leidžia pasirinkti, ką daryti, kai kyla konfliktas. Taip atsitinka, kai raštelis yra pakeičiamas prieš sinchronizuojant ir jis taip pat buvo pakeistas kitame įrenginyje (ir sinchronizuotas į sinchronizacijos saugyklą). Galite pasirinkti vieną iš šių parinkčių:"
+
+#: C/gnote-notes-preferences.page:56(title)
+msgid "Rename existing note by appending \"(Old)\" to it's title and download the one from storage"
+msgstr "Pervadinti esamą raštelį pridedant „(Senas)“ prie jo pavadinimo ir parsiųsti tą patį raštelį iš saugyklos"
+
+#: C/gnote-notes-preferences.page:57(title)
+msgid "Replace existing note by the one from storage, losing all modifications"
+msgstr "Pakeisti esamą raštelį raštelių iš saugyklos, prarandant visus pakeitimus"
+
+#: C/gnote-notes-preferences.page:58(title)
+msgid "Get the choice for earch conflicting note individually"
+msgstr "Gauti pasirinkimą atskitai kiekvienam konfliktuojančiam rašteliui"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -689,7 +791,10 @@ msgstr "<app>Gnote</app> langas „Ieškoti visuose rašteliuose“."
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-hotkeys.page:32(None)
-msgid "@@image: 'figures/gnote-preferences-hotkeys.png'; md5=f9fd21fc0ce6d836e5dee4590099b21a"
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-hotkeys.png'; "
+#| "md5=f9fd21fc0ce6d836e5dee4590099b21a"
+msgid "@@image: 'figures/gnote-preferences-hotkeys.png'; md5=9d159b4e82cad633bf68e8e4a3524950"
 msgstr "gnote-preferences-hotkeys.png"
 
 #: C/gnote-hotkeys.page:8(desc)
@@ -701,11 +806,6 @@ msgid "Hotkeys"
 msgstr "Spartieji klavišai"
 
 #: C/gnote-hotkeys.page:21(p)
-#| msgid ""
-#| "The hotkeys tab allows you to set global key combinations to perform "
-#| "different functions in <app>Gnote</app>. In order to set key "
-#| "combinations, you must have the Listen for Hotkeys checkbox enabled. Use "
-#| "<keyseq><key>Alt</key><key>H</key></keyseq> to toggle this option."
 msgid "The hotkeys tab allows you to set global key combinations to perform different functions in <app>Gnote</app>. In order to set key combinations, you must have the Listen for Hotkeys checkbox enabled."
 msgstr "Sparčiųjų klavišų kortelė leidžia nustatyti visuotines klavišų kombinacijas įvairiems veiksmas su <app>Gnote</app> atlikti. Norėdami nustatyti klavišų kombinacijas turite pažymėti langelį „Priimti sparčiuosius klavišus“."
 
@@ -946,26 +1046,18 @@ msgid "You can import <app>Tomboy</app> Notes. An add-in has to be activated."
 msgstr "Jūs galite importuoti <app>Tomboy</app> raštelius. Tam reikia įjungti priedą."
 
 #: C/gnote-common-problems.page:24(title)
-msgid "How to Synchronize Notes?"
-msgstr "Kaip sinchronizuoti raštelius?"
-
-#: C/gnote-common-problems.page:25(p)
-msgid "There is no Synchronization feature. However, your notes are stored into <file>~/.local/share/gnote</file> folder, so may synchronize this folder."
-msgstr "Sinchronizacijos funkcijos dar nėra. Tačiau jūsų rašteliai laikomi aplanke <file>~/.local/share/gnote</file>, tad galite jį sinchronizuoti."
-
-#: C/gnote-common-problems.page:27(title)
 msgid "I can not find the Gnote status icon"
 msgstr "Negaliu rasti Gnote būsenos piktogramos"
 
-#: C/gnote-common-problems.page:28(p)
+#: C/gnote-common-problems.page:25(p)
 msgid "You can activate the <app>Gnote</app> status icon using a command from <app>terminal</app>: <cmd>gsettings set org.gnome.gnote use-status-icon true</cmd>."
 msgstr "<app>Gnote</app> būsenos piktogramą galite įjungti įvykdę komandą <app>terminale</app>: <cmd>gsettings set org.gnome.gnote use-status-icon true</cmd>."
 
-#: C/gnote-common-problems.page:29(title)
+#: C/gnote-common-problems.page:26(title)
 msgid "How to automatically start <app>Gnote</app> when I log in?"
 msgstr "Kaip prisijungus automatiškai paleisti <app>Gnote</app>?"
 
-#: C/gnote-common-problems.page:30(p)
+#: C/gnote-common-problems.page:27(p)
 msgid "To start Gnote automatically when you log into GNOME, run <app>gnome-session-properties</app>"
 msgstr "Automatiniam Gnote paleidimui prisijungus prie GNOME, paleiskite <app>gnome-session-properties</app>"
 
@@ -1113,6 +1205,78 @@ msgstr "Kai priedas <gui>Įterpti laiko žymę</gui> yra įdiegtas, įrankių me
 msgid "Click on this option to insert current date and time."
 msgstr "Paspauskite ant šio elemento dabartiniam laikui ir datai įterpti."
 
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnote-addin-sync-webdav.page:27(None)
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-editing.png'; "
+#| "md5=527d776d4f432ebc824afbe618b46a25"
+msgid "@@image: 'figures/gnote-syncprefs-webdav.png'; md5=c2945d95c64a2a2c66c2a8ecc5fd5525"
+msgstr "gnote-preferences-editing.png"
+
+#: C/gnote-addin-sync-webdav.page:9(desc)
+msgid "Synchronize to WebDAV share"
+msgstr "Sinchronizuoti į WebDAV viešinį"
+
+#: C/gnote-addin-sync-webdav.page:17(title)
+msgid "WebDAV Synchronization"
+msgstr "WebDAV sinchronizacija"
+
+#: C/gnote-addin-sync-webdav.page:18(p)
+msgid "This type of synchronization allows you to set WebDAV as synchronization storage."
+msgstr "Šio tipo sinchronizacija leidžia nustatyti WebDAV kaip sinchronizacijos saugyklą."
+
+#: C/gnote-addin-sync-webdav.page:19(p)
+msgid "To configure this type of synchronization:"
+msgstr "Šio tipo sinchronizacijai nustatyti:"
+
+#: C/gnote-addin-sync-webdav.page:21(title)
+msgid "select \"WebDAV\" in <gui>Service</gui> drop-down and then select the desired folder as <gui>Folder Path</gui>"
+msgstr "pasirinkite „WebDAV“ ir iškrentančiame sąraše <gui>Tarnyba</gui> ir pasirinkite pageidaujamą aplanką lauke <gui>Aplanko kelias</gui>"
+
+#: C/gnote-addin-sync-webdav.page:22(title)
+msgid "enter the URL to your share"
+msgstr "įveskite URL iki jūsų viešinio"
+
+#: C/gnote-addin-sync-webdav.page:23(title)
+msgid "enter username and password"
+msgstr "įveskite naudotojo vardą ir slaptažodį"
+
+#: C/gnote-addin-sync-webdav.page:26(title)
+#: C/gnote-addin-sync-local.page:21(title)
+msgid "Local Folder Synchronization configuration"
+msgstr "Vietinio aplanko sinchronizacijos nustatymas"
+
+#: C/gnote-addin-sync-webdav.page:29(p)
+#: C/gnote-addin-sync-local.page:24(p)
+msgid "After selecting the desired folder click the <gui>Save</gui> button. Use the <gui>Clear</gui> button to turn synchronization off."
+msgstr "Pasirinkę pageidaujamą aplanką spauskite mygtuką <gui>Išsaugoti</gui>. Naudokite mygtuką <gui>Išvalyti</gui> sinchronizacijai išjungti."
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnote-addin-sync-local.page:22(None)
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-add-ins.png'; "
+#| "md5=be31b216768913e50f8f21b0ff512c05"
+msgid "@@image: 'figures/gnote-syncprefs-local.png'; md5=331adb231f9aa802f0f4745bd3e4b4e8"
+msgstr "gnote-preferences-add-ins.png"
+
+#: C/gnote-addin-sync-local.page:9(desc)
+msgid "Synchronize to local folder"
+msgstr "Sinchronizacija į vietinį aplanką"
+
+#: C/gnote-addin-sync-local.page:17(title)
+msgid "Local Folder Synchronization"
+msgstr "Vietinio aplanko sinchronizacija"
+
+#: C/gnote-addin-sync-local.page:18(p)
+msgid "This type of synchronization allows you to set local folder as synchronization storage."
+msgstr "Šio tipo sinchronizacija leidžia nustatyti vietinį aplanką kaip sinchronizacijos saugyklą."
+
+#: C/gnote-addin-sync-local.page:19(p)
+msgid "To configure this type of synchronization, select \"Local Folder\" in <gui>Service</gui> drop-down and then select the desired folder as <gui>Folder Path</gui>."
+msgstr "Šio tipo sinchronizacijai nustatyti, pasirikite „Vietinis aplankas“ iškrentančiame meniu <gui>Tarnyba</gui> ir tuomet pasirinkite pageidaujamą aplanką lauke <gui>Aplanko kelias</gui>."
+
 #: C/gnote-addin-replacetitle.page:8(desc)
 msgid "Rename note title"
 msgstr "Pakeisti raštelio pavadinimą"
@@ -1136,7 +1300,10 @@ msgstr "Taip pat galite naudoti klavišų kombinaciją <keyseq><key>Vald</key><k
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnote-addins-preferences.page:25(None)
-msgid "@@image: 'figures/gnote-preferences-add-ins.png'; md5=be31b216768913e50f8f21b0ff512c05"
+#| msgid ""
+#| "@@image: 'figures/gnote-preferences-add-ins.png'; "
+#| "md5=be31b216768913e50f8f21b0ff512c05"
+msgid "@@image: 'figures/gnote-preferences-add-ins.png'; md5=656cb88e6f7df1661cd359bac9602f60"
 msgstr "gnote-preferences-add-ins.png"
 
 #: C/gnote-addins-preferences.page:8(desc)
@@ -1202,6 +1369,22 @@ msgstr "Jei paliksite „Šiandien“ raštelį nepakeistą, dienos raštelio pr
 #: C/gnote-addin-noteoftheday.page:23(p)
 msgid "To customize the content of the default \"Today\" note, create a new note and change the title of the note to be, \"Today: Template\". Change the content of the template note to whatever you like. When new \"Today\" notes are created, it will then use the content of your \"Today: Template\" note."
 msgstr "Numatytajam „Šiandien“ raštelio turiniui pakeisti, sukurkite naują raštelį ir pakeiskite pavadinimą į „Šiandien: Šablonas“. Pakeiskite šablono turinį į pageidaujamą tekstą. Kai bus sukurtas naujas „Šiandien“ raštelis, jis naudos „Šiandien: Šablonas“ raštelio turinį."
+
+#: C/gnote-addin-notedirwatcher.page:8(desc)
+msgid "Watch for note changes on file system"
+msgstr "Stebėti raštelių pasikeitimus failų sistemoje"
+
+#: C/gnote-addin-notedirwatcher.page:16(title)
+msgid "Note Directory Watcher"
+msgstr "Raštelių katalogo stebyklė"
+
+#: C/gnote-addin-notedirwatcher.page:17(p)
+msgid "This addin allows you to work with notes on a file system while <app>Gnote</app> is running. When enabled, this addin monitors note files for changes and reloads them, once any change is detected. This way external change to a note file is automatically reflected in <app>Gnote</app>."
+msgstr "Šis priedas leidžia dirbti su rašteliais failų sistemoje kol <app>Gnote</app> veikia. Kai įjungtas, šis priedas stebi raštelių failų pasikeitimus ir juos iš naujo įkelia, kai tik aptinkamas pasikeitimas. Tokiu būtų išoriniai raštelio failo pasikeitimai automatiškai atsispindi <app>Gnote</app>."
+
+#: C/gnote-addin-notedirwatcher.page:18(p)
+msgid "<app>Gnote</app> stores notes into <file>~/.local/share/gnote</file> folder. With this addin enabled, you can perform actions at file system level on this directory, such as synchronizing contents with some other location, while <app>Gnote</app> is running."
+msgstr "<app>Gnote</app> saugo raštelius aplanke <file>~/.local/share/gnote</file>. Kai šis priedas yra įjungtas, jūs galite šiame kataloge atlikti veiksmus failų sistemos lygyje, pvz sinchronizuoti juos į kitą vietą, kol <app>Gnote</app> veikia."
 
 #: C/gnote-addin-html.page:8(desc)
 msgid "Export Notes to HTML format"
