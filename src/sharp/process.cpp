@@ -105,11 +105,30 @@ void Process::wait_for_exit()
   }
 }
 
-bool Process::wait_for_exit(unsigned)
+bool Process::wait_for_exit(unsigned timeout)
 {
-  // TODO: make timeout work
-  wait_for_exit();
-  return true;
+  if(m_pid < 0) {
+    return false;
+  }
+  unsigned secs = timeout / 1000;
+  if(timeout % 1000) {
+    ++secs;
+  }
+
+  while(secs--) {
+    int status = -1;
+    waitpid(m_pid, &status, WNOHANG);
+    if(WIFEXITED(status)) {
+      m_exit_code = WEXITSTATUS(status);
+      return true;
+    }
+    if(WIFSIGNALED(status)) {
+      return true;
+    }
+    sleep(1);
+  }
+
+  return false;
 }
 
 bool Process::standard_output_eof()
