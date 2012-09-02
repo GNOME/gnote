@@ -17,10 +17,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-18 10:39+0200\n"
-"PO-Revision-Date: 2012-08-18 10:24+0100\n"
-"Last-Translator: Stefan Melmuk <stefan.melmuk@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gnote&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-08-22 20:15+0000\n"
+"PO-Revision-Date: 2012-07-31 22:39+0100\n"
+"Last-Translator: Christian Kirbach <Christian.Kirbach@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -888,16 +889,15 @@ msgstr "Ben_utzerdefiniertes Format verwenden"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:47
 msgid "Note Directory Watcher"
-msgstr ""
+msgstr "Notizordnerüberwachung"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:52
 msgid "Watch your Gnote note directory for changes to your notes."
-msgstr ""
+msgstr "Überwachen Sie Ihren Notizordner auf Änderungen an Ihren Notizen"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
-#, fuzzy
 msgid "Aurimas Černius and Tomboy original authors"
-msgstr "und die Originalautoren von Tomboy."
+msgstr "Aurimas Černius und die Originalautoren von Tomboy"
 
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
@@ -1049,41 +1049,41 @@ msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière und das Tomboy-Projekt"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
-#, fuzzy
 msgid "WebDav Sync Service Add-in"
-msgstr "Abgleich-Add-In für lokalen Ordner"
+msgstr "Abgleich-Add-In für WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
-#, fuzzy
 msgid "Synchronize Gnote Notes to a WebDav URL"
-msgstr "Gnote-Notizen mit einem Pfad im lokalen Dateisystem abgleichen"
+msgstr "Gnote-Notizen mit einer WebDav-Adresse abgleichen"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
 msgid "_URL:"
-msgstr ""
+msgstr "_Adresse:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
 msgid "User_name:"
-msgstr ""
+msgstr "Benutzer_name:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "_Password:"
-msgstr ""
+msgstr "_Passwort:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
 msgid "WebDAV"
-msgstr ""
+msgstr "WebDAV"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
 msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
 msgstr ""
+"Beim Verbinden zum Server ist ein Fehler aufgetreten. Dieses wurde "
+"möglicherweise durch einen nicht korrekten Benutzernamen und/oder ein nicht "
+"korrektes Passwort verursacht."
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
-#, fuzzy
 msgid "URL, username, or password field is empty."
-msgstr "Feld für Ordnerpfad ist leer."
+msgstr "Feld für Adresse, Benutzername oder Passwort ist leer."
 
 #. TODO: If the above fails (no keyring daemon), save all but password
 #. to GConf, and notify user.
@@ -1097,6 +1097,10 @@ msgid ""
 "\n"
 "%1%"
 msgstr ""
+"Das Speichern der Konfiguration in den GNOME-Schlüsselbund ist mit folgender "
+"Meldung gescheitert:\n"
+"\n"
+"%1%"
 
 #: ../src/gnote.cpp:308
 msgid "Cannot create new note"
@@ -1106,7 +1110,7 @@ msgstr "Neue Notiz konnte nicht angelegt werden"
 msgid "and Tomboy original authors."
 msgstr "und die Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:360
 msgid "translator-credits"
 msgstr ""
 "Philipp Meier <meier@fnogol.de>\n"
@@ -1116,7 +1120,7 @@ msgstr ""
 "Andre Klapper <ak-47@gmx.net>\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>"
 
-#: ../src/gnote.cpp:372
+#: ../src/gnote.cpp:369
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1128,71 +1132,71 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:376
+#: ../src/gnote.cpp:373
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Eine einfache und leicht bedienbare Anwendung für Notizen"
 
-#: ../src/gnote.cpp:387
+#: ../src/gnote.cpp:384
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:464
 msgid "Run Gnote in background."
 msgstr "Gnote im Hintergrund ausführen."
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:465
 msgid "Specify the path of the directory containing the notes."
 msgstr "Pfad zum Ordner angeben, der die Notizen enthält."
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:465
 msgid "path"
 msgstr "path"
 
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:466
 msgid "Open the search all notes window with the search text."
 msgstr "Fenster zum Durchsuchen aller Notizen öffnen."
 
-#: ../src/gnote.cpp:469 ../src/gnote.cpp:474
+#: ../src/gnote.cpp:466 ../src/gnote.cpp:471
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:470
+#: ../src/gnote.cpp:467
 msgid "Print version information."
 msgstr "Versionsinformationen anzeigen."
 
-#: ../src/gnote.cpp:471
+#: ../src/gnote.cpp:468
 msgid "Create and display a new note, with a optional title."
 msgstr "Eine neue Notiz anlegen und anzeigen, mit einem optionalen Titel."
 
-#: ../src/gnote.cpp:471
+#: ../src/gnote.cpp:468
 msgid "title"
 msgstr "title"
 
-#: ../src/gnote.cpp:472
+#: ../src/gnote.cpp:469
 msgid "Display the existing note matching title."
 msgstr "Eine vorhandene Notiz dieses Titels anzeigen."
 
-#: ../src/gnote.cpp:472
+#: ../src/gnote.cpp:469
 msgid "title/url"
 msgstr "title/url"
 
-#: ../src/gnote.cpp:473
+#: ../src/gnote.cpp:470
 msgid "Display the 'Start Here' note."
 msgstr "Zeigt die »Hier starten«-Notiz an."
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:471
 msgid "Search and highlight text in the opened note."
 msgstr "Text in einer geöffneten Notiz suchen und hervorheben."
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:475
 msgid "A note taking application"
 msgstr "Eine Notizzettel-Anwendung"
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:475
 msgid "Gnote options at launch"
 msgstr "Optionen beim Start von Gnote"
 
-#: ../src/gnote.cpp:671
+#: ../src/gnote.cpp:668
 msgid "Version %1%"
 msgstr "Version %1%"
 
@@ -1258,7 +1262,7 @@ msgid "Delete the selected notebook"
 msgstr "Das ausgewählte Notizbuch löschen"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:128
-#: ../src/recentchanges.cpp:296
+#: ../src/recentchanges.cpp:299
 msgid "Notebooks"
 msgstr "Notizbücher"
 
@@ -1876,13 +1880,12 @@ msgstr ""
 "abgleichen?"
 
 #: ../src/preferencesdialog.cpp:1272
-#, fuzzy
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
 msgstr ""
 "Bitte überprüfen Sie Ihre Informationen und versuchen Sie es erneut. Die "
-"Protokolldatei {0} könnte weitere Informationen zu diesem Fehler enthalten."
+"Protokolldatei %1% könnte weitere Informationen zu diesem Fehler enthalten."
 
 #: ../src/preferencesdialog.cpp:1277
 msgid "Error connecting"
@@ -1908,42 +1911,42 @@ msgstr "Alle Notizen durchsuchen"
 msgid "_Search:"
 msgstr "_Suchen:"
 
-#: ../src/recentchanges.cpp:373
+#: ../src/recentchanges.cpp:376
 msgid "Note"
 msgstr "Notiz"
 
-#: ../src/recentchanges.cpp:395
+#: ../src/recentchanges.cpp:398
 msgid "Last Changed"
 msgstr "Zuletzt geändert"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:583
 msgid "Matches"
 msgstr "Stimmt überein"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/recentchanges.cpp:634
+#: ../src/recentchanges.cpp:637
 msgid "Title match"
 msgstr "Titel-Übereinstimmung"
 
-#: ../src/recentchanges.cpp:638
+#: ../src/recentchanges.cpp:641
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "(%1% Treffer)"
 msgstr[1] "(%1% Treffer)"
 
-#: ../src/recentchanges.cpp:652
+#: ../src/recentchanges.cpp:655
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Gesamt: %1% Notiz"
 msgstr[1] "Gesamt: %1% Notizen"
 
-#: ../src/recentchanges.cpp:668
+#: ../src/recentchanges.cpp:671
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Treffer: %1% Notiz"
 msgstr[1] "Treffer: %1% Notizen"
 
-#: ../src/recentchanges.cpp:684
+#: ../src/recentchanges.cpp:687
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1951,11 +1954,11 @@ msgstr ""
 "Keine Ergebnisse im ausgewählten Notizbuch gefunden.\n"
 "Hier klicken, um alle Notizen zu durchsuchen."
 
-#: ../src/recentchanges.cpp:688
+#: ../src/recentchanges.cpp:691
 msgid "Click here to search across all notebooks"
 msgstr "Hier klicken, um alle Notizbücher zu durchsuchen"
 
-#: ../src/recentchanges.cpp:863
+#: ../src/recentchanges.cpp:866
 msgid "Notes"
 msgstr "Notizen"
 
@@ -1992,36 +1995,33 @@ msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1% correctly installed and configured"
 msgstr ""
+"Dieses Abgleich-Addin wird auf Ihrem Rechner nicht unterstützt. Bitte "
+"stellen Sie sicher, dass FUSE und %1% korrekt installiert und konfiguriert "
+"sind."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:160
-#, fuzzy
 msgid "Could not read testfile."
-msgstr "Symboldatei konnte nicht gespeichert werden."
+msgstr "Testdatei konnte nicht gelesen werden."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:169
 msgid "Write test failed."
-msgstr ""
+msgstr "Schreibtest gescheitert."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:198
-#, fuzzy
 msgid "Timeout connecting to server."
-msgstr "Verbindung mit Server wird aufgebaut …"
+msgstr "Zeitablauf beim Verbinden zum Server."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:204
-#, fuzzy
 msgid "Error connecting to server."
-msgstr "Verbindungsfehler"
+msgstr "Fehler beim Verbinden zum Server."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:217
 msgid "FUSE could not be enabled."
-msgstr ""
+msgstr "FUSE konnte nicht aktiviert werden."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:248
-#, fuzzy
 msgid "An error ocurred while connecting to the specified server"
-msgstr ""
-"Der Port, der beim Verbinden mit einem Abgleichserver über SSH verwendet "
-"wird."
+msgstr "Beim Verbinden zum angegebenen Server ist ein Fehler aufgetreten"
 
 #: ../src/synchronization/syncdialog.cpp:110
 msgid "Note Conflict"
@@ -2231,7 +2231,7 @@ msgstr "_Werkzeuge"
 #: ../src/synchronization/syncutils.cpp:142
 #: ../src/synchronization/syncutils.cpp:174
 msgid "Could not enable FUSE"
-msgstr ""
+msgstr "FUSE konnte nicht aktiviert werden"
 
 #: ../src/synchronization/syncutils.cpp:143
 #: ../src/synchronization/syncutils.cpp:175
@@ -2239,11 +2239,12 @@ msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
 msgstr ""
+"Das FUSE-Modul konnte nicht geladen werden. Bitte überprüfen Sie, ob es "
+"installiert ist, und versuchen Sie es erneut."
 
 #: ../src/synchronization/syncutils.cpp:151
-#, fuzzy
 msgid "Enable FUSE?"
-msgstr "_Aktivieren"
+msgstr "FUSE aktivieren?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
@@ -2255,6 +2256,11 @@ msgid ""
 "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
 "etc/modules."
 msgstr ""
+"Der von Ihnen gewählte Abgleich erfordert, dass das FUSE-Modul geladen ist.\n"
+"\n"
+"Um diese Meldung zukünftig zu vermeiden, sollten Sie FUSE beim Starten "
+"laden. Fügen Sie »modprobe fuse« in /etc/init.d/boot.local oder »fuse« in /"
+"etc/modules hinzu."
 
 #: ../src/tray.cpp:54
 msgid "Take notes"
