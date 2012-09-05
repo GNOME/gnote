@@ -16,14 +16,14 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-23 23:11+0000\n"
-"PO-Revision-Date: 2012-03-25 18:58+0200\n"
+"POT-Creation-Date: 2012-09-04 11:14+0000\n"
+"PO-Revision-Date: 2012-09-05 11:30+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: ../data/gnote.desktop.in.in.h:1
@@ -532,10 +532,26 @@ msgstr ""
 "přepínačem „-ac“."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:77
+msgid "Share URL"
+msgstr "Adresa URL sdílení"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "WebDAV share URL where notes are synchronized to."
+msgstr "Adresa URL sdílení WebDAV, do kterého jsou poznámky synchronizovány."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "Share username"
+msgstr "Uživatelské jméno sdílení"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+msgid "Username to access WebDAV share."
+msgstr "Uživatelské jméno pro přístup ke sdílení WebDAV."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Timestamp format"
 msgstr "Formát časové značky"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -591,15 +607,15 @@ msgstr "Ukončit Gnote"
 msgid "_Edit"
 msgstr "_Upravit"
 
-#: ../src/actionmanager.cpp:209 ../src/applet.cpp:383 ../src/tray.cpp:460
+#: ../src/actionmanager.cpp:209 ../src/tray.cpp:460
 msgid "_Preferences"
 msgstr "_Předvolby"
 
-#: ../src/actionmanager.cpp:209 ../src/preferencesdialog.cpp:101
+#: ../src/actionmanager.cpp:209 ../src/preferencesdialog.cpp:102
 msgid "Gnote Preferences"
 msgstr "Předvolby Gnote"
 
-#: ../src/actionmanager.cpp:212 ../src/applet.cpp:384 ../src/tray.cpp:465
+#: ../src/actionmanager.cpp:212 ../src/tray.cpp:465
 msgid "_Help"
 msgstr "Nápo_věda"
 
@@ -611,7 +627,7 @@ msgstr "_Obsah"
 msgid "Gnote Help"
 msgstr "Nápověda pro Gnote"
 
-#: ../src/actionmanager.cpp:221 ../src/applet.cpp:385
+#: ../src/actionmanager.cpp:221
 msgid "_About"
 msgstr "O _aplikaci"
 
@@ -666,11 +682,11 @@ msgstr "Co sem odkazuje?"
 msgid "(none)"
 msgstr "(žádná)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
 msgid "Bugzilla Links"
 msgstr "Odkazy do systému Bugzilla"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:62
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -679,9 +695,9 @@ msgstr ""
 "Umožňuje přetáhnout URL systému Bugzilla z vašeho prohlížeče přímo do "
 "poznámky Gnote. Číslo chyby se vloží jako odkaz s malou ikonou chyby po boku."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:66
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:57
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere a projekt Tomboy"
@@ -780,28 +796,29 @@ msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "Synchronizace poznámek Gnote do složky místního systému souborů"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
 msgid "Aurimas Cernius and the Tomboy Project"
 msgstr "Aurimas Cernius a projekt Tomboy"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:124
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:127
 msgid "_Folder Path:"
 msgstr "_Umístění složky:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:131
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
 msgid "Select Synchronization Folder..."
 msgstr "Vybrat synchronizační složku…"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:154
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:157
 msgid "Folder path field is empty."
 msgstr "Nezadali jste umístění složky."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:161
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:164
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
 "Zadané umístění složky neexistuje a aplikace Gnote ho nemohla vytvořit."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:237
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:240
 msgid "Local Folder"
 msgstr "Místní složka"
 
@@ -840,6 +857,18 @@ msgstr "Používat _vybraný formát"
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:104
 msgid "_Use Custom Format"
 msgstr "Používat v_lastní formát"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:47
+msgid "Note Directory Watcher"
+msgstr "Sledování složky s poznámkami"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:52
+msgid "Watch your Gnote note directory for changes to your notes."
+msgstr "Sleduje složku s vašimi poznámkami ohledně změn ve vašich poznámkách."
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
+msgid "Aurimas Černius and Tomboy original authors"
+msgstr "Aurimas Černius a původní autoři aplikace Tomboy."
 
 #: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
 msgid "Note of the Day"
@@ -889,24 +918,24 @@ msgstr ""
 "Změňte poznámku <span weight=\"bold\">Dnes: Šablona</span>, abyste si "
 "nastavili podobu poznámky dne."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:49
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
 msgid "Printing Support"
 msgstr "Podpora tisku"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:53
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
 msgid "Allows you to print a note."
 msgstr "Umožní vám poznámky vytisknout."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:80
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
 msgid "Print"
 msgstr "Tisk"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
 msgid "Error printing note"
 msgstr "Chyba při tisku poznámky"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:299
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
 msgid "Page %1% of %2%"
 msgstr "Strana %1% z %2%"
 
@@ -990,15 +1019,67 @@ msgstr "Přidává možnost podtržení textu."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière a projekt Tomboy"
 
-#: ../src/gnote.cpp:372
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+msgid "WebDav Sync Service Add-in"
+msgstr "Doplněk synchronizační služby WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+msgid "Synchronize Gnote Notes to a WebDav URL"
+msgstr "Synchronizace poznámek Gnote na adresu WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "Adresa _URL:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr "Uživatelské jmé_no:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr "_Heslo:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid ""
+"There was an error connecting to the server.  This may be caused by using an "
+"incorrect user name and/or password."
+msgstr ""
+"Vyskytla se chyba při připojování k serveru. Může to být způsobeno použitím "
+"nesprávného uživatelského jména a/nebo hesla."
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+msgid "URL, username, or password field is empty."
+msgstr "Adresa URL, uživatelské jméno nebo heslo jsou prázdné."
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:290
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
+"\n"
+"%1%"
+msgstr ""
+"Uložení nastavení do klíčenky GNOME selhalo s následující zprávou:\n"
+"\n"
+"%1%"
+
+#: ../src/gnote.cpp:308
 msgid "Cannot create new note"
 msgstr "Nelze vytvořit novou poznámku"
 
-#: ../src/gnote.cpp:425
+#: ../src/gnote.cpp:354
 msgid "and Tomboy original authors."
 msgstr "a původní autoři aplikace Tomboy."
 
-#: ../src/gnote.cpp:434
+#: ../src/gnote.cpp:360
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -1007,12 +1088,7 @@ msgstr ""
 "Petr Kovář <pknbe@volny.cz>\n"
 "Lucas Lommer <llommer@svn.gnome.org>"
 
-#: ../src/gnote.cpp:443
-#| msgid ""
-#| "Copyright © 2010-2011 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: ../src/gnote.cpp:369
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1024,76 +1100,72 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004 – 2009 původní autoři Tomboy."
 
-#: ../src/gnote.cpp:447
+#: ../src/gnote.cpp:373
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Jednoduchá a snadno použitelná aplikace pro poznámky na pracovní ploše."
 
-#: ../src/gnote.cpp:458
+#: ../src/gnote.cpp:384
 msgid "Homepage"
 msgstr "Domovská stránka"
 
-#: ../src/gnote.cpp:554
-msgid "Run Gnote as a GNOME panel applet."
-msgstr "Spustit Gnote jako applet pro panel GNOME."
-
-#: ../src/gnote.cpp:555
+#: ../src/gnote.cpp:464
 msgid "Run Gnote in background."
 msgstr "Spustit Gnote na pozadí"
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:465
 msgid "Specify the path of the directory containing the notes."
 msgstr "Určit cestu ke složce obsahující poznámky."
 
-#: ../src/gnote.cpp:556
+#: ../src/gnote.cpp:465
 msgid "path"
 msgstr "cesta"
 
-#: ../src/gnote.cpp:557
+#: ../src/gnote.cpp:466
 msgid "Open the search all notes window with the search text."
 msgstr "Otevřít okno Hledat ve všech poznámkách s hledaným textem."
 
-#: ../src/gnote.cpp:557 ../src/gnote.cpp:562
+#: ../src/gnote.cpp:466 ../src/gnote.cpp:471
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:558
+#: ../src/gnote.cpp:467
 msgid "Print version information."
 msgstr "Vypsat informace o verzi."
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:468
 msgid "Create and display a new note, with a optional title."
 msgstr "Vytvořit a zobrazit novou poznámku s volitelným názvem."
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:468
 msgid "title"
 msgstr "název"
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:469
 msgid "Display the existing note matching title."
 msgstr "Zobrazit existující poznámku odpovídající názvem."
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:469
 msgid "title/url"
 msgstr "název/url"
 
-#: ../src/gnote.cpp:561
+#: ../src/gnote.cpp:470
 msgid "Display the 'Start Here' note."
 msgstr "Zobrazit poznámku „Začněte zde“."
 
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:471
 msgid "Search and highlight text in the opened note."
 msgstr "Hledat a zvýraznit text v otevřené poznámce."
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:475
 msgid "A note taking application"
 msgstr "Aplikace na dělání poznámek"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:475
 msgid "Gnote options at launch"
 msgstr "Volby Gnote při spouštění"
 
-#: ../src/gnote.cpp:759
+#: ../src/gnote.cpp:668
 msgid "Version %1%"
 msgstr "Verze %1%"
 
@@ -1159,7 +1231,7 @@ msgid "Delete the selected notebook"
 msgstr "Odstranit vybraný sešit"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:128
-#: ../src/recentchanges.cpp:296
+#: ../src/recentchanges.cpp:299
 msgid "Notebooks"
 msgstr "Sešity"
 
@@ -1244,7 +1316,7 @@ msgstr ""
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:112 ../src/preferencesdialog.cpp:323
+#: ../src/notemanager.cpp:112 ../src/preferencesdialog.cpp:334
 msgid "New Note Template"
 msgstr "Nová šablona"
 
@@ -1544,33 +1616,33 @@ msgstr "Zmenšit velikost písma"
 msgid "Font Size"
 msgstr "Velikost písma"
 
-#: ../src/preferencesdialog.cpp:119
+#: ../src/preferencesdialog.cpp:120
 msgid "General"
 msgstr "Obecné"
 
-#: ../src/preferencesdialog.cpp:121
+#: ../src/preferencesdialog.cpp:122
 msgid "Hotkeys"
 msgstr "Klávesové zkratky"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:147
+#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:147
 msgid "Synchronization"
 msgstr "Synchronizace"
 
-#: ../src/preferencesdialog.cpp:126
+#: ../src/preferencesdialog.cpp:127
 msgid "Add-ins"
 msgstr "Doplňky"
 
 #. Status icon
-#: ../src/preferencesdialog.cpp:228
+#: ../src/preferencesdialog.cpp:239
 msgid "Use Status _Icon"
 msgstr "Používat stavovou _ikonu"
 
-#: ../src/preferencesdialog.cpp:241
+#: ../src/preferencesdialog.cpp:252
 msgid "_Spell check while typing"
 msgstr "_Kontrola překlepů během psaní"
 
-#: ../src/preferencesdialog.cpp:247
+#: ../src/preferencesdialog.cpp:258
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1579,11 +1651,11 @@ msgstr ""
 "kontextové nabídce."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:258
+#: ../src/preferencesdialog.cpp:269
 msgid "Highlight _WikiWords"
 msgstr "Zvýrazňovat _WikiSlova"
 
-#: ../src/preferencesdialog.cpp:264
+#: ../src/preferencesdialog.cpp:275
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -1592,46 +1664,46 @@ msgstr ""
 "Kliknutí na slovo vytvoří poznámku s takovým názvem."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:271
+#: ../src/preferencesdialog.cpp:282
 msgid "Enable auto-_bulleted lists"
 msgstr "Po_volit automatické seznamy s odrážkami"
 
-#: ../src/preferencesdialog.cpp:280
+#: ../src/preferencesdialog.cpp:291
 msgid "Use custom _font"
 msgstr "Používat vlastní _písmo"
 
-#: ../src/preferencesdialog.cpp:297
+#: ../src/preferencesdialog.cpp:308
 msgid "When renaming a linked note: "
 msgstr "Při přejmenování odkazované poznámky:"
 
-#: ../src/preferencesdialog.cpp:302
+#: ../src/preferencesdialog.cpp:313
 msgid "Ask me what to do"
 msgstr "Dotázat se mě, co udělat"
 
-#: ../src/preferencesdialog.cpp:303
+#: ../src/preferencesdialog.cpp:314
 msgid "Never rename links"
 msgstr "Odkazy nikdy nepřejmenovat"
 
-#: ../src/preferencesdialog.cpp:304
+#: ../src/preferencesdialog.cpp:315
 msgid "Always rename links"
 msgstr "Odkazy vždy přejmenovat"
 
-#: ../src/preferencesdialog.cpp:326
+#: ../src/preferencesdialog.cpp:337
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr "Použijte šablonu k upřesnění, jaký text se má vložit do nové poznámky."
 
-#: ../src/preferencesdialog.cpp:334
+#: ../src/preferencesdialog.cpp:345
 msgid "Open New Note Template"
 msgstr "Otevřít šablonu"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:396
+#: ../src/preferencesdialog.cpp:407
 msgid "Listen for _Hotkeys"
 msgstr "Používat _klávesové zkratky"
 
-#: ../src/preferencesdialog.cpp:403
+#: ../src/preferencesdialog.cpp:414
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -1642,70 +1714,70 @@ msgstr ""
 "Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:423
+#: ../src/preferencesdialog.cpp:434
 msgid "Show notes _menu"
 msgstr "Zobrazit nabídku pozná_mek"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:440
+#: ../src/preferencesdialog.cpp:451
 msgid "Open \"_Start Here\""
 msgstr "Otevřít „_Začněte zde“"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:456
+#: ../src/preferencesdialog.cpp:467
 msgid "Create _new note"
 msgstr "Vytvořit _novou poznámku"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:472
+#: ../src/preferencesdialog.cpp:483
 msgid "Open \"Search _All Notes\""
 msgstr "Otevřít „Hledat ve všech poznámkách“"
 
-#: ../src/preferencesdialog.cpp:509
+#: ../src/preferencesdialog.cpp:520
 msgid "Ser_vice:"
 msgstr "Služ_ba:"
 
-#: ../src/preferencesdialog.cpp:565 ../src/preferencesdialog.cpp:1120
+#: ../src/preferencesdialog.cpp:578 ../src/preferencesdialog.cpp:1135
 msgid "Not configurable"
 msgstr "Nedostupné"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:585
+#: ../src/preferencesdialog.cpp:598
 msgid "_Advanced..."
 msgstr "P_okročilé…"
 
-#: ../src/preferencesdialog.cpp:630
+#: ../src/preferencesdialog.cpp:643
 msgid "The following add-ins are installed"
 msgstr "Máte nainstalovány následující doplňky"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:661
+#: ../src/preferencesdialog.cpp:674
 msgid "_Enable"
 msgstr "_Povolit"
 
-#: ../src/preferencesdialog.cpp:667
+#: ../src/preferencesdialog.cpp:680
 msgid "_Disable"
 msgstr "_Zakázat"
 
-#: ../src/preferencesdialog.cpp:798
+#: ../src/preferencesdialog.cpp:813
 msgid "Not Implemented"
 msgstr "Není implementováno"
 
-#: ../src/preferencesdialog.cpp:812
+#: ../src/preferencesdialog.cpp:827
 msgid "%1% Preferences"
 msgstr "Předvolby %1%"
 
-#: ../src/preferencesdialog.cpp:953
+#: ../src/preferencesdialog.cpp:968
 msgid "Choose Note Font"
 msgstr "Zvolte písmo poznámek"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1036
+#: ../src/preferencesdialog.cpp:1051
 msgid "Other Synchronization Options"
 msgstr "Další volby synchronizace"
 
-#: ../src/preferencesdialog.cpp:1039
+#: ../src/preferencesdialog.cpp:1054
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -1714,23 +1786,23 @@ msgstr ""
 "synchronizačním serveru:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1043
+#: ../src/preferencesdialog.cpp:1058
 msgid "Always ask me what to do."
 msgstr "Vždy se mě zeptat, co dělat."
 
-#: ../src/preferencesdialog.cpp:1047
+#: ../src/preferencesdialog.cpp:1062
 msgid "Rename my local note."
 msgstr "Přejmenovat moji místní poznámku."
 
-#: ../src/preferencesdialog.cpp:1051
+#: ../src/preferencesdialog.cpp:1066
 msgid "Replace my local note with the server's update."
 msgstr "Zaměnit moji místní poznámku s poznámkou na serveru."
 
-#: ../src/preferencesdialog.cpp:1159
+#: ../src/preferencesdialog.cpp:1169
 msgid "Are you sure?"
 msgstr "Jste si jisti?"
 
-#: ../src/preferencesdialog.cpp:1160
+#: ../src/preferencesdialog.cpp:1170
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -1738,11 +1810,11 @@ msgstr ""
 "Nedoporučuje se mazat nastavení synchronizace. Při příští synchronizaci "
 "můžete být znovu vyzváni k synchronizaci všech svých poznámek."
 
-#: ../src/preferencesdialog.cpp:1169
+#: ../src/preferencesdialog.cpp:1180
 msgid "Resetting Synchronization Settings"
 msgstr "Obnovuje se nastavení synchronizace"
 
-#: ../src/preferencesdialog.cpp:1170
+#: ../src/preferencesdialog.cpp:1181
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -1752,11 +1824,11 @@ msgstr ""
 "nyní smazáno. Může se stát, že při uložení nového nastavení budete muset "
 "synchronizovat všechny své poznámky znovu."
 
-#: ../src/preferencesdialog.cpp:1236
+#: ../src/preferencesdialog.cpp:1247
 msgid "Connection successful"
 msgstr "Úspěšné připojení"
 
-#: ../src/preferencesdialog.cpp:1237
+#: ../src/preferencesdialog.cpp:1248
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -1764,27 +1836,27 @@ msgstr ""
 "Aplikace Gnote je připravena synchronizovat vaše poznámky. Chcete je "
 "synchronizovat právě teď?"
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1272
 msgid ""
-"Please check your information and try again.  The log file {0} may contain "
+"Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
 msgstr ""
-"Zkontrolujte zadané informace a zkuste to znovu. Můžete se také zkusit "
-"podívat do souboru {0} se záznamem."
+"Zkontrolujte prosím zadané informace a zkuste to znovu. Můžete se také "
+"zkusit o chybě najít více informací v souboru %1% se záznamem."
 
-#: ../src/preferencesdialog.cpp:1267
+#: ../src/preferencesdialog.cpp:1277
 msgid "Error connecting"
 msgstr "Chyba připojování"
 
-#: ../src/preferencesdialog.cpp:1331
+#: ../src/preferencesdialog.cpp:1341
 msgid "Version:"
 msgstr "Verze:"
 
-#: ../src/preferencesdialog.cpp:1336
+#: ../src/preferencesdialog.cpp:1346
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:1342
+#: ../src/preferencesdialog.cpp:1352
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -1796,45 +1868,45 @@ msgstr "Hledat ve všech poznámkách"
 msgid "_Search:"
 msgstr "_Hledat:"
 
-#: ../src/recentchanges.cpp:373
+#: ../src/recentchanges.cpp:376
 msgid "Note"
 msgstr "Poznámka"
 
-#: ../src/recentchanges.cpp:395
+#: ../src/recentchanges.cpp:398
 msgid "Last Changed"
 msgstr "Naposledy změněna"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:583
 msgid "Matches"
 msgstr "Odpovídá"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/recentchanges.cpp:634
+#: ../src/recentchanges.cpp:637
 msgid "Title match"
 msgstr "Název odpovídá"
 
-#: ../src/recentchanges.cpp:638
+#: ../src/recentchanges.cpp:641
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% odpovídá"
 msgstr[1] "%1% odpovídají"
 msgstr[2] "%1% odpovídá"
 
-#: ../src/recentchanges.cpp:652
+#: ../src/recentchanges.cpp:655
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Celkem: %1% poznámka"
 msgstr[1] "Celkem: %1% poznámky"
 msgstr[2] "Celkem: %1% poznámek"
 
-#: ../src/recentchanges.cpp:668
+#: ../src/recentchanges.cpp:671
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Celkem: %1% poznámka"
 msgstr[1] "Celkem: %1% poznámky"
 msgstr[2] "Celkem: %1% poznámek"
 
-#: ../src/recentchanges.cpp:684
+#: ../src/recentchanges.cpp:687
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1842,11 +1914,11 @@ msgstr ""
 "Ve vybraném sešitu nebyl nalezen žádný výsledek.\n"
 "Kliknutím zde se prohledají všechny sešity."
 
-#: ../src/recentchanges.cpp:688
+#: ../src/recentchanges.cpp:691
 msgid "Click here to search across all notebooks"
 msgstr "Kliknutím zde prohledáte všechny sešity"
 
-#: ../src/recentchanges.cpp:863
+#: ../src/recentchanges.cpp:866
 msgid "Notes"
 msgstr "Poznámky"
 
@@ -1877,6 +1949,38 @@ msgstr "Nástroje"
 #: ../src/sharp/addinstreemodel.cpp:151
 msgid "Unknown"
 msgstr "Neznámá"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:117
+msgid ""
+"This synchronization addin is not supported on your computer. Please make "
+"sure you have FUSE and %1% correctly installed and configured"
+msgstr ""
+"Tento synchronizační doplněk není na vašem počítači podporován. Ujistěte se "
+"prosím, že máte FUSE a %1% správně nainstalované a nastavené."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:160
+msgid "Could not read testfile."
+msgstr "Nelze přečíst testovací soubor."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:169
+msgid "Write test failed."
+msgstr "Selhal test zápisu."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:198
+msgid "Timeout connecting to server."
+msgstr "Vypršel časový limit připojování k serveru."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:204
+msgid "Error connecting to server."
+msgstr "Chyba připojování k serveru."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:217
+msgid "FUSE could not be enabled."
+msgstr "Nelze zapnout FUSE."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:248
+msgid "An error ocurred while connecting to the specified server"
+msgstr "Nastala chyba během připojování k zadanému serveru."
 
 #: ../src/synchronization/syncdialog.cpp:110
 msgid "Note Conflict"
@@ -2083,6 +2187,40 @@ msgstr "Nová poznámka byla nahrána na server"
 msgid "_Tools"
 msgstr "Nás_troje"
 
+#: ../src/synchronization/syncutils.cpp:142
+#: ../src/synchronization/syncutils.cpp:174
+msgid "Could not enable FUSE"
+msgstr "Nelze zapnout FUSE"
+
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
+msgid ""
+"The FUSE module could not be loaded. Please check that it is installed "
+"properly and try again."
+msgstr ""
+"Nelez načíst modul FUSE. Zkontrolujte prosím, zda je správně nainstalován a "
+"zkuste to znovu."
+
+#: ../src/synchronization/syncutils.cpp:151
+msgid "Enable FUSE?"
+msgstr "Zapnout FUSE?"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:154
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
+msgstr ""
+"Synchronizace, kterou jste zvolili, vyžaduje načtený modul FUSE.\n"
+"\n"
+"Abyste do budoucna předešli tomuto dotazu, měl by se modul FUSE načíst při "
+"spuštění. Přidejte „modprobe fuse“ do /etc/init.d/boot.local nebo „fuse“ do /"
+"etc/modules."
+
 #: ../src/tray.cpp:54
 msgid "Take notes"
 msgstr "Probrat poznámky"
@@ -2194,10 +2332,10 @@ msgstr ""
 msgid "Note title taken"
 msgstr "Název poznámky používán"
 
-#: ../src/watchers.cpp:593
+#: ../src/watchers.cpp:585
 msgid "_Copy Link Address"
 msgstr "_Kopírovat adresu odkazu"
 
-#: ../src/watchers.cpp:599
+#: ../src/watchers.cpp:591
 msgid "_Open Link"
 msgstr "_Otevřít odkaz"
