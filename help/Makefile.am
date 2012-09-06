@@ -1,9 +1,7 @@
+@YELP_HELP_RULES@
 
-include $(top_srcdir)/gnome-doc-utils.make
-dist-hook: doc-dist-hook
-
-DOC_ID = gnote
-DOC_FIGURES = \
+HELP_ID = gnote
+HELP_MEDIA = \
 	figures/add-notebook-search.png \
 	figures/add-to-notebook.png \
 	figures/delete-notebook.png \
@@ -24,7 +22,7 @@ DOC_FIGURES = \
 	figures/new-notebook.png \
 	figures/notebook-icon.png \
 	figures/note-template.png
-DOC_PAGES = \
+HELP_FILES = \
 	gnote-addin-bugzillalink.page \
 	gnote-addin-fixedwidth.page \
 	gnote-addin-html.page \
@@ -51,4 +49,4 @@ DOC_PAGES = \
 	gnote-template-notes.page \
 	gnote-working-with-notebooks.page \
 	index.page
-DOC_LINGUAS = cs da de es fr lt ru sl zh_CN
+HELP_LINGUAS = cs da de es fr lt ru sl zh_CN

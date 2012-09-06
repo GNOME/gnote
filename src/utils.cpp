@@ -119,7 +119,7 @@ namespace gnote {
     void show_help(const std::string & filename, const std::string & link_id,
                    GdkScreen *screen, Gtk::Window *parent)
     {
-      std::string uri = "ghelp:" + filename;
+      std::string uri = "help:" + filename;
       if(!link_id.empty()) {
         uri += "#" + link_id;
       }
