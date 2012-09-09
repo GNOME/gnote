@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -239,6 +239,9 @@ namespace gnote {
 
   NoteRecentChanges::~NoteRecentChanges()
   {
+    if(m_entry_changed_timeout) {
+      delete m_entry_changed_timeout;
+    }
     Gnote::obj().remove_window(this);
   }
 
