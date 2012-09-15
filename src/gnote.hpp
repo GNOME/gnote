@@ -166,6 +166,7 @@ protected:
   virtual void on_activate();
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line);
   virtual void on_startup();
+  virtual void on_window_removed(Gtk::Window *window);
 private:
   static Gnote *s_obj;
 
