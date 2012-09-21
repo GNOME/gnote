@@ -31,8 +31,8 @@
 namespace fixedwidth {
 
   FixedWidthMenuItem::FixedWidthMenuItem(gnote::NoteAddin *addin)
-    : Gtk::CheckMenuItem(Glib::ustring("<span font_family=\"monospace\">")
-                         + _("Fixed Wid_th") + "</span>", true)
+    : Gtk::CheckMenuItem(Glib::ustring("<tt>")
+                         + _("Fixed Wid_th") + "</tt>", true)
     , m_note_addin(addin)
     , m_event_freeze(false)
   {
