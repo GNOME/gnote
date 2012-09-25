@@ -55,17 +55,14 @@ namespace gnote {
     : Gtk::VBox(false, 2)
     , m_note(note)
     , m_name(note.get_title())
+    , m_height(360)
+    , m_width(450)
     , m_global_keys(NULL)
   {
     m_template_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     m_template_save_size_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
     m_template_save_selection_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
     m_template_save_title_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
-
-#if 0
-    set_default_size(450, 360);
-    set_resizable(true);
-#endif
 
     m_text_menu = Gtk::manage(new NoteTextMenu(note.get_buffer(), note.get_buffer()->undoer()));
 
@@ -152,6 +149,11 @@ namespace gnote {
     }
 
     utils::EmbedableWidget::foreground();
+    parent->set_default_size(m_width, m_height);
+    if((parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0 && parent->get_visible()) {
+      parent->get_window()->resize(m_width, m_height);
+    }
+    parent->set_focus(*m_editor);
     m_editor->scroll_to(m_editor->get_buffer()->get_insert());
   }
 
@@ -163,6 +165,22 @@ namespace gnote {
       return;
     }
     remove_accel_group(*parent);
+    if((parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0) {
+      int cur_x, cur_y, cur_width, cur_height;
+      parent->get_position(cur_x, cur_y);
+      parent->get_size(cur_width, cur_height);
+
+      if(!(m_note.data().x() == cur_x && m_note.data().y() == cur_y
+           && m_note.data().width() == cur_width
+           && m_note.data().height() == cur_height)) {
+        m_note.data().set_position_extent(cur_x, cur_y, cur_width, cur_height);
+        m_width = cur_width;
+        m_height = cur_height;
+
+        DBG_OUT("WindowConfigureEvent queueing save");
+        m_note.queue_save(NO_CHANGE);
+      }
+    }
   }
 
   void NoteWindow::add_accel_group(Gtk::Window & window)

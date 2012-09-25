@@ -405,6 +405,9 @@ void SearchNotesWidget::restore_position()
   }
 
   window->set_default_size(width, height);
+  if(window->get_visible()) {
+    window->get_window()->resize(width, height);
+  }
   if(!m_initial_position_restored) {
     window->move(x, y);
     m_initial_position_restored = true;

@@ -114,6 +114,11 @@ public:
   virtual void foreground();
   virtual void background();
 
+  void set_size(int width, int height)
+    {
+      m_width = width;
+      m_height = height;
+    }
   Gtk::TextView * editor() const
     {
       return m_editor;
@@ -171,7 +176,9 @@ private:
   void remove_accel_group(Gtk::Window &);
 
   Note                        & m_note;
-  std::string                  m_name;
+  std::string                   m_name;
+  int                           m_height;
+  int                           m_width;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::Toolbar                 *m_toolbar;
   Gtk::ToolButton              *m_link_button;

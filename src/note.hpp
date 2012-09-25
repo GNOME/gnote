@@ -376,7 +376,6 @@ private:
                              const Gtk::TextBuffer::iterator &);
   void on_buffer_mark_set(const Gtk::TextBuffer::iterator & iter,
                           const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert);
-  bool on_window_configure(GdkEventConfigure *ev);
   bool on_window_destroyed(GdkEventAny *ev);
   void on_save_timeout();
   void process_child_widget_queue();
