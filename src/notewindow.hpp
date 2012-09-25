@@ -154,7 +154,6 @@ private:
   void update_link_button_sensitivity();
   void on_populate_popup(Gtk::Menu*);
   Gtk::Toolbar * make_toolbar();
-  void sync_item_selected();
   Gtk::Menu * make_plugin_menu();
   Gtk::Box * make_template_bar();
   void on_untemplate_button_click();

@@ -382,27 +382,11 @@ namespace gnote {
     }
     tb->insert(*manage(new Gtk::SeparatorToolItem()), -1);
 
-#if 0    // Disable because of bug 585610
-    Gtk::ImageMenuItem *item =
-      manage(new Gtk::ImageMenuItem (_("Synchronize Notes")));
-    item->set_image(*manage(new Gtk::Image(Gtk::Stock::CONVERT, Gtk::ICON_SIZE_MENU)));
-    item->signal_activate().connect(
-      sigc::mem_fun(*this, &NoteWindow::sync_item_selected));
-    item->show();
-    m_plugin_menu->add(*item);
-#endif
-
     tb->show_all();
     return tb;
   }
 
 
-  void NoteWindow::sync_item_selected ()
-  {
-    ActionManager::obj()["NoteSynchronizationAction"]->activate();
-  }
-
-  
   //
   // This menu can be
   // populated by individual plugins using
