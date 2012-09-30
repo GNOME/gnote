@@ -52,7 +52,7 @@
 namespace gnote {
 
   NoteWindow::NoteWindow(Note & note)
-    : ForcedPresentWindow<Gtk::Window>(note.get_title())
+    : ForcedPresentWindow(note.get_title())
     , m_note(note)
     , m_global_keys(NULL)
   {
@@ -224,7 +224,7 @@ namespace gnote {
 
   void NoteWindow::on_hide()
   {
-    utils::ForcedPresentWindow<Gtk::Window>::on_hide();
+    utils::ForcedPresentWindow::on_hide();
 
     // Workaround Gtk bug, where adding or changing Widgets
     // while the Window is hidden causes it to be reshown at
@@ -737,7 +737,7 @@ namespace gnote {
 
   void NoteWindow::on_show()
   {
-    utils::ForcedPresentWindow<Gtk::Window>::on_show();
+    utils::ForcedPresentWindow::on_show();
     // Make sure the cursor position is visible
     m_editor->scroll_to (m_editor->get_buffer()->get_insert());
   }

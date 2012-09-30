@@ -206,20 +206,19 @@ namespace gnote {
       guint m_timeout_id;
     };
 
-    template<typename ParentT>
     class ForcedPresentWindow 
-      : public ParentT
+      : public Gtk::Window
     {
     public:
       ForcedPresentWindow(const Glib::ustring & title)
-        : ParentT()
+        : Gtk::Window()
         {
-          ParentT::set_title(title);
+          Gtk::Window::set_title(title);
         }
 
       void present()
         {
-          ::tomboy_window_present_hardcore(GTK_WINDOW(ParentT::gobj()));
+          ::tomboy_window_present_hardcore(GTK_WINDOW(Gtk::Window::gobj()));
         }
     };
 

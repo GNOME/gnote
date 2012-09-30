@@ -100,7 +100,7 @@ private:
 
 
 class NoteWindow 
-  : public utils::ForcedPresentWindow<Gtk::Window>
+  : public utils::ForcedPresentWindow
 {
 public:
   NoteWindow(Note &);
