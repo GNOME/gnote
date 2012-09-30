@@ -26,6 +26,7 @@
 #include <sigc++/signal.h>
 
 #include <gdkmm/pixbuf.h>
+#include <gtkmm/applicationwindow.h>
 #include <gtkmm/dialog.h>
 #include <gtkmm/image.h>
 #include <gtkmm/menu.h>
@@ -206,20 +207,19 @@ namespace gnote {
       guint m_timeout_id;
     };
 
-    template<typename ParentT>
     class ForcedPresentWindow 
-      : public ParentT
+      : public Gtk::ApplicationWindow
     {
     public:
       ForcedPresentWindow(const Glib::ustring & title)
-        : ParentT()
+        : Gtk::ApplicationWindow()
         {
-          ParentT::set_title(title);
+          Gtk::ApplicationWindow::set_title(title);
         }
 
       void present()
         {
-          ::tomboy_window_present_hardcore(GTK_WINDOW(ParentT::gobj()));
+          ::tomboy_window_present_hardcore(GTK_WINDOW(gobj()));
         }
     };
 

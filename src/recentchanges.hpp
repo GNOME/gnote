@@ -37,7 +37,7 @@
 namespace gnote {
   class NoteManager;
 
-typedef utils::ForcedPresentWindow<Gtk::ApplicationWindow> NoteRecentChangesParent;
+typedef utils::ForcedPresentWindow NoteRecentChangesParent;
 
 class NoteRecentChanges
   : public NoteRecentChangesParent

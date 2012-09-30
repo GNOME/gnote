@@ -353,7 +353,9 @@ SyncDialog::SyncDialog()
   expandVBox->pack_start(*scrolledWindow, true, true, 0);
 
   // Create model for TreeView
-  m_model = Gtk::TreeStore::create(TreeViewModel());
+  // Work-around for GCC versions < 4.3 (http://gcc.gnu.org/bugs/#cxx_rvalbind)
+  TreeViewModel tmp_model;
+  m_model = Gtk::TreeStore::create(tmp_model);
 
   // Create TreeView, attach model
   Gtk::TreeView *treeView = manage(new Gtk::TreeView);
