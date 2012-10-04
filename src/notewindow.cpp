@@ -135,38 +135,14 @@ namespace gnote {
 
     box->show();
 
-    // Don't set up Ctrl-W or Ctrl-N if Emacs is in use
-    bool using_emacs = false;
-    Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
-      .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
-    if(desktop_settings) {
-      std::string gtk_key_theme = 
-        desktop_settings->get_string(Preferences::DESKTOP_GNOME_KEY_THEME);
-    if (!gtk_key_theme.empty() && (gtk_key_theme == "Emacs"))
-      using_emacs = true;
-    }
-
     // NOTE: Since some of our keybindings are only
     // available in the context menu, and the context menu
     // is created on demand, register them with the
     // global keybinder
     m_global_keys = new utils::GlobalKeybinder (m_accel_group);
 
-    // Close window (Ctrl-W)
-    if (!using_emacs)
-      m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::close_window_handler),
-                                      GDK_KEY_W,
-                                      Gdk::CONTROL_MASK,
-                                      Gtk::ACCEL_VISIBLE);
-
     // Escape has been moved to be handled by a KeyPress Handler so that
     // Escape can be used to close the FindBar.
-
-    // Close all windows on current Desktop (Ctrl-Q)
-    m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::close_all_windows_handler),
-                                   GDK_KEY_Q,
-                                   Gdk::CONTROL_MASK,
-                                   Gtk::ACCEL_VISIBLE);
 
     // Find Next (Ctrl-G)
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::find_next_activate),
@@ -182,12 +158,6 @@ namespace gnote {
     // Open Help (F1)
     m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::open_help_activate),
                                     GDK_KEY_F1, (Gdk::ModifierType)0, (Gtk::AccelFlags)0);
-
-    // Create a new note
-    if (!using_emacs)
-      m_global_keys->add_accelerator (sigc::mem_fun(*this, &NoteWindow::create_new_note),
-                                     GDK_KEY_N, Gdk::CONTROL_MASK,
-                                     Gtk::ACCEL_VISIBLE);
 
     signal_key_press_event().connect(sigc::mem_fun(*this, &NoteWindow::on_key_pressed));
 
@@ -264,26 +234,6 @@ namespace gnote {
   }
 
 
-  void NoteWindow::close_all_windows_handler()
-  {
-    int workspace = tomboy_window_get_workspace(gobj());
-    
-    for(Note::List::const_iterator iter = m_note.manager().get_notes().begin();
-        iter != m_note.manager().get_notes().end(); ++iter) {
-      const Note::Ptr & note(*iter);
-      if (!note->is_opened())
-        continue;
-
-      // Close windows on the same workspace, or all
-      // open windows if no workspace.
-      if ((workspace < 0) ||
-          (tomboy_window_get_workspace (note->get_window()->gobj()) == workspace)) {
-        note->get_window()->close_window_handler();
-      }
-    }
-  }
-  
-
     // Delete this Note.
     //
 
@@ -354,27 +304,6 @@ namespace gnote {
     menu->prepend(*text_item);
     menu->prepend(*find_item);
     menu->prepend(*link);
-
-    Gtk::MenuItem *close_all =
-      manage(new Gtk::MenuItem(_("Clos_e All Notes"), true));
-    close_all->signal_activate().connect(
-      sigc::mem_fun(*this, &NoteWindow::close_all_windows_handler));
-    close_all->add_accelerator("activate", m_accel_group,
-                               GDK_KEY_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    close_all->show();
-
-    Gtk::ImageMenuItem *close_window = manage(
-      new Gtk::ImageMenuItem(_("_Close"), true));
-    close_window->set_image(*manage(new Gtk::Image(Gtk::Stock::CLOSE, Gtk::ICON_SIZE_MENU)));
-    close_window->signal_activate().connect(
-      sigc::mem_fun(*this, &NoteWindow::close_window_handler));
-    close_window->add_accelerator("activate", m_accel_group,
-                                  GDK_KEY_W,
-                                  Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    close_window->show();
-
-    menu->append(*close_all);
-    menu->append(*close_window);
   }
   
   //
@@ -683,11 +612,6 @@ namespace gnote {
   void NoteWindow::open_help_activate()
   {
     utils::show_help("gnote", "editing-notes", get_screen()->gobj(), this);
-  }
-
-  void NoteWindow::create_new_note ()
-  {
-    ActionManager::obj()["NewNoteAction"]->activate();
   }
 
   void NoteWindow::change_depth_right_handler()

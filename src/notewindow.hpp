@@ -142,7 +142,6 @@ protected:
 private:
   bool on_key_pressed(GdkEventKey*);
   void close_window_handler();
-  void close_all_windows_handler();
   void on_delete_button_clicked();
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
   void update_link_button_sensitivity();
@@ -164,7 +163,6 @@ private:
   void find_bar_hidden();
   void link_button_clicked();
   void open_help_activate();
-  void create_new_note();
   void change_depth_right_handler();
   void change_depth_left_handler();
 
