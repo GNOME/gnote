@@ -1028,10 +1028,6 @@ namespace gnote {
         sigc::mem_fun(*this, &Note::on_window_destroyed));
       m_window->signal_configure_event().connect(
         sigc::mem_fun(*this, &Note::on_window_configure), false);
-      m_window->signal_show().connect(
-        sigc::mem_fun(*this, &Note::on_window_show));
-      m_window->signal_hide().connect(
-        sigc::mem_fun(*this, &Note::on_window_hide));
 
       m_window->editor()->set_sensitive(enabled());
       if (m_data.data().has_extent())
@@ -1051,18 +1047,6 @@ namespace gnote {
     }
     return m_window;
   }
-
-  void Note::on_window_show()
-  {
-    Gnote::obj().add_window(*m_window);
-  }
-
-
-  void Note::on_window_hide()
-  {
-    Gnote::obj().remove_window(*m_window);
-  }
-
 
   bool Note::is_special() const
   { 
