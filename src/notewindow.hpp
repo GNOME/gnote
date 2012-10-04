@@ -167,7 +167,6 @@ private:
   void create_new_note();
   void change_depth_right_handler();
   void change_depth_left_handler();
-  void search_button_clicked();
 
   Note                        & m_note;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;

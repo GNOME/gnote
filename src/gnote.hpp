@@ -34,6 +34,7 @@
 #include "base/singleton.hpp"
 #include "actionmanager.hpp"
 #include "keybinder.hpp"
+#include "recentchanges.hpp"
 #include "remotecontrolproxy.hpp"
 #include "tray.hpp"
 #include "synchronization/syncdialog.hpp"
@@ -131,6 +132,8 @@ public:
   void on_show_preferences_action();
   void on_show_help_action();
   void on_show_about_action();
+  NoteRecentChanges::Ptr new_main_window();
+  NoteRecentChanges::Ptr get_main_window();
   void open_search_all();
   void open_note_sync_window();
 
@@ -163,7 +166,6 @@ public:
       return m_sync_dlg;
     }
 protected:
-  virtual void on_activate();
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line);
   virtual void on_startup();
   virtual void on_window_removed(Gtk::Window *window);
@@ -177,6 +179,7 @@ private:
   void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
   void on_sync_dialog_response(int response_id);
+  void on_main_window_closed(std::list<NoteRecentChanges::Ptr>::iterator pos);
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
@@ -187,6 +190,7 @@ private:
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;
+  std::list<NoteRecentChanges::Ptr> m_main_windows;
 };
 
 

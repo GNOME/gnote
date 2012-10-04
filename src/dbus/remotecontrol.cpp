@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,8 +20,8 @@
 
 #include "config.h"
 
-#include "sharp/map.hpp"
 #include "debug.hpp"
+#include "gnote.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "recentchanges.hpp"
@@ -30,6 +30,7 @@
 #include "tag.hpp"
 #include "tagmanager.hpp"
 #include "dbus/remotecontrol.hpp"
+#include "sharp/map.hpp"
 
 namespace gnote {
 
@@ -147,19 +148,15 @@ namespace gnote {
 
   void RemoteControl::DisplaySearch()
   {
-    NoteRecentChanges::get_instance(m_manager)->present();
+    Gnote::obj().open_search_all();
   }
 
 
   void RemoteControl::DisplaySearchWithText(const std::string& search_text)
   {
-    NoteRecentChanges* recent_changes =
-      NoteRecentChanges::get_instance (m_manager);
-    if (!recent_changes)
-				return;
-
+    NoteRecentChanges::Ptr recent_changes = Gnote::obj().get_main_window();
     recent_changes->set_search_text(search_text);
-    recent_changes->present ();
+    recent_changes->present();
   }
 
 

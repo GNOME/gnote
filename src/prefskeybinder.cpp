@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -235,8 +235,7 @@ namespace gnote {
 
   void GnotePrefsKeybinder::key_open_recent_changes()
   {
-    NoteRecentChanges *recent = NoteRecentChanges::get_instance (m_manager);
-    recent->present ();
+    Gnote::obj().open_search_all();
   }
 
 }

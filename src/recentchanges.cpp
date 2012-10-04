@@ -58,23 +58,7 @@ namespace gnote {
   Glib::RefPtr<Gdk::Pixbuf> NoteRecentChanges::s_unfiled_notes_icon;
   Glib::RefPtr<Gdk::Pixbuf> NoteRecentChanges::s_notebook_icon;
   std::list<std::string>    NoteRecentChanges::s_previous_searches;
-  NoteRecentChanges        *NoteRecentChanges::s_instance = NULL;
 
-
-
-  NoteRecentChanges *NoteRecentChanges::get_instance()
-  {
-    return s_instance;
-  }
-
-
-  NoteRecentChanges *NoteRecentChanges::get_instance(NoteManager& m)
-  {
-    if(!s_instance) {
-      s_instance = new NoteRecentChanges(m);
-    }
-    return s_instance;
-  }
 
 
   void NoteRecentChanges::_init_static()
@@ -102,7 +86,6 @@ namespace gnote {
     , m_entry_changed_timeout(NULL)
     , m_clickX(0), m_clickY(0)
   {
-    Gnote::obj().add_window(*this);
     _init_static();
 //    get_window()->set_icon_name("gnote");
     set_default_size(450,400);
@@ -231,18 +214,12 @@ namespace gnote {
     focus_chain.clear();
     focus_chain.push_back(m_tree);
     m_matches_window.set_focus_chain(focus_chain);
-                        
-    Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteRecentChanges::on_exiting_event));
-
   }
 
 
   NoteRecentChanges::~NoteRecentChanges()
   {
-    if(m_entry_changed_timeout) {
-      delete m_entry_changed_timeout;
-    }
-    Gnote::obj().remove_window(*this);
+    save_position();
   }
 
 
@@ -1187,41 +1164,17 @@ namespace gnote {
 
   void NoteRecentChanges::on_close_window()
   {
-#if 0
-    // Disconnect external signal handlers to prevent bloweup
-    manager.NoteDeleted -= OnNotesChanged;
-    manager.NoteAdded -= OnNotesChanged;
-    manager.NoteRenamed -= OnNoteRenamed;
-    manager.NoteSaved -= OnNoteSaved;
-                        
-    Notebooks.NotebookManager.NoteAddedToNotebook -= OnNoteAddedToNotebook;
-    Notebooks.NotebookManager.NoteRemovedFromNotebook -= OnNoteRemovedFromNotebook;
-#endif
     // The following code has to be done for the MenuBar to
     // appear properly the next time this window is opened.
     if (m_menubar) {
       if(Gnote::obj().windowed()) {
         m_content_vbox.remove (*m_menubar);
       }
-#if 0
-      am ["OpenNoteAction"].Activated -= OnOpenNote;
-      am ["DeleteNoteAction"].Activated -= OnDeleteNote;
-      am ["NewNotebookAction"].Activated -= OnNewNotebook;
-      am ["DeleteNotebookAction"].Activated -= OnDeleteNotebook;
-      am ["NewNotebookNoteAction"].Activated -= OnNewNotebookNote;
-      am ["OpenNotebookTemplateNoteAction"].Activated -= OnOpenNotebookTemplateNote;
-      am ["CloseWindowAction"].Activated -= OnCloseWindow;
-#endif
     }
                         
     save_position ();
-//    Tomboy.ExitingEvent -= OnExitingEvent;
 
     hide ();
-    if(Gnote::obj().windowed()) {
-      delete s_instance;
-      s_instance = NULL;
-    }
   }
 
 
@@ -1717,12 +1670,6 @@ namespace gnote {
     if(pos) {
       m_hpaned.set_position(pos);
     }
-  }
-
-
-  void NoteRecentChanges::on_exiting_event()
-  {
-    save_position();
   }
 
 }

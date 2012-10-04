@@ -61,22 +61,22 @@ typedef utils::ForcedPresentWindow<Gtk::ApplicationWindow> NoteRecentChangesPare
 
 class NoteRecentChanges
   : public NoteRecentChangesParent
+  , public std::tr1::enable_shared_from_this<NoteRecentChanges>
 {
 public:
-  static NoteRecentChanges *get_instance();
-  static NoteRecentChanges *get_instance(NoteManager& m);
+  typedef std::tr1::shared_ptr<NoteRecentChanges> Ptr;
+  typedef std::tr1::weak_ptr<NoteRecentChanges> WeakPtr;
+
+  static Ptr create(NoteManager& m)
+    {
+      return Ptr(new NoteRecentChanges(m));
+    }
 
   virtual ~NoteRecentChanges();
   void set_search_text(const std::string & value);
-
-//////
-
 protected:
   NoteRecentChanges(NoteManager& m);
   virtual void on_show();
-  ///
-private:
-
 private:
   static void _init_static();
   Gtk::MenuBar *create_menu_bar ();
@@ -149,7 +149,6 @@ private:
   std::string get_search_text();
   void save_position ();
   void restore_position();
-  void on_exiting_event();
 
   class RecentNotesColumnTypes
     : public Gtk::TreeModelColumnRecord
@@ -217,7 +216,6 @@ private:
   static Glib::RefPtr<Gdk::Pixbuf> s_unfiled_notes_icon;
   static Glib::RefPtr<Gdk::Pixbuf> s_notebook_icon;
   static std::list<std::string>    s_previous_searches;
-  static NoteRecentChanges        *s_instance;
 };
 
 

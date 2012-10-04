@@ -325,15 +325,6 @@ namespace gnote {
     Gtk::MenuItem *spacer1 = manage(new Gtk::SeparatorMenuItem());
     spacer1->show ();
 
-    Gtk::ImageMenuItem *search = manage(new Gtk::ImageMenuItem(
-                                          _("_Search All Notes"), true));
-    search->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
-    search->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::search_button_clicked));
-    search->add_accelerator ("activate", m_accel_group, GDK_KEY_F,
-                             (Gdk::CONTROL_MASK |  Gdk::SHIFT_MASK),
-                             Gtk::ACCEL_VISIBLE);
-    search->show();
-
     Gtk::ImageMenuItem *link = manage(new Gtk::ImageMenuItem(_("_Link to New Note"), true));
     link->set_image(*manage(new Gtk::Image (Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_MENU)));
     link->set_sensitive(!m_note.get_buffer()->get_selection().empty());
@@ -363,7 +354,6 @@ namespace gnote {
     menu->prepend(*text_item);
     menu->prepend(*find_item);
     menu->prepend(*link);
-    menu->prepend(*search);
 
     Gtk::MenuItem *close_all =
       manage(new Gtk::MenuItem(_("Clos_e All Notes"), true));
@@ -396,22 +386,6 @@ namespace gnote {
   Gtk::Toolbar *NoteWindow::make_toolbar()
   {
     Gtk::Toolbar *tb = new Gtk::Toolbar();
-
-    Gtk::ToolButton *search = manage(new Gtk::ToolButton (
-                                       *manage(new Gtk::Image(
-                                                 Gtk::Stock::FIND, 
-                                                 tb->get_icon_size())
-                                         ), _("Search")));
-    search->set_use_underline(true);
-    search->set_is_important(true);
-    search->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::search_button_clicked));
-    search->set_tooltip_text(_("Search your notes (Ctrl-Shift-F)"));
-    search->add_accelerator("clicked", m_accel_group,
-                             GDK_KEY_F,
-                             (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
-                             Gtk::ACCEL_VISIBLE);
-    search->show_all();
-    tb->insert(*search, -1);
 
     m_link_button = manage(new Gtk::ToolButton(
                              *manage(new Gtk::Image (Gtk::Stock::JUMP_TO, tb->get_icon_size())),
@@ -714,15 +688,6 @@ namespace gnote {
   void NoteWindow::create_new_note ()
   {
     ActionManager::obj()["NewNoteAction"]->activate();
-  }
-
-  void NoteWindow::search_button_clicked()
-  {
-    NoteRecentChanges *search = NoteRecentChanges::get_instance(m_note.manager());
-    if (!m_note.get_buffer()->get_selection().empty()) {
-      search->set_search_text(m_note.get_buffer()->get_selection());
-    }
-    search->present();
   }
 
   void NoteWindow::change_depth_right_handler()

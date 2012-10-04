@@ -27,6 +27,7 @@
 
 #include <iostream>
 
+#include <boost/bind.hpp>
 #include <boost/format.hpp>
 
 #include <glibmm/thread.h>
@@ -43,7 +44,6 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
-#include "recentchanges.hpp"
 #include "remotecontrolproxy.hpp"
 #include "utils.hpp"
 #include "xkeybinder.hpp"
@@ -106,13 +106,6 @@ namespace gnote {
   }
 
 
-  void Gnote::on_activate()
-  {
-    Gtk::Application::on_activate();
-    open_search_all();
-  }
-
-
   int Gnote::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line)
   {
     Gtk::Application::on_command_line(command_line);
@@ -131,7 +124,7 @@ namespace gnote {
       cmd_line.execute();
     }
     else {
-      ActionManager::obj()["ShowSearchAllNotesAction"]->activate();
+      new_main_window()->present();
     }
 
     return 0;
@@ -203,7 +196,7 @@ namespace gnote {
     }
     else if(m_is_background) {
       // Create Search All Notes window as we need it present for application to run
-      NoteRecentChanges::get_instance(default_note_manager());
+      new_main_window();
     }
     else {
       am["ShowSearchAllNotesAction"]->activate();
@@ -237,7 +230,7 @@ namespace gnote {
   void Gnote::start_tray_icon()
   {
     // Create Search All Notes window as we need it present for application to run
-    NoteRecentChanges::get_instance(default_note_manager());
+    get_main_window();
 
     // Create the tray icon and run the main loop
     m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
@@ -395,7 +388,7 @@ namespace gnote {
     about.set_documenters(documenters);
     about.set_translator_credits(translators);
 //      about.set_icon_name("gnote");
-    NoteRecentChanges *recent_changes = NoteRecentChanges::get_instance();
+    NoteRecentChanges::Ptr recent_changes = get_main_window();
     if(recent_changes && recent_changes->get_visible()) {
       about.set_transient_for(*recent_changes);
       recent_changes->present();
@@ -403,9 +396,40 @@ namespace gnote {
     about.run();
   }
 
+  NoteRecentChanges::Ptr Gnote::new_main_window()
+  {
+    NoteRecentChanges::Ptr win = NoteRecentChanges::create(default_note_manager());
+    std::list<NoteRecentChanges::Ptr>::iterator pos = m_main_windows.insert(m_main_windows.end(), win);
+    win->signal_hide().connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_main_window_closed), pos));
+    add_window(*win);
+    return win;
+  }
+
+  NoteRecentChanges::Ptr Gnote::get_main_window()
+  {
+    for(std::list<NoteRecentChanges::Ptr>::iterator iter = m_main_windows.begin();
+        iter != m_main_windows.end(); ++iter) {
+      return *iter;
+    }
+
+    NoteRecentChanges::Ptr win = new_main_window();
+    return win;
+  }
+
+  void Gnote::on_main_window_closed(std::list<NoteRecentChanges::Ptr>::iterator pos)
+  {
+    remove_window(**pos);
+    m_main_windows.erase(pos);
+
+    // if background mode, we need to have a window, to prevent quit
+    if(m_is_background && !m_main_windows.size()) {
+      new_main_window();
+    }
+  }
+
   void Gnote::open_search_all()
   {
-    NoteRecentChanges::get_instance(default_note_manager())->present();
+    get_main_window()->present();
   }
 
   void Gnote::open_note_sync_window()
