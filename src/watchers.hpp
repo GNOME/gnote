@@ -185,7 +185,7 @@ namespace gnote {
     void on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
                       const Gtk::TextIter & start, const Gtk::TextIter &end);
 
-    bool open_or_create_link(const Gtk::TextIter &,const Gtk::TextIter &);
+    bool open_or_create_link(const NoteEditor &, const Gtk::TextIter &,const Gtk::TextIter &);
     bool on_link_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
                                const Gtk::TextIter &, const Gtk::TextIter &);
 

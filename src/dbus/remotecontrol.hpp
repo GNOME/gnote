@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -74,6 +74,7 @@ private:
   void on_note_added(const Note::Ptr &);
   void on_note_deleted(const Note::Ptr &);
   void on_note_saved(const Note::Ptr &);
+  void present_note(const Note::Ptr &);
 
   NoteManager & m_manager;
 };

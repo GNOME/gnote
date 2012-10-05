@@ -33,10 +33,12 @@
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
+#include "gnote.hpp"
 #include "noteeditor.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferences.hpp"
+#include "recentchanges.hpp"
 #include "tagmanager.hpp"
 #include "triehit.hpp"
 #include "watchers.hpp"
@@ -222,10 +224,6 @@ namespace gnote {
 
     Note::Ptr existing = manager().find (title);
     if (existing && (existing != get_note())) {
-      // Present the window in case it got unmapped...
-      // FIXME: Causes flicker.
-      get_note()->get_window()->present ();
-
       show_name_clash_error (title);
       return false;
     }
@@ -883,7 +881,8 @@ namespace gnote {
   }
 
 
-  bool NoteLinkWatcher::open_or_create_link(const Gtk::TextIter & start,
+  bool NoteLinkWatcher::open_or_create_link(const NoteEditor & editor,
+                                            const Gtk::TextIter & start,
                                             const Gtk::TextIter & end)
   {
     std::string link_name = start.get_text (end);
@@ -914,18 +913,23 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      link->get_window()->present ();
+      NoteRecentChanges::Ptr window = NoteRecentChanges::get_owning(const_cast<NoteEditor&>(editor));
+      if(!window) {
+        window = Gnote::obj().new_main_window();
+      }
+      window->present_note(link);
+      window->present();
       return true;
     }
 
     return false;
   }
 
-  bool NoteLinkWatcher::on_link_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
+  bool NoteLinkWatcher::on_link_tag_activated(const NoteTag::Ptr &, const NoteEditor & editor,
                                               const Gtk::TextIter &start, 
                                               const Gtk::TextIter &end)
   {
-    return open_or_create_link (start, end);
+    return open_or_create_link(editor, start, end);
   }
 
 

@@ -71,9 +71,11 @@ public:
     {
       return Ptr(new NoteRecentChanges(m));
     }
+  static Ptr get_owning(Gtk::Widget & widget);
 
   virtual ~NoteRecentChanges();
   void set_search_text(const std::string & value);
+  void present_note(const Note::Ptr & note);
 protected:
   NoteRecentChanges(NoteManager& m);
   virtual void on_show();

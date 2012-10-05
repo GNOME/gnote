@@ -204,7 +204,9 @@ namespace gnote {
   {
     Note::Ptr note = m_manager.find_by_uri (m_manager.start_note_uri());
     if (note) {
-      note->get_window()->present ();
+      NoteRecentChanges::Ptr window = Gnote::obj().get_window_for_note();
+      window->present_note(note);
+      window->present();
     }
   }
 

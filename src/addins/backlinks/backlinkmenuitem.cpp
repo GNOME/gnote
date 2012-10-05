@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,6 +19,7 @@
  */
 
 
+#include "gnote.hpp"
 #include "notewindow.hpp"
 
 #include "backlinkmenuitem.hpp"
@@ -59,7 +61,13 @@ void BacklinkMenuItem::on_activate()
   find.property_visible() = true;
   find.set_search_text(m_title_search);
   
-  m_note->get_window()->present ();
+  gnote::NoteRecentChanges::Ptr window = gnote::NoteRecentChanges::get_owning(*this);
+  if(!window) {
+    window = gnote::Gnote::obj().new_main_window();
+  }
+
+  window->present_note(m_note);
+  window->present();
 }
 
 

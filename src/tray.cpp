@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -99,7 +99,9 @@ namespace gnote {
   {
     if(!m_inhibit_activate) {
       if(m_note) {
-        m_note->get_window()->present();
+        NoteRecentChanges::Ptr window = Gnote::obj().get_window_for_note();
+        window->present_note(m_note);
+        window->present();
       }
     }
   }

@@ -223,6 +223,40 @@ namespace gnote {
   }
 
 
+  void NoteRecentChanges::present_note(const Note::Ptr & note)
+  {
+    note->get_window()->show();
+  }
+
+
+  NoteRecentChanges::Ptr NoteRecentChanges::get_owning(Gtk::Widget & widget)
+  {
+    Ptr owner;
+    Gtk::Container *container = widget.get_parent();
+    if(!container) {
+      try {
+        return dynamic_cast<NoteRecentChanges &>(widget).shared_from_this();
+      }
+      catch(std::bad_cast &) {
+        return owner;
+      }
+    }
+
+    Gtk::Container *cntr = container->get_parent();
+    while(cntr) {
+      container = cntr;
+      cntr = container->get_parent();
+    }
+
+    NoteRecentChanges *recent_changes = dynamic_cast<NoteRecentChanges*>(container);
+    if(recent_changes) {
+      owner = recent_changes->shared_from_this();
+    }
+
+    return owner;
+  }
+
+
   Gtk::MenuBar *NoteRecentChanges::create_menu_bar ()
   {
     ActionManager &am(ActionManager::obj());
@@ -1145,8 +1179,15 @@ namespace gnote {
   void NoteRecentChanges::on_open_note()
   {
     Note::List selected_notes = get_selected_notes ();
-    for(Note::List::iterator iter = selected_notes.begin(); iter != selected_notes.end(); ++iter) {
-      (*iter)->get_window()->present();
+    Note::List::iterator iter = selected_notes.begin();
+    if(iter != selected_notes.end()) {
+      present_note(*iter);
+      ++iter;
+    }
+    for(; iter != selected_notes.end(); ++iter) {
+      NoteRecentChanges::Ptr window = Gnote::obj().new_main_window();
+      window->present_note(*iter);
+      window->present();
     }
   }
 
@@ -1289,7 +1330,7 @@ namespace gnote {
 
     Note::Ptr note = (*iter)[m_column_types.note];
 
-    note->get_window()->present ();
+    present_note(note);
 
     // Tell the new window to highlight the matches and
     // prepopulate the Firefox-style search
@@ -1507,7 +1548,7 @@ namespace gnote {
     if (!templateNote)
       return; // something seriously went wrong
       
-    templateNote->get_window()->present ();
+    present_note(templateNote);
   }
     
   notebooks::Notebook::Ptr NoteRecentChanges::get_selected_notebook ()

@@ -427,6 +427,27 @@ namespace gnote {
     }
   }
 
+  NoteRecentChanges::Ptr Gnote::get_window_for_note()
+  {
+    NoteRecentChanges::Ptr window;
+    //Find first visible window or any window otherwise
+    for(std::list<NoteRecentChanges::Ptr>::iterator iter = m_main_windows.begin();
+        iter != m_main_windows.end(); ++iter) {
+      if((*iter)->get_visible()) {
+        window = *iter;
+        break;
+      }
+      if(!window) {
+        window = *iter;
+      }
+    }
+    if(!window) {
+      window = new_main_window();
+    }
+
+    return window;
+  }
+
   void Gnote::open_search_all()
   {
     get_main_window()->present();

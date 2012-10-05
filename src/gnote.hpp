@@ -134,6 +134,7 @@ public:
   void on_show_about_action();
   NoteRecentChanges::Ptr new_main_window();
   NoteRecentChanges::Ptr get_main_window();
+  NoteRecentChanges::Ptr get_window_for_note();
   void open_search_all();
   void open_note_sync_window();
 

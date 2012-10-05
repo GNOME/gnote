@@ -120,7 +120,7 @@ namespace gnote {
       return false;
     }
 
-    note->get_window()->present();
+    present_note(note);
     return true;
   }
 
@@ -134,7 +134,7 @@ namespace gnote {
       return false;
     }
 
-    note->get_window()->present();
+    present_note(note);
 
     // Pop open the find-bar
     NoteFindBar & findbar = note->get_window()->get_find_bar();
@@ -404,6 +404,14 @@ void RemoteControl::on_note_saved(const Note::Ptr & note)
   if(note) {
     NoteSaved(note->uri());
   }
+}
+
+
+void RemoteControl::present_note(const Note::Ptr & note)
+{
+    NoteRecentChanges::Ptr window = Gnote::obj().get_window_for_note();
+    window->present_note(note);
+    window->present();
 }
 
 

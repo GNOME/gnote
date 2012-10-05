@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,8 +28,10 @@
 
 #include <glibmm/i18n.h>
 
+#include "gnote.hpp"
 #include "notewindow.hpp"
 #include "noterenamedialog.hpp"
+#include "recentchanges.hpp"
 
 namespace gnote {
 
@@ -359,13 +361,19 @@ void NoteRenameDialog::on_notes_view_row_activated(
   if (!note)
     return;
 
-  NoteWindow * const window = note->get_window();
-  if (!window)
-    return;
+  Gtk::Widget *parent = get_parent();
+  NoteRecentChanges::Ptr window;
+  if(parent) {
+    window = NoteRecentChanges::get_owning(*parent);
+  }
+  if(!window) {
+    window = Gnote::obj().new_main_window();
+  }
 
+  window->present_note(note);
   window->present();
 
-  NoteFindBar & find = window->get_find_bar();
+  NoteFindBar & find = note->get_window()->get_find_bar();
   find.show_all();
   find.property_visible() = true;
   find.set_search_text(Glib::ustring::compose("\"%1\"", old_title));

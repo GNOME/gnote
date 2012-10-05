@@ -465,7 +465,7 @@ void SyncDialog::on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeVi
 
   Note::Ptr note = Gnote::obj().default_note_manager().find(noteTitle);
   if(note != 0) {
-    note->get_window()->present();
+    present_note(note);
   }
 }
 
@@ -672,9 +672,10 @@ void SyncDialog::note_conflict_detected(NoteManager & manager,
 }
 
 
-void SyncDialog::on_note_conflict_detected(GObject*, gpointer data, gpointer)
+void SyncDialog::on_note_conflict_detected(GObject*, gpointer data, gpointer this__)
 {
   NoteConflictDetectedArgs *args = static_cast<NoteConflictDetectedArgs*>(data);
+  SyncDialog *this_ = static_cast<SyncDialog*>(this__);
   try {
     SyncTitleConflictDialog conflictDlg(args->localConflictNote, args->noteUpdateTitles);
     Gtk::ResponseType reponse = Gtk::RESPONSE_OK;
@@ -717,13 +718,13 @@ void SyncDialog::on_note_conflict_detected(GObject*, gpointer data, gpointer)
         if(conflictDlg.always_perform_this_action()) {
           args->savedBehavior = args->resolution;
         }
-        rename_note(args->localConflictNote, conflictDlg.renamed_title(), true);
+        this_->rename_note(args->localConflictNote, conflictDlg.renamed_title(), true);
         break;
       case RENAME_EXISTING_NO_UPDATE:
         if(conflictDlg.always_perform_this_action()) {
           args->savedBehavior = args->resolution;
         }
-        rename_note(args->localConflictNote, conflictDlg.renamed_title(), false);
+        this_->rename_note(args->localConflictNote, conflictDlg.renamed_title(), false);
         break;
       case CANCEL:
         break;
@@ -778,8 +779,15 @@ void SyncDialog::rename_note(const Note::Ptr & note, const std::string & newTitl
     catch(...) {} // TODO: Handle exception in case that newCompleteContent is invalid XML
   }
   if(noteOpen) {
-    renamedNote->get_window()->present();
+    present_note(renamedNote);
   }
+}
+
+void SyncDialog::present_note(const Note::Ptr & note)
+{
+  NoteRecentChanges::Ptr window = Gnote::obj().get_window_for_note();
+  window->present_note(note);
+  window->present();
 }
 
 }
