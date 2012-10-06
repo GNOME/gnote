@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,6 +23,8 @@
 
 #ifndef __RECENTTREEVIEW_HPP_
 #define __RECENTTREEVIEW_HPP_
+
+#include <gtkmm/treeview.h>
 
 namespace gnote {
 

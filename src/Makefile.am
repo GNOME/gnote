@@ -123,6 +123,7 @@ libgnote_la_SOURCES = \
 	recenttreeview.hpp \
 	recentchanges.hpp recentchanges.cpp \
 	search.hpp search.cpp \
+	searchnoteswidget.hpp searchnoteswidget.cpp \
 	tag.hpp tag.cpp \
 	tagmanager.hpp tagmanager.cpp \
 	tray.hpp tray.cpp \
