@@ -243,6 +243,53 @@ namespace gnote {
       void release_button();        
     };
 
+    class EmbedableWidget;
+    class EmbedableWidgetHost
+    {
+    public:
+      virtual void embed_widget(EmbedableWidget &) = 0;
+      virtual void unembed_widget(EmbedableWidget &) = 0;
+      virtual void foreground_embeded(EmbedableWidget &) = 0;
+      virtual void background_embeded(EmbedableWidget &) = 0;
+    };
+
+    class EmbedableWidget
+    {
+    public:
+      EmbedableWidget() : m_host(NULL) {}
+      virtual std::string get_name() const = 0;
+      virtual void embed(EmbedableWidgetHost *h)
+        {
+          m_host = h;
+          signal_embeded();
+        }
+      virtual void unembed()
+        {
+          m_host = NULL;
+          signal_unembeded();
+        }
+      virtual void foreground()
+        {
+          signal_foregrounded();
+        }
+      virtual void background()
+        {
+          signal_backgrounded();
+        }
+      EmbedableWidgetHost *host() const
+        {
+          return m_host;
+        }
+
+      sigc::signal<void, const std::string &> signal_name_changed;
+      sigc::signal<void> signal_embeded;
+      sigc::signal<void> signal_unembeded;
+      sigc::signal<void> signal_foregrounded;
+      sigc::signal<void> signal_backgrounded;
+    private:
+      EmbedableWidgetHost *m_host;
+    };
+
 
   }
 }
