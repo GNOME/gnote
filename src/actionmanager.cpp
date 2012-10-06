@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -86,14 +86,16 @@ namespace gnote {
     Gtk::Window::set_default_icon_name("gnote");
 
 
+#if 0
     Gtk::ImageMenuItem *imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget(
       "/MainWindowMenubar/FileMenu/FileMenuNewNotePlaceholder/NewNote");
     DBG_ASSERT(imageitem, "Item not found");
     if (imageitem) {
       imageitem->set_image(*manage(new Gtk::Image(m_newNote)));
     }
-      
-    imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget (
+#endif
+
+    Gtk::ImageMenuItem *imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget (
       "/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
     DBG_ASSERT(imageitem, "Item not found");
     if (imageitem) {
@@ -174,6 +176,7 @@ namespace gnote {
     action = Gtk::Action::create("FileMenuAction", _("_File"));
     m_main_window_actions->add(action);
 
+#if 0
     action = Gtk::Action::create("NewNoteAction", 
                                  Gtk::Stock::NEW, _("_New"),
                                  _("Create a new note"));
@@ -190,11 +193,7 @@ namespace gnote {
       _("_Delete"),  _("Delete the selected note"));
     action->set_sensitive(false);
     m_main_window_actions->add(action, Gtk::AccelKey("Delete"));
-
-    action = Gtk::Action::create(
-      "CloseWindowAction", Gtk::Stock::CLOSE,
-      _("_Close"), _("Close this window"));
-    m_main_window_actions->add(action, Gtk::AccelKey("<Control>W"));
+#endif
 
     action = Gtk::Action::create(
       "QuitGNoteAction", Gtk::Stock::QUIT,

@@ -156,7 +156,6 @@ namespace gnote {
   {
     ActionManager & am(ActionManager::obj());
     if((m_is_background = cmd_line.background())) {
-      am["CloseWindowAction"]->set_visible(true);
       am["QuitGNoteAction"]->set_visible(false);
     }
     if(cmd_line.needs_execute()) {
@@ -277,8 +276,10 @@ namespace gnote {
   void Gnote::setup_global_actions()
   {
     ActionManager & am(ActionManager::obj());
+#if 0
     am["NewNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &Gnote::on_new_note_action));
+#endif
     am["QuitGNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &Gnote::on_quit_gnote_action));
     am["ShowPreferencesAction"]->signal_activate() 

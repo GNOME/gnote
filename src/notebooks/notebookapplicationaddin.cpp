@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -53,6 +53,7 @@ namespace gnote {
     NotebookApplicationAddin::NotebookApplicationAddin()
       : m_initialized(false)
       , m_notebookUi(0)
+      , m_trayNotebookMenu(NULL)
     {
       m_notebookIcon = utils::get_icon ("notebook", 16);
       m_newNotebookIcon = utils::get_icon ("notebook-new", 16);
@@ -61,26 +62,6 @@ namespace gnote {
 
 
     static const char * uixml = "          <ui>"
-          "  <menubar name='MainWindowMenubar'>"
-          "    <menu name='FileMenu' action='FileMenuAction'>"
-          "      <placeholder name='FileMenuNewNotePlaceholder'>"
-          "        <menuitem name='NewNotebookMenu' action='NewNotebookMenuAction' />"
-          "      </placeholder>"
-          "    </menu>"
-          "    <menu name='EditMenu' action='EditMenuAction'>"
-          "      <placeholder name='EditMenuDeletePlaceholder'>"
-          "          <menuitem name='DeleteNotebook' action='DeleteNotebookAction' position='bottom'/>"
-          "      </placeholder>"
-          "    </menu>"
-          "  </menubar>"
-          "  <popup name='MainWindowContextMenu' action='MainWindowContextMenuAction'>"
-          "    <menuitem name='OpenNote' action='OpenNoteAction' />"
-          "    <menuitem name='DeleteNote' action='DeleteNoteAction' />"
-          "    <placeholder name='MainWindowContextMenuPlaceholder'>"
-          "      <separator />"
-          "      <menuitem name='NewNote' action='NewNotebookNoteAction' />"
-          "    </placeholder>"
-          "  </popup>"
           "  <popup name='NotebooksTreeContextMenu' action='NotebooksTreeContextMenuAction'>"
           "    <menuitem name='NewNotebookNote' action='NewNotebookNoteAction' />"
           "    <menuitem name='OpenNotebookTemplateNote' action='OpenNotebookTemplateNoteAction' />"
@@ -151,6 +132,7 @@ namespace gnote {
                                  &NotebookApplicationAddin::on_tray_notebook_menu_hidden));
       }
       
+#if 0
       Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
         am.get_widget ("/MainWindowMenubar/FileMenu/FileMenuNewNotePlaceholder/NewNotebookMenu"));
       if (imageitem) {
@@ -166,7 +148,8 @@ namespace gnote {
           .connect(sigc::mem_fun(*this, 
                                  &NotebookApplicationAddin::on_new_notebook_menu_hidden));
       }
-      imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
+#endif
+      Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
         am.get_widget ("/NotebooksTreeContextMenu/NewNotebookNote"));
       if (imageitem) {
         imageitem->set_image(*manage(new Gtk::Image(am.get_new_note())));

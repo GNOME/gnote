@@ -137,6 +137,7 @@ namespace sync {
     sync_notes_action->signal_activate().connect(sigc::mem_fun(*this, &SyncManager::on_sync_notes_activate));
     action_group->add(sync_notes_action);
 
+#if 0
     ActionManager::obj().get_ui()->add_ui_from_string(
       "<ui>"
       "<menubar name='MainWindowMenubar'>"
@@ -148,6 +149,7 @@ namespace sync {
       "</menubar>"
       "</ui>"
     );
+#endif
 
     ActionManager::obj().get_ui()->insert_action_group(action_group, 0);
 
