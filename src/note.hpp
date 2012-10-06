@@ -385,6 +385,7 @@ private:
                     const Ptr & renamed);
   void remove_links(const std::string & old_title,
                     const Ptr & renamed);
+  void on_note_window_embeded();
 
   Note(NoteData * data, const std::string & filepath, NoteManager & manager);
 
@@ -405,6 +406,7 @@ private:
   bool                       m_save_needed;
   bool                       m_is_deleting;
   bool                       m_enabled;
+  bool                       m_note_window_embeded;
 
   Gtk::Widget               *m_focus_widget;
   NoteManager               &m_manager;

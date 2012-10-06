@@ -83,11 +83,28 @@ namespace printnotes {
                                              Gtk::ICON_SIZE_MENU)));
     m_item->signal_activate().connect(
       sigc::mem_fun(*this, &PrintNotesNoteAddin::print_button_clicked));
-    m_item->add_accelerator ("activate", get_window()->get_accel_group(),
-                             GDK_KEY_P, Gdk::CONTROL_MASK,
-                             Gtk::ACCEL_VISIBLE);
+    gnote::NoteWindow *note_window = get_window();
+    note_window->signal_foregrounded.connect(
+      sigc::mem_fun(*this, &PrintNotesNoteAddin::on_note_foregrounded));
+    note_window->signal_backgrounded.connect(
+      sigc::mem_fun(*this, &PrintNotesNoteAddin::on_note_backgrounded));
     m_item->show ();
     add_plugin_menu_item (m_item);
+  }
+
+
+  void PrintNotesNoteAddin::on_note_foregrounded()
+  {
+    m_item->add_accelerator("activate", get_window()->get_accel_group(),
+                            GDK_KEY_P, Gdk::CONTROL_MASK,
+                            Gtk::ACCEL_VISIBLE);
+  }
+
+
+  void PrintNotesNoteAddin::on_note_backgrounded()
+  {
+    m_item->remove_accelerator(get_window()->get_accel_group(),
+                               GDK_KEY_P, Gdk::CONTROL_MASK);
   }
 
 
@@ -123,13 +140,13 @@ namespace printnotes {
       m_print_op->signal_end_print().connect(
         sigc::mem_fun(*this, &PrintNotesNoteAddin::on_end_print));
 
-      m_print_op->run(Gtk::PRINT_OPERATION_ACTION_PRINT_DIALOG, *get_window());
+      m_print_op->run(Gtk::PRINT_OPERATION_ACTION_PRINT_DIALOG, *get_host_window());
     } 
     catch (const sharp::Exception & e) 
     {
       DBG_OUT("Exception while printing %s: %s", get_note()->get_title().c_str(),
               e.what());
-      gnote::utils::HIGMessageDialog dlg(get_note()->get_window(),
+      gnote::utils::HIGMessageDialog dlg(get_host_window(),
                                          GTK_DIALOG_MODAL,
                                          Gtk::MESSAGE_ERROR,
                                          Gtk::BUTTONS_OK,

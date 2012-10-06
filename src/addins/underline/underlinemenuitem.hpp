@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,6 +44,8 @@ protected:
 
 private:
   void menu_shown();
+  void on_note_foregrounded();
+  void on_note_backgrounded();
 
   gnote::NoteAddin * m_note_addin;
   bool m_event_freeze;

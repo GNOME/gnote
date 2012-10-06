@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,7 +57,10 @@ public:
   virtual void on_note_opened();
 private:
   void replacetitle_button_clicked();
-  Gtk::ImageMenuItem * m_item ;
+  void on_note_foregrounded();
+  void on_note_backgrounded();
+
+  Gtk::ImageMenuItem *m_menu_item;
 };
 
 

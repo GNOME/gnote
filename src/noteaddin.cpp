@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -134,5 +135,16 @@ namespace gnote {
     }
   }
 
+  Gtk::Window *NoteAddin::get_host_window() const
+  {
+    if(is_disposing() && !has_buffer()) {
+      throw sharp::Exception("Plugin is disposing already");
+    }
+    NoteWindow *note_window = m_note->get_window();
+    if(!note_window->host()) {
+      throw std::runtime_error("Window is not hosted!");
+    }
+    return dynamic_cast<Gtk::Window*>(note_window->host());
+  }
   
 }

@@ -187,7 +187,7 @@ namespace gnote {
     }
     // Only set window title here, to give feedback that we
     // are indeed changing the title.
-    get_window()->set_title(title);
+    get_window()->set_name(title);
   }
 
 
@@ -220,7 +220,7 @@ namespace gnote {
 
   bool NoteRenameWatcher::update_note_title()
   {
-    std::string title = get_window()->get_title();
+    std::string title = get_window()->get_name();
 
     Note::Ptr existing = manager().find (title);
     if (existing && (existing != get_note())) {
@@ -250,7 +250,7 @@ namespace gnote {
     /// Had to add this check because this method is being called twice.
     if (m_title_taken_dialog == NULL) {
       m_title_taken_dialog =
-        new utils::HIGMessageDialog (get_window(),
+        new utils::HIGMessageDialog (get_host_window(),
                                      GTK_DIALOG_DESTROY_WITH_PARENT,
                                      Gtk::MESSAGE_WARNING,
                                      Gtk::BUTTONS_OK,
@@ -489,7 +489,7 @@ namespace gnote {
       utils::open_url (url);
     } 
     catch (Glib::Error & e) {
-      utils::show_opening_location_error (get_window(), url, e.what());
+      utils::show_opening_location_error (get_host_window(), url, e.what());
     }
 
     // Kill the middle button paste...

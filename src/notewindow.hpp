@@ -51,11 +51,10 @@ class NoteTextMenu
   : public Gtk::Menu
 {
 public:
-  NoteTextMenu(const Glib::RefPtr<Gtk::AccelGroup>&, 
-               const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
+  NoteTextMenu(const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
+  void set_accel_group(const Glib::RefPtr<Gtk::AccelGroup> &);
 
   static void markup_label (Gtk::MenuItem & item);
-  
 protected:
   virtual void on_show();
 
@@ -100,11 +99,20 @@ private:
 
 
 class NoteWindow 
-  : public utils::ForcedPresentWindow<Gtk::Window>
+  : public Gtk::VBox
+  , public utils::EmbedableWidget
 {
 public:
   NoteWindow(Note &);
   ~NoteWindow();
+
+  virtual std::string get_name() const;
+  void set_name(const std::string & name)
+    {
+      m_name = name;
+    }
+  virtual void foreground();
+  virtual void background();
 
   Gtk::TextView * editor() const
     {
@@ -134,14 +142,8 @@ public:
     {
       return *m_find_bar;
     }
-
-protected:
-  virtual bool on_delete_event(GdkEventAny *ev);
-  virtual void on_hide();
-  virtual void on_show();
 private:
   bool on_key_pressed(GdkEventKey*);
-  void close_window_handler();
   void on_delete_button_clicked();
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
   void update_link_button_sensitivity();
@@ -165,8 +167,11 @@ private:
   void open_help_activate();
   void change_depth_right_handler();
   void change_depth_left_handler();
+  void add_accel_group(Gtk::Window &);
+  void remove_accel_group(Gtk::Window &);
 
   Note                        & m_note;
+  std::string                  m_name;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::Toolbar                 *m_toolbar;
   Gtk::ToolButton              *m_link_button;
@@ -180,6 +185,7 @@ private:
   Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;
   Gtk::CheckButton             *m_save_title_check_button;
+  Gtk::ImageMenuItem           *m_find_item;
 
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;

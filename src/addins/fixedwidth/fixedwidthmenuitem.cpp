@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -40,11 +40,11 @@ namespace fixedwidth {
     m_note_addin->get_window()->text_menu()->signal_show().connect(
       sigc::mem_fun(*this, &FixedWidthMenuItem::menu_shown));
 
-    add_accelerator ("activate",
-                     addin->get_window()->get_accel_group(),
-                     GDK_KEY_T,
-                     Gdk::CONTROL_MASK,
-                     Gtk::ACCEL_VISIBLE);
+    gnote::NoteWindow *note_window = addin->get_window();
+    note_window->signal_foregrounded.connect(
+      sigc::mem_fun(*this, &FixedWidthMenuItem::on_note_foregrounded));
+    note_window->signal_backgrounded.connect(
+      sigc::mem_fun(*this, &FixedWidthMenuItem::on_note_backgrounded));
 
     show_all();
   }
@@ -63,6 +63,24 @@ namespace fixedwidth {
     m_event_freeze = true;
     set_active(m_note_addin->get_buffer()->is_active_tag ("monospace"));
     m_event_freeze = false;
+  }
+
+
+  void FixedWidthMenuItem::on_note_foregrounded()
+  {
+    add_accelerator("activate",
+                    m_note_addin->get_window()->get_accel_group(),
+                    GDK_KEY_T,
+                    Gdk::CONTROL_MASK,
+                    Gtk::ACCEL_VISIBLE);
+  }
+
+
+  void FixedWidthMenuItem::on_note_backgrounded()
+  {
+    remove_accelerator(m_note_addin->get_window()->get_accel_group(),
+                       GDK_KEY_T,
+                       Gdk::CONTROL_MASK);
   }
 
 

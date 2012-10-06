@@ -57,6 +57,11 @@ public:
   virtual ~NoteRecentChanges();
   void set_search_text(const std::string & value);
   void present_note(const Note::Ptr & note);
+
+  virtual void embed_widget(utils::EmbedableWidget &);
+  virtual void unembed_widget(utils::EmbedableWidget &);
+  virtual void foreground_embeded(utils::EmbedableWidget &);
+  virtual void background_embeded(utils::EmbedableWidget &);
 protected:
   NoteRecentChanges(NoteManager& m);
   virtual void on_show();
@@ -67,10 +72,6 @@ private:
   void on_close_window();
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
-  void embed_widget(utils::EmbedableWidget &);
-  void unembed_widget(utils::EmbedableWidget &);
-  void foreground_embeded(utils::EmbedableWidget &);
-  void background_embeded(utils::EmbedableWidget &);
   bool is_foreground(utils::EmbedableWidget &);
   void on_embeded_widget_menu_item_toggled(utils::EmbedableWidget *);
 

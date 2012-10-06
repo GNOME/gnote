@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -121,6 +121,9 @@ private:
   void on_end_print(const Glib::RefPtr<Gtk::PrintContext>&);
 /////
   void print_button_clicked();
+  void on_note_foregrounded();
+  void on_note_backgrounded();
+
   Gtk::ImageMenuItem * m_item;
   int                  m_margin_top;
   int                  m_margin_left;

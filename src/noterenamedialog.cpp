@@ -121,7 +121,7 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
                                    const std::string & old_title,
                                    const Note::Ptr & renamed_note)
   : Gtk::Dialog(_("Rename Note Links?"),
-                *renamed_note->get_window(),
+                *dynamic_cast<Gtk::Window*>(renamed_note->get_window()->host()),
                 false)
   , m_notes_model(Gtk::ListStore::create(m_model_column_record))
   , m_dont_rename_button(_("_Don't Rename Links"), true)

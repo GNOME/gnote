@@ -90,7 +90,7 @@ namespace gnote {
 
   void NoteRecentChanges::present_note(const Note::Ptr & note)
   {
-    note->get_window()->show();
+    embed_widget(*note->get_window());
   }
 
 
@@ -152,7 +152,7 @@ namespace gnote {
       }
     }
 
-    hide ();
+    hide();
   }
 
 
@@ -214,15 +214,25 @@ namespace gnote {
 
   void NoteRecentChanges::unembed_widget(utils::EmbedableWidget & widget)
   {
+    bool show_other = false;
     std::map<utils::EmbedableWidget*, Gtk::RadioMenuItem*>::iterator iter = m_embeded_widgets.find(&widget);
     if(iter != m_embeded_widgets.end()) {
       if(is_foreground(*iter->first)) {
         background_embeded(widget);
+        show_other = true;
       }
       m_menu->remove(*iter->second);
       delete iter->second;
       m_embeded_widgets.erase(iter);
       widget.unembed();
+    }
+    if(show_other) {
+      if(m_embeded_widgets.size()) {
+	foreground_embeded(*m_embeded_widgets.rbegin()->first);
+      }
+      else if(get_visible()) {
+        on_close_window();
+      }
     }
   }
 
@@ -233,7 +243,12 @@ namespace gnote {
 
   void NoteRecentChanges::background_embeded(utils::EmbedableWidget & widget)
   {
-    m_embeded_widgets[&widget]->set_active(false);
+    if(get_visible()) {
+      m_embeded_widgets[&widget]->set_active(false);
+    }
+    else {
+      widget.background();
+    }
   }
 
   bool NoteRecentChanges::is_foreground(utils::EmbedableWidget & widget)

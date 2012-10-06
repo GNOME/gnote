@@ -278,6 +278,7 @@ namespace gnote {
     , m_save_needed(false)
     , m_is_deleting(false)
     , m_enabled(true)
+    , m_note_window_embeded(false)
     , m_focus_widget(NULL)
     , m_manager(_manager)
     , m_window(NULL)
@@ -377,7 +378,9 @@ namespace gnote {
     }
 
     if (m_window) {
-      m_window->hide ();
+      if(m_window->host()) {
+        m_window->host()->unembed_widget(*m_window);
+      }
       delete m_window; 
       m_window = NULL;
     }
@@ -414,7 +417,7 @@ namespace gnote {
     catch (const sharp::Exception & e) {
       // Probably IOException or UnauthorizedAccessException?
       ERR_OUT("Exception while saving note: %s", e.what());
-      show_io_error_dialog(m_window);
+      show_io_error_dialog(dynamic_cast<Gtk::Window*>(m_window->host()));
     }
 
     m_signal_saved(shared_from_this());
@@ -467,6 +470,7 @@ namespace gnote {
 
   bool Note::on_window_configure(GdkEventConfigure * /*ev*/)
   {
+#if 0
     int cur_x, cur_y, cur_width, cur_height;
 
     // Ignore events when maximized.  We don't want notes
@@ -487,6 +491,7 @@ namespace gnote {
 
     DBG_OUT("WindowConfigureEvent queueing save");
     queue_save(NO_CHANGE);
+#endif
     return false;
   }
 
@@ -654,7 +659,7 @@ namespace gnote {
   {
     if (m_data.data().title() != new_title) {
       if (m_window) {
-        m_window->set_title(new_title);
+        m_window->set_name(new_title);
       }
 
       std::string old_title = m_data.data().title();
@@ -802,7 +807,7 @@ namespace gnote {
   {
     if (m_data.data().title() != newTitle) {
       if (m_window) {
-        m_window->set_title(newTitle);
+        m_window->set_name(newTitle);
       }
 
       m_data.data().title() = newTitle;
@@ -1030,13 +1035,23 @@ namespace gnote {
         sigc::mem_fun(*this, &Note::on_window_configure), false);
 
       m_window->editor()->set_sensitive(enabled());
+#if 0
       if (m_data.data().has_extent())
         m_window->set_default_size(m_data.data().width(),
                                    m_data.data().height());
 
       if (m_data.data().has_position())
         m_window->move(m_data.data().x(), m_data.data().y());
+#endif
 
+      m_window->signal_embeded.connect(sigc::mem_fun(*this, &Note::on_note_window_embeded));
+    }
+    return m_window;
+  }
+
+  void Note::on_note_window_embeded()
+  {
+    if(!m_note_window_embeded) {
       // This is here because emiting inside
       // OnRealized causes segfaults.
       m_signal_opened(*this);
@@ -1044,8 +1059,8 @@ namespace gnote {
       // Add any child widgets if any exist now that
       // the window is showing.
       process_child_widget_queue();
+      m_note_window_embeded = true;
     }
-    return m_window;
   }
 
   bool Note::is_special() const
@@ -1118,12 +1133,15 @@ namespace gnote {
   {
     m_enabled = is_enabled;
     if(m_window) {
-      if(!m_enabled) {
-        m_focus_widget = m_window->get_focus();
-      }
-      m_window->set_sensitive(m_enabled);
-      if(m_enabled) {
-        m_window->set_focus(*m_focus_widget);
+      Gtk::Window *window = dynamic_cast<Gtk::Window*>(m_window->host());
+      if(window) {
+        if(!m_enabled) {
+          m_focus_widget = window->get_focus();
+        }
+        window->set_sensitive(m_enabled);
+        if(m_enabled) {
+          window->set_focus(*m_focus_widget);
+        }
       }
     }
   }

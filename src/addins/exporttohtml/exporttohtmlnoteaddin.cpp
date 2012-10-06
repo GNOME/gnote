@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -148,7 +148,7 @@ void ExportToHtmlNoteAddin::export_button_clicked()
       // Let the user know the note was saved successfully
       // even though showing the note in a web browser failed.
       gnote::utils::HIGMessageDialog msg_dialog(
-        get_window(),
+        get_host_window(),
         GTK_DIALOG_DESTROY_WITH_PARENT,
         Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK,
         _("Note exported successfully"),

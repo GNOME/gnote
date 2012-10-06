@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -74,19 +74,34 @@ void ReplaceTitleNoteAddin::shutdown()
 
 void ReplaceTitleNoteAddin::on_note_opened()
 {
-  Gtk::ImageMenuItem *item =  manage(new Gtk::ImageMenuItem(_("Replace title")));
-  item->set_image(*manage(new Gtk::Image(Gtk::Stock::FIND_AND_REPLACE, Gtk::ICON_SIZE_MENU)));
-  item->signal_activate().connect(
+  m_menu_item = manage(new Gtk::ImageMenuItem(_("Replace title")));
+  m_menu_item->set_image(*manage(new Gtk::Image(Gtk::Stock::FIND_AND_REPLACE, Gtk::ICON_SIZE_MENU)));
+  m_menu_item->signal_activate().connect(
     sigc::mem_fun(*this, &ReplaceTitleNoteAddin::replacetitle_button_clicked));
 
-  item->add_accelerator("activate",
-                        get_window()->get_accel_group(),
-                        GDK_KEY_R,
-                        Gdk::CONTROL_MASK,
-                        Gtk::ACCEL_VISIBLE);
+  gnote::NoteWindow *note_window = get_window();
+  note_window->signal_foregrounded.connect(
+    sigc::mem_fun(*this, &ReplaceTitleNoteAddin::on_note_foregrounded));
+  note_window->signal_backgrounded.connect(
+    sigc::mem_fun(*this, &ReplaceTitleNoteAddin::on_note_backgrounded));
 
-  item->show() ;
-  add_plugin_menu_item(item);
+  m_menu_item->show() ;
+  add_plugin_menu_item(m_menu_item);
+}
+
+void ReplaceTitleNoteAddin::on_note_foregrounded()
+{
+  m_menu_item->add_accelerator("activate",
+                               get_window()->get_accel_group(),
+                               GDK_KEY_R,
+                               Gdk::CONTROL_MASK,
+                                Gtk::ACCEL_VISIBLE);
+}
+
+void ReplaceTitleNoteAddin::on_note_backgrounded()
+{
+  m_menu_item->remove_accelerator(get_window()->get_accel_group(),
+                                  GDK_KEY_R, Gdk::CONTROL_MASK);
 }
 
 void ReplaceTitleNoteAddin::replacetitle_button_clicked()

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -179,8 +179,8 @@ namespace notebooks {
   {
     Note::List noteList;
     noteList.push_back(get_note());
-    NotebookManager::instance().prompt_create_new_notebook(get_note()->get_window(),
-                                                           noteList);
+    NotebookManager::instance().prompt_create_new_notebook(
+      dynamic_cast<Gtk::Window*>(get_note()->get_window()->host()), noteList);
   }
 
 
