@@ -140,6 +140,15 @@ namespace gnote {
     return m_name;
   }
 
+  void NoteWindow::embed(utils::EmbedableWidgetHost *h)
+  {
+    //remove from previous host, if any
+    if(host()) {
+      host()->unembed_widget(*this);
+    }
+    utils::EmbedableWidget::embed(h);
+  }
+
   void NoteWindow::foreground()
   {
     //addins may add accelarators, so accel group must be there

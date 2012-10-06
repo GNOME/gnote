@@ -111,6 +111,7 @@ public:
     {
       m_name = name;
     }
+  virtual void embed(utils::EmbedableWidgetHost *h);
   virtual void foreground();
   virtual void background();
 
