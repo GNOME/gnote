@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,8 +31,8 @@
 namespace fixedwidth {
 
   FixedWidthMenuItem::FixedWidthMenuItem(gnote::NoteAddin *addin)
-    : Gtk::CheckMenuItem(Glib::ustring("<span font_family=\"monospace\">")
-                         + _("Fixed Wid_th") + "</span>", true)
+    : Gtk::CheckMenuItem(Glib::ustring("<tt>")
+                         + _("Fixed Wid_th") + "</tt>", true)
     , m_note_addin(addin)
     , m_event_freeze(false)
   {
