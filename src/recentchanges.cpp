@@ -130,8 +130,8 @@ namespace gnote {
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
     NoteRecentChanges::Ptr window = Gnote::obj().new_main_window();
-    window->present_note(note);
     window->present();
+    window->present_note(note);
   }
 
   void NoteRecentChanges::on_delete_note()
