@@ -294,8 +294,6 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &Gnote::on_new_note_action));
     am["ShowSearchAllNotesAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &Gnote::open_search_all));
-    am["NoteSynchronizationAction"]->signal_activate()
-      .connect(sigc::mem_fun(*this, &Gnote::open_note_sync_window));
   }
 
   void Gnote::on_new_note_action()
@@ -456,7 +454,7 @@ namespace gnote {
     get_main_window()->present();
   }
 
-  void Gnote::open_note_sync_window()
+  void Gnote::open_note_sync_window(const Glib::VariantBase&)
   {
     if(m_sync_dlg == 0) {
       m_sync_dlg = sync::SyncDialog::create();
@@ -479,6 +477,7 @@ namespace gnote {
     ActionManager & am(ActionManager::obj());
     am.get_app_action("new-note")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_note_app_action));
     am.get_app_action("new-window")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_window_action));
+    am.get_app_action("sync-notes")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::open_note_sync_window));
     am.get_app_action("help-contents")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
     am.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
     am.get_app_action("quit")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_quit_gnote_action));

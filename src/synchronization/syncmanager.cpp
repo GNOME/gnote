@@ -130,28 +130,10 @@ namespace sync {
     g_signal_connect(m_sync_helper, "update-note", G_CALLBACK(SyncManager::on_update_note), NULL);
     g_signal_connect(m_sync_helper, "delete-note", G_CALLBACK(SyncManager::on_delete_note), NULL);
     m_client = SyncClient::Ptr(new GnoteSyncClient);
-    // Add a "Synchronize Notes" to Tomboy's Main Menu
-    Glib::RefPtr<Gtk::ActionGroup> action_group = Gtk::ActionGroup::create("Sync");
-    action_group->add(Gtk::Action::create("ToolsMenuAction", _("_Tools"), ""));
-    Glib::RefPtr<Gtk::Action> sync_notes_action = Gtk::Action::create("SyncNotesAction", _("Synchronize Notes"), "");
-    sync_notes_action->signal_activate().connect(sigc::mem_fun(*this, &SyncManager::on_sync_notes_activate));
-    action_group->add(sync_notes_action);
-
-#if 0
-    ActionManager::obj().get_ui()->add_ui_from_string(
-      "<ui>"
-      "<menubar name='MainWindowMenubar'>"
-      "<placeholder name='MainWindowMenuPlaceholder'>"
-      "<menu name='ToolsMenu' action='ToolsMenuAction'>"
-      "<menuitem name='SyncNotes' action='SyncNotesAction' />"
-      "</menu>"
-      "</placeholder>"
-      "</menubar>"
-      "</ui>"
-    );
-#endif
-
-    ActionManager::obj().get_ui()->insert_action_group(action_group, 0);
+    // Add a "Synchronize Notes" to Gnote's Application Menu
+    ActionManager & am(ActionManager::obj());
+    am.add_app_action("sync-notes");
+    am.add_app_menu_item(ActionManager::APP_ACTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
 
     // Initialize all the SyncServiceAddins
     Gnote::obj().default_note_manager().get_addin_manager().initialize_sync_service_addins();
@@ -499,7 +481,7 @@ namespace sync {
   {
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC);
     std::string sync_addin_id = settings->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
-    ActionManager::obj()["SyncNotesAction"]->set_sensitive(sync_addin_id != "");
+    ActionManager::obj().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
 
     int timeoutPref = settings->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
     if(timeoutPref != m_autosync_timeout_pref_minutes) {
@@ -648,12 +630,6 @@ namespace sync {
     }
 
     return addin;
-  }
-
-
-  void SyncManager::on_sync_notes_activate()
-  {
-    ActionManager::obj()["NoteSynchronizationAction"]->activate();
   }
 
 

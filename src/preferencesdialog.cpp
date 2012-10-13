@@ -1251,7 +1251,7 @@ DBG_OUT("no addin");
 
       if(dialog_response == Gtk::RESPONSE_YES) {
         // TODO: Put this voodoo in a method somewhere
-        ActionManager::obj()["NoteSynchronizationAction"]->activate();
+        ActionManager::obj().get_app_action("sync-notes")->activate(Glib::VariantBase());
       }
     }
     else {

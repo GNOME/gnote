@@ -242,11 +242,6 @@ namespace gnote {
       _("_Search All Notes"),  _("Open the Search All Notes window"));
     m_main_window_actions->add(action);
 
-    action = Gtk::Action::create(
-      "NoteSynchronizationAction",
-      _("S_ynchronize Notes"), _("Start synchronizing notes"));
-    m_main_window_actions->add(action);    
-
     m_ui->insert_action_group(m_main_window_actions);
   }
 

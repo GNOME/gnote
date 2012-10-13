@@ -84,7 +84,6 @@ namespace sync {
     void set_state(SyncState new_state);
     SyncServiceAddin *get_configured_sync_service();
     SyncServiceAddin *get_sync_service_addin(const std::string & sync_service_id);
-    void on_sync_notes_activate();
     void create_note_in_main_thread(const NoteUpdate & noteUpdate);
     void update_note_in_main_thread(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
     void delete_note_in_main_thread(const Note::Ptr & existingNote);

@@ -136,7 +136,7 @@ public:
   NoteRecentChanges::Ptr get_main_window();
   NoteRecentChanges::Ptr get_window_for_note();
   void open_search_all();
-  void open_note_sync_window();
+  void open_note_sync_window(const Glib::VariantBase&);
 
   static std::string cache_dir();
   static std::string conf_dir();
