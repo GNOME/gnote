@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,9 +21,13 @@
 #ifndef __ACTIONMANAGER_HPP_
 #define __ACTIONMANAGER_HPP_
 
+#include <map>
 #include <string>
 #include <list>
 
+#include <glibmm/variant.h>
+#include <giomm/menu.h>
+#include <giomm/simpleaction.h>
 #include <gtkmm/action.h>
 #include <gtkmm/uimanager.h>
 #include <gdkmm/pixbuf.h>
@@ -35,6 +40,11 @@ class ActionManager
   : public base::Singleton<ActionManager>
 {
 public:
+  static const int APP_ACTION_NEW;
+  static const int APP_ACTION_MANAGE;
+  static const int APP_ACTION_HELP;
+  static const int APP_ACTION_LAST;
+
   ActionManager();
 
   Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const
@@ -57,10 +67,48 @@ public:
     {
       return m_newNote;
     }
+  Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const;
+  const std::vector<Glib::RefPtr<Gio::SimpleAction> > & get_app_actions() const
+    {
+      return m_app_actions;
+    }
+  void add_app_action(const std::string & name);
+  void add_app_menu_item(int section, int order, const std::string & label,
+                         const std::string & action_def);
+  Glib::RefPtr<Gio::Menu> get_app_menu() const;
 private:
+  void make_app_actions();
+  void make_app_menu_items();
+  Glib::RefPtr<Gio::Menu> make_app_menu_section(int section) const;
+
   Glib::RefPtr<Gtk::UIManager> m_ui;
   Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
   Glib::RefPtr<Gdk::Pixbuf> m_newNote;
+
+  std::vector<Glib::RefPtr<Gio::SimpleAction> > m_app_actions;
+
+  struct AppMenuItem
+  {
+    int order;
+    std::string label;
+    std::string action_def;
+
+    AppMenuItem(int ord, const std::string & lbl, const std::string & act_def)
+      : order(ord)
+      , label(lbl)
+      , action_def(act_def)
+      {}
+
+    struct ptr_comparator
+    {
+      bool operator() (const AppMenuItem *x, const AppMenuItem *y)
+        {
+          return x->order < y->order;
+        }
+    };
+  };
+  typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
+  AppMenuItemMultiMap m_app_menu_items;
 };
 
 

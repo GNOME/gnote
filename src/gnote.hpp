@@ -127,11 +127,11 @@ public:
   void start_tray_icon();
 
   void on_new_note_action();
-  void on_quit_gnote_action();
+  void on_quit_gnote_action(const Glib::VariantBase&);
   void on_preferences_response(int res);
   void on_show_preferences_action();
-  void on_show_help_action();
-  void on_show_about_action();
+  void on_show_help_action(const Glib::VariantBase&);
+  void on_show_about_action(const Glib::VariantBase&);
   NoteRecentChanges::Ptr new_main_window();
   NoteRecentChanges::Ptr get_main_window();
   NoteRecentChanges::Ptr get_window_for_note();
@@ -181,6 +181,11 @@ private:
   void end_main(bool bus_aquired, bool name_acquired);
   void on_sync_dialog_response(int response_id);
   void on_main_window_closed(std::list<NoteRecentChanges::Ptr>::iterator pos);
+  void make_app_actions();
+  void add_app_actions(const std::vector<Glib::RefPtr<Gio::SimpleAction> > & actions);
+  void make_app_menu();
+  void on_new_window_action(const Glib::VariantBase&);
+  void on_new_note_app_action(const Glib::VariantBase&);
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;

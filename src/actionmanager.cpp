@@ -69,11 +69,19 @@
 
 namespace gnote {
 
+  const int ActionManager::APP_ACTION_NEW = 1;
+  const int ActionManager::APP_ACTION_MANAGE = 2;
+  const int ActionManager::APP_ACTION_HELP = 3;
+  const int ActionManager::APP_ACTION_LAST = 4;
+
+
   ActionManager::ActionManager()
     : m_ui(Gtk::UIManager::create())
     , m_main_window_actions(Gtk::ActionGroup::create("MainWindow"))
   {
     populate_action_groups();
+    make_app_actions();
+    make_app_menu_items();
     m_newNote = utils::get_icon("note-new", 16);
     DBG_ASSERT(m_newNote, "note-new icon not found");
   }
@@ -257,6 +265,97 @@ namespace gnote {
     }
     DBG_OUT("%s not found", n.c_str());
     return Glib::RefPtr<Gtk::Action>();      
+  }
+
+  void ActionManager::make_app_actions()
+  {
+    add_app_action("new-note");
+    add_app_action("new-window");
+    add_app_action("about");
+    add_app_action("help-contents");
+    add_app_action("quit");
+  }
+
+  Glib::RefPtr<Gio::SimpleAction> ActionManager::get_app_action(const std::string & name) const
+  {
+    for(std::vector<Glib::RefPtr<Gio::SimpleAction> >::const_iterator iter = m_app_actions.begin();
+        iter != m_app_actions.end(); ++iter) {
+      if((*iter)->get_name() == name) {
+        return *iter;
+      }
+    }
+    
+    return Glib::RefPtr<Gio::SimpleAction>();
+  }
+
+  void ActionManager::add_app_action(const std::string & name)
+  {
+    m_app_actions.push_back(Gio::SimpleAction::create(name));
+  }
+
+  void ActionManager::add_app_menu_item(int section, int order, const std::string & label,
+                                        const std::string & action_def)
+  {
+    m_app_menu_items.insert(std::make_pair(section, AppMenuItem(order, label, action_def)));
+  }
+
+  void ActionManager::make_app_menu_items()
+  {
+    add_app_menu_item(APP_ACTION_NEW, 100, _("_New Note"), "app.new-note");
+    add_app_menu_item(APP_ACTION_NEW, 200, _("New _Window"), "app.new-window");
+    add_app_menu_item(APP_ACTION_HELP, 100, _("Help _Contents"), "app.help-contents");
+    add_app_menu_item(APP_ACTION_HELP, 200, _("_About"), "app.about");
+    add_app_menu_item(APP_ACTION_LAST, 100, _("_Quit"), "app.quit");
+  }
+
+  Glib::RefPtr<Gio::Menu> ActionManager::get_app_menu() const
+  {
+    Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
+
+    int pos = 0;
+    Glib::RefPtr<Gio::Menu> section = make_app_menu_section(APP_ACTION_NEW);
+    if(section != 0) {
+      menu->insert_section(pos++, "", section);
+    }
+
+    section = make_app_menu_section(APP_ACTION_MANAGE);
+    if(section != 0) {
+      menu->insert_section(pos++, "", section);
+    }
+
+    section = make_app_menu_section(APP_ACTION_HELP);
+    if(section != 0) {
+      menu->insert_section(pos++, "", section);
+    }
+
+    section = make_app_menu_section(APP_ACTION_LAST);
+    if(section != 0) {
+      menu->insert_section(pos++, "", section);
+    }
+
+    return menu;
+  }
+
+  Glib::RefPtr<Gio::Menu> ActionManager::make_app_menu_section(int sec) const
+  {
+    std::pair<AppMenuItemMultiMap::const_iterator, AppMenuItemMultiMap::const_iterator>
+    range = m_app_menu_items.equal_range(sec);
+
+    Glib::RefPtr<Gio::Menu> section;
+    if(range.first != m_app_menu_items.end()) {
+      std::vector<const AppMenuItem*> menu_items;
+      for(AppMenuItemMultiMap::const_iterator iter = range.first; iter != range.second; ++iter) {
+        menu_items.push_back(&iter->second);
+      }
+      std::sort(menu_items.begin(), menu_items.end(), AppMenuItem::ptr_comparator());
+
+      section = Gio::Menu::create();
+      for(std::vector<const AppMenuItem*>::iterator iter = menu_items.begin(); iter != menu_items.end(); ++iter) {
+        section->append((*iter)->label, (*iter)->action_def);
+      }
+    }
+
+    return section;
   }
 
 }

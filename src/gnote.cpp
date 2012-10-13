@@ -187,6 +187,8 @@ namespace gnote {
       }
     }
 
+    make_app_actions();
+    make_app_menu();
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
       .get_schema_settings(Preferences::SCHEMA_GNOTE);
     if(settings->get_boolean(Preferences::USE_STATUS_ICON)) {
@@ -281,13 +283,13 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &Gnote::on_new_note_action));
 #endif
     am["QuitGNoteAction"]->signal_activate()
-      .connect(sigc::mem_fun(*this, &Gnote::on_quit_gnote_action));
+      .connect(sigc::mem_fun(*this, &Gnote::quit));
     am["ShowPreferencesAction"]->signal_activate() 
       .connect(sigc::mem_fun(*this, &Gnote::on_show_preferences_action));
     am["ShowHelpAction"]->signal_activate()
-      .connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
+      .connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_show_help_action), Glib::VariantBase()));
     am["ShowAboutAction"]->signal_activate()
-      .connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
+      .connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_show_about_action), Glib::VariantBase()));
     am["TrayNewNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &Gnote::on_new_note_action));
     am["ShowSearchAllNotesAction"]->signal_activate()
@@ -314,7 +316,7 @@ namespace gnote {
     }    
   }
 
-  void Gnote::on_quit_gnote_action()
+  void Gnote::on_quit_gnote_action(const Glib::VariantBase&)
   {
     quit();
   }
@@ -336,7 +338,7 @@ namespace gnote {
     m_prefsdlg->present();
   }
 
-  void Gnote::on_show_help_action()
+  void Gnote::on_show_help_action(const Glib::VariantBase&)
   {
     GdkScreen *cscreen = NULL;
     if(m_tray_icon) {
@@ -347,7 +349,7 @@ namespace gnote {
     utils::show_help("gnote", "", cscreen, NULL);
   }
 
-  void Gnote::on_show_about_action()
+  void Gnote::on_show_about_action(const Glib::VariantBase&)
   {
     std::vector<Glib::ustring> authors;
     authors.push_back("Aurimas Černius <aurisc4@gmail.com>");
@@ -469,6 +471,55 @@ namespace gnote {
   {
     m_sync_dlg->hide();
     m_sync_dlg.reset();
+  }
+
+
+  void Gnote::make_app_actions()
+  {
+    ActionManager & am(ActionManager::obj());
+    am.get_app_action("new-note")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_note_app_action));
+    am.get_app_action("new-window")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_window_action));
+    am.get_app_action("help-contents")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
+    am.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
+    am.get_app_action("quit")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_quit_gnote_action));
+
+    add_app_actions(am.get_app_actions());
+  }
+
+
+  void Gnote::add_app_actions(const std::vector<Glib::RefPtr<Gio::SimpleAction> > & actions)
+  {
+    for(std::vector<Glib::RefPtr<Gio::SimpleAction> >::const_iterator iter = actions.begin();
+        iter != actions.end(); ++iter) {
+      add_action(*iter);
+    }
+  }
+
+
+  void Gnote::on_new_window_action(const Glib::VariantBase&)
+  {
+    new_main_window()->present();
+  }
+
+
+  void Gnote::on_new_note_app_action(const Glib::VariantBase&)
+  {
+    std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
+    for(std::vector<Gtk::Window*>::iterator iter = windows.begin(); iter != windows.end(); ++iter) {
+      if((*iter)->property_is_active()) {
+        NoteRecentChanges *rc = dynamic_cast<NoteRecentChanges*>(*iter);
+        rc->new_note();
+        return;
+      }
+    }
+
+    get_main_window()->new_note();
+  }
+
+
+  void Gnote::make_app_menu()
+  {
+    set_app_menu(ActionManager::obj().get_app_menu());
   }
 
 
@@ -609,7 +660,7 @@ namespace gnote {
       else {
         execute(remote);
       }
-      Gnote::obj().on_quit_gnote_action();
+      Gnote::obj().quit();
     }
     return 0;
   }
