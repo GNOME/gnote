@@ -170,6 +170,11 @@ namespace gnote {
         sigc::mem_fun(*this, &NotebookApplicationAddin::on_note_added));
       nm.signal_note_deleted.connect(
         sigc::mem_fun(*this, &NotebookApplicationAddin::on_note_deleted));
+
+      am.add_app_action("new-notebook");
+      am.get_app_action("new-notebook")->signal_activate().connect(
+        sigc::mem_fun(*this, &NotebookApplicationAddin::on_new_notebook_action));
+      am.add_app_menu_item(ActionManager::APP_ACTION_NEW, 300, _("New Note_book"), "app.new-notebook");
         
       m_initialized = true;
     }
@@ -283,6 +288,12 @@ namespace gnote {
 
 
     void NotebookApplicationAddin::on_new_notebook_menu_item()
+    {
+      NotebookManager::prompt_create_new_notebook (NULL);
+    }
+
+
+    void NotebookApplicationAddin::on_new_notebook_action(const Glib::VariantBase&)
     {
       NotebookManager::prompt_create_new_notebook (NULL);
     }
