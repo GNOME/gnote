@@ -129,7 +129,7 @@ public:
   void on_new_note_action();
   void on_quit_gnote_action(const Glib::VariantBase&);
   void on_preferences_response(int res);
-  void on_show_preferences_action();
+  void on_show_preferences_action(const Glib::VariantBase&);
   void on_show_help_action(const Glib::VariantBase&);
   void on_show_about_action(const Glib::VariantBase&);
   NoteRecentChanges::Ptr new_main_window();

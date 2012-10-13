@@ -284,8 +284,8 @@ namespace gnote {
 #endif
     am["QuitGNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &Gnote::quit));
-    am["ShowPreferencesAction"]->signal_activate() 
-      .connect(sigc::mem_fun(*this, &Gnote::on_show_preferences_action));
+    am["ShowPreferencesAction"]->signal_activate().connect(
+      boost::bind(sigc::mem_fun(*this, &Gnote::on_show_preferences_action), Glib::VariantBase()));
     am["ShowHelpAction"]->signal_activate()
       .connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_show_help_action), Glib::VariantBase()));
     am["ShowAboutAction"]->signal_activate()
@@ -326,7 +326,7 @@ namespace gnote {
   }
 
 
-  void Gnote::on_show_preferences_action()
+  void Gnote::on_show_preferences_action(const Glib::VariantBase&)
   {
     if(!m_prefsdlg) {
       m_prefsdlg = new PreferencesDialog(m_manager->get_addin_manager());
@@ -477,6 +477,8 @@ namespace gnote {
     ActionManager & am(ActionManager::obj());
     am.get_app_action("new-note")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_note_app_action));
     am.get_app_action("new-window")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_window_action));
+    am.get_app_action("show-preferences")->signal_activate().connect(
+      sigc::mem_fun(*this, &Gnote::on_show_preferences_action));
     am.get_app_action("sync-notes")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::open_note_sync_window));
     am.get_app_action("help-contents")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
     am.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
