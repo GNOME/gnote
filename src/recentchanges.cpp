@@ -40,6 +40,7 @@ namespace gnote {
 
   NoteRecentChanges::NoteRecentChanges(NoteManager& m)
     : NoteRecentChangesParent(_("Notes"))
+    , m_note_manager(m)
     , m_search_notes_widget(m)
     , m_content_vbox(false, 0)
   {
@@ -91,6 +92,19 @@ namespace gnote {
   void NoteRecentChanges::present_note(const Note::Ptr & note)
   {
     embed_widget(*note->get_window());
+  }
+
+
+  void NoteRecentChanges::new_note()
+  {
+    std::vector<Gtk::Widget*> current = m_embed_box.get_children();
+    SearchNotesWidget *search_wgt = dynamic_cast<SearchNotesWidget*>(current.size() > 0 ? current[0] : NULL);
+    if(search_wgt) {
+      search_wgt->new_note();
+    }
+    else {
+      present_note(m_note_manager.create());
+    }
   }
 
 

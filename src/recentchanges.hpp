@@ -57,6 +57,7 @@ public:
   virtual ~NoteRecentChanges();
   void set_search_text(const std::string & value);
   void present_note(const Note::Ptr & note);
+  void new_note();
 
   virtual void embed_widget(utils::EmbedableWidget &);
   virtual void unembed_widget(utils::EmbedableWidget &);
@@ -75,6 +76,7 @@ private:
   bool is_foreground(utils::EmbedableWidget &);
   void on_embeded_widget_menu_item_toggled(utils::EmbedableWidget *);
 
+  NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::VBox           m_content_vbox;
   Gtk::VBox           m_embed_box;
