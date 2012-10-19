@@ -186,6 +186,7 @@ private:
   void make_app_menu();
   void on_new_window_action(const Glib::VariantBase&);
   void on_new_note_app_action(const Glib::VariantBase&);
+  NoteRecentChanges *get_active_window();
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;

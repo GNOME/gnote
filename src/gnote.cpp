@@ -503,18 +503,28 @@ namespace gnote {
   }
 
 
-  void Gnote::on_new_note_app_action(const Glib::VariantBase&)
+  NoteRecentChanges *Gnote::get_active_window()
   {
     std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
     for(std::vector<Gtk::Window*>::iterator iter = windows.begin(); iter != windows.end(); ++iter) {
       if((*iter)->property_is_active()) {
-        NoteRecentChanges *rc = dynamic_cast<NoteRecentChanges*>(*iter);
-        rc->new_note();
-        return;
+        return dynamic_cast<NoteRecentChanges*>(*iter);
       }
     }
 
-    get_main_window()->new_note();
+    return NULL;
+  }
+
+
+  void Gnote::on_new_note_app_action(const Glib::VariantBase&)
+  {
+    NoteRecentChanges *rc = get_active_window();
+    if(rc) {
+      rc->new_note();
+    }
+    else {
+      get_main_window()->new_note();
+    }
   }
 
 
