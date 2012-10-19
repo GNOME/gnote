@@ -126,7 +126,6 @@ public:
   void setup_global_actions();
   void start_tray_icon();
 
-  void on_new_note_action();
   void on_quit_gnote_action(const Glib::VariantBase&);
   void on_preferences_response(int res);
   void on_show_preferences_action(const Glib::VariantBase&);

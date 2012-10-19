@@ -287,27 +287,9 @@ namespace gnote {
     am["ShowAboutAction"]->signal_activate()
       .connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_show_about_action), Glib::VariantBase()));
     am["TrayNewNoteAction"]->signal_activate()
-      .connect(sigc::mem_fun(*this, &Gnote::on_new_note_action));
+      .connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_new_note_app_action), Glib::VariantBase()));
     am["ShowSearchAllNotesAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &Gnote::open_search_all));
-  }
-
-  void Gnote::on_new_note_action()
-  {
-    try {
-      Note::Ptr new_note = default_note_manager().create();
-      new_note->get_window()->show();
-    }
-    catch(const std::exception & e) 
-    {
-      utils::HIGMessageDialog dialog (
-        NULL,  (GtkDialogFlags)0,
-        Gtk::MESSAGE_ERROR,
-        Gtk::BUTTONS_OK,
-        _("Cannot create new note"),
-        e.what());
-      dialog.run ();
-    }    
   }
 
   void Gnote::on_quit_gnote_action(const Glib::VariantBase&)
