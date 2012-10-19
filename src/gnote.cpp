@@ -278,10 +278,6 @@ namespace gnote {
   void Gnote::setup_global_actions()
   {
     ActionManager & am(ActionManager::obj());
-#if 0
-    am["NewNoteAction"]->signal_activate()
-      .connect(sigc::mem_fun(*this, &Gnote::on_new_note_action));
-#endif
     am["QuitGNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &Gnote::quit));
     am["ShowPreferencesAction"]->signal_activate().connect(

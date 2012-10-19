@@ -182,25 +182,6 @@ namespace gnote {
   {
     Glib::RefPtr<Gtk::Action> action;
 
-#if 0
-    action = Gtk::Action::create("NewNoteAction", 
-                                 Gtk::Stock::NEW, _("_New"),
-                                 _("Create a new note"));
-    m_main_window_actions->add(action, Gtk::AccelKey("<Control>N"));
-
-    action = Gtk::Action::create(
-      "OpenNoteAction", Gtk::Stock::OPEN,
-      _("_Open..."),_("Open the selected note"));
-    action->set_sensitive(false);
-    m_main_window_actions->add(action, Gtk::AccelKey( "<Control>O"));
-
-    action = Gtk::Action::create(
-      "DeleteNoteAction", Gtk::Stock::DELETE,
-      _("_Delete"),  _("Delete the selected note"));
-    action->set_sensitive(false);
-    m_main_window_actions->add(action, Gtk::AccelKey("Delete"));
-#endif
-
     action = Gtk::Action::create(
       "QuitGNoteAction", Gtk::Stock::QUIT,
       _("_Quit"), _("Quit Gnote"));
