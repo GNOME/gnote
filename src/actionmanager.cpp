@@ -181,8 +181,6 @@ namespace gnote {
   void ActionManager::populate_action_groups()
   {
     Glib::RefPtr<Gtk::Action> action;
-    action = Gtk::Action::create("FileMenuAction", _("_File"));
-    m_main_window_actions->add(action);
 
 #if 0
     action = Gtk::Action::create("NewNoteAction", 
@@ -208,15 +206,9 @@ namespace gnote {
       _("_Quit"), _("Quit Gnote"));
     m_main_window_actions->add(action, Gtk::AccelKey("<Control>Q"));
 
-    action = Gtk::Action::create("EditMenuAction", _("_Edit"));
-    m_main_window_actions->add(action);
-
     action = Gtk::Action::create(
       "ShowPreferencesAction", Gtk::Stock::PREFERENCES,
       _("_Preferences"), _("Gnote Preferences"));
-    m_main_window_actions->add(action);
-
-    action = Gtk::Action::create("HelpMenuAction", _("_Help"));
     m_main_window_actions->add(action);
 
     action = Gtk::Action::create("ShowHelpAction", Gtk::Stock::HELP,
