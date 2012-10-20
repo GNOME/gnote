@@ -1007,7 +1007,7 @@ namespace gnote {
     Note::Ptr template_note = manager.get_or_create_template_note ();
 
     // Open the template note
-    template_note->get_window()->show ();
+    Gnote::obj().open_note(template_note);
   }
 
 

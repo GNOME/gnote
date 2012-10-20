@@ -208,7 +208,7 @@ namespace gnote {
   void Gnote::start_note_created(const Note::Ptr & start_note)
   {
     DBG_OUT("we will show the start note");
-    start_note->get_window()->show();
+    open_note(start_note);
   }
 
   std::string Gnote::get_note_path(const std::string & override_path)
@@ -503,6 +503,14 @@ namespace gnote {
     else {
       get_main_window()->new_note();
     }
+  }
+
+
+  void Gnote::open_note(const Note::Ptr & note)
+  {
+    NoteRecentChanges::Ptr main_window = get_window_for_note();
+    main_window->present_note(note);
+    main_window->present();
   }
 
 

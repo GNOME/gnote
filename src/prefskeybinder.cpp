@@ -204,9 +204,7 @@ namespace gnote {
   {
     Note::Ptr note = m_manager.find_by_uri (m_manager.start_note_uri());
     if (note) {
-      NoteRecentChanges::Ptr window = Gnote::obj().get_window_for_note();
-      window->present_note(note);
-      window->present();
+      Gnote::obj().open_note(note);
     }
   }
 
@@ -214,8 +212,8 @@ namespace gnote {
   void GnotePrefsKeybinder::key_create_new_note()
   {
     try {
-      Note::Ptr new_note = m_manager.create ();
-      new_note->get_window()->show ();
+      Note::Ptr new_note = m_manager.create();
+      Gnote::obj().open_note(new_note);
     } 
     catch (...) {
       // Fail silently.

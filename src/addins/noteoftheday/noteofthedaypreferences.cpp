@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -74,8 +74,9 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
     }
   }
 
-  if (0 != template_note)
-    template_note->get_window()->show();
+  if(0 != template_note) {
+    gnote::Gnote::obj().open_note(template_note);
+  }
 }
 
 }

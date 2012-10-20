@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ namespace gnote {
       
       // Look for the template note and create a new note
       Note::Ptr note = m_notebook->create_notebook_note ();
-      note->get_window()->show ();
+      Gnote::obj().open_note(note);
     }
 
 

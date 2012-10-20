@@ -165,6 +165,7 @@ public:
     {
       return m_sync_dlg;
     }
+  void open_note(const Note::Ptr & note);
 protected:
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line);
   virtual void on_startup();
