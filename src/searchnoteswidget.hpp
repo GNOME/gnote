@@ -59,6 +59,7 @@ public:
   sigc::signal<void, const Note::Ptr &> signal_open_note;
   sigc::signal<void, const Note::Ptr &> signal_open_note_new_window;
 private:
+  void make_actions();
   void on_entry_changed();
   void on_entry_activated();
   void clear_search_clicked();
@@ -146,6 +147,9 @@ private:
     Gtk::TreeModelColumn<Note::Ptr> note;
   };
 
+  Glib::RefPtr<Gtk::Action> m_open_note_action;
+  Glib::RefPtr<Gtk::Action> m_delete_note_action;
+  Glib::RefPtr<Gtk::Action> m_delete_notebook_action;
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ComboBox m_find_combo;
   Gtk::Button m_clear_search_button;
