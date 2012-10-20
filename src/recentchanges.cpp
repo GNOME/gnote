@@ -58,6 +58,7 @@ namespace gnote {
 
     Gtk::Toolbar *toolbar = manage(new Gtk::Toolbar);
     m_menu = manage(new Gtk::Menu);
+    m_menu->signal_show().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_menu_show));
     utils::ToolMenuButton *tool_button = manage(new utils::ToolMenuButton(
       *manage(new Gtk::Image(utils::get_icon("note", 24))), _("_Show"), m_menu));
     tool_button->set_use_underline(true);
@@ -77,14 +78,13 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed)); // For Escape
 
     embed_widget(m_search_notes_widget);
-    m_embeded_widgets[&m_search_notes_widget]->toggled(); //need initial event to show search widget
   }
 
 
   NoteRecentChanges::~NoteRecentChanges()
   {
     while(m_embeded_widgets.size()) {
-      unembed_widget(*m_embeded_widgets.begin()->first);
+      unembed_widget(**m_embeded_widgets.begin());
     }
   }
 
@@ -196,7 +196,7 @@ namespace gnote {
     m_search_notes_widget.select_all_notes_notebook();
 
     if(m_embed_box.get_children().size() == 0 && m_embeded_widgets.size() > 0) {
-      foreground_embeded(*m_embeded_widgets.rbegin()->first);
+      foreground_embeded(**m_embeded_widgets.rbegin());
     }
     std::vector<Gtk::Widget*> embeded = m_embed_box.get_children();
     if(embeded.size() == 1 && embeded.front() == &m_search_notes_widget) {
@@ -213,15 +213,13 @@ namespace gnote {
 
   void NoteRecentChanges::embed_widget(utils::EmbedableWidget & widget)
   {
-    if(m_embeded_widgets.find(&widget) == m_embeded_widgets.end()) {
-      Gtk::RadioMenuItem *item = new Gtk::RadioMenuItem(m_tool_menu_group, widget.get_name());
-      item->signal_toggled().connect(
-        boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_embeded_widget_menu_item_toggled),
-                    &widget));
-      item->show();
-      m_menu->append(*item);
-      m_embeded_widgets[&widget] = item;
+    if(std::find(m_embeded_widgets.begin(), m_embeded_widgets.end(), &widget) == m_embeded_widgets.end()) {
       widget.embed(this);
+      m_embeded_widgets.push_back(&widget);
+    }
+    utils::EmbedableWidget *current = currently_embeded();
+    if(current && current != &widget) {
+      background_embeded(*current);
     }
     foreground_embeded(widget);
   }
@@ -229,20 +227,19 @@ namespace gnote {
   void NoteRecentChanges::unembed_widget(utils::EmbedableWidget & widget)
   {
     bool show_other = false;
-    std::map<utils::EmbedableWidget*, Gtk::RadioMenuItem*>::iterator iter = m_embeded_widgets.find(&widget);
+    std::list<utils::EmbedableWidget*>::iterator iter = std::find(
+      m_embeded_widgets.begin(), m_embeded_widgets.end(), &widget);
     if(iter != m_embeded_widgets.end()) {
-      if(is_foreground(*iter->first)) {
+      if(is_foreground(**iter)) {
         background_embeded(widget);
         show_other = true;
       }
-      m_menu->remove(*iter->second);
-      delete iter->second;
       m_embeded_widgets.erase(iter);
       widget.unembed();
     }
     if(show_other) {
       if(m_embeded_widgets.size()) {
-	foreground_embeded(*m_embeded_widgets.rbegin()->first);
+	foreground_embeded(**m_embeded_widgets.rbegin());
       }
       else if(get_visible()) {
         on_close_window();
@@ -252,16 +249,30 @@ namespace gnote {
 
   void NoteRecentChanges::foreground_embeded(utils::EmbedableWidget & widget)
   {
-    m_embeded_widgets[&widget]->set_active(true);
+    try {
+      if(currently_embeded() == &widget) {
+        return;
+      }
+      Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
+      m_embed_box.pack_start(wid, true, true, 0);
+      widget.foreground();
+      wid.show();
+    }
+    catch(std::bad_cast&) {
+    }
   }
 
   void NoteRecentChanges::background_embeded(utils::EmbedableWidget & widget)
   {
-    if(get_visible()) {
-      m_embeded_widgets[&widget]->set_active(false);
-    }
-    else {
+    try {
+      if(currently_embeded() != &widget) {
+        return;
+      }
+      Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
       widget.background();
+      m_embed_box.remove(wid);
+    }
+    catch(std::bad_cast&) {
     }
   }
 
@@ -278,27 +289,52 @@ namespace gnote {
     return false;
   }
 
-  void NoteRecentChanges::on_embeded_widget_menu_item_toggled(utils::EmbedableWidget * widget)
+  void NoteRecentChanges::on_embeded_widget_menu_item_toggled(Gtk::RadioMenuItem *item,
+                                                              utils::EmbedableWidget * widget)
   {
-    Gtk::Widget *wid = dynamic_cast<Gtk::Widget*>(widget);
-    if(!wid) {
-      ERR_OUT("Not an embedable widget!");
-      return;
-    }
-    Gtk::RadioMenuItem *item = m_embeded_widgets[widget];
-    if(!item) {
-      ERR_OUT("Widget has no associated menu item!");
+    if(std::find(m_embeded_widgets.begin(), m_embeded_widgets.end(), widget)
+       == m_embeded_widgets.end()) {
       return;
     }
     if(item->get_active()) {
-      m_embed_box.pack_start(*wid, true, true, 0);
-      widget->foreground();
-      wid->show();
+      foreground_embeded(*widget);
     }
     else {
-      widget->background();
-      m_embed_box.remove(*wid);
+      background_embeded(*widget);
     }
+  }
+
+  void NoteRecentChanges::on_menu_show()
+  {
+    std::vector<Gtk::Widget*> items = m_menu->get_children();
+    for(std::vector<Gtk::Widget*>::iterator iter = items.begin(); iter != items.end(); ++iter) {
+      m_menu->remove(**iter);
+    }
+
+    utils::EmbedableWidget *current = currently_embeded();
+    Gtk::RadioMenuItem *active_item = NULL;
+    for(std::list<utils::EmbedableWidget*>::iterator iter = m_embeded_widgets.begin();
+        iter != m_embeded_widgets.end(); ++iter) {
+      Gtk::RadioMenuItem *item = manage(new Gtk::RadioMenuItem(m_tool_menu_group, (*iter)->get_name()));
+      item->signal_toggled().connect(
+        boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_embeded_widget_menu_item_toggled),
+                    item, *iter));
+      item->show();
+      m_menu->append(*item);
+      if(*iter == current) {
+        active_item = item;
+      }
+    }
+
+    if(active_item) {
+      active_item->set_active(true);
+    }
+  }
+
+  utils::EmbedableWidget *NoteRecentChanges::currently_embeded()
+  {
+    std::vector<Gtk::Widget*> children = m_embed_box.get_children();
+    return children.size() ? dynamic_cast<utils::EmbedableWidget*>(children[0]) : NULL;
   }
 
 }

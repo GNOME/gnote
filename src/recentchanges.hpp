@@ -24,7 +24,6 @@
 #ifndef __NOTE_RECENT_CHANGES_HPP_
 #define __NOTE_RECENT_CHANGES_HPP_
 
-#include <map>
 #include <string>
 
 #include <gtkmm/radiomenuitem.h>
@@ -74,13 +73,15 @@ private:
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
   bool is_foreground(utils::EmbedableWidget &);
-  void on_embeded_widget_menu_item_toggled(utils::EmbedableWidget *);
+  void on_embeded_widget_menu_item_toggled(Gtk::RadioMenuItem *, utils::EmbedableWidget *);
+  void on_menu_show();
+  utils::EmbedableWidget *currently_embeded();
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::VBox           m_content_vbox;
   Gtk::VBox           m_embed_box;
-  std::map<utils::EmbedableWidget*, Gtk::RadioMenuItem*> m_embeded_widgets;
+  std::list<utils::EmbedableWidget*> m_embeded_widgets;
   Gtk::Menu          *m_menu;
   Gtk::RadioMenuItem::Group m_tool_menu_group;
 };
