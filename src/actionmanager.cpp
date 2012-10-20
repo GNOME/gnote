@@ -93,16 +93,6 @@ namespace gnote {
     DBG_ASSERT(id, "merge failed");
     Gtk::Window::set_default_icon_name("gnote");
 
-
-#if 0
-    Gtk::ImageMenuItem *imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget(
-      "/MainWindowMenubar/FileMenu/FileMenuNewNotePlaceholder/NewNote");
-    DBG_ASSERT(imageitem, "Item not found");
-    if (imageitem) {
-      imageitem->set_image(*manage(new Gtk::Image(m_newNote)));
-    }
-#endif
-
     Gtk::ImageMenuItem *imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget (
       "/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
     DBG_ASSERT(imageitem, "Item not found");
