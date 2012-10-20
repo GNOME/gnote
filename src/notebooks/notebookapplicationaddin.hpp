@@ -49,8 +49,6 @@ namespace gnote {
     private:
       void on_tray_notebook_menu_shown();
       void on_tray_notebook_menu_hidden();
-      void on_new_notebook_menu_shown();
-      void on_new_notebook_menu_hidden();
       void add_menu_items(Gtk::Menu *, std::list<Gtk::MenuItem*> & menu_items);
       void remove_menu_items(Gtk::Menu *, std::list<Gtk::MenuItem*> & menu_items);
       void on_new_notebook_menu_item();
@@ -67,8 +65,6 @@ namespace gnote {
       Glib::RefPtr<Gdk::Pixbuf>      m_newNotebookIcon;
       Gtk::Menu                     *m_trayNotebookMenu;
       std::list<Gtk::MenuItem*>      m_trayNotebookMenuItems;
-      Gtk::Menu                     *m_mainWindowNotebookMenu;
-      std::list<Gtk::MenuItem*>      m_mainWindowNotebookMenuItems;
     };
 
 

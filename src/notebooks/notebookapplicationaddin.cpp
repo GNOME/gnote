@@ -62,13 +62,6 @@ namespace gnote {
 
 
     static const char * uixml = "          <ui>"
-          "  <popup name='NotebooksTreeContextMenu' action='NotebooksTreeContextMenuAction'>"
-          "    <menuitem name='NewNotebookNote' action='NewNotebookNoteAction' />"
-          "    <menuitem name='OpenNotebookTemplateNote' action='OpenNotebookTemplateNoteAction' />"
-          "    <menuitem name='DeleteNotebook' action='DeleteNotebookAction' />"
-          "    <separator />"
-          "    <menuitem name='NewNotebook' action='NewNotebookAction' />"
-          "  </popup>"
           "  <popup name='TrayIconMenu' action='TrayIconMenuAction'>"
           "    <placeholder name='TrayNewNotePlaceholder'>"
           "      <menuitem name='TrayNewNotebookMenu' action='TrayNewNotebookMenuAction' position='top' />"
@@ -79,31 +72,6 @@ namespace gnote {
     void NotebookApplicationAddin::initialize ()
     {
       m_actionGroup = Glib::RefPtr<Gtk::ActionGroup>(Gtk::ActionGroup::create("Notebooks"));
-      m_actionGroup->add(
-        Gtk::Action::create ("NewNotebookMenuAction", Gtk::Stock::NEW,
-                             _("Note_books"),
-                             _("Create a new note in a notebook")));
-        
-      m_actionGroup->add(     
-        Gtk::Action::create ("NewNotebookAction", Gtk::Stock::NEW,
-                             _("New Note_book..."),
-                             _("Create a new notebook")));
-          
-      m_actionGroup->add(     
-        Gtk::Action::create ("NewNotebookNoteAction", Gtk::Stock::NEW,
-                             _("_New Note"),
-                             _("Create a new note in this notebook")));
-      
-      m_actionGroup->add(  
-        Gtk::Action::create ("OpenNotebookTemplateNoteAction", Gtk::Stock::OPEN,
-                             _("_Open Template Note"),
-                             _("Open this notebook's template note")));
-          
-      m_actionGroup->add(  
-        Gtk::Action::create ("DeleteNotebookAction", Gtk::Stock::DELETE,
-                             _("Delete Note_book"),
-                             _("Delete the selected notebook")));
-          
       m_actionGroup->add(  
         Gtk::Action::create ("TrayNewNotebookMenuAction", Gtk::Stock::NEW,
                              _("Notebooks"),
@@ -132,23 +100,6 @@ namespace gnote {
                                  &NotebookApplicationAddin::on_tray_notebook_menu_hidden));
       }
       
-#if 0
-      Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
-        am.get_widget ("/MainWindowMenubar/FileMenu/FileMenuNewNotePlaceholder/NewNotebookMenu"));
-      if (imageitem) {
-        imageitem->set_image(*manage(new Gtk::Image(m_notebookIcon)));
-        m_mainWindowNotebookMenu = manage(new Gtk::Menu ());
-        imageitem->set_submenu(*m_mainWindowNotebookMenu);
-
-        m_mainWindowNotebookMenu->signal_show()
-          .connect(sigc::mem_fun(*this, 
-                                 &NotebookApplicationAddin::on_new_notebook_menu_shown));
-
-        m_mainWindowNotebookMenu->signal_hide()
-          .connect(sigc::mem_fun(*this, 
-                                 &NotebookApplicationAddin::on_new_notebook_menu_hidden));
-      }
-#endif
       Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
         am.get_widget ("/NotebooksTreeContextMenu/NewNotebookNote"));
       if (imageitem) {
@@ -201,10 +152,6 @@ namespace gnote {
         delete m_trayNotebookMenu;
       }
       
-      if (m_mainWindowNotebookMenu) {
-        delete m_mainWindowNotebookMenu;
-      }
-
       m_initialized = false;
     }
     
@@ -221,18 +168,6 @@ namespace gnote {
     void NotebookApplicationAddin::on_tray_notebook_menu_hidden()
     {
       remove_menu_items(m_trayNotebookMenu, m_trayNotebookMenuItems);
-    }
-
-
-    void NotebookApplicationAddin::on_new_notebook_menu_shown()
-    {
-      add_menu_items(m_mainWindowNotebookMenu, m_mainWindowNotebookMenuItems);
-    }
-
-
-    void NotebookApplicationAddin::on_new_notebook_menu_hidden()
-    {
-      remove_menu_items(m_mainWindowNotebookMenu, m_mainWindowNotebookMenuItems);
     }
 
 
