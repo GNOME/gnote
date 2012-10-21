@@ -62,9 +62,14 @@ public:
   virtual void unembed_widget(utils::EmbedableWidget &);
   virtual void foreground_embeded(utils::EmbedableWidget &);
   virtual void background_embeded(utils::EmbedableWidget &);
+  virtual bool running()
+    {
+      return m_mapped;
+    }
 protected:
   NoteRecentChanges(NoteManager& m);
   virtual void on_show();
+  virtual bool on_map_event(GdkEventAny *evt);
 private:
   void on_open_note(const Note::Ptr &);
   void on_open_note_new_window(const Note::Ptr &);
@@ -84,6 +89,7 @@ private:
   std::list<utils::EmbedableWidget*> m_embeded_widgets;
   Gtk::Menu          *m_menu;
   Gtk::RadioMenuItem::Group m_tool_menu_group;
+  bool                m_mapped;
 };
 
 

@@ -251,6 +251,7 @@ namespace gnote {
       virtual void unembed_widget(EmbedableWidget &) = 0;
       virtual void foreground_embeded(EmbedableWidget &) = 0;
       virtual void background_embeded(EmbedableWidget &) = 0;
+      virtual bool running() = 0;
     };
 
     class EmbedableWidget

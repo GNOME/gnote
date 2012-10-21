@@ -436,7 +436,11 @@ void SearchNotesWidget::save_position()
   int width;
   int height;
 
-  Gtk::Window *window = get_owning_window();
+  utils::EmbedableWidgetHost *current_host = host();
+  if(!current_host || !current_host->running()) {
+    return;
+  }
+  Gtk::Window *window = dynamic_cast<Gtk::Window*>(current_host);
   if(!window) {
     return;
   }

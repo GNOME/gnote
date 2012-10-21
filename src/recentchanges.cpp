@@ -43,6 +43,7 @@ namespace gnote {
     , m_note_manager(m)
     , m_search_notes_widget(m)
     , m_content_vbox(false, 0)
+    , m_mapped(false)
   {
     set_default_size(450,400);
     set_resizable(true);
@@ -335,6 +336,13 @@ namespace gnote {
   {
     std::vector<Gtk::Widget*> children = m_embed_box.get_children();
     return children.size() ? dynamic_cast<utils::EmbedableWidget*>(children[0]) : NULL;
+  }
+
+  bool NoteRecentChanges::on_map_event(GdkEventAny *evt)
+  {
+    bool res = NoteRecentChangesParent::on_map_event(evt);
+    m_mapped = true;
+    return res;
   }
 
 }
