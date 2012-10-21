@@ -120,6 +120,11 @@ public:
       m_width = width;
       m_height = height;
     }
+  void set_position(int x, int y)
+    {
+      m_x = x;
+      m_y = y;
+    }
   Gtk::TextView * editor() const
     {
       return m_editor;
@@ -179,6 +184,8 @@ private:
   std::string                   m_name;
   int                           m_height;
   int                           m_width;
+  int                           m_x;
+  int                           m_y;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::Toolbar                 *m_toolbar;
   Gtk::ToolButton              *m_link_button;

@@ -1009,10 +1009,9 @@ namespace gnote {
       if(m_data.data().has_extent()) {
         m_window->set_size(m_data.data().width(), m_data.data().height());
       }
-#if 0
-      if (m_data.data().has_position())
-        m_window->move(m_data.data().x(), m_data.data().y());
-#endif
+      if(m_data.data().has_position()) {
+        m_window->set_position(m_data.data().x(), m_data.data().y());
+      }
 
       m_window->signal_embeded.connect(sigc::mem_fun(*this, &Note::on_note_window_embeded));
     }

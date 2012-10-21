@@ -57,6 +57,8 @@ namespace gnote {
     , m_name(note.get_title())
     , m_height(360)
     , m_width(450)
+    , m_x(-1)
+    , m_y(-1)
     , m_global_keys(NULL)
   {
     m_template_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
@@ -152,17 +154,23 @@ namespace gnote {
   void NoteWindow::foreground()
   {
     //addins may add accelarators, so accel group must be there
-    Gtk::Window *parent = dynamic_cast<Gtk::Window*>(host());
+    utils::EmbedableWidgetHost *current_host = host();
+    Gtk::Window *parent = dynamic_cast<Gtk::Window*>(current_host);
     if(parent) {
       add_accel_group(*parent);
     }
 
     utils::EmbedableWidget::foreground();
-    parent->set_default_size(m_width, m_height);
-    if((parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0 && parent->get_visible()) {
-      parent->get_window()->resize(m_width, m_height);
+    if(parent) {
+      parent->set_default_size(m_width, m_height);
+      if((parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0 && parent->get_visible()) {
+        parent->get_window()->resize(m_width, m_height);
+      }
+      if(m_x >= 0 && m_y >= 0 && !current_host->running()) {
+        parent->move(m_x, m_y);
+      }
+      parent->set_focus(*m_editor);
     }
-    parent->set_focus(*m_editor);
     m_editor->scroll_to(m_editor->get_buffer()->get_insert());
   }
 
