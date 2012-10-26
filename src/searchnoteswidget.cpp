@@ -1114,6 +1114,9 @@ bool SearchNotesWidget::on_treeview_button_released(GdkEventButton *ev)
 bool SearchNotesWidget::on_treeview_key_pressed(GdkEventKey * ev)
 {
   switch(ev->keyval) {
+  case GDK_KEY_Delete:
+    delete_selected_notes();
+    break;
   case GDK_KEY_Menu:
   {
     // Pop up the context menu if a note is selected
