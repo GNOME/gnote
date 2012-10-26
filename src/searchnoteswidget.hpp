@@ -113,6 +113,7 @@ private:
   void add_note(const Note::Ptr & note);
   void rename_note(const Note::Ptr & note);
   void on_open_note();
+  void on_open_note_new_window();
   Gtk::Window *get_owning_window();
   void on_note_added_to_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
   void on_note_removed_from_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
@@ -148,6 +149,7 @@ private:
   };
 
   Glib::RefPtr<Gtk::Action> m_open_note_action;
+  Glib::RefPtr<Gtk::Action> m_open_note_new_window_action;
   Glib::RefPtr<Gtk::Action> m_delete_note_action;
   Glib::RefPtr<Gtk::Action> m_delete_notebook_action;
   RecentSearchColumnTypes m_find_combo_columns;

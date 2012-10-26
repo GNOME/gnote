@@ -203,6 +203,10 @@ void SearchNotesWidget::make_actions()
   m_open_note_action = Gtk::Action::create("OpenNoteAction", _("_Open"));
   m_open_note_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note));
 
+  m_open_note_new_window_action = Gtk::Action::create("OpenNoteNewWindowAction", _("Open In New _Window"));
+  m_open_note_new_window_action->signal_activate()
+    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note_new_window));
+
   m_delete_note_action = Gtk::Action::create("DeleteNoteAction", ("_Delete"));
   m_delete_note_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::delete_selected_notes));
 
@@ -1395,6 +1399,15 @@ void SearchNotesWidget::on_open_note()
   }
 }
 
+void SearchNotesWidget::on_open_note_new_window()
+{
+  Note::List selected_notes = get_selected_notes();
+  for(Note::List::iterator iter = selected_notes.begin();
+      iter != selected_notes.end(); ++iter) {
+    signal_open_note_new_window(*iter);
+  }
+}
+
 void SearchNotesWidget::delete_selected_notes()
 {
   Note::List selected_notes = get_selected_notes();
@@ -1445,12 +1458,19 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
 {
   if(!m_note_list_context_menu) {
     m_note_list_context_menu = new Gtk::Menu;
+
     Gtk::MenuItem *item = manage(new Gtk::MenuItem);
     item->set_related_action(m_open_note_action);
     m_note_list_context_menu->add(*item);
+
+    item = manage(new Gtk::MenuItem);
+    item->set_related_action(m_open_note_new_window_action);
+    m_note_list_context_menu->add(*item);
+
     item = manage(new Gtk::MenuItem);
     item->set_related_action(m_delete_note_action);
     m_note_list_context_menu->add(*item);
+
     m_note_list_context_menu->add(*manage(new Gtk::SeparatorMenuItem));
     item = manage(new Gtk::MenuItem(_("_New Note"), true));
     item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::new_note));
