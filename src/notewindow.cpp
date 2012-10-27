@@ -266,7 +266,6 @@ namespace gnote {
       if (m_find_bar && m_find_bar->get_visible()) {
         m_find_bar->hide();
       }
-      return true;
     }
     return false;
   }

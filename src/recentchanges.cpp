@@ -182,7 +182,16 @@ namespace gnote {
     switch (ev->keyval) {
     case GDK_KEY_Escape:
       // Allow Escape to close the window
-      on_close_window ();
+      if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embeded())) {
+        on_close_window();
+      }
+      else {
+        utils::EmbedableWidget *current_item = currently_embeded();
+        if(current_item) {
+          background_embeded(*current_item);
+        }
+        foreground_embeded(m_search_notes_widget);
+      }
       break;
     default:
       break;
