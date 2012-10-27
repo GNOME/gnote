@@ -148,6 +148,7 @@ private:
     Gtk::TreeModelColumn<Note::Ptr> note;
   };
 
+  Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Glib::RefPtr<Gtk::Action> m_open_note_action;
   Glib::RefPtr<Gtk::Action> m_open_note_new_window_action;
   Glib::RefPtr<Gtk::Action> m_delete_note_action;

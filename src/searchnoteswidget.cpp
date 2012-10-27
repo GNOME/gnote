@@ -63,6 +63,7 @@ void SearchNotesWidget::_init_static()
 
 SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   : Gtk::VBox(false, 0)
+  , m_accel_group(Gtk::AccelGroup::create())
   , m_find_combo(Glib::RefPtr<Gtk::TreeModel>::cast_static(Gtk::ListStore::create(m_find_combo_columns)), true)
   , m_clear_search_button(Gtk::Stock::CLEAR)
   , m_entry_changed_timeout(NULL)
@@ -1461,10 +1462,12 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
 
     Gtk::MenuItem *item = manage(new Gtk::MenuItem);
     item->set_related_action(m_open_note_action);
+    item->add_accelerator("activate", m_accel_group, GDK_KEY_O, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     m_note_list_context_menu->add(*item);
 
     item = manage(new Gtk::MenuItem);
     item->set_related_action(m_open_note_new_window_action);
+    item->add_accelerator("activate", m_accel_group, GDK_KEY_W, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
     m_note_list_context_menu->add(*item);
 
     item = manage(new Gtk::MenuItem);
@@ -1551,12 +1554,20 @@ void SearchNotesWidget::foreground()
 {
   utils::EmbedableWidget::foreground();
   restore_position();
+  Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
+  if(win) {
+    win->add_accel_group(m_accel_group);
+  }
 }
 
 void SearchNotesWidget::background()
 {
   utils::EmbedableWidget::background();
   save_position();
+  Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
+  if(win) {
+    win->remove_accel_group(m_accel_group);
+  }
 }
 
 }
