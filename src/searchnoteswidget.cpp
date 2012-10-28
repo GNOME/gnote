@@ -412,6 +412,7 @@ void SearchNotesWidget::restore_position()
   int width = settings->get_int(Preferences::SEARCH_WINDOW_WIDTH);
   int height = settings->get_int(Preferences::SEARCH_WINDOW_HEIGHT);
   int pos = settings->get_int(Preferences::SEARCH_WINDOW_SPLITTER_POS);
+  bool maximized = settings->get_boolean(Preferences::MAIN_WINDOW_MAXIMIZED);
 
   if((width == 0) || (height == 0)) {
     return;
@@ -421,13 +422,19 @@ void SearchNotesWidget::restore_position()
     return;
   }
 
-  window->set_default_size(width, height);
-  if(window->get_visible()) {
-    window->get_window()->resize(width, height);
+  if(window->get_realized()) {
+    //if window is showing, use actual state
+    maximized = window->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED;
   }
+
+  window->set_default_size(width, height);
   if(!m_initial_position_restored) {
     window->move(x, y);
     m_initial_position_restored = true;
+  }
+
+  if(!maximized && window->get_visible()) {
+    window->get_window()->resize(width, height);
   }
   if(pos) {
     m_hpaned.set_position(pos);
@@ -445,21 +452,23 @@ void SearchNotesWidget::save_position()
   if(!current_host || !current_host->running()) {
     return;
   }
+
+  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    .get_schema_settings(Preferences::SCHEMA_GNOTE);
+  settings->set_int(Preferences::SEARCH_WINDOW_SPLITTER_POS, m_hpaned.get_position());
+
   Gtk::Window *window = dynamic_cast<Gtk::Window*>(current_host);
-  if(!window) {
+  if(!window || (window->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) != 0) {
     return;
   }
 
   window->get_position(x, y);
   window->get_size(width, height);
 
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
-    .get_schema_settings(Preferences::SCHEMA_GNOTE);
   settings->set_int(Preferences::SEARCH_WINDOW_X_POS, x);
   settings->set_int(Preferences::SEARCH_WINDOW_Y_POS, y);
   settings->set_int(Preferences::SEARCH_WINDOW_WIDTH, width);
   settings->set_int(Preferences::SEARCH_WINDOW_HEIGHT, height);
-  settings->set_int(Preferences::SEARCH_WINDOW_SPLITTER_POS, m_hpaned.get_position());
 }
 
 void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * renderer,
