@@ -47,6 +47,10 @@ namespace gnote {
   {
     set_default_size(450,400);
     set_resizable(true);
+    if(Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+         Preferences::MAIN_WINDOW_MAXIMIZED)) {
+      maximize();
+    }
 
     add_accel_group(ActionManager::obj().get_ui()->get_accel_group());
 
@@ -158,6 +162,9 @@ namespace gnote {
 
   void NoteRecentChanges::on_close_window()
   {
+    Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_boolean(
+        Preferences::MAIN_WINDOW_MAXIMIZED,
+        get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED);
     std::vector<Gtk::Widget*> current = m_embed_box.get_children();
     for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
         iter != current.end(); ++iter) {

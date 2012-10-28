@@ -62,6 +62,7 @@ namespace gnote {
   const char * Preferences::NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
   const char * Preferences::USE_STATUS_ICON = "use-status-icon";
 
+  const char * Preferences::MAIN_WINDOW_MAXIMIZED = "main-window-maximized";
   const char * Preferences::SEARCH_WINDOW_X_POS = "search-window-x-pos";
   const char * Preferences::SEARCH_WINDOW_Y_POS = "search-window-y-pos";
   const char * Preferences::SEARCH_WINDOW_WIDTH = "search-window-width";
