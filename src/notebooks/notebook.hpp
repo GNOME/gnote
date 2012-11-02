@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -116,7 +116,16 @@ public:
   UnfiledNotesNotebook();
   virtual std::string get_normalized_name() const;
 };
-  
+
+
+class PinnedNotesNotebook
+  : public SpecialNotebook
+{
+public:
+  typedef std::tr1::shared_ptr<PinnedNotesNotebook> Ptr;
+  PinnedNotesNotebook();
+  virtual std::string get_notmalized_name() const;
+};
 
 
 }

@@ -154,6 +154,11 @@ public:
       return *m_find_bar;
     }
 private:
+  static void _init_static();
+  static bool s_static_inited;
+  static Glib::RefPtr<Gio::Icon> s_icon_pin_active;
+  static Glib::RefPtr<Gio::Icon> s_icon_pin_down;
+
   bool on_key_pressed(GdkEventKey*);
   void on_delete_button_clicked();
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
@@ -179,6 +184,8 @@ private:
   void change_depth_left_handler();
   void add_accel_group(Gtk::Window &);
   void remove_accel_group(Gtk::Window &);
+  void on_pin_status_changed(const Note &, bool);
+  void on_pin_button_clicked();
 
   Note                        & m_note;
   std::string                   m_name;
@@ -188,6 +195,8 @@ private:
   int                           m_y;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::Toolbar                 *m_toolbar;
+  Gtk::Image                   *m_pin_image;
+  Gtk::ToolButton              *m_pin_button;
   Gtk::ToolButton              *m_link_button;
   NoteTextMenu                 *m_text_menu;
   Gtk::Menu                    *m_plugin_menu;

@@ -46,6 +46,7 @@ bool SearchNotesWidget::s_static_inited = false;
 Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_note_icon;
 Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_all_notes_icon;
 Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_unfiled_notes_icon;
+Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_pinned_notes_icon;
 Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_notebook_icon;
 
 void SearchNotesWidget::_init_static()
@@ -56,6 +57,7 @@ void SearchNotesWidget::_init_static()
   s_note_icon = utils::get_icon ("note", 22);
   s_all_notes_icon = utils::get_icon ("filter-note-all", 22);
   s_unfiled_notes_icon = utils::get_icon ("filter-note-unfiled", 22);
+  s_pinned_notes_icon = utils::get_icon ("pin-down", 22);
   s_notebook_icon = utils::get_icon ("notebook", 22);
   s_static_inited = true;
 }
@@ -156,6 +158,8 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_added_to_notebook));
   notebooks::NotebookManager::instance().signal_note_removed_from_notebook()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_removed_from_notebook));
+  notebooks::NotebookManager::instance().signal_note_pin_status_changed
+    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
   // Set the focus chain for the top-most containers
   std::vector<Gtk::Widget*> focus_chain;
@@ -487,6 +491,9 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
   else if(std::tr1::dynamic_pointer_cast<notebooks::UnfiledNotesNotebook>(notebook)) {
     crp->property_pixbuf() = s_unfiled_notes_icon;
   }
+  else if(std::tr1::dynamic_pointer_cast<notebooks::PinnedNotesNotebook>(notebook)) {
+    crp->property_pixbuf() = s_pinned_notes_icon;
+  }
   else {
     crp->property_pixbuf() = s_notebook_icon;
   }
@@ -766,6 +773,12 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter & iter)
     // since the only notes that should be shown in this
     // case are notes that are unfiled (not in a notebook).
     if(notebooks::NotebookManager::instance().get_notebook_from_note(note)) {
+      return false;
+    }
+  }
+  else if(std::tr1::dynamic_pointer_cast<notebooks::PinnedNotesNotebook>(selected_notebook)) {
+    // Filter out unpinned notes
+    if(!note->is_pinned()) {
       return false;
     }
   }
@@ -1459,6 +1472,12 @@ void SearchNotesWidget::on_note_added_to_notebook(const Note &,
 
 void SearchNotesWidget::on_note_removed_from_notebook(const Note &,
                                                       const notebooks::Notebook::Ptr &)
+{
+  restore_matches_window();
+  update_results();
+}
+
+void SearchNotesWidget::on_note_pin_status_changed(const Note &, bool)
 {
   restore_matches_window();
   update_results();

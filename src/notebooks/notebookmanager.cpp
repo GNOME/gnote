@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -60,6 +60,10 @@ namespace gnote {
      Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook ());
      iter = m_notebooks->append ();
      iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
+
+     Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook);
+     iter = m_notebooks->append();
+     iter->set_value(0, pinned_notes_notebook);
 
       
      load_notebooks ();
@@ -376,28 +380,33 @@ namespace gnote {
       if (!note) {
         return false;
       }
-      
+
       // NOTE: In the future we may want to allow notes
       // to exist in multiple notebooks.  For now, to
       // alleviate the confusion, only allow a note to
       // exist in one notebook at a time.
-      
+
       Notebook::Ptr currentNotebook = get_notebook_from_note (note);
       if (currentNotebook == notebook)
         return true; // It's already there.
-      
-      if (currentNotebook) {
+
+      bool pinning = std::tr1::dynamic_pointer_cast<PinnedNotesNotebook>(notebook);
+
+      if(currentNotebook && !pinning) {
         note->remove_tag (currentNotebook->get_tag());
         m_note_removed_from_notebook(*note, currentNotebook);
       }
-      
+
       // Only attempt to add the notebook tag when this
       // menu item is not the "No notebook" menu item.
-      if (notebook && !std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook)) {
-        note->add_tag (notebook->get_tag());
+      if(pinning) {
+        note->set_pinned(true);
+      }
+      else if(notebook && !std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook)) {
+        note->add_tag(notebook->get_tag());
         m_note_added_to_notebook(*note, notebook);
       }
-      
+
       return true;
     }
 

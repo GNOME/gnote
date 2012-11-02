@@ -117,6 +117,7 @@ private:
   Gtk::Window *get_owning_window();
   void on_note_added_to_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
   void on_note_removed_from_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
+  void on_note_pin_status_changed(const Note &, bool);
   Gtk::Menu *get_note_list_context_menu();
   Gtk::Menu *get_notebook_list_context_menu();
   void on_open_notebook_template_note();
@@ -184,6 +185,7 @@ private:
   static Glib::RefPtr<Gdk::Pixbuf> s_note_icon;
   static Glib::RefPtr<Gdk::Pixbuf> s_all_notes_icon;
   static Glib::RefPtr<Gdk::Pixbuf> s_unfiled_notes_icon;
+  static Glib::RefPtr<Gdk::Pixbuf> s_pinned_notes_icon;
   static Glib::RefPtr<Gdk::Pixbuf> s_notebook_icon;
 };
 

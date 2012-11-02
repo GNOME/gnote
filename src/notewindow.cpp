@@ -45,11 +45,28 @@
 #include "search.hpp"
 #include "actionmanager.hpp"
 #include "tagmanager.hpp"
+#include "notebooks/notebookmanager.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/string.hpp"
 
 
 namespace gnote {
+
+  bool NoteWindow::s_static_inited = false;
+  Glib::RefPtr<Gio::Icon> NoteWindow::s_icon_pin_active;
+  Glib::RefPtr<Gio::Icon> NoteWindow::s_icon_pin_down;
+
+  void NoteWindow::_init_static()
+  {
+    if(!s_static_inited) {
+      s_static_inited = true;
+
+      s_icon_pin_active = utils::get_icon("pin-active", 22);
+      s_icon_pin_down = utils::get_icon("pin-down", 22);
+    }
+  }
+
+
 
   NoteWindow::NoteWindow(Note & note)
     : Gtk::VBox(false, 2)
@@ -61,6 +78,8 @@ namespace gnote {
     , m_y(-1)
     , m_global_keys(NULL)
   {
+    _init_static();
+
     m_template_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     m_template_save_size_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
     m_template_save_selection_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
@@ -351,6 +370,20 @@ namespace gnote {
   {
     Gtk::Toolbar *tb = new Gtk::Toolbar();
 
+    m_pin_image = manage(new Gtk::Image);
+    if(m_note.is_pinned()) {
+      m_pin_image->property_gicon() = s_icon_pin_down;
+    }
+    else {
+      m_pin_image->property_gicon() = s_icon_pin_active;
+    }
+
+    m_pin_button = manage(new Gtk::ToolButton(*m_pin_image, _("Pin")));
+    m_pin_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
+    tb->insert(*m_pin_button, -1);
+    notebooks::NotebookManager::instance().signal_note_pin_status_changed
+      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
+
     m_link_button = manage(new Gtk::ToolButton(
                              *manage(new Gtk::Image (Gtk::Stock::JUMP_TO, tb->get_icon_size())),
                              _("Link")));
@@ -639,6 +672,24 @@ namespace gnote {
   void NoteWindow::change_depth_left_handler()
   {
     Glib::RefPtr<NoteBuffer>::cast_static(m_editor->get_buffer())->change_cursor_depth_directional(false);
+  }
+
+  void NoteWindow::on_pin_status_changed(const Note & note, bool pinned)
+  {
+    if(&m_note != &note) {
+      return;
+    }
+    if(pinned) {
+      m_pin_image->property_gicon() = s_icon_pin_down;
+    }
+    else {
+      m_pin_image->property_gicon() = s_icon_pin_active;
+    }
+  }
+
+  void NoteWindow::on_pin_button_clicked()
+  {
+    m_note.set_pinned(!m_note.is_pinned());
   }
 
 

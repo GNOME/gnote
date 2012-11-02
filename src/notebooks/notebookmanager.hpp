@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -89,6 +90,7 @@ public:
   NotebookEventHandler & signal_note_removed_from_notebook()
     { return m_note_removed_from_notebook; }
 
+  sigc::signal<void, const Note &, bool> signal_note_pin_status_changed;
 private:
   NotebookManager();
 

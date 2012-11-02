@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -223,6 +223,17 @@ namespace notebooks {
   std::string UnfiledNotesNotebook::get_normalized_name() const
   {
     return "___NotebookManager___UnfiledNotes__Notebook___";
+  }
+
+
+  PinnedNotesNotebook::PinnedNotesNotebook()
+    : SpecialNotebook(_("Pinned Notes"))
+  {
+  }
+
+  std::string PinnedNotesNotebook::get_notmalized_name() const
+  {
+    return "___NotebookManager___PinnedNotes__Notebook___";
   }
 
 }

@@ -46,6 +46,7 @@
 #include "tagmanager.hpp"
 #include "utils.hpp"
 #include "debug.hpp"
+#include "notebooks/notebookmanager.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/fileinfo.hpp"
 #include "sharp/files.hpp"
@@ -1076,6 +1077,7 @@ namespace gnote {
       }
     }
     settings->set_string(Preferences::MENU_PINNED_NOTES, new_pinned);
+    notebooks::NotebookManager::instance().signal_note_pin_status_changed(*this, pinned);
   }
 
   
