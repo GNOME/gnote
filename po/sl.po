@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-10-29 12:07+0000\n"
-"PO-Revision-Date: 2012-10-29 22:28+0100\n"
+"POT-Creation-Date: 2012-11-03 18:35+0000\n"
+"PO-Revision-Date: 2012-11-03 20:05+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: Slovenian\n"
@@ -429,7 +429,7 @@ msgid "Open the Search All Notes window"
 msgstr "Odpre okno za iskanje po vseh sporočilcih"
 
 #: ../src/actionmanager.cpp:263
-#: ../src/searchnoteswidget.cpp:1487
+#: ../src/searchnoteswidget.cpp:1506
 msgid "_New Note"
 msgstr "_Novo sporočilce"
 
@@ -938,7 +938,7 @@ msgid "C_reate"
 msgstr "U_stvari"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:77
-#: ../src/searchnoteswidget.cpp:368
+#: ../src/searchnoteswidget.cpp:372
 msgid "Notebooks"
 msgstr "Beležnice"
 
@@ -976,11 +976,15 @@ msgstr "Vsa sporočilca"
 msgid "Unfiled Notes"
 msgstr "Sporočilca brez beležke"
 
-#: ../src/notebooks/notebookmanager.cpp:337
+#: ../src/notebooks/notebook.cpp:230
+msgid "Pinned Notes"
+msgstr "Pripeta sporočilca"
+
+#: ../src/notebooks/notebookmanager.cpp:341
 msgid "Really delete this notebook?"
 msgstr "Ali naj bo beležka zares izbrisana?"
 
-#: ../src/notebooks/notebookmanager.cpp:338
+#: ../src/notebooks/notebookmanager.cpp:342
 msgid "The notes that belong to this notebook will not be deleted, but they will no longer be associated with this notebook.  This action cannot be undone."
 msgstr "Sporočilca, ki spadajo v to beležko, ne bodo izbrisana, vendar pa ne bodo več povezana s to beležko. Dejanja ni mogoče razveljaviti."
 
@@ -1005,7 +1009,7 @@ msgid "_New notebook..."
 msgstr "_Nova beležnica ..."
 
 #. TRANSLATORS: %1% is number of notes
-#: ../src/note.cpp:74
+#: ../src/note.cpp:75
 msgid "Really delete %1% note?"
 msgid_plural "Really delete %1% notes?"
 msgstr[0] "Ali res želite izbrisati %1% sporočilc?"
@@ -1013,15 +1017,15 @@ msgstr[1] "Ali res želite izbrisati %1% sporočilce?"
 msgstr[2] "Ali res želite izbrisati %1% sporočilci?"
 msgstr[3] "Ali res želite izbrisati %1% sporočilca?"
 
-#: ../src/note.cpp:81
+#: ../src/note.cpp:82
 msgid "If you delete a note it is permanently lost."
 msgstr "Izbrisana sporočilca so bila trajno izgubljena."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:118
 msgid "Error saving note data."
 msgstr "Napaka med shranjevanjem podatkov sporočilca."
 
-#: ../src/note.cpp:118
+#: ../src/note.cpp:119
 msgid "An error occurred while saving your notes. Please check that you have sufficient disk space, and that you have appropriate rights on ~/.gnote. Error details can be found in ~/.gnote.log."
 msgstr "Med shranjevanjem sporočilc je prišlo do napake. Preverite, da imate na voljo dovolj prostora na disku in da imate ustrezne pravice v ~/.gnote. Podrobnosti o napaki so zapisane v ~/.gnote.log"
 
@@ -1145,143 +1149,147 @@ msgstr "Naslov sporočilca"
 msgid "Ad_vanced"
 msgstr "Nap_redno"
 
-#: ../src/notewindow.cpp:79
+#: ../src/notewindow.cpp:98
 msgid "Find in This Note"
 msgstr "Najdi v tem sporočilcu"
 
-#: ../src/notewindow.cpp:314
+#: ../src/notewindow.cpp:333
 msgid "_Link to New Note"
 msgstr "_Povezava do novega sporočilca"
 
-#: ../src/notewindow.cpp:322
+#: ../src/notewindow.cpp:341
 msgid "Te_xt"
 msgstr "_Besedilo"
 
-#: ../src/notewindow.cpp:330
+#: ../src/notewindow.cpp:349
 msgid "_Find in This Note"
 msgstr "_Najdi v tem sporočilcu"
 
-#: ../src/notewindow.cpp:356
+#: ../src/notewindow.cpp:381
+msgid "Pin"
+msgstr "Pripni"
+
+#: ../src/notewindow.cpp:389
 msgid "Link"
 msgstr "Poveži"
 
-#: ../src/notewindow.cpp:362
+#: ../src/notewindow.cpp:395
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Poveže izbrano besedilo z novim sporočilcem (Ctrl-L)"
 
-#: ../src/notewindow.cpp:368
+#: ../src/notewindow.cpp:401
 msgid "_Text"
 msgstr "_Besedilo"
 
-#: ../src/notewindow.cpp:374
+#: ../src/notewindow.cpp:407
 msgid "Set properties of text"
 msgstr "Nastavi lastnosti besedila"
 
-#: ../src/notewindow.cpp:378
+#: ../src/notewindow.cpp:411
 msgid "T_ools"
 msgstr "_Orodja"
 
-#: ../src/notewindow.cpp:383
+#: ../src/notewindow.cpp:416
 msgid "Use tools on this note"
 msgstr "Uporabi orodja na tem sporočilcu"
 
-#: ../src/notewindow.cpp:393
+#: ../src/notewindow.cpp:426
 msgid "Delete this note"
 msgstr "Izbriši to sporočilce"
 
-#: ../src/notewindow.cpp:423
+#: ../src/notewindow.cpp:456
 msgid "This note is a template note. It determines the default content of regular notes, and will not show up in the note menu or search window."
 msgstr "To sporočilce je predloga sporočilc. Določa privzeto vsebino običajnih sporočilc in ne bo prikazano v meniju sporočilc oziroma v iskalnem oknu."
 
-#: ../src/notewindow.cpp:426
+#: ../src/notewindow.cpp:459
 msgid "Convert to regular note"
 msgstr "Pretvori v običajno sporočilce"
 
-#: ../src/notewindow.cpp:429
+#: ../src/notewindow.cpp:462
 msgid "Save Si_ze"
 msgstr "Shrani _velikost"
 
-#: ../src/notewindow.cpp:433
+#: ../src/notewindow.cpp:466
 msgid "Save Se_lection"
 msgstr "Shrani _izbor"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:470
 msgid "Save _Title"
 msgstr "Shrani _naslov"
 
-#: ../src/notewindow.cpp:525
+#: ../src/notewindow.cpp:558
 msgid "_Find..."
 msgstr "_Najdi ..."
 
-#: ../src/notewindow.cpp:533
+#: ../src/notewindow.cpp:566
 msgid "Find _Next"
 msgstr "Najdi _naslednje"
 
-#: ../src/notewindow.cpp:543
+#: ../src/notewindow.cpp:576
 msgid "Find _Previous"
 msgstr "Najdi _predhodno"
 
-#: ../src/notewindow.cpp:613
+#: ../src/notewindow.cpp:646
 msgid "Cannot create note"
 msgstr "Ni mogoče ustvariti sporočilca"
 
-#: ../src/notewindow.cpp:648
+#: ../src/notewindow.cpp:699
 msgid "_Next"
 msgstr "_Naslednje"
 
-#: ../src/notewindow.cpp:649
+#: ../src/notewindow.cpp:700
 msgid "_Previous"
 msgstr "_Predhodnje"
 
-#: ../src/notewindow.cpp:662
+#: ../src/notewindow.cpp:713
 msgid "_Find:"
 msgstr "_Najdi:"
 
-#: ../src/notewindow.cpp:1103
+#: ../src/notewindow.cpp:1154
 msgid "<b>_Bold</b>"
 msgstr "<b>_Krepko</b>"
 
-#: ../src/notewindow.cpp:1104
+#: ../src/notewindow.cpp:1155
 msgid "<i>_Italic</i>"
 msgstr "<i>P_oševno</i>"
 
-#: ../src/notewindow.cpp:1105
+#: ../src/notewindow.cpp:1156
 msgid "<s>_Strikeout</s>"
 msgstr "<s>P_rečrtano</s>"
 
-#: ../src/notewindow.cpp:1107
+#: ../src/notewindow.cpp:1158
 msgid "_Highlight"
 msgstr "_Poudarjeno"
 
-#: ../src/notewindow.cpp:1109
+#: ../src/notewindow.cpp:1160
 msgid "_Normal"
 msgstr "_Običajna"
 
-#: ../src/notewindow.cpp:1111
+#: ../src/notewindow.cpp:1162
 msgid "Hu_ge"
 msgstr "O_gromna"
 
-#: ../src/notewindow.cpp:1113
+#: ../src/notewindow.cpp:1164
 msgid "_Large"
 msgstr "_Velika"
 
-#: ../src/notewindow.cpp:1115
+#: ../src/notewindow.cpp:1166
 msgid "S_mall"
 msgstr "_Majhna"
 
-#: ../src/notewindow.cpp:1117
+#: ../src/notewindow.cpp:1168
 msgid "Bullets"
 msgstr "Vrstične oznake"
 
-#: ../src/notewindow.cpp:1120
+#: ../src/notewindow.cpp:1171
 msgid "Increase Font Size"
 msgstr "Povečaj velikost pisave"
 
-#: ../src/notewindow.cpp:1121
+#: ../src/notewindow.cpp:1172
 msgid "Decrease Font Size"
 msgstr "Pomanjšaj velikost pisave"
 
-#: ../src/notewindow.cpp:1163
+#: ../src/notewindow.cpp:1214
 msgid "Font Size"
 msgstr "Velikost pisave"
 
@@ -1494,7 +1502,7 @@ msgid "Copyright:"
 msgstr "Avtorske pravice:"
 
 #: ../src/recentchanges.cpp:42
-#: ../src/searchnoteswidget.cpp:1178
+#: ../src/searchnoteswidget.cpp:1191
 msgid "Notes"
 msgstr "Sporočilca"
 
@@ -1502,27 +1510,27 @@ msgstr "Sporočilca"
 msgid "_Show"
 msgstr "_Pokaži"
 
-#: ../src/searchnoteswidget.cpp:81
+#: ../src/searchnoteswidget.cpp:83
 msgid "_Search:"
 msgstr "_Išči:"
 
-#: ../src/searchnoteswidget.cpp:204
+#: ../src/searchnoteswidget.cpp:208
 msgid "_Open"
 msgstr "_Odpri"
 
-#: ../src/searchnoteswidget.cpp:207
+#: ../src/searchnoteswidget.cpp:211
 msgid "Open In New _Window"
 msgstr "Odpri v novem _oknu"
 
-#: ../src/searchnoteswidget.cpp:839
+#: ../src/searchnoteswidget.cpp:852
 msgid "Note"
 msgstr "Sporočilce"
 
-#: ../src/searchnoteswidget.cpp:861
+#: ../src/searchnoteswidget.cpp:874
 msgid "Last Changed"
 msgstr "Zadnjič spremenjeno"
 
-#: ../src/searchnoteswidget.cpp:1199
+#: ../src/searchnoteswidget.cpp:1212
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1530,20 +1538,20 @@ msgstr ""
 "Ni najdenih zadetkov v izbrani beležnici.\n"
 "Kliknite tu za iskanje med vsemi beležkami."
 
-#: ../src/searchnoteswidget.cpp:1203
+#: ../src/searchnoteswidget.cpp:1216
 msgid "Click here to search across all notebooks"
 msgstr "Kliknite tu za iskanje med vsemi beležkami."
 
-#: ../src/searchnoteswidget.cpp:1227
+#: ../src/searchnoteswidget.cpp:1240
 msgid "Matches"
 msgstr "Zadetki"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1276
+#: ../src/searchnoteswidget.cpp:1289
 msgid "Title match"
 msgstr "Ujemanje naslovov"
 
-#: ../src/searchnoteswidget.cpp:1280
+#: ../src/searchnoteswidget.cpp:1293
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% zadetkov"
@@ -1551,11 +1559,11 @@ msgstr[1] "%1% zadetek"
 msgstr[2] "%1% zadetka"
 msgstr[3] "%1% zadetki"
 
-#: ../src/searchnoteswidget.cpp:1515
+#: ../src/searchnoteswidget.cpp:1534
 msgid "_Open Template Note"
 msgstr "_Odpri predlogo sporočilc"
 
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1542
 msgid "_New Notebook"
 msgstr "_Nova beležka"
 
