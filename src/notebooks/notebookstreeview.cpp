@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -85,14 +85,10 @@ namespace gnote {
         Note::Ptr note = m_note_manager.find_by_uri (uri.to_string ());
         if (!note)
           continue;
-        
+
         DBG_OUT ("Dropped into notebook: %s", note->get_title().c_str());
-        
-        // TODO: If we ever support selecting multiple notes,
-        // we may want to double-check to see if there will be
-        // any notes are already inside of a notebook.  Do we
-        // want to prompt the user to confirm this choice?
-        NotebookManager::instance().move_note_to_notebook (note, destNotebook);
+
+        destNotebook->add_note(note);
       }
 
       context->drag_finish (true, false, time_);

@@ -390,19 +390,14 @@ namespace gnote {
       if (currentNotebook == notebook)
         return true; // It's already there.
 
-      bool pinning = std::tr1::dynamic_pointer_cast<PinnedNotesNotebook>(notebook);
-
-      if(currentNotebook && !pinning) {
+      if(currentNotebook) {
         note->remove_tag (currentNotebook->get_tag());
         m_note_removed_from_notebook(*note, currentNotebook);
       }
 
       // Only attempt to add the notebook tag when this
       // menu item is not the "No notebook" menu item.
-      if(pinning) {
-        note->set_pinned(true);
-      }
-      else if(notebook && !std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook)) {
+      if(notebook) {
         note->add_tag(notebook->get_tag());
         m_note_added_to_notebook(*note, notebook);
       }

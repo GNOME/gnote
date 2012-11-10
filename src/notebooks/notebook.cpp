@@ -188,6 +188,12 @@ namespace notebooks {
     return note->contains_tag (m_tag);
   }
 
+  bool Notebook::add_note(const Note::Ptr & note)
+  {
+    NotebookManager::instance().move_note_to_notebook(note, shared_from_this());
+    return true;
+  }
+
   std::string Notebook::normalize(const std::string & s)
   {
     return sharp::string_to_lower(sharp::string_trim(s));
@@ -222,6 +228,12 @@ namespace notebooks {
   }
 
 
+  bool AllNotesNotebook::add_note(const Note::Ptr &)
+  {
+    return false;
+  }
+
+
   UnfiledNotesNotebook::UnfiledNotesNotebook()
     : SpecialNotebook(_("Unfiled Notes"))
   {
@@ -239,6 +251,13 @@ namespace notebooks {
   }
 
 
+  bool UnfiledNotesNotebook::add_note(const Note::Ptr & note)
+  {
+    NotebookManager::instance().move_note_to_notebook(note, Notebook::Ptr());
+    return true;
+  }
+
+
   PinnedNotesNotebook::PinnedNotesNotebook()
     : SpecialNotebook(_("Pinned Notes"))
   {
@@ -253,6 +272,12 @@ namespace notebooks {
   bool PinnedNotesNotebook::contains_note(const Note::Ptr & note)
   {
     return note->is_pinned();
+  }
+
+  bool PinnedNotesNotebook::add_note(const Note::Ptr & note)
+  {
+    note->set_pinned(true);
+    return true;
   }
 
 }

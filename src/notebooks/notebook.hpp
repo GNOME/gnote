@@ -37,6 +37,7 @@ namespace notebooks {
 /// An object that represents a notebook in Tomboy
 /// </summary>
 class Notebook 
+  : public std::tr1::enable_shared_from_this<Notebook>
 {
 public:
   typedef std::tr1::shared_ptr<Notebook> Ptr;
@@ -52,6 +53,7 @@ public:
   virtual Note::Ptr   get_template_note() const;
   Note::Ptr create_notebook_note();
   virtual bool contains_note(const Note::Ptr &);
+  virtual bool add_note(const Note::Ptr &);
   static std::string normalize(const std::string & s);
 ////
   virtual ~Notebook()
@@ -101,6 +103,7 @@ public:
   AllNotesNotebook();
   virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
+  virtual bool        add_note(const Note::Ptr &);
 };
 
 
@@ -117,6 +120,7 @@ public:
   UnfiledNotesNotebook();
   virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
+  virtual bool        add_note(const Note::Ptr &);
 };
 
 
@@ -128,6 +132,7 @@ public:
   PinnedNotesNotebook();
   virtual std::string get_notmalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
+  virtual bool        add_note(const Note::Ptr &);
 };
 
 
