@@ -27,6 +27,7 @@
 #include "gnote.hpp"
 #include "notemanager.hpp"
 #include "notebooks/notebook.hpp"
+#include "notebooks/notebookmanager.hpp"
 #include "tagmanager.hpp"
 
 namespace gnote {
@@ -215,6 +216,12 @@ namespace notebooks {
   }
 
 
+  bool AllNotesNotebook::contains_note(const Note::Ptr &)
+  {
+    return true;
+  }
+
+
   UnfiledNotesNotebook::UnfiledNotesNotebook()
     : SpecialNotebook(_("Unfiled Notes"))
   {
@@ -226,6 +233,12 @@ namespace notebooks {
   }
 
 
+  bool UnfiledNotesNotebook::contains_note(const Note::Ptr & note)
+  {
+    return !notebooks::NotebookManager::instance().get_notebook_from_note(note);
+  }
+
+
   PinnedNotesNotebook::PinnedNotesNotebook()
     : SpecialNotebook(_("Pinned Notes"))
   {
@@ -234,6 +247,12 @@ namespace notebooks {
   std::string PinnedNotesNotebook::get_notmalized_name() const
   {
     return "___NotebookManager___PinnedNotes__Notebook___";
+  }
+
+
+  bool PinnedNotesNotebook::contains_note(const Note::Ptr & note)
+  {
+    return note->is_pinned();
   }
 
 }

@@ -768,19 +768,8 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter & iter)
   }
 
   notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
-  if(std::tr1::dynamic_pointer_cast<notebooks::UnfiledNotesNotebook>(selected_notebook)) {
-    // If the note belongs to a notebook, return false
-    // since the only notes that should be shown in this
-    // case are notes that are unfiled (not in a notebook).
-    if(notebooks::NotebookManager::instance().get_notebook_from_note(note)) {
-      return false;
-    }
-  }
-  else if(std::tr1::dynamic_pointer_cast<notebooks::PinnedNotesNotebook>(selected_notebook)) {
-    // Filter out unpinned notes
-    if(!note->is_pinned()) {
-      return false;
-    }
+  if(!selected_notebook || !selected_notebook->contains_note(note)) {
+    return false;
   }
 
   bool passes_search_filter = filter_by_search(note);

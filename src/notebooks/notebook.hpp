@@ -51,7 +51,7 @@ public:
   Note::Ptr find_template_note() const;
   virtual Note::Ptr   get_template_note() const;
   Note::Ptr create_notebook_note();
-  bool contains_note(const Note::Ptr &);
+  virtual bool contains_note(const Note::Ptr &);
   static std::string normalize(const std::string & s);
 ////
   virtual ~Notebook()
@@ -100,6 +100,7 @@ public:
   typedef std::tr1::shared_ptr<AllNotesNotebook> Ptr;
   AllNotesNotebook();
   virtual std::string get_normalized_name() const;
+  virtual bool        contains_note(const Note::Ptr &);
 };
 
 
@@ -115,6 +116,7 @@ public:
   typedef std::tr1::shared_ptr<UnfiledNotesNotebook> Ptr;
   UnfiledNotesNotebook();
   virtual std::string get_normalized_name() const;
+  virtual bool        contains_note(const Note::Ptr &);
 };
 
 
@@ -125,6 +127,7 @@ public:
   typedef std::tr1::shared_ptr<PinnedNotesNotebook> Ptr;
   PinnedNotesNotebook();
   virtual std::string get_notmalized_name() const;
+  virtual bool        contains_note(const Note::Ptr &);
 };
 
 
