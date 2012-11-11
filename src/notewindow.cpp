@@ -34,6 +34,7 @@
 
 #include "libtomboy/tomboyutil.h"
 #include "debug.hpp"
+#include "iconmanager.hpp"
 #include "note.hpp"
 #include "notewindow.hpp"
 #include "notemanager.hpp"
@@ -52,18 +53,14 @@
 
 namespace gnote {
 
-  bool NoteWindow::s_static_inited = false;
-  Glib::RefPtr<Gio::Icon> NoteWindow::s_icon_pin_active;
-  Glib::RefPtr<Gio::Icon> NoteWindow::s_icon_pin_down;
-
-  void NoteWindow::_init_static()
+  Glib::RefPtr<Gio::Icon> NoteWindow::get_icon_pin_active()
   {
-    if(!s_static_inited) {
-      s_static_inited = true;
+    return IconManager::obj().get_icon(IconManager::PIN_ACTIVE, 22);
+  }
 
-      s_icon_pin_active = utils::get_icon("pin-active", 22);
-      s_icon_pin_down = utils::get_icon("pin-down", 22);
-    }
+  Glib::RefPtr<Gio::Icon> NoteWindow::get_icon_pin_down()
+  {
+    return IconManager::obj().get_icon(IconManager::PIN_DOWN, 22);
   }
 
 
@@ -78,8 +75,6 @@ namespace gnote {
     , m_y(-1)
     , m_global_keys(NULL)
   {
-    _init_static();
-
     m_template_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     m_template_save_size_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
     m_template_save_selection_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
@@ -372,10 +367,10 @@ namespace gnote {
 
     m_pin_image = manage(new Gtk::Image);
     if(m_note.is_pinned()) {
-      m_pin_image->property_gicon() = s_icon_pin_down;
+      m_pin_image->property_gicon() = get_icon_pin_down();
     }
     else {
-      m_pin_image->property_gicon() = s_icon_pin_active;
+      m_pin_image->property_gicon() = get_icon_pin_active();
     }
 
     m_pin_button = manage(new Gtk::ToolButton(*m_pin_image, _("Pin")));
@@ -680,10 +675,10 @@ namespace gnote {
       return;
     }
     if(pinned) {
-      m_pin_image->property_gicon() = s_icon_pin_down;
+      m_pin_image->property_gicon() = get_icon_pin_down();
     }
     else {
-      m_pin_image->property_gicon() = s_icon_pin_active;
+      m_pin_image->property_gicon() = get_icon_pin_active();
     }
   }
 

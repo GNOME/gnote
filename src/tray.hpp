@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -55,13 +55,8 @@ private:
 
   static std::string get_display_name(const Note::Ptr & n);
   static std::string ellipsify (const std::string & str, size_t max);
-  static void _init_static();
-
-  static bool                      s_static_inited;
-  static Glib::RefPtr<Gdk::Pixbuf> s_note_icon;
-  static Glib::RefPtr<Gdk::Pixbuf> s_pinup;
-  static Glib::RefPtr<Gdk::Pixbuf> s_pinup_active;
-  static Glib::RefPtr<Gdk::Pixbuf> s_pindown;
+  static Glib::RefPtr<Gdk::Pixbuf> get_pinup_icon();
+  static Glib::RefPtr<Gdk::Pixbuf> get_pindown_icon();
 };
 
 

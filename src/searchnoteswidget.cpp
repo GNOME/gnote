@@ -29,6 +29,7 @@
 #include <gtkmm/table.h>
 
 #include "debug.hpp"
+#include "iconmanager.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "recenttreeview.hpp"
@@ -42,24 +43,11 @@
 namespace gnote {
 
 std::list<std::string> SearchNotesWidget::s_previous_searches;
-bool SearchNotesWidget::s_static_inited = false;
-Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_note_icon;
-Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_all_notes_icon;
-Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_unfiled_notes_icon;
-Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_pinned_notes_icon;
-Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::s_notebook_icon;
 
-void SearchNotesWidget::_init_static()
+
+Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon()
 {
-  if(s_static_inited) {
-    return;
-  }
-  s_note_icon = utils::get_icon ("note", 22);
-  s_all_notes_icon = utils::get_icon ("filter-note-all", 22);
-  s_unfiled_notes_icon = utils::get_icon ("filter-note-unfiled", 22);
-  s_pinned_notes_icon = utils::get_icon ("pin-down", 22);
-  s_notebook_icon = utils::get_icon ("notebook", 22);
-  s_static_inited = true;
+  return IconManager::obj().get_icon(IconManager::NOTE, 22);
 }
 
 
@@ -77,7 +65,6 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   , m_notebook_list_context_menu(NULL)
   , m_initial_position_restored(false)
 {
-  _init_static();
   make_actions();
 
   Gtk::Label *label = manage(new Gtk::Label (_("_Search:"), true));
@@ -486,16 +473,16 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
 
   Gtk::CellRendererPixbuf *crp = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
   if(std::tr1::dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook)) {
-    crp->property_pixbuf() = s_all_notes_icon;
+    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::FILTER_NOTE_ALL, 22);
   }
   else if(std::tr1::dynamic_pointer_cast<notebooks::UnfiledNotesNotebook>(notebook)) {
-    crp->property_pixbuf() = s_unfiled_notes_icon;
+    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::FILTER_NOTE_UNFILED, 22);
   }
   else if(std::tr1::dynamic_pointer_cast<notebooks::PinnedNotesNotebook>(notebook)) {
-    crp->property_pixbuf() = s_pinned_notes_icon;
+    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::PIN_DOWN, 22);
   }
   else {
-    crp->property_pixbuf() = s_notebook_icon;
+    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::NOTEBOOK, 22);
   }
 }
 
@@ -697,7 +684,7 @@ void SearchNotesWidget::update_results()
     std::string nice_date = utils::get_pretty_print_date(note->change_date(), true);
 
     Gtk::TreeIter iter = m_store->append();
-    iter->set_value(0, s_note_icon);  /* icon */
+    iter->set_value(0, get_note_icon());  /* icon */
     iter->set_value(1, note->get_title()); /* title */
     iter->set_value(2, nice_date);  /* change date */
     iter->set_value(3, note);      /* note */
@@ -1379,7 +1366,7 @@ void SearchNotesWidget::add_note(const Note::Ptr & note)
   std::string nice_date =
     utils::get_pretty_print_date(note->change_date(), true);
   Gtk::TreeIter iter = m_store->append();
-  iter->set_value(m_column_types.icon, s_note_icon);
+  iter->set_value(m_column_types.icon, get_note_icon());
   iter->set_value(m_column_types.title, note->get_title());
   iter->set_value(m_column_types.change_date, nice_date);
   iter->set_value(m_column_types.note, note);

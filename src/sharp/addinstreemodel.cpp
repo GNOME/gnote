@@ -28,8 +28,8 @@
 #include <glibmm/i18n.h>
 
 #include "sharp/addinstreemodel.hpp"
-#include "utils.hpp"
 #include "abstractaddin.hpp"
+#include "iconmanager.hpp"
 
 
 namespace sharp {
@@ -82,7 +82,7 @@ namespace sharp {
     Gtk::CellRendererPixbuf *icon_renderer = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
     Glib::RefPtr<Gdk::Pixbuf> icon;
     if(get_module(iter)) {
-      icon = gnote::utils::get_icon("emblem-package", 22);
+      icon = gnote::IconManager::obj().get_icon(gnote::IconManager::EMBLEM_PACKAGE, 22);
     }
     icon_renderer->property_pixbuf() = icon;
   }

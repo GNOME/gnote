@@ -20,21 +20,16 @@
 
 
 #include "gnote.hpp"
+#include "iconmanager.hpp"
 #include "notewindow.hpp"
 
 #include "backlinkmenuitem.hpp"
 
 namespace backlinks {
 
-Glib::RefPtr<Gdk::Pixbuf> BacklinkMenuItem::s_note_icon;
-
-
-const Glib::RefPtr<Gdk::Pixbuf> & BacklinkMenuItem::get_note_icon()
+Glib::RefPtr<Gdk::Pixbuf> BacklinkMenuItem::get_note_icon()
 {
-  if(!s_note_icon) {
-    s_note_icon = gnote::utils::get_icon("note", 16);
-  }
-  return s_note_icon;
+  return gnote::IconManager::obj().get_icon(gnote::IconManager::NOTE, 16);
 }
 
 

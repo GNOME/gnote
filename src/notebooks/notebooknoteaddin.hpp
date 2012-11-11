@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -70,10 +70,6 @@ namespace notebooks {
     sigc::connection          m_note_added_cid;
     sigc::connection          m_note_removed_cid;
 
-    static void _init_static();
-    static bool               s_static_inited;
-    static Glib::RefPtr<Gdk::Pixbuf> s_notebookIcon;
-    static Glib::RefPtr<Gdk::Pixbuf> s_newNotebookIcon;
     static Tag::Ptr           s_templateTag;
   };
 

@@ -61,8 +61,6 @@ namespace gnote {
       bool m_initialized;
       guint m_notebookUi;
       Glib::RefPtr<Gtk::ActionGroup> m_actionGroup;
-      Glib::RefPtr<Gdk::Pixbuf>      m_notebookIcon;
-      Glib::RefPtr<Gdk::Pixbuf>      m_newNotebookIcon;
       Gtk::Menu                     *m_trayNotebookMenu;
       std::list<Gtk::MenuItem*>      m_trayNotebookMenuItems;
     };

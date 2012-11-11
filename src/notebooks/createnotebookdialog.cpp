@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,6 +29,7 @@
 #include "sharp/string.hpp"
 #include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebookmanager.hpp"
+#include "iconmanager.hpp"
 #include "utils.hpp"
 
 namespace gnote {
@@ -38,10 +40,6 @@ namespace gnote {
                                 _("Create a new notebook"),
                                 _("Type the name of the notebook you'd like to create."))
     {
-      m_newNotebookIcon = utils::get_icon ("notebook-new", 16);
-      m_newNotebookIconDialog = utils::get_icon ("notebook-new", 48);
-//      set_icon_list(m_newNotebookIconDialog);
-
       Gtk::Table *table = manage(new Gtk::Table (2, 2, false));
       
       Gtk::Label *label = manage(new Gtk::Label (_("N_otebook name:"), true));
@@ -67,7 +65,7 @@ namespace gnote {
       set_extra_widget(table);
       
       add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, false);
-      add_button (m_newNotebookIcon,
+      add_button (IconManager::obj().get_icon(IconManager::NOTEBOOK_NEW, 16),
                   // Translation note: This is the Create button in the Create
                   // New Note Dialog.
                   _("C_reate"), Gtk::RESPONSE_OK, true);

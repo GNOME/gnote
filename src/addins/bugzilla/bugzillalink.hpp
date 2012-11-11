@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,8 +48,6 @@ protected:
   virtual void on_attribute_read(const std::string &);
 private:
   void make_image();
-  static void _static_init();
-  static Glib::RefPtr<Gdk::Pixbuf> s_bug_icon;
 };
 
 }

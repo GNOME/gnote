@@ -48,9 +48,6 @@ namespace sharp {
 namespace gnote {
   namespace utils {
 
-    Glib::RefPtr<Gdk::Pixbuf> get_icon(const std::string & , int );
-
-    
     void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
 
     void show_help(const std::string & filename, const std::string & link_id,

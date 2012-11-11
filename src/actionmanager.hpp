@@ -63,10 +63,6 @@ public:
     {
       return m_ui;
     }
-  Glib::RefPtr<Gdk::Pixbuf> get_new_note() const
-    {
-      return m_newNote;
-    }
   Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const;
   const std::vector<Glib::RefPtr<Gio::SimpleAction> > & get_app_actions() const
     {
@@ -83,7 +79,6 @@ private:
 
   Glib::RefPtr<Gtk::UIManager> m_ui;
   Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
-  Glib::RefPtr<Gdk::Pixbuf> m_newNote;
 
   std::vector<Glib::RefPtr<Gio::SimpleAction> > m_app_actions;
 

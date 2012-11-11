@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -42,8 +43,7 @@ private:
   gnote::Note::Ptr   m_note;
   std::string m_title_search;
   
-  static const Glib::RefPtr<Gdk::Pixbuf> & get_note_icon();
-  static Glib::RefPtr<Gdk::Pixbuf> s_note_icon;
+  static Glib::RefPtr<Gdk::Pixbuf> get_note_icon();
 };
 
 }

@@ -39,6 +39,7 @@
 #include "actionmanager.hpp"
 #include "debug.hpp"
 #include "gnote.hpp"
+#include "iconmanager.hpp"
 #include "notemanager.hpp"
 
 namespace gnote {
@@ -55,8 +56,6 @@ namespace gnote {
       , m_notebookUi(0)
       , m_trayNotebookMenu(NULL)
     {
-      m_notebookIcon = utils::get_icon ("notebook", 16);
-      m_newNotebookIcon = utils::get_icon ("notebook-new", 16);
     }
 
 
@@ -87,7 +86,8 @@ namespace gnote {
       if (item) {
         Gtk::ImageMenuItem *image_item = dynamic_cast<Gtk::ImageMenuItem*>(item);
         if (image_item) {
-          image_item->set_image(*manage(new Gtk::Image(m_notebookIcon)));
+          image_item->set_image(*manage(new Gtk::Image(
+              IconManager::obj().get_icon(IconManager::NOTEBOOK, 16))));
         }
         m_trayNotebookMenu = manage(new Gtk::Menu());
         item->set_submenu(*m_trayNotebookMenu);
@@ -103,7 +103,8 @@ namespace gnote {
       Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
         am.get_widget ("/NotebooksTreeContextMenu/NewNotebookNote"));
       if (imageitem) {
-        imageitem->set_image(*manage(new Gtk::Image(am.get_new_note())));
+        imageitem->set_image(*manage(new Gtk::Image(
+            IconManager::obj().get_icon(IconManager::NOTE_NEW, 16))));
       }
 
       NoteManager & nm(Gnote::obj().default_note_manager());
@@ -184,7 +185,8 @@ namespace gnote {
       // Add in the "New Notebook..." menu item
       Gtk::ImageMenuItem *newNotebookMenuItem =
         manage(new Gtk::ImageMenuItem (_("New Note_book..."), true));
-      newNotebookMenuItem->set_image(*manage(new Gtk::Image (m_newNotebookIcon)));
+      newNotebookMenuItem->set_image(*manage(new Gtk::Image(
+          IconManager::obj().get_icon(IconManager::NOTEBOOK_NEW, 16))));
       newNotebookMenuItem->signal_activate()
         .connect(sigc::mem_fun(*this, &NotebookApplicationAddin::on_new_notebook_menu_item));
       newNotebookMenuItem->show_all ();

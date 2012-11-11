@@ -26,6 +26,7 @@
 
 #include "sharp/string.hpp"
 #include "gnote.hpp"
+#include "iconmanager.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -39,7 +40,7 @@ namespace gnote {
       : Gtk::ImageMenuItem(str(boost::format(_("New \"%1%\" Note")) % notebook->get_name()))
       , m_notebook(notebook)
     {
-      set_image(*manage(new Gtk::Image(utils::get_icon("note-new", 16))));
+      set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 16))));
       signal_activate().connect(sigc::mem_fun(*this, &NotebookNewNoteMenuItem::on_activated));
     }
 

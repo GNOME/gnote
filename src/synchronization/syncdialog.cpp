@@ -28,6 +28,7 @@
 #include <gtkmm/treeview.h>
 
 #include "gnote.hpp"
+#include "iconmanager.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferences.hpp"
@@ -288,7 +289,7 @@ SyncDialog::SyncDialog()
   hbox->show();
   outerVBox->pack_start(*hbox, false, false, 0);
 
-  m_image = manage(new Gtk::Image(utils::get_icon("gnote", 48)));
+  m_image = manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::GNOTE, 48)));
   m_image->set_alignment(0, 0);
   m_image->show();
   hbox->pack_start(*m_image, false, false, 0);

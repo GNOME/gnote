@@ -178,15 +178,9 @@ private:
   Gtk::Menu *m_notebook_list_context_menu;
   bool m_initial_position_restored;
 
-  static void _init_static();
+  static Glib::RefPtr<Gdk::Pixbuf> get_note_icon();
 
   static std::list<std::string> s_previous_searches;
-  static bool s_static_inited;
-  static Glib::RefPtr<Gdk::Pixbuf> s_note_icon;
-  static Glib::RefPtr<Gdk::Pixbuf> s_all_notes_icon;
-  static Glib::RefPtr<Gdk::Pixbuf> s_unfiled_notes_icon;
-  static Glib::RefPtr<Gdk::Pixbuf> s_pinned_notes_icon;
-  static Glib::RefPtr<Gdk::Pixbuf> s_notebook_icon;
 };
 
 }

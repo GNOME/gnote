@@ -65,7 +65,7 @@
 #include "sharp/xml.hpp"
 #include "debug.hpp"
 #include "actionmanager.hpp"
-#include "utils.hpp"
+#include "iconmanager.hpp"
 
 namespace gnote {
 
@@ -82,8 +82,6 @@ namespace gnote {
     populate_action_groups();
     make_app_actions();
     make_app_menu_items();
-    m_newNote = utils::get_icon("note-new", 16);
-    DBG_ASSERT(m_newNote, "note-new icon not found");
   }
 
 
@@ -97,7 +95,7 @@ namespace gnote {
       "/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
     DBG_ASSERT(imageitem, "Item not found");
     if (imageitem) {
-      imageitem->set_image(*manage(new Gtk::Image(m_newNote)));
+      imageitem->set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 16))));
     }
   }
 

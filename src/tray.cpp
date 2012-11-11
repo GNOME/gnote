@@ -35,6 +35,7 @@
 #include "tray.hpp"
 #include "debug.hpp"
 #include "actionmanager.hpp"
+#include "iconmanager.hpp"
 #include "utils.hpp"
 #include "gnote.hpp"
 #include "note.hpp"
@@ -65,12 +66,6 @@ namespace gnote {
 
 
 
-  bool                      NoteMenuItem::s_static_inited = false;
-  Glib::RefPtr<Gdk::Pixbuf> NoteMenuItem::s_note_icon;
-  Glib::RefPtr<Gdk::Pixbuf> NoteMenuItem::s_pinup;
-  Glib::RefPtr<Gdk::Pixbuf> NoteMenuItem::s_pinup_active;
-  Glib::RefPtr<Gdk::Pixbuf> NoteMenuItem::s_pindown;
-  
   NoteMenuItem::NoteMenuItem(const Note::Ptr & note, bool show_pin)
     : Gtk::ImageMenuItem(get_display_name(note))
     , m_note(note)
@@ -78,8 +73,7 @@ namespace gnote {
     , m_pinned(false)
     , m_inhibit_activate(false)
   {
-    _init_static();
-    set_image(*manage(new Gtk::Image(s_note_icon)));
+    set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE, 16))));
     if(show_pin) {
       Gtk::HBox *box = manage(new Gtk::HBox(false, 0));
       Gtk::Widget *child = get_child();
@@ -89,7 +83,7 @@ namespace gnote {
       box->show();
 
       m_pinned = note->is_pinned();
-      m_pin_img = manage(new Gtk::Image(m_pinned ? s_pindown : s_pinup));
+      m_pin_img = manage(new Gtk::Image(m_pinned ? get_pindown_icon() : get_pinup_icon()));
       m_pin_img->show();
       box->pack_start(*m_pin_img, false, false, 0);
     }
@@ -113,7 +107,7 @@ namespace gnote {
             + m_pin_img->get_allocation().get_width())) {
       m_pinned = !m_pinned;
       m_note->set_pinned(m_pinned);
-      m_pin_img->set(m_pinned ? s_pindown : s_pinup);
+      m_pin_img->set(m_pinned ? get_pindown_icon() : get_pinup_icon());
       m_inhibit_activate = true;
       return true;
     }
@@ -137,11 +131,16 @@ namespace gnote {
     if (!m_pinned && m_pin_img) {
       if (ev->x >= m_pin_img->get_allocation().get_x() &&
           ev->x < m_pin_img->get_allocation().get_x() + m_pin_img->get_allocation().get_width()) {
-        if (m_pin_img->get_pixbuf() != s_pinup_active) {
-          m_pin_img->set(s_pinup_active);
+        Glib::RefPtr<Gdk::Pixbuf> pin_active = IconManager::obj().get_icon(IconManager::PIN_ACTIVE, 16);
+        if (m_pin_img->get_pixbuf() != pin_active) {
+          m_pin_img->set(pin_active);
         }
-      } else if (m_pin_img->get_pixbuf() != s_pinup) {
-        m_pin_img->set(s_pinup);
+      }
+      else {
+        Glib::RefPtr<Gdk::Pixbuf> pinup = get_pinup_icon();
+        if (m_pin_img->get_pixbuf() != pinup) {
+          m_pin_img->set(pinup);
+        }
       }
     }
 
@@ -152,7 +151,7 @@ namespace gnote {
   bool NoteMenuItem::on_leave_notify_event(GdkEventCrossing *ev)
   {
     if (!m_pinned && m_pin_img) {
-      m_pin_img->set(s_pinup);
+      m_pin_img->set(get_pinup_icon());
     }
     return Gtk::ImageMenuItem::on_leave_notify_event(ev);
   }
@@ -186,15 +185,14 @@ namespace gnote {
 
 
 
-  void NoteMenuItem::_init_static()
+  Glib::RefPtr<Gdk::Pixbuf> NoteMenuItem::get_pinup_icon()
   {
-    if(s_static_inited)
-      return;
-    s_note_icon = utils::get_icon("note", 16);
-    s_pinup = utils::get_icon("pin-up", 16);
-    s_pinup_active = utils::get_icon("pin-active", 16);
-    s_pindown = utils::get_icon("pin-down", 16);
-    s_static_inited = true;
+    return IconManager::obj().get_icon(IconManager::PIN_UP, 16);
+  }
+
+  Glib::RefPtr<Gdk::Pixbuf> NoteMenuItem::get_pindown_icon()
+  {
+    return IconManager::obj().get_icon(IconManager::PIN_DOWN, 16);
   }
 
   Tray::Tray(NoteManager & manager, IGnoteTray & trayicon)
@@ -541,7 +539,7 @@ namespace gnote {
       size = 32;
     }
     else size = 48;
-    Glib::RefPtr<Gdk::Pixbuf> pixbuf = utils::get_icon("gnote", size);
+    Glib::RefPtr<Gdk::Pixbuf> pixbuf = IconManager::obj().get_icon(IconManager::GNOTE, size);
     set(pixbuf);
     return Gtk::StatusIcon::on_size_changed(size);
   }

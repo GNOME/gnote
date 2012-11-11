@@ -154,10 +154,8 @@ public:
       return *m_find_bar;
     }
 private:
-  static void _init_static();
-  static bool s_static_inited;
-  static Glib::RefPtr<Gio::Icon> s_icon_pin_active;
-  static Glib::RefPtr<Gio::Icon> s_icon_pin_down;
+  static Glib::RefPtr<Gio::Icon> get_icon_pin_active();
+  static Glib::RefPtr<Gio::Icon> get_icon_pin_down();
 
   bool on_key_pressed(GdkEventKey*);
   void on_delete_button_clicked();

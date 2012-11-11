@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -103,18 +103,6 @@ namespace gnote {
       }
     }
 
-
-    Glib::RefPtr<Gdk::Pixbuf> get_icon(const std::string & name, int size)
-    {
-      try {
-        return Gtk::IconTheme::get_default()->load_icon(name, size, (Gtk::IconLookupFlags) 0);
-      }
-      catch(const Glib::Exception & e)
-      {
-        std::cout << e.what().c_str() << std::endl;
-      }
-      return Glib::RefPtr<Gdk::Pixbuf>();
-    }
 
     void show_help(const std::string & filename, const std::string & link_id,
                    GdkScreen *screen, Gtk::Window *parent)

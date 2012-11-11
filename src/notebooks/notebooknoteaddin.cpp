@@ -27,6 +27,7 @@
 #include "notebooks/notebooknoteaddin.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "debug.hpp"
+#include "iconmanager.hpp"
 #include "tag.hpp"
 #include "tagmanager.hpp"
 #include "notewindow.hpp"
@@ -35,20 +36,7 @@
 namespace gnote {
 namespace notebooks {
 
-  bool               NotebookNoteAddin::s_static_inited = false;
-  Glib::RefPtr<Gdk::Pixbuf> NotebookNoteAddin::s_notebookIcon;
-  Glib::RefPtr<Gdk::Pixbuf> NotebookNoteAddin::s_newNotebookIcon;
   Tag::Ptr           NotebookNoteAddin::s_templateTag;
-
-  void NotebookNoteAddin::_init_static()
-  {
-    if(!s_static_inited) {
-      s_notebookIcon = utils::get_icon("notebook", 22);
-      s_newNotebookIcon =  utils::get_icon("notebook-new", 16);
-      s_static_inited = true;
-    }
-  }
-
 
   Tag::Ptr NotebookNoteAddin::get_template_tag()
   {
@@ -63,7 +51,6 @@ namespace notebooks {
     : m_toolButton(NULL)
     , m_menu(NULL)
   {
-    _init_static();
   }
 
 
@@ -80,7 +67,8 @@ namespace notebooks {
   void NotebookNoteAddin::initialize_tool_button()
   {
     m_toolButton = Gtk::manage(
-      new gnote::utils::ToolMenuButton(*manage(new Gtk::Image(s_notebookIcon)), "",
+      new gnote::utils::ToolMenuButton(*manage(new Gtk::Image(
+          IconManager::obj().get_icon(IconManager::NOTEBOOK, 22))), "",
                                        m_menu));
     m_toolButton->set_is_important(true);
     m_toolButton->set_tooltip_text(_("Place this note into a notebook"));
@@ -220,7 +208,8 @@ namespace notebooks {
     // Add the "New Notebook..."
     Gtk::ImageMenuItem *newNotebookMenuItem =
       manage(new Gtk::ImageMenuItem (_("_New notebook..."), true));
-    newNotebookMenuItem->set_image(*manage(new Gtk::Image (s_newNotebookIcon)));
+    newNotebookMenuItem->set_image(*manage(new Gtk::Image(
+      IconManager::obj().get_icon(IconManager::NOTEBOOK_NEW, 16))));
     newNotebookMenuItem->signal_activate()
       .connect(sigc::mem_fun(*this,&NotebookNoteAddin::on_new_notebook_menu_item));
     newNotebookMenuItem->show ();

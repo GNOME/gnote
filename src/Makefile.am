@@ -106,6 +106,7 @@ libgnote_la_SOURCES = \
 	applicationaddin.cpp \
 	contrast.hpp contrast.cpp \
 	debug.hpp debug.cpp \
+	iconmanager.hpp iconmanager.cpp \
 	importaddin.hpp importaddin.cpp \
 	keybinder.hpp \
 	noteaddin.hpp noteaddin.cpp \

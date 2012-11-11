@@ -30,6 +30,7 @@
 #include "actionmanager.hpp"
 #include "debug.hpp"
 #include "gnote.hpp"
+#include "iconmanager.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -65,7 +66,7 @@ namespace gnote {
     m_menu = manage(new Gtk::Menu);
     m_menu->signal_show().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_menu_show));
     utils::ToolMenuButton *tool_button = manage(new utils::ToolMenuButton(
-      *manage(new Gtk::Image(utils::get_icon("note", 24))), _("_Show"), m_menu));
+      *manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE, 24))), _("_Show"), m_menu));
     tool_button->set_use_underline(true);
     tool_button->set_is_important(true);
     tool_button->show_all();

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,6 +21,7 @@
 
 #include "sharp/uri.hpp"
 #include "debug.hpp"
+#include "iconmanager.hpp"
 #include "utils.hpp"
 #include "bugzillalink.hpp"
 #include "bugzillanoteaddin.hpp"
@@ -28,17 +30,8 @@ namespace bugzilla {
 
 #define URI_ATTRIBUTE_NAME "uri"
 
-  Glib::RefPtr<Gdk::Pixbuf> BugzillaLink::s_bug_icon;
-
-  void BugzillaLink::_static_init()
-  {
-    s_bug_icon = gnote::utils::get_icon("bug", 16);
-  }
-
-
   BugzillaLink::BugzillaLink()
   {
-    _static_init();
   }
 
 
@@ -86,7 +79,7 @@ namespace bugzilla {
       image = Gdk::Pixbuf::create_from_file(imagePath);
     }
     catch(...) {
-      image = s_bug_icon;
+      image = gnote::IconManager::obj().get_icon(gnote::IconManager::BUG, 16);
     }
     set_image(image);
   }
