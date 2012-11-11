@@ -2,239 +2,284 @@
 # Courtesy of Prevod.org team (http://prevod.org/) -- 2011
 # This file is distributed under the same license as the gnote package.
 # Милош Поповић <gpopac@gmail.com>, 2011.
-#
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-19 08:48+0000\n"
-"PO-Revision-Date: 2011-08-23 18:33+0200\n"
-"Last-Translator: Милош Поповић <gpopac@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
+"keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-09-30 19:07+0000\n"
+"PO-Revision-Date: 2012-11-11 09:38+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
-"Language: Serbian (sr)\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\\n\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Project-Style: gnome\n"
 
 #: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
-msgstr "Белешке"
+msgstr "Гномове белешке"
 
 #: ../data/gnote.desktop.in.in.h:2
+msgid "Take notes, link ideas, and stay organized"
+msgstr "Хватајте белешке, повезујте идеје и будите организовани"
+
+#: ../data/gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "Хватач белешки"
 
-#: ../data/gnote.desktop.in.in.h:3
-msgid "Take notes, link ideas, and stay organized"
-msgstr "Хватајте белешке, повезујте идеје и останите организовани"
-
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
-msgid "Accept SSL Certificates"
-msgstr "Прихватање SSL сертификата"
+msgid "Enable spellchecking"
+msgstr "Укључује проверу правописа"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:2
-msgid "Create a new Note"
-msgstr "Направи нову белешку"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:3
-msgid "Custom Font Face"
-msgstr "Посебан словни лик"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:4
-#, fuzzy
-msgid ""
-"Determines Search window splitter position in pixels; stored on Gnote exit."
-msgstr ""
-"Одређује ширину у пикселима прозора за претрагу, чува се приликом изласка из "
-"програма."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:5
-#, fuzzy
-msgid "Determines X coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"Одређује X координату прозора за претрагу, чува се приликом изласка из "
-"програма."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:6
-#, fuzzy
-msgid "Determines Y coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"Одређује Y координату прозора за претрагу, чува се приликом изласка из "
-"програма."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:7
-#, fuzzy
-msgid "Determines pixel height of Search window; stored on Gnote exit."
-msgstr ""
-"Одређује висину у пикселима прозора за претрагу, чува се приликом изласка из "
-"програма."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:8
-#, fuzzy
-msgid "Determines pixel width of Search window; stored on Gnote exit."
-msgstr ""
-"Одређује ширину у пикселима прозора за претрагу, чува се приликом изласка из "
-"програма."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:9
-#, fuzzy
-msgid "Enable Auto bulleted lists"
-msgstr "Омогући аутоматске _листе"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:10
-#, fuzzy
-msgid "Enable Middle-Click Paste On Icon"
-msgstr "Омогући убацивање средњим кликом на икону."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:11
-msgid "Enable WikiWord highlighting"
-msgstr "Омогући обележавање ВикиРечи"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:12
-#, fuzzy
-msgid "Enable closing notes with escape"
-msgstr "Омогући затварање белешке тастером Esc."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:13
-msgid "Enable custom font"
-msgstr "Омогући посебан словни лик"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:14
-msgid "Enable global keybindings"
-msgstr "Омогући пречице са тастатуре"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:15
-msgid "Enable spellchecking"
-msgstr "Омогући проверу правописа"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:16
-msgid "Enable startup notes"
-msgstr "Омогући белешке при покретању"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:17
-msgid ""
-"Enable this option if you want bulleted lists to be automatic when you place "
-"- or * at the beginning of a line."
-msgstr ""
-"Укључите опцију да би омогућили аутоматско прављење листи када се укуца „-“ "
-"или „*“ на почетку реда."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:18
-#, fuzzy
-msgid ""
-"Enable this option if you want to be able to middle-click the Gnote icon to "
-"paste timestamped content into the Start Here note."
-msgstr ""
-"Укључите опцију да би омогући да средњи клик на иконицу Томице убаци садржај "
-"обележен текућим временом у белешку за почетну страницу."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:19
-msgid ""
-"Enable this option to highlight words ThatLookLikeThis. Clicking the word "
-"will create a note with that name."
-msgstr ""
-"Омогући ову опцију за обележавање речи КојеИзгледајуОвако. Клик изнад речи "
-"ће тада направити нову белешку са тим именом."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:20
-msgid "FUSE Mounting Timeout (ms)"
-msgstr "Време истека FUSE монтирања (ms)"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:21
-msgid "HTML Export All Linked Notes"
-msgstr "ХТМЛ извози повезане белешке"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:22
-msgid "HTML Export Last Directory"
-msgstr "Последњи директоријум за ХТМЛ извоз"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:23
-msgid "HTML Export Linked Notes"
-msgstr "Повезане белешке у ХТМЛ извозу"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:24
-msgid ""
-"Has affect only when started as an application. When set to TRUE, shows a "
-"status icon. If set to FALSE, Search All Notes window is used as main "
-"application window, closing which makes application to exit."
-msgstr ""
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:25
-msgid ""
-"If enable_custom_font is true, the font name set here will be used as the "
-"font when displaying notes."
-msgstr ""
-"Ако је „enable_custom_font“ укључено, биће коришћен овде одабран скуп "
-"словних ликова при приказу белешки."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:26
-#, fuzzy
-msgid ""
-"If enabled, all notes that were open when Gnote quit will automatically be "
-"reopened at startup."
-msgstr ""
-"Ако је укључено, све отворене белешке у тренутку гашења Томице ће бити "
-"поново отворене при покретању."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:27
-msgid "If enabled, an opened note can be closed by hitting the escape key."
-msgstr ""
-"Ако је укључено отворена белешка може бити затворена притиском на типку Esc."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:28
 msgid ""
 "If true, misspellings will be underlined in red, and correct spelling "
 "suggestions shown in the right-click menu."
 msgstr ""
 "Ако је укључено, неисправно написане речи ће бити црвено подвучене, са "
-"предлозима који се појављују у менију по десном клику на реч."
+"предлозима који се појављују у изборнику по десном клику на реч."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:29
-#, fuzzy
+#: ../data/org.gnome.gnote.gschema.xml.in.h:3
+msgid "Enable WikiWord highlighting"
+msgstr "Укључује обележавање ВикиРечи"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:4
 msgid ""
-"If true, the desktop-global keybindings set in /apps/gnote/"
-"global_keybindings will be enabled, allowing for useful Gnote actions to be "
-"available from any application."
+"Enable this option to highlight words ThatLookLikeThis. Clicking the word "
+"will create a note with that name."
 msgstr ""
-"Ако је укључено, глобалне пречице постављене у „/apps/tomboy“ ће бити "
-"омогућене, што даје могућност да се неким корисним акцијама Томичиних "
-"белешки приступа из других програма."
+"Укључите ову опцију за истицање речи КојеИзгледајуОвако. Клик изнад речи ће "
+"тада направити белешку са тим називом."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:30
+#: ../data/org.gnome.gnote.gschema.xml.in.h:5
+msgid "Enable Auto bulleted lists"
+msgstr "Омогућава самостално означене спискове"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:6
 msgid ""
-"If true, the font name set in custom_font_face will be used as the font when "
+"Enable this option if you want bulleted lists to be automatic when you place "
+"- or * at the beginning of a line."
+msgstr ""
+"Укључите ову опцију ако желите да самостално стварање означеног списка када "
+"се поставите „-“ или „*“ на почетак реда."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:7
+msgid "Enable Middle-Click Paste On Icon"
+msgstr "Омогућава убацивање средњим кликом на иконицу"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:8
+msgid ""
+"Enable this option if you want to be able to middle-click the Gnote icon to "
+"paste timestamped content into the Start Here note."
+msgstr ""
+"Укључите ову опцију ако желите да средњим кликом на иконицу Гномових белешки "
+"убаците садржај обележен текућим временом у белешку за почетну страницу."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:9
+msgid "Enable custom font"
+msgstr "Омогућава посебан словни лик"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:10
+#| msgid ""
+#| "If true, the font name set in custom_font_face will be used as the font "
+#| "when displaying notes. Otherwise the desktop default font will be used."
+msgid ""
+"If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
 msgstr ""
-"Ако је укључено, биће коришћен скуп словних ликова наведен у "
-"„custom_font_face“ при приказу белешки, иначе подразумевани словни лик ће "
-"бити коришћен."
+"Ако је укључено, биће коришћен скуп словних ликова наведен у „custom-font-"
+"face“ при приказу белешки, иначе подразумевани словни лик ће бити коришћен."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:31
-#, fuzzy
+#: ../data/org.gnome.gnote.gschema.xml.in.h:11
+msgid "Custom Font Face"
+msgstr "Посебан словни лик"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:12
+#| msgid ""
+#| "If enable_custom_font is true, the font name set here will be used as the "
+#| "font when displaying notes."
+msgid ""
+"If enable-custom-font is true, the font name set here will be used as the "
+"font when displaying notes."
+msgstr ""
+"Ако је „enable-custom-font“ укључено, биће коришћен овде одабран скуп "
+"словних ликова при приказу белешки."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:13
+msgid "Enable global keybindings"
+msgstr "Омогућава пречице са тастатуре"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:14
+msgid ""
+"If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
+"keybindings will be enabled, allowing for useful Gnote actions to be "
+"available from any application."
+msgstr ""
+"Ако је укључено, глобалне пречице постављене у „/org/gnome/gnote/global-"
+"keybindings“ ће бити омогућене, што даје могућност да се неким корисним "
+"акцијама Гномових белешки приступа из других програма."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:15
+msgid "Start Here Note"
+msgstr "Белешка за почетну станицу"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:16
+msgid ""
+"The note URI of the note that should be considered the \"Start Here\" note, "
+"which is always placed at the bottom of the Gnote note menu and also "
+"accessible by hotkey."
+msgstr ""
+"Адреса белешке која ће бити сматрана белешком за „Почетну станицу“, која се "
+"увек налази на дну изборника у Гномовим белешкама и доступна је преко "
+"пречице са тастатуре."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:17
+msgid "Minimum number of notes to show in menu"
+msgstr "Најмањи број белешки за приказ у изборнику"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:18
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr ""
-"Цео број који одређује минимални број белешки које ће бити приказане у "
-"менију."
+"Цео број који одређује најмањи број белешки које ће бити приказане у "
+"изборнику белешки."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:19
+msgid "List of pinned notes"
+msgstr "Списак прибодених белешки"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:20
+msgid ""
+"Whitespace-separated list of note URIs for notes that should always appear "
+"in the Gnote note menu."
+msgstr ""
+"Списак путања белешки раздвојених празнинама који садржи белешке које ће "
+"увек бити приказане у изборнику Гномових белешки."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:21
+msgid "Enable startup notes"
+msgstr "Омогућава белешке при покретању"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:22
+msgid ""
+"If enabled, all notes that were open when Gnote quit will automatically be "
+"reopened at startup."
+msgstr ""
+"Ако је укључено, све отворене белешке у тренутку гашења Гномових белешки ће "
+"бити поново отворене при покретању."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:23
+msgid "Saved height of Search window"
+msgstr "Сачувана висина прозора за претрагу"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:24
+msgid "Determines pixel height of Search window; stored on Gnote exit."
+msgstr ""
+"Одређује у тачкама висину прозора за претрагу, чува се приликом изласка из "
+"програма."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:25
+msgid "Saved width of Search window"
+msgstr "Сачувана ширина прозора за претрагу"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:26
+msgid "Determines pixel width of Search window; stored on Gnote exit."
+msgstr ""
+"Одређује у тачкама ширину прозора за претрагу, чува се приликом изласка из "
+"програма."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:27
+msgid "Saved horizontal position of Search window"
+msgstr "Сачуван водоравни положај прозора претраге"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:28
+msgid "Determines X coordinate of Search window; stored on Gnote exit."
+msgstr ""
+"Одређује X координату прозора за претрагу; чува се приликом изласка из "
+"програма."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:29
+msgid "Saved vertical position of Search window"
+msgstr "Сачуван усправни положај прозора претраге"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:30
+msgid "Determines Y coordinate of Search window; stored on Gnote exit."
+msgstr ""
+"Одређује Y координату прозора за претрагу; чува се приликом изласка из "
+"програма."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:31
+msgid "Saved splitter position of Search window splitter."
+msgstr "Сачуван положај раздвајача раздвајача прозора за претрагу."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:32
 msgid ""
-"Integer value indicating if there is a preference to always perform a "
-"specific behavior when a conflict is detected, instead of prompting the "
-"user. The values map to an internal enumeration. 0 indicates that the user "
-"wishes to be prompted when a conflict occurs, so that they may handle each "
-"conflict situation on a case-by-case basis."
+"Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
-"Цео број који одређује понашање при детектованом сукобу уместо да се о томе "
-"пита корисник. Вредности се пресликавају на интерну нумерацију понашања. "
-"Вредност „0“ одређује да треба питати корисника тако да се проблеми решавају "
-"од случаја до случаја."
+"Одређује положај раздвајача прозора за претрагу у тачкицама; чува се "
+"приликом изласка из програма."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:33
+msgid "FUSE Mounting Timeout (ms)"
+msgstr "Време истека ФУСЕ монтирања (ms)"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+msgid ""
+"Time (in milliseconds) Gnote should wait for a response when using FUSE to "
+"mount a sync share."
+msgstr ""
+"Време (у милисекундама) које Гномове белешке чекају на одговор када се "
+"користи ФУСЕ за монтирање дељења усклађивања."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:35
+msgid "SSHFS Remote Synchronization Folder"
+msgstr "ССХФС удаљена фасцикла за усклађивање"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:36
+msgid "Path on SSH server to Gnote synchronization directory (optional)."
+msgstr ""
+"Путања на ССХ серверу за фасциклу усклађивања Гномових белешки (опционо)."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:37
+msgid "SSHFS Synchronization Server URL"
+msgstr "Адреса сервера за ССХФС усклађивање"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:38
+msgid "URL of SSH server containing Gnote synchronization directory."
+msgstr ""
+"Адреса ССХ сервера која садржи фасциклу за усклађивање Гномових белешки."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:39
+msgid "SSHFS Remote Synchronization User Name"
+msgstr "Корисничко име за удаљено ССХФС усклађивање"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:40
+msgid "User name to use when connecting to the synchronization server via SSH."
+msgstr ""
+"Корисничко име за коришћење приликом повезивања на сервер за усклађивање "
+"преко ССХ протокола."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:41
+msgid "SSHFS Synchronization Server Port"
+msgstr "Порт сервера за ССХФС усклађивање"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:42
+msgid "The port to use when connecting to the synchronization server via SSH."
+msgstr ""
+"Порт за коришћење приликом повезивања на сервер за усклађивање преко ССХ "
+"протокола."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:43
+msgid "Link Updating Behavior on Note Rename"
+msgstr "Понашање за ажурирање веза при преименовању белешке"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:44
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -252,179 +297,36 @@ msgstr ""
 "треба ажурирати на ново име белешке тако да веза ка преименованој белешци "
 "настави да постоји."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:34
-msgid "Link Updating Behavior on Note Rename"
-msgstr "Понашање за ажурирање веза при преименовању белешке"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:35
-#, fuzzy
-msgid "List of pinned notes"
-msgstr "Листа прибодених белешки."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:36
-msgid "Minimum number of notes to show in menu"
-msgstr "Минималан број белешки за приказ у менију"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:37
-msgid "Note Synchronization Conflict Saved Behavior"
-msgstr "Понашање у случају сукоба при усклађивању белешки"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:38
-msgid "Open Recent Changes"
-msgstr "Отвори скорашње измене"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:39
-msgid "Open Search Dialog"
-msgstr "Отвори прозорче за претрагу"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:40
-msgid "Open Start Here"
-msgstr "Отвори почетну станицу"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:41
-#, fuzzy
-msgid "Path on SSH server to Gnote synchronization directory (optional)."
-msgstr ""
-"Путања на SSH серверу за фасциклу усклађивања Томичиних белешки (опционо)."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:42
-msgid ""
-"Path to the synchronization server when using the filesystem synchronization "
-"service addin."
-msgstr ""
-"Путања до сервера за усклађивање када се користи додатак за усклађивање "
-"преко система датотека."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:43
-msgid "SSHFS Remote Synchronization Folder"
-msgstr "SSHFS удаљена фасцикла за усклађивање"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:44
-msgid "SSHFS Remote Synchronization User Name"
-msgstr "SSHFS корисничко име за удаљено усклађивање"
-
 #: ../data/org.gnome.gnote.gschema.xml.in.h:45
-msgid "SSHFS Synchronization Server Port"
-msgstr "SSHFS порт за удаљено усклађивање"
+msgid "Enable closing notes with escape"
+msgstr "Омогућава затварање белешке тастером „Esc“"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:46
-msgid "SSHFS Synchronization Server URL"
-msgstr "SSHFS адреса за удаљено усклађивање"
+msgid "If enabled, an opened note can be closed by hitting the escape key."
+msgstr ""
+"Ако је укључено, отворена белешка може бити затворена притиском на типку "
+"„Esc“."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:47
-#, fuzzy
-msgid "Saved height of Search window"
-msgstr "Сачувана висина прозора за претрагу"
+msgid "Use status icon, when started as an application"
+msgstr "Користи иконицу стања, приликом покретања као програма"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:48
-#, fuzzy
-msgid "Saved horizontal position of Search window"
-msgstr "Сачувана хоризонтална позиција прозора за претрагу"
+msgid ""
+"Has affect only when started as an application. When set to TRUE, shows a "
+"status icon. If set to FALSE, Search All Notes window is used as main "
+"application window, closing which makes application to exit."
+msgstr ""
+"Има дејство само када је покренуто као програм. Када је штиклирано, "
+"приказује иконицу стања. Ако није штиклирано, тада се користи прозор за "
+"претрагу свих белешки као главни прозор програма, а његовим затварањем се "
+"излази из програма."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:49
-#, fuzzy
-msgid "Saved splitter position of Search window splitter."
-msgstr "Сачувана вертикална позиција прозора за претрагу"
+msgid "Show applet menu"
+msgstr "Приказује изборник програмчета"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:50
-#, fuzzy
-msgid "Saved vertical position of Search window"
-msgstr "Сачувана вертикална позиција прозора за претрагу"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:51
-#, fuzzy
-msgid "Saved width of Search window"
-msgstr "Сачувана ширина прозора за претрагу"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:52
-msgid "Selected Synchronization Service Addin"
-msgstr "Одабрани додатак за сервис усклађивања"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:53
-msgid "Show applet menu"
-msgstr "Прикажи мени програмчета"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:54
-msgid "Start Here Note"
-msgstr "Белешка за почетну станицу"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:55
-msgid "Synchronization Client ID"
-msgstr "ИД клијента за сервис усклађивања"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:56
-msgid "Synchronization Local Server Path"
-msgstr "Локална путања до сервера за усклађивање"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
-#, fuzzy
-msgid ""
-"The date format that is used for the timestamp. It follows the format of "
-"strftime(3)."
-msgstr "Формат датума за ознаку времена."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
-msgid ""
-"The global keybinding for creating and displaying a new Note. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Глобална пречица за отварање и приказ нове белешке. Формат поља је као „&lt;"
-"Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста слободан и "
-"дозвољава мала или велика слова као и скраћенице попут „&lt;Ctl&gt;\"и \"&lt;"
-"Ctrl&gt;“. Ако поставите ову опцију на посебну вредност „disabled“,тада неће "
-"постојати пречица за ову акцију."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
-msgid ""
-"The global keybinding for opening the \"Start Here\" note. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Глобална пречица за отварање белешке „Почетна станица“. Формат поља је као "
-"„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста "
-"слободан и дозвољава мала или велика слова као и скраћенице попут „&lt;"
-"Ctl&gt;“ и „&lt;Ctrl&gt;“. Ако поставите ову опцију на посебну вредност "
-"„disabled“,тада неће постојати пречица за ову акцију."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
-msgid ""
-"The global keybinding for opening the Note Search dialog. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Глобална пречица за отварање прозорчета за претраживање. Формат поља је као "
-"„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста "
-"слободан и дозвољава мала или велика слова као и скраћенице попут „&lt;"
-"Ctl&gt;“и „&lt;Ctrl&gt;“. Ако поставите ову опцију на посебну вредност "
-"„disabled“,тада неће постојати пречица за ову акцију."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
-msgid ""
-"The global keybinding for opening the Recent Changes dialog. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Глобална пречица за отварање прозорчета са скорашњим изменама. Формат поља "
-"је као „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста "
-"слободан и дозвољава мала или велика слова као и скраћенице попут „&lt;"
-"Ctl&gt;“ и „&lt;Ctrl&gt;“. Ако поставите ову опцију на посебну вредност "
-"„disabled“,тада неће постојати пречица за ову акцију."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
-#, fuzzy
 msgid ""
 "The global keybinding for showing the Gnote applet's menu. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -433,27 +335,115 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"Глобална пречица за приказ менија програмчета. Формат поља је као „&lt;"
-"Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста слободан и "
-"дозвољава мала или велика слова као и скраћенице попут „&lt;Ctl&gt;“ и „&lt;"
-"Ctrl&gt;“. Ако поставите ову опцију на посебну вредност „disabled“,тада неће "
-"постојати пречица за ову акцију."
+"Општа пречица за приказ изборника програмчета. Формат поља је као "
+"„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста "
+"слободан и дозвољава мала или велика слова као и скраћенице попут "
+"„&lt;Ctl&gt;“ и „&lt;Ctrl&gt;“. Ако поставите ову опцију на посебну вредност "
+"„disabled“ — искључено,тада неће постојати пречица за ову радњу."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:51
+msgid "Open Start Here"
+msgstr "Отвара почетну станицу"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:52
+msgid ""
+"The global keybinding for opening the \"Start Here\" note. The format looks "
+"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
+"fairly liberal and allows lower or upper case, and also abbreviations such "
+"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
+"special string \"disabled\", then there will be no keybinding for this "
+"action."
+msgstr ""
+"Општа пречица за отварање белешке „Почетна станица“. Формат поља је као "
+"„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста "
+"слободан и дозвољава мала или велика слова као и скраћенице попут "
+"„&lt;Ctl&gt;“ и „&lt;Ctrl&gt;“. Ако поставите ову опцију на посебну вредност "
+"„disabled“,тада неће постојати пречица за ову радњу."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:53
+msgid "Create a new Note"
+msgstr "Прави нову белешку"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:54
+msgid ""
+"The global keybinding for creating and displaying a new Note. The format "
+"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+"parser is fairly liberal and allows lower or upper case, and also "
+"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
+"option to the special string \"disabled\", then there will be no keybinding "
+"for this action."
+msgstr ""
+"Општа пречица за отварање и приказ нове белешке. Формат поља је као "
+"„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста "
+"слободан и дозвољава мала или велика слова као и скраћенице попут "
+"„&lt;Ctl&gt;\"и \"&lt;Ctrl&gt;“. Ако поставите ову опцију на посебну вредност "
+"„disabled“,тада неће постојати пречица за ову радњу."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:55
+msgid "Open Search Dialog"
+msgstr "Отвара прозорче за претрагу"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+msgid ""
+"The global keybinding for opening the Note Search dialog. The format looks "
+"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
+"fairly liberal and allows lower or upper case, and also abbreviations such "
+"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
+"special string \"disabled\", then there will be no keybinding for this "
+"action."
+msgstr ""
+"Општа пречица за отварање прозорчета за претраживање. Формат поља је као "
+"„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста "
+"слободан и дозвољава мала или велика слова као и скраћенице попут "
+"„&lt;Ctl&gt;“и „&lt;Ctrl&gt;“. Ако поставите ову опцију на посебну вредност "
+"„disabled“,тада неће постојати пречица за ову радњу."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
+msgid "Open Recent Changes"
+msgstr "Отвара скорашње измене"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+msgid ""
+"The global keybinding for opening the Recent Changes dialog. The format "
+"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+"parser is fairly liberal and allows lower or upper case, and also "
+"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
+"option to the special string \"disabled\", then there will be no keybinding "
+"for this action."
+msgstr ""
+"Општа пречица за отварање прозорчета са скорашњим изменама. Формат поља је "
+"као „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Формат је доста "
+"слободан и дозвољава мала или велика слова као и скраћенице попут "
+"„&lt;Ctl&gt;“ и „&lt;Ctrl&gt;“. Ако поставите ову опцију на посебну вредност "
+"„disabled“,тада неће постојати пречица за ову радњу."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+msgid "HTML Export Last Directory"
+msgstr "Последњи директоријум за ХТМЛ извоз"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Последњи директоријум у који је белешка извезена кроз додатак за извоз у "
 "ХТМЛ."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+msgid "HTML Export Linked Notes"
+msgstr "Повезане белешке у ХТМЛ извозу"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr ""
 "Последње подешавање за „Извези повезане белешке“ у додатку за извоз у ХТМЛ."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+msgid "HTML Export All Linked Notes"
+msgstr "ХТМЛ извози повезане белешке"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -461,115 +451,115 @@ msgid ""
 "recursively) should be included during an export to HTML."
 msgstr ""
 "Последње подешавање за „Извези све друге повезане белешке“ у додатку за "
-"извоз у ХТМЛ. Ово подешавање се користи скупа са „ХМЛ извози повезане "
+"извоз у ХТМЛ. Ово подешавање се користи скупа са „ХТМЛ извози повезане "
 "белешке“ подешавањем, а одређује да ли све белешке (рекурзивно откривене) "
 "требају бити укључене при извозу у ХТМЛ."
 
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+msgid "Synchronization Client ID"
+msgstr "ИД клијента за сервис усклађивања"
+
 #: ../data/org.gnome.gnote.gschema.xml.in.h:66
-#, fuzzy
 msgid ""
-"The note URI of the note that should be considered the \"Start Here\" note, "
-"which is always placed at the bottom of the Gnote note menu and also "
-"accessible by hotkey."
+"Unique identifier for this Gnote client, used when communicating with a "
+"sychronization server."
 msgstr ""
-"УРИ белешке која ће бити сматрана белешком за „Почетну станицу“, која се "
-"увек налази на дну менија у Томици и доступна је преко пречице са тастатуре."
+"Јединствена ознака за овај клијент Гномових белешки, која се користи при "
+"комуникацији са сервером за усклађивање."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:67
-#, fuzzy
-msgid "The port to use when connecting to the synchronization server via SSH."
-msgstr ""
-"Корисничко име за коришћење приликом повезивања на сервер за усклађивање "
-"преко SSH протокола."
+msgid "Synchronization Local Server Path"
+msgstr "Локална путања до сервера за усклађивање"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:68
-#, fuzzy
 msgid ""
-"Time (in milliseconds) Gnote should wait for a response when using FUSE to "
-"mount a sync share."
+"Path to the synchronization server when using the filesystem synchronization "
+"service addin."
 msgstr ""
-"Време (у милисекундама) које Томичине белешке чекају на одговор када се "
-"користи FUSE да се монтира дељена фасцикла.за усклађивање."
+"Путања до сервера за усклађивање када се користи додатак за усклађивање "
+"преко система датотека."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:69
-msgid "Timestamp format"
-msgstr "Запис датума и времена"
+msgid "Selected Synchronization Service Addin"
+msgstr "Одабрани додатак за сервис усклађивања"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:70
-#, fuzzy
-msgid "URL of SSH server containing Gnote synchronization directory."
-msgstr ""
-"Адреса SSH сервера која садржи фасциклу за усклађивање Томичиних белешки."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr "Јединствена ознака за одабрани додатак за усклађивање белешки."
 
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+msgid "Note Synchronization Conflict Saved Behavior"
+msgstr "Понашање у случају сукоба при усклађивању белешки"
+
 #: ../data/org.gnome.gnote.gschema.xml.in.h:72
-#, fuzzy
 msgid ""
-"Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
+"Integer value indicating if there is a preference to always perform a "
+"specific behavior when a conflict is detected, instead of prompting the "
+"user. The values map to an internal enumeration. 0 indicates that the user "
+"wishes to be prompted when a conflict occurs, so that they may handle each "
+"conflict situation on a case-by-case basis."
 msgstr ""
-"Јединствена ознака за овај клијент Томице која се користи при комуникацији "
-"са сервером за усклађивање."
+"Цео број који одређује понашање при откривеном сукобу уместо да се о томе "
+"пита корисник. Вредности се пресликавају на интерну нумерацију понашања. "
+"Вредност „0“ одређује да треба питати корисника тако да се проблеми решавају "
+"од случаја до случаја."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:73
-msgid "Use status icon, when started as an application"
-msgstr ""
+msgid "Automatic Background Synchronization Timeout"
+msgstr "Временско ограничење самосталног позадинског усаглашавања"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:74
+msgid ""
+"Integer value indicating how frequently to perform a background sync of your "
+"notes (when sync is configured). Any value less than 1 indicates that "
+"autosync is disabled. The lowest acceptable positive value is 5. Value is in "
+"minutes."
+msgstr ""
+"Цео број који одређује колико често ће се извршавати усклађивање ваших "
+"белешки у позадини (ако се користи). Свака вредност мања од 1 значи да је "
+"усклађивање искључено. Најмања прихватљива вредност је 5. Вредност је у "
+"минутима."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+msgid "Accept SSL Certificates"
+msgstr "Прихватање ССЛ уверења"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr ""
-"Коришћење „-ac“ опције wdfs-а за прихватање SSL сертификата без питања "
-"корисника."
+"Користи „-ac“ опцију вдфс-а за прихватање ССЛ уверења без питања корисника."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
-msgid "User name to use when connecting to the synchronization server via SSH."
-msgstr ""
-"Корисничко име за коришћење приликом повезивања на сервер за усклађивање "
-"преко SSH протокола."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+msgid "Share URL"
+msgstr "Адреса дељења"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
-#, fuzzy
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "WebDAV share URL where notes are synchronized to."
+msgstr "Адреса дељења ВебДАВ-а на којој су усклађене белешке."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "Share username"
+msgstr "Име корисника дељења"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+msgid "Username to access WebDAV share."
+msgstr "Корисничко име за приступ ВебДАВ дељењу."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+msgid "Timestamp format"
+msgstr "Запис датума и времена"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid ""
-"Whitespace-separated list of note URIs for notes that should always appear "
-"in the Gnote note menu."
+"The date format that is used for the timestamp. It follows the format of "
+"strftime(3)."
 msgstr ""
-"Листа УРИ-ја белешки раздвојена празнинама која садржи белешке које ће увек "
-"бити приказане у менију Томице."
-
-#: ../src/sharp/addinstreemodel.cpp:93
-msgid "Name"
-msgstr "Име"
-
-#: ../src/sharp/addinstreemodel.cpp:105
-msgid "Version"
-msgstr "Верзија"
-
-#. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:138
-msgid "Formatting"
-msgstr "Форматирање"
-
-#. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:141
-msgid "Desktop integration"
-msgstr "Постављање на радну површ"
-
-#. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:144
-msgid "Tools"
-msgstr "Алати"
-
-#. TRANSLATORS: Addin category is unknown.
-#: ../src/sharp/addinstreemodel.cpp:148
-msgid "Unknown"
-msgstr "Непознато"
+"Облик датума који се користи за временску ознаку. Прати облик функције "
+"„strftime(3)“."
 
 #: ../src/actionmanager.cpp:174
 msgid "_File"
@@ -581,7 +571,7 @@ msgstr "_Нова"
 
 #: ../src/actionmanager.cpp:179 ../src/actionmanager.cpp:230
 msgid "Create a new note"
-msgstr "Направи нову белешку"
+msgstr "Направите нову белешку"
 
 #: ../src/actionmanager.cpp:184
 msgid "_Open..."
@@ -589,7 +579,7 @@ msgstr "_Отвори..."
 
 #: ../src/actionmanager.cpp:184
 msgid "Open the selected note"
-msgstr "Отвори одабрану белешку"
+msgstr "Отворите одабрану белешку"
 
 #: ../src/actionmanager.cpp:190
 msgid "_Delete"
@@ -597,15 +587,15 @@ msgstr "_Обриши"
 
 #: ../src/actionmanager.cpp:190
 msgid "Delete the selected note"
-msgstr "Обриши одабрану белешку"
+msgstr "Обришите изабрану белешку"
 
-#: ../src/actionmanager.cpp:196 ../src/notewindow.cpp:368
+#: ../src/actionmanager.cpp:196 ../src/notewindow.cpp:377
 msgid "_Close"
 msgstr "_Затвори"
 
 #: ../src/actionmanager.cpp:196
 msgid "Close this window"
-msgstr "Затвори овај прозор"
+msgstr "Затворите овај прозор"
 
 #: ../src/actionmanager.cpp:201 ../src/tray.cpp:477
 msgid "_Quit"
@@ -613,23 +603,23 @@ msgstr "_Изађи"
 
 #: ../src/actionmanager.cpp:201
 msgid "Quit Gnote"
-msgstr "Напусти Белешке"
+msgstr "Напустите Гномове белешке"
 
 #: ../src/actionmanager.cpp:204
 msgid "_Edit"
 msgstr "_Измени"
 
-#: ../src/actionmanager.cpp:209 ../src/applet.cpp:383 ../src/tray.cpp:460
+#: ../src/actionmanager.cpp:209 ../src/tray.cpp:460
 msgid "_Preferences"
-msgstr "_Поставке..."
+msgstr "_Поставке"
 
-#: ../src/actionmanager.cpp:209 ../src/preferencesdialog.cpp:88
+#: ../src/actionmanager.cpp:209 ../src/preferencesdialog.cpp:102
 msgid "Gnote Preferences"
-msgstr "Поставке Белешки"
+msgstr "Поставке Гномових белешки"
 
-#: ../src/actionmanager.cpp:212 ../src/applet.cpp:384 ../src/tray.cpp:465
+#: ../src/actionmanager.cpp:212 ../src/tray.cpp:465
 msgid "_Help"
-msgstr "_Помоћ"
+msgstr "По_моћ"
 
 #: ../src/actionmanager.cpp:216
 msgid "_Contents"
@@ -637,31 +627,31 @@ msgstr "_Садржај"
 
 #: ../src/actionmanager.cpp:216
 msgid "Gnote Help"
-msgstr "Помоћ за Белешке"
+msgstr "Помоћ за Гномове белешке"
 
-#: ../src/actionmanager.cpp:221 ../src/applet.cpp:385
+#: ../src/actionmanager.cpp:221
 msgid "_About"
 msgstr "_О програму"
 
 #: ../src/actionmanager.cpp:221
 msgid "About Gnote"
-msgstr "О Белешкама"
+msgstr "О Гномовим белешкама"
 
 #: ../src/actionmanager.cpp:225
 msgid "TrayIcon"
-msgstr "Иконица у панелу"
+msgstr "Иконица фиоке"
 
 #: ../src/actionmanager.cpp:230
 msgid "Create _New Note"
 msgstr "Направи _нову белешку"
 
-#: ../src/actionmanager.cpp:235 ../src/notewindow.cpp:320
+#: ../src/actionmanager.cpp:235 ../src/notewindow.cpp:329
 msgid "_Search All Notes"
-msgstr "_Тражи кроз све белешке"
+msgstr "_Претражи све белешке"
 
 #: ../src/actionmanager.cpp:235
 msgid "Open the Search All Notes window"
-msgstr "Отвори прозор за претрагу кроз све белешке"
+msgstr "Отворите прозор за претрагу свих белешки"
 
 #: ../src/actionmanager.cpp:240
 msgid "S_ynchronize Notes"
@@ -669,267 +659,673 @@ msgstr "_Усклади белешке"
 
 #: ../src/actionmanager.cpp:240
 msgid "Start synchronizing notes"
-msgstr "Започни усклађивање белешки"
+msgstr "Започните усклађивање белешки"
 
-#: ../src/gnote.cpp:305
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
+msgid "Backlinks"
+msgstr "Контравезе"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
+msgid "See which notes link to the one you're currently viewing."
+msgstr "Погледајте које белешке воде до оне коју тренутно прегледате."
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "Ибер Фигјер и пројекат Томичиних белешки"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
+msgid "What links here?"
+msgstr "Шта води овамо?"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
+msgid "(none)"
+msgstr "(ништа)"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+msgid "Bugzilla Links"
+msgstr "Везе до Бубаждаје"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:62
+msgid ""
+"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
+msgstr ""
+"Омогућава вам да превучете адресу Бубаждаје из вашег интернет прегледника у "
+"белешку Гномове белешке.  Број грешке се умеће као веза са малом иконицом "
+"бубице поред ње."
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:66
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "Ибер Фигјер и пројекат Томичиних белешки"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:62
+msgid ""
+"You can use any bugzilla just by dragging links into notes.  If you want a "
+"special icon for certain hosts, add them here."
+msgstr ""
+"Можете користити било коју бубаждају једноставним превлачењем везе ка "
+"страници у белешку.  Ако желите посебну иконицу за одређене адресе, додајте "
+"их овде."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:79
+msgid "Host Name"
+msgstr "Адреса рачунара"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:92
+msgid "Icon"
+msgstr "Иконица"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:226
+msgid "Select an icon..."
+msgstr "Одабери иконицу..."
+
+#. Extra Widget
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:241
+msgid "_Host name:"
+msgstr "_Адреса рачунара:"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
+msgid "Host name invalid"
+msgstr "Назив рачунара није исправан"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:274
+msgid "You must specify a valid Bugzilla host name to use with this icon."
+msgstr ""
+"Морате навести исправан назив рачунара Бубаждаје за коришћење са овом "
+"иконицом."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
+msgid "Error saving icon"
+msgstr "Грешка чувања иконице"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:294
+msgid "Could not save the icon file."
+msgstr "Не могу да сачувам датотеку са иконицом."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
+msgid "Really remove this icon?"
+msgstr "Заиста желите да обришете ову иконицу?"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:367
+msgid "If you remove an icon it is permanently lost."
+msgstr "Ако је обришете она ће заувек бити изгубљена."
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
+msgid "Destination for HTML Export"
+msgstr "Одредиште извоза у ХТМЛ"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:43
+msgid "Export linked notes"
+msgstr "Извези повезане белешке"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:44
+msgid "Include all other linked notes"
+msgstr "Укључи све друге повезане белешке"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
+msgid "Export to HTML"
+msgstr "Извези у ХТМЛ"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
+msgid "Exports individual notes to HTML."
+msgstr "Извезите засебне белешке у ХТМЛ."
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:145
+msgid "Your note was exported to \"%1%\"."
+msgstr "Ваша белешка је извезена у „%1%“."
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
+msgid "Note exported successfully"
+msgstr "Белешка је успешно извезена"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:179
+#, c-format
+msgid "Could not save the file \"%s\""
+msgstr "Не могу да сачувам датотеку „%s“"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
+#| msgid "Selected Synchronization Service Addin"
+msgid "Local Directory Sync Service Add-in"
+msgstr "Додатак услуге усклађивања месног директоријума"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:53
+msgid "Synchronize Gnote Notes to a local file system path"
+msgstr "Усагласите белешке Гномових белешки са путању месног система датотека"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
+msgid "Aurimas Cernius and the Tomboy Project"
+msgstr "Орима Чернјус и пројекат Томичиних белешки"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:127
+msgid "_Folder Path:"
+msgstr "_Путања фасцикле:"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
+#| msgid "SSHFS Remote Synchronization Folder"
+msgid "Select Synchronization Folder..."
+msgstr "Одабери фасциклу за усклађивање..."
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:157
+msgid "Folder path field is empty."
+msgstr "Поље за путању фасцикле је празно."
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:164
+msgid ""
+"Specified folder path does not exist, and Gnote was unable to create it."
+msgstr "Наведена путања фасцикле не постоји, и програм не може да је направи."
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:240
+msgid "Local Folder"
+msgstr "Локална фасцикла"
+
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
+msgid "Fixed Wid_th"
+msgstr "Стална _ширина"
+
+#. this is the name of the plugin.
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+msgid "Fixed Width"
+msgstr "Утврђена ширина"
+
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+msgid "Adds fixed-width font style."
+msgstr "Додајте стил словног лика сталне ширине."
+
+#. Add the menu item when the window is created
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+msgid "Insert Timestamp"
+msgstr "Уметни датум и време"
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+msgid "Inserts current date and time at the cursor position."
+msgstr "Уметните тренутни датум и време на положај курсора."
+
+#. Label
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:67
+msgid "Choose one of the predefined formats or use your own."
+msgstr "Изаберите неки од понуђених записа или унесите нови."
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:75
+msgid "Use _Selected Format"
+msgstr "Користи _изабрани запис"
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:104
+msgid "_Use Custom Format"
+msgstr "Користи произвољан _запис"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:47
+msgid "Note Directory Watcher"
+msgstr "Надзорник фасцикле белешки"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:52
+msgid "Watch your Gnote note directory for changes to your notes."
+msgstr ""
+"Надгледајте директоријум белешки Гномових белешки за изменама над вашим "
+"белешкама."
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
+#| msgid "and Tomboy original authors."
+msgid "Aurimas Černius and Tomboy original authors"
+msgstr "Орима Чернијус и првобитни аутори Томичиних белешки"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
+msgid "Note of the Day"
+msgstr "Белешка дана"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
+msgid ""
+"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
+msgstr "Сам ће направити белешку „Данас“ зарад лаког придодавања дневних мисли"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
+msgid "Debarshi Ray and the Tomboy Project"
+msgstr "Дебарши Реј и пројекат Томичиних белешки"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:32
+msgid "Today: Template"
+msgstr "Данас: Шаблон"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:34
+msgid "Today: "
+msgstr "Данас: "
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:158
+msgid "Tasks"
+msgstr "Задаци"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
+msgid "Appointments"
+msgstr "Састанци"
+
+#. Format: "Today: Friday, July 01 2005"
+#: ../src/addins/noteoftheday/noteoftheday.cpp:165
+msgid "%A, %B %d %Y"
+msgstr "%A, %d. %B %Y."
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+msgid "_Open Today: Template"
+msgstr "_Отвори „Данас: Шаблон“"
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:36
+msgid ""
+"Change the <span weight=\"bold\">Today: Template</span> note to customize "
+"the text that new Today notes have."
+msgstr ""
+"Измените белешку <span weight=\"bold\">Данас: шаблон</span> да прилагодите "
+"текст који имају нове белешке дана."
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
+msgid "Printing Support"
+msgstr "Подршка за штампање"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
+msgid "Allows you to print a note."
+msgstr "Омогућава вам штампате белешке."
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
+msgid "Print"
+msgstr "Штампај"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
+msgid "Error printing note"
+msgstr "Грешка штампања белешке"
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
+msgid "Page %1% of %2%"
+msgstr "Страница %1% од %2%"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
+msgid "Replace title"
+msgstr "Замени наслов"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
+msgid "Replace title with selection."
+msgstr "Замените наслов новим избором."
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
+msgid "Pierre-Yves Luyten"
+msgstr "Пјер-Ив Лијтан"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
+msgid "Sticky Notes Importer"
+msgstr "Увозник лепљивих белешки"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
+msgid "Import your notes from the Sticky Notes applet."
+msgstr "Увезите ваше белешке из програмчета лепљивих белешки."
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:109
+msgid "Import from Sticky Notes"
+msgstr "Увези из лепљивих белешки"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:209
+msgid "No Sticky Notes found"
+msgstr "Нисам пронашао лепљиве белешке"
+
+#. %1% is a the file name
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:211
+msgid "No suitable Sticky Notes file was found at \"%1%\"."
+msgstr "Нисам пронашао ниједну одговарајућу датотеку лепљивих белешки на „%1%“."
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:219
+msgid "Sticky Notes import completed"
+msgstr "Увоз лепљивих белешки је завршен"
+
+#. here %1% is the number of notes imported, %2% the total number of notes.
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:221
+msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
+msgstr "<b>%1%</b> од <b>%2%</b> лепљиве белешке је успешно увезена."
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:240
+msgid "Untitled"
+msgstr "Без наслова"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:278
+msgid "Sticky Note: "
+msgstr "Лепљива белешка: "
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
+msgid "Tomboy Importer"
+msgstr "Увозник Томичиних белешки"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
+msgid "Import your notes from Tomboy."
+msgstr "Увезите ваше белешке из Томичиних белешки."
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
+msgid "Hubert Figuiere"
+msgstr "Ибер Фигјер"
+
+#: ../src/addins/underline/underlinemenuitem.cpp:35
+msgid "_Underline"
+msgstr "_Подвучено"
+
+#. this is the name of the plugin.
+#: ../src/addins/underline/underlinenoteaddin.cpp:49
+msgid "Underline"
+msgstr "Подвучено"
+
+#: ../src/addins/underline/underlinenoteaddin.cpp:53
+msgid "Adds ability to underline text."
+msgstr "Додајте могућност подвлачења текста."
+
+#: ../src/addins/underline/underlinenoteaddin.cpp:57
+msgid "Hubert Figuière and the Tomboy Project"
+msgstr "Ибер Фигјер и пројекат Томичиних белешки"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+#| msgid "Selected Synchronization Service Addin"
+msgid "WebDav Sync Service Add-in"
+msgstr "Додатак услуге ВебДав усклађивања"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+#| msgid "Synchronize Notes"
+msgid "Synchronize Gnote Notes to a WebDav URL"
+msgstr "Ускладите белешке Гномових белешки са Вебдав адресом"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "_Адреса:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr "_Корисничко име:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr "_Лозинка:"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "ВебДАВ"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid ""
+"There was an error connecting to the server.  This may be caused by using an "
+"incorrect user name and/or password."
+msgstr ""
+"Грешка при повезивању са сервером.  Узрок може бити неисправно корисничко "
+"име и/или лозинка."
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+msgid "URL, username, or password field is empty."
+msgstr "Адреса, корисничко име или лозинка су празни."
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:290
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
+"\n"
+"%1%"
+msgstr ""
+"Чување подешавања у Гномов привезак кључева није успело, уз следећу поруку:\n"
+"\n"
+"%1%"
+
+#: ../src/gnote.cpp:317
 msgid "Cannot create new note"
 msgstr "Не могу да направим нову белешку"
 
-#: ../src/gnote.cpp:354
-msgid "and Tomboy original authors."
-msgstr "и Томичини изворни аутори."
-
 #: ../src/gnote.cpp:363
+msgid "and Tomboy original authors."
+msgstr "и изворни аутори Томичиних белешки."
+
+#: ../src/gnote.cpp:369
 msgid "translator-credits"
 msgstr ""
 "Милош Поповић <gpopac@gmail.com>\n"
+"Мирослав Николић\n"
 "\n"
 "http://prevod.org — превод на српски језик."
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:378
 msgid ""
-"Copyright © 2010-2011 Aurimas Cernius\n"
+"Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
+"Ауторска права © 2010-2012 Орима Чернијус\n"
+"Ауторска права © 2009-2011 Дебарши Реј\n"
+"Ауторска права © 2009 Ибер Фигјер\n"
+"Ауторска права © 2004-2009 првобитни аутори Томичиних белешки."
 
-#: ../src/gnote.cpp:375
+#: ../src/gnote.cpp:382
 msgid "A simple and easy to use desktop note-taking application."
-msgstr "Једноставан и згодан програмчић за хватање белешки"
+msgstr "Једноставан и згодан програмчић за хватање белешки."
 
-#: ../src/gnote.cpp:386
+#: ../src/gnote.cpp:393
 msgid "Homepage"
 msgstr "Веб страница"
 
-#: ../src/gnote.cpp:461
-msgid "Run Gnote as a GNOME panel applet."
-msgstr ""
+#: ../src/gnote.cpp:473
+msgid "Run Gnote in background."
+msgstr "Покреће Гномове белешке у позадини."
 
-#: ../src/gnote.cpp:462
+#: ../src/gnote.cpp:474
 msgid "Specify the path of the directory containing the notes."
-msgstr ""
+msgstr "Наводи путању директоријума који садржи белешке."
 
-#: ../src/gnote.cpp:462
+#: ../src/gnote.cpp:474
 msgid "path"
-msgstr ""
+msgstr "путања"
 
-#: ../src/gnote.cpp:463
-#, fuzzy
+#: ../src/gnote.cpp:475
 msgid "Open the search all notes window with the search text."
-msgstr "Отвори прозор за претрагу кроз све белешке"
+msgstr "Отвара прозор за претраживање свих белешки уз текст претраге."
 
-#: ../src/gnote.cpp:463 ../src/gnote.cpp:468 ../src/gnote.cpp:469
+#: ../src/gnote.cpp:475 ../src/gnote.cpp:480
 msgid "text"
 msgstr "текст"
 
-#: ../src/gnote.cpp:464
+#: ../src/gnote.cpp:476
 msgid "Print version information."
-msgstr ""
+msgstr "Исписује податке о издању."
 
-#: ../src/gnote.cpp:466
+#: ../src/gnote.cpp:477
 msgid "Create and display a new note, with a optional title."
-msgstr ""
+msgstr "Прави и приказује нову белешку, са опционалним насловом."
 
-#: ../src/gnote.cpp:466
+#: ../src/gnote.cpp:477
 msgid "title"
 msgstr "наслов"
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:478
 msgid "Display the existing note matching title."
-msgstr ""
+msgstr "Приказује постојећу белешку која одговара наслову."
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:478
 msgid "title/url"
 msgstr "наслов/адреса"
 
-#: ../src/gnote.cpp:468
-#, fuzzy
+#: ../src/gnote.cpp:479
 msgid "Display the 'Start Here' note."
-msgstr "Белешка за почетну станицу"
+msgstr "Приказује белешку „Полазна станица“."
 
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:480
 msgid "Search and highlight text in the opened note."
-msgstr ""
+msgstr "Тражи и истиче текст у отвореној белешки."
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:484
 msgid "A note taking application"
-msgstr ""
+msgstr "Програм за белешке"
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:484
 msgid "Gnote options at launch"
-msgstr ""
+msgstr "Опције Гномових белешки при покретању"
 
-#: ../src/gnote.cpp:665
+#: ../src/gnote.cpp:677
 msgid "Version %1%"
-msgstr "Верзија %1%"
+msgstr "Издање %1%"
 
-#: ../src/preferencesdialog.cpp:106
-msgid "Editing"
-msgstr "Измена"
+#: ../src/notebooks/createnotebookdialog.cpp:38
+#: ../src/notebooks/notebookapplicationaddin.cpp:109
+msgid "Create a new notebook"
+msgstr "Направите нову белешницу"
 
-#: ../src/preferencesdialog.cpp:108
-msgid "Hotkeys"
-msgstr "Пречице"
+#: ../src/notebooks/createnotebookdialog.cpp:39
+msgid "Type the name of the notebook you'd like to create."
+msgstr "Унесите назив за бележницу коју желите да направите."
 
-#: ../src/preferencesdialog.cpp:113
-msgid "Add-ins"
-msgstr "Додаци"
+#: ../src/notebooks/createnotebookdialog.cpp:47
+msgid "N_otebook name:"
+msgstr "_Назив бележнице:"
 
-#: ../src/preferencesdialog.cpp:221
-msgid "_Spell check while typing"
-msgstr "Провери правопи_с током куцања"
+#: ../src/notebooks/createnotebookdialog.cpp:60
+msgid "Name already taken"
+msgstr "Назив је већ заузет"
 
-#: ../src/preferencesdialog.cpp:227
+#. Translation note: This is the Create button in the Create
+#. New Note Dialog.
+#: ../src/notebooks/createnotebookdialog.cpp:73
+msgid "C_reate"
+msgstr "_Нова"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:103
+msgid "Note_books"
+msgstr "_Бележнице"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:104
+#: ../src/notebooks/notebookapplicationaddin.cpp:129
+msgid "Create a new note in a notebook"
+msgstr "Направите нову белешку у бележници"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:108
+#: ../src/notebooks/notebookapplicationaddin.cpp:263
+msgid "New Note_book..."
+msgstr "Нова _бележница..."
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:113
+msgid "_New Note"
+msgstr "_Нова белешка"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:114
+msgid "Create a new note in this notebook"
+msgstr "Направите нову белешку у овој бележници"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:118
+msgid "_Open Template Note"
+msgstr "_Отвори шаблон белешке"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:119
+msgid "Open this notebook's template note"
+msgstr "Отворите шаблон белешке за ову бележницу"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:123
+msgid "Delete Note_book"
+msgstr "Обриши _бележницу"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:124
+msgid "Delete the selected notebook"
+msgstr "Обришите изабрану бележницу"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:128
+#: ../src/recentchanges.cpp:299
+msgid "Notebooks"
+msgstr "Бележнице"
+
+#. The templateNoteTite should show the name of the
+#. notebook.  For example, if the name of the notebooks
+#. "Meetings", the templateNoteTitle should be "Meetings
+#. Notebook Template".  Translators should place the
+#. name of the notebook accordingly using "%1%".
+#: ../src/notebooks/notebook.cpp:87
+msgid "%1% Notebook Template"
+msgstr "Шаблон за бележницу „%1%“"
+
+#: ../src/notebooks/notebook.cpp:167 ../src/notemanager.cpp:555
+msgid "New Note"
+msgstr "Нова белешка"
+
+#: ../src/notebooks/notebook.cpp:207
+msgid "All Notes"
+msgstr "Све белешке"
+
+#: ../src/notebooks/notebook.cpp:219
+msgid "Unfiled Notes"
+msgstr "Непопуњене белешке"
+
+#: ../src/notebooks/notebookmanager.cpp:337
+msgid "Really delete this notebook?"
+msgstr "Заиста желите да обришете ову бележницу?"
+
+#: ../src/notebooks/notebookmanager.cpp:338
 msgid ""
-"Misspellings will be underlined in red, with correct spelling suggestions "
-"shown in the context menu."
+"The notes that belong to this notebook will not be deleted, but they will no "
+"longer be associated with this notebook.  This action cannot be undone."
 msgstr ""
-"Неисправно написане речи ће бити црвено подвучене, са предлозима који се "
-"појављују у менију по десном клику на реч."
+"Белешке из ове бележнице неће бити обрисане, али више неће бити придружене "
+"бележници.  Ову радњу није могуће поништити."
 
-#. WikiWords...
-#: ../src/preferencesdialog.cpp:238
-msgid "Highlight _WikiWords"
-msgstr "Означи _ВикиРечи"
+#: ../src/notebooks/notebookmenuitem.cpp:35
+msgid "No notebook"
+msgstr "Нема бележница"
 
-#: ../src/preferencesdialog.cpp:244
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
+msgid "New \"%1%\" Note"
+msgstr "%1% — нова белешка"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:86
+msgid "Place this note into a notebook"
+msgstr "Спреми белешку у бележницу"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:196
+msgid "Notebook"
+msgstr "Бележница"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:222
+msgid "_New notebook..."
+msgstr "_Нова бележница..."
+
+#. TRANSLATORS: %1% is number of notes
+#: ../src/note.cpp:74
+msgid "Really delete %1% note?"
+msgid_plural "Really delete %1% notes?"
+msgstr[0] "Да обришем %1% белешку?"
+msgstr[1] "Да обришем %1% белешке?"
+msgstr[2] "Да обришем %1% белешки?"
+msgstr[3] "Да обришем једну белешку?"
+
+#: ../src/note.cpp:81
+msgid "If you delete a note it is permanently lost."
+msgstr "Ако је обришете она ће заувек бити изгубљена."
+
+#: ../src/note.cpp:117
+msgid "Error saving note data."
+msgstr "Грешка при чувању података белешке."
+
+#: ../src/note.cpp:118
 msgid ""
-"Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
-"word will create a note with that name."
+"An error occurred while saving your notes. Please check that you have "
+"sufficient disk space, and that you have appropriate rights on ~/.gnote. "
+"Error details can be found in ~/.gnote.log."
 msgstr ""
-"Омогући опцију за обележавање речи <b>КојеИзгледајуОвако</b>. Клик изнад "
-"речи ће тада направити нову белешку са тим именом."
-
-#. Auto bulleted list
-#: ../src/preferencesdialog.cpp:251
-msgid "Enable auto-_bulleted lists"
-msgstr "Омогући аутоматске _листе"
-
-#: ../src/preferencesdialog.cpp:260
-msgid "Use custom _font"
-msgstr "Користи посебан _словни лик"
-
-#: ../src/preferencesdialog.cpp:277
-msgid "When renaming a linked note: "
-msgstr "Када се преименује белешка на коју друге белешке имају везу:"
-
-#: ../src/preferencesdialog.cpp:282
-msgid "Ask me what to do"
-msgstr "Питај ме шта да радим"
-
-#: ../src/preferencesdialog.cpp:283
-msgid "Never rename links"
-msgstr "Никад не преименуј везе"
-
-#: ../src/preferencesdialog.cpp:284
-msgid "Always rename links"
-msgstr "Увек преименуј везе"
+"Дошло је до грешке при чувању ваших белешки. Проверите да ли имате довољно "
+"простора на диску и да ли имате право уписивања у фасциклу „~/.gnote“. "
+"Детаљи о грешци су записани у „~/.gnote.log.“."
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/preferencesdialog.cpp:303 ../src/notemanager.cpp:111
+#: ../src/notemanager.cpp:112 ../src/preferencesdialog.cpp:334
 msgid "New Note Template"
 msgstr "Шаблон нове белешке"
 
-#: ../src/preferencesdialog.cpp:306
-msgid ""
-"Use the new note template to specify the text that should be used when "
-"creating a new note."
-msgstr ""
-"Користи шаблон нове белешке за одређивање почетног текста у новим белешкама"
-
-#: ../src/preferencesdialog.cpp:314
-msgid "Open New Note Template"
-msgstr "Отвори шаблон нове белешке"
-
-#. Hotkeys...
-#: ../src/preferencesdialog.cpp:376
-msgid "Listen for _Hotkeys"
-msgstr "Реагуј на _пречице"
-
-#: ../src/preferencesdialog.cpp:383
-msgid ""
-"Hotkeys allow you to quickly access your notes from anywhere with a "
-"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-"Alt&gt;N</b>"
-msgstr ""
-"Пречице омогућавају брзи приступ белешкама у сваком тренутку. Пример "
-"пречица: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
-
-#. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:403
-msgid "Show notes _menu"
-msgstr "Приказ _менија са белешкама"
-
-#. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:420
-msgid "Open \"_Start Here\""
-msgstr "Отвори „Почетну _страницу“"
-
-#. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:436
-msgid "Create _new note"
-msgstr "Направи _нову белешку"
-
-#. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:452
-msgid "Open \"Search _All Notes\""
-msgstr "З_апочни претрагу кроз све белешке"
-
-#: ../src/preferencesdialog.cpp:479
-msgid "Ser_vice:"
-msgstr "Сер_вис:"
-
-#: ../src/preferencesdialog.cpp:536
-msgid "Not configurable"
-msgstr "Није подесиво"
-
-#. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:556
-msgid "_Advanced..."
-msgstr "_Напредно..."
-
-#: ../src/preferencesdialog.cpp:603
-msgid "The following add-ins are installed"
-msgstr "Следећи додаци су инсталирани"
-
-#. TODO: In a future version, add in an "Install Add-ins..." button
-#. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:634
-msgid "_Enable"
-msgstr "_Укључи"
-
-#: ../src/preferencesdialog.cpp:640
-msgid "_Disable"
-msgstr "_Искључи"
-
-#: ../src/preferencesdialog.cpp:771
-msgid "Not Implemented"
-msgstr "Још није направљено"
-
-#: ../src/preferencesdialog.cpp:785
-msgid "%1% Preferences"
-msgstr "%1% поставке"
-
-#: ../src/preferencesdialog.cpp:926
-msgid "Choose Note Font"
-msgstr "Одабери словни лик за белешке"
-
-#: ../src/preferencesdialog.cpp:1048
-msgid "Version:"
-msgstr "Верзија:"
-
-#: ../src/preferencesdialog.cpp:1053
-msgid "Author:"
-msgstr "Аутор:"
-
-#: ../src/preferencesdialog.cpp:1059
-msgid "Copyright:"
-msgstr "Права:"
-
-#: ../src/notemanager.cpp:248
-#, fuzzy
+#: ../src/notemanager.cpp:249
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -950,25 +1346,27 @@ msgid ""
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
-"<note-content>Полазна станица\n"
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Полазна "
+"станица\n"
 "\n"
-"<bold>Добродошли код Томице!</bold>\n"
+"<bold>Добродошли у Гномове белешке!</bold>\n"
 "\n"
-"Користите белешку „Полазна станица“ да започнете организацију идеја и "
-"мисли.\n"
+"Користите белешку „Полазна станица“ да започнете организацију идеја и мисли.\n"
 "\n"
-"Направите нову белешку за запис идеја одабиром „Направи нову белешку“ из "
-"менија Томице у панелу Гнома. Ваша белешка ће аутоматски бити сачувана.\n"
+"Можете да направите нове белешке да запишете идеје и замисли тако што ћете "
+"изабрати „Направи нову белешку“ из изборника Гномових белешки у Гномовом "
+"панелу. Ваша белешка ће самостално бити сачувана.\n"
 "\n"
-"Затим организујте белешке додавањем веза између сродних белешки и идеја!\n"
+"Затим организујте белешке које сте направили тако што ћете повезати сродне "
+"белешке и идеје!\n"
 "\n"
 "Већ смо направили белешку која се зове <link:internal>Коришћење веза у "
-"Томици</link:internal>.  Примећујете ли како сваки пут када откуцамо <link:"
-"internal>Коришћење веза у Томици</link:internal> текст аутоматски бива "
-"подвучен?  Кликните на везу да отворите белешку.</note-content>"
+"Гномовим белешкама</link:internal>.  Примећујете ли како сваки пут када "
+"откуцате <link:internal>Коришћење веза у Гномовим белешкама</link:internal> "
+"текст одмах бива подвучен?  Кликните на везу да отворите белешку.</note-"
+"content>"
 
-#: ../src/notemanager.cpp:267
-#, fuzzy
+#: ../src/notemanager.cpp:268
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -983,12 +1381,12 @@ msgid ""
 "Also, if you type the name of another note in your current note, it will "
 "automatically be linked for you.</note-content>"
 msgstr ""
-"<note-content>Коришћење веза у Томици\n"
+"<note-content>Коришћење веза у Гномовим белешкама\n"
 "\n"
-"Можете повезати сродне белешке у Томици тако што ћете означити текст унутар "
-"белешке и кликнути на дугме <bold>Веза</bold> изнад у линији алата.  На тај "
-"начин ћете направити нову белешку са тим насловом и направити везу ка њој у "
-"тренутној белешци.\n"
+"Можете повезати сродне белешке у Гномовим белешкама тако што ћете означити "
+"текст унутар белешке и кликнути на дугме <bold>Веза</bold> изнад у линији "
+"алата.  На тај начин ћете направити нову белешку са тим насловом и направити "
+"везу ка њој у тренутној белешци.\n"
 "\n"
 "Ако касније измените наслов нове белешке, биће промењен текст осталих "
 "белешки како би се избегло прекидање веза.\n"
@@ -997,21 +1395,15 @@ msgstr ""
 "њој ће аутоматски бити направљена.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:282 ../src/notemanager.cpp:335
+#: ../src/notemanager.cpp:283 ../src/notemanager.cpp:336
 msgid "Start Here"
 msgstr "Почетна станица"
 
-#: ../src/notemanager.cpp:288
-#, fuzzy
+#: ../src/notemanager.cpp:289
 msgid "Using Links in Gnote"
-msgstr "Коришћење веза у Томици"
+msgstr "Коришћење веза у Гномовим белешкама"
 
-#: ../src/notemanager.cpp:553
-#, fuzzy
-msgid "New Note"
-msgstr "_Нова белешка"
-
-#: ../src/notemanager.cpp:681
+#: ../src/notemanager.cpp:666
 msgid "Describe your new note here."
 msgstr "Овде опишите вашу мисао."
 
@@ -1025,7 +1417,7 @@ msgstr "_Не преименуј везе"
 
 #: ../src/noterenamedialog.cpp:126
 msgid "_Rename Links"
-msgstr "П_реименуј везе"
+msgstr "_Преименуј везе"
 
 #: ../src/noterenamedialog.cpp:127
 msgid "Select All"
@@ -1048,15 +1440,14 @@ msgid "Never rename _links"
 msgstr "_Никад не преименуј везе"
 
 #: ../src/noterenamedialog.cpp:151
-#, fuzzy
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
 "\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Преименујте везе у осталим белешкама из „<span underline=\"single\">{0}</"
-"span>“ у „<span underline=\"single\">{1}</span>“?\n"
+"Преименујте везе у осталим белешкама из „<span underline=\"single\">%1</span>“ "
+"у „<span underline=\"single\">%2</span>“?\n"
 "\n"
 "Ако не применујете везе, оне више неће показивати ни на шта."
 
@@ -1064,7 +1455,7 @@ msgstr ""
 msgid "Rename Links"
 msgstr "Преименуј везе"
 
-#: ../src/noterenamedialog.cpp:199
+#: ../src/noterenamedialog.cpp:199 ../src/synchronization/syncdialog.cpp:369
 msgid "Note Title"
 msgstr "Наслов белешке"
 
@@ -1072,809 +1463,925 @@ msgstr "Наслов белешке"
 msgid "Ad_vanced"
 msgstr "_Напредно"
 
-#: ../src/notewindow.cpp:78
+#: ../src/notewindow.cpp:84
 msgid "Find in This Note"
 msgstr "Тражи унутар белешке"
 
-#: ../src/notewindow.cpp:328
+#: ../src/notewindow.cpp:337
 msgid "_Link to New Note"
 msgstr "_Веза на нову белешку"
 
-#: ../src/notewindow.cpp:336
+#: ../src/notewindow.cpp:345
 msgid "Te_xt"
 msgstr "Те_кст"
 
-#: ../src/notewindow.cpp:345
+#: ../src/notewindow.cpp:354
 msgid "_Find in This Note"
 msgstr "_Тражи унутар белешке"
 
-#: ../src/notewindow.cpp:360
+#: ../src/notewindow.cpp:369
 msgid "Clos_e All Notes"
 msgstr "Затвори св_е белешке"
 
-#: ../src/notewindow.cpp:395
+#: ../src/notewindow.cpp:404
 msgid "Search"
 msgstr "Претрага"
 
-#: ../src/notewindow.cpp:399
+#: ../src/notewindow.cpp:408
 msgid "Search your notes (Ctrl-Shift-F)"
-msgstr "Тражи у белешкама (Ctrl-Shift-F)"
+msgstr "Тражи у белешкама (Ктрл-Помак-Ф)"
 
-#: ../src/notewindow.cpp:409
+#: ../src/notewindow.cpp:418
 msgid "Link"
 msgstr "Веза"
 
-#: ../src/notewindow.cpp:415
-#, fuzzy
-msgid "Link selected text to a new note (Ctrl-L)"
-msgstr "Повежи одабрани текст на нову белешку (Ctrl-L)"
-
 #: ../src/notewindow.cpp:424
+msgid "Link selected text to a new note (Ctrl-L)"
+msgstr "Повежи одабрани текст на нову белешку (Ктрл-Л)"
+
+#: ../src/notewindow.cpp:433
 msgid "_Text"
-msgstr "Те_кст"
-
-#: ../src/notewindow.cpp:430
-msgid "Set properties of text"
-msgstr "Постави особине текста"
-
-#: ../src/notewindow.cpp:434
-msgid "T_ools"
-msgstr "Ала_ти"
+msgstr "_Текст"
 
 #: ../src/notewindow.cpp:439
-msgid "Use tools on this note"
-msgstr "Користи алате"
+msgid "Set properties of text"
+msgstr "Подесите особине текста"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:443
+msgid "T_ools"
+msgstr "_Алати"
+
+#: ../src/notewindow.cpp:448
+msgid "Use tools on this note"
+msgstr "Користите алате"
+
+#: ../src/notewindow.cpp:458
 msgid "Delete this note"
 msgstr "Обриши ову белешку"
 
-#: ../src/notewindow.cpp:459
+#: ../src/notewindow.cpp:468 ../src/synchronization/syncmanager.cpp:136
 msgid "Synchronize Notes"
 msgstr "Усклади белешке"
 
-#: ../src/notewindow.cpp:502
-msgid "_Find..."
-msgstr "Тра_жи...:"
+#: ../src/notewindow.cpp:504
+msgid ""
+"This note is a template note. It determines the default content of regular "
+"notes, and will not show up in the note menu or search window."
+msgstr ""
+"Ова белешка је белешка шаблона. Она одређује основни садржај обичних "
+"белешки, и неће бити приказана у изборнику белешки или у прозору за "
+"претрагу."
+
+#: ../src/notewindow.cpp:507
+msgid "Convert to regular note"
+msgstr "Претвори у обичну белешку"
 
 #: ../src/notewindow.cpp:510
-msgid "Find _Next"
-msgstr "Тражи _наредно"
+msgid "Save Si_ze"
+msgstr "Сачувај _величину"
 
-#: ../src/notewindow.cpp:520
+#: ../src/notewindow.cpp:514
+#| msgid "Select None"
+msgid "Save Se_lection"
+msgstr "Сачувај _избор"
+
+#: ../src/notewindow.cpp:518
+#| msgid "Note Title"
+msgid "Save _Title"
+msgstr "Сачувај _наслов"
+
+#: ../src/notewindow.cpp:606
+msgid "_Find..."
+msgstr "_Тражи..."
+
+#: ../src/notewindow.cpp:614
+msgid "Find _Next"
+msgstr "Нађи _следеће"
+
+#: ../src/notewindow.cpp:624
 msgid "Find _Previous"
 msgstr "Тражи _претходно"
 
-#: ../src/notewindow.cpp:590
+#: ../src/notewindow.cpp:694
 msgid "Cannot create note"
 msgstr "Не могу да направим белешку"
 
-#: ../src/notewindow.cpp:639
+#: ../src/notewindow.cpp:749
 msgid "_Next"
 msgstr "_Следећа"
 
-#: ../src/notewindow.cpp:640
+#: ../src/notewindow.cpp:750
 msgid "_Previous"
 msgstr "_Претходна"
 
-#: ../src/notewindow.cpp:653
+#: ../src/notewindow.cpp:763
 msgid "_Find:"
-msgstr "Претра_жи:"
+msgstr "_Нађи:"
 
-#: ../src/notewindow.cpp:1095
+#: ../src/notewindow.cpp:1205
 msgid "<b>_Bold</b>"
-msgstr ""
+msgstr "<b>_Подебљано</b>"
 
-#: ../src/notewindow.cpp:1096
-#, fuzzy
+#: ../src/notewindow.cpp:1206
 msgid "<i>_Italic</i>"
-msgstr "_Искошено"
+msgstr "<i>_Искошено</i>"
 
-#: ../src/notewindow.cpp:1097
-#, fuzzy
+#: ../src/notewindow.cpp:1207
 msgid "<s>_Strikeout</s>"
-msgstr "Пре_цртано"
+msgstr "<s>_Прецртано</s>"
 
-#: ../src/notewindow.cpp:1099
+#: ../src/notewindow.cpp:1209
 msgid "_Highlight"
-msgstr "_Подвучено"
+msgstr "_Истакнуто"
 
-#: ../src/notewindow.cpp:1101
+#: ../src/notewindow.cpp:1211
 msgid "_Normal"
 msgstr "_Нормална"
 
-#: ../src/notewindow.cpp:1103
+#: ../src/notewindow.cpp:1213
 msgid "Hu_ge"
-msgstr "О_громна"
+msgstr "_Огромна"
 
-#: ../src/notewindow.cpp:1105
+#: ../src/notewindow.cpp:1215
 msgid "_Large"
-msgstr "Ве_лика"
+msgstr "_Велика"
 
-#: ../src/notewindow.cpp:1107
+#: ../src/notewindow.cpp:1217
 msgid "S_mall"
 msgstr "_Мала"
 
-#: ../src/notewindow.cpp:1109
+#: ../src/notewindow.cpp:1219
 msgid "Bullets"
-msgstr "Листа са тачкицама"
+msgstr "Списак са тачкицама"
 
-#: ../src/notewindow.cpp:1112
+#: ../src/notewindow.cpp:1222
 msgid "Increase Font Size"
-msgstr "Повећај величину фонта"
+msgstr "Повећај величину слова"
 
-#: ../src/notewindow.cpp:1113
+#: ../src/notewindow.cpp:1223
 msgid "Decrease Font Size"
-msgstr "Смањи величину фонта"
+msgstr "Смањи величину слова"
 
-#: ../src/notewindow.cpp:1184
+#: ../src/notewindow.cpp:1294
 msgid "Font Size"
 msgstr "Величина слова"
 
-#. %1% is the number of note.
-#: ../src/note.cpp:68
-#, fuzzy
-msgid "Really delete this note?"
-msgid_plural "Really delete these %1% notes?"
-msgstr[0] "Заиста желиш да обришеш ову белешку?"
-msgstr[1] "Заиста желиш да обришеш ову белешку?"
-msgstr[2] "Заиста желиш да обришеш ову белешку?"
-msgstr[3] "Заиста желиш да обришеш ову белешку?"
+#: ../src/preferencesdialog.cpp:120
+msgid "General"
+msgstr "Опште"
 
-#: ../src/note.cpp:80
-msgid "If you delete a note it is permanently lost."
-msgstr "Ако је обришете она ће заувек бити изгубљена."
+#: ../src/preferencesdialog.cpp:122
+msgid "Hotkeys"
+msgstr "Пречице"
 
-#: ../src/note.cpp:116
-msgid "Error saving note data."
-msgstr "Грешка при чувању података белешке."
+#. TRANSLATORS: Addin category.
+#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:147
+#| msgid "Synchronization Client ID"
+msgid "Synchronization"
+msgstr "Усклађивање"
 
-#: ../src/note.cpp:117
-#, fuzzy
+#: ../src/preferencesdialog.cpp:127
+msgid "Add-ins"
+msgstr "Додаци"
+
+#. Status icon
+#: ../src/preferencesdialog.cpp:239
+#| msgid "Use custom _font"
+msgid "Use Status _Icon"
+msgstr "Користи _иконицу стања"
+
+#: ../src/preferencesdialog.cpp:252
+msgid "_Spell check while typing"
+msgstr "Провери _правопис током куцања"
+
+#: ../src/preferencesdialog.cpp:258
 msgid ""
-"An error occurred while saving your notes. Please check that you have "
-"sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-"Error details can be found in ~/.gnote.log."
+"Misspellings will be underlined in red, with correct spelling suggestions "
+"shown in the context menu."
 msgstr ""
-"Догодила се грешка при чувању белешки. Проверите да ли имате довољно "
-"простора на диску и да имате права уписа у фасциклу {0}. Детаљи о грешци су "
-"записани у {1}."
+"Неисправно написане речи ће бити подвучене црвеном бојом, са предлозима "
+"исправног писања приказаних у приручном изборнику."
 
-#: ../src/recentchanges.cpp:92
+#. WikiWords...
+#: ../src/preferencesdialog.cpp:269
+msgid "Highlight _WikiWords"
+msgstr "Означи _ВикиРечи"
+
+#: ../src/preferencesdialog.cpp:275
+msgid ""
+"Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
+"word will create a note with that name."
+msgstr ""
+"Омогући опцију за обележавање речи <b>КојеИзгледајуОвако</b>. Клик изнад "
+"речи ће тада направити нову белешку са тим именом."
+
+#. Auto bulleted list
+#: ../src/preferencesdialog.cpp:282
+msgid "Enable auto-_bulleted lists"
+msgstr "Укључи самосталне _спискове са тачкицама"
+
+#: ../src/preferencesdialog.cpp:291
+msgid "Use custom _font"
+msgstr "Користи посебан _словни лик"
+
+#: ../src/preferencesdialog.cpp:308
+msgid "When renaming a linked note: "
+msgstr "Када се преименује белешка на коју друге белешке имају везу: "
+
+#: ../src/preferencesdialog.cpp:313
+msgid "Ask me what to do"
+msgstr "Питај ме шта да радим"
+
+#: ../src/preferencesdialog.cpp:314
+msgid "Never rename links"
+msgstr "Никад не преименуј везе"
+
+#: ../src/preferencesdialog.cpp:315
+msgid "Always rename links"
+msgstr "Увек преименуј везе"
+
+#: ../src/preferencesdialog.cpp:337
+msgid ""
+"Use the new note template to specify the text that should be used when "
+"creating a new note."
+msgstr ""
+"Користи шаблон нове белешке за одређивање почетног текста у новим белешкама."
+
+#: ../src/preferencesdialog.cpp:345
+msgid "Open New Note Template"
+msgstr "Отвори шаблон нове белешке"
+
+#. Hotkeys...
+#: ../src/preferencesdialog.cpp:407
+msgid "Listen for _Hotkeys"
+msgstr "Реагуј на _пречице"
+
+#: ../src/preferencesdialog.cpp:414
+msgid ""
+"Hotkeys allow you to quickly access your notes from anywhere with a "
+"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+"Alt&gt;N</b>"
+msgstr ""
+"Пречице омогућавају брзи приступ белешкама у сваком тренутку. Пример "
+"пречица: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
+
+#. Show notes menu keybinding...
+#: ../src/preferencesdialog.cpp:434
+msgid "Show notes _menu"
+msgstr "Прикажи _изборник белешки"
+
+#. Open Start Here keybinding...
+#: ../src/preferencesdialog.cpp:451
+msgid "Open \"_Start Here\""
+msgstr "Отвори „Почетну _страницу“"
+
+#. Create new note keybinding...
+#: ../src/preferencesdialog.cpp:467
+msgid "Create _new note"
+msgstr "Направи _нову белешку"
+
+#. Open Search All Notes window keybinding...
+#: ../src/preferencesdialog.cpp:483
+msgid "Open \"Search _All Notes\""
+msgstr "З_апочни претрагу кроз све белешке"
+
+#: ../src/preferencesdialog.cpp:520
+msgid "Ser_vice:"
+msgstr "_Услуга:"
+
+#: ../src/preferencesdialog.cpp:578 ../src/preferencesdialog.cpp:1135
+msgid "Not configurable"
+msgstr "Није подесиво"
+
+#. "Advanced..." button to bring up extra sync config dialog
+#: ../src/preferencesdialog.cpp:598
+msgid "_Advanced..."
+msgstr "_Напредно..."
+
+#: ../src/preferencesdialog.cpp:643
+msgid "The following add-ins are installed"
+msgstr "Следећи додаци су инсталирани"
+
+#. TODO: In a future version, add in an "Install Add-ins..." button
+#. TODO: In a future version, add in a "Repositories..." button
+#: ../src/preferencesdialog.cpp:674
+msgid "_Enable"
+msgstr "_Укључи"
+
+#: ../src/preferencesdialog.cpp:680
+msgid "_Disable"
+msgstr "_Искључи"
+
+#: ../src/preferencesdialog.cpp:813
+msgid "Not Implemented"
+msgstr "Још није направљено"
+
+#: ../src/preferencesdialog.cpp:827
+msgid "%1% Preferences"
+msgstr "%1% — поставке"
+
+#: ../src/preferencesdialog.cpp:968
+msgid "Choose Note Font"
+msgstr "Одабери словни лик за белешке"
+
+#. Create dialog
+#: ../src/preferencesdialog.cpp:1051
+#| msgid "Synchronization Client ID"
+msgid "Other Synchronization Options"
+msgstr "Остале опције усклађивања"
+
+#: ../src/preferencesdialog.cpp:1054
+msgid ""
+"When a conflict is detected between a local note and a note on the "
+"configured synchronization server:"
+msgstr ""
+"Када се дође до сукоба између локалне белешке и белешке на подешеном серверу "
+"за усклађивање:"
+
+#. label.Xalign = 0;
+#: ../src/preferencesdialog.cpp:1058
+#| msgid "Ask me what to do"
+msgid "Always ask me what to do."
+msgstr "Увек питај шта да урадиш."
+
+#: ../src/preferencesdialog.cpp:1062
+msgid "Rename my local note."
+msgstr "Преименуј моју локалну белешку."
+
+#: ../src/preferencesdialog.cpp:1066
+msgid "Replace my local note with the server's update."
+msgstr "Замени моју локалну белешку оном са сервера."
+
+#: ../src/preferencesdialog.cpp:1169
+msgid "Are you sure?"
+msgstr "Да ли сте сигурни?"
+
+#: ../src/preferencesdialog.cpp:1170
+msgid ""
+"Clearing your synchronization settings is not recommended.  You may be "
+"forced to synchronize all of your notes again when you save new settings."
+msgstr ""
+"Уклањање поставки за усклађивање није препоручено.  Можете бити присиљени да "
+"поново ускладите све ваше белешке када сачувате нове поставке."
+
+#: ../src/preferencesdialog.cpp:1180
+#| msgid "Selected Synchronization Service Addin"
+msgid "Resetting Synchronization Settings"
+msgstr "Поново постави поставке за усклађивање"
+
+#: ../src/preferencesdialog.cpp:1181
+msgid ""
+"You have disabled the configured synchronization service.  Your "
+"synchronization settings will now be cleared.  You may be forced to "
+"synchronize all of your notes again when you save new settings."
+msgstr ""
+"Искључили сте подешену услугу усклађивања.  Ваше поставке за усклађивање ће "
+"сада бити обрисане.  Можете бити присиљени да поново ускладите све ваше "
+"белешке када сачувате нове поставке."
+
+#: ../src/preferencesdialog.cpp:1247
+msgid "Connection successful"
+msgstr "Веза је успостављена"
+
+#: ../src/preferencesdialog.cpp:1248
+msgid ""
+"Gnote is ready to synchronize your notes. Would you like to synchronize them "
+"now?"
+msgstr ""
+"Програм је спреман да усклади белешке. Да ли желите сада да их ускладите?"
+
+#: ../src/preferencesdialog.cpp:1272
+msgid ""
+"Please check your information and try again.  The log file %1% may contain "
+"more information about the error."
+msgstr ""
+"Проверите ваше податке и покушајте поново.  Датотека дневника „%1%“ може да "
+"садржи више података о грешци."
+
+#: ../src/preferencesdialog.cpp:1277
+#| msgid "Error printing note"
+msgid "Error connecting"
+msgstr "Грешка у повезивању"
+
+#: ../src/preferencesdialog.cpp:1341
+msgid "Version:"
+msgstr "Издање:"
+
+#: ../src/preferencesdialog.cpp:1346
+msgid "Author:"
+msgstr "Аутор:"
+
+#: ../src/preferencesdialog.cpp:1352
+msgid "Copyright:"
+msgstr "Ауторска права:"
+
+#: ../src/recentchanges.cpp:93
 msgid "Search All Notes"
 msgstr "Тражи кроз све белешке"
 
-#: ../src/recentchanges.cpp:97
-msgid "C_ase Sensitive"
-msgstr "Р_азликуј мала и велика слова"
-
 #: ../src/recentchanges.cpp:115
 msgid "_Search:"
-msgstr "Претра_жи:"
+msgstr "_Претражи:"
 
-#: ../src/recentchanges.cpp:279
-#: ../src/notebooks/notebookapplicationaddin.cpp:128
-msgid "Notebooks"
-msgstr "Свеске"
-
-#: ../src/recentchanges.cpp:356
+#: ../src/recentchanges.cpp:376
 msgid "Note"
 msgstr "Белешка"
 
-#: ../src/recentchanges.cpp:377
+#: ../src/recentchanges.cpp:398
 msgid "Last Changed"
 msgstr "Последња измена"
 
-#: ../src/recentchanges.cpp:521
+#: ../src/recentchanges.cpp:583
 msgid "Matches"
 msgstr "Поклапања"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/recentchanges.cpp:575
-#, fuzzy
+#: ../src/recentchanges.cpp:637
 msgid "Title match"
-msgstr "({0} поклапање)"
+msgstr "Поклапање наслова"
 
-#: ../src/recentchanges.cpp:579
-#, fuzzy
+#: ../src/recentchanges.cpp:641
 msgid "%1% match"
 msgid_plural "%1% matches"
-msgstr[0] "({0} поклапање)"
-msgstr[1] "({0} поклапања)"
-msgstr[2] "({0} поклапања)"
-msgstr[3] "({0} поклапање)"
+msgstr[0] "%1% резултат"
+msgstr[1] "%1% резултата"
+msgstr[2] "%1% резултата"
+msgstr[3] "један резултат"
 
-#: ../src/recentchanges.cpp:593
-#, fuzzy
+#: ../src/recentchanges.cpp:655
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
-msgstr[0] "Укупно: {0} белешка"
-msgstr[1] "Укупно: {0} белешке"
-msgstr[2] "Укупно: {0} белешки"
-msgstr[3] "Укупно: {0} белешка"
+msgstr[0] "Укупно: %1% белешка"
+msgstr[1] "Укупно: %1% белешке"
+msgstr[2] "Укупно: %1% бележака"
+msgstr[3] "Укупно: једна белешка"
 
-#: ../src/recentchanges.cpp:609
-#, fuzzy
+#: ../src/recentchanges.cpp:671
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
-msgstr[0] "Пронађено: {0} белешка"
-msgstr[1] "Пронађено: {0} белешке"
-msgstr[2] "Пронађено: {0} белешки"
-msgstr[3] "Укупно: {0} белешка"
+msgstr[0] "Поклапања: %1% белешка"
+msgstr[1] "Поклапања: %1% белешке"
+msgstr[2] "Поклапања: %1% бележака"
+msgstr[3] "Поклапања: једна белешка"
 
-#: ../src/recentchanges.cpp:751
+#: ../src/recentchanges.cpp:687
+msgid ""
+"No results found in the selected notebook.\n"
+"Click here to search across all notes."
+msgstr ""
+"Нису пронађени резултати у изабраној бележници.\n"
+"Кликните овде да потражите у свим белешкама."
+
+#: ../src/recentchanges.cpp:691
+msgid "Click here to search across all notebooks"
+msgstr "Кликните овде да потражите у свим бележницама"
+
+#: ../src/recentchanges.cpp:866
 msgid "Notes"
 msgstr "Белешке"
 
+#: ../src/sharp/addinstreemodel.cpp:93
+msgid "Name"
+msgstr "Назив"
+
+#: ../src/sharp/addinstreemodel.cpp:105
+msgid "Version"
+msgstr "Издање"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:138
+msgid "Formatting"
+msgstr "Форматирање"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:141
+msgid "Desktop integration"
+msgstr "Постављање на радну површ"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:144
+msgid "Tools"
+msgstr "Алати"
+
+#. TRANSLATORS: Addin category is unknown.
+#: ../src/sharp/addinstreemodel.cpp:151
+msgid "Unknown"
+msgstr "Непознато"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:117
+msgid ""
+"This synchronization addin is not supported on your computer. Please make "
+"sure you have FUSE and %1% correctly installed and configured"
+msgstr ""
+"Овај додатак за усклађивање није подржан на вашем рачунару. Проверите да ли "
+"су ФУСЕ и %1% исправно инсталирани и подешени"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:160
+#| msgid "Could not save the icon file."
+msgid "Could not read testfile."
+msgstr "Не могу да читам датотеку теста."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:169
+msgid "Write test failed."
+msgstr "Тест писања није успео."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:198
+msgid "Timeout connecting to server."
+msgstr "Истекло је време за повезивање са сервером."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:204
+#| msgid "Error printing note"
+msgid "Error connecting to server."
+msgstr "Грешка при повезивању са сервером."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:217
+msgid "FUSE could not be enabled."
+msgstr "ФУСЕ не може бити омогућен."
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:248
+msgid "An error ocurred while connecting to the specified server"
+msgstr "Дошло је до грешке при повезивању са наведеним сервером"
+
+#: ../src/synchronization/syncdialog.cpp:110
+#| msgid "Note Title"
+msgid "Note Conflict"
+msgstr "Сукоб белешки"
+
+#. Suggest renaming note by appending " (old)" to the existing title
+#: ../src/synchronization/syncdialog.cpp:115
+msgid " (old)"
+msgstr " (стара)"
+
+#: ../src/synchronization/syncdialog.cpp:157
+msgid "Rename local note:"
+msgstr "Преименуј локалну белешку:"
+
+#: ../src/synchronization/syncdialog.cpp:164
+msgid "Update links in referencing notes"
+msgstr "Ажурирај везе у белешкама које је позивају"
+
+#: ../src/synchronization/syncdialog.cpp:171
+msgid "Overwrite local note"
+msgstr "Препиши преко локалне белешке"
+
+#: ../src/synchronization/syncdialog.cpp:175
+#| msgid "Always show this _window"
+msgid "Always perform this action"
+msgstr "Увек примени овај поступак"
+
+#. Set initial dialog text
+#: ../src/synchronization/syncdialog.cpp:181
+msgid "Note conflict detected"
+msgstr "Примећен је сукоб белешки"
+
+#: ../src/synchronization/syncdialog.cpp:183
+msgid ""
+"The server version of \"%1%\" conflicts with your local note.  What do you "
+"want to do with your local note?"
+msgstr ""
+"Издање белешке „%1%“ са сервера је у сукобу са локалном белешком.  Шта "
+"желите да учините са вашом локалном белешком?"
+
+#. Expander containing TreeView
+#: ../src/synchronization/syncdialog.cpp:337
+msgid "Details"
+msgstr "Детаљи"
+
+#: ../src/synchronization/syncdialog.cpp:376
+msgid "Status"
+msgstr "Стање"
+
+#: ../src/synchronization/syncdialog.cpp:533
+msgid "Acquiring sync lock..."
+msgstr "Закључавам пред усклађивање..."
+
+#: ../src/synchronization/syncdialog.cpp:536
+msgid "Committing changes..."
+msgstr "Шаљем измене..."
+
+#: ../src/synchronization/syncdialog.cpp:539
+#| msgid "Synchronize Notes"
+msgid "Synchronizing Notes"
+msgstr "Усклађујем белешке"
+
+#: ../src/synchronization/syncdialog.cpp:540
+#| msgid "Start synchronizing notes"
+msgid "Synchronizing your notes..."
+msgstr "Усклађујем ваше белешке..."
+
+#: ../src/synchronization/syncdialog.cpp:541
+msgid "This may take a while, kick back and enjoy!"
+msgstr "Ово може потрајати, завалите се и уживајте!"
+
+#: ../src/synchronization/syncdialog.cpp:543
+msgid "Connecting to the server..."
+msgstr "Повезујем се са сервером..."
+
+#: ../src/synchronization/syncdialog.cpp:549
+msgid "Deleting notes off of the server..."
+msgstr "Бришем белешке са сервера..."
+
+#: ../src/synchronization/syncdialog.cpp:553
+msgid "Downloading new/updated notes..."
+msgstr "Преузимам нове/ажуриране белешке..."
+
+#: ../src/synchronization/syncdialog.cpp:565
+msgid "Server Locked"
+msgstr "Сервер је закључан"
+
+#: ../src/synchronization/syncdialog.cpp:566
+msgid "Server is locked"
+msgstr "Сервер је закључан"
+
+#: ../src/synchronization/syncdialog.cpp:567
+msgid ""
+"One of your other computers is currently synchronizing.  Please wait 2 "
+"minutes and try again."
+msgstr ""
+"Неки други рачунар тренутно усклађује белешке.  Сачекајте 2 минута и "
+"покушајте поново."
+
+#: ../src/synchronization/syncdialog.cpp:571
+msgid "Preparing to download updates from server..."
+msgstr "Спремам се да преузмем промене са сервера..."
+
+#: ../src/synchronization/syncdialog.cpp:574
+msgid "Preparing to upload updates to server..."
+msgstr "Спремам се да пошаљем промене на сервер..."
+
+#: ../src/synchronization/syncdialog.cpp:577
+msgid "Uploading notes to server..."
+msgstr "Шаљем белешке серверу..."
+
+#: ../src/synchronization/syncdialog.cpp:580
+#| msgid "Synchronization Client ID"
+msgid "Synchronization Failed"
+msgstr "Усклађивање није успело"
+
+#: ../src/synchronization/syncdialog.cpp:581
+#| msgid "Start synchronizing notes"
+msgid "Failed to synchronize"
+msgstr "Нисам успео да усагласим белешке"
+
+#: ../src/synchronization/syncdialog.cpp:582
+msgid "Could not synchronize notes.  Check the details below and try again."
+msgstr ""
+"Нисам могао да усагласим белешке.  Проверите детаље приказане испод и "
+"покушајте поново."
+
+#: ../src/synchronization/syncdialog.cpp:588
+#| msgid "Synchronization Client ID"
+msgid "Synchronization Complete"
+msgstr "Усклађивање је завршено"
+
+#: ../src/synchronization/syncdialog.cpp:589
+#| msgid "Synchronization Client ID"
+msgid "Synchronization is complete"
+msgstr "Усклађивање је завршено"
+
+#: ../src/synchronization/syncdialog.cpp:590
+msgid "%1% note updated."
+msgid_plural "%1% notes updated."
+msgstr[0] "%1% белешка је ажурирана."
+msgstr[1] "%1% белешке су ажуриране."
+msgstr[2] "%1% бележака је ажурирано."
+msgstr[3] "Једна белешка је ажурирана."
+
+#: ../src/synchronization/syncdialog.cpp:591
+msgid "Your notes are now up to date."
+msgstr "Ваше белешке су сада усклађене."
+
+#: ../src/synchronization/syncdialog.cpp:596
+#| msgid "Synchronization Client ID"
+msgid "Synchronization Canceled"
+msgstr "Усклађивање је прекинуто"
+
+#: ../src/synchronization/syncdialog.cpp:597
+#| msgid "Synchronization Client ID"
+msgid "Synchronization was canceled"
+msgstr "Усклађивање је прекинуто"
+
+#: ../src/synchronization/syncdialog.cpp:598
+msgid "You canceled the synchronization.  You may close the window now."
+msgstr "Усклађивање је прекинуто.  Сада можете затворити прозорчић."
+
+#: ../src/synchronization/syncdialog.cpp:602
+#| msgid "Synchronization Client ID"
+msgid "Synchronization Not Configured"
+msgstr "Усклађивање није подешено"
+
+#: ../src/synchronization/syncdialog.cpp:603
+#| msgid "Synchronization Client ID"
+msgid "Synchronization is not configured"
+msgstr "Усклађивање није подешено"
+
+#: ../src/synchronization/syncdialog.cpp:604
+msgid "Please configure synchronization in the preferences dialog."
+msgstr "Подесите поставке усклађивања у прозорчету са поставкама."
+
+#: ../src/synchronization/syncdialog.cpp:608
+#| msgid "SSHFS Synchronization Server Port"
+msgid "Synchronization Service Error"
+msgstr "Грешка услуге усклађивања"
+
+#: ../src/synchronization/syncdialog.cpp:609
+#| msgid "Ser_vice:"
+msgid "Service error"
+msgstr "Грешка услуге"
+
+#: ../src/synchronization/syncdialog.cpp:610
+msgid "Error connecting to the synchronization service.  Please try again."
+msgstr "Грешка при повезивању са сервисом за усклађивање.  Покушајте поново."
+
+#: ../src/synchronization/syncdialog.cpp:624
+msgid "Deleted locally"
+msgstr "Локално обрисана"
+
+#: ../src/synchronization/syncdialog.cpp:627
+msgid "Deleted from server"
+msgstr "Обрисана са сервера"
+
+#: ../src/synchronization/syncdialog.cpp:630
+msgid "Updated"
+msgstr "Ажурирано"
+
+#: ../src/synchronization/syncdialog.cpp:633
+msgid "Added"
+msgstr "Додато"
+
+#: ../src/synchronization/syncdialog.cpp:636
+msgid "Uploaded changes to server"
+msgstr "Измене су послате серверу"
+
+#: ../src/synchronization/syncdialog.cpp:639
+msgid "Uploaded new note to server"
+msgstr "Нова белешка је послата серверу"
+
+#: ../src/synchronization/syncmanager.cpp:135
+#| msgid "Tools"
+msgid "_Tools"
+msgstr "_Алати"
+
+#: ../src/synchronization/syncutils.cpp:142
+#: ../src/synchronization/syncutils.cpp:174
+msgid "Could not enable FUSE"
+msgstr "Не могу да омогућим ФУСЕ"
+
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
+msgid ""
+"The FUSE module could not be loaded. Please check that it is installed "
+"properly and try again."
+msgstr ""
+"ФУСЕ модул не може бити учитан. Уверите се да је исправно инсталиран и "
+"покушајте поново."
+
+#: ../src/synchronization/syncutils.cpp:151
+#| msgid "_Enable"
+msgid "Enable FUSE?"
+msgstr "Да омогућим ФУСЕ?"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:154
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
+msgstr ""
+"Одабрани поступак усклађивања захтева да ФУСЕ модул буде учитан.\n"
+"\n"
+"Да избегнете ово прозорче у будућности, треба да учитате ФУСЕ при покретању. "
+" Додајте „modprobe fuse“ у /etc/init.d/boot.local или „fuse“ у "
+"/etc/modules."
+
 #: ../src/tray.cpp:54
 msgid "Take notes"
-msgstr ""
+msgstr "Прибележите"
 
 #: ../src/tray.cpp:164
 msgid " (new)"
 msgstr " (нова)"
 
 #: ../src/tray.cpp:470
-#, fuzzy
 msgid "_About Gnote"
-msgstr "_О програму"
+msgstr "_О Гномовим белешкама"
 
-#: ../src/utils.cpp:131
-#, fuzzy
+#: ../src/utils.cpp:130
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
-"„Упутство за Томичине белешке“ није пронађено.  Проверите да ли је "
-"инсталација програма прошла успешно."
+"Не могу да пронађем „Упутство за Гномове белешке“.  Проверите да ли је "
+"инсталација програма успешно обављена."
 
-#: ../src/utils.cpp:139
+#: ../src/utils.cpp:138
 msgid "Help not found"
-msgstr "Помоћ није пронађена"
+msgstr "Нисам пронашао помоћ"
 
-#: ../src/utils.cpp:172
+#: ../src/utils.cpp:171
 msgid "Cannot open location"
 msgstr "Не могу да отворим локацију"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:187
-#, fuzzy
+#: ../src/utils.cpp:186
 msgid "Today, %1%"
-msgstr "Данас: "
+msgstr "Данас, у %1%"
 
-#: ../src/utils.cpp:188
+#: ../src/utils.cpp:187
 msgid "Today"
 msgstr "Данас"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:194
-#, fuzzy
+#: ../src/utils.cpp:193
 msgid "Yesterday, %1%"
-msgstr "Јуче, {0}"
+msgstr "Јуче, у %1%"
 
-#: ../src/utils.cpp:195
+#: ../src/utils.cpp:194
 msgid "Yesterday"
 msgstr "Јуче"
 
-# bug(goran): plural!
-# http://bugzilla.gnome.org/show_bug.cgi?id=476061
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:204
-#, fuzzy
+#: ../src/utils.cpp:203
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
-msgstr[0] "Пре {0} дана, {1}"
-msgstr[1] "Пре {0} дана, {1}"
-msgstr[2] "Пре {0} дана, {1}"
-msgstr[3] "Пре {0} дана, {1}"
+msgstr[0] "Пре %1% дан, %2%"
+msgstr[1] "Пре %1% дана, %2%"
+msgstr[2] "Пре %1% дана, %2%"
+msgstr[3] "Пре једног дана, %2%"
 
-# bug(goran): plural!
-# http://bugzilla.gnome.org/show_bug.cgi?id=476061
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:210
-#, fuzzy
+#: ../src/utils.cpp:209
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
-msgstr[0] "Пре {0} дан"
-msgstr[1] "Пре {0} дана"
-msgstr[2] "Пре {0} дана"
-msgstr[3] "Пре {0} дан"
+msgstr[0] "Пре %1 дан"
+msgstr[1] "Пре %1 дана"
+msgstr[2] "Пре %1 дана"
+msgstr[3] "Пре један дан"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:218
-#, fuzzy
+#: ../src/utils.cpp:217
 msgid "Tomorrow, %1%"
-msgstr "Сутра, {0}"
+msgstr "Сутра, у %1%"
 
-#: ../src/utils.cpp:219
+#: ../src/utils.cpp:218
 msgid "Tomorrow"
 msgstr "Сутра"
 
-# bug(goran): plural!
-# http://bugzilla.gnome.org/show_bug.cgi?id=476061
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:228
-#, fuzzy
+#: ../src/utils.cpp:227
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
-msgstr[0] "Кроз {0} дан, {1}"
-msgstr[1] "Кроз {0} дана, {1}"
-msgstr[2] "Кроз {0} дана, {1}"
-msgstr[3] "Кроз {0} дан, {1}"
+msgstr[0] "За %1% дан, %2%"
+msgstr[1] "За %1% дана, %2%"
+msgstr[2] "За %1% дана, %2%"
+msgstr[3] "За један дан, %2%"
 
-# bug(goran): plural!
-# http://bugzilla.gnome.org/show_bug.cgi?id=476061
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:234
-#, fuzzy
+#: ../src/utils.cpp:233
 msgid "In %1% day"
 msgid_plural "In %1% days"
-msgstr[0] "Кроз {0} дан"
-msgstr[1] "Кроз {0} дана"
-msgstr[2] "Кроз {0} дана"
-msgstr[3] "Кроз {0} дан"
+msgstr[0] "За %1% дан"
+msgstr[1] "За %1% дана"
+msgstr[2] "За %1% дана"
+msgstr[3] "За један дан"
 
-#: ../src/utils.cpp:245
+#: ../src/utils.cpp:244
 msgid "No Date"
 msgstr "Без датума"
 
 #: ../src/watchers.cpp:210
-#, fuzzy
 msgid "(Untitled %1%)"
-msgstr "(Без наслова {0})"
+msgstr "(Без наслова %1%)"
 
 #: ../src/watchers.cpp:245
-#, fuzzy
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
-"Белешка <b>{0}</b> већ постоји. Одаберите друго име за ову белешку пре него "
+"Белешка <b>%1%</b> већ постоји. Одаберите друго име за ову белешку пре него "
 "што наставите даље."
 
 #: ../src/watchers.cpp:259
 msgid "Note title taken"
 msgstr "Наслов белешке је заузет"
 
-#: ../src/watchers.cpp:593
+#: ../src/watchers.cpp:585
 msgid "_Copy Link Address"
 msgstr "_Умножи адресу везе"
 
-#: ../src/watchers.cpp:599
+#: ../src/watchers.cpp:591
 msgid "_Open Link"
 msgstr "_Отвори везу"
 
-#: ../src/notebooks/createnotebookdialog.cpp:38
-#: ../src/notebooks/notebookapplicationaddin.cpp:109
-msgid "Create a new notebook"
-msgstr "Направи нову свеску"
-
-#: ../src/notebooks/createnotebookdialog.cpp:39
-msgid "Type the name of the notebook you'd like to create."
-msgstr "Унесите име свеске коју желите да направите."
-
-#: ../src/notebooks/createnotebookdialog.cpp:47
-msgid "N_otebook name:"
-msgstr "_Име свеске:"
-
-#: ../src/notebooks/createnotebookdialog.cpp:60
-msgid "Name already taken"
-msgstr "Име је већ заузето"
-
-#. Translation note: This is the Create button in the Create
-#. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:73
-msgid "C_reate"
-msgstr "_Нова"
-
-#. The templateNoteTite should show the name of the
-#. notebook.  For example, if the name of the notebooks
-#. "Meetings", the templateNoteTitle should be "Meetings
-#. Notebook Template".  Translators should place the
-#. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:87
-#, fuzzy
-msgid "%1% Notebook Template"
-msgstr "Шаблон за свеску „{0}“"
-
-#: ../src/notebooks/notebook.cpp:207
-msgid "All Notes"
-msgstr "Све белешке"
-
-#: ../src/notebooks/notebook.cpp:219
-msgid "Unfiled Notes"
-msgstr "Непопуњене белешке"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:103
-msgid "Note_books"
-msgstr "_Свеске"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:104
-#: ../src/notebooks/notebookapplicationaddin.cpp:129
-msgid "Create a new note in a notebook"
-msgstr "Направи нову белешку у свесци"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:108
-#: ../src/notebooks/notebookapplicationaddin.cpp:263
-msgid "New Note_book..."
-msgstr "Нова _свеска..."
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:113
-msgid "_New Note"
-msgstr "_Нова белешка"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:114
-msgid "Create a new note in this notebook"
-msgstr "Направи нову белешку у овој свесци"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:118
-msgid "_Open Template Note"
-msgstr "_Отвори шаблон белешке"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:119
-msgid "Open this notebook's template note"
-msgstr "Отвори шаблон белешке за ову свеску"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:123
-msgid "Delete Note_book"
-msgstr "Обриши _свеску"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:124
-msgid "Delete the selected notebook"
-msgstr "Обриши одабрану свеску"
-
-#: ../src/notebooks/notebookmanager.cpp:337
-msgid "Really delete this notebook?"
-msgstr "Заиста желиш да обришеш ову свеску?"
-
-#: ../src/notebooks/notebookmanager.cpp:338
-msgid ""
-"The notes that belong to this notebook will not be deleted, but they will no "
-"longer be associated with this notebook.  This action cannot be undone."
-msgstr ""
-"Белешке из свеске неће бити обрисане, али више неће бити придружене свесци. "
-"Ову радњу није могуће поништити. "
-
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
-#, fuzzy
-msgid "New \"%1%\" Note"
-msgstr "„{0}“: нова белешка"
-
-#: ../src/notebooks/notebookmenuitem.cpp:35
-msgid "No notebook"
-msgstr "Нема свески"
-
-#: ../src/notebooks/notebooknoteaddin.cpp:76
-msgid "Place this note into a notebook"
-msgstr "Спреми белешку у свеску"
-
-#: ../src/notebooks/notebooknoteaddin.cpp:158
-msgid "Notebook"
-msgstr "Свеска"
-
-#: ../src/notebooks/notebooknoteaddin.cpp:184
-msgid "_New notebook..."
-msgstr "_Нова свеска..."
-
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
-msgid "Backlinks"
-msgstr ""
-
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
-msgid "See which notes link to the one you're currently viewing."
-msgstr ""
-
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
-msgid "Hubert Figuiere and Tomboy Project"
-msgstr ""
-
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
-msgid "What links here?"
-msgstr "Шта води овамо?"
-
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
-msgid "(none)"
-msgstr "(ништа)"
-
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
-msgid "Bugzilla Links"
-msgstr ""
-
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
-msgid ""
-"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
-"note.  The bug number is inserted as a link with a little bug icon next to "
-"it."
-msgstr ""
-
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:56
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
-msgid "Hubert Figuiere and the Tomboy Project"
-msgstr ""
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:62
-msgid ""
-"You can use any bugzilla just by dragging links into notes.  If you want a "
-"special icon for certain hosts, add them here."
-msgstr ""
-"Можеш користити било коју бубаждају превлачењем везе ка страници у белешку. "
-"Ако желиш посебну иконицу за одређене адресе, додај их овде."
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:79
-msgid "Host Name"
-msgstr "Адреса рачунара"
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:92
-msgid "Icon"
-msgstr "Иконица"
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:226
-msgid "Select an icon..."
-msgstr "Одабери иконицу..."
-
-#. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:241
-msgid "_Host name:"
-msgstr "_Адреса рачунара:"
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
-#, fuzzy
-msgid "Host name invalid"
-msgstr "_Адреса рачунара:"
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:274
-#, fuzzy
-msgid "You must specify a valid Bugzilla host name to use with this icon."
-msgstr "Мораш навести адресу рачунара Бубаждаје за коришћење са овом иконицом."
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
-msgid "Error saving icon"
-msgstr "Грешка при чувању иконице"
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:294
-msgid "Could not save the icon file."
-msgstr "Не могу да сачувам датотеку са иконицом."
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
-msgid "Really remove this icon?"
-msgstr "Заиста желиш да обришеш ову иконицу?"
-
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:367
-msgid "If you remove an icon it is permanently lost."
-msgstr "Ако је обришеш она ће заувек бити изгубљена."
-
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:39
-msgid "Destination for HTML Export"
-msgstr "Одредиште извоза у ХТМЛ"
-
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
-msgid "Export linked notes"
-msgstr "Извези повезане белешке"
-
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:42
-msgid "Include all other linked notes"
-msgstr "Укључи све друге повезане белешке"
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
-msgid "Export to HTML"
-msgstr "Извези у ХТМЛ"
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
-#, fuzzy
-msgid "Exports individual notes to HTML."
-msgstr "ХТМЛ извози повезане белешке"
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:145
-#, fuzzy
-msgid "Your note was exported to \"%1%\"."
-msgstr "Твоја белешка је извезена у „{0}“."
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
-msgid "Note exported successfully"
-msgstr "Белешка је успешно извезена"
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:179
-#, fuzzy, c-format
-msgid "Could not save the file \"%s\""
-msgstr "Не могу да сачувам датотеку „{0}“"
-
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
-msgid "Fixed Wid_th"
-msgstr "_Фиксна ширина"
-
-#. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
-#, fuzzy
-msgid "Fixed Width"
-msgstr "_Фиксна ширина"
-
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
-msgid "Adds fixed-width font style."
-msgstr ""
-
-#. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
-msgid "Insert Timestamp"
-msgstr "Уметни датум и време"
-
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
-msgid "Inserts current date and time at the cursor position."
-msgstr ""
-
-#. Label
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:67
-msgid "Choose one of the predefined formats or use your own."
-msgstr "Одаберите неки од понуђених записа или унесите нови."
-
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:75
-msgid "Use _Selected Format"
-msgstr "Користи _одабрани запис"
-
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:104
-msgid "_Use Custom Format"
-msgstr "Користи посебан _запис"
-
-#: ../src/addins/noteoftheday/noteoftheday.cpp:32
-msgid "Today: Template"
-msgstr "Данас: Шаблон"
-
-#: ../src/addins/noteoftheday/noteoftheday.cpp:34
-msgid "Today: "
-msgstr "Данас: "
-
-#: ../src/addins/noteoftheday/noteoftheday.cpp:158
-msgid "Tasks"
-msgstr "Задаци"
-
-#: ../src/addins/noteoftheday/noteoftheday.cpp:159
-msgid "Appointments"
-msgstr "Састанци"
-
-#. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:165
-msgid "%A, %B %d %Y"
-msgstr ""
-
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
-msgid "Note of the Day"
-msgstr "Белешка дана"
-
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
-msgid ""
-"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
-msgstr ""
-
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
-msgid "Debarshi Ray and the Tomboy Project"
-msgstr ""
-
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:34
-msgid "_Open Today: Template"
-msgstr "_Отвори „Данас: Шаблон“"
-
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
-#, fuzzy
-msgid ""
-"Change the <span weight=\"bold\">Today: Template</span> note to customize "
-"the text that new Today notes have."
-msgstr ""
-"Промени белешку „<span weight=\"bold\">Данас: шаблон</span>“ да прилагодиш "
-"текст који имају нове белешке дана."
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:48
-msgid "Printing Support"
-msgstr ""
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:52
-msgid "Allows you to print a note."
-msgstr ""
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:79
-msgid "Print"
-msgstr "Штампај"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
-msgid "Error printing note"
-msgstr "Грешка при штампању белешке"
-
-#. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:298
-#, fuzzy
-msgid "Page %1% of %2%"
-msgstr "Страница {0} од {1}"
-
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
-msgid "Replace title"
-msgstr ""
-
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
-#, fuzzy
-msgid "Replace title with selection."
-msgstr "Обриши одабрану белешку"
-
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
-msgid "Pierre-Yves Luyten"
-msgstr ""
-
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
-#, fuzzy
-msgid "Sticky Notes Importer"
-msgstr "Увоз гномових белешки"
-
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
-#, fuzzy
-msgid "Import your notes from the Sticky Notes applet."
-msgstr "Увези гномове белешке"
-
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:109
-msgid "Import from Sticky Notes"
-msgstr "Увези гномове белешке"
-
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:209
-msgid "No Sticky Notes found"
-msgstr "Нису пронађене гномове белешке"
-
-#. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:211
-#, fuzzy
-msgid "No suitable Sticky Notes file was found at \"%1%\"."
-msgstr "Није пронађена погодна датотека гномових белешки у „{0}“."
-
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:219
-msgid "Sticky Notes import completed"
-msgstr "Увоз гномових белешки је завршен"
-
-#. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:221
-#, fuzzy
-msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
-msgstr "Успешно увезене гномове белешке: <b>{0}</b> од <b>{1}</b>"
-
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:240
-msgid "Untitled"
-msgstr "Без наслова"
-
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:287
-msgid "Sticky Note: "
-msgstr "Гномова белешка: "
-
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
-#, fuzzy
-msgid "Tomboy Importer"
-msgstr "Томичине белешке"
-
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
-#, fuzzy
-msgid "Import your notes from Tomboy."
-msgstr "Извези повезане белешке"
-
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
-msgid "Hubert Figuiere"
-msgstr ""
-
-#: ../src/addins/underline/underlinemenuitem.cpp:35
-msgid "_Underline"
-msgstr "Подв_учено"
-
-#. this is the name of the plugin.
-#: ../src/addins/underline/underlinenoteaddin.cpp:49
-msgid "Underline"
-msgstr "Подвучено"
-
-#: ../src/addins/underline/underlinenoteaddin.cpp:53
-msgid "Adds ability to underline text."
-msgstr ""
-
-#: ../src/addins/underline/underlinenoteaddin.cpp:57
-msgid "Hubert Figuière and the Tomboy Project"
-msgstr ""
+#~ msgid "Editing"
+#~ msgstr "Измена"
+
+#~ msgid "C_ase Sensitive"
+#~ msgstr "Р_азликуј мала и велика слова"
