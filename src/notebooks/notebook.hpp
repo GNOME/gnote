@@ -54,6 +54,7 @@ public:
   Note::Ptr create_notebook_note();
   virtual bool contains_note(const Note::Ptr &);
   virtual bool add_note(const Note::Ptr &);
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
   static std::string normalize(const std::string & s);
 ////
   virtual ~Notebook()
@@ -104,6 +105,7 @@ public:
   virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
 };
 
 
@@ -121,6 +123,7 @@ public:
   virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
 };
 
 
@@ -133,6 +136,7 @@ public:
   virtual std::string get_notmalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
 };
 
 

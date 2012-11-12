@@ -25,6 +25,7 @@
 
 #include "sharp/string.hpp"
 #include "gnote.hpp"
+#include "iconmanager.hpp"
 #include "notemanager.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -194,6 +195,11 @@ namespace notebooks {
     return true;
   }
 
+  Glib::RefPtr<Gdk::Pixbuf> Notebook::get_icon()
+  {
+    return IconManager::obj().get_icon(IconManager::NOTEBOOK, 22);
+  }
+
   std::string Notebook::normalize(const std::string & s)
   {
     return sharp::string_to_lower(sharp::string_trim(s));
@@ -233,6 +239,11 @@ namespace notebooks {
     return false;
   }
 
+  Glib::RefPtr<Gdk::Pixbuf> AllNotesNotebook::get_icon()
+  {
+    return IconManager::obj().get_icon(IconManager::FILTER_NOTE_ALL, 22);
+  }
+
 
   UnfiledNotesNotebook::UnfiledNotesNotebook()
     : SpecialNotebook(_("Unfiled Notes"))
@@ -257,6 +268,11 @@ namespace notebooks {
     return true;
   }
 
+  Glib::RefPtr<Gdk::Pixbuf> UnfiledNotesNotebook::get_icon()
+  {
+    return IconManager::obj().get_icon(IconManager::FILTER_NOTE_UNFILED, 22);
+  }
+
 
   PinnedNotesNotebook::PinnedNotesNotebook()
     : SpecialNotebook(_("Pinned Notes"))
@@ -278,6 +294,11 @@ namespace notebooks {
   {
     note->set_pinned(true);
     return true;
+  }
+
+  Glib::RefPtr<Gdk::Pixbuf> PinnedNotesNotebook::get_icon()
+  {
+    return IconManager::obj().get_icon(IconManager::PIN_DOWN, 22);
   }
 
 }

@@ -472,18 +472,7 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
   }
 
   Gtk::CellRendererPixbuf *crp = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
-  if(std::tr1::dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook)) {
-    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::FILTER_NOTE_ALL, 22);
-  }
-  else if(std::tr1::dynamic_pointer_cast<notebooks::UnfiledNotesNotebook>(notebook)) {
-    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::FILTER_NOTE_UNFILED, 22);
-  }
-  else if(std::tr1::dynamic_pointer_cast<notebooks::PinnedNotesNotebook>(notebook)) {
-    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::PIN_DOWN, 22);
-  }
-  else {
-    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::NOTEBOOK, 22);
-  }
+  crp->property_pixbuf() = notebook->get_icon();
 }
 
 void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer * renderer,
