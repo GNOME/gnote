@@ -279,7 +279,7 @@ namespace notebooks {
   {
   }
 
-  std::string PinnedNotesNotebook::get_notmalized_name() const
+  std::string PinnedNotesNotebook::get_normalized_name() const
   {
     return "___NotebookManager___PinnedNotes__Notebook___";
   }

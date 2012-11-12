@@ -133,7 +133,7 @@ class PinnedNotesNotebook
 public:
   typedef std::tr1::shared_ptr<PinnedNotesNotebook> Ptr;
   PinnedNotesNotebook();
-  virtual std::string get_notmalized_name() const;
+  virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
   virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
