@@ -1031,6 +1031,8 @@ namespace gnote {
       process_child_widget_queue();
       m_note_window_embeded = true;
     }
+
+    notebooks::NotebookManager::instance().active_notes_notebook()->add_note(shared_from_this());
   }
 
   bool Note::is_special() const

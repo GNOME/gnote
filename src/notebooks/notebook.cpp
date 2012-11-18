@@ -301,5 +301,46 @@ namespace notebooks {
     return IconManager::obj().get_icon(IconManager::PIN_DOWN, 22);
   }
 
+
+  ActiveNotesNotebook::ActiveNotesNotebook()
+    : SpecialNotebook(_("Active Notes"))
+  {
+    Gnote::obj().default_note_manager().signal_note_deleted
+      .connect(sigc::mem_fun(*this, &ActiveNotesNotebook::on_note_deleted));
+  }
+
+  std::string ActiveNotesNotebook::get_normalized_name() const
+  {
+    return "___NotebookManager___ActiveNotes__Notebook___";
+  }
+
+  bool ActiveNotesNotebook::contains_note(const Note::Ptr & note)
+  {
+    return m_notes.find(note) != m_notes.end();
+  }
+
+  bool ActiveNotesNotebook::add_note(const Note::Ptr & note)
+  {
+    if(m_notes.insert(note).second) {
+      signal_size_changed();
+    }
+
+    return true;
+  }
+
+  Glib::RefPtr<Gdk::Pixbuf> ActiveNotesNotebook::get_icon()
+  {
+    return IconManager::obj().get_icon(IconManager::NOTE, 22);
+  }
+
+  void ActiveNotesNotebook::on_note_deleted(const Note::Ptr & note)
+  {
+    std::set<Note::Ptr>::iterator iter = m_notes.find(note);
+    if(iter != m_notes.end()) {
+      m_notes.erase(iter);
+      signal_size_changed();
+    }
+  }
+
 }
 }

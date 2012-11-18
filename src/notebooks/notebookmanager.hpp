@@ -68,7 +68,7 @@ public:
   /// A <see cref="Notebook"/>
   /// </returns>
   Glib::RefPtr<Gtk::TreeModel> get_notebooks_with_special_items()
-    { return m_sortedNotebooks; }
+    { return m_notebooks_to_display; }
 
   Notebook::Ptr get_notebook(const std::string & notebookName) const;
   bool notebook_exists(const std::string & notebookName) const;
@@ -90,12 +90,19 @@ public:
   NotebookEventHandler & signal_note_removed_from_notebook()
     { return m_note_removed_from_notebook; }
 
+  Notebook::Ptr & active_notes_notebook()
+    {
+      return m_active_notes;
+    }
+
   sigc::signal<void, const Note &, bool> signal_note_pin_status_changed;
 private:
   NotebookManager();
 
   static int compare_notebooks_sort_func(const Gtk::TreeIter &, const Gtk::TreeIter &);
   void load_notebooks();
+  bool filter_notebooks_to_display(const Gtk::TreeIter &);
+  void on_active_notes_size_changed();
   static bool filter_notebooks(const Gtk::TreeIter &);
 
   class ColumnRecord
@@ -110,6 +117,7 @@ private:
   ColumnRecord                         m_column_types;
   Glib::RefPtr<Gtk::ListStore>         m_notebooks;
   Glib::RefPtr<Gtk::TreeModelSort>     m_sortedNotebooks;
+  Glib::RefPtr<Gtk::TreeModelFilter>   m_notebooks_to_display;
   Glib::RefPtr<Gtk::TreeModelFilter>   m_filteredNotebooks;
   // <summary>
   // The key for this dictionary is Notebook.Name.ToLower ().
@@ -119,6 +127,7 @@ private:
   bool                                 m_adding_notebook;
   NotebookEventHandler                 m_note_added_to_notebook;
   NotebookEventHandler                 m_note_removed_from_notebook;
+  Notebook::Ptr                        m_active_notes;
 };
 
   }

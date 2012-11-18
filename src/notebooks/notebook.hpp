@@ -23,6 +23,7 @@
 #ifndef __NOTEBOOKS_NOTEBOOK_HPP_
 #define __NOTEBOOKS_NOTEBOOK_HPP_
 
+#include <set>
 #include <string>
 #include <tr1/memory>
 
@@ -137,6 +138,28 @@ public:
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
   virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
+};
+
+
+class ActiveNotesNotebook
+  : public SpecialNotebook
+{
+public:
+  typedef std::tr1::shared_ptr<ActiveNotesNotebook> Ptr;
+  ActiveNotesNotebook();
+  virtual std::string get_normalized_name() const;
+  virtual bool        contains_note(const Note::Ptr &);
+  virtual bool        add_note(const Note::Ptr &);
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
+  bool empty()
+    {
+      return m_notes.size() == 0;
+    }
+  sigc::signal<void> signal_size_changed;
+private:
+  void on_note_deleted(const Note::Ptr & note);
+
+  std::set<Note::Ptr> m_notes;
 };
 
 

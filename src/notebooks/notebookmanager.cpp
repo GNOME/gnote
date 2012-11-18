@@ -41,6 +41,7 @@ namespace gnote {
 
     NotebookManager::NotebookManager()
       : m_adding_notebook(false)
+      , m_active_notes(new ActiveNotesNotebook)
    { 
      m_notebooks = Gtk::ListStore::create(m_column_types);
 
@@ -48,6 +49,10 @@ namespace gnote {
      m_sortedNotebooks->set_sort_func (
        0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
      m_sortedNotebooks->set_sort_column (0, Gtk::SORT_ASCENDING);
+
+     m_notebooks_to_display = Gtk::TreeModelFilter::create(m_sortedNotebooks);
+     m_notebooks_to_display->set_visible_func(
+       sigc::mem_fun(*this, &NotebookManager::filter_notebooks_to_display));
       
      m_filteredNotebooks = Gtk::TreeModelFilter::create (m_sortedNotebooks);
      m_filteredNotebooks->set_visible_func(
@@ -64,6 +69,11 @@ namespace gnote {
      Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook);
      iter = m_notebooks->append();
      iter->set_value(0, pinned_notes_notebook);
+
+     iter = m_notebooks->append();
+     iter->set_value(0, m_active_notes);
+     std::tr1::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
+       .connect(sigc::mem_fun(*this, &NotebookManager::on_active_notes_size_changed));
 
       
      load_notebooks ();
@@ -416,20 +426,16 @@ namespace gnote {
 
       if (!notebook_a || !notebook_b)
         return 0;
-      
-      if (std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook_a) 
-          && std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook_b)) {
-        if (std::tr1::dynamic_pointer_cast<AllNotesNotebook>(notebook_a)) {
-          return -1;
-        }
-        else {
-          return 1;
-        }
-      } 
-      else if (std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook_a)) {
+
+      SpecialNotebook::Ptr spec_a = std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook_a);
+      SpecialNotebook::Ptr spec_b = std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook_b);
+      if(spec_a != 0 && spec_b != 0) {
+        return strcmp(spec_a->get_normalized_name().c_str(), spec_b->get_normalized_name().c_str());
+      }
+      else if(spec_a != 0) {
         return -1;
       }
-      else if (std::tr1::dynamic_pointer_cast<SpecialNotebook>(notebook_b)) {
+      else if(spec_b != 0) {
         return 1;
       }
 
@@ -474,6 +480,22 @@ namespace gnote {
         return false;
       }
       return true;
+    }
+
+    bool NotebookManager::filter_notebooks_to_display(const Gtk::TreeIter & iter)
+    {
+      Notebook::Ptr notebook;
+      iter->get_value(0, notebook);
+      if(notebook == m_active_notes) {
+        return !std::tr1::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->empty();
+      }
+
+      return true;
+    }
+
+    void NotebookManager::on_active_notes_size_changed()
+    {
+      m_notebooks_to_display->refilter();
     }
 
 
