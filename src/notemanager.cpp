@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2012 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -349,9 +349,6 @@ namespace gnote {
     // Update the trie so addins can access it, if they want.
     m_trie_controller->update ();
 
-    bool startup_notes_enabled = Preferences::obj()
-      .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_STARTUP_NOTES);
-
     // Load all the addins for our notes.
     // Iterating through copy of notes list, because list may be
     // changed when loading addins.
@@ -361,16 +358,6 @@ namespace gnote {
       const Note::Ptr & note(*iter);
 
       m_addin_mgr->load_addins_for_note (note);
-
-        // Show all notes that were visible when tomboy was shut down
-      if (note->is_open_on_startup()) {
-        if (startup_notes_enabled) {
-          note->get_window()->show();
-        }
-        
-        note->set_is_open_on_startup(false);
-        note->queue_save (NO_CHANGE);
-      }
     }
   }
 
@@ -423,11 +410,6 @@ namespace gnote {
     for(Note::List::const_iterator iter = notesCopy.begin();
         iter != notesCopy.end(); ++iter) {
       const Note::Ptr & note(*iter);
-      // If the note is visible, it will be shown automatically on
-      // next startup
-      if (note->has_window() && note->get_window()->get_visible())
-          note->set_is_open_on_startup(true);
-
       note->save();
     }
   }

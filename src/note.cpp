@@ -137,7 +137,6 @@ namespace gnote {
     , m_height(0)
     , m_x(s_noPosition)
     , m_y(s_noPosition)
-    , m_open_on_startup(false)
   {
   }
 
@@ -871,11 +870,6 @@ namespace gnote {
             DBG_OUT("loading tag subtree failed");
           }
         }
-        else if(name == "open-on-startup") {
-          // TODO this is a hacked on observation about how Mono convert
-          // a bool from a string.
-          set_is_open_on_startup(xml.read_string() == "True");
-        }
         break;
       default:
         break;
@@ -1082,21 +1076,6 @@ namespace gnote {
     notebooks::NotebookManager::instance().signal_note_pin_status_changed(*this, pinned);
   }
 
-  
-  bool Note::is_open_on_startup() const
-  {
-    return data().is_open_on_startup();
-  }
-
-
-  void Note::set_is_open_on_startup(bool value)
-  {
-    if (data().is_open_on_startup() != value) {
-      data().set_is_open_on_startup(value);
-      m_save_needed = true;
-    }
-  }
-  
   void Note::get_tags(std::list<Tag::Ptr> & l) const
   {
     sharp::map_get_values(m_data.data().tags(), l);
@@ -1218,9 +1197,6 @@ namespace gnote {
           else {
             DBG_OUT("loading tag subtree failed");
           }
-        }
-        else if(name == "open-on-startup") {
-          note->set_is_open_on_startup(xml.read_string() == "True");
         }
         break;
 
@@ -1362,10 +1338,6 @@ namespace gnote {
       }
       xml.write_end_element();
     }
-
-    xml.write_start_element("", "open-on-startup", "");
-    xml.write_string(note.is_open_on_startup() ? "True" : "False");
-    xml.write_end_element();
 
     xml.write_end_element(); // Note
     xml.write_end_document();

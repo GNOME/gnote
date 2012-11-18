@@ -162,14 +162,6 @@ public:
       return m_tags;
     }
 
-  bool is_open_on_startup() const
-    {
-      return m_open_on_startup;
-    }
-  void set_is_open_on_startup(bool v)
-    {
-      m_open_on_startup = v;
-    }
   void set_position_extent(int x, int y, int width, int height);
   bool has_position();
   bool has_extent();
@@ -185,7 +177,6 @@ private:
   int               m_selection_bound_pos;
   int               m_width, m_height;
   int               m_x, m_y;
-  bool              m_open_on_startup;
 
   TagMap m_tags;
 };
@@ -340,8 +331,6 @@ public:
     }
   bool is_pinned() const;
   void set_pinned(bool pinned) const;
-  bool is_open_on_startup() const;
-  void set_is_open_on_startup(bool);
   void get_tags(std::list<Tag::Ptr> &) const;
   bool enabled() const
     {

@@ -37,7 +37,6 @@ namespace gnote {
   const char * Preferences::ENABLE_WIKIWORDS = "enable-wikiwords";
   const char * Preferences::ENABLE_CUSTOM_FONT = "enable-custom-font";
   const char * Preferences::ENABLE_KEYBINDINGS = "enable-keybindings";
-  const char * Preferences::ENABLE_STARTUP_NOTES = "enable-startup-notes";
   const char * Preferences::ENABLE_AUTO_BULLETED_LISTS = "enable-bulleted-lists";
   const char * Preferences::ENABLE_ICON_PASTE = "enable-icon-paste";
   const char * Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
