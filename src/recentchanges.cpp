@@ -26,6 +26,7 @@
 #include <boost/bind.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/image.h>
+#include <gtkmm/stock.h>
 
 #include "actionmanager.hpp"
 #include "debug.hpp"
@@ -62,17 +63,7 @@ namespace gnote {
     m_search_notes_widget.signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
 
-    Gtk::Toolbar *toolbar = manage(new Gtk::Toolbar);
-    m_menu = manage(new Gtk::Menu);
-    m_menu->signal_show().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_menu_show));
-    utils::ToolMenuButton *tool_button = manage(new utils::ToolMenuButton(
-      *manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE, 24))), _("_Show"), m_menu));
-    tool_button->set_use_underline(true);
-    tool_button->set_is_important(true);
-    tool_button->show_all();
-    toolbar->append(*tool_button);
-    toolbar->show();
-
+    Gtk::Toolbar *toolbar = make_toolbar();
     m_content_vbox.pack_start(*toolbar, false, false, 0);
     m_content_vbox.pack_start(m_embed_box, true, true, 0);
     m_embed_box.show();
@@ -94,6 +85,39 @@ namespace gnote {
     }
   }
 
+  Gtk::Toolbar *NoteRecentChanges::make_toolbar()
+  {
+    Gtk::Toolbar *toolbar = manage(new Gtk::Toolbar);
+    m_all_notes_button = manage(new Gtk::ToolButton(
+      *manage(new Gtk::Image(Gtk::Stock::FIND, Gtk::IconSize(24))), _("All Notes")));
+    m_all_notes_button->set_is_important();
+    m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_all_notes_clicked));
+    m_all_notes_button->show_all();
+    toolbar->append(*m_all_notes_button);
+
+    Gtk::ToolButton *button = manage(new Gtk::ToolButton(
+      *manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 24))),
+      _("New")));
+    button->set_is_important();
+    button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
+    button->show_all();
+    toolbar->append(*button);
+
+    toolbar->show();
+    return toolbar;
+  }
+
+  void NoteRecentChanges::on_all_notes_clicked()
+  {
+    utils::EmbedableWidget *current = currently_embeded();
+    if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(current)) {
+      return;
+    }
+    if(current) {
+      background_embeded(*current);
+    }
+    foreground_embeded(m_search_notes_widget);
+  }
 
   void NoteRecentChanges::present_note(const Note::Ptr & note)
   {
@@ -275,6 +299,8 @@ namespace gnote {
       m_embed_box.pack_start(wid, true, true, 0);
       widget.foreground();
       wid.show();
+      m_all_notes_button->set_sensitive(
+        dynamic_cast<SearchNotesWidget*>(&widget) != &m_search_notes_widget);
     }
     catch(std::bad_cast&) {
     }
@@ -305,48 +331,6 @@ namespace gnote {
     }
 
     return false;
-  }
-
-  void NoteRecentChanges::on_embeded_widget_menu_item_toggled(Gtk::RadioMenuItem *item,
-                                                              utils::EmbedableWidget * widget)
-  {
-    if(std::find(m_embeded_widgets.begin(), m_embeded_widgets.end(), widget)
-       == m_embeded_widgets.end()) {
-      return;
-    }
-    if(item->get_active()) {
-      foreground_embeded(*widget);
-    }
-    else {
-      background_embeded(*widget);
-    }
-  }
-
-  void NoteRecentChanges::on_menu_show()
-  {
-    std::vector<Gtk::Widget*> items = m_menu->get_children();
-    for(std::vector<Gtk::Widget*>::iterator iter = items.begin(); iter != items.end(); ++iter) {
-      m_menu->remove(**iter);
-    }
-
-    utils::EmbedableWidget *current = currently_embeded();
-    Gtk::RadioMenuItem *active_item = NULL;
-    for(std::list<utils::EmbedableWidget*>::iterator iter = m_embeded_widgets.begin();
-        iter != m_embeded_widgets.end(); ++iter) {
-      Gtk::RadioMenuItem *item = manage(new Gtk::RadioMenuItem(m_tool_menu_group, (*iter)->get_name()));
-      item->signal_toggled().connect(
-        boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_embeded_widget_menu_item_toggled),
-                    item, *iter));
-      item->show();
-      m_menu->append(*item);
-      if(*iter == current) {
-        active_item = item;
-      }
-    }
-
-    if(active_item) {
-      active_item->set_active(true);
-    }
   }
 
   utils::EmbedableWidget *NoteRecentChanges::currently_embeded()

@@ -78,17 +78,16 @@ private:
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
   bool is_foreground(utils::EmbedableWidget &);
-  void on_embeded_widget_menu_item_toggled(Gtk::RadioMenuItem *, utils::EmbedableWidget *);
-  void on_menu_show();
   utils::EmbedableWidget *currently_embeded();
+  Gtk::Toolbar *make_toolbar();
+  void on_all_notes_clicked();
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::VBox           m_content_vbox;
   Gtk::VBox           m_embed_box;
+  Gtk::ToolButton    *m_all_notes_button;
   std::list<utils::EmbedableWidget*> m_embeded_widgets;
-  Gtk::Menu          *m_menu;
-  Gtk::RadioMenuItem::Group m_tool_menu_group;
   bool                m_mapped;
 };
 
