@@ -183,8 +183,10 @@ namespace gnote {
     utils::EmbedableWidget::foreground();
     if(parent) {
       parent->set_default_size(m_width, m_height);
-      if((parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0 && parent->get_visible()) {
-        parent->get_window()->resize(m_width, m_height);
+      Glib::RefPtr<Gdk::Window> parent_window = parent->get_window();
+      if(parent_window != 0 && (parent_window->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0
+         && parent->get_visible()) {
+        parent_window->resize(m_width, m_height);
       }
       if(m_x >= 0 && m_y >= 0 && !current_host->running()) {
         parent->move(m_x, m_y);
@@ -202,7 +204,8 @@ namespace gnote {
       return;
     }
     remove_accel_group(*parent);
-    if((parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0) {
+    if(parent->get_window() != 0
+       && (parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0) {
       int cur_x, cur_y, cur_width, cur_height;
       parent->get_position(cur_x, cur_y);
       parent->get_size(cur_width, cur_height);
