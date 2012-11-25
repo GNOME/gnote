@@ -81,6 +81,7 @@ private:
   utils::EmbedableWidget *currently_embeded();
   Gtk::Toolbar *make_toolbar();
   void on_all_notes_clicked();
+  void on_embeded_name_changed(const std::string & name);
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
@@ -89,6 +90,7 @@ private:
   Gtk::ToolButton    *m_all_notes_button;
   std::list<utils::EmbedableWidget*> m_embeded_widgets;
   bool                m_mapped;
+  sigc::connection    m_current_embeded_name_slot;
 };
 
 

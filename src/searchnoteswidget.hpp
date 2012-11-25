@@ -78,7 +78,7 @@ private:
   void on_notebook_selection_changed();
   bool on_notebooks_tree_button_pressed(GdkEventButton *);
   bool on_notebooks_key_pressed(GdkEventKey *);
-  notebooks::Notebook::Ptr get_selected_notebook();
+  notebooks::Notebook::Ptr get_selected_notebook() const;
   void update_results();
   void popup_context_menu_at_location(Gtk::Menu *, int, int);
   Note::List get_selected_notes();

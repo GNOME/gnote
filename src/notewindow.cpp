@@ -156,6 +156,12 @@ namespace gnote {
     return m_name;
   }
 
+  void NoteWindow::set_name(const std::string & name)
+  {
+    m_name = name;
+    signal_name_changed(m_name);
+  }
+
   void NoteWindow::embed(utils::EmbedableWidgetHost *h)
   {
     //remove from previous host, if any

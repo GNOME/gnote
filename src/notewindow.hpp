@@ -107,10 +107,7 @@ public:
   ~NoteWindow();
 
   virtual std::string get_name() const;
-  void set_name(const std::string & name)
-    {
-      m_name = name;
-    }
+  void set_name(const std::string & name);
   virtual void embed(utils::EmbedableWidgetHost *h);
   virtual void foreground();
   virtual void background();

@@ -301,6 +301,9 @@ namespace gnote {
       wid.show();
       m_all_notes_button->set_sensitive(
         dynamic_cast<SearchNotesWidget*>(&widget) != &m_search_notes_widget);
+      on_embeded_name_changed(widget.get_name());
+      m_current_embeded_name_slot = widget.signal_name_changed
+        .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_embeded_name_changed));
     }
     catch(std::bad_cast&) {
     }
@@ -312,6 +315,7 @@ namespace gnote {
       if(currently_embeded() != &widget) {
         return;
       }
+      m_current_embeded_name_slot.disconnect();
       Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
       widget.background();
       m_embed_box.remove(wid);
@@ -344,6 +348,16 @@ namespace gnote {
     bool res = NoteRecentChangesParent::on_map_event(evt);
     m_mapped = true;
     return res;
+  }
+
+  void NoteRecentChanges::on_embeded_name_changed(const std::string & name)
+  {
+    std::string title;
+    if(name != "") {
+      title = "[" + name + "] - ";
+    }
+    title += _("Notes");
+    set_title(title);
   }
 
 }

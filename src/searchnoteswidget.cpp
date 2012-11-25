@@ -187,7 +187,12 @@ SearchNotesWidget::~SearchNotesWidget()
 
 std::string SearchNotesWidget::get_name() const
 {
-  return "All Notes"; //TODO change accrding selected notebook
+  notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
+  if(!selected_notebook
+     || std::tr1::dynamic_pointer_cast<notebooks::AllNotesNotebook>(selected_notebook)) {
+    return "";
+  }
+  return selected_notebook->get_name();
 }
 
 void SearchNotesWidget::make_actions()
@@ -574,6 +579,7 @@ void SearchNotesWidget::on_notebook_selection_changed()
   }
 
   update_results();
+  signal_name_changed(get_name());
 }
 
 bool SearchNotesWidget::on_notebooks_tree_button_pressed(GdkEventButton *ev)
@@ -613,7 +619,7 @@ bool SearchNotesWidget::on_notebooks_key_pressed(GdkEventKey *ev)
   return false; // Let Escape be handled by the window.
 }
 
-notebooks::Notebook::Ptr SearchNotesWidget::get_selected_notebook()
+notebooks::Notebook::Ptr SearchNotesWidget::get_selected_notebook() const
 {
   Gtk::TreeIter iter;
 
