@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote.po.master.as\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-11-18 16:03+0000\n"
-"PO-Revision-Date: 2012-11-23 18:17+0530\n"
+"POT-Creation-Date: 2012-11-25 17:42+0000\n"
+"PO-Revision-Date: 2012-11-26 16:56+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: as_IN <kde-i18n-doc@kde.org>\n"
 "Language: as\n"
@@ -32,6 +32,10 @@ msgstr "টোকা লওক, আইডিয়া যোগ কৰক, পৰ�
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "টোকা-গ্ৰহণ ব্যৱস্থা"
+
+#: ../data/gnote.desktop.in.in.h:4
+msgid "note;idea;link;organize;"
+msgstr "টোকা;বুদ্ধি;সংযোগ;সংঘটন;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -610,7 +614,7 @@ msgstr "সকল টোকা অনুসন্ধান কৰক (_S)"
 msgid "Open the Search All Notes window"
 msgstr "সকল টোকা অনুসন্ধানৰ উইন্ডো খোলক"
 
-#: ../src/actionmanager.cpp:261 ../src/searchnoteswidget.cpp:1471
+#: ../src/actionmanager.cpp:261 ../src/searchnoteswidget.cpp:1477
 msgid "_New Note"
 msgstr "নতুন টোকা (_N)"
 
@@ -619,7 +623,6 @@ msgid "New _Window"
 msgstr "নতুন উইন্ডো (_W)"
 
 #: ../src/actionmanager.cpp:264
-#| msgid "_Contents"
 msgid "Help _Contents"
 msgstr "সহায় সমলসমূহ (_C)"
 
@@ -1144,7 +1147,7 @@ msgid "C_reate"
 msgstr "নিৰ্মাণ কৰক (_r)"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:76
-#: ../src/searchnoteswidget.cpp:359
+#: ../src/searchnoteswidget.cpp:364
 msgid "Notebooks"
 msgstr "টোকাবই"
 
@@ -1153,7 +1156,6 @@ msgid "Create a new note in a notebook"
 msgstr "টোকাবইয়ে নতুন টোকা লিখক"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:129
-#| msgid "New Note_book..."
 msgid "New Note_book"
 msgstr "নতুন টোকাবহি (_b)"
 
@@ -1174,7 +1176,7 @@ msgstr "%1% টোকাবইয়েৰ টেমপ্লেট"
 msgid "New Note"
 msgstr "নতুন টোকা"
 
-#: ../src/notebooks/notebook.cpp:220
+#: ../src/notebooks/notebook.cpp:220 ../src/recentchanges.cpp:92
 msgid "All Notes"
 msgstr "সকল টোকা"
 
@@ -1183,12 +1185,10 @@ msgid "Unfiled Notes"
 msgstr "ফাইল না কৰা টোকা"
 
 #: ../src/notebooks/notebook.cpp:278
-#| msgid "Unfiled Notes"
 msgid "Pinned Notes"
 msgstr "চিহ্নিত টোকাসমূহ"
 
 #: ../src/notebooks/notebook.cpp:306
-#| msgid "Gnote Notes"
 msgid "Active Notes"
 msgstr "সক্ৰিয় টোকাসমূহ"
 
@@ -1397,52 +1397,51 @@ msgstr "উন্নত (_v)"
 msgid "Find in This Note"
 msgstr "বৰ্তমান নোটেত অনুসন্ধান"
 
-#: ../src/notewindow.cpp:328
+#: ../src/notewindow.cpp:334
 msgid "_Link to New Note"
 msgstr "নতুন টোকাৰ সাথে লিঙ্ক কৰক (_L)"
 
-#: ../src/notewindow.cpp:336
+#: ../src/notewindow.cpp:342
 msgid "Te_xt"
 msgstr "টেক্সট (_x)"
 
-#: ../src/notewindow.cpp:344
+#: ../src/notewindow.cpp:350
 msgid "_Find in This Note"
 msgstr "বৰ্তমান নোটেত অনুসন্ধান (_F)"
 
-#: ../src/notewindow.cpp:376
-#| msgid "Print"
+#: ../src/notewindow.cpp:382
 msgid "Pin"
 msgstr "চিহ্নিত কৰক"
 
-#: ../src/notewindow.cpp:384
+#: ../src/notewindow.cpp:390
 msgid "Link"
 msgstr "লিঙ্ক"
 
-#: ../src/notewindow.cpp:390
+#: ../src/notewindow.cpp:396
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "নিৰ্বাচিত টেক্সট নতুন টোকাৰ সাথে লিঙ্ক কৰক (Ctrl-L)"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:402
 msgid "_Text"
 msgstr "টেক্সট (_T)"
 
-#: ../src/notewindow.cpp:402
+#: ../src/notewindow.cpp:408
 msgid "Set properties of text"
 msgstr "টেক্সটৰ বৈশিষ্ট্য নিৰ্ধাৰণ"
 
-#: ../src/notewindow.cpp:406
+#: ../src/notewindow.cpp:412
 msgid "T_ools"
 msgstr "সৰঞ্জাম (_o)"
 
-#: ../src/notewindow.cpp:411
+#: ../src/notewindow.cpp:417
 msgid "Use tools on this note"
 msgstr "বৰ্তমানে নোটে সৰঞ্জাম প্ৰয়োগ কৰা হ'ব"
 
-#: ../src/notewindow.cpp:421
+#: ../src/notewindow.cpp:427
 msgid "Delete this note"
 msgstr "এই টোকা মুছে ফেলুন"
 
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:457
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1451,95 +1450,95 @@ msgstr ""
 "আৰু "
 "টোকা মেনু বা সন্ধান উইন্ডোত দেখা নিদিয়ে।"
 
-#: ../src/notewindow.cpp:454
+#: ../src/notewindow.cpp:460
 msgid "Convert to regular note"
 msgstr "সাধাৰণ টোকালে ৰূপান্তৰ কৰক"
 
-#: ../src/notewindow.cpp:457
+#: ../src/notewindow.cpp:463
 msgid "Save Si_ze"
 msgstr "আকাৰ সংৰক্ষণ কৰক (_z)"
 
-#: ../src/notewindow.cpp:461
+#: ../src/notewindow.cpp:467
 msgid "Save Se_lection"
 msgstr "নিৰ্বাচন সংৰক্ষণ কৰক (_l)"
 
-#: ../src/notewindow.cpp:465
+#: ../src/notewindow.cpp:471
 msgid "Save _Title"
 msgstr "শীৰ্ষক সংৰক্ষণ কৰক (_T)"
 
-#: ../src/notewindow.cpp:553
+#: ../src/notewindow.cpp:559
 msgid "_Find..."
 msgstr "অনুসন্ধান...(_F)"
 
-#: ../src/notewindow.cpp:561
+#: ../src/notewindow.cpp:567
 msgid "Find _Next"
 msgstr "পৰবৰ্তী উপস্থিতি অনুসন্ধান (_N)"
 
-#: ../src/notewindow.cpp:571
+#: ../src/notewindow.cpp:577
 msgid "Find _Previous"
 msgstr "পূৰ্ববৰ্তী উপস্থিতি অনুসন্ধান কৰক (_P)"
 
-#: ../src/notewindow.cpp:641
+#: ../src/notewindow.cpp:647
 msgid "Cannot create note"
 msgstr "টোকা সৃষ্টি কৰতে বিফল"
 
-#: ../src/notewindow.cpp:694
+#: ../src/notewindow.cpp:700
 msgid "_Next"
 msgstr "পৰবৰ্তী (_N)"
 
-#: ../src/notewindow.cpp:695
+#: ../src/notewindow.cpp:701
 msgid "_Previous"
 msgstr "পূৰ্ববৰ্তী (_P)"
 
-#: ../src/notewindow.cpp:708
+#: ../src/notewindow.cpp:714
 msgid "_Find:"
 msgstr "অনুসন্ধান :(_F)"
 
-#: ../src/notewindow.cpp:1149
+#: ../src/notewindow.cpp:1155
 msgid "<b>_Bold</b>"
 msgstr "<b>গাঢ় (_B)</b>"
 
-#: ../src/notewindow.cpp:1150
+#: ../src/notewindow.cpp:1156
 msgid "<i>_Italic</i>"
 msgstr "<i>তেৰছা (_I)</i>"
 
-#: ../src/notewindow.cpp:1151
+#: ../src/notewindow.cpp:1157
 msgid "<s>_Strikeout</s>"
 msgstr "<s>মধ্যে ৰেখাঙ্কিত (_S)</s>"
 
-#: ../src/notewindow.cpp:1153
+#: ../src/notewindow.cpp:1159
 msgid "_Highlight"
 msgstr "উজ্জ্বলিত (_H)"
 
-#: ../src/notewindow.cpp:1155
+#: ../src/notewindow.cpp:1161
 msgid "_Normal"
 msgstr "স্বাভাবিক (_N)"
 
-#: ../src/notewindow.cpp:1157
+#: ../src/notewindow.cpp:1163
 msgid "Hu_ge"
 msgstr "বিশাল (_g)"
 
-#: ../src/notewindow.cpp:1159
+#: ../src/notewindow.cpp:1165
 msgid "_Large"
 msgstr "বড় (_L)"
 
-#: ../src/notewindow.cpp:1161
+#: ../src/notewindow.cpp:1167
 msgid "S_mall"
 msgstr "ছোট (_m)"
 
-#: ../src/notewindow.cpp:1163
+#: ../src/notewindow.cpp:1169
 msgid "Bullets"
 msgstr "বুলেটচিহ্ন"
 
-#: ../src/notewindow.cpp:1166
+#: ../src/notewindow.cpp:1172
 msgid "Increase Font Size"
 msgstr "ফন্টৰ আকাৰ বৃদ্ধি কৰক"
 
-#: ../src/notewindow.cpp:1167
+#: ../src/notewindow.cpp:1173
 msgid "Decrease Font Size"
 msgstr "ফন্টৰ আকাৰ কম কৰক"
 
-#: ../src/notewindow.cpp:1209
+#: ../src/notewindow.cpp:1215
 msgid "Font Size"
 msgstr "ফন্টৰ মাপ"
 
@@ -1794,36 +1793,37 @@ msgstr "লেখক বিষয়ে:"
 msgid "Copyright:"
 msgstr "সত্ত্বাধিকাৰ:"
 
-#: ../src/recentchanges.cpp:43 ../src/searchnoteswidget.cpp:1156
+#: ../src/recentchanges.cpp:44 ../src/recentchanges.cpp:359
+#: ../src/searchnoteswidget.cpp:1162
 msgid "Notes"
 msgstr "টোকা"
 
-#: ../src/recentchanges.cpp:69
-msgid "_Show"
-msgstr "দেখুৱাওক (_S)"
+#: ../src/recentchanges.cpp:100
+#| msgid "_New"
+msgid "New"
+msgstr "নতুন"
 
 #: ../src/searchnoteswidget.cpp:70
 msgid "_Search:"
 msgstr "অনুসন্ধান: (_S)"
 
-#: ../src/searchnoteswidget.cpp:195
-#| msgid "_Open..."
+#: ../src/searchnoteswidget.cpp:200
 msgid "_Open"
 msgstr "খোলক (_O)"
 
-#: ../src/searchnoteswidget.cpp:198
+#: ../src/searchnoteswidget.cpp:203
 msgid "Open In New _Window"
 msgstr "নতুন উইন্ডোত খোলক (_W)"
 
-#: ../src/searchnoteswidget.cpp:817
+#: ../src/searchnoteswidget.cpp:823
 msgid "Note"
 msgstr "টোকা"
 
-#: ../src/searchnoteswidget.cpp:839
+#: ../src/searchnoteswidget.cpp:845
 msgid "Last Changed"
 msgstr "সৰ্বশেষ পৰিবৰ্তন"
 
-#: ../src/searchnoteswidget.cpp:1177
+#: ../src/searchnoteswidget.cpp:1183
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1831,31 +1831,30 @@ msgstr ""
 "নিৰ্বাচিত বহিত কোনো ফলাফল পোৱা নগল।\n"
 "সকলো টোকাত সন্ধান কৰিবলে ইয়াত ক্লিক কৰক।"
 
-#: ../src/searchnoteswidget.cpp:1181
+#: ../src/searchnoteswidget.cpp:1187
 msgid "Click here to search across all notebooks"
 msgstr "সকলো বহিত সন্ধান কৰিবলে ইয়াত ক্লিক কৰক"
 
-#: ../src/searchnoteswidget.cpp:1205
+#: ../src/searchnoteswidget.cpp:1211
 msgid "Matches"
 msgstr "মিলেৰ সংখ্যা"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1254
+#: ../src/searchnoteswidget.cpp:1260
 msgid "Title match"
 msgstr "শীৰ্ষক মিল"
 
-#: ../src/searchnoteswidget.cpp:1258
+#: ../src/searchnoteswidget.cpp:1264
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1%-টি মিল"
 msgstr[1] "%1%-টি মিল"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1505
 msgid "_Open Template Note"
 msgstr "টোকাৰ টেমপ্লেট খোলক (_O)"
 
-#: ../src/searchnoteswidget.cpp:1507
-#| msgid "New Note_book..."
+#: ../src/searchnoteswidget.cpp:1513
 msgid "_New Notebook"
 msgstr "নতুন টোকাবহি (_N)"
 
@@ -2280,6 +2279,9 @@ msgstr "লিঙ্ক দ্বাৰা চিহ্নিত ঠিকান
 msgid "_Open Link"
 msgstr "লিঙ্ক কৰক (_O)"
 
+#~ msgid "_Show"
+#~ msgstr "দেখুৱাওক (_S)"
+
 #~ msgid "Enable startup notes"
 #~ msgstr "প্ৰাৰম্ভিক টোকা ব্যৱস্থা সক্ৰিয় কৰা হ'ব"
 
@@ -2292,9 +2294,6 @@ msgstr "লিঙ্ক কৰক (_O)"
 
 #~ msgid "_File"
 #~ msgstr "ফাইল (_F)"
-
-#~ msgid "_New"
-#~ msgstr "নতুন (_N)"
 
 #~ msgid "Open the selected note"
 #~ msgstr "নিৰ্বাচিত টোকা খোলক"
