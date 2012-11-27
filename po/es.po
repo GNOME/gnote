@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-11-18 16:03+0000\n"
-"PO-Revision-Date: 2012-11-19 13:38+0100\n"
+"POT-Creation-Date: 2012-11-25 17:42+0000\n"
+"PO-Revision-Date: 2012-11-27 17:47+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -32,6 +32,10 @@ msgstr "Tome notas, enlace ideas y manténgase organizado"
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "Anotador"
+
+#: ../data/gnote.desktop.in.in.h:4
+msgid "note;idea;link;organize;"
+msgstr "nota;idea;enlace;organizar;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -617,7 +621,7 @@ msgstr "_Buscar en todas las notas"
 msgid "Open the Search All Notes window"
 msgstr "Abrir la ventana «Buscar en todas las notas»"
 
-#: ../src/actionmanager.cpp:261 ../src/searchnoteswidget.cpp:1471
+#: ../src/actionmanager.cpp:261 ../src/searchnoteswidget.cpp:1477
 msgid "_New Note"
 msgstr "Nota _nueva"
 
@@ -1157,7 +1161,7 @@ msgid "C_reate"
 msgstr "C_rear"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:76
-#: ../src/searchnoteswidget.cpp:359
+#: ../src/searchnoteswidget.cpp:364
 msgid "Notebooks"
 msgstr "Cuadernos de notas"
 
@@ -1186,7 +1190,7 @@ msgstr "%1% plantilla de cuaderno de notas"
 msgid "New Note"
 msgstr "Nota nueva"
 
-#: ../src/notebooks/notebook.cpp:220
+#: ../src/notebooks/notebook.cpp:220 ../src/recentchanges.cpp:92
 msgid "All Notes"
 msgstr "Todas las notas"
 
@@ -1199,7 +1203,6 @@ msgid "Pinned Notes"
 msgstr "Notas pinchadas"
 
 #: ../src/notebooks/notebook.cpp:306
-#| msgid "Gnote Notes"
 msgid "Active Notes"
 msgstr "Activar notas"
 
@@ -1409,51 +1412,51 @@ msgstr "A_vanzado"
 msgid "Find in This Note"
 msgstr "Buscar en esta nota"
 
-#: ../src/notewindow.cpp:328
+#: ../src/notewindow.cpp:334
 msgid "_Link to New Note"
 msgstr "_Enlazar a una nota nueva"
 
-#: ../src/notewindow.cpp:336
+#: ../src/notewindow.cpp:342
 msgid "Te_xt"
 msgstr "Te_xto"
 
-#: ../src/notewindow.cpp:344
+#: ../src/notewindow.cpp:350
 msgid "_Find in This Note"
 msgstr "_Buscar en esta nota"
 
-#: ../src/notewindow.cpp:376
+#: ../src/notewindow.cpp:382
 msgid "Pin"
 msgstr "Pinchar"
 
-#: ../src/notewindow.cpp:384
+#: ../src/notewindow.cpp:390
 msgid "Link"
 msgstr "Enlace"
 
-#: ../src/notewindow.cpp:390
+#: ../src/notewindow.cpp:396
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Enlazar el texto seleccionado a una nota nueva (Ctrl-L)"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:402
 msgid "_Text"
 msgstr "_Texto"
 
-#: ../src/notewindow.cpp:402
+#: ../src/notewindow.cpp:408
 msgid "Set properties of text"
 msgstr "Establecer las propiedades del texto"
 
-#: ../src/notewindow.cpp:406
+#: ../src/notewindow.cpp:412
 msgid "T_ools"
 msgstr "_Herramientas"
 
-#: ../src/notewindow.cpp:411
+#: ../src/notewindow.cpp:417
 msgid "Use tools on this note"
 msgstr "Usar las herramientas en esta nota"
 
-#: ../src/notewindow.cpp:421
+#: ../src/notewindow.cpp:427
 msgid "Delete this note"
 msgstr "Borrar esta nota"
 
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:457
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1462,95 +1465,95 @@ msgstr ""
 "de las notas normales, y no se mostrará en el menú de notas ni en la ventana "
 "de búsqueda."
 
-#: ../src/notewindow.cpp:454
+#: ../src/notewindow.cpp:460
 msgid "Convert to regular note"
 msgstr "Convertir a nota normal"
 
-#: ../src/notewindow.cpp:457
+#: ../src/notewindow.cpp:463
 msgid "Save Si_ze"
 msgstr "Guardar ta_maño"
 
-#: ../src/notewindow.cpp:461
+#: ../src/notewindow.cpp:467
 msgid "Save Se_lection"
 msgstr "Guardar se_lección"
 
-#: ../src/notewindow.cpp:465
+#: ../src/notewindow.cpp:471
 msgid "Save _Title"
 msgstr "Guardar _título"
 
-#: ../src/notewindow.cpp:553
+#: ../src/notewindow.cpp:559
 msgid "_Find..."
 msgstr "_Buscar…"
 
-#: ../src/notewindow.cpp:561
+#: ../src/notewindow.cpp:567
 msgid "Find _Next"
 msgstr "Buscar _siguiente"
 
-#: ../src/notewindow.cpp:571
+#: ../src/notewindow.cpp:577
 msgid "Find _Previous"
 msgstr "Buscar _anterior"
 
-#: ../src/notewindow.cpp:641
+#: ../src/notewindow.cpp:647
 msgid "Cannot create note"
 msgstr "No se puede crear la nota"
 
-#: ../src/notewindow.cpp:694
+#: ../src/notewindow.cpp:700
 msgid "_Next"
 msgstr "_Siguiente"
 
-#: ../src/notewindow.cpp:695
+#: ../src/notewindow.cpp:701
 msgid "_Previous"
 msgstr "_Anterior"
 
-#: ../src/notewindow.cpp:708
+#: ../src/notewindow.cpp:714
 msgid "_Find:"
 msgstr "_Buscar:"
 
-#: ../src/notewindow.cpp:1149
+#: ../src/notewindow.cpp:1155
 msgid "<b>_Bold</b>"
 msgstr "<b>_Negrita</b>"
 
-#: ../src/notewindow.cpp:1150
+#: ../src/notewindow.cpp:1156
 msgid "<i>_Italic</i>"
 msgstr "<i>_Cursiva</i>"
 
-#: ../src/notewindow.cpp:1151
+#: ../src/notewindow.cpp:1157
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Tachado</s>"
 
-#: ../src/notewindow.cpp:1153
+#: ../src/notewindow.cpp:1159
 msgid "_Highlight"
 msgstr "_Resaltado"
 
-#: ../src/notewindow.cpp:1155
+#: ../src/notewindow.cpp:1161
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:1157
+#: ../src/notewindow.cpp:1163
 msgid "Hu_ge"
 msgstr "_Enorme"
 
-#: ../src/notewindow.cpp:1159
+#: ../src/notewindow.cpp:1165
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:1161
+#: ../src/notewindow.cpp:1167
 msgid "S_mall"
 msgstr "_Pequeña"
 
-#: ../src/notewindow.cpp:1163
+#: ../src/notewindow.cpp:1169
 msgid "Bullets"
 msgstr "Topos"
 
-#: ../src/notewindow.cpp:1166
+#: ../src/notewindow.cpp:1172
 msgid "Increase Font Size"
 msgstr "Aumentar tamaño de la tipografía"
 
-#: ../src/notewindow.cpp:1167
+#: ../src/notewindow.cpp:1173
 msgid "Decrease Font Size"
 msgstr "Reducir tamaño de la tipografía"
 
-#: ../src/notewindow.cpp:1209
+#: ../src/notewindow.cpp:1215
 msgid "Font Size"
 msgstr "Tamaño de la tipografía"
 
@@ -1800,35 +1803,37 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:43 ../src/searchnoteswidget.cpp:1156
+#: ../src/recentchanges.cpp:44 ../src/recentchanges.cpp:359
+#: ../src/searchnoteswidget.cpp:1162
 msgid "Notes"
 msgstr "Notas"
 
-#: ../src/recentchanges.cpp:69
-msgid "_Show"
-msgstr "Mo_strar"
+#: ../src/recentchanges.cpp:100
+#| msgid "_New"
+msgid "New"
+msgstr "_Nueva"
 
 #: ../src/searchnoteswidget.cpp:70
 msgid "_Search:"
 msgstr "_Buscar:"
 
-#: ../src/searchnoteswidget.cpp:195
+#: ../src/searchnoteswidget.cpp:200
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../src/searchnoteswidget.cpp:198
+#: ../src/searchnoteswidget.cpp:203
 msgid "Open In New _Window"
 msgstr "Abrir en una _ventana nueva"
 
-#: ../src/searchnoteswidget.cpp:817
+#: ../src/searchnoteswidget.cpp:823
 msgid "Note"
 msgstr "Nota"
 
-#: ../src/searchnoteswidget.cpp:839
+#: ../src/searchnoteswidget.cpp:845
 msgid "Last Changed"
 msgstr "Último cambio"
 
-#: ../src/searchnoteswidget.cpp:1177
+#: ../src/searchnoteswidget.cpp:1183
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1836,30 +1841,30 @@ msgstr ""
 "No se han encontrado resultados en el cuaderno de notas seleccionado.\n"
 "Pulse aquí para buscar en todas las notas."
 
-#: ../src/searchnoteswidget.cpp:1181
+#: ../src/searchnoteswidget.cpp:1187
 msgid "Click here to search across all notebooks"
 msgstr "Pulse aquí para buscar en todos los cuadernos de notas"
 
-#: ../src/searchnoteswidget.cpp:1205
+#: ../src/searchnoteswidget.cpp:1211
 msgid "Matches"
 msgstr "Coincidencias"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1254
+#: ../src/searchnoteswidget.cpp:1260
 msgid "Title match"
 msgstr "Coincidir con el título"
 
-#: ../src/searchnoteswidget.cpp:1258
+#: ../src/searchnoteswidget.cpp:1264
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% coincidencia"
 msgstr[1] "%1% coincidencias"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1505
 msgid "_Open Template Note"
 msgstr "_Abrir la plantilla de nota"
 
-#: ../src/searchnoteswidget.cpp:1507
+#: ../src/searchnoteswidget.cpp:1513
 msgid "_New Notebook"
 msgstr "Cua_derno de notas nuevo"
 
@@ -2280,6 +2285,9 @@ msgstr "_Copiar dirección del enlace"
 msgid "_Open Link"
 msgstr "_Abrir enlace"
 
+#~ msgid "_Show"
+#~ msgstr "Mo_strar"
+
 #~ msgid "Enable startup notes"
 #~ msgstr "Activar notas al inicio"
 
@@ -2292,9 +2300,6 @@ msgstr "_Abrir enlace"
 
 #~ msgid "_File"
 #~ msgstr "_Archivo"
-
-#~ msgid "_New"
-#~ msgstr "_Nuevo"
 
 #~ msgid "_Open..."
 #~ msgstr "_Abrir…"
