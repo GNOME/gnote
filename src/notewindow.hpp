@@ -100,7 +100,7 @@ private:
 
 class NoteWindow 
   : public Gtk::VBox
-  , public utils::EmbedableWidget
+  , public utils::EmbeddableWidget
 {
 public:
   NoteWindow(Note &);
@@ -108,7 +108,7 @@ public:
 
   virtual std::string get_name() const;
   void set_name(const std::string & name);
-  virtual void embed(utils::EmbedableWidgetHost *h);
+  virtual void embed(utils::EmbeddableWidgetHost *h);
   virtual void foreground();
   virtual void background();
 

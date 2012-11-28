@@ -444,7 +444,7 @@ void SearchNotesWidget::save_position()
   int width;
   int height;
 
-  utils::EmbedableWidgetHost *current_host = host();
+  utils::EmbeddableWidgetHost *current_host = host();
   if(!current_host || !current_host->running()) {
     return;
   }
@@ -1551,7 +1551,7 @@ void SearchNotesWidget::on_delete_notebook()
 
 void SearchNotesWidget::foreground()
 {
-  utils::EmbedableWidget::foreground();
+  utils::EmbeddableWidget::foreground();
   restore_position();
   Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
   if(win) {
@@ -1561,7 +1561,7 @@ void SearchNotesWidget::foreground()
 
 void SearchNotesWidget::background()
 {
-  utils::EmbedableWidget::background();
+  utils::EmbeddableWidget::background();
   save_position();
   Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
   if(win) {

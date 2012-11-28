@@ -278,7 +278,7 @@ namespace gnote {
     , m_save_needed(false)
     , m_is_deleting(false)
     , m_enabled(true)
-    , m_note_window_embeded(false)
+    , m_note_window_embedded(false)
     , m_focus_widget(NULL)
     , m_manager(_manager)
     , m_window(NULL)
@@ -1008,14 +1008,14 @@ namespace gnote {
         m_window->set_position(m_data.data().x(), m_data.data().y());
       }
 
-      m_window->signal_embeded.connect(sigc::mem_fun(*this, &Note::on_note_window_embeded));
+      m_window->signal_embedded.connect(sigc::mem_fun(*this, &Note::on_note_window_embedded));
     }
     return m_window;
   }
 
-  void Note::on_note_window_embeded()
+  void Note::on_note_window_embedded()
   {
-    if(!m_note_window_embeded) {
+    if(!m_note_window_embedded) {
       // This is here because emiting inside
       // OnRealized causes segfaults.
       m_signal_opened(*this);
@@ -1023,7 +1023,7 @@ namespace gnote {
       // Add any child widgets if any exist now that
       // the window is showing.
       process_child_widget_queue();
-      m_note_window_embeded = true;
+      m_note_window_embedded = true;
     }
 
     notebooks::NotebookManager::instance().active_notes_notebook()->add_note(shared_from_this());

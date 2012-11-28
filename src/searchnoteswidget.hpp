@@ -41,7 +41,7 @@ namespace gnote {
 
 class SearchNotesWidget
   : public Gtk::VBox
-  , public utils::EmbedableWidget
+  , public utils::EmbeddableWidget
 {
 public:
   SearchNotesWidget(NoteManager & m);

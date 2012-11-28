@@ -162,25 +162,25 @@ namespace gnote {
     signal_name_changed(m_name);
   }
 
-  void NoteWindow::embed(utils::EmbedableWidgetHost *h)
+  void NoteWindow::embed(utils::EmbeddableWidgetHost *h)
   {
     //remove from previous host, if any
     if(host()) {
       host()->unembed_widget(*this);
     }
-    utils::EmbedableWidget::embed(h);
+    utils::EmbeddableWidget::embed(h);
   }
 
   void NoteWindow::foreground()
   {
     //addins may add accelarators, so accel group must be there
-    utils::EmbedableWidgetHost *current_host = host();
+    utils::EmbeddableWidgetHost *current_host = host();
     Gtk::Window *parent = dynamic_cast<Gtk::Window*>(current_host);
     if(parent) {
       add_accel_group(*parent);
     }
 
-    utils::EmbedableWidget::foreground();
+    utils::EmbeddableWidget::foreground();
     if(parent) {
       parent->set_default_size(m_width, m_height);
       Glib::RefPtr<Gdk::Window> parent_window = parent->get_window();
@@ -198,7 +198,7 @@ namespace gnote {
 
   void NoteWindow::background()
   {
-    utils::EmbedableWidget::background();
+    utils::EmbeddableWidget::background();
     Gtk::Window *parent = dynamic_cast<Gtk::Window*>(host());
     if(!parent) {
       return;

@@ -80,8 +80,8 @@ namespace gnote {
 
   NoteRecentChanges::~NoteRecentChanges()
   {
-    while(m_embeded_widgets.size()) {
-      unembed_widget(**m_embeded_widgets.begin());
+    while(m_embedded_widgets.size()) {
+      unembed_widget(**m_embedded_widgets.begin());
     }
   }
 
@@ -109,14 +109,14 @@ namespace gnote {
 
   void NoteRecentChanges::on_all_notes_clicked()
   {
-    utils::EmbedableWidget *current = currently_embeded();
+    utils::EmbeddableWidget *current = currently_embedded();
     if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(current)) {
       return;
     }
     if(current) {
-      background_embeded(*current);
+      background_embedded(*current);
     }
-    foreground_embeded(m_search_notes_widget);
+    foreground_embedded(m_search_notes_widget);
   }
 
   void NoteRecentChanges::present_note(const Note::Ptr & note)
@@ -193,9 +193,9 @@ namespace gnote {
     std::vector<Gtk::Widget*> current = m_embed_box.get_children();
     for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
         iter != current.end(); ++iter) {
-      utils::EmbedableWidget *widget = dynamic_cast<utils::EmbedableWidget*>(*iter);
+      utils::EmbeddableWidget *widget = dynamic_cast<utils::EmbeddableWidget*>(*iter);
       if(widget) {
-        background_embeded(*widget);
+        background_embedded(*widget);
       }
     }
 
@@ -214,15 +214,15 @@ namespace gnote {
     switch (ev->keyval) {
     case GDK_KEY_Escape:
       // Allow Escape to close the window
-      if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embeded())) {
+      if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embedded())) {
         on_close_window();
       }
       else {
-        utils::EmbedableWidget *current_item = currently_embeded();
+        utils::EmbeddableWidget *current_item = currently_embedded();
         if(current_item) {
-          background_embeded(*current_item);
+          background_embedded(*current_item);
         }
-        foreground_embeded(m_search_notes_widget);
+        foreground_embedded(m_search_notes_widget);
       }
       break;
     default:
@@ -237,11 +237,11 @@ namespace gnote {
     // Select "All Notes" in the notebooks list
     m_search_notes_widget.select_all_notes_notebook();
 
-    if(m_embed_box.get_children().size() == 0 && m_embeded_widgets.size() > 0) {
-      foreground_embeded(**m_embeded_widgets.rbegin());
+    if(m_embed_box.get_children().size() == 0 && m_embedded_widgets.size() > 0) {
+      foreground_embedded(**m_embedded_widgets.rbegin());
     }
-    std::vector<Gtk::Widget*> embeded = m_embed_box.get_children();
-    if(embeded.size() == 1 && embeded.front() == &m_search_notes_widget) {
+    std::vector<Gtk::Widget*> embedded = m_embed_box.get_children();
+    if(embedded.size() == 1 && embedded.front() == &m_search_notes_widget) {
       m_search_notes_widget.focus_search_entry();
     }
     NoteRecentChangesParent::on_show();
@@ -249,39 +249,39 @@ namespace gnote {
 
   void NoteRecentChanges::set_search_text(const std::string & value)
   {
-    //TODO: handle non-search embeded widgets
+    //TODO: handle non-search embedded widgets
     m_search_notes_widget.set_search_text(value);
   }
 
-  void NoteRecentChanges::embed_widget(utils::EmbedableWidget & widget)
+  void NoteRecentChanges::embed_widget(utils::EmbeddableWidget & widget)
   {
-    if(std::find(m_embeded_widgets.begin(), m_embeded_widgets.end(), &widget) == m_embeded_widgets.end()) {
+    if(std::find(m_embedded_widgets.begin(), m_embedded_widgets.end(), &widget) == m_embedded_widgets.end()) {
       widget.embed(this);
-      m_embeded_widgets.push_back(&widget);
+      m_embedded_widgets.push_back(&widget);
     }
-    utils::EmbedableWidget *current = currently_embeded();
+    utils::EmbeddableWidget *current = currently_embedded();
     if(current && current != &widget) {
-      background_embeded(*current);
+      background_embedded(*current);
     }
-    foreground_embeded(widget);
+    foreground_embedded(widget);
   }
 
-  void NoteRecentChanges::unembed_widget(utils::EmbedableWidget & widget)
+  void NoteRecentChanges::unembed_widget(utils::EmbeddableWidget & widget)
   {
     bool show_other = false;
-    std::list<utils::EmbedableWidget*>::iterator iter = std::find(
-      m_embeded_widgets.begin(), m_embeded_widgets.end(), &widget);
-    if(iter != m_embeded_widgets.end()) {
+    std::list<utils::EmbeddableWidget*>::iterator iter = std::find(
+      m_embedded_widgets.begin(), m_embedded_widgets.end(), &widget);
+    if(iter != m_embedded_widgets.end()) {
       if(is_foreground(**iter)) {
-        background_embeded(widget);
+        background_embedded(widget);
         show_other = true;
       }
-      m_embeded_widgets.erase(iter);
+      m_embedded_widgets.erase(iter);
       widget.unembed();
     }
     if(show_other) {
-      if(m_embeded_widgets.size()) {
-	foreground_embeded(**m_embeded_widgets.rbegin());
+      if(m_embedded_widgets.size()) {
+	foreground_embedded(**m_embedded_widgets.rbegin());
       }
       else if(get_visible()) {
         on_close_window();
@@ -289,10 +289,10 @@ namespace gnote {
     }
   }
 
-  void NoteRecentChanges::foreground_embeded(utils::EmbedableWidget & widget)
+  void NoteRecentChanges::foreground_embedded(utils::EmbeddableWidget & widget)
   {
     try {
-      if(currently_embeded() == &widget) {
+      if(currently_embedded() == &widget) {
         return;
       }
       Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
@@ -301,21 +301,21 @@ namespace gnote {
       wid.show();
       m_all_notes_button->set_sensitive(
         dynamic_cast<SearchNotesWidget*>(&widget) != &m_search_notes_widget);
-      on_embeded_name_changed(widget.get_name());
-      m_current_embeded_name_slot = widget.signal_name_changed
-        .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_embeded_name_changed));
+      on_embedded_name_changed(widget.get_name());
+      m_current_embedded_name_slot = widget.signal_name_changed
+        .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_embedded_name_changed));
     }
     catch(std::bad_cast&) {
     }
   }
 
-  void NoteRecentChanges::background_embeded(utils::EmbedableWidget & widget)
+  void NoteRecentChanges::background_embedded(utils::EmbeddableWidget & widget)
   {
     try {
-      if(currently_embeded() != &widget) {
+      if(currently_embedded() != &widget) {
         return;
       }
-      m_current_embeded_name_slot.disconnect();
+      m_current_embedded_name_slot.disconnect();
       Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
       widget.background();
       m_embed_box.remove(wid);
@@ -324,12 +324,12 @@ namespace gnote {
     }
   }
 
-  bool NoteRecentChanges::is_foreground(utils::EmbedableWidget & widget)
+  bool NoteRecentChanges::is_foreground(utils::EmbeddableWidget & widget)
   {
     std::vector<Gtk::Widget*> current = m_embed_box.get_children();
     for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
         iter != current.end(); ++iter) {
-      if(dynamic_cast<utils::EmbedableWidget*>(*iter) == &widget) {
+      if(dynamic_cast<utils::EmbeddableWidget*>(*iter) == &widget) {
         return true;
       }
     }
@@ -337,10 +337,10 @@ namespace gnote {
     return false;
   }
 
-  utils::EmbedableWidget *NoteRecentChanges::currently_embeded()
+  utils::EmbeddableWidget *NoteRecentChanges::currently_embedded()
   {
     std::vector<Gtk::Widget*> children = m_embed_box.get_children();
-    return children.size() ? dynamic_cast<utils::EmbedableWidget*>(children[0]) : NULL;
+    return children.size() ? dynamic_cast<utils::EmbeddableWidget*>(children[0]) : NULL;
   }
 
   bool NoteRecentChanges::on_map_event(GdkEventAny *evt)
@@ -350,7 +350,7 @@ namespace gnote {
     return res;
   }
 
-  void NoteRecentChanges::on_embeded_name_changed(const std::string & name)
+  void NoteRecentChanges::on_embedded_name_changed(const std::string & name)
   {
     std::string title;
     if(name != "") {

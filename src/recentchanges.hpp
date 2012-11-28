@@ -41,7 +41,7 @@ typedef utils::ForcedPresentWindow NoteRecentChangesParent;
 class NoteRecentChanges
   : public NoteRecentChangesParent
   , public std::tr1::enable_shared_from_this<NoteRecentChanges>
-  , public utils::EmbedableWidgetHost
+  , public utils::EmbeddableWidgetHost
 {
 public:
   typedef std::tr1::shared_ptr<NoteRecentChanges> Ptr;
@@ -58,10 +58,10 @@ public:
   void present_note(const Note::Ptr & note);
   void new_note();
 
-  virtual void embed_widget(utils::EmbedableWidget &);
-  virtual void unembed_widget(utils::EmbedableWidget &);
-  virtual void foreground_embeded(utils::EmbedableWidget &);
-  virtual void background_embeded(utils::EmbedableWidget &);
+  virtual void embed_widget(utils::EmbeddableWidget &);
+  virtual void unembed_widget(utils::EmbeddableWidget &);
+  virtual void foreground_embedded(utils::EmbeddableWidget &);
+  virtual void background_embedded(utils::EmbeddableWidget &);
   virtual bool running()
     {
       return m_mapped;
@@ -77,20 +77,20 @@ private:
   void on_close_window();
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
-  bool is_foreground(utils::EmbedableWidget &);
-  utils::EmbedableWidget *currently_embeded();
+  bool is_foreground(utils::EmbeddableWidget &);
+  utils::EmbeddableWidget *currently_embedded();
   Gtk::Toolbar *make_toolbar();
   void on_all_notes_clicked();
-  void on_embeded_name_changed(const std::string & name);
+  void on_embedded_name_changed(const std::string & name);
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::VBox           m_content_vbox;
   Gtk::VBox           m_embed_box;
   Gtk::ToolButton    *m_all_notes_button;
-  std::list<utils::EmbedableWidget*> m_embeded_widgets;
+  std::list<utils::EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
-  sigc::connection    m_current_embeded_name_slot;
+  sigc::connection    m_current_embedded_name_slot;
 };
 
 

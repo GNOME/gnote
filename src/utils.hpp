@@ -240,31 +240,31 @@ namespace gnote {
       void release_button();        
     };
 
-    class EmbedableWidget;
-    class EmbedableWidgetHost
+    class EmbeddableWidget;
+    class EmbeddableWidgetHost
     {
     public:
-      virtual void embed_widget(EmbedableWidget &) = 0;
-      virtual void unembed_widget(EmbedableWidget &) = 0;
-      virtual void foreground_embeded(EmbedableWidget &) = 0;
-      virtual void background_embeded(EmbedableWidget &) = 0;
+      virtual void embed_widget(EmbeddableWidget &) = 0;
+      virtual void unembed_widget(EmbeddableWidget &) = 0;
+      virtual void foreground_embedded(EmbeddableWidget &) = 0;
+      virtual void background_embedded(EmbeddableWidget &) = 0;
       virtual bool running() = 0;
     };
 
-    class EmbedableWidget
+    class EmbeddableWidget
     {
     public:
-      EmbedableWidget() : m_host(NULL) {}
+      EmbeddableWidget() : m_host(NULL) {}
       virtual std::string get_name() const = 0;
-      virtual void embed(EmbedableWidgetHost *h)
+      virtual void embed(EmbeddableWidgetHost *h)
         {
           m_host = h;
-          signal_embeded();
+          signal_embedded();
         }
       virtual void unembed()
         {
           m_host = NULL;
-          signal_unembeded();
+          signal_unembedded();
         }
       virtual void foreground()
         {
@@ -274,18 +274,18 @@ namespace gnote {
         {
           signal_backgrounded();
         }
-      EmbedableWidgetHost *host() const
+      EmbeddableWidgetHost *host() const
         {
           return m_host;
         }
 
       sigc::signal<void, const std::string &> signal_name_changed;
-      sigc::signal<void> signal_embeded;
-      sigc::signal<void> signal_unembeded;
+      sigc::signal<void> signal_embedded;
+      sigc::signal<void> signal_unembedded;
       sigc::signal<void> signal_foregrounded;
       sigc::signal<void> signal_backgrounded;
     private:
-      EmbedableWidgetHost *m_host;
+      EmbeddableWidgetHost *m_host;
     };
 
 
