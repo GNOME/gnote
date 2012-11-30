@@ -502,7 +502,9 @@ namespace gnote {
       rc->new_note();
     }
     else {
-      get_main_window()->new_note();
+      NoteRecentChanges::Ptr recent_changes = get_main_window();
+      recent_changes->new_note();
+      recent_changes->present();
     }
   }
 
