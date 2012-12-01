@@ -429,7 +429,9 @@ namespace gnote {
 
   void Gnote::open_search_all()
   {
-    get_main_window()->present();
+    NoteRecentChanges *main_window = get_main_window();
+    main_window->present_search();
+    main_window->present();
   }
 
   void Gnote::open_note_sync_window(const Glib::VariantBase&)

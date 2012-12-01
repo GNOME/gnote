@@ -50,6 +50,7 @@ public:
   void set_search_text(const std::string & value);
   void present_note(const Note::Ptr & note);
   void new_note();
+  void present_search();
 
   virtual void embed_widget(utils::EmbeddableWidget &);
   virtual void unembed_widget(utils::EmbeddableWidget &);
@@ -72,7 +73,6 @@ private:
   bool is_foreground(utils::EmbeddableWidget &);
   utils::EmbeddableWidget *currently_embedded();
   Gtk::Toolbar *make_toolbar();
-  void on_all_notes_clicked();
   void on_embedded_name_changed(const std::string & name);
 
   NoteManager        &m_note_manager;

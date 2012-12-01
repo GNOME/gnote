@@ -91,7 +91,7 @@ namespace gnote {
     m_all_notes_button = manage(new Gtk::ToolButton(
       *manage(new Gtk::Image(Gtk::Stock::FIND, Gtk::IconSize(24))), _("All Notes")));
     m_all_notes_button->set_is_important();
-    m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_all_notes_clicked));
+    m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::present_search));
     m_all_notes_button->show_all();
     toolbar->append(*m_all_notes_button);
 
@@ -107,7 +107,7 @@ namespace gnote {
     return toolbar;
   }
 
-  void NoteRecentChanges::on_all_notes_clicked()
+  void NoteRecentChanges::present_search()
   {
     utils::EmbeddableWidget *current = currently_embedded();
     if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(current)) {
