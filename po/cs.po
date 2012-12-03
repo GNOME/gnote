@@ -16,15 +16,16 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-11-23 12:47+0000\n"
-"PO-Revision-Date: 2012-11-23 11:28+0200\n"
+"POT-Creation-Date: 2012-11-28 20:45+0000\n"
+"PO-Revision-Date: 2012-12-03 09:26+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
-"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Gtranslator 2.91.5\n"
 
 #: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
@@ -37,6 +38,10 @@ msgstr "Pomůže vám vyznat se ve vašich poznámkách"
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "Poznámky"
+
+#: ../data/gnote.desktop.in.in.h:4
+msgid "note;idea;link;organize;"
+msgstr "poznámka;nápad;myšlenka;odkaz;uspořádat;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -609,7 +614,7 @@ msgstr "_Hledat ve všech poznámkách"
 msgid "Open the Search All Notes window"
 msgstr "Otevřít okno Hledat ve všech poznámkách"
 
-#: ../src/actionmanager.cpp:261 ../src/searchnoteswidget.cpp:1471
+#: ../src/actionmanager.cpp:261 ../src/searchnoteswidget.cpp:1477
 msgid "_New Note"
 msgstr "_Nová poznámka"
 
@@ -1040,11 +1045,12 @@ msgstr "a původní autoři aplikace Tomboy."
 #: ../src/gnote.cpp:342
 msgid "translator-credits"
 msgstr ""
-"Miloslav Trmač <mitr@volny.cz>\n"
-"Jakub Friedl <jfriedl@suse.cz>\n"
-"Pavel Šefránek <ps@pjoul.cz>\n"
-"Petr Kovář <pknbe@volny.cz>\n"
-"Lucas Lommer <llommer@svn.gnome.org>"
+"Miloslav Trmač <mitr@volny.cz>, 2005, 2006\n"
+"Jakub Friedl <jfriedl@suse.cz>, 2006, 2007\n"
+"Pavel Šefránek <ps@pjoul.cz>, 2008, 2009\n"
+"Petr Kovář <pknbe@volny.cz>, 2008, 2009\n"
+"Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009\n"
+"Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012"
 
 #: ../src/gnote.cpp:351
 msgid ""
@@ -1150,7 +1156,7 @@ msgid "C_reate"
 msgstr "_Vytvořit"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:76
-#: ../src/searchnoteswidget.cpp:359
+#: ../src/searchnoteswidget.cpp:364
 msgid "Notebooks"
 msgstr "Sešity"
 
@@ -1179,7 +1185,7 @@ msgstr "Šablona sešitu %1%"
 msgid "New Note"
 msgstr "Nová poznámka"
 
-#: ../src/notebooks/notebook.cpp:220
+#: ../src/notebooks/notebook.cpp:220 ../src/recentchanges.cpp:92
 msgid "All Notes"
 msgstr "Všechny poznámky"
 
@@ -1399,51 +1405,51 @@ msgstr "P_okročilé"
 msgid "Find in This Note"
 msgstr "Najít v této poznámce"
 
-#: ../src/notewindow.cpp:328
+#: ../src/notewindow.cpp:334
 msgid "_Link to New Note"
 msgstr "_Odkaz na novou poznámku"
 
-#: ../src/notewindow.cpp:336
+#: ../src/notewindow.cpp:342
 msgid "Te_xt"
 msgstr "_Text"
 
-#: ../src/notewindow.cpp:344
+#: ../src/notewindow.cpp:350
 msgid "_Find in This Note"
 msgstr "_Najít v této poznámce"
 
-#: ../src/notewindow.cpp:376
+#: ../src/notewindow.cpp:382
 msgid "Pin"
 msgstr "Připínáček"
 
-#: ../src/notewindow.cpp:384
+#: ../src/notewindow.cpp:390
 msgid "Link"
 msgstr "Odkaz"
 
-#: ../src/notewindow.cpp:390
+#: ../src/notewindow.cpp:396
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Propojit vybraný text s novou poznámkou (Ctrl-L)"
 
-#: ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:402
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/notewindow.cpp:402
+#: ../src/notewindow.cpp:408
 msgid "Set properties of text"
 msgstr "Nastavit vlastnosti textu"
 
-#: ../src/notewindow.cpp:406
+#: ../src/notewindow.cpp:412
 msgid "T_ools"
 msgstr "_Nástroje"
 
-#: ../src/notewindow.cpp:411
+#: ../src/notewindow.cpp:417
 msgid "Use tools on this note"
 msgstr "Použít na tuto poznámku nástroje"
 
-#: ../src/notewindow.cpp:421
+#: ../src/notewindow.cpp:427
 msgid "Delete this note"
 msgstr "Odstranit tuto poznámku"
 
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:457
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1451,95 +1457,95 @@ msgstr ""
 "Tato poznámka slouží jako šablona. Je výchozím vzorem obsahu běžné poznámky "
 "a nezobrazuje se v nabídce poznámek a vyhledávacím okně."
 
-#: ../src/notewindow.cpp:454
+#: ../src/notewindow.cpp:460
 msgid "Convert to regular note"
 msgstr "Převést na běžnou poznámku"
 
-#: ../src/notewindow.cpp:457
+#: ../src/notewindow.cpp:463
 msgid "Save Si_ze"
 msgstr "Uložit veliko_st"
 
-#: ../src/notewindow.cpp:461
+#: ../src/notewindow.cpp:467
 msgid "Save Se_lection"
 msgstr "U_ložit výběr"
 
-#: ../src/notewindow.cpp:465
+#: ../src/notewindow.cpp:471
 msgid "Save _Title"
 msgstr "Uloži_t název"
 
-#: ../src/notewindow.cpp:553
+#: ../src/notewindow.cpp:559
 msgid "_Find..."
 msgstr "_Najít…"
 
-#: ../src/notewindow.cpp:561
+#: ../src/notewindow.cpp:567
 msgid "Find _Next"
 msgstr "Hledat _následující"
 
-#: ../src/notewindow.cpp:571
+#: ../src/notewindow.cpp:577
 msgid "Find _Previous"
 msgstr "Hledat _předchozí"
 
-#: ../src/notewindow.cpp:641
+#: ../src/notewindow.cpp:647
 msgid "Cannot create note"
 msgstr "Nelze vytvořit poznámku"
 
-#: ../src/notewindow.cpp:694
+#: ../src/notewindow.cpp:700
 msgid "_Next"
 msgstr "_Následující"
 
-#: ../src/notewindow.cpp:695
+#: ../src/notewindow.cpp:701
 msgid "_Previous"
 msgstr "_Předchozí"
 
-#: ../src/notewindow.cpp:708
+#: ../src/notewindow.cpp:714
 msgid "_Find:"
 msgstr "_Hledat:"
 
-#: ../src/notewindow.cpp:1149
+#: ../src/notewindow.cpp:1155
 msgid "<b>_Bold</b>"
 msgstr "<b>_Tučné</b>"
 
-#: ../src/notewindow.cpp:1150
+#: ../src/notewindow.cpp:1156
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kurzíva</i>"
 
-#: ../src/notewindow.cpp:1151
+#: ../src/notewindow.cpp:1157
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Přeškrtnuté<s>"
 
-#: ../src/notewindow.cpp:1153
+#: ../src/notewindow.cpp:1159
 msgid "_Highlight"
 msgstr "_Zvýraznění"
 
-#: ../src/notewindow.cpp:1155
+#: ../src/notewindow.cpp:1161
 msgid "_Normal"
 msgstr "_Normální"
 
-#: ../src/notewindow.cpp:1157
+#: ../src/notewindow.cpp:1163
 msgid "Hu_ge"
 msgstr "_Obrovské"
 
-#: ../src/notewindow.cpp:1159
+#: ../src/notewindow.cpp:1165
 msgid "_Large"
 msgstr "_Velké"
 
-#: ../src/notewindow.cpp:1161
+#: ../src/notewindow.cpp:1167
 msgid "S_mall"
 msgstr "_Malé"
 
-#: ../src/notewindow.cpp:1163
+#: ../src/notewindow.cpp:1169
 msgid "Bullets"
 msgstr "Odrážky"
 
-#: ../src/notewindow.cpp:1166
+#: ../src/notewindow.cpp:1172
 msgid "Increase Font Size"
 msgstr "Zvětšit velikost písma"
 
-#: ../src/notewindow.cpp:1167
+#: ../src/notewindow.cpp:1173
 msgid "Decrease Font Size"
 msgstr "Zmenšit velikost písma"
 
-#: ../src/notewindow.cpp:1209
+#: ../src/notewindow.cpp:1215
 msgid "Font Size"
 msgstr "Velikost písma"
 
@@ -1787,35 +1793,36 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:43 ../src/searchnoteswidget.cpp:1156
+#: ../src/recentchanges.cpp:44 ../src/recentchanges.cpp:359
+#: ../src/searchnoteswidget.cpp:1162
 msgid "Notes"
 msgstr "Poznámky"
 
-#: ../src/recentchanges.cpp:69
-msgid "_Show"
-msgstr "Zo_brazit"
+#: ../src/recentchanges.cpp:100
+msgid "New"
+msgstr "Nová"
 
 #: ../src/searchnoteswidget.cpp:70
 msgid "_Search:"
 msgstr "_Hledat:"
 
-#: ../src/searchnoteswidget.cpp:195
+#: ../src/searchnoteswidget.cpp:200
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../src/searchnoteswidget.cpp:198
+#: ../src/searchnoteswidget.cpp:203
 msgid "Open In New _Window"
 msgstr "Otevřít v no_vém okně"
 
-#: ../src/searchnoteswidget.cpp:817
+#: ../src/searchnoteswidget.cpp:823
 msgid "Note"
 msgstr "Poznámka"
 
-#: ../src/searchnoteswidget.cpp:839
+#: ../src/searchnoteswidget.cpp:845
 msgid "Last Changed"
 msgstr "Naposledy změněna"
 
-#: ../src/searchnoteswidget.cpp:1177
+#: ../src/searchnoteswidget.cpp:1183
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1823,31 +1830,31 @@ msgstr ""
 "Ve vybraném sešitu nebyl nalezen žádný výsledek.\n"
 "Kliknutím zde se prohledají všechny sešity."
 
-#: ../src/searchnoteswidget.cpp:1181
+#: ../src/searchnoteswidget.cpp:1187
 msgid "Click here to search across all notebooks"
 msgstr "Kliknutím zde prohledáte všechny sešity"
 
-#: ../src/searchnoteswidget.cpp:1205
+#: ../src/searchnoteswidget.cpp:1211
 msgid "Matches"
 msgstr "Odpovídá"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1254
+#: ../src/searchnoteswidget.cpp:1260
 msgid "Title match"
 msgstr "Název odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1258
+#: ../src/searchnoteswidget.cpp:1264
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% odpovídá"
 msgstr[1] "%1% odpovídají"
 msgstr[2] "%1% odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1505
 msgid "_Open Template Note"
 msgstr "_Otevřít šablonu"
 
-#: ../src/searchnoteswidget.cpp:1507
+#: ../src/searchnoteswidget.cpp:1513
 msgid "_New Notebook"
 msgstr "_Nový sešit"
 
