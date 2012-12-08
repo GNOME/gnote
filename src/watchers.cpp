@@ -913,7 +913,7 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      NoteRecentChanges::Ptr window = NoteRecentChanges::get_owning(const_cast<NoteEditor&>(editor));
+      NoteRecentChanges *window = NoteRecentChanges::get_owning(const_cast<NoteEditor&>(editor));
       if(!window) {
         window = Gnote::obj().new_main_window();
       }

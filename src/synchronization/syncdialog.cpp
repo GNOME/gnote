@@ -788,7 +788,7 @@ void SyncDialog::rename_note(const Note::Ptr & note, const std::string & newTitl
 
 void SyncDialog::present_note(const Note::Ptr & note)
 {
-  NoteRecentChanges::Ptr window = Gnote::obj().get_window_for_note();
+  NoteRecentChanges *window = Gnote::obj().get_window_for_note();
   window->present_note(note);
   window->present();
 }

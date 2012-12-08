@@ -362,7 +362,7 @@ void NoteRenameDialog::on_notes_view_row_activated(
     return;
 
   Gtk::Widget *parent = get_parent();
-  NoteRecentChanges::Ptr window;
+  NoteRecentChanges *window = NULL;
   if(parent) {
     window = NoteRecentChanges::get_owning(*parent);
   }

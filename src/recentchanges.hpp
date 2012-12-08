@@ -40,19 +40,12 @@ typedef utils::ForcedPresentWindow NoteRecentChangesParent;
 
 class NoteRecentChanges
   : public NoteRecentChangesParent
-  , public std::tr1::enable_shared_from_this<NoteRecentChanges>
   , public utils::EmbeddableWidgetHost
 {
 public:
-  typedef std::tr1::shared_ptr<NoteRecentChanges> Ptr;
-  typedef std::tr1::weak_ptr<NoteRecentChanges> WeakPtr;
+  static NoteRecentChanges *get_owning(Gtk::Widget & widget);
 
-  static Ptr create(NoteManager& m)
-    {
-      return Ptr(new NoteRecentChanges(m));
-    }
-  static Ptr get_owning(Gtk::Widget & widget);
-
+  NoteRecentChanges(NoteManager& m);
   virtual ~NoteRecentChanges();
   void set_search_text(const std::string & value);
   void present_note(const Note::Ptr & note);
@@ -67,7 +60,6 @@ public:
       return m_mapped;
     }
 protected:
-  NoteRecentChanges(NoteManager& m);
   virtual void on_show();
   virtual bool on_map_event(GdkEventAny *evt);
 private:

@@ -368,7 +368,7 @@ namespace gnote {
     about.set_documenters(documenters);
     about.set_translator_credits(translators);
 //      about.set_icon_name("gnote");
-    NoteRecentChanges::Ptr recent_changes = get_main_window();
+    NoteRecentChanges *recent_changes = get_main_window();
     if(recent_changes && recent_changes->get_visible()) {
       about.set_transient_for(*recent_changes);
       recent_changes->present();
@@ -376,56 +376,55 @@ namespace gnote {
     about.run();
   }
 
-  NoteRecentChanges::Ptr Gnote::new_main_window()
+  NoteRecentChanges *Gnote::new_main_window()
   {
-    NoteRecentChanges::Ptr win = NoteRecentChanges::create(default_note_manager());
-    std::list<NoteRecentChanges::Ptr>::iterator pos = m_main_windows.insert(m_main_windows.end(), win);
-    win->signal_hide().connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_main_window_closed), pos));
+    NoteRecentChanges *win = manage(new NoteRecentChanges(default_note_manager()));
+    win->signal_hide().connect(sigc::mem_fun(*this, &Gnote::on_main_window_closed));
     add_window(*win);
     return win;
   }
 
-  NoteRecentChanges::Ptr Gnote::get_main_window()
+  NoteRecentChanges *Gnote::get_main_window()
   {
-    for(std::list<NoteRecentChanges::Ptr>::iterator iter = m_main_windows.begin();
-        iter != m_main_windows.end(); ++iter) {
-      return *iter;
+    std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
+    for(std::vector<Gtk::Window*>::iterator iter = windows.begin();
+        iter != windows.end(); ++iter) {
+      NoteRecentChanges *rc = dynamic_cast<NoteRecentChanges*>(*iter);
+      if(rc) {
+        return rc;
+      }
     }
 
-    NoteRecentChanges::Ptr win = new_main_window();
-    return win;
+    return new_main_window();
   }
 
-  void Gnote::on_main_window_closed(std::list<NoteRecentChanges::Ptr>::iterator pos)
+  void Gnote::on_main_window_closed()
   {
-    remove_window(**pos);
-    m_main_windows.erase(pos);
-
     // if background mode, we need to have a window, to prevent quit
-    if(m_is_background && !m_main_windows.size()) {
+    if(m_is_background && !Gtk::Window::list_toplevels().size()) {
       new_main_window();
     }
   }
 
-  NoteRecentChanges::Ptr Gnote::get_window_for_note()
+  NoteRecentChanges *Gnote::get_window_for_note()
   {
-    NoteRecentChanges::Ptr window;
-    //Find first visible window or any window otherwise
-    for(std::list<NoteRecentChanges::Ptr>::iterator iter = m_main_windows.begin();
-        iter != m_main_windows.end(); ++iter) {
-      if((*iter)->get_visible()) {
-        window = *iter;
-        break;
+    std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
+    NoteRecentChanges *window = NULL;
+    for(std::vector<Gtk::Window*>::iterator iter = windows.begin(); iter != windows.end(); ++iter) {
+      NoteRecentChanges *rc = dynamic_cast<NoteRecentChanges*>(*iter);
+      if(rc) {
+        window = rc;
+        if(rc->get_visible()) {
+          return rc;
+        }
       }
-      if(!window) {
-        window = *iter;
-      }
-    }
-    if(!window) {
-      window = new_main_window();
     }
 
-    return window;
+    if(window) {
+      return window;
+    }
+
+    return new_main_window();
   }
 
   void Gnote::open_search_all()
@@ -502,7 +501,7 @@ namespace gnote {
       rc->new_note();
     }
     else {
-      NoteRecentChanges::Ptr recent_changes = get_main_window();
+      NoteRecentChanges *recent_changes = get_main_window();
       recent_changes->new_note();
       recent_changes->present();
     }
@@ -511,7 +510,7 @@ namespace gnote {
 
   void Gnote::open_note(const Note::Ptr & note)
   {
-    NoteRecentChanges::Ptr main_window = get_window_for_note();
+    NoteRecentChanges *main_window = get_window_for_note();
     main_window->present_note(note);
     main_window->present();
   }

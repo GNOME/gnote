@@ -154,7 +154,7 @@ namespace gnote {
 
   void RemoteControl::DisplaySearchWithText(const std::string& search_text)
   {
-    NoteRecentChanges::Ptr recent_changes = Gnote::obj().get_main_window();
+    NoteRecentChanges *recent_changes = Gnote::obj().get_main_window();
     recent_changes->set_search_text(search_text);
     recent_changes->present();
   }
@@ -409,7 +409,7 @@ void RemoteControl::on_note_saved(const Note::Ptr & note)
 
 void RemoteControl::present_note(const Note::Ptr & note)
 {
-    NoteRecentChanges::Ptr window = Gnote::obj().get_window_for_note();
+    NoteRecentChanges *window = Gnote::obj().get_window_for_note();
     window->present_note(note);
     window->present();
 }

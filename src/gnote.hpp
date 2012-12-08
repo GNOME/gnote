@@ -131,9 +131,9 @@ public:
   void on_show_preferences_action(const Glib::VariantBase&);
   void on_show_help_action(const Glib::VariantBase&);
   void on_show_about_action(const Glib::VariantBase&);
-  NoteRecentChanges::Ptr new_main_window();
-  NoteRecentChanges::Ptr get_main_window();
-  NoteRecentChanges::Ptr get_window_for_note();
+  NoteRecentChanges *new_main_window();
+  NoteRecentChanges *get_main_window();
+  NoteRecentChanges *get_window_for_note();
   void open_search_all();
   void open_note_sync_window(const Glib::VariantBase&);
 
@@ -180,7 +180,7 @@ private:
   void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
   void on_sync_dialog_response(int response_id);
-  void on_main_window_closed(std::list<NoteRecentChanges::Ptr>::iterator pos);
+  void on_main_window_closed();
   void make_app_actions();
   void add_app_actions(const std::vector<Glib::RefPtr<Gio::SimpleAction> > & actions);
   void make_app_menu();
@@ -197,7 +197,6 @@ private:
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;
-  std::list<NoteRecentChanges::Ptr> m_main_windows;
 };
 
 

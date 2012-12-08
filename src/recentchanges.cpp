@@ -138,17 +138,11 @@ namespace gnote {
   }
 
 
-  NoteRecentChanges::Ptr NoteRecentChanges::get_owning(Gtk::Widget & widget)
+  NoteRecentChanges *NoteRecentChanges::get_owning(Gtk::Widget & widget)
   {
-    Ptr owner;
     Gtk::Container *container = widget.get_parent();
     if(!container) {
-      try {
-        return dynamic_cast<NoteRecentChanges &>(widget).shared_from_this();
-      }
-      catch(std::bad_cast &) {
-        return owner;
-      }
+      return dynamic_cast<NoteRecentChanges*>(&widget);
     }
 
     Gtk::Container *cntr = container->get_parent();
@@ -157,12 +151,7 @@ namespace gnote {
       cntr = container->get_parent();
     }
 
-    NoteRecentChanges *recent_changes = dynamic_cast<NoteRecentChanges*>(container);
-    if(recent_changes) {
-      owner = recent_changes->shared_from_this();
-    }
-
-    return owner;
+    return dynamic_cast<NoteRecentChanges*>(container);
   }
 
 
@@ -173,7 +162,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    NoteRecentChanges::Ptr window = Gnote::obj().new_main_window();
+    NoteRecentChanges *window = Gnote::obj().new_main_window();
     window->present();
     window->present_note(note);
   }

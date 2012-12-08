@@ -93,7 +93,7 @@ namespace gnote {
   {
     if(!m_inhibit_activate) {
       if(m_note) {
-        NoteRecentChanges::Ptr window = Gnote::obj().get_window_for_note();
+        NoteRecentChanges *window = Gnote::obj().get_window_for_note();
         window->present_note(m_note);
         window->present();
       }
@@ -333,7 +333,7 @@ namespace gnote {
       if (note->is_pinned()) {
           show = true;
       } 
-      else if ((note->is_opened() && note->get_window()->get_mapped()) ||
+      else if ((note->is_opened() && note->get_window()->host()) ||
                (note->change_date().is_valid() && (note->change_date() > days_ago)) ||
                (list_size < min_size)) {
         if (list_size <= max_size)
