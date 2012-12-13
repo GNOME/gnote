@@ -551,9 +551,6 @@ namespace gnote {
       active_iter = m_sync_addin_iters [addin_id];
       m_sync_addin_combo->set_active(active_iter);
     }
-    /*else {
-      m_sync_addin_combo->set_active(0);
-    }*/
 
     m_sync_addin_combo->signal_changed().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_combo_changed));
@@ -589,6 +586,38 @@ namespace gnote {
     m_sync_addin_prefs_container->pack_start(*m_sync_addin_prefs_widget, false, false, 0);
     m_sync_addin_prefs_container->show();
     vbox->pack_start(*m_sync_addin_prefs_container, true, true, 0);
+
+    // Autosync preference
+    int timeout = Preferences::obj().get_schema_settings(
+        Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
+    if(timeout > 0 && timeout < 5) {
+      timeout = 5;
+      Preferences::obj().get_schema_settings(
+          Preferences::SCHEMA_SYNC)->set_int(Preferences::SYNC_AUTOSYNC_TIMEOUT, 5);
+    }
+    Gtk::HBox *autosyncBox = manage(new Gtk::HBox(false, 5));
+    // Translators: This is and the next string go together.
+    // Together they look like "Automatically Sync in Background Every [_] Minutes",
+    // where "[_]" is a GtkSpinButton.
+    m_autosync_check = manage(new Gtk::CheckButton(_("Automaticall_y Sync in Background Every"), true));
+    m_autosync_spinner = manage(new Gtk::SpinButton(1));
+    m_autosync_spinner->set_range(5, 1000);
+    m_autosync_spinner->set_value(timeout >= 5 ? timeout : 10);
+    m_autosync_spinner->set_increments(1, 5);
+    // Translators: See above comment for details on
+    // this string.
+    Gtk::Label *autosyncExtraText = manage(new Gtk::Label(_("Minutes")));
+    m_autosync_check->set_active(timeout >= 5);
+    m_autosync_spinner->set_sensitive(timeout >= 5);
+    m_autosync_check->signal_toggled()
+      .connect(sigc::mem_fun(*this, &PreferencesDialog::on_autosync_check_toggled));
+    m_autosync_spinner->signal_value_changed()
+      .connect(sigc::mem_fun(*this, &PreferencesDialog::update_timeout_pref));
+
+    autosyncBox->pack_start(*m_autosync_check);
+    autosyncBox->pack_start(*m_autosync_spinner);
+    autosyncBox->pack_start(*autosyncExtraText);
+    vbox->pack_start(*autosyncBox, false, true, 0);
 
     Gtk::HButtonBox *bbox = manage(new Gtk::HButtonBox());
     bbox->set_spacing(4);
@@ -1027,6 +1056,22 @@ namespace gnote {
         m_rename_behavior_combo->set_active(rename_behavior);
       }
     }
+    else if(key == Preferences::SYNC_AUTOSYNC_TIMEOUT) {
+      int timeout = Preferences::obj().get_schema_settings(
+          Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
+      if(timeout <= 0 && m_autosync_check->get_active()) {
+        m_autosync_check->set_active(false);
+      }
+      else if(timeout > 0) {
+        timeout = (timeout >= 5 && timeout < 1000) ? timeout : 5;
+        if(!m_autosync_check->get_active()) {
+          m_autosync_check->set_active(true);
+        }
+        if(static_cast<int>(m_autosync_spinner->get_value()) != timeout) {
+          m_autosync_spinner->set_value(timeout);
+        }
+      }
+    }
   }
 
 
@@ -1429,6 +1474,19 @@ DBG_OUT("no addin");
 	}
       }
     }
+  }
+
+  void PreferencesDialog::on_autosync_check_toggled()
+  {
+    m_autosync_spinner->set_sensitive(m_autosync_check->get_active());
+    update_timeout_pref();
+  }
+
+  void PreferencesDialog::update_timeout_pref()
+  {
+    Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
+        Preferences::SYNC_AUTOSYNC_TIMEOUT,
+        m_autosync_check->get_active() ? static_cast<int>(m_autosync_spinner->get_value()) : -1);
   }
 
 }

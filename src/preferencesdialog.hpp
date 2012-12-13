@@ -32,6 +32,7 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/comboboxtext.h>
+#include <gtkmm/spinbutton.h>
 
 #include "sharp/addinstreemodel.hpp"
 
@@ -89,6 +90,8 @@ private:
   void on_conflict_option_toggle();
   void combo_box_text_data_func(const Gtk::TreeIter & iter);
   void update_sync_services();
+  void update_timeout_pref();
+  void on_autosync_check_toggled();
 ////
 
   class SyncStoreModel
@@ -112,6 +115,8 @@ private:
   Gtk::Widget *m_sync_addin_prefs_widget;
   Gtk::Button *m_reset_sync_addin_button;
   Gtk::Button *m_save_sync_addin_button;
+  Gtk::CheckButton *m_autosync_check;
+  Gtk::SpinButton *m_autosync_spinner;
   Gtk::ComboBoxText *m_rename_behavior_combo;
   AddinManager &m_addin_manager;
     
