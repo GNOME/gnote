@@ -378,7 +378,7 @@ namespace gnote {
 
   NoteRecentChanges *Gnote::new_main_window()
   {
-    NoteRecentChanges *win = manage(new NoteRecentChanges(default_note_manager()));
+    NoteRecentChanges *win = new NoteRecentChanges(default_note_manager());
     win->signal_hide().connect(sigc::mem_fun(*this, &Gnote::on_main_window_closed));
     add_window(*win);
     return win;
