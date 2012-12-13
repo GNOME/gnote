@@ -80,7 +80,7 @@ namespace sync {
     void handle_note_buffer_changed(const Note::Ptr & note);
     void preferences_setting_changed(const Glib::ustring & key);
     void update_sync_action();
-    bool background_sync_checker();
+    void background_sync_checker();
     void set_state(SyncState new_state);
     SyncServiceAddin *get_configured_sync_service();
     SyncServiceAddin *get_sync_service_addin(const std::string & sync_service_id);
@@ -102,7 +102,7 @@ namespace sync {
     SyncState m_state;
     Glib::Thread *m_sync_thread;
     SyncTitleConflictResolution m_conflict_resolution;
-    Glib::RefPtr<Glib::TimeoutSource> m_autosync_timer;
+    utils::InterruptableTimeout m_autosync_timer;
     int m_autosync_timeout_pref_minutes;
     int m_current_autosync_timeout_minutes;
     sharp::DateTime m_last_background_check;

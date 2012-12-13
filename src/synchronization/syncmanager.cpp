@@ -143,6 +143,7 @@ namespace sync {
     note_mgr().signal_note_saved.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
     note_mgr().signal_note_deleted.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
     note_mgr().signal_note_buffer_changed.connect(sigc::mem_fun(*this, &SyncManager::handle_note_buffer_changed));
+    m_autosync_timer.signal_timeout.connect(sigc::mem_fun(*this, &SyncManager::background_sync_checker));
 
     // Update sync item based on configuration.
     update_sync_action();
@@ -459,12 +460,11 @@ namespace sync {
     // Note changed, iff a sync is coming up we kill the
     // timer to avoid interupting the user (we want to
     // make sure not to sync more often than the user's pref)
-    if(m_sync_thread == NULL && m_autosync_timer != 0) {
+    if(m_sync_thread == NULL) {
       sharp::TimeSpan time_since_last_check = sharp::DateTime::now() - m_last_background_check;
       if(time_since_last_check.total_minutes() > m_autosync_timeout_pref_minutes - 1) {
         DBG_OUT("Note edited...killing autosync timer until next save or delete event");
-        m_autosync_timer->destroy();
-        m_autosync_timer.reset();
+        m_autosync_timer.cancel();
       }
     }
   }
@@ -486,18 +486,14 @@ namespace sync {
     int timeoutPref = settings->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
     if(timeoutPref != m_autosync_timeout_pref_minutes) {
       m_autosync_timeout_pref_minutes = timeoutPref;
-      if(m_autosync_timer != 0) {
-        m_autosync_timer->destroy();
-        m_autosync_timer.reset();
-      }
+      m_autosync_timer.cancel();
       if(m_autosync_timeout_pref_minutes > 0) {
         DBG_OUT("Autosync pref changed...restarting sync timer");
         m_autosync_timeout_pref_minutes = m_autosync_timeout_pref_minutes >= 5 ? m_autosync_timeout_pref_minutes : 5;
         m_last_background_check = sharp::DateTime::now();
         // Perform a sync no sooner than user specified
         m_current_autosync_timeout_minutes = m_autosync_timeout_pref_minutes;
-        m_autosync_timer = Glib::TimeoutSource::create(m_current_autosync_timeout_minutes * 60000);
-        m_autosync_timer->connect(sigc::mem_fun(*this, &SyncManager::background_sync_checker));
+        m_autosync_timer.reset(m_current_autosync_timeout_minutes * 60000);
       }
     }
   }
@@ -505,34 +501,32 @@ namespace sync {
 
   void SyncManager::handle_note_saved_or_deleted(const Note::Ptr &)
   {
-    if(m_sync_thread == NULL && m_autosync_timer != 0 && m_autosync_timeout_pref_minutes > 0) {
+    if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
       sharp::TimeSpan time_since_last_check(sharp::DateTime::now() - m_last_background_check);
       sharp::TimeSpan time_until_next_check(
         sharp::TimeSpan(0, m_current_autosync_timeout_minutes, 0) - time_since_last_check);
       if(time_until_next_check.total_minutes() < 1) {
         DBG_OUT("Note saved or deleted within a minute of next autosync...resetting sync timer");
         m_current_autosync_timeout_minutes = 1;
-        m_autosync_timer = Glib::TimeoutSource::create(m_current_autosync_timeout_minutes * 60000);
-        m_autosync_timer->connect(sigc::mem_fun(*this, &SyncManager::background_sync_checker));
+        m_autosync_timer.reset(m_current_autosync_timeout_minutes * 60000);
       }
     }
-    else if(m_sync_thread == NULL && m_autosync_timer == 0 && m_autosync_timeout_pref_minutes > 0) {
+    else if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
       DBG_OUT("Note saved or deleted...restarting sync timer");
       m_last_background_check = sharp::DateTime::now();
       // Perform a sync one minute after setting change
       m_current_autosync_timeout_minutes = 1;
-      m_autosync_timer = Glib::TimeoutSource::create(m_current_autosync_timeout_minutes * 60000);
-      m_autosync_timer->connect(sigc::mem_fun(*this, &SyncManager::background_sync_checker));
+      m_autosync_timer.reset(m_current_autosync_timeout_minutes * 60000);
     }
   }
 
 
-  bool SyncManager::background_sync_checker()
+  void SyncManager::background_sync_checker()
   {
     m_last_background_check = sharp::DateTime::now();
     m_current_autosync_timeout_minutes = m_autosync_timeout_pref_minutes;
     if(m_sync_thread != NULL) {
-      return false;
+      return;
     }
     SyncServiceAddin *addin = get_configured_sync_service();
     if(addin) {
@@ -547,7 +541,7 @@ namespace sync {
       catch(std::exception & e) {
         DBG_OUT("Exception while creating SyncServer: %s\n", e.what());
         addin->post_sync_cleanup();// TODO: Needed?
-        return false;
+        return;
         // TODO: Figure out a clever way to get the specific error up to the GUI
       }
       bool server_has_updates = false;
@@ -572,7 +566,7 @@ namespace sync {
         // TODO: A libnotify bubble might be nice
         DBG_OUT("Error connecting to server");
         addin->post_sync_cleanup();
-        return false;
+        return;
       }
 
       addin->post_sync_cleanup(); // Let FUSE unmount, etc
@@ -584,7 +578,7 @@ namespace sync {
       }
     }
 
-    return false;
+    return;
   }
 
 
