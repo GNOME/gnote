@@ -464,6 +464,18 @@ namespace gnote {
     queue_save(NO_CHANGE);
   }
 
+  void Note::on_buffer_mark_deleted(const Glib::RefPtr<Gtk::TextBuffer::Mark> &)
+  {
+    Gtk::TextIter start, end;
+    if(m_data.data().selection_bound_position() != m_data.data().cursor_position()
+       && !m_buffer->get_selection_bounds(start, end)) {
+      DBG_OUT("selection removed");
+      m_data.data().set_cursor_position(m_buffer->get_insert()->get_iter().get_offset());
+      m_data.data().set_selection_bound_position(NoteData::s_noPosition);
+      queue_save(NO_CHANGE);
+    }
+  }
+
 
   bool Note::on_window_configure(GdkEventConfigure * /*ev*/)
   {
@@ -1015,6 +1027,8 @@ namespace gnote {
         sigc::mem_fun(*this, &Note::on_buffer_tag_removed));
       m_buffer->signal_mark_set().connect(
         sigc::mem_fun(*this, &Note::on_buffer_mark_set));
+      m_buffer->signal_mark_deleted().connect(
+        sigc::mem_fun(*this, &Note::on_buffer_mark_deleted));
     }
     return m_buffer;
   }
