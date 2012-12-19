@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2012-12-13 19:17+0000\n"
-"PO-Revision-Date: 2012-12-18 09:14+0400\n"
+"PO-Revision-Date: 2012-12-19 12:16+0400\n"
 "Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -828,11 +828,11 @@ msgstr "Использовать _собственный формат"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:47
 msgid "Note Directory Watcher"
-msgstr ""
+msgstr "Отслеживание каталога с заметками"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:52
 msgid "Watch your Gnote note directory for changes to your notes."
-msgstr ""
+msgstr "Слежение за каталогом с заметками."
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
 #| msgid "and Tomboy original authors."
@@ -1199,16 +1199,14 @@ msgid "Unfiled Notes"
 msgstr "Неупорядоченные заметки"
 
 #: ../src/notebooks/notebook.cpp:278
-#, fuzzy
 #| msgid "Unfiled Notes"
 msgid "Pinned Notes"
-msgstr "Неупорядоченные заметки"
+msgstr "Прикреплённые заметки"
 
 #: ../src/notebooks/notebook.cpp:306
-#, fuzzy
 #| msgid "All Notes"
 msgid "Active Notes"
-msgstr "Все заметки"
+msgstr "Активные заметки"
 
 #: ../src/notebooks/notebookmanager.cpp:351
 msgid "Really delete this notebook?"
@@ -1430,10 +1428,9 @@ msgid "_Find in This Note"
 msgstr "_Найти в этой заметке"
 
 #: ../src/notewindow.cpp:385
-#, fuzzy
 #| msgid "Print"
 msgid "Pin"
-msgstr "Печать"
+msgstr "Прикрепить"
 
 #: ../src/notewindow.cpp:393
 msgid "Link"
@@ -1774,12 +1771,13 @@ msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
 msgstr ""
+"Не рекомендуется очищать параметры синхронизации. Возможно, вам потребуется "
+"снова синхронизировать все заметки, когда вы сохраните новые параметры."
 
 #: ../src/preferencesdialog.cpp:1225
-#, fuzzy
 #| msgid "Selected Synchronization Service Addin"
 msgid "Resetting Synchronization Settings"
-msgstr "Выбранный модуль службы синхронизации"
+msgstr "Установка новых параметров синхронизации"
 
 #: ../src/preferencesdialog.cpp:1226
 msgid ""
@@ -1950,11 +1948,10 @@ msgid "FUSE could not be enabled."
 msgstr "Не удалость включить FUSE."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:248
-#, fuzzy
 #| msgid ""
 #| "The port to use when connecting to the synchronization server via SSH."
 msgid "An error ocurred while connecting to the specified server"
-msgstr "Порт для соединения с сервером синхронизации через SSH."
+msgstr "При подключении к указанному серверу произошла ошибка."
 
 #: ../src/synchronization/syncdialog.cpp:111
 #| msgid "Note Title"
@@ -1994,6 +1991,8 @@ msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
+"Сервер версии «%1» конфликтует с локальной заметкой. Что сделать с локальной "
+"заметкой?"
 
 #. Expander containing TreeView
 #: ../src/synchronization/syncdialog.cpp:338
@@ -2032,78 +2031,75 @@ msgstr "Подключение к серверу…"
 
 #: ../src/synchronization/syncdialog.cpp:550
 msgid "Deleting notes off of the server..."
-msgstr ""
+msgstr "Удаление заметок с сервера…"
 
 #: ../src/synchronization/syncdialog.cpp:554
 msgid "Downloading new/updated notes..."
-msgstr ""
+msgstr "Получение новых или обновлённых заметок…"
 
 #: ../src/synchronization/syncdialog.cpp:566
 msgid "Server Locked"
-msgstr ""
+msgstr "Сервер заблокирован"
 
 #: ../src/synchronization/syncdialog.cpp:567
 msgid "Server is locked"
-msgstr ""
+msgstr "Сервер заблокирован"
 
 #: ../src/synchronization/syncdialog.cpp:568
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
 msgstr ""
+"Один из ваших компьютеров в настоящий момент синхронизируется. Подождите "
+"пару минут и повторите попытку."
 
 #: ../src/synchronization/syncdialog.cpp:572
 msgid "Preparing to download updates from server..."
-msgstr ""
+msgstr "Подготовка с получению обновлений с сервера…"
 
 #: ../src/synchronization/syncdialog.cpp:575
 msgid "Preparing to upload updates to server..."
-msgstr ""
+msgstr "Подготовка к загрузке обновлений на сервер…"
 
 #: ../src/synchronization/syncdialog.cpp:578
 msgid "Uploading notes to server..."
-msgstr ""
+msgstr "Загрузка обновлений на сервер…"
 
 #: ../src/synchronization/syncdialog.cpp:581
-#, fuzzy
 #| msgid "Synchronization Client ID"
 msgid "Synchronization Failed"
-msgstr "ID клиента синхронизации"
+msgstr "Сбой синхронизации"
 
 #: ../src/synchronization/syncdialog.cpp:582
-#, fuzzy
 #| msgid "Start synchronizing notes"
 msgid "Failed to synchronize"
-msgstr "Начать синхронизацию заметок"
+msgstr "Не удалось выполнить синхронизацию"
 
 #: ../src/synchronization/syncdialog.cpp:583
 msgid "Could not synchronize notes.  Check the details below and try again."
-msgstr ""
+msgstr "Не удалось синхронизировать заметки. Попробуйте ещё раз."
 
 #: ../src/synchronization/syncdialog.cpp:589
-#, fuzzy
 #| msgid "Synchronization Client ID"
 msgid "Synchronization Complete"
-msgstr "ID клиента синхронизации"
+msgstr "Синхронизация завершена"
 
 #: ../src/synchronization/syncdialog.cpp:590
-#, fuzzy
 #| msgid "Synchronization Client ID"
 msgid "Synchronization is complete"
-msgstr "ID клиента синхронизации"
+msgstr "Синхронизация завершена"
 
 #: ../src/synchronization/syncdialog.cpp:591
-#, fuzzy
 #| msgid "%1% Notebook Template"
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
-msgstr[0] "Шаблон для блокнота %1%"
-msgstr[1] "Шаблон для блокнота %1%"
-msgstr[2] "Шаблон для блокнота %1%"
+msgstr[0] "%1 заметка обновлена."
+msgstr[1] "%1 заметки обновлены."
+msgstr[2] "%1 заметок обновлено."
 
 #: ../src/synchronization/syncdialog.cpp:592
 msgid "Your notes are now up to date."
-msgstr ""
+msgstr "Заметки обновлены."
 
 #: ../src/synchronization/syncdialog.cpp:597
 #| msgid "Synchronization Client ID"
@@ -2120,20 +2116,18 @@ msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Синхронизация отменена. Теперь окно можно закрыть."
 
 #: ../src/synchronization/syncdialog.cpp:603
-#, fuzzy
 #| msgid "Synchronization Client ID"
 msgid "Synchronization Not Configured"
-msgstr "ID клиента синхронизации"
+msgstr "Синхронизация не настроена"
 
 #: ../src/synchronization/syncdialog.cpp:604
-#, fuzzy
 #| msgid "Synchronization Client ID"
 msgid "Synchronization is not configured"
-msgstr "ID клиента синхронизации"
+msgstr "Синхронизация не настроена"
 
 #: ../src/synchronization/syncdialog.cpp:605
 msgid "Please configure synchronization in the preferences dialog."
-msgstr ""
+msgstr "Настройте синхронизацию в диалоговом окне параметров."
 
 #: ../src/synchronization/syncdialog.cpp:609
 #| msgid "SSHFS Synchronization Server Port"
@@ -2146,35 +2140,34 @@ msgid "Service error"
 msgstr "Ошибка службы"
 
 #: ../src/synchronization/syncdialog.cpp:611
-#, fuzzy
 #| msgid ""
 #| "The port to use when connecting to the synchronization server via SSH."
 msgid "Error connecting to the synchronization service.  Please try again."
-msgstr "Порт для соединения с сервером синхронизации через SSH."
+msgstr "Ошибка подключения к службе синхронизации. Повторите попытку."
 
 #: ../src/synchronization/syncdialog.cpp:625
 msgid "Deleted locally"
-msgstr ""
+msgstr "Удалено на локальной системе"
 
 #: ../src/synchronization/syncdialog.cpp:628
 msgid "Deleted from server"
-msgstr ""
+msgstr "Удалено на сервере"
 
 #: ../src/synchronization/syncdialog.cpp:631
 msgid "Updated"
-msgstr ""
+msgstr "Обновлено"
 
 #: ../src/synchronization/syncdialog.cpp:634
 msgid "Added"
-msgstr ""
+msgstr "Добавлено"
 
 #: ../src/synchronization/syncdialog.cpp:637
 msgid "Uploaded changes to server"
-msgstr ""
+msgstr "Изменения загружены на сервер"
 
 #: ../src/synchronization/syncdialog.cpp:640
 msgid "Uploaded new note to server"
-msgstr ""
+msgstr "Новая заметка загружена на сервер"
 
 #: ../src/synchronization/syncmanager.cpp:136
 msgid "Synchronize Notes"
@@ -2183,7 +2176,7 @@ msgstr "Синхронизировать заметки"
 #: ../src/synchronization/syncutils.cpp:142
 #: ../src/synchronization/syncutils.cpp:174
 msgid "Could not enable FUSE"
-msgstr ""
+msgstr "Не удалось включить FUSE"
 
 #: ../src/synchronization/syncutils.cpp:143
 #: ../src/synchronization/syncutils.cpp:175
@@ -2191,12 +2184,13 @@ msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
 msgstr ""
+"Не удалось загрузить модуль FUSE. Проверьте правильность установки и "
+"повторите попытку."
 
 #: ../src/synchronization/syncutils.cpp:151
-#, fuzzy
 #| msgid "_Enable"
 msgid "Enable FUSE?"
-msgstr "_Включить"
+msgstr "Включить FUSE?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
