@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-08-19 09:48+0000\n"
-"PO-Revision-Date: 2012-08-20 22:11+0300\n"
+"POT-Creation-Date: 2012-12-19 21:16+0000\n"
+"PO-Revision-Date: 2012-12-20 22:25+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lithuanian <>\n"
 "Language: lt\n"
@@ -31,6 +31,10 @@ msgstr "Konspektuokite, susiekite idėjas ir dirbkite tvarkingai"
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "Užrašinė"
+
+#: ../data/gnote.desktop.in.in.h:4
+msgid "note;idea;link;organize;"
+msgstr "raštelis;idėja;saitas;organizuoti;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -660,7 +664,6 @@ msgid "Watch your Gnote note directory for changes to your notes."
 msgstr "Stebėkite raštelių pasikeitimus Gnote raštelių kataloge."
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
-#| msgid "and Tomboy original authors."
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius ir Tomboy kūrėjai"
 
@@ -853,22 +856,22 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:308
+#: ../src/gnote.cpp:317
 msgid "Cannot create new note"
 msgstr "Nepavyko sukurti naujo raštelio"
 
-#: ../src/gnote.cpp:354
+#: ../src/gnote.cpp:363
 msgid "and Tomboy original authors."
 msgstr "ir Tomboy kūrėjai."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:369
 msgid "translator-credits"
 msgstr ""
 "Aurimas Černius <aurisc4@gmail.com>\n"
 "Giedrius Slavinskas <giedrius25@gmail.com>\n"
 "Žygimantas Beručka <zygis@gnome.org>"
 
-#: ../src/gnote.cpp:372
+#: ../src/gnote.cpp:378
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -880,72 +883,72 @@ msgstr ""
 "Autorinės teisės priklauso © 2009 Hubert Figuiere\n"
 "Autorinės teisės priklauso © 2004-2009 Tomboy originalo autoriams."
 
-#: ../src/gnote.cpp:376
+#: ../src/gnote.cpp:382
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 
-#: ../src/gnote.cpp:387
+#: ../src/gnote.cpp:393
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:473
 msgid "Run Gnote in background."
 msgstr "Paleisti Gnote fone."
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:474
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:474
 msgid "path"
 msgstr "kelias"
 
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:475
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: ../src/gnote.cpp:469
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:475
+#: ../src/gnote.cpp:480
 msgid "text"
 msgstr "tekstas"
 
-#: ../src/gnote.cpp:470
+#: ../src/gnote.cpp:476
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: ../src/gnote.cpp:471
+#: ../src/gnote.cpp:477
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: ../src/gnote.cpp:471
+#: ../src/gnote.cpp:477
 msgid "title"
 msgstr "pavadinimas"
 
-#: ../src/gnote.cpp:472
+#: ../src/gnote.cpp:478
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: ../src/gnote.cpp:472
+#: ../src/gnote.cpp:478
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: ../src/gnote.cpp:473
+#: ../src/gnote.cpp:479
 msgid "Display the 'Start Here' note."
 msgstr "Raštelis „Pradėkite čia“"
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:480
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:484
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:484
 msgid "Gnote options at launch"
 msgstr "Gnote parinktys paleidžiant"
 
-#: ../src/gnote.cpp:671
+#: ../src/gnote.cpp:677
 msgid "Version %1%"
 msgstr "Versija %1%"
 
@@ -1011,7 +1014,7 @@ msgid "Delete the selected notebook"
 msgstr "Ištrinti pasirinktą užrašinę"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:128
-#: ../src/recentchanges.cpp:296
+#: ../src/recentchanges.cpp:299
 msgid "Notebooks"
 msgstr "Užrašinės"
 
@@ -1197,7 +1200,7 @@ msgid "Rename Links"
 msgstr "Pervadinti saitus"
 
 #: ../src/noterenamedialog.cpp:199
-#: ../src/synchronization/syncdialog.cpp:367
+#: ../src/synchronization/syncdialog.cpp:369
 msgid "Note Title"
 msgstr "Raštelio pavadinimas"
 
@@ -1578,45 +1581,45 @@ msgstr "Ieškoti visuose rašteliuose"
 msgid "_Search:"
 msgstr "_Ieškoti:"
 
-#: ../src/recentchanges.cpp:373
+#: ../src/recentchanges.cpp:376
 msgid "Note"
 msgstr "Raštelis"
 
-#: ../src/recentchanges.cpp:395
+#: ../src/recentchanges.cpp:398
 msgid "Last Changed"
 msgstr "Paskutinis pakeitimas"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/recentchanges.cpp:583
 msgid "Matches"
 msgstr "Atitikmenys"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/recentchanges.cpp:634
+#: ../src/recentchanges.cpp:637
 msgid "Title match"
 msgstr "Atitikmuo pavadinime"
 
-#: ../src/recentchanges.cpp:638
+#: ../src/recentchanges.cpp:641
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% atitikmuo"
 msgstr[1] "%1% atitikmenys"
 msgstr[2] "%1% atitikmenų"
 
-#: ../src/recentchanges.cpp:652
+#: ../src/recentchanges.cpp:655
 msgid "Total: %1% note"
 msgid_plural "Total: %1% notes"
 msgstr[0] "Iš viso: %1% raštelis"
 msgstr[1] "Iš viso: %1% rašteliai"
 msgstr[2] "Iš viso: %1% raštelių"
 
-#: ../src/recentchanges.cpp:668
+#: ../src/recentchanges.cpp:671
 msgid "Matches: %1% note"
 msgid_plural "Matches: %1% notes"
 msgstr[0] "Atitinka: %1% raštelį"
 msgstr[1] "Atitinka: %1% raštelius"
 msgstr[2] "Atitinka: %1% raštelių"
 
-#: ../src/recentchanges.cpp:684
+#: ../src/recentchanges.cpp:687
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1624,11 +1627,11 @@ msgstr ""
 "Pasirinktoje užrašinėje rezultatų nerasta.\n"
 "Spauskite čia paieškai visuose rašteliuose."
 
-#: ../src/recentchanges.cpp:688
+#: ../src/recentchanges.cpp:691
 msgid "Click here to search across all notebooks"
 msgstr "Spauskite čia paieškai visuose rašteliuose"
 
-#: ../src/recentchanges.cpp:863
+#: ../src/recentchanges.cpp:866
 msgid "Notes"
 msgstr "Rašteliai"
 
@@ -1727,154 +1730,154 @@ msgstr "Serverio versija „%1%“ kertasi su jūsų vietiniu rašteliu.  Ką no
 msgid "Details"
 msgstr "Detalės"
 
-#: ../src/synchronization/syncdialog.cpp:374
+#: ../src/synchronization/syncdialog.cpp:376
 msgid "Status"
 msgstr "Būsena"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:533
 msgid "Acquiring sync lock..."
 msgstr "Gaunamas sinchronizacijos užraktas..."
 
-#: ../src/synchronization/syncdialog.cpp:534
+#: ../src/synchronization/syncdialog.cpp:536
 msgid "Committing changes..."
 msgstr "Patvirtinami pakeitimai..."
 
-#: ../src/synchronization/syncdialog.cpp:537
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "Synchronizing Notes"
 msgstr "Sinchronizuojami rašteliai"
 
-#: ../src/synchronization/syncdialog.cpp:538
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "Synchronizing your notes..."
 msgstr "Sinchronizuojami jūsų rašteliai..."
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:541
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Tai gali užtrukti, grįžkite ir mėgaukitės!"
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:543
 msgid "Connecting to the server..."
 msgstr "Jungiamasi prie serverio..."
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:549
 msgid "Deleting notes off of the server..."
 msgstr "Trinami rašteliai serveryje..."
 
-#: ../src/synchronization/syncdialog.cpp:551
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Downloading new/updated notes..."
 msgstr "Parsiunčiami nauji/pakeisti rašteliai..."
 
-#: ../src/synchronization/syncdialog.cpp:563
+#: ../src/synchronization/syncdialog.cpp:565
 msgid "Server Locked"
 msgstr "Serveris užrakintas"
 
-#: ../src/synchronization/syncdialog.cpp:564
+#: ../src/synchronization/syncdialog.cpp:566
 msgid "Server is locked"
 msgstr "Serveris užrakintas"
 
-#: ../src/synchronization/syncdialog.cpp:565
+#: ../src/synchronization/syncdialog.cpp:567
 msgid "One of your other computers is currently synchronizing.  Please wait 2 minutes and try again."
 msgstr "Vienas iš jūsų kitų kompiuterių šiuo metu sinchronizuojasi.  Palaukite 2 minutes ir bandykite vėl."
 
-#: ../src/synchronization/syncdialog.cpp:569
+#: ../src/synchronization/syncdialog.cpp:571
 msgid "Preparing to download updates from server..."
 msgstr "Ruošiamasi parsiųsti atnaujinimus iš serverio..."
 
-#: ../src/synchronization/syncdialog.cpp:572
+#: ../src/synchronization/syncdialog.cpp:574
 msgid "Preparing to upload updates to server..."
 msgstr "Ruošiamasi nusiųsti pakeitimus į serverį..."
 
-#: ../src/synchronization/syncdialog.cpp:575
+#: ../src/synchronization/syncdialog.cpp:577
 msgid "Uploading notes to server..."
 msgstr "Siunčiami rašteliai į serverį..."
 
-#: ../src/synchronization/syncdialog.cpp:578
+#: ../src/synchronization/syncdialog.cpp:580
 msgid "Synchronization Failed"
 msgstr "Sinchronizavimas nepavyko"
 
-#: ../src/synchronization/syncdialog.cpp:579
+#: ../src/synchronization/syncdialog.cpp:581
 msgid "Failed to synchronize"
 msgstr "Sinchronizavimas nepavyko"
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:582
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr "Nepavyko sinchronizuoti raštelių.  Patikrinkite detales žemiau ir bandykite vėl."
 
-#: ../src/synchronization/syncdialog.cpp:586
+#: ../src/synchronization/syncdialog.cpp:588
 msgid "Synchronization Complete"
 msgstr "Sinchronizavimas baigtas"
 
-#: ../src/synchronization/syncdialog.cpp:587
+#: ../src/synchronization/syncdialog.cpp:589
 msgid "Synchronization is complete"
 msgstr "Sinchronizavimas baigtas"
 
-#: ../src/synchronization/syncdialog.cpp:588
+#: ../src/synchronization/syncdialog.cpp:590
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% raštelis nusiųstas"
 msgstr[1] "%1% rašteliai nusiųsti"
 msgstr[2] "%1% raštelių nusiųsta"
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:591
 msgid "Your notes are now up to date."
 msgstr "Jūsų rašteliai yra naujausi."
 
-#: ../src/synchronization/syncdialog.cpp:594
+#: ../src/synchronization/syncdialog.cpp:596
 msgid "Synchronization Canceled"
 msgstr "Sinchronizavimas atšauktas"
 
-#: ../src/synchronization/syncdialog.cpp:595
+#: ../src/synchronization/syncdialog.cpp:597
 msgid "Synchronization was canceled"
 msgstr "Sinchronizavimas atšauktas"
 
-#: ../src/synchronization/syncdialog.cpp:596
+#: ../src/synchronization/syncdialog.cpp:598
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Jūs atšaukėte sinchronizaciją.  Galite dabar užverti langą."
 
-#: ../src/synchronization/syncdialog.cpp:600
+#: ../src/synchronization/syncdialog.cpp:602
 msgid "Synchronization Not Configured"
 msgstr "Sinchronizacija nenustatyta"
 
-#: ../src/synchronization/syncdialog.cpp:601
+#: ../src/synchronization/syncdialog.cpp:603
 msgid "Synchronization is not configured"
 msgstr "Sinchronizacija nenustatyta"
 
-#: ../src/synchronization/syncdialog.cpp:602
+#: ../src/synchronization/syncdialog.cpp:604
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Nustatykite sinchronizaciją nustatymų dialoge."
 
-#: ../src/synchronization/syncdialog.cpp:606
+#: ../src/synchronization/syncdialog.cpp:608
 msgid "Synchronization Service Error"
 msgstr "Sinchronizavimo tarnybos klaida"
 
-#: ../src/synchronization/syncdialog.cpp:607
+#: ../src/synchronization/syncdialog.cpp:609
 msgid "Service error"
 msgstr "Tarnybos klaida"
 
-#: ../src/synchronization/syncdialog.cpp:608
+#: ../src/synchronization/syncdialog.cpp:610
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Klaida jungiantis prie sinchronizacijos tarnybos.  Mėginkite vėl."
 
-#: ../src/synchronization/syncdialog.cpp:622
+#: ../src/synchronization/syncdialog.cpp:624
 msgid "Deleted locally"
 msgstr "Ištrintas vietoje"
 
-#: ../src/synchronization/syncdialog.cpp:625
+#: ../src/synchronization/syncdialog.cpp:627
 msgid "Deleted from server"
 msgstr "Ištrintas iš serverio"
 
-#: ../src/synchronization/syncdialog.cpp:628
+#: ../src/synchronization/syncdialog.cpp:630
 msgid "Updated"
 msgstr "Atnaujintas"
 
-#: ../src/synchronization/syncdialog.cpp:631
+#: ../src/synchronization/syncdialog.cpp:633
 msgid "Added"
 msgstr "Pridėtas"
 
-#: ../src/synchronization/syncdialog.cpp:634
+#: ../src/synchronization/syncdialog.cpp:636
 msgid "Uploaded changes to server"
 msgstr "Pakeitimai nusiųsti į serverį"
 
-#: ../src/synchronization/syncdialog.cpp:637
+#: ../src/synchronization/syncdialog.cpp:639
 msgid "Uploaded new note to server"
 msgstr "Nusiųstas naujas raštelis į serverį"
 
