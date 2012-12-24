@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 20:47+0200\n"
-"PO-Revision-Date: 2012-07-09 20:47+0200\n"
+"POT-Creation-Date: 2012-12-24 12:40+0200\n"
+"PO-Revision-Date: 2012-12-24 12:40+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -33,6 +33,10 @@ msgstr "سجّل الملاحظات، واربط الأفكار ونظّم أف�
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "مسجل الملاحظات"
+
+#: ../data/gnote.desktop.in.in.h:4
+msgid "note;idea;link;organize;"
+msgstr "ملاحظة;فكرة;ملاحظات;وصلة;رابط;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -156,16 +160,12 @@ msgstr ""
 "في قائمة ملاحظات ملاحظات‌ج."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:21
-msgid "Enable startup notes"
-msgstr "فعّل ملاحظات البدء"
+msgid "Is main window maximized"
+msgstr "هل النافذة الرئيسيّة مُكبَّرة"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:22
-msgid ""
-"If enabled, all notes that were open when Gnote quit will automatically be "
-"reopened at startup."
+msgid "If true, Gnote window will be maximized."
 msgstr ""
-"عند تفعيله، ستُفتح آليًا عند بدء التشغيل كل الملاحظات التي كانت مفتوحة وقت "
-"إغلاق ملاحظات‌ج."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "Saved height of Search window"
@@ -493,114 +493,96 @@ msgid ""
 msgstr "استخدم خيار ‪\"-ac\"‬ ل wdfs لقبول شهادات SSL دون سؤال المستخدم."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:77
+msgid "Share URL"
+msgstr ""
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "WebDAV share URL where notes are synchronized to."
+msgstr ""
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "Share username"
+msgstr ""
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+msgid "Username to access WebDAV share."
+msgstr ""
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Timestamp format"
 msgstr "تنسيق ختم الوقت"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "تنسيق التاريخ المستخدم لختم الوقت. يتبع تنسيق ‪strftime(3)‬."
 
-#: ../src/actionmanager.cpp:174
-msgid "_File"
-msgstr "_ملف"
-
-#: ../src/actionmanager.cpp:178
-msgid "_New"
-msgstr "_جديد"
-
-#: ../src/actionmanager.cpp:179 ../src/actionmanager.cpp:230
-msgid "Create a new note"
-msgstr "أنشئ ملاحظة جديدة"
-
-#: ../src/actionmanager.cpp:184
-msgid "_Open..."
-msgstr "_افتح..."
-
-#: ../src/actionmanager.cpp:184
-msgid "Open the selected note"
-msgstr "افتح الملاحظة المحددة"
-
-#: ../src/actionmanager.cpp:190
-msgid "_Delete"
-msgstr "_احذف"
-
-#: ../src/actionmanager.cpp:190
-msgid "Delete the selected note"
-msgstr "احذف الملاحظة المحددة"
-
-#: ../src/actionmanager.cpp:196 ../src/notewindow.cpp:377
-msgid "_Close"
-msgstr "أغل_ق"
-
-#: ../src/actionmanager.cpp:196
-msgid "Close this window"
-msgstr "أغلق هذه النافذة"
-
-#: ../src/actionmanager.cpp:201 ../src/tray.cpp:477
+#: ../src/actionmanager.cpp:175 ../src/actionmanager.cpp:266
+#: ../src/tray.cpp:477
 msgid "_Quit"
 msgstr "أ_نهِ"
 
-#: ../src/actionmanager.cpp:201
+#: ../src/actionmanager.cpp:175
 msgid "Quit Gnote"
 msgstr "أغلق ملاحظات‌ج"
 
-#: ../src/actionmanager.cpp:204
-msgid "_Edit"
-msgstr "_حرر"
-
-#: ../src/actionmanager.cpp:209 ../src/tray.cpp:460
+#: ../src/actionmanager.cpp:180 ../src/actionmanager.cpp:263
+#: ../src/tray.cpp:460
 msgid "_Preferences"
 msgstr "الت_فضيلات"
 
-#: ../src/actionmanager.cpp:209 ../src/preferencesdialog.cpp:101
+#: ../src/actionmanager.cpp:180 ../src/preferencesdialog.cpp:102
 msgid "Gnote Preferences"
 msgstr "تفضيلات ملاحظات‌ج"
 
-#: ../src/actionmanager.cpp:212 ../src/tray.cpp:465
-msgid "_Help"
-msgstr "م_ساعدة"
-
-#: ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:184
 msgid "_Contents"
 msgstr "_المحتويات"
 
-#: ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:184
 msgid "Gnote Help"
 msgstr "مساعدة ملاحظات‌ج"
 
-#: ../src/actionmanager.cpp:221
+#: ../src/actionmanager.cpp:189 ../src/actionmanager.cpp:265
 msgid "_About"
 msgstr "_عنْ"
 
-#: ../src/actionmanager.cpp:221
+#: ../src/actionmanager.cpp:189
 msgid "About Gnote"
 msgstr "عن ملاحظات‌ج"
 
-#: ../src/actionmanager.cpp:225
+#: ../src/actionmanager.cpp:193
 msgid "TrayIcon"
 msgstr "أيقونة اللوحة"
 
-#: ../src/actionmanager.cpp:230
+#: ../src/actionmanager.cpp:198
 msgid "Create _New Note"
 msgstr "أ_نشئ ملاحظة جديدة"
 
-#: ../src/actionmanager.cpp:235 ../src/notewindow.cpp:329
+#: ../src/actionmanager.cpp:198
+msgid "Create a new note"
+msgstr "أنشئ ملاحظة جديدة"
+
+#: ../src/actionmanager.cpp:203
 msgid "_Search All Notes"
 msgstr "اب_حث في كل الملاحظات"
 
-#: ../src/actionmanager.cpp:235
+#: ../src/actionmanager.cpp:203
 msgid "Open the Search All Notes window"
 msgstr "افتح نافذة البحث في كل الملاحظات"
 
-#: ../src/actionmanager.cpp:240
-msgid "S_ynchronize Notes"
-msgstr "_زامن الملاحظات"
+#: ../src/actionmanager.cpp:261 ../src/searchnoteswidget.cpp:1477
+msgid "_New Note"
+msgstr "_ملاحظة جديدة"
 
-#: ../src/actionmanager.cpp:240
-msgid "Start synchronizing notes"
-msgstr "ابدأ مزامنة الملاحظات"
+#: ../src/actionmanager.cpp:262
+msgid "New _Window"
+msgstr "_نافذة جديدة"
+
+#: ../src/actionmanager.cpp:264
+msgid "Help _Contents"
+msgstr "_محتويات المساعدة"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
 msgid "Backlinks"
@@ -623,11 +605,11 @@ msgstr "ماذا يربط بهنا؟"
 msgid "(none)"
 msgstr "(لا شيء)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:60
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
 msgid "Bugzilla Links"
 msgstr "وصلات بجزيلّا"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:64
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:62
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -636,7 +618,7 @@ msgstr ""
 "يتيح لك سحب مسارات بجزيلا مباشرة من المتصفح إلى ملاحظة.  سيُدرج رقم العلّة "
 "كوصلة مع أيقونة بقّة صغيرة بجوارها."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:68
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:66
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
@@ -739,24 +721,24 @@ msgstr "زامن ملاحظات‌ج مع مسار في نظام الملفات 
 msgid "Aurimas Cernius and the Tomboy Project"
 msgstr "أوريمَس سِرنِيَس ومشروع توم‌بوي"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:124
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:127
 msgid "_Folder Path:"
 msgstr "مسار الم_جلد:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:131
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
 msgid "Select Synchronization Folder..."
 msgstr "اختر مجلد المزامنة..."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:154
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:157
 msgid "Folder path field is empty."
 msgstr "مجال مسار المجلد فارغ."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:161
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:164
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "مسار المجلد المحدد غير موجود، وعجزت ملاحظات‌ج عن إنشائه."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:237
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:240
 msgid "Local Folder"
 msgstr "مجلّد محلي"
 
@@ -864,12 +846,12 @@ msgstr "يتيح لك طبع الملاحظات."
 msgid "Print"
 msgstr "اطبع"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:153
 msgid "Error printing note"
 msgstr "خطأ أثناء طبع الملاحظة"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:320
 msgid "Page %1% of %2%"
 msgstr "صفحة %1% من %2%"
 
@@ -994,7 +976,7 @@ msgstr "حقل ال URL أو اسم المستخدم أو كلمة السر فا
 #. Save configuration into GConf
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:306
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:290
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1005,15 +987,11 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:308
-msgid "Cannot create new note"
-msgstr "تعذر إنشاء ملاحظة جديدة"
-
-#: ../src/gnote.cpp:354
+#: ../src/gnote.cpp:336
 msgid "and Tomboy original authors."
 msgstr "ومؤلفي توم‌بوي الأصليين."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:342
 msgid "translator-credits"
 msgstr ""
 "جهاد عفيفي <djihed@gmail.com>\n"
@@ -1022,7 +1000,7 @@ msgstr ""
 "أحمد فرغل <ahmad.farghal@gmail.com>\n"
 "أنس عفيف عماد <anas.e87@gmail.com>"
 
-#: ../src/gnote.cpp:372
+#: ../src/gnote.cpp:351
 msgid ""
 "Copyright © 2010-2012 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1034,166 +1012,147 @@ msgstr ""
 "حقوق النشر © 2009 هُبِرت فيجوري\n"
 "حقوق النشر © 2004-2009 مؤلفي توم‌بوي الأصليين."
 
-#: ../src/gnote.cpp:376
+#: ../src/gnote.cpp:355
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "تطبيق سطح مكتب بسيط و سهل الاستخدام لتسجيل الملاحظات."
 
-#: ../src/gnote.cpp:387
+#: ../src/gnote.cpp:366
 msgid "Homepage"
 msgstr "البداية"
 
-#: ../src/gnote.cpp:467
+#: ../src/gnote.cpp:571
 msgid "Run Gnote in background."
 msgstr "شغّل ملاحظات‌ج في الخلفية."
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:572
 msgid "Specify the path of the directory containing the notes."
 msgstr "حدد مسار المجلد الذي يحتوي الملاحظات."
 
-#: ../src/gnote.cpp:468
+#: ../src/gnote.cpp:572
 msgid "path"
 msgstr "مسار"
 
-#: ../src/gnote.cpp:469
+#: ../src/gnote.cpp:573
 msgid "Open the search all notes window with the search text."
 msgstr "افتح نافذة البحث في كل الملاحظات بنص البحث."
 
-#: ../src/gnote.cpp:469 ../src/gnote.cpp:474
+#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
 msgid "text"
 msgstr "نص"
 
-#: ../src/gnote.cpp:470
+#: ../src/gnote.cpp:574
 msgid "Print version information."
 msgstr "اطبع معلومات الإصدارة."
 
-#: ../src/gnote.cpp:471
+#: ../src/gnote.cpp:575
 msgid "Create and display a new note, with a optional title."
 msgstr "أنشئ واعرض ملاحظة جديدة، بعنوان اختياري."
 
-#: ../src/gnote.cpp:471
+#: ../src/gnote.cpp:575
 msgid "title"
 msgstr "عنوان"
 
-#: ../src/gnote.cpp:472
+#: ../src/gnote.cpp:576
 msgid "Display the existing note matching title."
 msgstr "اعرض ملاحظة موجودة تحمل هذا العنوان."
 
-#: ../src/gnote.cpp:472
+#: ../src/gnote.cpp:576
 msgid "title/url"
 msgstr "عنوان/مسار"
 
-#: ../src/gnote.cpp:473
+#: ../src/gnote.cpp:577
 msgid "Display the 'Start Here' note."
 msgstr "اعرض ملاحظة 'ابدأ هنا'."
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:578
 msgid "Search and highlight text in the opened note."
 msgstr "ابحث وأبرز النص في الملاحظة المفتوحة."
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:582
 msgid "A note taking application"
 msgstr "تطبيق لتسجيل الملاحظات"
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:582
 msgid "Gnote options at launch"
 msgstr "خيارات ملاحظات‌ج"
 
-#: ../src/gnote.cpp:671
+#: ../src/gnote.cpp:775
 msgid "Version %1%"
 msgstr "الإصدارة %1%"
 
-#: ../src/notebooks/createnotebookdialog.cpp:38
-#: ../src/notebooks/notebookapplicationaddin.cpp:109
+#: ../src/notebooks/createnotebookdialog.cpp:40
 msgid "Create a new notebook"
 msgstr "أنشئ كتيّبا جديدا"
 
-#: ../src/notebooks/createnotebookdialog.cpp:39
+#: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Type the name of the notebook you'd like to create."
 msgstr "اكتب اسم الكتيب الذي تريد إنشاءه."
 
-#: ../src/notebooks/createnotebookdialog.cpp:47
+#: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
 msgstr "ا_سم الكتيّب:"
 
-#: ../src/notebooks/createnotebookdialog.cpp:60
+#: ../src/notebooks/createnotebookdialog.cpp:58
 msgid "Name already taken"
 msgstr "الاسم مأخوذ مسبّقا"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:73
+#: ../src/notebooks/createnotebookdialog.cpp:71
 msgid "C_reate"
 msgstr "أن_شئ"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:103
-msgid "Note_books"
-msgstr "_كتيّبات"
+#: ../src/notebooks/notebookapplicationaddin.cpp:76
+#: ../src/searchnoteswidget.cpp:364
+msgid "Notebooks"
+msgstr "كتيّبات"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:104
-#: ../src/notebooks/notebookapplicationaddin.cpp:129
+#: ../src/notebooks/notebookapplicationaddin.cpp:77
 msgid "Create a new note in a notebook"
 msgstr "أنشئ ملاحظة جديدة في كتيّب"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:108
-#: ../src/notebooks/notebookapplicationaddin.cpp:263
+#: ../src/notebooks/notebookapplicationaddin.cpp:129
+msgid "New Note_book"
+msgstr "_كتيّب جديد"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:187
 msgid "New Note_book..."
 msgstr "_كتيّب جديد..."
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:113
-msgid "_New Note"
-msgstr "_ملاحظة جديدة"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:114
-msgid "Create a new note in this notebook"
-msgstr "أنشئ ملاحظة جديدة في هذا الكتيّب"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:118
-msgid "_Open Template Note"
-msgstr "ا_فتح قالب ملاحظة"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:119
-msgid "Open this notebook's template note"
-msgstr "افتح قالب الملاحظات لهذا الكتيّب"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:123
-msgid "Delete Note_book"
-msgstr "ا_حذف الكتيّب"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:124
-msgid "Delete the selected notebook"
-msgstr "احذف الكتيّب المحدد"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:128
-#: ../src/recentchanges.cpp:296
-msgid "Notebooks"
-msgstr "كتيّبات"
 
 #. The templateNoteTite should show the name of the
 #. notebook.  For example, if the name of the notebooks
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:87
+#: ../src/notebooks/notebook.cpp:89
 msgid "%1% Notebook Template"
 msgstr "قالب كتيّب %1%"
 
-#: ../src/notebooks/notebook.cpp:167 ../src/notemanager.cpp:555
+#: ../src/notebooks/notebook.cpp:169 ../src/notemanager.cpp:537
 msgid "New Note"
 msgstr "ملاحظة جديدة"
 
-#: ../src/notebooks/notebook.cpp:207
+#: ../src/notebooks/notebook.cpp:220 ../src/recentchanges.cpp:92
 msgid "All Notes"
 msgstr "كلّ الملاحظات"
 
-#: ../src/notebooks/notebook.cpp:219
+#: ../src/notebooks/notebook.cpp:249
 msgid "Unfiled Notes"
 msgstr "ملاحظات غير مصنّفة"
 
-#: ../src/notebooks/notebookmanager.cpp:337
+#: ../src/notebooks/notebook.cpp:278
+msgid "Pinned Notes"
+msgstr "الملاحظات المُثبّتة"
+
+#: ../src/notebooks/notebook.cpp:306
+msgid "Active Notes"
+msgstr "الملاحظات النشطة"
+
+#: ../src/notebooks/notebookmanager.cpp:351
 msgid "Really delete this notebook?"
 msgstr "هل تريد حقا حذف هذا الكتيّب؟"
 
-#: ../src/notebooks/notebookmanager.cpp:338
+#: ../src/notebooks/notebookmanager.cpp:352
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1205,24 +1164,24 @@ msgstr ""
 msgid "No notebook"
 msgstr "لا كتيّب"
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:40
 msgid "New \"%1%\" Note"
 msgstr "ملاحظة \"%1%\" جديدة"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:86
+#: ../src/notebooks/notebooknoteaddin.cpp:74
 msgid "Place this note into a notebook"
 msgstr "ضع هذه الملاحظة في كتيّب"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:196
+#: ../src/notebooks/notebooknoteaddin.cpp:184
 msgid "Notebook"
 msgstr "كتيّب"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:222
+#: ../src/notebooks/notebooknoteaddin.cpp:210
 msgid "_New notebook..."
 msgstr "_كتيّب جديد..."
 
 #. TRANSLATORS: %1% is number of notes
-#: ../src/note.cpp:74
+#: ../src/note.cpp:75
 msgid "Really delete %1% note?"
 msgid_plural "Really delete %1% notes?"
 msgstr[0] "هل تريد حقا حذف الملاحظة؟"
@@ -1232,15 +1191,15 @@ msgstr[3] "هل تريد حقا حذف %1% ملاحظات؟"
 msgstr[4] "هل تريد حقا حذف %1% ملاحظة؟"
 msgstr[5] "هل تريد حقا حذف %1% ملاحظة؟"
 
-#: ../src/note.cpp:81
+#: ../src/note.cpp:82
 msgid "If you delete a note it is permanently lost."
 msgstr "إذا حذفت الملاحظة فسوف تفقد للأبد."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:118
 msgid "Error saving note data."
 msgstr "خطأ أثناء حفظ بيانات الملاحظات."
 
-#: ../src/note.cpp:118
+#: ../src/note.cpp:119
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
@@ -1252,7 +1211,7 @@ msgstr ""
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:112 ../src/preferencesdialog.cpp:323
+#: ../src/notemanager.cpp:112 ../src/preferencesdialog.cpp:334
 msgid "New Note Template"
 msgstr "قالب ملاحظة جديدة"
 
@@ -1332,43 +1291,43 @@ msgstr "ابدأ هنا"
 msgid "Using Links in Gnote"
 msgstr "استخدام الروابط في ملاحظات‌ج"
 
-#: ../src/notemanager.cpp:666
+#: ../src/notemanager.cpp:648
 msgid "Describe your new note here."
 msgstr "صِف ملاحظتك الجديدة هنا."
 
-#: ../src/noterenamedialog.cpp:121
+#: ../src/noterenamedialog.cpp:123
 msgid "Rename Note Links?"
 msgstr "أأغير تسمية روابط الملاحظة؟"
 
-#: ../src/noterenamedialog.cpp:125
+#: ../src/noterenamedialog.cpp:127
 msgid "_Don't Rename Links"
 msgstr "لا _تغير تسمية الروابط"
 
-#: ../src/noterenamedialog.cpp:126
+#: ../src/noterenamedialog.cpp:128
 msgid "_Rename Links"
 msgstr "_غير تسمية الروابط"
 
-#: ../src/noterenamedialog.cpp:127
+#: ../src/noterenamedialog.cpp:129
 msgid "Select All"
 msgstr "اختر الكل"
 
-#: ../src/noterenamedialog.cpp:128
+#: ../src/noterenamedialog.cpp:130
 msgid "Select None"
 msgstr "لا تختر شيء"
 
-#: ../src/noterenamedialog.cpp:129
+#: ../src/noterenamedialog.cpp:131
 msgid "Always show this _window"
 msgstr "أ_ظهر هذه النافذة دائما"
 
-#: ../src/noterenamedialog.cpp:130
+#: ../src/noterenamedialog.cpp:132
 msgid "Alwa_ys rename links"
 msgstr "غيّر أسماء الروابط _دائما"
 
-#: ../src/noterenamedialog.cpp:132
+#: ../src/noterenamedialog.cpp:134
 msgid "Never rename _links"
 msgstr "لا تغير أ_سماء الروابط أبدا"
 
-#: ../src/noterenamedialog.cpp:151
+#: ../src/noterenamedialog.cpp:153
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1380,19 +1339,19 @@ msgstr ""
 "\n"
 "إذا لم تغير أسماء الروابط فستربط إلى لا شيء."
 
-#: ../src/noterenamedialog.cpp:184
+#: ../src/noterenamedialog.cpp:186
 msgid "Rename Links"
 msgstr "غير تسمية الروابط"
 
-#: ../src/noterenamedialog.cpp:199 ../src/synchronization/syncdialog.cpp:367
+#: ../src/noterenamedialog.cpp:201 ../src/synchronization/syncdialog.cpp:370
 msgid "Note Title"
 msgstr "عنوان الملاحظة"
 
-#: ../src/noterenamedialog.cpp:235
+#: ../src/noterenamedialog.cpp:237
 msgid "Ad_vanced"
 msgstr "مت_قدّم"
 
-#: ../src/notewindow.cpp:84
+#: ../src/notewindow.cpp:93
 msgid "Find in This Note"
 msgstr "ابحث في هذه الملاحظة"
 
@@ -1404,55 +1363,43 @@ msgstr "ا_ربط إلى ملاحظة جديدة"
 msgid "Te_xt"
 msgstr "_نص"
 
-#: ../src/notewindow.cpp:354
+#: ../src/notewindow.cpp:353
 msgid "_Find in This Note"
 msgstr "اب_حث في هذه الملاحظة"
 
-#: ../src/notewindow.cpp:369
-msgid "Clos_e All Notes"
-msgstr "أ_غلق جميع الملاحظات"
+#: ../src/notewindow.cpp:385
+msgid "Pin"
+msgstr "ثبّت"
 
-#: ../src/notewindow.cpp:404
-msgid "Search"
-msgstr "ابحث"
-
-#: ../src/notewindow.cpp:408
-msgid "Search your notes (Ctrl-Shift-F)"
-msgstr "ابحث في ملاحظاتك (Ctrl-Shift-F)"
-
-#: ../src/notewindow.cpp:418
+#: ../src/notewindow.cpp:393
 msgid "Link"
 msgstr "اربط"
 
-#: ../src/notewindow.cpp:424
+#: ../src/notewindow.cpp:399
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "اربط النص المحدد بملاحظة جديدة (Ctrl-L)"
 
-#: ../src/notewindow.cpp:433
+#: ../src/notewindow.cpp:405
 msgid "_Text"
 msgstr "ن_ص"
 
-#: ../src/notewindow.cpp:439
+#: ../src/notewindow.cpp:411
 msgid "Set properties of text"
 msgstr "حدّد خصائص النص"
 
-#: ../src/notewindow.cpp:443
+#: ../src/notewindow.cpp:415
 msgid "T_ools"
 msgstr "أ_دوات"
 
-#: ../src/notewindow.cpp:448
+#: ../src/notewindow.cpp:420
 msgid "Use tools on this note"
 msgstr "استخدم الأدوات على هذه الملاحظة"
 
-#: ../src/notewindow.cpp:458
+#: ../src/notewindow.cpp:430
 msgid "Delete this note"
 msgstr "احذف هذه الملاحظة"
 
-#: ../src/notewindow.cpp:468 ../src/synchronization/syncmanager.cpp:136
-msgid "Synchronize Notes"
-msgstr "زامن الملاحظات"
-
-#: ../src/notewindow.cpp:504
+#: ../src/notewindow.cpp:460
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1460,125 +1407,125 @@ msgstr ""
 "هذا قالب ملاحظات يحدد المحتوى المبدئي للملاحظات العادية، ولن يظهر في قائمة "
 "الملاحظات أو نافذة البحث."
 
-#: ../src/notewindow.cpp:507
+#: ../src/notewindow.cpp:463
 msgid "Convert to regular note"
 msgstr "حوّل إلى ملاحظة عادية"
 
-#: ../src/notewindow.cpp:510
+#: ../src/notewindow.cpp:466
 msgid "Save Si_ze"
 msgstr "ا_حفظ الحجم"
 
-#: ../src/notewindow.cpp:514
+#: ../src/notewindow.cpp:470
 msgid "Save Se_lection"
 msgstr "احفظ ال_تحديد"
 
-#: ../src/notewindow.cpp:518
+#: ../src/notewindow.cpp:474
 msgid "Save _Title"
 msgstr "احفظ ال_عنوان"
 
-#: ../src/notewindow.cpp:606
+#: ../src/notewindow.cpp:562
 msgid "_Find..."
 msgstr "اب_حث..."
 
-#: ../src/notewindow.cpp:614
+#: ../src/notewindow.cpp:570
 msgid "Find _Next"
 msgstr "ابحث عن ال_تالي"
 
-#: ../src/notewindow.cpp:624
+#: ../src/notewindow.cpp:580
 msgid "Find _Previous"
 msgstr "ابحث عن ال_سابق"
 
-#: ../src/notewindow.cpp:694
+#: ../src/notewindow.cpp:650
 msgid "Cannot create note"
 msgstr "تعذر إنشاء ملاحظة جديدة"
 
-#: ../src/notewindow.cpp:749
+#: ../src/notewindow.cpp:703
 msgid "_Next"
 msgstr "_التالي"
 
-#: ../src/notewindow.cpp:750
+#: ../src/notewindow.cpp:704
 msgid "_Previous"
 msgstr "ال_سابق"
 
-#: ../src/notewindow.cpp:763
+#: ../src/notewindow.cpp:717
 msgid "_Find:"
 msgstr "اب_حث:"
 
-#: ../src/notewindow.cpp:1205
+#: ../src/notewindow.cpp:1158
 msgid "<b>_Bold</b>"
 msgstr "<b>_عريض</b>"
 
-#: ../src/notewindow.cpp:1206
+#: ../src/notewindow.cpp:1159
 msgid "<i>_Italic</i>"
 msgstr "<i>_مائل</i>"
 
-#: ../src/notewindow.cpp:1207
+#: ../src/notewindow.cpp:1160
 msgid "<s>_Strikeout</s>"
 msgstr "<s>م_شطوب</s>"
 
-#: ../src/notewindow.cpp:1209
+#: ../src/notewindow.cpp:1162
 msgid "_Highlight"
 msgstr "مُ_برز"
 
-#: ../src/notewindow.cpp:1211
+#: ../src/notewindow.cpp:1164
 msgid "_Normal"
 msgstr "_عادي"
 
-#: ../src/notewindow.cpp:1213
+#: ../src/notewindow.cpp:1166
 msgid "Hu_ge"
 msgstr "_ضخم"
 
-#: ../src/notewindow.cpp:1215
+#: ../src/notewindow.cpp:1168
 msgid "_Large"
 msgstr "_كبير"
 
-#: ../src/notewindow.cpp:1217
+#: ../src/notewindow.cpp:1170
 msgid "S_mall"
 msgstr "ص_غير"
 
-#: ../src/notewindow.cpp:1219
+#: ../src/notewindow.cpp:1172
 msgid "Bullets"
 msgstr "عناصر"
 
-#: ../src/notewindow.cpp:1222
+#: ../src/notewindow.cpp:1175
 msgid "Increase Font Size"
 msgstr "زد حجم الخط"
 
-#: ../src/notewindow.cpp:1223
+#: ../src/notewindow.cpp:1176
 msgid "Decrease Font Size"
 msgstr "قلل حجم الخط"
 
-#: ../src/notewindow.cpp:1294
+#: ../src/notewindow.cpp:1218
 msgid "Font Size"
 msgstr "حجم الخط"
 
-#: ../src/preferencesdialog.cpp:119
+#: ../src/preferencesdialog.cpp:120
 msgid "General"
 msgstr "عام"
 
-#: ../src/preferencesdialog.cpp:121
+#: ../src/preferencesdialog.cpp:122
 msgid "Hotkeys"
 msgstr "الاختصارات"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:147
+#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:147
 msgid "Synchronization"
 msgstr "مزامنة"
 
-#: ../src/preferencesdialog.cpp:126
+#: ../src/preferencesdialog.cpp:127
 msgid "Add-ins"
 msgstr "الملحقات"
 
 #. Status icon
-#: ../src/preferencesdialog.cpp:228
+#: ../src/preferencesdialog.cpp:239
 msgid "Use Status _Icon"
 msgstr "استخدم أيقونة _حالة"
 
-#: ../src/preferencesdialog.cpp:241
+#: ../src/preferencesdialog.cpp:252
 msgid "_Spell check while typing"
 msgstr "دقّق الإملاء أثناء ال_كتابة"
 
-#: ../src/preferencesdialog.cpp:247
+#: ../src/preferencesdialog.cpp:258
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1587,11 +1534,11 @@ msgstr ""
 "السياق."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:258
+#: ../src/preferencesdialog.cpp:269
 msgid "Highlight _WikiWords"
 msgstr "أبرِز _كلمات الويكي"
 
-#: ../src/preferencesdialog.cpp:264
+#: ../src/preferencesdialog.cpp:275
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -1600,47 +1547,47 @@ msgstr ""
 "ستُنشأ ملاحظة جديدة بنفس الاسم."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:271
+#: ../src/preferencesdialog.cpp:282
 msgid "Enable auto-_bulleted lists"
 msgstr "فعّل القوائم المنق_طة آليا"
 
-#: ../src/preferencesdialog.cpp:280
+#: ../src/preferencesdialog.cpp:291
 msgid "Use custom _font"
 msgstr "استخدم _خط مخصّص"
 
-#: ../src/preferencesdialog.cpp:297
+#: ../src/preferencesdialog.cpp:308
 msgid "When renaming a linked note: "
 msgstr "عند تغيير اسم ملاحظة مرتبطة: "
 
-#: ../src/preferencesdialog.cpp:302
+#: ../src/preferencesdialog.cpp:313
 msgid "Ask me what to do"
 msgstr "اسألني ما العمل"
 
-#: ../src/preferencesdialog.cpp:303
+#: ../src/preferencesdialog.cpp:314
 msgid "Never rename links"
 msgstr "لا تغير أسماء الروابط أبدا"
 
-#: ../src/preferencesdialog.cpp:304
+#: ../src/preferencesdialog.cpp:315
 msgid "Always rename links"
 msgstr "غيّر أسماء الروابط دائما"
 
-#: ../src/preferencesdialog.cpp:326
+#: ../src/preferencesdialog.cpp:337
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr ""
 "استعمل قالب الملاحظات الجديدة لكتابة النص الذي سيظهر في كل ملاحظة جديدة."
 
-#: ../src/preferencesdialog.cpp:334
+#: ../src/preferencesdialog.cpp:345
 msgid "Open New Note Template"
 msgstr "افتح قالب ملاحظة جديد"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:396
+#: ../src/preferencesdialog.cpp:407
 msgid "Listen for _Hotkeys"
 msgstr "استمع إلى الا_ختصارات"
 
-#: ../src/preferencesdialog.cpp:403
+#: ../src/preferencesdialog.cpp:414
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -1650,93 +1597,106 @@ msgstr ""
 "على الاختصارات: ‪<b>&lt;Control&gt;&lt;Shift&gt;F11</b>‬،‬ ‪<b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:423
+#: ../src/preferencesdialog.cpp:434
 msgid "Show notes _menu"
 msgstr "أظهر _قائمة الملاحظات"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:440
+#: ../src/preferencesdialog.cpp:451
 msgid "Open \"_Start Here\""
 msgstr "افتح \"ملاحظة ا_بدأ هنا\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:456
+#: ../src/preferencesdialog.cpp:467
 msgid "Create _new note"
 msgstr "أنشئ ملاحظة _جديدة"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:472
+#: ../src/preferencesdialog.cpp:483
 msgid "Open \"Search _All Notes\""
 msgstr "افتح \"ابحث في _كل الملاحظات\""
 
-#: ../src/preferencesdialog.cpp:509
+#: ../src/preferencesdialog.cpp:520
 msgid "Ser_vice:"
 msgstr "خ_دمة:"
 
-#: ../src/preferencesdialog.cpp:565 ../src/preferencesdialog.cpp:1120
+#: ../src/preferencesdialog.cpp:575 ../src/preferencesdialog.cpp:1180
 msgid "Not configurable"
 msgstr "غير قابل للإعداد"
 
+#. Translators: This is and the next string go together.
+#. Together they look like "Automatically Sync in Background Every [_] Minutes",
+#. where "[_]" is a GtkSpinButton.
+#: ../src/preferencesdialog.cpp:602
+msgid "Automaticall_y Sync in Background Every"
+msgstr "زامن _تلقائيا في الخلفية كل"
+
+#. Translators: See above comment for details on
+#. this string.
+#: ../src/preferencesdialog.cpp:609
+msgid "Minutes"
+msgstr "دقائق"
+
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:585
+#: ../src/preferencesdialog.cpp:627
 msgid "_Advanced..."
 msgstr "مت_قدّم..."
 
-#: ../src/preferencesdialog.cpp:630
+#: ../src/preferencesdialog.cpp:672
 msgid "The following add-ins are installed"
 msgstr "الملحقات التالية مثبتة"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:661
+#: ../src/preferencesdialog.cpp:703
 msgid "_Enable"
 msgstr "_فعّل"
 
-#: ../src/preferencesdialog.cpp:667
+#: ../src/preferencesdialog.cpp:709
 msgid "_Disable"
 msgstr "ع_طّل"
 
-#: ../src/preferencesdialog.cpp:798
+#: ../src/preferencesdialog.cpp:842
 msgid "Not Implemented"
 msgstr "غير مطبق"
 
-#: ../src/preferencesdialog.cpp:812
+#: ../src/preferencesdialog.cpp:856
 msgid "%1% Preferences"
 msgstr "تفضيلات %1%"
 
-#: ../src/preferencesdialog.cpp:953
+#: ../src/preferencesdialog.cpp:997
 msgid "Choose Note Font"
 msgstr "اختر خط الملاحظات"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1036
+#: ../src/preferencesdialog.cpp:1096
 msgid "Other Synchronization Options"
 msgstr "خيارات المزامنة الأخرى"
 
-#: ../src/preferencesdialog.cpp:1039
+#: ../src/preferencesdialog.cpp:1099
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr "عندما يُكتشف تضارب بين ملاحظة محلية وملاحظة على خادوم المزامنة المُعدّ:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1043
+#: ../src/preferencesdialog.cpp:1103
 msgid "Always ask me what to do."
 msgstr "اسألني دائمًا ماذا يجب أن أفعل."
 
-#: ../src/preferencesdialog.cpp:1047
+#: ../src/preferencesdialog.cpp:1107
 msgid "Rename my local note."
 msgstr "أعد تسمية الملاحظة المحلية."
 
-#: ../src/preferencesdialog.cpp:1051
+#: ../src/preferencesdialog.cpp:1111
 msgid "Replace my local note with the server's update."
 msgstr "أبدل ملاحظة الخادوم مكان الملاحظة المحلية."
 
-#: ../src/preferencesdialog.cpp:1159
+#: ../src/preferencesdialog.cpp:1214
 msgid "Are you sure?"
 msgstr "هل أنت متأكد؟"
 
-#: ../src/preferencesdialog.cpp:1160
+#: ../src/preferencesdialog.cpp:1215
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -1744,11 +1704,11 @@ msgstr ""
 "مسح إعدادات المزامنة لديك غير منصوح به.  قد تضطر إلى مزامنة كل الملاحظات "
 "لديك مجددًا عندما تحفظ الإعدادات الجديدة."
 
-#: ../src/preferencesdialog.cpp:1169
+#: ../src/preferencesdialog.cpp:1225
 msgid "Resetting Synchronization Settings"
 msgstr "جارٍ إعادة ضبط إعدادات المزامنة"
 
-#: ../src/preferencesdialog.cpp:1170
+#: ../src/preferencesdialog.cpp:1226
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -1757,17 +1717,17 @@ msgstr ""
 "لقد عطلت خدمة المزامنة المعدة.  ستُمسح الآن إعدادات المزامنة لديك.  قد تضطر "
 "إلى مزامنة كل ملاحظاتك مجدًا عندما تحفظ الإعدادات الجديدة."
 
-#: ../src/preferencesdialog.cpp:1236
+#: ../src/preferencesdialog.cpp:1292
 msgid "Connection successful"
 msgstr "نجح الاتصال"
 
-#: ../src/preferencesdialog.cpp:1237
+#: ../src/preferencesdialog.cpp:1293
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "ملاحظات‌ج جاهزة لمزامنة ملاحظاتك. أتريد مزامنتها الآن؟"
 
-#: ../src/preferencesdialog.cpp:1261
+#: ../src/preferencesdialog.cpp:1317
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -1775,48 +1735,73 @@ msgstr ""
 "من فضل راجع معلوماتك ثم أعد المحاولة.  قد يحتوي السجل %1% على المزيد من "
 "المعلومات عن العطل."
 
-#: ../src/preferencesdialog.cpp:1266
+#: ../src/preferencesdialog.cpp:1322
 msgid "Error connecting"
 msgstr "خطأ في الاتصال"
 
-#: ../src/preferencesdialog.cpp:1330
+#: ../src/preferencesdialog.cpp:1386
 msgid "Version:"
 msgstr "النسخة:"
 
-#: ../src/preferencesdialog.cpp:1335
+#: ../src/preferencesdialog.cpp:1391
 msgid "Author:"
 msgstr "المؤلف:"
 
-#: ../src/preferencesdialog.cpp:1341
+#: ../src/preferencesdialog.cpp:1397
 msgid "Copyright:"
 msgstr "حقوق النشر:"
 
-#: ../src/recentchanges.cpp:93
-msgid "Search All Notes"
-msgstr "ابحث في كل الملاحظات"
+#: ../src/recentchanges.cpp:44 ../src/recentchanges.cpp:348
+#: ../src/searchnoteswidget.cpp:1162
+msgid "Notes"
+msgstr "ملاحظات"
 
-#: ../src/recentchanges.cpp:115
+#: ../src/recentchanges.cpp:100
+msgid "New"
+msgstr "جديد"
+
+#: ../src/searchnoteswidget.cpp:70
 msgid "_Search:"
 msgstr "_ابحث:"
 
-#: ../src/recentchanges.cpp:373
+#: ../src/searchnoteswidget.cpp:200
+msgid "_Open"
+msgstr "ا_فتح"
+
+#: ../src/searchnoteswidget.cpp:203
+msgid "Open In New _Window"
+msgstr "افتح في _نافذة جديدة"
+
+#: ../src/searchnoteswidget.cpp:823
 msgid "Note"
 msgstr "ملاحظة"
 
-#: ../src/recentchanges.cpp:395
+#: ../src/searchnoteswidget.cpp:845
 msgid "Last Changed"
 msgstr "آخر تعديلات"
 
-#: ../src/recentchanges.cpp:580
+#: ../src/searchnoteswidget.cpp:1183
+msgid ""
+"No results found in the selected notebook.\n"
+"Click here to search across all notes."
+msgstr ""
+"لم يُعثر على نتائج في الكتيّب المحدد.\n"
+"انقر هنا للبحث في كل الملاحظات."
+
+#: ../src/searchnoteswidget.cpp:1187
+msgid "Click here to search across all notebooks"
+msgstr "انقر هنا للبحث في كل الكتيّبات"
+
+#: ../src/searchnoteswidget.cpp:1211
 msgid "Matches"
 msgstr "مطابقات"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/recentchanges.cpp:634
+#: ../src/searchnoteswidget.cpp:1260
 msgid "Title match"
 msgstr "العنوان مطابق"
 
-#: ../src/recentchanges.cpp:638
+#: ../src/searchnoteswidget.cpp:1264
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "لا مطابقات"
@@ -1826,41 +1811,13 @@ msgstr[3] "%1% مطابقات"
 msgstr[4] "%1% مطابقة"
 msgstr[5] "%1% مطابقة"
 
-#: ../src/recentchanges.cpp:652
-msgid "Total: %1% note"
-msgid_plural "Total: %1% notes"
-msgstr[0] "المجموع: لا ملاحظات"
-msgstr[1] "المجموع: ملاحظة واحدة"
-msgstr[2] "المجموع: ملاحظتين"
-msgstr[3] "المجموع: %1% ملاحظات"
-msgstr[4] "المجموع: %1% ملاحظة"
-msgstr[5] "المجموع: %1% ملاحظة"
+#: ../src/searchnoteswidget.cpp:1505
+msgid "_Open Template Note"
+msgstr "ا_فتح قالب ملاحظة"
 
-#: ../src/recentchanges.cpp:668
-msgid "Matches: %1% note"
-msgid_plural "Matches: %1% notes"
-msgstr[0] "يطابق: لا مطابقة"
-msgstr[1] "يطابق: ملاحظة واحدة"
-msgstr[2] "يطابق: ملاحظتين"
-msgstr[3] "يطابق: %1% ملاحظات"
-msgstr[4] "يطابق: %1% ملاحظة"
-msgstr[5] "يطابق: %1% ملاحظة"
-
-#: ../src/recentchanges.cpp:684
-msgid ""
-"No results found in the selected notebook.\n"
-"Click here to search across all notes."
-msgstr ""
-"لم يُعثر على نتائج في الكتيّب المحدد.\n"
-"انقر هنا للبحث في كل الملاحظات."
-
-#: ../src/recentchanges.cpp:688
-msgid "Click here to search across all notebooks"
-msgstr "انقر هنا للبحث في كل الكتيّبات"
-
-#: ../src/recentchanges.cpp:863
-msgid "Notes"
-msgstr "ملاحظات"
+#: ../src/searchnoteswidget.cpp:1513
+msgid "_New Notebook"
+msgstr "كتيّب جديد"
 
 #: ../src/sharp/addinstreemodel.cpp:93
 msgid "Name"
@@ -1890,7 +1847,7 @@ msgstr "الأدوات"
 msgid "Unknown"
 msgstr "غير معروف"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:109
+#: ../src/synchronization/fusesyncserviceaddin.cpp:117
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1% correctly installed and configured"
@@ -1898,61 +1855,61 @@ msgstr ""
 "ملحقة المزامنة غير مدعومة على حاسوبك. رجاءً تأكد أنك لديك FUSE وأنّ %1% مثبت "
 "ومُعدّ بشكل صحيح"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:152
+#: ../src/synchronization/fusesyncserviceaddin.cpp:160
 msgid "Could not read testfile."
 msgstr "تعذّرت قراءة ملف الاختبار."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:161
+#: ../src/synchronization/fusesyncserviceaddin.cpp:169
 msgid "Write test failed."
 msgstr "فشل اختبار الكتابة."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:190
+#: ../src/synchronization/fusesyncserviceaddin.cpp:198
 msgid "Timeout connecting to server."
 msgstr "انتهت مهلة الاتصال بالخادوم."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:196
+#: ../src/synchronization/fusesyncserviceaddin.cpp:204
 msgid "Error connecting to server."
 msgstr "خطأ في الاتصال بالخادوم."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:209
+#: ../src/synchronization/fusesyncserviceaddin.cpp:217
 msgid "FUSE could not be enabled."
 msgstr "تعذر تفعيل FUSE."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:240
+#: ../src/synchronization/fusesyncserviceaddin.cpp:248
 msgid "An error ocurred while connecting to the specified server"
 msgstr "حصل خطأ أثناء الاتصال بالخادوم المحدد"
 
-#: ../src/synchronization/syncdialog.cpp:110
+#: ../src/synchronization/syncdialog.cpp:111
 msgid "Note Conflict"
 msgstr "تضارب في الملاحظات"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:115
+#: ../src/synchronization/syncdialog.cpp:116
 msgid " (old)"
 msgstr " (قديم)"
 
-#: ../src/synchronization/syncdialog.cpp:157
+#: ../src/synchronization/syncdialog.cpp:158
 msgid "Rename local note:"
 msgstr "إعادة تسمية الملاحظة المحلية:"
 
-#: ../src/synchronization/syncdialog.cpp:164
+#: ../src/synchronization/syncdialog.cpp:165
 msgid "Update links in referencing notes"
 msgstr "تحديث الروابط في الملاحظات المرجعية"
 
-#: ../src/synchronization/syncdialog.cpp:171
+#: ../src/synchronization/syncdialog.cpp:172
 msgid "Overwrite local note"
 msgstr "اكتب فوق الملاحظة المحلية"
 
-#: ../src/synchronization/syncdialog.cpp:175
+#: ../src/synchronization/syncdialog.cpp:176
 msgid "Always perform this action"
 msgstr "قم بهذا الإجراء دائمًا"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:181
+#: ../src/synchronization/syncdialog.cpp:182
 msgid "Note conflict detected"
 msgstr "اكتـُشِف تضارب في الملاحظات"
 
-#: ../src/synchronization/syncdialog.cpp:183
+#: ../src/synchronization/syncdialog.cpp:184
 msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -1961,93 +1918,93 @@ msgstr ""
 "بملاحظتك المحلية؟"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:337
+#: ../src/synchronization/syncdialog.cpp:338
 msgid "Details"
 msgstr "التفاصيل"
 
-#: ../src/synchronization/syncdialog.cpp:374
+#: ../src/synchronization/syncdialog.cpp:377
 msgid "Status"
 msgstr "الحالة"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:534
 msgid "Acquiring sync lock..."
 msgstr "جارٍ اكتساب قفل المزامنة..."
 
-#: ../src/synchronization/syncdialog.cpp:534
+#: ../src/synchronization/syncdialog.cpp:537
 msgid "Committing changes..."
 msgstr "جارٍ إرسال التغييرات..."
 
-#: ../src/synchronization/syncdialog.cpp:537
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "Synchronizing Notes"
 msgstr "جارٍ مزامنة الملاحظات"
 
-#: ../src/synchronization/syncdialog.cpp:538
+#: ../src/synchronization/syncdialog.cpp:541
 msgid "Synchronizing your notes..."
 msgstr "جارٍ مزامنة ملاحظاتك..."
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:542
 msgid "This may take a while, kick back and enjoy!"
 msgstr "هذا قد يستغرق وقتًا، استند إلى الخلف واستمتع!"
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:544
 msgid "Connecting to the server..."
 msgstr "خطأ في الاتصال بالخادوم..."
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:550
 msgid "Deleting notes off of the server..."
 msgstr "جارٍ حذف الملاحظات من الخادوم..."
 
-#: ../src/synchronization/syncdialog.cpp:551
+#: ../src/synchronization/syncdialog.cpp:554
 msgid "Downloading new/updated notes..."
 msgstr "جارٍ تنزيل الملاحظات الجديدة/المحدثة..."
 
-#: ../src/synchronization/syncdialog.cpp:563
+#: ../src/synchronization/syncdialog.cpp:566
 msgid "Server Locked"
 msgstr "الخادوم مقفل"
 
-#: ../src/synchronization/syncdialog.cpp:564
+#: ../src/synchronization/syncdialog.cpp:567
 msgid "Server is locked"
 msgstr "الخادوم مقفل"
 
-#: ../src/synchronization/syncdialog.cpp:565
+#: ../src/synchronization/syncdialog.cpp:568
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
 msgstr "أحد حواسيبك يزامن حاليًا.  رجاءً انتظر دقيقتين ثم حاول ثانية."
 
-#: ../src/synchronization/syncdialog.cpp:569
+#: ../src/synchronization/syncdialog.cpp:572
 msgid "Preparing to download updates from server..."
 msgstr "جارٍ التحضير لتنزيل التحديثات من الخادوم..."
 
-#: ../src/synchronization/syncdialog.cpp:572
+#: ../src/synchronization/syncdialog.cpp:575
 msgid "Preparing to upload updates to server..."
 msgstr "جارٍ التحضير لرفع التحديثات إلى الخادوم..."
 
-#: ../src/synchronization/syncdialog.cpp:575
+#: ../src/synchronization/syncdialog.cpp:578
 msgid "Uploading notes to server..."
 msgstr "جارٍ رفع الملاحظات إلى الخادوم..."
 
-#: ../src/synchronization/syncdialog.cpp:578
+#: ../src/synchronization/syncdialog.cpp:581
 msgid "Synchronization Failed"
 msgstr "فشلت المزامنة"
 
-#: ../src/synchronization/syncdialog.cpp:579
+#: ../src/synchronization/syncdialog.cpp:582
 msgid "Failed to synchronize"
 msgstr "فشل التزامن"
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:583
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr "تعذرت مزامنة الملاحظات.  تحقق من التفاصيل في الأسفل وحاول ثانية."
 
-#: ../src/synchronization/syncdialog.cpp:586
+#: ../src/synchronization/syncdialog.cpp:589
 msgid "Synchronization Complete"
 msgstr "اكتملت المزامنة"
 
-#: ../src/synchronization/syncdialog.cpp:587
+#: ../src/synchronization/syncdialog.cpp:590
 msgid "Synchronization is complete"
 msgstr "اكتملت المزامنة"
 
-#: ../src/synchronization/syncdialog.cpp:588
+#: ../src/synchronization/syncdialog.cpp:591
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "لم تُحَدّث أي ملاحظات."
@@ -2057,93 +2014,93 @@ msgstr[3] "حُدّثت %1% ملاحظات."
 msgstr[4] "حُدّثت %1% ملاحظة."
 msgstr[5] "حُدّثت %1% ملاحظة."
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:592
 msgid "Your notes are now up to date."
 msgstr "ملاحظاتك الآن محدّثة."
 
-#: ../src/synchronization/syncdialog.cpp:594
+#: ../src/synchronization/syncdialog.cpp:597
 msgid "Synchronization Canceled"
 msgstr "أُلغيت المزامنة"
 
-#: ../src/synchronization/syncdialog.cpp:595
+#: ../src/synchronization/syncdialog.cpp:598
 msgid "Synchronization was canceled"
 msgstr "أُلغيت المزامنة"
 
-#: ../src/synchronization/syncdialog.cpp:596
+#: ../src/synchronization/syncdialog.cpp:599
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "لقد ألغيتَ المزامنة.  قد ترغب بإغلاق النافذة الآن."
 
-#: ../src/synchronization/syncdialog.cpp:600
+#: ../src/synchronization/syncdialog.cpp:603
 msgid "Synchronization Not Configured"
 msgstr "لم تـُعدّ المزامنة"
 
-#: ../src/synchronization/syncdialog.cpp:601
+#: ../src/synchronization/syncdialog.cpp:604
 msgid "Synchronization is not configured"
 msgstr "المزامنة غير مُعدّة"
 
-#: ../src/synchronization/syncdialog.cpp:602
+#: ../src/synchronization/syncdialog.cpp:605
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "رجاءً أعدّ المزامنة في نافذة حوار التفضيلات."
 
-#: ../src/synchronization/syncdialog.cpp:606
+#: ../src/synchronization/syncdialog.cpp:609
 msgid "Synchronization Service Error"
 msgstr "خطأ في خدمة المزامنة"
 
-#: ../src/synchronization/syncdialog.cpp:607
+#: ../src/synchronization/syncdialog.cpp:610
 msgid "Service error"
 msgstr "خطأ في الخدمة"
 
-#: ../src/synchronization/syncdialog.cpp:608
+#: ../src/synchronization/syncdialog.cpp:611
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "خطأ أثناء الاتصال بخدمة المزامنة.  رجاءً حاول ثانية."
 
-#: ../src/synchronization/syncdialog.cpp:622
+#: ../src/synchronization/syncdialog.cpp:625
 msgid "Deleted locally"
 msgstr "المحذوف محليًا"
 
-#: ../src/synchronization/syncdialog.cpp:625
+#: ../src/synchronization/syncdialog.cpp:628
 msgid "Deleted from server"
 msgstr "المحذوف من الخادوم"
 
-#: ../src/synchronization/syncdialog.cpp:628
+#: ../src/synchronization/syncdialog.cpp:631
 msgid "Updated"
 msgstr "المُحدّث"
 
-#: ../src/synchronization/syncdialog.cpp:631
+#: ../src/synchronization/syncdialog.cpp:634
 msgid "Added"
 msgstr "المضاف"
 
-#: ../src/synchronization/syncdialog.cpp:634
+#: ../src/synchronization/syncdialog.cpp:637
 msgid "Uploaded changes to server"
 msgstr "التغييرات المرفوعة إلى الخادوم"
 
-#: ../src/synchronization/syncdialog.cpp:637
+#: ../src/synchronization/syncdialog.cpp:640
 msgid "Uploaded new note to server"
 msgstr "الملاحظة الجديدة المرفوعة إلى الخادوم"
 
-#: ../src/synchronization/syncmanager.cpp:135
-msgid "_Tools"
-msgstr "أد_وات"
+#: ../src/synchronization/syncmanager.cpp:136
+msgid "Synchronize Notes"
+msgstr "زامن الملاحظات"
 
-#: ../src/synchronization/syncutils.cpp:143
-#: ../src/synchronization/syncutils.cpp:175
+#: ../src/synchronization/syncutils.cpp:142
+#: ../src/synchronization/syncutils.cpp:174
 msgid "Could not enable FUSE"
 msgstr "تعذّر تفعيل FUSE"
 
-#: ../src/synchronization/syncutils.cpp:144
-#: ../src/synchronization/syncutils.cpp:176
+#: ../src/synchronization/syncutils.cpp:143
+#: ../src/synchronization/syncutils.cpp:175
 msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
 msgstr "تعذر تحميل وحدة FUSE. تأكد من أنها مثبتة بشكل صحيح ثم حاول مجددًا."
 
-#: ../src/synchronization/syncutils.cpp:152
+#: ../src/synchronization/syncutils.cpp:151
 msgid "Enable FUSE?"
 msgstr "هل تريد تفعيل FUSE؟"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
-#: ../src/synchronization/syncutils.cpp:155
+#: ../src/synchronization/syncutils.cpp:154
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
@@ -2157,54 +2114,58 @@ msgstr ""
 "أضف \"modprobe fuse\" إلى الملف /etc/init.d/boot.local أو \"fuse\" إلى "
 "الملف /etc/modules."
 
-#: ../src/tray.cpp:54
+#: ../src/tray.cpp:55
 msgid "Take notes"
 msgstr "سجّل الملاحظات"
 
-#: ../src/tray.cpp:164
+#: ../src/tray.cpp:165
 msgid " (new)"
 msgstr " (جديد)"
+
+#: ../src/tray.cpp:465
+msgid "_Help"
+msgstr "م_ساعدة"
 
 #: ../src/tray.cpp:470
 msgid "_About Gnote"
 msgstr "_عنْ ملاحظات‌ج"
 
-#: ../src/utils.cpp:130
+#: ../src/utils.cpp:118
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
 "تعذّر العثور على \"كتيب ملاحظات‌ج\".  رجاءً تأكد من أن البرنامج مثبت بشكل صحيح."
 
-#: ../src/utils.cpp:138
+#: ../src/utils.cpp:126
 msgid "Help not found"
 msgstr "لم يُعثر على المساعدة"
 
-#: ../src/utils.cpp:171
+#: ../src/utils.cpp:159
 msgid "Cannot open location"
 msgstr "تعذر فتح الموقع"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:174
 msgid "Today, %1%"
 msgstr "اليوم، %1%"
 
-#: ../src/utils.cpp:187
+#: ../src/utils.cpp:175
 msgid "Today"
 msgstr "اليوم"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:181
 msgid "Yesterday, %1%"
 msgstr "أمس، %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:182
 msgid "Yesterday"
 msgstr "أمس"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:203
+#: ../src/utils.cpp:191
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "اليوم، %2%"
@@ -2216,7 +2177,7 @@ msgstr[5] "منذ %1% يوم، %2%"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:197
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "اليوم"
@@ -2227,17 +2188,17 @@ msgstr[4] "منذ %1% يوما"
 msgstr[5] "منذ %1% يوم"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:205
 msgid "Tomorrow, %1%"
 msgstr "غدًا، %1%"
 
-#: ../src/utils.cpp:218
+#: ../src/utils.cpp:206
 msgid "Tomorrow"
 msgstr "غدًا"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:215
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "في أقل من يوم، %2%"
@@ -2249,7 +2210,7 @@ msgstr[5] "في %1% يوم، %2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:233
+#: ../src/utils.cpp:221
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "في أقل من يوم"
@@ -2259,15 +2220,15 @@ msgstr[3] "في %1% أيام"
 msgstr[4] "في %1% يوما"
 msgstr[5] "في %1% يوم"
 
-#: ../src/utils.cpp:244
+#: ../src/utils.cpp:232
 msgid "No Date"
 msgstr "لا تاريخ"
 
-#: ../src/watchers.cpp:210
+#: ../src/watchers.cpp:212
 msgid "(Untitled %1%)"
 msgstr "(غير مسمى %1%)"
 
-#: ../src/watchers.cpp:245
+#: ../src/watchers.cpp:243
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2275,17 +2236,105 @@ msgstr ""
 "هناك ملاحظة بنفس الاسم <b>%1%</b> موجودة مسبقًا. رجاء اختر اسما آخر لهذه "
 "الملاحظة قبل الاستمرار."
 
-#: ../src/watchers.cpp:259
+#: ../src/watchers.cpp:257
 msgid "Note title taken"
 msgstr "عنوان الملاحظة مأخوذ"
 
-#: ../src/watchers.cpp:593
+#: ../src/watchers.cpp:583
 msgid "_Copy Link Address"
 msgstr "انس_خ عنوان الرابط"
 
-#: ../src/watchers.cpp:599
+#: ../src/watchers.cpp:589
 msgid "_Open Link"
 msgstr "ا_فتح الرابط"
+
+#~ msgid "Enable startup notes"
+#~ msgstr "فعّل ملاحظات البدء"
+
+#~ msgid ""
+#~ "If enabled, all notes that were open when Gnote quit will automatically "
+#~ "be reopened at startup."
+#~ msgstr ""
+#~ "عند تفعيله، ستُفتح آليًا عند بدء التشغيل كل الملاحظات التي كانت مفتوحة وقت "
+#~ "إغلاق ملاحظات‌ج."
+
+#~ msgid "_File"
+#~ msgstr "_ملف"
+
+#~ msgid "Open the selected note"
+#~ msgstr "افتح الملاحظة المحددة"
+
+#~ msgid "_Delete"
+#~ msgstr "_احذف"
+
+#~ msgid "Delete the selected note"
+#~ msgstr "احذف الملاحظة المحددة"
+
+#~ msgid "_Close"
+#~ msgstr "أغل_ق"
+
+#~ msgid "Close this window"
+#~ msgstr "أغلق هذه النافذة"
+
+#~ msgid "_Edit"
+#~ msgstr "_حرر"
+
+#~ msgid "S_ynchronize Notes"
+#~ msgstr "_زامن الملاحظات"
+
+#~ msgid "Start synchronizing notes"
+#~ msgstr "ابدأ مزامنة الملاحظات"
+
+#~ msgid "Cannot create new note"
+#~ msgstr "تعذر إنشاء ملاحظة جديدة"
+
+#~ msgid "Note_books"
+#~ msgstr "_كتيّبات"
+
+#~ msgid "Create a new note in this notebook"
+#~ msgstr "أنشئ ملاحظة جديدة في هذا الكتيّب"
+
+#~ msgid "Open this notebook's template note"
+#~ msgstr "افتح قالب الملاحظات لهذا الكتيّب"
+
+#~ msgid "Delete Note_book"
+#~ msgstr "ا_حذف الكتيّب"
+
+#~ msgid "Delete the selected notebook"
+#~ msgstr "احذف الكتيّب المحدد"
+
+#~ msgid "Clos_e All Notes"
+#~ msgstr "أ_غلق جميع الملاحظات"
+
+#~ msgid "Search"
+#~ msgstr "ابحث"
+
+#~ msgid "Search your notes (Ctrl-Shift-F)"
+#~ msgstr "ابحث في ملاحظاتك (Ctrl-Shift-F)"
+
+#~ msgid "Search All Notes"
+#~ msgstr "ابحث في كل الملاحظات"
+
+#~ msgid "Total: %1% note"
+#~ msgid_plural "Total: %1% notes"
+#~ msgstr[0] "المجموع: لا ملاحظات"
+#~ msgstr[1] "المجموع: ملاحظة واحدة"
+#~ msgstr[2] "المجموع: ملاحظتين"
+#~ msgstr[3] "المجموع: %1% ملاحظات"
+#~ msgstr[4] "المجموع: %1% ملاحظة"
+#~ msgstr[5] "المجموع: %1% ملاحظة"
+
+#~ msgid "Matches: %1% note"
+#~ msgid_plural "Matches: %1% notes"
+#~ msgstr[0] "يطابق: لا مطابقة"
+#~ msgstr[1] "يطابق: ملاحظة واحدة"
+#~ msgstr[2] "يطابق: ملاحظتين"
+#~ msgstr[3] "يطابق: %1% ملاحظات"
+#~ msgstr[4] "يطابق: %1% ملاحظة"
+#~ msgstr[5] "يطابق: %1% ملاحظة"
+
+#~ msgid "_Tools"
+#~ msgstr "أد_وات"
 
 #~ msgid "Run Gnote as a GNOME panel applet."
 #~ msgstr "شغّل ملاحظات‌ج كبريمج في شريط جنوم."
@@ -2319,9 +2368,6 @@ msgstr "ا_فتح الرابط"
 
 #~ msgid "Copyright © 2009 Hubert Figuiere"
 #~ msgstr "حقوق النشر © 2009 هُبِرت فيجوري"
-
-#~ msgid "Gnote Notes"
-#~ msgstr "ملاحظات‌ج"
 
 #~ msgid "_Fixed Width"
 #~ msgstr "ثابت العر_ض"
