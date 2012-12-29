@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"POT-Creation-Date: 2012-12-23 21:30+0000\n"
-"PO-Revision-Date: 2012-12-29 17:45+0100\n"
+"POT-Creation-Date: 2012-12-29 17:29+0000\n"
+"PO-Revision-Date: 2012-12-29 20:13+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -102,9 +102,7 @@ msgstr "Pierre-Yves Luyten"
 #: C/gnote-links.page:12(credit/years) C/gnote-links.page:16(credit/years)
 #: C/gnote-notes-preferences.page:13(credit/years)
 #: C/gnote-searching-notes.page:12(credit/years)
-#: C/gnote-template-notes.page:13(credit/years)
 #: C/gnote-working-with-notebooks.page:13(credit/years)
-#: C/gnote-working-with-notebooks.page:17(credit/years)
 msgid "2011"
 msgstr "2011"
 
@@ -795,6 +793,8 @@ msgstr "Časté dotazy a odpovědi"
 #: C/gnote-introduction.page:17(credit/years)
 #: C/gnote-notes-preferences.page:17(credit/years)
 #: C/gnote-searching-notes.page:16(credit/years)
+#: C/gnote-template-notes.page:13(credit/years)
+#: C/gnote-working-with-notebooks.page:17(credit/years)
 msgid "2011-2012"
 msgstr "2011 – 2012"
 
@@ -1236,10 +1236,8 @@ msgid "Open \"Search All Notes\""
 msgstr "Otevřít „Hledat ve všech poznámkách“"
 
 #: C/gnote-hotkeys.page:26(item/p)
-msgid "Enter the key combination to open the Search All Notes dialog."
-msgstr ""
-"Zadejte kombinaci kláves pro otevření dialogového okna Hledat ve všech "
-"poznámkách."
+msgid "Enter the key combination to open the search."
+msgstr "Zadejte kombinaci kláves pro otevření hledání."
 
 #: C/gnote-hotkeys.page:30(figure/title)
 msgid "<gui>Hotkeys Preferences</gui> window"
@@ -1405,12 +1403,11 @@ msgstr "Obecné předvolby"
 
 #: C/gnote-notes-preferences.page:24(section/p)
 msgid ""
-"To set preferences for <app>Gnote</app>, in <gui>Search All Notes</gui> "
-"select <guiseq><gui>Edit</gui><gui>Preferences</gui></guiseq> from the menu."
+"To set preferences for <app>Gnote</app>, select <gui>Preferences</gui> from "
+"the application menu."
 msgstr ""
-"Když chcete nastavit předvolby pro <app>Gnote</app>, vyberte v <gui>Hledat "
-"ve všech poznámkách</gui> z nabídky <guiseq><gui>Upravit</"
-"gui><gui>Předvolby</gui></guiseq>."
+"Když chcete nastavit předvolby pro <app>Gnote</app>, vyberte <gui>Předvolby</"
+"gui> v nabídce aplikace."
 
 #: C/gnote-notes-preferences.page:25(section/p)
 msgid ""
@@ -1558,7 +1555,7 @@ msgstr ""
 
 #: C/gnote-notes-preferences.page:56(item/title)
 msgid ""
-"Rename existing note by appending \"(Old)\" to it's title and download the "
+"Rename existing note by appending \"(old)\" to it's title and download the "
 "one from storage"
 msgstr ""
 "Stávající poznámku přejmenovat přidáním „(stará)“ k názvu a stáhnout verzi z "
@@ -1569,7 +1566,7 @@ msgid "Replace existing note by the one from storage, losing all modifications"
 msgstr "Nahradit stávající poznámku tou z úložiště, přijít o všechny změny"
 
 #: C/gnote-notes-preferences.page:58(item/title)
-msgid "Get the choice for earch conflicting note individually"
+msgid "Get the choice for each conflicting note individually"
 msgstr "U každého konfliktu zvlášť dostat možnost volby"
 
 #: C/gnote-searching-notes.page:9(info/desc)
@@ -1647,7 +1644,7 @@ msgid ""
 msgstr ""
 "Když je zapnutá <gui>Stavová ikona</gui>, klikněte na ni a v nabídce vyberte "
 "poznámku. Tato nabídka je omezena jen na určitý počet poznámek a je vyplněna "
-"přišpendlenými a naposledy upravenými poznámkami."
+"připíchnutými a naposledy upravenými poznámkami."
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
@@ -1723,13 +1720,12 @@ msgstr "Synchronizace"
 
 #: C/gnote-synchronization.page:28(section/p)
 msgid ""
-"To synchronize, select <guiseq><gui>Tools</gui><gui>Synchronize Notes</gui></"
-"guiseq> from main menu. This item is only available, if synchronization is "
-"configured."
+"To synchronize, select <gui>Synchronize Notes</gui> from application menu. "
+"This item is only available, if synchronization is configured."
 msgstr ""
-"Když chcete synchronizovat, vyberte v hlavní nabídce <guiseq><gui>Nástroje</"
-"gui><gui>Synchronizovat poznámky</gui></guiseq>. Tato položka je dostupná "
-"jen v případě, že je synchronizace nastavena."
+"Když chcete synchronizovat, vyberte <gui>Synchronizovat poznámky</gui> v "
+"nabídce aplikace. Tato položka je dostupná jen v případě, že je "
+"synchronizace nastavena."
 
 #: C/gnote-synchronization.page:29(section/p)
 msgid ""
@@ -1832,11 +1828,11 @@ msgstr "Šablonová poznámka sešitu"
 
 #: C/gnote-template-notes.page:29(item/p)
 msgid ""
-"Right click on notebook in <gui>Search All Notes</gui> window and select "
-"<gui>Open Template Note</gui>."
+"Right click on notebook in main window and select <gui>Open Template Note</"
+"gui>."
 msgstr ""
-"V okně <gui>Hledat ve všech poznámkách</gui> klikněte pravým tlačítkem na "
-"sešit a zvolte <gui>Otevřít šablonu</gui>."
+"V hlavním okně klikněte pravým tlačítkem na sešit a vyberte <gui>Otevřít "
+"šablonu</gui>."
 
 #: C/gnote-template-notes.page:33(section/title)
 msgid "Template Note Features"
@@ -2007,12 +2003,10 @@ msgstr "Práce se sešity"
 #: C/gnote-working-with-notebooks.page:22(page/p)
 msgid ""
 "Notebooks allow you to group related notes together. You can add a note to a "
-"notebook in the <gui>Search All Notes</gui> window or directly inside of a "
-"Note."
+"notebook in the main window or directly inside of a Note."
 msgstr ""
 "Sešity vám umožňují seskupovat poznámky, které patří k sobě. Poznámku můžete "
-"přidat do sešitu v okně <gui>Hledat ve všech poznámkách</gui> nebo přímo v "
-"okně s poznámkou."
+"přidat do sešitu v hlavním okně nebo přímo v okně s poznámkou."
 
 #: C/gnote-working-with-notebooks.page:24(section/title)
 msgid "Creating Notebooks"
@@ -2023,13 +2017,8 @@ msgid "You can create new notebooks using one of the following methods"
 msgstr "Nový sešit můžete vytvořit následujícími postupy:"
 
 #: C/gnote-working-with-notebooks.page:28(item/p)
-msgid ""
-"In <gui>Search All Notes</gui> window select <guiseq><gui>File</"
-"gui><gui>Notebooks</gui><gui>New Notebook</gui></guiseq> from main menu."
-msgstr ""
-"V otevřeném dialogovém okně <gui>Hledat ve všech poznámkách</gui> zvolte z "
-"hlavní nabídky <guiseq><gui>Soubor</gui><gui>Sešity</gui><gui>Nový sešit</"
-"gui></guiseq>."
+msgid "Click on application menu and select <gui>New Notebook</gui>."
+msgstr "Klikněte na nabídku aplikace a zvolte <gui>Nový sešit</gui>."
 
 #: C/gnote-working-with-notebooks.page:31(item/p)
 #: C/gnote-working-with-notebooks.page:45(item/p)
@@ -2051,11 +2040,11 @@ msgstr "Vytvoření nového sešitu v kontextové nabídce"
 
 #: C/gnote-working-with-notebooks.page:42(item/p)
 msgid ""
-"In <gui>Search All Notes</gui>, right click in the left hand box and choose "
-"<gui>New Notebook</gui>."
+"In search mode, right click in the left hand box and choose <gui>New "
+"Notebook</gui>."
 msgstr ""
-"V okně <gui>Hledat ve všech poznámkách</gui> klikněte pravým tlačítkem myši "
-"do levé části a zvolte <gui>Nový sešit</gui>."
+"V režimu hledání klikněte pravým tlačítkem myši do levé části a zvolte "
+"<gui>Nový sešit</gui>."
 
 #: C/gnote-working-with-notebooks.page:49(figure/title)
 msgid "New Notebook from context menu"
@@ -2068,19 +2057,16 @@ msgstr "Přidávání poznámek do sešitu"
 
 #: C/gnote-working-with-notebooks.page:57(section/p)
 msgid ""
-"To add notes to a notebook, you can add a note from the <gui>Search All "
-"Notes</gui> dialog or directly within a note."
+"To add notes to a notebook, you can add a note from the main window or "
+"directly within a note."
 msgstr ""
-"Pokud chcete do sešitu přidat poznámky, můžete to udělat v dialogovém okně "
-"<gui>Hledat ve všech poznámkách</gui> nebo přímo v poznámce."
+"Pokud chcete do sešitu přidat poznámky, můžete to udělat v hlavním okně nebo "
+"přímo v poznámce."
 
 #: C/gnote-working-with-notebooks.page:58(section/p)
-msgid ""
-"To move an existing note from the <gui>Search All Notes</gui> dialog use one "
-"of the following:"
+msgid "To move an existing note from the main window use one of the following:"
 msgstr ""
-"Pro přesun existující poznámky v dialogovém okně <gui>Hledat ve všech "
-"poznámkách</gui> použijte následující postup:"
+"Pro přesun existující poznámky v hlavním okně použijte následující postup:"
 
 #: C/gnote-working-with-notebooks.page:60(item/p)
 msgid "Drag the note(s) onto a notebook on the left using mouse."
@@ -2117,12 +2103,9 @@ msgid "To remove note from notebook, use one of the following:"
 msgstr "Poznámku můžete ze sešitu odebrat jedním z těchto postupů:"
 
 #: C/gnote-working-with-notebooks.page:70(item/p)
-msgid ""
-"Move note to <gui>Unfiled notes</gui> notebook in <gui>Search All Notes</"
-"gui> window."
+msgid "Move note to <gui>Unfiled notes</gui> notebook in main window."
 msgstr ""
-"Přesunout poznámku do sešitu <gui>Nezařazené poznámky</gui> v okně "
-"<gui>Hledat ve všech poznámkách</gui>."
+"Přesunout poznámku do sešitu <gui>Nezařazené poznámky</gui> v hlavním okně."
 
 #: C/gnote-working-with-notebooks.page:71(item/p)
 msgid ""
@@ -2146,11 +2129,11 @@ msgstr ""
 
 #: C/gnote-working-with-notebooks.page:78(item/p)
 msgid ""
-"In <gui>Search All Notes</gui> right click on a Notebook that you have "
-"created and choose <gui>Open Template Note</gui>."
+"In main window right click on a Notebook that you have created and choose "
+"<gui>Open Template Note</gui>."
 msgstr ""
-"V okně <gui>Hledat ve všech poznámkách</gui> klikněte pravým tlačítkem na "
-"sešit, který máte vytvořený a zvolte <gui>Otevřít šablonu</gui>."
+"V hlavním okně klikněte pravým tlačítkem na sešit, který máte vytvořený a "
+"zvolte <gui>Otevřít šablonu</gui>."
 
 #: C/gnote-working-with-notebooks.page:80(item/p)
 msgid ""
@@ -2183,12 +2166,11 @@ msgid ""
 "Deleting a notebook will not delete any of the notes which are currently "
 "inside the notebook. After deleting a notebook, the notes will not be "
 "associated with any notebook and can be seen by highlighting <gui>Unfiled "
-"Notes</gui> in the <gui>Search All Notes</gui> window."
+"Notes</gui> in the main window."
 msgstr ""
 "Odstraněním sešitu nesmažete poznámky, které v něm jsou zrovna zařazené. Po "
 "odstranění sešitu můžete k poznámkám, které nebudou zařazené do žádného "
-"sešitu, přistupovat výběrem <gui>Nezařazené poznámky</gui> v okně "
-"<gui>Hledat ve všech poznámkách</gui>."
+"sešitu, přistupovat výběrem <gui>Nezařazené poznámky</gui> v hlavním okně."
 
 #: C/gnote-working-with-notebooks.page:91(section/p)
 msgid "You can delete a notebook you have created by one of two methods:"
@@ -2196,11 +2178,11 @@ msgstr "Sešity můžete mazat těmito dvěma způsoby:"
 
 #: C/gnote-working-with-notebooks.page:92(section/p)
 msgid ""
-"To delete a notebook, go to <gui>Search All Notes</gui> window and do one of "
-"the following:"
+"To delete a notebook, go to search mode in main window and do one of the "
+"following:"
 msgstr ""
-"Když chcete odstranit sešit, přejděte do okna <gui>Hledat ve všech "
-"poznámkách</gui> a proveďte něco z následujícího:"
+"Když chcete odstranit sešit, přejděte do režimu hledání v hlavním okně a "
+"proveďte něco z následujícího:"
 
 #: C/gnote-working-with-notebooks.page:94(item/p)
 msgid "Right click on a notebook and choose <gui>Delete Notebook</gui>."
@@ -2208,16 +2190,49 @@ msgstr "Klikněte na sešit a zvolte <gui>Odstranit sešit</gui>."
 
 #: C/gnote-working-with-notebooks.page:95(item/p)
 msgid ""
-"From the menu, choose <guiseq><gui>Edit</gui><gui>Delete Notebook</gui></"
-"guiseq>"
+"Remove all notes from notebook. It will be automatically removed on Gnote "
+"restart."
 msgstr ""
-"V nabídce zvolte <guiseq><gui>Upravit</gui><gui>Odstranit sešit</gui></"
-"guiseq>."
+"Smažte v sešitu všechny poznámky. Po restartu aplikace Gnote bude tento "
+"sešit automaticky odstraněn."
 
 #: C/gnote-working-with-notebooks.page:98(figure/title)
-msgid "Deleting notes from Search All Notes"
-msgstr "Odstranění sešitu v okně Hledat ve všech poznámkách"
+msgid "Deleting notes from main window"
+msgstr "Odstranění sešitu v hlavním okně"
 
 #: C/gnote-working-with-notebooks.page:100(media/p)
 msgid "Delete Notebook."
 msgstr "Odstranění sešitu."
+
+#: C/gnote-working-with-notebooks.page:105(section/title)
+msgid "Special Notebooks"
+msgstr "Speciální sešity"
+
+#: C/gnote-working-with-notebooks.page:106(section/p)
+msgid "Gnote has several special notebooks:"
+msgstr "Gnote má několik speciálních sešitů:"
+
+#: C/gnote-working-with-notebooks.page:108(item/p)
+msgid ""
+"<gui>Active Notes</gui> - contains notes, that were opened in current Gnote "
+"session."
+msgstr ""
+"<gui>Aktivní poznámky</gui> – obsahuje poznámky, které byly otevřeny v "
+"aktuálním sezení Gnote."
+
+#: C/gnote-working-with-notebooks.page:109(item/p)
+msgid "<gui>All Notes</gui> - contains all notes, except templates."
+msgstr "<gui>Všechny poznámky</gui> – obsahuje všechny poznámky, vyjma šablon."
+
+#: C/gnote-working-with-notebooks.page:110(item/p)
+msgid "<gui>Pinned Notes</gui> - used to mask notes as important."
+msgstr ""
+"<gui>Připíchnuté poznámky</gui> – použito k výběru důležitých poznámek."
+
+#: C/gnote-working-with-notebooks.page:111(item/p)
+msgid ""
+"<gui>Unfilled Notes</gui> - contains all notes that are not placed in a user "
+"created notebook."
+msgstr ""
+"<gui>Nezařazené poznámky</gui> – obsahuje všechny poznámky, které nejsou "
+"umístěny v uživatelských sešitech."
