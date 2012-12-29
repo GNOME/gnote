@@ -14,21 +14,21 @@
     </credit>
     <credit type="editor">
       <name>Aurimas Cernius</name>
-      <years>2011</years>
+      <years>2011-2012</years>
     </credit>
   </info>
 
   <title>Working With Notebooks</title>
-    <p>Notebooks allow you to group related notes together. You can add a note to a notebook in the <gui>Search All Notes</gui> window or directly inside of a Note.</p>
+    <p>Notebooks allow you to group related notes together. You can add a note to a notebook in the main window or directly inside of a Note.</p>
 
     <section id="creating-notebooks"><title>Creating Notebooks</title>
       <p>You can create new notebooks using one of the following methods</p>
       <steps>
         <item>
-          <p>In <gui>Search All Notes</gui> window select <guiseq><gui>File</gui><gui>Notebooks</gui><gui>New Notebook</gui></guiseq> from main menu.</p>
+          <p>Click on application menu and select <gui>New Notebook</gui>.</p>
         </item>
         <item>
-            <p>Enter a name for the new notebook.</p>
+          <p>Enter a name for the new notebook.</p>
         </item>
       </steps>
       <figure>
@@ -39,7 +39,7 @@
       <p>To create a new notebook context menu</p>
       <steps>
         <item>
-          <p>In <gui>Search All Notes</gui>, right click in the left hand box and choose <gui>New Notebook</gui>.</p>
+          <p>In search mode, right click in the left hand box and choose <gui>New Notebook</gui>.</p>
         </item>
         <item>
           <p>Enter a name for the new notebook.</p>
@@ -54,8 +54,8 @@
     </section>
 
     <section id="adding-notes-to-a-notebook"><title>Adding Notes to a Notebook</title>
-      <p>To add notes to a notebook, you can add a note from the <gui>Search All Notes</gui> dialog or directly within a note.</p>
-      <p>To move an existing note from the <gui>Search All Notes</gui> dialog use one of the following:</p>
+      <p>To add notes to a notebook, you can add a note from the main window or directly within a note.</p>
+      <p>To move an existing note from the main window use one of the following:</p>
       <list>
         <item><p>Drag the note(s) onto a notebook on the left using mouse.</p></item>
         <item><p>Right click on a notebook and select <gui>New Note</gui> from context menu. A new note will be created and added to notebook.</p></item>
@@ -67,7 +67,7 @@
       </figure>
       <p>To remove note from notebook, use one of the following:</p>
       <list>
-        <item><p>Move note to <gui>Unfiled notes</gui> notebook in <gui>Search All Notes</gui> window.</p></item>
+        <item><p>Move note to <gui>Unfiled notes</gui> notebook in main window.</p></item>
         <item><p>Select the <gui>No Notebook</gui> option from menu, presented when you press the <gui>Notebook</gui> button in opened note.</p></item>
       </list>
     </section>
@@ -75,7 +75,7 @@
     <section id="creating-notebook-templates"><title>Creating Notebook Templates</title>
       <p>After you create a notebook, you can create a template for each new note that you create in that notebook.</p>
       <steps>
-        <item><p>In <gui>Search All Notes</gui> right click on a Notebook that you have created and choose <gui>Open Template Note</gui>.</p>
+        <item><p>In main window right click on a Notebook that you have created and choose <gui>Open Template Note</gui>.</p>
         </item>
         <item><p>This will open a new note that will be used as the template. Any text typed in this note will appear in all notes created in this Notebook.</p></item>
       </steps>
@@ -87,19 +87,29 @@
     </section>
 
   <section id="deleting-a-notebook"><title>Deleting a Notebook</title>
-    <p>Deleting a notebook will not delete any of the notes which are currently inside the notebook. After deleting a notebook, the notes will not be associated with any notebook and can be seen by highlighting <gui>Unfiled Notes</gui> in the <gui>Search All Notes</gui> window.</p>
+    <p>Deleting a notebook will not delete any of the notes which are currently inside the notebook. After deleting a notebook, the notes will not be associated with any notebook and can be seen by highlighting <gui>Unfiled Notes</gui> in the main window.</p>
     <p>You can delete a notebook you have created by one of two methods:</p>
-    <p>To delete a notebook, go to <gui>Search All Notes</gui> window and do one of the following:</p>
+    <p>To delete a notebook, go to search mode in main window and do one of the following:</p>
     <list>
       <item><p>Right click on a notebook and choose <gui>Delete Notebook</gui>.</p></item>
-      <item><p>From the menu, choose <guiseq><gui>Edit</gui><gui>Delete Notebook</gui></guiseq></p></item>
+      <item><p>Remove all notes from notebook. It will be automatically removed on Gnote restart.</p></item>
     </list>
     <figure>
-      <title>Deleting notes from Search All Notes</title>
+      <title>Deleting notes from main window</title>
         <media type="image" src="figures/delete-notebook.png" mime="image/png" style="right">
           <p>Delete Notebook.</p>
         </media>
     </figure>
+  </section>
+
+  <section id="special-notebooks"><title>Special Notebooks</title>
+    <p>Gnote has several special notebooks:</p>
+    <list>
+      <item><p><gui>Active Notes</gui> - contains notes, that were opened in current Gnote session.</p></item>
+      <item><p><gui>All Notes</gui> - contains all notes, except templates.</p></item>
+      <item><p><gui>Pinned Notes</gui> - used to mask notes as important.</p></item>
+      <item><p><gui>Unfilled Notes</gui> - contains all notes that are not placed in a user created notebook.</p></item>
+    </list>
   </section>
 
 </page>
