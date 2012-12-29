@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -33,9 +33,6 @@
 #include "sharp/datetime.hpp"
 
 namespace sharp {
-
-
-  extern bool FileInfoLink_;
 
 
 class FileInfo

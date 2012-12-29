@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -32,8 +33,6 @@
 #include "debug.hpp"
 
 namespace sharp {
-
-  bool XslTransformLink_ = true;;
 
 
 XslTransform:: XslTransform()

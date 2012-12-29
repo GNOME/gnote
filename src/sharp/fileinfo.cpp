@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -31,9 +31,6 @@
 
 
 namespace sharp {
-
-
-  bool FileInfoLink_ = true;
 
 
   FileInfo::FileInfo(const std::string & s)

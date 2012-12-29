@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,8 +31,6 @@
 
 namespace base {
 
-
-extern const bool IniFileLink_;
 
 class IniFile
 {

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2012 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -31,8 +32,6 @@
 #include "sharp/xsltargumentlist.hpp"
 
 namespace sharp {
-
-  bool XsltArgumentListLink_ = true;
 
 void XsltArgumentList::add_param(const char* name, const char * /*uri*/, const std::string & value)
 {
