@@ -229,14 +229,30 @@ namespace gnote {
     return note_path;
   }
 
+  bool Gnote::show_tray_icon_timeout()
+  {
+    // Setting to false and back to true is required to make it work on some tray implementations
+    m_tray_icon->set_visible(false);
+    m_tray_icon->set_visible(true);
+    return false;
+  }
+
   void Gnote::start_tray_icon()
   {
     // Create Search All Notes window as we need it present for application to run
     get_main_window();
 
-    // Create the tray icon and run the main loop
-    m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
-    m_tray = m_tray_icon->tray();
+    if(!m_tray_icon) {
+      // Create the tray icon and run the main loop
+      m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
+      m_tray = m_tray_icon->tray();
+    }
+
+    // Tome make status icon visible on some implementations, it should be made visible
+    // after some timeout.
+    Glib::RefPtr<Glib::TimeoutSource> timeout = Glib::TimeoutSource::create(100);
+    timeout->connect(sigc::mem_fun(*this, &Gnote::show_tray_icon_timeout));
+    timeout->attach();
   }
 
 
@@ -263,14 +279,12 @@ namespace gnote {
     bool use_status_icon = Preferences::obj()
       .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(key);
     if(use_status_icon) {
-      if(!m_tray_icon) {
-        m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
-      }
-      m_tray_icon->set_visible(true);
+      start_tray_icon();
     }
     else {
-      if(m_tray_icon)
+      if(m_tray_icon) {
         m_tray_icon->set_visible(false);
+      }
       ActionManager::obj()["ShowSearchAllNotesAction"]->activate();
     }
   }

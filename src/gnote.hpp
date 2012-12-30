@@ -187,6 +187,7 @@ private:
   void on_new_window_action(const Glib::VariantBase&);
   void on_new_note_app_action(const Glib::VariantBase&);
   NoteRecentChanges *get_active_window();
+  bool show_tray_icon_timeout();
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
