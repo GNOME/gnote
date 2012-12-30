@@ -177,6 +177,7 @@ private:
   void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
   void on_sync_dialog_response(int response_id);
+  bool show_tray_icon_timeout();
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;
