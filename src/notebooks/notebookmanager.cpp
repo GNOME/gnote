@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -41,7 +41,7 @@ namespace gnote {
 
     NotebookManager::NotebookManager()
       : m_adding_notebook(false)
-      , m_active_notes(new ActiveNotesNotebook)
+      , m_active_notes(new ActiveNotesNotebook(Gnote::obj().default_note_manager()))
    { 
      m_notebooks = Gtk::ListStore::create(m_column_types);
 
@@ -58,15 +58,15 @@ namespace gnote {
      m_filteredNotebooks->set_visible_func(
        sigc::ptr_fun(&NotebookManager::filter_notebooks));
       
-     Notebook::Ptr allNotesNotebook(new AllNotesNotebook ());
+     Notebook::Ptr allNotesNotebook(new AllNotesNotebook(Gnote::obj().default_note_manager()));
      Gtk::TreeIter iter = m_notebooks->append ();
      iter->set_value(0, Notebook::Ptr(allNotesNotebook));
       
-     Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook ());
+     Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook(Gnote::obj().default_note_manager()));
      iter = m_notebooks->append ();
      iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
 
-     Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook);
+     Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook(Gnote::obj().default_note_manager()));
      iter = m_notebooks->append();
      iter->set_value(0, pinned_notes_notebook);
 
@@ -126,7 +126,7 @@ namespace gnote {
         
         try {
           m_adding_notebook = true;
-          notebook = Notebook::Ptr(new Notebook (notebookName));
+          notebook = Notebook::Ptr(new Notebook(Gnote::obj().default_note_manager(), notebookName));
         } 
         catch(...)
         {
@@ -462,7 +462,7 @@ namespace gnote {
                                      + Notebook::NOTEBOOK_TAG_PREFIX)) {
           continue;
         }
-        Notebook::Ptr notebook(new Notebook (tag));
+        Notebook::Ptr notebook(new Notebook(Gnote::obj().default_note_manager(), tag));
         iter = m_notebooks->append ();
         iter->set_value(0, notebook);
         m_notebookMap [notebook->get_normalized_name()] = iter;

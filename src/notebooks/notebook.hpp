@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,8 +43,8 @@ class Notebook
 public:
   typedef std::tr1::shared_ptr<Notebook> Ptr;
   static const char * NOTEBOOK_TAG_PREFIX;
-  Notebook(const std::string &, bool is_special = false);
-  Notebook(const Tag::Ptr &);
+  Notebook(NoteManager &, const std::string &, bool is_special = false);
+  Notebook(NoteManager &, const Tag::Ptr &);
   std::string get_name() const
     { return m_name; }
   void set_name(const std::string &);
@@ -60,6 +60,8 @@ public:
 ////
   virtual ~Notebook()
     {}
+protected:
+  NoteManager & m_note_manager;
 private:
   Notebook(const Notebook &);
   Notebook & operator=(const Notebook &);
@@ -82,8 +84,8 @@ class SpecialNotebook
 public:
   typedef std::tr1::shared_ptr<SpecialNotebook> Ptr;
 protected:
-  SpecialNotebook(const std::string &s)
-    : Notebook(s, true)
+  SpecialNotebook(NoteManager & m, const std::string &s)
+    : Notebook(m, s, true)
     {
     }
   virtual Tag::Ptr    get_tag() const;
@@ -102,7 +104,7 @@ class AllNotesNotebook
 {
 public:
   typedef std::tr1::shared_ptr<AllNotesNotebook> Ptr;
-  AllNotesNotebook();
+  AllNotesNotebook(NoteManager &);
   virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
@@ -120,7 +122,7 @@ class UnfiledNotesNotebook
 {
 public:
   typedef std::tr1::shared_ptr<UnfiledNotesNotebook> Ptr;
-  UnfiledNotesNotebook();
+  UnfiledNotesNotebook(NoteManager &);
   virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
@@ -133,7 +135,7 @@ class PinnedNotesNotebook
 {
 public:
   typedef std::tr1::shared_ptr<PinnedNotesNotebook> Ptr;
-  PinnedNotesNotebook();
+  PinnedNotesNotebook(NoteManager &);
   virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
@@ -146,7 +148,7 @@ class ActiveNotesNotebook
 {
 public:
   typedef std::tr1::shared_ptr<ActiveNotesNotebook> Ptr;
-  ActiveNotesNotebook();
+  ActiveNotesNotebook(NoteManager &);
   virtual std::string get_normalized_name() const;
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);

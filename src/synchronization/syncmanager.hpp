@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,8 +63,9 @@ namespace sync {
     : public base::Singleton<SyncManager>
   {
   public:
+    SyncManager();
     ~SyncManager();
-    static void init();
+    static void init(NoteManager &);
     void reset_client();
     void perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui);
     void synchronization_thread();
@@ -75,7 +76,7 @@ namespace sync {
         return m_state;
       }
   private:
-    void _init();
+    void _init(NoteManager &);
     void handle_note_saved_or_deleted(const Note::Ptr & note);
     void handle_note_buffer_changed(const Note::Ptr & note);
     void preferences_setting_changed(const Glib::ustring & key);
@@ -97,6 +98,7 @@ namespace sync {
     static void on_delete_note(GObject*, gpointer, gpointer);
     static void note_save(const Note::Ptr & note);
 
+    NoteManager & m_note_manager;
     SyncUI::Ptr m_sync_ui;
     SyncClient::Ptr m_client;
     SyncState m_state;

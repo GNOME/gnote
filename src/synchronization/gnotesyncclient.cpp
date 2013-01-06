@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ namespace sync {
 
   const char * GnoteSyncClient::LOCAL_MANIFEST_FILE_NAME = "manifest.xml";
 
-  GnoteSyncClient::GnoteSyncClient()
+  GnoteSyncClient::GnoteSyncClient(NoteManager & manager)
   {
     m_local_manifest_file_path = Glib::build_filename(Gnote::conf_dir(), LOCAL_MANIFEST_FILE_NAME);
     // TODO: Why doesn't OnChanged ever get fired?!
@@ -51,7 +51,7 @@ namespace sync {
 
     parse(m_local_manifest_file_path);
 
-    Gnote::obj().default_note_manager().signal_note_deleted
+    manager.signal_note_deleted
       .connect(sigc::mem_fun(*this, &GnoteSyncClient::note_deleted_handler));
   }
 

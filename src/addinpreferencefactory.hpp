@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +26,7 @@
 
 #include <gtkmm/widget.h>
 
+#include "notemanager.hpp"
 #include "sharp/modulefactory.hpp"
 
 
@@ -37,7 +39,7 @@ class AddinPreferenceFactoryBase
 {
 public:
   static const char * IFACE_NAME;
-  virtual Gtk::Widget * create_preference_widget() = 0;
+  virtual Gtk::Widget * create_preference_widget(NoteManager & m) = 0;
 };
 
 
@@ -51,9 +53,9 @@ public:
     {
       return new AddinPreferenceFactory<_AddinType>();
     }
-  virtual Gtk::Widget * create_preference_widget()
+  virtual Gtk::Widget * create_preference_widget(NoteManager & m)
     {
-      return Gtk::manage(new _AddinType);
+      return Gtk::manage(new _AddinType(m));
     }
 };
 

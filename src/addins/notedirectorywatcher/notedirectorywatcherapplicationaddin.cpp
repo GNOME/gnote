@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
-#include "gnote.hpp"
 #include "notedirectorywatcherapplicationaddin.hpp"
 #include "notemanager.hpp"
 #include "sharp/files.hpp"
@@ -77,9 +76,9 @@ NoteDirectoryWatcherApplicationAddin::NoteDirectoryWatcherApplicationAddin()
 
 void NoteDirectoryWatcherApplicationAddin::initialize()
 {
-  gnote::NoteManager & note_manager = gnote::Gnote::obj().default_note_manager();
-  std::string note_path = note_manager.get_notes_dir();
-  note_manager.signal_note_saved
+  gnote::NoteManager & manager(note_manager());
+  std::string note_path = manager.get_notes_dir();
+  manager.signal_note_saved
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::handle_note_saved));
 
   Glib::RefPtr<Gio::File> file = Gio::File::create_for_path(note_path);
@@ -222,9 +221,9 @@ void NoteDirectoryWatcherApplicationAddin::delete_note(const std::string & note_
 
   std::string note_uri = make_uri(note_id);
 
-  gnote::Note::Ptr note_to_delete = gnote::Gnote::obj().default_note_manager().find_by_uri(note_uri);
+  gnote::Note::Ptr note_to_delete = note_manager().find_by_uri(note_uri);
   if(note_to_delete != 0) {
-    gnote::Gnote::obj().default_note_manager().delete_note(note_to_delete);
+    note_manager().delete_note(note_to_delete);
   }
   else {
     DBG_OUT("notedirectorywatcher: did not delete %s because note not found.", note_id.c_str());
@@ -234,7 +233,7 @@ void NoteDirectoryWatcherApplicationAddin::delete_note(const std::string & note_
 void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string & note_id)
 {
   std::string note_path = Glib::build_filename(
-    gnote::Gnote::obj().default_note_manager().get_notes_dir(), note_id + ".note");
+    note_manager().get_notes_dir(), note_id + ".note");
   if (!sharp::file_exists(note_path)) {
     DBG_OUT("NoteDirectoryWatcher: Not processing update of %s because file does not exist.", note_path.c_str());
     return;
@@ -263,7 +262,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
 
   std::string note_uri = make_uri(note_id);
 
-  gnote::Note::Ptr note = gnote::Gnote::obj().default_note_manager().find_by_uri(note_uri);
+  gnote::Note::Ptr note = note_manager().find_by_uri(note_uri);
 
   bool is_new_note = false;
 
@@ -283,7 +282,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
     }
 
     try {
-      note = gnote::Gnote::obj().default_note_manager().create_with_guid(title, note_id);
+      note = note_manager().create_with_guid(title, note_id);
       if(note == 0) {
         ERR_OUT("NoteDirectoryWatcher: Unknown error creating note from %s", note_path.c_str());
         return;
@@ -304,7 +303,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
   catch(std::exception & e) {
     ERR_OUT("NoteDirectoryWatcher: Update aborted, error parsing %s: %s", note_path.c_str(), e.what());
     if(is_new_note) {
-      gnote::Gnote::obj().default_note_manager().delete_note(note);
+      note_manager().delete_note(note);
     }
   }
 }

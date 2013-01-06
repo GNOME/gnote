@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2013 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 
-#include "gnote.hpp"
 #include "noteoftheday.hpp"
 #include "noteofthedayapplicationaddin.hpp"
 #include "noteofthedaypreferencesfactory.hpp"
@@ -68,7 +67,6 @@ const char * NoteOfTheDayApplicationAddin::IFACE_NAME
 NoteOfTheDayApplicationAddin::NoteOfTheDayApplicationAddin()
   : ApplicationAddin()
   , m_initialized(false)
-  , m_manager(0)
   , m_timeout()
 {
 }
@@ -82,11 +80,11 @@ void NoteOfTheDayApplicationAddin::check_new_day() const
   Glib::Date date;
   date.set_time_current();
 
-  if (0 == NoteOfTheDay::get_note_by_date(*m_manager, date)) {
-    NoteOfTheDay::cleanup_old(*m_manager);
+  if (0 == NoteOfTheDay::get_note_by_date(note_manager(), date)) {
+    NoteOfTheDay::cleanup_old(note_manager());
 
     // Create a new NotD if the day has changed
-    NoteOfTheDay::create(*m_manager, date);
+    NoteOfTheDay::create(note_manager(), date);
   }
 }
 
@@ -110,7 +108,6 @@ void NoteOfTheDayApplicationAddin::initialize()
     Glib::PRIORITY_DEFAULT);
 
   m_initialized = true;
-  m_manager = &gnote::Gnote::obj().default_note_manager();
 }
 
 void NoteOfTheDayApplicationAddin::shutdown()
@@ -119,7 +116,6 @@ void NoteOfTheDayApplicationAddin::shutdown()
     m_timeout.disconnect();
 
   m_initialized = false;
-  m_manager = 0;
 }
 
 bool NoteOfTheDayApplicationAddin::initialized()

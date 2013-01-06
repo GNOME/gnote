@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -53,7 +53,7 @@ namespace bugzilla {
     }
   }
 
-  BugzillaPreferences::BugzillaPreferences()
+  BugzillaPreferences::BugzillaPreferences(gnote::NoteManager &)
     : Gtk::VBox(false, 12)
   {
     _init_static();

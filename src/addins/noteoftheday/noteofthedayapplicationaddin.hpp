@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2013 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -69,7 +69,6 @@ private:
   void check_new_day() const;
 
   bool m_initialized;
-  gnote::NoteManager * m_manager;
   sigc::connection m_timeout;
 };
 

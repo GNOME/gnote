@@ -147,7 +147,7 @@ namespace gnote {
     m_manager = new NoteManager(note_path, sigc::mem_fun(*this, &Gnote::start_note_created));
     m_keybinder = new XKeybinder();
     ActionManager::obj().load_interface();
-    sync::SyncManager::init();
+    sync::SyncManager::init(default_note_manager());
     setup_global_actions();
     m_manager->get_addin_manager().initialize_application_addins();
   }
@@ -265,8 +265,8 @@ namespace gnote {
   void Gnote::register_object()
   {
     RemoteControlProxy::register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION),
-                                        Gnote::obj().default_note_manager(),
-                                        sigc::mem_fun(Gnote::obj(), &Gnote::end_main));
+                                        default_note_manager(),
+                                        sigc::mem_fun(*this, &Gnote::end_main));
   }
 
 
@@ -322,7 +322,7 @@ namespace gnote {
   void Gnote::on_show_preferences_action(const Glib::VariantBase&)
   {
     if(!m_prefsdlg) {
-      m_prefsdlg = new PreferencesDialog(m_manager->get_addin_manager());
+      m_prefsdlg = new PreferencesDialog(default_note_manager());
       m_prefsdlg->signal_response().connect(
         sigc::mem_fun(*this, &Gnote::on_preferences_response));
     }
@@ -451,7 +451,7 @@ namespace gnote {
   void Gnote::open_note_sync_window(const Glib::VariantBase&)
   {
     if(m_sync_dlg == 0) {
-      m_sync_dlg = sync::SyncDialog::create();
+      m_sync_dlg = sync::SyncDialog::create(default_note_manager());
       m_sync_dlg->signal_response().connect(sigc::mem_fun(*this, &Gnote::on_sync_dialog_response));
     }
 

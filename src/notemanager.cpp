@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -84,15 +84,6 @@ namespace gnote {
   {
     std::string backup = directory + "/Backup";
     
-    _common_init(directory, backup);
-  }
-
-
-  NoteManager::NoteManager(const std::string & directory, 
-                           const std::string & backup,
-                           const NoteChangedSlot & start_created)
-    : m_signal_start_note_created(start_created)
-  {
     _common_init(directory, backup);
   }
 
@@ -185,9 +176,9 @@ namespace gnote {
     return new TrieController(*this);
   }
 
-  AddinManager *NoteManager::create_addin_manager() const
+  AddinManager *NoteManager::create_addin_manager()
   {
-    return new AddinManager(Gnote::conf_dir());
+    return new AddinManager(*this, Gnote::conf_dir());
   }
 
   // For overriding in test methods.

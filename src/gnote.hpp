@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -160,7 +160,6 @@ public:
     }
   sigc::signal<void> signal_quit;
   static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
-  static void register_object();
   sync::SyncDialog::Ptr sync_dialog()
     {
       return m_sync_dlg;
@@ -188,6 +187,7 @@ private:
   void on_new_note_app_action(const Glib::VariantBase&);
   NoteRecentChanges *get_active_window();
   bool show_tray_icon_timeout();
+  void register_object();
 
   NoteManager *m_manager;
   IKeybinder  *m_keybinder;

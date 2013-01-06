@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -110,33 +110,39 @@ namespace sync {
   }
 
 
+  SyncManager::SyncManager()
+    : m_note_manager(Gnote::obj().default_note_manager())
+  {
+  }
+
+
   SyncManager::~SyncManager()
   {
     g_object_unref(m_sync_helper);
   }
 
 
-  void SyncManager::init()
+  void SyncManager::init(NoteManager & m)
   {
-    SyncManager::obj()._init();
+    SyncManager::obj()._init(m);
   }
 
 
-  void SyncManager::_init()
+  void SyncManager::_init(NoteManager & manager)
   {
     m_sync_helper = sync_helper_new();
     g_signal_connect(m_sync_helper, "delete-notes", G_CALLBACK(SyncManager::on_delete_notes), NULL);
     g_signal_connect(m_sync_helper, "create-note", G_CALLBACK(SyncManager::on_create_note), NULL);
     g_signal_connect(m_sync_helper, "update-note", G_CALLBACK(SyncManager::on_update_note), NULL);
     g_signal_connect(m_sync_helper, "delete-note", G_CALLBACK(SyncManager::on_delete_note), NULL);
-    m_client = SyncClient::Ptr(new GnoteSyncClient);
+    m_client = SyncClient::Ptr(new GnoteSyncClient(manager));
     // Add a "Synchronize Notes" to Gnote's Application Menu
     ActionManager & am(ActionManager::obj());
     am.add_app_action("sync-notes");
     am.add_app_menu_item(ActionManager::APP_ACTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
 
     // Initialize all the SyncServiceAddins
-    Gnote::obj().default_note_manager().get_addin_manager().initialize_sync_service_addins();
+    manager.get_addin_manager().initialize_sync_service_addins();
 
     Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
       .connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
@@ -615,7 +621,7 @@ namespace sync {
     SyncServiceAddin *addin = NULL;
 
     std::list<SyncServiceAddin*> addins;
-    Gnote::obj().default_note_manager().get_addin_manager().get_sync_service_addins(addins);
+    m_note_manager.get_addin_manager().get_sync_service_addins(addins);
     for(std::list<SyncServiceAddin*>::iterator iter = addins.begin(); iter != addins.end(); ++iter) {
       if((*iter)->id() == sync_service_id) {
         addin = *iter;
@@ -682,7 +688,7 @@ namespace sync {
 
   NoteManager & SyncManager::note_mgr()
   {
-    return Gnote::obj().default_note_manager();
+    return m_note_manager;
   }
 
 

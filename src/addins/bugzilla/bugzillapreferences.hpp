@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -42,7 +43,7 @@ class BugzillaPreferences
   : public Gtk::VBox
 {
 public:
-  BugzillaPreferences();
+  BugzillaPreferences(gnote::NoteManager &);
 
 protected:
   virtual void on_realize();

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,6 +30,7 @@
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/treeview.h>
 
+#include "notemanager.hpp"
 
 namespace inserttimestamp {
 
@@ -39,7 +41,7 @@ class InsertTimestampPreferences
   : public Gtk::VBox
 {
 public:
-  InsertTimestampPreferences();
+  InsertTimestampPreferences(gnote::NoteManager &);
 private:
   static void _init_static();
   class FormatColumns

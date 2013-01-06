@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -54,8 +54,9 @@ namespace gnote {
   m_app_addins.insert(std::make_pair(typeid(klass).name(),        \
                                      klass::create()))
 
-  AddinManager::AddinManager(const std::string & conf_dir)
-    : m_gnote_conf_dir(conf_dir)
+  AddinManager::AddinManager(NoteManager & note_manager, const std::string & conf_dir)
+    : m_note_manager(note_manager)
+    , m_gnote_conf_dir(conf_dir)
   {
     m_addins_prefs_dir = Glib::build_filename(conf_dir, "addins");
     m_addins_prefs_file = Glib::build_filename(m_addins_prefs_dir,
@@ -324,6 +325,7 @@ namespace gnote {
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
       ApplicationAddin * addin = iter->second;
+      addin->note_manager(m_note_manager);
       const sharp::DynamicModule * dmod
         = m_module_manager.get_module(iter->first);
       if (!dmod || dmod->is_enabled()) {
@@ -400,7 +402,7 @@ namespace gnote {
   {
     IdAddinPrefsMap::const_iterator iter = m_addin_prefs.find(id);
     if(iter != m_addin_prefs.end()) {
-      return iter->second->create_preference_widget();
+      return iter->second->create_preference_widget(m_note_manager);
     }
     return NULL;
   }

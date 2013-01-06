@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -85,7 +85,7 @@ namespace gnote {
   };
 
 
-  PreferencesDialog::PreferencesDialog(AddinManager & addinmanager)
+  PreferencesDialog::PreferencesDialog(NoteManager & note_manager)
     : Gtk::Dialog()
     , m_sync_addin_combo(NULL)
     , m_selected_sync_addin(NULL)
@@ -94,7 +94,8 @@ namespace gnote {
     , m_reset_sync_addin_button(NULL)
     , m_save_sync_addin_button(NULL)
     , m_rename_behavior_combo(NULL)
-    , m_addin_manager(addinmanager)
+    , m_addin_manager(note_manager.get_addin_manager())
+    , m_note_manager(note_manager)
   {
 //    set_icon(utils::get_icon("gnote"));
     set_border_width(5);
@@ -525,7 +526,7 @@ namespace gnote {
     // Populate the store with all the available SyncServiceAddins
     m_sync_addin_store = Gtk::ListStore::create(m_sync_addin_store_record);
     std::list<sync::SyncServiceAddin*> addins;
-    Gnote::obj().default_note_manager().get_addin_manager().get_sync_service_addins(addins);
+    m_addin_manager.get_sync_service_addins(addins);
     addins.sort(CompareSyncAddinsByName());
     for(std::list<sync::SyncServiceAddin*>::iterator addin = addins.begin(); addin != addins.end(); ++addin) {
       if((*addin)->initialized()) {
@@ -1032,8 +1033,7 @@ namespace gnote {
 
   void  PreferencesDialog::open_template_button_clicked()
   {
-    NoteManager &manager = Gnote::obj().default_note_manager();
-    Note::Ptr template_note = manager.get_or_create_template_note ();
+    Note::Ptr template_note = m_note_manager.get_or_create_template_note ();
 
     // Open the template note
     Gnote::obj().open_note(template_note);

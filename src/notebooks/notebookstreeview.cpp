@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,6 @@
 #include <gtkmm/targetentry.h>
 
 #include "debug.hpp"
-#include "gnote.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/notebookstreeview.hpp"
@@ -34,9 +33,9 @@
 namespace gnote {
   namespace notebooks {
 
-    NotebooksTreeView::NotebooksTreeView(const Glib::RefPtr<Gtk::TreeModel> & model)
+    NotebooksTreeView::NotebooksTreeView(NoteManager & manager, const Glib::RefPtr<Gtk::TreeModel> & model)
       : Gtk::TreeView(model)
-      , m_note_manager(Gnote::obj().default_note_manager())
+      , m_note_manager(manager)
     {
       // Set up the notebooksTree as a drag target so that notes
       // can be dragged into the notebook.

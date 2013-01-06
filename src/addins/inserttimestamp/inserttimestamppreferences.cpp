@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ namespace inserttimestamp {
   }
 
 
-  InsertTimestampPreferences::InsertTimestampPreferences()
+  InsertTimestampPreferences::InsertTimestampPreferences(gnote::NoteManager &)
     : Gtk::VBox(false, 12)
   {
     _init_static();

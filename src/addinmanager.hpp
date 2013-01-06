@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -49,7 +49,7 @@ class SyncServiceAddin;
 class AddinManager
 {
 public:
-  AddinManager(const std::string & conf_dir);
+  AddinManager(NoteManager & note_manager, const std::string & conf_dir);
   ~AddinManager();
 
   void add_note_addin_info(const sharp::DynamicModule * dmod);
@@ -82,6 +82,7 @@ private:
   void initialize_sharp_addins();
   void migrate_addins(const std::string & old_addins_dir);
     
+  NoteManager & m_note_manager;
   const std::string m_gnote_conf_dir;
   std::string m_addins_prefs_dir;
   std::string m_addins_prefs_file;

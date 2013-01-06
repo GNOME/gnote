@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,8 @@ namespace notebooks {
   /// A <see cref="System.String"/>.  This is the name that will be used
   /// to identify the notebook.
   /// </param>
-  Notebook::Notebook(const std::string & name, bool is_special)
+  Notebook::Notebook(NoteManager & manager, const std::string & name, bool is_special)
+    : m_note_manager(manager)
   {
     // is special assume the name as is, and we don't want a tag.
     if(is_special) {
@@ -63,7 +64,8 @@ namespace notebooks {
   /// <param name="notebookTag">
   /// A <see cref="Tag"/>.  This must be a system notebook tag.
   /// </param>
-  Notebook::Notebook(const Tag::Ptr & notebookTag)
+  Notebook::Notebook(NoteManager & manager, const Tag::Ptr & notebookTag)
+    : m_note_manager(manager)
   {
   // Parse the notebook name from the tag name
     std::string systemNotebookPrefix = std::string(Tag::SYSTEM_TAG_PREFIX)
@@ -126,19 +128,16 @@ namespace notebooks {
 
   Note::Ptr Notebook::get_template_note() const
   {
-    NoteManager & noteManager = Gnote::obj().default_note_manager();
     Note::Ptr note = find_template_note();
 
     if (!note) {
       std::string title = m_default_template_note_title;
-      if (noteManager.find(title)) {
+      if(m_note_manager.find(title)) {
         std::list<Note*> tag_notes;
         m_tag->get_notes(tag_notes);
-        title = noteManager.get_unique_name (title, tag_notes.size());
+        title = m_note_manager.get_unique_name (title, tag_notes.size());
       }
-      note =
-        noteManager.create (title,
-                            NoteManager::get_note_template_content (title));
+      note = m_note_manager.create(title, NoteManager::get_note_template_content (title));
           
       // Select the initial text
       NoteBuffer::Ptr buffer = note->get_buffer();
@@ -164,10 +163,9 @@ namespace notebooks {
   {
     std::string temp_title;
     Note::Ptr note_template = get_template_note();
-    NoteManager & note_manager = Gnote::obj().default_note_manager();
 
-    temp_title = note_manager.get_unique_name(_("New Note"), note_manager.get_notes().size());
-    Note::Ptr note = note_manager.create_note_from_template(temp_title, note_template);
+    temp_title = m_note_manager.get_unique_name(_("New Note"), m_note_manager.get_notes().size());
+    Note::Ptr note = m_note_manager.create_note_from_template(temp_title, note_template);
 
     // Add the notebook tag
     note->add_tag(m_tag);
@@ -212,12 +210,12 @@ namespace notebooks {
 
   Note::Ptr SpecialNotebook::get_template_note() const
   {
-    return Gnote::obj().default_note_manager().get_or_create_template_note();
+    return m_note_manager.get_or_create_template_note();
   }
 
 
-  AllNotesNotebook::AllNotesNotebook()
-    : SpecialNotebook(_("All Notes"))
+  AllNotesNotebook::AllNotesNotebook(NoteManager & manager)
+    : SpecialNotebook(manager, _("All Notes"))
   {
   }
 
@@ -245,8 +243,8 @@ namespace notebooks {
   }
 
 
-  UnfiledNotesNotebook::UnfiledNotesNotebook()
-    : SpecialNotebook(_("Unfiled Notes"))
+  UnfiledNotesNotebook::UnfiledNotesNotebook(NoteManager & manager)
+    : SpecialNotebook(manager, _("Unfiled Notes"))
   {
   }
 
@@ -274,8 +272,8 @@ namespace notebooks {
   }
 
 
-  PinnedNotesNotebook::PinnedNotesNotebook()
-    : SpecialNotebook(_("Pinned Notes"))
+  PinnedNotesNotebook::PinnedNotesNotebook(NoteManager & manager)
+    : SpecialNotebook(manager, _("Pinned Notes"))
   {
   }
 
@@ -302,10 +300,10 @@ namespace notebooks {
   }
 
 
-  ActiveNotesNotebook::ActiveNotesNotebook()
-    : SpecialNotebook(_("Active Notes"))
+  ActiveNotesNotebook::ActiveNotesNotebook(NoteManager & manager)
+    : SpecialNotebook(manager, _("Active Notes"))
   {
-    Gnote::obj().default_note_manager().signal_note_deleted
+    manager.signal_note_deleted
       .connect(sigc::mem_fun(*this, &ActiveNotesNotebook::on_note_deleted));
   }
 

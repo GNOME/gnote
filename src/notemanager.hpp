@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,8 +47,6 @@ namespace gnote {
     
     NoteManager(const std::string & ,
                 const NoteChangedSlot & start_created = NoteChangedSlot() );
-    NoteManager(const std::string & directory, const std::string & backup,
-                const NoteChangedSlot & start_created = NoteChangedSlot());
     ~NoteManager();
 
     void on_setting_changed(const Glib::ustring & key);
@@ -113,7 +111,7 @@ namespace gnote {
 
   private:
     TrieController *create_trie_controller();
-    AddinManager *create_addin_manager() const;
+    AddinManager *create_addin_manager();
     bool directory_exists(const std::string & directory) const;
     bool create_directory(const std::string & directory) const;
     void on_note_rename(const Note::Ptr & note, const std::string & old_title);

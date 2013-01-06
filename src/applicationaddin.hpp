@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,6 +25,7 @@
 
 
 #include "abstractaddin.hpp"
+#include "notemanager.hpp"
 
 
 namespace gnote {
@@ -49,6 +51,16 @@ public:
   /// </summary>
   virtual bool initialized () = 0;
 
+  NoteManager & note_manager() const
+    {
+      return *m_note_manager;
+    }
+  void note_manager(NoteManager & manager)
+    {
+      m_note_manager = &manager;
+    }
+private:
+  NoteManager *m_note_manager;
 };
 
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ namespace sync {
     : public SyncClient
   {
   public:
-    GnoteSyncClient();
+    GnoteSyncClient(NoteManager &);
 
     virtual sharp::DateTime last_sync_date()
       {

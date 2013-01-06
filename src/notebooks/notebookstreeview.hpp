@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,7 +35,7 @@ namespace gnote {
     : public Gtk::TreeView
   {
   public:
-    NotebooksTreeView(const Glib::RefPtr<Gtk::TreeModel> & model);
+    NotebooksTreeView(NoteManager & manager, const Glib::RefPtr<Gtk::TreeModel> & model);
 
   protected:
     virtual void on_drag_data_received( const Glib::RefPtr<Gdk::DragContext> & context,

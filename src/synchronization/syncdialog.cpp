@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -263,13 +263,14 @@ private:
 
 
 
-SyncDialog::Ptr SyncDialog::create()
+SyncDialog::Ptr SyncDialog::create(NoteManager & m)
 {
-  return SyncDialog::Ptr(new SyncDialog);
+  return SyncDialog::Ptr(new SyncDialog(m));
 }
 
 
-SyncDialog::SyncDialog()
+SyncDialog::SyncDialog(NoteManager & manager)
+  : m_manager(manager)
 {
   m_obj = gnote_sync_dialog_new();
   g_signal_connect(m_obj, "sync-state-changed", G_CALLBACK(on_sync_state_changed), this);
@@ -466,7 +467,7 @@ void SyncDialog::on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeVi
   std::string noteTitle;
   iter->get_value(0, noteTitle);
 
-  Note::Ptr note = Gnote::obj().default_note_manager().find(noteTitle);
+  Note::Ptr note = m_manager.find(noteTitle);
   if(note != 0) {
     present_note(note);
   }
@@ -770,11 +771,11 @@ void SyncDialog::rename_note(const Note::Ptr & note, const std::string & newTitl
   //Logger.Debug ("RenameNote: newCompleteContent: " + newCompleteContent);
 
   // We delete and recreate the note to simplify content conflict handling
-  Gnote::obj().default_note_manager().delete_note(note);
+  m_manager.delete_note(note);
 
   // Create note with old XmlContent just in case GetCompleteNoteXml failed
   DBG_OUT("RenameNote: about to create %s", newTitle.c_str());
-  Note::Ptr renamedNote = Gnote::obj().default_note_manager().create(newTitle, newContent);
+  Note::Ptr renamedNote = m_manager.create(newTitle, newContent);
   if(newCompleteContent != "") {// TODO: Anything to do if it is null?
     try {
       renamedNote->load_foreign_note_xml(newCompleteContent, OTHER_DATA_CHANGED);

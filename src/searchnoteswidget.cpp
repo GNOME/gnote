@@ -351,7 +351,8 @@ void SearchNotesWidget::add_to_previous_searches(const std::string & text)
 Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 {
   m_notebooksTree = Gtk::manage(
-    new notebooks::NotebooksTreeView(notebooks::NotebookManager::instance()
+    new notebooks::NotebooksTreeView(m_manager,
+                                     notebooks::NotebookManager::instance()
                                        .get_notebooks_with_special_items()));
 
   m_notebooksTree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);

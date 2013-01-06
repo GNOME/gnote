@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,7 +21,7 @@
 #ifndef __NOTE_OF_THE_DAY_PREFERENCES_HPP_
 #define __NOTE_OF_THE_DAY_PREFERENCES_HPP_
 
-#include <gtkmm.h>
+#include "notemanager.hpp"
 
 namespace noteoftheday {
 
@@ -29,7 +30,7 @@ class NoteOfTheDayPreferences
 {
 public:
 
-  NoteOfTheDayPreferences();
+  NoteOfTheDayPreferences(gnote::NoteManager &);
   ~NoteOfTheDayPreferences();
 
 private:
@@ -38,6 +39,7 @@ private:
 
   Gtk::Button m_open_template_button;
   Gtk::Label m_label;
+  gnote::NoteManager & m_note_manager;
 };
 
 }

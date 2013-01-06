@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,11 +30,12 @@
 
 namespace noteoftheday {
 
-NoteOfTheDayPreferences::NoteOfTheDayPreferences()
+NoteOfTheDayPreferences::NoteOfTheDayPreferences(gnote::NoteManager & manager)
   : Gtk::VBox(false, 12)
   , m_open_template_button(_("_Open Today: Template"), true)
   , m_label(_("Change the <span weight=\"bold\">Today: Template</span> "
               "note to customize the text that new Today notes have."))
+  , m_note_manager(manager)
 {
   m_label.set_line_wrap(true);
   m_label.set_use_markup(true);
@@ -55,13 +56,11 @@ NoteOfTheDayPreferences::~NoteOfTheDayPreferences()
 
 void NoteOfTheDayPreferences::open_template_button_clicked() const
 {
-  gnote::NoteManager & manager = gnote::Gnote::obj().default_note_manager();
-  gnote::Note::Ptr template_note = manager.find(
-                                       NoteOfTheDay::s_template_title);
+  gnote::Note::Ptr template_note = m_note_manager.find(NoteOfTheDay::s_template_title);
 
   if (0 == template_note) {
     try {
-      template_note = manager.create(
+      template_note = m_note_manager.create(
                                 NoteOfTheDay::s_template_title,
                                 NoteOfTheDay::get_template_content(
                                   NoteOfTheDay::s_template_title));

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -107,7 +107,7 @@ namespace gnote {
             IconManager::obj().get_icon(IconManager::NOTE_NEW, 16))));
       }
 
-      NoteManager & nm(Gnote::obj().default_note_manager());
+      NoteManager & nm(note_manager());
       
       for(Note::List::const_iterator iter = nm.get_notes().begin();
           iter != nm.get_notes().end(); ++iter) {
