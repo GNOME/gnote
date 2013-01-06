@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,12 +22,14 @@
 
 #include "debug.hpp"
 #include "gnote.hpp"
+#include "keybinder.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferences.hpp"
 #include "prefskeybinder.hpp"
 #include "recentchanges.hpp"
+#include "tray.hpp"
 
 
 #define KEYBINDING_SHOW_NOTE_MENU_DEFAULT "&lt;Alt&gt;F12"
@@ -112,8 +114,8 @@ namespace gnote {
   }
   
 
-  PrefsKeybinder::PrefsKeybinder()
-    : m_native_keybinder(Gnote::obj().keybinder())
+  PrefsKeybinder::PrefsKeybinder(IKeybinder & keybinder)
+    : m_native_keybinder(keybinder)
   {
   }
 
@@ -142,8 +144,10 @@ namespace gnote {
   }
 
 
-  GnotePrefsKeybinder::GnotePrefsKeybinder(NoteManager & manager, IGnoteTray & trayicon)
-    : m_manager(manager)
+  GnotePrefsKeybinder::GnotePrefsKeybinder(IKeybinder & keybinder,
+                                           NoteManager & manager, IGnoteTray & trayicon)
+    : PrefsKeybinder(keybinder)
+    , m_manager(manager)
     , m_trayicon(trayicon)
   {
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj()

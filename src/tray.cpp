@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -195,10 +195,11 @@ namespace gnote {
     return IconManager::obj().get_icon(IconManager::PIN_DOWN, 16);
   }
 
-  Tray::Tray(NoteManager & manager, IGnoteTray & trayicon)
+  Tray::Tray(NoteManager & manager, IGnoteTray & trayicon, IKeybinder & keybinder)
     : m_manager(manager)
     , m_trayicon(trayicon)
     , m_menu_added(false)
+    , m_keybinder(keybinder)
   {
 
     m_tray_menu = make_tray_notes_menu();
@@ -218,15 +219,15 @@ namespace gnote {
     if (enable_keybindings) {
       Gtk::MenuItem *item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
       if(item) {
-        KeybindingToAccel::add_accelerator(*item, Preferences::KEYBINDING_CREATE_NEW_NOTE);
+        KeybindingToAccel::add_accelerator(m_keybinder, *item, Preferences::KEYBINDING_CREATE_NEW_NOTE);
       }
       item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/ShowSearchAllNotes");
       if(item) {
-        KeybindingToAccel::add_accelerator(*item, Preferences::KEYBINDING_OPEN_RECENT_CHANGES);
+        KeybindingToAccel::add_accelerator(m_keybinder, *item, Preferences::KEYBINDING_OPEN_RECENT_CHANGES);
       }
       item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/OpenStartHereNote");
       if(item) {
-        KeybindingToAccel::add_accelerator(*item, Preferences::KEYBINDING_OPEN_START_HERE);
+        KeybindingToAccel::add_accelerator(m_keybinder, *item, Preferences::KEYBINDING_OPEN_START_HERE);
       }
     }
 
@@ -367,7 +368,7 @@ namespace gnote {
       bool enable_keybindings = Preferences::obj().get_schema_settings(
           Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_KEYBINDINGS);
       if (enable_keybindings) {
-        KeybindingToAccel::add_accelerator(*item, Preferences::KEYBINDING_OPEN_START_HERE);
+        KeybindingToAccel::add_accelerator(m_keybinder, *item, Preferences::KEYBINDING_OPEN_START_HERE);
       }
     }
 
@@ -393,10 +394,10 @@ namespace gnote {
     m_recent_notes.push_back(separator);
   }
 
-  TrayIcon::TrayIcon(NoteManager & manager)
+  TrayIcon::TrayIcon(IKeybinder & keybinder, NoteManager & manager)
     : Gtk::StatusIcon()
-    , m_tray(new Tray(manager, *this))
-    , m_keybinder(new GnotePrefsKeybinder(manager, *this))
+    , m_tray(new Tray(manager, *this, keybinder))
+    , m_keybinder(new GnotePrefsKeybinder(keybinder, manager, *this))
     , m_context_menu(NULL)
   {
     gtk_status_icon_set_tooltip_text(gobj(), 
@@ -586,12 +587,12 @@ namespace gnote {
     return "";
   }
 
-  void KeybindingToAccel::add_accelerator (Gtk::MenuItem & item, const std::string & key)
+  void KeybindingToAccel::add_accelerator(IKeybinder & keybinder, Gtk::MenuItem & item, const std::string & key)
   {
     guint keyval;
     Gdk::ModifierType mods;
 
-    if(Gnote::obj().keybinder().get_accel_keys(key, keyval, mods)) {
+    if(keybinder.get_accel_keys(key, keyval, mods)) {
       item.add_accelerator ("activate",
                              get_accel_group(),
                              keyval,

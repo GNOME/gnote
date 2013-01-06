@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,6 +26,7 @@
 #include <gtkmm/statusicon.h>
 #include <gtkmm/imagemenuitem.h>
 
+#include "keybinder.hpp"
 #include "note.hpp"
 
 namespace gnote {
@@ -71,7 +72,7 @@ class Tray
 {
 public:
   typedef std::tr1::shared_ptr<Tray> Ptr;
-  Tray(NoteManager &, IGnoteTray &);
+  Tray(NoteManager &, IGnoteTray &, IKeybinder &);
 
   Gtk::Menu * make_tray_notes_menu();
   Gtk::Menu * tray_menu() 
@@ -85,6 +86,7 @@ private:
   Gtk::Menu *m_tray_menu;
   bool       m_menu_added;
   std::list<Gtk::MenuItem*> m_recent_notes;
+  IKeybinder & m_keybinder;
 };
 
 
@@ -93,7 +95,7 @@ class TrayIcon
   , public IGnoteTray
 {
 public:
-  TrayIcon(NoteManager & manager);
+  TrayIcon(IKeybinder & keybinder, NoteManager & manager);
   ~TrayIcon();
 
   Tray::Ptr tray() const
@@ -124,7 +126,7 @@ class KeybindingToAccel
 {
 public:
   static std::string get_shortcut (const std::string & key);
-  static void add_accelerator (Gtk::MenuItem & item, const std::string & key);
+  static void add_accelerator(IKeybinder & keybinder, Gtk::MenuItem & item, const std::string & key);
 
   static Glib::RefPtr<Gtk::AccelGroup> get_accel_group();
 private:

@@ -244,7 +244,7 @@ namespace gnote {
 
     if(!m_tray_icon) {
       // Create the tray icon and run the main loop
-      m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
+      m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(keybinder(), default_note_manager()));
       m_tray = m_tray_icon->tray();
     }
 
