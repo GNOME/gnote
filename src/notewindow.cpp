@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -385,7 +385,7 @@ namespace gnote {
     m_pin_button = manage(new Gtk::ToolButton(*m_pin_image, _("Pin")));
     m_pin_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
     tb->insert(*m_pin_button, -1);
-    notebooks::NotebookManager::instance().signal_note_pin_status_changed
+    notebooks::NotebookManager::obj().signal_note_pin_status_changed
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
     m_link_button = manage(new Gtk::ToolButton(

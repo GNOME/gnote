@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -93,7 +93,7 @@ namespace gnote {
     void CreateNotebookDialog::on_name_entry_changed()
     {
       bool nameTaken = false;
-      if (NotebookManager::instance().notebook_exists (get_notebook_name())) {
+      if(NotebookManager::obj().notebook_exists(get_notebook_name())) {
         m_errorLabel.show ();
         nameTaken = true;
       } 

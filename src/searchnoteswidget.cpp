@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -141,11 +141,11 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   // Watch when notes are added to notebooks so the search
   // results will be updated immediately instead of waiting
   // until the note's queue_save () kicks in.
-  notebooks::NotebookManager::instance().signal_note_added_to_notebook()
+  notebooks::NotebookManager::obj().signal_note_added_to_notebook()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_added_to_notebook));
-  notebooks::NotebookManager::instance().signal_note_removed_from_notebook()
+  notebooks::NotebookManager::obj().signal_note_removed_from_notebook()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_removed_from_notebook));
-  notebooks::NotebookManager::instance().signal_note_pin_status_changed
+  notebooks::NotebookManager::obj().signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
   // Set the focus chain for the top-most containers
@@ -352,7 +352,7 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 {
   m_notebooksTree = Gtk::manage(
     new notebooks::NotebooksTreeView(m_manager,
-                                     notebooks::NotebookManager::instance()
+                                     notebooks::NotebookManager::obj()
                                        .get_notebooks_with_special_items()));
 
   m_notebooksTree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);
@@ -508,26 +508,26 @@ void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer * rendere
 void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*/,
                                                const Glib::ustring& new_text)
 {
-  if(notebooks::NotebookManager::instance().notebook_exists(new_text) || new_text == "") {
+  if(notebooks::NotebookManager::obj().notebook_exists(new_text) || new_text == "") {
     return;
   }
   notebooks::Notebook::Ptr old_notebook = this->get_selected_notebook();
   if(std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(old_notebook)) {
     return;
   }
-  notebooks::Notebook::Ptr new_notebook = notebooks::NotebookManager::instance()
+  notebooks::Notebook::Ptr new_notebook = notebooks::NotebookManager::obj()
     .get_or_create_notebook(new_text);
   DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook->get_name().c_str(),
           new_text.c_str());
   std::list<Note *> notes;
   old_notebook->get_tag()->get_notes(notes);
   for(std::list<Note *>::const_iterator note = notes.begin(); note != notes.end(); ++note) {
-    notebooks::NotebookManager::instance().move_note_to_notebook(
+    notebooks::NotebookManager::obj().move_note_to_notebook(
       (*note)->shared_from_this(), new_notebook);
   }
-  notebooks::NotebookManager::instance().delete_notebook(old_notebook);
+  notebooks::NotebookManager::obj().delete_notebook(old_notebook);
   Gtk::TreeIter iter;
-  if(notebooks::NotebookManager::instance().get_notebook_iter(new_notebook, iter)) {
+  if(notebooks::NotebookManager::obj().get_notebook_iter(new_notebook, iter)) {
     m_notebooksTree->get_selection()->select(iter);
   }
 }

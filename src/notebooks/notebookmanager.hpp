@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ class NotebookManager
 {
 public:
 
-  static NotebookManager & instance()
+  static NotebookManager & obj()
     {
       static NotebookManager *s_instance = new NotebookManager();
       return *s_instance;

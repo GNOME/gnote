@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,6 @@
 #include <gtkmm/button.h>
 #include <gtkmm/stock.h>
 
-#include "gnote.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "noterenamedialog.hpp"
@@ -1040,7 +1039,7 @@ namespace gnote {
       m_note_window_embedded = true;
     }
 
-    notebooks::NotebookManager::instance().active_notes_notebook()->add_note(shared_from_this());
+    notebooks::NotebookManager::obj().active_notes_notebook()->add_note(shared_from_this());
   }
 
   bool Note::is_special() const
@@ -1087,7 +1086,7 @@ namespace gnote {
       }
     }
     settings->set_string(Preferences::MENU_PINNED_NOTES, new_pinned);
-    notebooks::NotebookManager::instance().signal_note_pin_status_changed(*this, pinned);
+    notebooks::NotebookManager::obj().signal_note_pin_status_changed(*this, pinned);
   }
 
   void Note::get_tags(std::list<Tag::Ptr> & l) const

@@ -587,7 +587,7 @@ namespace gnote {
     template_tag->get_notes(notes);
     for (std::list<Note*>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
       Note::Ptr note = (*iter)->shared_from_this();
-      if (!notebooks::NotebookManager::instance().get_notebook_from_note (note)) {
+      if (!notebooks::NotebookManager::obj().get_notebook_from_note(note)) {
         template_note = note;
         break;
       }

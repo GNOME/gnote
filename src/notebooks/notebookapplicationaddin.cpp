@@ -38,7 +38,6 @@
 #include "notebooks/notebook.hpp"
 #include "actionmanager.hpp"
 #include "debug.hpp"
-#include "gnote.hpp"
 #include "iconmanager.hpp"
 #include "notemanager.hpp"
 
@@ -179,7 +178,7 @@ namespace gnote {
 
       NotebookNewNoteMenuItem *item;
 
-      Glib::RefPtr<Gtk::TreeModel> model = NotebookManager::instance().get_notebooks();
+      Glib::RefPtr<Gtk::TreeModel> model = NotebookManager::obj().get_notebooks();
       Gtk::TreeIter iter;
       
       // Add in the "New Notebook..." menu item
@@ -238,7 +237,7 @@ namespace gnote {
 
     void NotebookApplicationAddin::on_tag_added(const Note & note, const Tag::Ptr& tag)
     {
-      if (NotebookManager::instance().is_adding_notebook()) {
+      if (NotebookManager::obj().is_adding_notebook()) {
         return;
       }
       
@@ -252,9 +251,9 @@ namespace gnote {
         sharp::string_substring(tag->name(), megaPrefix.size());
       
       Notebook::Ptr notebook =
-        NotebookManager::instance().get_or_create_notebook (notebookName);
+        NotebookManager::obj().get_or_create_notebook (notebookName);
         
-      NotebookManager::instance().signal_note_added_to_notebook() (note, notebook);
+      NotebookManager::obj().signal_note_added_to_notebook() (note, notebook);
     }
 
     
@@ -273,12 +272,12 @@ namespace gnote {
         sharp::string_substring(normalizedTagName, megaPrefix.size());
       
       Notebook::Ptr notebook =
-        NotebookManager::instance().get_notebook (normalizedNotebookName);
+        NotebookManager::obj().get_notebook (normalizedNotebookName);
       if (!notebook) {
         return;
       }
       
-      NotebookManager::instance().signal_note_removed_from_notebook() (*note, notebook);
+      NotebookManager::obj().signal_note_removed_from_notebook() (*note, notebook);
     }
 
     void NotebookApplicationAddin::on_note_added(const Note::Ptr & note)

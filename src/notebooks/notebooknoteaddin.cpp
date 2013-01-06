@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -79,9 +79,9 @@ namespace notebooks {
     add_tool_item(m_toolButton, -1);
     update_notebook_button_label();
     
-    m_note_added_cid = NotebookManager::instance().signal_note_added_to_notebook()
+    m_note_added_cid = NotebookManager::obj().signal_note_added_to_notebook()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_added_to_notebook));
-    m_note_removed_cid = NotebookManager::instance().signal_note_removed_from_notebook()
+    m_note_removed_cid = NotebookManager::obj().signal_note_removed_from_notebook()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_removed_from_notebook));
 
     get_note()->signal_tag_added()
@@ -167,14 +167,14 @@ namespace notebooks {
   {
     Note::List noteList;
     noteList.push_back(get_note());
-    NotebookManager::instance().prompt_create_new_notebook(
+    NotebookManager::obj().prompt_create_new_notebook(
       dynamic_cast<Gtk::Window*>(get_note()->get_window()->host()), noteList);
   }
 
 
   void NotebookNoteAddin::update_notebook_button_label()
   {
-    Notebook::Ptr currentNotebook = NotebookManager::instance().get_notebook_from_note(get_note());
+    Notebook::Ptr currentNotebook = NotebookManager::obj().get_notebook_from_note(get_note());
     update_notebook_button_label(currentNotebook);
   }
 
@@ -224,7 +224,7 @@ namespace notebooks {
     m_menu_items.push_back(noNotebookMenuItem);
 
     NotebookMenuItem *active_menu_item = noNotebookMenuItem;
-    Notebook::Ptr current_notebook = NotebookManager::instance().get_notebook_from_note(get_note());
+    Notebook::Ptr current_notebook = NotebookManager::obj().get_notebook_from_note(get_note());
       
     // Add in all the real notebooks
     std::list<NotebookMenuItem*> notebookMenuItems;
@@ -252,7 +252,7 @@ namespace notebooks {
 
   void NotebookNoteAddin::get_notebook_menu_items(std::list<NotebookMenuItem*>& items)
   {
-    Glib::RefPtr<Gtk::TreeModel> model = NotebookManager::instance().get_notebooks();
+    Glib::RefPtr<Gtk::TreeModel> model = NotebookManager::obj().get_notebooks();
     Gtk::TreeIter iter;
 
     items.clear();

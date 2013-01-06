@@ -24,7 +24,6 @@
 #include <glibmm/i18n.h>
 
 #include "sharp/string.hpp"
-#include "gnote.hpp"
 #include "iconmanager.hpp"
 #include "notemanager.hpp"
 #include "notebooks/notebook.hpp"
@@ -189,7 +188,7 @@ namespace notebooks {
 
   bool Notebook::add_note(const Note::Ptr & note)
   {
-    NotebookManager::instance().move_note_to_notebook(note, shared_from_this());
+    NotebookManager::obj().move_note_to_notebook(note, shared_from_this());
     return true;
   }
 
@@ -256,13 +255,13 @@ namespace notebooks {
 
   bool UnfiledNotesNotebook::contains_note(const Note::Ptr & note)
   {
-    return !notebooks::NotebookManager::instance().get_notebook_from_note(note);
+    return !notebooks::NotebookManager::obj().get_notebook_from_note(note);
   }
 
 
   bool UnfiledNotesNotebook::add_note(const Note::Ptr & note)
   {
-    NotebookManager::instance().move_note_to_notebook(note, Notebook::Ptr());
+    NotebookManager::obj().move_note_to_notebook(note, Notebook::Ptr());
     return true;
   }
 
