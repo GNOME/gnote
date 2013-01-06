@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -85,6 +85,11 @@ namespace sync {
       manager.delete_note(localConflictNote);
     }
     SyncManager::obj().resolve_conflict(OVERWRITE_EXISTING);
+  }
+
+
+  void SilentUI::present_ui()
+  {
   }
 
 

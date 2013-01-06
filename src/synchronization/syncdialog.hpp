@@ -51,6 +51,7 @@ namespace sync {
                                         const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> & noteUpdateTitles);
+    virtual void present_ui();
     void header_text(const std::string &);
     void message_text(const std::string &);
     std::string progress_text() const;

@@ -160,10 +160,6 @@ public:
     }
   sigc::signal<void> signal_quit;
   static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
-  sync::SyncDialog::Ptr sync_dialog()
-    {
-      return m_sync_dlg;
-    }
   void open_note(const Note::Ptr & note);
 protected:
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line);

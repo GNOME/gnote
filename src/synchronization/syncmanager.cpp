@@ -172,10 +172,7 @@ namespace sync {
     if(m_sync_thread != NULL) {
       // A synchronization thread is already running
       // TODO: Start new sync if existing dlg is for finished sync
-      // TODO: ISyncUI-ize this somehow
-      if(m_sync_ui == Gnote::obj().sync_dialog()) {
-        Gnote::obj().sync_dialog()->present();
-      }
+      m_sync_ui->present_ui();
       return;
     }
 

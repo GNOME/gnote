@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,6 +49,7 @@ namespace sync {
                                         const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> & noteUpdateTitles) = 0;
+    virtual void present_ui() = 0;
 
     sigc::connection signal_connecting_connect(const SlotConnecting & slot);
     void signal_connecting_emit();

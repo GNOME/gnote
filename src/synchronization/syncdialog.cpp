@@ -474,6 +474,12 @@ void SyncDialog::on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeVi
 }
 
 
+void SyncDialog::present_ui()
+{
+  present();
+}
+
+
 void SyncDialog::header_text(const std::string & value)
 {
   m_header_label->set_markup(str(boost::format("<span size=\"large\" weight=\"bold\">%1%</span>") % value));
