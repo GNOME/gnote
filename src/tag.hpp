@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,6 +24,7 @@
 #ifndef __TAG_HPP_
 #define __TAG_HPP_
 
+#include <list>
 #include <string>
 #include <tr1/memory>
 
