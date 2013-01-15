@@ -44,10 +44,11 @@
 #include "sharp/modulemanager.hpp"
 #include "sharp/propertyeditor.hpp"
 #include "synchronization/syncserviceaddin.hpp"
+#include "iactionmanager.hpp"
 #include "addinmanager.hpp"
 #include "addinpreferencefactory.hpp"
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
@@ -1036,7 +1037,7 @@ namespace gnote {
     Note::Ptr template_note = m_note_manager.get_or_create_template_note ();
 
     // Open the template note
-    Gnote::obj().open_note(template_note);
+    IGnote::obj().open_note(template_note);
   }
 
 
@@ -1296,7 +1297,7 @@ DBG_OUT("no addin");
 
       if(dialog_response == Gtk::RESPONSE_YES) {
         // TODO: Put this voodoo in a method somewhere
-        ActionManager::obj().get_app_action("sync-notes")->activate(Glib::VariantBase());
+        IActionManager::obj().get_app_action("sync-notes")->activate(Glib::VariantBase());
       }
     }
     else {

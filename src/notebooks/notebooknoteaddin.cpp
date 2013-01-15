@@ -29,7 +29,7 @@
 #include "debug.hpp"
 #include "iconmanager.hpp"
 #include "tag.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "notewindow.hpp"
 #include "utils.hpp"
 
@@ -41,7 +41,7 @@ namespace notebooks {
   Tag::Ptr NotebookNoteAddin::get_template_tag()
   {
     if(!s_templateTag) {
-      s_templateTag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+      s_templateTag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     }
     return s_templateTag;
   }

@@ -29,7 +29,7 @@
 #include <gtkmm/stock.h>
 
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "iconmanager.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
@@ -159,7 +159,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    NoteRecentChanges *window = Gnote::obj().new_main_window();
+    NoteRecentChanges *window = IGnote::obj().new_main_window();
     window->present();
     window->present_note(note);
   }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,14 +21,14 @@
 #include "config.h"
 
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "recentchanges.hpp"
 #include "remotecontrolproxy.hpp"
 #include "search.hpp"
 #include "tag.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "dbus/remotecontrol.hpp"
 #include "sharp/map.hpp"
 
@@ -61,7 +61,7 @@ namespace gnote {
     if (!note) {
       return false;
     }
-    Tag::Ptr tag = TagManager::obj().get_or_create_tag (tag_name);
+    Tag::Ptr tag = ITagManager::obj().get_or_create_tag(tag_name);
     note->add_tag (tag);
     return true;
   }
@@ -148,13 +148,13 @@ namespace gnote {
 
   void RemoteControl::DisplaySearch()
   {
-    Gnote::obj().open_search_all();
+    IGnote::obj().open_search_all();
   }
 
 
   void RemoteControl::DisplaySearchWithText(const std::string& search_text)
   {
-    NoteRecentChanges *recent_changes = Gnote::obj().get_main_window();
+    NoteRecentChanges *recent_changes = IGnote::obj().get_main_window();
     recent_changes->set_search_text(search_text);
     recent_changes->present();
   }
@@ -176,7 +176,7 @@ namespace gnote {
 
   std::vector< std::string > RemoteControl::GetAllNotesWithTag(const std::string& tag_name)
   {
-    Tag::Ptr tag = TagManager::obj().get_tag (tag_name);
+    Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
     if (!tag)
       return std::vector< std::string >();
 
@@ -306,7 +306,7 @@ bool RemoteControl::RemoveTagFromNote(const std::string& uri,
   Note::Ptr note = m_manager.find_by_uri (uri);
   if (!note)
     return false;
-  Tag::Ptr tag = TagManager::obj().get_tag (tag_name);
+  Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
   if (tag) {
     note->remove_tag (tag);
   }
@@ -409,7 +409,7 @@ void RemoteControl::on_note_saved(const Note::Ptr & note)
 
 void RemoteControl::present_note(const Note::Ptr & note)
 {
-    NoteRecentChanges *window = Gnote::obj().get_window_for_note();
+    NoteRecentChanges *window = IGnote::obj().get_window_for_note();
     window->present_note(note);
     window->present();
 }

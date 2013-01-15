@@ -2,7 +2,6 @@
  * gnote
  *
  * Copyright (C) 2013 Aurimas Cernius
- * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,41 +18,17 @@
  */
 
 
+#include "iactionmanager.hpp"
 
+namespace gnote {
 
-#ifndef __BASE_SINGLETON_HPP__
-#define __BASE_SINGLETON_HPP__
+const int IActionManager::APP_ACTION_NEW = 1;
+const int IActionManager::APP_ACTION_MANAGE = 2;
+const int IActionManager::APP_ACTION_HELP = 3;
+const int IActionManager::APP_ACTION_LAST = 4;
 
-
-#include <cstddef>
-
-namespace base {
-
-  template <typename T>
-  class Singleton
-  {
-  public:
-    static T & obj()
-      {
-        return obj(NULL);
-      }
-  protected:
-    Singleton()
-      {
-        obj(static_cast<T*>(this));
-      }
-  private:
-    static T & obj(T * inst)
-      {
-        static T *instance = NULL;
-        if(inst) {
-          instance = inst;
-        }
-        return *instance;
-      }
-  };
+IActionManager::~IActionManager()
+{}
 
 }
 
-
-#endif

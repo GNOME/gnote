@@ -33,22 +33,24 @@
 #include "notebooks/notebook.hpp"
 #include "note.hpp"
 #include "tag.hpp"
+#include "base/singleton.hpp"
 
 namespace gnote {
   namespace notebooks {
 
 
 class NotebookManager
+  : public base::Singleton<NotebookManager>
 {
 public:
-
-  static NotebookManager & obj()
-    {
-      static NotebookManager *s_instance = new NotebookManager();
-      return *s_instance;
-    }
-
   typedef sigc::signal<void, const Note &, const Notebook::Ptr &> NotebookEventHandler;
+
+  NotebookManager(NoteManager &);
+
+  NoteManager & note_manager() const
+    {
+      return m_note_manager;
+    }
   bool is_adding_notebook() const
     {
       return m_adding_notebook;
@@ -97,8 +99,6 @@ public:
 
   sigc::signal<void, const Note &, bool> signal_note_pin_status_changed;
 private:
-  NotebookManager();
-
   static int compare_notebooks_sort_func(const Gtk::TreeIter &, const Gtk::TreeIter &);
   void load_notebooks();
   bool filter_notebooks_to_display(const Gtk::TreeIter &);
@@ -128,6 +128,7 @@ private:
   NotebookEventHandler                 m_note_added_to_notebook;
   NotebookEventHandler                 m_note_removed_from_notebook;
   Notebook::Ptr                        m_active_notes;
+  NoteManager                        & m_note_manager;
 };
 
   }

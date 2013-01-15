@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
  */
 
 
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "iconmanager.hpp"
 #include "notewindow.hpp"
 
@@ -58,7 +58,7 @@ void BacklinkMenuItem::on_activate()
   
   gnote::NoteRecentChanges *window = gnote::NoteRecentChanges::get_owning(*this);
   if(!window) {
-    window = gnote::Gnote::obj().new_main_window();
+    window = gnote::IGnote::obj().new_main_window();
   }
 
   window->present_note(m_note);

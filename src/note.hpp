@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -434,6 +434,8 @@ public:
 
 protected:
   NoteData *_read(sharp::XmlReader & xml, const std::string & uri, std::string & version);
+
+  static NoteArchiver s_obj;
 };
 
 namespace noteutils {

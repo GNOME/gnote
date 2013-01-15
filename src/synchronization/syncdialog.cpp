@@ -27,7 +27,7 @@
 #include <gtkmm/stock.h>
 #include <gtkmm/treeview.h>
 
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "iconmanager.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -795,7 +795,7 @@ void SyncDialog::rename_note(const Note::Ptr & note, const std::string & newTitl
 
 void SyncDialog::present_note(const Note::Ptr & note)
 {
-  NoteRecentChanges *window = Gnote::obj().get_window_for_note();
+  NoteRecentChanges *window = IGnote::obj().get_window_for_note();
   window->present_note(note);
   window->present();
 }

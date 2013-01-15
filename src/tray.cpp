@@ -37,13 +37,13 @@
 #include "actionmanager.hpp"
 #include "iconmanager.hpp"
 #include "utils.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "prefskeybinder.hpp"
 #include "tag.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "preferences.hpp"
 #include "sharp/datetime.hpp"
 #include "sharp/string.hpp"
@@ -93,7 +93,7 @@ namespace gnote {
   {
     if(!m_inhibit_activate) {
       if(m_note) {
-        NoteRecentChanges *window = Gnote::obj().get_window_for_note();
+        NoteRecentChanges *window = IGnote::obj().get_window_for_note();
         window->present_note(m_note);
         window->present();
       }
@@ -209,7 +209,7 @@ namespace gnote {
   {
     Gtk::Menu *menu;
 
-    ActionManager & am(ActionManager::obj());
+    IActionManager & am(IActionManager::obj());
     
     menu = (Gtk::Menu*)am.get_widget("/TrayIconMenu");
     DBG_ASSERT(menu, "menu not found");
@@ -272,7 +272,7 @@ namespace gnote {
     remove_recently_changed_notes();
 
     // Assume menu opens downward, move common items to top of menu
-    ActionManager & am(ActionManager::obj());
+    ActionManager & am(static_cast<ActionManager &>(IActionManager::obj()));
     Gtk::MenuItem* newNoteItem = (Gtk::MenuItem*)am.get_widget(
       "/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
     Gtk::MenuItem* searchNotesItem = (Gtk::MenuItem*)am.get_widget(
@@ -304,8 +304,8 @@ namespace gnote {
     days_ago.add_days(-3);
 
     // Prevent template notes from appearing in the menu
-    Tag::Ptr template_tag = TagManager::obj()
-      .get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr template_tag = ITagManager::obj()
+      .get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
     // List the most recently changed notes, any currently
     // opened notes, and any pinned notes...
@@ -403,7 +403,7 @@ namespace gnote {
     gtk_status_icon_set_tooltip_text(gobj(), 
                                      tray_util_get_tooltip_text().c_str());
 
-    Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &TrayIcon::on_exit));
+    IGnote::obj().signal_quit.connect(sigc::mem_fun(*this, &TrayIcon::on_exit));
     signal_activate().connect(sigc::mem_fun(*this, &TrayIcon::on_activate));
     signal_popup_menu().connect(sigc::mem_fun(*this, &TrayIcon::on_popup_menu));
   }

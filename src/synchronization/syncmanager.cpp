@@ -25,11 +25,11 @@
 #include <gtkmm/actiongroup.h>
 #include <sigc++/sigc++.h>
 
-#include "actionmanager.hpp"
+#include "iactionmanager.hpp"
 #include "addinmanager.hpp"
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "gnotesyncclient.hpp"
 #include "notemanager.hpp"
 #include "preferences.hpp"
@@ -110,8 +110,8 @@ namespace sync {
   }
 
 
-  SyncManager::SyncManager()
-    : m_note_manager(Gnote::obj().default_note_manager())
+  SyncManager::SyncManager(NoteManager & m)
+    : m_note_manager(m)
   {
   }
 
@@ -124,6 +124,7 @@ namespace sync {
 
   void SyncManager::init(NoteManager & m)
   {
+    new SyncManager(m);
     SyncManager::obj()._init(m);
   }
 
@@ -137,9 +138,9 @@ namespace sync {
     g_signal_connect(m_sync_helper, "delete-note", G_CALLBACK(SyncManager::on_delete_note), NULL);
     m_client = SyncClient::Ptr(new GnoteSyncClient(manager));
     // Add a "Synchronize Notes" to Gnote's Application Menu
-    ActionManager & am(ActionManager::obj());
+    IActionManager & am(IActionManager::obj());
     am.add_app_action("sync-notes");
-    am.add_app_menu_item(ActionManager::APP_ACTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
+    am.add_app_menu_item(IActionManager::APP_ACTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
 
     // Initialize all the SyncServiceAddins
     manager.get_addin_manager().initialize_sync_service_addins();
@@ -484,7 +485,7 @@ namespace sync {
   {
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC);
     std::string sync_addin_id = settings->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
-    ActionManager::obj().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
+    IActionManager::obj().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
 
     int timeoutPref = settings->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
     if(timeoutPref != m_autosync_timeout_pref_minutes) {

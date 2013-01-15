@@ -39,8 +39,8 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "addinmanager.hpp"
-#include "gnote.hpp"
-#include "tagmanager.hpp"
+#include "ignote.hpp"
+#include "itagmanager.hpp"
 #include "trie.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/exception.hpp"
@@ -111,7 +111,7 @@ namespace gnote {
     bool is_first_run = first_run ();
     create_notes_dir ();
 
-    const std::string old_note_dir = Gnote::old_note_dir();
+    const std::string old_note_dir = IGnote::old_note_dir();
     const bool migration_needed
                  = is_first_run
                    && sharp::directory_exists(old_note_dir);
@@ -152,7 +152,7 @@ namespace gnote {
       load_notes ();
     }
 
-    Gnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
+    IGnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
   }
 
   NoteManager::~NoteManager()
@@ -178,7 +178,7 @@ namespace gnote {
 
   AddinManager *NoteManager::create_addin_manager()
   {
-    return new AddinManager(*this, Gnote::conf_dir());
+    return new AddinManager(*this, IGnote::conf_dir());
   }
 
   // For overriding in test methods.
@@ -579,7 +579,7 @@ namespace gnote {
   Note::Ptr NoteManager::find_template_note() const
   {
     Note::Ptr template_note;
-    Tag::Ptr template_tag = TagManager::obj().get_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr template_tag = ITagManager::obj().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     if(!template_tag) {
       return template_note;
     }
@@ -620,7 +620,7 @@ namespace gnote {
       buffer->select_note_body();
 
       // Flag this as a template note
-      Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+      Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       template_note->add_tag(template_tag);
 
       template_note->queue_save(CONTENT_CHANGED);
@@ -717,7 +717,7 @@ namespace gnote {
   Note::Ptr NoteManager::create_note_from_template(const std::string & title, const Note::Ptr & template_note, const std::string & guid)
   {
     std::string new_title(title);
-    Tag::Ptr template_save_title = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
+    Tag::Ptr template_save_title = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
     if(template_note->contains_tag(template_save_title)) {
       new_title = get_unique_name(template_note->get_title(), m_notes.size());
     }
@@ -731,13 +731,13 @@ namespace gnote {
     Note::Ptr new_note = create_new_note(new_title, xml_content, guid);
 
     // Copy template note's properties
-    Tag::Ptr template_save_size = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
+    Tag::Ptr template_save_size = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
     if(template_note->data().has_extent() && template_note->contains_tag(template_save_size)) {
       new_note->data().height() = template_note->data().height();
       new_note->data().width() = template_note->data().width();
     }
 
-    Tag::Ptr template_save_selection = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
+    Tag::Ptr template_save_selection = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
     if(template_note->data().cursor_position() > 0 && template_note->contains_tag(template_save_selection)) {
       Glib::RefPtr<Gtk::TextBuffer> buffer = new_note->get_buffer();
       Gtk::TextIter iter;

@@ -25,7 +25,7 @@
 #include <boost/lexical_cast.hpp>
 
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "gnotesyncclient.hpp"
 #include "notemanager.hpp"
 #include "sharp/files.hpp"
@@ -40,7 +40,7 @@ namespace sync {
 
   GnoteSyncClient::GnoteSyncClient(NoteManager & manager)
   {
-    m_local_manifest_file_path = Glib::build_filename(Gnote::conf_dir(), LOCAL_MANIFEST_FILE_NAME);
+    m_local_manifest_file_path = Glib::build_filename(IGnote::conf_dir(), LOCAL_MANIFEST_FILE_NAME);
     // TODO: Why doesn't OnChanged ever get fired?!
     Glib::RefPtr<Gio::File> manifest = Gio::File::create_for_path(m_local_manifest_file_path);
     if(manifest != 0) {

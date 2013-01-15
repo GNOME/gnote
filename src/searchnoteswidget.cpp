@@ -35,7 +35,7 @@
 #include "recenttreeview.hpp"
 #include "search.hpp"
 #include "searchnoteswidget.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "sharp/string.hpp"
 
@@ -745,7 +745,7 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter & iter)
   }
 
   // Don't show the template notes in the list
-  Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+  Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
   if(note->contains_tag(template_tag)) {
     return false;
   }

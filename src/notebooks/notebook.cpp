@@ -28,7 +28,7 @@
 #include "notemanager.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 
 namespace gnote {
 namespace notebooks {
@@ -52,7 +52,7 @@ namespace notebooks {
     }
     else {
       set_name(name);
-      m_tag = TagManager::obj().get_or_create_system_tag (
+      m_tag = ITagManager::obj().get_or_create_system_tag(
         std::string(NOTEBOOK_TAG_PREFIX) + name);
     }
   }
@@ -108,8 +108,8 @@ namespace notebooks {
   Note::Ptr Notebook::find_template_note() const
   {
     Note::Ptr note;
-    Tag::Ptr template_tag = TagManager::obj().get_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    Tag::Ptr notebook_tag = TagManager::obj().get_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
+    Tag::Ptr template_tag = ITagManager::obj().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr notebook_tag = ITagManager::obj().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
     if(!template_tag || !notebook_tag) {
       return note;
     }
@@ -143,13 +143,13 @@ namespace notebooks {
       buffer->select_note_body();
 
       // Flag this as a template note
-      Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+      Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       note->add_tag (template_tag);
 
       // Add on the notebook system tag so Tomboy
       // will persist the tag/notebook across sessions
       // if no other notes are added to the notebook.
-      Tag::Ptr notebook_tag = TagManager::obj().get_or_create_system_tag (NOTEBOOK_TAG_PREFIX + get_name());
+      Tag::Ptr notebook_tag = ITagManager::obj().get_or_create_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
       note->add_tag (notebook_tag);
         
       note->queue_save (CONTENT_CHANGED);

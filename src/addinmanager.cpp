@@ -34,7 +34,7 @@
 #include "addinmanager.hpp"
 #include "addinpreferencefactory.hpp"
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
 #include "notebooks/notebooknoteaddin.hpp"
@@ -65,7 +65,7 @@ namespace gnote {
     const bool is_first_run
                  = !sharp::directory_exists(m_addins_prefs_dir);
     const std::string old_addins_dir
-                        = Glib::build_filename(Gnote::old_note_dir(),
+                        = Glib::build_filename(IGnote::old_note_dir(),
                                                "addins");
     const bool migration_needed
                  = is_first_run

@@ -1,7 +1,8 @@
 /*
  * gnote
  *
- * Copyright (C) 2009, 2010 Debarshi Ray
+ * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2009-2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +24,7 @@
 #include "debug.hpp"
 #include "notemanager.hpp"
 #include "noteoftheday.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "utils.hpp"
 
 namespace noteoftheday {
@@ -51,7 +52,7 @@ gnote::Note::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
   }
 
   // Automatically tag all new Note of the Day notes
-  notd->add_tag(gnote::TagManager::obj().get_or_create_system_tag(
+  notd->add_tag(gnote::ITagManager::obj().get_or_create_system_tag(
                                            "NoteOfTheDay"));
 
   return notd;

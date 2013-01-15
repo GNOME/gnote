@@ -31,8 +31,8 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/statusicon.h>
 
-#include "base/singleton.hpp"
 #include "actionmanager.hpp"
+#include "ignote.hpp"
 #include "keybinder.hpp"
 #include "recentchanges.hpp"
 #include "remotecontrolproxy.hpp"
@@ -100,16 +100,12 @@ private:
 
 class Gnote
   : public Gtk::Application
+  , public IGnote
 {
 public:
-  static Gnote& obj()
-    {
-      return *s_obj;
-    }
   static Glib::RefPtr<Gnote> create()
     {
-      s_obj = new Gnote;
-      return Glib::RefPtr<Gnote>(s_obj);
+      return Glib::RefPtr<Gnote>(new Gnote);
     }
 
   ~Gnote();
@@ -131,16 +127,11 @@ public:
   void on_show_preferences_action(const Glib::VariantBase&);
   void on_show_help_action(const Glib::VariantBase&);
   void on_show_about_action(const Glib::VariantBase&);
-  NoteRecentChanges *new_main_window();
-  NoteRecentChanges *get_main_window();
-  NoteRecentChanges *get_window_for_note();
-  void open_search_all();
+  virtual NoteRecentChanges *new_main_window();
+  virtual NoteRecentChanges *get_main_window();
+  virtual NoteRecentChanges *get_window_for_note();
+  virtual void open_search_all();
   void open_note_sync_window(const Glib::VariantBase&);
-
-  static std::string cache_dir();
-  static std::string conf_dir();
-  static std::string data_dir();
-  static std::string old_note_dir();
 
   bool tray_icon_showing()
     {
@@ -158,16 +149,13 @@ public:
     {
       m_tray = tray;
     }
-  sigc::signal<void> signal_quit;
   static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
-  void open_note(const Note::Ptr & note);
+  virtual void open_note(const Note::Ptr & note);
 protected:
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line);
   virtual void on_startup();
   virtual void on_window_removed(Gtk::Window *window);
 private:
-  static Gnote *s_obj;
-
   Gnote();
   void start_note_created(const Note::Ptr & start_note);
   std::string get_note_path(const std::string & override_path);

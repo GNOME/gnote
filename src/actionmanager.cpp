@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -68,12 +68,6 @@
 #include "iconmanager.hpp"
 
 namespace gnote {
-
-  const int ActionManager::APP_ACTION_NEW = 1;
-  const int ActionManager::APP_ACTION_MANAGE = 2;
-  const int ActionManager::APP_ACTION_HELP = 3;
-  const int ActionManager::APP_ACTION_LAST = 4;
-
 
   ActionManager::ActionManager()
     : m_ui(Gtk::UIManager::create())

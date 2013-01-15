@@ -21,7 +21,7 @@
 
 
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "keybinder.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
@@ -208,7 +208,7 @@ namespace gnote {
   {
     Note::Ptr note = m_manager.find_by_uri (m_manager.start_note_uri());
     if (note) {
-      Gnote::obj().open_note(note);
+      IGnote::obj().open_note(note);
     }
   }
 
@@ -217,7 +217,7 @@ namespace gnote {
   {
     try {
       Note::Ptr new_note = m_manager.create();
-      Gnote::obj().open_note(new_note);
+      IGnote::obj().open_note(new_note);
     } 
     catch (...) {
       // Fail silently.
@@ -239,7 +239,7 @@ namespace gnote {
 
   void GnotePrefsKeybinder::key_open_recent_changes()
   {
-    Gnote::obj().open_search_all();
+    IGnote::obj().open_search_all();
   }
 
 }

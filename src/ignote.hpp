@@ -2,7 +2,6 @@
  * gnote
  *
  * Copyright (C) 2013 Aurimas Cernius
- * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,42 +17,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _IGNOTE_HPP_
+#define _IGNOTE_HPP_
 
+#include "recentchanges.hpp"
+#include "base/singleton.hpp"
 
+namespace gnote {
 
-#ifndef __BASE_SINGLETON_HPP__
-#define __BASE_SINGLETON_HPP__
+class IGnote
+  : public base::Singleton<IGnote>
+{
+public:
+  static std::string cache_dir();
+  static std::string conf_dir();
+  static std::string data_dir();
+  static std::string old_note_dir();
 
+  virtual ~IGnote();
+  virtual NoteRecentChanges *get_main_window() = 0;
+  virtual NoteRecentChanges *get_window_for_note() = 0; //TODO change to return reference
+  virtual NoteRecentChanges *new_main_window() = 0; //TODO change to return reference
+  virtual void open_note(const Note::Ptr & note) = 0;
+  virtual void open_search_all() = 0;
 
-#include <cstddef>
-
-namespace base {
-
-  template <typename T>
-  class Singleton
-  {
-  public:
-    static T & obj()
-      {
-        return obj(NULL);
-      }
-  protected:
-    Singleton()
-      {
-        obj(static_cast<T*>(this));
-      }
-  private:
-    static T & obj(T * inst)
-      {
-        static T *instance = NULL;
-        if(inst) {
-          instance = inst;
-        }
-        return *instance;
-      }
-  };
+  sigc::signal<void> signal_quit;
+};
 
 }
-
 
 #endif

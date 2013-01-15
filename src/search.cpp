@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@
 #include "sharp/string.hpp"
 #include "notemanager.hpp"
 #include "search.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "utils.hpp"
 
 namespace gnote {
@@ -53,7 +53,7 @@ namespace gnote {
     ResultsPtr temp_matches(new Results);
       
       // Skip over notes that are template notes
-    Tag::Ptr template_tag = TagManager::obj().get_or_create_system_tag (TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
     for(Note::List::const_iterator iter = m_manager.get_notes().begin();
         iter != m_manager.get_notes().end(); ++iter) {

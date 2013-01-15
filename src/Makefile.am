@@ -106,8 +106,11 @@ libgnote_la_SOURCES = \
 	applicationaddin.cpp \
 	contrast.hpp contrast.cpp \
 	debug.hpp debug.cpp \
+	iactionmanager.hpp iactionmanager.cpp \
 	iconmanager.hpp iconmanager.cpp \
+	ignote.hpp ignote.cpp \
 	importaddin.hpp importaddin.cpp \
+	itagmanager.hpp itagmanager.cpp \
 	keybinder.hpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \

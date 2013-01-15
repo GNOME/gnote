@@ -63,7 +63,7 @@ namespace sync {
     : public base::Singleton<SyncManager>
   {
   public:
-    SyncManager();
+    SyncManager(NoteManager &);
     ~SyncManager();
     static void init(NoteManager &);
     void reset_client();

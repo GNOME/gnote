@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -92,6 +92,8 @@ namespace sync {
     std::string find_first_executable_in_path(const std::string & executableName);
   private:
     static const char *common_paths[];
+    static SyncUtils s_obj;
+
     std::string m_guisu_tool;
     std::string m_modprobe_tool;
   };

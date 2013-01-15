@@ -42,7 +42,7 @@
 #include "noterenamedialog.hpp"
 #include "notetag.hpp"
 #include "notewindow.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "utils.hpp"
 #include "debug.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -872,7 +872,7 @@ namespace gnote {
             parse_tags (doc2->children, tag_strings);
             for(std::list<std::string>::const_iterator iter = tag_strings.begin();
                 iter != tag_strings.end(); ++iter) {
-              Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);
+              Tag::Ptr tag = ITagManager::obj().get_or_create_tag(*iter);
               new_tags.push_back(tag);
             }
             xmlFreeDoc(doc2);
@@ -1114,6 +1114,10 @@ namespace gnote {
   const char *NoteArchiver::CURRENT_VERSION = "0.3";
 //  const char *NoteArchiver::DATE_TIME_FORMAT = "%Y-%m-%dT%T.@7f@%z"; //"yyyy-MM-ddTHH:mm:ss.fffffffzzz";
 
+  //instance
+  NoteArchiver NoteArchiver::s_obj;
+
+
   NoteData *NoteArchiver::read(const std::string & read_file, const std::string & uri)
   {
     return obj().read_file(read_file, uri);
@@ -1202,7 +1206,7 @@ namespace gnote {
             Note::parse_tags(doc2->children, tag_strings);
             for(std::list<std::string>::const_iterator iter = tag_strings.begin();
                 iter != tag_strings.end(); ++iter) {
-              Tag::Ptr tag = TagManager::obj().get_or_create_tag(*iter);
+              Tag::Ptr tag = ITagManager::obj().get_or_create_tag(*iter);
               note->tags()[tag->normalized_name()] = tag;
             }
             xmlFreeDoc(doc2);

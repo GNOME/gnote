@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,34 +31,29 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/treemodelsort.h>
 
-#include "base/singleton.hpp"
+#include "itagmanager.hpp"
 #include "tag.hpp"
 
 
 namespace gnote {
 
 class TagManager
-  : public  base::Singleton<TagManager>
+  : public ITagManager
 {
 public:
   TagManager();
 
-  static const char * TEMPLATE_NOTE_SYSTEM_TAG;
-  static const char * TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG;
-  static const char * TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG;
-  static const char * TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG;
-  Tag::Ptr get_tag (const std::string & tag_name) const;
-  Tag::Ptr get_or_create_tag(const std::string &);
-  Tag::Ptr get_system_tag (const std::string & tag_name) const;
-  Tag::Ptr get_or_create_system_tag(const std::string & name);
-  void remove_tag (const Tag::Ptr & tag);
+  virtual Tag::Ptr get_tag(const std::string & tag_name) const;
+  virtual Tag::Ptr get_or_create_tag(const std::string &);
+  virtual Tag::Ptr get_system_tag(const std::string & tag_name) const;
+  virtual Tag::Ptr get_or_create_system_tag(const std::string & name);
+  virtual void remove_tag(const Tag::Ptr & tag);
   Glib::RefPtr<Gtk::TreeModel> get_tags() const
     {
       return m_sorted_tags;
     }
-  void all_tags(std::list<Tag::Ptr>  &) const;
+  virtual void all_tags(std::list<Tag::Ptr> &) const;
 private:
-
   class ColumnRecord
     : public Gtk::TreeModelColumnRecord
   {

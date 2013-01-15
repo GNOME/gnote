@@ -47,17 +47,17 @@
 #include "preferencesdialog.hpp"
 #include "remotecontrolproxy.hpp"
 #include "utils.hpp"
+#include "tagmanager.hpp"
 #include "xkeybinder.hpp"
 #include "dbus/remotecontrol.hpp"
 #include "dbus/remotecontrolclient.hpp"
 #include "sharp/streamreader.hpp"
 #include "sharp/files.hpp"
+#include "notebooks/notebookmanager.hpp"
 #include "synchronization/syncmanager.hpp"
 
 
 namespace gnote {
-
-  Gnote *Gnote::s_obj = NULL;
 
   Gnote::Gnote()
     : Gtk::Application("org.gnome.Gnote", Gio::APPLICATION_HANDLES_COMMAND_LINE)
@@ -144,10 +144,16 @@ namespace gnote {
   void Gnote::common_init()
   {
     std::string note_path = get_note_path(cmd_line.note_path());
+
+    //create singleton objects
+    new TagManager;
+    new Preferences;
     m_manager = new NoteManager(note_path, sigc::mem_fun(*this, &Gnote::start_note_created));
+    new notebooks::NotebookManager(default_note_manager());
     m_keybinder = new XKeybinder();
-    ActionManager::obj().load_interface();
+    (new ActionManager)->load_interface();
     sync::SyncManager::init(default_note_manager());
+
     setup_global_actions();
     m_manager->get_addin_manager().initialize_application_addins();
   }
@@ -155,7 +161,7 @@ namespace gnote {
 
   void Gnote::end_main(bool bus_acquired, bool name_acquired)
   {
-    ActionManager & am(ActionManager::obj());
+    IActionManager & am(IActionManager::obj());
     if((m_is_background = cmd_line.background())) {
       am["QuitGNoteAction"]->set_visible(false);
     }
@@ -292,7 +298,7 @@ namespace gnote {
 
   void Gnote::setup_global_actions()
   {
-    ActionManager & am(ActionManager::obj());
+    IActionManager & am(IActionManager::obj());
     am["QuitGNoteAction"]->signal_activate()
       .connect(sigc::mem_fun(*this, &Gnote::quit));
     am["ShowPreferencesAction"]->signal_activate().connect(
@@ -468,7 +474,7 @@ namespace gnote {
 
   void Gnote::make_app_actions()
   {
-    ActionManager & am(ActionManager::obj());
+    IActionManager & am(IActionManager::obj());
     am.get_app_action("new-note")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_note_app_action));
     am.get_app_action("new-window")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_window_action));
     am.get_app_action("show-preferences")->signal_activate().connect(
@@ -478,7 +484,7 @@ namespace gnote {
     am.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
     am.get_app_action("quit")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_quit_gnote_action));
 
-    add_app_actions(am.get_app_actions());
+    add_app_actions(static_cast<ActionManager &>(am).get_app_actions());
   }
 
 
@@ -534,38 +540,8 @@ namespace gnote {
 
   void Gnote::make_app_menu()
   {
-    set_app_menu(ActionManager::obj().get_app_menu());
+    set_app_menu(static_cast<ActionManager &>(IActionManager::obj()).get_app_menu());
   }
-
-
-  std::string Gnote::cache_dir()
-  {
-    return Glib::get_user_cache_dir() + "/gnote";
-  }
-
-
-  std::string Gnote::conf_dir()
-  {
-    return Glib::get_user_config_dir() + "/gnote";
-  }
-
-
-  std::string Gnote::data_dir()
-  {
-    return Glib::get_user_data_dir() + "/gnote";
-  }
-
-
-  std::string Gnote::old_note_dir()
-  {
-    std::string home_dir = Glib::get_home_dir();
-
-    if (home_dir.empty())
-      home_dir = Glib::get_current_dir();
-
-    return home_dir + "/.gnote";
-  }
-
 
 
   GnoteCommandLine::GnoteCommandLine()
@@ -675,7 +651,7 @@ namespace gnote {
       else {
         execute(remote);
       }
-      Gnote::obj().quit();
+      static_cast<Gnote&>(Gnote::obj()).quit();
     }
     return 0;
   }

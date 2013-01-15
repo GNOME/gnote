@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -32,26 +32,21 @@
 #include <gtkmm/uimanager.h>
 #include <gdkmm/pixbuf.h>
 
-#include "base/singleton.hpp"
+#include "iactionmanager.hpp"
 
 namespace gnote {
 
 class ActionManager
-  : public base::Singleton<ActionManager>
+  : public IActionManager
 {
 public:
-  static const int APP_ACTION_NEW;
-  static const int APP_ACTION_MANAGE;
-  static const int APP_ACTION_HELP;
-  static const int APP_ACTION_LAST;
-
   ActionManager();
 
-  Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const
+  virtual Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const
     {
       return find_action_by_name(n);
     }
-  Gtk::Widget * get_widget(const std::string &n) const
+  virtual Gtk::Widget * get_widget(const std::string &n) const
     {
       return m_ui->get_widget(n);
     }
@@ -59,18 +54,18 @@ public:
   void get_placeholder_children(const std::string & p, std::list<Gtk::Widget*> & placeholders) const;
   void populate_action_groups();
   Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n) const;
-  const Glib::RefPtr<Gtk::UIManager> & get_ui()
+  virtual const Glib::RefPtr<Gtk::UIManager> & get_ui()
     {
       return m_ui;
     }
-  Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const;
+  virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const;
   const std::vector<Glib::RefPtr<Gio::SimpleAction> > & get_app_actions() const
     {
       return m_app_actions;
     }
-  void add_app_action(const std::string & name);
-  void add_app_menu_item(int section, int order, const std::string & label,
-                         const std::string & action_def);
+  virtual void add_app_action(const std::string & name);
+  virtual void add_app_menu_item(int section, int order, const std::string & label,
+                                 const std::string & action_def);
   Glib::RefPtr<Gio::Menu> get_app_menu() const;
 private:
   void make_app_actions();

@@ -2,7 +2,6 @@
  * gnote
  *
  * Copyright (C) 2013 Aurimas Cernius
- * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,41 +18,41 @@
  */
 
 
+#include <glibmm/miscutils.h>
+
+#include "ignote.hpp"
 
 
-#ifndef __BASE_SINGLETON_HPP__
-#define __BASE_SINGLETON_HPP__
+namespace gnote {
 
+IGnote::~IGnote()
+{}
 
-#include <cstddef>
+std::string IGnote::cache_dir()
+{
+  return Glib::get_user_cache_dir() + "/gnote";
+}
 
-namespace base {
+std::string IGnote::conf_dir()
+{
+  return Glib::get_user_config_dir() + "/gnote";
+}
 
-  template <typename T>
-  class Singleton
-  {
-  public:
-    static T & obj()
-      {
-        return obj(NULL);
-      }
-  protected:
-    Singleton()
-      {
-        obj(static_cast<T*>(this));
-      }
-  private:
-    static T & obj(T * inst)
-      {
-        static T *instance = NULL;
-        if(inst) {
-          instance = inst;
-        }
-        return *instance;
-      }
-  };
+std::string IGnote::data_dir()
+{
+  return Glib::get_user_data_dir() + "/gnote";
+}
+
+std::string IGnote::old_note_dir()
+{
+  std::string home_dir = Glib::get_home_dir();
+
+  if(home_dir.empty()) {
+    home_dir = Glib::get_current_dir();
+  }
+
+  return home_dir + "/.gnote";
+}
 
 }
 
-
-#endif

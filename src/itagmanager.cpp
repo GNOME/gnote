@@ -2,7 +2,6 @@
  * gnote
  *
  * Copyright (C) 2013 Aurimas Cernius
- * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,42 +17,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "itagmanager.hpp"
 
+namespace gnote {
 
+const char *ITagManager::TEMPLATE_NOTE_SYSTEM_TAG = "template";
+const char *ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG = "template:save-size";
+const char *ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG = "template:save-selection";
+const char *ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG = "template:save-title";
 
-#ifndef __BASE_SINGLETON_HPP__
-#define __BASE_SINGLETON_HPP__
-
-
-#include <cstddef>
-
-namespace base {
-
-  template <typename T>
-  class Singleton
-  {
-  public:
-    static T & obj()
-      {
-        return obj(NULL);
-      }
-  protected:
-    Singleton()
-      {
-        obj(static_cast<T*>(this));
-      }
-  private:
-    static T & obj(T * inst)
-      {
-        static T *instance = NULL;
-        if(inst) {
-          instance = inst;
-        }
-        return *instance;
-      }
-  };
+ITagManager::~ITagManager()
+{}
 
 }
-
-
-#endif

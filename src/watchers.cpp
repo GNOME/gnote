@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -33,13 +33,13 @@
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "noteeditor.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferences.hpp"
 #include "recentchanges.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "triehit.hpp"
 #include "watchers.hpp"
 
@@ -915,7 +915,7 @@ namespace gnote {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
       NoteRecentChanges *window = NoteRecentChanges::get_owning(const_cast<NoteEditor&>(editor));
       if(!window) {
-        window = Gnote::obj().new_main_window();
+        window = IGnote::obj().new_main_window();
       }
       window->present_note(link);
       window->present();
@@ -1265,10 +1265,10 @@ namespace gnote {
 
   void NoteTagsWatcher::on_tag_removed(const Note::Ptr&, const std::string& tag_name)
   {
-    Tag::Ptr tag = TagManager::obj().get_tag (tag_name);
+    Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag->popularity() : 0);
     if (tag && tag->popularity() == 0) {
-      TagManager::obj().remove_tag (tag);
+      ITagManager::obj().remove_tag(tag);
     }
   }
 

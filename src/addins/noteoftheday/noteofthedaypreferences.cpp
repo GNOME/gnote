@@ -21,7 +21,7 @@
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "noteoftheday.hpp"
@@ -74,7 +74,7 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
   }
 
   if(0 != template_note) {
-    gnote::Gnote::obj().open_note(template_note);
+    gnote::IGnote::obj().open_note(template_note);
   }
 }
 

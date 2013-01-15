@@ -31,17 +31,18 @@
 #include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "debug.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "notemanager.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 
 
 namespace gnote {
   namespace notebooks {
 
-    NotebookManager::NotebookManager()
+    NotebookManager::NotebookManager(NoteManager & manager)
       : m_adding_notebook(false)
-      , m_active_notes(new ActiveNotesNotebook(Gnote::obj().default_note_manager()))
+      , m_active_notes(new ActiveNotesNotebook(manager))
+      , m_note_manager(manager)
    { 
      m_notebooks = Gtk::ListStore::create(m_column_types);
 
@@ -58,15 +59,15 @@ namespace gnote {
      m_filteredNotebooks->set_visible_func(
        sigc::ptr_fun(&NotebookManager::filter_notebooks));
       
-     Notebook::Ptr allNotesNotebook(new AllNotesNotebook(Gnote::obj().default_note_manager()));
+     Notebook::Ptr allNotesNotebook(new AllNotesNotebook(manager));
      Gtk::TreeIter iter = m_notebooks->append ();
      iter->set_value(0, Notebook::Ptr(allNotesNotebook));
       
-     Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook(Gnote::obj().default_note_manager()));
+     Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook(manager));
      iter = m_notebooks->append ();
      iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
 
-     Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook(Gnote::obj().default_note_manager()));
+     Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook(manager));
      iter = m_notebooks->append();
      iter->set_value(0, pinned_notes_notebook);
 
@@ -126,7 +127,7 @@ namespace gnote {
         
         try {
           m_adding_notebook = true;
-          notebook = Notebook::Ptr(new Notebook(Gnote::obj().default_note_manager(), notebookName));
+          notebook = Notebook::Ptr(new Notebook(m_note_manager, notebookName));
         } 
         catch(...)
         {
@@ -365,7 +366,7 @@ namespace gnote {
 
       // Delete the template note
       if (templateNote) {
-        Gnote::obj().default_note_manager().delete_note(templateNote);
+        obj().note_manager().delete_note(templateNote);
       }
     }
 
@@ -449,7 +450,7 @@ namespace gnote {
     {
       Gtk::TreeIter iter;
       std::list<Tag::Ptr> tags;
-      TagManager::obj().all_tags(tags);
+      ITagManager::obj().all_tags(tags);
       for(std::list<Tag::Ptr>::const_iterator tag_iter = tags.begin();
           tag_iter != tags.end(); ++tag_iter) {
         
@@ -461,7 +462,7 @@ namespace gnote {
                                      + Notebook::NOTEBOOK_TAG_PREFIX)) {
           continue;
         }
-        Notebook::Ptr notebook(new Notebook(Gnote::obj().default_note_manager(), tag));
+        Notebook::Ptr notebook(new Notebook(m_note_manager, tag));
         iter = m_notebooks->append ();
         iter->set_value(0, notebook);
         m_notebookMap [notebook->get_normalized_name()] = iter;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,7 +28,7 @@
 
 #include <glibmm/i18n.h>
 
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "notewindow.hpp"
 #include "noterenamedialog.hpp"
 #include "recentchanges.hpp"
@@ -367,7 +367,7 @@ void NoteRenameDialog::on_notes_view_row_activated(
     window = NoteRecentChanges::get_owning(*parent);
   }
   if(!window) {
-    window = Gnote::obj().new_main_window();
+    window = IGnote::obj().new_main_window();
   }
 
   window->present_note(note);

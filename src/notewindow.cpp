@@ -44,8 +44,7 @@
 #include "undo.hpp"
 #include "recentchanges.hpp"
 #include "search.hpp"
-#include "actionmanager.hpp"
-#include "tagmanager.hpp"
+#include "itagmanager.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/string.hpp"
@@ -75,10 +74,10 @@ namespace gnote {
     , m_y(-1)
     , m_global_keys(NULL)
   {
-    m_template_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    m_template_save_size_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
-    m_template_save_selection_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
-    m_template_save_title_tag = TagManager::obj().get_or_create_system_tag(TagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
+    m_template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    m_template_save_size_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
+    m_template_save_selection_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
+    m_template_save_title_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
 
     m_text_menu = Gtk::manage(new NoteTextMenu(note.get_buffer(), note.get_buffer()->undoer()));
 

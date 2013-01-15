@@ -36,7 +36,7 @@
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/notebooknewnotemenuitem.hpp"
 #include "notebooks/notebook.hpp"
-#include "actionmanager.hpp"
+#include "iactionmanager.hpp"
 #include "debug.hpp"
 #include "iconmanager.hpp"
 #include "notemanager.hpp"
@@ -75,7 +75,7 @@ namespace gnote {
                              _("Notebooks"),
                              _("Create a new note in a notebook")));
           
-      ActionManager & am(ActionManager::obj());
+      IActionManager & am(IActionManager::obj());
       m_notebookUi = am.get_ui()->add_ui_from_string (uixml);
       
       am.get_ui()->insert_action_group (m_actionGroup, 0);
@@ -125,7 +125,7 @@ namespace gnote {
       am.add_app_action("new-notebook");
       am.get_app_action("new-notebook")->signal_activate().connect(
         sigc::mem_fun(*this, &NotebookApplicationAddin::on_new_notebook_action));
-      am.add_app_menu_item(ActionManager::APP_ACTION_NEW, 300, _("New Note_book"), "app.new-notebook");
+      am.add_app_menu_item(IActionManager::APP_ACTION_NEW, 300, _("New Note_book"), "app.new-notebook");
         
       m_initialized = true;
     }
@@ -133,7 +133,7 @@ namespace gnote {
 
     void NotebookApplicationAddin::shutdown ()
     {
-      ActionManager & am(ActionManager::obj());
+      IActionManager & am(IActionManager::obj());
       try {
         am.get_ui()->remove_action_group(m_actionGroup);
       } 

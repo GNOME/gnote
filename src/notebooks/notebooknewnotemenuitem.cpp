@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 #include <gtkmm/image.h>
 
 #include "sharp/string.hpp"
-#include "gnote.hpp"
+#include "ignote.hpp"
 #include "iconmanager.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
@@ -54,7 +54,7 @@ namespace gnote {
       
       // Look for the template note and create a new note
       Note::Ptr note = m_notebook->create_notebook_note ();
-      Gnote::obj().open_note(note);
+      IGnote::obj().open_note(note);
     }
 
 
