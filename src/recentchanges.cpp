@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -28,7 +28,6 @@
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 
-#include "actionmanager.hpp"
 #include "debug.hpp"
 #include "gnote.hpp"
 #include "iconmanager.hpp"
@@ -53,8 +52,6 @@ namespace gnote {
          Preferences::MAIN_WINDOW_MAXIMIZED)) {
       maximize();
     }
-
-    add_accel_group(ActionManager::obj().get_ui()->get_accel_group());
 
     set_has_resize_grip(true);
 
