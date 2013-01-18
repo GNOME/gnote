@@ -30,7 +30,7 @@
 #include <glibmm/thread.h>
 
 #include "note.hpp"
-#include "syncdialog.hpp"
+#include "syncui.hpp"
 #include "base/singleton.hpp"
 #include "sharp/datetime.hpp"
 #include "sharp/timespan.hpp"
@@ -40,7 +40,6 @@ namespace gnote {
 namespace sync {
 
   class SyncServiceAddin;
-  class SyncUI;
 
   class SyncClient
   {
