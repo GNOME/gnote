@@ -72,7 +72,6 @@ libgnote_la_SOURCES = \
 	base/inifile.hpp base/inifile.cpp \
 	gnome_keyring/keyringexception.hpp \
 	gnome_keyring/ring.hpp gnome_keyring/ring.cpp \
-	sharp/addinstreemodel.hpp sharp/addinstreemodel.cpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
 	sharp/dynamicmodule.hpp sharp/dynamicmodule.cpp \
 	sharp/directory.hpp sharp/directory.cpp \
@@ -97,9 +96,7 @@ libgnote_la_SOURCES = \
 	sharp/xmlwriter.hpp sharp/xmlwriter.cpp \
 	sharp/xsltargumentlist.hpp sharp/xsltargumentlist.cpp \
 	sharp/xsltransform.hpp sharp/xsltransform.cpp \
-	gnote.cpp gnote.hpp \
 	abstractaddin.hpp abstractaddin.cpp \
-	actionmanager.hpp actionmanager.cpp \
 	addinmanager.hpp addinmanager.cpp \
 	addinpreferencefactory.hpp addinpreferencefactory.cpp \
 	applicationaddin.hpp \
@@ -109,9 +106,8 @@ libgnote_la_SOURCES = \
 	iactionmanager.hpp iactionmanager.cpp \
 	iconmanager.hpp iconmanager.cpp \
 	ignote.hpp ignote.cpp \
-	importaddin.hpp importaddin.cpp \
 	itagmanager.hpp itagmanager.cpp \
-	keybinder.hpp \
+	importaddin.hpp importaddin.cpp \
 	mainwindow.hpp mainwindow.cpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \
@@ -122,21 +118,14 @@ libgnote_la_SOURCES = \
 	note.hpp note.cpp \
 	notewindow.hpp notewindow.cpp \
 	preferences.hpp preferences.cpp \
-	preferencesdialog.hpp preferencesdialog.cpp \
 	preferencetabaddin.hpp \
-	prefskeybinder.hpp prefskeybinder.cpp \
 	recenttreeview.hpp \
-	recentchanges.hpp recentchanges.cpp \
 	search.hpp search.cpp \
-	searchnoteswidget.hpp searchnoteswidget.cpp \
 	tag.hpp tag.cpp \
-	tagmanager.hpp tagmanager.cpp \
-	tray.hpp tray.cpp \
 	trie.hpp triehit.hpp \
 	undo.hpp undo.cpp \
 	utils.hpp utils.cpp \
 	watchers.hpp watchers.cpp \
-	xkeybinder.hpp xkeybinder.cpp \
 	notebooks/createnotebookdialog.hpp notebooks/createnotebookdialog.cpp \
 	notebooks/notebook.hpp notebooks/notebook.cpp \
 	notebooks/notebookapplicationaddin.hpp notebooks/notebookapplicationaddin.cpp \
@@ -144,22 +133,33 @@ libgnote_la_SOURCES = \
 	notebooks/notebookmenuitem.hpp notebooks/notebookmenuitem.cpp \
 	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
 	notebooks/notebooknoteaddin.hpp notebooks/notebooknoteaddin.cpp \
-	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	synchronization/filesystemsyncserver.hpp synchronization/filesystemsyncserver.cpp \
 	synchronization/fusesyncserviceaddin.hpp synchronization/fusesyncserviceaddin.cpp \
-	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
-	synchronization/silentui.hpp synchronization/silentui.cpp \
-	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
-	synchronization/syncmanager.hpp synchronization/syncmanager.cpp \
 	synchronization/isyncmanager.hpp synchronization/isyncmanager.cpp \
 	synchronization/syncui.hpp synchronization/syncui.cpp \
         synchronization/syncutils.hpp synchronization/syncutils.cpp \
 	synchronization/syncserviceaddin.hpp synchronization/syncserviceaddin.cpp \
-	$(DBUS_SOURCES)   \
 	$(NULL)
 
 
 gnote_SOURCES = \
+	sharp/addinstreemodel.hpp sharp/addinstreemodel.cpp \
+	actionmanager.hpp actionmanager.cpp \
+	gnote.cpp gnote.hpp \
+	keybinder.hpp \
+	preferencesdialog.hpp preferencesdialog.cpp \
+	prefskeybinder.hpp prefskeybinder.cpp \
+	recentchanges.hpp recentchanges.cpp \
+	searchnoteswidget.hpp searchnoteswidget.cpp \
+	tagmanager.hpp tagmanager.cpp \
+	tray.hpp tray.cpp \
+	xkeybinder.hpp xkeybinder.cpp \
+	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
+	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
+	synchronization/silentui.hpp synchronization/silentui.cpp \
+	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
+	synchronization/syncmanager.hpp synchronization/syncmanager.cpp \
+	$(DBUS_SOURCES)   \
 	main.cpp \
 	$(NULL)
 
