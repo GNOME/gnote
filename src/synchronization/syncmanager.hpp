@@ -22,18 +22,12 @@
 #define _SYNCHRONIZATION_SYNCMANAGER_HPP_
 
 
-#include <exception>
 #include <map>
-#include <string>
 
 #include <glibmm/main.h>
 #include <glibmm/thread.h>
 
-#include "note.hpp"
-#include "syncui.hpp"
-#include "base/singleton.hpp"
-#include "sharp/datetime.hpp"
-#include "sharp/timespan.hpp"
+#include "isyncmanager.hpp"
 
 
 namespace gnote {
@@ -41,40 +35,27 @@ namespace sync {
 
   class SyncServiceAddin;
 
-  class SyncClient
-  {
-  public:
-    typedef std::tr1::shared_ptr<SyncClient> Ptr;
-
-    virtual int last_synchronized_revision() = 0;
-    virtual void last_synchronized_revision(int) = 0;
-    virtual sharp::DateTime last_sync_date() = 0;
-    virtual void last_sync_date(const sharp::DateTime &) = 0;
-    virtual int get_revision(const Note::Ptr & note) = 0;
-    virtual void set_revision(const Note::Ptr & note, int revision) = 0;
-    virtual std::map<std::string, std::string> deleted_note_titles() = 0;
-    virtual void reset() = 0;
-    virtual std::string associated_server_id() = 0;
-    virtual void associated_server_id(const std::string &) = 0;
-  };
-
   class SyncManager
-    : public base::Singleton<SyncManager>
+    : public ISyncManager
   {
   public:
     SyncManager(NoteManager &);
     ~SyncManager();
     static void init(NoteManager &);
-    void reset_client();
-    void perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui);
+    virtual void reset_client();
+    virtual void perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui);
     void synchronization_thread();
-    void resolve_conflict(SyncTitleConflictResolution resolution);
-    bool synchronized_note_xml_matches(const std::string & noteXml1, const std::string & noteXml2);
-    SyncState state() const
+    virtual void resolve_conflict(SyncTitleConflictResolution resolution);
+    virtual bool synchronized_note_xml_matches(const std::string & noteXml1, const std::string & noteXml2);
+    virtual SyncState state() const
       {
         return m_state;
       }
   private:
+    static SyncManager & _obj()
+      {
+        return static_cast<SyncManager&>(obj());
+      }
     void _init(NoteManager &);
     void handle_note_saved_or_deleted(const Note::Ptr & note);
     void handle_note_buffer_changed(const Note::Ptr & note);
@@ -110,48 +91,6 @@ namespace sync {
     GObject *m_sync_helper;
   };
 
-
-  class SyncLockInfo
-  {
-  public:
-    std::string client_id;
-    std::string transaction_id;
-    int renew_count;
-    sharp::TimeSpan duration;
-    int revision;
-
-    SyncLockInfo();
-    std::string hash_string();
-  };
-
-
-  class SyncServer
-  {
-  public:
-    typedef std::tr1::shared_ptr<SyncServer> Ptr;
-
-    virtual ~SyncServer();
-
-    virtual bool begin_sync_transaction() = 0;
-    virtual bool commit_sync_transaction() = 0;
-    virtual bool cancel_sync_transaction() = 0;
-    virtual std::list<std::string> get_all_note_uuids() = 0;
-    virtual std::map<std::string, NoteUpdate> get_note_updates_since(int revision) = 0;
-    virtual void delete_notes(const std::list<std::string> & deletedNoteUUIDs) = 0;
-    virtual void upload_notes(const std::list<Note::Ptr> & notes) = 0;
-    virtual int latest_revision() = 0; // NOTE: Only reliable during a transaction
-    virtual SyncLockInfo current_sync_lock() = 0;
-    virtual std::string id() = 0;
-    virtual bool updates_available_since(int revision) = 0;
-  };
-
-
-  class GnoteSyncException
-    : public std::runtime_error
-  {
-  public:
-    GnoteSyncException(const char * what_arg) : std::runtime_error(what_arg){}
-  };
 
 }
 }

@@ -150,6 +150,7 @@ libgnote_la_SOURCES = \
 	synchronization/silentui.hpp synchronization/silentui.cpp \
 	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
 	synchronization/syncmanager.hpp synchronization/syncmanager.cpp \
+	synchronization/isyncmanager.hpp synchronization/isyncmanager.cpp \
 	synchronization/syncui.hpp synchronization/syncui.cpp \
         synchronization/syncutils.hpp synchronization/syncutils.cpp \
 	synchronization/syncserviceaddin.hpp synchronization/syncserviceaddin.cpp \

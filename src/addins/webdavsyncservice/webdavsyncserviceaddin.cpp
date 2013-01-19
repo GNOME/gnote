@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 #include "gnome_keyring/keyringexception.hpp"
 #include "gnome_keyring/ring.hpp"
 #include "sharp/string.hpp"
-#include "synchronization/syncmanager.hpp"
+#include "synchronization/isyncmanager.hpp"
 
 
 using gnome::keyring::KeyringException;

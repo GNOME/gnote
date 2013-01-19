@@ -19,7 +19,7 @@
 
 
 #include "debug.hpp"
-#include "syncmanager.hpp"
+#include "isyncmanager.hpp"
 #include "silentui.hpp"
 
 
@@ -84,7 +84,7 @@ namespace sync {
     if(localConflictNote->id() != remoteNote.m_uuid) {
       manager.delete_note(localConflictNote);
     }
-    SyncManager::obj().resolve_conflict(OVERWRITE_EXISTING);
+    ISyncManager::obj().resolve_conflict(OVERWRITE_EXISTING);
   }
 
 

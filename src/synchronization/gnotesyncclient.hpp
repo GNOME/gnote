@@ -20,7 +20,7 @@
 
 #include <giomm/file.h>
 
-#include "syncmanager.hpp"
+#include "isyncmanager.hpp"
 
 
 

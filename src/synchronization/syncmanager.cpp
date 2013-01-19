@@ -20,7 +20,6 @@
 
 #include "config.h"
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/actiongroup.h>
 #include <sigc++/sigc++.h>
@@ -36,7 +35,6 @@
 #include "silentui.hpp"
 #include "syncmanager.hpp"
 #include "syncserviceaddin.hpp"
-#include "sharp/uuid.hpp"
 #include "sharp/xmlreader.hpp"
 
 
@@ -124,8 +122,8 @@ namespace sync {
 
   void SyncManager::init(NoteManager & m)
   {
-    new SyncManager(m);
-    SyncManager::obj()._init(m);
+    SyncManager *manager = new SyncManager(m);
+    manager->_init(m);
   }
 
 
@@ -189,7 +187,7 @@ namespace sync {
       finally() : addin(NULL){}
       ~finally()
       {
-        SyncManager::obj().m_sync_thread = NULL;
+        SyncManager::_obj().m_sync_thread = NULL;
         try {
           if(addin) {
             addin->post_sync_cleanup();
@@ -741,19 +739,19 @@ namespace sync {
     try {
       SyncServer::Ptr & server = *static_cast<SyncServer::Ptr*>(serv);
       // Make list of all local notes
-      std::list<Note::Ptr> localNotes = SyncManager::obj().note_mgr().get_notes();
+      std::list<Note::Ptr> localNotes = SyncManager::_obj().note_mgr().get_notes();
 
       // Get all notes currently on server
       std::list<std::string> serverNotes = server->get_all_note_uuids();
 
       // Delete notes locally that have been deleted on the server
       for(std::list<Note::Ptr>::iterator iter = localNotes.begin(); iter != localNotes.end(); ++iter) {
-	if(SyncManager::obj().m_client->get_revision(*iter) != -1
+	if(SyncManager::_obj().m_client->get_revision(*iter) != -1
 	   && std::find(serverNotes.begin(), serverNotes.end(), (*iter)->id()) == serverNotes.end()) {
-	  if(SyncManager::obj().m_sync_ui != 0) {
-	    SyncManager::obj().m_sync_ui->note_synchronized((*iter)->get_title(), DELETE_FROM_CLIENT);
+	  if(SyncManager::_obj().m_sync_ui != 0) {
+	    SyncManager::_obj().m_sync_ui->note_synchronized((*iter)->get_title(), DELETE_FROM_CLIENT);
 	  }
-	  SyncManager::obj().note_mgr().delete_note(*iter);
+	  SyncManager::_obj().note_mgr().delete_note(*iter);
 	}
       }
     }
@@ -770,8 +768,8 @@ namespace sync {
   {
     try {
       NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
-      Note::Ptr existingNote = SyncManager::obj().note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
-      SyncManager::obj().update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
+      Note::Ptr existingNote = SyncManager::_obj().note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
+      SyncManager::_obj().update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
@@ -787,7 +785,7 @@ namespace sync {
     try {
       Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
       NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
-      SyncManager::obj().update_local_note(*existingNote, noteUpdate, DOWNLOAD_MODIFIED);
+      SyncManager::_obj().update_local_note(*existingNote, noteUpdate, DOWNLOAD_MODIFIED);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
@@ -802,7 +800,7 @@ namespace sync {
   {
     try {
       Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
-      SyncManager::obj().note_mgr().delete_note(*existingNote);
+      SyncManager::_obj().note_mgr().delete_note(*existingNote);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
@@ -820,25 +818,6 @@ namespace sync {
     gdk_threads_leave();
   }
 
-
-  SyncLockInfo::SyncLockInfo()
-    : client_id(Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID))
-    , transaction_id(sharp::uuid().string())
-    , renew_count(0)
-    , duration(0, 2, 0) // default of 2 minutes
-    , revision(0)
-  {
-  }
-
-
-  std::string SyncLockInfo::hash_string()
-  {
-    return str(boost::format("%1%-%2%-%3%-%4%-%5%") % transaction_id % client_id % renew_count % duration.string() % revision);
-  }
-
-
-  SyncServer::~SyncServer()
-  {}
 
 }
 }

@@ -1244,7 +1244,7 @@ DBG_OUT("no addin");
     // Reset conflict handling behavior
     settings->set_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
 
-    sync::SyncManager::obj().reset_client();
+    sync::ISyncManager::obj().reset_client();
 
     m_sync_addin_combo->set_sensitive(true);
     m_sync_addin_combo->unset_active();
@@ -1284,7 +1284,7 @@ DBG_OUT("no addin");
       m_reset_sync_addin_button->set_sensitive(true);
       m_save_sync_addin_button->set_sensitive(false);
 
-      sync::SyncManager::obj().reset_client();
+      sync::ISyncManager::obj().reset_client();
 
       // Give the user a visual letting them know that connecting
       // was successful.
