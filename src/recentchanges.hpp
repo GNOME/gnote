@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -36,21 +36,16 @@
 namespace gnote {
   class NoteManager;
 
-typedef utils::ForcedPresentWindow NoteRecentChangesParent;
-
 class NoteRecentChanges
-  : public NoteRecentChangesParent
-  , public utils::EmbeddableWidgetHost
+  : public MainWindow
 {
 public:
-  static NoteRecentChanges *get_owning(Gtk::Widget & widget);
-
   NoteRecentChanges(NoteManager& m);
   virtual ~NoteRecentChanges();
-  void set_search_text(const std::string & value);
-  void present_note(const Note::Ptr & note);
-  void new_note();
-  void present_search();
+  virtual void set_search_text(const std::string & value);
+  virtual void present_note(const Note::Ptr & note);
+  virtual void new_note();
+  virtual void present_search();
 
   virtual void embed_widget(utils::EmbeddableWidget &);
   virtual void unembed_widget(utils::EmbeddableWidget &);

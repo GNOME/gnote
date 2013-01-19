@@ -17,33 +17,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _IGNOTE_HPP_
-#define _IGNOTE_HPP_
 
-#include "mainwindow.hpp"
-#include "base/singleton.hpp"
+#ifndef _MAINWINDOW_HPP_
+#define _MAINWINDOW_HPP_
+
+#include "note.hpp"
+#include "utils.hpp"
+
 
 namespace gnote {
 
-class IGnote
-  : public base::Singleton<IGnote>
+class MainWindow
+  : public utils::ForcedPresentWindow
+  , public utils::EmbeddableWidgetHost
 {
 public:
-  static std::string cache_dir();
-  static std::string conf_dir();
-  static std::string data_dir();
-  static std::string old_note_dir();
+  static MainWindow *get_owning(Gtk::Widget & widget);
 
-  virtual ~IGnote();
-  virtual MainWindow *get_main_window() = 0;
-  virtual MainWindow *get_window_for_note() = 0; //TODO change to return reference
-  virtual MainWindow *new_main_window() = 0; //TODO change to return reference
-  virtual void open_note(const Note::Ptr & note) = 0;
-  virtual void open_search_all() = 0;
+  explicit MainWindow(const std::string & title);
 
-  sigc::signal<void> signal_quit;
+  virtual void set_search_text(const std::string & value) = 0;
+  virtual void present_note(const Note::Ptr & note) = 0;
+  virtual void present_search() = 0;
+  virtual void new_note() = 0;
 };
 
 }
 
 #endif
+

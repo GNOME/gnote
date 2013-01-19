@@ -34,7 +34,6 @@
 #include "actionmanager.hpp"
 #include "ignote.hpp"
 #include "keybinder.hpp"
-#include "recentchanges.hpp"
 #include "remotecontrolproxy.hpp"
 #include "tray.hpp"
 #include "synchronization/syncdialog.hpp"
@@ -127,9 +126,9 @@ public:
   void on_show_preferences_action(const Glib::VariantBase&);
   void on_show_help_action(const Glib::VariantBase&);
   void on_show_about_action(const Glib::VariantBase&);
-  virtual NoteRecentChanges *new_main_window();
-  virtual NoteRecentChanges *get_main_window();
-  virtual NoteRecentChanges *get_window_for_note();
+  virtual MainWindow *new_main_window();
+  virtual MainWindow *get_main_window();
+  virtual MainWindow *get_window_for_note();
   virtual void open_search_all();
   void open_note_sync_window(const Glib::VariantBase&);
 
@@ -169,7 +168,7 @@ private:
   void make_app_menu();
   void on_new_window_action(const Glib::VariantBase&);
   void on_new_note_app_action(const Glib::VariantBase&);
-  NoteRecentChanges *get_active_window();
+  MainWindow *get_active_window();
   bool show_tray_icon_timeout();
   void register_object();
 

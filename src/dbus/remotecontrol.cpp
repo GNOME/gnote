@@ -24,7 +24,6 @@
 #include "ignote.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
-#include "recentchanges.hpp"
 #include "remotecontrolproxy.hpp"
 #include "search.hpp"
 #include "tag.hpp"
@@ -154,7 +153,7 @@ namespace gnote {
 
   void RemoteControl::DisplaySearchWithText(const std::string& search_text)
   {
-    NoteRecentChanges *recent_changes = IGnote::obj().get_main_window();
+    MainWindow *recent_changes = IGnote::obj().get_main_window();
     recent_changes->set_search_text(search_text);
     recent_changes->present();
   }
@@ -409,7 +408,7 @@ void RemoteControl::on_note_saved(const Note::Ptr & note)
 
 void RemoteControl::present_note(const Note::Ptr & note)
 {
-    NoteRecentChanges *window = IGnote::obj().get_window_for_note();
+    MainWindow *window = IGnote::obj().get_window_for_note();
     window->present_note(note);
     window->present();
 }

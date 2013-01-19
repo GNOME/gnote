@@ -38,7 +38,6 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferences.hpp"
-#include "recentchanges.hpp"
 #include "itagmanager.hpp"
 #include "triehit.hpp"
 #include "watchers.hpp"
@@ -913,7 +912,7 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      NoteRecentChanges *window = NoteRecentChanges::get_owning(const_cast<NoteEditor&>(editor));
+      MainWindow *window = MainWindow::get_owning(const_cast<NoteEditor&>(editor));
       if(!window) {
         window = IGnote::obj().new_main_window();
       }

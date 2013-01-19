@@ -112,6 +112,7 @@ libgnote_la_SOURCES = \
 	importaddin.hpp importaddin.cpp \
 	itagmanager.hpp itagmanager.cpp \
 	keybinder.hpp \
+	mainwindow.hpp mainwindow.cpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \
 	noteeditor.hpp noteeditor.cpp \

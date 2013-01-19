@@ -28,7 +28,6 @@
 #include "notewindow.hpp"
 #include "preferences.hpp"
 #include "prefskeybinder.hpp"
-#include "recentchanges.hpp"
 #include "tray.hpp"
 
 

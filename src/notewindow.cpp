@@ -42,7 +42,6 @@
 #include "preferences.hpp"
 #include "utils.hpp"
 #include "undo.hpp"
-#include "recentchanges.hpp"
 #include "search.hpp"
 #include "itagmanager.hpp"
 #include "notebooks/notebookmanager.hpp"

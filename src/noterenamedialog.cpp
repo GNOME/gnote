@@ -31,7 +31,6 @@
 #include "ignote.hpp"
 #include "notewindow.hpp"
 #include "noterenamedialog.hpp"
-#include "recentchanges.hpp"
 
 namespace gnote {
 
@@ -362,9 +361,9 @@ void NoteRenameDialog::on_notes_view_row_activated(
     return;
 
   Gtk::Widget *parent = get_parent();
-  NoteRecentChanges *window = NULL;
+  MainWindow *window = NULL;
   if(parent) {
-    window = NoteRecentChanges::get_owning(*parent);
+    window = MainWindow::get_owning(*parent);
   }
   if(!window) {
     window = IGnote::obj().new_main_window();

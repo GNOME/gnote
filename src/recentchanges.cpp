@@ -40,7 +40,7 @@
 namespace gnote {
 
   NoteRecentChanges::NoteRecentChanges(NoteManager& m)
-    : NoteRecentChangesParent(_("Notes"))
+    : MainWindow(_("Notes"))
     , m_note_manager(m)
     , m_search_notes_widget(m)
     , m_content_vbox(false, 0)
@@ -135,23 +135,6 @@ namespace gnote {
   }
 
 
-  NoteRecentChanges *NoteRecentChanges::get_owning(Gtk::Widget & widget)
-  {
-    Gtk::Container *container = widget.get_parent();
-    if(!container) {
-      return dynamic_cast<NoteRecentChanges*>(&widget);
-    }
-
-    Gtk::Container *cntr = container->get_parent();
-    while(cntr) {
-      container = cntr;
-      cntr = container->get_parent();
-    }
-
-    return dynamic_cast<NoteRecentChanges*>(container);
-  }
-
-
   void NoteRecentChanges::on_open_note(const Note::Ptr & note)
   {
     present_note(note);
@@ -159,7 +142,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    NoteRecentChanges *window = IGnote::obj().new_main_window();
+    MainWindow *window = IGnote::obj().new_main_window();
     window->present();
     window->present_note(note);
   }
@@ -230,7 +213,7 @@ namespace gnote {
     if(embedded.size() == 1 && embedded.front() == &m_search_notes_widget) {
       m_search_notes_widget.focus_search_entry();
     }
-    NoteRecentChangesParent::on_show();
+    MainWindow::on_show();
   }
 
   void NoteRecentChanges::set_search_text(const std::string & value)
@@ -331,7 +314,7 @@ namespace gnote {
 
   bool NoteRecentChanges::on_map_event(GdkEventAny *evt)
   {
-    bool res = NoteRecentChangesParent::on_map_event(evt);
+    bool res = MainWindow::on_map_event(evt);
     m_mapped = true;
     return res;
   }

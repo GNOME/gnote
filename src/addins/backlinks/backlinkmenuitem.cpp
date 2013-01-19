@@ -56,7 +56,7 @@ void BacklinkMenuItem::on_activate()
   find.property_visible() = true;
   find.set_search_text(m_title_search);
   
-  gnote::NoteRecentChanges *window = gnote::NoteRecentChanges::get_owning(*this);
+  gnote::MainWindow *window = gnote::MainWindow::get_owning(*this);
   if(!window) {
     window = gnote::IGnote::obj().new_main_window();
   }

@@ -45,6 +45,7 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
+#include "recentchanges.hpp"
 #include "remotecontrolproxy.hpp"
 #include "utils.hpp"
 #include "tagmanager.hpp"
@@ -388,7 +389,7 @@ namespace gnote {
     about.set_documenters(documenters);
     about.set_translator_credits(translators);
 //      about.set_icon_name("gnote");
-    NoteRecentChanges *recent_changes = get_main_window();
+    MainWindow *recent_changes = get_main_window();
     if(recent_changes && recent_changes->get_visible()) {
       about.set_transient_for(*recent_changes);
       recent_changes->present();
@@ -396,7 +397,7 @@ namespace gnote {
     about.run();
   }
 
-  NoteRecentChanges *Gnote::new_main_window()
+  MainWindow *Gnote::new_main_window()
   {
     NoteRecentChanges *win = new NoteRecentChanges(default_note_manager());
     win->signal_hide().connect(sigc::mem_fun(*this, &Gnote::on_main_window_closed));
@@ -404,12 +405,12 @@ namespace gnote {
     return win;
   }
 
-  NoteRecentChanges *Gnote::get_main_window()
+  MainWindow *Gnote::get_main_window()
   {
     std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
     for(std::vector<Gtk::Window*>::iterator iter = windows.begin();
         iter != windows.end(); ++iter) {
-      NoteRecentChanges *rc = dynamic_cast<NoteRecentChanges*>(*iter);
+      MainWindow *rc = dynamic_cast<MainWindow*>(*iter);
       if(rc) {
         return rc;
       }
@@ -426,12 +427,12 @@ namespace gnote {
     }
   }
 
-  NoteRecentChanges *Gnote::get_window_for_note()
+  MainWindow *Gnote::get_window_for_note()
   {
     std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
-    NoteRecentChanges *window = NULL;
+    MainWindow *window = NULL;
     for(std::vector<Gtk::Window*>::iterator iter = windows.begin(); iter != windows.end(); ++iter) {
-      NoteRecentChanges *rc = dynamic_cast<NoteRecentChanges*>(*iter);
+      MainWindow *rc = dynamic_cast<MainWindow*>(*iter);
       if(rc) {
         window = rc;
         if(rc->get_visible()) {
@@ -449,7 +450,7 @@ namespace gnote {
 
   void Gnote::open_search_all()
   {
-    NoteRecentChanges *main_window = get_main_window();
+    MainWindow *main_window = get_main_window();
     main_window->present_search();
     main_window->present();
   }
@@ -503,12 +504,12 @@ namespace gnote {
   }
 
 
-  NoteRecentChanges *Gnote::get_active_window()
+  MainWindow *Gnote::get_active_window()
   {
     std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
     for(std::vector<Gtk::Window*>::iterator iter = windows.begin(); iter != windows.end(); ++iter) {
       if((*iter)->property_is_active()) {
-        return dynamic_cast<NoteRecentChanges*>(*iter);
+        return dynamic_cast<MainWindow*>(*iter);
       }
     }
 
@@ -518,12 +519,12 @@ namespace gnote {
 
   void Gnote::on_new_note_app_action(const Glib::VariantBase&)
   {
-    NoteRecentChanges *rc = get_active_window();
+    MainWindow *rc = get_active_window();
     if(rc) {
       rc->new_note();
     }
     else {
-      NoteRecentChanges *recent_changes = get_main_window();
+      MainWindow *recent_changes = get_main_window();
       recent_changes->new_note();
       recent_changes->present();
     }
@@ -532,7 +533,7 @@ namespace gnote {
 
   void Gnote::open_note(const Note::Ptr & note)
   {
-    NoteRecentChanges *main_window = get_window_for_note();
+    MainWindow *main_window = get_window_for_note();
     main_window->present_note(note);
     main_window->present();
   }
