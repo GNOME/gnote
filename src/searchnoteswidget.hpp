@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -25,11 +25,11 @@
 
 #include <set>
 
-#include <gtkmm/combobox.h>
 #include <gtkmm/box.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/paned.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/searchentry.h>
 #include <sigc++/sigc++.h>
 
 #include "utils.hpp"
@@ -62,12 +62,10 @@ private:
   void make_actions();
   void on_entry_changed();
   void on_entry_activated();
-  void clear_search_clicked();
   void entry_changed_timeout();
   std::string get_search_text();
   void perform_search();
   void restore_matches_window();
-  void add_to_previous_searches(const std::string &);
   Gtk::Widget *make_notebooks_pane();
   void restore_position();
   void save_position();
@@ -155,8 +153,7 @@ private:
   Glib::RefPtr<Gtk::Action> m_delete_note_action;
   Glib::RefPtr<Gtk::Action> m_delete_notebook_action;
   RecentSearchColumnTypes m_find_combo_columns;
-  Gtk::ComboBox m_find_combo;
-  Gtk::Button m_clear_search_button;
+  Gtk::SearchEntry m_search_entry;
   Gtk::HPaned m_hpaned;
   utils::InterruptableTimeout *m_entry_changed_timeout;
   Gtk::ScrolledWindow m_matches_window;
@@ -179,8 +176,6 @@ private:
   bool m_initial_position_restored;
 
   static Glib::RefPtr<Gdk::Pixbuf> get_note_icon();
-
-  static std::list<std::string> s_previous_searches;
 };
 
 }

@@ -22,6 +22,7 @@
 
 #include <boost/format.hpp>
 #include <glibmm/i18n.h>
+#include <gtkmm/alignment.h>
 #include <gtkmm/linkbutton.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/separatormenuitem.h>
@@ -42,8 +43,6 @@
 
 namespace gnote {
 
-std::list<std::string> SearchNotesWidget::s_previous_searches;
-
 
 Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon()
 {
@@ -54,8 +53,6 @@ Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon()
 SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   : Gtk::VBox(false, 0)
   , m_accel_group(Gtk::AccelGroup::create())
-  , m_find_combo(Glib::RefPtr<Gtk::TreeModel>::cast_static(Gtk::ListStore::create(m_find_combo_columns)), true)
-  , m_clear_search_button(Gtk::Stock::CLEAR)
   , m_entry_changed_timeout(NULL)
   , m_no_matches_box(NULL)
   , m_manager(m)
@@ -67,43 +64,17 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
 {
   make_actions();
 
-  Gtk::Label *label = manage(new Gtk::Label (_("_Search:"), true));
-  label->property_xalign() = 1;
-
-  label->set_mnemonic_widget(m_find_combo);
-  m_find_combo.set_entry_text_column(0);
-  m_find_combo.signal_changed()
+  m_search_entry.signal_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_entry_changed));
-  m_find_combo.get_entry()->set_activates_default(false);
-  m_find_combo.get_entry()->signal_activate()
+  m_search_entry.set_activates_default(false);
+  m_search_entry.signal_activate()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_entry_activated));
 
-  Glib::RefPtr<Gtk::ListStore> model
-    = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(m_find_combo.get_model());
-  for(std::list<std::string>::const_iterator liter = s_previous_searches.begin();
-      liter != s_previous_searches.end(); ++liter) {
-    Gtk::TreeIter iter = model->append();
-    iter->set_value(0, *liter);
-  }
-
-  m_clear_search_button.set_sensitive(false);
-  m_clear_search_button.signal_clicked()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::clear_search_clicked));
-  m_clear_search_button.show();
-
-  Gtk::Table *table = manage(new Gtk::Table(2, 3, false));
-  table->attach(*label, 0, 1, 0, 1, Gtk::SHRINK, (Gtk::AttachOptions)0, 0, 0);
-  table->attach(m_find_combo, 1, 2, 0, 1);
-  table->attach(m_clear_search_button,
-                2, 3, 0, 1,
-                Gtk::SHRINK, (Gtk::AttachOptions)0, 0, 0);
-  table->property_column_spacing() = 4;
-  table->set_border_width(6);
-  table->show_all();
-
-  Gtk::HBox *hbox = manage(new Gtk::HBox(false, 2));
-  hbox->pack_start(*table, true, true, 0);
-  hbox->show_all();
+  m_search_entry.set_size_request(300);
+  Gtk::Alignment *search_box = manage(new Gtk::Alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER, 0));
+  search_box->set_border_width(6);
+  search_box->add(m_search_entry);
+  search_box->show_all();
 
   // Notebooks Pane
   Gtk::Widget *notebooksPane = Gtk::manage(make_notebooks_pane());
@@ -129,7 +100,7 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
 
   restore_position();
 
-  pack_start(*hbox, false, false, 0);
+  pack_start(*search_box, false, false, 0);
   pack_start(m_hpaned, true, true, 0);
 
   // Update on changes to notes
@@ -150,15 +121,15 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
 
   // Set the focus chain for the top-most containers
   std::vector<Gtk::Widget*> focus_chain;
-  focus_chain.push_back(hbox);
+  focus_chain.push_back(search_box);
   focus_chain.push_back(&m_hpaned);
   set_focus_chain(focus_chain);
 
   // Set focus chain for sub widgets of first top-most container
   focus_chain.clear();
-  focus_chain.push_back(&m_find_combo);
+  focus_chain.push_back(&m_search_entry);
   focus_chain.push_back(&m_matches_window);
-  hbox->set_focus_chain(focus_chain);
+  search_box->set_focus_chain(focus_chain);
 
   // set focus chain for sub widgets of second top-most container
   focus_chain.clear();
@@ -213,7 +184,7 @@ void SearchNotesWidget::make_actions()
 
 void SearchNotesWidget::focus_search_entry()
 {
-  m_find_combo.get_entry()->grab_focus();
+  m_search_entry.grab_focus();
 }
 
 void SearchNotesWidget::on_entry_changed()
@@ -225,12 +196,12 @@ void SearchNotesWidget::on_entry_changed()
   }
 
   if(get_search_text().empty()) {
-    m_clear_search_button.set_sensitive(false);
+    m_search_entry.set_sensitive(false);
     perform_search();
   }
   else {
     m_entry_changed_timeout->reset(500);
-    m_clear_search_button.set_sensitive(true);
+    m_search_entry.set_sensitive(true);
   }
 
   restore_matches_window();
@@ -245,12 +216,6 @@ void SearchNotesWidget::on_entry_activated()
   entry_changed_timeout();
 }
 
-void SearchNotesWidget::clear_search_clicked()
-{
-  m_find_combo.get_entry()->set_text("");
-  m_find_combo.get_entry()->grab_focus ();
-}
-
 void SearchNotesWidget::entry_changed_timeout()
 {
   if(get_search_text().empty()) {
@@ -258,17 +223,11 @@ void SearchNotesWidget::entry_changed_timeout()
   }
 
   perform_search();
-  add_to_previous_searches(get_search_text());
 }
 
 std::string SearchNotesWidget::get_search_text()
 {
-  // Entry may be null if search window closes
-  // early (bug #544996).
-  if (m_find_combo.get_entry() == NULL) {
-    return NULL;
-  }
-  std::string text = m_find_combo.get_entry()->get_text();
+  std::string text = m_search_entry.get_text();
   text = sharp::string_trim(text);
   return text;
 }
@@ -323,28 +282,6 @@ void SearchNotesWidget::restore_matches_window()
     m_hpaned.remove(*m_no_matches_box);
     m_hpaned.add2(m_matches_window);
     restore_position();
-  }
-}
-
-void SearchNotesWidget::add_to_previous_searches(const std::string & text)
-{
-  // Update previous searches, by adding a new term to the
-  // list, or shuffling an existing term to the top...
-  bool repeat = false;
-
-  std::string lower = sharp::string_to_lower(text);
-  for(std::list<std::string>::const_iterator iter = s_previous_searches.begin();
-      iter != s_previous_searches.end(); ++iter) {
-    if (sharp::string_to_lower(*iter) == lower) {
-      repeat = true;
-    }
-  }
-
-  if (!repeat) {
-    s_previous_searches.push_front(text);
-    Gtk::TreeIter iter
-      = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(m_find_combo.get_model())->prepend();
-    iter->set_value(0, text);
   }
 }
 
@@ -1431,7 +1368,7 @@ Gtk::Window *SearchNotesWidget::get_owning_window()
 void SearchNotesWidget::set_search_text(const std::string & value)
 {
   if(!value.empty()) {
-    m_find_combo.get_entry()->set_text(value);
+    m_search_entry.set_text(value);
   }
 }
 
