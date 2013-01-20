@@ -43,8 +43,6 @@ namespace sync {
 
     static Ptr create(NoteManager &);
 
-    virtual ~SyncDialog();
-
     virtual void sync_state_changed(SyncState state);
     virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type);
     virtual void note_conflict_detected(NoteManager & manager,
@@ -61,8 +59,13 @@ namespace sync {
     virtual void on_realize();
   private:
     static void on_expander_activated(GtkExpander*, gpointer);
-    static void on_sync_state_changed(GObject*, int, gpointer);
-    static void on_note_conflict_detected(GObject*, gpointer, gpointer);
+    void note_conflict_detected_(NoteManager & manager,
+                                 const Note::Ptr & localConflictNote,
+                                 NoteUpdate remoteNote,
+                                 const std::list<std::string> & noteUpdateTitles,
+                                 SyncTitleConflictResolution savedBehavior,
+                                 SyncTitleConflictResolution resolution,
+                                 std::exception **mainThreadException);
 
     SyncDialog(NoteManager &);
     bool on_pulse_progress_bar();
@@ -85,7 +88,6 @@ namespace sync {
     unsigned m_progress_bar_timeout_id;
 
     Glib::RefPtr<Gtk::TreeStore> m_model;
-    GObject *m_obj;
   };
 
 }

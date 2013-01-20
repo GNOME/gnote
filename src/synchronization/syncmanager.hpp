@@ -40,7 +40,6 @@ namespace sync {
   {
   public:
     SyncManager(NoteManager &);
-    ~SyncManager();
     static void init(NoteManager &);
     virtual void reset_client();
     virtual void perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui);
@@ -72,10 +71,10 @@ namespace sync {
     Note::Ptr find_note_by_uuid(const std::string & uuid);
     NoteManager & note_mgr();
     void get_synchronized_xml_bits(const std::string & noteXml, std::string & title, std::string & tags, std::string & content);
-    static void on_delete_notes(GObject*, gpointer, gpointer);
-    static void on_create_note(GObject*, gpointer, gpointer);
-    static void on_update_note(GObject*, gpointer, gpointer, gpointer);
-    static void on_delete_note(GObject*, gpointer, gpointer);
+    void delete_notes(const SyncServer::Ptr & server);
+    void create_note(const NoteUpdate & noteUpdate);
+    void update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
+    void delete_note(const Note::Ptr & existingNote);
     static void note_save(const Note::Ptr & note);
 
     NoteManager & m_note_manager;
@@ -88,7 +87,6 @@ namespace sync {
     int m_autosync_timeout_pref_minutes;
     int m_current_autosync_timeout_minutes;
     sharp::DateTime m_last_background_check;
-    GObject *m_sync_helper;
   };
 
 

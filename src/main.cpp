@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,11 +30,6 @@ int main(int argc, char **argv)
   bindtextdomain(GETTEXT_PACKAGE, GNOTE_LOCALEDIR);
   bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
   textdomain(GETTEXT_PACKAGE);
-
-  if(!g_thread_supported()) {
-    g_thread_init(NULL);
-  }
-  gdk_threads_init();
 
   Glib::RefPtr<gnote::Gnote> app = gnote::Gnote::create();
   return app->main(argc, argv);

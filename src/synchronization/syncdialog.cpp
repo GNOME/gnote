@@ -20,6 +20,7 @@
 
 #include "debug.hpp"
 
+#include <boost/bind.hpp>
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
 #include <glibmm/i18n.h>
@@ -53,53 +54,6 @@ public:
 
     Gtk::TreeModelColumn<std::string> m_col1;
     Gtk::TreeModelColumn<std::string> m_col2;
-};
-
-
-typedef GObject GnoteSyncDialog;
-typedef GObjectClass GnoteSyncDialogClass;
-
-G_DEFINE_TYPE(GnoteSyncDialog, gnote_sync_dialog, G_TYPE_OBJECT)
-
-void gnote_sync_dialog_init(GnoteSyncDialog*)
-{}
-
-void gnote_sync_dialog_class_init(GnoteSyncDialogClass *klass)
-{
-  g_signal_new("sync-state-changed", G_TYPE_FROM_CLASS(klass),
-                   GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
-                   0, NULL, NULL, g_cclosure_marshal_VOID__INT,
-                   G_TYPE_NONE, 1, G_TYPE_INT, NULL);
-  g_signal_new("note-conflict-detected", G_TYPE_FROM_CLASS(klass),
-                   GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
-                   0, NULL, NULL, g_cclosure_marshal_VOID__POINTER,
-                   G_TYPE_NONE, 1, G_TYPE_POINTER, NULL);
-}
-
-GObject *gnote_sync_dialog_new()
-{
-  g_type_init();
-  return G_OBJECT(g_object_new(gnote_sync_dialog_get_type(), NULL));
-}
-
-
-struct NoteConflictDetectedArgs
-{
-  NoteManager *manager;
-  Note::Ptr localConflictNote;
-  NoteUpdate *remoteNote;
-  std::list<std::string> noteUpdateTitles;
-  SyncTitleConflictResolution savedBehavior;
-  SyncTitleConflictResolution resolution;
-  std::exception *mainThreadException;
-
-  NoteConflictDetectedArgs() : mainThreadException(NULL) {}
-  ~NoteConflictDetectedArgs()
-    {
-      if(mainThreadException) {
-        delete mainThreadException;
-      }
-    }
 };
 
 
@@ -272,9 +226,6 @@ SyncDialog::Ptr SyncDialog::create(NoteManager & m)
 SyncDialog::SyncDialog(NoteManager & manager)
   : m_manager(manager)
 {
-  m_obj = gnote_sync_dialog_new();
-  g_signal_connect(m_obj, "sync-state-changed", G_CALLBACK(on_sync_state_changed), this);
-  g_signal_connect(m_obj, "note-conflict-detected", G_CALLBACK(on_note_conflict_detected), this);
   m_progress_bar_timeout_id = 0;
 
   set_size_request(400, -1);
@@ -403,12 +354,6 @@ void SyncDialog::treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk:
 }
 
 
-SyncDialog::~SyncDialog()
-{
-  g_object_unref(m_obj);
-}
-
-
 void SyncDialog::on_realize()
 {
   Gtk::Dialog::on_realize();
@@ -516,20 +461,8 @@ void SyncDialog::add_update_item(const std::string & title, std::string & status
 void SyncDialog::sync_state_changed(SyncState state)
 {
   // This event handler will be called by the synchronization thread
-  gdk_threads_enter();
-  g_signal_emit_by_name(m_obj, "sync-state-changed", static_cast<int>(state));
-  gdk_threads_leave();
-}
-
-
-void SyncDialog::on_sync_state_changed(GObject*, int state, gpointer data)
-{
-  try {
-    static_cast<SyncDialog*>(data)->sync_state_changed_(static_cast<SyncState>(state));
-  }
-  catch(...) {
-    DBG_OUT("Exception caught in %s\n", __func__);
-  }
+  utils::main_context_invoke(boost::bind(
+    sigc::mem_fun(*this, &SyncDialog::sync_state_changed_), state));
 }
 
 
@@ -656,85 +589,90 @@ void SyncDialog::note_conflict_detected(NoteManager & manager,
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> & noteUpdateTitles)
 {
-  NoteConflictDetectedArgs *args = new NoteConflictDetectedArgs;
-  args->savedBehavior = CANCEL;
   int dlgBehaviorPref = Preferences::obj()
     .get_schema_settings(Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
-  // TODO: Check range of this int
-  args->savedBehavior = static_cast<SyncTitleConflictResolution>(dlgBehaviorPref);
+  std::exception *mainThreadException = NULL;
 
-  args->resolution = OVERWRITE_EXISTING;
-  args->manager = &manager;
-  args->localConflictNote = localConflictNote;
-  args->remoteNote = &remoteNote;
-  args->noteUpdateTitles = noteUpdateTitles;
   // This event handler will be called by the synchronization thread
   // so we have to use the delegate here to manipulate the GUI.
   // To be consistent, any exceptions in the delgate will be caught
   // and then rethrown in the synchronization thread.
-  gdk_threads_enter();
-  g_signal_emit_by_name(m_obj, "note-conflict-detected", args);
-  gdk_threads_leave();
-  if(args->mainThreadException != NULL) {
-    std::auto_ptr<NoteConflictDetectedArgs> for_deletion(args);
-    throw *for_deletion->mainThreadException;
+  utils::main_context_call(boost::bind(
+    sigc::mem_fun(*this, &SyncDialog::note_conflict_detected_),
+    manager,
+    localConflictNote,
+    remoteNote,
+    noteUpdateTitles,
+    static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
+    OVERWRITE_EXISTING,
+    &mainThreadException
+  ));
+
+  if(mainThreadException) {
+    std::exception e(*mainThreadException);
+    delete mainThreadException;
+    throw e;
   }
 }
 
 
-void SyncDialog::on_note_conflict_detected(GObject*, gpointer data, gpointer this__)
+void SyncDialog::note_conflict_detected_(NoteManager & manager,
+  const Note::Ptr & localConflictNote,
+  NoteUpdate remoteNote,
+  const std::list<std::string> & noteUpdateTitles,
+  SyncTitleConflictResolution savedBehavior,
+  SyncTitleConflictResolution resolution,
+  std::exception **mainThreadException)
 {
-  NoteConflictDetectedArgs *args = static_cast<NoteConflictDetectedArgs*>(data);
-  SyncDialog *this_ = static_cast<SyncDialog*>(this__);
   try {
-    SyncTitleConflictDialog conflictDlg(args->localConflictNote, args->noteUpdateTitles);
+    SyncTitleConflictDialog conflictDlg(localConflictNote, noteUpdateTitles);
     Gtk::ResponseType reponse = Gtk::RESPONSE_OK;
 
     bool noteSyncBitsMatch = ISyncManager::obj().synchronized_note_xml_matches(
-      args->localConflictNote->get_complete_note_xml(), args->remoteNote->m_xml_content);
+      localConflictNote->get_complete_note_xml(), remoteNote.m_xml_content);
 
     // If the synchronized note content is in conflict
     // and there is no saved conflict handling behavior, show the dialog
-    if(!noteSyncBitsMatch && args->savedBehavior == 0) {
+    if(!noteSyncBitsMatch && savedBehavior == 0) {
       reponse = static_cast<Gtk::ResponseType>(conflictDlg.run());
     }
 
 
     if(reponse == Gtk::RESPONSE_CANCEL) {
-      args->resolution = CANCEL;
+      resolution = CANCEL;
     }
     else {
       if(noteSyncBitsMatch) {
-        args->resolution = OVERWRITE_EXISTING;
+        resolution = OVERWRITE_EXISTING;
       }
-      else if(args->savedBehavior == 0) {
-        args->resolution = conflictDlg.resolution();
+      else if(savedBehavior == 0) {
+        resolution = conflictDlg.resolution();
       }
       else {
-        args->resolution = args->savedBehavior;
+        resolution = savedBehavior;
       }
 
-      switch(args->resolution) {
+      switch(resolution) {
       case OVERWRITE_EXISTING:
         if(conflictDlg.always_perform_this_action()) {
-          args->savedBehavior = args->resolution;
+          savedBehavior = resolution;
         }
         // No need to delete if sync will overwrite
-        if(args->localConflictNote->id() != args->remoteNote->m_uuid) {
-          args->manager->delete_note(args->localConflictNote);
+        if(localConflictNote->id() != remoteNote.m_uuid) {
+          manager.delete_note(localConflictNote);
         }
         break;
       case RENAME_EXISTING_AND_UPDATE:
         if(conflictDlg.always_perform_this_action()) {
-          args->savedBehavior = args->resolution;
+          savedBehavior = resolution;
         }
-        this_->rename_note(args->localConflictNote, conflictDlg.renamed_title(), true);
+        rename_note(localConflictNote, conflictDlg.renamed_title(), true);
         break;
       case RENAME_EXISTING_NO_UPDATE:
         if(conflictDlg.always_perform_this_action()) {
-          args->savedBehavior = args->resolution;
+          savedBehavior = resolution;
         }
-        this_->rename_note(args->localConflictNote, conflictDlg.renamed_title(), false);
+        rename_note(localConflictNote, conflictDlg.renamed_title(), false);
         break;
       case CANCEL:
         break;
@@ -742,15 +680,15 @@ void SyncDialog::on_note_conflict_detected(GObject*, gpointer data, gpointer thi
     }
 
     Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
-      Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, static_cast<int>(args->savedBehavior)); // TODO: Clean up
+      Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, static_cast<int>(savedBehavior)); // TODO: Clean up
 
     conflictDlg.hide();
 
     // Let the SyncManager continue
-    ISyncManager::obj().resolve_conflict(/*localConflictNote, */args->resolution);
+    ISyncManager::obj().resolve_conflict(/*localConflictNote, */resolution);
   }
   catch(std::exception & e) {
-    args->mainThreadException = new std::exception(e);
+    *mainThreadException = new std::exception(e);
   }
 }
 

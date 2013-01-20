@@ -26,8 +26,6 @@
 #include <string>
 #include <tr1/memory>
 
-#include <glib-object.h>
-
 #include "syncutils.hpp"
 
 
@@ -55,16 +53,18 @@ namespace sync {
     void signal_connecting_emit();
     sigc::connection signal_idle_connect(const SlotIdle & slot);
     void signal_idle_emit();
-  protected:
-    SyncUI();
   private:
-    static void on_signal_connecting(GObject*, gpointer);
-    static void on_signal_idle(GObject*, gpointer);
-    static void on_signal_note_synchronized(GObject*, const char*, int, gpointer);
+    void signal_connecting_emit_()
+      {
+        m_signal_connecting.emit();
+      }
+    void signal_idle_emit_()
+      {
+        m_signal_idle.emit();
+      }
 
     sigc::signal<void> m_signal_connecting;
     sigc::signal<void> m_signal_idle;
-    GObject *m_obj;
   };
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -57,6 +57,9 @@ namespace gnote {
                                      const std::string & url, 
                                      const std::string & error);
     std::string get_pretty_print_date(const sharp::DateTime &, bool show_time);
+
+    void main_context_invoke(const sigc::slot<void> & slot);
+    void main_context_call(const sigc::slot<void> & slot);
 
     class GlobalKeybinder
     {

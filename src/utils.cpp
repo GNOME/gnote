@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -34,6 +34,7 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
+#include <glibmm/threads.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
@@ -88,6 +89,20 @@ namespace gnote {
         if(menu->get_attach_widget()) {
           menu->get_attach_widget()->set_state(Gtk::STATE_NORMAL);
         }
+      }
+
+      gboolean main_context_invoke_func(gpointer data)
+      {
+        sigc::slot<void> *slot = static_cast<sigc::slot<void>*>(data);
+        (*slot)();
+        delete slot;
+        return FALSE;
+      }
+
+      void main_context_call_func(const sigc::slot<void> & slot, Glib::Threads::Cond * cond)
+      {
+        slot();
+        cond->signal();
       }
     }
 
@@ -238,6 +253,24 @@ namespace gnote {
       }
 
       return pretty_str;
+    }
+
+    void main_context_invoke(const sigc::slot<void> & slot)
+    {
+      sigc::slot<void> *data = new sigc::slot<void>(slot);
+      g_main_context_invoke(NULL, main_context_invoke_func, data);
+    }
+
+
+    void main_context_call(const sigc::slot<void> & slot)
+    {
+      Glib::Threads::Mutex mutex;
+      Glib::Threads::Cond cond;
+
+      mutex.lock();
+      main_context_invoke(boost::bind(
+        sigc::ptr_fun(main_context_call_func), slot, &cond));
+      cond.wait(mutex);
     }
 
 

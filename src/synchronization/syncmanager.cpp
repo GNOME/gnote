@@ -20,6 +20,7 @@
 
 #include "config.h"
 
+#include <boost/bind.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/actiongroup.h>
 #include <sigc++/sigc++.h>
@@ -41,82 +42,9 @@
 namespace gnote {
 namespace sync {
 
-  namespace {
-
-    typedef GObject SyncHelper;
-    typedef GObjectClass SyncHelperClass;
-
-    G_DEFINE_TYPE(SyncHelper, sync_helper, G_TYPE_OBJECT)
-
-    void sync_helper_init(SyncHelper*)
-    {}
-
-    void sync_helper_class_init(SyncHelperClass * klass)
-    {
-      g_signal_new("delete-notes", G_TYPE_FROM_CLASS(klass),
-                   GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
-                   0, NULL, NULL, g_cclosure_marshal_VOID__POINTER,
-                   G_TYPE_NONE, 1, G_TYPE_POINTER, NULL);
-      g_signal_new("create-note", G_TYPE_FROM_CLASS(klass),
-                   GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
-                   0, NULL, NULL, g_cclosure_marshal_VOID__POINTER,
-                   G_TYPE_NONE, 1, G_TYPE_POINTER, NULL);
-      g_signal_new("update-note", G_TYPE_FROM_CLASS(klass),
-                   GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
-                   0, NULL, NULL, g_cclosure_marshal_generic,
-                   G_TYPE_NONE, 2, G_TYPE_POINTER, G_TYPE_POINTER, NULL);
-      g_signal_new("delete-note", G_TYPE_FROM_CLASS(klass),
-                   GSignalFlags(G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS),
-                   0, NULL, NULL, g_cclosure_marshal_VOID__POINTER,
-                   G_TYPE_NONE, 1, G_TYPE_POINTER, NULL);
-    }
-
-    GObject * sync_helper_new()
-    {
-      g_type_init();
-      return G_OBJECT(g_object_new(sync_helper_get_type(), NULL));
-    }
-
-    void sync_helper_delete_notes(GObject * helper, gpointer server)
-    {
-      gdk_threads_enter();
-      g_signal_emit_by_name(helper, "delete-notes", server);
-      gdk_threads_leave();
-    }
-
-    void sync_helper_create_note(GObject * helper, gpointer note_update)
-    {
-      gdk_threads_enter();
-      g_signal_emit_by_name(helper, "create-note", note_update);
-      gdk_threads_leave();
-    }
-
-    void sync_helper_update_note(GObject * helper, gpointer existing_note, gpointer note_update)
-    {
-      gdk_threads_enter();
-      g_signal_emit_by_name(helper, "update-note", existing_note, note_update);
-      gdk_threads_leave();
-    }
-
-    void sync_helper_delete_note(GObject * helper, gpointer existing_note)
-    {
-      gdk_threads_enter();
-      g_signal_emit_by_name(helper, "delete-note", existing_note);
-      gdk_threads_leave();
-    }
-
-  }
-
-
   SyncManager::SyncManager(NoteManager & m)
     : m_note_manager(m)
   {
-  }
-
-
-  SyncManager::~SyncManager()
-  {
-    g_object_unref(m_sync_helper);
   }
 
 
@@ -129,11 +57,6 @@ namespace sync {
 
   void SyncManager::_init(NoteManager & manager)
   {
-    m_sync_helper = sync_helper_new();
-    g_signal_connect(m_sync_helper, "delete-notes", G_CALLBACK(SyncManager::on_delete_notes), NULL);
-    g_signal_connect(m_sync_helper, "create-note", G_CALLBACK(SyncManager::on_create_note), NULL);
-    g_signal_connect(m_sync_helper, "update-note", G_CALLBACK(SyncManager::on_update_note), NULL);
-    g_signal_connect(m_sync_helper, "delete-note", G_CALLBACK(SyncManager::on_delete_note), NULL);
     m_client = SyncClient::Ptr(new GnoteSyncClient(manager));
     // Add a "Synchronize Notes" to Gnote's Application Menu
     IActionManager & am(IActionManager::obj());
@@ -346,7 +269,8 @@ namespace sync {
       // delegate to run in the main gtk thread.
       // To be consistent, any exceptions in the delgate will be caught
       // and then rethrown in the synchronization thread.
-      sync_helper_delete_notes(m_sync_helper, &server);
+      utils::main_context_call(boost::bind(
+        sigc::mem_fun(*this, &SyncManager::delete_notes), server));
 
       // TODO: Add following updates to syncDialog treeview
 
@@ -635,7 +559,8 @@ namespace sync {
     // delegate to run in the main gtk thread.
     // To be consistent, any exceptions in the delgate will be caught
     // and then rethrown in the synchronization thread.
-    sync_helper_create_note(m_sync_helper, const_cast<NoteUpdate*>(&noteUpdate));
+    utils::main_context_call(boost::bind(
+      sigc::mem_fun(*this, &SyncManager::create_note), noteUpdate));
   }
 
 
@@ -645,7 +570,8 @@ namespace sync {
     // delegate to run in the main gtk thread.
     // To be consistent, any exceptions in the delgate will be caught
     // and then rethrown in the synchronization thread.
-    sync_helper_update_note(m_sync_helper, const_cast<Note::Ptr*>(&existingNote), const_cast<NoteUpdate*>(&noteUpdate));
+    utils::main_context_call(boost::bind(
+      sigc::mem_fun(*this, &SyncManager::update_note), existingNote, noteUpdate));
   }
 
 
@@ -655,7 +581,8 @@ namespace sync {
     // delegate to run in the main gtk thread.
     // To be consistent, any exceptions in the delgate will be caught
     // and then rethrown in the synchronization thread.
-    sync_helper_delete_note(m_sync_helper, const_cast<Note::Ptr*>(&existingNote));
+    utils::main_context_call(boost::bind(
+      sigc::mem_fun(*this, &SyncManager::delete_note), existingNote));
   }
 
 
@@ -734,12 +661,11 @@ namespace sync {
   }
 
 
-  void SyncManager::on_delete_notes(GObject*, gpointer serv, gpointer)
+  void SyncManager::delete_notes(const SyncServer::Ptr & server)
   {
     try {
-      SyncServer::Ptr & server = *static_cast<SyncServer::Ptr*>(serv);
       // Make list of all local notes
-      std::list<Note::Ptr> localNotes = SyncManager::_obj().note_mgr().get_notes();
+      std::list<Note::Ptr> localNotes = note_mgr().get_notes();
 
       // Get all notes currently on server
       std::list<std::string> serverNotes = server->get_all_note_uuids();
@@ -748,10 +674,10 @@ namespace sync {
       for(std::list<Note::Ptr>::iterator iter = localNotes.begin(); iter != localNotes.end(); ++iter) {
 	if(SyncManager::_obj().m_client->get_revision(*iter) != -1
 	   && std::find(serverNotes.begin(), serverNotes.end(), (*iter)->id()) == serverNotes.end()) {
-	  if(SyncManager::_obj().m_sync_ui != 0) {
-	    SyncManager::_obj().m_sync_ui->note_synchronized((*iter)->get_title(), DELETE_FROM_CLIENT);
+	  if(m_sync_ui != 0) {
+	    m_sync_ui->note_synchronized((*iter)->get_title(), DELETE_FROM_CLIENT);
 	  }
-	  SyncManager::_obj().note_mgr().delete_note(*iter);
+	  note_mgr().delete_note(*iter);
 	}
       }
     }
@@ -764,12 +690,11 @@ namespace sync {
   }
 
 
-  void SyncManager::on_create_note(GObject*, gpointer note_update, gpointer)
+  void SyncManager::create_note(const NoteUpdate & noteUpdate)
   {
     try {
-      NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
-      Note::Ptr existingNote = SyncManager::_obj().note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
-      SyncManager::_obj().update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
+      Note::Ptr existingNote = note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
+      update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
@@ -780,12 +705,10 @@ namespace sync {
   }
 
 
-  void SyncManager::on_update_note(GObject*, gpointer existing_note, gpointer note_update, gpointer)
+  void SyncManager::update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate)
   {
     try {
-      Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
-      NoteUpdate & noteUpdate = *static_cast<NoteUpdate*>(note_update);
-      SyncManager::_obj().update_local_note(*existingNote, noteUpdate, DOWNLOAD_MODIFIED);
+      update_local_note(existingNote, noteUpdate, DOWNLOAD_MODIFIED);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
@@ -796,11 +719,10 @@ namespace sync {
   }
 
 
-  void SyncManager::on_delete_note(GObject*, gpointer existing_note, gpointer)
+  void SyncManager::delete_note(const Note::Ptr & existingNote)
   {
     try {
-      Note::Ptr *existingNote = static_cast<Note::Ptr*>(existing_note);
-      SyncManager::_obj().note_mgr().delete_note(*existingNote);
+      note_mgr().delete_note(existingNote);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
@@ -813,9 +735,7 @@ namespace sync {
 
   void SyncManager::note_save(const Note::Ptr & note)
   {
-    gdk_threads_enter();
-    note->save();
-    gdk_threads_leave();
+    utils::main_context_call(sigc::mem_fun(*note, &Note::save));
   }
 
 
