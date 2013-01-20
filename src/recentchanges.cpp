@@ -48,6 +48,7 @@ namespace gnote {
   {
     set_default_size(450,400);
     set_resizable(true);
+    set_hide_titlebar_when_maximized(true);
     if(Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
          Preferences::MAIN_WINDOW_MAXIMIZED)) {
       maximize();
