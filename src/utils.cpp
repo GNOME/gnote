@@ -99,10 +99,14 @@ namespace gnote {
         return FALSE;
       }
 
-      void main_context_call_func(const sigc::slot<void> & slot, Glib::Threads::Cond * cond)
+      void main_context_call_func(const sigc::slot<void> & slot,
+                                  Glib::Threads::Cond * cond,
+                                  Glib::Threads::Mutex * mutex)
       {
+        mutex->lock();
         slot();
         cond->signal();
+        mutex->unlock();
       }
     }
 
@@ -269,8 +273,9 @@ namespace gnote {
 
       mutex.lock();
       main_context_invoke(boost::bind(
-        sigc::ptr_fun(main_context_call_func), slot, &cond));
+        sigc::ptr_fun(main_context_call_func), slot, &cond, &mutex));
       cond.wait(mutex);
+      mutex.unlock();
     }
 
 
