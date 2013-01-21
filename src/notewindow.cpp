@@ -712,11 +712,6 @@ namespace gnote {
     button->show ();
     pack_start(*button, false, false, 4);
 
-    Gtk::Label *label = manage(new Gtk::Label(_("_Find:"), true));
-    label->show();
-    pack_start(*label, false, false, 0);
-
-    label->set_mnemonic_widget(m_entry);
     m_entry.signal_changed().connect(sigc::mem_fun(*this, &NoteFindBar::on_find_entry_changed));
     m_entry.signal_activate().connect(sigc::mem_fun(*this, &NoteFindBar::on_find_entry_activated));
     m_entry.show();

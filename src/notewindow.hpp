@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 #define _NOTEWINDOW_HPP__
 
 #include <gtkmm/accelgroup.h>
-#include <gtkmm/entry.h>
+#include <gtkmm/searchentry.h>
 #include <gtkmm/toolbar.h>
 #include <gtkmm/toolbutton.h>
 #include <gtkmm/menu.h>
@@ -269,7 +269,7 @@ private:
                               std::list<Match> & matches);
 
   Note           & m_note;
-  Gtk::Entry       m_entry;
+  Gtk::SearchEntry m_entry;
   Gtk::Button      m_next_button;
   Gtk::Button      m_prev_button;
   std::list<Match> m_current_matches;
