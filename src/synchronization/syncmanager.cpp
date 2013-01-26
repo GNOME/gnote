@@ -44,6 +44,8 @@ namespace sync {
 
   SyncManager::SyncManager(NoteManager & m)
     : m_note_manager(m)
+    , m_state(IDLE)
+    , m_sync_thread(NULL)
   {
   }
 
@@ -94,11 +96,13 @@ namespace sync {
     if(m_sync_thread != NULL) {
       // A synchronization thread is already running
       // TODO: Start new sync if existing dlg is for finished sync
+      DBG_OUT("A synchronization thread is already running");
       m_sync_ui->present_ui();
       return;
     }
 
     m_sync_ui = sync_ui;
+    DBG_OUT("Creating synchronization thread");
     m_sync_thread = Glib::Thread::create(sigc::mem_fun(*this, &SyncManager::synchronization_thread), false);
   }
 
