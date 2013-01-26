@@ -211,10 +211,6 @@ namespace sync {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter->second.m_title.c_str());
             if(m_sync_ui != 0) {
               m_sync_ui->note_conflict_detected(note_mgr(), existingNote, iter->second, noteUpdateTitles);
-
-              // Suspend this thread while the GUI is presented to
-              // the user.
-              //syncThread.Suspend ();  TODO: findout what to do with this!!!
             }
           }
         }
@@ -254,10 +250,6 @@ namespace sync {
           // Note already exists locally, but has been modified since last sync; prompt user
           if(m_sync_ui != 0) {
             m_sync_ui->note_conflict_detected(note_mgr(), existingNote, iter->second, noteUpdateTitles);
-
-            // Suspend this thread while the GUI is presented to
-            // the user.
-            //syncThread.Suspend ();  TODO find out what to do with this !!!
           }
 
           // Note has been deleted or okay'd for overwrite
