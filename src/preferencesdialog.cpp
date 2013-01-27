@@ -253,7 +253,7 @@ namespace gnote {
         check = manage(make_check_button (
                          _("_Spell check while typing")));
         options_list->pack_start (*check, false, false, 0);
-        peditor = new sharp::PropertyEditorBool(Preferences::ENABLE_SPELLCHECKING, *check);
+        peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_SPELLCHECKING, *check);
         peditor->setup();
 
         label = manage(make_tip_label (

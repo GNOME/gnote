@@ -27,7 +27,7 @@ dnl if one is harcoded elsewhere, it is a bug
 GTK_VERSION=3.6
 LIBGLIBMM_VERSION=2.28
 LIBGTKMM_VERSION=3.6
-GTKSPELL_VERSION=2.0.9
+GTKSPELL_VERSION=3.0.0
 BOOST_VERSION=1.34
 LIBSECRET_VERSION=0.8
 
@@ -75,15 +75,9 @@ PKG_CHECK_MODULES(LIBXML, [libxml-2.0])
 PKG_CHECK_MODULES(LIBXSLT, [libxslt])
 PKG_CHECK_MODULES(UUID, [uuid])
 
-#GtkSpell disabled until GTK 3.0 is supported
-#
-# Check for recent GtkSpell here.  Prior versions require bug workarounds.
-# http://gtkspell.sourceforge.net/
-#
-#PKG_CHECK_MODULES(GTKSPELL, gtkspell-2.0 >= $GTKSPELL_VERSION,
-#			    [FIXED_GTKSPELL="yes";AC_DEFINE([FIXED_GTKSPELL], [1], [Set if the GtkSpell library is recent enough.])
-#			    ], FIXED_GTKSPELL="no")
-FIXED_GTKSPELL="no"
+PKG_CHECK_MODULES(GTKSPELL, gtkspell3-3.0 >= $GTKSPELL_VERSION,
+			    [FIXED_GTKSPELL="yes";AC_DEFINE([FIXED_GTKSPELL], [1], [Set if the GtkSpell library is recent enough.])
+			    ], FIXED_GTKSPELL="no")
 AC_SUBST(GTKSPELL_CFLAGS)
 AC_SUBST(GTKSPELL_LIBS)
 AM_CONDITIONAL(FIXED_GTKSPELL, test "$FIXED_GTKSPELL" = "yes")

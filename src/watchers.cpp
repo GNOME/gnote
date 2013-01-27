@@ -317,9 +317,8 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteSpellChecker::tag_applied));
 
     if (!m_obj_ptr) {
-      m_obj_ptr = gtkspell_new_attach (get_window()->editor()->gobj(),
-                                     NULL,
-                                     NULL);
+      m_obj_ptr = gtk_spell_checker_new();
+      gtk_spell_checker_attach(m_obj_ptr, get_window()->editor()->gobj());
     }
   }
 
@@ -329,7 +328,7 @@ namespace gnote {
     m_tag_applied_cid.disconnect();
     
     if(m_obj_ptr) {
-      gtkspell_detach(m_obj_ptr);
+      gtk_spell_checker_detach(m_obj_ptr);
       m_obj_ptr = NULL;
     }
   }

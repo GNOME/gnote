@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -106,7 +106,7 @@ namespace gnote {
     void tag_applied(const Glib::RefPtr<const Gtk::TextTag> &,
                      const Gtk::TextIter &, const Gtk::TextIter &);
 
-    GtkSpell *m_obj_ptr;
+    GtkSpellChecker *m_obj_ptr;
     sigc::connection  m_tag_applied_cid;
   };
 #else
