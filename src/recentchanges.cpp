@@ -71,6 +71,8 @@ namespace gnote {
     signal_delete_event().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete));
     signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed)); // For Escape
+    IGnote::obj().signal_quit
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));// to save size/pos
 
     embed_widget(m_search_notes_widget);
   }
