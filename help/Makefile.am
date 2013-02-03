@@ -19,7 +19,6 @@ HELP_MEDIA = \
 	figures/gnote-sync-progress.png \
 	figures/gnote-template-note.png \
 	figures/gnote-tools.png \
-	figures/new-notebook.png \
 	figures/notebook-icon.png \
 	figures/note-template.png
 HELP_FILES = \
