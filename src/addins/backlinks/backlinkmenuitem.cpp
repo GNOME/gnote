@@ -58,7 +58,7 @@ void BacklinkMenuItem::on_activate()
   
   gnote::MainWindow *window = gnote::MainWindow::get_owning(*this);
   if(!window) {
-    window = gnote::IGnote::obj().new_main_window();
+    window = &gnote::IGnote::obj().new_main_window();
   }
 
   window->present_note(m_note);

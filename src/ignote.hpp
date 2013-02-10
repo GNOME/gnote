@@ -35,9 +35,9 @@ public:
   static std::string old_note_dir();
 
   virtual ~IGnote();
-  virtual MainWindow *get_main_window() = 0;
-  virtual MainWindow *get_window_for_note() = 0; //TODO change to return reference
-  virtual MainWindow *new_main_window() = 0; //TODO change to return reference
+  virtual MainWindow & get_main_window() = 0;
+  virtual MainWindow & get_window_for_note() = 0;
+  virtual MainWindow & new_main_window() = 0;
   virtual void open_note(const Note::Ptr & note) = 0;
   virtual void open_search_all() = 0;
 

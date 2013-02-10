@@ -153,9 +153,9 @@ namespace gnote {
 
   void RemoteControl::DisplaySearchWithText(const std::string& search_text)
   {
-    MainWindow *recent_changes = IGnote::obj().get_main_window();
-    recent_changes->set_search_text(search_text);
-    recent_changes->present();
+    MainWindow & recent_changes = IGnote::obj().get_main_window();
+    recent_changes.set_search_text(search_text);
+    recent_changes.present();
   }
 
 
@@ -408,9 +408,9 @@ void RemoteControl::on_note_saved(const Note::Ptr & note)
 
 void RemoteControl::present_note(const Note::Ptr & note)
 {
-    MainWindow *window = IGnote::obj().get_window_for_note();
-    window->present_note(note);
-    window->present();
+    MainWindow & window = IGnote::obj().get_window_for_note();
+    window.present_note(note);
+    window.present();
 }
 
 

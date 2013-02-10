@@ -913,7 +913,7 @@ namespace gnote {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
       MainWindow *window = MainWindow::get_owning(const_cast<NoteEditor&>(editor));
       if(!window) {
-        window = IGnote::obj().new_main_window();
+        window = &IGnote::obj().new_main_window();
       }
       window->present_note(link);
       window->present();

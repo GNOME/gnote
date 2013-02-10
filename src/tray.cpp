@@ -93,9 +93,9 @@ namespace gnote {
   {
     if(!m_inhibit_activate) {
       if(m_note) {
-        MainWindow *window = IGnote::obj().get_window_for_note();
-        window->present_note(m_note);
-        window->present();
+        MainWindow & window = IGnote::obj().get_window_for_note();
+        window.present_note(m_note);
+        window.present();
       }
     }
   }

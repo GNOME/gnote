@@ -366,7 +366,7 @@ void NoteRenameDialog::on_notes_view_row_activated(
     window = MainWindow::get_owning(*parent);
   }
   if(!window) {
-    window = IGnote::obj().new_main_window();
+    window = &IGnote::obj().new_main_window();
   }
 
   window->present_note(note);

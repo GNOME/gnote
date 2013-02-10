@@ -126,9 +126,9 @@ public:
   void on_show_preferences_action(const Glib::VariantBase&);
   void on_show_help_action(const Glib::VariantBase&);
   void on_show_about_action(const Glib::VariantBase&);
-  virtual MainWindow *new_main_window();
-  virtual MainWindow *get_main_window();
-  virtual MainWindow *get_window_for_note();
+  virtual MainWindow & new_main_window();
+  virtual MainWindow & get_main_window();
+  virtual MainWindow & get_window_for_note();
   virtual void open_search_all();
   void open_note_sync_window(const Glib::VariantBase&);
 

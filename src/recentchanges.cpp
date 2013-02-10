@@ -145,9 +145,9 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    MainWindow *window = IGnote::obj().new_main_window();
-    window->present();
-    window->present_note(note);
+    MainWindow & window = IGnote::obj().new_main_window();
+    window.present();
+    window.present_note(note);
   }
 
   void NoteRecentChanges::on_delete_note()

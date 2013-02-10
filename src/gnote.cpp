@@ -126,7 +126,7 @@ namespace gnote {
       cmd_line.execute();
     }
     else {
-      new_main_window()->present();
+      new_main_window().present();
     }
 
     return 0;
@@ -389,30 +389,30 @@ namespace gnote {
     about.set_documenters(documenters);
     about.set_translator_credits(translators);
 //      about.set_icon_name("gnote");
-    MainWindow *recent_changes = get_main_window();
-    if(recent_changes && recent_changes->get_visible()) {
-      about.set_transient_for(*recent_changes);
-      recent_changes->present();
+    MainWindow & recent_changes = get_main_window();
+    if(recent_changes.get_visible()) {
+      about.set_transient_for(recent_changes);
+      recent_changes.present();
     }
     about.run();
   }
 
-  MainWindow *Gnote::new_main_window()
+  MainWindow & Gnote::new_main_window()
   {
     NoteRecentChanges *win = new NoteRecentChanges(default_note_manager());
     win->signal_hide().connect(sigc::mem_fun(*this, &Gnote::on_main_window_closed));
     add_window(*win);
-    return win;
+    return *win;
   }
 
-  MainWindow *Gnote::get_main_window()
+  MainWindow & Gnote::get_main_window()
   {
     std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
     for(std::vector<Gtk::Window*>::iterator iter = windows.begin();
         iter != windows.end(); ++iter) {
       MainWindow *rc = dynamic_cast<MainWindow*>(*iter);
       if(rc) {
-        return rc;
+        return *rc;
       }
     }
 
@@ -427,7 +427,7 @@ namespace gnote {
     }
   }
 
-  MainWindow *Gnote::get_window_for_note()
+  MainWindow & Gnote::get_window_for_note()
   {
     std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
     MainWindow *window = NULL;
@@ -436,13 +436,13 @@ namespace gnote {
       if(rc) {
         window = rc;
         if(rc->get_visible()) {
-          return rc;
+          return *rc;
         }
       }
     }
 
     if(window) {
-      return window;
+      return *window;
     }
 
     return new_main_window();
@@ -450,9 +450,9 @@ namespace gnote {
 
   void Gnote::open_search_all()
   {
-    MainWindow *main_window = get_main_window();
-    main_window->present_search();
-    main_window->present();
+    MainWindow & main_window = get_main_window();
+    main_window.present_search();
+    main_window.present();
   }
 
   void Gnote::open_note_sync_window(const Glib::VariantBase&)
@@ -500,7 +500,7 @@ namespace gnote {
 
   void Gnote::on_new_window_action(const Glib::VariantBase&)
   {
-    new_main_window()->present();
+    new_main_window().present();
   }
 
 
@@ -524,18 +524,18 @@ namespace gnote {
       rc->new_note();
     }
     else {
-      MainWindow *recent_changes = get_main_window();
-      recent_changes->new_note();
-      recent_changes->present();
+      MainWindow & recent_changes = get_main_window();
+      recent_changes.new_note();
+      recent_changes.present();
     }
   }
 
 
   void Gnote::open_note(const Note::Ptr & note)
   {
-    MainWindow *main_window = get_window_for_note();
-    main_window->present_note(note);
-    main_window->present();
+    MainWindow & main_window = get_window_for_note();
+    main_window.present_note(note);
+    main_window.present();
   }
 
 
