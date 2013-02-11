@@ -261,6 +261,10 @@ namespace gnote {
       virtual std::string get_name() const = 0;
       virtual void embed(EmbeddableWidgetHost *h)
         {
+          //remove from previous host, if any
+          if(m_host) {
+            m_host->unembed_widget(*this);
+          }
           m_host = h;
           signal_embedded();
         }

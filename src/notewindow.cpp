@@ -160,15 +160,6 @@ namespace gnote {
     signal_name_changed(m_name);
   }
 
-  void NoteWindow::embed(utils::EmbeddableWidgetHost *h)
-  {
-    //remove from previous host, if any
-    if(host()) {
-      host()->unembed_widget(*this);
-    }
-    utils::EmbeddableWidget::embed(h);
-  }
-
   void NoteWindow::foreground()
   {
     //addins may add accelarators, so accel group must be there

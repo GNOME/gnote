@@ -108,7 +108,6 @@ public:
 
   virtual std::string get_name() const;
   void set_name(const std::string & name);
-  virtual void embed(utils::EmbeddableWidgetHost *h);
   virtual void foreground();
   virtual void background();
 
