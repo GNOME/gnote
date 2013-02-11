@@ -407,10 +407,14 @@ namespace gnote {
 
   MainWindow & Gnote::get_main_window()
   {
+    MainWindow *rc = get_active_window();
+    if(rc) {
+      return *rc;
+    }
     std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
     for(std::vector<Gtk::Window*>::iterator iter = windows.begin();
         iter != windows.end(); ++iter) {
-      MainWindow *rc = dynamic_cast<MainWindow*>(*iter);
+      rc = dynamic_cast<MainWindow*>(*iter);
       if(rc) {
         return *rc;
       }
