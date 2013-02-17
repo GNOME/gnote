@@ -208,7 +208,7 @@ namespace gnote {
       new_main_window();
     }
     else {
-      am["ShowSearchAllNotesAction"]->activate();
+      get_main_window().present();
     }
   }
 
