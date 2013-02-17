@@ -53,7 +53,6 @@ Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon()
 SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   : Gtk::VBox(false, 0)
   , m_accel_group(Gtk::AccelGroup::create())
-  , m_entry_changed_timeout(NULL)
   , m_no_matches_box(NULL)
   , m_manager(m)
   , m_clickX(0), m_clickY(0)
@@ -63,18 +62,6 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   , m_initial_position_restored(false)
 {
   make_actions();
-
-  m_search_entry.signal_changed()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_entry_changed));
-  m_search_entry.set_activates_default(false);
-  m_search_entry.signal_activate()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_entry_activated));
-
-  m_search_entry.set_size_request(300);
-  Gtk::Alignment *search_box = manage(new Gtk::Alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER, 0));
-  search_box->set_border_width(6);
-  search_box->add(m_search_entry);
-  search_box->show_all();
 
   // Notebooks Pane
   Gtk::Widget *notebooksPane = Gtk::manage(make_notebooks_pane());
@@ -100,7 +87,6 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
 
   restore_position();
 
-  pack_start(*search_box, false, false, 0);
   pack_start(m_hpaned, true, true, 0);
 
   // Update on changes to notes
@@ -118,36 +104,10 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_removed_from_notebook));
   notebooks::NotebookManager::obj().signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
-
-  // Set the focus chain for the top-most containers
-  std::vector<Gtk::Widget*> focus_chain;
-  focus_chain.push_back(search_box);
-  focus_chain.push_back(&m_hpaned);
-  set_focus_chain(focus_chain);
-
-  // Set focus chain for sub widgets of first top-most container
-  focus_chain.clear();
-  focus_chain.push_back(&m_search_entry);
-  focus_chain.push_back(&m_matches_window);
-  search_box->set_focus_chain(focus_chain);
-
-  // set focus chain for sub widgets of second top-most container
-  focus_chain.clear();
-  focus_chain.push_back(&m_matches_window);
-  focus_chain.push_back(notebooksPane);
-  m_hpaned.set_focus_chain(focus_chain);
-
-  // get back to the beginning of the focus chain
-  focus_chain.clear();
-  focus_chain.push_back(m_tree);
-  m_matches_window.set_focus_chain(focus_chain);
 }
 
 SearchNotesWidget::~SearchNotesWidget()
 {
-  if(m_entry_changed_timeout) {
-    delete m_entry_changed_timeout;
-  }
   if(m_note_list_context_menu) {
     delete m_note_list_context_menu;
   }
@@ -182,54 +142,11 @@ void SearchNotesWidget::make_actions()
   m_delete_notebook_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_delete_notebook));
 }
 
-void SearchNotesWidget::focus_search_entry()
+void SearchNotesWidget::perform_search(const std::string & search_text)
 {
-  m_search_entry.grab_focus();
-}
-
-void SearchNotesWidget::on_entry_changed()
-{
-  if(m_entry_changed_timeout == NULL) {
-    m_entry_changed_timeout = new utils::InterruptableTimeout();
-    m_entry_changed_timeout->signal_timeout
-      .connect(sigc::mem_fun(*this, &SearchNotesWidget::entry_changed_timeout));
-  }
-
-  if(get_search_text().empty()) {
-    m_search_entry.set_sensitive(false);
-    perform_search();
-  }
-  else {
-    m_entry_changed_timeout->reset(500);
-    m_search_entry.set_sensitive(true);
-  }
-
   restore_matches_window();
-}
-
-void SearchNotesWidget::on_entry_activated()
-{
-  if(m_entry_changed_timeout) {
-    m_entry_changed_timeout->cancel();
-  }
-
-  entry_changed_timeout();
-}
-
-void SearchNotesWidget::entry_changed_timeout()
-{
-  if(get_search_text().empty()) {
-    return;
-  }
-
+  m_search_text = search_text;
   perform_search();
-}
-
-std::string SearchNotesWidget::get_search_text()
-{
-  std::string text = m_search_entry.get_text();
-  text = sharp::string_trim(text);
-  return text;
 }
 
 void SearchNotesWidget::perform_search()
@@ -239,7 +156,7 @@ void SearchNotesWidget::perform_search()
   remove_matches_column();
   Search search(m_manager);
 
-  std::string text = get_search_text();
+  std::string text = m_search_text;
   if(text.empty()) {
     m_current_matches.clear();
     m_store_filter->refilter();
@@ -866,7 +783,7 @@ Note::Ptr SearchNotesWidget::get_note(const Gtk::TreePath & p)
 
 bool SearchNotesWidget::filter_by_search(const Note::Ptr & note)
 {
-  if(get_search_text().empty()) {
+  if(m_search_text.empty()) {
     return true;
   }
 
@@ -1363,13 +1280,6 @@ Gtk::Window *SearchNotesWidget::get_owning_window()
   }
 
   return dynamic_cast<Gtk::Window*>(widget);
-}
-
-void SearchNotesWidget::set_search_text(const std::string & value)
-{
-  if(!value.empty()) {
-    m_search_entry.set_text(value);
-  }
 }
 
 void SearchNotesWidget::on_note_added_to_notebook(const Note &,

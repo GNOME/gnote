@@ -29,7 +29,6 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/paned.h>
 #include <gtkmm/scrolledwindow.h>
-#include <gtkmm/searchentry.h>
 #include <sigc++/sigc++.h>
 
 #include "utils.hpp"
@@ -50,20 +49,15 @@ public:
   virtual void foreground();
   virtual void background();
 
-  void focus_search_entry();
+  void perform_search(const std::string & search_text);
   void select_all_notes_notebook();
   void new_note();
   void delete_selected_notes();
-  void set_search_text(const std::string & value);
 
   sigc::signal<void, const Note::Ptr &> signal_open_note;
   sigc::signal<void, const Note::Ptr &> signal_open_note_new_window;
 private:
   void make_actions();
-  void on_entry_changed();
-  void on_entry_activated();
-  void entry_changed_timeout();
-  std::string get_search_text();
   void perform_search();
   void restore_matches_window();
   Gtk::Widget *make_notebooks_pane();
@@ -153,9 +147,7 @@ private:
   Glib::RefPtr<Gtk::Action> m_delete_note_action;
   Glib::RefPtr<Gtk::Action> m_delete_notebook_action;
   RecentSearchColumnTypes m_find_combo_columns;
-  Gtk::SearchEntry m_search_entry;
   Gtk::HPaned m_hpaned;
-  utils::InterruptableTimeout *m_entry_changed_timeout;
   Gtk::ScrolledWindow m_matches_window;
   Gtk::HBox *m_no_matches_box;
   notebooks::NotebooksTreeView *m_notebooksTree;
@@ -174,6 +166,7 @@ private:
   Gtk::Menu *m_note_list_context_menu;
   Gtk::Menu *m_notebook_list_context_menu;
   bool m_initial_position_restored;
+  std::string m_search_text;
 
   static Glib::RefPtr<Gdk::Pixbuf> get_note_icon();
 };

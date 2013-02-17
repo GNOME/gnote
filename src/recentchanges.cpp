@@ -25,6 +25,7 @@
 
 #include <boost/bind.hpp>
 #include <glibmm/i18n.h>
+#include <gtkmm/alignment.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 
@@ -35,6 +36,7 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "recentchanges.hpp"
+#include "sharp/string.hpp"
 
 
 namespace gnote {
@@ -45,6 +47,7 @@ namespace gnote {
     , m_search_notes_widget(m)
     , m_content_vbox(false, 0)
     , m_mapped(false)
+    , m_entry_changed_timeout(NULL)
   {
     set_default_size(450,400);
     set_resizable(true);
@@ -62,7 +65,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
 
     Gtk::Box *toolbar = make_toolbar();
-    m_content_vbox.pack_start(*toolbar, false, false, 0);
+    m_content_vbox.pack_start(*toolbar, false, false, 5);
     m_content_vbox.pack_start(m_embed_box, true, true, 0);
     m_embed_box.show();
     m_content_vbox.show ();
@@ -82,6 +85,9 @@ namespace gnote {
   {
     while(m_embedded_widgets.size()) {
       unembed_widget(**m_embedded_widgets.begin());
+    }
+    if(m_entry_changed_timeout) {
+      delete m_entry_changed_timeout;
     }
   }
 
@@ -103,6 +109,17 @@ namespace gnote {
     button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
     button->show_all();
     toolbar->pack_start(*button, false, false);
+
+    m_search_entry.set_activates_default(false);
+    m_search_entry.set_size_request(300);
+    m_search_entry.signal_changed()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_changed));
+    m_search_entry.signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_activated));
+    Gtk::Alignment *alignment = manage(new Gtk::Alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER, 0));
+    alignment->add(m_search_entry);
+    alignment->show_all();
+    toolbar->pack_start(*alignment, true, true);
 
     toolbar->show();
     return toolbar;
@@ -215,15 +232,14 @@ namespace gnote {
     }
     std::vector<Gtk::Widget*> embedded = m_embed_box.get_children();
     if(embedded.size() == 1 && embedded.front() == &m_search_notes_widget) {
-      m_search_notes_widget.focus_search_entry();
+      m_search_entry.grab_focus();
     }
     MainWindow::on_show();
   }
 
   void NoteRecentChanges::set_search_text(const std::string & value)
   {
-    //TODO: handle non-search embedded widgets
-    m_search_notes_widget.set_search_text(value);
+    m_search_entry.set_text(value);
   }
 
   void NoteRecentChanges::embed_widget(utils::EmbeddableWidget & widget)
@@ -272,8 +288,7 @@ namespace gnote {
       m_embed_box.pack_start(wid, true, true, 0);
       widget.foreground();
       wid.show();
-      m_all_notes_button->set_sensitive(
-        dynamic_cast<SearchNotesWidget*>(&widget) != &m_search_notes_widget);
+      update_toolbar(widget);
       on_embedded_name_changed(widget.get_name());
       m_current_embedded_name_slot = widget.signal_name_changed
         .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_embedded_name_changed));
@@ -331,6 +346,56 @@ namespace gnote {
     }
     title += _("Notes");
     set_title(title);
+  }
+
+  void NoteRecentChanges::on_entry_changed()
+  {
+    if(m_entry_changed_timeout == NULL) {
+      m_entry_changed_timeout = new utils::InterruptableTimeout();
+      m_entry_changed_timeout->signal_timeout
+        .connect(sigc::mem_fun(*this, &NoteRecentChanges::entry_changed_timeout));
+    }
+
+    std::string search_text = get_search_text();
+    if(search_text.empty()) {
+      m_search_notes_widget.perform_search(search_text);
+    }
+    else {
+      m_entry_changed_timeout->reset(500);
+    }
+  }
+
+  void NoteRecentChanges::on_entry_activated()
+  {
+    if(m_entry_changed_timeout) {
+      m_entry_changed_timeout->cancel();
+    }
+
+    entry_changed_timeout();
+  }
+
+  void NoteRecentChanges::entry_changed_timeout()
+  {
+    std::string search_text = get_search_text();
+    if(search_text.empty()) {
+      return;
+    }
+
+    m_search_notes_widget.perform_search(search_text);
+  }
+
+  std::string NoteRecentChanges::get_search_text()
+  {
+    std::string text = m_search_entry.get_text();
+    text = sharp::string_trim(text);
+    return text;
+  }
+
+  void NoteRecentChanges::update_toolbar(utils::EmbeddableWidget & widget)
+  {
+    bool search = dynamic_cast<SearchNotesWidget*>(&widget) == &m_search_notes_widget;
+    m_all_notes_button->set_sensitive(!search);
+    m_search_entry.set_visible(search);
   }
 
 }

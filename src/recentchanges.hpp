@@ -69,15 +69,22 @@ private:
   utils::EmbeddableWidget *currently_embedded();
   Gtk::Box *make_toolbar();
   void on_embedded_name_changed(const std::string & name);
+  void on_entry_changed();
+  void on_entry_activated();
+  void entry_changed_timeout();
+  std::string get_search_text();
+  void update_toolbar(utils::EmbeddableWidget & widget);
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::VBox           m_content_vbox;
   Gtk::VBox           m_embed_box;
   Gtk::Button        *m_all_notes_button;
+  Gtk::SearchEntry    m_search_entry;
   std::list<utils::EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
+  utils::InterruptableTimeout *m_entry_changed_timeout;
 };
 
 
