@@ -67,14 +67,14 @@ private:
   bool on_key_pressed(GdkEventKey *);
   bool is_foreground(utils::EmbeddableWidget &);
   utils::EmbeddableWidget *currently_embedded();
-  Gtk::Toolbar *make_toolbar();
+  Gtk::Box *make_toolbar();
   void on_embedded_name_changed(const std::string & name);
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::VBox           m_content_vbox;
   Gtk::VBox           m_embed_box;
-  Gtk::ToolButton    *m_all_notes_button;
+  Gtk::Button        *m_all_notes_button;
   std::list<utils::EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;

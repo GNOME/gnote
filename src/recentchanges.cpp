@@ -61,7 +61,7 @@ namespace gnote {
     m_search_notes_widget.signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
 
-    Gtk::Toolbar *toolbar = make_toolbar();
+    Gtk::Box *toolbar = make_toolbar();
     m_content_vbox.pack_start(*toolbar, false, false, 0);
     m_content_vbox.pack_start(m_embed_box, true, true, 0);
     m_embed_box.show();
@@ -85,23 +85,24 @@ namespace gnote {
     }
   }
 
-  Gtk::Toolbar *NoteRecentChanges::make_toolbar()
+  Gtk::Box *NoteRecentChanges::make_toolbar()
   {
-    Gtk::Toolbar *toolbar = manage(new Gtk::Toolbar);
-    m_all_notes_button = manage(new Gtk::ToolButton(
-      *manage(new Gtk::Image(Gtk::Stock::FIND, Gtk::IconSize(24))), _("All Notes")));
-    m_all_notes_button->set_is_important();
+    Gtk::Box *toolbar = manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
+    m_all_notes_button = manage(new Gtk::Button);
+    m_all_notes_button->set_image(*manage(new Gtk::Image(Gtk::Stock::FIND, Gtk::ICON_SIZE_BUTTON)));
+    m_all_notes_button->set_always_show_image(true);
+    m_all_notes_button->set_label(_("All Notes"));
     m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::present_search));
     m_all_notes_button->show_all();
-    toolbar->append(*m_all_notes_button);
+    toolbar->pack_start(*m_all_notes_button, false, false);
 
-    Gtk::ToolButton *button = manage(new Gtk::ToolButton(
-      *manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 24))),
-      _("New")));
-    button->set_is_important();
+    Gtk::Button *button = manage(new Gtk::Button);
+    button->set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 24))));
+    button->set_always_show_image(true);
+    button->set_label(_("New"));
     button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
     button->show_all();
-    toolbar->append(*button);
+    toolbar->pack_start(*button, false, false);
 
     toolbar->show();
     return toolbar;
