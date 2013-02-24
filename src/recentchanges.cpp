@@ -27,9 +27,11 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/image.h>
+#include <gtkmm/separatormenuitem.h>
 #include <gtkmm/stock.h>
 
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "ignote.hpp"
 #include "iconmanager.hpp"
 #include "note.hpp"
@@ -48,6 +50,9 @@ namespace gnote {
     , m_content_vbox(false, 0)
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
+    , m_window_menu_search(NULL)
+    , m_window_menu_note(NULL)
+    , m_window_menu_default(NULL)
   {
     set_default_size(450,400);
     set_resizable(true);
@@ -78,6 +83,13 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));// to save size/pos
 
     embed_widget(m_search_notes_widget);
+
+    IActionManager::obj().signal_main_window_search_actions_changed
+      .connect(boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_main_window_actions_changed),
+                           &m_window_menu_search));
+    IActionManager::obj().signal_main_window_note_actions_changed
+      .connect(boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_main_window_actions_changed),
+                           &m_window_menu_note));
   }
 
 
@@ -88,6 +100,15 @@ namespace gnote {
     }
     if(m_entry_changed_timeout) {
       delete m_entry_changed_timeout;
+    }
+    if(m_window_menu_search) {
+      delete m_window_menu_search;
+    }
+    if(m_window_menu_note) {
+      delete m_window_menu_note;
+    }
+    if(m_window_menu_default) {
+      delete m_window_menu_default;
     }
   }
 
@@ -120,6 +141,14 @@ namespace gnote {
     alignment->add(m_search_entry);
     alignment->show_all();
     toolbar->pack_start(*alignment, true, true);
+
+    button = manage(new Gtk::Button);
+    button->set_image(*manage(new Gtk::Image(IconManager::obj().get_icon("emblem-system-symbolic", 24))));
+    button->set_always_show_image(true);
+    button->signal_clicked().connect(
+      boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu), button));
+    button->show_all();
+    toolbar->pack_end(*button, false, false);
 
     toolbar->show();
     return toolbar;
@@ -396,6 +425,67 @@ namespace gnote {
     bool search = dynamic_cast<SearchNotesWidget*>(&widget) == &m_search_notes_widget;
     m_all_notes_button->set_sensitive(!search);
     m_search_entry.set_visible(search);
+  }
+
+  void NoteRecentChanges::on_show_window_menu(Gtk::Button *button)
+  {
+    std::vector<Gtk::MenuItem*> items;
+    if(dynamic_cast<SearchNotesWidget*>(currently_embedded()) == &m_search_notes_widget) {
+      if(!m_window_menu_search) {
+        m_window_menu_search = make_window_menu(button,
+            make_menu_items(items, IActionManager::obj().get_main_window_search_actions()));
+      }
+      utils::popup_menu(*m_window_menu_search, NULL);
+    }
+    else if(dynamic_cast<NoteWindow*>(currently_embedded())) {
+      if(!m_window_menu_note) {
+        m_window_menu_note = make_window_menu(button,
+            make_menu_items(items, IActionManager::obj().get_main_window_note_actions()));
+      }
+      utils::popup_menu(*m_window_menu_note, NULL);
+    }
+    else {
+      if(!m_window_menu_default) {
+        m_window_menu_default = make_window_menu(button, items);
+      }
+      utils::popup_menu(*m_window_menu_default, NULL);
+    }
+  }
+
+  Gtk::Menu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::MenuItem*> & items)
+  {
+    Gtk::Menu *menu = new Gtk::Menu;
+    for(std::vector<Gtk::MenuItem*>::const_iterator iter = items.begin(); iter != items.end(); ++iter) {
+      menu->append(**iter);
+    }
+    if(items.size()) {
+      menu->append(*manage(new Gtk::SeparatorMenuItem));
+    }
+    Gtk::MenuItem *item = manage(new Gtk::MenuItem(_("_Close"), true));
+    item->signal_activate().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
+    menu->append(*item);
+    menu->property_attach_widget() = button;
+    menu->show_all();
+    return menu;
+  }
+
+  std::vector<Gtk::MenuItem*> & NoteRecentChanges::make_menu_items(std::vector<Gtk::MenuItem*> & items,
+    const std::vector<Glib::RefPtr<Gtk::Action> > & actions)
+  {
+    for(std::vector<Glib::RefPtr<Gtk::Action> >::const_iterator iter = actions.begin(); iter != actions.end(); ++iter) {
+      Gtk::MenuItem *item = manage(new Gtk::MenuItem);
+      item->set_related_action(*iter);
+      items.push_back(item);
+    }
+    return items;
+  }
+
+  void NoteRecentChanges::on_main_window_actions_changed(Gtk::Menu **menu)
+  {
+    if(*menu) {
+      delete *menu;
+      *menu = NULL;
+    }
   }
 
 }

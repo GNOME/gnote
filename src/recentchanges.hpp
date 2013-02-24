@@ -74,6 +74,11 @@ private:
   void entry_changed_timeout();
   std::string get_search_text();
   void update_toolbar(utils::EmbeddableWidget & widget);
+  void on_show_window_menu(Gtk::Button *button);
+  Gtk::Menu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::MenuItem*> & items);
+  std::vector<Gtk::MenuItem*> & make_menu_items(std::vector<Gtk::MenuItem*> & items,
+                                                const std::vector<Glib::RefPtr<Gtk::Action> > & actions);
+  void on_main_window_actions_changed(Gtk::Menu **menu);
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
@@ -85,6 +90,9 @@ private:
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
   utils::InterruptableTimeout *m_entry_changed_timeout;
+  Gtk::Menu          *m_window_menu_search;
+  Gtk::Menu          *m_window_menu_note;
+  Gtk::Menu          *m_window_menu_default;
 };
 
 
