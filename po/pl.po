@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-17 19:02+0100\n"
-"PO-Revision-Date: 2013-02-17 19:03+0100\n"
+"POT-Creation-Date: 2013-02-24 19:21+0100\n"
+"PO-Revision-Date: 2013-02-24 19:22+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -572,7 +572,7 @@ msgid ""
 msgstr ""
 "Format daty używany do automatycznego wstawiania. Używa formatu strftime(3)."
 
-#: ../src/actionmanager.cpp:169 ../src/actionmanager.cpp:260
+#: ../src/actionmanager.cpp:169 ../src/actionmanager.cpp:262
 #: ../src/tray.cpp:478
 msgid "_Quit"
 msgstr "Za_kończ"
@@ -581,7 +581,7 @@ msgstr "Za_kończ"
 msgid "Quit Gnote"
 msgstr "Kończy działanie programu Gnote"
 
-#: ../src/actionmanager.cpp:174 ../src/actionmanager.cpp:257
+#: ../src/actionmanager.cpp:174 ../src/actionmanager.cpp:259
 #: ../src/tray.cpp:461
 msgid "_Preferences"
 msgstr "_Preferencje"
@@ -598,7 +598,7 @@ msgstr "_Spis treści"
 msgid "Gnote Help"
 msgstr "Pomoc programu Gnote"
 
-#: ../src/actionmanager.cpp:183 ../src/actionmanager.cpp:259
+#: ../src/actionmanager.cpp:183 ../src/actionmanager.cpp:261
 msgid "_About"
 msgstr "_O programie"
 
@@ -626,15 +626,15 @@ msgstr "_Szukaj w notatkach"
 msgid "Open the Search All Notes window"
 msgstr "Otwiera okno przeszukiwania wszystkich notatek"
 
-#: ../src/actionmanager.cpp:255 ../src/searchnoteswidget.cpp:1415
+#: ../src/actionmanager.cpp:257 ../src/searchnoteswidget.cpp:1325
 msgid "_New Note"
 msgstr "N_owa notatka"
 
-#: ../src/actionmanager.cpp:256
+#: ../src/actionmanager.cpp:258
 msgid "New _Window"
 msgstr "Nowe o_kno"
 
-#: ../src/actionmanager.cpp:258
+#: ../src/actionmanager.cpp:260
 msgid "Help _Contents"
 msgstr "_Spis treści pomocy"
 
@@ -1168,7 +1168,7 @@ msgid "C_reate"
 msgstr "_Utwórz"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:75
-#: ../src/searchnoteswidget.cpp:302
+#: ../src/searchnoteswidget.cpp:219
 msgid "Notebooks"
 msgstr "Notatniki"
 
@@ -1197,7 +1197,7 @@ msgstr "Szablon notatki %1%"
 msgid "New Note"
 msgstr "Nowa notatka"
 
-#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:92
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:121
 msgid "All Notes"
 msgstr "Wszystkie notatki"
 
@@ -1820,32 +1820,36 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:43 ../src/recentchanges.cpp:331
-#: ../src/searchnoteswidget.cpp:1100
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:376
+#: ../src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "Notatki"
 
-#: ../src/recentchanges.cpp:100
+#: ../src/recentchanges.cpp:129
 msgid "New"
 msgstr "Nowa"
 
-#: ../src/searchnoteswidget.cpp:171
+#: ../src/recentchanges.cpp:464
+msgid "_Close"
+msgstr "Za_mknij"
+
+#: ../src/searchnoteswidget.cpp:131
 msgid "_Open"
 msgstr "_Otwórz"
 
-#: ../src/searchnoteswidget.cpp:174
+#: ../src/searchnoteswidget.cpp:134
 msgid "Open In New _Window"
 msgstr "Otwórz w nowym o_knie"
 
-#: ../src/searchnoteswidget.cpp:761
+#: ../src/searchnoteswidget.cpp:678
 msgid "Note"
 msgstr "Notatka"
 
-#: ../src/searchnoteswidget.cpp:783
+#: ../src/searchnoteswidget.cpp:700
 msgid "Last Changed"
 msgstr "Ostatnio zmieniane"
 
-#: ../src/searchnoteswidget.cpp:1121
+#: ../src/searchnoteswidget.cpp:1038
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1853,31 +1857,31 @@ msgstr ""
 "Nie odnaleziono wyników w wybranym notatniku.\n"
 "Kliknięcie tutaj spowoduje przeszukanie wszystkich notatek."
 
-#: ../src/searchnoteswidget.cpp:1125
+#: ../src/searchnoteswidget.cpp:1042
 msgid "Click here to search across all notebooks"
 msgstr "Kliknięcie tutaj spowoduje przeszukanie wszystkich notatek"
 
-#: ../src/searchnoteswidget.cpp:1149
+#: ../src/searchnoteswidget.cpp:1066
 msgid "Matches"
 msgstr "Pasujące"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1198
+#: ../src/searchnoteswidget.cpp:1115
 msgid "Title match"
 msgstr "Pasuje tytuł"
 
-#: ../src/searchnoteswidget.cpp:1202
+#: ../src/searchnoteswidget.cpp:1119
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% dopasowanie"
 msgstr[1] "%1% dopasowania"
 msgstr[2] "%1% dopasowań"
 
-#: ../src/searchnoteswidget.cpp:1443
+#: ../src/searchnoteswidget.cpp:1353
 msgid "_Open Template Note"
 msgstr "_Otwórz szablon notatki"
 
-#: ../src/searchnoteswidget.cpp:1451
+#: ../src/searchnoteswidget.cpp:1361
 msgid "_New Notebook"
 msgstr "Nowy _notatnik"
 
