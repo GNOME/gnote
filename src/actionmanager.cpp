@@ -312,4 +312,71 @@ namespace gnote {
     return section;
   }
 
+  void ActionManager::add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order)
+  {
+    add_main_window_action(m_main_window_search_actions, action, order);
+    signal_main_window_search_actions_changed();
+  }
+
+  void ActionManager::remove_main_window_search_action(const std::string & name)
+  {
+    remove_main_window_action(m_main_window_search_actions, name);
+    signal_main_window_search_actions_changed();
+  }
+
+  std::vector<Glib::RefPtr<Gtk::Action> > ActionManager::get_main_window_search_actions()
+  {
+    return get_main_window_actions(m_main_window_search_actions);
+  }
+
+  void ActionManager::add_main_window_note_action(const Glib::RefPtr<Gtk::Action> & action, int order)
+  {
+    add_main_window_action(m_main_window_note_actions, action, order);
+    signal_main_window_note_actions_changed();
+  }
+
+  void ActionManager::remove_main_window_note_action(const std::string & name)
+  {
+    remove_main_window_action(m_main_window_note_actions, name);
+    signal_main_window_note_actions_changed();
+  }
+
+  std::vector<Glib::RefPtr<Gtk::Action> > ActionManager::get_main_window_note_actions()
+  {
+    return get_main_window_actions(m_main_window_note_actions);
+  }
+
+  void ActionManager::add_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions,
+                                             const Glib::RefPtr<Gtk::Action> & action, int order)
+  {
+    std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = actions.find(order);
+    while(iter != actions.end()) {
+      iter = actions.find(++order);
+    }
+    actions[order] = action;
+  }
+
+  void ActionManager::remove_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions,
+    const std::string & name)
+  {
+    for(std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = actions.begin();
+        iter != actions.end(); ++iter) {
+      if(iter->second->get_name() == name) {
+        actions.erase(iter);
+        break;
+      }
+    }
+  }
+
+  std::vector<Glib::RefPtr<Gtk::Action> > ActionManager::get_main_window_actions(
+    std::map<int, Glib::RefPtr<Gtk::Action> > & actions)
+  {
+    std::vector<Glib::RefPtr<Gtk::Action> > res;
+    for(std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = actions.begin();
+        iter != actions.end(); ++iter) {
+      res.push_back(iter->second);
+    }
+    return res;
+  }
+
 }
