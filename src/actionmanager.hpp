@@ -63,7 +63,7 @@ public:
     {
       return m_app_actions;
     }
-  virtual void add_app_action(const std::string & name);
+  virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const std::string & name);
   virtual void add_app_menu_item(int section, int order, const std::string & label,
                                  const std::string & action_def);
   Glib::RefPtr<Gio::Menu> get_app_menu() const;
