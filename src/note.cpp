@@ -118,7 +118,7 @@ namespace gnote {
                               _("An error occurred while saving your notes. "
                                 "Please check that you have sufficient disk "
                                 "space, and that you have appropriate rights "
-                                "on ~/.gnote. Error details can be found in "
+                                "on ~/.local/share/gnote. Error details can be found in "
                                 "~/.gnote.log."));
       dialog.run();
     }
