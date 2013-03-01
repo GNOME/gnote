@@ -1130,10 +1130,16 @@ namespace gnote {
     sharp::XmlReader xml(file);
     NoteData *data = _read(xml, uri, version);
     if(version != NoteArchiver::CURRENT_VERSION) {
-      // Note has old format, so rewrite it.  No need
-      // to reread, since we are not adding anything.
-      DBG_OUT("Updating note XML from %s to newest format...", version.c_str());
-      NoteArchiver::write(file, *data);
+      try {
+        // Note has old format, so rewrite it.  No need
+        // to reread, since we are not adding anything.
+        DBG_OUT("Updating note XML from %s to newest format...", version.c_str());
+        NoteArchiver::write(file, *data);
+      }
+      catch(sharp::Exception & e) {
+        // write failure, but not critical
+        ERR_OUT("Failed to update note format: %s", e.what());
+      }
     }
     return data;
   }
@@ -1244,13 +1250,13 @@ namespace gnote {
 
   void NoteArchiver::write_file(const std::string & _write_file, const NoteData & note)
   {
-    std::string tmp_file = _write_file + ".tmp";
-    // TODO Xml doc settings
-    sharp::XmlWriter xml(tmp_file); //, XmlEncoder::DocumentSettings);
-    write(xml, note);
-    xml.close ();
-
     try {
+      std::string tmp_file = _write_file + ".tmp";
+      // TODO Xml doc settings
+      sharp::XmlWriter xml(tmp_file); //, XmlEncoder::DocumentSettings);
+      write(xml, note);
+      xml.close();
+
       if (sharp::file_exists(_write_file)) {
         std::string backup_path = _write_file + "~";
         if (sharp::file_exists(backup_path)) {
