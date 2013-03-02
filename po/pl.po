@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-24 19:21+0100\n"
-"PO-Revision-Date: 2013-02-24 19:22+0100\n"
+"POT-Creation-Date: 2013-03-02 01:38+0100\n"
+"PO-Revision-Date: 2013-03-02 01:39+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -1264,13 +1264,13 @@ msgstr "Wystąpił błąd podczas zapisywania danych notatki."
 #: ../src/note.cpp:118
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
-"sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-"Error details can be found in ~/.gnote.log."
+"sufficient disk space, and that you have appropriate rights on ~/.local/"
+"share/gnote. Error details can be found in ~/.gnote.log."
 msgstr ""
 "Wystąpił błąd podczas zapisywania notatek. Proszę sprawdzić, czy dostępna "
 "jest wystarczająca ilość miejsca na dysku i czy użytkownik ma odpowiednie "
-"uprawnienia do katalogu ~/.gnote. Szczegóły błędu można znaleźć w pliku ~/."
-"gnote.log."
+"uprawnienia do katalogu ~/.local/share/gnote. Szczegóły błędu można znaleźć "
+"w pliku ~/.gnote.log."
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
@@ -1912,6 +1912,10 @@ msgstr "Narzędzia"
 #: ../src/sharp/addinstreemodel.cpp:151
 msgid "Unknown"
 msgstr "Nieznana"
+
+#: ../src/sharp/xmlwriter.cpp:40
+msgid "%1% failed"
+msgstr "%1% się nie powiodło"
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:116
 msgid ""
