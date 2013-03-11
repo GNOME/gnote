@@ -78,9 +78,7 @@ namespace gnote {
     return (a->change_date() > b->change_date());
   }
 
-  NoteManager::NoteManager(const std::string & directory,
-                           const NoteChangedSlot & start_created)
-    : m_signal_start_note_created(start_created)
+  NoteManager::NoteManager(const std::string & directory)
   {
     std::string backup = directory + "/Backup";
     
@@ -280,8 +278,6 @@ namespace gnote {
       Note::Ptr links_note = create (_("Using Links in Gnote"),
                                 links_note_content);
       links_note->queue_save (CONTENT_CHANGED);
-
-      m_signal_start_note_created(start_note);
     } 
     catch (const std::exception & e) {
       ERR_OUT("Error creating start notes: %s",

@@ -156,7 +156,6 @@ protected:
   virtual void on_window_removed(Gtk::Window *window);
 private:
   Gnote();
-  void start_note_created(const Note::Ptr & start_note);
   std::string get_note_path(const std::string & override_path);
   void on_setting_changed(const Glib::ustring & key);
   void common_init();

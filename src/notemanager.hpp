@@ -45,8 +45,7 @@ namespace gnote {
     typedef sigc::signal<void, const Note::Ptr &> ChangedHandler;
     typedef sigc::slot<void, const Note::Ptr &> NoteChangedSlot;
     
-    NoteManager(const std::string & ,
-                const NoteChangedSlot & start_created = NoteChangedSlot() );
+    NoteManager(const std::string &);
     ~NoteManager();
 
     void on_setting_changed(const Glib::ustring & key);
@@ -140,7 +139,6 @@ namespace gnote {
     TrieController *m_trie_controller;
     std::string m_default_note_template_title;
     std::string m_start_note_uri;
-    NoteChangedSlot m_signal_start_note_created;
     bool m_read_only;
   };
 

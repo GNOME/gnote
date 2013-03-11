@@ -149,7 +149,7 @@ namespace gnote {
     //create singleton objects
     new TagManager;
     new Preferences;
-    m_manager = new NoteManager(note_path, sigc::mem_fun(*this, &Gnote::start_note_created));
+    m_manager = new NoteManager(note_path);
     new notebooks::NotebookManager(default_note_manager());
     m_keybinder = new XKeybinder();
     (new ActionManager)->load_interface();
@@ -210,13 +210,6 @@ namespace gnote {
     else {
       get_main_window().present();
     }
-  }
-
-
-  void Gnote::start_note_created(const Note::Ptr & start_note)
-  {
-    DBG_OUT("we will show the start note");
-    open_note(start_note);
   }
 
   std::string Gnote::get_note_path(const std::string & override_path)
