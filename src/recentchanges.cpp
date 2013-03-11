@@ -70,7 +70,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
 
     Gtk::Box *toolbar = make_toolbar();
-    m_content_vbox.pack_start(*toolbar, false, false, 5);
+    m_content_vbox.pack_start(*toolbar, false, false, 0);
     m_content_vbox.pack_start(m_embed_box, true, true, 0);
     m_embed_box.show();
     m_content_vbox.show ();
@@ -115,6 +115,7 @@ namespace gnote {
   Gtk::Box *NoteRecentChanges::make_toolbar()
   {
     Gtk::Box *toolbar = manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
+    toolbar->set_border_width(5);
     m_all_notes_button = manage(new Gtk::Button);
     m_all_notes_button->set_image(*manage(new Gtk::Image(Gtk::Stock::FIND, Gtk::ICON_SIZE_BUTTON)));
     m_all_notes_button->set_always_show_image(true);
