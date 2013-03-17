@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-01 22:24+0000\n"
-"PO-Revision-Date: 2013-03-11 16:11+0200\n"
+"POT-Creation-Date: 2013-03-17 11:51+0000\n"
+"PO-Revision-Date: 2013-03-17 14:27+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -1029,23 +1029,18 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:357
+#: ../src/gnote.cpp:350
 msgid "and Tomboy original authors."
 msgstr "ir Tomboy kūrėjai."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:356
 msgid "translator-credits"
 msgstr ""
 "Aurimas Černius <aurisc4@gmail.com>\n"
 "Giedrius Slavinskas <giedrius25@gmail.com>\n"
 "Žygimantas Beručka <zygis@gnome.org>"
 
-#: ../src/gnote.cpp:372
-#| msgid ""
-#| "Copyright © 2010-2012 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: ../src/gnote.cpp:365
 msgid ""
 "Copyright © 2010-2013 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1057,71 +1052,71 @@ msgstr ""
 "Autorinės teisės priklauso © 2009 Hubert Figuiere\n"
 "Autorinės teisės priklauso © 2004-2009 Tomboy originalo autoriams."
 
-#: ../src/gnote.cpp:376
+#: ../src/gnote.cpp:369
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 
-#: ../src/gnote.cpp:387
+#: ../src/gnote.cpp:380
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:559
 msgid "Run Gnote in background."
 msgstr "Paleisti Gnote fone."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:560
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:560
 msgid "path"
 msgstr "kelias"
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:561
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: ../src/gnote.cpp:568 ../src/gnote.cpp:573
+#: ../src/gnote.cpp:561 ../src/gnote.cpp:566
 msgid "text"
 msgstr "tekstas"
 
-#: ../src/gnote.cpp:569
+#: ../src/gnote.cpp:562
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:563
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:563
 msgid "title"
 msgstr "pavadinimas"
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:564
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:564
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:565
 msgid "Display the 'Start Here' note."
 msgstr "Raštelis „Pradėkite čia“"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:566
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:570
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:570
 msgid "Gnote options at launch"
 msgstr "Gnote parinktys paleidžiant"
 
-#: ../src/gnote.cpp:770
+#: ../src/gnote.cpp:763
 msgid "Version %1%"
 msgstr "Versija %1%"
 
@@ -1173,11 +1168,11 @@ msgstr "Nauja _užrašinė..."
 msgid "%1% Notebook Template"
 msgstr "%1% užrašinės šablonas"
 
-#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:528
+#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:524
 msgid "New Note"
 msgstr "Naujas raštelis"
 
-#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:121
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
 msgid "All Notes"
 msgstr "Visi rašteliai"
 
@@ -1242,10 +1237,6 @@ msgid "Error saving note data."
 msgstr "Klaida įrašant raštelio duomenis."
 
 #: ../src/note.cpp:118
-#| msgid ""
-#| "An error occurred while saving your notes. Please check that you have "
-#| "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-#| "Error details can be found in ~/.gnote.log."
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1257,11 +1248,11 @@ msgstr ""
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:103 ../src/preferencesdialog.cpp:336
+#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:336
 msgid "New Note Template"
 msgstr "Naujas raštelio šablonas"
 
-#: ../src/notemanager.cpp:240
+#: ../src/notemanager.cpp:238
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1301,7 +1292,7 @@ msgstr ""
 "Gnote</link:internal>, jis automatiškai pabraukiamas? Norėdami atverti "
 "raštelį, spustelėkite nuorodą.</note-content>"
 
-#: ../src/notemanager.cpp:259
+#: ../src/notemanager.cpp:257
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1331,15 +1322,15 @@ msgstr ""
 "automatiškai bus sukurta nuoroda į jį.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:274 ../src/notemanager.cpp:327
+#: ../src/notemanager.cpp:272 ../src/notemanager.cpp:323
 msgid "Start Here"
 msgstr "Pradėti čia"
 
-#: ../src/notemanager.cpp:280
+#: ../src/notemanager.cpp:278
 msgid "Using Links in Gnote"
 msgstr "Nuorodų naudojimas Gnote"
 
-#: ../src/notemanager.cpp:639
+#: ../src/notemanager.cpp:635
 msgid "Describe your new note here."
 msgstr "Čia aprašykite naują raštelį"
 
@@ -1803,16 +1794,16 @@ msgstr "Autorius:"
 msgid "Copyright:"
 msgstr "Autorinės teisės:"
 
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:376
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:377
 #: ../src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "Rašteliai"
 
-#: ../src/recentchanges.cpp:129
+#: ../src/recentchanges.cpp:130
 msgid "New"
 msgstr "Naujas"
 
-#: ../src/recentchanges.cpp:464
+#: ../src/recentchanges.cpp:465
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -1823,6 +1814,15 @@ msgstr "_Atverti"
 #: ../src/searchnoteswidget.cpp:134
 msgid "Open In New _Window"
 msgstr "Atverti naujame _lange"
+
+#: ../src/searchnoteswidget.cpp:138
+msgid "_Delete"
+msgstr "Iš_trinti"
+
+#: ../src/searchnoteswidget.cpp:141
+#| msgid "_New Notebook"
+msgid "_Delete Notebook"
+msgstr "Iš_trinti užrašinę"
 
 #: ../src/searchnoteswidget.cpp:678
 msgid "Note"
@@ -2291,4 +2291,3 @@ msgstr "_Kopijuoti nuorodos adresą"
 #: ../src/watchers.cpp:587
 msgid "_Open Link"
 msgstr "_Atverti nuorodą"
-
