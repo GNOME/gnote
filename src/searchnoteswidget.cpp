@@ -135,10 +135,10 @@ void SearchNotesWidget::make_actions()
   m_open_note_new_window_action->signal_activate()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note_new_window));
 
-  m_delete_note_action = Gtk::Action::create("DeleteNoteAction", ("_Delete"));
+  m_delete_note_action = Gtk::Action::create("DeleteNoteAction", _("_Delete"));
   m_delete_note_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::delete_selected_notes));
 
-  m_delete_notebook_action = Gtk::Action::create("DeleteNotebookAction", ("_Delete Notebook"));
+  m_delete_notebook_action = Gtk::Action::create("DeleteNotebookAction", _("_Delete Notebook"));
   m_delete_notebook_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_delete_notebook));
 }
 
