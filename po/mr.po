@@ -4,14 +4,14 @@
 # This file is distributed under the same license as the gnote package.
 #
 # Sandeep Shedmake <sshedmak@redhat.com>, 2009.
-# Sandeep Shedmake <sshedmak@redhat.com>, 2010, 2012.
+# Sandeep Shedmake <sshedmak@redhat.com>, 2010, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: mr\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-10-28 20:30+0000\n"
-"PO-Revision-Date: 2012-10-31 10:27+0530\n"
+"POT-Creation-Date: 2013-03-17 16:03+0000\n"
+"PO-Revision-Date: 2013-03-20 10:03+0530\n"
 "Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
 "Language-Team: Marathi <maajhe-sanganak@freelists.org>\n"
 "Language: mr\n"
@@ -32,6 +32,10 @@ msgstr "टिप घ्या, विचार जुळवा, व संग�
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "टिप-लेखनकर्ता"
+
+#: ../data/gnote.desktop.in.in.h:4
+msgid "note;idea;link;organize;"
+msgstr "टिप;आइडिया;लिंक;ऑर्गनाइज;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -165,73 +169,60 @@ msgstr ""
 "विभाजीत यादी."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:21
-msgid "Enable startup notes"
-msgstr "प्रारंभ टिप कार्यान्वीत करा"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:22
-msgid ""
-"If enabled, all notes that were open when Gnote quit will automatically be "
-"reopened at startup."
-msgstr ""
-"कार्यान्वीत केल्यास, Gnote पासून बाहेर पडतेवेळी उघडे असलेल्या सर्व टिपण्णी "
-"स्वयंरित्या "
-"स्टार्टअपवेळी पुन्हा उघडले जातिल."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "Is main window maximized"
 msgstr "मुख्य पटल मोठे केले?"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:24
+#: ../data/org.gnome.gnote.gschema.xml.in.h:22
 msgid "If true, Gnote window will be maximized."
 msgstr "खरे असल्यास, Gnote पटल मोठे केले जाईल."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:25
+#: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "Saved height of Search window"
 msgstr "शोध खिडकीची ऊंची साठवली"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:26
+#: ../data/org.gnome.gnote.gschema.xml.in.h:24
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr "Gnote पासून बाहेर पडतेवेळी; शोध चौकटची पिक्सेल अंतर्गत ऊंची शोधतो."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:27
+#: ../data/org.gnome.gnote.gschema.xml.in.h:25
 msgid "Saved width of Search window"
 msgstr "शोध खिडकीची रूंदी साठवली"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:28
+#: ../data/org.gnome.gnote.gschema.xml.in.h:26
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr "Gnote पासून बाहेर पडतेवेळी; शोध चौकटची पिक्सेल अंतर्गत रूंदी शोधतो."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:29
+#: ../data/org.gnome.gnote.gschema.xml.in.h:27
 msgid "Saved horizontal position of Search window"
 msgstr "शोध खिडकीचे आडवे स्थान साठविले"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:30
+#: ../data/org.gnome.gnote.gschema.xml.in.h:28
 msgid "Determines X coordinate of Search window; stored on Gnote exit."
 msgstr "Gnote पासून बाहेर पडतेवेळी; शोध चौकटचे X निबंधक शोधतो."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:31
+#: ../data/org.gnome.gnote.gschema.xml.in.h:29
 msgid "Saved vertical position of Search window"
 msgstr "शोध खिडकीचे उभे स्थान साठविले"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:32
+#: ../data/org.gnome.gnote.gschema.xml.in.h:30
 msgid "Determines Y coordinate of Search window; stored on Gnote exit."
 msgstr "Gnote पासून बाहेर पडतेवेळी; शोध चौकटचे Y निबंधक शोधतो."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:33
+#: ../data/org.gnome.gnote.gschema.xml.in.h:31
 msgid "Saved splitter position of Search window splitter."
 msgstr "शोध पटल स्पिल्टरचे साठवलेले स्प्लिटर स्थिती."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+#: ../data/org.gnome.gnote.gschema.xml.in.h:32
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
 "जिनोटपासून बाहेर पडतेवेळी; पिक्सेल्स् मध्ये सर्च विंडो स्प्लिटरची ठिकाण ओळखतो."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:35
+#: ../data/org.gnome.gnote.gschema.xml.in.h:33
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "FUSE माऊंटींग वेळसमाप्ती (ms)"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:36
+#: ../data/org.gnome.gnote.gschema.xml.in.h:34
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -240,46 +231,46 @@ msgstr ""
 "करण्याजोगी "
 "वेळ (मिलीसेकंद मध्ये)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:37
+#: ../data/org.gnome.gnote.gschema.xml.in.h:35
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "SSHFS दूरस्थ समजुळवणी फोल्डर"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:38
+#: ../data/org.gnome.gnote.gschema.xml.in.h:36
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "Gnote समजुळणी डिरेक्ट्री (वैक्लपिक) करीता SSH सर्वर वरील मार्ग."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:39
+#: ../data/org.gnome.gnote.gschema.xml.in.h:37
 msgid "SSHFS Synchronization Server URL"
 msgstr "SSHFS समजुळवणी सर्वर URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:40
+#: ../data/org.gnome.gnote.gschema.xml.in.h:38
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "Gnote समजुळणी डिरेक्ट्री करीता SSH सर्वरचे URL."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:41
+#: ../data/org.gnome.gnote.gschema.xml.in.h:39
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "SSHFS दूरस्थ समजुळवणी वापरकर्ता नाव"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:42
+#: ../data/org.gnome.gnote.gschema.xml.in.h:40
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "SSH द्वारे समजुळवणी सर्वरशी जुळवणी स्थापीत करतेवेळी वापरण्याजोगी वापरकर्ता "
 "नाव."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:43
+#: ../data/org.gnome.gnote.gschema.xml.in.h:41
 msgid "SSHFS Synchronization Server Port"
 msgstr "SSHFS समजुळवणी सर्वर पोर्ट"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:44
+#: ../data/org.gnome.gnote.gschema.xml.in.h:42
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr ""
 "SSH द्वारे समजुळवणी सर्वरशी जुळवणी स्थापीत करतेवेळी वापरण्याजोगी पोर्ट."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:45
+#: ../data/org.gnome.gnote.gschema.xml.in.h:43
 msgid "Link Updating Behavior on Note Rename"
 msgstr "टिपण्णी पुनःनामांकनकरीता दुवा सुधारीत करण्याची सोय"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:46
+#: ../data/org.gnome.gnote.gschema.xml.in.h:44
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -301,19 +292,19 @@ msgstr ""
 "टिपण्णीशी "
 "जुळवणी करणे शक्य होईल."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:47
+#: ../data/org.gnome.gnote.gschema.xml.in.h:45
 msgid "Enable closing notes with escape"
 msgstr "ऐस्केपसह टिपण्णी बंद करणे कार्यान्वीत करा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:48
+#: ../data/org.gnome.gnote.gschema.xml.in.h:46
 msgid "If enabled, an opened note can be closed by hitting the escape key."
 msgstr "कार्यान्वीत असल्यास, एस्केप कळ दाबल्यास उघडलेली टिप बंद केली जाऊ शकते."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:49
+#: ../data/org.gnome.gnote.gschema.xml.in.h:47
 msgid "Use status icon, when started as an application"
 msgstr "स्थिती चिन्हाचा वापर करा, ॲप्लिकेशन म्हणून सुरू केल्यावर"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:50
+#: ../data/org.gnome.gnote.gschema.xml.in.h:48
 msgid ""
 "Has affect only when started as an application. When set to TRUE, shows a "
 "status icon. If set to FALSE, Search All Notes window is used as main "
@@ -325,11 +316,11 @@ msgstr ""
 "ॲप्लिकेशन पटल "
 "म्हणून केला जातो, ज्यास बंद केल्यास ॲप्लिकेशनपासून बाहेर पडते."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:51
+#: ../data/org.gnome.gnote.gschema.xml.in.h:49
 msgid "Show applet menu"
 msgstr "ऍपलेट मेन्यु दर्शवा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:52
+#: ../data/org.gnome.gnote.gschema.xml.in.h:50
 msgid ""
 "The global keybinding for showing the Gnote applet's menu. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -348,11 +339,11 @@ msgstr ""
 "कुठलिही "
 "किबाईन्डींग लागू केली जाणार नाही."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:53
+#: ../data/org.gnome.gnote.gschema.xml.in.h:51
 msgid "Open Start Here"
 msgstr "येथून सुरू करा उघडा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:54
+#: ../data/org.gnome.gnote.gschema.xml.in.h:52
 msgid ""
 "The global keybinding for opening the \"Start Here\" note. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -370,11 +361,11 @@ msgstr ""
 "केल्यास, या "
 "कृती करीता कळबांधणी राहणार नाही."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:55
+#: ../data/org.gnome.gnote.gschema.xml.in.h:53
 msgid "Create a new Note"
 msgstr "नवीन टिप बनवा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+#: ../data/org.gnome.gnote.gschema.xml.in.h:54
 msgid ""
 "The global keybinding for creating and displaying a new Note. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -392,11 +383,11 @@ msgstr ""
 "केल्यास, या "
 "कृती करीता कळबांधणी राहणार नाही."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
+#: ../data/org.gnome.gnote.gschema.xml.in.h:55
 msgid "Open Search Dialog"
 msgstr "शोध संवाद उघडा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+#: ../data/org.gnome.gnote.gschema.xml.in.h:56
 msgid ""
 "The global keybinding for opening the Note Search dialog. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -414,11 +405,11 @@ msgstr ""
 "करीता "
 "कळबांधणी राहणार नाही."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Open Recent Changes"
 msgstr "अलिकडील बदलाव उघडा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid ""
 "The global keybinding for opening the Recent Changes dialog. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -435,22 +426,22 @@ msgstr ""
 "केल्यास, या "
 "कृती करीता कळबांधणी राहणार नाही."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "HTML Export Last Directory"
 msgstr "शेवटची संचयीका HTML एक्सपोर्ट करा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "HTML प्लगईन करीता एक्सपोर्ट करतेवेळी टिपण्णी एक्सपोर्ट केल्याची शेवटची "
 "संचयीका."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid "HTML Export Linked Notes"
 msgstr "जुवलेल्या टिपण्णी HTML एक्सपोर्ट करा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -458,11 +449,11 @@ msgstr ""
 "HTML प्लगईन करीता एक्सपोर्ट करतेवेळी 'लिंक टिपण्णी एक्सपोर्ट' चौरस करीता "
 "शेवटची संयोजना."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid "HTML Export All Linked Notes"
 msgstr "सर्व जुवलेल्या टिप HTML एक्सपोर्ट करा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -476,11 +467,11 @@ msgstr ""
 "टिपण्णी (पुन्हा पुन्हा आढळते) HTML करीता एक्सपोर्ट करतेवेळी समाविष्ट केले "
 "पाहिजे का."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid "Synchronization Client ID"
 msgstr "समजुळवणी क्लाऐंट ID"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
@@ -488,32 +479,32 @@ msgstr ""
 "समजुळवणी सर्वरशी संवाद साधतेवेळी या Gnote क्लाऐंट करीता, वापरण्याजोगी एकमेव "
 "ओळखकर्ता."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid "Synchronization Local Server Path"
 msgstr "समजुळवणी स्थानीक सर्वर मार्ग"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
 msgstr ""
 "फाइलप्रणाली समजुळवणी सेवा जोडणी वापरतेवेळी समजुळवणी सर्वर करीताचे मार्ग."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid "Selected Synchronization Service Addin"
 msgstr "निवडलेले समजुळवणी सेवा जोडणी"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr "सद्याच्या संयोजीत टिप समजुळवणी सेवा जोडणी करीता एकमेव ओळखकर्ता."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "टिप समजुळवणी मतभेद संचयीत वागणूक"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -527,11 +518,11 @@ msgstr ""
 "आढळल्यास, "
 "वापरकर्त्याला विचारा, ज्यामुळे प्रकारनुरूप आधारावर स्थिती हाताळली जाईल."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid "Automatic Background Synchronization Timeout"
 msgstr "स्वयं पार्श्वभूमी सिंक्रोनाइजेशन वेळसमाप्ति"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -544,11 +535,11 @@ msgstr ""
 "कमी स्वीकार्य "
 "पॉजिटिव्ह मूल्य 5 आहे. मूल्य मिनिटात आहे."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid "Accept SSL Certificates"
 msgstr "SSL प्रमाणपत्र स्वीकारा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -557,27 +548,27 @@ msgstr ""
 "\"-ac\" "
 "वापरा."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid "Share URL"
 msgstr "शेअर URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "WebDAV शेअर URL जेथे टिपचे ताळमेळ होते."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid "Share username"
 msgstr "वापरकर्तानाव शेअर करा"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Username to access WebDAV share."
 msgstr "WebDAV शेअरकरीता प्रवेश करण्यासाठी वापरकर्तानाव."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Timestamp format"
 msgstr "टाइस्टॅम्प स्वरूप"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -585,69 +576,69 @@ msgstr ""
 "टाइमस्टम्प करीता वापरण्याजोगी दिनांक स्वरूप. ते strftime(3) चे स्वरूप "
 "स्विकारते."
 
-#: ../src/actionmanager.cpp:177 ../src/actionmanager.cpp:268
-#: ../src/tray.cpp:479
+#: ../src/actionmanager.cpp:169 ../src/actionmanager.cpp:262
+#: ../src/tray.cpp:478
 msgid "_Quit"
 msgstr "बाहेर पडा (_Q)"
 
-#: ../src/actionmanager.cpp:177
+#: ../src/actionmanager.cpp:169
 msgid "Quit Gnote"
 msgstr "Gnote पासून बाहेर पडा"
 
-#: ../src/actionmanager.cpp:182 ../src/actionmanager.cpp:265
-#: ../src/tray.cpp:462
+#: ../src/actionmanager.cpp:174 ../src/actionmanager.cpp:259
+#: ../src/tray.cpp:461
 msgid "_Preferences"
 msgstr "पसंती (_P)"
 
-#: ../src/actionmanager.cpp:182 ../src/preferencesdialog.cpp:102
+#: ../src/actionmanager.cpp:174 ../src/preferencesdialog.cpp:104
 msgid "Gnote Preferences"
 msgstr "Gnote पसंती"
 
-#: ../src/actionmanager.cpp:186
+#: ../src/actionmanager.cpp:178
 msgid "_Contents"
 msgstr "विषयसूची (_C)"
 
-#: ../src/actionmanager.cpp:186
+#: ../src/actionmanager.cpp:178
 msgid "Gnote Help"
 msgstr "Gnote मदत"
 
-#: ../src/actionmanager.cpp:191 ../src/actionmanager.cpp:267
+#: ../src/actionmanager.cpp:183 ../src/actionmanager.cpp:261
 msgid "_About"
 msgstr "विषयी (_A)"
 
-#: ../src/actionmanager.cpp:191
+#: ../src/actionmanager.cpp:183
 msgid "About Gnote"
 msgstr "Gnote विषयी"
 
-#: ../src/actionmanager.cpp:195
+#: ../src/actionmanager.cpp:187
 msgid "TrayIcon"
 msgstr "ट्रे चिन्ह"
 
-#: ../src/actionmanager.cpp:200
+#: ../src/actionmanager.cpp:192
 msgid "Create _New Note"
 msgstr "नवीन टिप बनवा (_N)"
 
-#: ../src/actionmanager.cpp:200
+#: ../src/actionmanager.cpp:192
 msgid "Create a new note"
 msgstr "नवीन टिप बनवा"
 
-#: ../src/actionmanager.cpp:205
+#: ../src/actionmanager.cpp:197
 msgid "_Search All Notes"
 msgstr "सर्व टिप शोधा (_S)"
 
-#: ../src/actionmanager.cpp:205
+#: ../src/actionmanager.cpp:197
 msgid "Open the Search All Notes window"
 msgstr "सर्व टिप चौकट शोधा उगडा"
 
-#: ../src/actionmanager.cpp:263 ../src/searchnoteswidget.cpp:1487
+#: ../src/actionmanager.cpp:257 ../src/searchnoteswidget.cpp:1325
 msgid "_New Note"
 msgstr "नवीन टीप(_N)"
 
-#: ../src/actionmanager.cpp:264
+#: ../src/actionmanager.cpp:258
 msgid "New _Window"
 msgstr "नवीन पटल (_W)"
 
-#: ../src/actionmanager.cpp:266
+#: ../src/actionmanager.cpp:260
 msgid "Help _Contents"
 msgstr "मदत अंतर्भुत माहिती (_C)"
 
@@ -849,49 +840,49 @@ msgstr "निवडलेले स्वरूप निवडा (_S)"
 msgid "_Use Custom Format"
 msgstr "मनपसंत स्वरूप वापरा (_U)"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:47
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:46
 msgid "Note Directory Watcher"
 msgstr "नोट डिरेक्ट्रि वॉचर"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:52
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:51
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr "टिपकरीता बदलांसाठी जिनोट नोट डिरेक्ट्रि पहा."
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:56
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "औरिमास सेर्निअस व टॉमबॉय मूळ लेखक"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:44
 msgid "Note of the Day"
 msgstr "आजची टिपण्णी"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:48
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr "रोजचे विचार लिहण्यासाठी स्वयंपणे \"Today\" टिपण्णी निर्माण करतो"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:53
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "देबार्शी रे व टॉमबॉय प्रोजेक्ट"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:32
+#: ../src/addins/noteoftheday/noteoftheday.cpp:33
 msgid "Today: Template"
 msgstr "आज: साचा"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:34
+#: ../src/addins/noteoftheday/noteoftheday.cpp:35
 msgid "Today: "
 msgstr "आज: "
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:158
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
 msgid "Tasks"
 msgstr "कार्ये"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:159
+#: ../src/addins/noteoftheday/noteoftheday.cpp:160
 msgid "Appointments"
 msgstr "भेटी"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:165
+#: ../src/addins/noteoftheday/noteoftheday.cpp:166
 msgid "%A, %B %d %Y"
 msgstr "%A, %B %d %Y"
 
@@ -1062,124 +1053,129 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:335
+#: ../src/gnote.cpp:350
 msgid "and Tomboy original authors."
 msgstr "व Tomboy चे मूळ लेखक."
 
-#: ../src/gnote.cpp:341
+#: ../src/gnote.cpp:356
 msgid "translator-credits"
 msgstr ""
 "संदिप शेडमाके <sandeep.shedmake@gmail.com>, 2007, 2008, 2009; संदिप शेडमाके "
 "<sshedmak@redhat.com>, 2010."
 
-#: ../src/gnote.cpp:350
+#: ../src/gnote.cpp:365
+#| msgid ""
+#| "Copyright © 2010-2012 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2012 Aurimas Cernius\n"
+"Copyright © 2010-2013 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2012 Aurimas Cernius\n"
+"Copyright © 2010-2013 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 
-#: ../src/gnote.cpp:354
+#: ../src/gnote.cpp:369
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "डेस्कटॉप टिप-निर्माती वापरण्यासाठीचे सोपे व सुलभ अनुप्रयोग."
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:380
 msgid "Homepage"
 msgstr "मुख्यपान"
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:559
 msgid "Run Gnote in background."
 msgstr "जिनोटला पार्श्वभूमीत चालवा."
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:560
 msgid "Specify the path of the directory containing the notes."
 msgstr "टिपण्णी समाविष्टीत असणाऱ्या डिरेक्ट्रीचे मार्ग निश्चित करा."
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:560
 msgid "path"
 msgstr "मार्ग"
 
-#: ../src/gnote.cpp:569
+#: ../src/gnote.cpp:561
 msgid "Open the search all notes window with the search text."
 msgstr "शोध पाठ्य सह सर्व टिपण्णी शोधा चौकट उघडा."
 
-#: ../src/gnote.cpp:569 ../src/gnote.cpp:574
+#: ../src/gnote.cpp:561 ../src/gnote.cpp:566
 msgid "text"
 msgstr "मजकूर"
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:562
 msgid "Print version information."
 msgstr "आवृत्तीची माहिती दाखवा."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:563
 msgid "Create and display a new note, with a optional title."
 msgstr "वैकल्पिक शिर्षकसह, नवीन टिपण्णी निर्माण करा व दाखवा."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:563
 msgid "title"
 msgstr "शिर्षक"
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:564
 msgid "Display the existing note matching title."
 msgstr "सध्याची टिपण्णी जुळवणी शिर्षक दाखवा."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:564
 msgid "title/url"
 msgstr "शिर्षक/url"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:565
 msgid "Display the 'Start Here' note."
 msgstr "'येथून सुरू करा' टिपण्णी दाखवा."
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:566
 msgid "Search and highlight text in the opened note."
 msgstr "उघडलेल्या टिपण्णीत मजकूर शोधा व ठळक करा."
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:570
 msgid "A note taking application"
 msgstr "टिपण्णी नोंदणीकृत करीता ऍप्लिकेशन"
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:570
 msgid "Gnote options at launch"
 msgstr "सुरू करतेवेळी Gnote पर्याय"
 
-#: ../src/gnote.cpp:771
+#: ../src/gnote.cpp:763
 msgid "Version %1%"
 msgstr "आवृत्ती %1%"
 
-#: ../src/notebooks/createnotebookdialog.cpp:38
+#: ../src/notebooks/createnotebookdialog.cpp:40
 msgid "Create a new notebook"
 msgstr "नवीन पुस्तिका बनवा"
 
-#: ../src/notebooks/createnotebookdialog.cpp:39
+#: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Type the name of the notebook you'd like to create."
 msgstr "तुम्हाला तयार करायचे त्या पुस्तिकाचे नाव टाईप करा."
 
-#: ../src/notebooks/createnotebookdialog.cpp:47
+#: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
 msgstr "पुस्तिकाचे नाव (_o):"
 
-#: ../src/notebooks/createnotebookdialog.cpp:60
+#: ../src/notebooks/createnotebookdialog.cpp:58
 msgid "Name already taken"
 msgstr "नाव आधिपासूनच वापरले आहे"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:73
+#: ../src/notebooks/createnotebookdialog.cpp:71
 msgid "C_reate"
 msgstr "बनवा (_r)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:77
-#: ../src/searchnoteswidget.cpp:368
+#: ../src/notebooks/notebookapplicationaddin.cpp:75
+#: ../src/searchnoteswidget.cpp:219
 msgid "Notebooks"
 msgstr "पुस्तिका"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:78
+#: ../src/notebooks/notebookapplicationaddin.cpp:76
 msgid "Create a new note in a notebook"
 msgstr "पुस्तिका मध्ये नवीन टिप बनवा"
 
@@ -1196,27 +1192,37 @@ msgstr "नवीन पुस्तिका (_b)..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:87
+#: ../src/notebooks/notebook.cpp:90
 msgid "%1% Notebook Template"
 msgstr "%1% पुस्तिका प्रारूप"
 
-#: ../src/notebooks/notebook.cpp:167 ../src/notemanager.cpp:555
+#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:524
 msgid "New Note"
 msgstr "नवीन टिप"
 
-#: ../src/notebooks/notebook.cpp:207
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
 msgid "All Notes"
 msgstr "सर्व टिपा"
 
-#: ../src/notebooks/notebook.cpp:219
+#: ../src/notebooks/notebook.cpp:246
 msgid "Unfiled Notes"
 msgstr "एकत्रीत टिप"
 
-#: ../src/notebooks/notebookmanager.cpp:337
+#: ../src/notebooks/notebook.cpp:275
+#| msgid "Unfiled Notes"
+msgid "Pinned Notes"
+msgstr "पिन्नड् नोट्स"
+
+#: ../src/notebooks/notebook.cpp:303
+#| msgid "All Notes"
+msgid "Active Notes"
+msgstr "सक्रीय टिपा"
+
+#: ../src/notebooks/notebookmanager.cpp:352
 msgid "Really delete this notebook?"
 msgstr "खरच ही पुस्तिका काढूण टाकायचे?"
 
-#: ../src/notebooks/notebookmanager.cpp:338
+#: ../src/notebooks/notebookmanager.cpp:353
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1229,19 +1235,19 @@ msgstr ""
 msgid "No notebook"
 msgstr "पुस्तिका नाही"
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:40
 msgid "New \"%1%\" Note"
 msgstr "नवीन \"%1%\" टिपण्णी"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:86
+#: ../src/notebooks/notebooknoteaddin.cpp:74
 msgid "Place this note into a notebook"
 msgstr "ही टिप पुस्तिका मध्ये समाविष्ट करा"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:196
+#: ../src/notebooks/notebooknoteaddin.cpp:184
 msgid "Notebook"
 msgstr "पुस्तिका"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:222
+#: ../src/notebooks/notebooknoteaddin.cpp:210
 msgid "_New notebook..."
 msgstr "नवीन पुस्तिका (_N)..."
 
@@ -1261,24 +1267,26 @@ msgid "Error saving note data."
 msgstr "टिपण्णी माहिती संचयनवेळी त्रुटी आढळली."
 
 #: ../src/note.cpp:118
+#| msgid ""
+#| "An error occurred while saving your notes. Please check that you have "
+#| "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
+#| "Error details can be found in ~/.gnote.log."
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
-"sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-"Error details can be found in ~/.gnote.log."
+"sufficient disk space, and that you have appropriate rights on ~/.local/"
+"share/gnote. Error details can be found in ~/.gnote.log."
 msgstr ""
-"तुमच्या टिपण्णी साठवतेवेळी त्रुटी आढळली. कृपया तुमच्याकडे अतिरीक्त डिस्क जागा "
-"आहे, व "
-"तुमच्याकडे ~/.gnote करीता योग्य परवानगी आहे याची खात्री करा. ~/.gnote.log "
-"येथे त्रुटी "
-"तपशील आढळतील."
+"टिपण्णी साठवतेवेळी त्रुटी आढळली. कृपया अतिरीक्त डिस्क जागा आहे, व "
+"~/.local/share/gnote करीता योग्य परवानगी आहे याची खात्री करा. ~/.gnote.log "
+"येथे त्रुटी तपशील पहा."
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:112 ../src/preferencesdialog.cpp:334
+#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:336
 msgid "New Note Template"
 msgstr "नवीन टिपा प्रारूप"
 
-#: ../src/notemanager.cpp:249
+#: ../src/notemanager.cpp:238
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1321,7 +1329,7 @@ msgstr ""
 "क्लिक करा."
 "</note-content>"
 
-#: ../src/notemanager.cpp:268
+#: ../src/notemanager.cpp:257
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1353,51 +1361,51 @@ msgstr ""
 "करीता जुळवले जाईल .</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:283 ../src/notemanager.cpp:336
+#: ../src/notemanager.cpp:272 ../src/notemanager.cpp:323
 msgid "Start Here"
 msgstr "येथून सुरू करा"
 
-#: ../src/notemanager.cpp:289
+#: ../src/notemanager.cpp:278
 msgid "Using Links in Gnote"
 msgstr "Gnote अंतर्गत दुवा वापरत आहे"
 
-#: ../src/notemanager.cpp:666
+#: ../src/notemanager.cpp:635
 msgid "Describe your new note here."
 msgstr "तुमच्या नवीन टिपचे वर्णन करा."
 
-#: ../src/noterenamedialog.cpp:123
+#: ../src/noterenamedialog.cpp:122
 msgid "Rename Note Links?"
 msgstr "टिपण्णी दुवांचे पुनःनामांकन करा?"
 
-#: ../src/noterenamedialog.cpp:127
+#: ../src/noterenamedialog.cpp:126
 msgid "_Don't Rename Links"
 msgstr "दुवांचे पुनःनामांकन करू नका (_D)"
 
-#: ../src/noterenamedialog.cpp:128
+#: ../src/noterenamedialog.cpp:127
 msgid "_Rename Links"
 msgstr "दुवांचे पुनःनामांकन करा (_R)"
 
-#: ../src/noterenamedialog.cpp:129
+#: ../src/noterenamedialog.cpp:128
 msgid "Select All"
 msgstr "सर्व नीवडा"
 
-#: ../src/noterenamedialog.cpp:130
+#: ../src/noterenamedialog.cpp:129
 msgid "Select None"
 msgstr "काहिच नीवडू नका"
 
-#: ../src/noterenamedialog.cpp:131
+#: ../src/noterenamedialog.cpp:130
 msgid "Always show this _window"
 msgstr "नेहमी हे पटल दाखवा (_w)"
 
-#: ../src/noterenamedialog.cpp:132
+#: ../src/noterenamedialog.cpp:131
 msgid "Alwa_ys rename links"
 msgstr "नेहमी दुवांचे पुनःनामांकन करा (_y)"
 
-#: ../src/noterenamedialog.cpp:134
+#: ../src/noterenamedialog.cpp:133
 msgid "Never rename _links"
 msgstr "दुवांचे पुनःनामांकन कधीच करू नका (_l)"
 
-#: ../src/noterenamedialog.cpp:153
+#: ../src/noterenamedialog.cpp:152
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1409,63 +1417,68 @@ msgstr ""
 "\n"
 "दुवांचे पुनःनामांकन करत नसल्यास, ते कुणाशीही जुळले जाणार नाही."
 
-#: ../src/noterenamedialog.cpp:186
+#: ../src/noterenamedialog.cpp:185
 msgid "Rename Links"
 msgstr "दुवांचे पुनःनामांकन करा"
 
-#: ../src/noterenamedialog.cpp:201 ../src/synchronization/syncdialog.cpp:369
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:322
 msgid "Note Title"
 msgstr "शीर्षकाची टिपण्णी करा"
 
-#: ../src/noterenamedialog.cpp:237
+#: ../src/noterenamedialog.cpp:236
 msgid "Ad_vanced"
 msgstr "प्रगत (_v)"
 
-#: ../src/notewindow.cpp:79
+#: ../src/notewindow.cpp:91
 msgid "Find in This Note"
 msgstr "या टिप मध्ये शोधा"
 
-#: ../src/notewindow.cpp:314
+#: ../src/notewindow.cpp:326
 msgid "_Link to New Note"
 msgstr "नवीन टिप करीता जुळवणी करा (_L)"
 
-#: ../src/notewindow.cpp:322
+#: ../src/notewindow.cpp:334
 msgid "Te_xt"
 msgstr "पाठ्य (_x)"
 
-#: ../src/notewindow.cpp:330
+#: ../src/notewindow.cpp:342
 msgid "_Find in This Note"
 msgstr "या टिप मध्ये शोधा (_F)"
 
-#: ../src/notewindow.cpp:356
+#: ../src/notewindow.cpp:374
+#| msgid "Print"
+msgid "Pin"
+msgstr "पिन"
+
+#: ../src/notewindow.cpp:382
 msgid "Link"
 msgstr "लिंक"
 
-#: ../src/notewindow.cpp:362
+#: ../src/notewindow.cpp:388
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "नवीन टिप करीता निवडलेले पाठ्य जुळवा (Ctrl-L)"
 
-#: ../src/notewindow.cpp:368
+#: ../src/notewindow.cpp:394
 msgid "_Text"
 msgstr "पाठ्य (_T)"
 
-#: ../src/notewindow.cpp:374
+#: ../src/notewindow.cpp:400
 msgid "Set properties of text"
 msgstr "पाठ्यचे गुणधर्म निश्चित करा"
 
-#: ../src/notewindow.cpp:378
+#: ../src/notewindow.cpp:404
 msgid "T_ools"
 msgstr "उपकरणे(_o)"
 
-#: ../src/notewindow.cpp:383
+#: ../src/notewindow.cpp:409
 msgid "Use tools on this note"
 msgstr "या टिप वरील साधन वापरा"
 
-#: ../src/notewindow.cpp:393
+#: ../src/notewindow.cpp:419
 msgid "Delete this note"
 msgstr "ही टिप काढूण टाका"
 
-#: ../src/notewindow.cpp:423
+#: ../src/notewindow.cpp:449
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1474,125 +1487,121 @@ msgstr ""
 "व टिप मेन्यु "
 "किंवा शोध पटलात आढळणार नाही."
 
-#: ../src/notewindow.cpp:426
+#: ../src/notewindow.cpp:452
 msgid "Convert to regular note"
 msgstr "रेग्युलर टिपमध्ये रूपांतरीत करा"
 
-#: ../src/notewindow.cpp:429
+#: ../src/notewindow.cpp:455
 msgid "Save Si_ze"
 msgstr "आकार साठवा (_z)"
 
-#: ../src/notewindow.cpp:433
+#: ../src/notewindow.cpp:459
 msgid "Save Se_lection"
 msgstr "नीवड साठवा (_l)"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:463
 msgid "Save _Title"
 msgstr "शीर्षक साठवा (_T)"
 
-#: ../src/notewindow.cpp:525
+#: ../src/notewindow.cpp:551
 msgid "_Find..."
 msgstr "शोधा (_F)..."
 
-#: ../src/notewindow.cpp:533
+#: ../src/notewindow.cpp:559
 msgid "Find _Next"
 msgstr "पुढील शोधा (_N)"
 
-#: ../src/notewindow.cpp:543
+#: ../src/notewindow.cpp:569
 msgid "Find _Previous"
 msgstr "मागील शोधा (_P)"
 
-#: ../src/notewindow.cpp:613
+#: ../src/notewindow.cpp:639
 msgid "Cannot create note"
 msgstr "टिपची बनवू शकत नाही"
 
-#: ../src/notewindow.cpp:648
+#: ../src/notewindow.cpp:692
 msgid "_Next"
 msgstr "पुढे (_N)"
 
-#: ../src/notewindow.cpp:649
+#: ../src/notewindow.cpp:693
 msgid "_Previous"
 msgstr "मागील (_P)"
 
-#: ../src/notewindow.cpp:662
-msgid "_Find:"
-msgstr "शोधा (_F):"
-
-#: ../src/notewindow.cpp:1103
+#: ../src/notewindow.cpp:1142
 msgid "<b>_Bold</b>"
 msgstr "<b>ठळक (_B)</b>"
 
-#: ../src/notewindow.cpp:1104
+#: ../src/notewindow.cpp:1143
 msgid "<i>_Italic</i>"
 msgstr "<i>तिरपे (_I)</i>"
 
-#: ../src/notewindow.cpp:1105
+#: ../src/notewindow.cpp:1144
 msgid "<s>_Strikeout</s>"
 msgstr "<s>खोडा (_S)</s>"
 
-#: ../src/notewindow.cpp:1107
+#: ../src/notewindow.cpp:1146
 msgid "_Highlight"
 msgstr "ठळक करा (_H)"
 
-#: ../src/notewindow.cpp:1109
+#: ../src/notewindow.cpp:1148
 msgid "_Normal"
 msgstr "सामान्य (_N)"
 
-#: ../src/notewindow.cpp:1111
+#: ../src/notewindow.cpp:1150
 msgid "Hu_ge"
 msgstr "खूप मोठे (_g)"
 
-#: ../src/notewindow.cpp:1113
+#: ../src/notewindow.cpp:1152
 msgid "_Large"
 msgstr "मोठे (_L)"
 
-#: ../src/notewindow.cpp:1115
+#: ../src/notewindow.cpp:1154
 msgid "S_mall"
 msgstr "लहान (_m)"
 
-#: ../src/notewindow.cpp:1117
+#: ../src/notewindow.cpp:1156
 msgid "Bullets"
 msgstr "बूलेट्स्"
 
-#: ../src/notewindow.cpp:1120
+#: ../src/notewindow.cpp:1159
 msgid "Increase Font Size"
 msgstr "फाँटचे आकार वाढवा"
 
-#: ../src/notewindow.cpp:1121
+#: ../src/notewindow.cpp:1160
 msgid "Decrease Font Size"
 msgstr "फाँट आकार"
 
-#: ../src/notewindow.cpp:1163
+#: ../src/notewindow.cpp:1202
 msgid "Font Size"
 msgstr "फाँट आकार"
 
-#: ../src/preferencesdialog.cpp:120
+#: ../src/preferencesdialog.cpp:122
 msgid "General"
 msgstr "सर्वसाधारण"
 
-#: ../src/preferencesdialog.cpp:122
+#: ../src/preferencesdialog.cpp:124
 msgid "Hotkeys"
 msgstr "जलद कळ"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:147
+#: ../src/preferencesdialog.cpp:127 ../src/sharp/addinstreemodel.cpp:147
 msgid "Synchronization"
 msgstr "ताळमेळ"
 
-#: ../src/preferencesdialog.cpp:127
+#: ../src/preferencesdialog.cpp:129
 msgid "Add-ins"
 msgstr "जोडणी"
 
 #. Status icon
-#: ../src/preferencesdialog.cpp:239
+#: ../src/preferencesdialog.cpp:241
 msgid "Use Status _Icon"
 msgstr "स्थिती चिन्हाचा वापर करा (_I)"
 
-#: ../src/preferencesdialog.cpp:252
+#: ../src/preferencesdialog.cpp:254
 msgid "_Spell check while typing"
 msgstr "टाईप करतेवेळी शब्दलेखन करा (_S)"
 
-#: ../src/preferencesdialog.cpp:258
+#: ../src/preferencesdialog.cpp:260
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1602,11 +1611,11 @@ msgstr ""
 "जातील."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:269
+#: ../src/preferencesdialog.cpp:271
 msgid "Highlight _WikiWords"
 msgstr "WikiWords ठळक करा (_W)"
 
-#: ../src/preferencesdialog.cpp:275
+#: ../src/preferencesdialog.cpp:277
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -1616,31 +1625,31 @@ msgstr ""
 "क्लिक केल्यास त्या नावाचे शब्द बनविले जाईल."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:284
 msgid "Enable auto-_bulleted lists"
 msgstr "स्व- ठळक बींदू यादी कार्यान्वीत करा (_b)"
 
-#: ../src/preferencesdialog.cpp:291
+#: ../src/preferencesdialog.cpp:293
 msgid "Use custom _font"
 msgstr "मनपसंत फाँट वापरा (_f)"
 
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:310
 msgid "When renaming a linked note: "
 msgstr "लिंक्ड् टिपण्णी पुनःनामांकीत करतेवेळी: "
 
-#: ../src/preferencesdialog.cpp:313
+#: ../src/preferencesdialog.cpp:315
 msgid "Ask me what to do"
 msgstr "काय करायचे ते मला विचारा"
 
-#: ../src/preferencesdialog.cpp:314
+#: ../src/preferencesdialog.cpp:316
 msgid "Never rename links"
 msgstr "कधीच दुवांचे पुनःनामांकन करू नका"
 
-#: ../src/preferencesdialog.cpp:315
+#: ../src/preferencesdialog.cpp:317
 msgid "Always rename links"
 msgstr "नेहमी दुवांचे पुनःनामांकन करा"
 
-#: ../src/preferencesdialog.cpp:337
+#: ../src/preferencesdialog.cpp:339
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -1648,16 +1657,16 @@ msgstr ""
 "नवीन टिप बनवितेवेळी वापरण्याजोगी पाठ्य निर्देशीत करण्या करीता नवीन टिप "
 "प्रारूप वापरा."
 
-#: ../src/preferencesdialog.cpp:345
+#: ../src/preferencesdialog.cpp:347
 msgid "Open New Note Template"
 msgstr "नवीन टिप प्रारूप उघडा"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:407
+#: ../src/preferencesdialog.cpp:409
 msgid "Listen for _Hotkeys"
 msgstr "जलद कळ करीता ऐका (_H)"
 
-#: ../src/preferencesdialog.cpp:414
+#: ../src/preferencesdialog.cpp:416
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -1668,70 +1677,83 @@ msgstr ""
 "जलदकळ: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:434
+#: ../src/preferencesdialog.cpp:436
 msgid "Show notes _menu"
 msgstr "टिप मेन्यु दर्शवा (_m)"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:451
+#: ../src/preferencesdialog.cpp:453
 msgid "Open \"_Start Here\""
 msgstr "\"येथून सुरू करा\" उघडा (_S)"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:467
+#: ../src/preferencesdialog.cpp:469
 msgid "Create _new note"
 msgstr "नवीन टिप बनवा (_n)"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:483
+#: ../src/preferencesdialog.cpp:485
 msgid "Open \"Search _All Notes\""
 msgstr "\"सर्व टिपा शोधा (_A)\" उघडा"
 
-#: ../src/preferencesdialog.cpp:520
+#: ../src/preferencesdialog.cpp:522
 msgid "Ser_vice:"
 msgstr "सर्व्हिस (_v):"
 
-#: ../src/preferencesdialog.cpp:578 ../src/preferencesdialog.cpp:1135
+#: ../src/preferencesdialog.cpp:577 ../src/preferencesdialog.cpp:1181
 msgid "Not configurable"
 msgstr "संयोजनाजोगी नाही"
 
+#. Translators: This is and the next string go together.
+#. Together they look like "Automatically Sync in Background Every [_] Minutes",
+#. where "[_]" is a GtkSpinButton.
+#: ../src/preferencesdialog.cpp:604
+msgid "Automaticall_y Sync in Background Every"
+msgstr "पार्श्वभूमीत स्वयंरित्या समजुळणी करा (_y)"
+
+#. Translators: See above comment for details on
+#. this string.
+#: ../src/preferencesdialog.cpp:611
+msgid "Minutes"
+msgstr "मिनिटे"
+
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:598
+#: ../src/preferencesdialog.cpp:629
 msgid "_Advanced..."
 msgstr "प्रगत (_A)..."
 
-#: ../src/preferencesdialog.cpp:643
+#: ../src/preferencesdialog.cpp:674
 msgid "The following add-ins are installed"
 msgstr "खालील ऍड-ऑन्स् प्रतिष्ठापीत केले आहे"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:674
+#: ../src/preferencesdialog.cpp:705
 msgid "_Enable"
 msgstr "सुरू करा (_E)"
 
-#: ../src/preferencesdialog.cpp:680
+#: ../src/preferencesdialog.cpp:711
 msgid "_Disable"
 msgstr "बंद करा (_D)"
 
-#: ../src/preferencesdialog.cpp:813
+#: ../src/preferencesdialog.cpp:844
 msgid "Not Implemented"
 msgstr "लागू केले नाही"
 
-#: ../src/preferencesdialog.cpp:827
+#: ../src/preferencesdialog.cpp:858
 msgid "%1% Preferences"
 msgstr "%1% पसंती"
 
-#: ../src/preferencesdialog.cpp:968
+#: ../src/preferencesdialog.cpp:999
 msgid "Choose Note Font"
 msgstr "टिप फाँट निवडा"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1051
+#: ../src/preferencesdialog.cpp:1097
 msgid "Other Synchronization Options"
 msgstr "इतर सिंक्रोनाइजेशन पर्याय"
 
-#: ../src/preferencesdialog.cpp:1054
+#: ../src/preferencesdialog.cpp:1100
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -1739,23 +1761,23 @@ msgstr ""
 "स्थानीय टिप व संरचीत सिंक्रोनाइजेशन सर्व्हरवरील टिपमध्ये मतभेद आढळल्यास:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1058
+#: ../src/preferencesdialog.cpp:1104
 msgid "Always ask me what to do."
 msgstr "मला काय करायचे आहे ते नेहमी विचारा."
 
-#: ../src/preferencesdialog.cpp:1062
+#: ../src/preferencesdialog.cpp:1108
 msgid "Rename my local note."
 msgstr "स्थानीय टिपचे पुनःनामांकन करा."
 
-#: ../src/preferencesdialog.cpp:1066
+#: ../src/preferencesdialog.cpp:1112
 msgid "Replace my local note with the server's update."
 msgstr "स्थनीय टिपला सर्व्हरच्या सुधारणासह अदलाबदल करा."
 
-#: ../src/preferencesdialog.cpp:1169
+#: ../src/preferencesdialog.cpp:1215
 msgid "Are you sure?"
 msgstr "तुम्ही नक्की आहात?"
 
-#: ../src/preferencesdialog.cpp:1170
+#: ../src/preferencesdialog.cpp:1216
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -1764,11 +1786,11 @@ msgstr ""
 "सर्व टिप्स्ला "
 "ताळमेळ करण्यास जबरनपणे लागू केले जाईल."
 
-#: ../src/preferencesdialog.cpp:1180
+#: ../src/preferencesdialog.cpp:1226
 msgid "Resetting Synchronization Settings"
 msgstr "सिंक्रोनाइजेशन सेटिंग्स् मूळस्थितीत आणत आहे"
 
-#: ../src/preferencesdialog.cpp:1181
+#: ../src/preferencesdialog.cpp:1227
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -1779,17 +1801,17 @@ msgstr ""
 "नवीन सेटिंग्स् साठवतेवेळी सर्व टिपांची ताळमेळ तुम्हाला जबरपणे लागू करावे "
 "लागेल."
 
-#: ../src/preferencesdialog.cpp:1247
+#: ../src/preferencesdialog.cpp:1293
 msgid "Connection successful"
 msgstr "जोडणी यशस्वी"
 
-#: ../src/preferencesdialog.cpp:1248
+#: ../src/preferencesdialog.cpp:1294
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "जिनोट टिपांची ताळमेळ करण्यासाठी सज्ज आहे. आता ताळमेळ करायला आवडेल?"
 
-#: ../src/preferencesdialog.cpp:1272
+#: ../src/preferencesdialog.cpp:1318
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -1798,52 +1820,61 @@ msgstr ""
 "माहिती "
 "समाविष्टीत असू शकते."
 
-#: ../src/preferencesdialog.cpp:1277
+#: ../src/preferencesdialog.cpp:1323
 msgid "Error connecting"
 msgstr "जोडणी करतेवेळी त्रुटी"
 
-#: ../src/preferencesdialog.cpp:1341
+#: ../src/preferencesdialog.cpp:1387
 msgid "Version:"
 msgstr "आवृत्ती:"
 
-#: ../src/preferencesdialog.cpp:1346
+#: ../src/preferencesdialog.cpp:1392
 msgid "Author:"
 msgstr "लेखक:"
 
-#: ../src/preferencesdialog.cpp:1352
+#: ../src/preferencesdialog.cpp:1398
 msgid "Copyright:"
 msgstr "सर्वहक्काधिकार:"
 
-#: ../src/recentchanges.cpp:42 ../src/searchnoteswidget.cpp:1178
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:377
+#: ../src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "टिपण्णी"
 
-#: ../src/recentchanges.cpp:68
-msgid "_Show"
-msgstr "दाखवा (_S)"
+#: ../src/recentchanges.cpp:130
+#| msgid "_New"
+msgid "New"
+msgstr "नवीन"
 
-#: ../src/searchnoteswidget.cpp:81
-msgid "_Search:"
-msgstr "शोधा (_S):"
+#: ../src/recentchanges.cpp:465
+msgid "_Close"
+msgstr "बंद करा(_C)"
 
-#: ../src/searchnoteswidget.cpp:204
+#: ../src/searchnoteswidget.cpp:131
 msgid "_Open"
 msgstr "उघडा (_O)"
 
-#: ../src/searchnoteswidget.cpp:207
-#| msgid "New _Window"
+#: ../src/searchnoteswidget.cpp:134
 msgid "Open In New _Window"
 msgstr "नवीन पटलमध्ये उघडा (_W)"
 
-#: ../src/searchnoteswidget.cpp:839
+#: ../src/searchnoteswidget.cpp:138
+msgid "_Delete"
+msgstr "नष्ट करा(_D)"
+
+#: ../src/searchnoteswidget.cpp:141
+msgid "_Delete Notebook"
+msgstr "पुस्तिका नष्ट करा (_D)"
+
+#: ../src/searchnoteswidget.cpp:678
 msgid "Note"
 msgstr "टिपण्णी"
 
-#: ../src/searchnoteswidget.cpp:861
+#: ../src/searchnoteswidget.cpp:700
 msgid "Last Changed"
 msgstr "शेवटी बदललेले"
 
-#: ../src/searchnoteswidget.cpp:1199
+#: ../src/searchnoteswidget.cpp:1038
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1851,30 +1882,30 @@ msgstr ""
 "नीवडलेल्या नोटबूकमध्ये परिणाम आढळले नाही.\n"
 "सर्व टिपांकरीता शोधण्याकरीता येथे क्लि करा."
 
-#: ../src/searchnoteswidget.cpp:1203
+#: ../src/searchnoteswidget.cpp:1042
 msgid "Click here to search across all notebooks"
 msgstr "सर्व नोटबूक्स् करीता शोधण्याकरीता येथे क्लिक करा"
 
-#: ../src/searchnoteswidget.cpp:1227
+#: ../src/searchnoteswidget.cpp:1066
 msgid "Matches"
 msgstr "जुळवणी"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1276
+#: ../src/searchnoteswidget.cpp:1115
 msgid "Title match"
 msgstr "शीर्षक जुळले नाही"
 
-#: ../src/searchnoteswidget.cpp:1280
+#: ../src/searchnoteswidget.cpp:1119
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% जुळवणी"
 msgstr[1] "%1% जुळवणी"
 
-#: ../src/searchnoteswidget.cpp:1515
+#: ../src/searchnoteswidget.cpp:1353
 msgid "_Open Template Note"
 msgstr "प्रारूप टिप उघडा (_O)"
 
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1361
 msgid "_New Notebook"
 msgstr "नवीन पुस्तिका (_N)"
 
@@ -1906,7 +1937,11 @@ msgstr "साधने"
 msgid "Unknown"
 msgstr "अपरिचीत"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:117
+#: ../src/sharp/xmlwriter.cpp:40
+msgid "%1% failed"
+msgstr "%1% अपयशी"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:116
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1% correctly installed and configured"
@@ -1915,61 +1950,61 @@ msgstr ""
 "योग्यरित्या "
 "प्रतिष्ठापीत व संरचीत आहे याची खात्री करा"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:160
+#: ../src/synchronization/fusesyncserviceaddin.cpp:159
 msgid "Could not read testfile."
 msgstr "चाचणीफाइल वाछणे अशक्य."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:169
+#: ../src/synchronization/fusesyncserviceaddin.cpp:168
 msgid "Write test failed."
 msgstr "राइट चाचणी अपयशी."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:198
+#: ../src/synchronization/fusesyncserviceaddin.cpp:197
 msgid "Timeout connecting to server."
 msgstr "सर्व्हरशी जोडणी करतेवेळी वेळसमाप्ति."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:204
+#: ../src/synchronization/fusesyncserviceaddin.cpp:203
 msgid "Error connecting to server."
 msgstr "सर्व्हरशी जोडणी करतेवेळी त्रुटी."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:217
+#: ../src/synchronization/fusesyncserviceaddin.cpp:216
 msgid "FUSE could not be enabled."
 msgstr "FUSE सुरू करणे अशक्य."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:248
+#: ../src/synchronization/fusesyncserviceaddin.cpp:247
 msgid "An error ocurred while connecting to the specified server"
 msgstr "निर्देशीत सर्व्हरसह जोडणी करतेवेळी त्रुटी आढळली"
 
-#: ../src/synchronization/syncdialog.cpp:110
+#: ../src/synchronization/syncdialog.cpp:65
 msgid "Note Conflict"
 msgstr "टिप मतभेद"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:115
+#: ../src/synchronization/syncdialog.cpp:70
 msgid " (old)"
 msgstr " (जुणे)"
 
-#: ../src/synchronization/syncdialog.cpp:157
+#: ../src/synchronization/syncdialog.cpp:112
 msgid "Rename local note:"
 msgstr "स्थानीय टिप पुनःनामांकीत करा:"
 
-#: ../src/synchronization/syncdialog.cpp:164
+#: ../src/synchronization/syncdialog.cpp:119
 msgid "Update links in referencing notes"
 msgstr "संदर्भातील टिपांमद्ये दुवा सुधारित करा"
 
-#: ../src/synchronization/syncdialog.cpp:171
+#: ../src/synchronization/syncdialog.cpp:126
 msgid "Overwrite local note"
 msgstr "स्थानीय टिप खोडून पुनःलिहा"
 
-#: ../src/synchronization/syncdialog.cpp:175
+#: ../src/synchronization/syncdialog.cpp:130
 msgid "Always perform this action"
 msgstr "नेहमी हि कृती करा"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:181
+#: ../src/synchronization/syncdialog.cpp:136
 msgid "Note conflict detected"
 msgstr "टिप मतभेद आढळले"
 
-#: ../src/synchronization/syncdialog.cpp:183
+#: ../src/synchronization/syncdialog.cpp:138
 msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -1979,55 +2014,55 @@ msgstr ""
 "करायचे आहे?"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:337
+#: ../src/synchronization/syncdialog.cpp:290
 msgid "Details"
 msgstr " तपशील"
 
-#: ../src/synchronization/syncdialog.cpp:376
+#: ../src/synchronization/syncdialog.cpp:329
 msgid "Status"
 msgstr "स्थिती"
 
-#: ../src/synchronization/syncdialog.cpp:533
+#: ../src/synchronization/syncdialog.cpp:474
 msgid "Acquiring sync lock..."
 msgstr "सिंक लॉक प्राप्त करत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:536
+#: ../src/synchronization/syncdialog.cpp:477
 msgid "Committing changes..."
 msgstr "बदल कमीट करत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:480
 msgid "Synchronizing Notes"
 msgstr "टिपचे ताळमेळ करत आहे"
 
-#: ../src/synchronization/syncdialog.cpp:540
+#: ../src/synchronization/syncdialog.cpp:481
 msgid "Synchronizing your notes..."
 msgstr "टिपचे ताळमेळ करत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:482
 msgid "This may take a while, kick back and enjoy!"
 msgstr "यास थोडा वेळ लागेल, मजा लूटा!"
 
-#: ../src/synchronization/syncdialog.cpp:543
+#: ../src/synchronization/syncdialog.cpp:484
 msgid "Connecting to the server..."
 msgstr "सर्व्हरशी जोडणी करत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:549
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "Deleting notes off of the server..."
 msgstr "सर्व्हरपासून टिप नष्ट करत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:494
 msgid "Downloading new/updated notes..."
 msgstr "नवीन/सुधारित टिप डाउनलोड करत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:565
+#: ../src/synchronization/syncdialog.cpp:506
 msgid "Server Locked"
 msgstr "सर्व्हर कुलूपबंद केले"
 
-#: ../src/synchronization/syncdialog.cpp:566
+#: ../src/synchronization/syncdialog.cpp:507
 msgid "Server is locked"
 msgstr "सर्व्हर कुलूपबंद केले"
 
-#: ../src/synchronization/syncdialog.cpp:567
+#: ../src/synchronization/syncdialog.cpp:508
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2035,120 +2070,120 @@ msgstr ""
 "इतरांपैकी एका संगणकाची सध्या ताळमेळ सुरू आहे.  कृपया 2 मिनिटे थांबा व पुनः "
 "प्रयत्न करा."
 
-#: ../src/synchronization/syncdialog.cpp:571
+#: ../src/synchronization/syncdialog.cpp:512
 msgid "Preparing to download updates from server..."
 msgstr "सर्व्हरपासून सुधारणा डाउनलोड करायची तयारी होत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:574
+#: ../src/synchronization/syncdialog.cpp:515
 msgid "Preparing to upload updates to server..."
 msgstr "सर्व्हरवर सुधारणा अपलोड करण्यासाठी तयार होत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:577
+#: ../src/synchronization/syncdialog.cpp:518
 msgid "Uploading notes to server..."
 msgstr "सर्व्हरवर नोट्स् अपलोड करत आहे..."
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:521
 msgid "Synchronization Failed"
 msgstr "ताळमेळ अपयशी"
 
-#: ../src/synchronization/syncdialog.cpp:581
+#: ../src/synchronization/syncdialog.cpp:522
 msgid "Failed to synchronize"
 msgstr "ताळमेळ अपयशी"
 
-#: ../src/synchronization/syncdialog.cpp:582
+#: ../src/synchronization/syncdialog.cpp:523
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr "टिपचे ताळमेळ अशक्य.  खालिल तपशील तपासा व पुनः प्रयत्न करा."
 
-#: ../src/synchronization/syncdialog.cpp:588
+#: ../src/synchronization/syncdialog.cpp:529
 msgid "Synchronization Complete"
 msgstr "ताळमेळ पूर्ण झाले"
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:530
 msgid "Synchronization is complete"
 msgstr "ताळमेळ पूर्ण झाले"
 
-#: ../src/synchronization/syncdialog.cpp:590
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% टिप सुधारित केले."
 msgstr[1] "%1% टिप सुधारित केले."
 
-#: ../src/synchronization/syncdialog.cpp:591
+#: ../src/synchronization/syncdialog.cpp:532
 msgid "Your notes are now up to date."
 msgstr "टिप आता सर्वात नवीन आहे."
 
-#: ../src/synchronization/syncdialog.cpp:596
+#: ../src/synchronization/syncdialog.cpp:537
 msgid "Synchronization Canceled"
 msgstr "ताळमेळ रद्द केले"
 
-#: ../src/synchronization/syncdialog.cpp:597
+#: ../src/synchronization/syncdialog.cpp:538
 msgid "Synchronization was canceled"
 msgstr "ताळमेळ रद्द केले"
 
-#: ../src/synchronization/syncdialog.cpp:598
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "तुम्ही ताळमेळ रद्द केली.  आता पटल बंद करणे शक्य आहे."
 
-#: ../src/synchronization/syncdialog.cpp:602
+#: ../src/synchronization/syncdialog.cpp:543
 msgid "Synchronization Not Configured"
 msgstr "ताळमेळ संरचीत केले नाही"
 
-#: ../src/synchronization/syncdialog.cpp:603
+#: ../src/synchronization/syncdialog.cpp:544
 msgid "Synchronization is not configured"
 msgstr "ताळमेळ संरचीत केले नाही"
 
-#: ../src/synchronization/syncdialog.cpp:604
+#: ../src/synchronization/syncdialog.cpp:545
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "पसंती संवादमध्ये सिंक्रोनाइजेशन कृपया संरचीत करा."
 
-#: ../src/synchronization/syncdialog.cpp:608
+#: ../src/synchronization/syncdialog.cpp:549
 msgid "Synchronization Service Error"
 msgstr "ताळमेळ सर्व्हिस त्रुटी"
 
-#: ../src/synchronization/syncdialog.cpp:609
+#: ../src/synchronization/syncdialog.cpp:550
 msgid "Service error"
 msgstr "सर्व्हिस त्रुटी"
 
-#: ../src/synchronization/syncdialog.cpp:610
+#: ../src/synchronization/syncdialog.cpp:551
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "सिंक्रोनाइजेशन सर्व्हिसह जोडणी करतेवेळी त्रुटी.  कृपया पुनः प्रयत्न करा."
 
-#: ../src/synchronization/syncdialog.cpp:624
+#: ../src/synchronization/syncdialog.cpp:565
 msgid "Deleted locally"
 msgstr "स्थानीयरित्या नष्ट केले"
 
-#: ../src/synchronization/syncdialog.cpp:627
+#: ../src/synchronization/syncdialog.cpp:568
 msgid "Deleted from server"
 msgstr "सर्व्हरपासून नष्ट केले"
 
-#: ../src/synchronization/syncdialog.cpp:630
+#: ../src/synchronization/syncdialog.cpp:571
 msgid "Updated"
 msgstr "सुधारित केले"
 
-#: ../src/synchronization/syncdialog.cpp:633
+#: ../src/synchronization/syncdialog.cpp:574
 msgid "Added"
 msgstr "समाविष्ट केले"
 
-#: ../src/synchronization/syncdialog.cpp:636
+#: ../src/synchronization/syncdialog.cpp:577
 msgid "Uploaded changes to server"
 msgstr "सर्व्हरकरीता बदल अपलोड केले"
 
-#: ../src/synchronization/syncdialog.cpp:639
+#: ../src/synchronization/syncdialog.cpp:580
 msgid "Uploaded new note to server"
 msgstr "सर्व्हरकरीता नवीन टिप अपलोड केले"
 
-#: ../src/synchronization/syncmanager.cpp:136
+#: ../src/synchronization/syncmanager.cpp:66
 msgid "Synchronize Notes"
 msgstr "टिप यांची समजुळवणी करा"
 
-#: ../src/synchronization/syncutils.cpp:142
-#: ../src/synchronization/syncutils.cpp:174
+#: ../src/synchronization/syncutils.cpp:146
+#: ../src/synchronization/syncutils.cpp:178
 msgid "Could not enable FUSE"
 msgstr "FUSE सुरू करणे अशक्य"
 
-#: ../src/synchronization/syncutils.cpp:143
-#: ../src/synchronization/syncutils.cpp:175
+#: ../src/synchronization/syncutils.cpp:147
+#: ../src/synchronization/syncutils.cpp:179
 msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
@@ -2157,13 +2192,13 @@ msgstr ""
 "खात्री करा व पुनः "
 "प्रयत्न करा."
 
-#: ../src/synchronization/syncutils.cpp:151
+#: ../src/synchronization/syncutils.cpp:155
 msgid "Enable FUSE?"
 msgstr "FUSE सुरू करायचे?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
-#: ../src/synchronization/syncutils.cpp:154
+#: ../src/synchronization/syncutils.cpp:158
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
@@ -2178,23 +2213,23 @@ msgstr ""
 "boot.local करीता \"modprobe fuse\" किंवा /etc/modules मध्ये \"fuse\" समाविष्ट "
 "करा."
 
-#: ../src/tray.cpp:54
+#: ../src/tray.cpp:55
 msgid "Take notes"
 msgstr "टिपण्णी घ्या"
 
-#: ../src/tray.cpp:166
+#: ../src/tray.cpp:165
 msgid " (new)"
 msgstr " (नवीन)"
 
-#: ../src/tray.cpp:467
+#: ../src/tray.cpp:466
 msgid "_Help"
 msgstr "मदत (_H)"
 
-#: ../src/tray.cpp:472
+#: ../src/tray.cpp:471
 msgid "_About Gnote"
 msgstr "Gnote विषयी (_A)"
 
-#: ../src/utils.cpp:130
+#: ../src/utils.cpp:137
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2203,35 +2238,35 @@ msgstr ""
 "याची खात्री "
 "करा."
 
-#: ../src/utils.cpp:138
+#: ../src/utils.cpp:145
 msgid "Help not found"
 msgstr "मदत आढळली नाही"
 
-#: ../src/utils.cpp:171
+#: ../src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "ठिकाण उघडू शकत नाही"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:193
 msgid "Today, %1%"
 msgstr "आज, %1%"
 
-#: ../src/utils.cpp:187
+#: ../src/utils.cpp:194
 msgid "Today"
 msgstr "आज"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:200
 msgid "Yesterday, %1%"
 msgstr "काल, %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:201
 msgid "Yesterday"
 msgstr "काल"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:203
+#: ../src/utils.cpp:210
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "%1% दिवस पूर्वी, %2%"
@@ -2239,24 +2274,24 @@ msgstr[1] "%1% दिवसांपूर्वी, %2%"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:216
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% दिवस पूर्वी"
 msgstr[1] "%1% दिवसांपूर्वी"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:224
 msgid "Tomorrow, %1%"
 msgstr "उद्या, %1%"
 
-#: ../src/utils.cpp:218
+#: ../src/utils.cpp:225
 msgid "Tomorrow"
 msgstr "उद्या"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:234
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "%1% दिवसात, %2%"
@@ -2264,21 +2299,21 @@ msgstr[1] "%1% दिवसांमध्ये, %2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:233
+#: ../src/utils.cpp:240
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "%1% दिवसात"
 msgstr[1] "%1% दिवसांमध्ये"
 
-#: ../src/utils.cpp:244
+#: ../src/utils.cpp:251
 msgid "No Date"
 msgstr "दिनांक नाही"
 
-#: ../src/watchers.cpp:212
+#: ../src/watchers.cpp:211
 msgid "(Untitled %1%)"
 msgstr "(विनाशिर्षक %1%)"
 
-#: ../src/watchers.cpp:243
+#: ../src/watchers.cpp:242
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2287,32 +2322,45 @@ msgstr ""
 "कृपया या टिपण्णी "
 "करीता वेगळे नाव नीवडा."
 
-#: ../src/watchers.cpp:257
+#: ../src/watchers.cpp:256
 msgid "Note title taken"
 msgstr "टिपण्णी शिर्षक वापरले आहे"
 
-#: ../src/watchers.cpp:583
+#: ../src/watchers.cpp:581
 msgid "_Copy Link Address"
 msgstr "दुवा(लिंक) पत्ता प्रतिलिपी करा(_C)"
 
-#: ../src/watchers.cpp:589
+#: ../src/watchers.cpp:587
 msgid "_Open Link"
 msgstr "दुवा(लिंक) उघडा (_O)"
 
+#~ msgid "Enable startup notes"
+#~ msgstr "प्रारंभ टिप कार्यान्वीत करा"
+
+#~ msgid ""
+#~ "If enabled, all notes that were open when Gnote quit will automatically "
+#~ "be reopened at startup."
+#~ msgstr ""
+#~ "कार्यान्वीत केल्यास, Gnote पासून बाहेर पडतेवेळी उघडे असलेल्या सर्व टिपण्णी स्वयंरित्या "
+#~ "स्टार्टअपवेळी पुन्हा उघडले जातिल."
+
+#~ msgid "_Find:"
+#~ msgstr "शोधा (_F):"
+
+#~ msgid "_Show"
+#~ msgstr "दाखवा (_S)"
+
+#~ msgid "_Search:"
+#~ msgstr "शोधा (_S):"
+
 #~ msgid "_File"
 #~ msgstr "फाइल(_F)"
-
-#~ msgid "_New"
-#~ msgstr "नवीन(_N)"
 
 #~ msgid "_Open..."
 #~ msgstr "उघडा (_O)..."
 
 #~ msgid "Open the selected note"
 #~ msgstr "निवडलेली टिप उघडा"
-
-#~ msgid "_Delete"
-#~ msgstr "नष्ट करा(_D)"
 
 #~ msgid "Delete the selected note"
 #~ msgstr "निवडलेली टिप काढूण टाका"
@@ -2338,9 +2386,6 @@ msgstr "दुवा(लिंक) उघडा (_O)"
 #~ msgid "Delete the selected notebook"
 #~ msgstr "निवडलेली पुस्तिका काढूण टाका"
 
-#~ msgid "_Delete Notebook"
-#~ msgstr "पुस्तिका नष्ट करा (_D)"
-
 #~ msgid "S_ynchronize Notes"
 #~ msgstr "समजुळवणी टिप (_y)"
 
@@ -2349,9 +2394,6 @@ msgstr "दुवा(लिंक) उघडा (_O)"
 
 #~ msgid "_Tools"
 #~ msgstr "साधने (_T)"
-
-#~ msgid "_Close"
-#~ msgstr "बंद करा(_C)"
 
 #~ msgid "Close this window"
 #~ msgstr "हा विंडो बंद करा"
