@@ -4,21 +4,22 @@
 # This file is distributed under the same license as the gnote package.
 #
 # I. Felix <ifelix@redhat.com>, 2009.
-# Shantha kumar <shkumar@redhat.com>, 2012.
+# Shantha kumar <shkumar@redhat.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master.ta\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-11-23 10:12+0000\n"
-"PO-Revision-Date: 2012-11-28 14:26+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
+"cgi?product=gnote&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-17 16:03+0000\n"
+"PO-Revision-Date: 2013-03-22 17:42+0530\n"
 "Last-Translator: Shantha kumar <shkumar@redhat.com>\n"
 "Language-Team: Tamil <>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\\n\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\\n"
+"\n"
 "\n"
 "\n"
 "\n"
@@ -39,6 +40,10 @@ msgstr "குறிப்பு எடுக்கவும், இணைப்
 #: ../data/gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "குறிப்பு எடுப்பவர்"
+
+#: ../data/gnote.desktop.in.in.h:4
+msgid "note;idea;link;organize;"
+msgstr "note;idea;link;organize;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -93,6 +98,9 @@ msgid "Enable custom font"
 msgstr "தனிபயன் எழுத்துருவை செயல்படுத்தலாம்"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:10
+#| msgid ""
+#| "If true, the font name set in custom_font_face will be used as the font "
+#| "when displaying notes. Otherwise the desktop default font will be used."
 msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
@@ -106,6 +114,9 @@ msgid "Custom Font Face"
 msgstr "தனிபயன் எழுத்துரு முகம்"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:12
+#| msgid ""
+#| "If enable_custom_font is true, the font name set here will be used as the "
+#| "font when displaying notes."
 msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
@@ -118,6 +129,10 @@ msgid "Enable global keybindings"
 msgstr "முழு கீபைண்டிங்க்களை செயல்படுத்துகிறது"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:14
+#| msgid ""
+#| "If true, the desktop-global keybindings set in /apps/gnote/"
+#| "global_keybindings will be enabled, allowing for useful Gnote actions to "
+#| "be available from any application."
 msgid ""
 "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
 "keybindings will be enabled, allowing for useful Gnote actions to be "
@@ -163,14 +178,12 @@ msgstr ""
 "வேண்டும்."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:21
-msgid "Enable startup notes"
-msgstr "துவக்க குறிப்புகளை செயல்படுத்தலாம்"
+msgid "Is main window maximized"
+msgstr "முக்கிய சாளரம் பெரிதாக்கப்பட்டுள்ளதா"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:22
-msgid ""
-"If enabled, all notes that were open when Gnote quit will automatically be "
-"reopened at startup."
-msgstr "செயல்படுத்தப்பட்டால், அனைத்து குறிப்புகள் Gnote மூடப்பட்டாலும், தானாக துவக்கப்படும்."
+msgid "If true, Gnote window will be maximized."
+msgstr "ஆம் என அமைக்கப்பட்டால், Gnote சாளரம் பெரிதாக்கப்படும்."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "Saved height of Search window"
@@ -178,8 +191,7 @@ msgstr "தேடும் சாளரத்தின் சேமிக்க�
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:24
 msgid "Determines pixel height of Search window; stored on Gnote exit."
-msgstr ""
-"பிக்ஸல் உயரத்தை தேடல் சாளரத்தில் வரையறுக்கிறது; Gnote வெளியேற்றல்லில் சேமிக்கிறது."
+msgstr "பிக்ஸல் உயரத்தை தேடல் சாளரத்தில் வரையறுக்கிறது; Gnote வெளியேற்றல்லில் சேமிக்கிறது."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:25
 msgid "Saved width of Search window"
@@ -187,8 +199,7 @@ msgstr "தேடும் சாளரத்தின் அகலத்தை 
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:26
 msgid "Determines pixel width of Search window; stored on Gnote exit."
-msgstr ""
-"பிக்ஸல் அகலத்தை தேடல் சாளரத்தில் வரையறுக்கிறது; Gnote வெளியேற்றல்லில் சேமிக்கிறது."
+msgstr "பிக்ஸல் அகலத்தை தேடல் சாளரத்தில் வரையறுக்கிறது; Gnote வெளியேற்றல்லில் சேமிக்கிறது."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:27
 msgid "Saved horizontal position of Search window"
@@ -196,8 +207,7 @@ msgstr "தேடும் சாளரத்தின் சேமிக்க�
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:28
 msgid "Determines X coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"X ஒருங்கிணைப்பை தேடல் சாளரத்தில் வரையறுக்கிறது; Gnote வெளியேற்றல்லில் சேமிக்கிறது."
+msgstr "X ஒருங்கிணைப்பை தேடல் சாளரத்தில் வரையறுக்கிறது; Gnote வெளியேற்றல்லில் சேமிக்கிறது."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:29
 msgid "Saved vertical position of Search window"
@@ -205,16 +215,16 @@ msgstr "தேடும் சாளரத்தின் சேமிக்க�
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:30
 msgid "Determines Y coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"Y ஒருங்கிணைப்பை தேடல் சாளரத்தில் வரையறுக்கிறது; Gnote வெளியேற்றல்லில் சேமிக்கிறது."
+msgstr "Y ஒருங்கிணைப்பை தேடல் சாளரத்தில் வரையறுக்கிறது; Gnote வெளியேற்றல்லில் சேமிக்கிறது."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:31
+#| msgid "Saved vertical position of Search window"
 msgid "Saved splitter position of Search window splitter."
 msgstr "தேடும் சாளரப் பிரிப்பானின் சேமிக்கப்பட்ட பிரிப்பான் நிலை"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:32
-msgid ""
-"Determines Search window splitter position in pixels; stored on Gnote exit."
+#| msgid "Determines pixel width of Search window; stored on Gnote exit."
+msgid "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
 "தேடல் சாளரத்தின் பிரிப்பான் நிலையை பிக்சல்களில் தீர்மானிக்கிறது; Gnote வெளியேறும் போது "
 "இந்த அளவு சேமித்துக்கொள்ளப்படுகிறது."
@@ -227,8 +237,7 @@ msgstr "FUSE மவுண்டிங் நேர முடிவு (ms)"
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
-msgstr ""
-"நேரம் (மில்லி விநாடியில்) Gnote FUSEஐ பயன்படுத்தும் போது பதிலுக்கு காத்திருக்க வேண்டும்."
+msgstr "நேரம் (மில்லி விநாடியில்) Gnote FUSEஐ பயன்படுத்தும் போது பதிலுக்கு காத்திருக்க வேண்டும்."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:35
 msgid "SSHFS Remote Synchronization Folder"
@@ -252,8 +261,7 @@ msgstr "SSHFS தொலை ஒத்திசைக்கப்பட்ட ப�
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:40
 msgid "User name to use when connecting to the synchronization server via SSH."
-msgstr ""
-"SSHஐ ஒத்திசைக்கப்பட்ட சேவையகத்தின் வழியாக இணைக்கும் போது பயனர் பெயரை பயன்படுத்தப்படும்."
+msgstr "SSHஐ ஒத்திசைக்கப்பட்ட சேவையகத்தின் வழியாக இணைக்கும் போது பயனர் பெயரை பயன்படுத்தப்படும்."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:41
 msgid "SSHFS Synchronization Server Port"
@@ -270,6 +278,12 @@ msgid "Link Updating Behavior on Note Rename"
 msgstr "குறிப்பு மறுபெயரிடுவதிலான நடத்தையை இணை"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:44
+#| msgid ""
+#| "Integer value indicating if there is a preference to always perform a "
+#| "specific behavior when a conflict is detected, instead of prompting the "
+#| "user. The values map to an internal enumeration. 0 indicates that the "
+#| "user wishes to be prompted when a conflict occurs, so that they may "
+#| "handle each conflict situation on a case-by-case basis."
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -415,8 +429,7 @@ msgid "HTML Export Last Directory"
 msgstr "HTML கடைசி அடைவை ஏற்று"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:60
-msgid ""
-"The last directory a note was exported to using the Export To HTML plugin."
+msgid "The last directory a note was exported to using the Export To HTML plugin."
 msgstr "கடைசி அடைவு ஒரு குறிப்பு HTML கூடுதல் இணைப்பை பயன்படுத்து ஏற்றுகிறது"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:61
@@ -521,8 +534,7 @@ msgstr "SSL சான்றிதழ்களை ஏற்கவும்"
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
-msgstr ""
-"wdfs விருப்பத்தை பயன்படுத்தி \"-ac\" SSL சான்றிதழைகளை பயனருக்கு தெரிவிக்காமல் ஏற்கலாம்."
+msgstr "wdfs விருப்பத்தை பயன்படுத்தி \"-ac\" SSL சான்றிதழைகளை பயனருக்கு தெரிவிக்காமல் ஏற்கலாம்."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid "Share URL"
@@ -548,108 +560,74 @@ msgstr "நேர முத்திரை வடிவம்"
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
-msgstr ""
-"நேர முத்திரைக்கு பயன்படுத்தப்படும் தேதி வடிவம். இது strftime(3) வடிவத்தை பின்பற்றுகிறது"
+msgstr "நேர முத்திரைக்கு பயன்படுத்தப்படும் தேதி வடிவம். இது strftime(3) வடிவத்தை பின்பற்றுகிறது"
 
-#: ../src/actionmanager.cpp:174
-msgid "_File"
-msgstr "கோப்பு (_F)"
-
-#: ../src/actionmanager.cpp:178
-msgid "_New"
-msgstr "புதிய (_N)"
-
-#: ../src/actionmanager.cpp:179 ../src/actionmanager.cpp:230
-msgid "Create a new note"
-msgstr "ஒரு புதிய குறிப்பை உருவாக்கவும்"
-
-#: ../src/actionmanager.cpp:184
-msgid "_Open..."
-msgstr "திற (_O)..."
-
-#: ../src/actionmanager.cpp:184
-msgid "Open the selected note"
-msgstr "தேர்ந்தெடுக்கப்பட்ட குறிப்பை திறக்கவும்"
-
-#: ../src/actionmanager.cpp:190
-msgid "_Delete"
-msgstr "அழிக்கவும் (_D)"
-
-#: ../src/actionmanager.cpp:190
-msgid "Delete the selected note"
-msgstr "தேர்ந்தெடுக்கப்பட்ட குறிப்பை அழிக்கவும்"
-
-#: ../src/actionmanager.cpp:196 ../src/notewindow.cpp:377
-msgid "_Close"
-msgstr "மூடவும் (_C)"
-
-#: ../src/actionmanager.cpp:196
-msgid "Close this window"
-msgstr "சாளரத்தை மூடவும்"
-
-#: ../src/actionmanager.cpp:201 ../src/tray.cpp:477
+#: ../src/actionmanager.cpp:169 ../src/actionmanager.cpp:262
+#: ../src/tray.cpp:478
 msgid "_Quit"
 msgstr "நிறுத்தவும் (_Q)"
 
-#: ../src/actionmanager.cpp:201
+#: ../src/actionmanager.cpp:169
 msgid "Quit Gnote"
 msgstr "Gnoteஐ நிறுத்தவும்"
 
-#: ../src/actionmanager.cpp:204
-msgid "_Edit"
-msgstr "திருத்தவும் (_E)"
-
-#: ../src/actionmanager.cpp:209 ../src/tray.cpp:460
+#: ../src/actionmanager.cpp:174 ../src/actionmanager.cpp:259
+#: ../src/tray.cpp:461
 msgid "_Preferences"
 msgstr "முன்னுரிமைகள் (_P)"
 
-#: ../src/actionmanager.cpp:209 ../src/preferencesdialog.cpp:102
+#: ../src/actionmanager.cpp:174 ../src/preferencesdialog.cpp:104
 msgid "Gnote Preferences"
 msgstr "Gnote முன்னுரிமைகள்"
 
-#: ../src/actionmanager.cpp:212 ../src/tray.cpp:465
-msgid "_Help"
-msgstr "உதவி (_H)"
-
-#: ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:178
 msgid "_Contents"
 msgstr "உள்ளடக்கங்கள் (_C)"
 
-#: ../src/actionmanager.cpp:216
+#: ../src/actionmanager.cpp:178
 msgid "Gnote Help"
 msgstr "Gnote உதவி"
 
-#: ../src/actionmanager.cpp:221
+#: ../src/actionmanager.cpp:183 ../src/actionmanager.cpp:261
 msgid "_About"
 msgstr "பற்றி (_A)"
 
-#: ../src/actionmanager.cpp:221
+#: ../src/actionmanager.cpp:183
 msgid "About Gnote"
 msgstr "Gnoteஐ பற்றி"
 
-#: ../src/actionmanager.cpp:225
+#: ../src/actionmanager.cpp:187
 msgid "TrayIcon"
 msgstr "TrayIcon"
 
-#: ../src/actionmanager.cpp:230
+#: ../src/actionmanager.cpp:192
 msgid "Create _New Note"
 msgstr "புதிய குறிப்பை உருவாக்கு (_N)"
 
-#: ../src/actionmanager.cpp:235 ../src/notewindow.cpp:329
+#: ../src/actionmanager.cpp:192
+msgid "Create a new note"
+msgstr "ஒரு புதிய குறிப்பை உருவாக்கவும்"
+
+#: ../src/actionmanager.cpp:197
 msgid "_Search All Notes"
 msgstr "அனைத்து குறிப்புகளையும் தேடவும் (_S)"
 
-#: ../src/actionmanager.cpp:235
+#: ../src/actionmanager.cpp:197
 msgid "Open the Search All Notes window"
 msgstr "அனைத்து சாளர குறிப்புகளை தேடுவதை திறக்கவும்"
 
-#: ../src/actionmanager.cpp:240
-msgid "S_ynchronize Notes"
-msgstr "ஒத்திசைக்கப்பட்ட குறிப்புகள் (_y)"
+#: ../src/actionmanager.cpp:257 ../src/searchnoteswidget.cpp:1325
+msgid "_New Note"
+msgstr "புதிய குறிப்பு (_N)"
 
-#: ../src/actionmanager.cpp:240
-msgid "Start synchronizing notes"
-msgstr "ஒத்திசைக்கப்பட்ட குறிப்புகளை துவக்கவும்"
+#: ../src/actionmanager.cpp:258
+msgid "New _Window"
+msgstr "புதிய சாளரம் (_W)"
+
+#: ../src/actionmanager.cpp:260
+#| msgid "_Contents"
+msgid "Help _Contents"
+msgstr "உதவி உள்ளடக்கம் (_C)"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
 msgid "Backlinks"
@@ -724,8 +702,7 @@ msgstr "புரவலப் பெயர் தவறானது"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:274
 msgid "You must specify a valid Bugzilla host name to use with this icon."
-msgstr ""
-"இந்த சின்னத்தை பயன்படுத்துவதற்கு சரியான Bugzilla புரவலப் பெயரை குறிப்பிட வேண்டும்."
+msgstr "இந்த சின்னத்தை பயன்படுத்துவதற்கு சரியான Bugzilla புரவலப் பெயரை குறிப்பிட வேண்டும்."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:293
 msgid "Error saving icon"
@@ -778,6 +755,7 @@ msgid "Could not save the file \"%s\""
 msgstr "கோப்பினை சேமிக்க முடியவில்லை \"%s\""
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
+#| msgid "Selected Synchronization Service Addin"
 msgid "Local Directory Sync Service Add-in"
 msgstr "கணினி கோப்பக ஒத்திசைவு சேவை துணைநிரல்"
 
@@ -787,6 +765,7 @@ msgstr "Gnote குறிப்புகளை கணினிக்குள�
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
+#| msgid "Hubert Figuiere and the Tomboy Project"
 msgid "Aurimas Cernius and the Tomboy Project"
 msgstr "ஆரிமஸ் செர்னியஸ் மற்றும் டாம்பாய் பிராஜெக்ட்"
 
@@ -795,6 +774,7 @@ msgid "_Folder Path:"
 msgstr "கோப்புறைப் பாதை (_F):"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
+#| msgid "SSHFS Remote Synchronization Folder"
 msgid "Select Synchronization Folder..."
 msgstr "ஒத்திசைவுக் கோப்புறையைத் தேர்ந்தெடுக்கவும்..."
 
@@ -803,8 +783,7 @@ msgid "Folder path field is empty."
 msgstr "கோப்புறைப் பாதைப் புலம் காலியாக உள்ளது."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:164
-msgid ""
-"Specified folder path does not exist, and Gnote was unable to create it."
+msgid "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "குறிப்பிடப்பட்ட கோப்புறைப் பாதை இல்லை, Gnote அதை உருவாக்கவும் முடியவில்லை."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:240
@@ -847,56 +826,61 @@ msgstr "தேர்ந்தெடுக்கப்பட்ட வடிவ�
 msgid "_Use Custom Format"
 msgstr "தனிபயன் வடிவத்தை பயன்படுத்தவும் (_U)"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:47
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:46
 msgid "Note Directory Watcher"
 msgstr "குறிப்பு கோப்பக கவனிப்பாளர்"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:52
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:51
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr ""
 "உங்கள் குறிப்புகளில் ஏற்படும் மாற்றங்களைக் காண உங்கள் Gnote குறிப்புக் கோப்பகத்தைக் காணவும்."
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:57
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:56
+#| msgid "and Tomboy original authors."
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "ஆரிமஸ் செர்னியஸ் மற்றும் டாம்பாய் அசல் ஆசிரியர்கள்"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:45
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:44
 msgid "Note of the Day"
 msgstr "இன்றைய குறிப்பு"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:49
-msgid ""
-"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:48
+msgid "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
 "உங்கள் தினசரி சிந்தனைகளைக் குறித்து வைப்பதற்கென \"இன்று\" எனத் தலைப்பிடப்பட்ட ஒரு "
 "குறிப்பை தானாக்வே உருவாக்கும்"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:54
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:53
+#| msgid "Hubert Figuiere and the Tomboy Project"
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "டெபார்ஷி ரே மற்றூம் டாம்பாய் பிராஜெக்ட்"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:32
+#: ../src/addins/noteoftheday/noteoftheday.cpp:33
+#| msgid "New Note Template"
 msgid "Today: Template"
 msgstr "இன்று: மாதிரியுரு"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:34
+#: ../src/addins/noteoftheday/noteoftheday.cpp:35
+#| msgid "Today"
 msgid "Today: "
 msgstr "இன்று: "
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:158
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
 msgid "Tasks"
 msgstr "பணிகள்"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:159
+#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+#| msgid "_Contents"
 msgid "Appointments"
 msgstr "சந்திப்பு ஏற்பாடுகள்"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:165
+#: ../src/addins/noteoftheday/noteoftheday.cpp:166
 msgid "%A, %B %d %Y"
 msgstr "%A, %B %d %Y"
 
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+#| msgid "_Open Template Note"
 msgid "_Open Today: Template"
 msgstr "இன்று குறிப்பைத் திற: மாதிரியுரு (_O)"
 
@@ -920,12 +904,12 @@ msgstr "ஒரு குறிப்பை அச்சிட உன்னை �
 msgid "Print"
 msgstr "அச்சிடு"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:153
 msgid "Error printing note"
 msgstr "பிழையை அச்சிடும் குறிப்பு"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:320
 msgid "Page %1% of %2%"
 msgstr "பக்கம் %2% இல் %1%"
 
@@ -935,6 +919,7 @@ msgid "Replace title"
 msgstr "தலைப்பை மாற்று"
 
 #: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
+#| msgid "Delete the selected note"
 msgid "Replace title with selection."
 msgstr "தலைப்பை தேர்ந்தெடுக்கப்பட்ட உரையாக மாற்று"
 
@@ -1010,10 +995,12 @@ msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuiere மற்றும் Tomboy திட்டம்"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+#| msgid "Selected Synchronization Service Addin"
 msgid "WebDav Sync Service Add-in"
 msgstr "WebDav ஒத்திசைவு சேவை துணை நிரல்"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+#| msgid "Synchronize Notes"
 msgid "Synchronize Gnote Notes to a WebDav URL"
 msgstr "Gnote குறிப்புகளை ஒரு WebDav URL உடன் ஒத்திசை"
 
@@ -1023,11 +1010,11 @@ msgstr "URL (_U):"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
 msgid "User_name:"
-msgstr "பயனீட்டாளர் பெயர் (_n):"
+msgstr "பயனர் பெயர் (_n):"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "_Password:"
-msgstr "கடவுச்சொல் (_P):"
+msgstr "கடவுச்சொல்: (_P)"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
 msgid "WebDAV"
@@ -1061,190 +1048,174 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:317
-msgid "Cannot create new note"
-msgstr "புதிய குறிப்பை உருவாக்க முடியவில்லை"
-
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:350
 msgid "and Tomboy original authors."
 msgstr "மற்றிமு டாம்பாயின் உண்மையான ஆசிரியர்கள்."
 
-#: ../src/gnote.cpp:369
+#: ../src/gnote.cpp:356
 msgid "translator-credits"
 msgstr "I.FELIX <ifelix@redhat.com>"
 
-#: ../src/gnote.cpp:378
+#: ../src/gnote.cpp:365
+#| msgid ""
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2012 Aurimas Cernius\n"
+"Copyright © 2010-2013 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"பதிப்புரிமை © 2010-2012 Aurimas Cernius\n"
+"பதிப்புரிமை © 2010-2013 Aurimas Cernius\n"
 "பதிப்புரிமை © 2009-2011 Debarshi Ray\n"
 "பதிப்புரிமை © 2009 Hubert Figuiere\n"
 "பதிப்புரிமை © 2004-2009 the Tomboy original authors."
 
-#: ../src/gnote.cpp:382
+#: ../src/gnote.cpp:369
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "பணிமேடை குறிப்பு எடுப்பு பயன்பாட்டை பயன்படுத்துவது சுலபமானது மற்றும் எளிதானது"
 
-#: ../src/gnote.cpp:393
+#: ../src/gnote.cpp:380
 msgid "Homepage"
 msgstr "முகப்புபக்கம்"
 
-#: ../src/gnote.cpp:473
+#: ../src/gnote.cpp:559
 msgid "Run Gnote in background."
 msgstr "Gnote ஐ பின்புலத்தில் இயக்கு."
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:560
 msgid "Specify the path of the directory containing the notes."
 msgstr "அடைவு பெற்றிருக்கும் குறிப்புகளின் பாதையை குறிப்பிடவும்."
 
-#: ../src/gnote.cpp:474
+#: ../src/gnote.cpp:560
 msgid "path"
 msgstr "பாதை"
 
-#: ../src/gnote.cpp:475
+#: ../src/gnote.cpp:561
 msgid "Open the search all notes window with the search text."
 msgstr "அனைத்து சாளர குறிப்புகளுடன் உரை தேடலையும் திறக்கவும்."
 
-#: ../src/gnote.cpp:475 ../src/gnote.cpp:480
+#: ../src/gnote.cpp:561 ../src/gnote.cpp:566
 msgid "text"
 msgstr "உரை"
 
-#: ../src/gnote.cpp:476
+#: ../src/gnote.cpp:562
 msgid "Print version information."
 msgstr "பதிப்பு தகவலை அச்சிடவும்."
 
-#: ../src/gnote.cpp:477
+#: ../src/gnote.cpp:563
 msgid "Create and display a new note, with a optional title."
 msgstr "ஒரு புதிய குறிப்பை உருவாக்கு மற்றும் காட்டு, ஒரு சரியான தலைப்புடன்."
 
-#: ../src/gnote.cpp:477
+#: ../src/gnote.cpp:563
 msgid "title"
 msgstr "தலைப்பு"
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:564
 msgid "Display the existing note matching title."
 msgstr "தலைப்புடன் பொருந்தும் உள்ளிருக்கும் குறிப்பைக் காட்டு."
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:564
 msgid "title/url"
 msgstr "தலைப்பு/url"
 
-#: ../src/gnote.cpp:479
+#: ../src/gnote.cpp:565
 msgid "Display the 'Start Here' note."
 msgstr "'இங்கே துவக்கு' குறிப்பைக் காட்டு."
 
-#: ../src/gnote.cpp:480
+#: ../src/gnote.cpp:566
 msgid "Search and highlight text in the opened note."
 msgstr "திறந்த குறிப்பில் முக்கிய உரை மற்றும் தேடல்."
 
-#: ../src/gnote.cpp:484
+#: ../src/gnote.cpp:570
 msgid "A note taking application"
 msgstr "ஒரு குறிப்பு பயன்பாட்டை எடுக்கிறது"
 
-#: ../src/gnote.cpp:484
+#: ../src/gnote.cpp:570
 msgid "Gnote options at launch"
 msgstr "துவங்கும் போது Gnote விருப்பங்கள்"
 
-#: ../src/gnote.cpp:677
+#: ../src/gnote.cpp:763
 msgid "Version %1%"
 msgstr "பதிப்பு %1%"
 
-#: ../src/notebooks/createnotebookdialog.cpp:38
-#: ../src/notebooks/notebookapplicationaddin.cpp:109
+#: ../src/notebooks/createnotebookdialog.cpp:40
 msgid "Create a new notebook"
 msgstr "ஒரு புதிய குறிப்பேட்டை உருவாக்கு"
 
-#: ../src/notebooks/createnotebookdialog.cpp:39
+#: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Type the name of the notebook you'd like to create."
 msgstr "நீங்கள் உருவாக்க விரும்பும் குறிப்பேட்டின் பெயரை தட்டச்சு செய்யவும்."
 
-#: ../src/notebooks/createnotebookdialog.cpp:47
+#: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
 msgstr "குறிப்பேடு பெயர் (_o):"
 
-#: ../src/notebooks/createnotebookdialog.cpp:60
+#: ../src/notebooks/createnotebookdialog.cpp:58
 msgid "Name already taken"
 msgstr "பெயர் ஏற்கனவே எடுக்கப்பட்டது"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:73
+#: ../src/notebooks/createnotebookdialog.cpp:71
 msgid "C_reate"
 msgstr "உருவாக்கு (_r)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:103
-msgid "Note_books"
-msgstr "குறிப்பேடுகள் (_b)"
+#: ../src/notebooks/notebookapplicationaddin.cpp:75
+#: ../src/searchnoteswidget.cpp:219
+msgid "Notebooks"
+msgstr "புத்தக்குறிப்புகள்"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:104
-#: ../src/notebooks/notebookapplicationaddin.cpp:129
+#: ../src/notebooks/notebookapplicationaddin.cpp:76
 msgid "Create a new note in a notebook"
 msgstr "ஒரு புதிய குறிப்பை ஒரு குறிப்பேட்டில் உருவாக்கு"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:108
-#: ../src/notebooks/notebookapplicationaddin.cpp:263
+#: ../src/notebooks/notebookapplicationaddin.cpp:128
+#| msgid "New Note_book..."
+msgid "New Note_book"
+msgstr "புதிய குறிப்பேடு (_b)"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:186
 msgid "New Note_book..."
 msgstr "புதிய குறிப்பேடு (_b)..."
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:113
-msgid "_New Note"
-msgstr "புதிய குறிப்பு (_N)"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:114
-msgid "Create a new note in this notebook"
-msgstr "இந்த குறிப்பேட்டில் ஒரு புதிய குறிப்பை உருவாக்கு"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:118
-msgid "_Open Template Note"
-msgstr "மாதிரியுரு குறிப்பைத் திறக்கவும் (_O)"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:119
-msgid "Open this notebook's template note"
-msgstr "இந்த குறிப்பேடுகளின் மாதிரியுரு குறிப்பை திறக்கவும்"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:123
-msgid "Delete Note_book"
-msgstr "குறிப்பேட்டை அழிக்கவும் (_b)"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:124
-msgid "Delete the selected notebook"
-msgstr "தேர்ந்தெடுக்கப்பட்ட குறிப்பேட்டை அழிக்கவும்"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:128
-#: ../src/recentchanges.cpp:299
-msgid "Notebooks"
-msgstr "புத்தக்குறிப்புகள்"
 
 #. The templateNoteTite should show the name of the
 #. notebook.  For example, if the name of the notebooks
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:87
+#: ../src/notebooks/notebook.cpp:90
 msgid "%1% Notebook Template"
 msgstr "%1% குறிப்பேடு மாதிரிஉரு"
 
-#: ../src/notebooks/notebook.cpp:167 ../src/notemanager.cpp:555
+#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:524
+#| msgid "_New Note"
 msgid "New Note"
 msgstr "புதிய குறிப்பு"
 
-#: ../src/notebooks/notebook.cpp:207
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
 msgid "All Notes"
 msgstr "அனைத்து குறிப்புகள்"
 
-#: ../src/notebooks/notebook.cpp:219
+#: ../src/notebooks/notebook.cpp:246
 msgid "Unfiled Notes"
 msgstr "கோப்பிடப்படாத குறிப்புகள்"
 
-#: ../src/notebooks/notebookmanager.cpp:337
+#: ../src/notebooks/notebook.cpp:275
+#| msgid "Unfiled Notes"
+msgid "Pinned Notes"
+msgstr "பின்னிடப்பட்ட குறிப்புகள்"
+
+#: ../src/notebooks/notebook.cpp:303
+#| msgid "All Notes"
+msgid "Active Notes"
+msgstr "செயலில் உள்ள குறிப்புகள்"
+
+#: ../src/notebooks/notebookmanager.cpp:352
 msgid "Really delete this notebook?"
 msgstr "இந்த குறிப்பேட்டை அழிக்க வேண்டுமா?"
 
-#: ../src/notebooks/notebookmanager.cpp:338
+#: ../src/notebooks/notebookmanager.cpp:353
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1256,24 +1227,26 @@ msgstr ""
 msgid "No notebook"
 msgstr "குறிப்பேடு இல்லை"
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:39
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:40
 msgid "New \"%1%\" Note"
 msgstr "புதிய \"%1%\" குறிப்பு"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:86
+#: ../src/notebooks/notebooknoteaddin.cpp:74
 msgid "Place this note into a notebook"
 msgstr "குறிப்பேட்டினுள் இந்த குறிப்பிற்கான இடம்"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:196
+#: ../src/notebooks/notebooknoteaddin.cpp:184
 msgid "Notebook"
 msgstr "குறிப்பேடு"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:222
+#: ../src/notebooks/notebooknoteaddin.cpp:210
 msgid "_New notebook..."
 msgstr "புதிய குறிப்பேடு (_N)..."
 
 #. TRANSLATORS: %1% is number of notes
 #: ../src/note.cpp:74
+#| msgid "Really delete this note?"
+#| msgid_plural "Really delete these %1% notes?"
 msgid "Really delete %1% note?"
 msgid_plural "Really delete %1% notes?"
 msgstr[0] "நிச்சயமாக குறிப்பு %s ஐ நீக்க வேண்டுமா?"
@@ -1288,21 +1261,27 @@ msgid "Error saving note data."
 msgstr "பிழையை சேமிக்கும் குறிப்பு தரவு."
 
 #: ../src/note.cpp:118
+#| msgid ""
+#| "An error occurred while saving your notes. Please check that you have "
+#| "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
+#| "Error details can be found in ~/.gnote.log."
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
-"sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-"Error details can be found in ~/.gnote.log."
+"sufficient disk space, and that you have appropriate rights on ~/.local/"
+"share/gnote. Error details can be found in ~/.gnote.log."
 msgstr ""
-"உங்கள் குறிப்பை சேமிக்கும் போது பிழை.  ~/.gnoteஇல் போதிய இடம் இருக்கிறதா என "
-"சோதிக்கவும். பிழை விவரங்கள் ~/.gnote.logஇல் காணப்படலாம்."
+"உங்கள் குறிப்பை சேமிக்கையில் பிழை ஏற்பட்டது. உங்களிடம் போதுமான "
+"வட்டிடம் உள்ளதா எனவும் ~/.local/"
+"share/gnote இல் உங்களுக்கு தகுந்த உரிமைகள் உள்ளனவா என்றும் பார்க்கவும். ~/.gnote.log இல் "
+"பிழையின் விவரங்களைக் காணலாம்."
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:112 ../src/preferencesdialog.cpp:334
+#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:336
 msgid "New Note Template"
 msgstr "புதிய குறிப்பு மாதிரியுரு"
 
-#: ../src/notemanager.cpp:249
+#: ../src/notemanager.cpp:238
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1342,7 +1321,7 @@ msgstr ""
 "பயன்படுத்தி டைப் செய்கிறோம்Gnote</link:internal> இது தானாகவேஅடிக்கோடிடப் "
 "பெறுகிறது?  இந்த இணைப்பை திறந்து குறிப்பை கிளிக் செய்யவும்.</note-content>"
 
-#: ../src/notemanager.cpp:268
+#: ../src/notemanager.cpp:257
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1371,51 +1350,54 @@ msgstr ""
 "automatically be linked for you.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:283 ../src/notemanager.cpp:336
+#: ../src/notemanager.cpp:272 ../src/notemanager.cpp:323
 msgid "Start Here"
 msgstr "இங்கே துவங்கவும்"
 
-#: ../src/notemanager.cpp:289
+#: ../src/notemanager.cpp:278
 msgid "Using Links in Gnote"
 msgstr "Gnoteஇல் இணைப்புகளை பயன்படுத்தி"
 
-#: ../src/notemanager.cpp:666
+#: ../src/notemanager.cpp:635
 msgid "Describe your new note here."
 msgstr "உங்களுடைய புதிய குறிப்பை இங்கே விளக்கவும்."
 
-#: ../src/noterenamedialog.cpp:121
+#: ../src/noterenamedialog.cpp:122
 msgid "Rename Note Links?"
 msgstr "குறிப்பு இணைப்புகளுக்கு மறுபெயரிட வேண்டுமா?"
 
-#: ../src/noterenamedialog.cpp:125
+#: ../src/noterenamedialog.cpp:126
 msgid "_Don't Rename Links"
 msgstr "இணைப்புகளுக்கு மறுபெயரிட வேண்டாம் (_D)"
 
-#: ../src/noterenamedialog.cpp:126
+#: ../src/noterenamedialog.cpp:127
+#| msgid "_Open Link"
 msgid "_Rename Links"
 msgstr "இணைப்புகளுக்கு மறூபெயரிடு (_R)"
 
-#: ../src/noterenamedialog.cpp:127
-msgid "Select All"
-msgstr "அனைத்தையும் தேர்வு செய்"
-
 #: ../src/noterenamedialog.cpp:128
+msgid "Select All"
+msgstr "அனைத்தும் தேர்ந்தெடு"
+
+#: ../src/noterenamedialog.cpp:129
+#| msgid "Select an icon..."
 msgid "Select None"
 msgstr "அனைத்தையும் தேர்வுநீக்கு"
 
-#: ../src/noterenamedialog.cpp:129
+#: ../src/noterenamedialog.cpp:130
+#| msgid "Close this window"
 msgid "Always show this _window"
 msgstr "எப்போதும் இந்த சாளரத்தைக் காண்பி"
 
-#: ../src/noterenamedialog.cpp:130
+#: ../src/noterenamedialog.cpp:131
 msgid "Alwa_ys rename links"
 msgstr "இணைப்புகளுக்கு எப்போதும் மறுபெயரிடு (_y)"
 
-#: ../src/noterenamedialog.cpp:132
+#: ../src/noterenamedialog.cpp:133
 msgid "Never rename _links"
-msgstr "!"
+msgstr "இணைப்புகளுக்கு எப்போதும் மறுபெயரிட வேண்டாம் (_l)"
 
-#: ../src/noterenamedialog.cpp:151
+#: ../src/noterenamedialog.cpp:152
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1427,79 +1409,71 @@ msgstr ""
 "\n"
 "இணைப்புகளை மறுபெயரிடாவிட்டால், அவை எதையும் இணைக்கும் இணைப்புகளாக இருக்காது."
 
-#: ../src/noterenamedialog.cpp:184
+#: ../src/noterenamedialog.cpp:185
+#| msgid "_Open Link"
 msgid "Rename Links"
 msgstr "இணைப்புகளுக்கு மறுபெயரிடு"
 
-#: ../src/noterenamedialog.cpp:199 ../src/synchronization/syncdialog.cpp:369
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:322
+#| msgid "Note title taken"
 msgid "Note Title"
 msgstr "குறிப்பு தலைப்பு"
 
-#: ../src/noterenamedialog.cpp:235
+#: ../src/noterenamedialog.cpp:236
+#| msgid "_Advanced..."
 msgid "Ad_vanced"
 msgstr "மேம்பட்ட (_v)"
 
-#: ../src/notewindow.cpp:84
+#: ../src/notewindow.cpp:91
 msgid "Find in This Note"
 msgstr "இந்த குறிப்பில் தேடவும்"
 
-#: ../src/notewindow.cpp:337
+#: ../src/notewindow.cpp:326
 msgid "_Link to New Note"
 msgstr "புதிய குறிப்புடன் இணைக்கவும் (_L)"
 
-#: ../src/notewindow.cpp:345
+#: ../src/notewindow.cpp:334
 msgid "Te_xt"
 msgstr "உரை (_x)"
 
-#: ../src/notewindow.cpp:354
+#: ../src/notewindow.cpp:342
 msgid "_Find in This Note"
 msgstr "இந்த குறிப்பில் தேடவும் (_F)"
 
-#: ../src/notewindow.cpp:369
-msgid "Clos_e All Notes"
-msgstr "அனைத்து குறிப்புகளையும் மூடவும் (_e)"
+#: ../src/notewindow.cpp:374
+#| msgid "Print"
+msgid "Pin"
+msgstr "பின்னிடு"
 
-#: ../src/notewindow.cpp:404
-msgid "Search"
-msgstr "தேடவும்"
-
-#: ../src/notewindow.cpp:408
-msgid "Search your notes (Ctrl-Shift-F)"
-msgstr "உங்களுடைய குறிப்புகளையும் தேடவும் (Ctrl-Shift-F)"
-
-#: ../src/notewindow.cpp:418
+#: ../src/notewindow.cpp:382
 msgid "Link"
 msgstr "இணைப்பு"
 
-#: ../src/notewindow.cpp:424
+#: ../src/notewindow.cpp:388
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "இணைப்பு ஒரு புதிய குறிப்பிற்கு உரையை தேர்ந்தெடுத்தது (Ctrl-L)"
 
-#: ../src/notewindow.cpp:433
+#: ../src/notewindow.cpp:394
 msgid "_Text"
 msgstr "உரை (_T)"
 
-#: ../src/notewindow.cpp:439
+#: ../src/notewindow.cpp:400
 msgid "Set properties of text"
 msgstr "உரையின் பண்புகளை அமைக்கவும்"
 
-#: ../src/notewindow.cpp:443
+#: ../src/notewindow.cpp:404
 msgid "T_ools"
 msgstr "கருவிகள் (_o)"
 
-#: ../src/notewindow.cpp:448
+#: ../src/notewindow.cpp:409
 msgid "Use tools on this note"
 msgstr "இந்த குறிப்பில் கருவிகளை பயன்படுத்தவும்"
 
-#: ../src/notewindow.cpp:458
+#: ../src/notewindow.cpp:419
 msgid "Delete this note"
 msgstr "இந்த குறிப்பை அழிக்கவும்"
 
-#: ../src/notewindow.cpp:468 ../src/synchronization/syncmanager.cpp:136
-msgid "Synchronize Notes"
-msgstr "ஒத்திசைக்கப்பட்ட குறிப்புகள்"
-
-#: ../src/notewindow.cpp:504
+#: ../src/notewindow.cpp:449
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1508,125 +1482,123 @@ msgstr ""
 "உள்ளடக்கத்தைத் தீர்மானிக்கும், மேலும் குறிப்பு மெனுவிலோ அல்லது தேடல் சாளரத்திலோ "
 "காண்பிக்கப்படும்."
 
-#: ../src/notewindow.cpp:507
+#: ../src/notewindow.cpp:452
 msgid "Convert to regular note"
 msgstr "வழக்கமான குறிப்பாக மாற்று"
 
-#: ../src/notewindow.cpp:510
+#: ../src/notewindow.cpp:455
 msgid "Save Si_ze"
 msgstr "அளவைச் சேமி (_z)"
 
-#: ../src/notewindow.cpp:514
+#: ../src/notewindow.cpp:459
 msgid "Save Se_lection"
 msgstr "தேர்வைச் சேமி (_l)"
 
-#: ../src/notewindow.cpp:518
+#: ../src/notewindow.cpp:463
 msgid "Save _Title"
 msgstr "தலைப்பைச் சேமி (_T)"
 
-#: ../src/notewindow.cpp:606
+#: ../src/notewindow.cpp:551
 msgid "_Find..."
 msgstr "தேடவும் (_F)..."
 
-#: ../src/notewindow.cpp:614
+#: ../src/notewindow.cpp:559
 msgid "Find _Next"
 msgstr "உரையைத் தேடவும் (_N)"
 
-#: ../src/notewindow.cpp:624
+#: ../src/notewindow.cpp:569
 msgid "Find _Previous"
 msgstr "முந்தையதை தேடவும் (_P)"
 
-#: ../src/notewindow.cpp:694
+#: ../src/notewindow.cpp:639
 msgid "Cannot create note"
 msgstr "குறிப்பை உருவாக்க முடியவில்லை"
 
-#: ../src/notewindow.cpp:749
+#: ../src/notewindow.cpp:692
 msgid "_Next"
 msgstr "அடுத்த (_N)"
 
-#: ../src/notewindow.cpp:750
+#: ../src/notewindow.cpp:693
 msgid "_Previous"
 msgstr "முந்தைய (_P)"
 
-#: ../src/notewindow.cpp:763
-msgid "_Find:"
-msgstr "தேடவும் (_F):"
-
-#: ../src/notewindow.cpp:1205
+#: ../src/notewindow.cpp:1142
 msgid "<b>_Bold</b>"
 msgstr "<b>தடிமன் (_B)</b>"
 
-#: ../src/notewindow.cpp:1206
+#: ../src/notewindow.cpp:1143
 msgid "<i>_Italic</i>"
 msgstr "<i>சாய்வு (_I)</i>"
 
-#: ../src/notewindow.cpp:1207
+#: ../src/notewindow.cpp:1144
 msgid "<s>_Strikeout</s>"
 msgstr "<s>அடித்தல் (_S)</s>"
 
-#: ../src/notewindow.cpp:1209
+#: ../src/notewindow.cpp:1146
 msgid "_Highlight"
 msgstr "முன்னிலைப்படுத்து (_H)"
 
-#: ../src/notewindow.cpp:1211
+#: ../src/notewindow.cpp:1148
 msgid "_Normal"
 msgstr "சாதாரணமான (_N)"
 
-#: ../src/notewindow.cpp:1213
+#: ../src/notewindow.cpp:1150
 msgid "Hu_ge"
 msgstr "மிகப்பெரியது (_g)"
 
-#: ../src/notewindow.cpp:1215
+#: ../src/notewindow.cpp:1152
 msgid "_Large"
 msgstr "பெரியது (_L)"
 
-#: ../src/notewindow.cpp:1217
+#: ../src/notewindow.cpp:1154
 msgid "S_mall"
 msgstr "சிறியது (_m)"
 
-#: ../src/notewindow.cpp:1219
+#: ../src/notewindow.cpp:1156
 msgid "Bullets"
 msgstr "புல்லட்டுகள்"
 
-#: ../src/notewindow.cpp:1222
+#: ../src/notewindow.cpp:1159
 msgid "Increase Font Size"
 msgstr "எழுத்துருவின் அளவை அதிகரிக்கவும்"
 
-#: ../src/notewindow.cpp:1223
+#: ../src/notewindow.cpp:1160
 msgid "Decrease Font Size"
 msgstr "எழுத்துருவின் அளவை குறைக்கவும்"
 
-#: ../src/notewindow.cpp:1294
+#: ../src/notewindow.cpp:1202
 msgid "Font Size"
 msgstr "எழுத்துருவின் அளவு"
 
-#: ../src/preferencesdialog.cpp:120
+#: ../src/preferencesdialog.cpp:122
 msgid "General"
 msgstr "பொது"
 
-#: ../src/preferencesdialog.cpp:122
+#: ../src/preferencesdialog.cpp:124
 msgid "Hotkeys"
 msgstr "குறுக்குவிசைகள்"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:147
+#: ../src/preferencesdialog.cpp:127 ../src/sharp/addinstreemodel.cpp:147
+#| msgid "Synchronization Client ID"
 msgid "Synchronization"
 msgstr "ஒத்திசைவு"
 
-#: ../src/preferencesdialog.cpp:127
+#: ../src/preferencesdialog.cpp:129
 msgid "Add-ins"
 msgstr "கூடுதல் இணைப்புகள்"
 
 #. Status icon
-#: ../src/preferencesdialog.cpp:239
+#: ../src/preferencesdialog.cpp:241
+#| msgid "Use custom _font"
 msgid "Use Status _Icon"
 msgstr "நிலை சின்னத்தைப் பயன்படுத்து (_I)"
 
-#: ../src/preferencesdialog.cpp:252
+#: ../src/preferencesdialog.cpp:254
 msgid "_Spell check while typing"
 msgstr "தட்டச்சு செய்யும் போது சொல்திருத்தி (_S)"
 
-#: ../src/preferencesdialog.cpp:258
+#: ../src/preferencesdialog.cpp:260
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1635,11 +1607,11 @@ msgstr ""
 "பரிந்துரைக்கப்படும்."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:269
+#: ../src/preferencesdialog.cpp:271
 msgid "Highlight _WikiWords"
 msgstr "விக்கீ சொற்களை முன்னிலைப்படுத்து (_W)"
 
-#: ../src/preferencesdialog.cpp:275
+#: ../src/preferencesdialog.cpp:277
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -1648,31 +1620,31 @@ msgstr ""
 "அதே பெயரில் குறிப்பை உருவாக்க அந்த சொல்லை சொடுக்கவும்."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:284
 msgid "Enable auto-_bulleted lists"
 msgstr "தானியக்க பொட்டிடப்பட்ட பட்டியல்களை செயல்படுத்து (_b)"
 
-#: ../src/preferencesdialog.cpp:291
+#: ../src/preferencesdialog.cpp:293
 msgid "Use custom _font"
 msgstr "தனிபயன் எழுத்துருவை பயன்படுத்தவும் (_f)"
 
-#: ../src/preferencesdialog.cpp:308
+#: ../src/preferencesdialog.cpp:310
 msgid "When renaming a linked note: "
 msgstr "இணைக்கப்பட்ட குறிப்பை மறுபெயரிடும்போது: "
 
-#: ../src/preferencesdialog.cpp:313
+#: ../src/preferencesdialog.cpp:315
 msgid "Ask me what to do"
-msgstr "என்ன செய்ய என்று கேள் "
+msgstr "என்ன செய்ய என்று கேள்"
 
-#: ../src/preferencesdialog.cpp:314
+#: ../src/preferencesdialog.cpp:316
 msgid "Never rename links"
 msgstr "இணைப்புகளுக்கு எப்போதும் மறுபெயரிட வேண்டாம்"
 
-#: ../src/preferencesdialog.cpp:315
+#: ../src/preferencesdialog.cpp:317
 msgid "Always rename links"
 msgstr "எப்போதும் இணைப்புகளுக்கு மறுபெயரிடு"
 
-#: ../src/preferencesdialog.cpp:337
+#: ../src/preferencesdialog.cpp:339
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -1680,16 +1652,16 @@ msgstr ""
 "புதிய குறிப்பு மாதிரியுருவை பயன்படுத்தி இந்த உரை ஒரு புதிய குறிப்பு உருவாக்கும்போது "
 "பயன்படுகிறது என்பதை குறிப்பிடவும்."
 
-#: ../src/preferencesdialog.cpp:345
+#: ../src/preferencesdialog.cpp:347
 msgid "Open New Note Template"
 msgstr "புதிய குறிப்பு மாதிரியுருவை திறக்கவும்"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:407
+#: ../src/preferencesdialog.cpp:409
 msgid "Listen for _Hotkeys"
 msgstr "குறுக்குவிசைகளுக்காக கவனிக்கவும் (_H)"
 
-#: ../src/preferencesdialog.cpp:414
+#: ../src/preferencesdialog.cpp:416
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -1700,70 +1672,84 @@ msgstr ""
 "Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:434
+#: ../src/preferencesdialog.cpp:436
 msgid "Show notes _menu"
 msgstr "குறிப்புகளின் மெனுவைக் காட்டு (_m)"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:451
+#: ../src/preferencesdialog.cpp:453
 msgid "Open \"_Start Here\""
 msgstr "\"_Start Here\"ஐ திறக்கவும்"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:467
+#: ../src/preferencesdialog.cpp:469
 msgid "Create _new note"
 msgstr "புதிய குறிப்பை உருவாக்கு (_n)"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:483
+#: ../src/preferencesdialog.cpp:485
 msgid "Open \"Search _All Notes\""
 msgstr "\"Search _All Notes\"ஐ திறக்கவும்"
 
-#: ../src/preferencesdialog.cpp:520
+#: ../src/preferencesdialog.cpp:522
 msgid "Ser_vice:"
 msgstr "சேவை (_v):"
 
-#: ../src/preferencesdialog.cpp:578 ../src/preferencesdialog.cpp:1135
+#: ../src/preferencesdialog.cpp:577 ../src/preferencesdialog.cpp:1181
 msgid "Not configurable"
 msgstr "கட்டமைக்கப்பட்டவை இல்லை"
 
+#. Translators: This is and the next string go together.
+#. Together they look like "Automatically Sync in Background Every [_] Minutes",
+#. where "[_]" is a GtkSpinButton.
+#: ../src/preferencesdialog.cpp:604
+msgid "Automaticall_y Sync in Background Every"
+msgstr "இவ்வளவு காலத்திற்கு ஒரு முறை பின்புலத்தில் தானாகவே ஒத்திசை (_y)"
+
+#. Translators: See above comment for details on
+#. this string.
+#: ../src/preferencesdialog.cpp:611
+msgid "Minutes"
+msgstr "நிமிடங்கள்"
+
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:598
+#: ../src/preferencesdialog.cpp:629
 msgid "_Advanced..."
 msgstr "கூடுதல் (_A)..."
 
-#: ../src/preferencesdialog.cpp:643
+#: ../src/preferencesdialog.cpp:674
 msgid "The following add-ins are installed"
 msgstr "பின்வரும் கூடுதல் இணைப்புகள் நிறுவப்பட்டன"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:674
+#: ../src/preferencesdialog.cpp:705
 msgid "_Enable"
 msgstr "செயல்படுகிறது (_E)"
 
-#: ../src/preferencesdialog.cpp:680
+#: ../src/preferencesdialog.cpp:711
 msgid "_Disable"
 msgstr "செயல்படாதது (_D)"
 
-#: ../src/preferencesdialog.cpp:813
+#: ../src/preferencesdialog.cpp:844
 msgid "Not Implemented"
 msgstr "செயல்படுத்த முடியவில்லை"
 
-#: ../src/preferencesdialog.cpp:827
+#: ../src/preferencesdialog.cpp:858
 msgid "%1% Preferences"
 msgstr "%1% முன்னுரிமைகள்"
 
-#: ../src/preferencesdialog.cpp:968
+#: ../src/preferencesdialog.cpp:999
 msgid "Choose Note Font"
 msgstr "குறிப்பு எழுத்துருவை தேர்ந்தெடுக்கவும்"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1051
+#: ../src/preferencesdialog.cpp:1097
+#| msgid "Synchronization Client ID"
 msgid "Other Synchronization Options"
 msgstr "பிற ஒத்திசைவு விருப்பங்கள்"
 
-#: ../src/preferencesdialog.cpp:1054
+#: ../src/preferencesdialog.cpp:1100
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -1772,23 +1758,23 @@ msgstr ""
 "குறிப்புக்கும் முரண்பாடு இருப்பதாகக் கண்டறியப்படும் போது:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1058
+#: ../src/preferencesdialog.cpp:1104
 msgid "Always ask me what to do."
 msgstr "எப்போதும் என்ன செய்ய வேண்டும் என என்னைக் கேள்."
 
-#: ../src/preferencesdialog.cpp:1062
+#: ../src/preferencesdialog.cpp:1108
 msgid "Rename my local note."
 msgstr "என் கணினியிலுள்ள குறிப்பை மறுபெயரிடு"
 
-#: ../src/preferencesdialog.cpp:1066
+#: ../src/preferencesdialog.cpp:1112
 msgid "Replace my local note with the server's update."
 msgstr "கணினியிலுள்ள குறிப்பை சேவையகத்தின் புதுப்பிப்பைக் கொண்டு இடமாற்று."
 
-#: ../src/preferencesdialog.cpp:1169
+#: ../src/preferencesdialog.cpp:1215
 msgid "Are you sure?"
 msgstr "நிச்சயமாக?"
 
-#: ../src/preferencesdialog.cpp:1170
+#: ../src/preferencesdialog.cpp:1216
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -1797,11 +1783,12 @@ msgstr ""
 "அமைப்புகளைச் சேமிக்கும் போது மீண்டும் உங்கள் எல்லா குறிப்புகளையும் ஒத்திசைக்க "
 "வேண்டியிருக்கும்."
 
-#: ../src/preferencesdialog.cpp:1180
+#: ../src/preferencesdialog.cpp:1226
+#| msgid "Selected Synchronization Service Addin"
 msgid "Resetting Synchronization Settings"
 msgstr "ஒத்திசைவு அமைவுகளை மீண்டும் அமைத்தல்"
 
-#: ../src/preferencesdialog.cpp:1181
+#: ../src/preferencesdialog.cpp:1227
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -1811,18 +1798,17 @@ msgstr ""
 "அமைவுகள் அழிக்கப்படும்.  நீங்கள் புதிய அமைப்புகளைச் சேமிக்கும் போது மீண்டும் உங்கள் எல்லா "
 "குறிப்புகளையும் ஒத்திசைக்க வேண்டியிருக்கும்."
 
-#: ../src/preferencesdialog.cpp:1247
+#: ../src/preferencesdialog.cpp:1293
 msgid "Connection successful"
 msgstr "இணைப்பு வெற்றி"
 
-#: ../src/preferencesdialog.cpp:1248
+#: ../src/preferencesdialog.cpp:1294
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
-msgstr ""
-"Gnote உங்கள் குறிப்புகளை ஒத்திசைக்கத் தயாராக உள்ளது.  இப்போது ஒத்திசைக்க வேண்டுமா?"
+msgstr "Gnote உங்கள் குறிப்புகளை ஒத்திசைக்கத் தயாராக உள்ளது.  இப்போது ஒத்திசைக்க வேண்டுமா?"
 
-#: ../src/preferencesdialog.cpp:1272
+#: ../src/preferencesdialog.cpp:1318
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -1830,66 +1816,64 @@ msgstr ""
 "உங்கள் தகவலை சரிபார்த்து விட்டு மீண்டும் முயற்சிக்கவும். பதிவுக் கோப்பு %1% இல் பிழையைப் "
 "பற்றிய மேலும் தகவல் இருக்கக்கூடும்."
 
-#: ../src/preferencesdialog.cpp:1277
+#: ../src/preferencesdialog.cpp:1323
+#| msgid "Error printing note"
 msgid "Error connecting"
 msgstr "இணைப்பதில் பிழை"
 
-#: ../src/preferencesdialog.cpp:1341
+#: ../src/preferencesdialog.cpp:1387
 msgid "Version:"
 msgstr "பதிப்பு:"
 
-#: ../src/preferencesdialog.cpp:1346
+#: ../src/preferencesdialog.cpp:1392
 msgid "Author:"
 msgstr "ஆசிரியர்:"
 
-#: ../src/preferencesdialog.cpp:1352
+#: ../src/preferencesdialog.cpp:1398
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:93
-msgid "Search All Notes"
-msgstr "இனைத்து குறிப்புகளையும் தேடு"
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:377
+#: ../src/searchnoteswidget.cpp:1017
+msgid "Notes"
+msgstr "குறிப்புகள்"
 
-#: ../src/recentchanges.cpp:115
-msgid "_Search:"
-msgstr "தேடவும் (_S):"
+#: ../src/recentchanges.cpp:130
+#| msgid "_New"
+msgid "New"
+msgstr "புதிய"
 
-#: ../src/recentchanges.cpp:376
+#: ../src/recentchanges.cpp:465
+msgid "_Close"
+msgstr "மூடவும் (_C)"
+
+#: ../src/searchnoteswidget.cpp:131
+#| msgid "_Open..."
+msgid "_Open"
+msgstr "(_O)திற"
+
+#: ../src/searchnoteswidget.cpp:134
+msgid "Open In New _Window"
+msgstr "புது _சாளரத்தில் திறக்கவும்"
+
+#: ../src/searchnoteswidget.cpp:138
+msgid "_Delete"
+msgstr "அழிக்கவும் (_D)"
+
+#: ../src/searchnoteswidget.cpp:141
+#| msgid "Delete Note_book"
+msgid "_Delete Notebook"
+msgstr "குறிப்பேட்டை நீக்கு (_D)"
+
+#: ../src/searchnoteswidget.cpp:678
 msgid "Note"
 msgstr "குறிப்பு"
 
-#: ../src/recentchanges.cpp:398
+#: ../src/searchnoteswidget.cpp:700
 msgid "Last Changed"
 msgstr "கடைசி மாற்றப்பட்டது"
 
-#: ../src/recentchanges.cpp:583
-msgid "Matches"
-msgstr "பொருத்தங்கள்"
-
-#. TRANSLATORS: search found a match in note title
-#: ../src/recentchanges.cpp:637
-msgid "Title match"
-msgstr "தலைப்புப் பொருத்தம்"
-
-#: ../src/recentchanges.cpp:641
-msgid "%1% match"
-msgid_plural "%1% matches"
-msgstr[0] "%1% பொருத்தம்"
-msgstr[1] "%1% பொருத்தங்கள்"
-
-#: ../src/recentchanges.cpp:655
-msgid "Total: %1% note"
-msgid_plural "Total: %1% notes"
-msgstr[0] "மொத்தம்: %1% குறிப்பு"
-msgstr[1] "மொத்தம்: %1% குறிப்புகள்"
-
-#: ../src/recentchanges.cpp:671
-msgid "Matches: %1% note"
-msgid_plural "Matches: %1% notes"
-msgstr[0] "பொருத்தங்கள்: %1% குறிப்பு"
-msgstr[1] "பொருத்தங்கள்: %1% குறிப்புகள்"
-
-#: ../src/recentchanges.cpp:687
+#: ../src/searchnoteswidget.cpp:1038
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1897,19 +1881,42 @@ msgstr ""
 "தேர்ந்தெடுத்த நோட்புக்கில் முடிவுகள் எதுவும் கிடைக்கவில்லை.\n"
 "எல்லாக் குறிப்புகளிலும் தேட இங்கு கிளிக் செய்யவும்."
 
-#: ../src/recentchanges.cpp:691
+#: ../src/searchnoteswidget.cpp:1042
 msgid "Click here to search across all notebooks"
 msgstr "எல்லாக் நோட்புக்குகளிலும் தேட இங்கு கிளிக் செய்யவும்."
 
-#: ../src/recentchanges.cpp:866
-msgid "Notes"
-msgstr "குறிப்புகள்"
+#: ../src/searchnoteswidget.cpp:1066
+msgid "Matches"
+msgstr "பொருத்தங்கள்"
+
+#. TRANSLATORS: search found a match in note title
+#: ../src/searchnoteswidget.cpp:1115
+#| msgid "%1% match"
+#| msgid_plural "%1% matches"
+msgid "Title match"
+msgstr "தலைப்புப் பொருத்தம்"
+
+#: ../src/searchnoteswidget.cpp:1119
+msgid "%1% match"
+msgid_plural "%1% matches"
+msgstr[0] "%1% பொருத்தம்"
+msgstr[1] "%1% பொருத்தங்கள்"
+
+#: ../src/searchnoteswidget.cpp:1353
+msgid "_Open Template Note"
+msgstr "மாதிரியுரு குறிப்பைத் திறக்கவும் (_O)"
+
+#: ../src/searchnoteswidget.cpp:1361
+#| msgid "New Note_book..."
+msgid "_New Notebook"
+msgstr "புதிய குறிப்பேடு (_N)"
 
 #: ../src/sharp/addinstreemodel.cpp:93
 msgid "Name"
 msgstr "பெயர்"
 
 #: ../src/sharp/addinstreemodel.cpp:105
+#| msgid "Version:"
 msgid "Version"
 msgstr "பதிப்பு"
 
@@ -1925,15 +1932,20 @@ msgstr "டெஸ்க்டாப் ஒருங்கிணைப்பு"
 
 #. TRANSLATORS: Addin category.
 #: ../src/sharp/addinstreemodel.cpp:144
+#| msgid "T_ools"
 msgid "Tools"
 msgstr "கருவிகள்"
 
 #. TRANSLATORS: Addin category is unknown.
 #: ../src/sharp/addinstreemodel.cpp:151
 msgid "Unknown"
-msgstr "தெரியாத"
+msgstr "தெரியாதது"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:117
+#: ../src/sharp/xmlwriter.cpp:40
+msgid "%1% failed"
+msgstr "%1% தோல்வியடைந்தது"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:116
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1% correctly installed and configured"
@@ -1941,61 +1953,65 @@ msgstr ""
 "இந்த ஒத்திசைவு துணைக்கருவியை உங்கள் கணினி ஆதரிக்கவில்லை. நீங்கள் FUSE மற்றும் %1% ஐ "
 "நிறுவி சரியாக அமைவாக்கம் செய்துள்ளீர்களா என சரிபார்க்கவும்"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:160
+#: ../src/synchronization/fusesyncserviceaddin.cpp:159
+#| msgid "Could not save the icon file."
 msgid "Could not read testfile."
 msgstr "சோதனைக்கோப்பை வாசிக்க முடியவில்லை."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:169
+#: ../src/synchronization/fusesyncserviceaddin.cpp:168
 msgid "Write test failed."
 msgstr "எழுதுதல் சோதனை தோல்வியுற்றது."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:198
+#: ../src/synchronization/fusesyncserviceaddin.cpp:197
 msgid "Timeout connecting to server."
 msgstr "சேவயகத்துடன் இணைக்கையில் காலாவதியானது."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:204
+#: ../src/synchronization/fusesyncserviceaddin.cpp:203
+#| msgid "Error printing note"
 msgid "Error connecting to server."
 msgstr "சேவையகத்துடன் இணைப்பதில் பிழை."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:217
+#: ../src/synchronization/fusesyncserviceaddin.cpp:216
 msgid "FUSE could not be enabled."
 msgstr "FUSE ஐ செயல்படுத்த முடியவில்லை."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:248
+#: ../src/synchronization/fusesyncserviceaddin.cpp:247
+#| msgid ""
+#| "The port to use when connecting to the synchronization server via SSH."
 msgid "An error ocurred while connecting to the specified server"
 msgstr "குறிப்பிடப்பட்ட சேவையகத்துடன் இணைக்க்கையில் ஒரு பிழை ஏற்பட்டது"
 
-#: ../src/synchronization/syncdialog.cpp:110
+#: ../src/synchronization/syncdialog.cpp:65
 msgid "Note Conflict"
 msgstr "குறிப்பு முரண்பாடு"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:115
+#: ../src/synchronization/syncdialog.cpp:70
 msgid " (old)"
 msgstr " (பழையது)"
 
-#: ../src/synchronization/syncdialog.cpp:157
+#: ../src/synchronization/syncdialog.cpp:112
 msgid "Rename local note:"
 msgstr "கணினியிலுள்ள குறிப்பை மறுபெயரிடு:"
 
-#: ../src/synchronization/syncdialog.cpp:164
+#: ../src/synchronization/syncdialog.cpp:119
 msgid "Update links in referencing notes"
 msgstr "கூடுதல் குறிப்புக் குறிப்புகளில் உள்ள இணைப்புகளைப் புதுப்பி"
 
-#: ../src/synchronization/syncdialog.cpp:171
+#: ../src/synchronization/syncdialog.cpp:126
 msgid "Overwrite local note"
 msgstr "கணினிக் குறிப்பை மேலெழுதுகிறது"
 
-#: ../src/synchronization/syncdialog.cpp:175
+#: ../src/synchronization/syncdialog.cpp:130
 msgid "Always perform this action"
 msgstr "எப்போதுமே இதே செயலை செய்"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:181
+#: ../src/synchronization/syncdialog.cpp:136
 msgid "Note conflict detected"
 msgstr "குறிப்பு முரண்பாடு உள்ளது"
 
-#: ../src/synchronization/syncdialog.cpp:183
+#: ../src/synchronization/syncdialog.cpp:138
 msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2004,55 +2020,57 @@ msgstr ""
 "உள்ளது.  கணினிக் குறிப்பை என்ன செய்ய விரும்புகிறீர்கள்?"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:337
+#: ../src/synchronization/syncdialog.cpp:290
 msgid "Details"
-msgstr "விவரங்கள்"
+msgstr "விவரம்"
 
-#: ../src/synchronization/syncdialog.cpp:376
+#: ../src/synchronization/syncdialog.cpp:329
 msgid "Status"
 msgstr "நிலை"
 
-#: ../src/synchronization/syncdialog.cpp:533
+#: ../src/synchronization/syncdialog.cpp:474
 msgid "Acquiring sync lock..."
 msgstr "ஒத்திசைவுப் பூட்டைப் பெறூகிறது..."
 
-#: ../src/synchronization/syncdialog.cpp:536
+#: ../src/synchronization/syncdialog.cpp:477
 msgid "Committing changes..."
 msgstr "மாற்றங்களைச் சமர்ப்பிக்கிறது..."
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:480
+#| msgid "Synchronize Notes"
 msgid "Synchronizing Notes"
 msgstr "குறிப்புகளை ஒத்திசைக்கிறது"
 
-#: ../src/synchronization/syncdialog.cpp:540
+#: ../src/synchronization/syncdialog.cpp:481
+#| msgid "Start synchronizing notes"
 msgid "Synchronizing your notes..."
 msgstr "உங்கள் குறிப்புகளை ஒத்திசைக்கிறது..."
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:482
 msgid "This may take a while, kick back and enjoy!"
 msgstr "இதற்கு சிறிது நேரம் ஆகலாம், பணம் கொடுத்து மகிழுங்கள்!"
 
-#: ../src/synchronization/syncdialog.cpp:543
+#: ../src/synchronization/syncdialog.cpp:484
 msgid "Connecting to the server..."
 msgstr "சேவையகத்துடன் இணைக்கிறது..."
 
-#: ../src/synchronization/syncdialog.cpp:549
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "Deleting notes off of the server..."
 msgstr "சேவையகத்திலிருந்து குறிப்புகளை நீக்குகிறது..."
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:494
 msgid "Downloading new/updated notes..."
 msgstr "புதிய/புதுப்பிக்கப்பட்ட குறிப்புகளைப் பதிவிறக்குகிறது..."
 
-#: ../src/synchronization/syncdialog.cpp:565
+#: ../src/synchronization/syncdialog.cpp:506
 msgid "Server Locked"
 msgstr "சேவையகம் பூட்டப்பட்டது"
 
-#: ../src/synchronization/syncdialog.cpp:566
+#: ../src/synchronization/syncdialog.cpp:507
 msgid "Server is locked"
 msgstr "சேவையகம் பூட்டப்பட்டுள்ளது"
 
-#: ../src/synchronization/syncdialog.cpp:567
+#: ../src/synchronization/syncdialog.cpp:508
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2060,121 +2078,134 @@ msgstr ""
 "உங்கள் பிற கணினிகளில் ஒன்று தற்போது ஒத்திசைக்கப்படுகிறது. 2 நிமிடங்கள் காத்திருந்து "
 "மீண்டும் பிறகு முயற்சிக்கவும்."
 
-#: ../src/synchronization/syncdialog.cpp:571
+#: ../src/synchronization/syncdialog.cpp:512
 msgid "Preparing to download updates from server..."
 msgstr "சேவையகத்திலிருந்து புதுப்பிப்புகளைப் பதிவிறக்க தயார் செய்கிறது..."
 
-#: ../src/synchronization/syncdialog.cpp:574
+#: ../src/synchronization/syncdialog.cpp:515
 msgid "Preparing to upload updates to server..."
 msgstr "சேவையகத்திற்கு புதுப்பிப்புகளைப் பதிவேற்றத் தயார் செய்கிறது..."
 
-#: ../src/synchronization/syncdialog.cpp:577
+#: ../src/synchronization/syncdialog.cpp:518
 msgid "Uploading notes to server..."
 msgstr "குறிப்புகளை சேவையகத்திற்கு பதிவேற்றுகிறது... "
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:521
+#| msgid "Synchronization Client ID"
 msgid "Synchronization Failed"
 msgstr "ஒத்திசைவு தோல்வியடைந்தது"
 
-#: ../src/synchronization/syncdialog.cpp:581
+#: ../src/synchronization/syncdialog.cpp:522
+#| msgid "Start synchronizing notes"
 msgid "Failed to synchronize"
 msgstr "ஒத்திசைப்பது தோல்வியடைந்தது"
 
-#: ../src/synchronization/syncdialog.cpp:582
+#: ../src/synchronization/syncdialog.cpp:523
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "குறிப்புகளை ஒத்திசைக்க முடியவில்லை. கீழே உள்ள விவரங்களை சரிபார்த்துவிட்டு மீண்டும் "
 "முயற்சிக்கவும்."
 
-#: ../src/synchronization/syncdialog.cpp:588
+#: ../src/synchronization/syncdialog.cpp:529
+#| msgid "Synchronization Client ID"
 msgid "Synchronization Complete"
 msgstr "ஒத்திசைவு முடிவடைந்தது"
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:530
+#| msgid "Synchronization Client ID"
 msgid "Synchronization is complete"
 msgstr "ஒத்திசைவு முடிவடைந்தது"
 
-#: ../src/synchronization/syncdialog.cpp:590
+#: ../src/synchronization/syncdialog.cpp:531
+#| msgid "%1% Notebook Template"
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% குறிப்பு புதுப்பிக்கப்பட்டது."
 msgstr[1] "%1% குறிப்பேடு மாதிரிஉரு"
 
-#: ../src/synchronization/syncdialog.cpp:591
+#: ../src/synchronization/syncdialog.cpp:532
 msgid "Your notes are now up to date."
 msgstr "இப்போது உங்கள் குறிப்புகள் புதுப்பித்த நிலையில் உள்ளன."
 
-#: ../src/synchronization/syncdialog.cpp:596
+#: ../src/synchronization/syncdialog.cpp:537
+#| msgid "Synchronization Client ID"
 msgid "Synchronization Canceled"
 msgstr "ஒத்திசைவு ரத்துசெய்யப்பட்டது"
 
-#: ../src/synchronization/syncdialog.cpp:597
+#: ../src/synchronization/syncdialog.cpp:538
+#| msgid "Synchronization Client ID"
 msgid "Synchronization was canceled"
 msgstr "ஒத்திசைவு ரத்துசெய்யப்பட்டது"
 
-#: ../src/synchronization/syncdialog.cpp:598
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "நீங்கள் ஒத்திசைவை ரத்துசெய்துவிட்டீர்கள்.  இப்போது நீங்கள் சாளரத்தை மூடலாம்."
 
-#: ../src/synchronization/syncdialog.cpp:602
+#: ../src/synchronization/syncdialog.cpp:543
+#| msgid "Synchronization Client ID"
 msgid "Synchronization Not Configured"
 msgstr "ஒத்திசைவு அமைவாக்கம் செய்யப்படவில்லை"
 
-#: ../src/synchronization/syncdialog.cpp:603
+#: ../src/synchronization/syncdialog.cpp:544
+#| msgid "Synchronization Client ID"
 msgid "Synchronization is not configured"
 msgstr "ஒத்திசைவு அமைவாக்கம் செய்யப்படவில்லை"
 
-#: ../src/synchronization/syncdialog.cpp:604
+#: ../src/synchronization/syncdialog.cpp:545
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "விருப்பத்தேர்வுகள் உரையாடல் பெட்டியில் ஒத்திசைவை அமைவாக்கம் செய்யவும்."
 
-#: ../src/synchronization/syncdialog.cpp:608
+#: ../src/synchronization/syncdialog.cpp:549
+#| msgid "SSHFS Synchronization Server Port"
 msgid "Synchronization Service Error"
 msgstr "ஒத்திசைவு சேவைப் பிழை"
 
-#: ../src/synchronization/syncdialog.cpp:609
+#: ../src/synchronization/syncdialog.cpp:550
+#| msgid "Ser_vice:"
 msgid "Service error"
 msgstr "சேவைப் பிழை"
 
-#: ../src/synchronization/syncdialog.cpp:610
+#: ../src/synchronization/syncdialog.cpp:551
+#| msgid ""
+#| "The port to use when connecting to the synchronization server via SSH."
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "ஒத்திசைக்கப்பட்ட சேவையகத்துடன் இணைப்பதில் பிழை. மீண்டும் முயற்சிக்கவும்."
 
-#: ../src/synchronization/syncdialog.cpp:624
+#: ../src/synchronization/syncdialog.cpp:565
 msgid "Deleted locally"
 msgstr "கணினியில் இருந்து நீக்கப்பட்டது"
 
-#: ../src/synchronization/syncdialog.cpp:627
+#: ../src/synchronization/syncdialog.cpp:568
 msgid "Deleted from server"
 msgstr "சேவையகத்திலிருந்து நீக்கப்பட்டது"
 
-#: ../src/synchronization/syncdialog.cpp:630
+#: ../src/synchronization/syncdialog.cpp:571
 msgid "Updated"
-msgstr "புதுப்பிக்கப்படுகிறது"
+msgstr "புதுப்பிக்கப்பட்டது"
 
-#: ../src/synchronization/syncdialog.cpp:633
+#: ../src/synchronization/syncdialog.cpp:574
 msgid "Added"
 msgstr "சேர்க்கப்பட்டது"
 
-#: ../src/synchronization/syncdialog.cpp:636
+#: ../src/synchronization/syncdialog.cpp:577
 msgid "Uploaded changes to server"
 msgstr "மாற்றங்களை சேவையகத்திற்குப் பதிவேற்றியது"
 
-#: ../src/synchronization/syncdialog.cpp:639
+#: ../src/synchronization/syncdialog.cpp:580
 msgid "Uploaded new note to server"
 msgstr "புதிய குறிப்பை சேவையகத்திற்குப் பதிவேற்றியது"
 
-#: ../src/synchronization/syncmanager.cpp:135
-msgid "_Tools"
-msgstr "_T கருவிகள்"
+#: ../src/synchronization/syncmanager.cpp:66
+msgid "Synchronize Notes"
+msgstr "ஒத்திசைக்கப்பட்ட குறிப்புகள்"
 
-#: ../src/synchronization/syncutils.cpp:142
-#: ../src/synchronization/syncutils.cpp:174
+#: ../src/synchronization/syncutils.cpp:146
+#: ../src/synchronization/syncutils.cpp:178
 msgid "Could not enable FUSE"
 msgstr "FUSE ஐ செயல்படுத்த முடியவில்லை"
 
-#: ../src/synchronization/syncutils.cpp:143
-#: ../src/synchronization/syncutils.cpp:175
+#: ../src/synchronization/syncutils.cpp:147
+#: ../src/synchronization/syncutils.cpp:179
 msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
@@ -2182,13 +2213,14 @@ msgstr ""
 "FUSE மாட்யூலை ஏற்ற முடியவில்லை. அது சரியாக நிறுவப்பட்டுள்ளதா எனப் பார்த்துவிட்டு மீண்டும் "
 "முயற்சிக்கவும்."
 
-#: ../src/synchronization/syncutils.cpp:151
+#: ../src/synchronization/syncutils.cpp:155
+#| msgid "_Enable"
 msgid "Enable FUSE?"
 msgstr "FUSE ஐ செயல்படுத்தவா?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
-#: ../src/synchronization/syncutils.cpp:154
+#: ../src/synchronization/syncutils.cpp:158
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
@@ -2202,19 +2234,23 @@ msgstr ""
 "init.d/boot.local இல் \"modprobe fuse\" என்பதையோ அல்லது /etc/modules இல் \"fuse"
 "\" என்பதையோ சேர்க்கவும்."
 
-#: ../src/tray.cpp:54
+#: ../src/tray.cpp:55
 msgid "Take notes"
 msgstr "குறிப்புகள் எடு"
 
-#: ../src/tray.cpp:164
+#: ../src/tray.cpp:165
 msgid " (new)"
 msgstr " (புதிய)"
 
-#: ../src/tray.cpp:470
+#: ../src/tray.cpp:466
+msgid "_Help"
+msgstr "உதவி (_H)"
+
+#: ../src/tray.cpp:471
 msgid "_About Gnote"
 msgstr "(_A) Gnoteஐ பற்றி"
 
-#: ../src/utils.cpp:130
+#: ../src/utils.cpp:137
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2222,60 +2258,60 @@ msgstr ""
 "\"Gnote Manual\" காணப்படு பிடிக்கப்படவில்லை.  நிறுவல் வெற்றிகரமாக முடிக்கப்பட்டதா என "
 "சரிபார்க்கவும்."
 
-#: ../src/utils.cpp:138
+#: ../src/utils.cpp:145
 msgid "Help not found"
 msgstr "உதவி காணப்படவில்லை"
 
-#: ../src/utils.cpp:171
+#: ../src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "இடத்தை திறக்க முடியவில்லை"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:193
 msgid "Today, %1%"
 msgstr "இன்று, %1%"
 
-#: ../src/utils.cpp:187
+#: ../src/utils.cpp:194
 msgid "Today"
 msgstr "இன்று"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:200
 msgid "Yesterday, %1%"
 msgstr "நேற்று, %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:201
 msgid "Yesterday"
 msgstr "நேற்று"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:203
+#: ../src/utils.cpp:210
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
-msgstr[0] "%1% நாளுக்கு முன், %2%"
+msgstr[0] "%1% நாளுக்கு முன்பு, %2%"
 msgstr[1] ""
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:216
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "%1% நாளுக்கு முன்"
 msgstr[1] "%1% நாட்களுக்கு முன்"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:224
 msgid "Tomorrow, %1%"
 msgstr "நாளை, %1%"
 
-#: ../src/utils.cpp:218
+#: ../src/utils.cpp:225
 msgid "Tomorrow"
 msgstr "நாளை"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:234
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "%1% நாளில், %2%"
@@ -2283,36 +2319,35 @@ msgstr[1] "%1% நாட்களில், %2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:233
+#: ../src/utils.cpp:240
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "%1% நாளில்"
 msgstr[1] "%1% நாட்களில்"
 
-#: ../src/utils.cpp:244
+#: ../src/utils.cpp:251
 msgid "No Date"
 msgstr "தேதி இல்லை"
 
-#: ../src/watchers.cpp:210
+#: ../src/watchers.cpp:211
 msgid "(Untitled %1%)"
 msgstr "(தலைப்பிடப்படாத %1%)"
 
-#: ../src/watchers.cpp:245
+#: ../src/watchers.cpp:242
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
-msgstr ""
-"ஒரு குறிப்பு தலைப்பு <b>%1%</b> ஏற்கனவே உள்ளது. வேறு பெயரை தேர்ந்தெடுத்து தொடரவும்."
+msgstr "ஒரு குறிப்பு தலைப்பு <b>%1%</b> ஏற்கனவே உள்ளது. வேறு பெயரை தேர்ந்தெடுத்து தொடரவும்."
 
-#: ../src/watchers.cpp:259
+#: ../src/watchers.cpp:256
 msgid "Note title taken"
 msgstr "குறிப்பு தலைப்பு எடுக்கப்படுகிறது"
 
-#: ../src/watchers.cpp:585
+#: ../src/watchers.cpp:581
 msgid "_Copy Link Address"
 msgstr "இணைப்பு முகவரியை நகலெடு (_C)"
 
-#: ../src/watchers.cpp:591
+#: ../src/watchers.cpp:587
 msgid "_Open Link"
 msgstr "இணைப்பை திற (_O)"
 
@@ -2325,6 +2360,15 @@ msgstr "இணைப்பை திற (_O)"
 #~ msgid "Simple and easy to use note-taking"
 #~ msgstr "குறிப்பு எடுப்பதற்கு சுலபமாகவும் மற்றும் எளிதாக உள்ளது"
 
+#~ msgid "Enable startup notes"
+#~ msgstr "துவக்க குறிப்புகளை செயல்படுத்தலாம்"
+
+#~ msgid ""
+#~ "If enabled, all notes that were open when Gnote quit will automatically "
+#~ "be reopened at startup."
+#~ msgstr ""
+#~ "செயல்படுத்தப்பட்டால், அனைத்து குறிப்புகள் Gnote மூடப்பட்டாலும், தானாக துவக்கப்படும்."
+
 #~ msgid "Set to TRUE to activate"
 #~ msgstr "செயல்படுத்த சரி என அமை"
 
@@ -2333,6 +2377,21 @@ msgstr "இணைப்பை திற (_O)"
 
 #~ msgid "Description"
 #~ msgstr "விளக்கம்"
+
+#~ msgid "_File"
+#~ msgstr "கோப்பு (_F)"
+
+#~ msgid "Open the selected note"
+#~ msgstr "தேர்ந்தெடுக்கப்பட்ட குறிப்பை திறக்கவும்"
+
+#~ msgid "_Edit"
+#~ msgstr "திருத்தவும் (_E)"
+
+#~ msgid "S_ynchronize Notes"
+#~ msgstr "ஒத்திசைக்கப்பட்ட குறிப்புகள் (_y)"
+
+#~ msgid "Cannot create new note"
+#~ msgstr "புதிய குறிப்பை உருவாக்க முடியவில்லை"
 
 #~ msgid "Run Gnote as a GNOME panel applet."
 #~ msgstr "Gnoteஐ ஒரு GNOME பேனல் ஆப்லெட்டாக இயக்கவும்."
@@ -2343,5 +2402,45 @@ msgstr "இணைப்பை திற (_O)"
 #~ msgid "New Note %1%"
 #~ msgstr "புதிய குறிப்பு %1%"
 
+#~ msgid "Clos_e All Notes"
+#~ msgstr "அனைத்து குறிப்புகளையும் மூடவும் (_e)"
+
+#~ msgid "Search"
+#~ msgstr "தேடவும்"
+
+#~ msgid "Search your notes (Ctrl-Shift-F)"
+#~ msgstr "உங்களுடைய குறிப்புகளையும் தேடவும் (Ctrl-Shift-F)"
+
+#~ msgid "_Find:"
+#~ msgstr "தேடவும் (_F):"
+
+#~ msgid "Search All Notes"
+#~ msgstr "இனைத்து குறிப்புகளையும் தேடு"
+
 #~ msgid "C_ase Sensitive"
 #~ msgstr "எழுத்துணர்வுள்ள (_a)"
+
+#~ msgid "_Search:"
+#~ msgstr "தேடவும் (_S):"
+
+#~ msgid "Total: %1% note"
+#~ msgid_plural "Total: %1% notes"
+#~ msgstr[0] "மொத்தம்: %1% குறிப்பு"
+#~ msgstr[1] "மொத்தம்: %1% குறிப்புகள்"
+
+#~ msgid "Matches: %1% note"
+#~ msgid_plural "Matches: %1% notes"
+#~ msgstr[0] "பொருத்தங்கள்: %1% குறிப்பு"
+#~ msgstr[1] "பொருத்தங்கள்: %1% குறிப்புகள்"
+
+#~ msgid "Note_books"
+#~ msgstr "குறிப்பேடுகள் (_b)"
+
+#~ msgid "Create a new note in this notebook"
+#~ msgstr "இந்த குறிப்பேட்டில் ஒரு புதிய குறிப்பை உருவாக்கு"
+
+#~ msgid "Open this notebook's template note"
+#~ msgstr "இந்த குறிப்பேடுகளின் மாதிரியுரு குறிப்பை திறக்கவும்"
+
+#~ msgid "Delete the selected notebook"
+#~ msgstr "தேர்ந்தெடுக்கப்பட்ட குறிப்பேட்டை அழிக்கவும்"
