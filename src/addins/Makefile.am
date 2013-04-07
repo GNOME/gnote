@@ -11,6 +11,7 @@ SUBDIRS = backlinks \
 	noteoftheday \
 	printnotes \
 	replacetitle \
+	statistics \
 	stickynoteimport \
 	tomboyimport \
 	underline \
