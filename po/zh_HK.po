@@ -1,0 +1,2151 @@
+# Chinese translations for gnote package
+# Chinese (Hong Kong) translation for gnote.
+# Copyright (C) 2013 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnote package.
+# Shao-Wen Young <b00507031@ntu.edu.tw>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 3.7.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-10 15:05+0800\n"
+"PO-Revision-Date: 2013-04-10 15:05+0800\n"
+"Last-Translator: Shao-Wen Young <b00507031@ntu.edu.tw>\n"
+"Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../data/gnote.desktop.in.in.h:1
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/gnote.desktop.in.in.h:2
+msgid "Take notes, link ideas, and stay organized"
+msgstr "記下筆記，連結創意，保持組織。"
+
+#: ../data/gnote.desktop.in.in.h:3
+msgid "Note-taker"
+msgstr "筆記程式"
+
+#: ../data/gnote.desktop.in.in.h:4
+msgid "note;idea;link;organize;"
+msgstr "筆記；創意；連結；組織"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:1
+msgid "Enable spellchecking"
+msgstr "啟用拼字檢查"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:2
+msgid ""
+"If true, misspellings will be underlined in red, and correct spelling "
+"suggestions shown in the right-click menu."
+msgstr "設定為true時，拼錯的字會被加上紅色底線，並在右鍵選單裏顯示正確拼法。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:3
+msgid "Enable WikiWord highlighting"
+msgstr "啟用WikiWord標示"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:4
+msgid ""
+"Enable this option to highlight words ThatLookLikeThis. Clicking the word "
+"will create a note with that name."
+msgstr "啟用後，長得像WikiWord的字會被強調出來，點選那個字會創建一個以它為名的筆記。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:5
+msgid "Enable Auto bulleted lists"
+msgstr "啟用自動項目標示"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:6
+msgid ""
+"Enable this option if you want bulleted lists to be automatic when you place "
+"- or * at the beginning of a line."
+msgstr "啟用這個選項後，在每行首打上-或*就會自動生成有項目符號的清單。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:7
+msgid "Enable Middle-Click Paste On Icon"
+msgstr "啟用中鍵貼上圖示"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:8
+msgid ""
+"Enable this option if you want to be able to middle-click the Gnote icon to "
+"paste timestamped content into the Start Here note."
+msgstr "若你想要以中鍵點選Gnote圖示的方式在「從這裏開始」筆記中加上有時戳的內容，就啟用這個選項。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:9
+msgid "Enable custom font"
+msgstr "啟用自選字型"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:10
+msgid ""
+"If true, the font name set in custom-font-face will be used as the font when "
+"displaying notes. Otherwise the desktop default font will be used."
+msgstr "設定為true時會用自選字型欄設定的字型來顯示筆記，否則會用系統預設值。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:11
+msgid "Custom Font Face"
+msgstr "自選字型欄"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:12
+msgid ""
+"If enable-custom-font is true, the font name set here will be used as the "
+"font when displaying notes."
+msgstr "啟用自選字型後會用這裏設定的字型來顯示所有筆記。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:13
+msgid "Enable global keybindings"
+msgstr "啟用全域快速鍵"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:14
+msgid ""
+"If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
+"keybindings will be enabled, allowing for useful Gnote actions to be "
+"available from any application."
+msgstr "設定為true時，在所有程式裏都能用在/org/gnome/gnote/global-keybindings設定的快速鍵來執行Gnote的功能。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:15
+msgid "Start Here Note"
+msgstr "「從這裏開始」筆記"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:16
+msgid ""
+"The note URI of the note that should be considered the \"Start Here\" note, "
+"which is always placed at the bottom of the Gnote note menu and also "
+"accessible by hotkey."
+msgstr "這份筆記的位置會被視為「從這裏開始」筆記，會被置於Gnote筆記選單的底部並且可用快速鍵開啟。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:17
+msgid "Minimum number of notes to show in menu"
+msgstr "選單顯示的筆記數量"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:18
+msgid ""
+"Integer determining the minimum number of notes to show in the Gnote note "
+"menu."
+msgstr "一個整數表示在Gnote筆記選單裏顯示幾份筆記。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:19
+msgid "List of pinned notes"
+msgstr "釘選筆記的清單"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:20
+msgid ""
+"Whitespace-separated list of note URIs for notes that should always appear "
+"in the Gnote note menu."
+msgstr "會一直出現在Gnote筆記選單的筆記名稱，每份之間用半形空白鍵隔開。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:21
+msgid "Is main window maximized"
+msgstr "最大化主視窗"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:22
+msgid "If true, Gnote window will be maximized."
+msgstr "設定為true時，Gnote視窗會被放到最大。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:23
+msgid "Saved height of Search window"
+msgstr "紀錄的搜尋視窗的高度"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:24
+msgid "Determines pixel height of Search window; stored on Gnote exit."
+msgstr "離開Gnote時記下的搜尋視窗高度。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:25
+msgid "Saved width of Search window"
+msgstr "紀錄的搜尋視窗的闊度"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:26
+msgid "Determines pixel width of Search window; stored on Gnote exit."
+msgstr "離開Gnote時記下的搜尋視窗闊度。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:27
+msgid "Saved horizontal position of Search window"
+msgstr "紀錄的搜尋視窗水平位置"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:28
+msgid "Determines X coordinate of Search window; stored on Gnote exit."
+msgstr "離開Gnote時記下的搜尋視窗左右位置。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:29
+msgid "Saved vertical position of Search window"
+msgstr "紀錄的搜尋視窗垂直位置"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:30
+msgid "Determines Y coordinate of Search window; stored on Gnote exit."
+msgstr "離開Gnote時記下的搜尋視窗上下位置。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:31
+msgid "Saved splitter position of Search window splitter."
+msgstr "紀錄的搜尋視窗分隔線位置。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:32
+msgid ""
+"Determines Search window splitter position in pixels; stored on Gnote exit."
+msgstr "離開Gnote時記下的搜尋視窗分隔線位置。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:33
+msgid "FUSE Mounting Timeout (ms)"
+msgstr "FUSE掛載時限（毫秒）"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+msgid ""
+"Time (in milliseconds) Gnote should wait for a response when using FUSE to "
+"mount a sync share."
+msgstr "使用FUSE掛載同步分享時Gnote等待回應多久。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:35
+msgid "SSHFS Remote Synchronization Folder"
+msgstr "SSHFS遠端同步資料夾"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:36
+msgid "Path on SSH server to Gnote synchronization directory (optional)."
+msgstr "在SSH伺服器上的Gnote同步路徑（可有可無）"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:37
+msgid "SSHFS Synchronization Server URL"
+msgstr "SSHFS同步伺服器網址"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:38
+msgid "URL of SSH server containing Gnote synchronization directory."
+msgstr "包含Gnote同步目錄的SSH伺服器網址"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:39
+msgid "SSHFS Remote Synchronization User Name"
+msgstr "SSHFS遠端同步使用者名稱"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:40
+msgid "User name to use when connecting to the synchronization server via SSH."
+msgstr "以SSH連接同步伺服器時的使用者名稱。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:41
+msgid "SSHFS Synchronization Server Port"
+msgstr "SSHFS同步伺服器連接埠"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:42
+msgid "The port to use when connecting to the synchronization server via SSH."
+msgstr "以SSH連接同步伺服器用的連接埠"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:43
+msgid "Link Updating Behavior on Note Rename"
+msgstr "重新命名筆記時更新連結"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:44
+msgid ""
+"Integer value indicating if there is a preference to always perform a "
+"specific link updating behavior when a note is renamed, instead of prompting "
+"the user. The values map to an internal enumeration. 0 indicates that the "
+"user wishes to be prompted when renaming a note may impact links that exist "
+"in other notes. 1 indicates that links should automatically be removed. 2 "
+"indicates that link text should be updated to the new note name so that it "
+"will continue linking to the renamed note."
+msgstr "一個整數表示筆記被更名時自動執行的動作，0表示詢問使用者要怎麼做；1表示要自動刪除連結；2表示要將連結文字一併更名使其繼續連到被更名筆記。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:45
+msgid "Enable closing notes with escape"
+msgstr "用Esc鍵關閉筆記"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:46
+msgid "If enabled, an opened note can be closed by hitting the escape key."
+msgstr "啟用後，按下Esc鍵即可關閉開着的筆記"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:47
+msgid "Use status icon, when started as an application"
+msgstr "在系統匣顯示圖示"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:48
+msgid ""
+"Has affect only when started as an application. When set to TRUE, shows a "
+"status icon. If set to FALSE, Search All Notes window is used as main "
+"application window, closing which makes application to exit."
+msgstr "程式啟動後才有效。設定為TRUE的話會在系統狀態列顯示圖示，FALSE的話會用「所有筆記」視窗作為程式主視窗，關掉它就會關掉整個程式。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:49
+msgid "Show applet menu"
+msgstr "顯示程式選單"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:50
+msgid ""
+"The global keybinding for showing the Gnote applet's menu. The format looks "
+"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
+"fairly liberal and allows lower or upper case, and also abbreviations such "
+"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
+"special string \"disabled\", then there will be no keybinding for this "
+"action."
+msgstr "用來顯示Gnote程式選單的全域快速鍵，應該長得像 \"&lt;Control&gt;a\"或是\"&lt;Shift&gt;&lt;Alt&gt;F1\"這樣。它的語法很自由，允許大小寫或是\"&lt;Ctl&gt;\" 、 \"&lt;Ctrl&gt;\"之類的縮寫。如果你設定為「disabled」，則不會有任何代表這個動作的快速鍵。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:51
+msgid "Open Start Here"
+msgstr "開啟「從這裏開始」"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:52
+msgid ""
+"The global keybinding for opening the \"Start Here\" note. The format looks "
+"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
+"fairly liberal and allows lower or upper case, and also abbreviations such "
+"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
+"special string \"disabled\", then there will be no keybinding for this "
+"action."
+msgstr "用來開啟「從這裏開始」筆記的全域快速鍵，應該長得像 \"&lt;Control&gt;a\"或是\"&lt;Shift&gt;&lt;Alt&gt;F1\"這樣。它的語法很自由，允許大小寫或是 \"&lt;Ctl&gt;\"、\"&lt;Ctrl&gt;\"之類的縮寫。如果你設定為「disabled」，則不會有任何代表這個動作的快速鍵。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:53
+msgid "Create a new Note"
+msgstr "建立新的筆記"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:54
+msgid ""
+"The global keybinding for creating and displaying a new Note. The format "
+"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+"parser is fairly liberal and allows lower or upper case, and also "
+"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
+"option to the special string \"disabled\", then there will be no keybinding "
+"for this action."
+msgstr "用來建立新筆記的全域快速鍵，應該長得像 \"&lt;Control&gt;a\"或是\"&lt;Shift&gt;&lt;Alt&gt;F1\"這樣。它的語法很自由，允許大小寫或是\"&lt;Ctl&gt;\"、\"&lt;Ctrl&gt;\"之類的縮寫。如果你設定為「disabled」，則不會有任何代表這個動作的快速鍵。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:55
+msgid "Open Search Dialog"
+msgstr "開啟「搜尋」對話框"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+msgid ""
+"The global keybinding for opening the Note Search dialog. The format looks "
+"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
+"fairly liberal and allows lower or upper case, and also abbreviations such "
+"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
+"special string \"disabled\", then there will be no keybinding for this "
+"action."
+msgstr "用來開啟「搜尋」對話框的全域快速鍵，應該長得像 \"&lt;Control&gt;a\"或是\"&lt;Shift&gt;&lt;Alt&gt;F1\"這樣。它的語法很自由，允許大小寫或是\"&lt;Ctl&gt;\"、\"&lt;Ctrl&gt;\"之類縮寫。若你設定為「disabled」，則不會有任何代表這個動作的快速鍵。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
+msgid "Open Recent Changes"
+msgstr "開啟「最近更改」對話框"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+msgid ""
+"The global keybinding for opening the Recent Changes dialog. The format "
+"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+"parser is fairly liberal and allows lower or upper case, and also "
+"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
+"option to the special string \"disabled\", then there will be no keybinding "
+"for this action."
+msgstr "用來開啟「最近更改」對話框的全域快速鍵，應該長得像 \"&lt;Control&gt;a\"或是\"&lt;Shift&gt;&lt;Alt&gt;F1\"這樣。它的語法很自由，允許大小寫或是\"&lt;Ctl&gt;\"、\"&lt;Ctrl&gt;\"之類縮寫。若你設定為「disabled」，則不會有任何代表這個動作的快速鍵。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+msgid "HTML Export Last Directory"
+msgstr "上次匯出HTML的目錄"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+msgid ""
+"The last directory a note was exported to using the Export To HTML plugin."
+msgstr "上次使用「匯出成HTML」擴充功能時匯出到的目錄。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+msgid "HTML Export Linked Notes"
+msgstr "匯出連結的筆記"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
+msgid ""
+"The last setting for the 'Export linked notes' checkbox in the Export to "
+"HTML plugin."
+msgstr "「匯出成HTML」擴充功能有無勾選「匯出連結的筆記」。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+msgid "HTML Export All Linked Notes"
+msgstr "匯出所有連結的筆記為HTML"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+msgid ""
+"The last setting for the 'Include all other linked notes' checkbox in the "
+"Export to HTML plugin. This setting is used in conjunction with the 'HTML "
+"Export Linked Notes' setting and is used to specify whether all notes (found "
+"recursively) should be included during an export to HTML."
+msgstr "「匯出成HTML」擴充功能有無勾選「包含所有其他連結到的筆記」。這個設定與「匯出連結的筆記」選項連用，是否把連結到的筆記再連結到……的每一個筆記一起匯出成HTML。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+msgid "Synchronization Client ID"
+msgstr "同步用戶端ID"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+msgid ""
+"Unique identifier for this Gnote client, used when communicating with a "
+"sychronization server."
+msgstr "這個Gnote用戶端與同步伺服器溝通時的唯一識別碼。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+msgid "Synchronization Local Server Path"
+msgstr "本地同步伺服器路徑"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+msgid ""
+"Path to the synchronization server when using the filesystem synchronization "
+"service addin."
+msgstr "使用「檔案系統同步」附加元件時的同步伺服器位置。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+msgid "Selected Synchronization Service Addin"
+msgstr "選取的同步服務附加元件"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+msgid ""
+"Unique identifier for the currently configured note synchronization service "
+"addin."
+msgstr "目前使用的唯一同步服務附加元件"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+msgid "Note Synchronization Conflict Saved Behavior"
+msgstr "同步筆記發生衝突時的動作"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+msgid ""
+"Integer value indicating if there is a preference to always perform a "
+"specific behavior when a conflict is detected, instead of prompting the "
+"user. The values map to an internal enumeration. 0 indicates that the user "
+"wishes to be prompted when a conflict occurs, so that they may handle each "
+"conflict situation on a case-by-case basis."
+msgstr "一個整數表示發現衝突時自動執行的動作：0表示每個狀況都詢問使用者應該怎麼做。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+msgid "Automatic Background Synchronization Timeout"
+msgstr "自動備份延遲時間"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+msgid ""
+"Integer value indicating how frequently to perform a background sync of your "
+"notes (when sync is configured). Any value less than 1 indicates that "
+"autosync is disabled. The lowest acceptable positive value is 5. Value is in "
+"minutes."
+msgstr "有設定同步時多久備份一次筆記到同步伺服器，任何小於1的值表示不自動同步。可允許的最小值為5，單位是分鐘。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+msgid "Accept SSL Certificates"
+msgstr "接受SSL證書"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+msgid ""
+"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
+"user."
+msgstr "不另外詢問而使用wdfs選項\"-ac\"來接受SSL證書。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+msgid "Share URL"
+msgstr "共享URL"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "WebDAV share URL where notes are synchronized to."
+msgstr "筆記同步到的WebDAV的共享URL。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "Share username"
+msgstr "共享使用者名稱"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+msgid "Username to access WebDAV share."
+msgstr "WebDAV的使用者名稱。"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+msgid "Timestamp format"
+msgstr "時戳格式"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+msgid ""
+"The date format that is used for the timestamp. It follows the format of "
+"strftime(3)."
+msgstr "時戳用的日期格式，沿用strftime(3)的格式。"
+
+#: ../src/actionmanager.cpp:169 ../src/actionmanager.cpp:262
+#: ../src/tray.cpp:478
+msgid "_Quit"
+msgstr "離開(_Q)"
+
+#: ../src/actionmanager.cpp:169
+msgid "Quit Gnote"
+msgstr "離開Gnote"
+
+#: ../src/actionmanager.cpp:174 ../src/actionmanager.cpp:259
+#: ../src/tray.cpp:461
+msgid "_Preferences"
+msgstr "偏好設定(_P)"
+
+#: ../src/actionmanager.cpp:174 ../src/preferencesdialog.cpp:104
+msgid "Gnote Preferences"
+msgstr "Gnote偏好設定值"
+
+#: ../src/actionmanager.cpp:178
+msgid "_Contents"
+msgstr "內容(_C)"
+
+#: ../src/actionmanager.cpp:178
+msgid "Gnote Help"
+msgstr "Gnote說明"
+
+#: ../src/actionmanager.cpp:183 ../src/actionmanager.cpp:261
+msgid "_About"
+msgstr "關於(_A)"
+
+#: ../src/actionmanager.cpp:183
+msgid "About Gnote"
+msgstr "關於Gnote"
+
+#: ../src/actionmanager.cpp:187
+msgid "TrayIcon"
+msgstr "系統匣圖示"
+
+#: ../src/actionmanager.cpp:192
+msgid "Create _New Note"
+msgstr "新建筆記(_N)"
+
+#: ../src/actionmanager.cpp:192
+msgid "Create a new note"
+msgstr "建立新的筆記"
+
+#: ../src/actionmanager.cpp:197
+msgid "_Search All Notes"
+msgstr "搜尋所有筆記(_S)"
+
+#: ../src/actionmanager.cpp:197
+msgid "Open the Search All Notes window"
+msgstr "開啟「搜尋所有筆記」視窗"
+
+#: ../src/actionmanager.cpp:257 ../src/searchnoteswidget.cpp:1325
+msgid "_New Note"
+msgstr "新筆記(_N)"
+
+#: ../src/actionmanager.cpp:258
+msgid "New _Window"
+msgstr "新視窗(_W)"
+
+#: ../src/actionmanager.cpp:260
+msgid "Help _Contents"
+msgstr "說明內容(_C)"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
+msgid "Backlinks"
+msgstr "反向連結"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
+msgid "See which notes link to the one you're currently viewing."
+msgstr "看有哪些筆記連結到你正在看的這一個。"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "Hubert Figuiere與Tomboy計畫"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
+msgid "What links here?"
+msgstr "有誰連到這裏？"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
+msgid "(none)"
+msgstr "（無）"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+msgid "Bugzilla Links"
+msgstr "Bugzilla連結"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:62
+msgid ""
+"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
+msgstr "讓你直接從瀏覽器拉一個Bugzilla URL到Gnote筆記裏，錯誤編號會被加上一個昆蟲圖示插入到筆記中。"
+
+#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:66
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "Hubert Figuiere與Tomboy計畫"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:62
+msgid ""
+"You can use any bugzilla just by dragging links into notes.  If you want a "
+"special icon for certain hosts, add them here."
+msgstr "你可以拖曳連結到筆記中來使用bugzilla，若你希望特定的主機有特殊圖示，把它們加在這裏。"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:79
+msgid "Host Name"
+msgstr "主機名稱"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:92
+msgid "Icon"
+msgstr "圖示"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:226
+msgid "Select an icon..."
+msgstr "選擇圖示……"
+
+#. Extra Widget
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:241
+msgid "_Host name:"
+msgstr "主機名稱(_H)"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
+msgid "Host name invalid"
+msgstr "無效的主機名稱"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:274
+msgid "You must specify a valid Bugzilla host name to use with this icon."
+msgstr "你必須指定一個有效的Bugzilla主機名稱來用這個圖示"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
+msgid "Error saving icon"
+msgstr "儲存圖示錯誤"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:294
+msgid "Could not save the icon file."
+msgstr "無法儲存這個圖示檔"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
+msgid "Really remove this icon?"
+msgstr "確定要移除這個圖示？"
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:367
+msgid "If you remove an icon it is permanently lost."
+msgstr "如果你移除一個圖示，那個圖示就永遠不見了。"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
+msgid "Destination for HTML Export"
+msgstr "匯出HTML目的地"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:43
+msgid "Export linked notes"
+msgstr "匯出連結到的筆記"
+
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:44
+msgid "Include all other linked notes"
+msgstr "包含所有其他連結到的筆記"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
+msgid "Export to HTML"
+msgstr "匯出成HTML"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
+msgid "Exports individual notes to HTML."
+msgstr "匯出單一筆記成HTML"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:145
+msgid "Your note was exported to \"%1%\"."
+msgstr "你的筆記已經匯出到\"%1%\"。"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
+msgid "Note exported successfully"
+msgstr "成功地匯出筆記"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:179
+#, c-format
+msgid "Could not save the file \"%s\""
+msgstr "無法儲存\"%s\"這個檔案。"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
+msgid "Local Directory Sync Service Add-in"
+msgstr "本地目錄同步服務附加元件"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:53
+msgid "Synchronize Gnote Notes to a local file system path"
+msgstr "同步Gnote筆記到本地的檔案系統路徑"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
+msgid "Aurimas Cernius and the Tomboy Project"
+msgstr "Aurimas Cernius與Tomboy計畫"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:127
+msgid "_Folder Path:"
+msgstr "資料夾路徑(_F)"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
+msgid "Select Synchronization Folder..."
+msgstr "選擇同步資料夾……"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:157
+msgid "Folder path field is empty."
+msgstr "無效的資料夾路徑"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:164
+msgid ""
+"Specified folder path does not exist, and Gnote was unable to create it."
+msgstr "指定的資料夾路徑不存在，而且Gnote無法建立它。"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:240
+msgid "Local Folder"
+msgstr "本地資料夾"
+
+#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
+msgid "Fixed Wid_th"
+msgstr "固定闊度(_t)"
+
+#. this is the name of the plugin.
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
+msgid "Fixed Width"
+msgstr "固定闊度"
+
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
+msgid "Adds fixed-width font style."
+msgstr "新增固定闊度字型"
+
+#. Add the menu item when the window is created
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+msgid "Insert Timestamp"
+msgstr "插入時戳"
+
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+msgid "Inserts current date and time at the cursor position."
+msgstr "在游標位置插入現在日期時間"
+
+#. Label
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:67
+msgid "Choose one of the predefined formats or use your own."
+msgstr "選擇一個事先定義的格式或自己定義"
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:75
+msgid "Use _Selected Format"
+msgstr "使用選擇的格式(_S)"
+
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:104
+msgid "_Use Custom Format"
+msgstr "使用自選格式(_U)"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:46
+msgid "Note Directory Watcher"
+msgstr "筆記目錄檢查器"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:51
+msgid "Watch your Gnote note directory for changes to your notes."
+msgstr "從你的Gnote筆記目錄檢查有無更改筆記。"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:56
+msgid "Aurimas Černius and Tomboy original authors"
+msgstr "Aurimas Černius與Tomboy原始作者羣"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:44
+msgid "Note of the Day"
+msgstr "今日筆記"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:48
+msgid ""
+"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
+msgstr "自動建立「今日」筆記來輕易記下每天的想法"
+
+#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:53
+msgid "Debarshi Ray and the Tomboy Project"
+msgstr "Debarashi Ray與Tomboy計畫"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:33
+msgid "Today: Template"
+msgstr "今日：樣本"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:35
+msgid "Today: "
+msgstr "今日："
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
+msgid "Tasks"
+msgstr "代辦事項"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+msgid "Appointments"
+msgstr "約會"
+
+#. Format: "Today: Friday, July 01 2005"
+#: ../src/addins/noteoftheday/noteoftheday.cpp:166
+msgid "%A, %B %d %Y"
+msgstr "%A, %B %d %Y"
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+msgid "_Open Today: Template"
+msgstr "開啟「今日：樣本」"
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:36
+msgid ""
+"Change the <span weight=\"bold\">Today: Template</span> note to customize "
+"the text that new Today notes have."
+msgstr "更改「今日：樣本」筆記來自選新的「今日」筆記帶有什麼文字"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
+msgid "Printing Support"
+msgstr "列印支援"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
+msgid "Allows you to print a note."
+msgstr "讓你列印筆記"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
+msgid "Print"
+msgstr "列印"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:153
+msgid "Error printing note"
+msgstr "列印筆記錯誤"
+
+#. %1% is the page number, %2% is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:320
+msgid "Page %1% of %2%"
+msgstr "%2%頁中的第%1%頁"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
+msgid "Replace title"
+msgstr "更改標題"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
+msgid "Replace title with selection."
+msgstr "用選項更改標題"
+
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
+msgid "Pierre-Yves Luyten"
+msgstr "Pierre-Yves Luyten"
+
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:42
+#: ../src/addins/statistics/statisticswidget.cpp:170
+#, fuzzy
+#| msgid "Status"
+msgid "Statistics"
+msgstr "狀態"
+
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:47
+msgid "Show various statistics about notes"
+msgstr ""
+
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:52
+msgid "Aurimas Černius"
+msgstr ""
+
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:79
+msgid "Show Statistics"
+msgstr ""
+
+#: ../src/addins/statistics/statisticswidget.cpp:92
+#, fuzzy
+#| msgid "All Notes"
+msgid "Total Notes:"
+msgstr "所有筆記"
+
+#: ../src/addins/statistics/statisticswidget.cpp:98
+#, fuzzy
+#| msgid "Notebooks"
+msgid "Total Notebooks:"
+msgstr "筆記簿"
+
+#: ../src/addins/statistics/statisticswidget.cpp:128
+#, fuzzy
+#| msgid "%1% note updated."
+#| msgid_plural "%1% notes updated."
+msgid "%1% note"
+msgid_plural "%1% notes"
+msgstr[0] "已更新%1%份筆記。"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
+msgid "Sticky Notes Importer"
+msgstr "自黏便箋匯入器"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
+msgid "Import your notes from the Sticky Notes applet."
+msgstr "從「自黏便箋」程式匯入筆記"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:109
+msgid "Import from Sticky Notes"
+msgstr "從自黏便箋匯入筆記"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:209
+msgid "No Sticky Notes found"
+msgstr "沒有找到自黏便箋"
+
+#. %1% is a the file name
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:211
+msgid "No suitable Sticky Notes file was found at \"%1%\"."
+msgstr "在\"%1%\"沒有可用的自黏便箋檔案。"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:219
+msgid "Sticky Notes import completed"
+msgstr "完成匯入自黏便箋"
+
+#. here %1% is the number of notes imported, %2% the total number of notes.
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:221
+msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
+msgstr "成功匯入<b>%2%</b>個自黏便箋當中的<b>%1%</b> 個。"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:240
+msgid "Untitled"
+msgstr "無標題"
+
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:278
+msgid "Sticky Note: "
+msgstr "自黏便箋："
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
+msgid "Tomboy Importer"
+msgstr "Tomboy匯入器"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
+msgid "Import your notes from Tomboy."
+msgstr "從Tomboy匯入筆記"
+
+#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
+msgid "Hubert Figuiere"
+msgstr "Hubert Figuiere"
+
+#: ../src/addins/underline/underlinemenuitem.cpp:35
+msgid "_Underline"
+msgstr "底線(_U)"
+
+#. this is the name of the plugin.
+#: ../src/addins/underline/underlinenoteaddin.cpp:49
+msgid "Underline"
+msgstr "底線"
+
+#: ../src/addins/underline/underlinenoteaddin.cpp:53
+msgid "Adds ability to underline text."
+msgstr "為文字加上底線的能力"
+
+#: ../src/addins/underline/underlinenoteaddin.cpp:57
+msgid "Hubert Figuière and the Tomboy Project"
+msgstr "Hubert Figuière與Tomboy計畫"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
+msgid "WebDav Sync Service Add-in"
+msgstr "WebDav同步服務附加元件"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
+msgid "Synchronize Gnote Notes to a WebDav URL"
+msgstr "把Gnote筆記同步到WebDAV URL"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+msgid "_URL:"
+msgstr "_URL"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+msgid "User_name:"
+msgstr "使用者名稱(_n)"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+msgid "_Password:"
+msgstr "密碼(_P)"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+msgid ""
+"There was an error connecting to the server.  This may be caused by using an "
+"incorrect user name and/or password."
+msgstr "連接伺服器時發生錯誤，可能是因為使用錯誤的使用者名稱或密碼。"
+
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+msgid "URL, username, or password field is empty."
+msgstr "URL、使用者名稱、或是密碼欄是空白的。"
+
+#. TODO: If the above fails (no keyring daemon), save all but password
+#. to GConf, and notify user.
+#. Save configuration into GConf
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
+#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:290
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
+"\n"
+"%1%"
+msgstr ""
+"儲存設定值到GNOME密碼匙圈失敗，包含以下訊息：\n"
+"\n"
+"%1%"
+
+#: ../src/gnote.cpp:350
+msgid "and Tomboy original authors."
+msgstr "與Tomboy原始作者羣。"
+
+#: ../src/gnote.cpp:356
+msgid "translator-credits"
+msgstr "翻譯："
+
+#: ../src/gnote.cpp:365
+msgid ""
+"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2009-2011 Debarshi Ray\n"
+"Copyright © 2009 Hubert Figuiere\n"
+"Copyright © 2004-2009 the Tomboy original authors."
+msgstr ""
+"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2009-2011 Debarshi Ray\n"
+"Copyright © 2009 Hubert Figuiere\n"
+"Copyright © 2004-2009Tomboy原始作者羣。"
+
+#: ../src/gnote.cpp:369
+msgid "A simple and easy to use desktop note-taking application."
+msgstr "簡單易用的筆記程式。"
+
+#: ../src/gnote.cpp:380
+msgid "Homepage"
+msgstr "首頁"
+
+#: ../src/gnote.cpp:559
+msgid "Run Gnote in background."
+msgstr "背景執行Gnote。"
+
+#: ../src/gnote.cpp:560
+msgid "Specify the path of the directory containing the notes."
+msgstr "指定包含筆記的目錄。"
+
+#: ../src/gnote.cpp:560
+msgid "path"
+msgstr "路徑"
+
+#: ../src/gnote.cpp:561
+msgid "Open the search all notes window with the search text."
+msgstr "以搜尋文字開啟「搜尋所有筆記」視窗。"
+
+#: ../src/gnote.cpp:561 ../src/gnote.cpp:566
+msgid "text"
+msgstr "文字"
+
+#: ../src/gnote.cpp:562
+msgid "Print version information."
+msgstr "列印版本資訊。"
+
+#: ../src/gnote.cpp:563
+msgid "Create and display a new note, with a optional title."
+msgstr "建立並顯示一份自選標題的新筆記。"
+
+#: ../src/gnote.cpp:563
+msgid "title"
+msgstr "標題"
+
+#: ../src/gnote.cpp:564
+msgid "Display the existing note matching title."
+msgstr "顯示現有筆記的標題"
+
+#: ../src/gnote.cpp:564
+msgid "title/url"
+msgstr ""
+
+#: ../src/gnote.cpp:565
+msgid "Display the 'Start Here' note."
+msgstr "顯示「從這裏開始」筆記"
+
+#: ../src/gnote.cpp:566
+msgid "Search and highlight text in the opened note."
+msgstr "從開啟的筆記中尋找並標示文字。"
+
+#: ../src/gnote.cpp:570
+msgid "A note taking application"
+msgstr "筆記程式"
+
+#: ../src/gnote.cpp:570
+msgid "Gnote options at launch"
+msgstr ""
+
+#: ../src/gnote.cpp:763
+msgid "Version %1%"
+msgstr "版本%1%"
+
+#: ../src/notebooks/createnotebookdialog.cpp:40
+msgid "Create a new notebook"
+msgstr "建立新筆記簿"
+
+#: ../src/notebooks/createnotebookdialog.cpp:41
+msgid "Type the name of the notebook you'd like to create."
+msgstr "輸入你想建立的筆記簿名稱"
+
+#: ../src/notebooks/createnotebookdialog.cpp:45
+msgid "N_otebook name:"
+msgstr "筆記簿名稱(_N)"
+
+#: ../src/notebooks/createnotebookdialog.cpp:58
+msgid "Name already taken"
+msgstr "已有同名的筆記簿"
+
+#. Translation note: This is the Create button in the Create
+#. New Note Dialog.
+#: ../src/notebooks/createnotebookdialog.cpp:71
+msgid "C_reate"
+msgstr "建立(_r)"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:75
+#: ../src/searchnoteswidget.cpp:219
+msgid "Notebooks"
+msgstr "筆記簿"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:76
+msgid "Create a new note in a notebook"
+msgstr "在筆記簿裏新建筆記"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:128
+msgid "New Note_book"
+msgstr "新筆記簿(_b)"
+
+#: ../src/notebooks/notebookapplicationaddin.cpp:186
+msgid "New Note_book..."
+msgstr "新筆記簿(_b)……"
+
+#. The templateNoteTite should show the name of the
+#. notebook.  For example, if the name of the notebooks
+#. "Meetings", the templateNoteTitle should be "Meetings
+#. Notebook Template".  Translators should place the
+#. name of the notebook accordingly using "%1%".
+#: ../src/notebooks/notebook.cpp:90
+msgid "%1% Notebook Template"
+msgstr "%1%筆記簿樣本"
+
+#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:524
+msgid "New Note"
+msgstr "新筆記"
+
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
+msgid "All Notes"
+msgstr "所有筆記"
+
+#: ../src/notebooks/notebook.cpp:246
+msgid "Unfiled Notes"
+msgstr "未歸檔筆記"
+
+#: ../src/notebooks/notebook.cpp:275
+msgid "Pinned Notes"
+msgstr "釘選的筆記"
+
+#: ../src/notebooks/notebook.cpp:303
+msgid "Active Notes"
+msgstr "活躍的筆記"
+
+#: ../src/notebooks/notebookmanager.cpp:352
+msgid "Really delete this notebook?"
+msgstr "確定要刪除這本筆記簿？"
+
+#: ../src/notebooks/notebookmanager.cpp:353
+msgid ""
+"The notes that belong to this notebook will not be deleted, but they will no "
+"longer be associated with this notebook.  This action cannot be undone."
+msgstr "屬於這本筆記簿的筆記不會被刪除掉，但它們與這本筆記簿不再有關聯。這個動作無法回復。"
+
+#: ../src/notebooks/notebookmenuitem.cpp:35
+msgid "No notebook"
+msgstr "沒有筆記簿"
+
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:40
+msgid "New \"%1%\" Note"
+msgstr "新的\"%1%\"筆記"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:74
+msgid "Place this note into a notebook"
+msgstr "把這份筆記放到筆記簿中"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:184
+msgid "Notebook"
+msgstr "筆記簿"
+
+#: ../src/notebooks/notebooknoteaddin.cpp:210
+msgid "_New notebook..."
+msgstr "新筆記簿(_b)……"
+
+#. TRANSLATORS: %1% is number of notes
+#: ../src/note.cpp:74
+msgid "Really delete %1% note?"
+msgid_plural "Really delete %1% notes?"
+msgstr[0] "確定要刪除%1%份筆記？"
+
+#: ../src/note.cpp:81
+msgid "If you delete a note it is permanently lost."
+msgstr "若你刪除筆記，將永遠失去它。"
+
+#: ../src/note.cpp:117
+msgid "Error saving note data."
+msgstr "儲存筆記資料錯誤"
+
+#: ../src/note.cpp:118
+#, fuzzy
+#| msgid ""
+#| "An error occurred while saving your notes. Please check that you have "
+#| "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
+#| "Error details can be found in ~/.gnote.log."
+msgid ""
+"An error occurred while saving your notes. Please check that you have "
+"sufficient disk space, and that you have appropriate rights on ~/.local/"
+"share/gnote. Error details can be found in ~/.gnote.log."
+msgstr "儲存你的筆記時發生錯誤，請確認你具有足夠的硬碟空間與~/.gnote的使用權限。錯誤詳細資訊請見~/.gnote.log。"
+
+#. New Note Template
+#. Translators: This is 'New Note' Template, not New 'Note Template'
+#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:336
+msgid "New Note Template"
+msgstr "新筆記樣本"
+
+#: ../src/notemanager.cpp:238
+msgid ""
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
+"Here\n"
+"\n"
+"<bold>Welcome to Gnote!</bold>\n"
+"\n"
+"Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
+"\n"
+"You can create new notes to hold your ideas by selecting the \"Create New "
+"Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
+"automatically.\n"
+"\n"
+"Then organize the notes you create by linking related notes and ideas "
+"together!\n"
+"\n"
+"We've created a note called <link:internal>Using Links in Gnote</link:"
+"internal>.  Notice how each time we type <link:internal>Using Links in "
+"Gnote</link:internal> it automatically gets underlined?  Click on the link "
+"to open the note.</note-content>"
+msgstr ""
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">從這裏開始\n"
+"\n"
+"<bold>歡迎使用Gnote！</bold>\n"
+"\n"
+"用這個「從這裏開始」筆記開始組織你的想法。\n"
+"\n"
+"你可以用GNOME面板裏Gnote選單中的「建立新筆記」選項來建立筆記記下想法。你的筆記會被自動儲存\n"
+"\n"
+"然後連結相關的筆記與想法來組織筆記！\n"
+"\n"
+"我們建立了一個叫做<link:internal>在Gnote使用連結</link:internal>的筆記。有注意到每次輸入<link:internal>在Gnote使用連結</link:internal>時，都會自動加上底線嗎？按下那個連結就能開啟那篇筆記</note-content>"
+
+#: ../src/notemanager.cpp:257
+msgid ""
+"<note-content>Using Links in Gnote\n"
+"\n"
+"Notes in Gnote can be linked together by highlighting text in the current "
+"note and clicking the <bold>Link</bold> button above in the toolbar.  Doing "
+"so will create a new note and also underline the note's title in the current "
+"note.\n"
+"\n"
+"Changing the title of a note will update links present in other notes.  This "
+"prevents broken links from occurring when a note is renamed.\n"
+"\n"
+"Also, if you type the name of another note in your current note, it will "
+"automatically be linked for you.</note-content>"
+msgstr ""
+"<note-content>在Gnote使用連結\n"
+"\n"
+"在Gnote筆記中，可以選取文字並點選工具列的<bold>連結</bold>按鈕，如此一來會建立一個新的筆記，同時在目前的筆記中將新筆記的標題加上底線。\n"
+"\n"
+"更改筆記標題時會一併更新所有連結以防更名時失效。\n"
+"\n"
+"同樣地，如果你在筆記中輸入另一篇筆記的標題，也會自動產生連結。</note-content>"
+
+#. Attempt to find an existing Start Here note
+#: ../src/notemanager.cpp:272 ../src/notemanager.cpp:323
+msgid "Start Here"
+msgstr "從這裏開始"
+
+#: ../src/notemanager.cpp:278
+msgid "Using Links in Gnote"
+msgstr "在Gnote使用連結"
+
+#: ../src/notemanager.cpp:635
+msgid "Describe your new note here."
+msgstr "在這裏敘述你的筆記。"
+
+#: ../src/noterenamedialog.cpp:122
+msgid "Rename Note Links?"
+msgstr "將連結更名？"
+
+#: ../src/noterenamedialog.cpp:126
+msgid "_Don't Rename Links"
+msgstr "不要將連結更名(_D)"
+
+#: ../src/noterenamedialog.cpp:127
+msgid "_Rename Links"
+msgstr "將連結更名(_R)"
+
+#: ../src/noterenamedialog.cpp:128
+msgid "Select All"
+msgstr "全選"
+
+#: ../src/noterenamedialog.cpp:129
+msgid "Select None"
+msgstr "全不選"
+
+#: ../src/noterenamedialog.cpp:130
+msgid "Always show this _window"
+msgstr "永遠顯示這個視窗"
+
+#: ../src/noterenamedialog.cpp:131
+msgid "Alwa_ys rename links"
+msgstr "永遠為連結更名(_y)"
+
+#: ../src/noterenamedialog.cpp:133
+msgid "Never rename _links"
+msgstr "不要為連結更名(_l)"
+
+#: ../src/noterenamedialog.cpp:152
+msgid ""
+"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
+"\"<span underline=\"single\">%2</span>\"?\n"
+"\n"
+"If you do not rename the links, they will no longer link to anything."
+msgstr ""
+"要將其他筆記中的\"<span underline=\"single\">%1</span>\"連結更名成\"<span underline=\"single\">%2</span>\"嗎？\n"
+"\n"
+"如果不更名，這些連結就會失效。"
+
+#: ../src/noterenamedialog.cpp:185
+msgid "Rename Links"
+msgstr "為連結更名"
+
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:322
+msgid "Note Title"
+msgstr "筆記標題"
+
+#: ../src/noterenamedialog.cpp:236
+msgid "Ad_vanced"
+msgstr "進階(_v)"
+
+#: ../src/notewindow.cpp:91
+msgid "Find in This Note"
+msgstr "在這份筆記中搜尋"
+
+#: ../src/notewindow.cpp:326
+msgid "_Link to New Note"
+msgstr "連結新筆記(_L)"
+
+#: ../src/notewindow.cpp:334
+msgid "Te_xt"
+msgstr "文字(_x)"
+
+#: ../src/notewindow.cpp:342
+msgid "_Find in This Note"
+msgstr "在這份筆記尋找(_F)"
+
+#: ../src/notewindow.cpp:374
+msgid "Pin"
+msgstr "釘選"
+
+#: ../src/notewindow.cpp:382
+msgid "Link"
+msgstr "連結"
+
+#: ../src/notewindow.cpp:388
+msgid "Link selected text to a new note (Ctrl-L)"
+msgstr "連結選取的文字到新筆記(Ctrl-L)"
+
+#: ../src/notewindow.cpp:394
+msgid "_Text"
+msgstr "文字(_T)"
+
+#: ../src/notewindow.cpp:400
+msgid "Set properties of text"
+msgstr "設定文字屬性"
+
+#: ../src/notewindow.cpp:404
+msgid "T_ools"
+msgstr "工具(_o)"
+
+#: ../src/notewindow.cpp:409
+msgid "Use tools on this note"
+msgstr "在這份筆記使用工具"
+
+#: ../src/notewindow.cpp:419
+msgid "Delete this note"
+msgstr "刪除這份筆記"
+
+#: ../src/notewindow.cpp:449
+msgid ""
+"This note is a template note. It determines the default content of regular "
+"notes, and will not show up in the note menu or search window."
+msgstr "這是一份樣本筆記，決定一般筆記的預設內容，不會顯示在筆記選單或搜尋窗裏。"
+
+#: ../src/notewindow.cpp:452
+msgid "Convert to regular note"
+msgstr "轉換成一般筆記"
+
+#: ../src/notewindow.cpp:455
+msgid "Save Si_ze"
+msgstr "儲存尺寸(_z)"
+
+#: ../src/notewindow.cpp:459
+msgid "Save Se_lection"
+msgstr "儲存選項(_l)"
+
+#: ../src/notewindow.cpp:463
+msgid "Save _Title"
+msgstr "儲存標題(_T)"
+
+#: ../src/notewindow.cpp:551
+msgid "_Find..."
+msgstr "尋找(_F)……"
+
+#: ../src/notewindow.cpp:559
+msgid "Find _Next"
+msgstr "尋找下一個(_N)"
+
+#: ../src/notewindow.cpp:569
+msgid "Find _Previous"
+msgstr "尋找前一個(_P)"
+
+#: ../src/notewindow.cpp:639
+msgid "Cannot create note"
+msgstr "無法建立筆記"
+
+#: ../src/notewindow.cpp:692
+msgid "_Next"
+msgstr "下一個(_N)"
+
+#: ../src/notewindow.cpp:693
+msgid "_Previous"
+msgstr "前一個(_P)"
+
+#: ../src/notewindow.cpp:1142
+msgid "<b>_Bold</b>"
+msgstr "<b>粗體(_B)</b>"
+
+#: ../src/notewindow.cpp:1143
+msgid "<i>_Italic</i>"
+msgstr "<i>斜體(_I)</i>"
+
+#: ../src/notewindow.cpp:1144
+msgid "<s>_Strikeout</s>"
+msgstr "<s>刪除線(_S)</s>"
+
+#: ../src/notewindow.cpp:1146
+msgid "_Highlight"
+msgstr "標示(_H)"
+
+#: ../src/notewindow.cpp:1148
+msgid "_Normal"
+msgstr "正常(_N)"
+
+#: ../src/notewindow.cpp:1150
+msgid "Hu_ge"
+msgstr "巨大(_g)"
+
+#: ../src/notewindow.cpp:1152
+msgid "_Large"
+msgstr "大(_L)"
+
+#: ../src/notewindow.cpp:1154
+msgid "S_mall"
+msgstr "小(_m)"
+
+#: ../src/notewindow.cpp:1156
+msgid "Bullets"
+msgstr ""
+
+#: ../src/notewindow.cpp:1159
+msgid "Increase Font Size"
+msgstr "放大字型大小"
+
+#: ../src/notewindow.cpp:1160
+msgid "Decrease Font Size"
+msgstr "縮小字型大小"
+
+#: ../src/notewindow.cpp:1202
+msgid "Font Size"
+msgstr "字型大小"
+
+#: ../src/preferencesdialog.cpp:122
+msgid "General"
+msgstr "總體"
+
+#: ../src/preferencesdialog.cpp:124
+msgid "Hotkeys"
+msgstr "快速鍵"
+
+#. TRANSLATORS: Addin category.
+#: ../src/preferencesdialog.cpp:127 ../src/sharp/addinstreemodel.cpp:147
+msgid "Synchronization"
+msgstr "同步"
+
+#: ../src/preferencesdialog.cpp:129
+msgid "Add-ins"
+msgstr "附加元件"
+
+#. Status icon
+#: ../src/preferencesdialog.cpp:241
+msgid "Use Status _Icon"
+msgstr "使用系統匣圖示(_I)"
+
+#: ../src/preferencesdialog.cpp:254
+msgid "_Spell check while typing"
+msgstr "輸入時檢查拼字(_S)"
+
+#: ../src/preferencesdialog.cpp:260
+msgid ""
+"Misspellings will be underlined in red, with correct spelling suggestions "
+"shown in the context menu."
+msgstr "拼錯的字會被加上紅色底線，並在右鍵選單裏提供正確拼法的建議。"
+
+#. WikiWords...
+#: ../src/preferencesdialog.cpp:271
+msgid "Highlight _WikiWords"
+msgstr "標示_WikiWords"
+
+#: ../src/preferencesdialog.cpp:277
+msgid ""
+"Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
+"word will create a note with that name."
+msgstr "啟用這個選項來標示<b>WikiWords</b>。點選這個字即可建立以它為名的筆記。"
+
+#. Auto bulleted list
+#: ../src/preferencesdialog.cpp:284
+msgid "Enable auto-_bulleted lists"
+msgstr "啟用自動項目標示清單"
+
+#: ../src/preferencesdialog.cpp:293
+msgid "Use custom _font"
+msgstr "使用自選字型"
+
+#: ../src/preferencesdialog.cpp:310
+msgid "When renaming a linked note: "
+msgstr "為連結到的筆記更名時："
+
+#: ../src/preferencesdialog.cpp:315
+msgid "Ask me what to do"
+msgstr "問我要做什麼"
+
+#: ../src/preferencesdialog.cpp:316
+msgid "Never rename links"
+msgstr "不要為連結更名"
+
+#: ../src/preferencesdialog.cpp:317
+msgid "Always rename links"
+msgstr "為連結更名"
+
+#: ../src/preferencesdialog.cpp:339
+msgid ""
+"Use the new note template to specify the text that should be used when "
+"creating a new note."
+msgstr "使用新筆記樣本來指定建立新筆記時新筆記內的文字。"
+
+#: ../src/preferencesdialog.cpp:347
+msgid "Open New Note Template"
+msgstr "開啟新筆記樣本"
+
+#. Hotkeys...
+#: ../src/preferencesdialog.cpp:409
+msgid "Listen for _Hotkeys"
+msgstr "偵測快速鍵"
+
+#: ../src/preferencesdialog.cpp:416
+msgid ""
+"Hotkeys allow you to quickly access your notes from anywhere with a "
+"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+"Alt&gt;N</b>"
+msgstr "快速鍵讓你從任何地方按個鍵快速取用你的筆記。快速鍵舉例：<b>&lt;Control&gt;&lt;Shift&gt;F11</b>、<b>&lt;Alt&gt;N</b>"
+
+#. Show notes menu keybinding...
+#: ../src/preferencesdialog.cpp:436
+msgid "Show notes _menu"
+msgstr "顯示筆記選單(_m)"
+
+#. Open Start Here keybinding...
+#: ../src/preferencesdialog.cpp:453
+msgid "Open \"_Start Here\""
+msgstr "開啟「從這裏開始」(_S)"
+
+#. Create new note keybinding...
+#: ../src/preferencesdialog.cpp:469
+msgid "Create _new note"
+msgstr "建立新筆記(_n)"
+
+#. Open Search All Notes window keybinding...
+#: ../src/preferencesdialog.cpp:485
+msgid "Open \"Search _All Notes\""
+msgstr "開啟「搜尋所有筆記」(_A)"
+
+#: ../src/preferencesdialog.cpp:522
+msgid "Ser_vice:"
+msgstr "服務(_v)"
+
+#: ../src/preferencesdialog.cpp:577 ../src/preferencesdialog.cpp:1181
+msgid "Not configurable"
+msgstr "無法設定"
+
+#. Translators: This is and the next string go together.
+#. Together they look like "Automatically Sync in Background Every [_] Minutes",
+#. where "[_]" is a GtkSpinButton.
+#: ../src/preferencesdialog.cpp:604
+msgid "Automaticall_y Sync in Background Every"
+msgstr "自動同步備份在每"
+
+#. Translators: See above comment for details on
+#. this string.
+#: ../src/preferencesdialog.cpp:611
+msgid "Minutes"
+msgstr "分鐘"
+
+#. "Advanced..." button to bring up extra sync config dialog
+#: ../src/preferencesdialog.cpp:629
+msgid "_Advanced..."
+msgstr "進階(_A)……"
+
+#: ../src/preferencesdialog.cpp:674
+msgid "The following add-ins are installed"
+msgstr "有安裝以下附加元件"
+
+#. TODO: In a future version, add in an "Install Add-ins..." button
+#. TODO: In a future version, add in a "Repositories..." button
+#: ../src/preferencesdialog.cpp:705
+msgid "_Enable"
+msgstr "啟用"
+
+#: ../src/preferencesdialog.cpp:711
+msgid "_Disable"
+msgstr "停用"
+
+#: ../src/preferencesdialog.cpp:844
+msgid "Not Implemented"
+msgstr "非使用中"
+
+#: ../src/preferencesdialog.cpp:858
+msgid "%1% Preferences"
+msgstr "%1%個偏好設定"
+
+#: ../src/preferencesdialog.cpp:999
+msgid "Choose Note Font"
+msgstr "選擇筆記字型"
+
+#. Create dialog
+#: ../src/preferencesdialog.cpp:1097
+msgid "Other Synchronization Options"
+msgstr "其他同步選項"
+
+#: ../src/preferencesdialog.cpp:1100
+msgid ""
+"When a conflict is detected between a local note and a note on the "
+"configured synchronization server:"
+msgstr "發現本地筆記與設定的同步伺服器不同時："
+
+#. label.Xalign = 0;
+#: ../src/preferencesdialog.cpp:1104
+msgid "Always ask me what to do."
+msgstr "問我要做什麼"
+
+#: ../src/preferencesdialog.cpp:1108
+msgid "Rename my local note."
+msgstr "為我的本地筆記更名。"
+
+#: ../src/preferencesdialog.cpp:1112
+msgid "Replace my local note with the server's update."
+msgstr "用伺服器上的版本取代本地筆記。"
+
+#: ../src/preferencesdialog.cpp:1215
+msgid "Are you sure?"
+msgstr "你確定？"
+
+#: ../src/preferencesdialog.cpp:1216
+msgid ""
+"Clearing your synchronization settings is not recommended.  You may be "
+"forced to synchronize all of your notes again when you save new settings."
+msgstr "不建議清空同步設定，你儲存新設定時可能會被強迫再同步一次。"
+
+#: ../src/preferencesdialog.cpp:1226
+msgid "Resetting Synchronization Settings"
+msgstr "重設同步設定"
+
+#: ../src/preferencesdialog.cpp:1227
+msgid ""
+"You have disabled the configured synchronization service.  Your "
+"synchronization settings will now be cleared.  You may be forced to "
+"synchronize all of your notes again when you save new settings."
+msgstr "你已經停用設定好的同步服務。你的同步設定會被清除。你儲存新設定時可能會被強迫再同步所有筆記一次。"
+
+#: ../src/preferencesdialog.cpp:1293
+msgid "Connection successful"
+msgstr "連結成功"
+
+#: ../src/preferencesdialog.cpp:1294
+msgid ""
+"Gnote is ready to synchronize your notes. Would you like to synchronize them "
+"now?"
+msgstr "Gnote準備好同步你的筆記了，要現在同步嗎？"
+
+#: ../src/preferencesdialog.cpp:1318
+msgid ""
+"Please check your information and try again.  The log file %1% may contain "
+"more information about the error."
+msgstr "請檢查你的資訊並重試。log檔%1%可能有這次錯誤的更多詳細資訊。"
+
+#: ../src/preferencesdialog.cpp:1323
+msgid "Error connecting"
+msgstr "連結錯誤"
+
+#: ../src/preferencesdialog.cpp:1387
+msgid "Version:"
+msgstr "版本："
+
+#: ../src/preferencesdialog.cpp:1392
+msgid "Author:"
+msgstr "作者："
+
+#: ../src/preferencesdialog.cpp:1398
+msgid "Copyright:"
+msgstr "版權："
+
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:377
+#: ../src/searchnoteswidget.cpp:1017
+msgid "Notes"
+msgstr "筆記"
+
+#: ../src/recentchanges.cpp:130
+msgid "New"
+msgstr "新建"
+
+#: ../src/recentchanges.cpp:465
+msgid "_Close"
+msgstr ""
+
+#: ../src/searchnoteswidget.cpp:131
+msgid "_Open"
+msgstr "開啟(_O)"
+
+#: ../src/searchnoteswidget.cpp:134
+msgid "Open In New _Window"
+msgstr "在新視窗開啟(_W)"
+
+#: ../src/searchnoteswidget.cpp:138
+msgid "_Delete"
+msgstr ""
+
+#: ../src/searchnoteswidget.cpp:141
+#, fuzzy
+#| msgid "_New Notebook"
+msgid "_Delete Notebook"
+msgstr "新筆記(_N)"
+
+#: ../src/searchnoteswidget.cpp:678
+msgid "Note"
+msgstr "筆記"
+
+#: ../src/searchnoteswidget.cpp:700
+msgid "Last Changed"
+msgstr "上次修改"
+
+#: ../src/searchnoteswidget.cpp:1038
+msgid ""
+"No results found in the selected notebook.\n"
+"Click here to search across all notes."
+msgstr ""
+"在選擇的筆記裏沒有找到。\n"
+"按這裏從所有筆記中尋找。"
+
+#: ../src/searchnoteswidget.cpp:1042
+msgid "Click here to search across all notebooks"
+msgstr "按這裏來從所有筆記中尋找"
+
+#: ../src/searchnoteswidget.cpp:1066
+msgid "Matches"
+msgstr "結果"
+
+#. TRANSLATORS: search found a match in note title
+#: ../src/searchnoteswidget.cpp:1115
+msgid "Title match"
+msgstr "標題相同"
+
+#: ../src/searchnoteswidget.cpp:1119
+msgid "%1% match"
+msgid_plural "%1% matches"
+msgstr[0] "%1%個結果"
+
+#: ../src/searchnoteswidget.cpp:1353
+msgid "_Open Template Note"
+msgstr "開啟樣本筆記(_O)"
+
+#: ../src/searchnoteswidget.cpp:1361
+msgid "_New Notebook"
+msgstr "新筆記(_N)"
+
+#: ../src/sharp/addinstreemodel.cpp:93
+msgid "Name"
+msgstr "名稱"
+
+#: ../src/sharp/addinstreemodel.cpp:105
+msgid "Version"
+msgstr "版本"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:138
+msgid "Formatting"
+msgstr "格式"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:141
+msgid "Desktop integration"
+msgstr "桌面集成"
+
+#. TRANSLATORS: Addin category.
+#: ../src/sharp/addinstreemodel.cpp:144
+msgid "Tools"
+msgstr "工具"
+
+#. TRANSLATORS: Addin category is unknown.
+#: ../src/sharp/addinstreemodel.cpp:151
+msgid "Unknown"
+msgstr "未知"
+
+#: ../src/sharp/xmlwriter.cpp:40
+msgid "%1% failed"
+msgstr ""
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:116
+msgid ""
+"This synchronization addin is not supported on your computer. Please make "
+"sure you have FUSE and %1% correctly installed and configured"
+msgstr "你的電腦不支援這個同步附加元件，請確認你有正確安裝與設定FUSE與%1%。"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:159
+msgid "Could not read testfile."
+msgstr "無法讀取測試檔。"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:168
+msgid "Write test failed."
+msgstr "寫入測試失敗。"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:197
+msgid "Timeout connecting to server."
+msgstr "與伺服器連線逾時。"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:203
+msgid "Error connecting to server."
+msgstr "與伺服器連線錯誤。"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:216
+msgid "FUSE could not be enabled."
+msgstr "無法啟用FUSE。"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:247
+msgid "An error ocurred while connecting to the specified server"
+msgstr "連線到指定伺服器時出錯。"
+
+#: ../src/synchronization/syncdialog.cpp:65
+msgid "Note Conflict"
+msgstr "筆記衝突"
+
+#. Suggest renaming note by appending " (old)" to the existing title
+#: ../src/synchronization/syncdialog.cpp:70
+msgid " (old)"
+msgstr "（舊的）"
+
+#: ../src/synchronization/syncdialog.cpp:112
+msgid "Rename local note:"
+msgstr "為本地筆記更名"
+
+#: ../src/synchronization/syncdialog.cpp:119
+msgid "Update links in referencing notes"
+msgstr "更新在參考筆記中的連結"
+
+#: ../src/synchronization/syncdialog.cpp:126
+msgid "Overwrite local note"
+msgstr "取代本地筆記"
+
+#: ../src/synchronization/syncdialog.cpp:130
+msgid "Always perform this action"
+msgstr "永遠執行這個動作"
+
+#. Set initial dialog text
+#: ../src/synchronization/syncdialog.cpp:136
+msgid "Note conflict detected"
+msgstr "偵測到筆記衝突"
+
+#: ../src/synchronization/syncdialog.cpp:138
+msgid ""
+"The server version of \"%1%\" conflicts with your local note.  What do you "
+"want to do with your local note?"
+msgstr "伺服氣上的\"%1%\"與你的本地筆記不同，你想要做什麼？"
+
+#. Expander containing TreeView
+#: ../src/synchronization/syncdialog.cpp:290
+msgid "Details"
+msgstr "詳細資訊"
+
+#: ../src/synchronization/syncdialog.cpp:329
+msgid "Status"
+msgstr "狀態"
+
+#: ../src/synchronization/syncdialog.cpp:474
+msgid "Acquiring sync lock..."
+msgstr "正在取得同步鎖"
+
+#: ../src/synchronization/syncdialog.cpp:477
+msgid "Committing changes..."
+msgstr "正在更改"
+
+#: ../src/synchronization/syncdialog.cpp:480
+msgid "Synchronizing Notes"
+msgstr "正在同步筆記"
+
+#: ../src/synchronization/syncdialog.cpp:481
+msgid "Synchronizing your notes..."
+msgstr "正在同步你的筆記……"
+
+#: ../src/synchronization/syncdialog.cpp:482
+msgid "This may take a while, kick back and enjoy!"
+msgstr "這需要一些時間。"
+
+#: ../src/synchronization/syncdialog.cpp:484
+msgid "Connecting to the server..."
+msgstr "正在連結伺服器……"
+
+#: ../src/synchronization/syncdialog.cpp:490
+msgid "Deleting notes off of the server..."
+msgstr "正在刪除伺服器外的筆記"
+
+#: ../src/synchronization/syncdialog.cpp:494
+msgid "Downloading new/updated notes..."
+msgstr "正在下載新的筆記"
+
+#: ../src/synchronization/syncdialog.cpp:506
+msgid "Server Locked"
+msgstr "伺服器鎖住了"
+
+#: ../src/synchronization/syncdialog.cpp:507
+msgid "Server is locked"
+msgstr "伺服器被鎖住了"
+
+#: ../src/synchronization/syncdialog.cpp:508
+msgid ""
+"One of your other computers is currently synchronizing.  Please wait 2 "
+"minutes and try again."
+msgstr "你的其中一台電腦也正在同步，請等兩分鐘後再試。"
+
+#: ../src/synchronization/syncdialog.cpp:512
+msgid "Preparing to download updates from server..."
+msgstr "正在準備從伺服器下載更新……"
+
+#: ../src/synchronization/syncdialog.cpp:515
+msgid "Preparing to upload updates to server..."
+msgstr "正在準備上傳更新到伺服器……"
+
+#: ../src/synchronization/syncdialog.cpp:518
+msgid "Uploading notes to server..."
+msgstr "正在上傳筆記到伺服器……"
+
+#: ../src/synchronization/syncdialog.cpp:521
+msgid "Synchronization Failed"
+msgstr "同步失敗"
+
+#: ../src/synchronization/syncdialog.cpp:522
+msgid "Failed to synchronize"
+msgstr "同步失敗"
+
+#: ../src/synchronization/syncdialog.cpp:523
+msgid "Could not synchronize notes.  Check the details below and try again."
+msgstr "無法同步筆記，請檢查以下詳細資訊再重試。"
+
+#: ../src/synchronization/syncdialog.cpp:529
+msgid "Synchronization Complete"
+msgstr "同步完成"
+
+#: ../src/synchronization/syncdialog.cpp:530
+msgid "Synchronization is complete"
+msgstr "同步完成"
+
+#: ../src/synchronization/syncdialog.cpp:531
+msgid "%1% note updated."
+msgid_plural "%1% notes updated."
+msgstr[0] "已更新%1%份筆記。"
+
+#: ../src/synchronization/syncdialog.cpp:532
+msgid "Your notes are now up to date."
+msgstr "你的筆記是最新版本。"
+
+#: ../src/synchronization/syncdialog.cpp:537
+msgid "Synchronization Canceled"
+msgstr "同步取消"
+
+#: ../src/synchronization/syncdialog.cpp:538
+msgid "Synchronization was canceled"
+msgstr "同步取消"
+
+#: ../src/synchronization/syncdialog.cpp:539
+msgid "You canceled the synchronization.  You may close the window now."
+msgstr "你取消了這次同步，現在可以關掉這個視窗。"
+
+#: ../src/synchronization/syncdialog.cpp:543
+msgid "Synchronization Not Configured"
+msgstr "未設定同步"
+
+#: ../src/synchronization/syncdialog.cpp:544
+msgid "Synchronization is not configured"
+msgstr "還沒設定同步"
+
+#: ../src/synchronization/syncdialog.cpp:545
+msgid "Please configure synchronization in the preferences dialog."
+msgstr "請在偏好設定對話框設定同步"
+
+#: ../src/synchronization/syncdialog.cpp:549
+msgid "Synchronization Service Error"
+msgstr "同步伺服器出錯"
+
+#: ../src/synchronization/syncdialog.cpp:550
+msgid "Service error"
+msgstr "伺服器出錯"
+
+#: ../src/synchronization/syncdialog.cpp:551
+msgid "Error connecting to the synchronization service.  Please try again."
+msgstr "連接同步服務出錯，請再試一次。"
+
+#: ../src/synchronization/syncdialog.cpp:565
+msgid "Deleted locally"
+msgstr "已從本地端刪除"
+
+#: ../src/synchronization/syncdialog.cpp:568
+msgid "Deleted from server"
+msgstr "已從伺服器刪除。"
+
+#: ../src/synchronization/syncdialog.cpp:571
+msgid "Updated"
+msgstr "已更新"
+
+#: ../src/synchronization/syncdialog.cpp:574
+msgid "Added"
+msgstr "已新增"
+
+#: ../src/synchronization/syncdialog.cpp:577
+msgid "Uploaded changes to server"
+msgstr "已上傳更改到伺服器"
+
+#: ../src/synchronization/syncdialog.cpp:580
+msgid "Uploaded new note to server"
+msgstr "已上傳新筆記到伺服器"
+
+#: ../src/synchronization/syncmanager.cpp:66
+msgid "Synchronize Notes"
+msgstr "同步筆記"
+
+#: ../src/synchronization/syncutils.cpp:146
+#: ../src/synchronization/syncutils.cpp:178
+msgid "Could not enable FUSE"
+msgstr "無法啟動FUSE"
+
+#: ../src/synchronization/syncutils.cpp:147
+#: ../src/synchronization/syncutils.cpp:179
+msgid ""
+"The FUSE module could not be loaded. Please check that it is installed "
+"properly and try again."
+msgstr "無法載入FUSE模組，確認有安裝好並重試。"
+
+#: ../src/synchronization/syncutils.cpp:155
+msgid "Enable FUSE?"
+msgstr "啟用FUSE？"
+
+#. TODO: This message isn't entirely accurate.
+#. We should fix it.
+#: ../src/synchronization/syncutils.cpp:158
+msgid ""
+"The synchronization you've chosen requires the FUSE module to be loaded.\n"
+"\n"
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
+msgstr ""
+"你選擇的同步服務需要先載入FUSE模組。\n"
+"\n"
+"未來需要在開機時載入FUSE才不會看到此訊息，請在/etc/init.d/boot.local加上\"modprobe fuse\"或是在/etc/modules加上\"fuse\"。"
+
+#: ../src/tray.cpp:55
+msgid "Take notes"
+msgstr "記下筆記"
+
+#: ../src/tray.cpp:165
+msgid " (new)"
+msgstr "（新增）"
+
+#: ../src/tray.cpp:466
+msgid "_Help"
+msgstr "說明(_H)"
+
+#: ../src/tray.cpp:471
+msgid "_About Gnote"
+msgstr "關於Gnote(_A)"
+
+#: ../src/utils.cpp:137
+msgid ""
+"The \"Gnote Manual\" could not be found.  Please verify that your "
+"installation has been completed successfully."
+msgstr "找不到Gnote說明，請確認你有正確安裝。"
+
+#: ../src/utils.cpp:145
+msgid "Help not found"
+msgstr "找不到說明"
+
+#: ../src/utils.cpp:178
+msgid "Cannot open location"
+msgstr "無法開啟位置"
+
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:193
+msgid "Today, %1%"
+msgstr "今天%1%"
+
+#: ../src/utils.cpp:194
+msgid "Today"
+msgstr "今天"
+
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:200
+msgid "Yesterday, %1%"
+msgstr "昨天%1%"
+
+#: ../src/utils.cpp:201
+msgid "Yesterday"
+msgstr "昨天"
+
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:210
+msgid "%1% day ago, %2%"
+msgid_plural "%1% days ago, %2%"
+msgstr[0] "%1%天前的%2%"
+
+#. TRANSLATORS: 2 or more days ago, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:216
+msgid "%1% day ago"
+msgid_plural "%1% days ago"
+msgstr[0] "%1%天前"
+
+#. TRANSLATORS: argument is time.
+#: ../src/utils.cpp:224
+msgid "Tomorrow, %1%"
+msgstr "明天%1%"
+
+#: ../src/utils.cpp:225
+msgid "Tomorrow"
+msgstr "明天"
+
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. First argument is number of days, second is time.
+#: ../src/utils.cpp:234
+msgid "In %1% day, %2%"
+msgid_plural "In %1% days, %2%"
+msgstr[0] "%1%天後的%2%"
+
+#. TRANSLATORS: In 2 or more days, up to one week.
+#. Argument is number of days.
+#: ../src/utils.cpp:240
+msgid "In %1% day"
+msgid_plural "In %1% days"
+msgstr[0] "%1%天內"
+
+#: ../src/utils.cpp:251
+msgid "No Date"
+msgstr "沒有日期"
+
+#: ../src/watchers.cpp:211
+msgid "(Untitled %1%)"
+msgstr "（無標題%1%）"
+
+#: ../src/watchers.cpp:242
+msgid ""
+"A note with the title <b>%1%</b> already exists. Please choose another name "
+"for this note before continuing."
+msgstr "已經有叫做<b>%1%</b>的筆記，請選擇別的名稱再繼續。"
+
+#: ../src/watchers.cpp:256
+msgid "Note title taken"
+msgstr "筆記標題被用過"
+
+#: ../src/watchers.cpp:581
+msgid "_Copy Link Address"
+msgstr "複製連結網址(_C)"
+
+#: ../src/watchers.cpp:587
+msgid "_Open Link"
+msgstr "開啟連結(_O)"
