@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-01 22:24+0000\n"
-"PO-Revision-Date: 2013-03-04 13:46+0100\n"
+"POT-Creation-Date: 2013-04-07 12:31+0000\n"
+"PO-Revision-Date: 2013-04-11 18:27+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -925,6 +925,42 @@ msgstr "Reemplazar título con la selección."
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:42
+#: ../src/addins/statistics/statisticswidget.cpp:170
+#| msgid "Status"
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:47
+msgid "Show various statistics about notes"
+msgstr "Mostrar varias estadísticas sobre las notas"
+
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:52
+msgid "Aurimas Černius"
+msgstr "Aurimas Černius"
+
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:79
+msgid "Show Statistics"
+msgstr "Mostrar estadísticas"
+
+#: ../src/addins/statistics/statisticswidget.cpp:92
+#| msgid "All Notes"
+msgid "Total Notes:"
+msgstr "Notas totales:"
+
+#: ../src/addins/statistics/statisticswidget.cpp:98
+#| msgid "Notebooks"
+msgid "Total Notebooks:"
+msgstr "Cuadernos de notas totales:"
+
+#: ../src/addins/statistics/statisticswidget.cpp:128
+#| msgid "Total: %1% note"
+#| msgid_plural "Total: %1% notes"
+msgid "%1% note"
+msgid_plural "%1% notes"
+msgstr[0] "%1% nota"
+msgstr[1] "%1% notas"
+
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
 msgid "Sticky Notes Importer"
 msgstr "Importador de Notas adhesivas"
@@ -1045,18 +1081,18 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:357
+#: ../src/gnote.cpp:350
 msgid "and Tomboy original authors."
 msgstr "y los autores originales de Tomboy."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:356
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2009-2010\n"
 "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008\n"
 "QA: Jorge González <jorgegonz@svn.gnome.org>, 2009-2010"
 
-#: ../src/gnote.cpp:372
+#: ../src/gnote.cpp:365
 msgid ""
 "Copyright © 2010-2013 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1068,73 +1104,73 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 los autores originales de Tomboy."
 
-#: ../src/gnote.cpp:376
+#: ../src/gnote.cpp:369
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Una aplicación simple y fácil de usar para tomar notas en el escritorio."
 
-#: ../src/gnote.cpp:387
+#: ../src/gnote.cpp:380
 msgid "Homepage"
 msgstr "Página web"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:559
 msgid "Run Gnote in background."
 msgstr "Ejecutar Gnote en segundo plano."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:560
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especificar la ruta de la carpeta que contiene las notas."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:560
 msgid "path"
 msgstr "ruta"
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:561
 msgid "Open the search all notes window with the search text."
 msgstr ""
 "Abrir la ventana de búsqueda en todas las notas con el texto de búsqueda."
 
-#: ../src/gnote.cpp:568 ../src/gnote.cpp:573
+#: ../src/gnote.cpp:561 ../src/gnote.cpp:566
 msgid "text"
 msgstr "texto"
 
-#: ../src/gnote.cpp:569
+#: ../src/gnote.cpp:562
 msgid "Print version information."
 msgstr "Imprimir la información de la versión."
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:563
 msgid "Create and display a new note, with a optional title."
 msgstr "Crear y mostrar una nota nueva, con un título opcional"
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:563
 msgid "title"
 msgstr "título"
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:564
 msgid "Display the existing note matching title."
 msgstr "Mostrar el título de la nota correspondiente."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:564
 msgid "title/url"
 msgstr "título/url"
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:565
 msgid "Display the 'Start Here' note."
 msgstr "Mostrar la nota «Comenzar aquí»."
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:566
 msgid "Search and highlight text in the opened note."
 msgstr "Mostrar y resaltar texto en la nota abierta."
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:570
 msgid "A note taking application"
 msgstr "Una aplicación para tomar notas"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:570
 msgid "Gnote options at launch"
 msgstr "Opciones de Gnote al iniciar"
 
-#: ../src/gnote.cpp:770
+#: ../src/gnote.cpp:763
 msgid "Version %1%"
 msgstr "Versión %1%"
 
@@ -1186,11 +1222,11 @@ msgstr "Cua_derno de notas nuevo…"
 msgid "%1% Notebook Template"
 msgstr "%1% plantilla de cuaderno de notas"
 
-#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:528
+#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:524
 msgid "New Note"
 msgstr "Nota nueva"
 
-#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:121
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
 msgid "All Notes"
 msgstr "Todas las notas"
 
@@ -1254,10 +1290,6 @@ msgid "Error saving note data."
 msgstr "Error al guardar los datos de la nota"
 
 #: ../src/note.cpp:118
-#| msgid ""
-#| "An error occurred while saving your notes. Please check that you have "
-#| "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-#| "Error details can be found in ~/.gnote.log."
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1269,11 +1301,11 @@ msgstr ""
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:103 ../src/preferencesdialog.cpp:336
+#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:336
 msgid "New Note Template"
 msgstr "Plantilla de nota nueva"
 
-#: ../src/notemanager.cpp:240
+#: ../src/notemanager.cpp:238
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1314,7 +1346,7 @@ msgstr ""
 "internal>Usando enlaces en Gnote</link:internal> automáticamente aparece "
 "subrayado? Pulse en el enlace para abrir la nota.</note-content>"
 
-#: ../src/notemanager.cpp:259
+#: ../src/notemanager.cpp:257
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1344,15 +1376,15 @@ msgstr ""
 "automáticamente.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:274 ../src/notemanager.cpp:327
+#: ../src/notemanager.cpp:272 ../src/notemanager.cpp:323
 msgid "Start Here"
 msgstr "Comenzar aquí"
 
-#: ../src/notemanager.cpp:280
+#: ../src/notemanager.cpp:278
 msgid "Using Links in Gnote"
 msgstr "Usar los enlaces en Gnote"
 
-#: ../src/notemanager.cpp:639
+#: ../src/notemanager.cpp:635
 msgid "Describe your new note here."
 msgstr "Describa aquí su nota nueva."
 
@@ -1816,16 +1848,16 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:376
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:377
 #: ../src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "Notas"
 
-#: ../src/recentchanges.cpp:129
+#: ../src/recentchanges.cpp:130
 msgid "New"
 msgstr "_Nueva"
 
-#: ../src/recentchanges.cpp:464
+#: ../src/recentchanges.cpp:465
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -1836,6 +1868,14 @@ msgstr "_Abrir"
 #: ../src/searchnoteswidget.cpp:134
 msgid "Open In New _Window"
 msgstr "Abrir en una _ventana nueva"
+
+#: ../src/searchnoteswidget.cpp:138
+msgid "_Delete"
+msgstr "_Borrar"
+
+#: ../src/searchnoteswidget.cpp:141
+msgid "_Delete Notebook"
+msgstr "_Eliminar cuaderno de notas"
 
 #: ../src/searchnoteswidget.cpp:678
 msgid "Note"
@@ -2329,9 +2369,6 @@ msgstr "_Abrir enlace"
 #~ msgid "Open the selected note"
 #~ msgstr "Abrir la nota seleccionada"
 
-#~ msgid "_Delete"
-#~ msgstr "_Borrar"
-
 #~ msgid "Delete the selected note"
 #~ msgstr "Borrar la nota seleccionada"
 
@@ -2356,9 +2393,6 @@ msgstr "_Abrir enlace"
 #~ msgid "Delete the selected notebook"
 #~ msgstr "Borrar el cuaderno de notas seleccionado"
 
-#~ msgid "_Delete Notebook"
-#~ msgstr "_Eliminar cuaderno de notas"
-
 #~ msgid "S_ynchronize Notes"
 #~ msgstr "S_incronizar las notas"
 
@@ -2382,11 +2416,6 @@ msgstr "_Abrir enlace"
 
 #~ msgid "Search All Notes"
 #~ msgstr "Buscar en todas las notas"
-
-#~ msgid "Total: %1% note"
-#~ msgid_plural "Total: %1% notes"
-#~ msgstr[0] "Total: %1% nota"
-#~ msgstr[1] "Total: %1% notas"
 
 #~ msgid "Matches: %1% note"
 #~ msgid_plural "Matches: %1% notes"
