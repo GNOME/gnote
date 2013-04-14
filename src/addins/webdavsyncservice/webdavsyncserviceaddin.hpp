@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,12 +36,6 @@ class WebDavSyncServiceModule
 {
 public:
   WebDavSyncServiceModule();
-  virtual const char * id() const;
-  virtual const char * name() const;
-  virtual const char * description() const;
-  virtual const char * authors() const;
-  virtual int          category() const;
-  virtual const char * version() const;
 };
 
 

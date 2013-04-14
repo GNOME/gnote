@@ -42,36 +42,6 @@ WebDavSyncServiceModule::WebDavSyncServiceModule()
   ADD_INTERFACE_IMPL(WebDavSyncServiceAddin);
 }
 
-const char * WebDavSyncServiceModule::id() const
-{
-  return "WebDavSyncServiceAddin";
-}
-
-const char * WebDavSyncServiceModule::name() const
-{
-  return _("WebDav Sync Service Add-in");
-}
-
-const char * WebDavSyncServiceModule::description() const
-{
-  return _("Synchronize Gnote Notes to a WebDav URL");
-}
-
-const char * WebDavSyncServiceModule::authors() const
-{
-  return _("Aurimas Cernius and the Tomboy Project");
-}
-
-int WebDavSyncServiceModule::category() const
-{
-  return gnote::ADDIN_CATEGORY_SYNCHRONIZATION;
-}
-
-const char * WebDavSyncServiceModule::version() const
-{
-  return "0.1";
-}
-
 
 
 
