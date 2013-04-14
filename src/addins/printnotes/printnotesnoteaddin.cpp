@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -40,30 +40,6 @@ namespace printnotes {
   PrintNotesModule::PrintNotesModule()
   {
     ADD_INTERFACE_IMPL(PrintNotesNoteAddin);
-  }
-  const char * PrintNotesModule::id() const
-  {
-    return "PrintNotesAddin";
-  }
-  const char * PrintNotesModule::name() const
-  {
-    return _("Printing Support");
-  }
-  const char * PrintNotesModule::description() const
-  {
-    return _("Allows you to print a note.");
-  }
-  const char * PrintNotesModule::authors() const
-  {
-    return _("Hubert Figuiere and the Tomboy Project");
-  }
-  int PrintNotesModule::category() const
-  {
-    return gnote::ADDIN_CATEGORY_DESKTOP_INTEGRATION;
-  }
-  const char * PrintNotesModule::version() const
-  {
-    return "0.4";
   }
 
   void PrintNotesNoteAddin::initialize()
