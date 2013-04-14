@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,36 +33,6 @@ ReplaceTitleModule::ReplaceTitleModule()
   ADD_INTERFACE_IMPL(ReplaceTitleNoteAddin);
 }
 
-const char * ReplaceTitleModule::id() const
-{
-  return "ReplaceTitleAddin";
-}
-
-const char * ReplaceTitleModule::name() const
-{
-  return _("Replace title");
-}
-
-const char * ReplaceTitleModule::description() const
-{
-  return _("Replace title with selection.");
-}
-
-
-const char * ReplaceTitleModule::authors() const
-{
-  return _("Pierre-Yves Luyten");
-}
-
-int ReplaceTitleModule::category() const
-{
-  return gnote::ADDIN_CATEGORY_TOOLS;
-}
-
-const char * ReplaceTitleModule::version() const
-{
-  return "0.1";
-}
 
 void ReplaceTitleNoteAddin::initialize()
 {
