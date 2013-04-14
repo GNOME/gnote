@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2006 Ryan Lortie <desrt@desrt.ca>
@@ -37,32 +37,6 @@ namespace fixedwidth {
   FixedWidthModule::FixedWidthModule()
   {
     ADD_INTERFACE_IMPL(FixedWidthNoteAddin);
-  }
-
-  const char * FixedWidthModule::id() const
-  {
-    return "FixedWidthAddin";
-  }
-  const char * FixedWidthModule::name() const
-  {
-    // this is the name of the plugin.
-    return _("Fixed Width");
-  }
-  const char * FixedWidthModule::description() const
-  {
-    return _("Adds fixed-width font style.");
-  }
-  const char * FixedWidthModule::authors() const
-  {
-    return "";
-  }
-  int FixedWidthModule::category() const
-  {
-    return gnote::ADDIN_CATEGORY_FORMATTING;
-  }
-  const char * FixedWidthModule::version() const
-  {
-    return "0.2";
   }
 
 

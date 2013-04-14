@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2006 Ryan Lortie <desrt@desrt.ca>
@@ -43,12 +43,6 @@ namespace fixedwidth {
   {
   public:
     FixedWidthModule();
-    virtual const char * id() const;
-    virtual const char * name() const;
-    virtual const char * description() const;
-    virtual const char * authors() const;
-    virtual int          category() const;
-    virtual const char * version() const;
   };
 
 
