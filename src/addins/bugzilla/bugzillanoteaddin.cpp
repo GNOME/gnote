@@ -49,30 +49,6 @@ namespace bugzilla {
     ADD_INTERFACE_IMPL(BugzillaPreferencesFactory);
     enabled(false);
   }
-  const char * BugzillaModule::id() const
-  {
-    return "BugzillaAddin";
-  }
-  const char * BugzillaModule::name() const
-  {
-    return _("Bugzilla Links");
-  }
-  const char * BugzillaModule::description() const
-  {
-    return _("Allows you to drag a Bugzilla URL from your browser directly into a Gnote note.  The bug number is inserted as a link with a little bug icon next to it.");
-  }
-  const char * BugzillaModule::authors() const
-  {
-    return _("Hubert Figuiere and the Tomboy Project");
-  }
-  int BugzillaModule::category() const
-  {
-    return gnote::ADDIN_CATEGORY_DESKTOP_INTEGRATION;
-  }
-  const char * BugzillaModule::version() const
-  {
-    return "0.1";
-  }
 
 
   const char * BugzillaNoteAddin::TAG_NAME = "link:bugzilla";
