@@ -55,30 +55,6 @@ ExportToHtmlModule::ExportToHtmlModule()
 {
   ADD_INTERFACE_IMPL(ExportToHtmlNoteAddin);
 }
-const char * ExportToHtmlModule::id() const
-{
-  return "ExportToHtmlAddin";
-}
-const char * ExportToHtmlModule::name() const
-{
-  return _("Export to HTML");
-}
-const char * ExportToHtmlModule::description() const
-{
-  return _("Exports individual notes to HTML.");
-}
-const char * ExportToHtmlModule::authors() const
-{
-  return _("Hubert Figuiere and the Tomboy Project");
-}
-int ExportToHtmlModule::category() const
-{
-  return gnote::ADDIN_CATEGORY_TOOLS;
-}
-const char * ExportToHtmlModule::version() const
-{
-  return "0.1";
-}
 
 sharp::XslTransform *ExportToHtmlNoteAddin::s_xsl = NULL;
 
