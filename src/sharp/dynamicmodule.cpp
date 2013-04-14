@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -40,11 +41,6 @@ namespace sharp {
   DynamicModule::~DynamicModule()
   {
     sharp::map_delete_all_second(m_interfaces);
-  }
-
-  const char * DynamicModule::copyright() const
-  {
-    return "";
   }
 
   

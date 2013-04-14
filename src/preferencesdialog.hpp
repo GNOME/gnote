@@ -74,7 +74,8 @@ private:
   void on_preferences_setting_changed(const Glib::ustring & key);
   void on_rename_behavior_changed();
 
-  sharp::DynamicModule * get_selected_addin();
+  std::string get_selected_addin();
+  void set_module_for_selected_addin(sharp::DynamicModule * module);
   void on_addin_tree_selection_changed();
   void update_addin_buttons();
   void load_addins();

@@ -30,6 +30,7 @@
 #include <sigc++/signal.h>
 
 #include "sharp/modulemanager.hpp"
+#include "addininfo.hpp"
 #include "note.hpp"
 #include "noteaddin.hpp"
 #include "importaddin.hpp"
@@ -45,6 +46,8 @@ namespace sync {
 class SyncServiceAddin;
 }
 
+typedef std::map<std::string, AddinInfo> AddinInfoMap;
+
 
 class AddinManager
 {
@@ -52,8 +55,8 @@ public:
   AddinManager(NoteManager & note_manager, const std::string & conf_dir);
   ~AddinManager();
 
-  void add_note_addin_info(const sharp::DynamicModule * dmod);
-  void erase_note_addin_info(const sharp::DynamicModule * dmod);
+  void add_note_addin_info(const std::string & id, const sharp::DynamicModule * dmod);
+  void erase_note_addin_info(const std::string & id);
 
   std::string & get_prefs_dir()
     {
@@ -71,16 +74,22 @@ public:
   void shutdown_application_addins() const;
   void save_addins_prefs() const;
 
-  const sharp::ModuleList & get_modules() const
-    { 
-      return m_module_manager.get_modules(); 
+  const AddinInfoMap & get_addin_infos() const
+    {
+      return m_addin_infos;
     }
+  AddinInfo get_addin_info(const std::string & id) const;
+  bool is_module_loaded(const std::string & id) const;
+  sharp::DynamicModule *get_module(const std::string & id);
 
   Gtk::Widget * create_addin_preference_widget(const std::string & id);
 private:
-
+  void load_addin_infos(const std::string & global_path, const std::string & local_path);
+  void load_addin_infos(const std::string & path);
+  void get_enabled_addins(std::list<std::string> & addins) const;
   void initialize_sharp_addins();
-  void migrate_addins(const std::string & old_addins_dir);
+  void add_module_addins(const std::string & mod_id, sharp::DynamicModule * dmod);
+  AddinInfo get_info_for_module(const std::string & module) const;
     
   NoteManager & m_note_manager;
   const std::string m_gnote_conf_dir;
@@ -88,6 +97,7 @@ private:
   std::string m_addins_prefs_file;
   sharp::ModuleManager m_module_manager;
   std::list<sharp::IfaceFactoryBase*> m_builtin_ifaces;
+  AddinInfoMap m_addin_infos;
   /// Key = TypeExtensionNode.Id
   typedef std::map<std::string, ApplicationAddin*> AppAddinMap;
   AppAddinMap                               m_app_addins;

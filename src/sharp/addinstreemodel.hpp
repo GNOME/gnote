@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -32,6 +32,7 @@
 #include <gtkmm/treestore.h>
 #include <gtkmm/treeview.h>
 
+#include "addininfo.hpp"
 #include "sharp/dynamicmodule.hpp"
 
 namespace sharp {
@@ -43,9 +44,11 @@ public:
   typedef Glib::RefPtr<AddinsTreeModel> Ptr;
   static Ptr create(Gtk::TreeView * treeview);
 
+  std::string get_module_id(const Gtk::TreeIter &);
   sharp::DynamicModule * get_module(const Gtk::TreeIter &);
+  void set_module(const Gtk::TreeIter &, const sharp::DynamicModule *);
 
-  Gtk::TreeIter append(const sharp::DynamicModule *);
+  Gtk::TreeIter append(const gnote::AddinInfo &, const sharp::DynamicModule *);
   class AddinsColumns
     : public Gtk::TreeModelColumnRecord
   {
@@ -56,17 +59,18 @@ public:
         add(version);
         add(addin);
         add(category);
+        add(id);
       }
 
     Gtk::TreeModelColumn<std::string>          name;
     Gtk::TreeModelColumn<std::string>          version;
     Gtk::TreeModelColumn<const sharp::DynamicModule *> addin;
-    Gtk::TreeModelColumn<int>                  category;
+    Gtk::TreeModelColumn<gnote::AddinCategory> category;
+    Gtk::TreeModelColumn<std::string>          id;
   };
   AddinsColumns m_columns;
 
-  static std::string get_addin_category_name(int category);
-  static int ensure_valid_addin_category(int category);
+  static std::string get_addin_category_name(gnote::AddinCategory category);
 protected:
   AddinsTreeModel();
   void set_columns(Gtk::TreeView *v);

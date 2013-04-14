@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -51,6 +51,15 @@ namespace sharp {
     set_column_types(m_columns);
   }
 
+  std::string AddinsTreeModel::get_module_id(const Gtk::TreeIter & iter)
+  {
+    std::string id;
+    if(iter) {
+      iter->get_value(4, id);
+    }
+    return id;
+  }
+
   sharp::DynamicModule * AddinsTreeModel::get_module(const Gtk::TreeIter & iter)
   {
     sharp::DynamicModule * module = NULL;
@@ -58,6 +67,13 @@ namespace sharp {
       iter->get_value(2, module);
     }
     return module;
+  }
+
+  void AddinsTreeModel::set_module(const Gtk::TreeIter & iter, const sharp::DynamicModule * dmod)
+  {
+    if(iter) {
+      iter->set_value(2, dmod);
+    }
   }
 
   void AddinsTreeModel::name_cell_data_func(Gtk::CellRenderer * renderer,
@@ -68,7 +84,7 @@ namespace sharp {
     iter->get_value(0, value);
     text_renderer->property_text() = value;
     const sharp::DynamicModule *module = get_module(iter);
-    if(!module || module->is_enabled()) {
+    if(get_module_id(iter) == "" || (module && module->is_enabled())) {
       text_renderer->property_foreground() = "black";
     }
     else {
@@ -81,7 +97,7 @@ namespace sharp {
   {
     Gtk::CellRendererPixbuf *icon_renderer = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
     Glib::RefPtr<Gdk::Pixbuf> icon;
-    if(get_module(iter)) {
+    if(get_module_id(iter) != "") {
       icon = gnote::IconManager::obj().get_icon(gnote::IconManager::EMBLEM_PACKAGE, 22);
     }
     icon_renderer->property_pixbuf() = icon;
@@ -106,12 +122,13 @@ namespace sharp {
   }
 
 
-  Gtk::TreeIter AddinsTreeModel::append(const sharp::DynamicModule *module)
+  Gtk::TreeIter AddinsTreeModel::append(const gnote::AddinInfo & module_info,
+                                        const sharp::DynamicModule *module)
   {
-    int category = module->category();
+    gnote::AddinCategory category = module_info.category();
     Gtk::TreeIter iter = children().begin();
     while(iter != children().end()) {
-      int row_value;
+      gnote::AddinCategory row_value;
       iter->get_value(3, row_value);
       if(row_value == category)
         break;
@@ -119,18 +136,18 @@ namespace sharp {
     }
     if(iter == children().end()) {
       iter = Gtk::TreeStore::append();
-      category = ensure_valid_addin_category(category);
       iter->set_value(0, get_addin_category_name(category));
       iter->set_value(3, category);
     }
     iter = Gtk::TreeStore::append(iter->children());
-    iter->set_value(0, std::string(module->name()));
-    iter->set_value(1, std::string(module->version()));
+    iter->set_value(0, std::string(module_info.name()));
+    iter->set_value(1, std::string(module_info.version()));
     iter->set_value(2, module);
+    iter->set_value(4, module_info.id());
     return iter;
   }
 
-  std::string AddinsTreeModel::get_addin_category_name(int category)
+  std::string AddinsTreeModel::get_addin_category_name(gnote::AddinCategory category)
   {
     switch(category) {
       case gnote::ADDIN_CATEGORY_FORMATTING:
@@ -149,20 +166,6 @@ namespace sharp {
       default:
         /* TRANSLATORS: Addin category is unknown. */
         return _("Unknown");
-    }
-  }
-
-  int AddinsTreeModel::ensure_valid_addin_category(int category)
-  {
-    switch(category) {
-      case gnote::ADDIN_CATEGORY_FORMATTING:
-      case gnote::ADDIN_CATEGORY_DESKTOP_INTEGRATION:
-      case gnote::ADDIN_CATEGORY_TOOLS:
-      case gnote::ADDIN_CATEGORY_SYNCHRONIZATION:
-        return category;
-      case gnote::ADDIN_CATEGORY_UNKNOWN:
-      default:
-        return gnote::ADDIN_CATEGORY_UNKNOWN;
     }
   }
 

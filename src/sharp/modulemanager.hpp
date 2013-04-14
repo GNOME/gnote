@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -27,32 +28,28 @@
 #ifndef __SHARP_MODULEMANAGER_HPP_
 #define __SHARP_MODULEMANAGER_HPP_
 
-#include <list>
-#include <set>
+#include <map>
 #include <string>
 
 namespace sharp {
 
 class DynamicModule;
 
-typedef std::list<DynamicModule *> ModuleList;
+typedef std::map<std::string, DynamicModule*> ModuleMap;
 
 class ModuleManager 
 {
 public:
   ~ModuleManager();
 
-  /** add path to list the modules */
-  void add_path(const std::string & dir);
-  void load_modules();
+  DynamicModule *load_module(const std::string & module);
+  void load_modules(const std::list<std::string> & modules);
   
-  const ModuleList & get_modules() const
+  const ModuleMap & get_modules() const
     { return m_modules; }
-  const DynamicModule * get_module(const std::string & id) const;
+  DynamicModule *get_module(const std::string & module) const;
 private:
-  std::set<std::string> m_dirs;
-
-  ModuleList m_modules;
+  ModuleMap m_modules;
 };
 
 

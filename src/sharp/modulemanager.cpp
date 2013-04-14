@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -27,6 +28,7 @@
 #include <dlfcn.h>
 
 #include <gmodule.h>
+#include <glibmm/i18n.h>
 #include <glibmm/module.h>
 
 #include "sharp/directory.hpp"
@@ -41,68 +43,59 @@ namespace sharp {
 
   ModuleManager::~ModuleManager()
   {
-    for(ModuleList::const_iterator mod_iter = m_modules.begin();
+    for(ModuleMap::const_iterator mod_iter = m_modules.begin();
         mod_iter != m_modules.end(); ++mod_iter) {
-      delete *mod_iter;
+      delete mod_iter->second;
     }
   }
 
-
-  void ModuleManager::add_path(const std::string & dir)
+  DynamicModule *ModuleManager::load_module(const std::string & mod)
   {
-    m_dirs.insert(dir);
-    DBG_OUT("add path %s", dir.c_str());
+    DynamicModule *dmod = get_module(mod);
+    if(dmod) {
+      return dmod;
+    }
+
+    Glib::Module module(mod, Glib::MODULE_BIND_LOCAL);
+    DBG_OUT("load module %s", file_basename(mod).c_str());
+    if(!module) {
+      ERR_OUT(_("Error loading %s"), Glib::Module::get_last_error().c_str());
+      return dmod;
+    }
+
+    void *func = NULL;
+    bool found = module.get_symbol("dynamic_module_instanciate", func);
+    if(!found) {
+      DBG_OUT(_("Error getting symbol dynamic_module_instanciate: %s"),
+              Glib::Module::get_last_error().c_str());
+      return dmod;
+    }
+
+    instanciate_func_t real_func = (instanciate_func_t)func;
+    dmod = (*real_func)();
+    if(dmod) {
+      m_modules[mod] = dmod;
+      module.make_resident();
+    }
+
+    return dmod;
   }
 
-
-  void ModuleManager::load_modules()
+  void ModuleManager::load_modules(const std::list<std::string> & modules)
   {
-    std::string ext = std::string(".") + G_MODULE_SUFFIX;
-
-    for(std::set<std::string>::const_iterator iter = m_dirs.begin();
-        iter != m_dirs.end(); ++iter) {
-
-      std::list<std::string> l;
-      directory_get_files_with_ext(*iter, ext, l);
-      
-      for(std::list<std::string>::const_iterator mod_iter = l.begin();
-          mod_iter != l.end(); ++mod_iter) {
-
-        Glib::Module module(*iter + "/" + file_basename(*mod_iter), 
-                            Glib::MODULE_BIND_LOCAL);
-        DBG_OUT("load module %s", file_basename(*mod_iter).c_str());
-
-        if(!module) {
-          DBG_OUT("error loading %s", Glib::Module::get_last_error().c_str());
-          continue;
-        }
-        void * func = NULL;
-        bool found = module.get_symbol("dynamic_module_instanciate", func);
-
-        if(!found) {
-          DBG_OUT("error getting symbol %s", Glib::Module::get_last_error().c_str());
-          continue;
-        }
-        instanciate_func_t real_func = (instanciate_func_t)func;
-        DynamicModule * dmod = (*real_func)();
-
-        if(dmod) {
-          m_modules.push_back(dmod);
-          module.make_resident();
-        }
-      }
-
+    for(std::list<std::string>::const_iterator mod_iter = modules.begin();
+        mod_iter != modules.end(); ++mod_iter) {
+      load_module(*mod_iter);
     }
   }
 
-const DynamicModule * ModuleManager::get_module(const std::string & id) const
-{
-  for(ModuleList::const_iterator iter = m_modules.begin();
-      iter != m_modules.end(); ++iter) {
-    if (id == (*iter)->id())
-      return *iter;
+  DynamicModule * ModuleManager::get_module(const std::string & module) const
+  {
+    ModuleMap::const_iterator iter = m_modules.find(module);
+    if(iter != m_modules.end()) {
+      return iter->second;
+    }
+    return 0;
   }
-  return 0;
-}
 
 }

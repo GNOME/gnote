@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -56,13 +56,6 @@ public:
 
   virtual ~DynamicModule();
 
-  virtual const char * id() const = 0;
-  virtual const char * name() const = 0;
-  virtual const char * description() const = 0;
-  virtual const char * authors() const = 0;
-  virtual int          category() const = 0;
-  virtual const char * version() const = 0;
-  virtual const char * copyright() const;
   bool is_enabled() const
     {
       return m_enabled;

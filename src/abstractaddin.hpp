@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,14 +29,6 @@
 #include "sharp/modulefactory.hpp"
 
 namespace gnote {
-
-enum {
-  ADDIN_CATEGORY_UNKNOWN,
-  ADDIN_CATEGORY_TOOLS,
-  ADDIN_CATEGORY_FORMATTING,
-  ADDIN_CATEGORY_DESKTOP_INTEGRATION,
-  ADDIN_CATEGORY_SYNCHRONIZATION
-};
 
 class AbstractAddin
   : public sharp::IInterface

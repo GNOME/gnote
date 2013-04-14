@@ -74,14 +74,14 @@ namespace gnote {
     : public Gtk::Dialog
   {
   public:
-    AddinInfoDialog(const sharp::DynamicModule * module, Gtk::Dialog &parent);
+    AddinInfoDialog(const AddinInfo & module, Gtk::Dialog &parent);
     void set_addin_id(const std::string & id)
       { m_id = id; }
     const std::string & get_addin_id() const
       { return m_id; }
   private:
     void fill(Gtk::Label &);
-    const sharp::DynamicModule *m_module;
+    AddinInfo m_addin_info;
     std::string m_id;
   };
 
@@ -177,19 +177,22 @@ namespace gnote {
 
   void PreferencesDialog::enable_addin(bool enable)
   {
-    sharp::DynamicModule * const module = get_selected_addin();
-    if (!module)
+    std::string id = get_selected_addin();
+    sharp::DynamicModule * const module = m_addin_manager.get_module(id);
+    if(!module) {
       return;
+    }
+    else {
+      set_module_for_selected_addin(module);
+    }
 
     if (module->has_interface(NoteAddin::IFACE_NAME)) {
       if (enable)
-        m_addin_manager.add_note_addin_info(module);
+        m_addin_manager.add_note_addin_info(id, module);
       else
-        m_addin_manager.erase_note_addin_info(module);
+        m_addin_manager.erase_note_addin_info(id);
     }
     else {
-      const char * const id = module->id();
-
       ApplicationAddin * const addin = m_addin_manager.get_application_addin(id);
       if(addin) {
         enable_addin(addin, enable);
@@ -200,7 +203,7 @@ namespace gnote {
           enable_addin(sync_addin, enable);
         }
         else {
-          ERR_OUT("Addin %s absent", id);
+          ERR_OUT(_("Add-in %s is absent"), id.c_str());
           return;
         }
       }
@@ -746,16 +749,26 @@ namespace gnote {
   }
 
 
-  sharp::DynamicModule * PreferencesDialog::get_selected_addin()
+  std::string PreferencesDialog::get_selected_addin()
   {
     /// TODO really set
     Glib::RefPtr<Gtk::TreeSelection> select = m_addin_tree->get_selection();
     Gtk::TreeIter iter = select->get_selected();
-    sharp::DynamicModule * module = NULL;
+    std::string module_id;
     if(iter) {
-      module = m_addin_tree_model->get_module(iter);
+      module_id = m_addin_tree_model->get_module_id(iter);
     }
-    return module;
+    return module_id;
+  }
+
+
+  void PreferencesDialog::set_module_for_selected_addin(sharp::DynamicModule * module)
+  {
+    Glib::RefPtr<Gtk::TreeSelection> select = m_addin_tree->get_selection();
+    Gtk::TreeIter iter = select->get_selected();
+    if(iter) {
+      m_addin_tree_model->set_module(iter, module);
+    }
   }
 
 
@@ -768,12 +781,21 @@ namespace gnote {
   /// Set the sensitivity of the buttons based on what is selected
   void PreferencesDialog::update_addin_buttons()
   {
-    const sharp::DynamicModule * module = get_selected_addin();
-    if(module) {
-      enable_addin_button->set_sensitive(!module->is_enabled());
-      disable_addin_button->set_sensitive(module->is_enabled());
-      addin_prefs_button->set_sensitive(
-        module->has_interface(AddinPreferenceFactoryBase::IFACE_NAME));
+    std::string id = get_selected_addin();
+    if(id != "") {
+      bool loaded = m_addin_manager.is_module_loaded(id);
+      bool enabled = false;
+      if(loaded) {
+        const sharp::DynamicModule *module = m_addin_manager.get_module(id);
+        enabled = module->is_enabled();
+        addin_prefs_button->set_sensitive(
+          module->has_interface(AddinPreferenceFactoryBase::IFACE_NAME));
+      }
+      else {
+        addin_prefs_button->set_sensitive(false);
+      }
+      enable_addin_button->set_sensitive(!enabled);
+      disable_addin_button->set_sensitive(enabled);
       addin_info_button->set_sensitive(true);
     }
     else {
@@ -788,11 +810,14 @@ namespace gnote {
   void PreferencesDialog::load_addins()
   {
     ///// TODO populate
-    const sharp::ModuleList & list(m_addin_manager.get_modules());
-    for(sharp::ModuleList::const_iterator iter = list.begin();
-        iter != list.end(); ++iter) {
-
-      m_addin_tree_model->append(*iter);
+    const AddinInfoMap & addins(m_addin_manager.get_addin_infos());
+    for(AddinInfoMap::const_iterator iter = addins.begin();
+        iter != addins.end(); ++iter) {
+      sharp::DynamicModule *module = NULL;
+      if(m_addin_manager.is_module_loaded(iter->first)) {
+        module = m_addin_manager.get_module(iter->first);
+      }
+      m_addin_tree_model->append(iter->second, module);
     }
 
     update_addin_buttons();
@@ -816,7 +841,9 @@ namespace gnote {
 
   void PreferencesDialog::on_addin_prefs_button()
   {
-    const sharp::DynamicModule * module = get_selected_addin();
+    std::string id = get_selected_addin();
+    AddinInfo addin_info = m_addin_manager.get_addin_info(id);
+    const sharp::DynamicModule *module = m_addin_manager.get_module(id);
     Gtk::Dialog *dialog;
 
     if (!module) {
@@ -824,7 +851,7 @@ namespace gnote {
     }
 
     std::map<std::string, Gtk::Dialog* >::iterator iter;
-    iter = addin_prefs_dialogs.find(module->id());
+    iter = addin_prefs_dialogs.find(id);
     if (iter == addin_prefs_dialogs.end()) {
       // A preference dialog isn't open already so create a new one
       Gtk::Image *icon =
@@ -832,13 +859,13 @@ namespace gnote {
       Gtk::Label *caption = manage(new Gtk::Label());
       caption->set_markup(
         str(boost::format("<span size='large' weight='bold'>%1% %2%</span>") 
-            % module->name() % module->version()));
+            % addin_info.name() % addin_info.version()));
       caption->property_xalign() = 0;
       caption->set_use_markup(true);
       caption->set_use_underline(false);
 
       Gtk::Widget * pref_widget =
-        m_addin_manager.create_addin_preference_widget (module->id());
+        m_addin_manager.create_addin_preference_widget(id);
 
       if (pref_widget == NULL) {
         pref_widget = manage(new Gtk::Label (_("Not Implemented")));
@@ -855,7 +882,7 @@ namespace gnote {
       vbox->show_all ();
 
       dialog = new Gtk::Dialog(
-        str(boost::format(_("%1% Preferences")) % module->name()),
+        str(boost::format(_("%1% Preferences")) % addin_info.name()),
         *this, false);
       dialog->property_destroy_with_parent() = true;
       dialog->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
@@ -874,7 +901,7 @@ namespace gnote {
       // presented again if the user clicks on the preferences button
       // again before closing the preferences dialog.
 //      dialog->set_data(Glib::Quark("AddinId"), module->id());
-      addin_prefs_dialogs [module->id()] = dialog;
+      addin_prefs_dialogs[id] = dialog;
     } 
     else {
       // It's already opened so just present it again
@@ -903,15 +930,12 @@ namespace gnote {
 
   void PreferencesDialog::on_addin_info_button()
   {
-    const sharp::DynamicModule * addin = get_selected_addin();
-
-    if (addin == NULL) {
-      return;
-    }
+    std::string id = get_selected_addin();
+    AddinInfo addin = m_addin_manager.get_addin_info(id);
 
     Gtk::Dialog* dialog;
     std::map<std::string, Gtk::Dialog* >::iterator iter;
-    iter = addin_info_dialogs.find(addin->id());
+    iter = addin_info_dialogs.find(addin.id());
     if (iter == addin_info_dialogs.end()) {
       dialog = new AddinInfoDialog (addin, *this);
       dialog->signal_delete_event().connect(
@@ -926,8 +950,8 @@ namespace gnote {
       // Store this dialog off in a dictionary so it can be presented
       // again if the user clicks on the Info button before closing
       // the original dialog.
-      static_cast<AddinInfoDialog*>(dialog)->set_addin_id(addin->id());
-      addin_info_dialogs [addin->id()] = dialog;
+      static_cast<AddinInfoDialog*>(dialog)->set_addin_id(id);
+      addin_info_dialogs[id] = dialog;
     } 
     else {
       // It's already opened so just present it again
@@ -1336,10 +1360,10 @@ DBG_OUT("no addin");
   }
 
 
-  AddinInfoDialog::AddinInfoDialog(const sharp::DynamicModule * module,
+  AddinInfoDialog::AddinInfoDialog(const AddinInfo & addin_info,
                                    Gtk::Dialog &parent)
-    : Gtk::Dialog(module->name(), parent, false)
-    , m_module(module)
+    : Gtk::Dialog(addin_info.name(), parent, false)
+    , m_addin_info(addin_info)
   {
     property_destroy_with_parent() = true;
     add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
@@ -1375,25 +1399,17 @@ DBG_OUT("no addin");
 
 	void AddinInfoDialog::fill(Gtk::Label & info_label)
   {
-    std::string sb("<b><big>");
-    sb += std::string(m_module->name()) + "</big></b>\n\n";
-
-    const char * s = m_module->description();
-    if (s && *s) {
-      sb += std::string(s) + "\n\n";
-    }
+    std::string sb = "<b><big>" + m_addin_info.name() + "</big></b>\n\n";
+    sb += m_addin_info.description() + "\n\n";
 
     sb += str(boost::format("<small><b>%1%</b>\n%2%\n\n")
-              % _("Version:") % m_module->version());
+              % _("Version:") % m_addin_info.version());
 
-    s = m_module->authors();
-    if (s && *s) {
-      sb += str(boost::format("<b>%1%</b>\n%2%\n\n")
-                % _("Author:") % s);
-    }
+    sb += str(boost::format("<b>%1%</b>\n%2%\n\n")
+              % _("Author:") % m_addin_info.authors());
     
-    s = m_module->copyright();
-    if (s && *s) {
+    std::string s = m_addin_info.copyright();
+    if(s != "") {
       sb += str(boost::format("<b>%1%</b>\n%2%\n\n") 
                 % _("Copyright:") % s);
     }

@@ -97,6 +97,7 @@ libgnote_la_SOURCES = \
 	sharp/xsltargumentlist.hpp sharp/xsltargumentlist.cpp \
 	sharp/xsltransform.hpp sharp/xsltransform.cpp \
 	abstractaddin.hpp abstractaddin.cpp \
+	addininfo.hpp addininfo.cpp \
 	addinmanager.hpp addinmanager.cpp \
 	addinpreferencefactory.hpp addinpreferencefactory.cpp \
 	applicationaddin.hpp \
