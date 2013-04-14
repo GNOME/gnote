@@ -36,36 +36,6 @@ NoteDirectoryWatcherModule::NoteDirectoryWatcherModule()
   ADD_INTERFACE_IMPL(NoteDirectoryWatcherApplicationAddin);
 }
 
-const char * NoteDirectoryWatcherModule::id() const
-{
-  return "NoteDirectoryWatcherAddin";
-}
-
-const char * NoteDirectoryWatcherModule::name() const
-{
-  return _("Note Directory Watcher");
-}
-
-const char * NoteDirectoryWatcherModule::description() const
-{
-  return _("Watch your Gnote note directory for changes to your notes.");
-}
-
-const char * NoteDirectoryWatcherModule::authors() const
-{
-  return _("Aurimas Černius and Tomboy original authors");
-}
-
-int NoteDirectoryWatcherModule::category() const
-{
-  return gnote::ADDIN_CATEGORY_TOOLS;
-}
-
-const char * NoteDirectoryWatcherModule::version() const
-{
-  return "0.1";
-}
-
 
 
 
