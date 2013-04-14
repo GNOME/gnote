@@ -39,12 +39,6 @@ class NoteOfTheDayModule
 {
 public:
   NoteOfTheDayModule();
-  virtual const char * id() const;
-  virtual const char * name() const;
-  virtual const char * description() const;
-  virtual const char * authors() const;
-  virtual int          category() const;
-  virtual const char * version() const;
 };
 
 class NoteOfTheDayApplicationAddin
