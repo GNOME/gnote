@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,30 +39,6 @@ namespace filesystemsyncservice {
 FileSystemSyncServiceModule::FileSystemSyncServiceModule()
 {
   ADD_INTERFACE_IMPL(FileSystemSyncServiceAddin);
-}
-const char * FileSystemSyncServiceModule::id() const
-{
-  return "FileSystemSyncServiceAddin";
-}
-const char * FileSystemSyncServiceModule::name() const
-{
-  return _("Local Directory Sync Service Add-in");
-}
-const char * FileSystemSyncServiceModule::description() const
-{
-  return _("Synchronize Gnote Notes to a local file system path");
-}
-const char * FileSystemSyncServiceModule::authors() const
-{
-  return _("Aurimas Cernius and the Tomboy Project");
-}
-int FileSystemSyncServiceModule::category() const
-{
-  return gnote::ADDIN_CATEGORY_SYNCHRONIZATION;
-}
-const char * FileSystemSyncServiceModule::version() const
-{
-  return "0.1";
 }
 
 
