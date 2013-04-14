@@ -20,8 +20,6 @@
 
 #include <fstream>
 
-#include <glibmm/i18n.h>
-
 #include "debug.hpp"
 #include "notedirectorywatcherapplicationaddin.hpp"
 #include "notemanager.hpp"

@@ -19,7 +19,6 @@
  */
 
 #include <glibmm.h>
-#include <glibmm/i18n.h>
 
 #include "noteoftheday.hpp"
 #include "noteofthedayapplicationaddin.hpp"

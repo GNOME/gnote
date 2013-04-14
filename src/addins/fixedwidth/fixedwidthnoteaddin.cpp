@@ -24,7 +24,6 @@
 // Translated from FixedWidthNoteAddin.cs:
 // Add a 'fixed width' item to the font styles menu.
 
-#include <glibmm/i18n.h>
 
 #include "sharp/modulefactory.hpp"
 #include "fixedwidthmenuitem.hpp"

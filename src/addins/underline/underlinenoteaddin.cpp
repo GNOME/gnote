@@ -23,7 +23,6 @@
 
 // Translated from UnderlineNoteAddin.cs:
 
-#include <glibmm/i18n.h>
 
 #include "sharp/modulefactory.hpp"
 #include "underlinemenuitem.hpp"
