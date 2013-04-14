@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -49,30 +49,6 @@ namespace stickynote {
 StickyNoteImportModule::StickyNoteImportModule()
 {
   ADD_INTERFACE_IMPL(StickyNoteImportNoteAddin);
-}
-const char * StickyNoteImportModule::id() const
-{
-  return "StickyNoteImportAddin";
-}
-const char * StickyNoteImportModule::name() const
-{
-  return _("Sticky Notes Importer");
-}
-const char * StickyNoteImportModule::description() const
-{
-  return _("Import your notes from the Sticky Notes applet.");
-}
-const char * StickyNoteImportModule::authors() const
-{
-  return _("Hubert Figuiere and the Tomboy Project");
-}
-int StickyNoteImportModule::category() const
-{
-  return gnote::ADDIN_CATEGORY_TOOLS;
-}
-const char * StickyNoteImportModule::version() const
-{
-  return "0.1";
 }
 
 static const char * STICKY_XML_REL_PATH = "/.gnome2/stickynotes_applet";
