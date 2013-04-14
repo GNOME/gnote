@@ -32,35 +32,6 @@ StatisticsModule::StatisticsModule()
   ADD_INTERFACE_IMPL(StatisticsApplicationAddin);
 }
 
-const char * StatisticsModule::id() const
-{
-  return "Statistics";
-}
-
-const char * StatisticsModule::name() const
-{
-  return _("Statistics");
-}
-
-const char * StatisticsModule::description() const
-{
-  return _("Show various statistics about notes");
-}
-
-const char * StatisticsModule::authors() const
-{
-  return _("Aurimas Černius");
-}
-
-int StatisticsModule::category() const
-{
-  return gnote::ADDIN_CATEGORY_TOOLS;
-}
-
-const char * StatisticsModule::version() const
-{
-  return "0.1";
-}
 
 
 StatisticsApplicationAddin::StatisticsApplicationAddin()
