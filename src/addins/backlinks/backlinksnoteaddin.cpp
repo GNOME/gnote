@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -33,30 +33,6 @@ namespace backlinks {
 BacklinksModule::BacklinksModule()
 {
   ADD_INTERFACE_IMPL(BacklinksNoteAddin);
-}
-const char * BacklinksModule::id() const
-{
-  return "BacklinksAddin";
-}
-const char * BacklinksModule::name() const
-{
-  return _("Backlinks");
-}
-const char * BacklinksModule::description() const
-{
-  return _("See which notes link to the one you're currently viewing.");
-}
-const char * BacklinksModule::authors() const
-{
-  return _("Hubert Figuiere and Tomboy Project");
-}
-int BacklinksModule::category() const
-{
-  return gnote::ADDIN_CATEGORY_TOOLS;
-}
-const char * BacklinksModule::version() const
-{
-  return "0.1";
 }
 
 
