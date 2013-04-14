@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -35,30 +35,6 @@ namespace inserttimestamp {
     ADD_INTERFACE_IMPL(InsertTimestampNoteAddin);
     ADD_INTERFACE_IMPL(InsertTimestampPreferencesFactory);
     enabled(false);
-  }
-  const char * InsertTimeStampModule::id() const
-  {
-    return "InsertTimestampAddin";
-  }
-  const char * InsertTimeStampModule::name() const
-  {
-    return _("Insert Timestamp");
-  }
-  const char * InsertTimeStampModule::description() const
-  {
-    return _("Inserts current date and time at the cursor position.");
-  }
-  const char * InsertTimeStampModule::authors() const
-  {
-    return _("Hubert Figuiere and Tomboy Project");
-  }
-  int InsertTimeStampModule::category() const
-  {
-    return gnote::ADDIN_CATEGORY_TOOLS;
-  }
-  const char * InsertTimeStampModule::version() const
-  {
-    return "0.1.1";
   }
 
 
