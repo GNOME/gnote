@@ -415,7 +415,7 @@ namespace gnote {
     } 
     catch (const sharp::Exception & e) {
       // Probably IOException or UnauthorizedAccessException?
-      ERR_OUT("Exception while saving note: %s", e.what());
+      ERR_OUT(_("Exception while saving note: %s"), e.what());
       show_io_error_dialog(dynamic_cast<Gtk::Window*>(m_window->host()));
     }
 
@@ -521,7 +521,7 @@ namespace gnote {
     }
     catch(const sharp::Exception &e) 
     {
-      ERR_OUT("Error while saving: %s", e.what());
+      ERR_OUT(_("Error while saving: %s"), e.what());
     }
   }
 
@@ -944,7 +944,7 @@ namespace gnote {
       m_buffer->set_text(text);
     }
     else {
-      ERR_OUT("Setting text content for closed notes not supported");
+      ERR_OUT(_("Setting text content for closed notes not supported"));
     }
   }
 
@@ -1138,7 +1138,7 @@ namespace gnote {
       }
       catch(sharp::Exception & e) {
         // write failure, but not critical
-        ERR_OUT("Failed to update note format: %s", e.what());
+        ERR_OUT(_("Failed to update note format: %s"), e.what());
       }
     }
     return data;
@@ -1279,7 +1279,7 @@ namespace gnote {
     }
     catch(const std::exception & e)
     {
-      ERR_OUT("filesystem error: '%s'", e.what());
+      ERR_OUT(_("Filesystem error: %s"), e.what());
     }
   }
 

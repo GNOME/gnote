@@ -18,6 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <glibmm/i18n.h>
+
 #include "config.h"
 
 #include "debug.hpp"
@@ -79,7 +81,7 @@ namespace gnote {
       return note->uri();
     } 
     catch (const std::exception & e) {
-      ERR_OUT("create throw: %s", e.what());
+      ERR_OUT(_("Exception thrown when creating note: %s"), e.what());
     }
     return "";
   }

@@ -67,7 +67,8 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
       template_note->queue_save(gnote::CONTENT_CHANGED);
     }
     catch (const sharp::Exception & e) {
-      ERR_OUT("NoteOfTheDay could not create %s: %s",
+      /* TRANSLATORS: first %s is template note title, second is error */
+      ERR_OUT(_("NoteOfTheDay could not create %s: %s"),
               NoteOfTheDay::s_template_title.c_str(),
               e.what());
     }

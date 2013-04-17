@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+#include <glibmm/i18n.h>
 
 #include "debug.hpp"
 #include "remotecontrol-client-glue.hpp"
@@ -133,7 +135,7 @@ Glib::VariantContainerBase RemoteControl_proxy::call_remote(const Glib::ustring 
     return call_sync(method_name, parameters);
   }
   catch(...) {
-    ERR_OUT("Remote call failed: %s", method_name.c_str());
+    ERR_OUT(_("Remote call to %s failed"), method_name.c_str());
     return Glib::VariantContainerBase();
   }
 }

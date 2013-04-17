@@ -20,6 +20,8 @@
 
 #include <fstream>
 
+#include <glibmm/i18n.h>
+
 #include "debug.hpp"
 #include "notedirectorywatcherapplicationaddin.hpp"
 #include "notemanager.hpp"
@@ -219,7 +221,8 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
     reader.close();
   }
   catch(std::ios::failure & e) {
-    ERR_OUT("NoteDirectoryWatcher: Update aborted, error reading %s: %s", note_path.c_str(), e.what());
+    /* TRANSLATORS: first %s is file name, second is error */
+    ERR_OUT(_("NoteDirectoryWatcher: Update aborted, error reading %s: %s"), note_path.c_str(), e.what());
     return;
   }
 
@@ -245,19 +248,22 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
       title = match_info.fetch(1);
     }
     else {
-      ERR_OUT("NoteDirectoryWatcher: Error reading note title from %s", note_path.c_str());
+      /* TRANSLATORS: %s is file */
+      ERR_OUT(_("NoteDirectoryWatcher: Error reading note title from %s"), note_path.c_str());
       return;
     }
 
     try {
       note = note_manager().create_with_guid(title, note_id);
       if(note == 0) {
-        ERR_OUT("NoteDirectoryWatcher: Unknown error creating note from %s", note_path.c_str());
+        /* TRANSLATORS: %s is file */
+        ERR_OUT(_("NoteDirectoryWatcher: Unknown error creating note from %s"), note_path.c_str());
         return;
       }
     }
     catch(std::exception & e) {
-      ERR_OUT("NoteDirectoryWatcher: Error creating note from %s: %s", note_path.c_str(), e.what());
+      /* TRANSLATORS: first %s is file, second is error */
+      ERR_OUT(_("NoteDirectoryWatcher: Error creating note from %s: %s"), note_path.c_str(), e.what());
       return;
     }
   }
@@ -269,7 +275,8 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
     note->load_foreign_note_xml(noteXml, gnote::CONTENT_CHANGED);
   }
   catch(std::exception & e) {
-    ERR_OUT("NoteDirectoryWatcher: Update aborted, error parsing %s: %s", note_path.c_str(), e.what());
+    /* TRANSLATORS: first %s is file, second is error */
+    ERR_OUT(_("NoteDirectoryWatcher: Update aborted, error parsing %s: %s"), note_path.c_str(), e.what());
     if(is_new_note) {
       note_manager().delete_note(note);
     }

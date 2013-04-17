@@ -280,8 +280,7 @@ namespace gnote {
       links_note->queue_save (CONTENT_CHANGED);
     } 
     catch (const std::exception & e) {
-      ERR_OUT("Error creating start notes: %s",
-              e.what());
+      ERR_OUT(_("Error creating start notes: %s"), e.what());
     }
   }
 
@@ -308,7 +307,8 @@ namespace gnote {
         add_note(note);
       } 
       catch (const std::exception & e) {
-        ERR_OUT("Error parsing note XML, skipping \"%s\": %s",
+        /* TRANSLATORS: first %s is file, second is error */
+        ERR_OUT(_("Error parsing note XML, skipping \"%s\": %s"),
                 file_path.c_str(), e.what());
       }
     }

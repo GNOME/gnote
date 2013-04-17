@@ -121,7 +121,7 @@ namespace sync {
           }
         }
         catch(std::exception & e) {
-          ERR_OUT("Error cleaning up addin after sync: %s", e.what());
+          ERR_OUT(_("Error cleaning up addin after synchronization: %s"), e.what());
         }
       }
     } f;
@@ -146,7 +146,7 @@ namespace sync {
       }
       catch(std::exception & e) {
         set_state(SYNC_SERVER_CREATION_FAILED);
-        ERR_OUT("Exception while creating SyncServer: %s", e.what());
+        ERR_OUT(_("Exception while creating SyncServer: %s"), e.what());
         set_state(IDLE);
         m_sync_thread = NULL;
         f.addin->post_sync_cleanup();// TODO: Needed?
@@ -350,7 +350,7 @@ namespace sync {
 
     }
     catch(std::exception & e) { // top-level try
-      ERR_OUT("Synchronization failed with the following exception: %s", e.what());
+      ERR_OUT(_("Synchronization failed with the following exception: %s"), e.what());
       // TODO: Report graphically to user
       try {
         set_state(IDLE); // stop progress

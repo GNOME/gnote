@@ -190,7 +190,7 @@ namespace gnote {
         {
         }
 
-        ERR_OUT ("Gnote is already running.  Exiting...");
+        ERR_OUT(_("Gnote is already running.  Exiting..."));
         ::exit(-1);
       }
     }
@@ -644,7 +644,7 @@ namespace gnote {
       //gnote already running, execute via D-Bus and exit this instance
       Glib::RefPtr<RemoteControlClient> remote = RemoteControlProxy::get_instance();
       if(!remote) {
-        ERR_OUT("Could not connect to remote instance.");
+        ERR_OUT(_("Could not connect to remote instance."));
       }
       else {
         execute(remote);

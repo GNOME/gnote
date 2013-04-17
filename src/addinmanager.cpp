@@ -298,7 +298,7 @@ namespace gnote {
   void AddinManager::load_addins_for_note(const Note::Ptr & note)
   {
     if(m_note_addins.find(note) != m_note_addins.end()) {
-      ERR_OUT("trying to load addins when they are already loaded");
+      ERR_OUT(_("Trying to load addins when they are already loaded"));
       return;
     }
     IdAddinMap loaded_addins;

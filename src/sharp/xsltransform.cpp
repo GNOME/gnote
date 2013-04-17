@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -25,6 +25,7 @@
 
 #include <stdlib.h>
 
+#include <glibmm/i18n.h>
 #include <libxslt/xsltutils.h>
 
 #include "sharp/exception.hpp"
@@ -63,7 +64,7 @@ void XslTransform::transform(xmlDocPtr doc, const XsltArgumentList & args, Strea
 {
   const char **params = NULL;
   if(m_stylesheet == NULL) {
-    ERR_OUT("NULL stylesheet");
+    ERR_OUT(_("NULL stylesheet, please fill a bug"));
     return;
   }
 

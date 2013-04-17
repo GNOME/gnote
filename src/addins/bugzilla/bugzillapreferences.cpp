@@ -386,7 +386,7 @@ namespace bugzilla {
         update_icon_store ();
       } 
       catch (const sharp::Exception & e) {
-        ERR_OUT("Error removing icon %s: %s", icon_path.c_str(), e.what());
+        ERR_OUT(_("Error removing icon %s: %s"), icon_path.c_str(), e.what());
       }
     }
   }

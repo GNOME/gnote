@@ -114,7 +114,7 @@ void ExportToHtmlNoteAddin::export_button_clicked()
       gnote::utils::open_url("file://" + output_uri.get_absolute_uri());
     } 
     catch (const Glib::Exception & ex) {
-      ERR_OUT ("Could not open exported note in a web browser: %s",
+      ERR_OUT(_("Could not open exported note in a web browser: %s"),
                ex.what().c_str());
 
       std::string detail = str(boost::format(
@@ -141,7 +141,7 @@ void ExportToHtmlNoteAddin::export_button_clicked()
   } 
 #endif
   catch (const sharp::Exception & e) {
-    ERR_OUT("Could not export: %s", e.what());
+    ERR_OUT(_("Could not export: %s"), e.what());
 
     error_message = e.what();
   } 
@@ -149,7 +149,7 @@ void ExportToHtmlNoteAddin::export_button_clicked()
 
   if (!error_message.empty())
   {
-    ERR_OUT("Could not export: %s", error_message.c_str());
+    ERR_OUT(_("Could not export: %s"), error_message.c_str());
 
     std::string msg = str(boost::format(
                             _("Could not save the file \"%s\"")) 

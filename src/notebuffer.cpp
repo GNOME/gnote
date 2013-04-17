@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <tr1/array>
 
+#include <glibmm/i18n.h>
 #include <glibmm/main.h>
 
 #include "debug.hpp"
@@ -1488,7 +1489,7 @@ namespace gnote {
               list_stack.push_front (false);
             } 
             else {
-              ERR_OUT("</list> tag mismatch");
+              ERR_OUT(_("</list> tag mismatch"));
             }
           } 
           else {
@@ -1567,7 +1568,7 @@ namespace gnote {
       }
     }
     catch(const std::exception & e) {
-      ERR_OUT("Exception, %s", e.what());
+      ERR_OUT(_("Exception: %s"), e.what());
     }
   }
 

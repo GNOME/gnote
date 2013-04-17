@@ -23,6 +23,7 @@
 
 
 #include <boost/lexical_cast.hpp>
+#include <glibmm/i18n.h>
 
 #include "debug.hpp"
 #include "ignote.hpp"
@@ -150,7 +151,8 @@ namespace sync {
 	    m_last_sync_date = sharp::DateTime::from_iso8601(value);
 	  }
 	  catch(...) {
-	    ERR_OUT("Unparsable last-sync-date element in %s", manifest_path.c_str());
+            /* TRANSLATORS: %s is file */
+	    ERR_OUT(_("Unparsable last-sync-date element in %s"), manifest_path.c_str());
 	  }
 	}
 	else if(reader.get_name() == "last-sync-rev") {
@@ -159,7 +161,8 @@ namespace sync {
 	    m_last_sync_rev = boost::lexical_cast<int>(value);
 	  }
 	  catch(...) {
-	    ERR_OUT("Unparsable last-sync-rev element in %s", manifest_path.c_str());
+            /* TRANSLATORS: %s is file */
+	    ERR_OUT(_("Unparsable last-sync-rev element in %s"), manifest_path.c_str());
 	  }
 	}
 	else if(reader.get_name() == "server-id") {

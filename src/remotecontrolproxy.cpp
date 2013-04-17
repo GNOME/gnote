@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 
 #include <fstream>
 
+#include <glibmm/i18n.h>
 #include <giomm/dbusownname.h>
 
 
@@ -133,7 +134,7 @@ void RemoteControlProxy::load_introspection_xml()
     s_gnote_interface = node->lookup_interface(GNOTE_INTERFACE_NAME);
   }
   catch(Glib::Error & e) {
-    ERR_OUT("Failed to load interface: %s", e.what().c_str());
+    ERR_OUT(_("Failed to load D-Bus interface: %s"), e.what().c_str());
   }
 }
 

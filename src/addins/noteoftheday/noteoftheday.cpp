@@ -45,7 +45,8 @@ gnote::Note::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
     notd = manager.create(title, xml);
   }
   catch (const sharp::Exception & e) {
-    ERR_OUT("NoteOfTheDay could not create %s: %s",
+    /* TRANSLATORS: first %s is note title, second is error */
+    ERR_OUT(_("NoteOfTheDay could not create %s: %s"),
             title.c_str(),
             e.what());
     return gnote::Note::Ptr();

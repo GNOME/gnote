@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -23,6 +24,8 @@
  */
 
 
+
+#include <glibmm/i18n.h>
 
 #include "debug.hpp"
 
@@ -189,7 +192,7 @@ namespace sharp {
   {
     XmlReader* self = (XmlReader*)arg;
     self->m_error = true;
-    ERR_OUT("XML error %s", msg ? msg : "unknown parse error");
+    ERR_OUT(_("XML error: %s"), msg ? msg : _("unknown parse error"));
   }
 
 }

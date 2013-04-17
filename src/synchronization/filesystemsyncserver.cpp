@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@
 
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
+#include <glibmm/i18n.h>
 
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
@@ -366,8 +367,8 @@ bool FileSystemSyncServer::commit_sync_transaction()
       }
     }
     catch(std::exception & e) {
-      ERR_OUT("Exception during server cleanup while committing. Server integrity is OK, but \
-there may be some excess files floating around.  Here's the error:%s\n", e.what());
+      ERR_OUT(_("Exception during server cleanup while committing. Server integrity is OK, but "
+                "there may be some excess files floating around.  Here's the error: %s\n"), e.what());
     }
     // * * * End Cleanup Code * * *
   }
@@ -608,7 +609,7 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
     sharp::file_delete(m_lock_path);
   }
   catch(std::exception & e) {
-    ERR_OUT("Error deleting the old sync lock \"%s\": %s", m_lock_path.c_str(), e.what());
+    ERR_OUT(_("Error deleting the old synchronization lock \"%s\": %s"), m_lock_path.c_str(), e.what());
   }
 }
 
