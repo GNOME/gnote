@@ -33,7 +33,7 @@
 namespace sharp {
 
   DynamicModule::DynamicModule()
-    : m_enabled(true)
+    : m_enabled(false)
   {
   }
 
