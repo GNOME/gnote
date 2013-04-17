@@ -18,6 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <fstream>
 #include <string.h>
 
 #include <boost/format.hpp>
@@ -27,7 +28,6 @@
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 
-#include "base/inifile.hpp"
 #include "stickynoteimportnoteaddin.hpp"
 #include "sharp/files.hpp"
 #include "sharp/string.hpp"
@@ -112,41 +112,68 @@ bool StickyNoteImportNoteAddin::want_to_run(gnote::NoteManager & manager)
   std::string prefs_file =
     Glib::build_filename(manager.get_addin_manager().get_prefs_dir(),
                          PREFS_FILE);
-  base::IniFile ini_file(prefs_file);
-  ini_file.load();
 
-  if(s_sticky_file_might_exist) {
-    want_run = !ini_file.get_bool("status", "first_run");
+  try {
+    Glib::KeyFile ini_file;
+    ini_file.load_from_file(prefs_file);
+
+    if(s_sticky_file_might_exist) {
+      want_run = !ini_file.get_boolean("status", "first_run");
+    }
   }
+  catch(Glib::Error & e) {
+    DBG_OUT("Failed to read key file %s: %s", prefs_file.c_str(), e.what().c_str());
+    want_run = true;
+  }
+
   return want_run;
 }
 
 
 bool StickyNoteImportNoteAddin::first_run(gnote::NoteManager & manager)
 {
-  base::IniFile ini_file(Glib::build_filename(
+  std::string prefs_file(Glib::build_filename(
                            manager.get_addin_manager().get_prefs_dir(), 
                            PREFS_FILE));
-  
-  ini_file.load();
 
-  bool firstRun = !ini_file.get_bool("status", "first_run");
+  Glib::KeyFile ini_file;
+  try {
+    ini_file.load_from_file(prefs_file);
+  }
+  catch(Glib::Error&) {
+    // ignore
+  }
 
-  if (firstRun) {
-    ini_file.set_bool("status", "first_run", true);
+  bool firstRun = true;
+  try {
+    ini_file.get_boolean("status", "first_run");
+  }
+  catch(Glib::Error&) {
+    // ignore
+  }
+
+  if(firstRun) {
+    ini_file.set_boolean("status", "first_run", true);
 
     DBG_OUT("%s", DEBUG_FIRST_RUN_DETECTED);
 
     xmlDocPtr xml_doc = get_sticky_xml_doc();
-    if (xml_doc) {
+    if(xml_doc) {
       // Don't show dialog when automatically importing
-      import_notes (xml_doc, false, manager);
+      import_notes(xml_doc, false, manager);
       xmlFreeDoc(xml_doc);
     }
     else {
       firstRun = false;
     }
+
+    std::ofstream fout(prefs_file.c_str());
+    if(fout) {
+      fout << ini_file.to_data().c_str();
+      fout.close();
+    }
   }
+
   return firstRun;
 }
 

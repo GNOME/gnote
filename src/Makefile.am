@@ -69,7 +69,6 @@ libgnote_la_LIBADD = $(LIBGNOTE_LIBS)
 libgnote_la_SOURCES = \
 	base/singleton.hpp \
 	base/macros.hpp \
-	base/inifile.hpp base/inifile.cpp \
 	gnome_keyring/keyringexception.hpp \
 	gnome_keyring/ring.hpp gnome_keyring/ring.cpp \
 	sharp/datetime.hpp sharp/datetime.cpp \
