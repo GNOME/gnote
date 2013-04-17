@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-07 12:31+0000\n"
-"PO-Revision-Date: 2013-04-11 18:27+0200\n"
+"POT-Creation-Date: 2013-04-14 15:23+0000\n"
+"PO-Revision-Date: 2013-04-17 18:19+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -633,32 +633,71 @@ msgstr "_Ventana nueva"
 msgid "Help _Contents"
 msgstr "_Contenido de la ayuda"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
+#: ../src/addininfo.cpp:69
+msgid "Failed to load add-in information!"
+msgstr "Falló al cargar la información del complemento."
+
+#: ../src/addinmanager.cpp:98
+#, c-format
+msgid "Note add-in info %s already present"
+msgstr "Ya existe la información del complemento %s de la nota"
+
+#: ../src/addinmanager.cpp:106
+#, c-format
+msgid "%s does not implement %s"
+msgstr "%s no implementa %s"
+
+#: ../src/addinmanager.cpp:118
+#, c-format
+msgid "Note add-in %s already present"
+msgstr "Ya existe el complemento %s de la nota"
+
+#: ../src/addinmanager.cpp:137
+#, c-format
+msgid "Note add-in info %s is absent"
+msgstr "Falta la información del complemento %s de la nota"
+
+#: ../src/addinmanager.cpp:150
+#, c-format
+msgid "Note add-in %s is absent"
+msgstr "Falta el complemento %s de la nota"
+
+#: ../src/addinmanager.cpp:183
+#, c-format
+msgid "Failed to find module %s for addin %s"
+msgstr "Falló al buscar el módulo %s para el complemento %s"
+
+#: ../src/addinmanager.cpp:187
+#, c-format
+msgid "Failed to load addin info for %s: %s"
+msgstr "Falló al cargar la información del complemento para %s: %s"
+
+#: ../src/addins/backlinks/backlinks.desktop.in.h:1
 msgid "Backlinks"
 msgstr "Retroenlaces"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
+#: ../src/addins/backlinks/backlinks.desktop.in.h:2
 msgid "See which notes link to the one you're currently viewing."
 msgstr "Ver qué notas enlazan con la que está viendo actualmente."
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
+#: ../src/addins/backlinks/backlinks.desktop.in.h:3
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.h:3
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere y el Proyecto Tomboy"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:65
 msgid "What links here?"
 msgstr "¿Qué enlaza aquí?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:121
 msgid "(none)"
 msgstr "(ninguna)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/bugzilla/bugzilla.desktop.in.h:1
 msgid "Bugzilla Links"
 msgstr "Enlaces Bugzilla"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:62
+#: ../src/addins/bugzilla/bugzilla.desktop.in.h:2
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -668,10 +707,11 @@ msgstr ""
 "nota de Gnote. El número del error se introduce como un enlace con un "
 "pequeño icono de un bicho junto a él."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:66
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
+#: ../src/addins/bugzilla/bugzilla.desktop.in.h:3
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:3
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.h:3
+#: ../src/addins/printnotes/printnotes.desktop.in.h:3
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.h:3
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere y el Proyecto Tomboy"
 
@@ -726,6 +766,15 @@ msgstr "¿Quiere quitar este icono?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Si quita un icono se perderá permanentemente."
 
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:1
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
+msgid "Export to HTML"
+msgstr "Exportar a HTML"
+
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:2
+msgid "Exports individual notes to HTML."
+msgstr "Exportar notas individuales a HTML."
+
 #: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
 msgid "Destination for HTML Export"
 msgstr "Destino para la exportación a HTML"
@@ -738,83 +787,74 @@ msgstr "Exportar las notas enlazadas"
 msgid "Include all other linked notes"
 msgstr "Incluir todas las notas enlazadas"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
-msgid "Export to HTML"
-msgstr "Exportar a HTML"
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
-msgid "Exports individual notes to HTML."
-msgstr "Exportar notas individuales a HTML."
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:145
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
 msgid "Your note was exported to \"%1%\"."
 msgstr "Su nota se exportó a «%1%»."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:130
 msgid "Note exported successfully"
 msgstr "Nota exportada satisfactoriamente"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:179
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:155
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "No se pudo guardar el archivo «%s»"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:1
 msgid "Local Directory Sync Service Add-in"
 msgstr "Complemento del servicio de sincronización de carpetas locales"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:53
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:2
 msgid "Synchronize Gnote Notes to a local file system path"
 msgstr ""
 "Sincronizar las notas de Gnote con una ruta local del sistema de archivos"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
-msgid "Aurimas Cernius and the Tomboy Project"
-msgstr "Aurimas Cernius y el Proyecto Tomboy"
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:3
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:3
+#| msgid "Aurimas Cernius and the Tomboy Project"
+msgid "Aurimas Černius and the Tomboy Project"
+msgstr "Aurimas Černius y el Proyecto Tomboy"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:127
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
 msgid "_Folder Path:"
 msgstr "Ruta de la ca_rpeta:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
 msgid "Select Synchronization Folder..."
 msgstr "Seleccione la carpeta que sincronizar…"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:157
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:133
 msgid "Folder path field is empty."
 msgstr "El campo de la ruta de la carpeta está vacío."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:164
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:140
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "La ruta de la carpeta especificada no existe y Gnote no pudo crearla."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:240
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:216
 msgid "Local Folder"
 msgstr "Carpeta local"
+
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.h:1
+msgid "Fixed Width"
+msgstr "Anchura fija"
+
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.h:2
+msgid "Adds fixed-width font style."
+msgstr "Añade un estilo de tipografía de anchura fija."
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
 msgid "Fixed Wid_th"
 msgstr "Anchura fi_ja"
 
-#. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
-msgid "Fixed Width"
-msgstr "Anchura fija"
-
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
-msgid "Adds fixed-width font style."
-msgstr "Añade un estilo de tipografía de anchura fija."
-
 #. Add the menu item when the window is created
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.h:1
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:54
 msgid "Insert Timestamp"
 msgstr "Insertar marca de tiempo"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Inserta la fecha y hora actual en la posición del cursor."
 
@@ -831,30 +871,30 @@ msgstr "Usar el formato _seleccionado"
 msgid "_Use Custom Format"
 msgstr "_Usar formato personalizado"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:46
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:1
 msgid "Note Directory Watcher"
 msgstr "Vigilante de la carpeta de notas"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:51
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:2
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr "Vigila si hay cambios en las notas de su carpeta de notas de Gnote."
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:56
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:3
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius y los autores originales de Tomboy"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:44
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.h:1
 msgid "Note of the Day"
 msgstr "Nota del día"
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:48
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.h:2
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
 "Crea automáticamente una nota «Hoy» para anotar fácilmente los pensamientos "
 "diarios."
 
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:53
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.h:3
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray y el Proyecto Tomboy"
 
@@ -891,168 +931,165 @@ msgstr ""
 "Cambiar la nota <span weight=\"bold\">Hoy: plantilla</span> para "
 "personalizar el texto que las nuevas notas Hoy tendrán."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
+#: ../src/addins/printnotes/printnotes.desktop.in.h:1
 msgid "Printing Support"
 msgstr "Soporte para impresión"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
+#: ../src/addins/printnotes/printnotes.desktop.in.h:2
 msgid "Allows you to print a note."
 msgstr "Le permite imprimir una nota."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:57
 msgid "Print"
 msgstr "Imprimir"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:153
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:129
 msgid "Error printing note"
 msgstr "Error al imprimir la nota"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:320
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:296
 msgid "Page %1% of %2%"
 msgstr "Página %1% de %2%"
 
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
+#: ../src/addins/replacetitle/replacetitle.desktop.in.h:1
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:47
 msgid "Replace title"
 msgstr "Reemplazar título"
 
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
+#: ../src/addins/replacetitle/replacetitle.desktop.in.h:2
 msgid "Replace title with selection."
 msgstr "Reemplazar título con la selección."
 
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
+#: ../src/addins/replacetitle/replacetitle.desktop.in.h:3
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:42
+#: ../src/addins/statistics/statistics.desktop.in.h:1
 #: ../src/addins/statistics/statisticswidget.cpp:170
-#| msgid "Status"
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:47
-msgid "Show various statistics about notes"
-msgstr "Mostrar varias estadísticas sobre las notas"
+#: ../src/addins/statistics/statistics.desktop.in.h:2
+#| msgid "Show various statistics about notes"
+msgid "Show various statistics about notes."
+msgstr "Mostrar varias estadísticas sobre las notas."
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:52
+#: ../src/addins/statistics/statistics.desktop.in.h:3
 msgid "Aurimas Černius"
 msgstr "Aurimas Černius"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:79
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:50
 msgid "Show Statistics"
 msgstr "Mostrar estadísticas"
 
 #: ../src/addins/statistics/statisticswidget.cpp:92
-#| msgid "All Notes"
 msgid "Total Notes:"
 msgstr "Notas totales:"
 
 #: ../src/addins/statistics/statisticswidget.cpp:98
-#| msgid "Notebooks"
 msgid "Total Notebooks:"
 msgstr "Cuadernos de notas totales:"
 
 #: ../src/addins/statistics/statisticswidget.cpp:128
-#| msgid "Total: %1% note"
-#| msgid_plural "Total: %1% notes"
 msgid "%1% note"
 msgid_plural "%1% notes"
 msgstr[0] "%1% nota"
 msgstr[1] "%1% notas"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.h:1
 msgid "Sticky Notes Importer"
 msgstr "Importador de Notas adhesivas"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.h:2
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Importar sus notas de la miniaplicación Notas adhesivas."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:109
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:85
 msgid "Import from Sticky Notes"
 msgstr "Importar de Notas adhesivas"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:209
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:185
 msgid "No Sticky Notes found"
 msgstr "No se encontró ninguna nota adhesiva"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:211
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:187
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "No se encontró un archivo de Notas adhesivas válido en «%1%»."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:219
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:195
 msgid "Sticky Notes import completed"
 msgstr "Importación de notas adhesivas completada"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:221
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:197
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "Se importaron correctamente <b>%1%</b> de <b>%2%</b> notas adhesivas."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:240
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
 msgid "Untitled"
 msgstr "Sin título"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:278
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:254
 msgid "Sticky Note: "
 msgstr "Nota adhesiva: "
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:1
 msgid "Tomboy Importer"
 msgstr "Importador de Tomboy"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:2
 msgid "Import your notes from Tomboy."
 msgstr "Importar sus notas de Tomboy."
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:3
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
+
+#: ../src/addins/underline/underline.desktop.in.h:1
+msgid "Underline"
+msgstr "Subrayado"
+
+#: ../src/addins/underline/underline.desktop.in.h:2
+msgid "Adds ability to underline text."
+msgstr "Añade la posibilidad de subrayar texto."
+
+#: ../src/addins/underline/underline.desktop.in.h:3
+msgid "Hubert Figuière and the Tomboy Project"
+msgstr "Hubert Figuière y el Proyecto Tomboy"
 
 #: ../src/addins/underline/underlinemenuitem.cpp:35
 msgid "_Underline"
 msgstr "_Subrayado"
 
-#. this is the name of the plugin.
-#: ../src/addins/underline/underlinenoteaddin.cpp:49
-msgid "Underline"
-msgstr "Subrayado"
-
-#: ../src/addins/underline/underlinenoteaddin.cpp:53
-msgid "Adds ability to underline text."
-msgstr "Añade la posibilidad de subrayar texto."
-
-#: ../src/addins/underline/underlinenoteaddin.cpp:57
-msgid "Hubert Figuière and the Tomboy Project"
-msgstr "Hubert Figuière y el Proyecto Tomboy"
-
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
-msgid "WebDav Sync Service Add-in"
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:1
+#| msgid "WebDav Sync Service Add-in"
+msgid "WebDAV Sync Service Add-in"
 msgstr "Complemento del servicio de sincronización de WebDav"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
-msgid "Synchronize Gnote Notes to a WebDav URL"
-msgstr "Sincronizar notas de Gnote con un URL de WebDav"
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:2
+#| msgid "Synchronize Gnote Notes to a WebDav URL"
+msgid "Synchronize Gnote Notes to a WebDAV URL."
+msgstr "Sincronizar notas de Gnote con un URL de WebDav."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
 msgid "User_name:"
 msgstr "Nombre de _usuario:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
 msgid "_Password:"
 msgstr "C_ontraseña:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:103
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:115
 msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
@@ -1060,7 +1097,7 @@ msgstr ""
 "Ocurrió un error al conectar al servidor. Esto pudo ocurrir por usar un "
 "nombre de usuario y/o contraseña incorrectos."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:171
 msgid "URL, username, or password field is empty."
 msgstr "El campo del URL, nombre de usuario o contraseña está vacío."
 
@@ -1069,7 +1106,7 @@ msgstr "El campo del URL, nombre de usuario o contraseña está vacío."
 #. Save configuration into GConf
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:290
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:260
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1301,7 +1338,7 @@ msgstr ""
 
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:336
+#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "Plantilla de nota nueva"
 
@@ -1598,7 +1635,7 @@ msgid "Hotkeys"
 msgstr "Teclas rápidas"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:127 ../src/sharp/addinstreemodel.cpp:147
+#: ../src/preferencesdialog.cpp:127 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "Sincronización"
 
@@ -1606,16 +1643,21 @@ msgstr "Sincronización"
 msgid "Add-ins"
 msgstr "Complementos"
 
+#: ../src/preferencesdialog.cpp:206
+#, c-format
+msgid "Add-in %s is absent"
+msgstr "Falta el complemento %s"
+
 #. Status icon
-#: ../src/preferencesdialog.cpp:241
+#: ../src/preferencesdialog.cpp:244
 msgid "Use Status _Icon"
 msgstr "Usar _icono de estado"
 
-#: ../src/preferencesdialog.cpp:254
+#: ../src/preferencesdialog.cpp:257
 msgid "_Spell check while typing"
 msgstr "_Corrección ortográfica al escribir"
 
-#: ../src/preferencesdialog.cpp:260
+#: ../src/preferencesdialog.cpp:263
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1624,11 +1666,11 @@ msgstr ""
 "las sugerencias de corrección en el menú contextual."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:271
+#: ../src/preferencesdialog.cpp:274
 msgid "Highlight _WikiWords"
 msgstr "Resaltar _wikipalabras"
 
-#: ../src/preferencesdialog.cpp:277
+#: ../src/preferencesdialog.cpp:280
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -1637,31 +1679,31 @@ msgstr ""
 "la palabra se creará una nota con ese nombre."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:284
+#: ../src/preferencesdialog.cpp:287
 msgid "Enable auto-_bulleted lists"
 msgstr "Activar listas de _topos automáticos"
 
-#: ../src/preferencesdialog.cpp:293
+#: ../src/preferencesdialog.cpp:296
 msgid "Use custom _font"
 msgstr "Usar _tipografía personalizada"
 
-#: ../src/preferencesdialog.cpp:310
+#: ../src/preferencesdialog.cpp:313
 msgid "When renaming a linked note: "
 msgstr "Al renombrar una nota enlazada: "
 
-#: ../src/preferencesdialog.cpp:315
+#: ../src/preferencesdialog.cpp:318
 msgid "Ask me what to do"
 msgstr "Preguntarme qué hacer"
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:319
 msgid "Never rename links"
 msgstr "No renombrar nunca los enlaces"
 
-#: ../src/preferencesdialog.cpp:317
+#: ../src/preferencesdialog.cpp:320
 msgid "Always rename links"
 msgstr "Siempre renombrar enlaces"
 
-#: ../src/preferencesdialog.cpp:339
+#: ../src/preferencesdialog.cpp:342
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -1669,16 +1711,16 @@ msgstr ""
 "Use la plantilla de la nota nueva para especificar el texto que se debe usar "
 "al crear una nota nueva."
 
-#: ../src/preferencesdialog.cpp:347
+#: ../src/preferencesdialog.cpp:350
 msgid "Open New Note Template"
 msgstr "Abrir la plantilla Nota nueva"
 
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:409
+#: ../src/preferencesdialog.cpp:412
 msgid "Listen for _Hotkeys"
 msgstr "Escuchar las _teclas rápidas"
 
-#: ../src/preferencesdialog.cpp:416
+#: ../src/preferencesdialog.cpp:419
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -1689,83 +1731,83 @@ msgstr ""
 "<b>&lt;Control&gt;&lt;Mayús&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:436
+#: ../src/preferencesdialog.cpp:439
 msgid "Show notes _menu"
 msgstr "Mostrar el _menú de notas"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:453
+#: ../src/preferencesdialog.cpp:456
 msgid "Open \"_Start Here\""
 msgstr "Abrir «Co_menzar aquí»"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:469
+#: ../src/preferencesdialog.cpp:472
 msgid "Create _new note"
 msgstr "Crear una nota _nueva"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:485
+#: ../src/preferencesdialog.cpp:488
 msgid "Open \"Search _All Notes\""
 msgstr "Abrir «Buscar en _todas las notas»"
 
-#: ../src/preferencesdialog.cpp:522
+#: ../src/preferencesdialog.cpp:525
 msgid "Ser_vice:"
 msgstr "Ser_vicio:"
 
-#: ../src/preferencesdialog.cpp:577 ../src/preferencesdialog.cpp:1181
+#: ../src/preferencesdialog.cpp:580 ../src/preferencesdialog.cpp:1205
 msgid "Not configurable"
 msgstr "No configurable"
 
 #. Translators: This is and the next string go together.
 #. Together they look like "Automatically Sync in Background Every [_] Minutes",
 #. where "[_]" is a GtkSpinButton.
-#: ../src/preferencesdialog.cpp:604
+#: ../src/preferencesdialog.cpp:607
 msgid "Automaticall_y Sync in Background Every"
 msgstr "Sincron_izar en segundo plano cada"
 
 #. Translators: See above comment for details on
 #. this string.
-#: ../src/preferencesdialog.cpp:611
+#: ../src/preferencesdialog.cpp:614
 msgid "Minutes"
 msgstr "minutos"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:629
+#: ../src/preferencesdialog.cpp:632
 msgid "_Advanced..."
 msgstr "_Avanzado…"
 
-#: ../src/preferencesdialog.cpp:674
+#: ../src/preferencesdialog.cpp:677
 msgid "The following add-ins are installed"
 msgstr "Los siguientes complementos están instalados actualmente"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:705
+#: ../src/preferencesdialog.cpp:708
 msgid "_Enable"
 msgstr "_Activar"
 
-#: ../src/preferencesdialog.cpp:711
+#: ../src/preferencesdialog.cpp:714
 msgid "_Disable"
 msgstr "_Desactivar"
 
-#: ../src/preferencesdialog.cpp:844
+#: ../src/preferencesdialog.cpp:871
 msgid "Not Implemented"
 msgstr "No implementado"
 
-#: ../src/preferencesdialog.cpp:858
+#: ../src/preferencesdialog.cpp:885
 msgid "%1% Preferences"
 msgstr "%1% Preferencias"
 
-#: ../src/preferencesdialog.cpp:999
+#: ../src/preferencesdialog.cpp:1023
 msgid "Choose Note Font"
 msgstr "Elegir la tipografía de la nota"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1097
+#: ../src/preferencesdialog.cpp:1121
 msgid "Other Synchronization Options"
 msgstr "Otras opciones de sincronización"
 
-#: ../src/preferencesdialog.cpp:1100
+#: ../src/preferencesdialog.cpp:1124
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -1774,23 +1816,23 @@ msgstr ""
 "servidor de sincronización configurado:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1104
+#: ../src/preferencesdialog.cpp:1128
 msgid "Always ask me what to do."
 msgstr "Preguntarme siempre qué hacer."
 
-#: ../src/preferencesdialog.cpp:1108
+#: ../src/preferencesdialog.cpp:1132
 msgid "Rename my local note."
 msgstr "Renombrar mi nota local."
 
-#: ../src/preferencesdialog.cpp:1112
+#: ../src/preferencesdialog.cpp:1136
 msgid "Replace my local note with the server's update."
 msgstr "Reemplazar mi nota local con la actualización del servidor."
 
-#: ../src/preferencesdialog.cpp:1215
+#: ../src/preferencesdialog.cpp:1239
 msgid "Are you sure?"
 msgstr "¿Está seguro?"
 
-#: ../src/preferencesdialog.cpp:1216
+#: ../src/preferencesdialog.cpp:1240
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -1798,11 +1840,11 @@ msgstr ""
 "No se recomienda limpiar sus ajustes de sincronización. Quizá se vea forzado "
 "a sincronizar todas sus notas de nuevo cuando guarde los nuevos ajustes."
 
-#: ../src/preferencesdialog.cpp:1226
+#: ../src/preferencesdialog.cpp:1250
 msgid "Resetting Synchronization Settings"
 msgstr "Reiniciando los ajustes de sincronización"
 
-#: ../src/preferencesdialog.cpp:1227
+#: ../src/preferencesdialog.cpp:1251
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -1812,11 +1854,11 @@ msgstr ""
 "sincronización se limpiarán. Quizá se vea forzado a sincronizar todas sus "
 "notas de nuevo cuando guarde los ajustes nuevos."
 
-#: ../src/preferencesdialog.cpp:1293
+#: ../src/preferencesdialog.cpp:1317
 msgid "Connection successful"
 msgstr "Conectado correctamente"
 
-#: ../src/preferencesdialog.cpp:1294
+#: ../src/preferencesdialog.cpp:1318
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -1824,7 +1866,7 @@ msgstr ""
 "Gnote está preparado para sincronizar sus notas. ¿Quiere sincronizarlas "
 "ahora?"
 
-#: ../src/preferencesdialog.cpp:1318
+#: ../src/preferencesdialog.cpp:1342
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -1832,19 +1874,19 @@ msgstr ""
 "Compruebe su información e inténtelo de nuevo. El archivo de registro %1% "
 "puede contener más información sobre el error."
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1347
 msgid "Error connecting"
 msgstr "Error al conectar"
 
-#: ../src/preferencesdialog.cpp:1387
+#: ../src/preferencesdialog.cpp:1406
 msgid "Version:"
 msgstr "Versión:"
 
-#: ../src/preferencesdialog.cpp:1392
+#: ../src/preferencesdialog.cpp:1409
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:1398
+#: ../src/preferencesdialog.cpp:1414
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -1920,33 +1962,44 @@ msgstr "_Abrir la plantilla de nota"
 msgid "_New Notebook"
 msgstr "Cua_derno de notas nuevo"
 
-#: ../src/sharp/addinstreemodel.cpp:93
+#: ../src/sharp/addinstreemodel.cpp:109
 msgid "Name"
 msgstr "Nombre"
 
-#: ../src/sharp/addinstreemodel.cpp:105
+#: ../src/sharp/addinstreemodel.cpp:121
 msgid "Version"
 msgstr "Versión"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:138
+#: ../src/sharp/addinstreemodel.cpp:155
 msgid "Formatting"
 msgstr "Formato"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:141
+#: ../src/sharp/addinstreemodel.cpp:158
 msgid "Desktop integration"
 msgstr "Integración con el escritorio"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:144
+#: ../src/sharp/addinstreemodel.cpp:161
 msgid "Tools"
 msgstr "Herramientas"
 
 #. TRANSLATORS: Addin category is unknown.
-#: ../src/sharp/addinstreemodel.cpp:151
+#: ../src/sharp/addinstreemodel.cpp:168
 msgid "Unknown"
 msgstr "Desconocida"
+
+#: ../src/sharp/modulemanager.cpp:62
+#, c-format
+#| msgid "Error saving icon"
+msgid "Error loading %s"
+msgstr "Error al cargar %s"
+
+#: ../src/sharp/modulemanager.cpp:69
+#, c-format
+msgid "Error getting symbol dynamic_module_instanciate: %s"
+msgstr "Error al obtener el símbolo dynamic_module_instanciate: %s"
 
 #: ../src/sharp/xmlwriter.cpp:40
 msgid "%1% failed"
