@@ -78,7 +78,7 @@ namespace gnote {
     add (m_content_vbox);
     signal_delete_event().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete));
     signal_key_press_event()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed)); // For Escape
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
     IGnote::obj().signal_quit
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));// to save size/pos
 
@@ -244,6 +244,9 @@ namespace gnote {
         }
         foreground_embedded(m_search_notes_widget);
       }
+      break;
+    case GDK_KEY_F1:
+      utils::show_help("gnote", "", get_screen()->gobj(), this);
       break;
     default:
       break;
