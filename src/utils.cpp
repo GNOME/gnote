@@ -126,9 +126,12 @@ namespace gnote {
     void show_help(const std::string & filename, const std::string & link_id,
                    GdkScreen *screen, Gtk::Window *parent)
     {
+      // "help:" URIs are "help:document[/page][?query][#frag]"
+      // See resolve_help_uri () at,
+      // https://git.gnome.org/browse/yelp/tree/libyelp/yelp-uri.c#n811
       std::string uri = "help:" + filename;
       if(!link_id.empty()) {
-        uri += "#" + link_id;
+        uri += "/" + link_id;
       }
       GError *error = NULL;
 
