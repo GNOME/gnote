@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-14 15:23+0000\n"
-"PO-Revision-Date: 2013-04-16 23:06-0300\n"
+"POT-Creation-Date: 2013-04-22 19:49+0000\n"
+"PO-Revision-Date: 2013-04-20 23:41-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -672,6 +672,10 @@ msgstr "Falha ao localizar módulo %s para o plug-in %s"
 msgid "Failed to load addin info for %s: %s"
 msgstr "Falha ao carregar a informação de plug-in para %s: %s"
 
+#: ../src/addinmanager.cpp:301
+msgid "Trying to load addins when they are already loaded"
+msgstr "Tentando carregar plug-ins quando eles já foram carregados"
+
 #: ../src/addins/backlinks/backlinks.desktop.in.h:1
 msgid "Backlinks"
 msgstr "Links de retorno"
@@ -767,6 +771,11 @@ msgstr "Remover mesmo este ícone?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Se você remover um ícone ele estará permanentemente perdido."
 
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:389
+#, c-format
+msgid "Error removing icon %s: %s"
+msgstr "Erro ao remover o ícone %s: %s"
+
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:1
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
 msgid "Export to HTML"
@@ -788,6 +797,11 @@ msgstr "Exportar notas vinculadas"
 msgid "Include all other linked notes"
 msgstr "Incluir todas as notas vinculadas"
 
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:117
+#, c-format
+msgid "Could not open exported note in a web browser: %s"
+msgstr "Não foi possível abrir nota exportada em um navegador web: %s"
+
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
 msgid "Your note was exported to \"%1%\"."
 msgstr "Sua nota foi exportada para \"%1%\"."
@@ -795,6 +809,12 @@ msgstr "Sua nota foi exportada para \"%1%\"."
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:130
 msgid "Note exported successfully"
 msgstr "Nota exportada com sucesso"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:144
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:152
+#, c-format
+msgid "Could not export: %s"
+msgstr "Não foi possível exportar: %s"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:155
 #, c-format
@@ -811,7 +831,6 @@ msgstr "Sincroniza notas do Gnote para um caminho local do sistema de arquivos"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:3
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:3
-#| msgid "Aurimas Cernius and the Tomboy Project"
 msgid "Aurimas Černius and the Tomboy Project"
 msgstr "Aurimas Černius e o projeto Tomboy"
 
@@ -872,6 +891,39 @@ msgstr "Usar formato _selecionado"
 msgid "_Use Custom Format"
 msgstr "_Usar formato personalizado"
 
+#. TRANSLATORS: first %s is file name, second is error
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:225
+#, c-format
+msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
+msgstr ""
+"Monitor de diretório de notas: Atualização abortada, erro na leitura de %s: "
+"%s"
+
+#. TRANSLATORS: %s is file
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:252
+#, c-format
+msgid "NoteDirectoryWatcher: Error reading note title from %s"
+msgstr "Monitor de diretório de notas: Erro ao ler o título da nota de %s"
+
+#. TRANSLATORS: %s is file
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:260
+#, c-format
+msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
+msgstr "Monitor de diretório de notas: Erro desconhecido ao criar a nota de %s"
+
+#. TRANSLATORS: first %s is file, second is error
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:266
+#, c-format
+msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
+msgstr "Monitor de diretório de notas: Erro ao criar da nota de %s: %s"
+
+#. TRANSLATORS: first %s is file, second is error
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:279
+#, c-format
+msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
+msgstr ""
+"Monitor de diretório de notas: Atualização abortada, erro ao analisar %s: %s"
+
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:1
 msgid "Note Directory Watcher"
 msgstr "Monitor de diretório de notas"
@@ -907,16 +959,24 @@ msgstr "Hoje: modelo"
 msgid "Today: "
 msgstr "Hoje: "
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:159
+#. TRANSLATORS: first %s is note title, second is error
+#. TRANSLATORS: first %s is template note title, second is error
+#: ../src/addins/noteoftheday/noteoftheday.cpp:49
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:71
+#, c-format
+msgid "NoteOfTheDay could not create %s: %s"
+msgstr "Nota do dia não pôde criar %s: %s"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:160
 msgid "Tasks"
 msgstr "﻿Tarefas"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+#: ../src/addins/noteoftheday/noteoftheday.cpp:161
 msgid "Appointments"
 msgstr "Compromissos"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:166
+#: ../src/addins/noteoftheday/noteoftheday.cpp:167
 msgid "%A, %B %d %Y"
 msgstr "﻿%A, %e de %B de %Y"
 
@@ -972,7 +1032,6 @@ msgid "Statistics"
 msgstr "Estatísticas"
 
 #: ../src/addins/statistics/statistics.desktop.in.h:2
-#| msgid "Show various statistics about notes"
 msgid "Show various statistics about notes."
 msgstr "Mostra várias estatísticas sobre as notas."
 
@@ -1010,29 +1069,29 @@ msgstr "Importa suas notas do miniaplicativo de notas Sticky."
 msgid "Import from Sticky Notes"
 msgstr "Importar do miniaplicativo notas Sticky"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:185
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:212
 msgid "No Sticky Notes found"
 msgstr "Nenhuma nota do Stciky foi localizada"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:187
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:214
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "Nenhum arquivo de notas adequado foi localizado em \"%1%\"."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:195
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:222
 msgid "Sticky Notes import completed"
 msgstr "Importação de notas do Sticky concluída"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:197
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:224
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "<b>%1%</b> de <b>%2%</b> notas do Sticky foram importadas com sucesso."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
 msgid "Untitled"
 msgstr "Sem título"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:254
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:281
 msgid "Sticky Note: "
 msgstr "Nota do Sticky: "
 
@@ -1065,12 +1124,10 @@ msgid "_Underline"
 msgstr "S_ublinhado"
 
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:1
-#| msgid "WebDav Sync Service Add-in"
 msgid "WebDAV Sync Service Add-in"
 msgstr "Plug-in do serviço de sincronização de WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:2
-#| msgid "Synchronize Gnote Notes to a WebDav URL"
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Sincroniza notas do Gnote com uma URL WebDav."
 
@@ -1118,6 +1175,10 @@ msgstr ""
 "mensagem:\n"
 "\n"
 "%1%"
+
+#: ../src/gnote.cpp:193
+msgid "Gnote is already running.  Exiting..."
+msgstr "Gnote já está em execução. Saindo..."
 
 #: ../src/gnote.cpp:350
 msgid "and Tomboy original authors."
@@ -1207,9 +1268,29 @@ msgstr "Um aplicativo para tomar notas"
 msgid "Gnote options at launch"
 msgstr "Opções do Gnote na inicialização"
 
+#: ../src/gnote.cpp:647
+msgid "Could not connect to remote instance."
+msgstr "Não foi possível conectar à instância remota."
+
 #: ../src/gnote.cpp:763
 msgid "Version %1%"
 msgstr "Versão %1%"
+
+#: ../src/dbus/remotecontrol-client-glue.cpp:138
+#, c-format
+msgid "Remote call to %s failed"
+msgstr "Chamada remota a %s falhou"
+
+#: ../src/dbus/remotecontrol.cpp:84
+#, c-format
+msgid "Exception thrown when creating note: %s"
+msgstr "Exceção lançada ao criar a nota: %s"
+
+#. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
+#: ../src/iconmanager.cpp:64
+#, c-format
+msgid "Failed to load icon (%s, %d): %s"
+msgstr "Falha ao carregar o ícone (%s,%d): %s"
 
 #: ../src/notebooks/createnotebookdialog.cpp:40
 msgid "Create a new notebook"
@@ -1336,6 +1417,41 @@ msgstr ""
 "espaço em disco suficiente e que tenha permissões sobre ~/.local/share/"
 "gnote. Detalhes do erro podem ser localizados em ~/.gnote.log."
 
+#. Probably IOException or UnauthorizedAccessException?
+#: ../src/note.cpp:418
+#, c-format
+msgid "Exception while saving note: %s"
+msgstr "Exceção ao salvar a nota: %s"
+
+#: ../src/note.cpp:524
+#, c-format
+msgid "Error while saving: %s"
+msgstr "Erro ao salvar: %s"
+
+#: ../src/note.cpp:947
+msgid "Setting text content for closed notes not supported"
+msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
+
+#. write failure, but not critical
+#: ../src/note.cpp:1141
+#, c-format
+msgid "Failed to update note format: %s"
+msgstr "Falha ao atualizar o formato da nota: %s"
+
+#: ../src/note.cpp:1282
+#, c-format
+msgid "Filesystem error: %s"
+msgstr "Erro de sistema de arquivos: %s"
+
+#: ../src/notebuffer.cpp:1492
+msgid "</list> tag mismatch"
+msgstr "Tag </list> incompatível"
+
+#: ../src/notebuffer.cpp:1571
+#, c-format
+msgid "Exception: %s"
+msgstr "Exceção: %s"
+
 #. New Note Template
 #. Translators: This is 'New Note' Template, not New 'Note Template'
 #: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:339
@@ -1418,6 +1534,17 @@ msgstr "Comece aqui"
 #: ../src/notemanager.cpp:278
 msgid "Using Links in Gnote"
 msgstr "Utilizando links no Gnote"
+
+#: ../src/notemanager.cpp:283
+#, c-format
+msgid "Error creating start notes: %s"
+msgstr "Erro ao criar as notas iniciais: %s"
+
+#. TRANSLATORS: first %s is file, second is error
+#: ../src/notemanager.cpp:311
+#, c-format
+msgid "Error parsing note XML, skipping \"%s\": %s"
+msgstr "Erro na análise do XML da nota, ignorando \"%s\": %s"
 
 #: ../src/notemanager.cpp:635
 msgid "Describe your new note here."
@@ -1887,7 +2014,7 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:377
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:380
 #: ../src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "Notas"
@@ -1896,9 +2023,14 @@ msgstr "Notas"
 msgid "New"
 msgstr "Novo"
 
-#: ../src/recentchanges.cpp:465
+#: ../src/recentchanges.cpp:468
 msgid "_Close"
 msgstr "_Fechar"
+
+#: ../src/remotecontrolproxy.cpp:137
+#, c-format
+msgid "Failed to load D-Bus interface: %s"
+msgstr "Falha ao carregar a interface D-Bus: %s"
 
 #: ../src/searchnoteswidget.cpp:131
 msgid "_Open"
@@ -1989,7 +2121,6 @@ msgstr "Desconhecido"
 
 #: ../src/sharp/modulemanager.cpp:62
 #, c-format
-#| msgid "Error saving icon"
 msgid "Error loading %s"
 msgstr "Erro ao carregar %s"
 
@@ -1998,9 +2129,37 @@ msgstr "Erro ao carregar %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Erro ao obter o símbolo dynamic_module_instanciate: %s"
 
+#: ../src/sharp/xmlreader.cpp:195
+#, c-format
+msgid "XML error: %s"
+msgstr "erro XML: %s"
+
+#: ../src/sharp/xmlreader.cpp:195
+msgid "unknown parse error"
+msgstr "erro de análise desconhecido"
+
 #: ../src/sharp/xmlwriter.cpp:40
 msgid "%1% failed"
 msgstr "%1% falhou"
+
+#: ../src/sharp/xsltransform.cpp:67
+msgid "NULL stylesheet, please fill a bug"
+msgstr "folha de estilos NULL, favor relatar um erro"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:370
+#, c-format
+msgid ""
+"Exception during server cleanup while committing. Server integrity is OK, "
+"but there may be some excess files floating around.  Here's the error: %s\n"
+msgstr ""
+"Exceção durante limpeza de servidor ao submeter. A integridade do servidor "
+"está OK, mas pode haver um excesso de arquivos flutuantes por aí. Aqui está "
+"o erro: %s\n"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:612
+#, c-format
+msgid "Error deleting the old synchronization lock \"%s\": %s"
+msgstr "Erro ao excluir a trava de sincronização antiga \"%s\": %s"
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:116
 msgid ""
@@ -2034,6 +2193,18 @@ msgstr "FUSE não pôde ser habilitado."
 #: ../src/synchronization/fusesyncserviceaddin.cpp:247
 msgid "An error ocurred while connecting to the specified server"
 msgstr "Ocorreu um erro ao conectar ao servidor especificado"
+
+#. TRANSLATORS: %s is file
+#: ../src/synchronization/gnotesyncclient.cpp:155
+#, c-format
+msgid "Unparsable last-sync-date element in %s"
+msgstr "Elemento last-sync-date não analisável em %s"
+
+#. TRANSLATORS: %s is file
+#: ../src/synchronization/gnotesyncclient.cpp:165
+#, c-format
+msgid "Unparsable last-sync-rev element in %s"
+msgstr "Elemento last-sync-rev não analisável em %s"
 
 #: ../src/synchronization/syncdialog.cpp:65
 msgid "Note Conflict"
@@ -2239,6 +2410,22 @@ msgstr "Nova nota enviada ao servidor"
 msgid "Synchronize Notes"
 msgstr "Sincronizar as notas"
 
+#: ../src/synchronization/syncmanager.cpp:124
+#, c-format
+msgid "Error cleaning up addin after synchronization: %s"
+msgstr "Erro ao limpar o plug-in após a sincronização: %s"
+
+#: ../src/synchronization/syncmanager.cpp:149
+#, c-format
+msgid "Exception while creating SyncServer: %s"
+msgstr "Exceção ao criar um servidor de sincronização: %s"
+
+#. top-level try
+#: ../src/synchronization/syncmanager.cpp:353
+#, c-format
+msgid "Synchronization failed with the following exception: %s"
+msgstr "Sincronização falhou com a seguinte exceção: %s"
+
 #: ../src/synchronization/syncutils.cpp:146
 #: ../src/synchronization/syncutils.cpp:178
 msgid "Could not enable FUSE"
@@ -2290,7 +2477,7 @@ msgstr "Aj_uda"
 msgid "_About Gnote"
 msgstr "_Sobre o Gnote"
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:140
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2298,35 +2485,35 @@ msgstr ""
 "O \"Manual do Gnote\" não foi localizado. Por favor, certifique-se de que a "
 "sua instalação foi concluída com sucesso."
 
-#: ../src/utils.cpp:145
+#: ../src/utils.cpp:148
 msgid "Help not found"
 msgstr "Ajuda não localizada"
 
-#: ../src/utils.cpp:178
+#: ../src/utils.cpp:181
 msgid "Cannot open location"
 msgstr "Não é possível abrir a localização"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:196
 msgid "Today, %1%"
 msgstr "Hoje, %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:197
 msgid "Today"
 msgstr "Hoje"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:200
+#: ../src/utils.cpp:203
 msgid "Yesterday, %1%"
 msgstr "Ontem, %1%"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:204
 msgid "Yesterday"
 msgstr "Ontem"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:213
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "Há %1% dia, %2%"
@@ -2334,24 +2521,24 @@ msgstr[1] "Há %1% dias, %2%"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:219
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "Há %1% dia"
 msgstr[1] "Há %1% dias"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:227
 msgid "Tomorrow, %1%"
 msgstr "Amanhã, %1%"
 
-#: ../src/utils.cpp:225
+#: ../src/utils.cpp:228
 msgid "Tomorrow"
 msgstr "Amanhã"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:234
+#: ../src/utils.cpp:237
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "Daqui a %1% dia, %2%"
@@ -2359,13 +2546,13 @@ msgstr[1] "Daqui a %1% dias, %2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:243
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "Daqui a %1% dia"
 msgstr[1] "Daqui a %1% dias"
 
-#: ../src/utils.cpp:251
+#: ../src/utils.cpp:254
 msgid "No Date"
 msgstr "Sem data"
 
