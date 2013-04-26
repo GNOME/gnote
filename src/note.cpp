@@ -1,4 +1,4 @@
-/*
+ /*
  * gnote
  *
  * Copyright (C) 2010-2013 Aurimas Cernius
@@ -67,7 +67,7 @@ namespace gnote {
 
       if(notes.size() == 1) {
         // TRANSLATORS: %1% will be replaced by note title
-        message = str(boost::format("Really delete \"%1%\"?") % notes.front()->get_title());
+        message = str(boost::format(_("Really delete \"%1%\"?")) % notes.front()->get_title());
       }
       else {
         // TRANSLATORS: %1% is number of notes
