@@ -430,11 +430,12 @@ namespace gnote {
     }
 
     const sharp::ModuleMap & modules = m_module_manager.get_modules();
-    for(sharp::ModuleMap::const_iterator iter = modules.begin();
-        iter != modules.end(); ++iter) {
+    for(AddinInfoMap::const_iterator iter = m_addin_infos.begin();
+        iter != m_addin_infos.end(); ++iter) {
       const std::string & mod_id = iter->first;
-      const sharp::DynamicModule* dmod = iter->second;
-      global_addins_prefs.set_boolean("Enabled", mod_id, dmod->is_enabled());
+      sharp::ModuleMap::const_iterator mod_iter = modules.find(iter->second.addin_module());
+      bool enabled = mod_iter != modules.end() && mod_iter->second->is_enabled();
+      global_addins_prefs.set_boolean("Enabled", mod_id, enabled);
     }
 
     Glib::RefPtr<Gio::File> prefs_file = Gio::File::create_for_path(
