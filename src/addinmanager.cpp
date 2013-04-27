@@ -201,9 +201,10 @@ namespace gnote {
     }
 
     for(AddinInfoMap::const_iterator iter = m_addin_infos.begin(); iter != m_addin_infos.end(); ++iter) {
-      if(global_addins_prefs_loaded && global_addins_prefs.has_key("Enabled", iter->first)
-         && global_addins_prefs.get_boolean("Enabled", iter->first)) {
+      if(global_addins_prefs_loaded && global_addins_prefs.has_key("Enabled", iter->first)) {
+        if(global_addins_prefs.get_boolean("Enabled", iter->first)) {
           addins.push_back(iter->second.addin_module());
+        }
       }
       else if(iter->second.default_enabled()) {
           addins.push_back(iter->second.addin_module());
