@@ -1,0 +1,108 @@
+TODO for Add-in: Table of Content
+=================================
+
+
+- On Ctrl-1/2 toggle, toggle only B/L/H tags, not all tags
+  (this is a bug!)
+  ex: within all fixed width text, setting a header, the header must remain also fixed width
+
+- Huge is not huge enough
+    There is little visual difference between large and huge
+    if large uses uppercase and huge lowercase it makes the difference thiner
+    it also depends on the letters, as some takes visually more space
+    when they are close to each other it may help to distinguish
+    when there is only one header in the window, it's hard to say if it's of level 1 or 2
+
+    See https://bugzilla.gnome.org/show_bug.cgi?id=657601
+    Could also be: general config options for font sizes/factor (for S/N/L/H)
+    Could also be: allow any sizes <size:n>, with n = factor (not only S/N/L/H)
+
+- Highlight the header when jumping to it
+    ==> More visual, especially when the header does not scroll up to the head of the window
+    remove highlight as soon as cursor moved
+    (like search results, for example)
+
+- When no headers, still show the note title in toc
+  this is usefull to jump to the top of a long (unstructured) note
+
+- Check all FIXMEs, and more code cleanup
+
+
+== Maybe
+
+- Undo as a single user action, when setting headers
+    Note: tomboy/gnote handles poorly undo/redo,
+    this item may need to upgrade the undo system
+
+- When entering header text, stop formatting on 'enter'
+  UC: 1. cursor at beginning of a line
+      2. Ctrl-1/2
+      3. enter header title
+      4. press 'enter'
+      --> currently: if you keep typing text, the new line keep being bold+huge/large
+      --> wanted: stop formatting as a header.
+      /!\ this conflicts with a user who actually *wants* to type bold+huge/large *text* with new lines
+      ==> when entering a header, to move back to text formatting: arrow down, or Ctrl-1/2
+          TO CHECK: does the later actually works?
+
+- Set where the toc menu item appears in the Tools menu
+    --> next to "What Links Here?"
+    (I think there is a way to say where)
+
+- Keyboard shortcuts for jumping between sessions
+  Jump to next section
+  Jump to previous section
+  Q: What shortcuts? the ones with up/down arrow ar all(?) taken?
+  Alt-right and Alt-left, usually used for prev/next, are used for bullet list indentation
+	(can this change?)
+
+- Customizable header tags
+  « a header level x is a full line with tags Tx »
+
+  Each Header has:
+  - a list of tags       ex: "bold + size:huge"
+  - a level              gint
+  - a keyboard shortcut  by default Ctrl+<header level>
+  - an icon              (or not)
+  - a Unicode string     (or not) to tabulate the header in the toc
+  Ex:
+      L   key      tag list              icon                 tab string
+     --------------------------------------------------------------------
+      1   Ctrl+1   "bold + size:huge"    "stock:GO_FORWARD"   ""
+      2   Ctrl+2   "bold + size:large"   ""                   "└→"
+      3   Ctrl+3   "underline"           ""                   "  •"
+
+  Todo: make code generic + (g)settings + preference UI + help topic
+
+
+== Maybe not
+
+- Headers could (also?) have a syntax (vs text formatting)
+  For example a prefix, or prefix + suffix
+  like text lightweight markup languages (asciidoc/markdown/etc.)
+  ex: == Chapter
+  ex: === Section
+  ex: ==== Subsection
+
+- Section cross references
+  if header "FooBar" exists, #FooBar is shown as a link
+  when activating #FooBar, it jumps to the section
+  Maybe also: AnotherNote#Foo open AnotherNote and jumps to Foo section
+  Then it would allow URI like note://note-reference#here
+  Note: need better syntax than just '#'
+  Note: maybe strip whitespaces before comparing? (?)
+  ex: "See also #Resources sction below" --> Resources
+  /!\ need to cross update, if a section name is changed/removed
+      --> need to listen to all changes, maybe to heavy?
+      --> or would need to set specific tags for sections and xrefs(?)
+
+- More shortcuts for formatting? + configuration panel?
+	Ctrl-shift-B
+	Ctrl-shift-H
+	Ctrl-shift-L
+	Ctrl-shift-B-L
+	Ctrl-shift-B-H
+	(update: I don't remember what it's meant to do! Need to check Tomboy mailinglist)
+    (update: I think it's from the time where Ctrl-1 would set the whole line(s) where the cursor or selection is. So these shortcuts would set the whole line(s) with corresponding formatting tags)
+    Then we could have Ctrl-Shift-1 and Ctrl-Shift-2
+    Though I disabled this because of some misfunction(?) (or a just bug?)(?)

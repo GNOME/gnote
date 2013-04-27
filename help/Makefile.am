@@ -32,6 +32,7 @@ HELP_FILES = \
 	gnote-addin-replacetitle.page \
 	gnote-addin-sync-local.page \
 	gnote-addin-sync-webdav.page \
+	gnote-addin-tableofcontent.page \
 	gnote-addin-timestamp.page \
 	gnote-addin-underline.page \
 	gnote-bulleted-lists.page \

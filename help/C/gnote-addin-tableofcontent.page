@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+      "Table of Content" is a Note add-in for Gnote.
+      It lists Note's table of content in a menu.
+
+      Copyright (c)  2013  Luc Pionchon <pionchon.luc@gmail.com>
+
+      Permission is granted to copy, distribute and/or modify this document
+      under the terms of the GNU Free Documentation License, Version 1.1
+      or any later version published by the Free Software Foundation;
+      with no Invariant Sections, with no Front-Cover Texts, and with no
+      Back-Cover Texts.
+      FIXME: is this true? (no invariant, no front, no back?)
+      FIXME: does the statement have to show in the rendered document?
+
+      A copy of the license is included in the section entitled "GNU
+      Free Documentation License".
+      FIXME: is this true? Is there a (GNOME? Yelp?) common GFDL topic?
+-->
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="addin-tableofcontent">
+
+  <info>
+    <revision
+      status="candidate"
+      pkgversion="gnote-addin-tableofcontent-version-0.9"
+    />
+    <!-- Status:
+      stub        contains little to no real content
+      incomplete  outline of all information, but lacking content
+      draft       all content available, but unpolished
+      review      ready to be reviewed by editors
+      candidate   reviewed and awaiting a final approval
+      final       approved and ready for publication or distribution
+      outdated    was once complete or nearly complete, but needs to be revised to reflect changes
+
+      Other possible attributes:
+      version=""        revision version
+      docversion=""     enclosing document
+      date="2011-03-08" revision date
+    -->
+    <license href="http://www.gnu.org/licenses/fdl-1.1.html"><p>
+      This <em>help topic</em> is licensied under the
+      <link  href="http://www.gnu.org/licenses/fdl-1.1.html">
+        GNU Free Documentation License, Version 1.1</link> (GFDL).
+      It means that you are free to copy, distribute and/or modify this document, under some conditions.
+    </p>
+    </license>
+
+    <credit type="author copyright">
+      <name>Luc Pionchon</name><email>pionchon.luc@gmail.com</email><years>2013</years></credit>
+    <!-- Credit type: (can have several types)
+      author        somebody responsible for writing content
+      editor        somebody who has provided reviews or editorial corrections
+      copyright     a person or entity which holds copyright on the work
+      maintainer    the person or entity currently responsible for the work
+      collaborator  somebody who has provided extensive rough information
+      translator    somebody who has translated the work into another language
+      publisher     a person or entity who distributes formatted copies
+
+      <credit> can have a URL, for example for a publisher, using FOAF namespace:
+        <page xmlns="http://xmlns.com/foaf/0.1/">http://flossmanuals.net/</page>
+    -->
+
+    <link type="guide" xref="index#advanced"/>
+    <link type="topic" xref="addins-preferences"/>
+    <link type="topic" xref="editing-notes"/>
+    <link type="topic" xref="searching-notes"/>
+    <desc>Navigate long structured notes</desc>
+  </info>
+
+
+<title>Note's Table of Content</title>
+
+<desc><em>Navigate long structured notes</em></desc>
+
+<note><p>
+  This is an add-in to <app>Gnotes</app>.
+  When this add-in is installed,
+  there is a <gui>Table of Content</gui> entry in the <gui>Tools</gui> menu.
+  See  <link xref="addins-preferences"/> to know how to activate an add-in.
+</p></note>
+
+
+<section id="nuttshell"><title>In a nutshell</title>
+
+<list type="numbered">
+  <item>
+    <p>a header is a full line of text, formatted with <gui>Bold+Huge</gui> or <gui>Bold+Large</gui></p>
+  </item>
+  <item>
+    <p>select a full line and set it has a header with
+       <keyseq><key>Ctrl</key><key>1</key></keyseq> or <keyseq><key>Ctrl</key><key>2</key></keyseq>
+    </p>
+  </item>
+  <item>
+    <p>open the table of content with <keyseq><key>Ctrl</key><key>Alt</key><key>1</key></keyseq></p>
+  </item>
+</list>
+
+</section>
+
+
+<section id="navigating"><title>Navigating through long notes</title>
+
+<p>
+When writting a long note, it may become difficult to navigate through.
+It is then natural to structure the note by marking sections and subsections with headers.
+</p>
+
+<p>
+This add-in makes it easy to navigate through long structured notes.
+Once you have set headers in your note, the table of content of the note will show in a menu.
+Then you can jump directly from the menu to the selected header.
+</p>
+
+</section>
+
+
+<section id="setheaders"><title>Structuring your notes with headers</title>
+
+<p>
+A header is simply a complete line with a specific text formatting:
+</p>
+<list>
+  <item><p>headers of level 1, for sections, are lines formatted with a <gui>Bold+Huge</gui> font</p></item>
+  <item><p>headers of level 2, for subsections, are lines formatted with a <gui>Bold+Large</gui> font</p></item>
+</list>
+
+
+<p>To format a header line, first select a full line of text, then either:</p>
+
+<list>
+  <item>
+    <p>use the commands <gui>Level 1 Header</gui> and <gui>Level 2 Header</gui>,
+       in the <guiseq><gui>Tools</gui><gui>Table of Content</gui></guiseq> menu</p>
+  </item>
+
+  <item>
+    <p>use the keyboard shortcuts <keyseq><key>Ctrl</key><key>1</key></keyseq> for headers of level 1,
+    and <keyseq><key>Ctrl</key><key>2</key></keyseq> for headers of level 2</p>
+ </item>
+</list>
+
+<p>Alternatively, on a new line, activate the command and then enter the header title.</p>
+
+<p>You can actually even use the normal formatting commands from the <gui>Text</gui> menu:
+    <gui>Bold</gui>, <gui>Large</gui> and <gui>Huge</gui>, and their respective keyboard shortcuts.
+    If, for example, your header line is already formatted as <gui>Huge</gui>, then you just need to make it also <gui>Bold</gui> to turn it into a header of level 1.
+    See <link xref="editing-notes"/> to know how to set text style.
+</p>
+
+</section>
+
+
+<section id="showtable"><title>Showing the table of content</title>
+
+<p>You can access the table of content, either:</p>
+<list>
+<item><p>in the <guiseq><gui>toolbar</gui><gui>Tools</gui><gui>Table of Content</gui></guiseq> menu</p></item>
+<item><p>in the <guiseq><gui>contextual menu</gui><gui>Table of Content</gui></guiseq> (<keyseq>right-click</keyseq> on the note window)</p></item>
+<item><p>in a <gui>popup menu</gui>, with the keyboard shortcut <keyseq><key>Ctrl</key><key>Alt</key><key>1</key></keyseq></p></item>
+<p>Then you can navigate up and down with the <gui>arrow keys</gui> and jump to the selected header with <key>enter</key>. Or just <keyseq>click</keyseq> with your mouse on the header to jump to.</p>
+</list>
+
+</section>
+
+
+<section id="troubleshooting"><title>Troubleshooting</title>
+<terms>
+  <item><title><em style="strong">One header does not show in the table of content</em></title><p>
+    there might be some characters in the header line, like whitespaces, which are not formatted as a header. Make sure that <em>the whole line</em> is formatted as a header. See <link xref="#setheaders"/>.</p>
+  </item>
+  <item><title><em style="strong">There is an empty line in the table of content</em></title><p>
+    an empty line, possibly with whitespaces, is formatted as a header. Jump to this line, and delete the area.</p>
+  </item>
+
+  <item><title></title><p>
+  </p>
+  </item>
+
+</terms>
+
+</section>
+
+</page>

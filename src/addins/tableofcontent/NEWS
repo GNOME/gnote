@@ -1,0 +1,60 @@
+NEWS for Add-in: Table of Content
+=================================
+
+(NOTE: little release manual:
+ update NEWS + .desktop version/enabled=false + help topic status/pkgversion ==> commit -m "version x.y")
+
+
+== 0.9
+- renamed labels "Level 1 Header" to "Header Level 1" (resp. 2)
+- set help topic status to "candidate"
+- typo in .desktop description
+- code: general code review, various minor updates in code, including:
+  - add-in description in copyright headers
+  - various code comments
+  - renamed header level enum: s/Level/Header/ and s/H1,H2,H3/Title,Level_1,Level_2/
+    (so forget the "HTML alike", now Ctrl-1/2 matches Level_1/2 (instead of H2/H3!))
+  - renamed get_range_level() into get_header_level_for_range()
+
+== 0.8
+- Added Help entry in toc menu
+- Set Ctrl-Alt-1 accelerator on toc menu item
+- Removed "Show in a Popup Menu" entry in toc menu
+- Don't show action entries in detatched popup.
+- Don't show (empty toc) label on menus with action entries.
+- Removed italic on action menu entries
+
+== 0.7
+- ported to master/3.9.0 by Aurimas
+- .desktop.in, use unicode ©, set Authors and Copyright not translatable
+- added NEWS file
+- when toc is empty, use just a dummy unsensitive item rather than an explanatory text.
+  explanations will be in the manual/help.
+- added menu entries to set headers level 1 and 2, with Ctrl-1/2 accelerators
+- added menu entry to show the accelerator to open the toc in a popup menu
+- toc action entries set in italic to differentiate from the toc entries
+- "Show in a popup menu" action set unsensitive (it does not make sense to trigger it from a menu)
+- added help page
+
+== 0.6
+- code cleanup from Aurimas review
+
+== 0.5
+- now compiles with gnote-3.6.0
+
+== 0.4
+- fixed segfault and double menu bug (I think so)
+- code cleanup
+
+== 0.3
+- added TableofcontentModule::copyright()
+- used a namespaced-enum for header Levels. New file tableofcontent.hpp
+- code review changes (https://bugzilla.gnome.org/show_bug.cgi?id=698059)
+
+== 0.2
+- add toc submenu in contextual menu
+- Ctrl-Alt-1 opens toc in a popup menu
+
+== 0.1
+- port from Tomboy version, for gnote-0.7.6
+  https://github.com/oluc/tomboy/tree/TableOfContentAddin/Tomboy/Addins/TableOfContent
