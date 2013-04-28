@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,6 +28,9 @@
 namespace gnome {
 namespace keyring {
 
+// disable compilerdiagnostic to avoid warnings
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+
 
 SecretSchema Ring::s_schema = {
   "org.gnome.Gnote.Password", SECRET_SCHEMA_NONE,
@@ -35,6 +38,10 @@ SecretSchema Ring::s_schema = {
     {"name", SECRET_SCHEMA_ATTRIBUTE_STRING},
   }
 };
+
+
+// restore original diagnostic options
+#pragma GCC diagnostic pop
 
 
 std::string Ring::find_password(const std::map<std::string, std::string> & atts)
