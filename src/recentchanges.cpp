@@ -69,7 +69,7 @@ namespace gnote {
     m_search_notes_widget.signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
 
-    Gtk::Box *toolbar = make_toolbar();
+    Gtk::Toolbar *toolbar = make_toolbar();
     m_content_vbox.pack_start(*toolbar, false, false, 0);
     m_content_vbox.pack_start(m_embed_box, true, true, 0);
     m_embed_box.show();
@@ -112,17 +112,21 @@ namespace gnote {
     }
   }
 
-  Gtk::Box *NoteRecentChanges::make_toolbar()
+  Gtk::Toolbar *NoteRecentChanges::make_toolbar()
   {
-    Gtk::Box *toolbar = manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
-    toolbar->set_border_width(5);
+    Gtk::Toolbar *toolbar = manage(new Gtk::Toolbar);
+    // let move window by dragging toolbar with mouse
+    toolbar->get_style_context()->add_class(GTK_STYLE_CLASS_MENUBAR);
+    Gtk::ToolItem *tool_item = manage(new Gtk::ToolItem);
+    Gtk::Box *box = manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
+    box->set_border_width(5);
     m_all_notes_button = manage(new Gtk::Button);
     m_all_notes_button->set_image(*manage(new Gtk::Image(Gtk::Stock::FIND, Gtk::ICON_SIZE_BUTTON)));
     m_all_notes_button->set_always_show_image(true);
     m_all_notes_button->set_label(_("All Notes"));
     m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::present_search));
     m_all_notes_button->show_all();
-    toolbar->pack_start(*m_all_notes_button, false, false);
+    box->pack_start(*m_all_notes_button, false, false);
 
     Gtk::Button *button = manage(new Gtk::Button);
     button->set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 24))));
@@ -130,7 +134,7 @@ namespace gnote {
     button->set_label(_("New"));
     button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
     button->show_all();
-    toolbar->pack_start(*button, false, false);
+    box->pack_start(*button, false, false);
 
     m_search_entry.set_activates_default(false);
     m_search_entry.set_size_request(300);
@@ -141,7 +145,7 @@ namespace gnote {
     Gtk::Alignment *alignment = manage(new Gtk::Alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER, 0));
     alignment->add(m_search_entry);
     alignment->show_all();
-    toolbar->pack_start(*alignment, true, true);
+    box->pack_start(*alignment, true, true);
 
     button = manage(new Gtk::Button);
     button->set_image(*manage(new Gtk::Image(IconManager::obj().get_icon("emblem-system-symbolic", 24))));
@@ -149,8 +153,13 @@ namespace gnote {
     button->signal_clicked().connect(
       boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu), button));
     button->show_all();
-    toolbar->pack_end(*button, false, false);
+    box->pack_end(*button, false, false);
 
+    box->show();
+    tool_item->add(*box);
+    tool_item->set_expand(true);
+    tool_item->show();
+    toolbar->add(*tool_item);
     toolbar->show();
     return toolbar;
   }
