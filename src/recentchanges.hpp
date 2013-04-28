@@ -67,7 +67,7 @@ private:
   bool on_key_pressed(GdkEventKey *);
   bool is_foreground(utils::EmbeddableWidget &);
   utils::EmbeddableWidget *currently_embedded();
-  Gtk::Box *make_toolbar();
+  Gtk::Toolbar *make_toolbar();
   void on_embedded_name_changed(const std::string & name);
   void on_entry_changed();
   void on_entry_activated();
