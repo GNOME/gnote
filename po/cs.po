@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-17 19:23+0000\n"
-"PO-Revision-Date: 2013-04-25 15:44+0200\n"
+"POT-Creation-Date: 2013-04-28 19:52+0000\n"
+"PO-Revision-Date: 2013-04-30 17:05+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -665,7 +665,7 @@ msgstr "Selhalo vyhledání modulu %s pro doplněk %s"
 msgid "Failed to load addin info for %s: %s"
 msgstr "Selhalo načtení informací o doplňku pro %s: %s"
 
-#: ../src/addinmanager.cpp:301
+#: ../src/addinmanager.cpp:302
 msgid "Trying to load addins when they are already loaded"
 msgstr "Zkouší se načíst doplněk, který je už načten"
 
@@ -1094,6 +1094,46 @@ msgstr "Beze jména"
 msgid "Sticky Note: "
 msgstr "Lepicí poznámka: "
 
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:1
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:64
+#| msgid "Help _Contents"
+msgid "Table of Content"
+msgstr "Obsah"
+
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:2
+msgid ""
+"Navigate long structured notes. Set section and subsection headers in your "
+"note, and the Table of Content will show in a menu."
+msgstr ""
+"Usnadňuje pohyb v dlouhých poznámkách. Nastavte nadpisy oddílů a "
+"pododdílů ve své poznámce a v nabídce se vám zobrazí obsah."
+
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:3
+msgid "Luc Pionchon"
+msgstr "Luc Pionchon"
+
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:4
+msgid "© 2013 Luc Pionchon"
+msgstr "© 2013 Luc Pionchon"
+
+#. no toc items, and no action entries = empty menu
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:148
+msgid "(empty table of content)"
+msgstr "(prázdný obsah)"
+
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:163
+msgid "Header Level 1"
+msgstr "Nadpis úrovně 1"
+
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:169
+msgid "Header Level 2"
+msgstr "Nadpis úrovně 2"
+
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:175
+msgid "Table of Content Help"
+msgstr "Nápověda k obsahu"
+
+#. namespace
 #: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:1
 msgid "Tomboy Importer"
 msgstr "Import z aplikace Tomboy"
@@ -1345,7 +1385,7 @@ msgstr "Šablona sešitu %1%"
 msgid "New Note"
 msgstr "Nová poznámka"
 
-#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:126
 msgid "All Notes"
 msgstr "Všechny poznámky"
 
@@ -1392,6 +1432,13 @@ msgstr "Sešit"
 #: ../src/notebooks/notebooknoteaddin.cpp:210
 msgid "_New notebook..."
 msgstr "Nový _sešit…"
+
+#. TRANSLATORS: %1% will be replaced by note title
+#: ../src/note.cpp:70
+#| msgid "Really delete %1% note?"
+#| msgid_plural "Really delete %1% notes?"
+msgid "Really delete \"%1%\"?"
+msgstr "Opravdu smazat „%1%“?"
 
 #. TRANSLATORS: %1% is number of notes
 #: ../src/note.cpp:74
@@ -2013,16 +2060,16 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:377
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:389
 #: ../src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "Poznámky"
 
-#: ../src/recentchanges.cpp:130
+#: ../src/recentchanges.cpp:134
 msgid "New"
 msgstr "Nová"
 
-#: ../src/recentchanges.cpp:465
+#: ../src/recentchanges.cpp:477
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -2475,7 +2522,7 @@ msgstr "Nápo_věda"
 msgid "_About Gnote"
 msgstr "O _aplikaci Gnote"
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:140
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2483,35 +2530,35 @@ msgstr ""
 "Nelze nalézt „Příručku aplikace Gnote“. Ověřte, zda byla v pořádku dokončena "
 "instalace."
 
-#: ../src/utils.cpp:145
+#: ../src/utils.cpp:148
 msgid "Help not found"
 msgstr "Nápověda nebyla nalezena"
 
-#: ../src/utils.cpp:178
+#: ../src/utils.cpp:181
 msgid "Cannot open location"
 msgstr "Nelze otevřít umístění"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:196
 msgid "Today, %1%"
 msgstr "Dnes, %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:197
 msgid "Today"
 msgstr "Dnes"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:200
+#: ../src/utils.cpp:203
 msgid "Yesterday, %1%"
 msgstr "Včera, %1%"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:204
 msgid "Yesterday"
 msgstr "Včera"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:213
 msgid "%1% day ago, %2%"
 msgid_plural "%1% days ago, %2%"
 msgstr[0] "Včera, %2%"
@@ -2520,7 +2567,7 @@ msgstr[2] "Před %1% dny, %2%"
 
 #. TRANSLATORS: 2 or more days ago, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:219
 msgid "%1% day ago"
 msgid_plural "%1% days ago"
 msgstr[0] "Včera"
@@ -2528,17 +2575,17 @@ msgstr[1] "Před %1% dny"
 msgstr[2] "Před %1% dny"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:227
 msgid "Tomorrow, %1%"
 msgstr "Zítra, %1%"
 
-#: ../src/utils.cpp:225
+#: ../src/utils.cpp:228
 msgid "Tomorrow"
 msgstr "Zítra"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. First argument is number of days, second is time.
-#: ../src/utils.cpp:234
+#: ../src/utils.cpp:237
 msgid "In %1% day, %2%"
 msgid_plural "In %1% days, %2%"
 msgstr[0] "Za jeden den, %2%"
@@ -2547,14 +2594,14 @@ msgstr[2] "Za %1% dní, %2%"
 
 #. TRANSLATORS: In 2 or more days, up to one week.
 #. Argument is number of days.
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:243
 msgid "In %1% day"
 msgid_plural "In %1% days"
 msgstr[0] "Za jeden den"
 msgstr[1] "Za %1% dny"
 msgstr[2] "Za %1% dní"
 
-#: ../src/utils.cpp:251
+#: ../src/utils.cpp:254
 msgid "No Date"
 msgstr "Žádný termín"
 
