@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-22 19:49+0000\n"
-"PO-Revision-Date: 2013-04-20 23:41-0300\n"
+"POT-Creation-Date: 2013-04-30 21:26+0000\n"
+"PO-Revision-Date: 2013-05-01 01:48-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -672,7 +672,7 @@ msgstr "Falha ao localizar módulo %s para o plug-in %s"
 msgid "Failed to load addin info for %s: %s"
 msgstr "Falha ao carregar a informação de plug-in para %s: %s"
 
-#: ../src/addinmanager.cpp:301
+#: ../src/addinmanager.cpp:302
 msgid "Trying to load addins when they are already loaded"
 msgstr "Tentando carregar plug-ins quando eles já foram carregados"
 
@@ -1095,6 +1095,45 @@ msgstr "Sem título"
 msgid "Sticky Note: "
 msgstr "Nota do Sticky: "
 
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:1
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:64
+msgid "Table of Content"
+msgstr "Sumário"
+
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:2
+msgid ""
+"Navigate long structured notes. Set section and subsection headers in your "
+"note, and the Table of Content will show in a menu."
+msgstr ""
+"Navegue notas estruturalmente longas. Defina os cabeçalhos de seção e "
+"subseção em sua nota e o sumário será mostrar em um menu."
+
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:3
+msgid "Luc Pionchon"
+msgstr "Luc Pionchon"
+
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:4
+msgid "© 2013 Luc Pionchon"
+msgstr "© 2013 Luc Pionchon"
+
+#. no toc items, and no action entries = empty menu
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:148
+msgid "(empty table of content)"
+msgstr "(sumário vazio)"
+
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:163
+msgid "Header Level 1"
+msgstr "Cabeçalho nível 1"
+
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:169
+msgid "Header Level 2"
+msgstr "Cabeçalho nível 2"
+
+#: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:175
+msgid "Table of Content Help"
+msgstr "Ajuda do sumário"
+
+#. namespace
 #: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:1
 msgid "Tomboy Importer"
 msgstr "Importador do Tomboy"
@@ -1344,7 +1383,7 @@ msgstr "Modelo do catálogo de notas %1%"
 msgid "New Note"
 msgstr "Nova nota"
 
-#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:126
 msgid "All Notes"
 msgstr "Todas as notas"
 
@@ -1391,6 +1430,11 @@ msgstr "Catálogo de notas"
 #: ../src/notebooks/notebooknoteaddin.cpp:210
 msgid "_New notebook..."
 msgstr "_Novo catálogo de notas..."
+
+#. TRANSLATORS: %1% will be replaced by note title
+#: ../src/note.cpp:70
+msgid "Really delete \"%1%\"?"
+msgstr "Deseja realmente excluir \"%1%\"?"
 
 #. TRANSLATORS: %1% is number of notes
 #: ../src/note.cpp:74
@@ -2014,16 +2058,16 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:380
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:389
 #: ../src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "Notas"
 
-#: ../src/recentchanges.cpp:130
+#: ../src/recentchanges.cpp:134
 msgid "New"
 msgstr "Novo"
 
-#: ../src/recentchanges.cpp:468
+#: ../src/recentchanges.cpp:477
 msgid "_Close"
 msgstr "_Fechar"
 
