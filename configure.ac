@@ -61,6 +61,10 @@ LT_INIT([disable-static])
 
 AC_LANG_CPLUSPLUS
 AC_LANG_COMPILER_REQUIRE
+AC_CHECK_PROG(HAVE_DESKTOP_FILE_VALIDATE, [desktop-file-validate], [yes], [no])
+if test $HAVE_DESKTOP_FILE_VALIDATE == "no"; then
+  AC_MSG_ERROR([desktop-file-validate not found])
+fi
 
 PKG_CHECK_MODULES(LIBGLIBMM, [glibmm-2.4])
 PKG_CHECK_MODULES(GTK, [gtk+-3.0 >= $GTK_VERSION])

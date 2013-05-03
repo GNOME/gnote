@@ -54,3 +54,6 @@ DISTCLEANFILES = 				\
 	$(pkgconfig_DATA)			\
 	$(dbusservice_DATA)			\
 	$(gsettings_SCHEMAS)
+
+check:
+	desktop-file-validate $(desktop_files)
