@@ -13,7 +13,7 @@ DISTCLEANFILES = intltool-extract \
 
 SUBDIRS = data libtomboy src po help
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --disable-scrollkeeper --enable-applet
+DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --disable-scrollkeeper
 
 # Ignore scrollkeeper issues for now.  @#*$& scrollkeeper (from Evince)
 
