@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-27 16:37+0000\n"
-"PO-Revision-Date: 2013-04-27 21:18+0100\n"
+"POT-Creation-Date: 2013-05-03 17:25+0000\n"
+"PO-Revision-Date: 2013-05-04 22:04+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: Slovenian\n"
@@ -1070,15 +1070,22 @@ msgstr "Lepljivo sporočilce:"
 
 #: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:1
 #: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:64
-#, fuzzy
 msgid "Table of Content"
-msgstr "Vsebina _pomoči"
+msgstr "Kazalo vsebine"
 
 #: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:2
 msgid ""
 "Navigate long structured notes. Set section and subsection headers in your "
 "note, and the Table of Content will show in a menu."
 msgstr ""
+
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:3
+msgid "Luc Pionchon"
+msgstr "Luc Pionchon"
+
+#: ../src/addins/tableofcontent/tableofcontent.desktop.in.h:4
+msgid "© 2013 Luc Pionchon"
+msgstr "© 2013 Luc Pionchon"
 
 #. no toc items, and no action entries = empty menu
 #: ../src/addins/tableofcontent/tableofcontentnoteaddin.cpp:148
@@ -1342,7 +1349,7 @@ msgstr "%1% predloga beležke"
 msgid "New Note"
 msgstr "Novo sporočilce"
 
-#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
+#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:126
 msgid "All Notes"
 msgstr "Vsa sporočilca"
 
@@ -1392,9 +1399,8 @@ msgstr "_Nova beležnica ..."
 
 #. TRANSLATORS: %1% will be replaced by note title
 #: ../src/note.cpp:70
-#, fuzzy
 msgid "Really delete \"%1%\"?"
-msgstr "Ali res želite izbrisati %1% sporočilc?"
+msgstr "Ali res želite izbrisati \"%1%\"?"
 
 #. TRANSLATORS: %1% is number of notes
 #: ../src/note.cpp:74
@@ -1551,7 +1557,8 @@ msgstr "Napaka med ustvarjanjem začetnih sporočilc: %s"
 #: ../src/notemanager.cpp:311
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
-msgstr "Napaka med razčlenjevanjem XML sporočilca, zato bo del \"%s\" izpuščen: %s"
+msgstr ""
+"Napaka med razčlenjevanjem XML sporočilca, zato bo del \"%s\" izpuščen: %s"
 
 #: ../src/notemanager.cpp:635
 msgid "Describe your new note here."
@@ -2020,16 +2027,16 @@ msgstr "Avtor:"
 msgid "Copyright:"
 msgstr "Avtorske pravice:"
 
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:380
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:389
 #: ../src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "Sporočilca"
 
-#: ../src/recentchanges.cpp:130
+#: ../src/recentchanges.cpp:134
 msgid "New"
 msgstr "Novo"
 
-#: ../src/recentchanges.cpp:468
+#: ../src/recentchanges.cpp:477
 msgid "_Close"
 msgstr "_Zapri"
 
