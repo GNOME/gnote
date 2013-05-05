@@ -62,6 +62,7 @@ DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/iremotecontrol.hpp \
 	dbus/remotecontrol-client-glue.cpp \
 	dbus/remotecontrol-glue.cpp \
+	dbus/searchprovider.hpp dbus/searchprovider.cpp \
 	$(NULL)
 
 libgnote_la_LDFLAGS = -release @LIBGNOTE_RELEASE@ -version-info @LIBGNOTE_VERSION_INFO@
@@ -159,7 +160,7 @@ gnote_SOURCES = \
 	synchronization/silentui.hpp synchronization/silentui.cpp \
 	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
 	synchronization/syncmanager.hpp synchronization/syncmanager.cpp \
-	$(DBUS_SOURCES)   \
+	$(DBUS_SOURCES) \
 	main.cpp \
 	$(NULL)
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,14 @@
 #include <giomm/dbusconnection.h>
 #include <giomm/dbusintrospection.h>
 
+namespace org {
+namespace gnome {
+namespace Gnote {
+  class SearchProvider;
+}
+}
+}
+
 namespace gnote {
 
 class RemoteControl;
@@ -37,6 +45,8 @@ public:
   static const char *GNOTE_SERVER_PATH;
   static const char *GNOTE_INTERFACE_NAME;
   static const char *GNOTE_SERVER_NAME;
+  static const char *GNOTE_SEARCH_PROVIDER_PATH;
+  static const char *GNOTE_SEARCH_PROVIDER_INTERFACE_NAME;
 
   typedef sigc::slot<void, bool, bool> slot_name_acquire_finish;
   typedef sigc::slot<void> slot_connected;
@@ -55,9 +65,11 @@ private:
 
   static NoteManager * s_manager;
   static RemoteControl * s_remote_control;
+  static org::gnome::Gnote::SearchProvider * s_search_provider;
   static bool s_bus_acquired;
   static Glib::RefPtr<Gio::DBus::Connection> s_connection;
   static Glib::RefPtr<Gio::DBus::InterfaceInfo> s_gnote_interface;
+  static Glib::RefPtr<Gio::DBus::InterfaceInfo> s_search_provider_interface;
   static Glib::RefPtr<RemoteControlClient> s_remote_control_proxy;
   static slot_name_acquire_finish s_on_name_acquire_finish;
 };

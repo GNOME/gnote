@@ -27,21 +27,54 @@
 #include "debug.hpp"
 #include "dbus/remotecontrol.hpp"
 #include "dbus/remotecontrolclient.hpp"
+#include "dbus/searchprovider.hpp"
 #include "remotecontrolproxy.hpp"
 
+
+namespace {
+  void load_interface_from_file(const char *filename, const char *interface_name,
+                                Glib::RefPtr<Gio::DBus::InterfaceInfo> & interface)
+  {
+    if(interface != 0) {
+      return;
+    }
+    std::ifstream fin(filename);
+    if(!fin) {
+      return;
+    }
+    Glib::ustring introspect_xml;
+    while(!fin.eof()) {
+      std::string line;
+      std::getline(fin, line);
+      introspect_xml += line;
+    }
+    fin.close();
+    try {
+      Glib::RefPtr<Gio::DBus::NodeInfo> node = Gio::DBus::NodeInfo::create_for_xml(introspect_xml);
+      interface = node->lookup_interface(interface_name);
+    }
+    catch(Glib::Error & e) {
+      ERR_OUT(_("Failed to load D-Bus interface %s: %s"), interface_name, e.what().c_str());
+    }
+  }
+}
 
 namespace gnote {
 
 const char *RemoteControlProxy::GNOTE_SERVER_NAME = "org.gnome.Gnote";
 const char *RemoteControlProxy::GNOTE_INTERFACE_NAME = "org.gnome.Gnote.RemoteControl";
 const char *RemoteControlProxy::GNOTE_SERVER_PATH = "/org/gnome/Gnote/RemoteControl";
+const char *RemoteControlProxy::GNOTE_SEARCH_PROVIDER_PATH = "/org/gnome/Gnote/SearchProvider";
+const char *RemoteControlProxy::GNOTE_SEARCH_PROVIDER_INTERFACE_NAME = "org.gnome.Shell.SearchProvider2";
 
 NoteManager *RemoteControlProxy::s_manager;
 RemoteControl *RemoteControlProxy::s_remote_control;
+org::gnome::Gnote::SearchProvider *RemoteControlProxy::s_search_provider;
 bool RemoteControlProxy::s_bus_acquired;
 Glib::RefPtr<Gio::DBus::Connection> RemoteControlProxy::s_connection;
 Glib::RefPtr<RemoteControlClient> RemoteControlProxy::s_remote_control_proxy;
 Glib::RefPtr<Gio::DBus::InterfaceInfo> RemoteControlProxy::s_gnote_interface;
+Glib::RefPtr<Gio::DBus::InterfaceInfo> RemoteControlProxy::s_search_provider_interface;
 RemoteControlProxy::slot_name_acquire_finish RemoteControlProxy::s_on_name_acquire_finish;
 
 
@@ -103,6 +136,8 @@ void RemoteControlProxy::register_object(const Glib::RefPtr<Gio::DBus::Connectio
 {
   load_introspection_xml();
   s_remote_control = new RemoteControl(conn, manager, GNOTE_SERVER_PATH, GNOTE_INTERFACE_NAME, s_gnote_interface);
+  s_search_provider = new org::gnome::Gnote::SearchProvider(conn, GNOTE_SEARCH_PROVIDER_PATH,
+                                                            s_search_provider_interface, manager);
   on_finish(true, true);
 }
 
@@ -115,27 +150,9 @@ void RemoteControlProxy::on_name_lost(const Glib::RefPtr<Gio::DBus::Connection> 
 
 void RemoteControlProxy::load_introspection_xml()
 {
-  if(s_gnote_interface != 0) {
-    return;
-  }
-  std::ifstream fin(DATADIR"/gnote/gnote-introspect.xml");
-  if(!fin) {
-    return;
-  }
-  Glib::ustring introspect_xml;
-  while(!fin.eof()) {
-    std::string line;
-    std::getline(fin, line);
-    introspect_xml += line;
-  }
-  fin.close();
-  try {
-    Glib::RefPtr<Gio::DBus::NodeInfo> node = Gio::DBus::NodeInfo::create_for_xml(introspect_xml);
-    s_gnote_interface = node->lookup_interface(GNOTE_INTERFACE_NAME);
-  }
-  catch(Glib::Error & e) {
-    ERR_OUT(_("Failed to load D-Bus interface: %s"), e.what().c_str());
-  }
+  load_interface_from_file(DATADIR"/gnote/gnote-introspect.xml", GNOTE_INTERFACE_NAME, s_gnote_interface);
+  load_interface_from_file(DATADIR"/gnote/shell-search-provider-dbus-interfaces.xml",
+                           GNOTE_SEARCH_PROVIDER_INTERFACE_NAME, s_search_provider_interface);
 }
 
 }
