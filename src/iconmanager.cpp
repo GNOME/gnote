@@ -66,5 +66,10 @@ Glib::RefPtr<Gdk::Pixbuf> IconManager::get_icon(const std::string & name, int si
   return Glib::RefPtr<Gdk::Pixbuf>();
 }
 
+Gtk::IconInfo IconManager::lookup_icon(const std::string & name, int size)
+{
+  return Gtk::IconTheme::get_default()->lookup_icon(name, size, (Gtk::IconLookupFlags) 0);
+}
+
 }
 
