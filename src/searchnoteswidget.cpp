@@ -832,10 +832,12 @@ void SearchNotesWidget::on_selection_changed()
 
   if(selected_notes.empty()) {
     m_open_note_action->property_sensitive() = false;
+    m_open_note_new_window_action->property_sensitive() = false;
     m_delete_note_action->property_sensitive() = false;
   }
   else {
     m_open_note_action->property_sensitive() = true;
+    m_open_note_new_window_action->property_sensitive() = true;
     m_delete_note_action->property_sensitive() = true;
   }
 }
