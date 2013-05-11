@@ -61,6 +61,8 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   , m_notebook_list_context_menu(NULL)
   , m_initial_position_restored(false)
 {
+  set_hexpand(true);
+  set_vexpand(true);
   make_actions();
 
   // Notebooks Pane

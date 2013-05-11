@@ -47,7 +47,7 @@ namespace gnote {
     : MainWindow(_("Notes"))
     , m_note_manager(m)
     , m_search_notes_widget(m)
-    , m_content_vbox(false, 0)
+    , m_search_box(0.5, 0.5, 0.0, 1.0)
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
     , m_window_menu_search(NULL)
@@ -70,8 +70,13 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
 
     Gtk::Toolbar *toolbar = make_toolbar();
-    m_content_vbox.pack_start(*toolbar, false, false, 0);
-    m_content_vbox.pack_start(m_embed_box, true, true, 0);
+    make_search_box();
+    m_content_vbox.set_orientation(Gtk::ORIENTATION_VERTICAL);
+    m_content_vbox.attach(*toolbar, 0, 0, 1, 1);
+    m_content_vbox.attach(m_search_box, 0, 1, 1, 1);
+    m_content_vbox.attach(m_embed_box, 0, 2, 1, 1);
+    m_embed_box.set_hexpand(true);
+    m_embed_box.set_vexpand(true);
     m_embed_box.show();
     m_content_vbox.show ();
 
@@ -114,46 +119,69 @@ namespace gnote {
 
   Gtk::Toolbar *NoteRecentChanges::make_toolbar()
   {
+    gint icon_size = 16;
+    gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &icon_size, NULL);
     Gtk::Toolbar *toolbar = manage(new Gtk::Toolbar);
+    toolbar->set_hexpand(true);
+    toolbar->set_vexpand(false);
     // let move window by dragging toolbar with mouse
     toolbar->get_style_context()->add_class(GTK_STYLE_CLASS_MENUBAR);
     Gtk::ToolItem *tool_item = manage(new Gtk::ToolItem);
-    Gtk::Box *box = manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
-    box->set_border_width(5);
+    Gtk::Grid *box = manage(new Gtk::Grid);
+    box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
+
+    GtkIconSize toolbar_icon_size = gtk_toolbar_get_icon_size(toolbar->gobj());
+    gint toolbar_size_px;
+    gtk_icon_size_lookup(toolbar_icon_size, &toolbar_size_px, NULL);
+    gint icon_margin = (gint) floor((toolbar_size_px - icon_size) / 2.0);
+
+    Gtk::Grid *left_box = manage(new Gtk::Grid);
+    left_box->get_style_context()->add_class(GTK_STYLE_CLASS_RAISED);
+    left_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
     m_all_notes_button = manage(new Gtk::Button);
-    m_all_notes_button->set_image(*manage(new Gtk::Image(Gtk::Stock::FIND, Gtk::ICON_SIZE_BUTTON)));
-    m_all_notes_button->set_always_show_image(true);
-    m_all_notes_button->set_label(_("All Notes"));
+    Gtk::Image *image = manage(new Gtk::Image(IconManager::obj().get_icon("go-previous-symbolic", icon_size)));
+    image->property_margin() = icon_margin;
+    m_all_notes_button->set_image(*image);
+    m_all_notes_button->set_tooltip_text(_("All Notes"));
     m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::present_search));
     m_all_notes_button->show_all();
-    box->pack_start(*m_all_notes_button, false, false);
+    left_box->attach(*m_all_notes_button, 0, 0, 1, 1);
+
+    m_new_note_button = manage(new Gtk::Button);
+    m_new_note_button->set_vexpand(true);
+    m_new_note_button->set_label(_("New"));
+    m_new_note_button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
+    m_new_note_button->show_all();
+    left_box->attach(*m_new_note_button, 1, 0, 1, 1);
+    left_box->show();
+    box->attach(*left_box, 0, 0, 1, 1);
+
+    m_embeded_toolbar.set_hexpand(true);
+    m_embeded_toolbar.show();
+    box->attach(m_embeded_toolbar, 1, 0, 1, 1);
+
+    Gtk::Grid *right_box = manage(new Gtk::Grid);
+    right_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
+    right_box->set_column_spacing(5);
+    image = manage(new Gtk::Image(IconManager::obj().get_icon("edit-find-symbolic", icon_size)));
+    image->property_margin() = icon_margin;
+    m_search_button.set_image(*image);
+    m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
+    m_search_button.add_accelerator("activate", get_accel_group(), GDK_KEY_F, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    m_search_button.set_tooltip_text(_("Search"));
+    m_search_button.show_all();
+    right_box->attach(m_search_button, 0, 0, 1, 1);
 
     Gtk::Button *button = manage(new Gtk::Button);
-    button->set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 24))));
-    button->set_always_show_image(true);
-    button->set_label(_("New"));
-    button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
-    button->show_all();
-    box->pack_start(*button, false, false);
-
-    m_search_entry.set_activates_default(false);
-    m_search_entry.set_size_request(300);
-    m_search_entry.signal_changed()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_changed));
-    m_search_entry.signal_activate()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_activated));
-    Gtk::Alignment *alignment = manage(new Gtk::Alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER, 0));
-    alignment->add(m_search_entry);
-    alignment->show_all();
-    box->pack_start(*alignment, true, true);
-
-    button = manage(new Gtk::Button);
-    button->set_image(*manage(new Gtk::Image(IconManager::obj().get_icon("emblem-system-symbolic", 24))));
-    button->set_always_show_image(true);
+    image = manage(new Gtk::Image(IconManager::obj().get_icon("emblem-system-symbolic", icon_size)));
+    image->property_margin() = icon_margin;
+    button->set_image(*image);
     button->signal_clicked().connect(
       boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu), button));
     button->show_all();
-    box->pack_end(*button, false, false);
+    right_box->attach(*button, 1, 0, 1, 1);
+    right_box->show();
+    box->attach(*right_box, 2, 0, 1, 1);
 
     box->show();
     tool_item->add(*box);
@@ -162,6 +190,48 @@ namespace gnote {
     toolbar->add(*tool_item);
     toolbar->show();
     return toolbar;
+  }
+
+  void NoteRecentChanges::make_search_box()
+  {
+    m_search_entry.set_activates_default(false);
+    m_search_entry.set_size_request(300);
+    m_search_entry.signal_changed()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_changed));
+    m_search_entry.signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_activated));
+    m_search_entry.show();
+
+    Gtk::Grid *grid = manage(new Gtk::Grid);
+    grid->set_margin_left(5);
+    grid->set_margin_right(5);
+    grid->set_hexpand(false);
+    grid->add(m_search_entry);
+    grid->show();
+
+    m_search_box.add(*grid);
+    m_search_box.set_hexpand(true);
+  }
+
+  void NoteRecentChanges::on_search_button_toggled()
+  {
+    if(m_search_button.get_active()) {
+      show_search_bar();
+    }
+    else {
+      m_search_box.hide();
+      m_search_notes_widget.perform_search("");
+    }
+  }
+
+  void NoteRecentChanges::show_search_bar()
+  {
+    m_search_box.show();
+    m_search_entry.grab_focus();
+    Glib::ustring text = m_search_entry.get_text();
+    if(text != "") {
+      m_search_notes_widget.perform_search(text);
+    }
   }
 
   void NoteRecentChanges::present_search()
@@ -242,8 +312,12 @@ namespace gnote {
   {
     switch (ev->keyval) {
     case GDK_KEY_Escape:
+      if(m_search_button.get_active()) {
+        m_search_entry.set_text("");
+        m_search_button.set_active(false);
+      }
       // Allow Escape to close the window
-      if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embedded())) {
+      else if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embedded())) {
         on_close_window();
       }
       else {
@@ -273,9 +347,6 @@ namespace gnote {
       foreground_embedded(**m_embedded_widgets.rbegin());
     }
     std::vector<Gtk::Widget*> embedded = m_embed_box.get_children();
-    if(embedded.size() == 1 && embedded.front() == &m_search_notes_widget) {
-      m_search_entry.grab_focus();
-    }
     MainWindow::on_show();
   }
 
@@ -327,7 +398,7 @@ namespace gnote {
         return;
       }
       Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
-      m_embed_box.pack_start(wid, true, true, 0);
+      m_embed_box.add(wid);
       widget.foreground();
       wid.show();
       update_toolbar(widget);
@@ -392,6 +463,9 @@ namespace gnote {
 
   void NoteRecentChanges::on_entry_changed()
   {
+    if(!m_search_box.get_visible()) {
+      return;
+    }
     if(m_entry_changed_timeout == NULL) {
       m_entry_changed_timeout = new utils::InterruptableTimeout();
       m_entry_changed_timeout->signal_timeout
@@ -418,6 +492,9 @@ namespace gnote {
 
   void NoteRecentChanges::entry_changed_timeout()
   {
+    if(!m_search_box.get_visible()) {
+      return;
+    }
     std::string search_text = get_search_text();
     if(search_text.empty()) {
       return;
@@ -436,8 +513,8 @@ namespace gnote {
   void NoteRecentChanges::update_toolbar(utils::EmbeddableWidget & widget)
   {
     bool search = dynamic_cast<SearchNotesWidget*>(&widget) == &m_search_notes_widget;
-    m_all_notes_button->set_sensitive(!search);
-    m_search_entry.set_visible(search);
+    m_all_notes_button->set_visible(!search);
+    m_new_note_button->set_visible(search);
   }
 
   void NoteRecentChanges::on_show_window_menu(Gtk::Button *button)

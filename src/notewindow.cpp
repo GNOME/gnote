@@ -78,6 +78,9 @@ namespace gnote {
     m_template_save_selection_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
     m_template_save_title_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
 
+    set_hexpand(true);
+    set_vexpand(true);
+
     m_text_menu = Gtk::manage(new NoteTextMenu(note.get_buffer(), note.get_buffer()->undoer()));
 
     // Add the Find menu item to the toolbar Text menu.  It

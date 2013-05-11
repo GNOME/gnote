@@ -150,6 +150,8 @@ private:
 StatisticsWidget::StatisticsWidget(gnote::NoteManager & nm)
   : Gtk::TreeView(StatisticsModel::create(nm))
 {
+  set_hexpand(true);
+  set_vexpand(true);
   StatisticsModel::Ptr model = StatisticsModel::Ptr::cast_dynamic(get_model());
   set_model(model);
   set_headers_visible(false);

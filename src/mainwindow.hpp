@@ -38,6 +38,7 @@ public:
 
   virtual void set_search_text(const std::string & value) = 0;
   virtual void present_note(const Note::Ptr & note) = 0;
+  virtual void show_search_bar() = 0;
   virtual void present_search() = 0;
   virtual void new_note() = 0;
 };

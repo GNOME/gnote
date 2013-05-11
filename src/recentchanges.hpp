@@ -26,8 +26,9 @@
 
 #include <string>
 
-#include <gtkmm/radiomenuitem.h>
+#include <gtkmm/alignment.h>
 #include <gtkmm/applicationwindow.h>
+#include <gtkmm/grid.h>
 
 #include "note.hpp"
 #include "searchnoteswidget.hpp"
@@ -42,6 +43,7 @@ class NoteRecentChanges
 public:
   NoteRecentChanges(NoteManager& m);
   virtual ~NoteRecentChanges();
+  virtual void show_search_bar();
   virtual void set_search_text(const std::string & value);
   virtual void present_note(const Note::Ptr & note);
   virtual void new_note();
@@ -68,6 +70,7 @@ private:
   bool is_foreground(utils::EmbeddableWidget &);
   utils::EmbeddableWidget *currently_embedded();
   Gtk::Toolbar *make_toolbar();
+  void make_search_box();
   void on_embedded_name_changed(const std::string & name);
   void on_entry_changed();
   void on_entry_activated();
@@ -75,6 +78,7 @@ private:
   std::string get_search_text();
   void update_toolbar(utils::EmbeddableWidget & widget);
   void on_show_window_menu(Gtk::Button *button);
+  void on_search_button_toggled();
   Gtk::Menu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::MenuItem*> & items);
   std::vector<Gtk::MenuItem*> & make_menu_items(std::vector<Gtk::MenuItem*> & items,
                                                 const std::vector<Glib::RefPtr<Gtk::Action> > & actions);
@@ -82,9 +86,13 @@ private:
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
-  Gtk::VBox           m_content_vbox;
-  Gtk::VBox           m_embed_box;
+  Gtk::Grid           m_content_vbox;
+  Gtk::Alignment      m_search_box;
+  Gtk::ToggleButton   m_search_button;
+  Gtk::Alignment      m_embeded_toolbar;
+  Gtk::Grid           m_embed_box;
   Gtk::Button        *m_all_notes_button;
+  Gtk::Button        *m_new_note_button;
   Gtk::SearchEntry    m_search_entry;
   std::list<utils::EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;

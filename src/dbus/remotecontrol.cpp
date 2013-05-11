@@ -158,6 +158,7 @@ namespace gnote {
     MainWindow & recent_changes = IGnote::obj().get_main_window();
     recent_changes.set_search_text(search_text);
     recent_changes.present();
+    recent_changes.show_search_bar();
   }
 
 
