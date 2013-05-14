@@ -296,6 +296,16 @@ namespace gnote {
     };
 
 
+    class SearchableItem
+    {
+    public:
+      virtual void perform_search(const std::string & search_text) = 0;
+      virtual bool supports_goto_result();
+      virtual bool goto_next_result();
+      virtual bool goto_previous_result();
+    };
+
+
   }
 }
 

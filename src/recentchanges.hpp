@@ -79,6 +79,8 @@ private:
   void update_toolbar(utils::EmbeddableWidget & widget);
   void on_show_window_menu(Gtk::Button *button);
   void on_search_button_toggled();
+  void on_find_next_button_clicked();
+  void on_find_prev_button_clicked();
   Gtk::Menu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::MenuItem*> & items);
   std::vector<Gtk::MenuItem*> & make_menu_items(std::vector<Gtk::MenuItem*> & items,
                                                 const std::vector<Glib::RefPtr<Gtk::Action> > & actions);
@@ -88,6 +90,7 @@ private:
   SearchNotesWidget   m_search_notes_widget;
   Gtk::Grid           m_content_vbox;
   Gtk::Alignment      m_search_box;
+  Gtk::Grid           m_find_next_prev_box;
   Gtk::ToggleButton   m_search_button;
   Gtk::Alignment      m_embeded_toolbar;
   Gtk::Grid           m_embed_box;

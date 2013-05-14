@@ -206,7 +206,27 @@ namespace gnote {
     grid->set_margin_left(5);
     grid->set_margin_right(5);
     grid->set_hexpand(false);
-    grid->add(m_search_entry);
+    grid->attach(m_search_entry, 0, 0, 1, 1);
+
+    m_find_next_prev_box.set_margin_left(5);
+
+    Gtk::Button *find_next_button = manage(new Gtk::Button(_("Find _Next"), true));
+    find_next_button->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_FORWARD, Gtk::ICON_SIZE_MENU)));
+    find_next_button->set_always_show_image(true);
+    find_next_button->signal_clicked()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
+    find_next_button->show();
+    m_find_next_prev_box.attach(*find_next_button, 0, 0, 1, 1);
+
+    Gtk::Button *find_prev_button = manage(new Gtk::Button(_("Find _Previous"), true));
+    find_prev_button->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_BACK, Gtk::ICON_SIZE_MENU)));
+    find_prev_button->set_always_show_image(true);
+    find_prev_button->signal_clicked()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
+    find_prev_button->show();
+    m_find_next_prev_box.attach(*find_prev_button, 1, 0, 1, 1);
+
+    grid->attach(m_find_next_prev_box, 1, 0, 1, 1);
     grid->show();
 
     m_search_box.add(*grid);
@@ -220,7 +240,26 @@ namespace gnote {
     }
     else {
       m_search_box.hide();
-      m_search_notes_widget.perform_search("");
+      utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+      if(searchable_widget) {
+        searchable_widget->perform_search("");
+      }
+    }
+  }
+
+  void NoteRecentChanges::on_find_next_button_clicked()
+  {
+    utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+    if(searchable_widget) {
+      searchable_widget->goto_next_result();
+    }
+  }
+
+  void NoteRecentChanges::on_find_prev_button_clicked()
+  {
+    utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+    if(searchable_widget) {
+      searchable_widget->goto_previous_result();
     }
   }
 
@@ -230,7 +269,10 @@ namespace gnote {
     m_search_entry.grab_focus();
     Glib::ustring text = m_search_entry.get_text();
     if(text != "") {
-      m_search_notes_widget.perform_search(text);
+      utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+      if(searchable_widget) {
+        searchable_widget->perform_search(text);
+      }
     }
   }
 
@@ -474,7 +516,10 @@ namespace gnote {
 
     std::string search_text = get_search_text();
     if(search_text.empty()) {
-      m_search_notes_widget.perform_search(search_text);
+      utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+      if(searchable_widget) {
+        searchable_widget->perform_search(search_text);
+      }
     }
     else {
       m_entry_changed_timeout->reset(500);
@@ -500,7 +545,10 @@ namespace gnote {
       return;
     }
 
-    m_search_notes_widget.perform_search(search_text);
+    utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+    if(searchable_widget) {
+      searchable_widget->perform_search(search_text);
+    }
   }
 
   std::string NoteRecentChanges::get_search_text()
@@ -515,6 +563,24 @@ namespace gnote {
     bool search = dynamic_cast<SearchNotesWidget*>(&widget) == &m_search_notes_widget;
     m_all_notes_button->set_visible(!search);
     m_new_note_button->set_visible(search);
+
+    try {
+      utils::SearchableItem & searchable_item = dynamic_cast<utils::SearchableItem&>(widget);
+      m_search_button.show();
+      if(searchable_item.supports_goto_result()) {
+        m_find_next_prev_box.show();
+      }
+      else {
+        m_find_next_prev_box.hide();
+      }
+      if(m_search_button.get_active() && m_search_entry.get_text() != "") {
+        searchable_item.perform_search(m_search_entry.get_text());
+      }
+    }
+    catch(std::bad_cast &) {
+      m_search_button.set_active(false);
+      m_search_button.hide();
+    }
   }
 
   void NoteRecentChanges::on_show_window_menu(Gtk::Button *button)
