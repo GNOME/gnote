@@ -191,7 +191,9 @@ void SearchNotesWidget::perform_search()
 
     add_matches_column();
     m_store_filter->refilter();
-    m_tree->scroll_to_point(0, 0);
+    if(m_tree->get_realized()) {
+      m_tree->scroll_to_point(0, 0);
+    }
   }
 }
 
