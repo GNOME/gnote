@@ -49,13 +49,6 @@ void BacklinkMenuItem::on_activate()
     return;
   }
 
-  // Show the title of the note
-  // where the user just came from.
-  gnote::NoteFindBar & find = m_note->get_window()->get_find_bar();
-  find.show_all ();
-  find.property_visible() = true;
-  find.set_search_text(m_title_search);
-  
   gnote::MainWindow *window = gnote::MainWindow::get_owning(*this);
   if(!window) {
     window = &gnote::IGnote::obj().new_main_window();
