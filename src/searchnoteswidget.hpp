@@ -41,6 +41,7 @@ namespace gnote {
 class SearchNotesWidget
   : public Gtk::VBox
   , public utils::EmbeddableWidget
+  , public utils::SearchableItem
 {
 public:
   SearchNotesWidget(NoteManager & m);
@@ -49,7 +50,7 @@ public:
   virtual void foreground();
   virtual void background();
 
-  void perform_search(const std::string & search_text);
+  virtual void perform_search(const std::string & search_text);
   void select_all_notes_notebook();
   void new_note();
   void delete_selected_notes();
