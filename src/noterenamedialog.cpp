@@ -371,11 +371,8 @@ void NoteRenameDialog::on_notes_view_row_activated(
 
   window->present_note(note);
   window->present();
-
-  NoteFindBar & find = note->get_window()->get_find_bar();
-  find.show_all();
-  find.property_visible() = true;
-  find.set_search_text(Glib::ustring::compose("\"%1\"", old_title));
+  window->set_search_text(Glib::ustring::compose("\"%1\"", old_title));
+  window->show_search_bar();
 }
 
 void NoteRenameDialog::on_select_all_button_clicked(bool select)

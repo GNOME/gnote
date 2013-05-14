@@ -45,7 +45,6 @@
 namespace gnote {
 
   class Note;
-  class NoteFindBar;
 
 class NoteTextMenu
   : public Gtk::Menu
@@ -97,10 +96,41 @@ private:
   sigc::connection      m_bullets_clicked_cid;
 };
 
+class NoteFindHandler
+{
+public:
+  NoteFindHandler(Note & );
+  void perform_search(const std::string & text);
+  bool goto_next_result();
+  bool goto_previous_result();
+private:
+  struct Match
+  {
+    Glib::RefPtr<NoteBuffer>     buffer;
+    Glib::RefPtr<Gtk::TextMark>  start_mark;
+    Glib::RefPtr<Gtk::TextMark>  end_mark;
+    bool                         highlighting;
+  };
+
+  void jump_to_match(const Match & match);
+  void perform_search (bool scroll_to_hit);
+  void update_sensitivity();
+  void update_search();
+  void note_changed_timeout();
+  void highlight_matches(bool);
+  void cleanup_matches();
+  void find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
+                              const std::vector<Glib::ustring> & words,
+                              std::list<Match> & matches);
+
+  Note           & m_note;
+  std::list<Match> m_current_matches;
+};
 
 class NoteWindow 
   : public Gtk::VBox
   , public utils::EmbeddableWidget
+  , public utils::SearchableItem
 {
 public:
   NoteWindow(Note &);
@@ -110,6 +140,11 @@ public:
   void set_name(const std::string & name);
   virtual void foreground();
   virtual void background();
+
+  virtual void perform_search(const std::string & text);
+  virtual bool supports_goto_result();
+  virtual bool goto_next_result();
+  virtual bool goto_previous_result();
 
   void set_size(int width, int height)
     {
@@ -145,15 +180,14 @@ public:
     {
       return m_accel_group;
     }
-  NoteFindBar & get_find_bar()
+  NoteFindHandler & get_find_handler()
     {
-      return *m_find_bar;
+      return m_find_handler;
     }
 private:
   static Glib::RefPtr<Gio::Icon> get_icon_pin_active();
   static Glib::RefPtr<Gio::Icon> get_icon_pin_down();
 
-  bool on_key_pressed(GdkEventKey*);
   void on_delete_button_clicked();
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
   void update_link_button_sensitivity();
@@ -167,11 +201,6 @@ private:
   void on_save_title_check_button_toggled();
   void on_note_tag_added(const Note&, const Tag::Ptr&);
   void on_note_tag_removed(const Note::Ptr&, const std::string&);
-  Gtk::Menu * make_find_menu();
-  void find_button_clicked();
-  void find_next_activate();
-  void find_previous_activate();
-  void find_bar_hidden();
   void link_button_clicked();
   void open_help_activate();
   void change_depth_right_handler();
@@ -196,13 +225,12 @@ private:
   Gtk::Menu                    *m_plugin_menu;
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
-  NoteFindBar                  *m_find_bar;
+  NoteFindHandler              m_find_handler;
   Gtk::ToolButton              *m_delete_button;
   Gtk::Box                     *m_template_widget;
   Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;
   Gtk::CheckButton             *m_save_title_check_button;
-  Gtk::ImageMenuItem           *m_find_item;
 
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;
@@ -213,72 +241,7 @@ private:
   Tag::Ptr m_template_save_title_tag;
 };
 
-class NoteFindBar
-  : public Gtk::HBox
-{
-public:
-  NoteFindBar(Note & );
-  ~NoteFindBar();
-  Gtk::Button & find_next_button()
-    {
-      return m_next_button;
-    }
-  Gtk::Button & find_previous_button()
-    {
-      return m_prev_button;
-    }
-  Glib::ustring search_text();
-  void set_search_text(const Glib::ustring &);
 
-
-protected:
-  virtual void on_show();
-  virtual void on_hide();
-
-
-  
-private:
-  struct Match
-  {
-    Glib::RefPtr<NoteBuffer>     buffer;
-    Glib::RefPtr<Gtk::TextMark>  start_mark;
-    Glib::RefPtr<Gtk::TextMark>  end_mark;
-    bool                         highlighting;
-  };
-
-  void hide_find_bar();
-  void on_prev_clicked();
-  void on_next_clicked();
-  void jump_to_match(const Match & match);
-  void on_find_entry_activated();
-  void on_find_entry_changed();
-  void entry_changed_timeout();
-  void perform_search (bool scroll_to_hit);
-  void update_sensitivity();
-  void update_search();
-  void note_changed_timeout();
-  void on_insert_text(const Gtk::TextBuffer::iterator &, const Glib::ustring &, int);
-  void on_delete_range(const Gtk::TextBuffer::iterator &, const Gtk::TextBuffer::iterator &);
-  bool on_key_pressed(GdkEventKey*);
-  bool on_key_released(GdkEventKey*);
-  void highlight_matches(bool);
-  void cleanup_matches();
-  void find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
-                              const std::vector<Glib::ustring> & words,
-                              std::list<Match> & matches);
-
-  Note           & m_note;
-  Gtk::SearchEntry m_entry;
-  Gtk::Button      m_next_button;
-  Gtk::Button      m_prev_button;
-  std::list<Match> m_current_matches;
-  Glib::ustring    m_prev_search_text;
-  utils::InterruptableTimeout * m_entry_changed_timeout;
-  utils::InterruptableTimeout * m_note_changed_timeout;
-  bool             m_shift_key_pressed;
-  sigc::connection m_insert_cid;
-  sigc::connection m_delete_cid;
-};
 
 
 

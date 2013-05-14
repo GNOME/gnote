@@ -135,13 +135,9 @@ namespace gnote {
       return false;
     }
 
-    present_note(note);
-
-    // Pop open the find-bar
-    NoteFindBar & findbar = note->get_window()->get_find_bar();
-    findbar.show_all ();
-    findbar.property_visible() = true;
-    findbar.set_search_text(search);
+    MainWindow & window(present_note(note));
+    window.set_search_text(search);
+    window.show_search_bar();
 
     return true;
   }
@@ -409,11 +405,12 @@ void RemoteControl::on_note_saved(const Note::Ptr & note)
 }
 
 
-void RemoteControl::present_note(const Note::Ptr & note)
+MainWindow & RemoteControl::present_note(const Note::Ptr & note)
 {
-    MainWindow & window = IGnote::obj().get_window_for_note();
-    window.present_note(note);
-    window.present();
+  MainWindow & window = IGnote::obj().get_window_for_note();
+  window.present_note(note);
+  window.present();
+  return window;
 }
 
 

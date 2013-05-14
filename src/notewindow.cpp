@@ -22,11 +22,7 @@
 #include <config.h>
 #endif
 
-#include <boost/algorithm/string/find_iterator.hpp>
-#include <boost/algorithm/string/finder.hpp>
-
 #include <glibmm/i18n.h>
-#include <gtkmm/arrow.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/separatortoolitem.h>
@@ -46,7 +42,6 @@
 #include "itagmanager.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "sharp/exception.hpp"
-#include "sharp/string.hpp"
 
 
 namespace gnote {
@@ -71,6 +66,7 @@ namespace gnote {
     , m_width(450)
     , m_x(-1)
     , m_y(-1)
+    , m_find_handler(note)
     , m_global_keys(NULL)
   {
     m_template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
@@ -86,16 +82,6 @@ namespace gnote {
     // Add the Find menu item to the toolbar Text menu.  It
     // should only show up in the toplevel Text menu, since
     // the context menu already has a Find submenu.
-
-    Gtk::SeparatorMenuItem *spacer = manage(new Gtk::SeparatorMenuItem ());
-    spacer->show ();
-    m_text_menu->append(*spacer);
-
-    m_find_item = manage(new Gtk::ImageMenuItem(_("Find in This Note")));
-    m_find_item->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
-    m_find_item->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_button_clicked));
-    m_find_item->show ();
-    m_text_menu->append(*m_find_item);
 
     m_plugin_menu = manage(make_plugin_menu());
 
@@ -127,17 +113,9 @@ namespace gnote {
 
     set_focus_child(*m_editor);
 
-    m_find_bar = manage(new NoteFindBar(note));
-    m_find_bar->property_visible() = false;
-    m_find_bar->set_no_show_all(true);
-    m_find_bar->signal_hide().connect(sigc::mem_fun(*this, &NoteWindow::find_bar_hidden));
-
     pack_start(*m_toolbar, false, false, 0);
     pack_start(*m_template_widget, false, false, 0);
     pack_start(*m_editor_window, true, true, 0);
-    pack_start(*m_find_bar, false, false, 0);
-
-    signal_key_press_event().connect(sigc::mem_fun(*this, &NoteWindow::on_key_pressed));
   }
 
 
@@ -221,10 +199,6 @@ namespace gnote {
       m_accel_group = Gtk::AccelGroup::create();
       window.add_accel_group(m_accel_group);
       m_text_menu->set_accel_group(m_accel_group);
-      m_find_item->add_accelerator("activate", m_accel_group,
-                                   GDK_KEY_F,
-                                   Gdk::CONTROL_MASK,
-                                   Gtk::ACCEL_VISIBLE);
       m_link_button->add_accelerator("clicked", m_accel_group,
                                      GDK_KEY_L, Gdk::CONTROL_MASK,
                                      Gtk::ACCEL_VISIBLE);
@@ -235,17 +209,6 @@ namespace gnote {
         // is created on demand, register them with the
         // global keybinder
         m_global_keys = new utils::GlobalKeybinder(m_accel_group);
-
-        // Find Next (Ctrl-G)
-        m_global_keys->add_accelerator(sigc::mem_fun(*this, &NoteWindow::find_next_activate),
-                                       GDK_KEY_G,
-                                       Gdk::CONTROL_MASK,
-                                       Gtk::ACCEL_VISIBLE);
-
-        // Find Previous (Ctrl-Shift-G)
-        m_global_keys->add_accelerator(sigc::mem_fun(*this, &NoteWindow::find_previous_activate),
-                                       GDK_KEY_G, (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
-                                       Gtk::ACCEL_VISIBLE);
 
         // Open Help (F1)
         m_global_keys->add_accelerator(sigc::mem_fun(*this, &NoteWindow::open_help_activate),
@@ -274,16 +237,26 @@ namespace gnote {
     }
   }
 
-
-  bool NoteWindow::on_key_pressed(GdkEventKey *ev)
+  void NoteWindow::perform_search(const std::string & text)
   {
-    if(ev->keyval == GDK_KEY_Escape) {
-      if (m_find_bar && m_find_bar->get_visible()) {
-        m_find_bar->hide();
-      }
-    }
-    return false;
+    get_find_handler().perform_search(text);
   }
+
+  bool NoteWindow::supports_goto_result()
+  {
+    return true;
+  }
+
+  bool NoteWindow::goto_next_result()
+  {
+    return get_find_handler().goto_next_result();
+  }
+
+  bool NoteWindow::goto_previous_result()
+  {
+    return get_find_handler().goto_previous_result();
+  }
+
 
     // Delete this Note.
     //
@@ -342,17 +315,11 @@ namespace gnote {
                                                     m_note.get_buffer()->undoer())));
     text_item->show();
 
-    Gtk::ImageMenuItem *find_item = manage(new Gtk::ImageMenuItem(_("_Find in This Note"), true));
-    find_item->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
-    find_item->set_submenu(*manage(make_find_menu()));
-    find_item->show();
-
     Gtk::MenuItem *spacer2 = manage(new Gtk::SeparatorMenuItem());
     spacer2->show();
 
     menu->prepend(*spacer1);
     menu->prepend(*text_item);
-    menu->prepend(*find_item);
     menu->prepend(*link);
   }
   
@@ -540,80 +507,6 @@ namespace gnote {
 
 
   //
-  // Find context menu
-  //
-  // Find, Find Next, Find Previous menu items.  Next nd previous
-  // are only sensitized when there are search results for this
-  // buffer to iterate.
-  //
-  Gtk::Menu *NoteWindow::make_find_menu()
-  {
-    Gtk::Menu *menu = manage(new Gtk::Menu());
-    menu->set_accel_group(m_accel_group);
-
-    Gtk::ImageMenuItem *find = manage(new Gtk::ImageMenuItem(_("_Find..."), true));
-    find->set_image(*manage(new Gtk::Image (Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
-    find->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_button_clicked));
-    find->add_accelerator("activate", m_accel_group,
-                          GDK_KEY_F, Gdk::CONTROL_MASK,
-                          Gtk::ACCEL_VISIBLE);
-    find->show();
-
-    Gtk::ImageMenuItem *find_next =  manage(new Gtk::ImageMenuItem (_("Find _Next"), true));
-    find_next->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_FORWARD, Gtk::ICON_SIZE_MENU)));
-    find_next->set_sensitive(get_find_bar().find_next_button().is_sensitive());
-
-    find_next->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_next_activate));
-    find_next->add_accelerator("activate", m_accel_group,
-                              GDK_KEY_G, Gdk::CONTROL_MASK,
-                              Gtk::ACCEL_VISIBLE);
-    find_next->show();
-
-    Gtk::ImageMenuItem *find_previous = manage(new Gtk::ImageMenuItem (_("Find _Previous"), true));
-    find_previous->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_BACK, Gtk::ICON_SIZE_MENU)));
-    find_previous->set_sensitive(get_find_bar().find_previous_button().is_sensitive());
-
-    find_previous->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::find_previous_activate));
-    find_previous->add_accelerator("activate", m_accel_group,
-                                  GDK_KEY_G, (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK),
-                                  Gtk::ACCEL_VISIBLE);
-    find_previous->show();
-
-    menu->append(*find);
-    menu->append(*find_next);
-    menu->append(*find_previous);
-
-    return menu;
-  }
-
-
-  void NoteWindow::find_button_clicked()
-  {
-    get_find_bar().show_all();
-    get_find_bar().property_visible() = true;
-    get_find_bar().set_search_text(m_note.get_buffer()->get_selection());
-  }
-
-  void NoteWindow::find_next_activate()
-  {
-    get_find_bar().find_next_button().clicked();
-  }
-
-  void NoteWindow::find_previous_activate()
-  {
-    get_find_bar().find_previous_button().clicked();
-  }
-
-  void NoteWindow::find_bar_hidden()
-  {
-    // Reposition the current focus back to the editor so the
-    // cursor will be ready for typing.
-    if(m_editor) {
-      m_editor->grab_focus();
-    }
-  }
-
-  //
   // Link menu item activate
   //
   // Create a new note, names according to the buffer's selected
@@ -689,98 +582,15 @@ namespace gnote {
   }
 
 
-  NoteFindBar::NoteFindBar(Note & note)
-    : Gtk::HBox(false, 0)
-    , m_note(note)
-    , m_next_button(_("_Next"), true)
-    , m_prev_button(_("_Previous"), true)
-    , m_entry_changed_timeout(NULL)
-    , m_note_changed_timeout(NULL)
-    , m_shift_key_pressed(false)
+  NoteFindHandler::NoteFindHandler(Note & note)
+    : m_note(note)
   {
-    set_border_width(2);
-    Gtk::Button *button = manage(new Gtk::Button());
-    button->set_image(*manage(new Gtk::Image(Gtk::Stock::CLOSE, Gtk::ICON_SIZE_MENU)));
-    button->set_relief(Gtk::RELIEF_NONE);
-    button->signal_clicked().connect(sigc::mem_fun(*this, &NoteFindBar::hide_find_bar));
-    button->show ();
-    pack_start(*button, false, false, 4);
-
-    m_entry.signal_changed().connect(sigc::mem_fun(*this, &NoteFindBar::on_find_entry_changed));
-    m_entry.signal_activate().connect(sigc::mem_fun(*this, &NoteFindBar::on_find_entry_activated));
-    m_entry.show();
-    pack_start(m_entry, true, true, 0);
-
-    m_prev_button.set_image(*manage(new Gtk::Arrow (Gtk::ARROW_LEFT, 
-                                                    Gtk::SHADOW_NONE)));
-    m_prev_button.set_relief(Gtk::RELIEF_NONE);
-    m_prev_button.set_sensitive(false);
-    m_prev_button.set_focus_on_click(false);
-    m_prev_button.signal_clicked().connect(sigc::mem_fun(*this, &NoteFindBar::on_prev_clicked));
-    m_prev_button.show();
-    pack_start(m_prev_button, false, false, 0);
-
-    m_next_button.set_image(*manage(new Gtk::Arrow (Gtk::ARROW_RIGHT, 
-                                                    Gtk::SHADOW_NONE)));
-    m_next_button.set_relief(Gtk::RELIEF_NONE);
-    m_next_button.set_sensitive(false);
-    m_next_button.set_focus_on_click(false);
-    m_next_button.signal_clicked().connect(sigc::mem_fun(*this, &NoteFindBar::on_next_clicked));
-    m_next_button.show();
-    pack_start(m_next_button, false, false, 0);
-
-    // Bind ESC to close the FindBar if it's open and has
-    // focus or the window otherwise.  Also bind Return and
-    // Shift+Return to advance the search if the search
-    // entry has focus.
-    m_entry.signal_key_press_event().connect(sigc::mem_fun(*this, &NoteFindBar::on_key_pressed));
-    m_entry.signal_key_release_event().connect(sigc::mem_fun(*this, &NoteFindBar::on_key_released));
   }
 
-  NoteFindBar::~NoteFindBar()
-  {
-    delete m_entry_changed_timeout;
-    delete m_note_changed_timeout;
-  }
-
-
-  void NoteFindBar::on_show()
-  {
-    m_entry.grab_focus();
-
-    // Highlight words from a previous existing search
-    highlight_matches(true);
-
-    // Call PerformSearch on newly inserted text when
-    // the FindBar is visible
-    m_insert_cid = m_note.get_buffer()->signal_insert()
-      .connect(sigc::mem_fun(*this, &NoteFindBar::on_insert_text));
-    m_delete_cid = m_note.get_buffer()->signal_erase()
-      .connect(sigc::mem_fun(*this, &NoteFindBar::on_delete_range));
-
-    Gtk::HBox::on_show();
-  }
-  
-  void NoteFindBar::on_hide()
-  {
-    highlight_matches(false);
-    
-    // Prevent searching when the FindBar is not visible
-    m_insert_cid.disconnect();
-    m_delete_cid.disconnect();
-
-    Gtk::HBox::on_hide();
-  }
-
-  void NoteFindBar::hide_find_bar()
-  {
-    hide();
-  }
-
-  void NoteFindBar::on_prev_clicked()
+  bool NoteFindHandler::goto_previous_result()
   {
     if (m_current_matches.empty() || m_current_matches.size() == 0)
-      return;
+      return false;
 
     std::list<Match>::reverse_iterator iter(m_current_matches.rbegin());
     for ( ; iter != m_current_matches.rend() ; ++iter) {
@@ -793,18 +603,17 @@ namespace gnote {
 
       if (end.get_offset() < selection_start.get_offset()) {
         jump_to_match(match);
-        return;
+        return true;
       }
     }
 
-    // Wrap to first match
-    jump_to_match (*m_current_matches.rbegin());
+    return false;
   }
 
-  void NoteFindBar::on_next_clicked()
+  bool NoteFindHandler::goto_next_result()
   {
     if (m_current_matches.empty() || m_current_matches.size() == 0)
-      return;
+      return false;
 
     std::list<Match>::iterator iter(m_current_matches.begin());
     for ( ; iter != m_current_matches.end() ; ++iter) {
@@ -817,15 +626,14 @@ namespace gnote {
 
       if (start.get_offset() >= selection_end.get_offset()) {
         jump_to_match(match);
-        return;
+        return true;
       }
     }
 
-    // Else wrap to first match
-    jump_to_match(*m_current_matches.begin());
+    return false;
   }
 
-  void NoteFindBar::jump_to_match(const Match & match)
+  void NoteFindHandler::jump_to_match(const Match & match)
   {
     Glib::RefPtr<NoteBuffer> buffer(match.buffer);
 
@@ -841,62 +649,14 @@ namespace gnote {
   }
 
 
-  void NoteFindBar::on_find_entry_activated()
-  {
-    if (m_entry_changed_timeout) {
-      m_entry_changed_timeout->cancel();
-      delete m_entry_changed_timeout;
-      m_entry_changed_timeout = NULL;
-    }
-
-    if (m_prev_search_text.empty() &&  !search_text().empty() &&
-        (m_prev_search_text == search_text())) {
-      m_next_button.clicked();
-    }
-    else {
-      perform_search(true);
-    }
-  }
-
-  void NoteFindBar::on_find_entry_changed()
-  {
-    if (!m_entry_changed_timeout) {
-      m_entry_changed_timeout = new utils::InterruptableTimeout();
-      m_entry_changed_timeout->signal_timeout.connect(
-        sigc::mem_fun(*this, &NoteFindBar::entry_changed_timeout));
-    }
-
-    if (search_text().empty()) {
-      perform_search(false);
-    } 
-    else {
-      m_entry_changed_timeout->reset(500);
-    }
-  }
-
-
-  // Called after .5 seconds of typing inactivity, or on explicit
-  // activate.  Redo the search and update the results...
-  void NoteFindBar::entry_changed_timeout()
-  {
-    delete m_entry_changed_timeout;
-    m_entry_changed_timeout = NULL;
-
-    if (search_text().empty())
-      return;
-
-    perform_search(true);
-  }
-
-
-  void NoteFindBar::perform_search (bool scroll_to_hit)
+  void NoteFindHandler::perform_search(const std::string & txt)
   {
     cleanup_matches();
-
-    Glib::ustring text = search_text();
-    if (text.empty())
+    if(txt.empty()) {
       return;
+    }
 
+    Glib::ustring text(txt);
     text = text.lowercase();
 
     std::vector<Glib::ustring> words;
@@ -904,132 +664,13 @@ namespace gnote {
 
     find_matches_in_buffer(m_note.get_buffer(), words, m_current_matches);
 
-    m_prev_search_text = search_text();
-
-    if (!m_current_matches.empty()) {
+    if(!m_current_matches.empty()) {
       highlight_matches(true);
-
-      // Select/scroll to the first match
-      if (scroll_to_hit)
-        on_next_clicked();
-    }
-
-    update_sensitivity ();
-  }
-
-
-  void NoteFindBar::update_sensitivity()
-  {
-    if (search_text().empty()) {
-      m_next_button.set_sensitive(false);
-      m_prev_button.set_sensitive(false);
-    }
-
-    if (!m_current_matches.empty() && m_current_matches.size() > 0) {
-      m_next_button.set_sensitive(true);
-      m_prev_button.set_sensitive(true);
-    } 
-    else {
-      m_next_button.set_sensitive(false);
-      m_prev_button.set_sensitive(false);
+      jump_to_match(m_current_matches.front());
     }
   }
 
-  void NoteFindBar::update_search()
-  {
-    if (!m_note_changed_timeout) {
-      m_note_changed_timeout = new utils::InterruptableTimeout();
-      m_note_changed_timeout->signal_timeout.connect(
-        sigc::mem_fun(*this, &NoteFindBar::note_changed_timeout));
-    }
-
-    if (search_text().empty()) {
-      perform_search(false);
-    } 
-    else {
-      m_note_changed_timeout->reset(500);
-    }
-  }
-
-  // Called after .5 seconds of typing inactivity to update
-  // the search when the text of a note changes.  This prevents
-  // the search from running on every single change made in a
-  // note.
-  void NoteFindBar::note_changed_timeout()
-  {
-    delete m_note_changed_timeout;
-    m_note_changed_timeout = NULL;
-
-    if (search_text().empty())
-      return;
-
-    perform_search(false);
-  }
-
-  void NoteFindBar::on_insert_text(const Gtk::TextBuffer::iterator &, 
-                                   const Glib::ustring &, int)
-  {
-    update_search();
-  }
-
-  void NoteFindBar::on_delete_range(const Gtk::TextBuffer::iterator &, 
-                                    const Gtk::TextBuffer::iterator &)
-  {
-    update_search();
-  }
-
-  bool NoteFindBar::on_key_pressed(GdkEventKey *ev)
-  {
-    switch (ev->keyval)
-    {
-    case GDK_KEY_Escape:
-      hide();
-      break;
-    case GDK_KEY_Shift_L:
-    case GDK_KEY_Shift_R:
-      m_shift_key_pressed = true;
-      return false;
-      break;
-    case GDK_KEY_Return:
-      if (m_shift_key_pressed)
-        m_prev_button.clicked();
-      break;
-    default:
-      return false;
-      break;
-    }
-    return true;
-  }
-
-
-  bool NoteFindBar::on_key_released(GdkEventKey *ev)
-  {
-    switch (ev->keyval)
-    {
-    case GDK_KEY_Shift_L:
-    case GDK_KEY_Shift_R:
-      m_shift_key_pressed = false;
-      break;
-    }
-    return false;
-  }
-
-  Glib::ustring NoteFindBar::search_text()
-  {
-    return sharp::string_trim(m_entry.get_text());
-  }
-
-
-  void NoteFindBar::set_search_text(const Glib::ustring &value)
-  {
-    if(!value.empty()) {
-      m_entry.set_text(value);
-    }
-    m_entry.grab_focus();
-  }
-
-
-  void NoteFindBar::highlight_matches(bool highlight)
+  void NoteFindHandler::highlight_matches(bool highlight)
   {
     if(m_current_matches.empty()) {
       return;
@@ -1057,7 +698,7 @@ namespace gnote {
   }
 
 
-  void NoteFindBar::cleanup_matches()
+  void NoteFindHandler::cleanup_matches()
   {
     if (!m_current_matches.empty()) {
       highlight_matches (false /* unhighlight */);
@@ -1071,14 +712,13 @@ namespace gnote {
 
       m_current_matches.clear();
     }
-    update_sensitivity ();
   }
 
 
 
-  void NoteFindBar::find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
-                                           const std::vector<Glib::ustring> & words,
-                                           std::list<NoteFindBar::Match> & matches)
+  void NoteFindHandler::find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
+                                               const std::vector<Glib::ustring> & words,
+                                               std::list<NoteFindHandler::Match> & matches)
   {
     matches.clear();
     Glib::ustring note_text = buffer->get_slice (buffer->begin(),
