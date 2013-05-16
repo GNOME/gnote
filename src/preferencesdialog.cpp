@@ -241,7 +241,7 @@ namespace gnote {
 
 
       // Status icon
-      check = manage(make_check_button(_("Use Status _Icon")));
+      check = manage(make_check_button(_("Use status _icon")));
       options_list->pack_start(*check, false, false, 0);
       peditor = new sharp::PropertyEditorBool(settings, Preferences::USE_STATUS_ICON, *check);
       peditor->setup();
@@ -409,7 +409,7 @@ namespace gnote {
 
     // Hotkeys...
 
-    check = manage(make_check_button (_("Listen for _Hotkeys")));
+    check = manage(make_check_button (_("Listen for _hotkeys")));
     hotkeys_list->pack_start(*check, false, false, 0);
 
     keybind_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_KEYBINDINGS, *check);
@@ -602,16 +602,16 @@ namespace gnote {
     }
     Gtk::HBox *autosyncBox = manage(new Gtk::HBox(false, 5));
     // Translators: This is and the next string go together.
-    // Together they look like "Automatically Sync in Background Every [_] Minutes",
+    // Together they look like "Automatically sync in background every [_] minutes",
     // where "[_]" is a GtkSpinButton.
-    m_autosync_check = manage(new Gtk::CheckButton(_("Automaticall_y Sync in Background Every"), true));
+    m_autosync_check = manage(new Gtk::CheckButton(_("Automaticall_y sync in background every"), true));
     m_autosync_spinner = manage(new Gtk::SpinButton(1));
     m_autosync_spinner->set_range(5, 1000);
     m_autosync_spinner->set_value(timeout >= 5 ? timeout : 10);
     m_autosync_spinner->set_increments(1, 5);
     // Translators: See above comment for details on
     // this string.
-    Gtk::Label *autosyncExtraText = manage(new Gtk::Label(_("Minutes")));
+    Gtk::Label *autosyncExtraText = manage(new Gtk::Label(_("minutes")));
     m_autosync_check->set_active(timeout >= 5);
     m_autosync_spinner->set_sensitive(timeout >= 5);
     m_autosync_check->signal_toggled()
@@ -674,7 +674,7 @@ namespace gnote {
   {
     Gtk::VBox *vbox = new Gtk::VBox (false, 6);
     vbox->set_border_width(6);
-    Gtk::Label *l = manage(new Gtk::Label (_("The following add-ins are installed"), 
+    Gtk::Label *l = manage(new Gtk::Label (_("The following add-ins are installed:"), 
                                            true));
     l->property_xalign() = 0;
     l->show ();
@@ -1125,15 +1125,15 @@ namespace gnote {
     label->set_line_wrap(true);
     //label.Xalign = 0;
 
-    promptOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Always ask me what to do."));
+    promptOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Always ask me what to do"));
     promptOnConflictRadio->signal_toggled()
       .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
 
-    renameOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Rename my local note."));
+    renameOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Rename my local note"));
     renameOnConflictRadio->signal_toggled()
       .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
 
-    overwriteOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Replace my local note with the server's update."));
+    overwriteOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Replace my local note with the server's update"));
     overwriteOnConflictRadio->signal_toggled()
       .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
 
