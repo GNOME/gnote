@@ -6,7 +6,7 @@
 
   <info>
     <link type="guide" xref="notes-preferences#advanced"/>
-    <desc>Using Template Notes</desc>
+    <desc>Using template notes</desc>
     <license><p>GNU Free Documentation License (GFDL), Version 1.1</p></license>
     <credit type="author">
       <name>Aurimas Cernius</name>
@@ -18,29 +18,29 @@
   <section id="usage">
     <title>Template Note Usage</title>
     <p>Template notes are used to define the content for newly created notes. Templates are just like regular notes with some additional features.</p>
-    <p>You can define a single template note for <app>Gnote</app> and one for each notebook you have. These templates define the content of every new note you create:</p>
+    <p>You can define a single main template note and one for each notebook you have. These templates define the content of every new note you create:</p>
     <list>
-      <item><p>Every new note you create in <app>Gnote</app>, but not in any of notebooks, will have have a content of main application template. If template is not created, the default content is used.</p></item>
-      <item><p>Every new note created in a notebook will have a content of template note, if it is present for that notebook. If template note for a notebook is not defined, the default note content will be used.</p></item>
+      <item><p>Every new note you create in <app>Gnote</app>, but not in any notebook, will have the content of the main template. If you have not created a main template, the default content will be used.</p></item>
+      <item><p>Every new note created in a notebook will have the content of that notebook's template note, if any. If no template note for a notebook is defined, the default note content will be used.</p></item>
     </list>
-    <p>To create or modify template note:</p>
+    <p>To create or modify a template note:</p>
     <list>
-      <item><title>Main template note</title><p>Open <app>Gnote</app> preferences and in <gui>General</gui> tab press the <gui>Open Template Note</gui> button.</p></item>
-      <item><title>Notebook template note</title><p>Right click on notebook in main window and select <gui>Open Template Note</gui>.</p></item>
+      <item><title>Main template note</title><p>Open <app>Gnote</app>'s preferences and in the <gui>General</gui> tab press the <gui>Open Template Note</gui> button.</p></item>
+      <item><title>Notebook template note</title><p>Right click on a notebook in the main window and select <gui>Open Template Note</gui>.</p></item>
     </list>
   </section>
   <section id="features">
     <title>Template Note Features</title>
-    <p>Template note is like an ordinary note except that it is not shown in a note list and has a template bar at the top.</p>
+    <p>A template note is like an ordinary note except that it is not shown in note lists and has a template bar at the top.</p>
     <figure><title>Template note</title>
       <media type="image" src="figures/gnote-template-note.png" mime="image/png" style="right"></media><desc>Template note window</desc>
     </figure>
-    <p>Template bar has the following features:</p>
+    <p>The template bar has the following features:</p>
     <list>
-      <item><title>Convert to regular note</title><p>Press this button to turn the template into a regular note, visible in the list of notes. This action is similar to deleting template note.</p></item>
-      <item><title>Save Size</title><p>If you check this box, the size of newly created note will be identical to that of template note. When this checkbox is not checked, the window of new note is of default size.</p></item>
-      <item><title>Save Selection</title><p>If this box is checked, new notes will not only have the content of template note, but also the initial selection. Use this option if you want certain part of content in the new note to be initialy selected.</p></item>
-      <item><title>Save Title</title><p>This checkbox allows to base the title of new note on a title of template note. With this box checked, new note will have a title of template note with a unique number appended. Otherwise the default title will be used.</p></item>
+      <item><title>Convert to regular note</title><p>Press this button to turn the template into a regular note, visible in the list of notes. This action is similar to deleting a template note.</p></item>
+      <item><title>Save Size</title><p>If you check this box, the size of a newly created note will be identical to that of the template note. When this checkbox is not checked, new notes' windows will have the default size.</p></item>
+      <item><title>Save Selection</title><p>If this box is checked, new notes will have not only the content of the template note, but also its selection. Use this option if you want a certain part of the content in the new note to be initially selected.</p></item>
+      <item><title>Save Title</title><p>This checkbox lets you base the title of new notes on a template note's title. With this box checked, a new note will have the template note's title with a unique number appended. Otherwise the default title will be used.</p></item>
     </list>
   </section>
 

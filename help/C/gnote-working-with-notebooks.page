@@ -19,22 +19,22 @@
   </info>
 
   <title>Working With Notebooks</title>
-    <p>Notebooks allow you to group related notes together. You can add a note to a notebook in the main window or directly inside of a Note.</p>
+    <p>Notebooks let you group related notes together. You can add a note to a notebook in the main window or in the note editing view.</p>
 
     <section id="creating-notebooks"><title>Creating Notebooks</title>
-      <p>You can create new notebooks using one of the following methods</p>
+      <p>To create a new notebook:</p>
       <steps>
         <item>
-          <p>Click on application menu and select <gui>New Notebook</gui>.</p>
+          <p>Click on the application menu and select <gui>New Notebook</gui>.</p>
         </item>
         <item>
           <p>Enter a name for the new notebook.</p>
         </item>
       </steps>
-      <p>To create a new notebook context menu</p>
+      <p>Alternatively:</p>
       <steps>
         <item>
-          <p>In search mode, right click in the left hand box and choose <gui>New Notebook</gui>.</p>
+          <p>In the note overview, right click in the left hand pane and choose <gui>New Notebook</gui>.</p>
         </item>
         <item>
           <p>Enter a name for the new notebook.</p>
@@ -49,45 +49,44 @@
     </section>
 
     <section id="adding-notes-to-a-notebook"><title>Adding Notes to a Notebook</title>
-      <p>To add notes to a notebook, you can add a note from the main window or directly within a note.</p>
-      <p>To move an existing note from the main window use one of the following:</p>
+      <p>You can add a note to a notebook from the main window or directly within a note.</p>
+      <p>To add a note to a notebook from the main window, do one of the following:</p>
       <list>
-        <item><p>Drag the note(s) onto a notebook on the left using mouse.</p></item>
-        <item><p>Right click on a notebook and select <gui>New Note</gui> from context menu. A new note will be created and added to notebook.</p></item>
+        <item><p>Drag the note(s) onto a notebook on the left using the mouse.</p></item>
+        <item><p>Right click on a notebook and select <gui>New Note</gui> from the context menu. A new note will be created and added to the notebook.</p></item>
       </list>
       <p>As you type a note, you can add the note directly to an existing notebook using the <gui>Notebook</gui> button. The Notebook button is represented by the <media type="image" src="figures/notebook-icon.png" mime="image/png" style="right"></media> icon.</p>
       <figure>
         <title>Adding Notes to a Notebook</title>
         <media type="image" src="figures/add-to-notebook.png" mime="image/png" style="right"><p>Add to Notebook.</p></media>
       </figure>
-      <p>To remove note from notebook, use one of the following:</p>
+      <p>To remove a note from a notebook, use one of the following:</p>
       <list>
-        <item><p>Move note to <gui>Unfiled notes</gui> notebook in main window.</p></item>
-        <item><p>Select the <gui>No Notebook</gui> option from menu, presented when you press the <gui>Notebook</gui> button in opened note.</p></item>
+        <item><p>Move the note to <gui>Unfiled Notes</gui> in the main window.</p></item>
+        <item><p>Select the <gui>No Notebook</gui> option from the menu which appears when you press the <gui>Notebook</gui> button in an open note.</p></item>
       </list>
     </section>
 
-    <section id="creating-notebook-templates"><title>Creating Notebook Templates</title>
-      <p>After you create a notebook, you can create a template for each new note that you create in that notebook.</p>
+    <section id="creating-notebook-templates"><title>Creating a Template</title>
+      <p>After you create a notebook, you can create a template for new notes that you create in that notebook.</p>
       <steps>
-        <item><p>In main window right click on a Notebook that you have created and choose <gui>Open Template Note</gui>.</p>
+        <item><p>In the main window, right click on a notebook and choose <gui>Open Template Note</gui>.</p>
         </item>
-        <item><p>This will open a new note that will be used as the template. Any text typed in this note will appear in all notes created in this Notebook.</p></item>
+        <item><p>This will open a new template note. Any text typed in this note will appear in all notes created in this notebook.</p></item>
       </steps>
       <figure>
-        <title>Creating Notebook Template</title>
+        <title>Creating a Template</title>
         <media type="image" src="figures/note-template.png" mime="image/png" style="right"><p>Note Template.</p></media>
       </figure>
       <p>For more, see <link xref="gnote-template-notes"/>.</p>
     </section>
 
   <section id="deleting-a-notebook"><title>Deleting a Notebook</title>
-    <p>Deleting a notebook will not delete any of the notes which are currently inside the notebook. After deleting a notebook, the notes will not be associated with any notebook and can be seen by highlighting <gui>Unfiled Notes</gui> in the main window.</p>
-    <p>You can delete a notebook you have created by one of two methods:</p>
-    <p>To delete a notebook, go to search mode in main window and do one of the following:</p>
+    <p>Deleting a notebook will not delete any of the notes which are currently inside the notebook. After you delete a notebook, its notes will not be associated with any notebook and will appear in <gui>Unfiled Notes</gui> in the main window.</p>
+    <p>To delete a notebook, go to the main window and do one of the following:</p>
     <list>
       <item><p>Right click on a notebook and choose <gui>Delete Notebook</gui>.</p></item>
-      <item><p>Remove all notes from notebook. Notebook will be automatically removed on <app>Gnote</app> restart.</p></item>
+      <item><p>Remove all notes from a notebook. The notebook will be automatically removed the next time <app>Gnote</app> restarts.</p></item>
     </list>
     <figure>
       <title>Deleting notes from main window</title>
@@ -100,10 +99,10 @@
   <section id="special-notebooks"><title>Special Notebooks</title>
     <p><app>Gnote</app> has several special notebooks:</p>
     <list>
-      <item><p><gui>Active Notes</gui> - contains notes, that were opened in current <app>Gnote</app> session.</p></item>
-      <item><p><gui>All Notes</gui> - contains all notes, except templates.</p></item>
-      <item><p><gui>Pinned Notes</gui> - used to mark notes as important.</p></item>
-      <item><p><gui>Unfilled Notes</gui> - contains all notes that are not placed in a user created notebook.</p></item>
+      <item><p><gui>Active Notes</gui>: notes that have been opened in the current <app>Gnote</app> session</p></item>
+      <item><p><gui>All Notes</gui>: all notes except templates</p></item>
+      <item><p><gui>Pinned Notes</gui>: notes marked as important</p></item>
+      <item><p><gui>Unfiled Notes</gui>: all notes that are not in a user-created notebook</p></item>
     </list>
   </section>
 
