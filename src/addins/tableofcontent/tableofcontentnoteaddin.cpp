@@ -61,7 +61,7 @@ Gtk::ImageMenuItem * new_toc_menu_item ()
   Gtk::ImageMenuItem * menu_item = manage(new Gtk::ImageMenuItem ());
   menu_item->set_image(*manage(new Gtk::Image(Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_MENU)));
 
-  Gtk::AccelLabel *acclabel = manage(new Gtk::AccelLabel(_("Table of Content")));
+  Gtk::AccelLabel *acclabel = manage(new Gtk::AccelLabel(_("Table of Contents")));
   acclabel->set_alignment (Gtk::ALIGN_START);
   /* I don't have gtkmm-3.6, but I have gtk-3.6 */
   /* TO UNCOMMENT *///acclabel->set_accel (GDK_KEY_1, Gdk::CONTROL_MASK | Gdk::MOD1_MASK);
@@ -145,7 +145,7 @@ void TableofcontentNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_a
   // Action menu items, or nothing
   if (has_action_entries == false) {
     if (toc_menu->get_children().size() == 0) { // no toc items, and no action entries = empty menu
-      Gtk::MenuItem *item = manage(new Gtk::MenuItem(_("(empty table of content)")));
+      Gtk::MenuItem *item = manage(new Gtk::MenuItem(_("(empty table of contents)")));
       item->set_sensitive(false);
       item->show();
       toc_menu->append(*item);
@@ -172,7 +172,7 @@ void TableofcontentNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_a
     item->show ();
     toc_menu->append(*item);
 
-    item = manage(new Gtk::MenuItem (_("Table of Content Help")));
+    item = manage(new Gtk::MenuItem (_("Table of Contents Help")));
     item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentNoteAddin::on_toc_help_activated));
     item->show ();
     toc_menu->append(*item);
@@ -291,7 +291,7 @@ void TableofcontentNoteAddin::on_toc_popup_activated()
 void TableofcontentNoteAddin::on_toc_help_activated()
 {
   gnote::NoteWindow* window = get_note()->get_window();
-  gnote::utils::show_help("gnote", "addin-tableofcontent",
+  gnote::utils::show_help("gnote", "addin-tableofcontents",
     window->get_screen()->gobj(), dynamic_cast<Gtk::Window*>(window->host()));
 }
 
