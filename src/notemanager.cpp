@@ -521,7 +521,7 @@ namespace gnote {
     title = split_title_from_content (title, body);
       
     if (title.empty()) {
-      title = get_unique_name(_("New Note"), m_notes.size());
+      title = get_unique_name(_("New Note"), 1);
     }
 
     Note::Ptr template_note = get_or_create_template_note();
@@ -715,7 +715,7 @@ namespace gnote {
     std::string new_title(title);
     Tag::Ptr template_save_title = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
     if(template_note->contains_tag(template_save_title)) {
-      new_title = get_unique_name(template_note->get_title(), m_notes.size());
+      new_title = get_unique_name(template_note->get_title(), 1);
     }
 
     // Use the body from the template note
