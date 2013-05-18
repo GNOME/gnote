@@ -626,14 +626,14 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter & iter)
 
 int SearchNotesWidget::compare_titles(const Gtk::TreeIter & a, const Gtk::TreeIter & b)
 {
-  std::string title_a = (*a)[m_column_types.title];
-  std::string title_b = (*b)[m_column_types.title];
+  Glib::ustring title_a = std::string((*a)[m_column_types.title]);
+  Glib::ustring title_b = std::string((*b)[m_column_types.title]);
 
   if(title_a.empty() || title_b.empty()) {
     return -1;
   }
 
-  return title_a.compare(title_b);
+  return title_a.lowercase().compare(title_b.lowercase());
 }
 
 int SearchNotesWidget::compare_dates(const Gtk::TreeIter & a, const Gtk::TreeIter & b)

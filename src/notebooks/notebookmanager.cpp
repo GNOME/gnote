@@ -441,9 +441,7 @@ namespace gnote {
       a_name = a_name.lowercase();
       Glib::ustring b_name(notebook_b->get_name());
       b_name = b_name.lowercase();
-      return a_name== b_name
-          ? 0
-          : a_name<b_name ? -1 : 1;
+      return a_name.compare(b_name);
     }
     
     /// <summary>
