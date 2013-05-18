@@ -1329,6 +1329,7 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
 
     m_note_list_context_menu->add(*manage(new Gtk::SeparatorMenuItem));
     item = manage(new Gtk::MenuItem(_("_New Note"), true));
+    item->add_accelerator("activate", m_accel_group, GDK_KEY_N, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::new_note));
     m_note_list_context_menu->add(*item);
   }
