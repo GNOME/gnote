@@ -20,8 +20,6 @@
  */
 
 
-#include <string.h>
-
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/treemodelsort.h>
@@ -439,8 +437,13 @@ namespace gnote {
         return 1;
       }
 
-      return strcmp(notebook_a->get_name().c_str(), 
-                    notebook_b->get_name().c_str());
+      Glib::ustring a_name(notebook_a->get_name());
+      a_name = a_name.lowercase();
+      Glib::ustring b_name(notebook_b->get_name());
+      b_name = b_name.lowercase();
+      return a_name== b_name
+          ? 0
+          : a_name<b_name ? -1 : 1;
     }
     
     /// <summary>
