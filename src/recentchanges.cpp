@@ -53,6 +53,7 @@ namespace gnote {
     , m_window_menu_search(NULL)
     , m_window_menu_note(NULL)
     , m_window_menu_default(NULL)
+    , m_keybinder(get_accel_group())
   {
     set_default_size(450,400);
     set_resizable(true);
@@ -86,6 +87,8 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
     IGnote::obj().signal_quit
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));// to save size/pos
+    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window),
+                                GDK_KEY_W, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
 
     embed_widget(m_search_notes_widget);
 
@@ -620,6 +623,7 @@ namespace gnote {
       menu->append(*manage(new Gtk::SeparatorMenuItem));
     }
     Gtk::MenuItem *item = manage(new Gtk::MenuItem(_("_Close"), true));
+    item->add_accelerator("activate", get_accel_group(), GDK_KEY_W, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     item->signal_activate().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
     menu->append(*item);
     menu->property_attach_widget() = button;

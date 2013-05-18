@@ -104,6 +104,7 @@ private:
   Gtk::Menu          *m_window_menu_search;
   Gtk::Menu          *m_window_menu_note;
   Gtk::Menu          *m_window_menu_default;
+  utils::GlobalKeybinder m_keybinder;
 };
 
 
