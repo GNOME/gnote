@@ -179,6 +179,7 @@ namespace gnote {
     button->set_image(*image);
     button->signal_clicked().connect(
       boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu), button));
+    button->add_accelerator("activate", get_accel_group(), GDK_KEY_F10, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
     button->show_all();
     right_box->attach(*button, 1, 0, 1, 1);
     right_box->show();
