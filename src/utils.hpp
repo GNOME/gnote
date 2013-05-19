@@ -227,6 +227,7 @@ namespace gnote {
       : public Gtk::ToggleToolButton
     {
     public:
+      ToolMenuButton(Gtk::Widget & widget, Gtk::Menu *menu);
       ToolMenuButton(Gtk::Toolbar& toolbar, 
                      const Gtk::BuiltinStockID& stock_image, 
                      const Glib::ustring & label, Gtk::Menu * menu);
@@ -237,6 +238,7 @@ namespace gnote {
       virtual bool on_mnemonic_activate(bool group_cycling);
 
     private:
+      void _common_init();
       void _common_init(Gtk::Image& image, const Glib::ustring & l);
       // managed by gtkmm
       Gtk::Menu *m_menu;

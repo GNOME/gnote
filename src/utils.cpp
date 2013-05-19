@@ -738,6 +738,13 @@ namespace gnote {
       return false;
     }
 
+    ToolMenuButton::ToolMenuButton(Gtk::Widget & widget, Gtk::Menu *menu)
+      : Gtk::ToggleToolButton(widget)
+      ,  m_menu(menu)
+    {
+      _common_init();
+    }
+
     ToolMenuButton::ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
                                    const Glib::ustring & label, 
                                    Gtk::Menu * menu)
@@ -758,16 +765,21 @@ namespace gnote {
     }
 
 
+    void ToolMenuButton::_common_init()
+    {
+      property_can_focus() = true;
+      gtk_menu_attach_to_widget(m_menu->gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
+                                NULL);
+      m_menu->signal_deactivate().connect(sigc::mem_fun(*this, &ToolMenuButton::release_button));
+      show_all();
+    }
+
+
     void ToolMenuButton::_common_init(Gtk::Image& image, const Glib::ustring & label)
     {
       set_icon_widget(image);
       set_label_widget(*manage(new Gtk::Label(label, true)));
-      property_can_focus() = true;
-      gtk_menu_attach_to_widget(m_menu->gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
-                                NULL);
-//      menu.attach_to_widget(*this);
-      m_menu->signal_deactivate().connect(sigc::mem_fun(*this, &ToolMenuButton::release_button));
-      show_all();
+      _common_init();
     }
 
 
