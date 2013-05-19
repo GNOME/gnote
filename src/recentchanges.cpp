@@ -161,6 +161,7 @@ namespace gnote {
     box->attach(*left_box, 0, 0, 1, 1);
 
     m_embedded_toolbar.set_hexpand(true);
+    m_embedded_toolbar.set(0.5, 0.5, 0.0, 0.0);
     m_embedded_toolbar.show();
     box->attach(m_embedded_toolbar, 1, 0, 1, 1);
 
@@ -470,6 +471,8 @@ namespace gnote {
     }
     catch(std::bad_cast&) {
     }
+
+    m_embedded_toolbar.remove();
   }
 
   bool NoteRecentChanges::is_foreground(utils::EmbeddableWidget & widget)
@@ -585,6 +588,16 @@ namespace gnote {
     catch(std::bad_cast &) {
       m_search_button.set_active(false);
       m_search_button.hide();
+    }
+
+    try {
+      HasEmbeddableToolbar & toolbar_provider = dynamic_cast<HasEmbeddableToolbar&>(widget);
+      Gtk::Widget *tool_item = toolbar_provider.embeddable_toolbar();
+      if(tool_item) {
+        m_embedded_toolbar.add(*tool_item);
+      }
+    }
+    catch(std::bad_cast &) {
     }
   }
 

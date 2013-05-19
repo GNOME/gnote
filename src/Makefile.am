@@ -110,6 +110,7 @@ libgnote_la_SOURCES = \
 	itagmanager.hpp itagmanager.cpp \
 	importaddin.hpp importaddin.cpp \
 	mainwindow.hpp mainwindow.cpp \
+	mainwindowembeds.hpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebuffer.hpp notebuffer.cpp \
 	noteeditor.hpp noteeditor.cpp \
