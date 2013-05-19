@@ -92,7 +92,7 @@ private:
   Gtk::Alignment      m_search_box;
   Gtk::Grid           m_find_next_prev_box;
   Gtk::ToggleButton   m_search_button;
-  Gtk::Alignment      m_embeded_toolbar;
+  Gtk::Alignment      m_embedded_toolbar;
   Gtk::Grid           m_embed_box;
   Gtk::Button        *m_all_notes_button;
   Gtk::Button        *m_new_note_button;

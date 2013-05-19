@@ -160,9 +160,9 @@ namespace gnote {
     left_box->show();
     box->attach(*left_box, 0, 0, 1, 1);
 
-    m_embeded_toolbar.set_hexpand(true);
-    m_embeded_toolbar.show();
-    box->attach(m_embeded_toolbar, 1, 0, 1, 1);
+    m_embedded_toolbar.set_hexpand(true);
+    m_embedded_toolbar.show();
+    box->attach(m_embedded_toolbar, 1, 0, 1, 1);
 
     Gtk::Grid *right_box = manage(new Gtk::Grid);
     right_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
