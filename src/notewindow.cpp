@@ -23,6 +23,7 @@
 #endif
 
 #include <glibmm/i18n.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/separatortoolitem.h>
@@ -85,8 +86,7 @@ namespace gnote {
 
     m_plugin_menu = manage(make_plugin_menu());
 
-    m_toolbar = manage(make_toolbar());
-    m_toolbar->show();
+    m_embeddable_toolbar = manage(make_toolbar());
 
     m_template_widget = make_template_bar();
 
@@ -113,7 +113,6 @@ namespace gnote {
 
     set_focus_child(*m_editor);
 
-    pack_start(*m_toolbar, false, false, 0);
     pack_start(*m_template_widget, false, false, 0);
     pack_start(*m_editor_window, true, true, 0);
   }
@@ -257,6 +256,11 @@ namespace gnote {
     return get_find_handler().goto_previous_result();
   }
 
+  Gtk::Grid *NoteWindow::embeddable_toolbar()
+  {
+    return m_embeddable_toolbar;
+  }
+
 
     // Delete this Note.
     //
@@ -329,9 +333,12 @@ namespace gnote {
   // Add Link button, Font menu, Delete button to the window's
   // toolbar.
   //
-  Gtk::Toolbar *NoteWindow::make_toolbar()
+  Gtk::Grid *NoteWindow::make_toolbar()
   {
-    Gtk::Toolbar *tb = new Gtk::Toolbar();
+    Gtk::IconSize icon_size = Gtk::IconSize::from_name(gtk_icon_size_get_name(GTK_ICON_SIZE_MENU));
+
+    Gtk::Grid *grid = manage(new Gtk::Grid);
+    int grid_col = 0;
 
     m_pin_image = manage(new Gtk::Image);
     if(m_note.is_pinned()) {
@@ -343,12 +350,12 @@ namespace gnote {
 
     m_pin_button = manage(new Gtk::ToolButton(*m_pin_image, _("Pin")));
     m_pin_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
-    tb->insert(*m_pin_button, -1);
+    grid->attach(*m_pin_button, grid_col++, 0, 1, 1);
     notebooks::NotebookManager::obj().signal_note_pin_status_changed
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
     m_link_button = manage(new Gtk::ToolButton(
-                             *manage(new Gtk::Image (Gtk::Stock::JUMP_TO, tb->get_icon_size())),
+                             *manage(new Gtk::Image(Gtk::Stock::JUMP_TO, icon_size)),
                              _("Link")));
     m_link_button->set_use_underline(true);
     m_link_button->set_is_important(true);
@@ -357,45 +364,43 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteWindow::link_button_clicked));
     m_link_button->set_tooltip_text(_("Link selected text to a new note (Ctrl-L)"));
     m_link_button->show_all();
-    tb->insert(*m_link_button, -1);
+    grid->attach(*m_link_button, grid_col++, 0, 1, 1);
 
-    utils::ToolMenuButton *text_button = manage(new utils::ToolMenuButton(*tb,
-                                                  Gtk::Stock::SELECT_FONT,
-                                                  _("_Text"),
-                                                  m_text_menu));
+    utils::ToolMenuButton *text_button = manage(new utils::ToolMenuButton(
+        *manage(new Gtk::Image(Gtk::Stock::SELECT_FONT, icon_size)), _("_Text"), m_text_menu));
     text_button->set_use_underline(true);
     text_button->set_is_important(true);
     text_button->show_all();
-    tb->insert(*text_button, -1);
+    grid->attach(*text_button, grid_col++, 0, 1, 1);
     text_button->set_tooltip_text(_("Set properties of text"));
 
     utils::ToolMenuButton *plugin_button = Gtk::manage(
-      new utils::ToolMenuButton (*tb, Gtk::Stock::EXECUTE,
+      new utils::ToolMenuButton(*manage(new Gtk::Image(Gtk::Stock::EXECUTE, icon_size)),
                                  _("T_ools"),
                                  m_plugin_menu));
     plugin_button->set_use_underline(true);
     plugin_button->show_all();
-    tb->insert(*plugin_button, -1);
+    grid->attach(*plugin_button, grid_col++, 0, 1, 1);
     plugin_button->set_tooltip_text(_("Use tools on this note"));
 
-    tb->insert(*manage(new Gtk::SeparatorToolItem()), -1);
+    grid->attach(*manage(new Gtk::SeparatorToolItem()), grid_col++, 0, 1, 1);
 
     m_delete_button = manage(new Gtk::ToolButton(Gtk::Stock::DELETE));
     m_delete_button->set_use_underline(true);
     m_delete_button->signal_clicked().connect(
       sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
     m_delete_button->show_all();
-    tb->insert(*m_delete_button, -1);
+    grid->attach(*m_delete_button, grid_col++, 0, 1, 1);
     m_delete_button->set_tooltip_text(_("Delete this note"));
 
       // Don't allow deleting the "Start Here" note...
     if (m_note.is_special()) {
       m_delete_button->set_sensitive(false);
     }
-    tb->insert(*manage(new Gtk::SeparatorToolItem()), -1);
+    grid->attach(*manage(new Gtk::SeparatorToolItem()), grid_col++, 0, 1, 1);
 
-    tb->show_all();
-    return tb;
+    grid->show_all();
+    return grid;
   }
 
 

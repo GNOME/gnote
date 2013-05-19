@@ -66,11 +66,16 @@ namespace notebooks {
 
   void NotebookNoteAddin::initialize_tool_button()
   {
-    m_toolButton = Gtk::manage(
-      new gnote::utils::ToolMenuButton(*manage(new Gtk::Image(
-          IconManager::obj().get_icon(IconManager::NOTEBOOK, 22))), "",
-                                       m_menu));
-    m_toolButton->set_is_important(true);
+    gint icon_size = 16;
+    gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &icon_size, NULL);
+
+    Gtk::Grid *grid = manage(new Gtk::Grid);
+    grid->attach(*manage(new Gtk::Image(
+      IconManager::obj().get_icon(IconManager::NOTEBOOK, icon_size))),
+                 0, 0, 1, 1);
+    m_label_widget = manage(new Gtk::Label("try"));
+    grid->attach(*m_label_widget, 1, 0, 1, 1);
+    m_toolButton = Gtk::manage(new gnote::utils::ToolMenuButton(*grid, m_menu));
     m_toolButton->set_tooltip_text(_("Place this note into a notebook"));
 
     m_show_menu_cid = m_menu->signal_show()
@@ -183,11 +188,8 @@ namespace notebooks {
   {
     std::string labelText = (notebook ? notebook->get_name() : _("Notebook"));
     
-    Gtk::Label * l = dynamic_cast<Gtk::Label*>(m_toolButton->get_label_widget());
-    if (l) {
-      l->set_text(labelText);
-      m_toolButton->show_all();
-    }
+    m_label_widget->set_text(labelText);
+    m_toolButton->show_all();
   }
 
   void NotebookNoteAddin::update_menu()

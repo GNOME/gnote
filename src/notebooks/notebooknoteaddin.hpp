@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -63,6 +63,7 @@ namespace notebooks {
     void update_menu();
     void get_notebook_menu_items(std::list<NotebookMenuItem*> &);
     gnote::utils::ToolMenuButton  *m_toolButton;
+    Gtk::Label               *m_label_widget;
     Gtk::Menu                *m_menu;
     std::list<Gtk::MenuItem *> m_menu_items;
     Gtk::RadioButtonGroup     m_radio_group;

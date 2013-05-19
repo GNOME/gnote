@@ -25,8 +25,8 @@
 #define _NOTEWINDOW_HPP__
 
 #include <gtkmm/accelgroup.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/searchentry.h>
-#include <gtkmm/toolbar.h>
 #include <gtkmm/toolbutton.h>
 #include <gtkmm/menu.h>
 #include <gtkmm/checkmenuitem.h>
@@ -35,6 +35,7 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
+#include "mainwindowembeds.hpp"
 #include "note.hpp"
 #include "undo.hpp"
 #include "utils.hpp"
@@ -131,6 +132,7 @@ class NoteWindow
   : public Gtk::VBox
   , public utils::EmbeddableWidget
   , public utils::SearchableItem
+  , public HasEmbeddableToolbar
 {
 public:
   NoteWindow(Note &);
@@ -146,6 +148,9 @@ public:
   virtual bool goto_next_result();
   virtual bool goto_previous_result();
 
+  // use co-variant return
+  virtual Gtk::Grid *embeddable_toolbar();
+
   void set_size(int width, int height)
     {
       m_width = width;
@@ -159,10 +164,6 @@ public:
   Gtk::TextView * editor() const
     {
       return m_editor;
-    }
-  Gtk::Toolbar * toolbar() const
-    {
-      return m_toolbar;
     }
   Gtk::ToolButton * delete_button() const
     {
@@ -192,7 +193,7 @@ private:
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
   void update_link_button_sensitivity();
   void on_populate_popup(Gtk::Menu*);
-  Gtk::Toolbar * make_toolbar();
+  Gtk::Grid *make_toolbar();
   Gtk::Menu * make_plugin_menu();
   Gtk::Box * make_template_bar();
   void on_untemplate_button_click();
@@ -217,7 +218,7 @@ private:
   int                           m_x;
   int                           m_y;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
-  Gtk::Toolbar                 *m_toolbar;
+  Gtk::Grid                    *m_embeddable_toolbar;
   Gtk::Image                   *m_pin_image;
   Gtk::ToolButton              *m_pin_button;
   Gtk::ToolButton              *m_link_button;

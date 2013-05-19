@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -91,8 +91,10 @@ namespace gnote {
     for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
         iter != m_toolbar_items.end(); ++iter) {
       if ((iter->first->get_parent() == NULL) ||
-          (iter->first->get_parent() != window->toolbar())) {
-        window->toolbar()->insert (*(iter->first), iter->second);
+          (iter->first->get_parent() != window->embeddable_toolbar())) {
+        Gtk::Grid *grid = window->embeddable_toolbar();
+        int col = grid->get_children().size();
+        grid->attach(*(iter->first), col, 0, 1, 1);
       }
     }
   }
@@ -118,7 +120,8 @@ namespace gnote {
     m_toolbar_items [item] = position;
       
     if (m_note->is_opened()) {
-      get_window()->toolbar()->insert (*item, position);
+      Gtk::Grid *grid = get_window()->embeddable_toolbar();
+      grid->attach(*item, grid->get_children().size(), 0, 1, 1);
     }
   }
 
