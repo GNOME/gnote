@@ -18,33 +18,64 @@
  */
 
 
-#ifndef _MAINWINDOW_HPP_
-#define _MAINWINDOW_HPP_
-
 #include "mainwindowembeds.hpp"
-#include "note.hpp"
-#include "utils.hpp"
 
 
 namespace gnote {
 
-class MainWindow
-  : public utils::ForcedPresentWindow
-  , public EmbeddableWidgetHost
+void EmbeddableWidget::embed(EmbeddableWidgetHost *h)
 {
-public:
-  static MainWindow *get_owning(Gtk::Widget & widget);
-
-  explicit MainWindow(const std::string & title);
-
-  virtual void set_search_text(const std::string & value) = 0;
-  virtual void present_note(const Note::Ptr & note) = 0;
-  virtual void show_search_bar() = 0;
-  virtual void present_search() = 0;
-  virtual void new_note() = 0;
-};
-
+  //remove from previous host, if any
+  if(m_host) {
+    m_host->unembed_widget(*this);
+  }
+  m_host = h;
+  signal_embedded();
 }
 
-#endif
+void EmbeddableWidget::unembed()
+{
+  m_host = NULL;
+  signal_unembedded();
+}
+
+void EmbeddableWidget::foreground()
+{
+  signal_foregrounded();
+}
+
+void EmbeddableWidget::background()
+{
+  signal_backgrounded();
+}
+
+void EmbeddableWidget::hint_position(int &, int &)
+{
+}
+
+void EmbeddableWidget::hint_size(int &, int &)
+{
+}
+
+void EmbeddableWidget::size_internals()
+{
+}
+
+
+bool SearchableItem::supports_goto_result()
+{
+  return false;
+}
+
+bool SearchableItem::goto_next_result()
+{
+  return false;
+}
+
+bool SearchableItem::goto_previous_result()
+{
+  return false;
+}
+ 
+}
 

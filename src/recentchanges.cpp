@@ -246,7 +246,7 @@ namespace gnote {
     }
     else {
       m_search_box.hide();
-      utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+      SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
       if(searchable_widget) {
         searchable_widget->perform_search("");
       }
@@ -255,7 +255,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_find_next_button_clicked()
   {
-    utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+    SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
     if(searchable_widget) {
       searchable_widget->goto_next_result();
     }
@@ -263,7 +263,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_find_prev_button_clicked()
   {
-    utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+    SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
     if(searchable_widget) {
       searchable_widget->goto_previous_result();
     }
@@ -275,7 +275,7 @@ namespace gnote {
     m_search_entry.grab_focus();
     Glib::ustring text = m_search_entry.get_text();
     if(text != "") {
-      utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+      SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
       if(searchable_widget) {
         searchable_widget->perform_search(text);
       }
@@ -284,7 +284,7 @@ namespace gnote {
 
   void NoteRecentChanges::present_search()
   {
-    utils::EmbeddableWidget *current = currently_embedded();
+    EmbeddableWidget *current = currently_embedded();
     if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(current)) {
       return;
     }
@@ -340,7 +340,7 @@ namespace gnote {
     std::vector<Gtk::Widget*> current = m_embed_box.get_children();
     for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
         iter != current.end(); ++iter) {
-      utils::EmbeddableWidget *widget = dynamic_cast<utils::EmbeddableWidget*>(*iter);
+      EmbeddableWidget *widget = dynamic_cast<EmbeddableWidget*>(*iter);
       if(widget) {
         background_embedded(*widget);
       }
@@ -369,7 +369,7 @@ namespace gnote {
         on_close_window();
       }
       else {
-        utils::EmbeddableWidget *current_item = currently_embedded();
+        EmbeddableWidget *current_item = currently_embedded();
         if(current_item) {
           background_embedded(*current_item);
         }
@@ -391,11 +391,21 @@ namespace gnote {
     // Select "All Notes" in the notebooks list
     m_search_notes_widget.select_all_notes_notebook();
 
+    EmbeddableWidget *widget = NULL;
     if(m_embed_box.get_children().size() == 0 && m_embedded_widgets.size() > 0) {
-      foreground_embedded(**m_embedded_widgets.rbegin());
+      widget = *m_embedded_widgets.rbegin();
+      foreground_embedded(*widget);
     }
-    std::vector<Gtk::Widget*> embedded = m_embed_box.get_children();
+
     MainWindow::on_show();
+
+    if(widget) {
+      int x = 0, y = 0;
+      widget->hint_position(x, y);
+      if(x && y) {
+        move(x, y);
+      }
+    }
   }
 
   void NoteRecentChanges::set_search_text(const std::string & value)
@@ -403,23 +413,29 @@ namespace gnote {
     m_search_entry.set_text(value);
   }
 
-  void NoteRecentChanges::embed_widget(utils::EmbeddableWidget & widget)
+  void NoteRecentChanges::embed_widget(EmbeddableWidget & widget)
   {
     if(std::find(m_embedded_widgets.begin(), m_embedded_widgets.end(), &widget) == m_embedded_widgets.end()) {
       widget.embed(this);
       m_embedded_widgets.push_back(&widget);
     }
-    utils::EmbeddableWidget *current = currently_embedded();
-    if(current && current != &widget) {
+    EmbeddableWidget *current = currently_embedded();
+    if(current == &widget) {
+      return;
+    }
+    if(current) {
       background_embedded(*current);
     }
-    foreground_embedded(widget);
+
+   if(get_visible()) {
+      foreground_embedded(widget);
+    }
   }
 
-  void NoteRecentChanges::unembed_widget(utils::EmbeddableWidget & widget)
+  void NoteRecentChanges::unembed_widget(EmbeddableWidget & widget)
   {
     bool show_other = false;
-    std::list<utils::EmbeddableWidget*>::iterator iter = std::find(
+    std::list<EmbeddableWidget*>::iterator iter = std::find(
       m_embedded_widgets.begin(), m_embedded_widgets.end(), &widget);
     if(iter != m_embedded_widgets.end()) {
       if(is_foreground(**iter)) {
@@ -439,7 +455,7 @@ namespace gnote {
     }
   }
 
-  void NoteRecentChanges::foreground_embedded(utils::EmbeddableWidget & widget)
+  void NoteRecentChanges::foreground_embedded(EmbeddableWidget & widget)
   {
     try {
       if(currently_embedded() == &widget) {
@@ -447,8 +463,25 @@ namespace gnote {
       }
       Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
       m_embed_box.add(wid);
-      widget.foreground();
       wid.show();
+      widget.foreground();
+
+      bool maximized = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+        Preferences::MAIN_WINDOW_MAXIMIZED);
+      if(get_realized()) {
+        //if window is showing, use actual state
+        maximized = get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED;
+      }
+      int width = 0, height = 0;
+      widget.hint_size(width, height);
+      if(width && height) {
+        set_default_size(width, height);
+        if(!maximized && get_visible()) {
+          get_window()->resize(width, height);
+        }
+      }
+      widget.size_internals();
+ 
       update_toolbar(widget);
       on_embedded_name_changed(widget.get_name());
       m_current_embedded_name_slot = widget.signal_name_changed
@@ -458,7 +491,7 @@ namespace gnote {
     }
   }
 
-  void NoteRecentChanges::background_embedded(utils::EmbeddableWidget & widget)
+  void NoteRecentChanges::background_embedded(EmbeddableWidget & widget)
   {
     try {
       if(currently_embedded() != &widget) {
@@ -475,12 +508,12 @@ namespace gnote {
     m_embedded_toolbar.remove();
   }
 
-  bool NoteRecentChanges::is_foreground(utils::EmbeddableWidget & widget)
+  bool NoteRecentChanges::is_foreground(EmbeddableWidget & widget)
   {
     std::vector<Gtk::Widget*> current = m_embed_box.get_children();
     for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
         iter != current.end(); ++iter) {
-      if(dynamic_cast<utils::EmbeddableWidget*>(*iter) == &widget) {
+      if(dynamic_cast<EmbeddableWidget*>(*iter) == &widget) {
         return true;
       }
     }
@@ -488,10 +521,10 @@ namespace gnote {
     return false;
   }
 
-  utils::EmbeddableWidget *NoteRecentChanges::currently_embedded()
+  EmbeddableWidget *NoteRecentChanges::currently_embedded()
   {
     std::vector<Gtk::Widget*> children = m_embed_box.get_children();
-    return children.size() ? dynamic_cast<utils::EmbeddableWidget*>(children[0]) : NULL;
+    return children.size() ? dynamic_cast<EmbeddableWidget*>(children[0]) : NULL;
   }
 
   bool NoteRecentChanges::on_map_event(GdkEventAny *evt)
@@ -524,7 +557,7 @@ namespace gnote {
 
     std::string search_text = get_search_text();
     if(search_text.empty()) {
-      utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+      SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
       if(searchable_widget) {
         searchable_widget->perform_search(search_text);
       }
@@ -553,7 +586,7 @@ namespace gnote {
       return;
     }
 
-    utils::SearchableItem *searchable_widget = dynamic_cast<utils::SearchableItem*>(currently_embedded());
+    SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
     if(searchable_widget) {
       searchable_widget->perform_search(search_text);
     }
@@ -566,14 +599,14 @@ namespace gnote {
     return text;
   }
 
-  void NoteRecentChanges::update_toolbar(utils::EmbeddableWidget & widget)
+  void NoteRecentChanges::update_toolbar(EmbeddableWidget & widget)
   {
     bool search = dynamic_cast<SearchNotesWidget*>(&widget) == &m_search_notes_widget;
     m_all_notes_button->set_visible(!search);
     m_new_note_button->set_visible(search);
 
     try {
-      utils::SearchableItem & searchable_item = dynamic_cast<utils::SearchableItem&>(widget);
+      SearchableItem & searchable_item = dynamic_cast<SearchableItem&>(widget);
       m_search_button.show();
       if(searchable_item.supports_goto_result()) {
         m_find_next_prev_box.show();

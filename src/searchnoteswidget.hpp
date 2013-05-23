@@ -31,7 +31,7 @@
 #include <gtkmm/scrolledwindow.h>
 #include <sigc++/sigc++.h>
 
-#include "utils.hpp"
+#include "mainwindowembeds.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookstreeview.hpp"
 
@@ -40,8 +40,8 @@ namespace gnote {
 
 class SearchNotesWidget
   : public Gtk::VBox
-  , public utils::EmbeddableWidget
-  , public utils::SearchableItem
+  , public EmbeddableWidget
+  , public SearchableItem
 {
 public:
   SearchNotesWidget(NoteManager & m);
@@ -49,6 +49,9 @@ public:
   virtual std::string get_name() const;
   virtual void foreground();
   virtual void background();
+  virtual void hint_position(int & x, int & y);
+  virtual void hint_size(int & width, int & height);
+  virtual void size_internals();
 
   virtual void perform_search(const std::string & search_text);
   void select_all_notes_notebook();
@@ -62,7 +65,6 @@ private:
   void perform_search();
   void restore_matches_window();
   Gtk::Widget *make_notebooks_pane();
-  void restore_position();
   void save_position();
   void notebook_pixbuf_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter &);
   void notebook_text_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter &);

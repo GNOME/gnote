@@ -23,15 +23,15 @@
 
 #include <gtkmm/treeview.h>
 
+#include "mainwindowembeds.hpp"
 #include "notemanager.hpp"
-#include "utils.hpp"
 
 
 namespace statistics {
 
 class StatisticsWidget
   : public Gtk::TreeView
-  , public gnote::utils::EmbeddableWidget
+  , public gnote::EmbeddableWidget
 {
 public:
   StatisticsWidget(gnote::NoteManager & nm);

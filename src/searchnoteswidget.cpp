@@ -87,8 +87,6 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   m_matches_window.add(*m_tree);
   m_matches_window.show();
 
-  restore_position();
-
   pack_start(m_hpaned, true, true, 0);
 
   // Update on changes to notes
@@ -202,7 +200,6 @@ void SearchNotesWidget::restore_matches_window()
   if(m_no_matches_box && m_hpaned.get_child2() == m_no_matches_box) {
     m_hpaned.remove(*m_no_matches_box);
     m_hpaned.add2(m_matches_window);
-    restore_position();
   }
 }
 
@@ -258,44 +255,6 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   return sw;
 }
 
-void SearchNotesWidget::restore_position()
-{
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
-    .get_schema_settings(Preferences::SCHEMA_GNOTE);
-  int x = settings->get_int(Preferences::SEARCH_WINDOW_X_POS);
-  int y = settings->get_int(Preferences::SEARCH_WINDOW_Y_POS);
-  int width = settings->get_int(Preferences::SEARCH_WINDOW_WIDTH);
-  int height = settings->get_int(Preferences::SEARCH_WINDOW_HEIGHT);
-  int pos = settings->get_int(Preferences::SEARCH_WINDOW_SPLITTER_POS);
-  bool maximized = settings->get_boolean(Preferences::MAIN_WINDOW_MAXIMIZED);
-
-  if((width == 0) || (height == 0)) {
-    return;
-  }
-  Gtk::Window *window = get_owning_window();
-  if(!window) {
-    return;
-  }
-
-  if(window->get_realized()) {
-    //if window is showing, use actual state
-    maximized = window->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED;
-  }
-
-  window->set_default_size(width, height);
-  if(!m_initial_position_restored) {
-    window->move(x, y);
-    m_initial_position_restored = true;
-  }
-
-  if(!maximized && window->get_visible()) {
-    window->get_window()->resize(width, height);
-  }
-  if(pos) {
-    m_hpaned.set_position(pos);
-  }
-}
-
 void SearchNotesWidget::save_position()
 {
   int x;
@@ -303,7 +262,7 @@ void SearchNotesWidget::save_position()
   int width;
   int height;
 
-  utils::EmbeddableWidgetHost *current_host = host();
+  EmbeddableWidgetHost *current_host = host();
   if(!current_host || !current_host->running()) {
     return;
   }
@@ -1406,8 +1365,7 @@ void SearchNotesWidget::on_delete_notebook()
 
 void SearchNotesWidget::foreground()
 {
-  utils::EmbeddableWidget::foreground();
-  restore_position();
+  EmbeddableWidget::foreground();
   Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
   if(win) {
     win->add_accel_group(m_accel_group);
@@ -1416,11 +1374,37 @@ void SearchNotesWidget::foreground()
 
 void SearchNotesWidget::background()
 {
-  utils::EmbeddableWidget::background();
+  EmbeddableWidget::background();
   save_position();
   Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
   if(win) {
     win->remove_accel_group(m_accel_group);
+  }
+}
+
+void SearchNotesWidget::hint_position(int & x, int & y)
+{
+  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    .get_schema_settings(Preferences::SCHEMA_GNOTE);
+  x = settings->get_int(Preferences::SEARCH_WINDOW_X_POS);
+  y = settings->get_int(Preferences::SEARCH_WINDOW_Y_POS);
+}
+
+void SearchNotesWidget::hint_size(int & width, int & height)
+{
+  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    .get_schema_settings(Preferences::SCHEMA_GNOTE);
+  width = settings->get_int(Preferences::SEARCH_WINDOW_WIDTH);
+  height = settings->get_int(Preferences::SEARCH_WINDOW_HEIGHT);
+}
+
+void SearchNotesWidget::size_internals()
+{
+  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    .get_schema_settings(Preferences::SCHEMA_GNOTE);
+  int pos = settings->get_int(Preferences::SEARCH_WINDOW_SPLITTER_POS);
+  if(pos) {
+    m_hpaned.set_position(pos);
   }
 }
 

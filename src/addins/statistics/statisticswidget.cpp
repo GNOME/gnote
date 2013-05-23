@@ -174,7 +174,7 @@ std::string StatisticsWidget::get_name() const
 
 void StatisticsWidget::foreground()
 {
-  gnote::utils::EmbeddableWidget::foreground();
+  gnote::EmbeddableWidget::foreground();
   StatisticsModel::Ptr model = StatisticsModel::Ptr::cast_static(get_model());
   model->active(true);
   model->update();
@@ -183,7 +183,7 @@ void StatisticsWidget::foreground()
 
 void StatisticsWidget::background()
 {
-  gnote::utils::EmbeddableWidget::background();
+  gnote::EmbeddableWidget::background();
   StatisticsModel::Ptr::cast_static(get_model())->active(false);
 }
 

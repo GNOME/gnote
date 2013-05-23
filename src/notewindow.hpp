@@ -130,8 +130,8 @@ private:
 
 class NoteWindow 
   : public Gtk::VBox
-  , public utils::EmbeddableWidget
-  , public utils::SearchableItem
+  , public EmbeddableWidget
+  , public SearchableItem
   , public HasEmbeddableToolbar
 {
 public:
@@ -142,6 +142,9 @@ public:
   void set_name(const std::string & name);
   virtual void foreground();
   virtual void background();
+  virtual void hint_position(int & x, int & y);
+  virtual void hint_size(int & width, int & height);
+  virtual void size_internals();
 
   virtual void perform_search(const std::string & text);
   virtual bool supports_goto_result();

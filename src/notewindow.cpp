@@ -143,31 +143,21 @@ namespace gnote {
   void NoteWindow::foreground()
   {
     //addins may add accelarators, so accel group must be there
-    utils::EmbeddableWidgetHost *current_host = host();
+    EmbeddableWidgetHost *current_host = host();
     Gtk::Window *parent = dynamic_cast<Gtk::Window*>(current_host);
     if(parent) {
       add_accel_group(*parent);
     }
 
-    utils::EmbeddableWidget::foreground();
+    EmbeddableWidget::foreground();
     if(parent) {
-      parent->set_default_size(m_width, m_height);
-      Glib::RefPtr<Gdk::Window> parent_window = parent->get_window();
-      if(parent_window != 0 && (parent_window->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0
-         && parent->get_visible()) {
-        parent_window->resize(m_width, m_height);
-      }
-      if(m_x >= 0 && m_y >= 0 && !current_host->running()) {
-        parent->move(m_x, m_y);
-      }
       parent->set_focus(*m_editor);
     }
-    m_editor->scroll_to(m_editor->get_buffer()->get_insert());
   }
 
   void NoteWindow::background()
   {
-    utils::EmbeddableWidget::background();
+    EmbeddableWidget::background();
     Gtk::Window *parent = dynamic_cast<Gtk::Window*>(host());
     if(!parent) {
       return;
@@ -190,6 +180,23 @@ namespace gnote {
         m_note.queue_save(NO_CHANGE);
       }
     }
+  }
+
+  void NoteWindow::hint_position(int & x, int & y)
+  {
+    x = m_x;
+    y = m_y;
+  }
+
+  void NoteWindow::hint_size(int & width, int & height)
+  {
+    width = m_width;
+    height = m_height;
+  }
+
+  void NoteWindow::size_internals()
+  {
+    m_editor->scroll_to(m_editor->get_buffer()->get_insert());
   }
 
   void NoteWindow::add_accel_group(Gtk::Window & window)

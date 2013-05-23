@@ -245,69 +245,6 @@ namespace gnote {
       void release_button();        
     };
 
-    class EmbeddableWidget;
-    class EmbeddableWidgetHost
-    {
-    public:
-      virtual void embed_widget(EmbeddableWidget &) = 0;
-      virtual void unembed_widget(EmbeddableWidget &) = 0;
-      virtual void foreground_embedded(EmbeddableWidget &) = 0;
-      virtual void background_embedded(EmbeddableWidget &) = 0;
-      virtual bool running() = 0;
-    };
-
-    class EmbeddableWidget
-    {
-    public:
-      EmbeddableWidget() : m_host(NULL) {}
-      virtual std::string get_name() const = 0;
-      virtual void embed(EmbeddableWidgetHost *h)
-        {
-          //remove from previous host, if any
-          if(m_host) {
-            m_host->unembed_widget(*this);
-          }
-          m_host = h;
-          signal_embedded();
-        }
-      virtual void unembed()
-        {
-          m_host = NULL;
-          signal_unembedded();
-        }
-      virtual void foreground()
-        {
-          signal_foregrounded();
-        }
-      virtual void background()
-        {
-          signal_backgrounded();
-        }
-      EmbeddableWidgetHost *host() const
-        {
-          return m_host;
-        }
-
-      sigc::signal<void, const std::string &> signal_name_changed;
-      sigc::signal<void> signal_embedded;
-      sigc::signal<void> signal_unembedded;
-      sigc::signal<void> signal_foregrounded;
-      sigc::signal<void> signal_backgrounded;
-    private:
-      EmbeddableWidgetHost *m_host;
-    };
-
-
-    class SearchableItem
-    {
-    public:
-      virtual void perform_search(const std::string & search_text) = 0;
-      virtual bool supports_goto_result();
-      virtual bool goto_next_result();
-      virtual bool goto_previous_result();
-    };
-
-
   }
 }
 

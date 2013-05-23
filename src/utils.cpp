@@ -815,23 +815,6 @@ namespace gnote {
     {
       set_active(false);
     }
-    
-
-    bool SearchableItem::supports_goto_result()
-    {
-      return false;
-    }
-
-    bool SearchableItem::goto_next_result()
-    {
-      return false;
-    }
-
-    bool SearchableItem::goto_previous_result()
-    {
-      return false;
-    }
-    
 
   }
 }

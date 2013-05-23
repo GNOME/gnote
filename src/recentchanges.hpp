@@ -49,10 +49,10 @@ public:
   virtual void new_note();
   virtual void present_search();
 
-  virtual void embed_widget(utils::EmbeddableWidget &);
-  virtual void unembed_widget(utils::EmbeddableWidget &);
-  virtual void foreground_embedded(utils::EmbeddableWidget &);
-  virtual void background_embedded(utils::EmbeddableWidget &);
+  virtual void embed_widget(EmbeddableWidget &);
+  virtual void unembed_widget(EmbeddableWidget &);
+  virtual void foreground_embedded(EmbeddableWidget &);
+  virtual void background_embedded(EmbeddableWidget &);
   virtual bool running()
     {
       return m_mapped;
@@ -67,8 +67,8 @@ private:
   void on_close_window();
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
-  bool is_foreground(utils::EmbeddableWidget &);
-  utils::EmbeddableWidget *currently_embedded();
+  bool is_foreground(EmbeddableWidget &);
+  EmbeddableWidget *currently_embedded();
   Gtk::Toolbar *make_toolbar();
   void make_search_box();
   void on_embedded_name_changed(const std::string & name);
@@ -76,7 +76,7 @@ private:
   void on_entry_activated();
   void entry_changed_timeout();
   std::string get_search_text();
-  void update_toolbar(utils::EmbeddableWidget & widget);
+  void update_toolbar(EmbeddableWidget & widget);
   void on_show_window_menu(Gtk::Button *button);
   void on_search_button_toggled();
   void on_find_next_button_clicked();
@@ -97,7 +97,7 @@ private:
   Gtk::Button        *m_all_notes_button;
   Gtk::Button        *m_new_note_button;
   Gtk::SearchEntry    m_search_entry;
-  std::list<utils::EmbeddableWidget*> m_embedded_widgets;
+  std::list<EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
   utils::InterruptableTimeout *m_entry_changed_timeout;
