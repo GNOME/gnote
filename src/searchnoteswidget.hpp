@@ -25,7 +25,7 @@
 
 #include <set>
 
-#include <gtkmm/box.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/paned.h>
 #include <gtkmm/scrolledwindow.h>
@@ -39,7 +39,7 @@
 namespace gnote {
 
 class SearchNotesWidget
-  : public Gtk::VBox
+  : public Gtk::HPaned
   , public EmbeddableWidget
   , public SearchableItem
 {
@@ -150,9 +150,8 @@ private:
   Glib::RefPtr<Gtk::Action> m_delete_note_action;
   Glib::RefPtr<Gtk::Action> m_delete_notebook_action;
   RecentSearchColumnTypes m_find_combo_columns;
-  Gtk::HPaned m_hpaned;
   Gtk::ScrolledWindow m_matches_window;
-  Gtk::HBox *m_no_matches_box;
+  Gtk::Grid *m_no_matches_box;
   notebooks::NotebooksTreeView *m_notebooksTree;
   sigc::connection m_on_notebook_selection_changed_cid;
   std::set<Tag::Ptr>  m_selected_tags;
