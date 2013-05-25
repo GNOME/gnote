@@ -457,9 +457,13 @@ void SearchNotesWidget::select_all_notes_notebook()
   if(!model) {
     return;
   }
-  Gtk::TreeIter iter = model->children().begin();
-  if(iter) {
-    m_notebooksTree->get_selection()->select(iter);
+  for(Gtk::TreeIter iter = model->children().begin(); iter; ++iter) {
+    notebooks::Notebook::Ptr notebook;
+    iter->get_value(0, notebook);
+    if(std::tr1::dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook) != NULL) {
+      m_notebooksTree->get_selection()->select(iter);
+      break;
+    }
   }
 }
 
@@ -1045,8 +1049,7 @@ void SearchNotesWidget::add_matches_column()
 
 bool SearchNotesWidget::show_all_search_results()
 {
-  Gtk::TreeIter iter = m_notebooksTree->get_model()->children().begin();
-  m_notebooksTree->get_selection()->select(iter);
+  select_all_notes_notebook();
   return false;
 }
 
