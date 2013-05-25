@@ -129,7 +129,7 @@ private:
 };
 
 class NoteWindow 
-  : public Gtk::VBox
+  : public Gtk::Grid
   , public EmbeddableWidget
   , public SearchableItem
   , public HasEmbeddableToolbar
@@ -198,7 +198,7 @@ private:
   void on_populate_popup(Gtk::Menu*);
   Gtk::Grid *make_toolbar();
   Gtk::Menu * make_plugin_menu();
-  Gtk::Box * make_template_bar();
+  Gtk::Grid * make_template_bar();
   void on_untemplate_button_click();
   void on_save_size_check_button_toggled();
   void on_save_selection_check_button_toggled();
@@ -231,7 +231,7 @@ private:
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;
   Gtk::ToolButton              *m_delete_button;
-  Gtk::Box                     *m_template_widget;
+  Gtk::Grid                    *m_template_widget;
   Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;
   Gtk::CheckButton             *m_save_title_check_button;

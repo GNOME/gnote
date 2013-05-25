@@ -60,8 +60,7 @@ namespace gnote {
 
 
   NoteWindow::NoteWindow(Note & note)
-    : Gtk::VBox(false, 2)
-    , m_note(note)
+    : m_note(note)
     , m_name(note.get_title())
     , m_height(360)
     , m_width(450)
@@ -109,12 +108,14 @@ namespace gnote {
     m_editor_window->property_hscrollbar_policy().set_value(Gtk::POLICY_AUTOMATIC);
     m_editor_window->property_vscrollbar_policy().set_value(Gtk::POLICY_AUTOMATIC);
     m_editor_window->add(*m_editor);
+    m_editor_window->set_hexpand(true);
+    m_editor_window->set_vexpand(true);
     m_editor_window->show();
 
     set_focus_child(*m_editor);
 
-    pack_start(*m_template_widget, false, false, 0);
-    pack_start(*m_editor_window, true, true, 0);
+    attach(*m_template_widget, 0, 0, 1, 1);
+    attach(*m_editor_window, 0, 1, 1, 1);
   }
 
 
@@ -423,9 +424,9 @@ namespace gnote {
   }
 
 
-  Gtk::Box * NoteWindow::make_template_bar()
+  Gtk::Grid * NoteWindow::make_template_bar()
   {
-    Gtk::VBox * bar = manage(new Gtk::VBox());
+    Gtk::Grid * bar = manage(new Gtk::Grid);
 
     Gtk::Label * infoLabel = manage(new Gtk::Label(
       _("This note is a template note. It determines the default content of regular notes, and will not show up in the note menu or search window.")));
@@ -446,11 +447,11 @@ namespace gnote {
     m_save_title_check_button->set_active(m_note.contains_tag(m_template_save_title_tag));
     m_save_title_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_title_check_button_toggled));
 
-    bar->pack_start(*infoLabel);
-    bar->pack_start(*untemplateButton);
-    bar->pack_start(*m_save_size_check_button);
-    bar->pack_start(*m_save_selection_check_button);
-    bar->pack_start(*m_save_title_check_button);
+    bar->attach(*infoLabel, 0, 0, 1, 1);
+    bar->attach(*untemplateButton, 0, 1, 1, 1);
+    bar->attach(*m_save_size_check_button, 0, 2, 1, 1);
+    bar->attach(*m_save_selection_check_button, 0, 3, 1, 1);
+    bar->attach(*m_save_title_check_button, 0, 4, 1, 1);
 
     if(m_note.contains_tag(m_template_tag)) {
       bar->show_all();
