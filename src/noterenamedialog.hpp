@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,10 @@
 #include <tr1/memory>
 
 #include <glibmm.h>
-#include <gtkmm.h>
+#include <gtkmm/grid.h>
+#include <gtkmm/liststore.h>
+#include <gtkmm/radiobutton.h>
+#include <gtkmm/treeview.h>
 
 #include "note.hpp"
 
@@ -109,7 +112,7 @@ private:
   Gtk::RadioButton m_always_show_dlg_radio;
   Gtk::RadioButton m_always_rename_radio;
   Gtk::RadioButton m_never_rename_radio;
-  Gtk::VBox m_notes_box;
+  Gtk::Grid m_notes_box;
 };
 
 }

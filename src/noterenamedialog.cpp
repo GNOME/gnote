@@ -27,6 +27,7 @@
 #include <utility>
 
 #include <glibmm/i18n.h>
+#include <gtkmm/expander.h>
 
 #include "ignote.hpp"
 #include "notewindow.hpp"
@@ -132,7 +133,6 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
                           true)
   , m_never_rename_radio(_("Never rename _links"),
                          true)
-  , m_notes_box(false, 5)
 {
   set_default_response(Gtk::RESPONSE_CANCEL);
   set_border_width(10);
@@ -216,26 +216,27 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
                     &NoteRenameDialog::on_select_all_button_clicked),
       false));
 
-  Gtk::HButtonBox * const notes_button_box
-                            = Gtk::manage(new Gtk::HButtonBox(
-                                                Gtk::BUTTONBOX_END,
-                                                5));
-  notes_button_box->add(m_select_none_button);
-  notes_button_box->add(m_select_all_button);
+  Gtk::Grid * const notes_button_box = manage(new Gtk::Grid);
+  notes_button_box->set_column_spacing(5);
+  notes_button_box->attach(m_select_none_button, 0, 0, 1, 1);
+  notes_button_box->attach(m_select_all_button, 1, 0, 1, 1);
+  notes_button_box->set_hexpand(true);
 
   Gtk::ScrolledWindow * const notes_scroll
                                 = Gtk::manage(
                                          new Gtk::ScrolledWindow());
   notes_scroll->add(*notes_view);
+  notes_scroll->set_hexpand(true);
+  notes_scroll->set_vexpand(true);
 
-  m_notes_box.pack_start(*notes_scroll, Gtk::PACK_EXPAND_WIDGET, 0);
-  m_notes_box.pack_start(*notes_button_box, false, true, 0);
+  m_notes_box.attach(*notes_scroll, 0, 0, 1, 1);
+  m_notes_box.attach(*notes_button_box, 0, 1, 1, 1);
 
   Gtk::Expander * const advanced_expander
                           = Gtk::manage(new Gtk::Expander(
                                               _("Ad_vanced"), true));
-  Gtk::VBox * const expand_box = Gtk::manage(new Gtk::VBox(false, 0));
-  expand_box->pack_start(m_notes_box, Gtk::PACK_EXPAND_WIDGET, 0);
+  Gtk::Grid * const expand_box = Gtk::manage(new Gtk::Grid);
+  expand_box->attach(m_notes_box, 0, 0, 1, 1);
 
   m_always_show_dlg_radio.signal_clicked().connect(
     sigc::mem_fun(*this,
@@ -253,9 +254,9 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
     sigc::mem_fun(*this,
                   &NoteRenameDialog::on_always_rename_clicked));
 
-  expand_box->pack_start(m_always_show_dlg_radio, false, true, 0);
-  expand_box->pack_start(m_never_rename_radio, false, true, 0);
-  expand_box->pack_start(m_always_rename_radio, false, true, 0);
+  expand_box->attach(m_always_show_dlg_radio, 0, 1, 1, 1);
+  expand_box->attach(m_never_rename_radio, 0, 2, 1, 1);
+  expand_box->attach(m_always_rename_radio, 0, 3, 1, 1);
   advanced_expander->add(*expand_box);
   vbox->pack_start(*advanced_expander, true, true, 5);
 
