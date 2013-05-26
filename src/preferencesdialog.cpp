@@ -520,11 +520,12 @@ namespace gnote {
   Gtk::Widget *PreferencesDialog::make_sync_pane()
   {
     Gtk::Grid *vbox = new Gtk::Grid;
-    vbox->set_column_spacing(4);
+    vbox->set_row_spacing(4);
     vbox->set_border_width(8);
     int vbox_row = 0;
 
     Gtk::Grid *hbox = manage(new Gtk::Grid);
+    hbox->set_column_spacing(6);
     int hbox_col = 0;
 
     Gtk::Label *label = manage(new Gtk::Label(_("Ser_vice:"), true));
