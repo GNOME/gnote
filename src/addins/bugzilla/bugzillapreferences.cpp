@@ -54,10 +54,12 @@ namespace bugzilla {
   }
 
   BugzillaPreferences::BugzillaPreferences(gnote::NoteManager &)
-    : Gtk::VBox(false, 12)
   {
     _init_static();
     last_opened_dir = Glib::get_home_dir();
+
+    set_row_spacing(12);
+    int row = 0;
 
     Gtk::Label *l = manage(new Gtk::Label (_("You can use any bugzilla just by dragging links "
                                    "into notes.  If you want a special icon for "
@@ -65,7 +67,7 @@ namespace bugzilla {
     l->property_wrap() = true;
     l->property_xalign() = 0;
 
-    pack_start(*l, false, false, 0);
+    attach(*l, 0, row++, 1, 1);
 
     icon_store = Gtk::ListStore::create(m_columns);
     icon_store->set_sort_column(m_columns.host, Gtk::SORT_ASCENDING);
@@ -103,8 +105,10 @@ namespace bugzilla {
     sw->property_width_request() = 300;
     sw->set_policy (Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
     sw->add (*icon_tree);
+    sw->set_hexpand(true);
+    sw->set_vexpand(true);
 
-    pack_start(*sw, true, true, 0);
+    attach(*sw, 0, row++, 1, 1);
 
     add_button = manage(new Gtk::Button (Gtk::Stock::ADD));
     add_button->signal_clicked().connect(
@@ -121,7 +125,7 @@ namespace bugzilla {
 
     hbutton_box->pack_start(*add_button);
     hbutton_box->pack_start(*remove_button);
-    pack_start(*hbutton_box, false, false, 0);
+    attach(*hbutton_box, 0, row++, 1, 1);
 
     show_all ();
   }
@@ -191,7 +195,7 @@ namespace bugzilla {
 
   void BugzillaPreferences::on_realize()
   {
-    Gtk::VBox::on_realize();
+    Gtk::Grid::on_realize();
 
     update_icon_store();
   }
@@ -240,10 +244,12 @@ namespace bugzilla {
     // Extra Widget
     Gtk::Label *l = manage(new Gtk::Label (_("_Host name:"), true));
     Gtk::Entry *host_entry = manage(new Gtk::Entry ());
+    host_entry->set_hexpand(true);
     l->set_mnemonic_widget(*host_entry);
-    Gtk::HBox *hbox = manage(new Gtk::HBox (false, 6));
-    hbox->pack_start (*l, false, false, 0);
-    hbox->pack_start (*host_entry, true, true, 0);
+    Gtk::Grid *hbox = manage(new Gtk::Grid);
+    hbox->set_column_spacing(6);
+    hbox->attach(*l, 0, 0, 1, 1);
+    hbox->attach(*host_entry, 1, 0, 1, 1);
     hbox->show_all ();
 
     dialog.set_extra_widget(*hbox);

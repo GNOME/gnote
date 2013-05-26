@@ -24,8 +24,8 @@
 #define __BUGZILLA_PREFERENCES_HPP_
 
 #include <gdkmm/pixbuf.h>
-#include <gtkmm/box.h>
 #include <gtkmm/button.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/treemodelcolumn.h>
 #include <gtkmm/treeview.h>
@@ -40,7 +40,7 @@ namespace bugzilla {
 
 
 class BugzillaPreferences
-  : public Gtk::VBox
+  : public Gtk::Grid
 {
 public:
   BugzillaPreferences(gnote::NoteManager &);
