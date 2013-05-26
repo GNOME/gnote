@@ -611,20 +611,13 @@ namespace gnote {
     }
     Gtk::Grid *autosyncBox = manage(new Gtk::Grid);
     autosyncBox->set_column_spacing(5);
-    // Translators: This is and the next string go together.
-    // Together they look like "Automatically sync in background every [_] minutes",
-    // where "[_]" is a GtkSpinButton.
-    m_autosync_check = manage(new Gtk::CheckButton(_("Automaticall_y sync in background every"), true));
+    m_autosync_check = manage(new Gtk::CheckButton(_("Automatical background s_ync interval (minutes)"), true));
     m_autosync_check->set_hexpand(true);
     m_autosync_spinner = manage(new Gtk::SpinButton(1));
     m_autosync_spinner->set_range(5, 1000);
     m_autosync_spinner->set_value(timeout >= 5 ? timeout : 10);
     m_autosync_spinner->set_increments(1, 5);
     m_autosync_spinner->set_hexpand(true);
-    // Translators: See above comment for details on
-    // this string.
-    Gtk::Label *autosyncExtraText = manage(new Gtk::Label(_("minutes")));
-    autosyncExtraText->set_hexpand(true);
     m_autosync_check->set_active(timeout >= 5);
     m_autosync_spinner->set_sensitive(timeout >= 5);
     m_autosync_check->signal_toggled()
@@ -634,7 +627,6 @@ namespace gnote {
 
     autosyncBox->attach(*m_autosync_check, 0, 0, 1, 1);
     autosyncBox->attach(*m_autosync_spinner, 1, 0, 1, 1);
-    autosyncBox->attach(*autosyncExtraText, 2, 0, 1, 1);
     autosyncBox->set_hexpand(true);
     vbox->attach(*autosyncBox, 0, vbox_row++, 1, 1);
 
