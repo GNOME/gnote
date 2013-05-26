@@ -28,6 +28,7 @@
 #include <gdkmm/pixbuf.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/dialog.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/image.h>
 #include <gtkmm/menu.h>
 #include <gtkmm/messagedialog.h>
@@ -100,7 +101,7 @@ namespace gnote {
       void set_extra_widget(Gtk::Widget *);
     private:
       Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
-      Gtk::VBox *m_extra_widget_vbox;
+      Gtk::Grid *m_extra_widget_vbox;
       Gtk::Widget *m_extra_widget;
       Gtk::Image *m_image;
 
