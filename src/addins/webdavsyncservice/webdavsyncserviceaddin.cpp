@@ -80,6 +80,8 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(EventHandler req
   m_password_entry->signal_changed().connect(requiredPrefChanged);
   add_row(table, m_password_entry, _("_Password:"), 2);
 
+  table->set_hexpand(true);
+  table->set_vexpand(false);
   table->show_all();
   return table;
 }
