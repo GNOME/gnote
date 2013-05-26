@@ -118,6 +118,8 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
                 Gtk::EXPAND | Gtk::FILL,
                 0, 0);
 
+  table->set_hexpand(true);
+  table->set_vexpand(false);
   table->show_all();
   return table;
 }
