@@ -25,7 +25,6 @@
 #include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
-#include <gtkmm/box.h>
 #include <gtkmm/main.h>
 #include <gtkmm/menuitem.h>
 #include <gtkmm/separatormenuitem.h>
@@ -75,17 +74,18 @@ namespace gnote {
   {
     set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE, 16))));
     if(show_pin) {
-      Gtk::HBox *box = manage(new Gtk::HBox(false, 0));
+      Gtk::Grid *box = manage(new Gtk::Grid);
       Gtk::Widget *child = get_child();
       Gtk::Container::remove(*child);
-      box->pack_start(*child, true, true, 0);
+      child->set_hexpand(true);
+      box->attach(*child, 0, 0, 1, 1);
       add(*box);
       box->show();
 
       m_pinned = note->is_pinned();
       m_pin_img = manage(new Gtk::Image(m_pinned ? get_pindown_icon() : get_pinup_icon()));
       m_pin_img->show();
-      box->pack_start(*m_pin_img, false, false, 0);
+      box->attach(*m_pin_img, 1, 0, 1, 1);
     }
   }
 
