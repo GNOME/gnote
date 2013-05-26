@@ -26,7 +26,7 @@
 namespace noteoftheday {
 
 class NoteOfTheDayPreferences
-  : public Gtk::VBox
+  : public Gtk::Grid
 {
 public:
 

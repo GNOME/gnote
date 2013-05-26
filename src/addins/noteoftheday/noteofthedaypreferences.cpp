@@ -31,21 +31,22 @@
 namespace noteoftheday {
 
 NoteOfTheDayPreferences::NoteOfTheDayPreferences(gnote::NoteManager & manager)
-  : Gtk::VBox(false, 12)
-  , m_open_template_button(_("_Open Today: Template"), true)
+  : m_open_template_button(_("_Open Today: Template"), true)
   , m_label(_("Change the <span weight=\"bold\">Today: Template</span> "
               "note to customize the text that new Today notes have."))
   , m_note_manager(manager)
 {
+  set_row_spacing(12);
   m_label.set_line_wrap(true);
   m_label.set_use_markup(true);
-  pack_start(m_label, true, true, 0);
+  m_label.set_vexpand(true);
+  attach(m_label, 0, 0, 1, 1);
 
   m_open_template_button.set_use_underline(true);
   m_open_template_button.signal_clicked().connect(
       sigc::mem_fun(*this,
                     &NoteOfTheDayPreferences::open_template_button_clicked));
-  pack_start(m_open_template_button, false, false, 0);
+  attach(m_open_template_button, 0, 1, 1, 1);
 
   show_all();
 }
