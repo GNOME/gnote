@@ -54,9 +54,12 @@ namespace inserttimestamp {
 
 
   InsertTimestampPreferences::InsertTimestampPreferences(gnote::NoteManager &)
-    : Gtk::VBox(false, 12)
   {
     _init_static();
+
+    set_row_spacing(12);
+    int row = 0;
+
     // Get current values
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
     std::string dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
@@ -68,12 +71,12 @@ namespace inserttimestamp {
                                                  "or use your own.")));
     label->property_wrap() = true;
     label->property_xalign() = 0;
-    pack_start (*label);
+    attach(*label, 0, row++, 1, 1);
 
     // Use Selected Format
     Gtk::RadioButtonGroup group;
     selected_radio = manage(new Gtk::RadioButton (group, _("Use _Selected Format"), true));
-    pack_start (*selected_radio);
+    attach(*selected_radio, 0, row++, 1, 1);
 
     // 1st column (visible): formatted date
     // 2nd column (not visible): date format
@@ -89,7 +92,9 @@ namespace inserttimestamp {
 
     scroll = manage(new Gtk::ScrolledWindow());
     scroll->set_shadow_type(Gtk::SHADOW_IN);
-    pack_start (*scroll);
+    scroll->set_hexpand(true);
+    scroll->set_vexpand(true);
+    attach(*scroll, 0, row++, 1, 1);
 
     tv = manage(new Gtk::TreeView (store));
     tv->set_headers_visible(false);
@@ -98,14 +103,15 @@ namespace inserttimestamp {
     scroll->add (*tv);
 
     // Use Custom Format
-    Gtk::HBox *customBox = manage(new Gtk::HBox (false, 12));
-    pack_start (*customBox);
+    Gtk::Grid *customBox = manage(new Gtk::Grid);
+    customBox->set_column_spacing(12);
+    attach(*customBox, 0, row++, 1, 1);
 
     custom_radio = manage(new Gtk::RadioButton (group, _("_Use Custom Format"), true));
-    customBox->pack_start (*custom_radio);
+    customBox->attach(*custom_radio, 0, 0, 1, 1);
 
     custom_entry = manage(new Gtk::Entry());
-    customBox->pack_start (*custom_entry);
+    customBox->attach(*custom_entry, 1, 0, 1, 1);
 
     sharp::PropertyEditor *  entryEditor = new sharp::PropertyEditor(
       settings, INSERT_TIMESTAMP_FORMAT, *custom_entry);
@@ -117,8 +123,8 @@ namespace inserttimestamp {
     for(iter = store->children().begin();
         iter != store->children().end(); ++iter) {
 
-      const Gtk::TreeRow & row(*iter);
-      std::string value = row[m_columns.format];
+      const Gtk::TreeRow & tree_row(*iter);
+      std::string value = tree_row[m_columns.format];
       if (dateFormat == value) {
         // Found format in list
         useCustom = false;

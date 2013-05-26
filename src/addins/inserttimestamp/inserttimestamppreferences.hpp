@@ -23,8 +23,8 @@
 #define __INSERTTIMESTAMP_PREFERENCES_HPP_
 
 
-#include <gtkmm/box.h>
 #include <gtkmm/entry.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/scrolledwindow.h>
@@ -38,7 +38,7 @@ extern const char * SCHEMA_INSERT_TIMESTAMP;
 extern const char * INSERT_TIMESTAMP_FORMAT;
 
 class InsertTimestampPreferences
-  : public Gtk::VBox
+  : public Gtk::Grid
 {
 public:
   InsertTimestampPreferences(gnote::NoteManager &);
