@@ -112,7 +112,7 @@ private:
   std::map<std::string, Gtk::TreeIter> m_sync_addin_iters;
   Gtk::ComboBox *m_sync_addin_combo;
   sync::SyncServiceAddin *m_selected_sync_addin;
-  Gtk::VBox   *m_sync_addin_prefs_container;
+  Gtk::Grid   *m_sync_addin_prefs_container;
   Gtk::Widget *m_sync_addin_prefs_widget;
   Gtk::Button *m_reset_sync_addin_button;
   Gtk::Button *m_save_sync_addin_button;
