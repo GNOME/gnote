@@ -20,8 +20,6 @@
 
 #include <glibmm/i18n.h>
 
-#include <gtkmm/stock.h>
-
 #include "sharp/string.hpp"
 #include "backlinksnoteaddin.hpp"
 #include "backlinkmenuitem.hpp"
@@ -38,9 +36,6 @@ BacklinksModule::BacklinksModule()
 
 
 BacklinksNoteAddin::BacklinksNoteAddin()
-  : m_menu_item(NULL)
-  , m_menu(NULL)
-  , m_submenu_built(false)
 {
 }
 
@@ -57,51 +52,20 @@ void BacklinksNoteAddin::shutdown ()
 
 void BacklinksNoteAddin::on_note_opened ()
 {
-	m_menu = manage(new Gtk::Menu());
-  m_menu->signal_hide().connect(
-    sigc::mem_fun(*this, &BacklinksNoteAddin::on_menu_hidden));
-  m_menu->show_all ();
-  m_menu_item = manage(new Gtk::ImageMenuItem (
-                       _("What links here?")));
-  m_menu_item->set_image(*manage(new Gtk::Image(Gtk::Stock::JUMP_TO, 
-                                                Gtk::ICON_SIZE_MENU)));
-  m_menu_item->set_submenu(*m_menu);
-  m_menu_item->signal_activate().connect(
-    sigc::mem_fun(*this, &BacklinksNoteAddin::on_menu_item_activated));
-  m_menu_item->show ();
-  add_plugin_menu_item (m_menu_item);
+  Glib::RefPtr<Gtk::Action> action = BacklinkAction::create(
+    sigc::mem_fun(*this, &BacklinksNoteAddin::update_menu));
+  add_note_action(action, 100);
 }
 
-void BacklinksNoteAddin::on_menu_item_activated()
-{
-  if(m_submenu_built) {
-    return;
-  }
-  update_menu();
-}
-
-
-void BacklinksNoteAddin::on_menu_hidden()
-{
-	// FIXME: Figure out how to have this function be called only when
-  // the whole Tools menu is collapsed so that if a user keeps
-  // toggling over the "What links here?" menu item, it doesn't
-  // keep forcing the submenu to rebuild.
-
-  // Force the submenu to rebuild next time it's supposed to show
-  m_submenu_built = false;
-}
-
-
-void BacklinksNoteAddin::update_menu()
+void BacklinksNoteAddin::update_menu(Gtk::Menu *menu)
 {
   //
   // Clear out the old list
   //
-  std::vector<Gtk::Widget*> menu_items = m_menu->get_children();
+  std::vector<Gtk::Widget*> menu_items = menu->get_children();
   for(std::vector<Gtk::Widget*>::reverse_iterator iter = menu_items.rbegin();
       iter != menu_items.rend(); ++iter) {
-    m_menu->remove(**iter);
+    menu->remove(**iter);
   }
 
   //
@@ -113,18 +77,16 @@ void BacklinksNoteAddin::update_menu()
       iter != items.end(); ++iter) {
     BacklinkMenuItem * item(*iter);
     item->show_all();
-    m_menu->append (*item);
+    menu->append (*item);
   }
 
   // If nothing was found, add in a "dummy" item
-  if (m_menu->get_children().size() == 0) {
+  if(menu->get_children().size() == 0) {
     Gtk::MenuItem *blank_item = manage(new Gtk::MenuItem(_("(none)")));
     blank_item->set_sensitive(false);
     blank_item->show_all ();
-    m_menu->append (*blank_item);
+    menu->append(*blank_item);
   }
-
-  m_submenu_built = true;
 }
 
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,6 +28,25 @@
 #include "note.hpp"
 
 namespace backlinks {
+
+class BacklinkAction
+  : public Gtk::Action
+{
+public:
+  static Glib::RefPtr<Gtk::Action> create(const sigc::slot<void, Gtk::Menu*> & slot);
+
+  virtual Gtk::Widget *create_menu_item_vfunc();
+protected:
+  virtual void on_activate();
+private:
+  BacklinkAction(const sigc::slot<void, Gtk::Menu*> & slot);
+  void on_menu_hidden();
+  void update_menu();
+
+  Gtk::Menu *m_menu;
+  bool m_submenu_built;
+  sigc::slot<void, Gtk::Menu*> m_update_menu_slot;
+};
 
 class BacklinkMenuItem
   : public Gtk::ImageMenuItem

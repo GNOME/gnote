@@ -57,14 +57,9 @@ public:
   virtual void shutdown ();
   virtual void on_note_opened ();
 private:
-  void on_menu_item_activated();
-  void on_menu_hidden();
-  void update_menu();
+  void update_menu(Gtk::Menu *menu);
   void get_backlink_menu_items(std::list<BacklinkMenuItem*> & items);
   bool check_note_has_match(const gnote::Note::Ptr &, const std::string &);
-  Gtk::ImageMenuItem *m_menu_item;
-  Gtk::Menu          *m_menu;
-  bool                m_submenu_built;
 };
 
 }
