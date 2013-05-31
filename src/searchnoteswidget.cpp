@@ -29,6 +29,7 @@
 #include <gtkmm/stock.h>
 
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "iconmanager.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -1401,6 +1402,16 @@ void SearchNotesWidget::size_internals()
   if(pos) {
     set_position(pos);
   }
+}
+
+std::vector<Glib::RefPtr<Gtk::Action> > SearchNotesWidget::get_widget_actions()
+{
+  return IActionManager::obj().get_main_window_search_actions();
+}
+
+sigc::signal<void> & SearchNotesWidget::signal_actions_changed()
+{
+  return IActionManager::obj().signal_main_window_search_actions_changed;
 }
 
 }

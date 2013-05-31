@@ -42,6 +42,7 @@ class SearchNotesWidget
   : public Gtk::HPaned
   , public EmbeddableWidget
   , public SearchableItem
+  , public HasActions
 {
 public:
   SearchNotesWidget(NoteManager & m);
@@ -52,8 +53,10 @@ public:
   virtual void hint_position(int & x, int & y);
   virtual void hint_size(int & width, int & height);
   virtual void size_internals();
-
   virtual void perform_search(const std::string & search_text);
+  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions();
+  virtual sigc::signal<void> & signal_actions_changed();
+
   void select_all_notes_notebook();
   void new_note();
   void delete_selected_notes();
