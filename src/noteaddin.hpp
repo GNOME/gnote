@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -105,12 +105,14 @@ public:
       return m_note->manager();
     }
   void on_note_opened_event(Note & );
-  void add_plugin_menu_item (Gtk::MenuItem *item);
+  void add_note_action(const Glib::RefPtr<Gtk::Action> & action, int order);
+  void add_plugin_menu_item(Gtk::MenuItem *item);
   void add_tool_item (Gtk::ToolItem *item, int position);
   void add_text_menu_item (Gtk::MenuItem * item);
 private:
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
+  std::list<std::string>        m_note_actions;
   std::list<Gtk::MenuItem*>     m_tools_menu_items;
   std::list<Gtk::MenuItem*>     m_text_menu_items;
   typedef std::map<Gtk::ToolItem*, int> ToolItemMap;

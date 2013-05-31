@@ -44,6 +44,10 @@ namespace gnote {
   void NoteAddin::dispose(bool disposing)
   {
     if (disposing) {
+      for(std::list<std::string>::const_iterator iter = m_note_actions.begin();
+          iter != m_note_actions.end(); ++iter) {
+        get_window()->remove_widget_action(*iter);
+      }
       for(std::list<Gtk::MenuItem*>::const_iterator iter = m_tools_menu_items.begin();
           iter != m_tools_menu_items.end(); ++iter) {
         delete *iter;
@@ -99,6 +103,15 @@ namespace gnote {
     }
   }
 
+  void NoteAddin::add_note_action(const Glib::RefPtr<Gtk::Action> & action, int order)
+  {
+    if(is_disposing()) {
+      throw sharp::Exception("Plugin is disposing already");
+    }
+
+    m_note_actions.push_back(action->get_name());
+    get_window()->add_widget_action(action, order);
+  }
 
   void NoteAddin::add_plugin_menu_item (Gtk::MenuItem *item)
   {
