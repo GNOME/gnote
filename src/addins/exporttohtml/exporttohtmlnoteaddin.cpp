@@ -26,7 +26,6 @@
 #include <libxslt/extensions.h>
 
 #include <glibmm/i18n.h>
-#include <gtkmm/stock.h>
 
 #include "sharp/exception.hpp"
 #include "sharp/files.hpp"
@@ -72,12 +71,11 @@ void ExportToHtmlNoteAddin::shutdown()
 
 void ExportToHtmlNoteAddin::on_note_opened()
 {
-	Gtk::ImageMenuItem *item =  manage(new Gtk::ImageMenuItem (_("Export to HTML")));
-  item->set_image(*manage(new Gtk::Image (Gtk::Stock::SAVE, Gtk::ICON_SIZE_MENU)));
-  item->signal_activate().connect(
+  Glib::RefPtr<Gtk::Action> action = Gtk::Action::create("ExportToHtmlAction", _("Export to HTML"),
+                                                         _("Export note to HTML"));
+  action->signal_activate().connect(
     sigc::mem_fun(*this, &ExportToHtmlNoteAddin::export_button_clicked));
-  item->show ();
-  add_plugin_menu_item (item);
+  add_note_action(action, 200);
 }
 
 
