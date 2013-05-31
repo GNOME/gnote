@@ -329,23 +329,6 @@ namespace gnote {
     return get_main_window_actions(m_main_window_search_actions);
   }
 
-  void ActionManager::add_main_window_note_action(const Glib::RefPtr<Gtk::Action> & action, int order)
-  {
-    add_main_window_action(m_main_window_note_actions, action, order);
-    signal_main_window_note_actions_changed();
-  }
-
-  void ActionManager::remove_main_window_note_action(const std::string & name)
-  {
-    remove_main_window_action(m_main_window_note_actions, name);
-    signal_main_window_note_actions_changed();
-  }
-
-  std::vector<Glib::RefPtr<Gtk::Action> > ActionManager::get_main_window_note_actions()
-  {
-    return get_main_window_actions(m_main_window_note_actions);
-  }
-
   void ActionManager::add_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions,
                                              const Glib::RefPtr<Gtk::Action> & action, int order)
   {

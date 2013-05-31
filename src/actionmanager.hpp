@@ -70,9 +70,6 @@ public:
   virtual void add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order);
   virtual void remove_main_window_search_action(const std::string & name);
   virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_search_actions();
-  virtual void add_main_window_note_action(const Glib::RefPtr<Gtk::Action> & action, int order);
-  virtual void remove_main_window_note_action(const std::string & name);
-  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_note_actions();
 private:
   void make_app_actions();
   void make_app_menu_items();
@@ -110,7 +107,6 @@ private:
   typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
   AppMenuItemMultiMap m_app_menu_items;
   std::map<int, Glib::RefPtr<Gtk::Action> > m_main_window_search_actions;
-  std::map<int, Glib::RefPtr<Gtk::Action> > m_main_window_note_actions;
 };
 
 
