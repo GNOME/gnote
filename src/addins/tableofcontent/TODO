@@ -1,10 +1,25 @@
 TODO for Add-in: Table of Content
 =================================
 
+== Now
 
-- On Ctrl-1/2 toggle, toggle only B/L/H tags, not all tags
-  (this is a bug!)
-  ex: within all fixed width text, setting a header, the header must remain also fixed width
+- header --> heading, also in code
+- rename files before 3.10, tableofcontent_S_
+
+- Ctrl-1/2 Ctrl-Alt-1 has no effect, before toc is opened once
+  gnote bug?
+
+- check GFDL usage in:
+      help/C/gnote-addin-tableofcontent.page:
+      FIXME: is this true? (no invariant, no front, no back?)
+      FIXME: does the statement have to show in the rendered document?
+      FIXME: is this true? Is there a (GNOME? Yelp?) common GFDL topic?
+
+- add a screenshot to the help page (?)
+
+
+
+== Later
 
 - Huge is not huge enough
     There is little visual difference between large and huge
@@ -17,33 +32,21 @@ TODO for Add-in: Table of Content
     Could also be: general config options for font sizes/factor (for S/N/L/H)
     Could also be: allow any sizes <size:n>, with n = factor (not only S/N/L/H)
 
+- When no headers, still show the note title in toc
+  this is usefull to jump to the top of a long (unstructured) note
+
+
+
+== Maybe
+
 - Highlight the header when jumping to it
     ==> More visual, especially when the header does not scroll up to the head of the window
     remove highlight as soon as cursor moved
     (like search results, for example)
 
-- When no headers, still show the note title in toc
-  this is usefull to jump to the top of a long (unstructured) note
-
-- Check all FIXMEs, and more code cleanup
-
-
-== Maybe
-
 - Undo as a single user action, when setting headers
     Note: tomboy/gnote handles poorly undo/redo,
     this item may need to upgrade the undo system
-
-- When entering header text, stop formatting on 'enter'
-  UC: 1. cursor at beginning of a line
-      2. Ctrl-1/2
-      3. enter header title
-      4. press 'enter'
-      --> currently: if you keep typing text, the new line keep being bold+huge/large
-      --> wanted: stop formatting as a header.
-      /!\ this conflicts with a user who actually *wants* to type bold+huge/large *text* with new lines
-      ==> when entering a header, to move back to text formatting: arrow down, or Ctrl-1/2
-          TO CHECK: does the later actually works?
 
 - Set where the toc menu item appears in the Tools menu
     --> next to "What Links Here?"
@@ -73,6 +76,16 @@ TODO for Add-in: Table of Content
       3   Ctrl+3   "underline"           ""                   "  •"
 
   Todo: make code generic + (g)settings + preference UI + help topic
+
+- Print/export the table of content
+  if Table of Content is enabled, it could be added to the content when printing or exporting (to HTML)
+  HTML export:
+    - add toc below title
+    - mark headers as H2 and H3
+  Print
+    - add toc below title
+    - print to PDF (?)
+
 
 
 == Maybe not
@@ -104,5 +117,7 @@ TODO for Add-in: Table of Content
 	Ctrl-shift-B-H
 	(update: I don't remember what it's meant to do! Need to check Tomboy mailinglist)
     (update: I think it's from the time where Ctrl-1 would set the whole line(s) where the cursor or selection is. So these shortcuts would set the whole line(s) with corresponding formatting tags)
+    --> format the whole line as... (or lineS if several are selected)
     Then we could have Ctrl-Shift-1 and Ctrl-Shift-2
     Though I disabled this because of some misfunction(?) (or a just bug?)(?)
+

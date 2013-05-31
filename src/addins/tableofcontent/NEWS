@@ -5,10 +5,20 @@ NEWS for Add-in: Table of Content
  update NEWS + .desktop version/enabled=false + help topic status/pkgversion ==> commit -m "version x.y")
 
 
+== 0.10
+- fix: header-2 arrow, 2 chars does not match with some fonts.
+       Use a single char one.
+- fix: toggling Header 1/2 must preserve other tags.
+- new: Ctrl-1/2 toggle header for the complete line(s) (that include the selection)
+       (bug #700612)
+- fix: language update (s/header/heading/, etc.)
+
 == 0.9
 - renamed labels "Level 1 Header" to "Header Level 1" (resp. 2)
+- help topic major update
 - set help topic status to "candidate"
-- typo in .desktop description
+- updated description in .desktop
+- TODO major update from my local notes, see: Todo, Maybe and Maybe not
 - code: general code review, various minor updates in code, including:
   - add-in description in copyright headers
   - various code comments

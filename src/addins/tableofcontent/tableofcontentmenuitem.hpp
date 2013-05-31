@@ -1,6 +1,6 @@
 /*
- * "Table of Content" is a Note add-in for Gnote.
- *  It lists Note's table of content in a menu.
+ * "Table of Contents" is a Note add-in for Gnote.
+ *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
  *

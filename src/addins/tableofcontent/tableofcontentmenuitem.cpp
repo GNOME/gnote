@@ -1,6 +1,6 @@
 /*
- * "Table of Content" is a Note add-in for Gnote.
- *  It lists Note's table of content in a menu.
+ * "Table of Contents" is a Note add-in for Gnote.
+ *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
  *
@@ -44,9 +44,9 @@ TableofcontentMenuItem::TableofcontentMenuItem (
      |[] NOTE TITLE    | <---- Title     == note icon  + bold note title
      | > Header 1      | <---- Level_1   == arrow icon + header title
      | > Header 1      |
-     |   └→ header 2   | <---- Level_2   == (no icon)  + indent string + header title
-     |   └→ header 2   |
-     |   └→ header 2   |
+     |   → header 2    | <---- Level_2   == (no icon)  + indent string + header title
+     |   → header 2    |
+     |   → header 2    |
      | > Header 1      |
      +-----------------+
    */
@@ -63,7 +63,7 @@ TableofcontentMenuItem::TableofcontentMenuItem (
     set_label(header);
   }
   else if (header_level == Header::Level_2) {
-    set_label("└→  " + header);
+    set_label("→  " + header);
   }
 }
 
