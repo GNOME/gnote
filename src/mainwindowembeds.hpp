@@ -81,6 +81,14 @@ public:
   virtual Gtk::Widget *embeddable_toolbar() = 0;
 };
 
+
+class HasActions
+{
+public:
+  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions() = 0;
+  virtual sigc::signal<void> & signal_actions_changed() = 0;
+};
+
 }
 
 

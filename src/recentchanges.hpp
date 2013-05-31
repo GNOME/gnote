@@ -77,7 +77,7 @@ private:
   void entry_changed_timeout();
   std::string get_search_text();
   void update_toolbar(EmbeddableWidget & widget);
-  void on_show_window_menu(Gtk::Button *button);
+  void on_show_window_menu();
   void on_search_button_toggled();
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
@@ -96,13 +96,14 @@ private:
   Gtk::Grid           m_embed_box;
   Gtk::Button        *m_all_notes_button;
   Gtk::Button        *m_new_note_button;
+  Gtk::Button        *m_window_actions_button;
   Gtk::SearchEntry    m_search_entry;
   std::list<EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
+  sigc::connection    m_current_embedded_actions_slot;
   utils::InterruptableTimeout *m_entry_changed_timeout;
-  Gtk::Menu          *m_window_menu_search;
-  Gtk::Menu          *m_window_menu_note;
+  Gtk::Menu          *m_window_menu_embedded;
   Gtk::Menu          *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
 };
