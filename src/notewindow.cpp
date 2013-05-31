@@ -269,6 +269,43 @@ namespace gnote {
     return m_embeddable_toolbar;
   }
 
+  std::vector<Glib::RefPtr<Gtk::Action> > NoteWindow::get_widget_actions()
+  {
+    std::vector<Glib::RefPtr<Gtk::Action> > res;
+    for(std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = m_widget_actions.begin();
+        iter != m_widget_actions.end(); ++iter) {
+      res.push_back(iter->second);
+    }
+    return res;
+  }
+
+  sigc::signal<void> & NoteWindow::signal_actions_changed()
+  {
+    return m_signal_actions_changed;
+  }
+
+  void NoteWindow::add_widget_action(const Glib::RefPtr<Gtk::Action> & action, int order)
+  {
+    std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = m_widget_actions.find(order);
+    while(iter != m_widget_actions.end()) {
+      iter = m_widget_actions.find(++order);
+    }
+    m_widget_actions[order] = action;
+    m_signal_actions_changed();
+  }
+
+  void NoteWindow::remove_widget_action(const std::string & name)
+  {
+    for(std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = m_widget_actions.begin();
+        iter != m_widget_actions.end(); ++iter) {
+      if(iter->second->get_name() == name) {
+        m_widget_actions.erase(iter);
+        break;
+      }
+    }
+    m_signal_actions_changed();
+  }
+
 
     // Delete this Note.
     //

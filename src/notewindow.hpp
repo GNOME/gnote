@@ -133,6 +133,7 @@ class NoteWindow
   , public EmbeddableWidget
   , public SearchableItem
   , public HasEmbeddableToolbar
+  , public HasActions
 {
 public:
   NoteWindow(Note &);
@@ -153,6 +154,11 @@ public:
 
   // use co-variant return
   virtual Gtk::Grid *embeddable_toolbar();
+
+  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions();
+  virtual sigc::signal<void> & signal_actions_changed();
+  void add_widget_action(const Glib::RefPtr<Gtk::Action> & action, int order);
+  void remove_widget_action(const std::string & name);
 
   void set_size(int width, int height)
     {
@@ -238,6 +244,9 @@ private:
 
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;
+
+  std::map<int, Glib::RefPtr<Gtk::Action> > m_widget_actions;
+  sigc::signal<void> m_signal_actions_changed;
 
   Tag::Ptr m_template_tag;
   Tag::Ptr m_template_save_size_tag;
