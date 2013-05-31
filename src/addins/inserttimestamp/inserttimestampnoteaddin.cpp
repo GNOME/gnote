@@ -30,6 +30,34 @@
 
 namespace inserttimestamp {
 
+  namespace {
+    class InsertTimestampAction
+      : public Gtk::Action
+    {
+    public:
+      static Glib::RefPtr<Gtk::Action> create(gnote::NoteWindow *note_window)
+        {
+          return Glib::RefPtr<Gtk::Action>(new InsertTimestampAction(note_window));
+        }
+    private:
+      InsertTimestampAction(gnote::NoteWindow *note_window)
+        : Gtk::Action("InsertTimestampAction", "", _("Insert Timestamp"),
+                      _("Insert Timestamp into note"))
+        , m_note_window(note_window)
+      {}
+
+      virtual Gtk::Widget *create_menu_item_vfunc()
+        {
+          Gtk::MenuItem *item = new Gtk::MenuItem;
+          item->add_accelerator("activate", m_note_window->get_accel_group(),
+                                GDK_KEY_d, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+          return item;
+        }
+
+      gnote::NoteWindow *m_note_window;
+    };
+  }
+
   InsertTimeStampModule::InsertTimeStampModule()
   {
     ADD_INTERFACE_IMPL(InsertTimestampNoteAddin);
@@ -50,15 +78,10 @@ namespace inserttimestamp {
 
   void InsertTimestampNoteAddin::on_note_opened()
   {
-    // Add the menu item when the window is created
-    m_item = manage(new Gtk::MenuItem(_("Insert Timestamp")));
-    m_item->signal_activate().connect(
+    Glib::RefPtr<Gtk::Action> action = InsertTimestampAction::create(get_window());
+    action->signal_activate().connect(
       sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_menu_item_activated));
-    m_item->add_accelerator ("activate", get_window()->get_accel_group(),
-                             GDK_KEY_d, Gdk::CONTROL_MASK,
-                             Gtk::ACCEL_VISIBLE);
-    m_item->show ();
-    add_plugin_menu_item (m_item);
+    add_note_action(action, 300);
 
     Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
     m_date_format = settings->get_string(INSERT_TIMESTAMP_FORMAT);

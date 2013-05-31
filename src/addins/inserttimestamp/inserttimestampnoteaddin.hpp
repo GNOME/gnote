@@ -59,7 +59,6 @@ private:
   void on_format_setting_changed(const Glib::ustring & key);
 
   std::string    m_date_format;
-  Gtk::MenuItem *m_item;
 };
 
 }
