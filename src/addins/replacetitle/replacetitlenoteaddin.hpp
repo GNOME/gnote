@@ -21,8 +21,6 @@
 #ifndef _REPLACETITLE_ADDIN_HPP_
 #define _REPLACETITLE_ADDIN_HPP_
 
-#include <gtkmm/imagemenuitem.h>
-
 #include "sharp/dynamicmodule.hpp"
 #include "note.hpp"
 #include "noteaddin.hpp"
@@ -51,10 +49,6 @@ public:
   virtual void on_note_opened();
 private:
   void replacetitle_button_clicked();
-  void on_note_foregrounded();
-  void on_note_backgrounded();
-
-  Gtk::ImageMenuItem *m_menu_item;
 };
 
 
