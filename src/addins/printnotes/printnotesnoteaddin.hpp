@@ -28,7 +28,6 @@
 
 #include <vector>
 
-#include <gtkmm/menuitem.h>
 #include <pangomm/layout.h>
 
 #include "sharp/dynamicmodule.hpp"
@@ -115,10 +114,7 @@ private:
   void on_end_print(const Glib::RefPtr<Gtk::PrintContext>&);
 /////
   void print_button_clicked();
-  void on_note_foregrounded();
-  void on_note_backgrounded();
 
-  Gtk::ImageMenuItem * m_item;
   int                  m_margin_top;
   int                  m_margin_left;
   int                  m_margin_right;

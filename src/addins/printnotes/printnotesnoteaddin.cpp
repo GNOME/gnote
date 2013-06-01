@@ -37,6 +37,34 @@
 
 namespace printnotes {
 
+  namespace {
+    class PrintNotesAction
+      : public Gtk::Action
+    {
+    public:
+      static Glib::RefPtr<Gtk::Action> create(gnote::NoteWindow *note_window)
+        {
+          return Glib::RefPtr<Gtk::Action>(new PrintNotesAction(note_window));
+        }
+    protected:
+      virtual Gtk::Widget *create_menu_item_vfunc()
+        {
+          Gtk::ImageMenuItem *menu_item = new Gtk::ImageMenuItem;
+          menu_item->add_accelerator("activate", m_note_window->get_accel_group(),
+                                     GDK_KEY_P, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+          return menu_item;
+        }
+    private:
+      PrintNotesAction(gnote::NoteWindow *note_window)
+        : Gtk::Action("PrintAction", Gtk::Stock::PRINT, _("Print"), _("Print note"))
+        , m_note_window(note_window)
+      {}
+
+      gnote::NoteWindow *m_note_window;
+    };
+  }
+
+
   PrintNotesModule::PrintNotesModule()
   {
     ADD_INTERFACE_IMPL(PrintNotesNoteAddin);
@@ -54,33 +82,10 @@ namespace printnotes {
 
   void PrintNotesNoteAddin::on_note_opened()
   {
-    m_item = manage(new Gtk::ImageMenuItem (_("Print")));
-    m_item->set_image(*manage(new Gtk::Image (Gtk::Stock::PRINT,
-                                             Gtk::ICON_SIZE_MENU)));
-    m_item->signal_activate().connect(
+    Glib::RefPtr<Gtk::Action> action = PrintNotesAction::create(get_window());
+    action->signal_activate().connect(
       sigc::mem_fun(*this, &PrintNotesNoteAddin::print_button_clicked));
-    gnote::NoteWindow *note_window = get_window();
-    note_window->signal_foregrounded.connect(
-      sigc::mem_fun(*this, &PrintNotesNoteAddin::on_note_foregrounded));
-    note_window->signal_backgrounded.connect(
-      sigc::mem_fun(*this, &PrintNotesNoteAddin::on_note_backgrounded));
-    m_item->show ();
-    add_plugin_menu_item (m_item);
-  }
-
-
-  void PrintNotesNoteAddin::on_note_foregrounded()
-  {
-    m_item->add_accelerator("activate", get_window()->get_accel_group(),
-                            GDK_KEY_P, Gdk::CONTROL_MASK,
-                            Gtk::ACCEL_VISIBLE);
-  }
-
-
-  void PrintNotesNoteAddin::on_note_backgrounded()
-  {
-    m_item->remove_accelerator(get_window()->get_accel_group(),
-                               GDK_KEY_P, Gdk::CONTROL_MASK);
+    add_note_action(action, 400);
   }
 
 
