@@ -178,10 +178,6 @@ public:
     {
       return m_delete_button;
     }
-  Gtk::Menu * plugin_menu() const
-    {
-      return m_plugin_menu;
-    }
   Gtk::Menu * text_menu() const
     {
       return m_text_menu;
@@ -203,7 +199,6 @@ private:
   void update_link_button_sensitivity();
   void on_populate_popup(Gtk::Menu*);
   Gtk::Grid *make_toolbar();
-  Gtk::Menu * make_plugin_menu();
   Gtk::Grid * make_template_bar();
   void on_untemplate_button_click();
   void on_save_size_check_button_toggled();
@@ -232,7 +227,6 @@ private:
   Gtk::ToolButton              *m_pin_button;
   Gtk::ToolButton              *m_link_button;
   NoteTextMenu                 *m_text_menu;
-  Gtk::Menu                    *m_plugin_menu;
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;

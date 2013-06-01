@@ -48,10 +48,6 @@ namespace gnote {
           iter != m_note_actions.end(); ++iter) {
         get_window()->remove_widget_action(*iter);
       }
-      for(std::list<Gtk::MenuItem*>::const_iterator iter = m_tools_menu_items.begin();
-          iter != m_tools_menu_items.end(); ++iter) {
-        delete *iter;
-      }
       for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
           iter != m_text_menu_items.end(); ++iter) {
         delete *iter;
@@ -73,14 +69,6 @@ namespace gnote {
   {
     on_note_opened();
     NoteWindow * window = get_window();
-
-    for(std::list<Gtk::MenuItem*>::const_iterator iter = m_tools_menu_items.begin();
-        iter != m_tools_menu_items.end(); ++iter) {
-      Gtk::Widget *item= *iter;
-      if ((item->get_parent() == NULL) ||
-          (item->get_parent() != window->plugin_menu()))
-        window->plugin_menu()->add (*item);
-    }
 
     for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
         iter != m_text_menu_items.end(); ++iter) {
@@ -113,18 +101,6 @@ namespace gnote {
     get_window()->add_widget_action(action, order);
   }
 
-  void NoteAddin::add_plugin_menu_item (Gtk::MenuItem *item)
-  {
-    if (is_disposing())
-      throw sharp::Exception ("Plugin is disposing already");
-
-    m_tools_menu_items.push_back (item);
-
-    if (m_note->is_opened()) {
-      get_window()->plugin_menu()->add (*item);
-    }
-  }
-    
   void NoteAddin::add_tool_item (Gtk::ToolItem *item, int position)
   {
     if (is_disposing())
