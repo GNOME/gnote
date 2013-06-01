@@ -3,6 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
+ * Copyright (C) 2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +21,8 @@
 
 /* A subclass of ImageMenuItem to show a toc menu item */
 
+#include <glibmm/i18n.h>
+
 #include <gtkmm/stock.h>
 
 #include "iconmanager.hpp"
@@ -29,6 +32,46 @@
 #include "tableofcontent.hpp"
 
 namespace tableofcontent {
+
+
+Glib::RefPtr<Gtk::Action> TableofcontentAction::create(const sigc::slot<void, Gtk::Menu*> & slot)
+{
+  return Glib::RefPtr<Gtk::Action>(new TableofcontentAction(slot));
+}
+
+TableofcontentAction::TableofcontentAction(const sigc::slot<void, Gtk::Menu*> & slot)
+  : Gtk::Action("TableofcontentAction", Gtk::Stock::JUMP_TO, _("Table of Contents"), _("Table of Contents"))
+  , m_update_menu_slot(slot)
+{
+}
+
+Gtk::Widget *TableofcontentAction::create_menu_item_vfunc()
+{
+  m_submenu_built = false;
+  Gtk::ImageMenuItem *menu_item = new Gtk::ImageMenuItem;
+  m_menu = manage(new Gtk::Menu);
+  m_menu->signal_hide().connect(
+    sigc::mem_fun(*this, &TableofcontentAction::on_menu_hidden));
+  menu_item->set_submenu(*m_menu);
+  return menu_item;
+}
+
+void TableofcontentAction::on_activate()
+{
+  Gtk::Action::on_activate();
+  update_menu();
+}
+
+void TableofcontentAction::update_menu()
+{
+  m_update_menu_slot(m_menu);
+  m_submenu_built = true;
+}
+
+void TableofcontentAction::on_menu_hidden()
+{
+  m_submenu_built = false;
+}
 
 
 TableofcontentMenuItem::TableofcontentMenuItem (

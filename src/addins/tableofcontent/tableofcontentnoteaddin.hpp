@@ -3,6 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
+ * Copyright (C) 2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,8 +62,8 @@ public:
   virtual void on_note_opened ();
 
 private:
-  void on_menu_item_activated ();
-  void on_menu_hidden ();
+  void update_menu(Gtk::Menu *menu);
+  void on_menu_hidden();
   bool on_key_pressed (GdkEventKey *ev);
   void on_populate_popup (Gtk::Menu* popup_menu);
   void on_level_1_activated ();
@@ -80,7 +81,6 @@ private:
 
   void headification_switch (Header::Type header_request);
 
-  Gtk::ImageMenuItem *m_menu_item;       // the TOC menu item, in the Tools menu
   Gtk::Menu          *m_toc_menu;        // the TOC submenu, containing the TOC
   bool                m_toc_menu_built;  // whereas toc_menu is already built
 

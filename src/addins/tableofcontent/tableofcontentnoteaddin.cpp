@@ -3,6 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
+ * Copyright (C) 2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,8 +46,7 @@ TableofcontentModule::TableofcontentModule()
 
 
 TableofcontentNoteAddin::TableofcontentNoteAddin()
-  : m_menu_item      (NULL)
-  , m_toc_menu       (NULL)
+  : m_toc_menu       (NULL)
   , m_toc_menu_built (false)
 {
 }
@@ -76,19 +76,13 @@ Gtk::ImageMenuItem * new_toc_menu_item ()
 
 void TableofcontentNoteAddin::on_note_opened ()
 {
-  // TOC menu
-  m_toc_menu = manage(new Gtk::Menu());
+  m_toc_menu = manage(new Gtk::Menu);
   m_toc_menu->signal_hide().connect(
-                sigc::mem_fun(*this, &TableofcontentNoteAddin::on_menu_hidden));
-  m_toc_menu->show_all ();
+    sigc::mem_fun(*this, &TableofcontentNoteAddin::on_menu_hidden));
 
-  m_menu_item = new_toc_menu_item ();
-  m_menu_item->set_submenu(*m_toc_menu);
-  m_menu_item->signal_activate().connect(
-                 sigc::mem_fun(*this, &TableofcontentNoteAddin::on_menu_item_activated));
-  m_menu_item->show ();
-
-  add_plugin_menu_item (m_menu_item);
+  Glib::RefPtr<Gtk::Action> action = TableofcontentAction::create(
+    sigc::mem_fun(*this, &TableofcontentNoteAddin::update_menu));
+  add_note_action(action, 600);
 
   // Reacts to key press events
   get_note()->get_window()->signal_key_press_event().connect(
@@ -105,17 +99,13 @@ void TableofcontentNoteAddin::on_note_opened ()
 }
 
 
-void TableofcontentNoteAddin::on_menu_item_activated ()
+void TableofcontentNoteAddin::update_menu(Gtk::Menu *menu)
 {
-  if(m_toc_menu_built) {
-    return;
-  }
-  populate_toc_menu (m_toc_menu);
-  m_toc_menu_built = true;
+  populate_toc_menu(menu);
 }
 
 
-void TableofcontentNoteAddin::on_menu_hidden ()
+void TableofcontentNoteAddin::on_menu_hidden()
 {
   m_toc_menu_built = false; //force the submenu to rebuild next time it's supposed to show
 }

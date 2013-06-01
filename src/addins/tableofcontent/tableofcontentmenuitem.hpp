@@ -3,6 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
+ * Copyright (C) 2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +32,24 @@
 
 
 namespace tableofcontent {
+
+class TableofcontentAction
+  : public Gtk::Action
+{
+public:
+  static Glib::RefPtr<Gtk::Action> create(const sigc::slot<void, Gtk::Menu*> & slot);
+protected:
+  virtual Gtk::Widget *create_menu_item_vfunc();
+  virtual void on_activate();
+private:
+  TableofcontentAction(const sigc::slot<void, Gtk::Menu*> & slot);
+  void update_menu();
+  void on_menu_hidden();
+
+  bool m_submenu_built;
+  Gtk::Menu *m_menu;
+  sigc::slot<void, Gtk::Menu*> m_update_menu_slot;
+};
 
 class TableofcontentMenuItem : public Gtk::ImageMenuItem
 {
