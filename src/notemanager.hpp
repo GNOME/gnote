@@ -82,7 +82,7 @@ namespace gnote {
     Note::Ptr find_by_uri(const std::string &) const;
     static std::string sanitize_xml_content(const std::string & xml_content);
     Note::Ptr create_note_from_template(const std::string & title, const Note::Ptr & template_note);
-    std::string get_unique_name (const std::string & basename, int id) const;
+    std::string get_unique_name (const std::string & basename) const;
     void delete_note(const Note::Ptr & note);
 
     Note::Ptr create();

@@ -134,7 +134,7 @@ namespace notebooks {
       if(m_note_manager.find(title)) {
         std::list<Note*> tag_notes;
         m_tag->get_notes(tag_notes);
-        title = m_note_manager.get_unique_name (title, tag_notes.size());
+        title = m_note_manager.get_unique_name(title);
       }
       note = m_note_manager.create(title, NoteManager::get_note_template_content (title));
           
@@ -163,7 +163,7 @@ namespace notebooks {
     std::string temp_title;
     Note::Ptr note_template = get_template_note();
 
-    temp_title = m_note_manager.get_unique_name(_("New Note"), m_note_manager.get_notes().size());
+    temp_title = m_note_manager.get_unique_name(_("New Note"));
     Note::Ptr note = m_note_manager.create_note_from_template(temp_title, note_template);
 
     // Add the notebook tag
