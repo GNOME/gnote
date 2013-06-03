@@ -73,7 +73,7 @@ namespace notebooks {
     grid->attach(*manage(new Gtk::Image(
       IconManager::obj().get_icon(IconManager::NOTEBOOK, icon_size))),
                  0, 0, 1, 1);
-    m_label_widget = manage(new Gtk::Label("try"));
+    m_label_widget = manage(new Gtk::Label);
     grid->attach(*m_label_widget, 1, 0, 1, 1);
     m_toolButton = Gtk::manage(new gnote::utils::ToolMenuButton(*grid, m_menu));
     m_toolButton->set_tooltip_text(_("Place this note into a notebook"));
