@@ -388,6 +388,7 @@ namespace gnote {
     }
 
     m_pin_button = manage(new Gtk::ToolButton(*m_pin_image, _("Pin")));
+    m_pin_button->set_tooltip_text(_("Mark note as important"));
     m_pin_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
     grid->attach(*m_pin_button, grid_col++, 0, 1, 1);
     notebooks::NotebookManager::obj().signal_note_pin_status_changed
