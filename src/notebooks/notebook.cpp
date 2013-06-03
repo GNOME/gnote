@@ -272,7 +272,7 @@ namespace notebooks {
 
 
   PinnedNotesNotebook::PinnedNotesNotebook(NoteManager & manager)
-    : SpecialNotebook(manager, _("Pinned Notes"))
+    : SpecialNotebook(manager, _("Important Notes"))
   {
   }
 
