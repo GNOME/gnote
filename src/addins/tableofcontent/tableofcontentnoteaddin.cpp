@@ -295,11 +295,12 @@ bool TableofcontentNoteAddin::on_key_pressed(GdkEventKey *ev)
   switch(ev->keyval) {
 
   case GDK_KEY_1:
-      if (ev->state == (GDK_CONTROL_MASK | GDK_MOD1_MASK)) {// Ctrl-Alt-1
+      if (ev->state & Gdk::CONTROL_MASK
+       && ev->state & Gdk::MOD1_MASK    ) {// Ctrl-Alt-1
         on_toc_popup_activated();
         return true;
       }
-      else if (ev->state == GDK_CONTROL_MASK) { // Ctrl-1
+      else if (ev->state & Gdk::CONTROL_MASK) { // Ctrl-1
         on_level_1_activated ();
         return true;
       }
@@ -309,7 +310,7 @@ bool TableofcontentNoteAddin::on_key_pressed(GdkEventKey *ev)
   break;
 
   case GDK_KEY_2:
-      if (ev->state == GDK_CONTROL_MASK) { // Ctrl-2
+      if (ev->state & Gdk::CONTROL_MASK) { // Ctrl-2
         on_level_2_activated ();
         return true;
       }
