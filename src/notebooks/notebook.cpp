@@ -214,7 +214,7 @@ namespace notebooks {
 
 
   AllNotesNotebook::AllNotesNotebook(NoteManager & manager)
-    : SpecialNotebook(manager, _("All Notes"))
+    : SpecialNotebook(manager, _("All"))
   {
   }
 
@@ -243,7 +243,7 @@ namespace notebooks {
 
 
   UnfiledNotesNotebook::UnfiledNotesNotebook(NoteManager & manager)
-    : SpecialNotebook(manager, _("Unfiled Notes"))
+    : SpecialNotebook(manager, _("Unfiled"))
   {
   }
 
@@ -272,7 +272,7 @@ namespace notebooks {
 
 
   PinnedNotesNotebook::PinnedNotesNotebook(NoteManager & manager)
-    : SpecialNotebook(manager, _("Important Notes"))
+    : SpecialNotebook(manager, _("Important"))
   {
   }
 
@@ -300,7 +300,7 @@ namespace notebooks {
 
 
   ActiveNotesNotebook::ActiveNotesNotebook(NoteManager & manager)
-    : SpecialNotebook(manager, _("Active Notes"))
+    : SpecialNotebook(manager, _("Active"))
   {
     manager.signal_note_deleted
       .connect(sigc::mem_fun(*this, &ActiveNotesNotebook::on_note_deleted));
