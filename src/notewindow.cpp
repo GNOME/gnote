@@ -374,7 +374,7 @@ namespace gnote {
   //
   Gtk::Grid *NoteWindow::make_toolbar()
   {
-    Gtk::IconSize icon_size = Gtk::IconSize::from_name(gtk_icon_size_get_name(GTK_ICON_SIZE_MENU));
+    Gtk::IconSize icon_size = Gtk::IconSize::from_name(gtk_icon_size_get_name(GTK_ICON_SIZE_SMALL_TOOLBAR));
 
     Gtk::Grid *grid = manage(new Gtk::Grid);
     int grid_col = 0;

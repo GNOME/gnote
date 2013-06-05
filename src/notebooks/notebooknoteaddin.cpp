@@ -67,13 +67,15 @@ namespace notebooks {
   void NotebookNoteAddin::initialize_tool_button()
   {
     gint icon_size = 16;
-    gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &icon_size, NULL);
+    gtk_icon_size_lookup(GTK_ICON_SIZE_SMALL_TOOLBAR, &icon_size, NULL);
 
     Gtk::Grid *grid = manage(new Gtk::Grid);
     grid->attach(*manage(new Gtk::Image(
       IconManager::obj().get_icon(IconManager::NOTEBOOK, icon_size))),
                  0, 0, 1, 1);
     m_label_widget = manage(new Gtk::Label);
+    m_label_widget->set_vexpand(true);
+    m_label_widget->set_valign(Gtk::ALIGN_CENTER);
     grid->attach(*m_label_widget, 1, 0, 1, 1);
     m_toolButton = Gtk::manage(new gnote::utils::ToolMenuButton(*grid, m_menu));
     m_toolButton->set_tooltip_text(_("Place this note into a notebook"));
