@@ -866,9 +866,6 @@ namespace gnote {
 
       Gtk::SeparatorMenuItem *spacer1 = manage(new Gtk::SeparatorMenuItem());
 
-      Gtk::MenuItem *font_size = manage(new Gtk::MenuItem(_("Font Size")));
-      font_size->set_sensitive(false);
-
       markup_label(m_normal);
       m_normal.set_active(true);
       m_normal.signal_activate()
@@ -917,7 +914,6 @@ namespace gnote {
       append(m_strikeout);
       append(m_highlight);
       append(*spacer1);
-      append(*font_size);
       append(m_small);
       append(m_normal);
       append(m_large);
