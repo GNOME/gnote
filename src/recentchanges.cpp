@@ -150,7 +150,8 @@ namespace gnote {
     box->attach(*left_box, 0, 0, 1, 1);
 
     m_embedded_toolbar.set_hexpand(true);
-    m_embedded_toolbar.set(0.5, 0.5, 0.0, 0.0);
+    m_embedded_toolbar.set_margin_left(6);
+    m_embedded_toolbar.set(0.0, 0.5, 0.0, 0.0);
     m_embedded_toolbar.show();
     box->attach(m_embedded_toolbar, 1, 0, 1, 1);
 
