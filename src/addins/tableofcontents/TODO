@@ -1,25 +1,20 @@
-TODO for Add-in: Table of Content
-=================================
+TODO for Add-in: Table of Contents
+==================================
 
-== Now
 
-- header --> heading, also in code
-- rename files before 3.10, tableofcontent_S_
+== NOW
 
-- Ctrl-1/2 Ctrl-Alt-1 has no effect, before toc is opened once
-  gnote bug?
+
+== Later
 
 - check GFDL usage in:
-      help/C/gnote-addin-tableofcontent.page:
+      help/C/gnote-addin-tableofcontents.page:
       FIXME: is this true? (no invariant, no front, no back?)
       FIXME: does the statement have to show in the rendered document?
       FIXME: is this true? Is there a (GNOME? Yelp?) common GFDL topic?
 
-- add a screenshot to the help page (?)
-
-
-
-== Later
+- if the heading is strike-through, reflect this in the toc.
+  same with highlight? italic?
 
 - Huge is not huge enough
     There is little visual difference between large and huge
@@ -32,32 +27,32 @@ TODO for Add-in: Table of Content
     Could also be: general config options for font sizes/factor (for S/N/L/H)
     Could also be: allow any sizes <size:n>, with n = factor (not only S/N/L/H)
 
-- When no headers, still show the note title in toc
+- When no headers, still show the note title in toc?
   this is usefull to jump to the top of a long (unstructured) note
-
-
-
-== Maybe
-
-- Highlight the header when jumping to it
-    ==> More visual, especially when the header does not scroll up to the head of the window
-    remove highlight as soon as cursor moved
-    (like search results, for example)
 
 - Undo as a single user action, when setting headers
     Note: tomboy/gnote handles poorly undo/redo,
     this item may need to upgrade the undo system
 
-- Set where the toc menu item appears in the Tools menu
-    --> next to "What Links Here?"
-    (I think there is a way to say where)
-
 - Keyboard shortcuts for jumping between sessions
   Jump to next section
   Jump to previous section
-  Q: What shortcuts? the ones with up/down arrow ar all(?) taken?
+  Q: What shortcuts? the ones with up/down arrow are all(?) taken?
   Alt-right and Alt-left, usually used for prev/next, are used for bullet list indentation
-	(can this change?)
+  (can this change?)
+
+
+== Maybe
+
+- Print/export the table of contents
+  if Table of Contents is enabled,
+  it could be added to the contents when printing or exporting (to HTML)
+  HTML export:
+    - add toc below title
+    - mark headers as H2 and H3
+  Print
+    - add toc below title
+    - print to PDF (?)
 
 - Customizable header tags
   « a header level x is a full line with tags Tx »
@@ -77,15 +72,14 @@ TODO for Add-in: Table of Content
 
   Todo: make code generic + (g)settings + preference UI + help topic
 
-- Print/export the table of content
-  if Table of Content is enabled, it could be added to the content when printing or exporting (to HTML)
-  HTML export:
-    - add toc below title
-    - mark headers as H2 and H3
-  Print
-    - add toc below title
-    - print to PDF (?)
+- Highlight the header when jumping to it
+    ==> More visual, especially when the header does not scroll up to the head of the window
+    remove highlight as soon as cursor moved
+    (like search results, for example)
 
+- Set where the toc menu item appears in the Tools menu
+    --> next to "What Links Here?"
+    (I think there is a way to say where)
 
 
 == Maybe not

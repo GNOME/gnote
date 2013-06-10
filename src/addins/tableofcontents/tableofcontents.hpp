@@ -22,22 +22,22 @@
 
 
 /* Note: the enum is in this file because
-         when it was in tableofcontentnoteaddin.hpp,
-         I could not use it also in tableofcontentmenuitem.cpp,
+         when it was in tableofcontentsnoteaddin.hpp,
+         I could not use it also in tableofcontentsmenuitem.cpp,
          there was a scope error, which I could not solve.
  */
 
 #ifndef __TABLEOFCONTENT_HPP_
 #define __TABLEOFCONTENT_HPP_
 
-namespace tableofcontent {
+namespace tableofcontents {
 
-namespace Header { // Header level,
-  enum Type {      //  Header::Type     (can be used as a type)
-    Title,         //  Header::Title    == Note title
-    Level_1,       //  Header::Level_1  == 1st level header == Ctrl-1
-    Level_2,       //  Header::Level_2  == 2nd level header == Ctrl-2
-    None           //  Header::None
+namespace Heading { // Heading level,
+  enum Type {      //  Heading::Type     (can be used as a type)
+    Title,         //  Heading::Title    == Note title
+    Level_1,       //  Heading::Level_1  == 1st level heading == Ctrl-1
+    Level_2,       //  Heading::Level_2  == 2nd level heading == Ctrl-2
+    None           //  Heading::None
   };
 }
 

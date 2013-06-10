@@ -19,7 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* A subclass of NoteAddin, implementing the Table of Content add-in */
+/* A subclass of NoteAddin, implementing the Table of Contents add-in */
 
 #ifndef __TABLEOFCONTENT_NOTEADDIN_HPP_
 #define __TABLEOFCONTENT_NOTEADDIN_HPP_
@@ -33,29 +33,29 @@
 #include "note.hpp"
 #include "noteaddin.hpp"
 
-#include "tableofcontent.hpp"
+#include "tableofcontents.hpp"
 
 
-namespace tableofcontent {
+namespace tableofcontents {
 
-class TableofcontentModule : public sharp::DynamicModule
+class TableofcontentsModule : public sharp::DynamicModule
 {
 public:
-  TableofcontentModule();
+  TableofcontentsModule();
 };
-DECLARE_MODULE(TableofcontentModule);
+DECLARE_MODULE(TableofcontentsModule);
 
-class TableofcontentMenuItem;
+class TableofcontentsMenuItem;
 
 
-class TableofcontentNoteAddin : public gnote::NoteAddin
+class TableofcontentsNoteAddin : public gnote::NoteAddin
 {
 public:
-  static TableofcontentNoteAddin *create()
+  static TableofcontentsNoteAddin *create()
     {
-      return new TableofcontentNoteAddin;
+      return new TableofcontentsNoteAddin;
     }
-  TableofcontentNoteAddin();
+  TableofcontentsNoteAddin();
 
   virtual void initialize ();
   virtual void shutdown ();
@@ -75,16 +75,16 @@ private:
   void populate_toc_menu (Gtk::Menu *toc_menu, bool has_action_entries = true);
 
   bool has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end);
-  Header::Type get_header_level_for_range (Gtk::TextIter start, Gtk::TextIter end);
+  Heading::Type get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end);
 
-  void get_tableofcontent_menu_items (std::list<TableofcontentMenuItem*> & items);
+  void get_tableofcontents_menu_items (std::list<TableofcontentsMenuItem*> & items);
 
-  void headification_switch (Header::Type header_request);
+  void headification_switch (Heading::Type heading_request);
 
   Gtk::Menu          *m_toc_menu;        // the TOC submenu, containing the TOC
   bool                m_toc_menu_built;  // whereas toc_menu is already built
 
-  Glib::RefPtr<Gtk::TextTag> m_tag_bold; // the tags used to mark headers
+  Glib::RefPtr<Gtk::TextTag> m_tag_bold; // the tags used to mark headings
   Glib::RefPtr<Gtk::TextTag> m_tag_large;
   Glib::RefPtr<Gtk::TextTag> m_tag_huge;
 };

@@ -19,7 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* A subclass of NoteAddin, implementing the Table of Content add-in */
+/* A subclass of NoteAddin, implementing the Table of Contents add-in */
 
 #include <glibmm/i18n.h>
 
@@ -33,30 +33,31 @@
 #include "notebuffer.hpp"
 #include "utils.hpp"
 
-#include "tableofcontent.hpp"
-#include "tableofcontentnoteaddin.hpp"
-#include "tableofcontentmenuitem.hpp"
+#include "tableofcontents.hpp"
+#include "tableofcontentsnoteaddin.hpp"
+#include "tableofcontentsmenuitem.hpp"
+#include "tableofcontentsaction.hpp"
 
-namespace tableofcontent {
+namespace tableofcontents {
 
-TableofcontentModule::TableofcontentModule()
+TableofcontentsModule::TableofcontentsModule()
 {
-  ADD_INTERFACE_IMPL(TableofcontentNoteAddin);
+  ADD_INTERFACE_IMPL(TableofcontentsNoteAddin);
 }
 
 
-TableofcontentNoteAddin::TableofcontentNoteAddin()
+TableofcontentsNoteAddin::TableofcontentsNoteAddin()
   : m_toc_menu       (NULL)
   , m_toc_menu_built (false)
 {
 }
 
-void TableofcontentNoteAddin::initialize () {}
-void TableofcontentNoteAddin::shutdown   () {}
+void TableofcontentsNoteAddin::initialize () {}
+void TableofcontentsNoteAddin::shutdown   () {}
 
 
 Gtk::ImageMenuItem * new_toc_menu_item ()
-//create a menu item like: "[]_Table_of_Content______Ctrl-Alt-1__>"
+//create a menu item like: "[]_Table_of_Contents______Ctrl-Alt-1__>"
 {
   Gtk::ImageMenuItem * menu_item = manage(new Gtk::ImageMenuItem ());
   menu_item->set_image(*manage(new Gtk::Image(Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_MENU)));
@@ -74,45 +75,45 @@ Gtk::ImageMenuItem * new_toc_menu_item ()
 }
 
 
-void TableofcontentNoteAddin::on_note_opened ()
+void TableofcontentsNoteAddin::on_note_opened ()
 {
   m_toc_menu = manage(new Gtk::Menu);
   m_toc_menu->signal_hide().connect(
-    sigc::mem_fun(*this, &TableofcontentNoteAddin::on_menu_hidden));
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_menu_hidden));
 
-  Glib::RefPtr<Gtk::Action> action = TableofcontentAction::create(
-    sigc::mem_fun(*this, &TableofcontentNoteAddin::update_menu));
+  Glib::RefPtr<Gtk::Action> action = TableofcontentsAction::create(
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::update_menu));
   add_note_action(action, 600);
 
   // Reacts to key press events
   get_note()->get_window()->signal_key_press_event().connect(
-    sigc::mem_fun(*this, &TableofcontentNoteAddin::on_key_pressed));
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_key_pressed));
 
   // TOC can show up also in the contextual menu
   get_note()->get_window()->editor()->signal_populate_popup().connect(
-    sigc::mem_fun(*this, &TableofcontentNoteAddin::on_populate_popup));
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_populate_popup));
 
-  // Header tags
+  // Heading tags
   m_tag_bold  = get_note()->get_tag_table()->lookup ("bold");
   m_tag_large = get_note()->get_tag_table()->lookup ("size:large");
   m_tag_huge  = get_note()->get_tag_table()->lookup ("size:huge");
 }
 
 
-void TableofcontentNoteAddin::update_menu(Gtk::Menu *menu)
+void TableofcontentsNoteAddin::update_menu(Gtk::Menu *menu)
 {
   populate_toc_menu(menu);
 }
 
 
-void TableofcontentNoteAddin::on_menu_hidden()
+void TableofcontentsNoteAddin::on_menu_hidden()
 {
   m_toc_menu_built = false; //force the submenu to rebuild next time it's supposed to show
 }
 
 
-void TableofcontentNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_action_entries)
-//populate a menu with Note's table of content
+void TableofcontentsNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_action_entries)
+//populate a menu with Note's table of contents
 {
   // Clear out the old list
   std::vector<Gtk::Widget*> menu_items = toc_menu->get_children();
@@ -122,12 +123,12 @@ void TableofcontentNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_a
   }
 
   // Build a new list
-  std::list<TableofcontentMenuItem*> items;
-  get_tableofcontent_menu_items(items);
+  std::list<TableofcontentsMenuItem*> items;
+  get_tableofcontents_menu_items(items);
 
-  for(std::list<TableofcontentMenuItem*>::iterator iter = items.begin();
+  for(std::list<TableofcontentsMenuItem*>::iterator iter = items.begin();
       iter != items.end(); ++iter) {
-    TableofcontentMenuItem *item(*iter);
+    TableofcontentsMenuItem *item(*iter);
     item->show_all();
     toc_menu->append(*item);
   }
@@ -152,18 +153,18 @@ void TableofcontentNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_a
 
     item = manage(new Gtk::MenuItem (_("Heading 1")));
     item->add_accelerator("activate", get_note()->get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentNoteAddin::on_level_1_activated));
+    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_1_activated));
     item->show ();
     toc_menu->append(*item);
 
     item = manage(new Gtk::MenuItem (_("Heading 2")));
     item->add_accelerator("activate", get_note()->get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentNoteAddin::on_level_2_activated));
+    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_2_activated));
     item->show ();
     toc_menu->append(*item);
 
     item = manage(new Gtk::MenuItem (_("Table of Contents Help")));
-    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentNoteAddin::on_toc_help_activated));
+    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_toc_help_activated));
     item->show ();
     toc_menu->append(*item);
   }
@@ -171,7 +172,7 @@ void TableofcontentNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_a
 }
 
 
-void TableofcontentNoteAddin::on_populate_popup (Gtk::Menu* popup_menu)
+void TableofcontentsNoteAddin::on_populate_popup (Gtk::Menu* popup_menu)
 //prepened a toc submenu in the contextual menu
 {
   Gtk::Menu *toc_menu = manage(new Gtk::Menu());
@@ -189,7 +190,7 @@ void TableofcontentNoteAddin::on_populate_popup (Gtk::Menu* popup_menu)
 }
 
 
-bool TableofcontentNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end)
+bool TableofcontentsNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end)
 //return true if tag is set from start to end
 {
   bool has = false;
@@ -201,36 +202,36 @@ bool TableofcontentNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag
 }
 
 
-Header::Type TableofcontentNoteAddin::get_header_level_for_range (Gtk::TextIter start, Gtk::TextIter end)
-//return the header level from start to end
+Heading::Type TableofcontentsNoteAddin::get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end)
+//return the heading level from start to end
 {
   if (has_tag_over_range (m_tag_bold, start, end)) {
 
     if (has_tag_over_range (m_tag_huge , start, end)) {
-        return Header::Level_1;
+        return Heading::Level_1;
     }
     else if (has_tag_over_range (m_tag_large, start, end)) {
-        return Header::Level_2;
+        return Heading::Level_2;
     }
     else {
-        return Header::None;
+        return Heading::None;
     }
   }
   else {
-      return Header::None;
+      return Heading::None;
   }
 }
 
 
-void TableofcontentNoteAddin::get_tableofcontent_menu_items(std::list<TableofcontentMenuItem*> & items)
-//go through the note text, and list all lines tagged as header,
-//and for each header, create a new TableofcontentMenuItem.
+void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<TableofcontentsMenuItem*> & items)
+//go through the note text, and list all lines tagged as heading,
+//and for each heading, create a new TableofcontentsMenuItem.
 {
-  TableofcontentMenuItem *item = NULL;
+  TableofcontentsMenuItem *item = NULL;
 
-  std::string header;
-  Header::Type header_level;
-  int         header_position;
+  std::string    heading;
+  Heading::Type  heading_level;
+  int            heading_position;
 
   Gtk::TextIter iter, iter_end, eol;
 
@@ -243,34 +244,34 @@ void TableofcontentNoteAddin::get_tableofcontent_menu_items(std::list<Tableofcon
     eol = iter;
     eol.forward_to_line_end();
 
-    header_level = get_header_level_for_range (iter, eol);
+    heading_level = get_heading_level_for_range (iter, eol);
 
-    if (header_level == Header::Level_1 || header_level == Header::Level_2) {
-      header_position = iter.get_offset();
-      header = iter.get_text(eol);
+    if (heading_level == Heading::Level_1 || heading_level == Heading::Level_2) {
+      heading_position = iter.get_offset();
+      heading          = iter.get_text(eol);
 
       if (items.size() == 0) {
-        //It's the first header found,
+        //It's the first heading found,
         //we also insert an entry linked to the Note's title:
-        item = manage(new TableofcontentMenuItem (get_note(), get_note()->get_title(), Header::Title, 0));
+        item = manage(new TableofcontentsMenuItem (get_note(), get_note()->get_title(), Heading::Title, 0));
         items.push_back(item);
       }
-      item = manage(new TableofcontentMenuItem (get_note(), header, header_level, header_position));
+      item = manage(new TableofcontentsMenuItem (get_note(), heading, heading_level, heading_position));
       items.push_back(item);
     }
     iter.forward_visible_line(); //next line
   }
 }
 
-void TableofcontentNoteAddin::on_level_1_activated()
+void TableofcontentsNoteAddin::on_level_1_activated()
 {
-  headification_switch (Header::Level_1);
+  headification_switch (Heading::Level_1);
 }
-void TableofcontentNoteAddin::on_level_2_activated()
+void TableofcontentsNoteAddin::on_level_2_activated()
 {
-  headification_switch (Header::Level_2);
+  headification_switch (Heading::Level_2);
 }
-void TableofcontentNoteAddin::on_toc_popup_activated()
+void TableofcontentsNoteAddin::on_toc_popup_activated()
 {
   if(m_toc_menu_built == false) {
     populate_toc_menu(m_toc_menu, false);
@@ -278,7 +279,7 @@ void TableofcontentNoteAddin::on_toc_popup_activated()
   }
   m_toc_menu->popup(0, 0);
 }
-void TableofcontentNoteAddin::on_toc_help_activated()
+void TableofcontentsNoteAddin::on_toc_help_activated()
 {
   gnote::NoteWindow* window = get_note()->get_window();
   gnote::utils::show_help("gnote", "addin-tableofcontents",
@@ -286,7 +287,7 @@ void TableofcontentNoteAddin::on_toc_help_activated()
 }
 
 
-bool TableofcontentNoteAddin::on_key_pressed(GdkEventKey *ev)
+bool TableofcontentsNoteAddin::on_key_pressed(GdkEventKey *ev)
 //return true if signal handled, false otherwise
 //NOTE: if a menu item has an accelerator,
 //      its entry is needed until the toc menu is built a first time,
@@ -327,8 +328,8 @@ bool TableofcontentNoteAddin::on_key_pressed(GdkEventKey *ev)
 }
 
 
-void TableofcontentNoteAddin::headification_switch (Header::Type header_request)
-//apply the correct header style to the current line(s) including the selection
+void TableofcontentsNoteAddin::headification_switch (Heading::Type heading_request)
+//apply the correct heading style to the current line(s) including the selection
 //switch:  Level_1 <--> Level_2 <--> text
 {
   Glib::RefPtr<gnote::NoteBuffer> buffer = get_note()->get_buffer();
@@ -355,24 +356,24 @@ void TableofcontentNoteAddin::headification_switch (Header::Type header_request)
   //expand the selection to complete lines
   buffer->select_range (start, end);
 
-  //set the header tags
-  Header::Type current_header = get_header_level_for_range (start, end);
+  //set the heading tags
+  Heading::Type current_heading = get_heading_level_for_range (start, end);
 
   buffer->remove_tag (m_tag_bold,  start, end);
   buffer->remove_tag (m_tag_large, start, end);
   buffer->remove_tag (m_tag_huge,  start, end);
 
-  if( current_header == Header::Level_1 && header_request == Header::Level_2) { //existing vs requested
+  if( current_heading == Heading::Level_1 && heading_request == Heading::Level_2) { //existing vs requested
     buffer->set_active_tag ("bold");
     buffer->set_active_tag ("size:large");
   }
-  else if( current_header == Header::Level_2 && header_request == Header::Level_1) {
+  else if( current_heading == Heading::Level_2 && heading_request == Heading::Level_1) {
     buffer->set_active_tag ("bold");
     buffer->set_active_tag ("size:huge");
   }
-  else if( current_header == Header::None) {
+  else if( current_heading == Heading::None) {
     buffer->set_active_tag ("bold");
-    buffer->set_active_tag ( (header_request == Header::Level_1)?"size:huge":"size:large");
+    buffer->set_active_tag ( (heading_request == Heading::Level_1)?"size:huge":"size:large");
   }
 
   //restore selection

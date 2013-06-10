@@ -5,6 +5,7 @@ HELP_MEDIA = \
 	figures/add-notebook-search.png \
 	figures/add-to-notebook.png \
 	figures/delete-notebook.png \
+	figures/gnote-addin-table-of-contents.png \
 	figures/gnote-new-note.png \
 	figures/gnote-pindown.png \
 	figures/gnote-pinup.png \
@@ -32,7 +33,7 @@ HELP_FILES = \
 	gnote-addin-replacetitle.page \
 	gnote-addin-sync-local.page \
 	gnote-addin-sync-webdav.page \
-	gnote-addin-tableofcontent.page \
+	gnote-addin-tableofcontents.page \
 	gnote-addin-timestamp.page \
 	gnote-addin-underline.page \
 	gnote-bulleted-lists.page \

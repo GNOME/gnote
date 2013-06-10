@@ -1,12 +1,19 @@
-NEWS for Add-in: Table of Content
-=================================
+NEWS for Add-in: Table of Contents
+==================================
 
-(NOTE: little release manual:
- update NEWS + .desktop version/enabled=false + help topic status/pkgversion ==> commit -m "version x.y")
+== 0.99.0
+   2013-06-10
+   The add-in is globally complete feature-wise.
+   This will target at the version 1.0
+   See the TODO file for potential future features/ideas.
+
+- code: s/table of content/table of contents/ everywhere, including file names
+- code: s/header/heading/ everywhere
+- code: TableofcontentAction class in its own file
+- help: added a screenshot
 
 == 0.11
 - fix: use bit-wise operations to test modifier masks (Ctrl/Alt)
-
 
 == 0.10
 - fix: header-2 arrow, 2 chars does not match with some fonts.
@@ -60,8 +67,8 @@ NEWS for Add-in: Table of Content
 - code cleanup
 
 == 0.3
-- added TableofcontentModule::copyright()
-- used a namespaced-enum for header Levels. New file tableofcontent.hpp
+- added TableofcontentsModule::copyright()
+- used a namespaced-enum for header Levels. New file tableofcontents.hpp
 - code review changes (https://bugzilla.gnome.org/show_bug.cgi?id=698059)
 
 == 0.2

@@ -2,7 +2,6 @@
  * "Table of Contents" is a Note add-in for Gnote.
  *  It lists note's table of contents in a menu.
  *
- * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
  * Copyright (C) 2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,21 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* A subclass of ImageMenuItem to show a toc menu item */
 
-#ifndef __TABLEOFCONTENT_MENU_ITEM_HPP_
-#define __TABLEOFCONTENT_MENU_ITEM_HPP_
+#ifndef __TABLEOFCONTENT_ACTION_HPP_
+#define __TABLEOFCONTENT_ACTION_HPP_
 
-#include <string>
-#include <gtkmm/imagemenuitem.h>
+namespace tableofcontents {
 
-#include "note.hpp"
-#include "tableofcontent.hpp"
-
-
-namespace tableofcontent {
-
-class TableofcontentAction
+class TableofcontentsAction
   : public Gtk::Action
 {
 public:
@@ -42,7 +33,7 @@ protected:
   virtual Gtk::Widget *create_menu_item_vfunc();
   virtual void on_activate();
 private:
-  TableofcontentAction(const sigc::slot<void, Gtk::Menu*> & slot);
+  TableofcontentsAction(const sigc::slot<void, Gtk::Menu*> & slot);
   void update_menu();
   void on_menu_hidden();
 
@@ -51,25 +42,6 @@ private:
   sigc::slot<void, Gtk::Menu*> m_update_menu_slot;
 };
 
-class TableofcontentMenuItem : public Gtk::ImageMenuItem
-{
-public:
-  TableofcontentMenuItem ( const gnote::Note::Ptr & note,
-                           const std::string      & header,
-                           Header::Type             header_level,
-                           int                      header_position
-                         );
-
-protected:
-  virtual void on_activate ();
-
-private:
-  gnote::Note::Ptr m_note;            //the Note referenced by the menu item
-  int              m_header_position; //the position of the header in the Note
-                                        // == offset in the GtkTextBuffer
-};
-
 
 }
-
 #endif

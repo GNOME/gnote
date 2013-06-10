@@ -173,7 +173,7 @@ src/addins/printnotes/Makefile
 src/addins/replacetitle/Makefile
 src/addins/statistics/Makefile
 src/addins/stickynoteimport/Makefile
-src/addins/tableofcontent/Makefile
+src/addins/tableofcontents/Makefile
 src/addins/tomboyimport/Makefile
 src/addins/underline/Makefile
 src/addins/webdavsyncservice/Makefile
