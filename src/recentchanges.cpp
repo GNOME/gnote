@@ -545,7 +545,7 @@ namespace gnote {
   {
     std::string title;
     if(name != "") {
-      title = "[" + name + "] - ";
+      title = name + " - ";
     }
     title += _("Notes");
     set_title(title);
