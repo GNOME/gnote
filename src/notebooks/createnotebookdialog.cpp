@@ -36,7 +36,7 @@ namespace gnote {
   namespace notebooks {
 
     CreateNotebookDialog::CreateNotebookDialog(Gtk::Window *parent, GtkDialogFlags f)
-      : utils::HIGMessageDialog(parent, f, Gtk::MESSAGE_INFO, Gtk::BUTTONS_NONE,
+      : utils::HIGMessageDialog(parent, f, Gtk::MESSAGE_OTHER, Gtk::BUTTONS_NONE,
                                 _("Create a new notebook"), "")
     {
       Gtk::Table *table = manage(new Gtk::Table (2, 2, false));
