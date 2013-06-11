@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -417,7 +417,6 @@ namespace gnote {
     add (tag);
 
     tag = NoteTag::create("note-title", 0);
-    tag->property_underline() = Pango::UNDERLINE_SINGLE;
     tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
     tag->property_scale() = Pango::SCALE_XX_LARGE;
     // FiXME: Hack around extra rewrite on open
