@@ -32,7 +32,6 @@
 
 #include "debug.hpp"
 #include "ignote.hpp"
-#include "iconmanager.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -131,7 +130,9 @@ namespace gnote {
     left_box->get_style_context()->add_class(GTK_STYLE_CLASS_RAISED);
     left_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
     m_all_notes_button = manage(new Gtk::Button);
-    Gtk::Image *image = manage(new Gtk::Image(IconManager::obj().get_icon("go-previous-symbolic", icon_size)));
+    Gtk::Image *image = manage(new Gtk::Image);
+    image->property_icon_name() = "go-previous-symbolic";
+    image->property_icon_size() = GTK_ICON_SIZE_MENU;
     image->property_margin() = icon_margin;
     m_all_notes_button->set_image(*image);
     m_all_notes_button->set_tooltip_text(_("All Notes"));
@@ -158,7 +159,9 @@ namespace gnote {
     Gtk::Grid *right_box = manage(new Gtk::Grid);
     right_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
     right_box->set_column_spacing(5);
-    image = manage(new Gtk::Image(IconManager::obj().get_icon("edit-find-symbolic", icon_size)));
+    image = manage(new Gtk::Image);
+    image->property_icon_name() = "edit-find-symbolic";
+    image->property_icon_size() = GTK_ICON_SIZE_MENU;
     image->property_margin() = icon_margin;
     m_search_button.set_image(*image);
     m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
@@ -168,7 +171,9 @@ namespace gnote {
     right_box->attach(m_search_button, 0, 0, 1, 1);
 
     m_window_actions_button = manage(new Gtk::Button);
-    image = manage(new Gtk::Image(IconManager::obj().get_icon("emblem-system-symbolic", icon_size)));
+    image = manage(new Gtk::Image);
+    image->property_icon_name() = "emblem-system-symbolic";
+    image->property_icon_size() = GTK_ICON_SIZE_MENU;
     image->property_margin() = icon_margin;
     m_window_actions_button->set_image(*image);
     m_window_actions_button->signal_clicked().connect(
