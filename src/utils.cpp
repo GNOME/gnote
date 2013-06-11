@@ -304,6 +304,7 @@ namespace gnote {
                                        const Glib::ustring & msg)
       : Gtk::Dialog()
       , m_extra_widget(NULL)
+      , m_image(NULL)
     {
       set_border_width(5);
       set_resizable(false);
@@ -340,7 +341,6 @@ namespace gnote {
                                   Gtk::ICON_SIZE_DIALOG);
         break;
       default:
-        m_image = new Gtk::Image ();
         break;
       }
 
@@ -370,13 +370,15 @@ namespace gnote {
       label->show();
       label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
 
-      label = manage(new Gtk::Label(msg));
-      label->set_use_markup(true);
-      label->set_justify(Gtk::JUSTIFY_LEFT);
-      label->set_line_wrap(true);
-      label->set_alignment (0.0f, 0.5f);
-      label->show();
-      label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
+      if(msg != "") {
+        label = manage(new Gtk::Label(msg));
+        label->set_use_markup(true);
+        label->set_justify(Gtk::JUSTIFY_LEFT);
+        label->set_line_wrap(true);
+        label->set_alignment (0.0f, 0.5f);
+        label->show();
+        label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
+      }
       
       m_extra_widget_vbox = manage(new Gtk::Grid);
       m_extra_widget_vbox->show();
