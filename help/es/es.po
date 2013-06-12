@@ -4,25 +4,25 @@
 # Jorge González <jorgegonz@svn.gnome.org>, 2009.
 # 
 # Juan Matías Olmos <colonizare@yahoo.com.ar>, 2011., 2011.
-# Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2012.
 # Nicolás Satragno <nsatragno@gnome.org>, 2012.
 # Miguel Rodriguez Núñez <bokerones.fritos@gmail.com>, 2013.
 # miguel rodriguez nuñez <bokerones.fritos@gmail.com>, 2012, 2013.
 # MIguel Rodriguez Núñez <bokerones.fritos@gmail.com>, 2013.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2011., 2012, 2013.
+# Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2012, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote-help.master\n"
-"POT-Creation-Date: 2013-06-05 19:50+0000\n"
-"PO-Revision-Date: 2013-06-10 13:52+0200\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2013-06-11 20:23+0000\n"
+"PO-Revision-Date: 2013-06-12 10:32+0200\n"
+"Last-Translator: Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -189,7 +189,7 @@ msgstr "Insertar enlaces de bugzilla"
 #: C/gnote-addin-replacetitle.page:19(credit/name)
 #: C/gnote-addin-sync-local.page:16(credit/name)
 #: C/gnote-addin-sync-webdav.page:16(credit/name)
-#: C/gnote-addin-tableofcontent.page:54(credit/name)
+#: C/gnote-addin-tableofcontents.page:54(credit/name)
 #: C/gnote-addin-timestamp.page:20(credit/name)
 #: C/gnote-addin-underline.page:19(credit/name)
 #: C/gnote-bulleted-lists.page:19(credit/name)
@@ -218,8 +218,8 @@ msgstr "Adam Dingle"
 #: C/gnote-addin-replacetitle.page:21(credit/years)
 #: C/gnote-addin-sync-local.page:18(credit/years)
 #: C/gnote-addin-sync-webdav.page:18(credit/years)
-#: C/gnote-addin-tableofcontent.page:52(credit/years)
-#: C/gnote-addin-tableofcontent.page:56(credit/years)
+#: C/gnote-addin-tableofcontents.page:52(credit/years)
+#: C/gnote-addin-tableofcontents.page:56(credit/years)
 #: C/gnote-addin-timestamp.page:22(credit/years)
 #: C/gnote-addin-underline.page:21(credit/years)
 #: C/gnote-bulleted-lists.page:21(credit/years)
@@ -646,7 +646,20 @@ msgstr ""
 "Después de seleccionar la carpeta que quiere, pulse el botón <gui>Guardar</"
 "gui>. Use el botón <gui>Limpiar</gui> para desconectar la sincronización."
 
-#: C/gnote-addin-tableofcontent.page:43(license/p)
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gnote-addin-tableofcontents.page:112(media)
+msgctxt "_"
+msgid ""
+"external ref='figures/gnote-addin-table-of-contents.png' "
+"md5='15b52d64e171a3a03a13f0a2def2f3e3'"
+msgstr ""
+"external ref='figures/gnote-addin-table-of-contents.png' "
+"md5='15b52d64e171a3a03a13f0a2def2f3e3'"
+
+#: C/gnote-addin-tableofcontents.page:43(license/p)
 msgid ""
 "This <em>help topic</em> is licensed under the <link href=\"http://www.gnu."
 "org/licenses/fdl-1.1.html\"> GNU Free Documentation License, Version 1.1</"
@@ -658,23 +671,23 @@ msgstr ""
 "1.1</link> (GFDL). Significa que es libre de copiar, distribuir y o "
 "modificar este documento, bajo las mismas condiciones."
 
-#: C/gnote-addin-tableofcontent.page:52(credit/name)
+#: C/gnote-addin-tableofcontents.page:52(credit/name)
 msgid "Luc Pionchon"
 msgstr "Luc Pionchon"
 
-#: C/gnote-addin-tableofcontent.page:75(info/desc)
+#: C/gnote-addin-tableofcontents.page:75(info/desc)
 msgid "Navigate long structured notes"
 msgstr "Navegar por las notas grandes estructuradas"
 
-#: C/gnote-addin-tableofcontent.page:79(page/title)
+#: C/gnote-addin-tableofcontents.page:79(page/title)
 msgid "Adding a Table of Contents"
 msgstr "Añadir una tabla de contenidos."
 
-#: C/gnote-addin-tableofcontent.page:81(page/desc)
+#: C/gnote-addin-tableofcontents.page:81(page/desc)
 msgid "<em>Navigate long structured notes</em>"
 msgstr "<em>Navegar por las notas grandes estructuradas</em>"
 
-#: C/gnote-addin-tableofcontent.page:83(note/p)
+#: C/gnote-addin-tableofcontents.page:83(note/p)
 msgid ""
 "This is an add-in to <app>Gnotes</app>. When this add-in is installed, there "
 "is a <gui>Table of Contents</gui> entry in the <gui>Tools</gui> menu. See "
@@ -685,11 +698,11 @@ msgstr ""
 "<gui>Herramientas</gui>. Consulte la <link xref=\"addins-preferences\"/> "
 "para saber como se activa un complemento."
 
-#: C/gnote-addin-tableofcontent.page:91(section/title)
+#: C/gnote-addin-tableofcontents.page:91(section/title)
 msgid "In a nutshell"
 msgstr "En una palabra"
 
-#: C/gnote-addin-tableofcontent.page:95(item/p)
+#: C/gnote-addin-tableofcontents.page:95(item/p)
 msgid ""
 "A heading is a full line of text, formatted with <gui>Bold+Huge</gui> or "
 "<gui>Bold+Large</gui>."
@@ -697,7 +710,7 @@ msgstr ""
 "Una cabecera es una línea completa de texto, formateada en <gui>Negrita "
 "enorme</gui> o <gui>Negrita grande</gui>."
 
-#: C/gnote-addin-tableofcontent.page:98(item/p)
+#: C/gnote-addin-tableofcontents.page:98(item/p)
 msgid ""
 "Set headings with <keyseq><key>Ctrl</key><key>1</key></keyseq> or "
 "<keyseq><key>Ctrl</key><key>2</key></keyseq>."
@@ -705,7 +718,7 @@ msgstr ""
 "Configure una cabecera usando la combinación de teclas <keyseq><key>Ctrl</"
 "key><key>1</key></keyseq> o <keyseq><key>Ctrl</key><key>2</key></keyseq>."
 
-#: C/gnote-addin-tableofcontent.page:103(item/p)
+#: C/gnote-addin-tableofcontents.page:103(item/p)
 msgid ""
 "Open the table of contents with <keyseq><key>Ctrl</key><key>Alt</key><key>1</"
 "key></keyseq>, and jump to any heading."
@@ -713,11 +726,19 @@ msgstr ""
 "Abra la tabla de contenidos con la combinación de teclas <keyseq><key>Ctrl</"
 "key><key>Alt</key><key>1</key></keyseq>, y salta a cualquier cabecera."
 
-#: C/gnote-addin-tableofcontent.page:110(section/title)
+#: C/gnote-addin-tableofcontents.page:109(section/title)
+msgid "Screenshot"
+msgstr "Captura de pantalla"
+
+#: C/gnote-addin-tableofcontents.page:111(figure/title)
+msgid "A structured note with its table of contents"
+msgstr "Una nota estructurada con su tabla de contenidos"
+
+#: C/gnote-addin-tableofcontents.page:118(section/title)
 msgid "Navigating through long notes"
 msgstr "Navegar por las notas grandes"
 
-#: C/gnote-addin-tableofcontent.page:112(section/p)
+#: C/gnote-addin-tableofcontents.page:120(section/p)
 msgid ""
 "A long note may become difficult to navigate. It is then natural to "
 "structure the note by marking sections and subsections with headings."
@@ -726,7 +747,7 @@ msgstr ""
 "Entonces lo normal es estructurar la nota por secciones y subsecciones "
 "mediante las cabeceras."
 
-#: C/gnote-addin-tableofcontent.page:118(section/p)
+#: C/gnote-addin-tableofcontents.page:126(section/p)
 msgid ""
 "This add-in makes it easy to navigate through long structured notes. Once "
 "you have set headings in your note, the table of contents of the note will "
@@ -737,17 +758,17 @@ msgstr ""
 "de contenidos de la nota se mostrará en un menú. Entonces puede saltar "
 "directamente desde el menú a cualquier cabecera."
 
-#: C/gnote-addin-tableofcontent.page:128(section/title)
+#: C/gnote-addin-tableofcontents.page:136(section/title)
 msgid "Structuring your notes with headings"
 msgstr "Estructurar sus notas con las cabeceras"
 
-#: C/gnote-addin-tableofcontent.page:130(section/p)
+#: C/gnote-addin-tableofcontents.page:138(section/p)
 msgid "A heading is simply a complete line with specific text formatting:"
 msgstr ""
 "Una cabecera es simplemente una línea completa con un formato de texto "
 "específico:"
 
-#: C/gnote-addin-tableofcontent.page:134(item/p)
+#: C/gnote-addin-tableofcontents.page:142(item/p)
 msgid ""
 "Level 1 headings, for sections, are lines formatted with a <gui>Bold+Huge</"
 "gui> font."
@@ -755,7 +776,7 @@ msgstr ""
 "Las cabeceras de nivel 1, por secciones, son líneas formateadas con una "
 "tipografía <gui>Negrita y enorme</gui>."
 
-#: C/gnote-addin-tableofcontent.page:135(item/p)
+#: C/gnote-addin-tableofcontents.page:143(item/p)
 msgid ""
 "Level 2 headings, for subsections, are lines formatted with a <gui>Bold"
 "+Large</gui> font."
@@ -763,11 +784,11 @@ msgstr ""
 "Las cabeceras de nivel 2, para subsecciones, son líneas formateadas con una "
 "tipografía <gui>Negrita y grande</gui>."
 
-#: C/gnote-addin-tableofcontent.page:139(section/p)
+#: C/gnote-addin-tableofcontents.page:147(section/p)
 msgid "To format a heading line, either:"
 msgstr "Para formatear un línea de cabecera, haga lo siguiente:"
 
-#: C/gnote-addin-tableofcontent.page:143(item/p)
+#: C/gnote-addin-tableofcontents.page:151(item/p)
 msgid ""
 "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
 "<guiseq><gui>Tools</gui><gui>Table of Contents</gui></guiseq> menu."
@@ -776,7 +797,7 @@ msgstr ""
 "en el menú <guiseq><gui>Herramientas</gui><gui>Tabla de contenidos</gui></"
 "guiseq>."
 
-#: C/gnote-addin-tableofcontent.page:148(item/p)
+#: C/gnote-addin-tableofcontents.page:156(item/p)
 msgid ""
 "Use the keyboard shortcuts <keyseq><key>Ctrl</key><key>1</key></keyseq> and "
 "<keyseq><key>Ctrl</key><key>2</key></keyseq> for headings of level 1 and 2."
@@ -785,7 +806,7 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>2</key></keyseq> para cabeceras de nivel 1 y 2 "
 "respectivamente."
 
-#: C/gnote-addin-tableofcontent.page:153(note/p)
+#: C/gnote-addin-tableofcontents.page:161(note/p)
 msgid ""
 "These commands apply the formatting to the complete line. You don't need to "
 "select it first. It is enough if the cursor is on the line."
@@ -793,7 +814,7 @@ msgstr ""
 "Esas opciones dan formato a la línea completa. No necesita seleccionarlo "
 "primero. Es suficiente con poner el cursor sobre la línea."
 
-#: C/gnote-addin-tableofcontent.page:157(note/p)
+#: C/gnote-addin-tableofcontents.page:165(note/p)
 msgid ""
 "Alternatively, with the cursor on a new line, activate the heading command "
 "and then enter the heading title."
@@ -801,7 +822,7 @@ msgstr ""
 "Alternativamente, con el cursor en una línea nueva, active el comando de la "
 "cabecera e introduzca el título de la cabecera."
 
-#: C/gnote-addin-tableofcontent.page:161(section/p)
+#: C/gnote-addin-tableofcontents.page:169(section/p)
 msgid ""
 "You can even use the normal formatting commands from the <gui>Text</gui> "
 "menu: <gui>Bold</gui>, <gui>Large</gui> and <gui>Huge</gui>, and their "
@@ -818,15 +839,15 @@ msgstr ""
 "encabezado de nivel 1. Consulte la <link xref=\"editing-notes\"/> para "
 "conocer cómo configurar el estilo de texto."
 
-#: C/gnote-addin-tableofcontent.page:170(section/title)
+#: C/gnote-addin-tableofcontents.page:178(section/title)
 msgid "Showing the table of contents"
 msgstr "Mostrar los contenidos de la tabla."
 
-#: C/gnote-addin-tableofcontent.page:172(section/p)
+#: C/gnote-addin-tableofcontents.page:180(section/p)
 msgid "You can access the table of contents either:"
 msgstr "Puede acceder a la tabla de contenidos, como sigue:"
 
-#: C/gnote-addin-tableofcontent.page:174(item/p)
+#: C/gnote-addin-tableofcontents.page:182(item/p)
 msgid ""
 "In the menu <guiseq><gui>toolbar</gui><gui>Tools</gui><gui>Table of "
 "Contents</gui></guiseq>."
@@ -834,7 +855,7 @@ msgstr ""
 "En el menú <guiseq><gui>barra de herramientas</gui><gui>Herramientas</"
 "gui><gui>Tabla de contenidos</gui></guiseq>."
 
-#: C/gnote-addin-tableofcontent.page:175(item/p)
+#: C/gnote-addin-tableofcontents.page:183(item/p)
 msgid ""
 "In <guiseq><gui>context menu</gui><gui>Table of Contents</gui></guiseq> "
 "(<keyseq>right-click</keyseq> on the note window)."
@@ -842,7 +863,7 @@ msgstr ""
 "En el <guiseq><gui>menú contextual</gui><gui>Tabla de contenidos</gui></"
 "guiseq> (<keyseq>pulsar botón derecho</keyseq> en la ventana de la nota)."
 
-#: C/gnote-addin-tableofcontent.page:176(item/p)
+#: C/gnote-addin-tableofcontents.page:184(item/p)
 msgid ""
 "In a <gui>popup menu</gui>, with the keyboard shortcut <keyseq><key>Ctrl</"
 "key><key>Alt</key><key>1</key></keyseq>."
@@ -850,7 +871,7 @@ msgstr ""
 "En un <gui>menú emergente</gui>, con la combinación de teclas "
 "<keyseq><key>Ctrl</key><key>Alt</key><key>1</key></keyseq>."
 
-#: C/gnote-addin-tableofcontent.page:177(list/p)
+#: C/gnote-addin-tableofcontents.page:185(list/p)
 msgid ""
 "Then you can navigate up and down with the <gui>arrow keys</gui> and jump to "
 "the selected heading with <key>enter</key>. Or just <keyseq>click</keyseq> "
@@ -860,18 +881,18 @@ msgstr ""
 "a la cabecera seleccionada con la tecla <key>Intro</key>. O sólo "
 "<keyseq>pulsando</keyseq> con el ratón en la cabecera para saltar a ella."
 
-#: C/gnote-addin-tableofcontent.page:183(section/title)
+#: C/gnote-addin-tableofcontents.page:191(section/title)
 msgid "Troubleshooting"
 msgstr "Resolución de problemas"
 
-#: C/gnote-addin-tableofcontent.page:185(item/title)
+#: C/gnote-addin-tableofcontents.page:193(item/title)
 msgid ""
 "<em style=\"strong\">One heading does not show in the table of contents</em>"
 msgstr ""
 "<em style=\"strong\">Una cabecera no se muestra en la tabla de contenidos</"
 "em>"
 
-#: C/gnote-addin-tableofcontent.page:185(item/p)
+#: C/gnote-addin-tableofcontents.page:193(item/p)
 msgid ""
 "There might be some characters in the heading line, such as whitespace "
 "characters, which are not formatted as a heading. Make sure that <em>the "
@@ -882,13 +903,13 @@ msgstr ""
 "línea</em> se formateará como una cabecera. Consulte la <link xref="
 "\"#setheaders\"/>."
 
-#: C/gnote-addin-tableofcontent.page:188(item/title)
+#: C/gnote-addin-tableofcontents.page:196(item/title)
 msgid ""
 "<em style=\"strong\">There is an empty line in the table of contents</em>"
 msgstr ""
 "<em style=\"strong\">Hay una línea vacía en la tabla de contenidos</em>"
 
-#: C/gnote-addin-tableofcontent.page:188(item/p)
+#: C/gnote-addin-tableofcontents.page:196(item/p)
 msgid ""
 "An empty line, possibly including whitespaces, is formatted as a heading. "
 "Jump to this line and delete the area."
@@ -1013,8 +1034,9 @@ msgid ""
 "Select <gui>Decrease Indent</gui> from the Text menu in succession until the "
 "current line is no longer part of the bulleted list."
 msgstr ""
-"Seleccione <gui>Disminuir sangría</gui>, desde el menú «Texto», sucesivamente "
-"hasta que la línea actual no siga formando parte de la lista de topos."
+"Seleccione <gui>Disminuir sangría</gui>, desde el menú «Texto», "
+"sucesivamente hasta que la línea actual no siga formando parte de la lista "
+"de topos."
 
 #: C/gnote-bulleted-lists.page:42(item/p)
 msgid ""
@@ -1404,8 +1426,8 @@ msgid ""
 "<gui>Normal</gui>, <gui>Large</gui>, or <gui>Huge</gui>."
 msgstr ""
 "Actualmente existen cuatro opciones en esta parte del menú: «Pequeña», "
-"«Normal», «Grande» y «Enorme». Cada una de estas opciones representa un tamaño "
-"de tipografía que utilizar con el texto seleccionado en la nota. Para "
+"«Normal», «Grande» y «Enorme». Cada una de estas opciones representa un "
+"tamaño de tipografía que utilizar con el texto seleccionado en la nota. Para "
 "modificar el tamaño de la tipografía, seleccione el texto y luego seleccione "
 "una de las opciones <gui>Pequeña</gui>, <gui>Normal</gui>, <gui>Grande</"
 "gui>, <gui>Enorme</gui>."
@@ -3244,12 +3266,12 @@ msgstr ""
 #~ "that look like this: <inlinegraphic fileref=\"figures/gnote-pinup.png\"/>."
 #~ msgstr ""
 #~ "Para forzar a una nota a estar siempre en el panel, sin importar cuando "
-#~ "se utilizó por última vez, pulse en el icono para «pincharla» al menú. Las "
-#~ "notas que están pinchadas en el menú del panel tendrán un icono de pegado "
-#~ "que se ve así: <inlinegraphic fileref=\"figures/gnote-pindown.png\"/>. "
-#~ "Las notas que no están pinchadas al menú del panel tendrán iconos de "
-#~ "pegado que se ven así: <inlinegraphic fileref=\"figures/gnote-pinup.png\"/"
-#~ ">."
+#~ "se utilizó por última vez, pulse en el icono para «pincharla» al menú. "
+#~ "Las notas que están pinchadas en el menú del panel tendrán un icono de "
+#~ "pegado que se ve así: <inlinegraphic fileref=\"figures/gnote-pindown.png"
+#~ "\"/>. Las notas que no están pinchadas al menú del panel tendrán iconos "
+#~ "de pegado que se ven así: <inlinegraphic fileref=\"figures/gnote-pinup.png"
+#~ "\"/>."
 
 #~ msgid "Gnote Panel Menu"
 #~ msgstr "Menú del panel de Gnote"
@@ -3529,9 +3551,9 @@ msgstr ""
 #~ msgstr "e importar Notas adhesivas."
 
 #~ msgid ""
-#~ "By default, Gnote comes with several pre-installed add-ins: <placeholder-"
-#~ "1/> Since these are preinstalled, they are ready to use and are "
-#~ "automatically loaded into the Gnote interface."
+#~ "By default, Gnote comes with several pre-installed add-ins: "
+#~ "<placeholder-1/> Since these are preinstalled, they are ready to use and "
+#~ "are automatically loaded into the Gnote interface."
 #~ msgstr ""
 #~ "De forma predeterminada, Gnote incluye varios complementos preinstalados: "
 #~ "<placeholder-1/> Dado que estos vienen preinstalados, están listos para "
