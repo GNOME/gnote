@@ -71,19 +71,6 @@ public:
   virtual void remove_main_window_search_action(const std::string & name);
   virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_search_actions();
 private:
-  void make_app_actions();
-  void make_app_menu_items();
-  Glib::RefPtr<Gio::Menu> make_app_menu_section(int section) const;
-  void add_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions,
-                              const Glib::RefPtr<Gtk::Action> & action, int order);
-  void remove_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions, const std::string & name);
-  std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_actions(std::map<int, Glib::RefPtr<Gtk::Action> > & actions);
-
-  Glib::RefPtr<Gtk::UIManager> m_ui;
-  Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
-
-  std::vector<Glib::RefPtr<Gio::SimpleAction> > m_app_actions;
-
   struct AppMenuItem
   {
     int order;
@@ -105,6 +92,23 @@ private:
     };
   };
   typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
+
+  void make_app_actions();
+  void make_app_menu_items();
+  Glib::RefPtr<Gio::Menu> make_app_menu_section(int section) const;
+  void menu_append(const Glib::RefPtr<Gio::Menu> & menu,
+                   const AppMenuItemMultiMap::const_iterator & begin,
+                   const AppMenuItemMultiMap::const_iterator & end) const;
+  void add_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions,
+                              const Glib::RefPtr<Gtk::Action> & action, int order);
+  void remove_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions, const std::string & name);
+  std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_actions(std::map<int, Glib::RefPtr<Gtk::Action> > & actions);
+
+  Glib::RefPtr<Gtk::UIManager> m_ui;
+  Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
+
+  std::vector<Glib::RefPtr<Gio::SimpleAction> > m_app_actions;
+
   AppMenuItemMultiMap m_app_menu_items;
   std::map<int, Glib::RefPtr<Gtk::Action> > m_main_window_search_actions;
 };
