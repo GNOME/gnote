@@ -125,7 +125,7 @@ namespace gnote {
       am.add_app_action("new-notebook");
       am.get_app_action("new-notebook")->signal_activate().connect(
         sigc::mem_fun(*this, &NotebookApplicationAddin::on_new_notebook_action));
-      am.add_app_menu_item(IActionManager::APP_ACTION_NEW, 300, _("New Note_book"), "app.new-notebook");
+      am.add_app_menu_item(IActionManager::APP_ACTION_NEW, 300, _("New Note_book..."), "app.new-notebook");
         
       m_initialized = true;
     }

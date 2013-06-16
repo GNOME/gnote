@@ -257,7 +257,7 @@ namespace gnote {
     add_app_menu_item(APP_ACTION_NEW, 100, _("_New Note"), "app.new-note");
     add_app_menu_item(APP_ACTION_NEW, 200, _("New _Window"), "app.new-window");
     add_app_menu_item(APP_ACTION_MANAGE, 100, _("_Preferences"), "app.show-preferences");
-    add_app_menu_item(APP_ACTION_HELP, 100, _("Help _Contents"), "app.help-contents");
+    add_app_menu_item(APP_ACTION_HELP, 100, _("_Help"), "app.help-contents");
     add_app_menu_item(APP_ACTION_HELP, 200, _("_About"), "app.about");
     add_app_menu_item(APP_ACTION_LAST, 100, _("_Quit"), "app.quit");
   }
