@@ -25,7 +25,7 @@ dnl all the library version.
 dnl if one is harcoded elsewhere, it is a bug
 
 GTK_VERSION=3.6
-LIBGLIBMM_VERSION=2.28
+LIBGLIBMM_VERSION=2.32
 LIBGTKMM_VERSION=3.6
 GTKSPELL_VERSION=3.0.0
 BOOST_VERSION=1.34
