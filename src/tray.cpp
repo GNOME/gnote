@@ -93,7 +93,7 @@ namespace gnote {
   {
     if(!m_inhibit_activate) {
       if(m_note) {
-        MainWindow & window = IGnote::obj().get_window_for_note();
+        MainWindow & window = IGnote::obj().new_main_window();
         window.present_note(m_note);
         window.present();
       }
@@ -207,28 +207,32 @@ namespace gnote {
 
   Gtk::Menu * Tray::make_tray_notes_menu()
   {
-    Gtk::Menu *menu;
+    Gtk::Menu *menu = manage(new Gtk::Menu);
 
-    IActionManager & am(IActionManager::obj());
-    
-    menu = (Gtk::Menu*)am.get_widget("/TrayIconMenu");
-    DBG_ASSERT(menu, "menu not found");
+    m_new_note_item = manage(new Gtk::ImageMenuItem);
+    m_new_note_item->set_image(*manage(new Gtk::Image(Gtk::Stock::NEW, Gtk::ICON_SIZE_MENU)));
+    m_new_note_item->set_label(_("Create _New Note"));
+    m_new_note_item->set_use_underline(true);
+    m_new_note_item->set_tooltip_text(_("Create a new note"));
+    m_new_note_item->show();
+    m_new_note_item->signal_activate()
+      .connect(sigc::mem_fun(*this, &Tray::on_new_note_activate));
+    menu->insert(*m_new_note_item, -1);
+    m_search_notes_item = manage(new Gtk::ImageMenuItem);
+    m_search_notes_item->set_image(*manage(new Gtk::Image(Gtk::Stock::FIND, Gtk::ICON_SIZE_MENU)));
+    m_search_notes_item->set_label(_("_Search All Notes"));
+    m_search_notes_item->set_use_underline(true);
+    m_search_notes_item->set_tooltip_text(_("Open the Search All Notes window"));
+    m_search_notes_item->show();
+    m_search_notes_item->signal_activate()
+      .connect(sigc::mem_fun(*this, &Tray::on_search_notes_activate));
+    menu->insert(*m_search_notes_item, -1);
     
     bool enable_keybindings = Preferences::obj().get_schema_settings(
         Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_KEYBINDINGS);
     if (enable_keybindings) {
-      Gtk::MenuItem *item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
-      if(item) {
-        KeybindingToAccel::add_accelerator(m_keybinder, *item, Preferences::KEYBINDING_CREATE_NEW_NOTE);
-      }
-      item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/ShowSearchAllNotes");
-      if(item) {
-        KeybindingToAccel::add_accelerator(m_keybinder, *item, Preferences::KEYBINDING_OPEN_RECENT_CHANGES);
-      }
-      item = (Gtk::MenuItem*)am.get_widget("/TrayIconMenu/OpenStartHereNote");
-      if(item) {
-        KeybindingToAccel::add_accelerator(m_keybinder, *item, Preferences::KEYBINDING_OPEN_START_HERE);
-      }
+      KeybindingToAccel::add_accelerator(m_keybinder, *m_new_note_item, Preferences::KEYBINDING_CREATE_NEW_NOTE);
+      KeybindingToAccel::add_accelerator(m_keybinder, *m_search_notes_item, Preferences::KEYBINDING_OPEN_RECENT_CHANGES);
     }
 
     return menu;
@@ -249,56 +253,19 @@ namespace gnote {
       m_tray_menu->show_all();
   }
 
-  void Tray::remove_recently_changed_notes()
-  {
-    std::list<Gtk::MenuItem*>::iterator iter;
-    for(iter = m_recent_notes.begin();
-        iter != m_recent_notes.end(); ++iter) {
-      m_tray_menu->remove(**iter);
-    }
-    m_recent_notes.clear();
-  }
-
   void Tray::add_recently_changed_notes()
   {
     int min_size = Preferences::obj().get_schema_settings(
         Preferences::SCHEMA_GNOTE)->get_int(Preferences::MENU_NOTE_COUNT);
     int max_size = 18;
     int list_size = 0;
-    bool menuOpensUpward = m_trayicon.menu_opens_upward();
     NoteMenuItem *item;
 
-    // Remove the old dynamic items
-    remove_recently_changed_notes();
-
-    // Assume menu opens downward, move common items to top of menu
-    ActionManager & am(static_cast<ActionManager &>(IActionManager::obj()));
-    Gtk::MenuItem* newNoteItem = (Gtk::MenuItem*)am.get_widget(
-      "/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
-    Gtk::MenuItem* searchNotesItem = (Gtk::MenuItem*)am.get_widget(
-      "/TrayIconMenu/ShowSearchAllNotes");
-    m_tray_menu->reorder_child (*newNoteItem, 0);
-    int insertion_point = 1; // If menu opens downward
-      
-    // Find all child widgets under the TrayNewNotePlaceholder
-    // element.  Make sure those added by add-ins are
-    // properly accounted for and reordered.
-    std::list<Gtk::Widget*> newNotePlaceholderWidgets;
-    std::list<Gtk::Widget*> allChildWidgets;
-    am.get_placeholder_children("/TrayIconMenu/TrayNewNotePlaceholder", allChildWidgets);
-    for(std::list<Gtk::Widget*>::const_iterator iter = allChildWidgets.begin();
-        iter != allChildWidgets.end(); ++iter) {
-      Gtk::MenuItem * menuitem = dynamic_cast<Gtk::MenuItem*>(*iter);
-
-      if (menuitem && (menuitem != newNoteItem)) {
-        newNotePlaceholderWidgets.push_back(menuitem);
-        m_tray_menu->reorder_child (*menuitem, insertion_point);
-        insertion_point++;
-      }
+    std::vector<Gtk::Widget*> old_items = m_tray_menu->get_children();
+    for(std::vector<Gtk::Widget*>::iterator iter = old_items.begin();
+        iter != old_items.end(); ++iter) {
+      m_tray_menu->remove(**iter);
     }
-      
-    m_tray_menu->reorder_child (*searchNotesItem, insertion_point);
-    insertion_point++;
 
     sharp::DateTime days_ago(sharp::DateTime::now());
     days_ago.add_days(-3);
@@ -343,11 +310,7 @@ namespace gnote {
 
       if (show) {
         item = Gtk::manage(new NoteMenuItem (note, true));
-        // Add this widget to the menu (+insertion_point to add after new+search+...)
-        m_tray_menu->insert(*item, list_size + insertion_point);
-        // Keep track of this item so we can remove it later
-        m_recent_notes.push_back(item);
-        
+        m_tray_menu->insert(*item, -1);
         list_size++;
       }
     }
@@ -355,14 +318,7 @@ namespace gnote {
     Note::Ptr start = m_manager.find_by_uri(m_manager.start_note_uri());
     if (start) {
       item = Gtk::manage(new NoteMenuItem(start, false));
-      if (menuOpensUpward) {
-        m_tray_menu->insert (*item, list_size + insertion_point);
-      }
-      else {
-        m_tray_menu->insert (*item, insertion_point);
-      }
-      m_recent_notes.push_back(item);
-
+      m_tray_menu->insert(*item, -1);
       list_size++;
 
       bool enable_keybindings = Preferences::obj().get_schema_settings(
@@ -372,27 +328,35 @@ namespace gnote {
       }
     }
 
-
-    // FIXME: Rearrange this stuff to have less wasteful reordering
-    if (menuOpensUpward) {
-      // Relocate common items to bottom of menu
-      insertion_point -= 1;
-      m_tray_menu->reorder_child (*searchNotesItem, list_size + insertion_point);
-      for(std::list<Gtk::Widget*>::iterator widget = newNotePlaceholderWidgets.begin();
-          widget != newNotePlaceholderWidgets.end(); ++widget) {
-        Gtk::MenuItem *menuitem = dynamic_cast<Gtk::MenuItem*>(*widget);
-        if(menuitem) {
-          m_tray_menu->reorder_child (*menuitem, list_size + insertion_point);
-        }
-      }
-      m_tray_menu->reorder_child (*newNoteItem, list_size + insertion_point);
-      insertion_point = list_size;
+    bool menuOpensUpward = m_trayicon.menu_opens_upward();
+    ActionManager & am(static_cast<ActionManager &>(IActionManager::obj()));
+    int insertion_point = 0; // If menu opens downward
+    if(menuOpensUpward) {
+      insertion_point = -1;
     }
 
     Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem());
     m_tray_menu->insert(*separator, insertion_point);
-    m_recent_notes.push_back(separator);
+    m_tray_menu->insert(*m_search_notes_item, insertion_point);
+    std::vector<Gtk::MenuItem*> items = am.get_tray_menu_items();
+    for(std::vector<Gtk::MenuItem*>::iterator iter = items.begin(); iter != items.end(); ++iter) {
+      m_tray_menu->insert(**iter, insertion_point);
+    }
+    m_tray_menu->insert(*m_new_note_item, insertion_point);
   }
+
+  void Tray::on_new_note_activate()
+  {
+    MainWindow &win = IGnote::obj().new_main_window();
+    win.new_note();
+    win.present();
+  }
+
+  void Tray::on_search_notes_activate()
+  {
+    IGnote::obj().new_main_window().present();
+  }
+
 
   TrayIcon::TrayIcon(IKeybinder & keybinder, NoteManager & manager)
     : Gtk::StatusIcon()

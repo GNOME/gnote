@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,9 +24,6 @@
 #define __NOTEBOOK_APPLICATION_ADDIN_HPP__
 
 #include <list>
-
-#include <gdkmm/pixbuf.h>
-#include <gtkmm/actiongroup.h>
 
 #include "applicationaddin.hpp"
 #include "note.hpp"
@@ -59,8 +56,7 @@ namespace gnote {
       void on_new_notebook_action(const Glib::VariantBase&);
 
       bool m_initialized;
-      guint m_notebookUi;
-      Glib::RefPtr<Gtk::ActionGroup> m_actionGroup;
+      Gtk::MenuItem                 *m_tray_menu_item;
       Gtk::Menu                     *m_trayNotebookMenu;
       std::list<Gtk::MenuItem*>      m_trayNotebookMenuItems;
     };

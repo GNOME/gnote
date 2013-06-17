@@ -59,10 +59,7 @@
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 
-#include <libxml/tree.h>
-
 #include "sharp/string.hpp"
-#include "sharp/xml.hpp"
 #include "debug.hpp"
 #include "actionmanager.hpp"
 #include "iconmanager.hpp"
@@ -70,93 +67,11 @@
 namespace gnote {
 
   ActionManager::ActionManager()
-    : m_ui(Gtk::UIManager::create())
-    , m_main_window_actions(Gtk::ActionGroup::create("MainWindow"))
+    : m_main_window_actions(Gtk::ActionGroup::create("MainWindow"))
   {
     populate_action_groups();
     make_app_actions();
     make_app_menu_items();
-  }
-
-
-  void ActionManager::load_interface()
-  {
-    Gtk::UIManager::ui_merge_id id = m_ui->add_ui_from_file(DATADIR"/gnote/UIManagerLayout.xml");
-    DBG_ASSERT(id, "merge failed");
-    Gtk::Window::set_default_icon_name("gnote");
-
-    Gtk::ImageMenuItem *imageitem = (Gtk::ImageMenuItem*)m_ui->get_widget (
-      "/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNote");
-    DBG_ASSERT(imageitem, "Item not found");
-    if (imageitem) {
-      imageitem->set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 16))));
-    }
-  }
-
-
-  /// <summary>
-  /// Get all widgets represents by XML elements that are children
-  /// of the placeholder element specified by path.
-  /// </summary>
-  /// <param name="path">
-  /// A <see cref="System.String"/> representing the path to
-  /// the placeholder of interest.
-  /// </param>
-  /// <returns>
-  /// A <see cref="IList`1"/> of Gtk.Widget objects corresponding
-  /// to the XML child elements of the placeholder element.
-  /// </returns>
-  void ActionManager::get_placeholder_children(const std::string & path, 
-                                               std::list<Gtk::Widget*> & children) const
-  {
-    // Wrap the UIManager XML in a root element
-    // so that it's real parseable XML.
-    std::string xml = "<root>" + m_ui->get_ui() + "</root>";
-
-    xmlDocPtr doc = xmlParseDoc((const xmlChar*)xml.c_str());
-    if(doc == NULL) {
-      return;
-    }
-        
-    // Get the element name
-    std::string placeholderName = sharp::string_substring(path, sharp::string_last_index_of(
-                                                            path, "/") + 1);
-    DBG_OUT("path = %s placeholdername = %s", path.c_str(), placeholderName.c_str());
-
-    sharp::XmlNodeSet nodes = sharp::xml_node_xpath_find(xmlDocGetRootElement(doc), 
-                                                         "//placeholder");
-    // Find the placeholder specified in the path
-    for(sharp::XmlNodeSet::const_iterator iter = nodes.begin();
-        iter != nodes.end(); ++iter) {
-      xmlNodePtr placeholderNode = *iter;
-
-      if (placeholderNode->type == XML_ELEMENT_NODE) {
-
-        xmlChar * prop = xmlGetProp(placeholderNode, (const xmlChar*)"name");
-        if(!prop) {
-          continue;
-        }
-        if(xmlStrEqual(prop, (const xmlChar*)placeholderName.c_str())) {
-
-          // Return each child element's widget
-          for(xmlNodePtr widgetNode = placeholderNode->children;
-              widgetNode; widgetNode = widgetNode->next) {
-
-            if(widgetNode->type == XML_ELEMENT_NODE) {
-
-              xmlChar * widgetName = xmlGetProp(widgetNode, (const xmlChar*)"name");
-              if(widgetName) {
-                children.push_back(get_widget(path + "/"
-                                              + (const char*)widgetName));
-                xmlFree(widgetName);
-              }
-            }
-          }
-        }
-        xmlFree(prop);
-      }
-    }
-    xmlFreeDoc(doc);
   }
 
 
@@ -196,21 +111,15 @@ namespace gnote {
       "ShowSearchAllNotesAction", Gtk::Stock::FIND,
       _("_Search All Notes"),  _("Open the Search All Notes window"));
     m_main_window_actions->add(action);
-
-    m_ui->insert_action_group(m_main_window_actions);
   }
 
   Glib::RefPtr<Gtk::Action> ActionManager::find_action_by_name(const std::string & n) const
   {
-    Glib::ListHandle<Glib::RefPtr<Gtk::ActionGroup> > actiongroups = m_ui->get_action_groups();
-    for(Glib::ListHandle<Glib::RefPtr<Gtk::ActionGroup> >::const_iterator iter(actiongroups.begin()); 
-        iter != actiongroups.end(); ++iter) {
-      Glib::ListHandle<Glib::RefPtr<Gtk::Action> > actions = (*iter)->get_actions();
-      for(Glib::ListHandle<Glib::RefPtr<Gtk::Action> >::const_iterator iter2(actions.begin()); 
-          iter2 != actions.end(); ++iter2) {
-        if((*iter2)->get_name() == n) {
-          return *iter2;
-        }
+    Glib::ListHandle<Glib::RefPtr<Gtk::Action> > actions = m_main_window_actions->get_actions();
+    for(Glib::ListHandle<Glib::RefPtr<Gtk::Action> >::const_iterator iter2(actions.begin()); 
+        iter2 != actions.end(); ++iter2) {
+      if((*iter2)->get_name() == n) {
+        return *iter2;
       }
     }
     DBG_OUT("%s not found", n.c_str());
@@ -360,6 +269,27 @@ namespace gnote {
       res.push_back(iter->second);
     }
     return res;
+  }
+
+  void ActionManager::add_tray_menu_item(Gtk::MenuItem & item)
+  {
+    m_tray_menu_items.push_back(&item);
+  }
+
+  void ActionManager::remove_tray_menu_item(Gtk::MenuItem & item)
+  {
+    for(std::vector<Gtk::MenuItem*>::iterator iter = m_tray_menu_items.begin();
+        iter != m_tray_menu_items.end(); ++iter) {
+      if(*iter == &item) {
+        m_tray_menu_items.erase(iter);
+        break;
+      }
+    }
+  }
+
+  std::vector<Gtk::MenuItem*> ActionManager::get_tray_menu_items()
+  {
+    return m_tray_menu_items;
   }
 
 }

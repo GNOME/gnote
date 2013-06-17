@@ -78,14 +78,17 @@ public:
   Gtk::Menu * tray_menu() 
     { return m_tray_menu; }
   void update_tray_menu(Gtk::Widget * parent);
-  void remove_recently_changed_notes();
   void add_recently_changed_notes();
 private:
+  void on_new_note_activate();
+  void on_search_notes_activate();
+
   NoteManager & m_manager;
   IGnoteTray  & m_trayicon;
   Gtk::Menu *m_tray_menu;
+  Gtk::ImageMenuItem *m_new_note_item;
+  Gtk::ImageMenuItem *m_search_notes_item;
   bool       m_menu_added;
-  std::list<Gtk::MenuItem*> m_recent_notes;
   IKeybinder & m_keybinder;
 };
 

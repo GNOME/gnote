@@ -152,7 +152,7 @@ namespace gnote {
     m_manager = new NoteManager(note_path);
     new notebooks::NotebookManager(default_note_manager());
     m_keybinder = new XKeybinder();
-    (new ActionManager)->load_interface();
+    new ActionManager;
     sync::SyncManager::init(default_note_manager());
 
     setup_global_actions();

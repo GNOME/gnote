@@ -29,8 +29,6 @@
 #include <giomm/menu.h>
 #include <giomm/simpleaction.h>
 #include <gtkmm/action.h>
-#include <gtkmm/uimanager.h>
-#include <gdkmm/pixbuf.h>
 
 #include "iactionmanager.hpp"
 
@@ -46,18 +44,9 @@ public:
     {
       return find_action_by_name(n);
     }
-  virtual Gtk::Widget * get_widget(const std::string &n) const
-    {
-      return m_ui->get_widget(n);
-    }
-  void load_interface();
-  void get_placeholder_children(const std::string & p, std::list<Gtk::Widget*> & placeholders) const;
   void populate_action_groups();
   Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n) const;
-  virtual const Glib::RefPtr<Gtk::UIManager> & get_ui()
-    {
-      return m_ui;
-    }
+
   virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const;
   const std::vector<Glib::RefPtr<Gio::SimpleAction> > & get_app_actions() const
     {
@@ -70,6 +59,10 @@ public:
   virtual void add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order);
   virtual void remove_main_window_search_action(const std::string & name);
   virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_search_actions();
+
+  virtual void add_tray_menu_item(Gtk::MenuItem & item);
+  virtual void remove_tray_menu_item(Gtk::MenuItem & item);
+  virtual std::vector<Gtk::MenuItem*> get_tray_menu_items();
 private:
   void make_app_actions();
   void make_app_menu_items();
@@ -79,7 +72,6 @@ private:
   void remove_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions, const std::string & name);
   std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_actions(std::map<int, Glib::RefPtr<Gtk::Action> > & actions);
 
-  Glib::RefPtr<Gtk::UIManager> m_ui;
   Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
 
   std::vector<Glib::RefPtr<Gio::SimpleAction> > m_app_actions;
@@ -107,6 +99,8 @@ private:
   typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
   AppMenuItemMultiMap m_app_menu_items;
   std::map<int, Glib::RefPtr<Gtk::Action> > m_main_window_search_actions;
+
+  std::vector<Gtk::MenuItem*> m_tray_menu_items;
 };
 
 

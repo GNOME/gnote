@@ -52,62 +52,32 @@ namespace gnote {
 
     NotebookApplicationAddin::NotebookApplicationAddin()
       : m_initialized(false)
-      , m_notebookUi(0)
+      , m_tray_menu_item(NULL)
       , m_trayNotebookMenu(NULL)
     {
     }
 
 
 
-    static const char * uixml = "          <ui>"
-          "  <popup name='TrayIconMenu' action='TrayIconMenuAction'>"
-          "    <placeholder name='TrayNewNotePlaceholder'>"
-          "      <menuitem name='TrayNewNotebookMenu' action='TrayNewNotebookMenuAction' position='top' />"
-          "    </placeholder>"
-          "  </popup>"
-          "</ui>";
-
     void NotebookApplicationAddin::initialize ()
     {
-      m_actionGroup = Glib::RefPtr<Gtk::ActionGroup>(Gtk::ActionGroup::create("Notebooks"));
-      m_actionGroup->add(  
-        Gtk::Action::create ("TrayNewNotebookMenuAction", Gtk::Stock::NEW,
-                             _("Notebooks"),
-                             _("Create a new note in a notebook")));
-          
+      m_tray_menu_item = new Gtk::ImageMenuItem(
+        *manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTEBOOK, 16))),
+        _("Notebooks"));
+      m_tray_menu_item->set_tooltip_text(_("Create a new note in a notebook"));
+      m_tray_menu_item->show();
       IActionManager & am(IActionManager::obj());
-      m_notebookUi = am.get_ui()->add_ui_from_string (uixml);
-      
-      am.get_ui()->insert_action_group (m_actionGroup, 0);
-      
-      Gtk::MenuItem *item = dynamic_cast<Gtk::MenuItem*>(
-        am.get_widget ("/TrayIconMenu/TrayNewNotePlaceholder/TrayNewNotebookMenu"));
-      if (item) {
-        Gtk::ImageMenuItem *image_item = dynamic_cast<Gtk::ImageMenuItem*>(item);
-        if (image_item) {
-          image_item->set_image(*manage(new Gtk::Image(
-              IconManager::obj().get_icon(IconManager::NOTEBOOK, 16))));
-        }
-        m_trayNotebookMenu = manage(new Gtk::Menu());
-        item->set_submenu(*m_trayNotebookMenu);
-        
-        m_trayNotebookMenu->signal_show()
-          .connect(sigc::mem_fun(*this, 
-                                 &NotebookApplicationAddin::on_tray_notebook_menu_shown));
-        m_trayNotebookMenu->signal_hide()
-          .connect(sigc::mem_fun(*this, 
-                                 &NotebookApplicationAddin::on_tray_notebook_menu_hidden));
-      }
-      
-      Gtk::ImageMenuItem *imageitem = dynamic_cast<Gtk::ImageMenuItem*>(
-        am.get_widget ("/NotebooksTreeContextMenu/NewNotebookNote"));
-      if (imageitem) {
-        imageitem->set_image(*manage(new Gtk::Image(
-            IconManager::obj().get_icon(IconManager::NOTE_NEW, 16))));
-      }
+      am.add_tray_menu_item(*m_tray_menu_item);
+      m_trayNotebookMenu = manage(new Gtk::Menu());
+      m_tray_menu_item->set_submenu(*m_trayNotebookMenu);
+
+      m_trayNotebookMenu->signal_show()
+        .connect(sigc::mem_fun(*this, &NotebookApplicationAddin::on_tray_notebook_menu_shown));
+      m_trayNotebookMenu->signal_hide()
+          .connect(sigc::mem_fun(*this, &NotebookApplicationAddin::on_tray_notebook_menu_hidden));
 
       NoteManager & nm(note_manager());
-      
+
       for(Note::List::const_iterator iter = nm.get_notes().begin();
           iter != nm.get_notes().end(); ++iter) {
         const Note::Ptr & note(*iter);
@@ -134,24 +104,16 @@ namespace gnote {
     void NotebookApplicationAddin::shutdown ()
     {
       IActionManager & am(IActionManager::obj());
-      try {
-        am.get_ui()->remove_action_group(m_actionGroup);
-      } 
-      catch (...)
-      {
+      if(m_tray_menu_item) {
+        am.remove_tray_menu_item(*m_tray_menu_item);
+        Gtk::Container *container = m_tray_menu_item->get_parent();
+        if(container) {
+          container->remove(*m_tray_menu_item);
+        }
+        delete m_tray_menu_item;
+        m_tray_menu_item = NULL;
       }
-      try {
-        am.get_ui()->remove_ui(m_notebookUi);
-      } 
-      catch (...)
-      {
-      }
-      m_notebookUi = 0;
-      
-      if (m_trayNotebookMenu) {
-        delete m_trayNotebookMenu;
-      }
-      
+
       m_initialized = false;
     }
     

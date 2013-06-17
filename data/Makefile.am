@@ -34,14 +34,10 @@ $(dbusservice_DATA): $(dbusservice_in_files) Makefile
 
 man_MANS = gnote.1
 
-gnotedatadir = @datadir@/gnote
-gnotedata_DATA = UIManagerLayout.xml
-
 noinst_DATA = 			
 
 
 EXTRA_DIST = 					\
-	UIManagerLayout.xml                     \
 	$(desktop_in_files)     		\
 	$(pkgconfig_in_files)			\
 	org.gnome.gnote.gschema.xml.in		\
