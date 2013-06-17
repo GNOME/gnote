@@ -266,26 +266,25 @@ namespace gnote {
   {
     Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
 
-    // append first section directly to menu, to avoid blank first item in some environments
-    std::pair<AppMenuItemMultiMap::const_iterator, AppMenuItemMultiMap::const_iterator>
-    range = m_app_menu_items.equal_range(APP_ACTION_NEW);
-    if(range.first != m_app_menu_items.end()) {
-      menu_append(menu, range.first, range.second);
+    int pos = 0;
+    Glib::RefPtr<Gio::Menu> section = make_app_menu_section(APP_ACTION_NEW);
+    if(section != 0) {
+      menu->insert_section(pos++, "", section);
     }
 
-    Glib::RefPtr<Gio::Menu> section = make_app_menu_section(APP_ACTION_MANAGE);
+    section = make_app_menu_section(APP_ACTION_MANAGE);
     if(section != 0) {
-      menu->append_section("", section);
+      menu->insert_section(pos++, "", section);
     }
 
     section = make_app_menu_section(APP_ACTION_HELP);
     if(section != 0) {
-      menu->append_section("", section);
+      menu->insert_section(pos++, "", section);
     }
 
     section = make_app_menu_section(APP_ACTION_LAST);
     if(section != 0) {
-      menu->append_section("", section);
+      menu->insert_section(pos++, "", section);
     }
 
     return menu;
@@ -298,26 +297,19 @@ namespace gnote {
 
     Glib::RefPtr<Gio::Menu> section;
     if(range.first != m_app_menu_items.end()) {
+      std::vector<const AppMenuItem*> menu_items;
+      for(AppMenuItemMultiMap::const_iterator iter = range.first; iter != range.second; ++iter) {
+        menu_items.push_back(&iter->second);
+      }
+      std::sort(menu_items.begin(), menu_items.end(), AppMenuItem::ptr_comparator());
+
       section = Gio::Menu::create();
-      menu_append(section, range.first, range.second);
+      for(std::vector<const AppMenuItem*>::iterator iter = menu_items.begin(); iter != menu_items.end(); ++iter) {
+        section->append((*iter)->label, (*iter)->action_def);
+      }
     }
 
     return section;
-  }
-
-  void ActionManager::menu_append(const Glib::RefPtr<Gio::Menu> & menu,
-                                  const AppMenuItemMultiMap::const_iterator & begin,
-                                  const AppMenuItemMultiMap::const_iterator & end) const
-  {
-    std::vector<const AppMenuItem*> menu_items;
-    for(AppMenuItemMultiMap::const_iterator iter = begin; iter != end; ++iter) {
-      menu_items.push_back(&iter->second);
-    }
-    std::sort(menu_items.begin(), menu_items.end(), AppMenuItem::ptr_comparator());
-
-    for(std::vector<const AppMenuItem*>::iterator iter = menu_items.begin(); iter != menu_items.end(); ++iter) {
-      menu->append((*iter)->label, (*iter)->action_def);
-    }
   }
 
   void ActionManager::add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order)
