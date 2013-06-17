@@ -330,9 +330,13 @@ namespace gnote {
 
   void NoteRecentChanges::on_close_window()
   {
-    Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_boolean(
-        Preferences::MAIN_WINDOW_MAXIMIZED,
-        get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED);
+    Glib::RefPtr<Gdk::Window> win = get_window();
+    // background window (for tray to work) might not have GDK window
+    if(win) {
+      Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_boolean(
+          Preferences::MAIN_WINDOW_MAXIMIZED,
+          win->get_state() & Gdk::WINDOW_STATE_MAXIMIZED);
+    }
     std::vector<Gtk::Widget*> current = m_embed_box.get_children();
     for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
         iter != current.end(); ++iter) {
