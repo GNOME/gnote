@@ -478,7 +478,7 @@ namespace gnote {
   }
 
 
-  bool NoteUrlWatcher::on_url_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
+  bool NoteUrlWatcher::on_url_tag_activated(const NoteEditor &,
                               const Gtk::TextIter & start, const Gtk::TextIter & end)
 
   {
@@ -607,7 +607,7 @@ namespace gnote {
     Gtk::TextIter start, end;
     m_url_tag->get_extents (click_iter, start, end);
 
-    on_url_tag_activated (m_url_tag, *(NoteEditor*)get_window()->editor(), start, end);
+    on_url_tag_activated(*(NoteEditor*)get_window()->editor(), start, end);
   }
 
 
@@ -645,7 +645,6 @@ namespace gnote {
     m_on_note_renamed_cid = manager().signal_note_renamed.connect(
       sigc::mem_fun(*this, &NoteLinkWatcher::on_note_renamed));
 
-    m_url_tag = get_note()->get_tag_table()->get_url_tag();
     m_link_tag = get_note()->get_tag_table()->get_link_tag();
     m_broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
   }
@@ -923,7 +922,7 @@ namespace gnote {
     return false;
   }
 
-  bool NoteLinkWatcher::on_link_tag_activated(const NoteTag::Ptr &, const NoteEditor & editor,
+  bool NoteLinkWatcher::on_link_tag_activated(const NoteEditor & editor,
                                               const Gtk::TextIter &start, 
                                               const Gtk::TextIter &end)
   {

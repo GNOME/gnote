@@ -140,7 +140,7 @@ namespace gnote {
     NoteUrlWatcher();
   private:
     std::string get_url(const Gtk::TextIter & start, const Gtk::TextIter & end);
-    bool on_url_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
+    bool on_url_tag_activated(const NoteEditor &,
                               const Gtk::TextIter &, const Gtk::TextIter &);
     void apply_url_to_block (Gtk::TextIter start, Gtk::TextIter end);
     void on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
@@ -186,10 +186,9 @@ namespace gnote {
                       const Gtk::TextIter & start, const Gtk::TextIter &end);
 
     bool open_or_create_link(const NoteEditor &, const Gtk::TextIter &,const Gtk::TextIter &);
-    bool on_link_tag_activated(const NoteTag::Ptr &, const NoteEditor &,
+    bool on_link_tag_activated(const NoteEditor &,
                                const Gtk::TextIter &, const Gtk::TextIter &);
 
-    NoteTag::Ptr m_url_tag;
     NoteTag::Ptr m_link_tag;
     NoteTag::Ptr m_broken_link_tag;
 

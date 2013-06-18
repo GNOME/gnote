@@ -130,7 +130,7 @@ namespace gnote {
   void NoteTag::get_extents(const Gtk::TextIter & iter, Gtk::TextIter & start,
                             Gtk::TextIter & end)
   {
-    Glib::RefPtr<Gtk::TextTag> this_ref(this);
+    Glib::RefPtr<Gtk::TextTag> this_ref = NoteTagTable::instance()->lookup(property_name());
     start = iter;
     if (!start.begins_tag (this_ref)) {
       start.backward_to_tag_toggle (this_ref);
@@ -255,7 +255,7 @@ namespace gnote {
       }
     }
 #endif
-    retval = m_signal_activate(NoteTag::Ptr(this), editor, start, end);
+    retval = m_signal_activate(editor, start, end);
 
     return retval;
   }
@@ -290,7 +290,7 @@ namespace gnote {
     m_widget = value;
 
     try {
-      m_signal_changed(Glib::RefPtr<Gtk::TextTag>(this), false);
+      m_signal_changed(*this, false);
     } catch (sharp::Exception & e) {
       DBG_OUT("Exception calling TagChanged from NoteTag.set_Widget: %s", e.what());
     }

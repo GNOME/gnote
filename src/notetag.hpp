@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -64,7 +64,7 @@ class NoteTag
 public:
   typedef Glib::RefPtr<NoteTag> Ptr;
   typedef Glib::RefPtr<const NoteTag> ConstPtr;
-  typedef sigc::signal<bool, const NoteTag::Ptr &, const NoteEditor &,
+  typedef sigc::signal<bool, const NoteEditor &,
                        const Gtk::TextIter &, const Gtk::TextIter &> TagActivatedHandler;
 
   enum TagFlags {
@@ -148,7 +148,7 @@ public:
     { 
       return m_signal_activate;
     }
-  sigc::signal<void,const Glib::RefPtr<Gtk::TextTag>&,bool> & signal_changed()
+  sigc::signal<void,const Gtk::TextTag&,bool> & signal_changed()
     { 
       return m_signal_changed;
     }
@@ -182,7 +182,7 @@ private:
   int                 m_flags;
   TagActivatedHandler m_signal_activate;
   ContrastPaletteColor m_palette_foreground;
-  sigc::signal<void,const Glib::RefPtr<Gtk::TextTag>&,bool> m_signal_changed;
+  sigc::signal<void,const Gtk::TextTag&,bool> m_signal_changed;
   TagSaveType         m_save_type;
 };
 
