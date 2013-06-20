@@ -86,8 +86,8 @@ namespace gnote {
     signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
     IGnote::obj().signal_quit
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));// to save size/pos
-    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window),
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));// to save size/pos
+    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_W, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
 
     m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<Gtk::MenuItem*>());
@@ -336,7 +336,7 @@ namespace gnote {
 
 
 
-  void NoteRecentChanges::on_close_window()
+  void NoteRecentChanges::close_window()
   {
     Glib::RefPtr<Gdk::Window> win = get_window();
     // background window (for tray to work) might not have GDK window
@@ -360,7 +360,7 @@ namespace gnote {
 
   bool NoteRecentChanges::on_delete(GdkEventAny *)
   {
-    on_close_window();
+    close_window();
     return true;
   }
 
@@ -374,7 +374,7 @@ namespace gnote {
       }
       // Allow Escape to close the window
       else if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embedded())) {
-        on_close_window();
+        close_window();
       }
       else {
         EmbeddableWidget *current_item = currently_embedded();
@@ -458,7 +458,7 @@ namespace gnote {
 	foreground_embedded(**m_embedded_widgets.rbegin());
       }
       else if(get_visible()) {
-        on_close_window();
+        close_window();
       }
     }
   }
@@ -680,7 +680,7 @@ namespace gnote {
     }
     Gtk::MenuItem *item = manage(new Gtk::MenuItem(_("_Close"), true));
     item->add_accelerator("activate", get_accel_group(), GDK_KEY_W, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    item->signal_activate().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
+    item->signal_activate().connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));
     menu->append(*item);
     menu->property_attach_widget() = button;
     menu->show_all();

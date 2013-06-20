@@ -42,6 +42,7 @@ public:
   virtual void show_search_bar() = 0;
   virtual void present_search() = 0;
   virtual void new_note() = 0;
+  virtual void close_window() = 0;
 };
 
 }

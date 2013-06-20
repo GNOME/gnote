@@ -48,6 +48,7 @@ public:
   virtual void present_note(const Note::Ptr & note);
   virtual void new_note();
   virtual void present_search();
+  virtual void close_window();
 
   virtual void embed_widget(EmbeddableWidget &);
   virtual void unembed_widget(EmbeddableWidget &);
@@ -64,7 +65,6 @@ private:
   void on_open_note(const Note::Ptr &);
   void on_open_note_new_window(const Note::Ptr &);
   void on_delete_note();
-  void on_close_window();
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
   bool is_foreground(EmbeddableWidget &);
