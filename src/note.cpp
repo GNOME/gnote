@@ -37,6 +37,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/stock.h>
 
+#include "mainwindow.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "noterenamedialog.hpp"
@@ -378,7 +379,12 @@ namespace gnote {
 
     if (m_window) {
       if(m_window->host()) {
+        MainWindow *win = dynamic_cast<MainWindow*>(m_window->host());
+        bool close_host = win ? win->close_on_escape() : false;
         m_window->host()->unembed_widget(*m_window);
+        if(close_host) {
+          win->close_window();
+        }
       }
       delete m_window; 
       m_window = NULL;

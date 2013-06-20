@@ -43,6 +43,17 @@ public:
   virtual void present_search() = 0;
   virtual void new_note() = 0;
   virtual void close_window() = 0;
+
+  void close_on_escape(bool close)
+    {
+      m_close_on_esc = close;
+    }
+  bool close_on_escape() const
+    {
+      return m_close_on_esc;
+    }
+private:
+  bool m_close_on_esc;
 };
 
 }

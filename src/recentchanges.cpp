@@ -139,7 +139,7 @@ namespace gnote {
     image->property_margin() = icon_margin;
     m_all_notes_button->set_image(*image);
     m_all_notes_button->set_tooltip_text(_("All Notes"));
-    m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::present_search));
+    m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_all_notes_button_clicked));
     m_all_notes_button->show_all();
     left_box->attach(*m_all_notes_button, 0, 0, 1, 1);
 
@@ -327,6 +327,7 @@ namespace gnote {
     MainWindow & window = IGnote::obj().new_main_window();
     window.present();
     window.present_note(note);
+    window.close_on_escape(true);
   }
 
   void NoteRecentChanges::on_delete_note()
@@ -373,7 +374,8 @@ namespace gnote {
         m_search_button.set_active(false);
       }
       // Allow Escape to close the window
-      else if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embedded())) {
+      else if(close_on_escape()
+              || &m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embedded())) {
         close_window();
       }
       else {
@@ -656,6 +658,12 @@ namespace gnote {
     }
     catch(std::bad_cast &) {
     }
+  }
+
+  void NoteRecentChanges::on_all_notes_button_clicked()
+  {
+    close_on_escape(false);  // intentional switch to search, user probably want to work more with this window
+    present_search();
   }
 
   void NoteRecentChanges::on_show_window_menu()

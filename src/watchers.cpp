@@ -917,6 +917,7 @@ namespace gnote {
       }
       if(!window) {
         window = &IGnote::obj().new_main_window();
+        window->close_on_escape(true);
       }
       window->present_note(link);
       window->present();

@@ -41,6 +41,7 @@ MainWindow *MainWindow::get_owning(Gtk::Widget & widget)
 
 MainWindow::MainWindow(const std::string & title)
   : utils::ForcedPresentWindow(title)
+  , m_close_on_esc(false)
 {
 }
 

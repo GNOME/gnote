@@ -77,6 +77,7 @@ private:
   void entry_changed_timeout();
   std::string get_search_text();
   void update_toolbar(EmbeddableWidget & widget);
+  void on_all_notes_button_clicked();
   void on_show_window_menu();
   void on_search_button_toggled();
   void on_find_next_button_clicked();
