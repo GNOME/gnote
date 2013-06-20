@@ -96,6 +96,7 @@ namespace gnote {
         MainWindow & window = IGnote::obj().new_main_window();
         window.present_note(m_note);
         window.present();
+        window.close_on_escape(true);
       }
     }
   }
@@ -350,6 +351,7 @@ namespace gnote {
     MainWindow &win = IGnote::obj().new_main_window();
     win.new_note();
     win.present();
+    win.close_on_escape(true);
   }
 
   void Tray::on_search_notes_activate()

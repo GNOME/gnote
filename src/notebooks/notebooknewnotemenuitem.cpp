@@ -54,7 +54,10 @@ namespace gnote {
       
       // Look for the template note and create a new note
       Note::Ptr note = m_notebook->create_notebook_note ();
-      IGnote::obj().open_note(note);
+      MainWindow &win = IGnote::obj().new_main_window();
+      win.present_note(note);
+      win.present();
+      win.close_on_escape(true);
     }
 
 
