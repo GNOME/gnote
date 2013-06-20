@@ -84,20 +84,20 @@ void ReplaceTitleNoteAddin::replacetitle_button_clicked()
   Glib::RefPtr<Gtk::Clipboard> refClipboard = Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
   const std::string newTitle= refClipboard->wait_for_text();
   Glib::RefPtr<Gtk::TextBuffer> buffer = get_note()->get_buffer();
-  Gtk::TextIter iter = buffer->get_insert()->get_iter();
-  int line = iter.get_line();
-  int line_offset = iter.get_line_offset();
 
   // replace note content
   if(!newTitle.empty()) {
-    std::string new_content(get_note()->xml_content());
-    get_note()->set_xml_content(sharp::string_replace_first(new_content, get_note()->get_title(), newTitle));
-    if(line) {
-      iter = buffer->get_insert()->get_iter();
-      iter.set_line(line);
-      iter.set_line_offset(line_offset);
-      buffer->place_cursor(iter);
-    }
+    Gtk::TextIter title_start = buffer->get_iter_at_offset(0);
+    Gtk::TextIter title_end = title_start;
+    title_end.forward_to_line_end();
+    buffer->erase(title_start, title_end);
+    buffer->insert(buffer->get_iter_at_offset(0), newTitle);
+    title_end = title_start = buffer->get_iter_at_offset(0);
+    title_end.forward_to_line_end();
+    Glib::RefPtr<Gtk::TextTag> title_tag = buffer->get_tag_table()->lookup("note-title");
+    buffer->apply_tag(title_tag, title_start, title_end);
+    // in case the text was multile, new title is only the first line
+    get_note()->set_title(title_start.get_text(title_end));
   }
 }
 
