@@ -120,6 +120,11 @@
       <_summary>Use status icon, when started as an application</_summary>
       <_description>Has affect only when started as an application. When set to TRUE, shows a status icon. If set to FALSE, Search All Notes window is used as main application window, closing which makes application to exit.</_description>
     </key>
+    <key name="open-notes-in-new-window" type="b">
+      <default>false</default>
+      <_summary>Open notes in new window</_summary>
+      <_description>Open notes in new window instead of replacing active content of the same window</_description>
+    </key>
     <child name="global-keybindings" schema="org.gnome.gnote.global-keybindings" />
     <child name="export-html" schema="org.gnome.gnote.export-html" />
     <child name="sync" schema="org.gnome.gnote.sync" />

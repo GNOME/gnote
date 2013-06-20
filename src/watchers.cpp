@@ -910,7 +910,11 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      MainWindow *window = MainWindow::get_owning(const_cast<NoteEditor&>(editor));
+      MainWindow *window = NULL;
+      if(false == Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+                    Preferences::OPEN_NOTES_IN_NEW_WINDOW)) {
+        window = MainWindow::get_owning(const_cast<NoteEditor&>(editor));
+      }
       if(!window) {
         window = &IGnote::obj().new_main_window();
       }

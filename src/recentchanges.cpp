@@ -51,14 +51,17 @@ namespace gnote {
     , m_window_menu_embedded(NULL)
     , m_window_menu_default(NULL)
     , m_keybinder(get_accel_group())
+    , m_open_notes_in_new_window(Preferences::obj().get_schema_settings(
+        Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW))
   {
     set_default_size(450,400);
     set_resizable(true);
     set_hide_titlebar_when_maximized(true);
-    if(Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
-         Preferences::MAIN_WINDOW_MAXIMIZED)) {
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    if(settings->get_boolean(Preferences::MAIN_WINDOW_MAXIMIZED)) {
       maximize();
     }
+    settings->signal_changed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_settings_changed));
 
     set_has_resize_grip(true);
 
@@ -311,7 +314,12 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note(const Note::Ptr & note)
   {
-    present_note(note);
+    if(m_open_notes_in_new_window) {
+      on_open_note_new_window(note);
+    }
+    else {
+      present_note(note);
+    }
   }
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
@@ -703,6 +711,14 @@ namespace gnote {
         m_window_menu_embedded = make_window_menu(m_window_actions_button,
           make_menu_items(items, embed_with_actions->get_widget_actions()));
       }
+    }
+  }
+
+  void NoteRecentChanges::on_settings_changed(const Glib::ustring & key)
+  {
+    if(key == Preferences::OPEN_NOTES_IN_NEW_WINDOW) {
+      m_open_notes_in_new_window = Preferences::obj().get_schema_settings(
+        Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
     }
   }
 

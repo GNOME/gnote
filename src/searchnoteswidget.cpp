@@ -100,6 +100,9 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_removed_from_notebook));
   notebooks::NotebookManager::obj().signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
+
+  Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->signal_changed()
+    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
 }
 
 SearchNotesWidget::~SearchNotesWidget()
@@ -1267,11 +1270,16 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
 {
   if(!m_note_list_context_menu) {
     m_note_list_context_menu = new Gtk::Menu;
+    bool open_notes_in_new_window = Preferences::obj().get_schema_settings(
+      Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
 
-    Gtk::MenuItem *item = manage(new Gtk::MenuItem);
-    item->set_related_action(m_open_note_action);
-    item->add_accelerator("activate", m_accel_group, GDK_KEY_O, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    m_note_list_context_menu->add(*item);
+    Gtk::MenuItem *item;
+    if(!open_notes_in_new_window) {
+      item = manage(new Gtk::MenuItem);
+      item->set_related_action(m_open_note_action);
+      item->add_accelerator("activate", m_accel_group, GDK_KEY_O, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+      m_note_list_context_menu->add(*item);
+    }
 
     item = manage(new Gtk::MenuItem);
     item->set_related_action(m_open_note_new_window_action);
@@ -1412,6 +1420,16 @@ std::vector<Glib::RefPtr<Gtk::Action> > SearchNotesWidget::get_widget_actions()
 sigc::signal<void> & SearchNotesWidget::signal_actions_changed()
 {
   return IActionManager::obj().signal_main_window_search_actions_changed;
+}
+
+void SearchNotesWidget::on_settings_changed(const Glib::ustring & key)
+{
+  if(key == Preferences::OPEN_NOTES_IN_NEW_WINDOW) {
+    if(m_note_list_context_menu) {
+      delete m_note_list_context_menu;
+      m_note_list_context_menu = NULL;
+    }
+  }
 }
 
 }

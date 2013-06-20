@@ -121,6 +121,7 @@ private:
   void on_open_notebook_template_note();
   void on_new_notebook();
   void on_delete_notebook();
+  void on_settings_changed(const Glib::ustring & key);
 
   class RecentSearchColumnTypes
     : public Gtk::TreeModelColumnRecord

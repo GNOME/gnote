@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -60,6 +60,7 @@ namespace gnote {
 
   const char * Preferences::NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
   const char * Preferences::USE_STATUS_ICON = "use-status-icon";
+  const char * Preferences::OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 
   const char * Preferences::MAIN_WINDOW_MAXIMIZED = "main-window-maximized";
   const char * Preferences::SEARCH_WINDOW_X_POS = "search-window-x-pos";

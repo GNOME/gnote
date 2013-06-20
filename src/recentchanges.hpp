@@ -85,6 +85,7 @@ private:
   std::vector<Gtk::MenuItem*> & make_menu_items(std::vector<Gtk::MenuItem*> & items,
                                                 const std::vector<Glib::RefPtr<Gtk::Action> > & actions);
   void on_main_window_actions_changed(Gtk::Menu **menu);
+  void on_settings_changed(const Glib::ustring & key);
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;
@@ -106,6 +107,7 @@ private:
   Gtk::Menu          *m_window_menu_embedded;
   Gtk::Menu          *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
+  bool                m_open_notes_in_new_window;
 };
 
 
