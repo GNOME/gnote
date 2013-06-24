@@ -54,7 +54,7 @@ public:
   Gtk::Widget *make_addins_pane();
 
 private:
-  Gtk::Label *make_tip_label(std::string label_text);
+  void set_widget_tooltip(Gtk::Widget & widget, std::string label_text);
   Gtk::Button *make_font_button();
   Gtk::Label *make_label (const std::string & label_text/*, params object[] args*/);
   Gtk::CheckButton *make_check_button (const std::string & label_text);

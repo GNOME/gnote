@@ -231,7 +231,6 @@ namespace gnote {
   {
       Gtk::Label *label;
       Gtk::CheckButton *check;
-      Gtk::Alignment *align;
       sharp::PropertyEditorBool *peditor, *font_peditor,* bullet_peditor;
       Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
 
@@ -244,6 +243,7 @@ namespace gnote {
 
       // Status icon
       check = manage(make_check_button(_("Use status _icon")));
+      set_widget_tooltip(*check, _("Show icon in tray, which is the central place of control."));
       options_list->attach(*check, 0, options_list_row++, 1, 1);
       peditor = new sharp::PropertyEditorBool(settings, Preferences::USE_STATUS_ICON, *check);
       peditor->setup();
@@ -264,16 +264,11 @@ namespace gnote {
       if (NoteSpellChecker::gtk_spell_available()) {
         check = manage(make_check_button (
                          _("_Spell check while typing")));
+        set_widget_tooltip(*check, _("Misspellings will be underlined in red, with correct spelling "
+                                     "suggestions shown in the context menu."));
         options_list->attach(*check, 0, options_list_row++, 1, 1);
         peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_SPELLCHECKING, *check);
         peditor->setup();
-
-        label = manage(make_tip_label (
-                         _("Misspellings will be underlined "
-                           "in red, with correct spelling "
-                           "suggestions shown in the context "
-                          "menu.")));
-        options_list->attach(*label, 0, options_list_row++, 1, 1);
       }
 #endif
 
@@ -281,19 +276,16 @@ namespace gnote {
       // WikiWords...
 
       check = manage(make_check_button (_("Highlight _WikiWords")));
+      set_widget_tooltip(*check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
+                                   "Clicking the word will create a note with that name."));
       options_list->attach(*check, 0, options_list_row++, 1, 1);
       peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_WIKIWORDS, *check);
       peditor->setup();
 
-      label = manage(make_tip_label (
-                      _("Enable this option to highlight "
-                        "words <b>ThatLookLikeThis</b>. "
-                        "Clicking the word will create a "
-                        "note with that name.")));
-      options_list->attach(*label, 0, options_list_row++, 1, 1);
 
       // Auto bulleted list
       check = manage(make_check_button (_("Enable auto-_bulleted lists")));
+      set_widget_tooltip(*check, _("Start new bulleted list by starting new line with character \"-\"."));
       options_list->attach(*check, 0, options_list_row++, 1, 1);
       bullet_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_AUTO_BULLETED_LISTS, 
                                                        *check);
@@ -344,23 +336,20 @@ namespace gnote {
 
       // New Note Template
       // Translators: This is 'New Note' Template, not New 'Note Template'
+      Gtk::Grid *template_note_grid = manage(new Gtk::Grid);
       label = manage(make_label (_("New Note Template")));
-      options_list->attach(*label, 0, options_list_row++, 1, 1);
-
-      label = manage(make_tip_label (_("Use the new note template to specify the text "
-                                       "that should be used when creating a new note.")));
-      options_list->attach(*label, 0, options_list_row++, 1, 1);
-      
-      align = manage(new Gtk::Alignment (0.5f, 0.5f, 0.4f, 1.0f));
-      align->show();
-      options_list->attach(*align, 0, options_list_row++, 1, 1);
+      set_widget_tooltip(*label, _("Use the new note template to specify the text "
+                                   "that should be used when creating a new note."));
+      label->set_hexpand(true);
+      template_note_grid->attach(*label, 0, 0, 1, 1);
       
       Gtk::Button *open_template_button = manage(new Gtk::Button (_("Open New Note Template")));
-
       open_template_button->signal_clicked().connect(
         sigc::mem_fun(*this, &PreferencesDialog::open_template_button_clicked));
       open_template_button->show ();
-      align->add (*open_template_button);
+      template_note_grid->attach(*open_template_button, 1, 0, 1, 1);
+      template_note_grid->show();
+      options_list->attach(*template_note_grid, 0, options_list_row++, 1, 1);
 
       return options_list;
     }
@@ -420,18 +409,14 @@ namespace gnote {
     // Hotkeys...
 
     check = manage(make_check_button (_("Listen for _hotkeys")));
+    set_widget_tooltip(*check, _("Hotkeys allow you to quickly access "
+                                 "your notes from anywhere with a keypress. "
+                                 "Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, "
+                                 "<b>&lt;Alt&gt;N</b>"));
     hotkeys_list->attach(*check, 0, hotkeys_list_row++, 1, 1);
 
     keybind_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_KEYBINDINGS, *check);
     keybind_peditor->setup();
-
-    label = manage(make_tip_label (
-      _("Hotkeys allow you to quickly access "
-        "your notes from anywhere with a keypress. "
-        "Example Hotkeys: "
-        "<b>&lt;Control&gt;&lt;Shift&gt;F11</b>, "
-        "<b>&lt;Alt&gt;N</b>")));
-    hotkeys_list->attach(*label, 0, hotkeys_list_row++, 1, 1);
 
     align = manage(new Gtk::Alignment (0.5f, 0.5f, 0.0f, 1.0f));
     align->show ();
@@ -1031,12 +1016,9 @@ namespace gnote {
   }
 
 
-  Gtk::Label *PreferencesDialog::make_tip_label(std::string label_text)
+  void PreferencesDialog::set_widget_tooltip(Gtk::Widget & widget, std::string label_text)
   {
-    Gtk::Label *label = make_label(str(boost::format("<small>%1%</small>") % label_text));
-    label->set_line_wrap(true);
-    label->property_xpad().set_value(20);
-    return label;
+    widget.set_tooltip_markup(str(boost::format("<small>%1%</small>") % label_text));
   }
 
   void PreferencesDialog::on_font_button_clicked()
