@@ -137,22 +137,6 @@ public:
     {
       return m_height;
     }
-  int x() const
-    {
-      return m_x;
-    }
-  int & x()
-    {
-      return m_x;
-    }
-  int y() const
-    {
-      return m_y;
-    }
-  int & y()
-    {
-      return m_y;
-    }
   const TagMap & tags() const
     {
       return m_tags;
@@ -162,8 +146,7 @@ public:
       return m_tags;
     }
 
-  void set_position_extent(int x, int y, int width, int height);
-  bool has_position();
+  void set_extent(int width, int height);
   bool has_extent();
 
 private:
@@ -176,7 +159,6 @@ private:
   int               m_cursor_pos;
   int               m_selection_bound_pos;
   int               m_width, m_height;
-  int               m_x, m_y;
 
   TagMap m_tags;
 };

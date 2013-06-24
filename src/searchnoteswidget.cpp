@@ -256,8 +256,6 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 
 void SearchNotesWidget::save_position()
 {
-  int x;
-  int y;
   int width;
   int height;
 
@@ -275,11 +273,8 @@ void SearchNotesWidget::save_position()
     return;
   }
 
-  window->get_position(x, y);
   window->get_size(width, height);
 
-  settings->set_int(Preferences::SEARCH_WINDOW_X_POS, x);
-  settings->set_int(Preferences::SEARCH_WINDOW_Y_POS, y);
   settings->set_int(Preferences::SEARCH_WINDOW_WIDTH, width);
   settings->set_int(Preferences::SEARCH_WINDOW_HEIGHT, height);
 }
@@ -1384,14 +1379,6 @@ void SearchNotesWidget::background()
   if(win) {
     win->remove_accel_group(m_accel_group);
   }
-}
-
-void SearchNotesWidget::hint_position(int & x, int & y)
-{
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
-    .get_schema_settings(Preferences::SCHEMA_GNOTE);
-  x = settings->get_int(Preferences::SEARCH_WINDOW_X_POS);
-  y = settings->get_int(Preferences::SEARCH_WINDOW_Y_POS);
 }
 
 void SearchNotesWidget::hint_size(int & width, int & height)

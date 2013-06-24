@@ -64,8 +64,6 @@ namespace gnote {
     , m_name(note.get_title())
     , m_height(360)
     , m_width(450)
-    , m_x(-1)
-    , m_y(-1)
     , m_find_handler(note)
     , m_global_keys(NULL)
   {
@@ -160,14 +158,11 @@ namespace gnote {
     remove_accel_group(*parent);
     if(parent->get_window() != 0
        && (parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0) {
-      int cur_x, cur_y, cur_width, cur_height;
-      parent->get_position(cur_x, cur_y);
+      int cur_width, cur_height;
       parent->get_size(cur_width, cur_height);
 
-      if(!(m_note.data().x() == cur_x && m_note.data().y() == cur_y
-           && m_note.data().width() == cur_width
-           && m_note.data().height() == cur_height)) {
-        m_note.data().set_position_extent(cur_x, cur_y, cur_width, cur_height);
+      if(!(m_note.data().width() == cur_width && m_note.data().height() == cur_height)) {
+        m_note.data().set_extent(cur_width, cur_height);
         m_width = cur_width;
         m_height = cur_height;
 
@@ -175,12 +170,6 @@ namespace gnote {
         m_note.queue_save(NO_CHANGE);
       }
     }
-  }
-
-  void NoteWindow::hint_position(int & x, int & y)
-  {
-    x = m_x;
-    y = m_y;
   }
 
   void NoteWindow::hint_size(int & width, int & height)

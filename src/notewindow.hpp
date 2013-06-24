@@ -143,7 +143,6 @@ public:
   void set_name(const std::string & name);
   virtual void foreground();
   virtual void background();
-  virtual void hint_position(int & x, int & y);
   virtual void hint_size(int & width, int & height);
   virtual void size_internals();
 
@@ -164,11 +163,6 @@ public:
     {
       m_width = width;
       m_height = height;
-    }
-  void set_position(int x, int y)
-    {
-      m_x = x;
-      m_y = y;
     }
   Gtk::TextView * editor() const
     {
@@ -219,8 +213,6 @@ private:
   std::string                   m_name;
   int                           m_height;
   int                           m_width;
-  int                           m_x;
-  int                           m_y;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::Grid                    *m_embeddable_toolbar;
   Gtk::Image                   *m_pin_image;

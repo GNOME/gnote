@@ -135,28 +135,17 @@ namespace gnote {
     , m_selection_bound_pos(s_noPosition)
     , m_width(0)
     , m_height(0)
-    , m_x(s_noPosition)
-    , m_y(s_noPosition)
   {
   }
 
 
-  void NoteData::set_position_extent(int _x, int _y, int _width, int _height)
+  void NoteData::set_extent(int _width, int _height)
   {
-    if (_x < 0 || _y < 0)
-      return;
     if (_width <= 0 || _height <= 0)
       return;
 
-    m_x = _x;
-    m_y = _y;
     m_width = _width;
     m_height = _height;
-  }
-
-  bool NoteData::has_position()
-  {
-    return (m_x != s_noPosition) && (m_y != s_noPosition);
   }
 
   bool NoteData::has_extent()
@@ -1023,9 +1012,6 @@ namespace gnote {
       if(m_data.data().has_extent()) {
         m_window->set_size(m_data.data().width(), m_data.data().height());
       }
-      if(m_data.data().has_position()) {
-        m_window->set_position(m_data.data().x(), m_data.data().y());
-      }
 
       m_window->signal_embedded.connect(sigc::mem_fun(*this, &Note::on_note_window_embedded));
     }
@@ -1204,12 +1190,6 @@ namespace gnote {
         else if(name == "height") {
           note->height() = boost::lexical_cast<int>(xml.read_string());
         }
-        else if(name == "x") {
-          note->x() = boost::lexical_cast<int>(xml.read_string());
-        }
-        else if(name == "y") {
-          note->y() = boost::lexical_cast<int>(xml.read_string());
-        }
         else if(name == "tags") {
           xmlDocPtr doc2 = xmlParseDoc((const xmlChar*)xml.read_outer_xml().c_str());
 
@@ -1347,14 +1327,6 @@ namespace gnote {
 
     xml.write_start_element("", "height", "");
     xml.write_string(boost::lexical_cast<std::string>(note.height()));
-    xml.write_end_element();
-
-    xml.write_start_element("", "x", "");
-    xml.write_string (boost::lexical_cast<std::string>(note.x()));
-    xml.write_end_element();
-
-    xml.write_start_element ("", "y", "");
-    xml.write_string (boost::lexical_cast<std::string>(note.y()));
     xml.write_end_element();
 
     if (note.tags().size() > 0) {

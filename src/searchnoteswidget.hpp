@@ -50,7 +50,6 @@ public:
   virtual std::string get_name() const;
   virtual void foreground();
   virtual void background();
-  virtual void hint_position(int & x, int & y);
   virtual void hint_size(int & width, int & height);
   virtual void size_internals();
   virtual void perform_search(const std::string & search_text);

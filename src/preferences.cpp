@@ -63,8 +63,6 @@ namespace gnote {
   const char * Preferences::OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 
   const char * Preferences::MAIN_WINDOW_MAXIMIZED = "main-window-maximized";
-  const char * Preferences::SEARCH_WINDOW_X_POS = "search-window-x-pos";
-  const char * Preferences::SEARCH_WINDOW_Y_POS = "search-window-y-pos";
   const char * Preferences::SEARCH_WINDOW_WIDTH = "search-window-width";
   const char * Preferences::SEARCH_WINDOW_HEIGHT = "search-window-height";
   const char * Preferences::SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";

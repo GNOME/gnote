@@ -61,8 +61,6 @@ namespace gnote {
     static const char *OPEN_NOTES_IN_NEW_WINDOW;
 
     static const char *MAIN_WINDOW_MAXIMIZED;
-    static const char *SEARCH_WINDOW_X_POS;
-    static const char *SEARCH_WINDOW_Y_POS;
     static const char *SEARCH_WINDOW_WIDTH;
     static const char *SEARCH_WINDOW_HEIGHT;
     static const char *SEARCH_WINDOW_SPLITTER_POS;
