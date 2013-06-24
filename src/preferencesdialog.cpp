@@ -249,6 +249,13 @@ namespace gnote {
       peditor->setup();
 
 
+      // Open in new window
+      check = manage(make_check_button(_("Always _open notes in new window")));
+      options_list->attach(*check, 0, options_list_row++, 1, 1);
+      peditor = new sharp::PropertyEditorBool(settings, Preferences::OPEN_NOTES_IN_NEW_WINDOW, *check);
+      peditor->setup();
+
+
       // Spell checking...
 
 #if FIXED_GTKSPELL
