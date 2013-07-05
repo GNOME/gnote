@@ -40,7 +40,10 @@
 
 #include "sharp/exception.hpp"
 #include "sharp/uri.hpp"
+
+#ifdef HAVE_X11_SUPPORT
 #include "libtomboy/tomboyutil.h"
+#endif
 
 namespace sharp {
   class DateTime;
@@ -220,7 +223,11 @@ namespace gnote {
 
       void present()
         {
+#ifdef HAVE_X11_SUPPORT
           ::tomboy_window_present_hardcore(GTK_WINDOW(gobj()));
+#else
+          Gtk::ApplicationWindow::present();
+#endif
         }
     };
 

@@ -29,7 +29,6 @@
 #include <gtkmm/separatortoolitem.h>
 #include <gtkmm/separatormenuitem.h>
 
-#include "libtomboy/tomboyutil.h"
 #include "debug.hpp"
 #include "iconmanager.hpp"
 #include "note.hpp"

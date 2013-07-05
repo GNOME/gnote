@@ -120,8 +120,10 @@ namespace gnote {
     
     notebook->append_page (*manage(make_editing_pane()),
                            _("General"));
+#ifdef HAVE_X11_SUPPORT
     notebook->append_page (*manage(make_hotkeys_pane()),
                            _("Hotkeys"));
+#endif
 //      }
     notebook->append_page(*manage(make_sync_pane()),
                           _("Synchronization"));

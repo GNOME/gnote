@@ -33,10 +33,13 @@
 
 #include "actionmanager.hpp"
 #include "ignote.hpp"
-#include "keybinder.hpp"
 #include "remotecontrolproxy.hpp"
 #include "tray.hpp"
 #include "synchronization/syncdialog.hpp"
+
+#ifdef HAVE_X11_SUPPORT
+#include "keybinder.hpp"
+#endif
 
 namespace gnote {
 
@@ -113,10 +116,12 @@ public:
     {
       return *m_manager;
     }
+#ifdef HAVE_X11_SUPPORT
   IKeybinder & keybinder()
     {
       return *m_keybinder;
     }
+#endif
 
   void setup_global_actions();
   void start_tray_icon();
@@ -172,7 +177,6 @@ private:
   void register_object();
 
   NoteManager *m_manager;
-  IKeybinder  *m_keybinder;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
   Glib::RefPtr<TrayIcon> m_tray_icon;
   Tray::Ptr m_tray;
@@ -180,6 +184,9 @@ private:
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;
+#ifdef HAVE_X11_SUPPORT
+  IKeybinder  *m_keybinder;
+#endif
 };
 
 

@@ -26,8 +26,11 @@
 #include <gtkmm/statusicon.h>
 #include <gtkmm/imagemenuitem.h>
 
-#include "keybinder.hpp"
 #include "note.hpp"
+
+#ifdef HAVE_X11_SUPPORT
+#include "keybinder.hpp"
+#endif
 
 namespace gnote {
 
@@ -72,7 +75,11 @@ class Tray
 {
 public:
   typedef std::tr1::shared_ptr<Tray> Ptr;
+#ifdef HAVE_X11_SUPPORT
   Tray(NoteManager &, IGnoteTray &, IKeybinder &);
+#else
+  Tray(NoteManager &, IGnoteTray &);
+#endif
 
   Gtk::Menu * make_tray_notes_menu();
   Gtk::Menu * tray_menu() 
@@ -89,7 +96,9 @@ private:
   Gtk::ImageMenuItem *m_new_note_item;
   Gtk::ImageMenuItem *m_search_notes_item;
   bool       m_menu_added;
+#ifdef HAVE_X11_SUPPORT
   IKeybinder & m_keybinder;
+#endif
 };
 
 
@@ -98,7 +107,11 @@ class TrayIcon
   , public IGnoteTray
 {
 public:
+#ifdef HAVE_X11_SUPPORT
   TrayIcon(IKeybinder & keybinder, NoteManager & manager);
+#else
+  explicit TrayIcon(NoteManager & manager);
+#endif
   ~TrayIcon();
 
   Tray::Ptr tray() const
@@ -121,10 +134,14 @@ protected:
   virtual bool on_size_changed(int size);
 private:
   Tray::Ptr                m_tray;
-  PrefsKeybinder          *m_keybinder;
   Gtk::Menu               *m_context_menu;
+#ifdef HAVE_X11_SUPPORT
+  PrefsKeybinder          *m_keybinder;
+#endif
 };
 
+
+#ifdef HAVE_X11_SUPPORT
 class KeybindingToAccel
 {
 public:
@@ -135,6 +152,7 @@ public:
 private:
   static Glib::RefPtr<Gtk::AccelGroup> s_accel_group;
 };
+#endif
 
 
 

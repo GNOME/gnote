@@ -11,9 +11,13 @@ DISTCLEANFILES = intltool-extract \
                  intltool-update \
                  po/.intltool-merge-cache
 
-SUBDIRS = data libtomboy src po help
+if HAVE_X11_SUPPORT
+LIBTOMBOYDIR = libtomboy
+endif
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --disable-scrollkeeper
+SUBDIRS = data $(LIBTOMBOYDIR) src po help
+
+DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --disable-scrollkeeper --with-x11-support
 
 # Ignore scrollkeeper issues for now.  @#*$& scrollkeeper (from Evince)
 

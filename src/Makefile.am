@@ -2,8 +2,7 @@
 
 SUBDIRS = addins
 
-INCLUDES = -I$(top_srcdir)
-AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
+AM_CPPFLAGS= -I$(top_srcdir) @LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 	@GTK_CFLAGS@ \
 	@GTKSPELL_CFLAGS@ @LIBXML_CFLAGS@ \
 	@LIBXSLT_CFLAGS@ \
@@ -14,7 +13,11 @@ AM_CPPFLAGS=@LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 
 AM_LDFLAGS=-export-dynamic
 
-LIBGNOTE_LIBS = $(top_builddir)/libtomboy/libtomboy.la \
+if HAVE_X11_SUPPORT
+LIBTOMBOY_LIBS = $(top_builddir)/libtomboy/libtomboy.la
+endif
+
+LIBGNOTE_LIBS = $(LIBTOMBOY_LIBS)\
 	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
@@ -64,6 +67,12 @@ DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/remotecontrol-glue.hpp dbus/remotecontrol-glue.cpp \
 	dbus/searchprovider.hpp dbus/searchprovider.cpp \
 	$(NULL)
+
+if HAVE_X11_SUPPORT
+KEYBINDER_SOURCES=keybinder.hpp \
+	prefskeybinder.hpp prefskeybinder.cpp \
+	xkeybinder.hpp xkeybinder.cpp
+endif
 
 libgnote_la_LDFLAGS = -release @LIBGNOTE_RELEASE@ -version-info @LIBGNOTE_VERSION_INFO@
 libgnote_la_LIBADD = $(LIBGNOTE_LIBS)
@@ -148,20 +157,18 @@ gnote_SOURCES = \
 	sharp/addinstreemodel.hpp sharp/addinstreemodel.cpp \
 	actionmanager.hpp actionmanager.cpp \
 	gnote.cpp gnote.hpp \
-	keybinder.hpp \
 	preferencesdialog.hpp preferencesdialog.cpp \
-	prefskeybinder.hpp prefskeybinder.cpp \
 	recentchanges.hpp recentchanges.cpp \
 	searchnoteswidget.hpp searchnoteswidget.cpp \
 	tagmanager.hpp tagmanager.cpp \
 	tray.hpp tray.cpp \
-	xkeybinder.hpp xkeybinder.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
 	synchronization/silentui.hpp synchronization/silentui.cpp \
 	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
 	synchronization/syncmanager.hpp synchronization/syncmanager.cpp \
 	$(DBUS_SOURCES) \
+	$(KEYBINDER_SOURCES) \
 	main.cpp \
 	$(NULL)
 

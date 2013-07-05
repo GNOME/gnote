@@ -52,14 +52,16 @@ namespace gnote {
   std::string tray_util_get_tooltip_text()
   {
     std::string tip_text = _("Take notes");
-    
+
+#ifdef HAVE_X11_SUPPORT
     if (Preferences::obj().get_schema_settings(
             Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_KEYBINDINGS)) {
       std::string shortcut = KeybindingToAccel::get_shortcut(Preferences::KEYBINDING_SHOW_NOTE_MENU);
       if (!shortcut.empty())
         tip_text += str(boost::format(" (%1%)") % shortcut);
     }
-      
+#endif
+
     return tip_text;
   }
 
@@ -196,15 +198,24 @@ namespace gnote {
     return IconManager::obj().get_icon(IconManager::PIN_DOWN, 16);
   }
 
+#ifdef HAVE_X11_SUPPORT
   Tray::Tray(NoteManager & manager, IGnoteTray & trayicon, IKeybinder & keybinder)
     : m_manager(manager)
     , m_trayicon(trayicon)
     , m_menu_added(false)
     , m_keybinder(keybinder)
   {
-
     m_tray_menu = make_tray_notes_menu();
   }
+#else
+  Tray::Tray(NoteManager & manager, IGnoteTray & trayicon)
+    : m_manager(manager)
+    , m_trayicon(trayicon)
+    , m_menu_added(false)
+  {
+    m_tray_menu = make_tray_notes_menu();
+  }
+#endif
 
   Gtk::Menu * Tray::make_tray_notes_menu()
   {
@@ -228,13 +239,15 @@ namespace gnote {
     m_search_notes_item->signal_activate()
       .connect(sigc::mem_fun(*this, &Tray::on_search_notes_activate));
     menu->insert(*m_search_notes_item, -1);
-    
+
+#ifdef HAVE_X11_SUPPORT
     bool enable_keybindings = Preferences::obj().get_schema_settings(
         Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_KEYBINDINGS);
     if (enable_keybindings) {
       KeybindingToAccel::add_accelerator(m_keybinder, *m_new_note_item, Preferences::KEYBINDING_CREATE_NEW_NOTE);
       KeybindingToAccel::add_accelerator(m_keybinder, *m_search_notes_item, Preferences::KEYBINDING_OPEN_RECENT_CHANGES);
     }
+#endif
 
     return menu;
   }
@@ -322,11 +335,13 @@ namespace gnote {
       m_tray_menu->insert(*item, -1);
       list_size++;
 
+#ifdef HAVE_X11_SUPPORT
       bool enable_keybindings = Preferences::obj().get_schema_settings(
           Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_KEYBINDINGS);
       if (enable_keybindings) {
         KeybindingToAccel::add_accelerator(m_keybinder, *item, Preferences::KEYBINDING_OPEN_START_HERE);
       }
+#endif
     }
 
     bool menuOpensUpward = m_trayicon.menu_opens_upward();
@@ -360,11 +375,18 @@ namespace gnote {
   }
 
 
+#ifdef HAVE_X11_SUPPORT
   TrayIcon::TrayIcon(IKeybinder & keybinder, NoteManager & manager)
     : Gtk::StatusIcon()
     , m_tray(new Tray(manager, *this, keybinder))
-    , m_keybinder(new GnotePrefsKeybinder(keybinder, manager, *this))
     , m_context_menu(NULL)
+    , m_keybinder(new GnotePrefsKeybinder(keybinder, manager, *this))
+#else
+  TrayIcon::TrayIcon(NoteManager & manager)
+    : Gtk::StatusIcon()
+    , m_tray(new Tray(manager, *this))
+    , m_context_menu(NULL)
+#endif
   {
     gtk_status_icon_set_tooltip_text(gobj(), 
                                      tray_util_get_tooltip_text().c_str());
@@ -391,7 +413,9 @@ namespace gnote {
   TrayIcon::~TrayIcon()
   {
     delete m_context_menu;
+#ifdef HAVE_X11_SUPPORT
     delete m_keybinder;
+#endif
   }
 
   void TrayIcon::on_activate()
@@ -511,6 +535,7 @@ namespace gnote {
     return Gtk::StatusIcon::on_size_changed(size);
   }
 
+#ifdef HAVE_X11_SUPPORT
   //
   // This is a helper to take the XKeybinding string from GConf, and
   // convert it to a widget accelerator label, so note menu items can
@@ -566,6 +591,6 @@ namespace gnote {
                              Gtk::ACCEL_VISIBLE);
     }
   }
-
+#endif
   
 }

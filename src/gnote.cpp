@@ -49,7 +49,6 @@
 #include "remotecontrolproxy.hpp"
 #include "utils.hpp"
 #include "tagmanager.hpp"
-#include "xkeybinder.hpp"
 #include "dbus/remotecontrol.hpp"
 #include "dbus/remotecontrolclient.hpp"
 #include "sharp/streamreader.hpp"
@@ -57,15 +56,21 @@
 #include "notebooks/notebookmanager.hpp"
 #include "synchronization/syncmanager.hpp"
 
+#ifdef HAVE_X11_SUPPORT
+#include "xkeybinder.hpp"
+#endif
+
 
 namespace gnote {
 
   Gnote::Gnote()
     : Gtk::Application("org.gnome.Gnote", Gio::APPLICATION_HANDLES_COMMAND_LINE)
     , m_manager(NULL)
-    , m_keybinder(NULL)
     , m_is_background(false)
     , m_prefsdlg(NULL)
+#ifdef HAVE_X11_SUPPORT
+    , m_keybinder(NULL)
+#endif
   {
   }
 
@@ -73,7 +78,9 @@ namespace gnote {
   {
     delete m_prefsdlg;
     delete m_manager;
+#ifdef HAVE_X11_SUPPORT
     delete m_keybinder;
+#endif
   }
 
 
@@ -151,7 +158,9 @@ namespace gnote {
     new Preferences;
     m_manager = new NoteManager(note_path);
     new notebooks::NotebookManager(default_note_manager());
+#ifdef HAVE_X11_SUPPORT
     m_keybinder = new XKeybinder();
+#endif
     new ActionManager;
     sync::SyncManager::init(default_note_manager());
 
@@ -244,7 +253,11 @@ namespace gnote {
 
     if(!m_tray_icon) {
       // Create the tray icon and run the main loop
+#ifdef HAVE_X11_SUPPORT
       m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(keybinder(), default_note_manager()));
+#else
+      m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
+#endif
       m_tray = m_tray_icon->tray();
     }
 
