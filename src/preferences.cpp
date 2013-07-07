@@ -66,6 +66,7 @@ namespace gnote {
   const char * Preferences::SEARCH_WINDOW_WIDTH = "search-window-width";
   const char * Preferences::SEARCH_WINDOW_HEIGHT = "search-window-height";
   const char * Preferences::SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
+  const char * Preferences::SEARCH_SORTING = "search-sorting";
 
   const char * Preferences::SYNC_FUSE_MOUNT_TIMEOUT = "sync-fuse-mount-timeout-ms";
   const char * Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";

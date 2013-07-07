@@ -59,6 +59,8 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   , m_note_list_context_menu(NULL)
   , m_notebook_list_context_menu(NULL)
   , m_initial_position_restored(false)
+  , m_sort_column_id(2)
+  , m_sort_column_order(Gtk::SORT_DESCENDING)
 {
   set_hexpand(true);
   set_vexpand(true);
@@ -101,8 +103,9 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   notebooks::NotebookManager::obj().signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
-  Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->signal_changed()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
+  Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
+  parse_sorting_setting(settings->get_string(Preferences::SEARCH_SORTING));
 }
 
 SearchNotesWidget::~SearchNotesWidget()
@@ -486,6 +489,10 @@ void SearchNotesWidget::update_results()
                               sigc::mem_fun(*this, &SearchNotesWidget::compare_titles));
   m_store_sort->set_sort_func(2 /* change date */,
                               sigc::mem_fun(*this, &SearchNotesWidget::compare_dates));
+  m_store_sort->set_sort_column(m_sort_column_id, m_sort_column_order);
+  m_store_sort->unset_default_sort_func();
+  m_store_sort->signal_sort_column_changed()
+    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
 
   int cnt = 0;
 
@@ -983,14 +990,12 @@ void SearchNotesWidget::on_treeview_drag_data_get(const Glib::RefPtr<Gdk::DragCo
 
 void SearchNotesWidget::remove_matches_column()
 {
-  if(m_matches_column == NULL) {
+  if(m_matches_column == NULL || !m_matches_column->get_visible()) {
     return;
   }
 
-  m_tree->remove_column(*m_matches_column);
-  m_matches_column = NULL;
-
-  m_store_sort->set_sort_column(2, Gtk::SORT_DESCENDING);
+  m_matches_column->set_visible(false);
+  m_store_sort->set_sort_column(m_sort_column_id, m_sort_column_order);
 }
 
 // called when no search results are found in the selected notebook
@@ -1042,6 +1047,10 @@ void SearchNotesWidget::add_matches_column()
                                 sigc::mem_fun(*this, &SearchNotesWidget::compare_search_hits));
 
     m_tree->append_column(*m_matches_column);
+    m_store_sort->set_sort_column(4, Gtk::SORT_DESCENDING);
+  }
+  else {
+    m_matches_column->set_visible(true);
     m_store_sort->set_sort_column(4, Gtk::SORT_DESCENDING);
   }
 }
@@ -1418,6 +1427,75 @@ void SearchNotesWidget::on_settings_changed(const Glib::ustring & key)
       m_note_list_context_menu = NULL;
     }
   }
+}
+
+void SearchNotesWidget::on_sorting_changed()
+{
+  // don't do anything if in search mode
+  if(m_matches_column && m_matches_column->get_visible()) {
+    return;
+  }
+
+  if(m_store_sort) {
+    m_store_sort->get_sort_column_id(m_sort_column_id, m_sort_column_order);
+    Glib::ustring value;
+    switch(m_sort_column_id) {
+    case 1:
+      value = "note:";
+      break;
+    case 2:
+      value = "change:";
+      break;
+    default:
+      return;
+    }
+    if(m_sort_column_order == Gtk::SORT_ASCENDING) {
+      value += "asc";
+    }
+    else {
+      value += "desc";
+    }
+    Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
+      Preferences::SEARCH_SORTING, value);
+  }
+}
+
+void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
+{
+  std::vector<std::string> tokens;
+  sharp::string_split(tokens, sorting.lowercase(), ":");
+  if(tokens.size() != 2) {
+    ERR_OUT(_("Failed to parse setting %s (Value: %s):"), Preferences::SEARCH_SORTING, sorting.c_str());
+    ERR_OUT(_("Expected format 'column:order'"));
+    return;
+  }
+  int column_id;
+  Gtk::SortType order;
+  if(tokens[0] == "note") {
+    column_id = 1;
+  }
+  else if(tokens[0] == "change") {
+    column_id = 2;
+  }
+  else {
+    ERR_OUT(_("Failed to parse setting %s (Value: %s):"), Preferences::SEARCH_SORTING, sorting.c_str());
+    ERR_OUT(_("Unrecognized column %s"), tokens[0].c_str());
+    return;
+  }
+  if(tokens[1] == "asc") {
+    order = Gtk::SORT_ASCENDING;
+  }
+  else if(tokens[1] == "desc") {
+    order = Gtk::SORT_DESCENDING;
+  }
+  else {
+    ERR_OUT(_("Failed to parse setting %s (Value: %s):"), Preferences::SEARCH_SORTING, sorting.c_str());
+    ERR_OUT(_("Unrecognized order %s"), tokens[1].c_str());
+    return;
+  }
+
+  m_sort_column_id = column_id;
+  m_sort_column_order = order;
 }
 
 }

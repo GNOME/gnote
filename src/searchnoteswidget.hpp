@@ -121,6 +121,8 @@ private:
   void on_new_notebook();
   void on_delete_notebook();
   void on_settings_changed(const Glib::ustring & key);
+  void on_sorting_changed();
+  void parse_sorting_setting(const Glib::ustring & sorting);
 
   class RecentSearchColumnTypes
     : public Gtk::TreeModelColumnRecord
@@ -172,6 +174,8 @@ private:
   Gtk::Menu *m_notebook_list_context_menu;
   bool m_initial_position_restored;
   std::string m_search_text;
+  int m_sort_column_id;
+  Gtk::SortType m_sort_column_order;
 
   static Glib::RefPtr<Gdk::Pixbuf> get_note_icon();
 };

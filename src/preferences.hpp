@@ -64,6 +64,7 @@ namespace gnote {
     static const char *SEARCH_WINDOW_WIDTH;
     static const char *SEARCH_WINDOW_HEIGHT;
     static const char *SEARCH_WINDOW_SPLITTER_POS;
+    static const char *SEARCH_SORTING;
 
     static const char *KEYBINDING_SHOW_NOTE_MENU;
     static const char *KEYBINDING_OPEN_START_HERE;
