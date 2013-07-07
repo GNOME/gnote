@@ -506,7 +506,7 @@ void SearchNotesWidget::update_results()
 
   perform_search();
 
-  if(sort_column >= 0) {
+  if(sort_column >= 0 && m_no_matches_box && get_child2() != m_no_matches_box) {
     // Set the sort column after loading data, since we
     // don't want to resort on every append.
     m_store_sort->set_sort_column(sort_column, sort_type);
@@ -1001,7 +1001,7 @@ void SearchNotesWidget::no_matches_found_action()
     Glib::ustring message = _("No results found in the selected notebook.\nClick here to search across all notes.");
     Gtk::LinkButton *link_button = manage(new Gtk::LinkButton("", message));
     link_button->signal_activate_link()
-      .connect(sigc::mem_fun(*this, &SearchNotesWidget::show_all_search_results));
+      .connect(sigc::mem_fun(*this, &SearchNotesWidget::show_all_search_results), false);
     link_button->set_tooltip_text(_("Click here to search across all notebooks"));
     link_button->show();
     Gtk::Alignment *no_matches_found = manage(new Gtk::Alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER, 0.0, 0.0));
@@ -1049,7 +1049,7 @@ void SearchNotesWidget::add_matches_column()
 bool SearchNotesWidget::show_all_search_results()
 {
   select_all_notes_notebook();
-  return false;
+  return true;
 }
 
 void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell,
