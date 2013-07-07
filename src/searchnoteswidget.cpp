@@ -1368,6 +1368,7 @@ void SearchNotesWidget::foreground()
   Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
   if(win) {
     win->add_accel_group(m_accel_group);
+    win->set_focus(*m_tree);
   }
 }
 
