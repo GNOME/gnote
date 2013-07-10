@@ -73,6 +73,7 @@ namespace gnote {
   const char * Preferences::SYNC_FUSE_WDFS_URL = "url";
   const char * Preferences::SYNC_FUSE_WDFS_USERNAME = "username";
 
+  const char * Preferences::DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
   const char * Preferences::DESKTOP_GNOME_FONT = "document-font-name";
   const char * Preferences::DESKTOP_GNOME_KEY_THEME = "gtk-key-theme";
 

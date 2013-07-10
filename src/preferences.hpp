@@ -83,6 +83,7 @@ namespace gnote {
     static const char *SYNC_FUSE_WDFS_URL;
     static const char *SYNC_FUSE_WDFS_USERNAME;
 
+    static const char *DESKTOP_GNOME_CLOCK_FORMAT;
     static const char *DESKTOP_GNOME_FONT;
     static const char *DESKTOP_GNOME_KEY_THEME;
 

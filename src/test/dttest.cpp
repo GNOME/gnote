@@ -23,8 +23,14 @@
 #include <boost/test/minimal.hpp>
 
 #include "sharp/xmlconvert.cpp"
+#include "utils.hpp"
 
 
+
+bool string_ends_with(const std::string & s, const std::string & other)
+{
+  return (s.length() - s.rfind(other)) == other.length();
+}
 
 int test_main(int /*argc*/, char ** /*argv*/)
 {
@@ -47,6 +53,34 @@ int test_main(int /*argc*/, char ** /*argv*/)
 
   date_string = sharp::XmlConvert::to_string(d3);
   BOOST_CHECK(date_string == "2009-03-24T07:34:35.000000Z");
+
+  sharp::DateTime d4 = sharp::DateTime::now();
+  date_string = gnote::utils::get_pretty_print_date(d4, false, false);
+  BOOST_CHECK(date_string == "Today");
+
+  d4.add_days(1);
+  date_string = gnote::utils::get_pretty_print_date(d4, false, false);
+  BOOST_CHECK(date_string == "Tomorrow");
+
+  d4.add_days(2);
+  date_string = gnote::utils::get_pretty_print_date(d4, false, false);
+  BOOST_CHECK(date_string == "In 3 days");
+
+  sharp::DateTime d5 = sharp::DateTime::now();
+  d5.add_days(-1);
+  date_string = gnote::utils::get_pretty_print_date(d5, false, false);
+  BOOST_CHECK(date_string == "Yesterday");
+
+  d5.add_days(-3);
+  date_string = gnote::utils::get_pretty_print_date(d5, false, false);
+  BOOST_CHECK(date_string == "4 days ago");
+
+  sharp::DateTime d6 = sharp::DateTime::from_iso8601("2009-03-24T13:34:35.2914680-04:00");
+  date_string = gnote::utils::get_pretty_print_date(d6, true, false);
+  BOOST_CHECK(string_ends_with(date_string, "19:34"));
+
+  date_string = gnote::utils::get_pretty_print_date(d6, true, true);
+  BOOST_CHECK(string_ends_with(date_string, "7:34 PM"));
 
   return 0;
 }

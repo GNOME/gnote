@@ -61,6 +61,7 @@ namespace gnote {
                                      const std::string & url, 
                                      const std::string & error);
     std::string get_pretty_print_date(const sharp::DateTime &, bool show_time);
+    std::string get_pretty_print_date(const sharp::DateTime &, bool show_time, bool use_12h);
 
     void main_context_invoke(const sigc::slot<void> & slot);
     void main_context_call(const sigc::slot<void> & slot);

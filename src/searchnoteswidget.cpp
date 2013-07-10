@@ -106,6 +106,8 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
   settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
   parse_sorting_setting(settings->get_string(Preferences::SEARCH_SORTING));
+  settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+  settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
 }
 
 SearchNotesWidget::~SearchNotesWidget()
@@ -1426,6 +1428,9 @@ void SearchNotesWidget::on_settings_changed(const Glib::ustring & key)
       delete m_note_list_context_menu;
       m_note_list_context_menu = NULL;
     }
+  }
+  else if(key == Preferences::DESKTOP_GNOME_CLOCK_FORMAT) {
+    update_results();
   }
 }
 

@@ -46,6 +46,7 @@
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
 #include "sharp/datetime.hpp"
+#include "preferences.hpp"
 #include "note.hpp"
 #include "utils.hpp"
 #include "debug.hpp"
@@ -185,9 +186,24 @@ namespace gnote {
 
     std::string get_pretty_print_date(const sharp::DateTime & date, bool show_time)
     {
+      bool use_12h = false;
+      if(show_time) {
+        use_12h = Preferences::obj().get_schema_settings(
+          Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE)->get_string(
+            Preferences::DESKTOP_GNOME_CLOCK_FORMAT) == "12h";
+      }
+      return get_pretty_print_date(date, show_time, use_12h);
+    }
+
+    std::string get_pretty_print_date(const sharp::DateTime & date, bool show_time, bool use_12h)
+    {
       std::string pretty_str;
       sharp::DateTime now = sharp::DateTime::now();
-      std::string short_time = date.to_short_time_string ();
+      std::string short_time = use_12h
+        /* TRANSLATORS: time in 12h format. */
+        ? date.to_string("%I:%M %p")
+        /* TRANSLATORS: time in 24h format. */
+        : date.to_string("%H:%M");
 
       if (date.year() == now.year()) {
         if (date.day_of_year() == now.day_of_year()) {
@@ -245,18 +261,24 @@ namespace gnote {
           }
         }
         else {
-          pretty_str = show_time ?
-            date.to_string ("%B %d, %H:%M %p") : // "MMMM d, h:mm tt"
-            date.to_string ("%B %d");            // "MMMM d"
+          /* TRANSLATORS: date in current year. */
+          pretty_str = date.to_string(_("%B %d")); // "MMMM d"
+          if(show_time) {
+            /* TRANSLATORS: first argument is date, second is time. */
+            pretty_str = str(boost::format(_("%1%, %2%")) % pretty_str % short_time);
+          }
         }
       } 
       else if (!date.is_valid()) {
         pretty_str = _("No Date");
       }
       else {
-        pretty_str = show_time ?
-          date.to_string ("%B %d %Y, %H:%M %p") : // "MMMM d yyyy, h:mm tt"
-          date.to_string ("%B %d %Y");            // "MMMM d yyyy"
+        /* TRANSLATORS: date in other than current year. */
+        pretty_str = date.to_string(_("%B %d %Y")); // "MMMM d yyyy"
+        if(show_time) {
+          /* TRANSLATORS: first argument is date, second is time. */
+          pretty_str = str(boost::format(_("%1%, %2%")) % pretty_str % short_time);
+        }
       }
 
       return pretty_str;
