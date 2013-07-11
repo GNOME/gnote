@@ -201,7 +201,7 @@ namespace gnote {
       sharp::DateTime now = sharp::DateTime::now();
       std::string short_time = use_12h
         /* TRANSLATORS: time in 12h format. */
-        ? date.to_string("%I:%M %p")
+        ? date.to_string("%l:%M %P")
         /* TRANSLATORS: time in 24h format. */
         : date.to_string("%H:%M");
 
