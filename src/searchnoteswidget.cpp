@@ -667,7 +667,7 @@ void SearchNotesWidget::make_recent_tree()
   m_tree->append_column(*title);
 
   Gtk::TreeViewColumn *change = manage(new Gtk::TreeViewColumn());
-  change->set_title(_("Last Changed"));
+  change->set_title(_("Modified"));
   change->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
   change->set_resizable(false);
 
