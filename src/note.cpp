@@ -447,11 +447,13 @@ namespace gnote {
   void Note::on_buffer_mark_set(const Gtk::TextBuffer::iterator & iter,
                                 const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert)
   {
-    if(insert == m_buffer->get_insert()) {
-      m_data.data().set_cursor_position(iter.get_offset());
+    Gtk::TextIter start, end;
+    if(m_buffer->get_selection_bounds(start, end)) {
+      m_data.data().set_cursor_position(start.get_offset());
+      m_data.data().set_selection_bound_position(end.get_offset());
     }
-    else if(insert == m_buffer->get_selection_bound()) {
-      m_data.data().set_selection_bound_position(iter.get_offset());
+    else if(insert->get_name() == "insert") {
+      m_data.data().set_cursor_position(iter.get_offset());
     }
     else {
       return;
@@ -992,9 +994,9 @@ namespace gnote {
         sigc::mem_fun(*this, &Note::on_buffer_tag_applied));
       m_buffer->signal_remove_tag().connect(
         sigc::mem_fun(*this, &Note::on_buffer_tag_removed));
-      m_buffer->signal_mark_set().connect(
+      m_mark_set_conn = m_buffer->signal_mark_set().connect(
         sigc::mem_fun(*this, &Note::on_buffer_mark_set));
-      m_buffer->signal_mark_deleted().connect(
+      m_mark_deleted_conn = m_buffer->signal_mark_deleted().connect(
         sigc::mem_fun(*this, &Note::on_buffer_mark_deleted));
     }
     return m_buffer;
@@ -1014,6 +1016,7 @@ namespace gnote {
       }
 
       m_window->signal_embedded.connect(sigc::mem_fun(*this, &Note::on_note_window_embedded));
+      m_window->signal_foregrounded.connect(sigc::mem_fun(*this, &Note::on_note_window_foregrounded));
     }
     return m_window;
   }
@@ -1032,6 +1035,33 @@ namespace gnote {
     }
 
     notebooks::NotebookManager::obj().active_notes_notebook()->add_note(shared_from_this());
+  }
+
+  void Note::on_note_window_foregrounded()
+  {
+    m_mark_set_conn.block();
+    m_mark_deleted_conn.block();
+
+    Gtk::TextIter cursor;
+    if(m_data.data().cursor_position() != 0) {
+      // Move cursor to last-saved position
+      cursor = m_buffer->get_iter_at_offset (m_data.data().cursor_position());
+    } 
+    else {
+      // Avoid title line
+      cursor = m_buffer->get_iter_at_line(2);
+    }
+    m_buffer->place_cursor(cursor);
+
+    if(m_data.data().selection_bound_position() >= 0) {
+      // Move selection bound to last-saved position
+      Gtk::TextIter selection_bound;
+      selection_bound = m_buffer->get_iter_at_offset(m_data.data().selection_bound_position());
+      m_buffer->move_mark(m_buffer->get_selection_bound(), selection_bound);
+    }
+
+    m_mark_set_conn.unblock();
+    m_mark_deleted_conn.unblock();
   }
 
   bool Note::is_special() const

@@ -357,6 +357,7 @@ private:
   void remove_links(const std::string & old_title,
                     const Ptr & renamed);
   void on_note_window_embedded();
+  void on_note_window_foregrounded();
 
   Note(NoteData * data, const std::string & filepath, NoteManager & manager);
 
@@ -394,6 +395,9 @@ private:
   TagAddedHandler    m_signal_tag_added;
   TagRemovingHandler m_signal_tag_removing;
   TagRemovedHandler  m_signal_tag_removed;
+
+  sigc::connection m_mark_set_conn;
+  sigc::connection m_mark_deleted_conn;
 };
 
 class NoteArchiver
