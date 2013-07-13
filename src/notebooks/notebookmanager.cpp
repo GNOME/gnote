@@ -204,7 +204,7 @@ namespace gnote {
     bool NotebookManager::get_notebook_iter(const Notebook::Ptr & notebook, 
                                             Gtk::TreeIter & iter)
     {
-      Gtk::TreeNodeChildren notebooks = m_sortedNotebooks->children();
+      Gtk::TreeNodeChildren notebooks = m_notebooks_to_display->children();
       for (Gtk::TreeIter notebooks_iter = notebooks.begin();
            notebooks_iter != notebooks.end(); ++notebooks_iter) {
         Notebook::Ptr current_notebook;

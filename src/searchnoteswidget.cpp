@@ -345,6 +345,7 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
   Gtk::TreeIter iter;
   if(notebooks::NotebookManager::obj().get_notebook_iter(new_notebook, iter)) {
     m_notebooksTree->get_selection()->select(iter);
+    m_notebooksTree->set_cursor(m_notebooksTree->get_model()->get_path(iter));
   }
 }
 
