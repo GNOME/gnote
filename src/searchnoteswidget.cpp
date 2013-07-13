@@ -424,6 +424,9 @@ bool SearchNotesWidget::on_notebooks_tree_button_pressed(GdkEventButton *ev)
 bool SearchNotesWidget::on_notebooks_key_pressed(GdkEventKey *ev)
 {
   switch(ev->keyval) {
+  case GDK_KEY_F2:
+    on_rename_notebook();
+    break;
   case GDK_KEY_Menu:
   {
     Gtk::Menu *menu = get_notebook_list_context_menu();
@@ -1331,6 +1334,10 @@ Gtk::Menu *SearchNotesWidget::get_notebook_list_context_menu()
     item->signal_activate()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
     m_notebook_list_context_menu->add(*item);
+    item = manage(new Gtk::MenuItem(_("Re_name Notebook"), true));
+    item->signal_activate()
+      .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_rename_notebook));
+    m_notebook_list_context_menu->add(*item);
     item = manage(new Gtk::MenuItem);
     item->set_related_action(m_delete_notebook_action);
     m_notebook_list_context_menu->add(*item);
@@ -1502,6 +1509,19 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
 
   m_sort_column_id = column_id;
   m_sort_column_order = order;
+}
+
+void SearchNotesWidget::on_rename_notebook()
+{
+  Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooksTree->get_selection();
+  if(selection == 0) {
+    return;
+  }
+  std::vector<Gtk::TreeModel::Path> selected_row = selection->get_selected_rows();
+  if(selected_row.size() != 1) {
+    return;
+  }
+  m_notebooksTree->set_cursor(selected_row[0], *m_notebooksTree->get_column(0), true);
 }
 
 }

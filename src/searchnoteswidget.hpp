@@ -123,6 +123,7 @@ private:
   void on_settings_changed(const Glib::ustring & key);
   void on_sorting_changed();
   void parse_sorting_setting(const Glib::ustring & sorting);
+  void on_rename_notebook();
 
   class RecentSearchColumnTypes
     : public Gtk::TreeModelColumnRecord
