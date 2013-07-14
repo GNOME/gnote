@@ -230,7 +230,7 @@ namespace gnote {
    
     REGISTER_APP_ADDIN(notebooks::NotebookApplicationAddin);
 
-    std::string global_path = LIBDIR"/"PACKAGE_NAME"/addins/"PACKAGE_VERSION;
+    std::string global_path = LIBDIR "/" PACKAGE_NAME "/addins/" PACKAGE_VERSION;
     std::string local_path = m_gnote_conf_dir + "/addins";
 
     load_addin_infos(global_path, local_path);
