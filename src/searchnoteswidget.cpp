@@ -142,7 +142,7 @@ void SearchNotesWidget::make_actions()
   m_delete_note_action = Gtk::Action::create("DeleteNoteAction", _("_Delete"));
   m_delete_note_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::delete_selected_notes));
 
-  m_delete_notebook_action = Gtk::Action::create("DeleteNotebookAction", _("_Delete Notebook"));
+  m_delete_notebook_action = Gtk::Action::create("DeleteNotebookAction", _("_Delete"));
   m_delete_notebook_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_delete_notebook));
 }
 
@@ -1301,7 +1301,7 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
     m_note_list_context_menu->add(*item);
 
     m_note_list_context_menu->add(*manage(new Gtk::SeparatorMenuItem));
-    item = manage(new Gtk::MenuItem(_("_New Note"), true));
+    item = manage(new Gtk::MenuItem(_("_New"), true));
     item->add_accelerator("activate", m_accel_group, GDK_KEY_N, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::new_note));
     m_note_list_context_menu->add(*item);
@@ -1334,7 +1334,7 @@ Gtk::Menu *SearchNotesWidget::get_notebook_list_context_menu()
     item->signal_activate()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
     m_notebook_list_context_menu->add(*item);
-    item = manage(new Gtk::MenuItem(_("Re_name Notebook"), true));
+    item = manage(new Gtk::MenuItem(_("Re_name..."), true));
     item->signal_activate()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_rename_notebook));
     m_notebook_list_context_menu->add(*item);
@@ -1342,7 +1342,7 @@ Gtk::Menu *SearchNotesWidget::get_notebook_list_context_menu()
     item->set_related_action(m_delete_notebook_action);
     m_notebook_list_context_menu->add(*item);
     m_notebook_list_context_menu->add(*manage(new Gtk::SeparatorMenuItem));
-    item = manage(new Gtk::MenuItem(_("_New Notebook"), true));
+    item = manage(new Gtk::MenuItem(_("_New..."), true));
     item->signal_activate()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_new_notebook));
     m_notebook_list_context_menu->add(*item);
