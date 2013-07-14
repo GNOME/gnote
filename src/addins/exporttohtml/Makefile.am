@@ -6,7 +6,7 @@ include $(builddir)/../addins.mk
 desktop_in_files = exporttohtml.desktop.in
 desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 
-INCLUDES = @LIBXSLT_CFLAGS@
+AM_CPPFLAGS = @LIBXSLT_CFLAGS@
 
 addinsdir = $(ADDINSDIR)
 addins_LTLIBRARIES = exporttohtml.la
