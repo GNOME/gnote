@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-07-10 20:51+0000\n"
-"PO-Revision-Date: 2013-07-11 12:03+0200\n"
+"POT-Creation-Date: 2013-07-13 15:49+0000\n"
+"PO-Revision-Date: 2013-07-14 10:26+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -614,7 +614,7 @@ msgstr "_Hledat ve všech poznámkách"
 msgid "Open the Search All Notes window"
 msgstr "Otevřít okno Hledat ve všech poznámkách"
 
-#: ../src/actionmanager.cpp:166 ../src/searchnoteswidget.cpp:1300
+#: ../src/actionmanager.cpp:166 ../src/searchnoteswidget.cpp:1304
 msgid "_New Note"
 msgstr "_Nová poznámka"
 
@@ -2036,7 +2036,7 @@ msgid "Copyright:"
 msgstr "Copyright:"
 
 #: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:569
-#: ../src/searchnoteswidget.cpp:989
+#: ../src/searchnoteswidget.cpp:993
 msgid "Notes"
 msgstr "Poznámky"
 
@@ -2085,15 +2085,15 @@ msgstr "O_dstranit"
 msgid "_Delete Notebook"
 msgstr "O_dstranit sešit"
 
-#: ../src/searchnoteswidget.cpp:648
+#: ../src/searchnoteswidget.cpp:652
 msgid "Note"
 msgstr "Poznámka"
 
-#: ../src/searchnoteswidget.cpp:670
-msgid "Last Changed"
-msgstr "Naposledy změněna"
+#: ../src/searchnoteswidget.cpp:674
+msgid "Modified"
+msgstr "Změněna"
 
-#: ../src/searchnoteswidget.cpp:1008
+#: ../src/searchnoteswidget.cpp:1012
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2101,50 +2101,54 @@ msgstr ""
 "Ve vybraném sešitu nebyl nalezen žádný výsledek.\n"
 "Kliknutím zde se prohledají všechny sešity."
 
-#: ../src/searchnoteswidget.cpp:1012
+#: ../src/searchnoteswidget.cpp:1016
 msgid "Click here to search across all notebooks"
 msgstr "Kliknutím zde prohledáte všechny sešity"
 
-#: ../src/searchnoteswidget.cpp:1033
+#: ../src/searchnoteswidget.cpp:1037
 msgid "Matches"
 msgstr "Odpovídá"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1085
+#: ../src/searchnoteswidget.cpp:1089
 msgid "Title match"
 msgstr "Název odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1089
+#: ../src/searchnoteswidget.cpp:1093
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% odpovídá"
 msgstr[1] "%1% odpovídají"
 msgstr[2] "%1% odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1329
+#: ../src/searchnoteswidget.cpp:1333
 msgid "_Open Template Note"
 msgstr "_Otevřít šablonu"
 
 #: ../src/searchnoteswidget.cpp:1337
+msgid "Re_name Notebook"
+msgstr "Přejme_novat sešit"
+
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_New Notebook"
 msgstr "_Nový sešit"
 
-#: ../src/searchnoteswidget.cpp:1473 ../src/searchnoteswidget.cpp:1486
-#: ../src/searchnoteswidget.cpp:1497
+#: ../src/searchnoteswidget.cpp:1481 ../src/searchnoteswidget.cpp:1494
+#: ../src/searchnoteswidget.cpp:1505
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Selhalo zpracování nastavení %s (hodnota: %s):"
 
-#: ../src/searchnoteswidget.cpp:1474
+#: ../src/searchnoteswidget.cpp:1482
 msgid "Expected format 'column:order'"
 msgstr "Očekávaný formát „sloupec:pořadí“"
 
-#: ../src/searchnoteswidget.cpp:1487
+#: ../src/searchnoteswidget.cpp:1495
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Nerozpoznaný sloupec %s"
 
-#: ../src/searchnoteswidget.cpp:1498
+#: ../src/searchnoteswidget.cpp:1506
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Nerozpoznané pořadí %s"
