@@ -25,6 +25,8 @@
 
 #include <gtkmm/treeview.h>
 
+#include "base/macros.hpp"
+
 namespace gnote {
 
   class NoteManager;
@@ -41,10 +43,10 @@ namespace gnote {
     virtual void on_drag_data_received( const Glib::RefPtr<Gdk::DragContext> & context,
                                         int x, int y,
                                         const Gtk::SelectionData & selection_data,
-                                        guint info, guint time);
+                                        guint info, guint time) override;
     virtual bool on_drag_motion(const Glib::RefPtr<Gdk::DragContext> & context,
-                                int x, int y, guint time);
-    virtual void on_drag_leave(const Glib::RefPtr<Gdk::DragContext> & context, guint time);
+                                int x, int y, guint time) override;
+    virtual void on_drag_leave(const Glib::RefPtr<Gdk::DragContext> & context, guint time) override;
   private:
     NoteManager & m_note_manager;
   };

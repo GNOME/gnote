@@ -27,6 +27,7 @@
 
 #include <gtkmm/menuitem.h>
 
+#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
 
@@ -51,9 +52,9 @@ public:
     {
       return new InsertTimestampNoteAddin;
     }
-  virtual void initialize();
-  virtual void shutdown();
-  virtual void on_note_opened();
+  virtual void initialize() override;
+  virtual void shutdown() override;
+  virtual void on_note_opened() override;
 private:
   void on_menu_item_activated();
   void on_format_setting_changed(const Glib::ustring & key);

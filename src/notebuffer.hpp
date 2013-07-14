@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -33,6 +33,7 @@
 #include <gtkmm/texttag.h>
 #include <gtkmm/widget.h>
 
+#include "base/macros.hpp"
 #include "notetag.hpp"
 
 namespace sharp {
@@ -114,9 +115,9 @@ protected:
   NoteBuffer(const NoteTagTable::Ptr &, Note &);
 
   virtual void on_apply_tag(const Glib::RefPtr<Gtk::TextTag> & tag,
-                       const Gtk::TextIter &,  const Gtk::TextIter &);
+                       const Gtk::TextIter &,  const Gtk::TextIter &) override;
   virtual void on_remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag,
-                       const Gtk::TextIter &,  const Gtk::TextIter &);
+                       const Gtk::TextIter &,  const Gtk::TextIter &) override;
 private:
   void text_insert_event(const Gtk::TextIter & pos, const Glib::ustring & text, int);
   void range_deleted_event(const Gtk::TextIter &,const Gtk::TextIter &);

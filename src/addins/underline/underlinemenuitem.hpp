@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,8 @@
 
 #include <gtkmm/checkmenuitem.h>
 
+#include "base/macros.hpp"
+
 namespace gnote {
   class NoteAddin;
 }
@@ -40,7 +42,7 @@ public:
   UnderlineMenuItem(gnote::NoteAddin *);
   
 protected:
-  virtual void on_activate();
+  virtual void on_activate() override;
 
 private:
   void menu_shown();

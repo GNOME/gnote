@@ -27,6 +27,7 @@
 #include <glibmm/main.h>
 #include <glibmm/thread.h>
 
+#include "base/macros.hpp"
 #include "isyncmanager.hpp"
 
 
@@ -41,12 +42,12 @@ namespace sync {
   public:
     SyncManager(NoteManager &);
     static void init(NoteManager &);
-    virtual void reset_client();
-    virtual void perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui);
+    virtual void reset_client() override;
+    virtual void perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui) override;
     void synchronization_thread();
-    virtual void resolve_conflict(SyncTitleConflictResolution resolution);
-    virtual bool synchronized_note_xml_matches(const std::string & noteXml1, const std::string & noteXml2);
-    virtual SyncState state() const
+    virtual void resolve_conflict(SyncTitleConflictResolution resolution) override;
+    virtual bool synchronized_note_xml_matches(const std::string & noteXml1, const std::string & noteXml2) override;
+    virtual SyncState state() const override
       {
         return m_state;
       }

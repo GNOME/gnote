@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,6 +27,7 @@
 
 #include <sigc++/slot.h>
 
+#include "base/macros.hpp"
 #include "keybinder.hpp"
 
 namespace gnote {
@@ -35,11 +37,11 @@ class XKeybinder
 {
 public:
   XKeybinder();
-  virtual void bind(const std::string & keystring, const sigc::slot<void> & handler);
-  virtual void unbind(const std::string & keystring);
-  virtual void unbind_all();
+  virtual void bind(const std::string & keystring, const sigc::slot<void> & handler) override;
+  virtual void unbind(const std::string & keystring) override;
+  virtual void unbind_all() override;
   virtual bool get_accel_keys(const std::string & prefs_path, guint & keyval, 
-                              Gdk::ModifierType & mods);
+                              Gdk::ModifierType & mods) override;
 private:
   static void keybinding_pressed(char *keystring, gpointer user_data);
 

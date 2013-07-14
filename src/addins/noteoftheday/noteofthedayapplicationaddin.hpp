@@ -23,6 +23,7 @@
 
 #include <sigc++/sigc++.h>
 
+#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "applicationaddin.hpp"
 
@@ -53,9 +54,9 @@ public:
     }
 
   virtual ~NoteOfTheDayApplicationAddin();
-  virtual void initialize();
-  virtual void shutdown();
-  virtual bool initialized();
+  virtual void initialize() override;
+  virtual void shutdown() override;
+  virtual bool initialized() override;
 
 private:
 

@@ -25,6 +25,7 @@
 #include <gtkmm/entry.h>
 #include <gtkmm/table.h>
 
+#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "synchronization/fusesyncserviceaddin.hpp"
 
@@ -54,41 +55,41 @@ public:
   /// not automatically be saved by a GConf Property Editor.  Preferences
   /// should be saved when SaveConfiguration () is called.
   /// </summary>
-  virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged);
+  virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) override;
 
   /// <summary>
   /// Returns whether the addin is configured enough to actually be used.
   /// </summary>
-  virtual bool is_configured();
+  virtual bool is_configured() override;
 
   /// <summary>
   /// Returns true if required settings are non-empty in the preferences widget
   /// </summary>
-  virtual bool are_settings_valid();
+  virtual bool are_settings_valid() override;
 
   /// The name that will be shown in the preferences to distinguish
   /// between this and other SyncServiceAddins.
   /// </summary>
-  virtual std::string name();
+  virtual std::string name() override;
 
   /// <summary>
   /// Specifies a unique identifier for this addin.  This will be used to
   /// set the service in preferences.
   /// </summary>
-  virtual std::string id();
+  virtual std::string id() override;
 
-  virtual std::string fuse_mount_directory_error();
+  virtual std::string fuse_mount_directory_error() override;
 protected:
-  virtual std::vector<std::string> get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues);
-  virtual std::string get_fuse_mount_exe_args_for_display(const std::string & mountPath, bool fromStoredValues);
-  virtual std::string fuse_mount_exe_name();
-  virtual bool verify_configuration();
-  virtual void save_configuration_values();
+  virtual std::vector<std::string> get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues) override;
+  virtual std::string get_fuse_mount_exe_args_for_display(const std::string & mountPath, bool fromStoredValues) override;
+  virtual std::string fuse_mount_exe_name() override;
+  virtual bool verify_configuration() override;
+  virtual void save_configuration_values() override;
 
   /// <summary>
   /// Reset the configuration so that IsConfigured will return false.
   /// </summary>
-  virtual void reset_configuration_values();
+  virtual void reset_configuration_values() override;
 private:
   std::vector<std::string> get_fuse_mount_exe_args(const std::string & mountPath, const std::string & url,
       const std::string & username, const std::string & password, bool acceptSsl);

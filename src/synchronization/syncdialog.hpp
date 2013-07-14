@@ -28,6 +28,7 @@
 #include <gtkmm/treestore.h>
 #include <gtkmm/treeviewcolumn.h>
 
+#include "base/macros.hpp"
 #include "syncui.hpp"
 
 
@@ -43,20 +44,20 @@ namespace sync {
 
     static Ptr create(NoteManager &);
 
-    virtual void sync_state_changed(SyncState state);
-    virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type);
+    virtual void sync_state_changed(SyncState state) override;
+    virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) override;
     virtual void note_conflict_detected(NoteManager & manager,
                                         const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<std::string> & noteUpdateTitles);
-    virtual void present_ui();
+                                        const std::list<std::string> & noteUpdateTitles) override;
+    virtual void present_ui() override;
     void header_text(const std::string &);
     void message_text(const std::string &);
     std::string progress_text() const;
     void progress_text(const std::string &);
     void add_update_item(const std::string & title, std::string & status);
   protected:
-    virtual void on_realize();
+    virtual void on_realize() override;
   private:
     static void on_expander_activated(GtkExpander*, gpointer);
     void note_conflict_detected_(NoteManager & manager,

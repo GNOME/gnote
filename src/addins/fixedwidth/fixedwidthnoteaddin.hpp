@@ -33,6 +33,7 @@
 
 #include <gtkmm/texttag.h>
 
+#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
 
@@ -56,9 +57,9 @@ namespace fixedwidth {
       { 
         return new FixedWidthNoteAddin();
       }
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
   private:
     Glib::RefPtr<Gtk::TextTag> m_tag;
   };

@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -31,6 +32,8 @@
 #include <exception>
 #include <string>
 
+#include "base/macros.hpp"
+
 namespace sharp {
 
 
@@ -44,7 +47,7 @@ public:
     }
   virtual ~Exception() throw();
 
-  virtual const char *what() const throw();
+  virtual const char *what() const throw() override;
 
 private:
   std::string m_what;

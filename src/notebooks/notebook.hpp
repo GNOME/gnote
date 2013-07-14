@@ -27,6 +27,7 @@
 #include <string>
 #include <tr1/memory>
 
+#include "base/macros.hpp"
 #include "tag.hpp"
 #include "note.hpp"
 
@@ -88,8 +89,8 @@ protected:
     : Notebook(m, s, true)
     {
     }
-  virtual Tag::Ptr    get_tag() const;
-  virtual Note::Ptr   get_template_note() const;
+  virtual Tag::Ptr    get_tag() const override;
+  virtual Note::Ptr   get_template_note() const override;
 };
 
 
@@ -105,10 +106,10 @@ class AllNotesNotebook
 public:
   typedef std::tr1::shared_ptr<AllNotesNotebook> Ptr;
   AllNotesNotebook(NoteManager &);
-  virtual std::string get_normalized_name() const;
-  virtual bool        contains_note(const Note::Ptr &);
-  virtual bool        add_note(const Note::Ptr &);
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
+  virtual std::string get_normalized_name() const override;
+  virtual bool        contains_note(const Note::Ptr &) override;
+  virtual bool        add_note(const Note::Ptr &) override;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
 };
 
 
@@ -123,10 +124,10 @@ class UnfiledNotesNotebook
 public:
   typedef std::tr1::shared_ptr<UnfiledNotesNotebook> Ptr;
   UnfiledNotesNotebook(NoteManager &);
-  virtual std::string get_normalized_name() const;
-  virtual bool        contains_note(const Note::Ptr &);
-  virtual bool        add_note(const Note::Ptr &);
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
+  virtual std::string get_normalized_name() const override;
+  virtual bool        contains_note(const Note::Ptr &) override;
+  virtual bool        add_note(const Note::Ptr &) override;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
 };
 
 
@@ -136,10 +137,10 @@ class PinnedNotesNotebook
 public:
   typedef std::tr1::shared_ptr<PinnedNotesNotebook> Ptr;
   PinnedNotesNotebook(NoteManager &);
-  virtual std::string get_normalized_name() const;
-  virtual bool        contains_note(const Note::Ptr &);
-  virtual bool        add_note(const Note::Ptr &);
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
+  virtual std::string get_normalized_name() const override;
+  virtual bool        contains_note(const Note::Ptr &) override;
+  virtual bool        add_note(const Note::Ptr &) override;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
 };
 
 
@@ -149,10 +150,10 @@ class ActiveNotesNotebook
 public:
   typedef std::tr1::shared_ptr<ActiveNotesNotebook> Ptr;
   ActiveNotesNotebook(NoteManager &);
-  virtual std::string get_normalized_name() const;
-  virtual bool        contains_note(const Note::Ptr &);
-  virtual bool        add_note(const Note::Ptr &);
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
+  virtual std::string get_normalized_name() const override;
+  virtual bool        contains_note(const Note::Ptr &) override;
+  virtual bool        add_note(const Note::Ptr &) override;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
   bool empty();
   sigc::signal<void> signal_size_changed;
 private:

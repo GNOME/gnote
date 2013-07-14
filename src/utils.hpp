@@ -38,6 +38,7 @@
 #include <gtkmm/toggletoolbutton.h>
 #include <gtkmm/toolbar.h>
 
+#include "base/macros.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/uri.hpp"
 
@@ -242,9 +243,9 @@ namespace gnote {
                      const Glib::ustring & label, Gtk::Menu * menu);
       ToolMenuButton(Gtk::Image& image, 
                      const Glib::ustring & label, Gtk::Menu * menu);
-      virtual bool on_button_press_event(GdkEventButton *);
-      virtual void on_clicked();
-      virtual bool on_mnemonic_activate(bool group_cycling);
+      virtual bool on_button_press_event(GdkEventButton *) override;
+      virtual void on_clicked() override;
+      virtual bool on_mnemonic_activate(bool group_cycling) override;
 
     private:
       void _common_init();

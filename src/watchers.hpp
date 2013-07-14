@@ -38,6 +38,7 @@ extern "C" {
 #include <gtkmm/textiter.h>
 #include <gtkmm/texttag.h>
 
+#include "base/macros.hpp"
 #include "noteaddin.hpp"
 #include "triehit.hpp"
 #include "utils.hpp"
@@ -54,9 +55,9 @@ namespace gnote {
   public:
     static NoteAddin * create();
     ~NoteRenameWatcher();
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
 
   protected:
     NoteRenameWatcher()
@@ -89,9 +90,9 @@ namespace gnote {
   {
   public:
     static NoteAddin * create();    
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
 
     static bool gtk_spell_available()
       { return true; }
@@ -115,10 +116,10 @@ namespace gnote {
   {
   public:
     static NoteAddin * create();    
-    virtual void initialize ();
-    virtual void shutdown ()
+    virtual void initialize() override;
+    virtual void shutdown() override
       {}
-    virtual void on_note_opened ()
+    virtual void on_note_opened() override
       {}
 
     static bool gtk_spell_available()
@@ -132,9 +133,9 @@ namespace gnote {
   {
   public:
     static NoteAddin * create();    
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
 
   protected:
     NoteUrlWatcher();
@@ -166,9 +167,9 @@ namespace gnote {
   {
   public:
     static NoteAddin * create();    
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
 
   private:
     bool contains_text(const std::string & text);
@@ -204,9 +205,9 @@ namespace gnote {
   {
   public:
     static NoteAddin * create();    
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
 
   protected:
     NoteWikiWatcher()
@@ -233,9 +234,9 @@ namespace gnote {
   {
   public:
     static NoteAddin * create();    
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
 
   protected:
     MouseHandWatcher()
@@ -261,9 +262,9 @@ namespace gnote {
   {
   public:
     static NoteAddin * create();
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
 
   private:
     void on_tag_added(const Note&, const Tag::Ptr&);

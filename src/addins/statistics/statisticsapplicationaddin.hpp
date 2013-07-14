@@ -22,6 +22,7 @@
 
 #include <gtkmm/action.h>
 
+#include "base/macros.hpp"
 #include "applicationaddin.hpp"
 #include "statisticswidget.hpp"
 #include "sharp/dynamicmodule.hpp"
@@ -45,9 +46,9 @@ public:
     {
       return new StatisticsApplicationAddin;
     }
-  virtual void initialize();
-  virtual void shutdown();
-  virtual bool initialized();
+  virtual void initialize() override;
+  virtual void shutdown() override;
+  virtual bool initialized() override;
 private:
   StatisticsApplicationAddin();
   void on_show_statistics();

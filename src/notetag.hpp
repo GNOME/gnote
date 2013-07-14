@@ -32,6 +32,7 @@
 #include <gtkmm/texttag.h>
 #include <gtkmm/texttagtable.h>
 
+#include "base/macros.hpp"
 #include "contrast.hpp"
 #include "sharp/exception.hpp"
 
@@ -169,7 +170,7 @@ protected:
 
   friend class NoteTagTable;
 
-  virtual bool on_event(const Glib::RefPtr<Glib::Object> &, GdkEvent *, const Gtk::TextIter & );
+  virtual bool on_event(const Glib::RefPtr<Glib::Object> &, GdkEvent *, const Gtk::TextIter & ) override;
   virtual bool on_activate(const NoteEditor & , const Gtk::TextIter &, const Gtk::TextIter &);
 private:
   Gdk::Color get_background() const;
@@ -203,8 +204,8 @@ public:
     {
       return m_attributes;
     }
-  virtual void write(sharp::XmlWriter &, bool) const;
-  virtual void read(sharp::XmlReader &, bool);
+  virtual void write(sharp::XmlWriter &, bool) const override;
+  virtual void read(sharp::XmlReader &, bool) override;
   /// <summary>
   /// Derived classes should override this if they desire
   /// to be notified when a tag attribute is read in.
@@ -213,7 +214,7 @@ public:
   /// A <see cref="System.String"/> that is the name of the
   /// newly read attribute.
   /// </param>
-  virtual void on_attribute_read(const std::string &) 
+  virtual void on_attribute_read(const std::string &)
     {
     }
 
@@ -238,7 +239,7 @@ public:
     {
       return Pango::DIRECTION_LTR;
     }
-  virtual void write(sharp::XmlWriter &, bool) const;
+  virtual void write(sharp::XmlWriter &, bool) const override;
 private:
   int            m_depth;
   Pango::Direction m_direction;
@@ -325,8 +326,8 @@ protected:
       _init_common_tags();
     }
 
-  virtual void on_tag_added(const Glib::RefPtr<Gtk::TextTag> &);
-  virtual void on_tag_removed(const Glib::RefPtr<Gtk::TextTag> &);
+  virtual void on_tag_added(const Glib::RefPtr<Gtk::TextTag> &) override;
+  virtual void on_tag_removed(const Glib::RefPtr<Gtk::TextTag> &) override;
 //  virtual void on_notetag_changed(Glib::RefPtr<Gtk::TextTag>& tag, bool size_changed);
 
 private:

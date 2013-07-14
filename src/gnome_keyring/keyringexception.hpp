@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 
 #include <stdexcept>
 
+#include "base/macros.hpp"
 
 
 namespace gnome {
@@ -35,8 +36,8 @@ public:
   KeyringException(const std::string & msg)
     : m_what(msg)
     {}
-  virtual ~KeyringException() throw() {}
-  virtual const char *what() const throw()
+  virtual ~KeyringException() throw() override {}
+  virtual const char *what() const throw() override
     {
       return m_what.c_str();
     }

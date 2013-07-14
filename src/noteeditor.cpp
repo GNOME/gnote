@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2012 Aurimas Cernius
+ * Copyright (C) 2010-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -137,10 +137,10 @@ namespace gnote {
     //
     // DND Drop handling
     //
-  void NoteEditor::on_drag_data_received (Glib::RefPtr<Gdk::DragContext> & context,
-                                          int x, int y,
-                                          const Gtk::SelectionData & selection_data,
-                                          guint info,  guint time)
+  void NoteEditor::on_drag_data_received(const Glib::RefPtr<Gdk::DragContext> & context,
+                                         int x, int y,
+                                         const Gtk::SelectionData & selection_data,
+                                         guint info,  guint time)
   {
     bool has_url = false;
 

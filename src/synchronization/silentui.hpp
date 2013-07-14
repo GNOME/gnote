@@ -22,6 +22,7 @@
 #define _SYNCHRONIZATION_SILENTUI_HPP_
 
 
+#include "base/macros.hpp"
 #include "notemanager.hpp"
 #include "syncui.hpp"
 
@@ -37,13 +38,13 @@ namespace sync {
     static SyncUI::Ptr create(NoteManager &);
   private:
     explicit SilentUI(NoteManager &);
-    virtual void sync_state_changed(SyncState state);
-    virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type);
+    virtual void sync_state_changed(SyncState state) override;
+    virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) override;
     virtual void note_conflict_detected(NoteManager & manager,
                                         const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<std::string> & noteUpdateTitles);
-    virtual void present_ui();
+                                        const std::list<std::string> & noteUpdateTitles) override;
+    virtual void present_ui() override;
     void on_connecting();
     void on_idle();
 

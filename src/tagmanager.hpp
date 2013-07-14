@@ -31,6 +31,7 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/treemodelsort.h>
 
+#include "base/macros.hpp"
 #include "itagmanager.hpp"
 #include "tag.hpp"
 
@@ -43,16 +44,16 @@ class TagManager
 public:
   TagManager();
 
-  virtual Tag::Ptr get_tag(const std::string & tag_name) const;
-  virtual Tag::Ptr get_or_create_tag(const std::string &);
-  virtual Tag::Ptr get_system_tag(const std::string & tag_name) const;
-  virtual Tag::Ptr get_or_create_system_tag(const std::string & name);
-  virtual void remove_tag(const Tag::Ptr & tag);
+  virtual Tag::Ptr get_tag(const std::string & tag_name) const override;
+  virtual Tag::Ptr get_or_create_tag(const std::string &) override;
+  virtual Tag::Ptr get_system_tag(const std::string & tag_name) const override;
+  virtual Tag::Ptr get_or_create_system_tag(const std::string & name) override;
+  virtual void remove_tag(const Tag::Ptr & tag) override;
   Glib::RefPtr<Gtk::TreeModel> get_tags() const
     {
       return m_sorted_tags;
     }
-  virtual void all_tags(std::list<Tag::Ptr> &) const;
+  virtual void all_tags(std::list<Tag::Ptr> &) const override;
 private:
   class ColumnRecord
     : public Gtk::TreeModelColumnRecord

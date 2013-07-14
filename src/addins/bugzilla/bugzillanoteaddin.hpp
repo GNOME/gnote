@@ -25,6 +25,7 @@
 #define _BUGZILLA_NOTE_ADDIN_HPP__
 
 
+#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
 
@@ -47,9 +48,9 @@ public:
       return new BugzillaNoteAddin;
     }
   static std::string images_dir();
-  virtual void initialize();
-  virtual void shutdown();
-  virtual void on_note_opened();
+  virtual void initialize() override;
+  virtual void shutdown() override;
+  virtual void on_note_opened() override;
 private:
   BugzillaNoteAddin();
   void migrate_images(const std::string & old_images_dir);

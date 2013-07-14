@@ -25,6 +25,7 @@
 
 #include <string>
 
+#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "importaddin.hpp"
 
@@ -51,10 +52,10 @@ public:
     {
       return new TomboyImportAddin;
     }
-  virtual void initialize();
-  virtual void shutdown();
-  virtual bool want_to_run(gnote::NoteManager & manager);
-  virtual bool first_run(gnote::NoteManager & manager);
+  virtual void initialize() override;
+  virtual void shutdown() override;
+  virtual bool want_to_run(gnote::NoteManager & manager) override;
+  virtual bool first_run(gnote::NoteManager & manager) override;
 
 private:
 

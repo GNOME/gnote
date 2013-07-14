@@ -21,6 +21,7 @@
 #ifndef _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 #define _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 
+#include "base/macros.hpp"
 #include "isyncmanager.hpp"
 #include "utils.hpp"
 #include "sharp/datetime.hpp"
@@ -35,17 +36,17 @@ class FileSystemSyncServer
 {
 public:
   static SyncServer::Ptr create(const std::string & path);
-  virtual bool begin_sync_transaction();
-  virtual bool commit_sync_transaction();
-  virtual bool cancel_sync_transaction();
-  virtual std::list<std::string> get_all_note_uuids();
-  virtual std::map<std::string, NoteUpdate> get_note_updates_since(int revision);
-  virtual void delete_notes(const std::list<std::string> & deletedNoteUUIDs);
-  virtual void upload_notes(const std::list<Note::Ptr> & notes);
-  virtual int latest_revision(); // NOTE: Only reliable during a transaction
-  virtual SyncLockInfo current_sync_lock();
-  virtual std::string id();
-  virtual bool updates_available_since(int revision);
+  virtual bool begin_sync_transaction() override;
+  virtual bool commit_sync_transaction() override;
+  virtual bool cancel_sync_transaction() override;
+  virtual std::list<std::string> get_all_note_uuids() override;
+  virtual std::map<std::string, NoteUpdate> get_note_updates_since(int revision) override;
+  virtual void delete_notes(const std::list<std::string> & deletedNoteUUIDs) override;
+  virtual void upload_notes(const std::list<Note::Ptr> & notes) override;
+  virtual int latest_revision() override; // NOTE: Only reliable during a transaction
+  virtual SyncLockInfo current_sync_lock() override;
+  virtual std::string id() override;
+  virtual bool updates_available_since(int revision) override;
 private:
   explicit FileSystemSyncServer(const std::string & path);
 

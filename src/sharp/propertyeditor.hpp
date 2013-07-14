@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -36,6 +36,8 @@
 #include <gtkmm/entry.h>
 #include <gtkmm/togglebutton.h>
 
+#include "base/macros.hpp"
+
 namespace sharp {
 
   class PropertyEditorBase
@@ -61,7 +63,7 @@ namespace sharp {
   public:
     PropertyEditor(Glib::RefPtr<Gio::Settings> & settings, const char * key, Gtk::Entry &entry);
 
-    virtual void setup();
+    virtual void setup() override;
 
   private:
     void on_changed();
@@ -77,7 +79,7 @@ namespace sharp {
         m_guarded.push_back(w);
       }
 
-    virtual void setup();
+    virtual void setup() override;
 
   private:
     void guard(bool v);

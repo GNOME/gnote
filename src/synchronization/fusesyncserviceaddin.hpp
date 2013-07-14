@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 
 #include <glibmm.h>
 
+#include "base/macros.hpp"
 #include "syncserviceaddin.hpp"
 #include "utils.hpp"
 
@@ -37,14 +38,14 @@ public:
 
   FuseSyncServiceAddin();
 
-  virtual void shutdown();
-  virtual bool initialized();
-  virtual void initialize();
-  virtual SyncServer::Ptr create_sync_server();
-  virtual void post_sync_cleanup();
-  virtual bool is_supported();
-  virtual bool save_configuration();
-  virtual void reset_configuration();
+  virtual void shutdown() override;
+  virtual bool initialized() override;
+  virtual void initialize() override;
+  virtual SyncServer::Ptr create_sync_server() override;
+  virtual void post_sync_cleanup() override;
+  virtual bool is_supported() override;
+  virtual bool save_configuration() override;
+  virtual void reset_configuration() override;
 
   virtual std::string fuse_mount_timeout_error();
   virtual std::string fuse_mount_directory_error();

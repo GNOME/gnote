@@ -61,6 +61,7 @@ LT_INIT([disable-static])
 
 AC_LANG_CPLUSPLUS
 AC_LANG_COMPILER_REQUIRE
+AX_CXX_COMPILE_STDCXX_11([], [optional])
 AC_CHECK_PROG(HAVE_DESKTOP_FILE_VALIDATE, [desktop-file-validate], [yes], [no])
 if test $HAVE_DESKTOP_FILE_VALIDATE == "no"; then
   AC_MSG_ERROR([desktop-file-validate not found])

@@ -30,6 +30,7 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
 
+#include "base/macros.hpp"
 #include "note.hpp"
 #include "searchnoteswidget.hpp"
 #include "utils.hpp"
@@ -43,24 +44,24 @@ class NoteRecentChanges
 public:
   NoteRecentChanges(NoteManager& m);
   virtual ~NoteRecentChanges();
-  virtual void show_search_bar();
-  virtual void set_search_text(const std::string & value);
-  virtual void present_note(const Note::Ptr & note);
-  virtual void new_note();
-  virtual void present_search();
-  virtual void close_window();
+  virtual void show_search_bar() override;
+  virtual void set_search_text(const std::string & value) override;
+  virtual void present_note(const Note::Ptr & note) override;
+  virtual void new_note() override;
+  virtual void present_search() override;
+  virtual void close_window() override;
 
-  virtual void embed_widget(EmbeddableWidget &);
-  virtual void unembed_widget(EmbeddableWidget &);
-  virtual void foreground_embedded(EmbeddableWidget &);
-  virtual void background_embedded(EmbeddableWidget &);
+  virtual void embed_widget(EmbeddableWidget &) override;
+  virtual void unembed_widget(EmbeddableWidget &) override;
+  virtual void foreground_embedded(EmbeddableWidget &) override;
+  virtual void background_embedded(EmbeddableWidget &) override;
   virtual bool running()
     {
       return m_mapped;
     }
 protected:
-  virtual void on_show();
-  virtual bool on_map_event(GdkEventAny *evt);
+  virtual void on_show() override;
+  virtual bool on_map_event(GdkEventAny *evt) override;
 private:
   void on_open_note(const Note::Ptr &);
   void on_open_note_new_window(const Note::Ptr &);

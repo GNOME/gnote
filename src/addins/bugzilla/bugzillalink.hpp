@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 
 #include <gtkmm/textiter.h>
 
+#include "base/macros.hpp"
 #include "noteeditor.hpp"
 #include "notetag.hpp"
 
@@ -42,10 +43,10 @@ public:
   std::string get_bug_url() const;
   void set_bug_url(const std::string & );
 protected:
-  virtual void initialize(const std::string & element_name);
+  virtual void initialize(const std::string & element_name) override;
   virtual bool on_activate(const gnote::NoteEditor & , const Gtk::TextIter &, 
-                           const Gtk::TextIter &);
-  virtual void on_attribute_read(const std::string &);
+                           const Gtk::TextIter &) override;
+  virtual void on_attribute_read(const std::string &) override;
 private:
   void make_image();
 };

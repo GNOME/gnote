@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -34,6 +35,12 @@
     __attribute__ ((format (printf, f, a)));
 #else
 #define _PRINTF_FORMAT(f,a)
+#endif
+
+// define 'final' and 'override' for pre-C++11 compilers
+#if __cplusplus < 201103L
+  #define final
+  #define override
 #endif
 
 #endif

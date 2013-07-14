@@ -26,6 +26,7 @@
 
 #include <gtkmm/widget.h>
 
+#include "base/macros.hpp"
 #include "notemanager.hpp"
 #include "sharp/modulefactory.hpp"
 
@@ -53,7 +54,7 @@ public:
     {
       return new AddinPreferenceFactory<_AddinType>();
     }
-  virtual Gtk::Widget * create_preference_widget(NoteManager & m)
+  virtual Gtk::Widget * create_preference_widget(NoteManager & m) override
     {
       return Gtk::manage(new _AddinType(m));
     }

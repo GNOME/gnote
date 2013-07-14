@@ -25,6 +25,7 @@
 
 #include <list>
 
+#include "base/macros.hpp"
 #include "applicationaddin.hpp"
 #include "note.hpp"
 
@@ -37,9 +38,9 @@ namespace gnote {
     {
     public:
       static ApplicationAddin * create();
-      virtual void initialize ();
-      virtual void shutdown ();
-      virtual bool initialized ();
+      virtual void initialize() override;
+      virtual void shutdown() override;
+      virtual bool initialized() override;
 
     protected:
       NotebookApplicationAddin();

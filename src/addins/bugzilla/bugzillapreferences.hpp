@@ -30,6 +30,8 @@
 #include <gtkmm/treemodelcolumn.h>
 #include <gtkmm/treeview.h>
 
+#include "base/macros.hpp"
+
 namespace sharp {
 
   class FileInfo;
@@ -46,7 +48,7 @@ public:
   BugzillaPreferences(gnote::NoteManager &);
 
 protected:
-  virtual void on_realize();
+  virtual void on_realize() override;
 
 private:
   void update_icon_store();

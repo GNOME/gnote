@@ -27,6 +27,7 @@
 #include <string>
 #include <gtkmm/imagemenuitem.h>
 
+#include "base/macros.hpp"
 #include "note.hpp"
 #include "tableofcontents.hpp"
 
@@ -44,7 +45,7 @@ public:
                          );
 
 protected:
-  virtual void on_activate ();
+  virtual void on_activate() override;
 
 private:
   gnote::Note::Ptr m_note;            //the Note referenced by the menu item

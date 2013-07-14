@@ -26,6 +26,7 @@
 #include <glibmm/threads.h>
 #include <giomm/filemonitor.h>
 
+#include "base/macros.hpp"
 #include "applicationaddin.hpp"
 #include "note.hpp"
 #include "sharp/dynamicmodule.hpp"
@@ -59,9 +60,9 @@ public:
     {
       return new NoteDirectoryWatcherApplicationAddin;
     }
-  virtual void initialize();
-  virtual void shutdown();
-  virtual bool initialized();
+  virtual void initialize() override;
+  virtual void shutdown() override;
+  virtual bool initialized() override;
 private:
   static std::string get_id(const std::string & path);
   static std::string make_uri(const std::string & note_id);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,6 +26,8 @@
 
 #include <gtkmm/treeview.h>
 
+#include "base/macros.hpp"
+
 namespace gnote {
 
 class RecentTreeView
@@ -38,7 +40,7 @@ public:
     }
 
 protected:
-  virtual void on_drag_begin(const Glib::RefPtr<Gdk::DragContext> & )
+  virtual void on_drag_begin(const Glib::RefPtr<Gdk::DragContext> & ) override
     {
     }
 };

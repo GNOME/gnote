@@ -25,6 +25,7 @@
 #include <string>
 #include <gtkmm/imagemenuitem.h>
 
+#include "base/macros.hpp"
 #include "note.hpp"
 
 namespace backlinks {
@@ -35,9 +36,9 @@ class BacklinkAction
 public:
   static Glib::RefPtr<Gtk::Action> create(const sigc::slot<void, Gtk::Menu*> & slot);
 
-  virtual Gtk::Widget *create_menu_item_vfunc();
+  virtual Gtk::Widget *create_menu_item_vfunc() override;
 protected:
-  virtual void on_activate();
+  virtual void on_activate() override;
 private:
   BacklinkAction(const sigc::slot<void, Gtk::Menu*> & slot);
   void on_menu_hidden();
@@ -57,7 +58,7 @@ public:
   gnote::Note::Ptr get_note()
     { return m_note; }
 protected:
-  virtual void on_activate();
+  virtual void on_activate() override;
 private:
   gnote::Note::Ptr   m_note;
   std::string m_title_search;

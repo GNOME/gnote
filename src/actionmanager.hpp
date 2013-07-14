@@ -30,6 +30,7 @@
 #include <giomm/simpleaction.h>
 #include <gtkmm/action.h>
 
+#include "base/macros.hpp"
 #include "iactionmanager.hpp"
 
 namespace gnote {
@@ -40,29 +41,29 @@ class ActionManager
 public:
   ActionManager();
 
-  virtual Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const
+  virtual Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const override
     {
       return find_action_by_name(n);
     }
   void populate_action_groups();
   Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n) const;
 
-  virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const;
+  virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const override;
   const std::vector<Glib::RefPtr<Gio::SimpleAction> > & get_app_actions() const
     {
       return m_app_actions;
     }
-  virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const std::string & name);
+  virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const std::string & name) override;
   virtual void add_app_menu_item(int section, int order, const std::string & label,
-                                 const std::string & action_def);
+                                 const std::string & action_def) override;
   Glib::RefPtr<Gio::Menu> get_app_menu() const;
-  virtual void add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order);
-  virtual void remove_main_window_search_action(const std::string & name);
-  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_search_actions();
+  virtual void add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order) override;
+  virtual void remove_main_window_search_action(const std::string & name) override;
+  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_search_actions() override;
 
-  virtual void add_tray_menu_item(Gtk::MenuItem & item);
-  virtual void remove_tray_menu_item(Gtk::MenuItem & item);
-  virtual std::vector<Gtk::MenuItem*> get_tray_menu_items();
+  virtual void add_tray_menu_item(Gtk::MenuItem & item) override;
+  virtual void remove_tray_menu_item(Gtk::MenuItem & item) override;
+  virtual std::vector<Gtk::MenuItem*> get_tray_menu_items() override;
 private:
   void make_app_actions();
   void make_app_menu_items();

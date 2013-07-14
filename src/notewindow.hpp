@@ -35,6 +35,7 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
+#include "base/macros.hpp"
 #include "mainwindowembeds.hpp"
 #include "note.hpp"
 #include "undo.hpp"
@@ -56,7 +57,7 @@ public:
 
   static void markup_label (Gtk::MenuItem & item);
 protected:
-  virtual void on_show();
+  virtual void on_show() override;
 
 private:
   void refresh_sizing_state();
@@ -139,23 +140,23 @@ public:
   NoteWindow(Note &);
   ~NoteWindow();
 
-  virtual std::string get_name() const;
+  virtual std::string get_name() const override;
   void set_name(const std::string & name);
-  virtual void foreground();
-  virtual void background();
-  virtual void hint_size(int & width, int & height);
-  virtual void size_internals();
+  virtual void foreground() override;
+  virtual void background() override;
+  virtual void hint_size(int & width, int & height) override;
+  virtual void size_internals() override;
 
-  virtual void perform_search(const std::string & text);
-  virtual bool supports_goto_result();
-  virtual bool goto_next_result();
-  virtual bool goto_previous_result();
+  virtual void perform_search(const std::string & text) override;
+  virtual bool supports_goto_result() override;
+  virtual bool goto_next_result() override;
+  virtual bool goto_previous_result() override;
 
   // use co-variant return
-  virtual Gtk::Grid *embeddable_toolbar();
+  virtual Gtk::Grid *embeddable_toolbar() override;
 
-  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions();
-  virtual sigc::signal<void> & signal_actions_changed();
+  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions() override;
+  virtual sigc::signal<void> & signal_actions_changed() override;
   void add_widget_action(const Glib::RefPtr<Gtk::Action> & action, int order);
   void remove_widget_action(const std::string & name);
 

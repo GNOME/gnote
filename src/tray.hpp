@@ -26,6 +26,7 @@
 #include <gtkmm/statusicon.h>
 #include <gtkmm/imagemenuitem.h>
 
+#include "base/macros.hpp"
 #include "note.hpp"
 
 #ifdef HAVE_X11_SUPPORT
@@ -45,11 +46,11 @@ public:
   NoteMenuItem(const Note::Ptr & note, bool show_pin);
 
 protected:
-  virtual void on_activate();
-  virtual bool on_button_press_event(GdkEventButton *);
-  virtual bool on_button_release_event(GdkEventButton *);
-  virtual bool on_motion_notify_event(GdkEventMotion *);
-  virtual bool on_leave_notify_event(GdkEventCrossing *);
+  virtual void on_activate() override;
+  virtual bool on_button_press_event(GdkEventButton *) override;
+  virtual bool on_button_release_event(GdkEventButton *) override;
+  virtual bool on_motion_notify_event(GdkEventMotion *) override;
+  virtual bool on_leave_notify_event(GdkEventCrossing *) override;
 
 private:
   Note::Ptr   m_note;
@@ -131,7 +132,7 @@ public:
   void show_about();
   void quit();
 protected:
-  virtual bool on_size_changed(int size);
+  virtual bool on_size_changed(int size) override;
 private:
   Tray::Ptr                m_tray;
   Gtk::Menu               *m_context_menu;

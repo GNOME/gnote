@@ -23,6 +23,7 @@
 
 #include <gtkmm/treeview.h>
 
+#include "base/macros.hpp"
 #include "mainwindowembeds.hpp"
 #include "notemanager.hpp"
 
@@ -35,9 +36,9 @@ class StatisticsWidget
 {
 public:
   StatisticsWidget(gnote::NoteManager & nm);
-  virtual std::string get_name() const;
-  virtual void foreground();
-  virtual void background();
+  virtual std::string get_name() const override;
+  virtual void foreground() override;
+  virtual void background() override;
 private:
   void col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
   void col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);

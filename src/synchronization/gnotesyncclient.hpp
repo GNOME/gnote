@@ -20,6 +20,7 @@
 
 #include <giomm/file.h>
 
+#include "base/macros.hpp"
 #include "isyncmanager.hpp"
 
 
@@ -33,28 +34,28 @@ namespace sync {
   public:
     GnoteSyncClient(NoteManager &);
 
-    virtual sharp::DateTime last_sync_date()
+    virtual sharp::DateTime last_sync_date() override
       {
         return m_last_sync_date;
       }
-    virtual void last_sync_date(const sharp::DateTime &);
-    virtual int last_synchronized_revision()
+    virtual void last_sync_date(const sharp::DateTime &) override;
+    virtual int last_synchronized_revision() override
       {
         return m_last_sync_rev;
       }
-    virtual void last_synchronized_revision(int);
-    virtual int get_revision(const Note::Ptr & note);
-    virtual void set_revision(const Note::Ptr & note, int revision);
-    virtual std::map<std::string, std::string> deleted_note_titles()
+    virtual void last_synchronized_revision(int) override;
+    virtual int get_revision(const Note::Ptr & note) override;
+    virtual void set_revision(const Note::Ptr & note, int revision) override;
+    virtual std::map<std::string, std::string> deleted_note_titles() override
       {
         return m_deleted_notes;
       }
-    virtual void reset();
-    virtual std::string associated_server_id()
+    virtual void reset() override;
+    virtual std::string associated_server_id() override
       {
         return m_server_id;
       }
-    virtual void associated_server_id(const std::string &);
+    virtual void associated_server_id(const std::string &) override;
   private:
     static const char *LOCAL_MANIFEST_FILE_NAME;
 

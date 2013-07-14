@@ -31,6 +31,7 @@
 #include <gtkmm/scrolledwindow.h>
 #include <sigc++/sigc++.h>
 
+#include "base/macros.hpp"
 #include "mainwindowembeds.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookstreeview.hpp"
@@ -47,14 +48,14 @@ class SearchNotesWidget
 public:
   SearchNotesWidget(NoteManager & m);
   virtual ~SearchNotesWidget();
-  virtual std::string get_name() const;
-  virtual void foreground();
-  virtual void background();
-  virtual void hint_size(int & width, int & height);
-  virtual void size_internals();
-  virtual void perform_search(const std::string & search_text);
-  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions();
-  virtual sigc::signal<void> & signal_actions_changed();
+  virtual std::string get_name() const override;
+  virtual void foreground() override;
+  virtual void background() override;
+  virtual void hint_size(int & width, int & height) override;
+  virtual void size_internals() override;
+  virtual void perform_search(const std::string & search_text) override;
+  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions() override;
+  virtual sigc::signal<void> & signal_actions_changed() override;
 
   void select_all_notes_notebook();
   void new_note();

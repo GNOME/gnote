@@ -22,6 +22,8 @@
 #ifndef __TABLEOFCONTENT_ACTION_HPP_
 #define __TABLEOFCONTENT_ACTION_HPP_
 
+#include "base/macros.hpp"
+
 namespace tableofcontents {
 
 class TableofcontentsAction
@@ -30,8 +32,8 @@ class TableofcontentsAction
 public:
   static Glib::RefPtr<Gtk::Action> create(const sigc::slot<void, Gtk::Menu*> & slot);
 protected:
-  virtual Gtk::Widget *create_menu_item_vfunc();
-  virtual void on_activate();
+  virtual Gtk::Widget *create_menu_item_vfunc() override;
+  virtual void on_activate() override;
 private:
   TableofcontentsAction(const sigc::slot<void, Gtk::Menu*> & slot);
   void update_menu();

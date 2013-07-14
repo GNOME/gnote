@@ -27,6 +27,7 @@
 #include <gtkmm/menu.h>
 #include <gtkmm/menutoolbutton.h>
 
+#include "base/macros.hpp"
 #include "noteaddin.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmenuitem.hpp"
@@ -42,9 +43,9 @@ namespace notebooks {
   public:
     static NoteAddin * create();
     static Tag::Ptr get_template_tag();
-    virtual void initialize ();
-    virtual void shutdown ();
-    virtual void on_note_opened ();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual void on_note_opened() override;
 
   protected:
     NotebookNoteAddin();

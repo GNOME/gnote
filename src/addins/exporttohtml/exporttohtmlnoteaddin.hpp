@@ -28,6 +28,7 @@
 
 #include <gtkmm/imagemenuitem.h>
 
+#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "sharp/streamwriter.hpp"
 #include "sharp/xsltransform.hpp"
@@ -55,9 +56,9 @@ public:
     {
       return new ExportToHtmlNoteAddin;
     }
-  virtual void initialize();
-  virtual void shutdown();
-  virtual void on_note_opened();
+  virtual void initialize() override;
+  virtual void shutdown() override;
+  virtual void on_note_opened() override;
 
 
 private:

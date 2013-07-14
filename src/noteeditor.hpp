@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,7 @@
 #include <glibmm/refptr.h>
 #include <gtkmm/textview.h>
 
+#include "base/macros.hpp"
 #include "preferences.hpp"
 
 namespace gnote {
@@ -44,10 +45,10 @@ public:
     }
 
 protected:
-  virtual void on_drag_data_received (Glib::RefPtr<Gdk::DragContext> & context,
-                                      int x, int y,
-                                      const Gtk::SelectionData & selection_data,
-                                      guint info,  guint time);
+  virtual void on_drag_data_received(const Glib::RefPtr<Gdk::DragContext> & context,
+                                     int x, int y,
+                                     const Gtk::SelectionData & selection_data,
+                                     guint info,  guint time) override;
 
 private:
   Pango::FontDescription get_gnome_document_font_description();

@@ -32,6 +32,7 @@
 #include <gtkmm/menuitem.h>
 #include <gtkmm/toolitem.h>
 
+#include "base/macros.hpp"
 #include "sharp/exception.hpp"
 #include "abstractaddin.hpp"
 #include "note.hpp"
@@ -55,7 +56,7 @@ public:
 //  static NoteAddin *create() { return NULL; }
   void initialize(const Note::Ptr & note);
 
-  virtual void dispose(bool);
+  virtual void dispose(bool) override;
 
   /// <summary>
   /// Called when the NoteAddin is attached to a Note
