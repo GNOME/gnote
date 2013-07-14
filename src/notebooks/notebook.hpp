@@ -153,10 +153,7 @@ public:
   virtual bool        contains_note(const Note::Ptr &);
   virtual bool        add_note(const Note::Ptr &);
   virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
-  bool empty()
-    {
-      return m_notes.size() == 0;
-    }
+  bool empty();
   sigc::signal<void> signal_size_changed;
 private:
   void on_note_deleted(const Note::Ptr & note);

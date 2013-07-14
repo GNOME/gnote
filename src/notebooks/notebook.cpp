@@ -339,5 +339,22 @@ namespace notebooks {
     }
   }
 
+  bool ActiveNotesNotebook::empty()
+  {
+    if(m_notes.size() == 0) {
+      return true;
+    }
+
+    // ignore template notes
+    Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    for(std::set<Note::Ptr>::iterator iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
+      if(!(*iter)->contains_tag(template_tag)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
 }
 }
