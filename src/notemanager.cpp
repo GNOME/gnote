@@ -733,23 +733,49 @@ namespace gnote {
       new_note->data().width() = template_note->data().width();
     }
 
+    Glib::RefPtr<Gtk::TextBuffer> buffer = new_note->get_buffer();
+    Gtk::TextIter cursor, selection;
     Tag::Ptr template_save_selection = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
-    if(template_note->data().cursor_position() > 0 && template_note->contains_tag(template_save_selection)) {
-      Glib::RefPtr<Gtk::TextBuffer> buffer = new_note->get_buffer();
-      Gtk::TextIter iter;
+    if(template_note->contains_tag(template_save_selection)) {
+      Glib::ustring template_title = template_note->get_title();
+      int cursor_pos = template_note->data().cursor_position();
+      int selection_bound = template_note->data().selection_bound_position();
+      if(cursor_pos == 0) {
+        // the created note has different title from template, take that into account
+        // selection starts at the beginning of title
+        // if it ends at the end of title, select entire title
+        // if it ends after the title, keep the same offset from the end selected
+        // otherwise select nothing, we don't know, what the selected part of title means anyway
+        cursor = buffer->get_iter_at_offset(0);
+        selection = cursor;
+        if(selection_bound == int(template_title.size())) {
+          selection.forward_to_line_end();
+        }
+        else if(selection_bound > int(template_title.size())) {
+          selection.forward_to_line_end();
+          selection.forward_chars(selection_bound - template_title.size());
+        }
+      }
+      else if(cursor_pos <= int(template_title.size())) {
+        cursor = buffer->get_iter_at_line(1);
+        selection = cursor;
+        selection.forward_chars(selection_bound - template_title.size() - 1); // skip title and new line
+      }
+      else {
+        cursor = buffer->get_iter_at_offset(cursor_pos - template_title.size() + title.size() - 1);
+        selection = buffer->get_iter_at_offset(selection_bound - template_title.size() + title.size() - 1);
+      }
+    }
+    else {
+      // move cursor to the start of first word after the title
+      cursor = buffer->get_iter_at_line(1);
+      while(!cursor.starts_word() && cursor.forward_char());
+      selection = cursor;
+    }
 
-      // Because the titles will be different between template and
-      // new note, we can't just drop the cursor at template's
-      // CursorPosition. Whitespace after the title makes this more
-      // complicated so let's just start counting from the line after the title.
-      int title_offset_difference = buffer->get_iter_at_line(1).get_offset()
-                                    - template_note->get_buffer()->get_iter_at_line(1).get_offset();
-
-      iter = buffer->get_iter_at_offset(template_note->data().cursor_position() + title_offset_difference);
-      buffer->place_cursor(iter);
-
-      iter = buffer->get_iter_at_offset(template_note->data().selection_bound_position() + title_offset_difference);
-      buffer->move_mark(buffer->get_selection_bound(), iter);
+    buffer->place_cursor(cursor);
+    if(selection != cursor) {
+      buffer->move_mark(buffer->get_selection_bound(), selection);
     }
 
     return new_note;
