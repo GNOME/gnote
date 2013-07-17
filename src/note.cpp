@@ -124,6 +124,29 @@ namespace gnote {
       dialog.run();
     }
 
+    void place_cursor_and_selection(const NoteData & data, const Glib::RefPtr<NoteBuffer> & buffer)
+    {
+      Gtk::TextIter cursor;
+      bool select = false;
+      if(data.cursor_position() >= 0) {
+        // Move cursor to last-saved position
+        cursor = buffer->get_iter_at_offset(data.cursor_position());
+        select = true;
+      } 
+      else {
+        // Avoid title line
+        cursor = buffer->get_iter_at_line(2);
+      }
+      buffer->place_cursor(cursor);
+
+      if(select && data.selection_bound_position() >= 0) {
+        // Move selection bound to last-saved position
+        Gtk::TextIter selection_bound;
+        selection_bound = buffer->get_iter_at_offset(data.selection_bound_position());
+        buffer->move_mark(buffer->get_selection_bound(), selection_bound);
+      }
+    }
+
   }
 
 
@@ -131,7 +154,7 @@ namespace gnote {
 
   NoteData::NoteData(const std::string & _uri)
     : m_uri(_uri)
-    , m_cursor_pos(0)
+    , m_cursor_pos(s_noPosition)
     , m_selection_bound_pos(s_noPosition)
     , m_width(0)
     , m_height(0)
@@ -215,23 +238,7 @@ namespace gnote {
                                        m_data->text());
       m_buffer->set_modified(false);
 
-      Gtk::TextIter cursor;
-      if (m_data->cursor_position() != 0) {
-        // Move cursor to last-saved position
-        cursor = m_buffer->get_iter_at_offset (m_data->cursor_position());
-      } 
-      else {
-        // Avoid title line
-        cursor = m_buffer->get_iter_at_line(2);
-      }
-      m_buffer->place_cursor(cursor);
-
-      if(m_data->selection_bound_position() >= 0) {
-        // Move selection bound to last-saved position
-        Gtk::TextIter selection_bound;
-        selection_bound = m_buffer->get_iter_at_offset(m_data->selection_bound_position());
-        m_buffer->move_mark(m_buffer->get_selection_bound(), selection_bound);
-      }
+      place_cursor_and_selection(*m_data, m_buffer);
 
       // New events should create Undo actions
       m_buffer->undoer().thaw_undo ();
@@ -1042,23 +1049,7 @@ namespace gnote {
     m_mark_set_conn.block();
     m_mark_deleted_conn.block();
 
-    Gtk::TextIter cursor;
-    if(m_data.data().cursor_position() != 0) {
-      // Move cursor to last-saved position
-      cursor = m_buffer->get_iter_at_offset (m_data.data().cursor_position());
-    } 
-    else {
-      // Avoid title line
-      cursor = m_buffer->get_iter_at_line(2);
-    }
-    m_buffer->place_cursor(cursor);
-
-    if(m_data.data().selection_bound_position() >= 0) {
-      // Move selection bound to last-saved position
-      Gtk::TextIter selection_bound;
-      selection_bound = m_buffer->get_iter_at_offset(m_data.data().selection_bound_position());
-      m_buffer->move_mark(m_buffer->get_selection_bound(), selection_bound);
-    }
+    place_cursor_and_selection(m_data.data(), m_buffer);
 
     m_mark_set_conn.unblock();
     m_mark_deleted_conn.unblock();
