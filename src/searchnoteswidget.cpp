@@ -144,6 +144,9 @@ void SearchNotesWidget::make_actions()
 
   m_delete_notebook_action = Gtk::Action::create("DeleteNotebookAction", _("_Delete"));
   m_delete_notebook_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_delete_notebook));
+
+  m_rename_notebook_action = Gtk::Action::create("RenameNotebookAction", _("Re_name..."));
+  m_rename_notebook_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_rename_notebook));
 }
 
 void SearchNotesWidget::perform_search(const std::string & search_text)
@@ -370,6 +373,7 @@ void SearchNotesWidget::on_notebook_selection_changed()
     m_on_notebook_selection_changed_cid.block();
     select_all_notes_notebook();
     m_delete_notebook_action->set_sensitive(false);
+    m_rename_notebook_action->set_sensitive(false);
     m_on_notebook_selection_changed_cid.unblock();
   }
   else {
@@ -380,9 +384,11 @@ void SearchNotesWidget::on_notebook_selection_changed()
     bool allow_edit = false;
     if(std::tr1::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
       m_delete_notebook_action->set_sensitive(false);
+      m_rename_notebook_action->set_sensitive(false);
     }
     else {
       m_delete_notebook_action->set_sensitive(true);
+      m_rename_notebook_action->set_sensitive(true);
       allow_edit = true;
     }
 
@@ -1334,9 +1340,8 @@ Gtk::Menu *SearchNotesWidget::get_notebook_list_context_menu()
     item->signal_activate()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
     m_notebook_list_context_menu->add(*item);
-    item = manage(new Gtk::MenuItem(_("Re_name..."), true));
-    item->signal_activate()
-      .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_rename_notebook));
+    item = manage(new Gtk::MenuItem);
+    item->set_related_action(m_rename_notebook_action);
     m_notebook_list_context_menu->add(*item);
     item = manage(new Gtk::MenuItem);
     item->set_related_action(m_delete_notebook_action);

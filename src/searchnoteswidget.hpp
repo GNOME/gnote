@@ -156,6 +156,7 @@ private:
   Glib::RefPtr<Gtk::Action> m_open_note_new_window_action;
   Glib::RefPtr<Gtk::Action> m_delete_note_action;
   Glib::RefPtr<Gtk::Action> m_delete_notebook_action;
+  Glib::RefPtr<Gtk::Action> m_rename_notebook_action;
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ScrolledWindow m_matches_window;
   Gtk::Grid *m_no_matches_box;
