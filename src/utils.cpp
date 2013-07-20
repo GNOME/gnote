@@ -219,23 +219,6 @@ namespace gnote {
             str(boost::format(_("Yesterday, %1%")) % short_time) :
             _("Yesterday");
         }
-        else if ((date.day_of_year() < now.day_of_year())
-                  && (date.day_of_year() > now.day_of_year() - 6)) {
-          int num_days = now.day_of_year() - date.day_of_year();
-          const char * fmt;
-          if(show_time) {
-            /* TRANSLATORS: 2 or more days ago, up to one week.
-               First argument is number of days, second is time. */
-            fmt = ngettext("%1% day ago, %2%", "%1% days ago, %2%", num_days);
-            pretty_str = str(boost::format(fmt) % num_days % short_time);
-          }
-          else {
-            /* TRANSLATORS: 2 or more days ago, up to one week.
-               Argument is number of days. */
-            fmt = ngettext("%1% day ago", "%1% days ago", num_days);
-            pretty_str = str(boost::format(fmt) % num_days);
-          }
-        }
         else if (date.day_of_year() > now.day_of_year()
                  && date.day_of_year() == now.day_of_year() + 1) {
           pretty_str = show_time ?
@@ -243,26 +226,9 @@ namespace gnote {
             str(boost::format(_("Tomorrow, %1%")) % short_time) :
             _("Tomorrow");
         }
-        else if (date.day_of_year() > now.day_of_year()
-                 && date.day_of_year() < now.day_of_year() + 6) {
-          int num_days = date.day_of_year() - now.day_of_year();
-          const char * fmt;
-          if(show_time) {
-            /* TRANSLATORS: In 2 or more days, up to one week.
-               First argument is number of days, second is time. */
-            fmt = ngettext("In %1% day, %2%", "In %1% days, %2%", num_days);
-            pretty_str = str(boost::format(fmt) % num_days % short_time); 
-          }
-          else {
-            /* TRANSLATORS: In 2 or more days, up to one week.
-               Argument is number of days. */
-            fmt = ngettext("In %1% day", "In %1% days", num_days);
-            pretty_str = str(boost::format(fmt) % num_days);
-          }
-        }
         else {
           /* TRANSLATORS: date in current year. */
-          pretty_str = date.to_string(_("%B %d")); // "MMMM d"
+          pretty_str = date.to_string(_("%b %d")); // "MMMM d"
           if(show_time) {
             /* TRANSLATORS: first argument is date, second is time. */
             pretty_str = str(boost::format(_("%1%, %2%")) % pretty_str % short_time);
@@ -274,7 +240,7 @@ namespace gnote {
       }
       else {
         /* TRANSLATORS: date in other than current year. */
-        pretty_str = date.to_string(_("%B %d %Y")); // "MMMM d yyyy"
+        pretty_str = date.to_string(_("%b %d %Y")); // "MMMM d yyyy"
         if(show_time) {
           /* TRANSLATORS: first argument is date, second is time. */
           pretty_str = str(boost::format(_("%1%, %2%")) % pretty_str % short_time);

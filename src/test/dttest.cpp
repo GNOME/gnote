@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,7 +35,6 @@ bool string_ends_with(const std::string & s, const std::string & other)
 
 int test_main(int /*argc*/, char ** /*argv*/)
 {
-  std::string format = "%Y-%m-%dT%T.@7f@%z";
   sharp::DateTime d(678901234, 67890);
 
   std::string date_string = sharp::XmlConvert::to_string(d);
@@ -62,25 +62,17 @@ int test_main(int /*argc*/, char ** /*argv*/)
   date_string = gnote::utils::get_pretty_print_date(d4, false, false);
   BOOST_CHECK(date_string == "Tomorrow");
 
-  d4.add_days(2);
-  date_string = gnote::utils::get_pretty_print_date(d4, false, false);
-  BOOST_CHECK(date_string == "In 3 days");
-
   sharp::DateTime d5 = sharp::DateTime::now();
   d5.add_days(-1);
   date_string = gnote::utils::get_pretty_print_date(d5, false, false);
   BOOST_CHECK(date_string == "Yesterday");
-
-  d5.add_days(-3);
-  date_string = gnote::utils::get_pretty_print_date(d5, false, false);
-  BOOST_CHECK(date_string == "4 days ago");
 
   sharp::DateTime d6 = sharp::DateTime::from_iso8601("2009-03-24T13:34:35.2914680-04:00");
   date_string = gnote::utils::get_pretty_print_date(d6, true, false);
   BOOST_CHECK(string_ends_with(date_string, "19:34"));
 
   date_string = gnote::utils::get_pretty_print_date(d6, true, true);
-  BOOST_CHECK(string_ends_with(date_string, "7:34 PM"));
+  BOOST_CHECK(string_ends_with(date_string, "7:34 pm"));
 
   return 0;
 }
