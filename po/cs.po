@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-07-14 13:53+0000\n"
-"PO-Revision-Date: 2013-07-16 10:49+0200\n"
+"POT-Creation-Date: 2013-07-20 19:27+0000\n"
+"PO-Revision-Date: 2013-07-20 23:10+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -76,8 +76,8 @@ msgid ""
 "Enable this option if you want bulleted lists to be automatic when you place "
 "- or * at the beginning of a line."
 msgstr ""
-"Zaškrtněte, jestliže chcete automaticky vytvářet seznamy s odrážkami napsáním "
-"- nebo * na začátek řádku."
+"Zaškrtněte, jestliže chcete automaticky vytvářet seznamy s odrážkami "
+"napsáním - nebo * na začátek řádku."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:7
 msgid "Enable Middle-Click Paste On Icon"
@@ -1369,7 +1369,7 @@ msgid "C_reate"
 msgstr "_Vytvořit"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:66
-#: ../src/searchnoteswidget.cpp:224
+#: ../src/searchnoteswidget.cpp:227
 msgid "Notebooks"
 msgstr "Sešity"
 
@@ -1387,27 +1387,27 @@ msgstr "Nový _sešit…"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:90
+#: ../src/notebooks/notebook.cpp:91
 msgid "%1% Notebook Template"
 msgstr "Šablona sešitu %1%"
 
-#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:524
+#: ../src/notebooks/notebook.cpp:167 ../src/notemanager.cpp:524
 msgid "New Note"
 msgstr "Nová poznámka"
 
-#: ../src/notebooks/notebook.cpp:217
+#: ../src/notebooks/notebook.cpp:218
 msgid "All"
 msgstr "Všechny"
 
-#: ../src/notebooks/notebook.cpp:246
+#: ../src/notebooks/notebook.cpp:247
 msgid "Unfiled"
 msgstr "Nezařazené"
 
-#: ../src/notebooks/notebook.cpp:275
+#: ../src/notebooks/notebook.cpp:276
 msgid "Important"
 msgstr "Důležité"
 
-#: ../src/notebooks/notebook.cpp:303
+#: ../src/notebooks/notebook.cpp:304
 msgid "Active"
 msgstr "Aktivní"
 
@@ -1484,27 +1484,27 @@ msgstr ""
 "chybové hlášení naleznete v ~/.gnote.log."
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/note.cpp:413
+#: ../src/note.cpp:420
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Došlo k výjimce při ukládání poznámky: %s"
 
-#: ../src/note.cpp:521
+#: ../src/note.cpp:528
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Chyba při ukládání: %s"
 
-#: ../src/note.cpp:944
+#: ../src/note.cpp:951
 msgid "Setting text content for closed notes not supported"
 msgstr "Nastavení textového obsahu pro uzavřenou poznámku není podporováno"
 
 #. write failure, but not critical
-#: ../src/note.cpp:1163
+#: ../src/note.cpp:1154
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Selhala aktualizace formátu poznámky: %s"
 
-#: ../src/note.cpp:1298
+#: ../src/note.cpp:1289
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Chyba souborového systému: %s"
@@ -2036,7 +2036,7 @@ msgid "Copyright:"
 msgstr "Copyright:"
 
 #: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:569
-#: ../src/searchnoteswidget.cpp:993
+#: ../src/searchnoteswidget.cpp:999
 msgid "Notes"
 msgstr "Poznámky"
 
@@ -2081,15 +2081,19 @@ msgstr "Otevřít v no_vém okně"
 msgid "_Delete"
 msgstr "O_dstranit"
 
-#: ../src/searchnoteswidget.cpp:652
+#: ../src/searchnoteswidget.cpp:148
+msgid "Re_name..."
+msgstr "Přejme_novat…"
+
+#: ../src/searchnoteswidget.cpp:658
 msgid "Note"
 msgstr "Poznámka"
 
-#: ../src/searchnoteswidget.cpp:674
+#: ../src/searchnoteswidget.cpp:680
 msgid "Modified"
 msgstr "Změněna"
 
-#: ../src/searchnoteswidget.cpp:1012
+#: ../src/searchnoteswidget.cpp:1018
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2097,58 +2101,54 @@ msgstr ""
 "Ve vybraném sešitu nebyl nalezen žádný výsledek.\n"
 "Kliknutím zde se prohledají všechny sešity."
 
-#: ../src/searchnoteswidget.cpp:1016
+#: ../src/searchnoteswidget.cpp:1022
 msgid "Click here to search across all notebooks"
 msgstr "Kliknutím zde prohledáte všechny sešity"
 
-#: ../src/searchnoteswidget.cpp:1037
+#: ../src/searchnoteswidget.cpp:1043
 msgid "Matches"
 msgstr "Odpovídá"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1089
+#: ../src/searchnoteswidget.cpp:1095
 msgid "Title match"
 msgstr "Název odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1093
+#: ../src/searchnoteswidget.cpp:1099
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% odpovídá"
 msgstr[1] "%1% odpovídají"
 msgstr[2] "%1% odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1304
+#: ../src/searchnoteswidget.cpp:1310
 msgid "_New"
 msgstr "_Nová"
 
-#: ../src/searchnoteswidget.cpp:1333
+#: ../src/searchnoteswidget.cpp:1339
 msgid "_Open Template Note"
 msgstr "_Otevřít šablonu"
 
-#: ../src/searchnoteswidget.cpp:1337
-msgid "Re_name..."
-msgstr "Přejme_novat…"
-
-#: ../src/searchnoteswidget.cpp:1345
+#: ../src/searchnoteswidget.cpp:1350
 msgid "_New..."
 msgstr "_Nový…"
 
-#: ../src/searchnoteswidget.cpp:1481 ../src/searchnoteswidget.cpp:1494
-#: ../src/searchnoteswidget.cpp:1505
+#: ../src/searchnoteswidget.cpp:1486 ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1510
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Selhalo zpracování nastavení %s (hodnota: %s):"
 
-#: ../src/searchnoteswidget.cpp:1482
+#: ../src/searchnoteswidget.cpp:1487
 msgid "Expected format 'column:order'"
 msgstr "Očekávaný formát „sloupec:pořadí“"
 
-#: ../src/searchnoteswidget.cpp:1495
+#: ../src/searchnoteswidget.cpp:1500
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Nerozpoznaný sloupec %s"
 
-#: ../src/searchnoteswidget.cpp:1506
+#: ../src/searchnoteswidget.cpp:1511
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Nerozpoznané pořadí %s"
@@ -2567,69 +2567,33 @@ msgstr "Včera, %1%"
 msgid "Yesterday"
 msgstr "Včera"
 
-#. TRANSLATORS: 2 or more days ago, up to one week.
-#. First argument is number of days, second is time.
-#: ../src/utils.cpp:229
-msgid "%1% day ago, %2%"
-msgid_plural "%1% days ago, %2%"
-msgstr[0] "Včera, %2%"
-msgstr[1] "Před %1% dny, %2%"
-msgstr[2] "Před %1% dny, %2%"
-
-#. TRANSLATORS: 2 or more days ago, up to one week.
-#. Argument is number of days.
-#: ../src/utils.cpp:235
-msgid "%1% day ago"
-msgid_plural "%1% days ago"
-msgstr[0] "Včera"
-msgstr[1] "Před %1% dny"
-msgstr[2] "Před %1% dny"
-
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:243
+#: ../src/utils.cpp:226
 msgid "Tomorrow, %1%"
 msgstr "Zítra, %1%"
 
-#: ../src/utils.cpp:244
+#: ../src/utils.cpp:227
 msgid "Tomorrow"
 msgstr "Zítra"
 
-#. TRANSLATORS: In 2 or more days, up to one week.
-#. First argument is number of days, second is time.
-#: ../src/utils.cpp:253
-msgid "In %1% day, %2%"
-msgid_plural "In %1% days, %2%"
-msgstr[0] "Za jeden den, %2%"
-msgstr[1] "Za %1% dny, %2%"
-msgstr[2] "Za %1% dní, %2%"
-
-#. TRANSLATORS: In 2 or more days, up to one week.
-#. Argument is number of days.
-#: ../src/utils.cpp:259
-msgid "In %1% day"
-msgid_plural "In %1% days"
-msgstr[0] "Za jeden den"
-msgstr[1] "Za %1% dny"
-msgstr[2] "Za %1% dní"
-
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:265
-msgid "%B %d"
-msgstr "%B %d"
+#: ../src/utils.cpp:231
+msgid "%b %d"
+msgstr "%d. %B"
 
 #. TRANSLATORS: first argument is date, second is time.
-#: ../src/utils.cpp:268 ../src/utils.cpp:280
+#: ../src/utils.cpp:234 ../src/utils.cpp:246
 msgid "%1%, %2%"
 msgstr "%1% %2%"
 
-#: ../src/utils.cpp:273
+#: ../src/utils.cpp:239
 msgid "No Date"
 msgstr "Žádný termín"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:277
-msgid "%B %d %Y"
-msgstr "%B %d %Y"
+#: ../src/utils.cpp:243
+msgid "%b %d %Y"
+msgstr "%d. %B %Y"
 
 #: ../src/watchers.cpp:211
 msgid "(Untitled %1%)"
