@@ -1,3 +1,45 @@
+3.9.2 - 2013/07/21
+
+New Features:
+  * Remove underline from note title (#701855)
+  * Always open new windows from tray (#700458)
+  * Add option to always open notes in new window (#700458)
+  * Make preferences dialog more compact
+  * Do not save window position, leave it to window manager
+  * Make X11 conditional dependency to allow run on Wayland (--with-x11-support to enable)
+  * Save main window sorting, always show it (#700609, #700436)
+  * Respect gnome clock-format setting (#700432)
+  * Rename Notes dialog column "Last Changed" to "Modified" (#704111)
+  * Make "Modified" column format more compact (#704113)
+  * Add menu item and accelerator for renaming notebook (#700435)
+  * Shorten context menu item labels
+  * New dependency BOOST_FOREACH
+
+Fixes:
+  * "Table of Content" renamed to "Table of Contents" (#701942)
+  * Note title no longer displayed in brackets (#701853)
+  * Some cleanup in create notebook dialog (#701845)
+  * Do not show faded icons in main window toolbar (#701851)
+  * Bump required version of Glibmm to 2.32 (actually required version)
+  * Fix occasional crash when using tray icon
+  * Fix crash when closing after multiple link activations
+  * Do not overwrite entire note when replacing title (#701616)
+  * Fix critical assertion errors when searching (#700626)
+  * Set focus to notes list when showing it (#700611)
+  * Fix notebook selection on rename
+  * Make selection saving work reliably (#700553)
+  * Do not show empty Active notes notebook
+  * Disable rename notebook context menu for special notebooks (#704197)
+
+Translations:
+  * Updated translations:
+    - Czech (cs)
+    - German (de)
+    - Greek (el)
+    - Lithuanian (lt)
+    - Spanish (es)
+  * Updated Spanish manual (es)
+
 3.9.1 - 2013/06/08
 
 New Features:
