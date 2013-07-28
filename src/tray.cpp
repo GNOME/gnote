@@ -95,10 +95,7 @@ namespace gnote {
   {
     if(!m_inhibit_activate) {
       if(m_note) {
-        MainWindow & window = IGnote::obj().new_main_window();
-        window.present_note(m_note);
-        window.present();
-        window.close_on_escape(true);
+        MainWindow::present_in_new_window(m_note, true);
       }
     }
   }

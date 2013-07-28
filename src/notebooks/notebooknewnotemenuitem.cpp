@@ -25,8 +25,8 @@
 #include <gtkmm/image.h>
 
 #include "sharp/string.hpp"
-#include "ignote.hpp"
 #include "iconmanager.hpp"
+#include "mainwindow.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -54,10 +54,7 @@ namespace gnote {
       
       // Look for the template note and create a new note
       Note::Ptr note = m_notebook->create_notebook_note ();
-      MainWindow &win = IGnote::obj().new_main_window();
-      win.present_note(note);
-      win.present();
-      win.close_on_escape(true);
+      MainWindow::present_in_new_window(note, true);
     }
 
 

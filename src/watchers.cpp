@@ -33,7 +33,7 @@
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
-#include "ignote.hpp"
+#include "mainwindow.hpp"
 #include "noteeditor.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -878,7 +878,7 @@ namespace gnote {
   }
 
 
-  bool NoteLinkWatcher::open_or_create_link(const NoteEditor & editor,
+  bool NoteLinkWatcher::open_or_create_link(const NoteEditor &,
                                             const Gtk::TextIter & start,
                                             const Gtk::TextIter & end)
   {
@@ -910,17 +910,7 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      MainWindow *window = NULL;
-      if(false == Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
-                    Preferences::OPEN_NOTES_IN_NEW_WINDOW)) {
-        window = MainWindow::get_owning(const_cast<NoteEditor&>(editor));
-      }
-      if(!window) {
-        window = &IGnote::obj().new_main_window();
-        window->close_on_escape(true);
-      }
-      window->present_note(link);
-      window->present();
+      MainWindow::present_default(link);
       return true;
     }
 

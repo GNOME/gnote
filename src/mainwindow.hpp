@@ -34,11 +34,14 @@ class MainWindow
 {
 public:
   static MainWindow *get_owning(Gtk::Widget & widget);
+  static void present_in(MainWindow & win, const Note::Ptr & note);
+  static MainWindow *present_active(const Note::Ptr & note);
+  static MainWindow *present_in_new_window(const Note::Ptr & note, bool close_on_esacpe);
+  static MainWindow *present_default(const Note::Ptr & note);
 
   explicit MainWindow(const std::string & title);
 
   virtual void set_search_text(const std::string & value) = 0;
-  virtual void present_note(const Note::Ptr & note) = 0;
   virtual void show_search_bar() = 0;
   virtual void present_search() = 0;
   virtual void new_note() = 0;
@@ -52,6 +55,8 @@ public:
     {
       return m_close_on_esc;
     }
+protected:
+  virtual void present_note(const Note::Ptr & note) = 0;
 private:
   bool m_close_on_esc;
 };

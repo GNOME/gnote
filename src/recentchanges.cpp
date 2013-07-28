@@ -319,16 +319,15 @@ namespace gnote {
       on_open_note_new_window(note);
     }
     else {
-      present_note(note);
+      if(!present_active(note)) {
+        present_note(note);
+      }
     }
   }
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    MainWindow & window = IGnote::obj().new_main_window();
-    window.present();
-    window.present_note(note);
-    window.close_on_escape(true);
+    present_in_new_window(note, true);
   }
 
   void NoteRecentChanges::on_delete_note()

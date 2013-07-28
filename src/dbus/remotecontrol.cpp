@@ -408,8 +408,7 @@ void RemoteControl::on_note_saved(const Note::Ptr & note)
 MainWindow & RemoteControl::present_note(const Note::Ptr & note)
 {
   MainWindow & window = IGnote::obj().get_window_for_note();
-  window.present_note(note);
-  window.present();
+  MainWindow::present_in(window, note);
   return window;
 }
 

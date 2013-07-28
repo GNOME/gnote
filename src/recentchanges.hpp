@@ -46,7 +46,6 @@ public:
   virtual ~NoteRecentChanges();
   virtual void show_search_bar() override;
   virtual void set_search_text(const std::string & value) override;
-  virtual void present_note(const Note::Ptr & note) override;
   virtual void new_note() override;
   virtual void present_search() override;
   virtual void close_window() override;
@@ -62,6 +61,7 @@ public:
   virtual bool contains(EmbeddableWidget &) override;
   virtual bool is_foreground(EmbeddableWidget &) override;
 protected:
+  virtual void present_note(const Note::Ptr & note) override;
   virtual void on_show() override;
   virtual bool on_map_event(GdkEventAny *evt) override;
 private:

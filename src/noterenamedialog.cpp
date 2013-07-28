@@ -29,7 +29,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/expander.h>
 
-#include "ignote.hpp"
+#include "mainwindow.hpp"
 #include "notewindow.hpp"
 #include "noterenamedialog.hpp"
 
@@ -361,19 +361,11 @@ void NoteRenameDialog::on_notes_view_row_activated(
   if (!note)
     return;
 
-  Gtk::Widget *parent = get_parent();
-  MainWindow *window = NULL;
-  if(parent) {
-    window = MainWindow::get_owning(*parent);
+  MainWindow *window = MainWindow::present_default(note);
+  if(window) {
+    window->set_search_text(Glib::ustring::compose("\"%1\"", old_title));
+    window->show_search_bar();
   }
-  if(!window) {
-    window = &IGnote::obj().new_main_window();
-  }
-
-  window->present_note(note);
-  window->present();
-  window->set_search_text(Glib::ustring::compose("\"%1\"", old_title));
-  window->show_search_bar();
 }
 
 void NoteRenameDialog::on_select_all_button_clicked(bool select)

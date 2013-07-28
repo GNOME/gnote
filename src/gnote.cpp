@@ -543,9 +543,7 @@ namespace gnote {
 
   void Gnote::open_note(const Note::Ptr & note)
   {
-    MainWindow & main_window = get_window_for_note();
-    main_window.present_note(note);
-    main_window.present();
+    MainWindow::present_in(get_window_for_note(), note);
   }
 
 

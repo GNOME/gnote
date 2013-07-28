@@ -96,10 +96,7 @@ void BacklinkMenuItem::on_activate()
     return;
   }
 
-  gnote::MainWindow &window = gnote::IGnote::obj().new_main_window();
-  window.present_note(m_note);
-  window.present();
-  window.close_on_escape(true);
+  gnote::MainWindow::present_in_new_window(m_note, true);
 }
 
 
