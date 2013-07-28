@@ -59,6 +59,8 @@ public:
     {
       return m_mapped;
     }
+  virtual bool contains(EmbeddableWidget &) override;
+  virtual bool is_foreground(EmbeddableWidget &) override;
 protected:
   virtual void on_show() override;
   virtual bool on_map_event(GdkEventAny *evt) override;
@@ -68,7 +70,6 @@ private:
   void on_delete_note();
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
-  bool is_foreground(EmbeddableWidget &);
   EmbeddableWidget *currently_embedded();
   Gtk::Toolbar *make_toolbar();
   void make_search_box();

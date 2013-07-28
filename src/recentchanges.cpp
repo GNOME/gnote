@@ -24,6 +24,7 @@
 #endif
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/image.h>
@@ -532,6 +533,17 @@ namespace gnote {
     }
 
     m_embedded_toolbar.remove();
+  }
+
+  bool NoteRecentChanges::contains(EmbeddableWidget & widget)
+  {
+    BOOST_FOREACH(EmbeddableWidget *wgt, m_embedded_widgets) {
+      if(wgt == &widget) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   bool NoteRecentChanges::is_foreground(EmbeddableWidget & widget)

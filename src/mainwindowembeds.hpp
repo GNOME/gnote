@@ -36,6 +36,8 @@ public:
   virtual void foreground_embedded(EmbeddableWidget &) = 0;
   virtual void background_embedded(EmbeddableWidget &) = 0;
   virtual bool running() = 0;
+  virtual bool contains(EmbeddableWidget &) = 0;
+  virtual bool is_foreground(EmbeddableWidget &) = 0;
 };
 
 class EmbeddableWidget
