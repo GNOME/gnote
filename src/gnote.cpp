@@ -406,7 +406,7 @@ namespace gnote {
   MainWindow & Gnote::new_main_window()
   {
     NoteRecentChanges *win = new NoteRecentChanges(default_note_manager());
-    win->signal_hide().connect(sigc::mem_fun(*this, &Gnote::on_main_window_closed));
+    win->signal_hide().connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_main_window_closed), win));
     add_window(*win);
     return *win;
   }
@@ -429,8 +429,9 @@ namespace gnote {
     return new_main_window();
   }
 
-  void Gnote::on_main_window_closed()
+  void Gnote::on_main_window_closed(Gtk::Window *win)
   {
+    delete win;
     // if background mode, we need to have a window, to prevent quit
     if(m_is_background && !Gtk::Window::list_toplevels().size()) {
       new_main_window();

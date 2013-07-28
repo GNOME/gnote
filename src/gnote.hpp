@@ -167,7 +167,7 @@ private:
   void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
   void on_sync_dialog_response(int response_id);
-  void on_main_window_closed();
+  void on_main_window_closed(Gtk::Window*);
   void make_app_actions();
   void add_app_actions(const std::vector<Glib::RefPtr<Gio::SimpleAction> > & actions);
   void make_app_menu();
