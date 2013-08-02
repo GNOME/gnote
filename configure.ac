@@ -98,6 +98,12 @@ AC_CHECK_HEADER(tr1/memory,,[
 	AC_MSG_NOTICE([using boost tr1 implementation.])
 ])
 
+if test $HAVE_CXX11 == 1; then
+  cxx11_support="yes";
+else
+  cxx11_support="no";
+fi
+
 
 AC_LANG_PUSH(C++)
 if test "$GCC" = "yes"; then
@@ -192,6 +198,7 @@ AC_OUTPUT
 echo "
 Options:
 
+  C++11 support:               ${cxx11_support}
   Spellchecking support:       ${FIXED_GTKSPELL}
   X11 support:                 ${with_x11_support}
 
