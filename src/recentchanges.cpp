@@ -24,7 +24,6 @@
 #endif
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/image.h>
@@ -536,8 +535,8 @@ namespace gnote {
 
   bool NoteRecentChanges::contains(EmbeddableWidget & widget)
   {
-    BOOST_FOREACH(EmbeddableWidget *wgt, m_embedded_widgets) {
-      if(wgt == &widget) {
+    FOREACH(EmbeddableWidget *wgt, m_embedded_widgets) {
+      if(dynamic_cast<EmbeddableWidget*>(wgt) == &widget) {
         return true;
       }
     }
@@ -547,10 +546,8 @@ namespace gnote {
 
   bool NoteRecentChanges::is_foreground(EmbeddableWidget & widget)
   {
-    std::vector<Gtk::Widget*> current = m_embed_box.get_children();
-    for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
-        iter != current.end(); ++iter) {
-      if(dynamic_cast<EmbeddableWidget*>(*iter) == &widget) {
+    FOREACH(Gtk::Widget *wgt, m_embed_box.get_children()) {
+      if(dynamic_cast<EmbeddableWidget*>(wgt) == &widget) {
         return true;
       }
     }

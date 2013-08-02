@@ -30,6 +30,7 @@
 #define __BASE_MACROS_
 
 #if __cplusplus < 201103L
+  #include <boost/foreach.hpp>
   #include <boost/lexical_cast.hpp>
 #else
   #include <string>
@@ -46,9 +47,11 @@
 #if __cplusplus < 201103L
   #define final
   #define override
+  #define FOREACH(var, container) BOOST_FOREACH(var, container)
   #define TO_STRING(x) boost::lexical_cast<std::string>(x)
   #define STRING_TO_INT(x) boost::lexical_cast<int>(x)
 #else
+  #define FOREACH(var, container) for(var : container)
   #define TO_STRING(x) std::to_string(x)
   #define STRING_TO_INT(x) std::stoi(x)
 #endif

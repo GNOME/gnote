@@ -20,7 +20,6 @@
 
 
 
-#include <boost/foreach.hpp>
 #include <boost/format.hpp>
 #include <glibmm/i18n.h>
 
@@ -116,7 +115,7 @@ namespace notebooks {
     }
     std::list<Note*> notes;
     template_tag->get_notes(notes);
-    BOOST_FOREACH(Note *n, notes) {
+    FOREACH(Note *n, notes) {
       if(n->contains_tag(notebook_tag)) {
         note = n->shared_from_this();
         break;
@@ -348,7 +347,7 @@ namespace notebooks {
 
     // ignore template notes
     Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    BOOST_FOREACH(Note::Ptr note, m_notes) {
+    FOREACH(const Note::Ptr & note, m_notes) {
       if(!note->contains_tag(template_tag)) {
         return false;
       }
