@@ -20,7 +20,6 @@
 #include <fstream>
 
 #include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
 #include <glibmm/i18n.h>
 #include <sigc++/signal.h>
 
@@ -134,7 +133,7 @@ bool FuseSyncServiceAddin::save_configuration()
 
       // Get unique new file name
       while(sharp::file_exists(testPath)) {
-        testPath = testPathBase + boost::lexical_cast<std::string>(++count);
+        testPath = testPathBase + TO_STRING(++count);
       }
 
       // Test ability to create and write

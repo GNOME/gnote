@@ -20,8 +20,6 @@
 
 
 
-#include <boost/lexical_cast.hpp>
-
 #include <gtk/gtk.h>
 #include <gtkmm/image.h>
 
@@ -350,8 +348,8 @@ namespace gnote {
   }
   
   DepthNoteTag::DepthNoteTag(int depth, Pango::Direction direction)
-    : NoteTag("depth:" + boost::lexical_cast<std::string>(depth) 
-              + ":" + boost::lexical_cast<std::string>((int)direction))
+    : NoteTag("depth:" + TO_STRING(depth) 
+              + ":" + TO_STRING((int)direction))
     , m_depth(depth)
     , m_direction(direction)
   {
@@ -573,8 +571,7 @@ namespace gnote {
 
   DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth, Pango::Direction direction)
   {
-    std::string name = "depth:" + boost::lexical_cast<std::string>(depth) 
-      + ":" + boost::lexical_cast<std::string>((int)direction);
+    std::string name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)direction);
 
     DepthNoteTag::Ptr tag = DepthNoteTag::Ptr::cast_dynamic(lookup(name));
 

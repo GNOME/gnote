@@ -23,7 +23,6 @@
 #include <stdexcept>
 
 #include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
@@ -41,7 +40,7 @@ namespace {
 int str_to_int(const std::string & s)
 {
   try {
-    return boost::lexical_cast<int>(s);
+    return STRING_TO_INT(s);
   }
   catch(...) {
     return 0;
@@ -282,7 +281,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
     try {
       xml->write_start_document();
       xml->write_start_element("", "sync", "");
-      xml->write_attribute_string("", "revision", "", boost::lexical_cast<std::string>(m_new_revision));
+      xml->write_attribute_string("", "revision", "", TO_STRING(m_new_revision));
       xml->write_attribute_string("", "server-id", "", m_server_id);
 
       for(std::map<std::string, std::string>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
@@ -306,7 +305,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
       for(std::list<std::string>::iterator iter = m_updated_notes.begin(); iter != m_updated_notes.end(); ++iter) {
         xml->write_start_element("", "note", "");
         xml->write_attribute_string("", "id", "", *iter);
-        xml->write_attribute_string("", "rev", "", boost::lexical_cast<std::string>(m_new_revision));
+        xml->write_attribute_string("", "rev", "", TO_STRING(m_new_revision));
         xml->write_end_element();
       }
 
@@ -423,7 +422,7 @@ int FileSystemSyncServer::latest_revision()
       if(latestRevDir >= 0) {
         directories.clear();
         sharp::directory_get_directories(
-          Glib::build_filename(m_server_path, boost::lexical_cast<std::string>(latestRevDir)),
+          Glib::build_filename(m_server_path, TO_STRING(latestRevDir)),
           directories);
         for(std::list<std::string>::iterator iter = directories.begin(); iter != directories.end(); ++iter) {
           try {
@@ -535,9 +534,7 @@ std::string FileSystemSyncServer::id()
 
 std::string FileSystemSyncServer::get_revision_dir_path(int rev)
 {
-  return Glib::build_filename(m_server_path,
-                              boost::lexical_cast<std::string>(rev/100),
-                              boost::lexical_cast<std::string>(rev));
+  return Glib::build_filename(m_server_path, TO_STRING(rev/100), TO_STRING(rev));
 }
 
 
@@ -557,7 +554,7 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
     xml.write_end_element();
 
     xml.write_start_element("", "renew-count", "");
-    xml.write_string(boost::lexical_cast<std::string>(syncLockInfo.renew_count));
+    xml.write_string(TO_STRING(syncLockInfo.renew_count));
     xml.write_end_element();
 
     xml.write_start_element("", "lock-expiration-duration", "");
@@ -565,7 +562,7 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
     xml.write_end_element();
 
     xml.write_start_element("", "revision", "");
-    xml.write_string(boost::lexical_cast<std::string>(syncLockInfo.revision));
+    xml.write_string(TO_STRING(syncLockInfo.revision));
     xml.write_end_element();
 
     xml.write_end_element();

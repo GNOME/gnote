@@ -28,7 +28,6 @@
 
 #include <boost/format.hpp>
 #include <boost/bind.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string/find.hpp>
 
 #include <libxml/parser.h>
@@ -1200,16 +1199,16 @@ namespace gnote {
             sharp::XmlConvert::to_date_time (xml.read_string());
         }
         else if(name == "cursor-position") {
-          note->set_cursor_position(boost::lexical_cast<int>(xml.read_string()));
+          note->set_cursor_position(STRING_TO_INT(xml.read_string()));
         }
         else if(name == "selection-bound-position") {
-          note->set_selection_bound_position(boost::lexical_cast<int>(xml.read_string()));
+          note->set_selection_bound_position(STRING_TO_INT(xml.read_string()));
         }
         else if(name == "width") {
-          note->width() = boost::lexical_cast<int>(xml.read_string());
+          note->width() = STRING_TO_INT(xml.read_string());
         }
         else if(name == "height") {
-          note->height() = boost::lexical_cast<int>(xml.read_string());
+          note->height() = STRING_TO_INT(xml.read_string());
         }
         else if(name == "tags") {
           xmlDocPtr doc2 = xmlParseDoc((const xmlChar*)xml.read_outer_xml().c_str());
@@ -1335,19 +1334,19 @@ namespace gnote {
     }
 
     xml.write_start_element ("", "cursor-position", "");
-    xml.write_string (boost::lexical_cast<std::string>(note.cursor_position()));
+    xml.write_string(TO_STRING(note.cursor_position()));
     xml.write_end_element ();
 
     xml.write_start_element("", "selection-bound-position", "");
-    xml.write_string(boost::lexical_cast<std::string>(note.selection_bound_position()));
+    xml.write_string(TO_STRING(note.selection_bound_position()));
     xml.write_end_element();
 
     xml.write_start_element ("", "width", "");
-    xml.write_string (boost::lexical_cast<std::string>(note.width()));
+    xml.write_string(TO_STRING(note.width()));
     xml.write_end_element ();
 
     xml.write_start_element("", "height", "");
-    xml.write_string(boost::lexical_cast<std::string>(note.height()));
+    xml.write_string(TO_STRING(note.height()));
     xml.write_end_element();
 
     if (note.tags().size() > 0) {

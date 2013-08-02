@@ -22,7 +22,6 @@
 #define _SYNCHRONIZATION_GNOTESYNCCLIENT_HPP_
 
 
-#include <boost/lexical_cast.hpp>
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
@@ -86,7 +85,7 @@ namespace sync {
     }
     int revision = -1;
     try {
-      revision = boost::lexical_cast<int>(rev);
+      revision = STRING_TO_INT(rev);
     }
     catch(...) {}
     if(guid != "") {
@@ -158,7 +157,7 @@ namespace sync {
 	else if(reader.get_name() == "last-sync-rev") {
 	  std::string value = reader.read_string();
 	  try {
-	    m_last_sync_rev = boost::lexical_cast<int>(value);
+	    m_last_sync_rev = STRING_TO_INT(value);
 	  }
 	  catch(...) {
             /* TRANSLATORS: %s is file */
@@ -192,7 +191,7 @@ namespace sync {
       xml.write_end_element();
 
       xml.write_start_element("", "last-sync-rev", "");
-      xml.write_string(boost::lexical_cast<std::string>(m_last_sync_rev));
+      xml.write_string(TO_STRING(m_last_sync_rev));
       xml.write_end_element();
 
       xml.write_start_element("", "server-id", "");
@@ -205,7 +204,7 @@ namespace sync {
           noteGuid != m_file_revisions.end(); ++noteGuid) {
 	xml.write_start_element("", "note", "");
 	xml.write_attribute_string("", "guid", "", noteGuid->first);
-	xml.write_attribute_string("", "latest-revision", "", boost::lexical_cast<std::string>(noteGuid->second));
+	xml.write_attribute_string("", "latest-revision", "", TO_STRING(noteGuid->second));
 	xml.write_end_element();
       }
 

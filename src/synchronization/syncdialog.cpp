@@ -22,7 +22,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stock.h>
@@ -71,7 +70,7 @@ public:
       std::string suggestedRenameBase = existingNote->get_title() + old;
       std::string suggestedRename = suggestedRenameBase;
       for(int i = 1; !is_note_title_available(suggestedRename); i++) {
-        suggestedRename = suggestedRenameBase + " " + boost::lexical_cast<std::string>(i);
+        suggestedRename = suggestedRenameBase + " " + TO_STRING(i);
       }
 
       Gtk::Grid *outerVBox = manage(new Gtk::Grid);

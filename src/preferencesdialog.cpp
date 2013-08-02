@@ -27,7 +27,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/accelgroup.h>
@@ -1048,7 +1047,7 @@ namespace gnote {
     PangoFontDescription *desc = pango_font_description_from_string(font_desc.c_str());
 
     // Set the size label
-    font_size->set_text(boost::lexical_cast<std::string>(pango_font_description_get_size(desc) / PANGO_SCALE));
+    font_size->set_text(TO_STRING(pango_font_description_get_size(desc) / PANGO_SCALE));
 
     pango_font_description_unset_fields(desc, PANGO_FONT_MASK_SIZE);
 

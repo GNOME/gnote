@@ -29,6 +29,11 @@
 #ifndef __BASE_MACROS_
 #define __BASE_MACROS_
 
+#if __cplusplus < 201103L
+  #include <boost/lexical_cast.hpp>
+#else
+  #include <string>
+#endif
 
 #if __GNUC__
 #define _PRINTF_FORMAT(f,a) \
@@ -41,6 +46,11 @@
 #if __cplusplus < 201103L
   #define final
   #define override
+  #define TO_STRING(x) boost::lexical_cast<std::string>(x)
+  #define STRING_TO_INT(x) boost::lexical_cast<int>(x)
+#else
+  #define TO_STRING(x) std::to_string(x)
+  #define STRING_TO_INT(x) std::stoi(x)
 #endif
 
 #endif

@@ -21,8 +21,6 @@
 
 
 
-#include <boost/lexical_cast.hpp>
-
 #include <glib.h>
 
 
@@ -141,7 +139,7 @@ namespace bugzilla {
 
     if(re->match(uriString, match_info) && match_info.get_match_count() >= 3) {
       try {
-        int bugId = boost::lexical_cast<int>(match_info.fetch(2));
+        int bugId = STRING_TO_INT(match_info.fetch(2));
 
         if (insert_bug (x, y, uriString, bugId)) {
           context->drag_finish(true, false, time);
@@ -173,7 +171,7 @@ namespace bugzilla {
       get_window()->editor()->get_iter_at_location(cursor, x, y);
       buffer->place_cursor (cursor);
 
-      std::string string_id = boost::lexical_cast<std::string>(id);
+      std::string string_id = TO_STRING(id);
       buffer->undoer().add_undo_action (new InsertBugAction (cursor, 
                                                              string_id, 
                                                              link_tag));

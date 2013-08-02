@@ -21,7 +21,6 @@
 #include <fstream>
 #include <stdexcept>
 
-#include <boost/lexical_cast.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/label.h>
 #include <gtkmm/table.h>
@@ -151,7 +150,7 @@ bool FileSystemSyncServiceAddin::save_configuration()
 
     // Get unique new file name
     while(sharp::file_exists(testPath)) {
-      testPath = testPathBase + boost::lexical_cast<std::string>(++count);
+      testPath = testPathBase + TO_STRING(++count);
     }
 
     // Test ability to create and write

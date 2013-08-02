@@ -19,7 +19,7 @@
 
 
 
-#include <boost/lexical_cast.hpp>
+#include <cstring>
 
 #include "keyringexception.hpp"
 #include "ring.hpp"

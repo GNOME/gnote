@@ -19,7 +19,6 @@
 
 
 #include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/treestore.h>
@@ -91,13 +90,13 @@ private:
       Gtk::TreeIter iter = append();
       std::string stat = _("Total Notes:");
       iter->set_value(0, stat);
-      iter->set_value(1, boost::lexical_cast<std::string>(notes.size()));
+      iter->set_value(1, TO_STRING(notes.size()));
 
       Glib::RefPtr<Gtk::TreeModel> notebooks = gnote::notebooks::NotebookManager::obj().get_notebooks();
       iter = append();
       stat = _("Total Notebooks:");
       iter->set_value(0, stat);
-      iter->set_value(1, boost::lexical_cast<std::string>(notebooks->children().size()));
+      iter->set_value(1, TO_STRING(notebooks->children().size()));
 
       Gtk::TreeIter notebook = notebooks->children().begin();
       std::map<gnote::notebooks::Notebook::Ptr, int> notebook_notes;

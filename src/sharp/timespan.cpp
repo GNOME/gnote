@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@
 
 
 #include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
 
+#include "base/macros.hpp"
 #include "string.hpp"
 #include "timespan.hpp"
 
@@ -112,11 +112,11 @@ namespace sharp {
     if(tokens.size() != 5) {
       return TimeSpan(0, 0, 0, 0, 0);
     }
-    int days = boost::lexical_cast<int>(tokens[0]);
-    int hours = boost::lexical_cast<int>(tokens[1]);
-    int mins = boost::lexical_cast<int>(tokens[2]);
-    int secs = boost::lexical_cast<int>(tokens[3]);
-    int usecs = boost::lexical_cast<int>(tokens[4]);
+    int days = STRING_TO_INT(tokens[0]);
+    int hours = STRING_TO_INT(tokens[1]);
+    int mins = STRING_TO_INT(tokens[2]);
+    int secs = STRING_TO_INT(tokens[3]);
+    int usecs = STRING_TO_INT(tokens[4]);
     boost::format fmt("%1%:%2%:%3%:%4%:%5%");
     fmt % days % hours % mins % secs % usecs;
     if(str(fmt) != s) {
