@@ -30,9 +30,11 @@
 #define __BASE_MACROS_
 
 #if __cplusplus < 201103L
+  #include <tr1/memory>
   #include <boost/foreach.hpp>
   #include <boost/lexical_cast.hpp>
 #else
+  #include <memory>
   #include <string>
 #endif
 
@@ -50,10 +52,22 @@
   #define FOREACH(var, container) BOOST_FOREACH(var, container)
   #define TO_STRING(x) boost::lexical_cast<std::string>(x)
   #define STRING_TO_INT(x) boost::lexical_cast<int>(x)
+
+  using std::tr1::shared_ptr;
+  using std::tr1::weak_ptr;
+  using std::tr1::enable_shared_from_this;
+  using std::tr1::dynamic_pointer_cast;
+  using std::tr1::static_pointer_cast;
 #else
   #define FOREACH(var, container) for(var : container)
   #define TO_STRING(x) std::to_string(x)
   #define STRING_TO_INT(x) std::stoi(x)
+
+  using std::shared_ptr;
+  using std::weak_ptr;
+  using std::enable_shared_from_this;
+  using std::dynamic_pointer_cast;
+  using std::static_pointer_cast;
 #endif
 
 #endif

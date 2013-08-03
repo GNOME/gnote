@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -22,9 +23,10 @@
 #define __TRIEHIT_HPP_
 
 #include <list>
-#include <tr1/memory>
 
 #include <glibmm.h>
+
+#include "base/macros.hpp"
 
 namespace gnote {
 
@@ -32,9 +34,9 @@ template<class value_t>
 class TrieHit
 {
 public:
-  typedef std::tr1::shared_ptr<TrieHit> Ptr;
+  typedef shared_ptr<TrieHit> Ptr;
   typedef std::list<Ptr> List;
-  typedef std::tr1::shared_ptr<List> ListPtr;
+  typedef shared_ptr<List> ListPtr;
 
   TrieHit(int s, int e, const Glib::ustring & k, const value_t & v)
     : m_start(s)

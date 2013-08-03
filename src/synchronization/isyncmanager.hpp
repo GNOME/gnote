@@ -23,8 +23,8 @@
 
 #include <list>
 #include <string>
-#include <tr1/memory>
 
+#include "base/macros.hpp"
 #include "note.hpp"
 #include "syncui.hpp"
 #include "syncutils.hpp"
@@ -48,7 +48,7 @@ public:
 class SyncClient
 {
 public:
-  typedef std::tr1::shared_ptr<SyncClient> Ptr;
+  typedef shared_ptr<SyncClient> Ptr;
 
   virtual ~SyncClient();
 
@@ -71,7 +71,7 @@ public:
   virtual ~ISyncManager();
 
   virtual void reset_client() = 0;
-  virtual void perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui) = 0;
+  virtual void perform_synchronization(const SyncUI::Ptr & sync_ui) = 0;
   virtual void resolve_conflict(SyncTitleConflictResolution resolution) = 0;
   virtual bool synchronized_note_xml_matches(const std::string & noteXml1, const std::string & noteXml2) = 0;
   virtual SyncState state() const = 0;
@@ -80,7 +80,7 @@ public:
 class SyncServer
 {
 public:
-  typedef std::tr1::shared_ptr<SyncServer> Ptr;
+  typedef shared_ptr<SyncServer> Ptr;
 
   virtual ~SyncServer();
 

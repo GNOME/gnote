@@ -75,7 +75,7 @@ public:
 class Tray
 {
 public:
-  typedef std::tr1::shared_ptr<Tray> Ptr;
+  typedef shared_ptr<Tray> Ptr;
 #ifdef HAVE_X11_SUPPORT
   Tray(NoteManager &, IGnoteTray &, IKeybinder &);
 #else

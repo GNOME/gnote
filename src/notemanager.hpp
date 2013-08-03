@@ -41,7 +41,7 @@ namespace gnote {
   class NoteManager 
   {
   public:
-    typedef std::tr1::shared_ptr<NoteManager> Ptr;
+    typedef shared_ptr<NoteManager> Ptr;
     typedef sigc::signal<void, const Note::Ptr &> ChangedHandler;
     typedef sigc::slot<void, const Note::Ptr &> NoteChangedSlot;
     

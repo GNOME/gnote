@@ -294,7 +294,7 @@ std::vector< std::string > RemoteControl::ListAllNotes()
 bool RemoteControl::NoteExists(const std::string& uri)
 {
   Note::Ptr note = m_manager.find_by_uri (uri);
-  return note;
+  return note != NULL;
 }
 
 

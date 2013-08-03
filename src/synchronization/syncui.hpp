@@ -24,8 +24,8 @@
 
 #include <list>
 #include <string>
-#include <tr1/memory>
 
+#include "base/macros.hpp"
 #include "syncutils.hpp"
 
 
@@ -33,10 +33,10 @@ namespace gnote {
 namespace sync {
 
   class SyncUI
-    : public std::tr1::enable_shared_from_this<SyncUI>
+    : public enable_shared_from_this<SyncUI>
   {
   public:
-    typedef std::tr1::shared_ptr<SyncUI> Ptr;
+    typedef shared_ptr<SyncUI> Ptr;
     typedef sigc::slot<void> SlotConnecting;
     typedef sigc::slot<void> SlotIdle;
 

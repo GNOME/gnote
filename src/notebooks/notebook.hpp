@@ -25,7 +25,6 @@
 
 #include <set>
 #include <string>
-#include <tr1/memory>
 
 #include "base/macros.hpp"
 #include "tag.hpp"
@@ -39,10 +38,10 @@ namespace notebooks {
 /// An object that represents a notebook in Tomboy
 /// </summary>
 class Notebook 
-  : public std::tr1::enable_shared_from_this<Notebook>
+  : public enable_shared_from_this<Notebook>
 {
 public:
-  typedef std::tr1::shared_ptr<Notebook> Ptr;
+  typedef shared_ptr<Notebook> Ptr;
   static const char * NOTEBOOK_TAG_PREFIX;
   Notebook(NoteManager &, const std::string &, bool is_special = false);
   Notebook(NoteManager &, const Tag::Ptr &);
@@ -83,7 +82,7 @@ class SpecialNotebook
   : public Notebook
 {
 public:
-  typedef std::tr1::shared_ptr<SpecialNotebook> Ptr;
+  typedef shared_ptr<SpecialNotebook> Ptr;
 protected:
   SpecialNotebook(NoteManager & m, const std::string &s)
     : Notebook(m, s, true)
@@ -104,7 +103,7 @@ class AllNotesNotebook
   : public SpecialNotebook
 {
 public:
-  typedef std::tr1::shared_ptr<AllNotesNotebook> Ptr;
+  typedef shared_ptr<AllNotesNotebook> Ptr;
   AllNotesNotebook(NoteManager &);
   virtual std::string get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr &) override;
@@ -122,7 +121,7 @@ class UnfiledNotesNotebook
   : public SpecialNotebook
 {
 public:
-  typedef std::tr1::shared_ptr<UnfiledNotesNotebook> Ptr;
+  typedef shared_ptr<UnfiledNotesNotebook> Ptr;
   UnfiledNotesNotebook(NoteManager &);
   virtual std::string get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr &) override;
@@ -135,7 +134,7 @@ class PinnedNotesNotebook
   : public SpecialNotebook
 {
 public:
-  typedef std::tr1::shared_ptr<PinnedNotesNotebook> Ptr;
+  typedef shared_ptr<PinnedNotesNotebook> Ptr;
   PinnedNotesNotebook(NoteManager &);
   virtual std::string get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr &) override;
@@ -148,7 +147,7 @@ class ActiveNotesNotebook
   : public SpecialNotebook
 {
 public:
-  typedef std::tr1::shared_ptr<ActiveNotesNotebook> Ptr;
+  typedef shared_ptr<ActiveNotesNotebook> Ptr;
   ActiveNotesNotebook(NoteManager &);
   virtual std::string get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr &) override;

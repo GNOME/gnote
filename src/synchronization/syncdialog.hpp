@@ -40,7 +40,7 @@ namespace sync {
     , public SyncUI
   {
   public:
-    typedef std::tr1::shared_ptr<SyncDialog> Ptr;
+    typedef shared_ptr<SyncDialog> Ptr;
 
     static Ptr create(NoteManager &);
 

@@ -91,10 +91,6 @@ BOOST_REQUIRE([$BOOST_VERSION])
 BOOST_BIND
 BOOST_FORMAT
 BOOST_TEST([s])
-AC_CHECK_HEADER(tr1/memory,,[
-	CXXFLAGS="$CXXFLAGS -I/usr/include/boost/tr1";
-	AC_MSG_NOTICE([using boost tr1 implementation.])
-])
 
 if test $HAVE_CXX11 == 1; then
   cxx11_support="yes";
@@ -102,6 +98,10 @@ else
   cxx11_support="no";
   BOOST_CONVERSION
   BOOST_FOREACH
+  AC_CHECK_HEADER(tr1/memory,,[
+	CXXFLAGS="$CXXFLAGS -I/usr/include/boost/tr1";
+	AC_MSG_NOTICE([using boost tr1 implementation.])
+])
 fi
 
 

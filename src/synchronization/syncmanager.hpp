@@ -43,7 +43,7 @@ namespace sync {
     SyncManager(NoteManager &);
     static void init(NoteManager &);
     virtual void reset_client() override;
-    virtual void perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui) override;
+    virtual void perform_synchronization(const SyncUI::Ptr & sync_ui) override;
     void synchronization_thread();
     virtual void resolve_conflict(SyncTitleConflictResolution resolution) override;
     virtual bool synchronized_note_xml_matches(const std::string & noteXml1, const std::string & noteXml2) override;

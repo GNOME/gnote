@@ -23,7 +23,6 @@
 
 #include <map>
 #include <string>
-#include <tr1/memory>
 
 #include <glibmm.h>
 #include <gtkmm/grid.h>
@@ -31,6 +30,7 @@
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/treeview.h>
 
+#include "base/macros.hpp"
 #include "note.hpp"
 
 namespace gnote {
@@ -78,7 +78,7 @@ class NoteRenameDialog
 {
 public:
 
-  typedef std::tr1::shared_ptr<std::map<Note::Ptr, bool> > MapPtr;
+  typedef shared_ptr<std::map<Note::Ptr, bool> > MapPtr;
 
   NoteRenameDialog(const Note::List & notes,
                    const std::string & old_title,

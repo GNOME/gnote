@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2013 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -23,10 +24,10 @@
 
 #include <list>
 #include <queue>
-#include <tr1/memory>
 
 #include <glibmm.h>
 
+#include "base/macros.hpp"
 #include "triehit.hpp"
 
 namespace gnote {
@@ -38,7 +39,7 @@ class TrieTree
 private:
 
   class TrieState;
-  typedef std::tr1::shared_ptr<TrieState> TrieStatePtr;
+  typedef shared_ptr<TrieState> TrieStatePtr;
   typedef std::list<TrieStatePtr> TrieStateList;
   typedef std::queue<TrieStatePtr> TrieStateQueue;
 

@@ -219,12 +219,12 @@ private:
 
 
 class Note 
-  : public std::tr1::enable_shared_from_this<Note>
+  : public enable_shared_from_this<Note>
   , public sigc::trackable
 {
 public:
-  typedef std::tr1::shared_ptr<Note> Ptr;
-  typedef std::tr1::weak_ptr<Note> WeakPtr;
+  typedef shared_ptr<Note> Ptr;
+  typedef weak_ptr<Note> WeakPtr;
   typedef std::list<Ptr> List;
 
   typedef sigc::signal<void, const Note::Ptr&, const std::string& > RenamedHandler;

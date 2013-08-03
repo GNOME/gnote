@@ -24,8 +24,6 @@
 #include <config.h>
 #endif
 
-#include <tr1/functional>
-
 #include <boost/format.hpp>
 #include <boost/bind.hpp>
 #include <boost/algorithm/string/find.hpp>
@@ -55,6 +53,14 @@
 #include "sharp/xmlconvert.hpp"
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
+
+#if HAVE_CXX11
+  #include <functional>
+  using std::hash;
+#else
+  #include <tr1/functional>
+  using std::tr1::hash;
+#endif
 
 
 namespace gnote {
@@ -309,7 +315,7 @@ namespace gnote {
 
   int Note::get_hash_code() const
   {
-    std::tr1::hash<std::string> h;
+    hash<std::string> h;
     return h(get_title());
   }
 

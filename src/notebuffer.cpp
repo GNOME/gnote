@@ -21,11 +21,11 @@
 
 
 #include <algorithm>
-#include <tr1/array>
 
 #include <glibmm/i18n.h>
 #include <glibmm/main.h>
 
+#include "config.h"
 #include "debug.hpp"
 #include "notebuffer.hpp"
 #include "notetag.hpp"
@@ -35,6 +35,14 @@
 
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
+
+#if HAVE_CXX11
+  #include <array>
+  using std::array;
+#else
+  #include <tr1/array>
+  using std::tr1::array;
+#endif
 
 namespace gnote {
 
@@ -306,13 +314,11 @@ namespace gnote {
   void NoteBuffer::range_deleted_event(const Gtk::TextIter & start,const Gtk::TextIter & end_iter)
   {
     //
-    std::tr1::array<Gtk::TextIter, 2> iters;
+    std::array<Gtk::TextIter, 2> iters;
     iters[0] = start;
     iters[1] = end_iter;
 
-    for(std::tr1::array<Gtk::TextIter, 2>::iterator iter2 = iters.begin();
-        iter2 != iters.end(); ++iter2) {
-      Gtk::TextIter & iter(*iter2);
+    FOREACH(Gtk::TextIter iter, iters) {
       Gtk::TextIter line_start = iter;
       line_start.set_line_offset(0);
 

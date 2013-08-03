@@ -26,7 +26,8 @@
 
 #include <list>
 #include <string>
-#include <tr1/memory>
+
+#include "base/macros.hpp"
 
 namespace gnote {
 
@@ -35,7 +36,7 @@ namespace gnote {
   class Tag 
   {
   public:
-    typedef std::tr1::shared_ptr<Tag> Ptr;
+    typedef shared_ptr<Tag> Ptr;
     static const char * SYSTEM_TAG_PREFIX;
 
     Tag(const std::string & name);

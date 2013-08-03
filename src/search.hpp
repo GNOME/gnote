@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,6 +31,7 @@
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
 
+#include "base/macros.hpp"
 #include "note.hpp"
 #include "notebooks/notebook.hpp"
 
@@ -42,7 +43,7 @@ class Search
 {
 public:
   typedef std::multimap<int,Note::Ptr> Results;
-  typedef std::tr1::shared_ptr<Results> ResultsPtr;
+  typedef shared_ptr<Results> ResultsPtr;
 
   template<typename T>
   static void split_watching_quotes(std::vector<T> & split,

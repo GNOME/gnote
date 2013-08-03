@@ -91,7 +91,7 @@ namespace sync {
   }
 
 
-  void SyncManager::perform_synchronization(const std::tr1::shared_ptr<SyncUI> & sync_ui)
+  void SyncManager::perform_synchronization(const SyncUI::Ptr & sync_ui)
   {
     if(m_sync_thread != NULL) {
       // A synchronization thread is already running
