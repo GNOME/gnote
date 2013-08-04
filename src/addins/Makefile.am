@@ -11,6 +11,7 @@ SUBDIRS = backlinks \
 	noteoftheday \
 	printnotes \
 	replacetitle \
+	specialnotes \
 	statistics \
 	stickynoteimport \
 	tableofcontents \
