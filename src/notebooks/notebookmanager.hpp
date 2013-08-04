@@ -75,6 +75,7 @@ public:
   Notebook::Ptr get_notebook(const std::string & notebookName) const;
   bool notebook_exists(const std::string & notebookName) const;
   Notebook::Ptr get_or_create_notebook(const std::string &);
+  bool add_notebook(const Notebook::Ptr &);
   void delete_notebook(const Notebook::Ptr &);
   bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter & );
   Notebook::Ptr get_notebook_from_note(const Note::Ptr &);

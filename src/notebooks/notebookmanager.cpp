@@ -154,6 +154,18 @@ namespace gnote {
       return notebook;
     }
 
+    bool NotebookManager::add_notebook(const Notebook::Ptr & notebook)
+    {
+      if(m_notebookMap.find(notebook->get_normalized_name()) != m_notebookMap.end()) {
+        return false;
+      }
+
+      Gtk::TreeIter iter = m_notebooks->append();
+      iter->set_value(0, notebook);
+      m_notebookMap[notebook->get_normalized_name()] = iter;
+      return true;
+    }
+
     void NotebookManager::delete_notebook(const Notebook::Ptr & notebook)
     {
       if (!notebook)
