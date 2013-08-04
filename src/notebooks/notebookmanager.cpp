@@ -189,10 +189,11 @@ namespace gnote {
         
         // Remove the notebook tag from every note that's in the notebook
         std::list<Note *> notes;
-        notebook->get_tag()->get_notes(notes);
-        for(std::list<Note *>::const_iterator note_iter = notes.begin();
-            note_iter != notes.end(); ++note_iter) {
-          Note * note = *note_iter;
+        Tag::Ptr tag = notebook->get_tag();
+        if(tag) {
+          tag->get_notes(notes);
+        }
+        FOREACH(Note *note, notes) {
           note->remove_tag (notebook->get_tag());
           m_note_removed_from_notebook (*note, notebook);
         }
