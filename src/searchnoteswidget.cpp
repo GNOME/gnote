@@ -578,12 +578,6 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter & iter)
     return false;
   }
 
-  // Don't show the template notes in the list
-  Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-  if(note->contains_tag(template_tag)) {
-    return false;
-  }
-
   notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
   if(!selected_notebook || !selected_notebook->contains_note(note)) {
     return false;

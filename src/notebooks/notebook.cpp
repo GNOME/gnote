@@ -35,6 +35,26 @@ namespace notebooks {
 
 
   const char * Notebook::NOTEBOOK_TAG_PREFIX = "notebook:";
+  Tag::Ptr Notebook::s_template_tag;
+
+  Tag::Ptr Notebook::template_tag()
+  {
+    if(s_template_tag == NULL) {
+      s_template_tag = ITagManager::obj().get_or_create_system_tag(
+        ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    }
+
+    return s_template_tag;
+  }
+
+  bool Notebook::is_template_note(const Note::Ptr & note)
+  {
+    Tag::Ptr tag = template_tag();
+    if(tag == NULL) {
+      return false;
+    }
+    return note->contains_tag(tag);
+  }
 
   /// <summary>
   /// Construct a new Notebook with a given name
@@ -108,13 +128,13 @@ namespace notebooks {
   Note::Ptr Notebook::find_template_note() const
   {
     Note::Ptr note;
-    Tag::Ptr template_tag = ITagManager::obj().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr templ_tag = template_tag();
     Tag::Ptr notebook_tag = ITagManager::obj().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
-    if(!template_tag || !notebook_tag) {
+    if(!templ_tag || !notebook_tag) {
       return note;
     }
     std::list<Note*> notes;
-    template_tag->get_notes(notes);
+    templ_tag->get_notes(notes);
     FOREACH(Note *n, notes) {
       if(n->contains_tag(notebook_tag)) {
         note = n->shared_from_this();
@@ -143,8 +163,8 @@ namespace notebooks {
       buffer->select_note_body();
 
       // Flag this as a template note
-      Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      note->add_tag (template_tag);
+      Tag::Ptr templ_tag = template_tag();
+      note->add_tag(templ_tag);
 
       // Add on the notebook system tag so Tomboy
       // will persist the tag/notebook across sessions
@@ -181,9 +201,13 @@ namespace notebooks {
   /// <returns>
   /// A <see cref="System.Boolean"/>
   /// </returns>
-  bool Notebook::contains_note(const Note::Ptr & note)
+  bool Notebook::contains_note(const Note::Ptr & note, bool include_system)
   {
-    return note->contains_tag (m_tag);
+    bool contains = note->contains_tag(m_tag);
+    if(!contains || include_system) {
+      return contains;
+    }
+    return !is_template_note(note);
   }
 
   bool Notebook::add_note(const Note::Ptr & note)
@@ -225,9 +249,12 @@ namespace notebooks {
   }
 
 
-  bool AllNotesNotebook::contains_note(const Note::Ptr &)
+  bool AllNotesNotebook::contains_note(const Note::Ptr & note, bool include_system)
   {
-    return true;
+    if(include_system) {
+      return true;
+    }
+    return !is_template_note(note);
   }
 
 
@@ -253,9 +280,13 @@ namespace notebooks {
   }
 
 
-  bool UnfiledNotesNotebook::contains_note(const Note::Ptr & note)
+  bool UnfiledNotesNotebook::contains_note(const Note::Ptr & note, bool include_system)
   {
-    return !notebooks::NotebookManager::obj().get_notebook_from_note(note);
+    bool contains = !notebooks::NotebookManager::obj().get_notebook_from_note(note);
+    if(!contains || include_system) {
+      return contains;
+    }
+    return !is_template_note(note);
   }
 
 
@@ -282,7 +313,7 @@ namespace notebooks {
   }
 
 
-  bool PinnedNotesNotebook::contains_note(const Note::Ptr & note)
+  bool PinnedNotesNotebook::contains_note(const Note::Ptr & note, bool)
   {
     return note->is_pinned();
   }
@@ -311,9 +342,13 @@ namespace notebooks {
     return "___NotebookManager___ActiveNotes__Notebook___";
   }
 
-  bool ActiveNotesNotebook::contains_note(const Note::Ptr & note)
+  bool ActiveNotesNotebook::contains_note(const Note::Ptr & note, bool include_system)
   {
-    return m_notes.find(note) != m_notes.end();
+    bool contains = m_notes.find(note) != m_notes.end();
+    if(!contains || include_system) {
+      return contains;
+    }
+    return !is_template_note(note);
   }
 
   bool ActiveNotesNotebook::add_note(const Note::Ptr & note)
@@ -346,9 +381,9 @@ namespace notebooks {
     }
 
     // ignore template notes
-    Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr templ_tag = template_tag();
     FOREACH(const Note::Ptr & note, m_notes) {
-      if(!note->contains_tag(template_tag)) {
+      if(!note->contains_tag(templ_tag)) {
         return false;
       }
     }
