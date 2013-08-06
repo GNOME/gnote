@@ -41,6 +41,7 @@ const char *IconManager::PIN_ACTIVE = "pin-active";
 const char *IconManager::PIN_DOWN = "pin-down";
 const char *IconManager::PIN_UP = "pin-up";
 const char *IconManager::ACTIVE_NOTES = "active-notes";
+const char *IconManager::SPECIAL_NOTES = "special-notes";
 
 //instance
 IconManager IconManager::s_obj;

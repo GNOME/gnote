@@ -22,6 +22,7 @@
 
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
+#include "iconmanager.hpp"
 #include "specialnotesapplicationaddin.hpp"
 
 using gnote::Note;
@@ -52,9 +53,10 @@ namespace {
         return false;
       }
 
-    /*virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override
+    virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override
       {
-      }*/
+        return gnote::IconManager::obj().get_icon(gnote::IconManager::SPECIAL_NOTES, 22);
+      }
   };
 }
 
