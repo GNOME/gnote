@@ -362,7 +362,7 @@ namespace notebooks {
 
   Glib::RefPtr<Gdk::Pixbuf> ActiveNotesNotebook::get_icon()
   {
-    return IconManager::obj().get_icon(IconManager::NOTE, 22);
+    return IconManager::obj().get_icon(IconManager::ACTIVE_NOTES, 22);
   }
 
   void ActiveNotesNotebook::on_note_deleted(const Note::Ptr & note)

@@ -40,6 +40,7 @@ const char *IconManager::NOTEBOOK_NEW = "notebook-new";
 const char *IconManager::PIN_ACTIVE = "pin-active";
 const char *IconManager::PIN_DOWN = "pin-down";
 const char *IconManager::PIN_UP = "pin-up";
+const char *IconManager::ACTIVE_NOTES = "active-notes";
 
 //instance
 IconManager IconManager::s_obj;

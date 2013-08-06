@@ -45,6 +45,7 @@ public:
   static const char *PIN_ACTIVE;
   static const char *PIN_DOWN;
   static const char *PIN_UP;
+  static const char *ACTIVE_NOTES;
 
   Glib::RefPtr<Gdk::Pixbuf> get_icon(const std::string &, int);
   Gtk::IconInfo lookup_icon(const std::string &, int);
