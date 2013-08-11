@@ -648,9 +648,7 @@ namespace gnote {
       else {
         m_find_next_prev_box.hide();
       }
-      if(m_search_button.get_active() && m_search_entry.get_text() != "") {
-        searchable_item.perform_search(m_search_entry.get_text());
-      }
+      searchable_item.perform_search(m_search_button.get_active() ? m_search_entry.get_text() : "");
     }
     catch(std::bad_cast &) {
       m_search_button.set_active(false);
