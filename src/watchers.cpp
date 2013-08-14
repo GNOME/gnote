@@ -97,8 +97,6 @@ namespace gnote {
     // just hide on accelerator key, so we can't use delete
     // event.  This means the window will flash if closed
     // with a name clash.
-    get_window()->signal_unmap_event().connect(
-      sigc::mem_fun(*this, &NoteRenameWatcher::on_window_closed), false);
 
     // Clean up title line
     buffer->remove_all_tags (get_title_start(), get_title_end());
@@ -190,18 +188,6 @@ namespace gnote {
   }
 
 
-  bool NoteRenameWatcher::on_window_closed(GdkEventAny *)
-  {
-    if (!m_editing_title)
-      return false;
-    
-    if (!update_note_title ()) {
-      return true;
-    }
-    return false;
-  }
-
-
   std::string NoteRenameWatcher::get_unique_untitled()
   {
     int new_num = manager().get_notes().size();
@@ -255,12 +241,11 @@ namespace gnote {
                                      Gtk::BUTTONS_OK,
                                      _("Note title taken"),
                                      message);
-      m_title_taken_dialog->set_modal(true);
       m_title_taken_dialog->signal_response().connect(
         sigc::mem_fun(*this, &NoteRenameWatcher::on_dialog_response));
+      m_title_taken_dialog->present();
+      get_window()->editor()->set_editable(false);
     }
-
-    m_title_taken_dialog->present ();
   }
 
 
@@ -268,6 +253,7 @@ namespace gnote {
   {
     delete m_title_taken_dialog;
     m_title_taken_dialog = NULL;
+    get_window()->editor()->set_editable(true);
   }
 
 

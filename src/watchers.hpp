@@ -73,7 +73,6 @@ namespace gnote {
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
     void update();
     void changed();
-    bool on_window_closed(GdkEventAny *);
     std::string get_unique_untitled();
     bool update_note_title();
     void show_name_clash_error(const std::string &);
