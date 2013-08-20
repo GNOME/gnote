@@ -92,6 +92,8 @@ namespace gnote {
 
     get_window()->editor()->signal_focus_out_event().connect(
       sigc::mem_fun(*this, &NoteRenameWatcher::on_editor_focus_out));
+    get_window()->signal_backgrounded.connect(
+      sigc::mem_fun(*this, &NoteRenameWatcher::on_window_backgrounded));
 
     // FIXME: Needed because we hide on delete event, and
     // just hide on accelerator key, so we can't use delete
@@ -109,7 +111,7 @@ namespace gnote {
     // TODO: Duplicated from Update(); refactor instead
     if (m_editing_title) {
       changed ();
-      update_note_title ();
+      update_note_title(false);
       m_editing_title = false;
     }
     return false;
@@ -163,7 +165,7 @@ namespace gnote {
     else {
       if (m_editing_title) {
         changed ();
-        update_note_title ();
+        update_note_title(false);
         m_editing_title = false;
       }
     }
@@ -203,13 +205,13 @@ namespace gnote {
   }
 
 
-  bool NoteRenameWatcher::update_note_title()
+  bool NoteRenameWatcher::update_note_title(bool only_warn)
   {
     std::string title = get_window()->get_name();
 
     Note::Ptr existing = manager().find (title);
     if (existing && (existing != get_note())) {
-      show_name_clash_error (title);
+      show_name_clash_error (title, only_warn);
       return false;
     }
 
@@ -218,7 +220,7 @@ namespace gnote {
     return true;
   }
 
-  void NoteRenameWatcher::show_name_clash_error(const std::string & title)
+  void NoteRenameWatcher::show_name_clash_error(const std::string & title, bool only_warn)
   {
     // Select text from TitleStart to TitleEnd
     get_buffer()->move_mark (get_buffer()->get_selection_bound(), get_title_start());
@@ -234,8 +236,9 @@ namespace gnote {
     /// Only pop open a warning dialog when one isn't already present
     /// Had to add this check because this method is being called twice.
     if (m_title_taken_dialog == NULL) {
+      Gtk::Window *parent = only_warn ? NULL : get_host_window();
       m_title_taken_dialog =
-        new utils::HIGMessageDialog (get_host_window(),
+        new utils::HIGMessageDialog (parent,
                                      GTK_DIALOG_DESTROY_WITH_PARENT,
                                      Gtk::MESSAGE_WARNING,
                                      Gtk::BUTTONS_OK,
@@ -254,6 +257,12 @@ namespace gnote {
     delete m_title_taken_dialog;
     m_title_taken_dialog = NULL;
     get_window()->editor()->set_editable(true);
+  }
+
+  void NoteRenameWatcher::on_window_backgrounded()
+  {
+    update_note_title(true);
+    m_editing_title = false;
   }
 
 

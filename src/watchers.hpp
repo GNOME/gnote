@@ -74,9 +74,10 @@ namespace gnote {
     void update();
     void changed();
     std::string get_unique_untitled();
-    bool update_note_title();
-    void show_name_clash_error(const std::string &);
+    bool update_note_title(bool only_warn);
+    void show_name_clash_error(const std::string &, bool);
     void on_dialog_response(int);
+    void on_window_backgrounded();
 
     bool                       m_editing_title;
     Glib::RefPtr<Gtk::TextTag> m_title_tag;
