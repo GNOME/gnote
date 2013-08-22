@@ -10,6 +10,7 @@ SUBDIRS = backlinks \
 	notedirectorywatcher \
 	noteoftheday \
 	printnotes \
+	readonly \
 	replacetitle \
 	specialnotes \
 	statistics \

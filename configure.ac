@@ -178,6 +178,7 @@ src/addins/inserttimestamp/Makefile
 src/addins/notedirectorywatcher/Makefile
 src/addins/noteoftheday/Makefile
 src/addins/printnotes/Makefile
+src/addins/readonly/Makefile
 src/addins/replacetitle/Makefile
 src/addins/specialnotes/Makefile
 src/addins/statistics/Makefile
