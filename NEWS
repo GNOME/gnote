@@ -1,3 +1,27 @@
+3.9.3 - 2013/08/25
+
+New Features:
+  * boost::lexical_cast dependency not used if C++11 is supported
+  * BOOST_FOREACH dependency not used if C++11 is supported
+  * Special Notes notebook add-in
+  * ReadOnly add-in (#588807)
+
+Fixes:
+  * Don't open new note window, if it's already open (#703151)
+  * Add icon for Active Notes notebook (#704114)
+  * Update notes list result when getting back (#702149)
+  * Avoid lock-up, which sometimes happens when clicking out from title (#705879)
+
+Translations:
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Slovenian (sl)
+  * Updated Chinese simplified manual (zh_CN)
+  * Updated German manual (de)
+
 3.9.2 - 2013/07/21
 
 New Features:
