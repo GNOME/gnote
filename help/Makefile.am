@@ -30,6 +30,7 @@ HELP_FILES = \
 	gnote-addin-noteoftheday.page \
 	gnote-addin-print.page \
 	gnote-addins-preferences.page \
+	gnote-addin-readonly.page \
 	gnote-addin-replacetitle.page \
 	gnote-addin-sync-local.page \
 	gnote-addin-sync-webdav.page \
