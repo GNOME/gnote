@@ -32,6 +32,7 @@ HELP_FILES = \
 	gnote-addins-preferences.page \
 	gnote-addin-readonly.page \
 	gnote-addin-replacetitle.page \
+	gnote-addin-specialnotes.page \
 	gnote-addin-sync-local.page \
 	gnote-addin-sync-webdav.page \
 	gnote-addin-tableofcontents.page \
