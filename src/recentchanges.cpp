@@ -69,6 +69,8 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note));
     m_search_notes_widget.signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
+    m_search_notes_widget.notes_widget().signal_key_press_event()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_widget_key_press));
 
     Gtk::Toolbar *toolbar = make_toolbar();
     make_search_box();
@@ -268,10 +270,15 @@ namespace gnote {
     }
   }
 
-  void NoteRecentChanges::show_search_bar()
+  void NoteRecentChanges::show_search_bar(bool focus)
   {
+    if(m_search_box.get_visible()) {
+      return;
+    }
     m_search_box.show();
-    m_search_entry.grab_focus();
+    if(focus) {
+      m_search_entry.grab_focus();
+    }
     Glib::ustring text = m_search_entry.get_text();
     if(text != "") {
       SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
@@ -733,6 +740,40 @@ namespace gnote {
     if(key == Preferences::OPEN_NOTES_IN_NEW_WINDOW) {
       m_open_notes_in_new_window = Preferences::obj().get_schema_settings(
         Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
+    }
+  }
+
+  bool NoteRecentChanges::on_notes_widget_key_press(GdkEventKey *evt)
+  {
+    switch(evt->keyval) {
+    case GDK_KEY_Escape:
+    case GDK_KEY_Delete:
+      return false;
+    case GDK_KEY_BackSpace:
+      if(m_search_button.get_active()) {
+        Glib::ustring s = m_search_entry.get_text();
+        if(s.size()) {
+          m_search_entry.set_text(s.substr(0, s.size() - 1));
+        }
+      }
+      return false;
+    default:
+      {
+        guint32 character = gdk_keyval_to_unicode(evt->keyval);
+        if(character) {  // ignore special keys
+          if(!m_search_button.get_active()) {
+            // first show search box, then activate button
+            // because we do not want the box to get selected
+            show_search_bar(false);
+            m_search_button.activate();
+          }
+          Glib::ustring s;
+          s += character;
+          g_signal_emit_by_name(m_search_entry.gobj(), "insert-at-cursor", s.c_str());
+          return true;
+        }
+        return false;
+      }
     }
   }
 

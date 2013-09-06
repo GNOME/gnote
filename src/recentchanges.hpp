@@ -44,7 +44,7 @@ class NoteRecentChanges
 public:
   NoteRecentChanges(NoteManager& m);
   virtual ~NoteRecentChanges();
-  virtual void show_search_bar() override;
+  virtual void show_search_bar(bool grab_focus = true) override;
   virtual void set_search_text(const std::string & value) override;
   virtual void new_note() override;
   virtual void present_search() override;
@@ -89,6 +89,7 @@ private:
                                                 const std::vector<Glib::RefPtr<Gtk::Action> > & actions);
   void on_main_window_actions_changed(Gtk::Menu **menu);
   void on_settings_changed(const Glib::ustring & key);
+  bool on_notes_widget_key_press(GdkEventKey*);
 
   NoteManager        &m_note_manager;
   SearchNotesWidget   m_search_notes_widget;

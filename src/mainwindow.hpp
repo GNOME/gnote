@@ -42,7 +42,7 @@ public:
   explicit MainWindow(const std::string & title);
 
   virtual void set_search_text(const std::string & value) = 0;
-  virtual void show_search_bar() = 0;
+  virtual void show_search_bar(bool grab_focus = true) = 0;
   virtual void present_search() = 0;
   virtual void new_note() = 0;
   virtual void close_window() = 0;

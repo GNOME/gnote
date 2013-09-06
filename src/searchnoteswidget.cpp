@@ -76,6 +76,7 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
 
   make_recent_tree();
   m_tree = manage(m_tree);
+  m_tree->set_enable_search(false);
   m_tree->show();
 
   update_results();

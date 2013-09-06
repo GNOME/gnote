@@ -60,6 +60,10 @@ public:
   void select_all_notes_notebook();
   void new_note();
   void delete_selected_notes();
+  Gtk::Widget & notes_widget() const
+    {
+      return *m_tree;
+    }
 
   sigc::signal<void, const Note::Ptr &> signal_open_note;
   sigc::signal<void, const Note::Ptr &> signal_open_note_new_window;
