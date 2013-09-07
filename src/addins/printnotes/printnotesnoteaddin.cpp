@@ -39,7 +39,7 @@ namespace printnotes {
 
   namespace {
     class PrintNotesAction
-      : public Gtk::Action
+      : public gnote::NoteWindow::NonModifyingAction
     {
     public:
       static Glib::RefPtr<Gtk::Action> create(gnote::NoteWindow *note_window)
@@ -56,7 +56,8 @@ namespace printnotes {
         }
     private:
       PrintNotesAction(gnote::NoteWindow *note_window)
-        : Gtk::Action("PrintAction", Gtk::Stock::PRINT, _("Print"), _("Print note"))
+        : gnote::NoteWindow::NonModifyingAction("PrintAction", Gtk::Stock::PRINT,
+                                                _("Print"), _("Print note"))
         , m_note_window(note_window)
       {}
 
