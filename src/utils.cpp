@@ -281,8 +281,17 @@ namespace gnote {
                           modifiers,
                           flags);
       foo->show ();
-
+      foo->set_sensitive(m_fake_menu.get_sensitive());
       m_fake_menu.append (*foo);
+    }
+
+    void GlobalKeybinder::enabled(bool enable)
+    {
+      m_fake_menu.set_sensitive(enable);
+      std::vector<Gtk::Widget*> items = m_fake_menu.get_children();
+      FOREACH(Gtk::Widget *item, items) {
+        item->set_sensitive(enable);
+      }
     }
 
 

@@ -79,7 +79,11 @@ namespace gnote {
 
       void add_accelerator(const sigc::slot<void> & , guint, Gdk::ModifierType, 
                            Gtk::AccelFlags);
-      
+      void enabled(bool enable);
+      bool enabled() const
+        {
+          return m_fake_menu.get_sensitive();
+        }
     private:
       Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
       Gtk::Menu m_fake_menu;
