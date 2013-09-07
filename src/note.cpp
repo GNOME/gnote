@@ -1121,7 +1121,7 @@ namespace gnote {
         if(!m_enabled) {
           m_focus_widget = window->get_focus();
         }
-        window->set_sensitive(m_enabled);
+        m_window->enabled(m_enabled);
         if(m_enabled) {
           window->set_focus(*m_focus_widget);
         }

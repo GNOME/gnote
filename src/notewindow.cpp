@@ -57,6 +57,24 @@ namespace gnote {
   }
 
 
+  NoteWindow::NonModifyingAction::NonModifyingAction()
+  {}
+
+  NoteWindow::NonModifyingAction::NonModifyingAction(const Glib::ustring & name,
+                                                     const Gtk::StockID & stock_id,
+                                                     const Glib::ustring & label,
+                                                     const Glib::ustring & tooltip)
+    : Gtk::Action(name, stock_id, label, tooltip)
+  {}
+
+  NoteWindow::NonModifyingAction::NonModifyingAction(const Glib::ustring & name,
+                                                     const Glib::ustring & icon_name,
+                                                     const Glib::ustring & label,
+                                                     const Glib::ustring & tooltip)
+    : Gtk::Action(name, icon_name, label, tooltip)
+  {}
+
+
 
   NoteWindow::NoteWindow(Note & note)
     : m_note(note)
@@ -65,6 +83,7 @@ namespace gnote {
     , m_width(450)
     , m_find_handler(note)
     , m_global_keys(NULL)
+    , m_enabled(true)
   {
     m_template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     m_template_save_size_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
@@ -212,6 +231,7 @@ namespace gnote {
         m_global_keys->add_accelerator(sigc::mem_fun(*this, &NoteWindow::change_depth_left_handler),
                                       GDK_KEY_Left, Gdk::MOD1_MASK,
                                       Gtk::ACCEL_VISIBLE);
+        m_global_keys->enabled(m_enabled);
       }
     }
     else {
@@ -274,6 +294,9 @@ namespace gnote {
     }
     m_widget_actions[order] = action;
     m_signal_actions_changed();
+    if(Glib::RefPtr<NonModifyingAction>::cast_dynamic(action) == 0) {
+      action->set_sensitive(m_enabled);
+    }
   }
 
   void NoteWindow::remove_widget_action(const std::string & name)
@@ -591,6 +614,20 @@ namespace gnote {
   void NoteWindow::on_pin_button_clicked()
   {
     m_note.set_pinned(!m_note.is_pinned());
+  }
+
+  void NoteWindow::enabled(bool enable)
+  {
+    m_enabled = enable;
+    m_editor->set_editable(m_enabled);
+    embeddable_toolbar()->set_sensitive(m_enabled);
+    if(m_global_keys)
+      m_global_keys->enabled(m_enabled);
+    FOREACH(Glib::RefPtr<Gtk::Action> & action, get_widget_actions()) {
+      if(Glib::RefPtr<NonModifyingAction>::cast_dynamic(action) == 0) {
+        action->set_sensitive(enable);
+      }
+    }
   }
 
 

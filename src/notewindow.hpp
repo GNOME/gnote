@@ -155,6 +155,36 @@ public:
   // use co-variant return
   virtual Gtk::Grid *embeddable_toolbar() override;
 
+  class NonModifyingAction
+    : public Gtk::Action
+  {
+  public:
+    static Glib::RefPtr<NonModifyingAction> create()
+      {
+        return Glib::RefPtr<NonModifyingAction>(new NonModifyingAction);
+      }
+    static Glib::RefPtr<NonModifyingAction> create(const Glib::ustring & name,
+                                                   const Gtk::StockID & stock_id = Gtk::StockID(),
+                                                   const Glib::ustring & label = Glib::ustring(),
+                                                   const Glib::ustring & tooltip = Glib::ustring())
+      {
+        return Glib::RefPtr<NonModifyingAction>(new NonModifyingAction(name, stock_id, label, tooltip));
+      }
+    static Glib::RefPtr<NonModifyingAction> create(const Glib::ustring & name,
+                                                   const Glib::ustring & icon_name,
+                                                   const Glib::ustring & label = Glib::ustring(),
+                                                   const Glib::ustring & tooltip = Glib::ustring())
+      {
+        return Glib::RefPtr<NonModifyingAction>(new NonModifyingAction(name, icon_name, label, tooltip));
+      }
+    NonModifyingAction();
+    explicit NonModifyingAction(const Glib::ustring & name, const Gtk::StockID & stock_id = Gtk::StockID(),
+                                const Glib::ustring & label = Glib::ustring(),
+                                const Glib::ustring & tooltip = Glib::ustring());
+    NonModifyingAction(const Glib::ustring & name, const Glib::ustring & icon_name,
+                       const Glib::ustring & label = Glib::ustring(),
+                       const Glib::ustring & tooltip = Glib::ustring());
+  };
   virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions() override;
   virtual sigc::signal<void> & signal_actions_changed() override;
   void add_widget_action(const Glib::RefPtr<Gtk::Action> & action, int order);
@@ -184,6 +214,11 @@ public:
   NoteFindHandler & get_find_handler()
     {
       return m_find_handler;
+    }
+  void enabled(bool enable);
+  bool enabled() const
+    {
+      return m_enabled;
     }
 private:
   static Glib::RefPtr<Gio::Icon> get_icon_pin_active();
@@ -231,6 +266,7 @@ private:
 
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;
+  bool                         m_enabled;
 
   std::map<int, Glib::RefPtr<Gtk::Action> > m_widget_actions;
   sigc::signal<void> m_signal_actions_changed;
