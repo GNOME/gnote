@@ -71,8 +71,9 @@ void ExportToHtmlNoteAddin::shutdown()
 
 void ExportToHtmlNoteAddin::on_note_opened()
 {
-  Glib::RefPtr<Gtk::Action> action = Gtk::Action::create("ExportToHtmlAction", _("Export to HTML"),
-                                                         _("Export note to HTML"));
+  Glib::RefPtr<gnote::NoteWindow::NonModifyingAction> action =
+    gnote::NoteWindow::NonModifyingAction::create("ExportToHtmlAction", _("Export to HTML"),
+                                                  _("Export note to HTML"));
   action->signal_activate().connect(
     sigc::mem_fun(*this, &ExportToHtmlNoteAddin::export_button_clicked));
   add_note_action(action, 200);
