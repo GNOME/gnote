@@ -36,8 +36,9 @@ Glib::RefPtr<Gtk::Action> BacklinkAction::create(const sigc::slot<void, Gtk::Men
 }
 
 BacklinkAction::BacklinkAction(const sigc::slot<void, Gtk::Menu*> & slot)
-  : Gtk::Action("BacklinkAction", Gtk::Stock::JUMP_TO,
-                _("What links here?"), _("Which notes have links to here?"))
+  : gnote::NoteWindow::NonModifyingAction("BacklinkAction", Gtk::Stock::JUMP_TO,
+                                          _("What links here?"),
+                                          _("Which notes have links to here?"))
   , m_update_menu_slot(slot)
 {
 }

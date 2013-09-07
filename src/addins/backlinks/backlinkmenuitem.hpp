@@ -27,11 +27,12 @@
 
 #include "base/macros.hpp"
 #include "note.hpp"
+#include "notewindow.hpp"
 
 namespace backlinks {
 
 class BacklinkAction
-  : public Gtk::Action
+  : public gnote::NoteWindow::NonModifyingAction
 {
 public:
   static Glib::RefPtr<Gtk::Action> create(const sigc::slot<void, Gtk::Menu*> & slot);
