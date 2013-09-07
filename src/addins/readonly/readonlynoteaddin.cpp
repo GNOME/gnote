@@ -29,13 +29,17 @@
 
 namespace {
   class ReadOnlyAction
-    : public Gtk::Action
+    : public gnote::NoteWindow::NonModifyingAction
   {
   public:
     typedef Glib::RefPtr<ReadOnlyAction> Ptr;
     static Ptr create()
       {
         return Ptr(new ReadOnlyAction);
+      }
+    void checked(bool check)
+      {
+        m_checked = check;
       }
     bool checked() const
       {
@@ -44,7 +48,9 @@ namespace {
   protected:
     virtual Gtk::Widget *create_menu_item_vfunc() override
     {
-      return new Gtk::CheckMenuItem;
+      Gtk::CheckMenuItem *item = new Gtk::CheckMenuItem;
+      item->set_active(m_checked);
+      return item;
     }
     virtual void on_activate() override
     {
@@ -53,7 +59,7 @@ namespace {
     }
   private:
     ReadOnlyAction()
-      : Gtk::Action("ReadOnlyAction")
+      : gnote::NoteWindow::NonModifyingAction("ReadOnlyAction")
       , m_checked(false)
     {
       set_label(_("Read Only"));
@@ -104,7 +110,8 @@ void ReadOnlyNoteAddin::on_note_opened()
   gnote::ITagManager & m = gnote::ITagManager::obj();
   const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
   if(get_note()->contains_tag(ro_tag)) {
-    //m_item->set_active(true);
+    ReadOnlyAction::Ptr::cast_dynamic(m_action)->checked(true);
+    on_menu_item_toggled();
   }
 }
 
@@ -113,11 +120,11 @@ void ReadOnlyNoteAddin::on_menu_item_toggled()
   gnote::ITagManager & m = gnote::ITagManager::obj();
   const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
   if(ReadOnlyAction::Ptr::cast_dynamic(m_action)->checked()) {
-    get_window()->editor()->set_editable(false);
+    get_note()->enabled(false);
     get_note()->add_tag(ro_tag);
   }
   else {
-    get_window()->editor()->set_editable(true);
+    get_note()->enabled(true);
     get_note()->remove_tag(ro_tag);
   }
 }
