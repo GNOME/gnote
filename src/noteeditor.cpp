@@ -216,6 +216,9 @@ namespace gnote {
   bool NoteEditor::key_pressed (GdkEventKey * ev)
   {
       bool ret_value = false;
+      if(!get_editable()) {
+        return ret_value;
+      }
 
       switch (ev->keyval)
       {
