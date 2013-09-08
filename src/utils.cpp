@@ -354,21 +354,20 @@ namespace gnote {
       label_vbox->set_hexpand(true);
       hbox->attach(*label_vbox, hbox_col++, 0, 1, 1);
 
-      std::string title = str(boost::format("<span weight='bold' size='larger'>%1%"
-                                            "</span>\n") % header.c_str());
-
-      Gtk::Label *label;
-
-      label = manage(new Gtk::Label (title));
-      label->set_use_markup(true);
-      label->set_justify(Gtk::JUSTIFY_LEFT);
-      label->set_line_wrap(true);
-      label->set_alignment (0.0f, 0.5f);
-      label->show();
-      label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
+      if(header != "") {
+        std::string title = str(boost::format("<span weight='bold' size='larger'>%1%"
+                                              "</span>\n") % header.c_str());
+        Gtk::Label *label = manage(new Gtk::Label (title));
+        label->set_use_markup(true);
+        label->set_justify(Gtk::JUSTIFY_LEFT);
+        label->set_line_wrap(true);
+        label->set_alignment (0.0f, 0.5f);
+        label->show();
+        label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
+      }
 
       if(msg != "") {
-        label = manage(new Gtk::Label(msg));
+        Gtk::Label *label = manage(new Gtk::Label(msg));
         label->set_use_markup(true);
         label->set_justify(Gtk::JUSTIFY_LEFT);
         label->set_line_wrap(true);
