@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-24 03:22+0200\n"
-"PO-Revision-Date: 2013-08-24 03:22+0200\n"
+"POT-Creation-Date: 2013-09-08 18:24+0200\n"
+"PO-Revision-Date: 2013-09-08 18:25+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -27,6 +27,24 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:1
+msgid ""
+"Gnote is a simple note-taking application for GNOME desktop environment. It "
+"allows you to capture your ideas, link them together using WikiWiki-style "
+"links, group together in notebooks and some extra features for everyday use."
+msgstr ""
+"Gnote to prosty program do robienia notatek dla środowiska GNOME. Umożliwia "
+"zapisywanie swoich myśli, łączenie ich za pomocą odnośników w stylu wiki, "
+"grupowanie w notatniki oraz oferuje kilka dodatkowych funkcji."
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid ""
+"Gnote also supports synchronization to make it possible to use on multiple "
+"devices."
+msgstr ""
+"Program Gnote obsługuje także synchronizację, co umożliwia jego używanie na "
+"wielu urządzeniach."
 
 #: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
@@ -685,7 +703,7 @@ msgstr "Próbowanie wczytanie dodatków, kiedy są już wczytane"
 msgid "What links here?"
 msgstr "Odnośniki do tej notatki"
 
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:40
+#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
 msgid "Which notes have links to here?"
 msgstr "Które notatki posiadają odnośniki do tego miejsca?"
 
@@ -786,7 +804,7 @@ msgid "Error removing icon %s: %s"
 msgstr "Błąd podczas usuwania ikony %s: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:74
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
 msgid "Export to HTML"
 msgstr "Wyeksportuj do HTML"
 
@@ -806,30 +824,30 @@ msgstr "Eksport dowiązanych notatek"
 msgid "Include all other linked notes"
 msgstr "Dołącz wszystkie inne powiązane notatki"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
 msgid "Export note to HTML"
 msgstr "Wyeksportuj notatkę do HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:115
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:116
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Nie można otworzyć wyeksportowanej notatki w przeglądarce WWW: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:119
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
 msgid "Your note was exported to \"%1%\"."
 msgstr "Notatka została wyeksportowana do \"%1%\"."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:128
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:129
 msgid "Note exported successfully"
 msgstr "Notatka została pomyślnie wyeksportowana"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:142
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:143
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
 #, c-format
 msgid "Could not export: %s"
 msgstr "Nie można wyeksportować: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:153
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Nie można zapisać pliku \"%s\""
@@ -911,7 +929,8 @@ msgstr "Własny forma_t"
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
-"NoteDirectoryWatcher: przerwano aktualizację, błąd podczas odczytywania %s: %s"
+"NoteDirectoryWatcher: przerwano aktualizację, błąd podczas odczytywania %s: "
+"%s"
 
 #. TRANSLATORS: %s is file
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:252
@@ -1015,25 +1034,25 @@ msgstr "Obsługa drukowania"
 msgid "Allows you to print a note."
 msgstr "Umożliwia wydrukowanie notatki."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:59
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
 msgid "Print"
 msgstr "Wydrukuj"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:59
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
 msgid "Print note"
 msgstr "Wydrukuj notatkę"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
 msgid "Error printing note"
 msgstr "Wystąpił błąd podczas zapisywania drukowania notatki"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:301
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:302
 msgid "Page %1% of %2%"
 msgstr "Strona %1% z %2%"
 
 #: ../src/addins/readonly/readonly.desktop.in.h:1
-#: ../src/addins/readonly/readonlynoteaddin.cpp:59
+#: ../src/addins/readonly/readonlynoteaddin.cpp:65
 msgid "Read Only"
 msgstr "Tylko do odczytu"
 
@@ -1045,7 +1064,7 @@ msgstr "Oznaczanie niektórych notatek jako tylko do odczytu"
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray i Arief Bayu Purwanto"
 
-#: ../src/addins/readonly/readonlynoteaddin.cpp:60
+#: ../src/addins/readonly/readonlynoteaddin.cpp:66
 msgid "Make this note read-only"
 msgstr "Oznacz tę notatkę jako tylko do odczytu"
 
@@ -1403,7 +1422,7 @@ msgid "C_reate"
 msgstr "_Utwórz"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:66
-#: ../src/searchnoteswidget.cpp:227
+#: ../src/searchnoteswidget.cpp:228
 msgid "Notebooks"
 msgstr "Notatniki"
 
@@ -1698,43 +1717,43 @@ msgstr "Tytuł notatki"
 msgid "Ad_vanced"
 msgstr "Zaa_wansowane"
 
-#: ../src/notewindow.cpp:333
+#: ../src/notewindow.cpp:356
 msgid "_Link to New Note"
 msgstr "_Dowiązanie do nowej notatki"
 
-#: ../src/notewindow.cpp:341
+#: ../src/notewindow.cpp:364
 msgid "Te_xt"
 msgstr "Te_kst"
 
-#: ../src/notewindow.cpp:378
+#: ../src/notewindow.cpp:401
 msgid "Pin"
 msgstr "Przypnij"
 
-#: ../src/notewindow.cpp:379
+#: ../src/notewindow.cpp:402
 msgid "Mark note as important"
 msgstr "Oznacz notatkę jako ważną"
 
-#: ../src/notewindow.cpp:387
+#: ../src/notewindow.cpp:410
 msgid "Link"
 msgstr "Odnośnik"
 
-#: ../src/notewindow.cpp:393
+#: ../src/notewindow.cpp:416
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Tworzy odnośnik do nowej notatki (Ctrl+L)"
 
-#: ../src/notewindow.cpp:398
+#: ../src/notewindow.cpp:421
 msgid "_Text"
 msgstr "_Tekst"
 
-#: ../src/notewindow.cpp:403
+#: ../src/notewindow.cpp:426
 msgid "Set properties of text"
 msgstr "Ustawia właściwości tekstu"
 
-#: ../src/notewindow.cpp:413
+#: ../src/notewindow.cpp:436
 msgid "Delete this note"
 msgstr "Usuwa tę notatkę"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:454
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1742,67 +1761,67 @@ msgstr ""
 "Ta notatka jest szablonem. Określa ona domyślną treść zwykłych notatek, i "
 "nie jest wyświetlana w menu notatek ani w oknie wyszukiwania."
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:457
 msgid "Convert to regular note"
 msgstr "Przekonwertuj na zwykłą notatkę"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:460
 msgid "Save Si_ze"
 msgstr "Zapisz ro_zmiar"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:464
 msgid "Save Se_lection"
 msgstr "Zapisz _wybrane"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:468
 msgid "Save _Title"
 msgstr "Zapisz _tytuł"
 
-#: ../src/notewindow.cpp:547
+#: ../src/notewindow.cpp:570
 msgid "Cannot create note"
 msgstr "Nie można utworzyć notatki"
 
-#: ../src/notewindow.cpp:797
+#: ../src/notewindow.cpp:834
 msgid "<b>_Bold</b>"
 msgstr "<b>_Pogrubienie</b>"
 
-#: ../src/notewindow.cpp:798
+#: ../src/notewindow.cpp:835
 msgid "<i>_Italic</i>"
 msgstr "<i>Kursy_wa</i>"
 
-#: ../src/notewindow.cpp:799
+#: ../src/notewindow.cpp:836
 msgid "<s>_Strikeout</s>"
 msgstr "<s>P_rzekreślenie</s>"
 
-#: ../src/notewindow.cpp:801
+#: ../src/notewindow.cpp:838
 msgid "_Highlight"
 msgstr "Wyróżn_ienie"
 
-#: ../src/notewindow.cpp:803
+#: ../src/notewindow.cpp:840
 msgid "_Normal"
 msgstr "_Zwykły"
 
-#: ../src/notewindow.cpp:805
+#: ../src/notewindow.cpp:842
 msgid "Hu_ge"
 msgstr "_Ogromny"
 
-#: ../src/notewindow.cpp:807
+#: ../src/notewindow.cpp:844
 msgid "_Large"
 msgstr "_Duży"
 
-#: ../src/notewindow.cpp:809
+#: ../src/notewindow.cpp:846
 msgid "S_mall"
 msgstr "_Mały"
 
-#: ../src/notewindow.cpp:811
+#: ../src/notewindow.cpp:848
 msgid "Bullets"
 msgstr "Wypunktowanie"
 
-#: ../src/notewindow.cpp:814
+#: ../src/notewindow.cpp:851
 msgid "Increase Font Size"
 msgstr "Zwiększa rozmiar czcionki"
 
-#: ../src/notewindow.cpp:815
+#: ../src/notewindow.cpp:852
 msgid "Decrease Font Size"
 msgstr "Zmniejsza rozmiar czcionki"
 
@@ -1877,8 +1896,8 @@ msgstr "A_utomatyczne wypunktowanie list"
 #: ../src/preferencesdialog.cpp:289
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
-"Rozpoczyna nową listę wypunktowaną po rozpoczęciu nowego wiersza znakiem "
-"\"-\"."
+"Rozpoczyna nową listę wypunktowaną po rozpoczęciu nowego wiersza znakiem \"-"
+"\"."
 
 #: ../src/preferencesdialog.cpp:298
 msgid "Use custom _font"
@@ -2078,32 +2097,32 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:577
-#: ../src/searchnoteswidget.cpp:993
+#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:584
+#: ../src/searchnoteswidget.cpp:994
 msgid "Notes"
 msgstr "Notatki"
 
-#: ../src/recentchanges.cpp:141
+#: ../src/recentchanges.cpp:143
 msgid "All Notes"
 msgstr "Wszystkie notatki"
 
-#: ../src/recentchanges.cpp:148
+#: ../src/recentchanges.cpp:150
 msgid "New"
 msgstr "Nowa"
 
-#: ../src/recentchanges.cpp:172
+#: ../src/recentchanges.cpp:174
 msgid "Search"
 msgstr "Znajdź"
 
-#: ../src/recentchanges.cpp:218
+#: ../src/recentchanges.cpp:220
 msgid "Find _Next"
 msgstr "Znajdź _następne"
 
-#: ../src/recentchanges.cpp:226
+#: ../src/recentchanges.cpp:228
 msgid "Find _Previous"
 msgstr "Znajdź p_oprzednie"
 
-#: ../src/recentchanges.cpp:695
+#: ../src/recentchanges.cpp:702
 msgid "_Close"
 msgstr "Za_mknij"
 
@@ -2112,31 +2131,31 @@ msgstr "Za_mknij"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Wczytanie interfejsu D-Bus %s się nie powiodło: %s"
 
-#: ../src/searchnoteswidget.cpp:135
+#: ../src/searchnoteswidget.cpp:136
 msgid "_Open"
 msgstr "_Otwórz"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:139
 msgid "Open In New _Window"
 msgstr "Otwórz w nowym o_knie"
 
-#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
 msgid "_Delete"
 msgstr "_Usuń"
 
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/searchnoteswidget.cpp:149
 msgid "Re_name..."
 msgstr "Zmień _nazwę..."
 
-#: ../src/searchnoteswidget.cpp:652
+#: ../src/searchnoteswidget.cpp:653
 msgid "Note"
 msgstr "Notatka"
 
-#: ../src/searchnoteswidget.cpp:674
+#: ../src/searchnoteswidget.cpp:675
 msgid "Modified"
 msgstr "Zmodyfikowano"
 
-#: ../src/searchnoteswidget.cpp:1012
+#: ../src/searchnoteswidget.cpp:1013
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2144,54 +2163,54 @@ msgstr ""
 "Nie odnaleziono wyników w wybranym notatniku.\n"
 "Kliknięcie tutaj spowoduje przeszukanie wszystkich notatek."
 
-#: ../src/searchnoteswidget.cpp:1016
+#: ../src/searchnoteswidget.cpp:1017
 msgid "Click here to search across all notebooks"
 msgstr "Kliknięcie tutaj spowoduje przeszukanie wszystkich notatek"
 
-#: ../src/searchnoteswidget.cpp:1037
+#: ../src/searchnoteswidget.cpp:1038
 msgid "Matches"
 msgstr "Pasujące"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1089
+#: ../src/searchnoteswidget.cpp:1090
 msgid "Title match"
 msgstr "Pasuje tytuł"
 
-#: ../src/searchnoteswidget.cpp:1093
+#: ../src/searchnoteswidget.cpp:1094
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% dopasowanie"
 msgstr[1] "%1% dopasowania"
 msgstr[2] "%1% dopasowań"
 
-#: ../src/searchnoteswidget.cpp:1304
+#: ../src/searchnoteswidget.cpp:1305
 msgid "_New"
 msgstr "_Nowa"
 
-#: ../src/searchnoteswidget.cpp:1333
+#: ../src/searchnoteswidget.cpp:1334
 msgid "_Open Template Note"
 msgstr "_Otwórz szablon notatki"
 
-#: ../src/searchnoteswidget.cpp:1344
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_New..."
 msgstr "_Nowa..."
 
-#: ../src/searchnoteswidget.cpp:1480 ../src/searchnoteswidget.cpp:1493
-#: ../src/searchnoteswidget.cpp:1504
+#: ../src/searchnoteswidget.cpp:1481 ../src/searchnoteswidget.cpp:1494
+#: ../src/searchnoteswidget.cpp:1505
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Przetworzenie ustawienia %s się nie powiodło (wartość: %s):"
 
-#: ../src/searchnoteswidget.cpp:1481
+#: ../src/searchnoteswidget.cpp:1482
 msgid "Expected format 'column:order'"
 msgstr "Oczekiwano formatu \"kolumna:kolejność\""
 
-#: ../src/searchnoteswidget.cpp:1494
+#: ../src/searchnoteswidget.cpp:1495
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Nierozpoznana kolumna %s"
 
-#: ../src/searchnoteswidget.cpp:1505
+#: ../src/searchnoteswidget.cpp:1506
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Nierozpoznana kolejność %s"
@@ -2257,8 +2276,8 @@ msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
 "but there may be some excess files floating around.  Here's the error: %s\n"
 msgstr ""
-"Wyjątek podczas czyszczenia serwera w czasie wysyłania. Spójność serwera jest "
-"w porządku, ale mogły pozostać jakieś nadmiarowe pliki. Błąd: %s\n"
+"Wyjątek podczas czyszczenia serwera w czasie wysyłania. Spójność serwera "
+"jest w porządku, ale mogły pozostać jakieś nadmiarowe pliki. Błąd: %s\n"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:609
 #, c-format
