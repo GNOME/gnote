@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-22 21:29+0000\n"
-"PO-Revision-Date: 2013-08-25 22:21+0300\n"
+"POT-Creation-Date: 2013-09-08 17:19+0000\n"
+"PO-Revision-Date: 2013-09-09 22:09+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -23,6 +23,25 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.6\n"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:1
+msgid ""
+"Gnote is a simple note-taking application for GNOME desktop environment. It "
+"allows you to capture your ideas, link them together using WikiWiki-style "
+"links, group together in notebooks and some extra features for everyday use."
+msgstr ""
+"Gnote yra paprasta užrašų knygelės programa GNOME darbastalio aplinkai. Ji "
+"leidžia jums užsirašyti savo mintis, susieti jas WikiWiki stiliaus saitais, "
+"sugrupuoti kartu užrašinėse bei turi keletą kitų savybių kasdieniam "
+"naudojimui."
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid ""
+"Gnote also supports synchronization to make it possible to use on multiple "
+"devices."
+msgstr ""
+"Gnote taip pat palaiko sinchronizavimą, kad būtų galima ją naudoti keliuose "
+"įrenginiuose."
 
 #: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
@@ -670,7 +689,7 @@ msgstr "Bandoma įkelti priedus, kurie jau yra įkelti"
 msgid "What links here?"
 msgstr "Kur yra saitai į čia?"
 
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:40
+#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
 msgid "Which notes have links to here?"
 msgstr "Kurie rašteliai turi saitus į čia?"
 
@@ -768,7 +787,7 @@ msgid "Error removing icon %s: %s"
 msgstr "Klaida šalinant piktogramą %s: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:74
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
 msgid "Export to HTML"
 msgstr "Eksportuoti į HTML"
 
@@ -788,30 +807,30 @@ msgstr "Eksportuoti susietus raštelius"
 msgid "Include all other linked notes"
 msgstr "Įtraukti visus kitus susietus raštelius"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
 msgid "Export note to HTML"
 msgstr "Eksportuoti raštelį į HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:115
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:116
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Nepavyko atverti eksportuoto raštelio žiniatinklio naršyklėje: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:119
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
 msgid "Your note was exported to \"%1%\"."
 msgstr "Jūsų raštelis buvo eksportuotas į „%1%“."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:128
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:129
 msgid "Note exported successfully"
 msgstr "Raštelis eksportuotas sėkmingai"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:142
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:143
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
 #, c-format
 msgid "Could not export: %s"
 msgstr "Nepavyko eksportuoti: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:153
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Nepavyko išsaugoti failo „%s“"
@@ -994,39 +1013,37 @@ msgstr "Spausdinimo palaikymas"
 msgid "Allows you to print a note."
 msgstr "Leidžia spausdinti raštelius."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:59
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
 msgid "Print"
 msgstr "Spausdinti"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:59
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
 msgid "Print note"
 msgstr "Spausdinti raštelį"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
 msgid "Error printing note"
 msgstr "Klaida spausdinant raštelį"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:301
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:302
 msgid "Page %1% of %2%"
 msgstr "%1% puslapis iš %2%"
 
 #: ../src/addins/readonly/readonly.desktop.in.h:1
-#: ../src/addins/readonly/readonlynoteaddin.cpp:59
+#: ../src/addins/readonly/readonlynoteaddin.cpp:65
 msgid "Read Only"
 msgstr "Tik skaityti"
 
 #: ../src/addins/readonly/readonly.desktop.in.h:2
-#| msgid "Mark note as important"
 msgid "Mark certain notes as read only"
 msgstr "Žymėti raštelius tik skaitymui"
 
 #: ../src/addins/readonly/readonly.desktop.in.h:3
-#| msgid "Aurimas Černius and the Tomboy Project"
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray ir Arief Bayu Purwanto"
 
-#: ../src/addins/readonly/readonlynoteaddin.cpp:60
+#: ../src/addins/readonly/readonlynoteaddin.cpp:66
 msgid "Make this note read-only"
 msgstr "Žymėti šį raštelį tik skaitymui"
 
@@ -1045,7 +1062,6 @@ msgstr "Pierre-Yves Luyten"
 
 #: ../src/addins/specialnotes/specialnotes.desktop.in.h:1
 #: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
-#| msgid "_Search All Notes"
 msgid "Special Notes"
 msgstr "Specialūs rašteliai"
 
@@ -1204,7 +1220,7 @@ msgstr "_Naudotojo vardas:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
 msgid "_Password:"
-msgstr "Sla_ptažodis"
+msgstr "Sla_ptažodis:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
 msgid "WebDAV"
@@ -1361,9 +1377,10 @@ msgstr "Versija %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Nepavyko įkelti piktogramos (%s, %d): %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:40
-msgid "Create a new notebook"
-msgstr "Sukurti naują užrašinę"
+#: ../src/notebooks/createnotebookdialog.cpp:41
+#| msgid "Create a new notebook"
+msgid "Create Notebook"
+msgstr "Sukurti užrašinę"
 
 #: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
@@ -1380,7 +1397,7 @@ msgid "C_reate"
 msgstr "_Sukurti"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:66
-#: ../src/searchnoteswidget.cpp:227
+#: ../src/searchnoteswidget.cpp:228
 msgid "Notebooks"
 msgstr "Užrašinės"
 
@@ -1673,43 +1690,43 @@ msgstr "Raštelio pavadinimas"
 msgid "Ad_vanced"
 msgstr "_Sudėtingesni"
 
-#: ../src/notewindow.cpp:333
+#: ../src/notewindow.cpp:356
 msgid "_Link to New Note"
 msgstr "Sukurti nuorodą į naują _raštelį"
 
-#: ../src/notewindow.cpp:341
+#: ../src/notewindow.cpp:364
 msgid "Te_xt"
 msgstr "_Tekstas"
 
-#: ../src/notewindow.cpp:378
+#: ../src/notewindow.cpp:401
 msgid "Pin"
 msgstr "Prisegti"
 
-#: ../src/notewindow.cpp:379
+#: ../src/notewindow.cpp:402
 msgid "Mark note as important"
 msgstr "Žymėti raštelį svarbiu"
 
-#: ../src/notewindow.cpp:387
+#: ../src/notewindow.cpp:410
 msgid "Link"
 msgstr "Susieti"
 
-#: ../src/notewindow.cpp:393
+#: ../src/notewindow.cpp:416
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Susieti pažymėtą tekstą su nauju rašteliu (Ctrl-L)"
 
-#: ../src/notewindow.cpp:398
+#: ../src/notewindow.cpp:421
 msgid "_Text"
 msgstr "_Tekstas"
 
-#: ../src/notewindow.cpp:403
+#: ../src/notewindow.cpp:426
 msgid "Set properties of text"
 msgstr "Nurodyti teksto savybes"
 
-#: ../src/notewindow.cpp:413
+#: ../src/notewindow.cpp:436
 msgid "Delete this note"
 msgstr "Ištrinti šį raštelį"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:454
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1717,67 +1734,67 @@ msgstr ""
 "Šis raštelis yra šablonas. Jis nusako įprastinių raštelių turinį ir nebus "
 "matomas raštelių meniu arba paieškos lange."
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:457
 msgid "Convert to regular note"
 msgstr "Paversti įprastiniu rašteliu"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:460
 msgid "Save Si_ze"
 msgstr "Įrašyti _dydį"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:464
 msgid "Save Se_lection"
 msgstr "Įrašyti pa_žymėjimą"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:468
 msgid "Save _Title"
 msgstr "Įrašyti _pavadinimą"
 
-#: ../src/notewindow.cpp:547
+#: ../src/notewindow.cpp:570
 msgid "Cannot create note"
 msgstr "Nepavyko sukurti raštelio"
 
-#: ../src/notewindow.cpp:797
+#: ../src/notewindow.cpp:834
 msgid "<b>_Bold</b>"
 msgstr "<b>_Pusjuodis</b>"
 
-#: ../src/notewindow.cpp:798
+#: ../src/notewindow.cpp:835
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kursyvas</i>"
 
-#: ../src/notewindow.cpp:799
+#: ../src/notewindow.cpp:836
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Perbrauktas</s>"
 
-#: ../src/notewindow.cpp:801
+#: ../src/notewindow.cpp:838
 msgid "_Highlight"
 msgstr "Pa_ryškintas"
 
-#: ../src/notewindow.cpp:803
+#: ../src/notewindow.cpp:840
 msgid "_Normal"
 msgstr "_Normalus"
 
-#: ../src/notewindow.cpp:805
+#: ../src/notewindow.cpp:842
 msgid "Hu_ge"
 msgstr "Milžiniš_kas"
 
-#: ../src/notewindow.cpp:807
+#: ../src/notewindow.cpp:844
 msgid "_Large"
 msgstr "_Didelis"
 
-#: ../src/notewindow.cpp:809
+#: ../src/notewindow.cpp:846
 msgid "S_mall"
 msgstr "_Mažas"
 
-#: ../src/notewindow.cpp:811
+#: ../src/notewindow.cpp:848
 msgid "Bullets"
 msgstr "Punktai"
 
-#: ../src/notewindow.cpp:814
+#: ../src/notewindow.cpp:851
 msgid "Increase Font Size"
 msgstr "Padidinti šriftą"
 
-#: ../src/notewindow.cpp:815
+#: ../src/notewindow.cpp:852
 msgid "Decrease Font Size"
 msgstr "Sumažinti šriftą"
 
@@ -2050,32 +2067,32 @@ msgstr "Autorius:"
 msgid "Copyright:"
 msgstr "Autorinės teisės:"
 
-#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:577
-#: ../src/searchnoteswidget.cpp:993
+#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:584
+#: ../src/searchnoteswidget.cpp:994
 msgid "Notes"
 msgstr "Rašteliai"
 
-#: ../src/recentchanges.cpp:141
+#: ../src/recentchanges.cpp:143
 msgid "All Notes"
 msgstr "Visi rašteliai"
 
-#: ../src/recentchanges.cpp:148
+#: ../src/recentchanges.cpp:150
 msgid "New"
 msgstr "Naujas"
 
-#: ../src/recentchanges.cpp:172
+#: ../src/recentchanges.cpp:174
 msgid "Search"
 msgstr "Ieškoti"
 
-#: ../src/recentchanges.cpp:218
+#: ../src/recentchanges.cpp:220
 msgid "Find _Next"
 msgstr "Rasti _kitą"
 
-#: ../src/recentchanges.cpp:226
+#: ../src/recentchanges.cpp:228
 msgid "Find _Previous"
 msgstr "Rasti _ankstesnį"
 
-#: ../src/recentchanges.cpp:695
+#: ../src/recentchanges.cpp:702
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -2084,31 +2101,31 @@ msgstr "_Užverti"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Nepavyko įkelti D-Bus sąsajos %s: %s"
 
-#: ../src/searchnoteswidget.cpp:135
+#: ../src/searchnoteswidget.cpp:136
 msgid "_Open"
 msgstr "_Atverti"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:139
 msgid "Open In New _Window"
 msgstr "Atverti naujame _lange"
 
-#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
 msgid "_Delete"
 msgstr "Iš_trinti"
 
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/searchnoteswidget.cpp:149
 msgid "Re_name..."
 msgstr "_Pervadinti..."
 
-#: ../src/searchnoteswidget.cpp:652
+#: ../src/searchnoteswidget.cpp:653
 msgid "Note"
 msgstr "Raštelis"
 
-#: ../src/searchnoteswidget.cpp:674
+#: ../src/searchnoteswidget.cpp:675
 msgid "Modified"
 msgstr "Pakeistas"
 
-#: ../src/searchnoteswidget.cpp:1012
+#: ../src/searchnoteswidget.cpp:1013
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2116,54 +2133,54 @@ msgstr ""
 "Pasirinktoje užrašinėje rezultatų nerasta.\n"
 "Spauskite čia paieškai visuose rašteliuose."
 
-#: ../src/searchnoteswidget.cpp:1016
+#: ../src/searchnoteswidget.cpp:1017
 msgid "Click here to search across all notebooks"
 msgstr "Spauskite čia paieškai visuose rašteliuose"
 
-#: ../src/searchnoteswidget.cpp:1037
+#: ../src/searchnoteswidget.cpp:1038
 msgid "Matches"
 msgstr "Atitikmenys"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1089
+#: ../src/searchnoteswidget.cpp:1090
 msgid "Title match"
 msgstr "Atitikmuo pavadinime"
 
-#: ../src/searchnoteswidget.cpp:1093
+#: ../src/searchnoteswidget.cpp:1094
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% atitikmuo"
 msgstr[1] "%1% atitikmenys"
 msgstr[2] "%1% atitikmenų"
 
-#: ../src/searchnoteswidget.cpp:1304
+#: ../src/searchnoteswidget.cpp:1305
 msgid "_New"
 msgstr "_Naujas"
 
-#: ../src/searchnoteswidget.cpp:1333
+#: ../src/searchnoteswidget.cpp:1334
 msgid "_Open Template Note"
 msgstr "_Atverti šablono raštelį"
 
-#: ../src/searchnoteswidget.cpp:1344
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_New..."
 msgstr "_Nauja..."
 
-#: ../src/searchnoteswidget.cpp:1480 ../src/searchnoteswidget.cpp:1493
-#: ../src/searchnoteswidget.cpp:1504
+#: ../src/searchnoteswidget.cpp:1481 ../src/searchnoteswidget.cpp:1494
+#: ../src/searchnoteswidget.cpp:1505
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Nepavyko perskaityti nustatymo %s (vertė: %s):"
 
-#: ../src/searchnoteswidget.cpp:1481
+#: ../src/searchnoteswidget.cpp:1482
 msgid "Expected format 'column:order'"
 msgstr "Tikėtasi formato „stulpelis:tvarka“"
 
-#: ../src/searchnoteswidget.cpp:1494
+#: ../src/searchnoteswidget.cpp:1495
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Neatpažintas stulpelis %s"
 
-#: ../src/searchnoteswidget.cpp:1505
+#: ../src/searchnoteswidget.cpp:1506
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Neatpažinta tvarka %s"
