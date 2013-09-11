@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-22 21:29+0000\n"
-"PO-Revision-Date: 2013-08-23 07:24+0200\n"
+"POT-Creation-Date: 2013-09-08 17:19+0000\n"
+"PO-Revision-Date: 2013-09-11 11:47+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -26,6 +26,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.6\n"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:1
+msgid ""
+"Gnote is a simple note-taking application for GNOME desktop environment. It "
+"allows you to capture your ideas, link them together using WikiWiki-style "
+"links, group together in notebooks and some extra features for everyday use."
+msgstr ""
+"Gnote je jednoduchá aplikace pro pracovní prostředí GNOME sloužící k dělání "
+"poznámek. Každý den si v ní můžete zachytit své nápady a myšlenky, propojit "
+"je dohromady pomocí odkazů ve stylu WikiWiki, rozčlenit je do sešitů a nebo "
+"použít některé další doplňující funkce."
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid ""
+"Gnote also supports synchronization to make it possible to use on multiple "
+"devices."
+msgstr ""
+"Gnote také podporuje synchronizaci, takže můžete poznámky používat na více "
+"zařízeních naráz."
 
 #: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
@@ -673,7 +692,7 @@ msgstr "Zkouší se načíst doplněk, který je už načten"
 msgid "What links here?"
 msgstr "Co sem odkazuje?"
 
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:40
+#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
 msgid "Which notes have links to here?"
 msgstr "Které poznámky sem odkazují?"
 
@@ -774,7 +793,7 @@ msgid "Error removing icon %s: %s"
 msgstr "Chyba při odstraňování ikony %s: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:74
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
 msgid "Export to HTML"
 msgstr "Exportovat do HTML"
 
@@ -794,30 +813,30 @@ msgstr "Exportovat související poznámky"
 msgid "Include all other linked notes"
 msgstr "Zahrnout všechny související poznámky"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
 msgid "Export note to HTML"
 msgstr "Exportovat poznámku do HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:115
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:116
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Nelze otevřít vyexportovanou poznámku ve webovém prohlížeči: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:119
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
 msgid "Your note was exported to \"%1%\"."
 msgstr "Vaše poznámka byla exportována do „%1%“."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:128
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:129
 msgid "Note exported successfully"
 msgstr "Poznámka úspěšně exportována"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:142
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:143
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
 #, c-format
 msgid "Could not export: %s"
 msgstr "Nelze exportovat: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:153
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Nelze uložit soubor „%s“"
@@ -1009,25 +1028,25 @@ msgstr "Podpora tisku"
 msgid "Allows you to print a note."
 msgstr "Umožní vám poznámky vytisknout."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:59
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
 msgid "Print"
 msgstr "Tisk"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:59
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
 msgid "Print note"
 msgstr "Vytisknout poznámku"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
 msgid "Error printing note"
 msgstr "Chyba při tisku poznámky"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:301
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:302
 msgid "Page %1% of %2%"
 msgstr "Strana %1% z %2%"
 
 #: ../src/addins/readonly/readonly.desktop.in.h:1
-#: ../src/addins/readonly/readonlynoteaddin.cpp:59
+#: ../src/addins/readonly/readonlynoteaddin.cpp:65
 msgid "Read Only"
 msgstr "Jen ke čtení"
 
@@ -1039,7 +1058,7 @@ msgstr "Označit některé poznámky jen ke čtení"
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray a Arief Bayu Purwanto"
 
-#: ../src/addins/readonly/readonlynoteaddin.cpp:60
+#: ../src/addins/readonly/readonlynoteaddin.cpp:66
 msgid "Make this note read-only"
 msgstr "Nastavit tuto poznámku jen ke čtení"
 
@@ -1377,9 +1396,9 @@ msgstr "Verze %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Selhalo načtení ikony (%s, %d): %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:40
-msgid "Create a new notebook"
-msgstr "Vytvořit nový sešit"
+#: ../src/notebooks/createnotebookdialog.cpp:41
+msgid "Create Notebook"
+msgstr "Vytváření sešitu"
 
 #: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
@@ -1396,7 +1415,7 @@ msgid "C_reate"
 msgstr "_Vytvořit"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:66
-#: ../src/searchnoteswidget.cpp:227
+#: ../src/searchnoteswidget.cpp:228
 msgid "Notebooks"
 msgstr "Sešity"
 
@@ -1687,43 +1706,43 @@ msgstr "Název poznámky"
 msgid "Ad_vanced"
 msgstr "P_okročilé"
 
-#: ../src/notewindow.cpp:333
+#: ../src/notewindow.cpp:356
 msgid "_Link to New Note"
 msgstr "_Odkaz na novou poznámku"
 
-#: ../src/notewindow.cpp:341
+#: ../src/notewindow.cpp:364
 msgid "Te_xt"
 msgstr "_Text"
 
-#: ../src/notewindow.cpp:378
+#: ../src/notewindow.cpp:401
 msgid "Pin"
 msgstr "Připínáček"
 
-#: ../src/notewindow.cpp:379
+#: ../src/notewindow.cpp:402
 msgid "Mark note as important"
 msgstr "Označit poznámku jak důležitou"
 
-#: ../src/notewindow.cpp:387
+#: ../src/notewindow.cpp:410
 msgid "Link"
 msgstr "Odkaz"
 
-#: ../src/notewindow.cpp:393
+#: ../src/notewindow.cpp:416
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Propojit vybraný text s novou poznámkou (Ctrl-L)"
 
-#: ../src/notewindow.cpp:398
+#: ../src/notewindow.cpp:421
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/notewindow.cpp:403
+#: ../src/notewindow.cpp:426
 msgid "Set properties of text"
 msgstr "Nastavit vlastnosti textu"
 
-#: ../src/notewindow.cpp:413
+#: ../src/notewindow.cpp:436
 msgid "Delete this note"
 msgstr "Smazat tuto poznámku"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:454
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1731,67 +1750,67 @@ msgstr ""
 "Tato poznámka slouží jako šablona. Je výchozím vzorem obsahu běžné poznámky "
 "a nezobrazuje se v nabídce poznámek a vyhledávacím okně."
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:457
 msgid "Convert to regular note"
 msgstr "Převést na běžnou poznámku"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:460
 msgid "Save Si_ze"
 msgstr "Uložit veliko_st"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:464
 msgid "Save Se_lection"
 msgstr "U_ložit výběr"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:468
 msgid "Save _Title"
 msgstr "Uloži_t název"
 
-#: ../src/notewindow.cpp:547
+#: ../src/notewindow.cpp:570
 msgid "Cannot create note"
 msgstr "Nelze vytvořit poznámku"
 
-#: ../src/notewindow.cpp:797
+#: ../src/notewindow.cpp:834
 msgid "<b>_Bold</b>"
 msgstr "<b>_Tučné</b>"
 
-#: ../src/notewindow.cpp:798
+#: ../src/notewindow.cpp:835
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kurzíva</i>"
 
-#: ../src/notewindow.cpp:799
+#: ../src/notewindow.cpp:836
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Přeškrtnuté<s>"
 
-#: ../src/notewindow.cpp:801
+#: ../src/notewindow.cpp:838
 msgid "_Highlight"
 msgstr "_Zvýraznění"
 
-#: ../src/notewindow.cpp:803
+#: ../src/notewindow.cpp:840
 msgid "_Normal"
 msgstr "_Normální"
 
-#: ../src/notewindow.cpp:805
+#: ../src/notewindow.cpp:842
 msgid "Hu_ge"
 msgstr "_Obrovské"
 
-#: ../src/notewindow.cpp:807
+#: ../src/notewindow.cpp:844
 msgid "_Large"
 msgstr "_Velké"
 
-#: ../src/notewindow.cpp:809
+#: ../src/notewindow.cpp:846
 msgid "S_mall"
 msgstr "_Malé"
 
-#: ../src/notewindow.cpp:811
+#: ../src/notewindow.cpp:848
 msgid "Bullets"
 msgstr "Odrážky"
 
-#: ../src/notewindow.cpp:814
+#: ../src/notewindow.cpp:851
 msgid "Increase Font Size"
 msgstr "Zvětšit velikost písma"
 
-#: ../src/notewindow.cpp:815
+#: ../src/notewindow.cpp:852
 msgid "Decrease Font Size"
 msgstr "Zmenšit velikost písma"
 
@@ -2062,32 +2081,32 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:577
-#: ../src/searchnoteswidget.cpp:993
+#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:584
+#: ../src/searchnoteswidget.cpp:994
 msgid "Notes"
 msgstr "Poznámky"
 
-#: ../src/recentchanges.cpp:141
+#: ../src/recentchanges.cpp:143
 msgid "All Notes"
 msgstr "Všechny poznámky"
 
-#: ../src/recentchanges.cpp:148
+#: ../src/recentchanges.cpp:150
 msgid "New"
 msgstr "Nová"
 
-#: ../src/recentchanges.cpp:172
+#: ../src/recentchanges.cpp:174
 msgid "Search"
 msgstr "Hledat"
 
-#: ../src/recentchanges.cpp:218
+#: ../src/recentchanges.cpp:220
 msgid "Find _Next"
 msgstr "Hledat _následující"
 
-#: ../src/recentchanges.cpp:226
+#: ../src/recentchanges.cpp:228
 msgid "Find _Previous"
 msgstr "Hledat _předchozí"
 
-#: ../src/recentchanges.cpp:695
+#: ../src/recentchanges.cpp:702
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -2096,31 +2115,31 @@ msgstr "_Zavřít"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Selhalo načtení rozhraní D-Bus %s: %s"
 
-#: ../src/searchnoteswidget.cpp:135
+#: ../src/searchnoteswidget.cpp:136
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:139
 msgid "Open In New _Window"
 msgstr "Otevřít v no_vém okně"
 
-#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
 msgid "_Delete"
 msgstr "O_dstranit"
 
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/searchnoteswidget.cpp:149
 msgid "Re_name..."
 msgstr "Přejme_novat…"
 
-#: ../src/searchnoteswidget.cpp:652
+#: ../src/searchnoteswidget.cpp:653
 msgid "Note"
 msgstr "Poznámka"
 
-#: ../src/searchnoteswidget.cpp:674
+#: ../src/searchnoteswidget.cpp:675
 msgid "Modified"
 msgstr "Změněna"
 
-#: ../src/searchnoteswidget.cpp:1012
+#: ../src/searchnoteswidget.cpp:1013
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2128,54 +2147,54 @@ msgstr ""
 "Ve vybraném sešitu nebyl nalezen žádný výsledek.\n"
 "Kliknutím zde se prohledají všechny sešity."
 
-#: ../src/searchnoteswidget.cpp:1016
+#: ../src/searchnoteswidget.cpp:1017
 msgid "Click here to search across all notebooks"
 msgstr "Kliknutím zde prohledáte všechny sešity"
 
-#: ../src/searchnoteswidget.cpp:1037
+#: ../src/searchnoteswidget.cpp:1038
 msgid "Matches"
 msgstr "Odpovídá"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1089
+#: ../src/searchnoteswidget.cpp:1090
 msgid "Title match"
 msgstr "Název odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1093
+#: ../src/searchnoteswidget.cpp:1094
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% odpovídá"
 msgstr[1] "%1% odpovídají"
 msgstr[2] "%1% odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1304
+#: ../src/searchnoteswidget.cpp:1305
 msgid "_New"
 msgstr "_Nová"
 
-#: ../src/searchnoteswidget.cpp:1333
+#: ../src/searchnoteswidget.cpp:1334
 msgid "_Open Template Note"
 msgstr "_Otevřít šablonu"
 
-#: ../src/searchnoteswidget.cpp:1344
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_New..."
 msgstr "_Nový…"
 
-#: ../src/searchnoteswidget.cpp:1480 ../src/searchnoteswidget.cpp:1493
-#: ../src/searchnoteswidget.cpp:1504
+#: ../src/searchnoteswidget.cpp:1481 ../src/searchnoteswidget.cpp:1494
+#: ../src/searchnoteswidget.cpp:1505
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Selhalo zpracování nastavení %s (hodnota: %s):"
 
-#: ../src/searchnoteswidget.cpp:1481
+#: ../src/searchnoteswidget.cpp:1482
 msgid "Expected format 'column:order'"
 msgstr "Očekávaný formát „sloupec:pořadí“"
 
-#: ../src/searchnoteswidget.cpp:1494
+#: ../src/searchnoteswidget.cpp:1495
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Nerozpoznaný sloupec %s"
 
-#: ../src/searchnoteswidget.cpp:1505
+#: ../src/searchnoteswidget.cpp:1506
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Nerozpoznané pořadí %s"
