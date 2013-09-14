@@ -57,6 +57,8 @@ void StatisticsApplicationAddin::initialize()
 
 void StatisticsApplicationAddin::shutdown()
 {
+  gnote::IActionManager::obj().remove_main_window_search_action("ShowStatistics");
+  m_action.reset();
   m_initialized = false;
 }
 
