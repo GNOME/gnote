@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"POT-Creation-Date: 2013-09-08 13:29+0000\n"
+"POT-Creation-Date: 2013-09-14 14:20+0000\n"
 "PO-Revision-Date: 2013-09-04 20:39+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -683,7 +683,7 @@ msgstr "<em>Pohyb v dlouhých strukturovaných poznámkách</em>"
 #: C/gnote-addin-tableofcontents.page:88
 msgid ""
 "This is an add-in to <app>Gnotes</app>. When this add-in is installed, there "
-"is a <gui>Table of Contents</gui> entry in the <gui>Tools</gui> menu. See "
+"is a <gui>Table of Contents</gui> entry in the <gui>actions</gui> menu. See "
 "<link xref=\"addins-preferences\"/> to learn how to activate an add-in."
 msgstr ""
 "Jedná se o doplněk do aplikace <app>Gnote</app>. Když je nainstalován, "
@@ -751,10 +751,11 @@ msgstr ""
 msgid ""
 "This add-in makes it easy to navigate through long structured notes. Once "
 "you have set headings in your note, the table of contents of the note will "
-"show in a menu. Then you can jump directly from the menu to any heading."
+"show in actions menu. Then you can jump directly from the menu to any "
+"heading."
 msgstr ""
 "Tento doplněk usnadňuje pohyb v dlouhých strukturovaných poznámkách. Jakmile "
-"si ve své poznámce nastavíte nadpisy, zobrazí se vám v nabídce obsah "
+"si ve své poznámce nastavíte nadpisy, zobrazí se vám v nabídce činností obsah "
 "poznámky. Díky němu můžete z nabídky skočit přímo na libovolný nadpis."
 
 #. (itstool) path: section/title
@@ -795,10 +796,10 @@ msgstr "Formátovat řádek nadpisu můžete těmito způsoby:"
 #: C/gnote-addin-tableofcontents.page:156
 msgid ""
 "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
-"<guiseq><gui>Tools</gui><gui>Table of Contents</gui></guiseq> menu."
+"<guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq> menu."
 msgstr ""
 "Použijte příkazy <gui>Nadpis úrovně 1</gui> a <gui>Nadpis úrovně 2</gui> v "
-"nabídce <guiseq><gui>Nástroje</gui><gui>Obsah</gui></guiseq>."
+"nabídce <guiseq><gui>Činnosti</gui><gui>Obsah</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:161
@@ -832,14 +833,14 @@ msgstr ""
 msgid ""
 "You can even use the normal formatting commands from the <gui>Text</gui> "
 "menu: <gui>Bold</gui>, <gui>Large</gui> and <gui>Huge</gui>, and their "
-"respective keyboard shortcuts. If, for example, your heading line is already "
+"respective keyboard shortcuts. If, for example, your line is already "
 "formatted as <gui>Huge</gui>, then you just need to make it also <gui>Bold</"
 "gui> to turn it into a heading 1. See <link xref=\"editing-notes\"/> to "
 "learn how to set text styles."
 msgstr ""
 "Ve skutečnosti můžete použít i normální příkazy pro formátování z nabídky "
 "<gui>Text</gui>: <gui>Tučné</gui>, <gui>Velké</gui> a <gui>Obrovské</gui> a "
-"jejich případné klávesové zkratky. Například, když je váš řádek s nadpisem "
+"jejich případné klávesové zkratky. Například, když je váš řádek "
 "již formátován písmem <gui>Obrovské</gui>, stačí když jej uděláte ještě "
 "<gui>Tučný</gui> a bude z něj nadpis úrovně 1. Viz <link xref=\"editing-notes"
 "\"/> pro vysvětlení jak nastavit styl textu."
@@ -857,20 +858,17 @@ msgstr "K obsahu se můžete dostat těmito způsoby:"
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:187
 msgid ""
-"In the menu <guiseq><gui>toolbar</gui><gui>Tools</gui><gui>Table of "
-"Contents</gui></guiseq>."
-msgstr ""
-"Přes <guiseq><gui>nástrojovou lištu</gui><gui>Nástroje</gui><gui>Obsah</"
-"gui></guiseq>"
+"In the menu <guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq>."
+msgstr "Přes nabídku <guiseq><gui>Činnosti</gui><gui>Obsah</gui></guiseq>"
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:188
 msgid ""
 "In <guiseq><gui>context menu</gui><gui>Table of Contents</gui></guiseq> "
-"(<keyseq>right-click</keyseq> on the note window)."
+"(right-click on the note window)."
 msgstr ""
 "Přes <guiseq><gui>kontextovou nabídku</gui><gui>Obsah</gui></guiseq> "
-"(<keyseq>kliknout pravým tlačítkem</keyseq> na okno poznámky)"
+"(kliknout pravým tlačítkem na okno poznámky)"
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:189
@@ -884,13 +882,13 @@ msgstr ""
 #. (itstool) path: list/p
 #: C/gnote-addin-tableofcontents.page:190
 msgid ""
-"Then you can navigate up and down with the <gui>arrow keys</gui> and jump to "
-"the selected heading with <key>enter</key>. Or just <keyseq>click</keyseq> "
-"with your mouse on the heading to jump to."
+"Then you can navigate up and down with the arrow keys and jump to the "
+"selected heading with <key>enter</key>. Or just click with your mouse on the "
+"heading to jump to."
 msgstr ""
-"Po té se můžete pohybovat pomocí <gui>klávesových šipek</gui> nahoru a dolů "
+"Po té se můžete pohybovat pomocí klávesových šipek nahoru a dolů "
 "a klávesou <key>Enter</key> skočit na vybraný nadpis. Nebo stačí na nadpis, "
-"na který chcete skočit, <keyseq>kliknout</keyseq> myší."
+"na který chcete skočit, kliknout myší."
 
 #. (itstool) path: section/title
 #: C/gnote-addin-tableofcontents.page:196
@@ -1247,11 +1245,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:31
 msgid ""
-"In the main window, right click in the note list and select <gui>New Note</"
-"gui>. This will create a note in the currently selected notebook."
+"In the main window, right click in the note list and select <gui>New</gui>. "
+"This will create a note in the currently selected notebook."
 msgstr ""
 "V hlavním okně klikněte pravým tlačítkem v seznamu sešitů a zvolte <gui>Nová "
-"poznámka</gui>. Ta se vytvoří v právě vybraném sešitě."
+"</gui>. Tím se vytvoří nová poznámka v právě vybraném sešitě."
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:32
@@ -1545,34 +1543,30 @@ msgid "For more information on bullets, see <link xref=\"bulleted-lists\"/>."
 msgstr ""
 "Více informací o odrážkách podává kapitola <link xref=\"bulleted-lists\"/>."
 
-#. (itstool) path: item/title
-#: C/gnote-editing-notes.page:65
-msgid "Find in This Note"
-msgstr "Najít v této poznámce"
-
-#. (itstool) path: item/p
+#. (itstool) path: page/p
 #: C/gnote-editing-notes.page:66
 msgid ""
-"Use this command to search for text within the current note. A small find "
-"bar will appear above the note. To open the find bar using the keyboard, "
-"press <keyseq><key>Ctrl</key><key>F</key></keyseq>. Enter the text to find "
-"and press <key>Enter</key>. Matches will be highlighted. Click <gui>Next</"
-"gui> to highlight the next match and place the cursor there. Click "
-"<gui>Previous</gui> to move to the previous match. To close the find bar, "
-"click the X (close button) on the far left or press the <key>Escape</key> "
-"key."
+"The toolbar at the top of note has search button. Use it to search for text "
+"within the current note. A small find bar will appear above the note. To "
+"open the find bar using the keyboard, press <keyseq><key>Ctrl</key><key>F</"
+"key></keyseq>. Enter the text to find and press <key>Enter</key>. Matches "
+"will be highlighted. Click <gui>Next</gui> to highlight the next match and "
+"place the cursor there. Click <gui>Previous</gui> to move to the previous "
+"match. To close the find bar, click the search button again or press the "
+"<key>Escape</key> key."
 msgstr ""
-"Použijte k hledání textu v rámci aktuální poznámky. V dolní části poznámky "
+"Nástrojová lišta v horní části poznámky obsahuje vyhledávací tlačítko."
+"Použijte jej k hledání textu v rámci aktuální poznámky. V dolní části poznámky "
 "se otevře malá vyhledávací lišta. Pro otevření této lišty z klávesnice "
 "zmáčkněte <keyseq><key>Ctrl</key><key>F</key></keyseq>. Zadejte text, který "
 "chcete najít, a zmáčkněte <key>Enter</key>. Nalezené shody se zvýrazní. "
 "Kliknutím na <gui>Následující</gui> se kurzor přesune na následující "
 "zvýrazněnou shodu. Kliknutím na <gui>Předchozí</gui> se přesune na předchozí "
-"zvýrazněnou shodu. Vyhledávací lištu zavřete kliknutím na křížek (tlačítko "
-"Zavřít) vlevo nebo zmáčknutím klávesy <key>Esc</key>."
+"zvýrazněnou shodu. Vyhledávací lištu zavřete opětovným kliknutím na "
+"vyhledávací tlačítko nebo zmáčknutím klávesy <key>Esc</key>."
 
 #. (itstool) path: section/title
-#: C/gnote-editing-notes.page:72
+#: C/gnote-editing-notes.page:70
 msgid "Rich Note Content"
 msgstr "Vylepšení obsahu poznámek"
 
@@ -2566,11 +2560,11 @@ msgstr "Jiný způsob:"
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:42
 msgid ""
-"In the note overview, right click in the left hand pane and choose <gui>New "
-"Notebook</gui>."
+"In the note overview, right click in the left hand pane and choose "
+"<gui>New...</gui>."
 msgstr ""
 "V přehledu poznámek klikněte pravým tlačítkem myši do levého panelu a zvolte "
-"<gui>Nový sešit</gui>."
+"<gui>Nový…</gui>"
 
 #. (itstool) path: figure/title
 #: C/gnote-working-with-notebooks.page:49
@@ -2615,11 +2609,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:61
 msgid ""
-"Right click on a notebook and select <gui>New Note</gui> from the context "
-"menu. A new note will be created and added to the notebook."
+"Click on a notebook, right-click in notes list and select <gui>New</gui> "
+"from the context menu. A new note will be created and added to the notebook."
 msgstr ""
-"Klikněte pravým tlačítkem na sešit a v kontextové nabídce zvolte <gui>Nová "
-"poznámka</gui>. Nová poznámka se vytvoří a přidá do sešitu."
+"Klikněte pravým tlačítkem na sešit a v kontextové nabídce zvolte <gui>Nová"
+"</gui>. Nová poznámka se vytvoří a přidá do sešitu."
 
 #. (itstool) path: section/p
 #: C/gnote-working-with-notebooks.page:63
@@ -2765,26 +2759,25 @@ msgstr "<app>Gnote</app> má několik speciálních sešitů:"
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:107
 msgid ""
-"<gui>Active Notes</gui>: notes that have been opened in the current "
-"<app>Gnote</app> session"
+"<gui>Active</gui>: notes that have been opened in the current <app>Gnote</"
+"app> session"
 msgstr ""
-"<gui>Aktivní poznámky</gui>: poznámky, které byly otevřeny v aktuálním "
-"sezení <app>Gnote</app>."
+"<gui>Aktivní</gui>: poznámky, které byly otevřeny v aktuálním sezení <app>"
+"Gnote</app>."
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:108
-msgid "<gui>All Notes</gui>: all notes except templates"
-msgstr "<gui>Všechny poznámky</gui>: všechny poznámky, vyjma šablon"
+msgid "<gui>All</gui>: all notes except templates"
+msgstr "<gui>Všechny</gui>: všechny poznámky, vyjma šablon"
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:109
-msgid "<gui>Pinned Notes</gui>: notes marked as important"
-msgstr "<gui>Připíchnuté poznámky</gui>: poznámky označené jako důležité"
+msgid "<gui>Important</gui>: notes marked as important"
+msgstr "<gui>Důležité</gui>: poznámky označené jako důležité"
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:110
-msgid ""
-"<gui>Unfiled Notes</gui>: all notes that are not in a user-created notebook"
+msgid "<gui>Unfiled</gui>: all notes that are not in a user-created notebook"
 msgstr ""
-"<gui>Nezařazené poznámky</gui>: všechny poznámky, které nejsou umístěny v "
+"<gui>Nezařazené</gui>: všechny poznámky, které nejsou umístěny v "
 "uživatelských sešitech"
