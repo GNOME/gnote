@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote-help.master\n"
-"POT-Creation-Date: 2013-09-14 14:20+0000\n"
-"PO-Revision-Date: 2013-09-24 14:39+0200\n"
+"POT-Creation-Date: 2013-09-26 19:57+0000\n"
+"PO-Revision-Date: 2013-09-27 17:39+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Gtranslator 2.91.5\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -236,10 +236,8 @@ msgstr "Exportar notas a HTML"
 #: C/gnote-addin-html.page:16 C/gnote-addin-print.page:16
 #: C/gnote-addin-replacetitle.page:16 C/gnote-addin-timestamp.page:17
 #: C/gnote-links.page:16
-#, fuzzy
-#| msgid "2011-2012"
 msgid "2011,2013"
-msgstr "2011-2012"
+msgstr "2011,2013"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-html.page:25
@@ -248,20 +246,12 @@ msgstr "Exportar a HTML"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:26
-#, fuzzy
-#| msgid ""
-#| "When the <app>Export to HTML</app> add-in is installed, the command "
-#| "<gui>Export to HTML</gui> is present in the <gui>Tools</gui> menu, which "
-#| "you can open using the <media type=\"image\" src=\"figures/gnote-tools.png"
-#| "\" mime=\"image/png\" style=\"right\"/> icon."
 msgid ""
 "When the <app>Export to HTML</app> add-in is installed, the command "
 "<gui>Export to HTML</gui> is present in the <gui>Actions</gui> menu."
 msgstr ""
 "Cuando el complemento <app>Exportar a HTML</app> está instalado, el comando "
-"<gui>Exportar a HTML</gui> se ubica en el menú <gui>Herramientas</gui>,que "
-"puede utilizar mediante su icono <media type=\"image\" src=\"figures/gnote-"
-"tools.png\" mime=\"image/png\" style=\"right\"/>."
+"<gui>Exportar a HTML</gui> se ubica en el menú <gui>Acciones</gui>."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:27
@@ -384,23 +374,14 @@ msgstr "Imprimir"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-print.page:26
-#, fuzzy
-#| msgid ""
-#| "When the <app>Print</app> add-in is installed, the <gui>Print</gui> "
-#| "command is present in the <gui>Tools</gui> menu, which you can open using "
-#| "the <media type=\"image\" src=\"figures/gnote-tools.png\" mime=\"image/png"
-#| "\" style=\"right\"/> icon. This command opens a standard <gui>Print</"
-#| "gui> dialog which lets you print a note."
 msgid ""
 "When the <app>Print</app> add-in is installed, the <gui>Print</gui> command "
 "is present in the <gui>Actions</gui> menu. This command opens a "
 "standard <gui>Print</gui> dialog which lets you print a note."
 msgstr ""
 "Cuando el complemento <app>Imprimir</app> está instalado, la opción "
-"<gui>Imprimir</gui> aparece en el menú <gui>Herramientas</gui> que puede "
-"abrirse mediante su icono <media type=\"image\" src=\"figures/gnote-tools.png"
-"\" mime=\"image/png\" style=\"right\"/>. Esta opción abre un diálogo "
-"<gui>Imprimir</gui> estándar que le permite imprimir una nota."
+"<gui>Imprimir</gui> aparece en el menú <gui>Acciones</gui>. Esta opción abre "
+"un diálogo <gui>Imprimir</gui> estándar que le permite imprimir una nota."
 
 #. (itstool) path: media
 #. This is a reference to an external file such as an image or video. When
@@ -464,12 +445,12 @@ msgstr "Ventana <app>Complementos</app>."
 #. (itstool) path: info/desc
 #: C/gnote-addin-readonly.page:8
 msgid "Make notes read-only"
-msgstr ""
+msgstr "Convertir las notas en modo «sólo lectura»"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-readonly.page:16
 msgid "Read Only"
-msgstr ""
+msgstr "Sólo lectura"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-readonly.page:17
@@ -480,6 +461,12 @@ msgid ""
 "until the menu item is unchecked. Use this to prevent notes from accidental "
 "modification."
 msgstr ""
+"Cuando el complemento <app>Sólo lectura</app> está instalado, el icono "
+"<gui>Sólo lectura</gui> está presente en el menú <gui>Acciones</gui> para "
+"abrir notas. Cuando este campo esté activado, las notas se marcarán como "
+"sólo lectura. Esta acción no permite la modificación de la nota hasta que no "
+"se desactive el campo correspondiente. Utilícelo para prevenir futuros "
+"cambios en las notas de forma accidental."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-replacetitle.page:8
@@ -493,20 +480,12 @@ msgstr "Reemplazar título"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:26
-#, fuzzy
-#| msgid ""
-#| "When the <app>Replace title</app> add-in is installed, the command "
-#| "<gui>Replace title</gui> is present in the <gui>Tools</gui> menu, which "
-#| "you can open using the <media type=\"image\" src=\"figures/gnote-tools.png"
-#| "\" mime=\"image/png\" style=\"right\"/> icon."
 msgid ""
 "When the <app>Replace title</app> add-in is installed, the command "
 "<gui>Replace title</gui> is present in the <gui>Actions</gui> menu."
 msgstr ""
-"Cuando el complemento <app>Reemplazar título</app> está instalado, el "
-"comando <gui>Reemplazar título</gui> está ubicado en el menú "
-"<gui>Herramientas</gui> accesible desde el icono <media type=\"image\" src="
-"\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"/>."
+"Cuando el complemento <app>Reemplazar título</app> está instalado, la opción "
+"<gui>Reemplazar título</gui> está ubicada en el menú <gui>Acciones</gui>."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:27
@@ -529,17 +508,13 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-specialnotes.page:8
-#, fuzzy
-#| msgid "Special Notebooks"
 msgid "See special notes"
-msgstr "Cuadernos de notas especiales"
+msgstr "Consulte las notas especiales"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-specialnotes.page:16
-#, fuzzy
-#| msgid "Special Notebooks"
 msgid "Special Notes"
-msgstr "Cuadernos de notas especiales"
+msgstr "Notas especiales"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-specialnotes.page:17
@@ -549,6 +524,11 @@ msgid ""
 "notebook contains notes that are otherwise not visible, such as template "
 "notes. This might be convenient way to go through all your templates."
 msgstr ""
+"Cuando el complemento <app>Notas especiales</app> está instalado, el nuevo "
+"cuaderno de notas especial <gui>Notas especiales</gui> está presente en la "
+"lista de cuadernos de notas. Este cuaderno de notas contiene notas de otra "
+"manera están ocultas, como la plantilla de notas. Esta puede ser la mejor "
+"forma de recorrer todas sus plantillas."
 
 #. (itstool) path: media
 #. This is a reference to an external file such as an image or video. When
@@ -556,10 +536,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addin-sync-local.page:27
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-syncprefs-local.png' "
-#| "md5='1cddc428aab1c3a18624f950260a4f23'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-local.png' "
@@ -618,10 +594,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addin-sync-webdav.page:32
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-syncprefs-webdav.png' "
-#| "md5='f860508443cba1f3d9518ac171361016'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-webdav.png' "
@@ -727,21 +699,15 @@ msgstr "<em>Navegar por las notas grandes estructuradas</em>"
 
 #. (itstool) path: note/p
 #: C/gnote-addin-tableofcontents.page:88
-#, fuzzy
-#| msgid ""
-#| "This is an add-in to <app>Gnotes</app>. When this add-in is installed, "
-#| "there is a <gui>Table of Contents</gui> entry in the <gui>Tools</gui> "
-#| "menu. See <link xref=\"addins-preferences\"/> to learn how to activate an "
-#| "add-in."
 msgid ""
 "This is an add-in to <app>Gnotes</app>. When this add-in is installed, there "
 "is a <gui>Table of Contents</gui> entry in the <gui>actions</gui> menu. See "
 "<link xref=\"addins-preferences\"/> to learn how to activate an add-in."
 msgstr ""
 "Esto es un complemento para <app>Gnotes</app>. Cuando se instala, se añade "
-"una entrada a la <gui>Tabla de contenidos</gui> en el menú "
-"<gui>Herramientas</gui>. Consulte la <link xref=\"addins-preferences\"/> "
-"para saber como se activa un complemento."
+"una entrada a la <gui>Tabla de contenidos</gui> en el menú <gui>Acciones</"
+"gui>. Consulte la <link xref=\"addins-preferences\"/> para saber como se "
+"activa un complemento."
 
 #. (itstool) path: section/title
 #: C/gnote-addin-tableofcontents.page:96
@@ -802,12 +768,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gnote-addin-tableofcontents.page:131
-#, fuzzy
-#| msgid ""
-#| "This add-in makes it easy to navigate through long structured notes. Once "
-#| "you have set headings in your note, the table of contents of the note "
-#| "will show in a menu. Then you can jump directly from the menu to any "
-#| "heading."
 msgid ""
 "This add-in makes it easy to navigate through long structured notes. Once "
 "you have set headings in your note, the table of contents of the note will "
@@ -816,8 +776,8 @@ msgid ""
 msgstr ""
 "Este complemento hace fácil la navegación a lo largo de las notas largas y "
 "estructuradas. Una vez que ha configurado las cabeceras en su nota, la tabla "
-"de contenidos de la nota se mostrará en un menú. Entonces puede saltar "
-"directamente desde el menú a cualquier cabecera."
+"de contenidos de la nota se mostrará en el menú acciones. Entonces puede "
+"saltar directamente desde el menú a cualquier cabecera."
 
 #. (itstool) path: section/title
 #: C/gnote-addin-tableofcontents.page:141
@@ -856,16 +816,12 @@ msgstr "Para formatear un línea de cabecera, haga lo siguiente:"
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:156
-#, fuzzy
-#| msgid ""
-#| "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
-#| "<guiseq><gui>Tools</gui><gui>Table of Contents</gui></guiseq> menu."
 msgid ""
 "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
 "<guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq> menu."
 msgstr ""
 "Use las opciones <gui>Cabecera nivel 1</gui> y <gui>Cabecera nivel 2</gui> "
-"en el menú <guiseq><gui>Herramientas</gui><gui>Tabla de contenidos</gui></"
+"en el menú <guiseq><gui>Acciones</gui><gui>Tabla de contenidos</gui></"
 "guiseq>."
 
 #. (itstool) path: item/p
@@ -898,14 +854,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gnote-addin-tableofcontents.page:174
-#, fuzzy
-#| msgid ""
-#| "You can even use the normal formatting commands from the <gui>Text</gui> "
-#| "menu: <gui>Bold</gui>, <gui>Large</gui> and <gui>Huge</gui>, and their "
-#| "respective keyboard shortcuts. If, for example, your heading line is "
-#| "already formatted as <gui>Huge</gui>, then you just need to make it also "
-#| "<gui>Bold</gui> to turn it into a heading 1. See <link xref=\"editing-"
-#| "notes\"/> to learn how to set text styles."
 msgid ""
 "You can even use the normal formatting commands from the <gui>Text</gui> "
 "menu: <gui>Bold</gui>, <gui>Large</gui> and <gui>Huge</gui>, and their "
@@ -934,28 +882,20 @@ msgstr "Puede acceder a la tabla de contenidos, como sigue:"
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:187
-#, fuzzy
-#| msgid ""
-#| "In the menu <guiseq><gui>toolbar</gui><gui>Tools</gui><gui>Table of "
-#| "Contents</gui></guiseq>."
 msgid ""
 "In the menu <guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq>."
 msgstr ""
-"En el menú <guiseq><gui>barra de herramientas</gui><gui>Herramientas</"
-"gui><gui>Tabla de contenidos</gui></guiseq>."
+"En el menú <guiseq><gui>Acciones</gui><gui>Tabla de contenidos</gui></"
+"guiseq>."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:188
-#, fuzzy
-#| msgid ""
-#| "In <guiseq><gui>context menu</gui><gui>Table of Contents</gui></guiseq> "
-#| "(<keyseq>right-click</keyseq> on the note window)."
 msgid ""
 "In <guiseq><gui>context menu</gui><gui>Table of Contents</gui></guiseq> "
 "(right-click on the note window)."
 msgstr ""
 "En el <guiseq><gui>menú contextual</gui><gui>Tabla de contenidos</gui></"
-"guiseq> (<keyseq>pulsar botón derecho</keyseq> en la ventana de la nota)."
+"guiseq> (pulse con el botón derecho del ratón en la ventana de la nota)."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:189
@@ -968,19 +908,14 @@ msgstr ""
 
 #. (itstool) path: list/p
 #: C/gnote-addin-tableofcontents.page:190
-#, fuzzy
-#| msgid ""
-#| "Then you can navigate up and down with the <gui>arrow keys</gui> and jump "
-#| "to the selected heading with <key>enter</key>. Or just <keyseq>click</"
-#| "keyseq> with your mouse on the heading to jump to."
 msgid ""
 "Then you can navigate up and down with the arrow keys and jump to the "
 "selected heading with <key>enter</key>. Or just click with your mouse on the "
 "heading to jump to."
 msgstr ""
-"Puede navegar arriba y abajo con las <gui>teclas de dirección</gui> y saltar "
-"a la cabecera seleccionada con la tecla <key>Intro</key>. O sólo "
-"<keyseq>pulsando</keyseq> con el ratón en la cabecera para saltar a ella."
+"Puede navegar arriba y abajo con las teclas de dirección y saltar a la "
+"cabecera seleccionada con la tecla <key>Intro</key>. O sólo pulsando con el "
+"ratón en la cabecera para saltar a ella."
 
 #. (itstool) path: section/title
 #: C/gnote-addin-tableofcontents.page:196
@@ -1255,7 +1190,6 @@ msgstr "Preguntas más frecuentes"
 #: C/gnote-common-problems.page:16 C/gnote-editing-notes.page:14
 #: C/gnote-hotkeys.page:16 C/gnote-notes-preferences.page:17
 #: C/gnote-searching-notes.page:16
-#| msgid "2011-2012"
 msgid "2011-2013"
 msgstr "2011-2013"
 
@@ -1287,6 +1221,8 @@ msgid ""
 "You can activate the <app>Gnote</app> status icon in Gnote Preferences "
 "dialog."
 msgstr ""
+"Puede activar el icono de estado de <app>Gnote</app> en el diálogo "
+"preferencias de Gnote."
 
 #. (itstool) path: item/title
 #: C/gnote-common-problems.page:31
@@ -1305,7 +1241,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: C/gnote-common-problems.page:34
 msgid "I'm not comfortable with new single-window interface"
-msgstr ""
+msgstr "No estoy cómodo con la nueva interfaz de ventana simple."
 
 #. (itstool) path: item/p
 #: C/gnote-common-problems.page:34
@@ -1313,6 +1249,9 @@ msgid ""
 "You can make <app>Gnote</app> behave the old way by selecting <gui>Always "
 "open notes in new window</gui> in Preferences dialog."
 msgstr ""
+"Puede volver al estilo antiguo de <app>Gnote</app> seleccionando en el "
+"diálogo de preferencias,la opción <gui>Abrir siempre las notas en una nueva "
+"ventana</gui>."
 
 #. (itstool) path: info/desc
 #: C/gnote-creating-notes.page:9
@@ -1430,10 +1369,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-editing-notes.page:30
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-new-note.png' "
-#| "md5='715712e6322a5bf8c9aa1a6de1bb619b'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
@@ -1467,6 +1402,9 @@ msgid ""
 "Toolbar at the top of the window will now contain note specific items in it. "
 "Bellow toolbar is the note's content area."
 msgstr ""
+"La barra de herramientas en la parte superior de la ventana, ahora contiene "
+"información específica sobre la nota. Debajo de la barra de herramientas, "
+"está el área de contenidos de la nota."
 
 #. (itstool) path: figure/title
 #: C/gnote-editing-notes.page:28
@@ -1732,6 +1670,8 @@ msgstr "Teclas rápidas"
 msgid ""
 "This tab is only available if <app>Gnote</app> was buit with X11 support."
 msgstr ""
+"Esta pestaña solo estará disponible si se compiló <app>Gnote</app> con "
+"soporte para X11."
 
 #. (itstool) path: page/p
 #: C/gnote-hotkeys.page:27
@@ -1810,10 +1750,6 @@ msgstr "Configurar los atajos de teclado en <app>Gnote</app>."
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-introduction.page:39
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-search-all-notes.png' "
-#| "md5='cf2e0e9f8b25839a5de1e0b867d6c74c'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-search-all-notes.png' "
@@ -1955,10 +1891,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-notes-preferences.page:41
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-preferences-editing.png' "
-#| "md5='1c6104f801cd11de82779cd38a580f56'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-editing.png' "
@@ -2409,10 +2341,6 @@ msgstr "Sincronización en curso"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-template-notes.page:41
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-template-note.png' "
-#| "md5='8e1767ef0d459c0fbdae83c0532e7097'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
@@ -2611,10 +2539,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:50
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-notebook-search.png' "
-#| "md5='5eec46366890720e1899f9db01a461db'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-notebook-search.png' "
@@ -2643,10 +2567,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:66
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-to-notebook.png' "
-#| "md5='c038222a89496411b3260de117b540d3'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
@@ -2661,10 +2581,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:84
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/note-template.png' "
-#| "md5='5cec5ca5dd34b252cd6e45b90c01e572'"
 msgctxt "_"
 msgid ""
 "external ref='figures/note-template.png' "
@@ -2679,10 +2595,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:98
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/delete-notebook.png' "
-#| "md5='caff034a1883e01a81cc0b7369ec9f27'"
 msgctxt "_"
 msgid ""
 "external ref='figures/delete-notebook.png' "
