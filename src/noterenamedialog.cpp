@@ -150,7 +150,7 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
   label->set_markup(
     Glib::ustring::compose(
       _("Rename links in other notes from "
-        "\"<span underline=\"single\">%1</span>\" to"
+        "\"<span underline=\"single\">%1</span>\" to "
         "\"<span underline=\"single\">%2</span>\"?\n\n"
         "If you do not rename the links, they will no longer link to "
         "anything."),
