@@ -352,6 +352,8 @@ private:
   void on_save_timeout();
   void process_child_widget_queue();
   void process_rename_link_update(const std::string & old_title);
+  void process_rename_link_update_end(int response, Gtk::Dialog *dialog,
+                                      const std::string & old_title, const Note::Ptr & self);
   void rename_links(const std::string & old_title,
                     const Ptr & renamed);
   void remove_links(const std::string & old_title,

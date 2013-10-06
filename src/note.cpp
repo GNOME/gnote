@@ -661,10 +661,10 @@ namespace gnote {
       if (from_user_action) {
         process_rename_link_update(old_title);
       }
-
-      m_signal_renamed(shared_from_this(), old_title);
-
-      queue_save (CONTENT_CHANGED); // TODO: Right place for this?
+      else {
+        m_signal_renamed(shared_from_this(), old_title);
+        queue_save(CONTENT_CHANGED);
+      }
     }
   }
 
@@ -691,35 +691,18 @@ namespace gnote {
         = static_cast<NoteRenameBehavior>(settings->get_int(Preferences::NOTE_RENAME_BEHAVIOR));
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
-        NoteRenameDialog dlg(linking_notes, old_title, self);
-        const int response = dlg.run();
-        const NoteRenameBehavior selected_behavior
-                                   = dlg.get_selected_behavior();
-        if (Gtk::RESPONSE_CANCEL != response
-            && NOTE_RENAME_ALWAYS_SHOW_DIALOG
-                 != selected_behavior) {
-          settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, selected_behavior);
-        }
-
-        const NoteRenameDialog::MapPtr notes = dlg.get_notes();
-
-        for (std::map<Note::Ptr, bool>::const_iterator iter
-               = notes->begin();
-             notes->end() != iter;
-             iter++) {
-          const std::pair<Note::Ptr, bool> p = *iter;
-          if (p.second && response == Gtk::RESPONSE_YES) // Rename
-            p.first->rename_links(old_title, self);
-          else
-            p.first->remove_links(old_title, self);
-        }
-        dlg.hide();
+        NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, self);
+        dlg->signal_response().connect(
+          boost::bind(sigc::mem_fun(*this, &Note::process_rename_link_update_end), _1, dlg, old_title, self));
+        dlg->present();
+        get_window()->editor()->set_editable(false);
       }
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
         for (Note::List::const_iterator iter = linking_notes.begin();
              linking_notes.end() != iter;
              iter++) {
           (*iter)->remove_links(old_title, self);
+          process_rename_link_update_end(Gtk::RESPONSE_NO, NULL, old_title, self);
         }
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
@@ -727,9 +710,41 @@ namespace gnote {
              linking_notes.end() != iter;
              iter++) {
           (*iter)->rename_links(old_title, self);
+          process_rename_link_update_end(Gtk::RESPONSE_NO, NULL, old_title, self);
         }
       }
     }
+  }
+
+  void Note::process_rename_link_update_end(int response, Gtk::Dialog *dialog,
+                                            const std::string & old_title, const Note::Ptr & self)
+  {
+    if(dialog) {
+      NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
+      const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
+      if(Gtk::RESPONSE_CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
+        Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+        settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, selected_behavior);
+      }
+
+      const NoteRenameDialog::MapPtr notes = dlg->get_notes();
+
+      for(std::map<Note::Ptr, bool>::const_iterator iter = notes->begin();
+          notes->end() != iter; iter++) {
+        const std::pair<Note::Ptr, bool> p = *iter;
+        if(p.second && response == Gtk::RESPONSE_YES) { // Rename
+          p.first->rename_links(old_title, self);
+        }
+        else {
+          p.first->remove_links(old_title, self);
+        }
+      }
+      delete dialog;
+      get_window()->editor()->set_editable(true);
+    }
+
+    m_signal_renamed(shared_from_this(), old_title);
+    queue_save(CONTENT_CHANGED);
   }
 
 
