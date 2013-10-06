@@ -309,7 +309,7 @@ namespace gnote {
     }
 
     m_tag_applied_cid = get_buffer()->signal_apply_tag().connect(
-      sigc::mem_fun(*this, &NoteSpellChecker::tag_applied));
+      sigc::mem_fun(*this, &NoteSpellChecker::tag_applied), false);  // connect before
 
     if (!m_obj_ptr) {
       m_obj_ptr = gtk_spell_checker_new();
@@ -360,7 +360,8 @@ namespace gnote {
         const Glib::RefPtr<const Gtk::TextTag>& atag(*tag_iter);
         if ((tag != atag) &&
             !NoteTagTable::tag_is_spell_checkable (atag)) {
-          remove = true;
+          // cancel attempt to add misspelled tag on non-spell-check place
+          get_buffer()->signal_apply_tag().emission_stop();
           break;
         }
       }
@@ -370,6 +371,7 @@ namespace gnote {
     }
 
     if (remove) {
+      // adding non-spell-check tag on misspelled text, remove the spell-check first
       get_buffer()->remove_tag_by_name("gtkspell-misspelled",
                                start_char, end_char);
     }
