@@ -66,7 +66,7 @@ void AddinInfo::load_from_file(const std::string & info_file)
   try {
     Glib::KeyFile addin_info;
     if(!addin_info.load_from_file(info_file)) {
-      throw std::runtime_error(_("Failed to load add-in information!"));
+      throw std::runtime_error(_("Failed to load plugin information!"));
     }
     m_id = addin_info.get_string(ADDIN_INFO, "Id");
     m_name = addin_info.get_locale_string(ADDIN_INFO, "Name");

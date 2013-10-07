@@ -20,6 +20,7 @@
 
 
 
+#include <glibmm/i18n.h>
 
 #include "noteaddin.hpp"
 #include "notewindow.hpp"
@@ -104,7 +105,7 @@ namespace gnote {
   void NoteAddin::add_tool_item (Gtk::ToolItem *item, int position)
   {
     if (is_disposing())
-      throw sharp::Exception ("Add-in is disposing already");
+      throw sharp::Exception(_("Plugin is disposing already"));
         
     m_toolbar_items [item] = position;
       
@@ -117,7 +118,7 @@ namespace gnote {
   void NoteAddin::add_text_menu_item (Gtk::MenuItem * item)
   {
     if (is_disposing())
-      throw sharp::Exception ("Plugin is disposing already");
+      throw sharp::Exception(_("Plugin is disposing already"));
 
     m_text_menu_items.push_back(item);
 
@@ -130,11 +131,11 @@ namespace gnote {
   Gtk::Window *NoteAddin::get_host_window() const
   {
     if(is_disposing() && !has_buffer()) {
-      throw sharp::Exception("Plugin is disposing already");
+      throw sharp::Exception(_("Plugin is disposing already"));
     }
     NoteWindow *note_window = m_note->get_window();
     if(!note_window->host()) {
-      throw std::runtime_error("Window is not hosted!");
+      throw std::runtime_error(_("Window is not embedded"));
     }
     return dynamic_cast<Gtk::Window*>(note_window->host());
   }

@@ -95,7 +95,7 @@ namespace gnote {
       const IdInfoMap::const_iterator iter
                                         = m_note_addin_infos.find(id);
       if (m_note_addin_infos.end() != iter) {
-        ERR_OUT(_("Note add-in info %s already present"), id.c_str());
+        ERR_OUT(_("Note plugin info %s already present"), id.c_str());
         return;
       }
     }
@@ -115,7 +115,7 @@ namespace gnote {
         IdAddinMap & id_addin_map = iter->second;
         IdAddinMap::const_iterator it = id_addin_map.find(id);
         if (id_addin_map.end() != it) {
-          ERR_OUT(_("Note add-in %s already present"), id.c_str());
+          ERR_OUT(_("Note plugin %s already present"), id.c_str());
           continue;
         }
 
@@ -134,7 +134,7 @@ namespace gnote {
     {
       const IdInfoMap::iterator iter = m_note_addin_infos.find(id);
       if (m_note_addin_infos.end() == iter) {
-        ERR_OUT(_("Note add-in info %s is absent"), id.c_str());
+        ERR_OUT(_("Note plugin info %s is absent"), id.c_str());
         return;
       }
 
@@ -147,7 +147,7 @@ namespace gnote {
         IdAddinMap & id_addin_map = iter->second;
         IdAddinMap::iterator it = id_addin_map.find(id);
         if (id_addin_map.end() == it) {
-          ERR_OUT(_("Note add-in %s is absent"), id.c_str());
+          ERR_OUT(_("Note plugin %s is absent"), id.c_str());
           continue;
         }
 

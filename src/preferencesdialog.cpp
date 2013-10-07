@@ -127,7 +127,7 @@ namespace gnote {
     notebook->append_page(*manage(make_sync_pane()),
                           _("Synchronization"));
     notebook->append_page (*manage(make_addins_pane()),
-                           _("Add-ins"));
+                           _("Plugins"));
 
       // TODO: Figure out a way to have these be placed in a specific order
     std::list<PreferenceTabAddin *> tabAddins;
@@ -204,7 +204,7 @@ namespace gnote {
           enable_addin(sync_addin, enable);
         }
         else {
-          ERR_OUT(_("Add-in %s is absent"), id.c_str());
+          ERR_OUT(_("Plugin %s is absent"), id.c_str());
           return;
         }
       }
@@ -675,7 +675,7 @@ namespace gnote {
     vbox->set_row_spacing(6);
     vbox->set_border_width(6);
     int vbox_row = 0;
-    Gtk::Label *l = manage(new Gtk::Label (_("The following add-ins are installed:"), 
+    Gtk::Label *l = manage(new Gtk::Label (_("The following plugins are installed:"), 
                                            true));
     l->property_xalign() = 0;
     l->show ();
