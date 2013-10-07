@@ -42,7 +42,7 @@
 namespace gnote {
 
   NoteRecentChanges::NoteRecentChanges(NoteManager& m)
-    : MainWindow(_("Notes"))
+    : MainWindow(_("Gnote"))
     , m_note_manager(m)
     , m_search_notes_widget(m)
     , m_search_box(0.5, 0.5, 0.0, 1.0)
@@ -581,7 +581,7 @@ namespace gnote {
     if(name != "") {
       title = name + " - ";
     }
-    title += _("Notes");
+    title += _("Gnote");
     set_title(title);
   }
 
