@@ -865,9 +865,11 @@ namespace gnote {
   }
 
 
-  void NoteLinkWatcher::on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & /*tag*/,
+  void NoteLinkWatcher::on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
                                      const Gtk::TextIter & start, const Gtk::TextIter &end)
   {
+    if (tag->property_name() != get_note()->get_tag_table()->get_link_tag()->property_name())
+      return;
     std::string link_name = start.get_text (end);
     Note::Ptr link = manager().find (link_name);
     if(!link)
