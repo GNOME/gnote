@@ -26,6 +26,7 @@
 
 #include <string.h>
 
+#include <boost/bind.hpp>
 #include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
@@ -789,8 +790,19 @@ namespace gnote {
     DBG_OUT ("Matching Note title '%s' at %d-%d...",
              hit.key().c_str(), hit.start(), hit.end());
 
-    get_buffer()->remove_tag (m_broken_link_tag, title_start, title_end);
+    get_note()->get_tag_table()->foreach(
+      boost::bind(sigc::mem_fun(*this, &NoteLinkWatcher::remove_link_tag),
+                  _1, title_start, title_end));
     get_buffer()->apply_tag (m_link_tag, title_start, title_end);
+  }
+
+  void NoteLinkWatcher::remove_link_tag(const Glib::RefPtr<Gtk::TextTag> & tag,
+                                        const Gtk::TextIter & start, const Gtk::TextIter & end)
+  {
+    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    if (note_tag && note_tag->can_activate()) {
+      get_buffer()->remove_tag(note_tag, start, end);
+    }
   }
 
   void NoteLinkWatcher::highlight_note_in_block (const Note::Ptr & find_note, 
