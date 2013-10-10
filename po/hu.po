@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-08 17:19+0000\n"
-"PO-Revision-Date: 2013-09-20 10:17+0200\n"
+"POT-Creation-Date: 2013-10-07 19:39+0000\n"
+"PO-Revision-Date: 2013-10-10 15:06+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -225,14 +225,10 @@ msgstr ""
 "kilépésekor tárolódik."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:29
-#| msgid "Saved height of Search window"
 msgid "Saved sorting of the Search window."
 msgstr "Keresés ablak mentett rendezése."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:30
-#| msgid ""
-#| "Determines Search window splitter position in pixels; stored on Gnote "
-#| "exit."
 msgid "Determines Search window initial sorting."
 msgstr "Meghatározza a Keresés ablak kiinduló rendezését."
 
@@ -334,7 +330,6 @@ msgstr ""
 "alkalmazást."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:47
-#| msgid "Open In New _Window"
 msgid "Open notes in new window"
 msgstr "Jegyzetek megnyitása új ablakban"
 
@@ -343,8 +338,8 @@ msgid ""
 "Open notes in new window instead of replacing active content of the same "
 "window"
 msgstr ""
-"A jegyzetek új ablakban nyílnak ugyanazon ablak aktív tartalmának lecserélése "
-"helyett."
+"A jegyzetek új ablakban nyílnak ugyanazon ablak aktív tartalmának "
+"lecserélése helyett."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:49
 msgid "Show applet menu"
@@ -706,7 +701,6 @@ msgid "What links here?"
 msgstr "Mi hivatkozik erre?"
 
 #: ../src/addins/backlinks/backlinkmenuitem.cpp:41
-#| msgid "What links here?"
 msgid "Which notes have links to here?"
 msgstr "Mely jegyzetek hivatkoznak erre?"
 
@@ -826,7 +820,6 @@ msgid "Include all other linked notes"
 msgstr "Minden más hivatkozott jegyzet felvétele"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
-#| msgid "Export to HTML"
 msgid "Export note to HTML"
 msgstr "Jegyzet exportálása HTML-be"
 
@@ -911,7 +904,6 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Beszúrja az aktuális dátumot és időt a kurzorpozícióba."
 
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#| msgid "Insert Timestamp"
 msgid "Insert Timestamp into note"
 msgstr "Időbélyeg beillesztése a jegyzetbe"
 
@@ -1042,7 +1034,6 @@ msgid "Print"
 msgstr "Nyomtatás"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
-#| msgid "Quit Gnote"
 msgid "Print note"
 msgstr "Jegyzet nyomtatása"
 
@@ -1065,7 +1056,6 @@ msgid "Mark certain notes as read only"
 msgstr "Egyes jegyzetek megjelölése csak olvashatóként"
 
 #: ../src/addins/readonly/readonly.desktop.in.h:3
-#| msgid "Aurimas Černius and the Tomboy Project"
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray és Arief Bayu Purwanto"
 
@@ -1088,7 +1078,6 @@ msgstr "Pierre-Yves Luyten"
 
 #: ../src/addins/specialnotes/specialnotes.desktop.in.h:1
 #: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
-#| msgid "Search All Notes"
 msgid "Special Notes"
 msgstr "Speciális jegyzetek"
 
@@ -1171,7 +1160,6 @@ msgstr "Ragadós cetli: "
 #: ../src/addins/tableofcontents/tableofcontentsaction.cpp:38
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.h:1
 #: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:65
-#| msgid "Help _Contents"
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
@@ -1181,7 +1169,8 @@ msgid ""
 "note, and the Table of Contents will show in a menu."
 msgstr ""
 "Navigáljon a hosszú, strukturált jegyzetekben. Állítson be szakasz és "
-"alszakasz fejléceket jegyzetében, és a Tartalomjegyzék megjelenik egy menüben."
+"alszakasz fejléceket jegyzetében, és a Tartalomjegyzék megjelenik egy "
+"menüben."
 
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.h:3
 msgid "Luc Pionchon"
@@ -1408,7 +1397,6 @@ msgid "Failed to load icon (%s, %d): %s"
 msgstr "Nem sikerült betölteni az ikont (%s, %d): %s"
 
 #: ../src/notebooks/createnotebookdialog.cpp:41
-#| msgid "Create a new notebook"
 msgid "Create Notebook"
 msgstr "Új jegyzettömb létrehozása"
 
@@ -1458,7 +1446,6 @@ msgid "All"
 msgstr "Összes"
 
 #: ../src/notebooks/notebook.cpp:273
-#| msgid "Unfiled Notes"
 msgid "Unfiled"
 msgstr "Nem iktatott"
 
@@ -1467,7 +1454,6 @@ msgid "Important"
 msgstr "Fontos"
 
 #: ../src/notebooks/notebook.cpp:334
-#| msgid "Active Notes"
 msgid "Active"
 msgstr "Aktív"
 
@@ -1700,8 +1686,13 @@ msgid "Never rename _links"
 msgstr "S_oha nem nevezem át"
 
 #: ../src/noterenamedialog.cpp:152
+#| msgid ""
+#| "Rename links in other notes from \"<span underline=\"single\">%1</span>\" "
+#| "to\"<span underline=\"single\">%2</span>\"?\n"
+#| "\n"
+#| "If you do not rename the links, they will no longer link to anything."
 msgid ""
-"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
+"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "If you do not rename the links, they will no longer link to anything."
@@ -1856,7 +1847,6 @@ msgstr "%s bővítmény hiányzik"
 
 #. Status icon
 #: ../src/preferencesdialog.cpp:246
-#| msgid "Use Status _Icon"
 msgid "Use status _icon"
 msgstr "Áll_apotikon használata"
 
@@ -1866,7 +1856,6 @@ msgstr "Ikon megjelenítése a tálcán, amely a felügyelet központi helye."
 
 #. Open in new window
 #: ../src/preferencesdialog.cpp:254
-#| msgid "Always show this _window"
 msgid "Always _open notes in new window"
 msgstr "Min_dig új ablakban jelenjenek meg a jegyzetek"
 
@@ -1938,7 +1927,6 @@ msgstr "Új jegyzet sablon megnyitása"
 
 #. Hotkeys...
 #: ../src/preferencesdialog.cpp:412
-#| msgid "Listen for _Hotkeys"
 msgid "Listen for _hotkeys"
 msgstr "_Gyorsbillentyűk figyelése"
 
@@ -1981,7 +1969,6 @@ msgid "Not configurable"
 msgstr "Nem konfigurálható"
 
 #: ../src/preferencesdialog.cpp:607
-#| msgid "Automatic Background Synchronization Timeout"
 msgid "Automatical background s_ync interval (minutes)"
 msgstr "_Automatikus háttér-szinkronizálás gyakorisága (perc)"
 
@@ -1991,7 +1978,6 @@ msgid "_Advanced..."
 msgstr "Spe_ciális…"
 
 #: ../src/preferencesdialog.cpp:678
-#| msgid "The following add-ins are installed"
 msgid "The following add-ins are installed:"
 msgstr "A következő bővítmények vannak telepítve:"
 
@@ -2032,17 +2018,14 @@ msgstr ""
 
 #. label.Xalign = 0;
 #: ../src/preferencesdialog.cpp:1133
-#| msgid "Always ask me what to do."
 msgid "Always ask me what to do"
 msgstr "Mindig kérdezzen"
 
 #: ../src/preferencesdialog.cpp:1137
-#| msgid "Rename my local note."
 msgid "Rename my local note"
 msgstr "Nevezze át a helyi jegyzetet"
 
 #: ../src/preferencesdialog.cpp:1141
-#| msgid "Replace my local note with the server's update."
 msgid "Replace my local note with the server's update"
 msgstr "Cserélje a helyi jegyzetet a kiszolgálón találhatóra"
 
@@ -2139,7 +2122,6 @@ msgstr "_Bezárás"
 
 #: ../src/remotecontrolproxy.cpp:57
 #, c-format
-#| msgid "Failed to load D-Bus interface: %s"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "A D-Bus felület betöltése sikertelen: %s: %s"
 
@@ -2156,7 +2138,6 @@ msgid "_Delete"
 msgstr "_Törlés"
 
 #: ../src/searchnoteswidget.cpp:149
-#| msgid "User_name:"
 msgid "Re_name..."
 msgstr "Át_nevezés…"
 
@@ -2196,7 +2177,6 @@ msgstr[0] "%1% találat"
 msgstr[1] "%1% találat"
 
 #: ../src/searchnoteswidget.cpp:1305
-#| msgid "_New Note"
 msgid "_New"
 msgstr "Ú_j"
 
@@ -2205,14 +2185,12 @@ msgid "_Open Template Note"
 msgstr "_Sablonjegyzet megnyitása"
 
 #: ../src/searchnoteswidget.cpp:1345
-#| msgid "_New notebook..."
 msgid "_New..."
 msgstr "Ú_j…"
 
 #: ../src/searchnoteswidget.cpp:1481 ../src/searchnoteswidget.cpp:1494
 #: ../src/searchnoteswidget.cpp:1505
 #, c-format
-#| msgid "Failed to load icon (%s, %d): %s"
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "A beállítás (%s) feldolgozása meghiúsult (érték: %s):"
 
@@ -2660,8 +2638,6 @@ msgstr "%b. %e."
 
 #. TRANSLATORS: first argument is date, second is time.
 #: ../src/utils.cpp:234 ../src/utils.cpp:246
-#| msgid "In %1% day, %2%"
-#| msgid_plural "In %1% days, %2%"
 msgid "%1%, %2%"
 msgstr "%1%, %2%"
 
@@ -2671,7 +2647,6 @@ msgstr "Nincs dátum"
 
 #. TRANSLATORS: date in other than current year.
 #: ../src/utils.cpp:243
-#| msgid "%A, %B %d %Y"
 msgid "%b %d %Y"
 msgstr "%Y %b. %d"
 
