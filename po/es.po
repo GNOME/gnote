@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-10 13:08+0000\n"
-"PO-Revision-Date: 2013-10-15 11:17+0200\n"
+"POT-Creation-Date: 2013-10-15 09:20+0000\n"
+"PO-Revision-Date: 2013-10-15 11:22+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -42,8 +42,7 @@ msgstr ""
 "Gnote también permite la sincronización para hacer posible el uso en "
 "múltiples equipos."
 
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:45
-#: ../src/recentchanges.cpp:584
+#: ../data/gnote.desktop.in.in.h:1
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -656,12 +655,14 @@ msgid "_Help"
 msgstr "Ay_uda"
 
 #: ../src/addininfo.cpp:69
-msgid "Failed to load plugin information!"
+#| msgid "Failed to load plugin information!"
+msgid "Failed to load add-in information!"
 msgstr "¡Falló al cargar la información del complemento!"
 
 #: ../src/addinmanager.cpp:98
 #, c-format
-msgid "Note plugin info %s already present"
+#| msgid "Note plugin info %s already present"
+msgid "Note add-in info %s already present"
 msgstr "Ya está disponible la información del complemento %s de la nota"
 
 #: ../src/addinmanager.cpp:106
@@ -671,17 +672,20 @@ msgstr "%s no implementa %s"
 
 #: ../src/addinmanager.cpp:118
 #, c-format
-msgid "Note plugin %s already present"
+#| msgid "Note plugin %s already present"
+msgid "Note add-in %s already present"
 msgstr "Ya existe el complemento %s de la nota"
 
 #: ../src/addinmanager.cpp:137
 #, c-format
-msgid "Note plugin info %s is absent"
+#| msgid "Note plugin info %s is absent"
+msgid "Note add-in info %s is absent"
 msgstr "Falta la información del complemento %s de la nota"
 
 #: ../src/addinmanager.cpp:150
 #, c-format
-msgid "Note plugin %s is absent"
+#| msgid "Note plugin %s is absent"
+msgid "Note add-in %s is absent"
 msgstr "Falta el complemento %s de la nota"
 
 #: ../src/addinmanager.cpp:183
@@ -872,7 +876,8 @@ msgid "Local Folder"
 msgstr "Carpeta local"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:1
-msgid "Local Directory Sync Service Plugin"
+#| msgid "Local Directory Sync Service Plugin"
+msgid "Local Directory Sync Service Add-in"
 msgstr "Complemento del servicio de sincronización de carpetas locales"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:2
@@ -1280,7 +1285,8 @@ msgstr ""
 "%1%"
 
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:1
-msgid "WebDAV Sync Service Plugin"
+#| msgid "WebDAV Sync Service Plugin"
+msgid "WebDAV Sync Service Add-in"
 msgstr "Complemento del servicio de sincronización de WebDAV"
 
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:2
@@ -1404,14 +1410,6 @@ msgstr "Versión %1%"
 #, c-format
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Falló al cargar el icono (%s, %d): %s"
-
-#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:121 ../src/noteaddin.cpp:134
-msgid "Plugin is disposing already"
-msgstr "El complemento ya está eliminado"
-
-#: ../src/noteaddin.cpp:138
-msgid "Window is not embedded"
-msgstr "La ventana no está empotrada"
 
 #: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Create Notebook"
@@ -1556,17 +1554,17 @@ msgstr "Se produjo un error al guardar la nota: %s"
 msgid "Error while saving: %s"
 msgstr "Error al guardar: %s"
 
-#: ../src/note.cpp:971
+#: ../src/note.cpp:956
 msgid "Setting text content for closed notes not supported"
 msgstr "No se permite la configuración del texto de una nota cerrada."
 
 #. write failure, but not critical
-#: ../src/note.cpp:1174
+#: ../src/note.cpp:1159
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falló al actualizar el formato de la nota: %s"
 
-#: ../src/note.cpp:1309
+#: ../src/note.cpp:1294
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Error del sistema de archivos: %s"
@@ -1848,12 +1846,13 @@ msgid "Synchronization"
 msgstr "Sincronización"
 
 #: ../src/preferencesdialog.cpp:130
-msgid "Plugins"
+msgid "Add-ins"
 msgstr "Complementos"
 
 #: ../src/preferencesdialog.cpp:207
 #, c-format
-msgid "Plugin %s is absent"
+#| msgid "Plugin %s is absent"
+msgid "Add-in %s is absent"
 msgstr "Falta el complemento %s"
 
 #. Status icon
@@ -1992,7 +1991,8 @@ msgid "_Advanced..."
 msgstr "_Avanzado…"
 
 #: ../src/preferencesdialog.cpp:678
-msgid "The following plugins are installed:"
+#| msgid "The following plugins are installed:"
+msgid "The following add-ins are installed:"
 msgstr "Los siguientes complementos están instalados:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
@@ -2105,6 +2105,11 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
+#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:584
+#: ../src/searchnoteswidget.cpp:994
+msgid "Notes"
+msgstr "Notas"
+
 #: ../src/recentchanges.cpp:143
 msgid "All Notes"
 msgstr "Todas las notas"
@@ -2157,10 +2162,6 @@ msgstr "Nota"
 #: ../src/searchnoteswidget.cpp:675
 msgid "Modified"
 msgstr "Modificado"
-
-#: ../src/searchnoteswidget.cpp:994
-msgid "Notes"
-msgstr "Notas"
 
 #: ../src/searchnoteswidget.cpp:1013
 msgid ""
@@ -2664,11 +2665,11 @@ msgstr "Sin fecha"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: ../src/watchers.cpp:200
+#: ../src/watchers.cpp:199
 msgid "(Untitled %1%)"
 msgstr "(Sin título %1%)"
 
-#: ../src/watchers.cpp:231
+#: ../src/watchers.cpp:230
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2676,19 +2677,25 @@ msgstr ""
 "Ya existe una nota con el título <b>%1%</b>. Por favor, escoja otro nombre "
 "para esta nota antes de continuar."
 
-#: ../src/watchers.cpp:246
+#: ../src/watchers.cpp:245
 msgid "Note title taken"
 msgstr "El título de la nota ya existe"
 
-#: ../src/watchers.cpp:579
+#: ../src/watchers.cpp:576
 msgid "_Copy Link Address"
 msgstr "_Copiar dirección del enlace"
 
-#: ../src/watchers.cpp:585
+#: ../src/watchers.cpp:582
 msgid "_Open Link"
 msgstr "_Abrir enlace"
 
-#~ msgid "Add-ins"
+#~ msgid "Plugin is disposing already"
+#~ msgstr "El complemento ya está eliminado"
+
+#~ msgid "Window is not embedded"
+#~ msgstr "La ventana no está empotrada"
+
+#~ msgid "Plugins"
 #~ msgstr "Complementos"
 
 #~ msgid "_Delete Notebook"
