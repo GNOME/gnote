@@ -16,6 +16,7 @@ SUBDIRS = backlinks \
 	statistics \
 	stickynoteimport \
 	tableofcontents \
+	todo \
 	tomboyimport \
 	underline \
 	webdavsyncservice \

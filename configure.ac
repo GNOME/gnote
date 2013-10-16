@@ -184,6 +184,7 @@ src/addins/specialnotes/Makefile
 src/addins/statistics/Makefile
 src/addins/stickynoteimport/Makefile
 src/addins/tableofcontents/Makefile
+src/addins/todo/Makefile
 src/addins/tomboyimport/Makefile
 src/addins/underline/Makefile
 src/addins/webdavsyncservice/Makefile
