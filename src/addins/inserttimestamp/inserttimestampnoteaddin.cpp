@@ -23,6 +23,7 @@
 #include <glibmm/i18n.h>
 
 #include "sharp/datetime.hpp"
+#include "iactionmanager.hpp"
 #include "inserttimestamppreferences.hpp"
 #include "inserttimestamppreferencesfactory.hpp"
 #include "inserttimestampnoteaddin.hpp"
@@ -81,7 +82,7 @@ namespace inserttimestamp {
     Glib::RefPtr<Gtk::Action> action = InsertTimestampAction::create(get_window());
     action->signal_activate().connect(
       sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_menu_item_activated));
-    add_note_action(action, 300);
+    add_note_action(action, gnote::INSERT_TIMESTAMP_ORDER);
 
     Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
     m_date_format = settings->get_string(INSERT_TIMESTAMP_FORMAT);

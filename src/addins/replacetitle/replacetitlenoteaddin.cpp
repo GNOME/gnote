@@ -21,6 +21,7 @@
 #include <gtkmm/stock.h>
 #include <gtkmm/clipboard.h>
 
+#include "iactionmanager.hpp"
 #include "notewindow.hpp"
 #include "replacetitlenoteaddin.hpp"
 #include "sharp/string.hpp"
@@ -75,7 +76,7 @@ void ReplaceTitleNoteAddin::on_note_opened()
   Glib::RefPtr<Gtk::Action> action = ReplaceTitleAction::create(get_window());
   action->signal_activate().connect(
     sigc::mem_fun(*this, &ReplaceTitleNoteAddin::replacetitle_button_clicked));
-  add_note_action(action, 500);
+  add_note_action(action, gnote::REPLACE_TITLE_ORDER);
 }
 
 void ReplaceTitleNoteAddin::replacetitle_button_clicked()

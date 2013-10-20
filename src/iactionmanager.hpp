@@ -29,6 +29,16 @@
 
 namespace gnote {
 
+enum NoteActionOrder {
+  BACKLINKS_ORDER = 100,
+  EXPORT_TO_HTML_ORDER = 200,
+  INSERT_TIMESTAMP_ORDER = 300,
+  PRINT_ORDER = 400,
+  REPLACE_TITLE_ORDER = 500,
+  TABLE_OF_CONTENTS_ORDER = 600,
+  READ_ONLY_ORDER = 700,
+};
+
 class IActionManager
   : public base::Singleton<IActionManager>
 {

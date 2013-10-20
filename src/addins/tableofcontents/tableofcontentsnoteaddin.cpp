@@ -28,6 +28,7 @@
 
 #include "sharp/string.hpp"
 
+#include "iactionmanager.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "notebuffer.hpp"
@@ -83,7 +84,7 @@ void TableofcontentsNoteAddin::on_note_opened ()
 
   Glib::RefPtr<Gtk::Action> action = TableofcontentsAction::create(
     sigc::mem_fun(*this, &TableofcontentsNoteAddin::update_menu));
-  add_note_action(action, 600);
+  add_note_action(action, gnote::TABLE_OF_CONTENTS_ORDER);
 
   // Reacts to key press events
   get_note()->get_window()->signal_key_press_event().connect(

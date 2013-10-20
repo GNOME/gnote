@@ -23,6 +23,7 @@
 #include "sharp/string.hpp"
 #include "backlinksnoteaddin.hpp"
 #include "backlinkmenuitem.hpp"
+#include "iactionmanager.hpp"
 #include "notemanager.hpp"
 #include "utils.hpp"
 
@@ -54,7 +55,7 @@ void BacklinksNoteAddin::on_note_opened ()
 {
   Glib::RefPtr<Gtk::Action> action = BacklinkAction::create(
     sigc::mem_fun(*this, &BacklinksNoteAddin::update_menu));
-  add_note_action(action, 100);
+  add_note_action(action, gnote::BACKLINKS_ORDER);
 }
 
 void BacklinksNoteAddin::update_menu(Gtk::Menu *menu)

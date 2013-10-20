@@ -21,6 +21,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/checkmenuitem.h>
 
+#include "iactionmanager.hpp"
 #include "itagmanager.hpp"
 #include "notewindow.hpp"
 #include "readonlynoteaddin.hpp"
@@ -103,7 +104,7 @@ void ReadOnlyNoteAddin::shutdown()
 void ReadOnlyNoteAddin::on_note_opened()
 {
   m_action = ReadOnlyAction::create();
-  add_note_action(m_action, 700);
+  add_note_action(m_action, gnote::READ_ONLY_ORDER);
   m_action->signal_activate().connect(
     sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_menu_item_toggled));
 

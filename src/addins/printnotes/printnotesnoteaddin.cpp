@@ -30,6 +30,7 @@
 
 #include "sharp/datetime.hpp"
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "notetag.hpp"
 #include "notewindow.hpp"
 #include "printnotesnoteaddin.hpp"
@@ -86,7 +87,7 @@ namespace printnotes {
     Glib::RefPtr<Gtk::Action> action = PrintNotesAction::create(get_window());
     action->signal_activate().connect(
       sigc::mem_fun(*this, &PrintNotesNoteAddin::print_button_clicked));
-    add_note_action(action, 400);
+    add_note_action(action, gnote::PRINT_ORDER);
   }
 
 

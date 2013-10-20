@@ -34,6 +34,7 @@
 #include "sharp/uri.hpp"
 #include "sharp/xsltargumentlist.hpp"
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "preferences.hpp"
 #include "notewindow.hpp"
 #include "utils.hpp"
@@ -76,7 +77,7 @@ void ExportToHtmlNoteAddin::on_note_opened()
                                                   _("Export note to HTML"));
   action->signal_activate().connect(
     sigc::mem_fun(*this, &ExportToHtmlNoteAddin::export_button_clicked));
-  add_note_action(action, 200);
+  add_note_action(action, gnote::EXPORT_TO_HTML_ORDER);
 }
 
 
