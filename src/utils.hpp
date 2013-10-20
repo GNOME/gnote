@@ -259,6 +259,30 @@ namespace gnote {
       void release_button();        
     };
 
+    class CheckAction
+      : public Gtk::Action
+    {
+    public:
+      typedef Glib::RefPtr<CheckAction> Ptr;
+      static Ptr create(const Glib::ustring & name)
+        {
+          return Ptr(new CheckAction(name));
+        }
+      void checked(bool check)
+        {
+          m_checked = check;
+        }
+      bool checked() const
+        {
+          return m_checked;
+        }
+    protected:
+      CheckAction(const Glib::ustring & name);
+      virtual Gtk::Widget *create_menu_item_vfunc() override;
+      virtual void on_activate() override;
+    private:
+      bool m_checked;
+    };
   }
 }
 
