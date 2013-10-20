@@ -101,11 +101,15 @@ namespace gnote {
       : m_obj_ptr(NULL)
       {}
   private:
+    static const char *LANG_PREFIX;
+    static void language_changed(GtkSpellChecker*, gchar *lang, NoteSpellChecker *checker);
     void attach();
     void detach();
     void on_enable_spellcheck_changed(const Glib::ustring & key);
     void tag_applied(const Glib::RefPtr<const Gtk::TextTag> &,
                      const Gtk::TextIter &, const Gtk::TextIter &);
+    void on_language_changed(const gchar *lang);
+    Tag::Ptr get_language_tag();
 
     GtkSpellChecker *m_obj_ptr;
     sigc::connection  m_tag_applied_cid;

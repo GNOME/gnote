@@ -282,6 +282,8 @@ namespace gnote {
 
 
 #if FIXED_GTKSPELL
+  const char *NoteSpellChecker::LANG_PREFIX = "spellchecklang:";
+
   void NoteSpellChecker::shutdown ()
   {
     detach();
@@ -314,6 +316,11 @@ namespace gnote {
 
     if (!m_obj_ptr) {
       m_obj_ptr = gtk_spell_checker_new();
+      Tag::Ptr tag = get_language_tag();
+      if(tag) {
+        gtk_spell_checker_set_language(m_obj_ptr, sharp::string_replace_first(tag->name(), LANG_PREFIX, "").c_str(), NULL);
+      }
+      g_signal_connect(G_OBJECT(m_obj_ptr), "language-changed", G_CALLBACK(language_changed), this);
       gtk_spell_checker_attach(m_obj_ptr, get_window()->editor()->gobj());
     }
   }
@@ -376,6 +383,42 @@ namespace gnote {
       get_buffer()->remove_tag_by_name("gtkspell-misspelled",
                                start_char, end_char);
     }
+  }
+
+  void NoteSpellChecker::language_changed(GtkSpellChecker*, gchar *lang, NoteSpellChecker *checker)
+  {
+    try {
+      checker->on_language_changed(lang);
+    }
+    catch(...) {
+    }
+  }
+
+  void NoteSpellChecker::on_language_changed(const gchar *lang)
+  {
+    std::string tag_name = LANG_PREFIX;
+    tag_name += lang;
+    Tag::Ptr tag = get_language_tag();
+    if(tag && tag->name() != tag_name) {
+      get_note()->remove_tag(tag);
+    }
+    tag = ITagManager::obj().get_or_create_tag(tag_name);
+    get_note()->add_tag(tag);
+    DBG_OUT("Added language tag %s", tag_name.c_str());
+  }
+
+  Tag::Ptr NoteSpellChecker::get_language_tag()
+  {
+    Tag::Ptr lang_tag;
+    std::list<Tag::Ptr> tags;
+    get_note()->get_tags(tags);
+    FOREACH(Tag::Ptr tag, tags) {
+      if(sharp::string_index_of(tag->name(), LANG_PREFIX) == 0) {
+        lang_tag = tag;
+        break;
+      }
+    }
+    return lang_tag;
   }
 #endif
   
