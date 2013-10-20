@@ -74,6 +74,16 @@ namespace gnote {
     : Gtk::Action(name, icon_name, label, tooltip)
   {}
 
+  void NoteWindow::NonModifyingAction::reference() const
+  {
+    Gtk::Action::reference();
+  }
+
+  void NoteWindow::NonModifyingAction::unreference() const
+  {
+    Gtk::Action::unreference();
+  }
+
 
 
   NoteWindow::NoteWindow(Note & note)
@@ -294,7 +304,7 @@ namespace gnote {
     }
     m_widget_actions[order] = action;
     m_signal_actions_changed();
-    if(Glib::RefPtr<NonModifyingAction>::cast_dynamic(action) == 0) {
+    if(Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action) == 0) {
       action->set_sensitive(m_enabled);
     }
   }
@@ -624,7 +634,7 @@ namespace gnote {
     if(m_global_keys)
       m_global_keys->enabled(m_enabled);
     FOREACH(Glib::RefPtr<Gtk::Action> & action, get_widget_actions()) {
-      if(Glib::RefPtr<NonModifyingAction>::cast_dynamic(action) == 0) {
+      if(Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action) == 0) {
         action->set_sensitive(enable);
       }
     }

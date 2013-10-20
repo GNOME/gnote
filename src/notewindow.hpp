@@ -155,8 +155,18 @@ public:
   // use co-variant return
   virtual Gtk::Grid *embeddable_toolbar() override;
 
+  class NonModifyingNoteAction
+  {
+  public:
+    virtual ~NonModifyingNoteAction() {}
+
+    // these are required to make RefPtr
+    virtual void reference() const = 0;
+    virtual void unreference() const = 0;
+  };
   class NonModifyingAction
     : public Gtk::Action
+    , public NonModifyingNoteAction
   {
   public:
     static Glib::RefPtr<NonModifyingAction> create()
@@ -184,6 +194,8 @@ public:
     NonModifyingAction(const Glib::ustring & name, const Glib::ustring & icon_name,
                        const Glib::ustring & label = Glib::ustring(),
                        const Glib::ustring & tooltip = Glib::ustring());
+    virtual void reference() const override;
+    virtual void unreference() const override;
   };
   virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions() override;
   virtual sigc::signal<void> & signal_actions_changed() override;
