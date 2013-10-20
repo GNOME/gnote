@@ -19,7 +19,6 @@
  */
 
 #include <glibmm/i18n.h>
-#include <gtkmm/checkmenuitem.h>
 
 #include "iactionmanager.hpp"
 #include "itagmanager.hpp"
@@ -30,7 +29,8 @@
 
 namespace {
   class ReadOnlyAction
-    : public gnote::NoteWindow::NonModifyingAction
+    : public gnote::utils::CheckAction
+    , public gnote::NoteWindow::NonModifyingNoteAction
   {
   public:
     typedef Glib::RefPtr<ReadOnlyAction> Ptr;
@@ -38,36 +38,21 @@ namespace {
       {
         return Ptr(new ReadOnlyAction);
       }
-    void checked(bool check)
-      {
-        m_checked = check;
-      }
-    bool checked() const
-      {
-        return m_checked;
-      }
-  protected:
-    virtual Gtk::Widget *create_menu_item_vfunc() override
+    virtual void reference() const override
     {
-      Gtk::CheckMenuItem *item = new Gtk::CheckMenuItem;
-      item->set_active(m_checked);
-      return item;
+      gnote::utils::CheckAction::reference();
     }
-    virtual void on_activate() override
+    virtual void unreference() const override
     {
-      m_checked = !m_checked;
-      Gtk::Action::on_activate();
+      gnote::utils::CheckAction::unreference();
     }
   private:
     ReadOnlyAction()
-      : gnote::NoteWindow::NonModifyingAction("ReadOnlyAction")
-      , m_checked(false)
+      : gnote::utils::CheckAction("ReadOnlyAction")
     {
       set_label(_("Read Only"));
       set_tooltip(_("Make this note read-only"));
     }
-
-    bool m_checked;
   };
 }
 
