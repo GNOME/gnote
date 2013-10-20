@@ -102,17 +102,23 @@ namespace gnote {
       {}
   private:
     static const char *LANG_PREFIX;
+    static const char *LANG_DISABLED;
     static void language_changed(GtkSpellChecker*, gchar *lang, NoteSpellChecker *checker);
     void attach();
+    void attach_checker();
     void detach();
+    void detach_checker();
     void on_enable_spellcheck_changed(const Glib::ustring & key);
     void tag_applied(const Glib::RefPtr<const Gtk::TextTag> &,
                      const Gtk::TextIter &, const Gtk::TextIter &);
     void on_language_changed(const gchar *lang);
     Tag::Ptr get_language_tag();
+    std::string get_language();
+    void on_spell_check_enable_action();
 
     GtkSpellChecker *m_obj_ptr;
     sigc::connection  m_tag_applied_cid;
+    utils::CheckAction::Ptr m_enable_action;
   };
 #else
   class NoteSpellChecker 

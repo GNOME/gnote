@@ -283,6 +283,7 @@ namespace gnote {
 
 #if FIXED_GTKSPELL
   const char *NoteSpellChecker::LANG_PREFIX = "spellchecklang:";
+  const char *NoteSpellChecker::LANG_DISABLED = "disabled";
 
   void NoteSpellChecker::shutdown ()
   {
@@ -302,6 +303,20 @@ namespace gnote {
 
   void NoteSpellChecker::attach ()
   {
+    attach_checker();
+
+    m_enable_action = utils::CheckAction::create("EnableSpellCheck");
+    m_enable_action->set_label(_("Check spelling"));
+    m_enable_action->set_tooltip(_("Check spelling in this note"));
+    m_enable_action->checked(get_language() != LANG_DISABLED);
+    m_enable_action->signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_spell_check_enable_action));
+    add_note_action(m_enable_action, 800);
+  }
+
+
+  void NoteSpellChecker::attach_checker()
+  {
     // Make sure we add this tag before attaching, so
     // gtkspell will use our version.
     if (!get_note()->get_tag_table()->lookup ("gtkspell-misspelled")) {
@@ -314,11 +329,12 @@ namespace gnote {
     m_tag_applied_cid = get_buffer()->signal_apply_tag().connect(
       sigc::mem_fun(*this, &NoteSpellChecker::tag_applied), false);  // connect before
 
-    if (!m_obj_ptr) {
+    std::string lang = get_language();
+
+    if (!m_obj_ptr && lang != LANG_DISABLED) {
       m_obj_ptr = gtk_spell_checker_new();
-      Tag::Ptr tag = get_language_tag();
-      if(tag) {
-        gtk_spell_checker_set_language(m_obj_ptr, sharp::string_replace_first(tag->name(), LANG_PREFIX, "").c_str(), NULL);
+      if(lang != "") {
+        gtk_spell_checker_set_language(m_obj_ptr, lang.c_str(), NULL);
       }
       g_signal_connect(G_OBJECT(m_obj_ptr), "language-changed", G_CALLBACK(language_changed), this);
       gtk_spell_checker_attach(m_obj_ptr, get_window()->editor()->gobj());
@@ -327,6 +343,14 @@ namespace gnote {
 
 
   void NoteSpellChecker::detach ()
+  {
+    detach_checker();
+    get_window()->remove_widget_action("EnableSpellCheck");
+    m_enable_action.reset();
+  }
+
+
+  void NoteSpellChecker::detach_checker()
   {
     m_tag_applied_cid.disconnect();
     
@@ -419,6 +443,34 @@ namespace gnote {
       }
     }
     return lang_tag;
+  }
+
+  std::string NoteSpellChecker::get_language()
+  {
+    Tag::Ptr tag = get_language_tag();
+    std::string lang;
+    if(tag) {
+      lang = sharp::string_replace_first(tag->name(), LANG_PREFIX, "");
+    }
+    return lang;
+  }
+
+  void NoteSpellChecker::on_spell_check_enable_action()
+  {
+    Tag::Ptr tag = get_language_tag();
+    if(tag) {
+      get_note()->remove_tag(tag);
+    }
+    if(m_enable_action->checked()) {
+      attach_checker();
+    }
+    else {
+      std::string tag_name = LANG_PREFIX;
+      tag_name += LANG_DISABLED;
+      tag = ITagManager::obj().get_or_create_tag(tag_name);
+      get_note()->add_tag(tag);
+      detach_checker();
+    }
   }
 #endif
   
