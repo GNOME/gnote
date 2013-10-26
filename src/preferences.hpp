@@ -44,6 +44,8 @@ namespace gnote {
     static const char *SCHEMA_DESKTOP_GNOME_INTERFACE;
 
     static const char *ENABLE_SPELLCHECKING;
+    static const char *ENABLE_AUTO_LINKS;
+    static const char *ENABLE_URL_LINKS;
     static const char *ENABLE_WIKIWORDS;
     static const char *ENABLE_CUSTOM_FONT;
     static const char *ENABLE_KEYBINDINGS;

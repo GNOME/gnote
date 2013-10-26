@@ -86,10 +86,12 @@ public:
 private:
   void load_addin_infos(const std::string & global_path, const std::string & local_path);
   void load_addin_infos(const std::string & path);
+  void load_note_addin(const std::string & id, sharp::IfaceFactoryBase *const f);
   void get_enabled_addins(std::list<std::string> & addins) const;
   void initialize_sharp_addins();
   void add_module_addins(const std::string & mod_id, sharp::DynamicModule * dmod);
   AddinInfo get_info_for_module(const std::string & module) const;
+  void on_setting_changed(const Glib::ustring & key);
     
   NoteManager & m_note_manager;
   const std::string m_gnote_conf_dir;

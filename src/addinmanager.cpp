@@ -56,6 +56,22 @@ namespace gnote {
   m_app_addins.insert(std::make_pair(typeid(klass).name(),        \
                                      klass::create()))
 
+#define SETUP_NOTE_ADDIN(key, KEY, klass) \
+{ \
+  if(key == KEY) { \
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj() \
+      .get_schema_settings(Preferences::SCHEMA_GNOTE); \
+    if(settings->get_boolean(key)) { \
+      sharp::IfaceFactoryBase *iface = new sharp::IfaceFactory<klass>; \
+      m_builtin_ifaces.push_back(iface); \
+      load_note_addin(typeid(klass).name(), iface); \
+    } \
+    else { \
+      erase_note_addin_info(typeid(klass).name()); \
+    } \
+  } \
+}
+
   AddinManager::AddinManager(NoteManager & note_manager, const std::string & conf_dir)
     : m_note_manager(note_manager)
     , m_gnote_conf_dir(conf_dir)
@@ -107,24 +123,26 @@ namespace gnote {
       return;
     }
 
+    load_note_addin(id, f);
+  }
+
+  void AddinManager::load_note_addin(const std::string & id, sharp::IfaceFactoryBase *const f)
+  {
     m_note_addin_infos.insert(std::make_pair(id, f));
+    for(NoteAddinMap::iterator iter = m_note_addins.begin();
+        iter != m_note_addins.end(); ++iter) {
+      IdAddinMap & id_addin_map = iter->second;
+      IdAddinMap::const_iterator it = id_addin_map.find(id);
+      if(id_addin_map.end() != it) {
+        ERR_OUT(_("Note plugin %s already present"), id.c_str());
+        continue;
+      }
 
-    {
-      for(NoteAddinMap::iterator iter = m_note_addins.begin();
-          iter != m_note_addins.end(); ++iter) {
-        IdAddinMap & id_addin_map = iter->second;
-        IdAddinMap::const_iterator it = id_addin_map.find(id);
-        if (id_addin_map.end() != it) {
-          ERR_OUT(_("Note plugin %s already present"), id.c_str());
-          continue;
-        }
-
-        const Note::Ptr & note = iter->first;
-        NoteAddin * const addin = dynamic_cast<NoteAddin *>((*f)());
-        if (addin) {
-         addin->initialize(note);
-         id_addin_map.insert(std::make_pair(id, addin));
-        }
+      const Note::Ptr & note = iter->first;
+      NoteAddin *const addin = dynamic_cast<NoteAddin *>((*f)());
+      if(addin) {
+       addin->initialize(note);
+       id_addin_map.insert(std::make_pair(id, addin));
       }
     }
   }
@@ -218,12 +236,19 @@ namespace gnote {
     if (!sharp::directory_exists (m_addins_prefs_dir))
       g_mkdir_with_parents(m_addins_prefs_dir.c_str(), S_IRWXU);
 
-    // get the factory
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+    settings->signal_changed()
+      .connect(sigc::mem_fun(*this, &AddinManager::on_setting_changed));
 
     REGISTER_BUILTIN_NOTE_ADDIN(NoteRenameWatcher);
     REGISTER_BUILTIN_NOTE_ADDIN(NoteSpellChecker);
-    REGISTER_BUILTIN_NOTE_ADDIN(NoteUrlWatcher);
-    REGISTER_BUILTIN_NOTE_ADDIN(NoteLinkWatcher);
+    if(settings->get_boolean(Preferences::ENABLE_URL_LINKS)) {
+      REGISTER_BUILTIN_NOTE_ADDIN(NoteUrlWatcher);
+    }
+    if(settings->get_boolean(Preferences::ENABLE_AUTO_LINKS)) {
+      REGISTER_BUILTIN_NOTE_ADDIN(NoteLinkWatcher);
+    }
     REGISTER_BUILTIN_NOTE_ADDIN(NoteWikiWatcher);
     REGISTER_BUILTIN_NOTE_ADDIN(MouseHandWatcher);
     REGISTER_BUILTIN_NOTE_ADDIN(NoteTagsWatcher);
@@ -483,5 +508,11 @@ namespace gnote {
       return iter->second->create_preference_widget(m_note_manager);
     }
     return NULL;
+  }
+
+  void AddinManager::on_setting_changed(const Glib::ustring & key)
+  {
+    SETUP_NOTE_ADDIN(key, Preferences::ENABLE_URL_LINKS, NoteUrlWatcher);
+    SETUP_NOTE_ADDIN(key, Preferences::ENABLE_AUTO_LINKS, NoteLinkWatcher);
   }
 }

@@ -34,6 +34,8 @@ namespace gnote {
   const char * Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 
   const char * Preferences::ENABLE_SPELLCHECKING = "enable-spellchecking";
+  const char * Preferences::ENABLE_AUTO_LINKS = "enable-auto-links";
+  const char * Preferences::ENABLE_URL_LINKS = "enable-url-links";
   const char * Preferences::ENABLE_WIKIWORDS = "enable-wikiwords";
   const char * Preferences::ENABLE_CUSTOM_FONT = "enable-custom-font";
   const char * Preferences::ENABLE_KEYBINDINGS = "enable-keybindings";
