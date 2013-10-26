@@ -154,6 +154,7 @@ namespace gnote {
         NoteAddin * const addin = it->second;
         if (addin) {
           addin->dispose(true);
+          delete addin;
           id_addin_map.erase(it);
         }
       }
