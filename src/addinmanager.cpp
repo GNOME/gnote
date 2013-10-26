@@ -249,7 +249,9 @@ namespace gnote {
     if(settings->get_boolean(Preferences::ENABLE_AUTO_LINKS)) {
       REGISTER_BUILTIN_NOTE_ADDIN(NoteLinkWatcher);
     }
-    REGISTER_BUILTIN_NOTE_ADDIN(NoteWikiWatcher);
+    if(settings->get_boolean(Preferences::ENABLE_WIKIWORDS)) {
+      REGISTER_BUILTIN_NOTE_ADDIN(NoteWikiWatcher);
+    }
     REGISTER_BUILTIN_NOTE_ADDIN(MouseHandWatcher);
     REGISTER_BUILTIN_NOTE_ADDIN(NoteTagsWatcher);
     REGISTER_BUILTIN_NOTE_ADDIN(notebooks::NotebookNoteAddin);
@@ -514,5 +516,6 @@ namespace gnote {
   {
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_URL_LINKS, NoteUrlWatcher);
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_AUTO_LINKS, NoteLinkWatcher);
+    SETUP_NOTE_ADDIN(key, Preferences::ENABLE_WIKIWORDS, NoteWikiWatcher);
   }
 }

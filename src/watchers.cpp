@@ -1056,37 +1056,12 @@ namespace gnote {
 
   void NoteWikiWatcher::on_note_opened ()
   {
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(
-        Preferences::SCHEMA_GNOTE);
-    if (settings->get_boolean(Preferences::ENABLE_WIKIWORDS)) {
-      m_on_insert_text_cid = get_buffer()->signal_insert().connect(
-        sigc::mem_fun(*this, &NoteWikiWatcher::on_insert_text));
-      m_on_delete_range_cid = get_buffer()->signal_erase().connect(
-        sigc::mem_fun(*this, &NoteWikiWatcher::on_delete_range));
-    }
-    settings->signal_changed()
-      .connect(sigc::mem_fun(*this, &NoteWikiWatcher::on_enable_wikiwords_changed));
+    get_buffer()->signal_insert().connect(
+      sigc::mem_fun(*this, &NoteWikiWatcher::on_insert_text));
+    get_buffer()->signal_erase().connect(
+      sigc::mem_fun(*this, &NoteWikiWatcher::on_delete_range));
   }
 
-
-  void NoteWikiWatcher::on_enable_wikiwords_changed(const Glib::ustring & key)
-  {
-    if(key != Preferences::ENABLE_WIKIWORDS) {
-      return;
-    }
-    bool value = Preferences::obj().get_schema_settings(
-        Preferences::SCHEMA_GNOTE)->get_boolean(key);
-    if (value) {
-      m_on_insert_text_cid = get_buffer()->signal_insert().connect(
-        sigc::mem_fun(*this, &NoteWikiWatcher::on_insert_text));
-      m_on_delete_range_cid = get_buffer()->signal_erase().connect(
-        sigc::mem_fun(*this, &NoteWikiWatcher::on_delete_range));
-    } 
-    else {
-      m_on_insert_text_cid.disconnect();
-      m_on_delete_range_cid.disconnect();
-    }
-  }
 
   void NoteWikiWatcher::apply_wikiword_to_block (Gtk::TextIter start, Gtk::TextIter end)
   {
