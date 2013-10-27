@@ -314,7 +314,7 @@ namespace gnote {
   void NoteBuffer::range_deleted_event(const Gtk::TextIter & start,const Gtk::TextIter & end_iter)
   {
     //
-    std::array<Gtk::TextIter, 2> iters;
+    array<Gtk::TextIter, 2> iters;
     iters[0] = start;
     iters[1] = end_iter;
 
