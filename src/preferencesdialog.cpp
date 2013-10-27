@@ -119,6 +119,7 @@ namespace gnote {
     
     notebook->append_page (*manage(make_editing_pane()),
                            _("General"));
+    notebook->append_page(*manage(make_links_pane()), _("Links"));
 #ifdef HAVE_X11_SUPPORT
     notebook->append_page (*manage(make_hotkeys_pane()),
                            _("Hotkeys"));
@@ -274,16 +275,6 @@ namespace gnote {
 #endif
 
 
-      // WikiWords...
-
-      check = manage(make_check_button (_("Highlight _WikiWords")));
-      set_widget_tooltip(*check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
-                                   "Clicking the word will create a note with that name."));
-      options_list->attach(*check, 0, options_list_row++, 1, 1);
-      peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_WIKIWORDS, *check);
-      peditor->setup();
-
-
       // Auto bulleted list
       check = manage(make_check_button (_("Enable auto-_bulleted lists")));
       set_widget_tooltip(*check, _("Start new bulleted list by starting new line with character \"-\"."));
@@ -387,7 +378,45 @@ namespace gnote {
     return button;
   }
 
-  // Page 2
+  Gtk::Widget *PreferencesDialog::make_links_pane()
+  {
+    Gtk::Grid *vbox = manage(new Gtk::Grid);
+    vbox->set_row_spacing(12);
+    vbox->set_border_width(12);
+    vbox->show();
+
+    Gtk::CheckButton *check;
+    sharp::PropertyEditorBool *peditor;
+    int vbox_row = 0;
+    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+
+    // internal links
+    check = manage(make_check_button(_("_Automatically link to notes")));
+    set_widget_tooltip(*check, _("Enable this option to create a link when text matches note title."));
+    vbox->attach(*check, 0, vbox_row++, 1, 1);
+    peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_AUTO_LINKS, *check);
+    peditor->setup();
+
+    // URLs
+    check = manage(make_check_button(_("Create links for _URLs")));
+    set_widget_tooltip(*check, _("Enable this option to create a link for URLs. "
+                                 "Clicking will open that URL with apropriate program."));
+    vbox->attach(*check, 0, vbox_row++, 1, 1);
+    peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_URL_LINKS, *check);
+    peditor->setup();
+
+    // WikiWords...
+    check = manage(make_check_button(_("Highlight _WikiWords")));
+    set_widget_tooltip(*check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
+                                 "Clicking the word will create a note with that name."));
+    vbox->attach(*check, 0, vbox_row++, 1, 1);
+    peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_WIKIWORDS, *check);
+    peditor->setup();
+
+    return vbox;
+  }
+
     // List of Hotkey options
   Gtk::Widget *PreferencesDialog::make_hotkeys_pane()
   {

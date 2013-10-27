@@ -49,6 +49,7 @@ public:
   
 
   Gtk::Widget *make_editing_pane();
+  Gtk::Widget *make_links_pane();
   Gtk::Widget *make_hotkeys_pane();
   Gtk::Widget *make_sync_pane();
   Gtk::Widget *make_addins_pane();
