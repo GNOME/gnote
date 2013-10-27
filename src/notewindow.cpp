@@ -633,7 +633,7 @@ namespace gnote {
     embeddable_toolbar()->set_sensitive(m_enabled);
     if(m_global_keys)
       m_global_keys->enabled(m_enabled);
-    FOREACH(Glib::RefPtr<Gtk::Action> & action, get_widget_actions()) {
+    FOREACH(const Glib::RefPtr<Gtk::Action> & action, get_widget_actions()) {
       if(Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action) == 0) {
         action->set_sensitive(enable);
       }
