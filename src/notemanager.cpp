@@ -796,6 +796,20 @@ namespace gnote {
     return title;
   }
 
+  Note::List NoteManager::get_notes_linking_to(const std::string & title) const
+  {
+    std::string tag = "<link:internal>" + utils::XmlEncoder::encode(title) + "</link:internal>";
+    Note::List result;
+    FOREACH(const Note::Ptr & note, m_notes) {
+      if(note->get_title() != title) {
+        if(note->get_complete_note_xml().find(tag) != std::string::npos) {
+          result.push_back(note);
+        }
+      }
+    }
+    return result;
+  }
+
 
   TrieController::TrieController (NoteManager & manager)
     : m_manager(manager)

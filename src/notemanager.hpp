@@ -96,6 +96,7 @@ namespace gnote {
     Note::Ptr get_or_create_template_note();
     static std::string get_note_template_content(const std::string & title);
     static std::string split_title_from_content (std::string title, std::string & body);
+    Note::List get_notes_linking_to(const std::string & title) const;
 
     ChangedHandler signal_note_deleted;
     ChangedHandler signal_note_added;

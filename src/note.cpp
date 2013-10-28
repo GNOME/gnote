@@ -671,19 +671,8 @@ namespace gnote {
 
   void Note::process_rename_link_update(const std::string & old_title)
   {
-    Note::List linking_notes;
-    const Note::List & manager_notes = m_manager.get_notes();
+    Note::List linking_notes = m_manager.get_notes_linking_to(old_title);
     const Note::Ptr self = shared_from_this();
-
-    for (Note::List::const_iterator iter = manager_notes.begin();
-         manager_notes.end() != iter;
-         iter++) {
-      // Technically, containing text does not imply linking,
-      // but this is less work
-      const Note::Ptr note = *iter;
-      if (note != self && note->contains_text(old_title))
-        linking_notes.push_back(note);
-    }
 
     if (!linking_notes.empty()) {
       Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);

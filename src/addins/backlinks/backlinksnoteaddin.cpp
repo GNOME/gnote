@@ -93,19 +93,10 @@ void BacklinksNoteAddin::update_menu(Gtk::Menu *menu)
 
 void BacklinksNoteAddin::get_backlink_menu_items(std::list<BacklinkMenuItem*> & items)
 {
-  std::string search_title = get_note()->get_title();
-  std::string encoded_title = sharp::string_trim(
-      gnote::utils::XmlEncoder::encode(sharp::string_to_lower(search_title)));
-
-  // Go through each note looking for
-  // notes that link to this one.
-  const gnote::Note::List & list = get_note()->manager().get_notes();
-  for(gnote::Note::List::const_iterator iter = list.begin();
-      iter != list.end(); ++iter) {
-    const gnote::Note::Ptr & note(*iter);
-    if (note != get_note() // don't match ourself
-        && check_note_has_match (note, encoded_title)) {
-      BacklinkMenuItem *item = manage(new BacklinkMenuItem (note, search_title));
+  gnote::Note::List notes = get_note()->manager().get_notes_linking_to(get_note()->get_title());
+  FOREACH(const gnote::Note::Ptr & note, notes) {
+    if(note != get_note()) { // don't match ourself
+      BacklinkMenuItem *item = manage(new BacklinkMenuItem(note, get_note()->get_title()));
 
       items.push_back(item);
     }
