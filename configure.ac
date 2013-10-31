@@ -171,6 +171,7 @@ src/addins/Makefile
 src/addins/addins.mk
 src/addins/backlinks/Makefile
 src/addins/bugzilla/Makefile
+src/addins/exporttogtg/Makefile
 src/addins/exporttohtml/Makefile
 src/addins/filesystemsyncservice/Makefile
 src/addins/fixedwidth/Makefile

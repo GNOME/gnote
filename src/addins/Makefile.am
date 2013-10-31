@@ -3,6 +3,7 @@
 
 SUBDIRS = backlinks \
 	bugzilla \
+	exporttogtg \
 	exporttohtml \
 	filesystemsyncservice \
 	fixedwidth \
