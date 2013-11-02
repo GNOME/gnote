@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-28 21:28+0000\n"
-"PO-Revision-Date: 2013-10-28 19:42-0300\n"
+"POT-Creation-Date: 2013-10-31 22:05+0000\n"
+"PO-Revision-Date: 2013-11-01 06:49-0300\n"
 "Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -822,6 +822,43 @@ msgstr "Se você remover um ícone ele estará permanentemente perdido."
 msgid "Error removing icon %s: %s"
 msgstr "Erro ao remover o ícone %s: %s"
 
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.h:1
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:71
+msgid "Export to Getting Things GNOME"
+msgstr "Exportar ao Getting Things GNOME"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.h:2
+msgid "Exports individual notes as Getting Things GNOME tasks"
+msgstr "Exporta notas individuais como tarefas do Getting Things GNOME"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.h:3
+#: ../src/addins/specialnotes/specialnotes.desktop.in.h:3
+#: ../src/addins/statistics/statistics.desktop.in.h:3
+msgid "Aurimas Černius"
+msgstr "Aurimas Černius"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:72
+msgid "Export note as Getting Things GNOME task"
+msgstr "Exportar nota como tarefa do Getting Things GNOME"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:86
+msgid "GTG XML loaded, but interface not found"
+msgstr "XML do GTG carregado, porém a interface não foi encontrada"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:92
+#, c-format
+msgid "Failed to create GTG interface from XML: %s"
+msgstr "Ocorreu falha ao criar a interface do GTG a partir do XML: %s"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
+msgid "Failed to create D_Bus proxy for GTG"
+msgstr "Ocorreu falha ao criar proxy D_Bus para o GTG"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:116
+#, c-format
+msgid "Failed to call GTG: %s"
+msgstr "Ocorreu falha ao chamar o GTG: %s"
+
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:1
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
 msgid "Export to HTML"
@@ -1108,11 +1145,6 @@ msgstr "Notas especiais"
 #: ../src/addins/specialnotes/specialnotes.desktop.in.h:2
 msgid "Show special notes, that are otherwise hidden"
 msgstr "Mostra notas especiais, que do contrário estariam ocultas"
-
-#: ../src/addins/specialnotes/specialnotes.desktop.in.h:3
-#: ../src/addins/statistics/statistics.desktop.in.h:3
-msgid "Aurimas Černius"
-msgstr "Aurimas Černius"
 
 #: ../src/addins/statistics/statisticsapplicationaddin.cpp:50
 msgid "Show Statistics"
