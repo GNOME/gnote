@@ -166,9 +166,9 @@ namespace gnote {
     add_app_menu_item(APP_ACTION_NEW, 100, _("_New Note"), "app.new-note");
     add_app_menu_item(APP_ACTION_NEW, 200, _("New _Window"), "app.new-window");
     add_app_menu_item(APP_ACTION_MANAGE, 100, _("_Preferences"), "app.show-preferences");
-    add_app_menu_item(APP_ACTION_HELP, 100, _("_Help"), "app.help-contents");
-    add_app_menu_item(APP_ACTION_HELP, 200, _("_About"), "app.about");
-    add_app_menu_item(APP_ACTION_LAST, 100, _("_Quit"), "app.quit");
+    add_app_menu_item(APP_ACTION_LAST, 100, _("_Help"), "app.help-contents");
+    add_app_menu_item(APP_ACTION_LAST, 200, _("_About"), "app.about");
+    add_app_menu_item(APP_ACTION_LAST, 300, _("_Quit"), "app.quit");
   }
 
   Glib::RefPtr<Gio::Menu> ActionManager::get_app_menu() const
@@ -182,11 +182,6 @@ namespace gnote {
     }
 
     section = make_app_menu_section(APP_ACTION_MANAGE);
-    if(section != 0) {
-      menu->insert_section(pos++, "", section);
-    }
-
-    section = make_app_menu_section(APP_ACTION_HELP);
     if(section != 0) {
       menu->insert_section(pos++, "", section);
     }

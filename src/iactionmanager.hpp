@@ -46,7 +46,6 @@ class IActionManager
 public:
   static const int APP_ACTION_NEW;
   static const int APP_ACTION_MANAGE;
-  static const int APP_ACTION_HELP;
   static const int APP_ACTION_LAST;
 
   virtual ~IActionManager();

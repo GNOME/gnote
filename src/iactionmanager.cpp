@@ -24,8 +24,7 @@ namespace gnote {
 
 const int IActionManager::APP_ACTION_NEW = 1;
 const int IActionManager::APP_ACTION_MANAGE = 2;
-const int IActionManager::APP_ACTION_HELP = 3;
-const int IActionManager::APP_ACTION_LAST = 4;
+const int IActionManager::APP_ACTION_LAST = 3;
 
 IActionManager::~IActionManager()
 {}
