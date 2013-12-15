@@ -159,7 +159,6 @@ public:
 protected:
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line) override;
   virtual void on_startup() override;
-  virtual void on_window_removed(Gtk::Window *window) override;
 private:
   Gnote();
   std::string get_note_path(const std::string & override_path);
