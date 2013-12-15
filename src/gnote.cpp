@@ -140,15 +140,6 @@ namespace gnote {
   }
 
 
-  void Gnote::on_window_removed(Gtk::Window *window)
-  {
-    // Do not remove last window if background or status icon mode
-    if(windowed() || get_windows().size() > 1) {
-      Gtk::Application::on_window_removed(window);
-    }
-  }
-
-
   void Gnote::common_init()
   {
     std::string note_path = get_note_path(cmd_line.note_path());
@@ -213,8 +204,8 @@ namespace gnote {
       start_tray_icon();
     }
     else if(m_is_background) {
-      // Create Search All Notes window as we need it present for application to run
-      new_main_window();
+      // do not exit when all windows are closed
+      hold();
     }
     else {
       get_main_window().present();
