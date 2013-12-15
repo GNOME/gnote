@@ -67,7 +67,7 @@ namespace sync {
   }
 
 
-  void SilentUI::note_synchronized(const std::string & noteTitle, NoteSyncType type)
+  void SilentUI::note_synchronized(const std::string & DBG(noteTitle), NoteSyncType DBG(type))
   {
     DBG_OUT("note synchronized, Title: %s, Type: %d", noteTitle.c_str(), int(type));
   }

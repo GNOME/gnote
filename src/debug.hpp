@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,6 +31,12 @@
 #include "base/macros.hpp"
 
 namespace utils {
+
+#ifdef DEBUG
+#define DBG(x) x
+#else
+#define DBG(x)
+#endif
 
 #ifdef DEBUG
 #define DBG_OUT(x, ...) \

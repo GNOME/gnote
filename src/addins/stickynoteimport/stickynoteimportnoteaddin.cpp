@@ -53,10 +53,12 @@ StickyNoteImportModule::StickyNoteImportModule()
 
 static const char * STICKY_XML_REL_PATH = "/.gnome2/stickynotes_applet";
 static const char * STICKY_NOTE_QUERY = "//note";
+#ifdef DEBUG
 static const char * DEBUG_NO_STICKY_FILE = "StickyNoteImporter: Sticky Notes XML file does not exist or is invalid!";
 static const char * DEBUG_CREATE_ERROR_BASE = "StickyNoteImporter: Error while trying to create note \"%s\": %s";
 static const char * DEBUG_FIRST_RUN_DETECTED = "StickyNoteImporter: Detecting that importer has never been run...";
 //static const char * DEBUG_GCONF_SET_ERROR_BASE = "StickyNoteImporter: Error setting initial GConf first run key value: %s";
+#endif
 
 static const char * PREFS_FILE = "stickynoteimport.ini";
 

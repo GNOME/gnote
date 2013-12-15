@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012-2013 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -67,7 +67,7 @@ namespace utils {
   static void _print(const char *prefix, const char *fmt, 
              const char* func, ...);
 
-  void dbg_print(const char *fmt, const char* func, ...)
+  void dbg_print(const char *DBG(fmt), const char* DBG(func), ...)
   {
 #ifdef DEBUG
 #define DEBUG_MSG "DEBUG: "
@@ -112,7 +112,7 @@ namespace utils {
   }
 
 
-  void log_print(const char *fmt, const char *func, ...)
+  void log_print(const char *DBG(fmt), const char *DBG(func), ...)
   {
 #ifdef DEBUG
 #define LOG_MSG "LOG: "

@@ -1298,10 +1298,12 @@ namespace gnote {
 
   void NoteTagsWatcher::initialize ()
   {
+#ifdef DEBUG
     m_on_tag_added_cid = get_note()->signal_tag_added().connect(
       sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_added));
     m_on_tag_removing_cid = get_note()->signal_tag_removing().connect(
       sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removing));
+#endif
     m_on_tag_removed_cid = get_note()->signal_tag_removed().connect(
       sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removed));      
   }
@@ -1324,7 +1326,8 @@ namespace gnote {
 //    }
   }
 
-  void NoteTagsWatcher::on_tag_added(const Note& note, const Tag::Ptr& tag)
+#ifdef DEBUG
+  void NoteTagsWatcher::on_tag_added(const Note& DBG(note), const Tag::Ptr& DBG(tag))
   {
     DBG_OUT ("Tag added to %s: %s", note.get_title().c_str(), tag->name().c_str());
   }
@@ -1334,6 +1337,7 @@ namespace gnote {
   {
     DBG_OUT ("Removing tag from %s: %s", note.get_title().c_str(), tag.name().c_str());
   }
+#endif
 
 
   void NoteTagsWatcher::on_tag_removed(const Note::Ptr&, const std::string& tag_name)
