@@ -47,9 +47,9 @@ public:
   virtual void new_note() = 0;
   virtual void close_window() = 0;
 
-  void close_on_escape(bool close)
+  void close_on_escape(bool close_win)
     {
-      m_close_on_esc = close;
+      m_close_on_esc = close_win;
     }
   bool close_on_escape() const
     {
