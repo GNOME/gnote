@@ -423,10 +423,6 @@ namespace gnote {
   void Gnote::on_main_window_closed(Gtk::Window *win)
   {
     delete win;
-    // if background mode, we need to have a window, to prevent quit
-    if(m_is_background && !Gtk::Window::list_toplevels().size()) {
-      new_main_window();
-    }
   }
 
   MainWindow & Gnote::get_window_for_note()
