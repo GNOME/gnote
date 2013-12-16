@@ -132,7 +132,7 @@ namespace gnote {
     else if(cmd_line.needs_execute()) {
       cmd_line.execute();
     }
-    else {
+    else if(!cmd_line.background()) {
       new_main_window().present();
     }
 
@@ -177,17 +177,19 @@ namespace gnote {
       else {
         // If Gnote is already running, open the search window
         // so the user gets some sort of feedback when they
-        // attempt to run Gnote again.
-        Glib::RefPtr<RemoteControlClient> remote;
-        try {
-          remote = RemoteControlProxy::get_instance();
-          DBG_ASSERT(remote, "remote is NULL, something is wrong");
-          if(remote) {
-            remote->DisplaySearch();
+        // attempt to run Gnote again, except when --background is passed
+        if(!m_is_background) {
+          Glib::RefPtr<RemoteControlClient> remote;
+          try {
+            remote = RemoteControlProxy::get_instance();
+            DBG_ASSERT(remote, "remote is NULL, something is wrong");
+            if(remote) {
+              remote->DisplaySearch();
+            }
+          } 
+          catch (...)
+          {
           }
-        } 
-        catch (...)
-        {
         }
 
         ERR_OUT(_("Gnote is already running.  Exiting..."));
