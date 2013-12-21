@@ -54,7 +54,9 @@ namespace gnote {
       
       // Look for the template note and create a new note
       Note::Ptr note = m_notebook->create_notebook_note ();
-      MainWindow::present_in_new_window(note, true);
+      MainWindow::present_in_new_window(note,
+        Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+          Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
     }
 
 
