@@ -95,7 +95,9 @@ namespace gnote {
   {
     if(!m_inhibit_activate) {
       if(m_note) {
-        MainWindow::present_in_new_window(m_note, true);
+        MainWindow::present_in_new_window(m_note,
+          Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+            Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
       }
     }
   }
@@ -363,7 +365,8 @@ namespace gnote {
     MainWindow &win = IGnote::obj().new_main_window();
     win.new_note();
     win.present();
-    win.close_on_escape(true);
+    win.close_on_escape(Preferences::obj().get_schema_settings(
+      Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
   }
 
   void Tray::on_search_notes_activate()

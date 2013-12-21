@@ -112,6 +112,7 @@ private:
   Gtk::Menu          *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
   bool                m_open_notes_in_new_window;
+  bool                m_close_note_on_escape;
 };
 
 

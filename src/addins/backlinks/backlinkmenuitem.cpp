@@ -97,7 +97,9 @@ void BacklinkMenuItem::on_activate()
     return;
   }
 
-  gnote::MainWindow::present_in_new_window(m_note, true);
+  gnote::MainWindow::present_in_new_window(m_note,
+    gnote::Preferences::obj().get_schema_settings(gnote::Preferences::SCHEMA_GNOTE)->
+      get_boolean(gnote::Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
 }
 
 
