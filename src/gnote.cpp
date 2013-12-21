@@ -120,7 +120,9 @@ namespace gnote {
     Gtk::Application::on_command_line(command_line);
     int argc = 0;
     char **argv = command_line->get_arguments(argc);
-    cmd_line.parse(argc, argv);
+    GnoteCommandLine passed_cmd_line;
+    GnoteCommandLine &cmdline = m_manager ? passed_cmd_line : cmd_line;
+    cmdline.parse(argc, argv);
     if(!m_manager) {
       common_init();
       Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
@@ -129,13 +131,14 @@ namespace gnote {
         .connect(sigc::mem_fun(*this, &Gnote::on_setting_changed));
       register_object();
     }
-    else if(cmd_line.needs_execute()) {
-      cmd_line.execute();
+    else if(cmdline.needs_execute()) {
+      cmdline.execute();
     }
-    else if(!cmd_line.background()) {
+    else if(!cmdline.background()) {
       new_main_window().present();
     }
 
+    g_strfreev(argv);
     return 0;
   }
 
@@ -555,7 +558,7 @@ namespace gnote {
     , m_open_start_here(false)
     , m_highlight_search(NULL)
   {
-    static const GOptionEntry entries[] =
+    const GOptionEntry entries[] =
       {
         { "background", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_background, _("Run Gnote in background."), NULL },
         { "note-path", 0, 0, G_OPTION_ARG_STRING, &m_note_path, _("Specify the path of the directory containing the notes."), _("path") },
