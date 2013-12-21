@@ -380,8 +380,7 @@ namespace gnote {
         m_search_button.set_active(false);
       }
       // Allow Escape to close the window
-      else if(close_on_escape()
-              || &m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(currently_embedded())) {
+      else if(close_on_escape()) {
         close_window();
       }
       else {
