@@ -29,6 +29,7 @@
 #include <gtkmm/alignment.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/headerbar.h>
 
 #include "base/macros.hpp"
 #include "note.hpp"
@@ -71,9 +72,8 @@ private:
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
   EmbeddableWidget *currently_embedded();
-  Gtk::Toolbar *make_toolbar();
+  void make_header_bar();
   void make_search_box();
-  void on_embedded_name_changed(const std::string & name);
   void on_entry_changed();
   void on_entry_activated();
   void entry_changed_timeout();
@@ -92,6 +92,7 @@ private:
   bool on_notes_widget_key_press(GdkEventKey*);
 
   NoteManager        &m_note_manager;
+  Gtk::HeaderBar      m_header_bar;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::Grid           m_content_vbox;
   Gtk::Alignment      m_search_box;
@@ -105,7 +106,6 @@ private:
   Gtk::SearchEntry    m_search_entry;
   std::list<EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
-  sigc::connection    m_current_embedded_name_slot;
   sigc::connection    m_current_embedded_actions_slot;
   utils::InterruptableTimeout *m_entry_changed_timeout;
   Gtk::Menu          *m_window_menu_embedded;

@@ -72,12 +72,12 @@ namespace gnote {
     m_search_notes_widget.notes_widget().signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_widget_key_press));
 
-    Gtk::Toolbar *toolbar = make_toolbar();
+    make_header_bar();
+    set_titlebar(m_header_bar);
     make_search_box();
     m_content_vbox.set_orientation(Gtk::ORIENTATION_VERTICAL);
-    m_content_vbox.attach(*toolbar, 0, 0, 1, 1);
-    m_content_vbox.attach(m_search_box, 0, 1, 1, 1);
-    m_content_vbox.attach(m_embed_box, 0, 2, 1, 1);
+    m_content_vbox.attach(m_search_box, 0, 0, 1, 1);
+    m_content_vbox.attach(m_embed_box, 0, 1, 1, 1);
     m_embed_box.set_hexpand(true);
     m_embed_box.set_vexpand(true);
     m_embed_box.show();
@@ -113,32 +113,18 @@ namespace gnote {
     }
   }
 
-  Gtk::Toolbar *NoteRecentChanges::make_toolbar()
+  void NoteRecentChanges::make_header_bar()
   {
-    gint icon_size = 16;
-    gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &icon_size, NULL);
-    Gtk::Toolbar *toolbar = manage(new Gtk::Toolbar);
-    toolbar->set_hexpand(true);
-    toolbar->set_vexpand(false);
-    // let move window by dragging toolbar with mouse
-    toolbar->get_style_context()->add_class(GTK_STYLE_CLASS_MENUBAR);
-    Gtk::ToolItem *tool_item = manage(new Gtk::ToolItem);
-    Gtk::Grid *box = manage(new Gtk::Grid);
-    box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
-
-    GtkIconSize toolbar_icon_size = gtk_toolbar_get_icon_size(toolbar->gobj());
-    gint toolbar_size_px;
-    gtk_icon_size_lookup(toolbar_icon_size, &toolbar_size_px, NULL);
-    gint icon_margin = (gint) floor((toolbar_size_px - icon_size) / 2.0);
+    m_header_bar.set_show_close_button(true);
 
     Gtk::Grid *left_box = manage(new Gtk::Grid);
     left_box->get_style_context()->add_class(GTK_STYLE_CLASS_RAISED);
     left_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
+    left_box->set_valign(Gtk::ALIGN_CENTER);
     m_all_notes_button = manage(new Gtk::Button);
     Gtk::Image *image = manage(new Gtk::Image);
     image->property_icon_name() = "go-previous-symbolic";
     image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    image->property_margin() = icon_margin;
     m_all_notes_button->set_image(*image);
     m_all_notes_button->set_tooltip_text(_("All Notes"));
     m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_all_notes_button_clicked));
@@ -146,28 +132,24 @@ namespace gnote {
     left_box->attach(*m_all_notes_button, 0, 0, 1, 1);
 
     m_new_note_button = manage(new Gtk::Button);
-    m_new_note_button->set_vexpand(true);
     m_new_note_button->set_label(_("New"));
     m_new_note_button->add_accelerator("activate", get_accel_group(), GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_new_note_button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
     m_new_note_button->show_all();
     left_box->attach(*m_new_note_button, 1, 0, 1, 1);
     left_box->show();
-    box->attach(*left_box, 0, 0, 1, 1);
 
-    m_embedded_toolbar.set_hexpand(true);
     m_embedded_toolbar.set_margin_left(6);
-    m_embedded_toolbar.set(0.0, 0.5, 0.0, 0.0);
+    m_embedded_toolbar.set(Gtk::ALIGN_START, Gtk::ALIGN_CENTER, 0, 0);
     m_embedded_toolbar.show();
-    box->attach(m_embedded_toolbar, 1, 0, 1, 1);
 
     Gtk::Grid *right_box = manage(new Gtk::Grid);
     right_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
     right_box->set_column_spacing(5);
+    right_box->set_valign(Gtk::ALIGN_CENTER);
     image = manage(new Gtk::Image);
     image->property_icon_name() = "edit-find-symbolic";
     image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    image->property_margin() = icon_margin;
     m_search_button.set_image(*image);
     m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
     m_search_button.add_accelerator("activate", get_accel_group(), GDK_KEY_F, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
@@ -179,7 +161,6 @@ namespace gnote {
     image = manage(new Gtk::Image);
     image->property_icon_name() = "emblem-system-symbolic";
     image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    image->property_margin() = icon_margin;
     m_window_actions_button->set_image(*image);
     m_window_actions_button->signal_clicked().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu));
@@ -188,15 +169,11 @@ namespace gnote {
     m_window_actions_button->show_all();
     right_box->attach(*m_window_actions_button, 1, 0, 1, 1);
     right_box->show();
-    box->attach(*right_box, 2, 0, 1, 1);
 
-    box->show();
-    tool_item->add(*box);
-    tool_item->set_expand(true);
-    tool_item->show();
-    toolbar->add(*tool_item);
-    toolbar->show();
-    return toolbar;
+    m_header_bar.pack_start(*left_box);
+    m_header_bar.pack_start(m_embedded_toolbar);
+    m_header_bar.pack_end(*right_box);
+    m_header_bar.show();
   }
 
   void NoteRecentChanges::make_search_box()
@@ -498,9 +475,12 @@ namespace gnote {
       widget.size_internals();
  
       update_toolbar(widget);
-      on_embedded_name_changed(widget.get_name());
-      m_current_embedded_name_slot = widget.signal_name_changed
-        .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_embedded_name_changed));
+      if(&widget == &m_search_notes_widget) {
+        m_header_bar.set_title(_("Gnote"));
+      }
+      else {
+        m_header_bar.set_title("");
+      }
     }
     catch(std::bad_cast&) {
     }
@@ -522,7 +502,6 @@ namespace gnote {
       if(currently_embedded() != &widget) {
         return;
       }
-      m_current_embedded_name_slot.disconnect();
       Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
       widget.background();
       m_embed_box.remove(wid);
@@ -572,16 +551,6 @@ namespace gnote {
     bool res = MainWindow::on_map_event(evt);
     m_mapped = true;
     return res;
-  }
-
-  void NoteRecentChanges::on_embedded_name_changed(const std::string & name)
-  {
-    std::string title;
-    if(name != "") {
-      title = name + " - ";
-    }
-    title += _("Gnote");
-    set_title(title);
   }
 
   void NoteRecentChanges::on_entry_changed()
