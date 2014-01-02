@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -401,15 +401,17 @@ namespace gnote {
     int grid_col = 0;
 
     m_pin_image = manage(new Gtk::Image);
+    m_pin_button = manage(new Gtk::ToolButton(*m_pin_image, _("Pin")));
+
     if(m_note.is_pinned()) {
       m_pin_image->property_gicon() = get_icon_pin_down();
+      m_pin_button->set_tooltip_text(_("Remove from important notes"));
     }
     else {
       m_pin_image->property_gicon() = get_icon_pin_active();
+      m_pin_button->set_tooltip_text(_("Mark note as important"));
     }
 
-    m_pin_button = manage(new Gtk::ToolButton(*m_pin_image, _("Pin")));
-    m_pin_button->set_tooltip_text(_("Mark note as important"));
     m_pin_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
     grid->attach(*m_pin_button, grid_col++, 0, 1, 1);
     notebooks::NotebookManager::obj().signal_note_pin_status_changed
@@ -615,9 +617,11 @@ namespace gnote {
     }
     if(pinned) {
       m_pin_image->property_gicon() = get_icon_pin_down();
+      m_pin_button->set_tooltip_text(_("Remove from important notes"));
     }
     else {
       m_pin_image->property_gicon() = get_icon_pin_active();
+      m_pin_button->set_tooltip_text(_("Mark note as important"));
     }
   }
 
