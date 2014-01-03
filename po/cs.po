@@ -9,15 +9,15 @@
 # Pavel Šefránek <ps@pjoul.cz>, 2008, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2008, 2009.
 # Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009.
-# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-19 13:14+0000\n"
-"PO-Revision-Date: 2013-12-24 22:52+0100\n"
+"POT-Creation-Date: 2013-12-30 18:36+0000\n"
+"PO-Revision-Date: 2014-01-03 07:41+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -47,7 +47,7 @@ msgstr ""
 "zařízeních naráz."
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:45
-#: ../src/recentchanges.cpp:584
+#: ../src/recentchanges.cpp:479
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -60,7 +60,7 @@ msgid "Note-taker"
 msgstr "Poznámky"
 
 #: ../data/gnote.desktop.in.in.h:4
-msgid "note;idea;link;organize;"
+msgid "notes;idea;link;organize;"
 msgstr "poznámka;nápad;myšlenka;odkaz;uspořádat;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
@@ -602,7 +602,7 @@ msgstr ""
 "strftime(3)."
 
 #: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
-#: ../src/tray.cpp:465
+#: ../src/tray.cpp:468
 msgid "_Quit"
 msgstr "U_končit"
 
@@ -611,7 +611,7 @@ msgid "Quit Gnote"
 msgstr "Ukončit Gnote"
 
 #: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
-#: ../src/tray.cpp:448
+#: ../src/tray.cpp:451
 msgid "_Preferences"
 msgstr "_Předvolby"
 
@@ -639,19 +639,19 @@ msgstr "O aplikaci Gnote"
 msgid "TrayIcon"
 msgstr "Ikona v panelu"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:223
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
 msgid "Create _New Note"
 msgstr "Vytvořit _novou poznámku"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:227
 msgid "Create a new note"
 msgstr "Vytvořit novou poznámku"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:232
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
 msgid "_Search All Notes"
 msgstr "_Hledat ve všech poznámkách"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:236
 msgid "Open the Search All Notes window"
 msgstr "Otevřít okno Hledat ve všech poznámkách"
 
@@ -663,7 +663,7 @@ msgstr "_Nová poznámka"
 msgid "New _Window"
 msgstr "No_vé okno"
 
-#: ../src/actionmanager.cpp:169 ../src/tray.cpp:453
+#: ../src/actionmanager.cpp:169 ../src/tray.cpp:456
 msgid "_Help"
 msgstr "Nápo_věda"
 
@@ -1353,15 +1353,15 @@ msgstr "Vzdálené volání funkce %s selhalo"
 msgid "Exception thrown when creating note: %s"
 msgstr "Došlo k výjimce při vytváření poznámky: %s"
 
-#: ../src/gnote.cpp:195
+#: ../src/gnote.cpp:198
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote již běží. Ukončuje se…"
 
-#: ../src/gnote.cpp:356
+#: ../src/gnote.cpp:359
 msgid "and Tomboy original authors."
 msgstr "a původní autoři aplikace Tomboy."
 
-#: ../src/gnote.cpp:362
+#: ../src/gnote.cpp:365
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>, 2005, 2006\n"
@@ -1371,7 +1371,7 @@ msgstr ""
 "Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009\n"
 "Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012"
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:374
 msgid ""
 "Copyright © 2010-2013 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1383,76 +1383,76 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004 – 2009 původní autoři Tomboy."
 
-#: ../src/gnote.cpp:375
+#: ../src/gnote.cpp:378
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Jednoduchá a snadno použitelná aplikace pro poznámky na pracovní ploše."
 
-#: ../src/gnote.cpp:386
+#: ../src/gnote.cpp:389
 msgid "Homepage"
 msgstr "Domovská stránka"
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:563
 msgid "Run Gnote in background."
 msgstr "Spustit Gnote na pozadí"
 
-#: ../src/gnote.cpp:561
+#: ../src/gnote.cpp:564
 msgid "Specify the path of the directory containing the notes."
 msgstr "Určit cestu ke složce obsahující poznámky."
 
-#: ../src/gnote.cpp:561
+#: ../src/gnote.cpp:564
 msgid "path"
 msgstr "cesta"
 
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:565
 msgid "Open the search all notes window with the search text."
 msgstr "Otevřít okno Hledat ve všech poznámkách s hledaným textem."
 
-#: ../src/gnote.cpp:562 ../src/gnote.cpp:567
+#: ../src/gnote.cpp:565 ../src/gnote.cpp:570
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:563
+#: ../src/gnote.cpp:566
 msgid "Print version information."
 msgstr "Vypsat informace o verzi."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:567
 msgid "Create and display a new note, with a optional title."
 msgstr "Vytvořit a zobrazit novou poznámku s volitelným názvem."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:567
 msgid "title"
 msgstr "název"
 
-#: ../src/gnote.cpp:565
+#: ../src/gnote.cpp:568
 msgid "Display the existing note matching title."
 msgstr "Zobrazit existující poznámku odpovídající názvem."
 
-#: ../src/gnote.cpp:565
+#: ../src/gnote.cpp:568
 msgid "title/url"
 msgstr "název/url"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:569
 msgid "Display the 'Start Here' note."
 msgstr "Zobrazit poznámku „Začněte zde“."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:570
 msgid "Search and highlight text in the opened note."
 msgstr "Hledat a zvýraznit text v otevřené poznámce."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:574
 msgid "A note taking application"
 msgstr "Aplikace na dělání poznámek"
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:574
 msgid "Gnote options at launch"
 msgstr "Volby Gnote při spouštění"
 
-#: ../src/gnote.cpp:648
+#: ../src/gnote.cpp:651
 msgid "Could not connect to remote instance."
 msgstr "Nelze se připojit ke vzdálené instanci."
 
-#: ../src/gnote.cpp:764
+#: ../src/gnote.cpp:767
 msgid "Version %1%"
 msgstr "Verze %1%"
 
@@ -2183,27 +2183,27 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:143
+#: ../src/recentchanges.cpp:129
 msgid "All Notes"
 msgstr "Všechny poznámky"
 
-#: ../src/recentchanges.cpp:150
+#: ../src/recentchanges.cpp:135
 msgid "New"
 msgstr "Nová"
 
-#: ../src/recentchanges.cpp:174
+#: ../src/recentchanges.cpp:156
 msgid "Search"
 msgstr "Hledat"
 
-#: ../src/recentchanges.cpp:220
+#: ../src/recentchanges.cpp:197
 msgid "Find _Next"
 msgstr "Hledat _následující"
 
-#: ../src/recentchanges.cpp:228
+#: ../src/recentchanges.cpp:205
 msgid "Find _Previous"
 msgstr "Hledat _předchozí"
 
-#: ../src/recentchanges.cpp:702
+#: ../src/recentchanges.cpp:670
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -2672,11 +2672,11 @@ msgstr ""
 msgid "Take notes"
 msgstr "Probrat poznámky"
 
-#: ../src/tray.cpp:165
+#: ../src/tray.cpp:167
 msgid " (new)"
 msgstr " (nová)"
 
-#: ../src/tray.cpp:458
+#: ../src/tray.cpp:461
 msgid "_About Gnote"
 msgstr "O _aplikaci Gnote"
 
