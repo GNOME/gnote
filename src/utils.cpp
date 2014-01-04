@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -70,7 +70,9 @@ namespace gnote {
         }
       
         menu->get_attach_widget()->get_window()->get_origin(x, y);
-        x += menu->get_attach_widget()->get_allocation().get_x();
+        Gdk::Rectangle rect = menu->get_attach_widget()->get_allocation();
+        x += rect.get_x();
+        y += rect.get_y();
         
         Gtk::Requisition menu_req, unused;
         menu->get_preferred_size(unused, menu_req);
@@ -78,7 +80,7 @@ namespace gnote {
           y -= menu_req.height;
         }
         else {
-          y += menu->get_attach_widget()->get_allocation().get_height();
+          y += rect.get_height();
         }
         
         push_in = true;
