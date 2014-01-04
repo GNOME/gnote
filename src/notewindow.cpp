@@ -198,6 +198,8 @@ namespace gnote {
         m_note.queue_save(NO_CHANGE);
       }
     }
+
+    m_note.save();  // to update not title immediately in notes list
   }
 
   void NoteWindow::hint_size(int & width, int & height)
