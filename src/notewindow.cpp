@@ -395,8 +395,6 @@ namespace gnote {
   //
   Gtk::Grid *NoteWindow::make_toolbar()
   {
-    Gtk::IconSize icon_size = Gtk::IconSize::from_name(gtk_icon_size_get_name(GTK_ICON_SIZE_SMALL_TOOLBAR));
-
     Gtk::Grid *grid = manage(new Gtk::Grid);
     int grid_col = 0;
 
@@ -418,7 +416,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
     m_link_button = manage(new Gtk::ToolButton(
-                             *manage(new Gtk::Image(Gtk::Stock::JUMP_TO, icon_size)),
+                             *manage(new Gtk::Image(Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_SMALL_TOOLBAR)),
                              _("Link")));
     m_link_button->set_use_underline(true);
     m_link_button->set_is_important(true);
@@ -430,7 +428,8 @@ namespace gnote {
     grid->attach(*m_link_button, grid_col++, 0, 1, 1);
 
     utils::ToolMenuButton *text_button = manage(new utils::ToolMenuButton(
-        *manage(new Gtk::Image(Gtk::Stock::SELECT_FONT, icon_size)), _("_Text"), m_text_menu));
+        *manage(new Gtk::Image(Gtk::Stock::SELECT_FONT, Gtk::ICON_SIZE_SMALL_TOOLBAR)),
+        _("_Text"), m_text_menu));
     text_button->set_use_underline(true);
     text_button->set_is_important(true);
     text_button->show_all();
