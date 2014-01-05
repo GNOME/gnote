@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -178,17 +178,17 @@ namespace gnote {
     int pos = 0;
     Glib::RefPtr<Gio::Menu> section = make_app_menu_section(APP_ACTION_NEW);
     if(section != 0) {
-      menu->insert_section(pos++, "", section);
+      menu->insert_section(pos++, section);
     }
 
     section = make_app_menu_section(APP_ACTION_MANAGE);
     if(section != 0) {
-      menu->insert_section(pos++, "", section);
+      menu->insert_section(pos++, section);
     }
 
     section = make_app_menu_section(APP_ACTION_LAST);
     if(section != 0) {
-      menu->insert_section(pos++, "", section);
+      menu->insert_section(pos++, section);
     }
 
     return menu;
