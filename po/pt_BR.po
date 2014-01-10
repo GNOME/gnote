@@ -1,20 +1,20 @@
 # Brazilian Portuguese translation for gnote.
-# Copyright (C) 2013 gnote's COPYRIGHT HOLDER
+# Copyright (C) 2014 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009.
 # Taylon Silmer <taylonsilva@gmail.com>, 2009.
 # Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012.
 # Rafael Ferreira <rafael.f.f1@gmail.com>, 2013.
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
-# Enrico Nicoletto <liverig@gmail.com>, 2013.
+# Enrico Nicoletto <liverig@gmail.com>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-30 18:36+0000\n"
-"PO-Revision-Date: 2013-12-31 20:00-0300\n"
+"POT-Creation-Date: 2014-01-08 16:50+0000\n"
+"PO-Revision-Date: 2014-01-10 15:23-0300\n"
 "Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -1781,43 +1781,47 @@ msgstr "Título da nota"
 msgid "Ad_vanced"
 msgstr "Ava_nçado"
 
-#: ../src/notewindow.cpp:366
+#: ../src/notewindow.cpp:368
 msgid "_Link to New Note"
 msgstr "_Link para uma nova nota"
 
-#: ../src/notewindow.cpp:374
+#: ../src/notewindow.cpp:376
 msgid "Te_xt"
 msgstr "Te_xto"
 
-#: ../src/notewindow.cpp:411
+#: ../src/notewindow.cpp:404
 msgid "Pin"
 msgstr "Alfinete"
 
-#: ../src/notewindow.cpp:412
+#: ../src/notewindow.cpp:408 ../src/notewindow.cpp:621
+msgid "Remove from important notes"
+msgstr "Remover das notas importantes"
+
+#: ../src/notewindow.cpp:412 ../src/notewindow.cpp:625
 msgid "Mark note as important"
 msgstr "Marcar nota como importante"
 
-#: ../src/notewindow.cpp:420
+#: ../src/notewindow.cpp:422
 msgid "Link"
 msgstr "Link"
 
-#: ../src/notewindow.cpp:426
+#: ../src/notewindow.cpp:428
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Vincula o texto selecionado a uma nova nota (Ctrl-L)"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:434
 msgid "_Text"
 msgstr "_Texto"
 
-#: ../src/notewindow.cpp:436
+#: ../src/notewindow.cpp:439
 msgid "Set properties of text"
 msgstr "Define as propriedades do texto"
 
-#: ../src/notewindow.cpp:446
+#: ../src/notewindow.cpp:449
 msgid "Delete this note"
 msgstr "Exclui esta nota"
 
-#: ../src/notewindow.cpp:464
+#: ../src/notewindow.cpp:467
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1825,67 +1829,67 @@ msgstr ""
 "Esta nota é uma nota de modelo. Determina o conteúdo padrão de notas "
 "regulares e não vai aparecer na janela do menu ou na pesquisa de notas."
 
-#: ../src/notewindow.cpp:467
+#: ../src/notewindow.cpp:470
 msgid "Convert to regular note"
 msgstr "Converter em nota regular"
 
-#: ../src/notewindow.cpp:470
+#: ../src/notewindow.cpp:473
 msgid "Save Si_ze"
 msgstr "Salvar taman_ho"
 
-#: ../src/notewindow.cpp:474
+#: ../src/notewindow.cpp:477
 msgid "Save Se_lection"
 msgstr "Salvar se_leção"
 
-#: ../src/notewindow.cpp:478
+#: ../src/notewindow.cpp:481
 msgid "Save _Title"
 msgstr "Salvar _título"
 
-#: ../src/notewindow.cpp:580
+#: ../src/notewindow.cpp:583
 msgid "Cannot create note"
 msgstr "Não foi possível criar a nota"
 
-#: ../src/notewindow.cpp:844
+#: ../src/notewindow.cpp:849
 msgid "<b>_Bold</b>"
 msgstr "<b>_Negrito</b>"
 
-#: ../src/notewindow.cpp:845
+#: ../src/notewindow.cpp:850
 msgid "<i>_Italic</i>"
 msgstr "<i>_Itálico</i>"
 
-#: ../src/notewindow.cpp:846
+#: ../src/notewindow.cpp:851
 msgid "<s>_Strikeout</s>"
 msgstr "<s>Ri_scado</s>"
 
-#: ../src/notewindow.cpp:848
+#: ../src/notewindow.cpp:853
 msgid "_Highlight"
 msgstr "_Destacar"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:855
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:857
 msgid "Hu_ge"
 msgstr "Enor_me"
 
-#: ../src/notewindow.cpp:854
+#: ../src/notewindow.cpp:859
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:856
+#: ../src/notewindow.cpp:861
 msgid "S_mall"
 msgstr "_Pequeno"
 
-#: ../src/notewindow.cpp:858
+#: ../src/notewindow.cpp:863
 msgid "Bullets"
 msgstr "Marcadores"
 
-#: ../src/notewindow.cpp:861
+#: ../src/notewindow.cpp:866
 msgid "Increase Font Size"
 msgstr "Aumentar tamanho da fonte"
 
-#: ../src/notewindow.cpp:862
+#: ../src/notewindow.cpp:867
 msgid "Decrease Font Size"
 msgstr "Diminuir tamanho da fonte"
 
@@ -2684,7 +2688,7 @@ msgstr " (nova)"
 msgid "_About Gnote"
 msgstr "_Sobre o Gnote"
 
-#: ../src/utils.cpp:142
+#: ../src/utils.cpp:144
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2692,57 +2696,57 @@ msgstr ""
 "O \"Manual do Gnote\" não foi localizado. Por favor, certifique-se de que a "
 "sua instalação foi concluída com sucesso."
 
-#: ../src/utils.cpp:150
+#: ../src/utils.cpp:152
 msgid "Help not found"
 msgstr "Ajuda não localizada"
 
-#: ../src/utils.cpp:183
+#: ../src/utils.cpp:185
 msgid "Cannot open location"
 msgstr "Não é possível abrir a localização"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:213
+#: ../src/utils.cpp:215
 msgid "Today, %1%"
 msgstr "Hoje, %1%"
 
-#: ../src/utils.cpp:214
+#: ../src/utils.cpp:216
 msgid "Today"
 msgstr "Hoje"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:222
 msgid "Yesterday, %1%"
 msgstr "Ontem, %1%"
 
-#: ../src/utils.cpp:221
+#: ../src/utils.cpp:223
 msgid "Yesterday"
 msgstr "Ontem"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:229
 msgid "Tomorrow, %1%"
 msgstr "Amanhã, %1%"
 
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:230
 msgid "Tomorrow"
 msgstr "Amanhã"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:232
+#: ../src/utils.cpp:234
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: first argument is date, second is time.
-#: ../src/utils.cpp:235 ../src/utils.cpp:247
+#: ../src/utils.cpp:237 ../src/utils.cpp:249
 msgid "%1%, %2%"
 msgstr " %1%, %2%"
 
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:242
 msgid "No Date"
 msgstr "Sem data"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:244
+#: ../src/utils.cpp:246
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
