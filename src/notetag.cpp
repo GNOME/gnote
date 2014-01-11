@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -207,14 +207,7 @@ namespace gnote {
       }
 
       get_extents (iter, start, end);
-      bool success = on_activate (*(editor.operator->()), start, end);
-
-      // Hide note if link is activated with middle mouse button
-      if (success && (button_ev->button == 2)) {
-        Glib::RefPtr<Gtk::Widget> widget = Glib::RefPtr<Gtk::Widget>::cast_static(sender);
-        widget->get_toplevel()->hide ();
-      }
-
+      on_activate (*(editor.operator->()), start, end);
       return false;
     }
     case GDK_KEY_PRESS:
