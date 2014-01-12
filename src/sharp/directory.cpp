@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -54,7 +54,7 @@ namespace sharp {
       const std::string & extension = file_info.get_extension();
 
       if (Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR)
-          && (ext.empty() || (sharp::string_to_lower(extension) == ext))) {
+          && (ext.empty() || (Glib::ustring(extension).lowercase() == ext))) {
         list.push_back(file);
       }
     }

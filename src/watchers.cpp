@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -775,10 +775,10 @@ namespace gnote {
   }
 
   
-  bool NoteLinkWatcher::contains_text(const std::string & text)
+  bool NoteLinkWatcher::contains_text(const Glib::ustring & text)
   {
-    std::string body = sharp::string_to_lower(get_note()->text_content());
-    std::string match = sharp::string_to_lower(text);
+    Glib::ustring body = get_note()->text_content().lowercase();
+    Glib::ustring match = text.lowercase();
 
     return sharp::string_index_of(body, match) > -1;
   }
@@ -808,13 +808,13 @@ namespace gnote {
       return;
     }
 
-    std::string old_title_lower = sharp::string_to_lower(deleted->get_title());
+    std::string old_title_lower = deleted->get_title().lowercase();
 
     // Turn all link:internal to link:broken for the deleted note.
     utils::TextTagEnumerator enumerator(get_buffer(), m_link_tag);
     while (enumerator.move_next()) {
       const utils::TextRange & range(enumerator.current());
-      if (sharp::string_to_lower(enumerator.current().text()) != old_title_lower)
+      if (enumerator.current().text().lowercase() != old_title_lower)
         continue;
 
       get_buffer()->remove_tag (m_link_tag, range.start(), range.end());
@@ -855,7 +855,7 @@ namespace gnote {
       
     Note::Ptr hit_note(hit.value());
 
-    if (sharp::string_to_lower(hit.key()) != sharp::string_to_lower(hit_note->get_title())) { // == 0 if same string
+    if (hit.key().lowercase() != hit_note->get_title().lowercase()) { // == 0 if same string
       DBG_OUT ("DoHighlight: '%s' links wrongly to note '%s'." ,
                hit.key().c_str(),
                hit_note->get_title().c_str());
@@ -904,8 +904,8 @@ namespace gnote {
                                                  const Gtk::TextIter & start,
                                                  const Gtk::TextIter & end)
   {
-    std::string buffer_text = sharp::string_to_lower(start.get_text (end));
-    std::string find_title_lower = sharp::string_to_lower(find_note->get_title());
+    Glib::ustring buffer_text = start.get_text(end).lowercase();
+    Glib::ustring find_title_lower = find_note->get_title().lowercase();
     int idx = 0;
 
     while (true) {

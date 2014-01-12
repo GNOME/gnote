@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -71,10 +72,10 @@ namespace gnote {
   void Tag::set_name(const std::string & value)
   {
     if (!value.empty()) {
-      std::string trimmed_name = sharp::string_trim(value);
+      Glib::ustring trimmed_name = sharp::string_trim(value);
       if (!trimmed_name.empty()) {
         m_name = trimmed_name;
-        m_normalized_name = sharp::string_to_lower(trimmed_name);
+        m_normalized_name = trimmed_name.lowercase();
         if(Glib::str_has_prefix(m_normalized_name, SYSTEM_TAG_PREFIX)) {
           m_issystem = true;
         }

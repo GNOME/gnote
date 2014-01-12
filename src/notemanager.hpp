@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -78,7 +78,7 @@ namespace gnote {
       {
         return m_read_only;
       }
-    Note::Ptr find(const std::string &) const;
+    Note::Ptr find(const Glib::ustring &) const;
     Note::Ptr find_by_uri(const std::string &) const;
     static std::string sanitize_xml_content(const std::string & xml_content);
     Note::Ptr create_note_from_template(const std::string & title, const Note::Ptr & template_note);

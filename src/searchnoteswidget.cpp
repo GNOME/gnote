@@ -164,7 +164,7 @@ void SearchNotesWidget::perform_search()
   remove_matches_column();
   Search search(m_manager);
 
-  std::string text = m_search_text;
+  Glib::ustring text = m_search_text;
   if(text.empty()) {
     m_current_matches.clear();
     m_store_filter->refilter();
@@ -173,7 +173,7 @@ void SearchNotesWidget::perform_search()
     }
     return;
   }
-  text = sharp::string_to_lower(text);
+  text = text.lowercase();
 
   m_current_matches.clear();
 

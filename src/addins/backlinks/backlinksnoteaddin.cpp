@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -109,11 +109,9 @@ void BacklinksNoteAddin::get_backlink_menu_items(std::list<BacklinkMenuItem*> & 
 bool BacklinksNoteAddin::check_note_has_match(const gnote::Note::Ptr & note, 
                                               const std::string & encoded_title)
 {
-  std::string note_text = sharp::string_to_lower(note->xml_content());
-  if (sharp::string_index_of(note_text, encoded_title) < 0)
-    return false;
-  
-  return true;
+  Glib::ustring note_text = note->xml_content();
+  note_text = note_text.lowercase();
+  return note_text.find(encoded_title) != Glib::ustring::npos;
 }
 
 

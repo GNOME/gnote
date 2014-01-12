@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -182,7 +182,7 @@ namespace gnote {
     virtual void on_note_opened() override;
 
   private:
-    bool contains_text(const std::string & text);
+    bool contains_text(const Glib::ustring & text);
     void on_note_added(const Note::Ptr &);
     void on_note_deleted(const Note::Ptr &);
     void on_note_renamed(const Note::Ptr&, const std::string&);

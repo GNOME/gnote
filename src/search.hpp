@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -76,7 +76,7 @@ public:
                           const notebooks::Notebook::Ptr & );
   bool check_note_has_match(const Note::Ptr & note, const std::vector<std::string> & ,
                             bool match_case);
-  int find_match_count_in_note(std::string note_text, const std::vector<std::string> &,
+  int find_match_count_in_note(Glib::ustring note_text, const std::vector<std::string> &,
                                bool match_case);
 private:
 

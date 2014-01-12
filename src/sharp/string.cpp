@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -154,12 +154,6 @@ namespace sharp {
       return -1;
     }
     return iter.begin() - source2.begin() + start_at;
-  }
-
-
-  Glib::ustring string_to_lower(const Glib::ustring & source)
-  {
-    return source.lowercase();
   }
 
 }

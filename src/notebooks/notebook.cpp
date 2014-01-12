@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -97,10 +97,10 @@ namespace notebooks {
 
   void Notebook::set_name(const std::string & value)
   {
-    std::string trimmedName = value;
+    Glib::ustring trimmedName = sharp::string_trim(value);
     if(!trimmedName.empty()) {
       m_name = trimmedName;
-      m_normalized_name = sharp::string_to_lower(trimmedName);
+      m_normalized_name = trimmedName.lowercase();
 
       // The templateNoteTite should show the name of the
       // notebook.  For example, if the name of the notebooks
@@ -223,7 +223,7 @@ namespace notebooks {
 
   std::string Notebook::normalize(const std::string & s)
   {
-    return sharp::string_to_lower(sharp::string_trim(s));
+    return Glib::ustring(sharp::string_trim(s)).lowercase();
   }
 
   Tag::Ptr SpecialNotebook::get_tag() const

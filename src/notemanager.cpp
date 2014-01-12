@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -646,12 +646,12 @@ namespace gnote {
     return m_trie_controller->title_trie()->find_matches(match);
   }
 
-  Note::Ptr NoteManager::find(const std::string & linked_title) const
+  Note::Ptr NoteManager::find(const Glib::ustring & linked_title) const
   {
     for(Note::List::const_iterator iter = m_notes.begin();
         iter != m_notes.end(); ++iter) {
       const Note::Ptr & note(*iter);
-      if (sharp::string_to_lower(note->get_title()) == sharp::string_to_lower(linked_title))
+      if (note->get_title().lowercase() == linked_title.lowercase())
         return note;
     }
     return Note::Ptr();

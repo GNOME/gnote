@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -69,7 +69,7 @@ namespace gnote {
     if (tag_name.empty())
       throw sharp::Exception("TagManager.GetTag () called with a null tag name.");
 
-    std::string normalized_tag_name = sharp::string_to_lower(sharp::string_trim(tag_name));
+    std::string normalized_tag_name = Glib::ustring(sharp::string_trim(tag_name)).lowercase();
     if (normalized_tag_name.empty())
       throw sharp::Exception ("TagManager.GetTag () called with an empty tag name.");
 
@@ -100,7 +100,7 @@ namespace gnote {
     if (tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with a null tag name.");
 
-    std::string normalized_tag_name = sharp::string_to_lower(sharp::string_trim(tag_name));
+    std::string normalized_tag_name = Glib::ustring(sharp::string_trim(tag_name)).lowercase();
     if (normalized_tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with an empty tag name.");
 
