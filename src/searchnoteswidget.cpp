@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -1192,7 +1192,7 @@ void SearchNotesWidget::add_note(const Note::Ptr & note)
     utils::get_pretty_print_date(note->change_date(), true);
   Gtk::TreeIter iter = m_store->append();
   iter->set_value(m_column_types.icon, get_note_icon());
-  iter->set_value(m_column_types.title, note->get_title());
+  iter->set_value(m_column_types.title, std::string(note->get_title()));
   iter->set_value(m_column_types.change_date, nice_date);
   iter->set_value(m_column_types.note, note);
 }
@@ -1204,7 +1204,7 @@ void SearchNotesWidget::rename_note(const Note::Ptr & note)
   for(Gtk::TreeModel::iterator iter = rows.begin();
       rows.end() != iter; iter++) {
     if(note == iter->get_value(m_column_types.note)) {
-      iter->set_value(m_column_types.title, note->get_title());
+      iter->set_value(m_column_types.title, std::string(note->get_title()));
       break;
     }
   }

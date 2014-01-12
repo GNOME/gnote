@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -200,13 +200,13 @@ namespace gnote {
     invalidate_text();
   }
 
-  const std::string & NoteDataBufferSynchronizer::text()
+  const Glib::ustring & NoteDataBufferSynchronizer::text()
   {
     synchronize_text();
     return m_data->text();
   }
 
-  void NoteDataBufferSynchronizer::set_text(const std::string & t)
+  void NoteDataBufferSynchronizer::set_text(const Glib::ustring & t)
   {
     m_data->text() = t;
     synchronize_buffer();
@@ -635,19 +635,19 @@ namespace gnote {
   }
 
 
-  const std::string & Note::get_title() const
+  const Glib::ustring & Note::get_title() const
   {
     return m_data.data().title();
   }
 
 
-  void Note::set_title(const std::string & new_title)
+  void Note::set_title(const Glib::ustring & new_title)
   {
     set_title(new_title, false);
   }
 
 
-  void Note::set_title(const std::string & new_title,
+  void Note::set_title(const Glib::ustring & new_title,
                        bool from_user_action)
   {
     if (m_data.data().title() != new_title) {
@@ -655,7 +655,7 @@ namespace gnote {
         m_window->set_name(new_title);
       }
 
-      std::string old_title = m_data.data().title();
+      Glib::ustring old_title = m_data.data().title();
       m_data.data().title() = new_title;
 
       if (from_user_action) {
@@ -737,30 +737,29 @@ namespace gnote {
   }
 
 
-  bool Note::contains_text(const std::string & text)
+  bool Note::contains_text(const Glib::ustring & text)
   {
-    const std::string text_lower = sharp::string_to_lower(text);
-    const std::string text_content_lower
-                        = sharp::string_to_lower(text_content());
-    return sharp::string_index_of(text_content_lower, text_lower) > -1;
+    const std::string text_lower = text.lowercase();
+    const std::string text_content_lower = text_content().lowercase();
+    return text_content_lower.find(text_lower) != Glib::ustring::npos;
   }
 
 
-  void Note::rename_links(const std::string & old_title,
+  void Note::rename_links(const Glib::ustring & old_title,
                           const Ptr & renamed)
   {
     handle_link_rename(old_title, renamed, true);
   }
 
 
-  void Note::remove_links(const std::string & old_title,
+  void Note::remove_links(const Glib::ustring & old_title,
                           const Ptr & renamed)
   {
     handle_link_rename(old_title, renamed, false);
   }
 
 
-  void Note::handle_link_rename(const std::string & old_title,
+  void Note::handle_link_rename(const Glib::ustring & old_title,
                                 const Ptr & renamed,
                                 bool rename)
   {
@@ -768,8 +767,7 @@ namespace gnote {
     if (!contains_text(old_title))
       return;
 
-    const std::string old_title_lower
-                        = sharp::string_to_lower(old_title);
+    const std::string old_title_lower = old_title.lowercase();
 
     const NoteTag::Ptr link_tag = m_tag_table->get_link_tag();
 
@@ -777,7 +775,7 @@ namespace gnote {
     utils::TextTagEnumerator enumerator(m_buffer, link_tag);
     while (enumerator.move_next()) {
       const utils::TextRange & range(enumerator.current());
-      if (sharp::string_to_lower(range.text()) != old_title_lower)
+      if (range.text().lowercase() != old_title_lower)
         continue;
 
       if (!rename) {
@@ -800,7 +798,7 @@ namespace gnote {
   }
 
 
-  void Note::rename_without_link_update(const std::string & newTitle)
+  void Note::rename_without_link_update(const Glib::ustring & newTitle)
   {
     if (m_data.data().title() != newTitle) {
       if (m_window) {
@@ -816,7 +814,7 @@ namespace gnote {
     }
   }
 
-  void Note::set_xml_content(const std::string & xml)
+  void Note::set_xml_content(const Glib::ustring & xml)
   {
     if (m_buffer) {
       m_buffer->set_text("");
@@ -943,7 +941,7 @@ namespace gnote {
     }
   }
 
-  std::string Note::text_content()
+  Glib::ustring Note::text_content()
   {
     if(!m_buffer) {
       get_buffer();

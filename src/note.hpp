@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -64,19 +64,19 @@ public:
     {
       return m_uri;
     }
-  const std::string & title() const
+  const Glib::ustring & title() const
     {
       return m_title;
     }
-  std::string & title()
+  Glib::ustring & title()
     {
       return m_title;
     }
-  const std::string & text() const
+  const Glib::ustring & text() const
     { 
       return m_text;
     }
-  std::string & text()
+  Glib::ustring & text()
     { 
       return m_text;
     }
@@ -151,8 +151,8 @@ public:
 
 private:
   const std::string m_uri;
-  std::string       m_title;
-  std::string       m_text;
+  Glib::ustring     m_title;
+  Glib::ustring     m_text;
   sharp::DateTime             m_create_date;
   sharp::DateTime             m_change_date;
   sharp::DateTime             m_metadata_change_date;
@@ -197,8 +197,8 @@ public:
       return m_buffer;
     }
   void set_buffer(const Glib::RefPtr<NoteBuffer> & b);
-  const std::string & text();
-  void set_text(const std::string & t);
+  const Glib::ustring & text();
+  void set_text(const Glib::ustring & t);
 
 private:
   void invalidate_text();
@@ -262,19 +262,19 @@ public:
     {
       return m_filepath;
     }
-  const std::string & get_title() const;
-  void set_title(const std::string & new_tile);
-  void set_title(const std::string & new_title, bool from_user_action);
-  void rename_without_link_update(const std::string & newTitle);
-  const std::string & xml_content()
+  const Glib::ustring & get_title() const;
+  void set_title(const Glib::ustring & new_tile);
+  void set_title(const Glib::ustring & new_title, bool from_user_action);
+  void rename_without_link_update(const Glib::ustring & newTitle);
+  const Glib::ustring & xml_content()
     {
       return m_data.text();
     }
-  void set_xml_content(const std::string & xml);
+  void set_xml_content(const Glib::ustring & xml);
   std::string get_complete_note_xml();
   void load_foreign_note_xml(const std::string & foreignNoteXml, ChangeType changeType);
   static void parse_tags(const xmlNodePtr tagnodes, std::list<std::string> & tags);
-  std::string text_content();
+  Glib::ustring text_content();
   void set_text_content(const std::string & text);
   const NoteData & data() const;
   NoteData & data();
@@ -334,8 +334,8 @@ public:
     { return m_signal_tag_removed; }
 
 private:
-  bool contains_text(const std::string & text);
-  void handle_link_rename(const std::string & old_title,
+  bool contains_text(const Glib::ustring & text);
+  void handle_link_rename(const Glib::ustring & old_title,
                           const Ptr & renamed,
                           bool rename);
   void on_buffer_changed();
@@ -354,9 +354,9 @@ private:
   void process_rename_link_update(const std::string & old_title);
   void process_rename_link_update_end(int response, Gtk::Dialog *dialog,
                                       const std::string & old_title, const Note::Ptr & self);
-  void rename_links(const std::string & old_title,
+  void rename_links(const Glib::ustring & old_title,
                     const Ptr & renamed);
-  void remove_links(const std::string & old_title,
+  void remove_links(const Glib::ustring & old_title,
                     const Ptr & renamed);
   void on_note_window_embedded();
   void on_note_window_foregrounded();
