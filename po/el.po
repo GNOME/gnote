@@ -10,28 +10,48 @@
 # Fotis Tsamis <ftsamis@gmail.com>, 2009.
 # Simos Xenitellis <simos@gnome.org>, 2009.
 # keratea <dmtrs32@gmail.com>, 2013.
-# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013.
+# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
-"keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-06-20 11:44+0000\n"
-"PO-Revision-Date: 2013-06-24 11:37+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gnote&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-01-11 22:40+0000\n"
+"PO-Revision-Date: 2014-01-12 19:12+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
-"Language-Team: team@gnome.gr\n"
+"Language-Team: team@lists.gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Virtaal 0.7.0\n"
 "X-Poedit-Language: Greek\n"
 "X-Poedit-Country: GREECE\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnote.desktop.in.in.h:1
-#| msgid "Quit Gnote"
+#: ../data/appdata/gnote.appdata.xml.in.h:1
+msgid ""
+"Gnote is a simple note-taking application for GNOME desktop environment. It "
+"allows you to capture your ideas, link them together using WikiWiki-style "
+"links, group together in notebooks and some extra features for everyday use."
+msgstr ""
+"Το Gnote είναι μια απλή εφαρμογή λήψης σημειώσεων για το περιβάλλον "
+"επιφάνειας εργασίας GNOME. Σας επιτρέπει να αποθηκεύσετε τις ιδέες σας, να "
+"τις συνδέσετε χρησιμοποιώντας συνδέσμους τύπου WikiWiki, να τις "
+"ομαδοποιήσετε σε σημειωματάρια και σε κάποια πρόσθετα γνωρίσματα για "
+"καθημερινή χρήση."
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid ""
+"Gnote also supports synchronization to make it possible to use on multiple "
+"devices."
+msgstr ""
+"Το Gnote υποστηρίζει επίσης τον συγχρονισμό για να μπορέσει να "
+"χρησιμοποιηθεί σε πολλαπλές συσκευές."
+
+#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:45
+#: ../src/recentchanges.cpp:479
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -44,8 +64,8 @@ msgid "Note-taker"
 msgstr "Σημειωματάριο"
 
 #: ../data/gnote.desktop.in.in.h:4
-msgid "note;idea;link;organize;"
-msgstr "σημείωση;ιδέα;σύνδεσμος;οργάνωση;"
+msgid "notes;idea;link;organize;"
+msgstr "σημειώσεις;ιδέα;σύνδεσμος;οργάνωση;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -60,10 +80,32 @@ msgstr ""
 "ορθογραφικά σωστές προτάσεις θα εμφανίζονται στο μενού με δεξιοπατώντας."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:3
+msgid "Automatically create links when typing"
+msgstr "Αυτόματη δημιουργία συνδέσμων κατά την πληκτρολόγηση"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:4
+msgid ""
+"Enable this option to automatically create a link, when text matches note "
+"title."
+msgstr ""
+"Ενεργοποιήστε αυτήν την επιλογή για να δημιουργήσετε αυτόματα έναν σύνδεσμο, "
+"όταν το κείμενο ταιριάζει με τίτλο σημείωσης."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:5
+msgid "Create links for URLs in notes"
+msgstr "Δημιουργία συνδέσμων για URLs σε σημειώσεις"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:6
+msgid "Enable this option to create links for URLs in notes."
+msgstr ""
+"Ενεργοποιήστε αυτήν την επιλογή για να δημιουργήσετε συνδέσμους για URLs σε "
+"σημειώσεις."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:7
 msgid "Enable WikiWord highlighting"
 msgstr "Ενεργοποίηση επισήμανσης ΒικιΛέξεων"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:4
+#: ../data/org.gnome.gnote.gschema.xml.in.h:8
 msgid ""
 "Enable this option to highlight words ThatLookLikeThis. Clicking the word "
 "will create a note with that name."
@@ -71,12 +113,11 @@ msgstr ""
 "Ενεργοποιήστε αυτήν την επιλογή για την επισήμανση λέξεων ΣανΚιΑυτή. "
 "Πατώντας στη λέξη θα δημιουργηθεί μία σημείωση με αυτό το όνομα."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:5
-#| msgid "Enable Auto bulleted lists."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:9
 msgid "Enable Auto bulleted lists"
 msgstr "Ενεργοποίηση αυτόματων λιστών με κουκκίδες"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:6
+#: ../data/org.gnome.gnote.gschema.xml.in.h:10
 msgid ""
 "Enable this option if you want bulleted lists to be automatic when you place "
 "- or * at the beginning of a line."
@@ -84,12 +125,11 @@ msgstr ""
 "Ενεργοποιήστε αυτήν την επιλογή αν θέλετε να δημιουργούνται αυτόματα λίστες "
 "με κουκκίδες όταν τοποθετείτε - ή * στην αρχή μιας γραμμής."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:7
-#| msgid "Enable Middle-Click Paste On Icon."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:11
 msgid "Enable Middle-Click Paste On Icon"
 msgstr "Ενεργοποίηση επικόλλησης με μεσαίο πάτημα σε εικονίδιο."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:8
+#: ../data/org.gnome.gnote.gschema.xml.in.h:12
 msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
@@ -98,14 +138,11 @@ msgstr ""
 "μεσαίο πάτημα στο εικονίδιο του Gnote για να επικολλήσετε το περιεχόμενο της "
 "σφραγίδας χρόνου στη σημείωση Ξεκινήστε από εδώ."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:9
+#: ../data/org.gnome.gnote.gschema.xml.in.h:13
 msgid "Enable custom font"
 msgstr "Ενεργοποίηση προσαρμοσμένης γραμματοσειράς"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:10
-#| msgid ""
-#| "If true, the font name set in custom_font_face will be used as the font "
-#| "when displaying notes. Otherwise the desktop default font will be used."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:14
 msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
@@ -114,14 +151,11 @@ msgstr ""
 "θα χρησιμοποιηθεί για την εμφάνιση σημειώσεων. Αλλιώς, η προεπιλεγμένη "
 "γραμματοσειρά της επιφάνειας εργασίας θα χρησιμοποιηθεί."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:11
+#: ../data/org.gnome.gnote.gschema.xml.in.h:15
 msgid "Custom Font Face"
 msgstr "Προσαρμοσμένη οικογένεια γραμματοσειρών"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:12
-#| msgid ""
-#| "If enable_custom_font is true, the font name set here will be used as the "
-#| "font when displaying notes."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:16
 msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
@@ -130,44 +164,40 @@ msgstr ""
 "γραμματοσειράς που θα οριστεί εδώ θα χρησιμοποιηθεί ως η γραμματοσειρά στην "
 "εμφάνιση σημειώσεων."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:13
+#: ../data/org.gnome.gnote.gschema.xml.in.h:17
 msgid "Enable global keybindings"
 msgstr "Ενεργοποίηση γενικών συνδυασμών πλήκτρων"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:14
-#| msgid ""
-#| "If true, the desktop-global keybindings set in /apps/gnote/"
-#| "global_keybindings will be enabled, allowing for useful Gnote actions to "
-#| "be available from any application."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:18
 msgid ""
 "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
 "keybindings will be enabled, allowing for useful Gnote actions to be "
 "available from any application."
 msgstr ""
 "Αν είναι αληθές, οι γενικοί συνδυασμοί πλήκτρων της επιφάνειας εργασίας που "
-"έχουν οριστεί στο /org/gnome/gnote/global-keybindings θα "
-"ενεργοποιηθούν,επιτρέποντας τη διάθεση χρήσιμων ενεργειών του Gnote από "
-"οποιαδήποτε εφαρμογή."
+"έχουν οριστεί στο /org/gnome/gnote/global-keybindings θα ενεργοποιηθούν,"
+"επιτρέποντας τη διάθεση χρήσιμων ενεργειών του Gnote από οποιαδήποτε "
+"εφαρμογή."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:15
+#: ../data/org.gnome.gnote.gschema.xml.in.h:19
 msgid "Start Here Note"
 msgstr "Σημείωση Ξεκινήστε εδώ"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:16
+#: ../data/org.gnome.gnote.gschema.xml.in.h:20
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
 msgstr ""
-"Το URI της σημείωσης που πρέπει να καθορίζεται ως η σημείωση \"Ξεκινήστε "
-"εδώ\", η οποία είναι πάντα τοποθετημένη στο τέλος του μενού με τις σημειώσεις "
+"Το URI της σημείωσης που πρέπει να καθορίζεται ως η σημείωση \"Ξεκινήστε εδώ"
+"\", η οποία είναι πάντα τοποθετημένη στο τέλος του μενού με τις σημειώσεις "
 "του Gnote και είναι επίσης προσβάσιμη από μια συντόμευση πληκτρολογίου."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:17
+#: ../data/org.gnome.gnote.gschema.xml.in.h:21
 msgid "Minimum number of notes to show in menu"
 msgstr "Ελάχιστος αριθμός σημειώσεων που εμφανίζονται στο μενού"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:18
+#: ../data/org.gnome.gnote.gschema.xml.in.h:22
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
@@ -175,12 +205,11 @@ msgstr ""
 "Ακέραιος που ορίζει τον ελάχιστο αριθμό σημειώσεων που θα εμφανίζονται στο "
 "μενού σημειώσεων Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:19
-#| msgid "List of pinned notes."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "List of pinned notes"
 msgstr "Κατάλογος συνδεμένων σημειώσεων"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:20
+#: ../data/org.gnome.gnote.gschema.xml.in.h:24
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -188,61 +217,39 @@ msgstr ""
 "Χωρισμένη με κενά λίστα σημειώσεων URIs για σημειώσεις που θα πρέπει να "
 "εμφανίζονται πάντοτε στο μενού σημειώσεων του Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:21
+#: ../data/org.gnome.gnote.gschema.xml.in.h:25
 msgid "Is main window maximized"
 msgstr "Είναι το κύριο παράθυρο μεγιστοποιημένο;"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:22
+#: ../data/org.gnome.gnote.gschema.xml.in.h:26
 msgid "If true, Gnote window will be maximized."
 msgstr "Αν είναι αληθές, το παράθυρο Gnote θα μεγιστοποιηθεί."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:23
+#: ../data/org.gnome.gnote.gschema.xml.in.h:27
 msgid "Saved height of Search window"
 msgstr "Αποθηκευμένο ύψος του παραθύρου αναζήτησης"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:24
+#: ../data/org.gnome.gnote.gschema.xml.in.h:28
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
 "Ορίζει το ύψος σε εικονοστοιχεία του παραθύρου αναζήτησης· Αποθηκεύεται κατά "
 "την έξοδο από το Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:25
+#: ../data/org.gnome.gnote.gschema.xml.in.h:29
 msgid "Saved width of Search window"
 msgstr "Αποθηκευμένο πλάτος του παραθύρου αναζήτησης"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:26
+#: ../data/org.gnome.gnote.gschema.xml.in.h:30
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 "Ορίζει το πλάτος σε εικονοστοιχεία του παραθύρου αναζήτησης· αποθηκεύεται "
 "κατά την έξοδο από το Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:27
-msgid "Saved horizontal position of Search window"
-msgstr "Η αποθηκευμένη οριζόντια θέση του παραθύρου αναζήτησης"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:28
-msgid "Determines X coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"Ορίζει τη συντεταγμένη Χ του παραθύρου αναζήτησης· αποθηκεύεται κατά την "
-"έξοδο από το Gnote."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:29
-msgid "Saved vertical position of Search window"
-msgstr "Η αποθηκευμένη κατακόρυφη θέση του παραθύρου αναζήτησης"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:30
-msgid "Determines Y coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"Ορίζει τη συντεταγμένη Υ του παραθύρου αναζήτησης· αποθηκεύεται κατά την "
-"έξοδο από το Gnote."
-
 #: ../data/org.gnome.gnote.gschema.xml.in.h:31
-#| msgid "Saved vertical position of Search window"
 msgid "Saved splitter position of Search window splitter."
 msgstr "Αποθήκευση της θέσης διαιρέτη του διαιρέτη παραθύρου αναζήτησης."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:32
-#| msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
@@ -250,10 +257,18 @@ msgstr ""
 "αποθηκεύεται κατά την έξοδο από το Gnote."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:33
+msgid "Saved sorting of the Search window."
+msgstr "Αποθηκευμένη ταξινόμηση του παραθύρου αναζήτησης."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+msgid "Determines Search window initial sorting."
+msgstr "Ορίζει την αρχική ταξινόμηση του παραθύρου αναζήτησης."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:35
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "Όριο χρόνου προσάρτησης FUSE (ms)"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+#: ../data/org.gnome.gnote.gschema.xml.in.h:36
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -262,56 +277,50 @@ msgstr ""
 "απάντηση, όταν χρησιμοποιείται το FUSE για την προσάρτηση κοινής χρήσης "
 "συγχρονισμού."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:35
+#: ../data/org.gnome.gnote.gschema.xml.in.h:37
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "Φάκελος απομακρυσμένου συγχρονισμού SSHFS"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:36
+#: ../data/org.gnome.gnote.gschema.xml.in.h:38
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr ""
 "Διαδρομή στον διακομιστή SSH προς τον κατάλογο συγχρονισμού του Gnote "
 "(προαιρετική)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:37
+#: ../data/org.gnome.gnote.gschema.xml.in.h:39
 msgid "SSHFS Synchronization Server URL"
 msgstr "URL διακομιστή συγχρονισμού SSHFS"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:38
+#: ../data/org.gnome.gnote.gschema.xml.in.h:40
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr ""
 "URL του διακομιστή SSH που περιέχει τον κατάλογο συγχρονισμού του Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:39
+#: ../data/org.gnome.gnote.gschema.xml.in.h:41
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "Όνομα χρήστη για απομακρυσμένο συγχρονισμό SSHFS"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:40
+#: ../data/org.gnome.gnote.gschema.xml.in.h:42
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Το όνομα χρήστη που χρησιμοποιείται για τη σύνδεση στον διακομιστή "
 "συγχρονισμού μέσω SSH."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:41
+#: ../data/org.gnome.gnote.gschema.xml.in.h:43
 msgid "SSHFS Synchronization Server Port"
 msgstr "Θύρα διακομιστή συγχρονισμού SSHFS"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:42
+#: ../data/org.gnome.gnote.gschema.xml.in.h:44
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Η θύρα που χρησιμοποιείται για τη σύνδεση στον διακομιστή συγχρονισμού μέσω "
 "SSH."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:43
+#: ../data/org.gnome.gnote.gschema.xml.in.h:45
 msgid "Link Updating Behavior on Note Rename"
 msgstr "Συμπεριφορά ενημέρωσης συνδέσμων κατά την μετονομασία σημειώσεων"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:44
-#| msgid ""
-#| "Integer value indicating if there is a preference to always perform a "
-#| "specific behavior when a conflict is detected, instead of prompting the "
-#| "user. The values map to an internal enumeration. 0 indicates that the "
-#| "user wishes to be prompted when a conflict occurs, so that they may "
-#| "handle each conflict situation on a case-by-case basis."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:46
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -331,22 +340,21 @@ msgstr ""
 "ενημερωθεί στο νέο όνομα σημείωσης, έτσι ώστε να θα συνεχιστεί η σύνδεση με "
 "την μετονομασμένη σημείωση."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:45
-#| msgid "Enable closing notes with escape."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:47
 msgid "Enable closing notes with escape"
 msgstr "Ενεργοποίηση τερματισμού σημειώσεων με διαφυγή."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:46
+#: ../data/org.gnome.gnote.gschema.xml.in.h:48
 msgid "If enabled, an opened note can be closed by hitting the escape key."
 msgstr ""
 "Αν ενεργοποιήσετε αυτήν την επιλογή, μία ανοικτή σημείωση μπορεί να κλείσει "
 "πατώντας το πλήκτρο διαφυγής."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:47
+#: ../data/org.gnome.gnote.gschema.xml.in.h:49
 msgid "Use status icon, when started as an application"
 msgstr "Χρήση εικονιδίου κατάστασης, κατά την εκκίνηση ως εφαρμογής"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:48
+#: ../data/org.gnome.gnote.gschema.xml.in.h:50
 msgid ""
 "Has affect only when started as an application. When set to TRUE, shows a "
 "status icon. If set to FALSE, Search All Notes window is used as main "
@@ -357,12 +365,11 @@ msgstr ""
 "του παραθύρου όλων των σημειώσεων ως παράθυρο κύριας εφαρμογής, το κλείσιμο "
 "της οποίας κάνει την εφαρμογή να εξέλθει."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:49
-#| msgid "Open the Search All Notes window"
+#: ../data/org.gnome.gnote.gschema.xml.in.h:51
 msgid "Open notes in new window"
 msgstr "Άνοιγμα σημειώσεων στο νέο παράθυρο"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:50
+#: ../data/org.gnome.gnote.gschema.xml.in.h:52
 msgid ""
 "Open notes in new window instead of replacing active content of the same "
 "window"
@@ -370,11 +377,11 @@ msgstr ""
 "Άνοιγμα σημειώσεων σε νέο παράθυρο αντί για αντικατάσταση ενεργού "
 "περιεχομένου του ίδιου παραθύρου"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:51
+#: ../data/org.gnome.gnote.gschema.xml.in.h:53
 msgid "Show applet menu"
 msgstr "Εμφάνιση μενού μικροεφαρμογής"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:52
+#: ../data/org.gnome.gnote.gschema.xml.in.h:54
 msgid ""
 "The global keybinding for showing the Gnote applet's menu. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -384,17 +391,17 @@ msgid ""
 "action."
 msgstr ""
 "Ο γενικός συνδυασμός πλήκτρων για την εμφάνιση του μενού της μικροεφαρμογής "
-"Gnote. Η μορφή μοιάζει με \"&lt;Control&gt;a\" ή \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Ο αναλυτής είναι αρκετά φιλελεύθερος και επιτρέπει μικρά ή κεφαλαία "
-"γράμματα και επίσης συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;Ctrl&gt;\". Αν "
-"ορίσετε την επιλογή στην ειδική συμβολοσειρά \"απενεργοποιημένο\", τότε δε θα "
-"οριστεί συνδυασμός πλήκτρων για αυτή την ενέργεια."
+"Gnote. Η μορφή μοιάζει με \"&lt;Control&gt;a\" ή \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Ο αναλυτής είναι αρκετά φιλελεύθερος και επιτρέπει μικρά ή κεφαλαία "
+"γράμματα και επίσης συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;Ctrl&gt;\". "
+"Αν ορίσετε την επιλογή στην ειδική συμβολοσειρά \"απενεργοποιημένο\", τότε "
+"δε θα οριστεί συνδυασμός πλήκτρων για αυτή την ενέργεια."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:53
+#: ../data/org.gnome.gnote.gschema.xml.in.h:55
 msgid "Open Start Here"
 msgstr "Άνοιγμα Ξεκινήστε εδώ"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:54
+#: ../data/org.gnome.gnote.gschema.xml.in.h:56
 msgid ""
 "The global keybinding for opening the \"Start Here\" note. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -403,18 +410,18 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"Ο γενικός συνδυασμός πλήκτρων για το άνοιγμα της σημείωσης \"Ξεκινήστε εδώ\". "
-"Η μορφή μοιάζει με \"&lt;Control&gt;a\" ή \"&lt;Shift&gt;&lt;Alt&gt;F1\". Ο "
-"αναλυτής είναι αρκετά φιλελεύθερος και επιτρέπει μικρά ή κεφαλαία γράμματα "
-"και επίσης συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;Ctrl&gt;\". Αν ορίσετε "
-"την επιλογή στην ειδική συμβολοσειρά \"απενεργοποιημένο\", τότε δε θα οριστεί "
-"συνδυασμός πλήκτρων για αυτή την ενέργεια."
+"Ο γενικός συνδυασμός πλήκτρων για το άνοιγμα της σημείωσης \"Ξεκινήστε εδώ"
+"\". Η μορφή μοιάζει με \"&lt;Control&gt;a\" ή \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Ο αναλυτής είναι αρκετά φιλελεύθερος και επιτρέπει μικρά ή κεφαλαία "
+"γράμματα και επίσης συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;Ctrl&gt;\". "
+"Αν ορίσετε την επιλογή στην ειδική συμβολοσειρά \"απενεργοποιημένο\", τότε "
+"δε θα οριστεί συνδυασμός πλήκτρων για αυτή την ενέργεια."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:55
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Create a new Note"
 msgstr "Δημιουργία νέας σημείωσης"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid ""
 "The global keybinding for creating and displaying a new Note. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -424,18 +431,18 @@ msgid ""
 "for this action."
 msgstr ""
 "Ο γενικός συνδυασμός πλήκτρων για τη δημιουργία και εμφάνιση μιας νέας "
-"σημείωσης. Η μορφή μοιάζει με \"&lt;Control&gt;a\" ή "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". Ο αναλυτής είναι αρκετά φιλελεύθερος και "
-"επιτρέπει μικρά ή κεφαλαία γράμματα και επίσης συντομεύσεις όπως "
-"\"&lt;Ctl&gt;\" και \"&lt;Ctrl&gt;\". Αν ορίσετε την επιλογή στην ειδική "
-"συμβολοσειρά \"απενεργοποιημένο\", δε θα οριστεί συνδυασμός πλήκτρων για αυτή "
-"την ενέργεια."
+"σημείωσης. Η μορφή μοιάζει με \"&lt;Control&gt;a\" ή \"&lt;Shift&gt;&lt;"
+"Alt&gt;F1\". Ο αναλυτής είναι αρκετά φιλελεύθερος και επιτρέπει μικρά ή "
+"κεφαλαία γράμματα και επίσης συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;"
+"Ctrl&gt;\". Αν ορίσετε την επιλογή στην ειδική συμβολοσειρά "
+"\"απενεργοποιημένο\", δε θα οριστεί συνδυασμός πλήκτρων για αυτή την "
+"ενέργεια."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Open Search Dialog"
 msgstr "Άνοιγμα διάλογου αναζήτησης"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid ""
 "The global keybinding for opening the Note Search dialog. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -445,18 +452,18 @@ msgid ""
 "action."
 msgstr ""
 "Ο γενικός συνδυασμός πλήκτρων για την εμφάνιση του διαλόγου αναζήτησης "
-"σημείωσης. Η μορφή μοιάζει με \"&lt;Control&gt;a\" ή "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". Ο αναλυτής είναι αρκετά φιλελεύθερος και "
-"επιτρέπει μικρά ή κεφαλαία γράμματα και επίσης συντομεύσεις όπως "
-"\"&lt;Ctl&gt;\" και \"&lt;Ctrl&gt;\". Αν ορίσετε την επιλογή στην ειδική "
-"συμβολοσειρά \"απενεργοποιημένο\", τότε δε θα οριστεί συνδυασμός πλήκτρων για "
-"αυτή την ενέργεια."
+"σημείωσης. Η μορφή μοιάζει με \"&lt;Control&gt;a\" ή \"&lt;Shift&gt;&lt;"
+"Alt&gt;F1\". Ο αναλυτής είναι αρκετά φιλελεύθερος και επιτρέπει μικρά ή "
+"κεφαλαία γράμματα και επίσης συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;"
+"Ctrl&gt;\". Αν ορίσετε την επιλογή στην ειδική συμβολοσειρά "
+"\"απενεργοποιημένο\", τότε δε θα οριστεί συνδυασμός πλήκτρων για αυτή την "
+"ενέργεια."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid "Open Recent Changes"
 msgstr "Άνοιγμα πρόσφατων αλλαγών"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid ""
 "The global keybinding for opening the Recent Changes dialog. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -466,28 +473,28 @@ msgid ""
 "for this action."
 msgstr ""
 "Ο γενικός συνδυασμός πλήκτρων για το άνοιγμα του διαλόγου πρόσφατων αλλαγών. "
-"Η μορφή μοιάζει ως εξής: \"&lt;Control&gt;a\" ή \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Ο αναλυτής είναι αρκετά φιλελεύθερος και επιτρέπει μικρά ή κεφαλαία "
-"γράμματα και επίσης συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;Ctrl&gt;\". Αν "
-"ορίσετε την επιλογή στην ειδική συμβολοσειρά \"απενεργοποιημένο\", τότε δε θα "
-"οριστεί συνδυασμός πλήκτρων για αυτή την ενέργεια."
+"Η μορφή μοιάζει ως εξής: \"&lt;Control&gt;a\" ή \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Ο αναλυτής είναι αρκετά φιλελεύθερος και επιτρέπει μικρά ή κεφαλαία "
+"γράμματα και επίσης συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;Ctrl&gt;\". "
+"Αν ορίσετε την επιλογή στην ειδική συμβολοσειρά \"απενεργοποιημένο\", τότε "
+"δε θα οριστεί συνδυασμός πλήκτρων για αυτή την ενέργεια."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid "HTML Export Last Directory"
 msgstr "Εξαγωγή τελευταίου καταλόγου σε HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Ο τελευταίος κατάλογος όπου έγινε εξαγωγή μια σημείωσης χρησιμοποιώντας το "
 "πρόσθετο Εξαγωγή σε HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid "HTML Export Linked Notes"
 msgstr "Εξαγωγή συνδεδεμένων σημειώσεων σε HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -495,11 +502,11 @@ msgstr ""
 "Η τελευταία ρύθμιση του πλαισίου ελέγχου 'Εξαγωγή συνδεδεμένων σημειώσεων' "
 "στο πρόσθετο Εξαγωγή σε HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid "HTML Export All Linked Notes"
 msgstr "Εξαγωγή όλων των συνδεδεμένων σημειώσεων σε HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -512,11 +519,11 @@ msgstr ""
 "σε HTML' και χρησιμοποιείται για να καθορίσει αν όλες οι σημειώσεις (που "
 "βρέθηκαν αναδρομικά) θα πρέπει να συμπεριληφθούν κατά την εξαγωγή σε HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid "Synchronization Client ID"
 msgstr "Αναγνωριστικό πελάτη συγχρονισμού"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
@@ -524,11 +531,11 @@ msgstr ""
 "Μοναδικό αναγνωριστικό για τον πελάτη Gnote, που χρησιμοποιείται κατά την "
 "επικοινωνία με τον διακομιστή συγχρονισμού."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid "Synchronization Local Server Path"
 msgstr "Διαδρομή τοπικού διακομιστή συγχρονισμού"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -536,11 +543,11 @@ msgstr ""
 "Διαδρομή προς τον διακομιστή συγχρονισμού, όταν χρησιμοποιείτε το πρόσθετο "
 "υπηρεσίας συγχρονισμού αρχείων συστήματος."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid "Selected Synchronization Service Addin"
 msgstr "Επιλεγμένο πρόσθετο υπηρεσίας συγχρονισμού"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -548,11 +555,11 @@ msgstr ""
 "Μοναδικό αναγνωριστικό για το τρέχον ρυθμισμένο πρόσθετο υπηρεσίας "
 "συγχρονισμού σημειώσεων."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Αποθηκευμένη συμπεριφορά σύγκρουσης συγχρονισμού σημείωσης"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -567,11 +574,11 @@ msgstr ""
 "σύγκρουση, έτσι ώστε να μπορεί να επιλύει κάθε περίπτωση σύγκρουσης "
 "ξεχωριστά."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Χρονικό όριο για τον αυτόματο συγχρονισμό στο παρασκήνιο"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -584,40 +591,39 @@ msgstr ""
 "απενεργοποιημένος. Η μικρότερη αποδεκτή θετική τιμή είναι το 5. Η τιμή "
 "αναφέρεται σε λεπτά."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid "Accept SSL Certificates"
 msgstr "Αποδοχή πιστοποιητικών SSL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr ""
-"Χρησιμοποιήστε την επιλογή \"-ac\" του wdfs για την αποδοχή των πιστοποιητικών "
-"SSL χωρίς να ερωτάται ο χρήστης."
+"Χρησιμοποιήστε την επιλογή \"-ac\" του wdfs για την αποδοχή των "
+"πιστοποιητικών SSL χωρίς να ερωτάται ο χρήστης."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Share URL"
 msgstr "Μερισμός URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "Το WebDAV μοιράζει το URL όπου οι σημειώσεις είναι συγχρονισμένες."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "Share username"
 msgstr "Μερισμός ονόματος χρήστη"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Username to access WebDAV share."
 msgstr "Όνομα χρήστη για πρόσβαση μερισμού του WebDAV."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid "Timestamp format"
 msgstr "Μορφή χρονικής σφραγίδας"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
-#| msgid "The date format that is used for the timestamp."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -626,7 +632,7 @@ msgstr ""
 "μορφή του strftime(3)."
 
 #: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
-#: ../src/tray.cpp:442
+#: ../src/tray.cpp:468
 msgid "_Quit"
 msgstr "Έ_ξοδος"
 
@@ -635,11 +641,11 @@ msgid "Quit Gnote"
 msgstr "Τερματισμός Gnote"
 
 #: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
-#: ../src/tray.cpp:425
+#: ../src/tray.cpp:451
 msgid "_Preferences"
 msgstr "_Προτιμήσεις"
 
-#: ../src/actionmanager.cpp:89 ../src/preferencesdialog.cpp:104
+#: ../src/actionmanager.cpp:89 ../src/preferencesdialog.cpp:103
 msgid "Gnote Preferences"
 msgstr "Προτιμήσεις Gnote"
 
@@ -663,75 +669,74 @@ msgstr "Περί Gnote"
 msgid "TrayIcon"
 msgstr "Εικονίδιο περιοχής ειδοποιήσεων"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:214
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
 msgid "Create _New Note"
 msgstr "Δημιουργία _νέας σημείωσης"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:216
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:227
 msgid "Create a new note"
 msgstr "Δημιουργία νέας σημείωσης"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:223
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
 msgid "_Search All Notes"
 msgstr "_Αναζήτηση σε όλες τις σημειώσεις"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:225
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:236
 msgid "Open the Search All Notes window"
 msgstr "Άνοιγμα παραθύρου αναζήτησης σε όλες τις σημειώσεις"
 
-#: ../src/actionmanager.cpp:166 ../src/searchnoteswidget.cpp:1294
+#: ../src/actionmanager.cpp:166
 msgid "_New Note"
 msgstr "Νέα _σημείωση"
 
 #: ../src/actionmanager.cpp:167
-#| msgid "_Window"
 msgid "New _Window"
 msgstr "Νέο _παράθυρο"
 
-#: ../src/actionmanager.cpp:169 ../src/tray.cpp:430
+#: ../src/actionmanager.cpp:169 ../src/tray.cpp:456
 msgid "_Help"
 msgstr "_Βοήθεια"
 
 #: ../src/addininfo.cpp:69
-msgid "Failed to load add-in information!"
+msgid "Failed to load plugin information!"
 msgstr "Αποτυχία φόρτωσης πληροφοριών προσθέτου!"
 
-#: ../src/addinmanager.cpp:98
+#: ../src/addinmanager.cpp:114
 #, c-format
-msgid "Note add-in info %s already present"
+msgid "Note plugin info %s already present"
 msgstr "Οι πληροφορίες προσθέτου σημείωσης %s είναι ήδη παρούσες"
 
-#: ../src/addinmanager.cpp:106
+#: ../src/addinmanager.cpp:122
 #, c-format
 msgid "%s does not implement %s"
 msgstr "Το %s δεν εφαρμόζει το %s"
 
-#: ../src/addinmanager.cpp:118
-#, c-format
-msgid "Note add-in %s already present"
-msgstr "Το πρόσθετο σημείωσης %s είναι ήδη παρόν"
-
 #: ../src/addinmanager.cpp:137
 #, c-format
-msgid "Note add-in info %s is absent"
+msgid "Note plugin %s already present"
+msgstr "Το πρόσθετο σημείωσης %s είναι ήδη παρόν"
+
+#: ../src/addinmanager.cpp:155
+#, c-format
+msgid "Note plugin info %s is absent"
 msgstr "Οι πληροφορίες προσθέτου σημείωσης %s απουσιάζουν"
 
-#: ../src/addinmanager.cpp:150
+#: ../src/addinmanager.cpp:168
 #, c-format
-msgid "Note add-in %s is absent"
+msgid "Note plugin %s is absent"
 msgstr "Το πρόσθετο σημείωσης %s απουσιάζει"
 
-#: ../src/addinmanager.cpp:183
+#: ../src/addinmanager.cpp:202
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Αποτυχία εύρεσης ενότητας %s για πρόσθετο %s"
 
-#: ../src/addinmanager.cpp:187
+#: ../src/addinmanager.cpp:206
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Αποτυχία φόρτωσης πληροφοριών προσθέτου για %s: %s"
 
-#: ../src/addinmanager.cpp:302
+#: ../src/addinmanager.cpp:330
 msgid "Trying to load addins when they are already loaded"
 msgstr "Προσπάθεια φόρτωσης προσθέτων όταν είναι ήδη φορτωμένα"
 
@@ -739,8 +744,7 @@ msgstr "Προσπάθεια φόρτωσης προσθέτων όταν είν
 msgid "What links here?"
 msgstr "Τι συνδέει προς τα εδώ;"
 
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:40
-#| msgid "What links here?"
+#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
 msgid "Which notes have links to here?"
 msgstr "Ποιες σημειώσεις έχουν συνδέσμους εδώ;"
 
@@ -757,7 +761,7 @@ msgstr "Δείτε ποιες σημειώσεις συνδέονται με τ�
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Ο Hubert Figuiere και το έργο Tomboy"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:85
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:86
 msgid "(none)"
 msgstr "(κανένα)"
 
@@ -810,12 +814,10 @@ msgid "_Host name:"
 msgstr "Όνομα _συστήματος:"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:279
-#| msgid "_Host name:"
 msgid "Host name invalid"
 msgstr "Άκυρο όνομα οικοδεσπότη"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:280
-#| msgid "You must specify the Bugzilla host name to use with this icon."
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Πρέπει να ορίσετε ένα έγκυρο όνομα οικοδεσπότη Bugzilla για να "
@@ -839,17 +841,52 @@ msgstr "Αν διαγράψετε ένα εικονίδιο θα χαθεί μό
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:395
 #, c-format
-#| msgid "Error saving icon"
 msgid "Error removing icon %s: %s"
 msgstr "Σφάλμα αφαίρεσης εικονιδίου %s: %s"
 
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.h:1
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:71
+msgid "Export to Getting Things GNOME"
+msgstr "Εξαγωγή για λήψη πραγμάτων GNOME"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.h:2
+msgid "Exports individual notes as Getting Things GNOME tasks"
+msgstr "Εξάγει μεμονωμένες σημειώσεις ως εργασίες GNOME λήψης πραγμάτων"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.h:3
+#: ../src/addins/specialnotes/specialnotes.desktop.in.h:3
+#: ../src/addins/statistics/statistics.desktop.in.h:3
+msgid "Aurimas Černius"
+msgstr "Aurimas Černius"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:72
+msgid "Export note as Getting Things GNOME task"
+msgstr "Εξαγωγή σημείωσης ως εργασία GNOME λήψης πραγμάτων"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:86
+msgid "GTG XML loaded, but interface not found"
+msgstr "Φορτώθηκε το GTG XML, αλλά δεν βρέθηκε διεπαφή"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:92
+#, c-format
+msgid "Failed to create GTG interface from XML: %s"
+msgstr "Αποτυχία δημιουργίας διεπαφής GTG από XML: %s"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
+msgid "Failed to create D_Bus proxy for GTG"
+msgstr "Αποτυχία δημιουργίας διαμεσολαβητή _διαύλου δεδομένων για GTG"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:116
+#, c-format
+msgid "Failed to call GTG: %s"
+msgstr "Αποτυχία κλήσης GTG: %s"
+
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:74
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
 msgid "Export to HTML"
 msgstr "Εξαγωγή σε HTML"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:2
-#| msgid "Export linked notes"
 msgid "Exports individual notes to HTML."
 msgstr "Εξαγωγή μεμονωμένων σημειώσεων στο HTML."
 
@@ -865,63 +902,60 @@ msgstr "Εξαγωγή συνδεμένων σημειώσεων"
 msgid "Include all other linked notes"
 msgstr "Συμπερίληψη όλων των άλλων συνδεμένων σημειώσεων"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
-#| msgid "Export to HTML"
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:77
 msgid "Export note to HTML"
 msgstr "Εξαγωγή σημείωσης σε HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:115
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:117
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Αδύνατο το άνοιγμα σημείωσης που εξάχθηκε σε περιηγητή ιστού: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:119
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
 msgid "Your note was exported to \"%1%\"."
 msgstr "Η σημείωση σας εξήχθη στο \"%1%\"."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:128
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:130
 msgid "Note exported successfully"
 msgstr "Επιτυχής εξαγωγή σημείωσης"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:142
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:144
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:152
 #, c-format
 msgid "Could not export: %s"
 msgstr "Αδύνατη η εξαγωγή: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:153
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:155
 #, c-format
-#| msgid "Could not save the file \"%1%\""
 msgid "Could not save the file \"%s\""
 msgstr "Αδύνατη η αποθήκευση του αρχείου \"%s\""
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
 msgid "_Folder Path:"
 msgstr "Διαδρομή _φακέλου:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:109
 msgid "Select Synchronization Folder..."
 msgstr "Επιλογή φακέλου συγχρονισμού..."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:135
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
 msgid "Folder path field is empty."
 msgstr "Το πεδίο διαδρομής φακέλου είναι κενό."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:142
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:141
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
 "Η επιλεγμένη διαδρομή του φακέλου δεν υπάρχει και το Gnote δεν μπόρεσε να τη "
 "δημιουργήσει."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:218
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:217
 msgid "Local Folder"
 msgstr "Τοπικός φάκελος"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:1
-#| msgid "Selected Synchronization Service Addin"
-msgid "Local Directory Sync Service Add-in"
-msgstr "Τοπικό κατάλογος προσθέτου υπηρεσίας συγχρονισμού"
+msgid "Local Directory Sync Service Plugin"
+msgstr "Πρόσθετο υπηρεσίας συγχρονισμού τοπικού καταλόγου"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:2
 msgid "Synchronize Gnote Notes to a local file system path"
@@ -934,7 +968,6 @@ msgid "Aurimas Černius and the Tomboy Project"
 msgstr "Aurimas Černius και το έργο Tomboy"
 
 #: ../src/addins/fixedwidth/fixedwidth.desktop.in.h:1
-#| msgid "_Fixed Width"
 msgid "Fixed Width"
 msgstr "Σταθερό πλάτος"
 
@@ -943,12 +976,11 @@ msgid "Adds fixed-width font style."
 msgstr "Προσθέτει τεχνοτροπία γραμματοσειράς σταθερού πλάτους."
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
-#| msgid "_Fixed Width"
 msgid "Fixed Wid_th"
 msgstr "Σταθερό _πλάτος"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:44
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
 msgid "Insert Timestamp"
 msgstr "Συμπλήρωση σφραγίδας χρόνου"
 
@@ -956,8 +988,7 @@ msgstr "Συμπλήρωση σφραγίδας χρόνου"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Εισάγει την τρέχουσα ημερομηνία και ώρα στη θέση του δρομέα."
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#| msgid "Insert Timestamp"
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
 msgid "Insert Timestamp into note"
 msgstr "Συμπλήρωση σφραγίδας χρόνου στη σημείωση"
 
@@ -1027,7 +1058,6 @@ msgstr ""
 "σας."
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:3
-#| msgid "and Tomboy original authors."
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Ο Aurimas Černius και οι αρχικοί συγγραφείς του Tomboy."
 
@@ -1095,31 +1125,46 @@ msgstr "Υποστήριξη εκτύπωσης"
 msgid "Allows you to print a note."
 msgstr "Επιτρέπει την εκτύπωση μιας σημείωσης."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:59
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
 msgid "Print"
 msgstr "Εκτύπωση"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:59
-#| msgid "Quit Gnote"
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
 msgid "Print note"
 msgstr "Εκτύπωση σημείωσης"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:134
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
 msgid "Error printing note"
 msgstr "Σφάλμα κατά την εκτύπωση σημείωσης"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:301
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
 msgid "Page %1% of %2%"
 msgstr "Σελίδα %1% από %2%"
 
+#: ../src/addins/readonly/readonly.desktop.in.h:1
+#: ../src/addins/readonly/readonlynoteaddin.cpp:53
+msgid "Read Only"
+msgstr "Μόνο για ανάγνωση"
+
+#: ../src/addins/readonly/readonly.desktop.in.h:2
+msgid "Mark certain notes as read only"
+msgstr "Σημείωση συγκεκριμένων σημειώσεων ως μόνο για ανάγνωση"
+
+#: ../src/addins/readonly/readonly.desktop.in.h:3
+msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
+msgstr "Aurimas Černius, Debarshi Ray και Arief Bayu Purwanto"
+
+#: ../src/addins/readonly/readonlynoteaddin.cpp:54
+msgid "Make this note read-only"
+msgstr "Κάνει αυτήν τη σημείωση μόνο για ανάγνωση"
+
 #: ../src/addins/replacetitle/replacetitle.desktop.in.h:1
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:50
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:51
 msgid "Replace title"
 msgstr "Αντικατάσταση τίτλου"
 
 #: ../src/addins/replacetitle/replacetitle.desktop.in.h:2
-#| msgid "Delete the selected note"
 msgid "Replace title with selection."
 msgstr "Αντικατάσταση τίτλου με επιλογή."
 
@@ -1127,13 +1172,21 @@ msgstr "Αντικατάσταση τίτλου με επιλογή."
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
+#: ../src/addins/specialnotes/specialnotes.desktop.in.h:1
+#: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
+msgid "Special Notes"
+msgstr "Ειδικές σημειώσεις"
+
+#: ../src/addins/specialnotes/specialnotes.desktop.in.h:2
+msgid "Show special notes, that are otherwise hidden"
+msgstr "Εμφάνιση ειδικών σημειώσεων, που αλλιώς είναι κρυφές"
+
 #: ../src/addins/statistics/statisticsapplicationaddin.cpp:50
 msgid "Show Statistics"
 msgstr "Εμφάνιση στατιστικών"
 
 #: ../src/addins/statistics/statistics.desktop.in.h:1
-#: ../src/addins/statistics/statisticswidget.cpp:172
-#| msgid "Status"
+#: ../src/addins/statistics/statisticswidget.cpp:171
 msgid "Statistics"
 msgstr "Στατιστικά"
 
@@ -1141,64 +1194,56 @@ msgstr "Στατιστικά"
 msgid "Show various statistics about notes."
 msgstr "Εμφάνιση ποικίλων στατιστικών για τις σημειώσεις."
 
-#: ../src/addins/statistics/statistics.desktop.in.h:3
-msgid "Aurimas Černius"
-msgstr "Aurimas Černius"
-
-#: ../src/addins/statistics/statisticswidget.cpp:92
-#| msgid "Total: %1% notes"
+#: ../src/addins/statistics/statisticswidget.cpp:91
 msgid "Total Notes:"
 msgstr "Συνολικές σημειώσεις:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:98
-#| msgid "Notebooks"
+#: ../src/addins/statistics/statisticswidget.cpp:97
 msgid "Total Notebooks:"
 msgstr "Συνολικά σημειωματάρια:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:128
-#| msgid "Total: %1% note"
+#: ../src/addins/statistics/statisticswidget.cpp:127
 msgid "%1% note"
 msgid_plural "%1% notes"
 msgstr[0] "%1% σημείωση"
 msgstr[1] "%1% σημειώσεις"
 
 #: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.h:1
-#| msgid "Sticky Note Importer First Run"
 msgid "Sticky Notes Importer"
 msgstr "Εισαγωγή κολλωδών σημειώσεων"
 
 #: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.h:2
-#| msgid "Import from Sticky Notes"
 msgid "Import your notes from the Sticky Notes applet."
-msgstr "Εισαγωγή των σημειώσεών σας από την μικροεφαρμογή κολλώδεις σημειώσεις."
+msgstr ""
+"Εισαγωγή των σημειώσεών σας από την μικροεφαρμογή κολλώδεις σημειώσεις."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:85
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:87
 msgid "Import from Sticky Notes"
 msgstr "Εισαγωγή από κολλώδεις σημειώσεις"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:212
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:214
 msgid "No Sticky Notes found"
 msgstr "Δε βρέθηκαν κολλώδεις σημειώσεις"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:214
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "Δε βρέθηκε κατάλληλο αρχείο κολλωδών σημειώσεων στο \"%1%\"."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:222
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:224
 msgid "Sticky Notes import completed"
 msgstr "Η εισαγωγή κολλωδών σημειώσεων ολοκληρώθηκε"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:224
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:226
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "<b>%1%</b> από <b>%2%</b> κολλώδεις σημειώσεις εισήχθηκαν με επιτυχία."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:245
 msgid "Untitled"
 msgstr "Χωρίς τίτλο"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:281
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:283
 msgid "Sticky Note: "
 msgstr "Κολλώδης σημείωση: "
 
@@ -1206,8 +1251,7 @@ msgstr "Κολλώδης σημείωση: "
 #: ../src/addins/tableofcontents/tableofcontentsaction.cpp:37
 #: ../src/addins/tableofcontents/tableofcontentsaction.cpp:38
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:65
-#| msgid "_Contents"
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:66
 msgid "Table of Contents"
 msgstr "Πίνακας περιεχομένων"
 
@@ -1229,23 +1273,35 @@ msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:139
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:140
 msgid "(empty table of contents)"
 msgstr "(κενός πίνακας περιεχομένων)"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:154
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
 msgid "Heading 1"
 msgstr "Κεφαλίδα 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:160
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
 msgid "Heading 2"
 msgstr "Κεφαλίδα 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:167
 msgid "Table of Contents Help"
 msgstr "Πίνακας των περιεχομένων βοήθειας"
 
 #. namespace
+#: ../src/addins/todo/todo.desktop.in.h:1
+msgid "TODO"
+msgstr "TODO (να γίνει)"
+
+#: ../src/addins/todo/todo.desktop.in.h:2
+msgid "Highlight FIXME, TODO and XXX patterns in notes."
+msgstr "Επισήμανση μοτίβων FIXME, TODO και XXX σε σημειώσεις."
+
+#: ../src/addins/todo/todo.desktop.in.h:3
+msgid "Aurimas Černius, Romain Tartière"
+msgstr "Aurimas Černius, Romain Tartière"
+
 #: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:1
 msgid "Tomboy Importer"
 msgstr "Εισαγωγέας Tomboy"
@@ -1308,9 +1364,6 @@ msgstr "Το URL, το όνομα χρήστη, ή το πεδίο κωδικο�
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:262
-#| msgid ""
-#| "Saving configuration to the GNOME keyring failed with the following "
-#| "message:"
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1323,8 +1376,7 @@ msgstr ""
 "%1%"
 
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:1
-#| msgid "Selected Synchronization Service Addin"
-msgid "WebDAV Sync Service Add-in"
+msgid "WebDAV Sync Service Plugin"
 msgstr "Πρόσθετο υπηρεσίας συγχρονισμού WebDav"
 
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:2
@@ -1341,15 +1393,15 @@ msgstr "Αποτυχία απομακρυσμένης κλήσης στο %s"
 msgid "Exception thrown when creating note: %s"
 msgstr "Εμφανίστηκε εξαίρεση κατά τη δημιουργία σημείωσης: %s"
 
-#: ../src/gnote.cpp:193
+#: ../src/gnote.cpp:198
 msgid "Gnote is already running.  Exiting..."
 msgstr "Το Gnote εκτελείται ήδη. Έξοδος..."
 
-#: ../src/gnote.cpp:350
+#: ../src/gnote.cpp:359
 msgid "and Tomboy original authors."
 msgstr "και οι αρχικοί συγγραφείς του Tomboy."
 
-#: ../src/gnote.cpp:356
+#: ../src/gnote.cpp:365
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -1359,106 +1411,112 @@ msgstr ""
 " Γιάννης Κατσαμπίρης <giannis1_86@hotmail.com>\n"
 "Για περισσότερα δείτε http://www.gnome.gr/"
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:374
 msgid ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 οι αρχικοί συντάκτες του Tomboy."
 
-#: ../src/gnote.cpp:369
+#: ../src/gnote.cpp:378
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Μία απλή και εύκολη στη χρήση εφαρμογή λήψης σημειώσεων για την επιφάνεια "
 "εργασίας."
 
-#: ../src/gnote.cpp:380
+#: ../src/gnote.cpp:389
 msgid "Homepage"
 msgstr "Αρχική σελίδα"
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:563
 msgid "Run Gnote in background."
 msgstr "Εκτέλεση του Gnote στο παρασκήνιο."
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:564
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ορίστε τη διαδρομή του καταλόγου που περιέχει τις σημειώσεις."
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:564
 msgid "path"
 msgstr "διαδρομή"
 
-#: ../src/gnote.cpp:561
-#| msgid "Open the Search All Notes window"
+#: ../src/gnote.cpp:565
 msgid "Open the search all notes window with the search text."
 msgstr ""
 "Άνοιγμα του παραθύρου αναζήτησης σε όλες τις σημειώσεις με το κείμενο "
 "αναζήτησης."
 
-#: ../src/gnote.cpp:561 ../src/gnote.cpp:566
+#: ../src/gnote.cpp:565 ../src/gnote.cpp:570
 msgid "text"
 msgstr "κείμενο"
 
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:566
 msgid "Print version information."
 msgstr "Εκτύπωση πληροφοριών έκδοσης."
 
-#: ../src/gnote.cpp:563
+#: ../src/gnote.cpp:567
 msgid "Create and display a new note, with a optional title."
-msgstr "Δημιουργία και εμφάνιση μιας νέας σημείωσης, με έναν προαιρετικό τίτλο."
+msgstr ""
+"Δημιουργία και εμφάνιση μιας νέας σημείωσης, με έναν προαιρετικό τίτλο."
 
-#: ../src/gnote.cpp:563
-#| msgid "Untitled"
+#: ../src/gnote.cpp:567
 msgid "title"
 msgstr "τίτλος"
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:568
 msgid "Display the existing note matching title."
 msgstr "Εμφάνιση της υπάρχουσας σημείωσης που συμφωνεί με τον τίτλο."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:568
 msgid "title/url"
 msgstr "τίτλος/url"
 
-#: ../src/gnote.cpp:565
-#| msgid "Start Here Note"
+#: ../src/gnote.cpp:569
 msgid "Display the 'Start Here' note."
 msgstr "Εμφάνιση της σημείωσης 'Ξεκινήστε εδώ'."
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:570
 msgid "Search and highlight text in the opened note."
 msgstr "Αναζήτηση και τονισμός του κειμένου στην ανοικτή σημείωση."
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:574
 msgid "A note taking application"
 msgstr "Μια εφαρμογή λήψης σημειώσεων"
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:574
 msgid "Gnote options at launch"
 msgstr "Επιλογές Gnote στην εκκίνηση"
 
-#: ../src/gnote.cpp:647
+#: ../src/gnote.cpp:651
 msgid "Could not connect to remote instance."
 msgstr "Αδύνατη η σύνδεση με απομακρυσμένο στιγμιότυπο."
 
-#: ../src/gnote.cpp:763
+#: ../src/gnote.cpp:767
 msgid "Version %1%"
 msgstr "Έκδοση %1%"
 
 #. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
-#: ../src/iconmanager.cpp:64
+#: ../src/iconmanager.cpp:66
 #, c-format
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Αποτυχία φόρτωσης εικονιδίου (%s, %d): %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:40
-msgid "Create a new notebook"
-msgstr "Δημιουργία νέου σημειωματάριου"
+#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:121 ../src/noteaddin.cpp:134
+msgid "Plugin is disposing already"
+msgstr "Το πρόσθετο διατίθεται ήδη"
+
+#: ../src/noteaddin.cpp:138
+msgid "Window is not embedded"
+msgstr "Το παράθυρο δεν είναι ενσωματωμένο"
+
+#: ../src/notebooks/createnotebookdialog.cpp:41
+msgid "Create Notebook"
+msgstr "Δημιουργία σημειωματάριου"
 
 #: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
@@ -1475,7 +1533,7 @@ msgid "C_reate"
 msgstr "Δ_ημιουργία"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:66
-#: ../src/searchnoteswidget.cpp:219
+#: ../src/searchnoteswidget.cpp:228
 msgid "Notebooks"
 msgstr "Σημειωματάρια"
 
@@ -1493,37 +1551,35 @@ msgstr "Νέο σημειω_ματάριο..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:90
+#: ../src/notebooks/notebook.cpp:110
 msgid "%1% Notebook Template"
 msgstr "Πρότυπο σημειωματάριου %1%"
 
-#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:524
-#| msgid "_New Note"
+#: ../src/notebooks/notebook.cpp:186 ../src/notemanager.cpp:524
 msgid "New Note"
 msgstr "Νέα σημείωση"
 
-#: ../src/notebooks/notebook.cpp:217
+#: ../src/notebooks/notebook.cpp:241
 msgid "All"
 msgstr "Όλα"
 
-#: ../src/notebooks/notebook.cpp:246
-#| msgid "Unfiled Notes"
+#: ../src/notebooks/notebook.cpp:273
 msgid "Unfiled"
 msgstr "Αταξινόμητες"
 
-#: ../src/notebooks/notebook.cpp:275
+#: ../src/notebooks/notebook.cpp:306
 msgid "Important"
 msgstr "Σημαντικό"
 
-#: ../src/notebooks/notebook.cpp:303
+#: ../src/notebooks/notebook.cpp:334
 msgid "Active"
 msgstr "Ενεργό"
 
-#: ../src/notebooks/notebookmanager.cpp:350
+#: ../src/notebooks/notebookmanager.cpp:363
 msgid "Really delete this notebook?"
 msgstr "Είστε βέβαιος πως θέλετε να διαγράψετε αυτό το σημειωματάριο;"
 
-#: ../src/notebooks/notebookmanager.cpp:351
+#: ../src/notebooks/notebookmanager.cpp:364
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1552,42 +1608,36 @@ msgstr "Σημειωματάριο"
 msgid "_New notebook..."
 msgstr "Νέο σημειω_ματάριο..."
 
-#: ../src/notebuffer.cpp:1492
+#: ../src/notebuffer.cpp:1498
 msgid "</list> tag mismatch"
 msgstr "</list> ασυμφωνία ετικέτας"
 
-#: ../src/notebuffer.cpp:1571
+#: ../src/notebuffer.cpp:1577
 #, c-format
 msgid "Exception: %s"
 msgstr "Εξαίρεση: %s"
 
 #. TRANSLATORS: %1% will be replaced by note title
-#: ../src/note.cpp:70
-#| msgid "Really delete these %1% notes?"
+#: ../src/note.cpp:76
 msgid "Really delete \"%1%\"?"
 msgstr "Θέλετε σίγουρα να διαγράψετε τις σημειώσεις \"%1%\";"
 
 #. TRANSLATORS: %1% is number of notes
-#: ../src/note.cpp:74
-#| msgid "Really delete these %1% notes?"
+#: ../src/note.cpp:80
 msgid "Really delete %1% note?"
 msgid_plural "Really delete %1% notes?"
 msgstr[0] "Θέλετε σίγουρα να διαγράψετε τη σημείωση %1%;"
 msgstr[1] "Θέλετε σίγουρα να διαγράψετε τις σημειώσεις %1%;"
 
-#: ../src/note.cpp:81
+#: ../src/note.cpp:87
 msgid "If you delete a note it is permanently lost."
 msgstr "Αν διαγράψετε μία σημείωση θα χαθεί μόνιμα."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:123
 msgid "Error saving note data."
 msgstr "Σφάλμα αποθήκευσης των δεδομένων της σημείωσης."
 
-#: ../src/note.cpp:118
-#| msgid ""
-#| "An error occurred while saving your notes. Please check that you have "
-#| "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-#| "Error details can be found in ~/.gnote.log."
+#: ../src/note.cpp:124
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1599,60 +1649,37 @@ msgstr ""
 "λεπτομέρειες για το σφάλμα στο ~/.gnote.log."
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/note.cpp:418
+#: ../src/note.cpp:425
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Εξαίρεση κατά την αποθήκευση σημείωσης: %s"
 
-#: ../src/note.cpp:524
+#: ../src/note.cpp:533
 #, c-format
-#| msgid "Error saving icon"
 msgid "Error while saving: %s"
 msgstr "Σφάλμα κατά την αποθήκευση: %s"
 
-#: ../src/note.cpp:947
+#: ../src/note.cpp:960
 msgid "Setting text content for closed notes not supported"
 msgstr ""
 "Δεν υποστηρίζεται ο ορισμός περιεχομένου κειμένου για κλειστές σημειώσεις"
 
 #. write failure, but not critical
-#: ../src/note.cpp:1141
+#: ../src/note.cpp:1163
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Αποτυχία ενημέρωσης μορφής σημείωσης: %s"
 
-#: ../src/note.cpp:1282
+#: ../src/note.cpp:1298
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Σφάλμα συστήματος αρχείων: %s"
 
-#. New Note Template
-#. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:340
+#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:332
 msgid "New Note Template"
 msgstr "Νέο πρότυπο σημείωσης"
 
 #: ../src/notemanager.cpp:238
-#| msgid ""
-#| "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
-#| "Here\n"
-#| "\n"
-#| "<bold>Welcome to Gnote!</bold>\n"
-#| "\n"
-#| "Use this \"Start Here\" note to begin organizing your ideas and "
-#| "thoughts.\n"
-#| "\n"
-#| "You can create new notes to hold your ideas by selecting the \"Create New "
-#| "Note\" item from the Gnote Notes menu in your GNOME Panel. Your note will "
-#| "be saved automatically.\n"
-#| "\n"
-#| "Then organize the notes you create by linking related notes and ideas "
-#| "together!\n"
-#| "\n"
-#| "We've created a note called <link:internal>Using Links in Gnote</link:"
-#| "internal>.  Notice how each time we type <link:internal>Using Links in "
-#| "Gnote</link:internal> it automatically gets underlined?  Click on the "
-#| "link to open the note.</note-content>"
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1673,13 +1700,13 @@ msgid ""
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
-"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Ξεκινήστε "
-"εδώ\n"
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link"
+"\">Ξεκινήστε εδώ\n"
 "\n"
 "<bold>Καλώς ήρθατε στο Gnote!</bold>\n"
 "\n"
-"Χρησιμοποιήστε τη σημείωση \"Ξεκινήστε εδώ\" για να αρχίσετε να οργανώνετε τις "
-"ιδέες και σκέψεις σας.\n"
+"Χρησιμοποιήστε τη σημείωση \"Ξεκινήστε εδώ\" για να αρχίσετε να οργανώνετε "
+"τις ιδέες και σκέψεις σας.\n"
 "\n"
 "Μπορείτε να δημιουργήσετε νέες σημειώσεις για να κρατάτε τις ιδέες σας "
 "επιλέγοντας \"Δημιουργία νέας σημείωσης\" από το μενού του Gnote στον πίνακα "
@@ -1689,8 +1716,8 @@ msgstr ""
 "σημειώσεις και ιδέες μαζί!\n"
 "\n"
 "Έχει δημιουργηθεί μία σημείωση με όνομα <link:internal>Χρήση συνδέσμων στο "
-"Gnote</link:internal>. Σημειώσατε πώς κάθε φορά που πληκτρολογούμε "
-"<link:internal>Χρήση συνδέσμων στο Gnote</link:internal>, αυτό αυτόματα "
+"Gnote</link:internal>. Σημειώσατε πώς κάθε φορά που πληκτρολογούμε <link:"
+"internal>Χρήση συνδέσμων στο Gnote</link:internal>, αυτό αυτόματα "
 "υπογραμμίζεται;  Πατήστε στον σύνδεσμο για να ανοίξετε τη σημείωση.</note-"
 "content>"
 
@@ -1734,7 +1761,6 @@ msgstr "Χρήση συνδέσμων στο Gnote"
 
 #: ../src/notemanager.cpp:283
 #, c-format
-#| msgid "Error printing note"
 msgid "Error creating start notes: %s"
 msgstr "Σφάλμα κατά την δημιουργία σημειώσεων έναρξης: %s"
 
@@ -1757,7 +1783,6 @@ msgid "_Don't Rename Links"
 msgstr "_Να μη μετονομαστούν οι σύνδεσμοι"
 
 #: ../src/noterenamedialog.cpp:128
-#| msgid "_Open Link"
 msgid "_Rename Links"
 msgstr "_Μετονομασία συνδέσμων"
 
@@ -1766,12 +1791,10 @@ msgid "Select All"
 msgstr "Επιλογή όλων"
 
 #: ../src/noterenamedialog.cpp:130
-#| msgid "Select an icon..."
 msgid "Select None"
 msgstr "Καμία επιλογή"
 
 #: ../src/noterenamedialog.cpp:131
-#| msgid "Close this window"
 msgid "Always show this _window"
 msgstr "Εμφάνιση αυτού του _παραθύρου πάντα"
 
@@ -1785,68 +1808,69 @@ msgstr "Να μη μετονομάζονται πο_τέ οι σύνδεσμοι
 
 #: ../src/noterenamedialog.cpp:152
 msgid ""
-"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
+"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Να μετονομαστούν οι σύνδεσμοι στις άλλες σημειώσεις από \"<span "
-"underline=\"single\">%1</span>\" σε \"<span underline=\"single\">%2</span>\";\n"
+"Να μετονομαστούν οι σύνδεσμοι στις άλλες σημειώσεις από \"<span underline="
+"\"single\">%1</span>\" σε \"<span underline=\"single\">%2</span>\";\n"
 "\n"
-"Αν δε μετονομαστούν οι σύνδεσμοι, δεν θα συνδέονται πια με τίποτα πια."
+"Αν δε μετονομαστούν οι σύνδεσμοι, δεν θα συνδέονται πια με τίποτα."
 
 #: ../src/noterenamedialog.cpp:185
-#| msgid "_Open Link"
 msgid "Rename Links"
 msgstr "Μετονομασία συνδέσμων"
 
-#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:332
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:331
 msgid "Note Title"
 msgstr "Τίτλος σημείωσης"
 
 #: ../src/noterenamedialog.cpp:237
-#| msgid "_Advanced..."
 msgid "Ad_vanced"
 msgstr "_Για προχωρημένους"
 
-#: ../src/notewindow.cpp:345
+#: ../src/notewindow.cpp:368
 msgid "_Link to New Note"
 msgstr "_Σύνδεση σε μία νέα σημείωση"
 
-#: ../src/notewindow.cpp:353
+#: ../src/notewindow.cpp:376
 msgid "Te_xt"
 msgstr "_Κείμενο"
 
-#: ../src/notewindow.cpp:390
-#| msgid "Print"
+#: ../src/notewindow.cpp:404
 msgid "Pin"
 msgstr "Σύνδεση"
 
-#: ../src/notewindow.cpp:391
+#: ../src/notewindow.cpp:408 ../src/notewindow.cpp:621
+msgid "Remove from important notes"
+msgstr "Αφαίρεση από τις σημαντικές σημειώσεις"
+
+#: ../src/notewindow.cpp:412 ../src/notewindow.cpp:625
 msgid "Mark note as important"
 msgstr "Σημείωση σημείωσης ως σημαντικής"
 
-#: ../src/notewindow.cpp:399
+#: ../src/notewindow.cpp:422
 msgid "Link"
 msgstr "Σύνδεση"
 
-#: ../src/notewindow.cpp:405
+#: ../src/notewindow.cpp:428
 msgid "Link selected text to a new note (Ctrl-L)"
 msgstr "Σύνδεση του επιλεγμένου κειμένου σε μια νέα σημείωση (Ctrl-L)"
 
-#: ../src/notewindow.cpp:410
+#: ../src/notewindow.cpp:434
 msgid "_Text"
 msgstr "Κείμε_νο"
 
-#: ../src/notewindow.cpp:415
+#: ../src/notewindow.cpp:439
 msgid "Set properties of text"
 msgstr "Ορισμός ιδιοτήτων κειμένου"
 
-#: ../src/notewindow.cpp:425
+#: ../src/notewindow.cpp:449
 msgid "Delete this note"
 msgstr "Διαγραφή αυτής της σημείωσης"
 
-#: ../src/notewindow.cpp:443
+#: ../src/notewindow.cpp:467
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1855,106 +1879,115 @@ msgstr ""
 "περιεχόμενο των κανονικών σημειώσεων και δεν εμφανίζεται στο μενού "
 "σημειώσεων ή στο παράθυρο αναζήτησης."
 
-#: ../src/notewindow.cpp:446
+#: ../src/notewindow.cpp:470
 msgid "Convert to regular note"
 msgstr "Μετατροπή σε κανονική σημείωση"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:473
 msgid "Save Si_ze"
 msgstr "Αποθήκευση με_γέθους"
 
-#: ../src/notewindow.cpp:453
+#: ../src/notewindow.cpp:477
 msgid "Save Se_lection"
 msgstr "Αποθήκευση επι_λογής"
 
-#: ../src/notewindow.cpp:457
-#| msgid "Note Title"
+#: ../src/notewindow.cpp:481
 msgid "Save _Title"
 msgstr "Αποθήκευση _τίτλου"
 
-#: ../src/notewindow.cpp:559
+#: ../src/notewindow.cpp:583
 msgid "Cannot create note"
 msgstr "Αδύνατη η δημιουργία σημείωσης"
 
-#: ../src/notewindow.cpp:809
+#: ../src/notewindow.cpp:849
 msgid "<b>_Bold</b>"
 msgstr "<b>Έ_ντονα</b>"
 
-#: ../src/notewindow.cpp:810
+#: ../src/notewindow.cpp:850
 msgid "<i>_Italic</i>"
 msgstr "<i>_Πλάγια</i>"
 
-#: ../src/notewindow.cpp:811
+#: ../src/notewindow.cpp:851
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Διαγραμμένα</s>"
 
-#: ../src/notewindow.cpp:813
+#: ../src/notewindow.cpp:853
 msgid "_Highlight"
 msgstr "Επι_σήμανση"
 
-#: ../src/notewindow.cpp:815
+#: ../src/notewindow.cpp:855
 msgid "_Normal"
 msgstr "_Κανονικό"
 
-#: ../src/notewindow.cpp:817
+#: ../src/notewindow.cpp:857
 msgid "Hu_ge"
 msgstr "Τε_ράστιο"
 
-#: ../src/notewindow.cpp:819
+#: ../src/notewindow.cpp:859
 msgid "_Large"
 msgstr "Μ_εγάλο"
 
-#: ../src/notewindow.cpp:821
+#: ../src/notewindow.cpp:861
 msgid "S_mall"
 msgstr "Μ_ικρό"
 
-#: ../src/notewindow.cpp:823
+#: ../src/notewindow.cpp:863
 msgid "Bullets"
 msgstr "Κουκκίδες"
 
-#: ../src/notewindow.cpp:826
-#| msgid "Font Size"
+#: ../src/notewindow.cpp:866
 msgid "Increase Font Size"
 msgstr "Αύξηση μεγέθους γραμματοσειράς"
 
-#: ../src/notewindow.cpp:827
-#| msgid "Font Size"
+#: ../src/notewindow.cpp:867
 msgid "Decrease Font Size"
 msgstr "Μείωση μεγέθους γραμματοσειράς"
 
-#: ../src/preferencesdialog.cpp:122
+#: ../src/preferencesdialog.cpp:121
 msgid "General"
 msgstr "Γενικά"
 
-#: ../src/preferencesdialog.cpp:124
+#: ../src/preferencesdialog.cpp:122
+msgid "Links"
+msgstr "Σύνδεσμοι"
+
+#: ../src/preferencesdialog.cpp:125
 msgid "Hotkeys"
 msgstr "Συντομεύσεις"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:127 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:129 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "Συγχρονισμός"
 
-#: ../src/preferencesdialog.cpp:129
-msgid "Add-ins"
+#: ../src/preferencesdialog.cpp:131
+msgid "Plugins"
 msgstr "Πρόσθετα"
 
-#: ../src/preferencesdialog.cpp:206
+#: ../src/preferencesdialog.cpp:208
 #, c-format
-msgid "Add-in %s is absent"
+msgid "Plugin %s is absent"
 msgstr "Το πρόσθετο %s απουσιάζει"
 
 #. Status icon
-#: ../src/preferencesdialog.cpp:246
-#| msgid "Use custom _font"
+#: ../src/preferencesdialog.cpp:247
 msgid "Use status _icon"
 msgstr "Χρήση ε_ικονιδίου κατάστασης"
 
-#: ../src/preferencesdialog.cpp:259
+#: ../src/preferencesdialog.cpp:248
+msgid "Show icon in tray, which is the central place of control."
+msgstr "Εμφάνιση εικονιδίου σε δίσκο, που είναι η κεντρική θέση ελέγχου."
+
+#. Open in new window
+#: ../src/preferencesdialog.cpp:255
+msgid "Always _open notes in new window"
+msgstr "Ά_νοιγμα σημειώσεων πάντα στο νέο παράθυρο"
+
+#: ../src/preferencesdialog.cpp:268
 msgid "_Spell check while typing"
 msgstr "Έ_λεγχος ορθογραφίας κατά την πληκτρολόγηση"
 
-#: ../src/preferencesdialog.cpp:265
+#: ../src/preferencesdialog.cpp:269
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1962,12 +1995,78 @@ msgstr ""
 "Ορθογραφικά λάθη θα υπογραμμίζονται με κόκκινο και οι ορθογραφικά σωστές "
 "προτάσεις θα εμφανίζονται στο μενού περιεχομένου."
 
+#. Auto bulleted list
+#: ../src/preferencesdialog.cpp:279
+msgid "Enable auto-_bulleted lists"
+msgstr "Ενεργοποίηση αυτόματων λιστών με _κουκκίδες"
+
+#: ../src/preferencesdialog.cpp:280
+msgid "Start new bulleted list by starting new line with character \"-\"."
+msgstr ""
+"Έναρξη νέου καταλόγου με τελείες ξεκινώντας νέα γραμμή με χαρακτήρα \"-\"."
+
+#: ../src/preferencesdialog.cpp:289
+msgid "Use custom _font"
+msgstr "Χρήση _προσαρμοσμένης γραμματοσειράς"
+
+#: ../src/preferencesdialog.cpp:307
+msgid "When renaming a linked note: "
+msgstr "Όταν μετονομάζεται μια συνδεδεμένη σημείωση: "
+
+#: ../src/preferencesdialog.cpp:311
+msgid "Ask me what to do"
+msgstr "Να γίνεται ερώτηση"
+
+#: ../src/preferencesdialog.cpp:312
+msgid "Never rename links"
+msgstr "Ποτέ να μη μετονομάζονται οι σύνδεσμοι"
+
+#: ../src/preferencesdialog.cpp:313
+msgid "Always rename links"
+msgstr "Να μετονομάζονται πάντα οι σύνδεσμοι"
+
+#: ../src/preferencesdialog.cpp:333
+msgid ""
+"Use the new note template to specify the text that should be used when "
+"creating a new note."
+msgstr ""
+"Χρήση του νέου προτύπου σημειώσεων για να καθορίσετε το κείμενο που θα "
+"πρέπει να χρησιμοποιείται κατά τη δημιουργία νέας σημείωσης."
+
+#: ../src/preferencesdialog.cpp:338
+msgid "Open New Note Template"
+msgstr "Άνοιγμα νέου προτύπου σημείωσης"
+
+#. internal links
+#: ../src/preferencesdialog.cpp:395
+msgid "_Automatically link to notes"
+msgstr "_Αυτόματη σύνδεση με σημειώσεις"
+
+#: ../src/preferencesdialog.cpp:396
+msgid "Enable this option to create a link when text matches note title."
+msgstr ""
+"Ενεργοποιήστε αυτήν την επιλογή για να δημιουργήσετε έναν σύνδεσμο, όταν το "
+"κείμενο ταιριάζει με τίτλο σημείωσης."
+
+#. URLs
+#: ../src/preferencesdialog.cpp:402
+msgid "Create links for _URLs"
+msgstr "Δημιουργία συνδέσμων για _URLs"
+
+#: ../src/preferencesdialog.cpp:403
+msgid ""
+"Enable this option to create a link for URLs. Clicking will open that URL "
+"with apropriate program."
+msgstr ""
+"Ενεργοποιήστε αυτήν την επιλογή για να δημιουργήσετε έναν σύνδεσμο για URLs. "
+"Πατώντας θα ανοίξει αυτό το URL με κατάλληλο πρόγραμμα."
+
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:276
+#: ../src/preferencesdialog.cpp:410
 msgid "Highlight _WikiWords"
 msgstr "Επισήμανση _ΒικιΛέξεων"
 
-#: ../src/preferencesdialog.cpp:282
+#: ../src/preferencesdialog.cpp:411
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -1976,130 +2075,90 @@ msgstr ""
 "<b>ΜοιάζουνΚάπωςΈτσι</b>. Πατώντας στη λέξη θα δημιουργηθεί μία νέα σημείωση "
 "με αυτό το όνομα."
 
-#. Auto bulleted list
-#: ../src/preferencesdialog.cpp:289
-msgid "Enable auto-_bulleted lists"
-msgstr "Ενεργοποίηση αυτόματων λιστών με _κουκκίδες"
-
-#: ../src/preferencesdialog.cpp:298
-msgid "Use custom _font"
-msgstr "Χρήση _προσαρμοσμένης γραμματοσειράς"
-
-#: ../src/preferencesdialog.cpp:316
-msgid "When renaming a linked note: "
-msgstr "Όταν μετονομάζεται μια συνδεδεμένη σημείωση: "
-
-#: ../src/preferencesdialog.cpp:320
-#| msgid "Always ask me what to do."
-msgid "Ask me what to do"
-msgstr "Να γίνεται ερώτηση"
-
-#: ../src/preferencesdialog.cpp:321
-msgid "Never rename links"
-msgstr "Ποτέ να μη μετονομάζονται οι σύνδεσμοι"
-
-#: ../src/preferencesdialog.cpp:322
-msgid "Always rename links"
-msgstr "Να μετονομάζονται πάντα οι σύνδεσμοι"
-
-#: ../src/preferencesdialog.cpp:343
-msgid ""
-"Use the new note template to specify the text that should be used when "
-"creating a new note."
-msgstr ""
-"Χρήση του νέου προτύπου σημειώσεων για να καθορίσετε το κείμενο που θα "
-"πρέπει να χρησιμοποιείται κατά τη δημιουργία νέας σημείωσης."
-
-#: ../src/preferencesdialog.cpp:351
-msgid "Open New Note Template"
-msgstr "Άνοιγμα νέου προτύπου σημείωσης"
-
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:415
-#| msgid "Listen for _Hotkeys"
+#: ../src/preferencesdialog.cpp:441
 msgid "Listen for _hotkeys"
 msgstr "Ακρόαση για _θερμά πλήκτρα"
 
-#: ../src/preferencesdialog.cpp:422
+#: ../src/preferencesdialog.cpp:442
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
 "Alt&gt;N</b>"
 msgstr ""
 "Τα θερμά πλήκτρα σας προσφέρουν γρήγορη πρόσβαση στις σημειώσεις σας από "
-"οπουδήποτε με το πάτημα ενός κουμπιού. Παραδείγματα θερμών πλήκτρων: "
-"<b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
+"οπουδήποτε με το πάτημα ενός κουμπιού. Παραδείγματα θερμών πλήκτρων: <b>&lt;"
+"Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:442
+#: ../src/preferencesdialog.cpp:464
 msgid "Show notes _menu"
 msgstr "Εμφάνιση _μενού σημειώσεων"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:459
+#: ../src/preferencesdialog.cpp:481
 msgid "Open \"_Start Here\""
 msgstr "Άνοιγμα σημείωσης \"Ξεκινή_στε εδώ\""
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:475
+#: ../src/preferencesdialog.cpp:497
 msgid "Create _new note"
 msgstr "_Δημιουργία νέας σημείωσης"
 
 #. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:491
+#: ../src/preferencesdialog.cpp:513
 msgid "Open \"Search _All Notes\""
 msgstr "Άνοιγμα \"Αναζήτηση σε ό_λες τις σημειώσεις\""
 
-#: ../src/preferencesdialog.cpp:531
+#: ../src/preferencesdialog.cpp:553
 msgid "Ser_vice:"
 msgstr "Υπη_ρεσία:"
 
-#: ../src/preferencesdialog.cpp:587 ../src/preferencesdialog.cpp:1220
+#: ../src/preferencesdialog.cpp:609 ../src/preferencesdialog.cpp:1239
 msgid "Not configurable"
 msgstr "Μη προσαρμόσιμο"
 
-#: ../src/preferencesdialog.cpp:614
+#: ../src/preferencesdialog.cpp:636
 msgid "Automatical background s_ync interval (minutes)"
 msgstr "Αυτόματο διάστημα σ_υγχρονισμού παρασκηνίου (σε λεπτά)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:638
+#: ../src/preferencesdialog.cpp:660
 msgid "_Advanced..."
 msgstr "_Προχωρημένα..."
 
-#: ../src/preferencesdialog.cpp:685
-#| msgid "The following add-ins are installed"
-msgid "The following add-ins are installed:"
+#: ../src/preferencesdialog.cpp:707
+msgid "The following plugins are installed:"
 msgstr "Τα ακόλουθα πρόσθετα είναι εγκατεστημένα:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:720
+#: ../src/preferencesdialog.cpp:742
 msgid "_Enable"
 msgstr "_Ενεργοποίηση"
 
-#: ../src/preferencesdialog.cpp:726
+#: ../src/preferencesdialog.cpp:748
 msgid "_Disable"
 msgstr "Α_πενεργοποίηση"
 
-#: ../src/preferencesdialog.cpp:884
+#: ../src/preferencesdialog.cpp:906
 msgid "Not Implemented"
 msgstr "Δεν έχει υλοποιηθεί"
 
-#: ../src/preferencesdialog.cpp:900
+#: ../src/preferencesdialog.cpp:922
 msgid "%1% Preferences"
 msgstr "%1% Προτιμήσεις"
 
-#: ../src/preferencesdialog.cpp:1038
+#: ../src/preferencesdialog.cpp:1057
 msgid "Choose Note Font"
 msgstr "Επιλογή γραμματοσειράς σημειώσεων"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1136
+#: ../src/preferencesdialog.cpp:1155
 msgid "Other Synchronization Options"
 msgstr "Άλλες επιλογές συγχρονισμού"
 
-#: ../src/preferencesdialog.cpp:1139
+#: ../src/preferencesdialog.cpp:1158
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2108,28 +2167,24 @@ msgstr ""
 "σημείωσης στον ρυθμισμένο διακομιστή συγχρονισμού:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1143
-#| msgid "Always ask me what to do."
+#: ../src/preferencesdialog.cpp:1162
 msgid "Always ask me what to do"
 msgstr "Να γίνεται πάντα ερώτηση πριν από κάθε ενέργεια."
 
-#: ../src/preferencesdialog.cpp:1147
-#| msgid "Rename my local note."
+#: ../src/preferencesdialog.cpp:1166
 msgid "Rename my local note"
 msgstr "Να μετονομάζεται η τοπικής σημείωση."
 
-#: ../src/preferencesdialog.cpp:1151
-#| msgid "Replace my local note with the server's update."
+#: ../src/preferencesdialog.cpp:1170
 msgid "Replace my local note with the server's update"
 msgstr ""
 "Να αντικαθίσταται η τοπική μου σημείωση με την ενημέρωση του διακομιστή."
 
-#: ../src/preferencesdialog.cpp:1253
-#| msgid "WARNING: Are you sure?"
+#: ../src/preferencesdialog.cpp:1272
 msgid "Are you sure?"
 msgstr "Είστε βέβαιος;"
 
-#: ../src/preferencesdialog.cpp:1254
+#: ../src/preferencesdialog.cpp:1273
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2138,15 +2193,11 @@ msgstr ""
 "εξαναγκαστείτε να συγχρονίσετε όλες τις σημειώσεις σας ξανά, μόλις "
 "αποθηκεύσετε τις νέες ρυθμίσεις."
 
-#: ../src/preferencesdialog.cpp:1264
+#: ../src/preferencesdialog.cpp:1283
 msgid "Resetting Synchronization Settings"
 msgstr "Επαναφορά ρυθμίσεων συγχρονισμού"
 
-#: ../src/preferencesdialog.cpp:1265
-#| msgid ""
-#| "You have disabled the configured synchronization service.  Your "
-#| "synchronization settings will now be cleared.  You may be forced to "
-#| "synchronize all of your notes again when you save new settings"
+#: ../src/preferencesdialog.cpp:1284
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2156,11 +2207,11 @@ msgstr ""
 "συγχρονισμού τώρα θα απαλειφθούν. Ίσως να εξαναγκαστείτε να συγχρονίσετε "
 "όλες τις σημειώσεις σας ξανά όταν αποθηκεύσετε τις νέες ρυθμίσεις."
 
-#: ../src/preferencesdialog.cpp:1331
+#: ../src/preferencesdialog.cpp:1350
 msgid "Connection successful"
 msgstr "Πετυχημένη σύνδεση"
 
-#: ../src/preferencesdialog.cpp:1332
+#: ../src/preferencesdialog.cpp:1351
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2168,7 +2219,7 @@ msgstr ""
 "Το Gnote είναι έτοιμο να συγχρονίσει τις σημειώσεις σας. Επιθυμείτε να τις "
 "συγχρονίσετε τώρα;"
 
-#: ../src/preferencesdialog.cpp:1356
+#: ../src/preferencesdialog.cpp:1375
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -2176,50 +2227,43 @@ msgstr ""
 "Παρακαλούμε ελέγξετε τις πληροφορίες σας και ξαναδοκιμάστε. Το αρχείο "
 "καταγραφής %1% μπορεί να περιέχει περισσότερες πληροφορίες για το σφάλμα."
 
-#: ../src/preferencesdialog.cpp:1361
-#| msgid "Error connecting :("
+#: ../src/preferencesdialog.cpp:1380
 msgid "Error connecting"
 msgstr "Σφάλμα σύνδεσης"
 
-#: ../src/preferencesdialog.cpp:1424
+#: ../src/preferencesdialog.cpp:1443
 msgid "Version:"
 msgstr "Έκδοση:"
 
-#: ../src/preferencesdialog.cpp:1427
+#: ../src/preferencesdialog.cpp:1446
 msgid "Author:"
 msgstr "Συγγραφέας:"
 
-#: ../src/preferencesdialog.cpp:1432
+#: ../src/preferencesdialog.cpp:1451
 msgid "Copyright:"
 msgstr "Πνευματικά δικαιώματα:"
 
-#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:567
-#: ../src/searchnoteswidget.cpp:985
-msgid "Notes"
-msgstr "Σημειώσεις"
-
-#: ../src/recentchanges.cpp:141
+#: ../src/recentchanges.cpp:129
 msgid "All Notes"
 msgstr "Όλες οι σημειώσεις"
 
-#: ../src/recentchanges.cpp:148
-#| msgid "_New"
+#: ../src/recentchanges.cpp:135
 msgid "New"
 msgstr "Νέα"
 
-#: ../src/recentchanges.cpp:172
+#: ../src/recentchanges.cpp:156
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: ../src/recentchanges.cpp:218
+#: ../src/recentchanges.cpp:197
 msgid "Find _Next"
 msgstr "Εύρεση _επόμενου"
 
-#: ../src/recentchanges.cpp:226
+#: ../src/recentchanges.cpp:205
 msgid "Find _Previous"
 msgstr "Εύρεση προη_γούμενου"
 
-#: ../src/recentchanges.cpp:681
+#: ../src/recentchanges.cpp:670
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
@@ -2228,33 +2272,35 @@ msgstr "_Κλείσιμο"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Αποτυχία φόρτωσης διεπαφής διαύλου δεδομένων για %s: %s"
 
-#: ../src/searchnoteswidget.cpp:130
-#| msgid "_Open..."
+#: ../src/searchnoteswidget.cpp:136
 msgid "_Open"
 msgstr "Ά_νοιγμα"
 
-#: ../src/searchnoteswidget.cpp:133
+#: ../src/searchnoteswidget.cpp:139
 msgid "Open In New _Window"
 msgstr "Άνοιγμα σε νέο _παράθυρο"
 
-#: ../src/searchnoteswidget.cpp:137
+#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
 msgid "_Delete"
 msgstr "_Διαγραφή"
 
-#: ../src/searchnoteswidget.cpp:140
-#| msgid "Delete Note_book"
-msgid "_Delete Notebook"
-msgstr "_Διαγραφή σημειωματάριου"
+#: ../src/searchnoteswidget.cpp:149
+msgid "Re_name..."
+msgstr "Μετονο_μασία..."
 
-#: ../src/searchnoteswidget.cpp:644
+#: ../src/searchnoteswidget.cpp:653
 msgid "Note"
 msgstr "Σημείωση"
 
-#: ../src/searchnoteswidget.cpp:666
-msgid "Last Changed"
-msgstr "Τελευταία τροποποίηση"
+#: ../src/searchnoteswidget.cpp:675
+msgid "Modified"
+msgstr "Τροποποιήθηκε"
 
-#: ../src/searchnoteswidget.cpp:1006
+#: ../src/searchnoteswidget.cpp:994
+msgid "Notes"
+msgstr "Σημειώσεις"
+
+#: ../src/searchnoteswidget.cpp:1013
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2262,43 +2308,62 @@ msgstr ""
 "Δεν βρέθηκαν αποτελέσματα στο επιλεγμένο σημειωματάριο.\n"
 "Πατήστε εδώ για αναζήτηση σε όλες τις σημειώσεις."
 
-#: ../src/searchnoteswidget.cpp:1010
+#: ../src/searchnoteswidget.cpp:1017
 msgid "Click here to search across all notebooks"
 msgstr "Πατήστε εδώ για αναζήτηση σε όλα τα σημειωματάρια"
 
-#: ../src/searchnoteswidget.cpp:1031
+#: ../src/searchnoteswidget.cpp:1038
 msgid "Matches"
 msgstr "Ταιριάσματα"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1079
-#| msgid "%1% match"
+#: ../src/searchnoteswidget.cpp:1090
 msgid "Title match"
 msgstr "Ταίριασμα τίτλου"
 
-#: ../src/searchnoteswidget.cpp:1083
-#| msgid "%1% match"
+#: ../src/searchnoteswidget.cpp:1094
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% συμφωνία"
 msgstr[1] "%1% συμφωνίες"
 
-#: ../src/searchnoteswidget.cpp:1323
+#: ../src/searchnoteswidget.cpp:1305
+msgid "_New"
+msgstr "_Νέα"
+
+#: ../src/searchnoteswidget.cpp:1334
 msgid "_Open Template Note"
 msgstr "Άν_οιγμα πρότυπης σημείωσης"
 
-#: ../src/searchnoteswidget.cpp:1331
-#| msgid "New Note_book..."
-msgid "_New Notebook"
-msgstr "_Νέο σημειωματάριο"
+#: ../src/searchnoteswidget.cpp:1345
+msgid "_New..."
+msgstr "_Νέα..."
+
+#: ../src/searchnoteswidget.cpp:1481 ../src/searchnoteswidget.cpp:1494
+#: ../src/searchnoteswidget.cpp:1505
+#, c-format
+msgid "Failed to parse setting %s (Value: %s):"
+msgstr "Αποτυχία ανάλυσης ρύθμισης %s (Τιμή: %s):"
+
+#: ../src/searchnoteswidget.cpp:1482
+msgid "Expected format 'column:order'"
+msgstr "Αναμενόταν μορφή 'στήλη:σειρά'"
+
+#: ../src/searchnoteswidget.cpp:1495
+#, c-format
+msgid "Unrecognized column %s"
+msgstr "Μη αναγνωρίσιμη στήλη %s"
+
+#: ../src/searchnoteswidget.cpp:1506
+#, c-format
+msgid "Unrecognized order %s"
+msgstr "Μη αναγνωρίσιμη σειρά %s"
 
 #: ../src/sharp/addinstreemodel.cpp:109
-#| msgid "Host Name"
 msgid "Name"
 msgstr "Όνομα"
 
 #: ../src/sharp/addinstreemodel.cpp:121
-#| msgid "Version:"
 msgid "Version"
 msgstr "Έκδοση"
 
@@ -2314,7 +2379,6 @@ msgstr "Ενσωμάτωση επιφάνειας εργασίας"
 
 #. TRANSLATORS: Addin category.
 #: ../src/sharp/addinstreemodel.cpp:161
-#| msgid "_Tools"
 msgid "Tools"
 msgstr "Εργαλεία"
 
@@ -2325,7 +2389,6 @@ msgstr "Άγνωστο"
 
 #: ../src/sharp/modulemanager.cpp:62
 #, c-format
-#| msgid "Error saving icon"
 msgid "Error loading %s"
 msgstr "Σφάλμα κατά την φόρτωση του %s"
 
@@ -2351,22 +2414,22 @@ msgstr "Αποτυχία του %1%"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "ΚΕΝΟ φύλλο τεχνοτροπίας, παρακαλούμε συμπληρώστε ένα σφάλμα"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:370
+#: ../src/synchronization/filesystemsyncserver.cpp:369
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
 "but there may be some excess files floating around.  Here's the error: %s\n"
-msgstr "Εξαίρεση κατά τη διάρκεια καθαρισμού του διακομιστή κατά την υποβολή. Η "
+msgstr ""
+"Εξαίρεση κατά τη διάρκεια καθαρισμού του διακομιστή κατά την υποβολή. Η "
 "ακεραιότητα του διακομιστή είναι εντάξει, αλλά ενδέχεται να υπάρχει κάποια "
 "υπερβολή αρχείων που αιωρούνται ολόγυρα. Ιδού το σφάλμα: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:612
+#: ../src/synchronization/filesystemsyncserver.cpp:609
 #, c-format
-#| msgid "Error connecting to the synchronization service.  Please try again."
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Σφάλμα κατά τη διαγραφή του παλιού κλειδώματος συγχρονισμού \"%s\": %s"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:116
+#: ../src/synchronization/fusesyncserviceaddin.cpp:115
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1% correctly installed and configured"
@@ -2375,74 +2438,73 @@ msgstr ""
 "υπολογιστή. Παρακαλώ σιγουρευτείτε ότι έχετε εγκαταστήσει και ρυθμίσει σωστά "
 "το FUSE και το %1%."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:159
+#: ../src/synchronization/fusesyncserviceaddin.cpp:158
 msgid "Could not read testfile."
 msgstr "Αδυναμία ανάγνωσης του δοκιμαστικού αρχείου."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:168
+#: ../src/synchronization/fusesyncserviceaddin.cpp:167
 msgid "Write test failed."
 msgstr "Απέτυχε η δοκιμή εγγραφής."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:197
+#: ../src/synchronization/fusesyncserviceaddin.cpp:196
 msgid "Timeout connecting to server."
 msgstr "Το χρονικό περιθώριο για τη σύνδεση στον εξυπηρετητή έχει εξαντληθεί."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:203
+#: ../src/synchronization/fusesyncserviceaddin.cpp:202
 msgid "Error connecting to server."
 msgstr "Σφάλμα κατά την σύνδεση στον εξυπηρετητή."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:216
+#: ../src/synchronization/fusesyncserviceaddin.cpp:215
 msgid "FUSE could not be enabled."
 msgstr "Το FUSE δεν ήταν δυνατό να ενεργοποιηθεί."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:247
-#| msgid "An error ocurred while connecting to the specified server:"
+#: ../src/synchronization/fusesyncserviceaddin.cpp:246
 msgid "An error ocurred while connecting to the specified server"
 msgstr "Ένα σφάλμα συνέβη κατά τη σύνδεση με τον καθορισμένο διακομιστή"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:155
+#: ../src/synchronization/gnotesyncclient.cpp:154
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Μη αναλύσιμο στοιχείο ημερομηνίας τελευταίου συγχρονισμού στο %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:165
+#: ../src/synchronization/gnotesyncclient.cpp:164
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Μη αναλύσιμο στοιχείο αναθεώρησης τελευταίου συγχρονισμού στο %s"
 
-#: ../src/synchronization/syncdialog.cpp:65
+#: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
 msgstr "Σύγκρουση σημείωσης"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:70
+#: ../src/synchronization/syncdialog.cpp:69
 msgid " (old)"
 msgstr " (παλιό)"
 
-#: ../src/synchronization/syncdialog.cpp:115
+#: ../src/synchronization/syncdialog.cpp:114
 msgid "Rename local note:"
 msgstr "Μετονομασία τοπικής σημείωσης:"
 
-#: ../src/synchronization/syncdialog.cpp:122
+#: ../src/synchronization/syncdialog.cpp:121
 msgid "Update links in referencing notes"
 msgstr "Ενημέρωση δεσμών στις αναφερόμενες σημειώσεις"
 
-#: ../src/synchronization/syncdialog.cpp:128
+#: ../src/synchronization/syncdialog.cpp:127
 msgid "Overwrite local note"
 msgstr "Αντικατάσταση τοπικής σημείωσης"
 
-#: ../src/synchronization/syncdialog.cpp:132
+#: ../src/synchronization/syncdialog.cpp:131
 msgid "Always perform this action"
 msgstr "Εκτέλεση πάντα αυτής της ενέργειας"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:138
+#: ../src/synchronization/syncdialog.cpp:137
 msgid "Note conflict detected"
 msgstr "Ανιχνεύτηκε σύγκρουση σημείωσης"
 
-#: ../src/synchronization/syncdialog.cpp:140
+#: ../src/synchronization/syncdialog.cpp:139
 msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2451,55 +2513,55 @@ msgstr ""
 "Τι θέλετε να κάνετε με την τοπική σας σημείωση;"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:297
+#: ../src/synchronization/syncdialog.cpp:296
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
-#: ../src/synchronization/syncdialog.cpp:339
+#: ../src/synchronization/syncdialog.cpp:338
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: ../src/synchronization/syncdialog.cpp:484
+#: ../src/synchronization/syncdialog.cpp:483
 msgid "Acquiring sync lock..."
 msgstr "Λήψη κλειδώματος συγχρονισμού..."
 
-#: ../src/synchronization/syncdialog.cpp:487
+#: ../src/synchronization/syncdialog.cpp:486
 msgid "Committing changes..."
 msgstr "Υποβολή αλλαγών..."
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: ../src/synchronization/syncdialog.cpp:489
 msgid "Synchronizing Notes"
 msgstr "Γίνεται συγχρονισμός σημειώσεων"
 
-#: ../src/synchronization/syncdialog.cpp:491
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "Synchronizing your notes..."
 msgstr "Γίνεται συγχρονισμός των σημειώσεών σας..."
 
-#: ../src/synchronization/syncdialog.cpp:492
+#: ../src/synchronization/syncdialog.cpp:491
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Αυτό μπορεί να διαρκέσει κάμποσο, χαλαρώστε και απολαύστε!"
 
-#: ../src/synchronization/syncdialog.cpp:494
+#: ../src/synchronization/syncdialog.cpp:493
 msgid "Connecting to the server..."
 msgstr "Συνδέεται με τον διακομιστή..."
 
-#: ../src/synchronization/syncdialog.cpp:500
+#: ../src/synchronization/syncdialog.cpp:499
 msgid "Deleting notes off of the server..."
 msgstr "Διαγραφή σημειώσεων από τον διακομιστή..."
 
-#: ../src/synchronization/syncdialog.cpp:504
+#: ../src/synchronization/syncdialog.cpp:503
 msgid "Downloading new/updated notes..."
 msgstr "Λήψη νέων/ενημερωμένων σημειώσεων..."
 
-#: ../src/synchronization/syncdialog.cpp:516
+#: ../src/synchronization/syncdialog.cpp:515
 msgid "Server Locked"
 msgstr "Ο διακομιστής κλειδώθηκε"
 
-#: ../src/synchronization/syncdialog.cpp:517
+#: ../src/synchronization/syncdialog.cpp:516
 msgid "Server is locked"
 msgstr "Ο διακομιστής κλειδώθηκε"
 
-#: ../src/synchronization/syncdialog.cpp:518
+#: ../src/synchronization/syncdialog.cpp:517
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2507,107 +2569,107 @@ msgstr ""
 "Ένας από τους άλλους υπολογιστές σας συγχρονίζεται αυτή τη στιγμή. Παρακαλώ "
 "περιμένετε 2 λεπτά και δοκιμάστε ξανά."
 
-#: ../src/synchronization/syncdialog.cpp:522
+#: ../src/synchronization/syncdialog.cpp:521
 msgid "Preparing to download updates from server..."
 msgstr "Προετοιμασία για τη μεταφόρτωση ενημερώσεων από τον διακομιστή..."
 
-#: ../src/synchronization/syncdialog.cpp:525
+#: ../src/synchronization/syncdialog.cpp:524
 msgid "Preparing to upload updates to server..."
 msgstr "Προετοιμασία για την αποστολή ενημερώσεων στον διακομιστή..."
 
-#: ../src/synchronization/syncdialog.cpp:528
+#: ../src/synchronization/syncdialog.cpp:527
 msgid "Uploading notes to server..."
 msgstr "Αποστέλλονται σημειώσεις στον διακομιστή..."
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:530
 msgid "Synchronization Failed"
 msgstr "Ο συγχρονισμός απέτυχε"
 
-#: ../src/synchronization/syncdialog.cpp:532
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "Failed to synchronize"
 msgstr "Αποτυχία συγχρονισμού"
 
-#: ../src/synchronization/syncdialog.cpp:533
+#: ../src/synchronization/syncdialog.cpp:532
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Αδύνατος ο συγχρονισμός των σημειώσεων. Ελέγξτε τις λεπτομέρειες παρακάτω "
 "και δοκιμάστε ξανά."
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:538
 msgid "Synchronization Complete"
 msgstr "Ο συγχρονισμός ολοκληρώθηκε"
 
-#: ../src/synchronization/syncdialog.cpp:540
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "Synchronization is complete"
 msgstr "Ο συγχρονισμός ολοκληρώθηκε"
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "Η σημείωση %1% έχει ενημερωθεί."
 msgstr[1] "Οι σημειώσεις %1% έχουν ενημερωθεί."
 
-#: ../src/synchronization/syncdialog.cpp:542
+#: ../src/synchronization/syncdialog.cpp:541
 msgid "Your notes are now up to date."
 msgstr "Οι σημειώσεις σας είναι τώρα ενημερωμένες."
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:546
 msgid "Synchronization Canceled"
 msgstr "Ο συγχρονισμός ακυρώθηκε"
 
-#: ../src/synchronization/syncdialog.cpp:548
+#: ../src/synchronization/syncdialog.cpp:547
 msgid "Synchronization was canceled"
 msgstr "Ο συγχρονισμός ακυρώθηκε"
 
-#: ../src/synchronization/syncdialog.cpp:549
+#: ../src/synchronization/syncdialog.cpp:548
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Ακυρώσατε τον συγχρονισμό. Μπορείτε τώρα να κλείσετε το παράθυρο."
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:552
 msgid "Synchronization Not Configured"
 msgstr "Ο συγχρονισμός δεν έχει ρυθμιστεί"
 
-#: ../src/synchronization/syncdialog.cpp:554
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Synchronization is not configured"
 msgstr "Ο συγχρονισμός δεν έχει ρυθμιστεί"
 
-#: ../src/synchronization/syncdialog.cpp:555
+#: ../src/synchronization/syncdialog.cpp:554
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Παρακαλώ ρυθμίστε τον συγχρονισμό από τον διάλογο προτιμήσεων."
 
-#: ../src/synchronization/syncdialog.cpp:559
+#: ../src/synchronization/syncdialog.cpp:558
 msgid "Synchronization Service Error"
 msgstr "Σφάλμα υπηρεσίας συγχρονισμού"
 
-#: ../src/synchronization/syncdialog.cpp:560
+#: ../src/synchronization/syncdialog.cpp:559
 msgid "Service error"
 msgstr "Σφάλμα υπηρεσίας"
 
-#: ../src/synchronization/syncdialog.cpp:561
+#: ../src/synchronization/syncdialog.cpp:560
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Σφάλμα σύνδεσης στην υπηρεσία συγχρονισμού. Παρακαλώ δοκιμάστε ξανά."
 
-#: ../src/synchronization/syncdialog.cpp:575
+#: ../src/synchronization/syncdialog.cpp:574
 msgid "Deleted locally"
 msgstr "Διαγράφηκε τοπικά"
 
-#: ../src/synchronization/syncdialog.cpp:578
+#: ../src/synchronization/syncdialog.cpp:577
 msgid "Deleted from server"
 msgstr "Διαγράφηκε από τον διακομιστή"
 
-#: ../src/synchronization/syncdialog.cpp:581
+#: ../src/synchronization/syncdialog.cpp:580
 msgid "Updated"
 msgstr "Ενημερώθηκε"
 
-#: ../src/synchronization/syncdialog.cpp:584
+#: ../src/synchronization/syncdialog.cpp:583
 msgid "Added"
 msgstr "Προστέθηκε"
 
-#: ../src/synchronization/syncdialog.cpp:587
+#: ../src/synchronization/syncdialog.cpp:586
 msgid "Uploaded changes to server"
 msgstr "Απεστάλησαν οι αλλαγές στον εξυπηρετητή."
 
-#: ../src/synchronization/syncdialog.cpp:590
+#: ../src/synchronization/syncdialog.cpp:589
 msgid "Uploaded new note to server"
 msgstr "Στάλθηκε νέα σημείωση στον εξυπηρετητή"
 
@@ -2628,9 +2690,6 @@ msgstr "Εξαίρεση κατά την δημιουργία συγχρονισ
 #. top-level try
 #: ../src/synchronization/syncmanager.cpp:353
 #, c-format
-#| msgid ""
-#| "Saving configuration to the GNOME keyring failed with the following "
-#| "message:"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Αποτυχία συγχρονισμού με την ακόλουθη εξαίρεση: %s"
 
@@ -2665,23 +2724,22 @@ msgstr ""
 "Ο συγχρονισμός που έχετε επιλέξει απαιτεί την φόρτωση της ενότητας FUSE.\n"
 "\n"
 "Για την αποφυγή λήψης αυτής της προτροπής στο μέλλον, θα πρέπει να φορτώνετε "
-"το FUSE κατά την εκκίνηση. Προσθέστε \"modprobe fuse\" στο "
-"/etc/init.d/boot.local ή \"fuse\" στο /etc/modules."
+"το FUSE κατά την εκκίνηση. Προσθέστε \"modprobe fuse\" στο /etc/init.d/boot."
+"local ή \"fuse\" στο /etc/modules."
 
 #: ../src/tray.cpp:54
-#| msgid "Total: %1% notes"
 msgid "Take notes"
 msgstr "Λήψη σημειώσεων"
 
-#: ../src/tray.cpp:165
+#: ../src/tray.cpp:167
 msgid " (new)"
 msgstr " (νέο)"
 
-#: ../src/tray.cpp:435
+#: ../src/tray.cpp:461
 msgid "_About Gnote"
 msgstr "Πε_ρί του Gnote"
 
-#: ../src/utils.cpp:140
+#: ../src/utils.cpp:144
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2689,86 +2747,65 @@ msgstr ""
 "Το \"Εγχειρίδιο του Gnote\" δε μπόρεσε να βρεθεί.  Παρακαλούμε επιβεβαιώστε "
 "ότι η εγκατάσταση σας έχει ολοκληρωθεί με επιτυχία."
 
-#: ../src/utils.cpp:148
+#: ../src/utils.cpp:152
 msgid "Help not found"
 msgstr "Δε βρέθηκε βοήθεια"
 
-#: ../src/utils.cpp:181
+#: ../src/utils.cpp:185
 msgid "Cannot open location"
 msgstr "Αδύνατο το άνοιγμα της τοποθεσίας"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:196
+#: ../src/utils.cpp:215
 msgid "Today, %1%"
 msgstr "Σήμερα, %1%"
 
-#: ../src/utils.cpp:197
+#: ../src/utils.cpp:216
 msgid "Today"
 msgstr "Σήμερα"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:203
+#: ../src/utils.cpp:222
 msgid "Yesterday, %1%"
 msgstr "Χθες, %1%"
 
-#: ../src/utils.cpp:204
+#: ../src/utils.cpp:223
 msgid "Yesterday"
 msgstr "Χθες"
 
-#. TRANSLATORS: 2 or more days ago, up to one week.
-#. First argument is number of days, second is time.
-#: ../src/utils.cpp:213
-#| msgid "%1% day ago, %2%"
-msgid "%1% day ago, %2%"
-msgid_plural "%1% days ago, %2%"
-msgstr[0] "πριν %1% ημέρα, %2%"
-msgstr[1] "πριν %1% ημέρες, %2%"
-
-#. TRANSLATORS: 2 or more days ago, up to one week.
-#. Argument is number of days.
-#: ../src/utils.cpp:219
-#| msgid "%1% day ago"
-msgid "%1% day ago"
-msgid_plural "%1% days ago"
-msgstr[0] "πριν %1% ημέρα"
-msgstr[1] "πριν %1% ημέρες"
-
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:229
 msgid "Tomorrow, %1%"
 msgstr "Αύριο, %1%"
 
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:230
 msgid "Tomorrow"
 msgstr "Αύριο"
 
-#. TRANSLATORS: In 2 or more days, up to one week.
-#. First argument is number of days, second is time.
-#: ../src/utils.cpp:237
-#| msgid "In %1% day, %2%"
-msgid "In %1% day, %2%"
-msgid_plural "In %1% days, %2%"
-msgstr[0] "Σε %1% ημέρα, %2%"
-msgstr[1] "Σε %1% ημέρες, %2%"
+#. TRANSLATORS: date in current year.
+#: ../src/utils.cpp:234
+msgid "%b %d"
+msgstr "%d %b"
 
-#. TRANSLATORS: In 2 or more days, up to one week.
-#. Argument is number of days.
-#: ../src/utils.cpp:243
-#| msgid "In %1% day"
-msgid "In %1% day"
-msgid_plural "In %1% days"
-msgstr[0] "Σε %1% ημέρα"
-msgstr[1] "Σε %1% ημέρες"
+#. TRANSLATORS: first argument is date, second is time.
+#: ../src/utils.cpp:237 ../src/utils.cpp:249
+msgid "%1%, %2%"
+msgstr "%1%, %2%"
 
-#: ../src/utils.cpp:254
+#: ../src/utils.cpp:242
 msgid "No Date"
 msgstr "Χωρίς ημερομηνία"
 
-#: ../src/watchers.cpp:211
+#. TRANSLATORS: date in other than current year.
+#: ../src/utils.cpp:246
+msgid "%b %d %Y"
+msgstr "%d %b %Y"
+
+#: ../src/watchers.cpp:200
 msgid "(Untitled %1%)"
 msgstr "(Χωρίς τίτλο %1%)"
 
-#: ../src/watchers.cpp:242
+#: ../src/watchers.cpp:231
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2776,17 +2813,73 @@ msgstr ""
 "Υπάρχει ήδη μία σημείωση με τίτλο <b>%1%</b>. Παρακαλούμε, επιλέξτε ένα άλλο "
 "όνομα για αυτή τη σημείωση πριν συνεχίσετε."
 
-#: ../src/watchers.cpp:256
+#: ../src/watchers.cpp:246
 msgid "Note title taken"
 msgstr "Ελήφθη ο τίτλος της σημείωσης"
 
-#: ../src/watchers.cpp:581
+#: ../src/watchers.cpp:309
+msgid "Check spelling"
+msgstr "Ορθογραφικός έλεγχος"
+
+#: ../src/watchers.cpp:310
+msgid "Check spelling in this note"
+msgstr "Ορθογραφικός έλεγχος σε αυτή τη σημείωση"
+
+#: ../src/watchers.cpp:674
 msgid "_Copy Link Address"
 msgstr "_Αντιγραφή διεύθυνσης συνδέσμου"
 
-#: ../src/watchers.cpp:587
+#: ../src/watchers.cpp:680
 msgid "_Open Link"
 msgstr "Άν_οιγμα συνδέσμου"
+
+#~ msgid "Saved horizontal position of Search window"
+#~ msgstr "Η αποθηκευμένη οριζόντια θέση του παραθύρου αναζήτησης"
+
+#~ msgid "Determines X coordinate of Search window; stored on Gnote exit."
+#~ msgstr ""
+#~ "Ορίζει τη συντεταγμένη Χ του παραθύρου αναζήτησης· αποθηκεύεται κατά την "
+#~ "έξοδο από το Gnote."
+
+#~ msgid "Saved vertical position of Search window"
+#~ msgstr "Η αποθηκευμένη κατακόρυφη θέση του παραθύρου αναζήτησης"
+
+#~ msgid "Determines Y coordinate of Search window; stored on Gnote exit."
+#~ msgstr ""
+#~ "Ορίζει τη συντεταγμένη Υ του παραθύρου αναζήτησης· αποθηκεύεται κατά την "
+#~ "έξοδο από το Gnote."
+
+#~ msgid "Add-ins"
+#~ msgstr "Πρόσθετα"
+
+#~| msgid "Delete Note_book"
+#~ msgid "_Delete Notebook"
+#~ msgstr "_Διαγραφή σημειωματάριου"
+
+#~ msgid "Last Changed"
+#~ msgstr "Τελευταία τροποποίηση"
+
+#~| msgid "New Note_book..."
+#~ msgid "_New Notebook"
+#~ msgstr "_Νέο σημειωματάριο"
+
+#~| msgid "%1% day ago, %2%"
+#~ msgid "%1% day ago, %2%"
+#~ msgid_plural "%1% days ago, %2%"
+#~ msgstr[0] "πριν %1% ημέρα, %2%"
+#~ msgstr[1] "πριν %1% ημέρες, %2%"
+
+#~| msgid "%1% day ago"
+#~ msgid "%1% day ago"
+#~ msgid_plural "%1% days ago"
+#~ msgstr[0] "πριν %1% ημέρα"
+#~ msgstr[1] "πριν %1% ημέρες"
+
+#~| msgid "In %1% day"
+#~ msgid "In %1% day"
+#~ msgid_plural "In %1% days"
+#~ msgstr[0] "Σε %1% ημέρα"
+#~ msgstr[1] "Σε %1% ημέρες"
 
 #~ msgid "Accessories"
 #~ msgstr "Βοηθήματα"
@@ -2860,9 +2953,6 @@ msgstr "Άν_οιγμα συνδέσμου"
 #~ msgid "T_ools"
 #~ msgstr "Εργα_λεία"
 
-#~ msgid "Use tools on this note"
-#~ msgstr "Χρήση εργαλείων σε αυτή τη σημείωση"
-
 #~ msgid "_Find..."
 #~ msgstr "Εύ_ρεση..."
 
@@ -2886,9 +2976,6 @@ msgstr "Άν_οιγμα συνδέσμου"
 
 #~ msgid "Really delete this note?"
 #~ msgstr "Είστε βέβαιος πως θέλετε να διαγράψετε αυτήν την σημείωση;"
-
-#~ msgid "Search All Notes"
-#~ msgstr "Αναζήτηση σε όλες τις σημειώσεις"
 
 #~ msgid "C_ase Sensitive"
 #~ msgstr "_Διάκριση πεζών/κεφαλαίων"
