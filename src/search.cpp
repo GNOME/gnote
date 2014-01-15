@@ -103,7 +103,7 @@ namespace gnote {
 
     for(std::vector<std::string>::const_iterator iter = encoded_words.begin();
         iter != encoded_words.end(); ++iter) {
-      if (sharp::string_contains(note_text, *iter) ) {
+      if(note_text.find(*iter) != std::string::npos) {
         continue;
       }
       else {

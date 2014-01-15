@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -211,8 +211,7 @@ namespace bugzilla {
     /** sanitize the hostname. Return false if nothing could be done */
     bool sanitize_hostname(std::string & hostname)
     {
-      if(sharp::string_contains(hostname, "/") 
-         || sharp::string_contains(hostname, ":")) {
+      if(hostname.find("/") != std::string::npos || hostname.find(":") != std::string::npos) {
         sharp::Uri uri(hostname);
         std::string new_host = uri.get_host();
         if(new_host.empty()) {

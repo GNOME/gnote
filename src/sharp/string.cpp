@@ -102,11 +102,6 @@ namespace sharp {
     return boost::trim_copy_if(source, boost::is_any_of(set_of_char));
   }
 
-  bool string_contains(const std::string & source, const std::string &search)
-  {
-    return string_index_of(source, search) != -1;
-  }
-
   int string_last_index_of(const std::string & source, const std::string & search)
   {
     if(search.empty()) {
