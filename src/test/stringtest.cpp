@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -72,7 +72,6 @@ int test_main(int /*argc*/, char ** /*argv*/)
   BOOST_CHECK(splits[12] == "");
 
   // Some Empty string tests to mimic C#
-  BOOST_CHECK(string_contains(test5, ""));
   BOOST_CHECK(string_index_of(test5, "") == 0);
   BOOST_CHECK(string_index_of(test5, "", 4) == 4);
   BOOST_CHECK(string_index_of("", "") == 0);
@@ -89,16 +88,11 @@ int test_main(int /*argc*/, char ** /*argv*/)
 
   BOOST_CHECK(Glib::str_has_suffix(test1, "baz"));
 
-  BOOST_CHECK(string_contains(test1, "ba"));
-  BOOST_CHECK(!string_contains(test1, "CD"));
-
   BOOST_CHECK(string_index_of(test1, "ba") == 4);
   BOOST_CHECK(string_index_of(test1, "ba", 5) == 8);
 
   BOOST_CHECK(string_last_index_of(test1, "ba") == 8);
   BOOST_CHECK(string_last_index_of(test1, "Camel") == -1);
-
-  BOOST_CHECK(string_to_lower(test4) == "camelcase");
 
   return 0;
 }
