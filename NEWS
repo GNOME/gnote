@@ -1,3 +1,38 @@
+3.11.1 - 2014/01/19
+
+New Features:
+  * App menu: standardize help/about/quit (#720130)
+  * Help: add logo next to title (#720131)
+  * Do not close main window on escape
+  * Make setting enable-close-note-on-escape work (#720748)
+  * Use Gtk::HeaderBar in main window
+
+Fixes:
+  * Hold application in background mode, fixes crash in some environments (#719666)
+  * Never open new window with --background (#720491)
+  * Fix command line processing on primary instance
+  * Pluralize "notes" keyword in desktop file
+  * Fix tooltip on unpin button (#721357)
+  * Update notes list when back from note (#721358)
+  * Fix empty items in application menu in some environments
+  * Update documentation licence (new FSF address) (#721563)
+  * Do not close main window when middle-click on link (#721852)
+  * Update README (#721855)
+  * Update AppData screenshot
+
+Translations:
+  * Updated translations:
+    - Assamese (as)
+    - Brazilian (pt_BR)
+    - Czech (cs)
+    - German (de)
+    - Greek (el)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Spanish (es)
+    - Tamil (ta)
+  * Updated Czech manual (cs)
+
 3.11.0 - 2013/11/03
 
 New Features:
