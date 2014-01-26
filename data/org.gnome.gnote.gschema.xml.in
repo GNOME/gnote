@@ -134,6 +134,7 @@
     <child name="export-html" schema="org.gnome.gnote.export-html" />
     <child name="sync" schema="org.gnome.gnote.sync" />
     <child name="insert-timestamp" schema="org.gnome.gnote.insert-timestamp" />
+    <child name="note-directory-watcher" schema="org.gnome.gnote.note-directory-watcher" />
   </schema>
   <schema id="org.gnome.gnote.global-keybindings" path="/org/gnome/gnote/global-keybindings/">
     <key name="show-note-menu" type="s">
@@ -229,6 +230,13 @@
       <default>'%c'</default>
       <_summary>Timestamp format</_summary>
       <_description>The date format that is used for the timestamp. It follows the format of strftime(3).</_description>
+    </key>
+  </schema>
+  <schema id="org.gnome.gnote.note-directory-watcher" path="/org/gnome/gnote/note-directory-watcher/">
+    <key name="check-interval" type="i">
+      <default>5</default>
+      <_summary>Time between checks</_summary>
+      <_description>Time interval between note directory checks (in seconds). Min value is 5.</_description>
     </key>
   </schema>
 </schemalist>

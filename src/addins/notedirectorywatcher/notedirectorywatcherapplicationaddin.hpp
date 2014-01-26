@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,12 +75,18 @@ private:
   bool handle_timeout();
   void delete_note(const std::string & note_id);
   void add_or_update_note(const std::string & note_id);
+  void on_settings_changed(const Glib::ustring & key);
+  void sanitize_check_interval(const Glib::RefPtr<Gio::Settings> & settings);
 
   Glib::RefPtr<Gio::FileMonitor> m_file_system_watcher;
 
   std::map<std::string, NoteFileChangeRecord> m_file_change_records;
   std::map<std::string, sharp::DateTime> m_note_save_times;
+  sigc::connection m_signal_note_saved_cid;
+  sigc::connection m_signal_changed_cid;
+  sigc::connection m_signal_settings_changed_cid;
   bool m_initialized;
+  int m_check_interval;
   Glib::Threads::Mutex m_lock;
 };
 

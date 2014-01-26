@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@
 
 #include "debug.hpp"
 #include "notedirectorywatcherapplicationaddin.hpp"
+#include "notedirectorywatcherpreferencesfactory.hpp"
 #include "notemanager.hpp"
 #include "sharp/files.hpp"
 #include "sharp/string.hpp"
@@ -34,6 +35,7 @@ namespace notedirectorywatcher {
 NoteDirectoryWatcherModule::NoteDirectoryWatcherModule()
 {
   ADD_INTERFACE_IMPL(NoteDirectoryWatcherApplicationAddin);
+  ADD_INTERFACE_IMPL(NoteDirectoryWatcherPreferencesFactory);
 }
 
 
@@ -48,14 +50,20 @@ void NoteDirectoryWatcherApplicationAddin::initialize()
 {
   gnote::NoteManager & manager(note_manager());
   std::string note_path = manager.get_notes_dir();
-  manager.signal_note_saved
+  m_signal_note_saved_cid = manager.signal_note_saved
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::handle_note_saved));
 
   Glib::RefPtr<Gio::File> file = Gio::File::create_for_path(note_path);
   m_file_system_watcher = file->monitor_directory();
 
-  m_file_system_watcher->signal_changed()
+  m_signal_changed_cid = m_file_system_watcher->signal_changed()
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event));
+
+  Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER);
+  m_check_interval = settings->get_int(CHECK_INTERVAL);
+  sanitize_check_interval(settings);
+  m_signal_settings_changed_cid = settings->signal_changed()
+    .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::on_settings_changed));
 
   m_initialized = true;
 }
@@ -63,6 +71,9 @@ void NoteDirectoryWatcherApplicationAddin::initialize()
 void NoteDirectoryWatcherApplicationAddin::shutdown()
 {
   m_file_system_watcher->cancel();
+  m_signal_note_saved_cid.disconnect();
+  m_signal_changed_cid.disconnect();
+  m_signal_settings_changed_cid.disconnect();
   m_initialized = false;
 }
 
@@ -127,7 +138,7 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
   {}
   m_lock.unlock();
 
-  Glib::RefPtr<Glib::TimeoutSource> timeout = Glib::TimeoutSource::create(5000);
+  Glib::RefPtr<Glib::TimeoutSource> timeout = Glib::TimeoutSource::create(m_check_interval * 1000);
   timeout->connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::handle_timeout));
   timeout->attach();
 }
@@ -152,9 +163,9 @@ bool NoteDirectoryWatcherApplicationAddin::handle_timeout()
         iter != m_file_change_records.end(); ++iter) {
       DBG_OUT("NoteDirectoryWatcher: Handling (timeout) %s", iter->first.c_str());
 
-      // Check that Note.Saved event didn't occur within 3 seconds of last write
+      // Check that Note.Saved event didn't occur within (check-interval -2) seconds of last write
       if(m_note_save_times.find(iter->first) != m_note_save_times.end() &&
-          std::abs((m_note_save_times[iter->first] - iter->second.last_change).total_seconds()) <= 3) {
+          std::abs((m_note_save_times[iter->first] - iter->second.last_change).total_seconds()) <= (m_check_interval - 2)) {
         DBG_OUT("NoteDirectoryWatcher: Ignoring (timeout) because it was probably a Gnote write");
         keysToRemove.push_back(iter->first);
         continue;
@@ -288,6 +299,22 @@ std::string NoteDirectoryWatcherApplicationAddin::make_uri(const std::string & n
   return "note://gnote/" + note_id;
 }
 
+void NoteDirectoryWatcherApplicationAddin::on_settings_changed(const Glib::ustring & key)
+{
+  if(key == CHECK_INTERVAL) {
+    Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER);
+    m_check_interval = settings->get_int(key);
+    sanitize_check_interval(settings);
+  }
+}
+
+void NoteDirectoryWatcherApplicationAddin::sanitize_check_interval(const Glib::RefPtr<Gio::Settings> & settings)
+{
+  if(m_check_interval < 5) {
+    m_check_interval = 5;
+    settings->set_int(CHECK_INTERVAL, m_check_interval);
+  }
+}
 
 }
 

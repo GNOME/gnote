@@ -11,7 +11,10 @@ addins_LTLIBRARIES = notedirectorywatcher.la
 addins_DATA = $(desktop_files)
 
 
-notedirectorywatcher_la_SOURCES = notedirectorywatcherapplicationaddin.hpp notedirectorywatcherapplicationaddin.cpp \
+notedirectorywatcher_la_SOURCES = \
+	notedirectorywatcherapplicationaddin.hpp notedirectorywatcherapplicationaddin.cpp \
+	notedirectorywatcherpreferences.hpp notedirectorywatcherpreferences.cpp \
+	notedirectorywatcherpreferencesfactory.hpp \
 	$(NULL)
 
 EXTRA_DIST = $(desktop_in_files)
