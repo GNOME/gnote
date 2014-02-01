@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-01-08 16:50+0000\n"
-"PO-Revision-Date: 2014-01-10 15:23-0300\n"
+"POT-Creation-Date: 2014-01-26 15:47+0000\n"
+"PO-Revision-Date: 2014-02-01 08:48-0300\n"
 "Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.3\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -609,6 +609,17 @@ msgstr ""
 "O formato de data que é utilizado para a data e hora. Segue o formato do "
 "strftime(3)."
 
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+msgid "Time between checks"
+msgstr "Tempo entre as verificações"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:88
+msgid ""
+"Time interval between note directory checks (in seconds). Min value is 5."
+msgstr ""
+"Intervalo de tempo entre as verificações do diretório de notas (em "
+"segundos). Valor mínimo é 5."
+
 #: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
 #: ../src/tray.cpp:468
 msgid "_Quit"
@@ -782,42 +793,42 @@ msgstr "Nome da máquina"
 msgid "Icon"
 msgstr "Ícone"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:230
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:229
 msgid "Select an icon..."
 msgstr "Selecione um ícone..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:245
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:244
 msgid "_Host name:"
 msgstr "_Nome da máquina:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:279
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:278
 msgid "Host name invalid"
 msgstr "Nome de máquina inválido"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:280
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:279
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Você deve especificar um nome de máquina do Bugzilla válido para usar com "
 "este ícone."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:299
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:298
 msgid "Error saving icon"
 msgstr "Erro ao salvar o ícone"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:300
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:299
 msgid "Could not save the icon file."
 msgstr "Não foi possível salvar o arquivo de ícone."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:372
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:371
 msgid "Really remove this icon?"
 msgstr "Remover mesmo este ícone?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:373
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:372
 msgid "If you remove an icon it is permanently lost."
 msgstr "Se você remover um ícone ele estará permanentemente perdido."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:395
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:394
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Erro ao remover o ícone %s: %s"
@@ -982,7 +993,7 @@ msgid "_Use Custom Format"
 msgstr "_Usar formato personalizado"
 
 #. TRANSLATORS: first %s is file name, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:225
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:236
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
@@ -990,29 +1001,33 @@ msgstr ""
 "%s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:252
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr "Monitor de diretório de notas: Erro ao ler o título da nota de %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:260
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:271
 #, c-format
 msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 msgstr "Monitor de diretório de notas: Erro desconhecido ao criar a nota de %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:266
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:277
 #, c-format
 msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
 msgstr "Monitor de diretório de notas: Erro ao criar da nota de %s: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:279
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:290
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
 "Monitor de diretório de notas: Atualização abortada, erro ao analisar %s: %s"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:34
+msgid "_Directory check interval:"
+msgstr "Intervalo de verificação do _diretório:"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:1
 msgid "Note Directory Watcher"
@@ -1374,13 +1389,18 @@ msgstr ""
 "Júnior Pires <juniorpiresupe@gmail.com>, 2013."
 
 #: ../src/gnote.cpp:374
+#| msgid ""
+#| "Copyright © 2010-2013 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 autores originais do Tomboy."
@@ -1614,17 +1634,17 @@ msgstr "Exceção ao salvar a nota: %s"
 msgid "Error while saving: %s"
 msgstr "Erro ao salvar: %s"
 
-#: ../src/note.cpp:960
+#: ../src/note.cpp:958
 msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
 #. write failure, but not critical
-#: ../src/note.cpp:1163
+#: ../src/note.cpp:1161
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falha ao atualizar o formato da nota: %s"
 
-#: ../src/note.cpp:1298
+#: ../src/note.cpp:1296
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Erro de sistema de arquivos: %s"
