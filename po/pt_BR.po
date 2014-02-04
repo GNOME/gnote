@@ -4,7 +4,7 @@
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009.
 # Taylon Silmer <taylonsilva@gmail.com>, 2009.
 # Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012.
-# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013.
+# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013, 2014.
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013.
 #
@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-07 19:39+0000\n"
-"PO-Revision-Date: 2013-10-08 15:10-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2014-02-01 10:50+0000\n"
+"PO-Revision-Date: 2014-02-02 01:38-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.3\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
@@ -590,7 +590,7 @@ msgstr ""
 "strftime(3)."
 
 #: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
-#: ../src/tray.cpp:465
+#: ../src/tray.cpp:468
 msgid "_Quit"
 msgstr "Sai_r"
 
@@ -599,7 +599,7 @@ msgid "Quit Gnote"
 msgstr "Sai do Gnote"
 
 #: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
-#: ../src/tray.cpp:448
+#: ../src/tray.cpp:451
 msgid "_Preferences"
 msgstr "_Preferências"
 
@@ -627,19 +627,19 @@ msgstr "Sobre o Gnote"
 msgid "TrayIcon"
 msgstr "Ícone da área de notificação"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:223
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
 msgid "Create _New Note"
 msgstr "Criar uma _nova nota"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:227
 msgid "Create a new note"
 msgstr "Cria uma nova nota"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:232
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
 msgid "_Search All Notes"
 msgstr "_Pesquisar em todas as notas"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:236
 msgid "Open the Search All Notes window"
 msgstr "Abre a janela \"Pesquisar em todas as notas\""
 
@@ -651,7 +651,7 @@ msgstr "_Nova nota"
 msgid "New _Window"
 msgstr "Nova _janela"
 
-#: ../src/actionmanager.cpp:169 ../src/tray.cpp:453
+#: ../src/actionmanager.cpp:169 ../src/tray.cpp:456
 msgid "_Help"
 msgstr "Aj_uda"
 
@@ -684,17 +684,17 @@ msgstr "Informação de plug-in de nota %s está ausente"
 msgid "Note add-in %s is absent"
 msgstr "Plug-in de nota %s está ausente"
 
-#: ../src/addinmanager.cpp:183
+#: ../src/addinmanager.cpp:184
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Falha ao localizar módulo %s para o plug-in %s"
 
-#: ../src/addinmanager.cpp:187
+#: ../src/addinmanager.cpp:188
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Falha ao carregar a informação de plug-in para %s: %s"
 
-#: ../src/addinmanager.cpp:302
+#: ../src/addinmanager.cpp:303
 msgid "Trying to load addins when they are already loaded"
 msgstr "Tentando carregar plug-ins quando eles já foram carregados"
 
@@ -1292,15 +1292,15 @@ msgstr "Chamada remota a %s falhou"
 msgid "Exception thrown when creating note: %s"
 msgstr "Exceção lançada ao criar a nota: %s"
 
-#: ../src/gnote.cpp:202
+#: ../src/gnote.cpp:198
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote já está em execução. Saindo..."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:359
 msgid "and Tomboy original authors."
 msgstr "e os autores originais do Tomboy."
 
-#: ../src/gnote.cpp:369
+#: ../src/gnote.cpp:365
 msgid "translator-credits"
 msgstr ""
 "Marco de Freitas <marcodefreitas@gmail.com>, 2009\n"
@@ -1309,87 +1309,92 @@ msgstr ""
 "Rafael Ferreira <rafael.f.f1@gmail.com>, 2013\n"
 "Júnior Pires <juniorpiresupe@gmail.com>, 2013."
 
-#: ../src/gnote.cpp:378
+#: ../src/gnote.cpp:374
+#| msgid ""
+#| "Copyright © 2010-2013 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 autores originais do Tomboy."
 
-#: ../src/gnote.cpp:382
+#: ../src/gnote.cpp:378
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Um aplicativo simples e fácil de usar para tomar notas."
 
-#: ../src/gnote.cpp:393
+#: ../src/gnote.cpp:389
 msgid "Homepage"
 msgstr "Página do projeto"
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:563
 msgid "Run Gnote in background."
 msgstr "Executar o Gnote em segundo plano."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:564
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especifica o caminho do diretório que contém as notas."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:564
 msgid "path"
 msgstr "caminho"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:565
 msgid "Open the search all notes window with the search text."
 msgstr "Abre a janela \"pesquisar em todas as notas\" com o texto de pesquisa."
 
-#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
+#: ../src/gnote.cpp:565 ../src/gnote.cpp:570
 msgid "text"
 msgstr "texto"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:566
 msgid "Print version information."
 msgstr "Imprime informações da versão."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:567
 msgid "Create and display a new note, with a optional title."
 msgstr "Cria e exibe uma nova nota, com um título opcional."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:567
 msgid "title"
 msgstr "título"
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:568
 msgid "Display the existing note matching title."
 msgstr "Exibe a nota correspondente ao título."
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:568
 msgid "title/url"
 msgstr "título/url"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:569
 msgid "Display the 'Start Here' note."
 msgstr "Exibe a nota \"Comece aqui\"."
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:570
 msgid "Search and highlight text in the opened note."
 msgstr "Pesquisa e destaca o texto na nota aberta."
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:574
 msgid "A note taking application"
 msgstr "Um aplicativo para tomar notas"
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:574
 msgid "Gnote options at launch"
 msgstr "Opções do Gnote na inicialização"
 
-#: ../src/gnote.cpp:659
+#: ../src/gnote.cpp:651
 msgid "Could not connect to remote instance."
 msgstr "Não foi possível conectar à instância remota."
 
-#: ../src/gnote.cpp:775
+#: ../src/gnote.cpp:767
 msgid "Version %1%"
 msgstr "Versão %1%"
 
@@ -1542,17 +1547,17 @@ msgstr "Exceção ao salvar a nota: %s"
 msgid "Error while saving: %s"
 msgstr "Erro ao salvar: %s"
 
-#: ../src/note.cpp:956
+#: ../src/note.cpp:971
 msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
 #. write failure, but not critical
-#: ../src/note.cpp:1159
+#: ../src/note.cpp:1174
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falha ao atualizar o formato da nota: %s"
 
-#: ../src/note.cpp:1294
+#: ../src/note.cpp:1309
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Erro de sistema de arquivos: %s"
@@ -1686,11 +1691,6 @@ msgid "Never rename _links"
 msgstr "﻿Nunca renomear os _links"
 
 #: ../src/noterenamedialog.cpp:152
-#| msgid ""
-#| "Rename links in other notes from \"<span underline=\"single\">%1</span>\" "
-#| "to\"<span underline=\"single\">%2</span>\"?\n"
-#| "\n"
-#| "If you do not rename the links, they will no longer link to anything."
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -2091,7 +2091,7 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:584
+#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:583
 #: ../src/searchnoteswidget.cpp:994
 msgid "Notes"
 msgstr "Notas"
@@ -2116,7 +2116,7 @@ msgstr "Localizar _próxima"
 msgid "Find _Previous"
 msgstr "Localizar _anterior"
 
-#: ../src/recentchanges.cpp:702
+#: ../src/recentchanges.cpp:701
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -2582,11 +2582,11 @@ msgstr ""
 msgid "Take notes"
 msgstr "Tome notas"
 
-#: ../src/tray.cpp:165
+#: ../src/tray.cpp:167
 msgid " (new)"
 msgstr " (nova)"
 
-#: ../src/tray.cpp:458
+#: ../src/tray.cpp:461
 msgid "_About Gnote"
 msgstr "_Sobre o Gnote"
 
@@ -2652,11 +2652,11 @@ msgstr "Sem data"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: ../src/watchers.cpp:199
+#: ../src/watchers.cpp:200
 msgid "(Untitled %1%)"
 msgstr "(Sem título %1%)"
 
-#: ../src/watchers.cpp:230
+#: ../src/watchers.cpp:231
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2664,15 +2664,15 @@ msgstr ""
 "Já existe uma nota com o título <b>%1%</b>. Por favor, escolha outro nome "
 "para esta nota antes de continuar."
 
-#: ../src/watchers.cpp:245
+#: ../src/watchers.cpp:246
 msgid "Note title taken"
 msgstr "Este título de nota já existe"
 
-#: ../src/watchers.cpp:576
+#: ../src/watchers.cpp:579
 msgid "_Copy Link Address"
 msgstr "_Copiar o endereço do link"
 
-#: ../src/watchers.cpp:582
+#: ../src/watchers.cpp:585
 msgid "_Open Link"
 msgstr "Abrir _link"
 
