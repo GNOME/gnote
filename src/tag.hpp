@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 #define __TAG_HPP_
 
 #include <list>
+#include <map>
 #include <string>
 
 #include "base/macros.hpp"
@@ -40,7 +41,6 @@ namespace gnote {
     static const char * SYSTEM_TAG_PREFIX;
 
     Tag(const std::string & name);
-    ~Tag();
 
     // <summary>
     // Associates the specified note with this tag.
@@ -92,7 +92,6 @@ namespace gnote {
 /////
 
   private:
-    class NoteMap;
     std::string m_name;
     std::string m_normalized_name;
     bool        m_issystem;
@@ -101,7 +100,8 @@ namespace gnote {
     // Used to track which notes are currently tagged by this tag.  The
     // dictionary key is the Note.Uri.
     // </summary>
-    NoteMap *   m_notes;
+    typedef std::map<std::string, Note*> NoteMap;
+    NoteMap m_notes;
   };
 
 

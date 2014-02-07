@@ -34,37 +34,26 @@ namespace gnote {
 
   const char * Tag::SYSTEM_TAG_PREFIX = "system:";
 
-  class Tag::NoteMap
-    : public std::map<std::string, Note *>
-  {
-  };
-
   Tag::Tag(const std::string & _name)
     : m_issystem(false)
     , m_isproperty(false)
-    , m_notes(new NoteMap)
   {
     set_name(_name);
   }
 
-  Tag::~Tag()
-  {
-    delete m_notes;
-  }
-
   void Tag::add_note(Note & note)
   {
-    if(m_notes->find(note.uri()) == m_notes->end()) {
-      (*m_notes)[note.uri()] = &note;
+    if(m_notes.find(note.uri()) == m_notes.end()) {
+      m_notes[note.uri()] = &note;
     }
   }
 
 
   void Tag::remove_note(const Note & note)
   {
-    NoteMap::iterator iter = m_notes->find(note.uri());
-    if(iter != m_notes->end()) {
-      m_notes->erase(iter);
+    NoteMap::iterator iter = m_notes.find(note.uri());
+    if(iter != m_notes.end()) {
+      m_notes.erase(iter);
     }
   }
 
@@ -89,13 +78,13 @@ namespace gnote {
 
   void Tag::get_notes(std::list<Note *> & l) const
   {
-    sharp::map_get_values(*m_notes, l);
+    sharp::map_get_values(m_notes, l);
   }
 
 
   int Tag::popularity() const
   {
-    return m_notes->size();
+    return m_notes.size();
   }
 
 }
