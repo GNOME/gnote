@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2013-06-09 16:49+0000\n"
-"PO-Revision-Date: 2013-07-02 23:02+0100\n"
+"POT-Creation-Date: 2013-12-27 02:27+0000\n"
+"PO-Revision-Date: 2014-02-08 11:05+0100\n"
 "Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -23,7 +23,7 @@ msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Jochen Skulj <jochen@jochenskulj.de>, 2008\n"
-"Christian Kirbach <Christian.Kirbach@gmail.com>, 2009, 2013\n"
+"Christian Kirbach <Christian.Kirbach@gmail.com>, 2009, 2013, 2014\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>, 2009, 2011, 2012\n"
 "Daniel Winzen <d@winzen4.de>, 2012"
 
@@ -34,7 +34,9 @@ msgstr ""
 #: C/gnote-addin-noteoftheday.page:9(license/p)
 #: C/gnote-addin-print.page:9(license/p)
 #: C/gnote-addins-preferences.page:9(license/p)
+#: C/gnote-addin-readonly.page:9(license/p)
 #: C/gnote-addin-replacetitle.page:9(license/p)
+#: C/gnote-addin-specialnotes.page:9(license/p)
 #: C/gnote-addin-sync-local.page:10(license/p)
 #: C/gnote-addin-sync-webdav.page:10(license/p)
 #: C/gnote-addin-timestamp.page:10(license/p)
@@ -82,17 +84,13 @@ msgstr "Pierre-Yves Luyten"
 #: C/gnote-addin-fixedwidth.page:12(credit/years)
 #: C/gnote-addin-fixedwidth.page:16(credit/years)
 #: C/gnote-addin-html.page:12(credit/years)
-#: C/gnote-addin-html.page:16(credit/years)
 #: C/gnote-addin-noteoftheday.page:12(credit/years)
 #: C/gnote-addin-noteoftheday.page:16(credit/years)
 #: C/gnote-addin-print.page:12(credit/years)
-#: C/gnote-addin-print.page:16(credit/years)
 #: C/gnote-addins-preferences.page:12(credit/years)
 #: C/gnote-addins-preferences.page:16(credit/years)
 #: C/gnote-addin-replacetitle.page:12(credit/years)
-#: C/gnote-addin-replacetitle.page:16(credit/years)
 #: C/gnote-addin-timestamp.page:13(credit/years)
-#: C/gnote-addin-timestamp.page:17(credit/years)
 #: C/gnote-addin-underline.page:12(credit/years)
 #: C/gnote-addin-underline.page:16(credit/years)
 #: C/gnote-bulleted-lists.page:12(credit/years)
@@ -103,7 +101,7 @@ msgstr "Pierre-Yves Luyten"
 #: C/gnote-editing-notes.page:10(credit/years)
 #: C/gnote-hotkeys.page:12(credit/years)
 #: C/gnote-introduction.page:13(credit/years)
-#: C/gnote-links.page:12(credit/years) C/gnote-links.page:16(credit/years)
+#: C/gnote-links.page:12(credit/years)
 #: C/gnote-notes-preferences.page:13(credit/years)
 #: C/gnote-searching-notes.page:12(credit/years)
 #: C/gnote-working-with-notebooks.page:13(credit/years)
@@ -118,9 +116,12 @@ msgstr "2011"
 #: C/gnote-addin-noteoftheday.page:15(credit/name)
 #: C/gnote-addin-print.page:15(credit/name)
 #: C/gnote-addins-preferences.page:15(credit/name)
+#: C/gnote-addin-readonly.page:11(credit/name)
 #: C/gnote-addin-replacetitle.page:15(credit/name)
+#: C/gnote-addin-specialnotes.page:11(credit/name)
 #: C/gnote-addin-sync-local.page:12(credit/name)
 #: C/gnote-addin-sync-webdav.page:12(credit/name)
+#: C/gnote-addin-tableofcontents.page:59(credit/name)
 #: C/gnote-addin-timestamp.page:16(credit/name)
 #: C/gnote-addin-underline.page:15(credit/name)
 #: C/gnote-bulleted-lists.page:15(credit/name)
@@ -156,7 +157,7 @@ msgid "Organizing Notes"
 msgstr "Notizen organisieren"
 
 #: C/index.page:33(section/title)
-#: C/gnote-notes-preferences.page:48(section/title)
+#: C/gnote-notes-preferences.page:54(section/title)
 msgid "Advanced"
 msgstr "Erweitert"
 
@@ -169,136 +170,175 @@ msgid "Common Problems"
 msgstr "Häufige Probleme"
 
 #: C/gnote-addin-bugzillalink.page:9(info/desc)
-msgid "Insert Bugzilla Links"
+#| msgid "Insert Bugzilla Links"
+msgid "Insert Bugzilla links"
 msgstr "Bugzilla-Verweise einfügen"
 
-#: C/gnote-addin-bugzillalink.page:21(page/title)
+#: C/gnote-addin-bugzillalink.page:20(credit/name)
+#: C/gnote-addin-fixedwidth.page:19(credit/name)
+#: C/gnote-addin-html.page:19(credit/name)
+#: C/gnote-addin-notedirwatcher.page:15(credit/name)
+#: C/gnote-addin-noteoftheday.page:19(credit/name)
+#: C/gnote-addin-print.page:19(credit/name)
+#: C/gnote-addins-preferences.page:19(credit/name)
+#: C/gnote-addin-replacetitle.page:19(credit/name)
+#: C/gnote-addin-sync-local.page:16(credit/name)
+#: C/gnote-addin-sync-webdav.page:16(credit/name)
+#: C/gnote-addin-tableofcontents.page:54(credit/name)
+#: C/gnote-addin-timestamp.page:20(credit/name)
+#: C/gnote-addin-underline.page:19(credit/name)
+#: C/gnote-bulleted-lists.page:19(credit/name)
+#: C/gnote-common-problems.page:19(credit/name)
+#: C/gnote-creating-notes.page:19(credit/name)
+#: C/gnote-deleting-notes.page:19(credit/name)
+#: C/gnote-editing-notes.page:17(credit/name)
+#: C/gnote-hotkeys.page:19(credit/name)
+#: C/gnote-introduction.page:20(credit/name)
+#: C/gnote-links.page:19(credit/name)
+#: C/gnote-notes-preferences.page:20(credit/name)
+#: C/gnote-searching-notes.page:19(credit/name)
+#: C/gnote-synchronization.page:15(credit/name)
+#: C/gnote-template-notes.page:16(credit/name)
+#: C/gnote-working-with-notebooks.page:20(credit/name)
+msgid "Adam Dingle"
+msgstr "Adam Dingle"
+
+#: C/gnote-addin-bugzillalink.page:22(credit/years)
+#: C/gnote-addin-fixedwidth.page:21(credit/years)
+#: C/gnote-addin-html.page:21(credit/years)
+#: C/gnote-addin-notedirwatcher.page:17(credit/years)
+#: C/gnote-addin-noteoftheday.page:21(credit/years)
+#: C/gnote-addin-print.page:21(credit/years)
+#: C/gnote-addins-preferences.page:21(credit/years)
+#: C/gnote-addin-readonly.page:12(credit/years)
+#: C/gnote-addin-replacetitle.page:21(credit/years)
+#: C/gnote-addin-specialnotes.page:12(credit/years)
+#: C/gnote-addin-sync-local.page:18(credit/years)
+#: C/gnote-addin-sync-webdav.page:18(credit/years)
+#: C/gnote-addin-tableofcontents.page:52(credit/years)
+#: C/gnote-addin-tableofcontents.page:56(credit/years)
+#: C/gnote-addin-tableofcontents.page:61(credit/years)
+#: C/gnote-addin-timestamp.page:22(credit/years)
+#: C/gnote-addin-underline.page:21(credit/years)
+#: C/gnote-bulleted-lists.page:21(credit/years)
+#: C/gnote-common-problems.page:21(credit/years)
+#: C/gnote-creating-notes.page:21(credit/years)
+#: C/gnote-deleting-notes.page:21(credit/years)
+#: C/gnote-editing-notes.page:19(credit/years)
+#: C/gnote-hotkeys.page:21(credit/years)
+#: C/gnote-introduction.page:22(credit/years)
+#: C/gnote-links.page:21(credit/years)
+#: C/gnote-notes-preferences.page:22(credit/years)
+#: C/gnote-searching-notes.page:21(credit/years)
+#: C/gnote-synchronization.page:17(credit/years)
+#: C/gnote-template-notes.page:18(credit/years)
+#: C/gnote-working-with-notebooks.page:22(credit/years)
+msgid "2013"
+msgstr "2013"
+
+#: C/gnote-addin-bugzillalink.page:26(page/title)
 msgid "Bugzilla Links Add-in"
 msgstr "Bugzilla-Links-Add-in"
 
-#: C/gnote-addin-bugzillalink.page:22(page/p)
+#: C/gnote-addin-bugzillalink.page:27(page/p)
+#| msgid ""
+#| "Allows you to drag a Bugzilla URL directly into a <app>Gnote</app> note. "
+#| "The bug number is inserted as a link with a little bug icon next to it."
 msgid ""
-"Allows you to drag a Bugzilla URL directly into a <app>Gnote</app> note. The "
-"bug number is inserted as a link with a little bug icon next to it."
+"This add-in lets you drag a Bugzilla URL directly into a <app>Gnote</app> "
+"note. The bug number is inserted as a link with a little bug icon next to it."
 msgstr ""
-"Erlaubt Ihnen, eine Bugzilla-Adresse aus Ihrem Browser direkt in eine "
-"<app>Gnote</app>-Notiz zu ziehen. Die Fehlernummer wird als Verknüpfung mit "
-"einem kleinen Bug-Symbol angezeigt."
+"Dieses Add-in ermöglicht es Ihnen, eine Bugzilla-Adresse aus Ihrem Browser "
+"direkt in eine <app>Gnote</app>-Notiz zu ziehen. Die Fehlernummer wird als "
+"Verknüpfung mit einem kleinen Bug-Symbol angezeigt."
 
-#: C/gnote-addin-bugzillalink.page:23(page/p)
+#: C/gnote-addin-bugzillalink.page:28(page/p)
 msgid "In the preferences, you can add special icons for certain hosts."
 msgstr ""
 "In den Einstellungen können Sie spezielle Symbole für bestimmte Rechner "
 "festlegen."
 
 #: C/gnote-addin-fixedwidth.page:8(info/desc)
-msgid "Use a Fixed Width Font"
+#| msgid "Use a Fixed Width Font"
+msgid "Use a fixed-width font"
 msgstr "Eine Schrift fester Breite verwenden"
 
-#: C/gnote-addin-fixedwidth.page:20(page/title)
+#: C/gnote-addin-fixedwidth.page:25(page/title)
 msgid "Fixed Width Add-in"
 msgstr "Feste-Breite-Add-In"
 
-#: C/gnote-addin-fixedwidth.page:21(page/p)
+#: C/gnote-addin-fixedwidth.page:26(page/p)
+#| msgid ""
+#| "The fixed width style allows text to use a fixed width font. To change "
+#| "existing text, first select the text you want to modify. Then select the "
+#| "<gui>Fixed Width</gui> option from the <gui>Text</gui> menu. You can also "
+#| "select the <gui>Fixed Width</gui> option from the Text before you start "
+#| "typing to have the text you type be in a fixed width style."
 msgid ""
-"The fixed width style allows text to use a fixed width font. To change "
-"existing text, first select the text you want to modify. Then select the "
-"<gui>Fixed Width</gui> option from the <gui>Text</gui> menu. You can also "
-"select the <gui>Fixed Width</gui> option from the Text before you start "
-"typing to have the text you type be in a fixed width style."
+"The <app>Fixed Width</app> add-in allows text to use a fixed width font. To "
+"change existing text, first select the text you want to modify. Then select "
+"<gui>Fixed Width</gui> from the <gui>Text</gui> menu. You can also select "
+"<gui>Fixed Width</gui> from the menu before you start typing."
 msgstr ""
-"Der Stil »Feste Breite« erlaubt es, einen Text in einer Schriftart mit "
-"fester Breite darzustellen. Um einen Text zu ändern, markieren Sie zuerst "
-"den Text, den Sie ändern möchten. Danach wählen Sie die Option <gui>Feste "
-"Breite</gui> aus dem Menü <gui>Text</gui>. Sie können auch die Option "
-"<gui>Feste Breite</gui> aus dem Menü <gui>Text</gui> auswählen, bevor Sie "
-"den Text eingeben, der mit einer festen Breite dargestellt werden soll."
-
-#: C/gnote-addin-fixedwidth.page:22(page/p)
-msgid "The Fixed Width option is a feature provided by the Fixed Width Add-in."
-msgstr ""
-"Die Option <gui>Feste Breite</gui> wird durch das Feste-Breite-Add-In "
-"bereitgestellt."
-
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#.
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#.
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#.
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#.
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/gnote-addin-html.page:21(media) C/gnote-addin-print.page:21(media)
-#: C/gnote-addin-replacetitle.page:21(media)
-#: C/gnote-addin-timestamp.page:22(media) C/gnote-links.page:26(media)
-msgctxt "_"
-msgid ""
-"external ref='figures/gnote-tools.png' md5='6a1c7800cd20071381ea591f49c32b6c'"
-msgstr "original"
+"Das Add-in <app>Feste Breite</app> ermöglicht es, einen Text in einer "
+"Schriftart mit fester Breite darzustellen. Um einen Text zu ändern, "
+"markieren Sie zuerst den Text, den Sie ändern möchten. Danach wählen Sie die "
+"Option <gui>Feste Breite</gui> aus dem Menü <gui>Text</gui>. Sie können auch "
+"die Option <gui>Feste Breite</gui> aus dem Menü auswählen, bevor Sie Text "
+"eingeben."
 
 #: C/gnote-addin-html.page:8(info/desc)
-msgid "Export Notes to HTML format"
-msgstr "Notizen in HTML exportieren"
+#| msgid "Export to HTML"
+msgid "Export notes to HTML"
+msgstr "Notizen als HTML exportieren"
 
-#: C/gnote-addin-html.page:20(page/title)
+#: C/gnote-addin-html.page:16(credit/years)
+#: C/gnote-addin-print.page:16(credit/years)
+#: C/gnote-addin-replacetitle.page:16(credit/years)
+#: C/gnote-addin-timestamp.page:17(credit/years)
+#: C/gnote-links.page:16(credit/years)
+#| msgid "2011-2012"
+msgid "2011,2013"
+msgstr "2011,2013"
+
+#: C/gnote-addin-html.page:25(page/title)
 msgid "Export to HTML"
 msgstr "In HTML exportieren"
 
-#: C/gnote-addin-html.page:21(page/p)
+#: C/gnote-addin-html.page:26(page/p)
 msgid ""
-"The Tools button is represented by the <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. When this add-"
-"in is installed, the option <gui>Export to HTML</gui> is present in "
-"<gui>Tools</gui> menu."
+"When the <app>Export to HTML</app> add-in is installed, the command "
+"<gui>Export to HTML</gui> is present in the <gui>Actions</gui> menu."
 msgstr ""
-"Der Werkzeugknopf wir durch das Symbol <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> dargestellt. "
-"Wenn dieses Add-In installiert ist, dann enthält das <gui>Werkzeuge</gui>-"
-"Menü den Eintrag <gui>HTML exportieren</gui>."
 
-#: C/gnote-addin-html.page:22(page/p)
+#: C/gnote-addin-html.page:27(page/p)
+#| msgid ""
+#| "After selecting this option, you will be presented with a dialog that "
+#| "allows you to choose where to save the HTML file. Enter the destination "
+#| "filename and click <gui>Save</gui> to save the file, or <gui>Cancel</"
+#| "gui> to abort the operation."
 msgid ""
-"You can create an HTML (Hypertext Markup Language) document from one or more "
-"notes by selecting this option."
+"To create an HTML document from one or more notes, select this command. You "
+"will see a dialog that lets you choose where to save the HTML file. Enter "
+"the destination filename and click <gui>Save</gui> to save the file, "
+"or <gui>Cancel</gui> to abort."
 msgstr ""
-"Sie können ein HTML-Dokument (Hypertext Markup Language) aus einer oder "
-"mehrerer Notizen mit diesem Eintrag erstellen."
-
-#: C/gnote-addin-html.page:23(page/p)
-msgid ""
-"After selecting this option, you will be presented with a dialog that allows "
-"you to choose where to save the HTML file. Enter the destination filename "
-"and click <gui>Save</gui> to save the file, or <gui>Cancel</gui> to abort "
-"the operation."
-msgstr ""
-"Nach der Auswahl dieser Option wird ein Dialog angezeigt, in welchem Sie "
+"Wählen Sie diesen Befehl, um ein HTML-Dokument von einer oder mehrerer "
+"Notizen zu erstellen. Es wird dann ein Dialog angezeigt, in welchem Sie "
 "wählen können, wo die HTML-Datei gespeichert werden soll. Legen Sie die "
-"Zieldatei fest und klicken Sie <gui>Speichern</gui>, um die Datei zu "
+"Zieldatei fest und klicken Sie auf <gui>Speichern</gui>, um die Datei zu "
 "speichern, oder auf <gui>Abbrechen</gui>, um den Vorgang abzubrechen."
 
-#: C/gnote-addin-html.page:24(page/p)
+#: C/gnote-addin-html.page:28(page/p)
+#| msgid ""
+#| "To export any notes for which a link exists in the current note, select "
+#| "the <gui>Export Linked Notes</gui> check box."
 msgid ""
-"To export any notes for which a link exists in the current note, select "
-"the <gui>Export Linked Notes</gui> check box."
+"To export any notes linked to by the current note, select the <gui>Export "
+"Linked Notes</gui> check box."
 msgstr ""
 "Um alle Notizen zu exportieren, auf die in der aktuellen Notiz verwiesen "
-"wird, wählen Sie <gui>Verknüpfte Notizen exportieren</gui>."
+"wird, wählen Sie das Ankreuzfeld <gui>Verknüpfte Notizen exportieren</gui>."
 
 #: C/gnote-addin-notedirwatcher.page:8(info/desc)
 msgid "Watch for note changes on file system"
@@ -311,16 +351,22 @@ msgstr "Das Dateisystem auf Notizänderungen überwachen"
 msgid "2012"
 msgstr "2012"
 
-#: C/gnote-addin-notedirwatcher.page:16(page/title)
+#: C/gnote-addin-notedirwatcher.page:21(page/title)
 msgid "Note Directory Watcher"
 msgstr "Notizordner-Überwachung"
 
-#: C/gnote-addin-notedirwatcher.page:17(page/p)
+#: C/gnote-addin-notedirwatcher.page:22(page/p)
+#| msgid ""
+#| "This addin allows you to work with notes on a file system while "
+#| "<app>Gnote</app> is running. When enabled, this addin monitors note files "
+#| "for changes and reloads them, once any change is detected. This way "
+#| "external change to a note file is automatically reflected in <app>Gnote</"
+#| "app>."
 msgid ""
-"This addin allows you to work with notes on a file system while <app>Gnote</"
-"app> is running. When enabled, this addin monitors note files for changes "
-"and reloads them, once any change is detected. This way external change to a "
-"note file is automatically reflected in <app>Gnote</app>."
+"This add-in lets you work with notes on the file system while <app>Gnote</"
+"app> is running. When enabled, this add-in monitors note files for changes "
+"and reloads them when any change is detected. This way any external change "
+"to a note file will automatically be reflected in <app>Gnote</app>."
 msgstr ""
 "Dieses Add-In ermöglicht es mit Notizen auf einem Dateisystem zu arbeiten, "
 "während <app>Gnote</app> läuft. Wenn es aktiviert ist, überwacht es "
@@ -328,12 +374,17 @@ msgstr ""
 "Änderung erkannt wurde. Auf diese Weise werden externe Änderungen an einer "
 "Notizdatei automatisch in <app>Gnote</app> übernommen."
 
-#: C/gnote-addin-notedirwatcher.page:18(page/p)
+#: C/gnote-addin-notedirwatcher.page:23(page/p)
+#| msgid ""
+#| "<app>Gnote</app> stores notes into <file>~/.local/share/gnote</file> "
+#| "folder. With this addin enabled, you can perform actions at file system "
+#| "level on this directory, such as synchronizing contents with some other "
+#| "location, while <app>Gnote</app> is running."
 msgid ""
-"<app>Gnote</app> stores notes into <file>~/.local/share/gnote</file> folder. "
-"With this addin enabled, you can perform actions at file system level on "
-"this directory, such as synchronizing contents with some other location, "
-"while <app>Gnote</app> is running."
+"<app>Gnote</app> stores notes in the <file>~/.local/share/gnote</file> "
+"folder. With this add-in is enabled, you can perform actions at the file "
+"system level on this directory, such as synchronizing note files with some "
+"other location, while <app>Gnote</app> is running."
 msgstr ""
 "<app>Gnote</app> speichert Notizen im Ordner <file>~/.local/share/gnote</"
 "file>. Wenn dieses Add-In aktiv ist, können Sie in diesem Ordner auf "
@@ -341,39 +392,53 @@ msgstr ""
 "während <app>Gnote</app> läuft."
 
 #: C/gnote-addin-noteoftheday.page:8(info/desc)
-msgid "Template Note"
-msgstr "Notizvorlagen"
+#, fuzzy
+msgid "A \"Today\" note"
+msgstr "Achtelnote"
 
-#: C/gnote-addin-noteoftheday.page:20(page/title)
+#: C/gnote-addin-noteoftheday.page:25(page/title)
 msgid "Note of the Day"
 msgstr "Notiz des Tages"
 
-#: C/gnote-addin-noteoftheday.page:21(page/p)
+#: C/gnote-addin-noteoftheday.page:26(page/p)
+#| msgid ""
+#| "This add-in automatically creates a \"Today\" note for jotting daily "
+#| "thoughts down. The current date is used as a basis for the title of the "
+#| "note. As an example, the title of a \"Today\" note created on February "
+#| "28, 2007, would be, \"Today: Wednesday, February 28 2007\"."
 msgid ""
 "This add-in automatically creates a \"Today\" note for jotting daily "
-"thoughts down. The current date is used as a basis for the title of the "
-"note. As an example, the title of a \"Today\" note created on February 28, "
-"2007, would be, \"Today: Wednesday, February 28 2007\"."
+"thoughts down. As an example, a \"Today\" note created on February 28, 2013 "
+"would be called \"Today: Thursday, February 28 2013\"."
 msgstr ""
 "Dieses Add-In erzeugt automatisch eine »Heute«-Notiz, um tägliche Gedanken "
 "festzuhalten. Das aktuelle Datum dient als Basis für den Titel dieser Notiz. "
-"Beispielsweise ist der Titel einer »Heute«-Notiz, die am 31. Juli 2011 "
-"angelegt wurde, »Heute: Sonntag, 31. Juli 2011«."
+"Beispielsweise ist der Titel einer »Heute«-Notiz, die am 28. Februar 2013 "
+"angelegt wurde, »Heute: Donnerstag, 28. Februar 2013«."
 
-#: C/gnote-addin-noteoftheday.page:22(page/p)
+#: C/gnote-addin-noteoftheday.page:27(page/p)
+#| msgid ""
+#| "If you leave a \"Today\" note unmodified, the Note of the Day Add-in will "
+#| "automatically delete the note."
 msgid ""
-"If you leave a \"Today\" note unmodified, the Note of the Day Add-in will "
-"automatically delete the note."
+"If you leave a \"Today\" note unmodified, the add-in will automatically "
+"delete the note."
 msgstr ""
-"Wenn Sie die »Heute«-Notiz unverändert lassen, wird das Notiz-des-Tages-Add-"
-"In die Notiz automatisch löschen."
+"Wenn Sie die »Heute«-Notiz unverändert lassen, wird das Add-In die Notiz "
+"automatisch löschen."
 
-#: C/gnote-addin-noteoftheday.page:23(page/p)
+#: C/gnote-addin-noteoftheday.page:28(page/p)
+#| msgid ""
+#| "To customize the content of the default \"Today\" note, create a new note "
+#| "and change the title of the note to be, \"Today: Template\". Change the "
+#| "content of the template note to whatever you like. When new \"Today\" "
+#| "notes are created, it will then use the content of your \"Today: Template"
+#| "\" note."
 msgid ""
 "To customize the content of the default \"Today\" note, create a new note "
-"and change the title of the note to be, \"Today: Template\". Change the "
-"content of the template note to whatever you like. When new \"Today\" notes "
-"are created, it will then use the content of your \"Today: Template\" note."
+"and change the title of the note to \"Today: Template\". Change the content "
+"of the template note to whatever you like. New \"Today\" notes will then use "
+"the content of your \"Today: Template\" note."
 msgstr ""
 "Um den Inhalt der standardmäßigen »Heute«-Notiz anzupassen, erzeugen Sie "
 "eine neue Notiz und ändern Sie den Titel in »Heute: Vorlage«. Passen Sie den "
@@ -381,38 +446,26 @@ msgstr ""
 "angelegt wird, wird der Inhalt der Notiz »Heute: Vorlage« verwendet."
 
 #: C/gnote-addin-print.page:8(info/desc)
-msgid "Print Notes"
+#| msgid "Print Notes"
+msgid "Print notes"
 msgstr "Notizen drucken"
 
-#: C/gnote-addin-print.page:20(page/title)
+#: C/gnote-addin-print.page:25(page/title)
 msgid "Print"
 msgstr "Drucken"
 
-#: C/gnote-addin-print.page:21(page/p)
+#: C/gnote-addin-print.page:26(page/p)
 msgid ""
-"The Tools button is represented by the <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. When this add-"
-"in is installed, the option <gui>Print</gui> is present in <gui>Tools</gui> "
-"menu."
+"When the <app>Print</app> add-in is installed, the <gui>Print</gui> command "
+"is present in the <gui>Actions</gui> menu. This command opens a "
+"standard <gui>Print</gui> dialog which lets you print a note."
 msgstr ""
-"Der Werkzeugknopf wir durch das Symbol <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> dargestellt. "
-"Wenn dieses Add-In installiert ist, dann enthält das <gui>Werkzeuge</gui>-"
-"Menü den Eintrag <gui>Drucken</gui>."
-
-#: C/gnote-addin-print.page:22(page/p)
-msgid ""
-"When the <gui>Print</gui> option is selected, a standard <gui>Print</"
-"gui> dialog will be presented and a note can be printed."
-msgstr ""
-"Wenn die Option <gui>Drucken</gui> aktiviert ist, dann wird ein Standard-"
-"<gui>Druckdialog</gui> geöffnet, une eine Notiz kann gedruckt werden."
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-addins-preferences.page:25(media)
+#: C/gnote-addins-preferences.page:30(media)
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-add-ins.png' "
@@ -423,121 +476,247 @@ msgstr "ok"
 msgid "Settings for Gnote add-ins"
 msgstr "Einstellungen für Gnote-Add-Ins"
 
-#: C/gnote-addins-preferences.page:20(page/title)
+#: C/gnote-addins-preferences.page:25(page/title)
 msgid "Add-in Preferences"
 msgstr "Add-In-Einstellungen"
 
-#: C/gnote-addins-preferences.page:21(page/p)
+#: C/gnote-addins-preferences.page:26(page/p)
+#| msgid ""
+#| "You can activate or deactivate add-ins in this tab. To do this, select an "
+#| "add-in and click the <gui>Enable</gui> button. The button will be "
+#| "disabled and the <gui>Disable</gui> button will be enabled, which can now "
+#| "be used to disable add-in."
 msgid ""
 "You can activate or deactivate add-ins in this tab. To do this, select an "
-"add-in and click the <gui>Enable</gui> button. The button will be disabled "
-"and the <gui>Disable</gui> button will be enabled, which can now be used to "
-"disable add-in."
+"add-in and click the <gui>Enable</gui> button. Use the <gui>Disable</gui> "
+"button to disable an add-in."
 msgstr ""
 "Sie können in diesem Reiter Add-Ins aktivieren oder deaktivieren. Wählen Sie "
-"hierzu ein Add-In aus und klicken Sie auf den Knopf <gui>Aktivieren</gui>. "
-"Die Knopfbeschriftung ändert sich in <gui>Deaktivieren</gui>, so dass Sie "
-"den Knopf nun zum Deaktivieren eines Add-Ins verwenden können."
+"dazu ein Add-In aus und klicken Sie auf den Knopf <gui>Aktivieren</gui>. "
+"Klicken Sie auf <gui>Deaktivieren</gui> zum Deaktivieren eines Add-Ins."
 
-#: C/gnote-addins-preferences.page:22(page/p)
+#: C/gnote-addins-preferences.page:27(page/p)
+#| msgid ""
+#| "Some add-ins have preferences. They can be accessed by selecting add-in "
+#| "and pressing the <gui>Preferences</gui> button."
 msgid ""
-"Some add-ins have preferences. They can be accessed by selecting add-in and "
-"pressing the <gui>Preferences</gui> button."
+"Some add-ins have preferences, which you can access by selecting an add-in "
+"and pressing the <gui>Preferences</gui> button."
 msgstr ""
-"Einige Add-Ins haben Einstellmöglichkeiten. Wählen Sie das Add-In aus und "
-"klicken Sie auf den <gui>Einstellungen</gui>-Knopf."
+"Einige Add-Ins haben Einstellmöglichkeiten. Wählen Sie für die Einstellungen "
+"das Add-In aus und klicken Sie auf den <gui>Einstellungen</gui>-Knopf."
 
-#: C/gnote-addins-preferences.page:23(figure/title)
+#: C/gnote-addins-preferences.page:28(figure/title)
 msgid "<app>Gnote</app> Addin Preferences"
 msgstr "Add-in-Einstellungen für <app>Gnote</app>"
 
-#: C/gnote-addins-preferences.page:24(figure/desc)
+#: C/gnote-addins-preferences.page:29(figure/desc)
 msgid "<app>Gnote</app> Add-ins window"
 msgstr "Add-In-Fenster von <app>Gnote</app>"
 
-#: C/gnote-addins-preferences.page:26(media/p)
+#: C/gnote-addins-preferences.page:31(media/p)
 msgid "<gui>Add-ins</gui> window."
 msgstr "Add-in-Fenster von <app>Gnote</app>"
 
-#: C/gnote-addin-replacetitle.page:8(info/desc)
-msgid "Rename note title"
-msgstr "Notiztitel umbenennen"
+#: C/gnote-addin-readonly.page:8(info/desc)
+msgid "Make notes read-only"
+msgstr "Notizen als nur-lesen markieren"
 
-#: C/gnote-addin-replacetitle.page:20(page/title)
+#: C/gnote-addin-readonly.page:16(page/title)
+msgid "Read Only"
+msgstr "Nur lesen"
+
+#: C/gnote-addin-readonly.page:17(page/p)
+msgid ""
+"When the <app>ReadOnly</app> add-in is installed, the <gui>Read Only</gui> "
+"item is present in the <gui>Actions</gui> menu for open note. When this item "
+"is checked, note is marked as read-only. This does not allow to change note "
+"until the menu item is unchecked. Use this to prevent notes from accidental "
+"modification."
+msgstr ""
+
+#: C/gnote-addin-replacetitle.page:8(info/desc)
+#| msgid "Rename note title"
+msgid "Rename a note"
+msgstr "Notiz umbenennen"
+
+#: C/gnote-addin-replacetitle.page:25(page/title)
 msgid "Replace title"
 msgstr "Titel ersetzen"
 
-#: C/gnote-addin-replacetitle.page:21(page/p)
+#: C/gnote-addin-replacetitle.page:26(page/p)
+#| msgid ""
+#| "When the <gui>Underline</gui> add-in is installed, the <gui>Text</"
+#| "gui> menu will have a <gui>Underline</gui> option available."
 msgid ""
-"The Tools button is represented by the <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. When this add-"
-"in is installed, the option <gui>Replace title</gui> is present in "
-"<gui>Tools</gui> menu."
+"When the <app>Replace title</app> add-in is installed, the command "
+"<gui>Replace title</gui> is present in the <gui>Actions</gui> menu."
 msgstr ""
-"Der Werkzeugknopf wird durch das Symbol <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> dargestellt. "
-"Wenn dieses Add-In installiert ist, dann enthält das <gui>Werkzeuge</gui>-"
-"Menü den Eintrag <gui>Titel ersetzen</gui>."
+"Wenn das <gui>Titel ersetzen</gui>-Add-In installiert ist, stellt das Menü "
+"<gui>Aktionen</gui> einen Menüpunkt <gui>Titel ersetzen</gui> zur Verfügung."
 
-#: C/gnote-addin-replacetitle.page:22(page/p)
+#: C/gnote-addin-replacetitle.page:27(page/p)
+#| msgid ""
+#| "When the <gui>Replace title</gui> option is selected, the note title will "
+#| "be replaced by currently selected text in any application."
 msgid ""
-"When the <gui>Replace title</gui> option is selected, the note title will be "
-"replaced by currently selected text in any application."
+"The <gui>Replace title</gui> command replaces a note's title with the "
+"currently selected text (from any application)."
 msgstr ""
-"Wenn die Option <gui>Titel ersetzen</gui> aktiviert ist, dann wird der "
-"Notiztitel in jeder Anwendung durch den aktuell ausgewählten Text ersetzt."
+"Der Befehl <gui>Titel ersetzen</gui> ersetzt den Notiztitel durch den "
+"aktuell ausgewählten Text (in jeder Anwendung)."
 
-#: C/gnote-addin-replacetitle.page:23(page/p)
+#: C/gnote-addin-replacetitle.page:28(page/p)
+#| msgid ""
+#| "Alternatively, you can use <keyseq><key>Ctrl</key><key>R</key></keyseq> "
+#| "shortcut."
 msgid ""
-"Alternatively, you can use <keyseq><key>Ctrl</key><key>R</key></keyseq> "
+"Alternatively, you can use the <keyseq><key>Ctrl</key><key>R</key></keyseq> "
 "shortcut."
 msgstr ""
 "Drücken Sie alternativ die Tastenkombination <key><key>Strg</key><key>R</"
 "key></keyseq>."
 
+#: C/gnote-addin-specialnotes.page:8(info/desc)
+#, fuzzy
+#| msgid "Special Notebooks"
+msgid "See special notes"
+msgstr "Besondere Notizbücher"
+
+#: C/gnote-addin-specialnotes.page:16(page/title)
+#| msgid "Special Notebooks"
+msgid "Special Notes"
+msgstr "Besondere Notizen"
+
+#: C/gnote-addin-specialnotes.page:17(page/p)
+msgid ""
+"When the <app>SpecialNotes</app> add-in is installed, the new special "
+"notebook <gui>Special Notes</gui> is present in the list of notebooks. This "
+"notebook contains notes that are otherwise not visible, such as template "
+"notes. This might be convenient way to go through all your templates."
+msgstr ""
+
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-addin-sync-local.page:22(media)
+#: C/gnote-addin-sync-local.page:27(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-syncprefs-local.png' "
+#| "md5='1cddc428aab1c3a18624f950260a4f23'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-local.png' "
-"md5='1cddc428aab1c3a18624f950260a4f23'"
+"md5='5a32e51c94dc8691496c0303c8483429'"
 msgstr "ok"
 
 #: C/gnote-addin-sync-local.page:9(info/desc)
-msgid "Synchronize to local folder"
+#| msgid "Synchronize to local folder"
+msgid "Synchronize to a local folder"
 msgstr "Mit lokalem Ordner abgleichen"
 
-#: C/gnote-addin-sync-local.page:17(page/title)
+#: C/gnote-addin-sync-local.page:22(page/title)
 msgid "Local Folder Synchronization"
 msgstr "Abgleich mit lokalem Ordner"
 
-#: C/gnote-addin-sync-local.page:18(page/p)
+#: C/gnote-addin-sync-local.page:23(page/p)
+#| msgid ""
+#| "This type of synchronization allows you to set local folder as "
+#| "synchronization storage."
 msgid ""
-"This type of synchronization allows you to set local folder as "
-"synchronization storage."
+"This type of synchronization lets you use a local folder as synchronization "
+"storage."
 msgstr ""
 "Diese Abgleichsart ermöglicht es lokale Ordner als Ableichsspeicher "
 "festzulegen."
 
-#: C/gnote-addin-sync-local.page:19(page/p)
+#: C/gnote-addin-sync-local.page:24(page/p)
+#| msgid ""
+#| "To configure this type of synchronization, select \"Local Folder\" in "
+#| "<gui>Service</gui> drop-down and then select the desired folder as "
+#| "<gui>Folder Path</gui>."
 msgid ""
-"To configure this type of synchronization, select \"Local Folder\" in "
-"<gui>Service</gui> drop-down and then select the desired folder as "
+"To configure this type of synchronization, select <gui>Local Folder</gui> in "
+"the <gui>Service</gui> drop-down and then select the desired folder as the "
 "<gui>Folder Path</gui>."
 msgstr ""
-"Wählen Sie »Lokaler Ordner« in der Auswahlliste <gui>Service</gui> und "
-"wählen Sie dann den gewünschten Ordner als <gui>Ordnerpfad</gui>."
+"Wählen Sie zum Einrichten dieser Abgleichsart »Lokaler Ordner« in der "
+"Auswahlliste <gui>Dienst</gui> und wählen Sie dann den gewünschten Ordner "
+"als <gui>Ordnerpfad</gui>."
 
-#: C/gnote-addin-sync-local.page:21(figure/title)
-#: C/gnote-addin-sync-webdav.page:26(figure/title)
+#: C/gnote-addin-sync-local.page:26(figure/title)
+#: C/gnote-addin-sync-webdav.page:31(figure/title)
 msgid "Local Folder Synchronization configuration"
 msgstr "Konfiguration des Abgleichs mit lokalem Ordner"
 
-#: C/gnote-addin-sync-local.page:24(page/p)
-#: C/gnote-addin-sync-webdav.page:29(page/p)
+#: C/gnote-addin-sync-local.page:29(page/p)
+#| msgid ""
+#| "After selecting the desired folder click the <gui>Save</gui> button. Use "
+#| "the <gui>Clear</gui> button to turn synchronization off."
+msgid ""
+"After selecting the desired folder, click the <gui>Save</gui> button. Use "
+"the <gui>Clear</gui> button to turn synchronization off."
+msgstr ""
+"Nach der Wahl des gewünschten Ordners klicken Sie auf den Knopf "
+"<gui>Speichern</gui>. Verwenden Sie den Knopf <gui>Löschen</gui>, um den "
+"Abgleich auszuschalten."
+
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gnote-addin-sync-webdav.page:32(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-syncprefs-webdav.png' "
+#| "md5='f860508443cba1f3d9518ac171361016'"
+msgctxt "_"
+msgid ""
+"external ref='figures/gnote-syncprefs-webdav.png' "
+"md5='b43b85998a18708bc6b52ca1fadfc46f'"
+msgstr "ok"
+
+#: C/gnote-addin-sync-webdav.page:9(info/desc)
+#| msgid "Synchronize to WebDAV share"
+msgid "Synchronize to a WebDAV share"
+msgstr "Mit WebDAV-Freigabe abgleichen"
+
+#: C/gnote-addin-sync-webdav.page:22(page/title)
+msgid "WebDAV Synchronization"
+msgstr "Abgleich mit WebDAV-Freigabe"
+
+#: C/gnote-addin-sync-webdav.page:23(page/p)
+#| msgid ""
+#| "This type of synchronization allows you to set WebDAV as synchronization "
+#| "storage."
+msgid ""
+"This type of synchronization lets you use a WebDAV server as synchronization "
+"storage."
+msgstr ""
+"Diese Abgleichsart ermöglicht es, WebDAV als Abgleichsspeicher zu verwenden"
+
+#: C/gnote-addin-sync-webdav.page:24(page/p)
+msgid "To configure this type of synchronization:"
+msgstr "So richten Sie diese Abgleichsart ein:"
+
+#: C/gnote-addin-sync-webdav.page:26(item/p)
+#| msgid "select \"WebDAV\" in <gui>Service</gui> drop-down"
+msgid "select \"WebDAV\" in the <gui>Service</gui> drop-down"
+msgstr "wählen Sie »WebDAV« in der Auswahlliste <gui>Dienst</gui>"
+
+#: C/gnote-addin-sync-webdav.page:27(item/p)
+msgid "enter the URL to your share"
+msgstr "Geben Sie die Adresse Ihrer Freigabe ein"
+
+#: C/gnote-addin-sync-webdav.page:28(item/p)
+#| msgid "enter username and password"
+msgid "enter your username and password"
+msgstr "Geben Sie Benutzername und Passwort ein"
+
+#: C/gnote-addin-sync-webdav.page:34(page/p)
 msgid ""
 "After selecting the desired folder click the <gui>Save</gui> button. Use the "
 "<gui>Clear</gui> button to turn synchronization off."
@@ -550,87 +729,267 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-addin-sync-webdav.page:27(media)
+#: C/gnote-addin-tableofcontents.page:117(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-new-note.png' "
+#| "md5='715712e6322a5bf8c9aa1a6de1bb619b'"
 msgctxt "_"
 msgid ""
-"external ref='figures/gnote-syncprefs-webdav.png' "
-"md5='f860508443cba1f3d9518ac171361016'"
+"external ref='figures/gnote-addin-table-of-contents.png' "
+"md5='15b52d64e171a3a03a13f0a2def2f3e3'"
 msgstr "ok"
 
-#: C/gnote-addin-sync-webdav.page:9(info/desc)
-msgid "Synchronize to WebDAV share"
-msgstr "Mit WebDAV-Freigabe abgleichen"
-
-#: C/gnote-addin-sync-webdav.page:17(page/title)
-msgid "WebDAV Synchronization"
-msgstr "Abgleich mit WebDAV-Freigabe"
-
-#: C/gnote-addin-sync-webdav.page:18(page/p)
+#: C/gnote-addin-tableofcontents.page:43(license/p)
 msgid ""
-"This type of synchronization allows you to set WebDAV as synchronization "
-"storage."
+"This <em>help topic</em> is licensed under the <link href=\"http://www.gnu."
+"org/licenses/fdl-1.1.html\"> GNU Free Documentation License, Version 1.1</"
+"link> (GFDL). It means that you are free to copy, distribute and/or modify "
+"this document, under some conditions."
 msgstr ""
-"Diese Abgleichsart ermöglicht es, WebDAV als Abgleichsspeicher zu verwenden"
 
-#: C/gnote-addin-sync-webdav.page:19(page/p)
-msgid "To configure this type of synchronization:"
-msgstr "So richten Sie diese Abgleichsart ein:"
+#: C/gnote-addin-tableofcontents.page:52(credit/name)
+msgid "Luc Pionchon"
+msgstr "Luc Pionchon"
 
-#: C/gnote-addin-sync-webdav.page:21(item/title)
-msgid "select \"WebDAV\" in <gui>Service</gui> drop-down"
-msgstr "wählen Sie »WebDAV« in der Auswahlliste <gui>Dienst</gui>"
+#: C/gnote-addin-tableofcontents.page:80(info/desc)
+msgid "Navigate long structured notes"
+msgstr ""
 
-#: C/gnote-addin-sync-webdav.page:22(item/title)
-msgid "enter the URL to your share"
-msgstr "Geben Sie die Adresse Ihrer Freigabe ein"
+#: C/gnote-addin-tableofcontents.page:84(page/title)
+msgid "Adding a Table of Contents"
+msgstr "Inhaltsverzeichnis hinzufügen"
 
-#: C/gnote-addin-sync-webdav.page:23(item/title)
-msgid "enter username and password"
-msgstr "Geben Sie Benutzername und Passwort ein."
+#: C/gnote-addin-tableofcontents.page:86(page/desc)
+msgid "<em>Navigate long structured notes</em>"
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:88(note/p)
+msgid ""
+"This is an add-in to <app>Gnotes</app>. When this add-in is installed, there "
+"is a <gui>Table of Contents</gui> entry in the <gui>actions</gui> menu. See "
+"<link xref=\"addins-preferences\"/> to learn how to activate an add-in."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:96(section/title)
+msgid "In a nutshell"
+msgstr "Kurz und bündig"
+
+#: C/gnote-addin-tableofcontents.page:100(item/p)
+msgid ""
+"A heading is a full line of text, formatted with <gui>Bold+Huge</gui> or "
+"<gui>Bold+Large</gui>."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:103(item/p)
+#| msgid ""
+#| "Press the key combination <keyseq><key>Ctrl</key><key>U</key></keyseq>."
+msgid ""
+"Set headings with <keyseq><key>Ctrl</key><key>1</key></keyseq> or "
+"<keyseq><key>Ctrl</key><key>2</key></keyseq>."
+msgstr ""
+"Legen Sie Überschriften mit <keyseq><key>Strg</key><key>1</key></keyseq> "
+"oder <keyseq><key>Strg</key><key>2</key></keyseq> fest."
+
+#: C/gnote-addin-tableofcontents.page:108(item/p)
+#| msgid ""
+#| "Press the key combination <keyseq><key>Ctrl</key><key>U</key></keyseq>."
+msgid ""
+"Open the table of contents with <keyseq><key>Ctrl</key><key>Alt</key><key>1</"
+"key></keyseq>, and jump to any heading."
+msgstr ""
+"Öffnen Sie das Inhaltsverzeichnis mit <keyseq><key>Strg</key><key>Alt</"
+"key><key>1</key></keyseq> und springen Sie direkt zu einer beliebigen "
+"Überschrift."
+
+#: C/gnote-addin-tableofcontents.page:114(section/title)
+msgid "Screenshot"
+msgstr "Bildschirmfoto"
+
+#: C/gnote-addin-tableofcontents.page:116(figure/title)
+msgid "A structured note with its table of contents"
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:123(section/title)
+msgid "Navigating through long notes"
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:125(section/p)
+msgid ""
+"A long note may become difficult to navigate. It is then natural to "
+"structure the note by marking sections and subsections with headings."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:131(section/p)
+msgid ""
+"This add-in makes it easy to navigate through long structured notes. Once "
+"you have set headings in your note, the table of contents of the note will "
+"show in actions menu. Then you can jump directly from the menu to any "
+"heading."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:141(section/title)
+#| msgid "Settings for Gnote add-ins"
+msgid "Structuring your notes with headings"
+msgstr "Ihre Notizen mit Hilfe von Überschriften strukturieren"
+
+#: C/gnote-addin-tableofcontents.page:143(section/p)
+msgid "A heading is simply a complete line with specific text formatting:"
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:147(item/p)
+msgid ""
+"Level 1 headings, for sections, are lines formatted with a <gui>Bold+Huge</"
+"gui> font."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:148(item/p)
+msgid ""
+"Level 2 headings, for subsections, are lines formatted with a <gui>Bold"
+"+Large</gui> font."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:152(section/p)
+msgid "To format a heading line, either:"
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:156(item/p)
+msgid ""
+"Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
+"<guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq> menu."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:161(item/p)
+#| msgid "Use keyboard shortcut <keyseq><key>Ctrl</key><key>N</key></keyseq>."
+msgid ""
+"Use the keyboard shortcuts <keyseq><key>Ctrl</key><key>1</key></keyseq> and "
+"<keyseq><key>Ctrl</key><key>2</key></keyseq> for headings of level 1 and 2."
+msgstr ""
+"Verwenden Sie die Tastenkombinationen <keyseq><key>Strg</key><key>1</key></"
+"keyseq> und <keyseq><key>Strg</key><key>2</key></keyseq> für Überschriften "
+"der Stufe 1 und 2."
+
+#: C/gnote-addin-tableofcontents.page:166(note/p)
+msgid ""
+"These commands apply the formatting to the complete line. You don't need to "
+"select it first. It is enough if the cursor is on the line."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:170(note/p)
+msgid ""
+"Alternatively, with the cursor on a new line, activate the heading command "
+"and then enter the heading title."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:174(section/p)
+msgid ""
+"You can even use the normal formatting commands from the <gui>Text</gui> "
+"menu: <gui>Bold</gui>, <gui>Large</gui> and <gui>Huge</gui>, and their "
+"respective keyboard shortcuts. If, for example, your line is already "
+"formatted as <gui>Huge</gui>, then you just need to make it also <gui>Bold</"
+"gui> to turn it into a heading 1. See <link xref=\"editing-notes\"/> to "
+"learn how to set text styles."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:183(section/title)
+msgid "Showing the table of contents"
+msgstr "Das Inhaltsverzeichnis anzeigen"
+
+#: C/gnote-addin-tableofcontents.page:185(section/p)
+msgid "You can access the table of contents either:"
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:187(item/p)
+#| msgid ""
+#| "From the menu, choose <guiseq><gui>Edit</gui><gui>Delete Notebook</gui></"
+#| "guiseq>"
+msgid ""
+"In the menu <guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq>."
+msgstr ""
+"Wählen Sie im Menü <guiseq><gui>Aktionen</gui><gui>Inhaltsverzeichnis</gui></"
+"guiseq> aus."
+
+#: C/gnote-addin-tableofcontents.page:188(item/p)
+msgid ""
+"In <guiseq><gui>context menu</gui><gui>Table of Contents</gui></guiseq> "
+"(right-click on the note window)."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:189(item/p)
+#| msgid "Use keyboard shortcut <keyseq><key>Ctrl</key><key>N</key></keyseq>."
+msgid ""
+"In a <gui>popup menu</gui>, with the keyboard shortcut <keyseq><key>Ctrl</"
+"key><key>Alt</key><key>1</key></keyseq>."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:190(list/p)
+msgid ""
+"Then you can navigate up and down with the arrow keys and jump to the "
+"selected heading with <key>enter</key>. Or just click with your mouse on the "
+"heading to jump to."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:196(section/title)
+msgid "Troubleshooting"
+msgstr "Fehlersuche"
+
+#: C/gnote-addin-tableofcontents.page:198(item/title)
+msgid ""
+"<em style=\"strong\">One heading does not show in the table of contents</em>"
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:198(item/p)
+msgid ""
+"There might be some characters in the heading line, such as whitespace "
+"characters, which are not formatted as a heading. Make sure that <em>the "
+"whole line</em> is formatted as a heading. See <link xref=\"#setheadings\"/>."
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:201(item/title)
+msgid ""
+"<em style=\"strong\">There is an empty line in the table of contents</em>"
+msgstr ""
+
+#: C/gnote-addin-tableofcontents.page:201(item/p)
+msgid ""
+"An empty line, possibly including whitespaces, is formatted as a heading. "
+"Jump to this line and delete the area."
+msgstr ""
 
 #: C/gnote-addin-timestamp.page:9(info/desc)
-msgid "Insert Current Time"
+#| msgid "Insert Current Time"
+msgid "Insert current time"
 msgstr "Aktuelle Zeit einfügen"
 
-#: C/gnote-addin-timestamp.page:21(page/title)
+#: C/gnote-addin-timestamp.page:26(page/title)
 msgid "Insert Timestamp Add-in"
 msgstr "Zeitstempel-einfügen-Add-In"
 
-#: C/gnote-addin-timestamp.page:22(page/p)
+#: C/gnote-addin-timestamp.page:28(page/p)
+#| msgid ""
+#| "When the <gui>Insert Timestamp</gui> add-in is installed, the Tools menu "
+#| "will have a <gui>Insert Timestamp</gui> option available."
 msgid ""
-"The Tools button is represented by the <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"> </media> icon. When "
-"you click the Tools icon on the toolbar present on your note, a menu will "
-"appear."
-msgstr ""
-"Der Knopf <gui>Werkzeuge</gui> wird durch das Symbol <media type=\"image\" "
-"src=\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> "
-"dargestellt. Beim Klick auf das Symbol <gui>Werkzeuge</gui> in der "
-"Werkzeugleiste erscheint ein Menü."
-
-#: C/gnote-addin-timestamp.page:23(page/p)
-msgid ""
-"When the <gui>Insert Timestamp</gui> add-in is installed, the Tools menu "
-"will have a <gui>Insert Timestamp</gui> option available."
+"When the <gui>Insert Timestamp</gui> add-in is installed, the <gui>Actions</"
+"gui> menu will include a <gui>Insert Timestamp</gui> command. Select this "
+"command to insert the current date and time."
 msgstr ""
 "Wenn das <gui>Zeitstempel einfügen</gui>-Add-In installiert ist, stellt das "
 "Menü <gui>Werkzeuge</gui> einen Eintrag namens <gui>Zeitstempel einfügen</"
-"gui> zur Verfügung."
-
-#: C/gnote-addin-timestamp.page:24(page/p)
-msgid "Click on this option to insert current date and time."
-msgstr ""
-"Klicken Sie auf diese Option, um die aktuelle Zeit und das Datum einzufügen."
+"gui> zur Verfügung. Verwenden Sie diesen Befehl, um die aktuelle Uhrzeit und "
+"das aktuelle Datum einzufügen."
 
 #: C/gnote-addin-underline.page:8(info/desc)
-msgid "Underline Text"
+#| msgid "Underline Text"
+msgid "Underline text"
 msgstr "Text unterstreichen"
 
-#: C/gnote-addin-underline.page:20(page/title)
+#: C/gnote-addin-underline.page:25(page/title)
 msgid "Underline Text Add-In"
 msgstr "Text-unterstreichen-Add-In"
 
-#: C/gnote-addin-underline.page:21(page/p)
+#: C/gnote-addin-underline.page:26(page/p)
 msgid ""
 "When the <gui>Underline</gui> add-in is installed, the <gui>Text</gui> menu "
 "will have a <gui>Underline</gui> option available."
@@ -638,25 +997,25 @@ msgstr ""
 "Wenn das <gui>Unterstreichen</gui>-Add-In installiert ist, stellt das Menü "
 "<gui>Text</gui> einen Menüpunkt <gui>Unterstreichen</gui> zur Verfügung."
 
-#: C/gnote-addin-underline.page:22(page/p)
+#: C/gnote-addin-underline.page:27(page/p)
 msgid "To underline the selected text, use one of the following:"
 msgstr ""
 "Unterstreichen Sie ausgewählten Text durch eine der folgenden Aktionen:"
 
-#: C/gnote-addin-underline.page:24(item/p)
 #: C/gnote-addin-underline.page:29(item/p)
+#: C/gnote-addin-underline.page:34(item/p)
 msgid "Click on <gui>Text</gui> and select <gui>Underline</gui>."
 msgstr ""
 "Klicken Sie auf <gui>Text</gui> und wählen Sie <gui>Unterstreichen</gui>."
 
-#: C/gnote-addin-underline.page:25(item/p)
 #: C/gnote-addin-underline.page:30(item/p)
-msgid "Press the key combination <keyseq><key>Ctrl</key><key>U</key></keyseq>."
-msgstr ""
-"Drücken Sie die Tastenkombination <keyseq><key>Umschalttaste</"
-"key><key>Tabulatortaste</key></keyseq>."
+#: C/gnote-addin-underline.page:35(item/p)
+#| msgid ""
+#| "Press the key combination <keyseq><key>Ctrl</key><key>U</key></keyseq>."
+msgid "Press <keyseq><key>Ctrl</key><key>U</key></keyseq>."
+msgstr "Drücken Sie <keyseq><key>Strg</key><key>U</key></keyseq>."
 
-#: C/gnote-addin-underline.page:27(page/p)
+#: C/gnote-addin-underline.page:32(page/p)
 msgid ""
 "To remove underline, select the underlined text and use one of the following:"
 msgstr ""
@@ -667,55 +1026,59 @@ msgstr ""
 msgid "Using Bulleted Lists"
 msgstr "Aufzählungslisten verwenden"
 
-#: C/gnote-bulleted-lists.page:20(page/title)
-#: C/gnote-introduction.page:29(item/p)
+#: C/gnote-bulleted-lists.page:25(page/title)
 msgid "Bulleted Lists"
 msgstr "Aufzählungslisten"
 
-#: C/gnote-bulleted-lists.page:22(section/title)
+#: C/gnote-bulleted-lists.page:27(section/title)
 msgid "Begin a bulleted list"
 msgstr "Eine Aufzählungsliste beginnen"
 
-#: C/gnote-bulleted-lists.page:23(section/p)
-msgid "You may begin a bulleted list by using one of the following methods"
+#: C/gnote-bulleted-lists.page:28(section/p)
+#| msgid "You may begin a bulleted list by using one of the following methods"
+msgid "You may begin a bulleted list in any of the following ways:"
 msgstr "Sie können eine Aufzählungsliste auf folgende Arten beginnen:"
 
-#: C/gnote-bulleted-lists.page:25(item/p)
-#: C/gnote-bulleted-lists.page:34(item/p)
+#: C/gnote-bulleted-lists.page:30(item/p)
+#: C/gnote-bulleted-lists.page:39(item/p)
 msgid "Select <gui>Bullets</gui> from the <gui>Text</gui> menu."
 msgstr "Wählen Sie <gui>Aufzählungspunkte</gui> aus dem Menü <gui>Text</gui>."
 
-#: C/gnote-bulleted-lists.page:26(item/p)
+#: C/gnote-bulleted-lists.page:31(item/p)
+#| msgid ""
+#| "Begin a line with a single dash character <key>-</key> followed by a "
+#| "space, type some text and press <key>Enter</key>."
 msgid ""
-"Begin a line with a single dash character <key>-</key> followed by a space, "
-"type some text and press <key>Enter</key>."
+"Begin a line with a single dash character <key>-</key> followed by a space. "
+"Then type some text and press <key>Enter</key>."
 msgstr ""
-"Beginnen Sie eine Zeile mit einem einfachen Bindestrich (-), geben Sie einen "
-"Text direkt nach dem Bindestrich ein und drücken Sie die <key>Eingabetaste</"
-"key>."
+"Beginnen Sie eine Zeile mit einem einfachen Bindestrich <key>-</key> gefolgt "
+"von einem Leerzeichen. Geben Sie anschließend einen Text ein und drücken Sie "
+"die <key>Eingabetaste</key>."
 
-#: C/gnote-bulleted-lists.page:27(item/p)
-#: C/gnote-bulleted-lists.page:49(item/p)
+#: C/gnote-bulleted-lists.page:32(item/p)
+#: C/gnote-bulleted-lists.page:54(item/p)
 msgid ""
 "Press the key combination <keyseq><key>Alt</key><key>Right</key></keyseq>."
 msgstr ""
 "Drücken Sie die Tastenkombination <keyseq><key>Alt</key><key>Pfeiltaste "
 "rechts</key></keyseq>."
 
-#: C/gnote-bulleted-lists.page:31(section/title)
+#: C/gnote-bulleted-lists.page:36(section/title)
 msgid "End a bulleted list"
 msgstr "Eine Aufzählungsliste beenden"
 
-#: C/gnote-bulleted-lists.page:32(section/p)
-msgid "End a bulleted list by doing one of the following"
+#: C/gnote-bulleted-lists.page:37(section/p)
+#| msgid "End a bulleted list by doing one of the following"
+msgid "You can end a bulleted list by doing one of the following:"
 msgstr "Beenden Sie eine Aufzählungsliste durch eine der folgenden Aktionen:"
 
-#: C/gnote-bulleted-lists.page:35(item/p)
+#: C/gnote-bulleted-lists.page:40(item/p)
 msgid "Press <key>Enter</key> on a blank bulleted line."
 msgstr ""
 "Drücken Sie die <key>Eingabetaste</key> in einer leeren Aufzählungszeile."
 
-#: C/gnote-bulleted-lists.page:36(item/p)
+#: C/gnote-bulleted-lists.page:41(item/p)
 msgid ""
 "Select <gui>Decrease Indent</gui> from the Text menu in succession until the "
 "current line is no longer part of the bulleted list."
@@ -724,73 +1087,85 @@ msgstr ""
 "<gui>Text</gui> aufeinander folgend, bis die aktuelle Zeile nicht mehr Teil "
 "der Aufzählungsliste ist."
 
-#: C/gnote-bulleted-lists.page:37(item/p)
+#: C/gnote-bulleted-lists.page:42(item/p)
+#| msgid ""
+#| "Using the key combination <keyseq><key>Shift</key><key>Tab</key></keyseq> "
+#| "in succession until the current line is no longer part of the bulleted "
+#| "list."
 msgid ""
-"Using the key combination <keyseq><key>Shift</key><key>Tab</key></keyseq> in "
-"succession until the current line is no longer part of the bulleted list."
+"Press <keyseq><key>Shift</key><key>Tab</key></keyseq> repeatedly until the "
+"current line is no longer part of the bulleted list."
 msgstr ""
 "Verwenden Sie die Tastenkombination <keyseq><key>Umschalttaste</"
-"key><keycap>Tabulatortaste</key></keyseq> aufeinander folgend, bis die "
+"key><keycap>Tabulatortaste</key></keyseq> so oft, bis die aktuelle Zeile "
+"nicht mehr Teil der Aufzählungsliste ist."
+
+#: C/gnote-bulleted-lists.page:43(item/p)
+#| msgid ""
+#| "Using the key combination <keyseq><key>Alt</key><key>Left</key></keyseq> "
+#| "in succession until the current line is no longer part of the bulleted "
+#| "list."
+msgid ""
+"Press <keyseq><key>Alt</key><key>Left</key></keyseq> repeatedly until the "
+"current line is no longer part of the bulleted list."
+msgstr ""
+"Drücken Sie <keyseq><key>Alt</key><key>←</key></keyseq> so oft bis die "
 "aktuelle Zeile nicht mehr Teil der Aufzählungsliste ist."
 
-#: C/gnote-bulleted-lists.page:38(item/p)
-msgid ""
-"Using the key combination <keyseq><key>Alt</key><key>Left</key></keyseq> in "
-"succession until the current line is no longer part of the bulleted list."
-msgstr ""
-"Verwenden Sie die Tastenkombination <keyseq><key>Umschalttaste</"
-"key><key>Tabulator</key></keyseq> aufeinander folgend, bis die aktuelle "
-"Zeile nicht mehr Teil der Aufzählungsliste ist."
-
-#: C/gnote-bulleted-lists.page:43(section/title)
+#: C/gnote-bulleted-lists.page:48(section/title)
 msgid "Increase Indentation"
 msgstr "Einzug erhöhen"
 
-#: C/gnote-bulleted-lists.page:44(section/p)
-msgid "To increase the line indentation in a bulleted list with the mouse"
-msgstr "Um den Zeileneinzug in einer Aufzählungsliste mit der Maus zu erhöhen,"
+#: C/gnote-bulleted-lists.page:49(section/p)
+#| msgid "To increase the line indentation in a bulleted list with the mouse"
+msgid "To increase the line indentation in a bulleted list with the mouse:"
+msgstr ""
+"So erhöhen Sie den Zeileneinzug in einer Aufzählungsliste mit der Maus:"
 
-#: C/gnote-bulleted-lists.page:45(item/p)
+#: C/gnote-bulleted-lists.page:50(item/p)
 msgid "Select <gui>Increase Indent</gui> from the Text menu."
 msgstr "Wählen Sie <gui>Einzug erhöhen</gui> im <gui>Textmenü</gui> aus."
 
-#: C/gnote-bulleted-lists.page:46(section/p)
-msgid "To increase the line indentation in a bulleted list with the keyboard"
+#: C/gnote-bulleted-lists.page:51(section/p)
+#| msgid ""
+#| "To increase the line indentation in a bulleted list with the keyboard"
+msgid "To increase the line indentation in a bulleted list with the keyboard:"
 msgstr ""
-"Um den Zeileneinzug in einer Aufzählungsliste mit der Tastatur zu erhöhen,"
+"So erhöhen Sie den Zeileneinzug in einer Aufzählungsliste mit der Tastatur:"
 
-#: C/gnote-bulleted-lists.page:48(item/p)
+#: C/gnote-bulleted-lists.page:53(item/p)
 msgid "Press the <key>Tab</key> key."
 msgstr "Drücken Sie die Taste <key>Tabulator</key>."
 
-#: C/gnote-bulleted-lists.page:54(section/title)
+#: C/gnote-bulleted-lists.page:59(section/title)
 msgid "Decrease Indentation"
 msgstr "Einzug verringern"
 
-#: C/gnote-bulleted-lists.page:55(section/p)
-msgid "To decrease the line indentation in a bulleted list with the mouse"
+#: C/gnote-bulleted-lists.page:60(section/p)
+#| msgid "To decrease the line indentation in a bulleted list with the mouse"
+msgid "To decrease the line indentation in a bulleted list with the mouse:"
 msgstr ""
-"Um den Zeileneinzug in einer Aufzählungsliste mit der Maus zu verringern,"
+"So verringern Sie den Zeileneinzug in einer Aufzählungsliste mit der Maus:"
 
-#: C/gnote-bulleted-lists.page:56(item/p)
+#: C/gnote-bulleted-lists.page:61(item/p)
 msgid "Select <gui>Decrease Indent</gui> from the Text menu."
 msgstr ""
 "wählen Sie den Menüpunkt <gui>Einzug verringern</gui> aus dem Menü "
 "<gui>Text</gui>."
 
-#: C/gnote-bulleted-lists.page:57(section/p)
+#: C/gnote-bulleted-lists.page:62(section/p)
 msgid "To decrease the line indentation in a bulleted list with the keyboard:"
 msgstr ""
 "Um den Zeileneinzug in einer Aufzählungsliste mit der Tastatur zu verringern,"
 
-#: C/gnote-bulleted-lists.page:59(item/p)
+#: C/gnote-bulleted-lists.page:64(item/p)
 msgid ""
 "Press the key combination <keyseq><key>Shift</key><key>Tab</key></keyseq>."
 msgstr ""
 "drücken Sie die Tastenkombination <keyseq><key>Umschalttaste</"
 "key><key>Tabulatortaste</key></keyseq>."
 
-#: C/gnote-bulleted-lists.page:60(item/p)
+#: C/gnote-bulleted-lists.page:65(item/p)
 msgid ""
 "Press the key combination <keyseq><key>Alt</key><key>Left</key></keyseq>."
 msgstr ""
@@ -798,121 +1173,153 @@ msgstr ""
 "key><key>Tabulatortaste</key></keyseq>."
 
 #: C/gnote-common-problems.page:9(info/desc)
-msgid "Frequently Asked Questions"
+#| msgid "Frequently Asked Questions"
+msgid "Frequently asked questions"
 msgstr "Häufig gestellte Fragen"
 
 #: C/gnote-common-problems.page:16(credit/years)
-#: C/gnote-creating-notes.page:16(credit/years)
-#: C/gnote-deleting-notes.page:16(credit/years)
 #: C/gnote-editing-notes.page:14(credit/years)
 #: C/gnote-hotkeys.page:16(credit/years)
-#: C/gnote-introduction.page:17(credit/years)
 #: C/gnote-notes-preferences.page:17(credit/years)
 #: C/gnote-searching-notes.page:16(credit/years)
-#: C/gnote-template-notes.page:13(credit/years)
-#: C/gnote-working-with-notebooks.page:17(credit/years)
-msgid "2011-2012"
-msgstr "2011-2012"
+#| msgid "2011-2012"
+msgid "2011-2013"
+msgstr "2011-2013"
 
-#: C/gnote-common-problems.page:20(page/title)
+#: C/gnote-common-problems.page:25(page/title)
 msgid "Gnote Common Issues"
 msgstr "Häufige Probleme in Gnote"
 
-#: C/gnote-common-problems.page:22(item/title)
+#: C/gnote-common-problems.page:27(item/title)
 msgid "Does <app>Gnote</app> work with <app>Tomboy</app>?"
 msgstr "Arbeitet <app>Gnote</app> mit <app>Tomboy</app> zusammen?"
 
-#: C/gnote-common-problems.page:22(item/p)
+#: C/gnote-common-problems.page:27(item/p)
 msgid "You can import <app>Tomboy</app> Notes. An add-in has to be activated."
 msgstr ""
 "Sie können <app>Tomboy</app>-Notizen importieren. Hierfür muss ein Add-In "
 "aktiviert werden."
 
-#: C/gnote-common-problems.page:24(item/title)
-msgid "I can not find the Gnote status icon"
-msgstr "Ich kann das Statussymbol von Gnote nicht finden"
+#: C/gnote-common-problems.page:29(item/title)
+#| msgid "I can not find the Gnote status icon"
+msgid "I can't find the Gnote status icon."
+msgstr "Ich kann das Statussymbol von Gnote nicht finden."
 
-#: C/gnote-common-problems.page:25(item/p)
+#: C/gnote-common-problems.page:30(item/p)
 msgid ""
-"You can activate the <app>Gnote</app> status icon using a command from "
-"<app>terminal</app>: <cmd>gsettings set org.gnome.gnote use-status-icon "
-"true</cmd>."
+"You can activate the <app>Gnote</app> status icon in Gnote Preferences "
+"dialog."
 msgstr ""
-"Sie können das Statussymbol von <app>Gnote</app> folgendermaßen im "
-"<app>Terminal</app> aktivieren: <cmd>gsettings set org.gnome.gnote use-"
-"status-icon true</cmd> ."
 
-#: C/gnote-common-problems.page:26(item/title)
+#: C/gnote-common-problems.page:31(item/title)
 msgid "How to automatically start <app>Gnote</app> when I log in?"
 msgstr ""
 "Wie lässt sich <app>Gnote</app> automatisch starten, sobald ich angemeldet "
 "bin?"
 
-#: C/gnote-common-problems.page:27(item/p)
+#: C/gnote-common-problems.page:32(item/p)
+#| msgid ""
+#| "To start Gnote automatically when you log into GNOME, run <app>gnome-"
+#| "session-properties</app>"
 msgid ""
 "To start Gnote automatically when you log into GNOME, run <app>gnome-session-"
-"properties</app>"
+"properties</app>."
 msgstr ""
 "Um Gnote bei der Anmeldung an GNOME automatisch zu starten, rufen Sie "
 "<app>gnome-session-properties</app> auf."
 
+#: C/gnote-common-problems.page:34(item/title)
+msgid "I'm not comfortable with new single-window interface"
+msgstr ""
+
+#: C/gnote-common-problems.page:34(item/p)
+msgid ""
+"You can make <app>Gnote</app> behave the old way by selecting <gui>Always "
+"open notes in new window</gui> in Preferences dialog."
+msgstr ""
+
 #: C/gnote-creating-notes.page:9(info/desc)
-#: C/gnote-creating-notes.page:20(page/title)
+#| msgid "Creating Notes"
+msgid "Creating notes"
+msgstr "Notizen anlegen"
+
+#: C/gnote-creating-notes.page:16(credit/years)
+#: C/gnote-deleting-notes.page:16(credit/years)
+#: C/gnote-introduction.page:17(credit/years)
+#: C/gnote-template-notes.page:13(credit/years)
+#: C/gnote-working-with-notebooks.page:17(credit/years)
+msgid "2011-2012"
+msgstr "2011-2012"
+
+#: C/gnote-creating-notes.page:25(page/title)
 msgid "Creating Notes"
 msgstr "Notizen anlegen"
 
-#: C/gnote-creating-notes.page:22(page/p)
-msgid ""
-"In <app>Gnote</app>, you can create new notes using one of the following "
-"methods:"
+#: C/gnote-creating-notes.page:27(page/p)
+#| msgid ""
+#| "In <app>Gnote</app>, you can create new notes using one of the following "
+#| "methods:"
+msgid "In <app>Gnote</app>, you can create new notes in any of these ways:"
 msgstr ""
 "Sie können in <app>Gnote</app> neue Notizen auf eine der folgenden Arten "
 "anlegen:"
 
-#: C/gnote-creating-notes.page:24(item/p)
-msgid "Click on application menu and select <gui>New Note</gui>."
-msgstr ""
-"Klicken Sie auf das Anwendungsmenü und wählen Sie <gui>Neue Notiz</gui>."
+#: C/gnote-creating-notes.page:29(item/p)
+#| msgid "Select <gui>Bullets</gui> from the <gui>Text</gui> menu."
+msgid "Select <gui>New Note</gui> in the application menu."
+msgstr "Wählen Sie <gui>Neue Notiz</gui> im Anwendungsmenü."
 
-#: C/gnote-creating-notes.page:25(item/p)
-msgid "In <app>Gnote</app> window click the toolbar item <gui>New</gui>."
+#: C/gnote-creating-notes.page:30(item/p)
+#| msgid "In <app>Gnote</app> window click the toolbar item <gui>New</gui>."
+msgid "In the <app>Gnote</app> window, click the toolbar item <gui>New</gui>."
 msgstr ""
 "Klicken Sie im Fenster <app>Gnote</app> auf das Werkzeug-Element <gui>Neu</"
 "gui>."
 
-#: C/gnote-creating-notes.page:26(item/p)
+#: C/gnote-creating-notes.page:31(item/p)
+#| msgid ""
+#| "When in search mode, right click in notes list and select <gui>New Note</"
+#| "gui>. This one will create note in currently selected notebook."
 msgid ""
-"When in search mode, right click in notes list and select <gui>New Note</"
-"gui>. This one will create note in currently selected notebook."
+"In the main window, right click in the note list and select <gui>New</gui>. "
+"This will create a note in the currently selected notebook."
 msgstr ""
-"Klicken Sie im Suchmodus mit der rechten Maustaste in die Notizliste und "
-"wählen Sie <gui>Neue Notiz</gui>. Dadurch wird eine neue Notiz im "
-"ausgewählten Notizbuch angelegt."
+"Klicken Sie im Hauptfenster mit der rechten Maustaste in die Notizliste und "
+"wählen Sie <gui>Neu</gui>. Dadurch wird eine neue Notiz im ausgewählten "
+"Notizbuch angelegt."
 
-#: C/gnote-creating-notes.page:27(item/p)
+#: C/gnote-creating-notes.page:32(item/p)
+#| msgid ""
+#| "If <gui>Status Icon</gui> is enabled, click on it and select <gui>New "
+#| "Note</gui>."
 msgid ""
-"If <gui>Status Icon</gui> is enabled, click on it and select <gui>New Note</"
-"gui>."
+"If the status icon is enabled, click on it and select <gui>New Note</gui>."
 msgstr ""
-"Wenn das <gui>Statussymbol</gui> aktiv ist, klicken Sie darauf und wählen "
-"Sie <gui>Neue Notiz</gui>."
+"Wenn das Statussymbol aktiv ist, klicken Sie darauf und wählen Sie <gui>Neue "
+"Notiz</gui>."
 
-#: C/gnote-creating-notes.page:28(item/p)
-msgid "Use keyboard shortcut <keyseq><key>Ctrl</key><key>N</key></keyseq>."
+#: C/gnote-creating-notes.page:33(item/p)
+#| msgid "Use keyboard shortcut <keyseq><key>Ctrl</key><key>N</key></keyseq>."
+msgid "Use the keyboard shortcut <keyseq><key>Ctrl</key><key>N</key></keyseq>."
 msgstr ""
 "Verwenden Sie die Tastenkombination <key><key>Strg</key><key>N</key></"
 "keyseq>."
 
 #: C/gnote-deleting-notes.page:9(info/desc)
-#: C/gnote-deleting-notes.page:20(page/title)
+#| msgid "Deleting Notes"
+msgid "Deleting notes"
+msgstr "Notizen löschen"
+
+#: C/gnote-deleting-notes.page:25(page/title)
 msgid "Deleting Notes"
 msgstr "Notizen löschen"
 
-#: C/gnote-deleting-notes.page:21(page/p)
-msgid "You can delete note in few ways:"
-msgstr "Sie können eine Notiz auf folgende Arten löschen:"
+#: C/gnote-deleting-notes.page:26(page/p)
+#| msgid "You can delete note in few ways:"
+msgid "You can delete a note in either of two ways:"
+msgstr "Sie können eine Notiz auf zwei Arten löschen:"
 
-#: C/gnote-deleting-notes.page:23(item/p)
+#: C/gnote-deleting-notes.page:28(item/p)
 msgid ""
 "Right click in the list of notes and select <gui>Delete</gui>. This will "
 "delete all selected notes."
@@ -920,278 +1327,302 @@ msgstr ""
 "Klicken Sie mit der rechten Maustaste in die Notizliste und wählen Sie "
 "<gui>Löschen</gui>. Dadurch werden alle gewählten Notizen gelöscht."
 
-#: C/gnote-deleting-notes.page:24(item/p)
-msgid "When note is opened, press the <gui>Delete</gui> button on toolbar."
+#: C/gnote-deleting-notes.page:29(item/p)
+#| msgid "When note is opened, press the <gui>Delete</gui> button on toolbar."
+msgid "When a note is open, press the <gui>Delete</gui> button on the toolbar."
 msgstr ""
 "Wenn eine Notiz geöffnet ist, klicken Sie auf den <gui>Löschen</gui>-Knopf "
 "in der Werkzeugleiste."
 
-#: C/gnote-deleting-notes.page:26(page/p)
+#: C/gnote-deleting-notes.page:31(page/p)
+#| msgid ""
+#| "In all cases a dialog box will pop up asking if you want to permanently "
+#| "delete the note and its contents. Click the <gui>Delete</gui> button to "
+#| "discard the note permanently, or <gui>Cancel</gui> to abort the process. "
+#| "Links to this note from other notes will still exist, but will re-create "
+#| "the note upon activation."
 msgid ""
-"In all cases a dialog box will pop up asking if you want to permanently "
+"In both cases a dialog box will pop up asking if you want to permanently "
 "delete the note and its contents. Click the <gui>Delete</gui> button to "
-"discard the note permanently, or <gui>Cancel</gui> to abort the process. "
-"Links to this note from other notes will still exist, but will re-create the "
-"note upon activation."
+"discard the note permanently, or <gui>Cancel</gui> to abort. Links to the "
+"deleted note from other notes will still exist, but will re-create the note "
+"upon activation."
 msgstr ""
-"In jedem Fall wird ein Dialog geöffnet, in welchem Sie gefragt werden, ob "
+"In beiden Fällen wird ein Dialog geöffnet, in welchem Sie gefragt werden, ob "
 "Sie die Notiz und deren Inhalt dauerhaft löschen möchten. Klicken Sie auf "
 "den Knopf <gui>Löschen</gui>, um die Notiz dauerhaft zu verwerfen, oder "
-"<gui>Abbrechen</gui>, um den Vorgang abzubrechen. Verknüpfungen auf diese "
-"Notiz bleiben weiterhin bestehen, aber ein Klicken darauf bewirkt, dass die "
-"Notiz dann neu angelegt wird."
+"<gui>Abbrechen</gui>, um den Vorgang abzubrechen. Verknüpfungen in anderen "
+"Notizen auf diese Notiz bleiben weiterhin bestehen, aber ein Klicken darauf "
+"bewirkt, dass die Notiz dann neu angelegt wird."
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-editing-notes.page:25(media)
+#: C/gnote-editing-notes.page:30(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-new-note.png' "
+#| "md5='715712e6322a5bf8c9aa1a6de1bb619b'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
-"md5='715712e6322a5bf8c9aa1a6de1bb619b'"
+"md5='a2b5ec9beee8183e9b71183148da1c89'"
 msgstr "ok"
 
 #: C/gnote-editing-notes.page:7(info/desc)
-msgid "Editing Notes Content"
+#| msgid "Editing Notes Content"
+msgid "Editing note contents"
 msgstr "Inhalt von Notizen bearbeiten"
 
-#: C/gnote-editing-notes.page:18(page/title)
+#: C/gnote-editing-notes.page:23(page/title)
 msgid "Editing Notes"
 msgstr "Notizen bearbeiten"
 
-#: C/gnote-editing-notes.page:20(page/p)
+#: C/gnote-editing-notes.page:25(page/p)
 msgid ""
-"Notes are opened in the same window by replacing search with note content."
+"When you open a note, <app>Gnote</app> will replace the note overview with "
+"the note's contents."
 msgstr ""
-"Notizen werden im selben Fenster geöffnet, indem die Suche mit dem Inhalt "
-"der Notiz ersetzt wird."
 
-#: C/gnote-editing-notes.page:21(page/p)
+#: C/gnote-editing-notes.page:26(page/p)
 msgid ""
-"At the top of the note there are two toolbars. The above one has items for "
-"going back to search mode and for creating new note. The lower one contains "
-"several buttons and text. Directly below this toolbar is the content area of "
-"the note."
+"Toolbar at the top of the window will now contain note specific items in it. "
+"Bellow toolbar is the note's content area."
 msgstr ""
-"Über der Notiz befinden sich zwei Werkzeugleisten. Die obere enthält "
-"Objekte, um zum Suchmodus zurückzukehren und neue Notizen anzulegen. Die "
-"untere enthält mehrere Knöpfe und Text. Direkt unterhalb dieser "
-"Werkzeugleiste befindet sich das Eingabefeld der Notiz."
 
-#: C/gnote-editing-notes.page:23(figure/title)
+#: C/gnote-editing-notes.page:28(figure/title)
 msgid "<app>Gnote</app> window displaying note"
 msgstr "<app>Gnote</app>-Fenster mit Notiz"
 
-#: C/gnote-editing-notes.page:24(figure/desc)
+#: C/gnote-editing-notes.page:29(figure/desc)
 msgid "<app>Gnote</app> Note"
 msgstr "<app>Gnote</app>-Notiz"
 
-#: C/gnote-editing-notes.page:26(media/p)
+#: C/gnote-editing-notes.page:31(media/p)
 msgid "<app>Gnote</app> note editing."
 msgstr "<app>Gnote</app> Notizbearbeitung."
 
-#: C/gnote-editing-notes.page:30(page/p)
+#: C/gnote-editing-notes.page:35(page/p)
 msgid ""
-"The note can be edited by clicking in the content area and using the "
-"keyboard to add and remove content. The first line is considered the title "
-"of the note. By default this is populated with the text \"New Note N\". The "
-"title is changed by clicking in the content area on the first line and using "
-"the keyboard to change the title. By default, focus is given to the content "
-"area upon creation of a new note, so you can immediately start editing the "
-"note without the need to click on the content area with the mouse."
+"To edit the note, click in the content area and type. The first line is "
+"considered the title of the note. By default this is populated with the text "
+"\"New Note (number)\". To change the title, click on the first line and use "
+"the keyboard to change the title."
 msgstr ""
-"Die Notiz kann bearbeitet werden, indem Sie in das Eingabefeld klicken und "
-"über die Tastatur Inhalte hinzufügen oder entfernen. Die erste Zeile stellt "
-"den Titel der Notiz dar. Standardmäßig wird dieser mit »Neue Notiz N« "
-"gefüllt. Der Titel wird geändert, indem Sie in das Eingabefeld klicken und "
-"den Titel in der ersten Zeile über die Tastatur ändern. Standardmäßig erhält "
-"das Eingabefeld nach dem Anlegen einer neuen Notiz den Fokus, sodass Sie "
-"sofort mit dem Bearbeiten der Notiz beginnen können, ohne mit der Maus in "
-"das Eingabefeld zu klicken."
 
-#: C/gnote-editing-notes.page:31(page/p)
+#: C/gnote-editing-notes.page:36(page/p)
 msgid ""
-"Formatting text within your notes can be done using the <gui>Text</gui> "
-"button. The <gui>Text</gui> button will display a menu with several options "
-"from which you can choose. Each menu item is explained next."
+"Use the <gui>Text</gui> button to format text within your notes. This button "
+"displays a menu with several commands:"
 msgstr ""
-"Das Formatieren von Texten innerhalb einer Notiz ist über den Knopf "
-"<gui>Text</gui> möglich. Der Knopf <gui>Text</gui> zeigt ein Menü mit "
-"verschiedenen Einträgen an, aus denen Sie wählen können. Jeder Menüpunkt "
-"wird im Folgenden erläutert."
 
-#: C/gnote-editing-notes.page:34(item/title)
+#: C/gnote-editing-notes.page:39(item/title)
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: C/gnote-editing-notes.page:35(item/p)
+#: C/gnote-editing-notes.page:40(item/p)
+#| msgid ""
+#| "Support for “Undo” is available in <app>Gnote</app> through this menu "
+#| "item. The Undo function allows you to revert previous changes made to "
+#| "your note during the current session. To undo your last change using the "
+#| "keyboard, use the standard keybinding, <keyseq><key>Ctrl</key><key>Z</"
+#| "key></keyseq>."
 msgid ""
-"Support for “Undo” is available in <app>Gnote</app> through this menu item. "
-"The Undo function allows you to revert previous changes made to your note "
-"during the current session. To undo your last change using the keyboard, use "
-"the standard keybinding, <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
+"The <gui>Undo</gui> command reverts changes made to your note during the "
+"current session. To undo using the keyboard, press <keyseq><key>Ctrl</"
+"key><key>Z</key></keyseq>."
 msgstr ""
-"Die Unterstützung für »Rückgängig« ist in Gnote über diesen Menüpunkt "
-"verfügbar. Die Rückgängig-Funktion erlaubt es, vorangegangene, in den "
-"aktuellen Sitzung durchgeführte Änderungen rückgängig machen zu können. Um "
-"Ihre letzte Änderung mit der Tastatur rückgängig zu machen, verwenden Sie "
-"die standardmäßige Tastenkombination <keyseq><key>Strg</key><key>Z</key></"
+"Der Befehl <gui>Rückgängig</gui> macht vorangegangene, in den aktuellen "
+"Sitzung durchgeführte Änderungen rückgängig. Um Änderungen mit der Tastatur "
+"rückgängig zu machen, verwenden Sie <keyseq><key>Strg</key><key>Z</key></"
 "keyseq>."
 
-#: C/gnote-editing-notes.page:37(item/title)
+#: C/gnote-editing-notes.page:42(item/title)
 msgid "Redo"
 msgstr "Wiederholen"
 
-#: C/gnote-editing-notes.page:38(item/p)
+#: C/gnote-editing-notes.page:43(item/p)
+#| msgid ""
+#| "The “Redo” function is used to put back changes that were removed using "
+#| "the “Undo” feature. To redo your last change using the keyboard, use the "
+#| "standard keybinding, <keyseq><key>Shift</key><key>Ctrl</key><key>Z</key></"
+#| "keyseq>."
 msgid ""
-"The “Redo” function is used to put back changes that were removed using the "
-"“Undo” feature. To redo your last change using the keyboard, use the "
-"standard keybinding, <keyseq><key>Shift</key><key>Ctrl</key><key>Z</key></"
-"keyseq>."
+"The <gui>Redo</gui> command puts back changes that were removed using the "
+"<gui>Undo</gui> feature. To redo your last change using the keyboard, press "
+"<keyseq><key>Shift</key><key>Ctrl</key><key>Z</key></keyseq>."
 msgstr ""
-"Die Funktion »Wiederholen« wird verwendet, um Änderungen wiederherzustellen, "
-"die durch die Funktion »Rückgängig« entfernt worden sind. Um Ihre letzten "
-"Änderungen mit der Tastatur zu wiederholen, verwenden Sie die standardmäßige "
-"Tastenkombination <keyseq><key>Umschalttaste</key><key>Strg</key><key>Z</"
-"key></keyseq>."
 
-#: C/gnote-editing-notes.page:40(item/title)
+#: C/gnote-editing-notes.page:45(item/title)
 msgid "Bold"
 msgstr "Fett"
 
-#: C/gnote-editing-notes.page:41(item/p)
+#: C/gnote-editing-notes.page:46(item/p)
+#| msgid ""
+#| "To make text within your note bold, first select the text you want to "
+#| "modify. Then select the Bold option from the <gui>Text</gui> menu. You "
+#| "may also use the keybinding <keyseq><key>Ctrl</key><key>B</key></keyseq> "
+#| "after selecting the text."
 msgid ""
-"To make text within your note bold, first select the text you want to "
-"modify. Then select the Bold option from the <gui>Text</gui> menu. You may "
-"also use the keybinding <keyseq><key>Ctrl</key><key>B</key></keyseq> after "
-"selecting the text."
+"To make text bold, select it and then select the <gui>Bold</gui> command "
+"from the <gui>Text</gui> menu or press <keyseq><key>Ctrl</key><key>B</key></"
+"keyseq>."
 msgstr ""
-"Um einen Text innerhalb Ihrer Notiz fett darzustellen, markieren Sie zuerst "
-"den Text, den Sie ändern möchten. Danach wählen Sie die Option <gui>Fett</"
-"gui> aus dem Menü <gui>Text</gui>. Sie können auch die Tastenkombination "
-"<keyseq><key>Strg</key><key>B</key></keyseq> nach dem Markieren des Textes "
-"benutzen."
+"Um einen Text innerhalb Ihrer Notiz <gui>fett</gui> darzustellen, markieren "
+"Sie zuerst den Text und wählen Sie den Befehl <gui>Fett</gui> aus dem Menü "
+"<gui>Text</gui>. Sie können auch die Tastenkombination <keyseq><key>Strg</"
+"key><key>B</key></keyseq> einsetzen."
 
-#: C/gnote-editing-notes.page:43(item/title)
+#: C/gnote-editing-notes.page:48(item/title)
 msgid "Italic"
 msgstr "Kursiv"
 
-#: C/gnote-editing-notes.page:44(item/p)
+#: C/gnote-editing-notes.page:49(item/p)
+#| msgid ""
+#| "To make text within your note italic, first select the text you want to "
+#| "modify. Then select the Italic option from the Text menu. You may also "
+#| "use the keybinding <keyseq><key>Ctrl</key><key>I</key></keyseq> after "
+#| "selecting the text."
 msgid ""
-"To make text within your note italic, first select the text you want to "
-"modify. Then select the Italic option from the Text menu. You may also use "
-"the keybinding <keyseq><key>Ctrl</key><key>I</key></keyseq> after selecting "
-"the text."
+"To make text italic, select it and then select the <gui>Italic </gui> "
+"command from the <gui>Text</gui> menu, or press <keyseq><key>Ctrl</"
+"key><key>I</key></keyseq>."
 msgstr ""
-"Um einen Text innerhalb Ihrer Notiz kursiv darzustellen, markieren Sie "
-"zuerst den Text, den Sie ändern möchten. Danach wählen Sie die Option "
-"<gui>Kursiv</gui> aus dem Menü <gui>Text</gui>. Sie können auch die "
-"Tastenkombination <keyseq><key>Strg</key><key>I</key></keyseq> nach dem "
-"Markieren des Textes benutzen."
+"Um einen Text innerhalb Ihrer Notiz <gui>kursiv</gui> darzustellen, "
+"markieren Sie zuerst den Text und wählen Sie den Befehl <gui>Kursiv</gui> "
+"aus dem Menü <gui>Text</gui>. Sie können auch die Tastenkombination "
+"<keyseq><key>Strg</key><key>I</key></keyseq> einsetzen."
 
-#: C/gnote-editing-notes.page:46(item/title)
+#: C/gnote-editing-notes.page:51(item/title)
 msgid "Strikeout"
 msgstr "Durchgestrichen"
 
-#: C/gnote-editing-notes.page:47(item/p)
+#: C/gnote-editing-notes.page:52(item/p)
+#| msgid ""
+#| "The strikeout style will put a line through the selected text. To add a "
+#| "strikeout, select the text and then select the <gui>Strikeout</gui> "
+#| "option from the <gui>Text</gui> menu. You may also use the keybinding "
+#| "<keyseq><key>Ctrl</key><key>S</key></keyseq> after selecting the text."
 msgid ""
 "The strikeout style will put a line through the selected text. To add a "
-"strikeout, select the text and then select the <gui>Strikeout</gui> option "
-"from the <gui>Text</gui> menu. You may also use the keybinding "
-"<keyseq><key>Ctrl</key><key>S</key></keyseq> after selecting the text."
+"strikeout, select text and then select the <gui>Strikeout</gui> command from "
+"the <gui>Text</gui> menu or press <keyseq><key>Ctrl</key><key>S</key></"
+"keyseq>."
 msgstr ""
-"Der Stil »Durchgestrichen« fügt eine Linie durch den ausgewählten Text "
-"hinzu. Um einen Text innerhalb Ihrer Notiz durchgestrichen darzustellen, "
-"markieren Sie zuerst den Text, den Sie ändern möchten. Danach wählen Sie die "
-"Option <gui>Durchgestrichen</gui> aus dem Menü <gui>Text</gui>. Sie können "
-"auch die Tastenkombination <keyseq><key>Strg</key><key>s</key></keyseq> nach "
-"dem Markieren des Textes benutzen."
+"Der Stil »Durchstreichen« setzt eine horizontale Linie durch den "
+"ausgewählten Text. Wählen Sie zum Durchstreichen von Text den Befehl "
+"<gui>Durchstreichen</gui> aus dem Menü <gui>Text</gui>. Sie können auch die "
+"Tastenkombination <keyseq><key>Strg</key><key>S</key></keyseq> verwenden."
 
-#: C/gnote-editing-notes.page:49(item/title)
+#: C/gnote-editing-notes.page:54(item/title)
 msgid "Highlight"
 msgstr "Hervorgehoben"
 
-#: C/gnote-editing-notes.page:50(item/p)
+#: C/gnote-editing-notes.page:55(item/p)
+#| msgid ""
+#| "The highlight style will put a different background around the selected "
+#| "text. To add a highlight, select the text and then select the "
+#| "<gui>Highlight</gui> option from the <gui>Text</gui> menu. You may also "
+#| "use the keybinding <keyseq><key>Ctrl</key><key>H</key></keyseq> after "
+#| "selecting the text."
 msgid ""
 "The highlight style will put a different background around the selected "
-"text. To add a highlight, select the text and then select the "
-"<gui>Highlight</gui> option from the <gui>Text</gui> menu. You may also use "
-"the keybinding <keyseq><key>Ctrl</key><key>H</key></keyseq> after selecting "
-"the text."
+"text. To add a highlight, select text and then select the <gui>Highlight</"
+"gui> command from the <gui>Text</gui> menu or press <keyseq><key>Ctrl</"
+"key><key>H</key></keyseq>."
 msgstr ""
-"Der Stil »Hervorgehoben« fügt einen andersfarbigen Hintergrund zum "
-"ausgewählten Text hinzu. Um einen Text innerhalb Ihrer Notiz hervorgehoben "
-"darzustellen, markieren Sie zuerst den Text, den Sie ändern möchten. Danach "
-"wählen Sie die Option <gui>Hervorgehoben</gui> aus dem Menü <gui>Text</gui>. "
-"Sie können auch die Tastenkombination <keyseq><key>Strg</key><key>H</key></"
-"keyseq> nach dem Markieren des Textes benutzen."
+"Der Stil »Hervorheben« legt einen andersfarbigen Hintergrund hinter den "
+"ausgewählten Text. Wählen Sie zum Hervorheben den Befehl <gui>Hervorheben</"
+"gui> aus dem Menü <gui>Text</gui>. Sie können auch die Tastenkombination "
+"<keyseq><key>Strg</key><key>H</key></keyseq> verwenden."
 
-#: C/gnote-editing-notes.page:52(item/title)
+#: C/gnote-editing-notes.page:57(item/title)
 msgid "Font size"
 msgstr "Schriftgröße"
 
-#: C/gnote-editing-notes.page:53(item/p)
+#: C/gnote-editing-notes.page:58(item/p)
+#| msgid ""
+#| "There are actually four options in this part of the menu: Small, Normal, "
+#| "Large, Huge. Each one of these options represents a font size to use for "
+#| "the selected text in the note. To modify the font size, select the text "
+#| "and then select one of <gui>Small</gui>, <gui>Normal</gui>, <gui>Large</"
+#| "gui>, <gui>Huge</gui> options from the Text menu."
 msgid ""
 "There are actually four options in this part of the menu: Small, Normal, "
-"Large, Huge. Each one of these options represents a font size to use for the "
-"selected text in the note. To modify the font size, select the text and then "
-"select one of <gui>Small</gui>, <gui>Normal</gui>, <gui>Large</gui>, "
-"<gui>Huge</gui> options from the Text menu."
+"Large, and Huge. Each option represents a font size to use for the selected "
+"text. To modify the font size, select text and then select <gui>Small</gui>, "
+"<gui>Normal</gui>, <gui>Large</gui>, or <gui>Huge</gui>."
 msgstr ""
 "Es gibt vier Menüpunkte in diesem Abschnitt des Menüs: Klein, Normal, Groß "
 "und Sehr groß. Jede dieser Optionen repräsentiert eine Schriftgröße, die für "
 "den markierten Text in der Notiz verwendet werden kann. Um die Schriftgröße "
 "zu ändern, markieren Sie erst den Text und wählen Sie dann eine der Optionen "
 "<gui>Klein</gui>, <gui>Normal</gui>, <gui>Groß</gui> oder <gui>Sehr groß</"
-"gui> aus dem Menü <guibutton>Text</guibutton>."
+"gui>."
 
-#: C/gnote-editing-notes.page:55(item/title)
+#: C/gnote-editing-notes.page:60(item/title)
 msgid "Bullets"
 msgstr "Aufzählungspunkte"
 
-#: C/gnote-editing-notes.page:56(item/p)
+#: C/gnote-editing-notes.page:61(item/p)
+#| msgid ""
+#| "Select the Bullets option from the Text menu to begin or end a bulleted "
+#| "list. If the cursor is inside a bulleted list, the <gui>Increase Indent</"
+#| "gui>, <gui>Decrease Indent</gui> options will be enabled."
 msgid ""
-"Select the Bullets option from the Text menu to begin or end a bulleted "
-"list. If the cursor is inside a bulleted list, the <gui>Increase Indent</"
-"gui>, <gui>Decrease Indent</gui> options will be enabled."
+"Select the <gui>Bullets</gui> command from the Text menu to begin or end a "
+"bulleted list. If the cursor is inside a bulleted list, the <gui>Increase "
+"Indent</gui> and <gui>Decrease Indent</gui> options will be enabled."
 msgstr ""
 "Wählen Sie die Option <gui>Aufzählungspunkte</gui> aus dem Menü <gui>Text</"
-"gui>, um eine Aufzählungsliste zu beginnen oder zu beenden. Falls sich der "
-"Eingabezeiger innerhalb einer Aufzählungsliste befindet, sind die Optionen "
+"gui>, um eine Aufzählungsliste zu beginnen oder zu beenden. Falls sich die "
+"Eingabemarke innerhalb einer Aufzählungsliste befindet, sind die Optionen "
 "<gui>Einzug erhöhen</gui> und <gui>Einzug vermindern</gui> verfügbar."
 
-#: C/gnote-editing-notes.page:57(item/p)
+#: C/gnote-editing-notes.page:62(item/p)
+#| msgid ""
+#| "With the cursor on a bulleted list line, select the <gui>Increase Indent</"
+#| "gui> option to shift the current line to the right or the <gui>Decrease "
+#| "Indent</gui> option to shift the current line to the left."
 msgid ""
 "With the cursor on a bulleted list line, select the <gui>Increase Indent</"
-"gui> option to shift the current line to the right or the <gui>Decrease "
-"Indent</gui> option to shift the current line to the left."
+"gui> command to shift the current line to the right or the <gui>Decrease "
+"Indent</gui> command to shift to the left."
 msgstr ""
 "Befindet sich der Eingabezeiger in der Zeile einer Aufzählungsliste, wählen "
 "Sie die Option <gui>Einzug erhöhen</gui>, um die aktuelle Zeile nach rechts "
 "zu verschieben, oder <gui>Einzug vermindern</gui>, um die aktuelle Zeile "
 "nach links zu schieben."
 
-#: C/gnote-editing-notes.page:58(item/p)
-msgid "For more information on bullets, <link xref=\"bulleted-lists\"/>."
+#: C/gnote-editing-notes.page:63(item/p)
+#| msgid "For more information on bullets, <link xref=\"bulleted-lists\"/>."
+msgid "For more information on bullets, see <link xref=\"bulleted-lists\"/>."
 msgstr ""
 "Weitere Informationen über Aufzählungslisten finden Sie in <link xref="
 "\"bulleted-lists\"/>."
 
-#: C/gnote-editing-notes.page:60(item/title)
-msgid "Find in This Note"
-msgstr "In dieser Notiz suchen"
-
-#: C/gnote-editing-notes.page:61(item/p)
+#: C/gnote-editing-notes.page:66(page/p)
+#, fuzzy
+#| msgid ""
+#| "Use this to search for text within the current note. A small find bar "
+#| "will open up at the bottom of the note. To open the find bar using the "
+#| "keyboard, use the standard keybinding, <keyseq><key>Ctrl</key><key>F</"
+#| "key></keyseq>. Enter text to find. After entering text, the matches will "
+#| "be highlighted. Click <gui>Next</gui> to highlight the next match and "
+#| "place the cursor there. Click <gui>Previous</gui> to move to the previous "
+#| "match. To close the find bar, click X (Close Button) on the far left or "
+#| "press the <key>Escape</key> key."
 msgid ""
-"Use this to search for text within the current note. A small find bar will "
-"open up at the bottom of the note. To open the find bar using the keyboard, "
-"use the standard keybinding, <keyseq><key>Ctrl</key><key>F</key></keyseq>. "
-"Enter text to find. After entering text, the matches will be highlighted. "
-"Click <gui>Next</gui> to highlight the next match and place the cursor "
-"there. Click <gui>Previous</gui> to move to the previous match. To close the "
-"find bar, click X (Close Button) on the far left or press the <key>Escape</"
-"key> key."
+"The toolbar at the top of note has search button. Use it to search for text "
+"within the current note. A small find bar will appear above the note. To "
+"open the find bar using the keyboard, press <keyseq><key>Ctrl</key><key>F</"
+"key></keyseq>. Enter the text to find and press <key>Enter</key>. Matches "
+"will be highlighted. Click <gui>Next</gui> to highlight the next match and "
+"place the cursor there. Click <gui>Previous</gui> to move to the previous "
+"match. To close the find bar, click the search button again or press the "
+"<key>Escape</key> key."
 msgstr ""
 "Mit dieser Option können Sie nach Text in der aktuellen Notiz suchen. Ein "
 "Eingabefeld wird am unteren Rand der Notiz geöffnet. Um das Eingabefeld mit "
@@ -1203,7 +1634,7 @@ msgstr ""
 "Vorkommen zu springen. Um das Suchfeld zu schließen, klicken Sie auf das X "
 "(den Schließen-Knopf), oder drücken Sie die <key>Esc</key>-Taste."
 
-#: C/gnote-editing-notes.page:67(section/title)
+#: C/gnote-editing-notes.page:70(section/title)
 msgid "Rich Note Content"
 msgstr "Erweiterte Formatierungen"
 
@@ -1211,7 +1642,7 @@ msgstr "Erweiterte Formatierungen"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-hotkeys.page:32(media)
+#: C/gnote-hotkeys.page:38(media)
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-hotkeys.png' "
@@ -1219,69 +1650,86 @@ msgid ""
 msgstr "ok"
 
 #: C/gnote-hotkeys.page:8(info/desc)
-msgid "Gnote Hotkey Settings"
+#| msgid "Gnote Hotkey Settings"
+msgid "Gnote hotkey settings"
 msgstr "Einstellungen für Tastenkürzel in Gnote"
 
-#: C/gnote-hotkeys.page:20(page/title)
+#: C/gnote-hotkeys.page:25(page/title)
 msgid "Hotkeys"
 msgstr "Tastenkombinationen"
 
-#: C/gnote-hotkeys.page:21(page/p)
+#: C/gnote-hotkeys.page:26(page/p)
 msgid ""
-"The hotkeys tab allows you to set global key combinations to perform "
-"different functions in <app>Gnote</app>. In order to set key combinations, "
-"you must have the Listen for Hotkeys checkbox enabled."
+"This tab is only available if <app>Gnote</app> was buit with X11 support."
 msgstr ""
-"Der Reiter »Tastenkombinationen« erlaubt Ihnen, globale Tastenkombinationen "
-"zum Durchführen verschiedener Funktionen in <app>Gnote</app> festzulegen. Um "
-"Tastenkombinationen festzulegen, muss das Ankreuzfeld »Hotkeys aktivieren« "
-"aktiviert sein."
 
-#: C/gnote-hotkeys.page:23(item/title)
+#: C/gnote-hotkeys.page:27(page/p)
+#, fuzzy
+#| msgid ""
+#| "The hotkeys tab allows you to set global key combinations to perform "
+#| "different functions in <app>Gnote</app>. In order to set key "
+#| "combinations, you must have the Listen for Hotkeys checkbox enabled."
+msgid ""
+"The <gui>hotkeys</gui> tab lets you set global key combinations to perform "
+"different functions in <app>Gnote</app>. In order to set key combinations, "
+"you must have the <gui>Listen for hotkeys</gui> checkbox enabled."
+msgstr ""
+"Der Reiter <gui>Tastenkombinationen</gui> ermöglicht es Ihnen, globale "
+"Tastenkombinationen zum Durchführen verschiedener Funktionen in <app>Gnote</"
+"app> festzulegen. Um Tastenkombinationen festzulegen, muss das Ankreuzfeld "
+"<gui>Hotkeys aktivieren???</gui> aktiviert sein."
+
+#: C/gnote-hotkeys.page:29(item/title)
 msgid "Show notes menu"
 msgstr "Notizmenü anzeigen"
 
-#: C/gnote-hotkeys.page:23(item/p)
-msgid "Enter the key combination to open the notes menu."
+#: C/gnote-hotkeys.page:29(item/p)
+#| msgid "Enter the key combination to open the notes menu."
+msgid "Enter a key combination for opening the notes menu."
 msgstr "Geben Sie die Tastenkombination zum Öffnen des Notizmenüs ein."
 
-#: C/gnote-hotkeys.page:24(item/title)
+#: C/gnote-hotkeys.page:30(item/title)
 msgid "Open \"Start Here\""
 msgstr "»Hier starten« öffnen"
 
-#: C/gnote-hotkeys.page:24(item/p)
+#: C/gnote-hotkeys.page:30(item/p)
+#| msgid ""
+#| "Enter the key combination to open the “Start Here” note, which is "
+#| "preinstalled with Gnote."
 msgid ""
-"Enter the key combination to open the “Start Here” note, which is "
+"Enter a key combination for opening the “Start Here” note, which is "
 "preinstalled with Gnote."
 msgstr ""
 "Geben Sie die Tastenkombination zum Öffnen der Notiz »Hier starten« ein, die "
 "in Gnote vorinstalliert ist."
 
-#: C/gnote-hotkeys.page:25(item/title)
+#: C/gnote-hotkeys.page:31(item/title)
 msgid "Create New Note"
 msgstr "Neue Notiz anlegen"
 
-#: C/gnote-hotkeys.page:25(item/p)
-msgid "Enter the key combination to create a new note."
+#: C/gnote-hotkeys.page:31(item/p)
+#| msgid "Enter the key combination to create a new note."
+msgid "Enter a key combination for creating a new note."
 msgstr "Geben Sie die Tastenkombination zum Anlegen einer neuen Notiz ein."
 
-#: C/gnote-hotkeys.page:26(item/title)
+#: C/gnote-hotkeys.page:32(item/title)
 msgid "Open \"Search All Notes\""
 msgstr "»Alle Notizen durchsuchen« öffnen"
 
-#: C/gnote-hotkeys.page:26(item/p)
-msgid "Enter the key combination to open the search."
+#: C/gnote-hotkeys.page:32(item/p)
+#| msgid "Enter the key combination to open the search."
+msgid "Enter a key combination for opening a search."
 msgstr "Geben Sie die Tastenkombination zum Öffnen der Suche ein."
 
-#: C/gnote-hotkeys.page:30(figure/title)
+#: C/gnote-hotkeys.page:36(figure/title)
 msgid "<gui>Hotkeys Preferences</gui> window"
 msgstr "Fenster der <gui>Einstellungen für Tastenkombinationen</gui>"
 
-#: C/gnote-hotkeys.page:31(figure/desc)
+#: C/gnote-hotkeys.page:37(figure/desc)
 msgid "<app>Gnote</app> hotkeys"
 msgstr "<app>Gnote</app>-Tastenkombinationen"
 
-#: C/gnote-hotkeys.page:33(media/p)
+#: C/gnote-hotkeys.page:39(media/p)
 msgid "Setting up <app>Gnote</app> keyboard shortcuts."
 msgstr "Einrichten von Tastenkombinationen für <app>Gnote</app>."
 
@@ -1289,132 +1737,169 @@ msgstr "Einrichten von Tastenkombinationen für <app>Gnote</app>."
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-introduction.page:34(media)
+#: C/gnote-introduction.page:39(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-new-note.png' "
+#| "md5='715712e6322a5bf8c9aa1a6de1bb619b'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-search-all-notes.png' "
-"md5='cf2e0e9f8b25839a5de1e0b867d6c74c'"
-msgstr ""
+"md5='5db36f49a54e37390d17992111490eb3'"
+msgstr "ok"
 
 #: C/gnote-introduction.page:9(info/desc)
-msgid "Introduction to the <app>Gnote</app>"
+#| msgid "Introduction to the <app>Gnote</app>"
+msgid "Introduction to <app>Gnote</app>"
 msgstr "Einführung in <app>Gnote</app>"
 
-#: C/gnote-introduction.page:21(page/title)
+#: C/gnote-introduction.page:26(page/title)
 msgid "Gnote Introduction"
 msgstr "Einführung in Gnote"
 
-#: C/gnote-introduction.page:22(page/p)
+#: C/gnote-introduction.page:27(page/p)
+#| msgid ""
+#| "<app>Gnote</app> is a desktop note-taking application for GNOME. It is "
+#| "simple and easy to use, and allows you to organize the ideas and "
+#| "information you deal with every day. Gnote has some very useful editing "
+#| "features to help you customize your notes, including"
 msgid ""
 "<app>Gnote</app> is a desktop note-taking application for GNOME. It is "
-"simple and easy to use, and allows you to organize the ideas and information "
-"you deal with every day. Gnote has some very useful editing features to help "
-"you customize your notes, including"
+"simple and easy to use, and lets you organize the ideas and information you "
+"deal with every day. Gnote has useful editing features to help you customize "
+"your notes, including"
 msgstr ""
 "<app>Gnote</app> ist eine Anwendung für GNOME zum Erfassen von Notizzetteln. "
-"Sie ist einfach und leicht zu bedienen und erlaubt es Ihnen, Ideen und "
+"Sie ist einfach und leicht zu bedienen und ermöglicht es Ihnen, Ideen und "
 "Informationen zu verwalten, mit denen Sie tagtäglich umgehen. Gnote hat "
 "einige sehr nützliche Bearbeitungsfunktionen, um Ihnen zu helfen, Ihre "
 "Notizzettel anzupassen. Diese umfassen:"
 
-#: C/gnote-introduction.page:24(item/p)
-msgid "Highlighting Search Text"
+#: C/gnote-introduction.page:29(item/p)
+#| msgid "Highlighting Search Text"
+msgid "highlighting search text"
 msgstr "Hervorhebung von Suchbegriffen"
 
-#: C/gnote-introduction.page:25(item/p)
-msgid "Inline Spell Checking"
-msgstr "Integrierte Rechtschreibkontrolle"
+#: C/gnote-introduction.page:30(item/p)
+#| msgid "Inline Spell Checking"
+msgid "inline spell checking"
+msgstr "Integrierte Rechtschreibprüfung"
 
-#: C/gnote-introduction.page:26(item/p)
-msgid "Auto-linking Web and Email Addresses"
+#: C/gnote-introduction.page:31(item/p)
+#| msgid "Auto-linking Web and Email Addresses"
+msgid "auto-linking web and email addresses"
 msgstr "Automatische Verknüpfung von Web- und E-Mail-Adressen"
 
-#: C/gnote-introduction.page:27(item/p)
-msgid "Undo/Redo Support"
-msgstr "Rückgängigmachen und Wiederholen von Aktionen"
+#: C/gnote-introduction.page:32(item/p)
+msgid "undo/redo"
+msgstr "Rückgängig/wiederholen"
 
-#: C/gnote-introduction.page:28(item/p)
-msgid "Font Styling and Sizing"
-msgstr "Schriftart und -größe"
+#: C/gnote-introduction.page:33(item/p)
+#| msgid "Font Styling and Sizing"
+msgid "font styling and sizing"
+msgstr "Schriftart und -größe ändern"
 
-#: C/gnote-introduction.page:32(figure/title)
-#: C/gnote-introduction.page:33(figure/desc)
-msgid "<app>Gnote</app> main window"
+#: C/gnote-introduction.page:34(item/p)
+#| msgid "Bulleted Lists"
+msgid "bulleted lists"
+msgstr "Aufzählungslisten"
+
+#: C/gnote-introduction.page:37(figure/title)
+#: C/gnote-introduction.page:38(figure/desc)
+#| msgid "<app>Gnote</app> main window"
+msgid "The <app>Gnote</app> main window"
 msgstr "<app>Gnote</app>-Hauptfenster"
 
-#: C/gnote-introduction.page:35(media/p)
-msgid "<app>Gnote</app> main window."
-msgstr "<app>Gnote</app>-Hauptfenster."
+#: C/gnote-introduction.page:40(media/p)
+#| msgid "<app>Gnote</app> main window."
+msgid "The <app>Gnote</app> main window."
+msgstr "Das <app>Gnote</app>-Hauptfenster."
 
 #: C/gnote-links.page:9(info/desc)
-msgid "Linking to Other Notes"
+#| msgid "Linking to Other Notes"
+msgid "Linking to other notes"
 msgstr "Verknüpfungen zu anderen Notizen"
 
-#: C/gnote-links.page:20(page/title)
+#: C/gnote-links.page:25(page/title)
 msgid "Links"
 msgstr "Verknüpfungen"
 
-#: C/gnote-links.page:21(page/p)
+#: C/gnote-links.page:26(page/p)
+#| msgid ""
+#| "The <gui>Link</gui> button allows you to create a link to a new note from "
+#| "within the current note. For example, if your note contains the phrase "
+#| "“FinalExam”, you can select this text with the mouse and click the "
+#| "<gui>Link</gui> button to create a new note with the title “FinalExam”. A "
+#| "link will also be created in the current note that can be clicked to open "
+#| "the new “FinalExam” note."
 msgid ""
-"The <gui>Link</gui> button allows you to create a link to a new note from "
-"within the current note. For example, if your note contains the phrase "
-"“FinalExam”, you can select this text with the mouse and click the "
-"<gui>Link</gui> button to create a new note with the title “FinalExam”. A "
-"link will also be created in the current note that can be clicked to open "
-"the new “FinalExam” note."
+"The <gui>Link</gui> button creates a link to a new note from within the "
+"current note. For example, if your note contains the phrase “FinalExam”, you "
+"can select this text and click the <gui>Link</gui> button to create a new "
+"note called “FinalExam”. The selected text will become a clickable link to "
+"this new note."
 msgstr ""
-"Der Knopf <gui>Verknüpfung</gui> erlaubt es Ihnen, aus der aktuellen Notiz "
-"heraus eine neue Notiz mit einer Verknüpfung anzulegen. Wenn etwa Ihre Notiz "
-"den Ausdruck »Abschlussprüfung« enthält, können Sie diesen Text mit der Maus "
-"auswählen und auf den Knopf <gui>Verknüpfung</gui> klicken, um eine neue "
-"Notiz mit dem Titel »Abschlussprüfung« anzulegen. In der aktuellen Notiz "
-"wird dann auch eine Verknüpfung angelegt, mit der über einen Klick darauf "
-"neue Notiz mit dem Titel »Abschlussprüfung« geöffnet werden kann."
+"Der Knopf <gui>Verknüpfung</gui> erstellt in der aktuellen Notiz heraus eine "
+"neue Verknüpfung mit einer anderen Notiz. Wenn z.B. Ihre Notiz den Ausdruck "
+"»Abschlussprüfung« enthält, können Sie diesen Text mit der Maus markieren "
+"und auf den Knopf <gui>Verknüpfung</gui> klicken, um eine neue Notiz mit dem "
+"Titel »Abschlussprüfung« anzulegen. Der gewählte Text wird zu einem "
+"anklickbaren Verweis auf die neue Notiz."
 
-#: C/gnote-links.page:23(note/p)
+#: C/gnote-links.page:28(note/p)
+#| msgid ""
+#| "Changing the title of a note will update links present in other notes. "
+#| "This prevents broken links from occurring when a note is renamed."
 msgid ""
-"Changing the title of a note will update links present in other notes. This "
+"Changing a note's title will update links present in other notes. This "
 "prevents broken links from occurring when a note is renamed."
 msgstr ""
 "Beim Ändern des Titels einer Notiz werden auch die entsprechenden "
 "Verknüpfungen in anderen Notizen aktualisiert. Dies verhindert, das "
 "ungültige Verknüpfungen entstehen, wenn eine Notiz umbenannt wird."
 
-#: C/gnote-links.page:25(section/title)
+#: C/gnote-links.page:30(section/title)
 msgid "Backlinks Add-in"
 msgstr "Backlinks-Add-In"
 
-#: C/gnote-links.page:26(section/p)
+#: C/gnote-links.page:31(section/p)
+#| msgid ""
+#| "The Tools button is represented by the <media type=\"image\" src="
+#| "\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"> </media> "
+#| "icon. When backlinks add-in is installed, the <gui>Tools</gui> menu will "
+#| "contain an item <gui>What links here?</gui>, which provides a sub-menu "
+#| "with all notes, containing link to current note."
 msgid ""
-"The Tools button is represented by the <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"> </media> icon. When "
-"backlinks add-in is installed, the <gui>Tools</gui> menu will contain an "
-"item <gui>What links here?</gui>, which provides a sub-menu with all notes, "
-"containing link to current note."
+"When the <app>Backlinks</app> add-in is installed, the <gui>Actions</gui> "
+"menu will contain an item <gui>What links here?</gui>, which provides a sub-"
+"menu listing all notes containing a link to the current note."
 msgstr ""
-"Der Werkzeugknopf wir durch das Symbol <media type=\"image\" src=\"figures/"
-"gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> dargestellt. "
-"Wenn das Backlinks-Add-In installiert ist, dann enthält das <gui>Werkzeuge</"
-"gui>-Menü den Eintrag <gui>Was verweist hierauf?</gui>, welcher ein "
-"Untermenü hat, in welchem alle Notizen enthalten sind, die einen Verweis auf "
-"die aktuelle Notiz enthalten."
+" den Eintrag <gui>Was verweist hierauf?</gui>, welcher ein Untermenü hat, in "
+"welchem alle Notizen enthalten sind, die einen Verweis auf die aktuelle "
+"Notiz enthalten."
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-notes-preferences.page:35(media)
+#: C/gnote-notes-preferences.page:41(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-preferences-add-ins.png' "
+#| "md5='656cb88e6f7df1661cd359bac9602f60'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-editing.png' "
-"md5='1c6104f801cd11de82779cd38a580f56'"
-msgstr ""
+"md5='1cbd7138158feeb47ae914b030e47a13'"
+msgstr "ok"
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-notes-preferences.page:52(media)
+#: C/gnote-notes-preferences.page:58(media)
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-advanced.png' "
@@ -1422,18 +1907,19 @@ msgid ""
 msgstr ""
 
 #: C/gnote-notes-preferences.page:9(info/desc)
-msgid "Gnote Settings"
+#| msgid "Gnote Settings"
+msgid "Gnote settings"
 msgstr "Gnote-Einstellungen"
 
-#: C/gnote-notes-preferences.page:21(page/title)
+#: C/gnote-notes-preferences.page:26(page/title)
 msgid "Gnote Preferences"
 msgstr "Gnote-Einstellungen"
 
-#: C/gnote-notes-preferences.page:23(section/title)
+#: C/gnote-notes-preferences.page:28(section/title)
 msgid "General preferences"
 msgstr "Allgemeine Einstellungen"
 
-#: C/gnote-notes-preferences.page:24(section/p)
+#: C/gnote-notes-preferences.page:29(section/p)
 msgid ""
 "To set preferences for <app>Gnote</app>, select <gui>Preferences</gui> from "
 "the application menu."
@@ -1441,57 +1927,84 @@ msgstr ""
 "Um die Einstellungen für <app>Gnote</app> zu ändern, wählen Sie in "
 "<gui>Einstellungen</gui> im Anwendungsmenü."
 
-#: C/gnote-notes-preferences.page:25(section/p)
+#: C/gnote-notes-preferences.page:30(section/p)
+#| msgid ""
+#| "There are three categories of preferences, <gui>General</gui>, "
+#| "<gui>Hotkeys</gui> and <gui>Add-Ins</gui>. Preferences for each tab will "
+#| "be described below."
 msgid ""
 "There are three categories of preferences, <gui>General</gui>, <gui>Hotkeys</"
-"gui> and <gui>Add-Ins</gui>. Preferences for each tab will be described "
-"below."
+"gui> and <gui>Add-Ins</gui>."
 msgstr ""
-"Es gibt drei Kategorien für Einstellungen, <gui>Allgemein</gui>, "
-"<gui>Tastenkombinationen</gui> und <gui>Add-Ins</gui>. Die "
-"Einstellungsmöglichkeiten in jedem der Reiter werden nachfolgend beschrieben."
+"Es gibt drei Kategorien in den Einstellungen: <gui>Allgemein</gui>, "
+"<gui>Tastenkombinationen</gui> und <gui>Add-Ins</gui>."
 
-#: C/gnote-notes-preferences.page:26(section/p)
+#: C/gnote-notes-preferences.page:31(section/p)
+#| msgid ""
+#| "The general tab will allow you to set preferences related to application "
+#| "behaviour and editing notes. There are few checkboxes on this tab, which "
+#| "can either be turned on or off."
 msgid ""
-"The general tab will allow you to set preferences related to application "
-"behaviour and editing notes. There are few checkboxes on this tab, which can "
-"either be turned on or off."
+"The <gui>General</gui> tab lets you set preferences related to application "
+"behaviour and editing notes. There are a few checkboxes on this tab:"
 msgstr ""
-"Der Allgemein-Reiter erlaubt es Ihnen, die Einstellungen in Bezug auf das "
-"Bearbeiten von Notizen festzulegen. Es gibt auf diesem Reiter mehrere "
-"Ankreuzfelder, die entweder aktiviert oder deaktiviert werden können."
+"Der Reiter <gui>Allgemein</gui> ermöglicht es Ihnen, die Einstellungen in "
+"Bezug auf das Verhalten und das Bearbeiten von Notizen festzulegen. Es gibt "
+"auf diesem Reiter mehrere Ankreuzfelder:"
 
-#: C/gnote-notes-preferences.page:28(item/title)
-msgid "Use Status Icon"
+#: C/gnote-notes-preferences.page:33(item/title)
+#| msgid "Use Status Icon"
+msgid "Use status icon"
 msgstr "Statussymbol aktivieren"
 
-#: C/gnote-notes-preferences.page:28(item/p)
+#: C/gnote-notes-preferences.page:33(item/p)
+#| msgid ""
+#| "Enable this checkbox to show <app>Gnote</app> status icon when running. "
+#| "In this mode <app>Gnote</app> will remain present even after all it's "
+#| "windows are closed. Recently used notes and other windows can be opened "
+#| "from menu, that appears after clicking or right-clicking status icon."
 msgid ""
-"Enable this checkbox to show <app>Gnote</app> status icon when running. In "
-"this mode <app>Gnote</app> will remain present even after all it's windows "
-"are closed. Recently used notes and other windows can be opened from menu, "
-"that appears after clicking or right-clicking status icon."
+"Enable this checkbox to show the <app>Gnote</app> status icon when running. "
+"In this mode <app>Gnote</app> will remain present even after all its windows "
+"are closed. When you click the status icon, a menu appears that gives you "
+"quick access to recently used notes and other windows."
 msgstr ""
-"Aktivieren Sie dieses Ankreuzfeld, um ein Statussymbol anzuzeigen, während "
-"<app>Gnote</app> läuft. In diesem Modus bleibt die Anwendung <app>Gnote</"
-"app> weiterhin geöffnet, wenn alle Fenster geschlossen werden. Kürzlich "
-"verwendete Notizen und andere Fenster können geöffnet werden, wenn Sie mit "
-"der linken oder rechten Maustaste auf das Statussymbol klicken."
+"Aktivieren Sie dieses Ankreuzfeld, um während des Betriebs das Statussymbol "
+"von <app>Gnote</app> anzuzeigen. In diesem Modus bleibt die Anwendung "
+"<app>Gnote</app> weiterhin geöffnet, selbst wenn alle Fenster geschlossen "
+"werden. Kürzlich verwendete Notizen und andere Fenster können geöffnet "
+"werden, wenn Sie mit der linken oder rechten Maustaste auf das Statussymbol "
+"klicken."
 
-#: C/gnote-notes-preferences.page:29(item/title)
-msgid "Spellcheck While Typing"
+#: C/gnote-notes-preferences.page:34(item/title)
+#| msgid "Deleting notes from main window"
+msgid "Always open notes in new window"
+msgstr "Notizen immer in neuem Fenster öffnen"
+
+#: C/gnote-notes-preferences.page:34(item/p)
+msgid ""
+"When checked, instead of replacing current window content, note is opened in "
+"the new window."
+msgstr ""
+
+#: C/gnote-notes-preferences.page:35(item/title)
+#| msgid "Spellcheck While Typing"
+msgid "Spellcheck while typing"
 msgstr "Rechtschreibprüfung während der Eingabe"
 
-#: C/gnote-notes-preferences.page:29(item/p)
+#: C/gnote-notes-preferences.page:35(item/p)
+#| msgid ""
+#| "Enable this checkbox to underline misspellings in red, and provide "
+#| "suggestions in the right click context menu."
 msgid ""
-"Enable this checkbox to underline misspellings in red, and provide "
+"Enable this checkbox to underline misspellings in red and provide "
 "suggestions in the right click context menu."
 msgstr ""
 "Durch Aktivieren dieses Ankreuzfeldes werden Rechtschreibfehler rot "
-"unterstrichen und im durch einen Klick mit der rechten Maustaste "
-"erreichbaren Kontextmenü Verbesserungsvorschläge angeboten."
+"unterstrichen und ein Klick mit der rechten Maustaste bietet "
+"Verbesserungsvorschläge an."
 
-#: C/gnote-notes-preferences.page:29(item/p)
+#: C/gnote-notes-preferences.page:35(item/p)
 msgid ""
 "The spellcheck option is only available if you have the GtkSpell package for "
 "your distribution installed."
@@ -1499,199 +2012,252 @@ msgstr ""
 "Die Rechtschreibprüfungsoption ist nur verfügbar, wenn das Paket GtkSpell "
 "für Ihre Distribution installiert ist."
 
-#: C/gnote-notes-preferences.page:30(item/title)
+#: C/gnote-notes-preferences.page:36(item/title)
 msgid "Highlight WikiWords"
 msgstr "Wikiwords hervorheben"
 
-#: C/gnote-notes-preferences.page:30(item/p)
+#: C/gnote-notes-preferences.page:36(item/p)
+#| msgid ""
+#| "Enable this checkbox to create links for phrases ThatLookLikeThis. "
+#| "Clicking on the link will create a new note with the title corresponding "
+#| "to the link text."
 msgid ""
 "Enable this checkbox to create links for phrases ThatLookLikeThis. Clicking "
-"on the link will create a new note with the title corresponding to the link "
-"text."
+"on a link will create a new note with a title corresponding to the link text."
 msgstr ""
 "Aktivieren Sie dieses Ankreuzfeld, um Verknüpfungen für Ausdrücke "
-"DieAussehenWieDieser zu erzeugen. Ein Mausklick auf eine solche Verknüpfung "
-"erstellt eine neue Notiz mit dem entsprechenden Verknüpfungstext als Titel."
+"DieAussehenWieDieser zu erstellen. Ein Mausklick auf eine solche Verknüpfung "
+"legt eine neue Notiz mit dem entsprechenden Verknüpfungstext als Titel an."
 
-#: C/gnote-notes-preferences.page:31(item/title)
+#: C/gnote-notes-preferences.page:37(item/title)
 msgid "Enable auto-bulleted lists"
 msgstr "Automatische Aufzählungslisten aktivieren"
 
-#: C/gnote-notes-preferences.page:31(item/p)
+#: C/gnote-notes-preferences.page:37(item/p)
+#| msgid ""
+#| "Enable this checkbox, if you want create bulleted list by starting lines "
+#| "with dash character <key>-</key>. Read more about <link xref=\"bulleted-"
+#| "lists\"/>."
 msgid ""
-"Enable this checkbox, if you want create bulleted list by starting lines "
-"with dash character <key>-</key>. Read more about <link xref=\"bulleted-lists"
-"\"/>."
+"When this preference is enabled, you can create bulleted lists by starting "
+"lines with a dash character <key>-</key>. Read more about <link xref="
+"\"bulleted-lists\"/>."
 msgstr ""
 "Aktivieren Sie dieses Ankreuzfeld, wenn Sie eine Aufzählungsliste immer dann "
 "erstellen wollen, wenn Sie eine Zeile mit einem einfachen Bindestrich <key>-"
 "</key> beginnen. Mehr Informationen hierzu finden Sie in <link xref="
 "\"bulleted-lists\"/>."
 
-#: C/gnote-notes-preferences.page:32(item/title)
-msgid "Use Custom Font"
-msgstr "Eigene Schriftart verwenden"
+#: C/gnote-notes-preferences.page:38(item/title)
+#| msgid "Use Custom Font"
+msgid "Use custom font"
+msgstr "Angepasste Schrift verwenden"
 
-#: C/gnote-notes-preferences.page:32(item/p)
-msgid ""
-"Enable this checkbox to set a custom font to be used in your notes. If this "
-"option is disabled, the default system font will be used."
+#: C/gnote-notes-preferences.page:38(item/p)
+#| msgid ""
+#| "Enable this checkbox to set a custom font to be used in your notes. If "
+#| "this option is disabled, the default system font will be used."
+msgid "Enable this checkbox to set a custom font to be used in your notes."
 msgstr ""
-"Aktivieren Sie dieses Ankreuzfeld, um festzulegen, dass eine eigene "
-"Schriftart in Ihren Notizen verwendet wird. Wenn diese Option deaktiviert "
-"ist, wird die Systemschriftart verwendet."
+"Aktivieren Sie dieses Ankreuzfeld, um eine eigene Schriftart in Ihren "
+"Notizen festzulegen."
 
-#: C/gnote-notes-preferences.page:34(figure/title)
+#: C/gnote-notes-preferences.page:40(figure/title)
 msgid "<gui>Preferences</gui> window"
 msgstr "<gui>Einstellungsfenster</gui>"
 
-#: C/gnote-notes-preferences.page:35(figure/desc)
+#: C/gnote-notes-preferences.page:41(figure/desc)
 msgid "Editing Gnote Preferences"
 msgstr "Einstellungen von Gnote bearbeiten"
 
-#: C/gnote-notes-preferences.page:40(section/title)
+#: C/gnote-notes-preferences.page:46(section/title)
 msgid "Advanced Settings"
 msgstr "Erweiterte Einstellungen"
 
-#: C/gnote-notes-preferences.page:43(section/title)
+#: C/gnote-notes-preferences.page:49(section/title)
 msgid "Synchronization Settings"
 msgstr "Einstellungen abgleichen"
 
-#: C/gnote-notes-preferences.page:45(section/title)
+#: C/gnote-notes-preferences.page:51(section/title)
 msgid "Synchronization services"
 msgstr "Abgleich-Dienste"
 
-#: C/gnote-notes-preferences.page:49(section/p)
+#: C/gnote-notes-preferences.page:55(section/p)
+#| msgid ""
+#| "Clicking <gui>Advanced</gui> button in <gui>Synchronization</gui> tab of "
+#| "<gui>Preferences</gui> dialog brings another dialog for setting up "
+#| "conflict resolution."
 msgid ""
-"Clicking <gui>Advanced</gui> button in <gui>Synchronization</gui> tab of "
-"<gui>Preferences</gui> dialog brings another dialog for setting up conflict "
-"resolution."
+"The <gui>Advanced</gui> button in the <gui>Synchronization</gui> tab of the "
+"<gui>Preferences</gui> dialog brings up another dialog for setting up "
+"conflict resolution."
 msgstr ""
 "Klicken Sie auf den Knopf <gui>Erweitert??</gui> im Reiter <gui>Abgleich??</"
 "gui> des <gui>Einstellungen</gui>-Dialogs, um einen weiteren Dialog zum "
 "Festlegen einer Konfliktlösung zu öffnen."
 
-#: C/gnote-notes-preferences.page:51(figure/title)
+#: C/gnote-notes-preferences.page:57(figure/title)
 msgid "Advanced Synchronization Settings"
 msgstr "Erweiterte Abgleich-Einstellungen"
 
-#: C/gnote-notes-preferences.page:54(section/p)
+#: C/gnote-notes-preferences.page:60(section/p)
+#| msgid ""
+#| "This dialog lets you choose what to do, when a conflict occurrs. A "
+#| "conflict happends, when the note is modified before synchronizing and it "
+#| "has been also modified on other device (and synchronized to "
+#| "synchronization storage). You can select one of these options:"
 msgid ""
-"This dialog lets you choose what to do, when a conflict occurrs. A conflict "
-"happends, when the note is modified before synchronizing and it has been "
-"also modified on other device (and synchronized to synchronization storage). "
-"You can select one of these options:"
+"This dialog lets you choose what to do when a conflict occurrs. A conflict "
+"happens when a note has been modified both on the local machine and on "
+"another device. You can select one of these options:"
 msgstr ""
 "Der Dialog ermöglicht es zu wählen, wie mit Konflikten umgegangen werden "
 "soll. Ein Konflikt geschieht wenn die Notiz vor einem Abgleich verändert "
-"wurde und sie ebenfalls auf einem anderen Gerät geändert wurde (und mit dem "
-"Abgleichsspeicher abgeglichen ist). Sie haben die Möglichkeit eine der "
-"folgenden Optionen zu wählen:"
+"wurde und sie ebenfalls auf einem anderen Gerät geändert wurde. Sie haben "
+"die Möglichkeit eine der folgenden Optionen zu wählen:"
 
-#: C/gnote-notes-preferences.page:56(item/title)
+#: C/gnote-notes-preferences.page:62(item/p)
+#| msgid ""
+#| "Rename existing note by appending \"(old)\" to it's title and download "
+#| "the one from storage"
 msgid ""
-"Rename existing note by appending \"(old)\" to it's title and download the "
-"one from storage"
-msgstr "Bestehende Notizen umbenennen, indem »alt« an den Titel"
+"Rename the existing note by appending \"(old)\" to its title and downloading "
+"the one from storage"
+msgstr ""
+"Bestehende Notizen umbenennen, indem »alt« an den Titel angehängt wird und "
+"die neue aus dem Speicher herunter geladen wird"
 
-#: C/gnote-notes-preferences.page:57(item/title)
-msgid "Replace existing note by the one from storage, losing all modifications"
+#: C/gnote-notes-preferences.page:63(item/p)
+#| msgid ""
+#| "Replace existing note by the one from storage, losing all modifications"
+msgid ""
+"Replace the existing note by the one from storage, losing all modifications"
 msgstr ""
 "Bestehende Notiz durch diejenige aus dem Speicher ersetzen, wobei alle "
-"Änderungen verloren gehen."
+"Änderungen verloren gehen"
 
-#: C/gnote-notes-preferences.page:58(item/title)
-msgid "Get the choice for each conflicting note individually"
+#: C/gnote-notes-preferences.page:64(item/p)
+#| msgid "Get the choice for each conflicting note individually"
+msgid "Ask about each conflicting note individually"
 msgstr "Bei jedem Konflikt einer Notiz für den einzelnen Fall entscheiden"
 
 #: C/gnote-searching-notes.page:9(info/desc)
-msgid "Searching Notes"
+#| msgid "Searching Notes"
+msgid "Searching notes"
 msgstr "Notizen durchsuchen"
 
-#: C/gnote-searching-notes.page:20(page/title)
+#: C/gnote-searching-notes.page:25(page/title)
 msgid "Exploring Notes"
 msgstr "Überblick über Ihre Notizen"
 
-#: C/gnote-searching-notes.page:22(page/p)
+#: C/gnote-searching-notes.page:27(page/p)
+#| msgid ""
+#| "The main window of <app>Gnote</app> shows an overview of all your notes. "
+#| "By default in search mode window will display the notes in the order that "
+#| "they were last modified. Click the <gui>Note</gui> or <gui>Last Changed</"
+#| "gui> column headings to change the sort order. Click the column heading a "
+#| "second time to toggle between ascending and descending order."
 msgid ""
-"The main window of <app>Gnote</app> shows an overview of all your notes. By "
-"default in search mode window will display the notes in the order that they "
-"were last modified. Click the <gui>Note</gui> or <gui>Last Changed</gui> "
-"column headings to change the sort order. Click the column heading a second "
-"time to toggle between ascending and descending order."
+"The main <app>Gnote</app> window shows an overview of all your notes. By "
+"default the window will display notes in the order in which they were last "
+"modified. Click the <gui>Note</gui> or <gui>Last Changed</gui> column "
+"headings to change the sort order. Click a column heading a second time to "
+"toggle between ascending and descending order."
 msgstr ""
 "Das Hauptfenster von <app>Gnote</app> zeigt eine Übersicht aller Ihrer "
-"Notizen an. Standardmäßig zeigt im Suchmodus der Dialog <gui>Alle Notizen "
-"durchsuchen</gui> die Notizen in der Reihenfolge an, in der sie zuletzt "
-"geändert worden sind. Klicken Sie auf die Spaltenüberschriften <gui>Notiz</"
-"gui> oder <gui>Zuletzt geändert</gui>, um die Sortierreihenfolge zu ändern. "
-"Durch ein zweites Klicken auf die Spaltenüberschrift kann zwischen einer "
-"aufsteigenden oder absteigenden Reihenfolge gewechselt werden."
+"Notizen an. Standardmäßig zeigt der Dialog die Notizen in der Reihenfolge "
+"an, in der sie zuletzt geändert worden sind. Klicken Sie auf die "
+"Spaltenüberschriften <gui>Notiz</gui> oder <gui>Zuletzt geändert</gui>, um "
+"die Sortierreihenfolge zu ändern. Durch ein zweites Klicken auf die "
+"Spaltenüberschrift kann zwischen einer aufsteigenden oder absteigenden "
+"Sortierreihenfolge gewechselt werden."
 
-#: C/gnote-searching-notes.page:23(page/p)
+#: C/gnote-searching-notes.page:28(page/p)
+#| msgid ""
+#| "You can find specific notes by entering text into the search field at the "
+#| "top of the window. The list of notes will be automatically updated to "
+#| "list only the notes which have matching text."
 msgid ""
-"You can find specific notes by entering text into the search field at the "
-"top of the window. The list of notes will be automatically updated to list "
-"only the notes which have matching text."
+"You can find specific notes by clicking search button and entering text in "
+"the search field that apears. The note list will automatically update to "
+"include only the notes which have matching text. If notes list has focus, "
+"you can simply type search text there, search will be automatically "
+"activated."
 msgstr ""
-"Sie können bestimmte Notizen finden, indem Sie im Suchfeld oben im Fenster "
-"einen Text eingeben. Die Liste der Notizen wird automatisch aktualisiert und "
-"zeigt nur die Notizen an, die dem Text entsprechen."
+"Sie können bestimmte Notizen finden, indem Sie im Suchfeld einen Text "
+"eingeben. Die Liste der Notizen wird automatisch aktualisiert und zeigt nur "
+"die Notizen an, die dem Text entsprechen. Wenn die Notizliste fokussiert "
+"ist, können Sie einfach dort den Suchtext eintippen. Die Suche startet dann "
+"automatisch."
 
-#: C/gnote-searching-notes.page:24(page/p)
-msgid "To open a note, do one of the following:"
+#: C/gnote-searching-notes.page:29(page/p)
+#| msgid "To open a note, do one of the following:"
+msgid "To open a note, do any of the following:"
 msgstr "Um eine Notiz zu öffnen, führen Sie eine der folgenden Aktionen aus:"
 
-#: C/gnote-searching-notes.page:26(item/p)
+#: C/gnote-searching-notes.page:31(item/p)
 msgid "Double-click on a note."
 msgstr "Führen Sie einen Doppelklick auf der Notiz durch."
 
-#: C/gnote-searching-notes.page:27(item/p)
+#: C/gnote-searching-notes.page:32(item/p)
+#| msgid ""
+#| "Right-click in the list of notes and select <gui>Open</gui> from the "
+#| "context menu that appears. This will open all selected notes each on it's "
+#| "own window."
 msgid ""
 "Right-click in the list of notes and select <gui>Open</gui> from the context "
-"menu that appears. This will open all selected notes each on it's own window."
+"menu. This will open all selected notes, each in its own window."
 msgstr ""
 "Führen Sie einen Klick mit der rechten Maustaste in die Liste der Notizen "
 "aus und wählen Sie den Menüpunkt <gui>Öffnen</gui> aus dem Kontextmenü aus, "
 "das erscheint. Daraufhin werden alle gewählten Notizen jeweils in einem "
 "eigenen Fenster geöffnet."
 
-#: C/gnote-searching-notes.page:28(item/p)
+#: C/gnote-searching-notes.page:33(item/p)
+#| msgid ""
+#| "Right-click in the list of notes and select <gui>Open in New Window</gui> "
+#| "from the context menu. This will open all selected notes each on a new "
+#| "window leaving original window as is."
 msgid ""
 "Right-click in the list of notes and select <gui>Open in New Window</gui> "
-"from the context menu. This will open all selected notes each on a new "
-"window leaving original window as is."
+"from the context menu. This will open each selected note in a new window, "
+"leaving the original window as is."
 msgstr ""
 "Führen Sie einen Klick mit der rechten Maustaste in die Liste der Notizen "
 "aus und wählen Sie den Menüpunkt <gui>In neuem Fenster öffnen</gui> aus dem "
-"Kontextmenü aus, das erscheint. Daraufhin werden alle gewählten Notizen "
-"jeweils in einem eigenen neuen Fenster geöffnet. Das ursprüngliche Fenster "
-"bleibt unberührt."
+"Kontextmenü. Daraufhin werden alle gewählten Notizen jeweils in einem "
+"eigenen neuen Fenster geöffnet. Das ursprüngliche Fenster bleibt unberührt."
 
-#: C/gnote-searching-notes.page:29(item/p)
+#: C/gnote-searching-notes.page:34(item/p)
+#| msgid ""
+#| "Select one or more notes in a list and then press the key combination "
+#| "<keyseq><key>Ctrl</key><key>O</key></keyseq>."
 msgid ""
-"Select one or more notes in a list and then press the key combination "
-"<keyseq><key>Ctrl</key><key>O</key></keyseq>."
+"Select one or more notes in a list and press <keyseq><key>Ctrl</key><key>O</"
+"key></keyseq>."
 msgstr ""
-"Markieren Sie eine oder mehrere Notizen in einer Liste und drücken Sie "
-"anschließend die Tastenkombination <keyseq><key>Strg</key><key>O</key></"
-"keyseq>."
+"Wählen Sie eine oder mehrere Notizen in einer Liste und drücken Sie "
+"anschließend <keyseq><key>Strg</key><key>O</key></keyseq>."
 
-#: C/gnote-searching-notes.page:30(item/p)
+#: C/gnote-searching-notes.page:35(item/p)
+#| msgid ""
+#| "If <gui>Status Icon</gui> is enabled, click on it and select note from "
+#| "menu. This menu is limited to certain amount of notes and is filled in by "
+#| "pinned and recently updated notes."
 msgid ""
-"If <gui>Status Icon</gui> is enabled, click on it and select note from menu. "
-"This menu is limited to certain amount of notes and is filled in by pinned "
-"and recently updated notes."
+"If the status icon is enabled, click it and select a note from the menu that "
+"appears. This menu is limited to a certain number of notes and includes "
+"pinned and recently updated notes."
 msgstr ""
-"Wenn das <gui>Statussymbol</gui> aktiviert ist, klicken Sie darauf und "
-"wählen Sie die Notiz im Menü. Dieses Menü hält nur eine begrenzte Anzahl "
+"Wenn das Statussymbol aktiviert ist, klicken Sie darauf und wählen Sie eine "
+"Notiz im erscheinenden Menü. Dieses Menü enthält nur eine begrenzte Anzahl "
 "Notizen und enthält angeheftete und zuletzt bearbeitete Notizen."
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-synchronization.page:32(media)
+#: C/gnote-synchronization.page:37(media)
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-sync-progress.png' "
@@ -1699,44 +2265,61 @@ msgid ""
 msgstr ""
 
 #: C/gnote-synchronization.page:8(info/desc)
-msgid "Synchronize Notes"
+#| msgid "Synchronize Notes"
+msgid "Synchronize notes"
 msgstr "Notizen abgleichen"
 
-#: C/gnote-synchronization.page:16(page/title)
+#: C/gnote-synchronization.page:21(page/title)
 msgid "Synchronization"
 msgstr "Abgleich"
 
-#: C/gnote-synchronization.page:18(section/title)
+#: C/gnote-synchronization.page:23(section/title)
 msgid "About synchronization"
 msgstr "Zum Abgleich"
 
-#: C/gnote-synchronization.page:19(section/p)
+#: C/gnote-synchronization.page:24(section/p)
+#| msgid ""
+#| "<app>Gnote</app> allows you to synchronize notes accross multiple "
+#| "machines, so that you could use it on multiple devices and work with the "
+#| "same notes on all of them."
 msgid ""
-"<app>Gnote</app> allows you to synchronize notes accross multiple machines, "
-"so that you could use it on multiple devices and work with the same notes on "
-"all of them."
+"<app>Gnote</app> lets you synchronize notes across multiple machines, so "
+"that you can use it on multiple devices and work with the same notes on all "
+"of them."
 msgstr ""
 "<app>Gnote</app> ermöglicht es, Notizen auf mehreren Rechnern abzugleichen, "
 "damit Sie auf mehreren Geräten mit den selben Notizen arbeiten können."
 
-#: C/gnote-synchronization.page:20(section/p)
+#: C/gnote-synchronization.page:25(section/p)
+#| msgid ""
+#| "In order to use synchronization, you have to configure it first in "
+#| "<app>Gnote</app> configuration dialog."
 msgid ""
-"In order to use synchronization, you have to configure it first in "
+"In order to use synchronization, you have to configure it first in the "
 "<app>Gnote</app> configuration dialog."
 msgstr ""
 "Um das Abgleichen zu verwenden, müssen Sie es zuerst im Einstellungsdialog "
 "von <app>Gnote</app> einrichten."
 
-#: C/gnote-synchronization.page:21(section/p)
+#: C/gnote-synchronization.page:26(section/p)
+#| msgid ""
+#| "Notes are synchronized to one location, common to all <app>Gnote</app> "
+#| "installations. This location stores the history of your notes. When "
+#| "synchronizing, each <app>Gnote</app> instance uploads new and updated "
+#| "notes to this location, downloads new and updated notes on other "
+#| "installations. The synchronization location also contains information on "
+#| "deleted notes: when synchronizing, <app>Gnote</app> publishes all deleted "
+#| "notes and deletes the ones, that are published as such. This way multiple "
+#| "<app>Gnote</app> installations can keep the same set of notes."
 msgid ""
 "Notes are synchronized to one location, common to all <app>Gnote</app> "
 "installations. This location stores the history of your notes. When "
 "synchronizing, each <app>Gnote</app> instance uploads new and updated notes "
-"to this location, downloads new and updated notes on other installations. "
-"The synchronization location also contains information on deleted notes: "
-"when synchronizing, <app>Gnote</app> publishes all deleted notes and deletes "
-"the ones, that are published as such. This way multiple <app>Gnote</app> "
-"installations can keep the same set of notes."
+"to this location, and downloads new and updated notes from other "
+"installations. The synchronization location also contains information on "
+"deleted notes: when synchronizing, <app>Gnote</app> publishes all deleted "
+"notes and deletes the ones that have been published as such. This way "
+"multiple <app>Gnote</app> installations can keep the same set of notes."
 msgstr ""
 "Notizen werden mit einem Ort abgeglichen, der für alle Installationen von "
 "<app>Gnote</app> gleich ist. Dieser Ort speichert die Chronik Ihrer Notizen. "
@@ -1748,26 +2331,34 @@ msgstr ""
 "veröffentlicht sind. Auf diese Weise können mehrere <app>Gnote</app>-"
 "Installationen die selben Notizen halten."
 
-#: C/gnote-synchronization.page:24(section/title)
+#: C/gnote-synchronization.page:29(section/title)
 msgid "Configure synchronization"
 msgstr "Den Abgleich einrichten"
 
-#: C/gnote-synchronization.page:27(section/title)
+#: C/gnote-synchronization.page:32(section/title)
 msgid "Synchronize"
 msgstr "Abgleichen"
 
-#: C/gnote-synchronization.page:28(section/p)
+#: C/gnote-synchronization.page:33(section/p)
+#| msgid ""
+#| "To synchronize, select <gui>Synchronize Notes</gui> from application "
+#| "menu. This item is only available, if synchronization is configured."
 msgid ""
-"To synchronize, select <gui>Synchronize Notes</gui> from application menu. "
-"This item is only available, if synchronization is configured."
+"To synchronize, select <gui>Synchronize Notes</gui> from the application "
+"menu. This item is only available if synchronization has been configured."
 msgstr ""
 "Zum Abgleichen wählen Sie <gui>Notizen abgleichen</gui> im Anwendungsmenü. "
 "Dieser Eintrag ist nur verfügbar, wenn ein Abgleichen eingerichtet ist."
 
-#: C/gnote-synchronization.page:29(section/p)
+#: C/gnote-synchronization.page:34(section/p)
+#| msgid ""
+#| "After selected the <gui>Synchronize Notes</gui> menu item, a progress "
+#| "dialog will be displayed, which will let you know, when synchronization "
+#| "is complete. Also, all notes will be disabled for editing while "
+#| "synchronization is in progress."
 msgid ""
-"After selected the <gui>Synchronize Notes</gui> menu item, a progress dialog "
-"will be displayed, which will let you know, when synchronization is "
+"After you select the <gui>Synchronize Notes</gui> menu item, a progress "
+"dialog will be displayed, which will let you know when synchronization is "
 "complete. Also, all notes will be disabled for editing while synchronization "
 "is in progress."
 msgstr ""
@@ -1775,7 +2366,7 @@ msgstr ""
 "Fortschrittsdialog angezeigt, der Auskunft über den Vorgang gibt. Zusätzlich "
 "werden alle Notizen während des Abgleichs vor Bearbeitung geschützt."
 
-#: C/gnote-synchronization.page:31(figure/title)
+#: C/gnote-synchronization.page:36(figure/title)
 msgid "Synchronization progress"
 msgstr "Fortschritt des Abgleichs"
 
@@ -1783,26 +2374,32 @@ msgstr "Fortschritt des Abgleichs"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-template-notes.page:36(media)
+#: C/gnote-template-notes.page:41(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-template-note.png' "
+#| "md5='8e1767ef0d459c0fbdae83c0532e7097'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
-"md5='8e1767ef0d459c0fbdae83c0532e7097'"
+"md5='a329e512d126c076e8912886152354f6'"
 msgstr "ok"
 
 #: C/gnote-template-notes.page:9(info/desc)
-msgid "Using Template Notes"
+#| msgid "Using Template Notes"
+msgid "Using template notes"
 msgstr "Notizvorlagen verwenden"
 
-#: C/gnote-template-notes.page:17(page/title)
+#: C/gnote-template-notes.page:22(page/title)
 msgid "Template Notes"
 msgstr "Notizvorlagen"
 
-#: C/gnote-template-notes.page:19(section/title)
+#: C/gnote-template-notes.page:24(section/title)
 msgid "Template Note Usage"
 msgstr "Notizvorlagen verwenden"
 
-#: C/gnote-template-notes.page:20(section/p)
+#: C/gnote-template-notes.page:25(section/p)
 msgid ""
 "Template notes are used to define the content for newly created notes. "
 "Templates are just like regular notes with some additional features."
@@ -1810,139 +2407,176 @@ msgstr ""
 "Notzivorlagen definieren den Inhalt neu zu erstellender Notizen. Vorlagen "
 "sind gewöhnliche Notizen mit einigen zusätzlichen Funktionsmerkmalen."
 
-#: C/gnote-template-notes.page:21(section/p)
+#: C/gnote-template-notes.page:26(section/p)
+#| msgid ""
+#| "You can define a single template note for <app>Gnote</app> and one for "
+#| "each notebook you have. These templates define the content of every new "
+#| "note you create:"
 msgid ""
-"You can define a single template note for <app>Gnote</app> and one for each "
-"notebook you have. These templates define the content of every new note you "
-"create:"
+"You can define a single main template note and one for each notebook you "
+"have. These templates define the content of every new note you create:"
 msgstr ""
-"Sie können eine allgemeine Notizvorlage für <app>Gnote</app> definieren "
-"sowie eine weitere für jedes Ihrer Notizbücher. Diese Vorlagen geben den "
-"Inhalt jeder neu zu erstellenden Notiz vor:"
+"Sie können eine allgemeine Notizvorlage definieren sowie eine weitere für "
+"jedes Ihrer Notizbücher. Diese Vorlagen geben den Inhalt jeder neu zu "
+"erstellenden Notiz vor:"
 
-#: C/gnote-template-notes.page:23(item/p)
+#: C/gnote-template-notes.page:28(item/p)
+#| msgid ""
+#| "Every new note you create in <app>Gnote</app>, but not in any of "
+#| "notebooks, will have have a content of main application template. If "
+#| "template is not created, the default content is used."
 msgid ""
-"Every new note you create in <app>Gnote</app>, but not in any of notebooks, "
-"will have have a content of main application template. If template is not "
-"created, the default content is used."
+"Every new note you create in <app>Gnote</app>, but not in any notebook, will "
+"have the content of the main template. If you have not created a main "
+"template, the default content will be used."
 msgstr ""
 "Jede neue Notiz, die Sie in <app>Gnote</app> erstellen, aber nicht in einem "
 "Ihrer Notizbücher, erhält den Inhalt der Haupt-Notizvorlage. Falls keine "
 "Vorlage erstellt wurde, wird ein Standardinhalt verwendet."
 
-#: C/gnote-template-notes.page:24(item/p)
+#: C/gnote-template-notes.page:29(item/p)
+#| msgid ""
+#| "Every new note created in a notebook will have a content of template "
+#| "note, if it is present for that notebook. If template note for a notebook "
+#| "is not defined, the default note content will be used."
 msgid ""
-"Every new note created in a notebook will have a content of template note, "
-"if it is present for that notebook. If template note for a notebook is not "
+"Every new note created in a notebook will have the content of that "
+"notebook's template note, if any. If no template note for a notebook is "
 "defined, the default note content will be used."
 msgstr ""
 "Jede in einem Notizbuch erstellte neue Notiz erhält den Inhalt der "
 "Notizvorlage, falls es eine solche für das jeweilige Notizbuch gibt. Falls "
 "keine Vorlage erstellt wurde, wird ein Standardinhalt verwendet."
 
-#: C/gnote-template-notes.page:26(section/p)
-msgid "To create or modify template note:"
-msgstr "Sso erstellen oder bearbeiten Sie eine Notizvorlage:"
+#: C/gnote-template-notes.page:31(section/p)
+#| msgid "To create or modify template note:"
+msgid "To create or modify a template note:"
+msgstr "So erstellen oder bearbeiten Sie eine Notizvorlage:"
 
-#: C/gnote-template-notes.page:28(item/title)
+#: C/gnote-template-notes.page:33(item/title)
 msgid "Main template note"
 msgstr "Haupt-Notizvorlage"
 
-#: C/gnote-template-notes.page:28(item/p)
+#: C/gnote-template-notes.page:33(item/p)
+#| msgid ""
+#| "Open <app>Gnote</app> preferences and in <gui>General</gui> tab press the "
+#| "<gui>Open Template Note</gui> button."
 msgid ""
-"Open <app>Gnote</app> preferences and in <gui>General</gui> tab press the "
-"<gui>Open Template Note</gui> button."
+"Open <app>Gnote</app>'s preferences and in the <gui>General</gui> tab press "
+"the <gui>Open Template Note</gui> button."
 msgstr ""
 "Öffnen Sie die <app>Gnote</app>-Einstellungen. Klicken Sie im Reiter "
 "<gui>Allgemein</gui> auf den Knopf <gui>Notizvorlage öffnen</gui>."
 
-#: C/gnote-template-notes.page:29(item/title)
+#: C/gnote-template-notes.page:34(item/title)
 msgid "Notebook template note"
 msgstr "Notizvorlage eines Notizbuchs"
 
-#: C/gnote-template-notes.page:29(item/p)
+#: C/gnote-template-notes.page:34(item/p)
+#| msgid ""
+#| "Right click on notebook in main window and select <gui>Open Template "
+#| "Note</gui>."
 msgid ""
-"Right click on notebook in main window and select <gui>Open Template Note</"
-"gui>."
+"Right click on a notebook in the main window and select <gui>Open Template "
+"Note</gui>."
 msgstr ""
 "Klicken Sie mit der rechten Maustaste auf ein Notizbuch im Hauptfenster und "
 "wählen Sie <gui>Notizvorlage öffnen</gui>."
 
-#: C/gnote-template-notes.page:33(section/title)
+#: C/gnote-template-notes.page:38(section/title)
 msgid "Template Note Features"
 msgstr "Funktionsmerkmale von Notizvorlagen"
 
-#: C/gnote-template-notes.page:34(section/p)
+#: C/gnote-template-notes.page:39(section/p)
+#| msgid ""
+#| "Template note is like an ordinary note except that it is not shown in a "
+#| "note list and has a template bar at the top."
 msgid ""
-"Template note is like an ordinary note except that it is not shown in a note "
-"list and has a template bar at the top."
+"A template note is like an ordinary note except that it is not shown in note "
+"lists and has a template bar at the top."
 msgstr ""
 "Eine Notizvorlage verhält sich wie eine gewöhnliche Notiz, mit der Ausnahme, "
 "dass sie nicht in der Notizliste erscheint und eine Vorlagenleiste am oberen "
 "Rand enthält."
 
-#: C/gnote-template-notes.page:35(figure/title)
+#: C/gnote-template-notes.page:40(figure/title)
 msgid "Template note"
 msgstr "Notizvorlage"
 
-#: C/gnote-template-notes.page:36(figure/desc)
+#: C/gnote-template-notes.page:41(figure/desc)
 msgid "Template note window"
 msgstr "Notizvorlagen-Fenster"
 
-#: C/gnote-template-notes.page:38(section/p)
-msgid "Template bar has the following features:"
+#: C/gnote-template-notes.page:43(section/p)
+#| msgid "Template bar has the following features:"
+msgid "The template bar has the following features:"
 msgstr "Die Vorlagenleiste bietet die folgenden Funktionen:"
 
-#: C/gnote-template-notes.page:40(item/title)
+#: C/gnote-template-notes.page:45(item/title)
 msgid "Convert to regular note"
 msgstr "In reguläre Notiz umwandeln"
 
-#: C/gnote-template-notes.page:40(item/p)
+#: C/gnote-template-notes.page:45(item/p)
+#| msgid ""
+#| "Press this button to turn the template into a regular note, visible in "
+#| "the list of notes. This action is similar to deleting template note."
 msgid ""
 "Press this button to turn the template into a regular note, visible in the "
-"list of notes. This action is similar to deleting template note."
+"list of notes. This action is similar to deleting a template note."
 msgstr ""
 "Klicken Sie auf diesen Knopf, um die Notizvorlage in eine reguläre Notiz "
 "umzuwandeln, die in der Notizliste angezeigt wird. Diese Aktion entspricht "
 "dem Löschen einer Notizvorlage."
 
-#: C/gnote-template-notes.page:41(item/title)
+#: C/gnote-template-notes.page:46(item/title)
 msgid "Save Size"
 msgstr "Größe speichern"
 
-#: C/gnote-template-notes.page:41(item/p)
+#: C/gnote-template-notes.page:46(item/p)
+#| msgid ""
+#| "If you check this box, the size of newly created note will be identical "
+#| "to that of template note. When this checkbox is not checked, the window "
+#| "of new note is of default size."
 msgid ""
-"If you check this box, the size of newly created note will be identical to "
-"that of template note. When this checkbox is not checked, the window of new "
-"note is of default size."
+"If you check this box, the size of a newly created note will be identical to "
+"that of the template note. When this checkbox is not checked, new notes' "
+"windows will have the default size."
 msgstr ""
 "Wenn Sie dieses Ankreuzfeld aktivieren, entspricht die Größe der neu zu "
 "erstellenden Notiz der Größe der Notizvorlage. Falls Sie es nicht "
-"aktivieren, erhält das Fenster die Standardgröße."
+"aktivieren, hat das Fenster die Standardgröße."
 
-#: C/gnote-template-notes.page:42(item/title)
+#: C/gnote-template-notes.page:47(item/title)
 msgid "Save Selection"
 msgstr "Auswahl speichern"
 
-#: C/gnote-template-notes.page:42(item/p)
+#: C/gnote-template-notes.page:47(item/p)
+#| msgid ""
+#| "If this box is checked, new notes will not only have the content of "
+#| "template note, but also the initial selection. Use this option if you "
+#| "want certain part of content in the new note to be initialy selected."
 msgid ""
-"If this box is checked, new notes will not only have the content of template "
-"note, but also the initial selection. Use this option if you want certain "
-"part of content in the new note to be initialy selected."
+"If this box is checked, new notes will have not only the content of the "
+"template note, but also its selection. Use this option if you want a certain "
+"part of the content in the new note to be initially selected."
 msgstr ""
-"Falls dieses Ankreuzfeld aktiviert ist, erhalten neue Notizen nicht nicht "
-"nur den Inhalt der Notizvorlage, sondern der Inhalt wird außerdem markiert. "
-"Verwenden Sie diese Option, wenn Sie wollen, dass ein bestimmter Teil des "
-"Inhalts einer neuen Notiz anfänglich markiert ist."
+"Falls dieses Ankreuzfeld aktiviert ist, erhalten neue Notizen nicht nur den "
+"Inhalt der Notizvorlage, sondern auch deren Auswahl. Verwenden Sie diese "
+"Option, wenn Sie wollen, dass ein bestimmter Teil des Inhalts einer neuen "
+"Notiz anfänglich markiert ist."
 
-#: C/gnote-template-notes.page:43(item/title)
+#: C/gnote-template-notes.page:48(item/title)
 msgid "Save Title"
 msgstr "Titel speichern"
 
-#: C/gnote-template-notes.page:43(item/p)
+#: C/gnote-template-notes.page:48(item/p)
+#| msgid ""
+#| "This checkbox allows to base the title of new note on a title of template "
+#| "note. With this box checked, new note will have a title of template note "
+#| "with a unique number appended. Otherwise the default title will be used."
 msgid ""
-"This checkbox allows to base the title of new note on a title of template "
-"note. With this box checked, new note will have a title of template note "
+"This checkbox lets you base the title of new notes on a template note's "
+"title. With this box checked, a new note will have the template note's title "
 "with a unique number appended. Otherwise the default title will be used."
 msgstr ""
 "Mit diesem Ankreuzfeld aktivieren Sie eine Option, die den Titel der neuen "
@@ -1953,18 +2587,23 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-working-with-notebooks.page:45(media)
+#: C/gnote-working-with-notebooks.page:50(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/notebook-icon.png' "
+#| "md5='134ed1f78ff2a35e3cbfb2cc8f6b9afa'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-notebook-search.png' "
-"md5='5eec46366890720e1899f9db01a461db'"
-msgstr ""
+"md5='8fa30f6c4addcadbf5284fdedde37149'"
+msgstr "original"
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-working-with-notebooks.page:58(media)
+#: C/gnote-working-with-notebooks.page:63(media)
 msgctxt "_"
 msgid ""
 "external ref='figures/notebook-icon.png' "
@@ -1975,125 +2614,158 @@ msgstr "original"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-working-with-notebooks.page:61(media)
+#: C/gnote-working-with-notebooks.page:66(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/delete-notebook.png' "
+#| "md5='caff034a1883e01a81cc0b7369ec9f27'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
-"md5='c038222a89496411b3260de117b540d3'"
-msgstr ""
-
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/gnote-working-with-notebooks.page:79(media)
-msgctxt "_"
-msgid ""
-"external ref='figures/note-template.png' "
-"md5='5cec5ca5dd34b252cd6e45b90c01e572'"
+"md5='37d486edf9027423afd11117ee55d0d7'"
 msgstr "ok"
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gnote-working-with-notebooks.page:94(media)
+#: C/gnote-working-with-notebooks.page:84(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/note-template.png' "
+#| "md5='5cec5ca5dd34b252cd6e45b90c01e572'"
+msgctxt "_"
+msgid ""
+"external ref='figures/note-template.png' "
+"md5='51d37999a80d3484ced8964f520342f0'"
+msgstr "ok"
+
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gnote-working-with-notebooks.page:98(media)
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/delete-notebook.png' "
+#| "md5='caff034a1883e01a81cc0b7369ec9f27'"
 msgctxt "_"
 msgid ""
 "external ref='figures/delete-notebook.png' "
-"md5='caff034a1883e01a81cc0b7369ec9f27'"
+"md5='bc3331330f13a946fcb4b92f070a23c7'"
 msgstr "ok"
 
 #: C/gnote-working-with-notebooks.page:9(info/desc)
 msgid "Organizing your notes"
 msgstr "Ihre Notizen organisieren"
 
-#: C/gnote-working-with-notebooks.page:21(page/title)
+#: C/gnote-working-with-notebooks.page:26(page/title)
 msgid "Working With Notebooks"
 msgstr "Mit Notizbüchern arbeiten"
 
-#: C/gnote-working-with-notebooks.page:22(page/p)
+#: C/gnote-working-with-notebooks.page:27(page/p)
+#| msgid ""
+#| "Notebooks allow you to group related notes together. You can add a note "
+#| "to a notebook in the main window or directly inside of a Note."
 msgid ""
-"Notebooks allow you to group related notes together. You can add a note to a "
-"notebook in the main window or directly inside of a Note."
+"Notebooks let you group related notes together. You can add a note to a "
+"notebook in the main window or in the note editing view."
 msgstr ""
-"Notizbücher erlauben es, zusammengehörende Notizen zu gruppieren. Sie können "
-"eine Notiz im Hauptfenster oder direkt innerhalb einer Notiz einem Notizbuch "
-"hinzufügen."
+"Notizbücher ermöglichen es zusammengehörende Notizen zu gruppieren. Sie "
+"können eine Notiz im Hauptfenster oder direkt innerhalb einer Notiz einem "
+"Notizbuch hinzufügen."
 
-#: C/gnote-working-with-notebooks.page:24(section/title)
+#: C/gnote-working-with-notebooks.page:29(section/title)
 msgid "Creating Notebooks"
 msgstr "Notizbücher anlegen"
 
-#: C/gnote-working-with-notebooks.page:25(section/p)
-msgid "You can create new notebooks using one of the following methods"
-msgstr "Sie können neue Notizbücher auf folgende Arten anlegen:"
+#: C/gnote-working-with-notebooks.page:30(section/p)
+#| msgid "To create a new notebook context menu"
+msgid "To create a new notebook:"
+msgstr "Eine neue Notiz in einem Notizbuch anlegen"
 
-#: C/gnote-working-with-notebooks.page:28(item/p)
-msgid "Click on application menu and select <gui>New Notebook</gui>."
+#: C/gnote-working-with-notebooks.page:33(item/p)
+#| msgid "Click on application menu and select <gui>New Notebook</gui>."
+msgid "Click on the application menu and select <gui>New Notebook</gui>."
 msgstr ""
 "Klicken Sie das Anwendungsmenü und wählen Sie <gui>Neues Notizbuch</gui>."
 
-#: C/gnote-working-with-notebooks.page:31(item/p)
-#: C/gnote-working-with-notebooks.page:40(item/p)
+#: C/gnote-working-with-notebooks.page:36(item/p)
+#: C/gnote-working-with-notebooks.page:45(item/p)
 msgid "Enter a name for the new notebook."
 msgstr "Geben Sie einen Namen für das neue Notizbuch ein."
 
-#: C/gnote-working-with-notebooks.page:34(section/p)
-msgid "To create a new notebook context menu"
-msgstr "So erstellen Sie ein neues Notizbuch aus dem Kontextmenü:"
+#: C/gnote-working-with-notebooks.page:39(section/p)
+msgid "Alternatively:"
+msgstr "Alternativ:"
 
-#: C/gnote-working-with-notebooks.page:37(item/p)
+#: C/gnote-working-with-notebooks.page:42(item/p)
+#| msgid ""
+#| "In search mode, right click in the left hand box and choose <gui>New "
+#| "Notebook</gui>."
 msgid ""
-"In search mode, right click in the left hand box and choose <gui>New "
-"Notebook</gui>."
+"In the note overview, right click in the left hand pane and choose "
+"<gui>New...</gui>."
 msgstr ""
-"Klicken Sie im Suchmodus mit der rechten Maustaste auf die linke Box und "
-"wählen Sie <gui>Neues Notizbuch</gui>."
+"Klicken Sie in der Notizübersicht mit der rechten Maustaste in das linke "
+"Teilfenster und wählen Sie <gui>Neu …</gui>."
 
-#: C/gnote-working-with-notebooks.page:44(figure/title)
+#: C/gnote-working-with-notebooks.page:49(figure/title)
 msgid "New Notebook from context menu"
 msgstr "Neues Notizbuch aus dem Kontextmenü"
 
-#: C/gnote-working-with-notebooks.page:46(media/p)
+#: C/gnote-working-with-notebooks.page:51(media/p)
 msgid "New Notebook"
 msgstr "Neues Notizbuch"
 
-#: C/gnote-working-with-notebooks.page:51(section/title)
-#: C/gnote-working-with-notebooks.page:60(figure/title)
+#: C/gnote-working-with-notebooks.page:56(section/title)
+#: C/gnote-working-with-notebooks.page:65(figure/title)
 msgid "Adding Notes to a Notebook"
 msgstr "Notizen zu einem Notizbuch hinzufügen"
 
-#: C/gnote-working-with-notebooks.page:52(section/p)
+#: C/gnote-working-with-notebooks.page:57(section/p)
+#| msgid ""
+#| "To add notes to a notebook, you can add a note from the main window or "
+#| "directly within a note."
 msgid ""
-"To add notes to a notebook, you can add a note from the main window or "
-"directly within a note."
+"You can add a note to a notebook from the main window or directly within a "
+"note."
 msgstr ""
 "Um Notizen einem Notizbuch hinzuzufügen, können Sie dies im Hauptfenster "
 "oder direkt innerhalb einer Notiz durchführen."
 
-#: C/gnote-working-with-notebooks.page:53(section/p)
-msgid "To move an existing note from the main window use one of the following:"
+#: C/gnote-working-with-notebooks.page:58(section/p)
+#| msgid ""
+#| "To move an existing note from the main window use one of the following:"
+msgid ""
+"To add a note to a notebook from the main window, do one of the following:"
 msgstr ""
-"Um eine bestehende Notiz vom Hauptfenster zu verschieben, gehen Sie auf "
-"einen der folgenden Wege vor:"
+"Um eine Notiz im Hauptfenster hinzuzufügen, gehen Sie auf einen der "
+"folgenden Wege vor:"
 
-#: C/gnote-working-with-notebooks.page:55(item/p)
-msgid "Drag the note(s) onto a notebook on the left using mouse."
+#: C/gnote-working-with-notebooks.page:60(item/p)
+#| msgid "Drag the note(s) onto a notebook on the left using mouse."
+msgid "Drag the note(s) onto a notebook on the left using the mouse."
 msgstr ""
 "Verwenden Sie Ihre Maus, um die Notiz(en) auf ein Notizbuch auf der linken "
 "Seite zu ziehen."
 
-#: C/gnote-working-with-notebooks.page:56(item/p)
+#: C/gnote-working-with-notebooks.page:61(item/p)
+#| msgid ""
+#| "Right click on a notebook and select <gui>New Note</gui> from context "
+#| "menu. A new note will be created and added to notebook."
 msgid ""
-"Right click on a notebook and select <gui>New Note</gui> from context menu. "
-"A new note will be created and added to notebook."
+"Click on a notebook, right-click in notes list and select <gui>New</gui> "
+"from the context menu. A new note will be created and added to the notebook."
 msgstr ""
-"Klicken Sie mit der rechten Maustaste auf ein Notizbuch und wählen Sie "
-"<gui>Neue Notiz</gui> aus dem Kontextmenü. Eine neue Notiz wird angelegt und "
-"zum Notizbuch hinzugefügt."
+"Klicken Sie auf ein Notizbuch und dann mit der rechten Maustaste in die "
+"Notizliste und wählen Sie <gui>Neu</gui> aus dem Kontextmenü. Eine neue "
+"Notiz wird angelegt und zum Notizbuch hinzugefügt."
 
-#: C/gnote-working-with-notebooks.page:58(section/p)
+#: C/gnote-working-with-notebooks.page:63(section/p)
 msgid ""
 "As you type a note, you can add the note directly to an existing notebook "
 "using the <gui>Notebook</gui> button. The Notebook button is represented by "
@@ -2106,83 +2778,100 @@ msgstr ""
 "\"figures/notebook-icon.png\" mime=\"image/png\" style=\"right\"/> "
 "dargestellt."
 
-#: C/gnote-working-with-notebooks.page:61(media/p)
+#: C/gnote-working-with-notebooks.page:66(media/p)
 msgid "Add to Notebook."
 msgstr "Notizen zu einem Notizbuch hinzufügen."
 
-#: C/gnote-working-with-notebooks.page:63(section/p)
-msgid "To remove note from notebook, use one of the following:"
+#: C/gnote-working-with-notebooks.page:68(section/p)
+#| msgid "To remove note from notebook, use one of the following:"
+msgid "To remove a note from a notebook, use one of the following:"
 msgstr ""
 "Um eine Notiz aus einem Notizbuch zu entfernen, führen Sie eine der "
 "folgenden Aktionen aus:"
 
-#: C/gnote-working-with-notebooks.page:65(item/p)
-msgid "Move note to <gui>Unfiled notes</gui> notebook in main window."
+#: C/gnote-working-with-notebooks.page:70(item/p)
+#| msgid "Move note to <gui>Unfiled notes</gui> notebook in main window."
+msgid "Move the note to <gui>Unfiled Notes</gui> in the main window."
 msgstr ""
 "Verschieben Sie die Notiz in das Notizbuch <gui>Nicht zugeordnete Notizen</"
 "gui> im Hauptfenster."
 
-#: C/gnote-working-with-notebooks.page:66(item/p)
+#: C/gnote-working-with-notebooks.page:71(item/p)
+#| msgid ""
+#| "Select the <gui>No Notebook</gui> option from menu, presented when you "
+#| "press the <gui>Notebook</gui> button in opened note."
 msgid ""
-"Select the <gui>No Notebook</gui> option from menu, presented when you press "
-"the <gui>Notebook</gui> button in opened note."
+"Select the <gui>No Notebook</gui> option from the menu which appears when "
+"you press the <gui>Notebook</gui> button in an open note."
 msgstr ""
-"Wählen Sie die Option <gui>Kein Notizbuch</gui> aus dem Menü, welche "
+"Wählen Sie die Option <gui>Kein Notizbuch</gui> aus dem Menü, welches "
 "angezeigt wird, wenn Sie auf den <gui>Notizbuch</gui>-Knopf in einer "
 "geöffneten Notiz klicken."
 
-#: C/gnote-working-with-notebooks.page:70(section/title)
-msgid "Creating Notebook Templates"
+#: C/gnote-working-with-notebooks.page:75(section/title)
+#: C/gnote-working-with-notebooks.page:83(figure/title)
+#| msgid "Creating Notebook Template"
+msgid "Creating a Template"
 msgstr "Notizbuch-Vorlagen anlegen"
 
-#: C/gnote-working-with-notebooks.page:71(section/p)
+#: C/gnote-working-with-notebooks.page:76(section/p)
+#| msgid ""
+#| "After you create a notebook, you can create a template for each new note "
+#| "that you create in that notebook."
 msgid ""
-"After you create a notebook, you can create a template for each new note "
-"that you create in that notebook."
+"After you create a notebook, you can create a template for new notes that "
+"you create in that notebook."
 msgstr ""
 "Nachdem Sie ein Notizbuch angelegt haben, können Sie eine Vorlage für jede "
 "Notiz festlegen, die Sie in diesem speziellen Notizbuch anlegen."
 
-#: C/gnote-working-with-notebooks.page:73(item/p)
+#: C/gnote-working-with-notebooks.page:78(item/p)
+#| msgid ""
+#| "In main window right click on a Notebook that you have created and choose "
+#| "<gui>Open Template Note</gui>."
 msgid ""
-"In main window right click on a Notebook that you have created and choose "
-"<gui>Open Template Note</gui>."
+"In the main window, right click on a notebook and choose <gui>Open Template "
+"Note</gui>."
 msgstr ""
-"Klicken Sie im Hauptfenster auf ein von Ihnen angelegtes Notizbuch und "
+"Klicken Sie mit der rechten Maustaste auf ein Notizbuch im Hauptfenster und "
 "wählen Sie <gui>Notizvorlage öffnen</gui>."
 
-#: C/gnote-working-with-notebooks.page:75(item/p)
+#: C/gnote-working-with-notebooks.page:80(item/p)
+#| msgid ""
+#| "This will open a new note that will be used as the template. Any text "
+#| "typed in this note will appear in all notes created in this Notebook."
 msgid ""
-"This will open a new note that will be used as the template. Any text typed "
-"in this note will appear in all notes created in this Notebook."
+"This will open a new template note. Any text typed in this note will appear "
+"in all notes created in this notebook."
 msgstr ""
-"Dadurch wird eine neue Notiz geöffnet, die als Vorlage verwendet wird. Jeder "
-"in dieser Notiz eingegebene Text wird in allen Notizen erscheinen, die in "
-"diesem Notizbuch angelegt werden."
+"Dadurch wird eine neue Vorlage geöffnet. Jeder in dieser Notiz eingegebene "
+"Text wird in allen Notizen erscheinen, die in diesem Notizbuch angelegt "
+"werden."
 
-#: C/gnote-working-with-notebooks.page:78(figure/title)
-msgid "Creating Notebook Template"
-msgstr "Notizbuch-Vorlagen anlegen"
-
-#: C/gnote-working-with-notebooks.page:79(media/p)
+#: C/gnote-working-with-notebooks.page:84(media/p)
 msgid "Note Template."
 msgstr "Notizvorlagen"
 
-#: C/gnote-working-with-notebooks.page:81(section/p)
+#: C/gnote-working-with-notebooks.page:86(section/p)
 msgid "For more, see <link xref=\"gnote-template-notes\"/>."
 msgstr ""
 "Weitere Informationen finden Sie in <link xref=\"gnote-template-notes\"/>."
 
-#: C/gnote-working-with-notebooks.page:84(section/title)
+#: C/gnote-working-with-notebooks.page:89(section/title)
 msgid "Deleting a Notebook"
 msgstr "Notizbuch löschen"
 
-#: C/gnote-working-with-notebooks.page:85(section/p)
+#: C/gnote-working-with-notebooks.page:90(section/p)
+#| msgid ""
+#| "Deleting a notebook will not delete any of the notes which are currently "
+#| "inside the notebook. After deleting a notebook, the notes will not be "
+#| "associated with any notebook and can be seen by highlighting <gui>Unfiled "
+#| "Notes</gui> in the main window."
 msgid ""
 "Deleting a notebook will not delete any of the notes which are currently "
-"inside the notebook. After deleting a notebook, the notes will not be "
-"associated with any notebook and can be seen by highlighting <gui>Unfiled "
-"Notes</gui> in the main window."
+"inside the notebook. After you delete a notebook, its notes will not be "
+"associated with any notebook and will appear in <gui>Unfiled Notes</gui> in "
+"the main window."
 msgstr ""
 "Das Löschen eines Notizbuches führt nicht dazu, dass die Notizen, die sich "
 "momentan in diesem Notizbuch befinden, auch gelöscht werden. Nach dem "
@@ -2190,74 +2879,234 @@ msgstr ""
 "sein und können durch Auswahl von <gui>Nicht zugeordnete Notizen</gui> im "
 "Hauptfenster eingesehen werden."
 
-#: C/gnote-working-with-notebooks.page:86(section/p)
-msgid "You can delete a notebook you have created by one of two methods:"
-msgstr ""
-"Sie können ein Notizbuch, das Sie angelegt haben, auf zwei Arten löschen:"
-
-#: C/gnote-working-with-notebooks.page:87(section/p)
+#: C/gnote-working-with-notebooks.page:91(section/p)
+#| msgid ""
+#| "To delete a notebook, go to search mode in main window and do one of the "
+#| "following:"
 msgid ""
-"To delete a notebook, go to search mode in main window and do one of the "
-"following:"
+"To delete a notebook, go to the main window and do one of the following:"
 msgstr ""
-"Um ein Notizbuch zu löschen, wechseln Sie in den Suchmodus im Hauptfenster "
-"und führen eine der folgenden Aktionen aus:"
+"Um ein Notizbuch zu löschen, wechseln Sie in das Hauptfenster und führen "
+"eine der folgenden Aktionen aus:"
 
-#: C/gnote-working-with-notebooks.page:89(item/p)
+#: C/gnote-working-with-notebooks.page:93(item/p)
 msgid "Right click on a notebook and choose <gui>Delete Notebook</gui>."
 msgstr ""
 "Klicken Sie mit der rechten Maustaste auf ein Notizbuch und wählen Sie "
 "<gui>Notizbuch löschen</gui>."
 
-#: C/gnote-working-with-notebooks.page:90(item/p)
+#: C/gnote-working-with-notebooks.page:94(item/p)
+#| msgid ""
+#| "Remove all notes from notebook. Notebook will be automatically removed on "
+#| "<app>Gnote</app> restart."
 msgid ""
-"Remove all notes from notebook. Notebook will be automatically removed on "
-"<app>Gnote</app> restart."
+"Remove all notes from a notebook. The notebook will be automatically removed "
+"the next time <app>Gnote</app> restarts."
 msgstr ""
 "Entfernen Sie alle Notizen aus dem Notizbuch. Das Notizbuch wird automatisch "
 "beim Neustart von <app>Gnote</app> entfernt."
 
-#: C/gnote-working-with-notebooks.page:93(figure/title)
+#: C/gnote-working-with-notebooks.page:97(figure/title)
 msgid "Deleting notes from main window"
 msgstr "Notizen im Hauptfenster löschen"
 
-#: C/gnote-working-with-notebooks.page:95(media/p)
+#: C/gnote-working-with-notebooks.page:99(media/p)
 msgid "Delete Notebook."
 msgstr "Notizbuch löschen."
 
-#: C/gnote-working-with-notebooks.page:100(section/title)
+#: C/gnote-working-with-notebooks.page:104(section/title)
 msgid "Special Notebooks"
 msgstr "Besondere Notizbücher"
 
-#: C/gnote-working-with-notebooks.page:101(section/p)
+#: C/gnote-working-with-notebooks.page:105(section/p)
 msgid "<app>Gnote</app> has several special notebooks:"
 msgstr "<app>Gnote</app> hat verschiedene besondere Notizbücher:"
 
-#: C/gnote-working-with-notebooks.page:103(item/p)
+#: C/gnote-working-with-notebooks.page:107(item/p)
+#| msgid ""
+#| "<gui>Active Notes</gui> - contains notes, that were opened in current "
+#| "<app>Gnote</app> session."
 msgid ""
-"<gui>Active Notes</gui> - contains notes, that were opened in current "
-"<app>Gnote</app> session."
+"<gui>Active</gui>: notes that have been opened in the current <app>Gnote</"
+"app> session"
 msgstr ""
-"<gui>Aktive Notizen</gui> - enthält Notizen, die in der aktuellen Sitzung "
-"von <app>Gnote</app> geöffnet sind."
+"<gui>Aktive</gui>: enthält Notizen, die in der aktuellen Sitzung von "
+"<app>Gnote</app> geöffnet sind"
 
-#: C/gnote-working-with-notebooks.page:104(item/p)
-msgid "<gui>All Notes</gui> - contains all notes, except templates."
-msgstr "<gui>Alle Notizen</gui> - enthält alle Notizen, außer Vorlagen."
+#: C/gnote-working-with-notebooks.page:108(item/p)
+#| msgid "<gui>All Notes</gui> - contains all notes, except templates."
+msgid "<gui>All</gui>: all notes except templates"
+msgstr "<gui>Alle</gui>: enthält alle Notizen, außer Vorlagen"
 
-#: C/gnote-working-with-notebooks.page:105(item/p)
-msgid "<gui>Pinned Notes</gui> - used to mark notes as important."
+#: C/gnote-working-with-notebooks.page:109(item/p)
+#| msgid "<gui>Pinned Notes</gui> - used to mark notes as important."
+msgid "<gui>Important</gui>: notes marked as important"
+msgstr "<gui>Wichtig</gui>: als wichtig gekennzeichnete Notizen"
+
+#: C/gnote-working-with-notebooks.page:110(item/p)
+#| msgid ""
+#| "<gui>Unfilled Notes</gui> - contains all notes that are not placed in a "
+#| "user created notebook."
+msgid "<gui>Unfiled</gui>: all notes that are not in a user-created notebook"
 msgstr ""
-"<gui>Angeheftete Notizen</gui> - werden verwendet, um Notizen als wichtig zu "
-"kennzeichnen."
+"<gui>Nicht zugeordnet</gui>: Alle Notizen, die nicht in einem "
+"benutzerdefinierten Notizbuch abgelegt sind."
 
-#: C/gnote-working-with-notebooks.page:106(item/p)
-msgid ""
-"<gui>Unfilled Notes</gui> - contains all notes that are not placed in a user "
-"created notebook."
-msgstr ""
-"<gui>Nicht zugeordnete Notizen</gui> - enthält alle Notizen, die nicht in "
-"einem benutzerdefinierten Notizbuch abgelegt sind."
+#~ msgid ""
+#~ "The Fixed Width option is a feature provided by the Fixed Width Add-in."
+#~ msgstr ""
+#~ "Die Option <gui>Feste Breite</gui> wird durch das Feste-Breite-Add-In "
+#~ "bereitgestellt."
+
+#~ msgctxt "_"
+#~ msgid ""
+#~ "external ref='figures/gnote-tools.png' "
+#~ "md5='6a1c7800cd20071381ea591f49c32b6c'"
+#~ msgstr "original"
+
+#~ msgid "Export Notes to HTML format"
+#~ msgstr "Notizen in HTML exportieren"
+
+#~ msgid ""
+#~ "The Tools button is represented by the <media type=\"image\" src="
+#~ "\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. "
+#~ "When this add-in is installed, the option <gui>Export to HTML</gui> is "
+#~ "present in <gui>Tools</gui> menu."
+#~ msgstr ""
+#~ "Der Werkzeugknopf wir durch das Symbol <media type=\"image\" src="
+#~ "\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> "
+#~ "dargestellt. Wenn dieses Add-In installiert ist, dann enthält das "
+#~ "<gui>Werkzeuge</gui>-Menü den Eintrag <gui>HTML exportieren</gui>."
+
+#~ msgid ""
+#~ "You can create an HTML (Hypertext Markup Language) document from one or "
+#~ "more notes by selecting this option."
+#~ msgstr ""
+#~ "Sie können ein HTML-Dokument (Hypertext Markup Language) aus einer oder "
+#~ "mehrerer Notizen mit diesem Eintrag erstellen."
+
+#~ msgid "Template Note"
+#~ msgstr "Notizvorlagen"
+
+#~ msgid ""
+#~ "The Tools button is represented by the <media type=\"image\" src="
+#~ "\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. "
+#~ "When this add-in is installed, the option <gui>Print</gui> is present in "
+#~ "<gui>Tools</gui> menu."
+#~ msgstr ""
+#~ "Der Werkzeugknopf wir durch das Symbol <media type=\"image\" src="
+#~ "\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> "
+#~ "dargestellt. Wenn dieses Add-In installiert ist, dann enthält das "
+#~ "<gui>Werkzeuge</gui>-Menü den Eintrag <gui>Drucken</gui>."
+
+#~ msgid ""
+#~ "When the <gui>Print</gui> option is selected, a standard <gui>Print</"
+#~ "gui> dialog will be presented and a note can be printed."
+#~ msgstr ""
+#~ "Wenn die Option <gui>Drucken</gui> aktiviert ist, dann wird ein Standard-"
+#~ "<gui>Druckdialog</gui> geöffnet, une eine Notiz kann gedruckt werden."
+
+#~ msgid ""
+#~ "The Tools button is represented by the <media type=\"image\" src="
+#~ "\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"/> icon. "
+#~ "When this add-in is installed, the option <gui>Replace title</gui> is "
+#~ "present in <gui>Tools</gui> menu."
+#~ msgstr ""
+#~ "Der Werkzeugknopf wird durch das Symbol <media type=\"image\" src="
+#~ "\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"></media> "
+#~ "dargestellt. Wenn dieses Add-In installiert ist, dann enthält das "
+#~ "<gui>Werkzeuge</gui>-Menü den Eintrag <gui>Titel ersetzen</gui>."
+
+#~ msgid ""
+#~ "The Tools button is represented by the <media type=\"image\" src="
+#~ "\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"> </media> "
+#~ "icon. When you click the Tools icon on the toolbar present on your note, "
+#~ "a menu will appear."
+#~ msgstr ""
+#~ "Der Knopf <gui>Werkzeuge</gui> wird durch das Symbol <media type=\"image"
+#~ "\" src=\"figures/gnote-tools.png\" mime=\"image/png\" style=\"right\"></"
+#~ "media> dargestellt. Beim Klick auf das Symbol <gui>Werkzeuge</gui> in der "
+#~ "Werkzeugleiste erscheint ein Menü."
+
+#~ msgid "Click on this option to insert current date and time."
+#~ msgstr ""
+#~ "Klicken Sie auf diese Option, um die aktuelle Zeit und das Datum "
+#~ "einzufügen."
+
+#~ msgid ""
+#~ "You can activate the <app>Gnote</app> status icon using a command from "
+#~ "<app>terminal</app>: <cmd>gsettings set org.gnome.gnote use-status-icon "
+#~ "true</cmd>."
+#~ msgstr ""
+#~ "Sie können das Statussymbol von <app>Gnote</app> folgendermaßen im "
+#~ "<app>Terminal</app> aktivieren: <cmd>gsettings set org.gnome.gnote use-"
+#~ "status-icon true</cmd> ."
+
+#~ msgid "Click on application menu and select <gui>New Note</gui>."
+#~ msgstr ""
+#~ "Klicken Sie auf das Anwendungsmenü und wählen Sie <gui>Neue Notiz</gui>."
+
+#~ msgid ""
+#~ "Notes are opened in the same window by replacing search with note content."
+#~ msgstr ""
+#~ "Notizen werden im selben Fenster geöffnet, indem die Suche mit dem Inhalt "
+#~ "der Notiz ersetzt wird."
+
+#~ msgid ""
+#~ "At the top of the note there are two toolbars. The above one has items "
+#~ "for going back to search mode and for creating new note. The lower one "
+#~ "contains several buttons and text. Directly below this toolbar is the "
+#~ "content area of the note."
+#~ msgstr ""
+#~ "Über der Notiz befinden sich zwei Werkzeugleisten. Die obere enthält "
+#~ "Objekte, um zum Suchmodus zurückzukehren und neue Notizen anzulegen. Die "
+#~ "untere enthält mehrere Knöpfe und Text. Direkt unterhalb dieser "
+#~ "Werkzeugleiste befindet sich das Eingabefeld der Notiz."
+
+#~ msgid ""
+#~ "The note can be edited by clicking in the content area and using the "
+#~ "keyboard to add and remove content. The first line is considered the "
+#~ "title of the note. By default this is populated with the text \"New Note N"
+#~ "\". The title is changed by clicking in the content area on the first "
+#~ "line and using the keyboard to change the title. By default, focus is "
+#~ "given to the content area upon creation of a new note, so you can "
+#~ "immediately start editing the note without the need to click on the "
+#~ "content area with the mouse."
+#~ msgstr ""
+#~ "Die Notiz kann bearbeitet werden, indem Sie in das Eingabefeld klicken "
+#~ "und über die Tastatur Inhalte hinzufügen oder entfernen. Die erste Zeile "
+#~ "stellt den Titel der Notiz dar. Standardmäßig wird dieser mit »Neue Notiz "
+#~ "N« gefüllt. Der Titel wird geändert, indem Sie in das Eingabefeld klicken "
+#~ "und den Titel in der ersten Zeile über die Tastatur ändern. Standardmäßig "
+#~ "erhält das Eingabefeld nach dem Anlegen einer neuen Notiz den Fokus, "
+#~ "sodass Sie sofort mit dem Bearbeiten der Notiz beginnen können, ohne mit "
+#~ "der Maus in das Eingabefeld zu klicken."
+
+#~ msgid ""
+#~ "Formatting text within your notes can be done using the <gui>Text</gui> "
+#~ "button. The <gui>Text</gui> button will display a menu with several "
+#~ "options from which you can choose. Each menu item is explained next."
+#~ msgstr ""
+#~ "Das Formatieren von Texten innerhalb einer Notiz ist über den Knopf "
+#~ "<gui>Text</gui> möglich. Der Knopf <gui>Text</gui> zeigt ein Menü mit "
+#~ "verschiedenen Einträgen an, aus denen Sie wählen können. Jeder Menüpunkt "
+#~ "wird im Folgenden erläutert."
+
+#~ msgid "Find in This Note"
+#~ msgstr "In dieser Notiz suchen"
+
+#~ msgid "Undo/Redo Support"
+#~ msgstr "Rückgängigmachen und Wiederholen von Aktionen"
+
+#~ msgid "You can create new notebooks using one of the following methods"
+#~ msgstr "Sie können neue Notizbücher auf folgende Arten anlegen:"
+
+#~ msgid "Creating Notebook Templates"
+#~ msgstr "Notizbuch-Vorlagen anlegen"
+
+#~ msgid "You can delete a notebook you have created by one of two methods:"
+#~ msgstr ""
+#~ "Sie können ein Notizbuch, das Sie angelegt haben, auf zwei Arten löschen:"
 
 #~ msgid ""
 #~ "In <gui>Search All Notes</gui> window select <guiseq><gui>File</"
@@ -2269,13 +3118,6 @@ msgstr ""
 
 #~ msgid "New Notebook."
 #~ msgstr "Neues Notizbuch."
-
-#~ msgid ""
-#~ "From the menu, choose <guiseq><gui>Edit</gui><gui>Delete Notebook</gui></"
-#~ "guiseq>"
-#~ msgstr ""
-#~ "Wählen Sie im Menü <guiseq><gui>Bearbeiten</gui><gui>Notizbuch löschen</"
-#~ "gui></guiseq> aus."
 
 #~ msgid ""
 #~ "To open a note in the <gui>Search All Notes</gui> dialog, do one of the "
