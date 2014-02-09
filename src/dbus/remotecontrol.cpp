@@ -275,7 +275,14 @@ bool RemoteControl::HideNote(const std::string& uri)
   if (!note)
     return false;
 
-  note->get_window()->hide();
+  NoteWindow *window = note->get_window();
+  if(window == NULL) {
+    return true;
+  }
+  MainWindow *win = MainWindow::get_owning(*window);
+  if(win) {
+    win->unembed_widget(*window);
+  }
   return true;
 }
 
