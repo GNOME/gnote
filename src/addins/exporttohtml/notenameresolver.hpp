@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,8 +22,8 @@
 
 
 #include "sharp/xmlresolver.hpp"
-#include "note.hpp"
-#include "notemanager.hpp"
+#include "notebase.hpp"
+#include "notemanagerbase.hpp"
 
 namespace exporttohtml {
 
@@ -30,7 +31,7 @@ class NoteNameResolver
   : public sharp::XmlResolver
 {
 public:
-  NoteNameResolver(const gnote::NoteManager &, const gnote::Note::Ptr &)
+  NoteNameResolver(const gnote::NoteManagerBase &, const gnote::NoteBase::Ptr &)
     {}
 };
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -206,11 +206,11 @@ namespace sync {
       for(std::map<std::string, NoteUpdate>::iterator iter = noteUpdates.begin();
           iter != noteUpdates.end(); ++iter) {
         if(!find_note_by_uuid(iter->second.m_uuid) != 0) {
-          Note::Ptr existingNote = note_mgr().find(iter->second.m_title);
-          if(existingNote != 0 && !iter->second.basically_equal_to(existingNote)) {
+          NoteBase::Ptr existingNote = note_mgr().find(iter->second.m_title);
+          if(existingNote != 0 && !iter->second.basically_equal_to(static_pointer_cast<Note>(existingNote))) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter->second.m_title.c_str());
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(note_mgr(), existingNote, iter->second, noteUpdateTitles);
+              m_sync_ui->note_conflict_detected(note_mgr(), static_pointer_cast<Note>(existingNote), iter->second, noteUpdateTitles);
             }
           }
         }
@@ -224,7 +224,7 @@ namespace sync {
       // Process updates from the server; the bread and butter of sync!
       for(std::map<std::string, NoteUpdate>::iterator iter = noteUpdates.begin();
           iter != noteUpdates.end(); ++iter) {
-        Note::Ptr existingNote = find_note_by_uuid(iter->second.m_uuid);
+        NoteBase::Ptr existingNote = find_note_by_uuid(iter->second.m_uuid);
 
         if(existingNote == 0) {
           // Actually, it's possible to have a conflict here
@@ -235,21 +235,21 @@ namespace sync {
           existingNote = note_mgr().find(iter->second.m_title);
           if(existingNote != 0) {
             DBG_OUT("SyncManager: Deleting auto-generated note: %s", iter->second.m_title.c_str());
-            delete_note_in_main_thread(existingNote);
+            delete_note_in_main_thread(static_pointer_cast<Note>(existingNote));
           }
           create_note_in_main_thread(iter->second);
         }
         else if(existingNote->metadata_change_date() <= m_client->last_sync_date()
-                || iter->second.basically_equal_to(existingNote)) {
+                || iter->second.basically_equal_to(static_pointer_cast<Note>(existingNote))) {
           // Existing note hasn't been modified since last sync; simply update it from server
-          update_note_in_main_thread(existingNote, iter->second);
+          update_note_in_main_thread(static_pointer_cast<Note>(existingNote), iter->second);
         }
         else {
           // Logger.Debug ("Sync: Late conflict detection for '{0}'", noteUpdate.Title);
           DBG_OUT("SyncManager: Content conflict in note update for note '%s'", iter->second.m_title.c_str());
           // Note already exists locally, but has been modified since last sync; prompt user
           if(m_sync_ui != 0) {
-            m_sync_ui->note_conflict_detected(note_mgr(), existingNote, iter->second, noteUpdateTitles);
+            m_sync_ui->note_conflict_detected(note_mgr(), static_pointer_cast<Note>(existingNote), iter->second, noteUpdateTitles);
           }
 
           // Note has been deleted or okay'd for overwrite
@@ -257,7 +257,7 @@ namespace sync {
           if(existingNote == 0)
             create_note_in_main_thread(iter->second);
           else
-            update_note_in_main_thread(existingNote, iter->second);
+            update_note_in_main_thread(static_pointer_cast<Note>(existingNote), iter->second);
         }
       }
 
@@ -274,23 +274,23 @@ namespace sync {
       // Look through all the notes modified on the client
       // and upload new or modified ones to the server
       std::list<Note::Ptr> newOrModifiedNotes;
-      std::list<Note::Ptr> notes = note_mgr().get_notes();
-      for(std::list<Note::Ptr>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
-        if(m_client->get_revision(*iter) == -1) {
+      FOREACH(const NoteBase::Ptr & iter, note_mgr().get_notes()) {
+        Note::Ptr note = static_pointer_cast<Note>(iter);
+        if(m_client->get_revision(note) == -1) {
           // This is a new note that has never been synchronized to the server
           // TODO: *OR* this is a note that we lost revision info for!!!
           // TODO: Do the above NOW!!! (don't commit this dummy)
-          note_save(*iter);
-          newOrModifiedNotes.push_back(*iter);
+          note_save(note);
+          newOrModifiedNotes.push_back(note);
           if(m_sync_ui != 0)
-            m_sync_ui->note_synchronized_th((*iter)->get_title(), UPLOAD_NEW);
+            m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_NEW);
         }
-        else if(m_client->get_revision(*iter) <= m_client->last_synchronized_revision()
-                && (*iter)->metadata_change_date() > m_client->last_sync_date()) {
-          note_save(*iter);
-          newOrModifiedNotes.push_back(*iter);
+        else if(m_client->get_revision(note) <= m_client->last_synchronized_revision()
+                && note->metadata_change_date() > m_client->last_sync_date()) {
+          note_save(note);
+          newOrModifiedNotes.push_back(note);
           if(m_sync_ui != 0) {
-            m_sync_ui->note_synchronized_th((*iter)->get_title(), UPLOAD_MODIFIED);
+            m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_MODIFIED);
           }
         }
       }
@@ -377,7 +377,7 @@ namespace sync {
   }
 
 
-  void SyncManager::handle_note_buffer_changed(const Note::Ptr &)
+  void SyncManager::handle_note_buffer_changed(const NoteBase::Ptr &)
   {
     // Note changed, iff a sync is coming up we kill the
     // timer to avoid interupting the user (we want to
@@ -421,7 +421,7 @@ namespace sync {
   }
 
 
-  void SyncManager::handle_note_saved_or_deleted(const Note::Ptr &)
+  void SyncManager::handle_note_saved_or_deleted(const NoteBase::Ptr &)
   {
     if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
       sharp::TimeSpan time_since_last_check(sharp::DateTime::now() - m_last_background_check);
@@ -469,9 +469,9 @@ namespace sync {
       bool server_has_updates = false;
       bool client_has_updates = m_client->deleted_note_titles().size() > 0;
       if(!client_has_updates) {
-        std::list<Note::Ptr> notes = note_mgr().get_notes();
-        for(std::list<Note::Ptr>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
-          if(m_client->get_revision(*iter) == -1 || (*iter)->metadata_change_date() > m_client->last_sync_date()) {
+        FOREACH(const NoteBase::Ptr & iter, note_mgr().get_notes()) {
+          Note::Ptr note = static_pointer_cast<Note>(iter);
+          if(m_client->get_revision(note) == -1 || note->metadata_change_date() > m_client->last_sync_date()) {
             client_has_updates = true;
             break;
           }
@@ -582,7 +582,7 @@ namespace sync {
   }
 
 
-  void SyncManager::update_local_note(const Note::Ptr & localNote, const NoteUpdate & serverNote, NoteSyncType syncType)
+  void SyncManager::update_local_note(const NoteBase::Ptr & localNote, const NoteUpdate & serverNote, NoteSyncType syncType)
   {
     // In each case, update existingNote's content and revision
     try {
@@ -590,7 +590,7 @@ namespace sync {
     }
     catch(...)
     {} // TODO: Handle exception in case that serverNote.XmlContent is invalid XML
-    m_client->set_revision(localNote, serverNote.m_latest_revision);
+    m_client->set_revision(static_pointer_cast<Note>(localNote), serverNote.m_latest_revision);
 
     // Update dialog's sync status
     if(m_sync_ui != 0) {
@@ -599,7 +599,7 @@ namespace sync {
   }
 
 
-  Note::Ptr SyncManager::find_note_by_uuid(const std::string & uuid)
+  NoteBase::Ptr SyncManager::find_note_by_uuid(const std::string & uuid)
   {
     return note_mgr().find_by_uri("note://gnote/" + uuid);
   }
@@ -661,19 +661,20 @@ namespace sync {
   {
     try {
       // Make list of all local notes
-      std::list<Note::Ptr> localNotes = note_mgr().get_notes();
+      std::list<NoteBase::Ptr> localNotes = note_mgr().get_notes();
 
       // Get all notes currently on server
       std::list<std::string> serverNotes = server->get_all_note_uuids();
 
       // Delete notes locally that have been deleted on the server
-      for(std::list<Note::Ptr>::iterator iter = localNotes.begin(); iter != localNotes.end(); ++iter) {
-	if(SyncManager::_obj().m_client->get_revision(*iter) != -1
-	   && std::find(serverNotes.begin(), serverNotes.end(), (*iter)->id()) == serverNotes.end()) {
+      FOREACH(const NoteBase::Ptr & iter, localNotes) {
+        Note::Ptr note = static_pointer_cast<Note>(iter);
+	if(SyncManager::_obj().m_client->get_revision(note) != -1
+	   && std::find(serverNotes.begin(), serverNotes.end(), note->id()) == serverNotes.end()) {
 	  if(m_sync_ui != 0) {
-	    m_sync_ui->note_synchronized((*iter)->get_title(), DELETE_FROM_CLIENT);
+	    m_sync_ui->note_synchronized(note->get_title(), DELETE_FROM_CLIENT);
 	  }
-	  note_mgr().delete_note(*iter);
+	  note_mgr().delete_note(note);
 	}
       }
     }
@@ -689,7 +690,7 @@ namespace sync {
   void SyncManager::create_note(const NoteUpdate & noteUpdate)
   {
     try {
-      Note::Ptr existingNote = note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
+      NoteBase::Ptr existingNote = note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
       update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
     }
     catch(std::exception & e) {

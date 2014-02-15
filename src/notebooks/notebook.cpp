@@ -133,11 +133,11 @@ namespace notebooks {
     if(!templ_tag || !notebook_tag) {
       return note;
     }
-    std::list<Note*> notes;
+    std::list<NoteBase*> notes;
     templ_tag->get_notes(notes);
-    FOREACH(Note *n, notes) {
+    FOREACH(NoteBase *n, notes) {
       if(n->contains_tag(notebook_tag)) {
-        note = n->shared_from_this();
+        note = static_pointer_cast<Note>(n->shared_from_this());
         break;
       }
     }
@@ -147,19 +147,19 @@ namespace notebooks {
 
   Note::Ptr Notebook::get_template_note() const
   {
-    Note::Ptr note = find_template_note();
+    NoteBase::Ptr note = find_template_note();
 
     if (!note) {
       std::string title = m_default_template_note_title;
       if(m_note_manager.find(title)) {
-        std::list<Note*> tag_notes;
+        std::list<NoteBase*> tag_notes;
         m_tag->get_notes(tag_notes);
         title = m_note_manager.get_unique_name(title);
       }
       note = m_note_manager.create(title, NoteManager::get_note_template_content (title));
           
       // Select the initial text
-      NoteBuffer::Ptr buffer = note->get_buffer();
+      NoteBuffer::Ptr buffer = static_pointer_cast<Note>(note)->get_buffer();
       buffer->select_note_body();
 
       // Flag this as a template note
@@ -175,21 +175,21 @@ namespace notebooks {
       note->queue_save (CONTENT_CHANGED);
     }
 
-    return note;
+    return static_pointer_cast<Note>(note);
   }
 
   Note::Ptr Notebook::create_notebook_note()
   {
-    std::string temp_title;
+    Glib::ustring temp_title;
     Note::Ptr note_template = get_template_note();
 
     temp_title = m_note_manager.get_unique_name(_("New Note"));
-    Note::Ptr note = m_note_manager.create_note_from_template(temp_title, note_template);
+    NoteBase::Ptr note = m_note_manager.create_note_from_template(temp_title, note_template);
 
     // Add the notebook tag
     note->add_tag(m_tag);
 
-    return note;
+    return static_pointer_cast<Note>(note);
   }
 
   /// <summary>
@@ -233,7 +233,7 @@ namespace notebooks {
 
   Note::Ptr SpecialNotebook::get_template_note() const
   {
-    return m_note_manager.get_or_create_template_note();
+    return static_pointer_cast<Note>(m_note_manager.get_or_create_template_note());
   }
 
 
@@ -365,9 +365,9 @@ namespace notebooks {
     return IconManager::obj().get_icon(IconManager::ACTIVE_NOTES, 22);
   }
 
-  void ActiveNotesNotebook::on_note_deleted(const Note::Ptr & note)
+  void ActiveNotesNotebook::on_note_deleted(const NoteBase::Ptr & note)
   {
-    std::set<Note::Ptr>::iterator iter = m_notes.find(note);
+    std::set<Note::Ptr>::iterator iter = m_notes.find(static_pointer_cast<Note>(note));
     if(iter != m_notes.end()) {
       m_notes.erase(iter);
       signal_size_changed();

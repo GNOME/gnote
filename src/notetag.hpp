@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,6 +34,7 @@
 
 #include "base/macros.hpp"
 #include "contrast.hpp"
+#include "tag.hpp"
 #include "sharp/exception.hpp"
 
 namespace sharp {
@@ -49,12 +50,6 @@ enum TagSaveType {
   NO_SAVE,
   META,
   CONTENT
-};
-
-enum ChangeType {
-  NO_CHANGE,
-  CONTENT_CHANGED,
-  OTHER_DATA_CHANGED
 };
 
 

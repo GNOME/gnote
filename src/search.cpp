@@ -55,9 +55,8 @@ namespace gnote {
       // Skip over notes that are template notes
     Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
-    for(Note::List::const_iterator iter = m_manager.get_notes().begin();
-        iter != m_manager.get_notes().end(); ++iter) {
-      const Note::Ptr & note(*iter);
+    FOREACH(const NoteBase::Ptr & iter, m_manager.get_notes()) {
+      Note::Ptr note(static_pointer_cast<Note>(iter));
 
       // Skip template notes
       if (note->contains_tag (template_tag)) {
@@ -66,7 +65,7 @@ namespace gnote {
         
       // Skip notes that are not in the
       // selected notebook
-      if (selected_notebook && !selected_notebook->contains_note (note))
+      if (selected_notebook && !selected_notebook->contains_note(note))
         continue;
         
       // First check the note's title for a match,

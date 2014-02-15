@@ -41,7 +41,7 @@ namespace gnote {
     set_name(_name);
   }
 
-  void Tag::add_note(Note & note)
+  void Tag::add_note(NoteBase & note)
   {
     if(m_notes.find(note.uri()) == m_notes.end()) {
       m_notes[note.uri()] = &note;
@@ -49,7 +49,7 @@ namespace gnote {
   }
 
 
-  void Tag::remove_note(const Note & note)
+  void Tag::remove_note(const NoteBase & note)
   {
     NoteMap::iterator iter = m_notes.find(note.uri());
     if(iter != m_notes.end()) {
@@ -76,7 +76,7 @@ namespace gnote {
   }
 
 
-  void Tag::get_notes(std::list<Note *> & l) const
+  void Tag::get_notes(std::list<NoteBase*> & l) const
   {
     sharp::map_get_values(m_notes, l);
   }

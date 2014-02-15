@@ -183,11 +183,11 @@ namespace gnote {
 
   private:
     bool contains_text(const Glib::ustring & text);
-    void on_note_added(const Note::Ptr &);
-    void on_note_deleted(const Note::Ptr &);
-    void on_note_renamed(const Note::Ptr&, const std::string&);
-    void do_highlight(const TrieHit<Note::WeakPtr> & , const Gtk::TextIter &,const Gtk::TextIter &);
-    void highlight_note_in_block (const Note::Ptr &, const Gtk::TextIter &,
+    void on_note_added(const NoteBase::Ptr &);
+    void on_note_deleted(const NoteBase::Ptr &);
+    void on_note_renamed(const NoteBase::Ptr&, const Glib::ustring&);
+    void do_highlight(const TrieHit<NoteBase::WeakPtr> & , const Gtk::TextIter &,const Gtk::TextIter &);
+    void highlight_note_in_block (const NoteBase::Ptr &, const Gtk::TextIter &,
                                   const Gtk::TextIter &);
     void highlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
     void unhighlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
@@ -276,9 +276,9 @@ namespace gnote {
     virtual void on_note_opened() override;
 
   private:
-    void on_tag_added(const Note&, const Tag::Ptr&);
-    void on_tag_removing(const Note&, const Tag &);
-    void on_tag_removed(const Note::Ptr&, const std::string&);
+    void on_tag_added(const NoteBase&, const Tag::Ptr&);
+    void on_tag_removing(const NoteBase&, const Tag &);
+    void on_tag_removed(const NoteBase::Ptr&, const std::string&);
 
     sigc::connection m_on_tag_added_cid;
     sigc::connection m_on_tag_removing_cid;

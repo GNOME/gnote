@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -72,7 +72,7 @@ gint ModelColumnRecord::get_column_title_num() const
     return COLUMN_TITLE;
 }
 
-const Gtk::TreeModelColumn<Note::Ptr> & ModelColumnRecord::get_column_note()
+const Gtk::TreeModelColumn<NoteBase::Ptr> & ModelColumnRecord::get_column_note()
                                           const
 {
     return m_column_note;
@@ -84,12 +84,12 @@ gint ModelColumnRecord::get_column_note_num() const
 }
 
 class ModelFiller
-  : public std::unary_function<const Note::Ptr &, void>
+  : public std::unary_function<const NoteBase::Ptr &, void>
 {
 public:
 
   ModelFiller(const Glib::RefPtr<Gtk::ListStore> & list_store);
-  void operator()(const Note::Ptr & note);
+  void operator()(const NoteBase::Ptr & note);
 
 private:
 
@@ -98,12 +98,12 @@ private:
 
 ModelFiller::ModelFiller(
                const Glib::RefPtr<Gtk::ListStore> & list_store)
-  : std::unary_function<const Note::Ptr &, void>()
+  : std::unary_function<const NoteBase::Ptr &, void>()
   , m_list_store(list_store)
 {
 }
 
-void ModelFiller::operator()(const Note::Ptr & note)
+void ModelFiller::operator()(const NoteBase::Ptr & note)
 {
   if (!note)
     return;
@@ -117,11 +117,11 @@ void ModelFiller::operator()(const Note::Ptr & note)
   row[model_column_record.get_column_note()] = note;
 }
 
-NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
+NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
                                    const std::string & old_title,
-                                   const Note::Ptr & renamed_note)
+                                   const NoteBase::Ptr & renamed_note)
   : Gtk::Dialog(_("Rename Note Links?"),
-                *dynamic_cast<Gtk::Window*>(renamed_note->get_window()->host()),
+                *dynamic_cast<Gtk::Window*>(static_pointer_cast<Note>(renamed_note)->get_window()->host()),
                 false)
   , m_notes_model(Gtk::ListStore::create(m_model_column_record))
   , m_dont_rename_button(_("_Don't Rename Links"), true)
@@ -272,7 +272,7 @@ NoteRenameDialog::NoteRenameDialog(const Note::List & notes,
 
 NoteRenameDialog::MapPtr NoteRenameDialog::get_notes() const
 {
-  const MapPtr notes(new std::map<Note::Ptr, bool>);
+  const MapPtr notes(new std::map<NoteBase::Ptr, bool>);
 
   m_notes_model->foreach_iter(
     sigc::bind(
@@ -357,11 +357,11 @@ void NoteRenameDialog::on_notes_view_row_activated(
 
   ModelColumnRecord model_column_record;
   Gtk::TreeModel::Row row = *iter;
-  const Note::Ptr note = row[model_column_record.get_column_note()];
+  const NoteBase::Ptr note = row[model_column_record.get_column_note()];
   if (!note)
     return;
 
-  MainWindow *window = MainWindow::present_default(note);
+  MainWindow *window = MainWindow::present_default(static_pointer_cast<Note>(note));
   if(window) {
     window->set_search_text(Glib::ustring::compose("\"%1\"", old_title));
     window->show_search_bar();

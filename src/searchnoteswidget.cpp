@@ -339,11 +339,11 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
     .get_or_create_notebook(new_text);
   DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook->get_name().c_str(),
           new_text.c_str());
-  std::list<Note *> notes;
+  std::list<NoteBase*> notes;
   old_notebook->get_tag()->get_notes(notes);
-  for(std::list<Note *>::const_iterator note = notes.begin(); note != notes.end(); ++note) {
+  FOREACH(NoteBase *note, notes) {
     notebooks::NotebookManager::obj().move_note_to_notebook(
-      (*note)->shared_from_this(), new_notebook);
+      static_pointer_cast<Note>(note->shared_from_this()), new_notebook);
   }
   notebooks::NotebookManager::obj().delete_notebook(old_notebook);
   Gtk::TreeIter iter;
@@ -509,9 +509,8 @@ void SearchNotesWidget::update_results()
 
   int cnt = 0;
 
-  for(Note::List::const_iterator note_iter = m_manager.get_notes().begin();
-      note_iter != m_manager.get_notes().end(); ++note_iter) {
-    const Note::Ptr & note(*note_iter);
+  FOREACH(const NoteBase::Ptr & note_iter, m_manager.get_notes()) {
+    Note::Ptr note(static_pointer_cast<Note>(note_iter));
     std::string nice_date = utils::get_pretty_print_date(note->change_date(), true);
 
     Gtk::TreeIter iter = m_store->append();
@@ -1148,26 +1147,26 @@ int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter & a, const Gtk::T
   return result;
 }
 
-void SearchNotesWidget::on_note_deleted(const Note::Ptr & note)
+void SearchNotesWidget::on_note_deleted(const NoteBase::Ptr & note)
 {
   restore_matches_window();
-  delete_note(note);
+  delete_note(static_pointer_cast<Note>(note));
 }
 
-void SearchNotesWidget::on_note_added(const Note::Ptr & note)
+void SearchNotesWidget::on_note_added(const NoteBase::Ptr & note)
 {
   restore_matches_window();
-  add_note(note);
+  add_note(static_pointer_cast<Note>(note));
 }
 
-void SearchNotesWidget::on_note_renamed(const Note::Ptr & note,
+void SearchNotesWidget::on_note_renamed(const NoteBase::Ptr & note,
                                         const std::string &)
 {
   restore_matches_window();
-  rename_note(note);
+  rename_note(static_pointer_cast<Note>(note));
 }
 
-void SearchNotesWidget::on_note_saved(const Note::Ptr&)
+void SearchNotesWidget::on_note_saved(const NoteBase::Ptr&)
 {
   restore_matches_window();
   update_results();
@@ -1317,7 +1316,7 @@ void SearchNotesWidget::new_note()
   notebooks::Notebook::Ptr notebook = get_selected_notebook();
   if(!notebook || dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
     // Just create a standard note (not in a notebook)
-    note = m_manager.create();
+    note = static_pointer_cast<Note>(m_manager.create());
   }
   else {
     // Look for the template note and create a new note

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -76,11 +76,11 @@ bool TomboyImportAddin::first_run(gnote::NoteManager & manager)
 
     for(std::list<std::string>::const_iterator iter = files.begin();
         iter != files.end(); ++iter) {
-      const std::string & file_path(*iter);
+      const Glib::ustring & file_path(*iter);
 
       to_import++;
 
-      Note::Ptr note = manager.import_note(file_path);
+      gnote::NoteBase::Ptr note = manager.import_note(file_path);
 
       if(note) {
         DBG_OUT("success");

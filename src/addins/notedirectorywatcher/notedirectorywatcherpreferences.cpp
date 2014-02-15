@@ -21,6 +21,7 @@
 #include <glibmm/i18n.h>
 
 #include "notedirectorywatcherpreferences.hpp"
+#include "preferences.hpp"
 
 namespace notedirectorywatcher {
 

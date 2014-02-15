@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 #include <gtkmm/imagemenuitem.h>
 
 #include "base/macros.hpp"
-#include "note.hpp"
+#include "notebase.hpp"
 #include "notewindow.hpp"
 
 namespace backlinks {
@@ -54,14 +54,14 @@ class BacklinkMenuItem
   : public Gtk::ImageMenuItem
 {
 public:
-  BacklinkMenuItem(const gnote::Note::Ptr &, const std::string &);
+  BacklinkMenuItem(const gnote::NoteBase::Ptr &, const std::string &);
   
-  gnote::Note::Ptr get_note()
+  gnote::NoteBase::Ptr get_note()
     { return m_note; }
 protected:
   virtual void on_activate() override;
 private:
-  gnote::Note::Ptr   m_note;
+  gnote::NoteBase::Ptr   m_note;
   std::string m_title_search;
   
   static Glib::RefPtr<Gdk::Pixbuf> get_note_icon();

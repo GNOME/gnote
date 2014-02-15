@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -81,13 +81,13 @@ namespace gnote {
       for(utils::UriList::const_iterator uri_iter = uriList.begin();
           uri_iter != uriList.end(); ++uri_iter) {
         const sharp::Uri & uri(*uri_iter);
-        Note::Ptr note = m_note_manager.find_by_uri (uri.to_string ());
+        NoteBase::Ptr note = m_note_manager.find_by_uri(uri.to_string());
         if (!note)
           continue;
 
         DBG_OUT ("Dropped into notebook: %s", note->get_title().c_str());
 
-        destNotebook->add_note(note);
+        destNotebook->add_note(static_pointer_cast<Note>(note));
       }
 
       context->drag_finish (true, false, time_);

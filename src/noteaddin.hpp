@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -101,7 +101,7 @@ public:
       return m_note->get_window();
     }
   Gtk::Window *get_host_window() const;
-  NoteManager & manager() const
+  NoteManagerBase & manager() const
     {
       return m_note->manager();
     }

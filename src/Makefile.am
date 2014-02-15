@@ -121,9 +121,11 @@ libgnote_la_SOURCES = \
 	mainwindow.hpp mainwindow.cpp \
 	mainwindowembeds.hpp mainwindowembeds.cpp \
 	noteaddin.hpp noteaddin.cpp \
+	notebase.hpp notebase.cpp \
 	notebuffer.hpp notebuffer.cpp \
 	noteeditor.hpp noteeditor.cpp \
 	notemanager.hpp notemanager.cpp \
+	notemanagerbase.hpp notemanagerbase.cpp \
 	noterenamedialog.hpp noterenamedialog.cpp \
 	notetag.hpp notetag.cpp \
 	note.hpp note.cpp \

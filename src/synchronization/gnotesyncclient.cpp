@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ namespace sync {
   }
 
 
-  void GnoteSyncClient::note_deleted_handler(const Note::Ptr & deletedNote)
+  void GnoteSyncClient::note_deleted_handler(const NoteBase::Ptr & deletedNote)
   {
     m_deleted_notes[deletedNote->id()] = deletedNote->get_title();
     m_file_revisions.erase(deletedNote->id());

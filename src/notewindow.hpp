@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -246,8 +246,8 @@ private:
   void on_save_size_check_button_toggled();
   void on_save_selection_check_button_toggled();
   void on_save_title_check_button_toggled();
-  void on_note_tag_added(const Note&, const Tag::Ptr&);
-  void on_note_tag_removed(const Note::Ptr&, const std::string&);
+  void on_note_tag_added(const NoteBase&, const Tag::Ptr&);
+  void on_note_tag_removed(const NoteBase::Ptr&, const std::string&);
   void link_button_clicked();
   void open_help_activate();
   void change_depth_right_handler();

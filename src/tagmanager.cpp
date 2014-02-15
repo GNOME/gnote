@@ -212,11 +212,10 @@ namespace gnote {
         DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
         tag_removed = true;
 
-        std::list<Note*> notes;
+        std::list<NoteBase*> notes;
         tag->get_notes(notes);
-        for(std::list<Note*>::const_iterator note_iter = notes.begin();
-            note_iter != notes.end(); ++note_iter) {
-          (*note_iter)->remove_tag(tag);
+        FOREACH(NoteBase *note_iter, notes) {
+          note_iter->remove_tag(tag);
         }
       }
     }

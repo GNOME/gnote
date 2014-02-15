@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -73,10 +73,10 @@ public:
   virtual std::string Version() override;
 
 private:
-  void on_note_added(const Note::Ptr &);
-  void on_note_deleted(const Note::Ptr &);
-  void on_note_saved(const Note::Ptr &);
-  MainWindow & present_note(const Note::Ptr &);
+  void on_note_added(const NoteBase::Ptr &);
+  void on_note_deleted(const NoteBase::Ptr &);
+  void on_note_saved(const NoteBase::Ptr &);
+  MainWindow & present_note(const NoteBase::Ptr &);
 
   NoteManager & m_manager;
 };

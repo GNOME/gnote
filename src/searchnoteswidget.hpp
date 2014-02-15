@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -107,10 +107,10 @@ private:
   bool show_all_search_results();
   void matches_column_data_func(Gtk::CellRenderer *, const Gtk::TreeIter &);
   int compare_search_hits(const Gtk::TreeIter & , const Gtk::TreeIter &);
-  void on_note_deleted(const Note::Ptr & note);
-  void on_note_added(const Note::Ptr & note);
-  void on_note_renamed(const Note::Ptr&, const std::string&);
-  void on_note_saved(const Note::Ptr&);
+  void on_note_deleted(const NoteBase::Ptr & note);
+  void on_note_added(const NoteBase::Ptr & note);
+  void on_note_renamed(const NoteBase::Ptr&, const std::string&);
+  void on_note_saved(const NoteBase::Ptr&);
   void delete_note(const Note::Ptr & note);
   void add_note(const Note::Ptr & note);
   void rename_note(const Note::Ptr & note);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -291,7 +291,7 @@ namespace gnote {
       search_wgt->new_note();
     }
     else {
-      present_note(m_note_manager.create());
+      present_note(static_pointer_cast<Note>(m_note_manager.create()));
     }
   }
 

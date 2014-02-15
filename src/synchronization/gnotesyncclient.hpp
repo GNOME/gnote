@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ namespace sync {
   private:
     static const char *LOCAL_MANIFEST_FILE_NAME;
 
-    void note_deleted_handler(const Note::Ptr &);
+    void note_deleted_handler(const NoteBase::Ptr &);
     void on_changed(const Glib::RefPtr<Gio::File>&, const Glib::RefPtr<Gio::File>&,
                     Gio::FileMonitorEvent);
     void parse(const std::string & manifest_path);

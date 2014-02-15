@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -205,9 +205,9 @@ namespace gnote {
 
   void GnotePrefsKeybinder::key_openstart_here()
   {
-    Note::Ptr note = m_manager.find_by_uri (m_manager.start_note_uri());
+    NoteBase::Ptr note = m_manager.find_by_uri(m_manager.start_note_uri());
     if (note) {
-      IGnote::obj().open_note(note);
+      IGnote::obj().open_note(static_pointer_cast<Note>(note));
     }
   }
 
@@ -215,7 +215,7 @@ namespace gnote {
   void GnotePrefsKeybinder::key_create_new_note()
   {
     try {
-      Note::Ptr new_note = m_manager.create();
+      Note::Ptr new_note = static_pointer_cast<Note>(m_manager.create());
       IGnote::obj().open_note(new_note);
     } 
     catch (...) {

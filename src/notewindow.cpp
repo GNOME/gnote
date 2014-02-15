@@ -331,7 +331,7 @@ namespace gnote {
   {
     // Prompt for note deletion
     std::list<Note::Ptr> single_note_list;
-    single_note_list.push_back(m_note.shared_from_this());
+    single_note_list.push_back(static_pointer_cast<Note>(m_note.shared_from_this()));
     noteutils::show_deletion_dialog(single_note_list, dynamic_cast<Gtk::Window*>(host()));
   }
 
@@ -492,8 +492,8 @@ namespace gnote {
       bar->show_all();
     }
 
-    m_note.signal_tag_added().connect(sigc::mem_fun(*this, &NoteWindow::on_note_tag_added));
-    m_note.signal_tag_removed().connect(sigc::mem_fun(*this, &NoteWindow::on_note_tag_removed));
+    m_note.signal_tag_added.connect(sigc::mem_fun(*this, &NoteWindow::on_note_tag_added));
+    m_note.signal_tag_removed.connect(sigc::mem_fun(*this, &NoteWindow::on_note_tag_removed));
 
     return bar;
   }
@@ -538,7 +538,7 @@ namespace gnote {
   }
 
 
-  void NoteWindow::on_note_tag_added(const Note&, const Tag::Ptr & tag)
+  void NoteWindow::on_note_tag_added(const NoteBase&, const Tag::Ptr & tag)
   {
     if(tag == m_template_tag) {
       m_template_widget->show_all();
@@ -546,7 +546,7 @@ namespace gnote {
   }
 
 
-  void NoteWindow::on_note_tag_removed(const Note::Ptr&, const std::string & tag)
+  void NoteWindow::on_note_tag_removed(const NoteBase::Ptr&, const std::string & tag)
   {
     if(tag == m_template_tag->normalized_name()) {
       m_template_widget->hide();
@@ -562,16 +562,16 @@ namespace gnote {
   //
   void NoteWindow::link_button_clicked()
   {
-    std::string select = m_note.get_buffer()->get_selection();
+    Glib::ustring select = m_note.get_buffer()->get_selection();
     if (select.empty())
       return;
     
-    std::string body_unused;
-    std::string title = NoteManager::split_title_from_content(select, body_unused);
+    Glib::ustring body_unused;
+    Glib::ustring title = NoteManagerBase::split_title_from_content(select, body_unused);
     if (title.empty())
       return;
 
-    Note::Ptr match = m_note.manager().find(title);
+    NoteBase::Ptr match = m_note.manager().find(title);
     if (!match) {
       try {
         match = m_note.manager().create(select);
@@ -592,7 +592,7 @@ namespace gnote {
       m_note.get_buffer()->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
     }
 
-    host()->embed_widget(*match->get_window());
+    host()->embed_widget(*static_pointer_cast<Note>(match)->get_window());
   }
 
   void NoteWindow::open_help_activate()

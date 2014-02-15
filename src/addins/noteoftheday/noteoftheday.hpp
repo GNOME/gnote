@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2014 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -40,27 +41,27 @@ class NoteOfTheDay
 {
 public:
 
-  static gnote::Note::Ptr create(gnote::NoteManager & manager,
+  static gnote::NoteBase::Ptr create(gnote::NoteManager & manager,
                                  const Glib::Date & date);
   static void cleanup_old(gnote::NoteManager & manager);
   static std::string get_content(const Glib::Date & date,
                                  const gnote::NoteManager & manager);
-  static gnote::Note::Ptr get_note_by_date(
+  static gnote::NoteBase::Ptr get_note_by_date(
                             gnote::NoteManager & manager,
                             const Glib::Date & date);
   static std::string get_template_content(
                        const std::string & title);
   static std::string get_title(const Glib::Date & date);
-  static bool has_changed(const gnote::Note::Ptr & note);
+  static bool has_changed(const gnote::NoteBase::Ptr & note);
 
-  static const std::string s_template_title;
+  static const Glib::ustring s_template_title;
 
 private:
 
   static std::string get_content_without_title(
                        const std::string & content);
 
-  static const std::string s_title_prefix;
+  static const Glib::ustring s_title_prefix;
 };
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -52,8 +52,8 @@ namespace notebooks {
 
   private:
     void initialize_tool_button();
-    void on_note_tag_added(const Note &, const Tag::Ptr &);
-    void on_note_tag_removed(const Note::Ptr &, const std::string &);
+    void on_note_tag_added(const NoteBase &, const Tag::Ptr &);
+    void on_note_tag_removed(const NoteBase::Ptr &, const std::string &);
     void update_button_sensitivity(bool);
     void on_menu_shown();
     void on_note_added_to_notebook(const Note &, const Notebook::Ptr &);

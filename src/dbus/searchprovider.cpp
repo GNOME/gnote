@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -152,7 +152,7 @@ std::vector<std::map<Glib::ustring, Glib::ustring> > SearchProvider::GetResultMe
 {
   std::vector<std::map<Glib::ustring, Glib::ustring> > ret;
   for(std::vector<Glib::ustring>::const_iterator iter = identifiers.begin(); iter != identifiers.end(); ++iter) {
-    gnote::Note::Ptr note = m_manager.find_by_uri(*iter);
+    gnote::NoteBase::Ptr note = m_manager.find_by_uri(*iter);
     if(note == 0) {
       continue;
     }
@@ -196,9 +196,9 @@ void SearchProvider::ActivateResult(const Glib::ustring & identifier,
                                     const std::vector<Glib::ustring> & /*terms*/,
                                     guint32 /*timestamp*/)
 {
-  gnote::Note::Ptr note = m_manager.find_by_uri(identifier);
+  gnote::NoteBase::Ptr note = m_manager.find_by_uri(identifier);
   if(note != 0) {
-    gnote::IGnote::obj().open_note(note);
+    gnote::IGnote::obj().open_note(static_pointer_cast<gnote::Note>(note));
   }
 }
 

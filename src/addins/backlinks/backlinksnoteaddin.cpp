@@ -93,8 +93,8 @@ void BacklinksNoteAddin::update_menu(Gtk::Menu *menu)
 
 void BacklinksNoteAddin::get_backlink_menu_items(std::list<BacklinkMenuItem*> & items)
 {
-  gnote::Note::List notes = get_note()->manager().get_notes_linking_to(get_note()->get_title());
-  FOREACH(const gnote::Note::Ptr & note, notes) {
+  gnote::NoteBase::List notes = get_note()->manager().get_notes_linking_to(get_note()->get_title());
+  FOREACH(const gnote::NoteBase::Ptr & note, notes) {
     if(note != get_note()) { // don't match ourself
       BacklinkMenuItem *item = manage(new BacklinkMenuItem(note, get_note()->get_title()));
 

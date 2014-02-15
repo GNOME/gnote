@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -188,14 +188,14 @@ namespace gnote {
         m_notebookMap.erase (map_iter);
         
         // Remove the notebook tag from every note that's in the notebook
-        std::list<Note *> notes;
+        std::list<NoteBase*> notes;
         Tag::Ptr tag = notebook->get_tag();
         if(tag) {
           tag->get_notes(notes);
         }
-        FOREACH(Note *note, notes) {
+        FOREACH(NoteBase *note, notes) {
           note->remove_tag (notebook->get_tag());
-          m_note_removed_from_notebook (*note, notebook);
+          m_note_removed_from_notebook (*static_cast<Note*>(note), notebook);
         }
 //      }
     }
@@ -242,7 +242,7 @@ namespace gnote {
     /// <returns>
     /// A <see cref="Notebook"/>
     /// </returns>
-    Notebook::Ptr NotebookManager::get_notebook_from_note(const Note::Ptr & note)
+    Notebook::Ptr NotebookManager::get_notebook_from_note(const NoteBase::Ptr & note)
     {
       std::list<Tag::Ptr> tags;
       note->get_tags(tags);

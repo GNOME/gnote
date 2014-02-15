@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -78,12 +78,10 @@ namespace gnote {
 
       NoteManager & nm(note_manager());
 
-      for(Note::List::const_iterator iter = nm.get_notes().begin();
-          iter != nm.get_notes().end(); ++iter) {
-        const Note::Ptr & note(*iter);
-        note->signal_tag_added().connect(
+      FOREACH(const NoteBase::Ptr & note, nm.get_notes()) {
+        note->signal_tag_added.connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_added));
-        note->signal_tag_removed().connect(
+        note->signal_tag_removed.connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_removed));
       }
        
@@ -197,7 +195,7 @@ namespace gnote {
     }
 
 
-    void NotebookApplicationAddin::on_tag_added(const Note & note, const Tag::Ptr& tag)
+    void NotebookApplicationAddin::on_tag_added(const NoteBase & note, const Tag::Ptr& tag)
     {
       if (NotebookManager::obj().is_adding_notebook()) {
         return;
@@ -215,12 +213,12 @@ namespace gnote {
       Notebook::Ptr notebook =
         NotebookManager::obj().get_or_create_notebook (notebookName);
         
-      NotebookManager::obj().signal_note_added_to_notebook() (note, notebook);
+      NotebookManager::obj().signal_note_added_to_notebook() (static_cast<const Note&>(note), notebook);
     }
 
     
 
-    void NotebookApplicationAddin::on_tag_removed(const Note::Ptr& note, 
+    void NotebookApplicationAddin::on_tag_removed(const NoteBase::Ptr& note, 
                                                   const std::string& normalizedTagName)
     {
       std::string megaPrefix(Tag::SYSTEM_TAG_PREFIX);
@@ -239,19 +237,19 @@ namespace gnote {
         return;
       }
       
-      NotebookManager::obj().signal_note_removed_from_notebook() (*note, notebook);
+      NotebookManager::obj().signal_note_removed_from_notebook() (*static_pointer_cast<Note>(note), notebook);
     }
 
-    void NotebookApplicationAddin::on_note_added(const Note::Ptr & note)
+    void NotebookApplicationAddin::on_note_added(const NoteBase::Ptr & note)
     {
-        note->signal_tag_added().connect(
+        note->signal_tag_added.connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_added));
-        note->signal_tag_removed().connect(
+        note->signal_tag_removed.connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_removed));
     }
 
 
-    void NotebookApplicationAddin::on_note_deleted(const Note::Ptr &)
+    void NotebookApplicationAddin::on_note_deleted(const NoteBase::Ptr &)
     {
       // remove the signal to the note...
     }

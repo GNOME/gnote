@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -1092,10 +1092,10 @@ namespace gnote {
 
   void  PreferencesDialog::open_template_button_clicked()
   {
-    Note::Ptr template_note = m_note_manager.get_or_create_template_note ();
+    NoteBase::Ptr template_note = m_note_manager.get_or_create_template_note();
 
     // Open the template note
-    IGnote::obj().open_note(template_note);
+    IGnote::obj().open_note(static_pointer_cast<Note>(template_note));
   }
 
 

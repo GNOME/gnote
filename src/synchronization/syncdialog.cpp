@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -421,9 +421,9 @@ void SyncDialog::on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeVi
   std::string noteTitle;
   iter->get_value(0, noteTitle);
 
-  Note::Ptr note = m_manager.find(noteTitle);
+  NoteBase::Ptr note = m_manager.find(noteTitle);
   if(note != 0) {
-    present_note(note);
+    present_note(static_pointer_cast<Note>(note));
   }
 }
 
@@ -728,7 +728,7 @@ void SyncDialog::rename_note(const Note::Ptr & note, const std::string & newTitl
 
   // Create note with old XmlContent just in case GetCompleteNoteXml failed
   DBG_OUT("RenameNote: about to create %s", newTitle.c_str());
-  Note::Ptr renamedNote = m_manager.create(newTitle, newContent);
+  Note::Ptr renamedNote = static_pointer_cast<Note>(m_manager.create(newTitle, newContent));
   if(newCompleteContent != "") {// TODO: Anything to do if it is null?
     try {
       renamedNote->load_foreign_note_xml(newCompleteContent, OTHER_DATA_CHANGED);

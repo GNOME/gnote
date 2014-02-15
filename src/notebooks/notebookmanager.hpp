@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -78,7 +78,7 @@ public:
   bool add_notebook(const Notebook::Ptr &);
   void delete_notebook(const Notebook::Ptr &);
   bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter & );
-  Notebook::Ptr get_notebook_from_note(const Note::Ptr &);
+  Notebook::Ptr get_notebook_from_note(const NoteBase::Ptr &);
   Notebook::Ptr get_notebook_from_tag(const Tag::Ptr &);
   static bool is_notebook_tag(const Tag::Ptr &);
   static Notebook::Ptr prompt_create_new_notebook(Gtk::Window *);

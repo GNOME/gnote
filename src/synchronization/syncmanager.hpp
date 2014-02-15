@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,8 +57,8 @@ namespace sync {
         return static_cast<SyncManager&>(obj());
       }
     void _init(NoteManager &);
-    void handle_note_saved_or_deleted(const Note::Ptr & note);
-    void handle_note_buffer_changed(const Note::Ptr & note);
+    void handle_note_saved_or_deleted(const NoteBase::Ptr & note);
+    void handle_note_buffer_changed(const NoteBase::Ptr & note);
     void preferences_setting_changed(const Glib::ustring & key);
     void update_sync_action();
     void background_sync_checker();
@@ -68,8 +68,8 @@ namespace sync {
     void create_note_in_main_thread(const NoteUpdate & noteUpdate);
     void update_note_in_main_thread(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
     void delete_note_in_main_thread(const Note::Ptr & existingNote);
-    void update_local_note(const Note::Ptr & localNote, const NoteUpdate & serverNote, NoteSyncType syncType);
-    Note::Ptr find_note_by_uuid(const std::string & uuid);
+    void update_local_note(const NoteBase::Ptr & localNote, const NoteUpdate & serverNote, NoteSyncType syncType);
+    NoteBase::Ptr find_note_by_uuid(const std::string & uuid);
     NoteManager & note_mgr();
     void get_synchronized_xml_bits(const std::string & noteXml, std::string & title, std::string & tags, std::string & content);
     void delete_notes(const SyncServer::Ptr & server);

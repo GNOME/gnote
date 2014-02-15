@@ -210,7 +210,7 @@ namespace gnote {
   {
     std::string title = get_window()->get_name();
 
-    Note::Ptr existing = manager().find (title);
+    NoteBase::Ptr existing = manager().find (title);
     if (existing && (existing != get_note())) {
       show_name_clash_error (title, only_warn);
       return false;
@@ -784,7 +784,7 @@ namespace gnote {
   }
 
 
-  void NoteLinkWatcher::on_note_added(const Note::Ptr & added)
+  void NoteLinkWatcher::on_note_added(const NoteBase::Ptr & added)
   {
     if (added == get_note()) {
       return;
@@ -798,7 +798,7 @@ namespace gnote {
     highlight_in_block (get_buffer()->begin(), get_buffer()->end());
   }
 
-  void NoteLinkWatcher::on_note_deleted(const Note::Ptr & deleted)
+  void NoteLinkWatcher::on_note_deleted(const NoteBase::Ptr & deleted)
   {
     if (deleted == get_note()) {
       return;
@@ -823,7 +823,7 @@ namespace gnote {
   }
 
 
-  void NoteLinkWatcher::on_note_renamed(const Note::Ptr& renamed, const std::string& /*old_title*/)
+  void NoteLinkWatcher::on_note_renamed(const NoteBase::Ptr& renamed, const Glib::ustring& /*old_title*/)
   {
     if (renamed == get_note()) {
       return;
@@ -831,12 +831,12 @@ namespace gnote {
 
     // Highlight previously unlinked text
     if (contains_text (renamed->get_title())) {
-      highlight_note_in_block (renamed, get_buffer()->begin(), get_buffer()->end());
+      highlight_note_in_block(static_pointer_cast<Note>(renamed), get_buffer()->begin(), get_buffer()->end());
     }
   }
 
   
-  void NoteLinkWatcher::do_highlight(const TrieHit<Note::WeakPtr> & hit,
+  void NoteLinkWatcher::do_highlight(const TrieHit<NoteBase::WeakPtr> & hit,
                                      const Gtk::TextIter & start,
                                      const Gtk::TextIter &)
   {
@@ -853,7 +853,7 @@ namespace gnote {
       return;
     }
       
-    Note::Ptr hit_note(hit.value());
+    NoteBase::Ptr hit_note(hit.value());
 
     if (hit.key().lowercase() != hit_note->get_title().lowercase()) { // == 0 if same string
       DBG_OUT ("DoHighlight: '%s' links wrongly to note '%s'." ,
@@ -900,7 +900,7 @@ namespace gnote {
     }
   }
 
-  void NoteLinkWatcher::highlight_note_in_block (const Note::Ptr & find_note, 
+  void NoteLinkWatcher::highlight_note_in_block (const NoteBase::Ptr & find_note,
                                                  const Gtk::TextIter & start,
                                                  const Gtk::TextIter & end)
   {
@@ -913,7 +913,7 @@ namespace gnote {
       if (idx < 0)
         break;
 
-      TrieHit<Note::WeakPtr> hit(idx, idx + find_title_lower.length(),
+      TrieHit<NoteBase::WeakPtr> hit(idx, idx + find_title_lower.length(),
                              find_title_lower, find_note);
       do_highlight (hit, start, end);
 
@@ -926,8 +926,8 @@ namespace gnote {
   void NoteLinkWatcher::highlight_in_block(const Gtk::TextIter & start,
                                            const Gtk::TextIter & end)
   {
-    TrieHit<Note::WeakPtr>::ListPtr hits = manager().find_trie_matches (start.get_slice (end));
-    for(TrieHit<Note::WeakPtr>::List::const_iterator iter = hits->begin();
+    TrieHit<NoteBase::WeakPtr>::ListPtr hits = manager().find_trie_matches (start.get_slice (end));
+    for(TrieHit<NoteBase::WeakPtr>::List::const_iterator iter = hits->begin();
         iter != hits->end(); ++iter) {
       do_highlight (**iter, start, end);
     }
@@ -978,7 +978,7 @@ namespace gnote {
     if (tag->property_name() != get_note()->get_tag_table()->get_link_tag()->property_name())
       return;
     std::string link_name = start.get_text (end);
-    Note::Ptr link = manager().find (link_name);
+    NoteBase::Ptr link = manager().find(link_name);
     if(!link)
         unhighlight_in_block(start, end);
   }
@@ -989,7 +989,7 @@ namespace gnote {
                                             const Gtk::TextIter & end)
   {
     std::string link_name = start.get_text (end);
-    Note::Ptr link = manager().find (link_name);
+    NoteBase::Ptr link = manager().find(link_name);
 
     if (!link) {
       DBG_OUT("Creating note '%s'...", link_name.c_str());
@@ -1016,7 +1016,7 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      MainWindow::present_default(link);
+      MainWindow::present_default(static_pointer_cast<Note>(link));
       return true;
     }
 
@@ -1299,12 +1299,12 @@ namespace gnote {
   void NoteTagsWatcher::initialize ()
   {
 #ifdef DEBUG
-    m_on_tag_added_cid = get_note()->signal_tag_added().connect(
+    m_on_tag_added_cid = get_note()->signal_tag_added.connect(
       sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_added));
-    m_on_tag_removing_cid = get_note()->signal_tag_removing().connect(
+    m_on_tag_removing_cid = get_note()->signal_tag_removing.connect(
       sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removing));
 #endif
-    m_on_tag_removed_cid = get_note()->signal_tag_removed().connect(
+    m_on_tag_removed_cid = get_note()->signal_tag_removed.connect(
       sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removed));      
   }
 
@@ -1327,20 +1327,20 @@ namespace gnote {
   }
 
 #ifdef DEBUG
-  void NoteTagsWatcher::on_tag_added(const Note& DBG(note), const Tag::Ptr& DBG(tag))
+  void NoteTagsWatcher::on_tag_added(const NoteBase& DBG(note), const Tag::Ptr& DBG(tag))
   {
     DBG_OUT ("Tag added to %s: %s", note.get_title().c_str(), tag->name().c_str());
   }
 
 
-  void NoteTagsWatcher::on_tag_removing(const Note& note, const Tag & tag)
+  void NoteTagsWatcher::on_tag_removing(const NoteBase& note, const Tag & tag)
   {
     DBG_OUT ("Removing tag from %s: %s", note.get_title().c_str(), tag.name().c_str());
   }
 #endif
 
 
-  void NoteTagsWatcher::on_tag_removed(const Note::Ptr&, const std::string& tag_name)
+  void NoteTagsWatcher::on_tag_removed(const NoteBase::Ptr&, const std::string& tag_name)
   {
     Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag->popularity() : 0);

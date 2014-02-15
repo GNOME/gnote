@@ -26,6 +26,7 @@
 #include "notedirectorywatcherapplicationaddin.hpp"
 #include "notedirectorywatcherpreferencesfactory.hpp"
 #include "notemanager.hpp"
+#include "preferences.hpp"
 #include "sharp/files.hpp"
 #include "sharp/string.hpp"
 
@@ -49,7 +50,7 @@ NoteDirectoryWatcherApplicationAddin::NoteDirectoryWatcherApplicationAddin()
 void NoteDirectoryWatcherApplicationAddin::initialize()
 {
   gnote::NoteManager & manager(note_manager());
-  std::string note_path = manager.get_notes_dir();
+  const Glib::ustring & note_path = manager.notes_dir();
   m_signal_note_saved_cid = manager.signal_note_saved
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::handle_note_saved));
 
@@ -82,7 +83,7 @@ bool NoteDirectoryWatcherApplicationAddin::initialized()
   return m_initialized;
 }
 
-void NoteDirectoryWatcherApplicationAddin::handle_note_saved(const gnote::Note::Ptr & note)
+void NoteDirectoryWatcherApplicationAddin::handle_note_saved(const gnote::NoteBase::Ptr & note)
 {
   m_note_save_times[note->id()] = sharp::DateTime::now();
 }
@@ -202,7 +203,7 @@ void NoteDirectoryWatcherApplicationAddin::delete_note(const std::string & note_
 
   std::string note_uri = make_uri(note_id);
 
-  gnote::Note::Ptr note_to_delete = note_manager().find_by_uri(note_uri);
+  gnote::NoteBase::Ptr note_to_delete = note_manager().find_by_uri(note_uri);
   if(note_to_delete != 0) {
     note_manager().delete_note(note_to_delete);
   }
@@ -213,8 +214,7 @@ void NoteDirectoryWatcherApplicationAddin::delete_note(const std::string & note_
 
 void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string & note_id)
 {
-  std::string note_path = Glib::build_filename(
-    note_manager().get_notes_dir(), note_id + ".note");
+  const Glib::ustring & note_path = Glib::build_filename(note_manager().notes_dir(), note_id + ".note");
   if (!sharp::file_exists(note_path)) {
     DBG_OUT("NoteDirectoryWatcher: Not processing update of %s because file does not exist.", note_path.c_str());
     return;
@@ -244,7 +244,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
 
   std::string note_uri = make_uri(note_id);
 
-  gnote::Note::Ptr note = note_manager().find_by_uri(note_uri);
+  gnote::NoteBase::Ptr note = note_manager().find_by_uri(note_uri);
 
   bool is_new_note = false;
 

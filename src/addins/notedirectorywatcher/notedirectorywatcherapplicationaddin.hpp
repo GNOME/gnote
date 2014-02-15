@@ -25,6 +25,7 @@
 
 #include <glibmm/threads.h>
 #include <giomm/filemonitor.h>
+#include <giomm/settings.h>
 
 #include "base/macros.hpp"
 #include "applicationaddin.hpp"
@@ -68,7 +69,7 @@ private:
   static std::string make_uri(const std::string & note_id);
 
   NoteDirectoryWatcherApplicationAddin();
-  void handle_note_saved(const gnote::Note::Ptr &);
+  void handle_note_saved(const gnote::NoteBase::Ptr &);
   void handle_file_system_change_event(const Glib::RefPtr<Gio::File> & file,
                                        const Glib::RefPtr<Gio::File> & other_file,
                                        Gio::FileMonitorEvent event_type);

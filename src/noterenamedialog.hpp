@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -56,7 +56,7 @@ public:
   const Gtk::TreeModelColumn<std::string> & get_column_title() const;
   gint get_column_title_num() const;
 
-  const Gtk::TreeModelColumn<Note::Ptr> & get_column_note() const;
+  const Gtk::TreeModelColumn<NoteBase::Ptr> & get_column_note() const;
   gint get_column_note_num() const;
 
 private:
@@ -70,7 +70,7 @@ private:
 
   Gtk::TreeModelColumn<bool> m_column_selected;
   Gtk::TreeModelColumn<std::string> m_column_title;
-  Gtk::TreeModelColumn<Note::Ptr> m_column_note;
+  Gtk::TreeModelColumn<NoteBase::Ptr> m_column_note;
 };
 
 class NoteRenameDialog
@@ -78,11 +78,11 @@ class NoteRenameDialog
 {
 public:
 
-  typedef shared_ptr<std::map<Note::Ptr, bool> > MapPtr;
+  typedef shared_ptr<std::map<NoteBase::Ptr, bool> > MapPtr;
 
-  NoteRenameDialog(const Note::List & notes,
+  NoteRenameDialog(const NoteBase::List & notes,
                    const std::string & old_title,
-                   const Note::Ptr & renamed_note);
+                   const NoteBase::Ptr & renamed_note);
   MapPtr get_notes() const;
   NoteRenameBehavior get_selected_behavior() const;
 

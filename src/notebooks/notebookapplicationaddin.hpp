@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,10 +50,10 @@ namespace gnote {
       void add_menu_items(Gtk::Menu *, std::list<Gtk::MenuItem*> & menu_items);
       void remove_menu_items(Gtk::Menu *, std::list<Gtk::MenuItem*> & menu_items);
       void on_new_notebook_menu_item();
-      void on_tag_added(const Note&, const Tag::Ptr&);
-      void on_tag_removed(const Note::Ptr&, const std::string&);
-      void on_note_added(const Note::Ptr &);
-      void on_note_deleted(const Note::Ptr &);
+      void on_tag_added(const NoteBase&, const Tag::Ptr&);
+      void on_tag_removed(const NoteBase::Ptr&, const std::string&);
+      void on_note_added(const NoteBase::Ptr &);
+      void on_note_deleted(const NoteBase::Ptr &);
       void on_new_notebook_action(const Glib::VariantBase&);
 
       bool m_initialized;

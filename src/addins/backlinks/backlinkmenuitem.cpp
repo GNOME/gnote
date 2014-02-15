@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 
 #include "ignote.hpp"
 #include "iconmanager.hpp"
+#include "note.hpp"
 #include "notewindow.hpp"
 
 #include "backlinkmenuitem.hpp"
@@ -81,7 +82,7 @@ Glib::RefPtr<Gdk::Pixbuf> BacklinkMenuItem::get_note_icon()
 }
 
 
-BacklinkMenuItem::BacklinkMenuItem(const gnote::Note::Ptr & note,
+BacklinkMenuItem::BacklinkMenuItem(const gnote::NoteBase::Ptr & note,
                                    const std::string & title_search)
   : Gtk::ImageMenuItem(note->get_title())
   , m_note(note)
@@ -97,7 +98,7 @@ void BacklinkMenuItem::on_activate()
     return;
   }
 
-  gnote::MainWindow::present_in_new_window(m_note,
+  gnote::MainWindow::present_in_new_window(static_pointer_cast<gnote::Note>(m_note),
     gnote::Preferences::obj().get_schema_settings(gnote::Preferences::SCHEMA_GNOTE)->
       get_boolean(gnote::Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  * Copyright (C) 2009-2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,18 +29,18 @@
 
 namespace noteoftheday {
 
-const std::string NoteOfTheDay::s_template_title
+const Glib::ustring NoteOfTheDay::s_template_title
                                   = _("Today: Template");
-const std::string NoteOfTheDay::s_title_prefix
+const Glib::ustring NoteOfTheDay::s_title_prefix
                                   = _("Today: ");
 
-gnote::Note::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
+gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
                                       const Glib::Date & date)
 {
   const std::string title = get_title(date);
   const std::string xml = get_content(date, manager);
 
-  gnote::Note::Ptr notd;
+  gnote::NoteBase::Ptr notd;
   try {
     notd = manager.create(title, xml);
   }
@@ -49,7 +49,7 @@ gnote::Note::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
     ERR_OUT(_("NoteOfTheDay could not create %s: %s"),
             title.c_str(),
             e.what());
-    return gnote::Note::Ptr();
+    return gnote::NoteBase::Ptr();
   }
 
   // Automatically tag all new Note of the Day notes
@@ -61,16 +61,15 @@ gnote::Note::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
 
 void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
 {
-  gnote::Note::List kill_list;
-  const gnote::Note::List & notes = manager.get_notes();
+  gnote::NoteBase::List kill_list;
+  const gnote::NoteBase::List & notes = manager.get_notes();
 
   Glib::Date date;
   date.set_time_current(); // time set to 00:00:00
 
-  for (gnote::Note::List::const_iterator iter = notes.begin();
-       notes.end() != iter; iter++) {
-    const std::string & title = (*iter)->get_title();
-    const sharp::DateTime & date_time = (*iter)->create_date();
+  FOREACH(const gnote::NoteBase::Ptr & note, notes) {
+    const Glib::ustring & title = note->get_title();
+    const sharp::DateTime & date_time = note->create_date();
 
     if (true == Glib::str_has_prefix(title, s_title_prefix)
         && s_template_title != title
@@ -78,16 +77,14 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
              date_time.day(),
              static_cast<Glib::Date::Month>(date_time.month()),
              date_time.year()) != date
-        && !has_changed(*iter)) {
-      kill_list.push_back(*iter);
+        && !has_changed(note)) {
+      kill_list.push_back(note);
     }
   }
 
-  for (gnote::Note::List::const_iterator iter = kill_list.begin();
-       kill_list.end() != iter; iter++) {
-    DBG_OUT("NoteOfTheDay: Deleting old unmodified '%s'",
-            (*iter)->get_title().c_str());
-    manager.delete_note(*iter);
+  FOREACH(gnote::NoteBase::Ptr & note, kill_list) {
+    DBG_OUT("NoteOfTheDay: Deleting old unmodified '%s'", note->get_title().c_str());
+    manager.delete_note(note);
   }
 }
 
@@ -98,8 +95,7 @@ std::string NoteOfTheDay::get_content(
   const std::string title = get_title(date);
 
   // Attempt to load content from template
-  const gnote::Note::Ptr template_note = manager.find(
-                                                   s_template_title);
+  const gnote::NoteBase::Ptr template_note = manager.find(s_template_title);
 
   if (0 != template_note) {
     std::string xml_content = template_note->xml_content();
@@ -123,16 +119,15 @@ std::string NoteOfTheDay::get_content_without_title(
     return std::string();
 }
 
-gnote::Note::Ptr NoteOfTheDay::get_note_by_date(
+gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(
                                  gnote::NoteManager & manager,
                                  const Glib::Date & date)
 {
-  const gnote::Note::List & notes = manager.get_notes();
+  const gnote::NoteBase::List & notes = manager.get_notes();
 
-  for (gnote::Note::List::const_iterator iter = notes.begin();
-       notes.end() != iter; iter++) {
-    const std::string & title = (*iter)->get_title();
-    const sharp::DateTime & date_time = (*iter)->create_date();
+  FOREACH(gnote::NoteBase::Ptr note, notes) {
+    const Glib::ustring & title = note->get_title();
+    const sharp::DateTime & date_time = note->create_date();
 
     if (true == Glib::str_has_prefix(title, s_title_prefix)
         && s_template_title != title
@@ -140,7 +135,7 @@ gnote::Note::Ptr NoteOfTheDay::get_note_by_date(
              date_time.day(),
              static_cast<Glib::Date::Month>(date_time.month()),
              date_time.year()) == date) {
-      return *iter;
+      return note;
     }
   }
 
@@ -167,7 +162,7 @@ std::string NoteOfTheDay::get_title(const Glib::Date & date)
   return s_title_prefix + date.format_string(_("%A, %B %d %Y"));
 }
 
-bool NoteOfTheDay::has_changed(const gnote::Note::Ptr & note)
+bool NoteOfTheDay::has_changed(const gnote::NoteBase::Ptr & note)
 {
   const sharp::DateTime & date_time = note->create_date();
   const std::string original_xml
@@ -175,9 +170,9 @@ bool NoteOfTheDay::has_changed(const gnote::Note::Ptr & note)
                     date_time.day(),
                     static_cast<Glib::Date::Month>(date_time.month()),
                     date_time.year()),
-                  note->manager());
+                    *static_cast<gnote::NoteManager*>(&note->manager()));
 
-  return get_content_without_title(note->text_content())
+  return get_content_without_title(static_pointer_cast<gnote::Note>(note)->text_content())
            == get_content_without_title(
                 gnote::utils::XmlDecoder::decode(original_xml))
          ? false

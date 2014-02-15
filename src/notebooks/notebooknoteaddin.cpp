@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -91,25 +91,25 @@ namespace notebooks {
     m_note_removed_cid = NotebookManager::obj().signal_note_removed_from_notebook()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_removed_from_notebook));
 
-    get_note()->signal_tag_added()
+    get_note()->signal_tag_added
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_tag_added));
 
     // TODO: Make sure this is handled in NotebookNoteAddin, too
-    get_note()->signal_tag_removed()
+    get_note()->signal_tag_removed
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_tag_removed));
   }
 
 
-  void NotebookNoteAddin::on_note_tag_added(const Note & note, const Tag::Ptr & tag)
+  void NotebookNoteAddin::on_note_tag_added(const NoteBase & note, const Tag::Ptr & tag)
   {
-    Note::Ptr taggedNote = const_cast<Note&>(note).shared_from_this();
+    Note::Ptr taggedNote = static_pointer_cast<Note>(const_cast<NoteBase&>(note).shared_from_this());
     if(taggedNote == get_note() && tag == get_template_tag()) {
       update_button_sensitivity(true);
     }
   }
 
 
-  void NotebookNoteAddin::on_note_tag_removed(const Note::Ptr & taggedNote, const std::string & tag)
+  void NotebookNoteAddin::on_note_tag_removed(const NoteBase::Ptr & taggedNote, const std::string & tag)
   {
     if(taggedNote == get_note() && tag == get_template_tag()->normalized_name()) {
       update_button_sensitivity(false);

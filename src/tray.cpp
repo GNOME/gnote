@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -289,11 +289,8 @@ namespace gnote {
 
     // List the most recently changed notes, any currently
     // opened notes, and any pinned notes...
-    const Note::List & notes(m_manager.get_notes());
-    for(Note::List::const_iterator iter = notes.begin();
-        iter != notes.end(); ++iter) {
-
-      const Note::Ptr & note(*iter);
+    FOREACH(const NoteBase::Ptr & iter, m_manager.get_notes()) {
+      Note::Ptr note(static_pointer_cast<Note>(iter));
       
       if (note->is_special()) {
         DBG_OUT("skipping special note '%s'", note->get_title().c_str());
@@ -328,9 +325,9 @@ namespace gnote {
       }
     }
 
-    Note::Ptr start = m_manager.find_by_uri(m_manager.start_note_uri());
+    NoteBase::Ptr start = m_manager.find_by_uri(m_manager.start_note_uri());
     if (start) {
-      item = Gtk::manage(new NoteMenuItem(start, false));
+      item = Gtk::manage(new NoteMenuItem(static_pointer_cast<Note>(start), false));
       m_tray_menu->insert(*item, -1);
       list_size++;
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -85,7 +85,7 @@ private:
   void build_stats()
     {
       clear();
-      gnote::Note::List notes = m_note_manager.get_notes();
+      gnote::NoteBase::List notes = m_note_manager.get_notes();
 
       Gtk::TreeIter iter = append();
       std::string stat = _("Total Notes:");
@@ -108,10 +108,10 @@ private:
       }
       gnote::Tag::Ptr template_tag = gnote::ITagManager::obj().get_or_create_system_tag(
         gnote::ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      for(gnote::Note::List::iterator note = notes.begin(); note != notes.end(); ++note) {
+      FOREACH(gnote::NoteBase::Ptr note, notes) {
         for(std::map<gnote::notebooks::Notebook::Ptr, int>::iterator nb = notebook_notes.begin();
             nb != notebook_notes.end(); ++nb) {
-          if((*note)->contains_tag(nb->first->get_tag()) && !(*note)->contains_tag(template_tag)) {
+          if(note->contains_tag(nb->first->get_tag()) && !note->contains_tag(template_tag)) {
             ++nb->second;
           }
         }
@@ -131,7 +131,7 @@ private:
       DBG_OUT("Statistics updated");
     }
 
-  void on_note_list_changed(const gnote::Note::Ptr &)
+  void on_note_list_changed(const gnote::NoteBase::Ptr &)
     {
       update();
     }

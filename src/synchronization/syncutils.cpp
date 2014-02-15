@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,7 +66,9 @@ namespace sync {
     //       was not just a container for a big XML string
     sharp::XmlReader xml;
     xml.load_buffer(m_xml_content);
-    std::auto_ptr<NoteData> update_data(NoteArchiver::obj().read(xml, m_uuid));
+    NoteData *data = new NoteData(m_uuid);
+    NoteArchiver::obj().read(xml, *data);
+    std::auto_ptr<NoteData> update_data(data);
     xml.close();
 
     // NOTE: Mostly a hack to ignore missing version attributes
