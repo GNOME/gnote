@@ -298,7 +298,13 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
   }
 
   Gtk::CellRendererPixbuf *crp = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
-  crp->property_pixbuf() = notebook->get_icon();
+  notebooks::SpecialNotebook::Ptr special_nb = dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook);
+  if(special_nb) {
+    crp->property_pixbuf() = special_nb->get_icon();
+  }
+  else {
+    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::NOTEBOOK, 22);
+  }
 }
 
 void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer * renderer,

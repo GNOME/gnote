@@ -216,11 +216,6 @@ namespace notebooks {
     return true;
   }
 
-  Glib::RefPtr<Gdk::Pixbuf> Notebook::get_icon()
-  {
-    return IconManager::obj().get_icon(IconManager::NOTEBOOK, 22);
-  }
-
   std::string Notebook::normalize(const std::string & s)
   {
     return Glib::ustring(sharp::string_trim(s)).lowercase();

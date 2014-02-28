@@ -55,7 +55,6 @@ public:
   Note::Ptr create_notebook_note();
   virtual bool contains_note(const Note::Ptr & note, bool include_system = false);
   virtual bool add_note(const Note::Ptr &);
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon();
   static std::string normalize(const std::string & s);
 ////
   virtual ~Notebook()
@@ -88,6 +87,8 @@ class SpecialNotebook
 {
 public:
   typedef shared_ptr<SpecialNotebook> Ptr;
+
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() = 0;
 protected:
   SpecialNotebook(NoteManager & m, const std::string &s)
     : Notebook(m, s, true)
