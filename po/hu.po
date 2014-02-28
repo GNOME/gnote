@@ -7,22 +7,22 @@
 # Kalman Kemenczy <kkemenczy at novell dot com>, 2006.
 # Balint Laza <laza at szentkoronaradio dot com>, 2008.
 # István Nyitrai <sianis at gmail dot com>, 2009.
-# Balázs Úr <urbalazs at gmail dot com>, 2011, 2012, 2013.
+# Balázs Úr <urbalazs at gmail dot com>, 2011, 2012, 2013, 2014.
 # Lukács Bence <lukacs.bence1 at gmail dot com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-07 19:39+0000\n"
-"PO-Revision-Date: 2013-10-10 15:06+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2014-02-28 09:10+0000\n"
+"PO-Revision-Date: 2014-02-28 21:05+0100\n"
+"Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
@@ -588,7 +588,7 @@ msgid ""
 msgstr "Az időbélyeghez használt dátumformátum."
 
 #: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
-#: ../src/tray.cpp:465
+#: ../src/tray.cpp:468
 msgid "_Quit"
 msgstr "_Kilépés"
 
@@ -597,7 +597,7 @@ msgid "Quit Gnote"
 msgstr "Kilépés a Gnote-ból"
 
 #: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
-#: ../src/tray.cpp:448
+#: ../src/tray.cpp:451
 msgid "_Preferences"
 msgstr "_Beállítások"
 
@@ -625,19 +625,19 @@ msgstr "A Gnote névjegye"
 msgid "TrayIcon"
 msgstr "Tálcaikon"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:223
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
 msgid "Create _New Note"
 msgstr "Ú_j jegyzet"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:227
 msgid "Create a new note"
 msgstr "Új jegyzet létrehozása"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:232
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
 msgid "_Search All Notes"
 msgstr "Keresés _minden jegyzetben"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:236
 msgid "Open the Search All Notes window"
 msgstr "A Keresés minden jegyzetben ablak megnyitása"
 
@@ -649,7 +649,7 @@ msgstr "Ú_j jegyzet"
 msgid "New _Window"
 msgstr "Új _ablak"
 
-#: ../src/actionmanager.cpp:169 ../src/tray.cpp:453
+#: ../src/actionmanager.cpp:169 ../src/tray.cpp:456
 msgid "_Help"
 msgstr "_Súgó"
 
@@ -682,17 +682,17 @@ msgstr "%s jegyzetbővítmény-információ hiányzik"
 msgid "Note add-in %s is absent"
 msgstr "%s jegyzetbővítmény hiányzik"
 
-#: ../src/addinmanager.cpp:183
+#: ../src/addinmanager.cpp:184
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Nem található a(z) %s modul a(z) %s bővítményhez"
 
-#: ../src/addinmanager.cpp:187
+#: ../src/addinmanager.cpp:188
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "A bővítményinformációk betöltése sikertelen ehhez: %s: %s"
 
-#: ../src/addinmanager.cpp:302
+#: ../src/addinmanager.cpp:303
 msgid "Trying to load addins when they are already loaded"
 msgstr "Kísérlet már betöltött bővítmények betöltésére"
 
@@ -1288,15 +1288,15 @@ msgstr "%s távoli hívása sikertelen"
 msgid "Exception thrown when creating note: %s"
 msgstr "Kivétel történt a jegyzet létrehozásakor: %s"
 
-#: ../src/gnote.cpp:202
+#: ../src/gnote.cpp:198
 msgid "Gnote is already running.  Exiting..."
 msgstr "A Gnote már fut, kilépés."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:359
 msgid "and Tomboy original authors."
 msgstr "és a Tomboy eredeti szerzői."
 
-#: ../src/gnote.cpp:369
+#: ../src/gnote.cpp:365
 msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>\n"
@@ -1306,87 +1306,92 @@ msgstr ""
 "István Nyitrai <sianis at gmail dot com>\n"
 "Balázs Úr <urbalazs at gmail dot com>"
 
-#: ../src/gnote.cpp:378
+#: ../src/gnote.cpp:374
+#| msgid ""
+#| "Copyright © 2010-2013 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 a Tomboy eredeti szerzői."
 
-#: ../src/gnote.cpp:382
+#: ../src/gnote.cpp:378
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Egyszerű és könnyen használható asztali jegyzetkezelő alkalmazás."
 
-#: ../src/gnote.cpp:393
+#: ../src/gnote.cpp:389
 msgid "Homepage"
 msgstr "Honlap"
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:563
 msgid "Run Gnote in background."
 msgstr "A Gnote futtatása a háttérben."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:564
 msgid "Specify the path of the directory containing the notes."
 msgstr "Adja meg a jegyzeteket tartalmazó könyvtár útvonalát."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:564
 msgid "path"
 msgstr "útvonal"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:565
 msgid "Open the search all notes window with the search text."
 msgstr "A Keresés minden jegyzetben ablak megnyitása a keresőkifejezéssel."
 
-#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
+#: ../src/gnote.cpp:565 ../src/gnote.cpp:570
 msgid "text"
 msgstr "szöveg"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:566
 msgid "Print version information."
 msgstr "Verzióinformációk kiírása."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:567
 msgid "Create and display a new note, with a optional title."
 msgstr "Új jegyzet létrehozása és megjelenítése, elhagyható címmel."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:567
 msgid "title"
 msgstr "cím"
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:568
 msgid "Display the existing note matching title."
 msgstr "Az illeszkedő című meglévő jegyzet megjelenítése."
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:568
 msgid "title/url"
 msgstr "cím/url"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:569
 msgid "Display the 'Start Here' note."
 msgstr "A „Kezdje itt” jegyzet megjelenítése."
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:570
 msgid "Search and highlight text in the opened note."
 msgstr "Szöveg keresése és kiemelése megnyitott jegyzetben."
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:574
 msgid "A note taking application"
 msgstr "Jegyzetkezelő alkalmazás"
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:574
 msgid "Gnote options at launch"
 msgstr "A Gnote indítási kapcsolói"
 
-#: ../src/gnote.cpp:659
+#: ../src/gnote.cpp:651
 msgid "Could not connect to remote instance."
 msgstr "Nem lehet kapcsolódni a távoli példányhoz."
 
-#: ../src/gnote.cpp:775
+#: ../src/gnote.cpp:767
 msgid "Version %1%"
 msgstr "%1% verzió"
 
@@ -1540,17 +1545,17 @@ msgstr "Kivétel a jegyzet mentésekor: %s"
 msgid "Error while saving: %s"
 msgstr "Hiba a mentéskor: %s"
 
-#: ../src/note.cpp:956
+#: ../src/note.cpp:971
 msgid "Setting text content for closed notes not supported"
 msgstr "A szövegtartalom beállítása nem támogatott a zárolt jegyzetekhez"
 
 #. write failure, but not critical
-#: ../src/note.cpp:1159
+#: ../src/note.cpp:1174
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "A jegyzet formátumának frissítése sikertelen: %s"
 
-#: ../src/note.cpp:1294
+#: ../src/note.cpp:1309
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Fájlrendszerhiba: %s"
@@ -1686,11 +1691,6 @@ msgid "Never rename _links"
 msgstr "S_oha nem nevezem át"
 
 #: ../src/noterenamedialog.cpp:152
-#| msgid ""
-#| "Rename links in other notes from \"<span underline=\"single\">%1</span>\" "
-#| "to\"<span underline=\"single\">%2</span>\"?\n"
-#| "\n"
-#| "If you do not rename the links, they will no longer link to anything."
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -2091,7 +2091,7 @@ msgstr "Szerző:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:584
+#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:583
 #: ../src/searchnoteswidget.cpp:994
 msgid "Notes"
 msgstr "Jegyzetek"
@@ -2116,7 +2116,7 @@ msgstr "_Következő találat"
 msgid "Find _Previous"
 msgstr "_Előző találat"
 
-#: ../src/recentchanges.cpp:702
+#: ../src/recentchanges.cpp:701
 msgid "_Close"
 msgstr "_Bezárás"
 
@@ -2580,11 +2580,11 @@ msgstr ""
 msgid "Take notes"
 msgstr "Jegyzetek készítése"
 
-#: ../src/tray.cpp:165
+#: ../src/tray.cpp:167
 msgid " (new)"
 msgstr " (új)"
 
-#: ../src/tray.cpp:458
+#: ../src/tray.cpp:461
 msgid "_About Gnote"
 msgstr "_Névjegy"
 
@@ -2650,26 +2650,26 @@ msgstr "Nincs dátum"
 msgid "%b %d %Y"
 msgstr "%Y %b. %d"
 
-#: ../src/watchers.cpp:199
+#: ../src/watchers.cpp:200
 msgid "(Untitled %1%)"
 msgstr "(Névtelen %1%)"
 
-#: ../src/watchers.cpp:230
+#: ../src/watchers.cpp:231
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
 "Már létezik <b>%1%</b> nevű jegyzet. A folytatáshoz válasszon másik nevet."
 
-#: ../src/watchers.cpp:245
+#: ../src/watchers.cpp:246
 msgid "Note title taken"
 msgstr "A jegyzet neve foglalt"
 
-#: ../src/watchers.cpp:576
+#: ../src/watchers.cpp:579
 msgid "_Copy Link Address"
 msgstr "Hivatkozás cí_mének másolása"
 
-#: ../src/watchers.cpp:582
+#: ../src/watchers.cpp:585
 msgid "_Open Link"
 msgstr "_Hivatkozás megnyitása"
 
