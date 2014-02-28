@@ -21,6 +21,8 @@
 #include <giomm/dbusconnection.h>
 #include <giomm/dbuserror.h>
 
+#include <set>
+
 #include "debug.hpp"
 #include "iconmanager.hpp"
 #include "ignote.hpp"
