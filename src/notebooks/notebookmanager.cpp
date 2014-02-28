@@ -28,6 +28,7 @@
 #include "sharp/exception.hpp"
 #include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebookmanager.hpp"
+#include "notebooks/specialnotebooks.hpp"
 #include "debug.hpp"
 #include "ignote.hpp"
 #include "notemanager.hpp"

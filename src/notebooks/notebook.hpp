@@ -23,7 +23,6 @@
 #ifndef __NOTEBOOKS_NOTEBOOK_HPP_
 #define __NOTEBOOKS_NOTEBOOK_HPP_
 
-#include <set>
 #include <string>
 
 #include "base/macros.hpp"
@@ -74,99 +73,6 @@ private:
   std::string m_default_template_note_title;
   Tag::Ptr    m_tag;
 };
-
-
-/// <summary>
-/// A notebook of this type is special in the sense that it
-/// will not normally be displayed to the user as a notebook
-/// but it's used in the Search All Notes Window for special
-/// filtering of the notes.
-/// </summary>
-class SpecialNotebook
-  : public Notebook
-{
-public:
-  typedef shared_ptr<SpecialNotebook> Ptr;
-
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() = 0;
-protected:
-  SpecialNotebook(NoteManager & m, const std::string &s)
-    : Notebook(m, s, true)
-    {
-    }
-  virtual Tag::Ptr    get_tag() const override;
-  virtual Note::Ptr   get_template_note() const override;
-};
-
-
-/// <summary>
-/// A special notebook that represents really "no notebook" as
-/// being selected.  This notebook is used in the Search All
-/// Notes Window to allow users to select it at the top of the
-/// list so that all notes are shown.
-/// </summary>
-class AllNotesNotebook
-  : public SpecialNotebook
-{
-public:
-  typedef shared_ptr<AllNotesNotebook> Ptr;
-  AllNotesNotebook(NoteManager &);
-  virtual std::string get_normalized_name() const override;
-  virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
-  virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
-};
-
-
-/// <summary>
-/// A special notebook that represents a notebook with notes
-/// that are not filed.  This is used in the Search All Notes
-/// Window to filter notes that are not placed in any notebook.
-/// </summary>
-class UnfiledNotesNotebook
-  : public SpecialNotebook
-{
-public:
-  typedef shared_ptr<UnfiledNotesNotebook> Ptr;
-  UnfiledNotesNotebook(NoteManager &);
-  virtual std::string get_normalized_name() const override;
-  virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
-  virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
-};
-
-
-class PinnedNotesNotebook
-  : public SpecialNotebook
-{
-public:
-  typedef shared_ptr<PinnedNotesNotebook> Ptr;
-  PinnedNotesNotebook(NoteManager &);
-  virtual std::string get_normalized_name() const override;
-  virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
-  virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
-};
-
-
-class ActiveNotesNotebook
-  : public SpecialNotebook
-{
-public:
-  typedef shared_ptr<ActiveNotesNotebook> Ptr;
-  ActiveNotesNotebook(NoteManager &);
-  virtual std::string get_normalized_name() const override;
-  virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
-  virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
-  bool empty();
-  sigc::signal<void> signal_size_changed;
-private:
-  void on_note_deleted(const NoteBase::Ptr & note);
-
-  std::set<Note::Ptr> m_notes;
-};
-
 
 }
 }

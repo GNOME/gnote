@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 #include <glibmm/i18n.h>
 
-#include "notebooks/notebook.hpp"
+#include "notebooks/specialnotebooks.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "iconmanager.hpp"
 #include "specialnotesapplicationaddin.hpp"

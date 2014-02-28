@@ -28,6 +28,7 @@
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/notebookstreeview.hpp"
+#include "notebooks/specialnotebooks.hpp"
 #include "notemanager.hpp"
 
 namespace gnote {

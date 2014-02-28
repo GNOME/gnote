@@ -38,6 +38,7 @@
 #include "searchnoteswidget.hpp"
 #include "itagmanager.hpp"
 #include "notebooks/notebookmanager.hpp"
+#include "notebooks/specialnotebooks.hpp"
 #include "sharp/string.hpp"
 
 

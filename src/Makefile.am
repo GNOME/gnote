@@ -146,6 +146,7 @@ libgnote_la_SOURCES = \
 	notebooks/notebookmenuitem.hpp notebooks/notebookmenuitem.cpp \
 	notebooks/notebooknewnotemenuitem.hpp notebooks/notebooknewnotemenuitem.cpp \
 	notebooks/notebooknoteaddin.hpp notebooks/notebooknoteaddin.cpp \
+	notebooks/specialnotebooks.hpp notebooks/specialnotebooks.cpp \
 	synchronization/filesystemsyncserver.hpp synchronization/filesystemsyncserver.cpp \
 	synchronization/fusesyncserviceaddin.hpp synchronization/fusesyncserviceaddin.cpp \
 	synchronization/isyncmanager.hpp synchronization/isyncmanager.cpp \
