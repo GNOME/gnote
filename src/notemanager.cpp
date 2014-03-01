@@ -33,6 +33,7 @@
 #include "itagmanager.hpp"
 #include "preferences.hpp"
 #include "sharp/directory.hpp"
+#include "sharp/dynamicmodule.hpp"
 
 namespace gnote {
 
@@ -79,7 +80,13 @@ namespace gnote {
         if((*iter)->want_to_run(*this)) {
           has_imported |= (*iter)->first_run(*this);
         }
+        AddinInfo addin_info = m_addin_mgr->get_addin_info(**iter);
+        if(addin_info.get_attribute("AutoDisable") == "true") {
+          (*iter)->shutdown();
+          m_addin_mgr->get_module(addin_info.id())->enabled(false);
+        }
       }
+      m_addin_mgr->save_addins_prefs(); // we probably disabled some import plugins
       // we MUST call this after import
       post_load();
 
