@@ -59,20 +59,20 @@ namespace gnote {
                                      klass::create()))
 
 #define SETUP_NOTE_ADDIN(key, KEY, klass) \
-{ \
-  if(key == KEY) { \
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj() \
-      .get_schema_settings(Preferences::SCHEMA_GNOTE); \
-    if(settings->get_boolean(key)) { \
-      sharp::IfaceFactoryBase *iface = new sharp::IfaceFactory<klass>; \
-      m_builtin_ifaces.push_back(iface); \
-      load_note_addin(typeid(klass).name(), iface); \
+  do { \
+    if(key == KEY) { \
+      Glib::RefPtr<Gio::Settings> settings = Preferences::obj() \
+        .get_schema_settings(Preferences::SCHEMA_GNOTE); \
+      if(settings->get_boolean(key)) { \
+        sharp::IfaceFactoryBase *iface = new sharp::IfaceFactory<klass>; \
+        m_builtin_ifaces.push_back(iface); \
+        load_note_addin(typeid(klass).name(), iface); \
+      } \
+      else { \
+        erase_note_addin_info(typeid(klass).name()); \
+      } \
     } \
-    else { \
-      erase_note_addin_info(typeid(klass).name()); \
-    } \
-  } \
-  }
+  } while(0)
 
 namespace {
   template <typename AddinType>
