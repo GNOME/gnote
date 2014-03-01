@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 #include <glibmm/i18n.h>
 #include <glibmm/keyfile.h>
 
+#include "base/macros.hpp"
 #include "addininfo.hpp"
 #include "debug.hpp"
 
@@ -31,6 +32,7 @@ namespace gnote {
   namespace {
 
     const char * ADDIN_INFO = "AddinInfo";
+    const char * ADDIN_ATTS = "AddinAttributes";
 
     AddinCategory resolve_addin_category(const std::string & cat)
     {
@@ -87,10 +89,26 @@ void AddinInfo::load_from_file(const std::string & info_file)
       DBG_OUT("Can't read default enabled status, assuming default: %s", e.what().c_str());
     }
     m_addin_module = addin_info.get_string(ADDIN_INFO, "Module");
+
+    if(addin_info.has_group(ADDIN_ATTS)) {
+      FOREACH(const Glib::ustring & key, addin_info.get_keys(ADDIN_ATTS)) {
+        m_attributes[key] = addin_info.get_string(ADDIN_ATTS, key);
+      }
+    }
   }
   catch(Glib::Error & e) {
     throw std::runtime_error(e.what());
   }
 }
+
+Glib::ustring AddinInfo::get_attribute(const Glib::ustring & att)
+{
+  std::map<Glib::ustring, Glib::ustring>::iterator iter = m_attributes.find(att);
+  if(iter != m_attributes.end()) {
+    return iter->second;
+  }
+  return Glib::ustring();
+}
+
 
 }

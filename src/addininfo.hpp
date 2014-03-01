@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,10 @@
 #define _ADDININFO_HPP_
 
 #include <string>
+#include <map>
+
+#include <glibmm/ustring.h>
+
 
 namespace gnote {
 
@@ -80,6 +84,11 @@ public:
     {
       m_addin_module = module;
     }
+  const std::map<Glib::ustring, Glib::ustring> & attributes()
+    {
+      return m_attributes;
+    }
+  Glib::ustring get_attribute(const Glib::ustring & att);
 private:
   std::string m_id;
   std::string m_name;
@@ -90,6 +99,8 @@ private:
   std::string m_copyright;
   bool m_default_enabled;
   std::string m_addin_module;
+
+  std::map<Glib::ustring, Glib::ustring> m_attributes;
 };
 
 }
