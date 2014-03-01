@@ -38,6 +38,7 @@
 #include "debug.hpp"
 #include "ignote.hpp"
 #include "preferences.hpp"
+#include "preferencetabaddin.hpp"
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
 #include "notebooks/notebooknoteaddin.hpp"
@@ -71,7 +72,24 @@ namespace gnote {
       erase_note_addin_info(typeid(klass).name()); \
     } \
   } \
+  }
+
+namespace {
+  template <typename AddinType>
+  std::string get_id_for_addin(const AbstractAddin & addin, const std::map<std::string, AddinType*> & addins)
+  {
+    const AddinType *plugin = dynamic_cast<const AddinType*>(&addin);
+    if(plugin != NULL) {
+      for(typename std::map<std::string, AddinType*>::const_iterator iter = addins.begin(); iter != addins.end(); ++iter) {
+        if(iter->second == plugin) {
+          return iter->first;
+        }
+      }
+    }
+    return "";
+  }
 }
+
 
   AddinManager::AddinManager(NoteManager & note_manager, const std::string & conf_dir)
     : m_note_manager(note_manager)
@@ -483,6 +501,29 @@ namespace gnote {
       return iter->second;
     }
     return AddinInfo();
+  }
+
+  AddinInfo AddinManager::get_addin_info(const AbstractAddin & addin) const
+  {
+    std::string id;
+    id = get_id_for_addin(addin, m_app_addins);
+    if(id.empty()) {
+      id = get_id_for_addin(addin, m_pref_tab_addins);
+    }
+    if(id.empty()) {
+      id = get_id_for_addin(addin, m_sync_service_addins);
+    }
+    if(id.empty()) {
+      id = get_id_for_addin(addin, m_import_addins);
+    }
+    for(NoteAddinMap::const_iterator iter = m_note_addins.begin();
+        id.empty() && iter != m_note_addins.end(); ++iter) {
+      id = get_id_for_addin(addin, iter->second);
+    }
+    if(id.empty()) {
+      return AddinInfo();
+    }
+    return get_addin_info(id);
   }
 
   bool AddinManager::is_module_loaded(const std::string & id) const

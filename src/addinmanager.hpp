@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013 Aurimas Cernius
+ * Copyright (C) 2010,2012-2014 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -79,6 +79,7 @@ public:
       return m_addin_infos;
     }
   AddinInfo get_addin_info(const std::string & id) const;
+  AddinInfo get_addin_info(const AbstractAddin & addin) const;
   bool is_module_loaded(const std::string & id) const;
   sharp::DynamicModule *get_module(const std::string & id);
 
