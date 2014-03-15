@@ -212,6 +212,9 @@ namespace {
     for(std::list<std::string>::iterator iter = files.begin(); iter != files.end(); ++iter) {
       try {
         AddinInfo addin_info(*iter);
+        if(!addin_info.validate(LIBGNOTE_RELEASE, LIBGNOTE_VERSION_INFO)) {
+          continue;
+        }
         std::string module = Glib::build_filename(path, addin_info.addin_module());
         if(sharp::file_exists(module + "." + G_MODULE_SUFFIX)) {
           addin_info.addin_module(module);

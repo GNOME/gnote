@@ -89,6 +89,7 @@ public:
       return m_attributes;
     }
   Glib::ustring get_attribute(const Glib::ustring & att);
+  bool validate(const Glib::ustring & release, const Glib::ustring & version_info) const;
 private:
   std::string m_id;
   std::string m_name;
@@ -99,8 +100,12 @@ private:
   std::string m_copyright;
   bool m_default_enabled;
   std::string m_addin_module;
+  Glib::ustring m_libgnote_release;
+  Glib::ustring m_libgnote_version_info;
 
   std::map<Glib::ustring, Glib::ustring> m_attributes;
+
+  bool validate_compatibility(const Glib::ustring & release, const Glib::ustring & version_info) const;
 };
 
 }

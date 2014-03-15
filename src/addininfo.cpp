@@ -19,12 +19,15 @@
 
 #include <stdexcept>
 
+#include <boost/lexical_cast.hpp>
+
 #include <glibmm/i18n.h>
 #include <glibmm/keyfile.h>
 
 #include "base/macros.hpp"
 #include "addininfo.hpp"
 #include "debug.hpp"
+#include "sharp/string.hpp"
 
 
 namespace gnote {
@@ -89,6 +92,8 @@ void AddinInfo::load_from_file(const std::string & info_file)
       DBG_OUT("Can't read default enabled status, assuming default: %s", e.what().c_str());
     }
     m_addin_module = addin_info.get_string(ADDIN_INFO, "Module");
+    m_libgnote_release = addin_info.get_string(ADDIN_INFO, "LibgnoteRelease");
+    m_libgnote_version_info = addin_info.get_string(ADDIN_INFO, "LibgnoteVersionInfo");
 
     if(addin_info.has_group(ADDIN_ATTS)) {
       FOREACH(const Glib::ustring & key, addin_info.get_keys(ADDIN_ATTS)) {
@@ -108,6 +113,57 @@ Glib::ustring AddinInfo::get_attribute(const Glib::ustring & att)
     return iter->second;
   }
   return Glib::ustring();
+}
+
+bool AddinInfo::validate(const Glib::ustring & release, const Glib::ustring & version_info) const
+{
+  if(validate_compatibility(release, version_info)) {
+    return true;
+  }
+
+  ERR_OUT(_("Incompatible plug-in %s: expected %s, got %s"),
+          m_id.c_str(), (release + " " + version_info).c_str(),
+          (m_libgnote_release + " " + m_libgnote_version_info).c_str());
+  return false;
+}
+
+bool AddinInfo::validate_compatibility(const Glib::ustring & release, const Glib::ustring & version_info) const
+{
+  if(release != m_libgnote_release) {
+    return false;
+  }
+  if(version_info == m_libgnote_version_info) {
+    return true;
+  }
+  else {
+    try {
+      std::vector<std::string> parts;
+      sharp::string_split(parts, m_libgnote_version_info, ":");
+      if(parts.size() != 3) {
+        return false;
+      }
+
+      int this_ver = boost::lexical_cast<int>(parts[0]);
+      parts.clear();
+      sharp::string_split(parts, version_info, ":");
+      int ver = boost::lexical_cast<int>(parts[0]);
+      int compat = boost::lexical_cast<int>(parts[2]);
+
+      if(this_ver > ver) {
+        // too new
+        return false;
+      }
+      if(this_ver < ver - compat) {
+        // too old
+        return false;
+      }
+
+      return true;
+    }
+    catch(std::bad_cast &) {
+      return false;
+    }
+  }
 }
 
 
