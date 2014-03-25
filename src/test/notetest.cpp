@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,8 +38,8 @@ int test_main(int /*argc*/, char ** /*argv*/)
   BOOST_CHECK(doc);
 
   if(doc) {
-    std::list<std::string> tags;
-    gnote::Note::parse_tags(xmlDocGetRootElement(doc), tags);
+    std::list<Glib::ustring> tags;
+    gnote::NoteBase::parse_tags(xmlDocGetRootElement(doc), tags);
     BOOST_CHECK(!tags.empty());
 
     xmlFreeDoc(doc);
