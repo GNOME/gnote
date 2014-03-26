@@ -22,6 +22,7 @@
 #include <boost/format.hpp>
 #include <glibmm/i18n.h>
 
+#include "config.h"
 #include "debug.hpp"
 #include "itagmanager.hpp"
 #include "notebase.hpp"
