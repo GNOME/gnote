@@ -211,10 +211,6 @@ public:
     {
       return m_editor;
     }
-  Gtk::ToolButton * delete_button() const
-    {
-      return m_delete_button;
-    }
   Gtk::Menu * text_menu() const
     {
       return m_text_menu;
@@ -270,7 +266,7 @@ private:
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;
-  Gtk::ToolButton              *m_delete_button;
+  Glib::RefPtr<Gtk::Action>     m_delete_action;
   Gtk::Grid                    *m_template_widget;
   Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;

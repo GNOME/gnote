@@ -290,6 +290,11 @@ namespace gnote {
         iter != m_widget_actions.end(); ++iter) {
       res.push_back(iter->second);
     }
+    if(m_delete_action) {
+      // Separator before delete
+      res.push_back(Glib::RefPtr<Gtk::Action>());
+      res.push_back(m_delete_action);
+    }
     return res;
   }
 
@@ -438,19 +443,11 @@ namespace gnote {
     grid->attach(*text_button, grid_col++, 0, 1, 1);
     text_button->set_tooltip_text(_("Set properties of text"));
 
-    grid->attach(*manage(new Gtk::SeparatorToolItem()), grid_col++, 0, 1, 1);
-
-    m_delete_button = manage(new Gtk::ToolButton(Gtk::Stock::DELETE));
-    m_delete_button->set_use_underline(true);
-    m_delete_button->signal_clicked().connect(
-      sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
-    m_delete_button->show_all();
-    grid->attach(*m_delete_button, grid_col++, 0, 1, 1);
-    m_delete_button->set_tooltip_text(_("Delete this note"));
-
       // Don't allow deleting the "Start Here" note...
-    if (m_note.is_special()) {
-      m_delete_button->set_sensitive(false);
+    if(!m_note.is_special()) {
+      m_delete_action = Gtk::Action::create("delete-note", _("_Delete"), _("Delete this note"));
+      m_delete_action->signal_activate()
+        .connect(sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
     }
     grid->attach(*manage(new Gtk::SeparatorToolItem()), grid_col++, 0, 1, 1);
 
