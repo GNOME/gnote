@@ -679,8 +679,8 @@ namespace gnote {
   std::vector<Gtk::MenuItem*> & NoteRecentChanges::make_menu_items(std::vector<Gtk::MenuItem*> & items,
     const std::vector<Glib::RefPtr<Gtk::Action> > & actions)
   {
-    for(std::vector<Glib::RefPtr<Gtk::Action> >::const_iterator iter = actions.begin(); iter != actions.end(); ++iter) {
-      Gtk::MenuItem *item = manage((*iter)->create_menu_item());
+    FOREACH(Glib::RefPtr<Gtk::Action> action, actions) {
+      Gtk::MenuItem *item = manage(action ? action->create_menu_item() : new Gtk::SeparatorMenuItem);
       items.push_back(item);
     }
     return items;
