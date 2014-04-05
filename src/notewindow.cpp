@@ -290,9 +290,11 @@ namespace gnote {
         iter != m_widget_actions.end(); ++iter) {
       res.push_back(iter->second);
     }
+
+    res.push_back(Glib::RefPtr<Gtk::Action>());
+    res.push_back(m_important_action);
     if(m_delete_action) {
       // Separator before delete
-      res.push_back(Glib::RefPtr<Gtk::Action>());
       res.push_back(m_delete_action);
     }
     return res;
@@ -405,23 +407,6 @@ namespace gnote {
     Gtk::Grid *grid = manage(new Gtk::Grid);
     int grid_col = 0;
 
-    m_pin_image = manage(new Gtk::Image);
-    m_pin_button = manage(new Gtk::ToolButton(*m_pin_image, _("Pin")));
-
-    if(m_note.is_pinned()) {
-      m_pin_image->property_gicon() = get_icon_pin_down();
-      m_pin_button->set_tooltip_text(_("Remove from important notes"));
-    }
-    else {
-      m_pin_image->property_gicon() = get_icon_pin_active();
-      m_pin_button->set_tooltip_text(_("Mark note as important"));
-    }
-
-    m_pin_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
-    grid->attach(*m_pin_button, grid_col++, 0, 1, 1);
-    notebooks::NotebookManager::obj().signal_note_pin_status_changed
-      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
-
     m_link_button = manage(new Gtk::ToolButton(
                              *manage(new Gtk::Image(Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_SMALL_TOOLBAR)),
                              _("Link")));
@@ -442,6 +427,14 @@ namespace gnote {
     text_button->show_all();
     grid->attach(*text_button, grid_col++, 0, 1, 1);
     text_button->set_tooltip_text(_("Set properties of text"));
+
+    m_important_action = utils::CheckAction::create("mark-important");
+    m_important_action->set_label(_("Is Important"));
+    m_important_action->set_tooltip(_("Toggle notes presence in Important Notes notebook"));
+    m_important_action->checked(m_note.is_pinned());
+    m_important_action->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
+    notebooks::NotebookManager::obj().signal_note_pin_status_changed
+      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
       // Don't allow deleting the "Start Here" note...
     if(!m_note.is_special()) {
@@ -613,14 +606,7 @@ namespace gnote {
     if(&m_note != &note) {
       return;
     }
-    if(pinned) {
-      m_pin_image->property_gicon() = get_icon_pin_down();
-      m_pin_button->set_tooltip_text(_("Remove from important notes"));
-    }
-    else {
-      m_pin_image->property_gicon() = get_icon_pin_active();
-      m_pin_button->set_tooltip_text(_("Mark note as important"));
-    }
+    m_important_action->checked(pinned);
   }
 
   void NoteWindow::on_pin_button_clicked()

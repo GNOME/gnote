@@ -259,13 +259,12 @@ private:
   int                           m_width;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::Grid                    *m_embeddable_toolbar;
-  Gtk::Image                   *m_pin_image;
-  Gtk::ToolButton              *m_pin_button;
   Gtk::ToolButton              *m_link_button;
   NoteTextMenu                 *m_text_menu;
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;
+  utils::CheckAction::Ptr       m_important_action;
   Glib::RefPtr<Gtk::Action>     m_delete_action;
   Gtk::Grid                    *m_template_widget;
   Gtk::CheckButton             *m_save_size_check_button;
