@@ -62,6 +62,7 @@ protected:
 private:
   void refresh_sizing_state();
   void refresh_state();
+  void link_clicked();
   void font_style_clicked(Gtk::CheckMenuItem * item);
   void font_size_activated(Gtk::RadioMenuItem *item);
   void undo_clicked();
@@ -78,6 +79,7 @@ private:
   bool                  m_event_freeze;
   Gtk::ImageMenuItem   *m_undo;
   Gtk::ImageMenuItem   *m_redo;
+  Gtk::MenuItem         m_link;
   Gtk::CheckMenuItem    m_bold;
   Gtk::CheckMenuItem    m_italic;
   Gtk::CheckMenuItem    m_strikeout;
@@ -232,7 +234,6 @@ private:
 
   void on_delete_button_clicked();
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
-  void update_link_button_sensitivity();
   void on_populate_popup(Gtk::Menu*);
   Gtk::Grid *make_toolbar();
   Gtk::Grid * make_template_bar();
@@ -257,7 +258,6 @@ private:
   int                           m_width;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::Grid                    *m_embeddable_toolbar;
-  Gtk::ToolButton              *m_link_button;
   NoteTextMenu                 *m_text_menu;
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;

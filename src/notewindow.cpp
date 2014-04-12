@@ -116,8 +116,6 @@ namespace gnote {
 
     // Sensitize the Link toolbar button on text selection
     m_mark_set_timeout = new utils::InterruptableTimeout();
-    m_mark_set_timeout->signal_timeout.connect(
-      sigc::mem_fun(*this, &NoteWindow::update_link_button_sensitivity));
     note.get_buffer()->signal_mark_set().connect(
       sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
 
@@ -218,9 +216,6 @@ namespace gnote {
     if(!m_accel_group) {
       m_accel_group = Gtk::AccelGroup::create();
       window.add_accel_group(m_accel_group);
-      m_link_button->add_accelerator("clicked", m_accel_group,
-                                     GDK_KEY_L, Gdk::CONTROL_MASK,
-                                     Gtk::ACCEL_VISIBLE);
 
       if(!m_global_keys) {
         // NOTE: Since some of our keybindings are only
@@ -351,11 +346,6 @@ namespace gnote {
     }
   }
 
-  void NoteWindow::update_link_button_sensitivity()
-  {
-    m_link_button->set_sensitive(!m_note.get_buffer()->get_selection().empty());
-  }
-
   void NoteWindow::on_populate_popup(Gtk::Menu* menu)
   {
     menu->set_accel_group(m_accel_group);
@@ -407,18 +397,6 @@ namespace gnote {
   {
     Gtk::Grid *grid = manage(new Gtk::Grid);
     int grid_col = 0;
-
-    m_link_button = manage(new Gtk::ToolButton(
-                             *manage(new Gtk::Image(Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_SMALL_TOOLBAR)),
-                             _("Link")));
-    m_link_button->set_use_underline(true);
-    m_link_button->set_is_important(true);
-    m_link_button->set_sensitive(!m_note.get_buffer()->get_selection().empty());
-    m_link_button->signal_clicked().connect(
-      sigc::mem_fun(*this, &NoteWindow::link_button_clicked));
-    m_link_button->set_tooltip_text(_("Link selected text to a new note (Ctrl-L)"));
-    m_link_button->show_all();
-    grid->attach(*m_link_button, grid_col++, 0, 1, 1);
 
     utils::ToolMenuButton *text_button = manage(new utils::ToolMenuButton(
         *manage(new Gtk::Image(Gtk::Stock::SELECT_FONT, Gtk::ICON_SIZE_SMALL_TOOLBAR)),
@@ -830,6 +808,7 @@ namespace gnote {
     : Gtk::Menu()
     , m_buffer(buffer)
     , m_undo_manager(undo_manager)
+    , m_link(_("_Link"), true)
     , m_bold(_("<b>_Bold</b>"), true)
     , m_italic(_("<i>_Italic</i>"), true)
     , m_strikeout(_("<s>_Strikeout</s>"), true)
@@ -866,6 +845,10 @@ namespace gnote {
       undo_manager.signal_undo_changed().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_changed));
 
       Glib::Quark tag_quark("Tag");
+      markup_label(m_link);
+      m_link.signal_activate()
+        .connect(sigc::mem_fun(*this, &NoteTextMenu::link_clicked));
+
       markup_label(m_bold);
       m_bold.set_data(tag_quark, const_cast<char*>("bold"));
       m_bold.signal_activate()
@@ -885,8 +868,6 @@ namespace gnote {
       m_highlight.set_data(tag_quark, const_cast<char*>("highlight"));
       m_highlight.signal_activate()
         .connect(sigc::bind(sigc::mem_fun(*this, &NoteTextMenu::font_style_clicked), &m_highlight));
-
-      Gtk::SeparatorMenuItem *spacer1 = manage(new Gtk::SeparatorMenuItem());
 
       markup_label(m_normal);
       m_normal.set_active(true);
@@ -910,8 +891,6 @@ namespace gnote {
 
       m_hidden_no_size.hide();
 
-      Gtk::SeparatorMenuItem *spacer2 = manage(new Gtk::SeparatorMenuItem());
-
       m_bullets_clicked_cid = m_bullets.signal_activate()
         .connect(sigc::mem_fun(*this, &NoteTextMenu::toggle_bullets_clicked));
 
@@ -925,16 +904,18 @@ namespace gnote {
 
       refresh_state();
 
+      append(m_link);
+      append(*manage(new Gtk::SeparatorMenuItem()));
       append(m_bold);
       append(m_italic);
       append(m_strikeout);
       append(m_highlight);
-      append(*spacer1);
+      append(*manage(new Gtk::SeparatorMenuItem()));
       append(m_small);
       append(m_normal);
       append(m_large);
       append(m_huge);
-      append(*spacer2);
+      append(*manage(new Gtk::SeparatorMenuItem()));
       append(m_bullets);
       append(m_increase_indent);
       append(m_decrease_indent);
@@ -953,6 +934,9 @@ namespace gnote {
                             GDK_KEY_Z,
                             Gdk::CONTROL_MASK | Gdk::SHIFT_MASK,
                             Gtk::ACCEL_VISIBLE);
+    m_link.add_accelerator("activate", accel_group,
+                           GDK_KEY_L, Gdk::CONTROL_MASK,
+                           Gtk::ACCEL_VISIBLE);
     m_bold.add_accelerator("activate", accel_group,
                            GDK_KEY_B,
                            Gdk::CONTROL_MASK,
@@ -1030,6 +1014,8 @@ namespace gnote {
   {
     m_event_freeze = true;
 
+    Gtk::TextIter start, end;
+    m_link.set_sensitive(m_buffer->get_selection_bounds(start, end));
     m_bold.set_active(m_buffer->is_active_tag("bold"));
     m_italic.set_active(m_buffer->is_active_tag("italic"));
     m_strikeout.set_active(m_buffer->is_active_tag("strikethrough"));
@@ -1050,6 +1036,48 @@ namespace gnote {
     m_redo->set_sensitive(m_undo_manager.get_can_redo());
 
     m_event_freeze = false;
+  }
+
+  void NoteTextMenu::link_clicked()
+  {
+    if(m_event_freeze) {
+      return;
+    }
+
+    Glib::ustring select = m_buffer->get_selection();
+    if(select.empty()) {
+      return;
+    }
+
+    Glib::ustring body_unused;
+    Glib::ustring title = NoteManagerBase::split_title_from_content(select, body_unused);
+    if(title.empty()) {
+      return;
+    }
+
+    NoteManagerBase & manager(m_buffer->note().manager());
+    NoteBase::Ptr match = manager.find(title);
+    if(!match) {
+      try {
+        match = manager.create(select);
+      }
+      catch(const sharp::Exception & e) {
+        utils::HIGMessageDialog dialog(dynamic_cast<Gtk::Window*>(m_buffer->note().get_window()->host()),
+          GTK_DIALOG_DESTROY_WITH_PARENT,
+          Gtk::MESSAGE_ERROR,  Gtk::BUTTONS_OK,
+          _("Cannot create note"), e.what());
+        dialog.run();
+        return;
+      }
+    }
+    else {
+      Gtk::TextIter start, end;
+      m_buffer->get_selection_bounds(start, end);
+      m_buffer->remove_tag(m_buffer->note().get_tag_table()->get_broken_link_tag(), start, end);
+      m_buffer->apply_tag(m_buffer->note().get_tag_table()->get_link_tag(), start, end);
+    }
+
+    m_buffer->note().get_window()->host()->embed_widget(*static_pointer_cast<Note>(match)->get_window());
   }
 
   //
