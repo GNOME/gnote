@@ -218,7 +218,6 @@ namespace gnote {
     if(!m_accel_group) {
       m_accel_group = Gtk::AccelGroup::create();
       window.add_accel_group(m_accel_group);
-      m_text_menu->set_accel_group(m_accel_group);
       m_link_button->add_accelerator("clicked", m_accel_group,
                                      GDK_KEY_L, Gdk::CONTROL_MASK,
                                      Gtk::ACCEL_VISIBLE);
@@ -245,6 +244,8 @@ namespace gnote {
                                       Gtk::ACCEL_VISIBLE);
         m_global_keys->enabled(m_enabled);
       }
+
+      m_text_menu->set_accels(*m_global_keys, m_accel_group);
     }
     else {
       window.add_accel_group(m_accel_group);
@@ -846,8 +847,6 @@ namespace gnote {
     , m_bullets(_("Bullets"))
     , m_increase_indent(Gtk::Stock::INDENT)
     , m_decrease_indent(Gtk::Stock::UNINDENT)
-    , m_increase_font(_("Increase Font Size"), true)
-    , m_decrease_font(_("Decrease Font Size"), true)
     {
       m_undo = manage(new Gtk::ImageMenuItem (Gtk::Stock::UNDO));
       m_undo->signal_activate().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_clicked));
@@ -911,12 +910,6 @@ namespace gnote {
 
       m_hidden_no_size.hide();
 
-      m_increase_font.signal_activate()
-        .connect(sigc::mem_fun(*this, &NoteTextMenu::increase_font_clicked));
-
-      m_decrease_font.signal_activate()
-        .connect(sigc::mem_fun(*this, &NoteTextMenu::decrease_font_clicked));
-
       Gtk::SeparatorMenuItem *spacer2 = manage(new Gtk::SeparatorMenuItem());
 
       m_bullets_clicked_cid = m_bullets.signal_activate()
@@ -941,8 +934,6 @@ namespace gnote {
       append(m_normal);
       append(m_large);
       append(m_huge);
-      append(m_increase_font);
-      append(m_decrease_font);
       append(*spacer2);
       append(m_bullets);
       append(m_increase_indent);
@@ -950,8 +941,10 @@ namespace gnote {
       show_all ();
     }
 
-  void NoteTextMenu::set_accel_group(const Glib::RefPtr<Gtk::AccelGroup> & accel_group)
+  void NoteTextMenu::set_accels(utils::GlobalKeybinder & keybinder,
+                                const Glib::RefPtr<Gtk::AccelGroup> & accel_group)
   {
+    set_accel_group(accel_group);
     m_undo->add_accelerator("activate", accel_group,
                             GDK_KEY_Z,
                             Gdk::CONTROL_MASK,
@@ -976,14 +969,10 @@ namespace gnote {
                                 GDK_KEY_H,
                                 Gdk::CONTROL_MASK,
                                 Gtk::ACCEL_VISIBLE);
-    m_increase_font.add_accelerator("activate", accel_group,
-                                    GDK_KEY_plus,
-                                    Gdk::CONTROL_MASK,
-                                    Gtk::ACCEL_VISIBLE);
-    m_decrease_font.add_accelerator("activate", accel_group,
-                                    GDK_KEY_minus,
-                                    Gdk::CONTROL_MASK,
-                                    Gtk::ACCEL_VISIBLE);
+    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::increase_font_clicked),
+                              GDK_KEY_plus, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::decrease_font_clicked),
+                              GDK_KEY_minus, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     m_increase_indent.add_accelerator("activate", accel_group,
                                       GDK_KEY_Right,
                                       Gdk::MOD1_MASK,

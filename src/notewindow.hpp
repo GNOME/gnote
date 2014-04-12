@@ -53,7 +53,7 @@ class NoteTextMenu
 {
 public:
   NoteTextMenu(const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
-  void set_accel_group(const Glib::RefPtr<Gtk::AccelGroup> &);
+  void set_accels(utils::GlobalKeybinder & keybinder, const Glib::RefPtr<Gtk::AccelGroup> &);
 
   static void markup_label (Gtk::MenuItem & item);
 protected:
@@ -93,8 +93,6 @@ private:
   Gtk::CheckMenuItem    m_bullets;
   Gtk::ImageMenuItem    m_increase_indent;
   Gtk::ImageMenuItem    m_decrease_indent;
-  Gtk::MenuItem         m_increase_font;
-  Gtk::MenuItem         m_decrease_font;
   sigc::connection      m_bullets_clicked_cid;
 };
 
