@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -66,10 +66,10 @@ namespace gnote {
   }
   
 
-  NoteBuffer::NoteBuffer(const NoteTagTable::Ptr & tags, Note & note)
+  NoteBuffer::NoteBuffer(const NoteTagTable::Ptr & tags, Note & note_)
     : Gtk::TextBuffer(tags)
     , m_undomanager(NULL)
-    , m_note(note)
+    , m_note(note_)
   {
     m_undomanager = new UndoManager(this);
     signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));

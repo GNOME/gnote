@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,6 +61,11 @@ public:
       return Ptr(new NoteBuffer(table, note));
     }
   ~NoteBuffer();
+
+  Note & note() const
+    {
+      return m_note;
+    }
 
   // Signal that text has been inserted, and any active tags have
   // been applied to the text.  This allows undo to pull any
