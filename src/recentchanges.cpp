@@ -171,7 +171,7 @@ namespace gnote {
     right_box->show();
 
     m_header_bar.pack_start(*left_box);
-    m_header_bar.pack_start(m_embedded_toolbar);
+    m_header_bar.pack_end(m_embedded_toolbar);
     m_header_bar.pack_end(*right_box);
     m_header_bar.show();
   }
@@ -479,7 +479,9 @@ namespace gnote {
         m_header_bar.set_title(_("Gnote"));
       }
       else {
-        m_header_bar.set_title("");
+        m_header_bar.set_title(widget.get_name());
+        m_current_embedded_name_slot = widget.signal_name_changed
+          .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_embedded_name_changed));
       }
     }
     catch(std::bad_cast&) {
@@ -506,6 +508,7 @@ namespace gnote {
       widget.background();
       m_embed_box.remove(wid);
 
+      m_current_embedded_name_slot.disconnect();
       m_current_embedded_actions_slot.disconnect();
       if(m_window_menu_embedded) {
         delete m_window_menu_embedded;
@@ -684,6 +687,11 @@ namespace gnote {
       items.push_back(item);
     }
     return items;
+  }
+
+  void NoteRecentChanges::on_embedded_name_changed(const std::string & name)
+  {
+    m_header_bar.set_title(name);
   }
 
   void NoteRecentChanges::on_main_window_actions_changed(Gtk::Menu **menu)
