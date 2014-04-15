@@ -421,8 +421,8 @@ namespace gnote {
       m_delete_action->signal_activate()
         .connect(sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
     }
-    grid->attach(*manage(new Gtk::SeparatorToolItem()), grid_col++, 0, 1, 1);
 
+    grid->property_margin_left() = 12;
     grid->show_all();
     return grid;
   }
