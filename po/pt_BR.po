@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-20 21:18+0000\n"
-"PO-Revision-Date: 2014-03-20 20:35-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2014-04-14 20:48+0000\n"
+"PO-Revision-Date: 2014-04-14 21:11-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -1624,7 +1624,7 @@ msgstr ""
 "gnote. Detalhes do erro podem ser localizados em ~/.gnote.log."
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/note.cpp:382 ../src/notebase.cpp:199
+#: ../src/note.cpp:382 ../src/notebase.cpp:200
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Exceção ao salvar a nota: %s"
@@ -1639,12 +1639,12 @@ msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:443
+#: ../src/notebase.cpp:444
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falha ao atualizar o formato da nota: %s"
 
-#: ../src/notebase.cpp:567
+#: ../src/notebase.cpp:568
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Erro de sistema de arquivos: %s"
@@ -1801,47 +1801,41 @@ msgstr "Título da nota"
 msgid "Ad_vanced"
 msgstr "Ava_nçado"
 
-#: ../src/notewindow.cpp:368
+#: ../src/notewindow.cpp:366
 msgid "_Link to New Note"
 msgstr "_Link para uma nova nota"
 
-#: ../src/notewindow.cpp:376
+#: ../src/notewindow.cpp:374
 msgid "Te_xt"
 msgstr "Te_xto"
 
-#: ../src/notewindow.cpp:404
-msgid "Pin"
-msgstr "Alfinete"
-
-#: ../src/notewindow.cpp:408 ../src/notewindow.cpp:621
-msgid "Remove from important notes"
-msgstr "Remover das notas importantes"
-
-#: ../src/notewindow.cpp:412 ../src/notewindow.cpp:625
-msgid "Mark note as important"
-msgstr "Marcar nota como importante"
-
-#: ../src/notewindow.cpp:422
-msgid "Link"
-msgstr "Link"
-
-#: ../src/notewindow.cpp:428
-msgid "Link selected text to a new note (Ctrl-L)"
-msgstr "Vincula o texto selecionado a uma nova nota (Ctrl-L)"
-
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:403
 msgid "_Text"
 msgstr "_Texto"
 
-#: ../src/notewindow.cpp:439
+#: ../src/notewindow.cpp:408
 msgid "Set properties of text"
 msgstr "Define as propriedades do texto"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:411
+#| msgid "Important"
+msgid "Is Important"
+msgstr "É importante"
+
+#: ../src/notewindow.cpp:412
+msgid "Toggle notes presence in Important Notes notebook"
+msgstr "Ativa presença de notas em catálogo de notas com notas importantes"
+
+#: ../src/notewindow.cpp:420 ../src/searchnoteswidget.cpp:144
+#: ../src/searchnoteswidget.cpp:147
+msgid "_Delete"
+msgstr "E_xcluir"
+
+#: ../src/notewindow.cpp:420
 msgid "Delete this note"
 msgstr "Exclui esta nota"
 
-#: ../src/notewindow.cpp:467
+#: ../src/notewindow.cpp:436
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1849,69 +1843,66 @@ msgstr ""
 "Esta nota é uma nota de modelo. Determina o conteúdo padrão de notas "
 "regulares e não vai aparecer na janela do menu ou na pesquisa de notas."
 
-#: ../src/notewindow.cpp:470
+#: ../src/notewindow.cpp:439
 msgid "Convert to regular note"
 msgstr "Converter em nota regular"
 
-#: ../src/notewindow.cpp:473
+#: ../src/notewindow.cpp:442
 msgid "Save Si_ze"
 msgstr "Salvar taman_ho"
 
-#: ../src/notewindow.cpp:477
+#: ../src/notewindow.cpp:446
 msgid "Save Se_lection"
 msgstr "Salvar se_leção"
 
-#: ../src/notewindow.cpp:481
+#: ../src/notewindow.cpp:450
 msgid "Save _Title"
 msgstr "Salvar _título"
 
-#: ../src/notewindow.cpp:583
+#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1068
 msgid "Cannot create note"
 msgstr "Não foi possível criar a nota"
 
-#: ../src/notewindow.cpp:849
+#: ../src/notewindow.cpp:811
+#| msgid "Link"
+msgid "_Link"
+msgstr "_Link"
+
+#: ../src/notewindow.cpp:812
 msgid "<b>_Bold</b>"
 msgstr "<b>_Negrito</b>"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:813
 msgid "<i>_Italic</i>"
 msgstr "<i>_Itálico</i>"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:814
 msgid "<s>_Strikeout</s>"
 msgstr "<s>Ri_scado</s>"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:816
 msgid "_Highlight"
 msgstr "_Destacar"
 
-#: ../src/notewindow.cpp:855
+#: ../src/notewindow.cpp:818
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:857
+#: ../src/notewindow.cpp:820
 msgid "Hu_ge"
 msgstr "Enor_me"
 
-#: ../src/notewindow.cpp:859
+#: ../src/notewindow.cpp:822
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:861
+#: ../src/notewindow.cpp:824
 msgid "S_mall"
 msgstr "_Pequeno"
 
-#: ../src/notewindow.cpp:863
+#: ../src/notewindow.cpp:826
 msgid "Bullets"
 msgstr "Marcadores"
-
-#: ../src/notewindow.cpp:866
-msgid "Increase Font Size"
-msgstr "Aumentar tamanho da fonte"
-
-#: ../src/notewindow.cpp:867
-msgid "Decrease Font Size"
-msgstr "Diminuir tamanho da fonte"
 
 #: ../src/preferencesdialog.cpp:121
 msgid "General"
@@ -2246,10 +2237,6 @@ msgstr "_Abrir"
 #: ../src/searchnoteswidget.cpp:140
 msgid "Open In New _Window"
 msgstr "Abra em uma nova _janela"
-
-#: ../src/searchnoteswidget.cpp:144 ../src/searchnoteswidget.cpp:147
-msgid "_Delete"
-msgstr "E_xcluir"
 
 #: ../src/searchnoteswidget.cpp:150
 msgid "Re_name..."
@@ -2801,6 +2788,24 @@ msgstr "_Copiar o endereço do link"
 #: ../src/watchers.cpp:680
 msgid "_Open Link"
 msgstr "Abrir _link"
+
+#~ msgid "Pin"
+#~ msgstr "Alfinete"
+
+#~ msgid "Remove from important notes"
+#~ msgstr "Remover das notas importantes"
+
+#~ msgid "Mark note as important"
+#~ msgstr "Marcar nota como importante"
+
+#~ msgid "Link selected text to a new note (Ctrl-L)"
+#~ msgstr "Vincula o texto selecionado a uma nova nota (Ctrl-L)"
+
+#~ msgid "Increase Font Size"
+#~ msgstr "Aumentar tamanho da fonte"
+
+#~ msgid "Decrease Font Size"
+#~ msgstr "Diminuir tamanho da fonte"
 
 #~ msgid "Add-ins"
 #~ msgstr "Complementos"
