@@ -83,7 +83,7 @@ namespace notebooks {
     m_show_menu_cid = m_menu->signal_show()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_menu_shown));
     m_toolButton->show_all();
-    add_tool_item(m_toolButton, -1);
+    add_tool_item(m_toolButton, 0);
     update_notebook_button_label();
     
     m_note_added_cid = NotebookManager::obj().signal_note_added_to_notebook()
