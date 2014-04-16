@@ -22,6 +22,8 @@
 #include <config.h>
 #endif
 
+#include <boost/bind.hpp>
+
 #include <glibmm/i18n.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
@@ -398,11 +400,14 @@ namespace gnote {
     Gtk::Grid *grid = manage(new Gtk::Grid);
     int grid_col = 0;
 
-    utils::ToolMenuButton *text_button = manage(new utils::ToolMenuButton(
-        *manage(new Gtk::Image(Gtk::Stock::SELECT_FONT, Gtk::ICON_SIZE_SMALL_TOOLBAR)),
-        _("_Text"), m_text_menu));
-    text_button->set_use_underline(true);
-    text_button->set_is_important(true);
+    Gtk::Button *text_button = manage(new Gtk::Button);
+    Gtk::Image *image = manage(new Gtk::Image);
+    image->property_icon_name() = "insert-text-symbolic";
+    image->property_icon_size() = GTK_ICON_SIZE_MENU;
+    text_button->set_image(*image);
+    text_button->signal_clicked()
+      .connect(boost::bind(sigc::mem_fun(*this, &NoteWindow::on_text_button_clicked), text_button));
+    text_button->property_margin_left() = 12;
     text_button->show_all();
     grid->attach(*text_button, grid_col++, 0, 1, 1);
     text_button->set_tooltip_text(_("Set properties of text"));
@@ -591,6 +596,13 @@ namespace gnote {
   void NoteWindow::on_pin_button_clicked()
   {
     m_note.set_pinned(!m_note.is_pinned());
+  }
+
+  void NoteWindow::on_text_button_clicked(Gtk::Button *button)
+  {
+    m_text_menu->property_attach_widget() = button;
+    m_text_menu->show_all();
+    utils::popup_menu(*m_text_menu, NULL);
   }
 
   void NoteWindow::enabled(bool enable)
