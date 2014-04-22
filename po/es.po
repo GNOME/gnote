@@ -5,24 +5,24 @@
 # Jorge González <jorgegonz@svn.gnome.org>, 2009, 2010, 2011.
 # MIguel Rodriguez Núñez <bokerones.fritos@gmail.com>, 2013.
 # Miguel Rodriguez Nuñez <bokerones.fritos@gmail.com>, 2014.
-# Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2013, 2014.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2009, 2010, 2011, 2012, 2013, 2014.
+# Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-04-15 09:07+0000\n"
-"PO-Revision-Date: 2014-03-17 17:03+0100\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2014-04-21 08:08+0000\n"
+"PO-Revision-Date: 2014-04-21 19:29+0200\n"
+"Last-Translator: Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Gtranslator 2.91.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -1491,11 +1491,11 @@ msgstr "Versión %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Falló al cargar el icono (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:121 ../src/noteaddin.cpp:134
+#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:122 ../src/noteaddin.cpp:135
 msgid "Plugin is disposing already"
 msgstr "El complemento ya está eliminado"
 
-#: ../src/noteaddin.cpp:138
+#: ../src/noteaddin.cpp:139
 msgid "Window is not embedded"
 msgstr "La ventana no está empotrada"
 
@@ -1811,42 +1811,36 @@ msgstr "Título de la nota"
 msgid "Ad_vanced"
 msgstr "A_vanzado"
 
-#: ../src/notewindow.cpp:366
+#: ../src/notewindow.cpp:368
 msgid "_Link to New Note"
 msgstr "_Enlazar a una nota nueva"
 
-#: ../src/notewindow.cpp:374
+#: ../src/notewindow.cpp:376
 msgid "Te_xt"
 msgstr "Te_xto"
 
-#: ../src/notewindow.cpp:403
-msgid "_Text"
-msgstr "_Texto"
-
-#: ../src/notewindow.cpp:408
+#: ../src/notewindow.cpp:413
 msgid "Set properties of text"
 msgstr "Establecer las propiedades del texto"
 
-#: ../src/notewindow.cpp:411
-#, fuzzy
-#| msgid "Important"
+#: ../src/notewindow.cpp:416
 msgid "Is Important"
-msgstr "Importante"
+msgstr "Es importante"
 
-#: ../src/notewindow.cpp:412
+#: ../src/notewindow.cpp:417
 msgid "Toggle notes presence in Important Notes notebook"
-msgstr ""
+msgstr "Alternar notas actuales en notas importantes del cuaderno de notas"
 
-#: ../src/notewindow.cpp:420 ../src/searchnoteswidget.cpp:144
+#: ../src/notewindow.cpp:425 ../src/searchnoteswidget.cpp:144
 #: ../src/searchnoteswidget.cpp:147
 msgid "_Delete"
 msgstr "_Borrar"
 
-#: ../src/notewindow.cpp:420
+#: ../src/notewindow.cpp:425
 msgid "Delete this note"
 msgstr "Borrar esta nota"
 
-#: ../src/notewindow.cpp:436
+#: ../src/notewindow.cpp:441
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1855,65 +1849,63 @@ msgstr ""
 "de las notas normales, y no se mostrará en el menú de notas ni en la ventana "
 "de búsqueda."
 
-#: ../src/notewindow.cpp:439
+#: ../src/notewindow.cpp:444
 msgid "Convert to regular note"
 msgstr "Convertir a nota normal"
 
-#: ../src/notewindow.cpp:442
+#: ../src/notewindow.cpp:447
 msgid "Save Si_ze"
 msgstr "Guardar ta_maño"
 
-#: ../src/notewindow.cpp:446
+#: ../src/notewindow.cpp:451
 msgid "Save Se_lection"
 msgstr "Guardar se_lección"
 
-#: ../src/notewindow.cpp:450
+#: ../src/notewindow.cpp:455
 msgid "Save _Title"
 msgstr "Guardar _título"
 
-#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1068
+#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1080
 msgid "Cannot create note"
 msgstr "No se puede crear la nota"
 
-#: ../src/notewindow.cpp:811
-#, fuzzy
-#| msgid "Link"
+#: ../src/notewindow.cpp:823
 msgid "_Link"
-msgstr "Enlace"
+msgstr "_Enlace"
 
-#: ../src/notewindow.cpp:812
+#: ../src/notewindow.cpp:824
 msgid "<b>_Bold</b>"
 msgstr "<b>_Negrita</b>"
 
-#: ../src/notewindow.cpp:813
+#: ../src/notewindow.cpp:825
 msgid "<i>_Italic</i>"
 msgstr "<i>_Cursiva</i>"
 
-#: ../src/notewindow.cpp:814
+#: ../src/notewindow.cpp:826
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Tachado</s>"
 
-#: ../src/notewindow.cpp:816
+#: ../src/notewindow.cpp:828
 msgid "_Highlight"
 msgstr "_Resaltado"
 
-#: ../src/notewindow.cpp:818
+#: ../src/notewindow.cpp:830
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:820
+#: ../src/notewindow.cpp:832
 msgid "Hu_ge"
 msgstr "_Enorme"
 
-#: ../src/notewindow.cpp:822
+#: ../src/notewindow.cpp:834
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:824
+#: ../src/notewindow.cpp:836
 msgid "S_mall"
 msgstr "_Pequeña"
 
-#: ../src/notewindow.cpp:826
+#: ../src/notewindow.cpp:838
 msgid "Bullets"
 msgstr "Topos"
 
@@ -2236,7 +2228,7 @@ msgstr "Buscar _siguiente"
 msgid "Find _Previous"
 msgstr "Buscar _anterior"
 
-#: ../src/recentchanges.cpp:670
+#: ../src/recentchanges.cpp:673
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -2802,6 +2794,9 @@ msgstr "_Copiar dirección del enlace"
 #: ../src/watchers.cpp:680
 msgid "_Open Link"
 msgstr "_Abrir enlace"
+
+#~ msgid "_Text"
+#~ msgstr "_Texto"
 
 #~ msgid "Pin"
 #~ msgstr "Pinchar"
