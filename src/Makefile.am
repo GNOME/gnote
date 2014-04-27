@@ -28,9 +28,9 @@ GNOTE_LIBS = libgnote.la $(LIBGNOTE_LIBS)
 lib_LTLIBRARIES = libgnote.la
 bin_PROGRAMS = gnote
 check_PROGRAMS = trietest stringtest notetest dttest uritest filestest \
-	fileinfotest xmlreadertest
+	fileinfotest xmlreadertest notemanagertest
 TESTS = trietest stringtest notetest dttest uritest filestest \
-	fileinfotest xmlreadertest
+	fileinfotest xmlreadertest notemanagertest
 
 
 trietest_SOURCES = test/trietest.cpp
@@ -56,6 +56,13 @@ xmlreadertest_LDADD = libgnote.la @LIBXML_LIBS@
 
 notetest_SOURCES = test/notetest.cpp
 notetest_LDADD =  $(GNOTE_LIBS) -lX11
+
+notemanagertest_SOURCES = test/notemanagertest.cpp \
+	test/testnote.cpp test/testnote.hpp \
+	test/testnotemanager.cpp test/testnotemanager.hpp \
+	test/testtagmanager.cpp test/testtagmanager.hpp \
+	$(NULL)
+notemanagertest_LDADD = $(GNOTE_LIBS)
 
 
 SUBDIRS += dbus
