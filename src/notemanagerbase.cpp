@@ -321,7 +321,7 @@ NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const std::s
 // Create a new note with the specified Xml content
 NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
                                                const std::string & guid)
-{ 
+{
   if(title.empty())
     throw sharp::Exception("Invalid title");
 
@@ -335,6 +335,9 @@ NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, cons
     filename = make_new_file_name();
 
   NoteBase::Ptr new_note = note_create_new(title, filename);
+  if(new_note == 0) {
+    throw sharp::Exception("Failed to create new note");
+  }
   new_note->set_xml_content(xml_content);
   new_note->signal_renamed.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_rename));
   new_note->signal_saved.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_save));
@@ -365,6 +368,9 @@ NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
       title = get_unique_name(title);
     }
     template_note = create(title, get_note_template_content(title));
+    if(template_note == 0) {
+      throw sharp::Exception("Failed to create template note");
+    }
 
     // Flag this as a template note
     Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
