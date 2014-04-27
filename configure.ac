@@ -62,7 +62,13 @@ LT_INIT([disable-static])
 
 AC_LANG_CPLUSPLUS
 AC_LANG_COMPILER_REQUIRE
-AX_CXX_COMPILE_STDCXX_11([], [optional])
+
+AC_ARG_WITH(cxx11_support, [  --with-cxx11-support    Compile with C++11 support, if available.],[cxx11_required="${withval}"],[cxx11_required="optional"])
+case "$cxx11_required" in
+  yes) AX_CXX_COMPILE_STDCXX_11([], [mandatory]) ;;
+  optional) AX_CXX_COMPILE_STDCXX_11([], [optional]) ;;
+esac
+
 AC_CHECK_PROG(HAVE_DESKTOP_FILE_VALIDATE, [desktop-file-validate], [yes], [no])
 if test $HAVE_DESKTOP_FILE_VALIDATE == "no"; then
   AC_MSG_ERROR([desktop-file-validate not found])
