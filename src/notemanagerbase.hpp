@@ -103,14 +103,14 @@ protected:
   virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
                                         const std::string & guid);
   virtual NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) = 0;
-  Glib::ustring make_new_file_name() const; //temp
-  Glib::ustring make_new_file_name(const Glib::ustring & guid) const; //temp
+  Glib::ustring make_new_file_name() const;
+  Glib::ustring make_new_file_name(const Glib::ustring & guid) const;
   virtual NoteBase::Ptr note_load(const Glib::ustring & file_name) = 0;
 
   NoteBase::List m_notes;
   std::string m_start_note_uri;
-  Glib::ustring m_backup_dir; //temp
-  Glib::ustring m_default_note_template_title;  // temp
+  Glib::ustring m_backup_dir;
+  Glib::ustring m_default_note_template_title;
 private:
   void create_notes_dir() const;
   bool create_directory(const Glib::ustring & directory) const;
