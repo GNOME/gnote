@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-16 09:11+0000\n"
-"PO-Revision-Date: 2014-03-16 22:09+0200\n"
+"POT-Creation-Date: 2014-05-01 08:08+0000\n"
+"PO-Revision-Date: 2014-05-01 20:13+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -1462,11 +1462,11 @@ msgstr "Versija %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Nepavyko įkelti piktogramos (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:121 ../src/noteaddin.cpp:134
+#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:122 ../src/noteaddin.cpp:135
 msgid "Plugin is disposing already"
 msgstr "Įskiepis jau išsijungia"
 
-#: ../src/noteaddin.cpp:138
+#: ../src/noteaddin.cpp:139
 msgid "Window is not embedded"
 msgstr "Langas nėra įtaisytas"
 
@@ -1604,7 +1604,7 @@ msgstr ""
 "Išsamesnę informaciją galima rasti faile ~/.gnote.log."
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/note.cpp:382 ../src/notebase.cpp:199
+#: ../src/note.cpp:382 ../src/notebase.cpp:200
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Kilo išskirtinė situacija įrašant raštelį: %s"
@@ -1619,12 +1619,12 @@ msgid "Setting text content for closed notes not supported"
 msgstr "Tekstinio turinio nustatymas užvertiems rašteliams nepalaikomas"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:443
+#: ../src/notebase.cpp:444
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Nepavyko atnaujinti raštelio formato: %s"
 
-#: ../src/notebase.cpp:567
+#: ../src/notebase.cpp:568
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Failų sistemos klaida: %s"
@@ -1722,7 +1722,7 @@ msgstr "Klaida skaitant raštelio XML, praleidžiamas „%s“: %s"
 msgid "New Note Template"
 msgstr "Naujo raštelio šablonas"
 
-#: ../src/notemanagerbase.cpp:356
+#: ../src/notemanagerbase.cpp:359
 msgid "Describe your new note here."
 msgstr "Čia aprašykite naują raštelį"
 
@@ -1790,39 +1790,29 @@ msgstr "Sukurti nuorodą į naują _raštelį"
 msgid "Te_xt"
 msgstr "_Tekstas"
 
-#: ../src/notewindow.cpp:404
-msgid "Pin"
-msgstr "Prisegti"
-
-#: ../src/notewindow.cpp:408 ../src/notewindow.cpp:621
-msgid "Remove from important notes"
-msgstr "Pašalinti iš svarbių raštelių"
-
-#: ../src/notewindow.cpp:412 ../src/notewindow.cpp:625
-msgid "Mark note as important"
-msgstr "Žymėti raštelį svarbiu"
-
-#: ../src/notewindow.cpp:422
-msgid "Link"
-msgstr "Susieti"
-
-#: ../src/notewindow.cpp:428
-msgid "Link selected text to a new note (Ctrl-L)"
-msgstr "Susieti pažymėtą tekstą su nauju rašteliu (Ctrl-L)"
-
-#: ../src/notewindow.cpp:434
-msgid "_Text"
-msgstr "_Tekstas"
-
-#: ../src/notewindow.cpp:439
+#: ../src/notewindow.cpp:413
 msgid "Set properties of text"
 msgstr "Nurodyti teksto savybes"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:416
+#| msgid "Important"
+msgid "Is Important"
+msgstr "Yra svarbus"
+
+#: ../src/notewindow.cpp:417
+msgid "Toggle notes presence in Important Notes notebook"
+msgstr "Įdėti arba išimti raštelį iš svarbių raštelių užrašinės"
+
+#: ../src/notewindow.cpp:425 ../src/searchnoteswidget.cpp:144
+#: ../src/searchnoteswidget.cpp:147
+msgid "_Delete"
+msgstr "Iš_trinti"
+
+#: ../src/notewindow.cpp:425
 msgid "Delete this note"
 msgstr "Ištrinti šį raštelį"
 
-#: ../src/notewindow.cpp:467
+#: ../src/notewindow.cpp:441
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1830,69 +1820,66 @@ msgstr ""
 "Šis raštelis yra šablonas. Jis nusako įprastinių raštelių turinį ir nebus "
 "matomas raštelių meniu arba paieškos lange."
 
-#: ../src/notewindow.cpp:470
+#: ../src/notewindow.cpp:444
 msgid "Convert to regular note"
 msgstr "Paversti įprastiniu rašteliu"
 
-#: ../src/notewindow.cpp:473
+#: ../src/notewindow.cpp:447
 msgid "Save Si_ze"
 msgstr "Įrašyti _dydį"
 
-#: ../src/notewindow.cpp:477
+#: ../src/notewindow.cpp:451
 msgid "Save Se_lection"
 msgstr "Įrašyti pa_žymėjimą"
 
-#: ../src/notewindow.cpp:481
+#: ../src/notewindow.cpp:455
 msgid "Save _Title"
 msgstr "Įrašyti _pavadinimą"
 
-#: ../src/notewindow.cpp:583
+#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1080
 msgid "Cannot create note"
 msgstr "Nepavyko sukurti raštelio"
 
-#: ../src/notewindow.cpp:849
+#: ../src/notewindow.cpp:823
+#| msgid "Link"
+msgid "_Link"
+msgstr "_Susieti"
+
+#: ../src/notewindow.cpp:824
 msgid "<b>_Bold</b>"
 msgstr "<b>_Pusjuodis</b>"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:825
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kursyvas</i>"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:826
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Perbrauktas</s>"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:828
 msgid "_Highlight"
 msgstr "Pa_ryškintas"
 
-#: ../src/notewindow.cpp:855
+#: ../src/notewindow.cpp:830
 msgid "_Normal"
 msgstr "_Normalus"
 
-#: ../src/notewindow.cpp:857
+#: ../src/notewindow.cpp:832
 msgid "Hu_ge"
 msgstr "Milžiniš_kas"
 
-#: ../src/notewindow.cpp:859
+#: ../src/notewindow.cpp:834
 msgid "_Large"
 msgstr "_Didelis"
 
-#: ../src/notewindow.cpp:861
+#: ../src/notewindow.cpp:836
 msgid "S_mall"
 msgstr "_Mažas"
 
-#: ../src/notewindow.cpp:863
+#: ../src/notewindow.cpp:838
 msgid "Bullets"
 msgstr "Punktai"
-
-#: ../src/notewindow.cpp:866
-msgid "Increase Font Size"
-msgstr "Padidinti šriftą"
-
-#: ../src/notewindow.cpp:867
-msgid "Decrease Font Size"
-msgstr "Sumažinti šriftą"
 
 #: ../src/preferencesdialog.cpp:121
 msgid "General"
@@ -2211,7 +2198,7 @@ msgstr "Rasti _kitą"
 msgid "Find _Previous"
 msgstr "Rasti _ankstesnį"
 
-#: ../src/recentchanges.cpp:670
+#: ../src/recentchanges.cpp:673
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -2227,10 +2214,6 @@ msgstr "_Atverti"
 #: ../src/searchnoteswidget.cpp:140
 msgid "Open In New _Window"
 msgstr "Atverti naujame _lange"
-
-#: ../src/searchnoteswidget.cpp:144 ../src/searchnoteswidget.cpp:147
-msgid "_Delete"
-msgstr "Iš_trinti"
 
 #: ../src/searchnoteswidget.cpp:150
 msgid "Re_name..."
@@ -2779,3 +2762,4 @@ msgstr "_Kopijuoti nuorodos adresą"
 #: ../src/watchers.cpp:680
 msgid "_Open Link"
 msgstr "_Atverti nuorodą"
+
