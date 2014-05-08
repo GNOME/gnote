@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -213,8 +213,9 @@ public:
       new typename TrieHit<value_t>::List());
     int start_index = 0;
 
-    for (Glib::ustring::size_type i = 0; i < haystack.size(); i++) {
-      gunichar c = haystack[i];
+    Glib::ustring::const_iterator haystack_iter = haystack.begin();
+    for (Glib::ustring::size_type i = 0; haystack_iter != haystack.end(); ++i, ++haystack_iter ) {
+      gunichar c = *haystack_iter;
       if (!m_case_sensitive)
         c = Glib::Unicode::tolower(c);
 
