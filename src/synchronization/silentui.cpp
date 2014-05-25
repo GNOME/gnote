@@ -73,8 +73,7 @@ namespace sync {
   }
 
 
-  void SilentUI::note_conflict_detected(NoteManager & manager,
-                                        const Note::Ptr & localConflictNote,
+  void SilentUI::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> &)
   {
@@ -82,7 +81,7 @@ namespace sync {
     // TODO: At least respect conflict prefs
     // TODO: Implement more useful conflict handling
     if(localConflictNote->id() != remoteNote.m_uuid) {
-      manager.delete_note(localConflictNote);
+      m_manager.delete_note(localConflictNote);
     }
     ISyncManager::obj().resolve_conflict(OVERWRITE_EXISTING);
   }

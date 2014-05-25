@@ -46,8 +46,7 @@ namespace sync {
 
     virtual void sync_state_changed(SyncState state) override;
     virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) override;
-    virtual void note_conflict_detected(NoteManager & manager,
-                                        const Note::Ptr & localConflictNote,
+    virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> & noteUpdateTitles) override;
     virtual void present_ui() override;
@@ -60,8 +59,7 @@ namespace sync {
     virtual void on_realize() override;
   private:
     static void on_expander_activated(GtkExpander*, gpointer);
-    void note_conflict_detected_(NoteManager & manager,
-                                 const Note::Ptr & localConflictNote,
+    void note_conflict_detected_(const Note::Ptr & localConflictNote,
                                  NoteUpdate remoteNote,
                                  const std::list<std::string> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,

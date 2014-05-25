@@ -210,7 +210,7 @@ namespace sync {
           if(existingNote != 0 && !iter->second.basically_equal_to(static_pointer_cast<Note>(existingNote))) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter->second.m_title.c_str());
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(note_mgr(), static_pointer_cast<Note>(existingNote), iter->second, noteUpdateTitles);
+              m_sync_ui->note_conflict_detected(static_pointer_cast<Note>(existingNote), iter->second, noteUpdateTitles);
             }
           }
         }
@@ -249,7 +249,7 @@ namespace sync {
           DBG_OUT("SyncManager: Content conflict in note update for note '%s'", iter->second.m_title.c_str());
           // Note already exists locally, but has been modified since last sync; prompt user
           if(m_sync_ui != 0) {
-            m_sync_ui->note_conflict_detected(note_mgr(), static_pointer_cast<Note>(existingNote), iter->second, noteUpdateTitles);
+            m_sync_ui->note_conflict_detected(static_pointer_cast<Note>(existingNote), iter->second, noteUpdateTitles);
           }
 
           // Note has been deleted or okay'd for overwrite

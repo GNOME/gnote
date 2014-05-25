@@ -593,8 +593,7 @@ void SyncDialog::note_synchronized(const std::string & noteTitle, NoteSyncType t
 }
 
 
-void SyncDialog::note_conflict_detected(NoteManager & manager,
-                                        const Note::Ptr & localConflictNote,
+void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> & noteUpdateTitles)
 {
@@ -608,7 +607,6 @@ void SyncDialog::note_conflict_detected(NoteManager & manager,
   // and then rethrown in the synchronization thread.
   utils::main_context_call(boost::bind(
     sigc::mem_fun(*this, &SyncDialog::note_conflict_detected_),
-    manager,
     localConflictNote,
     remoteNote,
     noteUpdateTitles,
@@ -625,7 +623,7 @@ void SyncDialog::note_conflict_detected(NoteManager & manager,
 }
 
 
-void SyncDialog::note_conflict_detected_(NoteManager & manager,
+void SyncDialog::note_conflict_detected_(
   const Note::Ptr & localConflictNote,
   NoteUpdate remoteNote,
   const std::list<std::string> & noteUpdateTitles,
@@ -668,7 +666,7 @@ void SyncDialog::note_conflict_detected_(NoteManager & manager,
         }
         // No need to delete if sync will overwrite
         if(localConflictNote->id() != remoteNote.m_uuid) {
-          manager.delete_note(localConflictNote);
+          m_manager.delete_note(localConflictNote);
         }
         break;
       case RENAME_EXISTING_AND_UPDATE:

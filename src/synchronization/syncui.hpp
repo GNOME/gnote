@@ -43,8 +43,7 @@ namespace sync {
     virtual void sync_state_changed(SyncState state) = 0;
     void note_synchronized_th(const std::string & noteTitle, NoteSyncType type);
     virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) = 0;
-    virtual void note_conflict_detected(NoteManager & manager,
-                                        const Note::Ptr & localConflictNote,
+    virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> & noteUpdateTitles) = 0;
     virtual void present_ui() = 0;
