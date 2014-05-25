@@ -32,7 +32,7 @@ namespace sync {
     : public SyncClient
   {
   public:
-    GnoteSyncClient(NoteManager &);
+    GnoteSyncClient(NoteManagerBase &);
 
     virtual sharp::DateTime last_sync_date() override
       {
