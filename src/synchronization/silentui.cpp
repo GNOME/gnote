@@ -26,14 +26,14 @@
 namespace gnote {
 namespace sync {
 
-  SyncUI::Ptr SilentUI::create(NoteManager & nm)
+  SyncUI::Ptr SilentUI::create(NoteManagerBase & nm)
   {
     return SyncUI::Ptr(new SilentUI(nm));
   }
 
 
-  SilentUI::SilentUI(NoteManager & manager)
-    : m_manager(manager)
+  SilentUI::SilentUI(NoteManagerBase & manager)
+    : SyncUI(manager)
     , m_ui_disabled(false)
   {
     signal_connecting_connect(sigc::mem_fun(*this, &SilentUI::on_connecting));

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,11 @@
 
 namespace gnote {
 namespace sync {
+
+  SyncUI::SyncUI(NoteManagerBase & manager)
+    : m_manager(manager)
+  {
+  }
 
   void SyncUI::note_synchronized_th(const std::string & noteTitle, NoteSyncType type)
   {

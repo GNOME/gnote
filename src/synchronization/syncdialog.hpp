@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ namespace sync {
   public:
     typedef shared_ptr<SyncDialog> Ptr;
 
-    static Ptr create(NoteManager &);
+    static Ptr create(NoteManagerBase &);
 
     virtual void sync_state_changed(SyncState state) override;
     virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) override;
@@ -68,7 +68,7 @@ namespace sync {
                                  SyncTitleConflictResolution resolution,
                                  std::exception **mainThreadException);
 
-    SyncDialog(NoteManager &);
+    explicit SyncDialog(NoteManagerBase &);
     bool on_pulse_progress_bar();
     void on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeViewColumn *column);
     void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
@@ -77,7 +77,6 @@ namespace sync {
     void rename_note(const Note::Ptr & note, const std::string & newTitle, bool updateReferencingNotes);
     void present_note(const Note::Ptr &);
 
-    NoteManager & m_manager;
     Gtk::Image *m_image;
     Gtk::Label *m_header_label;
     Gtk::Label *m_message_label;

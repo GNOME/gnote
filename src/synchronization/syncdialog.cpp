@@ -218,14 +218,14 @@ private:
 
 
 
-SyncDialog::Ptr SyncDialog::create(NoteManager & m)
+SyncDialog::Ptr SyncDialog::create(NoteManagerBase & m)
 {
   return SyncDialog::Ptr(new SyncDialog(m));
 }
 
 
-SyncDialog::SyncDialog(NoteManager & manager)
-  : m_manager(manager)
+SyncDialog::SyncDialog(NoteManagerBase & manager)
+  : SyncUI(manager)
 {
   m_progress_bar_timeout_id = 0;
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,6 +53,10 @@ namespace sync {
     void signal_connecting_emit();
     sigc::connection signal_idle_connect(const SlotIdle & slot);
     void signal_idle_emit();
+  protected:
+    explicit SyncUI(NoteManagerBase & manager);
+
+    NoteManagerBase & m_manager;
   private:
     void signal_connecting_emit_()
       {
