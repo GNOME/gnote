@@ -42,7 +42,7 @@
 namespace gnote {
 namespace sync {
 
-  SyncManager::SyncManager(NoteManager & m)
+  SyncManager::SyncManager(NoteManagerBase & m)
     : m_note_manager(m)
     , m_state(IDLE)
     , m_sync_thread(NULL)
@@ -50,14 +50,14 @@ namespace sync {
   }
 
 
-  void SyncManager::init(NoteManager & m)
+  void SyncManager::init(NoteManagerBase & m)
   {
     SyncManager *manager = new SyncManager(m);
     manager->_init(m);
   }
 
 
-  void SyncManager::_init(NoteManager & manager)
+  void SyncManager::_init(NoteManagerBase & manager)
   {
     m_client = SyncClient::Ptr(new GnoteSyncClient(manager));
     // Add a "Synchronize Notes" to Gnote's Application Menu
@@ -66,17 +66,41 @@ namespace sync {
     am.add_app_menu_item(IActionManager::APP_ACTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
 
     // Initialize all the SyncServiceAddins
-    manager.get_addin_manager().initialize_sync_service_addins();
+    initialize_sync_service_addins(manager);
 
-    Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
-      .connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
-    note_mgr().signal_note_saved.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
-    note_mgr().signal_note_deleted.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
-    note_mgr().signal_note_buffer_changed.connect(sigc::mem_fun(*this, &SyncManager::handle_note_buffer_changed));
-    m_autosync_timer.signal_timeout.connect(sigc::mem_fun(*this, &SyncManager::background_sync_checker));
+    connect_system_signals();
 
     // Update sync item based on configuration.
     update_sync_action();
+  }
+
+
+  void SyncManager::initialize_sync_service_addins(NoteManagerBase & note_manager)
+  {
+    try {
+      NoteManager & manager(dynamic_cast<NoteManager&>(note_manager));
+      manager.get_addin_manager().initialize_sync_service_addins();
+    }
+    catch(std::bad_cast & e) {
+      ERR_OUT(_("Report a bug. Cast failed: %s"), e.what());
+    }
+  }
+
+
+  void SyncManager::connect_system_signals()
+  {
+    try {
+      NoteManager & manager(dynamic_cast<NoteManager&>(note_mgr()));
+      Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
+        .connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
+      manager.signal_note_saved.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
+      manager.signal_note_deleted.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
+      manager.signal_note_buffer_changed.connect(sigc::mem_fun(*this, &SyncManager::handle_note_buffer_changed));
+      m_autosync_timer.signal_timeout.connect(sigc::mem_fun(*this, &SyncManager::background_sync_checker));
+    }
+    catch(std::bad_cast & e) {
+      ERR_OUT(_("Report a bug. Cast failed: %s"), e.what());
+    }
   }
 
 
@@ -536,13 +560,19 @@ namespace sync {
   {
     SyncServiceAddin *addin = NULL;
 
-    std::list<SyncServiceAddin*> addins;
-    m_note_manager.get_addin_manager().get_sync_service_addins(addins);
-    for(std::list<SyncServiceAddin*>::iterator iter = addins.begin(); iter != addins.end(); ++iter) {
-      if((*iter)->id() == sync_service_id) {
-        addin = *iter;
-        break;
+    try {
+      NoteManager & manager(dynamic_cast<NoteManager&>(m_note_manager));
+      std::list<SyncServiceAddin*> addins;
+      manager.get_addin_manager().get_sync_service_addins(addins);
+      for(std::list<SyncServiceAddin*>::iterator iter = addins.begin(); iter != addins.end(); ++iter) {
+        if((*iter)->id() == sync_service_id) {
+          addin = *iter;
+          break;
+        }
       }
+    }
+    catch(std::bad_cast & e) {
+      ERR_OUT(_("Report a bug. Cast failed: %s"), e.what());
     }
 
     return addin;
@@ -605,7 +635,7 @@ namespace sync {
   }
 
 
-  NoteManager & SyncManager::note_mgr()
+  NoteManagerBase & SyncManager::note_mgr()
   {
     return m_note_manager;
   }
