@@ -59,7 +59,7 @@ namespace sync {
 
   void SyncManager::_init(NoteManagerBase & manager)
   {
-    m_client = SyncClient::Ptr(new GnoteSyncClient(manager));
+    m_client = GnoteSyncClient::create(manager);
     // Add a "Synchronize Notes" to Gnote's Application Menu
     IActionManager & am(IActionManager::obj());
     am.add_app_action("sync-notes");

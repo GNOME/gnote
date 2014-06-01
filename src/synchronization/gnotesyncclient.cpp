@@ -38,7 +38,19 @@ namespace sync {
 
   const char * GnoteSyncClient::LOCAL_MANIFEST_FILE_NAME = "manifest.xml";
 
-  GnoteSyncClient::GnoteSyncClient(NoteManagerBase & manager)
+  SyncClient::Ptr GnoteSyncClient::create(NoteManagerBase & manager)
+  {
+    GnoteSyncClient *ptr = new GnoteSyncClient;
+    ptr->init(manager);
+    return SyncClient::Ptr(ptr);
+  }
+
+  GnoteSyncClient::GnoteSyncClient()
+  {
+  }
+
+
+  void GnoteSyncClient::init(NoteManagerBase & manager)
   {
     m_local_manifest_file_path = Glib::build_filename(IGnote::conf_dir(), LOCAL_MANIFEST_FILE_NAME);
     // TODO: Why doesn't OnChanged ever get fired?!

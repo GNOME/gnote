@@ -32,7 +32,7 @@ namespace sync {
     : public SyncClient
   {
   public:
-    GnoteSyncClient(NoteManagerBase &);
+    static SyncClient::Ptr create(NoteManagerBase &);
 
     virtual sharp::DateTime last_sync_date() override
       {
@@ -56,9 +56,12 @@ namespace sync {
         return m_server_id;
       }
     virtual void associated_server_id(const std::string &) override;
+  protected:
+    GnoteSyncClient();
   private:
     static const char *LOCAL_MANIFEST_FILE_NAME;
 
+    void init(NoteManagerBase &);
     void note_deleted_handler(const NoteBase::Ptr &);
     void on_changed(const Glib::RefPtr<Gio::File>&, const Glib::RefPtr<Gio::File>&,
                     Gio::FileMonitorEvent);
