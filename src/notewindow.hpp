@@ -54,6 +54,7 @@ class NoteTextMenu
 public:
   NoteTextMenu(const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
   void set_accels(utils::GlobalKeybinder & keybinder, const Glib::RefPtr<Gtk::AccelGroup> &);
+  void refresh_state();
 
   static void markup_label (Gtk::MenuItem & item);
 protected:
@@ -61,7 +62,6 @@ protected:
 
 private:
   void refresh_sizing_state();
-  void refresh_state();
   void link_clicked();
   void font_style_clicked(Gtk::CheckMenuItem * item);
   void font_size_activated(Gtk::RadioMenuItem *item);

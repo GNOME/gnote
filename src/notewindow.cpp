@@ -118,6 +118,7 @@ namespace gnote {
 
     // Sensitize the Link toolbar button on text selection
     m_mark_set_timeout = new utils::InterruptableTimeout();
+    m_mark_set_timeout->signal_timeout.connect(sigc::mem_fun(*m_text_menu, &NoteTextMenu::refresh_state));
     note.get_buffer()->signal_mark_set().connect(
       sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
 
