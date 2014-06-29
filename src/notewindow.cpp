@@ -410,11 +410,12 @@ namespace gnote {
     image->property_icon_size() = GTK_ICON_SIZE_MENU;
     text_button->set_image(*image);
     text_button->signal_clicked()
-      .connect(boost::bind(sigc::mem_fun(*this, &NoteWindow::on_text_button_clicked), text_button));
+      .connect(sigc::mem_fun(*this, &NoteWindow::on_text_button_clicked));
     text_button->property_margin_left() = 12;
     text_button->show_all();
     grid->attach(*text_button, grid_col++, 0, 1, 1);
     text_button->set_tooltip_text(_("Set properties of text"));
+    m_text_menu->property_attach_widget() = text_button;
 
     m_important_action = utils::CheckAction::create("mark-important");
     m_important_action->set_label(_("Is Important"));
@@ -602,9 +603,8 @@ namespace gnote {
     m_note.set_pinned(!m_note.is_pinned());
   }
 
-  void NoteWindow::on_text_button_clicked(Gtk::Button *button)
+  void NoteWindow::on_text_button_clicked()
   {
-    m_text_menu->property_attach_widget() = button;
     m_text_menu->show_all();
     utils::popup_menu(*m_text_menu, NULL);
   }

@@ -251,7 +251,7 @@ private:
   void remove_accel_group(Gtk::Window &);
   void on_pin_status_changed(const Note &, bool);
   void on_pin_button_clicked();
-  void on_text_button_clicked(Gtk::Button *button);
+  void on_text_button_clicked();
 
   Note                        & m_note;
   std::string                   m_name;
