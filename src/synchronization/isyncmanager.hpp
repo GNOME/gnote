@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,8 +56,8 @@ public:
   virtual void last_synchronized_revision(int) = 0;
   virtual sharp::DateTime last_sync_date() = 0;
   virtual void last_sync_date(const sharp::DateTime &) = 0;
-  virtual int get_revision(const Note::Ptr & note) = 0;
-  virtual void set_revision(const Note::Ptr & note, int revision) = 0;
+  virtual int get_revision(const NoteBase::Ptr & note) = 0;
+  virtual void set_revision(const NoteBase::Ptr & note, int revision) = 0;
   virtual std::map<std::string, std::string> deleted_note_titles() = 0;
   virtual void reset() = 0;
   virtual std::string associated_server_id() = 0;

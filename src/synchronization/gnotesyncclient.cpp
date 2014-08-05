@@ -53,7 +53,6 @@ namespace sync {
   void GnoteSyncClient::init(NoteManagerBase & manager)
   {
     m_local_manifest_file_path = Glib::build_filename(IGnote::conf_dir(), LOCAL_MANIFEST_FILE_NAME);
-    // TODO: Why doesn't OnChanged ever get fired?!
     Glib::RefPtr<Gio::File> manifest = Gio::File::create_for_path(m_local_manifest_file_path);
     if(manifest != 0) {
       m_file_watcher = manifest->monitor_file();
@@ -260,7 +259,7 @@ namespace sync {
   }
 
 
-  int GnoteSyncClient::get_revision(const Note::Ptr & note)
+  int GnoteSyncClient::get_revision(const NoteBase::Ptr & note)
   {
     std::string note_guid = note->id();
     std::map<std::string, int>::const_iterator iter = m_file_revisions.find(note_guid);
@@ -273,7 +272,7 @@ namespace sync {
   }
 
 
-  void GnoteSyncClient::set_revision(const Note::Ptr & note, int revision)
+  void GnoteSyncClient::set_revision(const NoteBase::Ptr & note, int revision)
   {
     m_file_revisions[note->id()] = revision;
     // TODO: Should we write on each of these or no?

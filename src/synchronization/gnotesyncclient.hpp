@@ -44,8 +44,8 @@ namespace sync {
         return m_last_sync_rev;
       }
     virtual void last_synchronized_revision(int) override;
-    virtual int get_revision(const Note::Ptr & note) override;
-    virtual void set_revision(const Note::Ptr & note, int revision) override;
+    virtual int get_revision(const NoteBase::Ptr & note) override;
+    virtual void set_revision(const NoteBase::Ptr & note, int revision) override;
     virtual std::map<std::string, std::string> deleted_note_titles() override
       {
         return m_deleted_notes;
