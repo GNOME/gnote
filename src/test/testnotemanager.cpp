@@ -22,6 +22,14 @@
 
 namespace test {
 
+Glib::ustring NoteManager::test_notes_dir()
+{
+  char notes_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
+  char *notes_dir = g_mkdtemp(notes_dir_tmpl);
+  return Glib::ustring(notes_dir) + "/notes";
+}
+
+
 NoteManager::NoteManager(const Glib::ustring & notesdir)
   : gnote::NoteManagerBase(notesdir)
 {

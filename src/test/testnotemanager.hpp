@@ -27,6 +27,8 @@ class NoteManager
   : public gnote::NoteManagerBase
 {
 public:
+  static Glib::ustring test_notes_dir();
+
   explicit NoteManager(const Glib::ustring & notes_dir);
 protected:
   virtual gnote::NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) override;
