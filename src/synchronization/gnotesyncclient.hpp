@@ -58,14 +58,16 @@ namespace sync {
     virtual void associated_server_id(const std::string &) override;
   protected:
     GnoteSyncClient();
+    void init(NoteManagerBase &);
+    void parse(const std::string & manifest_path);
+
+    std::string m_local_manifest_file_path;
   private:
     static const char *LOCAL_MANIFEST_FILE_NAME;
 
-    void init(NoteManagerBase &);
     void note_deleted_handler(const NoteBase::Ptr &);
     void on_changed(const Glib::RefPtr<Gio::File>&, const Glib::RefPtr<Gio::File>&,
                     Gio::FileMonitorEvent);
-    void parse(const std::string & manifest_path);
     void write(const std::string & manifest_path);
     void read_updated_note_atts(sharp::XmlReader & reader);
     void read_deleted_note_atts(sharp::XmlReader & reader);
@@ -75,7 +77,6 @@ namespace sync {
     sharp::DateTime m_last_sync_date;
     int m_last_sync_rev;
     std::string m_server_id;
-    std::string m_local_manifest_file_path;
     std::map<std::string, int> m_file_revisions;
     std::map<std::string, std::string> m_deleted_notes;
   };
