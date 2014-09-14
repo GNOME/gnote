@@ -400,8 +400,8 @@ namespace gnote {
 
     // URLs
     check = manage(make_check_button(_("Create links for _URLs")));
-    set_widget_tooltip(*check, _("Enable this option to create a link for URLs. "
-                                 "Clicking will open that URL with apropriate program."));
+    set_widget_tooltip(*check, _("Enable this option to create links for URLs. "
+                                 "Clicking will open URL with apropriate program."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
     peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_URL_LINKS, *check);
     peditor->setup();
