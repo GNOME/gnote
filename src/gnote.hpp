@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2014 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -66,6 +66,10 @@ public:
     {
       return m_background;
     }
+  bool shell_search()
+    {
+      return m_shell_search;
+    }
   void parse(int &argc, gchar ** & argv);
 
   static gboolean parse_func(const gchar *option_name,
@@ -83,6 +87,7 @@ private:
 
   bool        m_use_panel;
   bool        m_background;
+  bool        m_shell_search;
   gchar *     m_note_path;
   bool        m_do_search;
   std::string m_search;
@@ -144,7 +149,7 @@ public:
     }
   bool is_background() const
     {
-      return m_is_background;
+      return m_is_background || m_is_shell_search;
     }
   bool windowed()
     {
@@ -181,6 +186,7 @@ private:
   Glib::RefPtr<TrayIcon> m_tray_icon;
   Tray::Ptr m_tray;
   bool m_is_background;
+  bool m_is_shell_search;
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;

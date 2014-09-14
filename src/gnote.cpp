@@ -67,6 +67,7 @@ namespace gnote {
     : Gtk::Application("org.gnome.Gnote", Gio::APPLICATION_HANDLES_COMMAND_LINE)
     , m_manager(NULL)
     , m_is_background(false)
+    , m_is_shell_search(false)
     , m_prefsdlg(NULL)
 #ifdef HAVE_X11_SUPPORT
     , m_keybinder(NULL)
@@ -134,7 +135,7 @@ namespace gnote {
     else if(cmdline.needs_execute()) {
       cmdline.execute();
     }
-    else if(!cmdline.background()) {
+    else if(!cmdline.background() && !cmdline.shell_search()) {
       new_main_window().present();
     }
 
@@ -169,6 +170,7 @@ namespace gnote {
     if((m_is_background = cmd_line.background())) {
       am["QuitGNoteAction"]->set_visible(false);
     }
+    m_is_shell_search = cmd_line.shell_search();
     if(cmd_line.needs_execute()) {
       cmd_line.execute();
     }
@@ -208,9 +210,13 @@ namespace gnote {
       DBG_OUT("starting tray icon");
       start_tray_icon();
     }
-    else if(m_is_background) {
+    else if(is_background()) {
       // do not exit when all windows are closed
       hold();
+      if(m_is_shell_search) {
+        set_inactivity_timeout(30000);
+        release();
+      }
     }
     else {
       get_main_window().present();
@@ -550,6 +556,7 @@ namespace gnote {
     : m_context(g_option_context_new("Foobar"))
     , m_use_panel(false)
     , m_background(false)
+    , m_shell_search(false)
     , m_note_path(NULL)
     , m_do_search(false)
     , m_show_version(false)
@@ -561,6 +568,7 @@ namespace gnote {
     const GOptionEntry entries[] =
       {
         { "background", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_background, _("Run Gnote in background."), NULL },
+        { "shell-search", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_shell_search, _("Run Gnote as GNOME Shell search provider."), NULL },
         { "note-path", 0, 0, G_OPTION_ARG_STRING, &m_note_path, _("Specify the path of the directory containing the notes."), _("path") },
         { "search", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Open the search all notes window with the search text."), _("text") },
         { "version", 0, 0, G_OPTION_ARG_NONE, &m_show_version, _("Print version information."), NULL },
