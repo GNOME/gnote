@@ -508,9 +508,9 @@ namespace gnote {
     peditor->setup();
     keybind_peditor->add_guard (entry);
 
-    // Open Search All Notes window keybinding...
+    // Open Search window keybinding...
 
-    label = manage(make_label (_("Open \"Search _All Notes\"")));
+    label = manage(make_label (_("Open Search _Window")));
     table->attach (*label, 0, 1, 3, 4);
 
     entry = manage(new Gtk::Entry ());
