@@ -55,8 +55,10 @@ namespace sync {
     virtual void initialize_sync_service_addins(NoteManagerBase &);
     virtual void connect_system_signals();
     virtual SyncServiceAddin *get_sync_service_addin(const std::string & sync_service_id);
+    virtual SyncServiceAddin *get_configured_sync_service();
 
     SyncClient::Ptr m_client;
+    SyncUI::Ptr m_sync_ui;
   private:
     static SyncManager & _obj()
       {
@@ -69,7 +71,6 @@ namespace sync {
     void update_sync_action();
     void background_sync_checker();
     void set_state(SyncState new_state);
-    SyncServiceAddin *get_configured_sync_service();
     void create_note_in_main_thread(const NoteUpdate & noteUpdate);
     void update_note_in_main_thread(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
     void delete_note_in_main_thread(const Note::Ptr & existingNote);
@@ -84,7 +85,6 @@ namespace sync {
     static void note_save(const Note::Ptr & note);
 
     NoteManagerBase & m_note_manager;
-    SyncUI::Ptr m_sync_ui;
     SyncState m_state;
     Glib::Thread *m_sync_thread;
     SyncTitleConflictResolution m_conflict_resolution;
