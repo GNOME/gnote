@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -97,7 +97,7 @@ void ExportToGTGNoteAddin::export_button_clicked()
     Glib::RefPtr<Gio::DBus::Proxy> proxy = Gio::DBus::Proxy::create_for_bus_sync(
         Gio::DBus::BUS_TYPE_SESSION, "org.gnome.GTG", "/org/gnome/GTG", "org.gnome.GTG", s_gtg_interface);
     if(proxy == 0) {
-      ERR_OUT(_("Failed to create D_Bus proxy for GTG"));
+      ERR_OUT(_("Failed to create D-Bus proxy for GTG"));
       return;
     }
 
