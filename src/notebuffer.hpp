@@ -82,6 +82,7 @@ public:
                       const Gtk::TextIter &,const Gtk::TextIter &);
   bool is_active_tag(const std::string & );
   bool is_bulleted_list_active();
+  bool is_bulleted_list_active(Gtk::TextIter iter);
   bool can_make_bulleted_list();
   bool add_tab();
   bool remove_tab();

@@ -239,6 +239,11 @@ namespace gnote {
   {
     Glib::RefPtr<Gtk::TextMark> insert_mark = get_insert();
     Gtk::TextIter iter = get_iter_at_mark(insert_mark);
+    return is_bulleted_list_active(iter);
+  }
+
+  bool NoteBuffer::is_bulleted_list_active(Gtk::TextIter iter)
+  {
     iter.set_line_offset(0);
 
     Glib::RefPtr<Gtk::TextTag> depth = find_depth_tag(iter);
@@ -555,7 +560,7 @@ namespace gnote {
     else if (start.ends_line() && start.get_line() < get_line_count()) {
       Gtk::TextIter next = get_iter_at_line (start.get_line() + 1);
       end_iter = start;
-      if(is_bulleted_list_active()) {
+      if(is_bulleted_list_active() || is_bulleted_list_active(next)) {
         end_iter.forward_chars(3);
       }
       else {
