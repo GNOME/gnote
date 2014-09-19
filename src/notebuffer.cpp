@@ -381,11 +381,13 @@ namespace gnote {
       // previous line.
     } 
     else if (prev_depth) {
-      iter.forward_char();
+      if(!iter.ends_line()) {
+        iter.forward_to_line_end();
+      }
 
       // See if the line was left contentless and remove the bullet
       // if so.
-      if (iter.ends_line() || insert_iter.get_line_offset() < 3 ) {
+      if(iter.get_line_offset() < 3) {
         Gtk::TextIter start = get_iter_at_line(iter.get_line());
         Gtk::TextIter end_iter = start;
         end_iter.forward_to_line_end();
