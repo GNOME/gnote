@@ -4,17 +4,17 @@
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009.
 # Taylon Silmer <taylonsilva@gmail.com>, 2009.
 # Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012.
-# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013.
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013, 2014.
+# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-06-16 08:19+0000\n"
-"PO-Revision-Date: 2014-06-16 09:14-0300\n"
+"POT-Creation-Date: 2014-10-11 09:11+0000\n"
+"PO-Revision-Date: 2014-10-13 14:41-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -879,8 +879,8 @@ msgid "Failed to create GTG interface from XML: %s"
 msgstr "Ocorreu falha ao criar a interface do GTG a partir do XML: %s"
 
 #: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
-msgid "Failed to create D_Bus proxy for GTG"
-msgstr "Ocorreu falha ao criar proxy D_Bus para o GTG"
+msgid "Failed to create D-Bus proxy for GTG"
+msgstr "Ocorreu falha ao criar proxy D-Bus para o GTG"
 
 #: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:116
 #, c-format
@@ -1388,15 +1388,15 @@ msgstr "Chamada remota a %s falhou"
 msgid "Exception thrown when creating note: %s"
 msgstr "Exceção lançada ao criar a nota: %s"
 
-#: ../src/gnote.cpp:198
+#: ../src/gnote.cpp:200
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote já está em execução. Saindo..."
 
-#: ../src/gnote.cpp:359
+#: ../src/gnote.cpp:365
 msgid "and Tomboy original authors."
 msgstr "e os autores originais do Tomboy."
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:371
 msgid "translator-credits"
 msgstr ""
 "Marco de Freitas <marcodefreitas@gmail.com>, 2009\n"
@@ -1405,7 +1405,7 @@ msgstr ""
 "Rafael Ferreira <rafael.f.f1@gmail.com>, 2013\n"
 "Júnior Pires <juniorpiresupe@gmail.com>, 2013."
 
-#: ../src/gnote.cpp:374
+#: ../src/gnote.cpp:380
 msgid ""
 "Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1417,75 +1417,79 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 autores originais do Tomboy."
 
-#: ../src/gnote.cpp:378
+#: ../src/gnote.cpp:384
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Um aplicativo simples e fácil de usar para tomar notas."
 
-#: ../src/gnote.cpp:389
+#: ../src/gnote.cpp:395
 msgid "Homepage"
 msgstr "Página do projeto"
 
-#: ../src/gnote.cpp:563
+#: ../src/gnote.cpp:570
 msgid "Run Gnote in background."
 msgstr "Executar o Gnote em segundo plano."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:571
+msgid "Run Gnote as GNOME Shell search provider."
+msgstr "Executa o Gnote como um provedor de pesquisa do GNOME Shell."
+
+#: ../src/gnote.cpp:572
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especifica o caminho do diretório que contém as notas."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:572
 msgid "path"
 msgstr "caminho"
 
-#: ../src/gnote.cpp:565
+#: ../src/gnote.cpp:573
 msgid "Open the search all notes window with the search text."
 msgstr "Abre a janela \"pesquisar em todas as notas\" com o texto de pesquisa."
 
-#: ../src/gnote.cpp:565 ../src/gnote.cpp:570
+#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
 msgid "text"
 msgstr "texto"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:574
 msgid "Print version information."
 msgstr "Imprime informações da versão."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:575
 msgid "Create and display a new note, with a optional title."
 msgstr "Cria e exibe uma nova nota, com um título opcional."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:575
 msgid "title"
 msgstr "título"
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:576
 msgid "Display the existing note matching title."
 msgstr "Exibe a nota correspondente ao título."
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:576
 msgid "title/url"
 msgstr "título/url"
 
-#: ../src/gnote.cpp:569
+#: ../src/gnote.cpp:577
 msgid "Display the 'Start Here' note."
 msgstr "Exibe a nota \"Comece aqui\"."
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:578
 msgid "Search and highlight text in the opened note."
 msgstr "Pesquisa e destaca o texto na nota aberta."
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:582
 msgid "A note taking application"
 msgstr "Um aplicativo para tomar notas"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:582
 msgid "Gnote options at launch"
 msgstr "Opções do Gnote na inicialização"
 
-#: ../src/gnote.cpp:651
+#: ../src/gnote.cpp:659
 msgid "Could not connect to remote instance."
 msgstr "Não foi possível conectar à instância remota."
 
-#: ../src/gnote.cpp:767
+#: ../src/gnote.cpp:775
 msgid "Version %1%"
 msgstr "Versão %1%"
 
@@ -1596,11 +1600,11 @@ msgstr "Importante"
 msgid "Active"
 msgstr "Ativa"
 
-#: ../src/notebuffer.cpp:1498
+#: ../src/notebuffer.cpp:1505
 msgid "</list> tag mismatch"
 msgstr "Tag </list> incompatível"
 
-#: ../src/notebuffer.cpp:1577
+#: ../src/notebuffer.cpp:1584
 #, c-format
 msgid "Exception: %s"
 msgstr "Exceção: %s"
@@ -1813,36 +1817,36 @@ msgstr "Título da nota"
 msgid "Ad_vanced"
 msgstr "Ava_nçado"
 
-#: ../src/notewindow.cpp:371
+#: ../src/notewindow.cpp:372
 msgid "_Link to New Note"
 msgstr "_Link para uma nova nota"
 
-#: ../src/notewindow.cpp:379
+#: ../src/notewindow.cpp:380
 msgid "Te_xt"
 msgstr "Te_xto"
 
-#: ../src/notewindow.cpp:416
+#: ../src/notewindow.cpp:417
 msgid "Set properties of text"
 msgstr "Define as propriedades do texto"
 
-#: ../src/notewindow.cpp:419
+#: ../src/notewindow.cpp:421
 msgid "Is Important"
 msgstr "É importante"
 
-#: ../src/notewindow.cpp:420
+#: ../src/notewindow.cpp:422
 msgid "Toggle notes presence in Important Notes notebook"
 msgstr "Ativa presença de notas em catálogo de notas com notas importantes"
 
-#: ../src/notewindow.cpp:428 ../src/searchnoteswidget.cpp:144
+#: ../src/notewindow.cpp:430 ../src/searchnoteswidget.cpp:144
 #: ../src/searchnoteswidget.cpp:147
 msgid "_Delete"
 msgstr "E_xcluir"
 
-#: ../src/notewindow.cpp:428
+#: ../src/notewindow.cpp:430
 msgid "Delete this note"
 msgstr "Exclui esta nota"
 
-#: ../src/notewindow.cpp:444
+#: ../src/notewindow.cpp:446
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1850,63 +1854,63 @@ msgstr ""
 "Esta nota é uma nota de modelo. Determina o conteúdo padrão de notas "
 "regulares e não vai aparecer na janela do menu ou na pesquisa de notas."
 
-#: ../src/notewindow.cpp:447
+#: ../src/notewindow.cpp:449
 msgid "Convert to regular note"
 msgstr "Converter em nota regular"
 
-#: ../src/notewindow.cpp:450
+#: ../src/notewindow.cpp:452
 msgid "Save Si_ze"
 msgstr "Salvar taman_ho"
 
-#: ../src/notewindow.cpp:454
+#: ../src/notewindow.cpp:456
 msgid "Save Se_lection"
 msgstr "Salvar se_leção"
 
-#: ../src/notewindow.cpp:458
+#: ../src/notewindow.cpp:460
 msgid "Save _Title"
 msgstr "Salvar _título"
 
-#: ../src/notewindow.cpp:560 ../src/notewindow.cpp:1083
+#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1084
 msgid "Cannot create note"
 msgstr "Não foi possível criar a nota"
 
-#: ../src/notewindow.cpp:826
+#: ../src/notewindow.cpp:827
 msgid "_Link"
 msgstr "_Link"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:828
 msgid "<b>_Bold</b>"
 msgstr "<b>_Negrito</b>"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:829
 msgid "<i>_Italic</i>"
 msgstr "<i>_Itálico</i>"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:830
 msgid "<s>_Strikeout</s>"
 msgstr "<s>Ri_scado</s>"
 
-#: ../src/notewindow.cpp:831
+#: ../src/notewindow.cpp:832
 msgid "_Highlight"
 msgstr "_Destacar"
 
-#: ../src/notewindow.cpp:833
+#: ../src/notewindow.cpp:834
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:835
+#: ../src/notewindow.cpp:836
 msgid "Hu_ge"
 msgstr "Enor_me"
 
-#: ../src/notewindow.cpp:837
+#: ../src/notewindow.cpp:838
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:839
+#: ../src/notewindow.cpp:840
 msgid "S_mall"
 msgstr "_Pequeno"
 
-#: ../src/notewindow.cpp:841
+#: ../src/notewindow.cpp:842
 msgid "Bullets"
 msgstr "Marcadores"
 
@@ -2022,11 +2026,11 @@ msgstr "Criar links para _URLs"
 
 #: ../src/preferencesdialog.cpp:403
 msgid ""
-"Enable this option to create a link for URLs. Clicking will open that URL "
-"with apropriate program."
+"Enable this option to create links for URLs. Clicking will open URL with "
+"apropriate program."
 msgstr ""
 "Habilite esta opção para criar um link para os URLs. Ao clicar será aberto "
-"aquele URL com o programa apropriado."
+"a URL com o programa apropriado."
 
 #. WikiWords...
 #: ../src/preferencesdialog.cpp:410
@@ -2071,10 +2075,10 @@ msgstr "Abrir \"_Comece aqui\""
 msgid "Create _new note"
 msgstr "Criar uma _nova nota"
 
-#. Open Search All Notes window keybinding...
+#. Open Search window keybinding...
 #: ../src/preferencesdialog.cpp:513
-msgid "Open \"Search _All Notes\""
-msgstr "Abrir \"Pesquisar em _todas as notas\""
+msgid "Open Search _Window"
+msgstr "Abrir _janela de pesquisa"
 
 #: ../src/preferencesdialog.cpp:553
 msgid "Ser_vice:"
@@ -2423,13 +2427,13 @@ msgid "An error ocurred while connecting to the specified server"
 msgstr "Ocorreu um erro ao conectar ao servidor especificado"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:154
+#: ../src/synchronization/gnotesyncclient.cpp:165
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Elemento last-sync-date não analisável em %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:164
+#: ../src/synchronization/gnotesyncclient.cpp:175
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Elemento last-sync-rev não analisável em %s"
@@ -2642,7 +2646,6 @@ msgstr "Sincronizar as notas"
 #: ../src/synchronization/syncmanager.cpp:102
 #: ../src/synchronization/syncmanager.cpp:575
 #, c-format
-#| msgid "Remote call to %s failed"
 msgid "Report a bug. Cast failed: %s"
 msgstr "Relate um erro. Chamada falhou: %s"
 
@@ -2803,6 +2806,9 @@ msgstr "_Copiar o endereço do link"
 msgid "_Open Link"
 msgstr "Abrir _link"
 
+#~ msgid "Open \"Search _All Notes\""
+#~ msgstr "Abrir \"Pesquisar em _todas as notas\""
+
 #~ msgid "_Text"
 #~ msgstr "_Texto"
 
@@ -2951,9 +2957,6 @@ msgstr "Abrir _link"
 
 #~ msgid "Cannot create new note"
 #~ msgstr "Não foi possível criar uma nova nota"
-
-#~ msgid "Run Gnote as a GNOME panel applet."
-#~ msgstr "Executa o Gnote como um miniaplicativo de painel do GNOME."
 
 #~ msgid "Note_books"
 #~ msgstr "Ca_tálogo de notas"
