@@ -243,7 +243,7 @@ bool FuseSyncServiceAddin::mount_fuse(bool useStoredValues)
   else if(p.exit_code() != 0) {
     unmount_timeout(); // TODO: This is awfully ugly
     DBG_OUT("Error calling %s", m_fuse_mount_exe_path.c_str());
-    throw GnoteSyncException(_("An error ocurred while connecting to the specified server"));
+    throw GnoteSyncException(_("An error occurred while connecting to the specified server"));
     //TODO: provide stderr output of child
   }
 
