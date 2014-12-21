@@ -77,7 +77,9 @@ namespace gnote {
 
   Gnote::~Gnote()
   {
-    delete m_prefsdlg;
+    if (m_prefsdlg) {
+      delete m_prefsdlg;
+    }
     delete m_manager;
 #ifdef HAVE_X11_SUPPORT
     delete m_keybinder;
