@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-21 08:15+0000\n"
-"PO-Revision-Date: 2014-09-21 17:05+0200\n"
+"POT-Creation-Date: 2014-12-21 12:57+0000\n"
+"PO-Revision-Date: 2014-12-21 17:37+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -520,9 +520,12 @@ msgid "Synchronization Client ID"
 msgstr "Szinkronizációs kliens azonosítója"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#| msgid ""
+#| "Unique identifier for this Gnote client, used when communicating with a "
+#| "sychronization server."
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
+"synchronization server."
 msgstr ""
 "Ezen Gnote kliens szinkronizációs kiszolgálóval való kommunikációban "
 "használt egyedi azonosítója."
@@ -878,7 +881,6 @@ msgid "Failed to create GTG interface from XML: %s"
 msgstr "A GTG felület létrehozása sikertelen az XML-ből: %s"
 
 #: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
-#| msgid "Failed to create D_Bus proxy for GTG"
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Nem sikerült a D-Bus proxy létrehozása a GTG-hez"
 
@@ -1835,7 +1837,6 @@ msgid "Set properties of text"
 msgstr "Szöveg beállításai"
 
 #: ../src/notewindow.cpp:421
-#| msgid "Important"
 msgid "Is Important"
 msgstr "Fontos-e"
 
@@ -1882,7 +1883,6 @@ msgid "Cannot create note"
 msgstr "Nem hozható létre jegyzet"
 
 #: ../src/notewindow.cpp:827
-#| msgid "Link"
 msgid "_Link"
 msgstr "_Hivatkozás"
 
@@ -2033,11 +2033,11 @@ msgstr "Hivatkozások létrehozása _URL-ekhez"
 
 #: ../src/preferencesdialog.cpp:403
 #| msgid ""
-#| "Enable this option to create a link for URLs. Clicking will open that URL "
-#| "with apropriate program."
+#| "Enable this option to create links for URLs. Clicking will open URL with "
+#| "apropriate program."
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
-"apropriate program."
+"appropriate program."
 msgstr ""
 "Engedélyezze ezt az opciót hivatkozások létrehozásához URL-ekhez. Egy "
 "kattintás az URL-re megnyitja azt a megfelelő programmal."
@@ -2087,7 +2087,6 @@ msgstr "Ú_j jegyzet létrehozása"
 
 #. Open Search window keybinding...
 #: ../src/preferencesdialog.cpp:513
-#| msgid "Open Search Dialog"
 msgid "Open Search _Window"
 msgstr "Keresési _ablak megnyitása"
 
@@ -2433,7 +2432,8 @@ msgid "FUSE could not be enabled."
 msgstr "A FUSE nem engedélyezhető."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:246
-msgid "An error ocurred while connecting to the specified server"
+#| msgid "An error ocurred while connecting to the specified server"
+msgid "An error occurred while connecting to the specified server"
 msgstr "Hiba történt a megadott kiszolgálóhoz kapcsolódás közben"
 
 #. TRANSLATORS: %s is file
@@ -2656,7 +2656,6 @@ msgstr "Jegyzetek szinkronizálása"
 #: ../src/synchronization/syncmanager.cpp:102
 #: ../src/synchronization/syncmanager.cpp:575
 #, c-format
-#| msgid "Remote call to %s failed"
 msgid "Report a bug. Cast failed: %s"
 msgstr "Hiba jelentése. Eldobás sikertelen: %s"
 
