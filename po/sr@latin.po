@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&k"
 "eywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-10-26 09:11+0000\n"
-"PO-Revision-Date: 2014-10-26 13:15+0200\n"
+"POT-Creation-Date: 2014-12-27 09:20+0000\n"
+"PO-Revision-Date: 2014-12-27 15:26+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -17,7 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n""Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
@@ -510,9 +509,12 @@ msgid "Synchronization Client ID"
 msgstr "ID klijenta za servis usklađivanja"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#| msgid ""
+#| "Unique identifier for this Gnote client, used when communicating with a "
+#| "sychronization server."
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
+"synchronization server."
 msgstr ""
 "Jedinstvena oznaka za ovaj klijent Gnomovog beležnika, koja se koristi pri "
 "komunikaciji sa serverom za usklađivanje."
@@ -869,7 +871,6 @@ msgid "Failed to create GTG interface from XML: %s"
 msgstr "Nisam uspeo da napravim sučelje GDS-a iz IksML-a: %s"
 
 #: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
-#| msgid "Failed to create D_Bus proxy for GTG"
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Nisam uspeo da napravim posrednika D-sabirnice za GDS"
 
@@ -1381,15 +1382,15 @@ msgstr "Nije uspeo udaljeni poziv za „%s“"
 msgid "Exception thrown when creating note: %s"
 msgstr "Došlo je do izuzetka pri stvaranju beleške: %s"
 
-#: ../src/gnote.cpp:200
+#: ../src/gnote.cpp:202
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnomov beležnik je već pokrenut.  Izlazim..."
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:367
 msgid "and Tomboy original authors."
 msgstr "i izvorni autori Tomičinih beleški."
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:373
 msgid "translator-credits"
 msgstr ""
 "Miloš Popović <gpopac@gmail.com>\n"
@@ -1397,7 +1398,7 @@ msgstr ""
 "\n"
 "http://prevod.org — prevod na srpski jezik."
 
-#: ../src/gnote.cpp:380
+#: ../src/gnote.cpp:382
 msgid ""
 "Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1409,79 +1410,79 @@ msgstr ""
 "Autorska prava © 2009 Iber Figjer\n"
 "Autorska prava © 2004-2009 prvobitni autori Tomičinih beleški."
 
-#: ../src/gnote.cpp:384
+#: ../src/gnote.cpp:386
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Jednostavan i zgodan programčić za hvatanje beleški."
 
-#: ../src/gnote.cpp:395
+#: ../src/gnote.cpp:397
 msgid "Homepage"
 msgstr "Veb stranica"
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:572
 msgid "Run Gnote in background."
 msgstr "Pokreće Gnomovog beležnika u pozadini."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:573
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Pokreće Gnomovog beležnika kao dostavnika pretrage Gnomove školjke."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:574
 msgid "Specify the path of the directory containing the notes."
 msgstr "Navodi putanju direktorijuma koji sadrži beleške."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:574
 msgid "path"
 msgstr "putanja"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:575
 msgid "Open the search all notes window with the search text."
 msgstr "Otvara prozor za pretraživanje svih beleški uz tekst pretrage."
 
-#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
+#: ../src/gnote.cpp:575 ../src/gnote.cpp:580
 msgid "text"
 msgstr "tekst"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:576
 msgid "Print version information."
 msgstr "Ispisuje podatke o izdanju."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:577
 msgid "Create and display a new note, with a optional title."
 msgstr "Pravi i prikazuje novu belešku, sa opcionalnim naslovom."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:577
 msgid "title"
 msgstr "naslov"
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:578
 msgid "Display the existing note matching title."
 msgstr "Prikazuje postojeću belešku koja odgovara naslovu."
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:578
 msgid "title/url"
 msgstr "naslov/adresa"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:579
 msgid "Display the 'Start Here' note."
 msgstr "Prikazuje belešku „Polazna stanica“."
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:580
 msgid "Search and highlight text in the opened note."
 msgstr "Traži i ističe tekst u otvorenoj beleški."
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:584
 msgid "A note taking application"
 msgstr "Program za beleške"
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:584
 msgid "Gnote options at launch"
 msgstr "Opcije Gnomovog beležnika pri pokretanju"
 
-#: ../src/gnote.cpp:659
+#: ../src/gnote.cpp:661
 msgid "Could not connect to remote instance."
 msgstr "Ne mogu da se povežem na udaljeni primerak."
 
-#: ../src/gnote.cpp:775
+#: ../src/gnote.cpp:777
 msgid "Version %1%"
 msgstr "Izdanje %1%"
 
@@ -1826,7 +1827,6 @@ msgid "Set properties of text"
 msgstr "Podesite osobine teksta"
 
 #: ../src/notewindow.cpp:421
-#| msgid "Important"
 msgid "Is Important"
 msgstr "Važno"
 
@@ -1872,7 +1872,6 @@ msgid "Cannot create note"
 msgstr "Ne mogu da napravim belešku"
 
 #: ../src/notewindow.cpp:827
-#| msgid "Link"
 msgid "_Link"
 msgstr "_Uveži"
 
@@ -2021,11 +2020,11 @@ msgstr "Napravi veze za _adrese"
 
 #: ../src/preferencesdialog.cpp:403
 #| msgid ""
-#| "Enable this option to create a link for URLs. Clicking will open that URL "
-#| "with apropriate program."
+#| "Enable this option to create links for URLs. Clicking will open URL with "
+#| "apropriate program."
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
-"apropriate program."
+"appropriate program."
 msgstr ""
 "Uključite ovu opciju da napravite vezu za adrese. Pritisak će otvoriti tu "
 "adresu odgovarajućim programom."
@@ -2074,7 +2073,6 @@ msgstr "Napravi _novu belešku"
 
 #. Open Search window keybinding...
 #: ../src/preferencesdialog.cpp:513
-#| msgid "Open Search Dialog"
 msgid "Open Search _Window"
 msgstr "Otvori prozor _pretrage"
 
@@ -2421,7 +2419,8 @@ msgid "FUSE could not be enabled."
 msgstr "FUSE ne može biti omogućen."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:246
-msgid "An error ocurred while connecting to the specified server"
+#| msgid "An error ocurred while connecting to the specified server"
+msgid "An error occurred while connecting to the specified server"
 msgstr "Došlo je do greške pri povezivanju sa navedenim serverom"
 
 #. TRANSLATORS: %s is file
@@ -2645,7 +2644,6 @@ msgstr "Uskladi beleške"
 #: ../src/synchronization/syncmanager.cpp:102
 #: ../src/synchronization/syncmanager.cpp:575
 #, c-format
-#| msgid "Remote call to %s failed"
 msgid "Report a bug. Cast failed: %s"
 msgstr "Prijavite grešku. Izlivak nije uspeo: %s"
 
