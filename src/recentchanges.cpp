@@ -239,6 +239,7 @@ namespace gnote {
     find_next_button->set_always_show_image(true);
     find_next_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
+    find_next_button->add_accelerator("activate", get_accel_group(), GDK_KEY_Return, (Gdk::ModifierType)0, (Gtk::AccelFlags) 0);
     find_next_button->show();
     m_find_next_prev_box.attach(*find_next_button, 0, 0, 1, 1);
 
@@ -247,6 +248,7 @@ namespace gnote {
     find_prev_button->set_always_show_image(true);
     find_prev_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
+    find_prev_button->add_accelerator("activate", get_accel_group(), GDK_KEY_Return, Gdk::SHIFT_MASK, (Gtk::AccelFlags) 0);
     find_prev_button->show();
     m_find_next_prev_box.attach(*find_prev_button, 1, 0, 1, 1);
 
