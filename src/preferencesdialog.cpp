@@ -120,10 +120,6 @@ namespace gnote {
     notebook->append_page (*manage(make_editing_pane()),
                            _("General"));
     notebook->append_page(*manage(make_links_pane()), _("Links"));
-#ifdef HAVE_X11_SUPPORT
-    notebook->append_page (*manage(make_hotkeys_pane()),
-                           _("Hotkeys"));
-#endif
 //      }
     notebook->append_page(*manage(make_sync_pane()),
                           _("Synchronization"));
@@ -407,116 +403,6 @@ namespace gnote {
     peditor->setup();
 
     return vbox;
-  }
-
-    // List of Hotkey options
-  Gtk::Widget *PreferencesDialog::make_hotkeys_pane()
-  {
-    Gtk::Label* label;
-    Gtk::CheckButton* check;
-    Gtk::Alignment* align;
-    Gtk::Entry* entry;
-    sharp::PropertyEditorBool *keybind_peditor;
-    sharp::PropertyEditor *peditor;
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
-    Glib::RefPtr<Gio::Settings> keybindings_settings = Preferences::obj()
-      .get_schema_settings(Preferences::SCHEMA_KEYBINDINGS);
-
-    Gtk::Grid* hotkeys_list = new Gtk::Grid;
-    hotkeys_list->set_border_width(12);
-    hotkeys_list->show ();
-    int hotkeys_list_row = 0;
-
-
-    // Hotkeys...
-
-    check = manage(make_check_button (_("Listen for _hotkeys")));
-    set_widget_tooltip(*check, _("Hotkeys allow you to quickly access "
-                                 "your notes from anywhere with a keypress. "
-                                 "Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, "
-                                 "<b>&lt;Alt&gt;N</b>"));
-    hotkeys_list->attach(*check, 0, hotkeys_list_row++, 1, 1);
-
-    keybind_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_KEYBINDINGS, *check);
-    keybind_peditor->setup();
-
-    align = manage(new Gtk::Alignment (0.5f, 0.5f, 0.0f, 1.0f));
-    align->show ();
-    hotkeys_list->attach(*align, 0, hotkeys_list_row++, 1, 1);
-
-    Gtk::Table *table = manage(new Gtk::Table (4, 2, false));
-    table->set_col_spacings(6);
-    table->set_row_spacings(6);
-    table->show ();
-    align->add(*table);
-
-
-    // Show notes menu keybinding...
-
-    label = manage(make_label (_("Show notes _menu")));
-    table->attach (*label, 0, 1, 0, 1);
-
-    entry = manage(new Gtk::Entry ());
-    label->set_mnemonic_widget(*entry);
-    entry->show ();
-    table->attach (*entry, 1, 2, 0, 1);
-
-    peditor = new sharp::PropertyEditor(keybindings_settings,
-                                        Preferences::KEYBINDING_SHOW_NOTE_MENU,
-                                        *entry);
-    peditor->setup();
-    keybind_peditor->add_guard (entry);
-
-
-    // Open Start Here keybinding...
-
-    label = manage(make_label (_("Open \"_Start Here\"")));
-    table->attach (*label, 0, 1, 1, 2);
-
-    entry = manage(new Gtk::Entry ());
-    label->set_mnemonic_widget(*entry);
-    entry->show ();
-    table->attach (*entry, 1, 2, 1, 2);
-
-    peditor = new sharp::PropertyEditor(keybindings_settings,
-                                        Preferences::KEYBINDING_OPEN_START_HERE,
-                                        *entry);
-    peditor->setup();
-    keybind_peditor->add_guard (entry);
-
-    // Create new note keybinding...
-
-    label = manage(make_label (_("Create _new note")));
-    table->attach (*label, 0, 1, 2, 3);
-
-    entry = manage(new Gtk::Entry ());
-    label->set_mnemonic_widget(*entry);
-    entry->show ();
-    table->attach (*entry, 1, 2, 2, 3);
-    
-    peditor = new sharp::PropertyEditor(keybindings_settings,
-                                        Preferences::KEYBINDING_CREATE_NEW_NOTE,
-                                        *entry);
-    peditor->setup();
-    keybind_peditor->add_guard (entry);
-
-    // Open Search window keybinding...
-
-    label = manage(make_label (_("Open Search _Window")));
-    table->attach (*label, 0, 1, 3, 4);
-
-    entry = manage(new Gtk::Entry ());
-    label->set_mnemonic_widget(*entry);
-    entry->show ();
-    table->attach(*entry, 1, 2, 3, 4);
-
-    peditor = new sharp::PropertyEditor(keybindings_settings,
-                                        Preferences::KEYBINDING_OPEN_RECENT_CHANGES,
-                                        *entry);
-    peditor->setup();
-    keybind_peditor->add_guard (entry);
-
-    return hotkeys_list;
   }
 
 

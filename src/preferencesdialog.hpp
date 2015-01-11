@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,7 +50,6 @@ public:
 
   Gtk::Widget *make_editing_pane();
   Gtk::Widget *make_links_pane();
-  Gtk::Widget *make_hotkeys_pane();
   Gtk::Widget *make_sync_pane();
   Gtk::Widget *make_addins_pane();
 

@@ -84,12 +84,6 @@ DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/searchprovider.hpp dbus/searchprovider.cpp \
 	$(NULL)
 
-if HAVE_X11_SUPPORT
-KEYBINDER_SOURCES=keybinder.hpp \
-	prefskeybinder.hpp prefskeybinder.cpp \
-	xkeybinder.hpp xkeybinder.cpp
-endif
-
 libgnote_la_LDFLAGS = -release @LIBGNOTE_RELEASE@ -version-info @LIBGNOTE_VERSION_INFO@
 libgnote_la_LIBADD = $(LIBGNOTE_LIBS)
 libgnote_la_SOURCES = \
@@ -186,7 +180,6 @@ gnote_SOURCES = \
 	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
 	synchronization/syncmanager.hpp synchronization/syncmanager.cpp \
 	$(DBUS_SOURCES) \
-	$(KEYBINDER_SOURCES) \
 	main.cpp \
 	$(NULL)
 

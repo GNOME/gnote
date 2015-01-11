@@ -37,10 +37,6 @@
 #include "remotecontrolproxy.hpp"
 #include "synchronization/syncdialog.hpp"
 
-#ifdef HAVE_X11_SUPPORT
-#include "keybinder.hpp"
-#endif
-
 namespace gnote {
 
 class PreferencesDialog;
@@ -121,12 +117,6 @@ public:
     {
       return *m_manager;
     }
-#ifdef HAVE_X11_SUPPORT
-  IKeybinder & keybinder()
-    {
-      return *m_keybinder;
-    }
-#endif
 
   void setup_global_actions();
 
@@ -176,9 +166,6 @@ private:
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;
-#ifdef HAVE_X11_SUPPORT
-  IKeybinder  *m_keybinder;
-#endif
 };
 
 

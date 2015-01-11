@@ -56,10 +56,6 @@
 #include "notebooks/notebookmanager.hpp"
 #include "synchronization/syncmanager.hpp"
 
-#ifdef HAVE_X11_SUPPORT
-#include "xkeybinder.hpp"
-#endif
-
 
 namespace gnote {
 
@@ -69,9 +65,6 @@ namespace gnote {
     , m_is_background(false)
     , m_is_shell_search(false)
     , m_prefsdlg(NULL)
-#ifdef HAVE_X11_SUPPORT
-    , m_keybinder(NULL)
-#endif
   {
   }
 
@@ -81,9 +74,6 @@ namespace gnote {
       delete m_prefsdlg;
     }
     delete m_manager;
-#ifdef HAVE_X11_SUPPORT
-    delete m_keybinder;
-#endif
   }
 
 
@@ -151,9 +141,6 @@ namespace gnote {
     new Preferences;
     m_manager = new NoteManager(note_path);
     new notebooks::NotebookManager(default_note_manager());
-#ifdef HAVE_X11_SUPPORT
-    m_keybinder = new XKeybinder();
-#endif
     new ActionManager;
     sync::SyncManager::init(default_note_manager());
 
