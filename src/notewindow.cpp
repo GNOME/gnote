@@ -617,7 +617,8 @@ namespace gnote {
     if(m_global_keys)
       m_global_keys->enabled(m_enabled);
     FOREACH(const Glib::RefPtr<Gtk::Action> & action, get_widget_actions()) {
-      if(Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action) == 0) {
+      // A list includes empty actions to mark separators, non-modifying actions are always enabled
+      if(action != 0 && Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action) == 0) {
         action->set_sensitive(enable);
       }
     }
