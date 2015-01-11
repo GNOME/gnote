@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,7 +28,6 @@
 #include "notewindow.hpp"
 #include "preferences.hpp"
 #include "prefskeybinder.hpp"
-#include "tray.hpp"
 
 
 #define KEYBINDING_SHOW_NOTE_MENU_DEFAULT "&lt;Alt&gt;F12"
@@ -144,10 +143,9 @@ namespace gnote {
 
 
   GnotePrefsKeybinder::GnotePrefsKeybinder(IKeybinder & keybinder,
-                                           NoteManager & manager, IGnoteTray & trayicon)
+                                           NoteManager & manager)
     : PrefsKeybinder(keybinder)
     , m_manager(manager)
-    , m_trayicon(trayicon)
   {
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
       .get_schema_settings(Preferences::SCHEMA_GNOTE);
@@ -196,10 +194,6 @@ namespace gnote {
 
   void GnotePrefsKeybinder::key_show_menu()
   {
-    // Show the notes menu, highlighting the first item.
-    // This matches the behavior of GTK for
-    // accelerator-shown menus.
-    m_trayicon.show_menu (true);
   }
 
 

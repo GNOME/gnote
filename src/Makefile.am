@@ -180,7 +180,6 @@ gnote_SOURCES = \
 	recentchanges.hpp recentchanges.cpp \
 	searchnoteswidget.hpp searchnoteswidget.cpp \
 	tagmanager.hpp tagmanager.cpp \
-	tray.hpp tray.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
 	synchronization/silentui.hpp synchronization/silentui.cpp \

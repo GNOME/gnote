@@ -128,10 +128,6 @@ namespace gnote {
     cmdline.parse(argc, argv);
     if(!m_manager) {
       common_init();
-      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
-        .get_schema_settings(Preferences::SCHEMA_GNOTE);
-      settings->signal_changed()
-        .connect(sigc::mem_fun(*this, &Gnote::on_setting_changed));
       register_object();
     }
     else if(cmdline.needs_execute()) {
@@ -206,13 +202,7 @@ namespace gnote {
 
     make_app_actions();
     make_app_menu();
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
-      .get_schema_settings(Preferences::SCHEMA_GNOTE);
-    if(settings->get_boolean(Preferences::USE_STATUS_ICON)) {
-      DBG_OUT("starting tray icon");
-      start_tray_icon();
-    }
-    else if(is_background()) {
+    if(is_background()) {
       // do not exit when all windows are closed
       hold();
       if(m_is_shell_search) {
@@ -242,36 +232,6 @@ namespace gnote {
     return note_path;
   }
 
-  bool Gnote::show_tray_icon_timeout()
-  {
-    // Setting to false and back to true is required to make it work on some tray implementations
-    m_tray_icon->set_visible(false);
-    m_tray_icon->set_visible(true);
-    return false;
-  }
-
-  void Gnote::start_tray_icon()
-  {
-    // Create Search All Notes window as we need it present for application to run
-    get_main_window();
-
-    if(!m_tray_icon) {
-      // Create the tray icon and run the main loop
-#ifdef HAVE_X11_SUPPORT
-      m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(keybinder(), default_note_manager()));
-#else
-      m_tray_icon = Glib::RefPtr<TrayIcon>(new TrayIcon(default_note_manager()));
-#endif
-      m_tray = m_tray_icon->tray();
-    }
-
-    // Tome make status icon visible on some implementations, it should be made visible
-    // after some timeout.
-    Glib::RefPtr<Glib::TimeoutSource> timeout = Glib::TimeoutSource::create(100);
-    timeout->connect(sigc::mem_fun(*this, &Gnote::show_tray_icon_timeout));
-    timeout->attach();
-  }
-
 
   void Gnote::register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish)
   {
@@ -284,26 +244,6 @@ namespace gnote {
     RemoteControlProxy::register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION),
                                         default_note_manager(),
                                         sigc::mem_fun(*this, &Gnote::end_main));
-  }
-
-
-  void Gnote::on_setting_changed(const Glib::ustring & key)
-  {
-    if(key != Preferences::USE_STATUS_ICON) {
-      return;
-    }
-
-    bool use_status_icon = Preferences::obj()
-      .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(key);
-    if(use_status_icon) {
-      start_tray_icon();
-    }
-    else {
-      if(m_tray_icon) {
-        m_tray_icon->set_visible(false);
-      }
-      ActionManager::obj()["ShowSearchAllNotesAction"]->activate();
-    }
   }
 
 
@@ -349,11 +289,6 @@ namespace gnote {
   void Gnote::on_show_help_action(const Glib::VariantBase&)
   {
     GdkScreen *cscreen = NULL;
-    if(m_tray_icon) {
-      Gdk::Rectangle area;
-      GtkOrientation orientation;
-      gtk_status_icon_get_geometry(m_tray_icon->gobj(), &cscreen, area.gobj(), &orientation);
-    }
     utils::show_help("gnote", "", cscreen, NULL);
   }
 

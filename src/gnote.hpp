@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -35,7 +35,6 @@
 #include "actionmanager.hpp"
 #include "ignote.hpp"
 #include "remotecontrolproxy.hpp"
-#include "tray.hpp"
 #include "synchronization/syncdialog.hpp"
 
 #ifdef HAVE_X11_SUPPORT
@@ -130,7 +129,6 @@ public:
 #endif
 
   void setup_global_actions();
-  void start_tray_icon();
 
   void on_quit_gnote_action(const Glib::VariantBase&);
   void on_preferences_response(int res);
@@ -143,21 +141,13 @@ public:
   virtual void open_search_all() override;
   void open_note_sync_window(const Glib::VariantBase&);
 
-  bool tray_icon_showing()
-    {
-      return m_tray_icon && m_tray_icon->is_embedded() && m_tray_icon->get_visible();
-    }
   bool is_background() const
     {
       return m_is_background || m_is_shell_search;
     }
   bool windowed()
     {
-      return !tray_icon_showing() && !is_background();
-    }
-  void set_tray(const Tray::Ptr & tray)
-    {
-      m_tray = tray;
+      return !is_background();
     }
   static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
   virtual void open_note(const Note::Ptr & note) override;
@@ -167,7 +157,6 @@ protected:
 private:
   Gnote();
   std::string get_note_path(const std::string & override_path);
-  void on_setting_changed(const Glib::ustring & key);
   void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
   void on_sync_dialog_response(int response_id);
@@ -178,13 +167,10 @@ private:
   void on_new_window_action(const Glib::VariantBase&);
   void on_new_note_app_action(const Glib::VariantBase&);
   MainWindow *get_active_window();
-  bool show_tray_icon_timeout();
   void register_object();
 
   NoteManager *m_manager;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
-  Glib::RefPtr<TrayIcon> m_tray_icon;
-  Tray::Ptr m_tray;
   bool m_is_background;
   bool m_is_shell_search;
   PreferencesDialog *m_prefsdlg;

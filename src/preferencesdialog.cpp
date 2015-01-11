@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -241,14 +241,6 @@ namespace gnote {
       options_list->set_border_width(12);
       options_list->show();
       int options_list_row = 0;
-
-
-      // Status icon
-      check = manage(make_check_button(_("Use status _icon")));
-      set_widget_tooltip(*check, _("Show icon in tray, which is the central place of control."));
-      options_list->attach(*check, 0, options_list_row++, 1, 1);
-      peditor = new sharp::PropertyEditorBool(settings, Preferences::USE_STATUS_ICON, *check);
-      peditor->setup();
 
 
       // Open in new window

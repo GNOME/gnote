@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013,2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,6 @@ namespace gnote {
 
 class TrayIcon;
 class NoteManager;
-class IGnoteTray;
 class IKeybinder;
 
 
@@ -57,7 +56,7 @@ class GnotePrefsKeybinder
   : public PrefsKeybinder
 {
 public:
-  GnotePrefsKeybinder(IKeybinder & keybinder, NoteManager & manager, IGnoteTray & trayicon);
+  GnotePrefsKeybinder(IKeybinder & keybinder, NoteManager & manager);
   void enable_keybindings_changed(const Glib::ustring & key);
   void enable_disable(bool enable);
 private:
@@ -67,7 +66,6 @@ private:
   void key_open_search();
   void key_open_recent_changes();
   NoteManager & m_manager;
-  IGnoteTray & m_trayicon;
 };
 
 
