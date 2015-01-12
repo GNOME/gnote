@@ -53,4 +53,4 @@ HELP_FILES = \
 	gnote-template-notes.page \
 	gnote-working-with-notebooks.page \
 	index.page
-HELP_LINGUAS = cs da de el es fr hu lt ru sl zh_CN
+HELP_LINGUAS = cs da de el es fr hu lt ru sl sv zh_CN
