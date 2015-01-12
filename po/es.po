@@ -6,15 +6,15 @@
 # MIguel Rodriguez Núñez <bokerones.fritos@gmail.com>, 2013.
 # Miguel Rodriguez Nuñez <bokerones.fritos@gmail.com>, 2014.
 # Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2013, 2014.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2009, 2010, 2011, 2012, 2013, 2014.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2009, 2010, 2011, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-21 15:07+0000\n"
-"PO-Revision-Date: 2014-09-22 13:52+0200\n"
+"POT-Creation-Date: 2015-01-11 18:10+0000\n"
+"PO-Revision-Date: 2015-01-12 19:02+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -518,9 +518,12 @@ msgid "Synchronization Client ID"
 msgstr "ID del cliente de sincronización"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#| msgid ""
+#| "Unique identifier for this Gnote client, used when communicating with a "
+#| "sychronization server."
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
+"synchronization server."
 msgstr ""
 "Identificador único para este cliente Gnote, usado al comunicar con un "
 "servidor de sincronización."
@@ -1397,15 +1400,15 @@ msgstr "Falló la llamada remota a %s"
 msgid "Exception thrown when creating note: %s"
 msgstr "Excepción al crear una nota: %s"
 
-#: ../src/gnote.cpp:200
+#: ../src/gnote.cpp:202
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote todavía está en ejecución. Saliendo..."
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:367
 msgid "and Tomboy original authors."
 msgstr "y los autores originales de Tomboy."
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:373
 msgid "translator-credits"
 msgstr ""
 "Miguel Rodríguez <bokerones.fritos@gmail.com>, 2013\n"
@@ -1413,93 +1416,98 @@ msgstr ""
 "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008\n"
 "QA: Jorge González <jorgegonz@svn.gnome.org>, 2009-2010"
 
-#: ../src/gnote.cpp:380
+#: ../src/gnote.cpp:382
+#| msgid ""
+#| "Copyright © 2010-2014 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2014 Aurimas Cernius\n"
+"Copyright © 2010-2015 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2014 Aurimas Cernius\n"
+"Copyright © 2010-2015 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 los autores originales de Tomboy."
 
-#: ../src/gnote.cpp:384
+#: ../src/gnote.cpp:386
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Una aplicación simple y fácil de usar para tomar notas en el escritorio."
 
-#: ../src/gnote.cpp:395
+#: ../src/gnote.cpp:397
 msgid "Homepage"
 msgstr "Página web"
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:572
 msgid "Run Gnote in background."
 msgstr "Ejecutar Gnote en segundo plano."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:573
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Ejecutar Gnote con el buscador de GNOME Shell."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:574
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especificar la ruta de la carpeta que contiene las notas."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:574
 msgid "path"
 msgstr "ruta"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:575
 msgid "Open the search all notes window with the search text."
 msgstr ""
 "Abrir la ventana de búsqueda en todas las notas con el texto de búsqueda."
 
-#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
+#: ../src/gnote.cpp:575 ../src/gnote.cpp:580
 msgid "text"
 msgstr "texto"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:576
 msgid "Print version information."
 msgstr "Imprimir la información de la versión."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:577
 msgid "Create and display a new note, with a optional title."
 msgstr "Crear y mostrar una nota nueva, con un título opcional"
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:577
 msgid "title"
 msgstr "título"
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:578
 msgid "Display the existing note matching title."
 msgstr "Mostrar el título de la nota correspondiente."
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:578
 msgid "title/url"
 msgstr "título/url"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:579
 msgid "Display the 'Start Here' note."
 msgstr "Mostrar la nota «Comenzar aquí»."
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:580
 msgid "Search and highlight text in the opened note."
 msgstr "Mostrar y resaltar texto en la nota abierta."
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:584
 msgid "A note taking application"
 msgstr "Una aplicación para tomar notas"
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:584
 msgid "Gnote options at launch"
 msgstr "Opciones de Gnote al iniciar"
 
-#: ../src/gnote.cpp:659
+#: ../src/gnote.cpp:661
 msgid "Could not connect to remote instance."
 msgstr "No se pudo conectar con una instancia remota."
 
-#: ../src/gnote.cpp:775
+#: ../src/gnote.cpp:777
 msgid "Version %1%"
 msgstr "Versión %1%"
 
@@ -1883,47 +1891,47 @@ msgstr "Guardar se_lección"
 msgid "Save _Title"
 msgstr "Guardar _título"
 
-#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1085
 msgid "Cannot create note"
 msgstr "No se puede crear la nota"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:828
 msgid "_Link"
 msgstr "_Enlace"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:829
 msgid "<b>_Bold</b>"
 msgstr "<b>_Negrita</b>"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:830
 msgid "<i>_Italic</i>"
 msgstr "<i>_Cursiva</i>"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:831
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Tachado</s>"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:833
 msgid "_Highlight"
 msgstr "_Resaltado"
 
-#: ../src/notewindow.cpp:834
+#: ../src/notewindow.cpp:835
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:837
 msgid "Hu_ge"
 msgstr "_Enorme"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:839
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:840
+#: ../src/notewindow.cpp:841
 msgid "S_mall"
 msgstr "_Pequeña"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "Bullets"
 msgstr "Topos"
 
@@ -2040,9 +2048,12 @@ msgid "Create links for _URLs"
 msgstr "Crea enlaces para _URL"
 
 #: ../src/preferencesdialog.cpp:403
+#| msgid ""
+#| "Enable this option to create links for URLs. Clicking will open URL with "
+#| "apropriate program."
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
-"apropriate program."
+"appropriate program."
 msgstr ""
 "Active esta opción para crear enlaces para los URL. Al pulsar en el enlace "
 "se abrirá el URL con su correspondiente programa."
@@ -2438,8 +2449,9 @@ msgid "FUSE could not be enabled."
 msgstr "No se pudo activar FUSE."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:246
-msgid "An error ocurred while connecting to the specified server"
-msgstr "Ocurrió un error al conectar con el servidor especificado"
+#| msgid "An error ocurred while connecting to the specified server"
+msgid "An error occurred while connecting to the specified server"
+msgstr "Ocurrió un error al conectar al servidor especificado"
 
 #. TRANSLATORS: %s is file
 #: ../src/synchronization/gnotesyncclient.cpp:165
