@@ -9,14 +9,14 @@
 # Stanisław Małolepszy <smalolepszy@aviary.pl>, 2007.
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2007-2008.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2007-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2009-2014.
-# Aviary.pl <gnomepl@aviary.pl>, 2007-2014.
+# Piotr Drąg <piotrdrag@gmail.com>, 2009-2015.
+# Aviary.pl <gnomepl@aviary.pl>, 2007-2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-21 20:04+0100\n"
-"PO-Revision-Date: 2014-12-21 20:05+0100\n"
+"POT-Creation-Date: 2015-01-17 18:20+0100\n"
+"PO-Revision-Date: 2015-01-17 18:21+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -346,15 +346,8 @@ msgid "Use status icon, when started as an application"
 msgstr "Użycie ikony stanu, jeśli uruchomiono jako program"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:50
-msgid ""
-"Has affect only when started as an application. When set to TRUE, shows a "
-"status icon. If set to FALSE, Search All Notes window is used as main "
-"application window, closing which makes application to exit."
-msgstr ""
-"Jest używane tylko, jeśli uruchomiono jako program. Jeśli jest ustawione na "
-"\"true\", to wyświetla ikonę stanu. Jeśli ustawiono na \"false\", to okno "
-"wyszukiwania notatek jest używane jako główne okno programu, i jego "
-"zamknięcie powoduje zakończenie programu."
+msgid "Deprecated, has no effect"
+msgstr "Przestarzałe, nie powoduje zmian"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:51
 msgid "Open notes in new window"
@@ -387,117 +380,41 @@ msgid "Show applet menu"
 msgstr "Wyświetlanie menu apletu"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:56
-msgid ""
-"The global keybinding for showing the Gnote applet's menu. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Globalne przypisanie klawisza dla wyświetlenia menu apletu Gnote. Format "
-"jest w postaci \"&lt;Control&gt;a\" lub \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Analizator jest całkiem tolerancyjny i zezwala na małe i duże litery, jak "
-"również skróty takie jak \"&lt;Ctl&gt;\" oraz \"&lt;Ctrl&gt;\". Jeżeli opcja "
-"zostanie ustawiona na specjalny ciąg \"disabled\" (wyłączone), wtedy nie "
-"będzie przypisanego klawisza do tego działania."
+msgid "Deprecated, has no effect."
+msgstr "Przestarzałe, nie powoduje zmian."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Open Start Here"
 msgstr "Otwarcie \"Start\""
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:58
-msgid ""
-"The global keybinding for opening the \"Start Here\" note. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Globalne przypisanie klawisza dla otwarcia notatki \"Start\". Format jest w "
-"postaci \"&lt;Control&gt;a\" lub \"&lt;Shift&gt;&lt;Alt&gt;F1\". Analizator "
-"jest całkiem tolerancyjny i zezwala na małe i duże litery, jak również "
-"skróty takie jak \"&lt;Ctl&gt;\" oraz \"&lt;Ctrl&gt;\". Jeżeli opcja "
-"zostanie ustawiona na specjalny ciąg \"disabled\" (wyłączone), wtedy nie "
-"będzie przypisanego klawisza do tego działania."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Create a new Note"
 msgstr "Utwórz nową notatkę"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
-msgid ""
-"The global keybinding for creating and displaying a new Note. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Globalne przypisanie klawisza dla tworzenia i wyświetlania nowej notatki. "
-"Format jest w postaci \"&lt;Control&gt;a\" lub \"&lt;Shift&gt;&lt;Alt&gt;"
-"F1\". Analizator jest całkiem tolerancyjny i zezwala na małe i duże litery, "
-"jak również skróty takie jak \"&lt;Ctl&gt;\" oraz \"&lt;Ctrl&gt;\". Jeżeli "
-"opcja zostanie ustawiona na specjalny ciąg \"disabled\" (wyłączone), wtedy "
-"nie będzie przypisanego klawisza do tego działania."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Open Search Dialog"
 msgstr "Otwarcie okna wyszukiwania"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
-msgid ""
-"The global keybinding for opening the Note Search dialog. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Globalne przypisanie klawisza dla otwarcia okna wyszukiwania notatki. Format "
-"jest w postaci \"&lt;Control&gt;a\" lub \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Analizator jest całkiem tolerancyjny i zezwala na małe i duże litery, jak "
-"również skróty takie jak \"&lt;Ctl&gt;\" oraz \"&lt;Ctrl&gt;\". Jeżeli opcja "
-"zostanie ustawiona na specjalny ciąg \"disabled\" (wyłączone), wtedy nie "
-"będzie przypisanego klawisza do tego działania."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid "Open Recent Changes"
 msgstr "Otwarcie ostatnich zmian"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
-msgid ""
-"The global keybinding for opening the Recent Changes dialog. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Globalne przypisanie klawisza dla otwarcia okna ostatnich zmian. Format jest "
-"w postaci \"&lt;Control&gt;a\" lub \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Analizator jest całkiem tolerancyjny i zezwala na małe i duże litery, jak "
-"również skróty takie jak \"&lt;Ctl&gt;\" oraz \"&lt;Ctrl&gt;\". Jeżeli opcja "
-"zostanie ustawiona na specjalny ciąg \"disabled\" (wyłączone), wtedy nie "
-"będzie przypisanego klawisza do tego działania."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid "HTML Export Last Directory"
 msgstr "Ostatni katalog eksportu HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Ostatni katalog, do którego notatka została wyeksportowana przy użyciu "
 "wtyczki Eksport do HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid "HTML Export Linked Notes"
 msgstr "Eksport HTML dowiązanych notatek"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -505,11 +422,11 @@ msgstr ""
 "Ostatnie ustawienie dla opcji \"Eksport powiązanych notatek\" we wtyczce "
 "Eksport do HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid "HTML Export All Linked Notes"
 msgstr "Eksport HTML wszystkich dowiązanych notatek"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -521,11 +438,11 @@ msgstr ""
 "HTML dowiązanych notatek\" aby określić, czy podczas eksportu do HTML mają "
 "być eksportowane wszystkie rekursywnie powiązane ze sobą notatki."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid "Synchronization Client ID"
 msgstr "ID klienta synchronizacji"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -533,11 +450,11 @@ msgstr ""
 "Niepowtarzalny identyfikator tego klienta Gnote używany podczas kontaktów z "
 "serwerem synchronizacji."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid "Synchronization Local Server Path"
 msgstr "Ścieżka lokalnego serwera synchronizacji"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -545,22 +462,22 @@ msgstr ""
 "Ścieżka do serwera synchronizacji w przypadku korzystania z dodatku "
 "synchronizacji systemu plików."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid "Selected Synchronization Service Addin"
 msgstr "Wybrany dodatek usługi synchronizacji"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr ""
 "Niepowtarzalny identyfikator bieżącego dodatku usługi synchronizacji notatek."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Zachowanie po wykryciu konfliktu synchronizacji notatki"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -572,11 +489,11 @@ msgstr ""
 "wykryciu konfliktu (zamiast pytania użytkownika). Wartość 0 oznacza "
 "proszenie użytkownika o decyzję przy każdym konflikcie."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Automatyczna ograniczenie czasu połączenia w tle"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -588,11 +505,11 @@ msgstr ""
 "wskazują, że automatyczne synchronizowanie jest wyłączone. Najniższą "
 "akceptowaną dodatnią wartością jest 5. Wartość podawana w minutach."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid "Accept SSL Certificates"
 msgstr "Akceptowanie certyfikatów SSL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -600,38 +517,38 @@ msgstr ""
 "Proszę użyć opcji wdfs \"-ac\", aby akceptować certyfikaty SSL, bez pytania "
 "użytkownika."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid "Share URL"
 msgstr "Adres URL udziału"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "Adres URL udziału WebDAV, z którym synchronizować notatki."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Share username"
 msgstr "Nazwa użytkownika udziału"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:86
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Username to access WebDAV share."
 msgstr "Nazwa użytkownika udziału WebDAV."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "Timestamp format"
 msgstr "Format znacznika czasu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:88
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "Format daty używany do automatycznego wstawiania. Używa formatu strftime(3)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:89
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid "Time between checks"
 msgstr "Czas między sprawdzaniem"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:90
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -639,7 +556,6 @@ msgstr ""
 "to 5."
 
 #: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
-#: ../src/tray.cpp:465
 msgid "_Quit"
 msgstr "Za_kończ"
 
@@ -648,7 +564,6 @@ msgid "Quit Gnote"
 msgstr "Kończy działanie programu Gnote"
 
 #: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
-#: ../src/tray.cpp:448
 msgid "_Preferences"
 msgstr "_Preferencje"
 
@@ -676,19 +591,19 @@ msgstr "O programie Gnote"
 msgid "TrayIcon"
 msgstr "Ikona obszaru powiadamiania"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
+#: ../src/actionmanager.cpp:107
 msgid "Create _New Note"
 msgstr "Utwórz _nową notatkę"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:227
+#: ../src/actionmanager.cpp:107
 msgid "Create a new note"
 msgstr "Tworzy nową notatkę"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
+#: ../src/actionmanager.cpp:112
 msgid "_Search All Notes"
 msgstr "_Szukaj w notatkach"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:236
+#: ../src/actionmanager.cpp:112
 msgid "Open the Search All Notes window"
 msgstr "Otwiera okno przeszukiwania wszystkich notatek"
 
@@ -700,7 +615,7 @@ msgstr "N_owa notatka"
 msgid "New _Window"
 msgstr "Nowe o_kno"
 
-#: ../src/actionmanager.cpp:169 ../src/tray.cpp:453
+#: ../src/actionmanager.cpp:169
 msgid "_Help"
 msgstr "Pomo_c"
 
@@ -1049,10 +964,6 @@ msgstr ""
 "NoteDirectoryWatcher: przerwano aktualizację, błąd podczas przetwarzania %s: "
 "%s"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
-msgid "_Directory check interval:"
-msgstr "_Czas między sprawdzaniem katalogu:"
-
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:1
 msgid "Note Directory Watcher"
 msgstr "Obserwacja katalogu notatek"
@@ -1064,6 +975,10 @@ msgstr "Obserwuje zmiany notatek w katalogu notatek programu Gnote."
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:3
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius i pierwotni autorzy programu Tomboy"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
+msgid "_Directory check interval:"
+msgstr "_Czas między sprawdzaniem katalogu:"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:33
 msgid "Today: Template"
@@ -1176,8 +1091,8 @@ msgstr "Zastępuje tytuł zaznaczonym tekstem."
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 #: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 msgid "Special Notes"
 msgstr "Specjalne notatki"
 
@@ -1396,15 +1311,15 @@ msgstr "Zdalne wywołanie do %s się nie powiodło"
 msgid "Exception thrown when creating note: %s"
 msgstr "Wystąpił wyjątek podczas tworzenia notatki: %s"
 
-#: ../src/gnote.cpp:200
+#: ../src/gnote.cpp:185
 msgid "Gnote is already running.  Exiting..."
 msgstr "Program Gnote jest już uruchomiony. Kończenie działania..."
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:289
 msgid "and Tomboy original authors."
 msgstr "i pierwotni autorzy programu Tomboy."
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:295
 msgid "translator-credits"
 msgstr ""
 "Marek Habersack <grendel@caudium.net>, 2004\n"
@@ -1412,94 +1327,94 @@ msgstr ""
 "Stanisław Małolepszy <smalolepszy@aviary.pl>, 2007\n"
 "Wadim Dziedzic <wdziedzic@aviary.pl>, 2007-2008\n"
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2007-2009\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2009-2014\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2007-2014"
+"Piotr Drąg <piotrdrag@gmail.com>, 2009-2015\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2007-2015"
 
-#: ../src/gnote.cpp:380
+#: ../src/gnote.cpp:304
 msgid ""
-"Copyright © 2010-2014 Aurimas Cernius\n"
+"Copyright © 2010-2015 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2014 Aurimas Cernius\n"
+"Copyright © 2010-2015 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Pierwotni autorzy programu Tomboy."
 
-#: ../src/gnote.cpp:384
+#: ../src/gnote.cpp:308
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Prosty i łatwy w użyciu program do sporządzania notatek."
 
-#: ../src/gnote.cpp:395
+#: ../src/gnote.cpp:319
 msgid "Homepage"
 msgstr "Witryna programu"
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:494
 msgid "Run Gnote in background."
 msgstr "Uruchamia program Gnote w tle."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:495
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Uruchamia program Gnote jako dostawcę wyszukiwania GNOME Shell."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:496
 msgid "Specify the path of the directory containing the notes."
 msgstr "Proszę wprowadzić ścieżkę do katalogu zawierającego notatki."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:496
 msgid "path"
 msgstr "ścieżka"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:497
 msgid "Open the search all notes window with the search text."
 msgstr "Otwiera okno przeszukiwania wszystkich notatek."
 
-#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
+#: ../src/gnote.cpp:497 ../src/gnote.cpp:502
 msgid "text"
 msgstr "tekst"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:498
 msgid "Print version information."
 msgstr "Wyświetla informacje o wersji."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:499
 msgid "Create and display a new note, with a optional title."
 msgstr "Tworzy i wyświetla nową notatkę z opcjonalnym tytułem."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:499
 msgid "title"
 msgstr "tytuł"
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:500
 msgid "Display the existing note matching title."
 msgstr "Wyświetla istniejącą notatkę o pasującym tytule."
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:500
 msgid "title/url"
 msgstr "tytuł/adres URL"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:501
 msgid "Display the 'Start Here' note."
 msgstr "Wyświetla notatkę \"Start\"."
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:502
 msgid "Search and highlight text in the opened note."
 msgstr "Wyszukuje i wyróżnia tekst w otwartej notatce."
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:506
 msgid "A note taking application"
 msgstr "Program do sporządzania notatek"
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:506
 msgid "Gnote options at launch"
 msgstr "Opcje podczas uruchamiania programu Gnote"
 
-#: ../src/gnote.cpp:659
+#: ../src/gnote.cpp:583
 msgid "Could not connect to remote instance."
 msgstr "Nie można połączyć ze zdalną kopią."
 
-#: ../src/gnote.cpp:775
+#: ../src/gnote.cpp:699
 msgid "Version %1%"
 msgstr "Wersja %1%"
 
@@ -1516,6 +1431,23 @@ msgstr "Wtyczka jest już zwalniana"
 #: ../src/noteaddin.cpp:139
 msgid "Window is not embedded"
 msgstr "Okno nie jest osadzone"
+
+#. Probably IOException or UnauthorizedAccessException?
+#: ../src/notebase.cpp:200 ../src/note.cpp:382
+#, c-format
+msgid "Exception while saving note: %s"
+msgstr "Wyjątek podczas zapisywania notatki: %s"
+
+#. write failure, but not critical
+#: ../src/notebase.cpp:444
+#, c-format
+msgid "Failed to update note format: %s"
+msgstr "Zaktualizowanie formatu notatki się nie powiodło: %s"
+
+#: ../src/notebase.cpp:568
+#, c-format
+msgid "Filesystem error: %s"
+msgstr "Błąd systemu plików: %s"
 
 #: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Create Notebook"
@@ -1651,12 +1583,6 @@ msgstr ""
 "uprawnienia do katalogu ~/.local/share/gnote. Szczegóły błędu można znaleźć "
 "w pliku ~/.gnote.log."
 
-#. Probably IOException or UnauthorizedAccessException?
-#: ../src/note.cpp:382 ../src/notebase.cpp:200
-#, c-format
-msgid "Exception while saving note: %s"
-msgstr "Wyjątek podczas zapisywania notatki: %s"
-
 #: ../src/note.cpp:474
 #, c-format
 msgid "Error while saving: %s"
@@ -1666,16 +1592,13 @@ msgstr "Błąd podczas zapisywania: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "Ustawianie treści tekstu dla zamkniętych notatek nie jest obsługiwane"
 
-#. write failure, but not critical
-#: ../src/notebase.cpp:444
-#, c-format
-msgid "Failed to update note format: %s"
-msgstr "Zaktualizowanie formatu notatki się nie powiodło: %s"
+#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+msgid "New Note Template"
+msgstr "Szablon nowej notatki"
 
-#: ../src/notebase.cpp:568
-#, c-format
-msgid "Filesystem error: %s"
-msgstr "Błąd systemu plików: %s"
+#: ../src/notemanagerbase.cpp:359
+msgid "Describe your new note here."
+msgstr "Treść nowej notatki..."
 
 #: ../src/notemanager.cpp:133
 msgid ""
@@ -1766,14 +1689,6 @@ msgstr "Błąd podczas tworzenia notatek \"Start\": %s"
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Błąd podczas przetwarzania kodu XML notatki, pomijanie \"%s\": %s"
-
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:332
-msgid "New Note Template"
-msgstr "Szablon nowej notatki"
-
-#: ../src/notemanagerbase.cpp:359
-msgid "Describe your new note here."
-msgstr "Treść nowej notatki..."
 
 #: ../src/noterenamedialog.cpp:123
 msgid "Rename Note Links?"
@@ -1884,47 +1799,47 @@ msgstr "Zapisz _wybrane"
 msgid "Save _Title"
 msgstr "Zapisz _tytuł"
 
-#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1085
 msgid "Cannot create note"
 msgstr "Nie można utworzyć notatki"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:828
 msgid "_Link"
 msgstr "_Odnośnik"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:829
 msgid "<b>_Bold</b>"
 msgstr "<b>_Pogrubienie</b>"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:830
 msgid "<i>_Italic</i>"
 msgstr "<i>Kursy_wa</i>"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:831
 msgid "<s>_Strikeout</s>"
 msgstr "<s>P_rzekreślenie</s>"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:833
 msgid "_Highlight"
 msgstr "Wyróżn_ienie"
 
-#: ../src/notewindow.cpp:834
+#: ../src/notewindow.cpp:835
 msgid "_Normal"
 msgstr "_Zwykły"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:837
 msgid "Hu_ge"
 msgstr "_Ogromny"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:839
 msgid "_Large"
 msgstr "_Duży"
 
-#: ../src/notewindow.cpp:840
+#: ../src/notewindow.cpp:841
 msgid "S_mall"
 msgstr "_Mały"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "Bullets"
 msgstr "Wypunktowanie"
 
@@ -1936,45 +1851,30 @@ msgstr "Ogólne"
 msgid "Links"
 msgstr "Odnośniki"
 
-#: ../src/preferencesdialog.cpp:125
-msgid "Hotkeys"
-msgstr "Klawisze skrótów"
-
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:129 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "Synchronizacja"
 
-#: ../src/preferencesdialog.cpp:131
+#: ../src/preferencesdialog.cpp:127
 msgid "Plugins"
 msgstr "Wtyczki"
 
-#: ../src/preferencesdialog.cpp:208
+#: ../src/preferencesdialog.cpp:204
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Wtyczka %s jest nieobecna"
 
-#. Status icon
-#: ../src/preferencesdialog.cpp:247
-msgid "Use status _icon"
-msgstr "_Ikona stanu"
-
-#: ../src/preferencesdialog.cpp:248
-msgid "Show icon in tray, which is the central place of control."
-msgstr ""
-"Wyświetlanie ikony w obszarze powiadamiania, która jest centralnym punktem "
-"kontroli."
-
 #. Open in new window
-#: ../src/preferencesdialog.cpp:255
+#: ../src/preferencesdialog.cpp:243
 msgid "Always _open notes in new window"
 msgstr "_Otwieranie notatek w nowym oknie"
 
-#: ../src/preferencesdialog.cpp:268
+#: ../src/preferencesdialog.cpp:256
 msgid "_Spell check while typing"
 msgstr "_Sprawdzanie pisowni podczas pisania"
 
-#: ../src/preferencesdialog.cpp:269
+#: ../src/preferencesdialog.cpp:257
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1983,37 +1883,37 @@ msgstr ""
 "prawidłowej pisowni będą dostępne w menu pod prawym przyciskiem myszy."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:279
+#: ../src/preferencesdialog.cpp:267
 msgid "Enable auto-_bulleted lists"
 msgstr "A_utomatyczne wypunktowanie list"
 
-#: ../src/preferencesdialog.cpp:280
+#: ../src/preferencesdialog.cpp:268
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
 "Rozpoczyna nową listę wypunktowaną po rozpoczęciu nowego wiersza znakiem \"-"
 "\"."
 
-#: ../src/preferencesdialog.cpp:289
+#: ../src/preferencesdialog.cpp:277
 msgid "Use custom _font"
 msgstr "Własna _czcionka"
 
-#: ../src/preferencesdialog.cpp:307
+#: ../src/preferencesdialog.cpp:295
 msgid "When renaming a linked note: "
 msgstr "Podczas zmieniania nazwy notatki, do której prowadzą odnośniki: "
 
-#: ../src/preferencesdialog.cpp:311
+#: ../src/preferencesdialog.cpp:299
 msgid "Ask me what to do"
 msgstr "Pytanie co robić"
 
-#: ../src/preferencesdialog.cpp:312
+#: ../src/preferencesdialog.cpp:300
 msgid "Never rename links"
 msgstr "Bez zmieniania nazw odnośników"
 
-#: ../src/preferencesdialog.cpp:313
+#: ../src/preferencesdialog.cpp:301
 msgid "Always rename links"
 msgstr "Zmienianie nazw odnośników"
 
-#: ../src/preferencesdialog.cpp:333
+#: ../src/preferencesdialog.cpp:321
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2021,27 +1921,27 @@ msgstr ""
 "Szablon nowej notatki pozwala określić domyślną treść dla nowo utworzonych "
 "notatek."
 
-#: ../src/preferencesdialog.cpp:338
+#: ../src/preferencesdialog.cpp:326
 msgid "Open New Note Template"
 msgstr "Otwórz szablon nowej notatki"
 
 #. internal links
-#: ../src/preferencesdialog.cpp:395
+#: ../src/preferencesdialog.cpp:383
 msgid "_Automatically link to notes"
 msgstr "_Automatyczne odnośniki do notatek"
 
-#: ../src/preferencesdialog.cpp:396
+#: ../src/preferencesdialog.cpp:384
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Włączenie tej opcji spowoduje tworzenie odnośników, kiedy tekst pasuje do "
 "tytułu notatki."
 
 #. URLs
-#: ../src/preferencesdialog.cpp:402
+#: ../src/preferencesdialog.cpp:390
 msgid "Create links for _URLs"
 msgstr "Tworzenie odnośników dla adresów _URL"
 
-#: ../src/preferencesdialog.cpp:403
+#: ../src/preferencesdialog.cpp:391
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2050,11 +1950,11 @@ msgstr ""
 "Kliknięcie otworzy dany adres za pomocą odpowiedniego programu."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:410
+#: ../src/preferencesdialog.cpp:398
 msgid "Highlight _WikiWords"
 msgstr "_Wyróżnianie WikiSłów"
 
-#: ../src/preferencesdialog.cpp:411
+#: ../src/preferencesdialog.cpp:399
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2062,90 +1962,55 @@ msgstr ""
 "Uaktywnienie tej opcji spowoduje wyróżnianie słów <b>KtóreWyglądająTakJakTo</"
 "b>. Kliknięcie takiego słowa utworzy notatkę o takiej właśnie nazwie."
 
-#. Hotkeys...
-#: ../src/preferencesdialog.cpp:441
-msgid "Listen for _hotkeys"
-msgstr "Nasłuchiwanie _klawiszy skrótów"
-
-#: ../src/preferencesdialog.cpp:442
-msgid ""
-"Hotkeys allow you to quickly access your notes from anywhere with a "
-"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-"Alt&gt;N</b>"
-msgstr ""
-"Klawisze skrótów pozwalają na szybki dostęp do notatek z dowolnego miejsca. "
-"Przykładowe klawisze skrótów: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-"Alt&gt;N</b>"
-
-#. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:464
-msgid "Show notes _menu"
-msgstr "Wyświetlenie _menu notatek"
-
-#. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:481
-msgid "Open \"_Start Here\""
-msgstr "Otwarcie notatki \"_Start\""
-
-#. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:497
-msgid "Create _new note"
-msgstr "Utworzenie _nowej notatki"
-
-#. Open Search window keybinding...
-#: ../src/preferencesdialog.cpp:513
-msgid "Open Search _Window"
-msgstr "Otwarcie okna _wyszukiwania"
-
-#: ../src/preferencesdialog.cpp:553
+#: ../src/preferencesdialog.cpp:431
 msgid "Ser_vice:"
 msgstr "_Usługa:"
 
-#: ../src/preferencesdialog.cpp:609 ../src/preferencesdialog.cpp:1239
+#: ../src/preferencesdialog.cpp:487 ../src/preferencesdialog.cpp:1117
 msgid "Not configurable"
 msgstr "Nie do konfiguracji"
 
-#: ../src/preferencesdialog.cpp:636
+#: ../src/preferencesdialog.cpp:514
 msgid "Automatical background s_ync interval (minutes)"
 msgstr "Czas między automatycznym _synchronizowaniem w tle (minuty)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:660
+#: ../src/preferencesdialog.cpp:538
 msgid "_Advanced..."
 msgstr "Zaa_wansowane..."
 
-#: ../src/preferencesdialog.cpp:707
+#: ../src/preferencesdialog.cpp:585
 msgid "The following plugins are installed:"
 msgstr "Zainstalowano poniższe wtyczki:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:742
+#: ../src/preferencesdialog.cpp:620
 msgid "_Enable"
 msgstr "_Włącz"
 
-#: ../src/preferencesdialog.cpp:748
+#: ../src/preferencesdialog.cpp:626
 msgid "_Disable"
 msgstr "Wyłą_cz"
 
-#: ../src/preferencesdialog.cpp:906
+#: ../src/preferencesdialog.cpp:784
 msgid "Not Implemented"
 msgstr "Niezaimplementowane"
 
-#: ../src/preferencesdialog.cpp:922
+#: ../src/preferencesdialog.cpp:800
 msgid "%1% Preferences"
 msgstr "Preferencje programu %1%"
 
-#: ../src/preferencesdialog.cpp:1057
+#: ../src/preferencesdialog.cpp:935
 msgid "Choose Note Font"
 msgstr "Wybór czcionki notatki"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1155
+#: ../src/preferencesdialog.cpp:1033
 msgid "Other Synchronization Options"
 msgstr "Inne opcje synchronizacji"
 
-#: ../src/preferencesdialog.cpp:1158
+#: ../src/preferencesdialog.cpp:1036
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2154,23 +2019,23 @@ msgstr ""
 "skonfigurowanym serwerze synchronizacji:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1162
+#: ../src/preferencesdialog.cpp:1040
 msgid "Always ask me what to do"
 msgstr "Pytanie co robić za każdym razem"
 
-#: ../src/preferencesdialog.cpp:1166
+#: ../src/preferencesdialog.cpp:1044
 msgid "Rename my local note"
 msgstr "Zmiana nazwy lokalnej notatki"
 
-#: ../src/preferencesdialog.cpp:1170
+#: ../src/preferencesdialog.cpp:1048
 msgid "Replace my local note with the server's update"
 msgstr "Zastąpienie lokalnej notatki aktualizacją z serwera"
 
-#: ../src/preferencesdialog.cpp:1272
+#: ../src/preferencesdialog.cpp:1150
 msgid "Are you sure?"
 msgstr "Na pewno?"
 
-#: ../src/preferencesdialog.cpp:1273
+#: ../src/preferencesdialog.cpp:1151
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2178,11 +2043,11 @@ msgstr ""
 "Usunięcie ustawień synchronizacji nie jest zalecane. Może być konieczna "
 "ponowna synchronizacja wszystkich notatek po zapisaniu nowych ustawień."
 
-#: ../src/preferencesdialog.cpp:1283
+#: ../src/preferencesdialog.cpp:1161
 msgid "Resetting Synchronization Settings"
 msgstr "Przywracanie ustawień synchronizacji"
 
-#: ../src/preferencesdialog.cpp:1284
+#: ../src/preferencesdialog.cpp:1162
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2192,11 +2057,11 @@ msgstr ""
 "synchronizacji zostaną usunięte. Może być konieczna ponowna synchronizacja "
 "wszystkich notatek po zapisaniu nowych ustawień."
 
-#: ../src/preferencesdialog.cpp:1350
+#: ../src/preferencesdialog.cpp:1228
 msgid "Connection successful"
 msgstr "Pomyślnie połączono"
 
-#: ../src/preferencesdialog.cpp:1351
+#: ../src/preferencesdialog.cpp:1229
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2204,7 +2069,7 @@ msgstr ""
 "Program Gnote jest gotowy do synchronizacji notatek. Zsynchronizować je "
 "teraz?"
 
-#: ../src/preferencesdialog.cpp:1375
+#: ../src/preferencesdialog.cpp:1253
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -2212,19 +2077,19 @@ msgstr ""
 "Proszę sprawdzić informacje i spróbować ponownie. Plik dziennika %1% może "
 "zawierać więcej informacji o błędzie."
 
-#: ../src/preferencesdialog.cpp:1380
+#: ../src/preferencesdialog.cpp:1258
 msgid "Error connecting"
 msgstr "Błąd podczas łączenia"
 
-#: ../src/preferencesdialog.cpp:1443
+#: ../src/preferencesdialog.cpp:1321
 msgid "Version:"
 msgstr "Wersja:"
 
-#: ../src/preferencesdialog.cpp:1446
+#: ../src/preferencesdialog.cpp:1324
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:1451
+#: ../src/preferencesdialog.cpp:1329
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -2715,18 +2580,6 @@ msgstr ""
 "Aby uniknąć tej wiadomości, należy wczytywać FUSE podczas uruchamiania "
 "systemu. Należy dopisać \"modprobe fuse\" do pliku /etc/init.d/boot.local "
 "lub \"fuse\" do pliku /etc/modules."
-
-#: ../src/tray.cpp:54
-msgid "Take notes"
-msgstr "Robienie notatek"
-
-#: ../src/tray.cpp:167
-msgid " (new)"
-msgstr " (nowa)"
-
-#: ../src/tray.cpp:458
-msgid "_About Gnote"
-msgstr "_O programie Gnote"
 
 #: ../src/utils.cpp:144
 msgid ""
