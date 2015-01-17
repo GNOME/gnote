@@ -5,15 +5,15 @@
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008.
 # Vytautas Rėkus <v.rekus@gmail.com>, 2009.
 # Giedrius Slavinskas <giedrius25@gmail.com>, 2009, 2010.
-# Aurimas Černius <aurisc4@gmail.com>, 2013, 2014.
+# Aurimas Černius <aurisc4@gmail.com>, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-26 08:28+0000\n"
-"PO-Revision-Date: 2014-09-26 22:34+0300\n"
+"POT-Creation-Date: 2015-01-17 13:09+0000\n"
+"PO-Revision-Date: 2015-01-17 16:55+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -507,9 +507,12 @@ msgid "Synchronization Client ID"
 msgstr "Sinchronizavimo kliento ID"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#| msgid ""
+#| "Unique identifier for this Gnote client, used when communicating with a "
+#| "sychronization server."
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
+"synchronization server."
 msgstr ""
 "Unikalus šio Gnote kliento identifikatorius, naudojamas bendraujant su "
 "sinchronizavimo serveriu."
@@ -865,7 +868,6 @@ msgid "Failed to create GTG interface from XML: %s"
 msgstr "Nepavyko įkelti GTG sąsajos iš XML: %s"
 
 #: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
-#| msgid "Failed to create D_Bus proxy for GTG"
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Nepavyko sukurti D-Bus GTG tarpininko"
 
@@ -1387,13 +1389,18 @@ msgstr ""
 "Žygimantas Beručka <zygis@gnome.org>"
 
 #: ../src/gnote.cpp:380
+#| msgid ""
+#| "Copyright © 2010-2014 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2014 Aurimas Cernius\n"
+"Copyright © 2010-2015 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Autorinės teisės priklauso © 2010-2014 Aurimas Cernius\n"
+"Autorinės teisės priklauso © 2010-2015 Aurimas Cernius\n"
 "Autorinės teisės priklauso © 2009-2011 Debarshi Ray\n"
 "Autorinės teisės priklauso © 2009 Hubert Figuiere\n"
 "Autorinės teisės priklauso © 2004-2009 Tomboy originalo autoriams."
@@ -1853,47 +1860,47 @@ msgstr "Įrašyti pa_žymėjimą"
 msgid "Save _Title"
 msgstr "Įrašyti _pavadinimą"
 
-#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1085
 msgid "Cannot create note"
 msgstr "Nepavyko sukurti raštelio"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:828
 msgid "_Link"
 msgstr "_Susieti"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:829
 msgid "<b>_Bold</b>"
 msgstr "<b>_Pusjuodis</b>"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:830
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kursyvas</i>"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:831
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Perbrauktas</s>"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:833
 msgid "_Highlight"
 msgstr "Pa_ryškintas"
 
-#: ../src/notewindow.cpp:834
+#: ../src/notewindow.cpp:835
 msgid "_Normal"
 msgstr "_Normalus"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:837
 msgid "Hu_ge"
 msgstr "Milžiniš_kas"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:839
 msgid "_Large"
 msgstr "_Didelis"
 
-#: ../src/notewindow.cpp:840
+#: ../src/notewindow.cpp:841
 msgid "S_mall"
 msgstr "_Mažas"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "Bullets"
 msgstr "Punktai"
 
@@ -2008,11 +2015,11 @@ msgstr "Sukurti saitus _URL"
 
 #: ../src/preferencesdialog.cpp:403
 #| msgid ""
-#| "Enable this option to create a link for URLs. Clicking will open that URL "
-#| "with apropriate program."
+#| "Enable this option to create links for URLs. Clicking will open URL with "
+#| "apropriate program."
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
-"apropriate program."
+"appropriate program."
 msgstr ""
 "Įjunkite šį nustatymą URL saitams sukurti. Paspaudus saitą URL bus atvertas "
 "su atitinkama programa."
@@ -2062,7 +2069,6 @@ msgstr "Sukurti _naują raštelį"
 
 #. Open Search window keybinding...
 #: ../src/preferencesdialog.cpp:513
-#| msgid "Open Search Dialog"
 msgid "Open Search _Window"
 msgstr "Atverti paieškos _langą"
 
@@ -2409,7 +2415,8 @@ msgid "FUSE could not be enabled."
 msgstr "Nepavyko įjungti FUSE."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:246
-msgid "An error ocurred while connecting to the specified server"
+#| msgid "An error ocurred while connecting to the specified server"
+msgid "An error occurred while connecting to the specified server"
 msgstr "Kilo klaida jungiantis prie nurodyto serverio"
 
 #. TRANSLATORS: %s is file
@@ -2632,7 +2639,6 @@ msgstr "Sinchronizuoti raštelius"
 #: ../src/synchronization/syncmanager.cpp:102
 #: ../src/synchronization/syncmanager.cpp:575
 #, c-format
-#| msgid "Remote call to %s failed"
 msgid "Report a bug. Cast failed: %s"
 msgstr "Praneškite apie klaidą. Nepavyko pakeisti tipo: %s"
 
@@ -2790,4 +2796,3 @@ msgstr "_Kopijuoti nuorodos adresą"
 #: ../src/watchers.cpp:680
 msgid "_Open Link"
 msgstr "_Atverti nuorodą"
-
