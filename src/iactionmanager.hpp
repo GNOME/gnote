@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,7 @@
 namespace gnote {
 
 enum NoteActionOrder {
+  NOTEBOOK_ORDER = 50,
   BACKLINKS_ORDER = 100,
   EXPORT_TO_HTML_ORDER = 200,
   EXPORT_TO_GTG_ORDER = 250,

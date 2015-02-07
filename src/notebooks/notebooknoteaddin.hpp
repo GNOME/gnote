@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,10 +29,7 @@
 
 #include "base/macros.hpp"
 #include "noteaddin.hpp"
-#include "notebooks/notebook.hpp"
 #include "notebooks/notebookmenuitem.hpp"
-#include "note.hpp"
-#include "utils.hpp"
 
 namespace gnote {
 namespace notebooks {
@@ -51,26 +48,9 @@ namespace notebooks {
     NotebookNoteAddin();
 
   private:
-    void initialize_tool_button();
-    void on_note_tag_added(const NoteBase &, const Tag::Ptr &);
-    void on_note_tag_removed(const NoteBase::Ptr &, const std::string &);
-    void update_button_sensitivity(bool);
-    void on_menu_shown();
-    void on_note_added_to_notebook(const Note &, const Notebook::Ptr &);
-    void on_note_removed_from_notebook(const Note &, const Notebook::Ptr &);
     void on_new_notebook_menu_item();
-    void update_notebook_button_label();
-    void update_notebook_button_label(const Notebook::Ptr &);
-    void update_menu();
     void get_notebook_menu_items(std::list<NotebookMenuItem*> &);
-    gnote::utils::ToolMenuButton  *m_toolButton;
-    Gtk::Label               *m_label_widget;
-    Gtk::Menu                *m_menu;
-    std::list<Gtk::MenuItem *> m_menu_items;
-    Gtk::RadioButtonGroup     m_radio_group;
-    sigc::connection          m_show_menu_cid;
-    sigc::connection          m_note_added_cid;
-    sigc::connection          m_note_removed_cid;
+    void update_menu(Gtk::Menu *);
 
     static Tag::Ptr           s_templateTag;
   };

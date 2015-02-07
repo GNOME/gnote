@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,11 +27,67 @@
 #include "notebooks/notebooknoteaddin.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "iconmanager.hpp"
 #include "tag.hpp"
 #include "itagmanager.hpp"
 #include "notewindow.hpp"
-#include "utils.hpp"
+
+
+namespace {
+
+class NotebookNoteAction
+  : public Gtk::Action
+{
+public:
+  static Glib::RefPtr<Gtk::Action> create(const sigc::slot<void, Gtk::Menu*> & slot)
+    {
+      return Glib::RefPtr<Gtk::Action>(new NotebookNoteAction(slot));
+    }
+  virtual Gtk::Widget *create_menu_item_vfunc() override
+    {
+      m_submenu_built = false;
+      Gtk::MenuItem *menu_item = new Gtk::ImageMenuItem;
+      m_menu = manage(new Gtk::Menu);
+      m_menu->signal_hide().connect(
+        sigc::mem_fun(*this, &NotebookNoteAction::on_menu_hidden));
+      menu_item->set_submenu(*m_menu);
+      return menu_item;
+    }
+protected:
+  virtual void on_activate() override
+    {
+      Gtk::Action::on_activate();
+      if(m_submenu_built) {
+        return;
+      }
+      update_menu();
+    }
+private:
+  explicit NotebookNoteAction(const sigc::slot<void, Gtk::Menu*> & slot)
+    : m_submenu_built(false)
+    , m_update_menu_slot(slot)
+    {
+      set_name("NotebookAction");
+      set_label(_("Notebook"));
+      set_tooltip(_("Place this note into a notebook"));
+    }
+  void on_menu_hidden()
+    {
+      m_submenu_built = false;
+    }
+  void update_menu()
+    {
+      m_update_menu_slot(m_menu);
+      m_submenu_built = true;
+    }
+
+  Gtk::Menu *m_menu;
+  bool m_submenu_built;
+  sigc::slot<void, Gtk::Menu*> m_update_menu_slot;
+};
+
+}
 
 namespace gnote {
 namespace notebooks {
@@ -48,8 +104,6 @@ namespace notebooks {
   
 
   NotebookNoteAddin::NotebookNoteAddin()
-    : m_toolButton(NULL)
-    , m_menu(NULL)
   {
   }
 
@@ -64,111 +118,20 @@ namespace notebooks {
   {
   }
 
-  void NotebookNoteAddin::initialize_tool_button()
-  {
-    gint icon_size = 16;
-    gtk_icon_size_lookup(GTK_ICON_SIZE_SMALL_TOOLBAR, &icon_size, NULL);
-
-    Gtk::Grid *grid = manage(new Gtk::Grid);
-    grid->attach(*manage(new Gtk::Image(
-      IconManager::obj().get_icon(IconManager::NOTEBOOK, icon_size))),
-                 0, 0, 1, 1);
-    m_label_widget = manage(new Gtk::Label);
-    m_label_widget->set_vexpand(true);
-    m_label_widget->set_valign(Gtk::ALIGN_CENTER);
-    grid->attach(*m_label_widget, 1, 0, 1, 1);
-    m_toolButton = Gtk::manage(new gnote::utils::ToolMenuButton(*grid, m_menu));
-    m_toolButton->set_tooltip_text(_("Place this note into a notebook"));
-
-    m_show_menu_cid = m_menu->signal_show()
-      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_menu_shown));
-    m_toolButton->show_all();
-    add_tool_item(m_toolButton, 0);
-    update_notebook_button_label();
-    
-    m_note_added_cid = NotebookManager::obj().signal_note_added_to_notebook()
-      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_added_to_notebook));
-    m_note_removed_cid = NotebookManager::obj().signal_note_removed_from_notebook()
-      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_removed_from_notebook));
-
-    get_note()->signal_tag_added
-      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_tag_added));
-
-    // TODO: Make sure this is handled in NotebookNoteAddin, too
-    get_note()->signal_tag_removed
-      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_tag_removed));
-  }
-
-
-  void NotebookNoteAddin::on_note_tag_added(const NoteBase & note, const Tag::Ptr & tag)
-  {
-    Note::Ptr taggedNote = static_pointer_cast<Note>(const_cast<NoteBase&>(note).shared_from_this());
-    if(taggedNote == get_note() && tag == get_template_tag()) {
-      update_button_sensitivity(true);
-    }
-  }
-
-
-  void NotebookNoteAddin::on_note_tag_removed(const NoteBase::Ptr & taggedNote, const std::string & tag)
-  {
-    if(taggedNote == get_note() && tag == get_template_tag()->normalized_name()) {
-      update_button_sensitivity(false);
-    }
-  }
-
 
   void NotebookNoteAddin::shutdown ()
   {
-    if(m_toolButton) {
-      m_show_menu_cid.disconnect();
-      m_note_added_cid.disconnect();
-      m_note_removed_cid.disconnect();
-    }
   }
 
-  void NotebookNoteAddin::on_note_opened ()
+
+  void NotebookNoteAddin::on_note_opened()
   {
-    if(!m_menu) {
-      m_menu = manage(new Gtk::Menu());
-      m_menu->show_all();
-    }
-    if(!m_toolButton) {
-      initialize_tool_button();
-      update_button_sensitivity(get_note()->contains_tag(get_template_tag()));
+    if(!get_note()->contains_tag(get_template_tag())) {
+      add_note_action(NotebookNoteAction::create(sigc::mem_fun(*this, &NotebookNoteAddin::update_menu)),
+                      gnote::NOTEBOOK_ORDER);
     }
   }
 
-
-  void NotebookNoteAddin::update_button_sensitivity(bool isTemplate)
-  {
-    if(m_toolButton) {
-      m_toolButton->set_sensitive(!isTemplate);
-    }
-  }
-
-
-  void NotebookNoteAddin::on_menu_shown()
-  {
-    update_menu();
-  }
-
-  void NotebookNoteAddin::on_note_added_to_notebook(const Note & note, 
-                                                    const Notebook::Ptr & notebook)
-  {
-    if(&note == get_note().get()) {
-      update_notebook_button_label(notebook);
-    }
-  }
-
-
-  void NotebookNoteAddin::on_note_removed_from_notebook(const Note & note, 
-                                                      const Notebook::Ptr &)
-  {
-    if(&note == get_note().get()) {
-      update_notebook_button_label();
-    }
-  }
- 
 
   void NotebookNoteAddin::on_new_notebook_menu_item()
   {
@@ -179,72 +142,40 @@ namespace notebooks {
   }
 
 
-  void NotebookNoteAddin::update_notebook_button_label()
+  void NotebookNoteAddin::update_menu(Gtk::Menu *menu)
   {
-    Notebook::Ptr currentNotebook = NotebookManager::obj().get_notebook_from_note(get_note());
-    update_notebook_button_label(currentNotebook);
-  }
-
-
-  void NotebookNoteAddin::update_notebook_button_label(const Notebook::Ptr & notebook)
-  {
-    std::string labelText = (notebook ? notebook->get_name() : _("Notebook"));
-    
-    m_label_widget->set_text(labelText);
-    m_toolButton->show_all();
-  }
-
-  void NotebookNoteAddin::update_menu()
-  {
-    //
-    // Clear out the old list
-    //
-    for(std::list<Gtk::MenuItem *>::const_iterator iter = m_menu_items.begin();
-        iter != m_menu_items.end(); ++iter) {
-      m_menu->remove (**iter);
+    // Clear the old items
+    FOREACH(Gtk::Widget *menu_item, menu->get_children()) {
+      menu->remove(*menu_item);
     }
-    m_menu_items.clear();
 
-    //
-    // Build a new menu
-    //
-      
-    // Add the "New Notebook..."
-    Gtk::ImageMenuItem *newNotebookMenuItem =
-      manage(new Gtk::ImageMenuItem (_("_New notebook..."), true));
-    newNotebookMenuItem->set_image(*manage(new Gtk::Image(
+    // Add new notebook item
+    Gtk::ImageMenuItem *new_notebook_item = manage(new Gtk::ImageMenuItem(_("_New notebook..."), true));
+    new_notebook_item->set_image(*manage(new Gtk::Image(
       IconManager::obj().get_icon(IconManager::NOTEBOOK_NEW, 16))));
-    newNotebookMenuItem->signal_activate()
-      .connect(sigc::mem_fun(*this,&NotebookNoteAddin::on_new_notebook_menu_item));
-    newNotebookMenuItem->show ();
-    m_menu->append (*newNotebookMenuItem);
-    m_menu_items.push_back(newNotebookMenuItem);
-      
-    // Add the "(no notebook)" item at the top of the list
-    NotebookMenuItem *noNotebookMenuItem = manage(new NotebookMenuItem (m_radio_group,
-                                                    get_note(), Notebook::Ptr()));
-    noNotebookMenuItem->show_all ();
-    m_menu->append (*noNotebookMenuItem);
-    m_menu_items.push_back(noNotebookMenuItem);
+    new_notebook_item->signal_activate().connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_new_notebook_menu_item));
+    new_notebook_item->show();
+    menu->append(*new_notebook_item);
 
-    NotebookMenuItem *active_menu_item = noNotebookMenuItem;
+    // Add the "(no notebook)" item at the top of the list
+    NotebookMenuItem *no_notebook_item = manage(new NotebookMenuItem(get_note(), Notebook::Ptr()));
+    no_notebook_item->show_all();
+    menu->append(*no_notebook_item);
+
+    NotebookMenuItem *active_menu_item = no_notebook_item;
     Notebook::Ptr current_notebook = NotebookManager::obj().get_notebook_from_note(get_note());
       
     // Add in all the real notebooks
-    std::list<NotebookMenuItem*> notebookMenuItems;
-    get_notebook_menu_items (notebookMenuItems);
-    if (!notebookMenuItems.empty()) {
-      Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem ());
-      separator->show_all ();
-      m_menu->append (*separator);
-      m_menu_items.push_back(separator);
-        
-      for(std::list<NotebookMenuItem*>::const_iterator iter = notebookMenuItems.begin();
-          iter != notebookMenuItems.end(); ++iter) {
-        NotebookMenuItem* item = *iter;
-        item->show_all ();
-        m_menu->append (*item);
-        m_menu_items.push_back(item);
+    std::list<NotebookMenuItem*> notebook_menu_items;
+    get_notebook_menu_items(notebook_menu_items);
+    if(!notebook_menu_items.empty()) {
+      Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem());
+      separator->show_all();
+      menu->append(*separator);
+
+      FOREACH(NotebookMenuItem *item, notebook_menu_items) {
+        item->show_all();
+        menu->append(*item);
         if(current_notebook == item->get_notebook())
           active_menu_item = item;
       }
@@ -265,9 +196,8 @@ namespace notebooks {
     for(iter = model->children().begin(); iter != model->children().end(); ++iter) {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
-      NotebookMenuItem *item = manage(new NotebookMenuItem (m_radio_group, 
-                                                            get_note(), notebook));
-      items.push_back (item);
+      NotebookMenuItem *item = manage(new NotebookMenuItem(get_note(), notebook));
+      items.push_back(item);
     }
   }
 
