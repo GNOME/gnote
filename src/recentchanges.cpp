@@ -171,8 +171,8 @@ namespace gnote {
     right_box->show();
 
     m_header_bar.pack_start(*left_box);
-    m_header_bar.pack_end(m_embedded_toolbar);
     m_header_bar.pack_end(*right_box);
+    m_header_bar.pack_end(m_embedded_toolbar);
     m_header_bar.show();
   }
 
