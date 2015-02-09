@@ -5,15 +5,15 @@
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008.
 # Vytautas Rėkus <v.rekus@gmail.com>, 2009.
 # Giedrius Slavinskas <giedrius25@gmail.com>, 2009, 2010.
-# Aurimas Černius <aurisc4@gmail.com>, 2013, 2014.
+# Aurimas Černius <aurisc4@gmail.com>, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-26 08:28+0000\n"
-"PO-Revision-Date: 2014-09-26 22:34+0300\n"
+"POT-Creation-Date: 2015-02-09 09:26+0000\n"
+"PO-Revision-Date: 2015-02-09 22:29+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -329,15 +329,8 @@ msgid "Use status icon, when started as an application"
 msgstr "Naudoti būsenos piktogramą paleidus kaip programą"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:50
-msgid ""
-"Has affect only when started as an application. When set to TRUE, shows a "
-"status icon. If set to FALSE, Search All Notes window is used as main "
-"application window, closing which makes application to exit."
-msgstr ""
-"Turi poveikį tik paleidus kaip programą. Kai nustatyta TEIGIAMA, rodo "
-"būsenos piktogramą. Jei nustatyta NEIGIAMA, langas „Ieškoti visuose "
-"rašteliuose“ naudojamas kaip pagrindinis programos langas, kurį užvėrus "
-"programa baigia darbą."
+msgid "Deprecated, has no effect."
+msgstr "Pasenęs, neturi poveikio."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:51
 msgid "Open notes in new window"
@@ -367,117 +360,37 @@ msgid "Show applet menu"
 msgstr "Rodyti įtaiso meniu"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:56
-msgid ""
-"The global keybinding for showing the Gnote applet's menu. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Globalus klavišų susiejimas Gnote įtaiso meniu parodymui. Formato pavyzdys: "
-"„&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. Analizatorius yra gan "
-"liberalus ir leidžia didžiąsias ir mažąsias raides, taip pat tokius "
-"sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu nustatysite "
-"parinktį į specialią eilutę „disabled“, šiam veiksmui nebus priskirtas joks "
-"klavišų susiejimas."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Open Start Here"
 msgstr "Atverti „pradėti čia“"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
-msgid ""
-"The global keybinding for opening the \"Start Here\" note. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Globalus klavišų susiejimas „Pradėti čia“ raštelio atvėrimui. Formato "
-"pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. Analizatorius "
-"yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, taip pat tokius "
-"sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu nustatysite "
-"parinktį į specialią eilutę „disabled“, šiam veiksmui nebus priskirtas joks "
-"klavišų susiejimas."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Create a new Note"
 msgstr "Sukurti naują raštelį"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
-msgid ""
-"The global keybinding for creating and displaying a new Note. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Globalus klavišų susiejimas naujo raštelio kūrimui ir rodymui. Formato "
-"pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. Analizatorius "
-"yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, taip pat tokius "
-"sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu nustatysite "
-"parinktį į specialią eilutę „disabled“, šiam veiksmui nebus priskirtas joks "
-"klavišų susiejimas."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid "Open Search Dialog"
 msgstr "Atverti paieškos dialogą"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
-msgid ""
-"The global keybinding for opening the Note Search dialog. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Globalus klavišų susiejimas raštelių paieškos lango atvėrimui. Formato "
-"pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. Analizatorius "
-"yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, taip pat tokius "
-"sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu nustatysite "
-"parinktį į specialią eilutę „disabled“, šiam veiksmui nebus priskirtas joks "
-"klavišų susiejimas."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Open Recent Changes"
 msgstr "Atverti paskutiniuosius pakeitimus"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
-msgid ""
-"The global keybinding for opening the Recent Changes dialog. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Globalus klavišų susiejimas paskutinių pakeitimų lango atvėrimui. Formato "
-"pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. Analizatorius "
-"yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, taip pat tokius "
-"sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu nustatysite "
-"parinktį į specialią eilutę „disabled“, šiam veiksmui nebus priskirtas joks "
-"klavišų susiejimas."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid "HTML Export Last Directory"
 msgstr "Paskutinis eksportavimo į HTML aplankas"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Paskutinis aplankas, į kurį buvo eksportuotas raštelis, naudojant "
 "„Eksportuoti į HTML“ įskiepį."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid "HTML Export Linked Notes"
 msgstr "Eksportuoti į HTML susietus raštelius"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -485,11 +398,11 @@ msgstr ""
 "Paskutinis „Eksportuoti susietus raštelius“ žymimosios akutės pažymėjimas "
 "„Eksportuoti į HTML“ įskiepyje."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid "HTML Export All Linked Notes"
 msgstr "Eksportuoti į HTML visus susietus raštelius"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -502,23 +415,26 @@ msgstr ""
 "norint nustatyti, ar visi rašteliai (rasti rekursyviai) turėtų būti įtraukti "
 "eksportuojant į HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid "Synchronization Client ID"
 msgstr "Sinchronizavimo kliento ID"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#| msgid ""
+#| "Unique identifier for this Gnote client, used when communicating with a "
+#| "sychronization server."
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
+"synchronization server."
 msgstr ""
 "Unikalus šio Gnote kliento identifikatorius, naudojamas bendraujant su "
 "sinchronizavimo serveriu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid "Synchronization Local Server Path"
 msgstr "Sinchronizavimo vietinio serverio kelias"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -526,11 +442,11 @@ msgstr ""
 "Kelias iki sinchronizavimo serverio, kai naudojamas failų sistemos "
 "sinchronizavimo tarnybos priedas."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid "Selected Synchronization Service Addin"
 msgstr "Pasirinktas sinchronizavimo tarnybos priedas"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -538,11 +454,11 @@ msgstr ""
 "Unikalus dabar sukonfigūruoto raštelių sinchronizavimo tarnybos priedo "
 "identifikatorius."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Raštelių sinchronizavimo konflikto išsaugotas veikimas"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -556,11 +472,11 @@ msgstr ""
 "paklaustas, kai atsitinka konfliktas, kad jis galėtų susidoroti su kiekvienu "
 "konfliktu atsižvelgdamas į konkrečią situaciją."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Automatinio foninio sinchronizavimo laikotarpis"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -572,11 +488,11 @@ msgstr ""
 "už 1 nurodo, kad automatinė sinchronizacija yra išjungta. Mažiausia tinkama "
 "teigiama vertė yra 5. Vertė yra minutėmis."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid "Accept SSL Certificates"
 msgstr "Priimti SSL liudijimus"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -584,37 +500,37 @@ msgstr ""
 "Naudokite wdfs parinktį „-ac“, jei norite priimti SSL liudijimus neklausiant "
 "naudotojo."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid "Share URL"
 msgstr "Viešinio URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "WebDAV viešinio URL, kur bus sinchronizuojami rašteliai."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Share username"
 msgstr "Viešinio naudotojo vardas"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:86
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Username to access WebDAV share."
 msgstr "Naudotojo vardas WebDAV viešiniui pasiekti."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Timestamp format"
 msgstr "Laiko žymės formatas"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:88
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "Datos ir laiko formatas. Įvedamas strftime(3) formatu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:89
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Time between checks"
 msgstr "Laiko tarpas tarp tikrinimų"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:90
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -622,7 +538,6 @@ msgstr ""
 "yra 5."
 
 #: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
-#: ../src/tray.cpp:465
 msgid "_Quit"
 msgstr "Iš_eiti"
 
@@ -631,7 +546,6 @@ msgid "Quit Gnote"
 msgstr "Išjungti Gnote"
 
 #: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
-#: ../src/tray.cpp:448
 msgid "_Preferences"
 msgstr "_Nustatymai"
 
@@ -659,19 +573,19 @@ msgstr "Apie Gnote"
 msgid "TrayIcon"
 msgstr "Pranešimų skydelio piktograma"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
+#: ../src/actionmanager.cpp:107
 msgid "Create _New Note"
 msgstr "Sukurti _naują raštelį"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:227
+#: ../src/actionmanager.cpp:107
 msgid "Create a new note"
 msgstr "Sukurti naują raštelį"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
+#: ../src/actionmanager.cpp:112
 msgid "_Search All Notes"
 msgstr "_Ieškoti visuose rašteliuose"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:236
+#: ../src/actionmanager.cpp:112
 msgid "Open the Search All Notes window"
 msgstr "Atverti langą Ieškoti visuose rašteliuose"
 
@@ -683,7 +597,7 @@ msgstr "_Naujas raštelis"
 msgid "New _Window"
 msgstr "Naujas _langas"
 
-#: ../src/actionmanager.cpp:169 ../src/tray.cpp:453
+#: ../src/actionmanager.cpp:169
 msgid "_Help"
 msgstr "_Žinynas"
 
@@ -865,7 +779,6 @@ msgid "Failed to create GTG interface from XML: %s"
 msgstr "Nepavyko įkelti GTG sąsajos iš XML: %s"
 
 #: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
-#| msgid "Failed to create D_Bus proxy for GTG"
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Nepavyko sukurti D-Bus GTG tarpininko"
 
@@ -1025,10 +938,6 @@ msgstr "NoteDirectoryWatcher: klaida kuriant raštelį iš %s: %s"
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr "NoteDirectoryWatcher: atnaujinimas nutrauktas, klaida skaitant %s: %s"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
-msgid "_Directory check interval:"
-msgstr "_Aplanko tikrinimo intervalas"
-
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:1
 msgid "Note Directory Watcher"
 msgstr "Raštelių katalogo stebėtojas"
@@ -1040,6 +949,10 @@ msgstr "Stebėkite raštelių pasikeitimus Gnote raštelių kataloge."
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:3
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius ir Tomboy kūrėjai"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
+msgid "_Directory check interval:"
+msgstr "_Aplanko tikrinimo intervalas"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:33
 msgid "Today: Template"
@@ -1152,8 +1065,8 @@ msgstr "Pakeisti pavadinimą pažymėjimu."
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 #: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 msgid "Special Notes"
 msgstr "Specialūs rašteliai"
 
@@ -1371,106 +1284,111 @@ msgstr "Nuotolinis %s iškvietimas nepavyko"
 msgid "Exception thrown when creating note: %s"
 msgstr "Kilo išskirtinė situacija kuriant raštelį: %s"
 
-#: ../src/gnote.cpp:200
+#: ../src/gnote.cpp:185
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote jau paleista.  Išeinama..."
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:289
 msgid "and Tomboy original authors."
 msgstr "ir Tomboy kūrėjai."
 
-#: ../src/gnote.cpp:371
+#: ../src/gnote.cpp:295
 msgid "translator-credits"
 msgstr ""
 "Aurimas Černius <aurisc4@gmail.com>\n"
 "Giedrius Slavinskas <giedrius25@gmail.com>\n"
 "Žygimantas Beručka <zygis@gnome.org>"
 
-#: ../src/gnote.cpp:380
+#: ../src/gnote.cpp:304
+#| msgid ""
+#| "Copyright © 2010-2014 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2014 Aurimas Cernius\n"
+"Copyright © 2010-2015 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Autorinės teisės priklauso © 2010-2014 Aurimas Cernius\n"
+"Autorinės teisės priklauso © 2010-2015 Aurimas Cernius\n"
 "Autorinės teisės priklauso © 2009-2011 Debarshi Ray\n"
 "Autorinės teisės priklauso © 2009 Hubert Figuiere\n"
 "Autorinės teisės priklauso © 2004-2009 Tomboy originalo autoriams."
 
-#: ../src/gnote.cpp:384
+#: ../src/gnote.cpp:308
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 
-#: ../src/gnote.cpp:395
+#: ../src/gnote.cpp:319
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:494
 msgid "Run Gnote in background."
 msgstr "Paleisti Gnote fone."
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:495
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Vykdyti Gnote kaip GNOME Shell paieškos tiekėją."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:496
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:496
 msgid "path"
 msgstr "kelias"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:497
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
+#: ../src/gnote.cpp:497 ../src/gnote.cpp:502
 msgid "text"
 msgstr "tekstas"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:498
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:499
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:499
 msgid "title"
 msgstr "pavadinimas"
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:500
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:500
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:501
 msgid "Display the 'Start Here' note."
 msgstr "Raštelis „Pradėkite čia“"
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:502
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:506
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:506
 msgid "Gnote options at launch"
 msgstr "Gnote parinktys paleidžiant"
 
-#: ../src/gnote.cpp:659
+#: ../src/gnote.cpp:583
 msgid "Could not connect to remote instance."
 msgstr "Nepavyko prisijungti prie nutolusios programos."
 
-#: ../src/gnote.cpp:775
+#: ../src/gnote.cpp:699
 msgid "Version %1%"
 msgstr "Versija %1%"
 
@@ -1487,6 +1405,23 @@ msgstr "Įskiepis jau išsijungia"
 #: ../src/noteaddin.cpp:139
 msgid "Window is not embedded"
 msgstr "Langas nėra įtaisytas"
+
+#. Probably IOException or UnauthorizedAccessException?
+#: ../src/notebase.cpp:200 ../src/note.cpp:382
+#, c-format
+msgid "Exception while saving note: %s"
+msgstr "Kilo išskirtinė situacija įrašant raštelį: %s"
+
+#. write failure, but not critical
+#: ../src/notebase.cpp:444
+#, c-format
+msgid "Failed to update note format: %s"
+msgstr "Nepavyko atnaujinti raštelio formato: %s"
+
+#: ../src/notebase.cpp:568
+#, c-format
+msgid "Filesystem error: %s"
+msgstr "Failų sistemos klaida: %s"
 
 #: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Create Notebook"
@@ -1545,7 +1480,7 @@ msgstr ""
 "Rašteliai, priklausantys šiai užrašinei, nebus ištrinti, tačiau jie nebebus "
 "susieti su šia užrašine. Veiksmas nebegalės būti atšauktas."
 
-#: ../src/notebooks/notebookmenuitem.cpp:35
+#: ../src/notebooks/notebookmenuitem.cpp:34
 msgid "No notebook"
 msgstr "Jokios užrašinės"
 
@@ -1553,15 +1488,16 @@ msgstr "Jokios užrašinės"
 msgid "New \"%1%\" Note"
 msgstr "Naujas „%1%“ raštelis"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:81
-msgid "Place this note into a notebook"
-msgstr "Įkelkite šį raštelį į užrašinę"
-
-#: ../src/notebooks/notebooknoteaddin.cpp:191
+#: ../src/notebooks/notebooknoteaddin.cpp:72
 msgid "Notebook"
 msgstr "Užrašinė"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:214
+#: ../src/notebooks/notebooknoteaddin.cpp:73
+msgid "Place this note into a notebook"
+msgstr "Įkelkite šį raštelį į užrašinę"
+
+#. Add new notebook item
+#: ../src/notebooks/notebooknoteaddin.cpp:153
 msgid "_New notebook..."
 msgstr "Nauja _užrašinė..."
 
@@ -1621,12 +1557,6 @@ msgstr ""
 "vietos diske ir ar turite teises keisti aplanką ~/.local/share/gnote. "
 "Išsamesnę informaciją galima rasti faile ~/.gnote.log."
 
-#. Probably IOException or UnauthorizedAccessException?
-#: ../src/note.cpp:382 ../src/notebase.cpp:200
-#, c-format
-msgid "Exception while saving note: %s"
-msgstr "Kilo išskirtinė situacija įrašant raštelį: %s"
-
 #: ../src/note.cpp:474
 #, c-format
 msgid "Error while saving: %s"
@@ -1636,16 +1566,13 @@ msgstr "Klaida įrašant: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "Tekstinio turinio nustatymas užvertiems rašteliams nepalaikomas"
 
-#. write failure, but not critical
-#: ../src/notebase.cpp:444
-#, c-format
-msgid "Failed to update note format: %s"
-msgstr "Nepavyko atnaujinti raštelio formato: %s"
+#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+msgid "New Note Template"
+msgstr "Naujo raštelio šablonas"
 
-#: ../src/notebase.cpp:568
-#, c-format
-msgid "Filesystem error: %s"
-msgstr "Failų sistemos klaida: %s"
+#: ../src/notemanagerbase.cpp:359
+msgid "Describe your new note here."
+msgstr "Čia aprašykite naują raštelį"
 
 #: ../src/notemanager.cpp:133
 msgid ""
@@ -1735,14 +1662,6 @@ msgstr "Klaida kuriant pradžios raštelius: %s"
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Klaida skaitant raštelio XML, praleidžiamas „%s“: %s"
-
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:332
-msgid "New Note Template"
-msgstr "Naujo raštelio šablonas"
-
-#: ../src/notemanagerbase.cpp:359
-msgid "Describe your new note here."
-msgstr "Čia aprašykite naują raštelį"
 
 #: ../src/noterenamedialog.cpp:123
 msgid "Rename Note Links?"
@@ -1853,47 +1772,47 @@ msgstr "Įrašyti pa_žymėjimą"
 msgid "Save _Title"
 msgstr "Įrašyti _pavadinimą"
 
-#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1085
 msgid "Cannot create note"
 msgstr "Nepavyko sukurti raštelio"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:828
 msgid "_Link"
 msgstr "_Susieti"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:829
 msgid "<b>_Bold</b>"
 msgstr "<b>_Pusjuodis</b>"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:830
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kursyvas</i>"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:831
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Perbrauktas</s>"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:833
 msgid "_Highlight"
 msgstr "Pa_ryškintas"
 
-#: ../src/notewindow.cpp:834
+#: ../src/notewindow.cpp:835
 msgid "_Normal"
 msgstr "_Normalus"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:837
 msgid "Hu_ge"
 msgstr "Milžiniš_kas"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:839
 msgid "_Large"
 msgstr "_Didelis"
 
-#: ../src/notewindow.cpp:840
+#: ../src/notewindow.cpp:841
 msgid "S_mall"
 msgstr "_Mažas"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "Bullets"
 msgstr "Punktai"
 
@@ -1905,43 +1824,30 @@ msgstr "Esmė"
 msgid "Links"
 msgstr "Saitai"
 
-#: ../src/preferencesdialog.cpp:125
-msgid "Hotkeys"
-msgstr "Spartieji klavišai"
-
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:129 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "Sinchronizacija"
 
-#: ../src/preferencesdialog.cpp:131
+#: ../src/preferencesdialog.cpp:127
 msgid "Plugins"
 msgstr "Įskiepiai"
 
-#: ../src/preferencesdialog.cpp:208
+#: ../src/preferencesdialog.cpp:204
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Trūksta įskiepio %s"
 
-#. Status icon
-#: ../src/preferencesdialog.cpp:247
-msgid "Use status _icon"
-msgstr "Naudoti _būsenos piktogramą"
-
-#: ../src/preferencesdialog.cpp:248
-msgid "Show icon in tray, which is the central place of control."
-msgstr "Rodyti dėkle piktogramą, kuri yra pagrindinis valdymo centras."
-
 #. Open in new window
-#: ../src/preferencesdialog.cpp:255
+#: ../src/preferencesdialog.cpp:243
 msgid "Always _open notes in new window"
 msgstr "Visada _atverti raštelius naujame lange"
 
-#: ../src/preferencesdialog.cpp:268
+#: ../src/preferencesdialog.cpp:256
 msgid "_Spell check while typing"
 msgstr "_Rašant tekstą tikrinti rašybą"
 
-#: ../src/preferencesdialog.cpp:269
+#: ../src/preferencesdialog.cpp:257
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1950,35 +1856,35 @@ msgstr ""
 "bus rodomi teisingos rašybos pasiūlymai."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:279
+#: ../src/preferencesdialog.cpp:267
 msgid "Enable auto-_bulleted lists"
 msgstr "Įjungti automatinį _sąrašų formatą"
 
-#: ../src/preferencesdialog.cpp:280
+#: ../src/preferencesdialog.cpp:268
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Pradėti naują punktų sąrašą pradedant naują eilutę simboliu „-“."
 
-#: ../src/preferencesdialog.cpp:289
+#: ../src/preferencesdialog.cpp:277
 msgid "Use custom _font"
 msgstr "Naudoti pasirinktinį šri_ftą"
 
-#: ../src/preferencesdialog.cpp:307
+#: ../src/preferencesdialog.cpp:295
 msgid "When renaming a linked note: "
 msgstr "Pervadinant raštelį:"
 
-#: ../src/preferencesdialog.cpp:311
+#: ../src/preferencesdialog.cpp:299
 msgid "Ask me what to do"
 msgstr "Klausti, ką daryti"
 
-#: ../src/preferencesdialog.cpp:312
+#: ../src/preferencesdialog.cpp:300
 msgid "Never rename links"
 msgstr "Niekada nepervadinti saitų"
 
-#: ../src/preferencesdialog.cpp:313
+#: ../src/preferencesdialog.cpp:301
 msgid "Always rename links"
 msgstr "Visada pervadinti saitus"
 
-#: ../src/preferencesdialog.cpp:333
+#: ../src/preferencesdialog.cpp:321
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -1986,43 +1892,43 @@ msgstr ""
 "Nurodykite naujo raštelio šabloną norėdami nurodyti tekstą, kuris turėtų "
 "būti naudojamas kuriant naujus raštelius."
 
-#: ../src/preferencesdialog.cpp:338
+#: ../src/preferencesdialog.cpp:326
 msgid "Open New Note Template"
 msgstr "Atverti naujo raštelio šabloną"
 
 #. internal links
-#: ../src/preferencesdialog.cpp:395
+#: ../src/preferencesdialog.cpp:383
 msgid "_Automatically link to notes"
 msgstr "_Automatiškai susaistyti su rašteliais"
 
-#: ../src/preferencesdialog.cpp:396
+#: ../src/preferencesdialog.cpp:384
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Įjunkite šį nustatymą saitui sukurti, kai tekstas sutampa su raštelio "
 "pavadinimu."
 
 #. URLs
-#: ../src/preferencesdialog.cpp:402
+#: ../src/preferencesdialog.cpp:390
 msgid "Create links for _URLs"
 msgstr "Sukurti saitus _URL"
 
-#: ../src/preferencesdialog.cpp:403
+#: ../src/preferencesdialog.cpp:391
 #| msgid ""
-#| "Enable this option to create a link for URLs. Clicking will open that URL "
-#| "with apropriate program."
+#| "Enable this option to create links for URLs. Clicking will open URL with "
+#| "apropriate program."
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
-"apropriate program."
+"appropriate program."
 msgstr ""
 "Įjunkite šį nustatymą URL saitams sukurti. Paspaudus saitą URL bus atvertas "
 "su atitinkama programa."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:410
+#: ../src/preferencesdialog.cpp:398
 msgid "Highlight _WikiWords"
 msgstr "Paryškinti _VikiŽodžius"
 
-#: ../src/preferencesdialog.cpp:411
+#: ../src/preferencesdialog.cpp:399
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2030,91 +1936,55 @@ msgstr ""
 "Įjunkite šią parinktį norėdami paryškinti žodžius, <b>AtrodančiusŠtaiTaip</"
 "b>. Spustelėjus tokį žodį bus sukurtas raštelis tokiu pavadinimu."
 
-#. Hotkeys...
-#: ../src/preferencesdialog.cpp:441
-msgid "Listen for _hotkeys"
-msgstr "Priimti _sparčiuosius klavišus"
-
-#: ../src/preferencesdialog.cpp:442
-msgid ""
-"Hotkeys allow you to quickly access your notes from anywhere with a "
-"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-"Alt&gt;N</b>"
-msgstr ""
-"Spartieji klavišai įgalina greitai pasiekti raštelius bet kuriuo metu "
-"spustelėjus keletą klavišų. Sparčiųjų klavišų pavyzdžiai: <b>&lt;Control&gt;"
-"&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
-
-#. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:464
-msgid "Show notes _menu"
-msgstr "Rodyti raštelių _meniu"
-
-#. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:481
-msgid "Open \"_Start Here\""
-msgstr "Atverti „Pradėti čia“"
-
-#. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:497
-msgid "Create _new note"
-msgstr "Sukurti _naują raštelį"
-
-#. Open Search window keybinding...
-#: ../src/preferencesdialog.cpp:513
-#| msgid "Open Search Dialog"
-msgid "Open Search _Window"
-msgstr "Atverti paieškos _langą"
-
-#: ../src/preferencesdialog.cpp:553
+#: ../src/preferencesdialog.cpp:431
 msgid "Ser_vice:"
 msgstr "Tar_nyba:"
 
-#: ../src/preferencesdialog.cpp:609 ../src/preferencesdialog.cpp:1239
+#: ../src/preferencesdialog.cpp:487 ../src/preferencesdialog.cpp:1117
 msgid "Not configurable"
 msgstr "Nekonfigūruojama"
 
-#: ../src/preferencesdialog.cpp:636
+#: ../src/preferencesdialog.cpp:514
 msgid "Automatical background s_ync interval (minutes)"
 msgstr "Automatinio foninio sinchronizavimo laikotarpis (minutėmis)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:660
+#: ../src/preferencesdialog.cpp:538
 msgid "_Advanced..."
 msgstr "_Sudėtingesni..."
 
-#: ../src/preferencesdialog.cpp:707
+#: ../src/preferencesdialog.cpp:585
 msgid "The following plugins are installed:"
 msgstr "Šie įskiepiai yra įdiegti:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:742
+#: ../src/preferencesdialog.cpp:620
 msgid "_Enable"
 msgstr "Įj_ungti"
 
-#: ../src/preferencesdialog.cpp:748
+#: ../src/preferencesdialog.cpp:626
 msgid "_Disable"
 msgstr "_Išjungti"
 
-#: ../src/preferencesdialog.cpp:906
+#: ../src/preferencesdialog.cpp:784
 msgid "Not Implemented"
 msgstr "Neįgyvendinta"
 
-#: ../src/preferencesdialog.cpp:922
+#: ../src/preferencesdialog.cpp:800
 msgid "%1% Preferences"
 msgstr "%1% nustatymai"
 
-#: ../src/preferencesdialog.cpp:1057
+#: ../src/preferencesdialog.cpp:935
 msgid "Choose Note Font"
 msgstr "Pasirinkite raštelio šriftą"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1155
+#: ../src/preferencesdialog.cpp:1033
 msgid "Other Synchronization Options"
 msgstr "Kitos sinchronizacijos parinktys"
 
-#: ../src/preferencesdialog.cpp:1158
+#: ../src/preferencesdialog.cpp:1036
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2123,23 +1993,23 @@ msgstr ""
 "sinchronizacijos serveryje:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1162
+#: ../src/preferencesdialog.cpp:1040
 msgid "Always ask me what to do"
 msgstr "Visada klausti, ką daryti"
 
-#: ../src/preferencesdialog.cpp:1166
+#: ../src/preferencesdialog.cpp:1044
 msgid "Rename my local note"
 msgstr "Pervadinti mano vietinį raštelį"
 
-#: ../src/preferencesdialog.cpp:1170
+#: ../src/preferencesdialog.cpp:1048
 msgid "Replace my local note with the server's update"
 msgstr "Pakeisti mano vietinį raštelį serverio atnaujinimu"
 
-#: ../src/preferencesdialog.cpp:1272
+#: ../src/preferencesdialog.cpp:1150
 msgid "Are you sure?"
 msgstr "Ar esate tikras?"
 
-#: ../src/preferencesdialog.cpp:1273
+#: ../src/preferencesdialog.cpp:1151
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2148,11 +2018,11 @@ msgstr ""
 "naujo sinchronizuoti visus jūsų raštelius po to, kai įrašysite naujus "
 "nustatymus."
 
-#: ../src/preferencesdialog.cpp:1283
+#: ../src/preferencesdialog.cpp:1161
 msgid "Resetting Synchronization Settings"
 msgstr "Išvalomi sinchronizacijos nustatymai"
 
-#: ../src/preferencesdialog.cpp:1284
+#: ../src/preferencesdialog.cpp:1162
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2162,11 +2032,11 @@ msgstr ""
 "nustatymai dabar bus išvalyti.  Jums gali tekti iš naujo sinchronizuoti "
 "visus jūsų raštelius po to, kai įrašysite naujus nustatymus."
 
-#: ../src/preferencesdialog.cpp:1350
+#: ../src/preferencesdialog.cpp:1228
 msgid "Connection successful"
 msgstr "Prisijungimas sėkmingas"
 
-#: ../src/preferencesdialog.cpp:1351
+#: ../src/preferencesdialog.cpp:1229
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2174,7 +2044,7 @@ msgstr ""
 "Gnote yra pasiruošusi sinchronizuoti jūsų raštelius. Ar norite dabar juos "
 "sinchronizuoti?"
 
-#: ../src/preferencesdialog.cpp:1375
+#: ../src/preferencesdialog.cpp:1253
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -2182,19 +2052,19 @@ msgstr ""
 "Patikrinkite savo informaciją ir bandykite vėl.  Žurnalo failas %1% gali "
 "turėti daugiau informacijos apie klaidą."
 
-#: ../src/preferencesdialog.cpp:1380
+#: ../src/preferencesdialog.cpp:1258
 msgid "Error connecting"
 msgstr "Klaida jungiantis"
 
-#: ../src/preferencesdialog.cpp:1443
+#: ../src/preferencesdialog.cpp:1321
 msgid "Version:"
 msgstr "Versija:"
 
-#: ../src/preferencesdialog.cpp:1446
+#: ../src/preferencesdialog.cpp:1324
 msgid "Author:"
 msgstr "Autorius:"
 
-#: ../src/preferencesdialog.cpp:1451
+#: ../src/preferencesdialog.cpp:1329
 msgid "Copyright:"
 msgstr "Autorinės teisės:"
 
@@ -2409,7 +2279,8 @@ msgid "FUSE could not be enabled."
 msgstr "Nepavyko įjungti FUSE."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:246
-msgid "An error ocurred while connecting to the specified server"
+#| msgid "An error ocurred while connecting to the specified server"
+msgid "An error occurred while connecting to the specified server"
 msgstr "Kilo klaida jungiantis prie nurodyto serverio"
 
 #. TRANSLATORS: %s is file
@@ -2632,7 +2503,6 @@ msgstr "Sinchronizuoti raštelius"
 #: ../src/synchronization/syncmanager.cpp:102
 #: ../src/synchronization/syncmanager.cpp:575
 #, c-format
-#| msgid "Remote call to %s failed"
 msgid "Report a bug. Cast failed: %s"
 msgstr "Praneškite apie klaidą. Nepavyko pakeisti tipo: %s"
 
@@ -2685,18 +2555,6 @@ msgstr ""
 "Norėdami išvengti šio pranešimo ateityje, turėtumėte įkelti FUSE kartu su "
 "sistema.  Pridėkite „modprobe fuse“ į /etc/init.d/boot.local arba „fuse“ į /"
 "etc/modules."
-
-#: ../src/tray.cpp:54
-msgid "Take notes"
-msgstr "Rašyti raštelius"
-
-#: ../src/tray.cpp:167
-msgid " (new)"
-msgstr " (naujas)"
-
-#: ../src/tray.cpp:458
-msgid "_About Gnote"
-msgstr "_Apie Gnote"
 
 #: ../src/utils.cpp:144
 msgid ""
@@ -2791,3 +2649,130 @@ msgstr "_Kopijuoti nuorodos adresą"
 msgid "_Open Link"
 msgstr "_Atverti nuorodą"
 
+#~ msgid ""
+#~ "Has affect only when started as an application. When set to TRUE, shows a "
+#~ "status icon. If set to FALSE, Search All Notes window is used as main "
+#~ "application window, closing which makes application to exit."
+#~ msgstr ""
+#~ "Turi poveikį tik paleidus kaip programą. Kai nustatyta TEIGIAMA, rodo "
+#~ "būsenos piktogramą. Jei nustatyta NEIGIAMA, langas „Ieškoti visuose "
+#~ "rašteliuose“ naudojamas kaip pagrindinis programos langas, kurį užvėrus "
+#~ "programa baigia darbą."
+
+#~ msgid ""
+#~ "The global keybinding for showing the Gnote applet's menu. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globalus klavišų susiejimas Gnote įtaiso meniu parodymui. Formato "
+#~ "pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. "
+#~ "Analizatorius yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, "
+#~ "taip pat tokius sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu "
+#~ "nustatysite parinktį į specialią eilutę „disabled“, šiam veiksmui nebus "
+#~ "priskirtas joks klavišų susiejimas."
+
+#~ msgid ""
+#~ "The global keybinding for opening the \"Start Here\" note. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globalus klavišų susiejimas „Pradėti čia“ raštelio atvėrimui. Formato "
+#~ "pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. "
+#~ "Analizatorius yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, "
+#~ "taip pat tokius sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu "
+#~ "nustatysite parinktį į specialią eilutę „disabled“, šiam veiksmui nebus "
+#~ "priskirtas joks klavišų susiejimas."
+
+#~ msgid ""
+#~ "The global keybinding for creating and displaying a new Note. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globalus klavišų susiejimas naujo raštelio kūrimui ir rodymui. Formato "
+#~ "pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. "
+#~ "Analizatorius yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, "
+#~ "taip pat tokius sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu "
+#~ "nustatysite parinktį į specialią eilutę „disabled“, šiam veiksmui nebus "
+#~ "priskirtas joks klavišų susiejimas."
+
+#~ msgid ""
+#~ "The global keybinding for opening the Note Search dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globalus klavišų susiejimas raštelių paieškos lango atvėrimui. Formato "
+#~ "pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. "
+#~ "Analizatorius yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, "
+#~ "taip pat tokius sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu "
+#~ "nustatysite parinktį į specialią eilutę „disabled“, šiam veiksmui nebus "
+#~ "priskirtas joks klavišų susiejimas."
+
+#~ msgid ""
+#~ "The global keybinding for opening the Recent Changes dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globalus klavišų susiejimas paskutinių pakeitimų lango atvėrimui. Formato "
+#~ "pavyzdys: „&lt;Control&gt;a“ ar „&lt;Shift&gt;&lt;Alt&gt;F1“. "
+#~ "Analizatorius yra gan liberalus ir leidžia didžiąsias ir mažąsias raides, "
+#~ "taip pat tokius sutrumpinimus kaip „&lt;Ctl&gt;“ ir „&lt;Ctrl&gt;“. Jeigu "
+#~ "nustatysite parinktį į specialią eilutę „disabled“, šiam veiksmui nebus "
+#~ "priskirtas joks klavišų susiejimas."
+
+#~ msgid "Hotkeys"
+#~ msgstr "Spartieji klavišai"
+
+#~ msgid "Use status _icon"
+#~ msgstr "Naudoti _būsenos piktogramą"
+
+#~ msgid "Show icon in tray, which is the central place of control."
+#~ msgstr "Rodyti dėkle piktogramą, kuri yra pagrindinis valdymo centras."
+
+#~ msgid "Listen for _hotkeys"
+#~ msgstr "Priimti _sparčiuosius klavišus"
+
+#~ msgid ""
+#~ "Hotkeys allow you to quickly access your notes from anywhere with a "
+#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+#~ "Alt&gt;N</b>"
+#~ msgstr ""
+#~ "Spartieji klavišai įgalina greitai pasiekti raštelius bet kuriuo metu "
+#~ "spustelėjus keletą klavišų. Sparčiųjų klavišų pavyzdžiai: <b>&lt;"
+#~ "Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
+
+#~ msgid "Show notes _menu"
+#~ msgstr "Rodyti raštelių _meniu"
+
+#~ msgid "Open \"_Start Here\""
+#~ msgstr "Atverti „Pradėti čia“"
+
+#~ msgid "Create _new note"
+#~ msgstr "Sukurti _naują raštelį"
+
+#~| msgid "Open Search Dialog"
+#~ msgid "Open Search _Window"
+#~ msgstr "Atverti paieškos _langą"
+
+#~ msgid "Take notes"
+#~ msgstr "Rašyti raštelius"
+
+#~ msgid " (new)"
+#~ msgstr " (naujas)"
+
+#~ msgid "_About Gnote"
+#~ msgstr "_Apie Gnote"
