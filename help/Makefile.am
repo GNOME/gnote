@@ -11,7 +11,6 @@ HELP_MEDIA = \
 	figures/gnote-pinup.png \
 	figures/gnote-preferences-add-ins.png \
 	figures/gnote-preferences-editing.png \
-	figures/gnote-preferences-hotkeys.png \
 	figures/gnote-preferences-synchronization.png \
 	figures/gnote-search-all-notes.png \
 	figures/gnote-syncprefs-advanced.png \
@@ -44,7 +43,6 @@ HELP_FILES = \
 	gnote-creating-notes.page \
 	gnote-deleting-notes.page \
 	gnote-editing-notes.page \
-	gnote-hotkeys.page \
 	gnote-introduction.page \
 	gnote-links.page \
 	gnote-notes-preferences.page \
