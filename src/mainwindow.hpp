@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@ public:
   static MainWindow *present_active(const Note::Ptr & note);
   static MainWindow *present_in_new_window(const Note::Ptr & note, bool close_on_esacpe);
   static MainWindow *present_default(const Note::Ptr & note);
+  static bool use_client_side_decorations();
 
   explicit MainWindow(const std::string & title);
 
@@ -58,6 +59,8 @@ public:
 protected:
   virtual void present_note(const Note::Ptr & note) = 0;
 private:
+  static int s_use_client_side_decorations;
+
   bool m_close_on_esc;
 };
 

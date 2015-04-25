@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,11 +18,16 @@
  */
 
 
+#include <cstring>
+
 #include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "notewindow.hpp"
 
 namespace gnote {
+
+int MainWindow::s_use_client_side_decorations = -1;
+
 
 MainWindow *MainWindow::get_owning(Gtk::Widget & widget)
 {
@@ -94,6 +99,20 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
   win->present_note(note);
   win->present();
   return win;
+}
+
+bool MainWindow::use_client_side_decorations()
+{
+  if (s_use_client_side_decorations < 0) {
+    if(std::strcmp(std::getenv("DESKTOP_SESSION"), "gnome") == 0) {
+      s_use_client_side_decorations = 1;
+    }
+    else {
+      s_use_client_side_decorations = 0;
+    }
+  }
+
+  return s_use_client_side_decorations;
 }
 
 
