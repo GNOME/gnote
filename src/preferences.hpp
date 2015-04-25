@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -68,6 +68,7 @@ namespace gnote {
     static const char *SEARCH_WINDOW_HEIGHT;
     static const char *SEARCH_WINDOW_SPLITTER_POS;
     static const char *SEARCH_SORTING;
+    static const char *USE_CLIENT_SIDE_DECORATIONS;
 
     static const char *KEYBINDING_SHOW_NOTE_MENU;
     static const char *KEYBINDING_OPEN_START_HERE;

@@ -18,11 +18,11 @@
  */
 
 
-#include <cstring>
-
+#include "base/macros.hpp"
 #include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "notewindow.hpp"
+#include "sharp/string.hpp"
 
 namespace gnote {
 
@@ -103,12 +103,25 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
 
 bool MainWindow::use_client_side_decorations()
 {
-  if (s_use_client_side_decorations < 0) {
-    if(std::strcmp(std::getenv("DESKTOP_SESSION"), "gnome") == 0) {
+  if(s_use_client_side_decorations < 0) {
+    Glib::ustring setting = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(
+      Preferences::USE_CLIENT_SIDE_DECORATIONS);
+    if(setting == "enabled") {
       s_use_client_side_decorations = 1;
+    }
+    else if(setting == "disabled") {
+      s_use_client_side_decorations = 0;
     }
     else {
       s_use_client_side_decorations = 0;
+      std::vector<std::string> desktops;
+      sharp::string_split(desktops, setting, ",");
+      const char *current_desktop = std::getenv("DESKTOP_SESSION");
+      FOREACH(std::string de, desktops) {
+        if(de == current_desktop) {
+          s_use_client_side_decorations = 1;
+        }
+      }
     }
   }
 
