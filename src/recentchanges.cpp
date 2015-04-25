@@ -57,7 +57,6 @@ namespace gnote {
     m_close_note_on_escape = settings->get_boolean(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE);
     set_default_size(450,400);
     set_resizable(true);
-    set_hide_titlebar_when_maximized(true);
     if(settings->get_boolean(Preferences::MAIN_WINDOW_MAXIMIZED)) {
       maximize();
     }
