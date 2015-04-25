@@ -26,6 +26,7 @@
 #include <boost/bind.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/alignment.h>
+#include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
 #include <gtkmm/separatormenuitem.h>
 #include <gtkmm/stock.h>
@@ -72,11 +73,17 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_widget_key_press));
 
     make_header_bar();
-    set_titlebar(m_header_bar);
     make_search_box();
     m_content_vbox.set_orientation(Gtk::ORIENTATION_VERTICAL);
-    m_content_vbox.attach(m_search_box, 0, 0, 1, 1);
-    m_content_vbox.attach(m_embed_box, 0, 1, 1, 1);
+    int content_y_attach = 0;
+    if(use_client_side_decorations()) {
+      set_titlebar(*static_cast<Gtk::HeaderBar*>(m_header_bar));
+    }
+    else {
+      m_content_vbox.attach(*m_header_bar, 0, content_y_attach++, 1, 1);
+    }
+    m_content_vbox.attach(m_search_box, 0, content_y_attach++, 1, 1);
+    m_content_vbox.attach(m_embed_box, 0, content_y_attach++, 1, 1);
     m_embed_box.set_hexpand(true);
     m_embed_box.set_vexpand(true);
     m_embed_box.show();
@@ -114,8 +121,6 @@ namespace gnote {
 
   void NoteRecentChanges::make_header_bar()
   {
-    m_header_bar.set_show_close_button(true);
-
     Gtk::Grid *left_box = manage(new Gtk::Grid);
     left_box->get_style_context()->add_class(GTK_STYLE_CLASS_RAISED);
     left_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
@@ -169,10 +174,28 @@ namespace gnote {
     right_box->attach(*m_window_actions_button, 1, 0, 1, 1);
     right_box->show();
 
-    m_header_bar.pack_start(*left_box);
-    m_header_bar.pack_end(*right_box);
-    m_header_bar.pack_end(m_embedded_toolbar);
-    m_header_bar.show();
+    if(use_client_side_decorations()) {
+      Gtk::HeaderBar *header_bar = manage(new Gtk::HeaderBar);
+      header_bar->set_show_close_button(true);
+      header_bar->pack_start(*left_box);
+      header_bar->pack_end(*right_box);
+      header_bar->pack_end(m_embedded_toolbar);
+      m_header_bar = header_bar;
+    }
+    else {
+      Gtk::Grid *header_bar = manage(new Gtk::Grid);
+      header_bar->set_margin_left(5);
+      header_bar->set_margin_right(5);
+      header_bar->set_margin_top(5);
+      header_bar->set_margin_bottom(5);
+      header_bar->attach(*left_box, 0, 0, 1, 1);
+      left_box->set_hexpand(true);
+      header_bar->attach(m_embedded_toolbar, 2, 0, 1, 1);
+      header_bar->attach(*right_box, 3, 0, 1, 1);
+      m_header_bar = header_bar;
+    }
+
+    m_header_bar->show();
   }
 
   void NoteRecentChanges::make_search_box()
@@ -475,10 +498,10 @@ namespace gnote {
  
       update_toolbar(widget);
       if(&widget == &m_search_notes_widget) {
-        m_header_bar.set_title(_("Gnote"));
+        set_title(_("Gnote"));
       }
       else {
-        m_header_bar.set_title(widget.get_name());
+        set_title(widget.get_name());
         m_current_embedded_name_slot = widget.signal_name_changed
           .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_embedded_name_changed));
       }
@@ -690,7 +713,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_embedded_name_changed(const std::string & name)
   {
-    m_header_bar.set_title(name);
+    set_title(name);
   }
 
   void NoteRecentChanges::on_main_window_actions_changed(Gtk::Menu **menu)

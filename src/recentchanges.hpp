@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -29,7 +29,6 @@
 #include <gtkmm/alignment.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/headerbar.h>
 
 #include "base/macros.hpp"
 #include "note.hpp"
@@ -93,7 +92,7 @@ private:
   bool on_notes_widget_key_press(GdkEventKey*);
 
   NoteManager        &m_note_manager;
-  Gtk::HeaderBar      m_header_bar;
+  Gtk::Widget        *m_header_bar;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::Grid           m_content_vbox;
   Gtk::Alignment      m_search_box;
