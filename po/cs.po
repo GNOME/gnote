@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-18 22:13+0000\n"
-"PO-Revision-Date: 2015-01-18 23:14+0100\n"
+"POT-Creation-Date: 2015-05-07 20:50+0000\n"
+"PO-Revision-Date: 2015-05-08 10:03+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -46,8 +46,8 @@ msgstr ""
 "Gnote také podporuje synchronizaci, takže můžete poznámky používat na více "
 "zařízeních naráz."
 
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:45
-#: ../src/recentchanges.cpp:479
+#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
+#: ../src/recentchanges.cpp:501
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -366,41 +366,58 @@ msgstr ""
 "automaticky nastavit"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:55
+msgid "Use client side window decorations"
+msgstr "Použít dekorování oken klientské strany"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+msgid ""
+"Should Gnote draw its window titlebar, or leave that to window manager. "
+"Possible values are 'enabled' to draw them, 'disabled' to leave them to "
+"window manager, or a comma separated list of desktop environments, where "
+"Gnote should draw decorations itself. Requires application restart."
+msgstr ""
+"Zda by měl Gnote vykreslovat vlastní záhlaví okna nebo to ponechat na "
+"okenním správci. Možné hodnoty jsou „enabled“ pro jeho vykreslování, "
+"„disabled“ pro ponechání této činnosti na okenním správci nebo čárkami "
+"oddělený seznam pracovních prostředí, ve kterých má Gnote vykreslovat "
+"dekorování sám. Vyžaduje restart aplikace."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Show applet menu"
 msgstr "Zobrazit menu appletu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid "Open Start Here"
 msgstr "Otevřít Začněte zde"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Create a new Note"
 msgstr "Vytvořit novou poznámku"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid "Open Search Dialog"
 msgstr "Otevřít dialog hledání"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid "Open Recent Changes"
 msgstr "Otevřít nedávné změny"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid "HTML Export Last Directory"
 msgstr "Poslední složka exportu do HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Poslední složka, do které byla exportována poznámka pomocí zásuvného modulu "
 "Exportovat do HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid "HTML Export Linked Notes"
 msgstr "Exportovat související poznámky do HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -408,11 +425,11 @@ msgstr ""
 "Poslední nastavení zaškrtávacího pole „Exportovat související poznámky“ v "
 "zásuvném modulu Exportovat do HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid "HTML Export All Linked Notes"
 msgstr "Exportovat všechny související poznámky do HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -424,11 +441,11 @@ msgstr ""
 "ve spolupráci s nastavením „Exportovat související poznámky do HTML“ a "
 "určuje, zda budou zahrnouty všechny související poznámky při exportu do HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid "Synchronization Client ID"
 msgstr "ID synchronizačního klienta"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -436,11 +453,11 @@ msgstr ""
 "Jedinečný identifikátor klienta Gnote používaný při komunikaci se "
 "synchronizačním serverem."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid "Synchronization Local Server Path"
 msgstr "Cesta k místnímu serveru synchronizace"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -448,21 +465,21 @@ msgstr ""
 "Cesta k synchronizačnímu serveru v případě používání doplňku pro "
 "synchronizaci systému souborů."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid "Selected Synchronization Service Addin"
 msgstr "Nastavené synchronizační rozšíření"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr "Jedinečný identifikátor nastaveného rozšíření synchronizace poznámek."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Výchozí akce při konfliktu poznámek"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -475,11 +492,11 @@ msgstr ""
 "okně Předvolby -> Synchronizace -> Pokročilé. Akce jsou analogicky číslovány "
 "od 0 (vždy se zeptat) do 2."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Časový limit automatické synchronizace na pozadí"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -491,11 +508,11 @@ msgstr ""
 "hodnota nižší než 1 znamená, že je synchronizace vypnutá. Nejnižší "
 "přijatelná kladná hodnota je 5. Hodnota představuje čas v minutách."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid "Accept SSL Certificates"
 msgstr "Přijímat certifikáty SSL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -503,27 +520,27 @@ msgstr ""
 "Chcete-li přijímat certifikáty SSL bez zobrazení výzvy, spouštějte wdfs s "
 "přepínačem „-ac“."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Share URL"
 msgstr "Adresa URL sdílení"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "Adresa URL sdílení WebDAV, do kterého jsou poznámky synchronizovány."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Share username"
 msgstr "Uživatelské jméno sdílení"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "Username to access WebDAV share."
 msgstr "Uživatelské jméno pro přístup ke sdílení WebDAV."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Timestamp format"
 msgstr "Formát časové značky"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -531,11 +548,11 @@ msgstr ""
 "Formát data, který se používá pro datové razítko. Vychází z formátů funkce "
 "strftime(3)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid "Time between checks"
 msgstr "Doba mezi kontrolami"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -1496,7 +1513,7 @@ msgstr ""
 "Poznámky, které patří do tohoto sešitu, nebudou smazány, avšak už do něj "
 "nebudou patřit. Tato akce nemůže být vrácena zpět."
 
-#: ../src/notebooks/notebookmenuitem.cpp:35
+#: ../src/notebooks/notebookmenuitem.cpp:34
 msgid "No notebook"
 msgstr "Žádný sešit"
 
@@ -1504,15 +1521,16 @@ msgstr "Žádný sešit"
 msgid "New \"%1%\" Note"
 msgstr "Nová poznámka „%1%“"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:81
-msgid "Place this note into a notebook"
-msgstr "Umístit tuto poznámku do sešitu"
-
-#: ../src/notebooks/notebooknoteaddin.cpp:191
+#: ../src/notebooks/notebooknoteaddin.cpp:72
 msgid "Notebook"
 msgstr "Sešit"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:214
+#: ../src/notebooks/notebooknoteaddin.cpp:73
+msgid "Place this note into a notebook"
+msgstr "Umístit tuto poznámku do sešitu"
+
+#. Add new notebook item
+#: ../src/notebooks/notebooknoteaddin.cpp:153
 msgid "_New notebook..."
 msgstr "Nový _sešit…"
 
@@ -2075,27 +2093,27 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:129
+#: ../src/recentchanges.cpp:133
 msgid "All Notes"
 msgstr "Všechny poznámky"
 
-#: ../src/recentchanges.cpp:135
+#: ../src/recentchanges.cpp:139
 msgid "New"
 msgstr "Nová"
 
-#: ../src/recentchanges.cpp:156
+#: ../src/recentchanges.cpp:160
 msgid "Search"
 msgstr "Hledat"
 
-#: ../src/recentchanges.cpp:197
+#: ../src/recentchanges.cpp:219
 msgid "Find _Next"
 msgstr "Hledat _následující"
 
-#: ../src/recentchanges.cpp:205
+#: ../src/recentchanges.cpp:227
 msgid "Find _Previous"
 msgstr "Hledat _předchozí"
 
-#: ../src/recentchanges.cpp:673
+#: ../src/recentchanges.cpp:695
 msgid "_Close"
 msgstr "_Zavřít"
 
