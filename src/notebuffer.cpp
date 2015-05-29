@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -1487,6 +1487,12 @@ namespace gnote {
           } 
           else if (xml.get_name() == "list") {
             curr_depth++;
+            // If we are inside a <list-item> mark off
+            // that we have encountered some content
+            if (!list_stack.empty()) {
+              list_stack.pop_front();
+              list_stack.push_front(true);
+            }
             break;
           } 
           else if (xml.get_name() == "list-item") {
@@ -1561,11 +1567,14 @@ namespace gnote {
             DepthNoteTag::Ptr depth_tag = DepthNoteTag::Ptr::cast_dynamic(tag_start.tag);
 
             if (depth_tag && list_stack.front ()) {
-              NoteBuffer::Ptr::cast_dynamic(buffer)->insert_bullet (apply_start,
-                                                                    depth_tag->get_depth(),
-                                                                    depth_tag->get_direction());
-              buffer->remove_all_tags (apply_start, apply_start);
-              offset += 2;
+              NoteBuffer::Ptr note_buffer = NoteBuffer::Ptr::cast_dynamic(buffer);
+              // Do not insert bullet if it's already there
+              // this happens when using double identation in bullet list
+              if(note_buffer->find_depth_tag(apply_start) == 0) {
+                note_buffer->insert_bullet (apply_start, depth_tag->get_depth(), depth_tag->get_direction());
+                buffer->remove_all_tags (apply_start, apply_start);
+                offset += 2;
+              }
               list_stack.pop_front();
             } 
             else if (!depth_tag) {
