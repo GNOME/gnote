@@ -5,24 +5,24 @@
 # Jorge González <jorgegonz@svn.gnome.org>, 2009, 2010, 2011.
 # MIguel Rodriguez Núñez <bokerones.fritos@gmail.com>, 2013.
 # Miguel Rodriguez Nuñez <bokerones.fritos@gmail.com>, 2014.
-# Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2013, 2014.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2009, 2010, 2011, 2012, 2013, 2014, 2015.
+# Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-20 09:21+0000\n"
-"PO-Revision-Date: 2015-01-20 11:15+0100\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"POT-Creation-Date: 2015-06-13 21:00+0000\n"
+"PO-Revision-Date: 2015-06-15 \n"
+"Last-Translator: Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -43,8 +43,8 @@ msgstr ""
 "Gnote también permite la sincronización para hacer posible el uso en "
 "múltiples equipos."
 
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:45
-#: ../src/recentchanges.cpp:479
+#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
+#: ../src/recentchanges.cpp:501
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -368,70 +368,87 @@ msgstr ""
 "cuando la nota está abierta."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:55
+msgid "Use client side window decorations"
+msgstr "Usar las decoraciones de ventana del lado del cliente"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+msgid ""
+"Should Gnote draw its window titlebar, or leave that to window manager. "
+"Possible values are 'enabled' to draw them, 'disabled' to leave them to "
+"window manager, or a comma separated list of desktop environments, where "
+"Gnote should draw decorations itself. Requires application restart."
+msgstr ""
+"Indica si Gnote debería de dibujar su barra de título, o dejar ese trabajo "
+"al gestor de ventanas. Los valores posibles son «activo» para dibujarlas, "
+"«desactivado» para que la dibuje el gestor de ventanas, o una lista separada "
+"por comas de los entornos de escritorio, donde Gnote dibuja sus propias "
+"decoraciones. Esto requiere reiniciar la aplicación."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Show applet menu"
 msgstr "Mostrar el menú de miniaplicaciones"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid "Open Start Here"
 msgstr "Abrir comenzar aquí"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Create a new Note"
 msgstr "Crear una nota nueva"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid "Open Search Dialog"
 msgstr "Abrir el cuadro de diálogo de buscar"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid "Open Recent Changes"
 msgstr "Abrir cambios recientes"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid "HTML Export Last Directory"
 msgstr "Exportar a la último carpeta usada en formato HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "La última carpeta donde se exportó una nota usando el complemento Exportar a "
 "HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid "HTML Export Linked Notes"
 msgstr "Exportar las notas enlazadas a HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr ""
-"Las última casilla de preferencias para «Exportar las notas enlazadas a "
-"HTML» en el complemento Exportar a HTML."
+"Las última casilla de preferencias para «Exportar las notas enlazadas a HTML» "
+"en el complemento Exportar a HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid "HTML Export All Linked Notes"
 msgstr "Exportar todas las notas enlazadas a HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
 "Export Linked Notes' setting and is used to specify whether all notes (found "
 "recursively) should be included during an export to HTML."
 msgstr ""
-"El último ajuste para la casilla de «Incluir todas las notas enlazadas» en "
-"el complemento de exportar a HTML. Esta opción se usa junto con los ajustes "
-"de «Exportar las notas enlazadas a HTML» y se usa para especificar si todas "
-"las notas (encontradas recursivamente) deberían ser incluídas durante la "
+"El último ajuste para la casilla de «Incluir todas las notas enlazadas» en el "
+"complemento de exportar a HTML. Esta opción se usa junto con los ajustes de "
+"«Exportar las notas enlazadas a HTML» y se usa para especificar si todas las "
+"notas (encontradas recursivamente) deberían ser incluídas durante la "
 "exportación a HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid "Synchronization Client ID"
 msgstr "ID del cliente de sincronización"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -439,11 +456,11 @@ msgstr ""
 "Identificador único para este cliente Gnote, usado al comunicar con un "
 "servidor de sincronización."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid "Synchronization Local Server Path"
 msgstr "Ruta al servidor local de sincronización"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -451,11 +468,11 @@ msgstr ""
 "Ruta al servidor de sincronización cuando se use el complemento del servicio "
 "de sincronización de sistema de archivos."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid "Selected Synchronization Service Addin"
 msgstr "Seleccione el complemento del servicio de sincronización"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -463,12 +480,12 @@ msgstr ""
 "Identificador único para el complemento configurado del servicio de "
 "sincronización de notas."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr ""
 "Comportamiento predeterminado para conflictos de sincronización de notas"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -482,11 +499,11 @@ msgstr ""
 "usuario desea ser preguntado cuando suceda un conflicto, de tal forma que el "
 "usuario manejará cada situación de conflicto caso por caso."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid "Automatic Background Synchronization Timeout"
 msgstr "El tiempo de la sincronización automática en segundo plano ha expirado"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -498,11 +515,11 @@ msgstr ""
 "Cualquier valor menor que 1 indica que la sincronización automática está "
 "desactivada. El valor mínimo es 5. Este valor se expresa en minutos."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid "Accept SSL Certificates"
 msgstr "Aceptar certificados SSL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -510,27 +527,27 @@ msgstr ""
 "Usar la opción wdfs «-ac» para aceptar certificados SSL sin preguntar al "
 "usuario."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Share URL"
 msgstr "Compartir URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "URL del recurso WebDAV compartido donde las notas se sincronizan."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Share username"
 msgstr "Compartir nombre de usuario"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "Username to access WebDAV share."
 msgstr "Nombre de usuario para acceder a la compartición WebDAV"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Timestamp format"
 msgstr "Formato de la marca de tiempo"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -538,11 +555,11 @@ msgstr ""
 "El formato de la fecha que se usa para la marca de tiempo. Sigue el formato "
 "de strftime(3)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid "Time between checks"
 msgstr "Tiempo entre comprobaciones"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -929,8 +946,8 @@ msgstr "_Usar formato personalizado"
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
-"Vigilante de la carpeta de notas: actualización abortada, error al leer %s: "
-"%s"
+"Vigilante de la carpeta de notas: actualización abortada, error al leer %s: %"
+"s"
 
 #. TRANSLATORS: %s is file
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
@@ -945,8 +962,8 @@ msgstr ""
 #, c-format
 msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 msgstr ""
-"Vigilante de la carpeta de notas: error desconocido al crear una nota desde "
-"%s"
+"Vigilante de la carpeta de notas: error desconocido al crear una nota desde %"
+"s"
 
 #. TRANSLATORS: first %s is file, second is error
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:277
@@ -959,8 +976,8 @@ msgstr "Vigilante de la carpeta de notas: error al crear una nota desde %s: %s"
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
-"Vigilante de la carpeta de notas: actualización abortada, error al analizar "
-"%s: %s"
+"Vigilante de la carpeta de notas: actualización abortada, error al analizar %"
+"s: %s"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:1
 msgid "Note Directory Watcher"
@@ -1503,7 +1520,7 @@ msgstr ""
 "Las notas que pertenecen a este cuaderno de notas no se borrarán, pero ya no "
 "estarán asociadas a este cuaderno de notas. Esta acción no se puede deshacer."
 
-#: ../src/notebooks/notebookmenuitem.cpp:35
+#: ../src/notebooks/notebookmenuitem.cpp:34
 msgid "No notebook"
 msgstr "Sin cuadernos de notas"
 
@@ -1511,15 +1528,16 @@ msgstr "Sin cuadernos de notas"
 msgid "New \"%1%\" Note"
 msgstr "Nota «%1%» nueva"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:81
-msgid "Place this note into a notebook"
-msgstr "Meter esta nota en un cuaderno de notas"
-
-#: ../src/notebooks/notebooknoteaddin.cpp:191
+#: ../src/notebooks/notebooknoteaddin.cpp:72
 msgid "Notebook"
 msgstr "Cuaderno de notas"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:214
+#: ../src/notebooks/notebooknoteaddin.cpp:73
+msgid "Place this note into a notebook"
+msgstr "Meter esta nota en un cuaderno de notas"
+
+#. Add new notebook item
+#: ../src/notebooks/notebooknoteaddin.cpp:153
 msgid "_New notebook..."
 msgstr "Cuaderno de _notas nuevo…"
 
@@ -1539,11 +1557,11 @@ msgstr "Importante"
 msgid "Active"
 msgstr "Activar"
 
-#: ../src/notebuffer.cpp:1505
+#: ../src/notebuffer.cpp:1511
 msgid "</list> tag mismatch"
 msgstr "la etiqueta </list> no coincide"
 
-#: ../src/notebuffer.cpp:1584
+#: ../src/notebuffer.cpp:1593
 #, c-format
 msgid "Exception: %s"
 msgstr "Excepción: %s"
@@ -1724,8 +1742,8 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"¿Renombrar enlaces en otras notas de «<span underline=\"single\">%1</span>» "
-"a «<span underline=\"single\">%2</span>»?\n"
+"¿Renombrar enlaces en otras notas de «<span underline=\"single\">%1</span>» a "
+"«<span underline=\"single\">%2</span>»?\n"
 "\n"
 "Si no renombra los enlaces, no enlazarán a nada."
 
@@ -2089,27 +2107,27 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:129
+#: ../src/recentchanges.cpp:133
 msgid "All Notes"
 msgstr "Todas las notas"
 
-#: ../src/recentchanges.cpp:135
+#: ../src/recentchanges.cpp:139
 msgid "New"
 msgstr "_Nueva"
 
-#: ../src/recentchanges.cpp:156
+#: ../src/recentchanges.cpp:160
 msgid "Search"
 msgstr "Buscar"
 
-#: ../src/recentchanges.cpp:197
+#: ../src/recentchanges.cpp:219
 msgid "Find _Next"
 msgstr "Buscar _siguiente"
 
-#: ../src/recentchanges.cpp:205
+#: ../src/recentchanges.cpp:227
 msgid "Find _Previous"
 msgstr "Buscar _anterior"
 
-#: ../src/recentchanges.cpp:673
+#: ../src/recentchanges.cpp:695
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -2351,8 +2369,8 @@ msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
-"La versión del servidor «%1» está en conflicto con su nota local. ¿Qué "
-"quiere hacer con su nota local?"
+"La versión del servidor «%1» está en conflicto con su nota local. ¿Qué quiere "
+"hacer con su nota local?"
 
 #. Expander containing TreeView
 #: ../src/synchronization/syncdialog.cpp:296
@@ -2705,8 +2723,8 @@ msgstr "_Abrir enlace"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "Combinación de teclas global para abrir «Comenzar aquí». El formato sería "
-#~ "«&lt;Control&gt;a» o «&lt;Shift&gt;&lt;Alt&gt;F1». El analizador léxico "
-#~ "es bastante tolerante y permite letras mayúsculas o minúsculas, y "
+#~ "«&lt;Control&gt;a» o «&lt;Shift&gt;&lt;Alt&gt;F1». El analizador léxico es "
+#~ "bastante tolerante y permite letras mayúsculas o minúsculas, y "
 #~ "abreviaciones tales como «&lt;Ctl&gt;» y «&lt;Ctrl&gt;». Si activa la "
 #~ "opción de cadena especial «desactivada» no habrá combinación de teclas "
 #~ "para esta acción."
