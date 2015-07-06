@@ -117,9 +117,11 @@ bool MainWindow::use_client_side_decorations()
       std::vector<std::string> desktops;
       sharp::string_split(desktops, setting, ",");
       const char *current_desktop = std::getenv("DESKTOP_SESSION");
-      FOREACH(std::string de, desktops) {
-        if(de == current_desktop) {
-          s_use_client_side_decorations = 1;
+      if (current_desktop) {
+        FOREACH(std::string de, desktops) {
+	  if(de == current_desktop) {
+	    s_use_client_side_decorations = 1;
+	  }
         }
       }
     }
