@@ -104,7 +104,8 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
 bool MainWindow::use_client_side_decorations()
 {
   if (s_use_client_side_decorations < 0) {
-    if(std::strcmp(std::getenv("DESKTOP_SESSION"), "gnome") == 0) {
+    const char *desktop_session = std::getenv("DESKTOP_SESSION");
+    if(desktop_session && std::strcmp(desktop_session, "gnome") == 0) {
       s_use_client_side_decorations = 1;
     }
     else {
