@@ -503,42 +503,48 @@ namespace gnote {
     return false;
   }
 
-  // Returns true if the depth of the line was increased 
-  bool NoteBuffer::add_tab()
+  bool NoteBuffer::handle_tab(DepthAction depth_action)
   {
-    Glib::RefPtr<Gtk::TextMark> insert_mark = get_insert();
-    Gtk::TextIter iter = get_iter_at_mark(insert_mark);
-    iter.set_line_offset(0);
-
-    DepthNoteTag::Ptr depth = find_depth_tag(iter);
-
-    // If the cursor is at a line with a depth and a tab has been
-    // inserted then we increase the indent depth of that line.
-    if (depth) {
-      increase_depth(iter);
+    // if we have something selected, then tab increases ident for selected lines
+    Gtk::TextIter start, end;
+    if(get_selection_bounds(start, end)) {
+      start.set_line_offset(0);
+      for(int end_line = end.get_line(); start.get_line() <= end_line;) {
+        (*this.*depth_action)(start);
+        if(!start.forward_line()) {
+          break;
+        }
+      }
       return true;
     }
+    else {
+      Glib::RefPtr<Gtk::TextMark> insert_mark = get_insert();
+      Gtk::TextIter iter = get_iter_at_mark(insert_mark);
+      iter.set_line_offset(0);
+
+      DepthNoteTag::Ptr depth = find_depth_tag(iter);
+
+      // If the cursor is at a line with a depth and a tab has been
+      // inserted then we increase the indent depth of that line.
+      if (depth) {
+        (*this.*depth_action)(iter);
+        return true;
+      }
+    }
     return false;
+  }
+
+  // Returns true if the depth of the line was increased
+  bool NoteBuffer::add_tab()
+  {
+    return handle_tab(&NoteBuffer::increase_depth);
   }
 
 
   // Returns true if the depth of the line was decreased
   bool NoteBuffer::remove_tab()
   {
-    Glib::RefPtr<Gtk::TextMark> insert_mark = get_insert();
-    Gtk::TextIter iter = get_iter_at_mark(insert_mark);
-    iter.set_line_offset(0);
-
-    DepthNoteTag::Ptr depth = find_depth_tag(iter);
-
-    // If the cursor is at a line with depth and a tab has been
-    // inserted, then we decrease the depth of that line.
-    if (depth) {
-      decrease_depth(iter);
-      return true;
-    }
-
-    return false;
+    return handle_tab(&NoteBuffer::decrease_depth);
   }
 
 

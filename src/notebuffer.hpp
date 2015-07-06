@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -133,6 +133,8 @@ private:
   void widget_swap (const NoteTag::Ptr & tag, const Gtk::TextIter & start,
                     const Gtk::TextIter & end_iter, bool adding);
   void change_cursor_depth(bool increase);
+  typedef void (NoteBuffer::*DepthAction)(Gtk::TextIter & iter);
+  bool handle_tab(DepthAction depth_action);
 
   UndoManager           *m_undomanager;
   static const gunichar s_indent_bullets[];
