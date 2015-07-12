@@ -253,7 +253,13 @@ namespace gnote {
 
   void Gnote::on_quit_gnote_action(const Glib::VariantBase&)
   {
-    quit();
+    std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
+    FOREACH(Gtk::Window *window, windows) {
+      window->close();
+    }
+    if(is_background()) {
+      release();
+    }
   }
 
   void Gnote::on_preferences_response(int /*res*/)
