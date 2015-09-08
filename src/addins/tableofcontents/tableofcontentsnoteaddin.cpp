@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -87,11 +87,11 @@ void TableofcontentsNoteAddin::on_note_opened ()
   add_note_action(action, gnote::TABLE_OF_CONTENTS_ORDER);
 
   // Reacts to key press events
-  get_note()->get_window()->signal_key_press_event().connect(
+  get_window()->signal_key_press_event().connect(
     sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_key_pressed));
 
   // TOC can show up also in the contextual menu
-  get_note()->get_window()->editor()->signal_populate_popup().connect(
+  get_window()->editor()->signal_populate_popup().connect(
     sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_populate_popup));
 
   // Heading tags
@@ -153,13 +153,13 @@ void TableofcontentsNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_
     }
 
     item = manage(new Gtk::MenuItem (_("Heading 1")));
-    item->add_accelerator("activate", get_note()->get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+    item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_1_activated));
     item->show ();
     toc_menu->append(*item);
 
     item = manage(new Gtk::MenuItem (_("Heading 2")));
-    item->add_accelerator("activate", get_note()->get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+    item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_2_activated));
     item->show ();
     toc_menu->append(*item);
@@ -282,7 +282,7 @@ void TableofcontentsNoteAddin::on_toc_popup_activated()
 }
 void TableofcontentsNoteAddin::on_toc_help_activated()
 {
-  gnote::NoteWindow* window = get_note()->get_window();
+  gnote::NoteWindow* window = get_window();
   gnote::utils::show_help("gnote", "addin-tableofcontents",
     window->get_screen()->gobj(), dynamic_cast<Gtk::Window*>(window->host()));
 }
