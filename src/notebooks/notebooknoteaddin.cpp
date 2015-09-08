@@ -138,7 +138,7 @@ namespace notebooks {
     Note::List noteList;
     noteList.push_back(get_note());
     NotebookManager::obj().prompt_create_new_notebook(
-      dynamic_cast<Gtk::Window*>(get_note()->get_window()->host()), noteList);
+      dynamic_cast<Gtk::Window*>(get_window()->host()), noteList);
   }
 
 
