@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2013,2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -157,7 +157,7 @@ namespace printnotes {
       position = limit;
     }
 
-    Glib::RefPtr<Gdk::Screen> screen = get_note()->get_window()->get_screen();
+    Glib::RefPtr<Gdk::Screen> screen = get_window()->get_screen();
     double screen_dpiX = screen->get_width_mm() * 254 / screen->get_width();
 
     for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator iter = tags.begin();
