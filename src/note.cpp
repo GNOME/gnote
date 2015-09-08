@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -733,7 +733,7 @@ namespace gnote {
   }
 
 
-  NoteWindow * Note::get_window()
+  NoteWindow * Note::create_window()
   {
     if(!m_window) {
       m_window = new NoteWindow(*this);

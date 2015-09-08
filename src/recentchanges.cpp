@@ -301,7 +301,7 @@ namespace gnote {
 
   void NoteRecentChanges::present_note(const Note::Ptr & note)
   {
-    embed_widget(*note->get_window());
+    embed_widget(*note->create_window());
   }
 
 

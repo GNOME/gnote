@@ -53,7 +53,7 @@ void MainWindow::present_in(MainWindow & win, const Note::Ptr & note)
 
 MainWindow *MainWindow::present_active(const Note::Ptr & note)
 {
-  if(note && note->get_window()->host()
+  if(note && note->has_window() && note->get_window()->host()
      && note->get_window()->host()->is_foreground(*note->get_window())) {
     MainWindow *win = dynamic_cast<MainWindow*>(note->get_window()->host());
     win->present();
@@ -90,7 +90,9 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
   }
   Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
   if(false == settings->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW)) {
-    win = dynamic_cast<MainWindow*>(note->get_window()->host());
+    if (note->has_window()) {
+      win = dynamic_cast<MainWindow*>(note->get_window()->host());
+    }
   }
   if(!win) {
     win = &IGnote::obj().new_main_window();

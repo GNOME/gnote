@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -131,7 +131,11 @@ public:
     { 
       return (m_window != NULL); 
     }
-  NoteWindow * get_window();
+  NoteWindow * get_window()
+    {
+      return m_window;
+    }
+  NoteWindow * create_window();
   bool is_special() const;
   bool is_loaded() const
     {

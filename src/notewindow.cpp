@@ -33,6 +33,7 @@
 
 #include "debug.hpp"
 #include "iconmanager.hpp"
+#include "mainwindow.hpp"
 #include "note.hpp"
 #include "notewindow.hpp"
 #include "notemanager.hpp"
@@ -571,7 +572,7 @@ namespace gnote {
       m_note.get_buffer()->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
     }
 
-    host()->embed_widget(*static_pointer_cast<Note>(match)->get_window());
+    MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), static_pointer_cast<Note>(match));
   }
 
   void NoteWindow::open_help_activate()
@@ -1094,7 +1095,8 @@ namespace gnote {
       m_buffer->apply_tag(m_buffer->note().get_tag_table()->get_link_tag(), start, end);
     }
 
-    m_buffer->note().get_window()->host()->embed_widget(*static_pointer_cast<Note>(match)->get_window());
+    MainWindow::present_in(*dynamic_cast<MainWindow*>(m_buffer->note().get_window()->host()),
+                           static_pointer_cast<Note>(match));
   }
 
   //
