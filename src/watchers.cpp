@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -477,7 +477,7 @@ namespace gnote {
   ////////////////////////////////////////////////////////////////////////
 
 
-  const char * NoteUrlWatcher::URL_REGEX = "((\\b((news|http|https|ftp|file|irc)://|mailto:|(www|ftp)\\.|\\S*@\\S*\\.)|(?<=^|\\s)/\\S+/|(?<=^|\\s)~/\\S+)\\S*\\b/?)";
+  const char * NoteUrlWatcher::URL_REGEX = "((\\b((news|http|https|ftp|file|irc|ircs)://|mailto:|(www|ftp)\\.|\\S*@\\S*\\.)|(?<=^|\\s)/\\S+/|(?<=^|\\s)~/\\S+)\\S*\\b/?)";
   bool NoteUrlWatcher::s_text_event_connected = false;
   
 
