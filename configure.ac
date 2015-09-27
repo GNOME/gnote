@@ -1,4 +1,4 @@
-AC_INIT(gnote, 3.18.0)
+AC_INIT(gnote, 3.19.0)
 AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR(README)
 AM_INIT_AUTOMAKE([1.11 foreign dist-xz no-dist-gzip tar-ustar])
