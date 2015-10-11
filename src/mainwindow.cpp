@@ -120,10 +120,12 @@ bool MainWindow::use_client_side_decorations()
       sharp::string_split(desktops, setting, ",");
       const char *current_desktop = std::getenv("DESKTOP_SESSION");
       if (current_desktop) {
+        Glib::ustring current_de = Glib::ustring(current_desktop).lowercase();
         FOREACH(std::string de, desktops) {
-	  if(de == current_desktop) {
-	    s_use_client_side_decorations = 1;
-	  }
+          Glib::ustring denv = Glib::ustring(de).lowercase();
+          if(current_de.find(denv) != Glib::ustring::npos) {
+            s_use_client_side_decorations = 1;
+          }
         }
       }
     }
