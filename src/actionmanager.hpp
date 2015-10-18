@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -60,10 +60,6 @@ public:
   virtual void add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order) override;
   virtual void remove_main_window_search_action(const std::string & name) override;
   virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_search_actions() override;
-
-  virtual void add_tray_menu_item(Gtk::MenuItem & item) override;
-  virtual void remove_tray_menu_item(Gtk::MenuItem & item) override;
-  virtual std::vector<Gtk::MenuItem*> get_tray_menu_items() override;
 private:
   void make_app_actions();
   void make_app_menu_items();
@@ -100,8 +96,6 @@ private:
   typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
   AppMenuItemMultiMap m_app_menu_items;
   std::map<int, Glib::RefPtr<Gtk::Action> > m_main_window_search_actions;
-
-  std::vector<Gtk::MenuItem*> m_tray_menu_items;
 };
 
 

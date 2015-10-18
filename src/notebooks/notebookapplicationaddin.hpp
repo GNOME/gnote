@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,8 +23,6 @@
 #ifndef __NOTEBOOK_APPLICATION_ADDIN_HPP__
 #define __NOTEBOOK_APPLICATION_ADDIN_HPP__
 
-#include <list>
-
 #include "base/macros.hpp"
 #include "applicationaddin.hpp"
 #include "note.hpp"
@@ -45,11 +43,6 @@ namespace gnote {
     protected:
       NotebookApplicationAddin();
     private:
-      void on_tray_notebook_menu_shown();
-      void on_tray_notebook_menu_hidden();
-      void add_menu_items(Gtk::Menu *, std::list<Gtk::MenuItem*> & menu_items);
-      void remove_menu_items(Gtk::Menu *, std::list<Gtk::MenuItem*> & menu_items);
-      void on_new_notebook_menu_item();
       void on_tag_added(const NoteBase&, const Tag::Ptr&);
       void on_tag_removed(const NoteBase::Ptr&, const std::string&);
       void on_note_added(const NoteBase::Ptr &);
@@ -57,9 +50,6 @@ namespace gnote {
       void on_new_notebook_action(const Glib::VariantBase&);
 
       bool m_initialized;
-      Gtk::MenuItem                 *m_tray_menu_item;
-      Gtk::Menu                     *m_trayNotebookMenu;
-      std::list<Gtk::MenuItem*>      m_trayNotebookMenuItems;
     };
 
 

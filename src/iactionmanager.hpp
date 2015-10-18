@@ -60,9 +60,6 @@ public:
   virtual void add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order) = 0;
   virtual void remove_main_window_search_action(const std::string & name) = 0;
   virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_search_actions() = 0;
-  virtual void add_tray_menu_item(Gtk::MenuItem & item) = 0;
-  virtual void remove_tray_menu_item(Gtk::MenuItem & item) = 0;
-  virtual std::vector<Gtk::MenuItem*> get_tray_menu_items() = 0;
 
   sigc::signal<void> signal_main_window_search_actions_changed;
 };

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -264,27 +264,6 @@ namespace gnote {
       res.push_back(iter->second);
     }
     return res;
-  }
-
-  void ActionManager::add_tray_menu_item(Gtk::MenuItem & item)
-  {
-    m_tray_menu_items.push_back(&item);
-  }
-
-  void ActionManager::remove_tray_menu_item(Gtk::MenuItem & item)
-  {
-    for(std::vector<Gtk::MenuItem*>::iterator iter = m_tray_menu_items.begin();
-        iter != m_tray_menu_items.end(); ++iter) {
-      if(*iter == &item) {
-        m_tray_menu_items.erase(iter);
-        break;
-      }
-    }
-  }
-
-  std::vector<Gtk::MenuItem*> ActionManager::get_tray_menu_items()
-  {
-    return m_tray_menu_items;
   }
 
 }
