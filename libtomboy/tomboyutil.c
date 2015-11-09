@@ -41,6 +41,7 @@
 #  define TRACE(x) do {} while (FALSE);
 #endif
 
+#ifdef GDK_WINDOWING_X11
 gint
 tomboy_window_get_workspace (GtkWindow *window)
 {
@@ -71,6 +72,7 @@ tomboy_window_get_workspace (GtkWindow *window)
 void
 tomboy_window_move_to_current_workspace (GtkWindow *window)
 {
+	GdkDisplay *display;
 	GdkWindow *gdkwin = gtk_widget_get_window(GTK_WIDGET (window));
 	GdkWindow *rootwin = 
 		gdk_screen_get_root_window (gdk_window_get_screen (gdkwin));
@@ -83,6 +85,10 @@ tomboy_window_move_to_current_workspace (GtkWindow *window)
 	gulong *out_val;
 	int workspace;
 	XEvent xev;
+
+	display = gdk_display_get_default ();
+	if (!GDK_IS_X11_DISPLAY (display))
+		return;
 
 	if (!gdk_property_get (rootwin,
 			       current_desktop,
@@ -124,7 +130,14 @@ tomboy_window_move_to_current_workspace (GtkWindow *window)
 static void
 tomboy_window_override_user_time (GtkWindow *window)
 {
-	guint32 ev_time = gtk_get_current_event_time();
+	GdkDisplay *display;
+	guint32 ev_time;
+
+	display = gdk_display_get_default ();
+	if (!GDK_IS_X11_DISPLAY (display))
+		return;
+
+	ev_time= gtk_get_current_event_time();
 
 	if (ev_time == 0) {
 		/* 
@@ -150,16 +163,19 @@ tomboy_window_override_user_time (GtkWindow *window)
 	TRACE (g_print("Setting _NET_WM_USER_TIME to: %d\n", ev_time));
 	gdk_x11_window_set_user_time (gtk_widget_get_window(GTK_WIDGET(window)), ev_time);
 }
+#endif /* GDK_WINDOWING_X11 */
 
 void
 tomboy_window_present_hardcore (GtkWindow *window)
 {
 	if (!gtk_widget_get_realized (GTK_WIDGET (window)))
 		gtk_widget_realize (GTK_WIDGET (window));
+#ifdef GDK_WINDOWING_X11
 	else if (gtk_widget_get_visible (GTK_WIDGET (window)))
 		tomboy_window_move_to_current_workspace (window);
 
 	tomboy_window_override_user_time (window);
+#endif /* GDK_WINDOWING_X11 */
 
 	gtk_window_present (window);
 }
