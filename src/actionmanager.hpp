@@ -57,6 +57,7 @@ public:
   virtual void add_app_menu_item(int section, int order, const std::string & label,
                                  const std::string & action_def) override;
   Glib::RefPtr<Gio::Menu> get_app_menu() const;
+  virtual void register_main_window_action(const MainWindowAction::Ptr & action);
   virtual void register_main_window_action(const Glib::ustring & action) override;
   virtual std::vector<MainWindowAction::Ptr> get_main_window_actions() const override;
   virtual MainWindowAction::Ptr find_main_window_action(const Glib::ustring & name) const override;

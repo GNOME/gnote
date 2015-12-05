@@ -219,6 +219,13 @@ namespace gnote {
     return section;
   }
 
+  void ActionManager::register_main_window_action(const MainWindowAction::Ptr & action)
+  {
+    if(find_main_window_action(action->get_name()) == 0) {
+      m_main_window_actions2.push_back(action);
+    }
+  }
+
   void ActionManager::register_main_window_action(const Glib::ustring & action)
   {
     if(find_main_window_action(action) == 0) {
