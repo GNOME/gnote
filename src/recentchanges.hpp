@@ -26,6 +26,7 @@
 
 #include <string>
 
+#include <gtk/gtkpopovermenu.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
@@ -83,13 +84,11 @@ private:
   void on_search_button_toggled();
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
-  Gtk::Menu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::MenuItem*> & items);
-  std::vector<Gtk::MenuItem*> & make_menu_items(std::vector<Gtk::MenuItem*> & items,
-                                                const std::vector<Glib::RefPtr<Gtk::Action> > & actions);
+  GtkPopoverMenu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items);
   void on_embedded_name_changed(const std::string & name);
-  void on_main_window_actions_changed(Gtk::Menu **menu);
   void on_settings_changed(const Glib::ustring & key);
   bool on_notes_widget_key_press(GdkEventKey*);
+  void on_close_window(const Glib::VariantBase&);
 
   NoteManager        &m_note_manager;
   Gtk::Widget        *m_header_bar;
@@ -107,10 +106,9 @@ private:
   std::list<EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
-  sigc::connection    m_current_embedded_actions_slot;
   utils::InterruptableTimeout *m_entry_changed_timeout;
-  Gtk::Menu          *m_window_menu_embedded;
-  Gtk::Menu          *m_window_menu_default;
+  GtkPopoverMenu     *m_window_menu_embedded;
+  GtkPopoverMenu     *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
   bool                m_open_notes_in_new_window;
   bool                m_close_note_on_escape;

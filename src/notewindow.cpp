@@ -32,6 +32,7 @@
 #include <gtkmm/separatormenuitem.h>
 
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "iconmanager.hpp"
 #include "mainwindow.hpp"
 #include "note.hpp"
@@ -45,6 +46,7 @@
 #include "itagmanager.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "sharp/exception.hpp"
+#include "mainwindowaction.hpp"
 
 
 namespace gnote {
@@ -176,6 +178,12 @@ namespace gnote {
     if(parent) {
       parent->set_focus(*m_editor);
     }
+
+    // Don't allow deleting the "Start Here" note...
+    if(!m_note.is_special()) {
+      m_delete_note_slot = IActionManager::obj().find_main_window_action("delete-note")->signal_activate()
+        .connect(sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
+    }
   }
 
   void NoteWindow::background()
@@ -202,6 +210,7 @@ namespace gnote {
     }
 
     m_note.save();  // to update not title immediately in notes list
+    m_delete_note_slot.disconnect();
   }
 
   void NoteWindow::hint_size(int & width, int & height)
@@ -286,58 +295,24 @@ namespace gnote {
     return m_embeddable_toolbar;
   }
 
-  std::vector<Glib::RefPtr<Gtk::Action> > NoteWindow::get_widget_actions()
+  std::vector<Gtk::Widget*> NoteWindow::get_popover_widgets()
   {
-    std::vector<Glib::RefPtr<Gtk::Action> > res;
-    for(std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = m_widget_actions.begin();
-        iter != m_widget_actions.end(); ++iter) {
-      res.push_back(iter->second);
-    }
+    std::vector<Gtk::Widget*> widgets;
+    widgets.push_back(utils::create_popover_button("win.delete-note", _("_Delete")));
+    return widgets;
+  }
 
-    res.push_back(Glib::RefPtr<Gtk::Action>());
-    res.push_back(m_important_action);
-    if(m_delete_action) {
-      // Separator before delete
-      res.push_back(m_delete_action);
-    }
+  std::vector<MainWindowAction::Ptr> NoteWindow::get_widget_actions()
+  {
+    std::vector<MainWindowAction::Ptr> res;
+    IActionManager::obj().find_main_window_action("delete-note");
     return res;
   }
-
-  sigc::signal<void> & NoteWindow::signal_actions_changed()
-  {
-    return m_signal_actions_changed;
-  }
-
-  void NoteWindow::add_widget_action(const Glib::RefPtr<Gtk::Action> & action, int order)
-  {
-    std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = m_widget_actions.find(order);
-    while(iter != m_widget_actions.end()) {
-      iter = m_widget_actions.find(++order);
-    }
-    m_widget_actions[order] = action;
-    m_signal_actions_changed();
-    if(Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action) == 0) {
-      action->set_sensitive(m_enabled);
-    }
-  }
-
-  void NoteWindow::remove_widget_action(const std::string & name)
-  {
-    for(std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = m_widget_actions.begin();
-        iter != m_widget_actions.end(); ++iter) {
-      if(iter->second->get_name() == name) {
-        m_widget_actions.erase(iter);
-        break;
-      }
-    }
-    m_signal_actions_changed();
-  }
-
 
     // Delete this Note.
     //
 
-  void NoteWindow::on_delete_button_clicked()
+  void NoteWindow::on_delete_button_clicked(const Glib::VariantBase&)
   {
     // Prompt for note deletion
     std::list<Note::Ptr> single_note_list;
@@ -425,13 +400,6 @@ namespace gnote {
     m_important_action->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
     notebooks::NotebookManager::obj().signal_note_pin_status_changed
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
-
-      // Don't allow deleting the "Start Here" note...
-    if(!m_note.is_special()) {
-      m_delete_action = Gtk::Action::create("delete-note", _("_Delete"), _("Delete this note"));
-      m_delete_action->signal_activate()
-        .connect(sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
-    }
 
     grid->property_margin_left() = 12;
     grid->show_all();
@@ -617,10 +585,10 @@ namespace gnote {
     embeddable_toolbar()->set_sensitive(m_enabled);
     if(m_global_keys)
       m_global_keys->enabled(m_enabled);
-    FOREACH(const Glib::RefPtr<Gtk::Action> & action, get_widget_actions()) {
+    FOREACH(const MainWindowAction::Ptr & action, get_widget_actions()) {
       // A list includes empty actions to mark separators, non-modifying actions are always enabled
       if(action != 0 && Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action) == 0) {
-        action->set_sensitive(enable);
+        action->set_enabled(enable);
       }
     }
   }

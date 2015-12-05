@@ -57,17 +57,13 @@ public:
   virtual void add_app_menu_item(int section, int order, const std::string & label,
                                  const std::string & action_def) override;
   Glib::RefPtr<Gio::Menu> get_app_menu() const;
-  virtual void add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order) override;
-  virtual void remove_main_window_search_action(const std::string & name) override;
-  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_search_actions() override;
+  virtual void register_main_window_action(const Glib::ustring & action) override;
+  virtual std::vector<MainWindowAction::Ptr> get_main_window_actions() const override;
+  virtual MainWindowAction::Ptr find_main_window_action(const Glib::ustring & name) const override;
 private:
   void make_app_actions();
   void make_app_menu_items();
   Glib::RefPtr<Gio::Menu> make_app_menu_section(int section) const;
-  void add_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions,
-                              const Glib::RefPtr<Gtk::Action> & action, int order);
-  void remove_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions, const std::string & name);
-  std::vector<Glib::RefPtr<Gtk::Action> > get_main_window_actions(std::map<int, Glib::RefPtr<Gtk::Action> > & actions);
 
   Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
 
@@ -95,7 +91,7 @@ private:
   };
   typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
   AppMenuItemMultiMap m_app_menu_items;
-  std::map<int, Glib::RefPtr<Gtk::Action> > m_main_window_search_actions;
+  std::vector<MainWindowAction::Ptr> m_main_window_actions2;
 };
 
 

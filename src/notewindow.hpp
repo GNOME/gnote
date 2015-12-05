@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -197,10 +197,8 @@ public:
     virtual void reference() const override;
     virtual void unreference() const override;
   };
-  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions() override;
-  virtual sigc::signal<void> & signal_actions_changed() override;
-  void add_widget_action(const Glib::RefPtr<Gtk::Action> & action, int order);
-  void remove_widget_action(const std::string & name);
+  virtual std::vector<Gtk::Widget*> get_popover_widgets() override;
+  virtual std::vector<MainWindowAction::Ptr> get_widget_actions() override;
 
   void set_size(int width, int height)
     {
@@ -232,7 +230,7 @@ private:
   static Glib::RefPtr<Gio::Icon> get_icon_pin_active();
   static Glib::RefPtr<Gio::Icon> get_icon_pin_down();
 
-  void on_delete_button_clicked();
+  void on_delete_button_clicked(const Glib::VariantBase&);
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
   void on_populate_popup(Gtk::Menu*);
   Gtk::Grid *make_toolbar();
@@ -264,7 +262,7 @@ private:
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;
   utils::CheckAction::Ptr       m_important_action;
-  Glib::RefPtr<Gtk::Action>     m_delete_action;
+  sigc::connection              m_delete_note_slot;
   Gtk::Grid                    *m_template_widget;
   Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;
@@ -273,9 +271,6 @@ private:
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;
   bool                         m_enabled;
-
-  std::map<int, Glib::RefPtr<Gtk::Action> > m_widget_actions;
-  sigc::signal<void> m_signal_actions_changed;
 
   Tag::Ptr m_template_tag;
   Tag::Ptr m_template_save_size_tag;

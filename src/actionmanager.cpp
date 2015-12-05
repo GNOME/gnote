@@ -72,6 +72,9 @@ namespace gnote {
     populate_action_groups();
     make_app_actions();
     make_app_menu_items();
+
+    register_main_window_action("close-window");
+    register_main_window_action("delete-note");
   }
 
 
@@ -216,54 +219,27 @@ namespace gnote {
     return section;
   }
 
-  void ActionManager::add_main_window_search_action(const Glib::RefPtr<Gtk::Action> & action, int order)
+  void ActionManager::register_main_window_action(const Glib::ustring & action)
   {
-    add_main_window_action(m_main_window_search_actions, action, order);
-    signal_main_window_search_actions_changed();
-  }
-
-  void ActionManager::remove_main_window_search_action(const std::string & name)
-  {
-    remove_main_window_action(m_main_window_search_actions, name);
-    signal_main_window_search_actions_changed();
-  }
-
-  std::vector<Glib::RefPtr<Gtk::Action> > ActionManager::get_main_window_search_actions()
-  {
-    return get_main_window_actions(m_main_window_search_actions);
-  }
-
-  void ActionManager::add_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions,
-                                             const Glib::RefPtr<Gtk::Action> & action, int order)
-  {
-    std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = actions.find(order);
-    while(iter != actions.end()) {
-      iter = actions.find(++order);
+    if(find_main_window_action(action) == 0) {
+      m_main_window_actions2.push_back(MainWindowAction::create(action));
     }
-    actions[order] = action;
   }
 
-  void ActionManager::remove_main_window_action(std::map<int, Glib::RefPtr<Gtk::Action> > & actions,
-    const std::string & name)
+  std::vector<MainWindowAction::Ptr> ActionManager::get_main_window_actions() const
   {
-    for(std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = actions.begin();
-        iter != actions.end(); ++iter) {
-      if(iter->second->get_name() == name) {
-        actions.erase(iter);
-        break;
+    return m_main_window_actions2;
+  }
+
+  MainWindowAction::Ptr ActionManager::find_main_window_action(const Glib::ustring & name) const
+  {
+    FOREACH(MainWindowAction::Ptr a, m_main_window_actions2) {
+      if(a->get_name() == name) {
+        return a;
       }
     }
-  }
 
-  std::vector<Glib::RefPtr<Gtk::Action> > ActionManager::get_main_window_actions(
-    std::map<int, Glib::RefPtr<Gtk::Action> > & actions)
-  {
-    std::vector<Glib::RefPtr<Gtk::Action> > res;
-    for(std::map<int, Glib::RefPtr<Gtk::Action> >::iterator iter = actions.begin();
-        iter != actions.end(); ++iter) {
-      res.push_back(iter->second);
-    }
-    return res;
+    return MainWindowAction::Ptr();
   }
 
 }

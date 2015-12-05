@@ -32,13 +32,13 @@
 #include <gtkmm/stock.h>
 
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "ignote.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "recentchanges.hpp"
 #include "sharp/string.hpp"
-
 
 namespace gnote {
 
@@ -100,7 +100,13 @@ namespace gnote {
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_Q, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
 
-    m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<Gtk::MenuItem*>());
+    FOREACH(MainWindowAction::Ptr action, IActionManager::obj().get_main_window_actions()) {
+      add_action(action);
+    }
+    IActionManager::obj().find_main_window_action("close-window")->signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
+
+    m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<Gtk::Widget*>());
     embed_widget(m_search_notes_widget);
   }
 
@@ -114,10 +120,10 @@ namespace gnote {
       delete m_entry_changed_timeout;
     }
     if(m_window_menu_embedded) {
-      delete m_window_menu_embedded;
+      gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
     }
     if(m_window_menu_default) {
-      delete m_window_menu_default;
+      gtk_widget_destroy(GTK_WIDGET(m_window_menu_default));
     }
   }
 
@@ -366,6 +372,12 @@ namespace gnote {
   }
 
 
+  void NoteRecentChanges::on_close_window(const Glib::VariantBase&)
+  {
+    close_window();
+  }
+
+
   bool NoteRecentChanges::on_delete(GdkEventAny *)
   {
     close_window();
@@ -513,10 +525,8 @@ namespace gnote {
 
     try {
       HasActions &has_actions = dynamic_cast<HasActions&>(widget);
-      m_current_embedded_actions_slot = has_actions.signal_actions_changed().connect(
-        boost::bind(sigc::mem_fun(*this, &NoteRecentChanges::on_main_window_actions_changed),
-                    &m_window_menu_embedded));
-      on_main_window_actions_changed(&m_window_menu_embedded);
+      std::vector<Gtk::Widget*> items = has_actions.get_popover_widgets();
+      m_window_menu_embedded = make_window_menu(m_window_actions_button, items);
     }
     catch(std::bad_cast&) {
     }
@@ -533,9 +543,18 @@ namespace gnote {
       m_embed_box.remove(wid);
 
       m_current_embedded_name_slot.disconnect();
-      m_current_embedded_actions_slot.disconnect();
+      try {
+        HasActions &has_actions = dynamic_cast<HasActions&>(widget);
+        FOREACH(MainWindowAction::Ptr action, has_actions.get_widget_actions()) {
+          if(action != 0) {
+            remove_action(action->get_name());
+          }
+        }
+      }
+      catch(std::bad_cast&) {
+      }
       if(m_window_menu_embedded) {
-        delete m_window_menu_embedded;
+        gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
         m_window_menu_embedded = NULL;
       }
     }
@@ -678,62 +697,38 @@ namespace gnote {
   {
     HasActions *embed_with_actions = dynamic_cast<HasActions*>(currently_embedded());
     if(embed_with_actions) {
-      utils::popup_menu(*m_window_menu_embedded, NULL);
+      gtk_widget_show_all(GTK_WIDGET(m_window_menu_embedded));
     }
     else {
-      utils::popup_menu(*m_window_menu_default, NULL);
+      gtk_widget_show_all(GTK_WIDGET(m_window_menu_default));
     }
   }
 
-  Gtk::Menu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::MenuItem*> & items)
+  GtkPopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items)
   {
-    Gtk::Menu *menu = new Gtk::Menu;
-    for(std::vector<Gtk::MenuItem*>::const_iterator iter = items.begin(); iter != items.end(); ++iter) {
-      menu->append(**iter);
+    GtkPopoverMenu *menu = GTK_POPOVER_MENU(gtk_popover_menu_new());
+    Gtk::Grid *grid = manage(new Gtk::Grid);
+    grid->property_margin() = 10;
+    int top = 0;
+    FOREACH(Gtk::Widget *item, items) {
+      grid->attach(*manage(item), 0, top++, 1, 1);
     }
-    if(items.size()) {
-      menu->append(*manage(new Gtk::SeparatorMenuItem));
-    }
-    Gtk::MenuItem *item = manage(new Gtk::MenuItem(_("_Close"), true));
-    item->add_accelerator("activate", get_accel_group(), GDK_KEY_W, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    item->add_accelerator("activate", get_accel_group(), GDK_KEY_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    item->signal_activate().connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));
-    menu->append(*item);
-    menu->property_attach_widget() = button;
-    menu->show_all();
+
+    Gtk::Widget *close_item = manage(utils::create_popover_button("win.close-window", _("_Close")));
+    close_item->add_accelerator("activate", get_accel_group(), GDK_KEY_W, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+    close_item->add_accelerator("activate", get_accel_group(), GDK_KEY_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+    grid->attach(*close_item, 0, top++, 1, 1);
+
+    gtk_container_add(GTK_CONTAINER(menu), GTK_WIDGET(grid->gobj()));
+    gtk_popover_set_relative_to(GTK_POPOVER(menu), GTK_WIDGET(button->gobj()));
+    gtk_popover_set_modal(GTK_POPOVER(menu), TRUE);
+    gtk_popover_set_position(GTK_POPOVER(menu), GTK_POS_BOTTOM);
     return menu;
-  }
-
-  std::vector<Gtk::MenuItem*> & NoteRecentChanges::make_menu_items(std::vector<Gtk::MenuItem*> & items,
-    const std::vector<Glib::RefPtr<Gtk::Action> > & actions)
-  {
-    FOREACH(Glib::RefPtr<Gtk::Action> action, actions) {
-      Gtk::MenuItem *item = manage(action ? action->create_menu_item() : new Gtk::SeparatorMenuItem);
-      items.push_back(item);
-    }
-    return items;
   }
 
   void NoteRecentChanges::on_embedded_name_changed(const std::string & name)
   {
     set_title(name);
-  }
-
-  void NoteRecentChanges::on_main_window_actions_changed(Gtk::Menu **menu)
-  {
-    if(*menu) {
-      delete *menu;
-      *menu = NULL;
-    }
-
-    HasActions *embed_with_actions = dynamic_cast<HasActions*>(currently_embedded());
-    if(embed_with_actions) {
-      if(!m_window_menu_embedded) {
-        std::vector<Gtk::MenuItem*> items;
-        m_window_menu_embedded = make_window_menu(m_window_actions_button,
-          make_menu_items(items, embed_with_actions->get_widget_actions()));
-      }
-    }
   }
 
   void NoteRecentChanges::on_settings_changed(const Glib::ustring & key)

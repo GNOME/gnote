@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -66,6 +66,8 @@ namespace gnote {
 
     void main_context_invoke(const sigc::slot<void> & slot);
     void main_context_call(const sigc::slot<void> & slot);
+
+    Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label);
 
     class GlobalKeybinder
     {

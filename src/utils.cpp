@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -270,6 +270,16 @@ namespace gnote {
         sigc::ptr_fun(main_context_call_func), slot, &cond, &mutex));
       cond.wait(mutex);
       mutex.unlock();
+    }
+
+
+    Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label)
+    {
+      GtkWidget *item = gtk_model_button_new();
+      gtk_actionable_set_action_name(GTK_ACTIONABLE(item), action.c_str());
+      gtk_button_set_label(GTK_BUTTON(item), label.c_str());
+      gtk_button_set_use_underline(GTK_BUTTON(item), TRUE);
+      return Glib::wrap(item);
     }
 
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -1425,14 +1425,16 @@ void SearchNotesWidget::size_internals()
   }
 }
 
-std::vector<Glib::RefPtr<Gtk::Action> > SearchNotesWidget::get_widget_actions()
+std::vector<Gtk::Widget*> SearchNotesWidget::get_popover_widgets()
 {
-  return IActionManager::obj().get_main_window_search_actions();
+  std::vector<Gtk::Widget*> widgets;
+  return widgets;
 }
 
-sigc::signal<void> & SearchNotesWidget::signal_actions_changed()
+std::vector<MainWindowAction::Ptr> SearchNotesWidget::get_widget_actions()
 {
-  return IActionManager::obj().signal_main_window_search_actions_changed;
+  std::vector<MainWindowAction::Ptr> actions;
+  return actions;
 }
 
 void SearchNotesWidget::on_settings_changed(const Glib::ustring & key)
