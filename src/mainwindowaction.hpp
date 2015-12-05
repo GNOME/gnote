@@ -34,8 +34,15 @@ public:
   typedef Glib::RefPtr<MainWindowAction> Ptr;
 
   static Ptr create(const Glib::ustring & name);
+  static Ptr create(const Glib::ustring & name, bool state);
+
+  void set_state(const Glib::VariantBase & value)
+    {
+      Gio::SimpleAction::set_state(value);
+    }
 protected:
   MainWindowAction(const Glib::ustring & name);
+  MainWindowAction(const Glib::ustring & name, bool state);
 };
 
 }

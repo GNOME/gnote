@@ -26,8 +26,18 @@ MainWindowAction::Ptr MainWindowAction::create(const Glib::ustring & name)
   return Ptr(new MainWindowAction(name));
 }
 
+MainWindowAction::Ptr MainWindowAction::create(const Glib::ustring & name, bool state)
+{
+  return Ptr(new MainWindowAction(name, state));
+}
+
 MainWindowAction::MainWindowAction(const Glib::ustring & name)
   : Gio::SimpleAction(name)
+{
+}
+
+MainWindowAction::MainWindowAction(const Glib::ustring & name, bool state)
+  : Gio::SimpleAction(name, Glib::Variant<bool>::create(state))
 {
 }
 
