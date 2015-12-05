@@ -704,14 +704,31 @@ namespace gnote {
     }
   }
 
+  Gtk::Grid *NoteRecentChanges::create_inner_popover_grid(int & top)
+  {
+    Gtk::Grid *grid = manage(new Gtk::Grid);
+    grid->property_margin_top() = 10;
+    grid->property_margin_bottom() = 10;
+    top = 0;
+    return grid;
+  }
+
   GtkPopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items)
   {
     GtkPopoverMenu *menu = GTK_POPOVER_MENU(gtk_popover_menu_new());
-    Gtk::Grid *grid = manage(new Gtk::Grid);
-    grid->property_margin() = 10;
+    Gtk::Grid *main_grid = manage(new Gtk::Grid);
+    main_grid->property_margin_start() = 10;
+    main_grid->property_margin_end() = 10;
+    int main_top = 0;
     int top = 0;
+    Gtk::Grid *grid = create_inner_popover_grid(top);
     FOREACH(Gtk::Widget *item, items) {
       grid->attach(*manage(item), 0, top++, 1, 1);
+    }
+
+    if(top > 0) {
+      main_grid->attach(*grid, 0, main_top++, 1, 1);
+      grid = create_inner_popover_grid(top);
     }
 
     Gtk::Widget *close_item = manage(utils::create_popover_button("win.close-window", _("_Close")));
@@ -719,7 +736,8 @@ namespace gnote {
     close_item->add_accelerator("activate", get_accel_group(), GDK_KEY_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     grid->attach(*close_item, 0, top++, 1, 1);
 
-    gtk_container_add(GTK_CONTAINER(menu), GTK_WIDGET(grid->gobj()));
+    main_grid->attach(*grid, 0, main_top++, 1, 1);
+    gtk_container_add(GTK_CONTAINER(menu), GTK_WIDGET(main_grid->gobj()));
     gtk_popover_set_relative_to(GTK_POPOVER(menu), GTK_WIDGET(button->gobj()));
     gtk_popover_set_modal(GTK_POPOVER(menu), TRUE);
     gtk_popover_set_position(GTK_POPOVER(menu), GTK_POS_BOTTOM);
