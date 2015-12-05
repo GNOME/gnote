@@ -75,6 +75,7 @@ namespace gnote {
 
     register_main_window_action("close-window");
     register_main_window_action("delete-note");
+    register_main_window_action(MainWindowAction::create("important-note", false));
   }
 
 

@@ -248,7 +248,7 @@ private:
   void add_accel_group(Gtk::Window &);
   void remove_accel_group(Gtk::Window &);
   void on_pin_status_changed(const Note &, bool);
-  void on_pin_button_clicked();
+  void on_pin_button_clicked(const Glib::VariantBase & state);
   void on_text_button_clicked();
 
   Note                        & m_note;
@@ -261,8 +261,8 @@ private:
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;
-  utils::CheckAction::Ptr       m_important_action;
   sigc::connection              m_delete_note_slot;
+  sigc::connection              m_important_note_slot;
   Gtk::Grid                    *m_template_widget;
   Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;

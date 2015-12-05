@@ -184,6 +184,14 @@ namespace gnote {
       m_delete_note_slot = IActionManager::obj().find_main_window_action("delete-note")->signal_activate()
         .connect(sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
     }
+
+    MainWindowAction::Ptr important_action = IActionManager::obj().find_main_window_action("important-note");
+    important_action->set_state(Glib::Variant<bool>::create(m_note.is_pinned()));
+    m_important_note_slot = important_action->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
+    notebooks::NotebookManager::obj().signal_note_pin_status_changed
+      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
+
   }
 
   void NoteWindow::background()
@@ -211,6 +219,7 @@ namespace gnote {
 
     m_note.save();  // to update not title immediately in notes list
     m_delete_note_slot.disconnect();
+    m_important_note_slot.disconnect();
   }
 
   void NoteWindow::hint_size(int & width, int & height)
@@ -298,6 +307,7 @@ namespace gnote {
   std::vector<Gtk::Widget*> NoteWindow::get_popover_widgets()
   {
     std::vector<Gtk::Widget*> widgets;
+    widgets.push_back(utils::create_popover_button("win.important-note", _("Is Important")));
     widgets.push_back(utils::create_popover_button("win.delete-note", _("_Delete")));
     return widgets;
   }
@@ -305,6 +315,7 @@ namespace gnote {
   std::vector<MainWindowAction::Ptr> NoteWindow::get_widget_actions()
   {
     std::vector<MainWindowAction::Ptr> res;
+    IActionManager::obj().find_main_window_action("important-note");
     IActionManager::obj().find_main_window_action("delete-note");
     return res;
   }
@@ -392,14 +403,6 @@ namespace gnote {
     grid->attach(*text_button, grid_col++, 0, 1, 1);
     text_button->set_tooltip_text(_("Set properties of text"));
     m_text_menu->property_attach_widget() = text_button;
-
-    m_important_action = utils::CheckAction::create("mark-important");
-    m_important_action->set_label(_("Is Important"));
-    m_important_action->set_tooltip(_("Toggle notes presence in Important Notes notebook"));
-    m_important_action->checked(m_note.is_pinned());
-    m_important_action->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
-    notebooks::NotebookManager::obj().signal_note_pin_status_changed
-      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
     grid->property_margin_left() = 12;
     grid->show_all();
@@ -564,12 +567,14 @@ namespace gnote {
     if(&m_note != &note) {
       return;
     }
-    m_important_action->checked(pinned);
+    IActionManager::obj().find_main_window_action("important-note")->change_state(Glib::Variant<bool>::create(pinned));
   }
 
-  void NoteWindow::on_pin_button_clicked()
+  void NoteWindow::on_pin_button_clicked(const Glib::VariantBase & state)
   {
-    m_note.set_pinned(!m_note.is_pinned());
+    Glib::Variant<bool> new_state = Glib::VariantBase::cast_dynamic<Glib::Variant<bool> >(state);
+    m_note.set_pinned(new_state.get());
+    IActionManager::obj().find_main_window_action("important-note")->set_state(state);
   }
 
   void NoteWindow::on_text_button_clicked()
