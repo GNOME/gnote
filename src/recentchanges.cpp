@@ -586,6 +586,11 @@ namespace gnote {
     return false;
   }
 
+  MainWindowAction::Ptr NoteRecentChanges::find_action(const Glib::ustring & name)
+  {
+    return IActionManager::obj().find_main_window_action(name);
+  }
+
   EmbeddableWidget *NoteRecentChanges::currently_embedded()
   {
     std::vector<Gtk::Widget*> children = m_embed_box.get_children();

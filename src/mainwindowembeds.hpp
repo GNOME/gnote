@@ -40,6 +40,7 @@ public:
   virtual bool running() = 0;
   virtual bool contains(EmbeddableWidget &) = 0;
   virtual bool is_foreground(EmbeddableWidget &) = 0;
+  virtual MainWindowAction::Ptr find_action(const Glib::ustring & name) = 0;
 };
 
 class EmbeddableWidget

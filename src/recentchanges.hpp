@@ -61,6 +61,7 @@ public:
     }
   virtual bool contains(EmbeddableWidget &) override;
   virtual bool is_foreground(EmbeddableWidget &) override;
+  virtual MainWindowAction::Ptr find_action(const Glib::ustring & name) override;
 protected:
   virtual void present_note(const Note::Ptr & note) override;
   virtual void on_show() override;
