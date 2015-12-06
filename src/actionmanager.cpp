@@ -73,9 +73,9 @@ namespace gnote {
     make_app_actions();
     make_app_menu_items();
 
-    register_main_window_action("close-window");
-    register_main_window_action("delete-note");
-    register_main_window_action(MainWindowAction::create("important-note", false));
+    register_main_window_action("close-window", NULL);
+    register_main_window_action("delete-note", NULL);
+    register_main_window_action("important-note", &Glib::Variant<bool>::variant_type());
   }
 
 
@@ -220,34 +220,16 @@ namespace gnote {
     return section;
   }
 
-  void ActionManager::register_main_window_action(const MainWindowAction::Ptr & action)
+  void ActionManager::register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type)
   {
-    if(find_main_window_action(action->get_name()) == 0) {
-      m_main_window_actions2.push_back(action);
+    if(m_main_window_actions2.find(action) == m_main_window_actions2.end()) {
+      m_main_window_actions2[action] = state_type;
     }
   }
 
-  void ActionManager::register_main_window_action(const Glib::ustring & action)
-  {
-    if(find_main_window_action(action) == 0) {
-      m_main_window_actions2.push_back(MainWindowAction::create(action));
-    }
-  }
-
-  std::vector<MainWindowAction::Ptr> ActionManager::get_main_window_actions() const
+  std::map<Glib::ustring, const Glib::VariantType*> ActionManager::get_main_window_actions() const
   {
     return m_main_window_actions2;
-  }
-
-  MainWindowAction::Ptr ActionManager::find_main_window_action(const Glib::ustring & name) const
-  {
-    FOREACH(MainWindowAction::Ptr a, m_main_window_actions2) {
-      if(a->get_name() == name) {
-        return a;
-      }
-    }
-
-    return MainWindowAction::Ptr();
   }
 
 }

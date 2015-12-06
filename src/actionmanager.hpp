@@ -57,10 +57,8 @@ public:
   virtual void add_app_menu_item(int section, int order, const std::string & label,
                                  const std::string & action_def) override;
   Glib::RefPtr<Gio::Menu> get_app_menu() const;
-  virtual void register_main_window_action(const MainWindowAction::Ptr & action);
-  virtual void register_main_window_action(const Glib::ustring & action) override;
-  virtual std::vector<MainWindowAction::Ptr> get_main_window_actions() const override;
-  virtual MainWindowAction::Ptr find_main_window_action(const Glib::ustring & name) const override;
+  virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type) override;
+  virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;
 private:
   void make_app_actions();
   void make_app_menu_items();
@@ -92,7 +90,7 @@ private:
   };
   typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
   AppMenuItemMultiMap m_app_menu_items;
-  std::vector<MainWindowAction::Ptr> m_main_window_actions2;
+  std::map<Glib::ustring, const Glib::VariantType*> m_main_window_actions2;
 };
 
 

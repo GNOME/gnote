@@ -100,10 +100,17 @@ namespace gnote {
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_Q, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
 
-    FOREACH(MainWindowAction::Ptr action, IActionManager::obj().get_main_window_actions()) {
-      add_action(action);
+    std::map<Glib::ustring, const Glib::VariantType*> actions = IActionManager::obj().get_main_window_actions();
+    for(std::map<Glib::ustring, const Glib::VariantType*>::iterator iter = actions.begin();
+        iter != actions.end(); ++iter) {
+      if(iter->second == NULL) {
+        add_action(MainWindowAction::create(iter->first));
+      }
+      else if(iter->second == &Glib::Variant<bool>::variant_type()) {
+        add_action(MainWindowAction::create(iter->first, false));
+      }
     }
-    IActionManager::obj().find_main_window_action("close-window")->signal_activate()
+    find_action("close-window")->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
 
     m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<Gtk::Widget*>());
@@ -586,9 +593,19 @@ namespace gnote {
     return false;
   }
 
+  void NoteRecentChanges::add_action(const MainWindowAction::Ptr & action)
+  {
+    m_actions[action->get_name()] = action;
+    MainWindow::add_action(action);
+  }
+
   MainWindowAction::Ptr NoteRecentChanges::find_action(const Glib::ustring & name)
   {
-    return IActionManager::obj().find_main_window_action(name);
+    std::map<Glib::ustring, MainWindowAction::Ptr>::iterator iter = m_actions.find(name);
+    if(iter != m_actions.end()) {
+      return iter->second;
+    }
+    return MainWindowAction::Ptr();
   }
 
   EmbeddableWidget *NoteRecentChanges::currently_embedded()

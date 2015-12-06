@@ -26,7 +26,6 @@
 #include <gtkmm/uimanager.h>
 
 #include "base/singleton.hpp"
-#include "mainwindowaction.hpp"
 
 namespace gnote {
 
@@ -58,9 +57,8 @@ public:
   virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const std::string & name) = 0;
   virtual void add_app_menu_item(int section, int order, const std::string & label,
                                  const std::string & action_def) = 0;
-  virtual void register_main_window_action(const Glib::ustring & action) = 0;
-  virtual std::vector<MainWindowAction::Ptr> get_main_window_actions() const = 0;
-  virtual MainWindowAction::Ptr find_main_window_action(const Glib::ustring & name) const = 0;
+  virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type) = 0;
+  virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const = 0;
 };
 
 }

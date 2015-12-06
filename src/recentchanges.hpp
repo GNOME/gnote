@@ -32,6 +32,7 @@
 #include <gtkmm/grid.h>
 
 #include "base/macros.hpp"
+#include "mainwindowaction.hpp"
 #include "note.hpp"
 #include "searchnoteswidget.hpp"
 #include "utils.hpp"
@@ -91,6 +92,7 @@ private:
   void on_settings_changed(const Glib::ustring & key);
   bool on_notes_widget_key_press(GdkEventKey*);
   void on_close_window(const Glib::VariantBase&);
+  void add_action(const MainWindowAction::Ptr & action);
 
   NoteManager        &m_note_manager;
   Gtk::Widget        *m_header_bar;
@@ -114,6 +116,7 @@ private:
   utils::GlobalKeybinder m_keybinder;
   bool                m_open_notes_in_new_window;
   bool                m_close_note_on_escape;
+  std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
 };
 
 
