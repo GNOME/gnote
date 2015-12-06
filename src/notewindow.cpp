@@ -32,7 +32,6 @@
 #include <gtkmm/separatormenuitem.h>
 
 #include "debug.hpp"
-#include "iactionmanager.hpp"
 #include "iconmanager.hpp"
 #include "mainwindow.hpp"
 #include "note.hpp"
@@ -181,11 +180,11 @@ namespace gnote {
 
     // Don't allow deleting the "Start Here" note...
     if(!m_note.is_special()) {
-      m_delete_note_slot = IActionManager::obj().find_main_window_action("delete-note")->signal_activate()
+      m_delete_note_slot = current_host->find_action("delete-note")->signal_activate()
         .connect(sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
     }
 
-    MainWindowAction::Ptr important_action = IActionManager::obj().find_main_window_action("important-note");
+    MainWindowAction::Ptr important_action = current_host->find_action("important-note");
     important_action->set_state(Glib::Variant<bool>::create(m_note.is_pinned()));
     m_important_note_slot = important_action->signal_change_state()
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
@@ -315,8 +314,11 @@ namespace gnote {
   std::vector<MainWindowAction::Ptr> NoteWindow::get_widget_actions()
   {
     std::vector<MainWindowAction::Ptr> res;
-    IActionManager::obj().find_main_window_action("important-note");
-    IActionManager::obj().find_main_window_action("delete-note");
+    EmbeddableWidgetHost *h = host();
+    if(h != NULL) {
+      h->find_action("important-note");
+      h->find_action("delete-note");
+    }
     return res;
   }
 
@@ -567,14 +569,20 @@ namespace gnote {
     if(&m_note != &note) {
       return;
     }
-    IActionManager::obj().find_main_window_action("important-note")->change_state(Glib::Variant<bool>::create(pinned));
+    EmbeddableWidgetHost *h = host();
+    if(h != NULL) {
+      h->find_action("important-note")->change_state(Glib::Variant<bool>::create(pinned));
+    }
   }
 
   void NoteWindow::on_pin_button_clicked(const Glib::VariantBase & state)
   {
-    Glib::Variant<bool> new_state = Glib::VariantBase::cast_dynamic<Glib::Variant<bool> >(state);
-    m_note.set_pinned(new_state.get());
-    IActionManager::obj().find_main_window_action("important-note")->set_state(state);
+    EmbeddableWidgetHost *h = host();
+    if(h != NULL) {
+      Glib::Variant<bool> new_state = Glib::VariantBase::cast_dynamic<Glib::Variant<bool> >(state);
+      m_note.set_pinned(new_state.get());
+      h->find_action("important-note")->set_state(state);
+    }
   }
 
   void NoteWindow::on_text_button_clicked()
