@@ -52,6 +52,7 @@ typedef std::map<std::string, AddinInfo> AddinInfoMap;
 class AddinManager
 {
 public:
+
   AddinManager(NoteManager & note_manager, const std::string & conf_dir);
   ~AddinManager();
 
@@ -64,6 +65,7 @@ public:
     }
 
   void load_addins_for_note(const Note::Ptr &);
+  std::vector<NoteAddin*> get_note_addins(const Note::Ptr &) const;
   ApplicationAddin *get_application_addin(const std::string & id) const;
   sync::SyncServiceAddin *get_sync_service_addin(const std::string & id) const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
