@@ -92,6 +92,8 @@ class HasActions
 public:
   virtual std::vector<Gtk::Widget*> get_popover_widgets() = 0;
   virtual std::vector<MainWindowAction::Ptr> get_widget_actions() = 0;
+
+  sigc::signal<void> signal_popover_widgets_changed;
 };
 
 }
