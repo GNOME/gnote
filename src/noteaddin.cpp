@@ -47,7 +47,7 @@ namespace gnote {
     if (disposing) {
       for(std::list<std::string>::const_iterator iter = m_note_actions.begin();
           iter != m_note_actions.end(); ++iter) {
-        get_window()->remove_widget_action(*iter);
+        //get_window()->remove_widget_action(*iter);
       }
       for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
           iter != m_text_menu_items.end(); ++iter) {
@@ -99,7 +99,7 @@ namespace gnote {
     }
 
     m_note_actions.push_back(action->get_name());
-    get_window()->add_widget_action(action, order);
+    //get_window()->add_widget_action(action, order);
   }
 
   void NoteAddin::add_tool_item (Gtk::ToolItem *item, int position)
@@ -139,6 +139,11 @@ namespace gnote {
       throw std::runtime_error(_("Window is not embedded"));
     }
     return dynamic_cast<Gtk::Window*>(note_window->host());
+  }
+
+  std::map<int, Gtk::Widget*> NoteAddin::get_actions_popover_widgets() const
+  {
+    return std::map<int, Gtk::Widget*>();
   }
   
 }

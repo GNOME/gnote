@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -73,6 +73,8 @@ public:
   /// Called when the note is opened.
   /// </summary>
   virtual void on_note_opened () = 0;
+
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const;
 
   const Note::Ptr & get_note() const
     {
