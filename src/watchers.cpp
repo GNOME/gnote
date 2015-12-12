@@ -299,19 +299,29 @@ namespace gnote {
     if(settings->get_boolean(Preferences::ENABLE_SPELLCHECKING)) {
       attach ();
     }
+    else {
+      m_enabled = false;
+    }
+
+    NoteWindow *window = get_note()->get_window();
+    window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteSpellChecker::on_note_window_foregrounded));
+    window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteSpellChecker::on_note_window_backgrounded));
+  }
+
+  std::map<int, Gtk::Widget*> NoteSpellChecker::get_actions_popover_widgets() const
+  {
+    std::map<int, Gtk::Widget*> widgets = NoteAddin::get_actions_popover_widgets();
+    if(m_enabled) {
+      utils::add_item_to_ordered_map(widgets, 800,
+        utils::create_popover_button("win.enable-spell-check", _("Check spelling")));
+    }
+    return widgets;
   }
 
   void NoteSpellChecker::attach ()
   {
     attach_checker();
-
-    m_enable_action = utils::CheckAction::create("EnableSpellCheck");
-    m_enable_action->set_label(_("Check spelling"));
-    m_enable_action->set_tooltip(_("Check spelling in this note"));
-    m_enable_action->checked(get_language() != LANG_DISABLED);
-    m_enable_action->signal_activate()
-      .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_spell_check_enable_action));
-    add_note_action(m_enable_action, 800);
+    get_note()->get_window()->signal_popover_widgets_changed();
   }
 
 
@@ -338,6 +348,10 @@ namespace gnote {
       }
       g_signal_connect(G_OBJECT(m_obj_ptr), "language-changed", G_CALLBACK(language_changed), this);
       gtk_spell_checker_attach(m_obj_ptr, get_window()->editor()->gobj());
+      m_enabled = true;
+    }
+    else {
+      m_enabled = false;
     }
   }
 
@@ -345,8 +359,8 @@ namespace gnote {
   void NoteSpellChecker::detach ()
   {
     detach_checker();
-    get_window()->remove_widget_action("EnableSpellCheck");
-    m_enable_action.reset();
+    m_enabled = false;
+    get_note()->get_window()->signal_popover_widgets_changed();
   }
 
 
@@ -455,13 +469,17 @@ namespace gnote {
     return lang;
   }
 
-  void NoteSpellChecker::on_spell_check_enable_action()
+  void NoteSpellChecker::on_spell_check_enable_action(const Glib::VariantBase & state)
   {
     Tag::Ptr tag = get_language_tag();
     if(tag) {
       get_note()->remove_tag(tag);
     }
-    if(m_enable_action->checked()) {
+    Glib::Variant<bool> new_state = Glib::VariantBase::cast_dynamic<Glib::Variant<bool> >(state);
+    MainWindow *main_window = dynamic_cast<MainWindow*>(get_note()->get_window()->host());
+    MainWindowAction::Ptr enable_action = main_window->find_action("enable-spell-check");
+    enable_action->set_state(new_state);
+    if(new_state.get()) {
       attach_checker();
     }
     else {
@@ -471,6 +489,20 @@ namespace gnote {
       get_note()->add_tag(tag);
       detach_checker();
     }
+  }
+
+  void NoteSpellChecker::on_note_window_foregrounded()
+  {
+    MainWindow *win = dynamic_cast<MainWindow*>(get_note()->get_window()->host());
+    MainWindowAction::Ptr enable_action = win->find_action("enable-spell-check");
+    enable_action->change_state(Glib::Variant<bool>::create(m_enabled));
+    m_enable_cid = enable_action->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_spell_check_enable_action));
+  }
+
+  void NoteSpellChecker::on_note_window_backgrounded()
+  {
+    m_enable_cid.disconnect();
   }
 #endif
   

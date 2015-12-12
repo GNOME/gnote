@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -93,12 +93,14 @@ namespace gnote {
     virtual void initialize() override;
     virtual void shutdown() override;
     virtual void on_note_opened() override;
+    virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 
     static bool gtk_spell_available()
       { return true; }
   protected:
     NoteSpellChecker()
       : m_obj_ptr(NULL)
+      , m_enabled(false)
       {}
   private:
     static const char *LANG_PREFIX;
@@ -114,11 +116,14 @@ namespace gnote {
     void on_language_changed(const gchar *lang);
     Tag::Ptr get_language_tag();
     std::string get_language();
-    void on_spell_check_enable_action();
+    void on_note_window_foregrounded();
+    void on_note_window_backgrounded();
+    void on_spell_check_enable_action(const Glib::VariantBase & state);
 
     GtkSpellChecker *m_obj_ptr;
     sigc::connection  m_tag_applied_cid;
-    utils::CheckAction::Ptr m_enable_action;
+    sigc::connection m_enable_cid;
+    bool m_enabled;
   };
 #else
   class NoteSpellChecker 
