@@ -551,16 +551,7 @@ namespace gnote {
       m_embed_box.remove(wid);
 
       m_current_embedded_name_slot.disconnect();
-      try {
-        HasActions &has_actions = dynamic_cast<HasActions&>(widget);
-        FOREACH(MainWindowAction::Ptr action, has_actions.get_widget_actions()) {
-          if(action != 0) {
-            remove_action(action->get_name());
-          }
-        }
-      }
-      catch(std::bad_cast&) {
-      }
+
       if(m_window_menu_embedded) {
         gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
         m_window_menu_embedded = NULL;
