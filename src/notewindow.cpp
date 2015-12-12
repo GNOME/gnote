@@ -32,6 +32,7 @@
 #include <gtkmm/separatormenuitem.h>
 
 #include "debug.hpp"
+#include "addinmanager.hpp"
 #include "iconmanager.hpp"
 #include "mainwindow.hpp"
 #include "note.hpp"
@@ -305,9 +306,23 @@ namespace gnote {
 
   std::vector<Gtk::Widget*> NoteWindow::get_popover_widgets()
   {
+    std::map<int, Gtk::Widget*> widget_map;
+    NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
+    Note::Ptr note = std::dynamic_pointer_cast<Note>(m_note.shared_from_this());
+    FOREACH(NoteAddin *addin, manager.get_addin_manager().get_note_addins(note)) {
+      utils::merge_ordered_maps(widget_map, addin->get_actions_popover_widgets());
+    }
+
     std::vector<Gtk::Widget*> widgets;
+    for(std::map<int, Gtk::Widget*>::iterator iter = widget_map.begin();
+        iter != widget_map.end(); ++iter) {
+      widgets.push_back(iter->second);
+    }
+
     widgets.push_back(utils::create_popover_button("win.important-note", _("Is Important")));
+    widgets.push_back(NULL);
     widgets.push_back(utils::create_popover_button("win.delete-note", _("_Delete")));
+
     return widgets;
   }
 
