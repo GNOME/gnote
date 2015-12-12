@@ -113,7 +113,6 @@ namespace gnote {
     find_action("close-window")->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
 
-    m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<Gtk::Widget*>());
     embed_widget(m_search_notes_widget);
   }
 
@@ -532,8 +531,10 @@ namespace gnote {
 
     try {
       HasActions &has_actions = dynamic_cast<HasActions&>(widget);
-      std::vector<Gtk::Widget*> items = has_actions.get_popover_widgets();
-      m_window_menu_embedded = make_window_menu(m_window_actions_button, items);
+      if(m_window_menu_embedded) {
+        gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
+        m_window_menu_embedded = NULL;
+      }
     }
     catch(std::bad_cast&) {
     }
@@ -719,9 +720,15 @@ namespace gnote {
   {
     HasActions *embed_with_actions = dynamic_cast<HasActions*>(currently_embedded());
     if(embed_with_actions) {
+      if(m_window_menu_embedded == NULL) {
+        m_window_menu_embedded = make_window_menu(m_window_actions_button, embed_with_actions->get_popover_widgets());
+      }
       gtk_widget_show_all(GTK_WIDGET(m_window_menu_embedded));
     }
     else {
+      if(m_window_menu_default == NULL) {
+        m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<Gtk::Widget*>());
+      }
       gtk_widget_show_all(GTK_WIDGET(m_window_menu_default));
     }
   }
