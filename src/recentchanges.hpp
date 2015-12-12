@@ -93,6 +93,7 @@ private:
   bool on_notes_widget_key_press(GdkEventKey*);
   void on_close_window(const Glib::VariantBase&);
   void add_action(const MainWindowAction::Ptr & action);
+  void on_popover_widgets_changed();
 
   NoteManager        &m_note_manager;
   Gtk::Widget        *m_header_bar;
@@ -110,6 +111,7 @@ private:
   std::list<EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
+  sigc::connection    m_signal_popover_widgets_changed_cid;
   utils::InterruptableTimeout *m_entry_changed_timeout;
   GtkPopoverMenu     *m_window_menu_embedded;
   GtkPopoverMenu     *m_window_menu_default;

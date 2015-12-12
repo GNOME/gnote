@@ -535,6 +535,8 @@ namespace gnote {
         gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
         m_window_menu_embedded = NULL;
       }
+      m_signal_popover_widgets_changed_cid = has_actions.signal_popover_widgets_changed
+        .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_popover_widgets_changed));
     }
     catch(std::bad_cast&) {
     }
@@ -549,7 +551,7 @@ namespace gnote {
       Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
       widget.background();
       m_embed_box.remove(wid);
-
+      m_signal_popover_widgets_changed_cid.disconnect();
       m_current_embedded_name_slot.disconnect();
 
       if(m_window_menu_embedded) {
@@ -767,6 +769,14 @@ namespace gnote {
   void NoteRecentChanges::on_embedded_name_changed(const std::string & name)
   {
     set_title(name);
+  }
+
+  void NoteRecentChanges::on_popover_widgets_changed()
+  {
+    if(m_window_menu_embedded) {
+      gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
+      m_window_menu_embedded = NULL;
+    }
   }
 
   void NoteRecentChanges::on_settings_changed(const Glib::ustring & key)
