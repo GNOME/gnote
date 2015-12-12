@@ -69,6 +69,9 @@ namespace gnote {
 
     Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label);
 
+    void add_item_to_ordered_map(std::map<int, Gtk::Widget*> & dest, int order, Gtk::Widget *item);
+    void merge_ordered_maps(std::map<int, Gtk::Widget*> & dest, const std::map<int, Gtk::Widget*> & adds);
+
     class GlobalKeybinder
     {
     public:
