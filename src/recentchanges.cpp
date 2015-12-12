@@ -745,7 +745,13 @@ namespace gnote {
     int top = 0;
     Gtk::Grid *grid = create_inner_popover_grid(top);
     FOREACH(Gtk::Widget *item, items) {
-      grid->attach(*manage(item), 0, top++, 1, 1);
+      if(item) {
+        grid->attach(*manage(item), 0, top++, 1, 1);
+      }
+      else {
+        main_grid->attach(*grid, 0, main_top++, 1, 1);
+        grid = create_inner_popover_grid(top);
+      }
     }
 
     if(top > 0) {
