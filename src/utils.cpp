@@ -39,6 +39,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
+#include <gtkmm/modelbutton.h>
 #include <gtkmm/stock.h>
 #include <gtkmm/textbuffer.h>
 
@@ -275,11 +276,11 @@ namespace gnote {
 
     Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label)
     {
-      GtkWidget *item = gtk_model_button_new();
-      gtk_actionable_set_action_name(GTK_ACTIONABLE(item), action.c_str());
-      gtk_button_set_label(GTK_BUTTON(item), label.c_str());
-      gtk_button_set_use_underline(GTK_BUTTON(item), TRUE);
-      return Glib::wrap(item);
+      Gtk::ModelButton *item = new Gtk::ModelButton;
+      gtk_actionable_set_action_name(GTK_ACTIONABLE(item->gobj()), action.c_str());
+      item->set_label(label);
+      item->set_use_underline(true);
+      return item;
     }
 
 
