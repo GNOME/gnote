@@ -125,12 +125,6 @@ namespace gnote {
     if(m_entry_changed_timeout) {
       delete m_entry_changed_timeout;
     }
-    if(m_window_menu_embedded) {
-      gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
-    }
-    if(m_window_menu_default) {
-      gtk_widget_destroy(GTK_WIDGET(m_window_menu_default));
-    }
   }
 
   void NoteRecentChanges::make_header_bar()
@@ -532,7 +526,6 @@ namespace gnote {
     try {
       HasActions &has_actions = dynamic_cast<HasActions&>(widget);
       if(m_window_menu_embedded) {
-        gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
         m_window_menu_embedded = NULL;
       }
       m_signal_popover_widgets_changed_cid = has_actions.signal_popover_widgets_changed
@@ -555,7 +548,6 @@ namespace gnote {
       m_current_embedded_name_slot.disconnect();
 
       if(m_window_menu_embedded) {
-        gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
         m_window_menu_embedded = NULL;
       }
     }
@@ -716,13 +708,13 @@ namespace gnote {
       if(m_window_menu_embedded == NULL) {
         m_window_menu_embedded = make_window_menu(m_window_actions_button, embed_with_actions->get_popover_widgets());
       }
-      gtk_widget_show_all(GTK_WIDGET(m_window_menu_embedded));
+      m_window_menu_embedded->show_all();
     }
     else {
       if(m_window_menu_default == NULL) {
         m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<Gtk::Widget*>());
       }
-      gtk_widget_show_all(GTK_WIDGET(m_window_menu_default));
+      m_window_menu_default->show_all();
     }
   }
 
@@ -735,9 +727,9 @@ namespace gnote {
     return grid;
   }
 
-  GtkPopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items)
+  Gtk::PopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items)
   {
-    GtkPopoverMenu *menu = GTK_POPOVER_MENU(gtk_popover_menu_new());
+    Gtk::PopoverMenu *menu = manage(new Gtk::PopoverMenu);
     Gtk::Grid *main_grid = manage(new Gtk::Grid);
     main_grid->property_margin_start() = 10;
     main_grid->property_margin_end() = 10;
@@ -765,10 +757,10 @@ namespace gnote {
     grid->attach(*close_item, 0, top++, 1, 1);
 
     main_grid->attach(*grid, 0, main_top++, 1, 1);
-    gtk_container_add(GTK_CONTAINER(menu), GTK_WIDGET(main_grid->gobj()));
-    gtk_popover_set_relative_to(GTK_POPOVER(menu), GTK_WIDGET(button->gobj()));
-    gtk_popover_set_modal(GTK_POPOVER(menu), TRUE);
-    gtk_popover_set_position(GTK_POPOVER(menu), GTK_POS_BOTTOM);
+    menu->add(*main_grid);
+    menu->set_relative_to(*button);
+    menu->set_modal(true);
+    menu->set_position(Gtk::POS_BOTTOM);
     return menu;
   }
 
@@ -780,7 +772,6 @@ namespace gnote {
   void NoteRecentChanges::on_popover_widgets_changed()
   {
     if(m_window_menu_embedded) {
-      gtk_widget_destroy(GTK_WIDGET(m_window_menu_embedded));
       m_window_menu_embedded = NULL;
     }
   }

@@ -26,10 +26,10 @@
 
 #include <string>
 
-#include <gtk/gtkpopovermenu.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/popovermenu.h>
 
 #include "base/macros.hpp"
 #include "mainwindowaction.hpp"
@@ -86,7 +86,7 @@ private:
   void on_search_button_toggled();
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
-  GtkPopoverMenu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items);
+  Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items);
   Gtk::Grid *create_inner_popover_grid(int & top);
   void on_embedded_name_changed(const std::string & name);
   void on_settings_changed(const Glib::ustring & key);
@@ -113,8 +113,8 @@ private:
   sigc::connection    m_current_embedded_name_slot;
   sigc::connection    m_signal_popover_widgets_changed_cid;
   utils::InterruptableTimeout *m_entry_changed_timeout;
-  GtkPopoverMenu     *m_window_menu_embedded;
-  GtkPopoverMenu     *m_window_menu_default;
+  Gtk::PopoverMenu     *m_window_menu_embedded;
+  Gtk::PopoverMenu     *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
   bool                m_open_notes_in_new_window;
   bool                m_close_note_on_escape;
