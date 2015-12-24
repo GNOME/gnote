@@ -732,6 +732,7 @@ namespace gnote {
 
   Gtk::PopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items)
   {
+    std::map<Glib::ustring, Gtk::Widget*> submenus;
     Gtk::PopoverMenu *menu = manage(new Gtk::PopoverMenu);
     Gtk::Grid *main_grid = manage(new Gtk::Grid);
     main_grid->property_margin_start() = 10;
@@ -741,7 +742,13 @@ namespace gnote {
     Gtk::Grid *grid = create_inner_popover_grid(top);
     FOREACH(Gtk::Widget *item, items) {
       if(item) {
-        grid->attach(*manage(item), 0, top++, 1, 1);
+        utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(item);
+        if(submenu) {
+          submenus[submenu->name()] = item;
+        }
+        else {
+          grid->attach(*manage(item), 0, top++, 1, 1);
+        }
       }
       else {
         main_grid->attach(*grid, 0, main_top++, 1, 1);
@@ -761,6 +768,10 @@ namespace gnote {
 
     main_grid->attach(*grid, 0, main_top++, 1, 1);
     menu->add(*main_grid);
+    for(auto & submenu : submenus) {
+      menu->add(*submenu.second);
+      menu->child_property_submenu(*submenu.second) = submenu.first;
+    }
     menu->set_relative_to(*button);
     menu->set_modal(true);
     menu->set_position(Gtk::POS_BOTTOM);
