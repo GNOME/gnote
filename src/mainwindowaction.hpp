@@ -35,6 +35,7 @@ public:
 
   static Ptr create(const Glib::ustring & name);
   static Ptr create(const Glib::ustring & name, bool state);
+  static Ptr create(const Glib::ustring & name, const Glib::ustring & state);
 
   void set_state(const Glib::VariantBase & value)
     {
@@ -43,6 +44,7 @@ public:
 protected:
   MainWindowAction(const Glib::ustring & name);
   MainWindowAction(const Glib::ustring & name, bool state);
+  MainWindowAction(const Glib::ustring & name, const Glib::ustring & state);
 };
 
 }
