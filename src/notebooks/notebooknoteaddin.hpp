@@ -24,12 +24,10 @@
 #ifndef __NOTEBOOKS_NOTEBOOK_NOTE_ADDIN_HPP__
 #define __NOTEBOOKS_NOTEBOOK_NOTE_ADDIN_HPP__
 
-#include <gtkmm/menu.h>
-#include <gtkmm/menutoolbutton.h>
+#include <gtkmm/modelbutton.h>
 
 #include "base/macros.hpp"
 #include "noteaddin.hpp"
-#include "notebooks/notebookmenuitem.hpp"
 
 namespace gnote {
 namespace notebooks {
@@ -43,15 +41,21 @@ namespace notebooks {
     virtual void initialize() override;
     virtual void shutdown() override;
     virtual void on_note_opened() override;
+    virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 
   protected:
     NotebookNoteAddin();
 
   private:
-    void on_new_notebook_menu_item();
-    void get_notebook_menu_items(std::list<NotebookMenuItem*> &);
-    void update_menu(Gtk::Menu *);
+    void on_note_window_foregrounded();
+    void on_note_window_backgrounded();
+    void on_new_notebook_menu_item(const Glib::VariantBase&) const;
+    void on_move_to_notebook(const Glib::VariantBase &);
+    void get_notebook_menu_items(std::list<Gtk::ModelButton*> &) const;
+    void update_menu(Gtk::Grid *) const;
 
+    sigc::connection          m_new_notebook_cid;
+    sigc::connection          m_move_to_notebook_cid;
     static Tag::Ptr           s_templateTag;
   };
 

@@ -21,8 +21,7 @@
 
 
 #include <glibmm/i18n.h>
-#include <gtkmm/imagemenuitem.h>
-#include <gtkmm/separatormenuitem.h>
+#include <gtkmm/modelbutton.h>
 
 #include "notebooks/notebooknoteaddin.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -33,61 +32,6 @@
 #include "itagmanager.hpp"
 #include "notewindow.hpp"
 
-
-namespace {
-
-class NotebookNoteAction
-  : public Gtk::Action
-{
-public:
-  static Glib::RefPtr<Gtk::Action> create(const sigc::slot<void, Gtk::Menu*> & slot)
-    {
-      return Glib::RefPtr<Gtk::Action>(new NotebookNoteAction(slot));
-    }
-  virtual Gtk::Widget *create_menu_item_vfunc() override
-    {
-      m_submenu_built = false;
-      Gtk::MenuItem *menu_item = new Gtk::ImageMenuItem;
-      m_menu = manage(new Gtk::Menu);
-      m_menu->signal_hide().connect(
-        sigc::mem_fun(*this, &NotebookNoteAction::on_menu_hidden));
-      menu_item->set_submenu(*m_menu);
-      return menu_item;
-    }
-protected:
-  virtual void on_activate() override
-    {
-      Gtk::Action::on_activate();
-      if(m_submenu_built) {
-        return;
-      }
-      update_menu();
-    }
-private:
-  explicit NotebookNoteAction(const sigc::slot<void, Gtk::Menu*> & slot)
-    : m_submenu_built(false)
-    , m_update_menu_slot(slot)
-    {
-      set_name("NotebookAction");
-      set_label(_("Notebook"));
-      set_tooltip(_("Place this note into a notebook"));
-    }
-  void on_menu_hidden()
-    {
-      m_submenu_built = false;
-    }
-  void update_menu()
-    {
-      m_update_menu_slot(m_menu);
-      m_submenu_built = true;
-    }
-
-  Gtk::Menu *m_menu;
-  bool m_submenu_built;
-  sigc::slot<void, Gtk::Menu*> m_update_menu_slot;
-};
-
-}
 
 namespace gnote {
 namespace notebooks {
@@ -126,66 +70,121 @@ namespace notebooks {
 
   void NotebookNoteAddin::on_note_opened()
   {
-    if(!get_note()->contains_tag(get_template_tag())) {
-      add_note_action(NotebookNoteAction::create(sigc::mem_fun(*this, &NotebookNoteAddin::update_menu)),
-                      gnote::NOTEBOOK_ORDER);
-    }
+    auto note_win = get_window();
+    note_win->signal_foregrounded.connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_window_foregrounded));
+    note_win->signal_backgrounded.connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_window_backgrounded));
   }
 
 
-  void NotebookNoteAddin::on_new_notebook_menu_item()
+  void NotebookNoteAddin::on_note_window_foregrounded()
+  {
+    EmbeddableWidgetHost *host = get_window()->host();
+    m_new_notebook_cid = host->find_action("new-notebook")->signal_activate()
+      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_new_notebook_menu_item));
+    Notebook::Ptr current_notebook = NotebookManager::obj().get_notebook_from_note(get_note());
+    Glib::ustring name;
+    if(current_notebook) {
+      name = current_notebook->get_name();
+    }
+    MainWindowAction::Ptr action = host->find_action("move-to-notebook");
+    action->set_state(Glib::Variant<Glib::ustring>::create(name));
+    m_move_to_notebook_cid = action->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_move_to_notebook));
+  }
+
+
+  void NotebookNoteAddin::on_note_window_backgrounded()
+  {
+    m_new_notebook_cid.disconnect();
+    m_move_to_notebook_cid.disconnect();
+  }
+
+
+  std::map<int, Gtk::Widget*> NotebookNoteAddin::get_actions_popover_widgets() const
+  {
+    auto widgets = NoteAddin::get_actions_popover_widgets();
+    if(!get_note()->contains_tag(get_template_tag())) {
+      Gtk::Widget *notebook_button = utils::create_popover_submenu_button("notebooks-submenu", _("Notebook"));
+      utils::add_item_to_ordered_map(widgets, gnote::NOTEBOOK_ORDER, notebook_button);
+
+      auto submenu = utils::create_popover_submenu("notebooks-submenu");
+      update_menu(submenu);
+      utils::add_item_to_ordered_map(widgets, 1000000, submenu);
+    }
+
+    return widgets;
+  }
+
+
+  void NotebookNoteAddin::on_new_notebook_menu_item(const Glib::VariantBase&) const
   {
     Note::List noteList;
     noteList.push_back(get_note());
     NotebookManager::obj().prompt_create_new_notebook(
       dynamic_cast<Gtk::Window*>(get_window()->host()), noteList);
+    get_window()->signal_popover_widgets_changed();
   }
 
 
-  void NotebookNoteAddin::update_menu(Gtk::Menu *menu)
+  void NotebookNoteAddin::on_move_to_notebook(const Glib::VariantBase & state)
   {
-    // Clear the old items
-    FOREACH(Gtk::Widget *menu_item, menu->get_children()) {
-      menu->remove(*menu_item);
+    get_window()->host()->find_action("move-to-notebook")->set_state(state);
+    Glib::ustring name = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(state).get();
+    Notebook::Ptr notebook;
+    if(name.size()) {
+      notebook = NotebookManager::obj().get_notebook(name);
     }
+    NotebookManager::obj().move_note_to_notebook(get_note(), notebook);
+  }
+
+
+  void NotebookNoteAddin::update_menu(Gtk::Grid *menu) const
+  {
+    int top = 0;
+    int sub_top = 0;
+    Gtk::Grid *subgrid = manage(new Gtk::Grid);
+    subgrid->property_margin_top() = 10;
+    subgrid->property_margin_bottom() = 10;
 
     // Add new notebook item
-    Gtk::ImageMenuItem *new_notebook_item = manage(new Gtk::ImageMenuItem(_("_New notebook..."), true));
-    new_notebook_item->set_image(*manage(new Gtk::Image(
-      IconManager::obj().get_icon(IconManager::NOTEBOOK_NEW, 16))));
-    new_notebook_item->signal_activate().connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_new_notebook_menu_item));
-    new_notebook_item->show();
-    menu->append(*new_notebook_item);
+    Gtk::Widget *new_notebook_item = manage(utils::create_popover_button("win.new-notebook", _("_New notebook...")));
+    subgrid->attach(*new_notebook_item, 0, sub_top++, 1, 1);
+    menu->attach(*subgrid, 0, top++, 1, 1);
 
     // Add the "(no notebook)" item at the top of the list
-    NotebookMenuItem *no_notebook_item = manage(new NotebookMenuItem(get_note(), Notebook::Ptr()));
-    no_notebook_item->show_all();
-    menu->append(*no_notebook_item);
+    subgrid = manage(new Gtk::Grid);
+    sub_top = 0;
+    subgrid->property_margin_top() = 10;
+    subgrid->property_margin_bottom() = 10;
+    Gtk::ModelButton *no_notebook_item = dynamic_cast<Gtk::ModelButton*>(manage(
+      utils::create_popover_button("win.move-to-notebook", _("No notebook"))));
+    gtk_actionable_set_action_target_value(GTK_ACTIONABLE(no_notebook_item->gobj()), g_variant_new_string(""));
+    subgrid->attach(*no_notebook_item, 0, sub_top++, 1, 1);
 
-    NotebookMenuItem *active_menu_item = no_notebook_item;
-    Notebook::Ptr current_notebook = NotebookManager::obj().get_notebook_from_note(get_note());
-      
     // Add in all the real notebooks
-    std::list<NotebookMenuItem*> notebook_menu_items;
+    std::list<Gtk::ModelButton*> notebook_menu_items;
     get_notebook_menu_items(notebook_menu_items);
     if(!notebook_menu_items.empty()) {
-      Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem());
-      separator->show_all();
-      menu->append(*separator);
-
-      FOREACH(NotebookMenuItem *item, notebook_menu_items) {
-        item->show_all();
-        menu->append(*item);
-        if(current_notebook == item->get_notebook())
-          active_menu_item = item;
+      FOREACH(Gtk::ModelButton *item, notebook_menu_items) {
+        subgrid->attach(*item, 0, sub_top++, 1, 1);
       }
+
     }
 
-    active_menu_item->set_active(true);
+    menu->attach(*subgrid, 0, top++, 1, 1);
+
+    subgrid = manage(new Gtk::Grid);
+    sub_top = 0;
+    subgrid->property_margin_top() = 10;
+    subgrid->property_margin_bottom() = 10;
+    Gtk::Widget *back_button = utils::create_popover_submenu_button("main", _("_Back"));
+    dynamic_cast<Gtk::ModelButton*>(back_button)->property_inverted() = true;
+    subgrid->attach(*back_button, 0, sub_top++, 1, 1);
+    menu->attach(*subgrid, 0, top++, 1, 1);
   }
   
 
-  void NotebookNoteAddin::get_notebook_menu_items(std::list<NotebookMenuItem*>& items)
+  void NotebookNoteAddin::get_notebook_menu_items(std::list<Gtk::ModelButton*>& items) const
   {
     Glib::RefPtr<Gtk::TreeModel> model = NotebookManager::obj().get_notebooks();
     Gtk::TreeIter iter;
@@ -196,7 +195,9 @@ namespace notebooks {
     for(iter = model->children().begin(); iter != model->children().end(); ++iter) {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
-      NotebookMenuItem *item = manage(new NotebookMenuItem(get_note(), notebook));
+      Gtk::ModelButton *item = dynamic_cast<Gtk::ModelButton*>(manage(
+        utils::create_popover_button("win.move-to-notebook", notebook->get_name())));
+      gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_string(notebook->get_name().c_str()));
       items.push_back(item);
     }
   }

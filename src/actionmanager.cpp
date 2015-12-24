@@ -77,6 +77,8 @@ namespace gnote {
     register_main_window_action("delete-note", NULL);
     register_main_window_action("important-note", &Glib::Variant<bool>::variant_type());
     register_main_window_action("enable-spell-check", &Glib::Variant<bool>::variant_type());
+    register_main_window_action("new-notebook", NULL);
+    register_main_window_action("move-to-notebook", &Glib::Variant<Glib::ustring>::variant_type());
   }
 
 
