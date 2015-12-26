@@ -152,6 +152,7 @@ namespace gnote {
         m_note_added_to_notebook (*templateNote, notebook);
 //      }
 
+      signal_notebook_list_changed();
       return notebook;
     }
 
@@ -164,6 +165,7 @@ namespace gnote {
       Gtk::TreeIter iter = m_notebooks->append();
       iter->set_value(0, notebook);
       m_notebookMap[notebook->get_normalized_name()] = iter;
+      signal_notebook_list_changed();
       return true;
     }
 
@@ -199,6 +201,7 @@ namespace gnote {
           m_note_removed_from_notebook (*static_cast<Note*>(note), notebook);
         }
 //      }
+      signal_notebook_list_changed();
     }
 
     /// <summary>

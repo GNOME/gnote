@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -98,6 +98,7 @@ public:
       return m_active_notes;
     }
 
+  sigc::signal<void> signal_notebook_list_changed;
   sigc::signal<void, const Note &, bool> signal_note_pin_status_changed;
 private:
   static int compare_notebooks_sort_func(const Gtk::TreeIter &, const Gtk::TreeIter &);
