@@ -39,6 +39,7 @@ enum NoteActionOrder {
   REPLACE_TITLE_ORDER = 500,
   TABLE_OF_CONTENTS_ORDER = 600,
   READ_ONLY_ORDER = 700,
+  SPELL_CHECK_ORDER = 800,
 };
 
 class IActionManager

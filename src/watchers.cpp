@@ -34,6 +34,7 @@
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "mainwindow.hpp"
 #include "noteeditor.hpp"
 #include "notemanager.hpp"
@@ -312,7 +313,7 @@ namespace gnote {
   {
     std::map<int, Gtk::Widget*> widgets = NoteAddin::get_actions_popover_widgets();
     if(m_enabled) {
-      utils::add_item_to_ordered_map(widgets, 800,
+      utils::add_item_to_ordered_map(widgets, SPELL_CHECK_ORDER,
         utils::create_popover_button("win.enable-spell-check", _("Check spelling")));
     }
     return widgets;
