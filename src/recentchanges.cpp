@@ -724,8 +724,7 @@ namespace gnote {
   Gtk::Grid *NoteRecentChanges::create_inner_popover_grid(int & top)
   {
     Gtk::Grid *grid = manage(new Gtk::Grid);
-    grid->property_margin_top() = 10;
-    grid->property_margin_bottom() = 10;
+    utils::set_common_popover_widget_props(*grid);
     top = 0;
     return grid;
   }
@@ -735,8 +734,6 @@ namespace gnote {
     std::map<Glib::ustring, Gtk::Widget*> submenus;
     Gtk::PopoverMenu *menu = manage(new Gtk::PopoverMenu);
     Gtk::Grid *main_grid = manage(new Gtk::Grid);
-    main_grid->property_margin_start() = 10;
-    main_grid->property_margin_end() = 10;
     int main_top = 0;
     int top = 0;
     Gtk::Grid *grid = create_inner_popover_grid(top);

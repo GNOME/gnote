@@ -123,8 +123,7 @@ namespace gnote {
         PopoverSubmenuGrid(const Glib::ustring & submenu)
           : PopoverSubmenu(submenu)
         {
-          property_margin_start() = 10;
-          property_margin_end() = 10;
+          set_common_popover_widget_props(*this);
         }
       };
     }
@@ -294,6 +293,7 @@ namespace gnote {
       gtk_actionable_set_action_name(GTK_ACTIONABLE(item->gobj()), action.c_str());
       item->set_label(label);
       item->set_use_underline(true);
+      set_common_popover_widget_props(*item);
       return item;
     }
 
@@ -304,6 +304,7 @@ namespace gnote {
       button->property_menu_name() = submenu;
       button->set_label(label);
       button->set_use_underline(true);
+      set_common_popover_widget_props(*button);
       return button;
     }
 
@@ -311,6 +312,13 @@ namespace gnote {
     Gtk::Grid * create_popover_submenu(const Glib::ustring & name)
     {
       return new PopoverSubmenuGrid(name);
+    }
+
+
+    void set_common_popover_widget_props(Gtk::Widget & widget)
+    {
+      widget.property_margin_top() = 5;
+      widget.property_margin_bottom() = 5;
     }
 
 

@@ -145,8 +145,7 @@ namespace notebooks {
     int top = 0;
     int sub_top = 0;
     Gtk::Grid *subgrid = manage(new Gtk::Grid);
-    subgrid->property_margin_top() = 10;
-    subgrid->property_margin_bottom() = 10;
+    utils::set_common_popover_widget_props(*subgrid);
 
     // Add new notebook item
     Gtk::Widget *new_notebook_item = manage(utils::create_popover_button("win.new-notebook", _("_New notebook...")));
@@ -155,9 +154,8 @@ namespace notebooks {
 
     // Add the "(no notebook)" item at the top of the list
     subgrid = manage(new Gtk::Grid);
+    utils::set_common_popover_widget_props(*subgrid);
     sub_top = 0;
-    subgrid->property_margin_top() = 10;
-    subgrid->property_margin_bottom() = 10;
     Gtk::ModelButton *no_notebook_item = dynamic_cast<Gtk::ModelButton*>(manage(
       utils::create_popover_button("win.move-to-notebook", _("No notebook"))));
     gtk_actionable_set_action_target_value(GTK_ACTIONABLE(no_notebook_item->gobj()), g_variant_new_string(""));
@@ -177,8 +175,7 @@ namespace notebooks {
 
     subgrid = manage(new Gtk::Grid);
     sub_top = 0;
-    subgrid->property_margin_top() = 10;
-    subgrid->property_margin_bottom() = 10;
+    utils::set_common_popover_widget_props(*subgrid);
     Gtk::Widget *back_button = utils::create_popover_submenu_button("main", _("_Back"));
     dynamic_cast<Gtk::ModelButton*>(back_button)->property_inverted() = true;
     subgrid->attach(*back_button, 0, sub_top++, 1, 1);
