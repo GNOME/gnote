@@ -73,6 +73,8 @@ namespace notebooks {
     auto note_win = get_window();
     note_win->signal_foregrounded.connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_window_foregrounded));
     note_win->signal_backgrounded.connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_window_backgrounded));
+    NotebookManager::obj().signal_notebook_list_changed
+      .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_notebooks_changed));
   }
 
 
@@ -199,6 +201,19 @@ namespace notebooks {
         utils::create_popover_button("win.move-to-notebook", notebook->get_name())));
       gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_string(notebook->get_name().c_str()));
       items.push_back(item);
+    }
+  }
+
+
+  void NotebookNoteAddin::on_notebooks_changed()
+  {
+    auto note_win = get_window();
+    if(!note_win) {
+      return;
+    }
+    auto host = dynamic_cast<HasActions*>(note_win->host());
+    if(host) {
+      host->signal_popover_widgets_changed();
     }
   }
 

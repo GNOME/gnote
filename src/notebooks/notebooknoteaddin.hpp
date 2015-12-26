@@ -51,6 +51,7 @@ namespace notebooks {
     void on_note_window_backgrounded();
     void on_new_notebook_menu_item(const Glib::VariantBase&) const;
     void on_move_to_notebook(const Glib::VariantBase &);
+    void on_notebooks_changed();
     void get_notebook_menu_items(std::list<Gtk::ModelButton*> &) const;
     void update_menu(Gtk::Grid *) const;
 
