@@ -92,16 +92,6 @@ namespace gnote {
     }
   }
 
-  void NoteAddin::add_note_action(const Glib::RefPtr<Gtk::Action> & action, int order)
-  {
-    if(is_disposing()) {
-      throw sharp::Exception("Plugin is disposing already");
-    }
-
-    m_note_actions.push_back(action->get_name());
-    //get_window()->add_widget_action(action, order);
-  }
-
   void NoteAddin::add_tool_item (Gtk::ToolItem *item, int position)
   {
     if (is_disposing())

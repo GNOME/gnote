@@ -108,7 +108,6 @@ public:
       return m_note->manager();
     }
   void on_note_opened_event(Note & );
-  void add_note_action(const Glib::RefPtr<Gtk::Action> & action, int order);
   void add_tool_item (Gtk::ToolItem *item, int position);
   void add_text_menu_item (Gtk::MenuItem * item);
 private:
