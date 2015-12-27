@@ -31,6 +31,7 @@
 #include "debug.hpp"
 #include "iactionmanager.hpp"
 #include "iconmanager.hpp"
+#include "mainwindow.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "recenttreeview.hpp"
@@ -1390,17 +1391,25 @@ void SearchNotesWidget::on_delete_notebook()
 void SearchNotesWidget::foreground()
 {
   EmbeddableWidget::foreground();
-  Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
-  if(win) {
-    win->add_accel_group(m_accel_group);
-    win->set_focus(*m_tree);
+  MainWindow *win = dynamic_cast<MainWindow*>(host());
+  if(!win) {
+    return;
   }
+
+  win->add_accel_group(m_accel_group);
+  win->set_focus(*m_tree);
+  auto & manager(IActionManager::obj());
+  register_callbacks();
+  m_callback_changed_cid = manager.signal_main_window_search_actions_changed
+    .connect(sigc::mem_fun(*this, &SearchNotesWidget::callbacks_changed));
 }
 
 void SearchNotesWidget::background()
 {
   EmbeddableWidget::background();
   save_position();
+  unregister_callbacks();
+  m_callback_changed_cid.disconnect();
   Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
   if(win) {
     win->remove_accel_group(m_accel_group);
@@ -1427,7 +1436,12 @@ void SearchNotesWidget::size_internals()
 
 std::vector<Gtk::Widget*> SearchNotesWidget::get_popover_widgets()
 {
+  std::map<int, Gtk::Widget*> popover_widgets;
+  IActionManager::obj().signal_build_main_window_search_popover(popover_widgets);
   std::vector<Gtk::Widget*> widgets;
+  for(auto widget : popover_widgets) {
+    widgets.push_back(widget.second);
+  }
   return widgets;
 }
 
@@ -1530,6 +1544,36 @@ void SearchNotesWidget::on_rename_notebook()
     return;
   }
   m_notebooksTree->set_cursor(selected_row[0], *m_notebooksTree->get_column(0), true);
+}
+
+void SearchNotesWidget::callbacks_changed()
+{
+  unregister_callbacks();
+  register_callbacks();
+}
+
+void SearchNotesWidget::register_callbacks()
+{
+  MainWindow *win = dynamic_cast<MainWindow*>(host());
+  if(!win) {
+    return;
+  }
+  auto & manager(IActionManager::obj());
+  auto cbacks = manager.get_main_window_search_callbacks();
+  for(auto & cback : cbacks) {
+    auto action = win->find_action(cback.first);
+    if(action) {
+      m_action_cids.push_back(action->signal_activate().connect(cback.second));
+    }
+  }
+}
+
+void SearchNotesWidget::unregister_callbacks()
+{
+  for(auto & cid : m_action_cids) {
+    cid.disconnect();
+  }
+  m_action_cids.clear();
 }
 
 }

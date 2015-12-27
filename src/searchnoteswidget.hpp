@@ -129,6 +129,9 @@ private:
   void on_sorting_changed();
   void parse_sorting_setting(const Glib::ustring & sorting);
   void on_rename_notebook();
+  void callbacks_changed();
+  void register_callbacks();
+  void unregister_callbacks();
 
   class RecentSearchColumnTypes
     : public Gtk::TreeModelColumnRecord
@@ -183,6 +186,8 @@ private:
   std::string m_search_text;
   int m_sort_column_id;
   Gtk::SortType m_sort_column_order;
+  std::vector<sigc::connection> m_action_cids;
+  sigc::connection m_callback_changed_cid;
 
   static Glib::RefPtr<Gdk::Pixbuf> get_note_icon();
 };
