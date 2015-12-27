@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -36,6 +36,7 @@
 #include "addinmanager.hpp"
 #include "addinpreferencefactory.hpp"
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "ignote.hpp"
 #include "preferences.hpp"
 #include "preferencetabaddin.hpp"
@@ -433,6 +434,7 @@ namespace {
 
   void AddinManager::initialize_application_addins() const
   {
+    register_addin_actions();
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
       ApplicationAddin * addin = iter->second;
@@ -575,5 +577,15 @@ namespace {
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_URL_LINKS, NoteUrlWatcher);
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_AUTO_LINKS, NoteLinkWatcher);
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_WIKIWORDS, NoteWikiWatcher);
+  }
+
+  void AddinManager::register_addin_actions() const
+  {
+    auto & manager(IActionManager::obj());
+    for(auto & info : m_addin_infos) {
+      for(auto & action : info.second.actions()) {
+        manager.register_main_window_action(action.first, action.second);
+      }
+    }
   }
 }

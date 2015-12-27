@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2014 Aurimas Cernius
+ * Copyright (C) 2010,2012-2015 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -95,6 +95,7 @@ private:
   void add_module_addins(const std::string & mod_id, sharp::DynamicModule * dmod);
   AddinInfo get_info_for_module(const std::string & module) const;
   void on_setting_changed(const Glib::ustring & key);
+  void register_addin_actions() const;
     
   NoteManager & m_note_manager;
   const std::string m_gnote_conf_dir;
