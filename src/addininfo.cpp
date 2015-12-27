@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014 Aurimas Cernius
+ * Copyright (C) 2013-2015 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@
 #include <boost/lexical_cast.hpp>
 
 #include <glibmm/i18n.h>
-#include <glibmm/keyfile.h>
 
 #include "base/macros.hpp"
 #include "addininfo.hpp"
@@ -36,6 +35,7 @@ namespace gnote {
 
     const char * ADDIN_INFO = "AddinInfo";
     const char * ADDIN_ATTS = "AddinAttributes";
+    const char * ADDIN_ACTIONS = "Actions";
 
     AddinCategory resolve_addin_category(const std::string & cat)
     {
@@ -100,9 +100,25 @@ void AddinInfo::load_from_file(const std::string & info_file)
         m_attributes[key] = addin_info.get_string(ADDIN_ATTS, key);
       }
     }
+    if(addin_info.has_group(ADDIN_ACTIONS)) {
+      load_actions(addin_info, "actions_void", NULL);
+      load_actions(addin_info, "actions_bool", &Glib::Variant<bool>::variant_type());
+      load_actions(addin_info, "actions_string", &Glib::Variant<Glib::ustring>::variant_type());
+    }
   }
   catch(Glib::Error & e) {
     throw std::runtime_error(e.what());
+  }
+}
+
+void AddinInfo::load_actions(Glib::KeyFile & addin_info, const Glib::ustring & key, const Glib::VariantType *type)
+{
+  if(addin_info.has_key(ADDIN_ACTIONS, key)) {
+    std::vector<std::string> actions;
+    sharp::string_split(actions, addin_info.get_string(ADDIN_ACTIONS, key), ",");
+    for(auto action : actions) {
+      m_actions[action] = type;
+    }
   }
 }
 

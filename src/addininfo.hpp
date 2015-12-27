@@ -23,6 +23,7 @@
 #include <string>
 #include <map>
 
+#include <glibmm/keyfile.h>
 #include <glibmm/ustring.h>
 
 
@@ -88,6 +89,10 @@ public:
     {
       return m_attributes;
     }
+  const std::map<Glib::ustring, const Glib::VariantType*> & actions() const
+    {
+      return m_actions;
+    }
   Glib::ustring get_attribute(const Glib::ustring & att);
   bool validate(const Glib::ustring & release, const Glib::ustring & version_info) const;
 private:
@@ -104,8 +109,10 @@ private:
   Glib::ustring m_libgnote_version_info;
 
   std::map<Glib::ustring, Glib::ustring> m_attributes;
+  std::map<Glib::ustring, const Glib::VariantType*> m_actions;
 
   bool validate_compatibility(const Glib::ustring & release, const Glib::ustring & version_info) const;
+  void load_actions(Glib::KeyFile & addin_info, const Glib::ustring & key, const Glib::VariantType *type);
 };
 
 }
