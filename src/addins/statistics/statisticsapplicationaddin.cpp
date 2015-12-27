@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 #include "iactionmanager.hpp"
 #include "ignote.hpp"
 #include "statisticsapplicationaddin.hpp"
+#include "utils.hpp"
 
 
 namespace statistics {
@@ -44,21 +45,18 @@ void StatisticsApplicationAddin::initialize()
 {
   if(!m_initialized) {
     m_initialized = true;
-    if(m_action == 0) {
-      m_action = Gtk::Action::create();
-      m_action->set_name("ShowStatistics");
-      m_action->set_label(_("Show Statistics"));
-      m_action->signal_activate()
-        .connect(sigc::mem_fun(*this, &StatisticsApplicationAddin::on_show_statistics));
-      gnote::IActionManager::obj().add_main_window_search_action(m_action, 100);
-    }
+    auto & manager(gnote::IActionManager::obj());
+    manager.register_main_window_search_callback("statistics-show-cback",
+      "statistics-show", sigc::mem_fun(*this, &StatisticsApplicationAddin::on_show_statistics));
+    m_add_menu_item_cid = manager.signal_build_main_window_search_popover
+      .connect(sigc::mem_fun(*this, &StatisticsApplicationAddin::add_menu_item));
   }
 }
 
 void StatisticsApplicationAddin::shutdown()
 {
-  gnote::IActionManager::obj().remove_main_window_search_action("ShowStatistics");
-  m_action.reset();
+  gnote::IActionManager::obj().unregister_main_window_search_callback("statistics-show-cback");
+  m_add_menu_item_cid.disconnect();
   m_initialized = false;
 }
 
@@ -67,7 +65,13 @@ bool StatisticsApplicationAddin::initialized()
   return m_initialized;
 }
 
-void StatisticsApplicationAddin::on_show_statistics()
+void StatisticsApplicationAddin::add_menu_item(std::map<int, Gtk::Widget*> & widgets)
+{
+  auto item = gnote::utils::create_popover_button("win.statistics-show", _("Show Statistics"));
+  gnote::utils::add_item_to_ordered_map(widgets, 100, item);
+}
+
+void StatisticsApplicationAddin::on_show_statistics(const Glib::VariantBase&)
 {
   if(!m_widget) {
     m_widget = new StatisticsWidget(note_manager());
