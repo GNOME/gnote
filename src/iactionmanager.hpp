@@ -60,6 +60,13 @@ public:
                                  const std::string & action_def) = 0;
   virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type) = 0;
   virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const = 0;
+
+  virtual void register_main_window_search_callback(const std::string & id, const Glib::ustring & action,
+                                                    sigc::slot<void, const Glib::VariantBase&> callback) = 0;
+  virtual void unregister_main_window_search_callback(const std::string & id) = 0;
+  virtual std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() = 0;
+  sigc::signal<void> signal_main_window_search_actions_changed;
+  sigc::signal<void, std::map<int, Gtk::Widget*>&> signal_build_main_window_search_popover;
 };
 
 }

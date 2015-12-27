@@ -235,4 +235,28 @@ namespace gnote {
     return m_main_window_actions2;
   }
 
+  void ActionManager::register_main_window_search_callback(const std::string & id, const Glib::ustring & action,
+                                                    sigc::slot<void, const Glib::VariantBase&> callback)
+  {
+    DBG_ASSERT(m_main_window_search_actions.find(id) == m_main_window_search_actions.end(), "Duplicate callback for main window search");
+
+    m_main_window_search_actions[id] = std::make_pair(action, callback);
+    signal_main_window_search_actions_changed();
+  }
+
+  void ActionManager::unregister_main_window_search_callback(const std::string & id)
+  {
+    m_main_window_search_actions.erase(id);
+    signal_main_window_search_actions_changed();
+  }
+
+  std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> ActionManager::get_main_window_search_callbacks()
+  {
+    std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> cbacks;
+    for(auto & iter : m_main_window_search_actions) {
+      cbacks.insert(iter.second);
+    }
+    return cbacks;
+  }
+
 }
