@@ -228,6 +228,11 @@ namespace gnote {
     if(m_main_window_actions2.find(action) == m_main_window_actions2.end()) {
       m_main_window_actions2[action] = state_type;
     }
+    else {
+      if(m_main_window_actions2[action] != state_type) {
+        ERR_OUT("Action %s already registerred with different state type", action.c_str());
+      }
+    }
   }
 
   std::map<Glib::ustring, const Glib::VariantType*> ActionManager::get_main_window_actions() const
