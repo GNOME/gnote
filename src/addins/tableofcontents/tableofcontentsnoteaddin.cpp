@@ -224,16 +224,8 @@ Heading::Type TableofcontentsNoteAddin::get_heading_level_for_range (Gtk::TextIt
 }
 
 
-void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<TableofcontentsMenuItem*> & items)
-//go through the note text, and list all lines tagged as heading,
-//and for each heading, create a new TableofcontentsMenuItem.
+void TableofcontentsNoteAddin::get_toc_items(std::vector<TocItem> & items) const
 {
-  TableofcontentsMenuItem *item = NULL;
-
-  std::string    heading;
-  Heading::Type  heading_level;
-  int            heading_position;
-
   Gtk::TextIter iter, iter_end, eol;
 
   //for each line of the buffer,
@@ -245,24 +237,41 @@ void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<Tableofc
     eol = iter;
     eol.forward_to_line_end();
 
-    heading_level = get_heading_level_for_range (iter, eol);
+    TocItem item;
+    item.heading_level = get_heading_level_for_range (iter, eol);
 
-    if (heading_level == Heading::Level_1 || heading_level == Heading::Level_2) {
-      heading_position = iter.get_offset();
-      heading          = iter.get_text(eol);
+    if (item.heading_level == Heading::Level_1 || item.heading_level == Heading::Level_2) {
+      item.heading_position = iter.get_offset();
+      item.heading          = iter.get_text(eol);
 
-      if (items.size() == 0) {
-        //It's the first heading found,
-        //we also insert an entry linked to the Note's title:
-        item = manage(new TableofcontentsMenuItem (get_note(), get_note()->get_title(), Heading::Title, 0));
-        items.push_back(item);
-      }
-      item = manage(new TableofcontentsMenuItem (get_note(), heading, heading_level, heading_position));
       items.push_back(item);
     }
     iter.forward_visible_line(); //next line
   }
 }
+
+
+void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<TableofcontentsMenuItem*> & items)
+//go through the note text, and list all lines tagged as heading,
+//and for each heading, create a new TableofcontentsMenuItem.
+{
+  TableofcontentsMenuItem *item = NULL;
+  std::vector<TocItem> toc_items;
+
+  get_toc_items(toc_items);
+  if(toc_items.size()) {
+    //If we have at least one heading
+    //we also insert an entry linked to the Note's title:
+    item = manage(new TableofcontentsMenuItem(get_note(), get_note()->get_title(), Heading::Title, 0));
+    items.push_back(item);
+  }
+
+  for(auto & toc_item : toc_items) {
+    item = manage(new TableofcontentsMenuItem(get_note(), toc_item.heading, toc_item.heading_level, toc_item.heading_position));
+    items.push_back(item);
+  }
+}
+
 
 void TableofcontentsNoteAddin::on_level_1_activated()
 {

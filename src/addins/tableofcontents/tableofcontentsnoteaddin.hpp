@@ -78,6 +78,13 @@ private:
   bool has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end) const;
   Heading::Type get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end) const;
 
+  struct TocItem
+  {
+    Glib::ustring  heading;
+    Heading::Type  heading_level;
+    int            heading_position;
+  };
+  void get_toc_items(std::vector<TocItem> & items) const;
   void get_tableofcontents_menu_items (std::list<TableofcontentsMenuItem*> & items);
 
   void headification_switch (Heading::Type heading_request);
