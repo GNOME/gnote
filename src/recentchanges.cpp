@@ -109,6 +109,9 @@ namespace gnote {
       else if(iter->second == &Glib::Variant<bool>::variant_type()) {
         add_action(MainWindowAction::create(iter->first, false));
       }
+      else if(iter->second == &Glib::Variant<gint32>::variant_type()) {
+        add_action(MainWindowAction::create(iter->first, 0));
+      }
       else if(iter->second == &Glib::Variant<Glib::ustring>::variant_type()) {
         add_action(MainWindowAction::create(iter->first, Glib::ustring("")));
       }
