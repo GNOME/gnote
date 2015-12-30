@@ -61,9 +61,9 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 
 private:
-  void update_menu(Gtk::Menu *menu);
   void on_menu_hidden();
   bool on_key_pressed (GdkEventKey *ev);
   void on_populate_popup (Gtk::Menu* popup_menu);
@@ -71,6 +71,13 @@ private:
   void on_level_2_activated ();
   void on_toc_popup_activated ();
   void on_toc_help_activated ();
+  void on_level_1_action(const Glib::VariantBase&);
+  void on_level_2_action(const Glib::VariantBase&);
+  void on_toc_help_action(const Glib::VariantBase&);
+  void on_foregrounded();
+  void on_backgrounded();
+  void on_goto_heading(const Glib::VariantBase&);
+  void on_note_changed();
 
 
   void populate_toc_menu (Gtk::Menu *toc_menu, bool has_action_entries = true);
@@ -86,6 +93,7 @@ private:
   };
   void get_toc_items(std::vector<TocItem> & items) const;
   void get_tableofcontents_menu_items (std::list<TableofcontentsMenuItem*> & items);
+  void get_toc_popover_items(std::vector<Gtk::Widget*> & items) const;
 
   void headification_switch (Heading::Type heading_request);
 
@@ -95,6 +103,11 @@ private:
   Glib::RefPtr<Gtk::TextTag> m_tag_bold; // the tags used to mark headings
   Glib::RefPtr<Gtk::TextTag> m_tag_large;
   Glib::RefPtr<Gtk::TextTag> m_tag_huge;
+
+  sigc::connection m_level_1_action_cid;
+  sigc::connection m_level_2_action_cid;
+  sigc::connection m_toc_help_action_cid;
+  sigc::connection m_goto_heading_cid;
 };
 
 

@@ -17,8 +17,6 @@ tableofcontents_la_SOURCES = \
 	tableofcontentsnoteaddin.cpp \
 	tableofcontentsmenuitem.hpp  \
 	tableofcontentsmenuitem.cpp  \
-	tableofcontentsaction.hpp    \
-	tableofcontentsaction.cpp    \
 	tableofcontentsutils.hpp     \
 	tableofcontentsutils.cpp     \
 	$(NULL)
