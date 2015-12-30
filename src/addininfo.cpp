@@ -103,6 +103,7 @@ void AddinInfo::load_from_file(const std::string & info_file)
     if(addin_info.has_group(ADDIN_ACTIONS)) {
       load_actions(addin_info, "actions_void", NULL);
       load_actions(addin_info, "actions_bool", &Glib::Variant<bool>::variant_type());
+      load_actions(addin_info, "actions_int", &Glib::Variant<gint32>::variant_type());
       load_actions(addin_info, "actions_string", &Glib::Variant<Glib::ustring>::variant_type());
     }
   }
