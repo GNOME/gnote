@@ -191,7 +191,7 @@ void TableofcontentsNoteAddin::on_populate_popup (Gtk::Menu* popup_menu)
 }
 
 
-bool TableofcontentsNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end)
+bool TableofcontentsNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end) const
 //return true if tag is set from start to end
 {
   bool has = false;
@@ -203,7 +203,7 @@ bool TableofcontentsNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> ta
 }
 
 
-Heading::Type TableofcontentsNoteAddin::get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end)
+Heading::Type TableofcontentsNoteAddin::get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end) const
 //return the heading level from start to end
 {
   if (has_tag_over_range (m_tag_bold, start, end)) {

@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,8 +75,8 @@ private:
 
   void populate_toc_menu (Gtk::Menu *toc_menu, bool has_action_entries = true);
 
-  bool has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end);
-  Heading::Type get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end);
+  bool has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end) const;
+  Heading::Type get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end) const;
 
   void get_tableofcontents_menu_items (std::list<TableofcontentsMenuItem*> & items);
 
