@@ -19,6 +19,8 @@ tableofcontents_la_SOURCES = \
 	tableofcontentsmenuitem.cpp  \
 	tableofcontentsaction.hpp    \
 	tableofcontentsaction.cpp    \
+	tableofcontentsutils.hpp     \
+	tableofcontentsutils.cpp     \
 	$(NULL)
 
 EXTRA_DIST     = $(desktop_in_files)
