@@ -9,7 +9,7 @@
 # Jochen Skulj <jochen@jochenskulj.de>, 2006-2009.
 # Hendrik Richter <hendrikr@gnome.org>, 2006-2009.
 # Andre Klapper <ak-47@gmx.net>, 2008.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2009-2012.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2009-2012, 2016.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2011.
 # Stefan Melmuk <stefan.melmuk@gmail.com>, 2012.
 # Wolfgang Stöggl <c72578@yahoo.de>, 2012.
@@ -22,16 +22,16 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-22 11:18+0000\n"
-"PO-Revision-Date: 2015-12-22 17:34+0100\n"
-"Last-Translator: Bernd Homuth <dev@hmt.im>\n"
+"POT-Creation-Date: 2016-01-01 11:17+0000\n"
+"PO-Revision-Date: 2016-01-01 21:44+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -52,7 +52,7 @@ msgstr ""
 "Gnote unterstützt ebenfalls ein Abgleichen Ihrer Daten auf mehreren Geräten."
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:503
+#: ../src/recentchanges.cpp:521
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -584,67 +584,67 @@ msgstr ""
 "Zeitintervall zwischen Prüfungen des Notizordners (in Sekunden). Kleinster "
 "Wert ist 5."
 
-#: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
+#: ../src/actionmanager.cpp:91 ../src/actionmanager.cpp:178
 msgid "_Quit"
 msgstr "_Beenden"
 
-#: ../src/actionmanager.cpp:84
+#: ../src/actionmanager.cpp:91
 msgid "Quit Gnote"
 msgstr "Gnote beenden"
 
-#: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
+#: ../src/actionmanager.cpp:96 ../src/actionmanager.cpp:175
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
-#: ../src/actionmanager.cpp:89 ../src/preferencesdialog.cpp:103
+#: ../src/actionmanager.cpp:96 ../src/preferencesdialog.cpp:103
 msgid "Gnote Preferences"
 msgstr "Gnote-Einstellungen"
 
-#: ../src/actionmanager.cpp:93
+#: ../src/actionmanager.cpp:100
 msgid "_Contents"
 msgstr "_Inhalt"
 
-#: ../src/actionmanager.cpp:93
+#: ../src/actionmanager.cpp:100
 msgid "Gnote Help"
 msgstr "Gnote-Hilfe"
 
-#: ../src/actionmanager.cpp:98 ../src/actionmanager.cpp:170
+#: ../src/actionmanager.cpp:105 ../src/actionmanager.cpp:177
 msgid "_About"
 msgstr "_Info"
 
-#: ../src/actionmanager.cpp:98
+#: ../src/actionmanager.cpp:105
 msgid "About Gnote"
 msgstr "Info zu Gnote"
 
-#: ../src/actionmanager.cpp:102
+#: ../src/actionmanager.cpp:109
 msgid "TrayIcon"
 msgstr "Benachrichtigungsfeld"
 
-#: ../src/actionmanager.cpp:107
+#: ../src/actionmanager.cpp:114
 msgid "Create _New Note"
 msgstr "_Neue Notiz anlegen"
 
-#: ../src/actionmanager.cpp:107
+#: ../src/actionmanager.cpp:114
 msgid "Create a new note"
 msgstr "Eine neue Notiz anlegen"
 
-#: ../src/actionmanager.cpp:112
+#: ../src/actionmanager.cpp:119
 msgid "_Search All Notes"
 msgstr "_Alle Notizen durchsuchen"
 
-#: ../src/actionmanager.cpp:112
+#: ../src/actionmanager.cpp:119
 msgid "Open the Search All Notes window"
 msgstr "Fenster zum Durchsuchen aller Notizen öffnen"
 
-#: ../src/actionmanager.cpp:166
+#: ../src/actionmanager.cpp:173
 msgid "_New Note"
 msgstr "_Neue Notiz"
 
-#: ../src/actionmanager.cpp:167
+#: ../src/actionmanager.cpp:174
 msgid "New _Window"
 msgstr "Neues _Fenster"
 
-#: ../src/actionmanager.cpp:169
+#: ../src/actionmanager.cpp:176
 msgid "_Help"
 msgstr "_Hilfe"
 
@@ -652,48 +652,48 @@ msgstr "_Hilfe"
 msgid "Failed to load plugin information!"
 msgstr "Erweiterungsinformationen konnten nicht geladen werden!"
 
-#: ../src/addininfo.cpp:124
+#: ../src/addininfo.cpp:141
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Inkompatible Erweiterung %s: erwartet wurde %s, erhalten %s"
 
-#: ../src/addinmanager.cpp:133
+#: ../src/addinmanager.cpp:134
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr ""
 "Beachten Sie, dass die Erweiterungsinformation %s bereits vorhanden ist"
 
-#: ../src/addinmanager.cpp:141
+#: ../src/addinmanager.cpp:142
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s implementiert nicht %s"
 
-#: ../src/addinmanager.cpp:156
+#: ../src/addinmanager.cpp:157
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Beachten Sie, dass die Erweiterung %s bereits vorhanden ist"
 
-#: ../src/addinmanager.cpp:174
+#: ../src/addinmanager.cpp:175
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Beachten Sie, dass die Erweiterungsinformation %s nicht vorhanden ist"
 
-#: ../src/addinmanager.cpp:187
+#: ../src/addinmanager.cpp:188
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Notiz-Plugin %s fehlt"
 
-#: ../src/addinmanager.cpp:224
+#: ../src/addinmanager.cpp:225
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Auffinden des Moduls %s für Erweiterung %s schlug fehl"
 
-#: ../src/addinmanager.cpp:228
+#: ../src/addinmanager.cpp:229
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Scheitern beim Laden der Erweiterungsinformationen für %s: %s"
 
-#: ../src/addinmanager.cpp:352
+#: ../src/addinmanager.cpp:353
 msgid "Trying to load addins when they are already loaded"
 msgstr "Versuch die Addins zu laden, die bereits geladen sind"
 
@@ -1133,7 +1133,7 @@ msgstr "Besondere Notizen"
 msgid "Show special notes, that are otherwise hidden"
 msgstr "Spezielle Notizen zeigen, die andernfalls verborgen sind"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:50
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:70
 msgid "Show Statistics"
 msgstr "Statistiken zeigen"
 
@@ -1198,11 +1198,9 @@ msgstr "Unbenannt"
 msgid "Sticky Note: "
 msgstr "Klebezettel:"
 
-#. namespace
-#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:37
-#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:38
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:66
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:67
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:138
 msgid "Table of Contents"
 msgstr "Inhalt"
 
@@ -1223,22 +1221,30 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:140
-msgid "(empty table of contents)"
-msgstr "(leeres Inhaltsverzeichnis)"
-
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:160
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:229
 msgid "Heading 1"
 msgstr "Überschrift 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:164
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:235
 msgid "Heading 2"
 msgstr "Überschrift 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:167
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:168
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:241
 msgid "Table of Contents Help"
 msgstr "Hilfe zum Inhaltsverzeichnis"
+
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:175
+#: ../src/notebooks/notebooknoteaddin.cpp:179
+msgid "_Back"
+msgstr "_Zurück"
+
+#. no toc items, and no action entries = empty menu
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:214
+msgid "(empty table of contents)"
+msgstr "(leeres Inhaltsverzeichnis)"
 
 #. namespace
 #: ../src/addins/todo/todo.desktop.in.in.h:1
@@ -1459,11 +1465,11 @@ msgstr "Version %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Fehler beim Laden des Symbols (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:122 ../src/noteaddin.cpp:135
+#: ../src/noteaddin.cpp:98 ../src/noteaddin.cpp:112 ../src/noteaddin.cpp:125
 msgid "Plugin is disposing already"
 msgstr "Erweiterung wird bereits aufgeräumt"
 
-#: ../src/noteaddin.cpp:139
+#: ../src/noteaddin.cpp:129
 msgid "Window is not embedded"
 msgstr "Fenster ist nicht eingebettet"
 
@@ -1502,17 +1508,7 @@ msgstr "Name bereits vergeben"
 msgid "C_reate"
 msgstr "_Anlegen"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:66
-#: ../src/searchnoteswidget.cpp:229
-msgid "Notebooks"
-msgstr "Notizbücher"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:67
-msgid "Create a new note in a notebook"
-msgstr "Eine neue Notiz in einem Notizbuch anlegen"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:96
-#: ../src/notebooks/notebookapplicationaddin.cpp:146
+#: ../src/notebooks/notebookapplicationaddin.cpp:81
 msgid "New Note_book..."
 msgstr "Neues Notiz_buch …"
 
@@ -1529,11 +1525,11 @@ msgstr "Notizbuch-Vorlage %1%"
 msgid "New Note"
 msgstr "Neue Notiz"
 
-#: ../src/notebooks/notebookmanager.cpp:364
+#: ../src/notebooks/notebookmanager.cpp:367
 msgid "Really delete this notebook?"
 msgstr "Dieses Notizbuch wirklich löschen?"
 
-#: ../src/notebooks/notebookmanager.cpp:365
+#: ../src/notebooks/notebookmanager.cpp:368
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1543,6 +1539,7 @@ msgstr ""
 "rückgängig gemacht werden."
 
 #: ../src/notebooks/notebookmenuitem.cpp:34
+#: ../src/notebooks/notebooknoteaddin.cpp:160
 msgid "No notebook"
 msgstr "Kein Notizbuch"
 
@@ -1550,16 +1547,12 @@ msgstr "Kein Notizbuch"
 msgid "New \"%1%\" Note"
 msgstr "Neue Notiz »%1%«"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:72
+#: ../src/notebooks/notebooknoteaddin.cpp:109
 msgid "Notebook"
 msgstr "Notizbuch"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:73
-msgid "Place this note into a notebook"
-msgstr "Diese Notiz in einem Notizbuch ablegen"
-
 #. Add new notebook item
-#: ../src/notebooks/notebooknoteaddin.cpp:153
+#: ../src/notebooks/notebooknoteaddin.cpp:151
 msgid "_New notebook..."
 msgstr "Neues Notiz_buch …"
 
@@ -1786,36 +1779,28 @@ msgstr "Notiztitel"
 msgid "Ad_vanced"
 msgstr "Er_weitert"
 
-#: ../src/notewindow.cpp:373
-msgid "_Link to New Note"
-msgstr "_Verknüpfung zu neuer Notiz"
-
-#: ../src/notewindow.cpp:381
-msgid "Te_xt"
-msgstr "Te_xt"
-
-#: ../src/notewindow.cpp:418
-msgid "Set properties of text"
-msgstr "Text-Einstellungen"
-
-#: ../src/notewindow.cpp:422
+#: ../src/notewindow.cpp:322
 msgid "Is Important"
 msgstr "Ist Wichtig"
 
-#: ../src/notewindow.cpp:423
-msgid "Toggle notes presence in Important Notes notebook"
-msgstr "Schaltet Notiz-Präsenz in der Notizsammlung »Wichtige Notizen«"
-
-#: ../src/notewindow.cpp:431 ../src/searchnoteswidget.cpp:144
-#: ../src/searchnoteswidget.cpp:147
+#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "_Löschen"
 
-#: ../src/notewindow.cpp:431
-msgid "Delete this note"
-msgstr "Diese Notiz löschen"
+#: ../src/notewindow.cpp:376
+msgid "_Link to New Note"
+msgstr "_Verknüpfung zu neuer Notiz"
 
-#: ../src/notewindow.cpp:447
+#: ../src/notewindow.cpp:384
+msgid "Te_xt"
+msgstr "Te_xt"
+
+#: ../src/notewindow.cpp:421
+msgid "Set properties of text"
+msgstr "Text-Einstellungen"
+
+#: ../src/notewindow.cpp:435
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1824,63 +1809,63 @@ msgstr ""
 "regulärer Notizen fest und wird nicht im Notizmenü oder im Suchfenster "
 "angezeigt."
 
-#: ../src/notewindow.cpp:450
+#: ../src/notewindow.cpp:438
 msgid "Convert to regular note"
 msgstr "In reguläre Notiz umwandeln"
 
-#: ../src/notewindow.cpp:453
+#: ../src/notewindow.cpp:441
 msgid "Save Si_ze"
 msgstr "_Größe speichern"
 
-#: ../src/notewindow.cpp:457
+#: ../src/notewindow.cpp:445
 msgid "Save Se_lection"
 msgstr "Auswah_l speichern"
 
-#: ../src/notewindow.cpp:461
+#: ../src/notewindow.cpp:449
 msgid "Save _Title"
 msgstr "_Titel speichern"
 
-#: ../src/notewindow.cpp:563 ../src/notewindow.cpp:1086
+#: ../src/notewindow.cpp:551 ../src/notewindow.cpp:1082
 msgid "Cannot create note"
 msgstr "Notiz konnte nicht angelegt werden"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:825
 msgid "_Link"
 msgstr "_Verweis"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:826
 msgid "<b>_Bold</b>"
 msgstr "<b>_Fett</b>"
 
-#: ../src/notewindow.cpp:831
+#: ../src/notewindow.cpp:827
 msgid "<i>_Italic</i>"
 msgstr "<i>_Kursiv</i>"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:828
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Durchgestrichen</s>"
 
-#: ../src/notewindow.cpp:834
+#: ../src/notewindow.cpp:830
 msgid "_Highlight"
 msgstr "_Hervorheben"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:832
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:834
 msgid "Hu_ge"
 msgstr "_Riesig"
 
-#: ../src/notewindow.cpp:840
+#: ../src/notewindow.cpp:836
 msgid "_Large"
 msgstr "_Groß"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:838
 msgid "S_mall"
 msgstr "_Klein"
 
-#: ../src/notewindow.cpp:844
+#: ../src/notewindow.cpp:840
 msgid "Bullets"
 msgstr "Aufzählungspunkte"
 
@@ -2137,27 +2122,27 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:135
+#: ../src/recentchanges.cpp:147
 msgid "All Notes"
 msgstr "Alle Notizen"
 
-#: ../src/recentchanges.cpp:141
+#: ../src/recentchanges.cpp:153
 msgid "New"
 msgstr "Neu"
 
-#: ../src/recentchanges.cpp:162
+#: ../src/recentchanges.cpp:174
 msgid "Search"
 msgstr "Suchen"
 
-#: ../src/recentchanges.cpp:221
+#: ../src/recentchanges.cpp:233
 msgid "Find _Next"
 msgstr "_Nächster Treffer"
 
-#: ../src/recentchanges.cpp:229
+#: ../src/recentchanges.cpp:241
 msgid "Find _Previous"
 msgstr "_Vorheriger Treffer"
 
-#: ../src/recentchanges.cpp:697
+#: ../src/recentchanges.cpp:764
 msgid "_Close"
 msgstr "S_chließen"
 
@@ -2166,31 +2151,35 @@ msgstr "S_chließen"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Laden der D-Bus-Schnittstelle %s schlug fehl: %s"
 
-#: ../src/searchnoteswidget.cpp:137
+#: ../src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "Ö_ffnen"
 
-#: ../src/searchnoteswidget.cpp:140
+#: ../src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "In neuem _Fenster öffnen"
 
-#: ../src/searchnoteswidget.cpp:150
+#: ../src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "_Umbenennen …"
 
-#: ../src/searchnoteswidget.cpp:659
+#: ../src/searchnoteswidget.cpp:230
+msgid "Notebooks"
+msgstr "Notizbücher"
+
+#: ../src/searchnoteswidget.cpp:660
 msgid "Note"
 msgstr "Notiz"
 
-#: ../src/searchnoteswidget.cpp:681
+#: ../src/searchnoteswidget.cpp:682
 msgid "Modified"
 msgstr "Geändert"
 
-#: ../src/searchnoteswidget.cpp:1000
+#: ../src/searchnoteswidget.cpp:1001
 msgid "Notes"
 msgstr "Notizen"
 
-#: ../src/searchnoteswidget.cpp:1019
+#: ../src/searchnoteswidget.cpp:1020
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2198,53 +2187,53 @@ msgstr ""
 "Keine Ergebnisse im ausgewählten Notizbuch gefunden.\n"
 "Hier klicken, um alle Notizen zu durchsuchen."
 
-#: ../src/searchnoteswidget.cpp:1023
+#: ../src/searchnoteswidget.cpp:1024
 msgid "Click here to search across all notebooks"
 msgstr "Hier klicken, um alle Notizbücher zu durchsuchen"
 
-#: ../src/searchnoteswidget.cpp:1044
+#: ../src/searchnoteswidget.cpp:1045
 msgid "Matches"
 msgstr "Stimmt überein"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1096
+#: ../src/searchnoteswidget.cpp:1097
 msgid "Title match"
 msgstr "Titel-Übereinstimmung"
 
-#: ../src/searchnoteswidget.cpp:1100
+#: ../src/searchnoteswidget.cpp:1101
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "(%1% Treffer)"
 msgstr[1] "(%1% Treffer)"
 
-#: ../src/searchnoteswidget.cpp:1311
+#: ../src/searchnoteswidget.cpp:1312
 msgid "_New"
 msgstr "_Neu"
 
-#: ../src/searchnoteswidget.cpp:1340
+#: ../src/searchnoteswidget.cpp:1341
 msgid "_Open Template Note"
 msgstr "Notizvorlage _öffnen"
 
-#: ../src/searchnoteswidget.cpp:1351
+#: ../src/searchnoteswidget.cpp:1352
 msgid "_New..."
 msgstr "_Neu …"
 
-#: ../src/searchnoteswidget.cpp:1487 ../src/searchnoteswidget.cpp:1500
-#: ../src/searchnoteswidget.cpp:1511
+#: ../src/searchnoteswidget.cpp:1503 ../src/searchnoteswidget.cpp:1516
+#: ../src/searchnoteswidget.cpp:1527
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Fehler beim Verarbeiten der Einstellung %s (Wert: %s):"
 
-#: ../src/searchnoteswidget.cpp:1488
+#: ../src/searchnoteswidget.cpp:1504
 msgid "Expected format 'column:order'"
 msgstr "Erwartetes Format »Spalte:Ordner«"
 
-#: ../src/searchnoteswidget.cpp:1501
+#: ../src/searchnoteswidget.cpp:1517
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Unbekannte Spalte %s"
 
-#: ../src/searchnoteswidget.cpp:1512
+#: ../src/searchnoteswidget.cpp:1528
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Unbekannte Reihenfolge %s"
@@ -2626,7 +2615,7 @@ msgstr ""
 "laden. Fügen Sie »modprobe fuse« in /etc/init.d/boot.local oder »fuse« in /"
 "etc/modules hinzu."
 
-#: ../src/utils.cpp:144
+#: ../src/utils.cpp:158
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2634,65 +2623,65 @@ msgstr ""
 "Das »Gnote-Notizen-Handbuch« konnte nicht gefunden werden. Bitte stellen Sie "
 "sicher, dass Ihre Installation erfolgreich abgeschlossen wurde."
 
-#: ../src/utils.cpp:152
+#: ../src/utils.cpp:166
 msgid "Help not found"
 msgstr "Hilfe wurde nicht gefunden"
 
-#: ../src/utils.cpp:185
+#: ../src/utils.cpp:199
 msgid "Cannot open location"
 msgstr "Ort kann nicht geöffnet werden"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:215
+#: ../src/utils.cpp:229
 msgid "Today, %1%"
 msgstr "Heute, %1%"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:230
 msgid "Today"
 msgstr "Heute"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:222
+#: ../src/utils.cpp:236
 msgid "Yesterday, %1%"
 msgstr "Gestern, %1%"
 
-#: ../src/utils.cpp:223
+#: ../src/utils.cpp:237
 msgid "Yesterday"
 msgstr "Gestern"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:229
+#: ../src/utils.cpp:243
 msgid "Tomorrow, %1%"
 msgstr "Morgen, %1%"
 
-#: ../src/utils.cpp:230
+#: ../src/utils.cpp:244
 msgid "Tomorrow"
 msgstr "Morgen"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:234
+#: ../src/utils.cpp:248
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: first argument is date, second is time.
-#: ../src/utils.cpp:237 ../src/utils.cpp:249
+#: ../src/utils.cpp:251 ../src/utils.cpp:263
 msgid "%1%, %2%"
 msgstr "%1%, %2%"
 
-#: ../src/utils.cpp:242
+#: ../src/utils.cpp:256
 msgid "No Date"
 msgstr "Kein Datum"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:246
+#: ../src/utils.cpp:260
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: ../src/watchers.cpp:200
+#: ../src/watchers.cpp:201
 msgid "(Untitled %1%)"
 msgstr "(Unbenannt %1%)"
 
-#: ../src/watchers.cpp:231
+#: ../src/watchers.cpp:232
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2700,25 +2689,36 @@ msgstr ""
 "Es gibt bereits eine Notiz mit dem Titel <b>%1%</b>. Bitte wählen Sie einen "
 "anderen Namen für diese Notiz."
 
-#: ../src/watchers.cpp:246
+#: ../src/watchers.cpp:247
 msgid "Note title taken"
 msgstr "Titel der Notiz übernommen"
 
-#: ../src/watchers.cpp:309
+#: ../src/watchers.cpp:317
 msgid "Check spelling"
 msgstr "Rechtschreibung prüfen"
 
-#: ../src/watchers.cpp:310
-msgid "Check spelling in this note"
-msgstr "Rechtschreibung in dieser Notiz prüfen"
-
-#: ../src/watchers.cpp:674
+#: ../src/watchers.cpp:707
 msgid "_Copy Link Address"
 msgstr "Link-Adresse _kopieren"
 
-#: ../src/watchers.cpp:680
+#: ../src/watchers.cpp:713
 msgid "_Open Link"
 msgstr "Link ö_ffnen"
+
+#~ msgid "Create a new note in a notebook"
+#~ msgstr "Eine neue Notiz in einem Notizbuch anlegen"
+
+#~ msgid "Place this note into a notebook"
+#~ msgstr "Diese Notiz in einem Notizbuch ablegen"
+
+#~ msgid "Toggle notes presence in Important Notes notebook"
+#~ msgstr "Schaltet Notiz-Präsenz in der Notizsammlung »Wichtige Notizen«"
+
+#~ msgid "Delete this note"
+#~ msgstr "Diese Notiz löschen"
+
+#~ msgid "Check spelling in this note"
+#~ msgstr "Rechtschreibung in dieser Notiz prüfen"
 
 #~ msgid ""
 #~ "Has affect only when started as an application. When set to TRUE, shows a "
