@@ -12,7 +12,6 @@ addins_DATA = $(desktop_files)
 
 
 backlinks_la_SOURCES = backlinksnoteaddin.hpp backlinksnoteaddin.cpp \
-	backlinkmenuitem.hpp backlinkmenuitem.cpp \
 	$(NULL)
 
 EXTRA_DIST = $(desktop_in_files)
