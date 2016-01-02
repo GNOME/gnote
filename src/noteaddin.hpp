@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015 Aurimas Cernius
+ * Copyright (C) 2012-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -113,7 +113,6 @@ public:
 private:
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
-  std::list<std::string>        m_note_actions;
   std::list<Gtk::MenuItem*>     m_text_menu_items;
   typedef std::map<Gtk::ToolItem*, int> ToolItemMap;
   ToolItemMap                   m_toolbar_items;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015 Aurimas Cernius
+ * Copyright (C) 2012-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -45,10 +45,6 @@ namespace gnote {
   void NoteAddin::dispose(bool disposing)
   {
     if (disposing) {
-      for(std::list<std::string>::const_iterator iter = m_note_actions.begin();
-          iter != m_note_actions.end(); ++iter) {
-        //get_window()->remove_widget_action(*iter);
-      }
       for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
           iter != m_text_menu_items.end(); ++iter) {
         delete *iter;
