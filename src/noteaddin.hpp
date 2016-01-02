@@ -75,6 +75,7 @@ public:
   virtual void on_note_opened () = 0;
 
   virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const;
+  void register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> callback);
 
   const Note::Ptr & get_note() const
     {
@@ -111,11 +112,17 @@ public:
   void add_tool_item (Gtk::ToolItem *item, int position);
   void add_text_menu_item (Gtk::MenuItem * item);
 private:
+  void on_note_foregrounded();
+  void on_note_backgrounded();
+
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
   std::list<Gtk::MenuItem*>     m_text_menu_items;
   typedef std::map<Gtk::ToolItem*, int> ToolItemMap;
   ToolItemMap                   m_toolbar_items;
+  typedef std::pair<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> ActionCallback;
+  std::vector<ActionCallback>   m_action_callbacks;
+  std::vector<sigc::connection> m_action_callbacks_cids;
 };
 
 

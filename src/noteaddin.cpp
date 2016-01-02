@@ -22,6 +22,7 @@
 
 #include <glibmm/i18n.h>
 
+#include "debug.hpp"
 #include "noteaddin.hpp"
 #include "notewindow.hpp"
 
@@ -67,6 +68,9 @@ namespace gnote {
     on_note_opened();
     NoteWindow * window = get_window();
 
+    window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_foregrounded));
+    window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_backgrounded));
+
     for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
         iter != m_text_menu_items.end(); ++iter) {
       Gtk::Widget *item = *iter;
@@ -86,6 +90,32 @@ namespace gnote {
         grid->attach(*iter->first, iter->second, 0, 1, 1);
       }
     }
+  }
+
+  void NoteAddin::on_note_foregrounded()
+  {
+    auto host = get_window()->host();
+    if(!host) {
+      return;
+    }
+
+    for(auto & callback : m_action_callbacks) {
+      auto action = host->find_action(callback.first);
+      if(action) {
+        m_action_callbacks_cids.push_back(action->signal_activate().connect(callback.second));
+      }
+      else {
+        ERR_OUT("Action %s not found!", callback.first.c_str());
+      }
+    }
+  }
+
+  void NoteAddin::on_note_backgrounded()
+  {
+    for(auto cid : m_action_callbacks_cids) {
+      cid.disconnect();
+    }
+    m_action_callbacks_cids.clear();
   }
 
   void NoteAddin::add_tool_item (Gtk::ToolItem *item, int position)
@@ -130,6 +160,11 @@ namespace gnote {
   std::map<int, Gtk::Widget*> NoteAddin::get_actions_popover_widgets() const
   {
     return std::map<int, Gtk::Widget*>();
+  }
+
+  void NoteAddin::register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> callback)
+  {
+    m_action_callbacks.emplace_back(action, callback);
   }
   
 }
