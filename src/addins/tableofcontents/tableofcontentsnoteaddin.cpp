@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013,2015 Aurimas Cernius
+ * Copyright (C) 2013,2015-2016 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -83,9 +83,17 @@ void TableofcontentsNoteAddin::on_note_opened ()
   m_toc_menu->signal_hide().connect(
     sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_menu_hidden));
 
+  register_main_window_action_callback("tableofcontents-heading1",
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_1_action));
+  register_main_window_action_callback("tableofcontents-heading2",
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_2_action));
+  register_main_window_action_callback("tableofcontents-help",
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_toc_help_action));
+  register_main_window_action_callback("tableofcontents-goto-heading",
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_goto_heading));
+
   auto win = get_window();
   win->signal_foregrounded.connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_foregrounded));
-  win->signal_backgrounded.connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_backgrounded));
 
   auto buffer = get_note()->get_buffer();
   if(buffer) {
@@ -110,25 +118,8 @@ void TableofcontentsNoteAddin::on_note_opened ()
 void TableofcontentsNoteAddin::on_foregrounded()
 {
   auto host = get_window()->host();
-  m_level_1_action_cid = host->find_action("tableofcontents-heading1")->signal_activate()
-    .connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_1_action));
-  m_level_2_action_cid = host->find_action("tableofcontents-heading2")->signal_activate()
-    .connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_2_action));
-  m_toc_help_action_cid = host->find_action("tableofcontents-help")->signal_activate()
-    .connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_toc_help_action));
   auto goto_action = host->find_action("tableofcontents-goto-heading");
   goto_action->set_state(Glib::Variant<gint32>::create(-1));
-  m_goto_heading_cid = goto_action->signal_activate()
-    .connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_goto_heading));
-}
-
-
-void TableofcontentsNoteAddin::on_backgrounded()
-{
-  m_level_1_action_cid.disconnect();
-  m_level_2_action_cid.disconnect();
-  m_toc_help_action_cid.disconnect();
-  m_goto_heading_cid.disconnect();
 }
 
 

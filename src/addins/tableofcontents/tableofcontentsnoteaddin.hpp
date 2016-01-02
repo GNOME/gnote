@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013,2015 Aurimas Cernius
+ * Copyright (C) 2013,2015-2016 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,7 +75,6 @@ private:
   void on_level_2_action(const Glib::VariantBase&);
   void on_toc_help_action(const Glib::VariantBase&);
   void on_foregrounded();
-  void on_backgrounded();
   void on_goto_heading(const Glib::VariantBase&);
   void on_note_changed();
 
@@ -103,11 +102,6 @@ private:
   Glib::RefPtr<Gtk::TextTag> m_tag_bold; // the tags used to mark headings
   Glib::RefPtr<Gtk::TextTag> m_tag_large;
   Glib::RefPtr<Gtk::TextTag> m_tag_huge;
-
-  sigc::connection m_level_1_action_cid;
-  sigc::connection m_level_2_action_cid;
-  sigc::connection m_toc_help_action_cid;
-  sigc::connection m_goto_heading_cid;
 };
 
 
