@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2015 Aurimas Cernius
+ * Copyright (C) 2010-2013,2015-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,6 @@
 #include <glibmm/miscutils.h>
 #include <gtkmm/image.h>
 #include <gtkmm/printoperation.h>
-#include <gtkmm/stock.h>
 
 #include "sharp/datetime.hpp"
 #include "debug.hpp"
@@ -37,35 +36,6 @@
 #include "utils.hpp"
 
 namespace printnotes {
-
-  namespace {
-    class PrintNotesAction
-      : public gnote::NoteWindow::NonModifyingAction
-    {
-    public:
-      static Glib::RefPtr<Gtk::Action> create(gnote::NoteWindow *note_window)
-        {
-          return Glib::RefPtr<Gtk::Action>(new PrintNotesAction(note_window));
-        }
-    protected:
-      virtual Gtk::Widget *create_menu_item_vfunc()
-        {
-          Gtk::ImageMenuItem *menu_item = new Gtk::ImageMenuItem;
-          menu_item->add_accelerator("activate", m_note_window->get_accel_group(),
-                                     GDK_KEY_P, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-          return menu_item;
-        }
-    private:
-      PrintNotesAction(gnote::NoteWindow *note_window)
-        : gnote::NoteWindow::NonModifyingAction("PrintAction", Gtk::Stock::PRINT,
-                                                _("Print"), _("Print note"))
-        , m_note_window(note_window)
-      {}
-
-      gnote::NoteWindow *m_note_window;
-    };
-  }
-
 
   PrintNotesModule::PrintNotesModule()
   {
@@ -84,14 +54,21 @@ namespace printnotes {
 
   void PrintNotesNoteAddin::on_note_opened()
   {
-    Glib::RefPtr<Gtk::Action> action = PrintNotesAction::create(get_window());
-    action->signal_activate().connect(
+    register_main_window_action_callback("printnotes-print",
       sigc::mem_fun(*this, &PrintNotesNoteAddin::print_button_clicked));
-    add_note_action(action, gnote::PRINT_ORDER);
   }
 
 
-  void PrintNotesNoteAddin::print_button_clicked()
+  std::map<int, Gtk::Widget*> PrintNotesNoteAddin::get_actions_popover_widgets() const
+  {
+    auto widgets = NoteAddin::get_actions_popover_widgets();
+    auto button = gnote::utils::create_popover_button("win.printnotes-print", _("Print"));
+    gnote::utils::add_item_to_ordered_map(widgets, gnote::PRINT_ORDER, button);
+    return widgets;
+  }
+
+
+  void PrintNotesNoteAddin::print_button_clicked(const Glib::VariantBase&)
   {
     try {
       m_print_op = Gtk::PrintOperation::create();
