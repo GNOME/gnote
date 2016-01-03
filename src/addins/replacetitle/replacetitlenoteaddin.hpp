@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2013,2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 #ifndef _REPLACETITLE_ADDIN_HPP_
 #define _REPLACETITLE_ADDIN_HPP_
 
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "note.hpp"
 #include "noteaddin.hpp"
@@ -48,8 +47,9 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 private:
-  void replacetitle_button_clicked();
+  void replacetitle_button_clicked(const Glib::VariantBase&);
 };
 
 
