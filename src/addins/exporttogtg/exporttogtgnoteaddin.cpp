@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -67,16 +67,21 @@ void ExportToGTGNoteAddin::shutdown()
 
 void ExportToGTGNoteAddin::on_note_opened()
 {
-  Glib::RefPtr<gnote::NoteWindow::NonModifyingAction> action =
-    gnote::NoteWindow::NonModifyingAction::create("ExportToGTGAction", _("Export to Getting Things GNOME"),
-                                                  _("Export note as Getting Things GNOME task"));
-  action->signal_activate().connect(
-    sigc::mem_fun(*this, &ExportToGTGNoteAddin::export_button_clicked));
-  add_note_action(action, gnote::EXPORT_TO_GTG_ORDER);
+  register_main_window_action_callback("exporttogtg-export", sigc::mem_fun(*this,
+    &ExportToGTGNoteAddin::export_button_clicked));
 }
 
 
-void ExportToGTGNoteAddin::export_button_clicked()
+std::map<int, Gtk::Widget*> ExportToGTGNoteAddin::get_actions_popover_widgets() const
+{
+  auto widgets = NoteAddin::get_actions_popover_widgets();
+  auto button = gnote::utils::create_popover_button("win.exporttogtg-export", _("Export to Getting Things GNOME"));
+  gnote::utils::add_item_to_ordered_map(widgets, gnote::EXPORT_TO_GTG_ORDER, button);
+  return widgets;
+}
+
+
+void ExportToGTGNoteAddin::export_button_clicked(const Glib::VariantBase&)
 {
   try {
     if (s_gtg_interface == 0) {
