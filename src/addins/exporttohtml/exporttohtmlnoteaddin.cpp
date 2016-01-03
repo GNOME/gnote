@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -72,16 +72,21 @@ void ExportToHtmlNoteAddin::shutdown()
 
 void ExportToHtmlNoteAddin::on_note_opened()
 {
-  Glib::RefPtr<gnote::NoteWindow::NonModifyingAction> action =
-    gnote::NoteWindow::NonModifyingAction::create("ExportToHtmlAction", _("Export to HTML"),
-                                                  _("Export note to HTML"));
-  action->signal_activate().connect(
+  register_main_window_action_callback("exporttohtml-export",
     sigc::mem_fun(*this, &ExportToHtmlNoteAddin::export_button_clicked));
-  add_note_action(action, gnote::EXPORT_TO_HTML_ORDER);
 }
 
 
-void ExportToHtmlNoteAddin::export_button_clicked()
+std::map<int, Gtk::Widget*> ExportToHtmlNoteAddin::get_actions_popover_widgets() const
+{
+  auto widgets = NoteAddin::get_actions_popover_widgets();
+  auto button = gnote::utils::create_popover_button("win.exporttohtml-export", _("Export to HTML"));
+  gnote::utils::add_item_to_ordered_map(widgets, gnote::EXPORT_TO_HTML_ORDER, button);
+  return widgets;
+}
+
+
+void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
 {
   ExportToHtmlDialog dialog(get_note()->get_title() + ".html");
   int response = dialog.run();
