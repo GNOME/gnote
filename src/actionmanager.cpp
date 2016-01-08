@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015 Aurimas Cernius
+ * Copyright (C) 2011-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -223,10 +223,13 @@ namespace gnote {
     return section;
   }
 
-  void ActionManager::register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type)
+  void ActionManager::register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type, bool modifying)
   {
     if(m_main_window_actions2.find(action) == m_main_window_actions2.end()) {
       m_main_window_actions2[action] = state_type;
+      if(!modifying) {
+        m_non_modifying_actions.push_back(action);
+      }
     }
     else {
       if(m_main_window_actions2[action] != state_type) {
@@ -238,6 +241,11 @@ namespace gnote {
   std::map<Glib::ustring, const Glib::VariantType*> ActionManager::get_main_window_actions() const
   {
     return m_main_window_actions2;
+  }
+
+  bool ActionManager::is_modifying_main_window_action(const Glib::ustring & action) const
+  {
+    return std::find(m_non_modifying_actions.begin(), m_non_modifying_actions.end(), action) == m_non_modifying_actions.end();
   }
 
   void ActionManager::register_main_window_search_callback(const std::string & id, const Glib::ustring & action,

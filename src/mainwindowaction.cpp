@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2015 Aurimas Cernius
+ * Copyright (C) 2015-2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,21 +43,25 @@ MainWindowAction::Ptr MainWindowAction::create(const Glib::ustring & name, const
 
 MainWindowAction::MainWindowAction(const Glib::ustring & name)
   : Gio::SimpleAction(name)
+  , m_modifying(true)
 {
 }
 
 MainWindowAction::MainWindowAction(const Glib::ustring & name, bool state)
   : Gio::SimpleAction(name, Glib::Variant<bool>::create(state))
+  , m_modifying(true)
 {
 }
 
 MainWindowAction::MainWindowAction(const Glib::ustring & name, int state)
   : Gio::SimpleAction(name, Glib::VARIANT_TYPE_INT32, Glib::Variant<gint32>::create(state))
+  , m_modifying(true)
 {
 }
 
 MainWindowAction::MainWindowAction(const Glib::ustring & name, const Glib::ustring & state)
   : Gio::SimpleAction(name, Glib::VARIANT_TYPE_STRING, Glib::Variant<Glib::ustring>::create(state))
+  , m_modifying(true)
 {
 }
 

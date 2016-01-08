@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2015 Aurimas Cernius
+ * Copyright (C) 2013-2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -93,6 +93,10 @@ public:
     {
       return m_actions;
     }
+  const std::vector<Glib::ustring> & non_modifying_actions() const
+    {
+      return m_non_modifying_actions;
+    }
   Glib::ustring get_attribute(const Glib::ustring & att);
   bool validate(const Glib::ustring & release, const Glib::ustring & version_info) const;
 private:
@@ -110,6 +114,7 @@ private:
 
   std::map<Glib::ustring, Glib::ustring> m_attributes;
   std::map<Glib::ustring, const Glib::VariantType*> m_actions;
+  std::vector<Glib::ustring> m_non_modifying_actions;
 
   bool validate_compatibility(const Glib::ustring & release, const Glib::ustring & version_info) const;
   void load_actions(Glib::KeyFile & addin_info, const Glib::ustring & key, const Glib::VariantType *type);

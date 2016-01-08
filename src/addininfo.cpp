@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2015 Aurimas Cernius
+ * Copyright (C) 2013-2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -105,6 +105,13 @@ void AddinInfo::load_from_file(const std::string & info_file)
       load_actions(addin_info, "actions_bool", &Glib::Variant<bool>::variant_type());
       load_actions(addin_info, "actions_int", &Glib::Variant<gint32>::variant_type());
       load_actions(addin_info, "actions_string", &Glib::Variant<Glib::ustring>::variant_type());
+      if(addin_info.has_key(ADDIN_ACTIONS, "non_modifying_actions")) {
+        std::vector<std::string> actions;
+        sharp::string_split(actions, addin_info.get_string(ADDIN_ACTIONS, "non_modifying_actions"), ",");
+        for(auto action : actions) {
+          m_non_modifying_actions.push_back(action);
+        }
+      }
     }
   }
   catch(Glib::Error & e) {

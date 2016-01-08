@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2015 Aurimas Cernius
+ * Copyright (C) 2015-2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,11 +42,21 @@ public:
     {
       Gio::SimpleAction::set_state(value);
     }
+  void is_modifying(bool modifying)
+    {
+      m_modifying = modifying;
+    }
+  bool is_modifying() const
+    {
+      return m_modifying;
+    }
 protected:
   MainWindowAction(const Glib::ustring & name);
   MainWindowAction(const Glib::ustring & name, bool state);
   MainWindowAction(const Glib::ustring & name, int state);
   MainWindowAction(const Glib::ustring & name, const Glib::ustring & state);
+private:
+  bool m_modifying;
 };
 
 }

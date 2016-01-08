@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2015 Aurimas Cernius
+ * Copyright (C) 2012-2013,2015-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -57,8 +57,10 @@ public:
   virtual void add_app_menu_item(int section, int order, const std::string & label,
                                  const std::string & action_def) override;
   Glib::RefPtr<Gio::Menu> get_app_menu() const;
-  virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type) override;
+  virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type,
+    bool modifying = true) override;
   virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;
+  virtual bool is_modifying_main_window_action(const Glib::ustring & action) const override;
 
   virtual void register_main_window_search_callback(const std::string & id, const Glib::ustring & action,
                                                     sigc::slot<void, const Glib::VariantBase&> callback) override;
@@ -96,6 +98,7 @@ private:
   typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
   AppMenuItemMultiMap m_app_menu_items;
   std::map<Glib::ustring, const Glib::VariantType*> m_main_window_actions2;
+  std::vector<Glib::ustring> m_non_modifying_actions;
   std::map<std::string, std::pair<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>>> m_main_window_search_actions;
 };
 

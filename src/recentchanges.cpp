@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2016 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -103,17 +103,21 @@ namespace gnote {
     std::map<Glib::ustring, const Glib::VariantType*> actions = IActionManager::obj().get_main_window_actions();
     for(std::map<Glib::ustring, const Glib::VariantType*>::iterator iter = actions.begin();
         iter != actions.end(); ++iter) {
+      MainWindowAction::Ptr action;
       if(iter->second == NULL) {
-        add_action(MainWindowAction::create(iter->first));
+        add_action(action = MainWindowAction::create(iter->first));
       }
       else if(iter->second == &Glib::Variant<bool>::variant_type()) {
-        add_action(MainWindowAction::create(iter->first, false));
+        add_action(action = MainWindowAction::create(iter->first, false));
       }
       else if(iter->second == &Glib::Variant<gint32>::variant_type()) {
-        add_action(MainWindowAction::create(iter->first, 0));
+        add_action(action = MainWindowAction::create(iter->first, 0));
       }
       else if(iter->second == &Glib::Variant<Glib::ustring>::variant_type()) {
-        add_action(MainWindowAction::create(iter->first, Glib::ustring("")));
+        add_action(action = MainWindowAction::create(iter->first, Glib::ustring("")));
+      }
+      if(action) {
+        action->is_modifying(IActionManager::obj().is_modifying_main_window_action(iter->first));
       }
     }
     find_action("close-window")->signal_activate()
