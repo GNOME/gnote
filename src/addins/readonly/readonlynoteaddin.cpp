@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2016 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,41 +20,12 @@
 
 #include <glibmm/i18n.h>
 
+#include "debug.hpp"
 #include "iactionmanager.hpp"
 #include "itagmanager.hpp"
 #include "notewindow.hpp"
 #include "readonlynoteaddin.hpp"
 #include "tag.hpp"
-
-
-namespace {
-  class ReadOnlyAction
-    : public gnote::utils::CheckAction
-    , public gnote::NoteWindow::NonModifyingNoteAction
-  {
-  public:
-    typedef Glib::RefPtr<ReadOnlyAction> Ptr;
-    static Ptr create()
-      {
-        return Ptr(new ReadOnlyAction);
-      }
-    virtual void reference() const override
-    {
-      gnote::utils::CheckAction::reference();
-    }
-    virtual void unreference() const override
-    {
-      gnote::utils::CheckAction::unreference();
-    }
-  private:
-    ReadOnlyAction()
-      : gnote::utils::CheckAction("ReadOnlyAction")
-    {
-      set_label(_("Read Only"));
-      set_tooltip(_("Make this note read-only"));
-    }
-  };
-}
 
 
 namespace readonly {
@@ -88,24 +59,42 @@ void ReadOnlyNoteAddin::shutdown()
 
 void ReadOnlyNoteAddin::on_note_opened()
 {
-  m_action = ReadOnlyAction::create();
-  add_note_action(m_action, gnote::READ_ONLY_ORDER);
-  m_action->signal_activate().connect(
-    sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_menu_item_toggled));
-
-  gnote::ITagManager & m = gnote::ITagManager::obj();
-  const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
-  if(get_note()->contains_tag(ro_tag)) {
-    ReadOnlyAction::Ptr::cast_dynamic(m_action)->checked(true);
-    on_menu_item_toggled();
-  }
+  get_window()->signal_foregrounded.connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_foreground));
+  get_window()->signal_backgrounded.connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_background));
 }
 
-void ReadOnlyNoteAddin::on_menu_item_toggled()
+std::map<int, Gtk::Widget*> ReadOnlyNoteAddin::get_actions_popover_widgets() const
+{
+  auto widgets = NoteAddin::get_actions_popover_widgets();
+  auto button = gnote::utils::create_popover_button("win.readonly-toggle", _("Read Only"));
+  gnote::utils::add_item_to_ordered_map(widgets, gnote::READ_ONLY_ORDER, button);
+  return widgets;
+}
+
+void ReadOnlyNoteAddin::on_foreground()
+{
+  auto action = get_window()->host()->find_action("readonly-toggle");
+  gnote::ITagManager & m = gnote::ITagManager::obj();
+  const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
+
+  m_readonly_toggle_cid = action->signal_change_state()
+    .connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_menu_item_toggled));
+  action->change_state(Glib::Variant<bool>::create(get_note()->contains_tag(ro_tag)));
+}
+
+void ReadOnlyNoteAddin::on_background()
+{
+  m_readonly_toggle_cid.disconnect();
+}
+
+void ReadOnlyNoteAddin::on_menu_item_toggled(const Glib::VariantBase & state)
 {
   gnote::ITagManager & m = gnote::ITagManager::obj();
   const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
-  if(ReadOnlyAction::Ptr::cast_dynamic(m_action)->checked()) {
+  bool read_only = Glib::VariantBase::cast_dynamic<Glib::Variant<bool>>(state).get();
+  auto action = get_window()->host()->find_action("readonly-toggle");
+  action->set_state(state);
+  if(read_only) {
     get_note()->enabled(false);
     get_note()->add_tag(ro_tag);
   }
