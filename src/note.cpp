@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -828,8 +828,9 @@ namespace gnote {
         if(!enabled()) {
           m_focus_widget = window->get_focus();
         }
+        m_window->host()->enabled(enabled());
         m_window->enabled(enabled());
-        if(enabled()) {
+        if(enabled() && m_focus_widget) {
           window->set_focus(*m_focus_widget);
         }
       }

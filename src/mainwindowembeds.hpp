@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015 Aurimas Cernius
+ * Copyright (C) 2013,2015-2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,6 +41,7 @@ public:
   virtual bool contains(EmbeddableWidget &) = 0;
   virtual bool is_foreground(EmbeddableWidget &) = 0;
   virtual MainWindowAction::Ptr find_action(const Glib::ustring & name) = 0;
+  virtual void enabled(bool is_enabled) = 0;
 };
 
 class EmbeddableWidget

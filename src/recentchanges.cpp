@@ -604,6 +604,15 @@ namespace gnote {
     return MainWindowAction::Ptr();
   }
 
+  void NoteRecentChanges::enabled(bool is_enabled)
+  {
+    for(auto & iter : m_actions) {
+      if(iter.second->is_modifying()) {
+        iter.second->set_enabled(is_enabled);
+      }
+    }
+  }
+
   EmbeddableWidget *NoteRecentChanges::currently_embedded()
   {
     std::vector<Gtk::Widget*> children = m_embed_box.get_children();
