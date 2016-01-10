@@ -17,7 +17,7 @@ endif
 
 SUBDIRS = data $(LIBTOMBOYDIR) src po help
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --disable-scrollkeeper --without-cxx11-support --with-x11-support
+DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --disable-scrollkeeper --with-x11-support
 
 # Ignore scrollkeeper issues for now.  @#*$& scrollkeeper (from Evince)
 
