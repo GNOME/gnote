@@ -62,12 +62,7 @@ LT_INIT([disable-static])
 
 AC_LANG_CPLUSPLUS
 AC_LANG_COMPILER_REQUIRE
-
-AC_ARG_WITH(cxx11_support, [  --with-cxx11-support    Compile with C++11 support, if available.],[cxx11_required="${withval}"],[cxx11_required="optional"])
-case "$cxx11_required" in
-  yes) AX_CXX_COMPILE_STDCXX_11([], [mandatory]) ;;
-  optional) AX_CXX_COMPILE_STDCXX_11([], [optional]) ;;
-esac
+AX_CXX_COMPILE_STDCXX_11([], [mandatory])
 
 AC_CHECK_PROG(HAVE_DESKTOP_FILE_VALIDATE, [desktop-file-validate], [yes], [no])
 if test $HAVE_DESKTOP_FILE_VALIDATE == "no"; then
@@ -98,19 +93,6 @@ BOOST_REQUIRE([$BOOST_VERSION])
 BOOST_BIND
 BOOST_FORMAT
 BOOST_TEST([s])
-
-if test $HAVE_CXX11 == 1; then
-  cxx11_support="yes";
-else
-  cxx11_support="no";
-  BOOST_CONVERSION
-  BOOST_FOREACH
-  AC_CHECK_HEADER(tr1/memory,,[
-	CXXFLAGS="$CXXFLAGS -I/usr/include/boost/tr1";
-	AC_MSG_NOTICE([using boost tr1 implementation.])
-])
-fi
-
 
 AC_LANG_PUSH(C++)
 if test "$GCC" = "yes"; then
@@ -230,7 +212,6 @@ AC_OUTPUT
 echo "
 Options:
 
-  C++11 support:               ${cxx11_support}
   Spellchecking support:       ${FIXED_GTKSPELL}
   X11 support:                 ${with_x11_support}
 
