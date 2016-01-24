@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -117,8 +117,6 @@ public:
     {
       return *m_manager;
     }
-
-  void setup_global_actions();
 
   void on_quit_gnote_action(const Glib::VariantBase&);
   void on_preferences_response(int res);

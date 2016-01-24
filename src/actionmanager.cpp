@@ -67,9 +67,7 @@
 namespace gnote {
 
   ActionManager::ActionManager()
-    : m_main_window_actions(Gtk::ActionGroup::create("MainWindow"))
   {
-    populate_action_groups();
     make_app_actions();
     make_app_menu_items();
 
@@ -81,57 +79,6 @@ namespace gnote {
     register_main_window_action("move-to-notebook", &Glib::Variant<Glib::ustring>::variant_type(), false);
   }
 
-
-  void ActionManager::populate_action_groups()
-  {
-    Glib::RefPtr<Gtk::Action> action;
-
-    action = Gtk::Action::create(
-      "QuitGNoteAction", Gtk::Stock::QUIT,
-      _("_Quit"), _("Quit Gnote"));
-    m_main_window_actions->add(action, Gtk::AccelKey("<Control>Q"));
-
-    action = Gtk::Action::create(
-      "ShowPreferencesAction", Gtk::Stock::PREFERENCES,
-      _("_Preferences"), _("Gnote Preferences"));
-    m_main_window_actions->add(action);
-
-    action = Gtk::Action::create("ShowHelpAction", Gtk::Stock::HELP,
-      _("_Contents"), _("Gnote Help"));
-    m_main_window_actions->add(action, Gtk::AccelKey("F1"));
-
-    action = Gtk::Action::create(
-      "ShowAboutAction", Gtk::Stock::ABOUT,
-      _("_About"), _("About Gnote"));
-    m_main_window_actions->add(action);
-
-    action = Gtk::Action::create(
-      "TrayIconMenuAction",  _("TrayIcon"));
-    m_main_window_actions->add(action);
-
-    action = Gtk::Action::create(
-      "TrayNewNoteAction", Gtk::Stock::NEW,
-      _("Create _New Note"), _("Create a new note"));
-    m_main_window_actions->add(action);
-
-    action = Gtk::Action::create(
-      "ShowSearchAllNotesAction", Gtk::Stock::FIND,
-      _("_Search All Notes"),  _("Open the Search All Notes window"));
-    m_main_window_actions->add(action);
-  }
-
-  Glib::RefPtr<Gtk::Action> ActionManager::find_action_by_name(const std::string & n) const
-  {
-    Glib::ListHandle<Glib::RefPtr<Gtk::Action> > actions = m_main_window_actions->get_actions();
-    for(Glib::ListHandle<Glib::RefPtr<Gtk::Action> >::const_iterator iter2(actions.begin()); 
-        iter2 != actions.end(); ++iter2) {
-      if((*iter2)->get_name() == n) {
-        return *iter2;
-      }
-    }
-    DBG_OUT("%s not found", n.c_str());
-    return Glib::RefPtr<Gtk::Action>();      
-  }
 
   void ActionManager::make_app_actions()
   {

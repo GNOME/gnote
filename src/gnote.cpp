@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2016 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -144,17 +144,12 @@ namespace gnote {
     new ActionManager;
     sync::SyncManager::init(default_note_manager());
 
-    setup_global_actions();
     m_manager->get_addin_manager().initialize_application_addins();
   }
 
 
   void Gnote::end_main(bool bus_acquired, bool name_acquired)
   {
-    IActionManager & am(IActionManager::obj());
-    if((m_is_background = cmd_line.background())) {
-      am["QuitGNoteAction"]->set_visible(false);
-    }
     m_is_shell_search = cmd_line.shell_search();
     if(cmd_line.needs_execute()) {
       cmd_line.execute();
@@ -233,23 +228,6 @@ namespace gnote {
                                         sigc::mem_fun(*this, &Gnote::end_main));
   }
 
-
-  void Gnote::setup_global_actions()
-  {
-    IActionManager & am(IActionManager::obj());
-    am["QuitGNoteAction"]->signal_activate()
-      .connect(sigc::mem_fun(*this, &Gnote::quit));
-    am["ShowPreferencesAction"]->signal_activate().connect(
-      boost::bind(sigc::mem_fun(*this, &Gnote::on_show_preferences_action), Glib::VariantBase()));
-    am["ShowHelpAction"]->signal_activate()
-      .connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_show_help_action), Glib::VariantBase()));
-    am["ShowAboutAction"]->signal_activate()
-      .connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_show_about_action), Glib::VariantBase()));
-    am["TrayNewNoteAction"]->signal_activate()
-      .connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_new_note_app_action), Glib::VariantBase()));
-    am["ShowSearchAllNotesAction"]->signal_activate()
-      .connect(sigc::mem_fun(*this, &Gnote::open_search_all));
-  }
 
   void Gnote::on_quit_gnote_action(const Glib::VariantBase&)
   {

@@ -52,8 +52,6 @@ public:
 
   virtual ~IActionManager();
 
-  virtual Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const = 0;
-
   virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const = 0;
   virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const std::string & name) = 0;
   virtual void add_app_menu_item(int section, int order, const std::string & label,

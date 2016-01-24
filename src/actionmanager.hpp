@@ -41,13 +41,6 @@ class ActionManager
 public:
   ActionManager();
 
-  virtual Glib::RefPtr<Gtk::Action> operator[](const std::string & n) const override
-    {
-      return find_action_by_name(n);
-    }
-  void populate_action_groups();
-  Glib::RefPtr<Gtk::Action> find_action_by_name(const std::string & n) const;
-
   virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const override;
   const std::vector<Glib::RefPtr<Gio::SimpleAction> > & get_app_actions() const
     {
@@ -70,8 +63,6 @@ private:
   void make_app_actions();
   void make_app_menu_items();
   Glib::RefPtr<Gio::Menu> make_app_menu_section(int section) const;
-
-  Glib::RefPtr<Gtk::ActionGroup> m_main_window_actions;
 
   std::vector<Glib::RefPtr<Gio::SimpleAction> > m_app_actions;
 
