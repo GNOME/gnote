@@ -22,8 +22,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-01 11:17+0000\n"
-"PO-Revision-Date: 2016-01-01 21:44+0100\n"
+"POT-Creation-Date: 2016-01-24 12:57+0000\n"
+"PO-Revision-Date: 2016-01-24 17:37+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -52,7 +52,7 @@ msgstr ""
 "Gnote unterstützt ebenfalls ein Abgleichen Ihrer Daten auf mehreren Geräten."
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:521
+#: ../src/recentchanges.cpp:525
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -584,75 +584,35 @@ msgstr ""
 "Zeitintervall zwischen Prüfungen des Notizordners (in Sekunden). Kleinster "
 "Wert ist 5."
 
-#: ../src/actionmanager.cpp:91 ../src/actionmanager.cpp:178
-msgid "_Quit"
-msgstr "_Beenden"
-
-#: ../src/actionmanager.cpp:91
-msgid "Quit Gnote"
-msgstr "Gnote beenden"
-
-#: ../src/actionmanager.cpp:96 ../src/actionmanager.cpp:175
-msgid "_Preferences"
-msgstr "_Einstellungen"
-
-#: ../src/actionmanager.cpp:96 ../src/preferencesdialog.cpp:103
-msgid "Gnote Preferences"
-msgstr "Gnote-Einstellungen"
-
-#: ../src/actionmanager.cpp:100
-msgid "_Contents"
-msgstr "_Inhalt"
-
-#: ../src/actionmanager.cpp:100
-msgid "Gnote Help"
-msgstr "Gnote-Hilfe"
-
-#: ../src/actionmanager.cpp:105 ../src/actionmanager.cpp:177
-msgid "_About"
-msgstr "_Info"
-
-#: ../src/actionmanager.cpp:105
-msgid "About Gnote"
-msgstr "Info zu Gnote"
-
-#: ../src/actionmanager.cpp:109
-msgid "TrayIcon"
-msgstr "Benachrichtigungsfeld"
-
-#: ../src/actionmanager.cpp:114
-msgid "Create _New Note"
-msgstr "_Neue Notiz anlegen"
-
-#: ../src/actionmanager.cpp:114
-msgid "Create a new note"
-msgstr "Eine neue Notiz anlegen"
-
-#: ../src/actionmanager.cpp:119
-msgid "_Search All Notes"
-msgstr "_Alle Notizen durchsuchen"
-
-#: ../src/actionmanager.cpp:119
-msgid "Open the Search All Notes window"
-msgstr "Fenster zum Durchsuchen aller Notizen öffnen"
-
-#: ../src/actionmanager.cpp:173
+#: ../src/actionmanager.cpp:120
 msgid "_New Note"
 msgstr "_Neue Notiz"
 
-#: ../src/actionmanager.cpp:174
+#: ../src/actionmanager.cpp:121
 msgid "New _Window"
 msgstr "Neues _Fenster"
 
-#: ../src/actionmanager.cpp:176
+#: ../src/actionmanager.cpp:122
+msgid "_Preferences"
+msgstr "_Einstellungen"
+
+#: ../src/actionmanager.cpp:123
 msgid "_Help"
 msgstr "_Hilfe"
+
+#: ../src/actionmanager.cpp:124
+msgid "_About"
+msgstr "_Info"
+
+#: ../src/actionmanager.cpp:125
+msgid "_Quit"
+msgstr "_Beenden"
 
 #: ../src/addininfo.cpp:74
 msgid "Failed to load plugin information!"
 msgstr "Erweiterungsinformationen konnten nicht geladen werden!"
 
-#: ../src/addininfo.cpp:141
+#: ../src/addininfo.cpp:148
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Inkompatible Erweiterung %s: erwartet wurde %s, erhalten %s"
@@ -697,14 +657,6 @@ msgstr "Scheitern beim Laden der Erweiterungsinformationen für %s: %s"
 msgid "Trying to load addins when they are already loaded"
 msgstr "Versuch die Addins zu laden, die bereits geladen sind"
 
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
-msgid "What links here?"
-msgstr "Was verweist hierauf?"
-
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:42
-msgid "Which notes have links to here?"
-msgstr "Welche Notizen verweisen hierauf?"
-
 #: ../src/addins/backlinks/backlinks.desktop.in.in.h:1
 msgid "Backlinks"
 msgstr "Backlinks"
@@ -720,9 +672,19 @@ msgstr ""
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere und das Tomboy-Projekt"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:86
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:76
+msgid "What links here?"
+msgstr "Was verweist hierauf?"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:101
 msgid "(none)"
 msgstr " (kein)"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:109
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/notebooks/notebooknoteaddin.cpp:179
+msgid "_Back"
+msgstr "_Zurück"
 
 #: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:1
 msgid "Bugzilla Links"
@@ -804,7 +766,7 @@ msgid "Error removing icon %s: %s"
 msgstr "Fehler beim Entfernen des Symbols %s: %s"
 
 #: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:1
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:71
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:78
 msgid "Export to Getting Things GNOME"
 msgstr "Exportieren nach »Dinge erledigen«"
 
@@ -818,30 +780,26 @@ msgstr "Individuelle Notizen als Aufgaben für »Dinge erledigen« exportieren"
 msgid "Aurimas Černius"
 msgstr "Aurimas Černius"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:72
-msgid "Export note as Getting Things GNOME task"
-msgstr "Notiz als Aufgabe für »Dinge erledigen« exportieren"
-
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:86
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:91
 msgid "GTG XML loaded, but interface not found"
 msgstr "GTG XML geladen, aber die Schnittstelle wurde nicht gefunden"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:92
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:97
 #, c-format
 msgid "Failed to create GTG interface from XML: %s"
 msgstr "Erstellen der GTG-Schnittstelle aus XML schlug fehl: %s"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:105
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Erstellen des D-Bus-Proxy für GTG schlug fehl"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:116
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:121
 #, c-format
 msgid "Failed to call GTG: %s"
 msgstr "Aufruf von GTG schlug fehl: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:83
 msgid "Export to HTML"
 msgstr "HTML exportieren"
 
@@ -861,30 +819,26 @@ msgstr "Verknüpfte Notizen exportieren"
 msgid "Include all other linked notes"
 msgstr "Alle anderen verknüpften Notizen einschließen"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:77
-msgid "Export note to HTML"
-msgstr "Notiz als HTML exportieren"
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:117
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:122
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Die exportierte Notiz konnte nicht im Webbrowser geöffnet werden: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:126
 msgid "Your note was exported to \"%1%\"."
 msgstr "Ihre Notiz wurde nach »%1%« exportiert."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:130
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:135
 msgid "Note exported successfully"
 msgstr "Notizen wurden erfolgreich exportiert"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:144
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:152
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:149
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:157
 #, c-format
 msgid "Could not export: %s"
 msgstr "Es konnte nicht exportiert werden: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:155
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Datei »%s« konnte nicht gespeichert werden."
@@ -938,17 +892,13 @@ msgid "Fixed Wid_th"
 msgstr "Feste _Breite"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
 msgid "Insert Timestamp"
 msgstr "Zeitstempel einfügen"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Fügt die aktuelle Zeit und das Datum an der Position des Cursors ein."
-
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
-msgid "Insert Timestamp into note"
-msgstr "Zeitstempel in Notiz einfügen"
 
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:70
@@ -1077,25 +1027,21 @@ msgstr "Druckunterstützung"
 msgid "Allows you to print a note."
 msgstr "Ermöglicht Ihnen das Drucken einer Notiz."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:65
 msgid "Print"
 msgstr "Drucken"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
-msgid "Print note"
-msgstr "Notiz drucken"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:113
 msgid "Error printing note"
 msgstr "Fehler beim Drucken der Notiz."
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:280
 msgid "Page %1% of %2%"
 msgstr "Seite %1% von %2%"
 
 #: ../src/addins/readonly/readonly.desktop.in.in.h:1
-#: ../src/addins/readonly/readonlynoteaddin.cpp:53
+#: ../src/addins/readonly/readonlynoteaddin.cpp:69
 msgid "Read Only"
 msgstr "Nur lesen"
 
@@ -1107,12 +1053,8 @@ msgstr "Bestimmte Notizen als nur lesbar markieren"
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray und Arief Bayu Purwanto"
 
-#: ../src/addins/readonly/readonlynoteaddin.cpp:54
-msgid "Make this note read-only"
-msgstr "Diese Notiz als nur lesbar festlegen"
-
 #: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:1
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:51
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:53
 msgid "Replace title"
 msgstr "Titel ersetzen"
 
@@ -1200,7 +1142,7 @@ msgstr "Klebezettel:"
 
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
 #: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:67
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:138
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:129
 msgid "Table of Contents"
 msgstr "Inhalt"
 
@@ -1221,28 +1163,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:160
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:229
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:151
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
 msgid "Heading 1"
 msgstr "Überschrift 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:164
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:235
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:226
 msgid "Heading 2"
 msgstr "Überschrift 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:168
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:241
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:159
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:232
 msgid "Table of Contents Help"
 msgstr "Hilfe zum Inhaltsverzeichnis"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:175
-#: ../src/notebooks/notebooknoteaddin.cpp:179
-msgid "_Back"
-msgstr "_Zurück"
-
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:214
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:205
 msgid "(empty table of contents)"
 msgstr "(leeres Inhaltsverzeichnis)"
 
@@ -1351,15 +1288,15 @@ msgstr "Entfernter Aufruf von %s schlug fehl"
 msgid "Exception thrown when creating note: %s"
 msgstr "Ausnahme trat beim Erstellen der Notiz auf: %s"
 
-#: ../src/gnote.cpp:185
+#: ../src/gnote.cpp:180
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote läuft bereits. Beenden …"
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:273
 msgid "and Tomboy original authors."
 msgstr "und die Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:301
+#: ../src/gnote.cpp:279
 msgid "translator-credits"
 msgstr ""
 "Philipp Meier <meier@fnogol.de>\n"
@@ -1371,91 +1308,91 @@ msgstr ""
 "Benjamin Steinwender <b@stbe.at>\n"
 "Bernd Homuth <dev@hmt.im>"
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:288
 msgid ""
-"Copyright © 2010-2015 Aurimas Cernius\n"
+"Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2015 Aurimas Cernius\n"
+"Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Originalautoren von Tomboy."
 
-#: ../src/gnote.cpp:314
+#: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Eine einfache und leicht bedienbare Anwendung für Notizen"
 
-#: ../src/gnote.cpp:325
+#: ../src/gnote.cpp:303
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/gnote.cpp:500
+#: ../src/gnote.cpp:478
 msgid "Run Gnote in background."
 msgstr "Gnote im Hintergrund ausführen."
 
-#: ../src/gnote.cpp:501
+#: ../src/gnote.cpp:479
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Gnote als Suchanbieter in der GNOME-Shell ausführen."
 
-#: ../src/gnote.cpp:502
+#: ../src/gnote.cpp:480
 msgid "Specify the path of the directory containing the notes."
 msgstr "Pfad zum Ordner angeben, der die Notizen enthält."
 
-#: ../src/gnote.cpp:502
+#: ../src/gnote.cpp:480
 msgid "path"
 msgstr "path"
 
-#: ../src/gnote.cpp:503
+#: ../src/gnote.cpp:481
 msgid "Open the search all notes window with the search text."
 msgstr "Fenster zum Durchsuchen aller Notizen öffnen."
 
-#: ../src/gnote.cpp:503 ../src/gnote.cpp:508
+#: ../src/gnote.cpp:481 ../src/gnote.cpp:486
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:504
+#: ../src/gnote.cpp:482
 msgid "Print version information."
 msgstr "Versionsinformationen anzeigen."
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:483
 msgid "Create and display a new note, with a optional title."
 msgstr "Eine neue Notiz anlegen und anzeigen, mit einem optionalen Titel."
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:483
 msgid "title"
 msgstr "title"
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:484
 msgid "Display the existing note matching title."
 msgstr "Eine vorhandene Notiz dieses Titels anzeigen."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:484
 msgid "title/url"
 msgstr "title/url"
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:485
 msgid "Display the 'Start Here' note."
 msgstr "Zeigt die »Hier starten«-Notiz an."
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:486
 msgid "Search and highlight text in the opened note."
 msgstr "Text in einer geöffneten Notiz suchen und hervorheben."
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:490
 msgid "A note taking application"
 msgstr "Eine Notizzettel-Anwendung"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:490
 msgid "Gnote options at launch"
 msgstr "Optionen beim Start von Gnote"
 
-#: ../src/gnote.cpp:589
+#: ../src/gnote.cpp:567
 msgid "Could not connect to remote instance."
 msgstr "Es konnte nicht mit der entfernten Instanz verbunden werden."
 
-#: ../src/gnote.cpp:705
+#: ../src/gnote.cpp:683
 msgid "Version %1%"
 msgstr "Version %1%"
 
@@ -1465,11 +1402,11 @@ msgstr "Version %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Fehler beim Laden des Symbols (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:98 ../src/noteaddin.cpp:112 ../src/noteaddin.cpp:125
+#: ../src/noteaddin.cpp:124 ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:151
 msgid "Plugin is disposing already"
 msgstr "Erweiterung wird bereits aufgeräumt"
 
-#: ../src/noteaddin.cpp:129
+#: ../src/noteaddin.cpp:155
 msgid "Window is not embedded"
 msgstr "Fenster ist nicht eingebettet"
 
@@ -1869,6 +1806,10 @@ msgstr "_Klein"
 msgid "Bullets"
 msgstr "Aufzählungspunkte"
 
+#: ../src/preferencesdialog.cpp:103
+msgid "Gnote Preferences"
+msgstr "Gnote-Einstellungen"
+
 #: ../src/preferencesdialog.cpp:121
 msgid "General"
 msgstr "Allgemein"
@@ -2122,27 +2063,27 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:147
+#: ../src/recentchanges.cpp:151
 msgid "All Notes"
 msgstr "Alle Notizen"
 
-#: ../src/recentchanges.cpp:153
+#: ../src/recentchanges.cpp:157
 msgid "New"
 msgstr "Neu"
 
-#: ../src/recentchanges.cpp:174
+#: ../src/recentchanges.cpp:178
 msgid "Search"
 msgstr "Suchen"
 
-#: ../src/recentchanges.cpp:233
+#: ../src/recentchanges.cpp:237
 msgid "Find _Next"
 msgstr "_Nächster Treffer"
 
-#: ../src/recentchanges.cpp:241
+#: ../src/recentchanges.cpp:245
 msgid "Find _Previous"
 msgstr "_Vorheriger Treffer"
 
-#: ../src/recentchanges.cpp:764
+#: ../src/recentchanges.cpp:777
 msgid "_Close"
 msgstr "S_chließen"
 
@@ -2704,6 +2645,51 @@ msgstr "Link-Adresse _kopieren"
 #: ../src/watchers.cpp:713
 msgid "_Open Link"
 msgstr "Link ö_ffnen"
+
+#~ msgid "Quit Gnote"
+#~ msgstr "Gnote beenden"
+
+#~ msgid "_Contents"
+#~ msgstr "_Inhalt"
+
+#~ msgid "Gnote Help"
+#~ msgstr "Gnote-Hilfe"
+
+#~ msgid "About Gnote"
+#~ msgstr "Info zu Gnote"
+
+#~ msgid "TrayIcon"
+#~ msgstr "Benachrichtigungsfeld"
+
+#~ msgid "Create _New Note"
+#~ msgstr "_Neue Notiz anlegen"
+
+#~ msgid "Create a new note"
+#~ msgstr "Eine neue Notiz anlegen"
+
+#~ msgid "_Search All Notes"
+#~ msgstr "_Alle Notizen durchsuchen"
+
+#~ msgid "Open the Search All Notes window"
+#~ msgstr "Fenster zum Durchsuchen aller Notizen öffnen"
+
+#~ msgid "Which notes have links to here?"
+#~ msgstr "Welche Notizen verweisen hierauf?"
+
+#~ msgid "Export note as Getting Things GNOME task"
+#~ msgstr "Notiz als Aufgabe für »Dinge erledigen« exportieren"
+
+#~ msgid "Export note to HTML"
+#~ msgstr "Notiz als HTML exportieren"
+
+#~ msgid "Insert Timestamp into note"
+#~ msgstr "Zeitstempel in Notiz einfügen"
+
+#~ msgid "Print note"
+#~ msgstr "Notiz drucken"
+
+#~ msgid "Make this note read-only"
+#~ msgstr "Diese Notiz als nur lesbar festlegen"
 
 #~ msgid "Create a new note in a notebook"
 #~ msgstr "Eine neue Notiz in einem Notizbuch anlegen"
