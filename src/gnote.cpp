@@ -285,7 +285,7 @@ namespace gnote {
     about.set_program_name("Gnote");
     about.set_version(VERSION);
     about.set_logo(IconManager::obj().get_icon(IconManager::GNOTE, 48));
-    about.set_copyright(_("Copyright \xc2\xa9 2010-2015 Aurimas Cernius\n"
+    about.set_copyright(_("Copyright \xc2\xa9 2010-2016 Aurimas Cernius\n"
                           "Copyright \xc2\xa9 2009-2011 Debarshi Ray\n"
                           "Copyright \xc2\xa9 2009 Hubert Figuiere\n"
                           "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
