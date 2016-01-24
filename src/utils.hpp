@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -41,10 +41,6 @@
 #include "base/macros.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/uri.hpp"
-
-#ifdef HAVE_X11_SUPPORT
-#include "libtomboy/tomboyutil.h"
-#endif
 
 namespace sharp {
   class DateTime;
@@ -252,11 +248,7 @@ namespace gnote {
 
       void present()
         {
-#ifdef HAVE_X11_SUPPORT
-          ::tomboy_window_present_hardcore(GTK_WINDOW(gobj()));
-#else
           Gtk::ApplicationWindow::present();
-#endif
         }
     };
 
