@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015 Aurimas Cernius
+ * Copyright (C) 2013,2015-2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -136,9 +136,9 @@ bool MainWindow::use_client_side_decorations()
 
 
 MainWindow::MainWindow(const std::string & title)
-  : utils::ForcedPresentWindow(title)
-  , m_close_on_esc(false)
+  : m_close_on_esc(false)
 {
+  set_title(title);
 }
 
 }

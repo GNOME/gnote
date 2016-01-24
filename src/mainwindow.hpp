@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015 Aurimas Cernius
+ * Copyright (C) 2013,2015-2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
 namespace gnote {
 
 class MainWindow
-  : public utils::ForcedPresentWindow
+  : public Gtk::ApplicationWindow
   , public EmbeddableWidgetHost
 {
 public:

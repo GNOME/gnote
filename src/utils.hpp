@@ -236,22 +236,6 @@ namespace gnote {
       guint m_timeout_id;
     };
 
-    class ForcedPresentWindow 
-      : public Gtk::ApplicationWindow
-    {
-    public:
-      ForcedPresentWindow(const Glib::ustring & title)
-        : Gtk::ApplicationWindow()
-        {
-          Gtk::ApplicationWindow::set_title(title);
-        }
-
-      void present()
-        {
-          Gtk::ApplicationWindow::present();
-        }
-    };
-
     class ToolMenuButton
       : public Gtk::ToggleToolButton
     {
