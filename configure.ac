@@ -128,11 +128,6 @@ else
 fi
 AC_SUBST(DBUS_SERVICE_DIR)
 
-AC_ARG_WITH(x11_support, [  --with-x11-support      Compile with X11 support.],
-            [with_x11_support=yes;AC_DEFINE(HAVE_X11_SUPPORT, [1], [Define to 1 to include X11 support.])],
-            [with_x11_support=no])
-AM_CONDITIONAL(HAVE_X11_SUPPORT, test "x$with_x11_support" != "x")
-
 
 IT_PROG_INTLTOOL([0.35.0])
 
@@ -213,6 +208,5 @@ echo "
 Options:
 
   Spellchecking support:       ${FIXED_GTKSPELL}
-  X11 support:                 ${with_x11_support}
 
 "
