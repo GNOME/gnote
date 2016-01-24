@@ -88,7 +88,7 @@ private:
   };
   typedef std::multimap<int, AppMenuItem> AppMenuItemMultiMap;
   AppMenuItemMultiMap m_app_menu_items;
-  std::map<Glib::ustring, const Glib::VariantType*> m_main_window_actions2;
+  std::map<Glib::ustring, const Glib::VariantType*> m_main_window_actions;
   std::vector<Glib::ustring> m_non_modifying_actions;
   std::map<std::string, std::pair<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>>> m_main_window_search_actions;
 };

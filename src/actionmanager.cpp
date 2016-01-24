@@ -172,14 +172,14 @@ namespace gnote {
 
   void ActionManager::register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type, bool modifying)
   {
-    if(m_main_window_actions2.find(action) == m_main_window_actions2.end()) {
-      m_main_window_actions2[action] = state_type;
+    if(m_main_window_actions.find(action) == m_main_window_actions.end()) {
+      m_main_window_actions[action] = state_type;
       if(!modifying) {
         m_non_modifying_actions.push_back(action);
       }
     }
     else {
-      if(m_main_window_actions2[action] != state_type) {
+      if(m_main_window_actions[action] != state_type) {
         ERR_OUT("Action %s already registerred with different state type", action.c_str());
       }
     }
@@ -187,7 +187,7 @@ namespace gnote {
 
   std::map<Glib::ustring, const Glib::VariantType*> ActionManager::get_main_window_actions() const
   {
-    return m_main_window_actions2;
+    return m_main_window_actions;
   }
 
   bool ActionManager::is_modifying_main_window_action(const Glib::ustring & action) const
