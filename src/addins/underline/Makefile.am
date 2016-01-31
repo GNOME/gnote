@@ -7,11 +7,11 @@ desktop_in_files = underline.desktop.in
 desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 
 addinsdir = $(ADDINSDIR)
-addins_LTLIBRARIES = underline.la
+addins_LTLIBRARIES = libunderline.la
 addins_DATA = $(desktop_files)
 
 
-underline_la_SOURCES = underlinenoteaddin.hpp underlinenoteaddin.cpp \
+libunderline_la_SOURCES = underlinenoteaddin.hpp underlinenoteaddin.cpp \
 	underlinetag.hpp \
 	underlinemenuitem.hpp underlinemenuitem.cpp \
 	$(NULL)

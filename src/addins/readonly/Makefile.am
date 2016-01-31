@@ -7,10 +7,10 @@ desktop_in_files = readonly.desktop.in
 desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 
 addinsdir = $(ADDINSDIR)
-addins_LTLIBRARIES = readonly.la
+addins_LTLIBRARIES = libreadonly.la
 addins_DATA = $(desktop_files)
 
-readonly_la_SOURCES = \
+libreadonly_la_SOURCES = \
 	readonlynoteaddin.hpp \
 	readonlynoteaddin.cpp \
 	$(NULL)

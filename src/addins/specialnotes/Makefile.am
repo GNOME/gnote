@@ -7,10 +7,10 @@ desktop_in_files = specialnotes.desktop.in
 desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 
 addinsdir = $(ADDINSDIR)
-addins_LTLIBRARIES = specialnotes.la
+addins_LTLIBRARIES = libspecialnotes.la
 addins_DATA = $(desktop_files)
 
-specialnotes_la_SOURCES = \
+libspecialnotes_la_SOURCES = \
 	specialnotesapplicationaddin.hpp \
 	specialnotesapplicationaddin.cpp \
 	$(NULL)
