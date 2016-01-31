@@ -149,7 +149,6 @@ data/Makefile
 data/gnote.desktop.in
 data/icons/Makefile
 data/appdata/Makefile
-libtomboy/Makefile
 src/Makefile
 src/addins/Makefile
 src/addins/addins.mk
