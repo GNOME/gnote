@@ -1,7 +1,7 @@
 AC_INIT(gnote, 3.19.0)
 AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR(README)
-AM_INIT_AUTOMAKE([1.11 foreign dist-xz no-dist-gzip tar-ustar])
+AM_INIT_AUTOMAKE([1.11 foreign subdir-objects dist-xz no-dist-gzip tar-ustar])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
 
