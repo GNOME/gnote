@@ -9,15 +9,15 @@
 # Pavel Šefránek <ps@pjoul.cz>, 2008, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2008, 2009.
 # Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009.
-# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-24 23:15+0000\n"
-"PO-Revision-Date: 2015-12-25 08:42+0100\n"
+"POT-Creation-Date: 2016-02-03 11:18+0000\n"
+"PO-Revision-Date: 2016-02-03 13:30+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -47,7 +47,7 @@ msgstr ""
 "zařízeních naráz."
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:518
+#: ../src/recentchanges.cpp:525
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -559,125 +559,77 @@ msgstr ""
 "Časový interval mezi kontrolami složky s poznámkami (v sekundách). Nejnižší "
 "možná hodnota je 5."
 
-#: ../src/actionmanager.cpp:91 ../src/actionmanager.cpp:178
-msgid "_Quit"
-msgstr "U_končit"
-
-#: ../src/actionmanager.cpp:91
-msgid "Quit Gnote"
-msgstr "Ukončit Gnote"
-
-#: ../src/actionmanager.cpp:96 ../src/actionmanager.cpp:175
-msgid "_Preferences"
-msgstr "_Předvolby"
-
-#: ../src/actionmanager.cpp:96 ../src/preferencesdialog.cpp:103
-msgid "Gnote Preferences"
-msgstr "Předvolby Gnote"
-
-#: ../src/actionmanager.cpp:100
-msgid "_Contents"
-msgstr "_Obsah"
-
-#: ../src/actionmanager.cpp:100
-msgid "Gnote Help"
-msgstr "Nápověda pro Gnote"
-
-#: ../src/actionmanager.cpp:105 ../src/actionmanager.cpp:177
-msgid "_About"
-msgstr "O _aplikaci"
-
-#: ../src/actionmanager.cpp:105
-msgid "About Gnote"
-msgstr "O aplikaci Gnote"
-
-#: ../src/actionmanager.cpp:109
-msgid "TrayIcon"
-msgstr "Ikona v panelu"
-
-#: ../src/actionmanager.cpp:114
-msgid "Create _New Note"
-msgstr "Vytvořit _novou poznámku"
-
-#: ../src/actionmanager.cpp:114
-msgid "Create a new note"
-msgstr "Vytvořit novou poznámku"
-
-#: ../src/actionmanager.cpp:119
-msgid "_Search All Notes"
-msgstr "_Hledat ve všech poznámkách"
-
-#: ../src/actionmanager.cpp:119
-msgid "Open the Search All Notes window"
-msgstr "Otevřít okno Hledat ve všech poznámkách"
-
-#: ../src/actionmanager.cpp:173
+#: ../src/actionmanager.cpp:120
 msgid "_New Note"
 msgstr "_Nová poznámka"
 
-#: ../src/actionmanager.cpp:174
+#: ../src/actionmanager.cpp:121
 msgid "New _Window"
 msgstr "No_vé okno"
 
-#: ../src/actionmanager.cpp:176
+#: ../src/actionmanager.cpp:122
+msgid "_Preferences"
+msgstr "_Předvolby"
+
+#: ../src/actionmanager.cpp:123
 msgid "_Help"
 msgstr "Nápo_věda"
+
+#: ../src/actionmanager.cpp:124
+msgid "_About"
+msgstr "O _aplikaci"
+
+#: ../src/actionmanager.cpp:125
+msgid "_Quit"
+msgstr "U_končit"
 
 #: ../src/addininfo.cpp:74
 msgid "Failed to load plugin information!"
 msgstr "Selhalo načtení informací o zásuvném modulu!"
 
-#: ../src/addininfo.cpp:124
+#: ../src/addininfo.cpp:148
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Nekompatibilní zásuvný modul %s: očekáván %s, obdržen %s"
 
-#: ../src/addinmanager.cpp:133
+#: ../src/addinmanager.cpp:134
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Informace o zásuvném modulu %s pro poznámky jsou již přítomny"
 
-#: ../src/addinmanager.cpp:141
+#: ../src/addinmanager.cpp:142
 #, c-format
 msgid "%s does not implement %s"
 msgstr "Doplněk %s neimplementuje rozhraní %s"
 
-#: ../src/addinmanager.cpp:156
+#: ../src/addinmanager.cpp:157
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Zásuvný modul %s pro poznámky je již přítomen"
 
-#: ../src/addinmanager.cpp:174
+#: ../src/addinmanager.cpp:175
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Informace o zásuvném modulu %s pro poznámky schází"
 
-#: ../src/addinmanager.cpp:187
+#: ../src/addinmanager.cpp:188
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Zásuvný modul %s pro poznámky schází"
 
-#: ../src/addinmanager.cpp:224
+#: ../src/addinmanager.cpp:225
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Selhalo vyhledání modulu %s pro doplněk %s"
 
-#: ../src/addinmanager.cpp:228
+#: ../src/addinmanager.cpp:229
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Selhalo načtení informací o doplňku pro %s: %s"
 
-#: ../src/addinmanager.cpp:352
+#: ../src/addinmanager.cpp:353
 msgid "Trying to load addins when they are already loaded"
 msgstr "Zkouší se načíst doplněk, který je už načten"
-
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
-msgid "What links here?"
-msgstr "Co sem odkazuje?"
-
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:42
-msgid "Which notes have links to here?"
-msgstr "Které poznámky sem odkazují?"
 
 #: ../src/addins/backlinks/backlinks.desktop.in.in.h:1
 msgid "Backlinks"
@@ -694,9 +646,19 @@ msgstr ""
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere a projekt Tomboy"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:86
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:76
+msgid "What links here?"
+msgstr "Co sem odkazuje?"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:101
 msgid "(none)"
 msgstr "(žádná)"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:109
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/notebooks/notebooknoteaddin.cpp:179
+msgid "_Back"
+msgstr "_Zpět"
 
 #: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:1
 msgid "Bugzilla Links"
@@ -776,7 +738,7 @@ msgid "Error removing icon %s: %s"
 msgstr "Chyba při odstraňování ikony %s: %s"
 
 #: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:1
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:71
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:78
 msgid "Export to Getting Things GNOME"
 msgstr "Exportovat do Getting Things GNOME"
 
@@ -790,30 +752,26 @@ msgstr "Exportuje jednotlivé poznámky jako úkoly Getting Things GNOME"
 msgid "Aurimas Černius"
 msgstr "Aurimas Černius"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:72
-msgid "Export note as Getting Things GNOME task"
-msgstr "Exportovat poznámku jako úkol Getting Things GNOME"
-
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:86
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:91
 msgid "GTG XML loaded, but interface not found"
 msgstr "GTG XML je načteno, ale rozhraní nebylo nalezeno"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:92
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:97
 #, c-format
 msgid "Failed to create GTG interface from XML: %s"
 msgstr "Selhalo vytvoření rozhraní GTG z XML: %s"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:105
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Selhalo vytvoření proxy D-Bus pro GTG"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:116
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:121
 #, c-format
 msgid "Failed to call GTG: %s"
 msgstr "Selhalo volání GTG: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:83
 msgid "Export to HTML"
 msgstr "Exportovat do HTML"
 
@@ -833,30 +791,26 @@ msgstr "Exportovat související poznámky"
 msgid "Include all other linked notes"
 msgstr "Zahrnout všechny související poznámky"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:77
-msgid "Export note to HTML"
-msgstr "Exportovat poznámku do HTML"
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:117
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:122
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Nelze otevřít vyexportovanou poznámku ve webovém prohlížeči: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:126
 msgid "Your note was exported to \"%1%\"."
 msgstr "Vaše poznámka byla exportována do „%1%“."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:130
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:135
 msgid "Note exported successfully"
 msgstr "Poznámka úspěšně exportována"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:144
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:152
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:149
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:157
 #, c-format
 msgid "Could not export: %s"
 msgstr "Nelze exportovat: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:155
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Nelze uložit soubor „%s“"
@@ -909,17 +863,13 @@ msgid "Fixed Wid_th"
 msgstr "Pe_vná šířka"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
 msgid "Insert Timestamp"
 msgstr "Vložit časové razítko"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vloží na současnou pozici aktuální datum a čas."
-
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
-msgid "Insert Timestamp into note"
-msgstr "Vložit do poznámky časové razítko"
 
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:70
@@ -1052,25 +1002,21 @@ msgstr "Podpora tisku"
 msgid "Allows you to print a note."
 msgstr "Umožní vám poznámky vytisknout."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:65
 msgid "Print"
 msgstr "Tisk"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
-msgid "Print note"
-msgstr "Vytisknout poznámku"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:113
 msgid "Error printing note"
 msgstr "Chyba při tisku poznámky"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:280
 msgid "Page %1% of %2%"
 msgstr "Strana %1% z %2%"
 
 #: ../src/addins/readonly/readonly.desktop.in.in.h:1
-#: ../src/addins/readonly/readonlynoteaddin.cpp:53
+#: ../src/addins/readonly/readonlynoteaddin.cpp:69
 msgid "Read Only"
 msgstr "Jen ke čtení"
 
@@ -1082,12 +1028,8 @@ msgstr "Označit některé poznámky jen ke čtení"
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray a Arief Bayu Purwanto"
 
-#: ../src/addins/readonly/readonlynoteaddin.cpp:54
-msgid "Make this note read-only"
-msgstr "Nastavit tuto poznámku jen ke čtení"
-
 #: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:1
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:51
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:53
 msgid "Replace title"
 msgstr "Nahradit název"
 
@@ -1108,7 +1050,7 @@ msgstr "Speciální poznámky"
 msgid "Show special notes, that are otherwise hidden"
 msgstr "Zobrazit speciální poznámky, které ostatním zůstanou skryty"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:50
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:70
 msgid "Show Statistics"
 msgstr "Zobrazit statistiky"
 
@@ -1174,11 +1116,9 @@ msgstr "Beze jména"
 msgid "Sticky Note: "
 msgstr "Lepicí poznámka: "
 
-#. namespace
-#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:37
-#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:38
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:66
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:67
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:129
 msgid "Table of Contents"
 msgstr "Obsah"
 
@@ -1198,22 +1138,25 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:140
-msgid "(empty table of contents)"
-msgstr "(prázdný obsah)"
-
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:151
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
 msgid "Heading 1"
 msgstr "Nadpis 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:226
 msgid "Heading 2"
 msgstr "Nadpis 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:167
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:159
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:232
 msgid "Table of Contents Help"
 msgstr "Nápověda k obsahu"
+
+#. no toc items, and no action entries = empty menu
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:205
+msgid "(empty table of contents)"
+msgstr "(prázdný obsah)"
 
 #. namespace
 #: ../src/addins/todo/todo.desktop.in.in.h:1
@@ -1318,15 +1261,15 @@ msgstr "Vzdálené volání funkce %s selhalo"
 msgid "Exception thrown when creating note: %s"
 msgstr "Došlo k výjimce při vytváření poznámky: %s"
 
-#: ../src/gnote.cpp:185
+#: ../src/gnote.cpp:180
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote již běží. Ukončuje se…"
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:273
 msgid "and Tomboy original authors."
 msgstr "a původní autoři aplikace Tomboy."
 
-#: ../src/gnote.cpp:301
+#: ../src/gnote.cpp:279
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>, 2005, 2006\n"
@@ -1336,92 +1279,92 @@ msgstr ""
 "Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009\n"
 "Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012"
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:288
 msgid ""
-"Copyright © 2010-2015 Aurimas Cernius\n"
+"Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010 – 2015 Aurimas Cernius\n"
-"Copyright © 2009 – 2011 Debarshi Ray\n"
+"Copyright © 2010 – 2016 Aurimas Cernius\n"
+"Copyright © 2009 – 2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
-"Copyright © 2004 – 2009 původní autoři Tomboy."
+"Copyright © 2004 – 2009 původní autoři Tomboy."
 
-#: ../src/gnote.cpp:314
+#: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 "Jednoduchá a snadno použitelná aplikace pro poznámky na pracovní ploše."
 
-#: ../src/gnote.cpp:325
+#: ../src/gnote.cpp:303
 msgid "Homepage"
 msgstr "Domovská stránka"
 
-#: ../src/gnote.cpp:500
+#: ../src/gnote.cpp:478
 msgid "Run Gnote in background."
 msgstr "Spustit Gnote na pozadí"
 
-#: ../src/gnote.cpp:501
+#: ../src/gnote.cpp:479
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Spustit Gnote jako poskytovatele vyhledávání pro GNOME Shell"
 
-#: ../src/gnote.cpp:502
+#: ../src/gnote.cpp:480
 msgid "Specify the path of the directory containing the notes."
 msgstr "Určit cestu ke složce obsahující poznámky."
 
-#: ../src/gnote.cpp:502
+#: ../src/gnote.cpp:480
 msgid "path"
 msgstr "cesta"
 
-#: ../src/gnote.cpp:503
+#: ../src/gnote.cpp:481
 msgid "Open the search all notes window with the search text."
 msgstr "Otevřít okno Hledat ve všech poznámkách s hledaným textem."
 
-#: ../src/gnote.cpp:503 ../src/gnote.cpp:508
+#: ../src/gnote.cpp:481 ../src/gnote.cpp:486
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:504
+#: ../src/gnote.cpp:482
 msgid "Print version information."
 msgstr "Vypsat informace o verzi."
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:483
 msgid "Create and display a new note, with a optional title."
 msgstr "Vytvořit a zobrazit novou poznámku s volitelným názvem."
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:483
 msgid "title"
 msgstr "název"
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:484
 msgid "Display the existing note matching title."
 msgstr "Zobrazit existující poznámku odpovídající názvem."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:484
 msgid "title/url"
 msgstr "název/url"
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:485
 msgid "Display the 'Start Here' note."
 msgstr "Zobrazit poznámku „Začněte zde“."
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:486
 msgid "Search and highlight text in the opened note."
 msgstr "Hledat a zvýraznit text v otevřené poznámce."
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:490
 msgid "A note taking application"
 msgstr "Aplikace na dělání poznámek"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:490
 msgid "Gnote options at launch"
 msgstr "Volby Gnote při spouštění"
 
-#: ../src/gnote.cpp:589
+#: ../src/gnote.cpp:567
 msgid "Could not connect to remote instance."
 msgstr "Nelze se připojit ke vzdálené instanci."
 
-#: ../src/gnote.cpp:705
+#: ../src/gnote.cpp:683
 msgid "Version %1%"
 msgstr "Verze %1%"
 
@@ -1431,11 +1374,11 @@ msgstr "Verze %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Selhalo načtení ikony (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:122 ../src/noteaddin.cpp:135
+#: ../src/noteaddin.cpp:124 ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:151
 msgid "Plugin is disposing already"
 msgstr "Zásuvný modul byl již zlikvidován"
 
-#: ../src/noteaddin.cpp:139
+#: ../src/noteaddin.cpp:155
 msgid "Window is not embedded"
 msgstr "Okno není vloženo"
 
@@ -1491,11 +1434,11 @@ msgstr "Šablona sešitu %1%"
 msgid "New Note"
 msgstr "Nová poznámka"
 
-#: ../src/notebooks/notebookmanager.cpp:364
+#: ../src/notebooks/notebookmanager.cpp:367
 msgid "Really delete this notebook?"
 msgstr "Opravdu odstranit tento sešit?"
 
-#: ../src/notebooks/notebookmanager.cpp:365
+#: ../src/notebooks/notebookmanager.cpp:368
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1512,18 +1455,14 @@ msgstr "Žádný sešit"
 msgid "New \"%1%\" Note"
 msgstr "Nová poznámka „%1%“"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:107
+#: ../src/notebooks/notebooknoteaddin.cpp:109
 msgid "Notebook"
 msgstr "Sešit"
 
 #. Add new notebook item
-#: ../src/notebooks/notebooknoteaddin.cpp:150
+#: ../src/notebooks/notebooknoteaddin.cpp:151
 msgid "_New notebook..."
 msgstr "Nový _sešit…"
-
-#: ../src/notebooks/notebooknoteaddin.cpp:180
-msgid "_Back"
-msgstr "_Zpět"
 
 #: ../src/notebooks/specialnotebooks.cpp:46
 msgid "All"
@@ -1745,8 +1684,8 @@ msgstr "P_okročilé"
 msgid "Is Important"
 msgstr "Je důležitá"
 
-#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:144
-#: ../src/searchnoteswidget.cpp:147
+#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "O_dstranit"
 
@@ -1829,6 +1768,10 @@ msgstr "_Malé"
 #: ../src/notewindow.cpp:840
 msgid "Bullets"
 msgstr "Odrážky"
+
+#: ../src/preferencesdialog.cpp:103
+msgid "Gnote Preferences"
+msgstr "Předvolby Gnote"
 
 #: ../src/preferencesdialog.cpp:121
 msgid "General"
@@ -2076,27 +2019,27 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:144
+#: ../src/recentchanges.cpp:151
 msgid "All Notes"
 msgstr "Všechny poznámky"
 
-#: ../src/recentchanges.cpp:150
+#: ../src/recentchanges.cpp:157
 msgid "New"
 msgstr "Nová"
 
-#: ../src/recentchanges.cpp:171
+#: ../src/recentchanges.cpp:178
 msgid "Search"
 msgstr "Hledat"
 
-#: ../src/recentchanges.cpp:230
+#: ../src/recentchanges.cpp:237
 msgid "Find _Next"
 msgstr "Hledat _následující"
 
-#: ../src/recentchanges.cpp:238
+#: ../src/recentchanges.cpp:245
 msgid "Find _Previous"
 msgstr "Hledat _předchozí"
 
-#: ../src/recentchanges.cpp:764
+#: ../src/recentchanges.cpp:777
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -2105,35 +2048,35 @@ msgstr "_Zavřít"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Selhalo načtení rozhraní D-Bus %s: %s"
 
-#: ../src/searchnoteswidget.cpp:137
+#: ../src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../src/searchnoteswidget.cpp:140
+#: ../src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "Otevřít v no_vém okně"
 
-#: ../src/searchnoteswidget.cpp:150
+#: ../src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "Přejme_novat…"
 
-#: ../src/searchnoteswidget.cpp:229
+#: ../src/searchnoteswidget.cpp:230
 msgid "Notebooks"
 msgstr "Sešity"
 
-#: ../src/searchnoteswidget.cpp:659
+#: ../src/searchnoteswidget.cpp:660
 msgid "Note"
 msgstr "Poznámka"
 
-#: ../src/searchnoteswidget.cpp:681
+#: ../src/searchnoteswidget.cpp:682
 msgid "Modified"
 msgstr "Změněna"
 
-#: ../src/searchnoteswidget.cpp:1000
+#: ../src/searchnoteswidget.cpp:1001
 msgid "Notes"
 msgstr "Poznámky"
 
-#: ../src/searchnoteswidget.cpp:1019
+#: ../src/searchnoteswidget.cpp:1020
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2141,54 +2084,54 @@ msgstr ""
 "Ve vybraném sešitu nebyl nalezen žádný výsledek.\n"
 "Kliknutím zde se prohledají všechny sešity."
 
-#: ../src/searchnoteswidget.cpp:1023
+#: ../src/searchnoteswidget.cpp:1024
 msgid "Click here to search across all notebooks"
 msgstr "Kliknutím zde prohledáte všechny sešity"
 
-#: ../src/searchnoteswidget.cpp:1044
+#: ../src/searchnoteswidget.cpp:1045
 msgid "Matches"
 msgstr "Odpovídá"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1096
+#: ../src/searchnoteswidget.cpp:1097
 msgid "Title match"
 msgstr "Název odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1100
+#: ../src/searchnoteswidget.cpp:1101
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% odpovídá"
 msgstr[1] "%1% odpovídají"
 msgstr[2] "%1% odpovídá"
 
-#: ../src/searchnoteswidget.cpp:1311
+#: ../src/searchnoteswidget.cpp:1312
 msgid "_New"
 msgstr "_Nová"
 
-#: ../src/searchnoteswidget.cpp:1340
+#: ../src/searchnoteswidget.cpp:1341
 msgid "_Open Template Note"
 msgstr "_Otevřít šablonu"
 
-#: ../src/searchnoteswidget.cpp:1351
+#: ../src/searchnoteswidget.cpp:1352
 msgid "_New..."
 msgstr "_Nový…"
 
-#: ../src/searchnoteswidget.cpp:1489 ../src/searchnoteswidget.cpp:1502
-#: ../src/searchnoteswidget.cpp:1513
+#: ../src/searchnoteswidget.cpp:1503 ../src/searchnoteswidget.cpp:1516
+#: ../src/searchnoteswidget.cpp:1527
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Selhalo zpracování nastavení %s (hodnota: %s):"
 
-#: ../src/searchnoteswidget.cpp:1490
+#: ../src/searchnoteswidget.cpp:1504
 msgid "Expected format 'column:order'"
 msgstr "Očekávaný formát „sloupec:pořadí“"
 
-#: ../src/searchnoteswidget.cpp:1503
+#: ../src/searchnoteswidget.cpp:1517
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Nerozpoznaný sloupec %s"
 
-#: ../src/searchnoteswidget.cpp:1514
+#: ../src/searchnoteswidget.cpp:1528
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Nerozpoznané pořadí %s"
@@ -2568,7 +2511,7 @@ msgstr ""
 "spuštění. Přidejte „modprobe fuse“ do /etc/init.d/boot.local nebo „fuse“ do /"
 "etc/modules."
 
-#: ../src/utils.cpp:159
+#: ../src/utils.cpp:158
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2576,65 +2519,65 @@ msgstr ""
 "Nelze nalézt „Příručku aplikace Gnote“. Ověřte, zda byla v pořádku dokončena "
 "instalace."
 
-#: ../src/utils.cpp:167
+#: ../src/utils.cpp:166
 msgid "Help not found"
 msgstr "Nápověda nebyla nalezena"
 
-#: ../src/utils.cpp:200
+#: ../src/utils.cpp:199
 msgid "Cannot open location"
 msgstr "Nelze otevřít umístění"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:230
+#: ../src/utils.cpp:229
 msgid "Today, %1%"
 msgstr "Dnes, %1%"
 
-#: ../src/utils.cpp:231
+#: ../src/utils.cpp:230
 msgid "Today"
 msgstr "Dnes"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:237
+#: ../src/utils.cpp:236
 msgid "Yesterday, %1%"
 msgstr "Včera, %1%"
 
-#: ../src/utils.cpp:238
+#: ../src/utils.cpp:237
 msgid "Yesterday"
 msgstr "Včera"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:244
+#: ../src/utils.cpp:243
 msgid "Tomorrow, %1%"
 msgstr "Zítra, %1%"
 
-#: ../src/utils.cpp:245
+#: ../src/utils.cpp:244
 msgid "Tomorrow"
 msgstr "Zítra"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:249
+#: ../src/utils.cpp:248
 msgid "%b %d"
 msgstr "%d. %B"
 
 #. TRANSLATORS: first argument is date, second is time.
-#: ../src/utils.cpp:252 ../src/utils.cpp:264
+#: ../src/utils.cpp:251 ../src/utils.cpp:263
 msgid "%1%, %2%"
 msgstr "%1% %2%"
 
-#: ../src/utils.cpp:257
+#: ../src/utils.cpp:256
 msgid "No Date"
 msgstr "Žádný termín"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:261
+#: ../src/utils.cpp:260
 msgid "%b %d %Y"
 msgstr "%d. %B %Y"
 
-#: ../src/watchers.cpp:200
+#: ../src/watchers.cpp:201
 msgid "(Untitled %1%)"
 msgstr "(Bez názvu %1%)"
 
-#: ../src/watchers.cpp:231
+#: ../src/watchers.cpp:232
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2642,18 +2585,63 @@ msgstr ""
 "Poznámka s názvem <b>%1%</b> již existuje. Než budete pokračovat, zvolte pro "
 "tuto poznámku jiný název."
 
-#: ../src/watchers.cpp:246
+#: ../src/watchers.cpp:247
 msgid "Note title taken"
 msgstr "Název poznámky používán"
 
-#: ../src/watchers.cpp:316
+#: ../src/watchers.cpp:317
 msgid "Check spelling"
 msgstr "Kontrolovat pravopis"
 
-#: ../src/watchers.cpp:706
+#: ../src/watchers.cpp:707
 msgid "_Copy Link Address"
 msgstr "_Kopírovat adresu odkazu"
 
-#: ../src/watchers.cpp:712
+#: ../src/watchers.cpp:713
 msgid "_Open Link"
 msgstr "_Otevřít odkaz"
+
+#~ msgid "Quit Gnote"
+#~ msgstr "Ukončit Gnote"
+
+#~ msgid "_Contents"
+#~ msgstr "_Obsah"
+
+#~ msgid "Gnote Help"
+#~ msgstr "Nápověda pro Gnote"
+
+#~ msgid "About Gnote"
+#~ msgstr "O aplikaci Gnote"
+
+#~ msgid "TrayIcon"
+#~ msgstr "Ikona v panelu"
+
+#~ msgid "Create _New Note"
+#~ msgstr "Vytvořit _novou poznámku"
+
+#~ msgid "Create a new note"
+#~ msgstr "Vytvořit novou poznámku"
+
+#~ msgid "_Search All Notes"
+#~ msgstr "_Hledat ve všech poznámkách"
+
+#~ msgid "Open the Search All Notes window"
+#~ msgstr "Otevřít okno Hledat ve všech poznámkách"
+
+#~ msgid "Which notes have links to here?"
+#~ msgstr "Které poznámky sem odkazují?"
+
+#~ msgid "Export note as Getting Things GNOME task"
+#~ msgstr "Exportovat poznámku jako úkol Getting Things GNOME"
+
+#~ msgid "Export note to HTML"
+#~ msgstr "Exportovat poznámku do HTML"
+
+#~ msgid "Insert Timestamp into note"
+#~ msgstr "Vložit do poznámky časové razítko"
+
+#~ msgid "Print note"
+#~ msgstr "Vytisknout poznámku"
+
+#~ msgid "Make this note read-only"
+#~ msgstr "Nastavit tuto poznámku jen ke čtení"
