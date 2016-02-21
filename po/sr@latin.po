@@ -1,15 +1,15 @@
 # Serbian translation of gnote
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2011—2015.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2011—2016.
 # This file is distributed under the same license as the gnote package.
 # Miloš Popović <gpopac@gmail.com>, 2011.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2012—2015.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2012—2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&k"
 "eywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-29 23:18+0000\n"
-"PO-Revision-Date: 2015-12-30 08:14+0200\n"
+"POT-Creation-Date: 2016-02-20 23:19+0000\n"
+"PO-Revision-Date: 2016-02-21 07:36+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -40,7 +40,7 @@ msgstr ""
 "na više uređaja."
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:518
+#: ../src/recentchanges.cpp:525
 msgid "Gnote"
 msgstr "Gnomov beležnik"
 
@@ -556,75 +556,35 @@ msgstr ""
 "Vremenski period između provera direktorijuma beleške (u sekundama). Najmanja "
 "vrednost je 5."
 
-#: ../src/actionmanager.cpp:91 ../src/actionmanager.cpp:178
-msgid "_Quit"
-msgstr "_Izađi"
-
-#: ../src/actionmanager.cpp:91
-msgid "Quit Gnote"
-msgstr "Napustite Gnomovog beležnika"
-
-#: ../src/actionmanager.cpp:96 ../src/actionmanager.cpp:175
-msgid "_Preferences"
-msgstr "_Postavke"
-
-#: ../src/actionmanager.cpp:96 ../src/preferencesdialog.cpp:103
-msgid "Gnote Preferences"
-msgstr "Postavke Gnomovog beležnika"
-
-#: ../src/actionmanager.cpp:100
-msgid "_Contents"
-msgstr "_Sadržaj"
-
-#: ../src/actionmanager.cpp:100
-msgid "Gnote Help"
-msgstr "Pomoć Gnomovog beležnika"
-
-#: ../src/actionmanager.cpp:105 ../src/actionmanager.cpp:177
-msgid "_About"
-msgstr "_O programu"
-
-#: ../src/actionmanager.cpp:105
-msgid "About Gnote"
-msgstr "O Gnomovom beležniku"
-
-#: ../src/actionmanager.cpp:109
-msgid "TrayIcon"
-msgstr "Ikonica fioke"
-
-#: ../src/actionmanager.cpp:114
-msgid "Create _New Note"
-msgstr "Napravi _novu belešku"
-
-#: ../src/actionmanager.cpp:114
-msgid "Create a new note"
-msgstr "Napravite novu belešku"
-
-#: ../src/actionmanager.cpp:119
-msgid "_Search All Notes"
-msgstr "_Pretraži sve beleške"
-
-#: ../src/actionmanager.cpp:119
-msgid "Open the Search All Notes window"
-msgstr "Otvorite prozor za pretragu svih beleški"
-
-#: ../src/actionmanager.cpp:173
+#: ../src/actionmanager.cpp:120
 msgid "_New Note"
 msgstr "_Nova beleška"
 
-#: ../src/actionmanager.cpp:174
+#: ../src/actionmanager.cpp:121
 msgid "New _Window"
 msgstr "Novi _prozor"
 
-#: ../src/actionmanager.cpp:176
+#: ../src/actionmanager.cpp:122
+msgid "_Preferences"
+msgstr "_Postavke"
+
+#: ../src/actionmanager.cpp:123
 msgid "_Help"
 msgstr "Po_moć"
+
+#: ../src/actionmanager.cpp:124
+msgid "_About"
+msgstr "_O programu"
+
+#: ../src/actionmanager.cpp:125
+msgid "_Quit"
+msgstr "_Izađi"
 
 #: ../src/addininfo.cpp:74
 msgid "Failed to load plugin information!"
 msgstr "Nisam uspeo da učitam podatke o priključku!"
 
-#: ../src/addininfo.cpp:140
+#: ../src/addininfo.cpp:148
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Nesaglasan priključak „%s“: očekivah „%s“, dobih „%s“"
@@ -668,14 +628,6 @@ msgstr "Nisam uspeo da učitam podatke dodatka „%s“: %s"
 msgid "Trying to load addins when they are already loaded"
 msgstr "Pokušavam da učitam dodatke kada su već učitani"
 
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
-msgid "What links here?"
-msgstr "Šta vodi ovamo?"
-
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:42
-msgid "Which notes have links to here?"
-msgstr "Koje beleške imaju vezice ovamo?"
-
 #: ../src/addins/backlinks/backlinks.desktop.in.in.h:1
 msgid "Backlinks"
 msgstr "Kontraveze"
@@ -689,9 +641,19 @@ msgstr "Pogledajte koje beleške vode do one koju trenutno pregledate."
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Iber Figjer i projekat Tomičinih beleški"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:86
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:76
+msgid "What links here?"
+msgstr "Šta vodi ovamo?"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:101
 msgid "(none)"
 msgstr "(ništa)"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:109
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/notebooks/notebooknoteaddin.cpp:179
+msgid "_Back"
+msgstr "_Nazad"
 
 #: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:1
 msgid "Bugzilla Links"
@@ -773,7 +735,7 @@ msgid "Error removing icon %s: %s"
 msgstr "Greška uklanjanja ikonice „%s“: %s"
 
 #: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:1
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:71
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:78
 msgid "Export to Getting Things GNOME"
 msgstr "Izvezi u Gnomovog dobavljača stvari"
 
@@ -787,30 +749,26 @@ msgstr "Izvezite zasebne beleške kao zadatke Gnomovog dobavljača stvari"
 msgid "Aurimas Černius"
 msgstr "Orima Černjus"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:72
-msgid "Export note as Getting Things GNOME task"
-msgstr "Izvezite belešku kao zadatak Gnomovog dobavljača stvari"
-
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:86
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:91
 msgid "GTG XML loaded, but interface not found"
 msgstr "GDS IksML je učitan, ali nema sučelja"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:92
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:97
 #, c-format
 msgid "Failed to create GTG interface from XML: %s"
 msgstr "Nisam uspeo da napravim sučelje GDS-a iz IksML-a: %s"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:105
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Nisam uspeo da napravim posrednika D-sabirnice za GDS"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:116
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:121
 #, c-format
 msgid "Failed to call GTG: %s"
 msgstr "Nisam uspeo da pozovem GDS: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:83
 msgid "Export to HTML"
 msgstr "Izvezi u HTML"
 
@@ -830,30 +788,26 @@ msgstr "Izvezi povezane beleške"
 msgid "Include all other linked notes"
 msgstr "Uključi sve druge povezane beleške"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:77
-msgid "Export note to HTML"
-msgstr "Izvezi belešku u HTML"
-
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:117
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:122
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Ne mogu da otvorim izvezenu belešku u veb pregledniku: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:126
 msgid "Your note was exported to \"%1%\"."
 msgstr "Vaša beleška je izvezena u „%1%“."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:130
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:135
 msgid "Note exported successfully"
 msgstr "Beleška je uspešno izvezena"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:144
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:152
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:149
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:157
 #, c-format
 msgid "Could not export: %s"
 msgstr "Ne mogu da izvezem: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:155
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Ne mogu da sačuvam datoteku „%s“"
@@ -906,17 +860,13 @@ msgid "Fixed Wid_th"
 msgstr "Stalna _širina"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
 msgid "Insert Timestamp"
 msgstr "Umetni datum i vreme"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Umetnite trenutni datum i vreme na položaj kursora."
-
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
-msgid "Insert Timestamp into note"
-msgstr "Umetni datum i vreme unutar beleške"
 
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:70
@@ -1043,25 +993,21 @@ msgstr "Podrška za štampanje"
 msgid "Allows you to print a note."
 msgstr "Omogućava vam da štampate beleške."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:65
 msgid "Print"
 msgstr "Štampaj"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
-msgid "Print note"
-msgstr "Štampaj belešku"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:113
 msgid "Error printing note"
 msgstr "Greška štampanja beleške"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:280
 msgid "Page %1% of %2%"
 msgstr "Stranica %1% od %2%"
 
 #: ../src/addins/readonly/readonly.desktop.in.in.h:1
-#: ../src/addins/readonly/readonlynoteaddin.cpp:53
+#: ../src/addins/readonly/readonlynoteaddin.cpp:69
 msgid "Read Only"
 msgstr "Samo za čitanje"
 
@@ -1073,12 +1019,8 @@ msgstr "Označite određene beleške samo za čitanje"
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Orima Černjus, Debarši Rej i Arjef Baji Purvanto"
 
-#: ../src/addins/readonly/readonlynoteaddin.cpp:54
-msgid "Make this note read-only"
-msgstr "Učinite ovu belešku samo za čitanje"
-
 #: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:1
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:51
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:53
 msgid "Replace title"
 msgstr "Zameni naslov"
 
@@ -1167,11 +1109,9 @@ msgstr "Bez naslova"
 msgid "Sticky Note: "
 msgstr "Lepljiva beleška: "
 
-#. namespace
-#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:37
-#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:38
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:66
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:67
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:129
 msgid "Table of Contents"
 msgstr "Tabela sadržaja"
 
@@ -1191,22 +1131,25 @@ msgstr "Lik Pjonšon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Lik Pjonšon"
 
-#. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:140
-msgid "(empty table of contents)"
-msgstr "(prazna tabela sdržaja)"
-
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:151
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
 msgid "Heading 1"
 msgstr "Zaglavlje 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:226
 msgid "Heading 2"
 msgstr "Zaglavlje 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:167
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:159
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:232
 msgid "Table of Contents Help"
 msgstr "Pomoć tabele sadržaja"
+
+#. no toc items, and no action entries = empty menu
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:205
+msgid "(empty table of contents)"
+msgstr "(prazna tabela sdržaja)"
 
 #. namespace
 #: ../src/addins/todo/todo.desktop.in.in.h:1
@@ -1312,112 +1255,112 @@ msgstr "Nije uspeo udaljeni poziv za „%s“"
 msgid "Exception thrown when creating note: %s"
 msgstr "Došlo je do izuzetka pri stvaranju beleške: %s"
 
-#: ../src/gnote.cpp:185
+#: ../src/gnote.cpp:180
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnomov beležnik je već pokrenut.  Izlazim..."
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:273
 msgid "and Tomboy original authors."
 msgstr "i izvorni autori Tomičinih beleški."
 
-#: ../src/gnote.cpp:301
+#: ../src/gnote.cpp:279
 msgid "translator-credits"
 msgstr ""
 "Miloš Popović <gpopac@gmail.com>\n"
-"Miroslav Nikolić\n"
+"Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "\n"
 "http://prevod.org — prevod na srpski jezik."
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:288
 #| msgid ""
-#| "Copyright © 2010-2014 Aurimas Cernius\n"
+#| "Copyright © 2010-2015 Aurimas Cernius\n"
 #| "Copyright © 2009-2011 Debarshi Ray\n"
 #| "Copyright © 2009 Hubert Figuiere\n"
 #| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2015 Aurimas Cernius\n"
+"Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Autorska prava © 2010-2015 Orima Černijus\n"
+"Autorska prava © 2010-2016 Orima Černijus\n"
 "Autorska prava © 2009-2011 Debarši Rej\n"
 "Autorska prava © 2009 Iber Figjer\n"
 "Autorska prava © 2004-2009 prvobitni autori Tomičinih beleški."
 
-#: ../src/gnote.cpp:314
+#: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Jednostavan i zgodan programčić za hvatanje beleški."
 
-#: ../src/gnote.cpp:325
+#: ../src/gnote.cpp:303
 msgid "Homepage"
 msgstr "Veb stranica"
 
-#: ../src/gnote.cpp:500
+#: ../src/gnote.cpp:478
 msgid "Run Gnote in background."
 msgstr "Pokreće Gnomovog beležnika u pozadini."
 
-#: ../src/gnote.cpp:501
+#: ../src/gnote.cpp:479
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Pokreće Gnomovog beležnika kao dostavnika pretrage Gnomove školjke."
 
-#: ../src/gnote.cpp:502
+#: ../src/gnote.cpp:480
 msgid "Specify the path of the directory containing the notes."
 msgstr "Navodi putanju direktorijuma koji sadrži beleške."
 
-#: ../src/gnote.cpp:502
+#: ../src/gnote.cpp:480
 msgid "path"
 msgstr "putanja"
 
-#: ../src/gnote.cpp:503
+#: ../src/gnote.cpp:481
 msgid "Open the search all notes window with the search text."
 msgstr "Otvara prozor za pretraživanje svih beleški uz tekst pretrage."
 
-#: ../src/gnote.cpp:503 ../src/gnote.cpp:508
+#: ../src/gnote.cpp:481 ../src/gnote.cpp:486
 msgid "text"
 msgstr "tekst"
 
-#: ../src/gnote.cpp:504
+#: ../src/gnote.cpp:482
 msgid "Print version information."
 msgstr "Ispisuje podatke o izdanju."
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:483
 msgid "Create and display a new note, with a optional title."
 msgstr "Pravi i prikazuje novu belešku, sa opcionalnim naslovom."
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:483
 msgid "title"
 msgstr "naslov"
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:484
 msgid "Display the existing note matching title."
 msgstr "Prikazuje postojeću belešku koja odgovara naslovu."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:484
 msgid "title/url"
 msgstr "naslov/adresa"
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:485
 msgid "Display the 'Start Here' note."
 msgstr "Prikazuje belešku „Polazna stanica“."
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:486
 msgid "Search and highlight text in the opened note."
 msgstr "Traži i ističe tekst u otvorenoj beleški."
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:490
 msgid "A note taking application"
 msgstr "Program za beleške"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:490
 msgid "Gnote options at launch"
 msgstr "Opcije Gnomovog beležnika pri pokretanju"
 
-#: ../src/gnote.cpp:589
+#: ../src/gnote.cpp:567
 msgid "Could not connect to remote instance."
 msgstr "Ne mogu da se povežem na udaljeni primerak."
 
-#: ../src/gnote.cpp:705
+#: ../src/gnote.cpp:683
 msgid "Version %1%"
 msgstr "Izdanje %1%"
 
@@ -1427,11 +1370,11 @@ msgstr "Izdanje %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Nisamuspeo da učitam ikonicu (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:98 ../src/noteaddin.cpp:112 ../src/noteaddin.cpp:125
+#: ../src/noteaddin.cpp:124 ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:151
 msgid "Plugin is disposing already"
 msgstr "Priključak je već na raspolaganju"
 
-#: ../src/noteaddin.cpp:129
+#: ../src/noteaddin.cpp:155
 msgid "Window is not embedded"
 msgstr "Prozor nije ugnežden"
 
@@ -1516,10 +1459,6 @@ msgstr "Beležnica"
 #: ../src/notebooks/notebooknoteaddin.cpp:151
 msgid "_New notebook..."
 msgstr "_Nova beležnica..."
-
-#: ../src/notebooks/notebooknoteaddin.cpp:179
-msgid "_Back"
-msgstr "_Nazad"
 
 #: ../src/notebooks/specialnotebooks.cpp:46
 msgid "All"
@@ -1830,6 +1769,10 @@ msgstr "_Mala"
 msgid "Bullets"
 msgstr "Spisak sa tačkicama"
 
+#: ../src/preferencesdialog.cpp:103
+msgid "Gnote Preferences"
+msgstr "Postavke Gnomovog beležnika"
+
 #: ../src/preferencesdialog.cpp:121
 msgid "General"
 msgstr "Opšte"
@@ -2075,27 +2018,27 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Autorska prava:"
 
-#: ../src/recentchanges.cpp:144
+#: ../src/recentchanges.cpp:151
 msgid "All Notes"
 msgstr "Sve beleške"
 
-#: ../src/recentchanges.cpp:150
+#: ../src/recentchanges.cpp:157
 msgid "New"
 msgstr "Nova"
 
-#: ../src/recentchanges.cpp:171
+#: ../src/recentchanges.cpp:178
 msgid "Search"
 msgstr "Potraži"
 
-#: ../src/recentchanges.cpp:230
+#: ../src/recentchanges.cpp:237
 msgid "Find _Next"
 msgstr "Nađi _sledeće"
 
-#: ../src/recentchanges.cpp:238
+#: ../src/recentchanges.cpp:245
 msgid "Find _Previous"
 msgstr "Traži _prethodno"
 
-#: ../src/recentchanges.cpp:761
+#: ../src/recentchanges.cpp:777
 msgid "_Close"
 msgstr "_Zatvori"
 
@@ -2658,6 +2601,51 @@ msgstr "_Umnoži adresu veze"
 #: ../src/watchers.cpp:713
 msgid "_Open Link"
 msgstr "_Otvori vezu"
+
+#~ msgid "Quit Gnote"
+#~ msgstr "Napustite Gnomovog beležnika"
+
+#~ msgid "_Contents"
+#~ msgstr "_Sadržaj"
+
+#~ msgid "Gnote Help"
+#~ msgstr "Pomoć Gnomovog beležnika"
+
+#~ msgid "About Gnote"
+#~ msgstr "O Gnomovom beležniku"
+
+#~ msgid "TrayIcon"
+#~ msgstr "Ikonica fioke"
+
+#~ msgid "Create _New Note"
+#~ msgstr "Napravi _novu belešku"
+
+#~ msgid "Create a new note"
+#~ msgstr "Napravite novu belešku"
+
+#~ msgid "_Search All Notes"
+#~ msgstr "_Pretraži sve beleške"
+
+#~ msgid "Open the Search All Notes window"
+#~ msgstr "Otvorite prozor za pretragu svih beleški"
+
+#~ msgid "Which notes have links to here?"
+#~ msgstr "Koje beleške imaju vezice ovamo?"
+
+#~ msgid "Export note as Getting Things GNOME task"
+#~ msgstr "Izvezite belešku kao zadatak Gnomovog dobavljača stvari"
+
+#~ msgid "Export note to HTML"
+#~ msgstr "Izvezi belešku u HTML"
+
+#~ msgid "Insert Timestamp into note"
+#~ msgstr "Umetni datum i vreme unutar beleške"
+
+#~ msgid "Print note"
+#~ msgstr "Štampaj belešku"
+
+#~ msgid "Make this note read-only"
+#~ msgstr "Učinite ovu belešku samo za čitanje"
 
 #~ msgid ""
 #~ "Has affect only when started as an application. When set to TRUE, shows a "
