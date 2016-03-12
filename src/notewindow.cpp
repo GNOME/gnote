@@ -941,6 +941,8 @@ namespace gnote {
                               GDK_KEY_Right, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
     keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::decrease_indent_pressed),
                               GDK_KEY_Left, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
+
+    signal_set_accels(keybinder);
   }
 
   void NoteTextMenu::on_show()

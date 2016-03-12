@@ -53,6 +53,8 @@ public:
   NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
   void set_accels(utils::GlobalKeybinder & keybinder);
   void refresh_state();
+
+  sigc::signal<void, utils::GlobalKeybinder> signal_set_accels;
 protected:
   virtual void on_show() override;
 
