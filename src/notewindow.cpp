@@ -861,6 +861,7 @@ namespace gnote {
       main_grid->attach(*grid, 0, main_top++, 1, 1);
 
       grid = manage(new Gtk::Grid);
+      grid->set_name("formatting");
       top = 0;
       grid->attach(*bold, 0, top++, 1, 1);
       grid->attach(*italic, 0, top++, 1, 1);
@@ -869,6 +870,7 @@ namespace gnote {
       main_grid->attach(*grid, 0, main_top++, 1, 1);
 
       grid = manage(new Gtk::Grid);
+      grid->set_name("font-size");
       top = 0;
       grid->attach(*small, 0, top++, 1, 1);
       grid->attach(*normal, 0, top++, 1, 1);
