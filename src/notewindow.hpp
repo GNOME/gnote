@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015 Aurimas Cernius
+ * Copyright (C) 2011-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,13 +25,11 @@
 #define _NOTEWINDOW_HPP__
 
 #include <gtkmm/accelgroup.h>
+#include <gtkmm/checkbutton.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/searchentry.h>
 #include <gtkmm/toolbutton.h>
-#include <gtkmm/menu.h>
-#include <gtkmm/checkmenuitem.h>
-#include <gtkmm/radiomenuitem.h>
-#include <gtkmm/imagemenuitem.h>
+#include <gtkmm/popovermenu.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
@@ -49,53 +47,49 @@ namespace gnote {
   class Note;
 
 class NoteTextMenu
-  : public Gtk::Menu
+  : public Gtk::PopoverMenu
 {
 public:
-  NoteTextMenu(const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
-  void set_accels(utils::GlobalKeybinder & keybinder, const Glib::RefPtr<Gtk::AccelGroup> &);
+  NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
+  void set_accels(utils::GlobalKeybinder & keybinder);
   void refresh_state();
-
-  static void markup_label (Gtk::MenuItem & item);
 protected:
   virtual void on_show() override;
 
 private:
+  void on_widget_foregrounded();
+  void on_widget_backgrounded();
   void refresh_sizing_state();
   void link_clicked();
-  void font_style_clicked(Gtk::CheckMenuItem * item);
-  void font_size_activated(Gtk::RadioMenuItem *item);
+  void font_clicked(const char *action, const Glib::VariantBase & state, void (NoteTextMenu::*func)());
+  void bold_clicked(const Glib::VariantBase & state);
+  void bold_pressed();
+  void italic_clicked(const Glib::VariantBase & state);
+  void italic_pressed();
+  void strikeout_clicked(const Glib::VariantBase & state);
+  void strikeout_pressed();
+  void highlight_clicked(const Glib::VariantBase & state);
+  void highlight_pressed();
+  Gtk::Widget *create_font_size_item(const char *label, const char *markup, const char *size);
+  void font_style_clicked(const char * tag);
+  void font_size_activated(const Glib::VariantBase & state);
   void undo_clicked();
   void redo_clicked();
   void undo_changed();
-  void toggle_bullets_clicked();
-  void increase_indent_clicked();
-  void decrease_indent_clicked();
+  void toggle_bullets_clicked(const Glib::VariantBase&);
+  void increase_indent_clicked(const Glib::VariantBase&);
+  void increase_indent_pressed();
+  void decrease_indent_clicked(const Glib::VariantBase&);
+  void decrease_indent_pressed();
   void increase_font_clicked();
   void decrease_font_clicked();
+  Gtk::Widget *create_font_item(const char *action, const char *label, const char *markup);
 
+  EmbeddableWidget     &m_widget;
   Glib::RefPtr<NoteBuffer> m_buffer;
   UndoManager          &m_undo_manager;
   bool                  m_event_freeze;
-  Gtk::ImageMenuItem   *m_undo;
-  Gtk::ImageMenuItem   *m_redo;
-  Gtk::MenuItem         m_link;
-  Gtk::CheckMenuItem    m_bold;
-  Gtk::CheckMenuItem    m_italic;
-  Gtk::CheckMenuItem    m_strikeout;
-  Gtk::CheckMenuItem    m_highlight;
-  Gtk::RadioButtonGroup m_fontsize_group;
-  Gtk::RadioMenuItem    m_normal;
-  Gtk::RadioMenuItem    m_huge;
-  Gtk::RadioMenuItem    m_large;
-  Gtk::RadioMenuItem    m_small;
-  // Active when the text size is indeterminable, such as when in
-  // the note's title line.
-  Gtk::RadioMenuItem    m_hidden_no_size;
-  Gtk::CheckMenuItem    m_bullets;
-  Gtk::ImageMenuItem    m_increase_indent;
-  Gtk::ImageMenuItem    m_decrease_indent;
-  sigc::connection      m_bullets_clicked_cid;
+  std::vector<sigc::connection> m_signal_cids;
 };
 
 class NoteFindHandler
@@ -209,7 +203,7 @@ public:
     {
       return m_editor;
     }
-  Gtk::Menu * text_menu() const
+  Gtk::PopoverMenu * text_menu() const
     {
       return m_text_menu;
     }
