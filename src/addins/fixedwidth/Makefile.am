@@ -13,7 +13,6 @@ addins_DATA = $(desktop_files)
 
 libfixedwidth_la_SOURCES = fixedwidthnoteaddin.hpp fixedwidthnoteaddin.cpp \
 	fixedwidthtag.hpp \
-	fixedwidthmenuitem.hpp fixedwidthmenuitem.cpp \
 	$(NULL)
 
 EXTRA_DIST = $(desktop_in_files)

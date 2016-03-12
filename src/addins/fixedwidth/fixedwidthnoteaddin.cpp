@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2006 Ryan Lortie <desrt@desrt.ca>
@@ -25,8 +25,11 @@
 // Add a 'fixed width' item to the font styles menu.
 
 
+#include <glibmm/i18n.h>
+
 #include "sharp/modulefactory.hpp"
-#include "fixedwidthmenuitem.hpp"
+#include "notewindow.hpp"
+#include "utils.hpp"
 #include "fixedwidthnoteaddin.hpp"
 #include "fixedwidthtag.hpp"
 
@@ -48,6 +51,13 @@ namespace fixedwidth {
 				get_note()->get_tag_table()->add (m_tag);
 			}
 
+    auto button = gnote::utils::create_popover_button("win.fixedwidth-enable", "");
+    auto label = dynamic_cast<Gtk::Label*>(dynamic_cast<Gtk::Bin*>(button)->get_child());
+    Glib::ustring lbl = "<tt>";
+    lbl += _("Fixed Wid_th");
+    lbl += "</tt>";
+    label->set_markup_with_mnemonic(lbl);
+    add_text_menu_item(button);
   }
 
 
@@ -62,11 +72,59 @@ namespace fixedwidth {
 
   void FixedWidthNoteAddin::on_note_opened ()
   {
-    // Add here instead of in Initialize to avoid creating unopened
-    // notes' windows/buffers.
-    add_text_menu_item (new FixedWidthMenuItem (this));
+    get_window()->text_menu()->signal_show().connect(
+      sigc::mem_fun(*this, &FixedWidthNoteAddin::menu_shown));
+    dynamic_cast<gnote::NoteTextMenu*>(get_window()->text_menu())->signal_set_accels
+      .connect(sigc::mem_fun(*this, &FixedWidthNoteAddin::set_accels));
+
+    gnote::NoteWindow *note_window = get_window();
+    note_window->signal_foregrounded.connect(
+      sigc::mem_fun(*this, &FixedWidthNoteAddin::on_note_foregrounded));
+    note_window->signal_backgrounded.connect(
+      sigc::mem_fun(*this, &FixedWidthNoteAddin::on_note_backgrounded));
   }
 
+  void FixedWidthNoteAddin::menu_shown()
+  {
+    auto host = get_window()->host();
+    if(host == NULL) {
+      return;
+    }
+
+    host->find_action("fixedwidth-enable")->set_state(
+      Glib::Variant<bool>::create(get_buffer()->is_active_tag ("monospace")));
+  }
+
+
+  void FixedWidthNoteAddin::on_note_foregrounded()
+  {
+    m_menu_item_cid = get_window()->host()->find_action("fixedwidth-enable")->signal_change_state()
+      .connect(sigc::mem_fun(*this, &FixedWidthNoteAddin::on_menu_item_state_changed));
+  }
+
+
+  void FixedWidthNoteAddin::on_note_backgrounded()
+  {
+    m_menu_item_cid.disconnect();
+  }
+
+  void FixedWidthNoteAddin::on_menu_item_state_changed(const Glib::VariantBase & state)
+  {
+    get_window()->host()->find_action("fixedwidth-enable")->set_state(state);
+    on_accel();
+  }
+
+  void FixedWidthNoteAddin::set_accels(const gnote::utils::GlobalKeybinder & keybinder)
+  {
+    const_cast<gnote::utils::GlobalKeybinder&>(keybinder).add_accelerator(
+      sigc::mem_fun(*this, &FixedWidthNoteAddin::on_accel),
+      GDK_KEY_T, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+  }
+
+  void FixedWidthNoteAddin::on_accel()
+  {
+    get_buffer()->toggle_active_tag("monospace");
+  }
 
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2006 Ryan Lortie <desrt@desrt.ca>
@@ -61,7 +61,15 @@ namespace fixedwidth {
     virtual void shutdown() override;
     virtual void on_note_opened() override;
   private:
+    void menu_shown();
+    void on_note_foregrounded();
+    void on_note_backgrounded();
+    void on_menu_item_state_changed(const Glib::VariantBase & state);
+    void set_accels(const gnote::utils::GlobalKeybinder & keybinder);
+    void on_accel();
+
     Glib::RefPtr<Gtk::TextTag> m_tag;
+    sigc::connection           m_menu_item_cid;
   };
 
 
