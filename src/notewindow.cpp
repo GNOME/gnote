@@ -382,19 +382,10 @@ namespace gnote {
                           Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     link->show();
       
-    Gtk::ImageMenuItem *text_item = manage(new Gtk::ImageMenuItem(_("Te_xt"), true));
-    text_item->set_image(*manage(new Gtk::Image(
-                                   Gtk::Stock::SELECT_FONT, 
-                                   Gtk::ICON_SIZE_MENU)));
-    text_item->set_submenu(*manage(new NoteTextMenu(m_note.get_buffer(),
-                                                    m_note.get_buffer()->undoer())));
-    text_item->show();
-
     Gtk::MenuItem *spacer2 = manage(new Gtk::SeparatorMenuItem());
     spacer2->show();
 
     menu->prepend(*spacer1);
-    menu->prepend(*text_item);
     menu->prepend(*link);
   }
   
