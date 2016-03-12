@@ -46,9 +46,8 @@ namespace gnote {
   void NoteAddin::dispose(bool disposing)
   {
     if (disposing) {
-      for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
-          iter != m_text_menu_items.end(); ++iter) {
-        delete *iter;
+      for (auto & iter : m_text_menu_items) {
+        delete iter;
       }
         
       for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
@@ -71,13 +70,10 @@ namespace gnote {
     window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_foregrounded));
     window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_backgrounded));
 
-    for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
-        iter != m_text_menu_items.end(); ++iter) {
-      Gtk::Widget *item = *iter;
+    for(auto & item : m_text_menu_items) {
       if ((item->get_parent() == NULL) ||
           (item->get_parent() != window->text_menu())) {
-        window->text_menu()->add (*item);
-        window->text_menu()->reorder_child(*(Gtk::MenuItem*)item, 7);
+        append_text_item(window->text_menu(), *item);
       }
     }
       
@@ -88,6 +84,18 @@ namespace gnote {
         Gtk::Grid *grid = window->embeddable_toolbar();
         grid->insert_column(iter->second);
         grid->attach(*iter->first, iter->second, 0, 1, 1);
+      }
+    }
+  }
+
+  void NoteAddin::append_text_item(Gtk::Widget *text_menu, Gtk::Widget & item)
+  {
+    NoteTextMenu *txt_menu = dynamic_cast<NoteTextMenu*>(text_menu);
+    for(auto child : dynamic_cast<Gtk::Container*>(txt_menu->get_children().front())->get_children()) {
+      if(child->get_name() == "formatting") {
+        Gtk::Grid *grid = dynamic_cast<Gtk::Grid*>(child);
+        int pos = grid->get_children().size();
+        grid->attach(item, 0, pos, 1, 1);
       }
     }
   }
@@ -132,7 +140,7 @@ namespace gnote {
     }
   }
 
-  void NoteAddin::add_text_menu_item (Gtk::MenuItem * item)
+  void NoteAddin::add_text_menu_item(Gtk::Widget *item)
   {
     if (is_disposing())
       throw sharp::Exception(_("Plugin is disposing already"));
@@ -140,8 +148,7 @@ namespace gnote {
     m_text_menu_items.push_back(item);
 
     if (m_note->is_opened()) {
-      get_window()->text_menu()->add (*item);
-      get_window()->text_menu()->reorder_child (*item, 7);
+      append_text_item(get_window()->text_menu(), *item);
     }
   }
 

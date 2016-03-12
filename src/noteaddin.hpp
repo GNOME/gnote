@@ -110,14 +110,15 @@ public:
     }
   void on_note_opened_event(Note & );
   void add_tool_item (Gtk::ToolItem *item, int position);
-  void add_text_menu_item (Gtk::MenuItem * item);
+  void add_text_menu_item(Gtk::Widget *item);
 private:
   void on_note_foregrounded();
   void on_note_backgrounded();
+  void append_text_item(Gtk::Widget *text_menu, Gtk::Widget & item);
 
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
-  std::list<Gtk::MenuItem*>     m_text_menu_items;
+  std::list<Gtk::Widget*>       m_text_menu_items;
   typedef std::map<Gtk::ToolItem*, int> ToolItemMap;
   ToolItemMap                   m_toolbar_items;
   typedef std::pair<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> ActionCallback;
