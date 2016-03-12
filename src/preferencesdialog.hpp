@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -32,6 +32,7 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/comboboxtext.h>
+#include <gtkmm/radiobutton.h>
 #include <gtkmm/spinbutton.h>
 
 #include "sharp/addinstreemodel.hpp"
