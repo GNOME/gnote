@@ -13,7 +13,6 @@ addins_DATA = $(desktop_files)
 
 libunderline_la_SOURCES = underlinenoteaddin.hpp underlinenoteaddin.cpp \
 	underlinetag.hpp \
-	underlinemenuitem.hpp underlinemenuitem.cpp \
 	$(NULL)
 
 EXTRA_DIST = $(desktop_in_files)

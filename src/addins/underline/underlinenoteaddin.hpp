@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2009 Mark Wakim <markwakim@gmail.com>
@@ -57,7 +57,15 @@ namespace underline {
     virtual void shutdown() override;
     virtual void on_note_opened() override;
   private:
+    void on_note_foregrounded();
+    void on_note_backgrounded();
+    void on_underline_clicked(const Glib::VariantBase & state);
+    void on_underline_pressed();
+    void menu_shown();
+    void set_accels(const gnote::utils::GlobalKeybinder & keybinder);
+
     Glib::RefPtr<Gtk::TextTag> m_tag;
+    sigc::connection           m_on_underline_clicked_cid;
   };
 
 
