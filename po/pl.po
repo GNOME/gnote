@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-24 18:51+0100\n"
-"PO-Revision-Date: 2016-01-24 18:52+0100\n"
+"POT-Creation-Date: 2016-03-13 19:57+0100\n"
+"PO-Revision-Date: 2016-03-13 19:58+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -568,27 +568,27 @@ msgstr ""
 "Czas między sprawdzaniem katalogu notatek (w sekundach). Minimalna wartość "
 "to 5."
 
-#: ../src/actionmanager.cpp:120
+#: ../src/actionmanager.cpp:131
 msgid "_New Note"
 msgstr "N_owa notatka"
 
-#: ../src/actionmanager.cpp:121
+#: ../src/actionmanager.cpp:132
 msgid "New _Window"
 msgstr "Nowe o_kno"
 
-#: ../src/actionmanager.cpp:122
+#: ../src/actionmanager.cpp:133
 msgid "_Preferences"
 msgstr "_Preferencje"
 
-#: ../src/actionmanager.cpp:123
+#: ../src/actionmanager.cpp:134
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../src/actionmanager.cpp:124
+#: ../src/actionmanager.cpp:135
 msgid "_About"
 msgstr "_O programie"
 
-#: ../src/actionmanager.cpp:125
+#: ../src/actionmanager.cpp:136
 msgid "_Quit"
 msgstr "Za_kończ"
 
@@ -867,7 +867,7 @@ msgstr "Stała szerokość"
 msgid "Adds fixed-width font style."
 msgstr "Dodaje styl czcionki o stałej szerokości."
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:57
 msgid "Fixed Wid_th"
 msgstr "Stała _szerokość"
 
@@ -1199,7 +1199,7 @@ msgstr "Dodaje możliwość podkreślania tekstu."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière i Projekt Tomboy"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:35
+#: ../src/addins/underline/underlinenoteaddin.cpp:56
 msgid "_Underline"
 msgstr "_Podkreślenie"
 
@@ -1379,11 +1379,11 @@ msgstr "Wersja %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Wczytanie ikony (%s, %d) się nie powiodło: %s"
 
-#: ../src/noteaddin.cpp:124 ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:151
+#: ../src/noteaddin.cpp:132 ../src/noteaddin.cpp:146 ../src/noteaddin.cpp:158
 msgid "Plugin is disposing already"
 msgstr "Wtyczka jest już zwalniana"
 
-#: ../src/noteaddin.cpp:155
+#: ../src/noteaddin.cpp:162
 msgid "Window is not embedded"
 msgstr "Okno nie jest osadzone"
 
@@ -1681,7 +1681,7 @@ msgstr ""
 msgid "Rename Links"
 msgstr "Zmień nazwy odnośników"
 
-#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:331
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:332
 msgid "Note Title"
 msgstr "Tytuł notatki"
 
@@ -1689,28 +1689,24 @@ msgstr "Tytuł notatki"
 msgid "Ad_vanced"
 msgstr "Zaa_wansowane"
 
-#: ../src/notewindow.cpp:322
+#: ../src/notewindow.cpp:324
 msgid "Is Important"
 msgstr "Jest ważne"
 
-#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:145
+#: ../src/notewindow.cpp:326 ../src/searchnoteswidget.cpp:145
 #: ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "_Usuń"
 
-#: ../src/notewindow.cpp:376
+#: ../src/notewindow.cpp:378
 msgid "_Link to New Note"
 msgstr "_Dowiązanie do nowej notatki"
 
-#: ../src/notewindow.cpp:384
-msgid "Te_xt"
-msgstr "Te_kst"
-
-#: ../src/notewindow.cpp:421
+#: ../src/notewindow.cpp:414
 msgid "Set properties of text"
 msgstr "Ustawia właściwości tekstu"
 
-#: ../src/notewindow.cpp:435
+#: ../src/notewindow.cpp:428
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1718,65 +1714,81 @@ msgstr ""
 "Ta notatka jest szablonem. Określa ona domyślną treść zwykłych notatek, i "
 "nie jest wyświetlana w menu notatek ani w oknie wyszukiwania."
 
-#: ../src/notewindow.cpp:438
+#: ../src/notewindow.cpp:431
 msgid "Convert to regular note"
 msgstr "Zmień na zwykłą notatkę"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:434
 msgid "Save Si_ze"
 msgstr "Zapisz ro_zmiar"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:438
 msgid "Save Se_lection"
 msgstr "Zapisz _wybrane"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:442
 msgid "Save _Title"
 msgstr "Zapisz _tytuł"
 
-#: ../src/notewindow.cpp:551 ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1079
 msgid "Cannot create note"
 msgstr "Nie można utworzyć notatki"
 
-#: ../src/notewindow.cpp:825
-msgid "_Link"
-msgstr "_Odnośnik"
-
-#: ../src/notewindow.cpp:826
-msgid "<b>_Bold</b>"
-msgstr "<b>_Pogrubienie</b>"
-
-#: ../src/notewindow.cpp:827
-msgid "<i>_Italic</i>"
-msgstr "<i>Kursy_wa</i>"
-
-#: ../src/notewindow.cpp:828
-msgid "<s>_Strikeout</s>"
-msgstr "<s>P_rzekreślenie</s>"
-
 #: ../src/notewindow.cpp:830
+msgid "_Undo"
+msgstr "Cof_nij"
+
+#: ../src/notewindow.cpp:833
+msgid "_Redo"
+msgstr "P_onów"
+
+#: ../src/notewindow.cpp:842
+msgid "_Link"
+msgstr "O_dnośnik"
+
+#: ../src/notewindow.cpp:844
+msgid "_Bold"
+msgstr "_Pogrubienie"
+
+#: ../src/notewindow.cpp:845
+msgid "_Italic"
+msgstr "Kursy_wa"
+
+#: ../src/notewindow.cpp:846
+msgid "_Strikeout"
+msgstr "P_rzekreślenie"
+
+#: ../src/notewindow.cpp:850
 msgid "_Highlight"
 msgstr "Wyróżn_ienie"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:853
 msgid "_Normal"
 msgstr "_Zwykły"
 
-#: ../src/notewindow.cpp:834
-msgid "Hu_ge"
-msgstr "_Ogromny"
-
-#: ../src/notewindow.cpp:836
-msgid "_Large"
-msgstr "_Duży"
-
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:854
 msgid "S_mall"
 msgstr "_Mały"
 
-#: ../src/notewindow.cpp:840
-msgid "Bullets"
-msgstr "Wypunktowanie"
+#: ../src/notewindow.cpp:855
+msgid "_Large"
+msgstr "_Duży"
+
+#: ../src/notewindow.cpp:856
+msgid "Hu_ge"
+msgstr "_Ogromny"
+
+#: ../src/notewindow.cpp:882
+msgid "⦁ Bullets"
+msgstr "⦁ Wypunktowanie"
+
+#: ../src/notewindow.cpp:884
+msgid "→ Increase indent"
+msgstr "→ Zwiększ wcięcie"
+
+#: ../src/notewindow.cpp:886
+msgid "← Decrease indent"
+msgstr "← Zmniejsz wcięcie"
 
 #: ../src/preferencesdialog.cpp:103
 msgid "Gnote Preferences"
@@ -2261,37 +2273,37 @@ msgstr "Niemożliwy do przetworzenia element „last-sync-date” w %s"
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Niemożliwy do przetworzenia element „last-sync-rev” w %s"
 
-#: ../src/synchronization/syncdialog.cpp:64
+#: ../src/synchronization/syncdialog.cpp:65
 msgid "Note Conflict"
 msgstr "Konflikt notatki"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:69
+#: ../src/synchronization/syncdialog.cpp:70
 msgid " (old)"
 msgstr " (poprzednia)"
 
-#: ../src/synchronization/syncdialog.cpp:114
+#: ../src/synchronization/syncdialog.cpp:115
 msgid "Rename local note:"
 msgstr "Zmiana nazwy lokalnej notatki:"
 
-#: ../src/synchronization/syncdialog.cpp:121
+#: ../src/synchronization/syncdialog.cpp:122
 msgid "Update links in referencing notes"
 msgstr "Aktualizacja odnośników w notatkach powiązanych"
 
-#: ../src/synchronization/syncdialog.cpp:127
+#: ../src/synchronization/syncdialog.cpp:128
 msgid "Overwrite local note"
 msgstr "Zastąpienie lokalnej notatki"
 
-#: ../src/synchronization/syncdialog.cpp:131
+#: ../src/synchronization/syncdialog.cpp:132
 msgid "Always perform this action"
 msgstr "Wykonywanie tego działania za każdym razem"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:137
+#: ../src/synchronization/syncdialog.cpp:138
 msgid "Note conflict detected"
 msgstr "Wykryto konflikt notatek"
 
-#: ../src/synchronization/syncdialog.cpp:139
+#: ../src/synchronization/syncdialog.cpp:140
 msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2300,55 +2312,55 @@ msgstr ""
 "notatką lokalną?"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:296
+#: ../src/synchronization/syncdialog.cpp:297
 msgid "Details"
 msgstr "Szczegóły"
 
-#: ../src/synchronization/syncdialog.cpp:338
+#: ../src/synchronization/syncdialog.cpp:339
 msgid "Status"
 msgstr "Stan"
 
-#: ../src/synchronization/syncdialog.cpp:483
+#: ../src/synchronization/syncdialog.cpp:484
 msgid "Acquiring sync lock..."
 msgstr "Ustanawianie blokady…"
 
-#: ../src/synchronization/syncdialog.cpp:486
+#: ../src/synchronization/syncdialog.cpp:487
 msgid "Committing changes..."
 msgstr "Wysyłanie zmian…"
 
-#: ../src/synchronization/syncdialog.cpp:489
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "Synchronizing Notes"
 msgstr "Synchronizowanie notatek"
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: ../src/synchronization/syncdialog.cpp:491
 msgid "Synchronizing your notes..."
 msgstr "Synchronizowanie notatek…"
 
-#: ../src/synchronization/syncdialog.cpp:491
+#: ../src/synchronization/syncdialog.cpp:492
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Proszę czekać — to może zająć trochę czasu."
 
-#: ../src/synchronization/syncdialog.cpp:493
+#: ../src/synchronization/syncdialog.cpp:494
 msgid "Connecting to the server..."
 msgstr "Łączenie z serwerem…"
 
-#: ../src/synchronization/syncdialog.cpp:499
+#: ../src/synchronization/syncdialog.cpp:500
 msgid "Deleting notes off of the server..."
 msgstr "Usuwanie notatek z serwera…"
 
-#: ../src/synchronization/syncdialog.cpp:503
+#: ../src/synchronization/syncdialog.cpp:504
 msgid "Downloading new/updated notes..."
 msgstr "Pobieranie nowych i zaktualizowanych notatek…"
 
-#: ../src/synchronization/syncdialog.cpp:515
+#: ../src/synchronization/syncdialog.cpp:516
 msgid "Server Locked"
 msgstr "Serwer zablokowany"
 
-#: ../src/synchronization/syncdialog.cpp:516
+#: ../src/synchronization/syncdialog.cpp:517
 msgid "Server is locked"
 msgstr "Serwer jest zablokowany"
 
-#: ../src/synchronization/syncdialog.cpp:517
+#: ../src/synchronization/syncdialog.cpp:518
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2356,109 +2368,109 @@ msgstr ""
 "Jeden z komputerów dokonuje teraz synchronizacji. Proszę spróbować ponownie "
 "za dwie minuty."
 
-#: ../src/synchronization/syncdialog.cpp:521
+#: ../src/synchronization/syncdialog.cpp:522
 msgid "Preparing to download updates from server..."
 msgstr "Przygotowywanie pobierania aktualizacji z serwera…"
 
-#: ../src/synchronization/syncdialog.cpp:524
+#: ../src/synchronization/syncdialog.cpp:525
 msgid "Preparing to upload updates to server..."
 msgstr "Przygotowanie do wysłania aktualizacji na serwer…"
 
-#: ../src/synchronization/syncdialog.cpp:527
+#: ../src/synchronization/syncdialog.cpp:528
 msgid "Uploading notes to server..."
 msgstr "Wysyłanie notatek na serwer…"
 
-#: ../src/synchronization/syncdialog.cpp:530
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "Synchronization Failed"
 msgstr "Synchronizacja się nie powiodła"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:532
 msgid "Failed to synchronize"
 msgstr "Synchronizacja się nie powiodła"
 
-#: ../src/synchronization/syncdialog.cpp:532
+#: ../src/synchronization/syncdialog.cpp:533
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Nie można zsynchronizować notatek. Proszę sprawdzić informacje poniżej i "
 "spróbować ponownie."
 
-#: ../src/synchronization/syncdialog.cpp:538
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "Synchronization Complete"
 msgstr "Ukończono synchronizację"
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "Synchronization is complete"
 msgstr "Ukończono synchronizację"
 
-#: ../src/synchronization/syncdialog.cpp:540
+#: ../src/synchronization/syncdialog.cpp:541
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "Zaktualizowano %1% notatkę."
 msgstr[1] "Zaktualizowano %1% notatki."
 msgstr[2] "Zaktualizowano %1% notatek."
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:542
 msgid "Your notes are now up to date."
 msgstr "Notatki zostały zaktualizowane."
 
-#: ../src/synchronization/syncdialog.cpp:546
+#: ../src/synchronization/syncdialog.cpp:547
 msgid "Synchronization Canceled"
 msgstr "Anulowano synchronizację"
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:548
 msgid "Synchronization was canceled"
 msgstr "Anulowano synchronizację"
 
-#: ../src/synchronization/syncdialog.cpp:548
+#: ../src/synchronization/syncdialog.cpp:549
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Anulowano synchronizację. Można teraz zamknąć okno."
 
-#: ../src/synchronization/syncdialog.cpp:552
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Synchronization Not Configured"
 msgstr "Synchronizacja nie została skonfigurowana"
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:554
 msgid "Synchronization is not configured"
 msgstr "Synchronizacja nie została skonfigurowana"
 
-#: ../src/synchronization/syncdialog.cpp:554
+#: ../src/synchronization/syncdialog.cpp:555
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Proszę skonfigurować synchronizację w oknie preferencji."
 
-#: ../src/synchronization/syncdialog.cpp:558
+#: ../src/synchronization/syncdialog.cpp:559
 msgid "Synchronization Service Error"
 msgstr "Błąd usługi synchronizacji"
 
-#: ../src/synchronization/syncdialog.cpp:559
+#: ../src/synchronization/syncdialog.cpp:560
 msgid "Service error"
 msgstr "Błąd usługi"
 
-#: ../src/synchronization/syncdialog.cpp:560
+#: ../src/synchronization/syncdialog.cpp:561
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "Błąd podczas łączenia z usługą synchronizacji. Proszę spróbować ponownie."
 
-#: ../src/synchronization/syncdialog.cpp:574
+#: ../src/synchronization/syncdialog.cpp:575
 msgid "Deleted locally"
 msgstr "Usunięte lokalnie"
 
-#: ../src/synchronization/syncdialog.cpp:577
+#: ../src/synchronization/syncdialog.cpp:578
 msgid "Deleted from server"
 msgstr "Usunięte z serwera"
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:581
 msgid "Updated"
 msgstr "Zaktualizowane"
 
-#: ../src/synchronization/syncdialog.cpp:583
+#: ../src/synchronization/syncdialog.cpp:584
 msgid "Added"
 msgstr "Dodane"
 
-#: ../src/synchronization/syncdialog.cpp:586
+#: ../src/synchronization/syncdialog.cpp:587
 msgid "Uploaded changes to server"
 msgstr "Wysłano zmiany na serwer"
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:590
 msgid "Uploaded new note to server"
 msgstr "Wysłano nową notatkę na serwer"
 
