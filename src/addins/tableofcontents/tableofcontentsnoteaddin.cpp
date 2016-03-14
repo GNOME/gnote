@@ -133,8 +133,7 @@ std::map<int, Gtk::Widget*> TableofcontentsNoteAddin::get_actions_popover_widget
 
   int top = 0;
   int sub_top = 0;
-  Gtk::Grid *sub = manage(new Gtk::Grid);
-  gnote::utils::set_common_popover_widget_props(*sub);
+  Gtk::Grid *sub = manage(gnote::utils::create_popover_inner_grid());
   std::vector<Gtk::Widget*> toc_items;
   get_toc_popover_items(toc_items);
   if(toc_items.size()) {
@@ -143,9 +142,7 @@ std::map<int, Gtk::Widget*> TableofcontentsNoteAddin::get_actions_popover_widget
     }
 
     toc_menu->attach(*sub, 0, top++, 1, 1);
-    sub_top = 0;
-    sub = manage(new Gtk::Grid);
-    gnote::utils::set_common_popover_widget_props(*sub);
+    sub = manage(gnote::utils::create_popover_inner_grid(&sub_top));
   }
 
   auto item = manage(gnote::utils::create_popover_button("win.tableofcontents-heading1", _("Heading 1")));
@@ -160,9 +157,7 @@ std::map<int, Gtk::Widget*> TableofcontentsNoteAddin::get_actions_popover_widget
   sub->attach(*item, 0, sub_top++, 1, 1);
   toc_menu->attach(*sub, 0, top++, 1, 1);
 
-  sub = manage(new Gtk::Grid);
-  gnote::utils::set_common_popover_widget_props(*sub);
-  sub_top = 0;
+  sub = manage(gnote::utils::create_popover_inner_grid(&sub_top));
   auto back_item = gnote::utils::create_popover_submenu_button("main", _("_Back"));
   dynamic_cast<Gtk::ModelButton*>(back_item)->property_inverted() = true;
   sub->attach(*back_item, 0, sub_top++, 1, 1);
