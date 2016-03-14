@@ -823,8 +823,7 @@ namespace gnote {
       Gtk::Grid *main_grid = manage(new Gtk::Grid);
       int main_top = 0;
 
-      Gtk::Grid *grid = manage(new Gtk::Grid);
-      utils::set_common_popover_widget_props(*grid);
+      Gtk::Grid *grid = manage(utils::create_popover_inner_grid());
       int top = 0;
 
       Gtk::Widget *undo = manage(utils::create_popover_button("win.undo", _("_Undo")));
@@ -855,30 +854,27 @@ namespace gnote {
       Gtk::Widget *large = create_font_size_item(_("_Large"), "large", "size:large");
       Gtk::Widget *huge = create_font_size_item(_("Hu_ge"), "x-large", "size:huge");
 
-      grid = manage(new Gtk::Grid);
-      top = 0;
+      grid = manage(utils::create_popover_inner_grid(&top));
       grid->attach(*link, 0, top++, 1, 1);
       main_grid->attach(*grid, 0, main_top++, 1, 1);
 
-      grid = manage(new Gtk::Grid);
+      grid = manage(utils::create_popover_inner_grid(&top));
       grid->set_name("formatting");
-      top = 0;
       grid->attach(*bold, 0, top++, 1, 1);
       grid->attach(*italic, 0, top++, 1, 1);
       grid->attach(*strikeout, 0, top++, 1, 1);
       grid->attach(*highlight, 0, top++, 1, 1);
       main_grid->attach(*grid, 0, main_top++, 1, 1);
 
-      grid = manage(new Gtk::Grid);
+      grid = manage(utils::create_popover_inner_grid(&top));
       grid->set_name("font-size");
-      top = 0;
       grid->attach(*small, 0, top++, 1, 1);
       grid->attach(*normal, 0, top++, 1, 1);
       grid->attach(*large, 0, top++, 1, 1);
       grid->attach(*huge, 0, top++, 1, 1);
       main_grid->attach(*grid, 0, main_top++, 1, 1);
 
-      grid = manage(new Gtk::Grid);
+      grid = manage(utils::create_popover_inner_grid(&top));
       Gtk::Widget *bullets = manage(utils::create_popover_button("win.enable-bullets", _("⦁ Bullets")));
       grid->attach(*bullets, 0, top++, 1, 1);
       Gtk::Widget *increase_indent = manage(utils::create_popover_button("win.increase-indent", _("→ Increase indent")));
