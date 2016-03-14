@@ -737,14 +737,6 @@ namespace gnote {
     }
   }
 
-  Gtk::Grid *NoteRecentChanges::create_inner_popover_grid(int & top)
-  {
-    Gtk::Grid *grid = manage(new Gtk::Grid);
-    utils::set_common_popover_widget_props(*grid);
-    top = 0;
-    return grid;
-  }
-
   Gtk::PopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items)
   {
     std::map<Glib::ustring, Gtk::Widget*> submenus;
@@ -752,7 +744,7 @@ namespace gnote {
     Gtk::Grid *main_grid = manage(new Gtk::Grid);
     int main_top = 0;
     int top = 0;
-    Gtk::Grid *grid = create_inner_popover_grid(top);
+    Gtk::Grid *grid = manage(utils::create_popover_inner_grid(&top));
     FOREACH(Gtk::Widget *item, items) {
       if(item) {
         utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(item);
@@ -765,13 +757,13 @@ namespace gnote {
       }
       else {
         main_grid->attach(*grid, 0, main_top++, 1, 1);
-        grid = create_inner_popover_grid(top);
+        grid = manage(utils::create_popover_inner_grid(&top));
       }
     }
 
     if(top > 0) {
       main_grid->attach(*grid, 0, main_top++, 1, 1);
-      grid = create_inner_popover_grid(top);
+      grid = manage(utils::create_popover_inner_grid(&top));
     }
 
     Gtk::Widget *close_item = manage(utils::create_popover_button("win.close-window", _("_Close")));

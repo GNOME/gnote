@@ -88,7 +88,6 @@ private:
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
   Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items);
-  Gtk::Grid *create_inner_popover_grid(int & top);
   void on_embedded_name_changed(const std::string & name);
   void on_settings_changed(const Glib::ustring & key);
   bool on_notes_widget_key_press(GdkEventKey*);
