@@ -322,6 +322,16 @@ namespace gnote {
       widget.property_hexpand() = true;
     }
 
+    Gtk::Grid *create_popover_inner_grid(int *top)
+    {
+      Gtk::Grid *grid = new Gtk::Grid;
+      set_common_popover_widget_props(*grid);
+      if(top) {
+        *top = 0;
+      }
+      return grid;
+    }
+
 
     void add_item_to_ordered_map(std::map<int, Gtk::Widget*> & dest, int order, Gtk::Widget *item)
     {
