@@ -319,6 +319,7 @@ namespace gnote {
     {
       widget.property_margin_top() = 5;
       widget.property_margin_bottom() = 5;
+      widget.property_hexpand() = true;
     }
 
 
