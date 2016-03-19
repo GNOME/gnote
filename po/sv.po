@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-26 11:20+0000\n"
-"PO-Revision-Date: 2016-01-26 23:02+0100\n"
+"POT-Creation-Date: 2016-03-18 11:23+0000\n"
+"PO-Revision-Date: 2016-03-18 22:56+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -556,27 +556,27 @@ msgstr ""
 "Tidsintervall mellan kontroller av anteckningskatalog (i sekunder). Minsta "
 "värde är 5."
 
-#: ../src/actionmanager.cpp:120
+#: ../src/actionmanager.cpp:131
 msgid "_New Note"
 msgstr "_Ny anteckning"
 
-#: ../src/actionmanager.cpp:121
+#: ../src/actionmanager.cpp:132
 msgid "New _Window"
 msgstr "Nytt _fönster"
 
-#: ../src/actionmanager.cpp:122
+#: ../src/actionmanager.cpp:133
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: ../src/actionmanager.cpp:123
+#: ../src/actionmanager.cpp:134
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: ../src/actionmanager.cpp:124
+#: ../src/actionmanager.cpp:135
 msgid "_About"
 msgstr "_Om"
 
-#: ../src/actionmanager.cpp:125
+#: ../src/actionmanager.cpp:136
 msgid "_Quit"
 msgstr "_Avsluta"
 
@@ -650,7 +650,7 @@ msgid "(none)"
 msgstr "(ingen)"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:109
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
 #: ../src/notebooks/notebooknoteaddin.cpp:179
 msgid "_Back"
 msgstr "_Bakåt"
@@ -855,7 +855,7 @@ msgstr "Fast bredd"
 msgid "Adds fixed-width font style."
 msgstr "Lägger till en typsnittsstil med fast bredd."
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:57
 msgid "Fixed Wid_th"
 msgstr "Fast _bredd"
 
@@ -1126,23 +1126,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:151
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:148
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:215
 msgid "Heading 1"
 msgstr "Rubrik 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:226
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:152
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:221
 msgid "Heading 2"
 msgstr "Rubrik 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:159
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:232
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:156
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:227
 msgid "Table of Contents Help"
 msgstr "Hjälp för innehållsförteckning"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:205
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:200
 msgid "(empty table of contents)"
 msgstr "(tom innehållsförteckning)"
 
@@ -1184,7 +1184,7 @@ msgstr "Lägger till möjligheten att stryka under text."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière och Tomboy-projektet"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:35
+#: ../src/addins/underline/underlinenoteaddin.cpp:56
 msgid "_Underline"
 msgstr "_Understryk"
 
@@ -1365,11 +1365,11 @@ msgid "Failed to load icon (%s, %d): %s"
 msgstr "Misslyckades med att läsa in ikon (%s, %d): %s"
 
 # NoteAddin::dispose håller på att ta bort m_note_actions, m_text_menu_items och m_toolbar_items
-#: ../src/noteaddin.cpp:124 ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:151
+#: ../src/noteaddin.cpp:132 ../src/noteaddin.cpp:146 ../src/noteaddin.cpp:158
 msgid "Plugin is disposing already"
 msgstr "Insticksmodul frigör redan resurser"
 
-#: ../src/noteaddin.cpp:155
+#: ../src/noteaddin.cpp:162
 msgid "Window is not embedded"
 msgstr "Fönster är inte inbäddat"
 
@@ -1668,7 +1668,7 @@ msgstr ""
 msgid "Rename Links"
 msgstr "Byt namn på länkar"
 
-#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:331
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:332
 msgid "Note Title"
 msgstr "Anteckningstitel"
 
@@ -1676,28 +1676,24 @@ msgstr "Anteckningstitel"
 msgid "Ad_vanced"
 msgstr "A_vancerat"
 
-#: ../src/notewindow.cpp:322
+#: ../src/notewindow.cpp:324
 msgid "Is Important"
 msgstr "Är viktigt"
 
-#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:145
+#: ../src/notewindow.cpp:326 ../src/searchnoteswidget.cpp:145
 #: ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "_Ta bort"
 
-#: ../src/notewindow.cpp:376
+#: ../src/notewindow.cpp:378
 msgid "_Link to New Note"
 msgstr "_Länka till ny anteckning"
 
-#: ../src/notewindow.cpp:384
-msgid "Te_xt"
-msgstr "Te_xt"
-
-#: ../src/notewindow.cpp:421
+#: ../src/notewindow.cpp:414
 msgid "Set properties of text"
 msgstr "Ställ in textegenskaper"
 
-#: ../src/notewindow.cpp:435
+#: ../src/notewindow.cpp:428
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1706,65 +1702,82 @@ msgstr ""
 "vanliga anteckningar och kommer inte att visas i anteckningsmenyn eller "
 "sökfönster."
 
-#: ../src/notewindow.cpp:438
+#: ../src/notewindow.cpp:431
 msgid "Convert to regular note"
 msgstr "Konvertera till vanlig anteckning"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:434
 msgid "Save Si_ze"
 msgstr "Spara st_orlek"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:438
 msgid "Save Se_lection"
 msgstr "Spara ma_rkering"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:442
 msgid "Save _Title"
 msgstr "Spara _titel"
 
-#: ../src/notewindow.cpp:551 ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1075
 msgid "Cannot create note"
 msgstr "Kan inte skapa anteckning"
 
-#: ../src/notewindow.cpp:825
+#: ../src/notewindow.cpp:829
+msgid "_Undo"
+msgstr "Å_ngra"
+
+#: ../src/notewindow.cpp:832
+msgid "_Redo"
+msgstr "Gör _om"
+
+#: ../src/notewindow.cpp:841
 msgid "_Link"
 msgstr "_Länk"
 
-#: ../src/notewindow.cpp:826
-msgid "<b>_Bold</b>"
-msgstr "<b>_Fet</b>"
+#: ../src/notewindow.cpp:843
+msgid "_Bold"
+msgstr "_Fet"
 
-#: ../src/notewindow.cpp:827
-msgid "<i>_Italic</i>"
-msgstr "<i>_Kursiv</i>"
+#: ../src/notewindow.cpp:844
+msgid "_Italic"
+msgstr "_Kursiv"
 
-#: ../src/notewindow.cpp:828
-msgid "<s>_Strikeout</s>"
-msgstr "<s>_Genomstruken</s>"
+#: ../src/notewindow.cpp:845
+msgid "_Strikeout"
+msgstr "_Genomstruken"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:849
 msgid "_Highlight"
 msgstr "_Markera"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:852
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:834
-msgid "Hu_ge"
-msgstr "_Enorm"
-
-#: ../src/notewindow.cpp:836
-msgid "_Large"
-msgstr "_Stor"
-
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:853
 msgid "S_mall"
 msgstr "_Liten"
 
-#: ../src/notewindow.cpp:840
-msgid "Bullets"
-msgstr "Punkter"
+#: ../src/notewindow.cpp:854
+msgid "_Large"
+msgstr "_Stor"
+
+#: ../src/notewindow.cpp:855
+msgid "Hu_ge"
+msgstr "_Enorm"
+
+#: ../src/notewindow.cpp:878
+#| msgid "Bullets"
+msgid "⦁ Bullets"
+msgstr "⦁ Punkter"
+
+#: ../src/notewindow.cpp:880
+msgid "→ Increase indent"
+msgstr "→ Öka indrag"
+
+#: ../src/notewindow.cpp:882
+msgid "← Decrease indent"
+msgstr "← Minska indrag"
 
 #: ../src/preferencesdialog.cpp:103
 msgid "Gnote Preferences"
@@ -2039,7 +2052,7 @@ msgstr "Sök _nästa"
 msgid "Find _Previous"
 msgstr "Sök _föregående"
 
-#: ../src/recentchanges.cpp:777
+#: ../src/recentchanges.cpp:769
 msgid "_Close"
 msgstr "S_täng"
 
@@ -2248,37 +2261,37 @@ msgstr "last-sync-date-element som ej går att tolka i %s"
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "last-sync-rev-element som ej går att tolka i %s"
 
-#: ../src/synchronization/syncdialog.cpp:64
+#: ../src/synchronization/syncdialog.cpp:65
 msgid "Note Conflict"
 msgstr "Anteckningskonflikt"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:69
+#: ../src/synchronization/syncdialog.cpp:70
 msgid " (old)"
 msgstr " (gammal)"
 
-#: ../src/synchronization/syncdialog.cpp:114
+#: ../src/synchronization/syncdialog.cpp:115
 msgid "Rename local note:"
 msgstr "Byt namn på lokal anteckning:"
 
-#: ../src/synchronization/syncdialog.cpp:121
+#: ../src/synchronization/syncdialog.cpp:122
 msgid "Update links in referencing notes"
 msgstr "Uppdatera länkar i refererande anteckningar"
 
-#: ../src/synchronization/syncdialog.cpp:127
+#: ../src/synchronization/syncdialog.cpp:128
 msgid "Overwrite local note"
 msgstr "Skriv över lokal anteckning"
 
-#: ../src/synchronization/syncdialog.cpp:131
+#: ../src/synchronization/syncdialog.cpp:132
 msgid "Always perform this action"
 msgstr "Genomför alltid den här åtgärden"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:137
+#: ../src/synchronization/syncdialog.cpp:138
 msgid "Note conflict detected"
 msgstr "Anteckningskonflikt upptäcktes"
 
-#: ../src/synchronization/syncdialog.cpp:139
+#: ../src/synchronization/syncdialog.cpp:140
 msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2287,55 +2300,55 @@ msgstr ""
 "vill du göra med din lokala anteckning?"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:296
+#: ../src/synchronization/syncdialog.cpp:297
 msgid "Details"
 msgstr "Detaljer"
 
-#: ../src/synchronization/syncdialog.cpp:338
+#: ../src/synchronization/syncdialog.cpp:339
 msgid "Status"
 msgstr "Status"
 
-#: ../src/synchronization/syncdialog.cpp:483
+#: ../src/synchronization/syncdialog.cpp:484
 msgid "Acquiring sync lock..."
 msgstr "Tar över synkroniseringslås…"
 
-#: ../src/synchronization/syncdialog.cpp:486
+#: ../src/synchronization/syncdialog.cpp:487
 msgid "Committing changes..."
 msgstr "Verkställer ändringar…"
 
-#: ../src/synchronization/syncdialog.cpp:489
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "Synchronizing Notes"
 msgstr "Synkroniserar anteckningar"
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: ../src/synchronization/syncdialog.cpp:491
 msgid "Synchronizing your notes..."
 msgstr "Synkroniserar dina anteckningar…"
 
-#: ../src/synchronization/syncdialog.cpp:491
+#: ../src/synchronization/syncdialog.cpp:492
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Det här kan ta en stund, luta dig tillbaka och njut!"
 
-#: ../src/synchronization/syncdialog.cpp:493
+#: ../src/synchronization/syncdialog.cpp:494
 msgid "Connecting to the server..."
 msgstr "Ansluter till servern…"
 
-#: ../src/synchronization/syncdialog.cpp:499
+#: ../src/synchronization/syncdialog.cpp:500
 msgid "Deleting notes off of the server..."
 msgstr "Tar bort anteckningar från servern…"
 
-#: ../src/synchronization/syncdialog.cpp:503
+#: ../src/synchronization/syncdialog.cpp:504
 msgid "Downloading new/updated notes..."
 msgstr "Hämtar nya/uppdaterade anteckningar…"
 
-#: ../src/synchronization/syncdialog.cpp:515
+#: ../src/synchronization/syncdialog.cpp:516
 msgid "Server Locked"
 msgstr "Servern är låst"
 
-#: ../src/synchronization/syncdialog.cpp:516
+#: ../src/synchronization/syncdialog.cpp:517
 msgid "Server is locked"
 msgstr "Servern är låst"
 
-#: ../src/synchronization/syncdialog.cpp:517
+#: ../src/synchronization/syncdialog.cpp:518
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2343,107 +2356,107 @@ msgstr ""
 "En av dina andra datorer synkroniserar för tillfället.  Vänta 2 minuter och "
 "försök igen."
 
-#: ../src/synchronization/syncdialog.cpp:521
+#: ../src/synchronization/syncdialog.cpp:522
 msgid "Preparing to download updates from server..."
 msgstr "Förbereder att hämta uppdateringar från servern…"
 
-#: ../src/synchronization/syncdialog.cpp:524
+#: ../src/synchronization/syncdialog.cpp:525
 msgid "Preparing to upload updates to server..."
 msgstr "Förbereder för att skicka upp uppdateringar till servern…"
 
-#: ../src/synchronization/syncdialog.cpp:527
+#: ../src/synchronization/syncdialog.cpp:528
 msgid "Uploading notes to server..."
 msgstr "Skickar upp anteckningar till servern…"
 
-#: ../src/synchronization/syncdialog.cpp:530
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "Synchronization Failed"
 msgstr "Synkroniseringen misslyckades"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:532
 msgid "Failed to synchronize"
 msgstr "Misslyckades med att synkronisera"
 
-#: ../src/synchronization/syncdialog.cpp:532
+#: ../src/synchronization/syncdialog.cpp:533
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Kunde inte synkronisera anteckningar.  Kontrollera detaljerna nedan och "
 "försök igen."
 
-#: ../src/synchronization/syncdialog.cpp:538
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "Synchronization Complete"
 msgstr "Synkroniseringen är färdig"
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "Synchronization is complete"
 msgstr "Synkroniseringen är färdig"
 
-#: ../src/synchronization/syncdialog.cpp:540
+#: ../src/synchronization/syncdialog.cpp:541
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% anteckning uppdaterad."
 msgstr[1] "%1% anteckningar uppdaterade."
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:542
 msgid "Your notes are now up to date."
 msgstr "Dina anteckningar är nu uppdaterade."
 
-#: ../src/synchronization/syncdialog.cpp:546
+#: ../src/synchronization/syncdialog.cpp:547
 msgid "Synchronization Canceled"
 msgstr "Synkroniseringen avbröts"
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:548
 msgid "Synchronization was canceled"
 msgstr "Synkroniseringen har avbrutits"
 
-#: ../src/synchronization/syncdialog.cpp:548
+#: ../src/synchronization/syncdialog.cpp:549
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Du avbröt synkroniseringen.  Du kan stänga fönstret nu."
 
-#: ../src/synchronization/syncdialog.cpp:552
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Synchronization Not Configured"
 msgstr "Synkronisering är inte konfigurerad"
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:554
 msgid "Synchronization is not configured"
 msgstr "Synkronisering är inte konfigurerad"
 
-#: ../src/synchronization/syncdialog.cpp:554
+#: ../src/synchronization/syncdialog.cpp:555
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Konfigurera synkronisering i inställningsdialogrutan."
 
-#: ../src/synchronization/syncdialog.cpp:558
+#: ../src/synchronization/syncdialog.cpp:559
 msgid "Synchronization Service Error"
 msgstr "Fel i synkroniseringstjänsten"
 
-#: ../src/synchronization/syncdialog.cpp:559
+#: ../src/synchronization/syncdialog.cpp:560
 msgid "Service error"
 msgstr "Fel i tjänst"
 
-#: ../src/synchronization/syncdialog.cpp:560
+#: ../src/synchronization/syncdialog.cpp:561
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Fel vid anslutning till synkroniseringstjänsten.  Försök igen."
 
-#: ../src/synchronization/syncdialog.cpp:574
+#: ../src/synchronization/syncdialog.cpp:575
 msgid "Deleted locally"
 msgstr "Borttagen lokalt"
 
-#: ../src/synchronization/syncdialog.cpp:577
+#: ../src/synchronization/syncdialog.cpp:578
 msgid "Deleted from server"
 msgstr "Borttagen från servern"
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:581
 msgid "Updated"
 msgstr "Uppdaterad"
 
-#: ../src/synchronization/syncdialog.cpp:583
+#: ../src/synchronization/syncdialog.cpp:584
 msgid "Added"
 msgstr "Tillagd"
 
-#: ../src/synchronization/syncdialog.cpp:586
+#: ../src/synchronization/syncdialog.cpp:587
 msgid "Uploaded changes to server"
 msgstr "Skickade upp ändringar till servern"
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:590
 msgid "Uploaded new note to server"
 msgstr "Skickade upp ny anteckning till servern"
 
@@ -2597,6 +2610,18 @@ msgstr "_Kopiera länkadress"
 #: ../src/watchers.cpp:713
 msgid "_Open Link"
 msgstr "_Öppna länk"
+
+#~ msgid "Te_xt"
+#~ msgstr "Te_xt"
+
+#~ msgid "<b>_Bold</b>"
+#~ msgstr "<b>_Fet</b>"
+
+#~ msgid "<i>_Italic</i>"
+#~ msgstr "<i>_Kursiv</i>"
+
+#~ msgid "<s>_Strikeout</s>"
+#~ msgstr "<s>_Genomstruken</s>"
 
 #~ msgid "Quit Gnote"
 #~ msgstr "Avsluta Gnote"
@@ -3085,15 +3110,6 @@ msgstr "_Öppna länk"
 
 #~ msgid "New Note {0}"
 #~ msgstr "Ny anteckning {0}"
-
-#~ msgid "_Bold"
-#~ msgstr "_Fet"
-
-#~ msgid "_Italic"
-#~ msgstr "_Kursiv"
-
-#~ msgid "_Strikeout"
-#~ msgstr "_Genomstruken"
 
 #~ msgid "{0} Preferences"
 #~ msgstr "Inställningar för {0}"
