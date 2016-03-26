@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-24 12:57+0000\n"
-"PO-Revision-Date: 2016-01-24 19:58+0200\n"
+"POT-Creation-Date: 2016-03-25 23:37+0000\n"
+"PO-Revision-Date: 2016-03-26 12:55+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -550,27 +550,27 @@ msgstr ""
 "Laiko tarpas tarp raštelių aplanko tikrinimų (sekundėmis). Mažiausia vertė "
 "yra 5."
 
-#: ../src/actionmanager.cpp:120
+#: ../src/actionmanager.cpp:131
 msgid "_New Note"
 msgstr "_Naujas raštelis"
 
-#: ../src/actionmanager.cpp:121
+#: ../src/actionmanager.cpp:132
 msgid "New _Window"
 msgstr "Naujas _langas"
 
-#: ../src/actionmanager.cpp:122
+#: ../src/actionmanager.cpp:133
 msgid "_Preferences"
 msgstr "_Nuostatos"
 
-#: ../src/actionmanager.cpp:123
+#: ../src/actionmanager.cpp:134
 msgid "_Help"
 msgstr "_Žinynas"
 
-#: ../src/actionmanager.cpp:124
+#: ../src/actionmanager.cpp:135
 msgid "_About"
 msgstr "_Apie"
 
-#: ../src/actionmanager.cpp:125
+#: ../src/actionmanager.cpp:136
 msgid "_Quit"
 msgstr "Iš_eiti"
 
@@ -644,7 +644,7 @@ msgid "(none)"
 msgstr "(nėra)"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:109
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
 #: ../src/notebooks/notebooknoteaddin.cpp:179
 msgid "_Back"
 msgstr "At_gal"
@@ -845,7 +845,7 @@ msgstr "Fiksuoto pločio"
 msgid "Adds fixed-width font style."
 msgstr "Įterpia fiksuoto pločio šrifto stilių."
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:57
 msgid "Fixed Wid_th"
 msgstr "_Fiksuoto pločio"
 
@@ -1117,23 +1117,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:151
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:148
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:215
 msgid "Heading 1"
 msgstr "Antraštė 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:226
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:152
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:221
 msgid "Heading 2"
 msgstr "Antraštė 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:159
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:232
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:156
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:227
 msgid "Table of Contents Help"
 msgstr "Turinio žinynas"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:205
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:200
 msgid "(empty table of contents)"
 msgstr "(tuščias turinys)"
 
@@ -1174,7 +1174,7 @@ msgstr "Prideda galimybę pabraukti tekstą."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière and the Tomboy Project"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:35
+#: ../src/addins/underline/underlinenoteaddin.cpp:56
 msgid "_Underline"
 msgstr "_Pabrauktas"
 
@@ -1256,11 +1256,6 @@ msgstr ""
 "Žygimantas Beručka <zygis@gnome.org>"
 
 #: ../src/gnote.cpp:288
-#| msgid ""
-#| "Copyright © 2010-2015 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1354,11 +1349,11 @@ msgstr "Versija %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Nepavyko įkelti piktogramos (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:124 ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:151
+#: ../src/noteaddin.cpp:132 ../src/noteaddin.cpp:146 ../src/noteaddin.cpp:158
 msgid "Plugin is disposing already"
 msgstr "Įskiepis jau išsijungia"
 
-#: ../src/noteaddin.cpp:155
+#: ../src/noteaddin.cpp:162
 msgid "Window is not embedded"
 msgstr "Langas nėra įtaisytas"
 
@@ -1654,7 +1649,7 @@ msgstr ""
 msgid "Rename Links"
 msgstr "Pervadinti saitus"
 
-#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:331
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:332
 msgid "Note Title"
 msgstr "Raštelio pavadinimas"
 
@@ -1662,28 +1657,24 @@ msgstr "Raštelio pavadinimas"
 msgid "Ad_vanced"
 msgstr "_Sudėtingesni"
 
-#: ../src/notewindow.cpp:322
+#: ../src/notewindow.cpp:324
 msgid "Is Important"
 msgstr "Yra svarbus"
 
-#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:145
+#: ../src/notewindow.cpp:326 ../src/searchnoteswidget.cpp:145
 #: ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "Iš_trinti"
 
-#: ../src/notewindow.cpp:376
+#: ../src/notewindow.cpp:378
 msgid "_Link to New Note"
 msgstr "Sukurti nuorodą į naują _raštelį"
 
-#: ../src/notewindow.cpp:384
-msgid "Te_xt"
-msgstr "_Tekstas"
-
-#: ../src/notewindow.cpp:421
+#: ../src/notewindow.cpp:414
 msgid "Set properties of text"
 msgstr "Nurodyti teksto savybes"
 
-#: ../src/notewindow.cpp:435
+#: ../src/notewindow.cpp:428
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1691,65 +1682,84 @@ msgstr ""
 "Šis raštelis yra šablonas. Jis nusako įprastinių raštelių turinį ir nebus "
 "matomas raštelių meniu arba paieškos lange."
 
-#: ../src/notewindow.cpp:438
+#: ../src/notewindow.cpp:431
 msgid "Convert to regular note"
 msgstr "Paversti įprastiniu rašteliu"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:434
 msgid "Save Si_ze"
 msgstr "Įrašyti _dydį"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:438
 msgid "Save Se_lection"
 msgstr "Įrašyti pa_žymėjimą"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:442
 msgid "Save _Title"
 msgstr "Įrašyti _pavadinimą"
 
-#: ../src/notewindow.cpp:551 ../src/notewindow.cpp:1082
+#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1075
 msgid "Cannot create note"
 msgstr "Nepavyko sukurti raštelio"
 
-#: ../src/notewindow.cpp:825
+#: ../src/notewindow.cpp:829
+msgid "_Undo"
+msgstr "_Atšaukti"
+
+#: ../src/notewindow.cpp:832
+msgid "_Redo"
+msgstr "Paka_rtoti"
+
+#: ../src/notewindow.cpp:841
 msgid "_Link"
 msgstr "_Susieti"
 
-#: ../src/notewindow.cpp:826
-msgid "<b>_Bold</b>"
-msgstr "<b>_Pusjuodis</b>"
+#: ../src/notewindow.cpp:843
+msgid "_Bold"
+msgstr "_Pusjuodis"
 
-#: ../src/notewindow.cpp:827
-msgid "<i>_Italic</i>"
-msgstr "<i>_Kursyvas</i>"
+#: ../src/notewindow.cpp:844
+#| msgid "<i>_Italic</i>"
+msgid "_Italic"
+msgstr "_Kursyvas"
 
-#: ../src/notewindow.cpp:828
-msgid "<s>_Strikeout</s>"
-msgstr "<s>_Perbrauktas</s>"
+#: ../src/notewindow.cpp:845
+#| msgid "<s>_Strikeout</s>"
+msgid "_Strikeout"
+msgstr "_Perbrauktas"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:849
 msgid "_Highlight"
 msgstr "Pa_ryškintas"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:852
 msgid "_Normal"
 msgstr "_Normalus"
 
-#: ../src/notewindow.cpp:834
-msgid "Hu_ge"
-msgstr "Milžiniš_kas"
-
-#: ../src/notewindow.cpp:836
-msgid "_Large"
-msgstr "_Didelis"
-
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:853
 msgid "S_mall"
 msgstr "_Mažas"
 
-#: ../src/notewindow.cpp:840
-msgid "Bullets"
-msgstr "Punktai"
+#: ../src/notewindow.cpp:854
+msgid "_Large"
+msgstr "_Didelis"
+
+#: ../src/notewindow.cpp:855
+msgid "Hu_ge"
+msgstr "Milžiniš_kas"
+
+#: ../src/notewindow.cpp:878
+#| msgid "Bullets"
+msgid "⦁ Bullets"
+msgstr "⦁  Punktai"
+
+#: ../src/notewindow.cpp:880
+msgid "→ Increase indent"
+msgstr "→ Padidinti įtrauką"
+
+#: ../src/notewindow.cpp:882
+msgid "← Decrease indent"
+msgstr "← Sumažinti įtrauką"
 
 #: ../src/preferencesdialog.cpp:103
 msgid "Gnote Preferences"
@@ -2024,7 +2034,7 @@ msgstr "Rasti _kitą"
 msgid "Find _Previous"
 msgstr "Rasti _ankstesnį"
 
-#: ../src/recentchanges.cpp:777
+#: ../src/recentchanges.cpp:769
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -2234,37 +2244,37 @@ msgstr "Neperskaitomas %s elementas last-sync-date"
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Neperskaitomas %s elementas last-sync-rev"
 
-#: ../src/synchronization/syncdialog.cpp:64
+#: ../src/synchronization/syncdialog.cpp:65
 msgid "Note Conflict"
 msgstr "Raštelio konfliktas"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:69
+#: ../src/synchronization/syncdialog.cpp:70
 msgid " (old)"
 msgstr " (senas)"
 
-#: ../src/synchronization/syncdialog.cpp:114
+#: ../src/synchronization/syncdialog.cpp:115
 msgid "Rename local note:"
 msgstr "Pervadinti vietinį raštelį:"
 
-#: ../src/synchronization/syncdialog.cpp:121
+#: ../src/synchronization/syncdialog.cpp:122
 msgid "Update links in referencing notes"
 msgstr "Atnaujinti saitus kituose rašteliuose"
 
-#: ../src/synchronization/syncdialog.cpp:127
+#: ../src/synchronization/syncdialog.cpp:128
 msgid "Overwrite local note"
 msgstr "Perrašyti vietinį raštelį"
 
-#: ../src/synchronization/syncdialog.cpp:131
+#: ../src/synchronization/syncdialog.cpp:132
 msgid "Always perform this action"
 msgstr "Visada vykdyti šį veiksmą"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:137
+#: ../src/synchronization/syncdialog.cpp:138
 msgid "Note conflict detected"
 msgstr "Aptiktas raštelių konfliktas"
 
-#: ../src/synchronization/syncdialog.cpp:139
+#: ../src/synchronization/syncdialog.cpp:140
 msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2273,55 +2283,55 @@ msgstr ""
 "su savo vietiniu rašteliu?"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:296
+#: ../src/synchronization/syncdialog.cpp:297
 msgid "Details"
 msgstr "Detalės"
 
-#: ../src/synchronization/syncdialog.cpp:338
+#: ../src/synchronization/syncdialog.cpp:339
 msgid "Status"
 msgstr "Būsena"
 
-#: ../src/synchronization/syncdialog.cpp:483
+#: ../src/synchronization/syncdialog.cpp:484
 msgid "Acquiring sync lock..."
 msgstr "Gaunamas sinchronizacijos užraktas..."
 
-#: ../src/synchronization/syncdialog.cpp:486
+#: ../src/synchronization/syncdialog.cpp:487
 msgid "Committing changes..."
 msgstr "Patvirtinami pakeitimai..."
 
-#: ../src/synchronization/syncdialog.cpp:489
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "Synchronizing Notes"
 msgstr "Sinchronizuojami rašteliai"
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: ../src/synchronization/syncdialog.cpp:491
 msgid "Synchronizing your notes..."
 msgstr "Sinchronizuojami jūsų rašteliai..."
 
-#: ../src/synchronization/syncdialog.cpp:491
+#: ../src/synchronization/syncdialog.cpp:492
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Tai gali užtrukti, grįžkite ir mėgaukitės!"
 
-#: ../src/synchronization/syncdialog.cpp:493
+#: ../src/synchronization/syncdialog.cpp:494
 msgid "Connecting to the server..."
 msgstr "Jungiamasi prie serverio..."
 
-#: ../src/synchronization/syncdialog.cpp:499
+#: ../src/synchronization/syncdialog.cpp:500
 msgid "Deleting notes off of the server..."
 msgstr "Trinami rašteliai serveryje..."
 
-#: ../src/synchronization/syncdialog.cpp:503
+#: ../src/synchronization/syncdialog.cpp:504
 msgid "Downloading new/updated notes..."
 msgstr "Parsiunčiami nauji/pakeisti rašteliai..."
 
-#: ../src/synchronization/syncdialog.cpp:515
+#: ../src/synchronization/syncdialog.cpp:516
 msgid "Server Locked"
 msgstr "Serveris užrakintas"
 
-#: ../src/synchronization/syncdialog.cpp:516
+#: ../src/synchronization/syncdialog.cpp:517
 msgid "Server is locked"
 msgstr "Serveris užrakintas"
 
-#: ../src/synchronization/syncdialog.cpp:517
+#: ../src/synchronization/syncdialog.cpp:518
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2329,108 +2339,108 @@ msgstr ""
 "Vienas iš jūsų kitų kompiuterių šiuo metu sinchronizuojasi.  Palaukite 2 "
 "minutes ir bandykite vėl."
 
-#: ../src/synchronization/syncdialog.cpp:521
+#: ../src/synchronization/syncdialog.cpp:522
 msgid "Preparing to download updates from server..."
 msgstr "Ruošiamasi parsiųsti atnaujinimus iš serverio..."
 
-#: ../src/synchronization/syncdialog.cpp:524
+#: ../src/synchronization/syncdialog.cpp:525
 msgid "Preparing to upload updates to server..."
 msgstr "Ruošiamasi nusiųsti pakeitimus į serverį..."
 
-#: ../src/synchronization/syncdialog.cpp:527
+#: ../src/synchronization/syncdialog.cpp:528
 msgid "Uploading notes to server..."
 msgstr "Siunčiami rašteliai į serverį..."
 
-#: ../src/synchronization/syncdialog.cpp:530
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "Synchronization Failed"
 msgstr "Sinchronizavimas nepavyko"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:532
 msgid "Failed to synchronize"
 msgstr "Sinchronizavimas nepavyko"
 
-#: ../src/synchronization/syncdialog.cpp:532
+#: ../src/synchronization/syncdialog.cpp:533
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Nepavyko sinchronizuoti raštelių.  Patikrinkite detales žemiau ir bandykite "
 "vėl."
 
-#: ../src/synchronization/syncdialog.cpp:538
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "Synchronization Complete"
 msgstr "Sinchronizavimas baigtas"
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "Synchronization is complete"
 msgstr "Sinchronizavimas baigtas"
 
-#: ../src/synchronization/syncdialog.cpp:540
+#: ../src/synchronization/syncdialog.cpp:541
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% raštelis nusiųstas"
 msgstr[1] "%1% rašteliai nusiųsti"
 msgstr[2] "%1% raštelių nusiųsta"
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:542
 msgid "Your notes are now up to date."
 msgstr "Jūsų rašteliai yra naujausi."
 
-#: ../src/synchronization/syncdialog.cpp:546
+#: ../src/synchronization/syncdialog.cpp:547
 msgid "Synchronization Canceled"
 msgstr "Sinchronizavimas atšauktas"
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:548
 msgid "Synchronization was canceled"
 msgstr "Sinchronizavimas atšauktas"
 
-#: ../src/synchronization/syncdialog.cpp:548
+#: ../src/synchronization/syncdialog.cpp:549
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Jūs atšaukėte sinchronizaciją.  Galite dabar užverti langą."
 
-#: ../src/synchronization/syncdialog.cpp:552
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Synchronization Not Configured"
 msgstr "Sinchronizacija nenustatyta"
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:554
 msgid "Synchronization is not configured"
 msgstr "Sinchronizacija nenustatyta"
 
-#: ../src/synchronization/syncdialog.cpp:554
+#: ../src/synchronization/syncdialog.cpp:555
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Nustatykite sinchronizaciją nuostatų dialoge."
 
-#: ../src/synchronization/syncdialog.cpp:558
+#: ../src/synchronization/syncdialog.cpp:559
 msgid "Synchronization Service Error"
 msgstr "Sinchronizavimo tarnybos klaida"
 
-#: ../src/synchronization/syncdialog.cpp:559
+#: ../src/synchronization/syncdialog.cpp:560
 msgid "Service error"
 msgstr "Tarnybos klaida"
 
-#: ../src/synchronization/syncdialog.cpp:560
+#: ../src/synchronization/syncdialog.cpp:561
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Klaida jungiantis prie sinchronizacijos tarnybos.  Mėginkite vėl."
 
-#: ../src/synchronization/syncdialog.cpp:574
+#: ../src/synchronization/syncdialog.cpp:575
 msgid "Deleted locally"
 msgstr "Ištrintas vietoje"
 
-#: ../src/synchronization/syncdialog.cpp:577
+#: ../src/synchronization/syncdialog.cpp:578
 msgid "Deleted from server"
 msgstr "Ištrintas iš serverio"
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:581
 msgid "Updated"
 msgstr "Atnaujintas"
 
-#: ../src/synchronization/syncdialog.cpp:583
+#: ../src/synchronization/syncdialog.cpp:584
 msgid "Added"
 msgstr "Pridėtas"
 
-#: ../src/synchronization/syncdialog.cpp:586
+#: ../src/synchronization/syncdialog.cpp:587
 msgid "Uploaded changes to server"
 msgstr "Pakeitimai nusiųsti į serverį"
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:590
 msgid "Uploaded new note to server"
 msgstr "Nusiųstas naujas raštelis į serverį"
 
@@ -2583,6 +2593,12 @@ msgstr "_Kopijuoti nuorodos adresą"
 #: ../src/watchers.cpp:713
 msgid "_Open Link"
 msgstr "_Atverti nuorodą"
+
+#~ msgid "Te_xt"
+#~ msgstr "_Tekstas"
+
+#~ msgid "<b>_Bold</b>"
+#~ msgstr "<b>_Pusjuodis</b>"
 
 #~ msgid "Quit Gnote"
 #~ msgstr "Išjungti Gnote"
