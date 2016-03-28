@@ -49,7 +49,6 @@ namespace gnote {
     , m_search_box(0.5, 0.5, 0.0, 1.0)
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
-    , m_search_dirty(false)
     , m_window_menu_embedded(NULL)
     , m_window_menu_default(NULL)
     , m_keybinder(get_accel_group())
@@ -638,7 +637,6 @@ namespace gnote {
         .connect(sigc::mem_fun(*this, &NoteRecentChanges::entry_changed_timeout));
     }
 
-    m_search_dirty = true;
     std::string search_text = get_search_text();
     if(search_text.empty()) {
       SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
@@ -657,12 +655,7 @@ namespace gnote {
       m_entry_changed_timeout->cancel();
     }
 
-    if(m_search_dirty) {
-      entry_changed_timeout();
-    }
-    else {
-      on_find_next_button_clicked();
-    }
+    entry_changed_timeout();
   }
 
   void NoteRecentChanges::entry_changed_timeout()
@@ -678,7 +671,6 @@ namespace gnote {
     SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
     if(searchable_widget) {
       searchable_widget->perform_search(search_text);
-      m_search_dirty = false;
     }
   }
 
