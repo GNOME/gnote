@@ -113,6 +113,7 @@ private:
   sigc::connection    m_current_embedded_name_slot;
   sigc::connection    m_signal_popover_widgets_changed_cid;
   utils::InterruptableTimeout *m_entry_changed_timeout;
+  bool                m_search_dirty;
   Gtk::PopoverMenu     *m_window_menu_embedded;
   Gtk::PopoverMenu     *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
