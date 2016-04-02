@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -100,7 +100,7 @@ namespace gnote {
       if (find_depth_tag(select_start))
         select_start.set_line_offset(2);
 
-      if (select_start.begins_tag(tag) || select_start.has_tag(tag)) {
+      if(is_active_tag(tag)) {
         remove_tag(tag, select_start, select_end);
       }
       else {
@@ -219,6 +219,12 @@ namespace gnote {
   bool NoteBuffer::is_active_tag(const std::string & tag_name)
   {
     Glib::RefPtr<Gtk::TextTag> tag = get_tag_table()->lookup(tag_name);
+    return is_active_tag(tag);
+  }
+
+
+  bool NoteBuffer::is_active_tag(const Glib::RefPtr<Gtk::TextTag> & tag)
+  {
     Gtk::TextIter iter, select_end;
 
     if (get_selection_bounds (iter, select_end)) {
@@ -227,7 +233,18 @@ namespace gnote {
       if (find_depth_tag(iter)) {
         iter.forward_chars(2);
       }
-      return iter.begins_tag(tag) || iter.has_tag(tag);
+      if(iter.begins_tag(tag) || iter.has_tag(tag)) {
+        // consider tag active only if it applies to the entire selection
+        if (iter.forward_to_tag_toggle(tag)) {
+          return select_end <= iter;
+        }
+        else {
+          // probably reached the end of note
+          return true;
+        }
+      }
+
+      return false;
     } 
     else {
       return (find(m_active_tags.begin(), m_active_tags.end(), tag) != m_active_tags.end());

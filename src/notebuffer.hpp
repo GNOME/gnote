@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015 Aurimas Cernius
+ * Copyright (C) 2011-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -81,6 +81,7 @@ public:
   void on_tag_applied(const Glib::RefPtr<Gtk::TextTag> &,
                       const Gtk::TextIter &,const Gtk::TextIter &);
   bool is_active_tag(const std::string & );
+  bool is_active_tag(const Glib::RefPtr<Gtk::TextTag> & tag);
   bool is_bulleted_list_active();
   bool is_bulleted_list_active(Gtk::TextIter iter);
   bool can_make_bulleted_list();
