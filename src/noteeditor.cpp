@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 #include "notebuffer.hpp"
 #include "noteeditor.hpp"
 #include "preferences.hpp"
+#include "undo.hpp"
 #include "utils.hpp"
 #include "debug.hpp"
 #include "sharp/string.hpp"
@@ -68,6 +69,9 @@ namespace gnote {
 
     signal_key_press_event().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed), false);
     signal_button_press_event().connect(sigc::mem_fun(*this, &NoteEditor::button_pressed), false);
+
+    g_signal_connect(gobj(), "paste-clipboard", G_CALLBACK(paste_started), this);
+    g_signal_connect_after(gobj(), "paste-clipboard", G_CALLBACK(paste_ended), this);
   }
 
 
@@ -274,6 +278,27 @@ namespace gnote {
     return false;
   }
 
+  void NoteEditor::paste_started(GtkTextView*, NoteEditor *_this)
+  {
+    _this->on_paste_start();
+  }
+
+  void NoteEditor::paste_ended(GtkTextView*, NoteEditor *_this)
+  {
+    _this->on_paste_end();
+  }
+
+  void NoteEditor::on_paste_start()
+  {
+    auto buffer = NoteBuffer::Ptr::cast_static(get_buffer());
+    buffer->undoer().add_undo_action(new EditActionGroup(true));
+  }
+
+  void NoteEditor::on_paste_end()
+  {
+    auto buffer = NoteBuffer::Ptr::cast_static(get_buffer());
+    buffer->undoer().add_undo_action(new EditActionGroup(false));
+  }
 
 
 }

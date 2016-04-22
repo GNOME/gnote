@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,32 @@
 #include "undo.hpp"
 
 namespace gnote {
+
+  EditActionGroup::EditActionGroup(bool start)
+    : m_start(start)
+  {
+  }
+
+  void EditActionGroup::undo(Gtk::TextBuffer*)
+  {
+  }
+
+  void EditActionGroup::redo(Gtk::TextBuffer*)
+  {
+  }
+
+  void EditActionGroup::merge(EditAction*)
+  {
+  }
+
+  bool EditActionGroup::can_merge(const EditAction*) const
+  {
+    return false;
+  }
+
+  void EditActionGroup::destroy()
+  {
+  }
 
   ChopBuffer::ChopBuffer(const Glib::RefPtr<Gtk::TextTagTable> & table)
     : Gtk::TextBuffer(table)
@@ -602,19 +628,23 @@ namespace gnote {
                               std::stack<EditAction *> & push_to, bool is_undo)
   {
     if (!pop_from.empty()) {
-      EditAction *action = pop_from.top ();
-      pop_from.pop();
+      bool loop = false;
+      freeze_undo();
+      do {
+        EditAction *action = pop_from.top();
+        pop_from.pop();
+        EditActionGroup *group = dynamic_cast<EditActionGroup*>(action);
+        if(group) {
+          // in case of undo group-end is at the top, for redo it's the opposite
+          loop = is_undo ? !group->is_start() : group->is_start();
+        }
 
-      freeze_undo ();
-      if (is_undo) {
-        action->undo (m_buffer);
-      }
-      else {
-        action->redo (m_buffer);
-      }
-      thaw_undo ();
+        undo_redo_action(*action, is_undo);
 
-      push_to.push (action);
+        push_to.push(action);
+
+      } while(loop);
+      thaw_undo();
 
       // Lock merges until a new undoable event comes in...
       m_try_merge = false;
@@ -622,6 +652,17 @@ namespace gnote {
       if (pop_from.empty() || push_to.size() == 1) {
         m_undo_changed();
       }
+    }
+  }
+
+
+  void UndoManager::undo_redo_action(EditAction & action, bool is_undo)
+  {
+    if(is_undo) {
+      action.undo(m_buffer);
+    }
+    else {
+      action.redo(m_buffer);
     }
   }
 

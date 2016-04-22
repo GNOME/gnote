@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,6 +50,24 @@ public:
   virtual void merge (EditAction * action) = 0;
   virtual bool can_merge (const EditAction * action) const = 0;
   virtual void destroy () = 0;
+};
+
+class EditActionGroup
+  : public EditAction
+{
+public:
+  EditActionGroup(bool start);
+  virtual void undo(Gtk::TextBuffer *buffer) override;
+  virtual void redo(Gtk::TextBuffer *buffer) override;
+  virtual void merge(EditAction *action) override;
+  virtual bool can_merge(const EditAction *action) const override;
+  virtual void destroy() override;
+  bool is_start() const
+    {
+      return m_start;
+    }
+private:
+  bool m_start;
 };
 
 class ChopBuffer
@@ -237,6 +255,7 @@ public:
     }
 
   void undo_redo(std::stack<EditAction *> &, std::stack<EditAction *> &, bool);
+  void undo_redo_action(EditAction & action, bool);
   void clear_undo_history();
   void add_undo_action(EditAction * action);
 
