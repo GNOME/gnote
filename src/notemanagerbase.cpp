@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -91,13 +91,16 @@ Glib::ustring NoteManagerBase::sanitize_xml_content(const Glib::ustring & xml_co
 
 
 NoteManagerBase::NoteManagerBase(const Glib::ustring & directory)
-  : m_notes_dir(directory)
+  : m_trie_controller(NULL)
+  , m_notes_dir(directory)
 {
 }
 
 NoteManagerBase::~NoteManagerBase()
 {
-  delete m_trie_controller;
+  if(m_trie_controller) {
+    delete m_trie_controller;
+  }
 }
 
 void NoteManagerBase::_common_init(const Glib::ustring & /*directory*/, const Glib::ustring & backup_directory)
@@ -108,15 +111,19 @@ void NoteManagerBase::_common_init(const Glib::ustring & /*directory*/, const Gl
 
   const std::string old_note_dir = IGnote::old_note_dir();
   const bool migration_needed = is_first_run && sharp::directory_exists(old_note_dir);
+  create_notes_dir();
 
   if(migration_needed) {
-    migrate_notes(old_note_dir);
+    try {
+      migrate_notes(old_note_dir);
+    }
+    catch(Glib::Exception & e) {
+      ERR_OUT("Migration failed! Exception: %s", e.what().c_str());
+    }
     is_first_run = false;
   }
 
   m_trie_controller = create_trie_controller();
-
-  create_notes_dir();
 }
 
 bool NoteManagerBase::first_run() const
