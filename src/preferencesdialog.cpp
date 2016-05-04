@@ -511,7 +511,7 @@ namespace gnote {
     }
     Gtk::Grid *autosyncBox = manage(new Gtk::Grid);
     autosyncBox->set_column_spacing(5);
-    m_autosync_check = manage(new Gtk::CheckButton(_("Automatical background s_ync interval (minutes)"), true));
+    m_autosync_check = manage(new Gtk::CheckButton(_("Automatic background s_ync interval (minutes)"), true));
     m_autosync_check->set_hexpand(true);
     m_autosync_spinner = manage(new Gtk::SpinButton(1));
     m_autosync_spinner->set_range(5, 1000);
