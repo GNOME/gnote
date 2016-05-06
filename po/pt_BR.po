@@ -11,18 +11,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
-"keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-13 11:34+0000\n"
-"PO-Revision-Date: 2016-03-13 13:25-0200\n"
-"Last-Translator: Rafael Fontenelle <rffontenelle@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gnote&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-05-05 18:59+0000\n"
+"PO-Revision-Date: 2016-05-06 16:47-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.7.3\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
@@ -138,8 +138,9 @@ msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
 msgstr ""
-"Se verdadeiro, o nome de fonte definido em custom-font-face será usado como a "
-"fonte para exibir notas. Do contrário, a fonte padrão do ambiente será usada."
+"Se verdadeiro, o nome de fonte definido em custom-font-face será usado como "
+"a fonte para exibir notas. Do contrário, a fonte padrão do ambiente será "
+"usada."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:15
 msgid "Custom Font Face"
@@ -199,8 +200,8 @@ msgstr "Lista de notas fixadas"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:24
 msgid ""
-"Whitespace-separated list of note URIs for notes that should always appear in "
-"the Gnote note menu."
+"Whitespace-separated list of note URIs for notes that should always appear "
+"in the Gnote note menu."
 msgstr ""
 "Uma lista separada por espaços em branco de URIs de notas que devem sempre "
 "aparecer no menu de notas do Gnote."
@@ -261,8 +262,8 @@ msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr ""
-"Tempo (em milissegundos) que o Gnote deve aguardar por uma resposta ao usar o "
-"FUSE para montar um compartilhamento de sincronização."
+"Tempo (em milissegundos) que o Gnote deve aguardar por uma resposta ao usar "
+"o FUSE para montar um compartilhamento de sincronização."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:37
 msgid "SSHFS Remote Synchronization Folder"
@@ -271,7 +272,8 @@ msgstr "Pasta de sincronização remota SSHFS"
 #: ../data/org.gnome.gnote.gschema.xml.in.h:38
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr ""
-"Caminho no servidor SSH para o diretório de sincronização do Gnote (opcional)."
+"Caminho no servidor SSH para o diretório de sincronização do Gnote "
+"(opcional)."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:39
 msgid "SSHFS Synchronization Server URL"
@@ -287,7 +289,8 @@ msgstr "Nome de usuário de sincronização remota SSHFS"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:42
 msgid "User name to use when connecting to the synchronization server via SSH."
-msgstr "Nome de usuário usado ao conectar ao servidor de sincronização via SSH."
+msgstr ""
+"Nome de usuário usado ao conectar ao servidor de sincronização via SSH."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:43
 msgid "SSHFS Synchronization Server Port"
@@ -315,11 +318,11 @@ msgstr ""
 "Valor inteiro que indica se há uma preferência por um comportamento "
 "específico ao atualizar um comportamento quando uma nota for renomeada, ao "
 "invés de perguntar ao usuário. Os valores são mapeados para uma enumeração "
-"interna. 0 indica que o usuário deseja ser perguntado quando ocorrer uma nota "
-"impactar em vínculos existentes em outras notas. 1 indica que estes vínculos "
-"devem ser removidos automaticamente. 2 Indica que o texto do vínculo deve ser "
-"atualizado para o novo nome da nota e que irá continuar apontando para a nota "
-"renomeada."
+"interna. 0 indica que o usuário deseja ser perguntado quando ocorrer uma "
+"nota impactar em vínculos existentes em outras notas. 1 indica que estes "
+"vínculos devem ser removidos automaticamente. 2 Indica que o texto do "
+"vínculo deve ser atualizado para o novo nome da nota e que irá continuar "
+"apontando para a nota renomeada."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:47
 msgid "Enable closing notes with escape"
@@ -416,8 +419,8 @@ msgstr "Exportar as notas vinculadas para HTML"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid ""
-"The last setting for the 'Export linked notes' checkbox in the Export to HTML "
-"plugin."
+"The last setting for the 'Export linked notes' checkbox in the Export to "
+"HTML plugin."
 msgstr ""
 "O último estado da caixa de seleção \"Exportar notas vinculadas\" no plug-in "
 "de exportação para HTML."
@@ -482,10 +485,10 @@ msgstr "Comportamento salvo de conflito de sincronização de nota"
 #: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
-"specific behavior when a conflict is detected, instead of prompting the user. "
-"The values map to an internal enumeration. 0 indicates that the user wishes "
-"to be prompted when a conflict occurs, so that they may handle each conflict "
-"situation on a case-by-case basis."
+"specific behavior when a conflict is detected, instead of prompting the "
+"user. The values map to an internal enumeration. 0 indicates that the user "
+"wishes to be prompted when a conflict occurs, so that they may handle each "
+"conflict situation on a case-by-case basis."
 msgstr ""
 "Valor inteiro que indica se há uma preferência por um comportamento "
 "específico quando um conflito for detectado, em vez de perguntar ao usuário. "
@@ -515,7 +518,8 @@ msgstr "Aceitar certificados SSL"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid ""
-"Use wdfs option \"-ac\" to accept SSL certificates without prompting the user."
+"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
+"user."
 msgstr ""
 "Usa a opção wdfs \"-ac\" para aceitar certificados SSL sem perguntar ao "
 "usuário."
@@ -556,8 +560,8 @@ msgstr "Tempo entre as verificações"
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
-"Intervalo de tempo entre as verificações do diretório de notas (em segundos). "
-"Valor mínimo é 5."
+"Intervalo de tempo entre as verificações do diretório de notas (em "
+"segundos). Valor mínimo é 5."
 
 #: ../src/actionmanager.cpp:131
 msgid "_New Note"
@@ -654,7 +658,7 @@ msgid "(none)"
 msgstr "(nenhum)"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:109
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
 #: ../src/notebooks/notebooknoteaddin.cpp:179
 msgid "_Back"
 msgstr "_Voltar"
@@ -666,7 +670,8 @@ msgstr "Links do Bugzilla"
 #: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:2
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
-"note.  The bug number is inserted as a link with a little bug icon next to it."
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
 msgstr ""
 "Permite que você arraste uma URL do Bugzilla do seu navegador diretamente "
 "para uma nota do Gnote. O número do bug é inserido como um link com um "
@@ -827,7 +832,8 @@ msgid "Folder path field is empty."
 msgstr "O campo de caminho da pasta está vazio."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:141
-msgid "Specified folder path does not exist, and Gnote was unable to create it."
+msgid ""
+"Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
 "O caminho de pasta especificado não existe e o Gnote foi incapaz de o criar."
 
@@ -887,7 +893,8 @@ msgstr "_Usar formato personalizado"
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
-"Monitor de diretório de notas: Atualização abortada, erro na leitura de %s: %s"
+"Monitor de diretório de notas: Atualização abortada, erro na leitura de %s: "
+"%s"
 
 #. TRANSLATORS: %s is file
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
@@ -967,8 +974,8 @@ msgstr "Nota do dia"
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
-"Cria automaticamente uma nota de \"Hoje\" para anotar facilmente as reflexões "
-"diárias"
+"Cria automaticamente uma nota de \"Hoje\" para anotar facilmente as "
+"reflexões diárias"
 
 #: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:3
 msgid "Debarshi Ray and the Tomboy Project"
@@ -980,8 +987,8 @@ msgstr "_Abrir hoje: modelo"
 
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
 msgid ""
-"Change the <span weight=\"bold\">Today: Template</span> note to customize the "
-"text that new Today notes have."
+"Change the <span weight=\"bold\">Today: Template</span> note to customize "
+"the text that new Today notes have."
 msgstr ""
 "Alterar a nota <span weight=\"bold\">Hoje: modelo</span> para personalizar o "
 "texto que possuem as novas notas de hoje."
@@ -1129,23 +1136,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:151
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:148
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:215
 msgid "Heading 1"
 msgstr "Título 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:226
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:152
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:221
 msgid "Heading 2"
 msgstr "Título 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:159
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:232
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:156
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:227
 msgid "Table of Contents Help"
 msgstr "Ajuda do sumário"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:205
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:200
 msgid "(empty table of contents)"
 msgstr "(sumário vazio)"
 
@@ -1225,11 +1232,13 @@ msgstr "Campo de URL, nome de usuário ou senha está vazio."
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:262
 msgid ""
-"Saving configuration to the GNOME keyring failed with the following message:\n"
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
 "\n"
 "%1%"
 msgstr ""
-"Falha ao salvar a configuração do chaveiro do GNOME com a seguinte mensagem:\n"
+"Falha ao salvar a configuração do chaveiro do GNOME com a seguinte "
+"mensagem:\n"
 "\n"
 "%1%"
 
@@ -1500,12 +1509,12 @@ msgstr "Erro ao salvar os dados da nota."
 #: ../src/note.cpp:107
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
-"sufficient disk space, and that you have appropriate rights on ~/.local/share/"
-"gnote. Error details can be found in ~/.gnote.log."
+"sufficient disk space, and that you have appropriate rights on ~/.local/"
+"share/gnote. Error details can be found in ~/.gnote.log."
 msgstr ""
-"Ocorreu um erro ao salvar suas notas. Por favor, verifique se você tem espaço "
-"em disco suficiente e que tenha permissões sobre ~/.local/share/gnote. "
-"Detalhes do erro podem ser localizados em ~/.gnote.log."
+"Ocorreu um erro ao salvar suas notas. Por favor, verifique se você tem "
+"espaço em disco suficiente e que tenha permissões sobre ~/.local/share/"
+"gnote. Detalhes do erro podem ser localizados em ~/.gnote.log."
 
 #: ../src/note.cpp:474
 #, c-format
@@ -1533,17 +1542,17 @@ msgid ""
 "\n"
 "Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
 "\n"
-"You can create new notes to hold your ideas by selecting the \"Create New Note"
-"\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
+"You can create new notes to hold your ideas by selecting the \"Create New "
+"Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
 "automatically.\n"
 "\n"
 "Then organize the notes you create by linking related notes and ideas "
 "together!\n"
 "\n"
 "We've created a note called <link:internal>Using Links in Gnote</link:"
-"internal>.  Notice how each time we type <link:internal>Using Links in Gnote</"
-"link:internal> it automatically gets underlined?  Click on the link to open "
-"the note.</note-content>"
+"internal>.  Notice how each time we type <link:internal>Using Links in "
+"Gnote</link:internal> it automatically gets underlined?  Click on the link "
+"to open the note.</note-content>"
 msgstr ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Comece "
 "aqui\n"
@@ -1651,8 +1660,8 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"﻿Renomear os links em outras notas de \"<span underline=\"single\">%1</span>\" "
-"para \"<span underline=\"single\">%2</span>\"?\n"
+"﻿Renomear os links em outras notas de \"<span underline=\"single\">%1</span>"
+"\" para \"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "Se você não renomear os links, eles apontarão para nada."
 
@@ -1709,63 +1718,63 @@ msgstr "Salvar se_leção"
 msgid "Save _Title"
 msgstr "Salvar _título"
 
-#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1079
+#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1075
 msgid "Cannot create note"
 msgstr "Não foi possível criar a nota"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:829
 msgid "_Undo"
 msgstr "_Desfazer"
 
-#: ../src/notewindow.cpp:833
+#: ../src/notewindow.cpp:832
 msgid "_Redo"
 msgstr "_Refazer"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:841
 msgid "_Link"
 msgstr "_Link"
 
-#: ../src/notewindow.cpp:844
+#: ../src/notewindow.cpp:843
 msgid "_Bold"
 msgstr "_Negrito"
 
-#: ../src/notewindow.cpp:845
+#: ../src/notewindow.cpp:844
 msgid "_Italic"
 msgstr "_Itálico"
 
-#: ../src/notewindow.cpp:846
+#: ../src/notewindow.cpp:845
 msgid "_Strikeout"
 msgstr "Ri_scado"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:849
 msgid "_Highlight"
 msgstr "_Destacar"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:852
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:854
+#: ../src/notewindow.cpp:853
 msgid "S_mall"
 msgstr "_Pequeno"
 
-#: ../src/notewindow.cpp:855
+#: ../src/notewindow.cpp:854
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:856
+#: ../src/notewindow.cpp:855
 msgid "Hu_ge"
 msgstr "Enor_me"
 
-#: ../src/notewindow.cpp:882
+#: ../src/notewindow.cpp:878
 msgid "⦁ Bullets"
 msgstr "⦁ Marcadores"
 
-#: ../src/notewindow.cpp:884
+#: ../src/notewindow.cpp:880
 msgid "→ Increase indent"
 msgstr "→ Aumentar recuo"
 
-#: ../src/notewindow.cpp:886
+#: ../src/notewindow.cpp:882
 msgid "← Decrease indent"
 msgstr "← Diminuir recuo"
 
@@ -1809,8 +1818,8 @@ msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
 msgstr ""
-"Erros ortográficos serão sublinhados de vermelho, com sugestões de ortografia "
-"mostradas no menu de contexto."
+"Erros ortográficos serão sublinhados de vermelho, com sugestões de "
+"ortografia mostradas no menu de contexto."
 
 #. Auto bulleted list
 #: ../src/preferencesdialog.cpp:267
@@ -1900,7 +1909,7 @@ msgid "Not configurable"
 msgstr "Não configurável"
 
 #: ../src/preferencesdialog.cpp:514
-msgid "Automatical background s_ync interval (minutes)"
+msgid "Automatic background s_ync interval (minutes)"
 msgstr "Intervalo de sin_cronização automática em segundo plano (minutos)"
 
 #. "Advanced..." button to bring up extra sync config dialog
@@ -1941,8 +1950,8 @@ msgstr "Outras opções de sincronização"
 
 #: ../src/preferencesdialog.cpp:1036
 msgid ""
-"When a conflict is detected between a local note and a note on the configured "
-"synchronization server:"
+"When a conflict is detected between a local note and a note on the "
+"configured synchronization server:"
 msgstr ""
 "Quando for detectado um conflito entre uma nota local e no servidor de "
 "sincronização configurados:"
@@ -1966,8 +1975,8 @@ msgstr "Tem certeza?"
 
 #: ../src/preferencesdialog.cpp:1151
 msgid ""
-"Clearing your synchronization settings is not recommended.  You may be forced "
-"to synchronize all of your notes again when you save new settings."
+"Clearing your synchronization settings is not recommended.  You may be "
+"forced to synchronize all of your notes again when you save new settings."
 msgstr ""
 "Não é recomendável limpar as definições de sincronização.  Você pode ser "
 "forçado para sincronizar todas as notas novamente quando você salva as novas "
@@ -2042,7 +2051,7 @@ msgstr "Localizar _próxima"
 msgid "Find _Previous"
 msgstr "Localizar _anterior"
 
-#: ../src/recentchanges.cpp:777
+#: ../src/recentchanges.cpp:769
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -2196,12 +2205,12 @@ msgstr "folha de estilos NULA, favor relatar este erro"
 #: ../src/synchronization/filesystemsyncserver.cpp:369
 #, c-format
 msgid ""
-"Exception during server cleanup while committing. Server integrity is OK, but "
-"there may be some excess files floating around.  Here's the error: %s\n"
+"Exception during server cleanup while committing. Server integrity is OK, "
+"but there may be some excess files floating around.  Here's the error: %s\n"
 msgstr ""
 "Exceção durante limpeza de servidor ao submeter. A integridade do servidor "
-"está OK, mas pode haver um excesso de arquivos flutuantes por aí. Aqui está o "
-"erro: %s\n"
+"está OK, mas pode haver um excesso de arquivos flutuantes por aí. Aqui está "
+"o erro: %s\n"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:609
 #, c-format
@@ -2345,8 +2354,8 @@ msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
 msgstr ""
-"Um de seus outros computadores está sincronizando agora. Por favor, aguarde 2 "
-"minutos e tente novamente."
+"Um de seus outros computadores está sincronizando agora. Por favor, aguarde "
+"2 minutos e tente novamente."
 
 #: ../src/synchronization/syncdialog.cpp:522
 msgid "Preparing to download updates from server..."
@@ -2504,14 +2513,16 @@ msgstr "Habilitar FUSE?"
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
-"To avoid getting this prompt in the future, you should load FUSE at startup.  "
-"Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /etc/modules."
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
 msgstr ""
-"A sincronização que você escolheu requer que o módulo FUSE esteja carregado.\n"
+"A sincronização que você escolheu requer que o módulo FUSE esteja "
+"carregado.\n"
 "\n"
-"Para evitar de ser perguntado novamente no futuro, você deveria carregar FUSE "
-"na inicialização. Adicione \"modprobe fuse\" para o /etc/init.d/boot.local ou "
-"\"fuse\" para /etc/modules."
+"Para evitar de ser perguntado novamente no futuro, você deveria carregar "
+"FUSE na inicialização. Adicione \"modprobe fuse\" para o /etc/init.d/boot."
+"local ou \"fuse\" para /etc/modules."
 
 #: ../src/utils.cpp:158
 msgid ""
@@ -2674,17 +2685,17 @@ msgstr "Abrir _link"
 #~ "status icon. If set to FALSE, Search All Notes window is used as main "
 #~ "application window, closing which makes application to exit."
 #~ msgstr ""
-#~ "Tem efeito apenas quando iniciado como um aplicativo. Quando definido como "
-#~ "VERDADEIRO, mostra um ícone de status. Se definido como FALSO, pesquisa "
-#~ "todas as janela do de notas usadas na janela principal do aplicativo, "
-#~ "fechando o que faz a aplicação para sair."
+#~ "Tem efeito apenas quando iniciado como um aplicativo. Quando definido "
+#~ "como VERDADEIRO, mostra um ícone de status. Se definido como FALSO, "
+#~ "pesquisa todas as janela do de notas usadas na janela principal do "
+#~ "aplicativo, fechando o que faz a aplicação para sair."
 
 #~ msgid ""
 #~ "The global keybinding for showing the Gnote applet's menu. The format "
 #~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
 #~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-#~ "option to the special string \"disabled\", then there will be no "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "As teclas de atalho globais para exibir o menu do miniaplicativo Gnote. O "
@@ -2698,8 +2709,8 @@ msgstr "Abrir _link"
 #~ "The global keybinding for opening the \"Start Here\" note. The format "
 #~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
 #~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-#~ "option to the special string \"disabled\", then there will be no "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "As teclas de atalho globais para abrir a nota \"Comece aqui\". O formato "
@@ -2713,8 +2724,8 @@ msgstr "Abrir _link"
 #~ "The global keybinding for creating and displaying a new Note. The format "
 #~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
 #~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-#~ "option to the special string \"disabled\", then there will be no "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "As teclas de atalho globais para criar e exibir uma nova nota. O formato "
@@ -2725,12 +2736,12 @@ msgstr "Abrir _link"
 #~ "para essa ação."
 
 #~ msgid ""
-#~ "The global keybinding for opening the Note Search dialog. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-#~ "fairly liberal and allows lower or upper case, and also abbreviations such "
-#~ "as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
+#~ "The global keybinding for opening the Note Search dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
 #~ msgstr ""
 #~ "As teclas de atalho globais para abrir a caixa de diálogo de pesquisa de "
 #~ "notas. O formato se parece com \"&lt;Control&gt;a\" ou \"&lt;Shift&gt;&lt;"
@@ -2743,12 +2754,12 @@ msgstr "Abrir _link"
 #~ "The global keybinding for opening the Recent Changes dialog. The format "
 #~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
 #~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-#~ "option to the special string \"disabled\", then there will be no "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
-#~ "As teclas de atalho globais para abrir o diálogo de alterações recentes. O "
-#~ "formato se parece com \"&lt;Control&gt;a\" ou \"&lt;Shift&gt;&lt;Alt&gt;"
+#~ "As teclas de atalho globais para abrir o diálogo de alterações recentes. "
+#~ "O formato se parece com \"&lt;Control&gt;a\" ou \"&lt;Shift&gt;&lt;Alt&gt;"
 #~ "F1\". O analisador é bastante liberal e permite minúsculas, maiúsculas e "
 #~ "também abreviações como \"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se você "
 #~ "definir a opção com a string especial \"disabled\", não haverá associação "
@@ -2918,8 +2929,8 @@ msgstr "Abrir _link"
 #~ msgstr "Habilitar notas de inicialização"
 
 #~ msgid ""
-#~ "If enabled, all notes that were open when Gnote quit will automatically be "
-#~ "reopened at startup."
+#~ "If enabled, all notes that were open when Gnote quit will automatically "
+#~ "be reopened at startup."
 #~ msgstr ""
 #~ "Se habilitado, todas as notas que estavam abertas ao sair do Gnote serão "
 #~ "reabertas automaticamente na inicialização."
