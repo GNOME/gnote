@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-25 23:37+0000\n"
-"PO-Revision-Date: 2016-03-26 12:55+0200\n"
+"POT-Creation-Date: 2016-05-05 18:42+0000\n"
+"PO-Revision-Date: 2016-05-08 18:47+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -44,7 +44,7 @@ msgstr ""
 "įrenginiuose."
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:525
+#: ../src/recentchanges.cpp:527
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -1405,7 +1405,7 @@ msgstr "Nauja _užrašinė..."
 msgid "%1% Notebook Template"
 msgstr "%1% užrašinės šablonas"
 
-#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:301
+#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:308
 msgid "New Note"
 msgstr "Naujas raštelis"
 
@@ -1455,11 +1455,11 @@ msgstr "Svarbūs"
 msgid "Active"
 msgstr "Aktyvūs"
 
-#: ../src/notebuffer.cpp:1517
+#: ../src/notebuffer.cpp:1534
 msgid "</list> tag mismatch"
 msgstr "</list> žymos neatitikimas"
 
-#: ../src/notebuffer.cpp:1599
+#: ../src/notebuffer.cpp:1616
 #, c-format
 msgid "Exception: %s"
 msgstr "Kilo išskirtinė situacija: %s"
@@ -1504,11 +1504,11 @@ msgstr "Klaida įrašant: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "Tekstinio turinio nustatymas užvertiems rašteliams nepalaikomas"
 
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+#: ../src/notemanagerbase.cpp:108 ../src/preferencesdialog.cpp:320
 msgid "New Note Template"
 msgstr "Naujo raštelio šablonas"
 
-#: ../src/notemanagerbase.cpp:359
+#: ../src/notemanagerbase.cpp:366
 msgid "Describe your new note here."
 msgstr "Čia aprašykite naują raštelį"
 
@@ -1719,12 +1719,10 @@ msgid "_Bold"
 msgstr "_Pusjuodis"
 
 #: ../src/notewindow.cpp:844
-#| msgid "<i>_Italic</i>"
 msgid "_Italic"
 msgstr "_Kursyvas"
 
 #: ../src/notewindow.cpp:845
-#| msgid "<s>_Strikeout</s>"
 msgid "_Strikeout"
 msgstr "_Perbrauktas"
 
@@ -1749,7 +1747,6 @@ msgid "Hu_ge"
 msgstr "Milžiniš_kas"
 
 #: ../src/notewindow.cpp:878
-#| msgid "Bullets"
 msgid "⦁ Bullets"
 msgstr "⦁  Punktai"
 
@@ -1891,7 +1888,8 @@ msgid "Not configurable"
 msgstr "Nekonfigūruojama"
 
 #: ../src/preferencesdialog.cpp:514
-msgid "Automatical background s_ync interval (minutes)"
+#| msgid "Automatical background s_ync interval (minutes)"
+msgid "Automatic background s_ync interval (minutes)"
 msgstr "Automatinio foninio sinchronizavimo laikotarpis (minutėmis)"
 
 #. "Advanced..." button to bring up extra sync config dialog
@@ -2030,11 +2028,11 @@ msgstr "Ieškoti"
 msgid "Find _Next"
 msgstr "Rasti _kitą"
 
-#: ../src/recentchanges.cpp:245
+#: ../src/recentchanges.cpp:246
 msgid "Find _Previous"
 msgstr "Rasti _ankstesnį"
 
-#: ../src/recentchanges.cpp:769
+#: ../src/recentchanges.cpp:771
 msgid "_Close"
 msgstr "_Užverti"
 
