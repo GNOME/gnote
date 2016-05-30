@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-04-06 22:42+0000\n"
-"PO-Revision-Date: 2016-04-07 12:54+0200\n"
+"POT-Creation-Date: 2016-05-08 15:50+0000\n"
+"PO-Revision-Date: 2016-05-26 12:58+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -1438,7 +1438,7 @@ msgstr "Cua_derno de notas nuevo…"
 msgid "%1% Notebook Template"
 msgstr "%1% plantilla de cuaderno de notas"
 
-#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:301
+#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:308
 msgid "New Note"
 msgstr "Nota nueva"
 
@@ -1536,11 +1536,11 @@ msgstr "Error al guardar: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "No se permite la configuración del texto de una nota cerrada."
 
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+#: ../src/notemanagerbase.cpp:108 ../src/preferencesdialog.cpp:320
 msgid "New Note Template"
 msgstr "Plantilla de nota nueva"
 
-#: ../src/notemanagerbase.cpp:359
+#: ../src/notemanagerbase.cpp:366
 msgid "Describe your new note here."
 msgstr "Describa aquí su nota nueva."
 
@@ -1753,12 +1753,10 @@ msgid "_Bold"
 msgstr "_Negrita"
 
 #: ../src/notewindow.cpp:844
-#| msgid "<i>_Italic</i>"
 msgid "_Italic"
 msgstr "_Cursiva"
 
 #: ../src/notewindow.cpp:845
-#| msgid "<s>_Strikeout</s>"
 msgid "_Strikeout"
 msgstr "_Tachado"
 
@@ -1783,7 +1781,6 @@ msgid "Hu_ge"
 msgstr "_Enorme"
 
 #: ../src/notewindow.cpp:878
-#| msgid "Bullets"
 msgid "⦁ Bullets"
 msgstr "⦁ Topos"
 
@@ -1927,7 +1924,8 @@ msgid "Not configurable"
 msgstr "No configurable"
 
 #: ../src/preferencesdialog.cpp:514
-msgid "Automatical background s_ync interval (minutes)"
+#| msgid "Automatical background s_ync interval (minutes)"
+msgid "Automatic background s_ync interval (minutes)"
 msgstr "S_incronización automática en segundo plano cada (minutos)"
 
 #. "Advanced..." button to bring up extra sync config dialog
