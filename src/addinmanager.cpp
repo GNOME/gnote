@@ -293,7 +293,7 @@ namespace {
     for(sharp::ModuleMap::const_iterator iter = modules.begin();
         iter != modules.end(); ++iter) {
 
-      const std::string & mod_id = get_info_for_module(iter->first).id();
+      std::string mod_id = get_info_for_module(iter->first).id();
       sharp::DynamicModule* dmod = iter->second;
       if(!dmod) {
         continue;
