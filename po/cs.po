@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-13 23:15+0000\n"
-"PO-Revision-Date: 2016-03-14 09:51+0100\n"
+"POT-Creation-Date: 2016-05-05 18:42+0000\n"
+"PO-Revision-Date: 2016-06-10 07:39+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -47,7 +47,7 @@ msgstr ""
 "zařízeních naráz."
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:525
+#: ../src/recentchanges.cpp:527
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -655,7 +655,7 @@ msgid "(none)"
 msgstr "(žádná)"
 
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:109
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
 #: ../src/notebooks/notebooknoteaddin.cpp:179
 msgid "_Back"
 msgstr "_Zpět"
@@ -1138,23 +1138,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:151
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:148
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:215
 msgid "Heading 1"
 msgstr "Nadpis 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:226
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:152
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:221
 msgid "Heading 2"
 msgstr "Nadpis 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:159
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:232
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:156
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:227
 msgid "Table of Contents Help"
 msgstr "Nápověda k obsahu"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:205
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:200
 msgid "(empty table of contents)"
 msgstr "(prázdný obsah)"
 
@@ -1430,7 +1430,7 @@ msgstr "Nový _sešit…"
 msgid "%1% Notebook Template"
 msgstr "Šablona sešitu %1%"
 
-#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:301
+#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:308
 msgid "New Note"
 msgstr "Nová poznámka"
 
@@ -1480,11 +1480,11 @@ msgstr "Důležité"
 msgid "Active"
 msgstr "Aktivní"
 
-#: ../src/notebuffer.cpp:1517
+#: ../src/notebuffer.cpp:1534
 msgid "</list> tag mismatch"
 msgstr "Značka </list> nemá svůj protějšek"
 
-#: ../src/notebuffer.cpp:1599
+#: ../src/notebuffer.cpp:1616
 #, c-format
 msgid "Exception: %s"
 msgstr "Výjimka: %s"
@@ -1529,11 +1529,11 @@ msgstr "Chyba při ukládání: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "Nastavení textového obsahu pro uzavřenou poznámku není podporováno"
 
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+#: ../src/notemanagerbase.cpp:108 ../src/preferencesdialog.cpp:320
 msgid "New Note Template"
 msgstr "Nová šablona"
 
-#: ../src/notemanagerbase.cpp:359
+#: ../src/notemanagerbase.cpp:366
 msgid "Describe your new note here."
 msgstr "Sem napište svou novou poznámku."
 
@@ -1721,66 +1721,63 @@ msgstr "U_ložit výběr"
 msgid "Save _Title"
 msgstr "Uloži_t název"
 
-#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1079
+#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1075
 msgid "Cannot create note"
 msgstr "Nelze vytvořit poznámku"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:829
 msgid "_Undo"
 msgstr "_Zpět"
 
-#: ../src/notewindow.cpp:833
+#: ../src/notewindow.cpp:832
 msgid "_Redo"
 msgstr "Z_novu"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:841
 msgid "_Link"
 msgstr "_Odkaz"
 
-#: ../src/notewindow.cpp:844
+#: ../src/notewindow.cpp:843
 msgid "_Bold"
 msgstr "_Tučné"
 
-#: ../src/notewindow.cpp:845
-#| msgid "<i>_Italic</i>"
+#: ../src/notewindow.cpp:844
 msgid "_Italic"
 msgstr "_Kurzíva"
 
-#: ../src/notewindow.cpp:846
-#| msgid "<s>_Strikeout</s>"
+#: ../src/notewindow.cpp:845
 msgid "_Strikeout"
 msgstr "_Přeškrtnuté"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:849
 msgid "_Highlight"
 msgstr "_Zvýraznění"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:852
 msgid "_Normal"
 msgstr "_Normální"
 
-#: ../src/notewindow.cpp:854
+#: ../src/notewindow.cpp:853
 msgid "S_mall"
 msgstr "_Malé"
 
-#: ../src/notewindow.cpp:855
+#: ../src/notewindow.cpp:854
 msgid "_Large"
 msgstr "_Velké"
 
-#: ../src/notewindow.cpp:856
+#: ../src/notewindow.cpp:855
 msgid "Hu_ge"
 msgstr "_Obrovské"
 
-#: ../src/notewindow.cpp:882
-#| msgid "Bullets"
+#: ../src/notewindow.cpp:878
 msgid "⦁ Bullets"
 msgstr "⦁ Odrážky"
 
-#: ../src/notewindow.cpp:884
+#: ../src/notewindow.cpp:880
 msgid "→ Increase indent"
 msgstr "→ Zvětšit odsazení"
 
-#: ../src/notewindow.cpp:886
+#: ../src/notewindow.cpp:882
 msgid "← Decrease indent"
 msgstr "← Zmenšit odsazení"
 
@@ -1912,8 +1909,8 @@ msgid "Not configurable"
 msgstr "Nedostupné"
 
 #: ../src/preferencesdialog.cpp:514
-msgid "Automatical background s_ync interval (minutes)"
-msgstr "Interval automatické s_ynchronizace na pozadí (v minutách)"
+msgid "Automatic background s_ync interval (minutes)"
+msgstr "Četnost automatické s_ynchronizace na pozadí (v minutách)"
 
 #. "Advanced..." button to bring up extra sync config dialog
 #: ../src/preferencesdialog.cpp:538
@@ -2050,11 +2047,11 @@ msgstr "Hledat"
 msgid "Find _Next"
 msgstr "Hledat _následující"
 
-#: ../src/recentchanges.cpp:245
+#: ../src/recentchanges.cpp:246
 msgid "Find _Previous"
 msgstr "Hledat _předchozí"
 
-#: ../src/recentchanges.cpp:777
+#: ../src/recentchanges.cpp:771
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -2615,54 +2612,3 @@ msgstr "_Kopírovat adresu odkazu"
 #: ../src/watchers.cpp:713
 msgid "_Open Link"
 msgstr "_Otevřít odkaz"
-
-#~ msgid "Te_xt"
-#~ msgstr "_Text"
-
-#~ msgid "<b>_Bold</b>"
-#~ msgstr "<b>_Tučné</b>"
-
-#~ msgid "Quit Gnote"
-#~ msgstr "Ukončit Gnote"
-
-#~ msgid "_Contents"
-#~ msgstr "_Obsah"
-
-#~ msgid "Gnote Help"
-#~ msgstr "Nápověda pro Gnote"
-
-#~ msgid "About Gnote"
-#~ msgstr "O aplikaci Gnote"
-
-#~ msgid "TrayIcon"
-#~ msgstr "Ikona v panelu"
-
-#~ msgid "Create _New Note"
-#~ msgstr "Vytvořit _novou poznámku"
-
-#~ msgid "Create a new note"
-#~ msgstr "Vytvořit novou poznámku"
-
-#~ msgid "_Search All Notes"
-#~ msgstr "_Hledat ve všech poznámkách"
-
-#~ msgid "Open the Search All Notes window"
-#~ msgstr "Otevřít okno Hledat ve všech poznámkách"
-
-#~ msgid "Which notes have links to here?"
-#~ msgstr "Které poznámky sem odkazují?"
-
-#~ msgid "Export note as Getting Things GNOME task"
-#~ msgstr "Exportovat poznámku jako úkol Getting Things GNOME"
-
-#~ msgid "Export note to HTML"
-#~ msgstr "Exportovat poznámku do HTML"
-
-#~ msgid "Insert Timestamp into note"
-#~ msgstr "Vložit do poznámky časové razítko"
-
-#~ msgid "Print note"
-#~ msgstr "Vytisknout poznámku"
-
-#~ msgid "Make this note read-only"
-#~ msgstr "Nastavit tuto poznámku jen ke čtení"
