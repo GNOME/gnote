@@ -154,6 +154,7 @@ private:
   void make_app_menu();
   void on_new_window_action(const Glib::VariantBase&);
   void on_new_note_app_action(const Glib::VariantBase&);
+  void on_show_help_shortcust_action(const Glib::VariantBase&);
   MainWindow *get_active_window();
   void register_object();
 

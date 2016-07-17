@@ -98,6 +98,7 @@ namespace gnote {
     add_app_action("show-preferences");
     add_app_action("about");
     add_app_action("help-contents");
+    add_app_action("help-shortcuts");
     add_app_action("quit");
   }
 
@@ -132,6 +133,7 @@ namespace gnote {
     add_app_menu_item(APP_ACTION_NEW, 200, _("New _Window"), "app.new-window");
     add_app_menu_item(APP_ACTION_MANAGE, 100, _("_Preferences"), "app.show-preferences");
     add_app_menu_item(APP_ACTION_LAST, 100, _("_Help"), "app.help-contents");
+    add_app_menu_item(APP_ACTION_LAST, 100, _("_Shortcuts"), "app.help-shortcuts");
     add_app_menu_item(APP_ACTION_LAST, 200, _("_About"), "app.about");
     add_app_menu_item(APP_ACTION_LAST, 300, _("_Quit"), "app.quit");
   }

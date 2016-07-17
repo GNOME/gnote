@@ -35,6 +35,8 @@
 #include <glibmm/optionentry.h>
 #include <gtkmm/main.h>
 #include <gtkmm/aboutdialog.h>
+#include <gtkmm/builder.h>
+#include <gtkmm/shortcutswindow.h>
 
 #include "gnote.hpp"
 #include "actionmanager.hpp"
@@ -263,6 +265,19 @@ namespace gnote {
     utils::show_help("gnote", "", cscreen, NULL);
   }
 
+  void Gnote::on_show_help_shortcust_action(const Glib::VariantBase&)
+  {
+    Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file(DATADIR"/gnote/shortcuts-gnote.ui");
+    Gtk::ShortcutsWindow *win = nullptr;
+    builder->get_widget("shortcuts-gnote", win);
+    if(win == nullptr) {
+      ERR_OUT(_("Failed to get shortcuts window!"));
+      return;
+    }
+
+    win->show();
+  }
+
   void Gnote::on_show_about_action(const Glib::VariantBase&)
   {
     std::vector<Glib::ustring> authors;
@@ -399,6 +414,7 @@ namespace gnote {
       sigc::mem_fun(*this, &Gnote::on_show_preferences_action));
     am.get_app_action("sync-notes")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::open_note_sync_window));
     am.get_app_action("help-contents")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
+    am.get_app_action("help-shortcuts")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_shortcust_action));
     am.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
     am.get_app_action("quit")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_quit_gnote_action));
 

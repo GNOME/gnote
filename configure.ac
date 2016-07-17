@@ -25,7 +25,7 @@ AC_DEFINE_UNQUOTED([LIBGNOTE_VERSION_INFO], ["$LIBGNOTE_VERSION_INFO"], [libgnot
 dnl all the library version.
 dnl if one is harcoded elsewhere, it is a bug
 
-GTK_VERSION=3.16
+GTK_VERSION=3.20
 LIBGLIBMM_VERSION=2.32
 LIBGTKMM_VERSION=3.18
 GTKSPELL_VERSION=3.0.0
@@ -149,6 +149,7 @@ data/Makefile
 data/gnote.desktop.in
 data/icons/Makefile
 data/appdata/Makefile
+data/ui/Makefile
 src/Makefile
 src/addins/Makefile
 src/addins/addins.mk
