@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-06 22:08+0200\n"
-"PO-Revision-Date: 2016-05-06 22:09+0200\n"
+"POT-Creation-Date: 2016-07-18 18:03+0200\n"
+"PO-Revision-Date: 2016-07-18 18:04+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -25,8 +25,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: Poland\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -46,8 +44,38 @@ msgstr ""
 "Program Gnote obsługuje także synchronizację, co umożliwia jego używanie na "
 "wielu urządzeniach."
 
+#: ../data/ui/shortcuts-gnote.ui.h:1
+msgctxt "shortcut window"
+msgid "Main Window"
+msgstr "Główne okno"
+
+#: ../data/ui/shortcuts-gnote.ui.h:2
+msgctxt "shortcut window"
+msgid "Notes list"
+msgstr "Lista notatek"
+
+#: ../data/ui/shortcuts-gnote.ui.h:3
+msgctxt "shortcut window"
+msgid "Create new note"
+msgstr "Utworzenie nowej notatki"
+
+#: ../data/ui/shortcuts-gnote.ui.h:4
+msgctxt "shortcut window"
+msgid "Open selected note"
+msgstr "Otwarcie zaznaczonej notatki"
+
+#: ../data/ui/shortcuts-gnote.ui.h:5
+msgctxt "shortcut window"
+msgid "Open selected note in new window"
+msgstr "Otwarcie zaznaczonej notatki w nowym oknie"
+
+#: ../data/ui/shortcuts-gnote.ui.h:6
+msgctxt "shortcut window"
+msgid "Delete selected note"
+msgstr "Usunięcie zaznaczonej notatki"
+
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:525
+#: ../src/recentchanges.cpp:527
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -568,27 +596,31 @@ msgstr ""
 "Czas między sprawdzaniem katalogu notatek (w sekundach). Minimalna wartość "
 "to 5."
 
-#: ../src/actionmanager.cpp:131
+#: ../src/actionmanager.cpp:132
 msgid "_New Note"
 msgstr "N_owa notatka"
 
-#: ../src/actionmanager.cpp:132
+#: ../src/actionmanager.cpp:133
 msgid "New _Window"
 msgstr "Nowe o_kno"
 
-#: ../src/actionmanager.cpp:133
+#: ../src/actionmanager.cpp:134
 msgid "_Preferences"
 msgstr "_Preferencje"
 
-#: ../src/actionmanager.cpp:134
+#: ../src/actionmanager.cpp:135
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../src/actionmanager.cpp:135
+#: ../src/actionmanager.cpp:136
+msgid "_Shortcuts"
+msgstr "_Skróty"
+
+#: ../src/actionmanager.cpp:137
 msgid "_About"
 msgstr "_O programie"
 
-#: ../src/actionmanager.cpp:136
+#: ../src/actionmanager.cpp:138
 msgid "_Quit"
 msgstr "Za_kończ"
 
@@ -1266,15 +1298,19 @@ msgstr "Zdalne wywołanie do %s się nie powiodło"
 msgid "Exception thrown when creating note: %s"
 msgstr "Wystąpił wyjątek podczas tworzenia notatki: %s"
 
-#: ../src/gnote.cpp:180
+#: ../src/gnote.cpp:182
 msgid "Gnote is already running.  Exiting..."
 msgstr "Program Gnote jest już uruchomiony. Kończenie działania…"
 
-#: ../src/gnote.cpp:273
+#: ../src/gnote.cpp:274
+msgid "Failed to get shortcuts window!"
+msgstr "Uzyskanie okna skrótów się nie powiodło."
+
+#: ../src/gnote.cpp:288
 msgid "and Tomboy original authors."
 msgstr "i pierwotni autorzy programu Tomboy."
 
-#: ../src/gnote.cpp:279
+#: ../src/gnote.cpp:294
 msgid "translator-credits"
 msgstr ""
 "Marek Habersack <grendel@caudium.net>, 2004\n"
@@ -1285,7 +1321,7 @@ msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2009-2016\n"
 "Aviary.pl <gnomepl@aviary.pl>, 2007-2016"
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:303
 msgid ""
 "Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1297,79 +1333,79 @@ msgstr ""
 "Copyright © 2009 Hubert Figuière\n"
 "Copyright © 2004-2009 Pierwotni autorzy programu Tomboy."
 
-#: ../src/gnote.cpp:292
+#: ../src/gnote.cpp:307
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Prosty i łatwy w użyciu program do sporządzania notatek."
 
-#: ../src/gnote.cpp:303
+#: ../src/gnote.cpp:318
 msgid "Homepage"
 msgstr "Witryna programu"
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:494
 msgid "Run Gnote in background."
 msgstr "Uruchamia program Gnote w tle."
 
-#: ../src/gnote.cpp:479
+#: ../src/gnote.cpp:495
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Uruchamia program Gnote jako dostawcę wyszukiwania GNOME Shell."
 
-#: ../src/gnote.cpp:480
+#: ../src/gnote.cpp:496
 msgid "Specify the path of the directory containing the notes."
 msgstr "Proszę wprowadzić ścieżkę do katalogu zawierającego notatki."
 
-#: ../src/gnote.cpp:480
+#: ../src/gnote.cpp:496
 msgid "path"
 msgstr "ścieżka"
 
-#: ../src/gnote.cpp:481
+#: ../src/gnote.cpp:497
 msgid "Open the search all notes window with the search text."
 msgstr "Otwiera okno przeszukiwania wszystkich notatek."
 
-#: ../src/gnote.cpp:481 ../src/gnote.cpp:486
+#: ../src/gnote.cpp:497 ../src/gnote.cpp:502
 msgid "text"
 msgstr "tekst"
 
-#: ../src/gnote.cpp:482
+#: ../src/gnote.cpp:498
 msgid "Print version information."
 msgstr "Wyświetla informacje o wersji."
 
-#: ../src/gnote.cpp:483
+#: ../src/gnote.cpp:499
 msgid "Create and display a new note, with a optional title."
 msgstr "Tworzy i wyświetla nową notatkę z opcjonalnym tytułem."
 
-#: ../src/gnote.cpp:483
+#: ../src/gnote.cpp:499
 msgid "title"
 msgstr "tytuł"
 
-#: ../src/gnote.cpp:484
+#: ../src/gnote.cpp:500
 msgid "Display the existing note matching title."
 msgstr "Wyświetla istniejącą notatkę o pasującym tytule."
 
-#: ../src/gnote.cpp:484
+#: ../src/gnote.cpp:500
 msgid "title/url"
 msgstr "tytuł/adres URL"
 
-#: ../src/gnote.cpp:485
+#: ../src/gnote.cpp:501
 msgid "Display the 'Start Here' note."
 msgstr "Wyświetla notatkę „Start”."
 
-#: ../src/gnote.cpp:486
+#: ../src/gnote.cpp:502
 msgid "Search and highlight text in the opened note."
 msgstr "Wyszukuje i wyróżnia tekst w otwartej notatce."
 
-#: ../src/gnote.cpp:490
+#: ../src/gnote.cpp:506
 msgid "A note taking application"
 msgstr "Program do sporządzania notatek"
 
-#: ../src/gnote.cpp:490
+#: ../src/gnote.cpp:506
 msgid "Gnote options at launch"
 msgstr "Opcje podczas uruchamiania programu Gnote"
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:583
 msgid "Could not connect to remote instance."
 msgstr "Nie można połączyć ze zdalną kopią."
 
-#: ../src/gnote.cpp:683
+#: ../src/gnote.cpp:699
 msgid "Version %1%"
 msgstr "Wersja %1%"
 
@@ -1435,7 +1471,7 @@ msgstr "Nowy _notatnik…"
 msgid "%1% Notebook Template"
 msgstr "Szablon notatki „%1%”"
 
-#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:301
+#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:308
 msgid "New Note"
 msgstr "Nowa notatka"
 
@@ -1485,11 +1521,11 @@ msgstr "Ważne"
 msgid "Active"
 msgstr "Aktywne"
 
-#: ../src/notebuffer.cpp:1517
+#: ../src/notebuffer.cpp:1534
 msgid "</list> tag mismatch"
 msgstr "Niepasujący znacznik </list>"
 
-#: ../src/notebuffer.cpp:1599
+#: ../src/notebuffer.cpp:1616
 #, c-format
 msgid "Exception: %s"
 msgstr "Wyjątek: %s"
@@ -1535,11 +1571,11 @@ msgstr "Błąd podczas zapisywania: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "Ustawianie treści tekstu dla zamkniętych notatek nie jest obsługiwane"
 
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+#: ../src/notemanagerbase.cpp:108 ../src/preferencesdialog.cpp:320
 msgid "New Note Template"
 msgstr "Szablon nowej notatki"
 
-#: ../src/notemanagerbase.cpp:359
+#: ../src/notemanagerbase.cpp:366
 msgid "Describe your new note here."
 msgstr "Treść nowej notatki…"
 
@@ -2059,11 +2095,11 @@ msgstr "Znajdź"
 msgid "Find _Next"
 msgstr "Znajdź _następne"
 
-#: ../src/recentchanges.cpp:245
+#: ../src/recentchanges.cpp:246
 msgid "Find _Previous"
 msgstr "Znajdź p_oprzednie"
 
-#: ../src/recentchanges.cpp:769
+#: ../src/recentchanges.cpp:771
 msgid "_Close"
 msgstr "Za_mknij"
 
