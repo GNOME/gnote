@@ -517,7 +517,7 @@ namespace gnote {
       if(width && height) {
         set_default_size(width, height);
         if(!maximized && get_visible()) {
-          get_window()->resize(width, height);
+          resize(width, height);
         }
       }
       widget.size_internals();
