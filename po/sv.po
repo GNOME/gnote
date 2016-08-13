@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-05 18:59+0000\n"
-"PO-Revision-Date: 2016-05-06 19:13+0200\n"
+"POT-Creation-Date: 2016-07-24 11:45+0000\n"
+"PO-Revision-Date: 2016-08-02 14:12+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -39,8 +39,143 @@ msgstr ""
 "Gnote stöder också synkronisering vilket möjliggör användning på flera "
 "enheter."
 
+#: ../data/ui/shortcuts-gnote.ui.h:1
+msgctxt "shortcut window"
+msgid "Main Window"
+msgstr "Huvudfönster"
+
+#: ../data/ui/shortcuts-gnote.ui.h:2
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allmänt"
+
+#: ../data/ui/shortcuts-gnote.ui.h:3
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Visa hjälp"
+
+#: ../data/ui/shortcuts-gnote.ui.h:4
+msgctxt "shortcut window"
+msgid "Open actions menu"
+msgstr "Öppna åtgärdsmeny"
+
+#: ../data/ui/shortcuts-gnote.ui.h:5
+msgctxt "shortcut window"
+msgid "Display search bar"
+msgstr "Visa sökfältet"
+
+#: ../data/ui/shortcuts-gnote.ui.h:6
+msgctxt "shortcut window"
+msgid "Hide search bar"
+msgstr "Dölj sökfältet"
+
+#: ../data/ui/shortcuts-gnote.ui.h:7
+msgctxt "shortcut window"
+msgid "Notes list"
+msgstr "Anteckningslista"
+
+#: ../data/ui/shortcuts-gnote.ui.h:8
+msgctxt "shortcut window"
+msgid "Create new note"
+msgstr "Skapa ny anteckning"
+
+#: ../data/ui/shortcuts-gnote.ui.h:9
+msgctxt "shortcut window"
+msgid "Open selected note"
+msgstr "Öppna vald anteckning"
+
+#: ../data/ui/shortcuts-gnote.ui.h:10
+msgctxt "shortcut window"
+msgid "Open selected note in new window"
+msgstr "Öppna vald anteckning i nytt fönster"
+
+#: ../data/ui/shortcuts-gnote.ui.h:11
+msgctxt "shortcut window"
+msgid "Delete selected note"
+msgstr "Ta bort vald anteckning"
+
+#: ../data/ui/shortcuts-gnote.ui.h:12
+msgctxt "shortcut window"
+msgid "Note Window"
+msgstr "Anteckningsfönster"
+
+#: ../data/ui/shortcuts-gnote.ui.h:13
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Redigering"
+
+#: ../data/ui/shortcuts-gnote.ui.h:14
+msgctxt "shortcut window"
+msgid "Undo last edit"
+msgstr "Ångra senaste redigering"
+
+#: ../data/ui/shortcuts-gnote.ui.h:15
+msgctxt "shortcut window"
+msgid "Redo last edit"
+msgstr "Gör om senaste redigering"
+
+#: ../data/ui/shortcuts-gnote.ui.h:16
+msgctxt "shortcut window"
+msgid "Create link to note on selected text"
+msgstr "Skapa länk till anteckning från markerad text"
+
+#: ../data/ui/shortcuts-gnote.ui.h:17
+msgctxt "shortcut window"
+msgid "Formatting"
+msgstr "Formatering"
+
+#: ../data/ui/shortcuts-gnote.ui.h:18
+msgctxt "shortcut window"
+msgid "Toggle bold"
+msgstr "Växla fetstil"
+
+#: ../data/ui/shortcuts-gnote.ui.h:19
+msgctxt "shortcut window"
+msgid "Toggle italic"
+msgstr "Växla kursiv stil"
+
+#: ../data/ui/shortcuts-gnote.ui.h:20
+msgctxt "shortcut window"
+msgid "Toggle strikethough"
+msgstr "Växla genomstrykning"
+
+#: ../data/ui/shortcuts-gnote.ui.h:21
+msgctxt "shortcut window"
+msgid "Toggle highlight"
+msgstr "Växla färgmarkering"
+
+#: ../data/ui/shortcuts-gnote.ui.h:22
+msgctxt "shortcut window"
+msgid "Toggle fixed width"
+msgstr "Växla fast bredd"
+
+#: ../data/ui/shortcuts-gnote.ui.h:23
+msgctxt "shortcut window"
+msgid "Toggle underline"
+msgstr "Växla understrykning"
+
+#: ../data/ui/shortcuts-gnote.ui.h:24
+msgctxt "shortcut window"
+msgid "Increase font size"
+msgstr "Öka typsnittsstorlek"
+
+#: ../data/ui/shortcuts-gnote.ui.h:25
+msgctxt "shortcut window"
+msgid "Decrease font size"
+msgstr "Minska typsnittsstorlek"
+
+#: ../data/ui/shortcuts-gnote.ui.h:26
+msgctxt "shortcut window"
+msgid "Enable bullets/increase indent for line with selection"
+msgstr "Aktivera punkter/öka indentering för rad med markering"
+
+#: ../data/ui/shortcuts-gnote.ui.h:27
+msgctxt "shortcut window"
+msgid "Decrease indent/disable bullets for current line"
+msgstr "Minska indentering/inaktivera punkter för aktuell rad"
+
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:525
+#: ../src/recentchanges.cpp:527
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -556,27 +691,31 @@ msgstr ""
 "Tidsintervall mellan kontroller av anteckningskatalog (i sekunder). Minsta "
 "värde är 5."
 
-#: ../src/actionmanager.cpp:131
+#: ../src/actionmanager.cpp:132
 msgid "_New Note"
 msgstr "_Ny anteckning"
 
-#: ../src/actionmanager.cpp:132
+#: ../src/actionmanager.cpp:133
 msgid "New _Window"
 msgstr "Nytt _fönster"
 
-#: ../src/actionmanager.cpp:133
+#: ../src/actionmanager.cpp:134
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: ../src/actionmanager.cpp:134
+#: ../src/actionmanager.cpp:135
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: ../src/actionmanager.cpp:135
+#: ../src/actionmanager.cpp:136
+msgid "_Shortcuts"
+msgstr "_Genvägar"
+
+#: ../src/actionmanager.cpp:137
 msgid "_About"
 msgstr "_Om"
 
-#: ../src/actionmanager.cpp:136
+#: ../src/actionmanager.cpp:138
 msgid "_Quit"
 msgstr "_Avsluta"
 
@@ -1251,15 +1390,19 @@ msgstr "Fjärranrop till %s misslyckades"
 msgid "Exception thrown when creating note: %s"
 msgstr "Undantag kastat vid skapande av anteckning: %s"
 
-#: ../src/gnote.cpp:180
+#: ../src/gnote.cpp:182
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote kör redan. Avslutar…"
 
-#: ../src/gnote.cpp:273
+#: ../src/gnote.cpp:274
+msgid "Failed to get shortcuts window!"
+msgstr "Misslyckades med att hämta genvägsfönster!"
+
+#: ../src/gnote.cpp:288
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: ../src/gnote.cpp:279
+#: ../src/gnote.cpp:294
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -1270,7 +1413,7 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:303
 msgid ""
 "Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1282,79 +1425,79 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: ../src/gnote.cpp:292
+#: ../src/gnote.cpp:307
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
-#: ../src/gnote.cpp:303
+#: ../src/gnote.cpp:318
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:494
 msgid "Run Gnote in background."
 msgstr "Kör Gnote i bakgrunden."
 
-#: ../src/gnote.cpp:479
+#: ../src/gnote.cpp:495
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Kör Gnote som söktjänst för GNOME Shell."
 
-#: ../src/gnote.cpp:480
+#: ../src/gnote.cpp:496
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: ../src/gnote.cpp:480
+#: ../src/gnote.cpp:496
 msgid "path"
 msgstr "sökväg"
 
-#: ../src/gnote.cpp:481
+#: ../src/gnote.cpp:497
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna ”Sök i alla anteckningar”-fönstret med söktexten."
 
-#: ../src/gnote.cpp:481 ../src/gnote.cpp:486
+#: ../src/gnote.cpp:497 ../src/gnote.cpp:502
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:482
+#: ../src/gnote.cpp:498
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: ../src/gnote.cpp:483
+#: ../src/gnote.cpp:499
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: ../src/gnote.cpp:483
+#: ../src/gnote.cpp:499
 msgid "title"
 msgstr "titel"
 
-#: ../src/gnote.cpp:484
+#: ../src/gnote.cpp:500
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: ../src/gnote.cpp:484
+#: ../src/gnote.cpp:500
 msgid "title/url"
 msgstr "titel/url"
 
-#: ../src/gnote.cpp:485
+#: ../src/gnote.cpp:501
 msgid "Display the 'Start Here' note."
 msgstr "Visa ”Börja här”-anteckningen."
 
-#: ../src/gnote.cpp:486
+#: ../src/gnote.cpp:502
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: ../src/gnote.cpp:490
+#: ../src/gnote.cpp:506
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: ../src/gnote.cpp:490
+#: ../src/gnote.cpp:506
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:583
 msgid "Could not connect to remote instance."
 msgstr "Kunde inte ansluta till fjärrinstans."
 
-#: ../src/gnote.cpp:683
+#: ../src/gnote.cpp:699
 msgid "Version %1%"
 msgstr "Version %1%"
 
@@ -1421,7 +1564,7 @@ msgstr "Nytt antecknings_block…"
 msgid "%1% Notebook Template"
 msgstr "Anteckningsmall för %1%"
 
-#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:301
+#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:308
 msgid "New Note"
 msgstr "Ny anteckning"
 
@@ -1472,11 +1615,11 @@ msgstr "Viktigt"
 msgid "Active"
 msgstr "Aktiva"
 
-#: ../src/notebuffer.cpp:1517
+#: ../src/notebuffer.cpp:1534
 msgid "</list> tag mismatch"
 msgstr "</list>-tagg ej korrekt matchad"
 
-#: ../src/notebuffer.cpp:1599
+#: ../src/notebuffer.cpp:1616
 #, c-format
 msgid "Exception: %s"
 msgstr "Undantag: %s"
@@ -1520,11 +1663,11 @@ msgstr "Fel vid sparande: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "Att ställa in textinnehåll för stängda anteckningar stöds inte"
 
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+#: ../src/notemanagerbase.cpp:108 ../src/preferencesdialog.cpp:320
 msgid "New Note Template"
 msgstr "Ny anteckningsmall"
 
-#: ../src/notemanagerbase.cpp:359
+#: ../src/notemanagerbase.cpp:366
 msgid "Describe your new note here."
 msgstr "Beskriv din nya anteckning här."
 
@@ -2047,11 +2190,11 @@ msgstr "Sök"
 msgid "Find _Next"
 msgstr "Sök _nästa"
 
-#: ../src/recentchanges.cpp:245
+#: ../src/recentchanges.cpp:246
 msgid "Find _Previous"
 msgstr "Sök _föregående"
 
-#: ../src/recentchanges.cpp:769
+#: ../src/recentchanges.cpp:771
 msgid "_Close"
 msgstr "S_täng"
 
@@ -2792,12 +2935,6 @@ msgstr "_Öppna länk"
 #~ msgid "_File"
 #~ msgstr "_Arkiv"
 
-#~ msgid "Open the selected note"
-#~ msgstr "Öppna den valda anteckningen"
-
-#~ msgid "Delete the selected note"
-#~ msgstr "Ta bort den valda anteckningen"
-
 #~ msgid "Close this window"
 #~ msgstr "Stäng det här fönstret"
 
@@ -2864,12 +3001,6 @@ msgstr "_Öppna länk"
 #~ msgid "_Find:"
 #~ msgstr "_Sök:"
 
-#~ msgid "Increase Font Size"
-#~ msgstr "Öka typsnittsstorlek"
-
-#~ msgid "Decrease Font Size"
-#~ msgstr "Minska typsnittsstorlek"
-
 #~ msgid "Font Size"
 #~ msgstr "Typsnittsstorlek"
 
@@ -2899,9 +3030,6 @@ msgstr "_Öppna länk"
 
 #~ msgid "Open \"_Start Here\""
 #~ msgstr "Öppna \"_Börja här\""
-
-#~ msgid "Create _new note"
-#~ msgstr "Skapa _ny anteckning"
 
 #~ msgid "Open \"Search _All Notes\""
 #~ msgstr "Öppna \"Sök i _alla anteckningar\""
@@ -2943,9 +3071,6 @@ msgstr "_Öppna länk"
 #~ msgid_plural "In %1% days"
 #~ msgstr[0] "Inom %1% dag"
 #~ msgstr[1] "Inom %1% dagar"
-
-#~ msgid "Editing"
-#~ msgstr "Redigering"
 
 #~ msgid "Accessories"
 #~ msgstr "Tillbehör"
@@ -3242,9 +3367,6 @@ msgstr "_Öppna länk"
 
 #~ msgid "Word wrapping mode"
 #~ msgstr "Radbrytningsläge"
-
-#~ msgid "Highlight"
-#~ msgstr "Färgmarkera"
 
 #~ msgid "Whether to print the document with highlighted syntax"
 #~ msgstr "Huruvida dokumentet ska skrivas ut med färgmarkerad syntax"
