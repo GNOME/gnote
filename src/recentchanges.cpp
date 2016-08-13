@@ -814,6 +814,7 @@ namespace gnote {
     switch(evt->keyval) {
     case GDK_KEY_Escape:
     case GDK_KEY_Delete:
+    case GDK_KEY_Tab:
       return false;
     case GDK_KEY_BackSpace:
       if(m_search_button.get_active()) {
