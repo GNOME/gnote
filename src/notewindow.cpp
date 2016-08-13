@@ -228,8 +228,8 @@ namespace gnote {
   {
     if (Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
           Preferences::AUTOSIZE_NOTE_WINDOW)) {
-    width = m_width;
-    height = m_height;
+      width = m_width;
+      height = m_height;
     }
   }
 
