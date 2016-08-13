@@ -220,6 +220,8 @@ namespace gnote {
   {
     m_search_entry.set_activates_default(false);
     m_search_entry.set_size_request(300);
+    m_search_entry.signal_key_press_event()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_key_pressed), false);
     m_search_entry.signal_changed()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_changed));
     m_search_entry.signal_activate()
@@ -626,6 +628,17 @@ namespace gnote {
     bool res = MainWindow::on_map_event(evt);
     m_mapped = true;
     return res;
+  }
+
+  bool NoteRecentChanges::on_entry_key_pressed(GdkEventKey *event)
+  {
+    switch(event->keyval) {
+    case GDK_KEY_Escape:
+      m_search_entry.set_text("");
+      m_search_button.set_active(false);
+    }
+
+    return false;
   }
 
   void NoteRecentChanges::on_entry_changed()

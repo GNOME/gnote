@@ -77,6 +77,7 @@ private:
   EmbeddableWidget *currently_embedded();
   void make_header_bar();
   void make_search_box();
+  bool on_entry_key_pressed(GdkEventKey *);
   void on_entry_changed();
   void on_entry_activated();
   void entry_changed_timeout();
