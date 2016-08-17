@@ -51,6 +51,7 @@ public:
   virtual void new_note() override;
   virtual void present_search() override;
   virtual void close_window() override;
+  virtual bool is_search() override;
 
   virtual void embed_widget(EmbeddableWidget &) override;
   virtual void unembed_widget(EmbeddableWidget &) override;

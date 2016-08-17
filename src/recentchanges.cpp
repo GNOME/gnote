@@ -384,6 +384,12 @@ namespace gnote {
   }
 
 
+  bool NoteRecentChanges::is_search()
+  {
+    return &m_search_notes_widget == currently_embedded();
+  }
+
+
   void NoteRecentChanges::on_close_window(const Glib::VariantBase&)
   {
     close_window();
