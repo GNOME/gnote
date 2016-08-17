@@ -126,7 +126,7 @@ public:
   virtual MainWindow & new_main_window() override;
   virtual MainWindow & get_main_window() override;
   virtual MainWindow & get_window_for_note() override;
-  virtual void open_search_all() override;
+  virtual MainWindow & open_search_all() override;
   void open_note_sync_window(const Glib::VariantBase&);
 
   bool is_background() const
