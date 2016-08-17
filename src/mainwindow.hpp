@@ -47,6 +47,7 @@ public:
   virtual void present_search() = 0;
   virtual void new_note() = 0;
   virtual void close_window() = 0;
+  virtual bool is_search() = 0;
 
   void close_on_escape(bool close_win)
     {
