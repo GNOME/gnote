@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ public:
   virtual MainWindow & get_window_for_note() = 0;
   virtual MainWindow & new_main_window() = 0;
   virtual void open_note(const Note::Ptr & note) = 0;
-  virtual void open_search_all() = 0;
+  virtual MainWindow & open_search_all() = 0;
 
   sigc::signal<void> signal_quit;
 };

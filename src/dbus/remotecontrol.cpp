@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -137,7 +137,7 @@ namespace gnote {
 
   void RemoteControl::DisplaySearch()
   {
-    IGnote::obj().open_search_all();
+    IGnote::obj().open_search_all().present();
   }
 
 
