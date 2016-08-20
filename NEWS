@@ -1,3 +1,34 @@
+3.21.0 -  2016/08/20
+
+New Features:
+  * GTK+ 3.20 is required
+  * Undo will now undo last user action as single unit (#747202)
+  * Added shortcuts window
+  * Added <Ctrl>Left accelerator to go from note to main window
+
+Fixes:
+  * Enter key will find next match when searching in note (#700624)
+  * Fixed formatting buttons when selection is mixed formatting (#702248)
+  * Fixed crash on first run when data migration is required (#765791)
+  * Fixed disabling application plugins
+  * Fixed Windows size shrinking when switching from/to note (#764464)
+  * Fixed tab key activating search, while it shouldn't (#767834)
+  * Escape will close search when search entry has focus
+  * Make --search always show main window in search mode (#769906)
+
+Translations:
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - German (de)
+    - Hungarian (hu)
+    - Indonesian (id)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Portuguese (pt)
+    - Spanish (es)
+    - Swedish (sv)
+
 3.20.0 - Easter is comming - 2016/03/26
 
 New Features:
