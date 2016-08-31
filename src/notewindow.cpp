@@ -204,7 +204,7 @@ namespace gnote {
       return;
     }
     remove_accel_group(*parent);
-    if(parent->get_window() != 0
+    if(parent->get_window()
        && (parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0) {
       int cur_width, cur_height;
       parent->get_size(cur_width, cur_height);
@@ -607,7 +607,7 @@ namespace gnote {
       m_global_keys->enabled(m_enabled);
     FOREACH(const MainWindowAction::Ptr & action, get_widget_actions()) {
       // A list includes empty actions to mark separators, non-modifying actions are always enabled
-      if(action != 0 && Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action) == 0) {
+      if(action && !Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action)) {
         action->set_enabled(enable);
       }
     }

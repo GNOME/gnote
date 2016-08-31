@@ -1536,7 +1536,7 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
 void SearchNotesWidget::on_rename_notebook()
 {
   Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooksTree->get_selection();
-  if(selection == 0) {
+  if(!selection) {
     return;
   }
   std::vector<Gtk::TreeModel::Path> selected_row = selection->get_selected_rows();
