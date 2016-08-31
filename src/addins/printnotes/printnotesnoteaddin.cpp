@@ -254,7 +254,7 @@ namespace printnotes {
     }
 
     gnote::DepthNoteTag::Ptr depth = get_buffer()->find_depth_tag(p_start);
-    if(depth != 0) {
+    if(depth) {
         indentation += ((int) (dpiX / 3)) * depth->get_depth();
     }
     layout->set_width(pango_units_from_double((int)context->get_width() -

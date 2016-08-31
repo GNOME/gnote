@@ -228,7 +228,7 @@ Glib::VariantContainerBase SearchProvider::LaunchSearch_stub(const Glib::Variant
 
 gchar *SearchProvider::get_icon()
 {
-  if(m_note_icon == 0) {
+  if(!m_note_icon) {
     Gtk::IconInfo info = gnote::IconManager::obj().lookup_icon(gnote::IconManager::NOTE, 48);
     m_note_icon = Gio::Icon::create(info.get_filename());
   }
