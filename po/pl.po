@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-20 17:11+0200\n"
-"PO-Revision-Date: 2016-08-20 17:12+0200\n"
+"POT-Creation-Date: 2016-09-09 03:14+0200\n"
+"PO-Revision-Date: 2016-09-09 03:15+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -273,7 +273,7 @@ msgstr ""
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:13
 msgid "Enable custom font"
-msgstr "Własna czcionka"
+msgstr "Niestandardowa czcionka"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:14
 msgid ""
@@ -286,7 +286,7 @@ msgstr ""
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:15
 msgid "Custom Font Face"
-msgstr "Własna czcionka"
+msgstr "Niestandardowa czcionka"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:16
 msgid ""
@@ -397,14 +397,14 @@ msgstr "Określa początkową kolejność porządkowania okna wyszukiwania."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:35
 msgid "FUSE Mounting Timeout (ms)"
-msgstr "Ograniczenie czasu montowania FUSE (w ms)"
+msgstr "Ograniczenie czasu montowania FUSE (w ms)"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:36
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr ""
-"Czas oczekiwania (w milisekundach) programu Gnote na odpowiedź podczas "
+"Czas oczekiwania (w milisekundach) programu Gnote na odpowiedź podczas "
 "używania FUSE do montowania zasobu synchronizacji."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:37
@@ -494,7 +494,7 @@ msgid ""
 "Open notes in new window instead of replacing active content of the same "
 "window"
 msgstr ""
-"Otwiera notatki w nowym oknie zamiast zastępować aktywną treść tego samego "
+"Otwiera notatki w nowym oknie, zamiast zastępować aktywną treść tego samego "
 "okna"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:53
@@ -522,11 +522,11 @@ msgid ""
 "window manager, or a comma separated list of desktop environments, where "
 "Gnote should draw decorations itself. Requires application restart."
 msgstr ""
-"Czy program Gnote powinien rysować własny pasek tytułowy, czy powinien "
-"pozostawiać to menedżerowi okien. Możliwe wartości to „enabled” (rysowanie "
-"paska), „disabled” (pozostawienie rysowania menedżerowi okien) oraz lista "
-"środowisk oddzielonych przecinkami, w których program Gnote powinien sam "
-"rysować dekoracje. Wymaga ponownego uruchomienia programu."
+"Czy program Gnote powinien rysować niestandardowy pasek tytułowy, czy "
+"powinien pozostawiać to menedżerowi okien. Możliwe wartości to "
+"„enabled” (rysowanie paska), „disabled” (pozostawienie rysowania menedżerowi "
+"okien) oraz lista środowisk oddzielonych przecinkami, w których program "
+"Gnote powinien sam rysować dekoracje. Wymaga ponownego uruchomienia programu."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Show applet menu"
@@ -584,7 +584,7 @@ msgid ""
 msgstr ""
 "Ostatnie ustawienie dla opcji „Dołącz wszystkie inne powiązane notatki” "
 "wtyczki eksportu do HTML. Używane jest w połączeniu z ustawieniem „Eksport "
-"HTML dowiązanych notatek” aby określić, czy podczas eksportu do HTML mają "
+"HTML dowiązanych notatek”, aby określić, czy podczas eksportu do HTML mają "
 "być eksportowane wszystkie rekursywnie powiązane ze sobą notatki."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:68
@@ -701,7 +701,7 @@ msgstr "Czas między sprawdzaniem"
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
-"Czas między sprawdzaniem katalogu notatek (w sekundach). Minimalna wartość "
+"Czas między sprawdzaniem katalogu notatek (w sekundach). Minimalna wartość "
 "to 5."
 
 #: ../src/actionmanager.cpp:132
@@ -1023,7 +1023,8 @@ msgstr "Wstawia bieżącą datę i czas w pozycji kursora."
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:70
 msgid "Choose one of the predefined formats or use your own."
-msgstr "Proszę wybrać jeden z zaproponowanych formatów lub użyć własnego."
+msgstr ""
+"Proszę wybrać jeden z zaproponowanych formatów lub użyć niestandardowego."
 
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:78
 msgid "Use _Selected Format"
@@ -1031,7 +1032,7 @@ msgstr "Użycie _zaznaczonego formatu"
 
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:110
 msgid "_Use Custom Format"
-msgstr "Własny forma_t"
+msgstr "Niestandardowy forma_t"
 
 #. TRANSLATORS: first %s is file name, second is error
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:236
@@ -1365,7 +1366,7 @@ msgid ""
 "incorrect user name and/or password."
 msgstr ""
 "Wystąpił błąd podczas łączenia z serwerem. Może to być spowodowanie "
-"niepoprawną nazwą użytkownika i/lub hasłem."
+"niepoprawną nazwą użytkownika lub hasłem."
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:173
 msgid "URL, username, or password field is empty."
@@ -1989,7 +1990,7 @@ msgstr ""
 
 #: ../src/preferencesdialog.cpp:277
 msgid "Use custom _font"
-msgstr "Własna _czcionka"
+msgstr "Niestandardowa _czcionka"
 
 #: ../src/preferencesdialog.cpp:295
 msgid "When renaming a linked note: "
@@ -1997,7 +1998,7 @@ msgstr "Podczas zmieniania nazwy notatki, do której prowadzą odnośniki: "
 
 #: ../src/preferencesdialog.cpp:299
 msgid "Ask me what to do"
-msgstr "Pytanie co robić"
+msgstr "Pytanie, co robić"
 
 #: ../src/preferencesdialog.cpp:300
 msgid "Never rename links"
