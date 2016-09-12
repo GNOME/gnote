@@ -150,7 +150,7 @@ namespace gnote {
     m_all_notes_button->set_image(*image);
     m_all_notes_button->set_tooltip_text(_("All Notes"));
     m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_all_notes_button_clicked));
-    m_all_notes_button->add_accelerator("activate", get_accel_group(), GDK_KEY_Left, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    m_all_notes_button->add_accelerator("activate", get_accel_group(), GDK_KEY_comma, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_all_notes_button->show_all();
     left_box->attach(*m_all_notes_button, 0, 0, 1, 1);
 
