@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&k"
-"eywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-14 18:57+0000\n"
-"PO-Revision-Date: 2016-08-21 00:25+0200\n"
+"eywords=I18N+L10N&component=main\n"
+"POT-Creation-Date: 2016-09-17 04:41+0000\n"
+"PO-Revision-Date: 2016-09-20 11:40+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: Serbian <gnom@prevod.org>\n"
+"Language-Team: srpski <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,13 +41,11 @@ msgstr ""
 "na više uređaja."
 
 #: ../data/ui/shortcuts-gnote.ui.h:1
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Glavni prozor"
 
 #: ../data/ui/shortcuts-gnote.ui.h:2
-#| msgid "General"
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Opšte"
@@ -73,43 +71,36 @@ msgid "Hide search bar"
 msgstr "Skriva traku pretrage"
 
 #: ../data/ui/shortcuts-gnote.ui.h:7
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Zatvara prozor"
 
 #: ../data/ui/shortcuts-gnote.ui.h:8
-#| msgid "Note Title"
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Spisak beleški"
 
 #: ../data/ui/shortcuts-gnote.ui.h:9
-#| msgid "Create _new note"
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Pravi novu belešku"
 
 #: ../data/ui/shortcuts-gnote.ui.h:10
-#| msgid "_Open Template Note"
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Otvara izabranu belešku"
 
 #: ../data/ui/shortcuts-gnote.ui.h:11
-#| msgid "Open notes in new window"
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Otvara izabranu belešku u novom prozoru"
 
 #: ../data/ui/shortcuts-gnote.ui.h:12
-#| msgid "Delete this note"
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Briše izabranu belešku"
 
 #: ../data/ui/shortcuts-gnote.ui.h:13
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Prozor beleške"
@@ -135,7 +126,6 @@ msgid "Create link to note on selected text"
 msgstr "Pravi vezu do beleške na izabranom tekstu"
 
 #: ../data/ui/shortcuts-gnote.ui.h:18
-#| msgid "Formatting"
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatiranje"
@@ -151,36 +141,33 @@ msgid "Toggle italic"
 msgstr "Izmenjivač iskošenosti"
 
 #: ../data/ui/shortcuts-gnote.ui.h:21
+#| msgctxt "shortcut window"
+#| msgid "Toggle strikethough"
 msgctxt "shortcut window"
-msgid "Toggle strikethough"
+msgid "Toggle strikethrough"
 msgstr "Izmenjivač precrtanosti"
 
 #: ../data/ui/shortcuts-gnote.ui.h:22
-#| msgid "_Highlight"
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Izmenjivač isticanja"
 
 #: ../data/ui/shortcuts-gnote.ui.h:23
-#| msgid "Fixed Width"
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Izmenjivač utvrđene širine"
 
 #: ../data/ui/shortcuts-gnote.ui.h:24
-#| msgid "Underline"
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Izmenjivač podvučenosti"
 
 #: ../data/ui/shortcuts-gnote.ui.h:25
-#| msgid "Increase Font Size"
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Povećava veličinu slova"
 
 #: ../data/ui/shortcuts-gnote.ui.h:26
-#| msgid "Decrease Font Size"
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Smanjuje veličinu slova"
@@ -196,7 +183,7 @@ msgid "Decrease indent/disable bullets for current line"
 msgstr "Smanjuje uvlačenje/isključuje tačkiranje za tekući red"
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:530
+#: ../src/recentchanges.cpp:536
 msgid "Gnote"
 msgstr "Gnomov beležnik"
 
@@ -1455,71 +1442,71 @@ msgstr "Jednostavan i zgodan programčić za hvatanje beleški."
 msgid "Homepage"
 msgstr "Veb stranica"
 
-#: ../src/gnote.cpp:494
+#: ../src/gnote.cpp:529
 msgid "Run Gnote in background."
 msgstr "Pokreće Gnomovog beležnika u pozadini."
 
-#: ../src/gnote.cpp:495
+#: ../src/gnote.cpp:530
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Pokreće Gnomovog beležnika kao dostavnika pretrage Gnomove školjke."
 
-#: ../src/gnote.cpp:496
+#: ../src/gnote.cpp:531
 msgid "Specify the path of the directory containing the notes."
 msgstr "Navodi putanju direktorijuma koji sadrži beleške."
 
-#: ../src/gnote.cpp:496
+#: ../src/gnote.cpp:531
 msgid "path"
 msgstr "putanja"
 
-#: ../src/gnote.cpp:497
+#: ../src/gnote.cpp:532
 msgid "Open the search all notes window with the search text."
 msgstr "Otvara prozor za pretraživanje svih beleški uz tekst pretrage."
 
-#: ../src/gnote.cpp:497 ../src/gnote.cpp:502
+#: ../src/gnote.cpp:532 ../src/gnote.cpp:537
 msgid "text"
 msgstr "tekst"
 
-#: ../src/gnote.cpp:498
+#: ../src/gnote.cpp:533
 msgid "Print version information."
 msgstr "Ispisuje podatke o izdanju."
 
-#: ../src/gnote.cpp:499
+#: ../src/gnote.cpp:534
 msgid "Create and display a new note, with a optional title."
 msgstr "Pravi i prikazuje novu belešku, sa opcionalnim naslovom."
 
-#: ../src/gnote.cpp:499
+#: ../src/gnote.cpp:534
 msgid "title"
 msgstr "naslov"
 
-#: ../src/gnote.cpp:500
+#: ../src/gnote.cpp:535
 msgid "Display the existing note matching title."
 msgstr "Prikazuje postojeću belešku koja odgovara naslovu."
 
-#: ../src/gnote.cpp:500
+#: ../src/gnote.cpp:535
 msgid "title/url"
 msgstr "naslov/adresa"
 
-#: ../src/gnote.cpp:501
+#: ../src/gnote.cpp:536
 msgid "Display the 'Start Here' note."
 msgstr "Prikazuje belešku „Polazna stanica“."
 
-#: ../src/gnote.cpp:502
+#: ../src/gnote.cpp:537
 msgid "Search and highlight text in the opened note."
 msgstr "Traži i ističe tekst u otvorenoj beleški."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:541
 msgid "A note taking application"
 msgstr "Program za beleške"
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:541
 msgid "Gnote options at launch"
 msgstr "Opcije Gnomovog beležnika pri pokretanju"
 
-#: ../src/gnote.cpp:583
+#: ../src/gnote.cpp:618
 msgid "Could not connect to remote instance."
 msgstr "Ne mogu da se povežem na udaljeni primerak."
 
-#: ../src/gnote.cpp:699
+#: ../src/gnote.cpp:734
 msgid "Version %1%"
 msgstr "Izdanje %1%"
 
@@ -2068,7 +2055,6 @@ msgid "Not configurable"
 msgstr "Nije podesivo"
 
 #: ../src/preferencesdialog.cpp:514
-#| msgid "Automatical background s_ync interval (minutes)"
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Period pozadinskog _samousaglašavanja (u minutima)"
 
@@ -2210,7 +2196,7 @@ msgstr "Nađi _sledeće"
 msgid "Find _Previous"
 msgstr "Traži _prethodno"
 
-#: ../src/recentchanges.cpp:785
+#: ../src/recentchanges.cpp:791
 msgid "_Close"
 msgstr "_Zatvori"
 
