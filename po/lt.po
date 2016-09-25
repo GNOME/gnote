@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-13 16:32+0000\n"
-"PO-Revision-Date: 2016-08-14 21:55+0300\n"
+"product=gnote&keywords=I18N+L10N&component=main\n"
+"POT-Creation-Date: 2016-09-19 18:18+0000\n"
+"PO-Revision-Date: 2016-09-25 13:50+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -44,13 +44,11 @@ msgstr ""
 "įrenginiuose."
 
 #: ../data/ui/shortcuts-gnote.ui.h:1
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Pagrindinis langas"
 
 #: ../data/ui/shortcuts-gnote.ui.h:2
-#| msgid "General"
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Pagrindiniai"
@@ -76,43 +74,36 @@ msgid "Hide search bar"
 msgstr "Slėpti paieškos juostą"
 
 #: ../data/ui/shortcuts-gnote.ui.h:7
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Užverti langą"
 
 #: ../data/ui/shortcuts-gnote.ui.h:8
-#| msgid "Note Title"
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Raštelių sąrašas"
 
 #: ../data/ui/shortcuts-gnote.ui.h:9
-#| msgid "Create _new note"
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Sukurti naują raštelį"
 
 #: ../data/ui/shortcuts-gnote.ui.h:10
-#| msgid "_Open Template Note"
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Atverti pažymėtą raštelį"
 
 #: ../data/ui/shortcuts-gnote.ui.h:11
-#| msgid "Open notes in new window"
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Atverti pažymėtą raštelį naujame lange"
 
 #: ../data/ui/shortcuts-gnote.ui.h:12
-#| msgid "Delete this note"
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Ištrinti pažymėtą raštelį"
 
 #: ../data/ui/shortcuts-gnote.ui.h:13
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Naujas langas"
@@ -138,7 +129,6 @@ msgid "Create link to note on selected text"
 msgstr "Sukurti saitą į raštelį naudojant pažymėtą tekstą"
 
 #: ../data/ui/shortcuts-gnote.ui.h:18
-#| msgid "Formatting"
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatavimas"
@@ -154,24 +144,23 @@ msgid "Toggle italic"
 msgstr "Perjungti kursyvą"
 
 #: ../data/ui/shortcuts-gnote.ui.h:21
+#| msgctxt "shortcut window"
+#| msgid "Toggle strikethough"
 msgctxt "shortcut window"
-msgid "Toggle strikethough"
+msgid "Toggle strikethrough"
 msgstr "Perjungti perbraukimą"
 
 #: ../data/ui/shortcuts-gnote.ui.h:22
-#| msgid "_Highlight"
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Perjungti paryškinimą"
 
 #: ../data/ui/shortcuts-gnote.ui.h:23
-#| msgid "Fixed Width"
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Perjungti fiksuotą plotį"
 
 #: ../data/ui/shortcuts-gnote.ui.h:24
-#| msgid "Underline"
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Perjungti pabraukimą"
@@ -197,7 +186,7 @@ msgid "Decrease indent/disable bullets for current line"
 msgstr "Sumažinti įtrauką ar panaikinti punktus dabartinei eilutei"
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:527
+#: ../src/recentchanges.cpp:536
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -1436,71 +1425,71 @@ msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: ../src/gnote.cpp:494
+#: ../src/gnote.cpp:529
 msgid "Run Gnote in background."
 msgstr "Paleisti Gnote fone."
 
-#: ../src/gnote.cpp:495
+#: ../src/gnote.cpp:530
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Vykdyti Gnote kaip GNOME Shell paieškos tiekėją."
 
-#: ../src/gnote.cpp:496
+#: ../src/gnote.cpp:531
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: ../src/gnote.cpp:496
+#: ../src/gnote.cpp:531
 msgid "path"
 msgstr "kelias"
 
-#: ../src/gnote.cpp:497
+#: ../src/gnote.cpp:532
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: ../src/gnote.cpp:497 ../src/gnote.cpp:502
+#: ../src/gnote.cpp:532 ../src/gnote.cpp:537
 msgid "text"
 msgstr "tekstas"
 
-#: ../src/gnote.cpp:498
+#: ../src/gnote.cpp:533
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: ../src/gnote.cpp:499
+#: ../src/gnote.cpp:534
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: ../src/gnote.cpp:499
+#: ../src/gnote.cpp:534
 msgid "title"
 msgstr "pavadinimas"
 
-#: ../src/gnote.cpp:500
+#: ../src/gnote.cpp:535
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: ../src/gnote.cpp:500
+#: ../src/gnote.cpp:535
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: ../src/gnote.cpp:501
+#: ../src/gnote.cpp:536
 msgid "Display the 'Start Here' note."
 msgstr "Raštelis „Pradėkite čia“"
 
-#: ../src/gnote.cpp:502
+#: ../src/gnote.cpp:537
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:541
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:541
 msgid "Gnote options at launch"
 msgstr "Gnote parametrai paleidžiant"
 
-#: ../src/gnote.cpp:583
+#: ../src/gnote.cpp:618
 msgid "Could not connect to remote instance."
 msgstr "Nepavyko prisijungti prie nutolusios programos."
 
-#: ../src/gnote.cpp:699
+#: ../src/gnote.cpp:734
 msgid "Version %1%"
 msgstr "Versija %1%"
 
@@ -2176,23 +2165,23 @@ msgstr "Autorinės teisės:"
 msgid "All Notes"
 msgstr "Visi rašteliai"
 
-#: ../src/recentchanges.cpp:157
+#: ../src/recentchanges.cpp:158
 msgid "New"
 msgstr "Naujas"
 
-#: ../src/recentchanges.cpp:178
+#: ../src/recentchanges.cpp:179
 msgid "Search"
 msgstr "Ieškoti"
 
-#: ../src/recentchanges.cpp:237
+#: ../src/recentchanges.cpp:240
 msgid "Find _Next"
 msgstr "Rasti _kitą"
 
-#: ../src/recentchanges.cpp:246
+#: ../src/recentchanges.cpp:249
 msgid "Find _Previous"
 msgstr "Rasti _ankstesnį"
 
-#: ../src/recentchanges.cpp:771
+#: ../src/recentchanges.cpp:791
 msgid "_Close"
 msgstr "_Užverti"
 
