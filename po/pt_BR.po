@@ -7,22 +7,22 @@
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013, 2014.
 # Rafael Fontenelle <rffontenelle@gmail.com>, 2013, 2015, 2016.
-#
+# Rafael Fontenelle <rafaelff@gnome.org>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-05 18:59+0000\n"
-"PO-Revision-Date: 2016-05-06 16:47-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&k"
+"eywords=I18N+L10N&component=main\n"
+"POT-Creation-Date: 2016-09-17 04:41+0000\n"
+"PO-Revision-Date: 2016-10-04 19:17-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
@@ -44,8 +44,165 @@ msgstr ""
 "Gnote possui suporte a sincronização para que seja possível usá-lo em "
 "múltiplos dispositivos."
 
+#: ../data/ui/shortcuts-gnote.ui.h:1
+#| msgid "New _Window"
+msgctxt "shortcut window"
+msgid "Main Window"
+msgstr "Nova janela"
+
+#: ../data/ui/shortcuts-gnote.ui.h:2
+#| msgid "General"
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Geral"
+
+#: ../data/ui/shortcuts-gnote.ui.h:3
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Mostrar ajuda"
+
+#: ../data/ui/shortcuts-gnote.ui.h:4
+msgctxt "shortcut window"
+msgid "Open actions menu"
+msgstr "Abrir o menu de ação"
+
+#: ../data/ui/shortcuts-gnote.ui.h:5
+msgctxt "shortcut window"
+msgid "Display search bar"
+msgstr "Exibir barra de pesquisa"
+
+#: ../data/ui/shortcuts-gnote.ui.h:6
+msgctxt "shortcut window"
+msgid "Hide search bar"
+msgstr "Ocultar barra de pesquisa"
+
+#: ../data/ui/shortcuts-gnote.ui.h:7
+#| msgid "Close this window"
+msgctxt "shortcut window"
+msgid "Close window"
+msgstr "Fechar janela"
+
+#: ../data/ui/shortcuts-gnote.ui.h:8
+#| msgid "Note Title"
+msgctxt "shortcut window"
+msgid "Notes list"
+msgstr "Listar de notas"
+
+#: ../data/ui/shortcuts-gnote.ui.h:9
+#| msgid "Create _new note"
+msgctxt "shortcut window"
+msgid "Create new note"
+msgstr "Criar nova nota"
+
+#: ../data/ui/shortcuts-gnote.ui.h:10
+#| msgid "Open the selected note"
+msgctxt "shortcut window"
+msgid "Open selected note"
+msgstr "Abrir nota selecionada"
+
+#: ../data/ui/shortcuts-gnote.ui.h:11
+#| msgid "Open notes in new window"
+msgctxt "shortcut window"
+msgid "Open selected note in new window"
+msgstr "Abrir notas selecionadas em nova janela"
+
+#: ../data/ui/shortcuts-gnote.ui.h:12
+#| msgid "Delete the selected note"
+msgctxt "shortcut window"
+msgid "Delete selected note"
+msgstr "Excluir nota selecionada"
+
+#: ../data/ui/shortcuts-gnote.ui.h:13
+#| msgid "New _Window"
+msgctxt "shortcut window"
+msgid "Note Window"
+msgstr "Nova janela"
+
+#: ../data/ui/shortcuts-gnote.ui.h:14
+#| msgid "_Edit"
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Edição"
+
+#: ../data/ui/shortcuts-gnote.ui.h:15
+msgctxt "shortcut window"
+msgid "Undo last edit"
+msgstr "Desfazer a última edição"
+
+#: ../data/ui/shortcuts-gnote.ui.h:16
+msgctxt "shortcut window"
+msgid "Redo last edit"
+msgstr "Refazer a última edição"
+
+#: ../data/ui/shortcuts-gnote.ui.h:17
+#| msgid "Delete the selected note"
+msgctxt "shortcut window"
+msgid "Create link to note on selected text"
+msgstr "Criar link para nota no texto selecionado"
+
+#: ../data/ui/shortcuts-gnote.ui.h:18
+#| msgid "Formatting"
+msgctxt "shortcut window"
+msgid "Formatting"
+msgstr "Formatação"
+
+#: ../data/ui/shortcuts-gnote.ui.h:19
+msgctxt "shortcut window"
+msgid "Toggle bold"
+msgstr "Ativar negrito"
+
+#: ../data/ui/shortcuts-gnote.ui.h:20
+msgctxt "shortcut window"
+msgid "Toggle italic"
+msgstr "Ativar itálico"
+
+#: ../data/ui/shortcuts-gnote.ui.h:21
+msgctxt "shortcut window"
+msgid "Toggle strikethrough"
+msgstr "Ativar taxado"
+
+#: ../data/ui/shortcuts-gnote.ui.h:22
+#| msgid "_Highlight"
+msgctxt "shortcut window"
+msgid "Toggle highlight"
+msgstr "Ativar realce"
+
+#: ../data/ui/shortcuts-gnote.ui.h:23
+#| msgid "Fixed Width"
+msgctxt "shortcut window"
+msgid "Toggle fixed width"
+msgstr "Ativar largura fixa"
+
+#: ../data/ui/shortcuts-gnote.ui.h:24
+#| msgid "Underline"
+msgctxt "shortcut window"
+msgid "Toggle underline"
+msgstr "Ativar sublinhado"
+
+#: ../data/ui/shortcuts-gnote.ui.h:25
+#| msgid "Increase Font Size"
+msgctxt "shortcut window"
+msgid "Increase font size"
+msgstr "Aumentar tamanho da fonte"
+
+#: ../data/ui/shortcuts-gnote.ui.h:26
+#| msgid "Decrease Font Size"
+msgctxt "shortcut window"
+msgid "Decrease font size"
+msgstr "Diminuir tamanho da fonte"
+
+#: ../data/ui/shortcuts-gnote.ui.h:27
+msgctxt "shortcut window"
+msgid "Enable bullets/increase indent for line with selection"
+msgstr "Habilitar marcador/aumentar recuo para linha com seleção"
+
+#: ../data/ui/shortcuts-gnote.ui.h:28
+msgctxt "shortcut window"
+msgid "Decrease indent/disable bullets for current line"
+msgstr "Diminuir recuo/desabilitar marcador para linha atual"
+
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:525
+#: ../src/recentchanges.cpp:536
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -563,27 +720,31 @@ msgstr ""
 "Intervalo de tempo entre as verificações do diretório de notas (em "
 "segundos). Valor mínimo é 5."
 
-#: ../src/actionmanager.cpp:131
+#: ../src/actionmanager.cpp:132
 msgid "_New Note"
 msgstr "_Nova nota"
 
-#: ../src/actionmanager.cpp:132
+#: ../src/actionmanager.cpp:133
 msgid "New _Window"
 msgstr "Nova _janela"
 
-#: ../src/actionmanager.cpp:133
+#: ../src/actionmanager.cpp:134
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: ../src/actionmanager.cpp:134
+#: ../src/actionmanager.cpp:135
 msgid "_Help"
 msgstr "Aj_uda"
 
-#: ../src/actionmanager.cpp:135
+#: ../src/actionmanager.cpp:136
+msgid "_Shortcuts"
+msgstr "_Atalhos"
+
+#: ../src/actionmanager.cpp:137
 msgid "_About"
 msgstr "_Sobre"
 
-#: ../src/actionmanager.cpp:136
+#: ../src/actionmanager.cpp:138
 msgid "_Quit"
 msgstr "Sai_r"
 
@@ -1260,24 +1421,28 @@ msgstr "Chamada remota a %s falhou"
 msgid "Exception thrown when creating note: %s"
 msgstr "Exceção lançada ao criar a nota: %s"
 
-#: ../src/gnote.cpp:180
+#: ../src/gnote.cpp:182
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote já está em execução. Saindo..."
 
-#: ../src/gnote.cpp:273
+#: ../src/gnote.cpp:274
+msgid "Failed to get shortcuts window!"
+msgstr "Falha ao obter janela de atalhos!"
+
+#: ../src/gnote.cpp:288
 msgid "and Tomboy original authors."
 msgstr "e os autores originais do Tomboy."
 
-#: ../src/gnote.cpp:279
+#: ../src/gnote.cpp:294
 msgid "translator-credits"
 msgstr ""
 "Marco de Freitas <marcodefreitas@gmail.com>, 2009\n"
 "Taylon Silmer <taylonsilva@gmail.com>, 2009\n"
 "Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012\n"
 "Júnior Pires <juniorpiresupe@gmail.com>, 2013.\n"
-"Rafael Fontenelle <rffontenelle@gmail.com>, 2013-2016."
+"Rafael Fontenelle <rafaelff@gnome.org>, 2013-2016."
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:303
 msgid ""
 "Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1289,79 +1454,79 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 autores originais do Tomboy."
 
-#: ../src/gnote.cpp:292
+#: ../src/gnote.cpp:307
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Um aplicativo simples e fácil de usar para tomar notas."
 
-#: ../src/gnote.cpp:303
+#: ../src/gnote.cpp:318
 msgid "Homepage"
 msgstr "Página do projeto"
 
-#: ../src/gnote.cpp:478
+#: ../src/gnote.cpp:529
 msgid "Run Gnote in background."
 msgstr "Executar o Gnote em segundo plano."
 
-#: ../src/gnote.cpp:479
+#: ../src/gnote.cpp:530
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Executa o Gnote como provedor de pesquisa do GNOME Shell."
 
-#: ../src/gnote.cpp:480
+#: ../src/gnote.cpp:531
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especifica o caminho do diretório que contém as notas."
 
-#: ../src/gnote.cpp:480
+#: ../src/gnote.cpp:531
 msgid "path"
 msgstr "caminho"
 
-#: ../src/gnote.cpp:481
+#: ../src/gnote.cpp:532
 msgid "Open the search all notes window with the search text."
 msgstr "Abre a janela \"pesquisar em todas as notas\" com o texto de pesquisa."
 
-#: ../src/gnote.cpp:481 ../src/gnote.cpp:486
+#: ../src/gnote.cpp:532 ../src/gnote.cpp:537
 msgid "text"
 msgstr "texto"
 
-#: ../src/gnote.cpp:482
+#: ../src/gnote.cpp:533
 msgid "Print version information."
 msgstr "Imprime informações da versão."
 
-#: ../src/gnote.cpp:483
+#: ../src/gnote.cpp:534
 msgid "Create and display a new note, with a optional title."
 msgstr "Cria e exibe uma nova nota, com um título opcional."
 
-#: ../src/gnote.cpp:483
+#: ../src/gnote.cpp:534
 msgid "title"
 msgstr "título"
 
-#: ../src/gnote.cpp:484
+#: ../src/gnote.cpp:535
 msgid "Display the existing note matching title."
 msgstr "Exibe a nota correspondente ao título."
 
-#: ../src/gnote.cpp:484
+#: ../src/gnote.cpp:535
 msgid "title/url"
 msgstr "título/url"
 
-#: ../src/gnote.cpp:485
+#: ../src/gnote.cpp:536
 msgid "Display the 'Start Here' note."
 msgstr "Exibe a nota \"Comece aqui\"."
 
-#: ../src/gnote.cpp:486
+#: ../src/gnote.cpp:537
 msgid "Search and highlight text in the opened note."
 msgstr "Pesquisa e destaca o texto na nota aberta."
 
-#: ../src/gnote.cpp:490
+#: ../src/gnote.cpp:541
 msgid "A note taking application"
 msgstr "Um aplicativo para tomar notas"
 
-#: ../src/gnote.cpp:490
+#: ../src/gnote.cpp:541
 msgid "Gnote options at launch"
 msgstr "Opções do Gnote na inicialização"
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:618
 msgid "Could not connect to remote instance."
 msgstr "Não foi possível conectar à instância remota."
 
-#: ../src/gnote.cpp:683
+#: ../src/gnote.cpp:734
 msgid "Version %1%"
 msgstr "Versão %1%"
 
@@ -1427,7 +1592,7 @@ msgstr "Novo ca_tálogo de notas..."
 msgid "%1% Notebook Template"
 msgstr "Modelo do catálogo de notas %1%"
 
-#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:301
+#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:308
 msgid "New Note"
 msgstr "Nova nota"
 
@@ -1477,11 +1642,11 @@ msgstr "Importante"
 msgid "Active"
 msgstr "Ativa"
 
-#: ../src/notebuffer.cpp:1517
+#: ../src/notebuffer.cpp:1534
 msgid "</list> tag mismatch"
 msgstr "Tag </list> incompatível"
 
-#: ../src/notebuffer.cpp:1599
+#: ../src/notebuffer.cpp:1616
 #, c-format
 msgid "Exception: %s"
 msgstr "Exceção: %s"
@@ -1525,11 +1690,11 @@ msgstr "Erro ao salvar: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+#: ../src/notemanagerbase.cpp:108 ../src/preferencesdialog.cpp:320
 msgid "New Note Template"
 msgstr "Novo modelo de nota"
 
-#: ../src/notemanagerbase.cpp:359
+#: ../src/notemanagerbase.cpp:366
 msgid "Describe your new note here."
 msgstr "Descreva sua nova nota aqui."
 
@@ -2035,23 +2200,23 @@ msgstr "Copyright:"
 msgid "All Notes"
 msgstr "Todas as notas"
 
-#: ../src/recentchanges.cpp:157
+#: ../src/recentchanges.cpp:158
 msgid "New"
 msgstr "Novo"
 
-#: ../src/recentchanges.cpp:178
+#: ../src/recentchanges.cpp:179
 msgid "Search"
 msgstr "Pesquisar"
 
-#: ../src/recentchanges.cpp:237
+#: ../src/recentchanges.cpp:240
 msgid "Find _Next"
 msgstr "Localizar _próxima"
 
-#: ../src/recentchanges.cpp:245
+#: ../src/recentchanges.cpp:249
 msgid "Find _Previous"
 msgstr "Localizar _anterior"
 
-#: ../src/recentchanges.cpp:769
+#: ../src/recentchanges.cpp:791
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -2792,9 +2957,6 @@ msgstr "Abrir _link"
 #~ msgid "Open \"_Start Here\""
 #~ msgstr "Abrir \"_Comece aqui\""
 
-#~ msgid "Create _new note"
-#~ msgstr "Criar uma _nova nota"
-
 #~ msgid "Open Search _Window"
 #~ msgstr "Abrir _janela de pesquisa"
 
@@ -2824,12 +2986,6 @@ msgstr "Abrir _link"
 
 #~ msgid "Link selected text to a new note (Ctrl-L)"
 #~ msgstr "Vincula o texto selecionado a uma nova nota (Ctrl-L)"
-
-#~ msgid "Increase Font Size"
-#~ msgstr "Aumentar tamanho da fonte"
-
-#~ msgid "Decrease Font Size"
-#~ msgstr "Diminuir tamanho da fonte"
 
 #~ msgid "Add-ins"
 #~ msgstr "Complementos"
@@ -2937,18 +3093,6 @@ msgstr "Abrir _link"
 
 #~ msgid "_File"
 #~ msgstr "_Arquivo"
-
-#~ msgid "Open the selected note"
-#~ msgstr "Abre a nota selecionada"
-
-#~ msgid "Delete the selected note"
-#~ msgstr "Exclui a nota selecionada"
-
-#~ msgid "Close this window"
-#~ msgstr "Fecha esta janela"
-
-#~ msgid "_Edit"
-#~ msgstr "_Editar"
 
 #~ msgid "S_ynchronize Notes"
 #~ msgstr "S_incronizar as notas"
