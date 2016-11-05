@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -113,6 +113,11 @@ namespace sharp {
     return (xmlReaderTypes)type;
   }
   
+  bool XmlReader::is_empty_element()
+  {
+    return xmlTextReaderIsEmptyElement(m_reader) == 1;
+  }
+
   std::string XmlReader::get_name()
   {
     return xmlchar_to_string(xmlTextReaderConstName(m_reader));

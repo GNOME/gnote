@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -59,6 +60,7 @@ public:
   xmlReaderTypes get_node_type();
   
   std::string    get_name();
+  bool           is_empty_element();
   std::string    get_attribute(const char *);
   std::string    get_value();
   std::string    read_string();
