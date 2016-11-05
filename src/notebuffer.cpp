@@ -1542,7 +1542,9 @@ namespace gnote {
             NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, true);
           }
 
-          tag_stack.push (tag_start);
+          if(!xml.is_empty_element()) {
+            tag_stack.push (tag_start);
+          }
           break;
         case XML_READER_TYPE_TEXT:
         case XML_READER_TYPE_WHITESPACE:
