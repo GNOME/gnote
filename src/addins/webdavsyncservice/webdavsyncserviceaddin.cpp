@@ -259,6 +259,8 @@ void WebDavSyncServiceAddin::save_config_settings(const std::string & url, const
     // Save configuration into GConf
     //Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
     //Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
+
+    // TRANSLATORS: %1%: boost format placeholder for the error message.
     boost::format msg(_("Saving configuration to the GNOME keyring failed with the following message:\n\n%1%"));
     throw gnote::sync::GnoteSyncException(str(msg % ke.what()).c_str());
   }

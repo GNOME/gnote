@@ -225,21 +225,21 @@ namespace gnote {
       if (date.year() == now.year()) {
         if (date.day_of_year() == now.day_of_year()) {
           pretty_str = show_time ?
-            /* TRANSLATORS: argument is time. */
+            /* TRANSLATORS: argument %1% is time. */
             str(boost::format(_("Today, %1%")) % short_time) :
             _("Today");
         }
         else if ((date.day_of_year() < now.day_of_year())
                  && (date.day_of_year() == now.day_of_year() - 1)) {
           pretty_str = show_time ?
-            /* TRANSLATORS: argument is time. */
+            /* TRANSLATORS: argument %1% is time. */
             str(boost::format(_("Yesterday, %1%")) % short_time) :
             _("Yesterday");
         }
         else if (date.day_of_year() > now.day_of_year()
                  && date.day_of_year() == now.day_of_year() + 1) {
           pretty_str = show_time ?
-            /* TRANSLATORS: argument is time. */
+            /* TRANSLATORS: argument %1% is time. */
             str(boost::format(_("Tomorrow, %1%")) % short_time) :
             _("Tomorrow");
         }
@@ -247,7 +247,7 @@ namespace gnote {
           /* TRANSLATORS: date in current year. */
           pretty_str = date.to_string(_("%b %d")); // "MMMM d"
           if(show_time) {
-            /* TRANSLATORS: first argument is date, second is time. */
+            /* TRANSLATORS: argument %1% is date, %2% is time. */
             pretty_str = str(boost::format(_("%1%, %2%")) % pretty_str % short_time);
           }
         }
@@ -259,7 +259,7 @@ namespace gnote {
         /* TRANSLATORS: date in other than current year. */
         pretty_str = date.to_string(_("%b %d %Y")); // "MMMM d yyyy"
         if(show_time) {
-          /* TRANSLATORS: first argument is date, second is time. */
+          /* TRANSLATORS: argument %1% is date, %2% is time. */
           pretty_str = str(boost::format(_("%1%, %2%")) % pretty_str % short_time);
         }
       }

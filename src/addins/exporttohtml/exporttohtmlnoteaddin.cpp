@@ -122,6 +122,7 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
       ERR_OUT(_("Could not open exported note in a web browser: %s"),
                ex.what().c_str());
 
+      // TRANSLATORS: %1%: boost format placeholder for the path
       std::string detail = str(boost::format(
                                  _("Your note was exported to \"%1%\"."))
                                % output_path);

@@ -731,6 +731,7 @@ namespace gnote {
 
   void GnoteCommandLine::print_version()
   {
+    // TRANSLATORS: %1%: boost format placeholder for the version string.
     Glib::ustring version = str(boost::format(_("Version %1%"))
                                 % VERSION);
     std::cerr << version << std::endl;

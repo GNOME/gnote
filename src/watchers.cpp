@@ -198,6 +198,7 @@ namespace gnote {
     std::string temp_title;
 
     while (true) {
+      // TRANSLATORS: %1%: boost format placeholder for the number.
       temp_title = str(boost::format(_("(Untitled %1%)")) % ++new_num);
       if (!manager().find (temp_title)) {
         return temp_title;
@@ -228,6 +229,7 @@ namespace gnote {
     get_buffer()->move_mark (get_buffer()->get_selection_bound(), get_title_start());
     get_buffer()->move_mark (get_buffer()->get_insert(), get_title_end());
 
+    // TRANSLATORS: %1%: boost format placeholder for the title.
     std::string message = str(boost::format(
                                 _("A note with the title "
                                   "<b>%1%</b> already exists. "
