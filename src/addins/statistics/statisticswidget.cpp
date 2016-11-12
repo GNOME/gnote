@@ -124,6 +124,7 @@ private:
       for(std::map<std::string, int>::iterator nb = notebook_stats.begin(); nb != notebook_stats.end(); ++nb) {
         Gtk::TreeIter nb_stat = append(iter->children());
         nb_stat->set_value(0, nb->first);
+        // TRANSLATORS: %1%: boost format placeholder for the number of notes.
         char *fmt = ngettext("%1% note", "%1% notes", nb->second);
         nb_stat->set_value(1, str(boost::format(fmt) % nb->second));
       }

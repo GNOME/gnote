@@ -37,6 +37,7 @@ namespace gnote {
   namespace notebooks {
 
     NotebookNewNoteMenuItem::NotebookNewNoteMenuItem(const Notebook::Ptr & notebook)
+      // TRANSLATORS: %1%: boost format placeholder for the notebook name
       : Gtk::ImageMenuItem(str(boost::format(_("New \"%1%\" Note")) % notebook->get_name()))
       , m_notebook(notebook)
     {

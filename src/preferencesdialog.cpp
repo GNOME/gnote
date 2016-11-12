@@ -315,7 +315,7 @@ namespace gnote {
       options_list->attach(*rename_behavior_box, 0, options_list_row++, 1, 1);
 
       // New Note Template
-      // Translators: This is 'New Note' Template, not New 'Note Template'
+      // TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
       Gtk::Grid *template_note_grid = manage(new Gtk::Grid);
       label = manage(make_label (_("New Note Template")));
       set_widget_tooltip(*label, _("Use the new note template to specify the text "
@@ -797,6 +797,7 @@ namespace gnote {
       vbox->show_all ();
 
       dialog = new Gtk::Dialog(
+        // TRANSLATORS: %1%: boost format placeholder for the addin name.
         str(boost::format(_("%1% Preferences")) % addin_info.name()),
         *this, false);
       dialog->property_destroy_with_parent() = true;
@@ -1250,6 +1251,7 @@ namespace gnote {
       // Give the user a visual letting them know that connecting
       // was successful.
       if(errorMsg == "") {
+        // TRANSLATORS: %1% boost format placeholder for the log file path.
         errorMsg = _("Please check your information and try again.  The log file %1% may contain more information about the error.");
         std::string logPath = Glib::build_filename(Glib::get_home_dir(), "gnote.log");
         errorMsg = str(boost::format(errorMsg) % logPath);
