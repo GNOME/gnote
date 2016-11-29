@@ -182,7 +182,7 @@ namespace gnote {
 
     m_window_actions_button = manage(new Gtk::Button);
     image = manage(new Gtk::Image);
-    image->property_icon_name() = "emblem-system-symbolic";
+    image->property_icon_name() = "open-menu-symbolic";
     image->property_icon_size() = GTK_ICON_SIZE_MENU;
     m_window_actions_button->set_image(*image);
     m_window_actions_button->signal_clicked().connect(
