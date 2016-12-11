@@ -20,6 +20,7 @@
 
 #include <glibmm/i18n.h>
 #include <gtkmm/modelbutton.h>
+#include <gtkmm/separator.h>
 
 #include "sharp/string.hpp"
 #include "backlinksnoteaddin.hpp"
@@ -83,33 +84,26 @@ std::map<int, Gtk::Widget*> BacklinksNoteAddin::get_actions_popover_widgets() co
   return widgets;
 }
 
-void BacklinksNoteAddin::update_menu(Gtk::Grid *menu) const
+void BacklinksNoteAddin::update_menu(Gtk::Box *menu) const
 {
   std::list<Gtk::Widget*> items;
   get_backlink_menu_items(items);
-  int top = 0;
-  auto sub = manage(new Gtk::Grid);
-  gnote::utils::set_common_popover_widget_props(*sub);
-  int subtop = 0;
+  bool have_items = false;
   for(auto item : items) {
     dynamic_cast<Gtk::ModelButton*>(item)->property_inverted() = true;
-    sub->attach(*item, 0, subtop++, 1, 1);
+    menu->add(*item);
   }
 
   // If nothing was found, add in a "dummy" item
-  if(subtop == 0) {
+  if(!have_items) {
     Gtk::Widget *blank_item = manage(gnote::utils::create_popover_button("win.backlinks-nonexistent", _("(none)")));
-    sub->attach(*blank_item, 0, subtop++, 1, 1);
+    menu->add(*blank_item);
   }
-  menu->attach(*sub, 0, top++, 1, 1);
+  menu->add(*manage(new Gtk::Separator));
 
-  sub = manage(new Gtk::Grid);
-  gnote::utils::set_common_popover_widget_props(*sub);
-  subtop = 0;
   auto back = gnote::utils::create_popover_submenu_button("main", _("_Back"));
   dynamic_cast<Gtk::ModelButton*>(back)->property_inverted() = true;
-  sub->attach(*back, 0, subtop++, 1, 1);
-  menu->attach(*sub, 0, top++, 1, 1);
+  menu->add(*back);
 }
 
 

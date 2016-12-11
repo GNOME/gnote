@@ -55,7 +55,7 @@ public:
   virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 private:
   void on_open_note(const Glib::VariantBase & param);
-  void update_menu(Gtk::Grid *menu) const;
+  void update_menu(Gtk::Box *menu) const;
   void get_backlink_menu_items(std::list<Gtk::Widget*> & items) const;
   bool check_note_has_match(const gnote::Note::Ptr &, const std::string &);
 };
