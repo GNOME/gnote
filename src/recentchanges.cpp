@@ -28,6 +28,7 @@
 #include <gtkmm/alignment.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
+#include <gtkmm/separator.h>
 #include <gtkmm/separatormenuitem.h>
 #include <gtkmm/stock.h>
 
@@ -763,10 +764,11 @@ namespace gnote {
   {
     std::map<Glib::ustring, Gtk::Widget*> submenus;
     Gtk::PopoverMenu *menu = manage(new Gtk::PopoverMenu);
-    Gtk::Grid *main_grid = manage(new Gtk::Grid);
-    int main_top = 0;
-    int top = 0;
-    Gtk::Grid *grid = manage(utils::create_popover_inner_grid(&top));
+    Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
+    menu_box->property_margin_bottom() = 5;
+    menu_box->property_margin_top() = 5;
+    menu_box->property_margin_left() = 5;
+    menu_box->property_margin_right() = 5;
     FOREACH(Gtk::Widget *item, items) {
       if(item) {
         utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(item);
@@ -774,27 +776,21 @@ namespace gnote {
           submenus[submenu->name()] = item;
         }
         else {
-          grid->attach(*manage(item), 0, top++, 1, 1);
+          menu_box->add(*manage(item));
         }
       }
       else {
-        main_grid->attach(*grid, 0, main_top++, 1, 1);
-        grid = manage(utils::create_popover_inner_grid(&top));
+        menu_box->add(*manage(new Gtk::Separator));
       }
     }
 
-    if(top > 0) {
-      main_grid->attach(*grid, 0, main_top++, 1, 1);
-      grid = manage(utils::create_popover_inner_grid(&top));
-    }
-
+    menu_box->add(*manage(new Gtk::Separator));
     Gtk::Widget *close_item = manage(utils::create_popover_button("win.close-window", _("_Close")));
     close_item->add_accelerator("activate", get_accel_group(), GDK_KEY_W, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     close_item->add_accelerator("activate", get_accel_group(), GDK_KEY_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    grid->attach(*close_item, 0, top++, 1, 1);
+    menu_box->add(*close_item);
 
-    main_grid->attach(*grid, 0, main_top++, 1, 1);
-    menu->add(*main_grid);
+    menu->add(*menu_box);
     for(auto & submenu : submenus) {
       menu->add(*submenu.second);
       menu->child_property_submenu(*submenu.second) = submenu.first;
