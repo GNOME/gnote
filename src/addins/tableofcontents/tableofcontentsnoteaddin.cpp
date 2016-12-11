@@ -25,6 +25,7 @@
 
 #include <gtkmm/modelbutton.h>
 #include <gtkmm/stock.h>
+#include <gtkmm/separator.h>
 #include <gtkmm/separatormenuitem.h>
 
 #include "sharp/string.hpp"
@@ -131,37 +132,31 @@ std::map<int, Gtk::Widget*> TableofcontentsNoteAddin::get_actions_popover_widget
   auto toc_menu = gnote::utils::create_popover_submenu("tableofcontents-menu");
   gnote::utils::add_item_to_ordered_map(widgets, 100000, toc_menu);
 
-  int top = 0;
-  int sub_top = 0;
-  Gtk::Grid *sub = manage(gnote::utils::create_popover_inner_grid());
   std::vector<Gtk::Widget*> toc_items;
   get_toc_popover_items(toc_items);
   if(toc_items.size()) {
     for(auto & toc_button : toc_items) {
-      sub->attach(*toc_button, 1, sub_top++, 1, 1);
+      toc_menu->add(*toc_button);
     }
 
-    toc_menu->attach(*sub, 0, top++, 1, 1);
-    sub = manage(gnote::utils::create_popover_inner_grid(&sub_top));
+    toc_menu->add(*manage(new Gtk::Separator));
   }
 
   auto item = manage(gnote::utils::create_popover_button("win.tableofcontents-heading1", _("Heading 1")));
   item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-  sub->attach(*item, 0, sub_top++, 1, 1);
+  toc_menu->add(*item);
 
   item = manage(gnote::utils::create_popover_button("win.tableofcontents-heading2", _("Heading 2")));
   item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-  sub->attach(*item, 0, sub_top++, 1, 1);
+  toc_menu->add(*item);
 
   item = manage(gnote::utils::create_popover_button("win.tableofcontents-help", _("Table of Contents Help")));
-  sub->attach(*item, 0, sub_top++, 1, 1);
-  toc_menu->attach(*sub, 0, top++, 1, 1);
+  toc_menu->add(*item);
+  toc_menu->add(*manage(new Gtk::Separator));
 
-  sub = manage(gnote::utils::create_popover_inner_grid(&sub_top));
   auto back_item = gnote::utils::create_popover_submenu_button("main", _("_Back"));
   dynamic_cast<Gtk::ModelButton*>(back_item)->property_inverted() = true;
-  sub->attach(*back_item, 0, sub_top++, 1, 1);
-  toc_menu->attach(*sub, 0, top++, 1, 1);
+  toc_menu->add(*back_item);
 
   return widgets;
 }
