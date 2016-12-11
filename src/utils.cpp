@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2016 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -115,13 +115,14 @@ namespace gnote {
       }
 
 
-      class PopoverSubmenuGrid
-        : public Gtk::Grid
+      class PopoverSubmenuBox
+        : public Gtk::Box
         , public PopoverSubmenu
       {
       public:
-        PopoverSubmenuGrid(const Glib::ustring & submenu)
-          : PopoverSubmenu(submenu)
+        PopoverSubmenuBox(const Glib::ustring & submenu)
+          : Gtk::Box(Gtk::ORIENTATION_VERTICAL)
+          , PopoverSubmenu(submenu)
         {
           set_common_popover_widget_props(*this);
         }
@@ -309,27 +310,15 @@ namespace gnote {
     }
 
 
-    Gtk::Grid * create_popover_submenu(const Glib::ustring & name)
+    Gtk::Box * create_popover_submenu(const Glib::ustring & name)
     {
-      return new PopoverSubmenuGrid(name);
+      return new PopoverSubmenuBox(name);
     }
 
 
     void set_common_popover_widget_props(Gtk::Widget & widget)
     {
-      widget.property_margin_top() = 5;
-      widget.property_margin_bottom() = 5;
       widget.property_hexpand() = true;
-    }
-
-    Gtk::Grid *create_popover_inner_grid(int *top)
-    {
-      Gtk::Grid *grid = new Gtk::Grid;
-      set_common_popover_widget_props(*grid);
-      if(top) {
-        *top = 0;
-      }
-      return grid;
     }
 
 
