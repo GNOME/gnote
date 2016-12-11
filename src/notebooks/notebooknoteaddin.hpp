@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015 Aurimas Cernius
+ * Copyright (C) 2011-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ namespace notebooks {
     void on_move_to_notebook(const Glib::VariantBase &);
     void on_notebooks_changed();
     void get_notebook_menu_items(std::list<Gtk::ModelButton*> &) const;
-    void update_menu(Gtk::Grid *) const;
+    void update_menu(Gtk::Box *) const;
 
     sigc::connection          m_new_notebook_cid;
     sigc::connection          m_move_to_notebook_cid;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 
 #include <glibmm/i18n.h>
 #include <gtkmm/modelbutton.h>
+#include <gtkmm/separator.h>
 
 #include "notebooks/notebooknoteaddin.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -140,46 +141,33 @@ namespace notebooks {
   }
 
 
-  void NotebookNoteAddin::update_menu(Gtk::Grid *menu) const
+  void NotebookNoteAddin::update_menu(Gtk::Box *menu) const
   {
-    int top = 0;
-    int sub_top = 0;
-    Gtk::Grid *subgrid = manage(new Gtk::Grid);
-    utils::set_common_popover_widget_props(*subgrid);
-
     // Add new notebook item
     Gtk::Widget *new_notebook_item = manage(utils::create_popover_button("win.new-notebook", _("_New notebook...")));
-    subgrid->attach(*new_notebook_item, 0, sub_top++, 1, 1);
-    menu->attach(*subgrid, 0, top++, 1, 1);
+    menu->add(*new_notebook_item);
+    menu->add(*manage(new Gtk::Separator));
 
     // Add the "(no notebook)" item at the top of the list
-    subgrid = manage(new Gtk::Grid);
-    utils::set_common_popover_widget_props(*subgrid);
-    sub_top = 0;
     Gtk::ModelButton *no_notebook_item = dynamic_cast<Gtk::ModelButton*>(manage(
       utils::create_popover_button("win.move-to-notebook", _("No notebook"))));
     gtk_actionable_set_action_target_value(GTK_ACTIONABLE(no_notebook_item->gobj()), g_variant_new_string(""));
-    subgrid->attach(*no_notebook_item, 0, sub_top++, 1, 1);
+    menu->add(*no_notebook_item);
 
     // Add in all the real notebooks
     std::list<Gtk::ModelButton*> notebook_menu_items;
     get_notebook_menu_items(notebook_menu_items);
     if(!notebook_menu_items.empty()) {
       FOREACH(Gtk::ModelButton *item, notebook_menu_items) {
-        subgrid->attach(*item, 0, sub_top++, 1, 1);
+        menu->add(*item);
       }
 
     }
 
-    menu->attach(*subgrid, 0, top++, 1, 1);
-
-    subgrid = manage(new Gtk::Grid);
-    sub_top = 0;
-    utils::set_common_popover_widget_props(*subgrid);
+    menu->add(*manage(new Gtk::Separator));
     Gtk::Widget *back_button = utils::create_popover_submenu_button("main", _("_Back"));
     dynamic_cast<Gtk::ModelButton*>(back_button)->property_inverted() = true;
-    subgrid->attach(*back_button, 0, sub_top++, 1, 1);
-    menu->attach(*subgrid, 0, top++, 1, 1);
+    menu->add(*back_button);
   }
   
 

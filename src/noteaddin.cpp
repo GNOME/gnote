@@ -93,9 +93,8 @@ namespace gnote {
     NoteTextMenu *txt_menu = dynamic_cast<NoteTextMenu*>(text_menu);
     for(auto child : dynamic_cast<Gtk::Container*>(txt_menu->get_children().front())->get_children()) {
       if(child->get_name() == "formatting") {
-        Gtk::Grid *grid = dynamic_cast<Gtk::Grid*>(child);
-        int pos = grid->get_children().size();
-        grid->attach(item, 0, pos, 1, 1);
+        Gtk::Box *box = dynamic_cast<Gtk::Box*>(child);
+        box->add(item);
       }
     }
   }

@@ -30,6 +30,7 @@
 #include <gtkmm/image.h>
 #include <gtkmm/imagemenuitem.h>
 #include <gtkmm/stock.h>
+#include <gtkmm/separator.h>
 #include <gtkmm/separatortoolitem.h>
 #include <gtkmm/separatormenuitem.h>
 
@@ -820,18 +821,14 @@ namespace gnote {
       m_widget.signal_backgrounded.connect(sigc::mem_fun(*this, &NoteTextMenu::on_widget_backgrounded));
 
       set_position(Gtk::POS_BOTTOM);
-      Gtk::Grid *main_grid = manage(new Gtk::Grid);
-      int main_top = 0;
-
-      Gtk::Grid *grid = manage(utils::create_popover_inner_grid());
-      int top = 0;
+      Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
 
       Gtk::Widget *undo = manage(utils::create_popover_button("win.undo", _("_Undo")));
-      grid->attach(*undo, 0, top++, 1, 1);
+      menu_box->add(*undo);
 
       Gtk::Widget *redo = manage(utils::create_popover_button("win.redo", _("_Redo")));
-      grid->attach(*redo, 0, top++, 1, 1);
-      main_grid->attach(*grid, 0, main_top++, 1, 1);
+      menu_box->add(*redo);
+      menu_box->add(*manage(new Gtk::Separator));
 
       // Listen to events so we can sensitize and
       // enable keybinding
@@ -854,36 +851,37 @@ namespace gnote {
       Gtk::Widget *large = create_font_size_item(_("_Large"), "large", "size:large");
       Gtk::Widget *huge = create_font_size_item(_("Hu_ge"), "x-large", "size:huge");
 
-      grid = manage(utils::create_popover_inner_grid(&top));
-      grid->attach(*link, 0, top++, 1, 1);
-      main_grid->attach(*grid, 0, main_top++, 1, 1);
+      menu_box->add(*link);
+      menu_box->add(*manage(new Gtk::Separator));
 
-      grid = manage(utils::create_popover_inner_grid(&top));
-      grid->set_name("formatting");
-      grid->attach(*bold, 0, top++, 1, 1);
-      grid->attach(*italic, 0, top++, 1, 1);
-      grid->attach(*strikeout, 0, top++, 1, 1);
-      grid->attach(*highlight, 0, top++, 1, 1);
-      main_grid->attach(*grid, 0, main_top++, 1, 1);
+      auto box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
+      utils::set_common_popover_widget_props(*box);
+      box->set_name("formatting");
+      box->add(*bold);
+      box->add(*italic);
+      box->add(*strikeout);
+      box->add(*highlight);
+      menu_box->add(*box);
+      menu_box->add(*manage(new Gtk::Separator));
 
-      grid = manage(utils::create_popover_inner_grid(&top));
-      grid->set_name("font-size");
-      grid->attach(*small, 0, top++, 1, 1);
-      grid->attach(*normal, 0, top++, 1, 1);
-      grid->attach(*large, 0, top++, 1, 1);
-      grid->attach(*huge, 0, top++, 1, 1);
-      main_grid->attach(*grid, 0, main_top++, 1, 1);
+      box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
+      utils::set_common_popover_widget_props(*box);
+      box->set_name("font-size");
+      box->add(*small);
+      box->add(*normal);
+      box->add(*large);
+      box->add(*huge);
+      menu_box->add(*box);
+      menu_box->add(*manage(new Gtk::Separator));
 
-      grid = manage(utils::create_popover_inner_grid(&top));
       Gtk::Widget *bullets = manage(utils::create_popover_button("win.enable-bullets", _("⦁ Bullets")));
-      grid->attach(*bullets, 0, top++, 1, 1);
+      menu_box->add(*bullets);
       Gtk::Widget *increase_indent = manage(utils::create_popover_button("win.increase-indent", _("→ Increase indent")));
-      grid->attach(*increase_indent, 0, top++, 1, 1);
+      menu_box->add(*increase_indent);
       Gtk::Widget *decrease_indent = manage(utils::create_popover_button("win.decrease-indent", _("← Decrease indent")));
-      grid->attach(*decrease_indent, 0, top++, 1, 1);
-      main_grid->attach(*grid, 0, main_top++, 1, 1);
+      menu_box->add(*decrease_indent);
 
-      add(*main_grid);
+      add(*menu_box);
 
       refresh_state();
     }
