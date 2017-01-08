@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -26,7 +26,6 @@
 #endif
 
 #include <boost/bind.hpp>
-#include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/accelgroup.h>
@@ -770,8 +769,8 @@ namespace gnote {
         manage(new Gtk::Image (Gtk::Stock::PREFERENCES, Gtk::ICON_SIZE_DIALOG));
       Gtk::Label *caption = manage(new Gtk::Label());
       caption->set_markup(
-        str(boost::format("<span size='large' weight='bold'>%1% %2%</span>") 
-            % addin_info.name() % addin_info.version()));
+        Glib::ustring::compose("<span size='large' weight='bold'>%1 %2</span>", 
+            addin_info.name(), addin_info.version()));
       caption->property_xalign() = 0;
       caption->set_use_markup(true);
       caption->set_use_underline(false);
@@ -797,8 +796,8 @@ namespace gnote {
       vbox->show_all ();
 
       dialog = new Gtk::Dialog(
-        // TRANSLATORS: %1%: boost format placeholder for the addin name.
-        str(boost::format(_("%1% Preferences")) % addin_info.name()),
+        // TRANSLATORS: %1 is the placeholder for the addin name.
+        Glib::ustring::compose(_("%1 Preferences"), addin_info.name()),
         *this, false);
       dialog->property_destroy_with_parent() = true;
       dialog->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
@@ -927,7 +926,7 @@ namespace gnote {
 
   void PreferencesDialog::set_widget_tooltip(Gtk::Widget & widget, std::string label_text)
   {
-    widget.set_tooltip_markup(str(boost::format("<small>%1%</small>") % label_text));
+    widget.set_tooltip_markup(Glib::ustring::compose("<small>%1</small>", label_text));
   }
 
   void PreferencesDialog::on_font_button_clicked()
@@ -961,8 +960,8 @@ namespace gnote {
 
     // Set the font name label
     char * descstr = pango_font_description_to_string(desc);
-    font_face->set_markup(str(boost::format("<span font_desc='%1%'>%2%</span>")
-                              % font_desc % std::string(descstr)));
+    font_face->set_markup(Glib::ustring::compose("<span font_desc='%1'>%2</span>",
+                              font_desc, Glib::ustring(descstr)));
     g_free(descstr);
     pango_font_description_free(desc);
   }
@@ -1251,10 +1250,10 @@ namespace gnote {
       // Give the user a visual letting them know that connecting
       // was successful.
       if(errorMsg == "") {
-        // TRANSLATORS: %1% boost format placeholder for the log file path.
-        errorMsg = _("Please check your information and try again.  The log file %1% may contain more information about the error.");
-        std::string logPath = Glib::build_filename(Glib::get_home_dir(), "gnote.log");
-        errorMsg = str(boost::format(errorMsg) % logPath);
+        // TRANSLATORS: %1 is the placeholder for the log file path.
+        errorMsg = _("Please check your information and try again.  The log file %1 may contain more information about the error.");
+        Glib::ustring logPath = Glib::build_filename(Glib::get_home_dir(), "gnote.log");
+        errorMsg = Glib::ustring::compose(errorMsg, logPath);
       }
       dialog = new utils::HIGMessageDialog(this, GTK_DIALOG_MODAL, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE,
         _("Error connecting"), errorMsg);
@@ -1316,19 +1315,18 @@ namespace gnote {
 
   void AddinInfoDialog::fill(Gtk::Label & info_label)
   {
-    std::string sb = "<b><big>" + m_addin_info.name() + "</big></b>\n\n";
+    Glib::ustring sb = "<b><big>" + m_addin_info.name() + "</big></b>\n\n";
     sb += m_addin_info.description() + "\n\n";
 
-    sb += str(boost::format("<small><b>%1%</b>\n%2%\n\n")
-              % _("Version:") % m_addin_info.version());
+    sb += Glib::ustring::compose("<small><b>%1</b>\n%2\n\n",
+              _("Version:"), m_addin_info.version());
 
-    sb += str(boost::format("<b>%1%</b>\n%2%\n\n")
-              % _("Author:") % m_addin_info.authors());
+    sb += Glib::ustring::compose("<b>%1</b>\n%2\n\n",
+              _("Author:"), m_addin_info.authors());
     
     std::string s = m_addin_info.copyright();
     if(s != "") {
-      sb += str(boost::format("<b>%1%</b>\n%2%\n\n") 
-                % _("Copyright:") % s);
+      sb += Glib::ustring::compose("<b>%1</b>\n%2\n\n", _("Copyright:"), s);
     }
 
 #if 0 // TODO handle module dependencies
