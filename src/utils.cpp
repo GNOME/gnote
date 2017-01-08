@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -27,7 +27,6 @@
 #include <iostream>
 #include <algorithm>
 
-#include <boost/format.hpp>
 #include <boost/bind.hpp>
 
 #include <gtk/gtk.h>
@@ -192,7 +191,7 @@ namespace gnote {
                                      const std::string & url, 
                                      const std::string & error)
     {
-      std::string message = str(boost::format ("%1%: %2%") % url % error);
+      Glib::ustring message = Glib::ustring::compose("%1: %2", url, error);
 
       HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
                               Gtk::MESSAGE_INFO,
@@ -226,30 +225,30 @@ namespace gnote {
       if (date.year() == now.year()) {
         if (date.day_of_year() == now.day_of_year()) {
           pretty_str = show_time ?
-            /* TRANSLATORS: argument %1% is time. */
-            str(boost::format(_("Today, %1%")) % short_time) :
+            /* TRANSLATORS: argument %1 is time. */
+            Glib::ustring::compose(_("Today, %1"), short_time) :
             _("Today");
         }
         else if ((date.day_of_year() < now.day_of_year())
                  && (date.day_of_year() == now.day_of_year() - 1)) {
           pretty_str = show_time ?
-            /* TRANSLATORS: argument %1% is time. */
-            str(boost::format(_("Yesterday, %1%")) % short_time) :
+            /* TRANSLATORS: argument %1 is time. */
+            Glib::ustring::compose(_("Yesterday, %1"), short_time) :
             _("Yesterday");
         }
         else if (date.day_of_year() > now.day_of_year()
                  && date.day_of_year() == now.day_of_year() + 1) {
           pretty_str = show_time ?
-            /* TRANSLATORS: argument %1% is time. */
-            str(boost::format(_("Tomorrow, %1%")) % short_time) :
+            /* TRANSLATORS: argument %1 is time. */
+            Glib::ustring::compose(_("Tomorrow, %1"), short_time) :
             _("Tomorrow");
         }
         else {
           /* TRANSLATORS: date in current year. */
           pretty_str = date.to_string(_("%b %d")); // "MMMM d"
           if(show_time) {
-            /* TRANSLATORS: argument %1% is date, %2% is time. */
-            pretty_str = str(boost::format(_("%1%, %2%")) % pretty_str % short_time);
+            /* TRANSLATORS: argument %1 is date, %2 is time. */
+            pretty_str = Glib::ustring::compose(_("%1, %2"), pretty_str, short_time);
           }
         }
       } 
@@ -260,8 +259,8 @@ namespace gnote {
         /* TRANSLATORS: date in other than current year. */
         pretty_str = date.to_string(_("%b %d %Y")); // "MMMM d yyyy"
         if(show_time) {
-          /* TRANSLATORS: argument %1% is date, %2% is time. */
-          pretty_str = str(boost::format(_("%1%, %2%")) % pretty_str % short_time);
+          /* TRANSLATORS: argument %1 is date, %2 is time. */
+          pretty_str = Glib::ustring::compose(_("%1, %2"), pretty_str, short_time);
         }
       }
 
@@ -422,8 +421,7 @@ namespace gnote {
       hbox->attach(*label_vbox, hbox_col++, 0, 1, 1);
 
       if(header != "") {
-        std::string title = str(boost::format("<span weight='bold' size='larger'>%1%"
-                                              "</span>\n") % header.c_str());
+        Glib::ustring title = Glib::ustring::compose("<span weight='bold' size='larger'>%1</span>\n", header);
         Gtk::Label *label = manage(new Gtk::Label (title));
         label->set_use_markup(true);
         label->set_justify(Gtk::JUSTIFY_LEFT);
