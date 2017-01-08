@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2016 Aurimas Cernius
+ * Copyright (C) 2011-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 #endif
 
 #include <boost/bind.hpp>
-#include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/grid.h>
@@ -843,7 +842,7 @@ namespace gnote {
 
       Gtk::Widget *highlight = manage(utils::create_popover_button("win.change-font-highlight", ""));
       auto label = static_cast<Gtk::Label*>(static_cast<Gtk::Bin*>(highlight)->get_child());
-      Glib::ustring markup = str(boost::format("<span background=\"yellow\">%1%</span>") % _("_Highlight"));
+      Glib::ustring markup = Glib::ustring::compose("<span background=\"yellow\">%1</span>", _("_Highlight"));
       label->set_markup_with_mnemonic(markup);
 
       Gtk::Widget *normal = create_font_size_item(_("_Normal"), NULL, "");
@@ -890,7 +889,7 @@ namespace gnote {
   {
     Gtk::Widget *widget = manage(utils::create_popover_button(action, ""));
     auto lbl = static_cast<Gtk::Label*>(static_cast<Gtk::Bin*>(widget)->get_child());
-    Glib::ustring m = str(boost::format("<%1%>%2%</%1%>") % markup % label);
+    Glib::ustring m = Glib::ustring::compose("<%1>%2</%1>", markup, label);
     lbl->set_markup_with_mnemonic(m);
     return widget;
   }
@@ -901,7 +900,7 @@ namespace gnote {
     auto lbl = static_cast<Gtk::Label*>(static_cast<Gtk::Bin*>(item)->get_child());
     Glib::ustring mrkp;
     if(markup != NULL) {
-      mrkp = str(boost::format("<span size=\"%1%\">%2%</span>") % markup % label);
+      mrkp = Glib::ustring::compose("<span size=\"%1\">%2</span>", markup, label);
     }
     else {
       mrkp = label;
