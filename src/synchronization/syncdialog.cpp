@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 #include "debug.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/scrolledwindow.h>
@@ -136,18 +135,18 @@ public:
 
       // Set initial dialog text
       header_text(_("Note conflict detected"));
-      message_text(boost::str(boost::format(
-        _("The server version of \"%1%\" conflicts with your local note.  What do you want to do with your local note?"))
-        % existingNote->get_title()));
+      message_text(Glib::ustring::compose(
+        _("The server version of \"%1\" conflicts with your local note.  What do you want to do with your local note?"),
+        existingNote->get_title()));
 
       show_all();
     }
-  void header_text(const std::string & value)
+  void header_text(const Glib::ustring & value)
     {
-      m_header_label->set_markup(boost::str(boost::format(
-        "<span size=\"large\" weight=\"bold\">%1%</span>") % value));
+      m_header_label->set_markup(Glib::ustring::compose(
+        "<span size=\"large\" weight=\"bold\">%1</span>", value));
     }
-  void message_text(const std::string & value)
+  void message_text(const Glib::ustring & value)
     {
       m_message_label->set_text(value);
     }
@@ -435,13 +434,13 @@ void SyncDialog::present_ui()
 }
 
 
-void SyncDialog::header_text(const std::string & value)
+void SyncDialog::header_text(const Glib::ustring & value)
 {
-  m_header_label->set_markup(str(boost::format("<span size=\"large\" weight=\"bold\">%1%</span>") % value));
+  m_header_label->set_markup(Glib::ustring::compose("<span size=\"large\" weight=\"bold\">%1</span>", value));
 }
 
 
-void SyncDialog::message_text(const std::string & value)
+void SyncDialog::message_text(const Glib::ustring & value)
 {
   m_message_label->set_text(value);
 }
@@ -453,10 +452,10 @@ std::string SyncDialog::progress_text() const
 }
 
 
-void SyncDialog::progress_text(const std::string & value)
+void SyncDialog::progress_text(const Glib::ustring & value)
 {
-  m_progress_label->set_markup(str(
-    boost::format("<span style=\"italic\">%1%</span>") % value));
+  m_progress_label->set_markup(
+    Glib::ustring::compose("<span style=\"italic\">%1</span>", value));
 }
 
 
@@ -538,8 +537,8 @@ void SyncDialog::sync_state_changed_(SyncState state)
       int count = m_model->children().size();
       set_title(_("Synchronization Complete"));
       header_text(_("Synchronization is complete"));
-      std::string numNotesUpdated = ngettext("%1% note updated.", "%1% notes updated.", count);
-      message_text(str(boost::format(numNotesUpdated) % count) + "  " + _("Your notes are now up to date."));
+      Glib::ustring numNotesUpdated = ngettext("%1 note updated.", "%1 notes updated.", count);
+      message_text(Glib::ustring::compose(numNotesUpdated, count) + "  " + _("Your notes are now up to date."));
       progress_text("");
     }
     break;

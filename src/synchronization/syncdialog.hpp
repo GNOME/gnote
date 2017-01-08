@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,10 +50,10 @@ namespace sync {
                                         NoteUpdate remoteNote,
                                         const std::list<std::string> & noteUpdateTitles) override;
     virtual void present_ui() override;
-    void header_text(const std::string &);
-    void message_text(const std::string &);
+    void header_text(const Glib::ustring &);
+    void message_text(const Glib::ustring &);
     std::string progress_text() const;
-    void progress_text(const std::string &);
+    void progress_text(const Glib::ustring &);
     void add_update_item(const std::string & title, std::string & status);
   protected:
     virtual void on_realize() override;
