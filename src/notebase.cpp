@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,6 @@
  */
 
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 
 #include "config.h"
@@ -638,12 +637,12 @@ Glib::ustring NoteArchiver::get_renamed_note_xml(const Glib::ustring & note_xml,
 {
   std::string updated_xml;
   // Replace occurences of oldTitle with newTitle in noteXml
-  std::string titleTagPattern =  str(boost::format("<title>%1%</title>") % old_title);
-  std::string titleTagReplacement = str(boost::format("<title>%1%</title>") % new_title);
+  std::string titleTagPattern = Glib::ustring::compose("<title>%1</title>", old_title);
+  std::string titleTagReplacement = Glib::ustring::compose("<title>%1</title>", new_title);
   updated_xml = sharp::string_replace_regex(note_xml, titleTagPattern, titleTagReplacement);
 
-  std::string titleContentPattern = str(boost::format("<note-content([^>]*)>\\s*%1%") % old_title);
-  std::string titleContentReplacement = str(boost::format("<note-content\\1>%1%") % new_title);
+  std::string titleContentPattern = "<note-content([^>]*)>\\s*" + old_title;
+  std::string titleContentReplacement = "<note-content\\1>" + new_title;
   std::string updated_xml2 = sharp::string_replace_regex(updated_xml, titleContentPattern, titleContentReplacement);
 
   return updated_xml2;
