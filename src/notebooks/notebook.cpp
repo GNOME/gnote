@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,6 @@
 
 
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 
 #include "sharp/string.hpp"
@@ -105,9 +104,9 @@ namespace notebooks {
       // notebook.  For example, if the name of the notebooks
       // "Meetings", the templateNoteTitle should be "Meetings
       // Notebook Template".  Translators should place the
-      // name of the notebook accordingly using "%1%".
-      std::string format = _("%1% Notebook Template");
-      m_default_template_note_title = str(boost::format(format) % m_name);
+      // name of the notebook accordingly using "%1".
+      Glib::ustring format = _("%1 Notebook Template");
+      m_default_template_note_title = Glib::ustring::compose(format, m_name);
     }
   }
 
