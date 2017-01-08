@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -28,7 +28,6 @@
 #include <iostream>
 
 #include <boost/bind.hpp>
-#include <boost/format.hpp>
 
 #include <glibmm/thread.h>
 #include <glibmm/i18n.h>
@@ -674,7 +673,7 @@ namespace gnote {
       if (!note_id.empty()) {
         // Attempt to load the note, assuming it might already
         // be part of our notes list.
-        if (!display_note(remote, str(boost::format("note://gnote/%1%") % note_id))) {
+        if (!display_note(remote, "note://gnote/" + note_id)) {
           sharp::StreamReader sr;
           sr.init(m_open_external_note_path);
           if (sr.file()) {
@@ -697,7 +696,7 @@ namespace gnote {
                 // Check for conflicting titles
                 std::string baseTitle = noteTitle;
                 for (int i = 1; !remote->FindNote (noteTitle).empty(); i++) {
-                  noteTitle = str(boost::format("%1% (%2%)") % baseTitle % i);
+                  noteTitle = Glib::ustring::compose("%1 (%2)", baseTitle, i);
                 }
 
                 std::string note_uri = remote->CreateNamedNote (noteTitle);
@@ -732,8 +731,7 @@ namespace gnote {
   void GnoteCommandLine::print_version()
   {
     // TRANSLATORS: %1%: boost format placeholder for the version string.
-    Glib::ustring version = str(boost::format(_("Version %1%"))
-                                % VERSION);
+    Glib::ustring version = Glib::ustring::compose(_("Version %1"), VERSION);
     std::cerr << version << std::endl;
   }
 
