@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2016 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,6 @@
 #include <config.h>
 #endif
 
-#include <boost/format.hpp>
 #include <boost/bind.hpp>
 #include <boost/algorithm/string/find.hpp>
 
@@ -52,15 +51,15 @@ namespace gnote {
 
     void show_deletion_dialog (const std::list<Note::Ptr> & notes, Gtk::Window * parent)
     {
-      std::string message;
+      Glib::ustring message;
 
       if(notes.size() == 1) {
-        // TRANSLATORS: %1% will be replaced by note title
-        message = str(boost::format(_("Really delete \"%1%\"?")) % notes.front()->get_title());
+        // TRANSLATORS: %1 will be replaced by note title
+        message = Glib::ustring::compose(_("Really delete \"%1\"?"), notes.front()->get_title());
       }
       else {
-        // TRANSLATORS: %1% is number of notes
-        message = str(boost::format(ngettext("Really delete %1% note?", "Really delete %1% notes?", notes.size())) % notes.size());
+        // TRANSLATORS: %1 is number of notes
+        message = Glib::ustring::compose(ngettext("Really delete %1 note?", "Really delete %1 notes?", notes.size()), notes.size());
       }
 
       utils::HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
