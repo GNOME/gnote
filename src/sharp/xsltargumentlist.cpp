@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -26,7 +26,7 @@
 
 #include <stdlib.h>
 
-#include <boost/format.hpp>
+#include <glibmm/ustring.h>
 
 #include "sharp/map.hpp"
 #include "sharp/xsltargumentlist.hpp"
@@ -35,7 +35,7 @@ namespace sharp {
 
 void XsltArgumentList::add_param(const char* name, const char * /*uri*/, const std::string & value)
 {
-  std::string pv = str(boost::format("\"%1%\"") % value);
+  Glib::ustring pv = Glib::ustring::compose("\"%1\"", value);
   m_args.push_back(std::make_pair(name, pv));
 }
 
