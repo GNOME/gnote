@@ -36,7 +36,7 @@ SyncLockInfo::SyncLockInfo()
 {
 }
 
-std::string SyncLockInfo::hash_string()
+Glib::ustring SyncLockInfo::hash_string()
 {
   return Glib::ustring::compose("%1-%2-%3-%4-%5", transaction_id, client_id, renew_count, duration.string(), revision);
 }

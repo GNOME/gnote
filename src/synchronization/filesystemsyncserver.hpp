@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,42 +35,42 @@ class FileSystemSyncServer
   : public SyncServer
 {
 public:
-  static SyncServer::Ptr create(const std::string & path);
+  static SyncServer::Ptr create(const Glib::ustring & path);
   virtual bool begin_sync_transaction() override;
   virtual bool commit_sync_transaction() override;
   virtual bool cancel_sync_transaction() override;
-  virtual std::list<std::string> get_all_note_uuids() override;
-  virtual std::map<std::string, NoteUpdate> get_note_updates_since(int revision) override;
-  virtual void delete_notes(const std::list<std::string> & deletedNoteUUIDs) override;
+  virtual std::list<Glib::ustring> get_all_note_uuids() override;
+  virtual std::map<Glib::ustring, NoteUpdate> get_note_updates_since(int revision) override;
+  virtual void delete_notes(const std::list<Glib::ustring> & deletedNoteUUIDs) override;
   virtual void upload_notes(const std::list<Note::Ptr> & notes) override;
   virtual int latest_revision() override; // NOTE: Only reliable during a transaction
   virtual SyncLockInfo current_sync_lock() override;
-  virtual std::string id() override;
+  virtual Glib::ustring id() override;
   virtual bool updates_available_since(int revision) override;
 private:
-  explicit FileSystemSyncServer(const std::string & path);
+  explicit FileSystemSyncServer(const Glib::ustring & path);
 
-  std::string get_revision_dir_path(int rev);
+  Glib::ustring get_revision_dir_path(int rev);
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);
   void update_lock_file(const SyncLockInfo & syncLockInfo);
-  bool is_valid_xml_file(const std::string & xmlFilePath);
+  bool is_valid_xml_file(const Glib::ustring & xmlFilePath);
   void lock_timeout();
 
-  std::list<std::string> m_updated_notes;
-  std::list<std::string> m_deleted_notes;
+  std::list<Glib::ustring> m_updated_notes;
+  std::list<Glib::ustring> m_deleted_notes;
 
-  std::string m_server_id;
+  Glib::ustring m_server_id;
 
-  std::string m_server_path;
-  std::string m_cache_path;
-  std::string m_lock_path;
-  std::string m_manifest_path;
+  Glib::ustring m_server_path;
+  Glib::ustring m_cache_path;
+  Glib::ustring m_lock_path;
+  Glib::ustring m_manifest_path;
 
   int m_new_revision;
-  std::string m_new_revision_path;
+  Glib::ustring m_new_revision_path;
 
   sharp::DateTime m_initial_sync_attempt;
-  std::string m_last_sync_lock_hash;
+  Glib::ustring m_last_sync_lock_hash;
   utils::InterruptableTimeout m_lock_timeout;
   SyncLockInfo m_sync_lock;
 };
