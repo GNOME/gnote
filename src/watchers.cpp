@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -27,7 +27,6 @@
 #include <string.h>
 
 #include <boost/bind.hpp>
-#include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/separatormenuitem.h>
@@ -198,8 +197,8 @@ namespace gnote {
     std::string temp_title;
 
     while (true) {
-      // TRANSLATORS: %1%: boost format placeholder for the number.
-      temp_title = str(boost::format(_("(Untitled %1%)")) % ++new_num);
+      // TRANSLATORS: %1 is the placeholder for the number.
+      temp_title = Glib::ustring::compose(_("(Untitled %1)"), ++new_num);
       if (!manager().find (temp_title)) {
         return temp_title;
       }
@@ -229,13 +228,13 @@ namespace gnote {
     get_buffer()->move_mark (get_buffer()->get_selection_bound(), get_title_start());
     get_buffer()->move_mark (get_buffer()->get_insert(), get_title_end());
 
-    // TRANSLATORS: %1%: boost format placeholder for the title.
-    std::string message = str(boost::format(
+    // TRANSLATORS: %1 is the placeholder for the title.
+    std::string message = Glib::ustring::compose(
                                 _("A note with the title "
-                                  "<b>%1%</b> already exists. "
+                                  "<b>%1</b> already exists. "
                                   "Please choose another name "
                                   "for this note before "
-                                  "continuing.")) % title);
+                                  "continuing."), title);
 
     /// Only pop open a warning dialog when one isn't already present
     /// Had to add this check because this method is being called twice.
