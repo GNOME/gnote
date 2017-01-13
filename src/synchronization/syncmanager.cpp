@@ -230,7 +230,7 @@ namespace sync {
         if(!find_note_by_uuid(iter.second.m_uuid) != 0) {
           NoteBase::Ptr existingNote = note_mgr().find(iter.second.m_title);
           if(existingNote != 0 && !iter.second.basically_equal_to(static_pointer_cast<Note>(existingNote))) {
-            DBG_OUT("Sync: Early conflict detection for '%s'", iter->second.m_title.c_str());
+            DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
             if(m_sync_ui != 0) {
               m_sync_ui->note_conflict_detected(static_pointer_cast<Note>(existingNote), iter.second, noteUpdateTitles);
             }
