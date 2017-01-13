@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,6 @@
 
 
 #include <boost/bind.hpp>
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
@@ -287,7 +286,7 @@ Glib::ustring NoteManagerBase::get_unique_name(const Glib::ustring & basename) c
   int id = 1;  // starting point
   Glib::ustring title;
   while(true) {
-    title = str(boost::format("%1% %2%") % basename % id++);
+    title = Glib::ustring::compose("%1 %2", basename, id++);
     if(!find (title)) {
       break;
     }
@@ -358,12 +357,12 @@ NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, cons
 
 Glib::ustring NoteManagerBase::get_note_template_content(const Glib::ustring & title)
 {
-  return str(boost::format("<note-content>"
-                           "<note-title>%1%</note-title>\n\n"
-                           "%2%"
-                           "</note-content>") 
-             % utils::XmlEncoder::encode(title)
-             % _("Describe your new note here."));
+  return Glib::ustring::compose("<note-content>"
+                                  "<note-title>%1</note-title>\n\n"
+                                  "%2"
+                                "</note-content>",
+             utils::XmlEncoder::encode(title),
+             _("Describe your new note here."));
 }
 
 NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
