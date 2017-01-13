@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,8 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#include <boost/format.hpp>
 
 #include "isyncmanager.hpp"
 #include "preferences.hpp"
@@ -40,7 +38,7 @@ SyncLockInfo::SyncLockInfo()
 
 std::string SyncLockInfo::hash_string()
 {
-  return str(boost::format("%1%-%2%-%3%-%4%-%5%") % transaction_id % client_id % renew_count % duration.string() % revision);
+  return Glib::ustring::compose("%1-%2-%3-%4-%5", transaction_id, client_id, renew_count, duration.string(), revision);
 }
 
 
