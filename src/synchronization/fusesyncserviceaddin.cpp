@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@
 
 #include <fstream>
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 #include <sigc++/signal.h>
 
@@ -111,10 +110,10 @@ bool FuseSyncServiceAddin::save_configuration()
 {
   // TODO: When/how best to handle this?
   if(!is_supported()) {
-    throw GnoteSyncException(str(boost::format(_(
+    throw GnoteSyncException(Glib::ustring::compose(_(
       "This synchronization addin is not supported on your computer. "
-      "Please make sure you have FUSE and %1% correctly installed and configured"))
-      % fuse_mount_exe_name()).c_str());
+      "Please make sure you have FUSE and %1 correctly installed and configured"),
+      fuse_mount_exe_name()).c_str());
   }
 
   if(!verify_configuration()) {
@@ -291,7 +290,7 @@ void FuseSyncServiceAddin::prepare_mount_path()
     try {
       sharp::directory_create(m_mount_path);
     } catch(...) {
-      throw new std::runtime_error(str(boost::format("Couldn't create \"%1%\" directory.") % m_mount_path));
+      throw new std::runtime_error(Glib::ustring::compose("Couldn't create \"%1\" directory.", m_mount_path));
     }
   } else
     // Just in case, make sure there is no
@@ -352,7 +351,7 @@ bool FuseSyncServiceAddin::is_mounted()
   // TODO: Review this methodology...is it really the exe name, for example?
   for(std::list<std::string>::iterator iter = outputLines.begin(); iter != outputLines.end(); ++iter) {
     if((iter->find(fuse_mount_exe_name()) == 0 || iter->find(" type fuse." + fuse_mount_exe_name()) != std::string::npos)
-       && iter->find(str(boost::format("on %1% ") % m_mount_path)) != std::string::npos) {
+       && iter->find(Glib::ustring::compose("on %1 ", m_mount_path)) != std::string::npos) {
       return true;
     }
   }
