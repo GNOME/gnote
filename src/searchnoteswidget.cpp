@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -20,7 +20,6 @@
  */
 
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/linkbutton.h>
@@ -325,8 +324,8 @@ void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer * rendere
 
   if(dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
     // Bold the "Special" Notebooks
-    crt->property_markup() = str(boost::format("<span weight=\"bold\">%1%</span>")
-                                 % notebook->get_name());
+    crt->property_markup() = Glib::ustring::compose("<span weight=\"bold\">%1</span>",
+                                 notebook->get_name());
   }
   else {
     crt->property_text() = notebook->get_name();
@@ -1098,8 +1097,8 @@ void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell,
       }
       else if(match_count > 0) {
         const char * fmt;
-        fmt = ngettext("%1% match", "%1% matches", match_count);
-        match_str = str(boost::format(fmt) % match_count);
+        fmt = ngettext("%1 match", "%1 matches", match_count);
+        match_str = Glib::ustring(fmt, match_count);
       }
     }
   }
