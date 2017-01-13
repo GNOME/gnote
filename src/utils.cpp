@@ -27,8 +27,6 @@
 #include <iostream>
 #include <algorithm>
 
-#include <boost/bind.hpp>
-
 #include <gtk/gtk.h>
 
 #include <glibmm/i18n.h>
@@ -132,7 +130,9 @@ namespace gnote {
     void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev)
     {
       menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
-      menu.popup(boost::bind(&get_menu_position, &menu, _1, _2, _3), 
+      menu.popup([&menu](int & x, int & y, bool & push_in) {
+                   get_menu_position(&menu, x, y, push_in);
+                  },
                  (ev ? ev->button : 0), 
                  (ev ? ev->time : gtk_get_current_event_time()));
       if(menu.get_attach_widget()) {
@@ -280,8 +280,9 @@ namespace gnote {
       Glib::Threads::Cond cond;
 
       mutex.lock();
-      main_context_invoke(boost::bind(
-        sigc::ptr_fun(main_context_call_func), slot, &cond, &mutex));
+      main_context_invoke([slot, &cond, &mutex]() {
+        main_context_call_func(slot, &cond, &mutex);
+      });
       cond.wait(mutex);
       mutex.unlock();
     }
