@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,8 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#include <boost/format.hpp>
 
 #include <libxml/xmlmemory.h>
 #include <libxml/xpathInternals.h>
@@ -123,9 +121,9 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
                ex.what().c_str());
 
       // TRANSLATORS: %1%: boost format placeholder for the path
-      std::string detail = str(boost::format(
-                                 _("Your note was exported to \"%1%\"."))
-                               % output_path);
+      Glib::ustring detail = Glib::ustring::compose(
+                                 _("Your note was exported to \"%1\"."),
+                                 output_path);
 
       // Let the user know the note was saved successfully
       // even though showing the note in a web browser failed.
@@ -157,9 +155,9 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
   {
     ERR_OUT(_("Could not export: %s"), error_message.c_str());
 
-    std::string msg = str(boost::format(
-                            _("Could not save the file \"%s\"")) 
-                          % output_path.c_str());
+    Glib::ustring msg = Glib::ustring::compose(
+                            _("Could not save the file \"%1\""),
+                            output_path.c_str());
 
     gnote::utils::HIGMessageDialog msg_dialog(&dialog, 
                                               GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -239,8 +237,7 @@ void ExportToHtmlNoteAddin::write_html_for_note (sharp::StreamWriter & writer,
   if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
     std::string font_face = settings->get_string(Preferences::CUSTOM_FONT_FACE);
     Pango::FontDescription font_desc (font_face);
-    std::string font = str(boost::format("font-family:'%1%';")
-                           % font_desc.get_family());
+    Glib::ustring font = Glib::ustring::compose("font-family:'%1';", font_desc.get_family());
 
     args.add_param ("font", "", font);
   }
