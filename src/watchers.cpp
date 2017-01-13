@@ -26,8 +26,6 @@
 
 #include <string.h>
 
-#include <boost/bind.hpp>
-
 #include <glibmm/i18n.h>
 #include <gtkmm/separatormenuitem.h>
 
@@ -920,8 +918,9 @@ namespace gnote {
              hit.key().c_str(), hit.start(), hit.end());
 
     get_note()->get_tag_table()->foreach(
-      boost::bind(sigc::mem_fun(*this, &NoteLinkWatcher::remove_link_tag),
-                  _1, title_start, title_end));
+      [this, title_start, title_end](const Glib::RefPtr<Gtk::TextTag> & tag) {
+        remove_link_tag(tag, title_start, title_end);
+    });
     get_buffer()->apply_tag (m_link_tag, title_start, title_end);
   }
 
