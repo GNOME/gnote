@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,8 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/treestore.h>
@@ -124,9 +122,9 @@ private:
       for(std::map<std::string, int>::iterator nb = notebook_stats.begin(); nb != notebook_stats.end(); ++nb) {
         Gtk::TreeIter nb_stat = append(iter->children());
         nb_stat->set_value(0, nb->first);
-        // TRANSLATORS: %1%: boost format placeholder for the number of notes.
-        char *fmt = ngettext("%1% note", "%1% notes", nb->second);
-        nb_stat->set_value(1, str(boost::format(fmt) % nb->second));
+        // TRANSLATORS: %1 is the format placeholder for the number of notes.
+        char *fmt = ngettext("%1 note", "%1 notes", nb->second);
+        nb_stat->set_value(1, Glib::ustring::compose(fmt, nb->second));
       }
 
       DBG_OUT("Statistics updated");
