@@ -25,8 +25,6 @@
 #include <config.h>
 #endif
 
-#include <boost/bind.hpp>
-
 #include <glibmm/i18n.h>
 #include <gtkmm/accelgroup.h>
 #include <gtkmm/alignment.h>
@@ -542,8 +540,9 @@ namespace gnote {
     bbox->set_child_secondary(*advancedConfigButton, true);
 
     m_reset_sync_addin_button = manage(new Gtk::Button(Gtk::Stock::CLEAR));
-    m_reset_sync_addin_button->signal_clicked().connect(
-      boost::bind(sigc::mem_fun(*this, &PreferencesDialog::on_reset_sync_addin_button), true));
+    m_reset_sync_addin_button->signal_clicked().connect([this]() {
+      on_reset_sync_addin_button(true);
+    });
     m_reset_sync_addin_button->set_sensitive(m_selected_sync_addin &&
                                         addin_id == m_selected_sync_addin->id() &&
                                         m_selected_sync_addin->is_configured());
