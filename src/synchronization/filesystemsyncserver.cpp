@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@
 #include <fstream>
 #include <stdexcept>
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
@@ -153,7 +152,7 @@ std::map<std::string, NoteUpdate> FileSystemSyncServer::get_note_updates_since(i
     xmlDocPtr xml_doc = xmlReadFile(m_manifest_path.c_str(), "UTF-8", 0);
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
 
-    std::string xpath = str(boost::format("//note[@rev > %1%]") % revision);
+    Glib::ustring xpath = Glib::ustring::compose("//note[@rev > %1]", revision);
     sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, xpath.c_str());
     DBG_OUT("get_note_updates_since xpath returned %d nodes", int(noteNodes.size()));
     for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
