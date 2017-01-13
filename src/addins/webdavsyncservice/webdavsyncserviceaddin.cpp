@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  */
 
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
@@ -260,9 +259,11 @@ void WebDavSyncServiceAddin::save_config_settings(const std::string & url, const
     //Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
     //Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
 
-    // TRANSLATORS: %1%: boost format placeholder for the error message.
-    boost::format msg(_("Saving configuration to the GNOME keyring failed with the following message:\n\n%1%"));
-    throw gnote::sync::GnoteSyncException(str(msg % ke.what()).c_str());
+    // TRANSLATORS: %1 is the format placeholder for the error message.
+    Glib::ustring msg = Glib::ustring::compose(
+      _("Saving configuration to the GNOME keyring failed with the following message:\n\n%1"),
+      ke.what());
+    throw gnote::sync::GnoteSyncException(msg.c_str());
   }
 }
 
