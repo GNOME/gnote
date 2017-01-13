@@ -27,8 +27,6 @@
 
 #include <iostream>
 
-#include <boost/bind.hpp>
-
 #include <glibmm/thread.h>
 #include <glibmm/i18n.h>
 #include <glibmm/optionentry.h>
@@ -330,7 +328,7 @@ namespace gnote {
   MainWindow & Gnote::new_main_window()
   {
     NoteRecentChanges *win = new NoteRecentChanges(default_note_manager());
-    win->signal_hide().connect(boost::bind(sigc::mem_fun(*this, &Gnote::on_main_window_closed), win));
+    win->signal_hide().connect([this, win]() { on_main_window_closed(win); });
     add_window(*win);
     return *win;
   }
