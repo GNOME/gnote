@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2016 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,18 +52,18 @@ public:
 
   virtual ~IActionManager();
 
-  virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const std::string & name) const = 0;
-  virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const std::string & name) = 0;
-  virtual void add_app_menu_item(int section, int order, const std::string & label,
-                                 const std::string & action_def) = 0;
+  virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const Glib::ustring & name) const = 0;
+  virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const Glib::ustring & name) = 0;
+  virtual void add_app_menu_item(int section, int order, const Glib::ustring & label,
+                                 const Glib::ustring & action_def) = 0;
   virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type,
     bool modifying = true) = 0;
   virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const = 0;
   virtual bool is_modifying_main_window_action(const Glib::ustring & action) const = 0;
 
-  virtual void register_main_window_search_callback(const std::string & id, const Glib::ustring & action,
+  virtual void register_main_window_search_callback(const Glib::ustring & id, const Glib::ustring & action,
                                                     sigc::slot<void, const Glib::VariantBase&> callback) = 0;
-  virtual void unregister_main_window_search_callback(const std::string & id) = 0;
+  virtual void unregister_main_window_search_callback(const Glib::ustring & id) = 0;
   virtual std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() = 0;
   sigc::signal<void> signal_main_window_search_actions_changed;
   sigc::signal<void, std::map<int, Gtk::Widget*>&> signal_build_main_window_search_popover;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2016 Aurimas Cernius
+ * Copyright (C) 2011-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -102,7 +102,7 @@ namespace gnote {
     add_app_action("quit");
   }
 
-  Glib::RefPtr<Gio::SimpleAction> ActionManager::get_app_action(const std::string & name) const
+  Glib::RefPtr<Gio::SimpleAction> ActionManager::get_app_action(const Glib::ustring & name) const
   {
     for(std::vector<Glib::RefPtr<Gio::SimpleAction> >::const_iterator iter = m_app_actions.begin();
         iter != m_app_actions.end(); ++iter) {
@@ -114,15 +114,15 @@ namespace gnote {
     return Glib::RefPtr<Gio::SimpleAction>();
   }
 
-  Glib::RefPtr<Gio::SimpleAction> ActionManager::add_app_action(const std::string & name)
+  Glib::RefPtr<Gio::SimpleAction> ActionManager::add_app_action(const Glib::ustring & name)
   {
     Glib::RefPtr<Gio::SimpleAction> action = Gio::SimpleAction::create(name);
     m_app_actions.push_back(action);
     return action;
   }
 
-  void ActionManager::add_app_menu_item(int section, int order, const std::string & label,
-                                        const std::string & action_def)
+  void ActionManager::add_app_menu_item(int section, int order, const Glib::ustring & label,
+                                        const Glib::ustring & action_def)
   {
     m_app_menu_items.insert(std::make_pair(section, AppMenuItem(order, label, action_def)));
   }
@@ -208,7 +208,7 @@ namespace gnote {
     return std::find(m_non_modifying_actions.begin(), m_non_modifying_actions.end(), action) == m_non_modifying_actions.end();
   }
 
-  void ActionManager::register_main_window_search_callback(const std::string & id, const Glib::ustring & action,
+  void ActionManager::register_main_window_search_callback(const Glib::ustring & id, const Glib::ustring & action,
                                                     sigc::slot<void, const Glib::VariantBase&> callback)
   {
     DBG_ASSERT(m_main_window_search_actions.find(id) == m_main_window_search_actions.end(), "Duplicate callback for main window search");
@@ -217,7 +217,7 @@ namespace gnote {
     signal_main_window_search_actions_changed();
   }
 
-  void ActionManager::unregister_main_window_search_callback(const std::string & id)
+  void ActionManager::unregister_main_window_search_callback(const Glib::ustring & id)
   {
     m_main_window_search_actions.erase(id);
     signal_main_window_search_actions_changed();
