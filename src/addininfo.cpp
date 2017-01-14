@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2016 Aurimas Cernius
+ * Copyright (C) 2013-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,6 @@
  */
 
 #include <stdexcept>
-
-#include <boost/lexical_cast.hpp>
 
 #include <glibmm/i18n.h>
 
@@ -167,11 +165,11 @@ bool AddinInfo::validate_compatibility(const Glib::ustring & release, const Glib
         return false;
       }
 
-      int this_ver = boost::lexical_cast<int>(parts[0]);
+      int this_ver = STRING_TO_INT(parts[0]);
       parts.clear();
       sharp::string_split(parts, version_info, ":");
-      int ver = boost::lexical_cast<int>(parts[0]);
-      int compat = boost::lexical_cast<int>(parts[2]);
+      int ver = STRING_TO_INT(parts[0]);
+      int compat = STRING_TO_INT(parts[2]);
 
       if(this_ver > ver) {
         // too new

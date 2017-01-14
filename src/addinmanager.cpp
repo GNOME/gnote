@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -21,9 +21,6 @@
 
 
 #include <config.h>
-
-#include <boost/bind.hpp>
-#include <boost/checked_delete.hpp>
 
 #include <glib.h>
 #include <glibmm/i18n.h>

@@ -22,8 +22,6 @@
 #include <config.h>
 #endif
 
-#include <boost/bind.hpp>
-
 #include <glibmm/i18n.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>

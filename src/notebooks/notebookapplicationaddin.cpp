@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -20,8 +20,6 @@
  */
 
 
-
-#include <boost/bind.hpp>
 
 #include <glibmm.h>
 #include <glibmm/i18n.h>
