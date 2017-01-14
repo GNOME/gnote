@@ -20,7 +20,6 @@
 
 #include "config.h"
 
-#include <boost/bind.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/actiongroup.h>
 #include <sigc++/sigc++.h>
@@ -286,8 +285,7 @@ namespace sync {
       // delegate to run in the main gtk thread.
       // To be consistent, any exceptions in the delgate will be caught
       // and then rethrown in the synchronization thread.
-      utils::main_context_call(boost::bind(
-        sigc::mem_fun(*this, &SyncManager::delete_notes), server));
+      utils::main_context_call([this, server]() { delete_notes(server); });
 
       // TODO: Add following updates to syncDialog treeview
 
@@ -581,8 +579,7 @@ namespace sync {
     // delegate to run in the main gtk thread.
     // To be consistent, any exceptions in the delgate will be caught
     // and then rethrown in the synchronization thread.
-    utils::main_context_call(boost::bind(
-      sigc::mem_fun(*this, &SyncManager::create_note), noteUpdate));
+    utils::main_context_call([this, noteUpdate]() { create_note(noteUpdate); });
   }
 
 
@@ -592,8 +589,7 @@ namespace sync {
     // delegate to run in the main gtk thread.
     // To be consistent, any exceptions in the delgate will be caught
     // and then rethrown in the synchronization thread.
-    utils::main_context_call(boost::bind(
-      sigc::mem_fun(*this, &SyncManager::update_note), existingNote, noteUpdate));
+    utils::main_context_call([this, existingNote, noteUpdate]() { update_note(existingNote, noteUpdate); });
   }
 
 
@@ -603,8 +599,7 @@ namespace sync {
     // delegate to run in the main gtk thread.
     // To be consistent, any exceptions in the delgate will be caught
     // and then rethrown in the synchronization thread.
-    utils::main_context_call(boost::bind(
-      sigc::mem_fun(*this, &SyncManager::delete_note), existingNote));
+    utils::main_context_call([this, existingNote]() { delete_note(existingNote); });
   }
 
 
