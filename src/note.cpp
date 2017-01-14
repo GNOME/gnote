@@ -24,9 +24,6 @@
 #include <config.h>
 #endif
 
-#include <boost/bind.hpp>
-#include <boost/algorithm/string/find.hpp>
-
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
 #include <gtkmm/stock.h>
@@ -562,8 +559,9 @@ namespace gnote {
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
         NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, self);
-        dlg->signal_response().connect(
-          boost::bind(sigc::mem_fun(*this, &Note::process_rename_link_update_end), _1, dlg, old_title, self));
+        dlg->signal_response().connect([this, dlg, old_title, self](int response) {
+          process_rename_link_update_end(response, dlg, old_title, self);
+        });
         dlg->present();
         get_window()->editor()->set_editable(false);
       }
@@ -784,9 +782,9 @@ namespace gnote {
 
   bool Note::is_pinned() const
   {
-    std::string pinned_uris = Preferences::obj()
+    Glib::ustring pinned_uris = Preferences::obj()
       .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(Preferences::MENU_PINNED_NOTES);
-    return (boost::find_first(pinned_uris, uri()));
+    return pinned_uris.find(uri()) != Glib::ustring::npos;
   }
 
 
@@ -794,8 +792,8 @@ namespace gnote {
   {
     std::string new_pinned;
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
-    std::string old_pinned = settings->get_string(Preferences::MENU_PINNED_NOTES);
-    bool is_currently_pinned = (boost::find_first(old_pinned, uri()));
+    Glib::ustring old_pinned = settings->get_string(Preferences::MENU_PINNED_NOTES);
+    bool is_currently_pinned = old_pinned.find(uri()) != Glib::ustring::npos;
 
     if (pinned == is_currently_pinned)
       return;
