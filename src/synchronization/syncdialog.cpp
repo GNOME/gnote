@@ -20,7 +20,6 @@
 
 #include "debug.hpp"
 
-#include <boost/bind.hpp>
 #include <glibmm/i18n.h>
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/scrolledwindow.h>
@@ -470,8 +469,7 @@ void SyncDialog::add_update_item(const std::string & title, std::string & status
 void SyncDialog::sync_state_changed(SyncState state)
 {
   // This event handler will be called by the synchronization thread
-  utils::main_context_invoke(boost::bind(
-    sigc::mem_fun(*this, &SyncDialog::sync_state_changed_), state));
+  utils::main_context_invoke([this, state]() { sync_state_changed_(state); });
 }
 
 
@@ -605,15 +603,13 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
   // so we have to use the delegate here to manipulate the GUI.
   // To be consistent, any exceptions in the delgate will be caught
   // and then rethrown in the synchronization thread.
-  utils::main_context_call(boost::bind(
-    sigc::mem_fun(*this, &SyncDialog::note_conflict_detected_),
-    localConflictNote,
-    remoteNote,
-    noteUpdateTitles,
-    static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
-    OVERWRITE_EXISTING,
-    &mainThreadException
-  ));
+  utils::main_context_call(
+    [this, localConflictNote, remoteNote, noteUpdateTitles, dlgBehaviorPref, &mainThreadException]() {
+      note_conflict_detected_(localConflictNote, remoteNote, noteUpdateTitles,
+                              static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
+                              OVERWRITE_EXISTING, &mainThreadException
+      );
+    });
 
   if(mainThreadException) {
     std::exception e(*mainThreadException);
