@@ -19,7 +19,6 @@
  */
 
 
-#include <boost/bind.hpp>
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
@@ -159,7 +158,7 @@ TrieController *NoteManagerBase::create_trie_controller()
 
 void NoteManagerBase::post_load()
 {
-  m_notes.sort(boost::bind(&compare_dates, _1, _2));
+  m_notes.sort(compare_dates);
 
   // Update the trie so addins can access it, if they want.
   m_trie_controller->update ();
@@ -201,13 +200,13 @@ void NoteManagerBase::add_note(const NoteBase::Ptr & note)
 void NoteManagerBase::on_note_rename(const NoteBase::Ptr & note, const Glib::ustring & old_title)
 {
   signal_note_renamed(note, old_title);
-  m_notes.sort(boost::bind(&compare_dates, _1, _2));
+  m_notes.sort(compare_dates);
 }
 
 void NoteManagerBase::on_note_save (const NoteBase::Ptr & note)
 {
   signal_note_saved(note);
-  m_notes.sort(boost::bind(&compare_dates, _1, _2));
+  m_notes.sort(compare_dates);
 }
 
 NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
