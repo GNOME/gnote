@@ -1,20 +1,19 @@
 # Brazilian Portuguese translation for gnote.
-# Copyright (C) 2016 gnote's COPYRIGHT HOLDER
+# Copyright (C) 2017 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009.
 # Taylon Silmer <taylonsilva@gmail.com>, 2009.
 # Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012.
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013, 2014.
-# Rafael Fontenelle <rffontenelle@gmail.com>, 2013, 2015, 2016.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2016.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&k"
 "eywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2016-09-17 04:41+0000\n"
-"PO-Revision-Date: 2016-10-04 19:17-0200\n"
+"POT-Creation-Date: 2017-01-13 20:54+0000\n"
+"PO-Revision-Date: 2017-01-16 22:23-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -22,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
@@ -45,13 +44,11 @@ msgstr ""
 "múltiplos dispositivos."
 
 #: ../data/ui/shortcuts-gnote.ui.h:1
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Nova janela"
 
 #: ../data/ui/shortcuts-gnote.ui.h:2
-#| msgid "General"
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Geral"
@@ -77,49 +74,41 @@ msgid "Hide search bar"
 msgstr "Ocultar barra de pesquisa"
 
 #: ../data/ui/shortcuts-gnote.ui.h:7
-#| msgid "Close this window"
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Fechar janela"
 
 #: ../data/ui/shortcuts-gnote.ui.h:8
-#| msgid "Note Title"
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Listar de notas"
 
 #: ../data/ui/shortcuts-gnote.ui.h:9
-#| msgid "Create _new note"
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Criar nova nota"
 
 #: ../data/ui/shortcuts-gnote.ui.h:10
-#| msgid "Open the selected note"
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Abrir nota selecionada"
 
 #: ../data/ui/shortcuts-gnote.ui.h:11
-#| msgid "Open notes in new window"
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Abrir notas selecionadas em nova janela"
 
 #: ../data/ui/shortcuts-gnote.ui.h:12
-#| msgid "Delete the selected note"
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Excluir nota selecionada"
 
 #: ../data/ui/shortcuts-gnote.ui.h:13
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Nova janela"
 
 #: ../data/ui/shortcuts-gnote.ui.h:14
-#| msgid "_Edit"
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Edição"
@@ -135,13 +124,11 @@ msgid "Redo last edit"
 msgstr "Refazer a última edição"
 
 #: ../data/ui/shortcuts-gnote.ui.h:17
-#| msgid "Delete the selected note"
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Criar link para nota no texto selecionado"
 
 #: ../data/ui/shortcuts-gnote.ui.h:18
-#| msgid "Formatting"
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatação"
@@ -162,31 +149,26 @@ msgid "Toggle strikethrough"
 msgstr "Ativar taxado"
 
 #: ../data/ui/shortcuts-gnote.ui.h:22
-#| msgid "_Highlight"
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Ativar realce"
 
 #: ../data/ui/shortcuts-gnote.ui.h:23
-#| msgid "Fixed Width"
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Ativar largura fixa"
 
 #: ../data/ui/shortcuts-gnote.ui.h:24
-#| msgid "Underline"
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Ativar sublinhado"
 
 #: ../data/ui/shortcuts-gnote.ui.h:25
-#| msgid "Increase Font Size"
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Aumentar tamanho da fonte"
 
 #: ../data/ui/shortcuts-gnote.ui.h:26
-#| msgid "Decrease Font Size"
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Diminuir tamanho da fonte"
@@ -201,8 +183,8 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Diminuir recuo/desabilitar marcador para linha atual"
 
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:536
+#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
+#: ../src/recentchanges.cpp:537
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -284,7 +266,7 @@ msgid ""
 "paste timestamped content into the Start Here note."
 msgstr ""
 "Habilite esta opção se você quiser clicar com o botão do meio no ícone do "
-"Gnote para colar conteúdo com marca de tempo na nota \"Comece aqui\"."
+"Gnote para colar conteúdo com marca de tempo na nota “Comece aqui”."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:13
 msgid "Enable custom font"
@@ -327,7 +309,7 @@ msgstr ""
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:19
 msgid "Start Here Note"
-msgstr "Nota \"Comece aqui\""
+msgstr "Nota “Comece aqui”"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:20
 msgid ""
@@ -335,7 +317,7 @@ msgid ""
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
 msgstr ""
-"O URI da nota que deve ser considerada a nota \"Comece aqui\", que é sempre "
+"O URI da nota que deve ser considerada a nota “Comece aqui”, que é sempre "
 "colocada no topo do menu de notas do Gnote e também é acessível via tecla de "
 "atalho."
 
@@ -373,22 +355,22 @@ msgstr "Se verdadeiro, a janela do Gnote será maximizada."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:27
 msgid "Saved height of Search window"
-msgstr "Altura salva da janela \"Pesquisar\""
+msgstr "Altura salva da janela “Pesquisar”"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:28
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
-"Determina a altura em pixel da janela \"Pesquisar\"; armazenada na saída do "
+"Determina a altura em pixel da janela “Pesquisar”; armazenada na saída do "
 "Gnote."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:29
 msgid "Saved width of Search window"
-msgstr "Largura salva da janela \"Pesquisar\""
+msgstr "Largura salva da janela “Pesquisar”"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:30
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
-"Determina a largura em pixel da janela \"Pesquisar\"; armazenada na saída do "
+"Determina a largura em pixel da janela “Pesquisar”; armazenada na saída do "
 "Gnote."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:31
@@ -404,11 +386,11 @@ msgstr ""
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:33
 msgid "Saved sorting of the Search window."
-msgstr "Ordenação salva da janela \"Pesquisar\"."
+msgstr "Ordenação salva da janela “Pesquisar”."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:34
 msgid "Determines Search window initial sorting."
-msgstr "Determina a ordenação inicial da janela \"Pesquisar\"."
+msgstr "Determina a ordenação inicial da janela “Pesquisar”."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:35
 msgid "FUSE Mounting Timeout (ms)"
@@ -534,8 +516,8 @@ msgid ""
 "Gnote should draw decorations itself. Requires application restart."
 msgstr ""
 "Deve Gnote desenhar sua barra de título da janela, ou deixar isso para o "
-"gerenciador de janelas. Valores possíveis são 'ativados' para desenhá-las, "
-"'Desativado' para deixá-las para o Gerenciador de janelas, ou uma vírgula "
+"gerenciador de janelas. Valores possíveis são “ativados” para desenhá-las, "
+"“Desativado” para deixá-las para o Gerenciador de janelas, ou uma vírgula "
 "separados a lista de ambientes de desktop, onde Gnote deve desenhar "
 "decorações em si. Requer a reinicialização do aplicativo."
 
@@ -545,7 +527,7 @@ msgstr "Mostrar menu do miniaplicativo"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid "Open Start Here"
-msgstr "Abrir \"Comece aqui\""
+msgstr "Abrir “Comece aqui”"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Create a new Note"
@@ -579,7 +561,7 @@ msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr ""
-"O último estado da caixa de seleção \"Exportar notas vinculadas\" no plug-in "
+"O último estado da caixa de seleção “Exportar notas vinculadas” no plug-in "
 "de exportação para HTML."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:66
@@ -593,10 +575,10 @@ msgid ""
 "Export Linked Notes' setting and is used to specify whether all notes (found "
 "recursively) should be included during an export to HTML."
 msgstr ""
-"O último estado da caixa de seleção \"Incluir todas as notas vinculadas\" do "
+"O último estado da caixa de seleção “Incluir todas as notas vinculadas” do "
 "plug-in de exportação para HTML. Essa configuração é usada em conjunto com a "
-"opção \"Exportar para HTML as notas vinculadas\" e é usada para especificar "
-"se todas as notas (localizadas recursivamente) devem ser incluídas durante a "
+"opção “Exportar para HTML as notas vinculadas” e é usada para especificar se "
+"todas as notas (localizadas recursivamente) devem ser incluídas durante a "
 "exportação para HTML."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:68
@@ -678,7 +660,7 @@ msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr ""
-"Usa a opção wdfs \"-ac\" para aceitar certificados SSL sem perguntar ao "
+"Usa a opção wdfs “-ac” para aceitar certificados SSL sem perguntar ao "
 "usuário."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:80
@@ -733,12 +715,12 @@ msgid "_Preferences"
 msgstr "_Preferências"
 
 #: ../src/actionmanager.cpp:135
-msgid "_Help"
-msgstr "Aj_uda"
-
-#: ../src/actionmanager.cpp:136
 msgid "_Shortcuts"
 msgstr "_Atalhos"
+
+#: ../src/actionmanager.cpp:136
+msgid "_Help"
+msgstr "Aj_uda"
 
 #: ../src/actionmanager.cpp:137
 msgid "_About"
@@ -810,17 +792,17 @@ msgstr ""
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere e o Projeto Tomboy"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:76
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:77
 msgid "What links here?"
 msgstr "Quais links apontam para cá?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:101
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:99
 msgid "(none)"
 msgstr "(nenhum)"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:109
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
-#: ../src/notebooks/notebooknoteaddin.cpp:179
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:104
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:157
+#: ../src/notebooks/notebooknoteaddin.cpp:168
 msgid "_Back"
 msgstr "_Voltar"
 
@@ -864,7 +846,7 @@ msgstr "Ícone"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:229
 msgid "Select an icon..."
-msgstr "Selecione um ícone..."
+msgstr "Selecione um ícone…"
 
 #. Extra Widget
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:244
@@ -936,7 +918,7 @@ msgid "Failed to call GTG: %s"
 msgstr "Ocorreu falha ao chamar o GTG: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:83
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
 msgid "Export to HTML"
 msgstr "Exportar para HTML"
 
@@ -956,29 +938,28 @@ msgstr "Exportar notas vinculadas"
 msgid "Include all other linked notes"
 msgstr "Incluir todas as notas vinculadas"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:122
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Não foi possível abrir nota exportada em um navegador web: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:126
-msgid "Your note was exported to \"%1%\"."
-msgstr "Sua nota foi exportada para \"%1%\"."
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:125
+msgid "Your note was exported to \"%1\"."
+msgstr "Sua nota foi exportada para “%1”."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:135
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:134
 msgid "Note exported successfully"
 msgstr "Nota exportada com sucesso"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:149
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:157
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:148
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:156
 #, c-format
 msgid "Could not export: %s"
 msgstr "Não foi possível exportar: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
-#, c-format
-msgid "Could not save the file \"%s\""
-msgstr "Não foi possível salvar o arquivo \"%s\""
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+msgid "Could not save the file \"%1\""
+msgstr "Não foi possível salvar o arquivo “%1”"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
 msgid "_Folder Path:"
@@ -986,7 +967,7 @@ msgstr "_Caminho da pasta:"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:109
 msgid "Select Synchronization Folder..."
-msgstr "Selecione a pasta de sincronização..."
+msgstr "Selecione a pasta de sincronização…"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
 msgid "Folder path field is empty."
@@ -1135,8 +1116,8 @@ msgstr "Nota do dia"
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
-"Cria automaticamente uma nota de \"Hoje\" para anotar facilmente as "
-"reflexões diárias"
+"Cria automaticamente uma nota de “Hoje” para anotar facilmente as reflexões "
+"diárias"
 
 #: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:3
 msgid "Debarshi Ray and the Tomboy Project"
@@ -1162,18 +1143,18 @@ msgstr "Suporte a impressão"
 msgid "Allows you to print a note."
 msgstr "Permite que você imprima uma nota."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:65
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
 msgid "Print"
 msgstr "Imprimir"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:113
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
 msgstr "Erro ao imprimir a nota"
 
-#. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:280
-msgid "Page %1% of %2%"
-msgstr "Página %1% de %2%"
+#. %1 is the page number, %2 is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:278
+msgid "Page %1 of %2"
+msgstr "Página %1 de %2"
 
 #: ../src/addins/readonly/readonly.desktop.in.in.h:1
 #: ../src/addins/readonly/readonlynoteaddin.cpp:69
@@ -1215,7 +1196,7 @@ msgid "Show Statistics"
 msgstr "Mostrar estatísticas"
 
 #: ../src/addins/statistics/statistics.desktop.in.in.h:1
-#: ../src/addins/statistics/statisticswidget.cpp:171
+#: ../src/addins/statistics/statisticswidget.cpp:170
 msgid "Statistics"
 msgstr "Estatísticas"
 
@@ -1223,19 +1204,20 @@ msgstr "Estatísticas"
 msgid "Show various statistics about notes."
 msgstr "Mostra várias estatísticas sobre as notas."
 
-#: ../src/addins/statistics/statisticswidget.cpp:91
+#: ../src/addins/statistics/statisticswidget.cpp:89
 msgid "Total Notes:"
 msgstr "Total de notas:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:97
+#: ../src/addins/statistics/statisticswidget.cpp:95
 msgid "Total Notebooks:"
 msgstr "Total de catálogo de notas:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:127
-msgid "%1% note"
-msgid_plural "%1% notes"
-msgstr[0] "%1% nota"
-msgstr[1] "%1% notas"
+#. TRANSLATORS: %1 is the format placeholder for the number of notes.
+#: ../src/addins/statistics/statisticswidget.cpp:126
+msgid "%1 note"
+msgid_plural "%1 notes"
+msgstr[0] "%1 nota"
+msgstr[1] "%1 notas"
 
 #: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:1
 msgid "Sticky Notes Importer"
@@ -1245,39 +1227,39 @@ msgstr "Importador de notas do Sticky"
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Importa suas notas do miniaplicativo de notas Sticky."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:87
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:85
 msgid "Import from Sticky Notes"
 msgstr "Importar do miniaplicativo notas Sticky"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:214
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:212
 msgid "No Sticky Notes found"
 msgstr "Nenhuma nota do Sticky foi localizada"
 
-#. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
-msgid "No suitable Sticky Notes file was found at \"%1%\"."
-msgstr "Nenhum arquivo de notas adequado foi localizado em \"%1%\"."
+#. %1 is a the file name
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:214
+msgid "No suitable Sticky Notes file was found at \"%1\"."
+msgstr "Nenhum arquivo de notas adequado foi localizado em “%1”."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:224
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:222
 msgid "Sticky Notes import completed"
 msgstr "Importação de notas do Sticky concluída"
 
-#. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:226
-msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
-msgstr "<b>%1%</b> de <b>%2%</b> notas do Sticky foram importadas com sucesso."
+#. here %1 is the number of notes imported, %2 the total number of notes.
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:224
+msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
+msgstr "<b>%1</b> de <b>%2</b> notas do Sticky foram importadas com sucesso."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:245
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
 msgid "Untitled"
 msgstr "Sem título"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:283
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:281
 msgid "Sticky Note: "
 msgstr "Nota do Sticky: "
 
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:67
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:129
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:68
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:130
 msgid "Table of Contents"
 msgstr "Sumário"
 
@@ -1297,23 +1279,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:148
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:215
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:145
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:210
 msgid "Heading 1"
 msgstr "Título 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:152
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:221
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:149
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:216
 msgid "Heading 2"
 msgstr "Título 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:156
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:227
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:153
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:222
 msgid "Table of Contents Help"
 msgstr "Ajuda do sumário"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:200
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:195
 msgid "(empty table of contents)"
 msgstr "(sumário vazio)"
 
@@ -1358,23 +1340,23 @@ msgstr "Hubert Figuiere e o projeto Tomboy"
 msgid "_Underline"
 msgstr "S_ublinhado"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:69
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:74
 msgid "User_name:"
 msgstr "_Nome de usuário:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:80
 msgid "_Password:"
 msgstr "_Senha:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:104
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:116
 msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
@@ -1382,26 +1364,21 @@ msgstr ""
 "Houve um erro ao conectar ao servidor. Isso pode ser causado pelo uso "
 "incorreto de nome de usuário e/ou senha."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:173
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:172
 msgid "URL, username, or password field is empty."
 msgstr "Campo de URL, nome de usuário ou senha está vazio."
 
-#. TODO: If the above fails (no keyring daemon), save all but password
-#. to GConf, and notify user.
-#. Save configuration into GConf
-#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
-#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:262
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:264
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
 "\n"
-"%1%"
+"%1"
 msgstr ""
-"Falha ao salvar a configuração do chaveiro do GNOME com a seguinte "
-"mensagem:\n"
+"Falha ao salvar a configuração do chaveiro do GNOME com a seguinte mensagem:"
 "\n"
-"%1%"
+"\n"
+"%1"
 
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:1
 msgid "WebDAV Sync Service Plugin"
@@ -1421,28 +1398,28 @@ msgstr "Chamada remota a %s falhou"
 msgid "Exception thrown when creating note: %s"
 msgstr "Exceção lançada ao criar a nota: %s"
 
-#: ../src/gnote.cpp:182
+#: ../src/gnote.cpp:181
 msgid "Gnote is already running.  Exiting..."
-msgstr "Gnote já está em execução. Saindo..."
+msgstr "Gnote já está em execução. Saindo…"
 
-#: ../src/gnote.cpp:274
+#: ../src/gnote.cpp:273
 msgid "Failed to get shortcuts window!"
 msgstr "Falha ao obter janela de atalhos!"
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:287
 msgid "and Tomboy original authors."
 msgstr "e os autores originais do Tomboy."
 
-#: ../src/gnote.cpp:294
+#: ../src/gnote.cpp:293
 msgid "translator-credits"
 msgstr ""
 "Marco de Freitas <marcodefreitas@gmail.com>, 2009\n"
 "Taylon Silmer <taylonsilva@gmail.com>, 2009\n"
 "Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012\n"
 "Júnior Pires <juniorpiresupe@gmail.com>, 2013.\n"
-"Rafael Fontenelle <rafaelff@gnome.org>, 2013-2016."
+"Rafael Fontenelle <rafaelff@gnome.org>, 2013-2017."
 
-#: ../src/gnote.cpp:303
+#: ../src/gnote.cpp:302
 msgid ""
 "Copyright © 2010-2016 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1454,81 +1431,82 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 autores originais do Tomboy."
 
-#: ../src/gnote.cpp:307
+#: ../src/gnote.cpp:306
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Um aplicativo simples e fácil de usar para tomar notas."
 
-#: ../src/gnote.cpp:318
+#: ../src/gnote.cpp:317
 msgid "Homepage"
 msgstr "Página do projeto"
 
-#: ../src/gnote.cpp:529
+#: ../src/gnote.cpp:528
 msgid "Run Gnote in background."
 msgstr "Executar o Gnote em segundo plano."
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:529
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Executa o Gnote como provedor de pesquisa do GNOME Shell."
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:530
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especifica o caminho do diretório que contém as notas."
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:530
 msgid "path"
 msgstr "caminho"
 
-#: ../src/gnote.cpp:532
+#: ../src/gnote.cpp:531
 msgid "Open the search all notes window with the search text."
-msgstr "Abre a janela \"pesquisar em todas as notas\" com o texto de pesquisa."
+msgstr "Abre a janela “pesquisar em todas as notas” com o texto de pesquisa."
 
-#: ../src/gnote.cpp:532 ../src/gnote.cpp:537
+#: ../src/gnote.cpp:531 ../src/gnote.cpp:536
 msgid "text"
 msgstr "texto"
 
-#: ../src/gnote.cpp:533
+#: ../src/gnote.cpp:532
 msgid "Print version information."
 msgstr "Imprime informações da versão."
 
-#: ../src/gnote.cpp:534
+#: ../src/gnote.cpp:533
 msgid "Create and display a new note, with a optional title."
 msgstr "Cria e exibe uma nova nota, com um título opcional."
 
-#: ../src/gnote.cpp:534
+#: ../src/gnote.cpp:533
 msgid "title"
 msgstr "título"
 
-#: ../src/gnote.cpp:535
+#: ../src/gnote.cpp:534
 msgid "Display the existing note matching title."
 msgstr "Exibe a nota correspondente ao título."
 
-#: ../src/gnote.cpp:535
+#: ../src/gnote.cpp:534
 msgid "title/url"
 msgstr "título/url"
 
-#: ../src/gnote.cpp:536
+#: ../src/gnote.cpp:535
 msgid "Display the 'Start Here' note."
-msgstr "Exibe a nota \"Comece aqui\"."
+msgstr "Exibe a nota “Comece aqui”."
 
-#: ../src/gnote.cpp:537
+#: ../src/gnote.cpp:536
 msgid "Search and highlight text in the opened note."
 msgstr "Pesquisa e destaca o texto na nota aberta."
 
-#: ../src/gnote.cpp:541
+#: ../src/gnote.cpp:540
 msgid "A note taking application"
 msgstr "Um aplicativo para tomar notas"
 
-#: ../src/gnote.cpp:541
+#: ../src/gnote.cpp:540
 msgid "Gnote options at launch"
 msgstr "Opções do Gnote na inicialização"
 
-#: ../src/gnote.cpp:618
+#: ../src/gnote.cpp:617
 msgid "Could not connect to remote instance."
 msgstr "Não foi possível conectar à instância remota."
 
+#. TRANSLATORS: %1%: boost format placeholder for the version string.
 #: ../src/gnote.cpp:734
-msgid "Version %1%"
-msgstr "Versão %1%"
+msgid "Version %1"
+msgstr "Versão %1"
 
 #. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
 #: ../src/iconmanager.cpp:66
@@ -1536,63 +1514,63 @@ msgstr "Versão %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Falha ao carregar o ícone (%s,%d): %s"
 
-#: ../src/noteaddin.cpp:132 ../src/noteaddin.cpp:146 ../src/noteaddin.cpp:158
+#: ../src/noteaddin.cpp:131 ../src/noteaddin.cpp:145 ../src/noteaddin.cpp:157
 msgid "Plugin is disposing already"
 msgstr "O plug-in já foi descartado"
 
-#: ../src/noteaddin.cpp:162
+#: ../src/noteaddin.cpp:161
 msgid "Window is not embedded"
 msgstr "A janela não está embutida"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:200 ../src/note.cpp:382
+#: ../src/notebase.cpp:199 ../src/note.cpp:381
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Exceção ao salvar a nota: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:444
+#: ../src/notebase.cpp:443
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falha ao atualizar o formato da nota: %s"
 
-#: ../src/notebase.cpp:568
+#: ../src/notebase.cpp:567
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Erro de sistema de arquivos: %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:41
+#: ../src/notebooks/createnotebookdialog.cpp:39
 msgid "Create Notebook"
 msgstr "Criar catálogo de notas"
 
-#: ../src/notebooks/createnotebookdialog.cpp:45
+#: ../src/notebooks/createnotebookdialog.cpp:43
 msgid "N_otebook name:"
 msgstr "Nome do ca_tálogo de notas:"
 
-#: ../src/notebooks/createnotebookdialog.cpp:58
+#: ../src/notebooks/createnotebookdialog.cpp:56
 msgid "Name already taken"
 msgstr "Este nome já existe"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:71
+#: ../src/notebooks/createnotebookdialog.cpp:69
 msgid "C_reate"
 msgstr "C_riar"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:81
 msgid "New Note_book..."
-msgstr "Novo ca_tálogo de notas..."
+msgstr "Novo ca_tálogo de notas…"
 
 #. The templateNoteTite should show the name of the
 #. notebook.  For example, if the name of the notebooks
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
-#. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:109
-msgid "%1% Notebook Template"
-msgstr "Modelo do catálogo de notas %1%"
+#. name of the notebook accordingly using "%1".
+#: ../src/notebooks/notebook.cpp:108
+msgid "%1 Notebook Template"
+msgstr "Modelo do catálogo de notas %1"
 
-#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:308
+#: ../src/notebooks/notebook.cpp:184 ../src/notemanagerbase.cpp:307
 msgid "New Note"
 msgstr "Nova nota"
 
@@ -1609,22 +1587,23 @@ msgstr ""
 "serão mais associadas a ele. Esta ação não pode ser desfeita."
 
 #: ../src/notebooks/notebookmenuitem.cpp:34
-#: ../src/notebooks/notebooknoteaddin.cpp:160
+#: ../src/notebooks/notebooknoteaddin.cpp:153
 msgid "No notebook"
 msgstr "Nenhum catálogo de notas"
 
+#. TRANSLATORS: %1%: boost format placeholder for the notebook name
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:40
-msgid "New \"%1%\" Note"
-msgstr "Nova nota de \"%1%\""
+msgid "New \"%1\" Note"
+msgstr "Nova nota de “%1”"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:109
+#: ../src/notebooks/notebooknoteaddin.cpp:110
 msgid "Notebook"
 msgstr "Catálogo de notas"
 
 #. Add new notebook item
-#: ../src/notebooks/notebooknoteaddin.cpp:151
+#: ../src/notebooks/notebooknoteaddin.cpp:147
 msgid "_New notebook..."
-msgstr "_Novo catálogo de notas..."
+msgstr "_Novo catálogo de notas…"
 
 #: ../src/notebooks/specialnotebooks.cpp:46
 msgid "All"
@@ -1646,32 +1625,32 @@ msgstr "Ativa"
 msgid "</list> tag mismatch"
 msgstr "Tag </list> incompatível"
 
-#: ../src/notebuffer.cpp:1616
+#: ../src/notebuffer.cpp:1618
 #, c-format
 msgid "Exception: %s"
 msgstr "Exceção: %s"
 
-#. TRANSLATORS: %1% will be replaced by note title
-#: ../src/note.cpp:59
-msgid "Really delete \"%1%\"?"
-msgstr "Deseja realmente excluir \"%1%\"?"
+#. TRANSLATORS: %1 will be replaced by note title
+#: ../src/note.cpp:58
+msgid "Really delete \"%1\"?"
+msgstr "Deseja realmente excluir “%1”?"
 
-#. TRANSLATORS: %1% is number of notes
-#: ../src/note.cpp:63
-msgid "Really delete %1% note?"
-msgid_plural "Really delete %1% notes?"
-msgstr[0] "Deseja realmente excluir %1% nota?"
-msgstr[1] "Deseja realmente excluir %1% notas?"
+#. TRANSLATORS: %1 is number of notes
+#: ../src/note.cpp:62
+msgid "Really delete %1 note?"
+msgid_plural "Really delete %1 notes?"
+msgstr[0] "Deseja realmente excluir %1 nota?"
+msgstr[1] "Deseja realmente excluir %1 notas?"
 
-#: ../src/note.cpp:70
+#: ../src/note.cpp:69
 msgid "If you delete a note it is permanently lost."
 msgstr "Se você excluir uma nota ela estará permanentemente perdida."
 
-#: ../src/note.cpp:106
+#: ../src/note.cpp:105
 msgid "Error saving note data."
 msgstr "Erro ao salvar os dados da nota."
 
-#: ../src/note.cpp:107
+#: ../src/note.cpp:106
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1681,20 +1660,20 @@ msgstr ""
 "espaço em disco suficiente e que tenha permissões sobre ~/.local/share/"
 "gnote. Detalhes do erro podem ser localizados em ~/.gnote.log."
 
-#: ../src/note.cpp:474
+#: ../src/note.cpp:473
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Erro ao salvar: %s"
 
-#: ../src/note.cpp:699
+#: ../src/note.cpp:698
 msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
-#: ../src/notemanagerbase.cpp:108 ../src/preferencesdialog.cpp:320
+#: ../src/notemanagerbase.cpp:107 ../src/preferencesdialog.cpp:319
 msgid "New Note Template"
 msgstr "Novo modelo de nota"
 
-#: ../src/notemanagerbase.cpp:366
+#: ../src/notemanagerbase.cpp:365
 msgid "Describe your new note here."
 msgstr "Descreva sua nova nota aqui."
 
@@ -1724,11 +1703,11 @@ msgstr ""
 "\n"
 "<bold>Bem-vindo ao Gnote!</bold>\n"
 "\n"
-"Use essa nota \"Comece aqui\" para começar a organizar suas ideias e "
+"Use essa nota “Comece aqui” para começar a organizar suas ideias e "
 "pensamentos.\n"
 "\n"
 "Você pode criar novas notas para armazenar suas ideias ao selecionar o item "
-"\"Criar uma nova nota\" no menu do Gnote  no painel do seu GNOME. Sua nota "
+"“Criar uma nova nota” no menu do Gnote  no painel do seu GNOME. Sua nota "
 "será salva automaticamente.\n"
 "\n"
 "Em seguida, organize as notas criadas ao associar ideias relacionadas!\n"
@@ -1784,7 +1763,7 @@ msgstr "Erro ao criar as notas iniciais: %s"
 #: ../src/notemanager.cpp:196
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
-msgstr "Erro na análise do XML da nota, ignorando \"%s\": %s"
+msgstr "Erro na análise do XML da nota, ignorando “%s”: %s"
 
 #: ../src/noterenamedialog.cpp:123
 msgid "Rename Note Links?"
@@ -1825,8 +1804,8 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"﻿Renomear os links em outras notas de \"<span underline=\"single\">%1</span>"
-"\" para \"<span underline=\"single\">%2</span>\"?\n"
+"﻿Renomear os links em outras notas de “<span underline=\"single\">%1</span>"
+"” para “<span underline=\"single\">%2</span>”?\n"
 "\n"
 "Se você não renomear os links, eles apontarão para nada."
 
@@ -1834,7 +1813,7 @@ msgstr ""
 msgid "Rename Links"
 msgstr "Renomear links"
 
-#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:332
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:331
 msgid "Note Title"
 msgstr "Título da nota"
 
@@ -1846,8 +1825,8 @@ msgstr "Ava_nçado"
 msgid "Is Important"
 msgstr "É importante"
 
-#: ../src/notewindow.cpp:326 ../src/searchnoteswidget.cpp:145
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/notewindow.cpp:326 ../src/searchnoteswidget.cpp:144
+#: ../src/searchnoteswidget.cpp:147
 msgid "_Delete"
 msgstr "E_xcluir"
 
@@ -1883,102 +1862,102 @@ msgstr "Salvar se_leção"
 msgid "Save _Title"
 msgstr "Salvar _título"
 
-#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1075
+#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1072
 msgid "Cannot create note"
 msgstr "Não foi possível criar a nota"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:825
 msgid "_Undo"
 msgstr "_Desfazer"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:828
 msgid "_Redo"
 msgstr "_Refazer"
 
-#: ../src/notewindow.cpp:841
+#: ../src/notewindow.cpp:837
 msgid "_Link"
 msgstr "_Link"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:839
 msgid "_Bold"
 msgstr "_Negrito"
 
-#: ../src/notewindow.cpp:844
+#: ../src/notewindow.cpp:840
 msgid "_Italic"
 msgstr "_Itálico"
 
-#: ../src/notewindow.cpp:845
+#: ../src/notewindow.cpp:841
 msgid "_Strikeout"
 msgstr "Ri_scado"
 
-#: ../src/notewindow.cpp:849
+#: ../src/notewindow.cpp:845
 msgid "_Highlight"
 msgstr "_Destacar"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:848
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:849
 msgid "S_mall"
 msgstr "_Pequeno"
 
-#: ../src/notewindow.cpp:854
+#: ../src/notewindow.cpp:850
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:855
+#: ../src/notewindow.cpp:851
 msgid "Hu_ge"
 msgstr "Enor_me"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:876
 msgid "⦁ Bullets"
 msgstr "⦁ Marcadores"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:878
 msgid "→ Increase indent"
 msgstr "→ Aumentar recuo"
 
-#: ../src/notewindow.cpp:882
+#: ../src/notewindow.cpp:880
 msgid "← Decrease indent"
 msgstr "← Diminuir recuo"
 
-#: ../src/preferencesdialog.cpp:103
+#: ../src/preferencesdialog.cpp:102
 msgid "Gnote Preferences"
 msgstr "Preferências do Gnote"
 
-#: ../src/preferencesdialog.cpp:121
+#: ../src/preferencesdialog.cpp:120
 msgid "General"
 msgstr "Geral"
 
-#: ../src/preferencesdialog.cpp:122
+#: ../src/preferencesdialog.cpp:121
 msgid "Links"
 msgstr "Links"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "Sincronização"
 
-#: ../src/preferencesdialog.cpp:127
+#: ../src/preferencesdialog.cpp:126
 msgid "Plugins"
 msgstr "Plug-ins"
 
-#: ../src/preferencesdialog.cpp:204
+#: ../src/preferencesdialog.cpp:203
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Plug-in %s está ausente"
 
 #. Open in new window
-#: ../src/preferencesdialog.cpp:243
+#: ../src/preferencesdialog.cpp:242
 msgid "Always _open notes in new window"
 msgstr "Sempre _abrir notas em uma nova janela"
 
-#: ../src/preferencesdialog.cpp:256
+#: ../src/preferencesdialog.cpp:255
 msgid "_Spell check while typing"
 msgstr "_Verificação ortográfica ao digitar"
 
-#: ../src/preferencesdialog.cpp:257
+#: ../src/preferencesdialog.cpp:256
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1987,36 +1966,36 @@ msgstr ""
 "ortografia mostradas no menu de contexto."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:267
+#: ../src/preferencesdialog.cpp:266
 msgid "Enable auto-_bulleted lists"
 msgstr "Habilitar listas _marcadas automaticamente"
 
-#: ../src/preferencesdialog.cpp:268
+#: ../src/preferencesdialog.cpp:267
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
-"Iniciar nova lista de marcadores ao iniciar nova linha com o caractere \"-\"."
+"Iniciar nova lista de marcadores ao iniciar nova linha com o caractere “-”."
 
-#: ../src/preferencesdialog.cpp:277
+#: ../src/preferencesdialog.cpp:276
 msgid "Use custom _font"
 msgstr "Utilizar _fonte personalizada"
 
-#: ../src/preferencesdialog.cpp:295
+#: ../src/preferencesdialog.cpp:294
 msgid "When renaming a linked note: "
 msgstr "﻿Ao renomear uma nota vinculada: "
 
-#: ../src/preferencesdialog.cpp:299
+#: ../src/preferencesdialog.cpp:298
 msgid "Ask me what to do"
 msgstr "﻿Pergunte-me o que fazer"
 
-#: ../src/preferencesdialog.cpp:300
+#: ../src/preferencesdialog.cpp:299
 msgid "Never rename links"
 msgstr "﻿Nunca renomear os vínculos"
 
-#: ../src/preferencesdialog.cpp:301
+#: ../src/preferencesdialog.cpp:300
 msgid "Always rename links"
 msgstr "﻿Sempre renomear os vínculos"
 
-#: ../src/preferencesdialog.cpp:321
+#: ../src/preferencesdialog.cpp:320
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2024,27 +2003,27 @@ msgstr ""
 "Usar o modelo de nova nota para especificar o texto que deve ser usado ao "
 "criar uma nova nota."
 
-#: ../src/preferencesdialog.cpp:326
+#: ../src/preferencesdialog.cpp:325
 msgid "Open New Note Template"
 msgstr "Abrir o modelo de nova nota"
 
 #. internal links
-#: ../src/preferencesdialog.cpp:383
+#: ../src/preferencesdialog.cpp:382
 msgid "_Automatically link to notes"
 msgstr "_Vincular automaticamente a notas"
 
-#: ../src/preferencesdialog.cpp:384
+#: ../src/preferencesdialog.cpp:383
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Habilite esta opção para criar um link quando o texto coincidir com o título "
 "da nota."
 
 #. URLs
-#: ../src/preferencesdialog.cpp:390
+#: ../src/preferencesdialog.cpp:389
 msgid "Create links for _URLs"
 msgstr "Criar links para _URLs"
 
-#: ../src/preferencesdialog.cpp:391
+#: ../src/preferencesdialog.cpp:390
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2053,11 +2032,11 @@ msgstr ""
 "aquela URL com o programa apropriado."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:398
+#: ../src/preferencesdialog.cpp:397
 msgid "Highlight _WikiWords"
 msgstr "Destacar palavras _Wiki"
 
-#: ../src/preferencesdialog.cpp:399
+#: ../src/preferencesdialog.cpp:398
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2065,44 +2044,45 @@ msgstr ""
 "Habilite essa opção para destacar palavras <b>QueSeParecemComEsta</b>. Ao "
 "clicar na palavra uma nota com aquele nome será criada."
 
-#: ../src/preferencesdialog.cpp:431
+#: ../src/preferencesdialog.cpp:430
 msgid "Ser_vice:"
 msgstr "Ser_viço:"
 
-#: ../src/preferencesdialog.cpp:487 ../src/preferencesdialog.cpp:1117
+#: ../src/preferencesdialog.cpp:486 ../src/preferencesdialog.cpp:1117
 msgid "Not configurable"
 msgstr "Não configurável"
 
-#: ../src/preferencesdialog.cpp:514
+#: ../src/preferencesdialog.cpp:513
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Intervalo de sin_cronização automática em segundo plano (minutos)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:538
+#: ../src/preferencesdialog.cpp:537
 msgid "_Advanced..."
-msgstr "_Avançado..."
+msgstr "_Avançado…"
 
-#: ../src/preferencesdialog.cpp:585
+#: ../src/preferencesdialog.cpp:584
 msgid "The following plugins are installed:"
 msgstr "Os seguintes plug-ins estão instalados:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:620
+#: ../src/preferencesdialog.cpp:619
 msgid "_Enable"
 msgstr "_Habilitar"
 
-#: ../src/preferencesdialog.cpp:626
+#: ../src/preferencesdialog.cpp:625
 msgid "_Disable"
 msgstr "_Desabilitar"
 
-#: ../src/preferencesdialog.cpp:784
+#: ../src/preferencesdialog.cpp:783
 msgid "Not Implemented"
 msgstr "Não implementado"
 
+#. TRANSLATORS: %1 is the placeholder for the addin name.
 #: ../src/preferencesdialog.cpp:800
-msgid "%1% Preferences"
-msgstr "Preferências de %1%"
+msgid "%1 Preferences"
+msgstr "Preferências de %1"
 
 #: ../src/preferencesdialog.cpp:935
 msgid "Choose Note Font"
@@ -2172,23 +2152,24 @@ msgid ""
 msgstr ""
 "Gnote está pronto a sincronizar suas notas. Gostaria de sincronizá-las agora?"
 
-#: ../src/preferencesdialog.cpp:1253
+#. TRANSLATORS: %1 is the placeholder for the log file path.
+#: ../src/preferencesdialog.cpp:1254
 msgid ""
-"Please check your information and try again.  The log file %1% may contain "
+"Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr ""
-"Por favor, verifique suas informações e tente novamente.  O arquivo de log "
-"%1% pode conter mais informações sobre o erro."
+"Por favor, verifique suas informações e tente novamente.  O arquivo de log %"
+"1 pode conter mais informações sobre o erro."
 
-#: ../src/preferencesdialog.cpp:1258
+#: ../src/preferencesdialog.cpp:1259
 msgid "Error connecting"
 msgstr "Erro ao conectar"
 
-#: ../src/preferencesdialog.cpp:1321
+#: ../src/preferencesdialog.cpp:1322
 msgid "Version:"
 msgstr "Versão:"
 
-#: ../src/preferencesdialog.cpp:1324
+#: ../src/preferencesdialog.cpp:1325
 msgid "Author:"
 msgstr "Autor:"
 
@@ -2196,27 +2177,27 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:151
+#: ../src/recentchanges.cpp:152
 msgid "All Notes"
 msgstr "Todas as notas"
 
-#: ../src/recentchanges.cpp:158
+#: ../src/recentchanges.cpp:159
 msgid "New"
 msgstr "Novo"
 
-#: ../src/recentchanges.cpp:179
+#: ../src/recentchanges.cpp:180
 msgid "Search"
 msgstr "Pesquisar"
 
-#: ../src/recentchanges.cpp:240
+#: ../src/recentchanges.cpp:241
 msgid "Find _Next"
 msgstr "Localizar _próxima"
 
-#: ../src/recentchanges.cpp:249
+#: ../src/recentchanges.cpp:250
 msgid "Find _Previous"
 msgstr "Localizar _anterior"
 
-#: ../src/recentchanges.cpp:791
+#: ../src/recentchanges.cpp:788
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -2225,35 +2206,35 @@ msgstr "_Fechar"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Falha ao carregar a interface D-Bus %s: %s"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:137
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../src/searchnoteswidget.cpp:141
+#: ../src/searchnoteswidget.cpp:140
 msgid "Open In New _Window"
 msgstr "Abra em uma nova _janela"
 
-#: ../src/searchnoteswidget.cpp:151
+#: ../src/searchnoteswidget.cpp:150
 msgid "Re_name..."
-msgstr "Re_nomear..."
+msgstr "Re_nomear…"
 
-#: ../src/searchnoteswidget.cpp:230
+#: ../src/searchnoteswidget.cpp:229
 msgid "Notebooks"
 msgstr "Catálogo de notas"
 
-#: ../src/searchnoteswidget.cpp:660
+#: ../src/searchnoteswidget.cpp:659
 msgid "Note"
 msgstr "Nota"
 
-#: ../src/searchnoteswidget.cpp:682
+#: ../src/searchnoteswidget.cpp:681
 msgid "Modified"
 msgstr "Modificado"
 
-#: ../src/searchnoteswidget.cpp:1001
+#: ../src/searchnoteswidget.cpp:1000
 msgid "Notes"
 msgstr "Notas"
 
-#: ../src/searchnoteswidget.cpp:1020
+#: ../src/searchnoteswidget.cpp:1019
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2261,53 +2242,53 @@ msgstr ""
 "Nenhum resultado encontrado no bloco de anotações selecionado.\n"
 "Clique aqui para pesquisar em todas as notas."
 
-#: ../src/searchnoteswidget.cpp:1024
+#: ../src/searchnoteswidget.cpp:1023
 msgid "Click here to search across all notebooks"
 msgstr "Clique aqui para pesquisar em todos os blocos de notas"
 
-#: ../src/searchnoteswidget.cpp:1045
+#: ../src/searchnoteswidget.cpp:1044
 msgid "Matches"
 msgstr "Ocorrências"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1097
+#: ../src/searchnoteswidget.cpp:1096
 msgid "Title match"
 msgstr "Correspondência de título"
 
-#: ../src/searchnoteswidget.cpp:1101
-msgid "%1% match"
-msgid_plural "%1% matches"
-msgstr[0] "%1% ocorrência"
-msgstr[1] "%1% ocorrências"
+#: ../src/searchnoteswidget.cpp:1100
+msgid "%1 match"
+msgid_plural "%1 matches"
+msgstr[0] "%1 ocorrência"
+msgstr[1] "%1 ocorrências"
 
-#: ../src/searchnoteswidget.cpp:1312
+#: ../src/searchnoteswidget.cpp:1311
 msgid "_New"
 msgstr "_Novo"
 
-#: ../src/searchnoteswidget.cpp:1341
+#: ../src/searchnoteswidget.cpp:1340
 msgid "_Open Template Note"
 msgstr "_Abrir modelo de nota"
 
-#: ../src/searchnoteswidget.cpp:1352
+#: ../src/searchnoteswidget.cpp:1351
 msgid "_New..."
-msgstr "_Novo..."
+msgstr "_Novo…"
 
-#: ../src/searchnoteswidget.cpp:1503 ../src/searchnoteswidget.cpp:1516
-#: ../src/searchnoteswidget.cpp:1527
+#: ../src/searchnoteswidget.cpp:1502 ../src/searchnoteswidget.cpp:1515
+#: ../src/searchnoteswidget.cpp:1526
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Falha ao analisar as configurações %s (valor: %s):"
 
-#: ../src/searchnoteswidget.cpp:1504
+#: ../src/searchnoteswidget.cpp:1503
 msgid "Expected format 'column:order'"
-msgstr "Formato esperado 'coluna:ordem'"
+msgstr "Formato esperado “coluna:ordem”"
 
-#: ../src/searchnoteswidget.cpp:1517
+#: ../src/searchnoteswidget.cpp:1516
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Coluna %s não reconhecida"
 
-#: ../src/searchnoteswidget.cpp:1528
+#: ../src/searchnoteswidget.cpp:1527
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ordem %s não reconhecida"
@@ -2350,24 +2331,24 @@ msgstr "Erro ao carregar %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Erro ao obter o símbolo dynamic_module_instanciate: %s"
 
-#: ../src/sharp/xmlreader.cpp:195
+#: ../src/sharp/xmlreader.cpp:200
 #, c-format
 msgid "XML error: %s"
-msgstr "erro XML: %s"
+msgstr "Erro XML: %s"
 
-#: ../src/sharp/xmlreader.cpp:195
+#: ../src/sharp/xmlreader.cpp:200
 msgid "unknown parse error"
 msgstr "erro de análise desconhecido"
 
 #: ../src/sharp/xmlwriter.cpp:40
-msgid "%1% failed"
-msgstr "%1% falhou"
+msgid "%1 failed"
+msgstr "%1 falhou"
 
 #: ../src/sharp/xsltransform.cpp:67
 msgid "NULL stylesheet, please fill a bug"
 msgstr "folha de estilos NULA, favor relatar este erro"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:369
+#: ../src/synchronization/filesystemsyncserver.cpp:368
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2377,144 +2358,144 @@ msgstr ""
 "está OK, mas pode haver um excesso de arquivos flutuantes por aí. Aqui está "
 "o erro: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:609
+#: ../src/synchronization/filesystemsyncserver.cpp:608
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
-msgstr "Erro ao excluir a trava de sincronização antiga \"%s\": %s"
+msgstr "Erro ao excluir a trava de sincronização antiga “%s”: %s"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:115
+#: ../src/synchronization/fusesyncserviceaddin.cpp:114
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
-"sure you have FUSE and %1% correctly installed and configured"
+"sure you have FUSE and %1 correctly installed and configured"
 msgstr ""
 "Esse suplemento de sincronização não tem suporte no seu computador. Por "
-"favor, certifique-se de que você tem FUSE e %1% instalados e configurados "
+"favor, certifique-se de que você tem FUSE e %1 instalados e configurados "
 "corretamente"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:158
+#: ../src/synchronization/fusesyncserviceaddin.cpp:157
 msgid "Could not read testfile."
 msgstr "Não foi possível ler o arquivo de teste."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:167
+#: ../src/synchronization/fusesyncserviceaddin.cpp:166
 msgid "Write test failed."
 msgstr "Teste de gravação falhou."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:196
+#: ../src/synchronization/fusesyncserviceaddin.cpp:195
 msgid "Timeout connecting to server."
 msgstr "Tempo limite excedido para conectar ao servidor."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:202
+#: ../src/synchronization/fusesyncserviceaddin.cpp:201
 msgid "Error connecting to server."
 msgstr "Erro ao conectar ao servidor."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:215
+#: ../src/synchronization/fusesyncserviceaddin.cpp:214
 msgid "FUSE could not be enabled."
 msgstr "FUSE não pôde ser habilitado."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:246
+#: ../src/synchronization/fusesyncserviceaddin.cpp:245
 msgid "An error occurred while connecting to the specified server"
 msgstr "Ocorreu um erro ao conectar ao servidor especificado"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:165
+#: ../src/synchronization/gnotesyncclient.cpp:164
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Elemento last-sync-date não analisável em %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:175
+#: ../src/synchronization/gnotesyncclient.cpp:174
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Elemento last-sync-rev não analisável em %s"
 
-#: ../src/synchronization/syncdialog.cpp:65
+#: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
 msgstr "Conflito de nota"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:70
+#: ../src/synchronization/syncdialog.cpp:69
 msgid " (old)"
 msgstr " (antigo)"
 
-#: ../src/synchronization/syncdialog.cpp:115
+#: ../src/synchronization/syncdialog.cpp:114
 msgid "Rename local note:"
 msgstr "Renomear nota local:"
 
-#: ../src/synchronization/syncdialog.cpp:122
+#: ../src/synchronization/syncdialog.cpp:121
 msgid "Update links in referencing notes"
 msgstr "Atualizar links em notas de referência"
 
-#: ../src/synchronization/syncdialog.cpp:128
+#: ../src/synchronization/syncdialog.cpp:127
 msgid "Overwrite local note"
 msgstr "Sobrescrever nota local"
 
-#: ../src/synchronization/syncdialog.cpp:132
+#: ../src/synchronization/syncdialog.cpp:131
 msgid "Always perform this action"
 msgstr "Sempre executar essa ação"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:138
+#: ../src/synchronization/syncdialog.cpp:137
 msgid "Note conflict detected"
 msgstr "Conflito de nota detectado"
 
-#: ../src/synchronization/syncdialog.cpp:140
+#: ../src/synchronization/syncdialog.cpp:139
 msgid ""
-"The server version of \"%1%\" conflicts with your local note.  What do you "
+"The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
-"A versão do servidor de \"%1%\" está em conflito com sua nota local. O que "
-"quer fazer com sua nota local?"
+"A versão do servidor de “%1” está em conflito com sua nota local. O que quer "
+"fazer com sua nota local?"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:297
+#: ../src/synchronization/syncdialog.cpp:296
 msgid "Details"
 msgstr "Detalhes"
 
-#: ../src/synchronization/syncdialog.cpp:339
+#: ../src/synchronization/syncdialog.cpp:338
 msgid "Status"
 msgstr "Status"
 
-#: ../src/synchronization/syncdialog.cpp:484
+#: ../src/synchronization/syncdialog.cpp:483
 msgid "Acquiring sync lock..."
-msgstr "Adquirindo bloqueio de sincronização..."
+msgstr "Adquirindo bloqueio de sincronização…"
 
-#: ../src/synchronization/syncdialog.cpp:487
+#: ../src/synchronization/syncdialog.cpp:486
 msgid "Committing changes..."
-msgstr "Aplicando as alterações..."
+msgstr "Aplicando as alterações…"
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: ../src/synchronization/syncdialog.cpp:489
 msgid "Synchronizing Notes"
 msgstr "Sincronizando notas"
 
-#: ../src/synchronization/syncdialog.cpp:491
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "Synchronizing your notes..."
-msgstr "Sincronizando suas notas..."
+msgstr "Sincronizando suas notas…"
 
-#: ../src/synchronization/syncdialog.cpp:492
+#: ../src/synchronization/syncdialog.cpp:491
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Isto pode levar algum tempo, relaxe e aproveite!"
 
-#: ../src/synchronization/syncdialog.cpp:494
+#: ../src/synchronization/syncdialog.cpp:493
 msgid "Connecting to the server..."
-msgstr "Conectando ao servidor..."
+msgstr "Conectando ao servidor…"
 
-#: ../src/synchronization/syncdialog.cpp:500
+#: ../src/synchronization/syncdialog.cpp:499
 msgid "Deleting notes off of the server..."
-msgstr "Excluir notas do servidor..."
+msgstr "Excluir notas do servidor…"
 
-#: ../src/synchronization/syncdialog.cpp:504
+#: ../src/synchronization/syncdialog.cpp:503
 msgid "Downloading new/updated notes..."
-msgstr "Baixando notas novas/atualizadas..."
+msgstr "Baixando notas novas/atualizadas…"
 
-#: ../src/synchronization/syncdialog.cpp:516
+#: ../src/synchronization/syncdialog.cpp:515
 msgid "Server Locked"
 msgstr "Servidor bloqueado"
 
-#: ../src/synchronization/syncdialog.cpp:517
+#: ../src/synchronization/syncdialog.cpp:516
 msgid "Server is locked"
 msgstr "O servidor está bloqueado"
 
-#: ../src/synchronization/syncdialog.cpp:518
+#: ../src/synchronization/syncdialog.cpp:517
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2522,108 +2503,108 @@ msgstr ""
 "Um de seus outros computadores está sincronizando agora. Por favor, aguarde "
 "2 minutos e tente novamente."
 
-#: ../src/synchronization/syncdialog.cpp:522
+#: ../src/synchronization/syncdialog.cpp:521
 msgid "Preparing to download updates from server..."
-msgstr "Preparando para baixar atualizações do servidor..."
+msgstr "Preparando para baixar atualizações do servidor…"
 
-#: ../src/synchronization/syncdialog.cpp:525
+#: ../src/synchronization/syncdialog.cpp:524
 msgid "Preparing to upload updates to server..."
-msgstr "Preparando para enviar atualizações ao servidor..."
+msgstr "Preparando para enviar atualizações ao servidor…"
 
-#: ../src/synchronization/syncdialog.cpp:528
+#: ../src/synchronization/syncdialog.cpp:527
 msgid "Uploading notes to server..."
-msgstr "Enviando notas para o servidor..."
+msgstr "Enviando notas para o servidor…"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:530
 msgid "Synchronization Failed"
 msgstr "A sincronização falhou"
 
-#: ../src/synchronization/syncdialog.cpp:532
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "Failed to synchronize"
 msgstr "Falha ao sincronizar"
 
-#: ../src/synchronization/syncdialog.cpp:533
+#: ../src/synchronization/syncdialog.cpp:532
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Não foi possível sincronizar notas. Verifique os detalhes abaixo e tente "
 "novamente."
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:538
 msgid "Synchronization Complete"
 msgstr "Sincronização completa"
 
-#: ../src/synchronization/syncdialog.cpp:540
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "Synchronization is complete"
 msgstr "A sincronização está completa"
 
-#: ../src/synchronization/syncdialog.cpp:541
-msgid "%1% note updated."
-msgid_plural "%1% notes updated."
-msgstr[0] "%1% nota atualizada."
-msgstr[1] "%1% notas atualizadas."
+#: ../src/synchronization/syncdialog.cpp:540
+msgid "%1 note updated."
+msgid_plural "%1 notes updated."
+msgstr[0] "%1 nota atualizada."
+msgstr[1] "%1 notas atualizadas."
 
-#: ../src/synchronization/syncdialog.cpp:542
+#: ../src/synchronization/syncdialog.cpp:541
 msgid "Your notes are now up to date."
 msgstr "As suas notas estão atualizadas."
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:546
 msgid "Synchronization Canceled"
 msgstr "Sincronização cancelada"
 
-#: ../src/synchronization/syncdialog.cpp:548
+#: ../src/synchronization/syncdialog.cpp:547
 msgid "Synchronization was canceled"
 msgstr "A sincronização foi cancelada"
 
-#: ../src/synchronization/syncdialog.cpp:549
+#: ../src/synchronization/syncdialog.cpp:548
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Você cancelou a sincronização. Você pode fechar a janela agora."
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:552
 msgid "Synchronization Not Configured"
 msgstr "Sincronização não configurada"
 
-#: ../src/synchronization/syncdialog.cpp:554
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Synchronization is not configured"
 msgstr "A sincronização não está configurada"
 
-#: ../src/synchronization/syncdialog.cpp:555
+#: ../src/synchronization/syncdialog.cpp:554
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Configure a sincronização no diálogo de preferências."
 
-#: ../src/synchronization/syncdialog.cpp:559
+#: ../src/synchronization/syncdialog.cpp:558
 msgid "Synchronization Service Error"
 msgstr "Erro do serviço de sincronização"
 
-#: ../src/synchronization/syncdialog.cpp:560
+#: ../src/synchronization/syncdialog.cpp:559
 msgid "Service error"
 msgstr "Erro do serviço"
 
-#: ../src/synchronization/syncdialog.cpp:561
+#: ../src/synchronization/syncdialog.cpp:560
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "Erro ao conectar ao serviço de sincronização.  Por favor, tente novamente."
 
-#: ../src/synchronization/syncdialog.cpp:575
+#: ../src/synchronization/syncdialog.cpp:574
 msgid "Deleted locally"
 msgstr "Excluída localmente"
 
-#: ../src/synchronization/syncdialog.cpp:578
+#: ../src/synchronization/syncdialog.cpp:577
 msgid "Deleted from server"
 msgstr "Excluída do servidor"
 
-#: ../src/synchronization/syncdialog.cpp:581
+#: ../src/synchronization/syncdialog.cpp:580
 msgid "Updated"
 msgstr "Atualizado"
 
-#: ../src/synchronization/syncdialog.cpp:584
+#: ../src/synchronization/syncdialog.cpp:583
 msgid "Added"
 msgstr "Adicionado"
 
-#: ../src/synchronization/syncdialog.cpp:587
+#: ../src/synchronization/syncdialog.cpp:586
 msgid "Uploaded changes to server"
 msgstr "Alterações enviadas para o servidor"
 
-#: ../src/synchronization/syncdialog.cpp:590
+#: ../src/synchronization/syncdialog.cpp:589
 msgid "Uploaded new note to server"
 msgstr "Nova nota enviada ao servidor"
 
@@ -2633,7 +2614,7 @@ msgstr "Sincronizar as notas"
 
 #: ../src/synchronization/syncmanager.cpp:85
 #: ../src/synchronization/syncmanager.cpp:102
-#: ../src/synchronization/syncmanager.cpp:575
+#: ../src/synchronization/syncmanager.cpp:571
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Relate um erro. Chamada falhou: %s"
@@ -2649,7 +2630,7 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Exceção ao criar um servidor de sincronização: %s"
 
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:377
+#: ../src/synchronization/syncmanager.cpp:373
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sincronização falhou com a seguinte exceção: %s"
@@ -2686,15 +2667,15 @@ msgstr ""
 "carregado.\n"
 "\n"
 "Para evitar de ser perguntado novamente no futuro, você deveria carregar "
-"FUSE na inicialização. Adicione \"modprobe fuse\" para o /etc/init.d/boot."
-"local ou \"fuse\" para /etc/modules."
+"FUSE na inicialização. Adicione “modprobe fuse” para o /etc/init.d/boot."
+"local ou “fuse” para /etc/modules."
 
 #: ../src/utils.cpp:158
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
-"O \"Manual do Gnote\" não foi localizado. Por favor, certifique-se de que a "
+"O “Manual do Gnote” não foi localizado. Por favor, certifique-se de que a "
 "sua instalação foi concluída com sucesso."
 
 #: ../src/utils.cpp:166
@@ -2705,28 +2686,28 @@ msgstr "Ajuda não localizada"
 msgid "Cannot open location"
 msgstr "Não é possível abrir a localização"
 
-#. TRANSLATORS: argument is time.
+#. TRANSLATORS: argument %1 is time.
 #: ../src/utils.cpp:229
-msgid "Today, %1%"
-msgstr "Hoje, %1%"
+msgid "Today, %1"
+msgstr "Hoje, %1"
 
 #: ../src/utils.cpp:230
 msgid "Today"
 msgstr "Hoje"
 
-#. TRANSLATORS: argument is time.
+#. TRANSLATORS: argument %1 is time.
 #: ../src/utils.cpp:236
-msgid "Yesterday, %1%"
-msgstr "Ontem, %1%"
+msgid "Yesterday, %1"
+msgstr "Ontem, %1"
 
 #: ../src/utils.cpp:237
 msgid "Yesterday"
 msgstr "Ontem"
 
-#. TRANSLATORS: argument is time.
+#. TRANSLATORS: argument %1 is time.
 #: ../src/utils.cpp:243
-msgid "Tomorrow, %1%"
-msgstr "Amanhã, %1%"
+msgid "Tomorrow, %1"
+msgstr "Amanhã, %1"
 
 #: ../src/utils.cpp:244
 msgid "Tomorrow"
@@ -2737,10 +2718,10 @@ msgstr "Amanhã"
 msgid "%b %d"
 msgstr "%b %d"
 
-#. TRANSLATORS: first argument is date, second is time.
+#. TRANSLATORS: argument %1 is date, %2 is time.
 #: ../src/utils.cpp:251 ../src/utils.cpp:263
-msgid "%1%, %2%"
-msgstr "%1%, %2%"
+msgid "%1, %2"
+msgstr "%1, %2"
 
 #: ../src/utils.cpp:256
 msgid "No Date"
@@ -2751,31 +2732,32 @@ msgstr "Sem data"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
+#. TRANSLATORS: %1 is the placeholder for the number.
 #: ../src/watchers.cpp:201
-msgid "(Untitled %1%)"
-msgstr "(Sem título %1%)"
+msgid "(Untitled %1)"
+msgstr "(Sem título %1)"
 
-#: ../src/watchers.cpp:232
+#: ../src/watchers.cpp:233
 msgid ""
-"A note with the title <b>%1%</b> already exists. Please choose another name "
+"A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
-"Já existe uma nota com o título <b>%1%</b>. Por favor, escolha outro nome "
+"Já existe uma nota com o título <b>%1</b>. Por favor, escolha outro nome "
 "para esta nota antes de continuar."
 
-#: ../src/watchers.cpp:247
+#: ../src/watchers.cpp:248
 msgid "Note title taken"
 msgstr "Este título de nota já existe"
 
-#: ../src/watchers.cpp:317
+#: ../src/watchers.cpp:318
 msgid "Check spelling"
 msgstr "Verificar ortografia"
 
-#: ../src/watchers.cpp:707
+#: ../src/watchers.cpp:708
 msgid "_Copy Link Address"
 msgstr "_Copiar o endereço do link"
 
-#: ../src/watchers.cpp:713
+#: ../src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "Abrir _link"
 
