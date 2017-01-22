@@ -74,5 +74,15 @@ SUITE(String)
     res = sharp::string_replace_all("foo bar baz", "baz", "bar");
     CHECK_EQUAL("foo bar bar", res);
   }
+
+  TEST(replace_regex)
+  {
+    Glib::ustring res;
+    res = sharp::string_replace_regex("CamelCase", "([aem])", "Xx");
+    CHECK_EQUAL("CXxXxXxlCXxsXx", res);
+
+    res = sharp::string_replace_regex("CamelCase", "ame", "Xx");
+    CHECK_EQUAL("CXxlCase", res);
+  }
 }
 

@@ -51,8 +51,8 @@ namespace sharp {
   /** 
    * regex replace in %source with matching %regex with %with
    * and return a copy */
-  std::string string_replace_regex(const std::string & source, const std::string & regex,
-                                   const std::string & with);
+  Glib::ustring string_replace_regex(const Glib::ustring & source, const Glib::ustring & regex,
+                                     const Glib::ustring & with);
   bool string_match_iregex(const std::string & source, const std::string & regex);
 
   void string_split(std::vector<std::string> & split, const std::string & source,

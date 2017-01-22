@@ -88,9 +88,9 @@ namespace sharp {
     return result;
   }
 
-  std::string string_replace_regex(const std::string & source,
-                                   const std::string & regex,
-                                   const std::string & with)
+  Glib::ustring string_replace_regex(const Glib::ustring & source,
+                                     const Glib::ustring & regex,
+                                     const Glib::ustring & with)
   {
     Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex);
     return re->replace(source, 0, with, static_cast<Glib::RegexMatchFlags>(0));
