@@ -34,7 +34,6 @@
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/split.hpp>
-#include <boost/algorithm/string/trim.hpp>
 
 #include "debug.hpp"
 
@@ -129,14 +128,46 @@ namespace sharp {
     return Glib::ustring(source, start, len);
   }
 
-  std::string string_trim(const std::string & source)
+  Glib::ustring string_trim(const Glib::ustring & source)
   {
-    return boost::trim_copy(source);
+    if(source.empty()) {
+      return source;
+    }
+
+    auto start = source.begin();
+    while(start != source.end()) {
+      if(g_unichar_isspace(*start)) {
+        ++start;
+      }
+      else {
+        break;
+      }
+    }
+
+    auto end = source.end();
+    --end;
+    while(end != start) {
+      if(g_unichar_isspace(*end)) {
+        --end;
+      }
+      else {
+        ++end;
+        break;
+      }
+    }
+
+    return Glib::ustring(start, end);
   }  
 
-  std::string string_trim(const std::string & source, const char * set_of_char)
+  Glib::ustring string_trim(const Glib::ustring & source, const Glib::ustring & set_of_char)
   {
-    return boost::trim_copy_if(source, boost::is_any_of(set_of_char));
+    if(source.empty()) {
+      return source;
+    }
+
+    auto start = source.find_first_not_of(set_of_char);
+    auto end = source.find_last_not_of(set_of_char) + 1;
+    return source.substr(start, end - start);
   }
 
   int string_last_index_of(const std::string & source, const std::string & search)

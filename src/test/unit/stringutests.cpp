@@ -97,5 +97,20 @@ SUITE(String)
     CHECK_EQUAL("bar", sharp::string_substring("foo bar baz", 4, 3));
     CHECK_EQUAL("", sharp::string_substring("foo bar baz", 14, 3));
   }
+
+  TEST(trim)
+  {
+    CHECK_EQUAL("foo", sharp::string_trim("   foo   "));
+    CHECK_EQUAL("foo", sharp::string_trim("foo   "));
+    CHECK_EQUAL("foo", sharp::string_trim("   foo"));
+    CHECK_EQUAL("foo", sharp::string_trim("foo"));
+    CHECK_EQUAL("", sharp::string_trim(""));
+
+    CHECK_EQUAL(" foo ", sharp::string_trim("** foo ++", "*+"));
+    CHECK_EQUAL(" foo ", sharp::string_trim("** foo ", "*+"));
+    CHECK_EQUAL(" foo ", sharp::string_trim(" foo ++", "*+"));
+    CHECK_EQUAL("foo", sharp::string_trim("foo", "*+"));
+    CHECK_EQUAL("", sharp::string_trim("", "*+"));
+  }
 }
 
