@@ -180,38 +180,4 @@ namespace sharp {
     return source.rfind(search);
   }
 
-
-  int string_index_of(const std::string & source, const std::string & search)
-  {
-    // C# returns index 0 if looking for the empty string
-    if(search.empty()) {
-      return 0;
-    }
-    boost::iterator_range<std::string::const_iterator> iter
-      = boost::find_first(source, search);
-    if(iter.begin() == source.end()) {
-      // NOT FOUND
-      return -1;
-    }
-    return iter.begin() - source.begin();
-  }
-
-
-  int string_index_of(const std::string & source, const std::string & search, int start_at)
-  {
-    std::string source2(source.begin() + start_at, source.end());
-    boost::iterator_range<std::string::const_iterator> iter
-      = boost::find_first(source2, search);
-    // C# returns index 0 if looking for the empty string
-    if(search.empty()) {
-      // Note: check this after 'find_first' so boost will throw an exception if start_at > source.size()
-      return start_at;
-    }
-    if(iter.begin() == source2.end()) {
-      // NOT FOUND
-      return -1;
-    }
-    return iter.begin() - source2.begin() + start_at;
-  }
-
 }
