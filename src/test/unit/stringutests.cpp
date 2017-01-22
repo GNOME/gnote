@@ -89,5 +89,13 @@ SUITE(String)
   {
     CHECK(sharp::string_match_iregex("CamelCase", "^Camel.*$"));
   }
+
+  TEST(substring)
+  {
+    CHECK_EQUAL("bar baz", sharp::string_substring("foo bar baz", 4));
+    CHECK_EQUAL("", sharp::string_substring("foo bar baz", 14));
+    CHECK_EQUAL("bar", sharp::string_substring("foo bar baz", 4, 3));
+    CHECK_EQUAL("", sharp::string_substring("foo bar baz", 14, 3));
+  }
 }
 
