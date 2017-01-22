@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -65,7 +65,7 @@ public:
   virtual void shutdown() override;
   virtual bool initialized() override;
 private:
-  static std::string get_id(const std::string & path);
+  static std::string get_id(const Glib::ustring & path);
   static std::string make_uri(const std::string & note_id);
 
   NoteDirectoryWatcherApplicationAddin();

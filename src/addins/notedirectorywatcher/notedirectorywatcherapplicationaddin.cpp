@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -144,12 +144,12 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
   timeout->attach();
 }
 
-std::string NoteDirectoryWatcherApplicationAddin::get_id(const std::string & path)
+std::string NoteDirectoryWatcherApplicationAddin::get_id(const Glib::ustring & path)
 {
   std::string dir_separator;
   dir_separator += G_DIR_SEPARATOR;
   int last_slash = sharp::string_last_index_of(path, std::string(dir_separator));
-  int first_period = sharp::string_index_of(path, ".", last_slash);
+  int first_period = path.find(".", last_slash);
 
   return path.substr(last_slash + 1, first_period - last_slash - 1);
 }
