@@ -28,6 +28,17 @@ check_PROGRAMS = trietest stringtest notetest dttest uritest filestest \
 TESTS = trietest stringtest notetest dttest uritest filestest \
 	fileinfotest xmlreadertest notemanagertest gnotesyncclienttest
 
+if HAVE_UNITTESTCPP
+check_PROGRAMS += gnoteunittests
+TESTS += gnoteunittests
+
+gnoteunittests_SOURCES = \
+	test/runner.cpp \
+	test/unit/stringutests.cpp \
+	$(NULL)
+gnoteunittests_LDADD = libgnote.la @UNITTESTCPP_LIBS@
+endif
+
 
 trietest_SOURCES = test/trietest.cpp
 trietest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
