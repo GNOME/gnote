@@ -29,7 +29,7 @@
 
 #include "sharp/string.hpp"
 
-#include <glibmm.h>
+#include <glibmm/regex.h>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/predicate.hpp>
