@@ -84,5 +84,10 @@ SUITE(String)
     res = sharp::string_replace_regex("CamelCase", "ame", "Xx");
     CHECK_EQUAL("CXxlCase", res);
   }
+
+  TEST(match_iregex)
+  {
+    CHECK(sharp::string_match_iregex("CamelCase", "^Camel.*$"));
+  }
 }
 

@@ -96,11 +96,11 @@ namespace sharp {
     return re->replace(source, 0, with, static_cast<Glib::RegexMatchFlags>(0));
   }
   
-  bool string_match_iregex(const std::string & source, const std::string & regex)  
+  bool string_match_iregex(const Glib::ustring & source, const Glib::ustring & regex)
   {
     Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex, Glib::REGEX_CASELESS);
     Glib::MatchInfo match_info;
-    if(re->match(source)) {
+    if(re->match(source, match_info)) {
       return match_info.fetch(0) == source;
     }
     return false;
