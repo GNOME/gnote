@@ -112,5 +112,14 @@ SUITE(String)
     CHECK_EQUAL("foo", sharp::string_trim("foo", "*+"));
     CHECK_EQUAL("", sharp::string_trim("", "*+"));
   }
+
+  TEST(last_index_of)
+  {
+    Glib::ustring line = "\t\tjust\na\tbunch of\n\nrandom\t words\n\n\t";
+    CHECK_EQUAL(line.size() - 1, sharp::string_last_index_of(line, ""));
+    CHECK_EQUAL(0, sharp::string_last_index_of("", ""));
+    CHECK_EQUAL(8, sharp::string_last_index_of("foo bar baz", "ba"));
+    CHECK_EQUAL(-1, sharp::string_last_index_of("foo bar baz", "Camel"));
+  }
 }
 

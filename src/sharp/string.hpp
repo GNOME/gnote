@@ -68,7 +68,7 @@ namespace sharp {
 
   int string_index_of(const std::string & source, const std::string & with);
   int string_index_of(const std::string & source, const std::string & with, int);
-  int string_last_index_of(const std::string & source, const std::string & with);
+  int string_last_index_of(const Glib::ustring & source, const Glib::ustring & search);
 }
 
 

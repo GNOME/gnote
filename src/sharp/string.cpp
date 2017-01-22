@@ -170,19 +170,14 @@ namespace sharp {
     return source.substr(start, end - start);
   }
 
-  int string_last_index_of(const std::string & source, const std::string & search)
+  int string_last_index_of(const Glib::ustring & source, const Glib::ustring & search)
   {
     if(search.empty()) {
         // Return last index, unless the source is the empty string, return 0
         return source.empty() ? 0 : source.size() - 1;
     }
-    boost::iterator_range<std::string::const_iterator> iter
-      = boost::find_last(source, search);
-    if(iter.begin() == source.end()) {
-      // NOT FOUND
-      return -1;
-    }
-    return iter.begin() - source.begin();
+
+    return source.rfind(search);
   }
 
 
