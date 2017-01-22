@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -122,22 +122,22 @@ namespace gnote {
     if (!match_case) {
       note_text = note_text.lowercase();
     }
-    
+
     for(std::vector<std::string>::const_iterator iter = words.begin();
         iter != words.end(); ++iter) {
 
-      const std::string & word(*iter);
+      const Glib::ustring word(*iter);
 
-      int idx = 0;
+      Glib::ustring::size_type idx = 0;
       bool this_word_found = false;
 
       if (word.empty())
         continue;
 
       while (true) {
-        idx = sharp::string_index_of(note_text, word, idx);
+        idx = note_text.find(word, idx);
 
-        if (idx == -1) {
+        if (idx == Glib::ustring::npos) {
           if (this_word_found) {
             break;
           }
