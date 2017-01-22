@@ -132,7 +132,7 @@ namespace sharp {
     if(source.size() <= (unsigned int)start) {
       return "";
     }
-    return Glib::ustring(source, start, std::string::npos);
+    return Glib::ustring(source, start, Glib::ustring::npos);
   }
 
   Glib::ustring string_substring(const Glib::ustring & source, int start, int len)
