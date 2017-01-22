@@ -451,7 +451,7 @@ namespace gnote {
     std::list<Tag::Ptr> tags;
     get_note()->get_tags(tags);
     FOREACH(Tag::Ptr tag, tags) {
-      if(sharp::string_index_of(tag->name(), LANG_PREFIX) == 0) {
+      if(tag->name().find(LANG_PREFIX) == 0) {
         lang_tag = tag;
         break;
       }
@@ -812,7 +812,7 @@ namespace gnote {
     Glib::ustring body = get_note()->text_content().lowercase();
     Glib::ustring match = text.lowercase();
 
-    return sharp::string_index_of(body, match) > -1;
+    return body.find(match) != Glib::ustring::npos;
   }
 
 
@@ -942,7 +942,7 @@ namespace gnote {
     int idx = 0;
 
     while (true) {
-      idx = sharp::string_index_of(buffer_text, find_title_lower, idx);
+      idx = buffer_text.find(find_title_lower, idx);
       if (idx < 0)
         break;
 
