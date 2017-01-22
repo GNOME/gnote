@@ -43,11 +43,11 @@ namespace sharp {
                                      const Glib::ustring & with);
 
   /**
-   * replace all instances of %from with %with 
+   * replace all instances of %what with %with
    * in string %source and return the result
    */
-  std::string string_replace_all(const std::string & source, const std::string & from,
-                                 const std::string & with);
+  Glib::ustring string_replace_all(const Glib::ustring & source, const Glib::ustring & what,
+                                   const Glib::ustring & with);
   /** 
    * regex replace in %source with matching %regex with %with
    * and return a copy */

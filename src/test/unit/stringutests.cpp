@@ -46,5 +46,33 @@ SUITE(String)
     res = sharp::string_replace_first("foo bar baz", "boo", "bingo");
     CHECK_EQUAL("foo bar baz", res);
   }
+
+  TEST(replace_all)
+  {
+    Glib::ustring res;
+    res = sharp::string_replace_all("", "foo", "bar");
+    CHECK_EQUAL("", res);
+
+    res = sharp::string_replace_all("foo bar baz", "", "bar");
+    CHECK_EQUAL("foo bar baz", res);
+
+    res = sharp::string_replace_all("foo bar baz", "boo", "bingo");
+    CHECK_EQUAL("foo bar baz", res);
+
+    res = sharp::string_replace_all("foo bar baz", "bar", "baz");
+    CHECK_EQUAL("foo baz baz", res);
+
+    res = sharp::string_replace_all("foo bar baz", "bar", "");
+    CHECK_EQUAL("foo  baz", res);
+
+    res = sharp::string_replace_all("foo bar baz", "ba", "bingo");
+    CHECK_EQUAL("foo bingor bingoz", res);
+
+    res = sharp::string_replace_all("ffooo foo", "foo", "o");
+    CHECK_EQUAL("foo o", res);
+
+    res = sharp::string_replace_all("foo bar baz", "baz", "bar");
+    CHECK_EQUAL("foo bar bar", res);
+  }
 }
 

@@ -33,7 +33,6 @@
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/trim.hpp>
 
@@ -63,10 +62,30 @@ namespace sharp {
     return result;
   }
 
-  std::string string_replace_all(const std::string & source, const std::string & from,
-                                 const std::string & with)
+  Glib::ustring string_replace_all(const Glib::ustring & source, const Glib::ustring & what,
+                                   const Glib::ustring & with)
   {
-    return boost::replace_all_copy(source, from, with);
+    if(source.empty() || what.empty() || what == with) {
+      return source;
+    }
+
+    Glib::ustring result;
+    Glib::ustring::size_type start = 0;
+    do {
+      auto pos = source.find(what, start);
+      if(pos != Glib::ustring::npos) {
+        result += source.substr(start, pos - start);
+        result += with;
+        start = pos + what.size();
+      }
+      else {
+        result += source.substr(start);
+        start = source.size();
+      }
+    }
+    while(start < source.size());
+
+    return result;
   }
 
   std::string string_replace_regex(const std::string & source,
