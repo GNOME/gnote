@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -39,8 +39,8 @@ namespace sharp {
    * replace the first instance of %from with %with 
    * in string %source and return the result
    */
-  std::string string_replace_first(const std::string & source, const std::string & from,
-                             const std::string & with);
+  Glib::ustring string_replace_first(const Glib::ustring & source, const Glib::ustring & what,
+                                     const Glib::ustring & with);
 
   /**
    * replace all instances of %from with %with 

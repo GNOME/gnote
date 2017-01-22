@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2014 Aurimas Cernius
+ * Copyright (C) 2012,2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -42,10 +42,19 @@
 namespace sharp {
 
 
-  std::string string_replace_first(const std::string & source, const std::string & from,
-                             const std::string & with)
+  Glib::ustring string_replace_first(const Glib::ustring & source, const Glib::ustring & what,
+                                     const Glib::ustring & with)
   {
-    return boost::replace_first_copy(source, from, with);
+    if(source.empty() || what.empty() || what == with) {
+      return source;
+    }
+
+    Glib::ustring result;
+    auto pos = source.find(what);
+    result += source.substr(0, pos);
+    result += with;
+    result += source.substr(pos + what.size());
+    return result;
   }
 
   std::string string_replace_all(const std::string & source, const std::string & from,
