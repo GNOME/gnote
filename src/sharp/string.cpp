@@ -51,9 +51,15 @@ namespace sharp {
 
     Glib::ustring result;
     auto pos = source.find(what);
-    result += source.substr(0, pos);
-    result += with;
-    result += source.substr(pos + what.size());
+    if(pos != Glib::ustring::npos) {
+      result += source.substr(0, pos);
+      result += with;
+      result += source.substr(pos + what.size());
+    }
+    else {
+      result = source;
+    }
+
     return result;
   }
 

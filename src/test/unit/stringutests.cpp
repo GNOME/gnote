@@ -42,6 +42,9 @@ SUITE(String)
 
     res = sharp::string_replace_first("", "foo", "bar");
     CHECK_EQUAL("", res);
+
+    res = sharp::string_replace_first("foo bar baz", "boo", "bingo");
+    CHECK_EQUAL("foo bar baz", res);
   }
 }
 
