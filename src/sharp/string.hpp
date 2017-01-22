@@ -36,7 +36,7 @@
 namespace sharp {
 
   /**
-   * replace the first instance of %from with %with 
+   * replace the first instance of %what with %with
    * in string %source and return the result
    */
   Glib::ustring string_replace_first(const Glib::ustring & source, const Glib::ustring & what,
