@@ -1496,7 +1496,7 @@ void SearchNotesWidget::on_sorting_changed()
 
 void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
 {
-  std::vector<std::string> tokens;
+  std::vector<Glib::ustring> tokens;
   sharp::string_split(tokens, sorting.lowercase(), ":");
   if(tokens.size() != 2) {
     ERR_OUT(_("Failed to parse setting %s (Value: %s):"), Preferences::SEARCH_SORTING, sorting.c_str());

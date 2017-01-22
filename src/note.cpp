@@ -802,11 +802,9 @@ namespace gnote {
       new_pinned = uri() + " " + old_pinned;
     } 
     else {
-      std::vector<std::string> pinned_split;
+      std::vector<Glib::ustring> pinned_split;
       sharp::string_split(pinned_split, old_pinned, " \t\n");
-      for(std::vector<std::string>::const_iterator iter = pinned_split.begin();
-          iter != pinned_split.end(); ++iter) {
-        const std::string & pin(*iter);
+      for(auto pin : pinned_split) {
         if (!pin.empty() && (pin != uri())) {
           new_pinned += pin + " ";
         }

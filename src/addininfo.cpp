@@ -104,7 +104,7 @@ void AddinInfo::load_from_file(const std::string & info_file)
       load_actions(addin_info, "actions_int", &Glib::Variant<gint32>::variant_type());
       load_actions(addin_info, "actions_string", &Glib::Variant<Glib::ustring>::variant_type());
       if(addin_info.has_key(ADDIN_ACTIONS, "non_modifying_actions")) {
-        std::vector<std::string> actions;
+        std::vector<Glib::ustring> actions;
         sharp::string_split(actions, addin_info.get_string(ADDIN_ACTIONS, "non_modifying_actions"), ",");
         for(auto action : actions) {
           m_non_modifying_actions.push_back(action);
@@ -120,7 +120,7 @@ void AddinInfo::load_from_file(const std::string & info_file)
 void AddinInfo::load_actions(Glib::KeyFile & addin_info, const Glib::ustring & key, const Glib::VariantType *type)
 {
   if(addin_info.has_key(ADDIN_ACTIONS, key)) {
-    std::vector<std::string> actions;
+    std::vector<Glib::ustring> actions;
     sharp::string_split(actions, addin_info.get_string(ADDIN_ACTIONS, key), ",");
     for(auto action : actions) {
       m_actions[action] = type;
@@ -159,7 +159,7 @@ bool AddinInfo::validate_compatibility(const Glib::ustring & release, const Glib
   }
   else {
     try {
-      std::vector<std::string> parts;
+      std::vector<Glib::ustring> parts;
       sharp::string_split(parts, m_libgnote_version_info, ":");
       if(parts.size() != 3) {
         return false;

@@ -398,7 +398,7 @@ Glib::ustring NoteManagerBase::split_title_from_content(Glib::ustring title, Gli
   if(title.empty())
     return "";
 
-  std::vector<std::string> lines;
+  std::vector<Glib::ustring> lines;
   sharp::string_split(lines, title, "\n\r");
   if(lines.size() > 0) {
     title = lines [0];

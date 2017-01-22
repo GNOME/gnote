@@ -28,7 +28,6 @@
 #ifndef __SHARP_STRING_HPP_
 #define __SHARP_STRING_HPP_
 
-#include <string>
 #include <vector>
 
 #include <glibmm/ustring.h>
@@ -55,8 +54,8 @@ namespace sharp {
                                      const Glib::ustring & with);
   bool string_match_iregex(const Glib::ustring & source, const Glib::ustring & regex);
 
-  void string_split(std::vector<std::string> & split, const std::string & source,
-                    const char * delimiters);
+  void string_split(std::vector<Glib::ustring> & split, const Glib::ustring & source,
+                    const Glib::ustring & delimiters);
 
   /** copy the substring for %source, starting at %start until the end */
   Glib::ustring string_substring(const Glib::ustring & source, int start);

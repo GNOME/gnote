@@ -121,5 +121,33 @@ SUITE(String)
     CHECK_EQUAL(8, sharp::string_last_index_of("foo bar baz", "ba"));
     CHECK_EQUAL(-1, sharp::string_last_index_of("foo bar baz", "Camel"));
   }
+
+  TEST(split)
+  {
+    std::vector<Glib::ustring> splits;
+    sharp::string_split(splits, "foo bar baz", " ");
+    CHECK_EQUAL(3, splits.size());
+    CHECK_EQUAL("foo", splits[0]);
+    CHECK_EQUAL("bar", splits[1]);
+    CHECK_EQUAL("baz", splits[2]);
+
+    splits.clear();
+    sharp::string_split(splits, "\t\tjust\na\tbunch of\n\nrandom\t words\n\n\t", " \t\n");
+
+    CHECK_EQUAL(13, splits.size());
+    CHECK_EQUAL("", splits[0]);
+    CHECK_EQUAL("", splits[1]);
+    CHECK_EQUAL("just", splits[2]);
+    CHECK_EQUAL("a", splits[3]);
+    CHECK_EQUAL("bunch", splits[4]);
+    CHECK_EQUAL("of", splits[5]);
+    CHECK_EQUAL("", splits[6]);
+    CHECK_EQUAL("random", splits[7]);
+    CHECK_EQUAL("", splits[8]);
+    CHECK_EQUAL("words", splits[9]);
+    CHECK_EQUAL("", splits[10]);
+    CHECK_EQUAL("", splits[11]);
+    CHECK_EQUAL("", splits[12]);
+  }
 }
 

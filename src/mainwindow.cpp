@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2016 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -116,7 +116,7 @@ bool MainWindow::use_client_side_decorations()
     }
     else {
       s_use_client_side_decorations = 0;
-      std::vector<std::string> desktops;
+      std::vector<Glib::ustring> desktops;
       sharp::string_split(desktops, setting, ",");
       const char *current_desktop = std::getenv("DESKTOP_SESSION");
       if (current_desktop) {

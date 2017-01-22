@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -211,7 +211,7 @@ namespace sync {
     for(std::vector<std::string>::const_iterator iter = executableNames.begin();
         iter != executableNames.end(); ++iter) {
       std::string pathVar = Glib::getenv("PATH");
-      std::vector<std::string> paths;
+      std::vector<Glib::ustring> paths;
       const char separator[] = {G_SEARCHPATH_SEPARATOR, 0};
       sharp::string_split(paths, pathVar, separator);
 
@@ -222,8 +222,8 @@ namespace sync {
         }
       }
 
-      for(std::vector<std::string>::iterator path = paths.begin(); path != paths.end(); ++path) {
-        std::string testExecutablePath = Glib::build_filename(*path, *iter);
+      for(auto path : paths) {
+        Glib::ustring testExecutablePath = Glib::build_filename(path, *iter);
         if(sharp::file_exists(testExecutablePath)) {
           return testExecutablePath;
         }

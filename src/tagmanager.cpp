@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -73,7 +73,7 @@ namespace gnote {
     if (normalized_tag_name.empty())
       throw sharp::Exception ("TagManager.GetTag () called with an empty tag name.");
 
-    std::vector<std::string> splits;
+    std::vector<Glib::ustring> splits;
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || Glib::str_has_prefix(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)) {
       Glib::Mutex::Lock lock(m_locker);
@@ -104,7 +104,7 @@ namespace gnote {
     if (normalized_tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with an empty tag name.");
 
-    std::vector<std::string> splits;
+    std::vector<Glib::ustring> splits;
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || Glib::str_has_prefix(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)){
       Glib::Mutex::Lock lock(m_locker);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -68,7 +68,7 @@ namespace gnote {
         if(Glib::str_has_prefix(m_normalized_name, SYSTEM_TAG_PREFIX)) {
           m_issystem = true;
         }
-        std::vector<std::string> splits;
+        std::vector<Glib::ustring> splits;
         sharp::string_split(splits, value, ":");
         m_isproperty  = (splits.size() >= 3);
       }

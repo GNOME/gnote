@@ -105,7 +105,7 @@ namespace sharp {
 
   TimeSpan TimeSpan::parse(const Glib::ustring & s)
   {
-    std::vector<std::string> tokens;
+    std::vector<Glib::ustring> tokens;
     sharp::string_split(tokens, s, ":");
     if(tokens.size() != 5) {
       return TimeSpan(0, 0, 0, 0, 0);

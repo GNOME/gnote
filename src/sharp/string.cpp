@@ -30,10 +30,6 @@
 #include "sharp/string.hpp"
 
 #include <glibmm/regex.h>
-#include <boost/algorithm/string/case_conv.hpp>
-#include <boost/algorithm/string/classification.hpp>
-#include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/split.hpp>
 
 #include "debug.hpp"
 
@@ -105,10 +101,29 @@ namespace sharp {
     return false;
   }
 
-  void string_split(std::vector<std::string> & split, const std::string & source,
-                    const char * delimiters)
+  void string_split(std::vector<Glib::ustring> & split, const Glib::ustring & source,
+                    const Glib::ustring & delimiters)
   {
-    boost::split(split, source, boost::is_any_of(delimiters));
+    Glib::ustring::size_type start = 0;
+    while(start < source.size()) {
+      auto pos = source.find_first_of(delimiters, start);
+      if(pos == start) {
+        split.push_back("");
+      }
+      else if(pos == Glib::ustring::npos) {
+        split.push_back(source.substr(start));
+        break;
+      }
+      else {
+        split.push_back(source.substr(start, pos - start));
+      }
+      if(pos == source.size() - 1) {
+        // match at the last char in source, meaning empty part in the end
+        split.push_back("");
+        break;
+      }
+      start = pos + 1;
+    }
   }
 
   Glib::ustring string_substring(const Glib::ustring & source, int start)

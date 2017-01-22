@@ -548,14 +548,9 @@ namespace gnote {
 
     void UriList::load_from_string(const std::string & data)
     {
-      std::vector<std::string> items;
+      std::vector<Glib::ustring> items;
       sharp::string_split(items, data, "\n");
-      std::vector<Glib::ustring> uitems;
-      for(std::vector<std::string>::iterator iter = items.begin();
-          iter != items.end(); ++iter) {
-        uitems.push_back(*iter);
-      }
-      load_from_string_list(uitems);
+      load_from_string_list(items);
     }
 
     void UriList::load_from_string_list(const std::vector<Glib::ustring> & items)
