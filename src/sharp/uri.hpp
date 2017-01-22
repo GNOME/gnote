@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,7 +30,7 @@
 #define __SHARP_URI_HPP_
 
 
-#include <string>
+#include <glibmm/ustring.h>
 
 namespace sharp {
 
@@ -40,7 +41,7 @@ namespace sharp {
       : m_uri(u)
       {
       }
-    const std::string & to_string() const
+    const Glib::ustring & to_string() const
       { 
         return m_uri; 
       }
@@ -52,7 +53,7 @@ namespace sharp {
   private:
     bool _is_scheme(const std::string & scheme) const;
 
-    std::string m_uri;
+    Glib::ustring m_uri;
   };
 
 }

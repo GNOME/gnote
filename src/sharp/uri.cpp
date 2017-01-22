@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -65,12 +66,12 @@ namespace sharp {
     if(!is_file()) {
       if(_is_scheme(HTTP_URI_SCHEME) || _is_scheme(HTTPS_URI_SCHEME)
          || _is_scheme(FTP_URI_SCHEME)) {
-        int idx = string_index_of(m_uri, "://");
-        if(idx != -1) {
-          std::string sub(m_uri.begin() + idx + 3, m_uri.end());
-          idx = string_index_of(sub, "/");
-          if(idx != -1) {
-            sub.erase(sub.begin() + idx, sub.end());
+        auto idx = m_uri.find("://");
+        if(idx != Glib::ustring::npos) {
+          Glib::ustring sub(m_uri.substr(idx + 3));
+          idx = sub.find("/");
+          if(idx != Glib::ustring::npos) {
+            sub.erase(idx);
             host = sub;
           }
         }
