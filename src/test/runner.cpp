@@ -22,6 +22,9 @@
 
 int main(int /*argc*/, char ** /*argv*/)
 {
+  // force certain timezone so that time tests work
+  setenv("TZ", "Europe/London", 1);
+
   return UnitTest::RunAllTests();
 }
 
