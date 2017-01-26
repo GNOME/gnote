@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,10 +30,8 @@
 #define __SHARP_DIRECTORY_HPP_
 
 #include <list>
-#include <string>
 
-#include <glibmm.h>
-#include <giomm.h>
+#include <giomm/file.h>
 
 namespace sharp {
 

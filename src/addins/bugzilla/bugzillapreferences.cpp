@@ -23,6 +23,7 @@
 
 #include <glib.h>
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <gtkmm/buttonbox.h>
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/label.h>

@@ -23,6 +23,7 @@
 #include <stdexcept>
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
