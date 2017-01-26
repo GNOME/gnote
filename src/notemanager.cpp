@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -181,12 +181,10 @@ namespace gnote {
 
   void NoteManager::load_notes()
   {
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(notes_dir(), ".note", files);
 
-    for(std::list<std::string>::const_iterator iter = files.begin();
-        iter != files.end(); ++iter) {
-      const std::string & file_path(*iter);
+    for(auto file_path : files) {
       try {
         Note::Ptr note = Note::load(file_path, *this);
         add_note(note);
@@ -231,35 +229,31 @@ namespace gnote {
 
   void NoteManager::migrate_notes(const std::string & old_note_dir)
   {
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(old_note_dir, ".note", files);
 
-    for (std::list<std::string>::const_iterator iter = files.begin();
-         files.end() != iter; ++iter) {
-      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(
-                                                       *iter);
-      const std::string dest_path
+    for(auto file : files) {
+      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(file);
+      const Glib::ustring dest_path
           = Glib::build_filename(notes_dir(),
-                                 Glib::path_get_basename(*iter));
+                                 Glib::path_get_basename(file));
       const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(
                                                         dest_path);
       src->copy(dest, Gio::FILE_COPY_NONE);
     }
 
     files.clear();
-    const std::string old_backup_dir = Glib::build_filename(
+    const Glib::ustring old_backup_dir = Glib::build_filename(
                                          old_note_dir,
                                          "Backup");
     sharp::directory_get_files_with_ext(old_backup_dir,
                                         ".note", files);
 
-    for (std::list<std::string>::const_iterator iter = files.begin();
-         files.end() != iter; ++iter) {
-      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(
-                                            *iter);
-      const std::string dest_path
+    for(auto file : files) {
+      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(file);
+      const Glib::ustring dest_path
           = Glib::build_filename(m_backup_dir,
-                                 Glib::path_get_basename(*iter));
+                                 Glib::path_get_basename(file));
       const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(
                                                         dest_path);
       src->copy(dest, Gio::FILE_COPY_NONE);

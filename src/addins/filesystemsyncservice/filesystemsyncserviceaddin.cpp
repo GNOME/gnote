@@ -164,10 +164,10 @@ bool FileSystemSyncServiceAddin::save_configuration()
 
     // Test ability to read
     bool testFileFound = false;
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files(syncPath, files);
-    for(std::list<std::string>::iterator iter = files.begin(); iter != files.end(); ++iter) {
-      if(*iter == testPath) {
+    for(auto file : files) {
+      if(file == testPath) {
         testFileFound = true;
         break;
       }

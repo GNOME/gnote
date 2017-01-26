@@ -140,12 +140,9 @@ namespace bugzilla {
 
     icon_store->clear(); // clear out the old entries
 
-    std::list<std::string> icon_files; 
+    std::list<Glib::ustring> icon_files;
     sharp::directory_get_files (s_image_dir, icon_files);
-    for(std::list<std::string>::const_iterator iter = icon_files.begin();
-        iter != icon_files.end(); ++iter) {
-      
-      const std::string & icon_file(*iter);
+    for(auto icon_file : icon_files) {
       sharp::FileInfo file_info(icon_file);
 
       Glib::RefPtr<Gdk::Pixbuf> pixbuf;

@@ -205,11 +205,11 @@ namespace {
 
   void AddinManager::load_addin_infos(const std::string & path)
   {
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(path, ".desktop", files);
-    for(std::list<std::string>::iterator iter = files.begin(); iter != files.end(); ++iter) {
+    for(auto file : files) {
       try {
-        AddinInfo addin_info(*iter);
+        AddinInfo addin_info(file);
         if(!addin_info.validate(LIBGNOTE_RELEASE, LIBGNOTE_VERSION_INFO)) {
           continue;
         }
@@ -223,7 +223,7 @@ namespace {
         }
       }
       catch(std::exception & e) {
-        ERR_OUT(_("Failed to load addin info for %s: %s"), iter->c_str(), e.what());
+        ERR_OUT(_("Failed to load addin info for %s: %s"), file.c_str(), e.what());
       }
     }
   }

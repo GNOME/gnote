@@ -140,7 +140,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
   else {
     // Empty the temp dir
     try {
-      std::list<std::string> files;
+      std::list<Glib::ustring> files;
       sharp::directory_get_files(tempPath, files);
       for(auto & iter : files) {
         sharp::file_delete(iter);
@@ -349,7 +349,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
       if(sharp::file_exists(oldManifestFilePath)) {
         // TODO: Do step #8 as described in http://bugzilla.gnome.org/show_bug.cgi?id=321037#c17
         // Like this?
-        std::list<std::string> files;
+        std::list<Glib::ustring> files;
         sharp::directory_get_files(oldManifestFilePath, files);
         for(auto & iter : files) {
           Glib::ustring fileGuid = sharp::file_basename(iter);
@@ -406,7 +406,7 @@ int FileSystemSyncServer::latest_revision()
   while (!foundValidManifest) {
     if(latestRev < 0) {
       // Look for the highest revision parent path
-      std::list<std::string> directories;
+      std::list<Glib::ustring> directories;
       sharp::directory_get_directories(m_server_path, directories);
       for(auto & iter : directories) {
         try {

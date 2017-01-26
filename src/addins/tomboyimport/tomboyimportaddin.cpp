@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -71,13 +71,10 @@ bool TomboyImportAddin::first_run(gnote::NoteManager & manager)
   DBG_OUT("import path is %s", m_tomboy_path.c_str());
 
   if(sharp::directory_exists(m_tomboy_path)) {
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(m_tomboy_path, ".note", files);
 
-    for(std::list<std::string>::const_iterator iter = files.begin();
-        iter != files.end(); ++iter) {
-      const Glib::ustring & file_path(*iter);
-
+    for(auto file_path : files) {
       to_import++;
 
       gnote::NoteBase::Ptr note = manager.import_note(file_path);
