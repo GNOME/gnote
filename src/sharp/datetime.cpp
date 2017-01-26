@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -106,29 +106,29 @@ namespace sharp {
     return ((m_date.tv_sec != -1) && (m_date.tv_usec != -1));
   }
 
-  std::string DateTime::_to_string(const char * format, struct tm * t) const
+  Glib::ustring DateTime::_to_string(const char * format, struct tm * t) const
   {
     char output[256];
     strftime(output, sizeof(output), format, t);
     return Glib::locale_to_utf8(output);
   }
 
-  std::string DateTime::to_string(const char * format) const
+  Glib::ustring DateTime::to_string(const char * format) const
   {
     struct tm result; 
     return _to_string(format, localtime_r((const time_t *)&m_date.tv_sec, &result));
   }
 
 
-  std::string DateTime::to_short_time_string() const
+  Glib::ustring DateTime::to_short_time_string() const
   {
     struct tm result;
     return _to_string("%R", localtime_r((const time_t *)&m_date.tv_sec, &result));
   }
 
-  std::string DateTime::to_iso8601() const
+  Glib::ustring DateTime::to_iso8601() const
   {
-    std::string retval;
+    Glib::ustring retval;
     if(!is_valid()) {
       return retval;
     }
@@ -153,7 +153,7 @@ namespace sharp {
     return DateTime(n);
   }
 
-  DateTime DateTime::from_iso8601(const std::string &iso8601)
+  DateTime DateTime::from_iso8601(const Glib::ustring &iso8601)
   {
     DateTime retval;
     if(g_time_val_from_iso8601(iso8601.c_str(), &retval.m_date)) {

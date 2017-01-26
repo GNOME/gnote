@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -31,8 +31,7 @@
 
 #include <time.h>
 
-#include <string>
-
+#include <glibmm/ustring.h>
 #include <glibmm/timeval.h>
 
 #include "timespan.hpp"
@@ -58,16 +57,16 @@ public:
 
   bool is_valid() const;
 
-  std::string to_string(const char * format) const;
-  std::string to_string(const std::string & format) const
+  Glib::ustring to_string(const char * format) const;
+  Glib::ustring to_string(const Glib::ustring & format) const
     {
       return to_string(format.c_str());
     }
-  std::string to_short_time_string() const;
-  std::string to_iso8601() const;
+  Glib::ustring to_short_time_string() const;
+  Glib::ustring to_iso8601() const;
 
   static DateTime now();
-  static DateTime from_iso8601(const std::string &);
+  static DateTime from_iso8601(const Glib::ustring &);
   static int compare(const DateTime &, const DateTime &);
 
   bool operator==(const DateTime & dt) const;
@@ -105,7 +104,7 @@ public:
     }
 private:
   // return the string formatted according to strftime
-  std::string _to_string(const char * format, struct tm *) const;
+  Glib::ustring _to_string(const char * format, struct tm *) const;
   Glib::TimeVal m_date;
 };
 
