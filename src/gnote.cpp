@@ -676,7 +676,7 @@ namespace gnote {
           sr.init(m_open_external_note_path);
           if (sr.file()) {
             std::string noteTitle;
-            std::string noteXml;
+            Glib::ustring noteXml;
             sr.read_to_end (noteXml);
 
             // Make sure noteXml is parseable

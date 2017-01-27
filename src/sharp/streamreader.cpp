@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -46,13 +47,13 @@ StreamReader::~StreamReader()
   }
 }
 
-void StreamReader::init(const std::string & filename)
+void StreamReader::init(const Glib::ustring & filename)
 {
   m_file = fopen(filename.c_str(), "rb");
 }
 
 
-void StreamReader::read_to_end(std::string & text)
+void StreamReader::read_to_end(Glib::ustring & text)
 {
   DBG_ASSERT(m_file, "file is NULL");
 

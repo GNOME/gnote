@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,9 +30,9 @@
 
 #include <stdio.h>
 
-#include <string>
-
 #include <libxml/tree.h>
+
+#include <glibmm/ustring.h>
 
 namespace sharp {
 
@@ -43,14 +44,14 @@ public:
   StreamReader();
   ~StreamReader();
 
-  void init(const std::string &);
+  void init(const Glib::ustring &);
 
   FILE * file()
     {
       return m_file;
     }
 
-  void read_to_end(std::string &);
+  void read_to_end(Glib::ustring &);
 
   void close();
 private:
