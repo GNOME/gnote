@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,7 +28,7 @@
 #define __SHARP_FILEINFO_HPP_
 
 
-#include <string>
+#include <glibmm/ustring.h>
 
 #include "sharp/datetime.hpp"
 
@@ -38,15 +38,15 @@ namespace sharp {
 class FileInfo
 {
 public:
-  FileInfo(const std::string & );
-  std::string get_name() const;
-  std::string get_extension() const;
+  FileInfo(const Glib::ustring & );
+  Glib::ustring get_name() const;
+  Glib::ustring get_extension() const;
 private: 
-  std::string m_path;
+  Glib::ustring m_path;
 };
 
 
-DateTime file_modification_time(const std::string &);
+DateTime file_modification_time(const Glib::ustring &);
 
 }
 

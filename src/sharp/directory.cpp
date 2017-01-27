@@ -51,7 +51,7 @@ namespace sharp {
     for (Glib::Dir::iterator itr = d.begin(); itr != d.end(); ++itr) {
       const Glib::ustring file(dir + "/" + *itr);
       const sharp::FileInfo file_info(file);
-      const std::string & extension = file_info.get_extension();
+      const Glib::ustring extension = file_info.get_extension();
 
       if (Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR)
           && (ext.empty() || (Glib::ustring(extension).lowercase() == ext))) {
