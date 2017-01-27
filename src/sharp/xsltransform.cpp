@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -50,7 +50,7 @@ XslTransform::~XslTransform()
 }
 
 
-void XslTransform::load(const std::string & sheet)
+void XslTransform::load(const Glib::ustring & sheet)
 {
   if(m_stylesheet) {
     xsltFreeStylesheet(m_stylesheet);
