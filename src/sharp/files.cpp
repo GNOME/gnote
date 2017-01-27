@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -33,44 +33,44 @@
 namespace sharp {
 
 
-  bool file_exists(const std::string & file)
+  bool file_exists(const Glib::ustring & file)
   {
     return Glib::file_test(file, Glib::FILE_TEST_EXISTS)
            && Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR);
   }
 
 
-  std::string file_basename(const std::string & p)
+  Glib::ustring file_basename(const Glib::ustring & p)
   {
-    const std::string & filename = Glib::path_get_basename(p);
-    const std::string::size_type pos = filename.find_last_of('.');
+    const Glib::ustring filename = Glib::path_get_basename(p);
+    const Glib::ustring::size_type pos = filename.find_last_of('.');
 
-    return std::string(filename, 0, pos);
+    return Glib::ustring(filename, 0, pos);
   }
 
-  std::string file_dirname(const std::string & p)
+  Glib::ustring file_dirname(const Glib::ustring & p)
   {
     return Glib::path_get_dirname(p);
   }
 
 
-  std::string file_filename(const std::string & p)
+  Glib::ustring file_filename(const Glib::ustring & p)
   {
     return Glib::path_get_basename(p);
   }
 
-  void file_delete(const std::string & p)
+  void file_delete(const Glib::ustring & p)
   {
     g_unlink(p.c_str());
   }
 
 
-  void file_copy(const std::string & source, const std::string & dest)
+  void file_copy(const Glib::ustring & source, const Glib::ustring & dest)
   {
     Gio::File::create_for_path(source)->copy(Gio::File::create_for_path(dest), Gio::FILE_COPY_OVERWRITE);
   }
 
-  void file_move(const std::string & from, const std::string & to)
+  void file_move(const Glib::ustring & from, const Glib::ustring & to)
   {
     g_rename(from.c_str(), to.c_str());
   }
