@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -69,8 +69,8 @@ namespace sharp {
   }
 
 
-  std::string xml_node_xpath_find_single(const xmlNodePtr node,
-                                         const char * xpath)
+  Glib::ustring xml_node_xpath_find_single(const xmlNodePtr node,
+                                           const char * xpath)
   {
     xmlNodePtr n = xml_node_xpath_find_single_node(node, xpath);
     if(!n) {
@@ -110,7 +110,7 @@ namespace sharp {
   }
 
 
-  std::string xml_node_content(xmlNodePtr node)
+  Glib::ustring xml_node_content(xmlNodePtr node)
   {
     if(!node) {
       return "";
@@ -126,8 +126,8 @@ namespace sharp {
   }
 
 
-  std::string xml_node_get_attribute(const xmlNodePtr node,
-                                     const char * attr_name)
+  Glib::ustring xml_node_get_attribute(const xmlNodePtr node,
+                                       const char * attr_name)
   {
     char *res = reinterpret_cast<char*>(xmlGetProp(node, reinterpret_cast<const xmlChar*>(attr_name)));
     return res ? res : "";
