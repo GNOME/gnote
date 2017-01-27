@@ -37,7 +37,7 @@ namespace sharp {
   class Uri
   {
   public:
-    Uri(const std::string & u)
+    Uri(const Glib::ustring & u)
       : m_uri(u)
       {
       }
@@ -46,12 +46,12 @@ namespace sharp {
         return m_uri; 
       }
     bool is_file() const;
-    std::string local_path() const;
-    std::string get_host() const;
-    std::string get_absolute_uri() const;
-    static std::string escape_uri_string(const std::string &);
+    Glib::ustring local_path() const;
+    Glib::ustring get_host() const;
+    Glib::ustring get_absolute_uri() const;
+    static Glib::ustring escape_uri_string(const Glib::ustring &);
   private:
-    bool _is_scheme(const std::string & scheme) const;
+    bool _is_scheme(const Glib::ustring & scheme) const;
 
     Glib::ustring m_uri;
   };
