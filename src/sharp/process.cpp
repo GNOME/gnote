@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -136,7 +136,7 @@ bool Process::standard_output_eof()
   return eof(m_stdout_stream, m_stdout);
 }
 
-std::string Process::standard_output_read_line()
+Glib::ustring Process::standard_output_read_line()
 {
   return read_line(m_stdout_stream, m_stdout);
 }
@@ -146,7 +146,7 @@ bool Process::standard_error_eof()
   return eof(m_stderr_stream, m_stderr);
 }
 
-std::string Process::standard_error_read_line()
+Glib::ustring Process::standard_error_read_line()
 {
   return read_line(m_stderr_stream, m_stderr);
 }
@@ -163,7 +163,7 @@ bool Process::eof(std::stringstream & stream, int & m_file)
   return !m_file && stream.tellg() < 0;
 }
 
-std::string Process::read_line(std::stringstream & stream, int & m_file)
+Glib::ustring Process::read_line(std::stringstream & stream, int & m_file)
 {
   while(m_file && !line_available(stream)) {
     if(!perform_read(stream, m_file)) {

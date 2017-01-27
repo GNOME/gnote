@@ -310,7 +310,7 @@ void FuseSyncServiceAddin::unmount_timeout()
     sharp::Process p;
     p.redirect_standard_output(false);
     p.file_name(m_fuse_unmount_exe_path);
-    std::vector<std::string> args;
+    std::vector<Glib::ustring> args;
     args.push_back("-u");
     args.push_back(m_mount_path);
     p.arguments(args);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ protected:
   virtual void save_configuration_values() = 0;
   virtual void reset_configuration_values() = 0;
   virtual std::string fuse_mount_exe_name() = 0;
-  virtual std::vector<std::string> get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues) = 0;
+  virtual std::vector<Glib::ustring> get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues) = 0;
   virtual std::string get_fuse_mount_exe_args_for_display(const std::string & mountPath, bool fromStoredValues) = 0;
 private:
   static void redirect_standard_error();

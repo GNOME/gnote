@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,8 +22,9 @@
 #define _SHARP_PROCESS_HPP_
 
 #include <sstream>
-#include <string>
 #include <vector>
+
+#include <glibmm/ustring.h>
 
 
 namespace sharp {
@@ -36,26 +37,26 @@ public:
   void wait_for_exit();
   bool wait_for_exit(unsigned timeout);
   bool standard_output_eof();
-  std::string standard_output_read_line();
+  Glib::ustring standard_output_read_line();
   bool standard_error_eof();
-  std::string standard_error_read_line();
+  Glib::ustring standard_error_read_line();
   int exit_code() const
     {
       return m_exit_code;
     }
-  std::string file_name() const
+  Glib::ustring file_name() const
     {
       return m_file_name;
     }
-  void file_name(const std::string & fname)
+  void file_name(const Glib::ustring & fname)
     {
       m_file_name = fname;
     }
-  std::vector<std::string> arguments() const
+  std::vector<Glib::ustring> arguments() const
     {
       return m_args;
     }
-  void arguments(const std::vector<std::string> & args)
+  void arguments(const std::vector<Glib::ustring> & args)
     {
       m_args = args;
     }
@@ -80,13 +81,13 @@ private:
   static void redirect_output(bool redirect, int fileno, int *pipedes);
 
   bool eof(std::stringstream & stream, int & m_file);
-  std::string read_line(std::stringstream & stream, int & m_file);
+  Glib::ustring read_line(std::stringstream & stream, int & m_file);
   bool line_available(std::stringstream & stream);
   bool perform_read(std::stringstream & stream, int & m_file);
 
   int m_exit_code;
-  std::string m_file_name;
-  std::vector<std::string> m_args;
+  Glib::ustring m_file_name;
+  std::vector<Glib::ustring> m_args;
   bool m_redirect_stdout;
   bool m_redirect_stderr;
   int m_pid;

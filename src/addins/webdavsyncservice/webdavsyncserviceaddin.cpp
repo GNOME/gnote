@@ -117,7 +117,7 @@ std::string WebDavSyncServiceAddin::fuse_mount_directory_error()
   return res;
 }
 
-std::vector<std::string> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues)
+std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues)
 {
   std::string url, username, password;
   if(fromStoredValues) {
@@ -148,10 +148,10 @@ std::string WebDavSyncServiceAddin::get_fuse_mount_exe_args_for_display(const st
 
   return str(boost::format("%1% -a %2% -u %3% -p %4% %5% -o fsname=gnotewdfs")
              % mountPath % url % username % password % acceptSsl);*/
-  std::vector<std::string> args = get_fuse_mount_exe_args(mountPath, fromStoredValues);
+  std::vector<Glib::ustring> args = get_fuse_mount_exe_args(mountPath, fromStoredValues);
   std::string result;
-  for(std::vector<std::string>::iterator iter = args.begin(); iter != args.end(); ++iter) {
-    result += *iter + " ";
+  for(auto iter : args) {
+    result += iter + " ";
   }
 
   return result;
@@ -190,10 +190,10 @@ void WebDavSyncServiceAddin::reset_configuration_values()
   // TODO: Unmount the FUSE mount!
 }
 
-std::vector<std::string> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const std::string & mountPath, const std::string & url,
+std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const std::string & mountPath, const std::string & url,
     const std::string & username, const std::string & password, bool acceptSsl)
 {
-  std::vector<std::string> args;
+  std::vector<Glib::ustring> args;
   args.reserve(12);
   args.push_back(url);
   args.push_back(mountPath);

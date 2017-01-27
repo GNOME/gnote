@@ -165,7 +165,7 @@ namespace sync {
       // "modprobe fuse"
       sharp::Process p;
       p.file_name(m_guisu_tool);
-      std::vector<std::string> args;
+      std::vector<Glib::ustring> args;
       args.push_back(m_modprobe_tool);
       args.push_back("fuse");
       p.arguments(args);
