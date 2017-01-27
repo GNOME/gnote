@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,7 +30,8 @@
 #define __SHARP_DYNAMICMODULE_HPP_
 
 #include <map>
-#include <string>
+
+#include <glibmm/ustring.h>
 
 
 namespace sharp {
@@ -80,7 +81,7 @@ protected:
   
 private:
   bool m_enabled;
-  std::map<std::string, IfaceFactoryBase *> m_interfaces;
+  std::map<Glib::ustring, IfaceFactoryBase *> m_interfaces;
 };
 
 
