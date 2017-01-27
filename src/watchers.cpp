@@ -226,8 +226,8 @@ namespace gnote {
     get_buffer()->move_mark (get_buffer()->get_selection_bound(), get_title_start());
     get_buffer()->move_mark (get_buffer()->get_insert(), get_title_end());
 
-    // TRANSLATORS: %1 is the placeholder for the title.
     std::string message = Glib::ustring::compose(
+                                // TRANSLATORS: %1 is the placeholder for the title.
                                 _("A note with the title "
                                   "<b>%1</b> already exists. "
                                   "Please choose another name "

@@ -312,8 +312,8 @@ namespace gnote {
       options_list->attach(*rename_behavior_box, 0, options_list_row++, 1, 1);
 
       // New Note Template
-      // TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
       Gtk::Grid *template_note_grid = manage(new Gtk::Grid);
+      // TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
       label = manage(make_label (_("New Note Template")));
       set_widget_tooltip(*label, _("Use the new note template to specify the text "
                                    "that should be used when creating a new note."));
