@@ -33,7 +33,7 @@
 
 namespace sharp {
 
-void XsltArgumentList::add_param(const char* name, const char * /*uri*/, const std::string & value)
+void XsltArgumentList::add_param(const char* name, const char * /*uri*/, const Glib::ustring & value)
 {
   Glib::ustring pv = Glib::ustring::compose("\"%1\"", value);
   m_args.push_back(std::make_pair(name, pv));

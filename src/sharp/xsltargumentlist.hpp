@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,8 +30,9 @@
 #define __SHARP_XSLTARGUMENTLIST_HPP_
 
 #include <list>
-#include <string>
 #include <utility>
+
+#include <glibmm/ustring.h>
 
 namespace sharp {
 
@@ -39,11 +40,11 @@ namespace sharp {
 class XsltArgumentList
 {
 public:
-  typedef std::list<std::pair<std::string,std::string> > container_t;
+  typedef std::list<std::pair<Glib::ustring,Glib::ustring> > container_t;
   typedef container_t::const_iterator const_iterator;
 
   /** add a string parameter */
-  void add_param(const char* name, const char *uri, const std::string &);
+  void add_param(const char* name, const char *uri, const Glib::ustring &);
   /** add a bool parameter */
   void add_param(const char* name, const char *uri, bool);
 
