@@ -228,7 +228,7 @@ namespace {
     }
   }
 
-  void AddinManager::get_enabled_addins(std::list<std::string> & addins) const
+  void AddinManager::get_enabled_addins(std::list<Glib::ustring> & addins) const
   {
     bool global_addins_prefs_loaded = true;
     Glib::KeyFile global_addins_prefs;
@@ -282,7 +282,7 @@ namespace {
     std::string local_path = m_gnote_conf_dir + "/addins";
 
     load_addin_infos(global_path, local_path);
-    std::list<std::string> enabled_addins;
+    std::list<Glib::ustring> enabled_addins;
     get_enabled_addins(enabled_addins);
     m_module_manager.load_modules(enabled_addins);
 

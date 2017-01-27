@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2015 Aurimas Cernius
+ * Copyright (C) 2010,2012-2015,2017 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -90,7 +90,7 @@ private:
   void load_addin_infos(const std::string & global_path, const std::string & local_path);
   void load_addin_infos(const std::string & path);
   void load_note_addin(const std::string & id, sharp::IfaceFactoryBase *const f);
-  void get_enabled_addins(std::list<std::string> & addins) const;
+  void get_enabled_addins(std::list<Glib::ustring> & addins) const;
   void initialize_sharp_addins();
   void add_module_addins(const std::string & mod_id, sharp::DynamicModule * dmod);
   AddinInfo get_info_for_module(const std::string & module) const;

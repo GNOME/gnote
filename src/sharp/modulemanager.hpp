@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,25 +29,26 @@
 #define __SHARP_MODULEMANAGER_HPP_
 
 #include <map>
-#include <string>
+
+#include <glibmm/ustring.h>
 
 namespace sharp {
 
 class DynamicModule;
 
-typedef std::map<std::string, DynamicModule*> ModuleMap;
+typedef std::map<Glib::ustring, DynamicModule*> ModuleMap;
 
 class ModuleManager 
 {
 public:
   ~ModuleManager();
 
-  DynamicModule *load_module(const std::string & module);
-  void load_modules(const std::list<std::string> & modules);
+  DynamicModule *load_module(const Glib::ustring & module);
+  void load_modules(const std::list<Glib::ustring> & modules);
   
   const ModuleMap & get_modules() const
     { return m_modules; }
-  DynamicModule *get_module(const std::string & module) const;
+  DynamicModule *get_module(const Glib::ustring & module) const;
 private:
   ModuleMap m_modules;
 };

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -49,7 +49,7 @@ namespace sharp {
     }
   }
 
-  DynamicModule *ModuleManager::load_module(const std::string & mod)
+  DynamicModule *ModuleManager::load_module(const Glib::ustring & mod)
   {
     DynamicModule *dmod = get_module(mod);
     if(dmod) {
@@ -81,15 +81,14 @@ namespace sharp {
     return dmod;
   }
 
-  void ModuleManager::load_modules(const std::list<std::string> & modules)
+  void ModuleManager::load_modules(const std::list<Glib::ustring> & modules)
   {
-    for(std::list<std::string>::const_iterator mod_iter = modules.begin();
-        mod_iter != modules.end(); ++mod_iter) {
-      load_module(*mod_iter);
+    for(auto module : modules) {
+      load_module(module);
     }
   }
 
-  DynamicModule * ModuleManager::get_module(const std::string & module) const
+  DynamicModule * ModuleManager::get_module(const Glib::ustring & module) const
   {
     ModuleMap::const_iterator iter = m_modules.find(module);
     if(iter != m_modules.end()) {
