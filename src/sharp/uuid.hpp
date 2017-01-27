@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,7 +30,8 @@
 #define __SHARP_UUID_HPP_
 
 #include <uuid.h>
-#include <string>
+
+#include <glibmm/ustring.h>
 
 namespace sharp {
 
@@ -41,7 +43,7 @@ namespace sharp {
         uuid_generate(m_uuid);
       }
 
-    std::string string()
+    Glib::ustring string()
       {
         char out[40];
         uuid_unparse_lower(m_uuid, out);
