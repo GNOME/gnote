@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -49,7 +49,7 @@ namespace sharp {
   protected:
     PropertyEditorBase(Glib::RefPtr<Gio::Settings> & settings, const char *key, Gtk::Widget &w);
 
-    std::string m_key;
+    Glib::ustring m_key;
     Gtk::Widget &m_widget;
     sigc::connection m_connection;
     Glib::RefPtr<Gio::Settings> m_settings;
