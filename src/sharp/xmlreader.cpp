@@ -81,11 +81,9 @@ namespace sharp {
   void XmlReader::load_buffer(const Glib::ustring &s)
   {
     close();
-    /** we copy the string. It shouldn't be a big deal as the strings
-     * are copy on write.
-     */
     m_buffer = s;
-    m_reader = xmlReaderForMemory(m_buffer.c_str(), m_buffer.size(), "",
+    // use bytes() instead of size(), because of multibyte Unicode characters (need proper C-string length
+    m_reader = xmlReaderForMemory(m_buffer.c_str(), m_buffer.bytes(), "",
                                   "UTF-8", 0);//XML_PARSE_RECOVER);
     m_error = (m_reader == NULL);
     if(m_reader) {
