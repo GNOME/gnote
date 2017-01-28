@@ -23,9 +23,9 @@ GNOTE_LIBS = libgnote.la $(LIBGNOTE_LIBS)
 
 lib_LTLIBRARIES = libgnote.la
 bin_PROGRAMS = gnote
-check_PROGRAMS = trietest notetest uritest filestest \
+check_PROGRAMS = trietest notetest uritest \
 	fileinfotest xmlreadertest notemanagertest gnotesyncclienttest
-TESTS = trietest notetest dttest uritest filestest \
+TESTS = trietest notetest uritest \
 	fileinfotest xmlreadertest notemanagertest gnotesyncclienttest
 
 if HAVE_UNITTESTCPP
@@ -35,6 +35,7 @@ TESTS += gnoteunittests
 gnoteunittests_SOURCES = \
 	test/runner.cpp \
 	test/unit/datetimeutests.cpp \
+	test/unit/filesutests.cpp \
 	test/unit/stringutests.cpp \
 	$(NULL)
 gnoteunittests_LDADD = libgnote.la @UNITTESTCPP_LIBS@
@@ -43,9 +44,6 @@ endif
 
 trietest_SOURCES = test/trietest.cpp
 trietest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
-
-filestest_SOURCES = test/filestest.cpp
-filestest_LDADD = libgnote.la @LIBGLIBMM_LIBS@ -lgiomm-2.4
 
 fileinfotest_SOURCES = test/fileinfotest.cpp
 fileinfotest_LDADD = libgnote.la @LIBGLIBMM_LIBS@ -lgiomm-2.4
