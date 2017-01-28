@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,12 +20,15 @@
 
 #include <cstdio>
 
-#include <boost/test/minimal.hpp>
+#include <UnitTest++/UnitTest++.h>
 
-#include "testnotemanager.hpp"
-#include "testsyncclient.hpp"
-#include "testtagmanager.hpp"
+#include "test/testnotemanager.hpp"
+#include "test/testsyncclient.hpp"
+#include "test/testtagmanager.hpp"
 
+
+SUITE(GnoteSyncClient)
+{
 
 const char *TEST_MANIFEST =
   "<manifest>"
@@ -60,7 +63,7 @@ std::string create_manifest()
 }
 
 
-int test_main(int /*argc*/, char ** /*argv*/)
+TEST(manifest_parsing)
 {
   std::string test_manifest = create_manifest();
   
@@ -71,17 +74,18 @@ int test_main(int /*argc*/, char ** /*argv*/)
   client.reparse();
 
   sharp::DateTime sync_date(sharp::DateTime::from_iso8601("2014-04-21T20:13:24.711343Z"));
-  BOOST_CHECK(client.last_sync_date() == sync_date);
-  BOOST_CHECK(client.last_synchronized_revision() == 0);
-  BOOST_CHECK(client.associated_server_id() == "38afddc2-9ce8-46ba-b106-baf3916c74b8");
-  BOOST_CHECK(client.deleted_note_titles().size() == 3);
+  CHECK(client.last_sync_date() == sync_date);
+  CHECK_EQUAL(0, client.last_synchronized_revision());
+  CHECK_EQUAL("38afddc2-9ce8-46ba-b106-baf3916c74b8", client.associated_server_id());
+  CHECK_EQUAL(3, client.deleted_note_titles().size());
 
   gnote::NoteBase::Ptr note = manager.create("test");
   client.set_revision(note, 1);
   client.reparse();
-  BOOST_CHECK(client.get_revision(note) == 1);
+  CHECK_EQUAL(1, client.get_revision(note));
 
   std::remove(test_manifest.c_str());
-  return 0;
+}
+
 }
 

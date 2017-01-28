@@ -23,21 +23,22 @@ GNOTE_LIBS = libgnote.la $(LIBGNOTE_LIBS)
 
 lib_LTLIBRARIES = libgnote.la
 bin_PROGRAMS = gnote
-check_PROGRAMS = gnotesyncclienttest
-TESTS = gnotesyncclienttest
 
 if HAVE_UNITTESTCPP
-check_PROGRAMS += gnoteunittests
-TESTS += gnoteunittests
+check_PROGRAMS = gnoteunittests
+TESTS = gnoteunittests
 
 gnoteunittests_SOURCES = \
+	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
 	test/runner.cpp \
 	test/testnote.cpp test/testnote.hpp \
 	test/testnotemanager.cpp test/testnotemanager.hpp \
+	test/testsyncclient.hpp test/testsyncclient.cpp \
 	test/testtagmanager.cpp test/testtagmanager.hpp \
 	test/unit/datetimeutests.cpp \
 	test/unit/filesutests.cpp \
 	test/unit/fileinfoutests.cpp \
+	test/unit/gnotesyncclientutests.cpp \
 	test/unit/noteutests.cpp \
 	test/unit/notemanagerutests.cpp \
 	test/unit/stringutests.cpp \
@@ -47,16 +48,6 @@ gnoteunittests_SOURCES = \
 	$(NULL)
 gnoteunittests_LDADD = libgnote.la @UNITTESTCPP_LIBS@
 endif
-
-
-gnotesyncclienttest_SOURCES = test/gnotesyncclienttest.cpp \
-	test/testnote.cpp test/testnote.hpp \
-	test/testnotemanager.cpp test/testnotemanager.hpp \
-	test/testsyncclient.hpp test/testsyncclient.cpp \
-	test/testtagmanager.cpp test/testtagmanager.hpp \
-	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
-	$(NULL)
-gnotesyncclienttest_LDADD = $(GNOTE_LIBS)
 
 
 SUBDIRS += dbus
