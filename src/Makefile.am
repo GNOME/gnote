@@ -23,10 +23,8 @@ GNOTE_LIBS = libgnote.la $(LIBGNOTE_LIBS)
 
 lib_LTLIBRARIES = libgnote.la
 bin_PROGRAMS = gnote
-check_PROGRAMS = notetest \
-	notemanagertest gnotesyncclienttest
-TESTS = notetest \
-	notemanagertest gnotesyncclienttest
+check_PROGRAMS = notemanagertest gnotesyncclienttest
+TESTS = notemanagertest gnotesyncclienttest
 
 if HAVE_UNITTESTCPP
 check_PROGRAMS += gnoteunittests
@@ -37,6 +35,7 @@ gnoteunittests_SOURCES = \
 	test/unit/datetimeutests.cpp \
 	test/unit/filesutests.cpp \
 	test/unit/fileinfoutests.cpp \
+	test/unit/noteutests.cpp \
 	test/unit/stringutests.cpp \
 	test/unit/trieutests.cpp \
 	test/unit/uriutests.cpp \
@@ -45,9 +44,6 @@ gnoteunittests_SOURCES = \
 gnoteunittests_LDADD = libgnote.la @UNITTESTCPP_LIBS@
 endif
 
-
-notetest_SOURCES = test/notetest.cpp
-notetest_LDADD =  $(GNOTE_LIBS) -lX11
 
 notemanagertest_SOURCES = test/notemanagertest.cpp \
 	test/testnote.cpp test/testnote.hpp \

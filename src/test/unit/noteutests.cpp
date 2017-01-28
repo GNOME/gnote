@@ -1,8 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
- * Copyright (C) 2009 Hubert Figuiere
+ * Copyright (C) 2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,31 +19,29 @@
 
 
 
-#include <string>
 #include <list>
 
-#include <boost/test/minimal.hpp>
-
 #include <libxml/tree.h>
+#include <UnitTest++/UnitTest++.h>
 
 #include "note.hpp"
 
-int test_main(int /*argc*/, char ** /*argv*/)
+SUITE(Note)
 {
-//  std::string markup = "<tags><tag>system:notebook:ggoiiii</tag><tag>system:template</tag></tags>";
-  std::string markup = "<tags xmlns=\"http://beatniksoftware.com/tomboy\"><tag>system:notebook:ggoiiii</tag><tag>system:template</tag></tags>";
+  TEST(tags)
+  {
+    Glib::ustring markup = "<tags xmlns=\"http://beatniksoftware.com/tomboy\"><tag>system:notebook:ggoiiii</tag><tag>system:template</tag></tags>";
 
-  xmlDocPtr doc = xmlParseDoc((const xmlChar*)markup.c_str());
-  BOOST_CHECK(doc);
+    xmlDocPtr doc = xmlParseDoc((const xmlChar*)markup.c_str());
+    CHECK(doc);
 
-  if(doc) {
-    std::list<Glib::ustring> tags;
-    gnote::NoteBase::parse_tags(xmlDocGetRootElement(doc), tags);
-    BOOST_CHECK(!tags.empty());
+    if(doc) {
+      std::list<Glib::ustring> tags;
+      gnote::NoteBase::parse_tags(xmlDocGetRootElement(doc), tags);
+      CHECK(!tags.empty());
 
-    xmlFreeDoc(doc);
+      xmlFreeDoc(doc);
+    }
   }
-
-  return 0;
 }
 
