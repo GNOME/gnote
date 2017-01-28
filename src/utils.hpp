@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2016 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -154,13 +154,13 @@ namespace gnote {
     class XmlEncoder
     {
     public:
-      static std::string encode(const std::string & source);
+      static Glib::ustring encode(const Glib::ustring & source);
     };
 
     class XmlDecoder
     {
     public:
-      static std::string decode(const std::string & source);
+      static Glib::ustring decode(const Glib::ustring & source);
 
     };
 

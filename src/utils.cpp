@@ -615,7 +615,7 @@ namespace gnote {
     }
 
 
-    std::string XmlEncoder::encode(const std::string & source)
+    Glib::ustring XmlEncoder::encode(const Glib::ustring & source)
     {
       sharp::XmlWriter xml;
       //need element so that source is properly escaped
@@ -624,8 +624,8 @@ namespace gnote {
       xml.write_end_element();
 
       xml.close();
-      std::string result = xml.to_string();
-      std::string::size_type end_pos = result.find("</x>");
+      Glib::ustring result = xml.to_string();
+      Glib::ustring::size_type end_pos = result.find("</x>");
       if(end_pos == result.npos) {
         return "";
       }
@@ -634,11 +634,9 @@ namespace gnote {
     }
 
 
-    std::string XmlDecoder::decode(const std::string & source)
+    Glib::ustring XmlDecoder::decode(const Glib::ustring & source)
     {
-      // TODO there is probably better than a std::string for that.
-      // this will do for now.
-      std::string builder;
+      Glib::ustring builder;
 
       sharp::XmlReader xml;
       xml.load_buffer(source);
