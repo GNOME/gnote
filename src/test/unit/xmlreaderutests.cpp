@@ -73,5 +73,39 @@ SUITE(XmlReader)
     CHECK(xml.read());
     CHECK_EQUAL(XML_READER_TYPE_TEXT, xml.get_node_type());
   }
+
+  TEST(unicode_test)
+  {
+    Glib::ustring content = "<note><title>ąčęėįšų</title><note-content>"
+                            "ąčęėįšų\n\n"
+                            "Contains some unicode characters"
+                            "</note-content></note>";
+
+    sharp::XmlReader xml;
+    xml.load_buffer(content);
+
+    CHECK(xml.read());
+    CHECK_EQUAL(XML_READER_TYPE_ELEMENT, xml.get_node_type());
+    CHECK_EQUAL("note", xml.get_name());
+    CHECK(xml.read());
+    CHECK_EQUAL(XML_READER_TYPE_ELEMENT, xml.get_node_type());
+    CHECK_EQUAL("title", xml.get_name());
+    CHECK(xml.read());
+    CHECK_EQUAL(XML_READER_TYPE_TEXT, xml.get_node_type());
+    CHECK_EQUAL("ąčęėįšų", xml.get_value());
+    CHECK(xml.read());
+    CHECK_EQUAL(XML_READER_TYPE_END_ELEMENT, xml.get_node_type());
+    CHECK(xml.read());
+    CHECK_EQUAL(XML_READER_TYPE_ELEMENT, xml.get_node_type());
+    CHECK_EQUAL("note-content", xml.get_name());
+    CHECK(xml.read());
+    CHECK_EQUAL(XML_READER_TYPE_TEXT, xml.get_node_type());
+    CHECK_EQUAL("ąčęėįšų\n\nContains some unicode characters", xml.get_value());
+    CHECK(xml.read());
+    CHECK_EQUAL(XML_READER_TYPE_END_ELEMENT, xml.get_node_type());
+    CHECK(xml.read());
+    CHECK_EQUAL(XML_READER_TYPE_END_ELEMENT, xml.get_node_type());
+    CHECK(!xml.read());
+  }
 }
 
