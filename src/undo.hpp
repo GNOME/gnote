@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,14 +27,13 @@
 #include <string>
 #include <stack>
 
-#include <boost/noncopyable.hpp>
-
 #include <sigc++/signal.h>
 #include <gtkmm/textbuffer.h>
 #include <gtkmm/texttag.h>
 #include <gtkmm/textiter.h>
 
 #include "base/macros.hpp"
+#include "noncopyable.hpp"
 #include "notebuffer.hpp"
 #include "utils.hpp"
 
@@ -220,7 +219,7 @@ private:
 };
 
 class UndoManager
-  : public boost::noncopyable
+  : public gnote::NonCopyable
 {
 public:
   /** the buffer it NOT owned by the UndoManager

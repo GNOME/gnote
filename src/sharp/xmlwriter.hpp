@@ -30,11 +30,11 @@
 #define __SHARP_XMLWRITER_HPP_
 
 
-#include <boost/noncopyable.hpp>
-
 #include <glib.h>
 #include <glibmm/ustring.h>
 #include <libxml/xmlwriter.h>
+
+#include "noncopyable.hpp"
 
 
 namespace sharp {
@@ -47,7 +47,7 @@ namespace sharp {
   }
 
   class XmlWriter
-    : public boost::noncopyable
+    : public gnote::NonCopyable
   {
   public:
     XmlWriter();

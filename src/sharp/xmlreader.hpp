@@ -29,14 +29,15 @@
 #ifndef __SHARP_XMLREADER_HPP_
 #define __SHARP_XMLREADER_HPP_
 
-#include <boost/noncopyable.hpp>
 #include <glibmm/ustring.h>
 #include <libxml/xmlreader.h>
+
+#include "noncopyable.hpp"
 
 namespace sharp {
 
 class XmlReader
-    : public boost::noncopyable
+    : public gnote::NonCopyable
 {
 public:
   /** Create a XmlReader to read from a buffer */

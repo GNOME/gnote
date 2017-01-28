@@ -107,6 +107,7 @@ libgnote_la_SOURCES = \
 	mainwindow.hpp mainwindow.cpp \
 	mainwindowaction.hpp mainwindowaction.cpp \
 	mainwindowembeds.hpp mainwindowembeds.cpp \
+	noncopyable.hpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebase.hpp notebase.cpp \
 	notebuffer.hpp notebuffer.cpp \
