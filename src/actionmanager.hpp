@@ -22,8 +22,6 @@
 #define __ACTIONMANAGER_HPP_
 
 #include <map>
-#include <string>
-#include <list>
 
 #include <glibmm/variant.h>
 #include <giomm/menu.h>
