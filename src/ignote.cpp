@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,24 +28,24 @@ namespace gnote {
 IGnote::~IGnote()
 {}
 
-std::string IGnote::cache_dir()
+Glib::ustring IGnote::cache_dir()
 {
   return Glib::get_user_cache_dir() + "/gnote";
 }
 
-std::string IGnote::conf_dir()
+Glib::ustring IGnote::conf_dir()
 {
   return Glib::get_user_config_dir() + "/gnote";
 }
 
-std::string IGnote::data_dir()
+Glib::ustring IGnote::data_dir()
 {
   return Glib::get_user_data_dir() + "/gnote";
 }
 
-std::string IGnote::old_note_dir()
+Glib::ustring IGnote::old_note_dir()
 {
-  std::string home_dir = Glib::get_home_dir();
+  Glib::ustring home_dir = Glib::get_home_dir();
 
   if(home_dir.empty()) {
     home_dir = Glib::get_current_dir();
