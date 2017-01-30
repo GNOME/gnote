@@ -35,7 +35,7 @@ namespace gnote {
     const char * ADDIN_ATTS = "AddinAttributes";
     const char * ADDIN_ACTIONS = "Actions";
 
-    AddinCategory resolve_addin_category(const std::string & cat)
+    AddinCategory resolve_addin_category(const Glib::ustring & cat)
     {
       if(cat == "Tools") {
         return ADDIN_CATEGORY_TOOLS;
@@ -57,14 +57,14 @@ namespace gnote {
 
 
 
-AddinInfo::AddinInfo(const std::string & info_file)
+AddinInfo::AddinInfo(const Glib::ustring & info_file)
   : m_category(ADDIN_CATEGORY_UNKNOWN)
   , m_default_enabled(false)
 {
   load_from_file(info_file);
 }
 
-void AddinInfo::load_from_file(const std::string & info_file)
+void AddinInfo::load_from_file(const Glib::ustring & info_file)
 {
   try {
     Glib::KeyFile addin_info;

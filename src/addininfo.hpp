@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2016 Aurimas Cernius
+ * Copyright (C) 2013-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 #ifndef _ADDININFO_HPP_
 #define _ADDININFO_HPP_
 
-#include <string>
 #include <map>
 
 #include <glibmm/keyfile.h>
@@ -42,22 +41,22 @@ class AddinInfo
 {
 public:
   AddinInfo(){}
-  explicit AddinInfo(const std::string & info_file);
-  void load_from_file(const std::string & info_file);
+  explicit AddinInfo(const Glib::ustring & info_file);
+  void load_from_file(const Glib::ustring & info_file);
 
-  const std::string & id() const
+  const Glib::ustring & id() const
     {
       return m_id;
     }
-  const std::string & name() const
+  const Glib::ustring & name() const
     {
       return m_name;
     }
-  const std::string & description() const
+  const Glib::ustring & description() const
     {
       return m_description;
     }
-  const std::string & authors() const
+  const Glib::ustring & authors() const
     {
       return m_authors;
     }
@@ -65,11 +64,11 @@ public:
     {
       return m_category;
     }
-  const std::string & version() const
+  const Glib::ustring & version() const
     {
       return m_version;
     }
-  const std::string & copyright() const
+  const Glib::ustring & copyright() const
     {
       return m_copyright;
     }
@@ -77,11 +76,11 @@ public:
     {
       return m_default_enabled;
     }
-  const std::string & addin_module() const
+  const Glib::ustring & addin_module() const
     {
       return m_addin_module;
     }
-  void addin_module(const std::string & module)
+  void addin_module(const Glib::ustring & module)
     {
       m_addin_module = module;
     }
@@ -100,15 +99,15 @@ public:
   Glib::ustring get_attribute(const Glib::ustring & att);
   bool validate(const Glib::ustring & release, const Glib::ustring & version_info) const;
 private:
-  std::string m_id;
-  std::string m_name;
-  std::string m_description;
-  std::string m_authors;
+  Glib::ustring m_id;
+  Glib::ustring m_name;
+  Glib::ustring m_description;
+  Glib::ustring m_authors;
   AddinCategory m_category;
-  std::string m_version;
-  std::string m_copyright;
+  Glib::ustring m_version;
+  Glib::ustring m_copyright;
   bool m_default_enabled;
-  std::string m_addin_module;
+  Glib::ustring m_addin_module;
   Glib::ustring m_libgnote_release;
   Glib::ustring m_libgnote_version_info;
 
