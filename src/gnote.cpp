@@ -133,7 +133,7 @@ namespace gnote {
 
   void Gnote::common_init()
   {
-    std::string note_path = get_note_path(cmd_line.note_path());
+    Glib::ustring note_path = get_note_path(cmd_line.note_path());
 
     //create singleton objects
     new TagManager;
@@ -196,9 +196,9 @@ namespace gnote {
     }
   }
 
-  std::string Gnote::get_note_path(const std::string & override_path)
+  Glib::ustring Gnote::get_note_path(const Glib::ustring & override_path)
   {
-    std::string note_path;
+    Glib::ustring note_path;
     if(override_path.empty()) {
       const char * s = getenv("GNOTE_PATH");
       note_path = s?s:"";
@@ -288,7 +288,7 @@ namespace gnote {
     documenters.push_back("Pierre-Yves Luyten <py@luyten.fr>");
     documenters.push_back("Aurimas Černius <aurisc4@gmail.com>");
 
-    std::string translators(_("translator-credits"));
+    Glib::ustring translators(_("translator-credits"));
     if (translators == "translator-credits")
       translators = "";
 
@@ -638,7 +638,7 @@ namespace gnote {
   void GnoteCommandLine::execute(T & remote)
   {
     if (m_do_new_note) {
-      std::string new_uri;
+      Glib::ustring new_uri;
 
       if (!m_new_note_name.empty()) {
         new_uri = remote->FindNote (m_new_note_name);
@@ -667,7 +667,7 @@ namespace gnote {
     }
 
     if (!m_open_external_note_path.empty()) {
-      std::string note_id = sharp::file_basename(m_open_external_note_path);
+      Glib::ustring note_id = sharp::file_basename(m_open_external_note_path);
       if (!note_id.empty()) {
         // Attempt to load the note, assuming it might already
         // be part of our notes list.
@@ -675,7 +675,7 @@ namespace gnote {
           sharp::StreamReader sr;
           sr.init(m_open_external_note_path);
           if (sr.file()) {
-            std::string noteTitle;
+            Glib::ustring noteTitle;
             Glib::ustring noteXml;
             sr.read_to_end (noteXml);
 
@@ -692,12 +692,12 @@ namespace gnote {
               noteTitle = NoteArchiver::obj().get_title_from_note_xml (noteXml);
               if (!noteTitle.empty()) {
                 // Check for conflicting titles
-                std::string baseTitle = noteTitle;
+                Glib::ustring baseTitle = noteTitle;
                 for (int i = 1; !remote->FindNote (noteTitle).empty(); i++) {
                   noteTitle = Glib::ustring::compose("%1 (%2)", baseTitle, i);
                 }
 
-                std::string note_uri = remote->CreateNamedNote (noteTitle);
+                Glib::ustring note_uri = remote->CreateNamedNote(noteTitle);
 
                 // Update title in the note XML
                 noteXml = NoteArchiver::obj().get_renamed_note_xml (noteXml, baseTitle, noteTitle);
@@ -728,14 +728,14 @@ namespace gnote {
 
   void GnoteCommandLine::print_version()
   {
-    // TRANSLATORS: %1%: boost format placeholder for the version string.
+    // TRANSLATORS: %1: format placeholder for the version string.
     Glib::ustring version = Glib::ustring::compose(_("Version %1"), VERSION);
     std::cerr << version << std::endl;
   }
 
 
   template <typename T>
-  bool GnoteCommandLine::display_note(T & remote, std::string uri)
+  bool GnoteCommandLine::display_note(T & remote, Glib::ustring uri)
   {
     if (m_highlight_search) {
       return remote->DisplayNoteWithSearch(uri, m_highlight_search);

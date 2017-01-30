@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,8 +23,6 @@
 
 #ifndef _GNOTE_HPP_
 #define _GNOTE_HPP_
-
-#include <string>
 
 #include <glibmm/optioncontext.h>
 #include <glibmm/ustring.h>
@@ -74,7 +72,7 @@ public:
 private:
   void        print_version();
   template <typename T>
-  bool        display_note(T & remote, std::string uri);
+  bool        display_note(T & remote, Glib::ustring uri);
   template <typename T>
   void execute(T & remote);
 
@@ -85,19 +83,19 @@ private:
   bool        m_shell_search;
   gchar *     m_note_path;
   bool        m_do_search;
-  std::string m_search;
+  Glib::ustring m_search;
   bool        m_show_version;
   bool        m_do_new_note;
-  std::string m_new_note_name;
+  Glib::ustring m_new_note_name;
   gchar*      m_open_note;
   bool        m_open_start_here;
   gchar*      m_highlight_search;
 
 
   // depend on m_open_note, set in on_post_parse
-  std::string m_open_note_name;
-  std::string m_open_note_uri;
-  std::string m_open_external_note_path;
+  Glib::ustring m_open_note_name;
+  Glib::ustring m_open_note_uri;
+  Glib::ustring m_open_external_note_path;
 };
 
 
@@ -144,7 +142,7 @@ protected:
   virtual void on_startup() override;
 private:
   Gnote();
-  std::string get_note_path(const std::string & override_path);
+  Glib::ustring get_note_path(const Glib::ustring & override_path);
   void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
   void on_sync_dialog_response(int response_id);
