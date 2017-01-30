@@ -25,7 +25,6 @@
 
 #include <list>
 #include <map>
-#include <string>
 
 #include <sigc++/signal.h>
 
@@ -46,28 +45,28 @@ namespace sync {
 class SyncServiceAddin;
 }
 
-typedef std::map<std::string, AddinInfo> AddinInfoMap;
+typedef std::map<Glib::ustring, AddinInfo> AddinInfoMap;
 
 
 class AddinManager
 {
 public:
 
-  AddinManager(NoteManager & note_manager, const std::string & conf_dir);
+  AddinManager(NoteManager & note_manager, const Glib::ustring & conf_dir);
   ~AddinManager();
 
-  void add_note_addin_info(const std::string & id, const sharp::DynamicModule * dmod);
-  void erase_note_addin_info(const std::string & id);
+  void add_note_addin_info(const Glib::ustring & id, const sharp::DynamicModule * dmod);
+  void erase_note_addin_info(const Glib::ustring & id);
 
-  std::string & get_prefs_dir()
+  Glib::ustring & get_prefs_dir()
     {
       return m_addins_prefs_dir;
     }
 
   void load_addins_for_note(const Note::Ptr &);
   std::vector<NoteAddin*> get_note_addins(const Note::Ptr &) const;
-  ApplicationAddin *get_application_addin(const std::string & id) const;
-  sync::SyncServiceAddin *get_sync_service_addin(const std::string & id) const;
+  ApplicationAddin *get_application_addin(const Glib::ustring & id) const;
+  sync::SyncServiceAddin *get_sync_service_addin(const Glib::ustring & id) const;
   void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
   void get_sync_service_addins(std::list<sync::SyncServiceAddin *> &) const;
   void get_import_addins(std::list<ImportAddin*> &) const;
@@ -80,48 +79,48 @@ public:
     {
       return m_addin_infos;
     }
-  AddinInfo get_addin_info(const std::string & id) const;
+  AddinInfo get_addin_info(const Glib::ustring & id) const;
   AddinInfo get_addin_info(const AbstractAddin & addin) const;
-  bool is_module_loaded(const std::string & id) const;
-  sharp::DynamicModule *get_module(const std::string & id);
+  bool is_module_loaded(const Glib::ustring & id) const;
+  sharp::DynamicModule *get_module(const Glib::ustring & id);
 
-  Gtk::Widget * create_addin_preference_widget(const std::string & id);
+  Gtk::Widget *create_addin_preference_widget(const Glib::ustring & id);
 private:
-  void load_addin_infos(const std::string & global_path, const std::string & local_path);
-  void load_addin_infos(const std::string & path);
-  void load_note_addin(const std::string & id, sharp::IfaceFactoryBase *const f);
+  void load_addin_infos(const Glib::ustring & global_path, const Glib::ustring & local_path);
+  void load_addin_infos(const Glib::ustring & path);
+  void load_note_addin(const Glib::ustring & id, sharp::IfaceFactoryBase *const f);
   void get_enabled_addins(std::list<Glib::ustring> & addins) const;
   void initialize_sharp_addins();
-  void add_module_addins(const std::string & mod_id, sharp::DynamicModule * dmod);
-  AddinInfo get_info_for_module(const std::string & module) const;
+  void add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod);
+  AddinInfo get_info_for_module(const Glib::ustring & module) const;
   void on_setting_changed(const Glib::ustring & key);
   void register_addin_actions() const;
     
   NoteManager & m_note_manager;
-  const std::string m_gnote_conf_dir;
-  std::string m_addins_prefs_dir;
-  std::string m_addins_prefs_file;
+  const Glib::ustring m_gnote_conf_dir;
+  Glib::ustring m_addins_prefs_dir;
+  Glib::ustring m_addins_prefs_file;
   sharp::ModuleManager m_module_manager;
   std::list<sharp::IfaceFactoryBase*> m_builtin_ifaces;
   AddinInfoMap m_addin_infos;
   /// Key = TypeExtensionNode.Id
-  typedef std::map<std::string, ApplicationAddin*> AppAddinMap;
+  typedef std::map<Glib::ustring, ApplicationAddin*> AppAddinMap;
   AppAddinMap                               m_app_addins;
-  typedef std::map<std::string, NoteAddin *> IdAddinMap;
+  typedef std::map<Glib::ustring, NoteAddin *> IdAddinMap;
   typedef std::map<Note::Ptr, IdAddinMap> NoteAddinMap;
   NoteAddinMap                              m_note_addins;
   /// Key = TypeExtensionNode.Id
   /// the iface factory is not owned by the manager.
   /// TODO: make sure it is removed if the dynamic module is unloaded.
-  typedef std::map<std::string, sharp::IfaceFactoryBase*> IdInfoMap;
+  typedef std::map<Glib::ustring, sharp::IfaceFactoryBase*> IdInfoMap;
   IdInfoMap                                m_note_addin_infos;
-  typedef std::map<std::string, PreferenceTabAddin*> IdPrefTabAddinMap;
+  typedef std::map<Glib::ustring, PreferenceTabAddin*> IdPrefTabAddinMap;
   IdPrefTabAddinMap                        m_pref_tab_addins;
-  typedef std::map<std::string, sync::SyncServiceAddin*> IdSyncServiceAddinMap;
+  typedef std::map<Glib::ustring, sync::SyncServiceAddin*> IdSyncServiceAddinMap;
   IdSyncServiceAddinMap                    m_sync_service_addins;
-  typedef std::map<std::string, ImportAddin *> IdImportAddinMap;
+  typedef std::map<Glib::ustring, ImportAddin *> IdImportAddinMap;
   IdImportAddinMap                         m_import_addins;
-  typedef std::map<std::string, AddinPreferenceFactoryBase*> IdAddinPrefsMap;
+  typedef std::map<Glib::ustring, AddinPreferenceFactoryBase*> IdAddinPrefsMap;
   IdAddinPrefsMap                          m_addin_prefs;
   sigc::signal<void>         m_application_addin_list_changed;
 };
