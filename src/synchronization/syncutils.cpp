@@ -93,13 +93,13 @@ namespace sync {
   }
 
 
-  bool NoteUpdate::compare_tags(const std::map<std::string, Tag::Ptr> set1, const std::map<std::string, Tag::Ptr> set2) const
+  bool NoteUpdate::compare_tags(const std::map<Glib::ustring, Tag::Ptr> set1, const std::map<Glib::ustring, Tag::Ptr> set2) const
   {
     if(set1.size() != set2.size()) {
       return false;
     }
-    for(std::map<std::string, Tag::Ptr>::const_iterator iter = set1.begin(); iter != set1.end(); ++iter) {
-      if(set2.find(iter->first) == set2.end()) {
+    for(auto iter : set1) {
+      if(set2.find(iter.first) == set2.end()) {
         return false;
       }
     }
