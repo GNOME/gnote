@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2016 Aurimas Cernius
+ * Copyright (C) 2011,2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ private:
   Pango::FontDescription get_gnome_document_font_description();
   void on_font_setting_changed (const Glib::ustring & key);
   void update_custom_font_setting();
-  void modify_font_from_string (const std::string & fontString);
+  void modify_font_from_string (const Glib::ustring & fontString);
   bool key_pressed (GdkEventKey * ev);
   bool button_pressed (GdkEventButton * ev);
   void on_paste_start();

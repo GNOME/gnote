@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,7 +50,7 @@ namespace gnote {
 
     // Set Font from preference
     if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
-      std::string font_string = settings->get_string(Preferences::CUSTOM_FONT_FACE);
+      Glib::ustring font_string = settings->get_string(Preferences::CUSTOM_FONT_FACE);
       override_font (Pango::FontDescription(font_string));
     }
     else {
@@ -81,7 +81,7 @@ namespace gnote {
       Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
         .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
       if(desktop_settings) {
-        std::string doc_font_string =
+        Glib::ustring doc_font_string =
           desktop_settings->get_string(Preferences::DESKTOP_GNOME_FONT);
         return Pango::FontDescription(doc_font_string);
       }
@@ -105,7 +105,7 @@ namespace gnote {
         Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
           .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
         if(desktop_settings) {
-          std::string value = desktop_settings->get_string(key);
+          Glib::ustring value = desktop_settings->get_string(key);
           modify_font_from_string(value);
         }
       }
@@ -119,7 +119,7 @@ namespace gnote {
       .get_schema_settings(Preferences::SCHEMA_GNOTE);
 
     if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
-      std::string fontString = settings->get_string(Preferences::CUSTOM_FONT_FACE);
+      Glib::ustring fontString = settings->get_string(Preferences::CUSTOM_FONT_FACE);
       DBG_OUT( "Switching note font to '%s'...", fontString.c_str());
       modify_font_from_string (fontString);
     } 
@@ -130,7 +130,7 @@ namespace gnote {
   }
 
   
-  void NoteEditor::modify_font_from_string (const std::string & fontString)
+  void NoteEditor::modify_font_from_string (const Glib::ustring & fontString)
   {
     DBG_OUT("Switching note font to '%s'...", fontString.c_str());
     override_font (Pango::FontDescription(fontString));
@@ -148,10 +148,8 @@ namespace gnote {
   {
     bool has_url = false;
 
-    std::vector<std::string> targets = context->list_targets();
-    for(std::vector<std::string>::const_iterator iter = targets.begin();
-        iter != targets.end(); ++iter) {
-      const std::string & target(*iter);
+    auto targets = context->list_targets();
+    for(auto target : targets) {
       if (target == "text/uri-list" ||
           target == "_NETSCAPE_URL") {
         has_url = true;
@@ -179,7 +177,7 @@ namespace gnote {
           iter != uri_list.end(); ++iter) {
         const sharp::Uri & uri(*iter);
         DBG_OUT("Got Dropped URI: %s", uri.to_string().c_str());
-        std::string insert;
+        Glib::ustring insert;
         if (uri.is_file()) {
           // URL-escape the path in case
           // there are spaces (bug #303902)
