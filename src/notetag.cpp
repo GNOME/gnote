@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@
 
 namespace gnote {
 
-  NoteTag::NoteTag(const std::string & tag_name, int flags) throw(sharp::Exception)
+  NoteTag::NoteTag(const Glib::ustring & tag_name, int flags) throw(sharp::Exception)
     : Gtk::TextTag(tag_name)
     , m_element_name(tag_name)
     , m_widget(NULL)
@@ -56,7 +56,7 @@ namespace gnote {
   }
 
 
-  void NoteTag::initialize(const std::string & element_name)
+  void NoteTag::initialize(const Glib::ustring & element_name)
   {
     m_element_name = element_name;
     m_flags = CAN_SERIALIZE | CAN_SPLIT;
@@ -327,7 +327,7 @@ namespace gnote {
 
       if (start) {
           while (xml.move_to_next_attribute()) {
-            std::string name = xml.get_name();
+            Glib::ustring name = xml.get_name();
 
             xml.read_attribute_value();
             m_attributes [name] = xml.get_value();
@@ -564,7 +564,7 @@ namespace gnote {
 
   DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth, Pango::Direction direction)
   {
-    std::string name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)direction);
+    Glib::ustring name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)direction);
 
     DepthNoteTag::Ptr tag = DepthNoteTag::Ptr::cast_dynamic(lookup(name));
 
@@ -587,9 +587,9 @@ namespace gnote {
     return tag;
   }
       
-  DynamicNoteTag::Ptr NoteTagTable::create_dynamic_tag(const std::string & tag_name)
+  DynamicNoteTag::Ptr NoteTagTable::create_dynamic_tag(const Glib::ustring & tag_name)
   {
-    std::map<std::string, Factory>::iterator iter = m_tag_types.find(tag_name);
+    auto iter = m_tag_types.find(tag_name);
     if(iter == m_tag_types.end()) {
       return DynamicNoteTag::Ptr();
     }
@@ -600,13 +600,13 @@ namespace gnote {
   }
 
  
-  void NoteTagTable::register_dynamic_tag(const std::string & tag_name, const Factory & factory)
+  void NoteTagTable::register_dynamic_tag(const Glib::ustring & tag_name, const Factory & factory)
   {
     m_tag_types[tag_name] = factory;
   }
 
 
-  bool NoteTagTable::is_dynamic_tag_registered(const std::string & tag_name)
+  bool NoteTagTable::is_dynamic_tag_registered(const Glib::ustring & tag_name)
   {
     return m_tag_types.find(tag_name) != m_tag_types.end();
   }
