@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ private:
   void on_open_note(const Glib::VariantBase & param);
   void update_menu(Gtk::Box *menu) const;
   void get_backlink_menu_items(std::list<Gtk::Widget*> & items) const;
-  bool check_note_has_match(const gnote::Note::Ptr &, const std::string &);
+  bool check_note_has_match(const gnote::Note::Ptr &, const Glib::ustring &);
 };
 
 }
