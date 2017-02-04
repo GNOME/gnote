@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,8 +17,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#include <glibmm.h>
 
 #include "noteoftheday.hpp"
 #include "noteofthedayapplicationaddin.hpp"
