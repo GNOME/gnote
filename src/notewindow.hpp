@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2016 Aurimas Cernius
+ * Copyright (C) 2011-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -136,14 +136,14 @@ public:
   NoteWindow(Note &);
   ~NoteWindow();
 
-  virtual std::string get_name() const override;
+  virtual Glib::ustring get_name() const override;
   void set_name(const std::string & name);
   virtual void foreground() override;
   virtual void background() override;
   virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
 
-  virtual void perform_search(const std::string & text) override;
+  virtual void perform_search(const Glib::ustring & text) override;
   virtual bool supports_goto_result() override;
   virtual bool goto_next_result() override;
   virtual bool goto_previous_result() override;

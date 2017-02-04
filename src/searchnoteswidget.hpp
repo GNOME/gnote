@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -48,12 +48,12 @@ class SearchNotesWidget
 public:
   SearchNotesWidget(NoteManager & m);
   virtual ~SearchNotesWidget();
-  virtual std::string get_name() const override;
+  virtual Glib::ustring get_name() const override;
   virtual void foreground() override;
   virtual void background() override;
   virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
-  virtual void perform_search(const std::string & search_text) override;
+  virtual void perform_search(const Glib::ustring & search_text) override;
   virtual std::vector<Gtk::Widget*> get_popover_widgets() override;
   virtual std::vector<MainWindowAction::Ptr> get_widget_actions() override;
 

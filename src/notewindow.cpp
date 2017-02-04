@@ -154,7 +154,7 @@ namespace gnote {
   }
 
 
-  std::string NoteWindow::get_name() const
+  Glib::ustring NoteWindow::get_name() const
   {
     return m_name;
   }
@@ -279,7 +279,7 @@ namespace gnote {
     }
   }
 
-  void NoteWindow::perform_search(const std::string & text)
+  void NoteWindow::perform_search(const Glib::ustring & text)
   {
     get_find_handler().perform_search(text);
   }

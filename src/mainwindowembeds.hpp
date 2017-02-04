@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2016 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ class EmbeddableWidget
 {
 public:
   EmbeddableWidget() : m_host(NULL) {}
-  virtual std::string get_name() const = 0;
+  virtual Glib::ustring get_name() const = 0;
   virtual void embed(EmbeddableWidgetHost *h);
   virtual void unembed();
   virtual void foreground();
@@ -61,7 +61,7 @@ public:
       return m_host;
     }
 
-  sigc::signal<void, const std::string &> signal_name_changed;
+  sigc::signal<void, const Glib::ustring &> signal_name_changed;
   sigc::signal<void> signal_embedded;
   sigc::signal<void> signal_unembedded;
   sigc::signal<void> signal_foregrounded;
@@ -74,7 +74,7 @@ private:
 class SearchableItem
 {
 public:
-  virtual void perform_search(const std::string & search_text) = 0;
+  virtual void perform_search(const Glib::ustring & search_text) = 0;
   virtual bool supports_goto_result();
   virtual bool goto_next_result();
   virtual bool goto_previous_result();

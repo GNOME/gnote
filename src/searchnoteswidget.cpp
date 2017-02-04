@@ -122,7 +122,7 @@ SearchNotesWidget::~SearchNotesWidget()
   }
 }
 
-std::string SearchNotesWidget::get_name() const
+Glib::ustring SearchNotesWidget::get_name() const
 {
   notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
   if(!selected_notebook
@@ -151,7 +151,7 @@ void SearchNotesWidget::make_actions()
   m_rename_notebook_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_rename_notebook));
 }
 
-void SearchNotesWidget::perform_search(const std::string & search_text)
+void SearchNotesWidget::perform_search(const Glib::ustring & search_text)
 {
   restore_matches_window();
   m_search_text = search_text;

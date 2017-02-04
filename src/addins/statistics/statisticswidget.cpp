@@ -165,7 +165,7 @@ StatisticsWidget::StatisticsWidget(gnote::NoteManager & nm)
   append_column(*column);
 }
 
-std::string StatisticsWidget::get_name() const
+Glib::ustring StatisticsWidget::get_name() const
 {
   return _("Statistics");
 }
