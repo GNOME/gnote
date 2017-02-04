@@ -659,7 +659,7 @@ namespace gnote {
         .connect(sigc::mem_fun(*this, &NoteRecentChanges::entry_changed_timeout));
     }
 
-    std::string search_text = get_search_text();
+    Glib::ustring search_text = get_search_text();
     if(search_text.empty()) {
       SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
       if(searchable_widget) {
@@ -685,7 +685,7 @@ namespace gnote {
     if(!m_search_box.get_visible()) {
       return;
     }
-    std::string search_text = get_search_text();
+    Glib::ustring search_text = get_search_text();
     if(search_text.empty()) {
       return;
     }
@@ -696,9 +696,9 @@ namespace gnote {
     }
   }
 
-  std::string NoteRecentChanges::get_search_text()
+  Glib::ustring NoteRecentChanges::get_search_text()
   {
-    std::string text = m_search_entry.get_text();
+    Glib::ustring text = m_search_entry.get_text();
     text = sharp::string_trim(text);
     return text;
   }
@@ -800,7 +800,7 @@ namespace gnote {
     return menu;
   }
 
-  void NoteRecentChanges::on_embedded_name_changed(const std::string & name)
+  void NoteRecentChanges::on_embedded_name_changed(const Glib::ustring & name)
   {
     set_title(name);
   }
