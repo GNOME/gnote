@@ -76,7 +76,7 @@ private:
   mutable Glib::Mutex              m_locker;
   
   sigc::signal<void, Tag::Ptr, const Gtk::TreeIter &> m_signal_tag_added;
-  sigc::signal<void, const std::string &> m_signal_tag_removed;
+  sigc::signal<void, const Glib::ustring &> m_signal_tag_removed;
 };
 
 }
