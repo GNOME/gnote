@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -52,13 +52,13 @@ protected:
 
 private:
   void update_icon_store();
-  std::string parse_host(const sharp::FileInfo &);
+  Glib::ustring parse_host(const sharp::FileInfo &);
   void selection_changed();
   void add_clicked();
-	bool copy_to_bugzilla_icons_dir(const std::string & file_path,
-                                  const std::string & host,
-                                  std::string & err_msg);
-  void resize_if_needed(const std::string & path);
+  bool copy_to_bugzilla_icons_dir(const Glib::ustring & file_path,
+                                  const Glib::ustring & host,
+                                  Glib::ustring & err_msg);
+  void resize_if_needed(const Glib::ustring & path);
   void remove_clicked();
 
   class Columns
@@ -68,8 +68,8 @@ private:
     Columns()
       { add(icon); add(host); add(file_path); }
     Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf> > icon;
-    Gtk::TreeModelColumn<std::string>                host;
-    Gtk::TreeModelColumn<std::string>                file_path;
+    Gtk::TreeModelColumn<Glib::ustring>              host;
+    Gtk::TreeModelColumn<Glib::ustring>              file_path;
   };
 
   Columns        m_columns;
@@ -79,11 +79,11 @@ private:
   Gtk::Button *add_button;
   Gtk::Button *remove_button;
 
-  std::string last_opened_dir;
+  Glib::ustring last_opened_dir;
 
   void _init_static();
-  static bool        s_static_inited;
-  static std::string s_image_dir;
+  static bool          s_static_inited;
+  static Glib::ustring s_image_dir;
 };
 
 }

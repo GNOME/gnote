@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -55,7 +55,7 @@ namespace bugzilla {
   {
     const bool is_first_run
                  = !sharp::directory_exists(images_dir());
-    const std::string old_images_dir
+    const Glib::ustring old_images_dir
       = Glib::build_filename(gnote::IGnote::old_note_dir(),
                              "BugzillaIcons");
     const bool migration_needed
@@ -69,7 +69,7 @@ namespace bugzilla {
       migrate_images(old_images_dir);
   }
 
-  std::string BugzillaNoteAddin::images_dir()
+  Glib::ustring BugzillaNoteAddin::images_dir()
   {
     return Glib::build_filename(gnote::IGnote::conf_dir(),
                                 "BugzillaIcons");
@@ -84,7 +84,7 @@ namespace bugzilla {
   }
 
   void BugzillaNoteAddin::migrate_images(
-                            const std::string & old_images_dir)
+                            const Glib::ustring & old_images_dir)
   {
     const Glib::RefPtr<Gio::File> src
       = Gio::File::create_for_path(old_images_dir);
@@ -127,7 +127,7 @@ namespace bugzilla {
   void BugzillaNoteAddin::drop_uri_list(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, 
                                         const Gtk::SelectionData & selection_data, guint time)
   {
-    std::string uriString = selection_data.get_text();
+    Glib::ustring uriString = selection_data.get_text();
     if(uriString.empty()) {
       return;
     }
@@ -153,7 +153,7 @@ namespace bugzilla {
   }
 
 
-  bool BugzillaNoteAddin::insert_bug(int x, int y, const std::string & uri, int id)
+  bool BugzillaNoteAddin::insert_bug(int x, int y, const Glib::ustring & uri, int id)
   {
     try {
       BugzillaLink::Ptr link_tag = 
@@ -171,7 +171,7 @@ namespace bugzilla {
       get_window()->editor()->get_iter_at_location(cursor, x, y);
       buffer->place_cursor (cursor);
 
-      std::string string_id = TO_STRING(id);
+      Glib::ustring string_id = TO_STRING(id);
       buffer->undoer().add_undo_action (new InsertBugAction (cursor, 
                                                              string_id, 
                                                              link_tag));
