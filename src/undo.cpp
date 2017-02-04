@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2016 Aurimas Cernius
+ * Copyright (C) 2010,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -163,7 +163,7 @@ namespace gnote {
 
 
   InsertAction::InsertAction(const Gtk::TextIter & start, 
-                             const std::string & , int length,
+                             const Glib::ustring & , int length,
                              const ChopBuffer::Ptr & chop_buf)
     : m_index(start.get_offset() - length)
     , m_is_paste(length > 1)

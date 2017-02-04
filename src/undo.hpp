@@ -24,7 +24,6 @@
 #define __UNDO_HPP_
 
 #include <list>
-#include <string>
 #include <stack>
 
 #include <sigc++/signal.h>
@@ -115,7 +114,7 @@ class InsertAction
   : public SplitterAction
 {
 public:
-  InsertAction(const Gtk::TextIter & start, const std::string & text, int length,
+  InsertAction(const Gtk::TextIter & start, const Glib::ustring & text, int length,
                const ChopBuffer::Ptr & chop_buf);
   virtual void undo(Gtk::TextBuffer * buffer) override;
   virtual void redo(Gtk::TextBuffer * buffer) override;
