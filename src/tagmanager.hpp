@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,10 +44,10 @@ class TagManager
 public:
   TagManager();
 
-  virtual Tag::Ptr get_tag(const std::string & tag_name) const override;
-  virtual Tag::Ptr get_or_create_tag(const std::string &) override;
-  virtual Tag::Ptr get_system_tag(const std::string & tag_name) const override;
-  virtual Tag::Ptr get_or_create_system_tag(const std::string & name) override;
+  virtual Tag::Ptr get_tag(const Glib::ustring & tag_name) const override;
+  virtual Tag::Ptr get_or_create_tag(const Glib::ustring &) override;
+  virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const override;
+  virtual Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) override;
   virtual void remove_tag(const Tag::Ptr & tag) override;
   Glib::RefPtr<Gtk::TreeModel> get_tags() const
     {

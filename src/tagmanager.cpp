@@ -64,7 +64,7 @@ namespace gnote {
   // Return an existing tag for the specified tag name.  If no Tag exists
   // null will be returned.
   // </summary>
-  Tag::Ptr TagManager::get_tag (const std::string & tag_name) const
+  Tag::Ptr TagManager::get_tag (const Glib::ustring & tag_name) const
   {
     if (tag_name.empty())
       throw sharp::Exception("TagManager.GetTag () called with a null tag name.");
@@ -95,7 +95,7 @@ namespace gnote {
   // <summary>
   // Same as GetTag () but will create a new tag if one doesn't already exist.
   // </summary>
-  Tag::Ptr TagManager::get_or_create_tag(const std::string & tag_name)
+  Tag::Ptr TagManager::get_or_create_tag(const Glib::ustring & tag_name)
   {
     if (tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with a null tag name.");
@@ -154,7 +154,7 @@ namespace gnote {
   /// <returns>
   /// A <see cref="Tag"/>
   /// </returns>
-  Tag::Ptr TagManager::get_system_tag (const std::string & tag_name) const
+  Tag::Ptr TagManager::get_system_tag (const Glib::ustring & tag_name) const
   {
     return get_tag(Tag::SYSTEM_TAG_PREFIX + tag_name);
   }
@@ -169,7 +169,7 @@ namespace gnote {
   /// <returns>
   /// A <see cref="Tag"/>
   /// </returns>
-  Tag::Ptr TagManager::get_or_create_system_tag (const std::string & tag_name)
+  Tag::Ptr TagManager::get_or_create_system_tag (const Glib::ustring & tag_name)
   {
     return get_or_create_tag(Tag::SYSTEM_TAG_PREFIX + tag_name);
   }

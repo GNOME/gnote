@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,8 @@
 #ifndef _ITAGMANAGER_HPP_
 #define _ITAGMANAGER_HPP_
 
+#include <glibmm/ustring.h>
+
 #include "tag.hpp"
 #include "base/singleton.hpp"
 
@@ -36,10 +38,10 @@ public:
 
   virtual ~ITagManager();
 
-  virtual Tag::Ptr get_tag(const std::string & tag_name) const = 0;
-  virtual Tag::Ptr get_or_create_tag(const std::string &) = 0;
-  virtual Tag::Ptr get_system_tag(const std::string & tag_name) const = 0;
-  virtual Tag::Ptr get_or_create_system_tag(const std::string & name) = 0;
+  virtual Tag::Ptr get_tag(const Glib::ustring & tag_name) const = 0;
+  virtual Tag::Ptr get_or_create_tag(const Glib::ustring &) = 0;
+  virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const = 0;
+  virtual Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) = 0;
   virtual void remove_tag(const Tag::Ptr & tag) = 0;
   virtual void all_tags(std::list<Tag::Ptr> &) const = 0;
 };
