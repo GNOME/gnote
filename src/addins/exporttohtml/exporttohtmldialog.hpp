@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,8 +22,6 @@
 #ifndef __EXPORT_TO_HTML_DIALOG_HPP_
 #define __EXPORT_TO_HTML_DIALOG_HPP_
 
-#include <string>
-
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/filechooserdialog.h>
 
@@ -33,7 +32,7 @@ class ExportToHtmlDialog
   : public Gtk::FileChooserDialog
 {
 public:
-  ExportToHtmlDialog(const std::string &);
+  ExportToHtmlDialog(const Glib::ustring &);
   void save_preferences();
 
   bool get_export_linked() const;
@@ -43,7 +42,7 @@ public:
 
 private:
   void on_export_linked_toggled();
-  void load_preferences(const std::string & );
+  void load_preferences(const Glib::ustring & );
   Gtk::CheckButton m_export_linked;
   Gtk::CheckButton m_export_linked_all;
 };
