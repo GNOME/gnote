@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2016 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -107,8 +107,8 @@ void ExportToGTGNoteAddin::export_button_clicked(const Glib::VariantBase&)
     }
 
     gnote::Note::Ptr note(get_note());
-    std::string title = note->get_title();
-    std::string body = sharp::string_trim(sharp::string_replace_first(note->text_content(), title, ""));
+    Glib::ustring title = note->get_title();
+    Glib::ustring body = sharp::string_trim(sharp::string_replace_first(note->text_content(), title, ""));
 
     std::vector<Glib::VariantBase> parameters;
     parameters.reserve(2);
