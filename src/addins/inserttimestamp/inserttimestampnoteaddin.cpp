@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -72,7 +72,7 @@ namespace inserttimestamp {
 
   void InsertTimestampNoteAddin::on_menu_item_activated(const Glib::VariantBase&)
   {
-    std::string text = sharp::DateTime::now().to_string(m_date_format);
+    Glib::ustring text = sharp::DateTime::now().to_string(m_date_format);
     Gtk::TextIter cursor = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
     std::vector<Glib::ustring> names;
     names.push_back("datetime");
