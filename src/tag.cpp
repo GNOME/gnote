@@ -23,7 +23,7 @@
 
 #include <map>
 
-#include <glibmm.h>
+#include <glibmm/stringutils.h>
 
 #include "sharp/map.hpp"
 #include "sharp/string.hpp"
@@ -34,7 +34,7 @@ namespace gnote {
 
   const char * Tag::SYSTEM_TAG_PREFIX = "system:";
 
-  Tag::Tag(const std::string & _name)
+  Tag::Tag(const Glib::ustring & _name)
     : m_issystem(false)
     , m_isproperty(false)
   {
@@ -58,7 +58,7 @@ namespace gnote {
   }
 
 
-  void Tag::set_name(const std::string & value)
+  void Tag::set_name(const Glib::ustring & value)
   {
     if (!value.empty()) {
       Glib::ustring trimmed_name = sharp::string_trim(value);
