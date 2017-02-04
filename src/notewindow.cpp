@@ -159,7 +159,7 @@ namespace gnote {
     return m_name;
   }
 
-  void NoteWindow::set_name(const std::string & name)
+  void NoteWindow::set_name(const Glib::ustring & name)
   {
     m_name = name;
     signal_name_changed(m_name);
@@ -505,7 +505,7 @@ namespace gnote {
   }
 
 
-  void NoteWindow::on_note_tag_removed(const NoteBase::Ptr&, const std::string & tag)
+  void NoteWindow::on_note_tag_removed(const NoteBase::Ptr&, const Glib::ustring & tag)
   {
     if(tag == m_template_tag->normalized_name()) {
       m_template_widget->hide();
@@ -679,7 +679,7 @@ namespace gnote {
   }
 
 
-  void NoteFindHandler::perform_search(const std::string & txt)
+  void NoteFindHandler::perform_search(const Glib::ustring & txt)
   {
     cleanup_matches();
     if(txt.empty()) {
