@@ -518,7 +518,7 @@ void SearchNotesWidget::update_results()
 
   FOREACH(const NoteBase::Ptr & note_iter, m_manager.get_notes()) {
     Note::Ptr note(static_pointer_cast<Note>(note_iter));
-    std::string nice_date = utils::get_pretty_print_date(note->change_date(), true);
+    Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true);
 
     Gtk::TreeIter iter = m_store->append();
     iter->set_value(0, get_note_icon());  /* icon */
@@ -603,8 +603,8 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter & iter)
 
 int SearchNotesWidget::compare_titles(const Gtk::TreeIter & a, const Gtk::TreeIter & b)
 {
-  Glib::ustring title_a = std::string((*a)[m_column_types.title]);
-  Glib::ustring title_b = std::string((*b)[m_column_types.title]);
+  Glib::ustring title_a = (*a)[m_column_types.title];
+  Glib::ustring title_b = (*b)[m_column_types.title];
 
   if(title_a.empty() || title_b.empty()) {
     return -1;
@@ -1082,13 +1082,12 @@ void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell,
     return;
   }
 
-  std::string match_str = "";
+  Glib::ustring match_str = "";
 
   Note::Ptr note = (*iter)[m_column_types.note];
   if(note) {
     int match_count;
-    std::map<std::string, int>::const_iterator miter
-      = m_current_matches.find(note->uri());
+    auto miter = m_current_matches.find(note->uri());
     if(miter != m_current_matches.end()) {
       match_count = miter->second;
       if(match_count == INT_MAX) {
@@ -1117,8 +1116,8 @@ int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter & a, const Gtk::T
 
   int matches_a;
   int matches_b;
-  std::map<std::string, int>::iterator iter_a = m_current_matches.find(note_a->uri());
-  std::map<std::string, int>::iterator iter_b = m_current_matches.find(note_b->uri());
+  auto iter_a = m_current_matches.find(note_a->uri());
+  auto iter_b = m_current_matches.find(note_b->uri());
   bool has_matches_a = (iter_a != m_current_matches.end());
   bool has_matches_b = (iter_b != m_current_matches.end());
 
@@ -1167,7 +1166,7 @@ void SearchNotesWidget::on_note_added(const NoteBase::Ptr & note)
 }
 
 void SearchNotesWidget::on_note_renamed(const NoteBase::Ptr & note,
-                                        const std::string &)
+                                        const Glib::ustring &)
 {
   restore_matches_window();
   rename_note(static_pointer_cast<Note>(note));
@@ -1194,11 +1193,11 @@ void SearchNotesWidget::delete_note(const Note::Ptr & note)
 
 void SearchNotesWidget::add_note(const Note::Ptr & note)
 {
-  std::string nice_date =
+  Glib::ustring nice_date =
     utils::get_pretty_print_date(note->change_date(), true);
   Gtk::TreeIter iter = m_store->append();
   iter->set_value(m_column_types.icon, get_note_icon());
-  iter->set_value(m_column_types.title, std::string(note->get_title()));
+  iter->set_value(m_column_types.title, note->get_title());
   iter->set_value(m_column_types.change_date, nice_date);
   iter->set_value(m_column_types.note, note);
 }
@@ -1210,7 +1209,7 @@ void SearchNotesWidget::rename_note(const Note::Ptr & note)
   for(Gtk::TreeModel::iterator iter = rows.begin();
       rows.end() != iter; iter++) {
     if(note == iter->get_value(m_column_types.note)) {
-      iter->set_value(m_column_types.title, std::string(note->get_title()));
+      iter->set_value(m_column_types.title, note->get_title());
       break;
     }
   }
