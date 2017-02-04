@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -88,9 +88,9 @@ namespace gnote {
     m_schemas[SCHEMA_KEYBINDINGS] = Gio::Settings::create(SCHEMA_KEYBINDINGS);
   }
   
-  Glib::RefPtr<Gio::Settings> Preferences::get_schema_settings(const std::string & schema)
+  Glib::RefPtr<Gio::Settings> Preferences::get_schema_settings(const Glib::ustring & schema)
   {
-    std::map<std::string, Glib::RefPtr<Gio::Settings> >::iterator iter = m_schemas.find(schema);
+    auto iter = m_schemas.find(schema);
     if(iter != m_schemas.end()) {
       return iter->second;
     }
