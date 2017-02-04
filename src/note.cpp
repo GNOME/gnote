@@ -300,7 +300,7 @@ namespace gnote {
   }
 
   Note::Ptr Note::create_existing_note(NoteData *data,
-                                 std::string filepath,
+                                 Glib::ustring filepath,
                                  NoteManager & manager)
   {
     if (!data->change_date().is_valid()) {
@@ -348,7 +348,7 @@ namespace gnote {
   }
 
   
-  Note::Ptr Note::load(const std::string & read_file, NoteManager & manager)
+  Note::Ptr Note::load(const Glib::ustring & read_file, NoteManager & manager)
   {
     NoteData *data = new NoteData(url_from_path(read_file));
     NoteArchiver::read(read_file, *data);
@@ -473,7 +473,7 @@ namespace gnote {
 
   void Note::remove_tag(Tag & tag)
   {
-    std::string tag_name = tag.normalized_name();
+    Glib::ustring tag_name = tag.normalized_name();
     NoteData::TagMap & thetags(m_data.data().tags());
     NoteData::TagMap::iterator iter;
 
@@ -547,7 +547,7 @@ namespace gnote {
   }
 
 
-  void Note::process_rename_link_update(const std::string & old_title)
+  void Note::process_rename_link_update(const Glib::ustring & old_title)
   {
     NoteBase::List linking_notes = manager().get_notes_linking_to(old_title);
     const Note::Ptr self = static_pointer_cast<Note>(shared_from_this());
@@ -581,7 +581,7 @@ namespace gnote {
   }
 
   void Note::process_rename_link_update_end(int response, Gtk::Dialog *dialog,
-                                            const std::string & old_title, const Note::Ptr & self)
+                                            const Glib::ustring & old_title, const Note::Ptr & self)
   {
     if(dialog) {
       NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
@@ -614,8 +614,8 @@ namespace gnote {
 
   bool Note::contains_text(const Glib::ustring & text)
   {
-    const std::string text_lower = text.lowercase();
-    const std::string text_content_lower = text_content().lowercase();
+    const Glib::ustring text_lower = text.lowercase();
+    const Glib::ustring text_content_lower = text_content().lowercase();
     return text_content_lower.find(text_lower) != Glib::ustring::npos;
   }
 
@@ -628,7 +628,7 @@ namespace gnote {
     if (!contains_text(old_title))
       return;
 
-    const std::string old_title_lower = old_title.lowercase();
+    const Glib::ustring old_title_lower = old_title.lowercase();
 
     const NoteTag::Ptr link_tag = m_tag_table->get_link_tag();
 
@@ -687,7 +687,7 @@ namespace gnote {
     return m_buffer->get_slice(m_buffer->begin(), m_buffer->end());
   }
 
-  void Note::set_text_content(const std::string & text)
+  void Note::set_text_content(const Glib::ustring & text)
   {
     if(m_buffer) {
       m_buffer->set_text(text);
@@ -790,7 +790,7 @@ namespace gnote {
 
   void Note::set_pinned(bool pinned) const
   {
-    std::string new_pinned;
+    Glib::ustring new_pinned;
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
     Glib::ustring old_pinned = settings->get_string(Preferences::MENU_PINNED_NOTES);
     bool is_currently_pinned = old_pinned.find(uri()) != Glib::ustring::npos;

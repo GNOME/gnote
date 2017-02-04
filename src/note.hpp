@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,6 @@
 #define __NOTE_HPP_
 
 #include <list>
-#include <string>
 #include <queue>
 
 #include <gtkmm/textbuffer.h>
@@ -103,10 +102,10 @@ public:
                                    NoteManager & manager);
 
   static Note::Ptr create_existing_note(NoteData *data,
-                                        std::string filepath,
+                                        Glib::ustring filepath,
                                         NoteManager & manager);
   virtual void delete_note() override;
-  static Note::Ptr load(const std::string &, NoteManager &);
+  static Note::Ptr load(const Glib::ustring &, NoteManager &);
   virtual void save() override;
   virtual void queue_save(ChangeType c) override;
   using NoteBase::remove_tag;
@@ -119,7 +118,7 @@ public:
   virtual void rename_without_link_update(const Glib::ustring & newTitle) override;
   virtual void set_xml_content(const Glib::ustring & xml) override;
   Glib::ustring text_content();
-  void set_text_content(const std::string & text);
+  void set_text_content(const Glib::ustring & text);
 
   const Glib::RefPtr<NoteTagTable> & get_tag_table();
   bool has_buffer() const
@@ -178,9 +177,9 @@ private:
   bool on_window_destroyed(GdkEventAny *ev);
   void on_save_timeout();
   void process_child_widget_queue();
-  void process_rename_link_update(const std::string & old_title);
+  void process_rename_link_update(const Glib::ustring & old_title);
   void process_rename_link_update_end(int response, Gtk::Dialog *dialog,
-                                      const std::string & old_title, const Note::Ptr & self);
+                                      const Glib::ustring & old_title, const Note::Ptr & self);
   void on_note_window_embedded();
   void on_note_window_foregrounded();
 
