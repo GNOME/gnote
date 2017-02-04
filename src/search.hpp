@@ -69,7 +69,7 @@ public:
   /// and a match number. If the search term is in the title,
   /// number will be INT_MAX.
   /// </returns>  
-  ResultsPtr search_notes(const std::string &, bool, 
+  ResultsPtr search_notes(const Glib::ustring &, bool,
                           const notebooks::Notebook::Ptr & );
   bool check_note_has_match(const Note::Ptr & note, const std::vector<Glib::ustring> & ,
                             bool match_case);

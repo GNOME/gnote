@@ -36,7 +36,7 @@ namespace gnote {
   }
 
 
-  Search::ResultsPtr Search::search_notes(const std::string & query, bool case_sensitive, 
+  Search::ResultsPtr Search::search_notes(const Glib::ustring & query, bool case_sensitive,
                                   const notebooks::Notebook::Ptr & selected_notebook)
   {
     Glib::ustring search_text = query;
@@ -96,7 +96,7 @@ namespace gnote {
     }
 
     for(auto iter : encoded_words) {
-      if(note_text.find(iter) != std::string::npos) {
+      if(note_text.find(iter) != Glib::ustring::npos) {
         continue;
       }
       else {
