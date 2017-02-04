@@ -121,7 +121,7 @@ bool MainWindow::use_client_side_decorations()
       const char *current_desktop = std::getenv("DESKTOP_SESSION");
       if (current_desktop) {
         Glib::ustring current_de = Glib::ustring(current_desktop).lowercase();
-        FOREACH(std::string de, desktops) {
+        FOREACH(Glib::ustring de, desktops) {
           Glib::ustring denv = Glib::ustring(de).lowercase();
           if(current_de.find(denv) != Glib::ustring::npos) {
             s_use_client_side_decorations = 1;
@@ -135,7 +135,7 @@ bool MainWindow::use_client_side_decorations()
 }
 
 
-MainWindow::MainWindow(const std::string & title)
+MainWindow::MainWindow(const Glib::ustring & title)
   : m_close_on_esc(false)
 {
   set_title(title);

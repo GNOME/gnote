@@ -457,7 +457,7 @@ namespace gnote {
     }
   }
 
-  void NoteRecentChanges::set_search_text(const std::string & value)
+  void NoteRecentChanges::set_search_text(const Glib::ustring & value)
   {
     m_search_entry.set_text(value);
   }
