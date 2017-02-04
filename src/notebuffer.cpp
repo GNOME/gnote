@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 
 
 #include <algorithm>
+#include <array>
 
 #include <glibmm/i18n.h>
 #include <glibmm/main.h>
@@ -36,13 +37,6 @@
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 
-#if HAVE_CXX11
-  #include <array>
-  using std::array;
-#else
-  #include <tr1/array>
-  using std::tr1::array;
-#endif
 
 namespace gnote {
 
@@ -88,7 +82,7 @@ namespace gnote {
     delete m_undomanager;
   }
 
-  void NoteBuffer::toggle_active_tag(const std::string & tag_name)
+  void NoteBuffer::toggle_active_tag(const Glib::ustring & tag_name)
   {
     DBG_OUT("ToggleTag called for '%s'", tag_name.c_str());
     
@@ -119,7 +113,7 @@ namespace gnote {
     }
   }
 
-  void NoteBuffer::set_active_tag (const std::string & tag_name)
+  void NoteBuffer::set_active_tag (const Glib::ustring & tag_name)
   {
     DBG_OUT("SetTag called for '%s'", tag_name.c_str());
 
@@ -134,7 +128,7 @@ namespace gnote {
     }
   }
 
-  void NoteBuffer::remove_active_tag (const std::string & tag_name)
+  void NoteBuffer::remove_active_tag (const Glib::ustring & tag_name)
   {
     DBG_OUT("remove_tagcalled for '%s'", tag_name.c_str());
 
@@ -158,7 +152,7 @@ namespace gnote {
   /// Returns the specified DynamicNoteTag if one exists on the TextIter
   /// or null if none was found.
   /// </summary>
-  DynamicNoteTag::ConstPtr NoteBuffer::get_dynamic_tag (const std::string  & tag_name, 
+  DynamicNoteTag::ConstPtr NoteBuffer::get_dynamic_tag (const Glib::ustring  & tag_name,
                                                         const Gtk::TextIter & iter)
   {
     // TODO: Is this variables used, or do we just need to
@@ -216,7 +210,7 @@ namespace gnote {
   }
 
 
-  bool NoteBuffer::is_active_tag(const std::string & tag_name)
+  bool NoteBuffer::is_active_tag(const Glib::ustring & tag_name)
   {
     Glib::RefPtr<Gtk::TextTag> tag = get_tag_table()->lookup(tag_name);
     return is_active_tag(tag);
@@ -336,7 +330,7 @@ namespace gnote {
   void NoteBuffer::range_deleted_event(const Gtk::TextIter & start,const Gtk::TextIter & end_iter)
   {
     //
-    array<Gtk::TextIter, 2> iters;
+    std::array<Gtk::TextIter, 2> iters;
     iters[0] = start;
     iters[1] = end_iter;
 
@@ -866,10 +860,10 @@ namespace gnote {
     Gtk::TextBuffer::on_remove_tag(tag, start, end_iter);
   }
 
-  std::string NoteBuffer::get_selection() const
+  Glib::ustring NoteBuffer::get_selection() const
   {
     Gtk::TextIter select_start, select_end;
-    std::string text;
+    Glib::ustring text;
     
     if (get_selection_bounds(select_start, select_end)) {
       text = get_text(select_start, select_end, false);
@@ -1163,13 +1157,13 @@ namespace gnote {
     move_mark(get_insert(), end());
   }
 
-  std::string NoteBufferArchiver::serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer)
+  Glib::ustring NoteBufferArchiver::serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer)
   {
     return serialize(buffer, buffer->begin(), buffer->end());
   }
 
 
-  std::string NoteBufferArchiver::serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
+  Glib::ustring NoteBufferArchiver::serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer,
                                             const Gtk::TextIter & start,
                                             const Gtk::TextIter & end)
   {
@@ -1177,7 +1171,7 @@ namespace gnote {
     
     serialize(buffer, start, end, xml);
     xml.close();
-    std::string serializedBuffer = xml.to_string();
+    Glib::ustring serializedBuffer = xml.to_string();
     // FIXME: there is some sort of attempt to ensure the endline are the
     // same on all platforms.
     return serializedBuffer;
@@ -1454,7 +1448,7 @@ namespace gnote {
 
   void NoteBufferArchiver::deserialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
                                        const Gtk::TextIter & iter,
-                                       const std::string & content)
+                                       const Glib::ustring & content)
   {
     if(!content.empty()) {
       // it looks like an empty string does not really make the cut

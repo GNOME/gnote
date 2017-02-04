@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2016 Aurimas Cernius
+ * Copyright (C) 2011-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -74,13 +74,13 @@ public:
   ChangeDepthHandler                               signal_change_text_depth;
   NewBulletHandler                                 signal_new_bullet_inserted;
 
-  void toggle_active_tag(const std::string &);
-  void set_active_tag(const std::string &);
-  void remove_active_tag(const std::string &);
-  DynamicNoteTag::ConstPtr get_dynamic_tag(const std::string  & tag_name, const Gtk::TextIter & iter);
+  void toggle_active_tag(const Glib::ustring &);
+  void set_active_tag(const Glib::ustring &);
+  void remove_active_tag(const Glib::ustring &);
+  DynamicNoteTag::ConstPtr get_dynamic_tag(const Glib::ustring & tag_name, const Gtk::TextIter & iter);
   void on_tag_applied(const Glib::RefPtr<Gtk::TextTag> &,
                       const Gtk::TextIter &,const Gtk::TextIter &);
-  bool is_active_tag(const std::string & );
+  bool is_active_tag(const Glib::ustring & );
   bool is_active_tag(const Glib::RefPtr<Gtk::TextTag> & tag);
   bool is_bulleted_list_active();
   bool is_bulleted_list_active(Gtk::TextIter iter);
@@ -97,7 +97,7 @@ public:
     { 
       return *m_undomanager; 
     }
-  std::string get_selection() const;
+  Glib::ustring get_selection() const;
   static void get_block_extents(Gtk::TextIter &, Gtk::TextIter &,
                            int threshold, const Glib::RefPtr<Gtk::TextTag> & avoid_tag);
   void toggle_selection_bullets();
@@ -163,18 +163,18 @@ private:
 class NoteBufferArchiver
 {
 public:
-  static std::string serialize(const Glib::RefPtr<Gtk::TextBuffer> & );
-  static std::string serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, const Gtk::TextIter &,
+  static Glib::ustring serialize(const Glib::RefPtr<Gtk::TextBuffer> & );
+  static Glib::ustring serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, const Gtk::TextIter &,
                                const Gtk::TextIter &);
   static void serialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, const Gtk::TextIter &,
                         const Gtk::TextIter &, sharp::XmlWriter & xml);
   static void deserialize(const Glib::RefPtr<Gtk::TextBuffer> &buffer,
-                          const std::string & content)
+                          const Glib::ustring & content)
     {
       deserialize(buffer, buffer->begin(), content);
     }
   static void deserialize(const Glib::RefPtr<Gtk::TextBuffer> &, const Gtk::TextIter & ,
-                          const std::string & );
+                          const Glib::ustring & );
   static void deserialize(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
                           const Gtk::TextIter & iter, sharp::XmlReader & xml);
 private:
