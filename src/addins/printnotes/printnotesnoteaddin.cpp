@@ -287,7 +287,7 @@ namespace printnotes {
   Glib::RefPtr<Pango::Layout> 
   PrintNotesNoteAddin::create_layout_for_timestamp(const Glib::RefPtr<Gtk::PrintContext> & context)
   {
-    std::string timestamp = sharp::DateTime::now().to_string ("%c");
+    Glib::ustring timestamp = sharp::DateTime::now().to_string("%c");
 
     Glib::RefPtr<Pango::Layout> layout = context->create_pango_layout ();
     Pango::FontDescription font_desc = get_window()->editor()->get_pango_context()->get_font_description();
