@@ -20,9 +20,7 @@
  */
 
 
-#include <string.h>
-
-#include <glibmm.h>
+#include <glibmm/stringutils.h>
 
 #include "tagmanager.hpp"
 #include "debug.hpp"
@@ -69,7 +67,7 @@ namespace gnote {
     if (tag_name.empty())
       throw sharp::Exception("TagManager.GetTag () called with a null tag name.");
 
-    std::string normalized_tag_name = Glib::ustring(sharp::string_trim(tag_name)).lowercase();
+    Glib::ustring normalized_tag_name = sharp::string_trim(tag_name).lowercase();
     if (normalized_tag_name.empty())
       throw sharp::Exception ("TagManager.GetTag () called with an empty tag name.");
 
@@ -77,13 +75,13 @@ namespace gnote {
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || Glib::str_has_prefix(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)) {
       Glib::Mutex::Lock lock(m_locker);
-      std::map<std::string, Tag::Ptr>::const_iterator iter = m_internal_tags.find(normalized_tag_name);
+      auto iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
         return iter->second;
       }
       return Tag::Ptr();
     }
-    std::map<std::string, Gtk::TreeIter>::const_iterator iter = m_tag_map.find(normalized_tag_name);
+    auto iter = m_tag_map.find(normalized_tag_name);
     if (iter != m_tag_map.end()) {
       Gtk::TreeIter tree_iter = iter->second;
       return (*tree_iter)[m_columns.m_tag];
@@ -100,7 +98,7 @@ namespace gnote {
     if (tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with a null tag name.");
 
-    std::string normalized_tag_name = Glib::ustring(sharp::string_trim(tag_name)).lowercase();
+    Glib::ustring normalized_tag_name = sharp::string_trim(tag_name).lowercase();
     if (normalized_tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with an empty tag name.");
 
@@ -108,8 +106,7 @@ namespace gnote {
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || Glib::str_has_prefix(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)){
       Glib::Mutex::Lock lock(m_locker);
-      std::map<std::string, Tag::Ptr>::iterator iter;
-      iter = m_internal_tags.find(normalized_tag_name);
+      auto iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
         return iter->second;
       }
@@ -191,8 +188,7 @@ namespace gnote {
       m_internal_tags.erase(tag->normalized_name());
     }
     bool tag_removed = false;
-    std::map<std::string, Gtk::TreeIter>::iterator map_iter;
-    map_iter = m_tag_map.find(tag->normalized_name());
+    auto map_iter = m_tag_map.find(tag->normalized_name());
     if (map_iter != m_tag_map.end()) {
 
       Glib::Mutex::Lock lock(m_locker);
