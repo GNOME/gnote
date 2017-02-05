@@ -24,8 +24,6 @@
 #include <config.h>
 #endif
 
-#include <string.h>
-
 #include <glibmm/i18n.h>
 #include <gtkmm/separatormenuitem.h>
 
@@ -179,7 +177,7 @@ namespace gnote {
     get_buffer()->apply_tag (m_title_tag, get_title_start(), get_title_end());
 
     // NOTE: Use "(Untitled #)" for empty first lines...
-    std::string title = sharp::string_trim(get_title_start().get_slice (get_title_end()));
+    Glib::ustring title = sharp::string_trim(get_title_start().get_slice(get_title_end()));
     if (title.empty()) {
       title = get_unique_untitled ();
     }
@@ -189,10 +187,10 @@ namespace gnote {
   }
 
 
-  std::string NoteRenameWatcher::get_unique_untitled()
+  Glib::ustring NoteRenameWatcher::get_unique_untitled()
   {
     int new_num = manager().get_notes().size();
-    std::string temp_title;
+    Glib::ustring temp_title;
 
     while (true) {
       // TRANSLATORS: %1 is the placeholder for the number.
@@ -207,7 +205,7 @@ namespace gnote {
 
   bool NoteRenameWatcher::update_note_title(bool only_warn)
   {
-    std::string title = get_window()->get_name();
+    Glib::ustring title = get_window()->get_name();
 
     NoteBase::Ptr existing = manager().find (title);
     if (existing && (existing != get_note())) {
@@ -220,13 +218,13 @@ namespace gnote {
     return true;
   }
 
-  void NoteRenameWatcher::show_name_clash_error(const std::string & title, bool only_warn)
+  void NoteRenameWatcher::show_name_clash_error(const Glib::ustring & title, bool only_warn)
   {
     // Select text from TitleStart to TitleEnd
     get_buffer()->move_mark (get_buffer()->get_selection_bound(), get_title_start());
     get_buffer()->move_mark (get_buffer()->get_insert(), get_title_end());
 
-    std::string message = Glib::ustring::compose(
+    Glib::ustring message = Glib::ustring::compose(
                                 // TRANSLATORS: %1 is the placeholder for the title.
                                 _("A note with the title "
                                   "<b>%1</b> already exists. "
@@ -339,7 +337,7 @@ namespace gnote {
     m_tag_applied_cid = get_buffer()->signal_apply_tag().connect(
       sigc::mem_fun(*this, &NoteSpellChecker::tag_applied), false);  // connect before
 
-    std::string lang = get_language();
+    Glib::ustring lang = get_language();
 
     if (!m_obj_ptr && lang != LANG_DISABLED) {
       m_obj_ptr = gtk_spell_checker_new();
@@ -434,7 +432,7 @@ namespace gnote {
 
   void NoteSpellChecker::on_language_changed(const gchar *lang)
   {
-    std::string tag_name = LANG_PREFIX;
+    Glib::ustring tag_name = LANG_PREFIX;
     tag_name += lang;
     Tag::Ptr tag = get_language_tag();
     if(tag && tag->name() != tag_name) {
@@ -459,10 +457,10 @@ namespace gnote {
     return lang_tag;
   }
 
-  std::string NoteSpellChecker::get_language()
+  Glib::ustring NoteSpellChecker::get_language()
   {
     Tag::Ptr tag = get_language_tag();
-    std::string lang;
+    Glib::ustring lang;
     if(tag) {
       lang = sharp::string_replace_first(tag->name(), LANG_PREFIX, "");
     }
@@ -483,7 +481,7 @@ namespace gnote {
       attach_checker();
     }
     else {
-      std::string tag_name = LANG_PREFIX;
+      Glib::ustring tag_name = LANG_PREFIX;
       tag_name += LANG_DISABLED;
       tag = ITagManager::obj().get_or_create_tag(tag_name);
       get_note()->add_tag(tag);
@@ -569,9 +567,9 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteUrlWatcher::on_popup_menu), false);
   }
 
-  std::string NoteUrlWatcher::get_url(const Gtk::TextIter & start, const Gtk::TextIter & end)
+  Glib::ustring NoteUrlWatcher::get_url(const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
-    std::string url = start.get_slice (end);
+    Glib::ustring url = start.get_slice(end);
 
     // FIXME: Needed because the file match is greedy and
     // eats a leading space.
@@ -590,7 +588,7 @@ namespace gnote {
     else if (Glib::str_has_prefix(url, "~/")) {
       const char * home = getenv("HOME");
       if(home) {
-        url = std::string("file://") + home + "/" +
+        url = Glib::ustring("file://") + home + "/" +
           sharp::string_substring(url, 2);
       }
     }
@@ -607,7 +605,7 @@ namespace gnote {
                               const Gtk::TextIter & start, const Gtk::TextIter & end)
 
   {
-    std::string url = get_url (start, end);
+    Glib::ustring url = get_url(start, end);
     try {
       utils::open_url (url);
     } 
@@ -743,7 +741,7 @@ namespace gnote {
     Gtk::TextIter start, end;
     m_url_tag->get_extents (click_iter, start, end);
 
-    std::string url = get_url (start, end);
+    Glib::ustring url = get_url(start, end);
 
     Glib::RefPtr<Gtk::Clipboard> clip 
       = get_window()->editor()->get_clipboard ("CLIPBOARD");
@@ -840,7 +838,7 @@ namespace gnote {
       return;
     }
 
-    std::string old_title_lower = deleted->get_title().lowercase();
+    Glib::ustring old_title_lower = deleted->get_title().lowercase();
 
     // Turn all link:internal to link:broken for the deleted note.
     utils::TextTagEnumerator enumerator(get_buffer(), m_link_tag);
@@ -1010,7 +1008,7 @@ namespace gnote {
   {
     if (tag->property_name() != get_note()->get_tag_table()->get_link_tag()->property_name())
       return;
-    std::string link_name = start.get_text (end);
+    Glib::ustring link_name = start.get_text (end);
     NoteBase::Ptr link = manager().find(link_name);
     if(!link)
         unhighlight_in_block(start, end);
@@ -1021,7 +1019,7 @@ namespace gnote {
                                             const Gtk::TextIter & start,
                                             const Gtk::TextIter & end)
   {
-    std::string link_name = start.get_text (end);
+    Glib::ustring link_name = start.get_text (end);
     NoteBase::Ptr link = manager().find(link_name);
 
     if (!link) {
@@ -1373,7 +1371,7 @@ namespace gnote {
 #endif
 
 
-  void NoteTagsWatcher::on_tag_removed(const NoteBase::Ptr&, const std::string& tag_name)
+  void NoteTagsWatcher::on_tag_removed(const NoteBase::Ptr&, const Glib::ustring& tag_name)
   {
     Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag->popularity() : 0);
