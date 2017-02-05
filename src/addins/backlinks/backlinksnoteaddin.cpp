@@ -26,7 +26,7 @@
 #include "backlinksnoteaddin.hpp"
 #include "iactionmanager.hpp"
 #include "mainwindow.hpp"
-#include "notemanager.hpp"
+#include "notemanagerbase.hpp"
 #include "preferences.hpp"
 #include "utils.hpp"
 
