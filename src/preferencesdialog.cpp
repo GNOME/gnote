@@ -132,7 +132,7 @@ namespace gnote {
       DBG_OUT("Adding preference tab addin: %s", 
               typeid(*tabAddin).name());
         try {
-          std::string tabName;
+          Glib::ustring tabName;
           Gtk::Widget *tabWidget = NULL;
           if (tabAddin->get_preference_tab_widget (this, tabName, tabWidget)) {
             notebook->append_page (*manage(tabWidget), tabName);
