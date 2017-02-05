@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2016 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,6 @@
 #ifndef __PREFERENCES_DIALOG_HPP_
 #define __PREFERENCES_DIALOG_HPP_
 
-#include <string>
 #include <map>
 
 #include <gtkmm/dialog.h>
@@ -55,10 +54,10 @@ public:
   Gtk::Widget *make_addins_pane();
 
 private:
-  void set_widget_tooltip(Gtk::Widget & widget, std::string label_text);
+  void set_widget_tooltip(Gtk::Widget & widget, Glib::ustring label_text);
   Gtk::Button *make_font_button();
-  Gtk::Label *make_label (const std::string & label_text/*, params object[] args*/);
-  Gtk::CheckButton *make_check_button (const std::string & label_text);
+  Gtk::Label *make_label(const Glib::ustring & label_text/*, params object[] args*/);
+  Gtk::CheckButton *make_check_button(const Glib::ustring & label_text);
 
   void enable_addin(bool enable);
   template <typename T>
@@ -66,7 +65,7 @@ private:
 
   void open_template_button_clicked();
   void on_font_button_clicked();
-  void update_font_button(const std::string & font_desc);
+  void update_font_button(const Glib::ustring & font_desc);
   void on_sync_addin_combo_changed();
   void on_advanced_sync_config_button();
   void on_reset_sync_addin_button(bool signal);
@@ -75,7 +74,7 @@ private:
   void on_preferences_setting_changed(const Glib::ustring & key);
   void on_rename_behavior_changed();
 
-  std::string get_selected_addin();
+  Glib::ustring get_selected_addin();
   void set_module_for_selected_addin(sharp::DynamicModule * module);
   void on_addin_tree_selection_changed();
   void update_addin_buttons();
@@ -110,7 +109,7 @@ private:
 
   SyncStoreModel m_sync_addin_store_record;
   Glib::RefPtr<Gtk::ListStore> m_sync_addin_store;
-  std::map<std::string, Gtk::TreeIter> m_sync_addin_iters;
+  std::map<Glib::ustring, Gtk::TreeIter> m_sync_addin_iters;
   Gtk::ComboBox *m_sync_addin_combo;
   sync::SyncServiceAddin *m_selected_sync_addin;
   Gtk::Grid   *m_sync_addin_prefs_container;
@@ -146,11 +145,11 @@ private:
   /// dialogs).
   ///
   /// Key = Mono.Addins.Addin.Id
-  std::map<std::string, Gtk::Dialog* > addin_prefs_dialogs;
+  std::map<Glib::ustring, Gtk::Dialog* > addin_prefs_dialogs;
 
   /// Used to keep track of open AddinInfoDialogs.
   /// Key = Mono.Addins.Addin.Id
-  std::map<std::string, Gtk::Dialog* > addin_info_dialogs;
+  std::map<Glib::ustring, Gtk::Dialog* > addin_info_dialogs;
 
 };
 
