@@ -24,7 +24,6 @@
 #include <config.h>
 #endif
 
-#include <iostream>
 #include <algorithm>
 
 #include <gtk/gtk.h>
@@ -141,13 +140,13 @@ namespace gnote {
     }
 
 
-    void show_help(const std::string & filename, const std::string & link_id,
+    void show_help(const Glib::ustring & filename, const Glib::ustring & link_id,
                    GdkScreen *screen, Gtk::Window *parent)
     {
       // "help:" URIs are "help:document[/page][?query][#frag]"
       // See resolve_help_uri () at,
       // https://git.gnome.org/browse/yelp/tree/libyelp/yelp-uri.c#n811
-      std::string uri = "help:" + filename;
+      Glib::ustring uri = "help:" + filename;
       if(!link_id.empty()) {
         uri += "/" + link_id;
       }
@@ -155,10 +154,10 @@ namespace gnote {
 
       if(!gtk_show_uri (screen, uri.c_str(), gtk_get_current_event_time (), &error)) {
         
-        std::string message = _("The \"Gnote Manual\" could "
-                                "not be found.  Please verify "
-                                "that your installation has been "
-                                "completed successfully.");
+        Glib::ustring message = _("The \"Gnote Manual\" could "
+                                  "not be found.  Please verify "
+                                  "that your installation has been "
+                                  "completed successfully.");
         HIGMessageDialog dialog(parent,
                                 GTK_DIALOG_DESTROY_WITH_PARENT,
                                 Gtk::MESSAGE_ERROR,
@@ -173,7 +172,7 @@ namespace gnote {
     }
 
 
-    void open_url(const std::string & url)
+    void open_url(const Glib::ustring & url)
       throw (Glib::Error)
     {
       if(!url.empty()) {
@@ -187,9 +186,9 @@ namespace gnote {
     }
 
 
-    void show_opening_location_error(Gtk::Window * parent, 
-                                     const std::string & url, 
-                                     const std::string & error)
+    void show_opening_location_error(Gtk::Window * parent,
+                                     const Glib::ustring & url,
+                                     const Glib::ustring & error)
     {
       Glib::ustring message = Glib::ustring::compose("%1: %2", url, error);
 
@@ -201,7 +200,7 @@ namespace gnote {
       dialog.run ();
     }
 
-    std::string get_pretty_print_date(const sharp::DateTime & date, bool show_time)
+    Glib::ustring get_pretty_print_date(const sharp::DateTime & date, bool show_time)
     {
       bool use_12h = false;
       if(show_time) {
@@ -212,11 +211,11 @@ namespace gnote {
       return get_pretty_print_date(date, show_time, use_12h);
     }
 
-    std::string get_pretty_print_date(const sharp::DateTime & date, bool show_time, bool use_12h)
+    Glib::ustring get_pretty_print_date(const sharp::DateTime & date, bool show_time, bool use_12h)
     {
-      std::string pretty_str;
+      Glib::ustring pretty_str;
       sharp::DateTime now = sharp::DateTime::now();
-      std::string short_time = use_12h
+      Glib::ustring short_time = use_12h
         /* TRANSLATORS: time in 12h format. */
         ? date.to_string("%l:%M %P")
         /* TRANSLATORS: time in 24h format. */
@@ -546,7 +545,7 @@ namespace gnote {
     }
 #endif
 
-    void UriList::load_from_string(const std::string & data)
+    void UriList::load_from_string(const Glib::ustring & data)
     {
       std::vector<Glib::ustring> items;
       sharp::string_split(items, data, "\n");
@@ -555,18 +554,14 @@ namespace gnote {
 
     void UriList::load_from_string_list(const std::vector<Glib::ustring> & items)
     {
-      for(std::vector<Glib::ustring>::const_iterator iter = items.begin();
-          iter != items.end(); ++iter) {
-
-        const std::string & i(*iter);
-
+      for(const Glib::ustring & i : items) {
         if(Glib::str_has_prefix(i, "#")) {
           continue;
         }
 
-        std::string s = i;
+        Glib::ustring s = i;
         if(Glib::str_has_suffix(i, "\r")) {
-          s.erase(s.end() - 1, s.end());
+          s.resize(s.size() - 1);
         }
 
         // Handle evo's broken file urls
@@ -578,7 +573,7 @@ namespace gnote {
       }
     }
 
-    UriList::UriList(const std::string & data)
+    UriList::UriList(const Glib::ustring & data)
     {
       load_from_string(data);
     }
@@ -592,9 +587,9 @@ namespace gnote {
     }
 
 
-    std::string UriList::to_string() const
+    Glib::ustring UriList::to_string() const
     {
-      std::string s;
+      Glib::ustring s;
       for(const_iterator iter = begin(); iter != end(); ++iter) {
         s += iter->to_string() + "\r\n";
       }
@@ -602,7 +597,7 @@ namespace gnote {
     }
 
 
-    void UriList::get_local_paths(std::list<std::string> & paths) const
+    void UriList::get_local_paths(std::list<Glib::ustring> & paths) const
     {
       for(const_iterator iter = begin(); iter != end(); ++iter) {
 

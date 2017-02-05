@@ -51,14 +51,14 @@ namespace gnote {
 
     void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
 
-    void show_help(const std::string & filename, const std::string & link_id,
+    void show_help(const Glib::ustring & filename, const Glib::ustring & link_id,
                    GdkScreen *screen, Gtk::Window *parent);
-    void open_url(const std::string & url) throw (Glib::Error);
-    void show_opening_location_error(Gtk::Window * parent, 
-                                     const std::string & url, 
-                                     const std::string & error);
-    std::string get_pretty_print_date(const sharp::DateTime &, bool show_time);
-    std::string get_pretty_print_date(const sharp::DateTime &, bool show_time, bool use_12h);
+    void open_url(const Glib::ustring & url) throw (Glib::Error);
+    void show_opening_location_error(Gtk::Window * parent,
+                                     const Glib::ustring & url,
+                                     const Glib::ustring & error);
+    Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time);
+    Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time, bool use_12h);
 
     void main_context_invoke(const sigc::slot<void> & slot);
     void main_context_call(const sigc::slot<void> & slot);
@@ -141,13 +141,13 @@ namespace gnote {
     {
     public:
 //      UriList(const NoteList & notes);
-      UriList(const std::string & data);
+      UriList(const Glib::ustring & data);
       UriList(const Gtk::SelectionData & selection);
-      std::string to_string() const;
-      void get_local_paths(std::list<std::string> &) const;
+      Glib::ustring to_string() const;
+      void get_local_paths(std::list<Glib::ustring> &) const;
       
     private:
-      void load_from_string(const std::string & data);
+      void load_from_string(const Glib::ustring & data);
       void load_from_string_list(const std::vector<Glib::ustring> & items);
     };
 
