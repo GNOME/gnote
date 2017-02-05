@@ -40,7 +40,7 @@ namespace gnote {
   NoteManager::NoteManager(const Glib::ustring & directory)
     : NoteManagerBase(directory)
   {
-    std::string backup = directory + "/Backup";
+    Glib::ustring backup = directory + "/Backup";
     
     _common_init(directory, backup);
   }
@@ -129,7 +129,7 @@ namespace gnote {
     //     Catalog.GetString ("GNOME Panel");
 
     // for some reason I have to set the xmlns -- Hub
-    std::string start_note_content =
+    Glib::ustring start_note_content =
       _("<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">"
         "Start Here\n\n"
         "<bold>Welcome to Gnote!</bold>\n\n"
@@ -148,7 +148,7 @@ namespace gnote {
         "gets underlined?  Click on the link to open the note."
         "</note-content>");
 
-    std::string links_note_content =
+    Glib::ustring links_note_content =
       _("<note-content>"
         "Using Links in Gnote\n\n"
         "Notes in Gnote can be linked together by "
@@ -227,7 +227,7 @@ namespace gnote {
     }
   }
 
-  void NoteManager::migrate_notes(const std::string & old_note_dir)
+  void NoteManager::migrate_notes(const Glib::ustring & old_note_dir)
   {
     std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(old_note_dir, ".note", files);
@@ -282,7 +282,7 @@ namespace gnote {
 
   // Create a new note with the specified title from the default
   // template note. Optionally the body can be overridden.
-  NoteBase::Ptr NoteManager::create_new_note(Glib::ustring title, const std::string & guid)
+  NoteBase::Ptr NoteManager::create_new_note(Glib::ustring title, const Glib::ustring & guid)
   {
     NoteBase::Ptr new_note = NoteManagerBase::create_new_note(title, guid);
 
@@ -294,7 +294,7 @@ namespace gnote {
 
   // Create a new note with the specified Xml content
   NoteBase::Ptr NoteManager::create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
-                                        const std::string & guid)
+                                        const Glib::ustring & guid)
   {
     NoteBase::Ptr new_note = NoteManagerBase::create_new_note(title, xml_content, guid);
 
@@ -324,7 +324,7 @@ namespace gnote {
   // the template note.
   NoteBase::Ptr NoteManager::create_note_from_template(const Glib::ustring & title,
                                                        const NoteBase::Ptr & template_note,
-                                                       const std::string & guid)
+                                                       const Glib::ustring & guid)
   {
     NoteBase::Ptr new_note = NoteManagerBase::create_note_from_template(title, template_note, guid);
     if(new_note == 0) {

@@ -107,7 +107,7 @@ void NoteManagerBase::_common_init(const Glib::ustring & /*directory*/, const Gl
   m_backup_dir = backup_directory;
   bool is_first_run = first_run();
 
-  const std::string old_note_dir = IGnote::old_note_dir();
+  const Glib::ustring old_note_dir = IGnote::old_note_dir();
   const bool migration_needed = is_first_run && sharp::directory_exists(old_note_dir);
   create_notes_dir();
 
@@ -146,7 +146,7 @@ bool NoteManagerBase::create_directory(const Glib::ustring & directory) const
   return g_mkdir_with_parents(directory.c_str(), S_IRWXU) == 0;
 }
 
-void NoteManagerBase::migrate_notes(const std::string & /*old_note_dir*/)
+void NoteManagerBase::migrate_notes(const Glib::ustring & /*old_note_dir*/)
 {
 }
 
@@ -180,7 +180,7 @@ NoteBase::List NoteManagerBase::get_notes_linking_to(const Glib::ustring & title
   NoteBase::List result;
   FOREACH(const NoteBase::Ptr & note, m_notes) {
     if(note->get_title() != title) {
-      if(note->get_complete_note_xml().find(tag) != std::string::npos) {
+      if(note->get_complete_note_xml().find(tag) != Glib::ustring::npos) {
         result.push_back(note);
       }
     }
@@ -219,7 +219,7 @@ NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
   return NoteBase::Ptr();
 }
 
-NoteBase::Ptr NoteManagerBase::find_by_uri(const std::string & uri) const
+NoteBase::Ptr NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
 {
   FOREACH(const NoteBase::Ptr & note, m_notes) {
     if (note->uri() == uri) {
@@ -253,7 +253,7 @@ NoteBase::Ptr NoteManagerBase::create(const Glib::ustring & title, const Glib::u
 // the template note.
 NoteBase::Ptr NoteManagerBase::create_note_from_template(const Glib::ustring & title,
                                                          const NoteBase::Ptr & template_note,
-                                                         const std::string & guid)
+                                                         const Glib::ustring & guid)
 {
   Glib::ustring new_title(title);
   Tag::Ptr template_save_title = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
@@ -296,7 +296,7 @@ Glib::ustring NoteManagerBase::get_unique_name(const Glib::ustring & basename) c
 
 // Create a new note with the specified title from the default
 // template note. Optionally the body can be overridden.
-NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const std::string & guid)
+NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const Glib::ustring & guid)
 {
   Glib::ustring body;
 
@@ -325,7 +325,7 @@ NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const std::s
 
 // Create a new note with the specified Xml content
 NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
-                                               const std::string & guid)
+                                               const Glib::ustring & guid)
 {
   if(title.empty())
     throw sharp::Exception("Invalid title");
@@ -496,7 +496,7 @@ NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)
 }
 
 
-NoteBase::Ptr NoteManagerBase::create_with_guid(const Glib::ustring & title, const std::string & guid)
+NoteBase::Ptr NoteManagerBase::create_with_guid(const Glib::ustring & title, const Glib::ustring & guid)
 {
   return create_new_note(title, guid);
 }

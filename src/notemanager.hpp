@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -55,13 +55,13 @@ namespace gnote {
   protected:
     virtual void _common_init(const Glib::ustring & directory, const Glib::ustring & backup) override;
     virtual void post_load() override;
-    virtual void migrate_notes(const std::string & old_note_dir) override;
+    virtual void migrate_notes(const Glib::ustring & old_note_dir) override;
     virtual NoteBase::Ptr create_note_from_template(const Glib::ustring & title,
                                                     const NoteBase::Ptr & template_note,
-                                                    const std::string & guid) override;
-    virtual NoteBase::Ptr create_new_note(Glib::ustring title, const std::string & guid) override;
+                                                    const Glib::ustring & guid) override;
+    virtual NoteBase::Ptr create_new_note(Glib::ustring title, const Glib::ustring & guid) override;
     virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content,
-                                          const std::string & guid) override;
+                                          const Glib::ustring & guid) override;
     virtual NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) override;
     virtual NoteBase::Ptr note_load(const Glib::ustring & file_name) override;
   private:
