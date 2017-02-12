@@ -159,6 +159,10 @@ namespace sharp {
       }
     }
 
+    if(start == source.end()) {
+      return "";
+    }
+
     auto end = source.end();
     --end;
     while(end != start) {
@@ -169,6 +173,11 @@ namespace sharp {
         ++end;
         break;
       }
+    }
+
+    if(start == end) {
+      // this happens when there is only one non-white space character
+      ++end;
     }
 
     return Glib::ustring(start, end);

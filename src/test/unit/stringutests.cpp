@@ -105,12 +105,17 @@ SUITE(String)
     CHECK_EQUAL("foo", sharp::string_trim("   foo"));
     CHECK_EQUAL("foo", sharp::string_trim("foo"));
     CHECK_EQUAL("", sharp::string_trim(""));
+    CHECK_EQUAL("", sharp::string_trim("   "));
+    CHECK_EQUAL("f", sharp::string_trim(" f "));
+    CHECK_EQUAL("f", sharp::string_trim("f"));
 
     CHECK_EQUAL(" foo ", sharp::string_trim("** foo ++", "*+"));
     CHECK_EQUAL(" foo ", sharp::string_trim("** foo ", "*+"));
     CHECK_EQUAL(" foo ", sharp::string_trim(" foo ++", "*+"));
     CHECK_EQUAL("foo", sharp::string_trim("foo", "*+"));
     CHECK_EQUAL("", sharp::string_trim("", "*+"));
+    CHECK_EQUAL("f", sharp::string_trim("+f+", "*+"));
+    CHECK_EQUAL("f", sharp::string_trim("f", "*+"));
   }
 
   TEST(last_index_of)
