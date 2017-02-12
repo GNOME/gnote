@@ -63,7 +63,7 @@ static const char * PREFS_FILE = "stickynoteimport.ini";
 bool StickyNoteImportNoteAddin::s_static_inited = false;
 bool StickyNoteImportNoteAddin::s_sticky_file_might_exist = true;
 bool StickyNoteImportNoteAddin::s_sticky_file_existence_confirmed = false;
-std::string StickyNoteImportNoteAddin::s_sticky_xml_path;
+Glib::ustring StickyNoteImportNoteAddin::s_sticky_xml_path;
 
 
 void StickyNoteImportNoteAddin::_init_static()
@@ -109,7 +109,7 @@ void StickyNoteImportNoteAddin::shutdown()
 bool StickyNoteImportNoteAddin::want_to_run(gnote::NoteManager & manager)
 {
   bool want_run = false;
-  std::string prefs_file =
+  Glib::ustring prefs_file =
     Glib::build_filename(manager.get_addin_manager().get_prefs_dir(),
                          PREFS_FILE);
 
@@ -132,7 +132,7 @@ bool StickyNoteImportNoteAddin::want_to_run(gnote::NoteManager & manager)
 
 bool StickyNoteImportNoteAddin::first_run(gnote::NoteManager & manager)
 {
-  std::string prefs_file(Glib::build_filename(
+  Glib::ustring prefs_file(Glib::build_filename(
                            manager.get_addin_manager().get_prefs_dir(), 
                            PREFS_FILE));
 
@@ -206,7 +206,7 @@ void StickyNoteImportNoteAddin::import_button_clicked(gnote::NoteManager & manag
 }
 
 
-void StickyNoteImportNoteAddin::show_no_sticky_xml_dialog(const std::string & xml_path)
+void StickyNoteImportNoteAddin::show_no_sticky_xml_dialog(const Glib::ustring & xml_path)
 {
   show_message_dialog (
     _("No Sticky Notes found"),
@@ -305,8 +305,8 @@ bool StickyNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle
 }
 
 
-void StickyNoteImportNoteAddin::show_message_dialog(const std::string & title,
-                                                   const std::string & message,
+void StickyNoteImportNoteAddin::show_message_dialog(const Glib::ustring & title,
+                                                   const Glib::ustring & message,
                                                    Gtk::MessageType messageType)
 {
   gnote::utils::HIGMessageDialog dialog(NULL,
