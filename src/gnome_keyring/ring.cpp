@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ SecretSchema Ring::s_schema = {
 #pragma GCC diagnostic pop
 
 
-std::string Ring::find_password(const std::map<std::string, std::string> & atts)
+Glib::ustring Ring::find_password(const std::map<Glib::ustring, Glib::ustring> & atts)
 {
   GHashTable *attributes = keyring_attributes(atts);
   GError *error = NULL;
@@ -56,7 +56,7 @@ std::string Ring::find_password(const std::map<std::string, std::string> & atts)
     throw e;
   }
 
-  std::string res;
+  Glib::ustring res;
   if(result) {
     res = result;
     secret_password_free(result);
@@ -64,14 +64,14 @@ std::string Ring::find_password(const std::map<std::string, std::string> & atts)
   return res;
 }
 
-std::string Ring::default_keyring()
+Glib::ustring Ring::default_keyring()
 {
   return SECRET_COLLECTION_DEFAULT;
 }
 
-void Ring::create_password(const std::string & keyring, const std::string & displayName,
-                          const std::map<std::string, std::string> & attributes,
-                          const std::string & secret)
+void Ring::create_password(const Glib::ustring & keyring, const Glib::ustring & displayName,
+                          const std::map<Glib::ustring, Glib::ustring> & attributes,
+                          const Glib::ustring & secret)
 {
   GHashTable *atts = keyring_attributes(attributes);
   GError *error = NULL;
@@ -85,7 +85,7 @@ void Ring::create_password(const std::string & keyring, const std::string & disp
   }
 }
 
-void Ring::clear_password(const std::map<std::string, std::string> & attributes)
+void Ring::clear_password(const std::map<Glib::ustring, Glib::ustring> & attributes)
 {
   GHashTable *atts = keyring_attributes(attributes);
   GError *error = NULL;
@@ -98,12 +98,11 @@ void Ring::clear_password(const std::map<std::string, std::string> & attributes)
   }
 }
 
-GHashTable *Ring::keyring_attributes(const std::map<std::string, std::string> & atts)
+GHashTable *Ring::keyring_attributes(const std::map<Glib::ustring, Glib::ustring> & atts)
 {
   GHashTable *result = g_hash_table_new_full(g_str_hash, g_str_equal, free, free);
-  for(std::map<std::string, std::string>::const_iterator iter = atts.begin();
-      iter != atts.end(); ++iter) {
-    g_hash_table_insert(result, strdup(iter->first.c_str()), strdup(iter->second.c_str()));
+  for(auto attribute : atts) {
+    g_hash_table_insert(result, strdup(attribute.first.c_str()), strdup(attribute.second.c_str()));
   }
   return result;
 }

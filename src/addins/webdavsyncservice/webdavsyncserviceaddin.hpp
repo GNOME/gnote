@@ -91,20 +91,20 @@ protected:
   /// </summary>
   virtual void reset_configuration_values() override;
 private:
-  std::vector<Glib::ustring> get_fuse_mount_exe_args(const std::string & mountPath, const std::string & url,
-      const std::string & username, const std::string & password, bool acceptSsl);
-  bool get_config_settings(std::string & url, std::string & username, std::string & password);
-  void save_config_settings(const std::string & url, const std::string & username, const std::string & password);
-  bool get_pref_widget_settings(std::string & url, std::string & username, std::string & password);
+  std::vector<Glib::ustring> get_fuse_mount_exe_args(const Glib::ustring & mountPath, const Glib::ustring & url,
+      const Glib::ustring & username, const Glib::ustring & password, bool acceptSsl);
+  bool get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password);
+  void save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password);
+  bool get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password);
   bool accept_ssl_cert();
-  void add_row(Gtk::Table *table, Gtk::Widget *widget, const std::string & labelText, uint row);
+  void add_row(Gtk::Table *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row);
 
   Gtk::Entry *m_url_entry;
   Gtk::Entry *m_username_entry;
   Gtk::Entry *m_password_entry;
 
   static const char *KEYRING_ITEM_NAME;
-  static std::map<std::string, std::string> s_request_attributes;
+  static std::map<Glib::ustring, Glib::ustring> s_request_attributes;
 };
 
 }

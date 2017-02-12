@@ -45,7 +45,7 @@ WebDavSyncServiceModule::WebDavSyncServiceModule()
 
 
 const char *WebDavSyncServiceAddin::KEYRING_ITEM_NAME = "Tomboy sync WebDAV account";
-std::map<std::string, std::string> WebDavSyncServiceAddin::s_request_attributes;
+std::map<Glib::ustring, Glib::ustring> WebDavSyncServiceAddin::s_request_attributes;
 
 WebDavSyncServiceAddin * WebDavSyncServiceAddin::create()
 {
@@ -60,7 +60,7 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(EventHandler req
   table->set_col_spacings(10);
 
   // Read settings out of gconf
-  std::string url, username, password;
+  Glib::ustring url, username, password;
   get_config_settings(url, username, password);
 
   m_url_entry = new Gtk::Entry();
@@ -87,14 +87,14 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(EventHandler req
 
 bool WebDavSyncServiceAddin::is_configured()
 {
-  std::string url, username, password;
+  Glib::ustring url, username, password;
   return get_config_settings(url, username, password);
 }
 
 
 bool WebDavSyncServiceAddin::are_settings_valid()
 {
-  std::string url, username, password;
+  Glib::ustring url, username, password;
   return get_pref_widget_settings(url, username, password);
 }
 
@@ -119,7 +119,7 @@ Glib::ustring WebDavSyncServiceAddin::fuse_mount_directory_error()
 
 std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const Glib::ustring & mountPath, bool fromStoredValues)
 {
-  std::string url, username, password;
+  Glib::ustring url, username, password;
   if(fromStoredValues) {
     get_config_settings(url, username, password);
   }
@@ -132,24 +132,8 @@ std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const
 
 Glib::ustring WebDavSyncServiceAddin::get_fuse_mount_exe_args_for_display(const Glib::ustring & mountPath, bool fromStoredValues)
 {
-  /*std::string url, username, password;
-  if(fromStoredValues) {
-    get_config_settings(url, username, password);
-  }
-  else {
-    get_pref_widget_settings(url, username, password);
-  }
-  
-  // Mask password
-  std::string acceptSsl;
-  if(accept_ssl_cert()) {
-    acceptSsl = "-ac";
-  }
-
-  return str(boost::format("%1% -a %2% -u %3% -p %4% %5% -o fsname=gnotewdfs")
-             % mountPath % url % username % password % acceptSsl);*/
   std::vector<Glib::ustring> args = get_fuse_mount_exe_args(mountPath, fromStoredValues);
-  std::string result;
+  Glib::ustring result;
   for(auto iter : args) {
     result += iter + " ";
   }
@@ -164,7 +148,7 @@ Glib::ustring WebDavSyncServiceAddin::fuse_mount_exe_name()
 
 bool WebDavSyncServiceAddin::verify_configuration()
 {
-  std::string url, username, password;
+  Glib::ustring url, username, password;
 
   if(!get_pref_widget_settings(url, username, password)) {
     // TODO: Figure out a way to send the error back to the client
@@ -177,7 +161,7 @@ bool WebDavSyncServiceAddin::verify_configuration()
 
 void WebDavSyncServiceAddin::save_configuration_values()
 {
-  std::string url, username, password;
+  Glib::ustring url, username, password;
   get_pref_widget_settings(url, username, password);
 
   save_config_settings(url, username, password);
@@ -190,8 +174,8 @@ void WebDavSyncServiceAddin::reset_configuration_values()
   // TODO: Unmount the FUSE mount!
 }
 
-std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const std::string & mountPath, const std::string & url,
-    const std::string & username, const std::string & password, bool acceptSsl)
+std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const Glib::ustring & mountPath, const Glib::ustring & url,
+    const Glib::ustring & username, const Glib::ustring & password, bool acceptSsl)
 {
   std::vector<Glib::ustring> args;
   args.reserve(12);
@@ -212,7 +196,7 @@ std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const
   return args;
 }
 
-bool WebDavSyncServiceAddin::get_config_settings(std::string & url, std::string & username, std::string & password)
+bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password)
 {
   // Retrieve configuration from the GNOME Keyring and GSettings
   url = "";
@@ -235,7 +219,7 @@ bool WebDavSyncServiceAddin::get_config_settings(std::string & url, std::string 
   return url != "" && username != "" && password != "";
 }
 
-void WebDavSyncServiceAddin::save_config_settings(const std::string & url, const std::string & username, const std::string & password)
+void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password)
 {
   // Save configuration into the GNOME Keyring and GSettings
   try {
@@ -267,7 +251,7 @@ void WebDavSyncServiceAddin::save_config_settings(const std::string & url, const
   }
 }
 
-bool WebDavSyncServiceAddin::get_pref_widget_settings(std::string & url, std::string & username, std::string & password)
+bool WebDavSyncServiceAddin::get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password)
 {
   url = sharp::string_trim(m_url_entry->get_text());
   username = sharp::string_trim(m_username_entry->get_text());
@@ -287,7 +271,7 @@ bool WebDavSyncServiceAddin::accept_ssl_cert()
   }
 }
 
-void WebDavSyncServiceAddin::add_row(Gtk::Table *table, Gtk::Widget *widget, const std::string & labelText, uint row)
+void WebDavSyncServiceAddin::add_row(Gtk::Table *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row)
 {
   Gtk::Label *l = new Gtk::Label(labelText);
   l->set_use_underline(true);

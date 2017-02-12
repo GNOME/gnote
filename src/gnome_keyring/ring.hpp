@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@
 #include <vector>
 #include <map>
 
+#include <glibmm/ustring.h>
 #include <libsecret/secret.h>
 
 
@@ -34,14 +35,14 @@ namespace keyring {
 class Ring
 {
 public:
-  static std::string find_password(const std::map<std::string, std::string> & atts);
-  static std::string default_keyring();
-  static void create_password(const std::string & keyring, const std::string & displayName,
-                              const std::map<std::string, std::string> & attributes,
-                              const std::string & secret);
-  static void clear_password(const std::map<std::string, std::string> & attributes);
+  static Glib::ustring find_password(const std::map<Glib::ustring, Glib::ustring> & atts);
+  static Glib::ustring default_keyring();
+  static void create_password(const Glib::ustring & keyring, const Glib::ustring & displayName,
+                              const std::map<Glib::ustring, Glib::ustring> & attributes,
+                              const Glib::ustring & secret);
+  static void clear_password(const std::map<Glib::ustring, Glib::ustring> & attributes);
 private:
-  static GHashTable *keyring_attributes(const std::map<std::string, std::string> & atts);
+  static GHashTable *keyring_attributes(const std::map<Glib::ustring, Glib::ustring> & atts);
 
   static SecretSchema s_schema;
 };
