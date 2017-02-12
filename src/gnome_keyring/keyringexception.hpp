@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@
 
 #include <stdexcept>
 
+#include <glibmm/ustring.h>
+
 #include "base/macros.hpp"
 
 
@@ -33,7 +35,7 @@ class KeyringException
   : public std::exception
 {
 public:
-  KeyringException(const std::string & msg)
+  KeyringException(const Glib::ustring & msg)
     : m_what(msg)
     {}
   virtual ~KeyringException() throw() override {}
@@ -42,7 +44,7 @@ public:
       return m_what.c_str();
     }
 private:
-  std::string m_what;
+  Glib::ustring m_what;
 };
 
 }
