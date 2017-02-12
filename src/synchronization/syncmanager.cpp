@@ -213,7 +213,7 @@ namespace sync {
 
       // Gather list of new/updated note titles
       // for title conflict handling purposes.
-      std::list<std::string> noteUpdateTitles;
+      std::list<Glib::ustring> noteUpdateTitles;
       for(auto & iter : noteUpdates) {
         if(iter.second.m_title != "") {
           noteUpdateTitles.push_back(iter.second.m_title);

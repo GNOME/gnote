@@ -30,7 +30,7 @@ namespace sync {
   {
   }
 
-  void SyncUI::note_synchronized_th(const std::string & noteTitle, NoteSyncType type)
+  void SyncUI::note_synchronized_th(const Glib::ustring & noteTitle, NoteSyncType type)
   {
     utils::main_context_invoke([this, noteTitle, type]() { note_synchronized(noteTitle, type); });
   }

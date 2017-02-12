@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,8 @@
 
 
 #include <list>
-#include <string>
+
+#include <glibmm/ustring.h>
 
 #include "base/macros.hpp"
 #include "syncutils.hpp"
@@ -41,11 +42,11 @@ namespace sync {
     typedef sigc::slot<void> SlotIdle;
 
     virtual void sync_state_changed(SyncState state) = 0;
-    void note_synchronized_th(const std::string & noteTitle, NoteSyncType type);
-    virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) = 0;
+    void note_synchronized_th(const Glib::ustring & noteTitle, NoteSyncType type);
+    virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) = 0;
     virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<std::string> & noteUpdateTitles) = 0;
+                                        const std::list<Glib::ustring> & noteUpdateTitles) = 0;
     virtual void present_ui() = 0;
 
     sigc::connection signal_connecting_connect(const SlotConnecting & slot);
