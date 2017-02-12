@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (c) 2009 Romain Tartière <romain@blogreen.org>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@
 
 namespace todo {
 
-static std::vector<std::string> s_todo_patterns;
+static std::vector<Glib::ustring> s_todo_patterns;
 
 TodoModule::TodoModule()
 {
@@ -41,7 +41,7 @@ TodoModule::TodoModule()
 
 void Todo::initialize()
 {
-  FOREACH(const std::string & s, s_todo_patterns) {
+  for(auto s : s_todo_patterns) {
     if(!get_note()->get_tag_table()->lookup(s)) {
       Glib::RefPtr<Gtk::TextTag> tag = Gtk::TextTag::create(s);
       tag->property_foreground() = "#0080f0";
@@ -91,7 +91,7 @@ void Todo::highlight_region(Gtk::TextIter start, Gtk::TextIter end)
     end.forward_line();
   }
 
-  FOREACH(const std::string & pattern, s_todo_patterns) {
+  for(auto pattern : s_todo_patterns) {
     highlight_region(pattern, start, end);
   }    
 }

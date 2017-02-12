@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (c) 2009 Romain Tartière <romain@blogreen.org>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,6 @@
 #ifndef _TODO_NOTE_ADDIN_
 #define _TODO_NOTE_ADDIN_
 
-#include "base/macros.hpp"
 #include "noteaddin.hpp"
 #include "sharp/dynamicmodule.hpp"
 
