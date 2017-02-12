@@ -111,13 +111,13 @@ Glib::ustring WebDavSyncServiceAddin::id()
   return "wdfs";
 }
 
-std::string WebDavSyncServiceAddin::fuse_mount_directory_error()
+Glib::ustring WebDavSyncServiceAddin::fuse_mount_directory_error()
 {
   const char *res = _("There was an error connecting to the server.  This may be caused by using an incorrect user name and/or password.");
   return res;
 }
 
-std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues)
+std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const Glib::ustring & mountPath, bool fromStoredValues)
 {
   std::string url, username, password;
   if(fromStoredValues) {
@@ -130,7 +130,7 @@ std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const
   return get_fuse_mount_exe_args(mountPath, url, username, password, accept_ssl_cert());
 }
 
-std::string WebDavSyncServiceAddin::get_fuse_mount_exe_args_for_display(const std::string & mountPath, bool fromStoredValues)
+Glib::ustring WebDavSyncServiceAddin::get_fuse_mount_exe_args_for_display(const Glib::ustring & mountPath, bool fromStoredValues)
 {
   /*std::string url, username, password;
   if(fromStoredValues) {
@@ -157,7 +157,7 @@ std::string WebDavSyncServiceAddin::get_fuse_mount_exe_args_for_display(const st
   return result;
 }
 
-std::string WebDavSyncServiceAddin::fuse_mount_exe_name()
+Glib::ustring WebDavSyncServiceAddin::fuse_mount_exe_name()
 {
   return "wdfs";
 }

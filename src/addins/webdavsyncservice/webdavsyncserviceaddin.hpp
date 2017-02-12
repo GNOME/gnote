@@ -78,11 +78,11 @@ public:
   /// </summary>
   virtual Glib::ustring id() override;
 
-  virtual std::string fuse_mount_directory_error() override;
+  virtual Glib::ustring fuse_mount_directory_error() override;
 protected:
-  virtual std::vector<Glib::ustring> get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues) override;
-  virtual std::string get_fuse_mount_exe_args_for_display(const std::string & mountPath, bool fromStoredValues) override;
-  virtual std::string fuse_mount_exe_name() override;
+  virtual std::vector<Glib::ustring> get_fuse_mount_exe_args(const Glib::ustring & mountPath, bool fromStoredValues) override;
+  virtual Glib::ustring get_fuse_mount_exe_args_for_display(const Glib::ustring & mountPath, bool fromStoredValues) override;
+  virtual Glib::ustring fuse_mount_exe_name() override;
   virtual bool verify_configuration() override;
   virtual void save_configuration_values() override;
 

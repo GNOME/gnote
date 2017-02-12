@@ -126,8 +126,8 @@ bool FuseSyncServiceAddin::save_configuration()
   if(mounted) {
     try {
       // Test creating/writing/deleting a file
-      std::string testPathBase = Glib::build_filename(m_mount_path, "test");
-      std::string testPath = testPathBase;
+      Glib::ustring testPathBase = Glib::build_filename(m_mount_path, "test");
+      Glib::ustring testPath = testPathBase;
       int count = 0;
 
       // Get unique new file name
@@ -190,13 +190,13 @@ void FuseSyncServiceAddin::reset_configuration()
   reset_configuration_values();
 }
 
-std::string FuseSyncServiceAddin::fuse_mount_timeout_error()
+Glib::ustring FuseSyncServiceAddin::fuse_mount_timeout_error()
 {
   char *error = _("Timeout connecting to server.");
   return error;
 }
 
-std::string FuseSyncServiceAddin::fuse_mount_directory_error()
+Glib::ustring FuseSyncServiceAddin::fuse_mount_directory_error()
 {
   char *error = _("Error connecting to server.");
   return error;
@@ -280,7 +280,7 @@ int FuseSyncServiceAddin::get_timeout_ms()
 
 void FuseSyncServiceAddin::set_up_mount_path()
 {
-  std::string notesPath = Glib::get_tmp_dir();
+  Glib::ustring notesPath = Glib::get_tmp_dir();
   m_mount_path = Glib::build_filename(notesPath, Glib::get_user_name(), "gnote", "sync-" + id()); // TODO: Best mount path name?
 }
 
@@ -336,9 +336,9 @@ bool FuseSyncServiceAddin::is_mounted()
   p.redirect_standard_output(true);
   p.file_name(m_mount_exe_path);
   p.start();
-  std::list<std::string> outputLines;
+  std::list<Glib::ustring> outputLines;
   while(!p.standard_output_eof()) {
-    std::string line = p.standard_output_read_line();
+    Glib::ustring line = p.standard_output_read_line();
     outputLines.push_back(line);
   }
   p.wait_for_exit();
@@ -349,9 +349,9 @@ bool FuseSyncServiceAddin::is_mounted()
   }
 
   // TODO: Review this methodology...is it really the exe name, for example?
-  for(std::list<std::string>::iterator iter = outputLines.begin(); iter != outputLines.end(); ++iter) {
-    if((iter->find(fuse_mount_exe_name()) == 0 || iter->find(" type fuse." + fuse_mount_exe_name()) != std::string::npos)
-       && iter->find(Glib::ustring::compose("on %1 ", m_mount_path)) != std::string::npos) {
+  for(auto line : outputLines) {
+    if((line.find(fuse_mount_exe_name()) == 0 || line.find(" type fuse." + fuse_mount_exe_name()) != Glib::ustring::npos)
+       && line.find(Glib::ustring::compose("on %1 ", m_mount_path)) != Glib::ustring::npos) {
       return true;
     }
   }
