@@ -23,6 +23,8 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
+#include <fstream>
+
 #include <glib/gstdio.h>
 #include <glibmm.h>
 #include <giomm/file.h>
@@ -73,6 +75,38 @@ namespace sharp {
   void file_move(const Glib::ustring & from, const Glib::ustring & to)
   {
     g_rename(from.c_str(), to.c_str());
+  }
+
+
+  std::vector<Glib::ustring> file_read_all_lines(const Glib::ustring & path)
+  {
+    std::vector<Glib::ustring> lines;
+    std::ifstream fin;
+    fin.open(path.c_str());
+    if(fin.is_open()) {
+      std::string line;
+      while(std::getline(fin, line)) {
+        lines.push_back(line);
+      }
+      fin.close();
+    }
+
+    return lines;
+  }
+
+  Glib::ustring file_read_all_text(const Glib::ustring & path)
+  {
+    auto lines = file_read_all_lines(path);
+    if(lines.size() == 0) {
+      return "";
+    }
+
+    Glib::ustring text = lines[0];
+    for(unsigned i = 1; i < lines.size(); ++i) {
+      text += "\n" + lines[i];
+    }
+
+    return text;
   }
 }
 

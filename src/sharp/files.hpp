@@ -40,6 +40,9 @@ namespace sharp {
   /** return the filename from the file path */
   Glib::ustring file_filename(const Glib::ustring & p);
   void file_copy(const Glib::ustring & source, const Glib::ustring & dest);
+
+  std::vector<Glib::ustring> file_read_all_lines(const Glib::ustring & path);
+  Glib::ustring file_read_all_text(const Glib::ustring & path);
 }
 
 

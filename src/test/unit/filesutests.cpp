@@ -17,6 +17,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <fstream>
+#include <stdlib.h>
+#include <unistd.h>
+
 #include <glibmm/miscutils.h>
 #include <UnitTest++/UnitTest++.h>
 
@@ -57,6 +61,53 @@ SUITE(files)
     // Very unlikely to exist.
     CHECK(sharp::file_exists(__FILE__ __FILE__) == false);
     CHECK(sharp::file_exists(__FILE__) == true);
+  }
+
+  TEST(read_all_lines)
+  {
+    std::vector<Glib::ustring> lines;
+    // very unlikely to exist
+    lines = sharp::file_read_all_lines(__FILE__ __FILE__);
+    CHECK_EQUAL(0, lines.size());
+
+    char temp_file_name[] = "/tmp/gnotetestXXXXXX";
+    int fd = mkstemp(temp_file_name);
+    close(fd);
+
+    lines = sharp::file_read_all_lines(temp_file_name);
+    CHECK_EQUAL(0, lines.size());
+
+    FILE *file = fopen(temp_file_name, "w");
+    fputs("line1\nline2\nline3", file);
+    fclose(file);
+
+    lines = sharp::file_read_all_lines(temp_file_name);
+    CHECK_EQUAL(3, lines.size());
+    CHECK_EQUAL("line1", lines[0]);
+    CHECK_EQUAL("line2", lines[1]);
+    CHECK_EQUAL("line3", lines[2]);
+  }
+
+  TEST(read_all_text)
+  {
+    Glib::ustring file_content;
+    // very unlikely to exist
+    file_content = sharp::file_read_all_text(__FILE__ __FILE__);
+    CHECK_EQUAL("", file_content);
+
+    char temp_file_name[] = "/tmp/gnotetestXXXXXX";
+    int fd = mkstemp(temp_file_name);
+    close(fd);
+
+    file_content = sharp::file_read_all_text(temp_file_name);
+    CHECK_EQUAL("", file_content);
+
+    FILE *file = fopen(temp_file_name, "w");
+    fputs("line1\nline2\nline3", file);
+    fclose(file);
+
+    file_content = sharp::file_read_all_text(temp_file_name);
+    CHECK_EQUAL("line1\nline2\nline3", file_content);
   }
 }
 
