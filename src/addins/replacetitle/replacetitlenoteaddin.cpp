@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2016 Aurimas Cernius
+ * Copyright (C) 2011-2013,2016-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ void ReplaceTitleNoteAddin::replacetitle_button_clicked(const Glib::VariantBase&
 {
   // unix primary clipboard
   Glib::RefPtr<Gtk::Clipboard> refClipboard = Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
-  const std::string newTitle= refClipboard->wait_for_text();
+  const Glib::ustring newTitle = refClipboard->wait_for_text();
   Glib::RefPtr<Gtk::TextBuffer> buffer = get_note()->get_buffer();
 
   // replace note content
