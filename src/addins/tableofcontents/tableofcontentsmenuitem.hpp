@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #ifndef __TABLEOFCONTENT_MENU_ITEM_HPP_
 #define __TABLEOFCONTENT_MENU_ITEM_HPP_
 
-#include <string>
 #include <gtkmm/imagemenuitem.h>
 
 #include "base/macros.hpp"
@@ -39,7 +38,7 @@ class TableofcontentsMenuItem : public Gtk::ImageMenuItem
 {
 public:
   TableofcontentsMenuItem ( const gnote::Note::Ptr & note,
-                           const std::string      & heading,
+                           const Glib::ustring     & heading,
                            Heading::Type            heading_level,
                            int                      heading_position
                          );

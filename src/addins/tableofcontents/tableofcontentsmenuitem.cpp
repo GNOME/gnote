@@ -2,7 +2,7 @@
  * "Table of Contents" is a Note add-in for Gnote.
  *  It lists note's table of contents in a menu.
  *
- * Copyright (C) 2015 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2015,2017 Aurimas Cernius <aurisc4@gmail.com>
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ namespace tableofcontents {
 
 TableofcontentsMenuItem::TableofcontentsMenuItem (
                             const gnote::Note::Ptr & note,
-                            const std::string      & heading,
+                            const Glib::ustring    & heading,
                             Heading::Type            heading_level,
                             int                      heading_position)
   : m_note            (note)
