@@ -26,6 +26,8 @@
 #ifndef __SHARP_FILES_HPP_
 #define __SHARP_FILES_HPP_
 
+#include <vector>
+
 #include <glibmm/ustring.h>
 
 namespace sharp {
