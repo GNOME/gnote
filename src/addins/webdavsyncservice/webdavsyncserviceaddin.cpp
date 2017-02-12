@@ -99,14 +99,14 @@ bool WebDavSyncServiceAddin::are_settings_valid()
 }
 
 
-std::string WebDavSyncServiceAddin::name()
+Glib::ustring WebDavSyncServiceAddin::name()
 {
   const char *res = _("WebDAV");
   return res;
 }
 
 
-std::string WebDavSyncServiceAddin::id()
+Glib::ustring WebDavSyncServiceAddin::id()
 {
   return "wdfs";
 }

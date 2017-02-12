@@ -65,7 +65,7 @@ gnote::sync::SyncServer::Ptr FileSystemSyncServiceAddin::create_sync_server()
 {
   gnote::sync::SyncServer::Ptr server;
 
-  std::string syncPath;
+  Glib::ustring syncPath;
   if(get_config_settings(syncPath)) {
     m_path = syncPath;
     if(sharp::directory_exists(m_path) == false) {
@@ -95,7 +95,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
   table->set_col_spacings(10);
 
   // Read settings out of gconf
-  std::string syncPath;
+  Glib::ustring syncPath;
   if(get_config_settings(syncPath) == false) {
     syncPath = "";
   }
@@ -127,7 +127,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
 
 bool FileSystemSyncServiceAddin::save_configuration()
 {
-  std::string syncPath = m_path_button->get_filename();
+  Glib::ustring syncPath = m_path_button->get_filename();
 
   if(syncPath == "") {
     // TODO: Figure out a way to send the error back to the client
@@ -145,8 +145,8 @@ bool FileSystemSyncServiceAddin::save_configuration()
   else {
     // Test creating/writing/deleting a file
     // FIXME: Should throw gnote::sync::GnoteSyncException once string changes are OK again
-    std::string testPathBase = Glib::build_filename(syncPath, "test");
-    std::string testPath = testPathBase;
+    Glib::ustring testPathBase = Glib::build_filename(syncPath, "test");
+    Glib::ustring testPath = testPathBase;
     int count = 0;
 
     // Get unique new file name
@@ -155,7 +155,7 @@ bool FileSystemSyncServiceAddin::save_configuration()
     }
 
     // Test ability to create and write
-    std::string testLine = "Testing write capabilities.";
+    Glib::ustring testLine = "Testing write capabilities.";
     std::ofstream fout(testPath.c_str());
     if(fout.is_open()) {
       fout << testLine;
@@ -213,14 +213,14 @@ bool FileSystemSyncServiceAddin::is_configured()
 }
 
 
-std::string FileSystemSyncServiceAddin::name()
+Glib::ustring FileSystemSyncServiceAddin::name()
 {
   char *res = _("Local Folder");
   return res ? res : "";
 }
 
 
-std::string FileSystemSyncServiceAddin::id()
+Glib::ustring FileSystemSyncServiceAddin::id()
 {
   return "local";
 }
@@ -238,7 +238,7 @@ bool FileSystemSyncServiceAddin::initialized()
 }
 
 
-bool FileSystemSyncServiceAddin::get_config_settings(std::string & syncPath)
+bool FileSystemSyncServiceAddin::get_config_settings(Glib::ustring & syncPath)
 {
   syncPath = gnote::Preferences::obj().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC)->get_string(gnote::Preferences::SYNC_LOCAL_PATH);

@@ -70,13 +70,13 @@ public:
   /// The name that will be shown in the preferences to distinguish
   /// between this and other SyncServiceAddins.
   /// </summary>
-  virtual std::string name() override;
+  virtual Glib::ustring name() override;
 
   /// <summary>
   /// Specifies a unique identifier for this addin.  This will be used to
   /// set the service in preferences.
   /// </summary>
-  virtual std::string id() override;
+  virtual Glib::ustring id() override;
 
   virtual std::string fuse_mount_directory_error() override;
 protected:
