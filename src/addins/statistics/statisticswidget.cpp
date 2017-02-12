@@ -61,8 +61,8 @@ private:
         add(m_value);
       }
   private:
-    Gtk::TreeModelColumn<std::string> m_stat;
-    Gtk::TreeModelColumn<std::string> m_value;
+    Gtk::TreeModelColumn<Glib::ustring> m_stat;
+    Gtk::TreeModelColumn<Glib::ustring> m_value;
   };
   StatisticsRecord m_columns;
 
@@ -86,7 +86,7 @@ private:
       gnote::NoteBase::List notes = m_note_manager.get_notes();
 
       Gtk::TreeIter iter = append();
-      std::string stat = _("Total Notes:");
+      Glib::ustring stat = _("Total Notes:");
       iter->set_value(0, stat);
       iter->set_value(1, TO_STRING(notes.size()));
 
@@ -114,17 +114,17 @@ private:
           }
         }
       }
-      std::map<std::string, int> notebook_stats;
+      std::map<Glib::ustring, int> notebook_stats;
       for(std::map<gnote::notebooks::Notebook::Ptr, int>::iterator nb = notebook_notes.begin();
           nb != notebook_notes.end(); ++nb) {
         notebook_stats[nb->first->get_name()] = nb->second;
       }
-      for(std::map<std::string, int>::iterator nb = notebook_stats.begin(); nb != notebook_stats.end(); ++nb) {
+      for(auto nb : notebook_stats) {
         Gtk::TreeIter nb_stat = append(iter->children());
-        nb_stat->set_value(0, nb->first);
+        nb_stat->set_value(0, nb.first);
         // TRANSLATORS: %1 is the format placeholder for the number of notes.
-        char *fmt = ngettext("%1 note", "%1 notes", nb->second);
-        nb_stat->set_value(1, Glib::ustring::compose(fmt, nb->second));
+        char *fmt = ngettext("%1 note", "%1 notes", nb.second);
+        nb_stat->set_value(1, Glib::ustring::compose(fmt, nb.second));
       }
 
       DBG_OUT("Statistics updated");
@@ -187,14 +187,14 @@ void StatisticsWidget::background()
 
 void StatisticsWidget::col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter)
 {
-  std::string val;
+  Glib::ustring val;
   iter->get_value(0, val);
   static_cast<Gtk::CellRendererText*>(renderer)->property_markup() = "<b>" + val + "</b>";
 }
 
 void StatisticsWidget::col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter)
 {
-  std::string val;
+  Glib::ustring val;
   iter->get_value(1, val);
   static_cast<Gtk::CellRendererText*>(renderer)->property_text() = val;
 }
