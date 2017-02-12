@@ -36,7 +36,7 @@
 namespace gnote {
 namespace sync {
 
-  NoteUpdate::NoteUpdate(const std::string & xml_content, const std::string & title, const std::string & uuid, int latest_revision)
+  NoteUpdate::NoteUpdate(const Glib::ustring & xml_content, const Glib::ustring & title, const Glib::ustring & uuid, int latest_revision)
   {
     m_xml_content = xml_content;
     m_title = title;
@@ -72,8 +72,8 @@ namespace sync {
     xml.close();
 
     // NOTE: Mostly a hack to ignore missing version attributes
-    std::string existing_inner_content = get_inner_content(existing_note->data().text());
-    std::string update_inner_content = get_inner_content(update_data->text());
+    Glib::ustring existing_inner_content = get_inner_content(existing_note->data().text());
+    Glib::ustring update_inner_content = get_inner_content(update_data->text());
 
     return existing_inner_content == update_inner_content &&
            existing_note->data().title() == update_data->title() &&
@@ -82,7 +82,7 @@ namespace sync {
   }
 
 
-  std::string NoteUpdate::get_inner_content(const std::string & full_content_element) const
+  Glib::ustring NoteUpdate::get_inner_content(const Glib::ustring & full_content_element) const
   {
     sharp::XmlReader xml;
     xml.load_buffer(full_content_element);
@@ -206,37 +206,36 @@ namespace sync {
     return false;
   }
 
-  std::string SyncUtils::find_first_executable_in_path(const std::vector<std::string> & executableNames)
+  Glib::ustring SyncUtils::find_first_executable_in_path(const std::vector<Glib::ustring> & executableNames)
   {
-    for(std::vector<std::string>::const_iterator iter = executableNames.begin();
-        iter != executableNames.end(); ++iter) {
-      std::string pathVar = Glib::getenv("PATH");
+    for(auto executable : executableNames) {
+      Glib::ustring pathVar = Glib::getenv("PATH");
       std::vector<Glib::ustring> paths;
       const char separator[] = {G_SEARCHPATH_SEPARATOR, 0};
       sharp::string_split(paths, pathVar, separator);
 
       for(unsigned i = 0; i < sizeof(common_paths) / sizeof(char*); ++i) {
-        std::string commonPath = common_paths[i];
+        Glib::ustring commonPath = common_paths[i];
         if(std::find(paths.begin(), paths.end(), commonPath) == paths.end()) {
           paths.push_back(commonPath);
         }
       }
 
       for(auto path : paths) {
-        Glib::ustring testExecutablePath = Glib::build_filename(path, *iter);
+        Glib::ustring testExecutablePath = Glib::build_filename(path, executable);
         if(sharp::file_exists(testExecutablePath)) {
           return testExecutablePath;
         }
       }
-      DBG_OUT("Unable to locate '%s' in your PATH", iter->c_str());
+      DBG_OUT("Unable to locate '%s' in your PATH", executable.c_str());
     }
 
     return "";
   }
 
-  std::string SyncUtils::find_first_executable_in_path(const std::string & executableName)
+  Glib::ustring SyncUtils::find_first_executable_in_path(const Glib::ustring & executableName)
   {
-    std::vector<std::string> executable_names;
+    std::vector<Glib::ustring> executable_names;
     executable_names.push_back(executableName);
     return find_first_executable_in_path(executable_names);
   }
