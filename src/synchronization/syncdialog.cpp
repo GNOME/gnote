@@ -50,8 +50,8 @@ public:
       add(m_col2);
     }
 
-    Gtk::TreeModelColumn<std::string> m_col1;
-    Gtk::TreeModelColumn<std::string> m_col2;
+    Gtk::TreeModelColumn<Glib::ustring> m_col1;
+    Gtk::TreeModelColumn<Glib::ustring> m_col2;
 };
 
 
@@ -66,8 +66,8 @@ public:
     {
       // Suggest renaming note by appending " (old)" to the existing title
       char *old = _(" (old)");
-      std::string suggestedRenameBase = existingNote->get_title() + old;
-      std::string suggestedRename = suggestedRenameBase;
+      Glib::ustring suggestedRenameBase = existingNote->get_title() + old;
+      Glib::ustring suggestedRename = suggestedRenameBase;
       for(int i = 1; !is_note_title_available(suggestedRename); i++) {
         suggestedRename = suggestedRenameBase + " " + TO_STRING(i);
       }
@@ -149,7 +149,7 @@ public:
     {
       m_message_label->set_text(value);
     }
-  std::string renamed_title() const
+  Glib::ustring renamed_title() const
     {
       return renameEntry->get_text();
     }
@@ -181,7 +181,7 @@ private:
         continueButton->set_sensitive(true);
       }
     }
-  bool is_note_title_available(const std::string & renamedTitle)
+  bool is_note_title_available(const Glib::ustring & renamedTitle)
     {
       return std::find(m_note_update_titles.begin(), m_note_update_titles.end(), renamedTitle) == m_note_update_titles.end()
              && m_existing_note->manager().find(renamedTitle) == 0;
@@ -348,7 +348,7 @@ SyncDialog::SyncDialog(NoteManagerBase & manager)
 
 void SyncDialog::treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter)
 {
-  std::string text;
+  Glib::ustring text;
   iter->get_value(0, text);
   static_cast<Gtk::CellRendererText*>(renderer)->property_text() = text;
 }
@@ -356,7 +356,7 @@ void SyncDialog::treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk:
 
 void SyncDialog::treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter)
 {
-  std::string text;
+  Glib::ustring text;
   iter->get_value(1, text);
   static_cast<Gtk::CellRendererText*>(renderer)->property_text() = text;
 }
@@ -417,7 +417,7 @@ void SyncDialog::on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeVi
     return;
   }
 
-  std::string noteTitle;
+  Glib::ustring noteTitle;
   iter->get_value(0, noteTitle);
 
   NoteBase::Ptr note = m_manager.find(noteTitle);
@@ -445,7 +445,7 @@ void SyncDialog::message_text(const Glib::ustring & value)
 }
 
 
-std::string SyncDialog::progress_text() const
+Glib::ustring SyncDialog::progress_text() const
 {
   return m_progress_label->get_text();
 }
@@ -458,7 +458,7 @@ void SyncDialog::progress_text(const Glib::ustring & value)
 }
 
 
-void SyncDialog::add_update_item(const std::string & title, std::string & status)
+void SyncDialog::add_update_item(const Glib::ustring & title, Glib::ustring & status)
 {
   Gtk::TreeIter iter = m_model->append();
   iter->set_value(0, title);
@@ -566,7 +566,7 @@ void SyncDialog::note_synchronized(const Glib::ustring & noteTitle, NoteSyncType
 {
   // FIXME: Change these strings to be more user-friendly
   // TODO: Update status for a note when status changes ("Uploading" -> "Uploaded", etc)
-  std::string statusText;
+  Glib::ustring statusText;
   switch(type) {
   case DELETE_FROM_CLIENT:
     statusText = _("Deleted locally");
@@ -696,9 +696,9 @@ void SyncDialog::note_conflict_detected_(
 }
 
 
-void SyncDialog::rename_note(const Note::Ptr & note, const std::string & newTitle, bool)
+void SyncDialog::rename_note(const Note::Ptr & note, const Glib::ustring & newTitle, bool)
 {
-  std::string oldTitle = note->get_title();
+  Glib::ustring oldTitle = note->get_title();
   // Rename the note (skip for now...never using updateReferencingNotes option)
   //if (updateReferencingNotes) // NOTE: This might never work, or lead to a ton of conflicts
   // note.Title = newTitle;
@@ -710,9 +710,9 @@ void SyncDialog::rename_note(const Note::Ptr & note, const std::string & newTitl
   // Preserve note information
   note->save(); // Write to file
   bool noteOpen = note->is_opened();
-  std::string newContent = //note.XmlContent;
+  Glib::ustring newContent = //note.XmlContent;
     NoteArchiver::obj().get_renamed_note_xml(note->xml_content(), oldTitle, newTitle);
-  std::string newCompleteContent = //note.GetCompleteNoteXml ();
+  Glib::ustring newCompleteContent = //note.GetCompleteNoteXml ();
     NoteArchiver::obj().get_renamed_note_xml(note->get_complete_note_xml(), oldTitle, newTitle);
   //Logger.Debug ("RenameNote: newContent: " + newContent);
   //Logger.Debug ("RenameNote: newCompleteContent: " + newCompleteContent);

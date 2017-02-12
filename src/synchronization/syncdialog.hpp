@@ -52,9 +52,9 @@ namespace sync {
     virtual void present_ui() override;
     void header_text(const Glib::ustring &);
     void message_text(const Glib::ustring &);
-    std::string progress_text() const;
+    Glib::ustring progress_text() const;
     void progress_text(const Glib::ustring &);
-    void add_update_item(const std::string & title, std::string & status);
+    void add_update_item(const Glib::ustring & title, Glib::ustring & status);
   protected:
     virtual void on_realize() override;
   private:
@@ -72,7 +72,7 @@ namespace sync {
     void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
     void treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
     void sync_state_changed_(SyncState state);
-    void rename_note(const Note::Ptr & note, const std::string & newTitle, bool updateReferencingNotes);
+    void rename_note(const Note::Ptr & note, const Glib::ustring & newTitle, bool updateReferencingNotes);
     void present_note(const Note::Ptr &);
 
     Gtk::Image *m_image;
