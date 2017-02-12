@@ -20,6 +20,7 @@
 #include <fstream>
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <sigc++/signal.h>
 
 #include "debug.hpp"

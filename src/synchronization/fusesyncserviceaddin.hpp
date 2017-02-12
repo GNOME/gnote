@@ -20,7 +20,7 @@
 #ifndef _SYNCHRONIZATION_FUSESYNCSERVICEADDIN_HPP_
 #define _SYNCHRONIZATION_FUSESYNCSERVICEADDIN_HPP_
 
-#include <glibmm.h>
+#include <glibmm/spawn.h>
 
 #include "base/macros.hpp"
 #include "syncserviceaddin.hpp"
