@@ -115,5 +115,18 @@ namespace sharp {
 
     return text;
   }
+
+  void file_write_all_text(const Glib::ustring & path, const Glib::ustring & content)
+  {
+    std::ofstream fout(path);
+    if(!fout.is_open()) {
+      throw sharp::Exception("Failed to open file: " + path);
+    }
+    fout << content;
+    if(!fout.good()) {
+      throw sharp::Exception("Failed to write to file");
+    }
+    fout.close();
+  }
 }
 

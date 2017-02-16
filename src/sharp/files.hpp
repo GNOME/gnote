@@ -45,6 +45,7 @@ namespace sharp {
 
   std::vector<Glib::ustring> file_read_all_lines(const Glib::ustring & path);
   Glib::ustring file_read_all_text(const Glib::ustring & path);
+  void file_write_all_text(const Glib::ustring & path, const Glib::ustring & content);
 }
 
 

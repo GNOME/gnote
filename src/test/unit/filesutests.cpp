@@ -108,5 +108,27 @@ SUITE(files)
     file_content = sharp::file_read_all_text(temp_file_name);
     CHECK_EQUAL("line1\nline2\nline3", file_content);
   }
+
+  TEST(write_all_text)
+  {
+    Glib::ustring file_content = "line1\nline2\nline3";
+    char temp_file_name[] = "/tmp/gnotetestXXXXXX";
+    int fd = mkstemp(temp_file_name);
+    close(fd);
+
+    sharp::file_write_all_text(temp_file_name, file_content);
+    std::ifstream fin(temp_file_name);
+    std::string line1, line2, line3;
+    std::getline(fin, line1);
+    std::getline(fin, line2);
+    std::getline(fin, line3);
+    fin.close();
+
+    CHECK_EQUAL("line1", line1);
+    CHECK_EQUAL("line2", line2);
+    CHECK_EQUAL("line3", line3);
+
+    CHECK_THROW(sharp::file_write_all_text("/usr/gnotetest", file_content), sharp::Exception);
+  }
 }
 
