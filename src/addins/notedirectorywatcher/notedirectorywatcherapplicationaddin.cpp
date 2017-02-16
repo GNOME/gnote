@@ -18,8 +18,6 @@
  */
 
 
-#include <fstream>
-
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
@@ -221,16 +219,9 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
 
   Glib::ustring noteXml;
   try {
-    std::ifstream reader;
-    reader.exceptions(std::ios_base::badbit);
-    reader.open(note_path.c_str());
-    std::string line;
-    while(std::getline(reader, line)) {
-      noteXml += line + '\n';
-    }
-    reader.close();
+    noteXml = sharp::file_read_all_text(note_path);
   }
-  catch(std::ios::failure & e) {
+  catch(sharp::Exception & e) {
     /* TRANSLATORS: first %s is file name, second is error */
     ERR_OUT(_("NoteDirectoryWatcher: Update aborted, error reading %s: %s"), note_path.c_str(), e.what());
     return;
