@@ -89,6 +89,9 @@ namespace sharp {
       while(std::getline(fin, line)) {
         lines.push_back(line);
       }
+      if(!fin.eof()) {
+        throw sharp::Exception("Failure reading file");
+      }
       fin.close();
     }
     else {
