@@ -18,7 +18,6 @@
  */
 
 
-#include <fstream>
 #include <stdexcept>
 
 #include <glibmm/i18n.h>
@@ -156,11 +155,7 @@ bool FileSystemSyncServiceAddin::save_configuration()
 
     // Test ability to create and write
     Glib::ustring testLine = "Testing write capabilities.";
-    std::ofstream fout(testPath.c_str());
-    if(fout.is_open()) {
-      fout << testLine;
-      fout.close();
-    }
+    sharp::file_write_all_text(testPath, testLine);
 
     // Test ability to read
     bool testFileFound = false;
@@ -173,16 +168,11 @@ bool FileSystemSyncServiceAddin::save_configuration()
       }
     }
     if(!testFileFound) {
-      ; // TODO: Throw gnote::sync::GnoteSyncException
+      throw sharp::Exception("Failure writing test file");
     }
-    std::ifstream fin(testPath.c_str());
-    if(fin.is_open()) {
-      std::string line;
-      std::getline(fin, line);
-      fin.close();
-      if(line != testLine) {
-        ; // TODO: Throw gnote::sync::GnoteSyncException
-      }
+    Glib::ustring line = sharp::file_read_all_text(testPath);
+    if(line != testLine) {
+      throw sharp::Exception("Failure when checking test file contents");
     }
 
     // Test ability to delete
