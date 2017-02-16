@@ -24,6 +24,7 @@
 #include <glibmm/miscutils.h>
 #include <UnitTest++/UnitTest++.h>
 
+#include "sharp/exception.hpp"
 #include "sharp/files.hpp"
 
 
@@ -67,8 +68,7 @@ SUITE(files)
   {
     std::vector<Glib::ustring> lines;
     // very unlikely to exist
-    lines = sharp::file_read_all_lines(__FILE__ __FILE__);
-    CHECK_EQUAL(0, lines.size());
+    CHECK_THROW(sharp::file_read_all_lines(__FILE__ __FILE__), sharp::Exception);
 
     char temp_file_name[] = "/tmp/gnotetestXXXXXX";
     int fd = mkstemp(temp_file_name);
@@ -92,8 +92,7 @@ SUITE(files)
   {
     Glib::ustring file_content;
     // very unlikely to exist
-    file_content = sharp::file_read_all_text(__FILE__ __FILE__);
-    CHECK_EQUAL("", file_content);
+    CHECK_THROW(sharp::file_read_all_text(__FILE__ __FILE__), sharp::Exception);
 
     char temp_file_name[] = "/tmp/gnotetestXXXXXX";
     int fd = mkstemp(temp_file_name);

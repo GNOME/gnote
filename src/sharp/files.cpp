@@ -29,6 +29,7 @@
 #include <glibmm.h>
 #include <giomm/file.h>
 
+#include "exception.hpp"
 #include "files.hpp"
 
 
@@ -89,6 +90,9 @@ namespace sharp {
         lines.push_back(line);
       }
       fin.close();
+    }
+    else {
+      throw sharp::Exception("Failed to open file: " + path);
     }
 
     return lines;
