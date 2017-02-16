@@ -17,8 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <fstream>
-
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
 #include <sigc++/signal.h>
@@ -137,12 +135,8 @@ bool FuseSyncServiceAddin::save_configuration()
       }
 
       // Test ability to create and write
-      std::string testLine = "Testing write capabilities.";
-      std::ofstream writer;
-      writer.exceptions(std::ios_base::badbit|std::ios_base::failbit|std::ios_base::eofbit);
-      writer.open(testPath.c_str());
-      writer << testLine;
-      writer.close();
+      Glib::ustring testLine = "Testing write capabilities.";
+      sharp::file_write_all_text(testPath, testLine);
 
       // Test ability to read
       bool testFileFound = false;
@@ -157,12 +151,7 @@ bool FuseSyncServiceAddin::save_configuration()
       if(!testFileFound) {
         throw GnoteSyncException(_("Could not read testfile."));
       }
-      std::ifstream reader;
-      reader.exceptions(std::ios_base::badbit|std::ios_base::failbit);
-      reader.open(testPath.c_str());
-      std::string read_line;
-      std::getline(reader, read_line);
-      reader.close();
+      Glib::ustring read_line = sharp::file_read_all_text(testPath);
       if(read_line != testLine) {
         throw GnoteSyncException(_("Write test failed."));
       }
