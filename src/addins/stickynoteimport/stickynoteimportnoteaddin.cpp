@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <fstream>
 #include <string.h>
 
 #include <glibmm/i18n.h>
@@ -167,11 +166,7 @@ bool StickyNoteImportNoteAddin::first_run(gnote::NoteManager & manager)
       firstRun = false;
     }
 
-    std::ofstream fout(prefs_file.c_str());
-    if(fout) {
-      fout << ini_file.to_data().c_str();
-      fout.close();
-    }
+    sharp::file_write_all_text(prefs_file, ini_file.to_data());
   }
 
   return firstRun;
