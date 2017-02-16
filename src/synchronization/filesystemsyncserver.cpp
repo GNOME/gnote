@@ -19,7 +19,6 @@
 
 
 #include <algorithm>
-#include <fstream>
 #include <stdexcept>
 
 #include <glibmm/i18n.h>
@@ -168,19 +167,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
 
         // Get the title, contents, etc.
         Glib::ustring noteTitle;
-        Glib::ustring noteXml;
-        std::ifstream fin(noteTempPath.c_str());
-        if(fin.is_open()) {
-          do {
-            std::string line;
-            std::getline(fin, line);
-            if(!fin.eof()) {
-              noteXml += line + "\n";
-            }
-          }
-          while(!fin.eof());
-          fin.close();
-        }
+        Glib::ustring noteXml = sharp::file_read_all_text(noteTempPath);
         NoteUpdate update(noteXml, noteTitle, note_id, rev);
         noteUpdates.insert(std::make_pair(note_id, update));
       }
