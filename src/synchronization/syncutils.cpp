@@ -19,7 +19,6 @@
 
 
 #include <algorithm>
-#include <fstream>
 #include <vector>
 
 #include <glibmm.h>
@@ -116,16 +115,9 @@ namespace sync {
   bool SyncUtils::is_fuse_enabled()
   {
     try {
-      std::string fsFileName = "/proc/filesystems";
+      Glib::ustring fsFileName = "/proc/filesystems";
       if(sharp::file_exists(fsFileName)) {
-        std::string fsOutput;
-        std::ifstream file(fsFileName.c_str());
-        while(file) {
-          std::string line;
-          std::getline(file, line);
-          fsOutput += "\n" + line;
-        }
-        file.close();
+        Glib::ustring fsOutput = sharp::file_read_all_text(fsFileName);
         Glib::RefPtr<Glib::Regex> re = Glib::Regex::create("\\s+fuse\\s+", Glib::REGEX_MULTILINE);
         return re->match(fsOutput);
       }
