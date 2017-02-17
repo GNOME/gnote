@@ -30,7 +30,6 @@
 #define __SHARP_XSLTRANSFORM_HPP_
 
 #include <map>
-#include <string>
 
 #include <libxml/tree.h>
 #include <libxslt/transform.h>

@@ -24,8 +24,6 @@
 #ifndef __NOTE_RECENT_CHANGES_HPP_
 #define __NOTE_RECENT_CHANGES_HPP_
 
-#include <string>
-
 #include <gtkmm/alignment.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>

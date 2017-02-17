@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010 Aurimas Cernius
+ * Copyright (C) 2010,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,8 +24,6 @@
 
 #ifndef __ADDIN_UNDERLINE_TAG_HPP_
 #define __ADDIN_UNDERLINE_TAG_HPP_
-
-#include <string>
 
 #include "notetag.hpp"
 
