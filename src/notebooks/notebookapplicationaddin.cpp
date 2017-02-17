@@ -104,13 +104,13 @@ namespace gnote {
         return;
       }
 
-      std::string megaPrefix(Tag::SYSTEM_TAG_PREFIX);
+      Glib::ustring megaPrefix(Tag::SYSTEM_TAG_PREFIX);
       megaPrefix += Notebook::NOTEBOOK_TAG_PREFIX;
       if (!tag->is_system() || !Glib::str_has_prefix(tag->name(), megaPrefix)) {
         return;
       }
 
-      std::string notebookName =
+      Glib::ustring notebookName =
         sharp::string_substring(tag->name(), megaPrefix.size());
 
       Notebook::Ptr notebook =
@@ -121,17 +121,17 @@ namespace gnote {
 
 
 
-    void NotebookApplicationAddin::on_tag_removed(const NoteBase::Ptr& note,
-                                                  const std::string& normalizedTagName)
+    void NotebookApplicationAddin::on_tag_removed(const NoteBase::Ptr & note,
+                                                  const Glib::ustring & normalizedTagName)
     {
-      std::string megaPrefix(Tag::SYSTEM_TAG_PREFIX);
+      Glib::ustring megaPrefix(Tag::SYSTEM_TAG_PREFIX);
       megaPrefix += Notebook::NOTEBOOK_TAG_PREFIX;
 
       if (!Glib::str_has_prefix(normalizedTagName, megaPrefix)) {
         return;
       }
 
-      std::string normalizedNotebookName =
+      Glib::ustring normalizedNotebookName =
         sharp::string_substring(normalizedTagName, megaPrefix.size());
 
       Notebook::Ptr notebook =

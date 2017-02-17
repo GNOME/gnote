@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015 Aurimas Cernius
+ * Copyright (C) 2012-2015,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ namespace gnote {
       NotebookApplicationAddin();
     private:
       void on_tag_added(const NoteBase&, const Tag::Ptr&);
-      void on_tag_removed(const NoteBase::Ptr&, const std::string&);
+      void on_tag_removed(const NoteBase::Ptr&, const Glib::ustring&);
       void on_note_added(const NoteBase::Ptr &);
       void on_note_deleted(const NoteBase::Ptr &);
       void on_new_notebook_action(const Glib::VariantBase&);
