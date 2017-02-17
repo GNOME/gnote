@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,8 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <fstream>
-
 #include <glibmm/i18n.h>
 #include <giomm/dbusownname.h>
 
@@ -29,6 +27,7 @@
 #include "dbus/remotecontrolclient.hpp"
 #include "dbus/searchprovider.hpp"
 #include "remotecontrolproxy.hpp"
+#include "sharp/files.hpp"
 
 
 namespace {
@@ -38,23 +37,16 @@ namespace {
     if(interface) {
       return;
     }
-    std::ifstream fin(filename);
-    if(!fin) {
-      return;
-    }
-    Glib::ustring introspect_xml;
-    while(!fin.eof()) {
-      std::string line;
-      std::getline(fin, line);
-      introspect_xml += line;
-    }
-    fin.close();
     try {
+      Glib::ustring introspect_xml = sharp::file_read_all_text(filename);
       Glib::RefPtr<Gio::DBus::NodeInfo> node = Gio::DBus::NodeInfo::create_for_xml(introspect_xml);
       interface = node->lookup_interface(interface_name);
     }
     catch(Glib::Error & e) {
       ERR_OUT(_("Failed to load D-Bus interface %s: %s"), interface_name, e.what().c_str());
+    }
+    catch(sharp::Exception & e) {
+      ERR_OUT(_("Failed to load D-Bus interface %s: %s"), interface_name, e.what());
     }
   }
 }
