@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015 Aurimas Cernius
+ * Copyright (C) 2012-2015,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -72,9 +72,9 @@ public:
   Glib::RefPtr<Gtk::TreeModel> get_notebooks_with_special_items()
     { return m_notebooks_to_display; }
 
-  Notebook::Ptr get_notebook(const std::string & notebookName) const;
-  bool notebook_exists(const std::string & notebookName) const;
-  Notebook::Ptr get_or_create_notebook(const std::string &);
+  Notebook::Ptr get_notebook(const Glib::ustring & notebookName) const;
+  bool notebook_exists(const Glib::ustring & notebookName) const;
+  Notebook::Ptr get_or_create_notebook(const Glib::ustring &);
   bool add_notebook(const Notebook::Ptr &);
   void delete_notebook(const Notebook::Ptr &);
   bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter & );
@@ -124,7 +124,7 @@ private:
   // <summary>
   // The key for this dictionary is Notebook.Name.ToLower ().
   // </summary>
-  std::map<std::string, Gtk::TreeIter> m_notebookMap;
+  std::map<Glib::ustring, Gtk::TreeIter> m_notebookMap;
   //object locker = new object ();    
   bool                                 m_adding_notebook;
   NotebookEventHandler                 m_note_added_to_notebook;

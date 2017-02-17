@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -80,17 +80,16 @@ namespace gnote {
     }
 
 
-    Notebook::Ptr NotebookManager::get_notebook(const std::string & notebookName) const
+    Notebook::Ptr NotebookManager::get_notebook(const Glib::ustring & notebookName) const
     {
       if (notebookName.empty()) {
         throw sharp::Exception ("NotebookManager::get_notebook() called with an empty name.");
       }
-      std::string normalizedName = Notebook::normalize(notebookName);
+      Glib::ustring normalizedName = Notebook::normalize(notebookName);
       if (normalizedName.empty()) {
         throw sharp::Exception ("NotebookManager::get_notebook() called with an empty name.");
       }
-      std::map<std::string, Gtk::TreeIter>::const_iterator map_iter 
-        = m_notebookMap.find(normalizedName);
+      auto map_iter = m_notebookMap.find(normalizedName);
       if (map_iter != m_notebookMap.end()) {
         Gtk::TreeIter iter = map_iter->second;
         Notebook::Ptr notebook;
@@ -102,13 +101,13 @@ namespace gnote {
     }
     
 
-    bool NotebookManager::notebook_exists(const std::string & notebookName) const
+    bool NotebookManager::notebook_exists(const Glib::ustring & notebookName) const
     {
-      std::string normalizedName = Notebook::normalize(notebookName);
+      Glib::ustring normalizedName = Notebook::normalize(notebookName);
       return m_notebookMap.find(normalizedName) != m_notebookMap.end();
     }
 
-    Notebook::Ptr NotebookManager::get_or_create_notebook(const std::string & notebookName)
+    Notebook::Ptr NotebookManager::get_or_create_notebook(const Glib::ustring & notebookName)
     {
       if (notebookName.empty())
         throw sharp::Exception ("NotebookManager.GetNotebook () called with a null name.");
@@ -173,9 +172,8 @@ namespace gnote {
     {
       if (!notebook)
         throw sharp::Exception ("NotebookManager::delete_notebook () called with a null argument.");
-      std::string normalized_name = notebook->get_normalized_name();
-      std::map<std::string, Gtk::TreeIter>::iterator map_iter 
-        = m_notebookMap.find (normalized_name);
+      Glib::ustring normalized_name = notebook->get_normalized_name();
+      auto map_iter = m_notebookMap.find (normalized_name);
       if (map_iter == m_notebookMap.end())
         return;
       
@@ -279,9 +277,9 @@ namespace gnote {
       
       // Parse off the system and notebook prefix to get
       // the name of the notebook and then look it up.
-      std::string systemNotebookPrefix = std::string(Tag::SYSTEM_TAG_PREFIX)
+      Glib::ustring systemNotebookPrefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
         + Notebook::NOTEBOOK_TAG_PREFIX;
-      std::string notebookName = sharp::string_substring(tag->name(), 
+      Glib::ustring notebookName = sharp::string_substring(tag->name(),
                                                          systemNotebookPrefix.size());
       
       return get_notebook (notebookName);
@@ -300,9 +298,9 @@ namespace gnote {
     /// </returns>
     bool NotebookManager::is_notebook_tag(const Tag::Ptr & tag)
     {
-      std::string fullTagName = tag->name();
+      Glib::ustring fullTagName = tag->name();
       return Glib::str_has_prefix(fullTagName,
-                                  std::string(Tag::SYSTEM_TAG_PREFIX)
+                                  Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
                                   + Notebook::NOTEBOOK_TAG_PREFIX);
     }
 
@@ -323,7 +321,7 @@ namespace gnote {
       
       
       int response = dialog.run ();
-      std::string notebookName = dialog.get_notebook_name();
+      Glib::ustring notebookName = dialog.get_notebook_name();
       if (response != Gtk::RESPONSE_OK)
         return Notebook::Ptr();
       
@@ -476,7 +474,7 @@ namespace gnote {
         // Skip over tags that aren't notebooks
         if (!tag->is_system()
             || !Glib::str_has_prefix(tag->name(),
-                                     std::string(Tag::SYSTEM_TAG_PREFIX)
+                                     Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
                                      + Notebook::NOTEBOOK_TAG_PREFIX)) {
           continue;
         }
