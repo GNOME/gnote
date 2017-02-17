@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,6 @@
  */
 
 
-#include <string>
-
 #include <giomm/dbusproxy.h>
 
 namespace org {
@@ -34,15 +32,15 @@ public:
                       const char * name, const char * p, const char * interface_name,
                       const Glib::RefPtr<Gio::DBus::InterfaceInfo> & gnote_interface);
 
-  std::string CreateNamedNote(const std::string & linked_title);
-  std::string CreateNote();
-  bool DisplayNote(const std::string & uri);
-  bool DisplayNoteWithSearch(const std::string & uri, const std::string & search);
+  Glib::ustring CreateNamedNote(const Glib::ustring & linked_title);
+  Glib::ustring CreateNote();
+  bool DisplayNote(const Glib::ustring & uri);
+  bool DisplayNoteWithSearch(const Glib::ustring & uri, const Glib::ustring & search);
   void DisplaySearch();
-  std::string FindNote(const std::string & linked_title);
-  std::string FindStartHereNote();
-  void DisplaySearchWithText(const std::string & search_text);
-  bool SetNoteCompleteXml(const std::string & uri, const std::string & xml_contents);
+  Glib::ustring FindNote(const Glib::ustring & linked_title);
+  Glib::ustring FindStartHereNote();
+  void DisplaySearchWithText(const Glib::ustring & search_text);
+  bool SetNoteCompleteXml(const Glib::ustring & uri, const Glib::ustring & xml_contents);
 private:
   Glib::VariantContainerBase call_remote(const Glib::ustring & method_name, const Glib::VariantContainerBase & parameters);
 };
