@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 #ifndef __GNOTE_REMOTECONTROL_HPP_
 #define __GNOTE_REMOTECONTROL_HPP_
 
-#include <string>
 #include <vector>
 
 #include <giomm/dbusconnection.h>
@@ -44,33 +43,33 @@ public:
                 const Glib::RefPtr<Gio::DBus::InterfaceInfo> &);
   virtual ~RemoteControl();
 
-  virtual bool AddTagToNote(const std::string& uri, const std::string& tag_name) override;
-  virtual std::string CreateNamedNote(const std::string& linked_title) override;
-  virtual std::string CreateNote() override;
-  virtual bool DeleteNote(const std::string& uri) override;
-  virtual bool DisplayNote(const std::string& uri) override;
-  virtual bool DisplayNoteWithSearch(const std::string& uri, const std::string& search) override;
+  virtual bool AddTagToNote(const Glib::ustring& uri, const Glib::ustring& tag_name) override;
+  virtual Glib::ustring CreateNamedNote(const Glib::ustring& linked_title) override;
+  virtual Glib::ustring CreateNote() override;
+  virtual bool DeleteNote(const Glib::ustring& uri) override;
+  virtual bool DisplayNote(const Glib::ustring& uri) override;
+  virtual bool DisplayNoteWithSearch(const Glib::ustring& uri, const Glib::ustring& search) override;
   virtual void DisplaySearch() override;
-  virtual void DisplaySearchWithText(const std::string& search_text) override;
-  virtual std::string FindNote(const std::string& linked_title) override;
-  virtual std::string FindStartHereNote() override;
-  virtual std::vector< std::string > GetAllNotesWithTag(const std::string& tag_name) override;
-  virtual int32_t GetNoteChangeDate(const std::string& uri) override;
-  virtual std::string GetNoteCompleteXml(const std::string& uri) override;
-  virtual std::string GetNoteContents(const std::string& uri) override;
-  virtual std::string GetNoteContentsXml(const std::string& uri) override;
-  virtual int32_t GetNoteCreateDate(const std::string& uri) override;
-  virtual std::string GetNoteTitle(const std::string& uri) override;
-  virtual std::vector< std::string > GetTagsForNote(const std::string& uri) override;
-  virtual bool HideNote(const std::string& uri) override;
-  virtual std::vector< std::string > ListAllNotes() override;
-  virtual bool NoteExists(const std::string& uri) override;
-  virtual bool RemoveTagFromNote(const std::string& uri, const std::string& tag_name) override;
-  virtual std::vector< std::string > SearchNotes(const std::string& query, const bool& case_sensitive) override;
-  virtual bool SetNoteCompleteXml(const std::string& uri, const std::string& xml_contents) override;
-  virtual bool SetNoteContents(const std::string& uri, const std::string& text_contents) override;
-  virtual bool SetNoteContentsXml(const std::string& uri, const std::string& xml_contents) override;
-  virtual std::string Version() override;
+  virtual void DisplaySearchWithText(const Glib::ustring& search_text) override;
+  virtual Glib::ustring FindNote(const Glib::ustring& linked_title) override;
+  virtual Glib::ustring FindStartHereNote() override;
+  virtual std::vector<Glib::ustring> GetAllNotesWithTag(const Glib::ustring& tag_name) override;
+  virtual int32_t GetNoteChangeDate(const Glib::ustring& uri) override;
+  virtual Glib::ustring GetNoteCompleteXml(const Glib::ustring& uri) override;
+  virtual Glib::ustring GetNoteContents(const Glib::ustring& uri) override;
+  virtual Glib::ustring GetNoteContentsXml(const Glib::ustring& uri) override;
+  virtual int32_t GetNoteCreateDate(const Glib::ustring& uri) override;
+  virtual Glib::ustring GetNoteTitle(const Glib::ustring& uri) override;
+  virtual std::vector<Glib::ustring> GetTagsForNote(const Glib::ustring& uri) override;
+  virtual bool HideNote(const Glib::ustring& uri) override;
+  virtual std::vector<Glib::ustring> ListAllNotes() override;
+  virtual bool NoteExists(const Glib::ustring& uri) override;
+  virtual bool RemoveTagFromNote(const Glib::ustring& uri, const Glib::ustring& tag_name) override;
+  virtual std::vector<Glib::ustring> SearchNotes(const Glib::ustring& query, const bool& case_sensitive) override;
+  virtual bool SetNoteCompleteXml(const Glib::ustring& uri, const Glib::ustring& xml_contents) override;
+  virtual bool SetNoteContents(const Glib::ustring& uri, const Glib::ustring& text_contents) override;
+  virtual bool SetNoteContentsXml(const Glib::ustring& uri, const Glib::ustring& xml_contents) override;
+  virtual Glib::ustring Version() override;
 
 private:
   void on_note_added(const NoteBase::Ptr &);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -65,12 +65,12 @@ RemoteControl_adaptor::RemoteControl_adaptor(const Glib::RefPtr<Gio::DBus::Conne
   m_stubs["Version"] = &RemoteControl_adaptor::Version_stub;
 }
 
-void RemoteControl_adaptor::NoteAdded(const std::string & uri)
+void RemoteControl_adaptor::NoteAdded(const Glib::ustring & uri)
 {
   emit_signal("NoteAdded", Glib::VariantContainerBase::create_tuple(Glib::Variant<Glib::ustring>::create(uri)));
 }
 
-void RemoteControl_adaptor::NoteDeleted(const std::string & uri, const std::string & title)
+void RemoteControl_adaptor::NoteDeleted(const Glib::ustring & uri, const Glib::ustring & title)
 {
   std::vector<Glib::VariantBase> parameters;
   parameters.push_back(Glib::Variant<Glib::ustring>::create(uri));
@@ -78,7 +78,7 @@ void RemoteControl_adaptor::NoteDeleted(const std::string & uri, const std::stri
   emit_signal("NoteDeleted", Glib::VariantContainerBase::create_tuple(parameters));
 }
 
-void RemoteControl_adaptor::NoteSaved(const std::string & uri)
+void RemoteControl_adaptor::NoteSaved(const Glib::ustring & uri)
 {
   emit_signal("NoteSaved", Glib::VariantContainerBase::create_tuple(Glib::Variant<Glib::ustring>::create(uri)));
 }
@@ -361,54 +361,38 @@ Glib::VariantContainerBase RemoteControl_adaptor::stub_string_string(const Glib:
 Glib::VariantContainerBase RemoteControl_adaptor::stub_vectorstring_void(const Glib::VariantContainerBase &,
                                                                          vectorstring_void_func func)
 {
-  std::vector<std::string> result = (this->*func)();
+  std::vector<Glib::ustring> result = (this->*func)();
 
-  //work-around glibmm bug 657030
-  std::vector<Glib::ustring> res;
-  for(unsigned i = 0; i < result.size(); ++i) {
-    res.push_back(result[i]);
-  }
-
-  return Glib::VariantContainerBase::create_tuple(Glib::Variant<std::vector<Glib::ustring> >::create(res));
+  return Glib::VariantContainerBase::create_tuple(Glib::Variant<std::vector<Glib::ustring> >::create(result));
 }
 
 
 Glib::VariantContainerBase RemoteControl_adaptor::stub_vectorstring_string(const Glib::VariantContainerBase & parameters,
                                                                            vectorstring_string_func func)
 {
-  std::vector<Glib::ustring> res;
+  std::vector<Glib::ustring> result;
   if(parameters.get_n_children() == 1) {
     Glib::Variant<Glib::ustring> param;
     parameters.get_child(param);
-    std::vector<std::string> result = (this->*func)(param.get());
-
-    //work-around glibmm bug 657030
-    for(unsigned i = 0; i < result.size(); ++i) {
-      res.push_back(result[i]);
-    }
+    result = (this->*func)(param.get());
   }
 
-  return Glib::VariantContainerBase::create_tuple(Glib::Variant<std::vector<Glib::ustring> >::create(res));
+  return Glib::VariantContainerBase::create_tuple(Glib::Variant<std::vector<Glib::ustring> >::create(result));
 }
 
 
 Glib::VariantContainerBase RemoteControl_adaptor::stub_vectorstring_string_bool(const Glib::VariantContainerBase & parameters,
                                                                                 vectorstring_string_bool_func func)
 {
-  std::vector<Glib::ustring> res;
+  std::vector<Glib::ustring> result;
   if(parameters.get_n_children() == 2) {
     Glib::Variant<Glib::ustring> param1;
     parameters.get_child(param1, 0);
     Glib::Variant<bool> param2;
     parameters.get_child(param2, 1);
-    std::vector<std::string> result = (this->*func)(param1.get(), param2.get());
-
-    //work-around glibmm bug 657030
-    for(unsigned i = 0; i < result.size(); ++i) {
-      res.push_back(result[i]);
-    }
+    result = (this->*func)(param1.get(), param2.get());
   }
 
-  return Glib::VariantContainerBase::create_tuple(Glib::Variant<std::vector<Glib::ustring> >::create(res));
+  return Glib::VariantContainerBase::create_tuple(Glib::Variant<std::vector<Glib::ustring> >::create(result));
 }
 
