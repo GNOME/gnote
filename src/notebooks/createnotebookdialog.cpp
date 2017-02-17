@@ -76,13 +76,13 @@ namespace gnote {
     }
 
 
-    std::string CreateNotebookDialog::get_notebook_name()
+    Glib::ustring CreateNotebookDialog::get_notebook_name()
     {
       return sharp::string_trim(m_nameEntry.get_text());
     }
 
 
-    void CreateNotebookDialog::set_notebook_name(const std::string & value)
+    void CreateNotebookDialog::set_notebook_name(const Glib::ustring & value)
     {
       m_nameEntry.set_text(sharp::string_trim(value));
     }
