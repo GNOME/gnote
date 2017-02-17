@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ namespace {
       : SpecialNotebook(nm, _("Special Notes"))
       {}
 
-    virtual std::string get_normalized_name() const override
+    virtual Glib::ustring get_normalized_name() const override
       {
         return "___SpecialNotesAddin___SpecialNotes__Notebook___";
       }

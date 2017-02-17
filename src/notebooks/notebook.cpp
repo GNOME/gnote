@@ -61,7 +61,7 @@ namespace notebooks {
   /// A <see cref="System.String"/>.  This is the name that will be used
   /// to identify the notebook.
   /// </param>
-  Notebook::Notebook(NoteManager & manager, const std::string & name, bool is_special)
+  Notebook::Notebook(NoteManager & manager, const Glib::ustring & name, bool is_special)
     : m_note_manager(manager)
   {
     // is special assume the name as is, and we don't want a tag.
@@ -71,7 +71,7 @@ namespace notebooks {
     else {
       set_name(name);
       m_tag = ITagManager::obj().get_or_create_system_tag(
-        std::string(NOTEBOOK_TAG_PREFIX) + name);
+        Glib::ustring(NOTEBOOK_TAG_PREFIX) + name);
     }
   }
 
@@ -85,15 +85,15 @@ namespace notebooks {
     : m_note_manager(manager)
   {
   // Parse the notebook name from the tag name
-    std::string systemNotebookPrefix = std::string(Tag::SYSTEM_TAG_PREFIX)
+    Glib::ustring systemNotebookPrefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
       + NOTEBOOK_TAG_PREFIX;
-    std::string notebookName = sharp::string_substring(notebookTag->name(), 
+    Glib::ustring notebookName = sharp::string_substring(notebookTag->name(),
                                                        systemNotebookPrefix.length());
     set_name(notebookName);
     m_tag = notebookTag;
   }
 
-  void Notebook::set_name(const std::string & value)
+  void Notebook::set_name(const Glib::ustring & value)
   {
     Glib::ustring trimmedName = sharp::string_trim(value);
     if(!trimmedName.empty()) {
@@ -111,7 +111,7 @@ namespace notebooks {
   }
 
 
-  std::string Notebook::get_normalized_name() const
+  Glib::ustring Notebook::get_normalized_name() const
   {
     return m_normalized_name;
   }
@@ -148,7 +148,7 @@ namespace notebooks {
     NoteBase::Ptr note = find_template_note();
 
     if (!note) {
-      std::string title = m_default_template_note_title;
+      Glib::ustring title = m_default_template_note_title;
       if(m_note_manager.find(title)) {
         std::list<NoteBase*> tag_notes;
         m_tag->get_notes(tag_notes);
@@ -214,7 +214,7 @@ namespace notebooks {
     return true;
   }
 
-  std::string Notebook::normalize(const std::string & s)
+  Glib::ustring Notebook::normalize(const Glib::ustring & s)
   {
     return Glib::ustring(sharp::string_trim(s)).lowercase();
   }
