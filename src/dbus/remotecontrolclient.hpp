@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,9 +37,9 @@ public:
                       const char *name, const char *interface_name,
                       const Glib::RefPtr<Gio::DBus::InterfaceInfo> & gnote_interface);
 
-  virtual void NoteAdded(const std::string&) {}
-  virtual void NoteDeleted(const std::string&, const std::string&) {}
-  virtual void NoteSaved(const std::string&) {}
+  virtual void NoteAdded(const Glib::ustring&) {}
+  virtual void NoteDeleted(const Glib::ustring&, const Glib::ustring&) {}
+  virtual void NoteSaved(const Glib::ustring&) {}
 
 
 };
