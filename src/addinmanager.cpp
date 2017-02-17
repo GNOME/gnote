@@ -24,6 +24,7 @@
 
 #include <glib.h>
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 
 #include "sharp/map.hpp"
 #include "sharp/directory.hpp"

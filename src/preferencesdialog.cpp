@@ -26,6 +26,7 @@
 #endif
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <gtkmm/accelgroup.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/button.h>

@@ -27,7 +27,7 @@
 
 
 #include <glib/gstdio.h>
-#include <glibmm.h>
+#include <glibmm/fileutils.h>
 
 #include "sharp/directory.hpp"
 #include "sharp/fileinfo.hpp"

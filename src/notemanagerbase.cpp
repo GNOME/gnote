@@ -20,6 +20,7 @@
 
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 
 #include "debug.hpp"
 #include "ignote.hpp"

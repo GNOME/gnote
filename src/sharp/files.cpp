@@ -26,7 +26,8 @@
 #include <fstream>
 
 #include <glib/gstdio.h>
-#include <glibmm.h>
+#include <glibmm/fileutils.h>
+#include <glibmm/miscutils.h>
 #include <giomm/file.h>
 
 #include "exception.hpp"

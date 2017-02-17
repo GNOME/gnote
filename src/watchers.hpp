@@ -35,6 +35,7 @@ extern "C" {
 #endif
 
 #include <gdkmm/cursor.h>
+#include <glibmm/regex.h>
 #include <gtkmm/textiter.h>
 #include <gtkmm/texttag.h>
 

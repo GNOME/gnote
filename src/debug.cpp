@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,8 @@
 #include <string.h>
 #include <stdarg.h>
 
-#include <glibmm.h>
+#include <glibmm/ustring.h>
+#include <glibmm/miscutils.h>
 #include <pthread.h>
 
 #if defined(NDEBUG)

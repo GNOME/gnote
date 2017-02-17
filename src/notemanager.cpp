@@ -24,6 +24,7 @@
 #endif
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 
 #include "applicationaddin.hpp"
 #include "debug.hpp"

@@ -22,7 +22,8 @@
 
 
 #include <glib.h>
-
+#include <glibmm/miscutils.h>
+#include <glibmm/regex.h>
 
 #include "sharp/directory.hpp"
 

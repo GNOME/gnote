@@ -25,6 +25,7 @@
 #endif
 
 #include <glibmm/i18n.h>
+#include <glibmm/stringutils.h>
 #include <gtkmm/separatormenuitem.h>
 
 #include "sharp/string.hpp"

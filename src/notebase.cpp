@@ -19,6 +19,9 @@
  */
 
 
+#include <algorithm>
+#include <functional>
+
 #include <glibmm/i18n.h>
 
 #include "config.h"
@@ -32,14 +35,6 @@
 #include "sharp/string.hpp"
 #include "sharp/xml.hpp"
 #include "sharp/xmlconvert.hpp"
-
-#if HAVE_CXX11
-  #include <functional>
-  using std::hash;
-#else
-  #include <tr1/functional>
-  using std::tr1::hash;
-#endif
 
 
 
@@ -97,7 +92,7 @@ NoteBase::NoteBase(NoteData *, const Glib::ustring & filepath, NoteManagerBase &
 
 int NoteBase::get_hash_code() const
 {
-  hash<std::string> h;
+  std::hash<std::string> h;
   return h(get_title());
 }
 
@@ -361,7 +356,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
   get_tags(tag_list);
 
   FOREACH(Tag::Ptr & iter, tag_list) {
-    if(find(new_tags.begin(), new_tags.end(), iter) == new_tags.end()) {
+    if(std::find(new_tags.begin(), new_tags.end(), iter) == new_tags.end()) {
       remove_tag(iter);
     }
   }

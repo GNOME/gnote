@@ -21,6 +21,7 @@
 #include "debug.hpp"
 
 #include <glibmm/i18n.h>
+#include <glibmm/main.h>
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stock.h>

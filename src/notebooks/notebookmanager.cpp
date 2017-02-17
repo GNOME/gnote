@@ -21,6 +21,7 @@
 
 
 #include <glibmm/i18n.h>
+#include <glibmm/stringutils.h>
 #include <gtkmm/treemodelsort.h>
 
 #include "sharp/string.hpp"

@@ -23,7 +23,6 @@
 
 #include <map>
 
-#include <glibmm.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/radiobutton.h>

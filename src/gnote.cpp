@@ -29,6 +29,7 @@
 
 #include <glibmm/thread.h>
 #include <glibmm/i18n.h>
+#include <glibmm/stringutils.h>
 #include <glibmm/optionentry.h>
 #include <gtkmm/main.h>
 #include <gtkmm/aboutdialog.h>

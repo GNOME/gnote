@@ -24,7 +24,7 @@
  */
 
 
-#include <glibmm.h>
+#include <glibmm/miscutils.h>
 #include <giomm/file.h>
 #include <giomm/fileinfo.h>
 #include "sharp/fileinfo.hpp"

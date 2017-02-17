@@ -19,6 +19,9 @@
 
 
 #include <glibmm/i18n.h>
+#include <glibmm/main.h>
+#include <glibmm/miscutils.h>
+#include <glibmm/regex.h>
 
 #include "debug.hpp"
 #include "notedirectorywatcherapplicationaddin.hpp"

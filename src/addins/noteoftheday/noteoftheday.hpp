@@ -21,6 +21,8 @@
 #ifndef __NOTE_OF_THE_DAY_HPP_
 #define __NOTE_OF_THE_DAY_HPP_
 
+#include <glibmm/date.h>
+
 #include "sharp/dynamicmodule.hpp"
 #include "applicationaddin.hpp"
 #include "note.hpp"

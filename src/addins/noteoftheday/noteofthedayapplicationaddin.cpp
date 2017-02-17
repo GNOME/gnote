@@ -18,6 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <glibmm/main.h>
+
 #include "noteoftheday.hpp"
 #include "noteofthedayapplicationaddin.hpp"
 #include "noteofthedaypreferencesfactory.hpp"

@@ -19,6 +19,7 @@
  */
 
 #include <glibmm/i18n.h>
+#include <glibmm/stringutils.h>
 
 #include "sharp/datetime.hpp"
 #include "debug.hpp"
