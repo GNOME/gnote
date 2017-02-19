@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ public:
 
   SyncClient(gnote::NoteManagerBase & manager);
 
-  void set_manifest_path(const std::string & path)
+  void set_manifest_path(const Glib::ustring & path)
   {
     m_local_manifest_file_path = path;
   }
