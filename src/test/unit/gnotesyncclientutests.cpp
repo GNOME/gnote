@@ -48,15 +48,17 @@ const char *TEST_MANIFEST =
   "</manifest>";
 
 
-std::string create_manifest()
+Glib::ustring create_manifest()
 {
-  std::string test_manifest = std::tmpnam(NULL);
-  FILE *file = std::fopen(test_manifest.c_str(), "w");
-  if(!file) {
+  char temp_file_name[] = "/tmp/gnotetestXXXXXX";
+  int fd = mkstemp(temp_file_name);
+  if(fd < 0) {
     std::fputs("Failed to write manifest file", stderr);
     abort();
   }
 
+  Glib::ustring test_manifest = temp_file_name;
+  FILE *file = fdopen(fd, "w");
   std::fputs(TEST_MANIFEST, file);
   std::fclose(file);
   return test_manifest;
@@ -65,7 +67,7 @@ std::string create_manifest()
 
 TEST(manifest_parsing)
 {
-  std::string test_manifest = create_manifest();
+  Glib::ustring test_manifest = create_manifest();
   
   new test::TagManager;
   test::NoteManager manager(test::NoteManager::test_notes_dir());
