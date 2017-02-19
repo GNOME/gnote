@@ -19,6 +19,7 @@
  */
 
 
+#include <glibmm/stringutils.h>
 #include <UnitTest++/UnitTest++.h>
 
 #include "utils.hpp"
@@ -27,11 +28,6 @@
 
 SUITE(DateTime)
 {
-
-  bool string_ends_with(const std::string & s, const std::string & other)
-  {
-    return (s.length() - s.rfind(other)) == other.length();
-  }
 
   TEST(to_string)
   {
@@ -75,10 +71,10 @@ SUITE(DateTime)
 
     d = sharp::DateTime::from_iso8601("2009-03-24T13:34:35.2914680-04:00");
     date_string = gnote::utils::get_pretty_print_date(d, true, false);
-    CHECK(string_ends_with(date_string, "17:34"));
+    CHECK(Glib::str_has_suffix(date_string, "17:34"));
 
     date_string = gnote::utils::get_pretty_print_date(d, true, true);
-    CHECK(string_ends_with(date_string.lowercase(), "5:34 pm"));
+    CHECK(Glib::str_has_suffix(date_string.lowercase(), "5:34 pm"));
   }
 
 }
