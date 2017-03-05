@@ -123,6 +123,18 @@ namespace gnote {
           set_common_popover_widget_props(*this);
         }
       };
+
+      void set_common_popover_widget_props(Gtk::ModelButton & button)
+      {
+        button.set_use_underline(true);
+        button.property_margin_top() = 3;
+        button.property_margin_bottom() = 3;
+        auto lbl = dynamic_cast<Gtk::Label*>(button.get_child());
+        if(lbl) {
+          lbl->set_xalign(0.0f);
+        }
+        utils::set_common_popover_widget_props(button);
+      }
     }
 
 
@@ -292,7 +304,6 @@ namespace gnote {
       Gtk::ModelButton *item = new Gtk::ModelButton;
       gtk_actionable_set_action_name(GTK_ACTIONABLE(item->gobj()), action.c_str());
       item->set_label(label);
-      item->set_use_underline(true);
       set_common_popover_widget_props(*item);
       return item;
     }
@@ -303,7 +314,6 @@ namespace gnote {
       Gtk::ModelButton *button = new Gtk::ModelButton;
       button->property_menu_name() = submenu;
       button->set_label(label);
-      button->set_use_underline(true);
       set_common_popover_widget_props(*button);
       return button;
     }
