@@ -120,7 +120,7 @@ namespace gnote {
           : Gtk::Box(Gtk::ORIENTATION_VERTICAL)
           , PopoverSubmenu(submenu)
         {
-          set_common_popover_widget_props(*this);
+          utils::set_common_popover_widget_props(*this);
         }
       };
 
@@ -328,6 +328,15 @@ namespace gnote {
     void set_common_popover_widget_props(Gtk::Widget & widget)
     {
       widget.property_hexpand() = true;
+    }
+
+    void set_common_popover_widget_props(Gtk::Box & widget)
+    {
+      widget.property_margin_top() = 9;
+      widget.property_margin_bottom() = 9;
+      widget.property_margin_left() = 12;
+      widget.property_margin_right() = 12;
+      set_common_popover_widget_props(static_cast<Gtk::Widget&>(widget));
     }
 
 

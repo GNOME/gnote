@@ -764,10 +764,7 @@ namespace gnote {
     std::map<Glib::ustring, Gtk::Widget*> submenus;
     Gtk::PopoverMenu *menu = manage(new Gtk::PopoverMenu);
     Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
-    menu_box->property_margin_bottom() = 5;
-    menu_box->property_margin_top() = 5;
-    menu_box->property_margin_left() = 5;
-    menu_box->property_margin_right() = 5;
+    utils::set_common_popover_widget_props(*menu_box);
     FOREACH(Gtk::Widget *item, items) {
       if(item) {
         utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(item);
