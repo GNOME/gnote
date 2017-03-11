@@ -116,6 +116,8 @@ namespace gnote {
     GnoteCommandLine passed_cmd_line;
     GnoteCommandLine &cmdline = m_manager ? passed_cmd_line : cmd_line;
     cmdline.parse(argc, argv);
+    m_is_background = cmdline.background();
+    m_is_shell_search = cmd_line.shell_search();
     if(!m_manager) {
       common_init();
       register_object();
@@ -123,7 +125,7 @@ namespace gnote {
     else if(cmdline.needs_execute()) {
       cmdline.execute();
     }
-    else if(!cmdline.background() && !cmdline.shell_search()) {
+    else if(!(cmdline.background() || cmdline.shell_search())) {
       new_main_window().present();
     }
 
@@ -150,7 +152,6 @@ namespace gnote {
 
   void Gnote::end_main(bool bus_acquired, bool name_acquired)
   {
-    m_is_shell_search = cmd_line.shell_search();
     if(cmd_line.needs_execute()) {
       cmd_line.execute();
     }
