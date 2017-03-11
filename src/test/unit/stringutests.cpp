@@ -139,7 +139,7 @@ SUITE(String)
     splits.clear();
     sharp::string_split(splits, "\t\tjust\na\tbunch of\n\nrandom\t words\n\n\t", " \t\n");
 
-    CHECK_EQUAL(13, splits.size());
+    REQUIRE CHECK_EQUAL(13, splits.size());
     CHECK_EQUAL("", splits[0]);
     CHECK_EQUAL("", splits[1]);
     CHECK_EQUAL("just", splits[2]);
