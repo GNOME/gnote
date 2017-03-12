@@ -33,6 +33,7 @@
 
 #include "debug.hpp"
 #include "iactionmanager.hpp"
+#include "iconmanager.hpp"
 #include "ignote.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
@@ -64,6 +65,7 @@ namespace gnote {
     settings->signal_changed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_settings_changed));
 
     set_has_resize_grip(true);
+    set_icon_name(IconManager::GNOTE);
 
     m_search_notes_widget.signal_open_note
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note));
