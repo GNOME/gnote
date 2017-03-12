@@ -157,7 +157,11 @@ namespace gnote {
     left_box->attach(*m_all_notes_button, 0, 0, 1, 1);
 
     m_new_note_button = manage(new Gtk::Button);
-    m_new_note_button->set_label(_("New"));
+    image = manage(new Gtk::Image);
+    image->property_icon_name() = "list-add-symbolic";
+    image->property_icon_size() = GTK_ICON_SIZE_MENU;
+    m_new_note_button->set_image(*image);
+    m_new_note_button->set_tooltip_text(_("Create New Note"));
     m_new_note_button->add_accelerator("activate", get_accel_group(), GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_new_note_button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
     m_new_note_button->show_all();
