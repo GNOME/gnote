@@ -170,7 +170,7 @@ namespace gnote {
           Glib::RefPtr<RemoteControlClient> remote;
           try {
             remote = RemoteControlProxy::get_instance();
-            DBG_ASSERT(remote, "remote is NULL, something is wrong");
+            DBG_ASSERT(bool(remote), "remote is NULL, something is wrong");
             if(remote) {
               remote->DisplaySearch();
             }

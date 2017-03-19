@@ -476,7 +476,7 @@ notebooks::Notebook::Ptr SearchNotesWidget::get_selected_notebook() const
 void SearchNotesWidget::select_all_notes_notebook()
 {
   Glib::RefPtr<Gtk::TreeModel> model = m_notebooksTree->get_model();
-  DBG_ASSERT(model, "model is NULL");
+  DBG_ASSERT(bool(model), "model is NULL");
   if(!model) {
     return;
   }
