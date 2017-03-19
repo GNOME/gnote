@@ -1097,7 +1097,7 @@ void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell,
       else if(match_count > 0) {
         const char * fmt;
         fmt = ngettext("%1 match", "%1 matches", match_count);
-        match_str = Glib::ustring(fmt, match_count);
+        match_str = Glib::ustring::compose(fmt, match_count);
       }
     }
   }
