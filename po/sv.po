@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2016-09-17 04:41+0000\n"
-"PO-Revision-Date: 2016-09-17 13:55+0200\n"
+"POT-Creation-Date: 2017-03-19 16:15+0000\n"
+"PO-Revision-Date: 2017-03-19 20:22+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1
 msgid ""
@@ -179,8 +179,8 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Minska indentering/inaktivera punkter för aktuell rad"
 
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:46
-#: ../src/recentchanges.cpp:536
+#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
+#: ../src/recentchanges.cpp:538
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -938,21 +938,21 @@ msgstr "Inkludera alla andra länkade anteckningar"
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Kunde inte öppna exporterad anteckning i en webbläsare: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:126
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:127
 msgid "Your note was exported to \"%1%\"."
 msgstr "Din anteckning exporterades till ”%1%”."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:135
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:136
 msgid "Note exported successfully"
 msgstr "Anteckningen exporterades"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:149
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:157
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:158
 #, c-format
 msgid "Could not export: %s"
 msgstr "Kunde inte exportera: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:161
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "Kunde inte spara filen ”%s”"
@@ -1188,7 +1188,7 @@ msgid "Show Statistics"
 msgstr "Visa statistik"
 
 #: ../src/addins/statistics/statistics.desktop.in.in.h:1
-#: ../src/addins/statistics/statisticswidget.cpp:171
+#: ../src/addins/statistics/statisticswidget.cpp:172
 msgid "Statistics"
 msgstr "Statistik"
 
@@ -1204,7 +1204,8 @@ msgstr "Totalt antal anteckningar:"
 msgid "Total Notebooks:"
 msgstr "Totalt antal anteckningsblock:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:127
+#. TRANSLATORS: %1%: boost format placeholder for the number of notes.
+#: ../src/addins/statistics/statisticswidget.cpp:128
 msgid "%1% note"
 msgid_plural "%1% notes"
 msgstr[0] "%1% anteckning"
@@ -1365,7 +1366,8 @@ msgstr "Fältet för URL, användarnamn eller lösenord är tomt."
 #. Save configuration into GConf
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:262
+#. TRANSLATORS: %1%: boost format placeholder for the error message.
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:264
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1395,19 +1397,19 @@ msgstr "Fjärranrop till %s misslyckades"
 msgid "Exception thrown when creating note: %s"
 msgstr "Undantag kastat vid skapande av anteckning: %s"
 
-#: ../src/gnote.cpp:182
+#: ../src/gnote.cpp:183
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote kör redan. Avslutar…"
 
-#: ../src/gnote.cpp:274
+#: ../src/gnote.cpp:275
 msgid "Failed to get shortcuts window!"
 msgstr "Misslyckades med att hämta genvägsfönster!"
 
-#: ../src/gnote.cpp:288
+#: ../src/gnote.cpp:289
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: ../src/gnote.cpp:294
+#: ../src/gnote.cpp:295
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -1418,91 +1420,92 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: ../src/gnote.cpp:303
+#: ../src/gnote.cpp:304
 msgid ""
-"Copyright © 2010-2016 Aurimas Cernius\n"
+"Copyright © 2010-2017 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2016 Aurimas Cernius\n"
+"Copyright © 2010-2017 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: ../src/gnote.cpp:307
+#: ../src/gnote.cpp:308
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
-#: ../src/gnote.cpp:318
+#: ../src/gnote.cpp:319
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: ../src/gnote.cpp:529
+#: ../src/gnote.cpp:530
 msgid "Run Gnote in background."
 msgstr "Kör Gnote i bakgrunden."
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:531
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Kör Gnote som söktjänst för GNOME Shell."
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:532
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:532
 msgid "path"
 msgstr "sökväg"
 
-#: ../src/gnote.cpp:532
+#: ../src/gnote.cpp:533
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna ”Sök i alla anteckningar”-fönstret med söktexten."
 
-#: ../src/gnote.cpp:532 ../src/gnote.cpp:537
+#: ../src/gnote.cpp:533 ../src/gnote.cpp:538
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:533
+#: ../src/gnote.cpp:534
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: ../src/gnote.cpp:534
+#: ../src/gnote.cpp:535
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: ../src/gnote.cpp:534
+#: ../src/gnote.cpp:535
 msgid "title"
 msgstr "titel"
 
-#: ../src/gnote.cpp:535
+#: ../src/gnote.cpp:536
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: ../src/gnote.cpp:535
+#: ../src/gnote.cpp:536
 msgid "title/url"
 msgstr "titel/url"
 
-#: ../src/gnote.cpp:536
+#: ../src/gnote.cpp:537
 msgid "Display the 'Start Here' note."
 msgstr "Visa ”Börja här”-anteckningen."
 
-#: ../src/gnote.cpp:537
+#: ../src/gnote.cpp:538
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: ../src/gnote.cpp:541
+#: ../src/gnote.cpp:542
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: ../src/gnote.cpp:541
+#: ../src/gnote.cpp:542
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
-#: ../src/gnote.cpp:618
+#: ../src/gnote.cpp:619
 msgid "Could not connect to remote instance."
 msgstr "Kunde inte ansluta till fjärrinstans."
 
-#: ../src/gnote.cpp:734
+#. TRANSLATORS: %1%: boost format placeholder for the version string.
+#: ../src/gnote.cpp:736
 msgid "Version %1%"
 msgstr "Version %1%"
 
@@ -1591,7 +1594,8 @@ msgstr ""
 msgid "No notebook"
 msgstr "Inget anteckningsblock"
 
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:40
+#. TRANSLATORS: %1%: boost format placeholder for the notebook name
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:41
 msgid "New \"%1%\" Note"
 msgstr "Ny ”%1%”-anteckning"
 
@@ -1624,7 +1628,7 @@ msgstr "Aktiva"
 msgid "</list> tag mismatch"
 msgstr "</list>-tagg ej korrekt matchad"
 
-#: ../src/notebuffer.cpp:1616
+#: ../src/notebuffer.cpp:1618
 #, c-format
 msgid "Exception: %s"
 msgstr "Undantag: %s"
@@ -2051,7 +2055,7 @@ msgstr ""
 msgid "Ser_vice:"
 msgstr "T_jänst:"
 
-#: ../src/preferencesdialog.cpp:487 ../src/preferencesdialog.cpp:1117
+#: ../src/preferencesdialog.cpp:487 ../src/preferencesdialog.cpp:1118
 msgid "Not configurable"
 msgstr "Inte konfigurerbar"
 
@@ -2082,20 +2086,21 @@ msgstr "_Inaktivera"
 msgid "Not Implemented"
 msgstr "Inte implementerad"
 
-#: ../src/preferencesdialog.cpp:800
+#. TRANSLATORS: %1%: boost format placeholder for the addin name.
+#: ../src/preferencesdialog.cpp:801
 msgid "%1% Preferences"
 msgstr "Inställningar för %1%"
 
-#: ../src/preferencesdialog.cpp:935
+#: ../src/preferencesdialog.cpp:936
 msgid "Choose Note Font"
 msgstr "Välj anteckningstypsnitt"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1033
+#: ../src/preferencesdialog.cpp:1034
 msgid "Other Synchronization Options"
 msgstr "Andra synkroniseringsalternativ"
 
-#: ../src/preferencesdialog.cpp:1036
+#: ../src/preferencesdialog.cpp:1037
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2104,23 +2109,23 @@ msgstr ""
 "konfigurerade synkroniseringsservern:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1040
+#: ../src/preferencesdialog.cpp:1041
 msgid "Always ask me what to do"
 msgstr "Fråga mig vad som ska göras"
 
-#: ../src/preferencesdialog.cpp:1044
+#: ../src/preferencesdialog.cpp:1045
 msgid "Rename my local note"
 msgstr "Byt namn på min lokala anteckning"
 
-#: ../src/preferencesdialog.cpp:1048
+#: ../src/preferencesdialog.cpp:1049
 msgid "Replace my local note with the server's update"
 msgstr "Ersätt min lokala anteckning med serverns uppdatering"
 
-#: ../src/preferencesdialog.cpp:1150
+#: ../src/preferencesdialog.cpp:1151
 msgid "Are you sure?"
 msgstr "Är du säker?"
 
-#: ../src/preferencesdialog.cpp:1151
+#: ../src/preferencesdialog.cpp:1152
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2129,11 +2134,11 @@ msgstr ""
 "tvingas att synkronisera alla dina anteckningar igen när du sparar nya "
 "inställningar."
 
-#: ../src/preferencesdialog.cpp:1161
+#: ../src/preferencesdialog.cpp:1162
 msgid "Resetting Synchronization Settings"
 msgstr "Återställer synkroniseringsinställningar"
 
-#: ../src/preferencesdialog.cpp:1162
+#: ../src/preferencesdialog.cpp:1163
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2143,11 +2148,11 @@ msgstr ""
 "synkroniseringsinställningar kommer nu att tas bort. Du kan tvingas att "
 "synkronisera alla dina anteckningar igen när du sparar nya inställningar."
 
-#: ../src/preferencesdialog.cpp:1228
+#: ../src/preferencesdialog.cpp:1229
 msgid "Connection successful"
 msgstr "Anslutningen lyckades"
 
-#: ../src/preferencesdialog.cpp:1229
+#: ../src/preferencesdialog.cpp:1230
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2155,7 +2160,8 @@ msgstr ""
 "Gnote är redo att synkronisera dina anteckningar. Vill du synkronisera dem "
 "nu?"
 
-#: ../src/preferencesdialog.cpp:1253
+#. TRANSLATORS: %1% boost format placeholder for the log file path.
+#: ../src/preferencesdialog.cpp:1255
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -2163,43 +2169,43 @@ msgstr ""
 "Kontrollera din information och försök igen.  Loggfilen %1% kan innehålla "
 "mer information om felet."
 
-#: ../src/preferencesdialog.cpp:1258
+#: ../src/preferencesdialog.cpp:1260
 msgid "Error connecting"
 msgstr "Fel vid anslutning"
 
-#: ../src/preferencesdialog.cpp:1321
+#: ../src/preferencesdialog.cpp:1323
 msgid "Version:"
 msgstr "Version:"
 
-#: ../src/preferencesdialog.cpp:1324
+#: ../src/preferencesdialog.cpp:1326
 msgid "Author:"
 msgstr "Upphovsman:"
 
-#: ../src/preferencesdialog.cpp:1329
+#: ../src/preferencesdialog.cpp:1331
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:151
+#: ../src/recentchanges.cpp:153
 msgid "All Notes"
 msgstr "Alla anteckningar"
 
-#: ../src/recentchanges.cpp:158
+#: ../src/recentchanges.cpp:160
 msgid "New"
 msgstr "Ny"
 
-#: ../src/recentchanges.cpp:179
+#: ../src/recentchanges.cpp:181
 msgid "Search"
 msgstr "Sök"
 
-#: ../src/recentchanges.cpp:240
+#: ../src/recentchanges.cpp:242
 msgid "Find _Next"
 msgstr "Sök _nästa"
 
-#: ../src/recentchanges.cpp:249
+#: ../src/recentchanges.cpp:251
 msgid "Find _Previous"
 msgstr "Sök _föregående"
 
-#: ../src/recentchanges.cpp:791
+#: ../src/recentchanges.cpp:793
 msgid "_Close"
 msgstr "S_täng"
 
@@ -2333,12 +2339,12 @@ msgstr "Fel vid inläsning av %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Fel vid hämtning av symbolen dynamic_module_instanciate: %s"
 
-#: ../src/sharp/xmlreader.cpp:195
+#: ../src/sharp/xmlreader.cpp:200
 #, c-format
 msgid "XML error: %s"
 msgstr "XML-fel: %s"
 
-#: ../src/sharp/xmlreader.cpp:195
+#: ../src/sharp/xmlreader.cpp:200
 msgid "unknown parse error"
 msgstr "okänt tolkningsfel"
 
@@ -2684,7 +2690,7 @@ msgstr "Hjälp hittades inte"
 msgid "Cannot open location"
 msgstr "Kan inte öppna plats"
 
-#. TRANSLATORS: argument is time.
+#. TRANSLATORS: argument %1% is time.
 #: ../src/utils.cpp:229
 msgid "Today, %1%"
 msgstr "Idag, %1%"
@@ -2693,7 +2699,7 @@ msgstr "Idag, %1%"
 msgid "Today"
 msgstr "Idag"
 
-#. TRANSLATORS: argument is time.
+#. TRANSLATORS: argument %1% is time.
 #: ../src/utils.cpp:236
 msgid "Yesterday, %1%"
 msgstr "Igår, %1%"
@@ -2702,7 +2708,7 @@ msgstr "Igår, %1%"
 msgid "Yesterday"
 msgstr "Igår"
 
-#. TRANSLATORS: argument is time.
+#. TRANSLATORS: argument %1% is time.
 #: ../src/utils.cpp:243
 msgid "Tomorrow, %1%"
 msgstr "Imorgon, %1%"
@@ -2716,7 +2722,7 @@ msgstr "Imorgon"
 msgid "%b %d"
 msgstr "%d %b"
 
-#. TRANSLATORS: first argument is date, second is time.
+#. TRANSLATORS: argument %1% is date, %2% is time.
 #: ../src/utils.cpp:251 ../src/utils.cpp:263
 msgid "%1%, %2%"
 msgstr "%1%, %2%"
@@ -2730,11 +2736,12 @@ msgstr "Inget datum"
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
-#: ../src/watchers.cpp:201
+#. TRANSLATORS: %1%: boost format placeholder for the number.
+#: ../src/watchers.cpp:202
 msgid "(Untitled %1%)"
 msgstr "(Namnlös %1%)"
 
-#: ../src/watchers.cpp:232
+#: ../src/watchers.cpp:234
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2742,19 +2749,19 @@ msgstr ""
 "En anteckning med titeln <b>%1%</b> finns redan. Välj ett annat namn för "
 "denna anteckning innan du fortsätter."
 
-#: ../src/watchers.cpp:247
+#: ../src/watchers.cpp:249
 msgid "Note title taken"
 msgstr "Anteckningstiteln är upptagen"
 
-#: ../src/watchers.cpp:317
+#: ../src/watchers.cpp:319
 msgid "Check spelling"
 msgstr "Kontrollera stavning"
 
-#: ../src/watchers.cpp:707
+#: ../src/watchers.cpp:709
 msgid "_Copy Link Address"
 msgstr "_Kopiera länkadress"
 
-#: ../src/watchers.cpp:713
+#: ../src/watchers.cpp:715
 msgid "_Open Link"
 msgstr "_Öppna länk"
 
