@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,10 +36,10 @@ public:
   virtual void reset_client() override;
   virtual void perform_synchronization(const gnote::sync::SyncUI::Ptr & sync_ui) override;
   virtual void resolve_conflict(gnote::sync::SyncTitleConflictResolution resolution) override;
-  virtual bool synchronized_note_xml_matches(const std::string & noteXml1, const std::string & noteXml2) override;
-  virtual gnote::sync::SyncServiceAddin *get_sync_service_addin(const std::string & sync_service_id) override;
+  virtual bool synchronized_note_xml_matches(const Glib::ustring & noteXml1, const Glib::ustring & noteXml2) override;
+  virtual gnote::sync::SyncServiceAddin *get_sync_service_addin(const Glib::ustring & sync_service_id) override;
   virtual gnote::sync::SyncServiceAddin *get_configured_sync_service() override;
-  test::SyncClient::Ptr get_client(const std::string & manifest);
+  test::SyncClient::Ptr get_client(const Glib::ustring & manifest);
 };
 
 }

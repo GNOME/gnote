@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ SyncManager::SyncManager(gnote::NoteManagerBase & manager)
   m_client = gnote::sync::SyncClient::Ptr(new test::SyncClient(manager));
 }
 
-test::SyncClient::Ptr SyncManager::get_client(const std::string & manifest)
+test::SyncClient::Ptr SyncManager::get_client(const Glib::ustring & manifest)
 {
   SyncClient::Ptr client = dynamic_pointer_cast<SyncClient>(m_client);
   client->set_manifest_path(manifest);
@@ -51,12 +51,12 @@ void SyncManager::resolve_conflict(gnote::sync::SyncTitleConflictResolution reso
 {
 }
 
-bool SyncManager::synchronized_note_xml_matches(const std::string & noteXml1, const std::string & noteXml2)
+bool SyncManager::synchronized_note_xml_matches(const Glib::ustring & noteXml1, const Glib::ustring & noteXml2)
 {
   return false;
 }
 
-gnote::sync::SyncServiceAddin *SyncManager::get_sync_service_addin(const std::string & sync_service_id)
+gnote::sync::SyncServiceAddin *SyncManager::get_sync_service_addin(const Glib::ustring & sync_service_id)
 {
   return new SyncAddin();
 }
