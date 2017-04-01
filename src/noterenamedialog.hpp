@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,7 @@
 #define __NOTE_RENAME_DIALOG_HPP_
 
 #include <map>
-#include <string>
 
-#include <glibmm.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/radiobutton.h>
@@ -53,7 +51,7 @@ public:
   const Gtk::TreeModelColumn<bool> & get_column_selected() const;
   gint get_column_selected_num() const;
 
-  const Gtk::TreeModelColumn<std::string> & get_column_title() const;
+  const Gtk::TreeModelColumn<Glib::ustring> & get_column_title() const;
   gint get_column_title_num() const;
 
   const Gtk::TreeModelColumn<NoteBase::Ptr> & get_column_note() const;
@@ -69,7 +67,7 @@ private:
   };
 
   Gtk::TreeModelColumn<bool> m_column_selected;
-  Gtk::TreeModelColumn<std::string> m_column_title;
+  Gtk::TreeModelColumn<Glib::ustring> m_column_title;
   Gtk::TreeModelColumn<NoteBase::Ptr> m_column_note;
 };
 
@@ -81,7 +79,7 @@ public:
   typedef shared_ptr<std::map<NoteBase::Ptr, bool> > MapPtr;
 
   NoteRenameDialog(const NoteBase::List & notes,
-                   const std::string & old_title,
+                   const Glib::ustring & old_title,
                    const NoteBase::Ptr & renamed_note);
   MapPtr get_notes() const;
   NoteRenameBehavior get_selected_behavior() const;
@@ -99,9 +97,9 @@ private:
                                           bool select);
   void on_notes_view_row_activated(const Gtk::TreeModel::Path & p,
                                    Gtk::TreeView::Column *,
-                                   const std::string & old_title);
+                                   const Glib::ustring & old_title);
   void on_select_all_button_clicked(bool select);
-  void on_toggle_cell_toggled(const std::string & p);
+  void on_toggle_cell_toggled(const Glib::ustring & p);
 
   ModelColumnRecord m_model_column_record;
   Glib::RefPtr<Gtk::ListStore> m_notes_model;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,6 @@
 
 #include <pangomm/layout.h>
 
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
 
@@ -85,6 +84,7 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 
   static int cm_to_pixel(double cm, double dpi)
 		{
@@ -114,7 +114,7 @@ private:
   void on_draw_page(const Glib::RefPtr<Gtk::PrintContext>&, guint);
   void on_end_print(const Glib::RefPtr<Gtk::PrintContext>&);
 /////
-  void print_button_clicked();
+  void print_button_clicked(const Glib::VariantBase&);
 
   int                  m_margin_top;
   int                  m_margin_left;

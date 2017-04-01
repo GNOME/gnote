@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,13 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <fstream>
 #include <string.h>
-
-#include <boost/format.hpp>
 
 #include <glibmm/i18n.h>
 #include <glibmm/keyfile.h>
+#include <glibmm/miscutils.h>
 #include <gtkmm/image.h>
 #include <gtkmm/stock.h>
 
@@ -65,7 +63,7 @@ static const char * PREFS_FILE = "stickynoteimport.ini";
 bool StickyNoteImportNoteAddin::s_static_inited = false;
 bool StickyNoteImportNoteAddin::s_sticky_file_might_exist = true;
 bool StickyNoteImportNoteAddin::s_sticky_file_existence_confirmed = false;
-std::string StickyNoteImportNoteAddin::s_sticky_xml_path;
+Glib::ustring StickyNoteImportNoteAddin::s_sticky_xml_path;
 
 
 void StickyNoteImportNoteAddin::_init_static()
@@ -111,7 +109,7 @@ void StickyNoteImportNoteAddin::shutdown()
 bool StickyNoteImportNoteAddin::want_to_run(gnote::NoteManager & manager)
 {
   bool want_run = false;
-  std::string prefs_file =
+  Glib::ustring prefs_file =
     Glib::build_filename(manager.get_addin_manager().get_prefs_dir(),
                          PREFS_FILE);
 
@@ -134,7 +132,7 @@ bool StickyNoteImportNoteAddin::want_to_run(gnote::NoteManager & manager)
 
 bool StickyNoteImportNoteAddin::first_run(gnote::NoteManager & manager)
 {
-  std::string prefs_file(Glib::build_filename(
+  Glib::ustring prefs_file(Glib::build_filename(
                            manager.get_addin_manager().get_prefs_dir(), 
                            PREFS_FILE));
 
@@ -169,11 +167,7 @@ bool StickyNoteImportNoteAddin::first_run(gnote::NoteManager & manager)
       firstRun = false;
     }
 
-    std::ofstream fout(prefs_file.c_str());
-    if(fout) {
-      fout << ini_file.to_data().c_str();
-      fout.close();
-    }
+    sharp::file_write_all_text(prefs_file, ini_file.to_data());
   }
 
   return firstRun;
@@ -208,24 +202,24 @@ void StickyNoteImportNoteAddin::import_button_clicked(gnote::NoteManager & manag
 }
 
 
-void StickyNoteImportNoteAddin::show_no_sticky_xml_dialog(const std::string & xml_path)
+void StickyNoteImportNoteAddin::show_no_sticky_xml_dialog(const Glib::ustring & xml_path)
 {
   show_message_dialog (
     _("No Sticky Notes found"),
-    // %1% is a the file name
-    str(boost::format(_("No suitable Sticky Notes file was found at \"%1%\"."))
-        % xml_path), Gtk::MESSAGE_ERROR);
+    // %1 is a the file name
+    Glib::ustring::compose(_("No suitable Sticky Notes file was found at \"%1\"."),
+        xml_path), Gtk::MESSAGE_ERROR);
 }
 
 
 void StickyNoteImportNoteAddin::show_results_dialog(int numNotesImported, int numNotesTotal)
 {
-	show_message_dialog (
+  show_message_dialog (
     _("Sticky Notes import completed"),
-    // here %1% is the number of notes imported, %2% the total number of notes.
-    str(boost::format(_("<b>%1%</b> of <b>%2%</b> Sticky Notes "
-                        "were successfully imported.")) 
-        % numNotesImported % numNotesTotal), Gtk::MESSAGE_INFO);
+    // here %1 is the number of notes imported, %2 the total number of notes.
+    Glib::ustring::compose(_("<b>%1</b> of <b>%2</b> Sticky Notes "
+                        "were successfully imported."),
+        numNotesImported, numNotesTotal), Gtk::MESSAGE_INFO);
 }
 
 
@@ -280,20 +274,20 @@ bool StickyNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle
                                                         const char* content,
                                                         gnote::NoteManager & manager)
 {
-  std::string preferredTitle = _("Sticky Note: ");
+  Glib::ustring preferredTitle = _("Sticky Note: ");
   preferredTitle += stickyTitle;
-  std::string title = preferredTitle;
+  Glib::ustring title = preferredTitle;
 
   int i = 2; // Append numbers to create unique title, starting with 2
   while (manager.find(title)){
-    title = str(boost::format("%1% (#%2%)") % preferredTitle % i);
+    title = Glib::ustring::compose("%1 (#%2)", preferredTitle, i);
     i++;
   }
 
-  std::string noteXml = str(boost::format("<note-content><note-title>%1%</note-title>\n\n"
-                                          "%2%</note-content>")
-                                          % gnote::utils::XmlEncoder::encode(title)
-                                          % gnote::utils::XmlEncoder::encode(content));
+  Glib::ustring noteXml = Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\n"
+                                          "%2</note-content>",
+                                          gnote::utils::XmlEncoder::encode(title),
+                                          gnote::utils::XmlEncoder::encode(content));
 
   try {
     gnote::NoteBase::Ptr newNote = manager.create(title, noteXml);
@@ -307,8 +301,8 @@ bool StickyNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle
 }
 
 
-void StickyNoteImportNoteAddin::show_message_dialog(const std::string & title,
-                                                   const std::string & message,
+void StickyNoteImportNoteAddin::show_message_dialog(const Glib::ustring & title,
+                                                   const Glib::ustring & message,
                                                    Gtk::MessageType messageType)
 {
   gnote::utils::HIGMessageDialog dialog(NULL,

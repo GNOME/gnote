@@ -4,8 +4,10 @@ _Name=Insert Timestamp
 _Description=Inserts current date and time at the cursor position.
 _Authors=Hubert Figuiere and Tomboy Project
 Category=Tools
-Version=0.2
+Version=0.3
 DefaultEnabled=false
-Module=inserttimestamp
+Module=libinserttimestamp
 LibgnoteRelease=@LIBGNOTE_RELEASE@
 LibgnoteVersionInfo=@LIBGNOTE_VERSION_INFO@
+[Actions]
+actions_void=inserttimestamp-insert

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ const char *IconManager::SPECIAL_NOTES = "special-notes";
 IconManager IconManager::s_obj;
 
 
-Glib::RefPtr<Gdk::Pixbuf> IconManager::get_icon(const std::string & name, int size)
+Glib::RefPtr<Gdk::Pixbuf> IconManager::get_icon(const Glib::ustring & name, int size)
 {
   try {
     IconDef icon = std::make_pair(name, size);
@@ -68,7 +68,7 @@ Glib::RefPtr<Gdk::Pixbuf> IconManager::get_icon(const std::string & name, int si
   return Glib::RefPtr<Gdk::Pixbuf>();
 }
 
-Gtk::IconInfo IconManager::lookup_icon(const std::string & name, int size)
+Gtk::IconInfo IconManager::lookup_icon(const Glib::ustring & name, int size)
 {
   return Gtk::IconTheme::get_default()->lookup_icon(name, size, (Gtk::IconLookupFlags) 0);
 }

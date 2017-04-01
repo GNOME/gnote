@@ -1,13 +1,17 @@
+# Basque translation for gnote
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2014.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2014, 2015.
+# Edurne Labaka <elabaka@uzei.com>, 2015.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-15 14:00+0200\n"
-"PO-Revision-Date: 2014-07-15 14:08+0200\n"
+"Project-Id-Version: gnote master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gnote&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-02-07 17:11+0100\n"
+"PO-Revision-Date: 2015-02-07 17:11+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -174,14 +178,14 @@ msgstr ""
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:21
 msgid "Minimum number of notes to show in menu"
-msgstr "Gutxiengo ohar-kopurua menuan erakusteko"
+msgstr "Gutxieneko ohar kopurua menuan erakusteko"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:22
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr ""
-"Gutxiengo ohar-kopurua zehazten duen osokoa, Gnote-ko oharren menuan "
+"Gutxieneko ohar kopurua zehazten duen osokoa, Gnote-ko oharren menuan "
 "bistaratzeko."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:23
@@ -193,7 +197,7 @@ msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
 msgstr ""
-"Oharren URIak zuriunez bereiztutako zerrenda, oharrak Gnote-ren oharren "
+"Oharren URIak zuriunez bereizitako zerrenda, oharrak Gnote-ren oharren "
 "menuan beti egoteko."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:25
@@ -293,7 +297,7 @@ msgstr ""
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:45
 msgid "Link Updating Behavior on Note Rename"
-msgstr "Esteken eguneraketen portaera oharra izenez aldatzean"
+msgstr "Esteken eguneratzeen portaera oharra izenez aldatzean"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:46
 msgid ""
@@ -305,7 +309,7 @@ msgid ""
 "indicates that link text should be updated to the new note name so that it "
 "will continue linking to the renamed note."
 msgstr ""
-"Ohar bat izenez aldatzean esteka zehatz baten eguneraketa egitean beti "
+"Ohar bat izenez aldatzean esteka zehatz baten eguneratzea egitean beti "
 "portaera jakin bat lantzeko ezarpenik dagoen adierazten du osoko balioak, "
 "erabiltzaileari galdetu ordez. Balioak barneko zenbaketa jarraitzen du: 0 "
 "balioak ohar baten izena aldatzean beste oharretako estekei eragingo dien "
@@ -327,15 +331,8 @@ msgid "Use status icon, when started as an application"
 msgstr "Erabili egoera-ikonoa, aplikazio gisa abiaraztean"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:50
-msgid ""
-"Has affect only when started as an application. When set to TRUE, shows a "
-"status icon. If set to FALSE, Search All Notes window is used as main "
-"application window, closing which makes application to exit."
-msgstr ""
-"Aplikazio bat bezala abiaraztean eragiten du soilik. TRUE (egia) gisa "
-"ezartzen bada, egoeraren ikonoa erakusten du. FALSE (faltsua) gisa "
-"ezartzean, 'Ohar guztiak' leihoa erabiliko da leiho nagusi gisa, eta leiho "
-"hori ixteak aplikaziotik irtetea eragingo du."
+msgid "Deprecated, has no effect."
+msgstr "Zaharkitua, ez du eraginik sortzen."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:51
 msgid "Open notes in new window"
@@ -351,8 +348,8 @@ msgstr ""
 #: ../data/org.gnome.gnote.gschema.xml.in.h:53
 msgid "Save note window size and autosize note window to it"
 msgstr ""
-"Gorde oharraren leihoaren tamaina eta aldatu oharren leihoa tamaina horretara "
-"automatikoki"
+"Gorde oharraren leihoaren tamaina eta aldatu oharren leihoa tamaina "
+"horretara automatikoki"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:54
 msgid ""
@@ -360,137 +357,56 @@ msgid ""
 "when note is opened."
 msgstr ""
 "Gorde oharraren leihoaren tamaina eta aldatu leiho nagusia tamaina horretara "
-"automatikoki "
-"ohar bat irekitzean."
+"automatikoki ohar bat irekitzean."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:55
 msgid "Show applet menu"
 msgstr "Erakutsi miniaplikazioen menua"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:56
-msgid ""
-"The global keybinding for showing the Gnote applet's menu. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Laster-tekla orokorra Gnote miniaplikazioaren menua erakusteko. Formatuak "
-"honelako itxura du '&lt;Control&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
-"Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
-"erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
-"laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da ekintzaren "
-"laster-teklarik egongo."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Open Start Here"
 msgstr "Ireki 'Hasi hemen'"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
-msgid ""
-"The global keybinding for opening the \"Start Here\" note. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Laster-tekla orokorra 'Hasi hemen' oharra irekitzeko. Formatuak honelako "
-"itxura du '&lt;Control&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
-"Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
-"erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
-"laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da ekintzaren "
-"laster-teklarik egongo."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Create a new Note"
 msgstr "Sortu ohar berria"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
-msgid ""
-"The global keybinding for creating and displaying a new Note. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Laster-tekla orokorra ohar berria sortzeko eta bistaratzeko. Formatuak "
-"honelako itxura du '&lt;Kontrol&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
-"Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
-"erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
-"laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da ekintzaren "
-"laster-teklarik egongo."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid "Open Search Dialog"
 msgstr "Ireki bilaketa-leihoa"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
-msgid ""
-"The global keybinding for opening the Note Search dialog. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Laster-tekla orokorra 'Ohar-bilaketa' leihoa irekitzeko. Formatuak honelako "
-"itxura du '&lt;Control&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
-"Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
-"erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
-"laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da ekintzaren "
-"laster-teklarik egongo."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Open Recent Changes"
 msgstr "Ireki azken aldaketak"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
-msgid ""
-"The global keybinding for opening the Recent Changes dialog. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Laster-tekla orokorra 'Azken aldaketak' leihoa irekitzeko. Formatuak "
-"honelako itxura du '&lt;Control&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
-"Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
-"erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
-"laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da ekintzaren "
-"laster-teklarik egongo."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid "HTML Export Last Directory"
 msgstr "HTML esportatu azken direktorioa"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Ohar bat esportatu zen azken direktorioa 'Esportatu HTMLra' plugina "
 "erabiltzen."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid "HTML Export Linked Notes"
 msgstr "HTML esportatu estekatutako oharrak"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr ""
-"'Eportatu estekatutako oharrak'en kontro-laukiaren azken ezarpena 'Esportatu "
-"HTMLra' pluginean."
+"'Esportatu estekatutako oharrak'en kontrol-laukiaren azken ezarpena "
+"'Esportatu HTMLra' pluginean."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid "HTML Export All Linked Notes"
 msgstr "HTML esportatu estekatutako ohar guztiak"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -503,23 +419,23 @@ msgstr ""
 "(errekurtsiboki aurkitutakoak) HTML esportatzean erabiliko diren edo ez "
 "zehazteko erabiltzen da."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid "Synchronization Client ID"
 msgstr "Sinkronizazio-bezeroaren IDa"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
+"synchronization server."
 msgstr ""
 "Gnote bezero honen identifikatzaile esklusiboa, sinkronizazio-"
 "zerbitzariarekin komunikatzean erabiltzeko."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid "Synchronization Local Server Path"
 msgstr "Sinkronizazio lokaleko zerbitzariaren bide-izena"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -527,11 +443,11 @@ msgstr ""
 "Sinkronizazio-zerbitzariaren bide-izena fitxategi-sistemako sinkronizazio-"
 "zerbitzuaren gehigarria erabiltzean."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid "Selected Synchronization Service Addin"
 msgstr "Hautatutako sinkronizazio-zerbitzuaren gehigarria"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -539,11 +455,11 @@ msgstr ""
 "Unean konfiguratutako oharren sinkronizazio-zerbitzu gehigarriaren "
 "identifikatzaile esklusiboa."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Oharren sinkronizazio-gatazken portaera"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -557,11 +473,11 @@ msgstr ""
 "galdetzea adierazten du, horrela erabiltzailea arduratuko da gatazka "
 "bakoitzaren aurrean landu beharrekoarekin."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Atzeko planoko sinkronizazio automatikoaren denbora-muga"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -573,11 +489,11 @@ msgstr ""
 "baliok sink. automatikoa desgaituta dagoela adierazten du. Onartzen den "
 "balio positiborik baxuena 5 da. Balioak minutuak adierazten ditu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid "Accept SSL Certificates"
 msgstr "Onartu SSL ziurtagiriak"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -585,27 +501,27 @@ msgstr ""
 "Erabili wdfs aukera \"-ac\" erabiltzaileari galdetu gabe SSL ziurtagiriak "
 "onartzeko."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid "Share URL"
 msgstr "Partekatu URLa"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "WebDAV-ek oharrak sinkronizatzen diren URLa partekatzen du."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Share username"
 msgstr "Partekatu erabiltzaile-izena"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:86
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Username to access WebDAV share."
 msgstr "Erabiltzaile-izena WebDAV partekatzea atzitzeko."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Timestamp format"
 msgstr "Denbora-zigiluaren formatua"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:88
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -613,11 +529,11 @@ msgstr ""
 "Denbora-zigiluan erabiltzen den data-formatua. strftime(3) funtzioaren "
 "formatua jarraitzen du."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:89
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Time between checks"
-msgstr "Egiaztaketen arteko denbora"
+msgstr "Egiaztapenen arteko denbora"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:90
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -625,7 +541,6 @@ msgstr ""
 "balioa 5 da."
 
 #: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
-#: ../src/tray.cpp:465
 msgid "_Quit"
 msgstr "I_rten"
 
@@ -634,7 +549,6 @@ msgid "Quit Gnote"
 msgstr "Irten Gnote-tik"
 
 #: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
-#: ../src/tray.cpp:448
 msgid "_Preferences"
 msgstr "_Hobespenak"
 
@@ -662,19 +576,19 @@ msgstr "Gnote-ri buruz"
 msgid "TrayIcon"
 msgstr "Erretiluaren ikonoa"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
+#: ../src/actionmanager.cpp:107
 msgid "Create _New Note"
 msgstr "_Sortu ohar berria"
 
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:227
+#: ../src/actionmanager.cpp:107
 msgid "Create a new note"
 msgstr "Sortu ohar berria"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
+#: ../src/actionmanager.cpp:112
 msgid "_Search All Notes"
 msgstr "_Bilatu ohar guztiak"
 
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:236
+#: ../src/actionmanager.cpp:112
 msgid "Open the Search All Notes window"
 msgstr "Ireki 'Bilatu ohar guztiak' leihoa"
 
@@ -686,7 +600,7 @@ msgstr "_Ohar berria"
 msgid "New _Window"
 msgstr "Leiho _berria"
 
-#: ../src/actionmanager.cpp:169 ../src/tray.cpp:453
+#: ../src/actionmanager.cpp:169
 msgid "_Help"
 msgstr "_Laguntza"
 
@@ -832,7 +746,7 @@ msgstr "Ziur zaude ikono hau ezabatzea nahi duzula?"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:372
 msgid "If you remove an icon it is permanently lost."
-msgstr "Ikono bat ezabatzen baduzu betirako galduko da."
+msgstr "Ikono bat ezabatzen baduzu betiko galduko da."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:394
 #, c-format
@@ -868,8 +782,8 @@ msgid "Failed to create GTG interface from XML: %s"
 msgstr "Huts egin du GTG interfazea XMLtik sortzean: %s"
 
 #: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
-msgid "Failed to create D_Bus proxy for GTG"
-msgstr "Huts egin du GTG-ren DBus proxya sortzean"
+msgid "Failed to create D-Bus proxy for GTG"
+msgstr "Huts egin du GTG-ren D-Bus proxya sortzean"
 
 #: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:116
 #, c-format
@@ -1005,7 +919,7 @@ msgstr "Erabili formatu _pertsonalizatua"
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
-"NoteDirectoryWatcher: eguneraketa abortatuta. Errorea '%s' irakurtzean: %s"
+"NoteDirectoryWatcher: eguneratzea abortatuta. Errorea '%s' irakurtzean: %s"
 
 #. TRANSLATORS: %s is file
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
@@ -1031,11 +945,7 @@ msgstr "NoteDirectoryWatcher: errore ezezaguna '%s'(e)tik oharra sortzean: %s"
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
-"NoteDirectoryWatcher: eguneraketa abortatuta. Errorea '%s' aztertzean: %s"
-
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
-msgid "_Directory check interval:"
-msgstr "Direktorioa begiratzeko _bitartea:"
+"NoteDirectoryWatcher: eguneratzea abortatuta. Errorea '%s' aztertzean: %s"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:1
 msgid "Note Directory Watcher"
@@ -1049,6 +959,10 @@ msgstr ""
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:3
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius eta Tomboy-ren jatorriko egileak"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
+msgid "_Directory check interval:"
+msgstr "Direktorioa begiratzeko _bitartea:"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:33
 msgid "Today: Template"
@@ -1160,8 +1074,8 @@ msgstr "Ordeztu izenburua hautapenarekin."
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 #: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 msgid "Special Notes"
 msgstr "Ohar bereziak"
 
@@ -1379,99 +1293,103 @@ msgstr "Huts egin du '%s'(e)rako urruneko deiak"
 msgid "Exception thrown when creating note: %s"
 msgstr "Salbuespena gertatu da oharra sortzean: %s"
 
-#: ../src/gnote.cpp:198
+#: ../src/gnote.cpp:185
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote jadanik exekutatzen ari da. Irteten..."
 
-#: ../src/gnote.cpp:359
+#: ../src/gnote.cpp:289
 msgid "and Tomboy original authors."
 msgstr "eta Tomboy-ren jatorriko egileak."
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:295
 msgid "translator-credits"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 
-#: ../src/gnote.cpp:374
+#: ../src/gnote.cpp:304
 msgid ""
-"Copyright © 2010-2014 Aurimas Cernius\n"
+"Copyright © 2010-2015 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright-a © 2010-2014 Aurimas Cernius\n"
-"Copyright-a © 2009-2011 Debarshi Ray\n"
-"Copyright-a © 2009 Hubert Figuiere\n"
+"Copyright © 2010-2015 Aurimas Cernius\n"
+"Copyright © 2009-2011 Debarshi Ray\n"
+"Copyright © 2009 Hubert Figuiere\n"
 "Copyright-a © 2004-2009 Tomboy-ren jatorriko egileak."
 
-#: ../src/gnote.cpp:378
+#: ../src/gnote.cpp:308
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Oharrak hartzeko mahaigaineko aplikazio sinple eta erraza."
 
-#: ../src/gnote.cpp:389
+#: ../src/gnote.cpp:319
 msgid "Homepage"
 msgstr "Gune nagusia"
 
-#: ../src/gnote.cpp:563
+#: ../src/gnote.cpp:494
 msgid "Run Gnote in background."
 msgstr "Exekutatu Gnote atzeko planoan."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:495
+msgid "Run Gnote as GNOME Shell search provider."
+msgstr "Exekutatu Gnote GNOMEren shell-eko bilaketa-hornitzaile gisa."
+
+#: ../src/gnote.cpp:496
 msgid "Specify the path of the directory containing the notes."
 msgstr "Zehaztu oharrak dituen direktorioaren bide-izena."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:496
 msgid "path"
 msgstr "bide-izena"
 
-#: ../src/gnote.cpp:565
+#: ../src/gnote.cpp:497
 msgid "Open the search all notes window with the search text."
 msgstr "'Bilatu ohar guztietan' leihoa irekitzen du bilatzeko testuarekin."
 
-#: ../src/gnote.cpp:565 ../src/gnote.cpp:570
+#: ../src/gnote.cpp:497 ../src/gnote.cpp:502
 msgid "text"
 msgstr "testua"
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:498
 msgid "Print version information."
 msgstr "Erakutsi bertsioaren informazioa."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:499
 msgid "Create and display a new note, with a optional title."
 msgstr "Sortu eta bistaratu ohar berria, aukerako izenburuarekin."
 
-#: ../src/gnote.cpp:567
+#: ../src/gnote.cpp:499
 msgid "title"
 msgstr "izenburua"
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:500
 msgid "Display the existing note matching title."
 msgstr "Bistaratu izenburuarekin bat datorren eta existitzen den oharra."
 
-#: ../src/gnote.cpp:568
+#: ../src/gnote.cpp:500
 msgid "title/url"
 msgstr "izenburua/urla"
 
-#: ../src/gnote.cpp:569
+#: ../src/gnote.cpp:501
 msgid "Display the 'Start Here' note."
 msgstr "Bistaratu 'Hasi hemen' oharra."
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:502
 msgid "Search and highlight text in the opened note."
 msgstr "Bilatu eta nabarmendu testua irekitako oharrean."
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:506
 msgid "A note taking application"
 msgstr "Oharrak hartzeko aplikazioa"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:506
 msgid "Gnote options at launch"
 msgstr "Gnote-ren abioko aukerak"
 
-#: ../src/gnote.cpp:651
+#: ../src/gnote.cpp:583
 msgid "Could not connect to remote instance."
 msgstr "Ezin izan da urruneko instantziarekin konektatu."
 
-#: ../src/gnote.cpp:767
+#: ../src/gnote.cpp:699
 msgid "Version %1%"
 msgstr "%1% bertsioa"
 
@@ -1482,13 +1400,29 @@ msgid "Failed to load icon (%s, %d): %s"
 msgstr "Huts egin du ikonoa (%s, %d) kargatzean: %s"
 
 #: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:122 ../src/noteaddin.cpp:135
-#, fuzzy
 msgid "Plugin is disposing already"
 msgstr "Plugina jadanik ezarrita dago"
 
 #: ../src/noteaddin.cpp:139
 msgid "Window is not embedded"
 msgstr "Leihoa ez dago kapsulatuta"
+
+#. Probably IOException or UnauthorizedAccessException?
+#: ../src/notebase.cpp:200 ../src/note.cpp:382
+#, c-format
+msgid "Exception while saving note: %s"
+msgstr "Salbuespena oharra gordetzean: %s"
+
+#. write failure, but not critical
+#: ../src/notebase.cpp:444
+#, c-format
+msgid "Failed to update note format: %s"
+msgstr "Huts egin du oharraren formatua eguneratzean: %s"
+
+#: ../src/notebase.cpp:568
+#, c-format
+msgid "Filesystem error: %s"
+msgstr "Fitxategi-sistemaren errorea: %s"
 
 #: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Create Notebook"
@@ -1583,11 +1517,11 @@ msgstr "Garrantzitsua"
 msgid "Active"
 msgstr "Aktibo"
 
-#: ../src/notebuffer.cpp:1498
+#: ../src/notebuffer.cpp:1505
 msgid "</list> tag mismatch"
 msgstr "</list> etiketa falta da"
 
-#: ../src/notebuffer.cpp:1577
+#: ../src/notebuffer.cpp:1584
 #, c-format
 msgid "Exception: %s"
 msgstr "Salbuespena: %s"
@@ -1606,7 +1540,7 @@ msgstr[1] "%1% ohar ezabatu?"
 
 #: ../src/note.cpp:70
 msgid "If you delete a note it is permanently lost."
-msgstr "Ohar bat ezabatzen baduzu, betirako galduko da."
+msgstr "Ohar bat ezabatzen baduzu, betiko galduko da."
 
 #: ../src/note.cpp:106
 msgid "Error saving note data."
@@ -1622,12 +1556,6 @@ msgstr ""
 "libre dagoela, eta ~/.local/share/gnote direktoriorako baimen egokiak "
 "dituzula. Errorearen xehetasunak ~/.gnote.log fitxategian aurki dezakezu."
 
-#. Probably IOException or UnauthorizedAccessException?
-#: ../src/note.cpp:382 ../src/notebase.cpp:200
-#, c-format
-msgid "Exception while saving note: %s"
-msgstr "Salbuespena oharra gordetzean: %s"
-
 #: ../src/note.cpp:474
 #, c-format
 msgid "Error while saving: %s"
@@ -1637,16 +1565,13 @@ msgstr "Errorea gordetzean: %s"
 msgid "Setting text content for closed notes not supported"
 msgstr "Testuaren edukia itxitako oharretan ezartzea ez dago onartuta"
 
-#. write failure, but not critical
-#: ../src/notebase.cpp:444
-#, c-format
-msgid "Failed to update note format: %s"
-msgstr "Huts egin du oharraren formatua eguneratzean: %s"
+#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:320
+msgid "New Note Template"
+msgstr "Oharren txantiloi berria"
 
-#: ../src/notebase.cpp:568
-#, c-format
-msgid "Filesystem error: %s"
-msgstr "Fitxategi-sistemaren errorea: %s"
+#: ../src/notemanagerbase.cpp:359
+msgid "Describe your new note here."
+msgstr "Azaldu ohar berria hemen."
 
 #: ../src/notemanager.cpp:133
 msgid ""
@@ -1734,14 +1659,6 @@ msgstr "Errorea hasierako oharrak sortzean: %s"
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Errorea oharraren XMLa aztertzean, '%s' saltatzen: %s"
-
-#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:332
-msgid "New Note Template"
-msgstr "Oharren txantiloi berria"
-
-#: ../src/notemanagerbase.cpp:359
-msgid "Describe your new note here."
-msgstr "Azaldu ohar berria hemen."
 
 #: ../src/noterenamedialog.cpp:123
 msgid "Rename Note Links?"
@@ -1852,47 +1769,47 @@ msgstr "Gorde _hautapena"
 msgid "Save _Title"
 msgstr "Gorde _izenburua"
 
-#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1084
+#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1085
 msgid "Cannot create note"
 msgstr "Ezin da oharra sortu"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:828
 msgid "_Link"
 msgstr "_Estekatu"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:829
 msgid "<b>_Bold</b>"
 msgstr "<b>_Lodia</b>"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:830
 msgid "<i>_Italic</i>"
 msgstr "<i>_Etzana</i>"
 
-#: ../src/notewindow.cpp:830
+#: ../src/notewindow.cpp:831
 msgid "<s>_Strikeout</s>"
 msgstr "<s>_Marratua</s>"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:833
 msgid "_Highlight"
 msgstr "_Nabarmendu"
 
-#: ../src/notewindow.cpp:834
+#: ../src/notewindow.cpp:835
 msgid "_Normal"
 msgstr "_Arrunta"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:837
 msgid "Hu_ge"
 msgstr "_Oso handia"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:839
 msgid "_Large"
 msgstr "_Handia"
 
-#: ../src/notewindow.cpp:840
+#: ../src/notewindow.cpp:841
 msgid "S_mall"
 msgstr "T_xikia"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "Bullets"
 msgstr "Buletak"
 
@@ -1904,43 +1821,30 @@ msgstr "Orokorra"
 msgid "Links"
 msgstr "Estekak"
 
-#: ../src/preferencesdialog.cpp:125
-msgid "Hotkeys"
-msgstr "Laster-teklak"
-
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:129 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:125 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "Sinkronizazioa"
 
-#: ../src/preferencesdialog.cpp:131
+#: ../src/preferencesdialog.cpp:127
 msgid "Plugins"
 msgstr "Pluginak"
 
-#: ../src/preferencesdialog.cpp:208
+#: ../src/preferencesdialog.cpp:204
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "'%s' plugina falta da"
 
-#. Status icon
-#: ../src/preferencesdialog.cpp:247
-msgid "Use status _icon"
-msgstr "Erabili egoera-_ikonoa"
-
-#: ../src/preferencesdialog.cpp:248
-msgid "Show icon in tray, which is the central place of control."
-msgstr "Erakutsi ikonoa erretiluan, kontrolaren leku nagusia da."
-
 #. Open in new window
-#: ../src/preferencesdialog.cpp:255
+#: ../src/preferencesdialog.cpp:243
 msgid "Always _open notes in new window"
 msgstr "_Ireki beti oharrak leiho berrietan"
 
-#: ../src/preferencesdialog.cpp:268
+#: ../src/preferencesdialog.cpp:256
 msgid "_Spell check while typing"
 msgstr "Egiaztatu _ortografia idaztean"
 
-#: ../src/preferencesdialog.cpp:269
+#: ../src/preferencesdialog.cpp:257
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1950,35 +1854,35 @@ msgstr ""
 "erakutsiko dira."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:279
+#: ../src/preferencesdialog.cpp:267
 msgid "Enable auto-_bulleted lists"
 msgstr "Gaitu _buletdun zerrenda automatikoak"
 
-#: ../src/preferencesdialog.cpp:280
+#: ../src/preferencesdialog.cpp:268
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Hasi buletdun zerrendak lerro berriak '-' karakterearekin hasiz"
 
-#: ../src/preferencesdialog.cpp:289
+#: ../src/preferencesdialog.cpp:277
 msgid "Use custom _font"
 msgstr "Erabili letra-tipo _pertsonalizatua"
 
-#: ../src/preferencesdialog.cpp:307
+#: ../src/preferencesdialog.cpp:295
 msgid "When renaming a linked note: "
 msgstr "Estekatutako oharra izenez aldatzean: "
 
-#: ../src/preferencesdialog.cpp:311
+#: ../src/preferencesdialog.cpp:299
 msgid "Ask me what to do"
 msgstr "Galdetu zer egin"
 
-#: ../src/preferencesdialog.cpp:312
+#: ../src/preferencesdialog.cpp:300
 msgid "Never rename links"
 msgstr "Inoiz ez aldatu esteken izenak"
 
-#: ../src/preferencesdialog.cpp:313
+#: ../src/preferencesdialog.cpp:301
 msgid "Always rename links"
 msgstr "Beti aldatu esteken izenak"
 
-#: ../src/preferencesdialog.cpp:333
+#: ../src/preferencesdialog.cpp:321
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -1986,40 +1890,40 @@ msgstr ""
 "Oharren txantiloi berria erabili ohar berri bat sortzean erabiliko den "
 "testua zehazteko."
 
-#: ../src/preferencesdialog.cpp:338
+#: ../src/preferencesdialog.cpp:326
 msgid "Open New Note Template"
 msgstr "Ireki oharren txantiloi berria"
 
 #. internal links
-#: ../src/preferencesdialog.cpp:395
+#: ../src/preferencesdialog.cpp:383
 msgid "_Automatically link to notes"
 msgstr "Estekatu _automatikoki oharretara"
 
-#: ../src/preferencesdialog.cpp:396
+#: ../src/preferencesdialog.cpp:384
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Gaitu aukera hau testua oharraren izenburuarekin bat datorrenean esteka bat "
 "sortzeko."
 
 #. URLs
-#: ../src/preferencesdialog.cpp:402
+#: ../src/preferencesdialog.cpp:390
 msgid "Create links for _URLs"
 msgstr "Sortu _URLen estekak"
 
-#: ../src/preferencesdialog.cpp:403
+#: ../src/preferencesdialog.cpp:391
 msgid ""
-"Enable this option to create a link for URLs. Clicking will open that URL "
-"with apropriate program."
+"Enable this option to create links for URLs. Clicking will open URL with "
+"appropriate program."
 msgstr ""
 "Gaitu aukera hau URLen esteka sortzeko. Klik eginez URL hori dagokion "
 "programarekin irekiko da."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:410
+#: ../src/preferencesdialog.cpp:398
 msgid "Highlight _WikiWords"
 msgstr "Nabarmendu _WikiWords-ak"
 
-#: ../src/preferencesdialog.cpp:411
+#: ../src/preferencesdialog.cpp:399
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2027,90 +1931,55 @@ msgstr ""
 "Gaitu aukera hau <b>HonenItxuraDuten</b> hitzak nabarmentzeko. Egin klik "
 "hitzaren gainean izen horrekin ohar bat sortzeko."
 
-#. Hotkeys...
-#: ../src/preferencesdialog.cpp:441
-msgid "Listen for _hotkeys"
-msgstr "Entzun _laster-teklak"
-
-#: ../src/preferencesdialog.cpp:442
-msgid ""
-"Hotkeys allow you to quickly access your notes from anywhere with a "
-"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-"Alt&gt;N</b>"
-msgstr ""
-"Laster-teklek zure oharretara edonondik azkar sartzen lagunduko dizute. "
-"Laster-tekla adibidea: <b>&lt;Kontrol&gt;&lt;Maius&gt;F11</b>, <b>&lt;Alt&gt;"
-"N</b>"
-
-#. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:464
-msgid "Show notes _menu"
-msgstr "Erakutsi oharren _menua"
-
-#. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:481
-msgid "Open \"_Start Here\""
-msgstr "Ireki '_Hasi hemen'"
-
-#. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:497
-msgid "Create _new note"
-msgstr "Sortu _ohar berria"
-
-#. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:513
-msgid "Open \"Search _All Notes\""
-msgstr "Ireki '_Bilatu ohar guztiak'"
-
-#: ../src/preferencesdialog.cpp:553
+#: ../src/preferencesdialog.cpp:431
 msgid "Ser_vice:"
 msgstr "_Zerbitzua:"
 
-#: ../src/preferencesdialog.cpp:609 ../src/preferencesdialog.cpp:1239
+#: ../src/preferencesdialog.cpp:487 ../src/preferencesdialog.cpp:1117
 msgid "Not configurable"
 msgstr "Ez da konfiguragarria"
 
-#: ../src/preferencesdialog.cpp:636
+#: ../src/preferencesdialog.cpp:514
 msgid "Automatical background s_ync interval (minutes)"
 msgstr "Sinkronizatu automatikoki atz. planoan (minutuak)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:660
+#: ../src/preferencesdialog.cpp:538
 msgid "_Advanced..."
 msgstr "_Aurreratua..."
 
-#: ../src/preferencesdialog.cpp:707
+#: ../src/preferencesdialog.cpp:585
 msgid "The following plugins are installed:"
 msgstr "Honako pluginak daude instalatuta:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:742
+#: ../src/preferencesdialog.cpp:620
 msgid "_Enable"
 msgstr "_Gaitu"
 
-#: ../src/preferencesdialog.cpp:748
+#: ../src/preferencesdialog.cpp:626
 msgid "_Disable"
 msgstr "_Desgaitu"
 
-#: ../src/preferencesdialog.cpp:906
+#: ../src/preferencesdialog.cpp:784
 msgid "Not Implemented"
 msgstr "Inplementatu gabe"
 
-#: ../src/preferencesdialog.cpp:922
+#: ../src/preferencesdialog.cpp:800
 msgid "%1% Preferences"
 msgstr "%1%(r)en hobespenak"
 
-#: ../src/preferencesdialog.cpp:1057
+#: ../src/preferencesdialog.cpp:935
 msgid "Choose Note Font"
 msgstr "Aukeratu oharraren letra-tipoa"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1155
+#: ../src/preferencesdialog.cpp:1033
 msgid "Other Synchronization Options"
 msgstr "Bestelako sinkronizazioko aukerak"
 
-#: ../src/preferencesdialog.cpp:1158
+#: ../src/preferencesdialog.cpp:1036
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2119,23 +1988,23 @@ msgstr ""
 "gatazkak detektatzen direnean:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1162
+#: ../src/preferencesdialog.cpp:1040
 msgid "Always ask me what to do"
 msgstr "Galdetu beti zer egin."
 
-#: ../src/preferencesdialog.cpp:1166
+#: ../src/preferencesdialog.cpp:1044
 msgid "Rename my local note"
 msgstr "Aldatu lokaleko oharraren izena."
 
-#: ../src/preferencesdialog.cpp:1170
+#: ../src/preferencesdialog.cpp:1048
 msgid "Replace my local note with the server's update"
-msgstr "Ordeztu lokaleko oharra zerbitzariko eguneraketarekin"
+msgstr "Ordeztu lokaleko oharra zerbitzariko eguneratzearekin"
 
-#: ../src/preferencesdialog.cpp:1272
+#: ../src/preferencesdialog.cpp:1150
 msgid "Are you sure?"
 msgstr "Ziur zaude?"
 
-#: ../src/preferencesdialog.cpp:1273
+#: ../src/preferencesdialog.cpp:1151
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2143,11 +2012,11 @@ msgstr ""
 "Ez da aholkatzen sinkronizazioaren ezarpenak garbitzea. Zure ohar guztiak "
 "berriro sinkronizatu beharko dituzu ezarpen berriak gordetzean."
 
-#: ../src/preferencesdialog.cpp:1283
+#: ../src/preferencesdialog.cpp:1161
 msgid "Resetting Synchronization Settings"
 msgstr "Sinkronizazio-ezarpenak berrezartzen"
 
-#: ../src/preferencesdialog.cpp:1284
+#: ../src/preferencesdialog.cpp:1162
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2157,11 +2026,11 @@ msgstr ""
 "konfigurazioak garbitu egingo dira. Zure ohar guztiak berriro sinkronizatu "
 "beharko dituzu ezarpen berriak gordetzean."
 
-#: ../src/preferencesdialog.cpp:1350
+#: ../src/preferencesdialog.cpp:1228
 msgid "Connection successful"
 msgstr "Ongi konektatu da"
 
-#: ../src/preferencesdialog.cpp:1351
+#: ../src/preferencesdialog.cpp:1229
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2169,7 +2038,7 @@ msgstr ""
 "Gnote prest dago zure oharrak sinkronizatzeko. Nahi dituzu oharrak orain "
 "sinkronizatzea?"
 
-#: ../src/preferencesdialog.cpp:1375
+#: ../src/preferencesdialog.cpp:1253
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
@@ -2177,19 +2046,19 @@ msgstr ""
 "Egiaztatu informazioa eta saiatu berriro. '%1%' egunkariak erroreari buruzko "
 "informazio gehiago eduki dezake."
 
-#: ../src/preferencesdialog.cpp:1380
+#: ../src/preferencesdialog.cpp:1258
 msgid "Error connecting"
 msgstr "Errorea konektatzean"
 
-#: ../src/preferencesdialog.cpp:1443
+#: ../src/preferencesdialog.cpp:1321
 msgid "Version:"
 msgstr "Bertsioa:"
 
-#: ../src/preferencesdialog.cpp:1446
+#: ../src/preferencesdialog.cpp:1324
 msgid "Author:"
 msgstr "Egilea:"
 
-#: ../src/preferencesdialog.cpp:1451
+#: ../src/preferencesdialog.cpp:1329
 msgid "Copyright:"
 msgstr "Copyright-a:"
 
@@ -2393,7 +2262,7 @@ msgstr "Huts egin du idazketaren probak"
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:196
 msgid "Timeout connecting to server."
-msgstr "Denbora iraungituta zerbitzariarekin konektatzean."
+msgstr "Denbora iraungita zerbitzariarekin konektatzean."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:202
 msgid "Error connecting to server."
@@ -2404,17 +2273,17 @@ msgid "FUSE could not be enabled."
 msgstr "Ezin izan da FUSE gaitu."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:246
-msgid "An error ocurred while connecting to the specified server"
+msgid "An error occurred while connecting to the specified server"
 msgstr "Errorea gertatu da zehaztutako zerbitzariarekin konektatzean"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:166
+#: ../src/synchronization/gnotesyncclient.cpp:165
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "'last-sync-date' elementua ezin da aztertu '%s'(e)n"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:176
+#: ../src/synchronization/gnotesyncclient.cpp:175
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "'last-sync-rev' elementua ezin da aztertu '%s'(e)n"
@@ -2516,11 +2385,11 @@ msgstr ""
 
 #: ../src/synchronization/syncdialog.cpp:521
 msgid "Preparing to download updates from server..."
-msgstr "Zerbitzaritik eguneraketak deskargatzeko prestatzen..."
+msgstr "Zerbitzaritik eguneratzeak deskargatzeko prestatzen..."
 
 #: ../src/synchronization/syncdialog.cpp:524
 msgid "Preparing to upload updates to server..."
-msgstr "Zerbitzarira eguneraketak bidaltzeko prestatzen..."
+msgstr "Zerbitzarira eguneratzeak bidaltzeko prestatzen..."
 
 #: ../src/synchronization/syncdialog.cpp:527
 msgid "Uploading notes to server..."
@@ -2680,18 +2549,6 @@ msgstr ""
 "abioan. Gehitu 'modprobe fuse' lerroa /etc/init.d/boot.local fitxategian edo "
 "'fuse' lerroa /etc/modules fitxategian"
 
-#: ../src/tray.cpp:54
-msgid "Take notes"
-msgstr "Hartu oharrak"
-
-#: ../src/tray.cpp:167
-msgid " (new)"
-msgstr " (berria)"
-
-#: ../src/tray.cpp:458
-msgid "_About Gnote"
-msgstr "Gnote-ri _buruz"
-
 #: ../src/utils.cpp:144
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
@@ -2786,6 +2643,133 @@ msgstr "_Kopiatu estekaren helbidea"
 msgid "_Open Link"
 msgstr "_Ireki esteka"
 
+#~ msgid ""
+#~ "Has affect only when started as an application. When set to TRUE, shows a "
+#~ "status icon. If set to FALSE, Search All Notes window is used as main "
+#~ "application window, closing which makes application to exit."
+#~ msgstr ""
+#~ "Aplikazio bat bezala abiaraztean eragiten du soilik. TRUE (egia) gisa "
+#~ "ezartzen bada, egoeraren ikonoa erakusten du. FALSE (faltsua) gisa "
+#~ "ezartzean, 'Ohar guztiak' leihoa erabiliko da leiho nagusi gisa, eta "
+#~ "leiho hori ixteak aplikaziotik irtetea eragingo du."
+
+#~ msgid ""
+#~ "The global keybinding for showing the Gnote applet's menu. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Laster-tekla orokorra Gnote miniaplikazioaren menua erakusteko. Formatuak "
+#~ "honelako itxura du '&lt;Control&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
+#~ "Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
+#~ "erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
+#~ "laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da "
+#~ "ekintzaren laster-teklarik egongo."
+
+#~ msgid ""
+#~ "The global keybinding for opening the \"Start Here\" note. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Laster-tekla orokorra 'Hasi hemen' oharra irekitzeko. Formatuak honelako "
+#~ "itxura du '&lt;Control&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
+#~ "Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
+#~ "erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
+#~ "laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da "
+#~ "ekintzaren laster-teklarik egongo."
+
+#~ msgid ""
+#~ "The global keybinding for creating and displaying a new Note. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Laster-tekla orokorra ohar berria sortzeko eta bistaratzeko. Formatuak "
+#~ "honelako itxura du '&lt;Kontrol&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
+#~ "Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
+#~ "erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
+#~ "laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da "
+#~ "ekintzaren laster-teklarik egongo."
+
+#~ msgid ""
+#~ "The global keybinding for opening the Note Search dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Laster-tekla orokorra 'Ohar-bilaketa' leihoa irekitzeko. Formatuak "
+#~ "honelako itxura du '&lt;Control&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
+#~ "Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
+#~ "erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
+#~ "laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da "
+#~ "ekintzaren laster-teklarik egongo."
+
+#~ msgid ""
+#~ "The global keybinding for opening the Recent Changes dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Laster-tekla orokorra 'Azken aldaketak' leihoa irekitzeko. Formatuak "
+#~ "honelako itxura du '&lt;Control&gt;a' edo '&lt;Shift&gt;&lt;Alt&gt;F1'. "
+#~ "Analizatzailea nahiko eskuzabala da, letra maiuskulak eta minuskulak "
+#~ "erabiltzen uzten du, eta baita '&lt;Ctl&gt;' edo '&lt;Ctrl&gt;' bezalako "
+#~ "laburdurak ere. Aukera 'desgaituta' bezala zehazten baduzu, ez da "
+#~ "ekintzaren laster-teklarik egongo."
+
+#~ msgid "Hotkeys"
+#~ msgstr "Laster-teklak"
+
+#~ msgid "Use status _icon"
+#~ msgstr "Erabili egoera-_ikonoa"
+
+#~ msgid "Show icon in tray, which is the central place of control."
+#~ msgstr "Erakutsi ikonoa erretiluan, kontrolaren leku nagusia da."
+
+#~ msgid "Listen for _hotkeys"
+#~ msgstr "Entzun _laster-teklak"
+
+#~ msgid ""
+#~ "Hotkeys allow you to quickly access your notes from anywhere with a "
+#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+#~ "Alt&gt;N</b>"
+#~ msgstr ""
+#~ "Laster-teklek zure oharretara edonondik azkar sartzen lagunduko dizute. "
+#~ "Laster-tekla adibidea: <b>&lt;Kontrol&gt;&lt;Maius&gt;F11</b>, <b>&lt;"
+#~ "Alt&gt;N</b>"
+
+#~ msgid "Show notes _menu"
+#~ msgstr "Erakutsi oharren _menua"
+
+#~ msgid "Open \"_Start Here\""
+#~ msgstr "Ireki '_Hasi hemen'"
+
+#~ msgid "Create _new note"
+#~ msgstr "Sortu _ohar berria"
+
+#~ msgid "Open Search _Window"
+#~ msgstr "Ireki _bilaketa-leihoa"
+
+#~ msgid "Take notes"
+#~ msgstr "Hartu oharrak"
+
+#~ msgid " (new)"
+#~ msgstr " (berria)"
+
+#~ msgid "_About Gnote"
+#~ msgstr "Gnote-ri _buruz"
+
 #~ msgid "Pin"
 #~ msgstr "PINa"
 
@@ -2806,3 +2790,6 @@ msgstr "_Ireki esteka"
 
 #~ msgid "Decrease Font Size"
 #~ msgstr "Txikiagotu letra-tamaina"
+
+#~ msgid "Open \"Search _All Notes\""
+#~ msgstr "Ireki '_Bilatu ohar guztiak'"

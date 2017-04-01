@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
 namespace gnote {
 
 class MainWindow
-  : public utils::ForcedPresentWindow
+  : public Gtk::ApplicationWindow
   , public EmbeddableWidgetHost
 {
 public:
@@ -38,14 +38,16 @@ public:
   static MainWindow *present_active(const Note::Ptr & note);
   static MainWindow *present_in_new_window(const Note::Ptr & note, bool close_on_esacpe);
   static MainWindow *present_default(const Note::Ptr & note);
+  static bool use_client_side_decorations();
 
-  explicit MainWindow(const std::string & title);
+  explicit MainWindow(const Glib::ustring & title);
 
-  virtual void set_search_text(const std::string & value) = 0;
+  virtual void set_search_text(const Glib::ustring & value) = 0;
   virtual void show_search_bar(bool grab_focus = true) = 0;
   virtual void present_search() = 0;
   virtual void new_note() = 0;
   virtual void close_window() = 0;
+  virtual bool is_search() = 0;
 
   void close_on_escape(bool close_win)
     {
@@ -58,6 +60,8 @@ public:
 protected:
   virtual void present_note(const Note::Ptr & note) = 0;
 private:
+  static int s_use_client_side_decorations;
+
   bool m_close_on_esc;
 };
 

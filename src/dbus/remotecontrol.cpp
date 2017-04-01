@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -56,7 +56,7 @@ namespace gnote {
   {
   }
 
-  bool RemoteControl::AddTagToNote(const std::string& uri, const std::string& tag_name)
+  bool RemoteControl::AddTagToNote(const Glib::ustring& uri, const Glib::ustring& tag_name)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note) {
@@ -68,7 +68,7 @@ namespace gnote {
   }
 
 
-  std::string RemoteControl::CreateNamedNote(const std::string& linked_title)
+  Glib::ustring RemoteControl::CreateNamedNote(const Glib::ustring& linked_title)
   {
     NoteBase::Ptr note = m_manager.find(linked_title);
     if (note)
@@ -84,7 +84,7 @@ namespace gnote {
     return "";
   }
 
-  std::string RemoteControl::CreateNote()
+  Glib::ustring RemoteControl::CreateNote()
   {
     try {
       NoteBase::Ptr note = m_manager.create ();
@@ -96,7 +96,7 @@ namespace gnote {
     return "";
   }
 
-  bool RemoteControl::DeleteNote(const std::string& uri)
+  bool RemoteControl::DeleteNote(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note) {
@@ -108,7 +108,7 @@ namespace gnote {
 
   }
 
-  bool RemoteControl::DisplayNote(const std::string& uri)
+  bool RemoteControl::DisplayNote(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note) {
@@ -120,7 +120,7 @@ namespace gnote {
   }
 
 
-  bool RemoteControl::DisplayNoteWithSearch(const std::string& uri, const std::string& search)
+  bool RemoteControl::DisplayNoteWithSearch(const Glib::ustring& uri, const Glib::ustring& search)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note) {
@@ -137,11 +137,11 @@ namespace gnote {
 
   void RemoteControl::DisplaySearch()
   {
-    IGnote::obj().open_search_all();
+    IGnote::obj().open_search_all().present();
   }
 
 
-  void RemoteControl::DisplaySearchWithText(const std::string& search_text)
+  void RemoteControl::DisplaySearchWithText(const Glib::ustring& search_text)
   {
     MainWindow & recent_changes = IGnote::obj().get_main_window();
     recent_changes.set_search_text(search_text);
@@ -150,27 +150,27 @@ namespace gnote {
   }
 
 
-  std::string RemoteControl::FindNote(const std::string& linked_title)
+  Glib::ustring RemoteControl::FindNote(const Glib::ustring& linked_title)
   {
     NoteBase::Ptr note = m_manager.find(linked_title);
     return (!note) ? "" : note->uri();
   }
 
 
-  std::string RemoteControl::FindStartHereNote()
+  Glib::ustring RemoteControl::FindStartHereNote()
   {
     NoteBase::Ptr note = m_manager.find_by_uri(m_manager.start_note_uri());
     return (!note) ? "" : note->uri();
   }
 
 
-  std::vector< std::string > RemoteControl::GetAllNotesWithTag(const std::string& tag_name)
+  std::vector<Glib::ustring> RemoteControl::GetAllNotesWithTag(const Glib::ustring& tag_name)
   {
     Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
     if (!tag)
-      return std::vector< std::string >();
+      return std::vector<Glib::ustring>();
 
-    std::vector< std::string > tagged_note_uris;
+    std::vector<Glib::ustring> tagged_note_uris;
     std::list<NoteBase*> notes;
     tag->get_notes(notes);
     FOREACH(NoteBase *iter, notes) {
@@ -180,7 +180,7 @@ namespace gnote {
   }
 
 
-  int32_t RemoteControl::GetNoteChangeDate(const std::string& uri)
+  int32_t RemoteControl::GetNoteChangeDate(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
@@ -189,7 +189,7 @@ namespace gnote {
   }
 
 
-  std::string RemoteControl::GetNoteCompleteXml(const std::string& uri)
+  Glib::ustring RemoteControl::GetNoteCompleteXml(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
@@ -199,7 +199,7 @@ namespace gnote {
   }
 
 
-  std::string RemoteControl::GetNoteContents(const std::string& uri)
+  Glib::ustring RemoteControl::GetNoteContents(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
@@ -208,7 +208,7 @@ namespace gnote {
   }
 
 
-  std::string RemoteControl::GetNoteContentsXml(const std::string& uri)
+  Glib::ustring RemoteControl::GetNoteContentsXml(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
@@ -217,7 +217,7 @@ namespace gnote {
   }
 
 
-  int32_t RemoteControl::GetNoteCreateDate(const std::string& uri)
+  int32_t RemoteControl::GetNoteCreateDate(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
@@ -226,7 +226,7 @@ namespace gnote {
   }
 
 
-  std::string RemoteControl::GetNoteTitle(const std::string& uri)
+  Glib::ustring RemoteControl::GetNoteTitle(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
@@ -235,13 +235,13 @@ namespace gnote {
   }
 
 
-  std::vector< std::string > RemoteControl::GetTagsForNote(const std::string& uri)
+  std::vector<Glib::ustring> RemoteControl::GetTagsForNote(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
-      return std::vector< std::string >();
+      return std::vector<Glib::ustring>();
 
-    std::vector< std::string > tags;
+    std::vector<Glib::ustring> tags;
     std::list<Tag::Ptr> l;
     note->get_tags(l);
     for (std::list<Tag::Ptr>::const_iterator iter = l.begin();
@@ -252,7 +252,7 @@ namespace gnote {
   }
 
 
-bool RemoteControl::HideNote(const std::string& uri)
+bool RemoteControl::HideNote(const Glib::ustring& uri)
 {
   NoteBase::Ptr note = m_manager.find_by_uri(uri);
   if (!note)
@@ -270,25 +270,25 @@ bool RemoteControl::HideNote(const std::string& uri)
 }
 
 
-std::vector< std::string > RemoteControl::ListAllNotes()
+std::vector<Glib::ustring> RemoteControl::ListAllNotes()
 {
-  std::vector< std::string > uris;
-  FOREACH(const NoteBase::Ptr & iter, m_manager.get_notes()) {
+  std::vector<Glib::ustring> uris;
+  for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
     uris.push_back(iter->uri());
   }
   return uris;
 }
 
 
-bool RemoteControl::NoteExists(const std::string& uri)
+bool RemoteControl::NoteExists(const Glib::ustring& uri)
 {
   NoteBase::Ptr note = m_manager.find_by_uri(uri);
   return note != NULL;
 }
 
 
-bool RemoteControl::RemoveTagFromNote(const std::string& uri, 
-                                      const std::string& tag_name)
+bool RemoteControl::RemoveTagFromNote(const Glib::ustring& uri, 
+                                      const Glib::ustring& tag_name)
 {
   NoteBase::Ptr note = m_manager.find_by_uri(uri);
   if (!note)
@@ -301,14 +301,14 @@ bool RemoteControl::RemoveTagFromNote(const std::string& uri,
 }
 
 
-std::vector< std::string > RemoteControl::SearchNotes(const std::string& query,
+std::vector<Glib::ustring> RemoteControl::SearchNotes(const Glib::ustring& query,
                                                       const bool& case_sensitive)
 {
   if (query.empty())
-    return std::vector< std::string >();
+    return std::vector<Glib::ustring>();
 
   Search search(m_manager);
-  std::vector< std::string > list;
+  std::vector<Glib::ustring> list;
   Search::ResultsPtr results =
     search.search_notes(query, case_sensitive, notebooks::Notebook::Ptr());
 
@@ -322,8 +322,8 @@ std::vector< std::string > RemoteControl::SearchNotes(const std::string& query,
 }
 
 
-bool RemoteControl::SetNoteCompleteXml(const std::string& uri, 
-                                       const std::string& xml_contents)
+bool RemoteControl::SetNoteCompleteXml(const Glib::ustring& uri, 
+                                       const Glib::ustring& xml_contents)
 {
   NoteBase::Ptr note = m_manager.find_by_uri(uri);
   if(!note) {
@@ -335,8 +335,8 @@ bool RemoteControl::SetNoteCompleteXml(const std::string& uri,
 }
 
 
-bool RemoteControl::SetNoteContents(const std::string& uri, 
-                                    const std::string& text_contents)
+bool RemoteControl::SetNoteContents(const Glib::ustring& uri, 
+                                    const Glib::ustring& text_contents)
 {
   NoteBase::Ptr note = m_manager.find_by_uri(uri);
   if(!note) {
@@ -348,8 +348,8 @@ bool RemoteControl::SetNoteContents(const std::string& uri,
 }
 
 
-bool RemoteControl::SetNoteContentsXml(const std::string& uri, 
-                                       const std::string& xml_contents)
+bool RemoteControl::SetNoteContentsXml(const Glib::ustring& uri, 
+                                       const Glib::ustring& xml_contents)
 {
   NoteBase::Ptr note = m_manager.find_by_uri(uri);
   if(!note) {
@@ -360,7 +360,7 @@ bool RemoteControl::SetNoteContentsXml(const std::string& uri,
 }
 
 
-std::string RemoteControl::Version()
+Glib::ustring RemoteControl::Version()
 {
   return VERSION;
 }
@@ -393,9 +393,7 @@ void RemoteControl::on_note_saved(const NoteBase::Ptr & note)
 
 MainWindow & RemoteControl::present_note(const NoteBase::Ptr & note)
 {
-  MainWindow & window = IGnote::obj().get_window_for_note();
-  MainWindow::present_in(window, static_pointer_cast<Note>(note));
-  return window;
+  return *MainWindow::present_default(static_pointer_cast<Note>(note));
 }
 
 

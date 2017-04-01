@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,13 +47,13 @@ public:
     {
       return new BugzillaNoteAddin;
     }
-  static std::string images_dir();
+  static Glib::ustring images_dir();
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
 private:
   BugzillaNoteAddin();
-  void migrate_images(const std::string & old_images_dir);
+  void migrate_images(const Glib::ustring & old_images_dir);
 
   static const char * TAG_NAME;
 
@@ -62,7 +62,7 @@ private:
   void drop_uri_list(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, 
                      const Gtk::SelectionData & selection_data, guint time);
 
-  bool insert_bug (int x, int y, const std::string & uri, int id);
+  bool insert_bug (int x, int y, const Glib::ustring & uri, int id);
 
 };
 

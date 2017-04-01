@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,46 +29,46 @@
 #ifndef __SHARP_XMLWRITER_HPP_
 #define __SHARP_XMLWRITER_HPP_
 
-#include <string>
-
-#include <boost/noncopyable.hpp>
 
 #include <glib.h>
+#include <glibmm/ustring.h>
 #include <libxml/xmlwriter.h>
+
+#include "noncopyable.hpp"
 
 
 namespace sharp {
 
 
   inline
-  const xmlChar * to_xmlchar(const std::string & s)
+  const xmlChar * to_xmlchar(const Glib::ustring & s)
   {
     return s.empty() ? NULL : (const xmlChar *)s.c_str();
   }
 
   class XmlWriter
-    : public boost::noncopyable
+    : public gnote::NonCopyable
   {
   public:
     XmlWriter();
-    XmlWriter(const std::string & filename);
+    XmlWriter(const Glib::ustring & filename);
     XmlWriter(xmlDocPtr doc);
     ~XmlWriter();
     int write_start_document();
     int write_end_document();
-    int write_start_element(const std::string & prefix, const std::string & name, const std::string & nsuri);
+    int write_start_element(const Glib::ustring & prefix, const Glib::ustring & name, const Glib::ustring & nsuri);
     int write_full_end_element();
     int write_end_element();
-    int write_start_attribute(const std::string & name);
-    int write_attribute_string(const std::string & prefix,const std::string & local_name,
-                               const std::string & ns ,const std::string & value);
+    int write_start_attribute(const Glib::ustring & name);
+    int write_attribute_string(const Glib::ustring & prefix,const Glib::ustring & local_name,
+                               const Glib::ustring & ns ,const Glib::ustring & value);
     int write_end_attribute();
-    int write_raw(const std::string & raw);
+    int write_raw(const Glib::ustring & raw);
     int write_char_entity(gunichar ch);
-    int write_string(const std::string & );
+    int write_string(const Glib::ustring & );
 
     int close();
-    std::string to_string();
+    Glib::ustring to_string();
 
   private:
     xmlTextWriterPtr m_writer;

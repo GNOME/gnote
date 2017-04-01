@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -24,16 +24,13 @@
 #include <config.h>
 #endif
 
-#include <string.h>
-
-#include <boost/bind.hpp>
-#include <boost/format.hpp>
-
 #include <glibmm/i18n.h>
+#include <glibmm/stringutils.h>
 #include <gtkmm/separatormenuitem.h>
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "mainwindow.hpp"
 #include "noteeditor.hpp"
 #include "notemanager.hpp"
@@ -181,7 +178,7 @@ namespace gnote {
     get_buffer()->apply_tag (m_title_tag, get_title_start(), get_title_end());
 
     // NOTE: Use "(Untitled #)" for empty first lines...
-    std::string title = sharp::string_trim(get_title_start().get_slice (get_title_end()));
+    Glib::ustring title = sharp::string_trim(get_title_start().get_slice(get_title_end()));
     if (title.empty()) {
       title = get_unique_untitled ();
     }
@@ -191,13 +188,14 @@ namespace gnote {
   }
 
 
-  std::string NoteRenameWatcher::get_unique_untitled()
+  Glib::ustring NoteRenameWatcher::get_unique_untitled()
   {
     int new_num = manager().get_notes().size();
-    std::string temp_title;
+    Glib::ustring temp_title;
 
     while (true) {
-      temp_title = str(boost::format(_("(Untitled %1%)")) % ++new_num);
+      // TRANSLATORS: %1 is the placeholder for the number.
+      temp_title = Glib::ustring::compose(_("(Untitled %1)"), ++new_num);
       if (!manager().find (temp_title)) {
         return temp_title;
       }
@@ -208,7 +206,7 @@ namespace gnote {
 
   bool NoteRenameWatcher::update_note_title(bool only_warn)
   {
-    std::string title = get_window()->get_name();
+    Glib::ustring title = get_window()->get_name();
 
     NoteBase::Ptr existing = manager().find (title);
     if (existing && (existing != get_note())) {
@@ -221,18 +219,19 @@ namespace gnote {
     return true;
   }
 
-  void NoteRenameWatcher::show_name_clash_error(const std::string & title, bool only_warn)
+  void NoteRenameWatcher::show_name_clash_error(const Glib::ustring & title, bool only_warn)
   {
     // Select text from TitleStart to TitleEnd
     get_buffer()->move_mark (get_buffer()->get_selection_bound(), get_title_start());
     get_buffer()->move_mark (get_buffer()->get_insert(), get_title_end());
 
-    std::string message = str(boost::format(
+    Glib::ustring message = Glib::ustring::compose(
+                                // TRANSLATORS: %1 is the placeholder for the title.
                                 _("A note with the title "
-                                  "<b>%1%</b> already exists. "
+                                  "<b>%1</b> already exists. "
                                   "Please choose another name "
                                   "for this note before "
-                                  "continuing.")) % title);
+                                  "continuing."), title);
 
     /// Only pop open a warning dialog when one isn't already present
     /// Had to add this check because this method is being called twice.
@@ -299,19 +298,29 @@ namespace gnote {
     if(settings->get_boolean(Preferences::ENABLE_SPELLCHECKING)) {
       attach ();
     }
+    else {
+      m_enabled = false;
+    }
+
+    NoteWindow *window = get_note()->get_window();
+    window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteSpellChecker::on_note_window_foregrounded));
+    window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteSpellChecker::on_note_window_backgrounded));
+  }
+
+  std::map<int, Gtk::Widget*> NoteSpellChecker::get_actions_popover_widgets() const
+  {
+    std::map<int, Gtk::Widget*> widgets = NoteAddin::get_actions_popover_widgets();
+    if(m_enabled) {
+      utils::add_item_to_ordered_map(widgets, SPELL_CHECK_ORDER,
+        utils::create_popover_button("win.enable-spell-check", _("Check spelling")));
+    }
+    return widgets;
   }
 
   void NoteSpellChecker::attach ()
   {
     attach_checker();
-
-    m_enable_action = utils::CheckAction::create("EnableSpellCheck");
-    m_enable_action->set_label(_("Check spelling"));
-    m_enable_action->set_tooltip(_("Check spelling in this note"));
-    m_enable_action->checked(get_language() != LANG_DISABLED);
-    m_enable_action->signal_activate()
-      .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_spell_check_enable_action));
-    add_note_action(m_enable_action, 800);
+    get_note()->get_window()->signal_popover_widgets_changed();
   }
 
 
@@ -329,7 +338,7 @@ namespace gnote {
     m_tag_applied_cid = get_buffer()->signal_apply_tag().connect(
       sigc::mem_fun(*this, &NoteSpellChecker::tag_applied), false);  // connect before
 
-    std::string lang = get_language();
+    Glib::ustring lang = get_language();
 
     if (!m_obj_ptr && lang != LANG_DISABLED) {
       m_obj_ptr = gtk_spell_checker_new();
@@ -338,6 +347,10 @@ namespace gnote {
       }
       g_signal_connect(G_OBJECT(m_obj_ptr), "language-changed", G_CALLBACK(language_changed), this);
       gtk_spell_checker_attach(m_obj_ptr, get_window()->editor()->gobj());
+      m_enabled = true;
+    }
+    else {
+      m_enabled = false;
     }
   }
 
@@ -345,8 +358,8 @@ namespace gnote {
   void NoteSpellChecker::detach ()
   {
     detach_checker();
-    get_window()->remove_widget_action("EnableSpellCheck");
-    m_enable_action.reset();
+    m_enabled = false;
+    get_note()->get_window()->signal_popover_widgets_changed();
   }
 
 
@@ -420,7 +433,7 @@ namespace gnote {
 
   void NoteSpellChecker::on_language_changed(const gchar *lang)
   {
-    std::string tag_name = LANG_PREFIX;
+    Glib::ustring tag_name = LANG_PREFIX;
     tag_name += lang;
     Tag::Ptr tag = get_language_tag();
     if(tag && tag->name() != tag_name) {
@@ -437,7 +450,7 @@ namespace gnote {
     std::list<Tag::Ptr> tags;
     get_note()->get_tags(tags);
     FOREACH(Tag::Ptr tag, tags) {
-      if(sharp::string_index_of(tag->name(), LANG_PREFIX) == 0) {
+      if(tag->name().find(LANG_PREFIX) == 0) {
         lang_tag = tag;
         break;
       }
@@ -445,39 +458,57 @@ namespace gnote {
     return lang_tag;
   }
 
-  std::string NoteSpellChecker::get_language()
+  Glib::ustring NoteSpellChecker::get_language()
   {
     Tag::Ptr tag = get_language_tag();
-    std::string lang;
+    Glib::ustring lang;
     if(tag) {
       lang = sharp::string_replace_first(tag->name(), LANG_PREFIX, "");
     }
     return lang;
   }
 
-  void NoteSpellChecker::on_spell_check_enable_action()
+  void NoteSpellChecker::on_spell_check_enable_action(const Glib::VariantBase & state)
   {
     Tag::Ptr tag = get_language_tag();
     if(tag) {
       get_note()->remove_tag(tag);
     }
-    if(m_enable_action->checked()) {
+    Glib::Variant<bool> new_state = Glib::VariantBase::cast_dynamic<Glib::Variant<bool> >(state);
+    MainWindow *main_window = dynamic_cast<MainWindow*>(get_note()->get_window()->host());
+    MainWindowAction::Ptr enable_action = main_window->find_action("enable-spell-check");
+    enable_action->set_state(new_state);
+    if(new_state.get()) {
       attach_checker();
     }
     else {
-      std::string tag_name = LANG_PREFIX;
+      Glib::ustring tag_name = LANG_PREFIX;
       tag_name += LANG_DISABLED;
       tag = ITagManager::obj().get_or_create_tag(tag_name);
       get_note()->add_tag(tag);
       detach_checker();
     }
   }
+
+  void NoteSpellChecker::on_note_window_foregrounded()
+  {
+    MainWindow *win = dynamic_cast<MainWindow*>(get_note()->get_window()->host());
+    MainWindowAction::Ptr enable_action = win->find_action("enable-spell-check");
+    enable_action->change_state(Glib::Variant<bool>::create(m_enabled));
+    m_enable_cid = enable_action->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_spell_check_enable_action));
+  }
+
+  void NoteSpellChecker::on_note_window_backgrounded()
+  {
+    m_enable_cid.disconnect();
+  }
 #endif
   
   ////////////////////////////////////////////////////////////////////////
 
 
-  const char * NoteUrlWatcher::URL_REGEX = "((\\b((news|http|https|ftp|file|irc)://|mailto:|(www|ftp)\\.|\\S*@\\S*\\.)|(?<=^|\\s)/\\S+/|(?<=^|\\s)~/\\S+)\\S*\\b/?)";
+  const char * NoteUrlWatcher::URL_REGEX = "((\\b((news|http|https|ftp|file|irc|ircs)://|mailto:|(www|ftp)\\.|\\S*@\\S*\\.)|(?<=^|\\s)/\\S+/|(?<=^|\\s)~/\\S+)\\S*\\b/?)";
   bool NoteUrlWatcher::s_text_event_connected = false;
   
 
@@ -537,9 +568,9 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteUrlWatcher::on_popup_menu), false);
   }
 
-  std::string NoteUrlWatcher::get_url(const Gtk::TextIter & start, const Gtk::TextIter & end)
+  Glib::ustring NoteUrlWatcher::get_url(const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
-    std::string url = start.get_slice (end);
+    Glib::ustring url = start.get_slice(end);
 
     // FIXME: Needed because the file match is greedy and
     // eats a leading space.
@@ -558,7 +589,7 @@ namespace gnote {
     else if (Glib::str_has_prefix(url, "~/")) {
       const char * home = getenv("HOME");
       if(home) {
-        url = std::string("file://") + home + "/" +
+        url = Glib::ustring("file://") + home + "/" +
           sharp::string_substring(url, 2);
       }
     }
@@ -575,7 +606,7 @@ namespace gnote {
                               const Gtk::TextIter & start, const Gtk::TextIter & end)
 
   {
-    std::string url = get_url (start, end);
+    Glib::ustring url = get_url(start, end);
     try {
       utils::open_url (url);
     } 
@@ -711,7 +742,7 @@ namespace gnote {
     Gtk::TextIter start, end;
     m_url_tag->get_extents (click_iter, start, end);
 
-    std::string url = get_url (start, end);
+    Glib::ustring url = get_url(start, end);
 
     Glib::RefPtr<Gtk::Clipboard> clip 
       = get_window()->editor()->get_clipboard ("CLIPBOARD");
@@ -780,7 +811,7 @@ namespace gnote {
     Glib::ustring body = get_note()->text_content().lowercase();
     Glib::ustring match = text.lowercase();
 
-    return sharp::string_index_of(body, match) > -1;
+    return body.find(match) != Glib::ustring::npos;
   }
 
 
@@ -808,7 +839,7 @@ namespace gnote {
       return;
     }
 
-    std::string old_title_lower = deleted->get_title().lowercase();
+    Glib::ustring old_title_lower = deleted->get_title().lowercase();
 
     // Turn all link:internal to link:broken for the deleted note.
     utils::TextTagEnumerator enumerator(get_buffer(), m_link_tag);
@@ -886,8 +917,9 @@ namespace gnote {
              hit.key().c_str(), hit.start(), hit.end());
 
     get_note()->get_tag_table()->foreach(
-      boost::bind(sigc::mem_fun(*this, &NoteLinkWatcher::remove_link_tag),
-                  _1, title_start, title_end));
+      [this, title_start, title_end](const Glib::RefPtr<Gtk::TextTag> & tag) {
+        remove_link_tag(tag, title_start, title_end);
+    });
     get_buffer()->apply_tag (m_link_tag, title_start, title_end);
   }
 
@@ -909,7 +941,7 @@ namespace gnote {
     int idx = 0;
 
     while (true) {
-      idx = sharp::string_index_of(buffer_text, find_title_lower, idx);
+      idx = buffer_text.find(find_title_lower, idx);
       if (idx < 0)
         break;
 
@@ -977,7 +1009,7 @@ namespace gnote {
   {
     if (tag->property_name() != get_note()->get_tag_table()->get_link_tag()->property_name())
       return;
-    std::string link_name = start.get_text (end);
+    Glib::ustring link_name = start.get_text (end);
     NoteBase::Ptr link = manager().find(link_name);
     if(!link)
         unhighlight_in_block(start, end);
@@ -988,7 +1020,7 @@ namespace gnote {
                                             const Gtk::TextIter & start,
                                             const Gtk::TextIter & end)
   {
-    std::string link_name = start.get_text (end);
+    Glib::ustring link_name = start.get_text (end);
     NoteBase::Ptr link = manager().find(link_name);
 
     if (!link) {
@@ -1340,7 +1372,7 @@ namespace gnote {
 #endif
 
 
-  void NoteTagsWatcher::on_tag_removed(const NoteBase::Ptr&, const std::string& tag_name)
+  void NoteTagsWatcher::on_tag_removed(const NoteBase::Ptr&, const Glib::ustring& tag_name)
   {
     Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag->popularity() : 0);

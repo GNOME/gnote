@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,10 @@
  */
 
 
-#include <fstream>
-
 #include <glibmm/i18n.h>
+#include <glibmm/main.h>
+#include <glibmm/miscutils.h>
+#include <glibmm/regex.h>
 
 #include "debug.hpp"
 #include "notedirectorywatcherapplicationaddin.hpp"
@@ -101,7 +102,7 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
     return;
   }
 
-  std::string note_id = get_id(file->get_path());
+  Glib::ustring note_id = get_id(file->get_path());
 
   DBG_OUT("NoteDirectoryWatcher: %s has %d (note_id=%s)", file->get_path().c_str(), int(event_type), note_id.c_str());
 
@@ -109,7 +110,7 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
   // deletes.  Record the date.
   m_lock.lock();
   try {
-    std::map<std::string, NoteFileChangeRecord>::iterator record = m_file_change_records.find(note_id);
+    auto record = m_file_change_records.find(note_id);
     if(record == m_file_change_records.end()) {
       m_file_change_records[note_id] = NoteFileChangeRecord();
       record = m_file_change_records.find(note_id);
@@ -144,12 +145,12 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
   timeout->attach();
 }
 
-std::string NoteDirectoryWatcherApplicationAddin::get_id(const std::string & path)
+Glib::ustring NoteDirectoryWatcherApplicationAddin::get_id(const Glib::ustring & path)
 {
-  std::string dir_separator;
+  Glib::ustring dir_separator;
   dir_separator += G_DIR_SEPARATOR;
-  int last_slash = sharp::string_last_index_of(path, std::string(dir_separator));
-  int first_period = sharp::string_index_of(path, ".", last_slash);
+  int last_slash = sharp::string_last_index_of(path, dir_separator);
+  int first_period = path.find(".", last_slash);
 
   return path.substr(last_slash + 1, first_period - last_slash - 1);
 }
@@ -158,36 +159,35 @@ bool NoteDirectoryWatcherApplicationAddin::handle_timeout()
 {
   m_lock.lock();
   try {
-    std::vector<std::string> keysToRemove(m_file_change_records.size());
+    std::vector<Glib::ustring> keysToRemove(m_file_change_records.size());
 
-    for(std::map<std::string, NoteFileChangeRecord>::iterator iter = m_file_change_records.begin();
-        iter != m_file_change_records.end(); ++iter) {
-      DBG_OUT("NoteDirectoryWatcher: Handling (timeout) %s", iter->first.c_str());
+    for(auto iter : m_file_change_records) {
+      DBG_OUT("NoteDirectoryWatcher: Handling (timeout) %s", iter.first.c_str());
 
       // Check that Note.Saved event didn't occur within (check-interval -2) seconds of last write
-      if(m_note_save_times.find(iter->first) != m_note_save_times.end() &&
-          std::abs((m_note_save_times[iter->first] - iter->second.last_change).total_seconds()) <= (m_check_interval - 2)) {
+      if(m_note_save_times.find(iter.first) != m_note_save_times.end() &&
+          std::abs((m_note_save_times[iter.first] - iter.second.last_change).total_seconds()) <= (m_check_interval - 2)) {
         DBG_OUT("NoteDirectoryWatcher: Ignoring (timeout) because it was probably a Gnote write");
-        keysToRemove.push_back(iter->first);
+        keysToRemove.push_back(iter.first);
         continue;
       }
       // TODO: Take some actions to clear note_save_times? Not a large structure...
 
-      sharp::DateTime last_change(iter->second.last_change);
+      sharp::DateTime last_change(iter.second.last_change);
       if(sharp::DateTime::now() > last_change.add_seconds(4)) {
-        if(iter->second.deleted) {
-          delete_note(iter->first);
+        if(iter.second.deleted) {
+          delete_note(iter.first);
         }
         else {
-          add_or_update_note(iter->first);
+          add_or_update_note(iter.first);
         }
 
-        keysToRemove.push_back(iter->first);
+        keysToRemove.push_back(iter.first);
       }
     }
 
-    for(std::vector<std::string>::iterator note_id = keysToRemove.begin(); note_id != keysToRemove.end(); ++note_id) {
-      m_file_change_records.erase(*note_id);
+    for(auto note_id : keysToRemove) {
+      m_file_change_records.erase(note_id);
     }
   }
   catch(...)
@@ -197,11 +197,11 @@ bool NoteDirectoryWatcherApplicationAddin::handle_timeout()
   return false;
 }
 
-void NoteDirectoryWatcherApplicationAddin::delete_note(const std::string & note_id)
+void NoteDirectoryWatcherApplicationAddin::delete_note(const Glib::ustring & note_id)
 {
   DBG_OUT("NoteDirectoryWatcher: deleting %s because file deleted.", note_id.c_str());
 
-  std::string note_uri = make_uri(note_id);
+  Glib::ustring note_uri = make_uri(note_id);
 
   gnote::NoteBase::Ptr note_to_delete = note_manager().find_by_uri(note_uri);
   if(note_to_delete != 0) {
@@ -212,7 +212,7 @@ void NoteDirectoryWatcherApplicationAddin::delete_note(const std::string & note_
   }
 }
 
-void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string & note_id)
+void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustring & note_id)
 {
   const Glib::ustring & note_path = Glib::build_filename(note_manager().notes_dir(), note_id + ".note");
   if (!sharp::file_exists(note_path)) {
@@ -220,18 +220,11 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
     return;
   }
 
-  std::string noteXml;
+  Glib::ustring noteXml;
   try {
-    std::ifstream reader;
-    reader.exceptions(std::ios_base::badbit);
-    reader.open(note_path.c_str());
-    std::string line;
-    while(std::getline(reader, line)) {
-      noteXml += line + '\n';
-    }
-    reader.close();
+    noteXml = sharp::file_read_all_text(note_path);
   }
-  catch(std::ios::failure & e) {
+  catch(sharp::Exception & e) {
     /* TRANSLATORS: first %s is file name, second is error */
     ERR_OUT(_("NoteDirectoryWatcher: Update aborted, error reading %s: %s"), note_path.c_str(), e.what());
     return;
@@ -242,7 +235,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
     return;
   }
 
-  std::string note_uri = make_uri(note_id);
+  Glib::ustring note_uri = make_uri(note_id);
 
   gnote::NoteBase::Ptr note = note_manager().find_by_uri(note_uri);
 
@@ -252,7 +245,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
     is_new_note = true;
     DBG_OUT("NoteDirectoryWatcher: Adding %s because file changed.", note_id.c_str());
 
-    std::string title;
+    Glib::ustring title;
     Glib::RefPtr<Glib::Regex> regex = Glib::Regex::create("<title>([^<]+)</title>", Glib::REGEX_MULTILINE);
     Glib::MatchInfo match_info;
     if(regex->match(noteXml, match_info)) {
@@ -294,7 +287,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const std::string 
   }
 }
 
-std::string NoteDirectoryWatcherApplicationAddin::make_uri(const std::string & note_id)
+Glib::ustring NoteDirectoryWatcherApplicationAddin::make_uri(const Glib::ustring & note_id)
 {
   return "note://gnote/" + note_id;
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2014 Aurimas Cernius
+ * Copyright (C) 2012,2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,53 +29,101 @@
 
 #include "sharp/string.hpp"
 
-#include <glibmm.h>
-#include <boost/algorithm/string/case_conv.hpp>
-#include <boost/algorithm/string/classification.hpp>
-#include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/algorithm/string/split.hpp>
-#include <boost/algorithm/string/trim.hpp>
+#include <glibmm/regex.h>
 
 #include "debug.hpp"
 
 namespace sharp {
 
 
-  std::string string_replace_first(const std::string & source, const std::string & from,
-                             const std::string & with)
+  Glib::ustring string_replace_first(const Glib::ustring & source, const Glib::ustring & what,
+                                     const Glib::ustring & with)
   {
-    return boost::replace_first_copy(source, from, with);
+    if(source.empty() || what.empty() || what == with) {
+      return source;
+    }
+
+    Glib::ustring result;
+    auto pos = source.find(what);
+    if(pos != Glib::ustring::npos) {
+      result += source.substr(0, pos);
+      result += with;
+      result += source.substr(pos + what.size());
+    }
+    else {
+      result = source;
+    }
+
+    return result;
   }
 
-  std::string string_replace_all(const std::string & source, const std::string & from,
-                                 const std::string & with)
+  Glib::ustring string_replace_all(const Glib::ustring & source, const Glib::ustring & what,
+                                   const Glib::ustring & with)
   {
-    return boost::replace_all_copy(source, from, with);
+    if(source.empty() || what.empty() || what == with) {
+      return source;
+    }
+
+    Glib::ustring result;
+    Glib::ustring::size_type start = 0;
+    do {
+      auto pos = source.find(what, start);
+      if(pos != Glib::ustring::npos) {
+        result += source.substr(start, pos - start);
+        result += with;
+        start = pos + what.size();
+      }
+      else {
+        result += source.substr(start);
+        start = source.size();
+      }
+    }
+    while(start < source.size());
+
+    return result;
   }
 
-  std::string string_replace_regex(const std::string & source,
-                                   const std::string & regex,
-                                   const std::string & with)
+  Glib::ustring string_replace_regex(const Glib::ustring & source,
+                                     const Glib::ustring & regex,
+                                     const Glib::ustring & with)
   {
     Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex);
     return re->replace(source, 0, with, static_cast<Glib::RegexMatchFlags>(0));
   }
   
-  bool string_match_iregex(const std::string & source, const std::string & regex)  
+  bool string_match_iregex(const Glib::ustring & source, const Glib::ustring & regex)
   {
     Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex, Glib::REGEX_CASELESS);
     Glib::MatchInfo match_info;
-    if(re->match(source)) {
+    if(re->match(source, match_info)) {
       return match_info.fetch(0) == source;
     }
     return false;
   }
 
-  void string_split(std::vector<std::string> & split, const std::string & source,
-                    const char * delimiters)
+  void string_split(std::vector<Glib::ustring> & split, const Glib::ustring & source,
+                    const Glib::ustring & delimiters)
   {
-    boost::split(split, source, boost::is_any_of(delimiters));
+    Glib::ustring::size_type start = 0;
+    while(start < source.size()) {
+      auto pos = source.find_first_of(delimiters, start);
+      if(pos == start) {
+        split.push_back("");
+      }
+      else if(pos == Glib::ustring::npos) {
+        split.push_back(source.substr(start));
+        break;
+      }
+      else {
+        split.push_back(source.substr(start, pos - start));
+      }
+      if(pos == source.size() - 1) {
+        // match at the last char in source, meaning empty part in the end
+        split.push_back("");
+        break;
+      }
+      start = pos + 1;
+    }
   }
 
   Glib::ustring string_substring(const Glib::ustring & source, int start)
@@ -84,71 +132,76 @@ namespace sharp {
     if(source.size() <= (unsigned int)start) {
       return "";
     }
-    return Glib::ustring(source, start, std::string::npos);
+    return Glib::ustring(source, start, Glib::ustring::npos);
   }
 
   Glib::ustring string_substring(const Glib::ustring & source, int start, int len)
   {
+    if(source.size() <= (unsigned int)start) {
+      return "";
+    }
     return Glib::ustring(source, start, len);
   }
 
-  std::string string_trim(const std::string & source)
+  Glib::ustring string_trim(const Glib::ustring & source)
   {
-    return boost::trim_copy(source);
+    if(source.empty()) {
+      return source;
+    }
+
+    auto start = source.begin();
+    while(start != source.end()) {
+      if(g_unichar_isspace(*start)) {
+        ++start;
+      }
+      else {
+        break;
+      }
+    }
+
+    if(start == source.end()) {
+      return "";
+    }
+
+    auto end = source.end();
+    --end;
+    while(end != start) {
+      if(g_unichar_isspace(*end)) {
+        --end;
+      }
+      else {
+        ++end;
+        break;
+      }
+    }
+
+    if(start == end) {
+      // this happens when there is only one non-white space character
+      ++end;
+    }
+
+    return Glib::ustring(start, end);
   }  
 
-  std::string string_trim(const std::string & source, const char * set_of_char)
+  Glib::ustring string_trim(const Glib::ustring & source, const Glib::ustring & set_of_char)
   {
-    return boost::trim_copy_if(source, boost::is_any_of(set_of_char));
+    if(source.empty()) {
+      return source;
+    }
+
+    auto start = source.find_first_not_of(set_of_char);
+    auto end = source.find_last_not_of(set_of_char) + 1;
+    return source.substr(start, end - start);
   }
 
-  int string_last_index_of(const std::string & source, const std::string & search)
+  int string_last_index_of(const Glib::ustring & source, const Glib::ustring & search)
   {
     if(search.empty()) {
         // Return last index, unless the source is the empty string, return 0
         return source.empty() ? 0 : source.size() - 1;
     }
-    boost::iterator_range<std::string::const_iterator> iter
-      = boost::find_last(source, search);
-    if(iter.begin() == source.end()) {
-      // NOT FOUND
-      return -1;
-    }
-    return iter.begin() - source.begin();
-  }
 
-
-  int string_index_of(const std::string & source, const std::string & search)
-  {
-    // C# returns index 0 if looking for the empty string
-    if(search.empty()) {
-      return 0;
-    }
-    boost::iterator_range<std::string::const_iterator> iter
-      = boost::find_first(source, search);
-    if(iter.begin() == source.end()) {
-      // NOT FOUND
-      return -1;
-    }
-    return iter.begin() - source.begin();
-  }
-
-
-  int string_index_of(const std::string & source, const std::string & search, int start_at)
-  {
-    std::string source2(source.begin() + start_at, source.end());
-    boost::iterator_range<std::string::const_iterator> iter
-      = boost::find_first(source2, search);
-    // C# returns index 0 if looking for the empty string
-    if(search.empty()) {
-      // Note: check this after 'find_first' so boost will throw an exception if start_at > source.size()
-      return start_at;
-    }
-    if(iter.begin() == source2.end()) {
-      // NOT FOUND
-      return -1;
-    }
-    return iter.begin() - source2.begin() + start_at;
+    return source.rfind(search);
   }
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,10 +39,10 @@ namespace sync {
   private:
     explicit SilentUI(NoteManagerBase &);
     virtual void sync_state_changed(SyncState state) override;
-    virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) override;
+    virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) override;
     virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<std::string> & noteUpdateTitles) override;
+                                        const std::list<Glib::ustring> & noteUpdateTitles) override;
     virtual void present_ui() override;
     void on_connecting();
     void on_idle();

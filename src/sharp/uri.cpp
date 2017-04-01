@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -24,7 +25,7 @@
  */
 
 
-#include <glibmm.h>
+#include <glibmm/stringutils.h>
 
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
@@ -45,32 +46,32 @@ namespace sharp {
 
   /// TODO this function does not behave as expected.
   // it does not handle local_path for non file URI.
-  std::string Uri::local_path() const
+  Glib::ustring Uri::local_path() const
   {
     if(!is_file()) {
       return m_uri;
     }
-    return string_replace_first(m_uri, std::string(FILE_URI_SCHEME) + "//", "");
+    return string_replace_first(m_uri, Glib::ustring(FILE_URI_SCHEME) + "//", "");
   }
 
-  bool Uri::_is_scheme(const std::string & scheme) const
+  bool Uri::_is_scheme(const Glib::ustring & scheme) const
   {
     return Glib::str_has_prefix(m_uri, scheme);
   }
 
-  std::string Uri::get_host() const
+  Glib::ustring Uri::get_host() const
   {
-    std::string host;
+    Glib::ustring host;
 
     if(!is_file()) {
       if(_is_scheme(HTTP_URI_SCHEME) || _is_scheme(HTTPS_URI_SCHEME)
          || _is_scheme(FTP_URI_SCHEME)) {
-        int idx = string_index_of(m_uri, "://");
-        if(idx != -1) {
-          std::string sub(m_uri.begin() + idx + 3, m_uri.end());
-          idx = string_index_of(sub, "/");
-          if(idx != -1) {
-            sub.erase(sub.begin() + idx, sub.end());
+        auto idx = m_uri.find("://");
+        if(idx != Glib::ustring::npos) {
+          Glib::ustring sub(m_uri.substr(idx + 3));
+          idx = sub.find("/");
+          if(idx != Glib::ustring::npos) {
+            sub.erase(idx);
             host = sub;
           }
         }
@@ -81,14 +82,14 @@ namespace sharp {
   }
 
 
-  std::string Uri::get_absolute_uri() const
+  Glib::ustring Uri::get_absolute_uri() const
   {
     return m_uri;
   }
 
 
   /** this is a very minimalistic implementation */
-  std::string Uri::escape_uri_string(const std::string &s)
+  Glib::ustring Uri::escape_uri_string(const Glib::ustring &s)
   {
     return string_replace_all(s, " ", "%20");
   }

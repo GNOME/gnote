@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,9 +21,7 @@
 #ifndef __NOTE_OF_THE_DAY_HPP_
 #define __NOTE_OF_THE_DAY_HPP_
 
-#include <string>
-
-#include <glibmm.h>
+#include <glibmm/date.h>
 
 #include "sharp/dynamicmodule.hpp"
 #include "applicationaddin.hpp"
@@ -44,22 +42,20 @@ public:
   static gnote::NoteBase::Ptr create(gnote::NoteManager & manager,
                                  const Glib::Date & date);
   static void cleanup_old(gnote::NoteManager & manager);
-  static std::string get_content(const Glib::Date & date,
+  static Glib::ustring get_content(const Glib::Date & date,
                                  const gnote::NoteManager & manager);
   static gnote::NoteBase::Ptr get_note_by_date(
                             gnote::NoteManager & manager,
                             const Glib::Date & date);
-  static std::string get_template_content(
-                       const std::string & title);
-  static std::string get_title(const Glib::Date & date);
+  static Glib::ustring get_template_content(const Glib::ustring & title);
+  static Glib::ustring get_title(const Glib::Date & date);
   static bool has_changed(const gnote::NoteBase::Ptr & note);
 
   static const Glib::ustring s_template_title;
 
 private:
 
-  static std::string get_content_without_title(
-                       const std::string & content);
+  static Glib::ustring get_content_without_title(const Glib::ustring & content);
 
   static const Glib::ustring s_title_prefix;
 };

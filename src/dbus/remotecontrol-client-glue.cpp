@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ RemoteControl_proxy::RemoteControl_proxy(const Glib::RefPtr<Gio::DBus::Connectio
 {
 }
 
-std::string RemoteControl_proxy::CreateNamedNote(const std::string & linked_title)
+Glib::ustring RemoteControl_proxy::CreateNamedNote(const Glib::ustring & linked_title)
 {
   Glib::VariantContainerBase result = call_remote("CreateNamedNote",
     Glib::VariantContainerBase::create_tuple(Glib::Variant<Glib::ustring>::create(linked_title)));
@@ -44,7 +44,7 @@ std::string RemoteControl_proxy::CreateNamedNote(const std::string & linked_titl
   return res.get();
 }
 
-std::string RemoteControl_proxy::CreateNote()
+Glib::ustring RemoteControl_proxy::CreateNote()
 {
   Glib::VariantContainerBase result = call_remote("CreateNote", Glib::VariantContainerBase());
   if(result.get_n_children() == 0) {
@@ -55,7 +55,7 @@ std::string RemoteControl_proxy::CreateNote()
   return res.get();
 }
 
-bool RemoteControl_proxy::DisplayNote(const std::string & uri)
+bool RemoteControl_proxy::DisplayNote(const Glib::ustring & uri)
 {
   Glib::VariantContainerBase result = call_remote("DisplayNote",
     Glib::VariantContainerBase::create_tuple(Glib::Variant<Glib::ustring>::create(uri)));
@@ -67,7 +67,7 @@ bool RemoteControl_proxy::DisplayNote(const std::string & uri)
   return res.get();
 }
 
-bool RemoteControl_proxy::DisplayNoteWithSearch(const std::string & uri, const std::string & search)
+bool RemoteControl_proxy::DisplayNoteWithSearch(const Glib::ustring & uri, const Glib::ustring & search)
 {
   std::vector<Glib::VariantBase> parameters;
   parameters.push_back(Glib::Variant<Glib::ustring>::create(uri));
@@ -87,7 +87,7 @@ void RemoteControl_proxy::DisplaySearch()
   call_remote("DisplaySearch", Glib::VariantContainerBase());
 }
 
-std::string RemoteControl_proxy::FindNote(const std::string & linked_title)
+Glib::ustring RemoteControl_proxy::FindNote(const Glib::ustring & linked_title)
 {
   Glib::VariantContainerBase result = call_remote("FindNote",
     Glib::VariantContainerBase::create_tuple(Glib::Variant<Glib::ustring>::create(linked_title)));
@@ -99,7 +99,7 @@ std::string RemoteControl_proxy::FindNote(const std::string & linked_title)
   return res.get();
 }
 
-std::string RemoteControl_proxy::FindStartHereNote()
+Glib::ustring RemoteControl_proxy::FindStartHereNote()
 {
   Glib::VariantContainerBase result = call_remote("FindStartHereNote", Glib::VariantContainerBase());
   if(result.get_n_children() == 0) {
@@ -110,12 +110,12 @@ std::string RemoteControl_proxy::FindStartHereNote()
   return res.get();
 }
 
-void RemoteControl_proxy::DisplaySearchWithText(const std::string & search_text)
+void RemoteControl_proxy::DisplaySearchWithText(const Glib::ustring & search_text)
 {
   call_remote("DisplaySearchWithText", Glib::VariantContainerBase::create_tuple(Glib::Variant<Glib::ustring>::create(search_text)));
 }
 
-bool RemoteControl_proxy::SetNoteCompleteXml(const std::string & uri, const std::string & xml_contents)
+bool RemoteControl_proxy::SetNoteCompleteXml(const Glib::ustring & uri, const Glib::ustring & xml_contents)
 {
   std::vector<Glib::VariantBase> parameters;
   parameters.push_back(Glib::Variant<Glib::ustring>::create(uri));

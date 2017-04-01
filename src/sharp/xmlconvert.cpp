@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -24,20 +25,18 @@
 
 
 
-#include <string>
-
 #include "sharp/xmlconvert.hpp"
 
 #include "debug.hpp"
 
 namespace sharp {
 
-  DateTime XmlConvert::to_date_time(const std::string & date)
+  DateTime XmlConvert::to_date_time(const Glib::ustring & date)
   {
     return DateTime::from_iso8601(date);
   }
 
-  std::string XmlConvert::to_string(const DateTime & date)
+  Glib::ustring XmlConvert::to_string(const DateTime & date)
   {
     return date.to_iso8601();
   }

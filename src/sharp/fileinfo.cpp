@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -24,7 +24,7 @@
  */
 
 
-#include <glibmm.h>
+#include <glibmm/miscutils.h>
 #include <giomm/file.h>
 #include <giomm/fileinfo.h>
 #include "sharp/fileinfo.hpp"
@@ -33,34 +33,34 @@
 namespace sharp {
 
 
-  FileInfo::FileInfo(const std::string & s)
+  FileInfo::FileInfo(const Glib::ustring & s)
     : m_path(s)
   {
   }
 
 
-  std::string FileInfo::get_name() const
+  Glib::ustring FileInfo::get_name() const
   {
     return Glib::path_get_basename(m_path);
   }
 
 
-  std::string FileInfo::get_extension() const
+  Glib::ustring FileInfo::get_extension() const
   {
-    const std::string & name = get_name();
+    const Glib::ustring name = get_name();
 
     if ("." == name || ".." == name)
       return "";
 
-    const std::string::size_type pos = name.find_last_of('.');
-    return (std::string::npos == pos) ? "" : std::string(name, pos);
+    const Glib::ustring::size_type pos = name.find_last_of('.');
+    return (Glib::ustring::npos == pos) ? "" : Glib::ustring(name, pos);
   }
 
 
-  DateTime file_modification_time(const std::string &path)
+  DateTime file_modification_time(const Glib::ustring &path)
   {
     Glib::RefPtr<Gio::FileInfo> file_info = Gio::File::create_for_path(path)->query_info(
-        G_FILE_ATTRIBUTE_TIME_MODIFIED + std::string(",") + G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC);
+        G_FILE_ATTRIBUTE_TIME_MODIFIED + Glib::ustring(",") + G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC);
     if(file_info)
       return DateTime(file_info->modification_time());
     return DateTime();

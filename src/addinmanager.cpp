@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -22,11 +22,9 @@
 
 #include <config.h>
 
-#include <boost/bind.hpp>
-#include <boost/checked_delete.hpp>
-
 #include <glib.h>
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 
 #include "sharp/map.hpp"
 #include "sharp/directory.hpp"
@@ -36,6 +34,7 @@
 #include "addinmanager.hpp"
 #include "addinpreferencefactory.hpp"
 #include "debug.hpp"
+#include "iactionmanager.hpp"
 #include "ignote.hpp"
 #include "preferences.hpp"
 #include "preferencetabaddin.hpp"
@@ -76,13 +75,13 @@ namespace gnote {
 
 namespace {
   template <typename AddinType>
-  std::string get_id_for_addin(const AbstractAddin & addin, const std::map<std::string, AddinType*> & addins)
+  Glib::ustring get_id_for_addin(const AbstractAddin & addin, const std::map<Glib::ustring, AddinType*> & addins)
   {
     const AddinType *plugin = dynamic_cast<const AddinType*>(&addin);
     if(plugin != NULL) {
-      for(typename std::map<std::string, AddinType*>::const_iterator iter = addins.begin(); iter != addins.end(); ++iter) {
-        if(iter->second == plugin) {
-          return iter->first;
+      for(auto iter : addins) {
+        if(iter.second == plugin) {
+          return iter.first;
         }
       }
     }
@@ -91,7 +90,7 @@ namespace {
 }
 
 
-  AddinManager::AddinManager(NoteManager & note_manager, const std::string & conf_dir)
+  AddinManager::AddinManager(NoteManager & note_manager, const Glib::ustring & conf_dir)
     : m_note_manager(note_manager)
     , m_gnote_conf_dir(conf_dir)
   {
@@ -123,7 +122,7 @@ namespace {
     }
   }
 
-  void AddinManager::add_note_addin_info(const std::string & id,
+  void AddinManager::add_note_addin_info(const Glib::ustring & id,
                                          const sharp::DynamicModule * dmod)
   {
     {
@@ -145,7 +144,7 @@ namespace {
     load_note_addin(id, f);
   }
 
-  void AddinManager::load_note_addin(const std::string & id, sharp::IfaceFactoryBase *const f)
+  void AddinManager::load_note_addin(const Glib::ustring & id, sharp::IfaceFactoryBase *const f)
   {
     m_note_addin_infos.insert(std::make_pair(id, f));
     for(NoteAddinMap::iterator iter = m_note_addins.begin();
@@ -166,7 +165,7 @@ namespace {
     }
   }
 
-  void AddinManager::erase_note_addin_info(const std::string & id)
+  void AddinManager::erase_note_addin_info(const Glib::ustring & id)
   {
     {
       const IdInfoMap::iterator iter = m_note_addin_infos.find(id);
@@ -198,24 +197,24 @@ namespace {
     }
   }
 
-  void AddinManager::load_addin_infos(const std::string & global_path,
-                                      const std::string & local_path)
+  void AddinManager::load_addin_infos(const Glib::ustring & global_path,
+                                      const Glib::ustring & local_path)
   {
     load_addin_infos(global_path);
     load_addin_infos(local_path);
   }
 
-  void AddinManager::load_addin_infos(const std::string & path)
+  void AddinManager::load_addin_infos(const Glib::ustring & path)
   {
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(path, ".desktop", files);
-    for(std::list<std::string>::iterator iter = files.begin(); iter != files.end(); ++iter) {
+    for(auto file : files) {
       try {
-        AddinInfo addin_info(*iter);
+        AddinInfo addin_info(file);
         if(!addin_info.validate(LIBGNOTE_RELEASE, LIBGNOTE_VERSION_INFO)) {
           continue;
         }
-        std::string module = Glib::build_filename(path, addin_info.addin_module());
+        Glib::ustring module = Glib::build_filename(path, addin_info.addin_module());
         if(sharp::file_exists(module + "." + G_MODULE_SUFFIX)) {
           addin_info.addin_module(module);
           m_addin_infos[addin_info.id()] = addin_info;
@@ -225,12 +224,12 @@ namespace {
         }
       }
       catch(std::exception & e) {
-        ERR_OUT(_("Failed to load addin info for %s: %s"), iter->c_str(), e.what());
+        ERR_OUT(_("Failed to load addin info for %s: %s"), file.c_str(), e.what());
       }
     }
   }
 
-  void AddinManager::get_enabled_addins(std::list<std::string> & addins) const
+  void AddinManager::get_enabled_addins(std::list<Glib::ustring> & addins) const
   {
     bool global_addins_prefs_loaded = true;
     Glib::KeyFile global_addins_prefs;
@@ -280,11 +279,11 @@ namespace {
    
     REGISTER_APP_ADDIN(notebooks::NotebookApplicationAddin);
 
-    std::string global_path = LIBDIR "/" PACKAGE_NAME "/addins/" PACKAGE_VERSION;
-    std::string local_path = m_gnote_conf_dir + "/addins";
+    Glib::ustring global_path = LIBDIR "/" PACKAGE_NAME "/addins/" PACKAGE_VERSION;
+    Glib::ustring local_path = m_gnote_conf_dir + "/addins";
 
     load_addin_infos(global_path, local_path);
-    std::list<std::string> enabled_addins;
+    std::list<Glib::ustring> enabled_addins;
     get_enabled_addins(enabled_addins);
     m_module_manager.load_modules(enabled_addins);
 
@@ -292,7 +291,7 @@ namespace {
     for(sharp::ModuleMap::const_iterator iter = modules.begin();
         iter != modules.end(); ++iter) {
 
-      const std::string & mod_id = get_info_for_module(iter->first).id();
+      Glib::ustring mod_id = get_info_for_module(iter->first).id();
       sharp::DynamicModule* dmod = iter->second;
       if(!dmod) {
         continue;
@@ -303,7 +302,7 @@ namespace {
     }
   }
 
-  void AddinManager::add_module_addins(const std::string & mod_id, sharp::DynamicModule * dmod)
+  void AddinManager::add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod)
   {
     sharp::IfaceFactoryBase * f = dmod->query_interface(NoteAddin::IFACE_NAME);
     if(f && dmod->is_enabled()) {
@@ -335,7 +334,7 @@ namespace {
     }
   }
 
-  AddinInfo AddinManager::get_info_for_module(const std::string & module) const
+  AddinInfo AddinManager::get_info_for_module(const Glib::ustring & module) const
   {
     for(AddinInfoMap::const_iterator iter = m_addin_infos.begin();
         iter != m_addin_infos.end(); ++iter) {
@@ -373,8 +372,21 @@ namespace {
     }
   }
 
+  std::vector<NoteAddin*> AddinManager::get_note_addins(const Note::Ptr & note) const
+  {
+    std::vector<NoteAddin*> addins;
+    NoteAddinMap::const_iterator iter = m_note_addins.find(note);
+    if(iter != m_note_addins.end()) {
+      for(IdAddinMap::const_iterator it = iter->second.begin(); it != iter->second.end(); ++it) {
+        addins.push_back(it->second);
+      }
+    }
+
+    return addins;
+  }
+
   ApplicationAddin * AddinManager::get_application_addin(
-                                     const std::string & id) const
+                                     const Glib::ustring & id) const
   {
     const IdImportAddinMap::const_iterator import_iter
       = m_import_addins.find(id);
@@ -391,7 +403,7 @@ namespace {
     return 0;
   }
 
-  sync::SyncServiceAddin *AddinManager::get_sync_service_addin(const std::string & id) const
+  sync::SyncServiceAddin *AddinManager::get_sync_service_addin(const Glib::ustring & id) const
   {
     const IdSyncServiceAddinMap::const_iterator iter = m_sync_service_addins.find(id);
     if(iter != m_sync_service_addins.end()) {
@@ -420,6 +432,7 @@ namespace {
 
   void AddinManager::initialize_application_addins() const
   {
+    register_addin_actions();
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
       ApplicationAddin * addin = iter->second;
@@ -483,7 +496,7 @@ namespace {
     const sharp::ModuleMap & modules = m_module_manager.get_modules();
     for(AddinInfoMap::const_iterator iter = m_addin_infos.begin();
         iter != m_addin_infos.end(); ++iter) {
-      const std::string & mod_id = iter->first;
+      const Glib::ustring & mod_id = iter->first;
       sharp::ModuleMap::const_iterator mod_iter = modules.find(iter->second.addin_module());
       bool enabled = mod_iter != modules.end() && mod_iter->second->is_enabled();
       global_addins_prefs.set_boolean("Enabled", mod_id, enabled);
@@ -497,7 +510,7 @@ namespace {
     prefs_file_stream->write(global_addins_prefs.to_data());
   }
 
-  AddinInfo AddinManager::get_addin_info(const std::string & id) const
+  AddinInfo AddinManager::get_addin_info(const Glib::ustring & id) const
   {
     AddinInfoMap::const_iterator iter = m_addin_infos.find(id);
     if(iter != m_addin_infos.end()) {
@@ -508,7 +521,7 @@ namespace {
 
   AddinInfo AddinManager::get_addin_info(const AbstractAddin & addin) const
   {
-    std::string id;
+    Glib::ustring id;
     id = get_id_for_addin(addin, m_app_addins);
     if(id.empty()) {
       id = get_id_for_addin(addin, m_pref_tab_addins);
@@ -529,13 +542,13 @@ namespace {
     return get_addin_info(id);
   }
 
-  bool AddinManager::is_module_loaded(const std::string & id) const
+  bool AddinManager::is_module_loaded(const Glib::ustring & id) const
   {
     AddinInfo info = get_addin_info(id);
     return m_module_manager.get_module(info.addin_module());
   }
 
-  sharp::DynamicModule *AddinManager::get_module(const std::string & id)
+  sharp::DynamicModule *AddinManager::get_module(const Glib::ustring & id)
   {
     AddinInfo info = get_addin_info(id);
     sharp::DynamicModule *module = m_module_manager.get_module(info.addin_module());
@@ -548,7 +561,7 @@ namespace {
     return module;
   }
 
-  Gtk::Widget * AddinManager::create_addin_preference_widget(const std::string & id)
+  Gtk::Widget * AddinManager::create_addin_preference_widget(const Glib::ustring & id)
   {
     IdAddinPrefsMap::const_iterator iter = m_addin_prefs.find(id);
     if(iter != m_addin_prefs.end()) {
@@ -562,5 +575,17 @@ namespace {
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_URL_LINKS, NoteUrlWatcher);
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_AUTO_LINKS, NoteLinkWatcher);
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_WIKIWORDS, NoteWikiWatcher);
+  }
+
+  void AddinManager::register_addin_actions() const
+  {
+    auto & manager(IActionManager::obj());
+    for(auto & info : m_addin_infos) {
+      auto & non_modifying = info.second.non_modifying_actions();
+      for(auto & action : info.second.actions()) {
+        manager.register_main_window_action(action.first, action.second,
+          std::find(non_modifying.begin(), non_modifying.end(), action.first) == non_modifying.end());
+      }
+    }
   }
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,15 +25,12 @@
 
 #include <map>
 #include <memory>
-#include <string>
 #include <vector>
-
-#include <boost/algorithm/string/classification.hpp>
-#include <boost/algorithm/string/split.hpp>
 
 #include "base/macros.hpp"
 #include "note.hpp"
 #include "notebooks/notebook.hpp"
+#include "sharp/string.hpp"
 
 namespace gnote {
 
@@ -72,11 +69,11 @@ public:
   /// and a match number. If the search term is in the title,
   /// number will be INT_MAX.
   /// </returns>  
-  ResultsPtr search_notes(const std::string &, bool, 
+  ResultsPtr search_notes(const Glib::ustring &, bool,
                           const notebooks::Notebook::Ptr & );
-  bool check_note_has_match(const Note::Ptr & note, const std::vector<std::string> & ,
+  bool check_note_has_match(const Note::Ptr & note, const std::vector<Glib::ustring> & ,
                             bool match_case);
-  int find_match_count_in_note(Glib::ustring note_text, const std::vector<std::string> &,
+  int find_match_count_in_note(Glib::ustring note_text, const std::vector<Glib::ustring> &,
                                bool match_case);
 private:
 
@@ -87,7 +84,7 @@ template<typename T>
 void Search::split_watching_quotes(std::vector<T> & split,
                                    const T & source)
 {
-  boost::split(split, source, boost::is_any_of("\""));
+  sharp::string_split(split, source, "\"");
 
   std::vector<T> tmp;
 
@@ -96,7 +93,7 @@ void Search::split_watching_quotes(std::vector<T> & split,
        i++) {
     const T & part = *i;
     std::vector<T> parts;
-    boost::split(parts, part, boost::is_any_of(" \t\n"));
+    sharp::string_split(parts, part, " \t\n");
 
     for (typename std::vector<T>::const_iterator j = parts.begin();
          parts.end() != j;

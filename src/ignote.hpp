@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,17 +29,17 @@ class IGnote
   : public base::Singleton<IGnote>
 {
 public:
-  static std::string cache_dir();
-  static std::string conf_dir();
-  static std::string data_dir();
-  static std::string old_note_dir();
+  static Glib::ustring cache_dir();
+  static Glib::ustring conf_dir();
+  static Glib::ustring data_dir();
+  static Glib::ustring old_note_dir();
 
   virtual ~IGnote();
   virtual MainWindow & get_main_window() = 0;
   virtual MainWindow & get_window_for_note() = 0;
   virtual MainWindow & new_main_window() = 0;
   virtual void open_note(const Note::Ptr & note) = 0;
-  virtual void open_search_all() = 0;
+  virtual MainWindow & open_search_all() = 0;
 
   sigc::signal<void> signal_quit;
 };

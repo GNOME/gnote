@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -24,7 +24,6 @@
  */
 
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 #include <glibmm/ustring.h>
 
@@ -35,11 +34,10 @@
 
 namespace {
 
-  std::string make_write_failure_msg(const std::string & caller, const std::string & fail_func)
+  Glib::ustring make_write_failure_msg(const Glib::ustring & caller, const Glib::ustring & fail_func)
   {
-    boost::format fmt(_("%1% failed"));
-    std::string msg = caller + ": ";
-    msg += str(fmt % fail_func);
+    Glib::ustring msg = caller + ": ";
+    msg += Glib::ustring::compose(_("%1 failed"), fail_func);
     return msg;
   }
 
@@ -54,7 +52,7 @@ namespace sharp {
     m_writer = xmlNewTextWriterMemory(m_buf, 0);
   }
 
-  XmlWriter::XmlWriter(const std::string & filename)
+  XmlWriter::XmlWriter(const Glib::ustring & filename)
     : m_buf(NULL)
   {
     m_writer = xmlNewTextWriterFilename(filename.c_str(), 0);
@@ -98,8 +96,8 @@ namespace sharp {
   }
 
 
-  int XmlWriter::write_start_element(const std::string & prefix,
-                                     const std::string & name, const std::string & nsuri)
+  int XmlWriter::write_start_element(const Glib::ustring & prefix,
+                                     const Glib::ustring & name, const Glib::ustring & nsuri)
   {
     int res = xmlTextWriterStartElementNS(m_writer, to_xmlchar(prefix), 
                                           (const xmlChar*)name.c_str(), to_xmlchar(nsuri));
@@ -134,7 +132,7 @@ namespace sharp {
   }
 
 
-  int XmlWriter::write_start_attribute(const std::string & name)
+  int XmlWriter::write_start_attribute(const Glib::ustring & name)
   {
     int res = xmlTextWriterStartAttribute(m_writer, (const xmlChar*)name.c_str());
     if(res < 0) {
@@ -145,8 +143,8 @@ namespace sharp {
   }
 
 
-  int XmlWriter::write_attribute_string(const std::string & prefix,const std::string & local_name,
-                                        const std::string & ns ,const std::string & value)
+  int XmlWriter::write_attribute_string(const Glib::ustring & prefix,const Glib::ustring & local_name,
+                                        const Glib::ustring & ns ,const Glib::ustring & value)
   {
     int res = xmlTextWriterWriteAttributeNS(m_writer, to_xmlchar(prefix), 
                                             (const xmlChar*)local_name.c_str(),
@@ -170,7 +168,7 @@ namespace sharp {
   }
 
 
-  int XmlWriter::write_raw(const std::string & raw)
+  int XmlWriter::write_raw(const Glib::ustring & raw)
   {
     int res = xmlTextWriterWriteRaw(m_writer, (const xmlChar*)raw.c_str());
     if(res < 0) {
@@ -188,7 +186,7 @@ namespace sharp {
     return xmlTextWriterWriteString(m_writer, (const xmlChar*)unistring.c_str());
   }
 
-  int XmlWriter::write_string(const std::string & s)
+  int XmlWriter::write_string(const Glib::ustring & s)
   {
     return xmlTextWriterWriteString(m_writer, (const xmlChar*)s.c_str());
   }
@@ -202,12 +200,12 @@ namespace sharp {
   }
 
 
-  std::string XmlWriter::to_string()
+  Glib::ustring XmlWriter::to_string()
   {
     if(!m_buf) {
       return "";
     }
-    std::string output((const char*)m_buf->content);
+    Glib::ustring output((const char*)m_buf->content);
     return output;
   }
 

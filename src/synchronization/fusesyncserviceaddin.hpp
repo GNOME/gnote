@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #ifndef _SYNCHRONIZATION_FUSESYNCSERVICEADDIN_HPP_
 #define _SYNCHRONIZATION_FUSESYNCSERVICEADDIN_HPP_
 
-#include <glibmm.h>
+#include <glibmm/spawn.h>
 
 #include "base/macros.hpp"
 #include "syncserviceaddin.hpp"
@@ -47,15 +47,15 @@ public:
   virtual bool save_configuration() override;
   virtual void reset_configuration() override;
 
-  virtual std::string fuse_mount_timeout_error();
-  virtual std::string fuse_mount_directory_error();
+  virtual Glib::ustring fuse_mount_timeout_error();
+  virtual Glib::ustring fuse_mount_directory_error();
 protected:
   virtual bool verify_configuration() = 0;
   virtual void save_configuration_values() = 0;
   virtual void reset_configuration_values() = 0;
-  virtual std::string fuse_mount_exe_name() = 0;
-  virtual std::vector<std::string> get_fuse_mount_exe_args(const std::string & mountPath, bool fromStoredValues) = 0;
-  virtual std::string get_fuse_mount_exe_args_for_display(const std::string & mountPath, bool fromStoredValues) = 0;
+  virtual Glib::ustring fuse_mount_exe_name() = 0;
+  virtual std::vector<Glib::ustring> get_fuse_mount_exe_args(const Glib::ustring & mountPath, bool fromStoredValues) = 0;
+  virtual Glib::ustring get_fuse_mount_exe_args_for_display(const Glib::ustring & mountPath, bool fromStoredValues) = 0;
 private:
   static void redirect_standard_error();
   static bool wait_for_exit(Glib::Pid, int timeout, int *exit_code);
@@ -67,12 +67,12 @@ private:
   void unmount_timeout();
   bool is_mounted();
 
-  std::string m_mount_path;
+  Glib::ustring m_mount_path;
   utils::InterruptableTimeout m_unmount_timeout;
 
-  std::string m_fuse_mount_exe_path;
-  std::string m_fuse_unmount_exe_path;
-  std::string m_mount_exe_path;
+  Glib::ustring m_fuse_mount_exe_path;
+  Glib::ustring m_fuse_unmount_exe_path;
+  Glib::ustring m_mount_exe_path;
   bool m_initialized;
   bool m_enabled;
 };

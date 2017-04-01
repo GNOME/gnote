@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,10 +24,7 @@
 #define __UNDO_HPP_
 
 #include <list>
-#include <string>
 #include <stack>
-
-#include <boost/noncopyable.hpp>
 
 #include <sigc++/signal.h>
 #include <gtkmm/textbuffer.h>
@@ -35,6 +32,7 @@
 #include <gtkmm/textiter.h>
 
 #include "base/macros.hpp"
+#include "noncopyable.hpp"
 #include "notebuffer.hpp"
 #include "utils.hpp"
 
@@ -50,6 +48,24 @@ public:
   virtual void merge (EditAction * action) = 0;
   virtual bool can_merge (const EditAction * action) const = 0;
   virtual void destroy () = 0;
+};
+
+class EditActionGroup
+  : public EditAction
+{
+public:
+  EditActionGroup(bool start);
+  virtual void undo(Gtk::TextBuffer *buffer) override;
+  virtual void redo(Gtk::TextBuffer *buffer) override;
+  virtual void merge(EditAction *action) override;
+  virtual bool can_merge(const EditAction *action) const override;
+  virtual void destroy() override;
+  bool is_start() const
+    {
+      return m_start;
+    }
+private:
+  bool m_start;
 };
 
 class ChopBuffer
@@ -98,7 +114,7 @@ class InsertAction
   : public SplitterAction
 {
 public:
-  InsertAction(const Gtk::TextIter & start, const std::string & text, int length,
+  InsertAction(const Gtk::TextIter & start, const Glib::ustring & text, int length,
                const ChopBuffer::Ptr & chop_buf);
   virtual void undo(Gtk::TextBuffer * buffer) override;
   virtual void redo(Gtk::TextBuffer * buffer) override;
@@ -202,7 +218,7 @@ private:
 };
 
 class UndoManager
-  : public boost::noncopyable
+  : public gnote::NonCopyable
 {
 public:
   /** the buffer it NOT owned by the UndoManager
@@ -237,6 +253,7 @@ public:
     }
 
   void undo_redo(std::stack<EditAction *> &, std::stack<EditAction *> &, bool);
+  void undo_redo_action(EditAction & action, bool);
   void clear_undo_history();
   void add_undo_action(EditAction * action);
 

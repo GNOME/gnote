@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -51,8 +51,7 @@ namespace sharp {
 
   IfaceFactoryBase * DynamicModule::query_interface(const char * intf) const
   {
-    std::map<std::string, IfaceFactoryBase *>::const_iterator iter;
-    iter = m_interfaces.find(intf);
+    auto iter = m_interfaces.find(intf);
     if(iter == m_interfaces.end()) {
       return NULL;
     }
@@ -62,16 +61,14 @@ namespace sharp {
 
   bool DynamicModule::has_interface(const char * intf) const
   {
-    std::map<std::string, IfaceFactoryBase *>::const_iterator iter;
-    iter = m_interfaces.find(intf);
+    auto iter = m_interfaces.find(intf);
     return (iter != m_interfaces.end());
   }
 
 
   void DynamicModule::add(const char * iface, IfaceFactoryBase* mod)
   {
-    std::map<std::string, IfaceFactoryBase *>::iterator iter;
-    iter = m_interfaces.find(iface);
+    auto iter = m_interfaces.find(iface);
     if(iter == m_interfaces.end()) {
       m_interfaces.insert(std::make_pair(iface, mod));
     }

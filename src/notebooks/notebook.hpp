@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,8 +23,6 @@
 #ifndef __NOTEBOOKS_NOTEBOOK_HPP_
 #define __NOTEBOOKS_NOTEBOOK_HPP_
 
-#include <string>
-
 #include "base/macros.hpp"
 #include "tag.hpp"
 #include "note.hpp"
@@ -42,19 +40,19 @@ class Notebook
 public:
   typedef shared_ptr<Notebook> Ptr;
   static const char * NOTEBOOK_TAG_PREFIX;
-  Notebook(NoteManager &, const std::string &, bool is_special = false);
+  Notebook(NoteManager &, const Glib::ustring &, bool is_special = false);
   Notebook(NoteManager &, const Tag::Ptr &);
-  std::string get_name() const
+  Glib::ustring get_name() const
     { return m_name; }
-  void set_name(const std::string &);
-  virtual std::string get_normalized_name() const;
+  void set_name(const Glib::ustring &);
+  virtual Glib::ustring get_normalized_name() const;
   virtual Tag::Ptr    get_tag() const;
   Note::Ptr find_template_note() const;
   virtual Note::Ptr   get_template_note() const;
   Note::Ptr create_notebook_note();
   virtual bool contains_note(const Note::Ptr & note, bool include_system = false);
   virtual bool add_note(const Note::Ptr &);
-  static std::string normalize(const std::string & s);
+  static Glib::ustring normalize(const Glib::ustring & s);
 ////
   virtual ~Notebook()
     {}
@@ -68,9 +66,9 @@ private:
 
   Notebook(const Notebook &);
   Notebook & operator=(const Notebook &);
-  std::string m_name;
-  std::string m_normalized_name;
-  std::string m_default_template_note_title;
+  Glib::ustring m_name;
+  Glib::ustring m_normalized_name;
+  Glib::ustring m_default_template_note_title;
   Tag::Ptr    m_tag;
 };
 

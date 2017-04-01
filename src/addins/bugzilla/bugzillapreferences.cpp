@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -23,6 +23,7 @@
 
 #include <glib.h>
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <gtkmm/buttonbox.h>
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/label.h>
@@ -43,7 +44,7 @@
 namespace bugzilla {
 
   bool BugzillaPreferences::s_static_inited = false;;
-  std::string BugzillaPreferences::s_image_dir;
+  Glib::ustring BugzillaPreferences::s_image_dir;
 
   void BugzillaPreferences::_init_static()
   {
@@ -139,12 +140,9 @@ namespace bugzilla {
 
     icon_store->clear(); // clear out the old entries
 
-    std::list<std::string> icon_files; 
+    std::list<Glib::ustring> icon_files;
     sharp::directory_get_files (s_image_dir, icon_files);
-    for(std::list<std::string>::const_iterator iter = icon_files.begin();
-        iter != icon_files.end(); ++iter) {
-      
-      const std::string & icon_file(*iter);
+    for(auto icon_file : icon_files) {
       sharp::FileInfo file_info(icon_file);
 
       Glib::RefPtr<Gdk::Pixbuf> pixbuf;
@@ -159,7 +157,7 @@ namespace bugzilla {
         continue;
       }
 
-      std::string host = parse_host (file_info);
+      Glib::ustring host = parse_host(file_info);
       if (!host.empty()) {
         Gtk::TreeIter treeiter = icon_store->append ();
         
@@ -171,21 +169,21 @@ namespace bugzilla {
   }
 
 
-  std::string BugzillaPreferences::parse_host(const sharp::FileInfo & file_info)
+  Glib::ustring BugzillaPreferences::parse_host(const sharp::FileInfo & file_info)
   {
-    std::string name = file_info.get_name();
-    std::string ext = file_info.get_extension();
+    Glib::ustring name = file_info.get_name();
+    Glib::ustring ext = file_info.get_extension();
 
     if (ext.empty()) {
       return "";
     }
 
-    int ext_pos = sharp::string_index_of(name, ext);
+    int ext_pos = name.find(ext);
     if (ext_pos <= 0) {
       return "";
     }
 
-    std::string host = sharp::string_substring(name, 0, ext_pos);
+    Glib::ustring host = sharp::string_substring(name, 0, ext_pos);
     if (host.empty()) {
       return "";
     }
@@ -209,11 +207,11 @@ namespace bugzilla {
   namespace {
 
     /** sanitize the hostname. Return false if nothing could be done */
-    bool sanitize_hostname(std::string & hostname)
+    bool sanitize_hostname(Glib::ustring & hostname)
     {
-      if(hostname.find("/") != std::string::npos || hostname.find(":") != std::string::npos) {
+      if(hostname.find("/") != Glib::ustring::npos || hostname.find(":") != Glib::ustring::npos) {
         sharp::Uri uri(hostname);
-        std::string new_host = uri.get_host();
+        Glib::ustring new_host = uri.get_host();
         if(new_host.empty()) {
           return false;
         }
@@ -254,8 +252,8 @@ namespace bugzilla {
     dialog.set_extra_widget(*hbox);
 
     int response;
-    std::string icon_file;
-    std::string host;
+    Glib::ustring icon_file;
+    Glib::ustring host;
 
     while(1) {
       response = dialog.run ();
@@ -291,12 +289,12 @@ namespace bugzilla {
     last_opened_dir = dialog.get_current_folder();
 
     // Copy the file to the BugzillaIcons directory
-    std::string err_msg;
+    Glib::ustring err_msg;
     if (!copy_to_bugzilla_icons_dir (icon_file, host, err_msg)) {
       gnote::utils::HIGMessageDialog err(NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
                                          Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK,
                                          _("Error saving icon"),
-                                         std::string(_("Could not save the icon file.")) +
+                                         Glib::ustring(_("Could not save the icon file.")) +
                                          "  " + err_msg);
       err.run();
     }
@@ -304,15 +302,15 @@ namespace bugzilla {
     update_icon_store();
   }
 
-  bool BugzillaPreferences::copy_to_bugzilla_icons_dir(const std::string & file_path,
-                                                       const std::string & host,
-                                                       std::string & err_msg)
+  bool BugzillaPreferences::copy_to_bugzilla_icons_dir(const Glib::ustring & file_path,
+                                                       const Glib::ustring & host,
+                                                       Glib::ustring & err_msg)
   {
     err_msg = "";
 
     sharp::FileInfo file_info(file_path);
-    std::string ext = file_info.get_extension();
-    std::string saved_path = s_image_dir + "/" + host + ext;
+    Glib::ustring ext = file_info.get_extension();
+    Glib::ustring saved_path = s_image_dir + "/" + host + ext;
     try {
       if (!sharp::directory_exists (s_image_dir)) {
         g_mkdir_with_parents(s_image_dir.c_str(), S_IRWXU);
@@ -329,7 +327,7 @@ namespace bugzilla {
     return true;
   }
 
-  void BugzillaPreferences::resize_if_needed(const std::string & p)
+  void BugzillaPreferences::resize_if_needed(const Glib::ustring & p)
   {
     Glib::RefPtr<Gdk::Pixbuf> pix, newpix;
 
@@ -363,7 +361,7 @@ namespace bugzilla {
       return;
     }
 
-    std::string icon_path = (*iter)[m_columns.file_path];
+    Glib::ustring icon_path = (*iter)[m_columns.file_path];
 
     gnote::utils::HIGMessageDialog dialog(NULL, 
                                           GTK_DIALOG_DESTROY_WITH_PARENT,

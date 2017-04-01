@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,9 @@
  */
 
 
-#include <boost/format.hpp>
+#include <algorithm>
+#include <functional>
+
 #include <glibmm/i18n.h>
 
 #include "config.h"
@@ -33,14 +35,6 @@
 #include "sharp/string.hpp"
 #include "sharp/xml.hpp"
 #include "sharp/xmlconvert.hpp"
-
-#if HAVE_CXX11
-  #include <functional>
-  using std::hash;
-#else
-  #include <tr1/functional>
-  using std::tr1::hash;
-#endif
 
 
 
@@ -98,16 +92,16 @@ NoteBase::NoteBase(NoteData *, const Glib::ustring & filepath, NoteManagerBase &
 
 int NoteBase::get_hash_code() const
 {
-  hash<std::string> h;
+  std::hash<std::string> h;
   return h(get_title());
 }
 
-const std::string & NoteBase::uri() const
+const Glib::ustring & NoteBase::uri() const
 {
   return data_synchronizer().data().uri();
 }
 
-const std::string NoteBase::id() const
+const Glib::ustring NoteBase::id() const
 {
   return sharp::string_replace_first(data_synchronizer().data().uri(), "note://gnote/","");
 }
@@ -246,7 +240,7 @@ void NoteBase::add_tag(const Tag::Ptr & tag)
 
 void NoteBase::remove_tag(Tag & tag)
 {
-  std::string tag_name = tag.normalized_name();
+  Glib::ustring tag_name = tag.normalized_name();
   NoteData::TagMap & thetags(data_synchronizer().data().tags());
   NoteData::TagMap::iterator iter;
 
@@ -314,7 +308,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
   // Remove tags now, since a note with no tags has
   // no "tags" element in the XML
   std::list<Tag::Ptr> new_tags;
-  std::string name;
+  Glib::ustring name;
 
   while(xml.read()) {
     switch(xml.get_node_type()) {
@@ -362,7 +356,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
   get_tags(tag_list);
 
   FOREACH(Tag::Ptr & iter, tag_list) {
-    if(find(new_tags.begin(), new_tags.end(), iter) == new_tags.end()) {
+    if(std::find(new_tags.begin(), new_tags.end(), iter) == new_tags.end()) {
       remove_tag(iter);
     }
   }
@@ -455,7 +449,7 @@ void NoteArchiver::read(sharp::XmlReader & xml, NoteData & data)
 
 void NoteArchiver::_read(sharp::XmlReader & xml, NoteData & data, Glib::ustring & version)
 {
-  std::string name;
+  Glib::ustring name;
 
   while(xml.read ()) {
     switch(xml.get_node_type()) {
@@ -521,7 +515,7 @@ void NoteArchiver::_read(sharp::XmlReader & xml, NoteData & data, Glib::ustring 
 
 Glib::ustring NoteArchiver::write_string(const NoteData & note)
 {
-  std::string str;
+  Glib::ustring str;
   sharp::XmlWriter xml;
   obj().write(xml, note);
   xml.close();
@@ -538,14 +532,14 @@ void NoteArchiver::write(const Glib::ustring & write_file, const NoteData & data
 void NoteArchiver::write_file(const Glib::ustring & _write_file, const NoteData & data)
 {
   try {
-    std::string tmp_file = _write_file + ".tmp";
+    Glib::ustring tmp_file = _write_file + ".tmp";
     // TODO Xml doc settings
     sharp::XmlWriter xml(tmp_file); //, XmlEncoder::DocumentSettings);
     write(xml, data);
     xml.close();
 
     if(sharp::file_exists(_write_file)) {
-      std::string backup_path = _write_file + "~";
+      Glib::ustring backup_path = _write_file + "~";
       if(sharp::file_exists(backup_path)) {
         sharp::file_delete(backup_path);
       }
@@ -636,15 +630,15 @@ Glib::ustring NoteArchiver::get_renamed_note_xml(const Glib::ustring & note_xml,
                                                  const Glib::ustring & old_title,
                                                  const Glib::ustring & new_title) const
 {
-  std::string updated_xml;
+  Glib::ustring updated_xml;
   // Replace occurences of oldTitle with newTitle in noteXml
-  std::string titleTagPattern =  str(boost::format("<title>%1%</title>") % old_title);
-  std::string titleTagReplacement = str(boost::format("<title>%1%</title>") % new_title);
+  Glib::ustring titleTagPattern = Glib::ustring::compose("<title>%1</title>", old_title);
+  Glib::ustring titleTagReplacement = Glib::ustring::compose("<title>%1</title>", new_title);
   updated_xml = sharp::string_replace_regex(note_xml, titleTagPattern, titleTagReplacement);
 
-  std::string titleContentPattern = str(boost::format("<note-content([^>]*)>\\s*%1%") % old_title);
-  std::string titleContentReplacement = str(boost::format("<note-content\\1>%1%") % new_title);
-  std::string updated_xml2 = sharp::string_replace_regex(updated_xml, titleContentPattern, titleContentReplacement);
+  Glib::ustring titleContentPattern = "<note-content([^>]*)>\\s*" + old_title;
+  Glib::ustring titleContentReplacement = "<note-content\\1>" + new_title;
+  Glib::ustring updated_xml2 = sharp::string_replace_regex(updated_xml, titleContentPattern, titleContentReplacement);
 
   return updated_xml2;
 }

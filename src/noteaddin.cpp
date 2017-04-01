@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 
 #include <glibmm/i18n.h>
 
+#include "debug.hpp"
 #include "noteaddin.hpp"
 #include "notewindow.hpp"
 
@@ -45,13 +46,8 @@ namespace gnote {
   void NoteAddin::dispose(bool disposing)
   {
     if (disposing) {
-      for(std::list<std::string>::const_iterator iter = m_note_actions.begin();
-          iter != m_note_actions.end(); ++iter) {
-        get_window()->remove_widget_action(*iter);
-      }
-      for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
-          iter != m_text_menu_items.end(); ++iter) {
-        delete *iter;
+      for (auto & iter : m_text_menu_items) {
+        delete iter;
       }
         
       for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
@@ -71,13 +67,13 @@ namespace gnote {
     on_note_opened();
     NoteWindow * window = get_window();
 
-    for(std::list<Gtk::MenuItem*>::const_iterator iter = m_text_menu_items.begin();
-        iter != m_text_menu_items.end(); ++iter) {
-      Gtk::Widget *item = *iter;
+    window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_foregrounded));
+    window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_backgrounded));
+
+    for(auto & item : m_text_menu_items) {
       if ((item->get_parent() == NULL) ||
           (item->get_parent() != window->text_menu())) {
-        window->text_menu()->add (*item);
-        window->text_menu()->reorder_child(*(Gtk::MenuItem*)item, 7);
+        append_text_item(window->text_menu(), *item);
       }
     }
       
@@ -92,14 +88,41 @@ namespace gnote {
     }
   }
 
-  void NoteAddin::add_note_action(const Glib::RefPtr<Gtk::Action> & action, int order)
+  void NoteAddin::append_text_item(Gtk::Widget *text_menu, Gtk::Widget & item)
   {
-    if(is_disposing()) {
-      throw sharp::Exception("Plugin is disposing already");
+    NoteTextMenu *txt_menu = dynamic_cast<NoteTextMenu*>(text_menu);
+    for(auto child : dynamic_cast<Gtk::Container*>(txt_menu->get_children().front())->get_children()) {
+      if(child->get_name() == "formatting") {
+        Gtk::Box *box = dynamic_cast<Gtk::Box*>(child);
+        box->add(item);
+      }
+    }
+  }
+
+  void NoteAddin::on_note_foregrounded()
+  {
+    auto host = get_window()->host();
+    if(!host) {
+      return;
     }
 
-    m_note_actions.push_back(action->get_name());
-    get_window()->add_widget_action(action, order);
+    for(auto & callback : m_action_callbacks) {
+      auto action = host->find_action(callback.first);
+      if(action) {
+        m_action_callbacks_cids.push_back(action->signal_activate().connect(callback.second));
+      }
+      else {
+        ERR_OUT("Action %s not found!", callback.first.c_str());
+      }
+    }
+  }
+
+  void NoteAddin::on_note_backgrounded()
+  {
+    for(auto cid : m_action_callbacks_cids) {
+      cid.disconnect();
+    }
+    m_action_callbacks_cids.clear();
   }
 
   void NoteAddin::add_tool_item (Gtk::ToolItem *item, int position)
@@ -116,7 +139,7 @@ namespace gnote {
     }
   }
 
-  void NoteAddin::add_text_menu_item (Gtk::MenuItem * item)
+  void NoteAddin::add_text_menu_item(Gtk::Widget *item)
   {
     if (is_disposing())
       throw sharp::Exception(_("Plugin is disposing already"));
@@ -124,8 +147,7 @@ namespace gnote {
     m_text_menu_items.push_back(item);
 
     if (m_note->is_opened()) {
-      get_window()->text_menu()->add (*item);
-      get_window()->text_menu()->reorder_child (*item, 7);
+      append_text_item(get_window()->text_menu(), *item);
     }
   }
 
@@ -135,10 +157,20 @@ namespace gnote {
       throw sharp::Exception(_("Plugin is disposing already"));
     }
     NoteWindow *note_window = m_note->get_window();
-    if(!note_window->host()) {
+    if(note_window == NULL || !note_window->host()) {
       throw std::runtime_error(_("Window is not embedded"));
     }
     return dynamic_cast<Gtk::Window*>(note_window->host());
+  }
+
+  std::map<int, Gtk::Widget*> NoteAddin::get_actions_popover_widgets() const
+  {
+    return std::map<int, Gtk::Widget*>();
+  }
+
+  void NoteAddin::register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> callback)
+  {
+    m_action_callbacks.emplace_back(action, callback);
   }
   
 }

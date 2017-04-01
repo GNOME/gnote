@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,30 +30,30 @@
 #define __SHARP_URI_HPP_
 
 
-#include <string>
+#include <glibmm/ustring.h>
 
 namespace sharp {
 
   class Uri
   {
   public:
-    Uri(const std::string & u)
+    Uri(const Glib::ustring & u)
       : m_uri(u)
       {
       }
-    const std::string & to_string() const
+    const Glib::ustring & to_string() const
       { 
         return m_uri; 
       }
     bool is_file() const;
-    std::string local_path() const;
-    std::string get_host() const;
-    std::string get_absolute_uri() const;
-    static std::string escape_uri_string(const std::string &);
+    Glib::ustring local_path() const;
+    Glib::ustring get_host() const;
+    Glib::ustring get_absolute_uri() const;
+    static Glib::ustring escape_uri_string(const Glib::ustring &);
   private:
-    bool _is_scheme(const std::string & scheme) const;
+    bool _is_scheme(const Glib::ustring & scheme) const;
 
-    std::string m_uri;
+    Glib::ustring m_uri;
   };
 
 }

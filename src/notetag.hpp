@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 #ifndef __NOTE_TAG_HPP_
 #define __NOTE_TAG_HPP_
 
-#include <string>
 #include <map>
 
 #include <sigc++/signal.h>
@@ -73,11 +72,11 @@ public:
     CAN_SPLIT     = 32
   };
 
-  static Ptr create(const std::string & tag_name, int flags) throw(sharp::Exception)
+  static Ptr create(const Glib::ustring & tag_name, int flags) throw(sharp::Exception)
     {
       return Ptr(new NoteTag(tag_name, flags));
     }
-  const std::string & get_element_name() const
+  const Glib::ustring & get_element_name() const
     { 
       return m_element_name;
     }
@@ -159,9 +158,9 @@ public:
       property_foreground_gdk().set_value(render_foreground(value));
     }
 protected:
-  NoteTag(const std::string & tag_name, int flags = 0) throw(sharp::Exception);
+  NoteTag(const Glib::ustring & tag_name, int flags = 0) throw(sharp::Exception);
   NoteTag();
-  virtual void initialize(const std::string & element_name);
+  virtual void initialize(const Glib::ustring & element_name);
 
   friend class NoteTagTable;
 
@@ -171,7 +170,7 @@ private:
   Gdk::Color get_background() const;
   Gdk::Color render_foreground(ContrastPaletteColor symbol);
 
-  std::string         m_element_name;
+  Glib::ustring       m_element_name;
   Glib::RefPtr<Gtk::TextMark> m_widget_location;
   Gtk::Widget       * m_widget;
   bool                m_allow_middle_activate;
@@ -189,7 +188,7 @@ class DynamicNoteTag
 public:
   typedef Glib::RefPtr<DynamicNoteTag> Ptr;
   typedef Glib::RefPtr<const DynamicNoteTag> ConstPtr;
-  typedef std::map<std::string, std::string> AttributeMap;
+  typedef std::map<Glib::ustring, Glib::ustring> AttributeMap;
 
   const AttributeMap & get_attributes() const
     {
@@ -209,7 +208,7 @@ public:
   /// A <see cref="System.String"/> that is the name of the
   /// newly read attribute.
   /// </param>
-  virtual void on_attribute_read(const std::string &)
+  virtual void on_attribute_read(const Glib::ustring &)
     {
     }
 
@@ -245,8 +244,8 @@ private:
 class TagType 
 {
 public:
-  typedef sigc::signal<DynamicNoteTag::Ptr, const std::string &> Factory;
-  typedef sigc::slot<DynamicNoteTag::Ptr, const std::string &> FactorySlot;
+  typedef sigc::signal<DynamicNoteTag::Ptr, const Glib::ustring &> Factory;
+  typedef sigc::slot<DynamicNoteTag::Ptr, const Glib::ustring &> FactorySlot;
   TagType(const FactorySlot & factory) 
     {
       m_factory.connect(factory);
@@ -257,7 +256,7 @@ public:
     }
   TagType()
     {}
-  DynamicNoteTag::Ptr create(const std::string & name)
+  DynamicNoteTag::Ptr create(const Glib::ustring & name)
     {
       return m_factory(name);
     }
@@ -297,9 +296,9 @@ public:
   ChangeType get_change_type(const Glib::RefPtr<Gtk::TextTag> &tag);
 
   DepthNoteTag::Ptr get_depth_tag(int depth, Pango::Direction direction);
-  DynamicNoteTag::Ptr create_dynamic_tag(const std::string & );
-  void register_dynamic_tag (const std::string & tag_name, const Factory & factory);
-  bool is_dynamic_tag_registered(const std::string &);
+  DynamicNoteTag::Ptr create_dynamic_tag(const Glib::ustring & );
+  void register_dynamic_tag(const Glib::ustring & tag_name, const Factory & factory);
+  bool is_dynamic_tag_registered(const Glib::ustring &);
 
 
   NoteTag::Ptr get_url_tag() const
@@ -329,7 +328,7 @@ private:
   void _init_common_tags();
 
   static NoteTagTable::Ptr           s_instance;
-  std::map<std::string, Factory>     m_tag_types;
+  std::map<Glib::ustring, Factory>   m_tag_types;
   std::list<Glib::RefPtr<Gtk::TextTag> > m_added_tags;
 
   NoteTag::Ptr m_url_tag;

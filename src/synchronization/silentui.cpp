@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -67,7 +67,7 @@ namespace sync {
   }
 
 
-  void SilentUI::note_synchronized(const std::string & DBG(noteTitle), NoteSyncType DBG(type))
+  void SilentUI::note_synchronized(const Glib::ustring & DBG(noteTitle), NoteSyncType DBG(type))
   {
     DBG_OUT("note synchronized, Title: %s, Type: %d", noteTitle.c_str(), int(type));
   }
@@ -75,7 +75,7 @@ namespace sync {
 
   void SilentUI::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<std::string> &)
+                                        const std::list<Glib::ustring> &)
   {
     DBG_OUT("note conflict detected, overwriting without a care");
     // TODO: At least respect conflict prefs

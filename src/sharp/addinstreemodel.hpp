@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -44,7 +44,7 @@ public:
   typedef Glib::RefPtr<AddinsTreeModel> Ptr;
   static Ptr create(Gtk::TreeView * treeview);
 
-  std::string get_module_id(const Gtk::TreeIter &);
+  Glib::ustring get_module_id(const Gtk::TreeIter &);
   sharp::DynamicModule * get_module(const Gtk::TreeIter &);
   void set_module(const Gtk::TreeIter &, const sharp::DynamicModule *);
 
@@ -62,15 +62,15 @@ public:
         add(id);
       }
 
-    Gtk::TreeModelColumn<std::string>          name;
-    Gtk::TreeModelColumn<std::string>          version;
+    Gtk::TreeModelColumn<Glib::ustring>          name;
+    Gtk::TreeModelColumn<Glib::ustring>          version;
     Gtk::TreeModelColumn<const sharp::DynamicModule *> addin;
     Gtk::TreeModelColumn<gnote::AddinCategory> category;
-    Gtk::TreeModelColumn<std::string>          id;
+    Gtk::TreeModelColumn<Glib::ustring>          id;
   };
   AddinsColumns m_columns;
 
-  static std::string get_addin_category_name(gnote::AddinCategory category);
+  static Glib::ustring get_addin_category_name(gnote::AddinCategory category);
 protected:
   AddinsTreeModel();
   void set_columns(Gtk::TreeView *v);

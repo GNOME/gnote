@@ -8,10 +8,10 @@ desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 
 
 addinsdir = $(ADDINSDIR)
-addins_LTLIBRARIES = statistics.la
+addins_LTLIBRARIES = libstatistics.la
 addins_DATA = $(desktop_files)
 
-statistics_la_SOURCES = \
+libstatistics_la_SOURCES = \
 	statisticsapplicationaddin.hpp statisticsapplicationaddin.cpp \
 	statisticswidget.hpp statisticswidget.cpp \
 	$(NULL)

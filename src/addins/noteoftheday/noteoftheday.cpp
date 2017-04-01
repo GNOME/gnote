@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009-2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,6 +19,7 @@
  */
 
 #include <glibmm/i18n.h>
+#include <glibmm/stringutils.h>
 
 #include "sharp/datetime.hpp"
 #include "debug.hpp"
@@ -37,8 +38,8 @@ const Glib::ustring NoteOfTheDay::s_title_prefix
 gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
                                       const Glib::Date & date)
 {
-  const std::string title = get_title(date);
-  const std::string xml = get_content(date, manager);
+  const Glib::ustring title = get_title(date);
+  const Glib::ustring xml = get_content(date, manager);
 
   gnote::NoteBase::Ptr notd;
   try {
@@ -88,17 +89,15 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
   }
 }
 
-std::string NoteOfTheDay::get_content(
-                            const Glib::Date & date,
-                            const gnote::NoteManager & manager)
+Glib::ustring NoteOfTheDay::get_content(const Glib::Date & date, const gnote::NoteManager & manager)
 {
-  const std::string title = get_title(date);
+  const Glib::ustring title = get_title(date);
 
   // Attempt to load content from template
   const gnote::NoteBase::Ptr template_note = manager.find(s_template_title);
 
   if (0 != template_note) {
-    std::string xml_content = template_note->xml_content();
+    Glib::ustring xml_content = template_note->xml_content();
     return xml_content.replace(xml_content.find(s_template_title, 0),
                                s_template_title.length(),
                                title);
@@ -108,15 +107,14 @@ std::string NoteOfTheDay::get_content(
   }
 }
 
-std::string NoteOfTheDay::get_content_without_title(
-                              const std::string & content)
+Glib::ustring NoteOfTheDay::get_content_without_title(const Glib::ustring & content)
 {
-  const std::string::size_type nl = content.find("\n");
+  const Glib::ustring::size_type nl = content.find("\n");
 
-  if (std::string::npos != nl)
-    return std::string(content, nl, std::string::npos);
+  if (Glib::ustring::npos != nl)
+    return Glib::ustring(content, nl, Glib::ustring::npos);
   else
-    return std::string();
+    return Glib::ustring();
 }
 
 gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(
@@ -142,8 +140,7 @@ gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(
   return gnote::Note::Ptr();
 }
 
-std::string NoteOfTheDay::get_template_content(
-                            const std::string & title)
+Glib::ustring NoteOfTheDay::get_template_content(const Glib::ustring & title)
 {
   return Glib::ustring::compose(
     "<note-content xmlns:size=\"http://beatniksoftware.com/tomboy/size\">"
@@ -156,7 +153,7 @@ std::string NoteOfTheDay::get_template_content(
     _("Appointments"));
 }
 
-std::string NoteOfTheDay::get_title(const Glib::Date & date)
+Glib::ustring NoteOfTheDay::get_title(const Glib::Date & date)
 {
   // Format: "Today: Friday, July 01 2005"
   return s_title_prefix + date.format_string(_("%A, %B %d %Y"));
@@ -165,7 +162,7 @@ std::string NoteOfTheDay::get_title(const Glib::Date & date)
 bool NoteOfTheDay::has_changed(const gnote::NoteBase::Ptr & note)
 {
   const sharp::DateTime & date_time = note->create_date();
-  const std::string original_xml
+  const Glib::ustring original_xml
     = get_content(Glib::Date(
                     date_time.day(),
                     static_cast<Glib::Date::Month>(date_time.month()),

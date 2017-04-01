@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,11 +19,11 @@
 
 
 #include <algorithm>
-#include <fstream>
 #include <vector>
 
-#include <glibmm.h>
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
+#include <glibmm/regex.h>
 
 #include "debug.hpp"
 #include "syncutils.hpp"
@@ -36,7 +36,7 @@
 namespace gnote {
 namespace sync {
 
-  NoteUpdate::NoteUpdate(const std::string & xml_content, const std::string & title, const std::string & uuid, int latest_revision)
+  NoteUpdate::NoteUpdate(const Glib::ustring & xml_content, const Glib::ustring & title, const Glib::ustring & uuid, int latest_revision)
   {
     m_xml_content = xml_content;
     m_title = title;
@@ -68,12 +68,12 @@ namespace sync {
     xml.load_buffer(m_xml_content);
     NoteData *data = new NoteData(m_uuid);
     NoteArchiver::obj().read(xml, *data);
-    std::auto_ptr<NoteData> update_data(data);
+    std::unique_ptr<NoteData> update_data(data);
     xml.close();
 
     // NOTE: Mostly a hack to ignore missing version attributes
-    std::string existing_inner_content = get_inner_content(existing_note->data().text());
-    std::string update_inner_content = get_inner_content(update_data->text());
+    Glib::ustring existing_inner_content = get_inner_content(existing_note->data().text());
+    Glib::ustring update_inner_content = get_inner_content(update_data->text());
 
     return existing_inner_content == update_inner_content &&
            existing_note->data().title() == update_data->title() &&
@@ -82,7 +82,7 @@ namespace sync {
   }
 
 
-  std::string NoteUpdate::get_inner_content(const std::string & full_content_element) const
+  Glib::ustring NoteUpdate::get_inner_content(const Glib::ustring & full_content_element) const
   {
     sharp::XmlReader xml;
     xml.load_buffer(full_content_element);
@@ -93,13 +93,13 @@ namespace sync {
   }
 
 
-  bool NoteUpdate::compare_tags(const std::map<std::string, Tag::Ptr> set1, const std::map<std::string, Tag::Ptr> set2) const
+  bool NoteUpdate::compare_tags(const std::map<Glib::ustring, Tag::Ptr> set1, const std::map<Glib::ustring, Tag::Ptr> set2) const
   {
     if(set1.size() != set2.size()) {
       return false;
     }
-    for(std::map<std::string, Tag::Ptr>::const_iterator iter = set1.begin(); iter != set1.end(); ++iter) {
-      if(set2.find(iter->first) == set2.end()) {
+    for(auto iter : set1) {
+      if(set2.find(iter.first) == set2.end()) {
         return false;
       }
     }
@@ -116,16 +116,9 @@ namespace sync {
   bool SyncUtils::is_fuse_enabled()
   {
     try {
-      std::string fsFileName = "/proc/filesystems";
+      Glib::ustring fsFileName = "/proc/filesystems";
       if(sharp::file_exists(fsFileName)) {
-        std::string fsOutput;
-        std::ifstream file(fsFileName.c_str());
-        while(file) {
-          std::string line;
-          std::getline(file, line);
-          fsOutput += "\n" + line;
-        }
-        file.close();
+        Glib::ustring fsOutput = sharp::file_read_all_text(fsFileName);
         Glib::RefPtr<Glib::Regex> re = Glib::Regex::create("\\s+fuse\\s+", Glib::REGEX_MULTILINE);
         return re->match(fsOutput);
       }
@@ -165,7 +158,7 @@ namespace sync {
       // "modprobe fuse"
       sharp::Process p;
       p.file_name(m_guisu_tool);
-      std::vector<std::string> args;
+      std::vector<Glib::ustring> args;
       args.push_back(m_modprobe_tool);
       args.push_back("fuse");
       p.arguments(args);
@@ -206,37 +199,36 @@ namespace sync {
     return false;
   }
 
-  std::string SyncUtils::find_first_executable_in_path(const std::vector<std::string> & executableNames)
+  Glib::ustring SyncUtils::find_first_executable_in_path(const std::vector<Glib::ustring> & executableNames)
   {
-    for(std::vector<std::string>::const_iterator iter = executableNames.begin();
-        iter != executableNames.end(); ++iter) {
-      std::string pathVar = Glib::getenv("PATH");
-      std::vector<std::string> paths;
+    for(auto executable : executableNames) {
+      Glib::ustring pathVar = Glib::getenv("PATH");
+      std::vector<Glib::ustring> paths;
       const char separator[] = {G_SEARCHPATH_SEPARATOR, 0};
       sharp::string_split(paths, pathVar, separator);
 
       for(unsigned i = 0; i < sizeof(common_paths) / sizeof(char*); ++i) {
-        std::string commonPath = common_paths[i];
+        Glib::ustring commonPath = common_paths[i];
         if(std::find(paths.begin(), paths.end(), commonPath) == paths.end()) {
           paths.push_back(commonPath);
         }
       }
 
-      for(std::vector<std::string>::iterator path = paths.begin(); path != paths.end(); ++path) {
-        std::string testExecutablePath = Glib::build_filename(*path, *iter);
+      for(auto path : paths) {
+        Glib::ustring testExecutablePath = Glib::build_filename(path, executable);
         if(sharp::file_exists(testExecutablePath)) {
           return testExecutablePath;
         }
       }
-      DBG_OUT("Unable to locate '%s' in your PATH", iter->c_str());
+      DBG_OUT("Unable to locate '%s' in your PATH", executable.c_str());
     }
 
     return "";
   }
 
-  std::string SyncUtils::find_first_executable_in_path(const std::string & executableName)
+  Glib::ustring SyncUtils::find_first_executable_in_path(const Glib::ustring & executableName)
   {
-    std::vector<std::string> executable_names;
+    std::vector<Glib::ustring> executable_names;
     executable_names.push_back(executableName);
     return find_first_executable_in_path(executable_names);
   }

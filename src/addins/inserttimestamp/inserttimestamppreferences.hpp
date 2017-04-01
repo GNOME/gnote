@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -51,14 +51,14 @@ private:
     FormatColumns()
       { add(formatted); add(format); }
 
-    Gtk::TreeModelColumn<std::string> formatted;
-    Gtk::TreeModelColumn<std::string> format;
+    Gtk::TreeModelColumn<Glib::ustring> formatted;
+    Gtk::TreeModelColumn<Glib::ustring> format;
   };
   void on_selected_radio_toggled();
   void on_selection_changed();
 
   static bool       s_static_inited;
-  static std::vector<std::string> s_formats;
+  static std::vector<Glib::ustring> s_formats;
   FormatColumns     m_columns;
   Gtk::RadioButton *selected_radio;
   Gtk::RadioButton *custom_radio;

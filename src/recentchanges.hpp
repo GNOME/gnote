@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -24,14 +24,13 @@
 #ifndef __NOTE_RECENT_CHANGES_HPP_
 #define __NOTE_RECENT_CHANGES_HPP_
 
-#include <string>
-
 #include <gtkmm/alignment.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/headerbar.h>
+#include <gtkmm/popovermenu.h>
 
 #include "base/macros.hpp"
+#include "mainwindowaction.hpp"
 #include "note.hpp"
 #include "searchnoteswidget.hpp"
 #include "utils.hpp"
@@ -46,10 +45,11 @@ public:
   NoteRecentChanges(NoteManager& m);
   virtual ~NoteRecentChanges();
   virtual void show_search_bar(bool grab_focus = true) override;
-  virtual void set_search_text(const std::string & value) override;
+  virtual void set_search_text(const Glib::ustring & value) override;
   virtual void new_note() override;
   virtual void present_search() override;
   virtual void close_window() override;
+  virtual bool is_search() override;
 
   virtual void embed_widget(EmbeddableWidget &) override;
   virtual void unembed_widget(EmbeddableWidget &) override;
@@ -61,6 +61,8 @@ public:
     }
   virtual bool contains(EmbeddableWidget &) override;
   virtual bool is_foreground(EmbeddableWidget &) override;
+  virtual MainWindowAction::Ptr find_action(const Glib::ustring & name) override;
+  virtual void enabled(bool is_enabled) override;
 protected:
   virtual void present_note(const Note::Ptr & note) override;
   virtual void on_show() override;
@@ -74,26 +76,27 @@ private:
   EmbeddableWidget *currently_embedded();
   void make_header_bar();
   void make_search_box();
+  bool on_entry_key_pressed(GdkEventKey *);
   void on_entry_changed();
   void on_entry_activated();
   void entry_changed_timeout();
-  std::string get_search_text();
+  Glib::ustring get_search_text();
   void update_toolbar(EmbeddableWidget & widget);
   void on_all_notes_button_clicked();
   void on_show_window_menu();
   void on_search_button_toggled();
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
-  Gtk::Menu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::MenuItem*> & items);
-  std::vector<Gtk::MenuItem*> & make_menu_items(std::vector<Gtk::MenuItem*> & items,
-                                                const std::vector<Glib::RefPtr<Gtk::Action> > & actions);
-  void on_embedded_name_changed(const std::string & name);
-  void on_main_window_actions_changed(Gtk::Menu **menu);
+  Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items);
+  void on_embedded_name_changed(const Glib::ustring & name);
   void on_settings_changed(const Glib::ustring & key);
   bool on_notes_widget_key_press(GdkEventKey*);
+  void on_close_window(const Glib::VariantBase&);
+  void add_action(const MainWindowAction::Ptr & action);
+  void on_popover_widgets_changed();
 
   NoteManager        &m_note_manager;
-  Gtk::HeaderBar      m_header_bar;
+  Gtk::Widget        *m_header_bar;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::Grid           m_content_vbox;
   Gtk::Alignment      m_search_box;
@@ -108,13 +111,14 @@ private:
   std::list<EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
-  sigc::connection    m_current_embedded_actions_slot;
+  sigc::connection    m_signal_popover_widgets_changed_cid;
   utils::InterruptableTimeout *m_entry_changed_timeout;
-  Gtk::Menu          *m_window_menu_embedded;
-  Gtk::Menu          *m_window_menu_default;
+  Gtk::PopoverMenu     *m_window_menu_embedded;
+  Gtk::PopoverMenu     *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
   bool                m_open_notes_in_new_window;
   bool                m_close_note_on_escape;
+  std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
 };
 
 

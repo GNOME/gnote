@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -74,6 +74,9 @@ public:
   /// </summary>
   virtual void on_note_opened () = 0;
 
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const;
+  void register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> callback);
+
   const Note::Ptr & get_note() const
     {
       return m_note;
@@ -106,16 +109,21 @@ public:
       return m_note->manager();
     }
   void on_note_opened_event(Note & );
-  void add_note_action(const Glib::RefPtr<Gtk::Action> & action, int order);
   void add_tool_item (Gtk::ToolItem *item, int position);
-  void add_text_menu_item (Gtk::MenuItem * item);
+  void add_text_menu_item(Gtk::Widget *item);
 private:
+  void on_note_foregrounded();
+  void on_note_backgrounded();
+  void append_text_item(Gtk::Widget *text_menu, Gtk::Widget & item);
+
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
-  std::list<std::string>        m_note_actions;
-  std::list<Gtk::MenuItem*>     m_text_menu_items;
+  std::list<Gtk::Widget*>       m_text_menu_items;
   typedef std::map<Gtk::ToolItem*, int> ToolItemMap;
   ToolItemMap                   m_toolbar_items;
+  typedef std::pair<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> ActionCallback;
+  std::vector<ActionCallback>   m_action_callbacks;
+  std::vector<sigc::connection> m_action_callbacks_cids;
 };
 
 

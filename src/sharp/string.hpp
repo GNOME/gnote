@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,7 +28,6 @@
 #ifndef __SHARP_STRING_HPP_
 #define __SHARP_STRING_HPP_
 
-#include <string>
 #include <vector>
 
 #include <glibmm/ustring.h>
@@ -36,39 +35,37 @@
 namespace sharp {
 
   /**
-   * replace the first instance of %from with %with 
+   * replace the first instance of %what with %with
    * in string %source and return the result
    */
-  std::string string_replace_first(const std::string & source, const std::string & from,
-                             const std::string & with);
+  Glib::ustring string_replace_first(const Glib::ustring & source, const Glib::ustring & what,
+                                     const Glib::ustring & with);
 
   /**
-   * replace all instances of %from with %with 
+   * replace all instances of %what with %with
    * in string %source and return the result
    */
-  std::string string_replace_all(const std::string & source, const std::string & from,
-                                 const std::string & with);
+  Glib::ustring string_replace_all(const Glib::ustring & source, const Glib::ustring & what,
+                                   const Glib::ustring & with);
   /** 
    * regex replace in %source with matching %regex with %with
    * and return a copy */
-  std::string string_replace_regex(const std::string & source, const std::string & regex,
-                                   const std::string & with);
-  bool string_match_iregex(const std::string & source, const std::string & regex);
+  Glib::ustring string_replace_regex(const Glib::ustring & source, const Glib::ustring & regex,
+                                     const Glib::ustring & with);
+  bool string_match_iregex(const Glib::ustring & source, const Glib::ustring & regex);
 
-  void string_split(std::vector<std::string> & split, const std::string & source,
-                    const char * delimiters);
+  void string_split(std::vector<Glib::ustring> & split, const Glib::ustring & source,
+                    const Glib::ustring & delimiters);
 
   /** copy the substring for %source, starting at %start until the end */
   Glib::ustring string_substring(const Glib::ustring & source, int start);
   /** copy the substring for %source, starting at %start and running for %len */
   Glib::ustring string_substring(const Glib::ustring & source, int start, int len);
 
-  std::string string_trim(const std::string & source);
-  std::string string_trim(const std::string & source, const char * set_of_char);
+  Glib::ustring string_trim(const Glib::ustring & source);
+  Glib::ustring string_trim(const Glib::ustring & source, const Glib::ustring & set_of_char);
 
-  int string_index_of(const std::string & source, const std::string & with);
-  int string_index_of(const std::string & source, const std::string & with, int);
-  int string_last_index_of(const std::string & source, const std::string & with);
+  int string_last_index_of(const Glib::ustring & source, const Glib::ustring & search);
 }
 
 

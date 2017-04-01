@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -27,7 +27,7 @@
 
 
 #include <glib/gstdio.h>
-#include <glibmm.h>
+#include <glibmm/fileutils.h>
 
 #include "sharp/directory.hpp"
 #include "sharp/fileinfo.hpp"
@@ -36,9 +36,9 @@
 namespace sharp {
 
 
-  void directory_get_files_with_ext(const std::string & dir, 
-                                    const std::string & ext,
-                                    std::list<std::string> & list)
+  void directory_get_files_with_ext(const Glib::ustring & dir,
+                                    const Glib::ustring & ext,
+                                    std::list<Glib::ustring> & list)
   {
     if (!Glib::file_test(dir, Glib::FILE_TEST_EXISTS))
       return;
@@ -49,9 +49,9 @@ namespace sharp {
     Glib::Dir d(dir);
 
     for (Glib::Dir::iterator itr = d.begin(); itr != d.end(); ++itr) {
-      const std::string file(dir + "/" + *itr);
+      const Glib::ustring file(dir + "/" + *itr);
       const sharp::FileInfo file_info(file);
-      const std::string & extension = file_info.get_extension();
+      const Glib::ustring extension = file_info.get_extension();
 
       if (Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR)
           && (ext.empty() || (Glib::ustring(extension).lowercase() == ext))) {
@@ -60,8 +60,8 @@ namespace sharp {
     }
   }
 
-  void directory_get_directories(const std::string & dir,
-                                 std::list<std::string>  & files)
+  void directory_get_directories(const Glib::ustring & dir,
+                                 std::list<Glib::ustring> & files)
   {
     if(!Glib::file_test(dir, Glib::FILE_TEST_EXISTS | Glib::FILE_TEST_IS_DIR)) {
       return;
@@ -70,7 +70,7 @@ namespace sharp {
     Glib::Dir d(dir);
 
     for(Glib::Dir::iterator iter = d.begin(); iter != d.end(); ++iter) {
-      const std::string file(dir + "/" + *iter);
+      const Glib::ustring file(dir + "/" + *iter);
 
       if(Glib::file_test(file, Glib::FILE_TEST_IS_DIR)) {
         files.push_back(file);
@@ -78,12 +78,12 @@ namespace sharp {
     }
   }
 
-  void directory_get_files(const std::string & dir, std::list<std::string>  & files)
+  void directory_get_files(const Glib::ustring & dir, std::list<Glib::ustring> & files)
   {
     directory_get_files_with_ext(dir, "", files);
   }
 
-  bool directory_exists(const std::string & dir)
+  bool directory_exists(const Glib::ustring & dir)
   {
     return Glib::file_test(dir, Glib::FILE_TEST_EXISTS) && Glib::file_test(dir, Glib::FILE_TEST_IS_DIR);
   }
@@ -126,15 +126,15 @@ namespace sharp {
     }
   }
 
-  bool directory_create(const std::string & dir)
+  bool directory_create(const Glib::ustring & dir)
   {
     return Gio::File::create_for_path(dir)->make_directory_with_parents();
   }
 
-  bool directory_delete(const std::string & dir, bool recursive)
+  bool directory_delete(const Glib::ustring & dir, bool recursive)
   {
     if(!recursive) {
-      std::list<std::string> files;
+      std::list<Glib::ustring> files;
       directory_get_files(dir, files);
       if(files.size()) {
         return false;

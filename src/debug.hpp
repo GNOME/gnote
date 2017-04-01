@@ -47,7 +47,7 @@ namespace utils {
 
 #ifdef DEBUG
 #define DBG_ASSERT(cond, reason)  \
-  ::utils::dbg_assert(cond, #cond, __FILE__, __LINE__, reason)
+  ::utils::dbg_assert(bool(cond), #cond, __FILE__, __LINE__, reason)
 #else
 #define DBG_ASSERT(cond, reason)  \
   assert(cond)

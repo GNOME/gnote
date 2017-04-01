@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -42,10 +42,6 @@
 #include "sharp/exception.hpp"
 #include "sharp/uri.hpp"
 
-#ifdef HAVE_X11_SUPPORT
-#include "libtomboy/tomboyutil.h"
-#endif
-
 namespace sharp {
   class DateTime;
 }
@@ -55,17 +51,41 @@ namespace gnote {
 
     void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
 
-    void show_help(const std::string & filename, const std::string & link_id,
+    void show_help(const Glib::ustring & filename, const Glib::ustring & link_id,
                    GdkScreen *screen, Gtk::Window *parent);
-    void open_url(const std::string & url) throw (Glib::Error);
-    void show_opening_location_error(Gtk::Window * parent, 
-                                     const std::string & url, 
-                                     const std::string & error);
-    std::string get_pretty_print_date(const sharp::DateTime &, bool show_time);
-    std::string get_pretty_print_date(const sharp::DateTime &, bool show_time, bool use_12h);
+    void open_url(const Glib::ustring & url) throw (Glib::Error);
+    void show_opening_location_error(Gtk::Window * parent,
+                                     const Glib::ustring & url,
+                                     const Glib::ustring & error);
+    Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time);
+    Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time, bool use_12h);
 
     void main_context_invoke(const sigc::slot<void> & slot);
     void main_context_call(const sigc::slot<void> & slot);
+
+    Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label);
+    Gtk::Widget * create_popover_submenu_button(const Glib::ustring & submenu, const Glib::ustring & label);
+    Gtk::Box * create_popover_submenu(const Glib::ustring & name);
+    void set_common_popover_widget_props(Gtk::Widget & widget);
+    void set_common_popover_widget_props(Gtk::Box & widget);
+
+    void add_item_to_ordered_map(std::map<int, Gtk::Widget*> & dest, int order, Gtk::Widget *item);
+    void merge_ordered_maps(std::map<int, Gtk::Widget*> & dest, const std::map<int, Gtk::Widget*> & adds);
+
+    class PopoverSubmenu
+    {
+    public:
+      PopoverSubmenu(const Glib::ustring & name)
+        : m_name(name)
+      {}
+
+      const Glib::ustring & name() const
+        {
+          return m_name;
+        }
+    private:
+      const Glib::ustring m_name;
+    };
 
     class GlobalKeybinder
     {
@@ -122,26 +142,26 @@ namespace gnote {
     {
     public:
 //      UriList(const NoteList & notes);
-      UriList(const std::string & data);
+      UriList(const Glib::ustring & data);
       UriList(const Gtk::SelectionData & selection);
-      std::string to_string() const;
-      void get_local_paths(std::list<std::string> &) const;
+      Glib::ustring to_string() const;
+      void get_local_paths(std::list<Glib::ustring> &) const;
       
     private:
-      void load_from_string(const std::string & data);
+      void load_from_string(const Glib::ustring & data);
       void load_from_string_list(const std::vector<Glib::ustring> & items);
     };
 
     class XmlEncoder
     {
     public:
-      static std::string encode(const std::string & source);
+      static Glib::ustring encode(const Glib::ustring & source);
     };
 
     class XmlDecoder
     {
     public:
-      static std::string decode(const std::string & source);
+      static Glib::ustring decode(const Glib::ustring & source);
 
     };
 
@@ -215,26 +235,6 @@ namespace gnote {
       static bool callback(InterruptableTimeout*);
       bool timeout_expired();
       guint m_timeout_id;
-    };
-
-    class ForcedPresentWindow 
-      : public Gtk::ApplicationWindow
-    {
-    public:
-      ForcedPresentWindow(const Glib::ustring & title)
-        : Gtk::ApplicationWindow()
-        {
-          Gtk::ApplicationWindow::set_title(title);
-        }
-
-      void present()
-        {
-#ifdef HAVE_X11_SUPPORT
-          ::tomboy_window_present_hardcore(GTK_WINDOW(gobj()));
-#else
-          Gtk::ApplicationWindow::present();
-#endif
-        }
     };
 
     class ToolMenuButton

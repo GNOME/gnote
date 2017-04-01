@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,8 +19,6 @@
  */
 
 
-#include <string>
-
 #include <glibmm/i18n.h>
 
 #include "sharp/datetime.hpp"
@@ -37,7 +35,7 @@ namespace inserttimestamp {
   const char * INSERT_TIMESTAMP_FORMAT = "format";
 
   bool InsertTimestampPreferences::s_static_inited = false;
-  std::vector<std::string> InsertTimestampPreferences::s_formats;
+  std::vector<Glib::ustring> InsertTimestampPreferences::s_formats;
 
   void InsertTimestampPreferences::_init_static()
   {
@@ -62,7 +60,7 @@ namespace inserttimestamp {
 
     // Get current values
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
-    std::string dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
+    Glib::ustring dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
 
     sharp::DateTime now = sharp::DateTime::now();
 
@@ -82,12 +80,10 @@ namespace inserttimestamp {
     // 2nd column (not visible): date format
     store = Gtk::ListStore::create(m_columns);
 
-    for(std::vector<std::string>::const_iterator iter = s_formats.begin();
-        iter != s_formats.end(); ++iter) {
-
+    for(auto format : s_formats) {
       Gtk::TreeIter treeiter = store->append();
-      treeiter->set_value(0, now.to_string(*iter));
-      treeiter->set_value(1, *iter);
+      treeiter->set_value(0, now.to_string(format));
+      treeiter->set_value(1, format);
     }
 
     scroll = manage(new Gtk::ScrolledWindow());
@@ -124,7 +120,7 @@ namespace inserttimestamp {
         iter != store->children().end(); ++iter) {
 
       const Gtk::TreeRow & tree_row(*iter);
-      std::string value = tree_row[m_columns.format];
+      Glib::ustring value = tree_row[m_columns.format];
       if (dateFormat == value) {
         // Found format in list
         useCustom = false;
@@ -184,7 +180,7 @@ namespace inserttimestamp {
 
     iter = tv->get_selection()->get_selected();
     if (iter) {
-      std::string format;
+      Glib::ustring format;
       iter->get_value(1, format);
       Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(
           INSERT_TIMESTAMP_FORMAT, format);

@@ -1,5 +1,5 @@
 
-SUBDIRS = appdata icons
+SUBDIRS = appdata icons ui
 
 @INTLTOOL_DESKTOP_RULE@
 

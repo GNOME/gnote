@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,29 +46,29 @@ namespace sync {
     virtual void last_synchronized_revision(int) override;
     virtual int get_revision(const NoteBase::Ptr & note) override;
     virtual void set_revision(const NoteBase::Ptr & note, int revision) override;
-    virtual std::map<std::string, std::string> deleted_note_titles() override
+    virtual std::map<Glib::ustring, Glib::ustring> deleted_note_titles() override
       {
         return m_deleted_notes;
       }
     virtual void reset() override;
-    virtual std::string associated_server_id() override
+    virtual Glib::ustring associated_server_id() override
       {
         return m_server_id;
       }
-    virtual void associated_server_id(const std::string &) override;
+    virtual void associated_server_id(const Glib::ustring &) override;
   protected:
     GnoteSyncClient();
     void init(NoteManagerBase &);
-    void parse(const std::string & manifest_path);
+    void parse(const Glib::ustring & manifest_path);
 
-    std::string m_local_manifest_file_path;
+    Glib::ustring m_local_manifest_file_path;
   private:
     static const char *LOCAL_MANIFEST_FILE_NAME;
 
     void note_deleted_handler(const NoteBase::Ptr &);
     void on_changed(const Glib::RefPtr<Gio::File>&, const Glib::RefPtr<Gio::File>&,
                     Gio::FileMonitorEvent);
-    void write(const std::string & manifest_path);
+    void write(const Glib::ustring & manifest_path);
     void read_updated_note_atts(sharp::XmlReader & reader);
     void read_deleted_note_atts(sharp::XmlReader & reader);
     void read_notes(sharp::XmlReader & reader, void (GnoteSyncClient::*read_note_atts)(sharp::XmlReader&));
@@ -76,9 +76,9 @@ namespace sync {
     Glib::RefPtr<Gio::FileMonitor> m_file_watcher;
     sharp::DateTime m_last_sync_date;
     int m_last_sync_rev;
-    std::string m_server_id;
-    std::map<std::string, int> m_file_revisions;
-    std::map<std::string, std::string> m_deleted_notes;
+    Glib::ustring m_server_id;
+    std::map<Glib::ustring, int> m_file_revisions;
+    std::map<Glib::ustring, Glib::ustring> m_deleted_notes;
   };
 
 }

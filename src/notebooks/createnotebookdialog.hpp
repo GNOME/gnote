@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -39,8 +40,8 @@ class CreateNotebookDialog
 public:
   CreateNotebookDialog(Gtk::Window *parent, GtkDialogFlags f);
 
-  std::string get_notebook_name();
-  void set_notebook_name(const std::string &);
+  Glib::ustring get_notebook_name();
+  void set_notebook_name(const Glib::ustring &);
 
 private:
   void on_name_entry_changed();

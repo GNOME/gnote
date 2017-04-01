@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,10 +23,6 @@
 #if HAVE_CONFIG_H
 #include <config.h>
 #endif
-
-#include <boost/format.hpp>
-#include <boost/bind.hpp>
-#include <boost/algorithm/string/find.hpp>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
@@ -52,15 +48,15 @@ namespace gnote {
 
     void show_deletion_dialog (const std::list<Note::Ptr> & notes, Gtk::Window * parent)
     {
-      std::string message;
+      Glib::ustring message;
 
       if(notes.size() == 1) {
-        // TRANSLATORS: %1% will be replaced by note title
-        message = str(boost::format(_("Really delete \"%1%\"?")) % notes.front()->get_title());
+        // TRANSLATORS: %1 will be replaced by note title
+        message = Glib::ustring::compose(_("Really delete \"%1\"?"), notes.front()->get_title());
       }
       else {
-        // TRANSLATORS: %1% is number of notes
-        message = str(boost::format(ngettext("Really delete %1% note?", "Really delete %1% notes?", notes.size())) % notes.size());
+        // TRANSLATORS: %1 is number of notes
+        message = Glib::ustring::compose(ngettext("Really delete %1 note?", "Really delete %1 notes?", notes.size()), notes.size());
       }
 
       utils::HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -140,7 +136,7 @@ namespace gnote {
 
   const int  NoteData::s_noPosition = -1;
 
-  NoteData::NoteData(const std::string & _uri)
+  NoteData::NoteData(const Glib::ustring & _uri)
     : m_uri(_uri)
     , m_cursor_pos(s_noPosition)
     , m_selection_bound_pos(s_noPosition)
@@ -304,7 +300,7 @@ namespace gnote {
   }
 
   Note::Ptr Note::create_existing_note(NoteData *data,
-                                 std::string filepath,
+                                 Glib::ustring filepath,
                                  NoteManager & manager)
   {
     if (!data->change_date().is_valid()) {
@@ -352,7 +348,7 @@ namespace gnote {
   }
 
   
-  Note::Ptr Note::load(const std::string & read_file, NoteManager & manager)
+  Note::Ptr Note::load(const Glib::ustring & read_file, NoteManager & manager)
   {
     NoteData *data = new NoteData(url_from_path(read_file));
     NoteArchiver::read(read_file, *data);
@@ -477,7 +473,7 @@ namespace gnote {
 
   void Note::remove_tag(Tag & tag)
   {
-    std::string tag_name = tag.normalized_name();
+    Glib::ustring tag_name = tag.normalized_name();
     NoteData::TagMap & thetags(m_data.data().tags());
     NoteData::TagMap::iterator iter;
 
@@ -551,7 +547,7 @@ namespace gnote {
   }
 
 
-  void Note::process_rename_link_update(const std::string & old_title)
+  void Note::process_rename_link_update(const Glib::ustring & old_title)
   {
     NoteBase::List linking_notes = manager().get_notes_linking_to(old_title);
     const Note::Ptr self = static_pointer_cast<Note>(shared_from_this());
@@ -563,8 +559,9 @@ namespace gnote {
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
         NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, self);
-        dlg->signal_response().connect(
-          boost::bind(sigc::mem_fun(*this, &Note::process_rename_link_update_end), _1, dlg, old_title, self));
+        dlg->signal_response().connect([this, dlg, old_title, self](int response) {
+          process_rename_link_update_end(response, dlg, old_title, self);
+        });
         dlg->present();
         get_window()->editor()->set_editable(false);
       }
@@ -584,7 +581,7 @@ namespace gnote {
   }
 
   void Note::process_rename_link_update_end(int response, Gtk::Dialog *dialog,
-                                            const std::string & old_title, const Note::Ptr & self)
+                                            const Glib::ustring & old_title, const Note::Ptr & self)
   {
     if(dialog) {
       NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
@@ -617,8 +614,8 @@ namespace gnote {
 
   bool Note::contains_text(const Glib::ustring & text)
   {
-    const std::string text_lower = text.lowercase();
-    const std::string text_content_lower = text_content().lowercase();
+    const Glib::ustring text_lower = text.lowercase();
+    const Glib::ustring text_content_lower = text_content().lowercase();
     return text_content_lower.find(text_lower) != Glib::ustring::npos;
   }
 
@@ -631,7 +628,7 @@ namespace gnote {
     if (!contains_text(old_title))
       return;
 
-    const std::string old_title_lower = old_title.lowercase();
+    const Glib::ustring old_title_lower = old_title.lowercase();
 
     const NoteTag::Ptr link_tag = m_tag_table->get_link_tag();
 
@@ -690,7 +687,7 @@ namespace gnote {
     return m_buffer->get_slice(m_buffer->begin(), m_buffer->end());
   }
 
-  void Note::set_text_content(const std::string & text)
+  void Note::set_text_content(const Glib::ustring & text)
   {
     if(m_buffer) {
       m_buffer->set_text(text);
@@ -733,7 +730,7 @@ namespace gnote {
   }
 
 
-  NoteWindow * Note::get_window()
+  NoteWindow * Note::create_window()
   {
     if(!m_window) {
       m_window = new NoteWindow(*this);
@@ -785,18 +782,18 @@ namespace gnote {
 
   bool Note::is_pinned() const
   {
-    std::string pinned_uris = Preferences::obj()
+    Glib::ustring pinned_uris = Preferences::obj()
       .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(Preferences::MENU_PINNED_NOTES);
-    return (boost::find_first(pinned_uris, uri()));
+    return pinned_uris.find(uri()) != Glib::ustring::npos;
   }
 
 
   void Note::set_pinned(bool pinned) const
   {
-    std::string new_pinned;
+    Glib::ustring new_pinned;
     Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
-    std::string old_pinned = settings->get_string(Preferences::MENU_PINNED_NOTES);
-    bool is_currently_pinned = (boost::find_first(old_pinned, uri()));
+    Glib::ustring old_pinned = settings->get_string(Preferences::MENU_PINNED_NOTES);
+    bool is_currently_pinned = old_pinned.find(uri()) != Glib::ustring::npos;
 
     if (pinned == is_currently_pinned)
       return;
@@ -805,11 +802,9 @@ namespace gnote {
       new_pinned = uri() + " " + old_pinned;
     } 
     else {
-      std::vector<std::string> pinned_split;
+      std::vector<Glib::ustring> pinned_split;
       sharp::string_split(pinned_split, old_pinned, " \t\n");
-      for(std::vector<std::string>::const_iterator iter = pinned_split.begin();
-          iter != pinned_split.end(); ++iter) {
-        const std::string & pin(*iter);
+      for(auto pin : pinned_split) {
         if (!pin.empty() && (pin != uri())) {
           new_pinned += pin + " ";
         }
@@ -828,8 +823,9 @@ namespace gnote {
         if(!enabled()) {
           m_focus_widget = window->get_focus();
         }
+        m_window->host()->enabled(enabled());
         m_window->enabled(enabled());
-        if(enabled()) {
+        if(enabled() && m_focus_widget) {
           window->set_focus(*m_focus_widget);
         }
       }

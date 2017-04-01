@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -23,7 +23,7 @@
 
 #include <map>
 
-#include <glibmm.h>
+#include <glibmm/stringutils.h>
 
 #include "sharp/map.hpp"
 #include "sharp/string.hpp"
@@ -34,7 +34,7 @@ namespace gnote {
 
   const char * Tag::SYSTEM_TAG_PREFIX = "system:";
 
-  Tag::Tag(const std::string & _name)
+  Tag::Tag(const Glib::ustring & _name)
     : m_issystem(false)
     , m_isproperty(false)
   {
@@ -58,7 +58,7 @@ namespace gnote {
   }
 
 
-  void Tag::set_name(const std::string & value)
+  void Tag::set_name(const Glib::ustring & value)
   {
     if (!value.empty()) {
       Glib::ustring trimmed_name = sharp::string_trim(value);
@@ -68,7 +68,7 @@ namespace gnote {
         if(Glib::str_has_prefix(m_normalized_name, SYSTEM_TAG_PREFIX)) {
           m_issystem = true;
         }
-        std::vector<std::string> splits;
+        std::vector<Glib::ustring> splits;
         sharp::string_split(splits, value, ":");
         m_isproperty  = (splits.size() >= 3);
       }

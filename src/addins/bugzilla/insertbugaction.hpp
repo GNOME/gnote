@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,8 +21,6 @@
 #ifndef __BUGZILLA_INSERT_BUG_ACTION_HPP_
 #define __BUGZILLA_INSERT_BUG_ACTION_HPP_
 
-#include <string>
-
 #include "undo.hpp"
 
 #include "bugzillalink.hpp"
@@ -32,7 +31,7 @@ class InsertBugAction
   : public gnote::SplitterAction
 {
 public:
-  InsertBugAction(const Gtk::TextIter & start, const std::string & id,
+  InsertBugAction(const Gtk::TextIter & start, const Glib::ustring & id,
                   const BugzillaLink::Ptr & tag);
   void undo (Gtk::TextBuffer * buffer);
   void redo (Gtk::TextBuffer * buffer);
@@ -43,7 +42,7 @@ public:
 private:
   BugzillaLink::Ptr m_tag;
   int               m_offset;
-  std::string       m_id;
+  Glib::ustring     m_id;
 };
 
 

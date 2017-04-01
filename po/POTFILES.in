@@ -1,10 +1,10 @@
 data/appdata/gnote.appdata.xml.in
+[type: gettext/glade]data/ui/shortcuts-gnote.ui
 data/gnote.desktop.in.in
 data/org.gnome.gnote.gschema.xml.in
 src/actionmanager.cpp
 src/addininfo.cpp
 src/addinmanager.cpp
-src/addins/backlinks/backlinkmenuitem.cpp
 src/addins/backlinks/backlinks.desktop.in.in
 src/addins/backlinks/backlinksnoteaddin.cpp
 src/addins/bugzilla/bugzilla.desktop.in.in
@@ -17,13 +17,13 @@ src/addins/exporttohtml/exporttohtmlnoteaddin.cpp
 src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp
 src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in
 src/addins/fixedwidth/fixedwidth.desktop.in.in
-src/addins/fixedwidth/fixedwidthmenuitem.cpp
+src/addins/fixedwidth/fixedwidthnoteaddin.cpp
 src/addins/inserttimestamp/inserttimestamp.desktop.in.in
 src/addins/inserttimestamp/inserttimestampnoteaddin.cpp
 src/addins/inserttimestamp/inserttimestamppreferences.cpp
 src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp
-src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp
 src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in
+src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp
 src/addins/noteoftheday/noteoftheday.cpp
 src/addins/noteoftheday/noteoftheday.desktop.in.in
 src/addins/noteoftheday/noteofthedaypreferences.cpp
@@ -33,20 +33,19 @@ src/addins/readonly/readonly.desktop.in.in
 src/addins/readonly/readonlynoteaddin.cpp
 src/addins/replacetitle/replacetitle.desktop.in.in
 src/addins/replacetitle/replacetitlenoteaddin.cpp
-src/addins/specialnotes/specialnotes.desktop.in.in
 src/addins/specialnotes/specialnotesapplicationaddin.cpp
+src/addins/specialnotes/specialnotes.desktop.in.in
 src/addins/statistics/statisticsapplicationaddin.cpp
 src/addins/statistics/statistics.desktop.in.in
 src/addins/statistics/statisticswidget.cpp
 src/addins/stickynoteimport/stickynoteimport.desktop.in.in
 src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp
-src/addins/tableofcontents/tableofcontentsaction.cpp
 src/addins/tableofcontents/tableofcontents.desktop.in.in
 src/addins/tableofcontents/tableofcontentsnoteaddin.cpp
 src/addins/todo/todo.desktop.in.in
 src/addins/tomboyimport/tomboyimport.desktop.in.in
 src/addins/underline/underline.desktop.in.in
-src/addins/underline/underlinemenuitem.cpp
+src/addins/underline/underlinenoteaddin.cpp
 src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp
 src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in
 src/dbus/remotecontrol-client-glue.cpp
@@ -54,6 +53,7 @@ src/dbus/remotecontrol.cpp
 src/gnote.cpp
 src/iconmanager.cpp
 src/noteaddin.cpp
+src/notebase.cpp
 src/notebooks/createnotebookdialog.cpp
 src/notebooks/notebookapplicationaddin.cpp
 src/notebooks/notebook.cpp
@@ -64,9 +64,8 @@ src/notebooks/notebooknoteaddin.cpp
 src/notebooks/specialnotebooks.cpp
 src/notebuffer.cpp
 src/note.cpp
-src/notebase.cpp
-src/notemanager.cpp
 src/notemanagerbase.cpp
+src/notemanager.cpp
 src/noterenamedialog.cpp
 src/notewindow.cpp
 src/preferencesdialog.cpp
@@ -84,6 +83,5 @@ src/synchronization/gnotesyncclient.cpp
 src/synchronization/syncdialog.cpp
 src/synchronization/syncmanager.cpp
 src/synchronization/syncutils.cpp
-src/tray.cpp
 src/utils.cpp
 src/watchers.cpp

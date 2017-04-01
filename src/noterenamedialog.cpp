@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,7 +61,7 @@ gint ModelColumnRecord::get_column_selected_num() const
     return COLUMN_BOOL;
 }
 
-const Gtk::TreeModelColumn<std::string> & ModelColumnRecord::get_column_title()
+const Gtk::TreeModelColumn<Glib::ustring> & ModelColumnRecord::get_column_title()
                                             const
 {
     return m_column_title;
@@ -118,7 +118,7 @@ void ModelFiller::operator()(const NoteBase::Ptr & note)
 }
 
 NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
-                                   const std::string & old_title,
+                                   const Glib::ustring & old_title,
                                    const NoteBase::Ptr & renamed_note)
   : Gtk::Dialog(_("Rename Note Links?"),
                 *dynamic_cast<Gtk::Window*>(static_pointer_cast<Note>(renamed_note)->get_window()->host()),
@@ -349,7 +349,7 @@ bool NoteRenameDialog::on_notes_model_foreach_iter_select(
 void NoteRenameDialog::on_notes_view_row_activated(
                          const Gtk::TreePath & p,
                          Gtk::TreeView::Column *,
-                         const std::string & old_title)
+                         const Glib::ustring & old_title)
 {
   const Gtk::TreeModel::iterator iter = m_notes_model->get_iter(p);
   if (!iter)
@@ -378,7 +378,7 @@ void NoteRenameDialog::on_select_all_button_clicked(bool select)
       select));
 }
 
-void NoteRenameDialog::on_toggle_cell_toggled(const std::string & p)
+void NoteRenameDialog::on_toggle_cell_toggled(const Glib::ustring & p)
 {
   const Gtk::TreeModel::iterator iter = m_notes_model->get_iter(p);
   if (!iter)

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@
 #define _SYNCHRONIZATION_SYNCUTILS_HPP_
 
 
-#include <string>
 #include <vector>
 
 #include "note.hpp"
@@ -69,16 +68,16 @@ namespace sync {
   class NoteUpdate
   {
   public:
-    std::string m_xml_content;//Empty if deleted?
-    std::string m_title;
-    std::string m_uuid; //needed?
+    Glib::ustring m_xml_content;//Empty if deleted?
+    Glib::ustring m_title;
+    Glib::ustring m_uuid; //needed?
     int m_latest_revision;
 
-    NoteUpdate(const std::string & xml_content, const std::string & title, const std::string & uuid, int latest_revision);
+    NoteUpdate(const Glib::ustring & xml_content, const Glib::ustring & title, const Glib::ustring & uuid, int latest_revision);
     bool basically_equal_to(const Note::Ptr & existing_note);
   private:
-    std::string get_inner_content(const std::string & full_content_element) const;
-    bool compare_tags(const std::map<std::string, Tag::Ptr> set1, const std::map<std::string, Tag::Ptr> set2) const;
+    Glib::ustring get_inner_content(const Glib::ustring & full_content_element) const;
+    bool compare_tags(const std::map<Glib::ustring, Tag::Ptr> set1, const std::map<Glib::ustring, Tag::Ptr> set2) const;
   };
 
 
@@ -88,14 +87,14 @@ namespace sync {
   public:
     bool is_fuse_enabled();
     bool enable_fuse();
-    std::string find_first_executable_in_path(const std::vector<std::string> & executableNames);
-    std::string find_first_executable_in_path(const std::string & executableName);
+    Glib::ustring find_first_executable_in_path(const std::vector<Glib::ustring> & executableNames);
+    Glib::ustring find_first_executable_in_path(const Glib::ustring & executableName);
   private:
     static const char *common_paths[];
     static SyncUtils s_obj;
 
-    std::string m_guisu_tool;
-    std::string m_modprobe_tool;
+    Glib::ustring m_guisu_tool;
+    Glib::ustring m_modprobe_tool;
   };
 
 }

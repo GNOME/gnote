@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 #define _SHARP_TIMESPAN_HPP_
 
 
-#include <string>
+#include <glibmm/ustring.h>
 
 
 namespace sharp {
@@ -59,10 +59,10 @@ namespace sharp {
     double total_minutes() const;
     double total_seconds() const;
     double total_milliseconds() const;
-    std::string string() const;
+    Glib::ustring string() const;
     TimeSpan operator-(const TimeSpan & ts);
 
-    static TimeSpan parse(const std::string & s);
+    static TimeSpan parse(const Glib::ustring & s);
   private:
     int _total_hours() const;
     int _total_minutes() const;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -33,17 +33,17 @@
 
 namespace sharp {
 
-  std::string xmlchar_to_string(const xmlChar * s)
+  Glib::ustring xmlchar_to_string(const xmlChar * s)
   {
     return (s ? (const char*)s : "");
   }
 
-  std::string xmlchar_to_string(xmlChar * s, bool freemem)
+  Glib::ustring xmlchar_to_string(xmlChar * s, bool freemem)
   {
     if(s == NULL) {
       return "";
     }
-    std::string value = (const char*)s;
+    Glib::ustring value = (const char*)s;
     if(freemem) {
       xmlFree(s);
     }
@@ -57,7 +57,7 @@ namespace sharp {
     m_error = true;
   }
 
-  XmlReader::XmlReader(const std::string & filename)
+  XmlReader::XmlReader(const Glib::ustring & filename)
     : m_reader(NULL)
     , m_error(false)
   {
@@ -78,14 +78,12 @@ namespace sharp {
   /** load the buffer from the s
    *  The parser is reset.
    */
-  void XmlReader::load_buffer(const std::string &s)
+  void XmlReader::load_buffer(const Glib::ustring &s)
   {
     close();
-    /** we copy the string. It shouldn't be a big deal as the strings
-     * are copy on write.
-     */
     m_buffer = s;
-    m_reader = xmlReaderForMemory(m_buffer.c_str(), m_buffer.size(), "",
+    // use bytes() instead of size(), because of multibyte Unicode characters (need proper C-string length
+    m_reader = xmlReaderForMemory(m_buffer.c_str(), m_buffer.bytes(), "",
                                   "UTF-8", 0);//XML_PARSE_RECOVER);
     m_error = (m_reader == NULL);
     if(m_reader) {
@@ -113,32 +111,37 @@ namespace sharp {
     return (xmlReaderTypes)type;
   }
   
-  std::string XmlReader::get_name()
+  bool XmlReader::is_empty_element()
+  {
+    return xmlTextReaderIsEmptyElement(m_reader) == 1;
+  }
+
+  Glib::ustring XmlReader::get_name()
   {
     return xmlchar_to_string(xmlTextReaderConstName(m_reader));
   }
 
-  std::string XmlReader::get_attribute(const char * name)
+  Glib::ustring XmlReader::get_attribute(const char * name)
   {
     return xmlchar_to_string(xmlTextReaderGetAttribute(m_reader, (const xmlChar*)name), true);
   }
 
-  std::string XmlReader::get_value()
+  Glib::ustring XmlReader::get_value()
   {
     return xmlchar_to_string(xmlTextReaderConstValue(m_reader));
   }
 
-  std::string XmlReader::read_string()
+  Glib::ustring XmlReader::read_string()
   {
     return xmlchar_to_string(xmlTextReaderReadString(m_reader), true);
   }
 
-  std::string XmlReader::read_inner_xml()
+  Glib::ustring XmlReader::read_inner_xml()
   {
     return xmlchar_to_string(xmlTextReaderReadInnerXml(m_reader), true);
   }
 
-  std::string XmlReader::read_outer_xml()
+  Glib::ustring XmlReader::read_outer_xml()
   {
     return xmlchar_to_string(xmlTextReaderReadOuterXml(m_reader), true);
   }

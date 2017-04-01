@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,11 +18,16 @@
  */
 
 
+#include "base/macros.hpp"
 #include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "notewindow.hpp"
+#include "sharp/string.hpp"
 
 namespace gnote {
+
+int MainWindow::s_use_client_side_decorations = -1;
+
 
 MainWindow *MainWindow::get_owning(Gtk::Widget & widget)
 {
@@ -48,7 +53,7 @@ void MainWindow::present_in(MainWindow & win, const Note::Ptr & note)
 
 MainWindow *MainWindow::present_active(const Note::Ptr & note)
 {
-  if(note && note->get_window()->host()
+  if(note && note->has_window() && note->get_window()->host()
      && note->get_window()->host()->is_foreground(*note->get_window())) {
     MainWindow *win = dynamic_cast<MainWindow*>(note->get_window()->host());
     win->present();
@@ -85,7 +90,12 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
   }
   Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
   if(false == settings->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW)) {
-    win = dynamic_cast<MainWindow*>(note->get_window()->host());
+    if (note->has_window()) {
+      win = dynamic_cast<MainWindow*>(note->get_window()->host());
+    }
+    else {
+      win = &IGnote::obj().get_window_for_note();
+    }
   }
   if(!win) {
     win = &IGnote::obj().new_main_window();
@@ -96,11 +106,42 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
   return win;
 }
 
-
-MainWindow::MainWindow(const std::string & title)
-  : utils::ForcedPresentWindow(title)
-  , m_close_on_esc(false)
+bool MainWindow::use_client_side_decorations()
 {
+  if(s_use_client_side_decorations < 0) {
+    Glib::ustring setting = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(
+      Preferences::USE_CLIENT_SIDE_DECORATIONS);
+    if(setting == "enabled") {
+      s_use_client_side_decorations = 1;
+    }
+    else if(setting == "disabled") {
+      s_use_client_side_decorations = 0;
+    }
+    else {
+      s_use_client_side_decorations = 0;
+      std::vector<Glib::ustring> desktops;
+      sharp::string_split(desktops, setting, ",");
+      const char *current_desktop = std::getenv("DESKTOP_SESSION");
+      if (current_desktop) {
+        Glib::ustring current_de = Glib::ustring(current_desktop).lowercase();
+        FOREACH(Glib::ustring de, desktops) {
+          Glib::ustring denv = Glib::ustring(de).lowercase();
+          if(current_de.find(denv) != Glib::ustring::npos) {
+            s_use_client_side_decorations = 1;
+          }
+        }
+      }
+    }
+  }
+
+  return s_use_client_side_decorations;
+}
+
+
+MainWindow::MainWindow(const Glib::ustring & title)
+  : m_close_on_esc(false)
+{
+  set_title(title);
 }
 
 }

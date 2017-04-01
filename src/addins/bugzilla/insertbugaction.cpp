@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,7 +27,7 @@ using gnote::InsertAction;
 
 namespace bugzilla {
 
-  InsertBugAction::InsertBugAction(const Gtk::TextIter & start, const std::string & id,
+  InsertBugAction::InsertBugAction(const Gtk::TextIter & start, const Glib::ustring & id,
                                    const BugzillaLink::Ptr & tag)
     : m_tag(tag)
     , m_offset(start.get_offset())

@@ -1,3 +1,294 @@
+3.24.0 - "If at first you do succeed, try to hide your astonishment" - 2017/03/27
+
+Fixes:
+  * Left align items in popovers and increase vertical spacing (#778823)
+  * Fix --background option
+  * Make D-Bus APIs for opening notes respect new window setting (#778871)
+  * Change default for window to not autosize (#778822)
+  * Fix no icon for Gnote windows in some WMs (#762001)
+  * Use icon for Create Note button (#704116)
+  * Fix crash in search
+
+Translations:
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - Danish (da)
+    - German (de)
+    - Hungarian (hu)
+    - Indonesian (id)
+    - Italian (it)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Swedish (sv)
+    - Turkish (tr)
+
+3.23.0 - 2017/02/26
+
+New Features:
+  * New optional dependency: UnitTest++ (required only for running gnote tests)
+  * Removed dependency: boost (all of it)
+  * Gnote now internally uses Unicode strings for all data
+
+Fixes:
+  * Fix indentation sometimes getting is lost after restart (#773630)
+  * Use %1 style placeholders instead of %1% in translatable strings (#774262)
+  * Make app menu item ordering consistent with GNOME (#772009)
+  * Use open-menu-symbolic icon for menu (#775320)
+
+Translations:
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - Danish (da)
+    - French (fr)
+    - Indonesian (id)
+    - Italian (it)
+    - Polish (pl)
+    - Serbian (sr, sr@latin)
+    - Spanish (es)
+    - Swedish (sv)
+  * Updated Swedish manual (sv)
+
+3.22.0 - "Good artists copy, great artists steal. -- Pablo Picasso" - 2016/09/25
+
+Translations:
+  * Updated translations:
+    - German (de)
+    - Serbian (sr, sr@latin)
+    - Lithuanian (lt)
+
+3.21.1 - 2016/09/18
+
+New Features:
+  * Shell search provider will search only in note titles (#765894)
+  * Change accelerator for Back button to <Ctrl>,
+
+Fixes:
+  * Fix build against Glibmm 2.21 (#770541)
+  * Fix memory leak in TrieTree (#770056)
+
+Translations:
+  * Updated translations:
+    - Catalan (ca)
+    - Czech (cs)
+    - Hungarian (hu)
+    - Polish (pl)
+    - Serbian (sr, sr@latin)
+    - Spanish (es)
+    - Swedish (sv)
+  * Updated Hungarian manual (hu)
+
+3.21.0 -  2016/08/20
+
+New Features:
+  * GTK+ 3.20 is required
+  * Undo will now undo last user action as single unit (#747202)
+  * Added shortcuts window
+  * Added <Ctrl>Left accelerator to go from note to main window
+
+Fixes:
+  * Enter key will find next match when searching in note (#700624)
+  * Fixed formatting buttons when selection is mixed formatting (#702248)
+  * Fixed crash on first run when data migration is required (#765791)
+  * Fixed disabling application plugins
+  * Fixed Windows size shrinking when switching from/to note (#764464)
+  * Fixed tab key activating search, while it shouldn't (#767834)
+  * Escape will close search when search entry has focus
+  * Make --search always show main window in search mode (#769906)
+
+Translations:
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - German (de)
+    - Hungarian (hu)
+    - Indonesian (id)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Portuguese (pt)
+    - Spanish (es)
+    - Swedish (sv)
+
+3.20.0 - Easter is comming - 2016/03/26
+
+New Features:
+  * Text menu now uses popover
+
+Translations:
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - German (de)
+    - Hungarian (hu)
+    - Italian (it)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Serbian (sr, sr@latin)
+    - Spanish (es)
+    - Swedish (sv)
+    - Turkish (tr)
+  * Updated Greek manual (el)
+
+3.19.0 - 2016/01/31
+
+New Features:
+  * GTK+ 3.16 is required
+  * Gtkmm 3.18 is required
+  * C++11 is required
+  * configure option --with-x11-support was removed
+  * Use popover for gear menu
+
+Translations:
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - German (de)
+    - Greek (el)
+    - Italian (it)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Serbian (sr, sr@latin)
+    - Spanish (es)
+
+3.18.0 - "Life sucks, but death doesn't put out at all..." - 2015/09/27
+
+New Features:
+  * Allow closing window via Ctrl+Q (#755399)
+
+Translations:
+  * Updated translations:
+    - Indonesian (id)
+    - Lithuanian (lt)
+    - Portuguese (pt)
+
+3.17.1 - 2015/09/13
+
+New Features:
+  * Handle ircs URLs (#754940)
+
+Translations:
+  * Updated translations:
+    - Polish (pl)
+  * Updated German manual (de)
+
+3.17.0 - 2015/07/12
+
+New Features:
+  * Allow to configure, when client side decorations are used (#748121)
+  * Drop dependency on gnome-common
+  * Ident selected lines on tab (#632457)
+
+Fixes:
+  * Do not lose identation on first item when double identing (#749658)
+  * Fix crash when DESKTOP_SESSION environment variable is not set (#752024)
+  * Fix crash when quiting (#751427)
+
+Translations:
+  * New translations:
+    - Occitan (oc)
+  * Updated translations:
+    - Catalan (ca)
+    - Czech (cs)
+    - Hungarian (hu)
+    - Polish (pl)
+    - Spanish (es)
+    - Swedish (sv)
+  * Updated Spanish manual (es)
+  * Ipdated German manual (de)
+
+3.16.0 - "If you continually give you will continually have" - 2015/03/29
+
+New Features:
+  * Updated manual
+
+Translations:
+  * New translations:
+    - Bosnian (bs)
+    - Slovak (sk)
+  * Updated translations:
+    - Swedish (sv)
+  * Updated manuals:
+    - Czech (cs)
+    - Lithuanian (lt)
+    - Spanish (es)
+    - Swedish (sv)
+
+3.15.1 - 2015/03/07
+
+New Features:
+  * Manual updates
+
+Fixes:
+  * Updated boost.m4 (#745160)
+
+Translations:
+  * Updated translations:
+    - Brazilian Portuguese (pt_BR)
+
+3.15.0 - 2015/02/16
+
+New Features:
+  * Remove status icon
+  * Remove builtin key binding
+  * Move notebook selection from toolbar to action menu
+
+Fixes:
+  * Manual fixes (#700422)
+  * TOC copyright notice fixes (#737918)
+  * Fix some typos
+  * Fix crash when disabling note actions (#742657)
+  * Fix toolbar in note view
+
+Translations:
+  * Updated translations:
+    - Basque (eu)
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - Hungarian (hu)
+    - Kannada (kn)
+    - Lithuanian (lt)
+    - Polish (pl)
+    - Serbian (sr, sr@latin)
+    - Turkish (tr)
+  * Updated Czech manual (cs)
+  * Updated Spanish manual (es)
+
+3.14.0 - "System is only as robust as its least reliable component" - 2014/09/26
+
+New Features:
+  * Increase the default size of note window
+  * Add option to autosize note window (#709699)
+
+Fixes:
+  * Optimize auto-linking (#729832)
+  * Fix link action not always sensitive when text is selected
+  * Timeout when started as shell search provider (#736472)
+  * Fix bullet not removed on delete key
+  * Fix removing bullet on enter at the start of bulleted line (#702018)
+
+Translations:
+  * Added translations:
+    - Basque (eu)
+  * Updated translations:
+    - Assamese (as)
+    - Bengali (India) (bn_IN)
+    - Brazilian Portuguese (pt_BR)
+    - Czech (cs)
+    - German (de)
+    - Gujarati (gu)
+    - Hindi (hi)
+    - Indonesian (id)
+    - Kannada (kn)
+    - Lithuanian (lt)
+    - Marathi (mr)
+    - Polish (pl)
+    - Spanish (es)
+    - Tamil (ta)
+    - Telugu (te)
+  * Added Hungarian manual (hu)
+  * Updated Lithuanian manual
+
 3.13.0 - 2014/05/01
 
 New Features:

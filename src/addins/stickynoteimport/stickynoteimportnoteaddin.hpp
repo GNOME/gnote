@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,8 +20,6 @@
 
 #ifndef __STICKYNOTE_IMPORT_NOTE_ADDIN_HPP_
 #define __STICKYNOTE_IMPORT_NOTE_ADDIN_HPP_
-
-#include <string>
 
 #include <libxml/tree.h>
 
@@ -69,12 +67,12 @@ private:
   void check_for_first_run(gnote::NoteManager & manager);
   xmlDocPtr get_sticky_xml_doc();
   void import_button_clicked(gnote::NoteManager & manager);
-  void show_no_sticky_xml_dialog(const std::string & xml_path);
+  void show_no_sticky_xml_dialog(const Glib::ustring & xml_path);
   void show_results_dialog(int numNotesImported, int numNotesTotal);
   void import_notes(xmlDocPtr xml_doc, bool showResultsDialog, gnote::NoteManager & manager);
   bool create_note_from_sticky(const char * stickyTitle, const char* content,
                                gnote::NoteManager & manager);
-  void show_message_dialog(const std::string & title, const std::string & message, 
+  void show_message_dialog(const Glib::ustring & title, const Glib::ustring & message,
                            Gtk::MessageType messageType);
 
   Gtk::ImageMenuItem *m_item;
@@ -83,7 +81,7 @@ private:
   static bool s_static_inited;
   static bool s_sticky_file_might_exist;
   static bool s_sticky_file_existence_confirmed;
-  static std::string s_sticky_xml_path;
+  static Glib::ustring s_sticky_xml_path;
 };
 
 

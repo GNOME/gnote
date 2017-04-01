@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,6 @@
 #include "debug.hpp"
 #include "iconmanager.hpp"
 #include "ignote.hpp"
-#include "search.hpp"
 #include "searchprovider.hpp"
 
 
@@ -87,19 +86,24 @@ void SearchProvider::on_method_call(const Glib::RefPtr<Gio::DBus::Connection> &,
 
 std::vector<Glib::ustring> SearchProvider::GetInitialResultSet(const std::vector<Glib::ustring> & terms)
 {
-  std::set<gnote::Note::Ptr> final_result;
-  gnote::Search search(m_manager);
-  gnote::notebooks::Notebook::Ptr notebook;
-  for(std::vector<Glib::ustring>::const_iterator query = terms.begin(); query != terms.end(); ++query) {
-    gnote::Search::ResultsPtr results = search.search_notes(*query, false, notebook);
-    for(gnote::Search::Results::iterator iter = results->begin(); iter != results->end(); ++iter) {
-      final_result.insert(iter->second);
+  std::set<gnote::NoteBase::Ptr> final_result;
+  std::vector<Glib::ustring> search_terms;
+  search_terms.reserve(terms.size());
+  for(auto & term : terms) {
+    search_terms.push_back(term.casefold());
+  }
+  for(auto note : m_manager.get_notes()) {
+    auto title = note->get_title().casefold();
+    for(auto term : search_terms) {
+      if(title.find(term) != Glib::ustring::npos) {
+        final_result.insert(note);
+      }
     }
   }
 
   std::vector<Glib::ustring> ret;
-  for(std::set<gnote::Note::Ptr>::iterator iter = final_result.begin(); iter != final_result.end(); ++iter) {
-    ret.push_back((*iter)->uri());
+  for(auto note : final_result) {
+    ret.push_back(note->uri());
   }
 
   return ret;
@@ -228,7 +232,7 @@ Glib::VariantContainerBase SearchProvider::LaunchSearch_stub(const Glib::Variant
 
 gchar *SearchProvider::get_icon()
 {
-  if(m_note_icon == 0) {
+  if(!m_note_icon) {
     Gtk::IconInfo info = gnote::IconManager::obj().lookup_icon(gnote::IconManager::NOTE, 48);
     m_note_icon = Gio::Icon::create(info.get_filename());
   }

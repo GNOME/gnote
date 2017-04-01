@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,6 @@
  */
 
 
-#include <boost/bind.hpp>
-
 #include "debug.hpp"
 #include "syncui.hpp"
 
@@ -32,10 +30,9 @@ namespace sync {
   {
   }
 
-  void SyncUI::note_synchronized_th(const std::string & noteTitle, NoteSyncType type)
+  void SyncUI::note_synchronized_th(const Glib::ustring & noteTitle, NoteSyncType type)
   {
-    utils::main_context_invoke(boost::bind(
-      sigc::mem_fun(*this, &SyncUI::note_synchronized), noteTitle, type));
+    utils::main_context_invoke([this, noteTitle, type]() { note_synchronized(noteTitle, type); });
   }
 
 

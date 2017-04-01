@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011 Aurimas Cernius
+ * Copyright (C) 2011,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -67,7 +67,7 @@ namespace sharp {
 
   void PropertyEditor::on_changed()
   {
-    std::string txt = static_cast<Gtk::Entry &>(m_widget).get_text();
+    Glib::ustring txt = static_cast<Gtk::Entry &>(m_widget).get_text();
     m_settings->set_string(m_key, txt);
   }
 

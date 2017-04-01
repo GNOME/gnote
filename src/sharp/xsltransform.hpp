@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,7 +30,6 @@
 #define __SHARP_XSLTRANSFORM_HPP_
 
 #include <map>
-#include <string>
 
 #include <libxml/tree.h>
 #include <libxslt/transform.h>
@@ -50,7 +49,7 @@ public:
   ~XslTransform();
 
   /** load the stylesheet */
-  void load(const std::string &);
+  void load(const Glib::ustring &);
   /** run the XLS transformation */
   void transform(xmlDocPtr, const XsltArgumentList &, StreamWriter &, const XmlResolver &);
 

@@ -4,9 +4,13 @@ _Name=Table of Contents
 _Description=Navigate long structured notes. Set section and subsection headings in your note, and the Table of Contents will show in a menu.
 _Authors=Luc Pionchon
 Category=Tools
-Version=0.99.0
+Version=1.2.0
 DefaultEnabled=false
-Module=tableofcontents
+Module=libtableofcontents
 _Copyright=© 2013 Luc Pionchon
 LibgnoteRelease=@LIBGNOTE_RELEASE@
 LibgnoteVersionInfo=@LIBGNOTE_VERSION_INFO@
+[Actions]
+actions_void=tableofcontents-heading1,tableofcontents-heading2,tableofcontents-help
+actions_int=tableofcontents-goto-heading
+non_modifying_actions=tableofcontents-goto-heading,tableofcontents-help

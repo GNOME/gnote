@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,7 +29,7 @@
 #ifndef __SHARP_DATETIME_HPP_
 #define __SHARP_DATETIME_HPP_ 
 
-#include <string>
+#include <glibmm/ustring.h>
 
 #include "sharp/datetime.hpp"
 
@@ -37,8 +38,8 @@ namespace sharp {
   class XmlConvert
   {
   public:
-    static DateTime to_date_time(const std::string & date);
-    static std::string to_string(const DateTime & date);
+    static DateTime to_date_time(const Glib::ustring & date);
+    static Glib::ustring to_string(const DateTime & date);
   };
 
 }

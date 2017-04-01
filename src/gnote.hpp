@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,8 +24,6 @@
 #ifndef _GNOTE_HPP_
 #define _GNOTE_HPP_
 
-#include <string>
-
 #include <glibmm/optioncontext.h>
 #include <glibmm/ustring.h>
 #include <gtkmm/icontheme.h>
@@ -35,12 +33,7 @@
 #include "actionmanager.hpp"
 #include "ignote.hpp"
 #include "remotecontrolproxy.hpp"
-#include "tray.hpp"
 #include "synchronization/syncdialog.hpp"
-
-#ifdef HAVE_X11_SUPPORT
-#include "keybinder.hpp"
-#endif
 
 namespace gnote {
 
@@ -66,6 +59,10 @@ public:
     {
       return m_background;
     }
+  bool shell_search()
+    {
+      return m_shell_search;
+    }
   void parse(int &argc, gchar ** & argv);
 
   static gboolean parse_func(const gchar *option_name,
@@ -75,7 +72,7 @@ public:
 private:
   void        print_version();
   template <typename T>
-  bool        display_note(T & remote, std::string uri);
+  bool        display_note(T & remote, Glib::ustring uri);
   template <typename T>
   void execute(T & remote);
 
@@ -83,21 +80,22 @@ private:
 
   bool        m_use_panel;
   bool        m_background;
+  bool        m_shell_search;
   gchar *     m_note_path;
   bool        m_do_search;
-  std::string m_search;
+  Glib::ustring m_search;
   bool        m_show_version;
   bool        m_do_new_note;
-  std::string m_new_note_name;
+  Glib::ustring m_new_note_name;
   gchar*      m_open_note;
   bool        m_open_start_here;
   gchar*      m_highlight_search;
 
 
   // depend on m_open_note, set in on_post_parse
-  std::string m_open_note_name;
-  std::string m_open_note_uri;
-  std::string m_open_external_note_path;
+  Glib::ustring m_open_note_name;
+  Glib::ustring m_open_note_uri;
+  Glib::ustring m_open_external_note_path;
 };
 
 
@@ -117,15 +115,6 @@ public:
     {
       return *m_manager;
     }
-#ifdef HAVE_X11_SUPPORT
-  IKeybinder & keybinder()
-    {
-      return *m_keybinder;
-    }
-#endif
-
-  void setup_global_actions();
-  void start_tray_icon();
 
   void on_quit_gnote_action(const Glib::VariantBase&);
   void on_preferences_response(int res);
@@ -135,24 +124,16 @@ public:
   virtual MainWindow & new_main_window() override;
   virtual MainWindow & get_main_window() override;
   virtual MainWindow & get_window_for_note() override;
-  virtual void open_search_all() override;
+  virtual MainWindow & open_search_all() override;
   void open_note_sync_window(const Glib::VariantBase&);
 
-  bool tray_icon_showing()
-    {
-      return m_tray_icon && m_tray_icon->is_embedded() && m_tray_icon->get_visible();
-    }
   bool is_background() const
     {
-      return m_is_background;
+      return m_is_background || m_is_shell_search;
     }
   bool windowed()
     {
-      return !tray_icon_showing() && !is_background();
-    }
-  void set_tray(const Tray::Ptr & tray)
-    {
-      m_tray = tray;
+      return !is_background();
     }
   static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
   virtual void open_note(const Note::Ptr & note) override;
@@ -161,8 +142,7 @@ protected:
   virtual void on_startup() override;
 private:
   Gnote();
-  std::string get_note_path(const std::string & override_path);
-  void on_setting_changed(const Glib::ustring & key);
+  Glib::ustring get_note_path(const Glib::ustring & override_path);
   void common_init();
   void end_main(bool bus_aquired, bool name_acquired);
   void on_sync_dialog_response(int response_id);
@@ -172,21 +152,17 @@ private:
   void make_app_menu();
   void on_new_window_action(const Glib::VariantBase&);
   void on_new_note_app_action(const Glib::VariantBase&);
+  void on_show_help_shortcust_action(const Glib::VariantBase&);
   MainWindow *get_active_window();
-  bool show_tray_icon_timeout();
   void register_object();
 
   NoteManager *m_manager;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
-  Glib::RefPtr<TrayIcon> m_tray_icon;
-  Tray::Ptr m_tray;
   bool m_is_background;
+  bool m_is_shell_search;
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;
-#ifdef HAVE_X11_SUPPORT
-  IKeybinder  *m_keybinder;
-#endif
 };
 
 

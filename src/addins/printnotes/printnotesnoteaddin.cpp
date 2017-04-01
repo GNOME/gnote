@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013 Aurimas Cernius
+ * Copyright (C) 2010-2013,2015-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,13 +20,10 @@
 
 
 
-#include <boost/format.hpp>
-
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
 #include <gtkmm/image.h>
 #include <gtkmm/printoperation.h>
-#include <gtkmm/stock.h>
 
 #include "sharp/datetime.hpp"
 #include "debug.hpp"
@@ -37,35 +34,6 @@
 #include "utils.hpp"
 
 namespace printnotes {
-
-  namespace {
-    class PrintNotesAction
-      : public gnote::NoteWindow::NonModifyingAction
-    {
-    public:
-      static Glib::RefPtr<Gtk::Action> create(gnote::NoteWindow *note_window)
-        {
-          return Glib::RefPtr<Gtk::Action>(new PrintNotesAction(note_window));
-        }
-    protected:
-      virtual Gtk::Widget *create_menu_item_vfunc()
-        {
-          Gtk::ImageMenuItem *menu_item = new Gtk::ImageMenuItem;
-          menu_item->add_accelerator("activate", m_note_window->get_accel_group(),
-                                     GDK_KEY_P, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-          return menu_item;
-        }
-    private:
-      PrintNotesAction(gnote::NoteWindow *note_window)
-        : gnote::NoteWindow::NonModifyingAction("PrintAction", Gtk::Stock::PRINT,
-                                                _("Print"), _("Print note"))
-        , m_note_window(note_window)
-      {}
-
-      gnote::NoteWindow *m_note_window;
-    };
-  }
-
 
   PrintNotesModule::PrintNotesModule()
   {
@@ -84,14 +52,21 @@ namespace printnotes {
 
   void PrintNotesNoteAddin::on_note_opened()
   {
-    Glib::RefPtr<Gtk::Action> action = PrintNotesAction::create(get_window());
-    action->signal_activate().connect(
+    register_main_window_action_callback("printnotes-print",
       sigc::mem_fun(*this, &PrintNotesNoteAddin::print_button_clicked));
-    add_note_action(action, gnote::PRINT_ORDER);
   }
 
 
-  void PrintNotesNoteAddin::print_button_clicked()
+  std::map<int, Gtk::Widget*> PrintNotesNoteAddin::get_actions_popover_widgets() const
+  {
+    auto widgets = NoteAddin::get_actions_popover_widgets();
+    auto button = gnote::utils::create_popover_button("win.printnotes-print", _("Print"));
+    gnote::utils::add_item_to_ordered_map(widgets, gnote::PRINT_ORDER, button);
+    return widgets;
+  }
+
+
+  void PrintNotesNoteAddin::print_button_clicked(const Glib::VariantBase&)
   {
     try {
       m_print_op = Gtk::PrintOperation::create();
@@ -157,7 +132,7 @@ namespace printnotes {
       position = limit;
     }
 
-    Glib::RefPtr<Gdk::Screen> screen = get_note()->get_window()->get_screen();
+    Glib::RefPtr<Gdk::Screen> screen = get_window()->get_screen();
     double screen_dpiX = screen->get_width_mm() * 254 / screen->get_width();
 
     for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator iter = tags.begin();
@@ -277,7 +252,7 @@ namespace printnotes {
     }
 
     gnote::DepthNoteTag::Ptr depth = get_buffer()->find_depth_tag(p_start);
-    if(depth != 0) {
+    if(depth) {
         indentation += ((int) (dpiX / 3)) * depth->get_depth();
     }
     layout->set_width(pango_units_from_double((int)context->get_width() -
@@ -299,9 +274,9 @@ namespace printnotes {
     layout->set_font_description(font_desc);
     layout->set_width(pango_units_from_double((int)context->get_width()));
 
-    // %1% is the page number, %2% is the total number of pages
-    std::string footer_left = str(boost::format(_("Page %1% of %2%"))
-                                  % page_number % total_pages);
+    // %1 is the page number, %2 is the total number of pages
+    Glib::ustring footer_left = Glib::ustring::compose(_("Page %1 of %2"),
+                                  page_number, total_pages);
     layout->set_alignment(Pango::ALIGN_LEFT);
     layout->set_text (footer_left);
 
@@ -312,7 +287,7 @@ namespace printnotes {
   Glib::RefPtr<Pango::Layout> 
   PrintNotesNoteAddin::create_layout_for_timestamp(const Glib::RefPtr<Gtk::PrintContext> & context)
   {
-    std::string timestamp = sharp::DateTime::now().to_string ("%c");
+    Glib::ustring timestamp = sharp::DateTime::now().to_string("%c");
 
     Glib::RefPtr<Pango::Layout> layout = context->create_pango_layout ();
     Pango::FontDescription font_desc = get_window()->editor()->get_pango_context()->get_font_description();

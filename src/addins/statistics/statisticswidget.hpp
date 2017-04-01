@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ class StatisticsWidget
 {
 public:
   StatisticsWidget(gnote::NoteManager & nm);
-  virtual std::string get_name() const override;
+  virtual Glib::ustring get_name() const override;
   virtual void foreground() override;
   virtual void background() override;
 private:

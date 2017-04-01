@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,8 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#include <boost/format.hpp>
 
 #include "base/macros.hpp"
 #include "string.hpp"
@@ -84,9 +82,9 @@ namespace sharp {
   }
 
 
-  std::string TimeSpan::string() const
+  Glib::ustring TimeSpan::string() const
   {
-    return str(boost::format("%1%:%2%:%3%:%4%:%5%") % m_days % m_hours % m_minutes % m_seconds % m_usecs);
+    return Glib::ustring::compose("%1:%2:%3:%4:%5", m_days, m_hours, m_minutes, m_seconds, m_usecs);
   }
 
 
@@ -105,9 +103,9 @@ namespace sharp {
   }
 
 
-  TimeSpan TimeSpan::parse(const std::string & s)
+  TimeSpan TimeSpan::parse(const Glib::ustring & s)
   {
-    std::vector<std::string> tokens;
+    std::vector<Glib::ustring> tokens;
     sharp::string_split(tokens, s, ":");
     if(tokens.size() != 5) {
       return TimeSpan(0, 0, 0, 0, 0);
@@ -117,9 +115,8 @@ namespace sharp {
     int mins = STRING_TO_INT(tokens[2]);
     int secs = STRING_TO_INT(tokens[3]);
     int usecs = STRING_TO_INT(tokens[4]);
-    boost::format fmt("%1%:%2%:%3%:%4%:%5%");
-    fmt % days % hours % mins % secs % usecs;
-    if(str(fmt) != s) {
+    Glib::ustring fmt = Glib::ustring::compose("%1:%2:%3:%4:%5", days, hours, mins, secs, usecs);
+    if(fmt != s) {
       return TimeSpan(0, 0, 0, 0, 0);
     }
 

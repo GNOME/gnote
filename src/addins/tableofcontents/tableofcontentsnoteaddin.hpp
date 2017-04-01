@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015-2016 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,9 +61,9 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 
 private:
-  void update_menu(Gtk::Menu *menu);
   void on_menu_hidden();
   bool on_key_pressed (GdkEventKey *ev);
   void on_populate_popup (Gtk::Menu* popup_menu);
@@ -71,14 +71,28 @@ private:
   void on_level_2_activated ();
   void on_toc_popup_activated ();
   void on_toc_help_activated ();
+  void on_level_1_action(const Glib::VariantBase&);
+  void on_level_2_action(const Glib::VariantBase&);
+  void on_toc_help_action(const Glib::VariantBase&);
+  void on_foregrounded();
+  void on_goto_heading(const Glib::VariantBase&);
+  void on_note_changed();
 
 
   void populate_toc_menu (Gtk::Menu *toc_menu, bool has_action_entries = true);
 
-  bool has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end);
-  Heading::Type get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end);
+  bool has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end) const;
+  Heading::Type get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end) const;
 
+  struct TocItem
+  {
+    Glib::ustring  heading;
+    Heading::Type  heading_level;
+    int            heading_position;
+  };
+  void get_toc_items(std::vector<TocItem> & items) const;
   void get_tableofcontents_menu_items (std::list<TableofcontentsMenuItem*> & items);
+  void get_toc_popover_items(std::vector<Gtk::Widget*> & items) const;
 
   void headification_switch (Heading::Type heading_request);
 

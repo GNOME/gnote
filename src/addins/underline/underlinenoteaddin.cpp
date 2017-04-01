@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2009 Mark Wakim <markwakim@gmail.com>
@@ -24,8 +24,10 @@
 // Translated from UnderlineNoteAddin.cs:
 
 
+#include <glibmm/i18n.h>
+
 #include "sharp/modulefactory.hpp"
-#include "underlinemenuitem.hpp"
+#include "notewindow.hpp"
 #include "underlinenoteaddin.hpp"
 #include "underlinetag.hpp"
 
@@ -48,6 +50,13 @@ namespace underline {
 				get_note()->get_tag_table()->add (m_tag);
 			}
 
+    Gtk::Widget *button = gnote::utils::create_popover_button("win.underline-enable", "");
+    auto label = dynamic_cast<Gtk::Label*>(dynamic_cast<Gtk::Bin*>(button)->get_child());
+    Glib::ustring lbl("<u>");
+    lbl += _("_Underline");
+    lbl += "</u>";
+    label->set_markup_with_mnemonic(lbl);
+    add_text_menu_item(button);
   }
 
 
@@ -62,11 +71,52 @@ namespace underline {
 
   void UnderlineNoteAddin::on_note_opened ()
   {
-    // Add here instead of in Initialize to avoid creating unopened
-    // notes' windows/buffers.
-    add_text_menu_item (new UnderlineMenuItem (this));
+    get_window()->text_menu()->signal_show().connect(
+      sigc::mem_fun(*this, &UnderlineNoteAddin::menu_shown));
+    dynamic_cast<gnote::NoteTextMenu*>(get_window()->text_menu())->signal_set_accels
+      .connect(sigc::mem_fun(*this, &UnderlineNoteAddin::set_accels));
+
+    gnote::NoteWindow *note_window = get_window();
+    note_window->signal_foregrounded.connect(
+      sigc::mem_fun(*this, &UnderlineNoteAddin::on_note_foregrounded));
+    note_window->signal_backgrounded.connect(
+      sigc::mem_fun(*this, &UnderlineNoteAddin::on_note_backgrounded));
   }
 
+  void UnderlineNoteAddin::on_note_foregrounded()
+  {
+    m_on_underline_clicked_cid = get_window()->host()->find_action("underline-enable")->signal_change_state()
+      .connect(sigc::mem_fun(*this, &UnderlineNoteAddin::on_underline_clicked));
+  }
+
+  void UnderlineNoteAddin::on_note_backgrounded()
+  {
+    m_on_underline_clicked_cid.disconnect();
+  }
+
+  void UnderlineNoteAddin::on_underline_clicked(const Glib::VariantBase & state)
+  {
+    get_window()->host()->find_action("underline-enable")->set_state(state);
+    on_underline_pressed();
+  }
+
+  void UnderlineNoteAddin::on_underline_pressed()
+  {
+    get_buffer()->toggle_active_tag("underline");
+  }
+
+  void UnderlineNoteAddin::menu_shown()
+  {
+    get_window()->host()->find_action("underline-enable")->set_state(
+      Glib::Variant<bool>::create(get_buffer()->is_active_tag("underline")));
+  }
+
+  void UnderlineNoteAddin::set_accels(const gnote::utils::GlobalKeybinder & keybinder)
+  {
+    const_cast<gnote::utils::GlobalKeybinder&>(keybinder).add_accelerator(
+      sigc::mem_fun(*this, &UnderlineNoteAddin::on_underline_pressed),
+      GDK_KEY_U, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+  }
 
 
 }

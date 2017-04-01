@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ namespace gnote {
   }
 
 
-  Search::ResultsPtr Search::search_notes(const std::string & query, bool case_sensitive, 
+  Search::ResultsPtr Search::search_notes(const Glib::ustring & query, bool case_sensitive,
                                   const notebooks::Notebook::Ptr & selected_notebook)
   {
     Glib::ustring search_text = query;
@@ -44,12 +44,12 @@ namespace gnote {
       search_text = search_text.lowercase();
     }
 
-    std::vector<std::string> words;
-    Search::split_watching_quotes(words, std::string(search_text));
+    std::vector<Glib::ustring> words;
+    Search::split_watching_quotes(words, search_text);
 
     // Used for matching in the raw note XML
-    std::vector<std::string> encoded_words; 
-    Search::split_watching_quotes(encoded_words, utils::XmlEncoder::encode (search_text));
+    std::vector<Glib::ustring> encoded_words;
+    Search::split_watching_quotes(encoded_words, utils::XmlEncoder::encode(search_text));
     ResultsPtr temp_matches(new Results);
       
       // Skip over notes that are template notes
@@ -72,16 +72,11 @@ namespace gnote {
       // if there is no match check the note's raw
       // XML for at least one match, to avoid
       // deserializing Buffers unnecessarily.
-      if (0 < find_match_count_in_note (note->get_title(),
-                                        words,
-                                        case_sensitive)) {
+      if (0 < find_match_count_in_note(note->get_title(), words, case_sensitive)) {
         temp_matches->insert(std::make_pair(INT_MAX, note));
       }
-      else if (check_note_has_match (note, encoded_words,
-                                case_sensitive)) {
-        int match_count =
-          find_match_count_in_note (note->text_content(),
-                                    words, case_sensitive);
+      else if (check_note_has_match(note, encoded_words, case_sensitive)) {
+        int match_count = find_match_count_in_note(note->text_content(), words, case_sensitive);
         if (match_count > 0) {
           // TODO: Improve note.GetHashCode()
           temp_matches->insert(std::make_pair(match_count, note));
@@ -92,7 +87,7 @@ namespace gnote {
   }
 
   bool Search::check_note_has_match(const Note::Ptr & note, 
-                                    const std::vector<std::string> & encoded_words,
+                                    const std::vector<Glib::ustring> & encoded_words,
                                     bool match_case)
   {
     Glib::ustring note_text = note->xml_content();
@@ -100,9 +95,8 @@ namespace gnote {
       note_text = note_text.lowercase();
     }
 
-    for(std::vector<std::string>::const_iterator iter = encoded_words.begin();
-        iter != encoded_words.end(); ++iter) {
-      if(note_text.find(*iter) != std::string::npos) {
+    for(auto iter : encoded_words) {
+      if(note_text.find(iter) != Glib::ustring::npos) {
         continue;
       }
       else {
@@ -114,7 +108,7 @@ namespace gnote {
   }
 
   int Search::find_match_count_in_note(Glib::ustring note_text,
-                                       const std::vector<std::string> & words,
+                                       const std::vector<Glib::ustring> & words,
                                        bool match_case)
   {
     int matches = 0;
@@ -122,22 +116,18 @@ namespace gnote {
     if (!match_case) {
       note_text = note_text.lowercase();
     }
-    
-    for(std::vector<std::string>::const_iterator iter = words.begin();
-        iter != words.end(); ++iter) {
 
-      const std::string & word(*iter);
-
-      int idx = 0;
+    for(auto word : words) {
+      Glib::ustring::size_type idx = 0;
       bool this_word_found = false;
 
       if (word.empty())
         continue;
 
       while (true) {
-        idx = sharp::string_index_of(note_text, word, idx);
+        idx = note_text.find(word, idx);
 
-        if (idx == -1) {
+        if (idx == Glib::ustring::npos) {
           if (this_word_found) {
             break;
           }

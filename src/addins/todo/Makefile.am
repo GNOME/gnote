@@ -8,10 +8,10 @@ desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 
 
 addinsdir = $(ADDINSDIR)
-addins_LTLIBRARIES = todo.la
+addins_LTLIBRARIES = libtodo.la
 addins_DATA = $(desktop_files)
 
-todo_la_SOURCES = \
+libtodo_la_SOURCES = \
 	todonoteaddin.hpp todonoteaddin.cpp \
 	$(NULL)
 

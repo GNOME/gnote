@@ -1,7 +1,7 @@
-AC_INIT(gnote, 3.13.1)
+AC_INIT(gnote, 3.25.0)
 AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR(README)
-AM_INIT_AUTOMAKE([1.11 foreign dist-bzip2])
+AM_INIT_AUTOMAKE([1.11 foreign subdir-objects dist-xz no-dist-gzip tar-ustar])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
 
@@ -9,8 +9,6 @@ YELP_HELP_INIT
 
 AC_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR(m4)
-
-m4_pattern_allow([^BOOST_])
 
 GNOTE_VERSION="$PACKAGE_VERSION"
 AC_SUBST(GNOTE_VERSION)
@@ -25,12 +23,12 @@ AC_DEFINE_UNQUOTED([LIBGNOTE_VERSION_INFO], ["$LIBGNOTE_VERSION_INFO"], [libgnot
 dnl all the library version.
 dnl if one is harcoded elsewhere, it is a bug
 
-GTK_VERSION=3.10
+GTK_VERSION=3.20
 LIBGLIBMM_VERSION=2.32
-LIBGTKMM_VERSION=3.10
+LIBGTKMM_VERSION=3.18
 GTKSPELL_VERSION=3.0.0
-BOOST_VERSION=1.34
 LIBSECRET_VERSION=0.8
+UNITTESTCPP_VERSION=1.5.1
 
 AC_PROG_CXX
 AC_GNU_SOURCE
@@ -62,12 +60,7 @@ LT_INIT([disable-static])
 
 AC_LANG_CPLUSPLUS
 AC_LANG_COMPILER_REQUIRE
-
-AC_ARG_WITH(cxx11_support, [  --with-cxx11-support    Compile with C++11 support, if available.],[cxx11_required="${withval}"],[cxx11_required="optional"])
-case "$cxx11_required" in
-  yes) AX_CXX_COMPILE_STDCXX_11([], [mandatory]) ;;
-  optional) AX_CXX_COMPILE_STDCXX_11([], [optional]) ;;
-esac
+AX_CXX_COMPILE_STDCXX_11([], [mandatory])
 
 AC_CHECK_PROG(HAVE_DESKTOP_FILE_VALIDATE, [desktop-file-validate], [yes], [no])
 if test $HAVE_DESKTOP_FILE_VALIDATE == "no"; then
@@ -76,7 +69,6 @@ fi
 
 PKG_CHECK_MODULES(LIBGLIBMM, [glibmm-2.4 >= $LIBGLIBMM_VERSION])
 PKG_CHECK_MODULES(GTK, [gtk+-3.0 >= $GTK_VERSION])
-PKG_CHECK_MODULES(X, [x11])
 PKG_CHECK_MODULES(LIBGTKMM, [gtkmm-3.0 >= $LIBGTKMM_VERSION])
 PKG_CHECK_MODULES(LIBXML, [libxml-2.0])
 PKG_CHECK_MODULES(LIBXSLT, [libxslt])
@@ -92,24 +84,12 @@ AM_CONDITIONAL(FIXED_GTKSPELL, test "$FIXED_GTKSPELL" = "yes")
 
 PKG_CHECK_MODULES(LIBSECRET, [libsecret-1 >= $LIBSECRET_VERSION])
 
-
-
-BOOST_REQUIRE([$BOOST_VERSION])
-BOOST_BIND
-BOOST_FORMAT
-BOOST_TEST([s])
-
-if test $HAVE_CXX11 == 1; then
-  cxx11_support="yes";
-else
-  cxx11_support="no";
-  BOOST_CONVERSION
-  BOOST_FOREACH
-  AC_CHECK_HEADER(tr1/memory,,[
-	CXXFLAGS="$CXXFLAGS -I/usr/include/boost/tr1";
-	AC_MSG_NOTICE([using boost tr1 implementation.])
-])
-fi
+PKG_CHECK_MODULES(UNITTESTCPP, [UnitTest++ >= $UNITTESTCPP_VERSION],
+			       [HAVE_UNITTESTCPP="yes";AC_DEFINE([HAVE_UNITTESTCPP], [1], [Set if UnitTest++ library is available.])],
+			       HAVE_UNITTESTCPP="no")
+AC_SUBST(UNITTESTCPP_CFLAGS)
+AC_SUBST(UNITTESTCPP_LIBS)
+AM_CONDITIONAL(HAVE_UNITTESTCPP, test "$HAVE_UNITTESTCPP" = "yes")
 
 
 AC_LANG_PUSH(C++)
@@ -146,11 +126,6 @@ else
 fi
 AC_SUBST(DBUS_SERVICE_DIR)
 
-AC_ARG_WITH(x11_support, [  --with-x11-support      Compile with X11 support.],
-            [with_x11_support=yes;AC_DEFINE(HAVE_X11_SUPPORT, [1], [Define to 1 to include X11 support.])],
-            [with_x11_support=no])
-AM_CONDITIONAL(HAVE_X11_SUPPORT, test "x$with_x11_support" != "x")
-
 
 IT_PROG_INTLTOOL([0.35.0])
 
@@ -173,7 +148,7 @@ data/Makefile
 data/gnote.desktop.in
 data/icons/Makefile
 data/appdata/Makefile
-libtomboy/Makefile
+data/ui/Makefile
 src/Makefile
 src/addins/Makefile
 src/addins/addins.mk
@@ -230,8 +205,7 @@ AC_OUTPUT
 echo "
 Options:
 
-  C++11 support:               ${cxx11_support}
   Spellchecking support:       ${FIXED_GTKSPELL}
-  X11 support:                 ${with_x11_support}
+  Unit test support:           ${HAVE_UNITTESTCPP}
 
 "

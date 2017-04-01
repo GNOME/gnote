@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,23 +45,23 @@ namespace sync {
     static Ptr create(NoteManagerBase &);
 
     virtual void sync_state_changed(SyncState state) override;
-    virtual void note_synchronized(const std::string & noteTitle, NoteSyncType type) override;
+    virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) override;
     virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<std::string> & noteUpdateTitles) override;
+                                        const std::list<Glib::ustring> & noteUpdateTitles) override;
     virtual void present_ui() override;
-    void header_text(const std::string &);
-    void message_text(const std::string &);
-    std::string progress_text() const;
-    void progress_text(const std::string &);
-    void add_update_item(const std::string & title, std::string & status);
+    void header_text(const Glib::ustring &);
+    void message_text(const Glib::ustring &);
+    Glib::ustring progress_text() const;
+    void progress_text(const Glib::ustring &);
+    void add_update_item(const Glib::ustring & title, Glib::ustring & status);
   protected:
     virtual void on_realize() override;
   private:
     static void on_expander_activated(GtkExpander*, gpointer);
     void note_conflict_detected_(const Note::Ptr & localConflictNote,
                                  NoteUpdate remoteNote,
-                                 const std::list<std::string> & noteUpdateTitles,
+                                 const std::list<Glib::ustring> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,
                                  SyncTitleConflictResolution resolution,
                                  std::exception **mainThreadException);
@@ -72,7 +72,7 @@ namespace sync {
     void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
     void treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
     void sync_state_changed_(SyncState state);
-    void rename_note(const Note::Ptr & note, const std::string & newTitle, bool updateReferencingNotes);
+    void rename_note(const Note::Ptr & note, const Glib::ustring & newTitle, bool updateReferencingNotes);
     void present_note(const Note::Ptr &);
 
     Gtk::Image *m_image;

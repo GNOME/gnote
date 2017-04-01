@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -20,9 +20,7 @@
  */
 
 
-#include <string.h>
-
-#include <glibmm.h>
+#include <glibmm/stringutils.h>
 
 #include "tagmanager.hpp"
 #include "debug.hpp"
@@ -64,26 +62,26 @@ namespace gnote {
   // Return an existing tag for the specified tag name.  If no Tag exists
   // null will be returned.
   // </summary>
-  Tag::Ptr TagManager::get_tag (const std::string & tag_name) const
+  Tag::Ptr TagManager::get_tag (const Glib::ustring & tag_name) const
   {
     if (tag_name.empty())
       throw sharp::Exception("TagManager.GetTag () called with a null tag name.");
 
-    std::string normalized_tag_name = Glib::ustring(sharp::string_trim(tag_name)).lowercase();
+    Glib::ustring normalized_tag_name = sharp::string_trim(tag_name).lowercase();
     if (normalized_tag_name.empty())
       throw sharp::Exception ("TagManager.GetTag () called with an empty tag name.");
 
-    std::vector<std::string> splits;
+    std::vector<Glib::ustring> splits;
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || Glib::str_has_prefix(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)) {
       Glib::Mutex::Lock lock(m_locker);
-      std::map<std::string, Tag::Ptr>::const_iterator iter = m_internal_tags.find(normalized_tag_name);
+      auto iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
         return iter->second;
       }
       return Tag::Ptr();
     }
-    std::map<std::string, Gtk::TreeIter>::const_iterator iter = m_tag_map.find(normalized_tag_name);
+    auto iter = m_tag_map.find(normalized_tag_name);
     if (iter != m_tag_map.end()) {
       Gtk::TreeIter tree_iter = iter->second;
       return (*tree_iter)[m_columns.m_tag];
@@ -95,21 +93,20 @@ namespace gnote {
   // <summary>
   // Same as GetTag () but will create a new tag if one doesn't already exist.
   // </summary>
-  Tag::Ptr TagManager::get_or_create_tag(const std::string & tag_name)
+  Tag::Ptr TagManager::get_or_create_tag(const Glib::ustring & tag_name)
   {
     if (tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with a null tag name.");
 
-    std::string normalized_tag_name = Glib::ustring(sharp::string_trim(tag_name)).lowercase();
+    Glib::ustring normalized_tag_name = sharp::string_trim(tag_name).lowercase();
     if (normalized_tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with an empty tag name.");
 
-    std::vector<std::string> splits;
+    std::vector<Glib::ustring> splits;
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || Glib::str_has_prefix(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)){
       Glib::Mutex::Lock lock(m_locker);
-      std::map<std::string, Tag::Ptr>::iterator iter;
-      iter = m_internal_tags.find(normalized_tag_name);
+      auto iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
         return iter->second;
       }
@@ -154,7 +151,7 @@ namespace gnote {
   /// <returns>
   /// A <see cref="Tag"/>
   /// </returns>
-  Tag::Ptr TagManager::get_system_tag (const std::string & tag_name) const
+  Tag::Ptr TagManager::get_system_tag (const Glib::ustring & tag_name) const
   {
     return get_tag(Tag::SYSTEM_TAG_PREFIX + tag_name);
   }
@@ -169,7 +166,7 @@ namespace gnote {
   /// <returns>
   /// A <see cref="Tag"/>
   /// </returns>
-  Tag::Ptr TagManager::get_or_create_system_tag (const std::string & tag_name)
+  Tag::Ptr TagManager::get_or_create_system_tag (const Glib::ustring & tag_name)
   {
     return get_or_create_tag(Tag::SYSTEM_TAG_PREFIX + tag_name);
   }
@@ -191,8 +188,7 @@ namespace gnote {
       m_internal_tags.erase(tag->normalized_name());
     }
     bool tag_removed = false;
-    std::map<std::string, Gtk::TreeIter>::iterator map_iter;
-    map_iter = m_tag_map.find(tag->normalized_name());
+    auto map_iter = m_tag_map.find(tag->normalized_name());
     if (map_iter != m_tag_map.end()) {
 
       Glib::Mutex::Lock lock(m_locker);

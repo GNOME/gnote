@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,9 +19,8 @@
  */
 
 
-#include <boost/bind.hpp>
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 
 #include "debug.hpp"
 #include "ignote.hpp"
@@ -91,13 +90,16 @@ Glib::ustring NoteManagerBase::sanitize_xml_content(const Glib::ustring & xml_co
 
 
 NoteManagerBase::NoteManagerBase(const Glib::ustring & directory)
-  : m_notes_dir(directory)
+  : m_trie_controller(NULL)
+  , m_notes_dir(directory)
 {
 }
 
 NoteManagerBase::~NoteManagerBase()
 {
-  delete m_trie_controller;
+  if(m_trie_controller) {
+    delete m_trie_controller;
+  }
 }
 
 void NoteManagerBase::_common_init(const Glib::ustring & /*directory*/, const Glib::ustring & backup_directory)
@@ -106,17 +108,21 @@ void NoteManagerBase::_common_init(const Glib::ustring & /*directory*/, const Gl
   m_backup_dir = backup_directory;
   bool is_first_run = first_run();
 
-  const std::string old_note_dir = IGnote::old_note_dir();
+  const Glib::ustring old_note_dir = IGnote::old_note_dir();
   const bool migration_needed = is_first_run && sharp::directory_exists(old_note_dir);
+  create_notes_dir();
 
   if(migration_needed) {
-    migrate_notes(old_note_dir);
+    try {
+      migrate_notes(old_note_dir);
+    }
+    catch(Glib::Exception & e) {
+      ERR_OUT("Migration failed! Exception: %s", e.what().c_str());
+    }
     is_first_run = false;
   }
 
   m_trie_controller = create_trie_controller();
-
-  create_notes_dir();
 }
 
 bool NoteManagerBase::first_run() const
@@ -141,7 +147,7 @@ bool NoteManagerBase::create_directory(const Glib::ustring & directory) const
   return g_mkdir_with_parents(directory.c_str(), S_IRWXU) == 0;
 }
 
-void NoteManagerBase::migrate_notes(const std::string & /*old_note_dir*/)
+void NoteManagerBase::migrate_notes(const Glib::ustring & /*old_note_dir*/)
 {
 }
 
@@ -153,7 +159,7 @@ TrieController *NoteManagerBase::create_trie_controller()
 
 void NoteManagerBase::post_load()
 {
-  m_notes.sort(boost::bind(&compare_dates, _1, _2));
+  m_notes.sort(compare_dates);
 
   // Update the trie so addins can access it, if they want.
   m_trie_controller->update ();
@@ -175,7 +181,7 @@ NoteBase::List NoteManagerBase::get_notes_linking_to(const Glib::ustring & title
   NoteBase::List result;
   FOREACH(const NoteBase::Ptr & note, m_notes) {
     if(note->get_title() != title) {
-      if(note->get_complete_note_xml().find(tag) != std::string::npos) {
+      if(note->get_complete_note_xml().find(tag) != Glib::ustring::npos) {
         result.push_back(note);
       }
     }
@@ -195,13 +201,13 @@ void NoteManagerBase::add_note(const NoteBase::Ptr & note)
 void NoteManagerBase::on_note_rename(const NoteBase::Ptr & note, const Glib::ustring & old_title)
 {
   signal_note_renamed(note, old_title);
-  m_notes.sort(boost::bind(&compare_dates, _1, _2));
+  m_notes.sort(compare_dates);
 }
 
 void NoteManagerBase::on_note_save (const NoteBase::Ptr & note)
 {
   signal_note_saved(note);
-  m_notes.sort(boost::bind(&compare_dates, _1, _2));
+  m_notes.sort(compare_dates);
 }
 
 NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
@@ -214,7 +220,7 @@ NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
   return NoteBase::Ptr();
 }
 
-NoteBase::Ptr NoteManagerBase::find_by_uri(const std::string & uri) const
+NoteBase::Ptr NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
 {
   FOREACH(const NoteBase::Ptr & note, m_notes) {
     if (note->uri() == uri) {
@@ -248,7 +254,7 @@ NoteBase::Ptr NoteManagerBase::create(const Glib::ustring & title, const Glib::u
 // the template note.
 NoteBase::Ptr NoteManagerBase::create_note_from_template(const Glib::ustring & title,
                                                          const NoteBase::Ptr & template_note,
-                                                         const std::string & guid)
+                                                         const Glib::ustring & guid)
 {
   Glib::ustring new_title(title);
   Tag::Ptr template_save_title = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
@@ -280,7 +286,7 @@ Glib::ustring NoteManagerBase::get_unique_name(const Glib::ustring & basename) c
   int id = 1;  // starting point
   Glib::ustring title;
   while(true) {
-    title = str(boost::format("%1% %2%") % basename % id++);
+    title = Glib::ustring::compose("%1 %2", basename, id++);
     if(!find (title)) {
       break;
     }
@@ -291,7 +297,7 @@ Glib::ustring NoteManagerBase::get_unique_name(const Glib::ustring & basename) c
 
 // Create a new note with the specified title from the default
 // template note. Optionally the body can be overridden.
-NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const std::string & guid)
+NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const Glib::ustring & guid)
 {
   Glib::ustring body;
 
@@ -320,7 +326,7 @@ NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const std::s
 
 // Create a new note with the specified Xml content
 NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
-                                               const std::string & guid)
+                                               const Glib::ustring & guid)
 {
   if(title.empty())
     throw sharp::Exception("Invalid title");
@@ -351,12 +357,12 @@ NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, cons
 
 Glib::ustring NoteManagerBase::get_note_template_content(const Glib::ustring & title)
 {
-  return str(boost::format("<note-content>"
-                           "<note-title>%1%</note-title>\n\n"
-                           "%2%"
-                           "</note-content>") 
-             % utils::XmlEncoder::encode(title)
-             % _("Describe your new note here."));
+  return Glib::ustring::compose("<note-content>"
+                                  "<note-title>%1</note-title>\n\n"
+                                  "%2"
+                                "</note-content>",
+             utils::XmlEncoder::encode(title),
+             _("Describe your new note here."));
 }
 
 NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
@@ -393,7 +399,7 @@ Glib::ustring NoteManagerBase::split_title_from_content(Glib::ustring title, Gli
   if(title.empty())
     return "";
 
-  std::vector<std::string> lines;
+  std::vector<Glib::ustring> lines;
   sharp::string_split(lines, title, "\n\r");
   if(lines.size() > 0) {
     title = lines [0];
@@ -491,7 +497,7 @@ NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)
 }
 
 
-NoteBase::Ptr NoteManagerBase::create_with_guid(const Glib::ustring & title, const std::string & guid)
+NoteBase::Ptr NoteManagerBase::create_with_guid(const Glib::ustring & title, const Glib::ustring & guid)
 {
   return create_new_note(title, guid);
 }

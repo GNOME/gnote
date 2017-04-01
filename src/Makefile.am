@@ -13,11 +13,7 @@ AM_CPPFLAGS= -I$(top_srcdir) @LIBGTKMM_CFLAGS@ @LIBGLIBMM_CFLAGS@ \
 
 AM_LDFLAGS=-export-dynamic
 
-if HAVE_X11_SUPPORT
-LIBTOMBOY_LIBS = $(top_builddir)/libtomboy/libtomboy.la
-endif
-
-LIBGNOTE_LIBS = $(LIBTOMBOY_LIBS)\
+LIBGNOTE_LIBS = \
 	@LIBGLIBMM_LIBS@ @LIBGTKMM_LIBS@ \
 	@LIBXSLT_LIBS@ \
 	@GTKSPELL_LIBS@ @GTK_LIBS@ \
@@ -27,53 +23,31 @@ GNOTE_LIBS = libgnote.la $(LIBGNOTE_LIBS)
 
 lib_LTLIBRARIES = libgnote.la
 bin_PROGRAMS = gnote
-check_PROGRAMS = trietest stringtest notetest dttest uritest filestest \
-	fileinfotest xmlreadertest notemanagertest gnotesyncclienttest \
-	syncmanagertest
-TESTS = trietest stringtest notetest dttest uritest filestest \
-	fileinfotest xmlreadertest notemanagertest gnotesyncclienttest \
-	syncmanagertest
 
+if HAVE_UNITTESTCPP
+check_PROGRAMS = gnoteunittests
+TESTS = gnoteunittests
 
-trietest_SOURCES = test/trietest.cpp
-trietest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
-
-dttest_SOURCES = test/dttest.cpp
-dttest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
-
-stringtest_SOURCES = test/stringtest.cpp
-stringtest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
-
-filestest_SOURCES = test/filestest.cpp
-filestest_LDADD = libgnote.la @LIBGLIBMM_LIBS@ -lgiomm-2.4
-
-fileinfotest_SOURCES = test/fileinfotest.cpp
-fileinfotest_LDADD = libgnote.la @LIBGLIBMM_LIBS@ -lgiomm-2.4
-
-uritest_SOURCES = test/uritest.cpp
-uritest_LDADD = libgnote.la @LIBGLIBMM_LIBS@
-
-xmlreadertest_SOURCES = test/xmlreadertest.cpp
-xmlreadertest_LDADD = libgnote.la @LIBXML_LIBS@
-
-notetest_SOURCES = test/notetest.cpp
-notetest_LDADD =  $(GNOTE_LIBS) -lX11
-
-notemanagertest_SOURCES = test/notemanagertest.cpp \
-	test/testnote.cpp test/testnote.hpp \
-	test/testnotemanager.cpp test/testnotemanager.hpp \
-	test/testtagmanager.cpp test/testtagmanager.hpp \
-	$(NULL)
-notemanagertest_LDADD = $(GNOTE_LIBS)
-
-gnotesyncclienttest_SOURCES = test/gnotesyncclienttest.cpp \
+gnoteunittests_SOURCES = \
+	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
+	test/runner.cpp \
 	test/testnote.cpp test/testnote.hpp \
 	test/testnotemanager.cpp test/testnotemanager.hpp \
 	test/testsyncclient.hpp test/testsyncclient.cpp \
 	test/testtagmanager.cpp test/testtagmanager.hpp \
-	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
+	test/unit/datetimeutests.cpp \
+	test/unit/filesutests.cpp \
+	test/unit/fileinfoutests.cpp \
+	test/unit/gnotesyncclientutests.cpp \
+	test/unit/noteutests.cpp \
+	test/unit/notemanagerutests.cpp \
+	test/unit/stringutests.cpp \
+	test/unit/trieutests.cpp \
+	test/unit/uriutests.cpp \
+	test/unit/xmlreaderutests.cpp \
 	$(NULL)
-gnotesyncclienttest_LDADD = $(GNOTE_LIBS)
+gnoteunittests_LDADD = libgnote.la @UNITTESTCPP_LIBS@
+endif
 
 syncmanagertest_SOURCES = test/syncmanagertest.cpp \
 	test/testnote.cpp test/testnote.hpp \
@@ -98,12 +72,6 @@ DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/remotecontrol-glue.hpp dbus/remotecontrol-glue.cpp \
 	dbus/searchprovider.hpp dbus/searchprovider.cpp \
 	$(NULL)
-
-if HAVE_X11_SUPPORT
-KEYBINDER_SOURCES=keybinder.hpp \
-	prefskeybinder.hpp prefskeybinder.cpp \
-	xkeybinder.hpp xkeybinder.cpp
-endif
 
 libgnote_la_LDFLAGS = -release @LIBGNOTE_RELEASE@ -version-info @LIBGNOTE_VERSION_INFO@
 libgnote_la_LIBADD = $(LIBGNOTE_LIBS)
@@ -150,7 +118,9 @@ libgnote_la_SOURCES = \
 	itagmanager.hpp itagmanager.cpp \
 	importaddin.hpp importaddin.cpp \
 	mainwindow.hpp mainwindow.cpp \
+	mainwindowaction.hpp mainwindowaction.cpp \
 	mainwindowembeds.hpp mainwindowembeds.cpp \
+	noncopyable.hpp \
 	noteaddin.hpp noteaddin.cpp \
 	notebase.hpp notebase.cpp \
 	notebuffer.hpp notebuffer.cpp \
@@ -195,14 +165,12 @@ gnote_SOURCES = \
 	recentchanges.hpp recentchanges.cpp \
 	searchnoteswidget.hpp searchnoteswidget.cpp \
 	tagmanager.hpp tagmanager.cpp \
-	tray.hpp tray.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
 	synchronization/silentui.hpp synchronization/silentui.cpp \
 	synchronization/syncdialog.hpp synchronization/syncdialog.cpp \
 	synchronization/syncmanager.hpp synchronization/syncmanager.cpp \
 	$(DBUS_SOURCES) \
-	$(KEYBINDER_SOURCES) \
 	main.cpp \
 	$(NULL)
 

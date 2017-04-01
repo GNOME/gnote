@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -24,6 +24,7 @@
 #endif
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 
 #include "applicationaddin.hpp"
 #include "debug.hpp"
@@ -40,7 +41,7 @@ namespace gnote {
   NoteManager::NoteManager(const Glib::ustring & directory)
     : NoteManagerBase(directory)
   {
-    std::string backup = directory + "/Backup";
+    Glib::ustring backup = directory + "/Backup";
     
     _common_init(directory, backup);
   }
@@ -129,7 +130,7 @@ namespace gnote {
     //     Catalog.GetString ("GNOME Panel");
 
     // for some reason I have to set the xmlns -- Hub
-    std::string start_note_content =
+    Glib::ustring start_note_content =
       _("<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">"
         "Start Here\n\n"
         "<bold>Welcome to Gnote!</bold>\n\n"
@@ -148,7 +149,7 @@ namespace gnote {
         "gets underlined?  Click on the link to open the note."
         "</note-content>");
 
-    std::string links_note_content =
+    Glib::ustring links_note_content =
       _("<note-content>"
         "Using Links in Gnote\n\n"
         "Notes in Gnote can be linked together by "
@@ -181,12 +182,10 @@ namespace gnote {
 
   void NoteManager::load_notes()
   {
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(notes_dir(), ".note", files);
 
-    for(std::list<std::string>::const_iterator iter = files.begin();
-        iter != files.end(); ++iter) {
-      const std::string & file_path(*iter);
+    for(auto file_path : files) {
       try {
         Note::Ptr note = Note::load(file_path, *this);
         add_note(note);
@@ -229,37 +228,33 @@ namespace gnote {
     }
   }
 
-  void NoteManager::migrate_notes(const std::string & old_note_dir)
+  void NoteManager::migrate_notes(const Glib::ustring & old_note_dir)
   {
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(old_note_dir, ".note", files);
 
-    for (std::list<std::string>::const_iterator iter = files.begin();
-         files.end() != iter; ++iter) {
-      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(
-                                                       *iter);
-      const std::string dest_path
+    for(auto file : files) {
+      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(file);
+      const Glib::ustring dest_path
           = Glib::build_filename(notes_dir(),
-                                 Glib::path_get_basename(*iter));
+                                 Glib::path_get_basename(file));
       const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(
                                                         dest_path);
       src->copy(dest, Gio::FILE_COPY_NONE);
     }
 
     files.clear();
-    const std::string old_backup_dir = Glib::build_filename(
+    const Glib::ustring old_backup_dir = Glib::build_filename(
                                          old_note_dir,
                                          "Backup");
     sharp::directory_get_files_with_ext(old_backup_dir,
                                         ".note", files);
 
-    for (std::list<std::string>::const_iterator iter = files.begin();
-         files.end() != iter; ++iter) {
-      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(
-                                            *iter);
-      const std::string dest_path
+    for(auto file : files) {
+      const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(file);
+      const Glib::ustring dest_path
           = Glib::build_filename(m_backup_dir,
-                                 Glib::path_get_basename(*iter));
+                                 Glib::path_get_basename(file));
       const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(
                                                         dest_path);
       src->copy(dest, Gio::FILE_COPY_NONE);
@@ -288,7 +283,7 @@ namespace gnote {
 
   // Create a new note with the specified title from the default
   // template note. Optionally the body can be overridden.
-  NoteBase::Ptr NoteManager::create_new_note(Glib::ustring title, const std::string & guid)
+  NoteBase::Ptr NoteManager::create_new_note(Glib::ustring title, const Glib::ustring & guid)
   {
     NoteBase::Ptr new_note = NoteManagerBase::create_new_note(title, guid);
 
@@ -300,7 +295,7 @@ namespace gnote {
 
   // Create a new note with the specified Xml content
   NoteBase::Ptr NoteManager::create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
-                                        const std::string & guid)
+                                        const Glib::ustring & guid)
   {
     NoteBase::Ptr new_note = NoteManagerBase::create_new_note(title, xml_content, guid);
 
@@ -330,7 +325,7 @@ namespace gnote {
   // the template note.
   NoteBase::Ptr NoteManager::create_note_from_template(const Glib::ustring & title,
                                                        const NoteBase::Ptr & template_note,
-                                                       const std::string & guid)
+                                                       const Glib::ustring & guid)
   {
     NoteBase::Ptr new_note = NoteManagerBase::create_note_from_template(title, template_note, guid);
     if(new_note == 0) {

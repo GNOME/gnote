@@ -7,13 +7,13 @@ desktop_in_files = bugzilla.desktop.in
 desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 
 addinsdir = $(ADDINSDIR)
-addins_LTLIBRARIES = bugzilla.la
+addins_LTLIBRARIES = libbugzilla.la
 addins_DATA = $(desktop_files)
 
 icondir = @datadir@/gnote/icons/hicolor/16x16/apps
 icon_DATA = bug.png
 
-bugzilla_la_SOURCES = bugzillanoteaddin.hpp bugzillanoteaddin.cpp \
+libbugzilla_la_SOURCES = bugzillanoteaddin.hpp bugzillanoteaddin.cpp \
 	insertbugaction.hpp insertbugaction.cpp \
 	bugzillalink.hpp bugzillalink.cpp \
 	bugzillapreferencesfactory.hpp \

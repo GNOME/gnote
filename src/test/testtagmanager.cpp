@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,18 +22,18 @@
 
 namespace test {
 
-gnote::Tag::Ptr TagManager::get_tag(const std::string & tag_name) const
+gnote::Tag::Ptr TagManager::get_tag(const Glib::ustring & tag_name) const
 {
-  std::map<std::string, gnote::Tag::Ptr>::const_iterator iter = m_tags.find(tag_name);
+  auto iter = m_tags.find(tag_name);
   if(iter != m_tags.end()) {
     return iter->second;
   }
   return gnote::Tag::Ptr();
 }
 
-gnote::Tag::Ptr TagManager::get_or_create_tag(const std::string & tag_name)
+gnote::Tag::Ptr TagManager::get_or_create_tag(const Glib::ustring & tag_name)
 {
-  std::map<std::string, gnote::Tag::Ptr>::iterator iter = m_tags.find(tag_name);
+  auto iter = m_tags.find(tag_name);
   if(iter != m_tags.end()) {
     return iter->second;
   }
@@ -42,20 +42,19 @@ gnote::Tag::Ptr TagManager::get_or_create_tag(const std::string & tag_name)
   return tag;
 }
 
-gnote::Tag::Ptr TagManager::get_system_tag(const std::string & name) const
+gnote::Tag::Ptr TagManager::get_system_tag(const Glib::ustring & name) const
 {
   return get_tag("SYSTEM:" + name);
 }
 
-gnote::Tag::Ptr TagManager::get_or_create_system_tag(const std::string & name)
+gnote::Tag::Ptr TagManager::get_or_create_system_tag(const Glib::ustring & name)
 {
   return get_or_create_tag("SYSTEM:" + name);
 }
 
 void TagManager::remove_tag(const gnote::Tag::Ptr & tag)
 {
-  for(std::map<std::string, gnote::Tag::Ptr>::iterator iter = m_tags.begin();
-      iter != m_tags.end(); ++iter) {
+  for(auto iter = m_tags.begin(); iter != m_tags.end(); ++iter) {
     if(iter->second == tag) {
       m_tags.erase(iter);
       break;
@@ -66,8 +65,7 @@ void TagManager::remove_tag(const gnote::Tag::Ptr & tag)
 void TagManager::all_tags(std::list<gnote::Tag::Ptr> & list) const
 {
   list.clear();
-  for(std::map<std::string, gnote::Tag::Ptr>::const_iterator iter = m_tags.begin();
-      iter != m_tags.end(); ++iter) {
+  for(auto iter = m_tags.begin(); iter != m_tags.end(); ++iter) {
     list.push_back(iter->second);
   }
 }

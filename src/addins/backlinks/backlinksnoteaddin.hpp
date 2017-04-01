@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,12 +23,7 @@
 
 #include <list>
 
-#include <gtkmm/imagemenuitem.h>
-#include <gtkmm/menu.h>
-
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
-#include "note.hpp"
 #include "noteaddin.hpp"
 
 namespace backlinks {
@@ -57,10 +52,12 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 private:
-  void update_menu(Gtk::Menu *menu);
-  void get_backlink_menu_items(std::list<BacklinkMenuItem*> & items);
-  bool check_note_has_match(const gnote::Note::Ptr &, const std::string &);
+  void on_open_note(const Glib::VariantBase & param);
+  void update_menu(Gtk::Box *menu) const;
+  void get_backlink_menu_items(std::list<Gtk::Widget*> & items) const;
+  bool check_note_has_match(const gnote::Note::Ptr &, const Glib::ustring &);
 };
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,13 +43,13 @@ class NoteManagerBase;
 class NoteData
 {
 public:
-  typedef std::map<std::string, Tag::Ptr> TagMap;
+  typedef std::map<Glib::ustring, Tag::Ptr> TagMap;
 
   static const int s_noPosition;
 
-  NoteData(const std::string & _uri);
+  NoteData(const Glib::ustring & _uri);
 
-  const std::string & uri() const
+  const Glib::ustring & uri() const
     {
       return m_uri;
     }
@@ -139,7 +139,7 @@ public:
   bool has_extent();
 
 private:
-  const std::string m_uri;
+  const Glib::ustring m_uri;
   Glib::ustring     m_title;
   Glib::ustring     m_text;
   sharp::DateTime             m_create_date;
@@ -207,8 +207,8 @@ public:
     }
 
   int get_hash_code() const;
-  const std::string & uri() const;
-  const std::string id() const;
+  const Glib::ustring & uri() const;
+  const Glib::ustring id() const;
   const Glib::ustring & get_title() const;
   void set_title(const Glib::ustring & new_title);
   virtual void set_title(const Glib::ustring & new_title, bool from_user_action);
@@ -251,13 +251,13 @@ public:
 
   typedef sigc::signal<void, const NoteBase::Ptr &> SavedHandler;
   SavedHandler signal_saved;
-  typedef sigc::signal<void, const NoteBase::Ptr&, const std::string& > RenamedHandler;
+  typedef sigc::signal<void, const NoteBase::Ptr&, const Glib::ustring& > RenamedHandler;
   RenamedHandler signal_renamed;
   typedef sigc::signal<void, const NoteBase&, const Tag::Ptr&> TagAddedHandler;
   TagAddedHandler signal_tag_added;
   typedef sigc::signal<void, const NoteBase&, const Tag &> TagRemovingHandler;  
   TagRemovingHandler signal_tag_removing;
-  typedef sigc::signal<void, const NoteBase::Ptr&, const std::string&> TagRemovedHandler;  
+  typedef sigc::signal<void, const NoteBase::Ptr&, const Glib::ustring&> TagRemovedHandler;
   TagRemovedHandler signal_tag_removed;
 protected:
   virtual const NoteDataBufferSynchronizerBase & data_synchronizer() const = 0;

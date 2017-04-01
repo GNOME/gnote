@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,13 +25,11 @@
 #define _NOTEWINDOW_HPP__
 
 #include <gtkmm/accelgroup.h>
+#include <gtkmm/checkbutton.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/searchentry.h>
 #include <gtkmm/toolbutton.h>
-#include <gtkmm/menu.h>
-#include <gtkmm/checkmenuitem.h>
-#include <gtkmm/radiomenuitem.h>
-#include <gtkmm/imagemenuitem.h>
+#include <gtkmm/popovermenu.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
@@ -49,60 +47,58 @@ namespace gnote {
   class Note;
 
 class NoteTextMenu
-  : public Gtk::Menu
+  : public Gtk::PopoverMenu
 {
 public:
-  NoteTextMenu(const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
-  void set_accels(utils::GlobalKeybinder & keybinder, const Glib::RefPtr<Gtk::AccelGroup> &);
+  NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
+  void set_accels(utils::GlobalKeybinder & keybinder);
   void refresh_state();
 
-  static void markup_label (Gtk::MenuItem & item);
+  sigc::signal<void, utils::GlobalKeybinder> signal_set_accels;
 protected:
   virtual void on_show() override;
 
 private:
+  void on_widget_foregrounded();
+  void on_widget_backgrounded();
   void refresh_sizing_state();
   void link_clicked();
-  void font_style_clicked(Gtk::CheckMenuItem * item);
-  void font_size_activated(Gtk::RadioMenuItem *item);
+  void font_clicked(const char *action, const Glib::VariantBase & state, void (NoteTextMenu::*func)());
+  void bold_clicked(const Glib::VariantBase & state);
+  void bold_pressed();
+  void italic_clicked(const Glib::VariantBase & state);
+  void italic_pressed();
+  void strikeout_clicked(const Glib::VariantBase & state);
+  void strikeout_pressed();
+  void highlight_clicked(const Glib::VariantBase & state);
+  void highlight_pressed();
+  Gtk::Widget *create_font_size_item(const char *label, const char *markup, const char *size);
+  void font_style_clicked(const char * tag);
+  void font_size_activated(const Glib::VariantBase & state);
   void undo_clicked();
   void redo_clicked();
   void undo_changed();
-  void toggle_bullets_clicked();
-  void increase_indent_clicked();
-  void decrease_indent_clicked();
+  void toggle_bullets_clicked(const Glib::VariantBase&);
+  void increase_indent_clicked(const Glib::VariantBase&);
+  void increase_indent_pressed();
+  void decrease_indent_clicked(const Glib::VariantBase&);
+  void decrease_indent_pressed();
   void increase_font_clicked();
   void decrease_font_clicked();
+  Gtk::Widget *create_font_item(const char *action, const char *label, const char *markup);
 
+  EmbeddableWidget     &m_widget;
   Glib::RefPtr<NoteBuffer> m_buffer;
   UndoManager          &m_undo_manager;
   bool                  m_event_freeze;
-  Gtk::ImageMenuItem   *m_undo;
-  Gtk::ImageMenuItem   *m_redo;
-  Gtk::MenuItem         m_link;
-  Gtk::CheckMenuItem    m_bold;
-  Gtk::CheckMenuItem    m_italic;
-  Gtk::CheckMenuItem    m_strikeout;
-  Gtk::CheckMenuItem    m_highlight;
-  Gtk::RadioButtonGroup m_fontsize_group;
-  Gtk::RadioMenuItem    m_normal;
-  Gtk::RadioMenuItem    m_huge;
-  Gtk::RadioMenuItem    m_large;
-  Gtk::RadioMenuItem    m_small;
-  // Active when the text size is indeterminable, such as when in
-  // the note's title line.
-  Gtk::RadioMenuItem    m_hidden_no_size;
-  Gtk::CheckMenuItem    m_bullets;
-  Gtk::ImageMenuItem    m_increase_indent;
-  Gtk::ImageMenuItem    m_decrease_indent;
-  sigc::connection      m_bullets_clicked_cid;
+  std::vector<sigc::connection> m_signal_cids;
 };
 
 class NoteFindHandler
 {
 public:
   NoteFindHandler(Note & );
-  void perform_search(const std::string & text);
+  void perform_search(const Glib::ustring & text);
   bool goto_next_result();
   bool goto_previous_result();
 private:
@@ -140,14 +136,14 @@ public:
   NoteWindow(Note &);
   ~NoteWindow();
 
-  virtual std::string get_name() const override;
-  void set_name(const std::string & name);
+  virtual Glib::ustring get_name() const override;
+  void set_name(const Glib::ustring & name);
   virtual void foreground() override;
   virtual void background() override;
   virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
 
-  virtual void perform_search(const std::string & text) override;
+  virtual void perform_search(const Glib::ustring & text) override;
   virtual bool supports_goto_result() override;
   virtual bool goto_next_result() override;
   virtual bool goto_previous_result() override;
@@ -197,10 +193,8 @@ public:
     virtual void reference() const override;
     virtual void unreference() const override;
   };
-  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions() override;
-  virtual sigc::signal<void> & signal_actions_changed() override;
-  void add_widget_action(const Glib::RefPtr<Gtk::Action> & action, int order);
-  void remove_widget_action(const std::string & name);
+  virtual std::vector<Gtk::Widget*> get_popover_widgets() override;
+  virtual std::vector<MainWindowAction::Ptr> get_widget_actions() override;
 
   void set_size(int width, int height)
     {
@@ -211,7 +205,7 @@ public:
     {
       return m_editor;
     }
-  Gtk::Menu * text_menu() const
+  Gtk::PopoverMenu * text_menu() const
     {
       return m_text_menu;
     }
@@ -232,7 +226,7 @@ private:
   static Glib::RefPtr<Gio::Icon> get_icon_pin_active();
   static Glib::RefPtr<Gio::Icon> get_icon_pin_down();
 
-  void on_delete_button_clicked();
+  void on_delete_button_clicked(const Glib::VariantBase&);
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
   void on_populate_popup(Gtk::Menu*);
   Gtk::Grid *make_toolbar();
@@ -242,7 +236,7 @@ private:
   void on_save_selection_check_button_toggled();
   void on_save_title_check_button_toggled();
   void on_note_tag_added(const NoteBase&, const Tag::Ptr&);
-  void on_note_tag_removed(const NoteBase::Ptr&, const std::string&);
+  void on_note_tag_removed(const NoteBase::Ptr&, const Glib::ustring&);
   void link_button_clicked();
   void open_help_activate();
   void change_depth_right_handler();
@@ -250,11 +244,11 @@ private:
   void add_accel_group(Gtk::Window &);
   void remove_accel_group(Gtk::Window &);
   void on_pin_status_changed(const Note &, bool);
-  void on_pin_button_clicked();
+  void on_pin_button_clicked(const Glib::VariantBase & state);
   void on_text_button_clicked();
 
   Note                        & m_note;
-  std::string                   m_name;
+  Glib::ustring                 m_name;
   int                           m_height;
   int                           m_width;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
@@ -263,8 +257,8 @@ private:
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;
-  utils::CheckAction::Ptr       m_important_action;
-  Glib::RefPtr<Gtk::Action>     m_delete_action;
+  sigc::connection              m_delete_note_slot;
+  sigc::connection              m_important_note_slot;
   Gtk::Grid                    *m_template_widget;
   Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;
@@ -273,9 +267,6 @@ private:
   utils::GlobalKeybinder       *m_global_keys;
   utils::InterruptableTimeout  *m_mark_set_timeout;
   bool                         m_enabled;
-
-  std::map<int, Glib::RefPtr<Gtk::Action> > m_widget_actions;
-  sigc::signal<void> m_signal_actions_changed;
 
   Tag::Ptr m_template_tag;
   Tag::Ptr m_template_save_size_tag;

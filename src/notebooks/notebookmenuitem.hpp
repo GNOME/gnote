@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +24,7 @@
 #ifndef __NOTEBOOK_MENUITEM_HPP__
 #define __NOTEBOOK_MENUITEM_HPP__
 
-#include <gtkmm/radiomenuitem.h>
+#include <gtkmm/checkmenuitem.h>
 
 #include "note.hpp"
 #include "notebooks/notebook.hpp"
@@ -33,10 +34,10 @@ namespace gnote {
   namespace notebooks {
 
     class NotebookMenuItem
-      : public Gtk::RadioMenuItem
+      : public Gtk::CheckMenuItem
     {
     public:
-      NotebookMenuItem(Gtk::RadioButtonGroup & group, const Note::Ptr &, const Notebook::Ptr &);
+      NotebookMenuItem(const Note::Ptr &, const Notebook::Ptr &);
 
       const Note::Ptr & get_note() const
         {

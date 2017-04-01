@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2016 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,11 +47,14 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 private:
   ReadOnlyNoteAddin();
-  void on_menu_item_toggled();
+  void on_menu_item_toggled(const Glib::VariantBase & state);
+  void on_foreground();
+  void on_background();
 
-  Glib::RefPtr<Gtk::Action> m_action;
+  sigc::connection m_readonly_toggle_cid;
 };
 
 }

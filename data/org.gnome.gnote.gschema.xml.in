@@ -123,7 +123,7 @@
     <key name="use-status-icon" type="b">
       <default>false</default>
       <_summary>Use status icon, when started as an application</_summary>
-      <_description>Has affect only when started as an application. When set to TRUE, shows a status icon. If set to FALSE, Search All Notes window is used as main application window, closing which makes application to exit.</_description>
+      <_description>Deprecated, has no effect.</_description>
     </key>
     <key name="open-notes-in-new-window" type="b">
       <default>false</default>
@@ -131,9 +131,14 @@
       <_description>Open notes in new window instead of replacing active content of the same window</_description>
     </key>
     <key name="autosize-note-window" type="b">
-      <default>true</default>
+      <default>false</default>
       <_summary>Save note window size and autosize note window to it</_summary>
       <_description>Saves note window size and automatically resizes main window to this size, when note is opened.</_description>
+    </key>
+    <key name="use-client-side-decorations" type="s">
+      <default>'gnome'</default>
+      <_summary>Use client side window decorations</_summary>
+      <_description>Should Gnote draw its window titlebar, or leave that to window manager. Possible values are 'enabled' to draw them, 'disabled' to leave them to window manager, or a comma separated list of desktop environments, where Gnote should draw decorations itself. Requires application restart.</_description>
     </key>
     <child name="global-keybindings" schema="org.gnome.gnote.global-keybindings" />
     <child name="export-html" schema="org.gnome.gnote.export-html" />
@@ -145,27 +150,27 @@
     <key name="show-note-menu" type="s">
       <default>'&lt;Alt&gt;F12'</default>
       <_summary>Show applet menu</_summary>
-      <_description>The global keybinding for showing the Gnote applet's menu. The format looks like "&lt;Control&gt;a" or "&lt;Shift&gt;&lt;Alt&gt;F1". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as "&lt;Ctl&gt;" and "&lt;Ctrl&gt;". If you set the option to the special string "disabled", then there will be no keybinding for this action.</_description>
+      <_description>Deprecated, has no effect.</_description>
     </key>
     <key name="open-start-here" type="s">
       <default>'&lt;Alt&gt;F11'</default>
       <_summary>Open Start Here</_summary>
-      <_description>The global keybinding for opening the "Start Here" note. The format looks like "&lt;Control&gt;a" or "&lt;Shift&gt;&lt;Alt&gt;F1". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as "&lt;Ctl&gt;" and "&lt;Ctrl&gt;". If you set the option to the special string "disabled", then there will be no keybinding for this action.</_description>
+      <_description>Deprecated, has no effect.</_description>
     </key>
     <key name="create-new-note" type="s">
       <default>'disabled'</default>
       <_summary>Create a new Note</_summary>
-      <_description>The global keybinding for creating and displaying a new Note. The format looks like "&lt;Control&gt;a" or "&lt;Shift&gt;&lt;Alt&gt;F1". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as "&lt;Ctl&gt;" and "&lt;Ctrl&gt;". If you set the option to the special string "disabled", then there will be no keybinding for this action.</_description>
+      <_description>Deprecated, has no effect.</_description>
     </key>
     <key name="open-search" type="s">
       <default>'disabled'</default>
       <_summary>Open Search Dialog</_summary>
-      <_description>The global keybinding for opening the Note Search dialog. The format looks like "&lt;Control&gt;a" or "&lt;Shift&gt;&lt;Alt&gt;F1". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as "&lt;Ctl&gt;" and "&lt;Ctrl&gt;". If you set the option to the special string "disabled", then there will be no keybinding for this action.</_description>
+      <_description>Deprecated, has no effect.</_description>
     </key>
     <key name="open-recent-changes" type="s">
       <default>'disabled'</default>
       <_summary>Open Recent Changes</_summary>
-      <_description>The global keybinding for opening the Recent Changes dialog. The format looks like "&lt;Control&gt;a" or "&lt;Shift&gt;&lt;Alt&gt;F1". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as "&lt;Ctl&gt;" and "&lt;Ctrl&gt;". If you set the option to the special string "disabled", then there will be no keybinding for this action.</_description>
+      <_description>Deprecated, has no effect.</_description>
     </key>
   </schema>
   <schema id="org.gnome.gnote.export-html" path="/org/gnome/gnote/export-html/">
@@ -189,7 +194,7 @@
     <key name="sync-guid" type="s">
       <default>''</default>
       <_summary>Synchronization Client ID</_summary>
-      <_description>Unique identifier for this Gnote client, used when communicating with a sychronization server.</_description>
+      <_description>Unique identifier for this Gnote client, used when communicating with a synchronization server.</_description>
     </key>
     <key name="sync-local-path" type="s">
       <default>''</default>

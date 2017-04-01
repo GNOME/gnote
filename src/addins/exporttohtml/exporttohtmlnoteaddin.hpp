@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,9 +26,6 @@
 #ifndef _EXPORTTOHTML_ADDIN_HPP_
 #define _EXPORTTOHTML_ADDIN_HPP_
 
-#include <gtkmm/imagemenuitem.h>
-
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "sharp/streamwriter.hpp"
 #include "sharp/xsltransform.hpp"
@@ -59,14 +56,12 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
-
-
+  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 private:
   sharp::XslTransform & get_note_xsl();
-  void export_button_clicked();
+  void export_button_clicked(const Glib::VariantBase&);
   void write_html_for_note (sharp::StreamWriter &, const gnote::Note::Ptr &, bool, bool);
 
-  Gtk::ImageMenuItem * m_item;
   static sharp::XslTransform *s_xsl;
 };
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -67,22 +67,27 @@ void ExportToGTGNoteAddin::shutdown()
 
 void ExportToGTGNoteAddin::on_note_opened()
 {
-  Glib::RefPtr<gnote::NoteWindow::NonModifyingAction> action =
-    gnote::NoteWindow::NonModifyingAction::create("ExportToGTGAction", _("Export to Getting Things GNOME"),
-                                                  _("Export note as Getting Things GNOME task"));
-  action->signal_activate().connect(
-    sigc::mem_fun(*this, &ExportToGTGNoteAddin::export_button_clicked));
-  add_note_action(action, gnote::EXPORT_TO_GTG_ORDER);
+  register_main_window_action_callback("exporttogtg-export", sigc::mem_fun(*this,
+    &ExportToGTGNoteAddin::export_button_clicked));
 }
 
 
-void ExportToGTGNoteAddin::export_button_clicked()
+std::map<int, Gtk::Widget*> ExportToGTGNoteAddin::get_actions_popover_widgets() const
+{
+  auto widgets = NoteAddin::get_actions_popover_widgets();
+  auto button = gnote::utils::create_popover_button("win.exporttogtg-export", _("Export to Getting Things GNOME"));
+  gnote::utils::add_item_to_ordered_map(widgets, gnote::EXPORT_TO_GTG_ORDER, button);
+  return widgets;
+}
+
+
+void ExportToGTGNoteAddin::export_button_clicked(const Glib::VariantBase&)
 {
   try {
-    if (s_gtg_interface == 0) {
+    if (!s_gtg_interface) {
       Glib::RefPtr<Gio::DBus::NodeInfo> node_info = Gio::DBus::NodeInfo::create_for_xml(GTG_INTERFACE);
       s_gtg_interface = node_info->lookup_interface("org.gnome.GTG");
-      if(s_gtg_interface == 0) {
+      if(!s_gtg_interface) {
         ERR_OUT(_("GTG XML loaded, but interface not found"));
         return;
       }
@@ -96,14 +101,14 @@ void ExportToGTGNoteAddin::export_button_clicked()
   try {
     Glib::RefPtr<Gio::DBus::Proxy> proxy = Gio::DBus::Proxy::create_for_bus_sync(
         Gio::DBus::BUS_TYPE_SESSION, "org.gnome.GTG", "/org/gnome/GTG", "org.gnome.GTG", s_gtg_interface);
-    if(proxy == 0) {
-      ERR_OUT(_("Failed to create D_Bus proxy for GTG"));
+    if(!proxy) {
+      ERR_OUT(_("Failed to create D-Bus proxy for GTG"));
       return;
     }
 
     gnote::Note::Ptr note(get_note());
-    std::string title = note->get_title();
-    std::string body = sharp::string_trim(sharp::string_replace_first(note->text_content(), title, ""));
+    Glib::ustring title = note->get_title();
+    Glib::ustring body = sharp::string_trim(sharp::string_replace_first(note->text_content(), title, ""));
 
     std::vector<Glib::VariantBase> parameters;
     parameters.reserve(2);

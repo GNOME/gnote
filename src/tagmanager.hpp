@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,10 +44,10 @@ class TagManager
 public:
   TagManager();
 
-  virtual Tag::Ptr get_tag(const std::string & tag_name) const override;
-  virtual Tag::Ptr get_or_create_tag(const std::string &) override;
-  virtual Tag::Ptr get_system_tag(const std::string & tag_name) const override;
-  virtual Tag::Ptr get_or_create_system_tag(const std::string & name) override;
+  virtual Tag::Ptr get_tag(const Glib::ustring & tag_name) const override;
+  virtual Tag::Ptr get_or_create_tag(const Glib::ustring &) override;
+  virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const override;
+  virtual Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) override;
   virtual void remove_tag(const Tag::Ptr & tag) override;
   Glib::RefPtr<Gtk::TreeModel> get_tags() const
     {
@@ -69,14 +69,14 @@ private:
   Glib::RefPtr<Gtk::ListStore>     m_tags;
   Glib::RefPtr<Gtk::TreeModelSort> m_sorted_tags;
   // The key for this dictionary is Tag.Name.ToLower ().
-  typedef std::map<std::string, Gtk::TreeIter> TagMap;
+  typedef std::map<Glib::ustring, Gtk::TreeIter> TagMap;
   TagMap                           m_tag_map;
-  typedef std::map<std::string, Tag::Ptr> InternalMap;
+  typedef std::map<Glib::ustring, Tag::Ptr> InternalMap;
   InternalMap                      m_internal_tags;
   mutable Glib::Mutex              m_locker;
   
   sigc::signal<void, Tag::Ptr, const Gtk::TreeIter &> m_signal_tag_added;
-  sigc::signal<void, const std::string &> m_signal_tag_removed;
+  sigc::signal<void, const Glib::ustring &> m_signal_tag_removed;
 };
 
 }

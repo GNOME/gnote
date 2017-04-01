@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -54,7 +54,7 @@ public:
       return m_read_only;
     }
   NoteBase::Ptr find(const Glib::ustring &) const;
-  NoteBase::Ptr find_by_uri(const std::string &) const;
+  NoteBase::Ptr find_by_uri(const Glib::ustring &) const;
   NoteBase::List get_notes_linking_to(const Glib::ustring & title) const;
   NoteBase::Ptr create();
   NoteBase::Ptr create(const Glib::ustring & title);
@@ -67,7 +67,7 @@ public:
   // Import a note read from file_path
   // Will ensure the sanity including the unique title.
   NoteBase::Ptr import_note(const Glib::ustring & file_path);
-  NoteBase::Ptr create_with_guid(const Glib::ustring & title, const std::string & guid);
+  NoteBase::Ptr create_with_guid(const Glib::ustring & title, const Glib::ustring & guid);
 
   const Glib::ustring & notes_dir() const
     {
@@ -78,7 +78,7 @@ public:
       return m_notes;
     }
 
-  const std::string & start_note_uri() const
+  const Glib::ustring & start_note_uri() const
     { 
       return m_start_note_uri; 
     }
@@ -91,24 +91,24 @@ protected:
   virtual void _common_init(const Glib::ustring & directory, const Glib::ustring & backup);
   bool first_run() const;
   virtual void post_load();
-  virtual void migrate_notes(const std::string & old_note_dir);
+  virtual void migrate_notes(const Glib::ustring & old_note_dir);
   /** add the note to the manager and setup signals */
   void add_note(const NoteBase::Ptr &);
   void on_note_rename(const NoteBase::Ptr & note, const Glib::ustring & old_title);
   void on_note_save(const NoteBase::Ptr & note);
   virtual NoteBase::Ptr create_note_from_template(const Glib::ustring & title,
                                                   const NoteBase::Ptr & template_note,
-                                                  const std::string & guid);
-  virtual NoteBase::Ptr create_new_note(Glib::ustring title, const std::string & guid);
+                                                  const Glib::ustring & guid);
+  virtual NoteBase::Ptr create_new_note(Glib::ustring title, const Glib::ustring & guid);
   virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
-                                        const std::string & guid);
+                                        const Glib::ustring & guid);
   virtual NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) = 0;
   Glib::ustring make_new_file_name() const;
   Glib::ustring make_new_file_name(const Glib::ustring & guid) const;
   virtual NoteBase::Ptr note_load(const Glib::ustring & file_name) = 0;
 
   NoteBase::List m_notes;
-  std::string m_start_note_uri;
+  Glib::ustring m_start_note_uri;
   Glib::ustring m_backup_dir;
   Glib::ustring m_default_note_template_title;
 private:

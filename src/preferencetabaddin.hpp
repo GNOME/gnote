@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,8 +23,6 @@
 
 #ifndef _PREFERENCE_TAB_ADDIN_HPP_
 #define _PREFERENCE_TAB_ADDIN_HPP_
-
-#include <string>
 
 #include <gtkmm/widget.h>
 
@@ -59,7 +57,7 @@ namespace gnote {
   public:
     virtual bool get_preference_tab_widget (
                   Gtk::Dialog * parent,
-                  std::string  & tabLabel,
+                  Glib::ustring & tabLabel,
                   Gtk::Widget * preferenceWidget) = 0;
   };
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ AllNotesNotebook::AllNotesNotebook(NoteManager & manager)
 {
 }
 
-std::string AllNotesNotebook::get_normalized_name() const
+Glib::ustring AllNotesNotebook::get_normalized_name() const
 {
   return "___NotebookManager___AllNotes__Notebook___";
 }
@@ -76,7 +76,7 @@ UnfiledNotesNotebook::UnfiledNotesNotebook(NoteManager & manager)
 {
 }
 
-std::string UnfiledNotesNotebook::get_normalized_name() const
+Glib::ustring UnfiledNotesNotebook::get_normalized_name() const
 {
   return "___NotebookManager___UnfiledNotes__Notebook___";
 }
@@ -107,7 +107,7 @@ PinnedNotesNotebook::PinnedNotesNotebook(NoteManager & manager)
 {
 }
 
-std::string PinnedNotesNotebook::get_normalized_name() const
+Glib::ustring PinnedNotesNotebook::get_normalized_name() const
 {
   return "___NotebookManager___PinnedNotes__Notebook___";
 }
@@ -136,7 +136,7 @@ ActiveNotesNotebook::ActiveNotesNotebook(NoteManager & manager)
     .connect(sigc::mem_fun(*this, &ActiveNotesNotebook::on_note_deleted));
 }
 
-std::string ActiveNotesNotebook::get_normalized_name() const
+Glib::ustring ActiveNotesNotebook::get_normalized_name() const
 {
   return "___NotebookManager___ActiveNotes__Notebook___";
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,6 @@
 
 
 
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
 
 #include "sharp/string.hpp"
@@ -62,7 +61,7 @@ namespace notebooks {
   /// A <see cref="System.String"/>.  This is the name that will be used
   /// to identify the notebook.
   /// </param>
-  Notebook::Notebook(NoteManager & manager, const std::string & name, bool is_special)
+  Notebook::Notebook(NoteManager & manager, const Glib::ustring & name, bool is_special)
     : m_note_manager(manager)
   {
     // is special assume the name as is, and we don't want a tag.
@@ -72,7 +71,7 @@ namespace notebooks {
     else {
       set_name(name);
       m_tag = ITagManager::obj().get_or_create_system_tag(
-        std::string(NOTEBOOK_TAG_PREFIX) + name);
+        Glib::ustring(NOTEBOOK_TAG_PREFIX) + name);
     }
   }
 
@@ -86,15 +85,15 @@ namespace notebooks {
     : m_note_manager(manager)
   {
   // Parse the notebook name from the tag name
-    std::string systemNotebookPrefix = std::string(Tag::SYSTEM_TAG_PREFIX)
+    Glib::ustring systemNotebookPrefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
       + NOTEBOOK_TAG_PREFIX;
-    std::string notebookName = sharp::string_substring(notebookTag->name(), 
+    Glib::ustring notebookName = sharp::string_substring(notebookTag->name(),
                                                        systemNotebookPrefix.length());
     set_name(notebookName);
     m_tag = notebookTag;
   }
 
-  void Notebook::set_name(const std::string & value)
+  void Notebook::set_name(const Glib::ustring & value)
   {
     Glib::ustring trimmedName = sharp::string_trim(value);
     if(!trimmedName.empty()) {
@@ -105,14 +104,14 @@ namespace notebooks {
       // notebook.  For example, if the name of the notebooks
       // "Meetings", the templateNoteTitle should be "Meetings
       // Notebook Template".  Translators should place the
-      // name of the notebook accordingly using "%1%".
-      std::string format = _("%1% Notebook Template");
-      m_default_template_note_title = str(boost::format(format) % m_name);
+      // name of the notebook accordingly using "%1".
+      Glib::ustring format = _("%1 Notebook Template");
+      m_default_template_note_title = Glib::ustring::compose(format, m_name);
     }
   }
 
 
-  std::string Notebook::get_normalized_name() const
+  Glib::ustring Notebook::get_normalized_name() const
   {
     return m_normalized_name;
   }
@@ -149,7 +148,7 @@ namespace notebooks {
     NoteBase::Ptr note = find_template_note();
 
     if (!note) {
-      std::string title = m_default_template_note_title;
+      Glib::ustring title = m_default_template_note_title;
       if(m_note_manager.find(title)) {
         std::list<NoteBase*> tag_notes;
         m_tag->get_notes(tag_notes);
@@ -215,7 +214,7 @@ namespace notebooks {
     return true;
   }
 
-  std::string Notebook::normalize(const std::string & s)
+  Glib::ustring Notebook::normalize(const Glib::ustring & s)
   {
     return Glib::ustring(sharp::string_trim(s)).lowercase();
   }

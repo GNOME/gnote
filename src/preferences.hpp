@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,6 @@
 #define __PREFERENCES_HPP_
 
 #include <map>
-#include <string>
 #include <sigc++/signal.h>
 #include <giomm/settings.h>
 
@@ -68,6 +67,7 @@ namespace gnote {
     static const char *SEARCH_WINDOW_HEIGHT;
     static const char *SEARCH_WINDOW_SPLITTER_POS;
     static const char *SEARCH_SORTING;
+    static const char *USE_CLIENT_SIDE_DECORATIONS;
 
     static const char *KEYBINDING_SHOW_NOTE_MENU;
     static const char *KEYBINDING_OPEN_START_HERE;
@@ -92,10 +92,10 @@ namespace gnote {
 
     Preferences();
 
-    Glib::RefPtr<Gio::Settings> get_schema_settings(const std::string & schema);
+    Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
   private:
     Preferences(const Preferences &); // non implemented
-    std::map<std::string, Glib::RefPtr<Gio::Settings> > m_schemas;
+    std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
   };
 
 

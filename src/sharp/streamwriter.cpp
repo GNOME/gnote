@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -46,13 +46,13 @@ StreamWriter::~StreamWriter()
   }
 }
 
-void StreamWriter::init(const std::string & filename)
+void StreamWriter::init(const Glib::ustring & filename)
 {
   m_file = fopen(filename.c_str(), "wb");
 }
 
 
-void StreamWriter::write(const std::string & text)
+void StreamWriter::write(const Glib::ustring & text)
 {
   fprintf(m_file, "%s", text.c_str());
 }

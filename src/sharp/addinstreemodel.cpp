@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -51,9 +51,9 @@ namespace sharp {
     set_column_types(m_columns);
   }
 
-  std::string AddinsTreeModel::get_module_id(const Gtk::TreeIter & iter)
+  Glib::ustring AddinsTreeModel::get_module_id(const Gtk::TreeIter & iter)
   {
-    std::string id;
+    Glib::ustring id;
     if(iter) {
       iter->get_value(4, id);
     }
@@ -80,7 +80,7 @@ namespace sharp {
                                             const Gtk::TreeIter & iter)
   {
     Gtk::CellRendererText *text_renderer = dynamic_cast<Gtk::CellRendererText*>(renderer);
-    std::string value;
+    Glib::ustring value;
     iter->get_value(0, value);
     text_renderer->property_text() = value;
     const sharp::DynamicModule *module = get_module(iter);
@@ -140,14 +140,14 @@ namespace sharp {
       iter->set_value(3, category);
     }
     iter = Gtk::TreeStore::append(iter->children());
-    iter->set_value(0, std::string(module_info.name()));
-    iter->set_value(1, std::string(module_info.version()));
+    iter->set_value(0, module_info.name());
+    iter->set_value(1, module_info.version());
     iter->set_value(2, module);
     iter->set_value(4, module_info.id());
     return iter;
   }
 
-  std::string AddinsTreeModel::get_addin_category_name(gnote::AddinCategory category)
+  Glib::ustring AddinsTreeModel::get_addin_category_name(gnote::AddinCategory category)
   {
     switch(category) {
       case gnote::ADDIN_CATEGORY_FORMATTING:

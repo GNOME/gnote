@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -35,6 +35,7 @@ extern "C" {
 #endif
 
 #include <gdkmm/cursor.h>
+#include <glibmm/regex.h>
 #include <gtkmm/textiter.h>
 #include <gtkmm/texttag.h>
 
@@ -73,9 +74,9 @@ namespace gnote {
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
     void update();
     void changed();
-    std::string get_unique_untitled();
+    Glib::ustring get_unique_untitled();
     bool update_note_title(bool only_warn);
-    void show_name_clash_error(const std::string &, bool);
+    void show_name_clash_error(const Glib::ustring &, bool);
     void on_dialog_response(int);
     void on_window_backgrounded();
 
@@ -93,12 +94,14 @@ namespace gnote {
     virtual void initialize() override;
     virtual void shutdown() override;
     virtual void on_note_opened() override;
+    virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
 
     static bool gtk_spell_available()
       { return true; }
   protected:
     NoteSpellChecker()
       : m_obj_ptr(NULL)
+      , m_enabled(false)
       {}
   private:
     static const char *LANG_PREFIX;
@@ -113,12 +116,15 @@ namespace gnote {
                      const Gtk::TextIter &, const Gtk::TextIter &);
     void on_language_changed(const gchar *lang);
     Tag::Ptr get_language_tag();
-    std::string get_language();
-    void on_spell_check_enable_action();
+    Glib::ustring get_language();
+    void on_note_window_foregrounded();
+    void on_note_window_backgrounded();
+    void on_spell_check_enable_action(const Glib::VariantBase & state);
 
     GtkSpellChecker *m_obj_ptr;
     sigc::connection  m_tag_applied_cid;
-    utils::CheckAction::Ptr m_enable_action;
+    sigc::connection m_enable_cid;
+    bool m_enabled;
   };
 #else
   class NoteSpellChecker 
@@ -150,7 +156,7 @@ namespace gnote {
   protected:
     NoteUrlWatcher();
   private:
-    std::string get_url(const Gtk::TextIter & start, const Gtk::TextIter & end);
+    Glib::ustring get_url(const Gtk::TextIter & start, const Gtk::TextIter & end);
     bool on_url_tag_activated(const NoteEditor &,
                               const Gtk::TextIter &, const Gtk::TextIter &);
     void apply_url_to_block (Gtk::TextIter start, Gtk::TextIter end);
@@ -278,7 +284,7 @@ namespace gnote {
   private:
     void on_tag_added(const NoteBase&, const Tag::Ptr&);
     void on_tag_removing(const NoteBase&, const Tag &);
-    void on_tag_removed(const NoteBase::Ptr&, const std::string&);
+    void on_tag_removed(const NoteBase::Ptr&, const Glib::ustring&);
 
     sigc::connection m_on_tag_added_cid;
     sigc::connection m_on_tag_removing_cid;

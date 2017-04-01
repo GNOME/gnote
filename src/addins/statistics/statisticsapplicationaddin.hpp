@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,10 +51,11 @@ public:
   virtual bool initialized() override;
 private:
   StatisticsApplicationAddin();
-  void on_show_statistics();
+  void on_show_statistics(const Glib::VariantBase&);
+  void add_menu_item(std::map<int, Gtk::Widget*> & widgets);
 
   bool m_initialized;
-  Glib::RefPtr<Gtk::Action> m_action;
+  sigc::connection m_add_menu_item_cid;
   StatisticsWidget *m_widget;
 };
 

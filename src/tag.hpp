@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,8 @@
 
 #include <list>
 #include <map>
-#include <string>
+
+#include <glibmm/ustring.h>
 
 #include "base/macros.hpp"
 
@@ -47,7 +48,7 @@ namespace gnote {
     typedef shared_ptr<Tag> Ptr;
     static const char * SYSTEM_TAG_PREFIX;
 
-    Tag(const std::string & name);
+    Tag(const Glib::ustring & name);
 
     // <summary>
     // Associates the specified note with this tag.
@@ -61,15 +62,15 @@ namespace gnote {
     // The name of the tag.  This is what the user types in as the tag and
     // what's used to show the tag to the user. This includes any 'system:' prefixes
     // </summary>
-    const std::string & name() const
+    const Glib::ustring & name() const
       {
         return m_name;
       }
-    void set_name(const std::string & );
+    void set_name(const Glib::ustring & );
     // <summary>
     // Use the string returned here to reference the tag in Dictionaries.
     // </summary>
-    const std::string & normalized_name() const
+    const Glib::ustring & normalized_name() const
       { 
         return m_normalized_name; 
       }
@@ -99,15 +100,15 @@ namespace gnote {
 /////
 
   private:
-    std::string m_name;
-    std::string m_normalized_name;
+    Glib::ustring m_name;
+    Glib::ustring m_normalized_name;
     bool        m_issystem;
     bool        m_isproperty;
     // <summary>
     // Used to track which notes are currently tagged by this tag.  The
     // dictionary key is the Note.Uri.
     // </summary>
-    typedef std::map<std::string, NoteBase*> NoteMap;
+    typedef std::map<Glib::ustring, NoteBase*> NoteMap;
     NoteMap m_notes;
   };
 

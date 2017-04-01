@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,10 @@
  */
 
 
-#include <fstream>
 #include <stdexcept>
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <gtkmm/label.h>
 #include <gtkmm/table.h>
 
@@ -64,7 +64,7 @@ gnote::sync::SyncServer::Ptr FileSystemSyncServiceAddin::create_sync_server()
 {
   gnote::sync::SyncServer::Ptr server;
 
-  std::string syncPath;
+  Glib::ustring syncPath;
   if(get_config_settings(syncPath)) {
     m_path = syncPath;
     if(sharp::directory_exists(m_path) == false) {
@@ -94,7 +94,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
   table->set_col_spacings(10);
 
   // Read settings out of gconf
-  std::string syncPath;
+  Glib::ustring syncPath;
   if(get_config_settings(syncPath) == false) {
     syncPath = "";
   }
@@ -126,7 +126,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
 
 bool FileSystemSyncServiceAddin::save_configuration()
 {
-  std::string syncPath = m_path_button->get_filename();
+  Glib::ustring syncPath = m_path_button->get_filename();
 
   if(syncPath == "") {
     // TODO: Figure out a way to send the error back to the client
@@ -144,8 +144,8 @@ bool FileSystemSyncServiceAddin::save_configuration()
   else {
     // Test creating/writing/deleting a file
     // FIXME: Should throw gnote::sync::GnoteSyncException once string changes are OK again
-    std::string testPathBase = Glib::build_filename(syncPath, "test");
-    std::string testPath = testPathBase;
+    Glib::ustring testPathBase = Glib::build_filename(syncPath, "test");
+    Glib::ustring testPath = testPathBase;
     int count = 0;
 
     // Get unique new file name
@@ -154,34 +154,25 @@ bool FileSystemSyncServiceAddin::save_configuration()
     }
 
     // Test ability to create and write
-    std::string testLine = "Testing write capabilities.";
-    std::ofstream fout(testPath.c_str());
-    if(fout.is_open()) {
-      fout << testLine;
-      fout.close();
-    }
+    Glib::ustring testLine = "Testing write capabilities.";
+    sharp::file_write_all_text(testPath, testLine);
 
     // Test ability to read
     bool testFileFound = false;
-    std::list<std::string> files;
+    std::list<Glib::ustring> files;
     sharp::directory_get_files(syncPath, files);
-    for(std::list<std::string>::iterator iter = files.begin(); iter != files.end(); ++iter) {
-      if(*iter == testPath) {
+    for(auto file : files) {
+      if(file == testPath) {
         testFileFound = true;
         break;
       }
     }
     if(!testFileFound) {
-      ; // TODO: Throw gnote::sync::GnoteSyncException
+      throw sharp::Exception("Failure writing test file");
     }
-    std::ifstream fin(testPath.c_str());
-    if(fin.is_open()) {
-      std::string line;
-      std::getline(fin, line);
-      fin.close();
-      if(line != testLine) {
-        ; // TODO: Throw gnote::sync::GnoteSyncException
-      }
+    Glib::ustring line = sharp::file_read_all_text(testPath);
+    if(line != testLine) {
+      throw sharp::Exception("Failure when checking test file contents");
     }
 
     // Test ability to delete
@@ -212,14 +203,14 @@ bool FileSystemSyncServiceAddin::is_configured()
 }
 
 
-std::string FileSystemSyncServiceAddin::name()
+Glib::ustring FileSystemSyncServiceAddin::name()
 {
   char *res = _("Local Folder");
   return res ? res : "";
 }
 
 
-std::string FileSystemSyncServiceAddin::id()
+Glib::ustring FileSystemSyncServiceAddin::id()
 {
   return "local";
 }
@@ -237,7 +228,7 @@ bool FileSystemSyncServiceAddin::initialized()
 }
 
 
-bool FileSystemSyncServiceAddin::get_config_settings(std::string & syncPath)
+bool FileSystemSyncServiceAddin::get_config_settings(Glib::ustring & syncPath)
 {
   syncPath = gnote::Preferences::obj().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC)->get_string(gnote::Preferences::SYNC_LOCAL_PATH);

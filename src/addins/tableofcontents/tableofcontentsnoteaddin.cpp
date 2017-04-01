@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015-2016 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,9 @@
 
 #include <glibmm/i18n.h>
 
+#include <gtkmm/modelbutton.h>
 #include <gtkmm/stock.h>
+#include <gtkmm/separator.h>
 #include <gtkmm/separatormenuitem.h>
 
 #include "sharp/string.hpp"
@@ -37,7 +39,7 @@
 #include "tableofcontents.hpp"
 #include "tableofcontentsnoteaddin.hpp"
 #include "tableofcontentsmenuitem.hpp"
-#include "tableofcontentsaction.hpp"
+#include "tableofcontentsutils.hpp"
 
 namespace tableofcontents {
 
@@ -82,16 +84,29 @@ void TableofcontentsNoteAddin::on_note_opened ()
   m_toc_menu->signal_hide().connect(
     sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_menu_hidden));
 
-  Glib::RefPtr<Gtk::Action> action = TableofcontentsAction::create(
-    sigc::mem_fun(*this, &TableofcontentsNoteAddin::update_menu));
-  add_note_action(action, gnote::TABLE_OF_CONTENTS_ORDER);
+  register_main_window_action_callback("tableofcontents-heading1",
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_1_action));
+  register_main_window_action_callback("tableofcontents-heading2",
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_2_action));
+  register_main_window_action_callback("tableofcontents-help",
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_toc_help_action));
+  register_main_window_action_callback("tableofcontents-goto-heading",
+    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_goto_heading));
+
+  auto win = get_window();
+  win->signal_foregrounded.connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_foregrounded));
+
+  auto buffer = get_note()->get_buffer();
+  if(buffer) {
+    buffer->signal_changed().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_note_changed));
+  }
 
   // Reacts to key press events
-  get_note()->get_window()->signal_key_press_event().connect(
+  win->signal_key_press_event().connect(
     sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_key_pressed));
 
   // TOC can show up also in the contextual menu
-  get_note()->get_window()->editor()->signal_populate_popup().connect(
+  win->editor()->signal_populate_popup().connect(
     sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_populate_popup));
 
   // Heading tags
@@ -101,9 +116,49 @@ void TableofcontentsNoteAddin::on_note_opened ()
 }
 
 
-void TableofcontentsNoteAddin::update_menu(Gtk::Menu *menu)
+void TableofcontentsNoteAddin::on_foregrounded()
 {
-  populate_toc_menu(menu);
+  auto host = get_window()->host();
+  auto goto_action = host->find_action("tableofcontents-goto-heading");
+  goto_action->set_state(Glib::Variant<gint32>::create(-1));
+}
+
+
+std::map<int, Gtk::Widget*> TableofcontentsNoteAddin::get_actions_popover_widgets() const
+{
+  auto widgets = NoteAddin::get_actions_popover_widgets();
+  auto toc_item = gnote::utils::create_popover_submenu_button("tableofcontents-menu", _("Table of Contents"));
+  gnote::utils::add_item_to_ordered_map(widgets, gnote::TABLE_OF_CONTENTS_ORDER, toc_item);
+  auto toc_menu = gnote::utils::create_popover_submenu("tableofcontents-menu");
+  gnote::utils::add_item_to_ordered_map(widgets, 100000, toc_menu);
+
+  std::vector<Gtk::Widget*> toc_items;
+  get_toc_popover_items(toc_items);
+  if(toc_items.size()) {
+    for(auto & toc_button : toc_items) {
+      toc_menu->add(*toc_button);
+    }
+
+    toc_menu->add(*manage(new Gtk::Separator));
+  }
+
+  auto item = manage(gnote::utils::create_popover_button("win.tableofcontents-heading1", _("Heading 1")));
+  item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+  toc_menu->add(*item);
+
+  item = manage(gnote::utils::create_popover_button("win.tableofcontents-heading2", _("Heading 2")));
+  item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+  toc_menu->add(*item);
+
+  item = manage(gnote::utils::create_popover_button("win.tableofcontents-help", _("Table of Contents Help")));
+  toc_menu->add(*item);
+  toc_menu->add(*manage(new Gtk::Separator));
+
+  auto back_item = gnote::utils::create_popover_submenu_button("main", _("_Back"));
+  dynamic_cast<Gtk::ModelButton*>(back_item)->property_inverted() = true;
+  toc_menu->add(*back_item);
+
+  return widgets;
 }
 
 
@@ -153,13 +208,13 @@ void TableofcontentsNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_
     }
 
     item = manage(new Gtk::MenuItem (_("Heading 1")));
-    item->add_accelerator("activate", get_note()->get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+    item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_1_activated));
     item->show ();
     toc_menu->append(*item);
 
     item = manage(new Gtk::MenuItem (_("Heading 2")));
-    item->add_accelerator("activate", get_note()->get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+    item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_2_activated));
     item->show ();
     toc_menu->append(*item);
@@ -191,7 +246,7 @@ void TableofcontentsNoteAddin::on_populate_popup (Gtk::Menu* popup_menu)
 }
 
 
-bool TableofcontentsNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end)
+bool TableofcontentsNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> tag, Gtk::TextIter start, Gtk::TextIter end) const
 //return true if tag is set from start to end
 {
   bool has = false;
@@ -203,7 +258,7 @@ bool TableofcontentsNoteAddin::has_tag_over_range (Glib::RefPtr<Gtk::TextTag> ta
 }
 
 
-Heading::Type TableofcontentsNoteAddin::get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end)
+Heading::Type TableofcontentsNoteAddin::get_heading_level_for_range (Gtk::TextIter start, Gtk::TextIter end) const
 //return the heading level from start to end
 {
   if (has_tag_over_range (m_tag_bold, start, end)) {
@@ -224,16 +279,8 @@ Heading::Type TableofcontentsNoteAddin::get_heading_level_for_range (Gtk::TextIt
 }
 
 
-void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<TableofcontentsMenuItem*> & items)
-//go through the note text, and list all lines tagged as heading,
-//and for each heading, create a new TableofcontentsMenuItem.
+void TableofcontentsNoteAddin::get_toc_items(std::vector<TocItem> & items) const
 {
-  TableofcontentsMenuItem *item = NULL;
-
-  std::string    heading;
-  Heading::Type  heading_level;
-  int            heading_position;
-
   Gtk::TextIter iter, iter_end, eol;
 
   //for each line of the buffer,
@@ -245,24 +292,74 @@ void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<Tableofc
     eol = iter;
     eol.forward_to_line_end();
 
-    heading_level = get_heading_level_for_range (iter, eol);
+    TocItem item;
+    item.heading_level = get_heading_level_for_range (iter, eol);
 
-    if (heading_level == Heading::Level_1 || heading_level == Heading::Level_2) {
-      heading_position = iter.get_offset();
-      heading          = iter.get_text(eol);
+    if (item.heading_level == Heading::Level_1 || item.heading_level == Heading::Level_2) {
+      item.heading_position = iter.get_offset();
+      item.heading          = iter.get_text(eol);
 
-      if (items.size() == 0) {
-        //It's the first heading found,
-        //we also insert an entry linked to the Note's title:
-        item = manage(new TableofcontentsMenuItem (get_note(), get_note()->get_title(), Heading::Title, 0));
-        items.push_back(item);
-      }
-      item = manage(new TableofcontentsMenuItem (get_note(), heading, heading_level, heading_position));
       items.push_back(item);
     }
     iter.forward_visible_line(); //next line
   }
 }
+
+
+void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<TableofcontentsMenuItem*> & items)
+//go through the note text, and list all lines tagged as heading,
+//and for each heading, create a new TableofcontentsMenuItem.
+{
+  TableofcontentsMenuItem *item = NULL;
+  std::vector<TocItem> toc_items;
+
+  get_toc_items(toc_items);
+  if(toc_items.size()) {
+    //If we have at least one heading
+    //we also insert an entry linked to the Note's title:
+    item = manage(new TableofcontentsMenuItem(get_note(), get_note()->get_title(), Heading::Title, 0));
+    items.push_back(item);
+  }
+
+  for(auto & toc_item : toc_items) {
+    item = manage(new TableofcontentsMenuItem(get_note(), toc_item.heading, toc_item.heading_level, toc_item.heading_position));
+    items.push_back(item);
+  }
+}
+
+
+void TableofcontentsNoteAddin::get_toc_popover_items(std::vector<Gtk::Widget*> & items) const
+{
+  std::vector<TocItem> toc_items;
+
+  get_toc_items(toc_items);
+  if(toc_items.size()) {
+    auto item = dynamic_cast<Gtk::ModelButton*>(gnote::utils::create_popover_button("win.tableofcontents-goto-heading", ""));
+    Gtk::Label *label = (Gtk::Label*)item->get_child();
+    label->set_markup("<b>" + get_note()->get_title() + "</b>");
+    gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_int32(0));
+    item->property_role() = Gtk::BUTTON_ROLE_NORMAL;
+    item->property_inverted() = true;
+    item->property_centered() = false;
+    items.push_back(item);
+  }
+
+  for(auto & toc_item : toc_items) {
+    if(toc_item.heading_level == Heading::Level_2) {
+      toc_item.heading = "→  " + toc_item.heading;
+    }
+    auto item = dynamic_cast<Gtk::ModelButton*>(gnote::utils::create_popover_button("win.tableofcontents-goto-heading", toc_item.heading));
+    if(toc_item.heading_level == Heading::Level_1) {
+      item->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_FORWARD, Gtk::ICON_SIZE_MENU)));
+    }
+    gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_int32(toc_item.heading_position));
+    item->property_role() = Gtk::BUTTON_ROLE_NORMAL;
+    item->property_inverted() = true;
+    item->property_centered() = false;
+    items.push_back(item);
+  }
+}
+
 
 void TableofcontentsNoteAddin::on_level_1_activated()
 {
@@ -282,9 +379,27 @@ void TableofcontentsNoteAddin::on_toc_popup_activated()
 }
 void TableofcontentsNoteAddin::on_toc_help_activated()
 {
-  gnote::NoteWindow* window = get_note()->get_window();
+  gnote::NoteWindow* window = get_window();
   gnote::utils::show_help("gnote", "addin-tableofcontents",
     window->get_screen()->gobj(), dynamic_cast<Gtk::Window*>(window->host()));
+}
+
+
+void TableofcontentsNoteAddin::on_level_1_action(const Glib::VariantBase&)
+{
+  on_level_1_activated();
+  on_note_changed();
+}
+
+void TableofcontentsNoteAddin::on_level_2_action(const Glib::VariantBase&)
+{
+  on_level_2_activated();
+  on_note_changed();
+}
+
+void TableofcontentsNoteAddin::on_toc_help_action(const Glib::VariantBase&)
+{
+  on_toc_help_activated();
 }
 
 
@@ -381,6 +496,23 @@ void TableofcontentsNoteAddin::headification_switch (Heading::Type heading_reque
   if (has_selection == TRUE) {
     buffer->select_range (selection_start, selection_end);
   }
+}
+
+
+void TableofcontentsNoteAddin::on_goto_heading(const Glib::VariantBase & param)
+{
+  int value = Glib::VariantBase::cast_dynamic<Glib::Variant<gint32>>(param).get();
+  goto_heading(get_note(), value);
+}
+
+
+void TableofcontentsNoteAddin::on_note_changed()
+{
+  auto win = get_note()->get_window();
+  if(!win) {
+    return;
+  }
+  win->signal_popover_widgets_changed();
 }
 
 

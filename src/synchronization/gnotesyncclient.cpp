@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 
 #include "debug.hpp"
 #include "ignote.hpp"
@@ -54,7 +55,7 @@ namespace sync {
   {
     m_local_manifest_file_path = Glib::build_filename(IGnote::conf_dir(), LOCAL_MANIFEST_FILE_NAME);
     Glib::RefPtr<Gio::File> manifest = Gio::File::create_for_path(m_local_manifest_file_path);
-    if(manifest != 0) {
+    if(manifest) {
       m_file_watcher = manifest->monitor_file();
       m_file_watcher->signal_changed()
         .connect(sigc::mem_fun(*this, &GnoteSyncClient::on_changed));
@@ -85,7 +86,7 @@ namespace sync {
 
   void GnoteSyncClient::read_updated_note_atts(sharp::XmlReader & reader)
   {
-    std::string guid, rev;
+    Glib::ustring guid, rev;
     while(reader.move_to_next_attribute()) {
       if(reader.get_name() == "guid") {
 	guid = reader.get_value();
@@ -107,7 +108,7 @@ namespace sync {
 
   void GnoteSyncClient::read_deleted_note_atts(sharp::XmlReader & reader)
   {
-    std::string guid, title;
+    Glib::ustring guid, title;
     while(reader.move_to_next_attribute()) {
       if(reader.get_name() == "guid") {
 	guid = reader.get_value();
@@ -130,7 +131,6 @@ namespace sync {
       }
       if(reader.get_node_type() == XML_READER_TYPE_ELEMENT) {
 	if(reader.get_name() == "note") {
-	  std::string guid, rev;
 	  (this->*read_note_atts)(reader);
 	}
       }
@@ -138,7 +138,7 @@ namespace sync {
   }
 
 
-  void GnoteSyncClient::parse(const std::string & manifest_path)
+  void GnoteSyncClient::parse(const Glib::ustring & manifest_path)
   {
     // Set defaults before parsing
     m_last_sync_date = sharp::DateTime::now().add_days(-1);
@@ -156,7 +156,7 @@ namespace sync {
     while(reader.read()) {
       if(reader.get_node_type() == XML_READER_TYPE_ELEMENT) {
 	if(reader.get_name() == "last-sync-date") {
-	  std::string value = reader.read_string();
+	  Glib::ustring value = reader.read_string();
 	  try {
 	    m_last_sync_date = sharp::DateTime::from_iso8601(value);
 	  }
@@ -166,7 +166,7 @@ namespace sync {
 	  }
 	}
 	else if(reader.get_name() == "last-sync-rev") {
-	  std::string value = reader.read_string();
+	  Glib::ustring value = reader.read_string();
 	  try {
 	    m_last_sync_rev = STRING_TO_INT(value);
 	  }
@@ -189,7 +189,7 @@ namespace sync {
   }
 
 
-  void GnoteSyncClient::write(const std::string & manifest_path)
+  void GnoteSyncClient::write(const Glib::ustring & manifest_path)
   {
     sharp::XmlWriter xml(manifest_path);
 
@@ -211,11 +211,10 @@ namespace sync {
 
       xml.write_start_element("", "note-revisions", "");
 
-      for(std::map<std::string, int>::iterator noteGuid = m_file_revisions.begin();
-          noteGuid != m_file_revisions.end(); ++noteGuid) {
+      for(auto & noteGuid : m_file_revisions) {
 	xml.write_start_element("", "note", "");
-	xml.write_attribute_string("", "guid", "", noteGuid->first);
-	xml.write_attribute_string("", "latest-revision", "", TO_STRING(noteGuid->second));
+	xml.write_attribute_string("", "guid", "", noteGuid.first);
+	xml.write_attribute_string("", "latest-revision", "", TO_STRING(noteGuid.second));
 	xml.write_end_element();
       }
 
@@ -223,11 +222,10 @@ namespace sync {
 
       xml.write_start_element("", "note-deletions", "");
 
-      for(std::map<std::string, std::string>::iterator noteGuid = m_deleted_notes.begin();
-          noteGuid != m_deleted_notes.end(); ++noteGuid) {
+      for(auto & noteGuid : m_deleted_notes) {
 	xml.write_start_element("", "note", "");
-	xml.write_attribute_string("", "guid", "", noteGuid->first);
-	xml.write_attribute_string("", "title", "", noteGuid->second);
+	xml.write_attribute_string("", "guid", "", noteGuid.first);
+	xml.write_attribute_string("", "title", "", noteGuid.second);
 	xml.write_end_element();
       }
 
@@ -261,8 +259,8 @@ namespace sync {
 
   int GnoteSyncClient::get_revision(const NoteBase::Ptr & note)
   {
-    std::string note_guid = note->id();
-    std::map<std::string, int>::const_iterator iter = m_file_revisions.find(note_guid);
+    Glib::ustring note_guid = note->id();
+    auto iter = m_file_revisions.find(note_guid);
     if(iter != m_file_revisions.end()) {
       return iter->second;
     }
@@ -289,7 +287,7 @@ namespace sync {
   }
 
 
-  void GnoteSyncClient::associated_server_id(const std::string & server_id)
+  void GnoteSyncClient::associated_server_id(const Glib::ustring & server_id)
   {
     if(m_server_id != server_id) {
       m_server_id = server_id;

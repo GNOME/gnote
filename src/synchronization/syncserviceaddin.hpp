@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,8 +49,8 @@ namespace sync {
       {
         return true;
       }
-    virtual std::string name() = 0;
-    virtual std::string id() = 0;
+    virtual Glib::ustring name() = 0;
+    virtual Glib::ustring id() = 0;
     virtual bool is_supported() = 0;
     virtual void initialize () = 0;
     virtual void shutdown () = 0;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012 Aurimas Cernius
+ * Copyright (C) 2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,10 +30,8 @@
 #define __SHARP_DIRECTORY_HPP_
 
 #include <list>
-#include <string>
 
-#include <glibmm.h>
-#include <giomm.h>
+#include <giomm/file.h>
 
 namespace sharp {
 
@@ -42,17 +40,17 @@ namespace sharp {
    * @param ext the extension. If empty, then all files are listed.
    * @retval files the list of files
    */
-  void directory_get_files_with_ext(const std::string & dir, 
-                                    const std::string & ext,
-                                    std::list<std::string>  & files);
+  void directory_get_files_with_ext(const Glib::ustring & dir,
+                                    const Glib::ustring & ext,
+                                    std::list<Glib::ustring> & files);
 
-  void directory_get_directories(const std::string & dir,
-                                 std::list<std::string>  & files);
+  void directory_get_directories(const Glib::ustring & dir,
+                                 std::list<Glib::ustring> & files);
 
-  void directory_get_files(const std::string & dir, 
-                           std::list<std::string>  & files);
+  void directory_get_files(const Glib::ustring & dir,
+                           std::list<Glib::ustring> & files);
 
-  bool directory_exists(const std::string & dir);
+  bool directory_exists(const Glib::ustring & dir);
 
   /**
    * @param src The source directory (or file)
@@ -62,9 +60,9 @@ namespace sharp {
                       const Glib::RefPtr<Gio::File> & dest)
                       throw(Gio::Error);
 
-  bool directory_create(const std::string & dir);
+  bool directory_create(const Glib::ustring & dir);
 
-  bool directory_delete(const std::string & dir, bool recursive);
+  bool directory_delete(const Glib::ustring & dir, bool recursive);
 
 }
 

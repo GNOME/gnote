@@ -3,16 +3,16 @@
 # Copyright (C) 2009 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 #
-# Krishna Babu K <kkrothap@redhat.com>, 2009, 2010, 2013.
+# Krishna Babu K <kkrothap@redhat.com>, 2009, 2010, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master.te\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-24 14:31+0000\n"
-"PO-Revision-Date: 2013-03-26 03:40+0530\n"
+"POT-Creation-Date: 2014-09-23 20:28+0000\n"
+"PO-Revision-Date: 2014-09-24 04:22+0530\n"
 "Last-Translator: Krishnababu Krothapalli <kkrothap@redhat.com>\n"
-"Language-Team: Telugu <Fedora-trans-te@redhat.com>\n"
+"Language-Team: Telugu <kde-i18n-doc@kde.org>\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,27 @@ msgstr ""
 "\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: ../data/gnote.desktop.in.in.h:1
+#: ../data/appdata/gnote.appdata.xml.in.h:1
+msgid ""
+"Gnote is a simple note-taking application for GNOME desktop environment. It "
+"allows you to capture your ideas, link them together using WikiWiki-style "
+"links, group together in notebooks and some extra features for everyday use."
+msgstr ""
+"గ్నోమ్ డెస్క్‌టాప్ ఎన్విరాన్మెంట్ నందు గ్నోట్ ఒక నోట్-పుస్తకం అనువర్తనం. "
+"దీనిలో మీరు మీ ఆలచనలు నోట్ చేసుకోవచ్చు, వాటిని WikiWiki-style లింక్స్ "
+"ఉపయోగించి లింక్ చేయవచ్చు, నోట్‌పుస్తకాలనందు సమూహపరచవచ్చు మరియు రోజువారి "
+"అవసరాలకోసం ఇంకొన్ని విశేషణాలు కలిగివుంది."
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid ""
+"Gnote also supports synchronization to make it possible to use on multiple "
+"devices."
+msgstr ""
+"పలు పరికరాలపైన దీనిని ఉపయోగించడం సాధ్యపరచడం కోసమై గ్నోట్ సింక్రొనైజేషన్ కూడా "
+"తోడ్పాటునిచ్చును."
+
+#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:45
+#: ../src/recentchanges.cpp:479
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -40,8 +60,9 @@ msgid "Note-taker"
 msgstr "నోట్-తీసుకొనునది"
 
 #: ../data/gnote.desktop.in.in.h:4
-msgid "note;idea;link;organize;"
-msgstr "note;idea;link;organize;"
+#| msgid "note;idea;link;organize;"
+msgid "notes;idea;link;organize;"
+msgstr "notes;idea;link;organize;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -57,10 +78,31 @@ msgstr ""
 "నొక్కు మెనూనందు చూపబడతాయి."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:3
+msgid "Automatically create links when typing"
+msgstr "టైప్ చేయునప్పుడు లింకులను స్వయంచాలకంగా సృష్టించును"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:4
+msgid ""
+"Enable this option to automatically create a link, when text matches note "
+"title."
+msgstr ""
+"లింకును సృష్టించుటకు ఈ ఐచ్చికాన్ని చేతనం చేయును, పాఠం నోట్ శీర్షికకు "
+"సరిపోలినప్పుడు."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:5
+#| msgid "Update links in referencing notes"
+msgid "Create links for URLs in notes"
+msgstr "నోట్లనందలి URL కొరకు లింకులను సృష్టించును"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:6
+msgid "Enable this option to create links for URLs in notes."
+msgstr "URL కొరకు నోట్లనందు లింకులను సృష్టించుటకు ఈ ఐచ్చికం చేతనం చేయును."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:7
 msgid "Enable WikiWord highlighting"
 msgstr "వికీపద ఉద్దేపించుటను చేతనముచేయుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:4
+#: ../data/org.gnome.gnote.gschema.xml.in.h:8
 msgid ""
 "Enable this option to highlight words ThatLookLikeThis. Clicking the word "
 "will create a note with that name."
@@ -69,11 +111,11 @@ msgstr ""
 "కనబడుతుంది. పదమును "
 "నొక్కుట వలన ఆ నామము తో ఒక నోట్ ను సృష్టించవచ్చు."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:5
+#: ../data/org.gnome.gnote.gschema.xml.in.h:9
 msgid "Enable Auto bulleted lists"
 msgstr "స్వయంచాలక బుల్లెట్ జాబితాలను చేతనముచేస్తుంది"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:6
+#: ../data/org.gnome.gnote.gschema.xml.in.h:10
 msgid ""
 "Enable this option if you want bulleted lists to be automatic when you place "
 "- or * at the beginning of a line."
@@ -82,11 +124,11 @@ msgstr ""
 "జాబితాలు కావాలంటే ఈ ఐచ్చికాన్ని "
 "చేతనము చేయుము."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:7
+#: ../data/org.gnome.gnote.gschema.xml.in.h:11
 msgid "Enable Middle-Click Paste On Icon"
 msgstr "ప్రతిమనందు మధ్యలో నొక్కి అతికించుటను చేతనముచేయుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:8
+#: ../data/org.gnome.gnote.gschema.xml.in.h:12
 msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
@@ -95,14 +137,11 @@ msgstr ""
 "సారమును అతికించగలగాలి "
 "అనుకుంటే ఈ ఐచ్చికాన్ని చేతనము చేయుము."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:9
+#: ../data/org.gnome.gnote.gschema.xml.in.h:13
 msgid "Enable custom font"
 msgstr "మలచిన చేతనము చేయుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:10
-#| msgid ""
-#| "If true, the font name set in custom_font_face will be used as the font "
-#| "when displaying notes. Otherwise the desktop default font will be used."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:14
 msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
@@ -111,30 +150,24 @@ msgstr ""
 "ప్రదర్శించునప్పుడు "
 "ఫాంటుగా వుపయోగించబడుతుంది. లేదంటే డెస్కుటాప్ అప్రమేయ ఫాంటు వుపయోగించబడుతుంది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:11
+#: ../data/org.gnome.gnote.gschema.xml.in.h:15
 msgid "Custom Font Face"
 msgstr "మలచిన అక్షరశైలి ముఖం"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:12
-#| msgid ""
-#| "If enable_custom_font is true, the font name set here will be used as the "
-#| "font when displaying notes."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:16
 msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
 msgstr ""
-"ఒకవేళ enable-custom-font నిజమైతే, ఇక్కడ అమర్చిన అక్షరశైలి నామము "
-"నోట్స్ ప్రదర్శించునపుడు అక్షరశైలి లాగా వాడబడును."
+"ఒకవేళ enable-custom-font నిజమైతే, ఇక్కడ అమర్చిన అక్షరశైలి నామము నోట్స్ "
+"ప్రదర్శించునపుడు "
+"అక్షరశైలి లాగా వాడబడును."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:13
+#: ../data/org.gnome.gnote.gschema.xml.in.h:17
 msgid "Enable global keybindings"
 msgstr "గ్లోబల్  కీబైండింగ్స్ చేతనముచేయుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:14
-#| msgid ""
-#| "If true, the desktop-global keybindings set in /apps/gnote/"
-#| "global_keybindings will be enabled, allowing for useful Gnote actions to "
-#| "be available from any application."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:18
 msgid ""
 "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
 "keybindings will be enabled, allowing for useful Gnote actions to be "
@@ -146,11 +179,11 @@ msgstr ""
 "నుండైనా అందుబాటులో "
 "వుంటాయి."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:15
+#: ../data/org.gnome.gnote.gschema.xml.in.h:19
 msgid "Start Here Note"
 msgstr "ఇక్కడ  మొదలుపెట్టు నోట్"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:16
+#: ../data/org.gnome.gnote.gschema.xml.in.h:20
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -160,22 +193,22 @@ msgstr ""
 "Gnote నోట్ మెనూయొక్క "
 "క్రిందిభాగమున వుంచబడుతుందో మరియు హాట్‌కీ ద్వారా యాక్సెస్ కాబడుతుందో."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:17
+#: ../data/org.gnome.gnote.gschema.xml.in.h:21
 msgid "Minimum number of notes to show in menu"
 msgstr "జాబితా లో చూపుటకు అత్యల్ప నోట్స్ యొక్క సంఖ్య"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:18
+#: ../data/org.gnome.gnote.gschema.xml.in.h:22
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr ""
 "Gnote నోటు మెనూనందు కనీసం యెన్ని నోట్లను చూపాలో యింటీజర్ నిర్ణయిస్తుంది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:19
+#: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "List of pinned notes"
 msgstr "పిన్‌చేసిన నోట్సుయొక్క జాబితా"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:20
+#: ../data/org.gnome.gnote.gschema.xml.in.h:24
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -183,61 +216,39 @@ msgstr ""
 "Gnote మెనూ నందు యెల్లప్పుడూ కనిపించవలసిన నొట్ల కొరకు వైట్‌స్పేస్-సెపరేటెడ్ "
 "నోట్ URIల జాబితా."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:21
+#: ../data/org.gnome.gnote.gschema.xml.in.h:25
 msgid "Is main window maximized"
 msgstr "ముఖ్య విండో గరిష్టీకరించాలా"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:22
+#: ../data/org.gnome.gnote.gschema.xml.in.h:26
 msgid "If true, Gnote window will be maximized."
 msgstr "true అయితే, గ్నోట్ విండో గరిష్ఠీకరించబడును."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:23
+#: ../data/org.gnome.gnote.gschema.xml.in.h:27
 msgid "Saved height of Search window"
 msgstr "శోధన విండోయొక్క యెత్తు దాయబడింది"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:24
+#: ../data/org.gnome.gnote.gschema.xml.in.h:28
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
 "శోధన విండోయొక్క పిగ్జెల్ యెత్తును నిర్ధారిస్తుంది; Gnote నందు దాచి "
 "నిష్క్రమిస్తుంది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:25
+#: ../data/org.gnome.gnote.gschema.xml.in.h:29
 msgid "Saved width of Search window"
 msgstr "శోధన విండోయొక్క వెడల్పు దాయబడింది"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:26
+#: ../data/org.gnome.gnote.gschema.xml.in.h:30
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 "శోధన విండోయొక్క పిగ్జెల్ వెడల్పును నిర్ధారిస్తుంది; Gnote నందు దాచి "
 "నిష్క్రమిస్తుంది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:27
-msgid "Saved horizontal position of Search window"
-msgstr "శోధన విండోయొక్క హారిజాంటల్ స్థానము దాయబడింది"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:28
-msgid "Determines X coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"శోధన విండోయొక్క X కోఆర్డినేట్‌ను నిర్ధారిస్తుంది; Gnote నందు దాచి "
-"నిష్క్రమిస్తుంది."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:29
-msgid "Saved vertical position of Search window"
-msgstr "శోధన విండోయొక్క వర్టికల్ స్థానము దాయబడింది"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:30
-msgid "Determines Y coordinate of Search window; stored on Gnote exit."
-msgstr ""
-"శోధన విండోయొక్క Y కోఆర్డినేట్ నిర్ధారిస్తుంది; Gnote నందు దాచి "
-"నిష్క్రమిస్తుంది."
-
 #: ../data/org.gnome.gnote.gschema.xml.in.h:31
-#| msgid "Saved vertical position of Search window"
 msgid "Saved splitter position of Search window splitter."
 msgstr "అన్వేషణ విండో స్ప్లిట్టర్ యొక్క దాచిన స్ప్లిట్టర్ స్థానము"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:32
-#| msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
@@ -245,10 +256,22 @@ msgstr ""
 "నిష్క్రమణ నందు నిల్వవుంచబడును."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:33
+#| msgid "Saved height of Search window"
+msgid "Saved sorting of the Search window."
+msgstr "శోధన విండోయొక్క భద్రపరచిన సార్టింగ్"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+#| msgid ""
+#| "Determines Search window splitter position in pixels; stored on Gnote "
+#| "exit."
+msgid "Determines Search window initial sorting."
+msgstr "శోధన విండో ప్రథమ సార్టింగ్ నిర్ణయించును."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:35
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "FUSE మౌంటింగ్ సమయం ముగిసినది (ms)"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+#: ../data/org.gnome.gnote.gschema.xml.in.h:36
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -257,53 +280,47 @@ msgstr ""
 "Gnote వేచివుండవలసిన "
 "సమయం (మిల్లీ సెకనులలో)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:35
+#: ../data/org.gnome.gnote.gschema.xml.in.h:37
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "SSHFS దూరస్థ సింక్రొనైజేషన్ ఫోల్డర్"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:36
+#: ../data/org.gnome.gnote.gschema.xml.in.h:38
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "Gnome సింక్రొనైజెషన్ డైరెక్టరీకు SSH సేవికనందలి పాత్ (ఐచ్చికము)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:37
+#: ../data/org.gnome.gnote.gschema.xml.in.h:39
 msgid "SSHFS Synchronization Server URL"
 msgstr "SSHFS సింక్రొనైజేషన్ సేవిక URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:38
+#: ../data/org.gnome.gnote.gschema.xml.in.h:40
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "Gnote సింక్రొనైజేషన్ డైరెక్టరీ కలిగివున్న SSH సేవిక URL."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:39
+#: ../data/org.gnome.gnote.gschema.xml.in.h:41
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "SSHFS దూరస్థ సింక్రొనైజేషన్ వినియోగదారి నామము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:40
+#: ../data/org.gnome.gnote.gschema.xml.in.h:42
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "SSH ద్వారా సింక్రోనైజేషన్ సేవికకు అనుసంధానము అగునప్పుడు వుపయోగించుటకు "
 "వినియోగదారి నామము."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:41
+#: ../data/org.gnome.gnote.gschema.xml.in.h:43
 msgid "SSHFS Synchronization Server Port"
 msgstr "SSHFS సింక్రొనైజేషన్ సేవిక పోర్టు"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:42
+#: ../data/org.gnome.gnote.gschema.xml.in.h:44
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr ""
 "SSH ద్వారా సింక్రొనైజేషన్ సేవికకు అనుసంధానించబడుచున్నప్పుడు వుపయోగించుటకు "
 "పోర్టు."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:43
+#: ../data/org.gnome.gnote.gschema.xml.in.h:45
 msgid "Link Updating Behavior on Note Rename"
 msgstr "గమనిక పునఃనామకరణపై లింకు నవీకరించు ప్రవర్తన"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:44
-#| msgid ""
-#| "Integer value indicating if there is a preference to always perform a "
-#| "specific behavior when a conflict is detected, instead of prompting the "
-#| "user. The values map to an internal enumeration. 0 indicates that the "
-#| "user wishes to be prompted when a conflict occurs, so that they may "
-#| "handle each conflict situation on a case-by-case basis."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:46
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -313,44 +330,72 @@ msgid ""
 "indicates that link text should be updated to the new note name so that it "
 "will continue linking to the renamed note."
 msgstr ""
-"గమనిక పునఃనామకరణ జరిగినప్పుడు వాడుకరిని అడుగుటకు బదులుగా యెల్లప్పుడూ "
-"ప్రత్యేక లింక్ నవీకరణ చర్య  జరుపుటకు యేదైనా అభీష్టం వుందేమో పూర్ణ సంఖ్య "
-"సూచించును. "
-"గమనికను పునఃనామకరణ చేయునప్పుడు అది యితర గమనికలనందలి లింకులను ప్రభావితం చేస్తే "
-"అప్పుడు వాడుకరికి తెలుపుటకు 0. లింకులు స్వయంచాలకంగా తొలగించాలంటే 1. లింకు "
-"పాఠం కొత్త గమనిక పేరుకు "
-"నవీకరించబడాలి అంటే అలా అది పునఃనామకరణ జరిగిన గమనికకు లింకవ్వాలి అంటే 2."
+"గమనిక పునఃనామకరణ జరిగినప్పుడు వాడుకరిని అడుగుటకు బదులుగా యెల్లప్పుడూ ప్రత్యేక "
+"లింక్ నవీకరణ "
+"చర్య  జరుపుటకు యేదైనా అభీష్టం వుందేమో పూర్ణ సంఖ్య సూచించును. గమనికను "
+"పునఃనామకరణ చేయునప్పుడు "
+"అది యితర గమనికలనందలి లింకులను ప్రభావితం చేస్తే అప్పుడు వాడుకరికి తెలుపుటకు 0. "
+"లింకులు "
+"స్వయంచాలకంగా తొలగించాలంటే 1. లింకు పాఠం కొత్త గమనిక పేరుకు నవీకరించబడాలి అంటే "
+"అలా అది పునఃనామకరణ "
+"జరిగిన గమనికకు లింకవ్వాలి అంటే 2."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:45
+#: ../data/org.gnome.gnote.gschema.xml.in.h:47
 msgid "Enable closing notes with escape"
 msgstr "మూసివేత నోట్సును ఎస్కేప్‌తో చేతనము చేయుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:46
+#: ../data/org.gnome.gnote.gschema.xml.in.h:48
 msgid "If enabled, an opened note can be closed by hitting the escape key."
 msgstr ""
 "ఇది చేతనమైవుంటే, ఎస్కేప్ కీ వత్తుట ద్వారా తెరువబడివున్న విండో మూయబడుతుంది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:47
+#: ../data/org.gnome.gnote.gschema.xml.in.h:49
 msgid "Use status icon, when started as an application"
 msgstr "స్థితి ప్రతిమ వుపయోగించు, అనువర్తనంలా ప్రారంభమైనప్పుడు"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:48
+#: ../data/org.gnome.gnote.gschema.xml.in.h:50
 msgid ""
 "Has affect only when started as an application. When set to TRUE, shows a "
 "status icon. If set to FALSE, Search All Notes window is used as main "
 "application window, closing which makes application to exit."
 msgstr ""
 "అనువర్తనంలా ప్రారంభమైనప్పుడు మాత్రమే ప్రభావం కలిగివుంటుంది. TRUE కు "
-"అమర్చినప్పుడు, స్థితి ప్రతిమ చూపును. "
-"FALSE అమర్చితే, అన్ని గమనికలను అన్వేషించును విండో ముఖ్య అనువర్తన విండోలా "
-"వుపయోగించబడును, మూయుట వలన "
-"అనువర్తనం నిష్క్రమించును."
+"అమర్చినప్పుడు, స్థితి ప్రతిమ "
+"చూపును. FALSE అమర్చితే, అన్ని గమనికలను అన్వేషించును విండో ముఖ్య అనువర్తన "
+"విండోలా "
+"వుపయోగించబడును, మూయుట వలన అనువర్తనం నిష్క్రమించును."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:49
+#: ../data/org.gnome.gnote.gschema.xml.in.h:51
+#| msgid "Open In New _Window"
+msgid "Open notes in new window"
+msgstr "నోట్స్ కొత్త విండో నందు తెరుచును"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:52
+msgid ""
+"Open notes in new window instead of replacing active content of the same "
+"window"
+msgstr ""
+"అదే విండో యొక్క క్రియాశీల కాంటెంట్‌ను పునఃస్థాపించుటకు బదులుగా కొత్త విండో "
+"నందు నెట్లను తెరుచును."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:53
+msgid "Save note window size and autosize note window to it"
+msgstr ""
+"నోట్ విండో పరిమాణం భద్రపరచి మరియు నోట్ విండోను దానికి తగినపరిమాణంకు ఉంచుము"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:54
+msgid ""
+"Saves note window size and automatically resizes main window to this size, "
+"when note is opened."
+msgstr ""
+"నోట్ విండో పరిమాణం భద్రపరచి మరియు ముఖ్య విండోను ఈ పరిమాణంకు స్వయంచాలకంగా "
+"పునఃపరిమాణం చేయును, నోట్ తెరువబడినప్పుడు."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:55
 msgid "Show applet menu"
 msgstr "ఆప్లెట్ జాబితా చూపుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:50
+#: ../data/org.gnome.gnote.gschema.xml.in.h:56
 msgid ""
 "The global keybinding for showing the Gnote applet's menu. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -368,11 +413,11 @@ msgstr ""
 "స్ట్రింగ్ \"disabled\"కు అమర్చితే, అప్పుడు ఈ చర్యకొరకు యెటువంటి కీబందనము "
 "వుండదు."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:51
+#: ../data/org.gnome.gnote.gschema.xml.in.h:57
 msgid "Open Start Here"
 msgstr "ఇక్కడ మొదలుపెట్టు తెరువుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:52
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
 msgid ""
 "The global keybinding for opening the \"Start Here\" note. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -390,11 +435,11 @@ msgstr ""
 "ప్రత్యేక స్ట్రింగ్ \"disabled\"కు అమర్చితే, అప్పుడు ఈ చర్యకొరకు యెటువంటి "
 "కీబందనము వుండదు."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:53
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
 msgid "Create a new Note"
 msgstr "కొత్త నోట్ సృష్టించు"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:54
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
 msgid ""
 "The global keybinding for creating and displaying a new Note. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -412,11 +457,11 @@ msgstr ""
 "అప్పుడు ఈ చర్యకొరకు "
 "యెటువంటి కీబందనము వుండదు."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:55
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid "Open Search Dialog"
 msgstr "శోధన డైలాగును తెరువుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid ""
 "The global keybinding for opening the Note Search dialog. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -434,11 +479,11 @@ msgstr ""
 "స్ట్రింగ్ \"disabled\"కు అమర్చితే, అప్పుడు ఈ చర్యకొరకు యెటువంటి కీబందనము "
 "వుండదు."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid "Open Recent Changes"
 msgstr "ఇంతకుముందు మార్పులు తెరువు"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid ""
 "The global keybinding for opening the Recent Changes dialog. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -456,22 +501,22 @@ msgstr ""
 "స్ట్రింగ్ \"disabled\"కు అమర్చితే, అప్పుడు ఈ చర్యకొరకు యెటువంటి కీబందనము "
 "వుండదు."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid "HTML Export Last Directory"
 msgstr "HTML ఎగుమతి చివరి డైరెక్టరీ"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "HTML కు ఎగుమతి ప్లగ్‌యిన్ వుపయోగించి చివరి డైరెక్టరీ వొక నోట్‌ను ఎగుమతి "
 "చేసింది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid "HTML Export Linked Notes"
 msgstr "HTML ఎగుమతి జోడించబడిన నోట్స్"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -479,11 +524,11 @@ msgstr ""
 "HTMLకు ఎగుమతి ప్లగ్‌యిన్ నందు 'జోడించబడిన లింకులను ఎగుమతిచేయి' చెక్‌బాక్స్ "
 "కొరకు చివరి అమరిక."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
 msgid "HTML Export All Linked Notes"
 msgstr "HTML ఎగుమతిలు అన్ని జోడించబడిన నోట్స్"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -497,11 +542,11 @@ msgstr ""
 "చేయునప్పుడు అన్ని నోట్లు (పునరావృతంగా కనబడినవి) చేర్చవలెనేమో తెలుపుటకు "
 "వుపయోగించబడుతుంది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid "Synchronization Client ID"
 msgstr "సింక్రొనైజేషన్ కక్షిదారి ID"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "sychronization server."
@@ -510,11 +555,11 @@ msgstr ""
 "సంప్రదించుచున్నప్పుడు "
 "వుపయోగించబడింది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid "Synchronization Local Server Path"
 msgstr "సింక్రొనైజేషన్ స్థానిక సేవిక పాత్"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -522,11 +567,11 @@ msgstr ""
 "దస్త్రవ్యవస్థ సింక్రొనైజేషన్ సేవ యాడియిన్ వుపయోగించుచున్నప్పుడు "
 "సింక్రొనైజేషన్ సేవికకు పాత్."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid "Selected Synchronization Service Addin"
 msgstr "సింక్రొనైజేషన్ సేవ యాడ్‌యిన్ యెంపికచేయబడింది"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -534,11 +579,11 @@ msgstr ""
 "ప్రస్తుతం ఆకృతీకరించిన నోట్ సింక్రొనైజేషన్ సేవ యాడ్‌యిన్ కొరకు యునిక్ "
 "గుర్తింపుదారి"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "నోట్ కాలనియమితము విరోధముగా దాచబడిన ప్రవర్తన"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -554,11 +599,11 @@ msgstr ""
 "సూచిస్తుంది, అలా ప్రతి "
 "సంక్లిష్టతను వారు వొక-దాని-తర్వాత వొకటి సంభాలించుకొంటారు."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid "Automatic Background Synchronization Timeout"
 msgstr "స్వయంచాలక బ్యాక్‌గ్రౌండ్ సింక్రొనైజేషన్ గడువుముగిసెను"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -566,15 +611,16 @@ msgid ""
 "minutes."
 msgstr ""
 "మీ గమనికల బ్యాక్‌గ్రౌండ్ సింక్ యెంత తరచుగా జరుపాలో పూర్ణాంకం విలువ సూచించును "
-"(సింక్ ఆకృతీకరించినప్పుడు). 1 కన్నా తక్కువవున్న "
-"యే విలువైనా ఆటోసింక్ అచేతనమైందని సూచించును. ఆమోదించగల అతితక్కువ ధన విలువ 5. "
-"విలువ నిమిషాలలో వుంది."
+"(సింక్ "
+"ఆకృతీకరించినప్పుడు). 1 కన్నా తక్కువవున్న యే విలువైనా ఆటోసింక్ అచేతనమైందని "
+"సూచించును. ఆమోదించగల "
+"అతితక్కువ ధన విలువ 5. విలువ నిమిషాలలో వుంది."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "Accept SSL Certificates"
 msgstr "SSL దృవీకరణపత్రములను ఆమోదించుము"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -582,27 +628,27 @@ msgstr ""
 "వినియోగదారిని అడగకుండా SSL దృవీకరణపత్రములను ఆమోదించుటకు wdfs ఐచ్చికము \"-ac\" "
 "వుపయోగించుము."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "Share URL"
 msgstr "భాగస్వామ్య URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "గమనికలు సింక్రొనైజ్ అయ్యే WebDAV భాగస్వామ్య URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid "Share username"
 msgstr "వాడుకరిపేరు పంచు"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid "Username to access WebDAV share."
 msgstr "WebDAV భాగస్వామ్యం యాక్సెస్ చేయుటకు వాడుకరిపేరు"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
 msgid "Timestamp format"
 msgstr "టైమ్‌స్టాంప్ ఫార్మాట్"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:88
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -610,99 +656,160 @@ msgstr ""
 "టైమ్‌స్టాంప్‌కు వుపయోగించబడే తేదీ రూపము. ఇది strftime(3) రూపాన్ని "
 "అనుసరిస్తుంది."
 
-#: ../src/actionmanager.cpp:169 ../src/actionmanager.cpp:262
-#: ../src/tray.cpp:478
+#: ../data/org.gnome.gnote.gschema.xml.in.h:89
+msgid "Time between checks"
+msgstr "పరిశీలనల మధ్యని సమయం"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:90
+msgid ""
+"Time interval between note directory checks (in seconds). Min value is 5."
+msgstr "నోట్ డైరెక్టరీ పరిశీలనల మధ్యని సమయ విరామం (క్షణాలలో). కనీస విలువ 5."
+
+#: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
+#: ../src/tray.cpp:465
 msgid "_Quit"
 msgstr "నిష్క్రమించు (_Q)"
 
-#: ../src/actionmanager.cpp:169
+#: ../src/actionmanager.cpp:84
 msgid "Quit Gnote"
 msgstr "Gnote నిష్క్రమించుము"
 
-#: ../src/actionmanager.cpp:174 ../src/actionmanager.cpp:259
-#: ../src/tray.cpp:461
+#: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
+#: ../src/tray.cpp:448
 msgid "_Preferences"
 msgstr "అభీష్టాలు (_P)"
 
-#: ../src/actionmanager.cpp:174 ../src/preferencesdialog.cpp:104
+#: ../src/actionmanager.cpp:89 ../src/preferencesdialog.cpp:103
 msgid "Gnote Preferences"
 msgstr "Gnote అభీష్టాలు"
 
-#: ../src/actionmanager.cpp:178
+#: ../src/actionmanager.cpp:93
 msgid "_Contents"
 msgstr "వివరములు (_C)"
 
-#: ../src/actionmanager.cpp:178
+#: ../src/actionmanager.cpp:93
 msgid "Gnote Help"
 msgstr "Gnote సహాయము"
 
-#: ../src/actionmanager.cpp:183 ../src/actionmanager.cpp:261
+#: ../src/actionmanager.cpp:98 ../src/actionmanager.cpp:170
 msgid "_About"
 msgstr "గురించి (_A)"
 
-#: ../src/actionmanager.cpp:183
+#: ../src/actionmanager.cpp:98
 msgid "About Gnote"
 msgstr "Gnote గురించి"
 
-#: ../src/actionmanager.cpp:187
+#: ../src/actionmanager.cpp:102
 msgid "TrayIcon"
 msgstr "బుట్ట ప్రతిమ"
 
-#: ../src/actionmanager.cpp:192
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
 msgid "Create _New Note"
 msgstr "కొత్త నోట్ సృష్టించు (_N)"
 
-#: ../src/actionmanager.cpp:192
+#: ../src/actionmanager.cpp:107 ../src/tray.cpp:227
 msgid "Create a new note"
 msgstr "కొత్త నోట్ సృష్టించు"
 
-#: ../src/actionmanager.cpp:197
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
 msgid "_Search All Notes"
 msgstr "అన్ని నోట్లు శోధించుము (_S)"
 
-#: ../src/actionmanager.cpp:197
+#: ../src/actionmanager.cpp:112 ../src/tray.cpp:236
 msgid "Open the Search All Notes window"
 msgstr "అన్ని నోట్లు శోధించు విండో తెరువుము"
 
-#: ../src/actionmanager.cpp:257 ../src/searchnoteswidget.cpp:1325
+#: ../src/actionmanager.cpp:166
 msgid "_New Note"
 msgstr "కొత్త నోటు (_N)"
 
-#: ../src/actionmanager.cpp:258
+#: ../src/actionmanager.cpp:167
 msgid "New _Window"
 msgstr "కొత్త విండో (_W)"
 
-#: ../src/actionmanager.cpp:260
-#| msgid "_Contents"
-msgid "Help _Contents"
-msgstr "సహాయ విషయాలు (_C)"
+#: ../src/actionmanager.cpp:169 ../src/tray.cpp:453
+msgid "_Help"
+msgstr "సహాయం (_H)"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:43
-msgid "Backlinks"
-msgstr "వెనుకలింకులు"
+#: ../src/addininfo.cpp:74
+msgid "Failed to load plugin information!"
+msgstr "చొప్పింత సమాచారం నింపుటకు విఫలమైంది!"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:47
-msgid "See which notes link to the one you're currently viewing."
-msgstr "మీరు ప్రస్తుతం దర్శించుచున్నదానికి యేయే నోట్లు లింకై వున్నాయో చూడుము."
+#: ../src/addininfo.cpp:124
+#, c-format
+msgid "Incompatible plug-in %s: expected %s, got %s"
+msgstr "సారూప్యతలేని చొప్పింత %s: కావలసింది %s, పొందింది %s"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:51
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:53
-msgid "Hubert Figuiere and Tomboy Project"
-msgstr "బర్ట్ హ్యూబర్ట్ ఫి మరియు టామ్బాయ్ ప్రోజెక్ట్గుయిరీ"
+#: ../src/addinmanager.cpp:133
+#, c-format
+msgid "Note plugin info %s already present"
+msgstr "నోట్ చొప్పింత సమాచారం %s ఇప్పటికే ఉంది"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:89
+#: ../src/addinmanager.cpp:141
+#, c-format
+msgid "%s does not implement %s"
+msgstr "%s %sను ఇంప్లిమెంట్ చేయలేదు"
+
+#: ../src/addinmanager.cpp:156
+#, c-format
+msgid "Note plugin %s already present"
+msgstr "నోట్ చొప్పింత %s ఇప్పటికే ఉంది"
+
+#: ../src/addinmanager.cpp:174
+#, c-format
+msgid "Note plugin info %s is absent"
+msgstr "నోట్ చొప్పింత సమాచారం %s లేదు"
+
+#: ../src/addinmanager.cpp:187
+#, c-format
+msgid "Note plugin %s is absent"
+msgstr "నోట్ చొప్పింత %s లేదు"
+
+#: ../src/addinmanager.cpp:224
+#, c-format
+msgid "Failed to find module %s for addin %s"
+msgstr "మాడ్యూల్ %s ను ఏడిన్ %s కొరకు కనుగొనుటలో విఫలమైంది"
+
+#: ../src/addinmanager.cpp:228
+#, c-format
+msgid "Failed to load addin info for %s: %s"
+msgstr "%s కొరకు ఏడిన్ సమాచారం లోడ్ చేయుటలో విఫలమైంది: %s"
+
+#: ../src/addinmanager.cpp:352
+msgid "Trying to load addins when they are already loaded"
+msgstr "ఏడిన్స్ లోడైన తరువాత వాటిని లోడు చేయుటకు ప్రయత్నిస్తోంది"
+
+#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
 msgid "What links here?"
 msgstr "ఇక్కడకు యే లింకులు?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:145
+#: ../src/addins/backlinks/backlinkmenuitem.cpp:42
+#| msgid "What links here?"
+msgid "Which notes have links to here?"
+msgstr "ఇచటకు ఏ నోట్స్ లంకెలను కలిగివున్నాయి?"
+
+#: ../src/addins/backlinks/backlinks.desktop.in.in.h:1
+msgid "Backlinks"
+msgstr "వెనుకలింకులు"
+
+#: ../src/addins/backlinks/backlinks.desktop.in.in.h:2
+msgid "See which notes link to the one you're currently viewing."
+msgstr "మీరు ప్రస్తుతం దర్శించుచున్నదానికి యేయే నోట్లు లింకై వున్నాయో చూడుము."
+
+#: ../src/addins/backlinks/backlinks.desktop.in.in.h:3
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:3
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "బర్ట్ హ్యూబర్ట్ ఫి మరియు టామ్బాయ్ ప్రోజెక్ట్గుయిరీ"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:86
 msgid "(none)"
 msgstr "(ఏదీకాదు)"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:58
+#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:1
 msgid "Bugzilla Links"
 msgstr "Bugzilla లింకులు"
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:62
+#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:2
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -712,14 +819,15 @@ msgstr ""
 "అనుమతిస్తుంది. దాని ప్రక్కనే బగ్ "
 "సంఖ్య వొక లింకువలె చిన్న బగ్ ప్రతిమతో చేర్చబడుతుంది."
 
-#: ../src/addins/bugzilla/bugzillanoteaddin.cpp:66
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:72
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:58
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:67
+#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:3
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:3
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:3
+#: ../src/addins/printnotes/printnotes.desktop.in.in.h:3
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:3
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "హ్యూబర్ట్ పిగుయిరీ మరియు టామ్బాయ్ ప్రోజెక్ట్"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:62
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:64
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -728,48 +836,101 @@ msgstr ""
 "హోస్టులకు మీకు ప్రత్యేకమైన "
 "ప్రతిమ కావాలంటే, వాటిని యిక్కడ జతచేయుము."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:79
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:81
 msgid "Host Name"
 msgstr "హోస్టు నామము"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:92
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:94
 msgid "Icon"
 msgstr "ప్రతిమ"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:226
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:229
 msgid "Select an icon..."
 msgstr "వొక ప్రతిమను యెంపికచేయుము..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:241
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:244
 msgid "_Host name:"
 msgstr "హోస్టు నామము (_H):"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:273
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:278
 msgid "Host name invalid"
 msgstr "హోస్టునామము చెల్లనిది"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:274
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:279
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "ఈ ప్రతిమతో వుపయోగించుటకు మీరు తప్పక వొక విలువైన బగ్‌జిల్లా హోస్టు నామమును "
 "తెలుపవలెను."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:293
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:298
 msgid "Error saving icon"
 msgstr "ప్రతిమను దాయుటలో దోషము"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:294
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:299
 msgid "Could not save the icon file."
 msgstr "ప్రతిమ ఫైలును దాయలేక పోయింది."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:366
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:371
 msgid "Really remove this icon?"
 msgstr "ఈ ప్రతిమ నిజంగా తొలగించాలా?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:367
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:372
 msgid "If you remove an icon it is permanently lost."
 msgstr "ఒకవేళ నీవు ఒక ప్రతిమను తొలగించినట్టయితే అది శాశ్వతంగా పోగొట్టుకుంటావు."
+
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:394
+#, c-format
+#| msgid "Error saving icon"
+msgid "Error removing icon %s: %s"
+msgstr "ప్రతిమ %s ను తీసివేయుటలో దోషం: %s"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:1
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:71
+msgid "Export to Getting Things GNOME"
+msgstr "గెట్టింగ్ థింగ్స్ గ్నోమ్‌కు ఎగుమతి"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:2
+#| msgid "Exports individual notes to HTML."
+msgid "Exports individual notes as Getting Things GNOME tasks"
+msgstr "విడి నోట్లను గెట్టింగ్ థింగ్స్ గ్నోమ్ టాస్క్స్ వలె ఎగుమతి చేయును"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:3
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:3
+#: ../src/addins/statistics/statistics.desktop.in.in.h:3
+msgid "Aurimas Černius"
+msgstr "Aurimas Černius"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:72
+msgid "Export note as Getting Things GNOME task"
+msgstr "నోట్‌ను గెట్టింగ్ థింగ్స్ గ్నోమ్ టాస్క్ వలె ఎగుమతిచేయి"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:86
+msgid "GTG XML loaded, but interface not found"
+msgstr "GTG XML లోడైంది, అయితే ఇంటర్ఫేస్ కనబడలేదు"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:92
+#, c-format
+msgid "Failed to create GTG interface from XML: %s"
+msgstr "XML నుండి GTG ఇంటర్ఫేస్ సృష్టించుటకు విఫలమైంది: %s"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:100
+msgid "Failed to create D-Bus proxy for GTG"
+msgstr "GTG కొరకు D-Bus ప్రోక్సీ సృష్టించుటకు విఫలమైంది"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:116
+#, c-format
+msgid "Failed to call GTG: %s"
+msgstr "GTG కాల్ విఫలమైంది: %s"
+
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
+msgid "Export to HTML"
+msgstr "HTMLకు ఎగుమతి చేయుము"
+
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:2
+msgid "Exports individual notes to HTML."
+msgstr "ఒంటరి నోట్లను HTMLకు ఎగుమతిచేస్తుంది."
 
 #: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
 msgid "Destination for HTML Export"
@@ -783,129 +944,158 @@ msgstr "జోడించబడిన నోట్స్ ఎగుమతి"
 msgid "Include all other linked notes"
 msgstr "అన్ని యితర లింకైన నోట్లను చేర్చుతుంది"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:64
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:99
-msgid "Export to HTML"
-msgstr "HTMLకు ఎగుమతి చేయుము"
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:77
+#| msgid "Export to HTML"
+msgid "Export note to HTML"
+msgstr "నోట్‌ను HTML కు ఎగుమతి చేయి"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:68
-msgid "Exports individual notes to HTML."
-msgstr "ఒంటరి నోట్లను HTMLకు ఎగుమతిచేస్తుంది."
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:117
+#, c-format
+msgid "Could not open exported note in a web browser: %s"
+msgstr "ఎగుమతి చేసిన నోట్‌ను వెబ్ విహారణి నందు తెరువలేక పోయింది: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:145
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
 msgid "Your note was exported to \"%1%\"."
 msgstr "మీ నోట్ \"%1%\"కు ఎగుమతి చేయబడింది."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:130
 msgid "Note exported successfully"
 msgstr "నోటు సమర్దవంతంగా ఎగుమతి చేయబడింది"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:179
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:144
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:152
+#, c-format
+#| msgid "Could not save the file \"%s\""
+msgid "Could not export: %s"
+msgstr "ఎక్సుపోర్ట్ చేయలేదు: %s"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:155
 #, c-format
 msgid "Could not save the file \"%s\""
 msgstr "ఫైలు \"%s\"ను దాయలేక పోయింది "
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:49
-#| msgid "Selected Synchronization Service Addin"
-msgid "Local Directory Sync Service Add-in"
-msgstr "స్థానిక సంచయం సింక్ సేవ యాడ్-యిన్"
-
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:53
-msgid "Synchronize Gnote Notes to a local file system path"
-msgstr "స్థానిక ఫైల్ సిస్టమ్ పాత్‌నకు గ్నోట్ గమనికలను సింక్రొనైజ్ చేయి"
-
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:57
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:62
-#| msgid "Hubert Figuiere and the Tomboy Project"
-msgid "Aurimas Cernius and the Tomboy Project"
-msgstr "Aurimas Cernius మరియు Tomboy Project"
-
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:127
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
 msgid "_Folder Path:"
 msgstr "సంచయం పాత్ (_F):"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
-#| msgid "SSHFS Remote Synchronization Folder"
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:109
 msgid "Select Synchronization Folder..."
 msgstr "సింక్రొనైజేషన్ సంచయం యెంపికచేయి..."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:157
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
 msgid "Folder path field is empty."
 msgstr "సంచయం పాత్ క్షేత్రం ఖాళీగా వుంది."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:164
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:141
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "తెలిపిన ఫోల్డర్ పాత్ లేదు, మరియు గ్నోట్ దీనిని సృష్టించలేదు."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:240
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:217
 msgid "Local Folder"
 msgstr "స్థానిక సంచయం"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:1
+#| msgid "Local Directory Sync Service Add-in"
+msgid "Local Directory Sync Service Plugin"
+msgstr "స్థానిక సంచయం సింక్ సేవ చొప్పింత"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:2
+msgid "Synchronize Gnote Notes to a local file system path"
+msgstr "స్థానిక ఫైల్ సిస్టమ్ పాత్‌నకు గ్నోట్ గమనికలను సింక్రొనైజ్ చేయి"
+
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:3
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:3
+#| msgid "Aurimas Cernius and the Tomboy Project"
+msgid "Aurimas Černius and the Tomboy Project"
+msgstr "Aurimas Cernius మరియు Tomboy Project"
+
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:1
+msgid "Fixed Width"
+msgstr "నిర్దష్ట వెడల్పు"
+
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:2
+msgid "Adds fixed-width font style."
+msgstr "నిర్దిష్ట-వెడల్పు ఫాంటు శైలిని జతచేస్తుంది."
 
 #: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
 msgid "Fixed Wid_th"
 msgstr "నిర్దష్ట వెడల్పు (_t)"
 
-#. this is the name of the plugin.
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:49
-msgid "Fixed Width"
-msgstr "నిర్దష్ట వెడల్పు"
-
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:53
-msgid "Adds fixed-width font style."
-msgstr "నిర్దిష్ట-వెడల్పు ఫాంటు శైలిని జతచేస్తుంది."
-
-#. Add the menu item when the window is created
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:78
 msgid "Insert Timestamp"
 msgstr "టైమ్‌స్టాంప్ చేర్చుము"
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:49
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "కర్సర్ ఉన్నచోట ప్రస్తుత తేదీ మరియు సమయమును ప్రవేశపెడుతుంది."
 
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:46
+#| msgid "Insert Timestamp"
+msgid "Insert Timestamp into note"
+msgstr "నోట్ నకు టైమ్‌స్టాంప్ చొప్పించు"
+
 #. Label
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:67
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:70
 msgid "Choose one of the predefined formats or use your own."
 msgstr ""
 "ముందుగా నిర్వచించివున్న ఫార్మాట్లలో వొకదానిని యెంచుకొనుము లేదా మీ స్వంతది "
 "యెంచుకొనుము."
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:75
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:78
 msgid "Use _Selected Format"
 msgstr "ఎంపికచేసిన ఫార్మాట్ ఉపయోగించుము (_S)"
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:104
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:110
 msgid "_Use Custom Format"
 msgstr "మలచుకొనిన ఫార్మాట్‌ను ఉపయోగించుము (_U)"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:46
+#. TRANSLATORS: first %s is file name, second is error
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:236
+#, c-format
+msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
+msgstr "NoteDirectoryWatcher: నవీకరణ విరమించబడింది, చదువుటలో దోషం %s: %s"
+
+#. TRANSLATORS: %s is file
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
+#, c-format
+msgid "NoteDirectoryWatcher: Error reading note title from %s"
+msgstr "NoteDirectoryWatcher: %s నుండి నోట్ శీర్షిక చదువుటలో దోషం"
+
+#. TRANSLATORS: %s is file
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:271
+#, c-format
+msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
+msgstr "NoteDirectoryWatcher: %s నుండి నోట్ సృష్టించుటలో తెలియని దోషం"
+
+#. TRANSLATORS: first %s is file, second is error
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:277
+#, c-format
+msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
+msgstr "NoteDirectoryWatcher: %s నుండి నోట్ సృష్టించుటలో దోషం: %s"
+
+#. TRANSLATORS: first %s is file, second is error
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:290
+#, c-format
+msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
+msgstr "NoteDirectoryWatcher: నవీకరణ విరమించబడెను, %s పార్సింగ్‌లో దోషం: %s"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
+msgid "_Directory check interval:"
+msgstr "డైరెక్టరీ పరిశీలన విరామం: (_D)"
+
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:1
 msgid "Note Directory Watcher"
 msgstr "గమనిక డైరెక్టరీ పర్యవేక్షకి"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:51
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:2
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr "మీ గమనికలకు మార్పుల కొరకు మీ గ్నోట్ గమనిక డైరెక్టరీ పర్యవేక్షించు."
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:56
-#| msgid "and Tomboy original authors."
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:3
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius మరియు Tomboy వాస్తవ మూలకర్తలు"
-
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:44
-msgid "Note of the Day"
-msgstr "రోజు యొక్క గమనిక"
-
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:48
-msgid ""
-"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
-msgstr ""
-"సులువుగా నోటు చేసుకొనుటకు వీలుగా \"ఈరోజు\" నోటును స్వయంచాలకంగా సృష్టిస్తుంది"
-
-#: ../src/addins/noteoftheday/noteofthedayapplicationaddin.cpp:53
-msgid "Debarshi Ray and the Tomboy Project"
-msgstr "దేబర్షి రే మరియు టామ్బాయ్ ప్రోజెక్ట్"
 
 #: ../src/addins/noteoftheday/noteoftheday.cpp:33
 msgid "Today: Template"
@@ -915,24 +1105,46 @@ msgstr "ఈరోజు: మాదిరి"
 msgid "Today: "
 msgstr "ఈరోజు: "
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:159
+#. TRANSLATORS: first %s is note title, second is error
+#. TRANSLATORS: first %s is template note title, second is error
+#: ../src/addins/noteoftheday/noteoftheday.cpp:49
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:72
+#, c-format
+msgid "NoteOfTheDay could not create %s: %s"
+msgstr "NoteOfTheDay %sను సృష్టించలేక పోయింది: %s"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:155
 msgid "Tasks"
 msgstr "కర్తవ్యాలు"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+#: ../src/addins/noteoftheday/noteoftheday.cpp:156
 msgid "Appointments"
 msgstr "నియామకములు"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:166
+#: ../src/addins/noteoftheday/noteoftheday.cpp:162
 msgid "%A, %B %d %Y"
 msgstr "%A, %B %d %Y"
 
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:1
+msgid "Note of the Day"
+msgstr "రోజు యొక్క గమనిక"
+
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:2
+msgid ""
+"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
+msgstr ""
+"సులువుగా నోటు చేసుకొనుటకు వీలుగా \"ఈరోజు\" నోటును స్వయంచాలకంగా సృష్టిస్తుంది"
+
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:3
+msgid "Debarshi Ray and the Tomboy Project"
+msgstr "దేబర్షి రే మరియు టామ్బాయ్ ప్రోజెక్ట్"
+
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:34
 msgid "_Open Today: Template"
 msgstr "ఈరోజు తెరువుము: మాదిరి (_O)"
 
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:36
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
 msgid ""
 "Change the <span weight=\"bold\">Today: Template</span> note to customize "
 "the text that new Today notes have."
@@ -941,144 +1153,252 @@ msgstr ""
 "ఈరోజు: మాదిరి</"
 "span> గమనికను మార్చుము."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:50
+#: ../src/addins/printnotes/printnotes.desktop.in.in.h:1
 msgid "Printing Support"
 msgstr "ముద్రణ మద్దతు"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:54
+#: ../src/addins/printnotes/printnotes.desktop.in.in.h:2
 msgid "Allows you to print a note."
 msgstr "ఒక నోట్‌ను ముద్రించుటకు మిమ్ములను అనుమతిస్తుంది."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:81
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
 msgid "Print"
 msgstr "ముద్రించు"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:153
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:61
+#| msgid "Quit Gnote"
+msgid "Print note"
+msgstr "నోట్ ముద్రించు"
+
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:136
 msgid "Error printing note"
 msgstr "నోట్ ముద్రించుటలో దోషము"
 
 #. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:320
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:303
 msgid "Page %1% of %2%"
 msgstr "%2% లో %1% పేజీ"
 
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:43
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:77
+#: ../src/addins/readonly/readonly.desktop.in.in.h:1
+#: ../src/addins/readonly/readonlynoteaddin.cpp:53
+msgid "Read Only"
+msgstr "చదువుట మాత్రమే"
+
+#: ../src/addins/readonly/readonly.desktop.in.in.h:2
+msgid "Mark certain notes as read only"
+msgstr "ఫలానా నోట్లను చదివినవిగా గుర్తుంచుము"
+
+#: ../src/addins/readonly/readonly.desktop.in.in.h:3
+msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
+msgstr "Aurimas Černius, Debarshi Ray మరియు Arief Bayu Purwanto"
+
+#: ../src/addins/readonly/readonlynoteaddin.cpp:54
+msgid "Make this note read-only"
+msgstr "ఈ నోట్‌ను చదువుట-మాత్రమేగా చేయుము"
+
+#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:1
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:51
 msgid "Replace title"
 msgstr "శీర్షిక పునఃస్థాపించు"
 
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:48
-#| msgid "Delete the selected note"
+#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:2
 msgid "Replace title with selection."
 msgstr "శీర్షికను యెంపికతో పునఃస్థాపించు."
 
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:54
+#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:3
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:59
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
+#: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
+#| msgid "Search All Notes"
+msgid "Special Notes"
+msgstr "ప్రత్యేక నోట్లు"
+
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:2
+msgid "Show special notes, that are otherwise hidden"
+msgstr "ప్రత్యేక నోట్లను చూపుము, లేవంటే అవి దాచివుంచబడేవి"
+
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:50
+msgid "Show Statistics"
+msgstr "గణాంకాలు చూపు"
+
+#: ../src/addins/statistics/statistics.desktop.in.in.h:1
+#: ../src/addins/statistics/statisticswidget.cpp:171
+#| msgid "Status"
+msgid "Statistics"
+msgstr "గణాంకాలు"
+
+#: ../src/addins/statistics/statistics.desktop.in.in.h:2
+msgid "Show various statistics about notes."
+msgstr "నోట్ల గురించి వివిధ గణాంకాలు చూపు."
+
+#: ../src/addins/statistics/statisticswidget.cpp:91
+#| msgid "All Notes"
+msgid "Total Notes:"
+msgstr "అన్ని నోట్లు:"
+
+#: ../src/addins/statistics/statisticswidget.cpp:97
+#| msgid "Notebooks"
+msgid "Total Notebooks:"
+msgstr "అన్ని నోట్‌పుస్తకములు:"
+
+#: ../src/addins/statistics/statisticswidget.cpp:127
+#| msgid "Total: %1% note"
+#| msgid_plural "Total: %1% notes"
+msgid "%1% note"
+msgid_plural "%1% notes"
+msgstr[0] "%1% నోట్"
+msgstr[1] "%1% నోట్స్"
+
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:1
 msgid "Sticky Notes Importer"
 msgstr "స్టికీ నోట్ల దిగుమతిదారి"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:63
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:2
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "స్టికీ నోట్ల ఆప్లెట్ నుండి మీ నోట్లను దిగుమతి చేయుము."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:109
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:87
 msgid "Import from Sticky Notes"
 msgstr "స్టికీ నోట్లనుండి దిగుమతిచేయుము"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:209
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:214
 msgid "No Sticky Notes found"
 msgstr "ఎటువంటి స్టికీ నోట్లు కనుగొనబడలేదు"
 
 #. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:211
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
 msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgstr "ఎటువంటి సరితూగు స్టికీ నోట్ల ఫైలు \"%1%\" వద్ద కనుగొనబడలేదు."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:219
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:224
 msgid "Sticky Notes import completed"
 msgstr "స్టికీ నోట్ల దిగుమతి పూర్తైనది"
 
 #. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:221
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:226
 msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgstr "<b>%2%</b> లో <b>%1%</b> స్టికీ నోట్లు సమర్ధవంతంగా దిగుమతైనవి."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:240
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:245
 msgid "Untitled"
 msgstr "శీర్షికలేని"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:278
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:283
 msgid "Sticky Note: "
 msgstr "స్టికీ నోట్: "
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:48
+#. namespace
+#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:37
+#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:38
+#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:66
+#| msgid "Help _Contents"
+msgid "Table of Contents"
+msgstr "విషయ పట్టిక"
+
+#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:2
+msgid ""
+"Navigate long structured notes. Set section and subsection headings in your "
+"note, and the Table of Contents will show in a menu."
+msgstr ""
+"లాంగ్ స్ట్రక్చర్డ్ నోట్లు నావిగేట్ చేయి. మీ నోట్ నందు విభాగము మరియు ఉపవిభాగము "
+"హెడింగ్స్ అమర్చుము, విషయ పట్టిక మెనూనందు చూపబడును."
+
+#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:3
+msgid "Luc Pionchon"
+msgstr "Luc Pionchon"
+
+#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:4
+msgid "© 2013 Luc Pionchon"
+msgstr "© 2013 Luc Pionchon"
+
+#. no toc items, and no action entries = empty menu
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:140
+msgid "(empty table of contents)"
+msgstr "(ఖాళీ విషయ పట్టిక)"
+
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:155
+msgid "Heading 1"
+msgstr "హెడింగ్ 1"
+
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:161
+msgid "Heading 2"
+msgstr "హెడింగ్ 2"
+
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:167
+msgid "Table of Contents Help"
+msgstr "విషయ పట్టిక సహాయం"
+
+#. namespace
+#: ../src/addins/todo/todo.desktop.in.in.h:1
+msgid "TODO"
+msgstr "చేయవలసినవి"
+
+#: ../src/addins/todo/todo.desktop.in.in.h:2
+msgid "Highlight FIXME, TODO and XXX patterns in notes."
+msgstr "FIXME, TODO మరియు XXX పారామితులు నెట్లనందు ఉద్దీపించు."
+
+#: ../src/addins/todo/todo.desktop.in.in.h:3
+#| msgid "Aurimas Černius and Tomboy original authors"
+msgid "Aurimas Černius, Romain Tartière"
+msgstr "Aurimas Černius, Romain Tartière"
+
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:1
 msgid "Tomboy Importer"
 msgstr "టామ్బాయ్ దిగుమతిదారి"
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:52
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:2
 msgid "Import your notes from Tomboy."
 msgstr "టామ్బాయ్ నుండి మీ నోట్లను దిగుమతి చేసుకొనుము."
 
-#: ../src/addins/tomboyimport/tomboyimportaddin.cpp:56
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:3
 msgid "Hubert Figuiere"
 msgstr "హ్యూబర్ట్ ఫిగుయిరీ"
+
+#: ../src/addins/underline/underline.desktop.in.in.h:1
+msgid "Underline"
+msgstr "క్రిందిగీత"
+
+#: ../src/addins/underline/underline.desktop.in.in.h:2
+msgid "Adds ability to underline text."
+msgstr "పాఠ్యముకు క్రిందిగీతవుంచు సామర్ద్యమును జతచేయుము."
+
+#: ../src/addins/underline/underline.desktop.in.in.h:3
+msgid "Hubert Figuière and the Tomboy Project"
+msgstr "హ్యూబర్ట్ పిగుయిరీ మరియు టామ్బాయ్ ప్రోజెక్టు"
 
 #: ../src/addins/underline/underlinemenuitem.cpp:35
 msgid "_Underline"
 msgstr "క్రిందిగీత (_U)"
 
-#. this is the name of the plugin.
-#: ../src/addins/underline/underlinenoteaddin.cpp:49
-msgid "Underline"
-msgstr "క్రిందిగీత"
-
-#: ../src/addins/underline/underlinenoteaddin.cpp:53
-msgid "Adds ability to underline text."
-msgstr "పాఠ్యముకు క్రిందిగీతవుంచు సామర్ద్యమును జతచేయుము."
-
-#: ../src/addins/underline/underlinenoteaddin.cpp:57
-msgid "Hubert Figuière and the Tomboy Project"
-msgstr "హ్యూబర్ట్ పిగుయిరీ మరియు టామ్బాయ్ ప్రోజెక్టు"
-
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:52
-#| msgid "Selected Synchronization Service Addin"
-msgid "WebDav Sync Service Add-in"
-msgstr "WebDav Sync సేవ యాడ్-యిన్"
-
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:57
-#| msgid "Synchronize Notes"
-msgid "Synchronize Gnote Notes to a WebDav URL"
-msgstr "WebDav URL కు గ్నోట్ గమనికలు సింక్రొనైజ్ చేయి"
-
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:100
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
 msgid "User_name:"
 msgstr "వాడుకరి పేరు:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
 msgid "_Password:"
 msgstr "సంకేతపదము (_P):"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:133
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:145
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
 msgstr ""
 "సేవికకు అనుసంధానమగుటలో అక్కడ వొక దోషం వుంది. సరికాని వాడుకరి పేరు మరియు/లేదా "
-"సంకేతపదం "
-"వాడుటవలన యిది కారణం కావచ్చు."
+"సంకేతపదం వాడుటవలన "
+"యిది కారణం కావచ్చు."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:201
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:173
 msgid "URL, username, or password field is empty."
 msgstr "URL, వాడుకరిపేరు, లేదా సంకేతపదం క్షేత్రం ఖాళీగావుంది."
 
@@ -1087,7 +1407,7 @@ msgstr "URL, వాడుకరిపేరు, లేదా సంకేతప�
 #. Save configuration into GConf
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
 #. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:290
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:262
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1098,105 +1418,150 @@ msgstr ""
 "\n"
 "%1%"
 
-#: ../src/gnote.cpp:350
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:1
+#| msgid "WebDav Sync Service Add-in"
+msgid "WebDAV Sync Service Plugin"
+msgstr "WebDAV సింక్ సేవ చొప్పింత"
+
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:2
+#| msgid "Synchronize Gnote Notes to a WebDav URL"
+msgid "Synchronize Gnote Notes to a WebDAV URL."
+msgstr "గ్నోట్ నోట్లను WebDAV URL కు సింక్రొనైజ్ చేయుము."
+
+#: ../src/dbus/remotecontrol-client-glue.cpp:138
+#, c-format
+msgid "Remote call to %s failed"
+msgstr "%s కు రిమోట్ కాల్ విఫలమైంది"
+
+#: ../src/dbus/remotecontrol.cpp:82
+#, c-format
+msgid "Exception thrown when creating note: %s"
+msgstr "నోట్ సృష్టించునప్పుడు ఆక్షేపణ వచ్చింది: %s"
+
+#: ../src/gnote.cpp:200
+msgid "Gnote is already running.  Exiting..."
+msgstr "గ్నోట్ ఇప్పటికే నడుస్తోంది. నిష్క్రమిస్తోంది..."
+
+#: ../src/gnote.cpp:365
 msgid "and Tomboy original authors."
 msgstr "మరియు Tomboy యదార్ధ మూలకర్తలు."
 
-#: ../src/gnote.cpp:356
+#: ../src/gnote.cpp:371
 msgid "translator-credits"
 msgstr "కృష్ణబాబు కె <kkrothap@redhat.com> 2009."
 
-#: ../src/gnote.cpp:365
+#: ../src/gnote.cpp:380
 #| msgid ""
-#| "Copyright © 2009-2010 Debarshi Ray\n"
+#| "Copyright © 2010-2013 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
 #| "Copyright © 2009 Hubert Figuiere\n"
 #| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2014 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 
-#: ../src/gnote.cpp:369
+#: ../src/gnote.cpp:384
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "సాధారణ మరియు సులభమైన డెస్కుటాప్ నో-తీసుకొను అనువర్తనము."
 
-#: ../src/gnote.cpp:380
+#: ../src/gnote.cpp:395
 msgid "Homepage"
 msgstr "నివాసపేజీ"
 
-#: ../src/gnote.cpp:559
+#: ../src/gnote.cpp:570
 msgid "Run Gnote in background."
 msgstr "గ్నోట్‌ను బ్యాక్‌గ్రౌండ్ నందు నడుపు"
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:571
+#| msgid "Run Gnote as a GNOME panel applet."
+msgid "Run Gnote as GNOME Shell search provider."
+msgstr "గ్నోట్‌ను గ్నోమ్ షెల్ శోధనిలా నడుపుము."
+
+#: ../src/gnote.cpp:572
 msgid "Specify the path of the directory containing the notes."
 msgstr "నోట్లను కలిగివున్న డైరెక్టరీయొక్క పాత్‌ను తెలుపుము."
 
-#: ../src/gnote.cpp:560
+#: ../src/gnote.cpp:572
 msgid "path"
 msgstr "పాత్"
 
-#: ../src/gnote.cpp:561
+#: ../src/gnote.cpp:573
 msgid "Open the search all notes window with the search text."
 msgstr "శోధన పాఠ్యముతో అన్ని నోట్లను శోధించు విండోను తెరువుము."
 
-#: ../src/gnote.cpp:561 ../src/gnote.cpp:566
+#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
 msgid "text"
 msgstr "పాఠ్యము"
 
-#: ../src/gnote.cpp:562
+#: ../src/gnote.cpp:574
 msgid "Print version information."
 msgstr "వర్షన్ సమాచారమును ముద్రించుము."
 
-#: ../src/gnote.cpp:563
+#: ../src/gnote.cpp:575
 msgid "Create and display a new note, with a optional title."
 msgstr "ఐచ్చిక శీర్షికతో, కొత్త నోట్‌ను సృష్టించుము మరియు ప్రదర్శించుము."
 
-#: ../src/gnote.cpp:563
+#: ../src/gnote.cpp:575
 msgid "title"
 msgstr "శీర్షిక"
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:576
 msgid "Display the existing note matching title."
 msgstr "ఉన్న నోటు సరిపోలు శీర్షికను ప్రదర్శించుము."
 
-#: ../src/gnote.cpp:564
+#: ../src/gnote.cpp:576
 msgid "title/url"
 msgstr "శీర్షిక/url"
 
-#: ../src/gnote.cpp:565
+#: ../src/gnote.cpp:577
 msgid "Display the 'Start Here' note."
 msgstr "'ఇక్కడ మొదలుపెట్టు' నోటును ప్రదర్శించుము."
 
-#: ../src/gnote.cpp:566
+#: ../src/gnote.cpp:578
 msgid "Search and highlight text in the opened note."
 msgstr "తెరిచిన నోటునందలి పాఠ్యమును శోధించి వుద్దీపనము చేయుము."
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:582
 msgid "A note taking application"
 msgstr "నోటు తీసుకొను అనువర్తనము"
 
-#: ../src/gnote.cpp:570
+#: ../src/gnote.cpp:582
 msgid "Gnote options at launch"
 msgstr "ఆరంభము వద్ద Gnote ఐచ్చికములు"
 
-#: ../src/gnote.cpp:763
+#: ../src/gnote.cpp:659
+msgid "Could not connect to remote instance."
+msgstr "రిమోట్ ఇన్‌స్టాన్స్‌కు అనుసంధానం కాలేదు."
+
+#: ../src/gnote.cpp:775
 msgid "Version %1%"
 msgstr "వర్షన్ %1%"
 
-#: ../src/notebooks/createnotebookdialog.cpp:40
-msgid "Create a new notebook"
-msgstr "కొత్త నోటుపుస్తుకం సృష్టించుము"
+#. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
+#: ../src/iconmanager.cpp:66
+#, c-format
+msgid "Failed to load icon (%s, %d): %s"
+msgstr "ప్రతిమ (%s, %d) లోడు చేయుటకు విఫలమైంది: %s"
+
+#: ../src/noteaddin.cpp:108 ../src/noteaddin.cpp:122 ../src/noteaddin.cpp:135
+msgid "Plugin is disposing already"
+msgstr "చొప్పింత ఇప్పటికే విసర్జింజబడుతోంది"
+
+#: ../src/noteaddin.cpp:139
+msgid "Window is not embedded"
+msgstr "విండో ఎంబెడ్ కాలేదు"
 
 #: ../src/notebooks/createnotebookdialog.cpp:41
-msgid "Type the name of the notebook you'd like to create."
-msgstr "మీరు సృష్టించాలి అనుకొనుచున్న నోటుపుస్తకం నామమును టైపుచేయుము."
+#| msgid "Create a new notebook"
+msgid "Create Notebook"
+msgstr "నోటుపుస్తుకం సృష్టించుము"
 
 #: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
@@ -1212,21 +1577,17 @@ msgstr "నామము యిప్పటికే తీసుకొనబడ�
 msgid "C_reate"
 msgstr "సృష్టించుము (_r)"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:75
-#: ../src/searchnoteswidget.cpp:219
+#: ../src/notebooks/notebookapplicationaddin.cpp:66
+#: ../src/searchnoteswidget.cpp:229
 msgid "Notebooks"
 msgstr "నోట్‌పుస్తకములు"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:76
+#: ../src/notebooks/notebookapplicationaddin.cpp:67
 msgid "Create a new note in a notebook"
 msgstr "నోటుపుస్తకం నందు కొత్త నోట్ సృష్టించుము"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:128
-#| msgid "New Note_book..."
-msgid "New Note_book"
-msgstr "కొత్త నోటుపుస్తకం (_b)"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:186
+#: ../src/notebooks/notebookapplicationaddin.cpp:96
+#: ../src/notebooks/notebookapplicationaddin.cpp:146
 msgid "New Note_book..."
 msgstr "కొత్త నోటుపుస్తకం... (_b)"
 
@@ -1235,38 +1596,19 @@ msgstr "కొత్త నోటుపుస్తకం... (_b)"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:90
+#: ../src/notebooks/notebook.cpp:109
 msgid "%1% Notebook Template"
 msgstr "%1% నోటుపుస్తకం మాదిరి"
 
-#: ../src/notebooks/notebook.cpp:166 ../src/notemanager.cpp:524
-#| msgid "_New Note"
+#: ../src/notebooks/notebook.cpp:185 ../src/notemanagerbase.cpp:301
 msgid "New Note"
 msgstr "కొత్త గమనిక"
 
-#: ../src/notebooks/notebook.cpp:217 ../src/recentchanges.cpp:122
-msgid "All Notes"
-msgstr "అన్ని నోట్లు"
-
-#: ../src/notebooks/notebook.cpp:246
-msgid "Unfiled Notes"
-msgstr "ఫైలుచేయని నోట్లు"
-
-#: ../src/notebooks/notebook.cpp:275
-#| msgid "Unfiled Notes"
-msgid "Pinned Notes"
-msgstr "పిన్డ్ గమనికలు"
-
-#: ../src/notebooks/notebook.cpp:303
-#| msgid "All Notes"
-msgid "Active Notes"
-msgstr "క్రియాశీల గమికలు"
-
-#: ../src/notebooks/notebookmanager.cpp:352
+#: ../src/notebooks/notebookmanager.cpp:364
 msgid "Really delete this notebook?"
 msgstr "ఈ నోటుపుస్తకమును నిజంగా తొలగించాలా?"
 
-#: ../src/notebooks/notebookmanager.cpp:353
+#: ../src/notebooks/notebookmanager.cpp:365
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1283,40 +1625,68 @@ msgstr "ఏ నోటుపుస్తకం లేదు"
 msgid "New \"%1%\" Note"
 msgstr "కొత్త \"%1%\" నోట్"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:74
+#: ../src/notebooks/notebooknoteaddin.cpp:81
 msgid "Place this note into a notebook"
 msgstr "ఈ నోటును నోటుపుస్తకములో వుంచుము"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:184
+#: ../src/notebooks/notebooknoteaddin.cpp:191
 msgid "Notebook"
 msgstr "నోటుపుస్తకం"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:210
+#: ../src/notebooks/notebooknoteaddin.cpp:214
 msgid "_New notebook..."
 msgstr "కొత్త నోటుపుస్తకం... (_N)"
 
+#: ../src/notebooks/specialnotebooks.cpp:46
+msgid "All"
+msgstr "అన్నీ"
+
+#: ../src/notebooks/specialnotebooks.cpp:75
+#| msgid "Unfiled Notes"
+msgid "Unfiled"
+msgstr "ఫైలుచేయని"
+
+#: ../src/notebooks/specialnotebooks.cpp:106
+msgid "Important"
+msgstr "ముఖ్యమైన"
+
+#: ../src/notebooks/specialnotebooks.cpp:133
+#| msgid "Active Notes"
+msgid "Active"
+msgstr "క్రియాశీల"
+
+#: ../src/notebuffer.cpp:1505
+msgid "</list> tag mismatch"
+msgstr "</list> టాగ్ అసమానత"
+
+#: ../src/notebuffer.cpp:1584
+#, c-format
+msgid "Exception: %s"
+msgstr "ఆక్షేపణ: %s"
+
+#. TRANSLATORS: %1% will be replaced by note title
+#: ../src/note.cpp:59
+#| msgid "Really delete %1% note?"
+#| msgid_plural "Really delete %1% notes?"
+msgid "Really delete \"%1%\"?"
+msgstr "నిజంగా \"%1%\" తొలగించాలా?"
+
 #. TRANSLATORS: %1% is number of notes
-#: ../src/note.cpp:74
-#| msgid "Really delete this note?"
-#| msgid_plural "Really delete these %1% notes?"
+#: ../src/note.cpp:63
 msgid "Really delete %1% note?"
 msgid_plural "Really delete %1% notes?"
 msgstr[0] "%1% గమనిక నిజంగా తొలగించాలా?"
 msgstr[1] "%1% గమనికలు నిజంగా తొలగించాలా?"
 
-#: ../src/note.cpp:81
+#: ../src/note.cpp:70
 msgid "If you delete a note it is permanently lost."
 msgstr "మీరు వొక నోట్‌ను తొలగించితే అది శాశ్వతంగా పోతుంది."
 
-#: ../src/note.cpp:117
+#: ../src/note.cpp:106
 msgid "Error saving note data."
 msgstr "నోట్ డాటాను దాయుటలో దోషము."
 
-#: ../src/note.cpp:118
-#| msgid ""
-#| "An error occurred while saving your notes. Please check that you have "
-#| "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-#| "Error details can be found in ~/.gnote.log."
+#: ../src/note.cpp:107
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1328,13 +1698,34 @@ msgstr ""
 "చూసుకోండి. దోషపు "
 "వివరములు ~/.gnote.log నందు కనుగొనగలరు."
 
-#. New Note Template
-#. Translators: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:336
-msgid "New Note Template"
-msgstr "కొత్త నోట్ మాదిరి"
+#. Probably IOException or UnauthorizedAccessException?
+#: ../src/note.cpp:382 ../src/notebase.cpp:200
+#, c-format
+msgid "Exception while saving note: %s"
+msgstr "నోట్ భద్రపరచుటలో ఆక్షేపణ: %s"
 
-#: ../src/notemanager.cpp:238
+#: ../src/note.cpp:474
+#, c-format
+#| msgid "Error saving icon"
+msgid "Error while saving: %s"
+msgstr "భద్రపరచుటలో దోషం: %s"
+
+#: ../src/note.cpp:699
+msgid "Setting text content for closed notes not supported"
+msgstr "మూసివేసిన నోట్స్ కొరకు పాఠం కాంటెంట్ అమర్చటకు తోడ్పాటులేదు"
+
+#. write failure, but not critical
+#: ../src/notebase.cpp:444
+#, c-format
+msgid "Failed to update note format: %s"
+msgstr "నోట్ ఫార్మాట్ నవీకరించుటకు విఫలమైంది: %s"
+
+#: ../src/notebase.cpp:568
+#, c-format
+msgid "Filesystem error: %s"
+msgstr "ఫైల్ సిస్టమ్ దోషం: %s"
+
+#: ../src/notemanager.cpp:133
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1377,7 +1768,7 @@ msgstr ""
 "నోట్‌ను తెరుచుటకు "
 "లింకుపైన నొక్కుము.</note-content>"
 
-#: ../src/notemanager.cpp:257
+#: ../src/notemanager.cpp:152
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1409,255 +1800,242 @@ msgstr ""
 "చేయబడుతుంది.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:272 ../src/notemanager.cpp:323
+#: ../src/notemanager.cpp:167 ../src/notemanager.cpp:208
 msgid "Start Here"
 msgstr "ఇక్కడ మొదలుపెట్టు"
 
-#: ../src/notemanager.cpp:278
+#: ../src/notemanager.cpp:173
 msgid "Using Links in Gnote"
 msgstr "Gnote నందు లింకులను వుపయోగించుట"
 
-#: ../src/notemanager.cpp:635
+#: ../src/notemanager.cpp:178
+#, c-format
+#| msgid "Error printing note"
+msgid "Error creating start notes: %s"
+msgstr "ప్రారంభ నోట్లు సృష్టించుటలో దోషం: %s"
+
+#. TRANSLATORS: first %s is file, second is error
+#: ../src/notemanager.cpp:196
+#, c-format
+msgid "Error parsing note XML, skipping \"%s\": %s"
+msgstr "నోట్ XML పార్సింగ్ నందు దోషం, \"%s\" దాటవేస్తోంది: %s"
+
+#: ../src/notemanagerbase.cpp:105 ../src/preferencesdialog.cpp:332
+msgid "New Note Template"
+msgstr "కొత్త నోట్ మాదిరి"
+
+#: ../src/notemanagerbase.cpp:359
 msgid "Describe your new note here."
 msgstr "మీ కొత్త నోట్‌ను వివరించుము."
 
-#: ../src/noterenamedialog.cpp:122
+#: ../src/noterenamedialog.cpp:123
 msgid "Rename Note Links?"
 msgstr "గమనిక లింక్స్ పునఃనామకరణ చేయాలా?"
 
-#: ../src/noterenamedialog.cpp:126
+#: ../src/noterenamedialog.cpp:127
 msgid "_Don't Rename Links"
 msgstr "లింకులను పునఃనామకరణ చేయవద్దు (_D)"
 
-#: ../src/noterenamedialog.cpp:127
-#| msgid "_Open Link"
+#: ../src/noterenamedialog.cpp:128
 msgid "_Rename Links"
 msgstr "లింకు పునఃనామకరణచేయి (_R)"
 
-#: ../src/noterenamedialog.cpp:128
+#: ../src/noterenamedialog.cpp:129
 msgid "Select All"
 msgstr "అన్నింటిని ఎంచుకొను"
 
-#: ../src/noterenamedialog.cpp:129
-#| msgid "Select an icon..."
+#: ../src/noterenamedialog.cpp:130
 msgid "Select None"
 msgstr "ఏది యెంచవద్దు"
 
-#: ../src/noterenamedialog.cpp:130
-#| msgid "Close this window"
+#: ../src/noterenamedialog.cpp:131
 msgid "Always show this _window"
 msgstr "ఈ విండోను యెల్లప్పుడూ చూపు (_w)"
 
-#: ../src/noterenamedialog.cpp:131
+#: ../src/noterenamedialog.cpp:132
 msgid "Alwa_ys rename links"
 msgstr "లింకులను యెల్లప్పుడూ పునఃనామకరణ చేయి (_y)"
 
-#: ../src/noterenamedialog.cpp:133
+#: ../src/noterenamedialog.cpp:134
 msgid "Never rename _links"
 msgstr "లింకులను యెప్పుడు పునఃనామకరణ చేయవద్దు (_l)"
 
 #: ../src/noterenamedialog.cpp:152
+#| msgid ""
+#| "Rename links in other notes from \"<span underline=\"single\">%1</span>\" "
+#| "to\"<span underline=\"single\">%2</span>\"?\n"
+#| "\n"
+#| "If you do not rename the links, they will no longer link to anything."
 msgid ""
-"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
+"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"ఇతర గమనికలనందు  \"<span underline=\"single\">%1</span>\" నుండి"
+"ఇతర నోట్లనందలి  \"<span underline=\"single\">%1</span>\" నుండి "
 "\"<span underline=\"single\">%2</span>\" వరకు లింకులను పునఃనామకరణ చేయాలా?\n"
 "\n"
 "మీరు లింకులను పునఃనామకరణ చేయకపోతే, అవి యికపై వేటికి లింకు కావు."
 
 #: ../src/noterenamedialog.cpp:185
-#| msgid "_Open Link"
 msgid "Rename Links"
 msgstr "లింకులను పునఃనామకరణచేయి"
 
-#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:322
-#| msgid "Note title taken"
+#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:331
 msgid "Note Title"
 msgstr "గమనిక శీర్షిక"
 
-#: ../src/noterenamedialog.cpp:236
-#| msgid "_Advanced..."
+#: ../src/noterenamedialog.cpp:237
 msgid "Ad_vanced"
 msgstr "అదునాతన (_v)"
 
-#: ../src/notewindow.cpp:91
-msgid "Find in This Note"
-msgstr "ఈ నోట్ ‌నందు కనుగొనుము"
-
-#: ../src/notewindow.cpp:326
+#: ../src/notewindow.cpp:372
 msgid "_Link to New Note"
 msgstr "కొత్త నోట్‌కు లింకు చేయుము (_L)"
 
-#: ../src/notewindow.cpp:334
+#: ../src/notewindow.cpp:380
 msgid "Te_xt"
 msgstr "పాఠ్యము (_x)"
 
-#: ../src/notewindow.cpp:342
-msgid "_Find in This Note"
-msgstr "ఈ నోట్‌నందు కనుగొనుము (_F)"
-
-#: ../src/notewindow.cpp:374
-#| msgid "Print"
-msgid "Pin"
-msgstr "పిన్"
-
-#: ../src/notewindow.cpp:382
-msgid "Link"
-msgstr "లింకు"
-
-#: ../src/notewindow.cpp:388
-msgid "Link selected text to a new note (Ctrl-L)"
-msgstr "ఎంపికకాబడిన పాఠ్యమును కొత్త నోట్‌కు లింకుచేయుము (Ctrl-L)"
-
-#: ../src/notewindow.cpp:394
-msgid "_Text"
-msgstr "పాఠ్యము (_T)"
-
-#: ../src/notewindow.cpp:400
+#: ../src/notewindow.cpp:417
 msgid "Set properties of text"
 msgstr "పాఠ్యము యొక్క లక్షణములను అమర్చుము"
 
-#: ../src/notewindow.cpp:404
-msgid "T_ools"
-msgstr "సాధనములు (_o)"
+#: ../src/notewindow.cpp:421
+msgid "Is Important"
+msgstr "ముఖ్యమైంది"
 
-#: ../src/notewindow.cpp:409
-msgid "Use tools on this note"
-msgstr "ఈ నోట్‌పైన సాధనములను ఉపయోగించుము"
+#: ../src/notewindow.cpp:422
+msgid "Toggle notes presence in Important Notes notebook"
+msgstr "ముఖ్యమైన నోట్స్ నోటుపుస్తకం నందు ఉన్న టాగుల్ నోట్స్‌"
 
-#: ../src/notewindow.cpp:419
+#: ../src/notewindow.cpp:430 ../src/searchnoteswidget.cpp:144
+#: ../src/searchnoteswidget.cpp:147
+msgid "_Delete"
+msgstr "తొలగించు (_D)"
+
+#: ../src/notewindow.cpp:430
 msgid "Delete this note"
 msgstr "ఈ నోట్ తొలగించుము"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:446
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
 msgstr ""
 "ఈ గమనిక మాదిరి గమనిక. ఇది రోజువారి గమనికల యొక్క అప్రమేయ విషయాన్ని "
-"నిర్ణయించును, మరియు "
-"గమనిక మెనూనందు గాని లేక అన్వేషణ విండోనందు గాని చూపదు."
+"నిర్ణయించును, మరియు గమనిక మెనూనందు "
+"గాని లేక అన్వేషణ విండోనందు గాని చూపదు."
 
-#: ../src/notewindow.cpp:452
+#: ../src/notewindow.cpp:449
 msgid "Convert to regular note"
 msgstr "రోజువారి గమనికకు మారు"
 
-#: ../src/notewindow.cpp:455
+#: ../src/notewindow.cpp:452
 msgid "Save Si_ze"
 msgstr "పరిమాణం దాచు (_z)"
 
-#: ../src/notewindow.cpp:459
+#: ../src/notewindow.cpp:456
 msgid "Save Se_lection"
 msgstr "ఎంపిక దాచు (_l)"
 
-#: ../src/notewindow.cpp:463
+#: ../src/notewindow.cpp:460
 msgid "Save _Title"
 msgstr "శీర్షిక దాచు (_T)"
 
-#: ../src/notewindow.cpp:551
-msgid "_Find..."
-msgstr "కనుగొనుము... (_F)"
-
-#: ../src/notewindow.cpp:559
-msgid "Find _Next"
-msgstr "తరువాతి కనుగొనుము (_N)"
-
-#: ../src/notewindow.cpp:569
-msgid "Find _Previous"
-msgstr "ముందలిది కునుగొనుము (_P)"
-
-#: ../src/notewindow.cpp:639
+#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1084
 msgid "Cannot create note"
 msgstr "నోట్ సృష్టించుట వీలుకాదు"
 
-#: ../src/notewindow.cpp:692
-msgid "_Next"
-msgstr "తరువాత (_N)"
+#: ../src/notewindow.cpp:827
+#| msgid "Link"
+msgid "_Link"
+msgstr "లింకు (_L)"
 
-#: ../src/notewindow.cpp:693
-msgid "_Previous"
-msgstr "ముందలి (_P)"
-
-#: ../src/notewindow.cpp:1142
+#: ../src/notewindow.cpp:828
 msgid "<b>_Bold</b>"
 msgstr "<b>బోల్డ్ (_B)</b>"
 
-#: ../src/notewindow.cpp:1143
+#: ../src/notewindow.cpp:829
 msgid "<i>_Italic</i>"
 msgstr "<i>ఇటాలిక్ (_I)</i>"
 
-#: ../src/notewindow.cpp:1144
+#: ../src/notewindow.cpp:830
 msgid "<s>_Strikeout</s>"
 msgstr "<s>కొట్టిపారేయుము (_S)</s>"
 
-#: ../src/notewindow.cpp:1146
+#: ../src/notewindow.cpp:832
 msgid "_Highlight"
 msgstr "ఉద్దేపించు (_H)"
 
-#: ../src/notewindow.cpp:1148
+#: ../src/notewindow.cpp:834
 msgid "_Normal"
 msgstr "సాదారణ (_N)"
 
-#: ../src/notewindow.cpp:1150
+#: ../src/notewindow.cpp:836
 msgid "Hu_ge"
 msgstr "పెద్ద (_g)"
 
-#: ../src/notewindow.cpp:1152
+#: ../src/notewindow.cpp:838
 msgid "_Large"
 msgstr "పెద్దది (_L)"
 
-#: ../src/notewindow.cpp:1154
+#: ../src/notewindow.cpp:840
 msgid "S_mall"
 msgstr "చిన్న (_m)"
 
-#: ../src/notewindow.cpp:1156
+#: ../src/notewindow.cpp:842
 msgid "Bullets"
 msgstr "బుల్లెట్స్"
 
-#: ../src/notewindow.cpp:1159
-msgid "Increase Font Size"
-msgstr "ఫాంటు పరిమాణము పెంచుము"
-
-#: ../src/notewindow.cpp:1160
-msgid "Decrease Font Size"
-msgstr "ఫాంటు పరిమాణము తగ్గించుము"
-
-#: ../src/notewindow.cpp:1202
-msgid "Font Size"
-msgstr "ఫాంటు పరిమాణము"
-
-#: ../src/preferencesdialog.cpp:122
+#: ../src/preferencesdialog.cpp:121
 msgid "General"
 msgstr "సాధారణ"
 
-#: ../src/preferencesdialog.cpp:124
+#: ../src/preferencesdialog.cpp:122
+#| msgid "Link"
+msgid "Links"
+msgstr "లింకులు"
+
+#: ../src/preferencesdialog.cpp:125
 msgid "Hotkeys"
 msgstr "హాట్‌కీలు"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:127 ../src/sharp/addinstreemodel.cpp:147
-#| msgid "Synchronization Client ID"
+#: ../src/preferencesdialog.cpp:129 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "సింక్రొనైజేషన్"
 
-#: ../src/preferencesdialog.cpp:129
-msgid "Add-ins"
-msgstr "యాడ్-యిన్స్"
+#: ../src/preferencesdialog.cpp:131
+msgid "Plugins"
+msgstr "చొప్పింతలు"
+
+#: ../src/preferencesdialog.cpp:208
+#, c-format
+msgid "Plugin %s is absent"
+msgstr "చొప్పింత %s లేదు"
 
 #. Status icon
-#: ../src/preferencesdialog.cpp:241
-#| msgid "Use custom _font"
-msgid "Use Status _Icon"
-msgstr "స్థితి ప్రతిమ వుపయోగించు (_I)"
+#: ../src/preferencesdialog.cpp:247
+#| msgid "Use Status _Icon"
+msgid "Use status _icon"
+msgstr "స్థితి ప్రతిమ వుపయోగించు (_i)"
 
-#: ../src/preferencesdialog.cpp:254
+#: ../src/preferencesdialog.cpp:248
+msgid "Show icon in tray, which is the central place of control."
+msgstr "ప్రతిమను ట్రేనందు చూపుము, ఇది నియంత్రిక యొక్క కేంద్ర స్థానం."
+
+#. Open in new window
+#: ../src/preferencesdialog.cpp:255
+#| msgid "Always show this _window"
+msgid "Always _open notes in new window"
+msgstr "నొట్లను ఎల్లప్పుడూ కొత్త విండోనందు తెరువుము (_o)"
+
+#: ../src/preferencesdialog.cpp:268
 msgid "_Spell check while typing"
 msgstr "టైపుచేయుచున్నప్పుడు స్పెల్ పరిశీలించుము (_S)"
 
-#: ../src/preferencesdialog.cpp:260
+#: ../src/preferencesdialog.cpp:269
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1666,12 +2044,81 @@ msgstr ""
 "స్పెల్లింగ్ సూచనలు కాంటెస్టు "
 "మెనూనందు అందిచబడతాయి."
 
+#. Auto bulleted list
+#: ../src/preferencesdialog.cpp:279
+msgid "Enable auto-_bulleted lists"
+msgstr "స్వయంచాలక-బుల్లెటెడ్ జాబితాలను చేతనము చేయుము (_b)"
+
+#: ../src/preferencesdialog.cpp:280
+msgid "Start new bulleted list by starting new line with character \"-\"."
+msgstr ""
+"కొత్త వరుసను అక్షరం \"-\" తో ప్రారంభించి కొత్త బుల్లెటెడ్ జాబితా "
+"ప్రారంభించుము."
+
+#: ../src/preferencesdialog.cpp:289
+msgid "Use custom _font"
+msgstr "మలచిన ఆక్షరశైలి వాడుము (_f)"
+
+#: ../src/preferencesdialog.cpp:307
+msgid "When renaming a linked note: "
+msgstr "లింకైన గమనిక పునఃనామకరణ చేయునప్పుడు:"
+
+#: ../src/preferencesdialog.cpp:311
+msgid "Ask me what to do"
+msgstr "ఏమి చేయాలో నన్ను అడుగు"
+
+#: ../src/preferencesdialog.cpp:312
+msgid "Never rename links"
+msgstr "లింకులను యెప్పుడూ పునఃనామకరణ చేయవద్దు"
+
+#: ../src/preferencesdialog.cpp:313
+msgid "Always rename links"
+msgstr "లింకులను యెల్లప్పుడూ పునఃనామకరణచేయి"
+
+#: ../src/preferencesdialog.cpp:333
+msgid ""
+"Use the new note template to specify the text that should be used when "
+"creating a new note."
+msgstr ""
+"కొత్త నోట్ సృష్టించునప్పుడు వుపయోగించవలసిన పాఠ్యమును తెలుపుటకు కొత్త నోట్ "
+"మాదిరిని వుపయోగించుము."
+
+#: ../src/preferencesdialog.cpp:338
+msgid "Open New Note Template"
+msgstr "కొత్త నోట్ మాదిరిని తెరువుము"
+
+#. internal links
+#: ../src/preferencesdialog.cpp:395
+msgid "_Automatically link to notes"
+msgstr "నోట్లను స్వయంచాలకంగా లంకె వేయుము (_A)"
+
+#: ../src/preferencesdialog.cpp:396
+msgid "Enable this option to create a link when text matches note title."
+msgstr ""
+"పాఠం నోట్ శీర్షికకు సరిపోలినప్పుడు లంకెను సృష్టించుటకు ఈ ఐచ్చికం చేతనం చేయుము."
+
+#. URLs
+#: ../src/preferencesdialog.cpp:402
+msgid "Create links for _URLs"
+msgstr "URLల కొరకు లింకులను సృష్టించుము (_U)"
+
+#: ../src/preferencesdialog.cpp:403
+#| msgid ""
+#| "Enable this option to highlight words ThatLookLikeThis. Clicking the word "
+#| "will create a note with that name."
+msgid ""
+"Enable this option to create links for URLs. Clicking will open URL with "
+"apropriate program."
+msgstr ""
+"URLల కొరకు లింకులను సృష్టించుటకు  ఈ ఐచ్చికాన్ని చేతనించు. నొక్కడం అనేది URLను "
+"సరైన ప్రోగ్రామ్‌తో తెరుచును."
+
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:271
+#: ../src/preferencesdialog.cpp:410
 msgid "Highlight _WikiWords"
 msgstr "వికీ పదములను ఉద్దీపనము చేయుము (_W)"
 
-#: ../src/preferencesdialog.cpp:277
+#: ../src/preferencesdialog.cpp:411
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -1680,49 +2127,13 @@ msgstr ""
 "/b>. పదమును "
 "నొక్కుట ద్వారా ఆ నామముతో వొక నోట్ సృష్టిస్తుంది."
 
-#. Auto bulleted list
-#: ../src/preferencesdialog.cpp:284
-msgid "Enable auto-_bulleted lists"
-msgstr "స్వయంచాలక-బుల్లెటెడ్ జాబితాలను చేతనము చేయుము (_b)"
-
-#: ../src/preferencesdialog.cpp:293
-msgid "Use custom _font"
-msgstr "మలచిన ఆక్షరశైలి వాడుము (_f)"
-
-#: ../src/preferencesdialog.cpp:310
-msgid "When renaming a linked note: "
-msgstr "లింకైన గమనిక పునఃనామకరణ చేయునప్పుడు:"
-
-#: ../src/preferencesdialog.cpp:315
-msgid "Ask me what to do"
-msgstr "ఏమి చేయాలో నన్ను అడుగు"
-
-#: ../src/preferencesdialog.cpp:316
-msgid "Never rename links"
-msgstr "లింకులను యెప్పుడూ పునఃనామకరణ చేయవద్దు"
-
-#: ../src/preferencesdialog.cpp:317
-msgid "Always rename links"
-msgstr "లింకులను యెల్లప్పుడూ పునఃనామకరణచేయి"
-
-#: ../src/preferencesdialog.cpp:339
-msgid ""
-"Use the new note template to specify the text that should be used when "
-"creating a new note."
-msgstr ""
-"కొత్త నోట్ సృష్టించునప్పుడు వుపయోగించవలసిన పాఠ్యమును తెలుపుటకు కొత్త నోట్ "
-"మాదిరిని వుపయోగించుము."
-
-#: ../src/preferencesdialog.cpp:347
-msgid "Open New Note Template"
-msgstr "కొత్త నోట్ మాదిరిని తెరువుము"
-
 #. Hotkeys...
-#: ../src/preferencesdialog.cpp:409
-msgid "Listen for _Hotkeys"
-msgstr "హాట్‌కీల కొరకు వినుము (_H)"
+#: ../src/preferencesdialog.cpp:441
+#| msgid "Listen for _Hotkeys"
+msgid "Listen for _hotkeys"
+msgstr "హాట్‌కీల కొరకు వినుము (_h)"
 
-#: ../src/preferencesdialog.cpp:416
+#: ../src/preferencesdialog.cpp:442
 msgid ""
 "Hotkeys allow you to quickly access your notes from anywhere with a "
 "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
@@ -1733,84 +2144,77 @@ msgstr ""
 "<b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
 
 #. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:436
+#: ../src/preferencesdialog.cpp:464
 msgid "Show notes _menu"
 msgstr "నోట్స్ జాబితా చూపుము (_m)"
 
 #. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:453
+#: ../src/preferencesdialog.cpp:481
 msgid "Open \"_Start Here\""
 msgstr "\"ఇక్కడ మొదలుపెట్టు\"  తెరువుము (_S)"
 
 #. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:469
+#: ../src/preferencesdialog.cpp:497
 msgid "Create _new note"
 msgstr "కొత్త నోట్ సృష్టించుము (_n)"
 
-#. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:485
-msgid "Open \"Search _All Notes\""
-msgstr "\"అన్ని నోట్లు వెతుకు\" తెరువుము (_A)"
+#. Open Search window keybinding...
+#: ../src/preferencesdialog.cpp:513
+#| msgid "Open Search Dialog"
+msgid "Open Search _Window"
+msgstr "శోధన విండోను తెరువుము (_W)"
 
-#: ../src/preferencesdialog.cpp:522
+#: ../src/preferencesdialog.cpp:553
 msgid "Ser_vice:"
 msgstr "సేవ (_v):"
 
-#: ../src/preferencesdialog.cpp:577 ../src/preferencesdialog.cpp:1181
+#: ../src/preferencesdialog.cpp:609 ../src/preferencesdialog.cpp:1239
 msgid "Not configurable"
 msgstr "ఆకృతీకరించుటకు వీలుకానిది"
 
-#. Translators: This is and the next string go together.
-#. Together they look like "Automatically Sync in Background Every [_] Minutes",
-#. where "[_]" is a GtkSpinButton.
-#: ../src/preferencesdialog.cpp:604
-msgid "Automaticall_y Sync in Background Every"
-msgstr "బ్యాక్‌గ్రౌండ్ నందు స్వయంచాలకంగా సింక్ అవ్వుము (_y)"
-
-#. Translators: See above comment for details on
-#. this string.
-#: ../src/preferencesdialog.cpp:611
-msgid "Minutes"
-msgstr "నిమిషాలు"
+#: ../src/preferencesdialog.cpp:636
+#| msgid "Automatic Background Synchronization Timeout"
+msgid "Automatical background s_ync interval (minutes)"
+msgstr "స్వయంచాలక బ్యాక్‌గ్రౌండ్ సింక్ విరామం (నిమిషాలు) (_y)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:629
+#: ../src/preferencesdialog.cpp:660
 msgid "_Advanced..."
 msgstr "అదునాతన... (_A)"
 
-#: ../src/preferencesdialog.cpp:674
-msgid "The following add-ins are installed"
-msgstr "ఈ క్రింది యాడ్-యిన్స్ సంస్థాపించబడినవి"
+#: ../src/preferencesdialog.cpp:707
+#| msgid "The following add-ins are installed"
+msgid "The following plugins are installed:"
+msgstr "ఈ క్రింది చొప్పింతలు సంస్థాపించబడినవి:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:705
+#: ../src/preferencesdialog.cpp:742
 msgid "_Enable"
 msgstr "చేతనముచేయి (_E)"
 
-#: ../src/preferencesdialog.cpp:711
+#: ../src/preferencesdialog.cpp:748
 msgid "_Disable"
 msgstr "అచేతనముచేయి (_D)"
 
-#: ../src/preferencesdialog.cpp:844
+#: ../src/preferencesdialog.cpp:906
 msgid "Not Implemented"
 msgstr "అభివృద్దిపరచ లేదు"
 
-#: ../src/preferencesdialog.cpp:858
+#: ../src/preferencesdialog.cpp:922
 msgid "%1% Preferences"
 msgstr "%1% అభీష్టాలు"
 
-#: ../src/preferencesdialog.cpp:999
+#: ../src/preferencesdialog.cpp:1057
 msgid "Choose Note Font"
 msgstr "నోట్ ఫాంట్ యెంచుకొనుము"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1097
-#| msgid "Synchronization Client ID"
+#: ../src/preferencesdialog.cpp:1155
 msgid "Other Synchronization Options"
 msgstr "ఇతర సింక్రొనైజేషన్ ఐచ్చికాలు"
 
-#: ../src/preferencesdialog.cpp:1100
+#: ../src/preferencesdialog.cpp:1158
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -1819,23 +2223,26 @@ msgstr ""
 "గుర్తించనప్పుడు:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1104
-msgid "Always ask me what to do."
-msgstr "ఏమి చేయాలో యెప్పుడూ నన్ను అడుగు."
+#: ../src/preferencesdialog.cpp:1162
+#| msgid "Always ask me what to do."
+msgid "Always ask me what to do"
+msgstr "ఏమిచేయాలో యెల్లప్పుడూ నన్ను అడుగుము"
 
-#: ../src/preferencesdialog.cpp:1108
-msgid "Rename my local note."
-msgstr "నా స్థానిక నోట్ పునఃనామకరణచేయి."
+#: ../src/preferencesdialog.cpp:1166
+#| msgid "Rename my local note."
+msgid "Rename my local note"
+msgstr "నా స్థానిక నోట్ పునర్నామకరణ చేయు"
 
-#: ../src/preferencesdialog.cpp:1112
-msgid "Replace my local note with the server's update."
-msgstr "సేవిక నవీకరణతో నా స్థానిక గమనిక పునఃస్థాపించు."
+#: ../src/preferencesdialog.cpp:1170
+#| msgid "Replace my local note with the server's update."
+msgid "Replace my local note with the server's update"
+msgstr "సేవికయొక్క నవీకరణతో నా స్థానిక గమనికను పునఃస్థాపించుము"
 
-#: ../src/preferencesdialog.cpp:1215
+#: ../src/preferencesdialog.cpp:1272
 msgid "Are you sure?"
 msgstr "మీరు నిశ్చయంగా వున్నారా?"
 
-#: ../src/preferencesdialog.cpp:1216
+#: ../src/preferencesdialog.cpp:1273
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -1844,100 +2251,115 @@ msgstr ""
 "దాయునప్పుడు మీ అన్ని "
 "నోట్లను మరలా సింక్రోనైజ్ చేయమని మీరు వత్తిడి చేయబడవచ్చు."
 
-#: ../src/preferencesdialog.cpp:1226
-#| msgid "Selected Synchronization Service Addin"
+#: ../src/preferencesdialog.cpp:1283
 msgid "Resetting Synchronization Settings"
 msgstr "సింక్రొనైజేషన్ అమర్పులు తిరిగివుంచుట"
 
-#: ../src/preferencesdialog.cpp:1227
+#: ../src/preferencesdialog.cpp:1284
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
 "synchronize all of your notes again when you save new settings."
 msgstr ""
 "మీరు ఆకృతీకరించిన సింక్రొనైజ్డ్ సేవను అచేతనం చేసారు. మీ సింక్రొనైజేషన్ "
-"అమరికలు యిప్పుడు శుభ్రపరచబడును. మీరు "
-"కొత్త అమరికలను దాయునప్పుడు మీ గమనికలు అన్ని మరలా సింక్రొనైజ్ చేయమని వత్తిడి "
+"అమరికలు యిప్పుడు "
+"శుభ్రపరచబడును. మీరు కొత్త అమరికలను దాయునప్పుడు మీ గమనికలు అన్ని మరలా "
+"సింక్రొనైజ్ చేయమని వత్తిడి "
 "చేయబడవచ్చు."
 
-#: ../src/preferencesdialog.cpp:1293
+#: ../src/preferencesdialog.cpp:1350
 msgid "Connection successful"
 msgstr "అనుసంధానం సఫలమైంది"
 
-#: ../src/preferencesdialog.cpp:1294
+#: ../src/preferencesdialog.cpp:1351
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr ""
 "గ్నోట్ అనునది మీ గమనికలను సింక్రొనైజ్ చేయుటకు సిద్దంగావుంది. మీరు వాటిని "
-"సింక్రొనైజ్ చేద్దామని అనుకొనుచున్నారా?"
+"సింక్రొనైజ్ చేద్దామని "
+"అనుకొనుచున్నారా?"
 
-#: ../src/preferencesdialog.cpp:1318
+#: ../src/preferencesdialog.cpp:1375
 msgid ""
 "Please check your information and try again.  The log file %1% may contain "
 "more information about the error."
 msgstr ""
 "దయచేసి మీ సమాచారాన్ని పరిశీలించి మరలా ప్రయత్నించండి. లాగ్ ఫైల్ %1% అనునది "
-"దోషము గురించి మరితం సమాచారం కలిగివుండగలదు."
+"దోషము గురించి మరితం సమాచారం "
+"కలిగివుండగలదు."
 
-#: ../src/preferencesdialog.cpp:1323
-#| msgid "Error printing note"
+#: ../src/preferencesdialog.cpp:1380
 msgid "Error connecting"
 msgstr "అనుసంధానంలో దోషం"
 
-#: ../src/preferencesdialog.cpp:1387
+#: ../src/preferencesdialog.cpp:1443
 msgid "Version:"
 msgstr "వర్షన్:"
 
-#: ../src/preferencesdialog.cpp:1392
+#: ../src/preferencesdialog.cpp:1446
 msgid "Author:"
 msgstr "మూలకర్త:"
 
-#: ../src/preferencesdialog.cpp:1398
+#: ../src/preferencesdialog.cpp:1451
 msgid "Copyright:"
 msgstr "కాపీరైట్:"
 
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:377
-#: ../src/searchnoteswidget.cpp:1017
-msgid "Notes"
-msgstr "నోట్లు"
+#: ../src/recentchanges.cpp:129
+msgid "All Notes"
+msgstr "అన్ని నోట్లు"
 
-#: ../src/recentchanges.cpp:130
-#| msgid "_New"
+#: ../src/recentchanges.cpp:135
 msgid "New"
 msgstr "కొత్త"
 
-#: ../src/recentchanges.cpp:465
+#: ../src/recentchanges.cpp:156
+msgid "Search"
+msgstr "శోధించుము"
+
+#: ../src/recentchanges.cpp:197
+msgid "Find _Next"
+msgstr "తరువాతి కనుగొనుము (_N)"
+
+#: ../src/recentchanges.cpp:205
+msgid "Find _Previous"
+msgstr "ముందలిది కునుగొనుము (_P)"
+
+#: ../src/recentchanges.cpp:673
 msgid "_Close"
 msgstr "మూయుము (_C)"
 
-#: ../src/searchnoteswidget.cpp:131
-#| msgid "_Open..."
+#: ../src/remotecontrolproxy.cpp:57
+#, c-format
+msgid "Failed to load D-Bus interface %s: %s"
+msgstr "D-Bus ఇంటర్ఫేస్ %s లోడు చేయుటకు విఫలమైంది: %s"
+
+#: ../src/searchnoteswidget.cpp:137
 msgid "_Open"
 msgstr "తెరువుము (_O)"
 
-#: ../src/searchnoteswidget.cpp:134
+#: ../src/searchnoteswidget.cpp:140
 msgid "Open In New _Window"
 msgstr "కొత్త విండో నందు తెరువుము (_W)"
 
-#: ../src/searchnoteswidget.cpp:138
-msgid "_Delete"
-msgstr "తొలగించు (_D)"
+#: ../src/searchnoteswidget.cpp:150
+#| msgid "User_name:"
+msgid "Re_name..."
+msgstr "పేరుమార్చు (_n)..."
 
-#: ../src/searchnoteswidget.cpp:141
-#| msgid "Delete Note_book"
-msgid "_Delete Notebook"
-msgstr "నోటుపుస్తకం తొలగించుము (_D)"
-
-#: ../src/searchnoteswidget.cpp:678
+#: ../src/searchnoteswidget.cpp:659
 msgid "Note"
 msgstr "నోట్"
 
-#: ../src/searchnoteswidget.cpp:700
-msgid "Last Changed"
-msgstr "చివరగా మార్చబడిన"
+#: ../src/searchnoteswidget.cpp:681
+msgid "Modified"
+msgstr "సవరించిన"
 
-#: ../src/searchnoteswidget.cpp:1038
+#: ../src/searchnoteswidget.cpp:1000
+msgid "Notes"
+msgstr "నోట్లు"
+
+#: ../src/searchnoteswidget.cpp:1019
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -1945,196 +2367,264 @@ msgstr ""
 "ఎంపికచేసిన నోట్‌బుక్ నందు ఏ ఫలితాలు కనబడలేదు.\n"
 "అన్ని గమనికల నందు అన్వేషించుటకు యిక్కడ నొక్కండి."
 
-#: ../src/searchnoteswidget.cpp:1042
+#: ../src/searchnoteswidget.cpp:1023
 msgid "Click here to search across all notebooks"
 msgstr "అన్ని నోట్‌బుక్స్ నందు అన్వేషించుటకు యిక్కడ నొక్కండి"
 
-#: ../src/searchnoteswidget.cpp:1066
+#: ../src/searchnoteswidget.cpp:1044
 msgid "Matches"
 msgstr "పోలికలు"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1115
-#| msgid "%1% match"
-#| msgid_plural "%1% matches"
+#: ../src/searchnoteswidget.cpp:1096
 msgid "Title match"
 msgstr "శీర్షిక పోలిక"
 
-#: ../src/searchnoteswidget.cpp:1119
+#: ../src/searchnoteswidget.cpp:1100
 msgid "%1% match"
 msgid_plural "%1% matches"
 msgstr[0] "%1% పోలిక"
 msgstr[1] "%1% పోలికలు"
 
-#: ../src/searchnoteswidget.cpp:1353
+#: ../src/searchnoteswidget.cpp:1311
+#| msgid "_New Note"
+msgid "_New"
+msgstr "కొత్త (_N)"
+
+#: ../src/searchnoteswidget.cpp:1340
 msgid "_Open Template Note"
 msgstr "మాదిరి నోటును తెరువుము (_O)"
 
-#: ../src/searchnoteswidget.cpp:1361
-#| msgid "New Note_book..."
-msgid "_New Notebook"
-msgstr "కొత్త నోటుపుస్తకం (_N)"
+#: ../src/searchnoteswidget.cpp:1351
+#| msgid "_New notebook..."
+msgid "_New..."
+msgstr "కొత్త(_N)..."
 
-#: ../src/sharp/addinstreemodel.cpp:93
+#: ../src/searchnoteswidget.cpp:1487 ../src/searchnoteswidget.cpp:1500
+#: ../src/searchnoteswidget.cpp:1511
+#, c-format
+msgid "Failed to parse setting %s (Value: %s):"
+msgstr "అమరిక %s (విలువ: %s) పార్స్ చేయుటకు విఫలమైంది:"
+
+#: ../src/searchnoteswidget.cpp:1488
+msgid "Expected format 'column:order'"
+msgstr "ఊహించిన ఫార్మాట్ 'column:order'"
+
+#: ../src/searchnoteswidget.cpp:1501
+#, c-format
+msgid "Unrecognized column %s"
+msgstr "గుర్తించని నిలువువరుస %s"
+
+#: ../src/searchnoteswidget.cpp:1512
+#, c-format
+msgid "Unrecognized order %s"
+msgstr "గుర్తించని క్రమం %s"
+
+#: ../src/sharp/addinstreemodel.cpp:109
 msgid "Name"
 msgstr "నామము"
 
-#: ../src/sharp/addinstreemodel.cpp:105
-#| msgid "Version:"
+#: ../src/sharp/addinstreemodel.cpp:121
 msgid "Version"
 msgstr "వర్షన్"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:138
+#: ../src/sharp/addinstreemodel.cpp:155
 msgid "Formatting"
 msgstr "ఫార్మేటింగ్"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:141
+#: ../src/sharp/addinstreemodel.cpp:158
 msgid "Desktop integration"
 msgstr "డెస్కుటాప్ యింటిగ్రేషన్"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:144
-#| msgid "T_ools"
+#: ../src/sharp/addinstreemodel.cpp:161
 msgid "Tools"
 msgstr "సాధనములు"
 
 #. TRANSLATORS: Addin category is unknown.
-#: ../src/sharp/addinstreemodel.cpp:151
+#: ../src/sharp/addinstreemodel.cpp:168
 msgid "Unknown"
 msgstr "తెలియని"
+
+#: ../src/sharp/modulemanager.cpp:62
+#, c-format
+#| msgid "Error saving icon"
+msgid "Error loading %s"
+msgstr "%s లోడు చేయుటలో దోషం"
+
+#: ../src/sharp/modulemanager.cpp:69
+#, c-format
+msgid "Error getting symbol dynamic_module_instanciate: %s"
+msgstr "dynamic_module_instanciate చిహ్నం పొందుటలో దోషం: %s"
+
+#: ../src/sharp/xmlreader.cpp:195
+#, c-format
+msgid "XML error: %s"
+msgstr "XML దోషం: %s"
+
+#: ../src/sharp/xmlreader.cpp:195
+msgid "unknown parse error"
+msgstr "తెలియని పార్స్ దోషము"
 
 #: ../src/sharp/xmlwriter.cpp:40
 msgid "%1% failed"
 msgstr "%1% విఫలమైనది"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:116
+#: ../src/sharp/xsltransform.cpp:67
+msgid "NULL stylesheet, please fill a bug"
+msgstr "NULL స్టైల్‌షీట్, దయచేసి బగ్ ఫైల్ చేయండి"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:369
+#, c-format
+msgid ""
+"Exception during server cleanup while committing. Server integrity is OK, "
+"but there may be some excess files floating around.  Here's the error: %s\n"
+msgstr ""
+"కమిట్ చేయునప్పుడు సేవిక శుభ్రపరచుటలో ఆక్షేపణ. సేవిక ఇంటిగ్రిటీ బానేవుంది, "
+"అయితే అక్కడ కొన్ని అదనపు ఫైళ్ళు ఉన్నాయి. ఇది దోషం: %s\n"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:609
+#, c-format
+#| msgid "Error connecting to the synchronization service.  Please try again."
+msgid "Error deleting the old synchronization lock \"%s\": %s"
+msgstr "పాత సింక్రొనైజేషన్ లాక్ \"%s\" తొలగించుటలో దోషం: %s"
+
+#: ../src/synchronization/fusesyncserviceaddin.cpp:115
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1% correctly installed and configured"
 msgstr ""
 "ఈ సింక్రొనైజేషన్ యాడ్‌యిన్‌కు మీ కంప్యూటర్‌పై తోడ్పాటులేదు. FUSE మరియు %1% "
-"సరిగా సంస్థాపించబడునట్లు మరియు ఆకృతీకరించబడునట్లు చూసుకోండి"
+"సరిగా సంస్థాపించబడునట్లు మరియు "
+"ఆకృతీకరించబడునట్లు చూసుకోండి"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:159
-#| msgid "Could not save the icon file."
+#: ../src/synchronization/fusesyncserviceaddin.cpp:158
 msgid "Could not read testfile."
 msgstr "టెస్టుఫైలును చదువలేదు."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:168
+#: ../src/synchronization/fusesyncserviceaddin.cpp:167
 msgid "Write test failed."
 msgstr "వ్రాత పరీక్ష విఫలమైంది."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:197
+#: ../src/synchronization/fusesyncserviceaddin.cpp:196
 msgid "Timeout connecting to server."
 msgstr "సమయంముగిసింది సేవికకు అనుసంధానమౌతోంది."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:203
-#| msgid "Error printing note"
+#: ../src/synchronization/fusesyncserviceaddin.cpp:202
 msgid "Error connecting to server."
 msgstr "సేవికకు అనుసంధానం అగుటలో దోషం."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:216
+#: ../src/synchronization/fusesyncserviceaddin.cpp:215
 msgid "FUSE could not be enabled."
 msgstr "FUSE చేతనం కాలేదు."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:247
-#| msgid ""
-#| "The port to use when connecting to the synchronization server via SSH."
+#: ../src/synchronization/fusesyncserviceaddin.cpp:246
 msgid "An error ocurred while connecting to the specified server"
 msgstr "తెలిపిన సేవికకు అనుసంధానం కావుటలో వొక దోషం యెదురైంది"
 
-#: ../src/synchronization/syncdialog.cpp:65
+#. TRANSLATORS: %s is file
+#: ../src/synchronization/gnotesyncclient.cpp:165
+#, c-format
+msgid "Unparsable last-sync-date element in %s"
+msgstr "%s నందు పార్స్ చేయలేని లాస్ట్-సింక్-డేట్ ఎలిమెంట్"
+
+#. TRANSLATORS: %s is file
+#: ../src/synchronization/gnotesyncclient.cpp:175
+#, c-format
+msgid "Unparsable last-sync-rev element in %s"
+msgstr "%s నందు పార్స్‌చేయలేని last-sync-rev మూలకం"
+
+#: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
 msgstr "గమనిక విభేదం"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:70
+#: ../src/synchronization/syncdialog.cpp:69
 msgid " (old)"
 msgstr " (పాత)"
 
-#: ../src/synchronization/syncdialog.cpp:112
+#: ../src/synchronization/syncdialog.cpp:114
 msgid "Rename local note:"
 msgstr "స్థానిక నోట్ పునఃనామకరణచేయి:"
 
-#: ../src/synchronization/syncdialog.cpp:119
+#: ../src/synchronization/syncdialog.cpp:121
 msgid "Update links in referencing notes"
 msgstr "లింకులను రిఫరెన్సింగ్ గమనికలనందు నవీకరించు"
 
-#: ../src/synchronization/syncdialog.cpp:126
+#: ../src/synchronization/syncdialog.cpp:127
 msgid "Overwrite local note"
 msgstr "స్థానిక గమనిక దిద్దివ్రాయి"
 
-#: ../src/synchronization/syncdialog.cpp:130
+#: ../src/synchronization/syncdialog.cpp:131
 msgid "Always perform this action"
 msgstr "ఈ చర్యను యెల్లప్పుడు జరుపు"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:136
+#: ../src/synchronization/syncdialog.cpp:137
 msgid "Note conflict detected"
 msgstr "గమనిక విభేంద గుర్తించబడెను"
 
-#: ../src/synchronization/syncdialog.cpp:138
+#: ../src/synchronization/syncdialog.cpp:139
 msgid ""
 "The server version of \"%1%\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
 "\"%1%\" యొక్క సేవిక వర్షన్ స్థానిక గమనికతో విభేదిస్తోంది. మీరు మీ స్థానిక "
-"గమనికతో యేమి చేయాలని అనుకొనుచున్నారు?"
+"గమనికతో యేమి చేయాలని "
+"అనుకొనుచున్నారు?"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:290
+#: ../src/synchronization/syncdialog.cpp:296
 msgid "Details"
 msgstr "వివరములు"
 
-#: ../src/synchronization/syncdialog.cpp:329
+#: ../src/synchronization/syncdialog.cpp:338
 msgid "Status"
 msgstr "స్థితి"
 
-#: ../src/synchronization/syncdialog.cpp:474
+#: ../src/synchronization/syncdialog.cpp:483
 msgid "Acquiring sync lock..."
 msgstr "సింక్ లాక్ పొందుతోంది..."
 
-#: ../src/synchronization/syncdialog.cpp:477
+#: ../src/synchronization/syncdialog.cpp:486
 msgid "Committing changes..."
 msgstr "మార్పులను సమర్పిస్తోంది..."
 
-#: ../src/synchronization/syncdialog.cpp:480
-#| msgid "Synchronize Notes"
+#: ../src/synchronization/syncdialog.cpp:489
 msgid "Synchronizing Notes"
 msgstr "గమనికలను సింక్రొనైజ్ చేయుట"
 
-#: ../src/synchronization/syncdialog.cpp:481
-#| msgid "Start synchronizing notes"
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "Synchronizing your notes..."
 msgstr "మీ నోట్లను సింక్రొనైజ్ చేయుట..."
 
-#: ../src/synchronization/syncdialog.cpp:482
+#: ../src/synchronization/syncdialog.cpp:491
 msgid "This may take a while, kick back and enjoy!"
 msgstr "ఇది కొంత సమయం తీసుకోవచ్చు, వెనక్కు పంపు ఆనందించు!"
 
-#: ../src/synchronization/syncdialog.cpp:484
+#: ../src/synchronization/syncdialog.cpp:493
 msgid "Connecting to the server..."
 msgstr "సేవికకు అనుసంధానమౌతోంది..."
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: ../src/synchronization/syncdialog.cpp:499
 msgid "Deleting notes off of the server..."
 msgstr "సేవిక యొక్క గమనికలను తొలగిస్తోంది..."
 
-#: ../src/synchronization/syncdialog.cpp:494
+#: ../src/synchronization/syncdialog.cpp:503
 msgid "Downloading new/updated notes..."
 msgstr "కొత్త/నవీకృత గమనికలను డౌన్‌లోడుచేయి..."
 
-#: ../src/synchronization/syncdialog.cpp:506
+#: ../src/synchronization/syncdialog.cpp:515
 msgid "Server Locked"
 msgstr "సేవిక లాకైంది"
 
-#: ../src/synchronization/syncdialog.cpp:507
+#: ../src/synchronization/syncdialog.cpp:516
 msgid "Server is locked"
 msgstr "సేవిక లాకైంది"
 
-#: ../src/synchronization/syncdialog.cpp:508
+#: ../src/synchronization/syncdialog.cpp:517
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2142,120 +2632,107 @@ msgstr ""
 "మీ యితర కంప్యూటర్లలో వొకటి ప్రస్తుతం సింక్రొనైజ్ అవుతోంది. దయచేసి 2 నిమిషాలు "
 "ఆగి మరలా ప్రయత్నించు."
 
-#: ../src/synchronization/syncdialog.cpp:512
+#: ../src/synchronization/syncdialog.cpp:521
 msgid "Preparing to download updates from server..."
 msgstr "సేవికనుండి నవీకరణలను డౌనులోడ్ చేయుటకు సిద్దమౌతోంది..."
 
-#: ../src/synchronization/syncdialog.cpp:515
+#: ../src/synchronization/syncdialog.cpp:524
 msgid "Preparing to upload updates to server..."
 msgstr "నవీకరణలను సేవికకు అప్‌లోడ్ చేయుటకు సిద్దమౌతోంది..."
 
-#: ../src/synchronization/syncdialog.cpp:518
+#: ../src/synchronization/syncdialog.cpp:527
 msgid "Uploading notes to server..."
 msgstr "గమనికలను సేవికకు అప్‌లోడ్ చేస్తోంది..."
 
-#: ../src/synchronization/syncdialog.cpp:521
-#| msgid "Synchronization Client ID"
+#: ../src/synchronization/syncdialog.cpp:530
 msgid "Synchronization Failed"
 msgstr "సింక్రొనైజేషన్ విఫలమైంది"
 
-#: ../src/synchronization/syncdialog.cpp:522
-#| msgid "Start synchronizing notes"
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "Failed to synchronize"
 msgstr "సింక్రొనైజ్ అగుటకు విఫలమైంది"
 
-#: ../src/synchronization/syncdialog.cpp:523
+#: ../src/synchronization/syncdialog.cpp:532
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "నోట్లను సింక్రొనైజ్ చేయలేదు. కింది వివరాలను పరిశీలించు మరలా ప్రయత్నించు."
 
-#: ../src/synchronization/syncdialog.cpp:529
-#| msgid "Synchronization Client ID"
+#: ../src/synchronization/syncdialog.cpp:538
 msgid "Synchronization Complete"
 msgstr "సింక్రొనైజేషన్ పూర్తైనది"
 
-#: ../src/synchronization/syncdialog.cpp:530
-#| msgid "Synchronization Client ID"
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "Synchronization is complete"
 msgstr "సింక్రొనైజేషన్ పూర్తైనది"
 
-#: ../src/synchronization/syncdialog.cpp:531
-#| msgid "%1% Notebook Template"
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "%1% note updated."
 msgid_plural "%1% notes updated."
 msgstr[0] "%1% గమనిక నవీకరించబడింది."
 msgstr[1] "%1% గమనికలు నవీకరించబడెను."
 
-#: ../src/synchronization/syncdialog.cpp:532
+#: ../src/synchronization/syncdialog.cpp:541
 msgid "Your notes are now up to date."
 msgstr "మీ గమనికలు తాజగా వున్నాయి."
 
-#: ../src/synchronization/syncdialog.cpp:537
-#| msgid "Synchronization Client ID"
+#: ../src/synchronization/syncdialog.cpp:546
 msgid "Synchronization Canceled"
 msgstr "సింక్రొనైజేషన్ రద్దైనది"
 
-#: ../src/synchronization/syncdialog.cpp:538
-#| msgid "Synchronization Client ID"
+#: ../src/synchronization/syncdialog.cpp:547
 msgid "Synchronization was canceled"
 msgstr "సింక్రొనైజేషన్ రద్దైనది"
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:548
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "మీరు సింక్రొనైజేషన్ రద్దుచేసారు. మీరు విండో యిప్పుడు మూయవచ్చు."
 
-#: ../src/synchronization/syncdialog.cpp:543
-#| msgid "Synchronization Client ID"
+#: ../src/synchronization/syncdialog.cpp:552
 msgid "Synchronization Not Configured"
 msgstr "సింక్రొనైజేషన్ ఆకృతీకరించబడలేదు"
 
-#: ../src/synchronization/syncdialog.cpp:544
-#| msgid "Synchronization Client ID"
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Synchronization is not configured"
 msgstr "సింక్రొనైజేషన్ ఆకృతీకరించబడలేదు"
 
-#: ../src/synchronization/syncdialog.cpp:545
+#: ../src/synchronization/syncdialog.cpp:554
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "దయచేసి అభీష్టాల డైలాగ్ నందు సింక్రొనైజేషన్ ఆకృతీకరించు."
 
-#: ../src/synchronization/syncdialog.cpp:549
-#| msgid "SSHFS Synchronization Server Port"
+#: ../src/synchronization/syncdialog.cpp:558
 msgid "Synchronization Service Error"
 msgstr "సింక్రొనైజేషన్ సేవ దోషం"
 
-#: ../src/synchronization/syncdialog.cpp:550
-#| msgid "Ser_vice:"
+#: ../src/synchronization/syncdialog.cpp:559
 msgid "Service error"
 msgstr "సేవ దోషం"
 
-#: ../src/synchronization/syncdialog.cpp:551
-#| msgid ""
-#| "The port to use when connecting to the synchronization server via SSH."
+#: ../src/synchronization/syncdialog.cpp:560
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "సింక్రొనైజేషన్ సేవికకు అనుసంధానం కావుటలో దోషం. దయచేసి మరలా ప్రయత్నించు."
 
-#: ../src/synchronization/syncdialog.cpp:565
+#: ../src/synchronization/syncdialog.cpp:574
 msgid "Deleted locally"
 msgstr "స్థానికంగా తొలగించెను"
 
-#: ../src/synchronization/syncdialog.cpp:568
+#: ../src/synchronization/syncdialog.cpp:577
 msgid "Deleted from server"
 msgstr "సేవిక నుండి తొలగించెను"
 
-#: ../src/synchronization/syncdialog.cpp:571
+#: ../src/synchronization/syncdialog.cpp:580
 msgid "Updated"
 msgstr "నవీకరించిన"
 
-#: ../src/synchronization/syncdialog.cpp:574
+#: ../src/synchronization/syncdialog.cpp:583
 msgid "Added"
 msgstr "జతచేసెను"
 
-#: ../src/synchronization/syncdialog.cpp:577
+#: ../src/synchronization/syncdialog.cpp:586
 msgid "Uploaded changes to server"
 msgstr "మార్పులను సేవికకు అప్‌లోడ్‌చేసెను"
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:589
 msgid "Uploaded new note to server"
 msgstr "కొత్త నోట్ సేవికకు అప్‌లోడ్‌ చేసెను"
 
@@ -2263,13 +2740,41 @@ msgstr "కొత్త నోట్ సేవికకు అప్‌లోడ
 msgid "Synchronize Notes"
 msgstr "నోట్లను ఏకకాలం చేయుము"
 
-#: ../src/synchronization/syncutils.cpp:146
-#: ../src/synchronization/syncutils.cpp:178
+#: ../src/synchronization/syncmanager.cpp:85
+#: ../src/synchronization/syncmanager.cpp:102
+#: ../src/synchronization/syncmanager.cpp:575
+#, c-format
+msgid "Report a bug. Cast failed: %s"
+msgstr "బగ్ నివేదించు. కాస్ట్ విఫలమైంది: %s"
+
+#: ../src/synchronization/syncmanager.cpp:148
+#, c-format
+msgid "Error cleaning up addin after synchronization: %s"
+msgstr "సింక్రోనైజేషన్ తరువాత ఏడిన్ శుభ్రపరచుటలో దోషం: %s"
+
+#: ../src/synchronization/syncmanager.cpp:173
+#, c-format
+msgid "Exception while creating SyncServer: %s"
+msgstr "సింక్‌సర్వర్ సృష్టించుటలో ఆక్షేపణ: %s"
+
+#. top-level try
+#: ../src/synchronization/syncmanager.cpp:377
+#, c-format
+#| msgid ""
+#| "Saving configuration to the GNOME keyring failed with the following "
+#| "message:\n"
+#| "\n"
+#| "%1%"
+msgid "Synchronization failed with the following exception: %s"
+msgstr "సింక్రోనైజేషన్ కింది ఆక్షేపణతో విఫలమైంది: %s"
+
+#: ../src/synchronization/syncutils.cpp:148
+#: ../src/synchronization/syncutils.cpp:180
 msgid "Could not enable FUSE"
 msgstr "FUSE చేతనం చేయలేక పోయింది"
 
-#: ../src/synchronization/syncutils.cpp:147
-#: ../src/synchronization/syncutils.cpp:179
+#: ../src/synchronization/syncutils.cpp:149
+#: ../src/synchronization/syncutils.cpp:181
 msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
@@ -2277,14 +2782,13 @@ msgstr ""
 "FUSE మాడ్యూల్ లోడ్ కాలేకపోయింది. అది సరిగా సంస్థాపించబడునట్లు చూసుకొని మరలా "
 "తిరిగి ప్రయత్నించు."
 
-#: ../src/synchronization/syncutils.cpp:155
-#| msgid "_Enable"
+#: ../src/synchronization/syncutils.cpp:157
 msgid "Enable FUSE?"
 msgstr "FUSE చేతనంచేయాలా?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
-#: ../src/synchronization/syncutils.cpp:158
+#: ../src/synchronization/syncutils.cpp:160
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
@@ -2295,26 +2799,22 @@ msgstr ""
 "మీరు యెంచుకొనిన సింక్రొనైజేషన్‌కు FUSE మాడ్యూల్ లోడై కావాలి.\n"
 "\n"
 "భవిష్యత్తులో యీ ప్రామ్ట్ పొందకుండా వుండటానికి, మీరు FUSE ను ప్రారంభంనందే "
-"లోడుచేయాలి. \"modprobe fuse\" ను /etc/init.d/boot.local కు లేదా \"fuse\" ను /"
-"etc/modules కు జతచేయి."
+"లోడుచేయాలి. \"modprobe "
+"fuse\" ను /etc/init.d/boot.local కు లేదా \"fuse\" ను /etc/modules కు జతచేయి."
 
-#: ../src/tray.cpp:55
+#: ../src/tray.cpp:54
 msgid "Take notes"
 msgstr "గమనికలను తిసుకొనుము"
 
-#: ../src/tray.cpp:165
+#: ../src/tray.cpp:167
 msgid " (new)"
 msgstr " (కొత్త)"
 
-#: ../src/tray.cpp:466
-msgid "_Help"
-msgstr "సహాయం (_H)"
-
-#: ../src/tray.cpp:471
+#: ../src/tray.cpp:458
 msgid "_About Gnote"
 msgstr "Gnote గురించి (_A)"
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:144
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2322,82 +2822,68 @@ msgstr ""
 "\"Gnote మాన్యువల్\" కనుగొనబడలేదు.  మీ సంస్థాపన సరిగ్గా పూర్తైనదేమో దయచేసి "
 "సరిచూసుకొనండి."
 
-#: ../src/utils.cpp:145
+#: ../src/utils.cpp:152
 msgid "Help not found"
 msgstr "సహాయము దొరకలేదు"
 
-#: ../src/utils.cpp:178
+#: ../src/utils.cpp:185
 msgid "Cannot open location"
 msgstr "స్థానము తెరచుటకు వీలుకాదు"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:193
+#: ../src/utils.cpp:215
 msgid "Today, %1%"
 msgstr "ఈరోజు, %1%"
 
-#: ../src/utils.cpp:194
+#: ../src/utils.cpp:216
 msgid "Today"
 msgstr "ఈరోజు"
 
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:200
+#: ../src/utils.cpp:222
 msgid "Yesterday, %1%"
 msgstr "నిన్న, %1%"
 
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:223
 msgid "Yesterday"
 msgstr "నిన్న"
 
-#. TRANSLATORS: 2 or more days ago, up to one week.
-#. First argument is number of days, second is time.
-#: ../src/utils.cpp:210
-msgid "%1% day ago, %2%"
-msgid_plural "%1% days ago, %2%"
-msgstr[0] "%1% రోజు క్రితం, %2%"
-msgstr[1] "%1% రోజుల క్రితం, %2%"
-
-#. TRANSLATORS: 2 or more days ago, up to one week.
-#. Argument is number of days.
-#: ../src/utils.cpp:216
-msgid "%1% day ago"
-msgid_plural "%1% days ago"
-msgstr[0] "%1% రోజు క్రితంo"
-msgstr[1] "%1% రోజుల క్రితం"
-
 #. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:229
 msgid "Tomorrow, %1%"
 msgstr "మరునాడు, %1%"
 
-#: ../src/utils.cpp:225
+#: ../src/utils.cpp:230
 msgid "Tomorrow"
 msgstr "మరునాడు"
 
-#. TRANSLATORS: In 2 or more days, up to one week.
-#. First argument is number of days, second is time.
+#. TRANSLATORS: date in current year.
 #: ../src/utils.cpp:234
-msgid "In %1% day, %2%"
-msgid_plural "In %1% days, %2%"
-msgstr[0] "%1% రోజులో, %2%"
-msgstr[1] "%1% రోజులలో, %2%"
+msgid "%b %d"
+msgstr "%b %d"
 
-#. TRANSLATORS: In 2 or more days, up to one week.
-#. Argument is number of days.
-#: ../src/utils.cpp:240
-msgid "In %1% day"
-msgid_plural "In %1% days"
-msgstr[0] "%1% రోజు"
-msgstr[1] "%1% రోజులలో"
+#. TRANSLATORS: first argument is date, second is time.
+#: ../src/utils.cpp:237 ../src/utils.cpp:249
+#| msgid "In %1% day, %2%"
+#| msgid_plural "In %1% days, %2%"
+msgid "%1%, %2%"
+msgstr "%1%, %2%"
 
-#: ../src/utils.cpp:251
+#: ../src/utils.cpp:242
 msgid "No Date"
 msgstr "తేది లేదు"
 
-#: ../src/watchers.cpp:211
+#. TRANSLATORS: date in other than current year.
+#: ../src/utils.cpp:246
+#| msgid "%A, %B %d %Y"
+msgid "%b %d %Y"
+msgstr "%b %d %Y"
+
+#: ../src/watchers.cpp:200
 msgid "(Untitled %1%)"
 msgstr "(శీర్షికలేని %1%)"
 
-#: ../src/watchers.cpp:242
+#: ../src/watchers.cpp:231
 msgid ""
 "A note with the title <b>%1%</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2406,17 +2892,124 @@ msgstr ""
 "కొరకు దయచేసి వేరొక "
 "నామమును యెంచుకొనుము."
 
-#: ../src/watchers.cpp:256
+#: ../src/watchers.cpp:246
 msgid "Note title taken"
 msgstr "నోటు శీర్షిక తీసుకొనబడింది"
 
-#: ../src/watchers.cpp:581
+#: ../src/watchers.cpp:309
+msgid "Check spelling"
+msgstr "స్పెల్లింగ్ ను పరిశీలించుము"
+
+#: ../src/watchers.cpp:310
+#| msgid "Use tools on this note"
+msgid "Check spelling in this note"
+msgstr "ఈ నోట్ నందు స్పెల్లింగ్ పరిశీలించు"
+
+#: ../src/watchers.cpp:674
 msgid "_Copy Link Address"
 msgstr "లింకు చిరునామా నకలుతీయుము (_C)"
 
-#: ../src/watchers.cpp:587
+#: ../src/watchers.cpp:680
 msgid "_Open Link"
 msgstr "లింకు తెరువుము (_O)"
+
+#~ msgid "Saved horizontal position of Search window"
+#~ msgstr "శోధన విండోయొక్క హారిజాంటల్ స్థానము దాయబడింది"
+
+#~ msgid "Determines X coordinate of Search window; stored on Gnote exit."
+#~ msgstr "శోధన విండోయొక్క X కోఆర్డినేట్‌ను నిర్ధారిస్తుంది; Gnote నందు దాచి నిష్క్రమిస్తుంది."
+
+#~ msgid "Saved vertical position of Search window"
+#~ msgstr "శోధన విండోయొక్క వర్టికల్ స్థానము దాయబడింది"
+
+#~ msgid "Determines Y coordinate of Search window; stored on Gnote exit."
+#~ msgstr "శోధన విండోయొక్క Y కోఆర్డినేట్ నిర్ధారిస్తుంది; Gnote నందు దాచి నిష్క్రమిస్తుంది."
+
+#~ msgid "Type the name of the notebook you'd like to create."
+#~ msgstr "మీరు సృష్టించాలి అనుకొనుచున్న నోటుపుస్తకం నామమును టైపుచేయుము."
+
+#~| msgid "New Note_book..."
+#~ msgid "New Note_book"
+#~ msgstr "కొత్త నోటుపుస్తకం (_b)"
+
+#~| msgid "Unfiled Notes"
+#~ msgid "Pinned Notes"
+#~ msgstr "పిన్డ్ గమనికలు"
+
+#~ msgid "Find in This Note"
+#~ msgstr "ఈ నోట్ ‌నందు కనుగొనుము"
+
+#~ msgid "_Find in This Note"
+#~ msgstr "ఈ నోట్‌నందు కనుగొనుము (_F)"
+
+#~| msgid "Print"
+#~ msgid "Pin"
+#~ msgstr "పిన్"
+
+#~ msgid "Link selected text to a new note (Ctrl-L)"
+#~ msgstr "ఎంపికకాబడిన పాఠ్యమును కొత్త నోట్‌కు లింకుచేయుము (Ctrl-L)"
+
+#~ msgid "_Text"
+#~ msgstr "పాఠ్యము (_T)"
+
+#~ msgid "T_ools"
+#~ msgstr "సాధనములు (_o)"
+
+#~ msgid "_Find..."
+#~ msgstr "కనుగొనుము... (_F)"
+
+#~ msgid "_Next"
+#~ msgstr "తరువాత (_N)"
+
+#~ msgid "_Previous"
+#~ msgstr "ముందలి (_P)"
+
+#~ msgid "Increase Font Size"
+#~ msgstr "ఫాంటు పరిమాణము పెంచుము"
+
+#~ msgid "Decrease Font Size"
+#~ msgstr "ఫాంటు పరిమాణము తగ్గించుము"
+
+#~ msgid "Font Size"
+#~ msgstr "ఫాంటు పరిమాణము"
+
+#~ msgid "Add-ins"
+#~ msgstr "యాడ్-యిన్స్"
+
+#~ msgid "Open \"Search _All Notes\""
+#~ msgstr "\"అన్ని నోట్లు వెతుకు\" తెరువుము (_A)"
+
+#~ msgid "Automaticall_y Sync in Background Every"
+#~ msgstr "బ్యాక్‌గ్రౌండ్ నందు స్వయంచాలకంగా సింక్ అవ్వుము (_y)"
+
+#~ msgid "Minutes"
+#~ msgstr "నిమిషాలు"
+
+#~| msgid "Delete Note_book"
+#~ msgid "_Delete Notebook"
+#~ msgstr "నోటుపుస్తకం తొలగించుము (_D)"
+
+#~ msgid "Last Changed"
+#~ msgstr "చివరగా మార్చబడిన"
+
+#~| msgid "New Note_book..."
+#~ msgid "_New Notebook"
+#~ msgstr "కొత్త నోటుపుస్తకం (_N)"
+
+#~ msgid "%1% day ago, %2%"
+#~ msgid_plural "%1% days ago, %2%"
+#~ msgstr[0] "%1% రోజు క్రితం, %2%"
+#~ msgstr[1] "%1% రోజుల క్రితం, %2%"
+
+#~ msgid "%1% day ago"
+#~ msgid_plural "%1% days ago"
+#~ msgstr[0] "%1% రోజు క్రితంo"
+#~ msgstr[1] "%1% రోజుల క్రితం"
+
+#~ msgid "In %1% day"
+#~ msgid_plural "In %1% days"
+#~ msgstr[0] "%1% రోజు"
+#~ msgstr[1] "%1% రోజులలో"
 
 #~ msgid "Accessories"
 #~ msgstr "అనుబంధితాలు"
@@ -2461,9 +3054,6 @@ msgstr "లింకు తెరువుము (_O)"
 #~ msgid "Cannot create new note"
 #~ msgstr "కొత్త నోట్ సృష్టించుటకు వీలుకాదు"
 
-#~ msgid "Run Gnote as a GNOME panel applet."
-#~ msgstr "GNOME ప్యానల్ ఆప్లెట్ వలె Gnoteను నడుపుము."
-
 #~ msgid "Editing"
 #~ msgstr "సరికూర్చుచున్నది"
 
@@ -2473,28 +3063,17 @@ msgstr "లింకు తెరువుము (_O)"
 #~ msgid "Clos_e All Notes"
 #~ msgstr "అన్ని నోట్లను మూయుము (_e)"
 
-#~ msgid "Search"
-#~ msgstr "శోధించుము"
-
 #~ msgid "Search your notes (Ctrl-Shift-F)"
 #~ msgstr "మీ నోట్లను శోధించుము (Ctrl-Shift-F)"
 
 #~ msgid "_Find:"
 #~ msgstr "కనుగొనుము (_F):"
 
-#~ msgid "Search All Notes"
-#~ msgstr "అన్ని నోట్లను శోధించుము"
-
 #~ msgid "C_ase Sensitive"
 #~ msgstr "చిన్నిపెద్ద అక్షరములతేడా (_a)"
 
 #~ msgid "_Search:"
 #~ msgstr "శోధించుము (_S):"
-
-#~ msgid "Total: %1% note"
-#~ msgid_plural "Total: %1% notes"
-#~ msgstr[0] "మొత్తము: %1% నోట్"
-#~ msgstr[1] "మొత్తము:%1% నోట్లు"
 
 #~ msgid "Matches: %1% note"
 #~ msgid_plural "Matches: %1% notes"

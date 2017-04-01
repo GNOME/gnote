@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2015 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,8 @@
 namespace gnote {
   namespace notebooks {
 
-    NotebookMenuItem::NotebookMenuItem(Gtk::RadioButtonGroup & group, 
-                                       const Note::Ptr & note, const Notebook::Ptr & notebook)
-      : Gtk::RadioMenuItem(group, notebook ? notebook->get_name() : _("No notebook"))
+    NotebookMenuItem::NotebookMenuItem(const Note::Ptr & note, const Notebook::Ptr & notebook)
+      : Gtk::CheckMenuItem(notebook ? notebook->get_name() : _("No notebook"))
       , m_note(note)
       , m_notebook(notebook)
     {

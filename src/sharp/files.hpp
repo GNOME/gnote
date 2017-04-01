@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -25,20 +26,26 @@
 #ifndef __SHARP_FILES_HPP_
 #define __SHARP_FILES_HPP_
 
-#include <string>
+#include <vector>
+
+#include <glibmm/ustring.h>
 
 namespace sharp {
 
-  bool file_exists(const std::string & p);
-  void file_delete(const std::string & p);
-  void file_move(const std::string & from, const std::string & to);
+  bool file_exists(const Glib::ustring & p);
+  void file_delete(const Glib::ustring & p);
+  void file_move(const Glib::ustring & from, const Glib::ustring & to);
   /** return the basename of the file path */
-  std::string file_basename(const std::string & p);
+  Glib::ustring file_basename(const Glib::ustring & p);
   /** return the directory from the file path */
-  std::string file_dirname(const std::string & p);
+  Glib::ustring file_dirname(const Glib::ustring & p);
   /** return the filename from the file path */
-  std::string file_filename(const std::string & p);
-  void file_copy(const std::string & source, const std::string & dest);
+  Glib::ustring file_filename(const Glib::ustring & p);
+  void file_copy(const Glib::ustring & source, const Glib::ustring & dest);
+
+  std::vector<Glib::ustring> file_read_all_lines(const Glib::ustring & path);
+  Glib::ustring file_read_all_text(const Glib::ustring & path);
+  void file_write_all_text(const Glib::ustring & path, const Glib::ustring & content);
 }
 
 

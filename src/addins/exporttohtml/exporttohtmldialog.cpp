@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ const char * EXPORTHTML_EXPORT_LINKED = "export-linked";
 const char * EXPORTHTML_EXPORT_LINKED_ALL = "export-linked-all";
 
 
-ExportToHtmlDialog::ExportToHtmlDialog(const std::string & default_file)
+ExportToHtmlDialog::ExportToHtmlDialog(const Glib::ustring & default_file)
   : Gtk::FileChooserDialog(_("Destination for HTML Export"),
                            Gtk::FILE_CHOOSER_ACTION_SAVE)
   , m_export_linked(_("Export linked notes"))
@@ -93,7 +93,7 @@ void ExportToHtmlDialog::set_export_linked_all(bool value)
 
 void ExportToHtmlDialog::save_preferences()
 {
-  std::string dir = sharp::file_dirname(get_filename());
+  Glib::ustring dir = sharp::file_dirname(get_filename());
   Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_EXPORTHTML);
   settings->set_string(EXPORTHTML_LAST_DIRECTORY, dir);
   settings->set_boolean(EXPORTHTML_EXPORT_LINKED, get_export_linked());
@@ -101,10 +101,10 @@ void ExportToHtmlDialog::save_preferences()
 }
 
 
-void ExportToHtmlDialog::load_preferences(const std::string & default_file)
+void ExportToHtmlDialog::load_preferences(const Glib::ustring & default_file)
 {
   Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_EXPORTHTML);
-  std::string last_dir = settings->get_string(EXPORTHTML_LAST_DIRECTORY);
+  Glib::ustring last_dir = settings->get_string(EXPORTHTML_LAST_DIRECTORY);
   if (last_dir.empty()) {
     last_dir = Glib::get_home_dir();
   }

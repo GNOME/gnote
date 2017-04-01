@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,8 +22,6 @@
 
 #ifndef __TOMBOY_IMPORT_ADDIN_HPP_
 #define __TOMBOY_IMPORT_ADDIN_HPP_
-
-#include <string>
 
 #include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
@@ -58,8 +56,7 @@ public:
   virtual bool first_run(gnote::NoteManager & manager) override;
 
 private:
-
-  std::string m_tomboy_path;
+  Glib::ustring m_tomboy_path;
 };
 
 

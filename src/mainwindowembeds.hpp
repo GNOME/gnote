@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,8 @@
 
 #include <gtkmm/widget.h>
 
+#include "mainwindowaction.hpp"
+
 
 namespace gnote {
 
@@ -38,13 +40,15 @@ public:
   virtual bool running() = 0;
   virtual bool contains(EmbeddableWidget &) = 0;
   virtual bool is_foreground(EmbeddableWidget &) = 0;
+  virtual MainWindowAction::Ptr find_action(const Glib::ustring & name) = 0;
+  virtual void enabled(bool is_enabled) = 0;
 };
 
 class EmbeddableWidget
 {
 public:
   EmbeddableWidget() : m_host(NULL) {}
-  virtual std::string get_name() const = 0;
+  virtual Glib::ustring get_name() const = 0;
   virtual void embed(EmbeddableWidgetHost *h);
   virtual void unembed();
   virtual void foreground();
@@ -57,7 +61,7 @@ public:
       return m_host;
     }
 
-  sigc::signal<void, const std::string &> signal_name_changed;
+  sigc::signal<void, const Glib::ustring &> signal_name_changed;
   sigc::signal<void> signal_embedded;
   sigc::signal<void> signal_unembedded;
   sigc::signal<void> signal_foregrounded;
@@ -70,7 +74,7 @@ private:
 class SearchableItem
 {
 public:
-  virtual void perform_search(const std::string & search_text) = 0;
+  virtual void perform_search(const Glib::ustring & search_text) = 0;
   virtual bool supports_goto_result();
   virtual bool goto_next_result();
   virtual bool goto_previous_result();
@@ -87,8 +91,10 @@ public:
 class HasActions
 {
 public:
-  virtual std::vector<Glib::RefPtr<Gtk::Action> > get_widget_actions() = 0;
-  virtual sigc::signal<void> & signal_actions_changed() = 0;
+  virtual std::vector<Gtk::Widget*> get_popover_widgets() = 0;
+  virtual std::vector<MainWindowAction::Ptr> get_widget_actions() = 0;
+
+  sigc::signal<void> signal_popover_widgets_changed;
 };
 
 }

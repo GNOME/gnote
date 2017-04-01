@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,10 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <fstream>
-
-#include <boost/format.hpp>
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <sigc++/signal.h>
 
 #include "debug.hpp"
@@ -111,10 +109,10 @@ bool FuseSyncServiceAddin::save_configuration()
 {
   // TODO: When/how best to handle this?
   if(!is_supported()) {
-    throw GnoteSyncException(str(boost::format(_(
+    throw GnoteSyncException(Glib::ustring::compose(_(
       "This synchronization addin is not supported on your computer. "
-      "Please make sure you have FUSE and %1% correctly installed and configured"))
-      % fuse_mount_exe_name()).c_str());
+      "Please make sure you have FUSE and %1 correctly installed and configured"),
+      fuse_mount_exe_name()).c_str());
   }
 
   if(!verify_configuration()) {
@@ -127,8 +125,8 @@ bool FuseSyncServiceAddin::save_configuration()
   if(mounted) {
     try {
       // Test creating/writing/deleting a file
-      std::string testPathBase = Glib::build_filename(m_mount_path, "test");
-      std::string testPath = testPathBase;
+      Glib::ustring testPathBase = Glib::build_filename(m_mount_path, "test");
+      Glib::ustring testPath = testPathBase;
       int count = 0;
 
       // Get unique new file name
@@ -137,19 +135,15 @@ bool FuseSyncServiceAddin::save_configuration()
       }
 
       // Test ability to create and write
-      std::string testLine = "Testing write capabilities.";
-      std::ofstream writer;
-      writer.exceptions(std::ios_base::badbit|std::ios_base::failbit|std::ios_base::eofbit);
-      writer.open(testPath.c_str());
-      writer << testLine;
-      writer.close();
+      Glib::ustring testLine = "Testing write capabilities.";
+      sharp::file_write_all_text(testPath, testLine);
 
       // Test ability to read
       bool testFileFound = false;
-      std::list<std::string> files;
+      std::list<Glib::ustring> files;
       sharp::directory_get_files(m_mount_path, files);
-      for(std::list<std::string>::iterator iter = files.begin(); iter != files.end(); ++iter) {
-        if(*iter == testPath) {
+      for(auto file : files) {
+        if(file == testPath) {
           testFileFound = true;
           break;
         }
@@ -157,12 +151,7 @@ bool FuseSyncServiceAddin::save_configuration()
       if(!testFileFound) {
         throw GnoteSyncException(_("Could not read testfile."));
       }
-      std::ifstream reader;
-      reader.exceptions(std::ios_base::badbit|std::ios_base::failbit);
-      reader.open(testPath.c_str());
-      std::string read_line;
-      std::getline(reader, read_line);
-      reader.close();
+      Glib::ustring read_line = sharp::file_read_all_text(testPath);
       if(read_line != testLine) {
         throw GnoteSyncException(_("Write test failed."));
       }
@@ -191,13 +180,13 @@ void FuseSyncServiceAddin::reset_configuration()
   reset_configuration_values();
 }
 
-std::string FuseSyncServiceAddin::fuse_mount_timeout_error()
+Glib::ustring FuseSyncServiceAddin::fuse_mount_timeout_error()
 {
   char *error = _("Timeout connecting to server.");
   return error;
 }
 
-std::string FuseSyncServiceAddin::fuse_mount_directory_error()
+Glib::ustring FuseSyncServiceAddin::fuse_mount_directory_error()
 {
   char *error = _("Error connecting to server.");
   return error;
@@ -243,7 +232,7 @@ bool FuseSyncServiceAddin::mount_fuse(bool useStoredValues)
   else if(p.exit_code() != 0) {
     unmount_timeout(); // TODO: This is awfully ugly
     DBG_OUT("Error calling %s", m_fuse_mount_exe_path.c_str());
-    throw GnoteSyncException(_("An error ocurred while connecting to the specified server"));
+    throw GnoteSyncException(_("An error occurred while connecting to the specified server"));
     //TODO: provide stderr output of child
   }
 
@@ -281,7 +270,7 @@ int FuseSyncServiceAddin::get_timeout_ms()
 
 void FuseSyncServiceAddin::set_up_mount_path()
 {
-  std::string notesPath = Glib::get_tmp_dir();
+  Glib::ustring notesPath = Glib::get_tmp_dir();
   m_mount_path = Glib::build_filename(notesPath, Glib::get_user_name(), "gnote", "sync-" + id()); // TODO: Best mount path name?
 }
 
@@ -291,7 +280,7 @@ void FuseSyncServiceAddin::prepare_mount_path()
     try {
       sharp::directory_create(m_mount_path);
     } catch(...) {
-      throw new std::runtime_error(str(boost::format("Couldn't create \"%1%\" directory.") % m_mount_path));
+      throw new std::runtime_error(Glib::ustring::compose("Couldn't create \"%1\" directory.", m_mount_path));
     }
   } else
     // Just in case, make sure there is no
@@ -311,7 +300,7 @@ void FuseSyncServiceAddin::unmount_timeout()
     sharp::Process p;
     p.redirect_standard_output(false);
     p.file_name(m_fuse_unmount_exe_path);
-    std::vector<std::string> args;
+    std::vector<Glib::ustring> args;
     args.push_back("-u");
     args.push_back(m_mount_path);
     p.arguments(args);
@@ -337,9 +326,9 @@ bool FuseSyncServiceAddin::is_mounted()
   p.redirect_standard_output(true);
   p.file_name(m_mount_exe_path);
   p.start();
-  std::list<std::string> outputLines;
+  std::list<Glib::ustring> outputLines;
   while(!p.standard_output_eof()) {
-    std::string line = p.standard_output_read_line();
+    Glib::ustring line = p.standard_output_read_line();
     outputLines.push_back(line);
   }
   p.wait_for_exit();
@@ -350,9 +339,9 @@ bool FuseSyncServiceAddin::is_mounted()
   }
 
   // TODO: Review this methodology...is it really the exe name, for example?
-  for(std::list<std::string>::iterator iter = outputLines.begin(); iter != outputLines.end(); ++iter) {
-    if((iter->find(fuse_mount_exe_name()) == 0 || iter->find(" type fuse." + fuse_mount_exe_name()) != std::string::npos)
-       && iter->find(str(boost::format("on %1% ") % m_mount_path)) != std::string::npos) {
+  for(auto line : outputLines) {
+    if((line.find(fuse_mount_exe_name()) == 0 || line.find(" type fuse." + fuse_mount_exe_name()) != Glib::ustring::npos)
+       && line.find(Glib::ustring::compose("on %1 ", m_mount_path)) != Glib::ustring::npos) {
       return true;
     }
   }

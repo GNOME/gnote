@@ -2,6 +2,7 @@
  * "Table of Contents" is a Note add-in for Gnote.
  *  It lists note's table of contents in a menu.
  *
+ * Copyright (C) 2015,2017 Aurimas Cernius <aurisc4@gmail.com>
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,13 +30,14 @@
 
 #include "tableofcontentsmenuitem.hpp"
 #include "tableofcontents.hpp"
+#include "tableofcontentsutils.hpp"
 
 namespace tableofcontents {
 
 
 TableofcontentsMenuItem::TableofcontentsMenuItem (
                             const gnote::Note::Ptr & note,
-                            const std::string      & heading,
+                            const Glib::ustring    & heading,
                             Heading::Type            heading_level,
                             int                      heading_position)
   : m_note            (note)
@@ -72,18 +74,7 @@ TableofcontentsMenuItem::TableofcontentsMenuItem (
 
 void TableofcontentsMenuItem::on_activate ()
 {
-  if (!m_note) {
-    return;
-  }
-
-  // Scroll the TextView and place the cursor on the heading
-  Gtk::TextIter heading_iter;
-  heading_iter = m_note->get_buffer()->get_iter_at_offset (m_heading_position);
-  m_note->get_window()->editor()->scroll_to (heading_iter,
-                                              0.0, //[0.0,0.5] within_margin, margin as a fraction of screen size.
-                                              0.0, //[0.0,1.0] horizontal alignment of mark within visible area.
-                                              0.0);//[0.0,1.0] vertical alignment of mark within visible area.
-  m_note->get_buffer()->place_cursor (heading_iter);
+  goto_heading(m_note, m_heading_position);
 }
 
 

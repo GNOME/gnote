@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013 Aurimas Cernius
+ * Copyright (C) 2011-2013,2016-2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  */
 
 #include <glibmm/i18n.h>
-#include <gtkmm/stock.h>
 #include <gtkmm/clipboard.h>
 
 #include "iactionmanager.hpp"
@@ -27,35 +26,6 @@
 #include "sharp/string.hpp"
 
 namespace replacetitle {
-
-  namespace {
-    class ReplaceTitleAction
-      : public Gtk::Action
-    {
-    public:
-      static Glib::RefPtr<Gtk::Action> create(gnote::NoteWindow *note_window)
-        {
-          return Glib::RefPtr<Gtk::Action>(new ReplaceTitleAction(note_window));
-        }
-    protected:
-      virtual Gtk::Widget *create_menu_item_vfunc()
-        {
-          Gtk::ImageMenuItem *menu_item = new Gtk::ImageMenuItem;
-          menu_item->add_accelerator("activate", m_note_window->get_accel_group(),
-                                     GDK_KEY_R, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-          return menu_item;
-        }
-    private:
-      ReplaceTitleAction(gnote::NoteWindow *note_window)
-        : Gtk::Action("ReplaceTitleAction", Gtk::Stock::FIND_AND_REPLACE,
-                      _("Replace title"), _("Replace title"))
-        , m_note_window(note_window)
-        {}
-
-      gnote::NoteWindow *m_note_window;
-    };
-  }
-
 
 ReplaceTitleModule::ReplaceTitleModule()
 {
@@ -73,17 +43,23 @@ void ReplaceTitleNoteAddin::shutdown()
 
 void ReplaceTitleNoteAddin::on_note_opened()
 {
-  Glib::RefPtr<Gtk::Action> action = ReplaceTitleAction::create(get_window());
-  action->signal_activate().connect(
+  register_main_window_action_callback("replacetitle-replace",
     sigc::mem_fun(*this, &ReplaceTitleNoteAddin::replacetitle_button_clicked));
-  add_note_action(action, gnote::REPLACE_TITLE_ORDER);
 }
 
-void ReplaceTitleNoteAddin::replacetitle_button_clicked()
+std::map<int, Gtk::Widget*> ReplaceTitleNoteAddin::get_actions_popover_widgets() const
+{
+  auto widgets = NoteAddin::get_actions_popover_widgets();
+  auto button = gnote::utils::create_popover_button("win.replacetitle-replace", _("Replace title"));
+  gnote::utils::add_item_to_ordered_map(widgets, gnote::REPLACE_TITLE_ORDER, button);
+  return widgets;
+}
+
+void ReplaceTitleNoteAddin::replacetitle_button_clicked(const Glib::VariantBase&)
 {
   // unix primary clipboard
   Glib::RefPtr<Gtk::Clipboard> refClipboard = Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
-  const std::string newTitle= refClipboard->wait_for_text();
+  const Glib::ustring newTitle = refClipboard->wait_for_text();
   Glib::RefPtr<Gtk::TextBuffer> buffer = get_note()->get_buffer();
 
   // replace note content
