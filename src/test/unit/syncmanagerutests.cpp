@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,42 +21,38 @@
 #include <cstdio>
 #include <iostream>
 
-#include <boost/format.hpp>
-#include <boost/test/minimal.hpp>
 #include <glib/gstdio.h>
+#include <UnitTest++/UnitTest++.h>
 
 #include "notemanager.hpp"
-#include "testnotemanager.hpp"
-#include "testsyncmanager.hpp"
-#include "testtagmanager.hpp"
 #include "synchronization/silentui.hpp"
+#include "test/testnotemanager.hpp"
+#include "test/testsyncmanager.hpp"
+#include "test/testtagmanager.hpp"
 
 using namespace gnote;
 
 
-void create_note(test::NoteManager & manager, const std::string & title, const std::string & body)
+void create_note(test::NoteManager & manager, const Glib::ustring & title, const Glib::ustring & body)
 {
-  std::string content = str(boost::format("<note-content><note-title>%1%</note-title>\n\n%2%</note-content>")
-                            % title % body);
+  Glib::ustring content = Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\n%2</note-content>",
+                            title, body);
   manager.create(title, content);
 }
 
-int test_main(int /*argc*/, char ** /*argv*/)
+TEST(clean_sync)
 {
   char notes_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
   char notes_dir_tmpl2[] = "/tmp/gnotetestnotesXXXXXX";
   char *notes_dir = g_mkdtemp(notes_dir_tmpl);
-  BOOST_CHECK(notes_dir != NULL);
+  CHECK(notes_dir != NULL);
   char *notes_dir2 = g_mkdtemp(notes_dir_tmpl2);
-  BOOST_CHECK(notes_dir2 != NULL);
-  std::string notesdir = std::string(notes_dir) + "/notes";
-  std::string notesdir2 = std::string(notes_dir2) + "/notes";
-  std::string syncdir = std::string(notes_dir) + "/sync";
-  if(g_mkdir(syncdir.c_str(), 0x755)) {
-    std::cerr << "Failed to create test directory: " << syncdir << std::endl;
-    return 1;
-  }
-  std::string manifest = std::string(notes_dir) + "/manifest.xml";
+  CHECK(notes_dir2 != NULL);
+  Glib::ustring notesdir = Glib::ustring(notes_dir) + "/notes";
+  Glib::ustring notesdir2 = Glib::ustring(notes_dir2) + "/notes";
+  Glib::ustring syncdir = Glib::ustring(notes_dir) + "/sync";
+  REQUIRE CHECK(g_mkdir(syncdir.c_str(), 0x755) == 0);
+  Glib::ustring manifest = Glib::ustring(notes_dir) + "/manifest.xml";
 
   new test::TagManager;
   test::NoteManager manager1(notes_dir);
@@ -71,7 +67,5 @@ int test_main(int /*argc*/, char ** /*argv*/)
   test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1.get_client(manifest));
   gnote::sync::SilentUI::Ptr sync_ui = gnote::sync::SilentUI::create(manager1);
   //sync_manager1.perform_synchronization(sync_ui); //TODO: fails, return proper server from test SyncAddin
-
-  return 0;
 }
 
