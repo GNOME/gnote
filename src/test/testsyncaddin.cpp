@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,12 +51,12 @@ bool SyncAddin::is_configured()
   return true;
 }
 
-std::string SyncAddin::name()
+Glib::ustring SyncAddin::name()
 {
   return "test";
 }
 
-std::string SyncAddin::id()
+Glib::ustring SyncAddin::id()
 {
   return "test";
 }

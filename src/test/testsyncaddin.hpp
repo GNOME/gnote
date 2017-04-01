@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2017 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,8 +38,8 @@ public:
   virtual bool save_configuration() override;
   virtual void reset_configuration() override;
   virtual bool is_configured() override;
-  virtual std::string name() override;
-  virtual std::string id() override;
+  virtual Glib::ustring name() override;
+  virtual Glib::ustring id() override;
   virtual bool is_supported() override;
   virtual void initialize() override;
   virtual void shutdown() override;
