@@ -58,9 +58,30 @@ SyncServer::Ptr FileSystemSyncServer::create(const Glib::ustring & path)
 }
 
 
+SyncServer::Ptr FileSystemSyncServer::create(const Glib::ustring & path, const Glib::ustring & client_id)
+{
+  return SyncServer::Ptr(new FileSystemSyncServer(path, client_id));
+}
+
+
 FileSystemSyncServer::FileSystemSyncServer(const Glib::ustring & localSyncPath)
   : m_server_path(localSyncPath)
   , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
+{
+  common_ctor();
+}
+
+
+FileSystemSyncServer::FileSystemSyncServer(const Glib::ustring & localSyncPath, const Glib::ustring & client_id)
+  : m_server_path(localSyncPath)
+  , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
+  , m_sync_lock(client_id)
+{
+  common_ctor();
+}
+
+
+void FileSystemSyncServer::common_ctor()
 {
   if(!sharp::directory_exists(m_server_path)) {
     throw std::invalid_argument(("Directory not found: " + m_server_path).c_str());

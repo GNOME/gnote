@@ -36,6 +36,7 @@ class FileSystemSyncServer
 {
 public:
   static SyncServer::Ptr create(const Glib::ustring & path);
+  static SyncServer::Ptr create(const Glib::ustring & path, const Glib::ustring & client_id);
   virtual bool begin_sync_transaction() override;
   virtual bool commit_sync_transaction() override;
   virtual bool cancel_sync_transaction() override;
@@ -49,6 +50,8 @@ public:
   virtual bool updates_available_since(int revision) override;
 private:
   explicit FileSystemSyncServer(const Glib::ustring & path);
+  FileSystemSyncServer(const Glib::ustring & path, const Glib::ustring & client_id);
+  void common_ctor();
 
   Glib::ustring get_revision_dir_path(int rev);
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);
