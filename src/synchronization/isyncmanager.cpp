@@ -36,6 +36,15 @@ SyncLockInfo::SyncLockInfo()
 {
 }
 
+SyncLockInfo::SyncLockInfo(const Glib::ustring & client)
+  : client_id(client)
+  , transaction_id(sharp::uuid().string())
+  , renew_count(0)
+  , duration(0, 2, 0) // default of 2 minutes
+  , revision(0)
+{
+}
+
 Glib::ustring SyncLockInfo::hash_string()
 {
   return Glib::ustring::compose("%1-%2-%3-%4-%5", transaction_id, client_id, renew_count, duration.string(), revision);
