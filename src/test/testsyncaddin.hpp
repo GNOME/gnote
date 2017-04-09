@@ -32,6 +32,7 @@ class SyncAddin
   : public gnote::sync::SyncServiceAddin
 {
 public:
+  SyncAddin(const Glib::ustring & sync_path);
   virtual gnote::sync::SyncServer::Ptr create_sync_server() override;
   virtual void post_sync_cleanup() override;
   virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) override;
@@ -44,6 +45,8 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual bool initialized() override;
+private:
+  Glib::ustring m_sync_path;
 };
 
 }

@@ -62,10 +62,11 @@ TEST(clean_sync)
 
   test::NoteManager manager2(notesdir2);
 
-  test::SyncManager sync_manager1(manager1);
-  test::SyncManager sync_manager2(manager2);
+  test::SyncManager sync_manager1(manager1, syncdir);
+  test::SyncManager sync_manager2(manager2, syncdir);
   test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1.get_client(manifest));
   gnote::sync::SilentUI::Ptr sync_ui = gnote::sync::SilentUI::create(manager1);
-  //sync_manager1.perform_synchronization(sync_ui); //TODO: fails, return proper server from test SyncAddin
+  sync_manager1.perform_synchronization(sync_ui);
+  // TODO: results in various errors and sync actually fails
 }
 

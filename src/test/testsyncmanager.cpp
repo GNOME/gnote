@@ -23,8 +23,9 @@
 
 namespace test {
 
-SyncManager::SyncManager(gnote::NoteManagerBase & manager)
+SyncManager::SyncManager(gnote::NoteManagerBase & manager, const Glib::ustring & sync_path)
   : gnote::sync::SyncManager(manager)
+  , m_sync_path(sync_path)
 {
   m_client = gnote::sync::SyncClient::Ptr(new test::SyncClient(manager));
 }
@@ -58,7 +59,7 @@ bool SyncManager::synchronized_note_xml_matches(const Glib::ustring & noteXml1, 
 
 gnote::sync::SyncServiceAddin *SyncManager::get_sync_service_addin(const Glib::ustring & sync_service_id)
 {
-  return new SyncAddin();
+  return new SyncAddin(m_sync_path);
 }
 
 gnote::sync::SyncServiceAddin *SyncManager::get_configured_sync_service()

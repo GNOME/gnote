@@ -19,13 +19,19 @@
 
 
 #include "testsyncaddin.hpp"
+#include "synchronization/filesystemsyncserver.hpp"
 
 
 namespace test {
 
+SyncAddin::SyncAddin(const Glib::ustring & sync_path)
+  : m_sync_path(sync_path)
+{
+}
+
 gnote::sync::SyncServer::Ptr SyncAddin::create_sync_server()
 {
-  return gnote::sync::SyncServer::Ptr();
+  return gnote::sync::FileSystemSyncServer::create(m_sync_path, "test");
 }
 
 void SyncAddin::post_sync_cleanup()
