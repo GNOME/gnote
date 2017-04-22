@@ -72,5 +72,10 @@ void SyncManager::delete_notes_in_main_thread(const gnote::sync::SyncServer::Ptr
   delete_notes(server);
 }
 
+void SyncManager::note_save(const gnote::Note::Ptr & note)
+{
+  note->save();
+}
+
 }
 
