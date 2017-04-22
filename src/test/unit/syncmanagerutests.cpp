@@ -67,6 +67,6 @@ TEST(clean_sync)
   test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1.get_client(manifest));
   gnote::sync::SilentUI::Ptr sync_ui = gnote::sync::SilentUI::create(manager1);
   sync_manager1.perform_synchronization(sync_ui);
-  // TODO: results in various errors and sync actually fails
+  // TODO: do the actual checks if all is synced correctly
 }
 
