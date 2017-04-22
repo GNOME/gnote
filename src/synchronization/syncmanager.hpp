@@ -58,6 +58,7 @@ namespace sync {
     virtual SyncServiceAddin *get_configured_sync_service();
     virtual void delete_notes_in_main_thread(const SyncServer::Ptr & server);
     void delete_notes(const SyncServer::Ptr & server);
+    virtual void note_save(const Note::Ptr & note);
 
     SyncClient::Ptr m_client;
     SyncUI::Ptr m_sync_ui;
@@ -83,7 +84,6 @@ namespace sync {
     void create_note(const NoteUpdate & noteUpdate);
     void update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
     void delete_note(const Note::Ptr & existingNote);
-    static void note_save(const Note::Ptr & note);
 
     NoteManagerBase & m_note_manager;
     SyncState m_state;
