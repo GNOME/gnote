@@ -285,7 +285,7 @@ namespace sync {
       // delegate to run in the main gtk thread.
       // To be consistent, any exceptions in the delgate will be caught
       // and then rethrown in the synchronization thread.
-      utils::main_context_call([this, server]() { delete_notes(server); });
+      delete_notes_in_main_thread(server);
 
       // TODO: Add following updates to syncDialog treeview
 
@@ -675,6 +675,12 @@ namespace sync {
         break;
       }
     }
+  }
+
+
+  void SyncManager::delete_notes_in_main_thread(const SyncServer::Ptr & server)
+  {
+    utils::main_context_call([this, server]() { delete_notes(server); });
   }
 
 

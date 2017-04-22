@@ -56,6 +56,8 @@ namespace sync {
     virtual void connect_system_signals();
     virtual SyncServiceAddin *get_sync_service_addin(const Glib::ustring & sync_service_id);
     virtual SyncServiceAddin *get_configured_sync_service();
+    virtual void delete_notes_in_main_thread(const SyncServer::Ptr & server);
+    void delete_notes(const SyncServer::Ptr & server);
 
     SyncClient::Ptr m_client;
     SyncUI::Ptr m_sync_ui;
@@ -78,7 +80,6 @@ namespace sync {
     NoteBase::Ptr find_note_by_uuid(const Glib::ustring & uuid);
     NoteManagerBase & note_mgr();
     void get_synchronized_xml_bits(const Glib::ustring & noteXml, Glib::ustring & title, Glib::ustring & tags, Glib::ustring & content);
-    void delete_notes(const SyncServer::Ptr & server);
     void create_note(const NoteUpdate & noteUpdate);
     void update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
     void delete_note(const Note::Ptr & existingNote);
