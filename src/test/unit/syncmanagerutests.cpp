@@ -51,7 +51,7 @@ TEST(clean_sync)
   Glib::ustring notesdir = Glib::ustring(notes_dir) + "/notes";
   Glib::ustring notesdir2 = Glib::ustring(notes_dir2) + "/notes";
   Glib::ustring syncdir = Glib::ustring(notes_dir) + "/sync";
-  REQUIRE CHECK(g_mkdir(syncdir.c_str(), 0x755) == 0);
+  REQUIRE CHECK(g_mkdir(syncdir.c_str(), S_IRWXU) == 0);
   Glib::ustring manifest = Glib::ustring(notes_dir) + "/manifest.xml";
 
   new test::TagManager;
