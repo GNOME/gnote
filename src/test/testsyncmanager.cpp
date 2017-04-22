@@ -67,5 +67,10 @@ gnote::sync::SyncServiceAddin *SyncManager::get_configured_sync_service()
   return get_sync_service_addin("");
 }
 
+void SyncManager::delete_notes_in_main_thread(const gnote::sync::SyncServer::Ptr & server)
+{
+  delete_notes(server);
+}
+
 }
 

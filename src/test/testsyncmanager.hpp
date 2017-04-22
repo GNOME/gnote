@@ -39,6 +39,7 @@ public:
   virtual bool synchronized_note_xml_matches(const Glib::ustring & noteXml1, const Glib::ustring & noteXml2) override;
   virtual gnote::sync::SyncServiceAddin *get_sync_service_addin(const Glib::ustring & sync_service_id) override;
   virtual gnote::sync::SyncServiceAddin *get_configured_sync_service() override;
+  virtual void delete_notes_in_main_thread(const gnote::sync::SyncServer::Ptr & server) override;
   test::SyncClient::Ptr get_client(const Glib::ustring & manifest);
 private:
   Glib::ustring m_sync_path;
