@@ -55,7 +55,7 @@ TEST(clean_sync)
   Glib::ustring manifest = Glib::ustring(notes_dir) + "/manifest.xml";
 
   new test::TagManager;
-  test::NoteManager manager1(notes_dir);
+  test::NoteManager manager1(notesdir);
   create_note(manager1, "note1", "content1");
   create_note(manager1, "note2", "content2");
   create_note(manager1, "note3", "content3");
