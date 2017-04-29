@@ -37,7 +37,7 @@ void create_note(test::NoteManager & manager, const Glib::ustring & title, const
 {
   Glib::ustring content = Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\n%2</note-content>",
                             title, body);
-  manager.create(title, content);
+  manager.create(title, content)->save();
 }
 
 TEST(clean_sync)
