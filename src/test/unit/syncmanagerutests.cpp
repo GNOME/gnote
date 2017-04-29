@@ -25,6 +25,8 @@
 #include <UnitTest++/UnitTest++.h>
 
 #include "notemanager.hpp"
+#include "sharp/files.hpp"
+#include "sharp/directory.hpp"
 #include "synchronization/silentui.hpp"
 #include "test/testnotemanager.hpp"
 #include "test/testsyncmanager.hpp"
@@ -67,6 +69,28 @@ TEST(clean_sync)
   test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1.get_client(manifest));
   gnote::sync::SilentUI::Ptr sync_ui = gnote::sync::SilentUI::create(manager1);
   sync_manager1.perform_synchronization(sync_ui);
-  // TODO: do the actual checks if all is synced correctly
+
+  Glib::ustring syncednotesdir = syncdir + "/0/0";
+  REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
+  std::list<Glib::ustring> files;
+  sharp::directory_get_files_with_ext(syncednotesdir, ".note", files);
+  REQUIRE CHECK_EQUAL(3, files.size());
+  bool note1found = false, note2found = false, note3found = false;
+  for(auto file : files) {
+    Glib::ustring content = sharp::file_read_all_text(file);
+    if(content.find("<note-title>note1</note-title>") != Glib::ustring::npos) {
+      note1found = true;
+    }
+    else if(content.find("<note-title>note2</note-title>") != Glib::ustring::npos) {
+      note2found = true;
+    }
+    else if(content.find("<note-title>note3</note-title>") != Glib::ustring::npos) {
+      note3found = true;
+    }
+  }
+
+  CHECK(note1found);
+  CHECK(note2found);
+  CHECK(note3found);
 }
 
