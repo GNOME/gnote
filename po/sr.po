@@ -1,18 +1,17 @@
 # Serbian translation of gnote
 # Courtesy of Prevod.org team (http://prevod.org/) -- 2011—2017.
 # This file is distributed under the same license as the gnote package.
-# Translators:
 # Милош Поповић <gpopac@gmail.com>, 2011.
 # Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012—2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnote&k"
-"eywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-01-13 20:54+0000\n"
-"PO-Revision-Date: 2017-02-13 05:42+0200\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
+"keywords=I18N+L10N&component=main\n"
+"POT-Creation-Date: 2017-04-01 18:03+0000\n"
+"PO-Revision-Date: 2017-05-05 06:40+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: Serbian <(nothing)>\n"
+"Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -181,7 +180,7 @@ msgid "Decrease indent/disable bullets for current line"
 msgstr "Смањује увлачење/искључује тачкирање за текући ред"
 
 #: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
-#: ../src/recentchanges.cpp:537
+#: ../src/recentchanges.cpp:542
 msgid "Gnote"
 msgstr "Гномов бележник"
 
@@ -725,51 +724,51 @@ msgstr "_О програму"
 msgid "_Quit"
 msgstr "_Изађи"
 
-#: ../src/addininfo.cpp:74
+#: ../src/addininfo.cpp:72
 msgid "Failed to load plugin information!"
 msgstr "Нисам успео да учитам податке о прикључку!"
 
-#: ../src/addininfo.cpp:148
+#: ../src/addininfo.cpp:146
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Несагласан прикључак „%s“: очекивах „%s“, добих „%s“"
 
-#: ../src/addinmanager.cpp:134
+#: ../src/addinmanager.cpp:132
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Већ је присутан податак прикључка белешке „%s“"
 
-#: ../src/addinmanager.cpp:142
+#: ../src/addinmanager.cpp:140
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s не примењује %s"
 
-#: ../src/addinmanager.cpp:157
+#: ../src/addinmanager.cpp:155
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Већ је присутан прикључак белешке „%s“"
 
-#: ../src/addinmanager.cpp:175
+#: ../src/addinmanager.cpp:173
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Није присутан податак прикључка белешке „%s“"
 
-#: ../src/addinmanager.cpp:188
+#: ../src/addinmanager.cpp:186
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Није присутан прикључак белешке „%s“"
 
-#: ../src/addinmanager.cpp:225
+#: ../src/addinmanager.cpp:223
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Нисам успео да пронађем модул „%s“ за додатак „%s“"
 
-#: ../src/addinmanager.cpp:229
+#: ../src/addinmanager.cpp:227
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Нисам успео да учитам податке додатка „%s“: %s"
 
-#: ../src/addinmanager.cpp:353
+#: ../src/addinmanager.cpp:351
 msgid "Trying to load addins when they are already loaded"
 msgstr "Покушавам да учитам додатке када су већ учитани"
 
@@ -822,7 +821,7 @@ msgstr ""
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Ибер Фигјер и пројекат Томичиних белешки"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:64
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:65
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -831,50 +830,50 @@ msgstr ""
 "страници у белешку.  Ако желите посебну иконицу за одређене адресе, додајте "
 "их овде."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:81
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:82
 msgid "Host Name"
 msgstr "Адреса рачунара"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:94
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:95
 msgid "Icon"
 msgstr "Иконица"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:229
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:227
 msgid "Select an icon..."
 msgstr "Одабери иконицу..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:244
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:242
 msgid "_Host name:"
 msgstr "_Адреса рачунара:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:278
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:276
 msgid "Host name invalid"
 msgstr "Назив рачунара није исправан"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:279
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:277
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Морате навести исправан назив рачунара Бубаждаје за коришћење са овом "
 "иконицом."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:298
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:296
 msgid "Error saving icon"
 msgstr "Грешка чувања иконице"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:299
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:297
 msgid "Could not save the icon file."
 msgstr "Не могу да сачувам датотеку са иконицом."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:371
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:369
 msgid "Really remove this icon?"
 msgstr "Заиста желите да обришете ову иконицу?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:372
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:370
 msgid "If you remove an icon it is permanently lost."
 msgstr "Ако је обришете она ће заувек бити изгубљена."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:394
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:392
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Грешка уклањања иконице „%s“: %s"
@@ -938,8 +937,8 @@ msgstr "Укључи све друге повезане белешке"
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Не могу да отворим извезену белешку у веб прегледнику: %s"
 
+#. TRANSLATORS: %1%: boost format placeholder for the path
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:125
-#| msgid "Your note was exported to \"%1%\"."
 msgid "Your note was exported to \"%1\"."
 msgstr "Ваша белешка је извезена у „%1“."
 
@@ -954,7 +953,6 @@ msgid "Could not export: %s"
 msgstr "Не могу да извезем: %s"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
-#| msgid "Could not save the file \"%s\""
 msgid "Could not save the file \"%1\""
 msgstr "Не могу да сачувам датотеку „%1“"
 
@@ -975,7 +973,7 @@ msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Наведена путања фасцикле не постоји, и програм не може да је направи."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:217
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
 msgid "Local Folder"
 msgstr "Локална фасцикла"
 
@@ -1015,45 +1013,45 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Уметните тренутни датум и време на положај курсора."
 
 #. Label
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:70
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:68
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Изаберите неки од понуђених записа или унесите нови."
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:78
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:76
 msgid "Use _Selected Format"
 msgstr "Користи _изабрани запис"
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:110
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:106
 msgid "_Use Custom Format"
 msgstr "Користи произвољан _запис"
 
 #. TRANSLATORS: first %s is file name, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:236
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:229
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
 "Надзорник фасцикле белешки: Ажурирање је прекинуто, грешка читања „%s“: %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:256
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr "Надзорник фасцикле белешки: Грешка читања наслова белешке из „%s“"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:271
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:264
 #, c-format
 msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 msgstr "Надзорник фасцикле белешки: Непозната грешка стварања белешке из „%s“"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:277
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:270
 #, c-format
 msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
 msgstr "Надзорник фасцикле белешки: Грешка стварања белешке из „%s“: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:290
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:283
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
@@ -1077,32 +1075,32 @@ msgstr "Орима Чернјус и првобитни аутори Томич�
 msgid "_Directory check interval:"
 msgstr "_Период провере директоријума:"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:33
+#: ../src/addins/noteoftheday/noteoftheday.cpp:34
 msgid "Today: Template"
 msgstr "Данас: Шаблон"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:35
+#: ../src/addins/noteoftheday/noteoftheday.cpp:36
 msgid "Today: "
 msgstr "Данас: "
 
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
-#: ../src/addins/noteoftheday/noteoftheday.cpp:49
+#: ../src/addins/noteoftheday/noteoftheday.cpp:50
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:72
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "Белешка дана не може да направи „%s“: %s"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:155
+#: ../src/addins/noteoftheday/noteoftheday.cpp:152
 msgid "Tasks"
 msgstr "Задаци"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:156
+#: ../src/addins/noteoftheday/noteoftheday.cpp:153
 msgid "Appointments"
 msgstr "Састанци"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:162
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
 msgid "%A, %B %d %Y"
 msgstr "%A, %d. %B %Y."
 
@@ -1149,7 +1147,6 @@ msgstr "Грешка штампања белешке"
 
 #. %1 is the page number, %2 is the total number of pages
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:278
-#| msgid "Page %1% of %2%"
 msgid "Page %1 of %2"
 msgstr "Страница %1 од %2"
 
@@ -1211,8 +1208,6 @@ msgstr "Укупно бележница:"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
 #: ../src/addins/statistics/statisticswidget.cpp:126
-#| msgid "%1% note"
-#| msgid_plural "%1% notes"
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 белешка"
@@ -1232,31 +1227,29 @@ msgstr "Увезите ваше белешке из програмчета ле�
 msgid "Import from Sticky Notes"
 msgstr "Увези из лепљивих белешки"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:212
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
 msgid "No Sticky Notes found"
 msgstr "Нисам пронашао лепљиве белешке"
 
 #. %1 is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:214
-#| msgid "No suitable Sticky Notes file was found at \"%1%\"."
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:210
 msgid "No suitable Sticky Notes file was found at \"%1\"."
 msgstr "Нисам пронашао ниједну одговарајућу датотеку лепљивих белешки на „%1“."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:222
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
 msgid "Sticky Notes import completed"
 msgstr "Увоз лепљивих белешки је завршен"
 
 #. here %1 is the number of notes imported, %2 the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:224
-#| msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:220
 msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
 msgstr "Успешно увезених лепљивих белешки: <b>%1</b> од <b>%2</b>."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:239
 msgid "Untitled"
 msgstr "Без наслова"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:281
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:277
 msgid "Sticky Note: "
 msgstr "Лепљива белешка: "
 
@@ -1367,24 +1360,20 @@ msgstr ""
 "Грешка при повезивању са сервером.  Узрок може бити неисправно корисничко "
 "име и/или лозинка."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:172
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:156
 msgid "URL, username, or password field is empty."
 msgstr "Адреса, корисничко име или лозинка су празни."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:264
-#| msgid ""
-#| "Saving configuration to the GNOME keyring failed with the following "
-#| "message:\n"
-#| "\n"
-#| "%1%"
+#. TRANSLATORS: %1 is the format placeholder for the error message.
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:248
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
 "\n"
 "%1"
 msgstr ""
-"Чување подешавања у Гномовом привеску кључева није успело, уз следећу поруку:"
-"\n"
+"Чување подешавања у Гномовом привеску кључева није успело, уз следећу "
+"поруку:\n"
 "\n"
 "%1"
 
@@ -1427,13 +1416,18 @@ msgstr ""
 "http://prevod.org — превод на српски језик."
 
 #: ../src/gnote.cpp:302
+#| msgid ""
+#| "Copyright © 2010-2016 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2016 Aurimas Cernius\n"
+"Copyright © 2010-2017 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Ауторска права © 2010-2016 Орима Чернијус\n"
+"Ауторска права © 2010-2017 Орима Чернијус\n"
 "Ауторска права © 2009-2011 Дебарши Реј\n"
 "Ауторска права © 2009 Ибер Фигјер\n"
 "Ауторска права © 2004-2009 првобитни аутори Томичиних белешки."
@@ -1510,9 +1504,8 @@ msgstr "Опције Гномовог бележника при покретањ
 msgid "Could not connect to remote instance."
 msgstr "Не могу да се повежем на удаљени примерак."
 
-#. TRANSLATORS: %1%: boost format placeholder for the version string.
+#. TRANSLATORS: %1: format placeholder for the version string.
 #: ../src/gnote.cpp:734
-#| msgid "Version %1%"
 msgid "Version %1"
 msgstr "Издање %1"
 
@@ -1531,18 +1524,18 @@ msgid "Window is not embedded"
 msgstr "Прозор није угнежден"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:199 ../src/note.cpp:381
+#: ../src/notebase.cpp:194 ../src/note.cpp:378
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Изузетак приликом чувања белешке: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:443
+#: ../src/notebase.cpp:438
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Нисам успео да ажурирам запис белешке: %s"
 
-#: ../src/notebase.cpp:567
+#: ../src/notebase.cpp:562
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Грешка система датотека: %s"
@@ -1565,7 +1558,7 @@ msgstr "Назив је већ заузет"
 msgid "C_reate"
 msgstr "_Нова"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:81
+#: ../src/notebooks/notebookapplicationaddin.cpp:79
 msgid "New Note_book..."
 msgstr "Нова _бележница..."
 
@@ -1575,7 +1568,6 @@ msgstr "Нова _бележница..."
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
 #: ../src/notebooks/notebook.cpp:108
-#| msgid "%1% Notebook Template"
 msgid "%1 Notebook Template"
 msgstr "Шаблон за бележницу „%1“"
 
@@ -1583,11 +1575,11 @@ msgstr "Шаблон за бележницу „%1“"
 msgid "New Note"
 msgstr "Нова белешка"
 
-#: ../src/notebooks/notebookmanager.cpp:367
+#: ../src/notebooks/notebookmanager.cpp:365
 msgid "Really delete this notebook?"
 msgstr "Заиста желите да обришете ову бележницу?"
 
-#: ../src/notebooks/notebookmanager.cpp:368
+#: ../src/notebooks/notebookmanager.cpp:366
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1600,9 +1592,8 @@ msgstr ""
 msgid "No notebook"
 msgstr "Нема бележница"
 
-#. TRANSLATORS: %1%: boost format placeholder for the notebook name
+#. TRANSLATORS: %1: format placeholder for the notebook name
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:40
-#| msgid "New \"%1%\" Note"
 msgid "New \"%1\" Note"
 msgstr "%1 — нова белешка"
 
@@ -1631,25 +1622,22 @@ msgstr "Важне"
 msgid "Active"
 msgstr "Радне"
 
-#: ../src/notebuffer.cpp:1534
+#: ../src/notebuffer.cpp:1528
 msgid "</list> tag mismatch"
 msgstr "</list> ознака не одговара"
 
-#: ../src/notebuffer.cpp:1618
+#: ../src/notebuffer.cpp:1612
 #, c-format
 msgid "Exception: %s"
 msgstr "Изузетак: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
-#: ../src/note.cpp:58
-#| msgid "Really delete \"%1%\"?"
+#: ../src/note.cpp:55
 msgid "Really delete \"%1\"?"
 msgstr "Стварно да избришем „%1“?"
 
 #. TRANSLATORS: %1 is number of notes
-#: ../src/note.cpp:62
-#| msgid "Really delete %1% note?"
-#| msgid_plural "Really delete %1% notes?"
+#: ../src/note.cpp:59
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
 msgstr[0] "Да обришем %1 белешку?"
@@ -1657,15 +1645,15 @@ msgstr[1] "Да обришем %1 белешке?"
 msgstr[2] "Да обришем %1 белешки?"
 msgstr[3] "Да обришем једну белешку?"
 
-#: ../src/note.cpp:69
+#: ../src/note.cpp:66
 msgid "If you delete a note it is permanently lost."
 msgstr "Ако је обришете она ће заувек бити изгубљена."
 
-#: ../src/note.cpp:105
+#: ../src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Грешка при чувању података белешке."
 
-#: ../src/note.cpp:106
+#: ../src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1675,16 +1663,17 @@ msgstr ""
 "простора на диску и да ли имате право уписивања у фасциклу „~/.local/share/"
 "gnote“. Детаљи о грешци су записани у „~/.gnote.log.“."
 
-#: ../src/note.cpp:473
+#: ../src/note.cpp:470
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Грешка приликом чувања: %s"
 
-#: ../src/note.cpp:698
+#: ../src/note.cpp:696
 msgid "Setting text content for closed notes not supported"
 msgstr "Подешавање садржаја текста за затворене белешке није подржано"
 
-#: ../src/notemanagerbase.cpp:107 ../src/preferencesdialog.cpp:319
+#. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
+#: ../src/notemanagerbase.cpp:107 ../src/preferencesdialog.cpp:318
 msgid "New Note Template"
 msgstr "Шаблон нове белешке"
 
@@ -1692,7 +1681,7 @@ msgstr "Шаблон нове белешке"
 msgid "Describe your new note here."
 msgstr "Овде опишите вашу мисао."
 
-#: ../src/notemanager.cpp:133
+#: ../src/notemanager.cpp:134
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1734,7 +1723,7 @@ msgstr ""
 "текст одмах бива подвучен?  Кликните на везу да отворите белешку.</note-"
 "content>"
 
-#: ../src/notemanager.cpp:152
+#: ../src/notemanager.cpp:153
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1763,21 +1752,21 @@ msgstr ""
 "њој ће аутоматски бити направљена.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:167 ../src/notemanager.cpp:208
+#: ../src/notemanager.cpp:168 ../src/notemanager.cpp:207
 msgid "Start Here"
 msgstr "Почетна станица"
 
-#: ../src/notemanager.cpp:173
+#: ../src/notemanager.cpp:174
 msgid "Using Links in Gnote"
 msgstr "Коришћење веза у Гномовом бележнику"
 
-#: ../src/notemanager.cpp:178
+#: ../src/notemanager.cpp:179
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Грешка стварања почетних белешки: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/notemanager.cpp:196
+#: ../src/notemanager.cpp:195
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Грешка обраде ИксМЛ-а белешке, прескачем „%s“: %s"
@@ -1838,24 +1827,24 @@ msgstr "Наслов белешке"
 msgid "Ad_vanced"
 msgstr "_Напредно"
 
-#: ../src/notewindow.cpp:324
+#: ../src/notewindow.cpp:322
 msgid "Is Important"
 msgstr "Важно"
 
-#: ../src/notewindow.cpp:326 ../src/searchnoteswidget.cpp:144
+#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:144
 #: ../src/searchnoteswidget.cpp:147
 msgid "_Delete"
 msgstr "_Обриши"
 
-#: ../src/notewindow.cpp:378
+#: ../src/notewindow.cpp:376
 msgid "_Link to New Note"
 msgstr "_Веза на нову белешку"
 
-#: ../src/notewindow.cpp:414
+#: ../src/notewindow.cpp:412
 msgid "Set properties of text"
 msgstr "Подесите особине текста"
 
-#: ../src/notewindow.cpp:428
+#: ../src/notewindow.cpp:426
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1863,118 +1852,118 @@ msgstr ""
 "Ова белешка је белешка шаблона. Она одређује основни садржај обичних "
 "белешки, и неће бити приказана у изборнику белешки или у прозору за претрагу."
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:429
 msgid "Convert to regular note"
 msgstr "Претвори у обичну белешку"
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:432
 msgid "Save Si_ze"
 msgstr "Сачувај _величину"
 
-#: ../src/notewindow.cpp:438
+#: ../src/notewindow.cpp:436
 msgid "Save Se_lection"
 msgstr "Сачувај _избор"
 
-#: ../src/notewindow.cpp:442
+#: ../src/notewindow.cpp:440
 msgid "Save _Title"
 msgstr "Сачувај _наслов"
 
-#: ../src/notewindow.cpp:544 ../src/notewindow.cpp:1072
+#: ../src/notewindow.cpp:542 ../src/notewindow.cpp:1070
 msgid "Cannot create note"
 msgstr "Не могу да направим белешку"
 
-#: ../src/notewindow.cpp:825
+#: ../src/notewindow.cpp:823
 msgid "_Undo"
 msgstr "_Поништи"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:826
 msgid "_Redo"
 msgstr "_Врати"
 
-#: ../src/notewindow.cpp:837
+#: ../src/notewindow.cpp:835
 msgid "_Link"
 msgstr "_Увежи"
 
-#: ../src/notewindow.cpp:839
+#: ../src/notewindow.cpp:837
 msgid "_Bold"
 msgstr "По_дебљано"
 
-#: ../src/notewindow.cpp:840
+#: ../src/notewindow.cpp:838
 msgid "_Italic"
 msgstr "Ис_кошено"
 
-#: ../src/notewindow.cpp:841
+#: ../src/notewindow.cpp:839
 msgid "_Strikeout"
 msgstr "П_рецртано"
 
-#: ../src/notewindow.cpp:845
+#: ../src/notewindow.cpp:843
 msgid "_Highlight"
 msgstr "Ис_такнуто"
 
-#: ../src/notewindow.cpp:848
+#: ../src/notewindow.cpp:846
 msgid "_Normal"
 msgstr "_Нормална"
 
-#: ../src/notewindow.cpp:849
+#: ../src/notewindow.cpp:847
 msgid "S_mall"
 msgstr "_Мала"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:848
 msgid "_Large"
 msgstr "_Велика"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:849
 msgid "Hu_ge"
 msgstr "_Огромна"
 
-#: ../src/notewindow.cpp:876
+#: ../src/notewindow.cpp:874
 msgid "⦁ Bullets"
 msgstr "⦁ Списак са тачкицама"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:876
 msgid "→ Increase indent"
 msgstr "→ Повећај увлачење"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:878
 msgid "← Decrease indent"
 msgstr "← Умањи увлачење"
 
-#: ../src/preferencesdialog.cpp:102
+#: ../src/preferencesdialog.cpp:101
 msgid "Gnote Preferences"
 msgstr "Поставке Гномовог бележника"
 
-#: ../src/preferencesdialog.cpp:120
+#: ../src/preferencesdialog.cpp:119
 msgid "General"
 msgstr "Опште"
 
-#: ../src/preferencesdialog.cpp:121
+#: ../src/preferencesdialog.cpp:120
 msgid "Links"
 msgstr "Везе"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:123 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "Усклађивање"
 
-#: ../src/preferencesdialog.cpp:126
+#: ../src/preferencesdialog.cpp:125
 msgid "Plugins"
 msgstr "Прикључци"
 
-#: ../src/preferencesdialog.cpp:203
+#: ../src/preferencesdialog.cpp:202
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Није присутан прикључак „%s“"
 
 #. Open in new window
-#: ../src/preferencesdialog.cpp:242
+#: ../src/preferencesdialog.cpp:241
 msgid "Always _open notes in new window"
 msgstr "Увек _отвори белешке у новом прозору"
 
-#: ../src/preferencesdialog.cpp:255
+#: ../src/preferencesdialog.cpp:254
 msgid "_Spell check while typing"
 msgstr "Провери _правопис током куцања"
 
-#: ../src/preferencesdialog.cpp:256
+#: ../src/preferencesdialog.cpp:255
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1983,61 +1972,61 @@ msgstr ""
 "исправног писања приказаних у приручном изборнику."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:266
+#: ../src/preferencesdialog.cpp:265
 msgid "Enable auto-_bulleted lists"
 msgstr "Укључи самосталне _спискове са тачкицама"
 
-#: ../src/preferencesdialog.cpp:267
+#: ../src/preferencesdialog.cpp:266
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Започните нови тачкасти списак почевши нови ред знаком -."
 
-#: ../src/preferencesdialog.cpp:276
+#: ../src/preferencesdialog.cpp:275
 msgid "Use custom _font"
 msgstr "Користи посебан _словни лик"
 
-#: ../src/preferencesdialog.cpp:294
+#: ../src/preferencesdialog.cpp:293
 msgid "When renaming a linked note: "
 msgstr "Када се преименује белешка на коју друге белешке имају везу: "
 
-#: ../src/preferencesdialog.cpp:298
+#: ../src/preferencesdialog.cpp:297
 msgid "Ask me what to do"
 msgstr "Питај ме шта да радим"
 
-#: ../src/preferencesdialog.cpp:299
+#: ../src/preferencesdialog.cpp:298
 msgid "Never rename links"
 msgstr "Никад не преименуј везе"
 
-#: ../src/preferencesdialog.cpp:300
+#: ../src/preferencesdialog.cpp:299
 msgid "Always rename links"
 msgstr "Увек преименуј везе"
 
-#: ../src/preferencesdialog.cpp:320
+#: ../src/preferencesdialog.cpp:319
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr ""
 "Користи шаблон нове белешке за одређивање почетног текста у новим белешкама."
 
-#: ../src/preferencesdialog.cpp:325
+#: ../src/preferencesdialog.cpp:324
 msgid "Open New Note Template"
 msgstr "Отвори шаблон нове белешке"
 
 #. internal links
-#: ../src/preferencesdialog.cpp:382
+#: ../src/preferencesdialog.cpp:381
 msgid "_Automatically link to notes"
 msgstr "_Сам постави везу до белешки"
 
-#: ../src/preferencesdialog.cpp:383
+#: ../src/preferencesdialog.cpp:382
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Укључите ову опцију да направите везу када текст одговара наслову белешке."
 
 #. URLs
-#: ../src/preferencesdialog.cpp:389
+#: ../src/preferencesdialog.cpp:388
 msgid "Create links for _URLs"
 msgstr "Направи везе за _адресе"
 
-#: ../src/preferencesdialog.cpp:390
+#: ../src/preferencesdialog.cpp:389
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2046,11 +2035,11 @@ msgstr ""
 "адресу одговарајућим програмом."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:397
+#: ../src/preferencesdialog.cpp:396
 msgid "Highlight _WikiWords"
 msgstr "Означи _ВикиРечи"
 
-#: ../src/preferencesdialog.cpp:398
+#: ../src/preferencesdialog.cpp:397
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2058,20 +2047,20 @@ msgstr ""
 "Омогући опцију за обележавање речи <b>КојеИзгледајуОвако</b>. Клик изнад "
 "речи ће тада направити нову белешку са тим именом."
 
-#: ../src/preferencesdialog.cpp:430
+#: ../src/preferencesdialog.cpp:429
 msgid "Ser_vice:"
 msgstr "_Услуга:"
 
-#: ../src/preferencesdialog.cpp:486 ../src/preferencesdialog.cpp:1117
+#: ../src/preferencesdialog.cpp:485 ../src/preferencesdialog.cpp:1115
 msgid "Not configurable"
 msgstr "Није подесиво"
 
-#: ../src/preferencesdialog.cpp:513
+#: ../src/preferencesdialog.cpp:512
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Период позадинског _самоусаглашавања (у минутима)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:537
+#: ../src/preferencesdialog.cpp:536
 msgid "_Advanced..."
 msgstr "_Напредно..."
 
@@ -2089,26 +2078,25 @@ msgstr "_Укључи"
 msgid "_Disable"
 msgstr "_Искључи"
 
-#: ../src/preferencesdialog.cpp:783
+#: ../src/preferencesdialog.cpp:782
 msgid "Not Implemented"
 msgstr "Још није направљено"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: ../src/preferencesdialog.cpp:800
-#| msgid "%1% Preferences"
+#: ../src/preferencesdialog.cpp:799
 msgid "%1 Preferences"
 msgstr "%1 — поставке"
 
-#: ../src/preferencesdialog.cpp:935
+#: ../src/preferencesdialog.cpp:933
 msgid "Choose Note Font"
 msgstr "Одабери словни лик за белешке"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1033
+#: ../src/preferencesdialog.cpp:1031
 msgid "Other Synchronization Options"
 msgstr "Остале опције усклађивања"
 
-#: ../src/preferencesdialog.cpp:1036
+#: ../src/preferencesdialog.cpp:1034
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2117,23 +2105,23 @@ msgstr ""
 "за усклађивање:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1040
+#: ../src/preferencesdialog.cpp:1038
 msgid "Always ask me what to do"
 msgstr "Увек ме питај шта да урадиш"
 
-#: ../src/preferencesdialog.cpp:1044
+#: ../src/preferencesdialog.cpp:1042
 msgid "Rename my local note"
 msgstr "Преименуј моју локалну белешку"
 
-#: ../src/preferencesdialog.cpp:1048
+#: ../src/preferencesdialog.cpp:1046
 msgid "Replace my local note with the server's update"
 msgstr "Замени моју локалну белешку оном са сервера"
 
-#: ../src/preferencesdialog.cpp:1150
+#: ../src/preferencesdialog.cpp:1148
 msgid "Are you sure?"
 msgstr "Да ли сте сигурни?"
 
-#: ../src/preferencesdialog.cpp:1151
+#: ../src/preferencesdialog.cpp:1149
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2141,11 +2129,11 @@ msgstr ""
 "Уклањање поставки за усклађивање није препоручено.  Можете бити присиљени да "
 "поново ускладите све ваше белешке када сачувате нове поставке."
 
-#: ../src/preferencesdialog.cpp:1161
+#: ../src/preferencesdialog.cpp:1159
 msgid "Resetting Synchronization Settings"
 msgstr "Поново постави поставке за усклађивање"
 
-#: ../src/preferencesdialog.cpp:1162
+#: ../src/preferencesdialog.cpp:1160
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2155,11 +2143,11 @@ msgstr ""
 "сада бити обрисане.  Можете бити присиљени да поново ускладите све ваше "
 "белешке када сачувате нове поставке."
 
-#: ../src/preferencesdialog.cpp:1228
+#: ../src/preferencesdialog.cpp:1226
 msgid "Connection successful"
 msgstr "Веза је успостављена"
 
-#: ../src/preferencesdialog.cpp:1229
+#: ../src/preferencesdialog.cpp:1227
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2167,10 +2155,7 @@ msgstr ""
 "Програм је спреман да усклади белешке. Да ли желите сада да их ускладите?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1254
-#| msgid ""
-#| "Please check your information and try again.  The log file %1% may "
-#| "contain more information about the error."
+#: ../src/preferencesdialog.cpp:1252
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2178,47 +2163,48 @@ msgstr ""
 "Проверите ваше податке и покушајте поново.  Датотека дневника „%1“ може да "
 "садржи више података о грешци."
 
-#: ../src/preferencesdialog.cpp:1259
+#: ../src/preferencesdialog.cpp:1257
 msgid "Error connecting"
 msgstr "Грешка у повезивању"
 
-#: ../src/preferencesdialog.cpp:1322
+#: ../src/preferencesdialog.cpp:1320
 msgid "Version:"
 msgstr "Издање:"
 
-#: ../src/preferencesdialog.cpp:1325
+#: ../src/preferencesdialog.cpp:1323
 msgid "Author:"
 msgstr "Аутор:"
 
-#: ../src/preferencesdialog.cpp:1329
+#: ../src/preferencesdialog.cpp:1327
 msgid "Copyright:"
 msgstr "Ауторска права:"
 
-#: ../src/recentchanges.cpp:152
+#: ../src/recentchanges.cpp:153
 msgid "All Notes"
 msgstr "Све белешке"
 
-#: ../src/recentchanges.cpp:159
-msgid "New"
-msgstr "Нова"
+#: ../src/recentchanges.cpp:164
+#| msgid "Create _New Note"
+msgid "Create New Note"
+msgstr "Направи нову белешку"
 
-#: ../src/recentchanges.cpp:180
+#: ../src/recentchanges.cpp:185
 msgid "Search"
 msgstr "Потражи"
 
-#: ../src/recentchanges.cpp:241
+#: ../src/recentchanges.cpp:246
 msgid "Find _Next"
 msgstr "Нађи _следеће"
 
-#: ../src/recentchanges.cpp:250
+#: ../src/recentchanges.cpp:255
 msgid "Find _Previous"
 msgstr "Тражи _претходно"
 
-#: ../src/recentchanges.cpp:788
+#: ../src/recentchanges.cpp:790
 msgid "_Close"
 msgstr "_Затвори"
 
-#: ../src/remotecontrolproxy.cpp:57
+#: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Нисам успео да учитам сучеље Д-сабирнице „%s“: %s"
@@ -2268,13 +2254,11 @@ msgid "Matches"
 msgstr "Поклапања"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1096
+#: ../src/searchnoteswidget.cpp:1095
 msgid "Title match"
 msgstr "Поклапање наслова"
 
-#: ../src/searchnoteswidget.cpp:1100
-#| msgid "%1% match"
-#| msgid_plural "%1% matches"
+#: ../src/searchnoteswidget.cpp:1099
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 резултат"
@@ -2282,34 +2266,34 @@ msgstr[1] "%1 резултата"
 msgstr[2] "%1 резултата"
 msgstr[3] "један резултат"
 
-#: ../src/searchnoteswidget.cpp:1311
+#: ../src/searchnoteswidget.cpp:1310
 msgid "_New"
 msgstr "_Нова"
 
-#: ../src/searchnoteswidget.cpp:1340
+#: ../src/searchnoteswidget.cpp:1339
 msgid "_Open Template Note"
 msgstr "_Отвори шаблон белешке"
 
-#: ../src/searchnoteswidget.cpp:1351
+#: ../src/searchnoteswidget.cpp:1350
 msgid "_New..."
 msgstr "_Нова..."
 
-#: ../src/searchnoteswidget.cpp:1502 ../src/searchnoteswidget.cpp:1515
-#: ../src/searchnoteswidget.cpp:1526
+#: ../src/searchnoteswidget.cpp:1501 ../src/searchnoteswidget.cpp:1514
+#: ../src/searchnoteswidget.cpp:1525
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Нисам успео да обрадим подешавање „%s“ (Вредност: %s):"
 
-#: ../src/searchnoteswidget.cpp:1503
+#: ../src/searchnoteswidget.cpp:1502
 msgid "Expected format 'column:order'"
 msgstr "Очекивани запис „стубац:поредак“"
 
-#: ../src/searchnoteswidget.cpp:1516
+#: ../src/searchnoteswidget.cpp:1515
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Непознат стубац „%s“"
 
-#: ../src/searchnoteswidget.cpp:1527
+#: ../src/searchnoteswidget.cpp:1526
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Непознат поредак „%s“"
@@ -2352,17 +2336,16 @@ msgstr "Грешка учитавања „%s“"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Грешка добављања примерка динамичког модула симбола: %s"
 
-#: ../src/sharp/xmlreader.cpp:200
+#: ../src/sharp/xmlreader.cpp:198
 #, c-format
 msgid "XML error: %s"
 msgstr "Грешка ИксМЛ-а: %s"
 
-#: ../src/sharp/xmlreader.cpp:200
+#: ../src/sharp/xmlreader.cpp:198
 msgid "unknown parse error"
 msgstr "непозната грешка обраде"
 
 #: ../src/sharp/xmlwriter.cpp:40
-#| msgid "%1% failed"
 msgid "%1 failed"
 msgstr "%1 није успео"
 
@@ -2370,7 +2353,7 @@ msgstr "%1 није успео"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "НИШТАВАН стилски лист, попуните извештај о грешци"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:368
+#: ../src/synchronization/filesystemsyncserver.cpp:356
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2380,15 +2363,12 @@ msgstr ""
 "је у реду, али би могао да се појави вишак неких датотека које лутају "
 "унаоколо.  Ево грешке: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:608
+#: ../src/synchronization/filesystemsyncserver.cpp:596
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Грешка брисања старог катанца усклађивања „%s“: %s"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:114
-#| msgid ""
-#| "This synchronization addin is not supported on your computer. Please make "
-#| "sure you have FUSE and %1% correctly installed and configured"
+#: ../src/synchronization/fusesyncserviceaddin.cpp:113
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1 correctly installed and configured"
@@ -2396,38 +2376,38 @@ msgstr ""
 "Овај додатак за усклађивање није подржан на вашем рачунару. Проверите да ли "
 "су ФУСЕ и %1 исправно инсталирани и подешени"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:157
+#: ../src/synchronization/fusesyncserviceaddin.cpp:152
 msgid "Could not read testfile."
 msgstr "Не могу да читам датотеку теста."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:166
+#: ../src/synchronization/fusesyncserviceaddin.cpp:156
 msgid "Write test failed."
 msgstr "Тест писања није успео."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:195
+#: ../src/synchronization/fusesyncserviceaddin.cpp:185
 msgid "Timeout connecting to server."
 msgstr "Истекло је време за повезивање са сервером."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:201
+#: ../src/synchronization/fusesyncserviceaddin.cpp:191
 msgid "Error connecting to server."
 msgstr "Грешка при повезивању са сервером."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:214
+#: ../src/synchronization/fusesyncserviceaddin.cpp:204
 msgid "FUSE could not be enabled."
 msgstr "ФУСЕ не може бити омогућен."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:245
+#: ../src/synchronization/fusesyncserviceaddin.cpp:235
 msgid "An error occurred while connecting to the specified server"
 msgstr "Дошло је до грешке при повезивању са наведеним сервером"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:164
+#: ../src/synchronization/gnotesyncclient.cpp:165
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Необрадив елемент датума последњег усклађивања у „%s“"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:174
+#: ../src/synchronization/gnotesyncclient.cpp:175
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Необрадив елемент прегледа последњег усклађивања у „%s“"
@@ -2463,9 +2443,6 @@ msgid "Note conflict detected"
 msgstr "Примећен је сукоб белешки"
 
 #: ../src/synchronization/syncdialog.cpp:139
-#| msgid ""
-#| "The server version of \"%1%\" conflicts with your local note.  What do "
-#| "you want to do with your local note?"
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2482,47 +2459,47 @@ msgstr "Детаљи"
 msgid "Status"
 msgstr "Стање"
 
-#: ../src/synchronization/syncdialog.cpp:483
+#: ../src/synchronization/syncdialog.cpp:482
 msgid "Acquiring sync lock..."
 msgstr "Закључавам пред усклађивање..."
 
-#: ../src/synchronization/syncdialog.cpp:486
+#: ../src/synchronization/syncdialog.cpp:485
 msgid "Committing changes..."
 msgstr "Шаљем измене..."
 
-#: ../src/synchronization/syncdialog.cpp:489
+#: ../src/synchronization/syncdialog.cpp:488
 msgid "Synchronizing Notes"
 msgstr "Усклађујем белешке"
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: ../src/synchronization/syncdialog.cpp:489
 msgid "Synchronizing your notes..."
 msgstr "Усклађујем ваше белешке..."
 
-#: ../src/synchronization/syncdialog.cpp:491
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Ово може потрајати, завалите се и уживајте!"
 
-#: ../src/synchronization/syncdialog.cpp:493
+#: ../src/synchronization/syncdialog.cpp:492
 msgid "Connecting to the server..."
 msgstr "Повезујем се са сервером..."
 
-#: ../src/synchronization/syncdialog.cpp:499
+#: ../src/synchronization/syncdialog.cpp:498
 msgid "Deleting notes off of the server..."
 msgstr "Бришем белешке са сервера..."
 
-#: ../src/synchronization/syncdialog.cpp:503
+#: ../src/synchronization/syncdialog.cpp:502
 msgid "Downloading new/updated notes..."
 msgstr "Преузимам нове/ажуриране белешке..."
 
-#: ../src/synchronization/syncdialog.cpp:515
+#: ../src/synchronization/syncdialog.cpp:514
 msgid "Server Locked"
 msgstr "Сервер је закључан"
 
-#: ../src/synchronization/syncdialog.cpp:516
+#: ../src/synchronization/syncdialog.cpp:515
 msgid "Server is locked"
 msgstr "Сервер је закључан"
 
-#: ../src/synchronization/syncdialog.cpp:517
+#: ../src/synchronization/syncdialog.cpp:516
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2530,43 +2507,41 @@ msgstr ""
 "Неки други рачунар тренутно усклађује белешке.  Сачекајте 2 минута и "
 "покушајте поново."
 
-#: ../src/synchronization/syncdialog.cpp:521
+#: ../src/synchronization/syncdialog.cpp:520
 msgid "Preparing to download updates from server..."
 msgstr "Спремам се да преузмем промене са сервера..."
 
-#: ../src/synchronization/syncdialog.cpp:524
+#: ../src/synchronization/syncdialog.cpp:523
 msgid "Preparing to upload updates to server..."
 msgstr "Спремам се да пошаљем промене на сервер..."
 
-#: ../src/synchronization/syncdialog.cpp:527
+#: ../src/synchronization/syncdialog.cpp:526
 msgid "Uploading notes to server..."
 msgstr "Шаљем белешке серверу..."
 
-#: ../src/synchronization/syncdialog.cpp:530
+#: ../src/synchronization/syncdialog.cpp:529
 msgid "Synchronization Failed"
 msgstr "Усклађивање није успело"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:530
 msgid "Failed to synchronize"
 msgstr "Нисам успео да усагласим белешке"
 
-#: ../src/synchronization/syncdialog.cpp:532
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Нисам могао да усагласим белешке.  Проверите детаље приказане испод и "
 "покушајте поново."
 
-#: ../src/synchronization/syncdialog.cpp:538
+#: ../src/synchronization/syncdialog.cpp:537
 msgid "Synchronization Complete"
 msgstr "Усклађивање је завршено"
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:538
 msgid "Synchronization is complete"
 msgstr "Усклађивање је завршено"
 
-#: ../src/synchronization/syncdialog.cpp:540
-#| msgid "%1% note updated."
-#| msgid_plural "%1% notes updated."
+#: ../src/synchronization/syncdialog.cpp:539
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "%1 белешка је ажурирана."
@@ -2574,104 +2549,104 @@ msgstr[1] "%1 белешке су ажуриране."
 msgstr[2] "%1 бележака је ажурирано."
 msgstr[3] "Једна белешка је ажурирана."
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "Your notes are now up to date."
 msgstr "Ваше белешке су сада усклађене."
 
-#: ../src/synchronization/syncdialog.cpp:546
+#: ../src/synchronization/syncdialog.cpp:545
 msgid "Synchronization Canceled"
 msgstr "Усклађивање је прекинуто"
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:546
 msgid "Synchronization was canceled"
 msgstr "Усклађивање је прекинуто"
 
-#: ../src/synchronization/syncdialog.cpp:548
+#: ../src/synchronization/syncdialog.cpp:547
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Усклађивање је прекинуто.  Сада можете затворити прозорчић."
 
-#: ../src/synchronization/syncdialog.cpp:552
+#: ../src/synchronization/syncdialog.cpp:551
 msgid "Synchronization Not Configured"
 msgstr "Усклађивање није подешено"
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:552
 msgid "Synchronization is not configured"
 msgstr "Усклађивање није подешено"
 
-#: ../src/synchronization/syncdialog.cpp:554
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Подесите поставке усклађивања у прозорчету са поставкама."
 
-#: ../src/synchronization/syncdialog.cpp:558
+#: ../src/synchronization/syncdialog.cpp:557
 msgid "Synchronization Service Error"
 msgstr "Грешка услуге усклађивања"
 
-#: ../src/synchronization/syncdialog.cpp:559
+#: ../src/synchronization/syncdialog.cpp:558
 msgid "Service error"
 msgstr "Грешка услуге"
 
-#: ../src/synchronization/syncdialog.cpp:560
+#: ../src/synchronization/syncdialog.cpp:559
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Грешка при повезивању са сервисом за усклађивање.  Покушајте поново."
 
-#: ../src/synchronization/syncdialog.cpp:574
+#: ../src/synchronization/syncdialog.cpp:573
 msgid "Deleted locally"
 msgstr "Локално обрисана"
 
-#: ../src/synchronization/syncdialog.cpp:577
+#: ../src/synchronization/syncdialog.cpp:576
 msgid "Deleted from server"
 msgstr "Обрисана са сервера"
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:579
 msgid "Updated"
 msgstr "Ажурирано"
 
-#: ../src/synchronization/syncdialog.cpp:583
+#: ../src/synchronization/syncdialog.cpp:582
 msgid "Added"
 msgstr "Додато"
 
-#: ../src/synchronization/syncdialog.cpp:586
+#: ../src/synchronization/syncdialog.cpp:585
 msgid "Uploaded changes to server"
 msgstr "Измене су послате серверу"
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:588
 msgid "Uploaded new note to server"
 msgstr "Нова белешка је послата серверу"
 
-#: ../src/synchronization/syncmanager.cpp:66
+#: ../src/synchronization/syncmanager.cpp:65
 msgid "Synchronize Notes"
 msgstr "Усклади белешке"
 
-#: ../src/synchronization/syncmanager.cpp:85
-#: ../src/synchronization/syncmanager.cpp:102
-#: ../src/synchronization/syncmanager.cpp:571
+#: ../src/synchronization/syncmanager.cpp:84
+#: ../src/synchronization/syncmanager.cpp:101
+#: ../src/synchronization/syncmanager.cpp:569
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Пријавите грешку. Изливак није успео: %s"
 
-#: ../src/synchronization/syncmanager.cpp:148
+#: ../src/synchronization/syncmanager.cpp:147
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Грешка чишћења додатка након усклађивања: %s"
 
-#: ../src/synchronization/syncmanager.cpp:173
+#: ../src/synchronization/syncmanager.cpp:172
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Грешка приликом стварања сервера усклађивања: %s"
 
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:373
+#: ../src/synchronization/syncmanager.cpp:371
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Усаглашавање није успело уз следећи изузетак: %s"
 
-#: ../src/synchronization/syncutils.cpp:148
-#: ../src/synchronization/syncutils.cpp:180
+#: ../src/synchronization/syncutils.cpp:141
+#: ../src/synchronization/syncutils.cpp:173
 msgid "Could not enable FUSE"
 msgstr "Не могу да омогућим ФУСЕ"
 
-#: ../src/synchronization/syncutils.cpp:149
-#: ../src/synchronization/syncutils.cpp:181
+#: ../src/synchronization/syncutils.cpp:142
+#: ../src/synchronization/syncutils.cpp:174
 msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
@@ -2679,13 +2654,13 @@ msgstr ""
 "ФУСЕ модул не може бити учитан. Уверите се да је исправно инсталиран и "
 "покушајте поново."
 
-#: ../src/synchronization/syncutils.cpp:157
+#: ../src/synchronization/syncutils.cpp:150
 msgid "Enable FUSE?"
 msgstr "Да омогућим ФУСЕ?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
-#: ../src/synchronization/syncutils.cpp:160
+#: ../src/synchronization/syncutils.cpp:153
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
@@ -2699,7 +2674,7 @@ msgstr ""
 "покретању.  Додајте „modprobe fuse“ у /etc/init.d/boot.local или „fuse“ у /"
 "etc/modules."
 
-#: ../src/utils.cpp:158
+#: ../src/utils.cpp:169
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2707,74 +2682,67 @@ msgstr ""
 "Не могу да пронађем „Упутство Гномовог бележника“.  Проверите да ли је "
 "инсталација програма успешно обављена."
 
-#: ../src/utils.cpp:166
+#: ../src/utils.cpp:177
 msgid "Help not found"
 msgstr "Нисам пронашао помоћ"
 
-#: ../src/utils.cpp:199
+#: ../src/utils.cpp:210
 msgid "Cannot open location"
 msgstr "Не могу да отворим локацију"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:229
-#| msgid "Today, %1%"
+#: ../src/utils.cpp:240
 msgid "Today, %1"
 msgstr "Данас, у %1"
 
-#: ../src/utils.cpp:230
+#: ../src/utils.cpp:241
 msgid "Today"
 msgstr "Данас"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:236
-#| msgid "Yesterday, %1%"
+#: ../src/utils.cpp:247
 msgid "Yesterday, %1"
 msgstr "Јуче, у %1"
 
-#: ../src/utils.cpp:237
+#: ../src/utils.cpp:248
 msgid "Yesterday"
 msgstr "Јуче"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:243
-#| msgid "Tomorrow, %1%"
+#: ../src/utils.cpp:254
 msgid "Tomorrow, %1"
 msgstr "Сутра, у %1"
 
-#: ../src/utils.cpp:244
+#: ../src/utils.cpp:255
 msgid "Tomorrow"
 msgstr "Сутра"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:248
+#: ../src/utils.cpp:259
 msgid "%b %d"
 msgstr "%d. %b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:251 ../src/utils.cpp:263
-#| msgid "%1%, %2%"
+#: ../src/utils.cpp:262 ../src/utils.cpp:274
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: ../src/utils.cpp:256
+#: ../src/utils.cpp:267
 msgid "No Date"
 msgstr "Без датума"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:260
+#: ../src/utils.cpp:271
 msgid "%b %d %Y"
 msgstr "%d. %B %Y."
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: ../src/watchers.cpp:201
-#| msgid "(Untitled %1%)"
+#: ../src/watchers.cpp:198
 msgid "(Untitled %1)"
 msgstr "(Без наслова %1)"
 
-#: ../src/watchers.cpp:233
-#| msgid ""
-#| "A note with the title <b>%1%</b> already exists. Please choose another "
-#| "name for this note before continuing."
+#. TRANSLATORS: %1 is the placeholder for the title.
+#: ../src/watchers.cpp:230
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2782,21 +2750,24 @@ msgstr ""
 "Белешка <b>%1</b> већ постоји. Одаберите друго име за ову белешку пре него "
 "што наставите даље."
 
-#: ../src/watchers.cpp:248
+#: ../src/watchers.cpp:245
 msgid "Note title taken"
 msgstr "Наслов белешке је заузет"
 
-#: ../src/watchers.cpp:318
+#: ../src/watchers.cpp:315
 msgid "Check spelling"
 msgstr "Провери писање"
 
-#: ../src/watchers.cpp:708
+#: ../src/watchers.cpp:705
 msgid "_Copy Link Address"
 msgstr "_Умножи адресу везе"
 
-#: ../src/watchers.cpp:714
+#: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Отвори везу"
+
+#~ msgid "New"
+#~ msgstr "Нова"
 
 #~ msgid "Te_xt"
 #~ msgstr "Те_кст"
@@ -2818,9 +2789,6 @@ msgstr "_Отвори везу"
 
 #~ msgid "TrayIcon"
 #~ msgstr "Иконица фиоке"
-
-#~ msgid "Create _New Note"
-#~ msgstr "Направи _нову белешку"
 
 #~ msgid "Create a new note"
 #~ msgstr "Направите нову белешку"
