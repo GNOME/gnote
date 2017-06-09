@@ -82,8 +82,6 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
 
   update_results();
 
-  m_matches_window.set_shadow_type(Gtk::SHADOW_IN);
-
   m_matches_window.property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
   m_matches_window.property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
   m_matches_window.add(*m_tree);
@@ -257,7 +255,6 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow();
   sw->property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
   sw->property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
-  sw->set_shadow_type(Gtk::SHADOW_IN);
   sw->add(*m_notebooksTree);
   sw->show();
 
