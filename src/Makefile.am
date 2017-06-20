@@ -29,11 +29,15 @@ check_PROGRAMS = gnoteunittests
 TESTS = gnoteunittests
 
 gnoteunittests_SOURCES = \
-	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
+	synchronization/gnotesyncclient.cpp synchronization/gnotesyncclient.hpp \
+	synchronization/silentui.cpp synchronization/silentui.hpp \
+	synchronization/syncmanager.cpp synchronization/syncmanager.hpp \
 	test/runner.cpp \
 	test/testnote.cpp test/testnote.hpp \
 	test/testnotemanager.cpp test/testnotemanager.hpp \
-	test/testsyncclient.hpp test/testsyncclient.cpp \
+	test/testsyncaddin.cpp test/testsyncaddin.hpp \
+	test/testsyncclient.cpp test/testsyncclient.hpp \
+	test/testsyncmanager.cpp test/testsyncmanager.hpp \
 	test/testtagmanager.cpp test/testtagmanager.hpp \
 	test/unit/datetimeutests.cpp \
 	test/unit/filesutests.cpp \
@@ -42,6 +46,7 @@ gnoteunittests_SOURCES = \
 	test/unit/noteutests.cpp \
 	test/unit/notemanagerutests.cpp \
 	test/unit/stringutests.cpp \
+	test/unit/syncmanagerutests.cpp \
 	test/unit/trieutests.cpp \
 	test/unit/uriutests.cpp \
 	test/unit/xmlreaderutests.cpp \
