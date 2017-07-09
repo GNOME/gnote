@@ -184,10 +184,10 @@ namespace gnote {
         }
         
         Gtk::TreeIter iter = map_iter->second;;
+        // first remove notebook from map, then from store, because the later cases a UI refresh, that can query back here
+        m_notebookMap.erase(map_iter);
         m_notebooks->erase (iter);
-        
-        m_notebookMap.erase (map_iter);
-        
+
         // Remove the notebook tag from every note that's in the notebook
         std::list<NoteBase*> notes;
         Tag::Ptr tag = notebook->get_tag();
