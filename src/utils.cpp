@@ -164,7 +164,7 @@ namespace gnote {
       }
       GError *error = NULL;
 
-      if(!gtk_show_uri (screen, uri.c_str(), gtk_get_current_event_time (), &error)) {
+      if(!gtk_show_uri_on_window(parent->gobj(), uri.c_str(), gtk_get_current_event_time (), &error)) {
         
         Glib::ustring message = _("The \"Gnote Manual\" could "
                                   "not be found.  Please verify "
