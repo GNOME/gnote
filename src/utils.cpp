@@ -185,7 +185,6 @@ namespace gnote {
 
 
     void open_url(const Glib::ustring & url)
-      throw (Glib::Error)
     {
       if(!url.empty()) {
         GError *err = NULL;
@@ -677,8 +676,7 @@ namespace gnote {
     }
 
 
-    TextRange::TextRange(const Gtk::TextIter & _start,
-                         const Gtk::TextIter & _end) throw(sharp::Exception)
+    TextRange::TextRange(const Gtk::TextIter & _start, const Gtk::TextIter & _end)
     {
       if(_start.get_buffer() != _end.get_buffer()) {
         throw(sharp::Exception("Start buffer and end buffer do not match"));

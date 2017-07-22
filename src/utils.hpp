@@ -53,7 +53,7 @@ namespace gnote {
 
     void show_help(const Glib::ustring & filename, const Glib::ustring & link_id,
                    GdkScreen *screen, Gtk::Window *parent);
-    void open_url(const Glib::ustring & url) throw (Glib::Error);
+    void open_url(const Glib::ustring & url);
     void show_opening_location_error(Gtk::Window * parent,
                                      const Glib::ustring & url,
                                      const Glib::ustring & error);
@@ -170,8 +170,7 @@ namespace gnote {
     {
     public:
       TextRange();
-      TextRange(const Gtk::TextIter & start,
-                const Gtk::TextIter & end) throw(sharp::Exception);
+      TextRange(const Gtk::TextIter & start, const Gtk::TextIter & end);
       const Glib::RefPtr<Gtk::TextBuffer> & buffer() const
         {
           return m_buffer;

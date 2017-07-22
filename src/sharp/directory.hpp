@@ -57,8 +57,7 @@ namespace sharp {
    * @param dest The destination directory (should exist)
    */
   void directory_copy(const Glib::RefPtr<Gio::File> & src,
-                      const Glib::RefPtr<Gio::File> & dest)
-                      throw(Gio::Error);
+                      const Glib::RefPtr<Gio::File> & dest);
 
   bool directory_create(const Glib::ustring & dir);
 

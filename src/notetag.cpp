@@ -31,7 +31,7 @@
 
 namespace gnote {
 
-  NoteTag::NoteTag(const Glib::ustring & tag_name, int flags) throw(sharp::Exception)
+  NoteTag::NoteTag(const Glib::ustring & tag_name, int flags)
     : Gtk::TextTag(tag_name)
     , m_element_name(tag_name)
     , m_widget(NULL)

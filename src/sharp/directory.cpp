@@ -90,7 +90,6 @@ namespace sharp {
 
   void directory_copy(const Glib::RefPtr<Gio::File> & src,
                       const Glib::RefPtr<Gio::File> & dest)
-                      throw(Gio::Error)
   {
     if (false == dest->query_exists()
         || Gio::FILE_TYPE_DIRECTORY

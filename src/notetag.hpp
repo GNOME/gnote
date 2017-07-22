@@ -72,7 +72,7 @@ public:
     CAN_SPLIT     = 32
   };
 
-  static Ptr create(const Glib::ustring & tag_name, int flags) throw(sharp::Exception)
+  static Ptr create(const Glib::ustring & tag_name, int flags)
     {
       return Ptr(new NoteTag(tag_name, flags));
     }
@@ -158,7 +158,7 @@ public:
       property_foreground_gdk().set_value(render_foreground(value));
     }
 protected:
-  NoteTag(const Glib::ustring & tag_name, int flags = 0) throw(sharp::Exception);
+  NoteTag(const Glib::ustring & tag_name, int flags = 0);
   NoteTag();
   virtual void initialize(const Glib::ustring & element_name);
 
