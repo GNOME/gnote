@@ -42,13 +42,13 @@ class Exception
   : public std::exception
 {
 public:
-  Exception(const Glib::ustring & m) throw()
+  Exception(const Glib::ustring & m) noexcept
     : m_what(m)
     {
     }
-  virtual ~Exception() throw();
+  virtual ~Exception() noexcept;
 
-  virtual const char *what() const throw() override;
+  virtual const char *what() const noexcept override;
 
 private:
   Glib::ustring m_what;

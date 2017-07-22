@@ -38,8 +38,8 @@ public:
   KeyringException(const Glib::ustring & msg)
     : m_what(msg)
     {}
-  virtual ~KeyringException() throw() override {}
-  virtual const char *what() const throw() override
+  virtual ~KeyringException() noexcept override {}
+  virtual const char *what() const noexcept override
     {
       return m_what.c_str();
     }

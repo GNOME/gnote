@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2017 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,11 +31,11 @@
 
 namespace sharp {
 
-  Exception::~Exception() throw()
+  Exception::~Exception() noexcept
   {
   }
 
-  const char *Exception::what() const throw()
+  const char *Exception::what() const noexcept
   {
     return m_what.c_str();
   }
