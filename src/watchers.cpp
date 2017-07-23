@@ -608,7 +608,7 @@ namespace gnote {
   {
     Glib::ustring url = get_url(start, end);
     try {
-      utils::open_url (url);
+      utils::open_url(*get_host_window(), url);
     } 
     catch (Glib::Error & e) {
       utils::show_opening_location_error (get_host_window(), url, e.what());

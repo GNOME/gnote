@@ -22,6 +22,7 @@
 #include "sharp/uri.hpp"
 #include "debug.hpp"
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 #include "utils.hpp"
 #include "bugzillalink.hpp"
 #include "bugzillanoteaddin.hpp"
@@ -93,7 +94,7 @@ namespace bugzilla {
       DBG_OUT("Opening url '%s'...", get_bug_url().c_str());
 				
       try {
-        gnote::utils::open_url(get_bug_url());
+        gnote::utils::open_url(gnote::IGnote::obj().get_main_window(), get_bug_url());
       } 
       catch (const Glib::Error & e) {
         gnote::utils::show_opening_location_error(NULL, 
