@@ -381,7 +381,7 @@ void TableofcontentsNoteAddin::on_toc_help_activated()
 {
   gnote::NoteWindow* window = get_window();
   gnote::utils::show_help("gnote", "addin-tableofcontents",
-    dynamic_cast<Gtk::Window*>(window->host()));
+    *dynamic_cast<Gtk::Window*>(window->host()));
 }
 
 

@@ -51,7 +51,7 @@ namespace gnote {
 
     void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
 
-    void show_help(const Glib::ustring & filename, const Glib::ustring & link_id, Gtk::Window *parent);
+    void show_help(const Glib::ustring & filename, const Glib::ustring & link_id, Gtk::Window & parent);
     void open_url(Gtk::Window & parent, const Glib::ustring & url);
     void show_opening_location_error(Gtk::Window * parent,
                                      const Glib::ustring & url,

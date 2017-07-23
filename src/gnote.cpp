@@ -260,7 +260,7 @@ namespace gnote {
 
   void Gnote::on_show_help_action(const Glib::VariantBase&)
   {
-    utils::show_help("gnote", "", &get_main_window());
+    utils::show_help("gnote", "", get_main_window());
   }
 
   void Gnote::on_show_help_shortcust_action(const Glib::VariantBase&)
