@@ -152,8 +152,7 @@ namespace gnote {
     }
 
 
-    void show_help(const Glib::ustring & filename, const Glib::ustring & link_id,
-                   GdkScreen *screen, Gtk::Window *parent)
+    void show_help(const Glib::ustring & filename, const Glib::ustring & link_id, Gtk::Window *parent)
     {
       // "help:" URIs are "help:document[/page][?query][#frag]"
       // See resolve_help_uri () at,

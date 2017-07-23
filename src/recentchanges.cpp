@@ -432,7 +432,7 @@ namespace gnote {
       }
       break;
     case GDK_KEY_F1:
-      utils::show_help("gnote", "", get_screen()->gobj(), this);
+      utils::show_help("gnote", "", this);
       break;
     default:
       break;

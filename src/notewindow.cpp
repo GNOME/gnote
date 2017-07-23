@@ -556,8 +556,7 @@ namespace gnote {
 
   void NoteWindow::open_help_activate()
   {
-    utils::show_help("gnote", "editing-notes", get_screen()->gobj(),
-                     dynamic_cast<Gtk::Window*>(host()));
+    utils::show_help("gnote", "editing-notes", dynamic_cast<Gtk::Window*>(host()));
   }
 
   void NoteWindow::change_depth_right_handler()
