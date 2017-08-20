@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 14:00+0100\n"
-"PO-Revision-Date: 2017-03-13 14:01+0100\n"
+"POT-Creation-Date: 2017-08-20 23:55+0200\n"
+"PO-Revision-Date: 2017-08-20 23:57+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -24,7 +24,16 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1
+#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid "A simple note-taking application"
+msgstr "Prosty program do sporządzania notatek"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -34,7 +43,7 @@ msgstr ""
 "zapisywanie swoich myśli, łączenie ich za pomocą odnośników w stylu wiki, "
 "grupowanie w notatniki oraz oferuje kilka dodatkowych funkcji."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
 "Gnote also supports synchronization to make it possible to use on multiple "
 "devices."
@@ -181,11 +190,6 @@ msgstr "Włączenie wypunktowania/zwiększenie wcięcia zaznaczonego wiersza"
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Zmniejszenie wcięcia/wyłączenie wypunktowania bieżącego wiersza"
-
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
-#: ../src/recentchanges.cpp:542
-msgid "Gnote"
-msgstr "Gnote"
 
 #: ../data/gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
