@@ -786,12 +786,6 @@ namespace gnote {
       }
     }
 
-    menu_box->add(*manage(new Gtk::Separator));
-    Gtk::Widget *close_item = manage(utils::create_popover_button("win.close-window", _("_Close")));
-    close_item->add_accelerator("activate", get_accel_group(), GDK_KEY_W, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    close_item->add_accelerator("activate", get_accel_group(), GDK_KEY_Q, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    menu_box->add(*close_item);
-
     menu->add(*menu_box);
     for(auto & submenu : submenus) {
       menu->add(*submenu.second);
