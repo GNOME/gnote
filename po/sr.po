@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
 "keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-08-19 15:22+0000\n"
-"PO-Revision-Date: 2017-08-19 19:06+0200\n"
+"POT-Creation-Date: 2017-08-20 17:16+0000\n"
+"PO-Revision-Date: 2017-08-20 20:13+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -26,7 +26,6 @@ msgid "Gnote"
 msgstr "Гномов бележник"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:2
-#| msgid "A note taking application"
 msgid "A simple note-taking application"
 msgstr "Једноставан програм за белешке"
 
@@ -917,7 +916,6 @@ msgid "Failed to call GTG: %s"
 msgstr "Нисам успео да позовем ГДС: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
 msgid "Export to HTML"
 msgstr "Извези у ХТМЛ"
 
@@ -936,6 +934,11 @@ msgstr "Извези повезане белешке"
 #: ../src/addins/exporttohtml/exporttohtmldialog.cpp:44
 msgid "Include all other linked notes"
 msgstr "Укључи све друге повезане белешке"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
+#| msgid "Export to HTML"
+msgid "Export to HTML…"
+msgstr "Извези у ХТМЛ…"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
 #, c-format
@@ -1143,8 +1146,9 @@ msgid "Allows you to print a note."
 msgstr "Омогућава вам да штампате белешке."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
-msgid "Print"
-msgstr "Штампај"
+#| msgid "Print"
+msgid "Print…"
+msgstr "Штампај…"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
@@ -1827,24 +1831,25 @@ msgstr "Наслов белешке"
 msgid "Ad_vanced"
 msgstr "_Напредно"
 
-#: ../src/notewindow.cpp:322
-msgid "Is Important"
-msgstr "Важно"
+#: ../src/notewindow.cpp:328
+#| msgid "Important"
+msgid "_Important"
+msgstr "_Важне"
 
-#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:142
-#: ../src/searchnoteswidget.cpp:145
-msgid "_Delete"
-msgstr "_Обриши"
+#: ../src/notewindow.cpp:329
+#| msgid "_Delete"
+msgid "_Delete…"
+msgstr "_Обриши…"
 
-#: ../src/notewindow.cpp:376
+#: ../src/notewindow.cpp:381
 msgid "_Link to New Note"
 msgstr "_Веза на нову белешку"
 
-#: ../src/notewindow.cpp:412
+#: ../src/notewindow.cpp:417
 msgid "Set properties of text"
 msgstr "Подесите особине текста"
 
-#: ../src/notewindow.cpp:426
+#: ../src/notewindow.cpp:431
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1852,79 +1857,79 @@ msgstr ""
 "Ова белешка је белешка шаблона. Она одређује основни садржај обичних "
 "белешки, и неће бити приказана у изборнику белешки или у прозору за претрагу."
 
-#: ../src/notewindow.cpp:429
+#: ../src/notewindow.cpp:434
 msgid "Convert to regular note"
 msgstr "Претвори у обичну белешку"
 
-#: ../src/notewindow.cpp:432
+#: ../src/notewindow.cpp:437
 msgid "Save Si_ze"
 msgstr "Сачувај _величину"
 
-#: ../src/notewindow.cpp:436
+#: ../src/notewindow.cpp:441
 msgid "Save Se_lection"
 msgstr "Сачувај _избор"
 
-#: ../src/notewindow.cpp:440
+#: ../src/notewindow.cpp:445
 msgid "Save _Title"
 msgstr "Сачувај _наслов"
 
-#: ../src/notewindow.cpp:542 ../src/notewindow.cpp:1069
+#: ../src/notewindow.cpp:547 ../src/notewindow.cpp:1074
 msgid "Cannot create note"
 msgstr "Не могу да направим белешку"
 
-#: ../src/notewindow.cpp:822
+#: ../src/notewindow.cpp:827
 msgid "_Undo"
 msgstr "_Поништи"
 
-#: ../src/notewindow.cpp:825
+#: ../src/notewindow.cpp:830
 msgid "_Redo"
 msgstr "_Врати"
 
-#: ../src/notewindow.cpp:834
+#: ../src/notewindow.cpp:839
 msgid "_Link"
 msgstr "_Увежи"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:841
 msgid "_Bold"
 msgstr "По_дебљано"
 
-#: ../src/notewindow.cpp:837
+#: ../src/notewindow.cpp:842
 msgid "_Italic"
 msgstr "Ис_кошено"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:843
 msgid "_Strikeout"
 msgstr "П_рецртано"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:847
 msgid "_Highlight"
 msgstr "Ис_такнуто"
 
-#: ../src/notewindow.cpp:845
+#: ../src/notewindow.cpp:850
 msgid "_Normal"
 msgstr "_Нормална"
 
-#: ../src/notewindow.cpp:846
+#: ../src/notewindow.cpp:851
 msgid "S_mall"
 msgstr "_Мала"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:852
 msgid "_Large"
 msgstr "_Велика"
 
-#: ../src/notewindow.cpp:848
+#: ../src/notewindow.cpp:853
 msgid "Hu_ge"
 msgstr "_Огромна"
 
-#: ../src/notewindow.cpp:873
+#: ../src/notewindow.cpp:878
 msgid "⦁ Bullets"
 msgstr "⦁ Списак са тачкицама"
 
-#: ../src/notewindow.cpp:875
+#: ../src/notewindow.cpp:880
 msgid "→ Increase indent"
 msgstr "→ Повећај увлачење"
 
-#: ../src/notewindow.cpp:877
+#: ../src/notewindow.cpp:882
 msgid "← Decrease indent"
 msgstr "← Умањи увлачење"
 
@@ -2199,10 +2204,6 @@ msgstr "Нађи _следеће"
 msgid "Find _Previous"
 msgstr "Тражи _претходно"
 
-#: ../src/recentchanges.cpp:790
-msgid "_Close"
-msgstr "_Затвори"
-
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
@@ -2215,6 +2216,10 @@ msgstr "_Отвори"
 #: ../src/searchnoteswidget.cpp:138
 msgid "Open In New _Window"
 msgstr "Отвори у _новом прозору"
+
+#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+msgid "_Delete"
+msgstr "_Обриши"
 
 #: ../src/searchnoteswidget.cpp:148
 msgid "Re_name..."
@@ -2764,6 +2769,12 @@ msgstr "_Умножи адресу везе"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Отвори везу"
+
+#~ msgid "Is Important"
+#~ msgstr "Важно"
+
+#~ msgid "_Close"
+#~ msgstr "_Затвори"
 
 #~ msgid "New"
 #~ msgstr "Нова"
