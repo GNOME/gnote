@@ -314,14 +314,19 @@ namespace gnote {
     }
 
     std::vector<Gtk::Widget*> widgets;
+    int last_order = 0;
     for(std::map<int, Gtk::Widget*>::iterator iter = widget_map.begin();
         iter != widget_map.end(); ++iter) {
+      // put separator between groups
+      if(iter->first < 10000 && (iter->first / 1000) > last_order && widgets.size() > 0 && widgets.back() != NULL) {
+        widgets.push_back(NULL);
+      }
+      last_order = iter->first / 1000;
       widgets.push_back(iter->second);
     }
 
-    widgets.push_back(utils::create_popover_button("win.important-note", _("Is Important")));
-    widgets.push_back(NULL);
-    widgets.push_back(utils::create_popover_button("win.delete-note", _("_Delete")));
+    widgets.push_back(utils::create_popover_button("win.important-note", _("_Important")));
+    widgets.push_back(utils::create_popover_button("win.delete-note", _("_Delete…")));
 
     return widgets;
   }
