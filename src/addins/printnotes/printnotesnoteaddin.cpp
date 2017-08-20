@@ -60,7 +60,7 @@ namespace printnotes {
   std::map<int, Gtk::Widget*> PrintNotesNoteAddin::get_actions_popover_widgets() const
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
-    auto button = gnote::utils::create_popover_button("win.printnotes-print", _("Print"));
+    auto button = gnote::utils::create_popover_button("win.printnotes-print", _("Print…"));
     gnote::utils::add_item_to_ordered_map(widgets, gnote::PRINT_ORDER, button);
     return widgets;
   }
