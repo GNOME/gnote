@@ -7,18 +7,27 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-03-12 18:49+0000\n"
-"PO-Revision-Date: 2017-03-20 01:47+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"POT-Creation-Date: 2017-08-20 17:16+0000\n"
+"PO-Revision-Date: 2017-08-22 09:54+0700\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.3\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1
+#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid "A simple note-taking application"
+msgstr "Aplikasi perekam catatan sederhana"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -29,7 +38,7 @@ msgstr ""
 "taut bergaya WikiWiki, mengelompokkan dalam buku catatan, dan beberapa fitur "
 "ekstra bagi penggunaan sehari-hari."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
 "Gnote also supports synchronization to make it possible to use on multiple "
 "devices."
@@ -177,11 +186,6 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Turunkan indentasi/nonaktifkan bulatan bagi baris saat ini"
 
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
-#: ../src/recentchanges.cpp:542
-msgid "Gnote"
-msgstr "Gnote"
-
 #: ../data/gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Menyimpan catatan, menyambung ide, dan tetap tertata"
@@ -215,8 +219,8 @@ msgid ""
 "Enable this option to automatically create a link, when text matches note "
 "title."
 msgstr ""
-"Fungsikan opsi ini untuk secara otomatis membuat suatu taut, ketika teks cocok "
-"dengan judul catatan."
+"Fungsikan opsi ini untuk secara otomatis membuat suatu taut, ketika teks "
+"cocok dengan judul catatan."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:5
 msgid "Create links for URLs in notes"
@@ -232,11 +236,11 @@ msgstr "Aktifkan penandaan KataWiki"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:8
 msgid ""
-"Enable this option to highlight words ThatLookLikeThis. Clicking the word will "
-"create a note with that name."
+"Enable this option to highlight words ThatLookLikeThis. Clicking the word "
+"will create a note with that name."
 msgstr ""
-"Fungsikan opsi ini untuk menandai kata BerpenampilanSepertiIni. Mengklik kata "
-"tersebut akan membuat satu catatan dengan nama tersebut."
+"Fungsikan opsi ini untuk menandai kata BerpenampilanSepertiIni. Mengklik "
+"kata tersebut akan membuat satu catatan dengan nama tersebut."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:9
 msgid "Enable Auto bulleted lists"
@@ -244,11 +248,11 @@ msgstr "Aktifkan daftar dibulet otomatis"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:10
 msgid ""
-"Enable this option if you want bulleted lists to be automatic when you place - "
-"or * at the beginning of a line."
+"Enable this option if you want bulleted lists to be automatic when you place "
+"- or * at the beginning of a line."
 msgstr ""
-"Fungsikan pilihan ini bila Anda ingin daftar butir dibuat sendiri ketika Anda "
-"menempatkan - atau * di awal suatu baris."
+"Fungsikan pilihan ini bila Anda ingin daftar butir dibuat sendiri ketika "
+"Anda menempatkan - atau * di awal suatu baris."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:11
 msgid "Enable Middle-Click Paste On Icon"
@@ -259,8 +263,8 @@ msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
 msgstr ""
-"Fungsikan pilihan ini bila Anda ingin dapat mengklik tengah ikon Tomboy untuk "
-"menempel isi dengan penanda waktu ke dalam catatan Mulai Di Sini."
+"Fungsikan pilihan ini bila Anda ingin dapat mengklik tengah ikon Tomboy "
+"untuk menempel isi dengan penanda waktu ke dalam catatan Mulai Di Sini."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:13
 msgid "Enable custom font"
@@ -280,8 +284,8 @@ msgstr "Fonta Gubahan"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:16
 msgid ""
-"If enable-custom-font is true, the font name set here will be used as the font "
-"when displaying notes."
+"If enable-custom-font is true, the font name set here will be used as the "
+"font when displaying notes."
 msgstr ""
 "Bila enable-custom-font diisi true, nama fonta yang diisikan di sini akan "
 "dipakai sebagai fonta untuk menayangkan catatan."
@@ -293,8 +297,8 @@ msgstr "Fungsikan keybinding global"
 #: ../data/org.gnome.gnote.gschema.xml.in.h:18
 msgid ""
 "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
-"keybindings will be enabled, allowing for useful Gnote actions to be available "
-"from any application."
+"keybindings will be enabled, allowing for useful Gnote actions to be "
+"available from any application."
 msgstr ""
 "Bila true, keybinding desktop-global yand ditata di /org/gnome/gnote/global-"
 "keybindings akan diaktifkan, menyebabkan berbagai aksi Gnote yang berguna "
@@ -310,8 +314,9 @@ msgid ""
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
 msgstr ""
-"URI catatan yang dijadikan catatan \"Mulai Di Sini\", yang selalu ditempatkan "
-"di dasar menu catatan Tomboy dan juga dapat diakses melalui tombol singkat."
+"URI catatan yang dijadikan catatan \"Mulai Di Sini\", yang selalu "
+"ditempatkan di dasar menu catatan Tomboy dan juga dapat diakses melalui "
+"tombol singkat."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:21
 msgid "Minimum number of notes to show in menu"
@@ -319,10 +324,11 @@ msgstr "Cacah minimum catatan yang ditampilkan di menu"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:22
 msgid ""
-"Integer determining the minimum number of notes to show in the Gnote note menu."
+"Integer determining the minimum number of notes to show in the Gnote note "
+"menu."
 msgstr ""
-"Bilangan bulat yang menentukan cacah minimum catatan yang ditampilkan di menu "
-"catatan Gnote."
+"Bilangan bulat yang menentukan cacah minimum catatan yang ditampilkan di "
+"menu catatan Gnote."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "List of pinned notes"
@@ -330,11 +336,11 @@ msgstr "Daftar catatan yang dipatok"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:24
 msgid ""
-"Whitespace-separated list of note URIs for notes that should always appear in "
-"the Gnote note menu."
+"Whitespace-separated list of note URIs for notes that should always appear "
+"in the Gnote note menu."
 msgstr ""
-"Daftar yang dipisah dengan whitespace dari URI catatan bagi catatan yang mesti "
-"selalu tampil di menu catatan Tomboy."
+"Daftar yang dipisah dengan whitespace dari URI catatan bagi catatan yang "
+"mesti selalu tampil di menu catatan Tomboy."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:25
 msgid "Is main window maximized"
@@ -392,8 +398,8 @@ msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr ""
-"Waktu (dalam milidetik) Gnote mesti menunggu jawaban ketika memakai FUSE untuk "
-"mengkait suatu share selaras."
+"Waktu (dalam milidetik) Gnote mesti menunggu jawaban ketika memakai FUSE "
+"untuk mengkait suatu share selaras."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:37
 msgid "SSHFS Remote Synchronization Folder"
@@ -435,21 +441,21 @@ msgstr "Perilaku Pembaruan Tautan Saat Mengubah Nama Catatan"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:46
 msgid ""
-"Integer value indicating if there is a preference to always perform a specific "
-"link updating behavior when a note is renamed, instead of prompting the user. "
-"The values map to an internal enumeration. 0 indicates that the user wishes to "
-"be prompted when renaming a note may impact links that exist in other notes. 1 "
-"indicates that links should automatically be removed. 2 indicates that link "
-"text should be updated to the new note name so that it will continue linking "
-"to the renamed note."
+"Integer value indicating if there is a preference to always perform a "
+"specific link updating behavior when a note is renamed, instead of prompting "
+"the user. The values map to an internal enumeration. 0 indicates that the "
+"user wishes to be prompted when renaming a note may impact links that exist "
+"in other notes. 1 indicates that links should automatically be removed. 2 "
+"indicates that link text should be updated to the new note name so that it "
+"will continue linking to the renamed note."
 msgstr ""
 "Nilai bulat yang menandakan bila ada preferensi untuk selalu melakukan suatu "
 "tindakan spesifik ketika suatu catatan diubah nama, alih-alih bertanya ke "
-"pengguna. Nilai ini merujuk ke enumerasi internal. 0 menandakan bahwa pengguna "
-"ingin ditanyai ketika mengubah nama suatu catatan dapat mempengaruhi tautan "
-"yang ada pada catatan lain. 1 menandakan bahwa tautan mesti otomatis dibuang. "
-"2 menandakan bahwa teks tautan mesti diperbarui ke nama catatan baru sehingga "
-"masih terus menaut ke catatan yang diubah nama."
+"pengguna. Nilai ini merujuk ke enumerasi internal. 0 menandakan bahwa "
+"pengguna ingin ditanyai ketika mengubah nama suatu catatan dapat "
+"mempengaruhi tautan yang ada pada catatan lain. 1 menandakan bahwa tautan "
+"mesti otomatis dibuang. 2 menandakan bahwa teks tautan mesti diperbarui ke "
+"nama catatan baru sehingga masih terus menaut ke catatan yang diubah nama."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:47
 msgid "Enable closing notes with escape"
@@ -475,9 +481,11 @@ msgstr "Buka catatan di jendela baru"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:52
 msgid ""
-"Open notes in new window instead of replacing active content of the same window"
+"Open notes in new window instead of replacing active content of the same "
+"window"
 msgstr ""
-"Buka catatan di jendela baru, bukan mengganti isi aktif dari jendela yang sama"
+"Buka catatan di jendela baru, bukan mengganti isi aktif dari jendela yang "
+"sama"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:53
 msgid "Save note window size and autosize note window to it"
@@ -500,9 +508,9 @@ msgstr "Gunakan dekorasi jendela sisi klien"
 #: ../data/org.gnome.gnote.gschema.xml.in.h:56
 msgid ""
 "Should Gnote draw its window titlebar, or leave that to window manager. "
-"Possible values are 'enabled' to draw them, 'disabled' to leave them to window "
-"manager, or a comma separated list of desktop environments, where Gnote should "
-"draw decorations itself. Requires application restart."
+"Possible values are 'enabled' to draw them, 'disabled' to leave them to "
+"window manager, or a comma separated list of desktop environments, where "
+"Gnote should draw decorations itself. Requires application restart."
 msgstr ""
 "Mestikan Gnote menggambar bilah judul jendelanya, atau membiarkan itu ke "
 "manajer jendela. Nilai-nilai yang mungkin adalah 'enabled' untuk menggambar "
@@ -546,8 +554,8 @@ msgstr "Ekspor Ke HTML Catatan Tertaut"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid ""
-"The last setting for the 'Export linked notes' checkbox in the Export to HTML "
-"plugin."
+"The last setting for the 'Export linked notes' checkbox in the Export to "
+"HTML plugin."
 msgstr ""
 "Tatanan terakhir bagi checkbox 'Ekspor catatan tertaut' di plugin Ekspor ke "
 "HTML."
@@ -563,10 +571,10 @@ msgid ""
 "Export Linked Notes' setting and is used to specify whether all notes (found "
 "recursively) should be included during an export to HTML."
 msgstr ""
-"Tatanan terakhir bagi checkbox 'sertakan semua catatan tertaut lain' di plugin "
-"Ekspor ke HTML. Tatanan ini dipakai berkaitan dengan tatanan 'Ekspor Catatan "
-"Tertaut ke HTML' dan dipakai untuk menyatakan apakah semua catatan (ditemukan "
-"secara rekursif) mesti disertakan selama ekspor ke HTML."
+"Tatanan terakhir bagi checkbox 'sertakan semua catatan tertaut lain' di "
+"plugin Ekspor ke HTML. Tatanan ini dipakai berkaitan dengan tatanan 'Ekspor "
+"Catatan Tertaut ke HTML' dan dipakai untuk menyatakan apakah semua catatan "
+"(ditemukan secara rekursif) mesti disertakan selama ekspor ke HTML."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid "Synchronization Client ID"
@@ -609,17 +617,17 @@ msgstr "Perilaku Tersimpan Pertentangan Penyelarasan Catatan"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid ""
-"Integer value indicating if there is a preference to always perform a specific "
-"behavior when a conflict is detected, instead of prompting the user. The "
-"values map to an internal enumeration. 0 indicates that the user wishes to be "
-"prompted when a conflict occurs, so that they may handle each conflict "
-"situation on a case-by-case basis."
+"Integer value indicating if there is a preference to always perform a "
+"specific behavior when a conflict is detected, instead of prompting the "
+"user. The values map to an internal enumeration. 0 indicates that the user "
+"wishes to be prompted when a conflict occurs, so that they may handle each "
+"conflict situation on a case-by-case basis."
 msgstr ""
 "Nilai bulat yang menandakan bila ada preferensi untuk selalu melakukan suatu "
 "tindakan spesifik ketika pertentangan terdeteksi, alih-alih bertanya ke "
-"pengguna. Nilai ini merujuk ke enumerasi internal. 0 menandakan bahwa pengguna "
-"ingin ditanyai ketika pertentangan terjadi, sehingga mereka mungkin bisa "
-"menangani setiap keadaan pertentangan secara kasus per kasus."
+"pengguna. Nilai ini merujuk ke enumerasi internal. 0 menandakan bahwa "
+"pengguna ingin ditanyai ketika pertentangan terjadi, sehingga mereka mungkin "
+"bisa menangani setiap keadaan pertentangan secara kasus per kasus."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid "Automatic Background Synchronization Timeout"
@@ -628,13 +636,14 @@ msgstr "Tenggang Waktu Penyelarasan Latar Belakang Otomatis"
 #: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
-"notes (when sync is configured). Any value less than 1 indicates that autosync "
-"is disabled. The lowest acceptable positive value is 5. Value is in minutes."
+"notes (when sync is configured). Any value less than 1 indicates that "
+"autosync is disabled. The lowest acceptable positive value is 5. Value is in "
+"minutes."
 msgstr ""
 "Nilai integer yang menyatakan seberapa sering melakukan penyelarasan latar "
-"belakang dari catatan Anda (ketika penyelarasan dikonfigurasi). Sebarang nilai "
-"kurang dari 1 menyatakan bahwa autosync dimatikan. Nilai positif terkecil yang "
-"dapat diterima adalah 5. Nilai dalam menit."
+"belakang dari catatan Anda (ketika penyelarasan dikonfigurasi). Sebarang "
+"nilai kurang dari 1 menyatakan bahwa autosync dimatikan. Nilai positif "
+"terkecil yang dapat diterima adalah 5. Nilai dalam menit."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid "Accept SSL Certificates"
@@ -642,7 +651,8 @@ msgstr "Terima Sertifikat SSL"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid ""
-"Use wdfs option \"-ac\" to accept SSL certificates without prompting the user."
+"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
+"user."
 msgstr ""
 "Gunakan opsi wdfs \"-ac\" untuk menerima sertifikat SSL tanpa bertanya ke "
 "pengguna."
@@ -679,7 +689,8 @@ msgid "Time between checks"
 msgstr "Waktu antara pemeriksaan"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:87
-msgid "Time interval between note directory checks (in seconds). Min value is 5."
+msgid ""
+"Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
 "Selang waktu antara pemeriksaan direktori catatan (dalam detik). Nilai min "
 "adalah 5."
@@ -794,11 +805,12 @@ msgstr "Taut Bugzilla"
 #: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:2
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
-"note.  The bug number is inserted as a link with a little bug icon next to it."
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
 msgstr ""
 "Memungkinkan Anda menyeret suatu URL Bugzilla dari peramban Anda langsung ke "
-"suatu catatan Gnote. Nomor kutu disisipkan sebagai suatu taut dengan ikon kutu "
-"kecil di sebelahnya."
+"suatu catatan Gnote. Nomor kutu disisipkan sebagai suatu taut dengan ikon "
+"kutu kecil di sebelahnya."
 
 #: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:3
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:3
@@ -840,8 +852,8 @@ msgstr "Nama host tak valid"
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:277
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
-"Anda mesti menyatakan nama host Bugzilla yang valid untuk dipakai dengan ikon "
-"ini."
+"Anda mesti menyatakan nama host Bugzilla yang valid untuk dipakai dengan "
+"ikon ini."
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:296
 msgid "Error saving icon"
@@ -898,7 +910,6 @@ msgid "Failed to call GTG: %s"
 msgstr "Gagal memanggil GTG: %s"
 
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
 msgid "Export to HTML"
 msgstr "Ekspor ke HTML"
 
@@ -917,6 +928,10 @@ msgstr "Ekspor catatan tertaut"
 #: ../src/addins/exporttohtml/exporttohtmldialog.cpp:44
 msgid "Include all other linked notes"
 msgstr "Sertakan semua catatan tertaut lain"
+
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
+msgid "Export to HTML…"
+msgstr "Ekspor ke HTML…"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
 #, c-format
@@ -955,7 +970,8 @@ msgid "Folder path field is empty."
 msgstr "Ruas path folder kosong."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:141
-msgid "Specified folder path does not exist, and Gnote was unable to create it."
+msgid ""
+"Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Path folder yang diberikan tak ada, dan Gnote tak bisa membuatnya."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
@@ -1013,7 +1029,8 @@ msgstr "G_unakan Format Gubahan"
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:229
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
-msgstr "NoteDirectoryWatcher: Pemutakhiran digugurkan, galat saat membaca %s: %s"
+msgstr ""
+"NoteDirectoryWatcher: Pemutakhiran digugurkan, galat saat membaca %s: %s"
 
 #. TRANSLATORS: %s is file
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:256
@@ -1106,8 +1123,8 @@ msgstr "_Buka Hari Ini: Templat"
 
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
 msgid ""
-"Change the <span weight=\"bold\">Today: Template</span> note to customize the "
-"text that new Today notes have."
+"Change the <span weight=\"bold\">Today: Template</span> note to customize "
+"the text that new Today notes have."
 msgstr ""
 "Ubah catatan <span weight=\"bold\">Hari Ini: Templat</span> untuk menggubah "
 "teks yang dipunyai oleh catatan Hari Ini yang baru."
@@ -1121,8 +1138,8 @@ msgid "Allows you to print a note."
 msgstr "Memungkinkan Anda mencetak catatan."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
-msgid "Print"
-msgstr "Cetak"
+msgid "Print…"
+msgstr "Cetak…"
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
@@ -1337,8 +1354,8 @@ msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
 msgstr ""
-"Ada galat saat menyambung ke server. Ini mungkin disebabkan oleh nama pengguna "
-"dan/atau sandi yang salah."
+"Ada galat saat menyambung ke server. Ini mungkin disebabkan oleh nama "
+"pengguna dan/atau sandi yang salah."
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:156
 msgid "URL, username, or password field is empty."
@@ -1347,7 +1364,8 @@ msgstr "Ruas URL, nama pengguna, atau sandi kosong."
 #. TRANSLATORS: %1 is the format placeholder for the error message.
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:248
 msgid ""
-"Saving configuration to the GNOME keyring failed with the following message:\n"
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
 "\n"
 "%1"
 msgstr ""
@@ -1377,19 +1395,21 @@ msgstr "Eksepsi muncul ketika membuat catatan: %s"
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote telah berjalan.  Keluar…"
 
-#: ../src/gnote.cpp:273
+#: ../src/gnote.cpp:272
 msgid "Failed to get shortcuts window!"
 msgstr "Gagal mendapatkan jendela pintasan!"
 
-#: ../src/gnote.cpp:287
+#: ../src/gnote.cpp:286
 msgid "and Tomboy original authors."
 msgstr "dan para pengarang asli Tomboy."
 
-#: ../src/gnote.cpp:293
+#: ../src/gnote.cpp:292
 msgid "translator-credits"
-msgstr "Andika Triwidada <andika@gmail.com>, 2009, 2010, 2011, 2012, 2014, 2017."
+msgstr ""
+"Andika Triwidada <andika@gmail.com>, 2009, 2010, 2011, 2012, 2014, 2017.\n"
+"Kukuh Syafat <syafaatkukuh@gmail.com>, 2017."
 
-#: ../src/gnote.cpp:302
+#: ../src/gnote.cpp:301
 msgid ""
 "Copyright © 2010-2017 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1401,80 +1421,80 @@ msgstr ""
 "Hak Cipta © 2009 Hubert Figuiere\n"
 "Hak Cipta © 2004-2009 para pengarang asli Tomboy."
 
-#: ../src/gnote.cpp:306
+#: ../src/gnote.cpp:305
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Aplikasi penyimpan catatan desktop yang sederhana dan mudah dipakai."
 
-#: ../src/gnote.cpp:317
+#: ../src/gnote.cpp:316
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/gnote.cpp:528
+#: ../src/gnote.cpp:527
 msgid "Run Gnote in background."
 msgstr "Jalankan Gnote di latar belakang."
 
-#: ../src/gnote.cpp:529
+#: ../src/gnote.cpp:528
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Jalankan Gnote sebagai penyedia pencarian GNOME Shell."
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:529
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nyatakan path direktori yang memuat catatan-catatan."
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:529
 msgid "path"
 msgstr "path"
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:530
 msgid "Open the search all notes window with the search text."
 msgstr "Buka jendela cari di semua catatan dengan teks pencarian."
 
-#: ../src/gnote.cpp:531 ../src/gnote.cpp:536
+#: ../src/gnote.cpp:530 ../src/gnote.cpp:535
 msgid "text"
 msgstr "teks"
 
-#: ../src/gnote.cpp:532
+#: ../src/gnote.cpp:531
 msgid "Print version information."
 msgstr "Cetak informasi versi."
 
-#: ../src/gnote.cpp:533
+#: ../src/gnote.cpp:532
 msgid "Create and display a new note, with a optional title."
 msgstr "Buat dan tampilkan sebuah catatan baru, dengan judul opsional."
 
-#: ../src/gnote.cpp:533
+#: ../src/gnote.cpp:532
 msgid "title"
 msgstr "judul"
 
-#: ../src/gnote.cpp:534
+#: ../src/gnote.cpp:533
 msgid "Display the existing note matching title."
 msgstr "Tampilkan judul yang cocok dengan catatan yang telah ada."
 
-#: ../src/gnote.cpp:534
+#: ../src/gnote.cpp:533
 msgid "title/url"
 msgstr "judul/url"
 
-#: ../src/gnote.cpp:535
+#: ../src/gnote.cpp:534
 msgid "Display the 'Start Here' note."
 msgstr "Tampilkan catatan 'Mulai Di Sini'."
 
-#: ../src/gnote.cpp:536
+#: ../src/gnote.cpp:535
 msgid "Search and highlight text in the opened note."
 msgstr "Cari dan tandai teks pada catatan terbuka."
 
-#: ../src/gnote.cpp:540
+#: ../src/gnote.cpp:539
 msgid "A note taking application"
 msgstr "Aplikasi perekam catatan"
 
-#: ../src/gnote.cpp:540
+#: ../src/gnote.cpp:539
 msgid "Gnote options at launch"
 msgstr "Opsi Gnote saat peluncuran"
 
-#: ../src/gnote.cpp:617
+#: ../src/gnote.cpp:616
 msgid "Could not connect to remote instance."
 msgstr "Tak bisa menyambung ke instansi jauh."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:734
+#: ../src/gnote.cpp:733
 msgid "Version %1"
 msgstr "Versi %1"
 
@@ -1623,12 +1643,12 @@ msgstr "Galat menyimpan data catatan."
 #: ../src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
-"sufficient disk space, and that you have appropriate rights on ~/.local/share/"
-"gnote. Error details can be found in ~/.gnote.log."
+"sufficient disk space, and that you have appropriate rights on ~/.local/"
+"share/gnote. Error details can be found in ~/.gnote.log."
 msgstr ""
-"Galat terjadi saat menyimpan catatan Anda. Silakan periksa bahwa Anda memiliki "
-"cukup ruang disk, dan Anda memiliki hak yang sesuai pada ~/.local/share/gnote. "
-"Rincian galat dapat ditemukan di ~/.gnote.log."
+"Galat terjadi saat menyimpan catatan Anda. Silakan periksa bahwa Anda "
+"memiliki cukup ruang disk, dan Anda memiliki hak yang sesuai pada ~/.local/"
+"share/gnote. Rincian galat dapat ditemukan di ~/.gnote.log."
 
 #: ../src/note.cpp:470
 #, c-format
@@ -1657,17 +1677,17 @@ msgid ""
 "\n"
 "Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
 "\n"
-"You can create new notes to hold your ideas by selecting the \"Create New Note"
-"\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
+"You can create new notes to hold your ideas by selecting the \"Create New "
+"Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
 "automatically.\n"
 "\n"
 "Then organize the notes you create by linking related notes and ideas "
 "together!\n"
 "\n"
 "We've created a note called <link:internal>Using Links in Gnote</link:"
-"internal>.  Notice how each time we type <link:internal>Using Links in Gnote</"
-"link:internal> it automatically gets underlined?  Click on the link to open "
-"the note.</note-content>"
+"internal>.  Notice how each time we type <link:internal>Using Links in "
+"Gnote</link:internal> it automatically gets underlined?  Click on the link "
+"to open the note.</note-content>"
 msgstr ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Mulai Di "
 "Sini\n"
@@ -1677,25 +1697,26 @@ msgstr ""
 "Gunakan catatan \"Mulai Di Sini\" ini untuk mulai menata ide dan pemikiran "
 "Anda.\n"
 "\n"
-"Anda dapat membuat catatan baru untuk menyimpan ide Anda dengan memilih \"Buat "
-"Catatan Baru\" dari menu Gnote pada Panel GNOME. Catatan Anda akan otomatis "
-"disimpan.\n"
+"Anda dapat membuat catatan baru untuk menyimpan ide Anda dengan memilih "
+"\"Buat Catatan Baru\" dari menu Gnote pada Panel GNOME. Catatan Anda akan "
+"otomatis disimpan.\n"
 "\n"
 "Lalu tata catatan yang Anda buat dengan menautkan catatan dan ide terkait "
 "bersama-sama!\n"
 "\n"
 "Kami telah membuat suatu catatan bernama <link:internal>Memakai Tautan di "
-"Gnote</link:internal>. Perhatikan bagaimana setiap kali kita mengetikkan <link:"
-"internal>Memakai Tautan di Gnote</link:internal> dia secara otomatis digaris-"
-"bawahi? Klik pada tautan untuk membuka catatan.</note-content>"
+"Gnote</link:internal>. Perhatikan bagaimana setiap kali kita mengetikkan "
+"<link:internal>Memakai Tautan di Gnote</link:internal> dia secara otomatis "
+"digaris-bawahi? Klik pada tautan untuk membuka catatan.</note-content>"
 
 #: ../src/notemanager.cpp:153
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
-"Notes in Gnote can be linked together by highlighting text in the current note "
-"and clicking the <bold>Link</bold> button above in the toolbar.  Doing so will "
-"create a new note and also underline the note's title in the current note.\n"
+"Notes in Gnote can be linked together by highlighting text in the current "
+"note and clicking the <bold>Link</bold> button above in the toolbar.  Doing "
+"so will create a new note and also underline the note's title in the current "
+"note.\n"
 "\n"
 "Changing the title of a note will update links present in other notes.  This "
 "prevents broken links from occurring when a note is renamed.\n"
@@ -1710,12 +1731,12 @@ msgstr ""
 "itu akan membuat suatu catatan baru dan juga menggaris-bawahi judul catatan "
 "pada catatan kini.\n"
 "\n"
-"Mengubah judul dari suatu catatan akan memperbarui tautan yang ada di catatan-"
-"catatan lain. Hal ini mencegah terjadinya taut rusak ketika sebuah catatan "
-"diubah namanya.\n"
+"Mengubah judul dari suatu catatan akan memperbarui tautan yang ada di "
+"catatan-catatan lain. Hal ini mencegah terjadinya taut rusak ketika sebuah "
+"catatan diubah namanya.\n"
 "\n"
-"Bila Anda mengetikkan nama dari catatan lain pada catatan kini, dia juga akan "
-"ditautkan secara otomatis untuk Anda.</note-content>"
+"Bila Anda mengetikkan nama dari catatan lain pada catatan kini, dia juga "
+"akan ditautkan secara otomatis untuk Anda.</note-content>"
 
 #. Attempt to find an existing Start Here note
 #: ../src/notemanager.cpp:168 ../src/notemanager.cpp:207
@@ -1776,8 +1797,8 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Ubah nama tautan di catatan-catatan lain dari \"<span underline=\"single\">%1</"
-"span>\" menjadi \"<span underline=\"single\">%2</span>\"?\n"
+"Ubah nama tautan di catatan-catatan lain dari \"<span underline=\"single\">"
+"%1</span>\" menjadi \"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "Bila Anda tidak mengubah nama tautan, mereka tak akan merujuk kemanapun lagi."
 
@@ -1793,24 +1814,23 @@ msgstr "Judul Catatan"
 msgid "Ad_vanced"
 msgstr "Tingk_at lanjut"
 
-#: ../src/notewindow.cpp:322
-msgid "Is Important"
-msgstr "Penting"
+#: ../src/notewindow.cpp:328
+msgid "_Important"
+msgstr "Pent_ing"
 
-#: ../src/notewindow.cpp:324 ../src/searchnoteswidget.cpp:144
-#: ../src/searchnoteswidget.cpp:147
-msgid "_Delete"
-msgstr "_Hapus"
+#: ../src/notewindow.cpp:329
+msgid "_Delete…"
+msgstr "_Hapus…"
 
-#: ../src/notewindow.cpp:376
+#: ../src/notewindow.cpp:381
 msgid "_Link to New Note"
 msgstr "_Taut ke Catatan Baru"
 
-#: ../src/notewindow.cpp:412
+#: ../src/notewindow.cpp:417
 msgid "Set properties of text"
 msgstr "Tata properti teks"
 
-#: ../src/notewindow.cpp:426
+#: ../src/notewindow.cpp:431
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1818,79 +1838,79 @@ msgstr ""
 "Catatan ini adalah catatan templat. Ini menentukan isi baku dari catatan "
 "biasa, dan tak akan muncul di menu catatan atau jendela pencarian."
 
-#: ../src/notewindow.cpp:429
+#: ../src/notewindow.cpp:434
 msgid "Convert to regular note"
 msgstr "Konversi ke catatan biasa"
 
-#: ../src/notewindow.cpp:432
+#: ../src/notewindow.cpp:437
 msgid "Save Si_ze"
 msgstr "Simpan _Ukuran"
 
-#: ../src/notewindow.cpp:436
+#: ../src/notewindow.cpp:441
 msgid "Save Se_lection"
 msgstr "Simpan Pi_lihan"
 
-#: ../src/notewindow.cpp:440
+#: ../src/notewindow.cpp:445
 msgid "Save _Title"
 msgstr "Simpan _Judul"
 
-#: ../src/notewindow.cpp:542 ../src/notewindow.cpp:1070
+#: ../src/notewindow.cpp:547 ../src/notewindow.cpp:1074
 msgid "Cannot create note"
 msgstr "Tak dapat membuat catatan"
 
-#: ../src/notewindow.cpp:823
+#: ../src/notewindow.cpp:827
 msgid "_Undo"
 msgstr "_Tak Jadi"
 
-#: ../src/notewindow.cpp:826
+#: ../src/notewindow.cpp:830
 msgid "_Redo"
 msgstr "_Jadi Lagi"
 
-#: ../src/notewindow.cpp:835
+#: ../src/notewindow.cpp:839
 msgid "_Link"
 msgstr "_Taut"
 
-#: ../src/notewindow.cpp:837
+#: ../src/notewindow.cpp:841
 msgid "_Bold"
 msgstr "Te_bal"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:842
 msgid "_Italic"
 msgstr "M_iring"
 
-#: ../src/notewindow.cpp:839
+#: ../src/notewindow.cpp:843
 msgid "_Strikeout"
 msgstr "_Dicoret"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:847
 msgid "_Highlight"
 msgstr "_Penandaan"
 
-#: ../src/notewindow.cpp:846
+#: ../src/notewindow.cpp:850
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:851
 msgid "S_mall"
 msgstr "_Kecil"
 
-#: ../src/notewindow.cpp:848
+#: ../src/notewindow.cpp:852
 msgid "_Large"
 msgstr "_Besar"
 
-#: ../src/notewindow.cpp:849
+#: ../src/notewindow.cpp:853
 msgid "Hu_ge"
 msgstr "Rak_sasa"
 
-#: ../src/notewindow.cpp:874
+#: ../src/notewindow.cpp:878
 msgid "⦁ Bullets"
 msgstr "⦁ Bulet"
 
-#: ../src/notewindow.cpp:876
+#: ../src/notewindow.cpp:880
 msgid "→ Increase indent"
 msgstr "→ Naikkan indentasi"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:882
 msgid "← Decrease indent"
 msgstr "← Turunkan indentasi"
 
@@ -2067,8 +2087,8 @@ msgstr "Opsi Penyelarasan Lain"
 
 #: ../src/preferencesdialog.cpp:1034
 msgid ""
-"When a conflict is detected between a local note and a note on the configured "
-"synchronization server:"
+"When a conflict is detected between a local note and a note on the "
+"configured synchronization server:"
 msgstr ""
 "Ketika konflik terdeteksi antara suatu catatan lokal dan catatan pada server "
 "penyelarasan yang terkonfigurasi:"
@@ -2092,8 +2112,8 @@ msgstr "Anda yakin?"
 
 #: ../src/preferencesdialog.cpp:1149
 msgid ""
-"Clearing your synchronization settings is not recommended.  You may be forced "
-"to synchronize all of your notes again when you save new settings."
+"Clearing your synchronization settings is not recommended.  You may be "
+"forced to synchronize all of your notes again when you save new settings."
 msgstr ""
 "Tak disarankan untuk membersihkan pengaturan penyelarasan Anda. Anda mungkin "
 "dipaksa untuk menyelaraskan semua catatan Anda lagi ketika Anda menyimpan "
@@ -2128,8 +2148,8 @@ msgstr ""
 #. TRANSLATORS: %1 is the placeholder for the log file path.
 #: ../src/preferencesdialog.cpp:1252
 msgid ""
-"Please check your information and try again.  The log file %1 may contain more "
-"information about the error."
+"Please check your information and try again.  The log file %1 may contain "
+"more information about the error."
 msgstr ""
 "Silakan periksa informasi Anda dan coba lagi. Berkas log %1 mungkin memuat "
 "lebih banyak informasi tentang galat."
@@ -2170,44 +2190,44 @@ msgstr "Cari _Lagi"
 msgid "Find _Previous"
 msgstr "Cari ke _Belakang"
 
-#: ../src/recentchanges.cpp:790
-msgid "_Close"
-msgstr "_Tutup"
-
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Gagal memuat antar muka D-Bus %s: %s"
 
-#: ../src/searchnoteswidget.cpp:137
+#: ../src/searchnoteswidget.cpp:135
 msgid "_Open"
 msgstr "B_uka"
 
-#: ../src/searchnoteswidget.cpp:140
+#: ../src/searchnoteswidget.cpp:138
 msgid "Open In New _Window"
 msgstr "Buka Di _Jendela Baru"
 
-#: ../src/searchnoteswidget.cpp:150
+#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+msgid "_Delete"
+msgstr "_Hapus"
+
+#: ../src/searchnoteswidget.cpp:148
 msgid "Re_name..."
 msgstr "Ubah _Nama…"
 
-#: ../src/searchnoteswidget.cpp:229
+#: ../src/searchnoteswidget.cpp:227
 msgid "Notebooks"
 msgstr "Buku Catatan"
 
-#: ../src/searchnoteswidget.cpp:659
+#: ../src/searchnoteswidget.cpp:656
 msgid "Note"
 msgstr "Catatan"
 
-#: ../src/searchnoteswidget.cpp:681
+#: ../src/searchnoteswidget.cpp:678
 msgid "Modified"
 msgstr "Diubah"
 
-#: ../src/searchnoteswidget.cpp:1000
+#: ../src/searchnoteswidget.cpp:997
 msgid "Notes"
 msgstr "Catatan"
 
-#: ../src/searchnoteswidget.cpp:1019
+#: ../src/searchnoteswidget.cpp:1016
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2215,52 +2235,52 @@ msgstr ""
 "Tak ditemukan hasil pada buku catatan yang dipilih.\n"
 "Klik disini untuk mencari dari semua catatan."
 
-#: ../src/searchnoteswidget.cpp:1023
+#: ../src/searchnoteswidget.cpp:1020
 msgid "Click here to search across all notebooks"
 msgstr "Klik disini untuk mencari dari semua buku catatan"
 
-#: ../src/searchnoteswidget.cpp:1044
+#: ../src/searchnoteswidget.cpp:1041
 msgid "Matches"
 msgstr "Cocok"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1095
+#: ../src/searchnoteswidget.cpp:1092
 msgid "Title match"
 msgstr "Cocok judul"
 
-#: ../src/searchnoteswidget.cpp:1099
+#: ../src/searchnoteswidget.cpp:1096
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 cocok"
 
-#: ../src/searchnoteswidget.cpp:1310
+#: ../src/searchnoteswidget.cpp:1307
 msgid "_New"
 msgstr "_Baru"
 
-#: ../src/searchnoteswidget.cpp:1339
+#: ../src/searchnoteswidget.cpp:1336
 msgid "_Open Template Note"
 msgstr "_Buka Templat Catatan"
 
-#: ../src/searchnoteswidget.cpp:1350
+#: ../src/searchnoteswidget.cpp:1347
 msgid "_New..."
 msgstr "_Baru…"
 
-#: ../src/searchnoteswidget.cpp:1501 ../src/searchnoteswidget.cpp:1514
-#: ../src/searchnoteswidget.cpp:1525
+#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
+#: ../src/searchnoteswidget.cpp:1522
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Gagal mengurai pengaturan %s (Nilai: %s):"
 
-#: ../src/searchnoteswidget.cpp:1502
+#: ../src/searchnoteswidget.cpp:1499
 msgid "Expected format 'column:order'"
 msgstr "Format yang diharapkan 'kolom:urutan'"
 
-#: ../src/searchnoteswidget.cpp:1515
+#: ../src/searchnoteswidget.cpp:1512
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Kolom tak dikenal %s"
 
-#: ../src/searchnoteswidget.cpp:1526
+#: ../src/searchnoteswidget.cpp:1523
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Urutan tak dikenal %s"
@@ -2320,27 +2340,27 @@ msgstr "%1 gagal"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Stylesheet NULL, harap laporkan kutu"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:356
+#: ../src/synchronization/filesystemsyncserver.cpp:377
 #, c-format
 msgid ""
-"Exception during server cleanup while committing. Server integrity is OK, but "
-"there may be some excess files floating around.  Here's the error: %s\n"
+"Exception during server cleanup while committing. Server integrity is OK, "
+"but there may be some excess files floating around.  Here's the error: %s\n"
 msgstr ""
-"Eksepsi ketika pembersihan server ketika mengkomit. Integritas server OK, tapi "
-"mungkin ada beberapa berkas sisa terserak.  Inilah galatnya: %s\n"
+"Eksepsi ketika pembersihan server ketika mengkomit. Integritas server OK, "
+"tapi mungkin ada beberapa berkas sisa terserak.  Inilah galatnya: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:596
+#: ../src/synchronization/filesystemsyncserver.cpp:617
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Galat saat menghapus kunci penyelarasan lama \"%s\": %s"
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:113
 msgid ""
-"This synchronization addin is not supported on your computer. Please make sure "
-"you have FUSE and %1 correctly installed and configured"
+"This synchronization addin is not supported on your computer. Please make "
+"sure you have FUSE and %1 correctly installed and configured"
 msgstr ""
-"Addin penyelarasan ini tak didukung pada komputer Anda. Harap pastikan bahwa  "
-"FUSE dan %1 terpasang dan terkonfigurasi dengan benar."
+"Addin penyelarasan ini tak didukung pada komputer Anda. Harap pastikan "
+"bahwa  FUSE dan %1 terpasang dan terkonfigurasi dengan benar."
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:152
 msgid "Could not read testfile."
@@ -2410,8 +2430,8 @@ msgstr "Konflik catatan terdeteksi"
 
 #: ../src/synchronization/syncdialog.cpp:139
 msgid ""
-"The server version of \"%1\" conflicts with your local note.  What do you want "
-"to do with your local note?"
+"The server version of \"%1\" conflicts with your local note.  What do you "
+"want to do with your local note?"
 msgstr ""
 "Versi server \"%1\" konflik dengan catatan lokal Anda. Apa yang ingin Anda "
 "lakukan terhadap catatan lokal Anda?"
@@ -2467,11 +2487,11 @@ msgstr "Server terkunci"
 
 #: ../src/synchronization/syncdialog.cpp:516
 msgid ""
-"One of your other computers is currently synchronizing.  Please wait 2 minutes "
-"and try again."
+"One of your other computers is currently synchronizing.  Please wait 2 "
+"minutes and try again."
 msgstr ""
-"Satu dari komputer lain Anda kini sedang menyelaraskan. Silakan tunggu 2 menit "
-"dan coba lagi."
+"Satu dari komputer lain Anda kini sedang menyelaraskan. Silakan tunggu 2 "
+"menit dan coba lagi."
 
 #: ../src/synchronization/syncdialog.cpp:520
 msgid "Preparing to download updates from server..."
@@ -2495,7 +2515,8 @@ msgstr "Gagal menyelaraskan"
 
 #: ../src/synchronization/syncdialog.cpp:531
 msgid "Could not synchronize notes.  Check the details below and try again."
-msgstr "Tak bisa menyelaraskan catatan. Periksa rincian di bawah dan coba lagi."
+msgstr ""
+"Tak bisa menyelaraskan catatan. Periksa rincian di bawah dan coba lagi."
 
 #: ../src/synchronization/syncdialog.cpp:537
 msgid "Synchronization Complete"
@@ -2524,7 +2545,8 @@ msgstr "Penyelarasan dibatalkan"
 
 #: ../src/synchronization/syncdialog.cpp:547
 msgid "You canceled the synchronization.  You may close the window now."
-msgstr "Anda membatalkan penyelarasan. Anda boleh menutup jendela ini sekarang."
+msgstr ""
+"Anda membatalkan penyelarasan. Anda boleh menutup jendela ini sekarang."
 
 #: ../src/synchronization/syncdialog.cpp:551
 msgid "Synchronization Not Configured"
@@ -2625,8 +2647,9 @@ msgstr "Fungsikan FUSE?"
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
-"To avoid getting this prompt in the future, you should load FUSE at startup.  "
-"Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /etc/modules."
+"To avoid getting this prompt in the future, you should load FUSE at "
+"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+"etc/modules."
 msgstr ""
 "Penyelarasan yang telah Anda pilih memerlukan pemuatan modul FUSE.\n"
 "\n"
@@ -2634,65 +2657,65 @@ msgstr ""
 "memuat FUSE saat awal mula. Tambahkan \"modprobe fuse\" ke /etc/init.d/boot."
 "local atau \"fuse\" ke /etc/modules."
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:168
 msgid ""
-"The \"Gnote Manual\" could not be found.  Please verify that your installation "
-"has been completed successfully."
+"The \"Gnote Manual\" could not be found.  Please verify that your "
+"installation has been completed successfully."
 msgstr ""
 "\"Manual Gnote\" tak ditemukan. Silahkan periksa bahwa instalasi Anda telah "
 "lengkap dan sukses."
 
-#: ../src/utils.cpp:177
+#: ../src/utils.cpp:176
 msgid "Help not found"
 msgstr "Bantuan tak ditemukan"
 
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:208
 msgid "Cannot open location"
 msgstr "Tak bisa membuka lokasi"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:238
 msgid "Today, %1"
 msgstr "Hari ini, %1"
 
-#: ../src/utils.cpp:241
+#: ../src/utils.cpp:239
 msgid "Today"
 msgstr "Hari ini"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:247
+#: ../src/utils.cpp:245
 msgid "Yesterday, %1"
 msgstr "Kemarin, %1"
 
-#: ../src/utils.cpp:248
+#: ../src/utils.cpp:246
 msgid "Yesterday"
 msgstr "Kemarin"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:254
+#: ../src/utils.cpp:252
 msgid "Tomorrow, %1"
 msgstr "Besok, %1"
 
-#: ../src/utils.cpp:255
+#: ../src/utils.cpp:253
 msgid "Tomorrow"
 msgstr "Besok"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:259
+#: ../src/utils.cpp:257
 msgid "%b %d"
 msgstr "%d %b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:262 ../src/utils.cpp:274
+#: ../src/utils.cpp:260 ../src/utils.cpp:272
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: ../src/utils.cpp:267
+#: ../src/utils.cpp:265
 msgid "No Date"
 msgstr "Tanpa Tanggal"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:271
+#: ../src/utils.cpp:269
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
@@ -2704,11 +2727,11 @@ msgstr "(Tanpa judul %1)"
 #. TRANSLATORS: %1 is the placeholder for the title.
 #: ../src/watchers.cpp:230
 msgid ""
-"A note with the title <b>%1</b> already exists. Please choose another name for "
-"this note before continuing."
+"A note with the title <b>%1</b> already exists. Please choose another name "
+"for this note before continuing."
 msgstr ""
-"Catatan dengan judul <b>%1</b> telah ada. Silakan pilih nama lain bagi catatan "
-"ini sebelum melanjutkan."
+"Catatan dengan judul <b>%1</b> telah ada. Silakan pilih nama lain bagi "
+"catatan ini sebelum melanjutkan."
 
 #: ../src/watchers.cpp:245
 msgid "Note title taken"
@@ -2725,3 +2748,9 @@ msgstr "_Salin Alamat Taut"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Buka Taut"
+
+#~ msgid "Is Important"
+#~ msgstr "Penting"
+
+#~ msgid "_Close"
+#~ msgstr "_Tutup"
