@@ -13,11 +13,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnote\n"
+"Project-Id-Version: gnote gnome-3-24\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-03-19 18:24+0000\n"
-"PO-Revision-Date: 2017-03-20 19:43+0100\n"
+"POT-Creation-Date: 2017-08-27 12:04+0000\n"
+"PO-Revision-Date: 2017-08-28 15:59+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -27,7 +27,16 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1
+#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid "A simple note-taking application"
+msgstr "Jednoduchá aplikace pro psaní poznámek"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -38,7 +47,7 @@ msgstr ""
 "je dohromady pomocí odkazů ve stylu WikiWiki, rozčlenit je do sešitů a nebo "
 "použít některé další doplňující funkce."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
 "Gnote also supports synchronization to make it possible to use on multiple "
 "devices."
@@ -185,11 +194,6 @@ msgstr "Zapnout odrážky/zvětšit odsazení pro vybrané řádky"
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Zmenšit odsazení/vypnout odrážky pro vybrané řádky"
-
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
-#: ../src/recentchanges.cpp:542
-msgid "Gnote"
-msgstr "Gnote"
 
 #: ../data/gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
