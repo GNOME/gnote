@@ -306,22 +306,23 @@ namespace gnote {
 
   std::vector<Gtk::Widget*> NoteWindow::get_popover_widgets()
   {
-    std::map<int, Gtk::Widget*> widget_map;
-    NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
-    Note::Ptr note = std::dynamic_pointer_cast<Note>(m_note.shared_from_this());
-    FOREACH(NoteAddin *addin, manager.get_addin_manager().get_note_addins(note)) {
-      utils::merge_ordered_maps(widget_map, addin->get_actions_popover_widgets());
-    }
-
     std::vector<Gtk::Widget*> widgets;
+    std::map<int, Gtk::Widget*> widget_map;
 
     Gtk::Widget *undo = manage(utils::create_popover_button("win.undo", _("_Undo")));
     widgets.push_back(undo);
     Gtk::Widget *redo = manage(utils::create_popover_button("win.redo", _("_Redo")));
     widgets.push_back(redo);
-    Gtk::Widget *link = manage(utils::create_popover_button("win.link", _("_Link to New Note")));
-    widgets.push_back(link);
     widgets.push_back(NULL);
+
+    Gtk::Widget *link = manage(utils::create_popover_button("win.link", _("_Link to New Note")));
+    widget_map[2000] = link; // place under "note actions", see iactionmanger.hpp
+
+    NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
+    Note::Ptr note = std::dynamic_pointer_cast<Note>(m_note.shared_from_this());
+    FOREACH(NoteAddin *addin, manager.get_addin_manager().get_note_addins(note)) {
+      utils::merge_ordered_maps(widget_map, addin->get_actions_popover_widgets());
+    }
 
     int last_order = 0;
     for(std::map<int, Gtk::Widget*>::iterator iter = widget_map.begin();
