@@ -314,6 +314,15 @@ namespace gnote {
     }
 
     std::vector<Gtk::Widget*> widgets;
+
+    Gtk::Widget *undo = manage(utils::create_popover_button("win.undo", _("_Undo")));
+    widgets.push_back(undo);
+    Gtk::Widget *redo = manage(utils::create_popover_button("win.redo", _("_Redo")));
+    widgets.push_back(redo);
+    Gtk::Widget *link = manage(utils::create_popover_button("win.link", _("_Link to New Note")));
+    widgets.push_back(link);
+    widgets.push_back(NULL);
+
     int last_order = 0;
     for(std::map<int, Gtk::Widget*>::iterator iter = widget_map.begin();
         iter != widget_map.end(); ++iter) {
@@ -824,20 +833,11 @@ namespace gnote {
       set_position(Gtk::POS_BOTTOM);
       Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
 
-      Gtk::Widget *undo = manage(utils::create_popover_button("win.undo", _("_Undo")));
-      menu_box->add(*undo);
-
-      Gtk::Widget *redo = manage(utils::create_popover_button("win.redo", _("_Redo")));
-      menu_box->add(*redo);
-      menu_box->add(*manage(new Gtk::Separator));
-
       // Listen to events so we can sensitize and
       // enable keybinding
       undo_manager.signal_undo_changed().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_changed));
 
       Glib::Quark tag_quark("Tag");
-      Gtk::Widget *link = manage(utils::create_popover_button("win.link", _("_Link")));
-
       Gtk::Widget *bold = create_font_item("win.change-font-bold", _("_Bold"), "b");
       Gtk::Widget *italic = create_font_item("win.change-font-italic", _("_Italic"), "i");
       Gtk::Widget *strikeout = create_font_item("win.change-font-strikeout", _("_Strikeout"), "s");
@@ -851,9 +851,6 @@ namespace gnote {
       Gtk::Widget *small = create_font_size_item(_("S_mall"), "small", "size:small");
       Gtk::Widget *large = create_font_size_item(_("_Large"), "large", "size:large");
       Gtk::Widget *huge = create_font_size_item(_("Hu_ge"), "x-large", "size:huge");
-
-      menu_box->add(*link);
-      menu_box->add(*manage(new Gtk::Separator));
 
       auto box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
       utils::set_common_popover_widget_props(*box);
