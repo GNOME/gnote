@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
 "keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-04-01 18:03+0000\n"
-"PO-Revision-Date: 2017-05-06 08:25+0200\n"
+"POT-Creation-Date: 2017-09-01 08:28+0000\n"
+"PO-Revision-Date: 2017-09-04 20:30+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: srpski <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -21,7 +21,17 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1
+#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+msgid "Gnote"
+msgstr "Gnomov beležnik"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+#| msgid "A note taking application"
+msgid "A simple note-taking application"
+msgstr "Jednostavan program za beleške"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -32,7 +42,7 @@ msgstr ""
 "koristeći vezice VikiViki-stila, da ih grupišete zajedno u beležnicama i "
 "neke posebne funkcije za svakodnevnu upotrebu."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
 "Gnote also supports synchronization to make it possible to use on multiple "
 "devices."
@@ -179,11 +189,6 @@ msgstr "Uključuje tačkiranje/povećava uvlačenje za red sa izborom"
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Smanjuje uvlačenje/isključuje tačkiranje za tekući red"
-
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
-#: ../src/recentchanges.cpp:542
-msgid "Gnote"
-msgstr "Gnomov beležnik"
 
 #: ../data/gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
@@ -1417,11 +1422,6 @@ msgstr ""
 "http://prevod.org — prevod na srpski jezik."
 
 #: ../src/gnote.cpp:302
-#| msgid ""
-#| "Copyright © 2010-2016 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2017 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -2185,7 +2185,6 @@ msgid "All Notes"
 msgstr "Sve beleške"
 
 #: ../src/recentchanges.cpp:164
-#| msgid "Create _New Note"
 msgid "Create New Note"
 msgstr "Napravi novu belešku"
 
