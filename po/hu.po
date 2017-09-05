@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-03-12 18:49+0000\n"
-"PO-Revision-Date: 2017-03-15 17:49+0100\n"
+"POT-Creation-Date: 2017-08-20 13:00+0000\n"
+"PO-Revision-Date: 2017-09-05 17:03+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -25,7 +25,17 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1
+#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+msgid "Gnote"
+msgstr "Gnote jegyzettömb"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+#| msgid "A note taking application"
+msgid "A simple note-taking application"
+msgstr "Egyszerű jegyzetkezelő alkalmazás"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -36,7 +46,7 @@ msgstr ""
 "hivatkozásokkal, jegyzettömbökké csoportosításukat, valamint a mindennapos "
 "használatot megkönnyítő extra funkciói is vannak."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
 "Gnote also supports synchronization to make it possible to use on multiple "
 "devices."
@@ -183,11 +193,6 @@ msgstr "Lista engedélyezése/behúzás növelése a kijelölés sorában"
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Behúzás csökkentése/lista letiltása a kijelölés sorában"
-
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
-#: ../src/recentchanges.cpp:542
-msgid "Gnote"
-msgstr "Gnote jegyzettömb"
 
 #: ../data/gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
@@ -2189,7 +2194,6 @@ msgid "All Notes"
 msgstr "Minden jegyzet"
 
 #: ../src/recentchanges.cpp:164
-#| msgid "Create a new Note"
 msgid "Create New Note"
 msgstr "Új jegyzet létrehozása"
 
