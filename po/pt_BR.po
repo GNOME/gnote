@@ -6,14 +6,14 @@
 # Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012.
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013, 2014.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2015, 2016, 2017.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
-"keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-03-25 12:07+0000\n"
-"PO-Revision-Date: 2017-03-25 21:31-0200\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gnote&keywords=I18N+L10N&component=main\n"
+"POT-Creation-Date: 2017-08-20 13:00+0000\n"
+"PO-Revision-Date: 2017-09-10 14:31-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -24,7 +24,16 @@ msgstr ""
 "X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1
+#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+msgid "A simple note-taking application"
+msgstr "Um aplicativo simples para tomar notas"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -35,7 +44,7 @@ msgstr ""
 "usando links no estilo WikiWiki, agrupe-as em catálogos de notas e algumas "
 "outras funcionalidades extras de uso diário."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
 "Gnote also supports synchronization to make it possible to use on multiple "
 "devices."
@@ -182,11 +191,6 @@ msgstr "Habilitar marcador/aumentar recuo para linha com seleção"
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Diminuir recuo/desabilitar marcador para linha atual"
-
-#: ../data/gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:47
-#: ../src/recentchanges.cpp:542
-msgid "Gnote"
-msgstr "Gnote"
 
 #: ../data/gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
@@ -1422,11 +1426,6 @@ msgstr ""
 "Rafael Fontenelle <rafaelff@gnome.org>, 2013-2017."
 
 #: ../src/gnote.cpp:302
-#| msgid ""
-#| "Copyright © 2010-2016 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2017 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -2190,7 +2189,6 @@ msgid "All Notes"
 msgstr "Todas as notas"
 
 #: ../src/recentchanges.cpp:164
-#| msgid "Create _New Note"
 msgid "Create New Note"
 msgstr "Criar nova nota"
 
