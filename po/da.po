@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-08-29 19:33+0000\n"
+"POT-Creation-Date: 2017-10-22 13:06+0000\n"
 "PO-Revision-Date: 2017-02-27 02:13+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -299,7 +299,7 @@ msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
 msgstr ""
-"Hvis \"slå tilpasset skrifttype til\" er sand, vil skrifttypen angivet her "
+"Hvis “slå tilpasset skrifttype til” er sand, vil skrifttypen angivet her "
 "blive brugt til at vise noter med."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:17
@@ -326,7 +326,7 @@ msgid ""
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
 msgstr ""
-"Note-uri'en på noten som bør behandles som noten \"Start her\", som altid er "
+"Note-uri'en på noten som bør behandles som noten “Start her”, som altid er "
 "placeret i bunden af notemenuen i Gnote, og som også er tilgængelig via "
 "genvejstast."
 
@@ -526,8 +526,8 @@ msgid ""
 "Gnote should draw decorations itself. Requires application restart."
 msgstr ""
 "Om Gnote skal tegne egen vinduestitellinje, eller overlade dette til "
-"vindueshåndteringen. Mulige værdier er \"enabled\" for at tegne dem, "
-"\"disabled\" for at overlade dem til vindueshåndteringen, eller en "
+"vindueshåndteringen. Mulige værdier er “enabled” for at tegne dem, "
+"“disabled” for at overlade dem til vindueshåndteringen, eller en "
 "kommaadskilt liste af skrivebordsmiljøer hvori Gnote selv skal tegne "
 "dekorationer. Kræver genstart af programmet."
 
@@ -672,7 +672,7 @@ msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr ""
-"Brug wdfs-tilvalg \"-ac\" for at acceptere SSL-certifikater uden at spørge "
+"Brug wdfs-tilvalg “-ac” for at acceptere SSL-certifikater uden at spørge "
 "brugeren."
 
 # se nedenfor
@@ -857,7 +857,7 @@ msgstr "Ikon"
 
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:227
 msgid "Select an icon..."
-msgstr "Vælg et ikon..."
+msgstr "Vælg et ikon …"
 
 #. Extra Widget
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:242
@@ -959,7 +959,7 @@ msgstr "Kunne ikke åbne eksporteret note i en webbrowser: %s"
 #. TRANSLATORS: %1%: boost format placeholder for the path
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:125
 msgid "Your note was exported to \"%1\"."
-msgstr "Din note blev eksporteret til \"%1\"."
+msgstr "Din note blev eksporteret til “%1”."
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:134
 msgid "Note exported successfully"
@@ -973,7 +973,7 @@ msgstr "Kunne ikke eksportere: %s"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
 msgid "Could not save the file \"%1\""
-msgstr "Kunne ikke gemme filen \"%1\""
+msgstr "Kunne ikke gemme filen “%1”"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
 msgid "_Folder Path:"
@@ -981,7 +981,7 @@ msgstr "_Mappesti:"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:109
 msgid "Select Synchronization Folder..."
-msgstr "Vælg synkroniseringsmappe ..."
+msgstr "Vælg synkroniseringsmappe …"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
 msgid "Folder path field is empty."
@@ -1127,7 +1127,7 @@ msgstr "Dagens note"
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
-"Opretter automatisk en \"I dag-note\" så du nemt kan nedfælde dine daglige "
+"Opretter automatisk en “I dag-note” så du nemt kan nedfælde dine daglige "
 "ideer"
 
 #: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:3
@@ -1250,7 +1250,7 @@ msgstr "Ingen Stickynoter fundet"
 #. %1 is a the file name
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:210
 msgid "No suitable Sticky Notes file was found at \"%1\"."
-msgstr "Ingen egnede Stickynotefil blev fundet i \"%1\"."
+msgstr "Ingen egnede Stickynotefil blev fundet i “%1”."
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
 msgid "Sticky Notes import completed"
@@ -1499,7 +1499,7 @@ msgstr "titel/url"
 
 #: ../src/gnote.cpp:534
 msgid "Display the 'Start Here' note."
-msgstr "Vis noten \"Start her\"."
+msgstr "Vis noten “Start her”."
 
 #: ../src/gnote.cpp:535
 msgid "Search and highlight text in the opened note."
@@ -1573,7 +1573,7 @@ msgstr "_Opret"
 
 #: ../src/notebooks/notebookapplicationaddin.cpp:79
 msgid "New Note_book..."
-msgstr "Ny note_bog..."
+msgstr "Ny note_bog …"
 
 #. The templateNoteTite should show the name of the
 #. notebook.  For example, if the name of the notebooks
@@ -1608,7 +1608,7 @@ msgstr "Ingen notesbog"
 #. TRANSLATORS: %1: format placeholder for the notebook name
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:40
 msgid "New \"%1\" Note"
-msgstr "Ny \"%1\"-note"
+msgstr "Ny “%1”-note"
 
 #: ../src/notebooks/notebooknoteaddin.cpp:110
 msgid "Notebook"
@@ -1617,7 +1617,7 @@ msgstr "Notesbog"
 #. Add new notebook item
 #: ../src/notebooks/notebooknoteaddin.cpp:147
 msgid "_New notebook..."
-msgstr "_Ny notesbog..."
+msgstr "_Ny notesbog …"
 
 #: ../src/notebooks/specialnotebooks.cpp:46
 msgid "All"
@@ -1647,7 +1647,7 @@ msgstr "Undtagelse: %s"
 #. TRANSLATORS: %1 will be replaced by note title
 #: ../src/note.cpp:55
 msgid "Really delete \"%1\"?"
-msgstr "Vil du virkelig slette \"%1\"?"
+msgstr "Vil du virkelig slette “%1”?"
 
 #. TRANSLATORS: %1 is number of notes
 #: ../src/note.cpp:59
@@ -1779,7 +1779,7 @@ msgstr "Fejl ved oprettelse af startnoter: %s"
 #: ../src/notemanager.cpp:195
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
-msgstr "Fejl ved forolkning af note-XML; springer \"%s\" over: %s"
+msgstr "Fejl ved forolkning af note-XML; springer “%s” over: %s"
 
 #: ../src/noterenamedialog.cpp:123
 msgid "Rename Note Links?"
@@ -1985,7 +1985,7 @@ msgstr "Slå automatiske _punktlister til"
 #: ../src/preferencesdialog.cpp:266
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
-"Start en ny liste ved at bruge tegnet \"-\" i begyndelsen af en ny linje."
+"Start en ny liste ved at bruge tegnet “-” i begyndelsen af en ny linje."
 
 #: ../src/preferencesdialog.cpp:275
 msgid "Use custom _font"
@@ -2071,7 +2071,7 @@ msgstr "Interval for automatisk s_ynkronisering i baggrunden i minutter"
 #. "Advanced..." button to bring up extra sync config dialog
 #: ../src/preferencesdialog.cpp:536
 msgid "_Advanced..."
-msgstr "_Avanceret..."
+msgstr "_Avanceret …"
 
 #: ../src/preferencesdialog.cpp:584
 msgid "The following plugins are installed:"
@@ -2295,7 +2295,7 @@ msgstr "Kunne ikke fortolke indstillingen %s (værdi: %s):"
 
 #: ../src/searchnoteswidget.cpp:1499
 msgid "Expected format 'column:order'"
-msgstr "Forventede formatet \"kolonne:orden\""
+msgstr "Forventede formatet “kolonne:orden”"
 
 #: ../src/searchnoteswidget.cpp:1512
 #, c-format
@@ -2376,7 +2376,7 @@ msgstr ""
 #: ../src/synchronization/filesystemsyncserver.cpp:617
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
-msgstr "Fejl ved sletning af den gamle synkroniseringslås \"%s\": %s"
+msgstr "Fejl ved sletning af den gamle synkroniseringslås “%s”: %s"
 
 #: ../src/synchronization/fusesyncserviceaddin.cpp:113
 msgid ""
@@ -2457,8 +2457,8 @@ msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
-"Serverversionen for \"%1\" er i konflikt med din lokale note. Hvad ønsker "
-"du, der skal ske med din lokale note?"
+"Serverversionen for “%1” er i konflikt med din lokale note. Hvad ønsker du, "
+"der skal ske med din lokale note?"
 
 #. Expander containing TreeView
 #: ../src/synchronization/syncdialog.cpp:296
@@ -2471,11 +2471,11 @@ msgstr "Status"
 
 #: ../src/synchronization/syncdialog.cpp:482
 msgid "Acquiring sync lock..."
-msgstr "Henter synkroniseringslås ..."
+msgstr "Henter synkroniseringslås …"
 
 #: ../src/synchronization/syncdialog.cpp:485
 msgid "Committing changes..."
-msgstr "Indsender ændringer ..."
+msgstr "Indsender ændringer …"
 
 #: ../src/synchronization/syncdialog.cpp:488
 msgid "Synchronizing Notes"
@@ -2483,7 +2483,7 @@ msgstr "Synkroniserer noter"
 
 #: ../src/synchronization/syncdialog.cpp:489
 msgid "Synchronizing your notes..."
-msgstr "Synkroniserer dine noter ..."
+msgstr "Synkroniserer dine noter …"
 
 #: ../src/synchronization/syncdialog.cpp:490
 msgid "This may take a while, kick back and enjoy!"
@@ -2491,16 +2491,16 @@ msgstr "Dette kan tage et stykke tid, læn dig tilbage og slap af!"
 
 #: ../src/synchronization/syncdialog.cpp:492
 msgid "Connecting to the server..."
-msgstr "Forbinder til serveren ..."
+msgstr "Forbinder til serveren …"
 
 # engelsk fejl?
 #: ../src/synchronization/syncdialog.cpp:498
 msgid "Deleting notes off of the server..."
-msgstr "Sletter noter fra serveren ..."
+msgstr "Sletter noter fra serveren …"
 
 #: ../src/synchronization/syncdialog.cpp:502
 msgid "Downloading new/updated notes..."
-msgstr "Henter nye/opdaterede noter ..."
+msgstr "Henter nye/opdaterede noter …"
 
 #: ../src/synchronization/syncdialog.cpp:514
 msgid "Server Locked"
@@ -2520,15 +2520,15 @@ msgstr ""
 
 #: ../src/synchronization/syncdialog.cpp:520
 msgid "Preparing to download updates from server..."
-msgstr "Gør klar til at hente opdateringer fra serveren ..."
+msgstr "Gør klar til at hente opdateringer fra serveren …"
 
 #: ../src/synchronization/syncdialog.cpp:523
 msgid "Preparing to upload updates to server..."
-msgstr "Forbereder overførsel af opdateringer til serveren ..."
+msgstr "Forbereder overførsel af opdateringer til serveren …"
 
 #: ../src/synchronization/syncdialog.cpp:526
 msgid "Uploading notes to server..."
-msgstr "Overfører noter til serveren ..."
+msgstr "Overfører noter til serveren …"
 
 #: ../src/synchronization/syncdialog.cpp:529
 msgid "Synchronization Failed"
@@ -2681,16 +2681,16 @@ msgstr ""
 "Synkroniseringen, du har valgt, kræver at FUSE-udvidelsesmodulet indlæses.\n"
 "\n"
 "For at undgå denne besked i fremtiden, kan du prøve at indlæse FUSE ved "
-"opstart.  Tilføj \"modprobe fuse\" i /etc/init.d/boot.local or \"fuse\" i /"
-"etc/modules."
+"opstart.  Tilføj “modprobe fuse” i /etc/init.d/boot.local or “fuse” i /etc/"
+"modules."
 
 #: ../src/utils.cpp:168
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
-"\"Gnotemanualen\" kunne ikke findes. Undersøg venligst om din installation "
-"er blevet færdig."
+"“Gnotemanualen” kunne ikke findes. Undersøg venligst om din installation er "
+"blevet færdig."
 
 #: ../src/utils.cpp:176
 msgid "Help not found"
@@ -2829,11 +2829,11 @@ msgstr "_Åbn henvisning"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "Den globale tasttildeling til oprettelse og visning af en ny note. "
-#~ "Formatet ser ud som \"&lt;Control&gt;a\" eller \"&lt;Skift&gt;&lt;Alt&gt;"
-#~ "F1\". Fortolkeren er temmelig liberal og tillader små og store bogstaver, "
-#~ "og også varianter som \"&lt;Ctl&gt;\" og \"&lt;Ctrl&gt;\". Hvis du "
-#~ "angiver tilvalget til den specielle streng \"slået fra\", så vil der ikke "
-#~ "være nogen tasttildeling for denne handling."
+#~ "Formatet ser ud som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;"
+#~ "F1”. Fortolkeren er temmelig liberal og tillader små og store bogstaver, "
+#~ "og også varianter som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver "
+#~ "tilvalget til den specielle streng “slået fra”, så vil der ikke være "
+#~ "nogen tasttildeling for denne handling."
 
 #~ msgid ""
 #~ "The global keybinding for opening the \"Start Here\" note. The format "
@@ -2843,12 +2843,12 @@ msgstr "_Åbn henvisning"
 #~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
-#~ "Den globale tasttildeling til åbning af noten \"Start her\". Formatet ser "
-#~ "ud som \"&lt;Control&gt;a\" eller \"&lt;Skift&gt;&lt;Alt&gt;F1\". "
-#~ "Fortolkeren er temmelig liberal og tillader små og store bogstaver, og "
-#~ "også varianter som \"&lt;Ctl&gt;\" og \"&lt;Ctrl&gt;\". Hvis du angiver "
-#~ "tilvalget til den specielle streng \"slået fra\", så vil der ikke være "
-#~ "nogen tasttildeling for denne handling."
+#~ "Den globale tasttildeling til åbning af noten “Start her”. Formatet ser "
+#~ "ud som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;F1”. Fortolkeren "
+#~ "er temmelig liberal og tillader små og store bogstaver, og også varianter "
+#~ "som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver tilvalget til den "
+#~ "specielle streng “slået fra”, så vil der ikke være nogen tasttildeling "
+#~ "for denne handling."
 
 #~ msgid ""
 #~ "The global keybinding for opening the Note Search dialog. The format "
@@ -2859,11 +2859,11 @@ msgstr "_Åbn henvisning"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "Den globale tasttildeling til åbning af notesøgevinduet. Formatet ser ud "
-#~ "som \"&lt;Control&gt;a\" eller \"&lt;Skift&gt;&lt;Alt&gt;F1\". "
-#~ "Fortolkeren er temmelig liberal og tillader små og store bogstaver, og "
-#~ "også varianter som \"&lt;Ctl&gt;\" og \"&lt;Ctrl&gt;\". Hvis du angiver "
-#~ "tilvalget til den specielle streng \"slået fra\", så vil der ikke være "
-#~ "nogen tasttildeling for denne handling."
+#~ "som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;F1”. Fortolkeren er "
+#~ "temmelig liberal og tillader små og store bogstaver, og også varianter "
+#~ "som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver tilvalget til den "
+#~ "specielle streng “slået fra”, så vil der ikke være nogen tasttildeling "
+#~ "for denne handling."
 
 #~ msgid ""
 #~ "The global keybinding for opening the Recent Changes dialog. The format "
@@ -2874,11 +2874,11 @@ msgstr "_Åbn henvisning"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "Den globale tasttildeling til vinduet Seneste ændringer. Formatet ser ud "
-#~ "som \"&lt;Control&gt;a\" eller \"&lt;Skift&gt;&lt;Alt&gt;F1\". "
-#~ "Fortolkeren er temmelig liberal og tillader små og store bogstaver, og "
-#~ "også varianter som \"&lt;Ctl&gt;\" og \"&lt;Ctrl&gt;\". Hvis du angiver "
-#~ "tilvalget til den specielle streng \"slået fra\", så vil der ikke være "
-#~ "nogen tasttildeling for denne handling."
+#~ "som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;F1”. Fortolkeren er "
+#~ "temmelig liberal og tillader små og store bogstaver, og også varianter "
+#~ "som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver tilvalget til den "
+#~ "specielle streng “slået fra”, så vil der ikke være nogen tasttildeling "
+#~ "for denne handling."
 
 #~ msgid ""
 #~ "The global keybinding for showing the Gnote applet's menu. The format "
@@ -2889,11 +2889,11 @@ msgstr "_Åbn henvisning"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "Den globale tasttildeling til visning af panelprogrammenuen Gnote. "
-#~ "Formatet ser ud som \"&lt;Control&gt;a\" eller \"&lt;Skift&gt;&lt;Alt&gt;"
-#~ "F1\". Fortolkeren er temmelig liberal og tillader små og store bogstaver, "
-#~ "og også varianter som \"&lt;Ctl&gt;\" og \"&lt;Ctrl&gt;\". Hvis du "
-#~ "angiver tilvalget til den specielle streng \"slået fra\", så vil der ikke "
-#~ "være nogen tasttildeling for denne handling."
+#~ "Formatet ser ud som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;"
+#~ "F1”. Fortolkeren er temmelig liberal og tillader små og store bogstaver, "
+#~ "og også varianter som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver "
+#~ "tilvalget til den specielle streng “slået fra”, så vil der ikke være "
+#~ "nogen tasttildeling for denne handling."
 
 #~ msgid "_File"
 #~ msgstr "_Fil"
@@ -2951,10 +2951,10 @@ msgstr "_Åbn henvisning"
 #~ msgstr "Vis note_menu"
 
 #~ msgid "Open \"_Start Here\""
-#~ msgstr "Åbn \"_Start her\""
+#~ msgstr "Åbn “_Start her”"
 
 #~ msgid "Open \"Search _All Notes\""
-#~ msgstr "Åbn \"Søg i _alle noter\""
+#~ msgstr "Åbn “Søg i _alle noter”"
 
 #~ msgid "Find in This Note"
 #~ msgstr "Søg i denne note"
@@ -2987,7 +2987,7 @@ msgstr "_Åbn henvisning"
 #~ msgstr "Slet denne note"
 
 #~ msgid "_Find..."
-#~ msgstr "_Find..."
+#~ msgstr "_Find …"
 
 #~ msgid "_Next"
 #~ msgstr "_Næste"
