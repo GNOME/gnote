@@ -771,19 +771,24 @@ namespace gnote {
     Gtk::PopoverMenu *menu = manage(new Gtk::PopoverMenu);
     Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
     utils::set_common_popover_widget_props(*menu_box);
-    FOREACH(Gtk::Widget *item, items) {
-      if(item) {
-        utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(item);
-        if(submenu) {
-          submenus[submenu->name()] = item;
+    if(items.size() > 0) {
+      FOREACH(Gtk::Widget *item, items) {
+        if(item) {
+          utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(item);
+          if(submenu) {
+            submenus[submenu->name()] = item;
+          }
+          else {
+            menu_box->add(*manage(item));
+          }
         }
         else {
-          menu_box->add(*manage(item));
+          menu_box->add(*manage(new Gtk::Separator));
         }
       }
-      else {
-        menu_box->add(*manage(new Gtk::Separator));
-      }
+    }
+    else {
+      menu_box->add(*manage(new Gtk::Label(_("No configured actions"))));
     }
 
     menu->add(*menu_box);
