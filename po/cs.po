@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-08-20 17:16+0000\n"
-"PO-Revision-Date: 2017-08-25 17:50+0200\n"
+"POT-Creation-Date: 2017-11-12 18:43+0000\n"
+"PO-Revision-Date: 2017-11-18 18:48+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -1835,23 +1835,31 @@ msgstr "Název poznámky"
 msgid "Ad_vanced"
 msgstr "P_okročilé"
 
-#: ../src/notewindow.cpp:328
-msgid "_Important"
-msgstr "Důlež_ité"
+#: ../src/notewindow.cpp:312
+msgid "_Undo"
+msgstr "_Zpět"
 
-#: ../src/notewindow.cpp:329
-msgid "_Delete…"
-msgstr "O_dstranit…"
+#: ../src/notewindow.cpp:314
+msgid "_Redo"
+msgstr "Z_novu"
 
-#: ../src/notewindow.cpp:381
+#: ../src/notewindow.cpp:318 ../src/notewindow.cpp:391
 msgid "_Link to New Note"
 msgstr "_Odkaz na novou poznámku"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:338
+msgid "_Important"
+msgstr "Důlež_ité"
+
+#: ../src/notewindow.cpp:339
+msgid "_Delete…"
+msgstr "O_dstranit…"
+
+#: ../src/notewindow.cpp:427
 msgid "Set properties of text"
 msgstr "Nastavit vlastnosti textu"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:441
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1859,79 +1867,67 @@ msgstr ""
 "Tato poznámka slouží jako šablona. Je výchozím vzorem obsahu běžné poznámky "
 "a nezobrazuje se v nabídce poznámek a vyhledávacím okně."
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:444
 msgid "Convert to regular note"
 msgstr "Převést na běžnou poznámku"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:447
 msgid "Save Si_ze"
 msgstr "Uložit veliko_st"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:451
 msgid "Save Se_lection"
 msgstr "U_ložit výběr"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:455
 msgid "Save _Title"
 msgstr "Uloži_t název"
 
-#: ../src/notewindow.cpp:547 ../src/notewindow.cpp:1074
+#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1072
 msgid "Cannot create note"
 msgstr "Nelze vytvořit poznámku"
 
-#: ../src/notewindow.cpp:827
-msgid "_Undo"
-msgstr "_Zpět"
-
-#: ../src/notewindow.cpp:830
-msgid "_Redo"
-msgstr "Z_novu"
-
-#: ../src/notewindow.cpp:839
-msgid "_Link"
-msgstr "_Odkaz"
-
-#: ../src/notewindow.cpp:841
+#: ../src/notewindow.cpp:842
 msgid "_Bold"
 msgstr "_Tučné"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "_Italic"
 msgstr "_Kurzíva"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:844
 msgid "_Strikeout"
 msgstr "_Přeškrtnuté"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:848
 msgid "_Highlight"
 msgstr "_Zvýraznění"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:851
 msgid "_Normal"
 msgstr "_Normální"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:852
 msgid "S_mall"
 msgstr "_Malé"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:853
 msgid "_Large"
 msgstr "_Velké"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:854
 msgid "Hu_ge"
 msgstr "_Obrovské"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:876
 msgid "⦁ Bullets"
 msgstr "⦁ Odrážky"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:878
 msgid "→ Increase indent"
 msgstr "→ Zvětšit odsazení"
 
-#: ../src/notewindow.cpp:882
+#: ../src/notewindow.cpp:880
 msgid "← Decrease indent"
 msgstr "← Zmenšit odsazení"
 
@@ -2206,6 +2202,10 @@ msgstr "Hledat _následující"
 #: ../src/recentchanges.cpp:255
 msgid "Find _Previous"
 msgstr "Hledat _předchozí"
+
+#: ../src/recentchanges.cpp:791
+msgid "No configured actions"
+msgstr "Nenastavené akce"
 
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
