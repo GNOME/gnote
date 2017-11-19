@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-21 00:04+0200\n"
-"PO-Revision-Date: 2017-08-21 00:05+0200\n"
+"POT-Creation-Date: 2017-11-19 19:39+0100\n"
+"PO-Revision-Date: 2017-11-19 19:40+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -1598,8 +1598,8 @@ msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
 msgstr ""
-"Notatki należące do tego notatnika nie zostaną usunięte, lecz nie będą już "
-"powiązane z tym notatnikiem. Ta czynność nie może zostać cofnięta."
+"Notatki należące do tego notatnika nie zostaną usunięte, ale nie będą już "
+"powiązane z tym notatnikiem. To działanie nie może zostać cofnięte."
 
 #: ../src/notebooks/notebookmenuitem.cpp:34
 #: ../src/notebooks/notebooknoteaddin.cpp:153
@@ -1841,23 +1841,31 @@ msgstr "Tytuł notatki"
 msgid "Ad_vanced"
 msgstr "Zaa_wansowane"
 
-#: ../src/notewindow.cpp:328
-msgid "_Important"
-msgstr "_Ważne"
+#: ../src/notewindow.cpp:312
+msgid "_Undo"
+msgstr "Cof_nij"
 
-#: ../src/notewindow.cpp:329
-msgid "_Delete…"
-msgstr "_Usuń…"
+#: ../src/notewindow.cpp:314
+msgid "_Redo"
+msgstr "P_onów"
 
-#: ../src/notewindow.cpp:381
+#: ../src/notewindow.cpp:318 ../src/notewindow.cpp:391
 msgid "_Link to New Note"
 msgstr "_Dowiązanie do nowej notatki"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:338
+msgid "_Important"
+msgstr "_Ważne"
+
+#: ../src/notewindow.cpp:339
+msgid "_Delete…"
+msgstr "_Usuń…"
+
+#: ../src/notewindow.cpp:427
 msgid "Set properties of text"
 msgstr "Ustawia właściwości tekstu"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:441
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1865,79 +1873,67 @@ msgstr ""
 "Ta notatka jest szablonem. Określa ona domyślną treść zwykłych notatek, "
 "i nie jest wyświetlana w menu notatek ani w oknie wyszukiwania."
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:444
 msgid "Convert to regular note"
 msgstr "Zmień na zwykłą notatkę"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:447
 msgid "Save Si_ze"
 msgstr "Zapisz ro_zmiar"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:451
 msgid "Save Se_lection"
 msgstr "Zapisz _wybrane"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:455
 msgid "Save _Title"
 msgstr "Zapisz _tytuł"
 
-#: ../src/notewindow.cpp:547 ../src/notewindow.cpp:1074
+#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1072
 msgid "Cannot create note"
 msgstr "Nie można utworzyć notatki"
 
-#: ../src/notewindow.cpp:827
-msgid "_Undo"
-msgstr "Cof_nij"
-
-#: ../src/notewindow.cpp:830
-msgid "_Redo"
-msgstr "P_onów"
-
-#: ../src/notewindow.cpp:839
-msgid "_Link"
-msgstr "O_dnośnik"
-
-#: ../src/notewindow.cpp:841
+#: ../src/notewindow.cpp:842
 msgid "_Bold"
 msgstr "_Pogrubienie"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "_Italic"
 msgstr "Kursy_wa"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:844
 msgid "_Strikeout"
 msgstr "P_rzekreślenie"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:848
 msgid "_Highlight"
 msgstr "Wyróżn_ienie"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:851
 msgid "_Normal"
 msgstr "_Zwykły"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:852
 msgid "S_mall"
 msgstr "_Mały"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:853
 msgid "_Large"
 msgstr "_Duży"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:854
 msgid "Hu_ge"
 msgstr "_Ogromny"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:876
 msgid "⦁ Bullets"
 msgstr "⦁ Wypunktowanie"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:878
 msgid "→ Increase indent"
 msgstr "→ Zwiększ wcięcie"
 
-#: ../src/notewindow.cpp:882
+#: ../src/notewindow.cpp:880
 msgid "← Decrease indent"
 msgstr "← Zmniejsz wcięcie"
 
@@ -2215,6 +2211,10 @@ msgstr "Znajdź _następne"
 #: ../src/recentchanges.cpp:255
 msgid "Find _Previous"
 msgstr "Znajdź p_oprzednie"
+
+#: ../src/recentchanges.cpp:791
+msgid "No configured actions"
+msgstr "Brak skonfigurowanych działań"
 
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
