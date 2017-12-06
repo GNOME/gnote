@@ -562,6 +562,10 @@ namespace gnote {
       if(value) {
         self->m_search = value;
       }
+      else {
+        fprintf(stderr, "No search query entered!\n");
+        exit (1);
+      }
     }
     else if(g_str_equal (option_name, "--new-note")) {
       self->m_do_new_note = true;
