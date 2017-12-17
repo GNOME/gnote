@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-08-20 17:16+0000\n"
-"PO-Revision-Date: 2017-08-22 09:54+0700\n"
+"POT-Creation-Date: 2017-11-12 18:43+0000\n"
+"PO-Revision-Date: 2017-11-30 13:17+0700\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
@@ -1814,23 +1814,31 @@ msgstr "Judul Catatan"
 msgid "Ad_vanced"
 msgstr "Tingk_at lanjut"
 
-#: ../src/notewindow.cpp:328
-msgid "_Important"
-msgstr "Pent_ing"
+#: ../src/notewindow.cpp:312
+msgid "_Undo"
+msgstr "_Tak Jadi"
 
-#: ../src/notewindow.cpp:329
-msgid "_Delete…"
-msgstr "_Hapus…"
+#: ../src/notewindow.cpp:314
+msgid "_Redo"
+msgstr "_Jadi Lagi"
 
-#: ../src/notewindow.cpp:381
+#: ../src/notewindow.cpp:318 ../src/notewindow.cpp:391
 msgid "_Link to New Note"
 msgstr "_Taut ke Catatan Baru"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:338
+msgid "_Important"
+msgstr "Pent_ing"
+
+#: ../src/notewindow.cpp:339
+msgid "_Delete…"
+msgstr "_Hapus…"
+
+#: ../src/notewindow.cpp:427
 msgid "Set properties of text"
 msgstr "Tata properti teks"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:441
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1838,79 +1846,67 @@ msgstr ""
 "Catatan ini adalah catatan templat. Ini menentukan isi baku dari catatan "
 "biasa, dan tak akan muncul di menu catatan atau jendela pencarian."
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:444
 msgid "Convert to regular note"
 msgstr "Konversi ke catatan biasa"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:447
 msgid "Save Si_ze"
 msgstr "Simpan _Ukuran"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:451
 msgid "Save Se_lection"
 msgstr "Simpan Pi_lihan"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:455
 msgid "Save _Title"
 msgstr "Simpan _Judul"
 
-#: ../src/notewindow.cpp:547 ../src/notewindow.cpp:1074
+#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1072
 msgid "Cannot create note"
 msgstr "Tak dapat membuat catatan"
 
-#: ../src/notewindow.cpp:827
-msgid "_Undo"
-msgstr "_Tak Jadi"
-
-#: ../src/notewindow.cpp:830
-msgid "_Redo"
-msgstr "_Jadi Lagi"
-
-#: ../src/notewindow.cpp:839
-msgid "_Link"
-msgstr "_Taut"
-
-#: ../src/notewindow.cpp:841
+#: ../src/notewindow.cpp:842
 msgid "_Bold"
 msgstr "Te_bal"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "_Italic"
 msgstr "M_iring"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:844
 msgid "_Strikeout"
 msgstr "_Dicoret"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:848
 msgid "_Highlight"
 msgstr "_Penandaan"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:851
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:852
 msgid "S_mall"
 msgstr "_Kecil"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:853
 msgid "_Large"
 msgstr "_Besar"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:854
 msgid "Hu_ge"
 msgstr "Rak_sasa"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:876
 msgid "⦁ Bullets"
 msgstr "⦁ Bulet"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:878
 msgid "→ Increase indent"
 msgstr "→ Naikkan indentasi"
 
-#: ../src/notewindow.cpp:882
+#: ../src/notewindow.cpp:880
 msgid "← Decrease indent"
 msgstr "← Turunkan indentasi"
 
@@ -2189,6 +2185,10 @@ msgstr "Cari _Lagi"
 #: ../src/recentchanges.cpp:255
 msgid "Find _Previous"
 msgstr "Cari ke _Belakang"
+
+#: ../src/recentchanges.cpp:791
+msgid "No configured actions"
+msgstr "Tidak ada tindakan yang dikonfigurasi"
 
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
@@ -2748,6 +2748,9 @@ msgstr "_Salin Alamat Taut"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Buka Taut"
+
+#~ msgid "_Link"
+#~ msgstr "_Taut"
 
 #~ msgid "Is Important"
 #~ msgstr "Penting"
