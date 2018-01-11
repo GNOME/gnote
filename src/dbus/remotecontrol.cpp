@@ -330,7 +330,7 @@ bool RemoteControl::SetNoteCompleteXml(const Glib::ustring& uri,
     return false;
   }
     
-  note->load_foreign_note_xml(xml_contents, CONTENT_CHANGED);
+  note->load_foreign_note_xml(xml_contents, OTHER_DATA_CHANGED);
   return true;
 }
 
