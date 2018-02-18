@@ -946,6 +946,9 @@ bool SearchNotesWidget::on_treeview_button_released(GdkEventButton *ev)
 
 bool SearchNotesWidget::on_treeview_key_pressed(GdkEventKey * ev)
 {
+  // create context menu here, so that we have shortcuts and they work
+  Gtk::Menu *menu = get_note_list_context_menu();
+
   switch(ev->keyval) {
   case GDK_KEY_Delete:
     delete_selected_notes();
@@ -955,7 +958,6 @@ bool SearchNotesWidget::on_treeview_key_pressed(GdkEventKey * ev)
     // Pop up the context menu if a note is selected
     Note::List selected_notes = get_selected_notes();
     if(!selected_notes.empty()) {
-      Gtk::Menu *menu = get_note_list_context_menu();
       popup_context_menu_at_location(menu, 0, 0);
     }
     break;
