@@ -1,15 +1,15 @@
 # Serbian translation of gnote
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2011—2017.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2011—2018.
 # This file is distributed under the same license as the gnote package.
 # Miloš Popović <gpopac@gmail.com>, 2011.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2012—2017.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2012—2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
 "keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-08-20 17:16+0000\n"
-"PO-Revision-Date: 2017-08-20 20:13+0200\n"
+"POT-Creation-Date: 2017-11-12 18:43+0000\n"
+"PO-Revision-Date: 2018-02-21 08:52+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: srpski <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -936,7 +936,6 @@ msgid "Include all other linked notes"
 msgstr "Uključi sve druge povezane beleške"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
-#| msgid "Export to HTML"
 msgid "Export to HTML…"
 msgstr "Izvezi u HTML…"
 
@@ -1146,7 +1145,6 @@ msgid "Allows you to print a note."
 msgstr "Omogućava vam da štampate beleške."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
-#| msgid "Print"
 msgid "Print…"
 msgstr "Štampaj…"
 
@@ -1831,25 +1829,31 @@ msgstr "Naslov beleške"
 msgid "Ad_vanced"
 msgstr "_Napredno"
 
-#: ../src/notewindow.cpp:328
-#| msgid "Important"
-msgid "_Important"
-msgstr "_Važne"
+#: ../src/notewindow.cpp:312
+msgid "_Undo"
+msgstr "_Poništi"
 
-#: ../src/notewindow.cpp:329
-#| msgid "_Delete"
-msgid "_Delete…"
-msgstr "_Obriši…"
+#: ../src/notewindow.cpp:314
+msgid "_Redo"
+msgstr "_Vrati"
 
-#: ../src/notewindow.cpp:381
+#: ../src/notewindow.cpp:318 ../src/notewindow.cpp:391
 msgid "_Link to New Note"
 msgstr "_Veza na novu belešku"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:338
+msgid "_Important"
+msgstr "_Važne"
+
+#: ../src/notewindow.cpp:339
+msgid "_Delete…"
+msgstr "_Obriši…"
+
+#: ../src/notewindow.cpp:427
 msgid "Set properties of text"
 msgstr "Podesite osobine teksta"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:441
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1857,79 +1861,67 @@ msgstr ""
 "Ova beleška je beleška šablona. Ona određuje osnovni sadržaj običnih "
 "beleški, i neće biti prikazana u izborniku beleški ili u prozoru za pretragu."
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:444
 msgid "Convert to regular note"
 msgstr "Pretvori u običnu belešku"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:447
 msgid "Save Si_ze"
 msgstr "Sačuvaj _veličinu"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:451
 msgid "Save Se_lection"
 msgstr "Sačuvaj _izbor"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:455
 msgid "Save _Title"
 msgstr "Sačuvaj _naslov"
 
-#: ../src/notewindow.cpp:547 ../src/notewindow.cpp:1074
+#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1072
 msgid "Cannot create note"
 msgstr "Ne mogu da napravim belešku"
 
-#: ../src/notewindow.cpp:827
-msgid "_Undo"
-msgstr "_Poništi"
-
-#: ../src/notewindow.cpp:830
-msgid "_Redo"
-msgstr "_Vrati"
-
-#: ../src/notewindow.cpp:839
-msgid "_Link"
-msgstr "_Uveži"
-
-#: ../src/notewindow.cpp:841
+#: ../src/notewindow.cpp:842
 msgid "_Bold"
 msgstr "Po_debljano"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "_Italic"
 msgstr "Is_košeno"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:844
 msgid "_Strikeout"
 msgstr "P_recrtano"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:848
 msgid "_Highlight"
 msgstr "Is_taknuto"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:851
 msgid "_Normal"
 msgstr "_Normalna"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:852
 msgid "S_mall"
 msgstr "_Mala"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:853
 msgid "_Large"
 msgstr "_Velika"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:854
 msgid "Hu_ge"
 msgstr "_Ogromna"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:876
 msgid "⦁ Bullets"
 msgstr "⦁ Spisak sa tačkicama"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:878
 msgid "→ Increase indent"
 msgstr "→ Povećaj uvlačenje"
 
-#: ../src/notewindow.cpp:882
+#: ../src/notewindow.cpp:880
 msgid "← Decrease indent"
 msgstr "← Umanji uvlačenje"
 
@@ -2203,6 +2195,11 @@ msgstr "Nađi _sledeće"
 #: ../src/recentchanges.cpp:255
 msgid "Find _Previous"
 msgstr "Traži _prethodno"
+
+#: ../src/recentchanges.cpp:791
+#| msgid "Not configurable"
+msgid "No configured actions"
+msgstr "Nema podešenih radnji"
 
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
@@ -2769,6 +2766,9 @@ msgstr "_Umnoži adresu veze"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Otvori vezu"
+
+#~ msgid "_Link"
+#~ msgstr "_Uveži"
 
 #~ msgid "Is Important"
 #~ msgstr "Važno"
