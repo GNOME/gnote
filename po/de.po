@@ -9,7 +9,7 @@
 # Jochen Skulj <jochen@jochenskulj.de>, 2006-2009.
 # Hendrik Richter <hendrikr@gnome.org>, 2006-2009.
 # Andre Klapper <ak-47@gmx.net>, 2008.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2009-2012, 2016-2017.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2009-2012, 2016-2018.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2011.
 # Stefan Melmuk <stefan.melmuk@gmail.com>, 2012.
 # Wolfgang Stöggl <c72578@yahoo.de>, 2012.
@@ -22,8 +22,8 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-08-20 17:16+0000\n"
-"PO-Revision-Date: 2017-08-27 14:08+0200\n"
+"POT-Creation-Date: 2017-11-12 18:43+0000\n"
+"PO-Revision-Date: 2018-02-24 13:20+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
@@ -1873,23 +1873,31 @@ msgstr "Notiztitel"
 msgid "Ad_vanced"
 msgstr "Er_weitert"
 
-#: ../src/notewindow.cpp:328
-msgid "_Important"
-msgstr "W_ichtig"
+#: ../src/notewindow.cpp:312
+msgid "_Undo"
+msgstr "_Rückgängig"
 
-#: ../src/notewindow.cpp:329
-msgid "_Delete…"
-msgstr "_Löschen …"
+#: ../src/notewindow.cpp:314
+msgid "_Redo"
+msgstr "_Wiederholen"
 
-#: ../src/notewindow.cpp:381
+#: ../src/notewindow.cpp:318 ../src/notewindow.cpp:391
 msgid "_Link to New Note"
 msgstr "_Verknüpfung zu neuer Notiz"
 
-#: ../src/notewindow.cpp:417
+#: ../src/notewindow.cpp:338
+msgid "_Important"
+msgstr "W_ichtig"
+
+#: ../src/notewindow.cpp:339
+msgid "_Delete…"
+msgstr "_Löschen …"
+
+#: ../src/notewindow.cpp:427
 msgid "Set properties of text"
 msgstr "Text-Einstellungen"
 
-#: ../src/notewindow.cpp:431
+#: ../src/notewindow.cpp:441
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1898,79 +1906,67 @@ msgstr ""
 "regulärer Notizen fest und wird nicht im Notizmenü oder im Suchfenster "
 "angezeigt."
 
-#: ../src/notewindow.cpp:434
+#: ../src/notewindow.cpp:444
 msgid "Convert to regular note"
 msgstr "In reguläre Notiz umwandeln"
 
-#: ../src/notewindow.cpp:437
+#: ../src/notewindow.cpp:447
 msgid "Save Si_ze"
 msgstr "_Größe speichern"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:451
 msgid "Save Se_lection"
 msgstr "Auswah_l speichern"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:455
 msgid "Save _Title"
 msgstr "_Titel speichern"
 
-#: ../src/notewindow.cpp:547 ../src/notewindow.cpp:1074
+#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1072
 msgid "Cannot create note"
 msgstr "Notiz konnte nicht angelegt werden"
 
-#: ../src/notewindow.cpp:827
-msgid "_Undo"
-msgstr "_Rückgängig"
-
-#: ../src/notewindow.cpp:830
-msgid "_Redo"
-msgstr "_Wiederholen"
-
-#: ../src/notewindow.cpp:839
-msgid "_Link"
-msgstr "_Verweis"
-
-#: ../src/notewindow.cpp:841
+#: ../src/notewindow.cpp:842
 msgid "_Bold"
 msgstr "_Fett"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:843
 msgid "_Italic"
 msgstr "_Kursiv"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:844
 msgid "_Strikeout"
 msgstr "_Durchgestrichen"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:848
 msgid "_Highlight"
 msgstr "_Hervorheben"
 
-#: ../src/notewindow.cpp:850
+#: ../src/notewindow.cpp:851
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:852
 msgid "S_mall"
 msgstr "_Klein"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:853
 msgid "_Large"
 msgstr "_Groß"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:854
 msgid "Hu_ge"
 msgstr "_Riesig"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:876
 msgid "⦁ Bullets"
 msgstr "⦁ Aufzählungspunkte"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:878
 msgid "→ Increase indent"
 msgstr "Einzug erhöhen"
 
-#: ../src/notewindow.cpp:882
+#: ../src/notewindow.cpp:880
 msgid "← Decrease indent"
 msgstr "Einzug verringern"
 
@@ -2253,6 +2249,10 @@ msgstr "_Nächster Treffer"
 #: ../src/recentchanges.cpp:255
 msgid "Find _Previous"
 msgstr "_Vorheriger Treffer"
+
+#: ../src/recentchanges.cpp:791
+msgid "No configured actions"
+msgstr "Keine Aktionen konfiguriert"
 
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
