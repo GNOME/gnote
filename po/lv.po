@@ -3,25 +3,35 @@
 #
 #
 # Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011, 2012.
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2012, 2013.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2012, 2013, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-28 14:34+0000\n"
-"PO-Revision-Date: 2013-10-05 17:11+0300\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnote"
+"&keywords=I18N+L10N&component=main\n"
+"POT-Creation-Date: 2018-04-02 20:13+0000\n"
+"PO-Revision-Date: 2018-04-11 19:03+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
-"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 :"
+" 2);\n"
+"X-Generator: Lokalize 2.0\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1
+#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
+#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+msgid "Gnote"
+msgstr "Gnote"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:2
+#| msgid "A note taking application"
+msgid "A simple note-taking application"
+msgstr "Vienkārša piezīmju veikšanas lietotne"
+
+#: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -31,16 +41,169 @@ msgstr ""
 "jums ļauj pierakstīt idejas, sasaistīt tās ar viki stila saitēm, grupēt tās "
 "piezīmju blokos un vēl dažas papildu iespējas ikdienas darbam."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
 "Gnote also supports synchronization to make it possible to use on multiple "
 "devices."
 msgstr ""
 "Gnote arī atbalsta sinhronizēšanu, lai varētu izmantot vairākas ierīces."
 
-#: ../data/gnote.desktop.in.in.h:1
-msgid "Gnote"
-msgstr "Gnote"
+#: ../data/ui/shortcuts-gnote.ui.h:1
+#| msgid "New _Window"
+msgctxt "shortcut window"
+msgid "Main Window"
+msgstr "Galvenais logs"
+
+#: ../data/ui/shortcuts-gnote.ui.h:2
+#| msgid "General"
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Vispārīgi"
+
+#: ../data/ui/shortcuts-gnote.ui.h:3
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Rādīt palīdzību"
+
+#: ../data/ui/shortcuts-gnote.ui.h:4
+msgctxt "shortcut window"
+msgid "Open actions menu"
+msgstr "Atvērt darbību izvēlni"
+
+#: ../data/ui/shortcuts-gnote.ui.h:5
+msgctxt "shortcut window"
+msgid "Display search bar"
+msgstr "Rādīt meklēšanas joslu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:6
+msgctxt "shortcut window"
+msgid "Hide search bar"
+msgstr "Slēpt meklēšanas joslu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:7
+#| msgid "Close this window"
+msgctxt "shortcut window"
+msgid "Close window"
+msgstr "Aizvērt logu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:8
+#| msgid "Note Title"
+msgctxt "shortcut window"
+msgid "Notes list"
+msgstr "Piezīmju saraksts"
+
+#: ../data/ui/shortcuts-gnote.ui.h:9
+#| msgid "Create _new note"
+msgctxt "shortcut window"
+msgid "Create new note"
+msgstr "Izveidot jaunu piezīmi"
+
+#: ../data/ui/shortcuts-gnote.ui.h:10
+#| msgid "Open the selected note"
+msgctxt "shortcut window"
+msgid "Open selected note"
+msgstr "Atvērt izvēlēto piezīmi"
+
+#: ../data/ui/shortcuts-gnote.ui.h:11
+#| msgid "Open notes in new window"
+msgctxt "shortcut window"
+msgid "Open selected note in new window"
+msgstr "Atvērt izvēlēto piezīmi jaunā logā"
+
+#: ../data/ui/shortcuts-gnote.ui.h:12
+#| msgid "Delete the selected note"
+msgctxt "shortcut window"
+msgid "Delete selected note"
+msgstr "Dzēst izvēlēto piezīmi"
+
+#: ../data/ui/shortcuts-gnote.ui.h:13
+#| msgid "New _Window"
+msgctxt "shortcut window"
+msgid "Note Window"
+msgstr "Piezīmju logs"
+
+#: ../data/ui/shortcuts-gnote.ui.h:14
+#| msgid "Editing"
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Rediģēšana"
+
+#: ../data/ui/shortcuts-gnote.ui.h:15
+msgctxt "shortcut window"
+msgid "Undo last edit"
+msgstr "Atsaukt pēdējo rediģējumu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:16
+msgctxt "shortcut window"
+msgid "Redo last edit"
+msgstr "Atatsaukt pēdējo rediģējumu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:17
+#| msgid "Delete the selected note"
+msgctxt "shortcut window"
+msgid "Create link to note on selected text"
+msgstr "Izveidot saiti uz piezīmi uz izvēlētā teksta"
+
+#: ../data/ui/shortcuts-gnote.ui.h:18
+#| msgid "Formatting"
+msgctxt "shortcut window"
+msgid "Formatting"
+msgstr "Formatēšana"
+
+#: ../data/ui/shortcuts-gnote.ui.h:19
+msgctxt "shortcut window"
+msgid "Toggle bold"
+msgstr "Pārslēgt melnrakstu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:20
+msgctxt "shortcut window"
+msgid "Toggle italic"
+msgstr "Pārslēgt slīprakstu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:21
+msgctxt "shortcut window"
+msgid "Toggle strikethrough"
+msgstr "Pārslēgt pārsvītrojumu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:22
+#| msgid "_Highlight"
+msgctxt "shortcut window"
+msgid "Toggle highlight"
+msgstr "Pārslēgt izcēlumu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:23
+#| msgid "Fixed Width"
+msgctxt "shortcut window"
+msgid "Toggle fixed width"
+msgstr "Pārslēgt fiksēto platumu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:24
+#| msgid "Underline"
+msgctxt "shortcut window"
+msgid "Toggle underline"
+msgstr "Pārslēgt pasvītrojumu"
+
+#: ../data/ui/shortcuts-gnote.ui.h:25
+#| msgid "Increase Font Size"
+msgctxt "shortcut window"
+msgid "Increase font size"
+msgstr "Palielināt fonta izmēru"
+
+#: ../data/ui/shortcuts-gnote.ui.h:26
+#| msgid "Decrease Font Size"
+msgctxt "shortcut window"
+msgid "Decrease font size"
+msgstr "Samazināt fonta izmēru"
+
+#: ../data/ui/shortcuts-gnote.ui.h:27
+msgctxt "shortcut window"
+msgid "Enable bullets/increase indent for line with selection"
+msgstr "Ieslēgt aizzīmes / palielināt atstatumu rindā ar atlasi"
+
+#: ../data/ui/shortcuts-gnote.ui.h:28
+msgctxt "shortcut window"
+msgid "Decrease indent/disable bullets for current line"
+msgstr "Samazināt atkāpi / izslēgt aizzīmes pašreizējai rindai"
 
 #: ../data/gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
@@ -51,12 +214,13 @@ msgid "Note-taker"
 msgstr "Piezīmju blociņš"
 
 #: ../data/gnote.desktop.in.in.h:4
-msgid "note;idea;link;organize;"
-msgstr "piezīme;ideja;saite;organizēt;"
+#| msgid "note;idea;link;organize;"
+msgid "notes;idea;link;organize;"
+msgstr "piezīmes;ideja;doma;saite;organizēt;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
-msgstr "Aktivizēt pareizrakstību"
+msgstr "Ieslēgt pareizrakstību"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:2
 msgid ""
@@ -67,47 +231,68 @@ msgstr ""
 "ieteikumi tiks parādīti, klikšķinot labo peles pogu."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:3
-msgid "Enable WikiWord highlighting"
-msgstr "Aktivizēt WikiWord izcelšanu"
+msgid "Automatically create links when typing"
+msgstr "Automātiski izveidot saiti, kad raksta"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:4
+msgid ""
+"Enable this option to automatically create a link, when text matches note "
+"title."
+msgstr ""
+"Ieslēdziet šo opciju, lai automātiski izveidotu saiti, kad teksts atbilst"
+" piezīmes virsrakstam."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:5
+#| msgid "Update links in referencing notes"
+msgid "Create links for URLs in notes"
+msgstr "Izveidot saites piezīmju URL"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:6
+msgid "Enable this option to create links for URLs in notes."
+msgstr "Ieslēdziet šo opciju, lai izveidotu saites piezīmēs esošajiem URL."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:7
+msgid "Enable WikiWord highlighting"
+msgstr "Ieslēgt WikiWord izcelšanu"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:8
 msgid ""
 "Enable this option to highlight words ThatLookLikeThis. Clicking the word "
 "will create a note with that name."
 msgstr ""
-"Aktivizēt šo opciju, lai izceltu vārdus KasSarakstītiKopā. Klikšķinot vārdu "
+"Ieslēdziet šo opciju, lai izceltu vārdus KasSarakstītiKopā. Klikšķinot vārdu "
 "tiks veidota piezīme ar šo vārdu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:5
+#: ../data/org.gnome.gnote.gschema.xml.in.h:9
 msgid "Enable Auto bulleted lists"
-msgstr "Aktivēt automātisko aizzīmju sarakstu"
+msgstr "Ieslēgt automātisko aizzīmju sarakstu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:6
+#: ../data/org.gnome.gnote.gschema.xml.in.h:10
 msgid ""
 "Enable this option if you want bulleted lists to be automatic when you place "
 "- or * at the beginning of a line."
 msgstr ""
-"Ieslēgt šo iespēju, lai * un - simbolu ievade jaunā rindā uzsāktu jaunu "
+"Ieslēdziet šo iespēju, lai * un - simbolu ievade jaunā rindā uzsāktu jaunu "
 "sarakstu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:7
+#: ../data/org.gnome.gnote.gschema.xml.in.h:11
 msgid "Enable Middle-Click Paste On Icon"
-msgstr "Aktivizēt vidējā klikšķa ievietošanas ikonu"
+msgstr "Ieslēgt vidējā klikšķa ievietošanas ikonu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:8
+#: ../data/org.gnome.gnote.gschema.xml.in.h:12
 msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
 msgstr ""
-"Ieslēdz šo iespēju, ja vēlies, lai uzklikšķinot uz Gnote ikonas ar vidējo "
+"Ieslēdziet šo iespēju, ja vēlies, lai uzklikšķinot uz Gnote ikonas ar vidējo "
 "klikšķi, bufera saraksts tiktu ievietots Start Here piezīmē, ar tā brīža "
 "laiku un datumu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:9
+#: ../data/org.gnome.gnote.gschema.xml.in.h:13
 msgid "Enable custom font"
-msgstr "Izmantot izvēles fontu"
+msgstr "Ieslēgt izvēles fontu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:10
+#: ../data/org.gnome.gnote.gschema.xml.in.h:14
 msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
@@ -115,11 +300,11 @@ msgstr ""
 "Ja patiess, iekš custom-font-face iestatītais fonta nosaukums tiks izmantots "
 "piezīmju attēlošanā. Pretējā gadījumā tiks izmantots noklusētais fonts."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:11
+#: ../data/org.gnome.gnote.gschema.xml.in.h:15
 msgid "Custom Font Face"
 msgstr "Pielāgots fonta veidols"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:12
+#: ../data/org.gnome.gnote.gschema.xml.in.h:16
 msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
@@ -127,25 +312,25 @@ msgstr ""
 "Ja enable-custom-font ir patiess, tad šeit iestatītais fonts tiek izmantots, "
 "lai attēlotu piezīmes."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:13
+#: ../data/org.gnome.gnote.gschema.xml.in.h:17
 msgid "Enable global keybindings"
-msgstr "Aktivizēt globālos taustiņus"
+msgstr "Ieslēgt globālos taustiņus"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:14
+#: ../data/org.gnome.gnote.gschema.xml.in.h:18
 msgid ""
 "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
 "keybindings will be enabled, allowing for useful Gnote actions to be "
 "available from any application."
 msgstr ""
 "Ja patiess, desktop-global taustiņsaite, kas iestatīta /org/gnome/gnote/"
-"global-keybindings, tiks aktivizēta, atļaujot noderīgām Gnote darbībām būt  "
+"global-keybindings, tiks ieslēgta, atļaujot noderīgām Gnote darbībām būt  "
 "izmantojamām no jebkuras programmas."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:15
+#: ../data/org.gnome.gnote.gschema.xml.in.h:19
 msgid "Start Here Note"
 msgstr "Sāciet piezīmi šeit"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:16
+#: ../data/org.gnome.gnote.gschema.xml.in.h:20
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -155,21 +340,21 @@ msgstr ""
 "tiek novietota Gnote piezīmju izvēlnes apakšā un ir pieejama izmantojot "
 "karsto taustiņu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:17
+#: ../data/org.gnome.gnote.gschema.xml.in.h:21
 msgid "Minimum number of notes to show in menu"
 msgstr "Minimālais izvēlnē rādāmo piezīmju skaits"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:18
+#: ../data/org.gnome.gnote.gschema.xml.in.h:22
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr "Skaitlis, kas nosaka minimālo piezīmju skaitu Gnote piezīmju izvēlnē."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:19
+#: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "List of pinned notes"
 msgstr "Saraksts ar piespraustajām piezīmēm"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:20
+#: ../data/org.gnome.gnote.gschema.xml.in.h:24
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -177,58 +362,54 @@ msgstr ""
 "Atdalītājsimbolu atdalīts saraksts ar to piezīmju URI, kurām vienmēr būtu "
 "jāparādās Gnote piezīmju izvēlnē."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:21
+#: ../data/org.gnome.gnote.gschema.xml.in.h:25
 msgid "Is main window maximized"
 msgstr "Vai galvenais logs ir maksimizēts"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:22
+#: ../data/org.gnome.gnote.gschema.xml.in.h:26
 msgid "If true, Gnote window will be maximized."
 msgstr "patiess, ja Gnote logs būs maksimizēts."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:23
+#: ../data/org.gnome.gnote.gschema.xml.in.h:27
 msgid "Saved height of Search window"
 msgstr "Meklēšanas loga saglabātais augstums"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:24
+#: ../data/org.gnome.gnote.gschema.xml.in.h:28
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr "Nosaka meklēšanas loga augstumu pikseļos; saglabā, aizverot Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:25
+#: ../data/org.gnome.gnote.gschema.xml.in.h:29
 msgid "Saved width of Search window"
 msgstr "Meklēšanas loga saglabātais platums"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:26
+#: ../data/org.gnome.gnote.gschema.xml.in.h:30
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr "Nosaka meklēšanas loga platumu pikseļos; saglabā, aizverot Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:27
+#: ../data/org.gnome.gnote.gschema.xml.in.h:31
 msgid "Saved splitter position of Search window splitter."
 msgstr "Saglabātais meklēšanas loga horizontālā atdalītāja novietojums."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:28
+#: ../data/org.gnome.gnote.gschema.xml.in.h:32
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
 "Nosaka meklēšanas loga atdalītāja novietojumu pikseļos; saglabā, aizverot "
 "Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:29
-#| msgid "Saved height of Search window"
+#: ../data/org.gnome.gnote.gschema.xml.in.h:33
 msgid "Saved sorting of the Search window."
 msgstr "Meklēšanas loga saglabātais kārtojums."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:30
-#| msgid ""
-#| "Determines Search window splitter position in pixels; stored on Gnote "
-#| "exit."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:34
 msgid "Determines Search window initial sorting."
 msgstr "Nosaka meklēšanas loga sākotnējo kārtojumu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:31
+#: ../data/org.gnome.gnote.gschema.xml.in.h:35
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "FUSE montēšanas noildze (ms)"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:32
+#: ../data/org.gnome.gnote.gschema.xml.in.h:36
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -236,45 +417,45 @@ msgstr ""
 "Laiks (milisekundēs) ko Gnote gaidīs lai saņemtu atbildi izmantojot FUSE "
 "sinhronizācijas kopvietu montēšanā."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:33
+#: ../data/org.gnome.gnote.gschema.xml.in.h:37
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "SSHFS attālinātās sinhronizācijas mape"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+#: ../data/org.gnome.gnote.gschema.xml.in.h:38
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "Ceļš SSH serverī līdz Gnote sinhronizācijas direktorijai (neobligāts)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:35
+#: ../data/org.gnome.gnote.gschema.xml.in.h:39
 msgid "SSHFS Synchronization Server URL"
 msgstr "SSHFS attālinātās sinhronizācijas servera URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:36
+#: ../data/org.gnome.gnote.gschema.xml.in.h:40
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "SSH servera URL, kas satur Gnote sinhronizācijas mapi."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:37
+#: ../data/org.gnome.gnote.gschema.xml.in.h:41
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "SSHFS attālinātās sinhronizācijas lietotājvārds"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:38
+#: ../data/org.gnome.gnote.gschema.xml.in.h:42
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Lietotājvārds, ko izmantot, savienojoties ar sinhronizācijas serveri caur "
 "SSH."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:39
+#: ../data/org.gnome.gnote.gschema.xml.in.h:43
 msgid "SSHFS Synchronization Server Port"
 msgstr "SSHFS attālinātās sinhronizācijas servera ports"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:40
+#: ../data/org.gnome.gnote.gschema.xml.in.h:44
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "Ports, ko izmantot, savienojoties ar sinhronizācijas serveri caur SSH."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:41
+#: ../data/org.gnome.gnote.gschema.xml.in.h:45
 msgid "Link Updating Behavior on Note Rename"
 msgstr "Saišu atjaunināšanas princips pārsaucot piezīmi"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:42
+#: ../data/org.gnome.gnote.gschema.xml.in.h:46
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -292,151 +473,99 @@ msgstr ""
 "tekstu automātiski vajadzētu atjaunināt ar jauno piezīmes nosaukumu, "
 "tādējādi tās turpinās norādīt uz pārsaukto piezīmi."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:43
+#: ../data/org.gnome.gnote.gschema.xml.in.h:47
 msgid "Enable closing notes with escape"
-msgstr "Piezīmju aizvēršana ar Escape taustiņu"
+msgstr "Ieslēgt piezīmju aizvēršanu ar escape (atsoļa) taustiņu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:44
+#: ../data/org.gnome.gnote.gschema.xml.in.h:48
 msgid "If enabled, an opened note can be closed by hitting the escape key."
-msgstr "Ja aktivizēts, atvērtās piezīmes var aizvērt nospiežot ESC taustiņu."
+msgstr "Ja ieslēgts, atvērtās piezīmes var aizvērt nospiežot ESC taustiņu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:45
+#: ../data/org.gnome.gnote.gschema.xml.in.h:49
 msgid "Use status icon, when started as an application"
 msgstr "Lietot statusa ikonu, kas startē kā lietotni"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:46
-msgid ""
-"Has affect only when started as an application. When set to TRUE, shows a "
-"status icon. If set to FALSE, Search All Notes window is used as main "
-"application window, closing which makes application to exit."
-msgstr ""
-"Darbojas tikai palaižot lietotni. Kad iestatīts kā PATIESS, rāda statusa "
-"ikonu. Ja iestatīts kā aplams, “Meklēt visās piezīmēs” tiek izmantots kā "
-"galvenais lietotnes logs. Tā aizvēršana nozīmē pašas lietotnes aizvēršanu."
+#: ../data/org.gnome.gnote.gschema.xml.in.h:50
+msgid "Deprecated, has no effect."
+msgstr "Novecojis, neko neietekmē."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:47
-#| msgid "Open the Search All Notes window"
+#: ../data/org.gnome.gnote.gschema.xml.in.h:51
 msgid "Open notes in new window"
 msgstr "Atvērt piezīmēs jaunā logā"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:48
+#: ../data/org.gnome.gnote.gschema.xml.in.h:52
 msgid ""
 "Open notes in new window instead of replacing active content of the same "
 "window"
 msgstr ""
 "Atvērt piezīmēs jaunā logā, nevis aizvietot atvērto saturu tajā pat logā"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:49
-msgid "Show applet menu"
-msgstr "Rādīt sīklietotnes izvēlni"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:50
-msgid ""
-"The global keybinding for showing the Gnote applet's menu. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Globālā taustiņsaite, lai parādītu Gnote sīklietotnes izvēlni. Tās formāts "
-"ir sekojošs \"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Taustiņsaites jūs varat norādīt gan lieliem gan maziem burtiem, kā arī "
-"izmantojot saīsinājumus piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja kā "
-"taustiņsaite ir norādīts \"disabled\", tad tā netiks izmantota."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:51
-msgid "Open Start Here"
-msgstr "Atvērt startu šeit"
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:52
-msgid ""
-"The global keybinding for opening the \"Start Here\" note. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Globālā taustiņsaite \"Sākt šeit\" atvēršanai. Tās formāts ir sekojošs \"&lt;"
-"Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;F1\". Taustiņsaites jūs varat "
-"norādīt gan lieliem gan maziem burtiem, kā arī izmantojot saīsinājumus piem. "
-"\"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja kā taustiņsaite ir norādīts "
-"\"disabled\", tad tā netiks izmantota."
-
 #: ../data/org.gnome.gnote.gschema.xml.in.h:53
-msgid "Create a new Note"
-msgstr "Izveidot jaunu piezīmi"
+msgid "Save note window size and autosize note window to it"
+msgstr ""
+"Saglabāt piezīmes loga izmēru un automātiski mainīt piezīmes loga izmēru uz to"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:54
 msgid ""
-"The global keybinding for creating and displaying a new Note. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
+"Saves note window size and automatically resizes main window to this size, "
+"when note is opened."
 msgstr ""
-"Globālā taustiņsaite jaunas piezīmes izveidošanai un attēlošanai. Tās "
-"formāts ir sekojošs \"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Taustiņsaites jūs varat norādīt gan lieliem gan maziem burtiem, kā arī "
-"izmantojot saīsinājumus piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja kā "
-"taustiņsaite ir norādīts \"disabled\", tad tā netiks izmantota."
+"Saglabā piezīmes loga izmēru un automātiski maina galvenā loga izmēru uz šo"
+" izmēru, kad piezīme tiek atvērta."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:55
-msgid "Open Search Dialog"
-msgstr "Atvērt meklēšanas dialogu"
+msgid "Use client side window decorations"
+msgstr "Izmantot klienta puses logu dekorācijas"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:56
 msgid ""
-"The global keybinding for opening the Note Search dialog. The format looks "
-"like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-"fairly liberal and allows lower or upper case, and also abbreviations such "
-"as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
+"Should Gnote draw its window titlebar, or leave that to window manager. "
+"Possible values are 'enabled' to draw them, 'disabled' to leave them to "
+"window manager, or a comma separated list of desktop environments, where "
+"Gnote should draw decorations itself. Requires application restart."
 msgstr ""
-"Globālā taustiņsaite piezīmju meklēšanas loga atvēršanai. Tās formāts ir "
-"sekojošs \"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Taustiņsaites jūs varat norādīt gan lieliem gan maziem burtiem, kā arī "
-"izmantojot saīsinājumus piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja kā "
-"taustiņsaite ir norādīts \"disabled\", tad tā netiks izmantota."
+"Vai Gnote vajadzētu zīmēt loga virsraksta joslu, vai arī atstāt to logu"
+" pārvaldnieka ziņā. Iespējamās vērtības ir “enable” (ieslēgt), lai tās"
+" zīmētu; “izslēgt”, lai zīmētu logu pārvaldnieks, vai arī ar komatiem"
+" atdalīts saraksts ar darbvirsmu vidēm, kurās Gnote pašam vajadzētu zīmēt"
+" dekorācijas. Nepieciešama lietotnes pārstartēšana."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:57
+msgid "Show applet menu"
+msgstr "Rādīt sīklietotnes izvēlni"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+msgid "Open Start Here"
+msgstr "Atvērt startu šeit"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+msgid "Create a new Note"
+msgstr "Izveidot jaunu piezīmi"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+msgid "Open Search Dialog"
+msgstr "Atvērt meklēšanas dialogu"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:61
 msgid "Open Recent Changes"
 msgstr "Atvērt nesenās izmaiņas"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
-msgid ""
-"The global keybinding for opening the Recent Changes dialog. The format "
-"looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-"parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
-"option to the special string \"disabled\", then there will be no keybinding "
-"for this action."
-msgstr ""
-"Globālā taustiņsaite neseno izmaiņu loga atvēršanai. Tās formāts ir sekojošs "
-"\"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;F1\". Taustiņsaites jūs "
-"varat norādīt gan lieliem gan maziem burtiem, kā arī izmantojot saīsinājumus "
-"piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja kā taustiņsaite ir norādīts "
-"\"disabled\", tad tā netiks izmantota."
-
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: ../data/org.gnome.gnote.gschema.xml.in.h:62
 msgid "HTML Export Last Directory"
 msgstr "HTML eksporta pēdējā mape"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+#: ../data/org.gnome.gnote.gschema.xml.in.h:63
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Pēdējā mape, kurā tika eksportēta piezīme izmantojot 'Eksportēt kā HTML' "
 "spraudni."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid "HTML Export Linked Notes"
 msgstr "Saistīto piezīmju HTML eksportēšana"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
+#: ../data/org.gnome.gnote.gschema.xml.in.h:65
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -444,11 +573,11 @@ msgstr ""
 "Pēdējais iestatījums izvēles rūtiņai \"Eksportēt savienotās piezīmes\" "
 "'Eksportēt kā HTML' spraudnī."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: ../data/org.gnome.gnote.gschema.xml.in.h:66
 msgid "HTML Export All Linked Notes"
 msgstr "Saistīto piezīmju HTML eksportēšana"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+#: ../data/org.gnome.gnote.gschema.xml.in.h:67
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -460,23 +589,26 @@ msgstr ""
 "piezīmju HTML eksportēšanas' vērtību un nosaka, vai eksportējot HTML būtu "
 "jāeksportē visas piezīmes."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: ../data/org.gnome.gnote.gschema.xml.in.h:68
 msgid "Synchronization Client ID"
 msgstr "Sinhronizācijas klienta ID"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#| msgid ""
+#| "Unique identifier for this Gnote client, used when communicating with a "
+#| "sychronization server."
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
-"sychronization server."
+"synchronization server."
 msgstr ""
 "Unikāls Gnote klienta identifikators, tiek izmantots sazinoties ar "
 "sinhronizācijas serveri."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid "Synchronization Local Server Path"
 msgstr "Sinhronizācijas lokālā servera ceļš"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: ../data/org.gnome.gnote.gschema.xml.in.h:71
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -484,22 +616,22 @@ msgstr ""
 "Ceļš uz sinhronizācijas serveri, izmantojot datņu sistēmas sinhronizācijas "
 "servisa ievietojumu."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: ../data/org.gnome.gnote.gschema.xml.in.h:72
 msgid "Selected Synchronization Service Addin"
 msgstr "Izvēlētais sinhronizācijas servisa ievietojums"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: ../data/org.gnome.gnote.gschema.xml.in.h:73
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr ""
 "Unikāls nokonfigurētā piezīmju sinhronizācijas spraudņa identifikators."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: ../data/org.gnome.gnote.gschema.xml.in.h:74
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Piezīmju sinhronizācijas konflikta saglabāšanas veids"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: ../data/org.gnome.gnote.gschema.xml.in.h:75
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -513,11 +645,11 @@ msgstr ""
 "tiktu brīdināts, kad ir konstatēts konflikts; tādējādi lai viņi varētu "
 "noskaidrot konfliktējošo situāciju katru reizi."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: ../data/org.gnome.gnote.gschema.xml.in.h:76
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Automātiskās fona sinhronizācijas laika noildze"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: ../data/org.gnome.gnote.gschema.xml.in.h:77
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -529,11 +661,11 @@ msgstr ""
 "ka automātiskā sinhronizācija ir izslēgta. Zemākā pieņemamā vērtība ir 5 "
 "(norādītā vienība ir minūtes)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid "Accept SSL Certificates"
 msgstr "Pieņemt SSL sertifikātus"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -541,173 +673,157 @@ msgstr ""
 "Izmantot wdfs opciju \"-ac\", lai pieņemtu SSL sertifikātus bez lietotāja "
 "iesaistes."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Share URL"
 msgstr "Koplietot URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "WebDAV koplieto URL, uz kuru tiek sinhronizētas piezīmes."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Share username"
 msgstr "Koplietot lietotājvārdu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "Username to access WebDAV share."
 msgstr "Lietotājvārds, lai piekļūtu WebDAV koplietojumam."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Timestamp format"
 msgstr "Laika spiedogu formāts"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "Laika spiedogiem izmantotais datuma formāts. Tas seko strftime(3) formātam."
 
-#: ../src/actionmanager.cpp:84 ../src/actionmanager.cpp:171
-#: ../src/tray.cpp:465
-msgid "_Quit"
-msgstr "_Beigt"
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
+msgid "Time between checks"
+msgstr "Laiks starp pārbaudēm"
 
-#: ../src/actionmanager.cpp:84
-msgid "Quit Gnote"
-msgstr "Iziet no Gnote"
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+msgid ""
+"Time interval between note directory checks (in seconds). Min value is 5."
+msgstr ""
+"Laika intervāls starp piezīmju direktorijas pārbaudēm (sekundēs). Minimālā"
+" vērtība ir 5."
 
-#: ../src/actionmanager.cpp:89 ../src/actionmanager.cpp:168
-#: ../src/tray.cpp:448
-msgid "_Preferences"
-msgstr "_Iestatījumi"
-
-#: ../src/actionmanager.cpp:89 ../src/preferencesdialog.cpp:103
-msgid "Gnote Preferences"
-msgstr "Gnote iestatījumi"
-
-#: ../src/actionmanager.cpp:93
-msgid "_Contents"
-msgstr "_Saturs"
-
-#: ../src/actionmanager.cpp:93
-msgid "Gnote Help"
-msgstr "Gnote palīdzība"
-
-#: ../src/actionmanager.cpp:98 ../src/actionmanager.cpp:170
-msgid "_About"
-msgstr "P_ar"
-
-#: ../src/actionmanager.cpp:98
-msgid "About Gnote"
-msgstr "Par Gnote"
-
-#: ../src/actionmanager.cpp:102
-msgid "TrayIcon"
-msgstr "Rīkjoslas ikona"
-
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:223
-msgid "Create _New Note"
-msgstr "Izveidot jau_nu piezīmi"
-
-#: ../src/actionmanager.cpp:107 ../src/tray.cpp:225
-msgid "Create a new note"
-msgstr "Izveidot jaunu piezīmi"
-
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:232
-msgid "_Search All Notes"
-msgstr "Meklēt vi_sās piezīmēs"
-
-#: ../src/actionmanager.cpp:112 ../src/tray.cpp:234
-msgid "Open the Search All Notes window"
-msgstr "Atvērt meklēt visās piezīmēs logu"
-
-#: ../src/actionmanager.cpp:166
+#: ../src/actionmanager.cpp:132
 msgid "_New Note"
 msgstr "_Jauna piezīme"
 
-#: ../src/actionmanager.cpp:167
+#: ../src/actionmanager.cpp:133
 msgid "New _Window"
 msgstr "Jauns _logs"
 
-#: ../src/actionmanager.cpp:169 ../src/tray.cpp:453
+#: ../src/actionmanager.cpp:134
+msgid "_Preferences"
+msgstr "_Iestatījumi"
+
+#: ../src/actionmanager.cpp:135
+msgid "_Shortcuts"
+msgstr "_Saīsnes"
+
+#: ../src/actionmanager.cpp:136
 msgid "_Help"
 msgstr "_Palīdzība"
 
-#: ../src/addininfo.cpp:69
-msgid "Failed to load add-in information!"
-msgstr "Neizdevās ielādēt informāciju par papildinājumu!"
+#: ../src/actionmanager.cpp:137
+msgid "_About"
+msgstr "P_ar"
 
-#: ../src/addinmanager.cpp:98
+#: ../src/actionmanager.cpp:138
+msgid "_Quit"
+msgstr "_Beigt"
+
+#: ../src/addininfo.cpp:72
+#| msgid "Failed to load add-in information!"
+msgid "Failed to load plugin information!"
+msgstr "Neizdevās ielādēt informāciju par spraudni!"
+
+#: ../src/addininfo.cpp:146
 #, c-format
-msgid "Note add-in info %s already present"
-msgstr "Jau ir piezīmes papildinājuma informācija %s"
+msgid "Incompatible plug-in %s: expected %s, got %s"
+msgstr "Nesavietojams spraudnis %s: gaidīja %s, saņēma %s"
 
-#: ../src/addinmanager.cpp:106
+#: ../src/addinmanager.cpp:132
+#, c-format
+#| msgid "Note add-in info %s already present"
+msgid "Note plugin info %s already present"
+msgstr "Jau ir piezīmes spraudņa informācija %s"
+
+#: ../src/addinmanager.cpp:140
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s neimplementē %s"
 
-#: ../src/addinmanager.cpp:118
+#: ../src/addinmanager.cpp:155
 #, c-format
-msgid "Note add-in %s already present"
-msgstr "Jau ir piezīmes papildinājums %s"
+#| msgid "Note add-in %s already present"
+msgid "Note plugin %s already present"
+msgstr "Jau ir piezīmes spraudnis %s"
 
-#: ../src/addinmanager.cpp:137
+#: ../src/addinmanager.cpp:173
 #, c-format
-msgid "Note add-in info %s is absent"
-msgstr "Trūkst piezīmes papildinājuma informācija %s"
+#| msgid "Note add-in info %s is absent"
+msgid "Note plugin info %s is absent"
+msgstr "Trūkst piezīmes spraudņa informācija %s"
 
-#: ../src/addinmanager.cpp:150
+#: ../src/addinmanager.cpp:186
 #, c-format
-msgid "Note add-in %s is absent"
-msgstr "Trūkst piezīmes papildinājums %s"
+#| msgid "Note add-in %s is absent"
+msgid "Note plugin %s is absent"
+msgstr "Trūkst piezīmes spraudnis %s"
 
-#: ../src/addinmanager.cpp:183
+#: ../src/addinmanager.cpp:223
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Neizdevās atrast moduli %s papildinājumam %s"
 
-#: ../src/addinmanager.cpp:187
+#: ../src/addinmanager.cpp:227
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Neizdevās ielādēt %s papildinājuma informāciju — %s"
 
-#: ../src/addinmanager.cpp:302
+#: ../src/addinmanager.cpp:351
 msgid "Trying to load addins when they are already loaded"
 msgstr "Mēģina ielādēt papildinājumus, kad tie jau ir ielādēti"
 
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:40
-msgid "What links here?"
-msgstr "Kas saitē uz šejieni?"
-
-#: ../src/addins/backlinks/backlinkmenuitem.cpp:41
-#| msgid "What links here?"
-msgid "Which notes have links to here?"
-msgstr "Kuras piezīmes norāda uz šo vietu?"
-
-#: ../src/addins/backlinks/backlinks.desktop.in.h:1
+#: ../src/addins/backlinks/backlinks.desktop.in.in.h:1
 msgid "Backlinks"
 msgstr "Atpakaļsaites"
 
-#: ../src/addins/backlinks/backlinks.desktop.in.h:2
+#: ../src/addins/backlinks/backlinks.desktop.in.in.h:2
 msgid "See which notes link to the one you're currently viewing."
 msgstr "Apskatiet, kuras piezīmes norāda uz to piezīmi, kuru pašlaik apskatāt."
 
-#: ../src/addins/backlinks/backlinks.desktop.in.h:3
-#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.h:3
+#: ../src/addins/backlinks/backlinks.desktop.in.in.h:3
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:3
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere un Tomboy Project"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:85
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:77
+msgid "What links here?"
+msgstr "Kas saitē uz šejieni?"
+
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:99
 msgid "(none)"
 msgstr "(nekas)"
 
-#: ../src/addins/bugzilla/bugzilla.desktop.in.h:1
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:104
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:157
+#: ../src/notebooks/notebooknoteaddin.cpp:168
+msgid "_Back"
+msgstr "_Atpakaļ"
+
+#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:1
 msgid "Bugzilla Links"
 msgstr "Bugzilla saites"
 
-#: ../src/addins/bugzilla/bugzilla.desktop.in.h:2
+#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:2
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -716,15 +832,15 @@ msgstr ""
 "Ļauj jums vilkt Bugzilla URL no pārlūka pa taisno uz Gnote piezīmi. Kļūdas "
 "numurs tiek ievietots kā saite ar mazu kukaiņa ikonu pie tās."
 
-#: ../src/addins/bugzilla/bugzilla.desktop.in.h:3
-#: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:3
-#: ../src/addins/fixedwidth/fixedwidth.desktop.in.h:3
-#: ../src/addins/printnotes/printnotes.desktop.in.h:3
-#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.h:3
+#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:3
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:3
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:3
+#: ../src/addins/printnotes/printnotes.desktop.in.in.h:3
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:3
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere un Tomboy Project"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:64
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:65
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -732,60 +848,93 @@ msgstr ""
 "Jūs varat izmantot jebkuru bugzillu vienkārši pārvelkot piezīmes tajā.  Ja "
 "vēlaties īpašas ikonas konkrētiem serveriem, pievienojiet tās šeit."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:81
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:82
 msgid "Host Name"
 msgstr "Servera nosaukums"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:94
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:95
 msgid "Icon"
 msgstr "Ikona"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:230
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:227
 msgid "Select an icon..."
 msgstr "Izvēlieties ikonu..."
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:245
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:242
 msgid "_Host name:"
 msgstr "_Servera nosaukums:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:279
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:276
 msgid "Host name invalid"
 msgstr "Nederīgs servera nosaukums"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:280
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:277
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Juma jānorāda kādu derīgu Bugzilla serveri, lai izmantot kopā ar šo ikonu."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:299
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:296
 msgid "Error saving icon"
 msgstr "Kļūda saglabājot ikonu"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:300
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:297
 msgid "Could not save the icon file."
 msgstr "Nevar saglabāt ikonas datni."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:372
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:369
 msgid "Really remove this icon?"
 msgstr "Tiešām dzēst šo ikonu?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:373
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:370
 msgid "If you remove an icon it is permanently lost."
 msgstr "Ja jūs dzēsīsiet šo ikonu tā tiks neatgriezeniski zaudēta."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:395
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:392
 #, c-format
-#| msgid "Error saving icon"
 msgid "Error removing icon %s: %s"
 msgstr "Kļūda, dzēšot ikonu %s — %s"
 
-#: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:1
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:75
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:1
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:78
+msgid "Export to Getting Things GNOME"
+msgstr "Eksportēt uz Getting Things GNOME"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:2
+#| msgid "Exports individual notes to HTML."
+msgid "Exports individual notes as Getting Things GNOME tasks"
+msgstr "Eksportē atsevišķas piezīmes uz Getting Things GNOME uzdevumu"
+
+#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:3
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:3
+#: ../src/addins/statistics/statistics.desktop.in.in.h:3
+msgid "Aurimas Černius"
+msgstr "Aurimas Černius"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:91
+msgid "GTG XML loaded, but interface not found"
+msgstr "GTG XML ir ielādēts, bet nav atrasta saskarne"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:97
+#, c-format
+#| msgid "Failed to load D-Bus interface %s: %s"
+msgid "Failed to create GTG interface from XML: %s"
+msgstr "Neizdevās izveidot GTG saskarni no XML — %s"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:105
+msgid "Failed to create D-Bus proxy for GTG"
+msgstr "Neizdevās izveidot GTG D-Bus starpnieku"
+
+#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:121
+#, c-format
+msgid "Failed to call GTG: %s"
+msgstr "Neizdevās izsaukt GTG — %s"
+
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
 msgid "Export to HTML"
 msgstr "Eksportēt uz HTML"
 
-#: ../src/addins/exporttohtml/exporttohtml.desktop.in.h:2
+#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:2
 msgid "Exports individual notes to HTML."
 msgstr "Eksportē atsevišķas piezīmes uz HTML."
 
@@ -801,35 +950,36 @@ msgstr "Eksportēt saistītās piezīmes"
 msgid "Include all other linked notes"
 msgstr "Iekļaut visas citas savienotās piezīmes"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:76
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
 #| msgid "Export to HTML"
-msgid "Export note to HTML"
-msgstr "Eksportēt piezīmi uz HTML"
+msgid "Export to HTML…"
+msgstr "Eksportēt uz HTML…"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:116
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Nevarēja atvērt eksportēto piezīmi tīmekļa pārlūkā — %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
-msgid "Your note was exported to \"%1%\"."
-msgstr "Jūsu piezīme tika eksportēta uz “%1%”."
+#. TRANSLATORS: %1%: boost format placeholder for the path
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:125
+#| msgid "Your note was exported to \"%1%\"."
+msgid "Your note was exported to \"%1\"."
+msgstr "Jūsu piezīme tika eksportēta uz “%1”."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:129
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:134
 msgid "Note exported successfully"
 msgstr "Piezīme eksportēta veiksmīgi"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:143
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:151
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:148
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:156
 #, c-format
-#| msgid "Could not save the file \"%s\""
 msgid "Could not export: %s"
 msgstr "Nevarēja eksportēt: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:154
-#, c-format
-msgid "Could not save the file \"%s\""
-msgstr "Nevarēja saglabāt datni “%s”"
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+#| msgid "Could not save the file \"%s\""
+msgid "Could not save the file \"%1\""
+msgstr "Nevarēja saglabāt datni “%1”"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
 msgid "_Folder Path:"
@@ -848,149 +998,148 @@ msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Norādītais mapes ceļš neeksistē un Gnote nevarēja to izveidot."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:217
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
 msgid "Local Folder"
 msgstr "Vietējā mape"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:1
-msgid "Local Directory Sync Service Add-in"
-msgstr "Vietējās direktorijas sinhronizācijas servisa pielikums"
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:1
+#| msgid "Local Directory Sync Service Add-in"
+msgid "Local Directory Sync Service Plugin"
+msgstr "Vietējās direktorijas sinhronizācijas servisa spraudnis"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:2
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:2
 msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "Sinhronizēt Gnote piezīmes ar lokālo datņu sistēmas ceļu"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.h:3
-#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:3
-#| msgid "Aurimas Cernius and the Tomboy Project"
+#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:3
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:3
 msgid "Aurimas Černius and the Tomboy Project"
 msgstr "Aurimas Černius un Tomboy projekts"
 
-#: ../src/addins/fixedwidth/fixedwidth.desktop.in.h:1
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:1
 msgid "Fixed Width"
 msgstr "Fiksēts platums"
 
-#: ../src/addins/fixedwidth/fixedwidth.desktop.in.h:2
+#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:2
 msgid "Adds fixed-width font style."
 msgstr "Pievieno fiksēta platuma fonta stilu."
 
-#: ../src/addins/fixedwidth/fixedwidthmenuitem.cpp:35
+#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:57
 msgid "Fixed Wid_th"
 msgstr "Fiksē_ts platums"
 
-#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:44
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
 msgid "Insert Timestamp"
 msgstr "Ievietot laika spiedogu"
 
-#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.h:2
+#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Ievietot pašreizējo datumu un laiku kursora pozīcijā."
 
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:45
-#| msgid "Insert Timestamp"
-msgid "Insert Timestamp into note"
-msgstr "Ievietot laika spiedogu piezīmē"
-
 #. Label
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:70
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:68
 msgid "Choose one of the predefined formats or use your own."
 msgstr ""
 "Izvēlieties vienu no iepriekš pieņemtajiem formātiem vai izmantot savu "
 "personīgo."
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:78
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:76
 msgid "Use _Selected Format"
 msgstr "Izmantot _izvēlēto formātu"
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:110
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:106
 msgid "_Use Custom Format"
 msgstr "I_zmantot pielāgoto formātu"
 
 #. TRANSLATORS: first %s is file name, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:225
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:229
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr "NoteDirectoryWatcher: apturēta atjaunināšana, kļūda lasot %s — %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:252
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:256
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr "NoteDirectoryWatcher: kļūda, lasot piezīmes virsrakstu no %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:260
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:264
 #, c-format
 msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 msgstr "NoteDirectoryWatcher: nezināma kļūda, veidojot piezīmi no %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:266
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:270
 #, c-format
 msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
 msgstr "NoteDirectoryWatcher: kļūda, veidojot piezīmi no %s — %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:279
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:283
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr "NoteDirectoryWatcher: apturēta atjaunināšana, kļūda parsējot %s — %s"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:1
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:1
 msgid "Note Directory Watcher"
 msgstr "Piezīmju direktorijas uzraugs"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:2
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:2
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr ""
 "Novērot savu Gnote piezīmju direktoriju, vai tur nav izmaiņas piezīmēm."
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.h:3
+#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:3
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius un Tomboy sākotnējie autori"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:33
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
+msgid "_Directory check interval:"
+msgstr "_Direktorijas pārbaudes intervāls:"
+
+#: ../src/addins/noteoftheday/noteoftheday.cpp:34
 msgid "Today: Template"
 msgstr "Šodien: Veidne"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:35
+#: ../src/addins/noteoftheday/noteoftheday.cpp:36
 msgid "Today: "
 msgstr "Šodien: "
 
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
-#: ../src/addins/noteoftheday/noteoftheday.cpp:49
+#: ../src/addins/noteoftheday/noteoftheday.cpp:50
 #: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:72
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "NoteOfTheDay nevarēja izveidot %s: %s"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:160
+#: ../src/addins/noteoftheday/noteoftheday.cpp:152
 msgid "Tasks"
 msgstr "Uzdevumi"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:161
+#: ../src/addins/noteoftheday/noteoftheday.cpp:153
 msgid "Appointments"
 msgstr "Tikšanās"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:167
+#: ../src/addins/noteoftheday/noteoftheday.cpp:159
 msgid "%A, %B %d %Y"
 msgstr "%A, %d. %B, %Y."
 
-#: ../src/addins/noteoftheday/noteoftheday.desktop.in.h:1
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:1
 msgid "Note of the Day"
 msgstr "Dienas piezīme"
 
-#: ../src/addins/noteoftheday/noteoftheday.desktop.in.h:2
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:2
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
 "Automātiski izveido \"Šodien\" piezīmi, vienkāršai ikdienas domu "
 "piefiksēšanai"
 
-#: ../src/addins/noteoftheday/noteoftheday.desktop.in.h:3
+#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:3
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray un Tomboy Project"
 
@@ -1003,118 +1152,103 @@ msgid ""
 "Change the <span weight=\"bold\">Today: Template</span> note to customize "
 "the text that new Today notes have."
 msgstr ""
-"Izmainiet <span weight=\"bold\">Šodien: Veidne</span> piezīmi, lai "
-"pielāgotu šodienas piezīmēs redzamo tekstu."
+"Izmainiet <span weight=\"bold\">Šodien: Veidne</span> piezīmi, lai pielāgotu "
+"šodienas piezīmēs redzamo tekstu."
 
-#: ../src/addins/printnotes/printnotes.desktop.in.h:1
+#: ../src/addins/printnotes/printnotes.desktop.in.in.h:1
 msgid "Printing Support"
 msgstr "Drukāšanas atbalsts"
 
-#: ../src/addins/printnotes/printnotes.desktop.in.h:2
+#: ../src/addins/printnotes/printnotes.desktop.in.in.h:2
 msgid "Allows you to print a note."
 msgstr "Ļauj jums drukāt piezīmi."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
-msgid "Print"
-msgstr "Drukāt"
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
+#| msgid "Print"
+msgid "Print…"
+msgstr "Drukāt…"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:60
-#| msgid "Quit Gnote"
-msgid "Print note"
-msgstr "Drukāt piezīmi"
-
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:135
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
 msgstr "Kļūda, drukājot piezīmi"
 
-#. %1% is the page number, %2% is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:302
-msgid "Page %1% of %2%"
-msgstr "Lapa %1% no %2%"
+#. %1 is the page number, %2 is the total number of pages
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:278
+#| msgid "Page %1% of %2%"
+msgid "Page %1 of %2"
+msgstr "Lapa %1 no %2"
 
-#: ../src/addins/readonly/readonly.desktop.in.h:1
-#: ../src/addins/readonly/readonlynoteaddin.cpp:65
+#: ../src/addins/readonly/readonly.desktop.in.in.h:1
+#: ../src/addins/readonly/readonlynoteaddin.cpp:69
 msgid "Read Only"
 msgstr "Tikai lasāms"
 
-#: ../src/addins/readonly/readonly.desktop.in.h:2
+#: ../src/addins/readonly/readonly.desktop.in.in.h:2
 msgid "Mark certain notes as read only"
 msgstr "Atzīmēt noteiktas piezīmes kā tikai lasāmas"
 
-#: ../src/addins/readonly/readonly.desktop.in.h:3
+#: ../src/addins/readonly/readonly.desktop.in.in.h:3
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray un Arief Bayu Purwanto"
 
-#: ../src/addins/readonly/readonlynoteaddin.cpp:66
-msgid "Make this note read-only"
-msgstr "Padarīt šo piezīmi tikai lasāmu"
-
-#: ../src/addins/replacetitle/replacetitle.desktop.in.h:1
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:50
+#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:1
+#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:53
 msgid "Replace title"
 msgstr "Aizvietot virsrakstu"
 
-#: ../src/addins/replacetitle/replacetitle.desktop.in.h:2
+#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:2
 msgid "Replace title with selection."
 msgstr "Aizvietot virsrakstu ar izvēlēto."
 
-#: ../src/addins/replacetitle/replacetitle.desktop.in.h:3
+#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:3
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/specialnotes/specialnotes.desktop.in.h:1
 #: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
-#| msgid "Search All Notes"
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 msgid "Special Notes"
 msgstr "Īpašas piezīmes"
 
-#: ../src/addins/specialnotes/specialnotes.desktop.in.h:2
+#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:2
 msgid "Show special notes, that are otherwise hidden"
 msgstr "Rādīt īpašas piezīmes, kas citādi ir slēptas"
 
-#: ../src/addins/specialnotes/specialnotes.desktop.in.h:3
-#: ../src/addins/statistics/statistics.desktop.in.h:3
-msgid "Aurimas Černius"
-msgstr "Aurimas Černius"
-
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:50
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:70
 msgid "Show Statistics"
 msgstr "Rādīt statistiku"
 
-#: ../src/addins/statistics/statistics.desktop.in.h:1
-#: ../src/addins/statistics/statisticswidget.cpp:171
-#| msgid "Status"
+#: ../src/addins/statistics/statistics.desktop.in.in.h:1
+#: ../src/addins/statistics/statisticswidget.cpp:170
 msgid "Statistics"
 msgstr "Statistika"
 
-#: ../src/addins/statistics/statistics.desktop.in.h:2
+#: ../src/addins/statistics/statistics.desktop.in.in.h:2
 msgid "Show various statistics about notes."
 msgstr "Rādīt statistiku par piezīmēm."
 
-#: ../src/addins/statistics/statisticswidget.cpp:91
-#| msgid "All Notes"
+#: ../src/addins/statistics/statisticswidget.cpp:89
 msgid "Total Notes:"
 msgstr "Piezīmes kopā:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:97
-#| msgid "Notebooks"
+#: ../src/addins/statistics/statisticswidget.cpp:95
 msgid "Total Notebooks:"
 msgstr "Piezīmju bloki kopā:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:127
-#| msgid "Total: %1% note"
-#| msgid_plural "Total: %1% notes"
-msgid "%1% note"
-msgid_plural "%1% notes"
-msgstr[0] "%1% piezīme"
-msgstr[1] "%1% piezīmes"
-msgstr[2] "%1% piezīmju"
+#. TRANSLATORS: %1 is the format placeholder for the number of notes.
+#: ../src/addins/statistics/statisticswidget.cpp:126
+#| msgid "%1% note"
+#| msgid_plural "%1% notes"
+msgid "%1 note"
+msgid_plural "%1 notes"
+msgstr[0] "%1 piezīme"
+msgstr[1] "%1 piezīmes"
+msgstr[2] "%1 piezīmju"
 
-#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.h:1
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:1
 msgid "Sticky Notes Importer"
 msgstr "Sticky Notes importētājs"
 
-#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.h:2
+#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:2
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Importēt savas piezīmes no Sticky Notes sīklietotnes."
 
@@ -1122,42 +1256,41 @@ msgstr "Importēt savas piezīmes no Sticky Notes sīklietotnes."
 msgid "Import from Sticky Notes"
 msgstr "Importēt no Sticky Notes"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:212
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
 msgid "No Sticky Notes found"
 msgstr "Sticky Notes nav atrastas"
 
-#. %1% is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:214
-msgid "No suitable Sticky Notes file was found at \"%1%\"."
-msgstr "Neviena piemērota Sticky Notes datne nav atrasts “%1%”."
+#. %1 is a the file name
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:210
+#| msgid "No suitable Sticky Notes file was found at \"%1%\"."
+msgid "No suitable Sticky Notes file was found at \"%1\"."
+msgstr "Neviena piemērota Sticky Notes datne nav atrasts “%1”."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:222
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
 msgid "Sticky Notes import completed"
 msgstr "Sticky Notes importēšana pabeigta"
 
-#. here %1% is the number of notes imported, %2% the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:224
-msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
-msgstr "<b>%1%</b> no <b>%2%</b> Sticky Notes importētas veiksmīgi."
+#. here %1 is the number of notes imported, %2 the total number of notes.
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:220
+#| msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
+msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
+msgstr "<b>%1</b> no <b>%2</b> Sticky Notes importētas veiksmīgi."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:243
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:239
 msgid "Untitled"
 msgstr "Nenosaukts"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:281
+#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:277
 msgid "Sticky Note: "
 msgstr "Sticky Note: "
 
-#. namespace
-#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:37
-#: ../src/addins/tableofcontents/tableofcontentsaction.cpp:38
-#: ../src/addins/tableofcontents/tableofcontents.desktop.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:65
-#| msgid "Help _Contents"
+#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:68
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:130
 msgid "Table of Contents"
 msgstr "Satura rādītājs"
 
-#: ../src/addins/tableofcontents/tableofcontents.desktop.in.h:2
+#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:2
 msgid ""
 "Navigate long structured notes. Set section and subsection headings in your "
 "note, and the Table of Contents will show in a menu."
@@ -1165,77 +1298,93 @@ msgstr ""
 "Pārvietoties pa garām strukturētām piezīmēm. Iestatiet sadaļu un apakšsadaļu "
 "virsrakstus savā piezīmē un izvēlnē parādīsies satura rādītājs."
 
-#: ../src/addins/tableofcontents/tableofcontents.desktop.in.h:3
+#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:3
 msgid "Luc Pionchon"
 msgstr "Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontents.desktop.in.h:4
+#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:4
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:139
-msgid "(empty table of contents)"
-msgstr "(tukšs satura rādītājs)"
-
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:154
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:145
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:210
 msgid "Heading 1"
 msgstr "Virsraksts 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:160
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:149
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:216
 msgid "Heading 2"
 msgstr "Virsraksts 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:166
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:153
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:222
 msgid "Table of Contents Help"
 msgstr "Satura rādītāja palīdzība"
 
+#. no toc items, and no action entries = empty menu
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:195
+msgid "(empty table of contents)"
+msgstr "(tukšs satura rādītājs)"
+
 #. namespace
-#: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:1
+#: ../src/addins/todo/todo.desktop.in.in.h:1
+msgid "TODO"
+msgstr "TODO"
+
+#: ../src/addins/todo/todo.desktop.in.in.h:2
+msgid "Highlight FIXME, TODO and XXX patterns in notes."
+msgstr "Piezīmēs izcelt FIXME, TODO un XXX."
+
+#: ../src/addins/todo/todo.desktop.in.in.h:3
+#| msgid "Aurimas Černius and Tomboy original authors"
+msgid "Aurimas Černius, Romain Tartière"
+msgstr "Aurimas Černius, Romain Tartière"
+
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:1
 msgid "Tomboy Importer"
 msgstr "Tomboy importētājs"
 
-#: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:2
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:2
 msgid "Import your notes from Tomboy."
 msgstr "Importējiet savas piezīmes no Tomboy."
 
-#: ../src/addins/tomboyimport/tomboyimport.desktop.in.h:3
+#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:3
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: ../src/addins/underline/underline.desktop.in.h:1
+#: ../src/addins/underline/underline.desktop.in.in.h:1
 msgid "Underline"
 msgstr "Pasvītrot"
 
-#: ../src/addins/underline/underline.desktop.in.h:2
+#: ../src/addins/underline/underline.desktop.in.in.h:2
 msgid "Adds ability to underline text."
 msgstr "Dod iespēju pasvītrot tekstu."
 
-#: ../src/addins/underline/underline.desktop.in.h:3
+#: ../src/addins/underline/underline.desktop.in.in.h:3
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière un Tomboy Project"
 
-#: ../src/addins/underline/underlinemenuitem.cpp:35
+#: ../src/addins/underline/underlinenoteaddin.cpp:56
 msgid "_Underline"
 msgstr "_Pasvītrot"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:69
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:74
 msgid "User_name:"
 msgstr "Lietotāj_vārds:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:80
 msgid "_Password:"
 msgstr "_Parole:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:104
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:116
 msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
@@ -1243,34 +1392,34 @@ msgstr ""
 "Notikusi kļūda pieslēdzoties serverim. Kļūdas iemesls, nepareizs "
 "lietotājvārds un/vai parole."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:173
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:156
 msgid "URL, username, or password field is empty."
 msgstr "URL, lietotājvārda, vai paroles lauks ir tukšs."
 
-#. TODO: If the above fails (no keyring daemon), save all but password
-#. to GConf, and notify user.
-#. Save configuration into GConf
-#. Preferences.Set ("/apps/tomboy/sync_wdfs_url", url ?? string.Empty);
-#. Preferences.Set ("/apps/tomboy/sync_wdfs_username", username ?? string.Empty);
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:262
+#. TRANSLATORS: %1 is the format placeholder for the error message.
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:248
+#| msgid ""
+#| "Saving configuration to the GNOME keyring failed with the following "
+#| "message:\n"
+#| "\n"
+#| "%1%"
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
 "\n"
-"%1%"
+"%1"
 msgstr ""
 "Konfigurācijas saglabāšana GNOME atslēgu saišķī neizdevās. Saņemts "
 "sekojošais ziņojums:\n"
 "\n"
-"%1%"
+"%1"
 
-#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:1
-#| msgid "WebDav Sync Service Add-in"
-msgid "WebDAV Sync Service Add-in"
-msgstr "WebDAV sinhronizācijas servisa pielikums"
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:1
+#| msgid "WebDAV Sync Service Add-in"
+msgid "WebDAV Sync Service Plugin"
+msgstr "WebDAV sinhronizācijas servisa spraudnis"
 
-#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.h:2
-#| msgid "Synchronize Gnote Notes to a WebDav URL"
+#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:2
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Sinhronizēt Gnote piezīmes ar WebDAV URL."
 
@@ -1279,20 +1428,24 @@ msgstr "Sinhronizēt Gnote piezīmes ar WebDAV URL."
 msgid "Remote call to %s failed"
 msgstr "Neizdevās attālinātais izsaukums %s"
 
-#: ../src/dbus/remotecontrol.cpp:84
+#: ../src/dbus/remotecontrol.cpp:82
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Izveidojot piezīmi tika mests izņēmums: %s"
 
-#: ../src/gnote.cpp:202
+#: ../src/gnote.cpp:181
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote jau ir palaists. Iziet..."
 
-#: ../src/gnote.cpp:363
+#: ../src/gnote.cpp:272
+msgid "Failed to get shortcuts window!"
+msgstr "Neizdevās iegūt saīsņu logu!"
+
+#: ../src/gnote.cpp:286
 msgid "and Tomboy original authors."
 msgstr "un Tomboy sākotnējie autori"
 
-#: ../src/gnote.cpp:369
+#: ../src/gnote.cpp:292
 msgid "translator-credits"
 msgstr ""
 "Raivis Dejus <orvils@gmail.com>\n"
@@ -1307,94 +1460,101 @@ msgstr ""
 "  karass https://launchpad.net/~kaspars-karass\n"
 "  tm https://launchpad.net/~toms-baugis"
 
-#: ../src/gnote.cpp:378
+#: ../src/gnote.cpp:301
 #| msgid ""
-#| "Copyright © 2010-2012 Aurimas Cernius\n"
+#| "Copyright © 2010-2013 Aurimas Cernius\n"
 #| "Copyright © 2009-2011 Debarshi Ray\n"
 #| "Copyright © 2009 Hubert Figuiere\n"
 #| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2013 Aurimas Cernius\n"
+"Copyright © 2010-2018 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Autortiesības © 2010-2013 Aurimas Cernius\n"
+"Autortiesības © 2010-2018 Aurimas Cernius\n"
 "Autortiesības © 2009-2011 Debarshi Ray\n"
 "Autortiesības © 2009 Hubert Figuiere\n"
 "Autortiesības © 2004-2009 Tomboy autori."
 
-#: ../src/gnote.cpp:382
+#: ../src/gnote.cpp:305
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Vienkārša un viegli lietojama piezīmju programma."
 
-#: ../src/gnote.cpp:393
+#: ../src/gnote.cpp:316
 msgid "Homepage"
 msgstr "Mājas lapa"
 
-#: ../src/gnote.cpp:571
+#: ../src/gnote.cpp:527
 msgid "Run Gnote in background."
 msgstr "Palaist Gnote fonā."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:528
+#| msgid "Run Gnote as a GNOME panel applet."
+msgid "Run Gnote as GNOME Shell search provider."
+msgstr "Palaist Gnote kā GNOME čaulas meklēšnanas pakalpojuma sniedzēju."
+
+#: ../src/gnote.cpp:529
 msgid "Specify the path of the directory containing the notes."
 msgstr "Norādīt ceļu mapei, kas satur piezīmes."
 
-#: ../src/gnote.cpp:572
+#: ../src/gnote.cpp:529
 msgid "path"
 msgstr "ceļš"
 
-#: ../src/gnote.cpp:573
+#: ../src/gnote.cpp:530
 msgid "Open the search all notes window with the search text."
 msgstr "Atvērt visu piezīmju meklēšanas logu ar meklēšanas tekstu."
 
-#: ../src/gnote.cpp:573 ../src/gnote.cpp:578
+#: ../src/gnote.cpp:530 ../src/gnote.cpp:535
 msgid "text"
 msgstr "teksts"
 
-#: ../src/gnote.cpp:574
+#: ../src/gnote.cpp:531
 msgid "Print version information."
 msgstr "Drukāt versijas informāciju."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:532
 msgid "Create and display a new note, with a optional title."
 msgstr "Izveidot un attēlot jaunu piezīmi, ar neobligātu virsrakstu."
 
-#: ../src/gnote.cpp:575
+#: ../src/gnote.cpp:532
 msgid "title"
 msgstr "virsraksts"
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:533
 msgid "Display the existing note matching title."
 msgstr "Attēlot esošu piezīmi ar atbilstošu virsrakstu."
 
-#: ../src/gnote.cpp:576
+#: ../src/gnote.cpp:533
 msgid "title/url"
 msgstr "virsraksts/url"
 
-#: ../src/gnote.cpp:577
+#: ../src/gnote.cpp:534
 msgid "Display the 'Start Here' note."
 msgstr "Attēlot 'Sākt šeit' piezīmi."
 
-#: ../src/gnote.cpp:578
+#: ../src/gnote.cpp:535
 msgid "Search and highlight text in the opened note."
 msgstr "Meklēt un izcelt tekstu atvērtajā piezīmē."
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:539
 msgid "A note taking application"
 msgstr "Piezīmju veikšanas lietotne"
 
-#: ../src/gnote.cpp:582
+#: ../src/gnote.cpp:539
 msgid "Gnote options at launch"
 msgstr "Gnote opcijas palaišanas laikā"
 
-#: ../src/gnote.cpp:659
+#: ../src/gnote.cpp:616
 msgid "Could not connect to remote instance."
 msgstr "Nevar savienoties ar attālināto instanci."
 
-#: ../src/gnote.cpp:775
-msgid "Version %1%"
-msgstr "Versija %1%"
+#. TRANSLATORS: %1: format placeholder for the version string.
+#: ../src/gnote.cpp:733
+#| msgid "Version %1%"
+msgid "Version %1"
+msgstr "Versija %1"
 
 #. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
 #: ../src/iconmanager.cpp:66
@@ -1402,36 +1562,50 @@ msgstr "Versija %1%"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Neizdevās ielādēt ikonu (%s, %d): %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:41
-#| msgid "Create a new notebook"
+#: ../src/noteaddin.cpp:131 ../src/noteaddin.cpp:145 ../src/noteaddin.cpp:157
+msgid "Plugin is disposing already"
+msgstr "Spraudnis jau tiek likvidēts"
+
+#: ../src/noteaddin.cpp:161
+msgid "Window is not embedded"
+msgstr "Logs nav iegults"
+
+#. Probably IOException or UnauthorizedAccessException?
+#: ../src/notebase.cpp:194 ../src/note.cpp:378
+#, c-format
+msgid "Exception while saving note: %s"
+msgstr "Saglabājot piezīmi tika mests izņēmums: %s"
+
+#. write failure, but not critical
+#: ../src/notebase.cpp:438
+#, c-format
+msgid "Failed to update note format: %s"
+msgstr "Neizdevās atjaunināt piezīmes formātu — %s"
+
+#: ../src/notebase.cpp:562
+#, c-format
+msgid "Filesystem error: %s"
+msgstr "Datņu sistēmas kļūda — %s"
+
+#: ../src/notebooks/createnotebookdialog.cpp:39
 msgid "Create Notebook"
 msgstr "Izveidot piezīmju bloku"
 
-#: ../src/notebooks/createnotebookdialog.cpp:45
+#: ../src/notebooks/createnotebookdialog.cpp:43
 msgid "N_otebook name:"
 msgstr "Piezīmju bl_oka nosaukums:"
 
-#: ../src/notebooks/createnotebookdialog.cpp:58
+#: ../src/notebooks/createnotebookdialog.cpp:56
 msgid "Name already taken"
 msgstr "Šāds nosaukums jau aizņemts"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:71
+#: ../src/notebooks/createnotebookdialog.cpp:69
 msgid "C_reate"
 msgstr "Iz_veidot"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:66
-#: ../src/searchnoteswidget.cpp:228
-msgid "Notebooks"
-msgstr "Piezīmju bloki"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:67
-msgid "Create a new note in a notebook"
-msgstr "Izveidot jaunu piezīmi piezīmju blokā"
-
-#: ../src/notebooks/notebookapplicationaddin.cpp:98
-#: ../src/notebooks/notebookapplicationaddin.cpp:148
+#: ../src/notebooks/notebookapplicationaddin.cpp:79
 msgid "New Note_book..."
 msgstr "Jauns piezīmju _bloks..."
 
@@ -1439,37 +1613,21 @@ msgstr "Jauns piezīmju _bloks..."
 #. notebook.  For example, if the name of the notebooks
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
-#. name of the notebook accordingly using "%1%".
-#: ../src/notebooks/notebook.cpp:110
-msgid "%1% Notebook Template"
-msgstr "%1% piezīmju bloka veidne"
+#. name of the notebook accordingly using "%1".
+#: ../src/notebooks/notebook.cpp:108
+#| msgid "%1% Notebook Template"
+msgid "%1 Notebook Template"
+msgstr "%1 piezīmju bloka veidne"
 
-#: ../src/notebooks/notebook.cpp:186 ../src/notemanager.cpp:524
+#: ../src/notebooks/notebook.cpp:184 ../src/notemanagerbase.cpp:307
 msgid "New Note"
 msgstr "Jauna piezīme"
 
-#: ../src/notebooks/notebook.cpp:241
-msgid "All"
-msgstr "Visi"
-
-#: ../src/notebooks/notebook.cpp:273
-#| msgid "Unfiled Notes"
-msgid "Unfiled"
-msgstr "Nešķirotās"
-
-#: ../src/notebooks/notebook.cpp:306
-msgid "Important"
-msgstr "Svarīgi"
-
-#: ../src/notebooks/notebook.cpp:334
-msgid "Active"
-msgstr "Aktīvs"
-
-#: ../src/notebooks/notebookmanager.cpp:363
+#: ../src/notebooks/notebookmanager.cpp:365
 msgid "Really delete this notebook?"
 msgstr "Vai tiešām izdzēst šo piezīmju bloku?"
 
-#: ../src/notebooks/notebookmanager.cpp:364
+#: ../src/notebooks/notebookmanager.cpp:366
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1477,63 +1635,76 @@ msgstr ""
 "Piezīmes kuras pieder pie šī piezīmju bloka netiks izdzēstas, bet tās vairs "
 "nebūs sasaistītas ar šo piezīmju bloku. Šī darbība nevar tikt atcelta."
 
-#: ../src/notebooks/notebookmenuitem.cpp:35
+#: ../src/notebooks/notebookmenuitem.cpp:34
+#: ../src/notebooks/notebooknoteaddin.cpp:153
 msgid "No notebook"
 msgstr "Bez piezīmju bloka"
 
+#. TRANSLATORS: %1: format placeholder for the notebook name
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:40
-msgid "New \"%1%\" Note"
-msgstr "Jauna piezīme \"%1%\""
+#| msgid "New \"%1%\" Note"
+msgid "New \"%1\" Note"
+msgstr "Jauna piezīme \"%1\""
 
-#: ../src/notebooks/notebooknoteaddin.cpp:81
-msgid "Place this note into a notebook"
-msgstr "Ievietot šo piezīmi piezīmju blokā"
-
-#: ../src/notebooks/notebooknoteaddin.cpp:191
+#: ../src/notebooks/notebooknoteaddin.cpp:110
 msgid "Notebook"
 msgstr "Piezīmju bloks"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:214
+#. Add new notebook item
+#: ../src/notebooks/notebooknoteaddin.cpp:147
 msgid "_New notebook..."
 msgstr "Jau_ns piezīmju bloks..."
 
-#: ../src/notebuffer.cpp:1498
+#: ../src/notebooks/specialnotebooks.cpp:46
+msgid "All"
+msgstr "Visi"
+
+#: ../src/notebooks/specialnotebooks.cpp:75
+msgid "Unfiled"
+msgstr "Nešķirotās"
+
+#: ../src/notebooks/specialnotebooks.cpp:106
+msgid "Important"
+msgstr "Svarīgi"
+
+#: ../src/notebooks/specialnotebooks.cpp:133
+msgid "Active"
+msgstr "Aktīvs"
+
+#: ../src/notebuffer.cpp:1528
 msgid "</list> tag mismatch"
 msgstr "tagu nesaderība"
 
-#: ../src/notebuffer.cpp:1577
+#: ../src/notebuffer.cpp:1612
 #, c-format
 msgid "Exception: %s"
 msgstr "Izņēmums: %s"
 
-#. TRANSLATORS: %1% will be replaced by note title
-#: ../src/note.cpp:76
+#. TRANSLATORS: %1 will be replaced by note title
+#: ../src/note.cpp:55
+#| msgid "Really delete \"%1%\"?"
+msgid "Really delete \"%1\"?"
+msgstr "Tiešām dzēst “%1”?"
+
+#. TRANSLATORS: %1 is number of notes
+#: ../src/note.cpp:59
 #| msgid "Really delete %1% note?"
 #| msgid_plural "Really delete %1% notes?"
-msgid "Really delete \"%1%\"?"
-msgstr "Tiešām dzēst “%1%”?"
+msgid "Really delete %1 note?"
+msgid_plural "Really delete %1 notes?"
+msgstr[0] "Tiešām dzēst %1 piezīmi?"
+msgstr[1] "Tiešām dzēst %1 piezīmes?"
+msgstr[2] "Tiešām dzēst %1 piezīmju?"
 
-#. TRANSLATORS: %1% is number of notes
-#: ../src/note.cpp:80
-msgid "Really delete %1% note?"
-msgid_plural "Really delete %1% notes?"
-msgstr[0] "Tiešām dzēst %1% piezīmi?"
-msgstr[1] "Tiešām dzēst %1% piezīmes?"
-msgstr[2] "Tiešām dzēst %1% piezīmju?"
-
-#: ../src/note.cpp:87
+#: ../src/note.cpp:66
 msgid "If you delete a note it is permanently lost."
 msgstr "Ja jūs dzēsīsiet piezīmi, tā tiks  neatgriezeniski zaudēta."
 
-#: ../src/note.cpp:123
+#: ../src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Kļūda saglabājot datus."
 
-#: ../src/note.cpp:124
-#| msgid ""
-#| "An error occurred while saving your notes. Please check that you have "
-#| "sufficient disk space, and that you have appropriate rights on ~/.gnote. "
-#| "Error details can be found in ~/.gnote.log."
+#: ../src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1541,41 +1712,28 @@ msgid ""
 msgstr ""
 "Kļūda saglabājot jūsu piezīmes. Lūdzu, pārliecinieties, ka jums ir "
 "pietiekami daudz brīvās diska vietas un ka jums ir nepieciešamās atļaujas "
-"mapei ~/.local/share/gnote. Sīkāka informācija par kļūdu pieejama  "
-"~/.gnote.log."
+"mapei ~/.local/share/gnote. Sīkāka informācija par kļūdu pieejama  ~/.gnote."
+"log."
 
-#. Probably IOException or UnauthorizedAccessException?
-#: ../src/note.cpp:425
+#: ../src/note.cpp:470
 #, c-format
-msgid "Exception while saving note: %s"
-msgstr "Saglabājot piezīmi tika mests izņēmums: %s"
-
-#: ../src/note.cpp:533
-#, c-format
-#| msgid "Error saving icon"
 msgid "Error while saving: %s"
 msgstr "Kļūda, saglabājot — %s"
 
-#: ../src/note.cpp:956
+#: ../src/note.cpp:696
 msgid "Setting text content for closed notes not supported"
 msgstr "Nav atbalstīta teksta satura iestatīšana aizvērtām piezīmēm"
 
-#. write failure, but not critical
-#: ../src/note.cpp:1159
-#, c-format
-msgid "Failed to update note format: %s"
-msgstr "Neizdevās atjaunināt piezīmes formātu — %s"
-
-#: ../src/note.cpp:1294
-#, c-format
-msgid "Filesystem error: %s"
-msgstr "Datņu sistēmas kļūda — %s"
-
-#: ../src/notemanager.cpp:101 ../src/preferencesdialog.cpp:341
+#. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
+#: ../src/notemanagerbase.cpp:107 ../src/preferencesdialog.cpp:318
 msgid "New Note Template"
 msgstr "Jauna piezīmes veidne"
 
-#: ../src/notemanager.cpp:238
+#: ../src/notemanagerbase.cpp:365
+msgid "Describe your new note here."
+msgstr "Aprakstiet savu piezīmi šeit."
+
+#: ../src/notemanager.cpp:134
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1615,7 +1773,7 @@ msgstr ""
 "<link:internal>Gnote saišu izmantošana</link:internal>, tas tiek automātiski "
 "pasvītrots?  Klikšķiniet uz šīs saites, lai atvērtu piezīmi.</note-content>"
 
-#: ../src/notemanager.cpp:257
+#: ../src/notemanager.cpp:153
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1643,29 +1801,24 @@ msgstr ""
 "automātiski pārtaps par saiti uz šo piezīmi.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:272 ../src/notemanager.cpp:323
+#: ../src/notemanager.cpp:168 ../src/notemanager.cpp:207
 msgid "Start Here"
 msgstr "Sākt šeit"
 
-#: ../src/notemanager.cpp:278
+#: ../src/notemanager.cpp:174
 msgid "Using Links in Gnote"
 msgstr "Gnote saišu izmantošana"
 
-#: ../src/notemanager.cpp:283
+#: ../src/notemanager.cpp:179
 #, c-format
-#| msgid "Error printing note"
 msgid "Error creating start notes: %s"
 msgstr "Kļūda, veidojot sākuma piezīmes — %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/notemanager.cpp:311
+#: ../src/notemanager.cpp:195
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Kļūda, apstrādājot piezīmes XML, izlaiž “%s” — %s"
-
-#: ../src/notemanager.cpp:635
-msgid "Describe your new note here."
-msgstr "Aprakstiet savu piezīmi šeit."
 
 #: ../src/noterenamedialog.cpp:123
 msgid "Rename Note Links?"
@@ -1700,13 +1853,18 @@ msgid "Never rename _links"
 msgstr "Nekad nepārsaukt _saites"
 
 #: ../src/noterenamedialog.cpp:152
+#| msgid ""
+#| "Rename links in other notes from \"<span underline=\"single\">%1</span>\" "
+#| "to\"<span underline=\"single\">%2</span>\"?\n"
+#| "\n"
+#| "If you do not rename the links, they will no longer link to anything."
 msgid ""
-"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to"
+"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Pārsaukt saites citās piezīmēs no  \"<span underline=\"single\">%1</span>\" "
+"Pārsaukt saites citās piezīmēs no \"<span underline=\"single\">%1</span>\" "
 "uz \"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "Ja jūs nepārsauksiet saites, tās vairs uz neko nenorādīs."
@@ -1723,44 +1881,33 @@ msgstr "Piezīmes virsraksts"
 msgid "Ad_vanced"
 msgstr "_Paplašināti"
 
-#: ../src/notewindow.cpp:356
+#: ../src/notewindow.cpp:312
+msgid "_Undo"
+msgstr "Atsa_ukt"
+
+#: ../src/notewindow.cpp:314
+msgid "_Redo"
+msgstr "Ata_tsaukt"
+
+#: ../src/notewindow.cpp:318 ../src/notewindow.cpp:391
 msgid "_Link to New Note"
 msgstr "Saite uz jaunu piezīmi"
 
-#: ../src/notewindow.cpp:364
-msgid "Te_xt"
-msgstr "Te_ksts"
+#: ../src/notewindow.cpp:338
+#| msgid "Important"
+msgid "_Important"
+msgstr "_Svarīgs"
 
-#: ../src/notewindow.cpp:401
-#| msgid "Print"
-msgid "Pin"
-msgstr "Piespraust"
+#: ../src/notewindow.cpp:339
+#| msgid "_Delete"
+msgid "_Delete…"
+msgstr "_Dzēst…"
 
-#: ../src/notewindow.cpp:402
-msgid "Mark note as important"
-msgstr "Atzīmēt piezīmi kā svarīgu"
-
-#: ../src/notewindow.cpp:410
-msgid "Link"
-msgstr "Saite"
-
-#: ../src/notewindow.cpp:416
-msgid "Link selected text to a new note (Ctrl-L)"
-msgstr "Izveidot saiti izvēlētajam tekstam uz jaunu piezīmi (Ctrl-L)"
-
-#: ../src/notewindow.cpp:421
-msgid "_Text"
-msgstr "_Teksts"
-
-#: ../src/notewindow.cpp:426
+#: ../src/notewindow.cpp:427
 msgid "Set properties of text"
 msgstr "Iestatīt teksta īpašības"
 
-#: ../src/notewindow.cpp:436
-msgid "Delete this note"
-msgstr "Dzēst šo piezīmi"
-
-#: ../src/notewindow.cpp:454
+#: ../src/notewindow.cpp:441
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1768,113 +1915,111 @@ msgstr ""
 "Šī piezīme ir pagaidu veidne. Tā nosaka noklusēto saturu parastām piezīmēm "
 "un neparādīsies piezīmju izvēlnē vai meklēšanas logā."
 
-#: ../src/notewindow.cpp:457
+#: ../src/notewindow.cpp:444
 msgid "Convert to regular note"
 msgstr "Pārveidot par parastu piezīmi"
 
-#: ../src/notewindow.cpp:460
+#: ../src/notewindow.cpp:447
 msgid "Save Si_ze"
 msgstr "Saglabāt i_zmēru"
 
-#: ../src/notewindow.cpp:464
+#: ../src/notewindow.cpp:451
 msgid "Save Se_lection"
 msgstr "Sag_labāt izvēli"
 
-#: ../src/notewindow.cpp:468
+#: ../src/notewindow.cpp:455
 msgid "Save _Title"
 msgstr "Saglabā_t virsrakstu"
 
-#: ../src/notewindow.cpp:570
+#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1072
 msgid "Cannot create note"
 msgstr "Nevar izveidot piezīmi"
 
-#: ../src/notewindow.cpp:834
-msgid "<b>_Bold</b>"
-msgstr "<b>_Treknraksts</b>"
+#: ../src/notewindow.cpp:842
+msgid "_Bold"
+msgstr "_Treknraksts"
 
-#: ../src/notewindow.cpp:835
-msgid "<i>_Italic</i>"
-msgstr "<i>S_līpraksts</i>"
+#: ../src/notewindow.cpp:843
+#| msgid "<i>_Italic</i>"
+msgid "_Italic"
+msgstr "_Slīpraksts"
 
-#: ../src/notewindow.cpp:836
-msgid "<s>_Strikeout</s>"
-msgstr "<s>Pār_svītrots</s>"
+#: ../src/notewindow.cpp:844
+#| msgid "<s>_Strikeout</s>"
+msgid "_Strikeout"
+msgstr "_Pārsvītrots"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:848
 msgid "_Highlight"
 msgstr "_Izcelts"
 
-#: ../src/notewindow.cpp:840
+#: ../src/notewindow.cpp:851
 msgid "_Normal"
 msgstr "_Normāls"
 
-#: ../src/notewindow.cpp:842
-msgid "Hu_ge"
-msgstr "Milzī_gs"
-
-#: ../src/notewindow.cpp:844
-msgid "_Large"
-msgstr "_Liels"
-
-#: ../src/notewindow.cpp:846
+#: ../src/notewindow.cpp:852
 msgid "S_mall"
 msgstr "Maz_s"
 
-#: ../src/notewindow.cpp:848
-msgid "Bullets"
-msgstr "Aizzīmes"
+#: ../src/notewindow.cpp:853
+msgid "_Large"
+msgstr "_Liels"
 
-#: ../src/notewindow.cpp:851
-msgid "Increase Font Size"
-msgstr "Palielināt fonta izmēru"
+#: ../src/notewindow.cpp:854
+msgid "Hu_ge"
+msgstr "Milzī_gs"
 
-#: ../src/notewindow.cpp:852
-msgid "Decrease Font Size"
-msgstr "Samazināt fonta izmēru"
+#: ../src/notewindow.cpp:876
+#| msgid "Bullets"
+msgid "⦁ Bullets"
+msgstr "⦁ Aizzīmes"
 
-#: ../src/preferencesdialog.cpp:121
+#: ../src/notewindow.cpp:878
+msgid "→ Increase indent"
+msgstr "→ Palielināt atkāpi"
+
+#: ../src/notewindow.cpp:880
+msgid "← Decrease indent"
+msgstr "← Samazināt atkāpi"
+
+#: ../src/preferencesdialog.cpp:101
+msgid "Gnote Preferences"
+msgstr "Gnote iestatījumi"
+
+#: ../src/preferencesdialog.cpp:119
 msgid "General"
 msgstr "Vispārīgi"
 
-#: ../src/preferencesdialog.cpp:124
-msgid "Hotkeys"
-msgstr "Karstie taustiņi"
+#: ../src/preferencesdialog.cpp:120
+#| msgid "Link"
+msgid "Links"
+msgstr "Saites"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:128 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:123 ../src/sharp/addinstreemodel.cpp:164
 msgid "Synchronization"
 msgstr "Sinhronizācija"
 
-#: ../src/preferencesdialog.cpp:130
-msgid "Add-ins"
-msgstr "Pielikumi"
+#: ../src/preferencesdialog.cpp:125
+msgid "Plugins"
+msgstr "Spraudņi"
 
-#: ../src/preferencesdialog.cpp:207
+#: ../src/preferencesdialog.cpp:202
 #, c-format
-msgid "Add-in %s is absent"
-msgstr "Trūkst papildinājuma %s"
-
-#. Status icon
-#: ../src/preferencesdialog.cpp:246
-#| msgid "Use Status _Icon"
-msgid "Use status _icon"
-msgstr "Lietot statusa _ikonu"
-
-#: ../src/preferencesdialog.cpp:247
-msgid "Show icon in tray, which is the central place of control."
-msgstr "Paplātē rādīt ikonu, kas ir galvenā vadības vieta."
+#| msgid "Add-in %s is absent"
+msgid "Plugin %s is absent"
+msgstr "Trūkst spraudņa %s"
 
 #. Open in new window
-#: ../src/preferencesdialog.cpp:254
-#| msgid "Always show this _window"
+#: ../src/preferencesdialog.cpp:241
 msgid "Always _open notes in new window"
 msgstr "Vienmēr atvērt piezīmes jaunā l_ogā"
 
-#: ../src/preferencesdialog.cpp:267
+#: ../src/preferencesdialog.cpp:254
 msgid "_Spell check while typing"
 msgstr "Pareizrakstība_s pārbaude rakstīšanas laikā"
 
-#: ../src/preferencesdialog.cpp:268
+#: ../src/preferencesdialog.cpp:255
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1882,49 +2027,36 @@ msgstr ""
 "Kļūdas rakstībā tiks pasvītrotas ar sarkanu, un pareizrakstības piemērs tiks "
 "parādīts klikšķinot labo peles pogu."
 
-#. WikiWords...
-#: ../src/preferencesdialog.cpp:279
-msgid "Highlight _WikiWords"
-msgstr "Izcelt _WikiWords"
-
-#: ../src/preferencesdialog.cpp:280
-msgid ""
-"Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
-"word will create a note with that name."
-msgstr ""
-"Aktivizēt šo opciju lai iezīmētu vārdus<b>KasIzskatāsŠādi</b>. Klikšķinot uz "
-"vārda tiks izveidota piezīme ar šo vārdu."
-
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:288
+#: ../src/preferencesdialog.cpp:265
 msgid "Enable auto-_bulleted lists"
-msgstr "Aktivizēt automātisko aizzīmju sarakstu"
+msgstr "Ieslēgt automātisko aizzīmju sarakstu"
 
-#: ../src/preferencesdialog.cpp:289
+#: ../src/preferencesdialog.cpp:266
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Sākt jaunu aizzīmju sarakstu, sākot katru rindu ar rakstzīmi “-”."
 
-#: ../src/preferencesdialog.cpp:298
+#: ../src/preferencesdialog.cpp:275
 msgid "Use custom _font"
 msgstr "Lietot pielāgotu _fontu"
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:293
 msgid "When renaming a linked note: "
 msgstr "Pārsaucot saistīto piezīmi: "
 
-#: ../src/preferencesdialog.cpp:320
+#: ../src/preferencesdialog.cpp:297
 msgid "Ask me what to do"
 msgstr "Vienmēr jautāt man, kā rīkoties."
 
-#: ../src/preferencesdialog.cpp:321
+#: ../src/preferencesdialog.cpp:298
 msgid "Never rename links"
 msgstr "Nekad nepārsaukt saites"
 
-#: ../src/preferencesdialog.cpp:322
+#: ../src/preferencesdialog.cpp:299
 msgid "Always rename links"
 msgstr "Vienmēr pārsaukt saites"
 
-#: ../src/preferencesdialog.cpp:342
+#: ../src/preferencesdialog.cpp:319
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -1932,96 +2064,100 @@ msgstr ""
 "Lietojiet jaunu piezīmes veidni, lai norādītu tekstu kas tiks izmantots "
 "jaunu piezīmju veidošanai."
 
-#: ../src/preferencesdialog.cpp:347
+#: ../src/preferencesdialog.cpp:324
 msgid "Open New Note Template"
 msgstr "Atvērt jaunu piezīmes veidni"
 
-#. Hotkeys...
-#: ../src/preferencesdialog.cpp:412
-#| msgid "Listen for _Hotkeys"
-msgid "Listen for _hotkeys"
-msgstr "Aktivizēt karstos ta_ustiņus"
+#. internal links
+#: ../src/preferencesdialog.cpp:381
+msgid "_Automatically link to notes"
+msgstr "_Automātiski veidot saites uz piezīmēm"
 
-#: ../src/preferencesdialog.cpp:413
-msgid ""
-"Hotkeys allow you to quickly access your notes from anywhere with a "
-"keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-"Alt&gt;N</b>"
+#: ../src/preferencesdialog.cpp:382
+msgid "Enable this option to create a link when text matches note title."
 msgstr ""
-"Karstie taustiņi ļauj piekļūt piezīmēm jebkurā brīdī, izmantojot tastatūru. "
-"Piemēram:<b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;N</b>"
+"Ieslēdziet šo opciju, lai izveidotu saiti, kad teksts atbilst piezīmes"
+" virsrakstam."
 
-#. Show notes menu keybinding...
-#: ../src/preferencesdialog.cpp:435
-msgid "Show notes _menu"
-msgstr "Parādīt piezī_mju izvēlni"
+#. URLs
+#: ../src/preferencesdialog.cpp:388
+msgid "Create links for _URLs"
+msgstr "Izveidot _URL saites"
 
-#. Open Start Here keybinding...
-#: ../src/preferencesdialog.cpp:452
-msgid "Open \"_Start Here\""
-msgstr "Atvērt \"_Sākt šeit\""
+#: ../src/preferencesdialog.cpp:389
+msgid ""
+"Enable this option to create links for URLs. Clicking will open URL with "
+"appropriate program."
+msgstr ""
+"Ieslēdziet šo opciju, lai izveidotu saites piezīmēs esošajiem URL."
+" Klikšķināšana atvērs URL ar attiecīgo programmu."
 
-#. Create new note keybinding...
-#: ../src/preferencesdialog.cpp:468
-msgid "Create _new note"
-msgstr "Izveidot jau_nu piezīmi"
+#. WikiWords...
+#: ../src/preferencesdialog.cpp:396
+msgid "Highlight _WikiWords"
+msgstr "Izcelt _WikiWords"
 
-#. Open Search All Notes window keybinding...
-#: ../src/preferencesdialog.cpp:484
-msgid "Open \"Search _All Notes\""
-msgstr "Atvērt \"M_eklēt visās piezīmēs\""
+#: ../src/preferencesdialog.cpp:397
+msgid ""
+"Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
+"word will create a note with that name."
+msgstr ""
+"Ieslēdziet šo opciju, lai izceltu vārdus, <b>KasIzskatāsŠādi</b>. Klikšķinot"
+" uz šāda vārda, tiks izveidota piezīme ar šo nosaukumu."
 
-#: ../src/preferencesdialog.cpp:524
+#: ../src/preferencesdialog.cpp:429
 msgid "Ser_vice:"
 msgstr "Ser_viss:"
 
-#: ../src/preferencesdialog.cpp:580 ../src/preferencesdialog.cpp:1210
+#: ../src/preferencesdialog.cpp:485 ../src/preferencesdialog.cpp:1115
 msgid "Not configurable"
 msgstr "Nav konfigurējams"
 
-#: ../src/preferencesdialog.cpp:607
-#| msgid "Automatic Background Synchronization Timeout"
-msgid "Automatical background s_ync interval (minutes)"
+#: ../src/preferencesdialog.cpp:512
+#| msgid "Automatical background s_ync interval (minutes)"
+msgid "Automatic background s_ync interval (minutes)"
 msgstr "Automātisks fona s_inhronizācijas intervāls minūtēs"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:631
+#: ../src/preferencesdialog.cpp:536
 msgid "_Advanced..."
 msgstr "_Paplašināti..."
 
-#: ../src/preferencesdialog.cpp:678
-#| msgid "The following add-ins are installed"
-msgid "The following add-ins are installed:"
-msgstr "Sekojoši pielikumi tika uzinstalēti:"
+#: ../src/preferencesdialog.cpp:584
+#| msgid "The following add-ins are installed:"
+msgid "The following plugins are installed:"
+msgstr "Sekojošie spraudņi tika uzinstalēti:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:713
+#: ../src/preferencesdialog.cpp:619
 msgid "_Enable"
 msgstr "_Ieslēgt"
 
-#: ../src/preferencesdialog.cpp:719
+#: ../src/preferencesdialog.cpp:625
 msgid "_Disable"
 msgstr "_Atslēgt"
 
-#: ../src/preferencesdialog.cpp:877
+#: ../src/preferencesdialog.cpp:782
 msgid "Not Implemented"
 msgstr "Nav ieviests"
 
-#: ../src/preferencesdialog.cpp:893
-msgid "%1% Preferences"
-msgstr "%1% iestatījumi"
+#. TRANSLATORS: %1 is the placeholder for the addin name.
+#: ../src/preferencesdialog.cpp:799
+#| msgid "%1% Preferences"
+msgid "%1 Preferences"
+msgstr "%1 iestatījumi"
 
-#: ../src/preferencesdialog.cpp:1028
+#: ../src/preferencesdialog.cpp:933
 msgid "Choose Note Font"
 msgstr "Izvēlieties piezīmju fontu"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1126
+#: ../src/preferencesdialog.cpp:1031
 msgid "Other Synchronization Options"
 msgstr "Citas sinhronizācijas opcijas"
 
-#: ../src/preferencesdialog.cpp:1129
+#: ../src/preferencesdialog.cpp:1034
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2030,26 +2166,23 @@ msgstr ""
 "konfigurēta sinhronizācijas servera:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1133
-#| msgid "Always ask me what to do."
+#: ../src/preferencesdialog.cpp:1038
 msgid "Always ask me what to do"
 msgstr "Vienmēr jautāt man kā rīkoties"
 
-#: ../src/preferencesdialog.cpp:1137
-#| msgid "Rename my local note."
+#: ../src/preferencesdialog.cpp:1042
 msgid "Rename my local note"
 msgstr "Pārsaukt manu lokālo piezīmi"
 
-#: ../src/preferencesdialog.cpp:1141
-#| msgid "Replace my local note with the server's update."
+#: ../src/preferencesdialog.cpp:1046
 msgid "Replace my local note with the server's update"
 msgstr "Aizvietot manu lokālo piezīmi ar servera atjauninājumu"
 
-#: ../src/preferencesdialog.cpp:1243
+#: ../src/preferencesdialog.cpp:1148
 msgid "Are you sure?"
 msgstr "Esi pārliecināts?"
 
-#: ../src/preferencesdialog.cpp:1244
+#: ../src/preferencesdialog.cpp:1149
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2058,11 +2191,11 @@ msgstr ""
 "nākties sinhronizēt vēlreiz visas piezīmes pēc jauno iestatījumu "
 "saglabāšanas."
 
-#: ../src/preferencesdialog.cpp:1254
+#: ../src/preferencesdialog.cpp:1159
 msgid "Resetting Synchronization Settings"
 msgstr "Atstata sinhronizācijas iestatījumus"
 
-#: ../src/preferencesdialog.cpp:1255
+#: ../src/preferencesdialog.cpp:1160
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2072,11 +2205,11 @@ msgstr ""
 "iestatījumi tiks attīrīti. Piespiedu kārtā var nākties sinhronizēt vēlreiz "
 "visas piezīmes pēc jauno iestatījumu saglabāšanas."
 
-#: ../src/preferencesdialog.cpp:1321
+#: ../src/preferencesdialog.cpp:1226
 msgid "Connection successful"
 msgstr "Savienojums veiksmīgs"
 
-#: ../src/preferencesdialog.cpp:1322
+#: ../src/preferencesdialog.cpp:1227
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2084,92 +2217,98 @@ msgstr ""
 "Gnote ir gatavs sinhronizēt jūsu piezīmes. Vai vēlaties tās sinhronizēt "
 "tagad?"
 
-#: ../src/preferencesdialog.cpp:1346
+#. TRANSLATORS: %1 is the placeholder for the log file path.
+#: ../src/preferencesdialog.cpp:1252
+#| msgid ""
+#| "Please check your information and try again.  The log file %1% may "
+#| "contain more information about the error."
 msgid ""
-"Please check your information and try again.  The log file %1% may contain "
+"Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr ""
-"Lūdzu, pārbaudiet savu informāciju un mēģiniet vēlreiz. Iespējams, %1% satur "
+"Lūdzu, pārbaudiet savu informāciju un mēģiniet vēlreiz. Iespējams, %1 satur "
 "vairāk informācijas par kļūdu."
 
-#: ../src/preferencesdialog.cpp:1351
+#: ../src/preferencesdialog.cpp:1257
 msgid "Error connecting"
 msgstr "Kļūda savienojoties"
 
-#: ../src/preferencesdialog.cpp:1414
+#: ../src/preferencesdialog.cpp:1320
 msgid "Version:"
 msgstr "Versija:"
 
-#: ../src/preferencesdialog.cpp:1417
+#: ../src/preferencesdialog.cpp:1323
 msgid "Author:"
 msgstr "Autors:"
 
-#: ../src/preferencesdialog.cpp:1422
+#: ../src/preferencesdialog.cpp:1327
 msgid "Copyright:"
 msgstr "Autortiesības:"
 
-#: ../src/recentchanges.cpp:45 ../src/recentchanges.cpp:584
-#: ../src/searchnoteswidget.cpp:994
-msgid "Notes"
-msgstr "Piezīmes"
-
-#: ../src/recentchanges.cpp:143
+#: ../src/recentchanges.cpp:153
 msgid "All Notes"
 msgstr "Visas piezīmes"
 
-#: ../src/recentchanges.cpp:150
-#| msgid "_New"
-msgid "New"
-msgstr "Jauns"
+#: ../src/recentchanges.cpp:164
+#| msgid "Create _New Note"
+msgid "Create New Note"
+msgstr "Izveidot jaunu piezīmi"
 
-#: ../src/recentchanges.cpp:174
+#: ../src/recentchanges.cpp:185
 msgid "Search"
 msgstr "Meklēt"
 
-#: ../src/recentchanges.cpp:220
+#: ../src/recentchanges.cpp:246
 msgid "Find _Next"
 msgstr "Meklēt _nākamo"
 
-#: ../src/recentchanges.cpp:228
+#: ../src/recentchanges.cpp:255
 msgid "Find _Previous"
 msgstr "Meklēt ie_priekšējo"
 
-#: ../src/recentchanges.cpp:702
-msgid "_Close"
-msgstr "_Aizvērt"
+#: ../src/recentchanges.cpp:791
+#| msgid "Not configurable"
+msgid "No configured actions"
+msgstr "Nav konfigurētu darbību"
 
-#: ../src/remotecontrolproxy.cpp:57
+#: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Neizdevās ielādēt D-Bus saskarni %s — %s"
 
-#: ../src/searchnoteswidget.cpp:136
+#: ../src/searchnoteswidget.cpp:135
 msgid "_Open"
 msgstr "_Atvērt"
 
-#: ../src/searchnoteswidget.cpp:139
-#| msgid "New _Window"
+#: ../src/searchnoteswidget.cpp:138
 msgid "Open In New _Window"
 msgstr "Atvērt jaunā _logā"
 
-#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
+#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
 msgid "_Delete"
 msgstr "_Dzēst"
 
-#: ../src/searchnoteswidget.cpp:149
-#| msgid "User_name:"
+#: ../src/searchnoteswidget.cpp:148
 msgid "Re_name..."
 msgstr "Pār_saukt..."
 
-#: ../src/searchnoteswidget.cpp:653
+#: ../src/searchnoteswidget.cpp:227
+msgid "Notebooks"
+msgstr "Piezīmju bloki"
+
+#: ../src/searchnoteswidget.cpp:656
 msgid "Note"
 msgstr "Piezīme"
 
-#: ../src/searchnoteswidget.cpp:675
+#: ../src/searchnoteswidget.cpp:678
 msgid "Modified"
 msgstr "Mainīts"
 
-#: ../src/searchnoteswidget.cpp:1013
+#: ../src/searchnoteswidget.cpp:999
+msgid "Notes"
+msgstr "Piezīmes"
+
+#: ../src/searchnoteswidget.cpp:1018
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2177,55 +2316,56 @@ msgstr ""
 "Nav atrastu rezultātu izvēlētajā piezīmju blokā.\n"
 "Spiediet šeit, lai meklētu visās piezīmēs."
 
-#: ../src/searchnoteswidget.cpp:1017
+#: ../src/searchnoteswidget.cpp:1022
 msgid "Click here to search across all notebooks"
 msgstr "Spiediet šeit, lai meklētu visos piezīmju blokos"
 
-#: ../src/searchnoteswidget.cpp:1038
+#: ../src/searchnoteswidget.cpp:1043
 msgid "Matches"
 msgstr "Atbilstības"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1090
+#: ../src/searchnoteswidget.cpp:1094
 msgid "Title match"
 msgstr "Virsraksta atbilstība"
 
-#: ../src/searchnoteswidget.cpp:1094
-msgid "%1% match"
-msgid_plural "%1% matches"
-msgstr[0] "%1% atbilsme"
-msgstr[1] "%1% atbilsmes"
-msgstr[2] "%1% atbilsmju"
+#: ../src/searchnoteswidget.cpp:1098
+#| msgid "%1% match"
+#| msgid_plural "%1% matches"
+msgid "%1 match"
+msgid_plural "%1 matches"
+msgstr[0] "%1 atbilsme"
+msgstr[1] "%1 atbilsmes"
+msgstr[2] "%1 atbilsmju"
 
-#: ../src/searchnoteswidget.cpp:1305
+#: ../src/searchnoteswidget.cpp:1309
 msgid "_New"
 msgstr "Jau_ns"
 
-#: ../src/searchnoteswidget.cpp:1334
+#: ../src/searchnoteswidget.cpp:1338
 msgid "_Open Template Note"
 msgstr "_Atvērt piezīmes veidni"
 
-#: ../src/searchnoteswidget.cpp:1345
-#| msgid "_New"
+#: ../src/searchnoteswidget.cpp:1349
 msgid "_New..."
 msgstr "Jau_ns..."
 
-#: ../src/searchnoteswidget.cpp:1481 ../src/searchnoteswidget.cpp:1494
-#: ../src/searchnoteswidget.cpp:1505
+#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
+#: ../src/searchnoteswidget.cpp:1524
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Neizdevās parsēt iestatījumu %s (vērtība: %s):"
 
-#: ../src/searchnoteswidget.cpp:1482
+#: ../src/searchnoteswidget.cpp:1501
 msgid "Expected format 'column:order'"
 msgstr "Gaidītais formāts “kolonna:secība”"
 
-#: ../src/searchnoteswidget.cpp:1495
+#: ../src/searchnoteswidget.cpp:1514
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Neatpazīta kolonna %s"
 
-#: ../src/searchnoteswidget.cpp:1506
+#: ../src/searchnoteswidget.cpp:1525
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Neatpazīta kārtība %s"
@@ -2260,7 +2400,6 @@ msgstr "Nezināms"
 
 #: ../src/sharp/modulemanager.cpp:62
 #, c-format
-#| msgid "Error saving icon"
 msgid "Error loading %s"
 msgstr "Kļūda, ielādējot %s"
 
@@ -2269,24 +2408,25 @@ msgstr "Kļūda, ielādējot %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Kļūda, saņemot simbolu dynamic_module_instanciate: %s"
 
-#: ../src/sharp/xmlreader.cpp:195
+#: ../src/sharp/xmlreader.cpp:198
 #, c-format
 msgid "XML error: %s"
 msgstr "XML kļūda: %s"
 
-#: ../src/sharp/xmlreader.cpp:195
+#: ../src/sharp/xmlreader.cpp:198
 msgid "unknown parse error"
 msgstr "nezināma parsēšanas kļūda"
 
 #: ../src/sharp/xmlwriter.cpp:40
-msgid "%1% failed"
-msgstr "%1% neizdevās"
+#| msgid "%1% failed"
+msgid "%1 failed"
+msgstr "%1 neizdevās"
 
 #: ../src/sharp/xsltransform.cpp:67
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stilu saraksts, lūdzu, piesakiet kļūdas ziņojumu"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:369
+#: ../src/synchronization/filesystemsyncserver.cpp:377
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2295,53 +2435,56 @@ msgstr ""
 "Iesniedzot gadījās kļūda, satīrot serveri. Servera integritāte ir laba, bet "
 "bija dažas liekas peldošās datnes. Šeit ir kļūda — %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:609
+#: ../src/synchronization/filesystemsyncserver.cpp:617
 #, c-format
-#| msgid "Error connecting to the synchronization service.  Please try again."
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Kļūda, dzēšot veco sinhronizācijas atslēgu “%s” — %s"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:115
+#: ../src/synchronization/fusesyncserviceaddin.cpp:113
+#| msgid ""
+#| "This synchronization addin is not supported on your computer. Please make "
+#| "sure you have FUSE and %1% correctly installed and configured"
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
-"sure you have FUSE and %1% correctly installed and configured"
+"sure you have FUSE and %1 correctly installed and configured"
 msgstr ""
 "Šim sinhronizācijas pielikumam nav atbalsta jūsu datorā. Lūdzu, "
-"pārliecinieties, ka jums ir FUSE un %1% ir pareizi uzinstalēts un "
+"pārliecinieties, ka jums ir FUSE un %1 ir pareizi uzinstalēts un "
 "nokonfigurēts"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:158
+#: ../src/synchronization/fusesyncserviceaddin.cpp:152
 msgid "Could not read testfile."
 msgstr "Nevar nolasīt testa datni."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:167
+#: ../src/synchronization/fusesyncserviceaddin.cpp:156
 msgid "Write test failed."
 msgstr "Rakstīšanas tests neizdevās."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:196
+#: ../src/synchronization/fusesyncserviceaddin.cpp:185
 msgid "Timeout connecting to server."
 msgstr "Noildze, savienojoties ar serveri."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:202
+#: ../src/synchronization/fusesyncserviceaddin.cpp:191
 msgid "Error connecting to server."
 msgstr "Kļūda, savienojoties ar serveri."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:215
+#: ../src/synchronization/fusesyncserviceaddin.cpp:204
 msgid "FUSE could not be enabled."
-msgstr "FUSE nevarēja aktivēt."
+msgstr "Nevarēja ieslēgt FUSE."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:246
-msgid "An error ocurred while connecting to the specified server"
-msgstr "Kļūda savienojumā ar norādīto serveri"
+#: ../src/synchronization/fusesyncserviceaddin.cpp:235
+#| msgid "An error ocurred while connecting to the specified server"
+msgid "An error occurred while connecting to the specified server"
+msgstr "Radās kļūda savienojumā ar norādīto serveri"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:154
+#: ../src/synchronization/gnotesyncclient.cpp:165
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Neparsēts last-sync-date elementu iekš %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:164
+#: ../src/synchronization/gnotesyncclient.cpp:175
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Neparsēts last-sync-rev elementu iekš %s"
@@ -2377,11 +2520,14 @@ msgid "Note conflict detected"
 msgstr "Atklāts piezīmes konflikts"
 
 #: ../src/synchronization/syncdialog.cpp:139
+#| msgid ""
+#| "The server version of \"%1%\" conflicts with your local note.  What do "
+#| "you want to do with your local note?"
 msgid ""
-"The server version of \"%1%\" conflicts with your local note.  What do you "
+"The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
-"Servera versijas  “%1%” konfliktē ar lokālajām piezīmēm. Ko jūs vēlaties "
+"Servera versijas  “%1” konfliktē ar lokālajām piezīmēm. Ko jūs vēlaties "
 "darīt ar savām lokālajām piezīmēm?"
 
 #. Expander containing TreeView
@@ -2393,47 +2539,47 @@ msgstr "Sīkāka informācija"
 msgid "Status"
 msgstr "Statuss"
 
-#: ../src/synchronization/syncdialog.cpp:483
+#: ../src/synchronization/syncdialog.cpp:482
 msgid "Acquiring sync lock..."
 msgstr "Iegūst sinhronizācijas slēgu..."
 
-#: ../src/synchronization/syncdialog.cpp:486
+#: ../src/synchronization/syncdialog.cpp:485
 msgid "Committing changes..."
 msgstr "Saskaņo izmaiņas..."
 
-#: ../src/synchronization/syncdialog.cpp:489
+#: ../src/synchronization/syncdialog.cpp:488
 msgid "Synchronizing Notes"
 msgstr "Sinhronizē piezīmes"
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: ../src/synchronization/syncdialog.cpp:489
 msgid "Synchronizing your notes..."
 msgstr "Sinhronizē jūsu piezīmes..."
 
-#: ../src/synchronization/syncdialog.cpp:491
+#: ../src/synchronization/syncdialog.cpp:490
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Tas var aizņemt kādu brīdi, iedzeriet tēju un izbaudiet!"
 
-#: ../src/synchronization/syncdialog.cpp:493
+#: ../src/synchronization/syncdialog.cpp:492
 msgid "Connecting to the server..."
 msgstr "Savienojas ar serveri..."
 
-#: ../src/synchronization/syncdialog.cpp:499
+#: ../src/synchronization/syncdialog.cpp:498
 msgid "Deleting notes off of the server..."
 msgstr "Tiek dzēstas piezīmes no servera..."
 
-#: ../src/synchronization/syncdialog.cpp:503
+#: ../src/synchronization/syncdialog.cpp:502
 msgid "Downloading new/updated notes..."
 msgstr "Lejupielādē jaunās/atjauninātās piezīmes..."
 
-#: ../src/synchronization/syncdialog.cpp:515
+#: ../src/synchronization/syncdialog.cpp:514
 msgid "Server Locked"
 msgstr "Serveris slēgts"
 
-#: ../src/synchronization/syncdialog.cpp:516
+#: ../src/synchronization/syncdialog.cpp:515
 msgid "Server is locked"
 msgstr "Serveris ir slēgts"
 
-#: ../src/synchronization/syncdialog.cpp:517
+#: ../src/synchronization/syncdialog.cpp:516
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2441,143 +2587,148 @@ msgstr ""
 "Kāds no citiem jūsu datoriem pašlaik veic sinhronizāciju. Lūdzu, uzgaidiet 2 "
 "minūtes un mēģiniet vēlreiz."
 
-#: ../src/synchronization/syncdialog.cpp:521
+#: ../src/synchronization/syncdialog.cpp:520
 msgid "Preparing to download updates from server..."
 msgstr "Sagatavojas atjauninājumu lejupielādei no servera..."
 
-#: ../src/synchronization/syncdialog.cpp:524
+#: ../src/synchronization/syncdialog.cpp:523
 msgid "Preparing to upload updates to server..."
 msgstr "Sagatavojas atjauninājumu augšupielādei serverī..."
 
-#: ../src/synchronization/syncdialog.cpp:527
+#: ../src/synchronization/syncdialog.cpp:526
 msgid "Uploading notes to server..."
 msgstr "Augšupielādē piezīmes serverī..."
 
-#: ../src/synchronization/syncdialog.cpp:530
+#: ../src/synchronization/syncdialog.cpp:529
 msgid "Synchronization Failed"
 msgstr "Sinhronizācija neizdevās"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: ../src/synchronization/syncdialog.cpp:530
 msgid "Failed to synchronize"
 msgstr "Neizdevās sinhronizēt"
 
-#: ../src/synchronization/syncdialog.cpp:532
+#: ../src/synchronization/syncdialog.cpp:531
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Nevarēja sinhronizēt piezīmes. Pārbaudiet detaļas zemāk un mēģiniet vēlreiz."
 
-#: ../src/synchronization/syncdialog.cpp:538
+#: ../src/synchronization/syncdialog.cpp:537
 msgid "Synchronization Complete"
 msgstr "Sinhronizācija beigusies"
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: ../src/synchronization/syncdialog.cpp:538
 msgid "Synchronization is complete"
 msgstr "Sinhronizācija ir pabeigta"
 
-#: ../src/synchronization/syncdialog.cpp:540
-msgid "%1% note updated."
-msgid_plural "%1% notes updated."
-msgstr[0] "%1% piezīme atjaunināta."
-msgstr[1] "%1% piezīmes atjauninātas."
-msgstr[2] "%1% piezīmes atjauninātas."
+#: ../src/synchronization/syncdialog.cpp:539
+#| msgid "%1% note updated."
+#| msgid_plural "%1% notes updated."
+msgid "%1 note updated."
+msgid_plural "%1 notes updated."
+msgstr[0] "%1 piezīme atjaunināta."
+msgstr[1] "%1 piezīmes atjauninātas."
+msgstr[2] "%1 piezīmes atjauninātas."
 
-#: ../src/synchronization/syncdialog.cpp:541
+#: ../src/synchronization/syncdialog.cpp:540
 msgid "Your notes are now up to date."
 msgstr "Jūsu piezīmes ir atjauninātas."
 
-#: ../src/synchronization/syncdialog.cpp:546
+#: ../src/synchronization/syncdialog.cpp:545
 msgid "Synchronization Canceled"
 msgstr "Sinhronizācija atcelta"
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: ../src/synchronization/syncdialog.cpp:546
 msgid "Synchronization was canceled"
 msgstr "Sinhronizācija ir atcelta"
 
-#: ../src/synchronization/syncdialog.cpp:548
+#: ../src/synchronization/syncdialog.cpp:547
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Jūs atcēlāt sinhronizāciju. Tagad jūs varat aizvērt logu."
 
-#: ../src/synchronization/syncdialog.cpp:552
+#: ../src/synchronization/syncdialog.cpp:551
 msgid "Synchronization Not Configured"
 msgstr "Sinhronizācija nenokonfigurēta"
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: ../src/synchronization/syncdialog.cpp:552
 msgid "Synchronization is not configured"
 msgstr "Sinhronizācija nav nokonfigurēta"
 
-#: ../src/synchronization/syncdialog.cpp:554
+#: ../src/synchronization/syncdialog.cpp:553
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Lūdzu, nokonfigurējiet sinhronizāciju iestatījumu logā."
 
-#: ../src/synchronization/syncdialog.cpp:558
+#: ../src/synchronization/syncdialog.cpp:557
 msgid "Synchronization Service Error"
 msgstr "Sinhronizācijas servisa kļūda"
 
-#: ../src/synchronization/syncdialog.cpp:559
+#: ../src/synchronization/syncdialog.cpp:558
 msgid "Service error"
 msgstr "Servisa kļūda"
 
-#: ../src/synchronization/syncdialog.cpp:560
+#: ../src/synchronization/syncdialog.cpp:559
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "Kļūda, savienojoties ar sinhronizācijas servisi. Lūdzu, mēģiniet vēlreiz."
 
-#: ../src/synchronization/syncdialog.cpp:574
+#: ../src/synchronization/syncdialog.cpp:573
 msgid "Deleted locally"
 msgstr "Izdzēsts lokāli"
 
-#: ../src/synchronization/syncdialog.cpp:577
+#: ../src/synchronization/syncdialog.cpp:576
 msgid "Deleted from server"
 msgstr "Izdzēsts no servera"
 
-#: ../src/synchronization/syncdialog.cpp:580
+#: ../src/synchronization/syncdialog.cpp:579
 msgid "Updated"
 msgstr "Atjaunināts"
 
-#: ../src/synchronization/syncdialog.cpp:583
+#: ../src/synchronization/syncdialog.cpp:582
 msgid "Added"
 msgstr "Pievienots"
 
-#: ../src/synchronization/syncdialog.cpp:586
+#: ../src/synchronization/syncdialog.cpp:585
 msgid "Uploaded changes to server"
 msgstr "Izmaiņas augšupielādētas serverī"
 
-#: ../src/synchronization/syncdialog.cpp:589
+#: ../src/synchronization/syncdialog.cpp:588
 msgid "Uploaded new note to server"
 msgstr "Jaunā piezīme augšupielādēta serverī"
 
-#: ../src/synchronization/syncmanager.cpp:66
+#: ../src/synchronization/syncmanager.cpp:65
 msgid "Synchronize Notes"
 msgstr "Sinhronizēt piezīmes"
 
-#: ../src/synchronization/syncmanager.cpp:124
+#: ../src/synchronization/syncmanager.cpp:84
+#: ../src/synchronization/syncmanager.cpp:101
+#: ../src/synchronization/syncmanager.cpp:569
+#, c-format
+#| msgid "Remote call to %s failed"
+msgid "Report a bug. Cast failed: %s"
+msgstr "Ziņojiet par kļūdu. Pārraide neizdevās — %s"
+
+#: ../src/synchronization/syncmanager.cpp:147
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Kļūda, satīrot papildinājumu pēc sinhronizēšanas — %s"
 
-#: ../src/synchronization/syncmanager.cpp:149
+#: ../src/synchronization/syncmanager.cpp:172
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Veidojot SyncServer tika mests izņēmums: %s"
 
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:353
+#: ../src/synchronization/syncmanager.cpp:371
 #, c-format
-#| msgid ""
-#| "Saving configuration to the GNOME keyring failed with the following "
-#| "message:\n"
-#| "\n"
-#| "%1%"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sinhronizācija neizdevās, saņemot sekojošo izņēmumu — %s"
 
-#: ../src/synchronization/syncutils.cpp:146
-#: ../src/synchronization/syncutils.cpp:178
+#: ../src/synchronization/syncutils.cpp:141
+#: ../src/synchronization/syncutils.cpp:173
 msgid "Could not enable FUSE"
-msgstr "Nevarēja aktivēt FUSE"
+msgstr "Nevarēja ieslēgt FUSE"
 
-#: ../src/synchronization/syncutils.cpp:147
-#: ../src/synchronization/syncutils.cpp:179
+#: ../src/synchronization/syncutils.cpp:142
+#: ../src/synchronization/syncutils.cpp:174
 msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
@@ -2585,13 +2736,13 @@ msgstr ""
 "Nevar ielādēt FUSE moduli. Lūdzu pārliecinieties, ka tas ir uzinstalēts kā "
 "nākas un mēģiniet atkal."
 
-#: ../src/synchronization/syncutils.cpp:155
+#: ../src/synchronization/syncutils.cpp:150
 msgid "Enable FUSE?"
-msgstr "Aktivēt FUSE?"
+msgstr "Ieslēgt FUSE?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
-#: ../src/synchronization/syncutils.cpp:158
+#: ../src/synchronization/syncutils.cpp:153
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
@@ -2605,19 +2756,7 @@ msgstr ""
 "datora ielādes laikā. Pievienojiet \"modprobe fuse\" datnē /etc/init.d/boot."
 "local vai “fuse” datnē /etc/modules."
 
-#: ../src/tray.cpp:54
-msgid "Take notes"
-msgstr "Veikt piezīmes"
-
-#: ../src/tray.cpp:165
-msgid " (new)"
-msgstr " (jauna)"
-
-#: ../src/tray.cpp:458
-msgid "_About Gnote"
-msgstr "P_ar Gnote"
-
-#: ../src/utils.cpp:141
+#: ../src/utils.cpp:168
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2625,86 +2764,298 @@ msgstr ""
 "\"Gnote rokasgrāmata\" nav atrodama.  Lūdzu, pārliecinieties, ka jūsu "
 "instalācija ir bijusi veiksmīga."
 
-#: ../src/utils.cpp:149
+#: ../src/utils.cpp:176
 msgid "Help not found"
 msgstr "Palīdzība nav atrasta"
 
-#: ../src/utils.cpp:182
+#: ../src/utils.cpp:208
 msgid "Cannot open location"
 msgstr "Nevar atvērt norādīto vietu"
 
-#. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:212
-msgid "Today, %1%"
-msgstr "Šodien, %1%"
+#. TRANSLATORS: argument %1 is time.
+#: ../src/utils.cpp:238
+#| msgid "Today, %1%"
+msgid "Today, %1"
+msgstr "Šodien, %1"
 
-#: ../src/utils.cpp:213
+#: ../src/utils.cpp:239
 msgid "Today"
 msgstr "Šodien"
 
-#. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:219
-msgid "Yesterday, %1%"
-msgstr "Vakar, %1%"
+#. TRANSLATORS: argument %1 is time.
+#: ../src/utils.cpp:245
+#| msgid "Yesterday, %1%"
+msgid "Yesterday, %1"
+msgstr "Vakar, %1"
 
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:246
 msgid "Yesterday"
 msgstr "Vakar"
 
-#. TRANSLATORS: argument is time.
-#: ../src/utils.cpp:226
-msgid "Tomorrow, %1%"
-msgstr "Rīt, %1%"
+#. TRANSLATORS: argument %1 is time.
+#: ../src/utils.cpp:252
+#| msgid "Tomorrow, %1%"
+msgid "Tomorrow, %1"
+msgstr "Rīt, %1"
 
-#: ../src/utils.cpp:227
+#: ../src/utils.cpp:253
 msgid "Tomorrow"
 msgstr "Rīt"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:231
+#: ../src/utils.cpp:257
 msgid "%b %d"
 msgstr "%d. %b"
 
-#. TRANSLATORS: first argument is date, second is time.
-#: ../src/utils.cpp:234 ../src/utils.cpp:246
-#| msgid "In %1% day, %2%"
-#| msgid_plural "In %1% days, %2%"
-msgid "%1%, %2%"
-msgstr "%1%, %2%"
+#. TRANSLATORS: argument %1 is date, %2 is time.
+#: ../src/utils.cpp:260 ../src/utils.cpp:272
+#| msgid "%1%, %2%"
+msgid "%1, %2"
+msgstr "%1, %2"
 
-#: ../src/utils.cpp:239
+#: ../src/utils.cpp:265
 msgid "No Date"
 msgstr "Nav datuma"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:243
-#| msgid "%A, %B %d %Y"
+#: ../src/utils.cpp:269
 msgid "%b %d %Y"
 msgstr "%d. %b %Y"
 
-#: ../src/watchers.cpp:199
-msgid "(Untitled %1%)"
-msgstr "(Nenosaukts %1%)"
+#. TRANSLATORS: %1 is the placeholder for the number.
+#: ../src/watchers.cpp:198
+#| msgid "(Untitled %1%)"
+msgid "(Untitled %1)"
+msgstr "(Nenosaukts %1)"
 
+#. TRANSLATORS: %1 is the placeholder for the title.
 #: ../src/watchers.cpp:230
+#| msgid ""
+#| "A note with the title <b>%1%</b> already exists. Please choose another "
+#| "name for this note before continuing."
 msgid ""
-"A note with the title <b>%1%</b> already exists. Please choose another name "
+"A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
-"Piezīme ar virsrakstu <b>%1%</b> jau eksistē. Lūdzu, izvēlieties citu "
+"Piezīme ar virsrakstu <b>%1</b> jau eksistē. Lūdzu, izvēlieties citu "
 "virsrakstu."
 
 #: ../src/watchers.cpp:245
 msgid "Note title taken"
 msgstr "Piezīmes virsraksts jau eksistē"
 
-#: ../src/watchers.cpp:576
+#: ../src/watchers.cpp:315
+msgid "Check spelling"
+msgstr "Pārbaudīt pareizrakstību"
+
+#: ../src/watchers.cpp:705
 msgid "_Copy Link Address"
 msgstr "_Kopēt saites adresi"
 
-#: ../src/watchers.cpp:582
+#: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Atvērt saiti"
+
+#~ msgid ""
+#~ "Has affect only when started as an application. When set to TRUE, shows a "
+#~ "status icon. If set to FALSE, Search All Notes window is used as main "
+#~ "application window, closing which makes application to exit."
+#~ msgstr ""
+#~ "Darbojas tikai palaižot lietotni. Kad iestatīts kā PATIESS, rāda statusa "
+#~ "ikonu. Ja iestatīts kā aplams, “Meklēt visās piezīmēs” tiek izmantots kā "
+#~ "galvenais lietotnes logs. Tā aizvēršana nozīmē pašas lietotnes aizvēršanu."
+
+#~ msgid ""
+#~ "The global keybinding for showing the Gnote applet's menu. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globālā taustiņsaite, lai parādītu Gnote sīklietotnes izvēlni. Tās "
+#~ "formāts ir sekojošs \"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;"
+#~ "F1\". Taustiņsaites jūs varat norādīt gan lieliem gan maziem burtiem, kā "
+#~ "arī izmantojot saīsinājumus piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja "
+#~ "kā taustiņsaite ir norādīts \"disabled\", tad tā netiks izmantota."
+
+#~ msgid ""
+#~ "The global keybinding for opening the \"Start Here\" note. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globālā taustiņsaite \"Sākt šeit\" atvēršanai. Tās formāts ir sekojošs "
+#~ "\"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;F1\". Taustiņsaites "
+#~ "jūs varat norādīt gan lieliem gan maziem burtiem, kā arī izmantojot "
+#~ "saīsinājumus piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja kā "
+#~ "taustiņsaite ir norādīts \"disabled\", tad tā netiks izmantota."
+
+#~ msgid ""
+#~ "The global keybinding for creating and displaying a new Note. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globālā taustiņsaite jaunas piezīmes izveidošanai un attēlošanai. Tās "
+#~ "formāts ir sekojošs \"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;"
+#~ "F1\". Taustiņsaites jūs varat norādīt gan lieliem gan maziem burtiem, kā "
+#~ "arī izmantojot saīsinājumus piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja "
+#~ "kā taustiņsaite ir norādīts \"disabled\", tad tā netiks izmantota."
+
+#~ msgid ""
+#~ "The global keybinding for opening the Note Search dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globālā taustiņsaite piezīmju meklēšanas loga atvēršanai. Tās formāts ir "
+#~ "sekojošs \"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+#~ "Taustiņsaites jūs varat norādīt gan lieliem gan maziem burtiem, kā arī "
+#~ "izmantojot saīsinājumus piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja kā "
+#~ "taustiņsaite ir norādīts \"disabled\", tad tā netiks izmantota."
+
+#~ msgid ""
+#~ "The global keybinding for opening the Recent Changes dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "Globālā taustiņsaite neseno izmaiņu loga atvēršanai. Tās formāts ir "
+#~ "sekojošs \"&lt;Control&gt;a\" vai \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+#~ "Taustiņsaites jūs varat norādīt gan lieliem gan maziem burtiem, kā arī "
+#~ "izmantojot saīsinājumus piem. \"&lt;Ctl&gt;\" un \"&lt;Ctrl&gt;\". Ja kā "
+#~ "taustiņsaite ir norādīts \"disabled\", tad tā netiks izmantota."
+
+#~ msgid "Quit Gnote"
+#~ msgstr "Iziet no Gnote"
+
+#~ msgid "_Contents"
+#~ msgstr "_Saturs"
+
+#~ msgid "Gnote Help"
+#~ msgstr "Gnote palīdzība"
+
+#~ msgid "About Gnote"
+#~ msgstr "Par Gnote"
+
+#~ msgid "TrayIcon"
+#~ msgstr "Rīkjoslas ikona"
+
+#~ msgid "Create a new note"
+#~ msgstr "Izveidot jaunu piezīmi"
+
+#~ msgid "_Search All Notes"
+#~ msgstr "Meklēt vi_sās piezīmēs"
+
+#~ msgid "Open the Search All Notes window"
+#~ msgstr "Atvērt meklēt visās piezīmēs logu"
+
+#~| msgid "What links here?"
+#~ msgid "Which notes have links to here?"
+#~ msgstr "Kuras piezīmes norāda uz šo vietu?"
+
+#~| msgid "Export to HTML"
+#~ msgid "Export note to HTML"
+#~ msgstr "Eksportēt piezīmi uz HTML"
+
+#~| msgid "Insert Timestamp"
+#~ msgid "Insert Timestamp into note"
+#~ msgstr "Ievietot laika spiedogu piezīmē"
+
+#~| msgid "Quit Gnote"
+#~ msgid "Print note"
+#~ msgstr "Drukāt piezīmi"
+
+#~ msgid "Make this note read-only"
+#~ msgstr "Padarīt šo piezīmi tikai lasāmu"
+
+#~ msgid "Create a new note in a notebook"
+#~ msgstr "Izveidot jaunu piezīmi piezīmju blokā"
+
+#~ msgid "Place this note into a notebook"
+#~ msgstr "Ievietot šo piezīmi piezīmju blokā"
+
+#~ msgid "Te_xt"
+#~ msgstr "Te_ksts"
+
+#~| msgid "Print"
+#~ msgid "Pin"
+#~ msgstr "Piespraust"
+
+#~ msgid "Mark note as important"
+#~ msgstr "Atzīmēt piezīmi kā svarīgu"
+
+#~ msgid "Link selected text to a new note (Ctrl-L)"
+#~ msgstr "Izveidot saiti izvēlētajam tekstam uz jaunu piezīmi (Ctrl-L)"
+
+#~ msgid "_Text"
+#~ msgstr "_Teksts"
+
+#~ msgid "Delete this note"
+#~ msgstr "Dzēst šo piezīmi"
+
+#~ msgid "<b>_Bold</b>"
+#~ msgstr "<b>_Treknraksts</b>"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Karstie taustiņi"
+
+#~ msgid "Add-ins"
+#~ msgstr "Pielikumi"
+
+#~| msgid "Use Status _Icon"
+#~ msgid "Use status _icon"
+#~ msgstr "Lietot statusa _ikonu"
+
+#~ msgid "Show icon in tray, which is the central place of control."
+#~ msgstr "Paplātē rādīt ikonu, kas ir galvenā vadības vieta."
+
+#~| msgid "Listen for _Hotkeys"
+#~ msgid "Listen for _hotkeys"
+#~ msgstr "Aktivizēt karstos ta_ustiņus"
+
+#~ msgid ""
+#~ "Hotkeys allow you to quickly access your notes from anywhere with a "
+#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+#~ "Alt&gt;N</b>"
+#~ msgstr ""
+#~ "Karstie taustiņi ļauj piekļūt piezīmēm jebkurā brīdī, izmantojot "
+#~ "tastatūru. Piemēram:<b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;Alt&gt;"
+#~ "N</b>"
+
+#~ msgid "Show notes _menu"
+#~ msgstr "Parādīt piezī_mju izvēlni"
+
+#~ msgid "Open \"_Start Here\""
+#~ msgstr "Atvērt \"_Sākt šeit\""
+
+#~ msgid "Open \"Search _All Notes\""
+#~ msgstr "Atvērt \"M_eklēt visās piezīmēs\""
+
+#~| msgid "_New"
+#~ msgid "New"
+#~ msgstr "Jauns"
+
+#~ msgid "_Close"
+#~ msgstr "_Aizvērt"
+
+#~ msgid "Take notes"
+#~ msgstr "Veikt piezīmes"
+
+#~ msgid " (new)"
+#~ msgstr " (jauna)"
+
+#~ msgid "_About Gnote"
+#~ msgstr "P_ar Gnote"
 
 #~ msgid "Enable startup notes"
 #~ msgstr "Aktivizēt sākuma piezīmes"
@@ -2733,12 +3084,6 @@ msgstr "_Atvērt saiti"
 
 #~ msgid "_Open..."
 #~ msgstr "_Atvērt..."
-
-#~ msgid "Open the selected note"
-#~ msgstr "Atvērt izvēlēto piezīmi"
-
-#~ msgid "Delete the selected note"
-#~ msgstr "Dzēst izvēlēto piezīmi"
 
 #~ msgid "_Edit"
 #~ msgstr "R_ediģēt"
@@ -2827,17 +3172,11 @@ msgstr "_Atvērt saiti"
 #~ msgstr[1] "Pēc %1% dienām"
 #~ msgstr[2] "Pēc %1% dienām"
 
-#~ msgid "Close this window"
-#~ msgstr "Aizvērt šo logu"
-
 #~ msgid "S_ynchronize Notes"
 #~ msgstr "S_inhronizēt piezīmes"
 
 #~ msgid "Start synchronizing notes"
 #~ msgstr "Sākt piezīmju sinhronizāciju"
-
-#~ msgid "Run Gnote as a GNOME panel applet."
-#~ msgstr "Palaist Gnote kā GNOME paneļa sīklietotni."
 
 #~ msgid "Clos_e All Notes"
 #~ msgstr "Aizvērt visas pi_ezīmes"
@@ -2853,9 +3192,6 @@ msgstr "_Atvērt saiti"
 
 #~ msgid "_Tools"
 #~ msgstr "_Rīki"
-
-#~ msgid "Editing"
-#~ msgstr "Rediģēšana"
 
 #~ msgid "C_ase Sensitive"
 #~ msgstr "Reģistr_jutīgs"
