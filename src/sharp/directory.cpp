@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017-2018 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -63,7 +63,7 @@ namespace sharp {
   void directory_get_directories(const Glib::ustring & dir,
                                  std::list<Glib::ustring> & files)
   {
-    if(!Glib::file_test(dir, Glib::FILE_TEST_EXISTS | Glib::FILE_TEST_IS_DIR)) {
+    if(!Glib::file_test(dir, Glib::FILE_TEST_IS_DIR)) {
       return;
     }
 
