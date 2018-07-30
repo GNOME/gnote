@@ -70,7 +70,7 @@ namespace sharp {
   bool directory_create(const Glib::ustring & dir);
 
   bool directory_delete(const Glib::ustring & dir, bool recursive);
-
+  bool directory_delete(const Glib::RefPtr<Gio::File> & dir, bool recursive);
 }
 
 
