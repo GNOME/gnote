@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017 Aurimas Cernius
+ * Copyright (C) 2012,2017-2018 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,6 +30,7 @@
 #define __SHARP_DIRECTORY_HPP_
 
 #include <list>
+#include <vector>
 
 #include <giomm/file.h>
 
@@ -46,6 +47,8 @@ namespace sharp {
 
   void directory_get_directories(const Glib::ustring & dir,
                                  std::list<Glib::ustring> & files);
+  void directory_get_directories(const Glib::RefPtr<Gio::File> & dir,
+                                 std::vector<Glib::RefPtr<Gio::File>> & files);
 
   void directory_get_files(const Glib::ustring & dir,
                            std::list<Glib::ustring> & files);

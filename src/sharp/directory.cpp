@@ -28,6 +28,7 @@
 
 #include <glib/gstdio.h>
 #include <glibmm/fileutils.h>
+#include <glibmm/miscutils.h>
 
 #include "sharp/directory.hpp"
 #include "sharp/fileinfo.hpp"
@@ -74,6 +75,30 @@ namespace sharp {
 
       if(Glib::file_test(file, Glib::FILE_TEST_IS_DIR)) {
         files.push_back(file);
+      }
+    }
+  }
+
+  void directory_get_directories(const Glib::RefPtr<Gio::File> & dir,
+                                 std::vector<Glib::RefPtr<Gio::File>> & files)
+  {
+    if(!dir || !dir->query_exists()) {
+      return;
+    }
+    auto info = dir->query_info();
+    if(!info || info->get_file_type() != Gio::FILE_TYPE_DIRECTORY) {
+      return;
+    }
+
+    auto children = dir->enumerate_children();
+    while(true) {
+      auto fileinfo = children->next_file();
+      if(!fileinfo) {
+        break;
+      }
+      if(fileinfo->get_file_type() & Gio::FILE_TYPE_DIRECTORY) {
+        auto child = Gio::File::create_for_uri(Glib::build_filename(dir->get_uri(), fileinfo->get_name()));
+        files.push_back(child);
       }
     }
   }
