@@ -61,6 +61,41 @@ namespace sharp {
     }
   }
 
+  void directory_get_files_with_ext(const Glib::RefPtr<Gio::File> & dir,
+                                    const Glib::ustring & ext,
+                                    std::vector<Glib::RefPtr<Gio::File>> & files)
+  {
+    if(!dir || !dir->query_exists()) {
+      return;
+    }
+    auto info = dir->query_info();
+    if(!info || info->get_file_type() != Gio::FILE_TYPE_DIRECTORY) {
+      return;
+    }
+
+    auto children = dir->enumerate_children();
+    while(true) {
+      auto fileinfo = children->next_file();
+      if(!fileinfo) {
+        break;
+      }
+      if(fileinfo->get_file_type() & Gio::FILE_TYPE_REGULAR) {
+        if(ext.size()) {
+          Glib::ustring name = fileinfo->get_name();
+          auto pos = name.find_last_of('.');
+          if(pos != Glib::ustring::npos && name.substr(pos) == ext) {
+            auto child = Gio::File::create_for_uri(Glib::build_filename(dir->get_uri(), name));
+            files.push_back(child);
+          }
+        }
+        else {
+          auto child = Gio::File::create_for_uri(Glib::build_filename(dir->get_uri(), fileinfo->get_name()));
+          files.push_back(child);
+        }
+      }
+    }
+  }
+
   void directory_get_directories(const Glib::ustring & dir,
                                  std::list<Glib::ustring> & files)
   {
@@ -104,6 +139,12 @@ namespace sharp {
   }
 
   void directory_get_files(const Glib::ustring & dir, std::list<Glib::ustring> & files)
+  {
+    directory_get_files_with_ext(dir, "", files);
+  }
+
+  void directory_get_files(const Glib::RefPtr<Gio::File> & dir,
+                           std::vector<Glib::RefPtr<Gio::File>> & files)
   {
     directory_get_files_with_ext(dir, "", files);
   }
