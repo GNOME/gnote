@@ -99,6 +99,20 @@ SUITE(directory)
     CHECK_EQUAL(1, directories.size());
   }
 
+  void remove_matching_files(const std::vector<Glib::RefPtr<Gio::File>> & dirsf,
+      std::list<Glib::ustring> & dirss)
+  {
+    for(auto f : dirsf) {
+      auto name = Glib::path_get_basename(f->get_path());
+      for(auto iter = dirss.begin(); iter != dirss.end(); ++iter) {
+        if(name == Glib::path_get_basename(*iter)) {
+          dirss.erase(iter);
+          break;
+        }
+      }
+    }
+  }
+
   TEST(get_directories__same_return)
   {
     auto dir = Glib::path_get_dirname(Glib::path_get_dirname(__FILE__));
@@ -113,16 +127,76 @@ SUITE(directory)
 
     CHECK(0 < dirss.size());
     CHECK_EQUAL(dirss.size(), dirsf.size());
-    for(auto f : dirsf) {
-      auto name = Glib::path_get_basename(f->get_path());
-      for(auto iter = dirss.begin(); iter != dirss.end(); ++iter) {
-        if(name == Glib::path_get_basename(*iter)) {
-          dirss.erase(iter);
-          break;
-        }
+    remove_matching_files(dirsf, dirss);
+    CHECK_EQUAL(0, dirss.size());
+  }
+
+  TEST(directory_get_files_with_ext__ustr__non_existent_dir)
+  {
+    Glib::ustring dir = Glib::build_filename(Glib::path_get_dirname(__FILE__), "nonexistent");
+
+    std::list<Glib::ustring> files;
+    sharp::directory_get_files_with_ext(dir, "", files);
+    CHECK_EQUAL(0, files.size());
+  }
+
+  TEST(directory_get_files_with_ext__File__non_existent_dir)
+  {
+    auto dir = Gio::File::create_for_path(Glib::build_filename(Glib::path_get_dirname(__FILE__), "nonexistent"));
+
+    std::vector<Glib::RefPtr<Gio::File>> files;
+    sharp::directory_get_files_with_ext(dir, "", files);
+    CHECK_EQUAL(0, files.size());
+  }
+
+  TEST(directory_get_files_with_ext__ustr__regular_file)
+  {
+    Glib::ustring dir(__FILE__);
+
+    std::list<Glib::ustring> files;
+    sharp::directory_get_files_with_ext(dir, "", files);
+    CHECK_EQUAL(0, files.size());
+  }
+
+  TEST(directory_get_files_with_ext__File__regular_file)
+  {
+    auto dir = Gio::File::create_for_path(__FILE__);
+
+    std::vector<Glib::RefPtr<Gio::File>> files;
+    sharp::directory_get_files_with_ext(dir, "", files);
+    CHECK_EQUAL(0, files.size());
+  }
+
+  void directory_get_files_with_ext__same_return_test(const Glib::ustring & ext)
+  {
+    Glib::ustring dir = Glib::path_get_dirname(__FILE__);
+
+    std::list<Glib::ustring> filess;
+    sharp::directory_get_files_with_ext(dir, ext, filess);
+    CHECK(0 < filess.size());
+    if(ext.size()) {
+      for(auto f : filess) {
+        auto pos = f.find_last_of('.');
+        CHECK_EQUAL(ext, f.substr(pos));
       }
     }
-    CHECK_EQUAL(0, dirss.size());
+
+    auto file = Gio::File::create_for_path(dir);
+    std::vector<Glib::RefPtr<Gio::File>> filesf;
+    sharp::directory_get_files_with_ext(file, ext, filesf);
+    CHECK_EQUAL(filess.size(), filesf.size());
+    remove_matching_files(filesf, filess);
+    CHECK_EQUAL(0, filess.size());
+  }
+
+  TEST(directory_get_files_with_ext__same_return)
+  {
+    directory_get_files_with_ext__same_return_test("");
+  }
+
+  TEST(directory_get_files_with_ext__same_return_filterred)
+  {
+    directory_get_files_with_ext__same_return_test(".cpp");
   }
 }
 
