@@ -34,6 +34,8 @@
 #include "sharp/fileinfo.hpp"
 #include "sharp/string.hpp"
 
+#include "debug.hpp"
+
 namespace sharp {
 
 
@@ -207,6 +209,30 @@ namespace sharp {
     }
 
     return g_remove(dir.c_str()) == 0;
+  }
+
+  bool directory_delete(const Glib::RefPtr<Gio::File> & dir, bool recursive)
+  {
+    if(recursive) {
+      std::vector<Glib::RefPtr<Gio::File>> files;
+      directory_get_files(dir, files);
+      for(auto file : files) {
+        if(!file->remove()) {
+          ERR_OUT("Failed to remove file %s", file->get_uri().c_str());
+          return false;
+        }
+      }
+      files.clear();
+      directory_get_directories(dir, files);
+      for(auto d : files) {
+        if(!directory_delete(d, true)) {
+          ERR_OUT("Failed to remove directory %s", d->get_uri().c_str());
+          return false;
+        }
+      }
+    }
+
+    return dir->remove();
   }
 
 }
