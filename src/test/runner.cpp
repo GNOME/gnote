@@ -18,12 +18,14 @@
  */
 
 
+#include <giomm/init.h>
 #include <UnitTest++/UnitTest++.h>
 
 int main(int /*argc*/, char ** /*argv*/)
 {
   // force certain timezone so that time tests work
   setenv("TZ", "Europe/London", 1);
+  Gio::init();
 
   return UnitTest::RunAllTests();
 }

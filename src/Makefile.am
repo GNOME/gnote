@@ -40,6 +40,7 @@ gnoteunittests_SOURCES = \
 	test/testsyncmanager.cpp test/testsyncmanager.hpp \
 	test/testtagmanager.cpp test/testtagmanager.hpp \
 	test/unit/datetimeutests.cpp \
+	test/unit/directorytests.cpp \
 	test/unit/filesutests.cpp \
 	test/unit/fileinfoutests.cpp \
 	test/unit/gnotesyncclientutests.cpp \
