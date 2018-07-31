@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,7 +71,8 @@ gnote::sync::SyncServer::Ptr FileSystemSyncServiceAddin::create_sync_server()
       sharp::directory_create(m_path);
     }
 
-    server = gnote::sync::FileSystemSyncServer::create(m_path);
+    auto path = Gio::File::create_for_path(m_path);
+    server = gnote::sync::FileSystemSyncServer::create(path);
   }
   else {
     throw std::logic_error("FileSystemSyncServiceAddin.create_sync_server() called without being configured");
