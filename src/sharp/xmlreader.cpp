@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016-2017 Aurimas Cernius
+ * Copyright (C) 2013,2016-2018 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -51,14 +51,31 @@ namespace sharp {
   }
 
   XmlReader::XmlReader()
-    : m_reader(NULL)
+    : m_doc(NULL)
+    , m_reader(NULL)
     , m_error(false)
   {
     m_error = true;
   }
 
+  XmlReader::XmlReader(xmlDocPtr xml_doc)
+    : m_doc(xml_doc)
+    , m_reader(NULL)
+    , m_error(false)
+  {
+    if(xml_doc == NULL) {
+      m_error = true;
+    }
+    else {
+      m_reader = xmlReaderWalker(xml_doc);
+      m_error = (m_reader == NULL);
+      // do not setup error hanling, crashes if tried
+    }
+  }
+
   XmlReader::XmlReader(const Glib::ustring & filename)
-    : m_reader(NULL)
+    : m_doc(NULL)
+    , m_reader(NULL)
     , m_error(false)
   {
     m_reader = xmlNewTextReaderFilename(filename.c_str());
@@ -170,6 +187,10 @@ namespace sharp {
     if(m_reader) {
       xmlFreeTextReader(m_reader);
       m_reader = NULL;
+    }
+    if(m_doc) {
+      xmlFreeDoc(m_doc);
+      m_doc = NULL;
     }
     m_error = true;
   }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2016-2017 Aurimas Cernius
+ * Copyright (C) 2016-2018 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -42,8 +42,9 @@ class XmlReader
 public:
   /** Create a XmlReader to read from a buffer */
   XmlReader();
+  explicit XmlReader(xmlDocPtr xml_doc);
   /** Create a XmlReader to read from a file */
-  XmlReader(const Glib::ustring & filename);
+  explicit XmlReader(const Glib::ustring & filename);
   ~XmlReader();
 
   /** load the buffer from the s 
@@ -75,6 +76,7 @@ private:
   void setup_error_handling();
   static void error_handler(void* arg, const char* msg, int severity, void* locator);
 
+  xmlDocPtr        m_doc;
   Glib::ustring    m_buffer;
   xmlTextReaderPtr m_reader;
   // error signaling
