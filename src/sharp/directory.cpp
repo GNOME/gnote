@@ -67,11 +67,7 @@ namespace sharp {
                                     const Glib::ustring & ext,
                                     std::vector<Glib::RefPtr<Gio::File>> & files)
   {
-    if(!dir || !dir->query_exists()) {
-      return;
-    }
-    auto info = dir->query_info();
-    if(!info || info->get_file_type() != Gio::FILE_TYPE_DIRECTORY) {
+    if(!directory_exists(dir)) {
       return;
     }
 
@@ -119,11 +115,7 @@ namespace sharp {
   void directory_get_directories(const Glib::RefPtr<Gio::File> & dir,
                                  std::vector<Glib::RefPtr<Gio::File>> & files)
   {
-    if(!dir || !dir->query_exists()) {
-      return;
-    }
-    auto info = dir->query_info();
-    if(!info || info->get_file_type() != Gio::FILE_TYPE_DIRECTORY) {
+    if(!directory_exists(dir)) {
       return;
     }
 
@@ -154,6 +146,19 @@ namespace sharp {
   bool directory_exists(const Glib::ustring & dir)
   {
     return Glib::file_test(dir, Glib::FILE_TEST_EXISTS) && Glib::file_test(dir, Glib::FILE_TEST_IS_DIR);
+  }
+
+  bool directory_exists(const Glib::RefPtr<Gio::File> & dir)
+  {
+    if(!dir || !dir->query_exists()) {
+      return false;
+    }
+    auto info = dir->query_info();
+    if(!info || info->get_file_type() != Gio::FILE_TYPE_DIRECTORY) {
+      return false;
+    }
+
+    return true;
   }
 
   void directory_copy(const Glib::RefPtr<Gio::File> & src,
@@ -195,7 +200,12 @@ namespace sharp {
 
   bool directory_create(const Glib::ustring & dir)
   {
-    return Gio::File::create_for_path(dir)->make_directory_with_parents();
+    return directory_create(Gio::File::create_for_path(dir));
+  }
+
+  bool directory_create(const Glib::RefPtr<Gio::File> & dir)
+  {
+    return dir->make_directory_with_parents();
   }
 
   bool directory_delete(const Glib::ustring & dir, bool recursive)

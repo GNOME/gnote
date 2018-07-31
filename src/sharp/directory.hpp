@@ -59,6 +59,7 @@ namespace sharp {
                            std::vector<Glib::RefPtr<Gio::File>> & files);
 
   bool directory_exists(const Glib::ustring & dir);
+  bool directory_exists(const Glib::RefPtr<Gio::File> & dir);
 
   /**
    * @param src The source directory (or file)
@@ -68,6 +69,7 @@ namespace sharp {
                       const Glib::RefPtr<Gio::File> & dest);
 
   bool directory_create(const Glib::ustring & dir);
+  bool directory_create(const Glib::RefPtr<Gio::File> & dir);
 
   bool directory_delete(const Glib::ustring & dir, bool recursive);
   bool directory_delete(const Glib::RefPtr<Gio::File> & dir, bool recursive);
