@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,19 +52,19 @@ int str_to_int(const Glib::ustring & s)
 namespace gnote {
 namespace sync {
 
-SyncServer::Ptr FileSystemSyncServer::create(const Glib::ustring & path)
+SyncServer::Ptr FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path)
 {
   return SyncServer::Ptr(new FileSystemSyncServer(path));
 }
 
 
-SyncServer::Ptr FileSystemSyncServer::create(const Glib::ustring & path, const Glib::ustring & client_id)
+SyncServer::Ptr FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id)
 {
   return SyncServer::Ptr(new FileSystemSyncServer(path, client_id));
 }
 
 
-FileSystemSyncServer::FileSystemSyncServer(const Glib::ustring & localSyncPath)
+FileSystemSyncServer::FileSystemSyncServer(const Glib::RefPtr<Gio::File> & localSyncPath)
   : m_server_path(localSyncPath)
   , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
 {
@@ -72,7 +72,7 @@ FileSystemSyncServer::FileSystemSyncServer(const Glib::ustring & localSyncPath)
 }
 
 
-FileSystemSyncServer::FileSystemSyncServer(const Glib::ustring & localSyncPath, const Glib::ustring & client_id)
+FileSystemSyncServer::FileSystemSyncServer(const Glib::RefPtr<Gio::File> & localSyncPath, const Glib::ustring & client_id)
   : m_server_path(localSyncPath)
   , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
   , m_sync_lock(client_id)
@@ -84,11 +84,11 @@ FileSystemSyncServer::FileSystemSyncServer(const Glib::ustring & localSyncPath, 
 void FileSystemSyncServer::common_ctor()
 {
   if(!sharp::directory_exists(m_server_path)) {
-    throw std::invalid_argument(("Directory not found: " + m_server_path).c_str());
+    throw std::invalid_argument(("Directory not found: " + m_server_path->get_uri()).c_str());
   }
 
-  m_lock_path = Glib::build_filename(m_server_path, "lock");
-  m_manifest_path = Glib::build_filename(m_server_path, "manifest.xml");
+  m_lock_path = m_server_path->get_child("lock");
+  m_manifest_path = m_server_path->get_child("manifest.xml");
 
   m_new_revision = latest_revision() + 1;
   m_new_revision_path = get_revision_dir_path(m_new_revision);
@@ -106,8 +106,9 @@ void FileSystemSyncServer::upload_notes(const std::list<Note::Ptr> & notes)
   DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
   for(std::list<Note::Ptr>::const_iterator iter = notes.begin(); iter != notes.end(); ++iter) {
     try {
-      Glib::ustring serverNotePath = Glib::build_filename(m_new_revision_path, sharp::file_filename((*iter)->file_path()));
-      sharp::file_copy((*iter)->file_path(), serverNotePath);
+      auto server_note = m_new_revision_path->get_child(sharp::file_filename((*iter)->file_path()));
+      auto local_note = Gio::File::create_for_path((*iter)->file_path());
+      local_note->copy(server_note);
       m_updated_notes.push_back(sharp::file_basename((*iter)->file_path()));
     }
     catch(...) {
@@ -127,9 +128,8 @@ std::list<Glib::ustring> FileSystemSyncServer::get_all_note_uuids()
 {
   std::list<Glib::ustring> noteUUIDs;
 
-  if(is_valid_xml_file(m_manifest_path)) {
-    // TODO: Permission errors
-    xmlDocPtr xml_doc = xmlReadFile(m_manifest_path.c_str(), "UTF-8", 0);
+  xmlDocPtr xml_doc = NULL;
+  if(is_valid_xml_file(m_manifest_path, &xml_doc)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
     sharp::XmlNodeSet noteIds = sharp::xml_node_xpath_find(root_node, "//note/@id");
     DBG_OUT("get_all_note_uuids has %d notes", int(noteIds.size()));
@@ -169,8 +169,8 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
     catch(...) {}
   }
 
-  if(is_valid_xml_file(m_manifest_path)) {
-    xmlDocPtr xml_doc = xmlReadFile(m_manifest_path.c_str(), "UTF-8", 0);
+  xmlDocPtr xml_doc = NULL;
+  if(is_valid_xml_file(m_manifest_path, &xml_doc)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
 
     Glib::ustring xpath = Glib::ustring::compose("//note[@rev > %1]", revision);
@@ -181,10 +181,10 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
       int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@rev")));
       if(noteUpdates.find(note_id) == noteUpdates.end()) {
         // Copy the file from the server to the temp directory
-        Glib::ustring revDir = get_revision_dir_path(rev);
-        Glib::ustring serverNotePath = Glib::build_filename(revDir, note_id + ".note");
+        auto revDir = get_revision_dir_path(rev);
+        auto serverNotePath = revDir->get_child(note_id + ".note");
         Glib::ustring noteTempPath = Glib::build_filename(tempPath, note_id + ".note");
-        sharp::file_copy(serverNotePath, noteTempPath);
+        serverNotePath->copy(Gio::File::create_for_path(noteTempPath));
 
         // Get the title, contents, etc.
         Glib::ustring noteTitle;
@@ -206,7 +206,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
   // Lock expiration: If a lock file exists on the server, a client
   // will never be able to synchronize on its first attempt.  The
   // client should record the time elapsed
-  if(sharp::file_exists(m_lock_path)) {
+  if(m_lock_path->query_exists()) {
     SyncLockInfo currentSyncLock = current_sync_lock();
     if(m_initial_sync_attempt == sharp::DateTime()) {
       DBG_OUT("Sync: Discovered a sync lock file, wait at least %s before trying again.", currentSyncLock.duration.string().c_str());
@@ -266,14 +266,14 @@ bool FileSystemSyncServer::commit_sync_transaction()
 
   if(m_updated_notes.size() > 0 || m_deleted_notes.size() > 0) {
     // TODO: error-checking, etc
-    Glib::ustring manifestFilePath = Glib::build_filename(m_new_revision_path, "manifest.xml");
+    auto manifest_file = m_new_revision_path->get_child("manifest.xml");
     if(!sharp::directory_exists(m_new_revision_path)) {
       sharp::directory_create(m_new_revision_path);
     }
 
     std::map<Glib::ustring, Glib::ustring> notes;
-    if(is_valid_xml_file(m_manifest_path) == true) {
-      xmlDocPtr xml_doc = xmlReadFile(m_manifest_path.c_str(), "UTF-8", 0);
+    xmlDocPtr xml_doc = NULL;
+    if(is_valid_xml_file(m_manifest_path, &xml_doc) == true) {
       xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
       sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, "//note");
       for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
@@ -285,7 +285,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
     }
 
     // Write out the new manifest file
-    sharp::XmlWriter *xml = new sharp::XmlWriter(manifestFilePath);
+    sharp::XmlWriter *xml = new sharp::XmlWriter();
     try {
       xml->write_start_document();
       xml->write_start_element("", "sync", "");
@@ -320,7 +320,11 @@ bool FileSystemSyncServer::commit_sync_transaction()
       xml->write_end_element();
       xml->write_end_document();
       xml->close();
+      Glib::ustring xml_content = xml->to_string();
       delete xml;
+      auto stream = manifest_file->create_file(Gio::FILE_CREATE_REPLACE_DESTINATION);
+      stream->write(xml_content);
+      stream->close();
     }
     catch(...) {
       xml->close();
@@ -330,12 +334,9 @@ bool FileSystemSyncServer::commit_sync_transaction()
 
 
     // Rename original /manifest.xml to /manifest.xml.old
-    Glib::ustring oldManifestPath = m_manifest_path + ".old";
-    if(sharp::file_exists(m_manifest_path) == true) {
-      if(sharp::file_exists(oldManifestPath)) {
-        sharp::file_delete(oldManifestPath);
-      }
-      sharp::file_move(m_manifest_path, oldManifestPath);
+    Glib::RefPtr<Gio::File> oldManifestPath = Gio::File::create_for_uri(m_manifest_path->get_uri() + ".old");
+    if(m_manifest_path->query_exists() == true) {
+      m_manifest_path->move(oldManifestPath, Gio::FILE_COPY_OVERWRITE);
     }
 
     // * * * Begin Cleanup Code * * *
@@ -345,25 +346,26 @@ bool FileSystemSyncServer::commit_sync_transaction()
     //       checks should be implemented.
 
     // Copy the /${parent}/${rev}/manifest.xml -> /manifest.xml
-    sharp::file_copy(manifestFilePath, m_manifest_path);
+    manifest_file->copy(m_manifest_path);
 
     try {
       // Delete /manifest.xml.old
-      if(sharp::file_exists(oldManifestPath)) {
-        sharp::file_delete(oldManifestPath);
+      if(oldManifestPath->query_exists()) {
+        oldManifestPath->remove();
       }
 
-      Glib::ustring oldManifestFilePath = Glib::build_filename(get_revision_dir_path(m_new_revision - 1), "manifest.xml");
-      if(sharp::file_exists(oldManifestFilePath)) {
+      auto old_manifest_file = get_revision_dir_path(m_new_revision - 1)->get_child("manifest.xml");
+      if(old_manifest_file->query_exists()) {
         // TODO: Do step #8 as described in http://bugzilla.gnome.org/show_bug.cgi?id=321037#c17
         // Like this?
-        std::list<Glib::ustring> files;
-        sharp::directory_get_files(oldManifestFilePath, files);
-        for(auto & iter : files) {
-          Glib::ustring fileGuid = sharp::file_basename(iter);
+        auto file_enumerator = old_manifest_file->enumerate_children();
+        std::vector<Glib::RefPtr<Gio::File>> files;
+        sharp::directory_get_files(old_manifest_file->get_parent(), files);
+        for(auto file : files) {
+          Glib::ustring fileGuid = file->get_basename();
           if(std::find(m_deleted_notes.begin(), m_deleted_notes.end(), fileGuid) != m_deleted_notes.end()
              || std::find(m_updated_notes.begin(), m_updated_notes.end(), fileGuid) != m_updated_notes.end()) {
-            sharp::file_delete(Glib::build_filename(oldManifestFilePath, iter));
+            file->remove();
           }
           // TODO: Need to check *all* revision dirs, not just previous (duh)
           //       Should be a way to cache this from checking earlier.
@@ -381,7 +383,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
   }
 
   m_lock_timeout.cancel();
-  sharp::file_delete(m_lock_path);// TODO: Errors?
+  m_lock_path->remove();// TODO: Errors?
   commitSucceeded = true;// TODO: When return false?
   return commitSucceeded;
 }
@@ -390,7 +392,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
 bool FileSystemSyncServer::cancel_sync_transaction()
 {
   m_lock_timeout.cancel();
-  sharp::file_delete(m_lock_path);
+  m_lock_path->remove();
   return true;
 }
 
@@ -400,8 +402,7 @@ int FileSystemSyncServer::latest_revision()
   int latestRev = -1;
   int latestRevDir = -1;
   xmlDocPtr xml_doc = NULL;
-  if(is_valid_xml_file(m_manifest_path) == true) {
-    xml_doc = xmlReadFile(m_manifest_path.c_str(), "UTF-8", 0);
+  if(is_valid_xml_file(m_manifest_path, &xml_doc) == true) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
     xmlNodePtr syncNode = sharp::xml_node_xpath_find_single_node(root_node, "//sync");
     Glib::ustring latestRevStr = sharp::xml_node_get_attribute(syncNode, "revision");
@@ -414,7 +415,7 @@ int FileSystemSyncServer::latest_revision()
   while (!foundValidManifest) {
     if(latestRev < 0) {
       // Look for the highest revision parent path
-      std::list<Glib::ustring> directories;
+      std::vector<Glib::RefPtr<Gio::File>> directories;
       sharp::directory_get_directories(m_server_path, directories);
       for(auto & iter : directories) {
         try {
@@ -429,12 +430,10 @@ int FileSystemSyncServer::latest_revision()
 
       if(latestRevDir >= 0) {
         directories.clear();
-        sharp::directory_get_directories(
-          Glib::build_filename(m_server_path, TO_STRING(latestRevDir)),
-          directories);
+        sharp::directory_get_directories(m_server_path->get_child(TO_STRING(latestRevDir)), directories);
         for(auto & iter : directories) {
           try {
-            int currentRev = str_to_int(iter);
+            int currentRev = str_to_int(iter->get_basename());
             if(currentRev > latestRev) {
               latestRev = currentRev;
             }
@@ -447,9 +446,9 @@ int FileSystemSyncServer::latest_revision()
       if(latestRev >= 0) {
         // Validate that the manifest file inside the revision is valid
         // TODO: Should we create the /manifest.xml file with a valid one?
-        Glib::ustring revDirPath = get_revision_dir_path(latestRev);
-        Glib::ustring revManifestPath = Glib::build_filename(revDirPath, "manifest.xml");
-        if(is_valid_xml_file(revManifestPath)) {
+        auto revDirPath = get_revision_dir_path(latestRev);
+        auto revManifestPath = revDirPath->get_child("manifest.xml");
+        if(is_valid_xml_file(revManifestPath, NULL)) {
           foundValidManifest = true;
         }
         else {
@@ -476,8 +475,8 @@ SyncLockInfo FileSystemSyncServer::current_sync_lock()
 {
   SyncLockInfo syncLockInfo;
 
-  if(is_valid_xml_file(m_lock_path)) {
-    xmlDocPtr xml_doc = xmlReadFile(m_lock_path.c_str(), "UTF-8", 0);
+  xmlDocPtr xml_doc = NULL;
+  if(is_valid_xml_file(m_lock_path, &xml_doc)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
 
     xmlNodePtr node = sharp::xml_node_xpath_find_single_node(root_node, "//transaction-id/text ()");
@@ -522,8 +521,9 @@ Glib::ustring FileSystemSyncServer::id()
   m_server_id = "";
 
   // Attempt to read from manifest file first
-  if(is_valid_xml_file(m_manifest_path)) {
-    sharp::XmlReader reader(m_manifest_path);
+  xmlDocPtr xml_doc = NULL;
+  if(is_valid_xml_file(m_manifest_path, &xml_doc)) {
+    sharp::XmlReader reader(xml_doc);
     if(reader.read()) {
       if(reader.get_node_type() == XML_READER_TYPE_ELEMENT && reader.get_name() == "sync") {
 	m_server_id = reader.get_attribute("server-id");
@@ -540,15 +540,15 @@ Glib::ustring FileSystemSyncServer::id()
 }
 
 
-Glib::ustring FileSystemSyncServer::get_revision_dir_path(int rev)
+Glib::RefPtr<Gio::File> FileSystemSyncServer::get_revision_dir_path(int rev)
 {
-  return Glib::build_filename(m_server_path, TO_STRING(rev/100), TO_STRING(rev));
+  return Gio::File::create_for_uri(Glib::build_filename(m_server_path->get_uri(), TO_STRING(rev/100), TO_STRING(rev)));
 }
 
 
 void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
 {
-  sharp::XmlWriter xml(m_lock_path);
+  sharp::XmlWriter xml;
   try {
     xml.write_start_document();
     xml.write_start_element("", "lock", "");
@@ -577,6 +577,9 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
     xml.write_end_document();
 
     xml.close();
+    auto stream = m_lock_path->create_file(Gio::FILE_CREATE_REPLACE_DESTINATION);
+    stream->write(xml.to_string());
+    stream->close();
   }
   catch(...) {
     xml.close();
@@ -589,21 +592,21 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
 {
   DBG_OUT("Sync: Cleaning up a previous failed sync transaction");
   int rev = latest_revision();
-  if(rev >= 0 && !is_valid_xml_file(m_manifest_path)) {
+  if(rev >= 0 && !is_valid_xml_file(m_manifest_path, NULL)) {
     // Time to discover the latest valid revision
     // If no manifest.xml file exists, that means we've got to
     // figure out if there are any previous revisions with valid
     // manifest.xml files around.
     for (; rev >= 0; rev--) {
-      Glib::ustring revParentPath = get_revision_dir_path(rev);
-      Glib::ustring manPath = Glib::build_filename(revParentPath, "manifest.xml");
+      auto revParentPath = get_revision_dir_path(rev);
+      auto manifest = revParentPath->get_child("manifest.xml");
 
-      if(is_valid_xml_file(manPath) == false) {
+      if(is_valid_xml_file(manifest, NULL) == false) {
         continue;
       }
 
       // Restore a valid manifest path
-      sharp::file_copy(manPath, m_manifest_path);
+      manifest->copy(m_manifest_path);
       break;
     }
   }
@@ -611,28 +614,45 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
   // Delete the old lock file
   DBG_OUT("Sync: Deleting expired lockfile");
   try {
-    sharp::file_delete(m_lock_path);
+    m_lock_path->remove();
   }
   catch(std::exception & e) {
-    ERR_OUT(_("Error deleting the old synchronization lock \"%s\": %s"), m_lock_path.c_str(), e.what());
+    ERR_OUT(_("Error deleting the old synchronization lock \"%s\": %s"), m_lock_path->get_uri().c_str(), e.what());
   }
 }
 
 
-bool FileSystemSyncServer::is_valid_xml_file(const Glib::ustring & xmlFilePath)
+bool FileSystemSyncServer::is_valid_xml_file(const Glib::RefPtr<Gio::File> & xmlFile, xmlDocPtr *xml_doc)
 {
   // Check that file exists
-  if(!sharp::file_exists(xmlFilePath)) {
+  if(!xmlFile->query_exists()) {
     return false;
   }
 
   // TODO: Permissions errors
   // Attempt to load the file and parse it as XML
-  xmlDocPtr xml_doc = xmlReadFile(xmlFilePath.c_str(), "UTF-8", 0);
-  if(!xml_doc) {
+  auto stream = xmlFile->read();
+  std::ostringstream os;
+  int buf_size = 4 * 1024;
+  char buffer[buf_size];
+  gssize read = 0;
+  do {
+    read = stream->read(buffer, buf_size);
+    os.write(buffer, read);
+  }
+  while(read == buf_size);
+  stream->close();
+  auto xml_string = os.str();
+  xmlDocPtr xml = xmlReadMemory(xml_string.c_str(), xml_string.size(), xmlFile->get_uri().c_str(), "UTF-8", 0);
+  if(!xml) {
     return false;
   }
-  xmlFreeDoc(xml_doc);
+  if(xml_doc == NULL) {
+    xmlFreeDoc(xml);
+  }
+  else {
+    *xml_doc = xml;
+  }
   return true;
 }
 

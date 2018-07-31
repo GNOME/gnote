@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -79,7 +79,7 @@ SyncServer::Ptr FuseSyncServiceAddin::create_sync_server()
   if(is_configured()) {
     if(!is_mounted() && !mount_fuse(true)) // mount_fuse may throw GnoteSyncException!
       throw std::runtime_error(("Could not mount " + m_mount_path).c_str());
-    server = FileSystemSyncServer::create(m_mount_path);
+    server = FileSystemSyncServer::create(Gio::File::create_for_path(m_mount_path));
   }
   else {
     throw new std::logic_error("create_sync_server called without being configured");

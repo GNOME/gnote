@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,8 +35,8 @@ class FileSystemSyncServer
   : public SyncServer
 {
 public:
-  static SyncServer::Ptr create(const Glib::ustring & path);
-  static SyncServer::Ptr create(const Glib::ustring & path, const Glib::ustring & client_id);
+  static SyncServer::Ptr create(const Glib::RefPtr<Gio::File> & path);
+  static SyncServer::Ptr create(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id);
   virtual bool begin_sync_transaction() override;
   virtual bool commit_sync_transaction() override;
   virtual bool cancel_sync_transaction() override;
@@ -49,14 +49,14 @@ public:
   virtual Glib::ustring id() override;
   virtual bool updates_available_since(int revision) override;
 private:
-  explicit FileSystemSyncServer(const Glib::ustring & path);
-  FileSystemSyncServer(const Glib::ustring & path, const Glib::ustring & client_id);
+  explicit FileSystemSyncServer(const Glib::RefPtr<Gio::File> & path);
+  FileSystemSyncServer(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id);
   void common_ctor();
 
-  Glib::ustring get_revision_dir_path(int rev);
+  Glib::RefPtr<Gio::File> get_revision_dir_path(int rev);
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);
   void update_lock_file(const SyncLockInfo & syncLockInfo);
-  bool is_valid_xml_file(const Glib::ustring & xmlFilePath);
+  bool is_valid_xml_file(const Glib::RefPtr<Gio::File> & xmlFilePath, xmlDocPtr *xml_doc);
   void lock_timeout();
 
   std::list<Glib::ustring> m_updated_notes;
@@ -64,13 +64,13 @@ private:
 
   Glib::ustring m_server_id;
 
-  Glib::ustring m_server_path;
+  Glib::RefPtr<Gio::File> m_server_path;
   Glib::ustring m_cache_path;
-  Glib::ustring m_lock_path;
-  Glib::ustring m_manifest_path;
+  Glib::RefPtr<Gio::File> m_lock_path;
+  Glib::RefPtr<Gio::File> m_manifest_path;
 
   int m_new_revision;
-  Glib::ustring m_new_revision_path;
+  Glib::RefPtr<Gio::File> m_new_revision_path;
 
   sharp::DateTime m_initial_sync_attempt;
   Glib::ustring m_last_sync_lock_hash;
