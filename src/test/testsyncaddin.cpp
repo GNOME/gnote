@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ SyncAddin::SyncAddin(const Glib::ustring & sync_path)
 
 gnote::sync::SyncServer::Ptr SyncAddin::create_sync_server()
 {
-  return gnote::sync::FileSystemSyncServer::create(m_sync_path, "test");
+  return gnote::sync::FileSystemSyncServer::create(Gio::File::create_for_path(m_sync_path), "test");
 }
 
 void SyncAddin::post_sync_cleanup()
