@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017-2018 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,6 +28,7 @@
 
 #include <vector>
 
+#include <giomm/file.h>
 #include <glibmm/ustring.h>
 
 namespace sharp {
@@ -41,6 +42,7 @@ namespace sharp {
   Glib::ustring file_dirname(const Glib::ustring & p);
   /** return the filename from the file path */
   Glib::ustring file_filename(const Glib::ustring & p);
+  Glib::ustring file_filename(const Glib::RefPtr<Gio::File> & p);
   void file_copy(const Glib::ustring & source, const Glib::ustring & dest);
 
   std::vector<Glib::ustring> file_read_all_lines(const Glib::ustring & path);

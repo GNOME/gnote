@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2017 Aurimas Cernius
+ * Copyright (C) 2011,2017-2018 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -61,6 +61,13 @@ namespace sharp {
   Glib::ustring file_filename(const Glib::ustring & p)
   {
     return Glib::path_get_basename(p);
+  }
+
+  Glib::ustring file_filename(const Glib::RefPtr<Gio::File> & p)
+  {
+    if(!p)
+      return "";
+    return p->get_basename();
   }
 
   void file_delete(const Glib::ustring & p)

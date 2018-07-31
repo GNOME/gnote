@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,12 +46,20 @@ SUITE(files)
     CHECK_EQUAL("/foo/bar", sharp::file_dirname("/foo/bar/"));
   }
 
-  TEST(filename)
+  TEST(filename_ustr)
   {
     CHECK_EQUAL("baz.txt", sharp::file_filename("/foo/bar/baz.txt"));
     CHECK_EQUAL("baz", sharp::file_filename("/foo/bar/baz"));
     CHECK_EQUAL("..", sharp::file_filename("/foo/bar/.."));
     CHECK_EQUAL("bar", sharp::file_filename("/foo/bar/"));
+  }
+
+  TEST(filename_File)
+  {
+    CHECK_EQUAL("", sharp::file_filename(Glib::RefPtr<Gio::File>()));
+    CHECK_EQUAL("baz.txt", sharp::file_filename(Gio::File::create_for_path("/foo/bar/baz.txt")));
+    CHECK_EQUAL("baz", sharp::file_filename(Gio::File::create_for_path("/foo/bar/baz")));
+    CHECK_EQUAL("bar", sharp::file_filename(Gio::File::create_for_path("/foo/bar/")));
   }
 
   TEST(exists)
