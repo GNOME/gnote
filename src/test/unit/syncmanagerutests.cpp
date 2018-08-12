@@ -37,40 +37,67 @@ using namespace gnote;
 
 SUITE(SyncManagerTests)
 {
-  void create_note(test::NoteManager & manager, const Glib::ustring & title, const Glib::ustring & body)
+  struct Fixture
   {
-    Glib::ustring content = Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\n%2</note-content>",
-                              title, body);
-    manager.create(title, content)->save();
-  }
+    Glib::ustring notesdir;
+    Glib::ustring notesdir2;
+    Glib::ustring syncdir;
+    Glib::ustring manifest;
+    test::NoteManager *manager1;
+    test::NoteManager *manager2;
+    test::SyncManager *sync_manager1;
+    test::SyncManager *sync_manager2;
 
-  TEST(clean_sync)
+    Fixture()
+    {
+      Glib::ustring notes_dir = make_temp_dir();
+      Glib::ustring notes_dir2 = make_temp_dir();
+      notesdir = notes_dir + "/notes";
+      notesdir2 = notes_dir2 + "/notes";
+      syncdir = notes_dir + "/sync";
+      REQUIRE CHECK(g_mkdir(syncdir.c_str(), S_IRWXU) == 0);
+      manifest = notes_dir + "/manifest.xml";
+
+      test::TagManager::ensure_exists();
+
+      manager1 = new test::NoteManager(notesdir);
+      create_note(*manager1, "note1", "content1");
+      create_note(*manager1, "note2", "content2");
+      create_note(*manager1, "note3", "content3");
+
+      manager2 = new test::NoteManager(notesdir2);
+
+      sync_manager1 = new test::SyncManager(*manager1, syncdir);
+      sync_manager2 = new test::SyncManager(*manager2, syncdir);
+    }
+
+    ~Fixture()
+    {
+      delete manager1;
+      delete manager2;
+    }
+
+    Glib::ustring make_temp_dir()
+    {
+      char temp_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
+      char *temp_dir = g_mkdtemp(temp_dir_tmpl);
+      REQUIRE CHECK(temp_dir != NULL);
+      return temp_dir;
+    }
+
+    void create_note(test::NoteManager & manager, const Glib::ustring & title, const Glib::ustring & body)
+    {
+      Glib::ustring content = Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\n%2</note-content>",
+                                title, body);
+      manager.create(title, content)->save();
+    }
+  };
+
+  TEST_FIXTURE(Fixture, clean_sync)
   {
-    char notes_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
-    char notes_dir_tmpl2[] = "/tmp/gnotetestnotesXXXXXX";
-    char *notes_dir = g_mkdtemp(notes_dir_tmpl);
-    CHECK(notes_dir != NULL);
-    char *notes_dir2 = g_mkdtemp(notes_dir_tmpl2);
-    CHECK(notes_dir2 != NULL);
-    Glib::ustring notesdir = Glib::ustring(notes_dir) + "/notes";
-    Glib::ustring notesdir2 = Glib::ustring(notes_dir2) + "/notes";
-    Glib::ustring syncdir = Glib::ustring(notes_dir) + "/sync";
-    REQUIRE CHECK(g_mkdir(syncdir.c_str(), S_IRWXU) == 0);
-    Glib::ustring manifest = Glib::ustring(notes_dir) + "/manifest.xml";
-
-    new test::TagManager;
-    test::NoteManager manager1(notesdir);
-    create_note(manager1, "note1", "content1");
-    create_note(manager1, "note2", "content2");
-    create_note(manager1, "note3", "content3");
-
-    test::NoteManager manager2(notesdir2);
-
-    test::SyncManager sync_manager1(manager1, syncdir);
-    test::SyncManager sync_manager2(manager2, syncdir);
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1.get_client(manifest));
-    gnote::sync::SilentUI::Ptr sync_ui = gnote::sync::SilentUI::create(manager1);
-    sync_manager1.perform_synchronization(sync_ui);
+    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest));
+    gnote::sync::SilentUI::Ptr sync_ui = gnote::sync::SilentUI::create(*manager1);
+    sync_manager1->perform_synchronization(sync_ui);
 
     Glib::ustring syncednotesdir = syncdir + "/0/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
