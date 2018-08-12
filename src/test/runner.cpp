@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,12 +18,14 @@
  */
 
 
+#include <glibmm/init.h>
 #include <UnitTest++/UnitTest++.h>
 
 int main(int /*argc*/, char ** /*argv*/)
 {
   // force certain timezone so that time tests work
   setenv("TZ", "Europe/London", 1);
+  Glib::init();
 
   return UnitTest::RunAllTests();
 }
