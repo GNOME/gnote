@@ -39,10 +39,11 @@ SUITE(SyncManagerTests)
 {
   struct Fixture
   {
-    Glib::ustring notesdir;
+    Glib::ustring notesdir1;
     Glib::ustring notesdir2;
     Glib::ustring syncdir;
-    Glib::ustring manifest;
+    Glib::ustring manifest1;
+    Glib::ustring manifest2;
     test::NoteManager *manager1;
     test::NoteManager *manager2;
     test::SyncManager *sync_manager1;
@@ -50,17 +51,18 @@ SUITE(SyncManagerTests)
 
     Fixture()
     {
-      Glib::ustring notes_dir = make_temp_dir();
+      Glib::ustring notes_dir1 = make_temp_dir();
       Glib::ustring notes_dir2 = make_temp_dir();
-      notesdir = notes_dir + "/notes";
+      notesdir1 = notes_dir1 + "/notes";
       notesdir2 = notes_dir2 + "/notes";
-      syncdir = notes_dir + "/sync";
+      syncdir = notes_dir1 + "/sync";
       REQUIRE CHECK(g_mkdir(syncdir.c_str(), S_IRWXU) == 0);
-      manifest = notes_dir + "/manifest.xml";
+      manifest1 = notes_dir1 + "/manifest.xml";
+      manifest2 = notes_dir2 + "/manifest.xml";
 
       test::TagManager::ensure_exists();
 
-      manager1 = new test::NoteManager(notesdir);
+      manager1 = new test::NoteManager(notesdir1);
       create_note(*manager1, "note1", "content1");
       create_note(*manager1, "note2", "content2");
       create_note(*manager1, "note3", "content3");
@@ -95,7 +97,7 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, clean_sync)
   {
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest));
+    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
     gnote::sync::SilentUI::Ptr sync_ui = gnote::sync::SilentUI::create(*manager1);
     sync_manager1->perform_synchronization(sync_ui);
 
