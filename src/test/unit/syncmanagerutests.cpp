@@ -93,6 +93,19 @@ SUITE(SyncManagerTests)
                                 title, body);
       manager.create(title, content)->save();
     }
+
+    bool find_note(const std::list<Glib::ustring> & files, const Glib::ustring & title)
+    {
+      Glib::ustring content_search = Glib::ustring::compose("<note-title>%1</note-title>", title);
+      for(auto file : files) {
+        Glib::ustring content = sharp::file_read_all_text(file);
+        if(content.find(content_search) != Glib::ustring::npos) {
+          return true;
+        }
+      }
+
+      return false;
+    }
   };
 
   TEST_FIXTURE(Fixture, clean_sync)
@@ -106,23 +119,10 @@ SUITE(SyncManagerTests)
     std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(syncednotesdir, ".note", files);
     REQUIRE CHECK_EQUAL(3, files.size());
-    bool note1found = false, note2found = false, note3found = false;
-    for(auto file : files) {
-      Glib::ustring content = sharp::file_read_all_text(file);
-      if(content.find("<note-title>note1</note-title>") != Glib::ustring::npos) {
-        note1found = true;
-      }
-      else if(content.find("<note-title>note2</note-title>") != Glib::ustring::npos) {
-        note2found = true;
-      }
-      else if(content.find("<note-title>note3</note-title>") != Glib::ustring::npos) {
-        note3found = true;
-      }
-    }
 
-    CHECK(note1found);
-    CHECK(note2found);
-    CHECK(note3found);
+    CHECK(find_note(files, "note1"));
+    CHECK(find_note(files, "note2"));
+    CHECK(find_note(files, "note3"));
   }
 }
 
