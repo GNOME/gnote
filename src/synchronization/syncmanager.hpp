@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,6 +59,12 @@ namespace sync {
     virtual void delete_notes_in_main_thread(const SyncServer::Ptr & server);
     void delete_notes(const SyncServer::Ptr & server);
     virtual void note_save(const Note::Ptr & note);
+    virtual void create_note_in_main_thread(const NoteUpdate & noteUpdate);
+    virtual void update_note_in_main_thread(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
+    virtual void delete_note_in_main_thread(const Note::Ptr & existingNote);
+    void create_note(const NoteUpdate & noteUpdate);
+    void update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
+    void delete_note(const Note::Ptr & existingNote);
 
     SyncClient::Ptr m_client;
     SyncUI::Ptr m_sync_ui;
@@ -74,16 +80,10 @@ namespace sync {
     void update_sync_action();
     void background_sync_checker();
     void set_state(SyncState new_state);
-    void create_note_in_main_thread(const NoteUpdate & noteUpdate);
-    void update_note_in_main_thread(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
-    void delete_note_in_main_thread(const Note::Ptr & existingNote);
     void update_local_note(const NoteBase::Ptr & localNote, const NoteUpdate & serverNote, NoteSyncType syncType);
     NoteBase::Ptr find_note_by_uuid(const Glib::ustring & uuid);
     NoteManagerBase & note_mgr();
     void get_synchronized_xml_bits(const Glib::ustring & noteXml, Glib::ustring & title, Glib::ustring & tags, Glib::ustring & content);
-    void create_note(const NoteUpdate & noteUpdate);
-    void update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
-    void delete_note(const Note::Ptr & existingNote);
 
     NoteManagerBase & m_note_manager;
     SyncState m_state;
