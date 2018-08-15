@@ -144,5 +144,56 @@ SUITE(SyncManagerTests)
     CHECK(find_note(files, "note2"));
     CHECK(find_note(files, "note3"));
   }
+
+  TEST_FIXTURE(Fixture, merge_two_clients)
+  {
+    // first sync
+    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
+    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
+    sync_manager1->perform_synchronization(sync_ui1);
+
+    create_note(*manager2, "note4", "content4");
+    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
+    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
+    sync_manager2->perform_synchronization(sync_ui2);
+
+    Glib::ustring syncednotesdir = syncdir + "/0/1";
+    REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
+    std::list<Glib::ustring> files;
+    sharp::directory_get_files_with_ext(syncednotesdir, ".note", files);
+    REQUIRE CHECK_EQUAL(2, files.size());  // note + template note
+    CHECK(find_note(files, "note4"));
+  }
+
+  TEST_FIXTURE(Fixture, download_new_notes_from_server)
+  {
+    // first sync
+    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
+    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
+    sync_manager1->perform_synchronization(sync_ui1);
+
+    // sync from existing
+    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
+    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
+    sync_manager2->perform_synchronization(sync_ui2);
+
+    // create new note and sync again
+    create_note(*manager2, "note4", "content4");
+    sync_manager2->perform_synchronization(sync_ui2);
+
+    // check sync dir contents
+    Glib::ustring syncednotesdir = syncdir + "/0";
+    REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
+    std::list<Glib::ustring> files;
+    sharp::directory_get_directories(syncednotesdir, files);
+    CHECK_EQUAL(3, files.size());
+
+    // sync to first client
+    sync_manager1->perform_synchronization(sync_ui1);
+    files.clear();
+    sharp::directory_get_files_with_ext(notesdir1, ".note", files);
+    CHECK_EQUAL(5, files.size()); // 3 original + 1 from other client + template from other client
+    CHECK(find_note(files, "note4"));
+  }
 }
 
