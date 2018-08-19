@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,6 +36,11 @@ const gnote::NoteDataBufferSynchronizerBase & Note::data_synchronizer() const
 gnote::NoteDataBufferSynchronizerBase & Note::data_synchronizer()
 {
   return m_data_synchronizer;
+}
+
+void Note::set_change_type(gnote::ChangeType c)
+{
+  gnote::NoteBase::set_change_type(c);
 }
 
 }
