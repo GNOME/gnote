@@ -28,6 +28,7 @@
 #include "sharp/files.hpp"
 #include "sharp/directory.hpp"
 #include "synchronization/silentui.hpp"
+#include "test/testnote.hpp"
 #include "test/testnotemanager.hpp"
 #include "test/testsyncmanager.hpp"
 #include "test/testtagmanager.hpp"
@@ -196,6 +197,40 @@ SUITE(SyncManagerTests)
     files.clear();
     sharp::directory_get_files_with_ext(notesdir1, ".note", files);
     CHECK_EQUAL(5, files.size()); // 3 original + 1 from other client + template from other client
+    CHECK(find_note(files, "note4"));
+  }
+
+  TEST_FIXTURE(Fixture, upload_note_update)
+  {
+    // first sync
+    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
+    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
+    sync_manager1->perform_synchronization(sync_ui1);
+
+    // update note and sync again
+    auto note = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
+    note->set_xml_content(make_note_content("note4", "updated content"));
+    note->set_change_type(gnote::CONTENT_CHANGED);
+    note->save();
+    sync_client1->reparse();
+    sync_manager1->perform_synchronization(sync_ui1);
+
+    // check sync dir contents
+    Glib::ustring syncednotesdir = syncdir + "/0";
+    REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
+    std::list<Glib::ustring> files;
+    sharp::directory_get_directories(syncednotesdir, files);
+    CHECK_EQUAL(2, files.size());
+
+    // sync from existing
+    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
+    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
+    sync_manager2->perform_synchronization(sync_ui2);
+
+    files.clear();
+    sharp::directory_get_files_with_ext(notesdir2, ".note", files);
+    REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
+    CHECK(!find_note(files, "note2"));
     CHECK(find_note(files, "note4"));
   }
 }
