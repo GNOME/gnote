@@ -87,11 +87,14 @@ SUITE(SyncManagerTests)
       return temp_dir;
     }
 
+    Glib::ustring make_note_content(const Glib::ustring & title, const Glib::ustring & body)
+    {
+      return Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\n%2</note-content>", title, body);
+    }
+
     void create_note(test::NoteManager & manager, const Glib::ustring & title, const Glib::ustring & body)
     {
-      Glib::ustring content = Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\n%2</note-content>",
-                                title, body);
-      manager.create(title, content)->save();
+      manager.create(title, make_note_content(title, body))->save();
     }
 
     bool find_note(const std::list<Glib::ustring> & files, const Glib::ustring & title)
