@@ -264,5 +264,30 @@ SUITE(SyncManagerTests)
     CHECK(find_note(files, "note4"));
     CHECK(!find_note(files, "note2"));
   }
+
+  TEST_FIXTURE(Fixture, delete_note)
+  {
+    // first sync
+    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
+    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
+    sync_manager1->perform_synchronization(sync_ui1);
+
+    // remove note
+    auto note = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
+    manager1->delete_note(note);
+    note.reset();
+    sync_manager1->perform_synchronization(sync_ui1);
+
+    // sync from existing
+    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
+    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
+    sync_manager2->perform_synchronization(sync_ui2);
+    std::list<Glib::ustring> files;
+    sharp::directory_get_files_with_ext(notesdir2, ".note", files);
+    REQUIRE CHECK_EQUAL(3, files.size()); // 2 downloaded notes + template
+    CHECK(find_note(files, "note1"));
+    CHECK(find_note(files, "note3"));
+    CHECK(!find_note(files, "note2"));
+  }
 }
 
