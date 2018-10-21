@@ -49,6 +49,7 @@ SUITE(SyncManagerTests)
     test::NoteManager *manager2;
     test::SyncManager *sync_manager1;
     test::SyncManager *sync_manager2;
+    std::list<Glib::ustring> files;
 
     Fixture()
     {
@@ -98,7 +99,7 @@ SUITE(SyncManagerTests)
       manager.create(title, make_note_content(title, body))->save();
     }
 
-    bool find_note(const std::list<Glib::ustring> & files, const Glib::ustring & title)
+    bool find_note_in_files(const Glib::ustring & title)
     {
       Glib::ustring content_search = Glib::ustring::compose("<note-title>%1</note-title>", title);
       for(auto file : files) {
@@ -109,6 +110,12 @@ SUITE(SyncManagerTests)
       }
 
       return false;
+    }
+
+    void get_notes_in_dir(const Glib::ustring & dir)
+    {
+      files.clear();
+      sharp::directory_get_files_with_ext(dir, ".note", files);
     }
   };
 
@@ -123,13 +130,12 @@ SUITE(SyncManagerTests)
 
     Glib::ustring syncednotesdir = syncdir + "/0/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(syncednotesdir, ".note", files);
+    get_notes_in_dir(syncednotesdir);
     REQUIRE CHECK_EQUAL(3, files.size());
 
-    CHECK(find_note(files, "note1"));
-    CHECK(find_note(files, "note2"));
-    CHECK(find_note(files, "note3"));
+    CHECK(find_note_in_files("note1"));
+    CHECK(find_note_in_files("note2"));
+    CHECK(find_note_in_files("note3"));
   }
 
   TEST_FIXTURE(Fixture, first_sync_existing_store)
@@ -137,12 +143,11 @@ SUITE(SyncManagerTests)
     FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
     FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(notesdir2, ".note", files);
+    get_notes_in_dir(notesdir2);
     REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
-    CHECK(find_note(files, "note1"));
-    CHECK(find_note(files, "note2"));
-    CHECK(find_note(files, "note3"));
+    CHECK(find_note_in_files("note1"));
+    CHECK(find_note_in_files("note2"));
+    CHECK(find_note_in_files("note3"));
   }
 
   TEST_FIXTURE(Fixture, merge_two_clients)
@@ -154,10 +159,9 @@ SUITE(SyncManagerTests)
 
     Glib::ustring syncednotesdir = syncdir + "/0/1";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(syncednotesdir, ".note", files);
+    get_notes_in_dir(syncednotesdir);
     REQUIRE CHECK_EQUAL(2, files.size());  // note + template note
-    CHECK(find_note(files, "note4"));
+    CHECK(find_note_in_files("note4"));
   }
 
   TEST_FIXTURE(Fixture, download_new_notes_from_server)
@@ -172,16 +176,14 @@ SUITE(SyncManagerTests)
     // check sync dir contents
     Glib::ustring syncednotesdir = syncdir + "/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
-    std::list<Glib::ustring> files;
     sharp::directory_get_directories(syncednotesdir, files);
     CHECK_EQUAL(3, files.size());
 
     // sync to first client
     sync_manager1->perform_synchronization(sync_ui1);
-    files.clear();
-    sharp::directory_get_files_with_ext(notesdir1, ".note", files);
+    get_notes_in_dir(notesdir1);
     CHECK_EQUAL(5, files.size()); // 3 original + 1 from other client + template from other client
-    CHECK(find_note(files, "note4"));
+    CHECK(find_note_in_files("note4"));
   }
 
   TEST_FIXTURE(Fixture, upload_note_update)
@@ -199,17 +201,15 @@ SUITE(SyncManagerTests)
     // check sync dir contents
     Glib::ustring syncednotesdir = syncdir + "/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
-    std::list<Glib::ustring> files;
     sharp::directory_get_directories(syncednotesdir, files);
     CHECK_EQUAL(2, files.size());
 
     FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
-    files.clear();
-    sharp::directory_get_files_with_ext(notesdir2, ".note", files);
+    get_notes_in_dir(notesdir2);
     REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
-    CHECK(!find_note(files, "note2"));
-    CHECK(find_note(files, "note4"));
+    CHECK(!find_note_in_files("note2"));
+    CHECK(find_note_in_files("note4"));
   }
 
   TEST_FIXTURE(Fixture, download_note_update)
@@ -227,13 +227,12 @@ SUITE(SyncManagerTests)
 
     // download updates
     sync_manager2->perform_synchronization(sync_ui2);
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(notesdir2, ".note", files);
+    get_notes_in_dir(notesdir2);
     REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
-    CHECK(find_note(files, "note1"));
-    CHECK(find_note(files, "note3"));
-    CHECK(find_note(files, "note4"));
-    CHECK(!find_note(files, "note2"));
+    CHECK(find_note_in_files("note1"));
+    CHECK(find_note_in_files("note3"));
+    CHECK(find_note_in_files("note4"));
+    CHECK(!find_note_in_files("note2"));
   }
 
   TEST_FIXTURE(Fixture, delete_note)
@@ -247,12 +246,11 @@ SUITE(SyncManagerTests)
     sync_manager1->perform_synchronization(sync_ui1);
 
     FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(notesdir2, ".note", files);
+    get_notes_in_dir(notesdir2);
     REQUIRE CHECK_EQUAL(3, files.size()); // 2 downloaded notes + template
-    CHECK(find_note(files, "note1"));
-    CHECK(find_note(files, "note3"));
-    CHECK(!find_note(files, "note2"));
+    CHECK(find_note_in_files("note1"));
+    CHECK(find_note_in_files("note3"));
+    CHECK(!find_note_in_files("note2"));
   }
 
   TEST_FIXTURE(Fixture, note_modification_conflict)
@@ -278,13 +276,12 @@ SUITE(SyncManagerTests)
 
     // sync client1 again
     sync_manager1->perform_synchronization(sync_ui1);
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(notesdir2, ".note", files);
+    get_notes_in_dir(notesdir2);
     REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
-    CHECK(find_note(files, "note1"));
-    CHECK(find_note(files, "note3"));
-    CHECK(!find_note(files, "note2"));
-    CHECK(find_note(files, "note4"));
+    CHECK(find_note_in_files("note1"));
+    CHECK(find_note_in_files("note3"));
+    CHECK(!find_note_in_files("note2"));
+    CHECK(find_note_in_files("note4"));
   }
 
   TEST_FIXTURE(Fixture, conflict_with_deletion_on_server)
@@ -305,12 +302,11 @@ SUITE(SyncManagerTests)
     note->save();
     sync_client1->reparse();
     sync_manager1->perform_synchronization(sync_ui1);
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(notesdir1, ".note", files);
+    get_notes_in_dir(notesdir1);
     REQUIRE CHECK_EQUAL(3, files.size()); // 2 downloaded notes + template
-    CHECK(find_note(files, "note1"));
-    CHECK(find_note(files, "note3"));
-    CHECK(!find_note(files, "note2"));
+    CHECK(find_note_in_files("note1"));
+    CHECK(find_note_in_files("note3"));
+    CHECK(!find_note_in_files("note2"));
   }
 }
 
