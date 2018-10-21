@@ -112,11 +112,14 @@ SUITE(SyncManagerTests)
     }
   };
 
+#define FIRST_SYNC(sync_manager, note_manager, manifest, client, ui) \
+  test::SyncClient::Ptr client = dynamic_pointer_cast<test::SyncClient>(sync_manager->get_client(manifest)); \
+  gnote::sync::SilentUI::Ptr ui = gnote::sync::SilentUI::create(*note_manager); \
+  sync_manager->perform_synchronization(ui);
+
   TEST_FIXTURE(Fixture, clean_sync)
   {
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client, sync_ui)
 
     Glib::ustring syncednotesdir = syncdir + "/0/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
@@ -131,15 +134,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, first_sync_existing_store)
   {
-    // first sync
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui1);
-
-    // sync from existing
-    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
-    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
-    sync_manager2->perform_synchronization(sync_ui2);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(notesdir2, ".note", files);
@@ -151,15 +147,10 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, merge_two_clients)
   {
-    // first sync
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui1);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
 
     create_note(*manager2, "note4", "content4");
-    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
-    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
-    sync_manager2->perform_synchronization(sync_ui2);
+    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     Glib::ustring syncednotesdir = syncdir + "/0/1";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
@@ -171,15 +162,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, download_new_notes_from_server)
   {
-    // first sync
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui1);
-
-    // sync from existing
-    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
-    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
-    sync_manager2->perform_synchronization(sync_ui2);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // create new note and sync again
     create_note(*manager2, "note4", "content4");
@@ -202,10 +186,7 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, upload_note_update)
   {
-    // first sync
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui1);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
 
     // update note and sync again
     auto note = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
@@ -222,10 +203,7 @@ SUITE(SyncManagerTests)
     sharp::directory_get_directories(syncednotesdir, files);
     CHECK_EQUAL(2, files.size());
 
-    // sync from existing
-    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
-    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
-    sync_manager2->perform_synchronization(sync_ui2);
+    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     files.clear();
     sharp::directory_get_files_with_ext(notesdir2, ".note", files);
@@ -236,15 +214,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, download_note_update)
   {
-    // first sync
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui1);
-
-    // sync from existing
-    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
-    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
-    sync_manager2->perform_synchronization(sync_ui2);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // update note and sync again
     auto note = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
@@ -267,10 +238,7 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, delete_note)
   {
-    // first sync
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui1);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
 
     // remove note
     auto note = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
@@ -278,10 +246,7 @@ SUITE(SyncManagerTests)
     note.reset();
     sync_manager1->perform_synchronization(sync_ui1);
 
-    // sync from existing
-    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
-    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
-    sync_manager2->perform_synchronization(sync_ui2);
+    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
     std::list<Glib::ustring> files;
     sharp::directory_get_files_with_ext(notesdir2, ".note", files);
     REQUIRE CHECK_EQUAL(3, files.size()); // 2 downloaded notes + template
@@ -292,15 +257,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, note_modification_conflict)
   {
-    // first sync
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui1);
-
-    // sync from existing
-    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
-    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
-    sync_manager2->perform_synchronization(sync_ui2);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // update note and sync again
     auto note = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
@@ -331,15 +289,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, conflict_with_deletion_on_server)
   {
-    // first sync
-    test::SyncClient::Ptr sync_client1 = dynamic_pointer_cast<test::SyncClient>(sync_manager1->get_client(manifest1));
-    gnote::sync::SilentUI::Ptr sync_ui1 = gnote::sync::SilentUI::create(*manager1);
-    sync_manager1->perform_synchronization(sync_ui1);
-
-    // sync from existing
-    test::SyncClient::Ptr sync_client2 = dynamic_pointer_cast<test::SyncClient>(sync_manager2->get_client(manifest2));
-    gnote::sync::SilentUI::Ptr sync_ui2 = gnote::sync::SilentUI::create(*manager2);
-    sync_manager2->perform_synchronization(sync_ui2);
+    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // remove note
     auto note = std::dynamic_pointer_cast<test::Note>(manager2->find("note2"));
