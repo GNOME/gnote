@@ -134,7 +134,7 @@ namespace gnote {
     add_app_menu_item(APP_ACTION_LAST, 50, _("_Preferences"), "app.show-preferences");
     add_app_menu_item(APP_ACTION_LAST, 100, _("_Shortcuts"), "app.help-shortcuts");
     add_app_menu_item(APP_ACTION_LAST, 150, _("_Help"), "app.help-contents");
-    add_app_menu_item(APP_ACTION_LAST, 200, _("_About"), "app.about");
+    add_app_menu_item(APP_ACTION_LAST, 200, _("_About Gnote"), "app.about");
     add_app_menu_item(APP_ACTION_LAST, 300, _("_Quit"), "app.quit");
   }
 
