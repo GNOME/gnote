@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2015-2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2015-2018 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,6 +61,9 @@ private:
   void make_app_actions();
   void make_app_menu_items();
   Glib::RefPtr<Gio::Menu> make_app_menu_section(int section) const;
+  bool add_app_menu_section(std::map<int, Gtk::Widget*> & widgets, int & order, int section);
+  void add_app_menu_new_section(std::map<int, Gtk::Widget*>&);
+  void add_app_menu_trailing_sections(std::map<int, Gtk::Widget*>&);
 
   std::vector<Glib::RefPtr<Gio::SimpleAction> > m_app_actions;
 
