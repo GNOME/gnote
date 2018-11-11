@@ -103,7 +103,6 @@ namespace gnote {
     add_app_action("about");
     add_app_action("help-contents");
     add_app_action("help-shortcuts");
-    add_app_action("quit");
   }
 
   Glib::RefPtr<Gio::SimpleAction> ActionManager::get_app_action(const Glib::ustring & name) const
@@ -139,7 +138,6 @@ namespace gnote {
     add_app_menu_item(APP_ACTION_LAST, 100, _("_Shortcuts"), "app.help-shortcuts");
     add_app_menu_item(APP_ACTION_LAST, 150, _("_Help"), "app.help-contents");
     add_app_menu_item(APP_ACTION_LAST, 200, _("_About Gnote"), "app.about");
-    add_app_menu_item(APP_ACTION_LAST, 300, _("_Quit"), "app.quit");
   }
 
   Glib::RefPtr<Gio::Menu> ActionManager::get_app_menu() const
