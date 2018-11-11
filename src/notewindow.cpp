@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017 Aurimas Cernius
+ * Copyright (C) 2011-2018 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -309,6 +309,11 @@ namespace gnote {
     std::vector<Gtk::Widget*> widgets;
     std::map<int, Gtk::Widget*> widget_map;
 
+    Gtk::Widget *new_note = manage(utils::create_popover_button("app.new-note", _("_New Note")));
+    widgets.push_back(new_note);
+    Gtk::Widget *new_window = manage(utils::create_popover_button("app.new-window", _("New _Window")));
+    widgets.push_back(new_window);
+    widgets.push_back(NULL);
     Gtk::Widget *undo = manage(utils::create_popover_button("win.undo", _("_Undo")));
     widgets.push_back(undo);
     Gtk::Widget *redo = manage(utils::create_popover_button("win.redo", _("_Redo")));
