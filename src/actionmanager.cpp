@@ -140,51 +140,6 @@ namespace gnote {
     add_app_menu_item(APP_ACTION_LAST, 200, _("_About Gnote"), "app.about");
   }
 
-  Glib::RefPtr<Gio::Menu> ActionManager::get_app_menu() const
-  {
-    Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
-
-    int pos = 0;
-    Glib::RefPtr<Gio::Menu> section = make_app_menu_section(APP_ACTION_NEW);
-    if(section) {
-      menu->insert_section(pos++, section);
-    }
-
-    section = make_app_menu_section(APP_ACTION_MANAGE);
-    if(section) {
-      menu->insert_section(pos++, section);
-    }
-
-    section = make_app_menu_section(APP_ACTION_LAST);
-    if(section) {
-      menu->insert_section(pos++, section);
-    }
-
-    return menu;
-  }
-
-  Glib::RefPtr<Gio::Menu> ActionManager::make_app_menu_section(int sec) const
-  {
-    std::pair<AppMenuItemMultiMap::const_iterator, AppMenuItemMultiMap::const_iterator>
-    range = m_app_menu_items.equal_range(sec);
-
-    Glib::RefPtr<Gio::Menu> section;
-    if(range.first != m_app_menu_items.end()) {
-      std::vector<const AppMenuItem*> menu_items;
-      for(AppMenuItemMultiMap::const_iterator iter = range.first; iter != range.second; ++iter) {
-        menu_items.push_back(&iter->second);
-      }
-      std::sort(menu_items.begin(), menu_items.end(), AppMenuItem::ptr_comparator());
-
-      section = Gio::Menu::create();
-      for(std::vector<const AppMenuItem*>::iterator iter = menu_items.begin(); iter != menu_items.end(); ++iter) {
-        section->append((*iter)->label, (*iter)->action_def);
-      }
-    }
-
-    return section;
-  }
-
   void ActionManager::register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type, bool modifying)
   {
     if(m_main_window_actions.find(action) == m_main_window_actions.end()) {

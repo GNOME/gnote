@@ -184,7 +184,6 @@ namespace gnote {
     }
 
     make_app_actions();
-    make_app_menu();
     if(is_background()) {
       // do not exit when all windows are closed
       hold();
@@ -488,12 +487,6 @@ namespace gnote {
   void Gnote::open_note(const Note::Ptr & note)
   {
     MainWindow::present_in(get_window_for_note(), note);
-  }
-
-
-  void Gnote::make_app_menu()
-  {
-    set_app_menu(static_cast<ActionManager &>(IActionManager::obj()).get_app_menu());
   }
 
 
