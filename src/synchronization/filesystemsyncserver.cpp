@@ -379,6 +379,10 @@ bool FileSystemSyncServer::commit_sync_transaction()
       ERR_OUT(_("Exception during server cleanup while committing. Server integrity is OK, but "
                 "there may be some excess files floating around.  Here's the error: %s\n"), e.what());
     }
+    catch(Glib::Exception & e) {
+      ERR_OUT(_("Exception during server cleanup while committing. Server integrity is OK, but "
+                "there may be some excess files floating around.  Here's the error: %s\n"), e.what().c_str());
+    }
     // * * * End Cleanup Code * * *
   }
 
