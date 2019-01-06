@@ -184,7 +184,6 @@ namespace gnote {
     }
 
     make_app_actions();
-    make_app_menu();
     if(is_background()) {
       // do not exit when all windows are closed
       hold();
@@ -229,17 +228,6 @@ namespace gnote {
                                         sigc::mem_fun(*this, &Gnote::end_main));
   }
 
-
-  void Gnote::on_quit_gnote_action(const Glib::VariantBase&)
-  {
-    std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
-    FOREACH(Gtk::Window *window, windows) {
-      window->close();
-    }
-    if(is_background()) {
-      release();
-    }
-  }
 
   void Gnote::on_preferences_response(int /*res*/)
   {
@@ -449,7 +437,6 @@ namespace gnote {
     am.get_app_action("help-contents")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
     am.get_app_action("help-shortcuts")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_shortcust_action));
     am.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
-    am.get_app_action("quit")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_quit_gnote_action));
 
     add_app_actions(static_cast<ActionManager &>(am).get_app_actions());
   }
@@ -500,12 +487,6 @@ namespace gnote {
   void Gnote::open_note(const Note::Ptr & note)
   {
     MainWindow::present_in(get_window_for_note(), note);
-  }
-
-
-  void Gnote::make_app_menu()
-  {
-    set_app_menu(static_cast<ActionManager &>(IActionManager::obj()).get_app_menu());
   }
 
 

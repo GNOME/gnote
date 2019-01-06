@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017 Aurimas Cernius
+ * Copyright (C) 2010-2018 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -42,6 +42,11 @@
 #include "sharp/string.hpp"
 
 namespace gnote {
+
+  namespace {
+    const char *MAIN_MENU_PRIMARY_ICON = "open-menu-symbolic";
+    const char *MAIN_MENU_SECONDARY_ICON = "view-more-symbolic";
+  }
 
   NoteRecentChanges::NoteRecentChanges(NoteManager& m)
     : MainWindow(_("Gnote"))
@@ -188,7 +193,7 @@ namespace gnote {
 
     m_window_actions_button = manage(new Gtk::Button);
     image = manage(new Gtk::Image);
-    image->property_icon_name() = "open-menu-symbolic";
+    image->property_icon_name() = MAIN_MENU_PRIMARY_ICON;
     image->property_icon_size() = GTK_ICON_SIZE_MENU;
     m_window_actions_button->set_image(*image);
     m_window_actions_button->signal_clicked().connect(
@@ -714,6 +719,7 @@ namespace gnote {
     bool search = dynamic_cast<SearchNotesWidget*>(&widget) == &m_search_notes_widget;
     m_all_notes_button->set_visible(!search);
     m_new_note_button->set_visible(search);
+    dynamic_cast<Gtk::Image*>(m_window_actions_button->get_image())->property_icon_name() = search ? MAIN_MENU_PRIMARY_ICON : MAIN_MENU_SECONDARY_ICON;
 
     try {
       SearchableItem & searchable_item = dynamic_cast<SearchableItem&>(widget);

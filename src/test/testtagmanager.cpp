@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017 Aurimas Cernius
+ * Copyright (C) 2014,2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,17 @@
 #include "testtagmanager.hpp"
 
 namespace test {
+
+TagManager *TagManager::s_manager = NULL;
+
+void TagManager::ensure_exists()
+{
+  // existing tag manager can be invalid, recreate it for new test
+  if(s_manager != NULL) {
+    delete s_manager;
+  }
+  s_manager = new TagManager;
+}
 
 gnote::Tag::Ptr TagManager::get_tag(const Glib::ustring & tag_name) const
 {

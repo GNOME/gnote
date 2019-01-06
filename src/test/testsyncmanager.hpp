@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,6 +42,10 @@ public:
   virtual void delete_notes_in_main_thread(const gnote::sync::SyncServer::Ptr & server) override;
   virtual void note_save(const gnote::Note::Ptr & note) override;
   test::SyncClient::Ptr get_client(const Glib::ustring & manifest);
+protected:
+  virtual void create_note_in_main_thread(const gnote::sync::NoteUpdate & noteUpdate) override;
+  virtual void update_note_in_main_thread(const gnote::Note::Ptr & existingNote, const gnote::sync::NoteUpdate & noteUpdate) override;
+  virtual void delete_note_in_main_thread(const gnote::Note::Ptr & existingNote) override;
 private:
   Glib::ustring m_sync_path;
 };

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017 Aurimas Cernius
+ * Copyright (C) 2014,2017-2018 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,8 @@ class TagManager
   : public gnote::ITagManager
 {
 public:
+  static void ensure_exists();
+
   virtual gnote::Tag::Ptr get_tag(const Glib::ustring & tag_name) const override;
   virtual gnote::Tag::Ptr get_or_create_tag(const Glib::ustring &) override;
   virtual gnote::Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const override;
@@ -34,6 +36,8 @@ public:
   virtual void remove_tag(const gnote::Tag::Ptr & tag) override;
   virtual void all_tags(std::list<gnote::Tag::Ptr> &) const override;
 private:
+  static TagManager* s_manager;
+
   std::map<Glib::ustring, gnote::Tag::Ptr> m_tags;
 };
 

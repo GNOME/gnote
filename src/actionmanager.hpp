@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2015-2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2015-2018 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,6 @@ public:
   virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const Glib::ustring & name) override;
   virtual void add_app_menu_item(int section, int order, const Glib::ustring & label,
                                  const Glib::ustring & action_def) override;
-  Glib::RefPtr<Gio::Menu> get_app_menu() const;
   virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type,
     bool modifying = true) override;
   virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;
@@ -61,6 +60,9 @@ private:
   void make_app_actions();
   void make_app_menu_items();
   Glib::RefPtr<Gio::Menu> make_app_menu_section(int section) const;
+  bool add_app_menu_section(std::map<int, Gtk::Widget*> & widgets, int & order, int section);
+  void add_app_menu_new_section(std::map<int, Gtk::Widget*>&);
+  void add_app_menu_trailing_sections(std::map<int, Gtk::Widget*>&);
 
   std::vector<Glib::RefPtr<Gio::SimpleAction> > m_app_actions;
 
