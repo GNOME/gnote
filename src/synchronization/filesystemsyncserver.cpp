@@ -358,7 +358,6 @@ bool FileSystemSyncServer::commit_sync_transaction()
       if(old_manifest_file->query_exists()) {
         // TODO: Do step #8 as described in http://bugzilla.gnome.org/show_bug.cgi?id=321037#c17
         // Like this?
-        auto file_enumerator = old_manifest_file->enumerate_children();
         std::vector<Glib::RefPtr<Gio::File>> files;
         sharp::directory_get_files(old_manifest_file->get_parent(), files);
         for(auto file : files) {
