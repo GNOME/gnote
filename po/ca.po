@@ -2,13 +2,13 @@
 # Copyright © 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnote package.
 # Gil Forcada <gilforcada@guifi.net>, 2009.
-# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2008, 2016
+# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2008, 2016, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
 "POT-Creation-Date: 2018-11-11 15:36+0000\n"
-"PO-Revision-Date: 2016-09-17 06:12+0200\n"
+"PO-Revision-Date: 2019-02-22 15:41+0100\n"
 "Last-Translator: Jordi Mas <jmas@softcatala.org>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:547
@@ -24,10 +24,8 @@ msgid "Gnote"
 msgstr "Gnote"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:2
-#, fuzzy
-#| msgid "A note taking application"
 msgid "A simple note-taking application"
-msgstr "Una aplicació per a prendre notes"
+msgstr "Una aplicació simple per a prendre notes"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
@@ -131,7 +129,7 @@ msgstr "Refés l'última edició"
 #: ../data/ui/shortcuts-gnote.ui.h:17
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
-msgstr "Crea una enllaç a la nota en el text seleccionat"
+msgstr "Crea un enllaç a la nota en el text seleccionat"
 
 #: ../data/ui/shortcuts-gnote.ui.h:18
 msgctxt "shortcut window"
@@ -275,7 +273,6 @@ msgid "Enable custom font"
 msgstr "Habilita el tipus de lletra personalitzat"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:14
-#, fuzzy
 msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
@@ -289,7 +286,6 @@ msgid "Custom Font Face"
 msgstr "Tipus de lletra personalitzat"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:16
-#, fuzzy
 msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
@@ -302,7 +298,6 @@ msgid "Enable global keybindings"
 msgstr "Habilita les assignacions de tecles globals"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:18
-#, fuzzy
 msgid ""
 "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
 "keybindings will be enabled, allowing for useful Gnote actions to be "
@@ -355,9 +350,8 @@ msgid "Is main window maximized"
 msgstr "Estat maximitzat de la finestra principal"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:26
-#, fuzzy
 msgid "If true, Gnote window will be maximized."
-msgstr "«true» (cert) si la finestra està maximitzada."
+msgstr "Sí és cert, finestra del Gnote està maximitzada."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:27
 msgid "Saved height of Search window"
@@ -646,12 +640,10 @@ msgstr ""
 "conflicte cas per cas."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:76
-#, fuzzy
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Temps d'espera de la sincronització automàtica en segon pla"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:77
-#, fuzzy
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -705,7 +697,6 @@ msgstr ""
 "de l'strftime(3)."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:86
-#, fuzzy
 msgid "Time between checks"
 msgstr "Interval entre comprovacions"
 
@@ -739,9 +730,8 @@ msgid "_About Gnote"
 msgstr "_Quant al Gnote"
 
 #: ../src/addininfo.cpp:72
-#, fuzzy
 msgid "Failed to load plugin information!"
-msgstr "No s'ha pogut carregar el connector per a desar"
+msgstr "No s'ha pogut carregar la informació del connector"
 
 #: ../src/addininfo.cpp:146
 #, fuzzy, c-format
@@ -811,7 +801,6 @@ msgstr "(cap)"
 #: ../src/addins/backlinks/backlinksnoteaddin.cpp:104
 #: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:157
 #: ../src/notebooks/notebooknoteaddin.cpp:168
-#, fuzzy
 msgid "_Back"
 msgstr "_Anterior"
 
@@ -953,10 +942,8 @@ msgid "Include all other linked notes"
 msgstr "Inclou totes les altres notes enllaçades"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
-#, fuzzy
-#| msgid "Export to HTML"
 msgid "Export to HTML…"
-msgstr "Exporta a HTML"
+msgstr "Exporta a HTML…"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
 #, c-format
@@ -1021,9 +1008,8 @@ msgstr ""
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:3
 #: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:3
-#, fuzzy
 msgid "Aurimas Černius and the Tomboy Project"
-msgstr "L'Hubert Figuière i el projecte Tomboy"
+msgstr "Aurimas Černius i el projecte Tomboy"
 
 #: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:1
 msgid "Fixed Width"
@@ -1135,7 +1121,7 @@ msgstr "Cites"
 #. Format: "Today: Friday, July 01 2005"
 #: ../src/addins/noteoftheday/noteoftheday.cpp:159
 msgid "%A, %B %d %Y"
-msgstr "%A, %d %B de %Y"
+msgstr "%A, %-d %B de %Y"
 
 #: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:1
 msgid "Note of the Day"
@@ -1172,26 +1158,20 @@ msgid "Allows you to print a note."
 msgstr "Us permet imprimir una nota."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
-#, fuzzy
-#| msgid "Print"
 msgid "Print…"
-msgstr "Imprimeix"
+msgstr "Imprimeix…"
 
-#
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
 msgstr "S'ha produït un error en imprimir la nota"
 
 #. %1 is the page number, %2 is the total number of pages
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:278
-#, fuzzy
-#| msgid "Page %1% of %2%"
 msgid "Page %1 of %2"
-msgstr "Pàgina %1% de %2%"
+msgstr "Pàgina %1 de %2"
 
 #: ../src/addins/readonly/readonly.desktop.in.in.h:1
 #: ../src/addins/readonly/readonlynoteaddin.cpp:69
-#, fuzzy
 msgid "Read Only"
 msgstr "Només lectura"
 
@@ -1205,9 +1185,8 @@ msgstr ""
 
 #: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:1
 #: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:53
-#, fuzzy
 msgid "Replace title"
-msgstr "Reemplaça el títol inicial"
+msgstr "Reemplaça el títol"
 
 #: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:2
 #, fuzzy
@@ -1215,9 +1194,8 @@ msgid "Replace title with selection."
 msgstr " (a reemplaçar) dins de la selecció"
 
 #: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:3
-#, fuzzy
 msgid "Pierre-Yves Luyten"
-msgstr "Pierre"
+msgstr "Pierre-Yves Luyten"
 
 #: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
 #: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
@@ -1401,7 +1379,6 @@ msgid "_Password:"
 msgstr "_Contrasenya:"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:104
-#, fuzzy
 msgid "WebDAV"
 msgstr "WebDAV"
 
@@ -1559,10 +1536,8 @@ msgstr "No s'ha pogut connectar a l'ordinador remot"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
 #: ../src/gnote.cpp:714
-#, fuzzy
-#| msgid "Version %1%"
 msgid "Version %1"
-msgstr "Versió %1%"
+msgstr "Versió %1"
 
 #. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
 #: ../src/iconmanager.cpp:66
@@ -1659,10 +1634,8 @@ msgstr "Cap bloc de notes"
 
 #. TRANSLATORS: %1: format placeholder for the notebook name
 #: ../src/notebooks/notebooknewnotemenuitem.cpp:40
-#, fuzzy
-#| msgid "New \"%1%\" Note"
 msgid "New \"%1\" Note"
-msgstr "Nota «%1%» nova"
+msgstr "Nota «%1» nova"
 
 #: ../src/notebooks/notebooknoteaddin.cpp:110
 msgid "Notebook"
@@ -1698,9 +1671,9 @@ msgid "</list> tag mismatch"
 msgstr "El tipus de l'etiqueta {$a->tag} no coincideix"
 
 #: ../src/notebuffer.cpp:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Exception: %s"
-msgstr "Excepció de sistema '%s' al mitjà '%s'."
+msgstr "Excepció: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
 #: ../src/note.cpp:55
@@ -1917,7 +1890,7 @@ msgstr "_Enllaça a una nota nova"
 #, fuzzy
 #| msgid "Important"
 msgid "_Important"
-msgstr "Important"
+msgstr "_Important"
 
 #: ../src/notewindow.cpp:344
 #, fuzzy
@@ -2167,10 +2140,8 @@ msgstr "Encara no està implementat"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
 #: ../src/preferencesdialog.cpp:799
-#, fuzzy
-#| msgid "%1% Preferences"
 msgid "%1 Preferences"
-msgstr "Preferències de %1%"
+msgstr "Preferències de %1"
 
 #: ../src/preferencesdialog.cpp:933
 msgid "Choose Note Font"
@@ -2282,7 +2253,7 @@ msgstr "Totes les notes"
 #, fuzzy
 #| msgid "Create _New Note"
 msgid "Create New Note"
-msgstr "Crea una _nota nova"
+msgstr "Crea una nota nova"
 
 #: ../src/recentchanges.cpp:190
 msgid "Search"
@@ -2838,13 +2809,12 @@ msgstr "Demà"
 #. TRANSLATORS: date in current year.
 #: ../src/utils.cpp:257
 msgid "%b %d"
-msgstr "%d %b"
+msgstr "%-d %b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
 #: ../src/utils.cpp:260 ../src/utils.cpp:272
-#, fuzzy
 msgid "%1, %2"
-msgstr "%1% (%2%):"
+msgstr "%1, %2"
 
 #: ../src/utils.cpp:265
 msgid "No Date"
@@ -2853,14 +2823,12 @@ msgstr "Sense data"
 #. TRANSLATORS: date in other than current year.
 #: ../src/utils.cpp:269
 msgid "%b %d %Y"
-msgstr "%d %b de %Y"
+msgstr "%-d %b de %Y"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
 #: ../src/watchers.cpp:198
-#, fuzzy
-#| msgid "(Untitled %1%)"
 msgid "(Untitled %1)"
-msgstr "(Sense títol %1%)"
+msgstr "(Sense títol %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
 #: ../src/watchers.cpp:230
