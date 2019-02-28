@@ -1,20 +1,19 @@
 # Italian translation of GNote.
-# Copyright (C) 2010 The Free Software Foundation, Inc.
+# Copyright (C) 2005, 2008, 2009, 2010, 2015, 2016, 2017, 2018, 2019 The Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnote package.
 # Amos Brocco <amos.brocco@mriyasoftware.com>, 2005.
 # Daniele Cocca <daniele.cocca@gmail.com>, 2005.
 # Gruppo traduzione Italiano di Ubuntu <gruppo-traduzione@ubuntu-it.org>, 2008.
 # Milo Casagrande <milo@ubuntu.com>, 2007, 2008, 2009.
 # Andrea Zagli <azagli@libero.it>, 2009, 2010.
-# Gianvito Cavasoli <gianvito@gmx.it>, 2015, 2016, 2017.
+# Gianvito Cavasoli <gianvito@gmx.it>, 2015-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-08-29 19:33+0000\n"
-"PO-Revision-Date: 2017-09-03 14:27+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
+"POT-Creation-Date: 2019-01-03 12:14+0000\n"
+"PO-Revision-Date: 2019-02-27 14:25+0100\n"
 "Last-Translator: Gianvito Cavasoli <gianvito@gmx.it>\n"
 "Language-Team: Italiano <gnome-it-list@gnome.org>\n"
 "Language: it\n"
@@ -22,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.30.1\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
@@ -30,7 +29,6 @@ msgid "Gnote"
 msgstr "Gnote"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:2
-#| msgid "A note taking application"
 msgid "A simple note-taking application"
 msgstr "Una semplice applicazione per prendere note"
 
@@ -959,7 +957,6 @@ msgid "Include all other linked notes"
 msgstr "Includere tutte le note collegate"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
-#| msgid "Export to HTML"
 msgid "Export to HTML…"
 msgstr "Esporta in HTML…"
 
@@ -1179,7 +1176,6 @@ msgid "Allows you to print a note."
 msgstr "Permette di stampare una nota."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
-#| msgid "Print"
 msgid "Print…"
 msgstr "Stampa…"
 
@@ -1458,12 +1454,12 @@ msgstr ""
 
 #: ../src/gnote.cpp:301
 msgid ""
-"Copyright © 2010-2017 Aurimas Cernius\n"
+"Copyright © 2010-2018 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2017 Aurimas Cernius\n"
+"Copyright © 2010-2018 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 gli autori originali di Tomboy."
@@ -1882,12 +1878,10 @@ msgid "_Link to New Note"
 msgstr "Co_llega a nuova nota"
 
 #: ../src/notewindow.cpp:338
-#| msgid "Important"
 msgid "_Important"
 msgstr "_Importante"
 
 #: ../src/notewindow.cpp:339
-#| msgid "_Delete"
 msgid "_Delete…"
 msgstr "Eli_mina…"
 
@@ -2248,6 +2242,10 @@ msgstr "Trova successi_va"
 msgid "Find _Previous"
 msgstr "Trova pr_ecedente"
 
+#: ../src/recentchanges.cpp:791
+msgid "No configured actions"
+msgstr "Nessuna azione configurata"
+
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
@@ -2281,11 +2279,11 @@ msgstr "Nota"
 msgid "Modified"
 msgstr "Modificata"
 
-#: ../src/searchnoteswidget.cpp:997
+#: ../src/searchnoteswidget.cpp:999
 msgid "Notes"
 msgstr "Note"
 
-#: ../src/searchnoteswidget.cpp:1016
+#: ../src/searchnoteswidget.cpp:1018
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2293,53 +2291,53 @@ msgstr ""
 "Nessun risultato trovato nel blocco note selezionato.\n"
 "Fare clic qui per cercare in tutte le note."
 
-#: ../src/searchnoteswidget.cpp:1020
+#: ../src/searchnoteswidget.cpp:1022
 msgid "Click here to search across all notebooks"
 msgstr "Fare clic qui per cercare in tutti i blocchi note"
 
-#: ../src/searchnoteswidget.cpp:1041
+#: ../src/searchnoteswidget.cpp:1043
 msgid "Matches"
 msgstr "Corrispondenze"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1092
+#: ../src/searchnoteswidget.cpp:1094
 msgid "Title match"
 msgstr "Corrispondenza titolo"
 
-#: ../src/searchnoteswidget.cpp:1096
+#: ../src/searchnoteswidget.cpp:1098
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 corrispondenza"
 msgstr[1] "%1 corrispondenze"
 
-#: ../src/searchnoteswidget.cpp:1307
+#: ../src/searchnoteswidget.cpp:1309
 msgid "_New"
 msgstr "_Nuova"
 
-#: ../src/searchnoteswidget.cpp:1336
+#: ../src/searchnoteswidget.cpp:1338
 msgid "_Open Template Note"
 msgstr "_Apri modello nota"
 
-#: ../src/searchnoteswidget.cpp:1347
+#: ../src/searchnoteswidget.cpp:1349
 msgid "_New..."
 msgstr "_Nuova..."
 
-#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
-#: ../src/searchnoteswidget.cpp:1522
+#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
+#: ../src/searchnoteswidget.cpp:1524
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Analisi dell'impostazione %s non riuscita (Valore: %s)"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1501
 msgid "Expected format 'column:order'"
 msgstr "Formato previsto \"colonna:disposizione\""
 
-#: ../src/searchnoteswidget.cpp:1512
+#: ../src/searchnoteswidget.cpp:1514
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Colonna %s non riconosciuta"
 
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1525
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Disposizione %s non riconosciuta"
