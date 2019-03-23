@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2018 Aurimas Cernius
+ * Copyright (C) 2011-2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -219,7 +219,7 @@ namespace gnote {
     int order = 100000;
     if(add_app_menu_section(widgets, order, APP_ACTION_MANAGE)) {
       // end section
-      widgets[order] = NULL;
+      widgets[order++] = NULL;
     }
     add_app_menu_section(widgets, order, APP_ACTION_LAST);
   }
