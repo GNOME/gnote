@@ -50,13 +50,16 @@ void StatisticsApplicationAddin::initialize()
       "statistics-show", sigc::mem_fun(*this, &StatisticsApplicationAddin::on_show_statistics));
     m_add_menu_item_cid = manager.signal_build_main_window_search_popover
       .connect(sigc::mem_fun(*this, &StatisticsApplicationAddin::add_menu_item));
+    manager.signal_main_window_popover_changed();
   }
 }
 
 void StatisticsApplicationAddin::shutdown()
 {
-  gnote::IActionManager::obj().unregister_main_window_search_callback("statistics-show-cback");
+  auto & manager(gnote::IActionManager::obj());
+  manager.unregister_main_window_search_callback("statistics-show-cback");
   m_add_menu_item_cid.disconnect();
+  manager.signal_main_window_popover_changed();
   m_initialized = false;
 }
 
