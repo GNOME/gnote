@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -230,7 +230,7 @@ namespace gnote {
       void cancel();
       sigc::signal<void> signal_timeout;
     private:
-      static bool callback(InterruptableTimeout*);
+      static int callback(InterruptableTimeout*);
       bool timeout_expired();
       guint m_timeout_id;
     };
