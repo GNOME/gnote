@@ -1433,11 +1433,21 @@ void SearchNotesWidget::size_internals()
 
 std::vector<Gtk::Widget*> SearchNotesWidget::get_popover_widgets()
 {
-  std::map<int, Gtk::Widget*> popover_widgets;
+  std::vector<IActionManager::PopoverWidget> popover_widgets;
+  popover_widgets.reserve(20);
   IActionManager::obj().signal_build_main_window_search_popover(popover_widgets);
+  for(unsigned i = 0; i < popover_widgets.size(); ++i) {
+    popover_widgets[i].secondary_order = i;
+  }
+  std::sort(popover_widgets.begin(), popover_widgets.end());
   std::vector<Gtk::Widget*> widgets;
-  for(auto widget : popover_widgets) {
-    widgets.push_back(widget.second);
+  int section = popover_widgets.size() ? popover_widgets.front().section : 0;
+  for(auto& widget : popover_widgets) {
+    if (section != widget.section) {
+      widgets.push_back(NULL);
+      section = widget.section;
+    }
+    widgets.push_back(widget.widget);
   }
   return widgets;
 }

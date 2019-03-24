@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@ namespace gnote {
 const int IActionManager::APP_ACTION_NEW = 1;
 const int IActionManager::APP_ACTION_MANAGE = 2;
 const int IActionManager::APP_ACTION_LAST = 3;
+const int IActionManager::APP_CUSTOM_SECTION = 1000;
 
 IActionManager::~IActionManager()
 {}
