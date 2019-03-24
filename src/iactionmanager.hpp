@@ -100,6 +100,7 @@ public:
   virtual std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() = 0;
   sigc::signal<void> signal_main_window_search_actions_changed;
   sigc::signal<void, std::vector<PopoverWidget>&> signal_build_main_window_search_popover;
+  sigc::signal<void> signal_main_window_popover_changed;
 };
 
 }
