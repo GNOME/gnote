@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -1399,6 +1399,8 @@ void SearchNotesWidget::foreground()
   register_callbacks();
   m_callback_changed_cid = manager.signal_main_window_search_actions_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::callbacks_changed));
+  manager.signal_main_window_search_actions_changed
+    .connect([this]{ signal_popover_widgets_changed(); });
 }
 
 void SearchNotesWidget::background()
