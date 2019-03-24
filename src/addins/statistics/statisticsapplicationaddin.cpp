@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015 Aurimas Cernius
+ * Copyright (C) 2013,2015,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -65,10 +65,10 @@ bool StatisticsApplicationAddin::initialized()
   return m_initialized;
 }
 
-void StatisticsApplicationAddin::add_menu_item(std::map<int, Gtk::Widget*> & widgets)
+void StatisticsApplicationAddin::add_menu_item(std::vector<gnote::IActionManager::PopoverWidget> & widgets)
 {
   auto item = gnote::utils::create_popover_button("win.statistics-show", _("Show Statistics"));
-  gnote::utils::add_item_to_ordered_map(widgets, 100, item);
+  widgets.push_back(gnote::IActionManager::PopoverWidget(100, item));
 }
 
 void StatisticsApplicationAddin::on_show_statistics(const Glib::VariantBase&)
