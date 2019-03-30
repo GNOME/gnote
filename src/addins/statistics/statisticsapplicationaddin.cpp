@@ -68,10 +68,10 @@ bool StatisticsApplicationAddin::initialized()
   return m_initialized;
 }
 
-void StatisticsApplicationAddin::add_menu_item(std::vector<gnote::IActionManager::PopoverWidget> & widgets)
+void StatisticsApplicationAddin::add_menu_item(std::vector<gnote::PopoverWidget> & widgets)
 {
   auto item = gnote::utils::create_popover_button("win.statistics-show", _("Show Statistics"));
-  widgets.push_back(gnote::IActionManager::PopoverWidget(100, item));
+  widgets.push_back(gnote::PopoverWidget::create_for_app(100, item));
 }
 
 void StatisticsApplicationAddin::on_show_statistics(const Glib::VariantBase&)

@@ -52,7 +52,7 @@ public:
 private:
   StatisticsApplicationAddin();
   void on_show_statistics(const Glib::VariantBase&);
-  void add_menu_item(std::vector<gnote::IActionManager::PopoverWidget> & widgets);
+  void add_menu_item(std::vector<gnote::PopoverWidget> & widgets);
 
   bool m_initialized;
   sigc::connection m_add_menu_item_cid;
