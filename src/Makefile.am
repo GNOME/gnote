@@ -123,6 +123,7 @@ libgnote_la_SOURCES = \
 	notetag.hpp notetag.cpp \
 	note.hpp note.cpp \
 	notewindow.hpp notewindow.cpp \
+	popoverwidgets.hpp popoverwidgets.cpp \
 	preferences.hpp preferences.cpp \
 	preferencetabaddin.hpp \
 	recenttreeview.hpp \
