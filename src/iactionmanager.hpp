@@ -26,6 +26,7 @@
 #include <gtkmm/uimanager.h>
 
 #include "base/singleton.hpp"
+#include "popoverwidgets.hpp"
 
 namespace gnote {
 
@@ -53,35 +54,6 @@ public:
   static const int APP_ACTION_MANAGE;
   static const int APP_ACTION_LAST;
   static const int APP_CUSTOM_SECTION;
-
-  struct PopoverWidget
-  {
-    Gtk::Widget *widget;
-    int section;
-    int order;
-    int secondary_order;
-
-    PopoverWidget(int ord, Gtk::Widget *w)
-      : widget(w)
-      , section(APP_ACTION_MANAGE)
-      , order(ord)
-      {}
-
-    PopoverWidget(int sec, int ord, Gtk::Widget *w)
-      : widget(w)
-      , section(sec)
-      , order(ord)
-      {}
-
-    bool operator< (const PopoverWidget & other)
-      {
-        if(section != other.section)
-          return section < other.section;
-        if(order != other.order)
-          return order < other.order;
-        return secondary_order < other.secondary_order;
-      }
-  };
 
   virtual ~IActionManager();
 

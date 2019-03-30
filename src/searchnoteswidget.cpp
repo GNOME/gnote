@@ -1435,7 +1435,7 @@ void SearchNotesWidget::size_internals()
 
 std::vector<Gtk::Widget*> SearchNotesWidget::get_popover_widgets()
 {
-  std::vector<IActionManager::PopoverWidget> popover_widgets;
+  std::vector<PopoverWidget> popover_widgets;
   popover_widgets.reserve(20);
   IActionManager::obj().signal_build_main_window_search_popover(popover_widgets);
   for(unsigned i = 0; i < popover_widgets.size(); ++i) {
