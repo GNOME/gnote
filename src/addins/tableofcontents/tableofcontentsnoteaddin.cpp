@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013,2015-2017 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -124,13 +124,13 @@ void TableofcontentsNoteAddin::on_foregrounded()
 }
 
 
-std::map<int, Gtk::Widget*> TableofcontentsNoteAddin::get_actions_popover_widgets() const
+std::vector<gnote::PopoverWidget> TableofcontentsNoteAddin::get_actions_popover_widgets() const
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
   auto toc_item = gnote::utils::create_popover_submenu_button("tableofcontents-menu", _("Table of Contents"));
-  gnote::utils::add_item_to_ordered_map(widgets, gnote::TABLE_OF_CONTENTS_ORDER, toc_item);
+  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::TABLE_OF_CONTENTS_ORDER, toc_item));
   auto toc_menu = gnote::utils::create_popover_submenu("tableofcontents-menu");
-  gnote::utils::add_item_to_ordered_map(widgets, 100000, toc_menu);
+  widgets.push_back(gnote::PopoverWidget::create_custom_section(toc_menu));
 
   std::vector<Gtk::Widget*> toc_items;
   get_toc_popover_items(toc_items);

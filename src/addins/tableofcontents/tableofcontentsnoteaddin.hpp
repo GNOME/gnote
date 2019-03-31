@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013,2015-2016 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2013,2015-2016,2019 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
-  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
+  virtual std::vector<gnote::PopoverWidget> get_actions_popover_widgets() const override;
 
 private:
   void on_menu_hidden();
