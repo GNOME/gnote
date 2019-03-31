@@ -108,7 +108,7 @@ namespace notebooks {
     auto widgets = NoteAddin::get_actions_popover_widgets();
     if(!get_note()->contains_tag(get_template_tag())) {
       Gtk::Widget *notebook_button = utils::create_popover_submenu_button("notebooks-submenu", _("Notebook"));
-      widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::NOTEBOOK_ORDER, notebook_button));
+      widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
 
       auto submenu = utils::create_popover_submenu("notebooks-submenu");
       update_menu(submenu);

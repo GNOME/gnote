@@ -312,7 +312,7 @@ namespace gnote {
     auto widgets = NoteAddin::get_actions_popover_widgets();
     if(m_enabled) {
       auto button = utils::create_popover_button("win.enable-spell-check", _("Check spelling"));
-      widgets.push_back(gnote::PopoverWidget::create_for_note(SPELL_CHECK_ORDER, button));
+      widgets.push_back(gnote::PopoverWidget(NOTE_SECTION_FLAGS, SPELL_CHECK_ORDER, button));
     }
     return widgets;
   }
