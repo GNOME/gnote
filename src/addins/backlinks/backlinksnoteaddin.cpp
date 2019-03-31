@@ -75,7 +75,7 @@ std::vector<gnote::PopoverWidget> BacklinksNoteAddin::get_actions_popover_widget
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
   auto menu_button = gnote::utils::create_popover_submenu_button("backlinks-menu", _("What links here?"));
-  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::BACKLINKS_ORDER, menu_button));
+  widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::BACKLINKS_ORDER, menu_button));
 
   auto submenu = gnote::utils::create_popover_submenu("backlinks-menu");
   update_menu(submenu);
