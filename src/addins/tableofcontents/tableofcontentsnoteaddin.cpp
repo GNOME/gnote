@@ -128,7 +128,7 @@ std::vector<gnote::PopoverWidget> TableofcontentsNoteAddin::get_actions_popover_
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
   auto toc_item = gnote::utils::create_popover_submenu_button("tableofcontents-menu", _("Table of Contents"));
-  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::TABLE_OF_CONTENTS_ORDER, toc_item));
+  widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::TABLE_OF_CONTENTS_ORDER, toc_item));
   auto toc_menu = gnote::utils::create_popover_submenu("tableofcontents-menu");
   widgets.push_back(gnote::PopoverWidget::create_custom_section(toc_menu));
 
