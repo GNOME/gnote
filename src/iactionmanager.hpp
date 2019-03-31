@@ -30,31 +30,10 @@
 
 namespace gnote {
 
-enum NoteActionOrder {
-  // custom sections
-  NOTEBOOK_ORDER = 100,
-  BACKLINKS_ORDER = 200,
-  TABLE_OF_CONTENTS_ORDER = 100,
-  // flags
-  READ_ONLY_ORDER = 100,
-  SPELL_CHECK_ORDER = 200,
-  // actions
-  EXPORT_TO_HTML_ORDER = 100,
-  EXPORT_TO_GTG_ORDER = 200,
-  INSERT_TIMESTAMP_ORDER = 300,
-  PRINT_ORDER = 400,
-  REPLACE_TITLE_ORDER = 500,
-};
-
 class IActionManager
   : public base::Singleton<IActionManager>
 {
 public:
-  static const int APP_ACTION_NEW;
-  static const int APP_ACTION_MANAGE;
-  static const int APP_ACTION_LAST;
-  static const int APP_CUSTOM_SECTION;
-
   virtual ~IActionManager();
 
   virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const Glib::ustring & name) const = 0;

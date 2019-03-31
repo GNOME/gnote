@@ -22,11 +22,32 @@
 
 namespace gnote {
 
+extern const int APP_SECTION_NEW;
+extern const int APP_SECTION_MANAGE;
+extern const int APP_SECTION_LAST;
+extern const int APP_CUSTOM_SECTION;
+
 extern const int NOTE_SECTION_NEW;
 extern const int NOTE_SECTION_UNDO;
 extern const int NOTE_SECTION_CUSTOM_SECTIONS;
 extern const int NOTE_SECTION_FLAGS;
 extern const int NOTE_SECTION_ACTIONS;
+
+enum NoteActionOrder {
+  // custom sections
+  NOTEBOOK_ORDER = 100,
+  BACKLINKS_ORDER = 200,
+  TABLE_OF_CONTENTS_ORDER = 100,
+  // flags
+  READ_ONLY_ORDER = 100,
+  SPELL_CHECK_ORDER = 200,
+  // actions
+  EXPORT_TO_HTML_ORDER = 100,
+  EXPORT_TO_GTG_ORDER = 200,
+  INSERT_TIMESTAMP_ORDER = 300,
+  PRINT_ORDER = 400,
+  REPLACE_TITLE_ORDER = 500,
+};
 
 struct PopoverWidget
 {

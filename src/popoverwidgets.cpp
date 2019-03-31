@@ -22,6 +22,11 @@
 
 namespace gnote {
 
+const int APP_SECTION_NEW = 1;
+const int APP_SECTION_MANAGE = 2;
+const int APP_SECTION_LAST = 3;
+const int APP_CUSTOM_SECTION = 1000;
+
 const int NOTE_SECTION_NEW = 1;
 const int NOTE_SECTION_UNDO = 2;
 const int NOTE_SECTION_CUSTOM_SECTIONS = 10;
@@ -30,7 +35,7 @@ const int NOTE_SECTION_ACTIONS = 30;
 
 PopoverWidget PopoverWidget::create_for_app(int ord, Gtk::Widget *w)
 {
-  return PopoverWidget(IActionManager::APP_ACTION_MANAGE, ord, w);
+  return PopoverWidget(APP_SECTION_MANAGE, ord, w);
 }
 
 PopoverWidget PopoverWidget::create_for_note(int ord, Gtk::Widget *w)
@@ -40,7 +45,7 @@ PopoverWidget PopoverWidget::create_for_note(int ord, Gtk::Widget *w)
 
 PopoverWidget PopoverWidget::create_custom_section(Gtk::Widget *w)
 {
-  return PopoverWidget(IActionManager::APP_CUSTOM_SECTION, 0, w);
+  return PopoverWidget(APP_CUSTOM_SECTION, 0, w);
 }
 
 }

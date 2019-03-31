@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -76,7 +76,7 @@ namespace gnote {
       am.add_app_action("new-notebook");
       am.get_app_action("new-notebook")->signal_activate().connect(
         sigc::mem_fun(*this, &NotebookApplicationAddin::on_new_notebook_action));
-      am.add_app_menu_item(IActionManager::APP_ACTION_NEW, 300, _("New Note_book..."), "app.new-notebook");
+      am.add_app_menu_item(APP_SECTION_NEW, 300, _("New Note_book..."), "app.new-notebook");
         
       m_initialized = true;
     }

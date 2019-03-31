@@ -22,11 +22,6 @@
 
 namespace gnote {
 
-const int IActionManager::APP_ACTION_NEW = 1;
-const int IActionManager::APP_ACTION_MANAGE = 2;
-const int IActionManager::APP_ACTION_LAST = 3;
-const int IActionManager::APP_CUSTOM_SECTION = 1000;
-
 IActionManager::~IActionManager()
 {}
 

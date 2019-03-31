@@ -131,12 +131,12 @@ namespace gnote {
 
   void ActionManager::make_app_menu_items()
   {
-    add_app_menu_item(APP_ACTION_NEW, 100, _("_New Note"), "app.new-note");
-    add_app_menu_item(APP_ACTION_NEW, 200, _("New _Window"), "app.new-window");
-    add_app_menu_item(APP_ACTION_LAST, 50, _("_Preferences"), "app.show-preferences");
-    add_app_menu_item(APP_ACTION_LAST, 100, _("_Shortcuts"), "app.help-shortcuts");
-    add_app_menu_item(APP_ACTION_LAST, 150, _("_Help"), "app.help-contents");
-    add_app_menu_item(APP_ACTION_LAST, 200, _("_About Gnote"), "app.about");
+    add_app_menu_item(APP_SECTION_NEW, 100, _("_New Note"), "app.new-note");
+    add_app_menu_item(APP_SECTION_NEW, 200, _("New _Window"), "app.new-window");
+    add_app_menu_item(APP_SECTION_LAST, 50, _("_Preferences"), "app.show-preferences");
+    add_app_menu_item(APP_SECTION_LAST, 100, _("_Shortcuts"), "app.help-shortcuts");
+    add_app_menu_item(APP_SECTION_LAST, 150, _("_Help"), "app.help-contents");
+    add_app_menu_item(APP_SECTION_LAST, 200, _("_About Gnote"), "app.about");
   }
 
   void ActionManager::register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type, bool modifying)
