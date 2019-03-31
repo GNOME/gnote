@@ -333,13 +333,13 @@ namespace gnote {
     }
 
     std::sort(popover_widgets.begin(), popover_widgets.end());
-    int last_order = 0;
+    int last_section = 0;
     for(auto & w : popover_widgets) {
       // put separator between groups
-      if(w.order < 10000 && (w.order / 1000) > last_order && widgets.size() > 0 && widgets.back() != NULL) {
+      if(w.section != last_section && widgets.size() > 0 && widgets.back() != NULL) {
         widgets.push_back(NULL);
       }
-      last_order = w.order / 1000;
+      last_section = w.section;
       widgets.push_back(w.widget);
     }
 

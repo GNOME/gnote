@@ -22,6 +22,12 @@
 
 namespace gnote {
 
+extern const int NOTE_SECTION_NEW;
+extern const int NOTE_SECTION_UNDO;
+extern const int NOTE_SECTION_CUSTOM_SECTIONS;
+extern const int NOTE_SECTION_FLAGS;
+extern const int NOTE_SECTION_ACTIONS;
+
 struct PopoverWidget
 {
   Gtk::Widget *widget;
