@@ -1433,7 +1433,7 @@ void SearchNotesWidget::size_internals()
   }
 }
 
-std::vector<Gtk::Widget*> SearchNotesWidget::get_popover_widgets()
+std::vector<PopoverWidget> SearchNotesWidget::get_popover_widgets()
 {
   std::vector<PopoverWidget> popover_widgets;
   popover_widgets.reserve(20);
@@ -1441,17 +1441,7 @@ std::vector<Gtk::Widget*> SearchNotesWidget::get_popover_widgets()
   for(unsigned i = 0; i < popover_widgets.size(); ++i) {
     popover_widgets[i].secondary_order = i;
   }
-  std::sort(popover_widgets.begin(), popover_widgets.end());
-  std::vector<Gtk::Widget*> widgets;
-  int section = popover_widgets.size() ? popover_widgets.front().section : 0;
-  for(auto& widget : popover_widgets) {
-    if (section != widget.section) {
-      widgets.push_back(NULL);
-      section = widget.section;
-    }
-    widgets.push_back(widget.widget);
-  }
-  return widgets;
+  return popover_widgets;
 }
 
 std::vector<MainWindowAction::Ptr> SearchNotesWidget::get_widget_actions()

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -54,7 +54,7 @@ public:
   virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
   virtual void perform_search(const Glib::ustring & search_text) override;
-  virtual std::vector<Gtk::Widget*> get_popover_widgets() override;
+  virtual std::vector<PopoverWidget> get_popover_widgets() override;
   virtual std::vector<MainWindowAction::Ptr> get_widget_actions() override;
 
   void select_all_notes_notebook();

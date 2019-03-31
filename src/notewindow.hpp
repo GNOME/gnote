@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -193,7 +193,7 @@ public:
     virtual void reference() const override;
     virtual void unreference() const override;
   };
-  virtual std::vector<Gtk::Widget*> get_popover_widgets() override;
+  virtual std::vector<PopoverWidget> get_popover_widgets() override;
   virtual std::vector<MainWindowAction::Ptr> get_widget_actions() override;
 
   void set_size(int width, int height)
