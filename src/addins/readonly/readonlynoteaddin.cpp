@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016 Aurimas Cernius
+ * Copyright (C) 2013,2016,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -63,11 +63,11 @@ void ReadOnlyNoteAddin::on_note_opened()
   get_window()->signal_backgrounded.connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_background));
 }
 
-std::map<int, Gtk::Widget*> ReadOnlyNoteAddin::get_actions_popover_widgets() const
+std::vector<gnote::PopoverWidget> ReadOnlyNoteAddin::get_actions_popover_widgets() const
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
   auto button = gnote::utils::create_popover_button("win.readonly-toggle", _("Read Only"));
-  gnote::utils::add_item_to_ordered_map(widgets, gnote::READ_ONLY_ORDER, button);
+  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::READ_ONLY_ORDER, button));
   return widgets;
 }
 
