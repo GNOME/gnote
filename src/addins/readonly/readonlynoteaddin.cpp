@@ -67,7 +67,7 @@ std::vector<gnote::PopoverWidget> ReadOnlyNoteAddin::get_actions_popover_widgets
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
   auto button = gnote::utils::create_popover_button("win.readonly-toggle", _("Read Only"));
-  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::READ_ONLY_ORDER, button));
+  widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_FLAGS, gnote::READ_ONLY_ORDER, button));
   return widgets;
 }
 
