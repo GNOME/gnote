@@ -324,6 +324,8 @@ namespace gnote {
 
     Gtk::Widget *link = manage(utils::create_popover_button("win.link", _("_Link to New Note")));
     popover_widgets.push_back(PopoverWidget::create_for_note(2000, link));
+    Gtk::Widget *important = utils::create_popover_button("win.important-note", _("_Important"));
+    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_FLAGS, IMPORTANT_ORDER, important));
 
     NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
     Note::Ptr note = std::dynamic_pointer_cast<Note>(m_note.shared_from_this());
@@ -343,7 +345,6 @@ namespace gnote {
       widgets.push_back(w.widget);
     }
 
-    widgets.push_back(utils::create_popover_button("win.important-note", _("_Important")));
     widgets.push_back(utils::create_popover_button("win.delete-note", _("_Delete…")));
 
     return widgets;

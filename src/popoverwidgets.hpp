@@ -41,6 +41,7 @@ enum NoteActionOrder {
   // flags
   READ_ONLY_ORDER = 100,
   SPELL_CHECK_ORDER = 200,
+  IMPORTANT_ORDER = 300,
   // actions
   EXPORT_TO_HTML_ORDER = 100,
   EXPORT_TO_GTG_ORDER = 200,
