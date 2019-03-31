@@ -30,6 +30,8 @@ struct PopoverWidget
   int secondary_order;
 
   static PopoverWidget create_for_app(int ord, Gtk::Widget *w);
+  static PopoverWidget create_for_note(int ord, Gtk::Widget *w);
+  static PopoverWidget create_custom_section(Gtk::Widget *w);
 
   PopoverWidget(int sec, int ord, Gtk::Widget *w)
     : widget(w)

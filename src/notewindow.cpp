@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2018 Aurimas Cernius
+ * Copyright (C) 2011-2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -308,6 +308,8 @@ namespace gnote {
   {
     std::vector<Gtk::Widget*> widgets;
     std::map<int, Gtk::Widget*> widget_map;
+    std::vector<PopoverWidget> popover_widgets;
+    popover_widgets.reserve(20);
 
     Gtk::Widget *new_note = manage(utils::create_popover_button("app.new-note", _("_New Note")));
     widgets.push_back(new_note);
@@ -321,23 +323,24 @@ namespace gnote {
     widgets.push_back(NULL);
 
     Gtk::Widget *link = manage(utils::create_popover_button("win.link", _("_Link to New Note")));
-    widget_map[2000] = link; // place under "note actions", see iactionmanger.hpp
+    popover_widgets.push_back(PopoverWidget::create_for_note(2000, link));
 
     NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
     Note::Ptr note = std::dynamic_pointer_cast<Note>(m_note.shared_from_this());
     FOREACH(NoteAddin *addin, manager.get_addin_manager().get_note_addins(note)) {
-      utils::merge_ordered_maps(widget_map, addin->get_actions_popover_widgets());
+      auto addin_widgets = addin->get_actions_popover_widgets();
+      popover_widgets.insert(popover_widgets.end(), addin_widgets.begin(), addin_widgets.end());
     }
 
+    std::sort(popover_widgets.begin(), popover_widgets.end());
     int last_order = 0;
-    for(std::map<int, Gtk::Widget*>::iterator iter = widget_map.begin();
-        iter != widget_map.end(); ++iter) {
+    for(auto & w : popover_widgets) {
       // put separator between groups
-      if(iter->first < 10000 && (iter->first / 1000) > last_order && widgets.size() > 0 && widgets.back() != NULL) {
+      if(w.order < 10000 && (w.order / 1000) > last_order && widgets.size() > 0 && widgets.back() != NULL) {
         widgets.push_back(NULL);
       }
-      last_order = iter->first / 1000;
-      widgets.push_back(iter->second);
+      last_order = w.order / 1000;
+      widgets.push_back(w.widget);
     }
 
     widgets.push_back(utils::create_popover_button("win.important-note", _("_Important")));

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -307,12 +307,12 @@ namespace gnote {
     window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteSpellChecker::on_note_window_backgrounded));
   }
 
-  std::map<int, Gtk::Widget*> NoteSpellChecker::get_actions_popover_widgets() const
+  std::vector<gnote::PopoverWidget> NoteSpellChecker::get_actions_popover_widgets() const
   {
-    std::map<int, Gtk::Widget*> widgets = NoteAddin::get_actions_popover_widgets();
+    auto widgets = NoteAddin::get_actions_popover_widgets();
     if(m_enabled) {
-      utils::add_item_to_ordered_map(widgets, SPELL_CHECK_ORDER,
-        utils::create_popover_button("win.enable-spell-check", _("Check spelling")));
+      auto button = utils::create_popover_button("win.enable-spell-check", _("Check spelling"));
+      widgets.push_back(gnote::PopoverWidget::create_for_note(SPELL_CHECK_ORDER, button));
     }
     return widgets;
   }

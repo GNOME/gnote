@@ -27,5 +27,15 @@ PopoverWidget PopoverWidget::create_for_app(int ord, Gtk::Widget *w)
   return PopoverWidget(IActionManager::APP_ACTION_MANAGE, ord, w);
 }
 
+PopoverWidget PopoverWidget::create_for_note(int ord, Gtk::Widget *w)
+{
+  return PopoverWidget(0, ord, w);
+}
+
+PopoverWidget PopoverWidget::create_custom_section(Gtk::Widget *w)
+{
+  return PopoverWidget(IActionManager::APP_CUSTOM_SECTION, 0, w);
+}
+
 }
 
