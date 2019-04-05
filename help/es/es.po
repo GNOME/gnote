@@ -6,31 +6,31 @@
 # Nicolás Satragno <nsatragno@gnome.org>, 2012.
 # Miguel Rodriguez Núñez <bokerones.fritos@gmail.com>, 2013.
 # MIguel Rodriguez Núñez <bokerones.fritos@gmail.com>, 2013.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2010-2013.
 # Miguel Rodriguez Nuñez <bokerones.fritos@gmail.com>, 2014, 2015.
 # Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2012, 2013, 2014, 2015.
 # miguel <miguel.rodriguez.laboral@gmail.com>, 2012, 2013, 2018.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2010-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote-help.master\n"
-"POT-Creation-Date: 2018-06-05 13:31+0000\n"
-"PO-Revision-Date: 2018-09-04 12:21+0200\n"
-"Last-Translator: miguel <miguel.rodriguez.laboral@gmail.com>\n"
-"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2019-03-24 14:32+0000\n"
+"PO-Revision-Date: 2019-04-05 12:34+0200\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.32.0\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Miguel Rodríguez, <bokerones.fritos@gmail.com>\n"
-"Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2013\n"
+"Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2019\n"
 "Nicolás Satragno <nsatragno@gnome.org>, 2012\n"
 "Jorge González <jorgegonz@svn.gnome.org>, 2009"
 
@@ -501,7 +501,6 @@ msgstr "Sincronizar con la carpeta local"
 
 #. (itstool) path: credit/years
 #: C/gnote-addin-sync-local.page:13 C/gnote-addin-sync-webdav.page:13
-#: C/gnote-synchronization.page:12
 msgid "2012"
 msgstr "2012"
 
@@ -1210,11 +1209,10 @@ msgid "Creating notes"
 msgstr "Crear notas"
 
 #. (itstool) path: credit/years
-#: C/gnote-creating-notes.page:16 C/gnote-deleting-notes.page:16
-#: C/gnote-introduction.page:17 C/gnote-template-notes.page:13
-#: C/gnote-working-with-notebooks.page:17
-msgid "2011-2012"
-msgstr "2011-2012"
+#: C/gnote-creating-notes.page:16 C/gnote-working-with-notebooks.page:17
+#| msgid "2011,2013,2014"
+msgid "2011-2012,2019"
+msgstr "2011-2012,2019"
 
 #. (itstool) path: page/title
 #: C/gnote-creating-notes.page:25
@@ -1230,8 +1228,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:29
-msgid "Select <gui>New Note</gui> in the application menu."
-msgstr "Seleccione <gui>Nueva nota</gui> en el menú de la aplicación."
+#| msgid ""
+#| "Right click on a notebook in the main window and select <gui>Open "
+#| "Template Note</gui>."
+msgid ""
+"Click menu button in the main window and then select <gui>New Note</gui>."
+msgstr ""
+"Pulse el botón de menú en la ventana principal y elija <gui>Nota nueva</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:30
@@ -1268,6 +1271,12 @@ msgstr ""
 #: C/gnote-deleting-notes.page:9
 msgid "Deleting notes"
 msgstr "Eliminar notas"
+
+#. (itstool) path: credit/years
+#: C/gnote-deleting-notes.page:16 C/gnote-introduction.page:17
+#: C/gnote-template-notes.page:13
+msgid "2011-2012"
+msgstr "2011-2012"
 
 #. (itstool) path: page/title
 #: C/gnote-deleting-notes.page:25
@@ -1316,8 +1325,7 @@ msgid "Editing note contents"
 msgstr "Editar el contenido de la nota"
 
 #. (itstool) path: credit/years
-#: C/gnote-editing-notes.page:14 C/gnote-notes-preferences.page:17
-#: C/gnote-searching-notes.page:16
+#: C/gnote-editing-notes.page:14 C/gnote-searching-notes.page:16
 msgid "2011-2013"
 msgstr "2011-2013"
 
@@ -1337,9 +1345,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gnote-editing-notes.page:26
-#| msgid ""
-#| "Toolbar at the top of the window will now contain note specific items in "
-#| "it. Bellow toolbar is the note's content area."
 msgid ""
 "Toolbar at the top of the window will now contain note specific items in it. "
 "Below toolbar is the note's content area."
@@ -1364,13 +1369,17 @@ msgstr "Nota de <app>Gnote</app>"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-editing-notes.page:30
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-new-note.png' "
+#| "md5='0faf7950ab9f830c3de85713598277f1'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
-"md5='0faf7950ab9f830c3de85713598277f1'"
+"md5='51fb284d55e3b78c1f66f2136d7cb1f4'"
 msgstr ""
 "external ref='figures/gnote-new-note.png' "
-"md5='0faf7950ab9f830c3de85713598277f1'"
+"md5='51fb284d55e3b78c1f66f2136d7cb1f4'"
 
 #. (itstool) path: media/p
 #: C/gnote-editing-notes.page:31
@@ -1724,6 +1733,12 @@ msgstr ""
 msgid "Gnote settings"
 msgstr "Configuración de Gnote"
 
+#. (itstool) path: credit/years
+#: C/gnote-notes-preferences.page:17
+#| msgid "2011,2013,2014"
+msgid "2011-2013,2019"
+msgstr "2011-2013,2019"
+
 #. (itstool) path: page/title
 #: C/gnote-notes-preferences.page:26
 msgid "Gnote Preferences"
@@ -1736,12 +1751,15 @@ msgstr "Preferencias generales"
 
 #. (itstool) path: section/p
 #: C/gnote-notes-preferences.page:29
+#| msgid ""
+#| "To set preferences for <app>Gnote</app>, select <gui>Preferences</gui> "
+#| "from the application menu."
 msgid ""
-"To set preferences for <app>Gnote</app>, select <gui>Preferences</gui> from "
-"the application menu."
+"To set preferences for <app>Gnote</app>, click the menu button in main "
+"window and select <gui>Preferences</gui> from the menu."
 msgstr ""
-"Para establecer las preferencias de <app>Gnote</app>,  seleccione "
-"<gui>Preferencias</gui> del menú de aplicación."
+"Para establecer las preferencias de <app>Gnote</app>, pulse el botón de menú "
+"en la ventana principal y elija <gui>Preferencias</gui> en el menú."
 
 #. (itstool) path: section/p
 #: C/gnote-notes-preferences.page:30
@@ -2068,6 +2086,12 @@ msgstr ""
 msgid "Synchronize notes"
 msgstr "Sincronizar notas"
 
+#. (itstool) path: credit/years
+#: C/gnote-synchronization.page:12
+#| msgid "2011,2013"
+msgid "2012,2019"
+msgstr "2012,2019"
+
 #. (itstool) path: page/title
 #: C/gnote-synchronization.page:21
 msgid "Synchronization"
@@ -2132,12 +2156,17 @@ msgstr "Sincronizar"
 
 #. (itstool) path: section/p
 #: C/gnote-synchronization.page:33
+#| msgid ""
+#| "To synchronize, select <gui>Synchronize Notes</gui> from the application "
+#| "menu. This item is only available if synchronization has been configured."
 msgid ""
-"To synchronize, select <gui>Synchronize Notes</gui> from the application "
-"menu. This item is only available if synchronization has been configured."
+"To synchronize, click the menu button in main window and then select "
+"<gui>Synchronize Notes</gui> from the menu. This item is only available if "
+"synchronization has been configured."
 msgstr ""
-"Para sincronizar, seleccione <gui>Sincronizar notas</gui> desde el menú de "
-"aplicación. Sólo se verá esta opción, si la sincronización está configurada."
+"Para sincronizar, pulse el botón de menú en la ventana principal y elija "
+"<gui>Sincronizar notas</gui> en el menú. Sólo se verá esta opción, si la "
+"sincronización está configurada."
 
 #. (itstool) path: section/p
 #: C/gnote-synchronization.page:34
@@ -2286,13 +2315,17 @@ msgstr "Plantilla de nota"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-template-notes.page:41
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-template-note.png' "
+#| "md5='f50e2d6d0eb6e68cf726a1b8a969263e'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
-"md5='f50e2d6d0eb6e68cf726a1b8a969263e'"
+"md5='f99f0b62b6c0390ab57b76ca86a69cd1'"
 msgstr ""
 "external ref='figures/gnote-template-note.png' "
-"md5='f50e2d6d0eb6e68cf726a1b8a969263e'"
+"md5='f99f0b62b6c0390ab57b76ca86a69cd1'"
 
 #. (itstool) path: figure/desc
 #: C/gnote-template-notes.page:41
@@ -2401,10 +2434,12 @@ msgstr "Para crear un cuaderno de nota haga:"
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:33
-msgid "Click on the application menu and select <gui>New Notebook</gui>."
+#| msgid "Click on the application menu and select <gui>New Notebook</gui>."
+msgid ""
+"Click on the menu button in main window and select <gui>New Notebook</gui>."
 msgstr ""
-"Pulse sobre el menú de aplicación y seleccione <gui>Nuevo cuaderno de notas</"
-"gui>."
+"Pulse el botón de menú en la ventana principal y elija <gui>Nuevo cuaderno "
+"de notas</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:36
@@ -2510,14 +2545,14 @@ msgstr ""
 #| msgctxt "_"
 #| msgid ""
 #| "external ref='figures/add-to-notebook.png' "
-#| "md5='fbf2bb1efd152eef10233eee3e262970'"
+#| "md5='8ecfcec4d83233a9705d17ba373cc2ab'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
-"md5='8ecfcec4d83233a9705d17ba373cc2ab'"
+"md5='df8420b1433dd89e5a2e33713caf13d7'"
 msgstr ""
 "external ref='figures/add-to-notebook.png' "
-"md5='8ecfcec4d83233a9705d17ba373cc2ab'"
+"md5='df8420b1433dd89e5a2e33713caf13d7'"
 
 #. (itstool) path: media/p
 #: C/gnote-working-with-notebooks.page:66
@@ -2752,6 +2787,9 @@ msgstr "Personalización"
 #: C/index.page:41
 msgid "Common Problems"
 msgstr "Problemas comunes"
+
+#~ msgid "Select <gui>New Note</gui> in the application menu."
+#~ msgstr "Seleccione <gui>Nueva nota</gui> en el menú de la aplicación."
 
 #~ msgid "I can't find the Gnote status icon."
 #~ msgstr "No puedo encontrar el icono de estado de Gnote"
