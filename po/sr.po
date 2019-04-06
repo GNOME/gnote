@@ -6,19 +6,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnote&"
-"keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-11-12 18:43+0000\n"
-"PO-Revision-Date: 2018-02-21 08:52+0200\n"
-"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
+"POT-Creation-Date: 2018-09-23 14:06+0000\n"
+"PO-Revision-Date: 2019-03-11 19:12+0100\n"
+"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
@@ -1424,14 +1424,14 @@ msgstr ""
 
 #: ../src/gnote.cpp:301
 msgid ""
-"Copyright © 2010-2017 Aurimas Cernius\n"
+"Copyright © 2010-2018 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Ауторска права © 2010-2017 Орима Чернијус\n"
-"Ауторска права © 2009-2011 Дебарши Реј\n"
-"Ауторска права © 2009 Ибер Фигјер\n"
+"Ауторска права © 2010-2018 Орима Чернијус (Aurimas Cernius)\n"
+"Ауторска права © 2009-2011 Дебарши Реј (Debarshi Ray)\n"
+"Ауторска права © 2009 Ибер Фигјер (Hubert Figuiere)\n"
 "Ауторска права © 2004-2009 првобитни аутори Томичиних белешки."
 
 #: ../src/gnote.cpp:305
@@ -2197,7 +2197,6 @@ msgid "Find _Previous"
 msgstr "Тражи _претходно"
 
 #: ../src/recentchanges.cpp:791
-#| msgid "Not configurable"
 msgid "No configured actions"
 msgstr "Нема подешених радњи"
 
@@ -2234,11 +2233,11 @@ msgstr "Белешка"
 msgid "Modified"
 msgstr "Измењена"
 
-#: ../src/searchnoteswidget.cpp:997
+#: ../src/searchnoteswidget.cpp:999
 msgid "Notes"
 msgstr "Белешке"
 
-#: ../src/searchnoteswidget.cpp:1016
+#: ../src/searchnoteswidget.cpp:1018
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2246,20 +2245,20 @@ msgstr ""
 "Нису пронађени резултати у изабраној бележници.\n"
 "Кликните овде да потражите у свим белешкама."
 
-#: ../src/searchnoteswidget.cpp:1020
+#: ../src/searchnoteswidget.cpp:1022
 msgid "Click here to search across all notebooks"
 msgstr "Кликните овде да потражите у свим бележницама"
 
-#: ../src/searchnoteswidget.cpp:1041
+#: ../src/searchnoteswidget.cpp:1043
 msgid "Matches"
 msgstr "Поклапања"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1092
+#: ../src/searchnoteswidget.cpp:1094
 msgid "Title match"
 msgstr "Поклапање наслова"
 
-#: ../src/searchnoteswidget.cpp:1096
+#: ../src/searchnoteswidget.cpp:1098
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 резултат"
@@ -2267,34 +2266,34 @@ msgstr[1] "%1 резултата"
 msgstr[2] "%1 резултата"
 msgstr[3] "један резултат"
 
-#: ../src/searchnoteswidget.cpp:1307
+#: ../src/searchnoteswidget.cpp:1309
 msgid "_New"
 msgstr "_Нова"
 
-#: ../src/searchnoteswidget.cpp:1336
+#: ../src/searchnoteswidget.cpp:1338
 msgid "_Open Template Note"
 msgstr "_Отвори шаблон белешке"
 
-#: ../src/searchnoteswidget.cpp:1347
+#: ../src/searchnoteswidget.cpp:1349
 msgid "_New..."
 msgstr "_Нова..."
 
-#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
-#: ../src/searchnoteswidget.cpp:1522
+#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
+#: ../src/searchnoteswidget.cpp:1524
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Нисам успео да обрадим подешавање „%s“ (Вредност: %s):"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1501
 msgid "Expected format 'column:order'"
 msgstr "Очекивани запис „стубац:поредак“"
 
-#: ../src/searchnoteswidget.cpp:1512
+#: ../src/searchnoteswidget.cpp:1514
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Непознат стубац „%s“"
 
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1525
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Непознат поредак „%s“"

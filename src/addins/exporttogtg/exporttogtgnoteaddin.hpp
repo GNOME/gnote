@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016 Aurimas Cernius
+ * Copyright (C) 2013,2016,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
-  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
+  virtual std::vector<gnote::PopoverWidget> get_actions_popover_widgets() const override;
 private:
   void export_button_clicked(const Glib::VariantBase&);
 

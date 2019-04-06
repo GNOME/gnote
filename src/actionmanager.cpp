@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2018 Aurimas Cernius
+ * Copyright (C) 2011-2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -90,8 +90,7 @@ namespace gnote {
     register_main_window_action("increase-indent", NULL, true);
     register_main_window_action("decrease-indent", NULL, true);
 
-    signal_build_main_window_search_popover.connect(sigc::mem_fun(*this, &ActionManager::add_app_menu_new_section));
-    signal_build_main_window_search_popover.connect(sigc::mem_fun(*this, &ActionManager::add_app_menu_trailing_sections));
+    signal_build_main_window_search_popover.connect(sigc::mem_fun(*this, &ActionManager::add_app_menu_items));
   }
 
 
@@ -132,12 +131,12 @@ namespace gnote {
 
   void ActionManager::make_app_menu_items()
   {
-    add_app_menu_item(APP_ACTION_NEW, 100, _("_New Note"), "app.new-note");
-    add_app_menu_item(APP_ACTION_NEW, 200, _("New _Window"), "app.new-window");
-    add_app_menu_item(APP_ACTION_LAST, 50, _("_Preferences"), "app.show-preferences");
-    add_app_menu_item(APP_ACTION_LAST, 100, _("_Shortcuts"), "app.help-shortcuts");
-    add_app_menu_item(APP_ACTION_LAST, 150, _("_Help"), "app.help-contents");
-    add_app_menu_item(APP_ACTION_LAST, 200, _("_About Gnote"), "app.about");
+    add_app_menu_item(APP_SECTION_NEW, 100, _("_New Note"), "app.new-note");
+    add_app_menu_item(APP_SECTION_NEW, 200, _("New _Window"), "app.new-window");
+    add_app_menu_item(APP_SECTION_LAST, 50, _("_Preferences"), "app.show-preferences");
+    add_app_menu_item(APP_SECTION_LAST, 100, _("_Shortcuts"), "app.help-shortcuts");
+    add_app_menu_item(APP_SECTION_LAST, 150, _("_Help"), "app.help-contents");
+    add_app_menu_item(APP_SECTION_LAST, 200, _("_About Gnote"), "app.about");
   }
 
   void ActionManager::register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type, bool modifying)
@@ -189,39 +188,11 @@ namespace gnote {
     return cbacks;
   }
 
-  bool ActionManager::add_app_menu_section(std::map<int, Gtk::Widget*> & widgets, int & order, int section)
+  void ActionManager::add_app_menu_items(std::vector<PopoverWidget> & widgets)
   {
-    std::pair<AppMenuItemMultiMap::const_iterator, AppMenuItemMultiMap::const_iterator>
-    range = m_app_menu_items.equal_range(section);
-
-    if(range.first != m_app_menu_items.end()) {
-      for(AppMenuItemMultiMap::const_iterator iter = range.first; iter != range.second; ++iter) {
-        widgets.insert(std::make_pair(order++, utils::create_popover_button(iter->second.action_def, iter->second.label)));
-      }
-
-      return true;
+    for(auto& iter : m_app_menu_items) {
+      widgets.push_back(PopoverWidget(iter.first, iter.second.order, utils::create_popover_button(iter.second.action_def, iter.second.label)));
     }
-
-    return false;
-  }
-
-  void ActionManager::add_app_menu_new_section(std::map<int, Gtk::Widget*> & widgets)
-  {
-    int order = 0;
-    if(add_app_menu_section(widgets, order, APP_ACTION_NEW)) {
-      // end section
-      widgets[order] = NULL;
-    }
-  }
-
-  void ActionManager::add_app_menu_trailing_sections(std::map<int, Gtk::Widget*> & widgets)
-  {
-    int order = 100000;
-    if(add_app_menu_section(widgets, order, APP_ACTION_MANAGE)) {
-      // end section
-      widgets[order] = NULL;
-    }
-    add_app_menu_section(widgets, order, APP_ACTION_LAST);
   }
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013-2014,2016-2017 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014,2016-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -71,15 +71,15 @@ void BacklinksNoteAddin::on_open_note(const Glib::VariantBase & param)
   }
 }
 
-std::map<int, Gtk::Widget*> BacklinksNoteAddin::get_actions_popover_widgets() const
+std::vector<gnote::PopoverWidget> BacklinksNoteAddin::get_actions_popover_widgets() const
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
   auto menu_button = gnote::utils::create_popover_submenu_button("backlinks-menu", _("What links here?"));
-  gnote::utils::add_item_to_ordered_map(widgets, gnote::BACKLINKS_ORDER, menu_button);
+  widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::BACKLINKS_ORDER, menu_button));
 
   auto submenu = gnote::utils::create_popover_submenu("backlinks-menu");
   update_menu(submenu);
-  gnote::utils::add_item_to_ordered_map(widgets, 100000, submenu);
+  widgets.push_back(gnote::PopoverWidget::create_custom_section(submenu));
 
   return widgets;
 }

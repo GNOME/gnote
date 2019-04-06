@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -1399,6 +1399,8 @@ void SearchNotesWidget::foreground()
   register_callbacks();
   m_callback_changed_cid = manager.signal_main_window_search_actions_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::callbacks_changed));
+  manager.signal_main_window_search_actions_changed
+    .connect([this]{ signal_popover_widgets_changed(); });
 }
 
 void SearchNotesWidget::background()
@@ -1431,15 +1433,15 @@ void SearchNotesWidget::size_internals()
   }
 }
 
-std::vector<Gtk::Widget*> SearchNotesWidget::get_popover_widgets()
+std::vector<PopoverWidget> SearchNotesWidget::get_popover_widgets()
 {
-  std::map<int, Gtk::Widget*> popover_widgets;
+  std::vector<PopoverWidget> popover_widgets;
+  popover_widgets.reserve(20);
   IActionManager::obj().signal_build_main_window_search_popover(popover_widgets);
-  std::vector<Gtk::Widget*> widgets;
-  for(auto widget : popover_widgets) {
-    widgets.push_back(widget.second);
+  for(unsigned i = 0; i < popover_widgets.size(); ++i) {
+    popover_widgets[i].secondary_order = i;
   }
-  return widgets;
+  return popover_widgets;
 }
 
 std::vector<MainWindowAction::Ptr> SearchNotesWidget::get_widget_actions()

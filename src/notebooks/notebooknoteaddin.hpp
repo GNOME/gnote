@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2016 Aurimas Cernius
+ * Copyright (C) 2011-2016,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,7 @@ namespace notebooks {
     virtual void initialize() override;
     virtual void shutdown() override;
     virtual void on_note_opened() override;
-    virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const override;
+    virtual std::vector<gnote::PopoverWidget> get_actions_popover_widgets() const override;
 
   protected:
     NotebookNoteAddin();

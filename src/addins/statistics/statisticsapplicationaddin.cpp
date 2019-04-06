@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015 Aurimas Cernius
+ * Copyright (C) 2013,2015,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,13 +50,16 @@ void StatisticsApplicationAddin::initialize()
       "statistics-show", sigc::mem_fun(*this, &StatisticsApplicationAddin::on_show_statistics));
     m_add_menu_item_cid = manager.signal_build_main_window_search_popover
       .connect(sigc::mem_fun(*this, &StatisticsApplicationAddin::add_menu_item));
+    manager.signal_main_window_popover_changed();
   }
 }
 
 void StatisticsApplicationAddin::shutdown()
 {
-  gnote::IActionManager::obj().unregister_main_window_search_callback("statistics-show-cback");
+  auto & manager(gnote::IActionManager::obj());
+  manager.unregister_main_window_search_callback("statistics-show-cback");
   m_add_menu_item_cid.disconnect();
+  manager.signal_main_window_popover_changed();
   m_initialized = false;
 }
 
@@ -65,10 +68,10 @@ bool StatisticsApplicationAddin::initialized()
   return m_initialized;
 }
 
-void StatisticsApplicationAddin::add_menu_item(std::map<int, Gtk::Widget*> & widgets)
+void StatisticsApplicationAddin::add_menu_item(std::vector<gnote::PopoverWidget> & widgets)
 {
   auto item = gnote::utils::create_popover_button("win.statistics-show", _("Show Statistics"));
-  gnote::utils::add_item_to_ordered_map(widgets, 100, item);
+  widgets.push_back(gnote::PopoverWidget::create_for_app(100, item));
 }
 
 void StatisticsApplicationAddin::on_show_statistics(const Glib::VariantBase&)

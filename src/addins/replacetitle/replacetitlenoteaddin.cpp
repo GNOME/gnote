@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2016-2017 Aurimas Cernius
+ * Copyright (C) 2011-2013,2016-2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,11 +47,11 @@ void ReplaceTitleNoteAddin::on_note_opened()
     sigc::mem_fun(*this, &ReplaceTitleNoteAddin::replacetitle_button_clicked));
 }
 
-std::map<int, Gtk::Widget*> ReplaceTitleNoteAddin::get_actions_popover_widgets() const
+std::vector<gnote::PopoverWidget> ReplaceTitleNoteAddin::get_actions_popover_widgets() const
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
   auto button = gnote::utils::create_popover_button("win.replacetitle-replace", _("Replace title"));
-  gnote::utils::add_item_to_ordered_map(widgets, gnote::REPLACE_TITLE_ORDER, button);
+  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::REPLACE_TITLE_ORDER, button));
   return widgets;
 }
 

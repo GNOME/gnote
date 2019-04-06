@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -783,7 +783,7 @@ namespace gnote {
     }
 
 
-    bool InterruptableTimeout::callback(InterruptableTimeout* self)
+    int InterruptableTimeout::callback(InterruptableTimeout* self)
     {
       if(self)
         return self->timeout_expired();

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -62,7 +62,7 @@ namespace sync {
     // Add a "Synchronize Notes" to Gnote's Application Menu
     IActionManager & am(IActionManager::obj());
     am.add_app_action("sync-notes");
-    am.add_app_menu_item(IActionManager::APP_ACTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
+    am.add_app_menu_item(APP_SECTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
 
     // Initialize all the SyncServiceAddins
     initialize_sync_service_addins(manager);

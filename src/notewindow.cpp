@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2018 Aurimas Cernius
+ * Copyright (C) 2011-2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -304,46 +304,35 @@ namespace gnote {
     return m_embeddable_toolbar;
   }
 
-  std::vector<Gtk::Widget*> NoteWindow::get_popover_widgets()
+  std::vector<PopoverWidget> NoteWindow::get_popover_widgets()
   {
-    std::vector<Gtk::Widget*> widgets;
-    std::map<int, Gtk::Widget*> widget_map;
+    std::vector<PopoverWidget> popover_widgets;
+    popover_widgets.reserve(20);
 
-    Gtk::Widget *new_note = manage(utils::create_popover_button("app.new-note", _("_New Note")));
-    widgets.push_back(new_note);
-    Gtk::Widget *new_window = manage(utils::create_popover_button("app.new-window", _("New _Window")));
-    widgets.push_back(new_window);
-    widgets.push_back(NULL);
-    Gtk::Widget *undo = manage(utils::create_popover_button("win.undo", _("_Undo")));
-    widgets.push_back(undo);
-    Gtk::Widget *redo = manage(utils::create_popover_button("win.redo", _("_Redo")));
-    widgets.push_back(redo);
-    widgets.push_back(NULL);
-
-    Gtk::Widget *link = manage(utils::create_popover_button("win.link", _("_Link to New Note")));
-    widget_map[2000] = link; // place under "note actions", see iactionmanger.hpp
+    Gtk::Widget *new_note = utils::create_popover_button("app.new-note", _("_New Note"));
+    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_NEW, 1, new_note));
+    Gtk::Widget *new_window = utils::create_popover_button("app.new-window", _("New _Window"));
+    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_NEW, 2, new_window));
+    Gtk::Widget *undo = utils::create_popover_button("win.undo", _("_Undo"));
+    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_UNDO, 1, undo));
+    Gtk::Widget *redo = utils::create_popover_button("win.redo", _("_Redo"));
+    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_UNDO, 2, redo));
+    Gtk::Widget *link = utils::create_popover_button("win.link", _("_Link to New Note"));
+    popover_widgets.push_back(PopoverWidget::create_for_note(LINK_ORDER, link));
+    Gtk::Widget *important = utils::create_popover_button("win.important-note", _("_Important"));
+    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_FLAGS, IMPORTANT_ORDER, important));
 
     NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
     Note::Ptr note = std::dynamic_pointer_cast<Note>(m_note.shared_from_this());
     FOREACH(NoteAddin *addin, manager.get_addin_manager().get_note_addins(note)) {
-      utils::merge_ordered_maps(widget_map, addin->get_actions_popover_widgets());
+      auto addin_widgets = addin->get_actions_popover_widgets();
+      popover_widgets.insert(popover_widgets.end(), addin_widgets.begin(), addin_widgets.end());
     }
 
-    int last_order = 0;
-    for(std::map<int, Gtk::Widget*>::iterator iter = widget_map.begin();
-        iter != widget_map.end(); ++iter) {
-      // put separator between groups
-      if(iter->first < 10000 && (iter->first / 1000) > last_order && widgets.size() > 0 && widgets.back() != NULL) {
-        widgets.push_back(NULL);
-      }
-      last_order = iter->first / 1000;
-      widgets.push_back(iter->second);
-    }
+    auto delete_button = utils::create_popover_button("win.delete-note", _("_Delete…"));
+    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_ACTIONS, 1000, delete_button));
 
-    widgets.push_back(utils::create_popover_button("win.important-note", _("_Important")));
-    widgets.push_back(utils::create_popover_button("win.delete-note", _("_Delete…")));
-
-    return widgets;
+    return popover_widgets;
   }
 
   std::vector<MainWindowAction::Ptr> NoteWindow::get_widget_actions()

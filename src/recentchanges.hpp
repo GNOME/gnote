@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -87,7 +87,7 @@ private:
   void on_search_button_toggled();
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
-  Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items);
+  Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items);
   void on_embedded_name_changed(const Glib::ustring & name);
   void on_settings_changed(const Glib::ustring & key);
   bool on_notes_widget_key_press(GdkEventKey*);

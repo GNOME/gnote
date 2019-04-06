@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@
 #include <gtkmm/widget.h>
 
 #include "mainwindowaction.hpp"
+#include "popoverwidgets.hpp"
 
 
 namespace gnote {
@@ -91,7 +92,7 @@ public:
 class HasActions
 {
 public:
-  virtual std::vector<Gtk::Widget*> get_popover_widgets() = 0;
+  virtual std::vector<PopoverWidget> get_popover_widgets() = 0;
   virtual std::vector<MainWindowAction::Ptr> get_widget_actions() = 0;
 
   sigc::signal<void> signal_popover_widgets_changed;

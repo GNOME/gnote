@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,11 +61,11 @@ namespace inserttimestamp {
   }
 
 
-  std::map<int, Gtk::Widget*> InsertTimestampNoteAddin::get_actions_popover_widgets() const
+  std::vector<gnote::PopoverWidget> InsertTimestampNoteAddin::get_actions_popover_widgets() const
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
     auto button = gnote::utils::create_popover_button("win.inserttimestamp-insert", _("Insert Timestamp"));
-    gnote::utils::add_item_to_ordered_map(widgets, gnote::INSERT_TIMESTAMP_ORDER, button);
+    widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::INSERT_TIMESTAMP_ORDER, button));
     return widgets;
   }
 

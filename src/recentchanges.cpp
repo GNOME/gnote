@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2018 Aurimas Cernius
+ * Copyright (C) 2010-2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -759,49 +759,52 @@ namespace gnote {
     HasActions *embed_with_actions = dynamic_cast<HasActions*>(currently_embedded());
     if(embed_with_actions) {
       if(m_window_menu_embedded == NULL) {
-        m_window_menu_embedded = make_window_menu(m_window_actions_button, embed_with_actions->get_popover_widgets());
+        m_window_menu_embedded = make_window_menu(m_window_actions_button, std::move(embed_with_actions->get_popover_widgets()));
       }
       m_window_menu_embedded->show_all();
     }
     else {
       if(m_window_menu_default == NULL) {
-        m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<Gtk::Widget*>());
+        m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<PopoverWidget>());
       }
       m_window_menu_default->show_all();
     }
   }
 
-  Gtk::PopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, const std::vector<Gtk::Widget*> & items)
+  Gtk::PopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items)
   {
-    std::map<Glib::ustring, Gtk::Widget*> submenus;
+    std::sort(items.begin(), items.end());
     Gtk::PopoverMenu *menu = manage(new Gtk::PopoverMenu);
     Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
     utils::set_common_popover_widget_props(*menu_box);
     if(items.size() > 0) {
-      FOREACH(Gtk::Widget *item, items) {
-        if(item) {
-          utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(item);
+      auto iter = items.begin();
+      auto current_section = iter->section;
+      for(; iter != items.end() && iter->section != APP_CUSTOM_SECTION; ++iter) {
+          if(iter->section != current_section) {
+            current_section = iter->section;
+            menu_box->add(*manage(new Gtk::Separator));
+          }
+          menu_box->add(*manage(iter->widget));
+      }
+
+      menu->add(*menu_box);
+      for(; iter != items.end(); ++iter) {
+          utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(iter->widget);
           if(submenu) {
-            submenus[submenu->name()] = item;
+            menu->add(*manage(iter->widget));
+            menu->child_property_submenu(*iter->widget) = submenu->name();
           }
           else {
-            menu_box->add(*manage(item));
+            ERR_OUT(_("Expected widget to be a sub-menu!"));
           }
-        }
-        else {
-          menu_box->add(*manage(new Gtk::Separator));
-        }
       }
     }
     else {
       menu_box->add(*manage(new Gtk::Label(_("No configured actions"))));
+      menu->add(*menu_box);
     }
 
-    menu->add(*menu_box);
-    for(auto & submenu : submenus) {
-      menu->add(*submenu.second);
-      menu->child_property_submenu(*submenu.second) = submenu.first;
-    }
     menu->set_relative_to(*button);
     menu->set_modal(true);
     menu->set_position(Gtk::POS_BOTTOM);

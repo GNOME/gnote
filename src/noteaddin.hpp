@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2016 Aurimas Cernius
+ * Copyright (C) 2012-2016,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,6 +37,7 @@
 #include "abstractaddin.hpp"
 #include "note.hpp"
 #include "notebuffer.hpp"
+#include "popoverwidgets.hpp"
 
 namespace gnote {
 
@@ -74,7 +75,7 @@ public:
   /// </summary>
   virtual void on_note_opened () = 0;
 
-  virtual std::map<int, Gtk::Widget*> get_actions_popover_widgets() const;
+  virtual std::vector<PopoverWidget> get_actions_popover_widgets() const;
   void register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> callback);
 
   const Note::Ptr & get_note() const

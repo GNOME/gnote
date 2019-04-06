@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016 Aurimas Cernius
+ * Copyright (C) 2010-2016,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -103,16 +103,16 @@ namespace notebooks {
   }
 
 
-  std::map<int, Gtk::Widget*> NotebookNoteAddin::get_actions_popover_widgets() const
+  std::vector<gnote::PopoverWidget> NotebookNoteAddin::get_actions_popover_widgets() const
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
     if(!get_note()->contains_tag(get_template_tag())) {
       Gtk::Widget *notebook_button = utils::create_popover_submenu_button("notebooks-submenu", _("Notebook"));
-      utils::add_item_to_ordered_map(widgets, gnote::NOTEBOOK_ORDER, notebook_button);
+      widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
 
       auto submenu = utils::create_popover_submenu("notebooks-submenu");
       update_menu(submenu);
-      utils::add_item_to_ordered_map(widgets, 1000000, submenu);
+      widgets.push_back(gnote::PopoverWidget::create_custom_section(submenu));
     }
 
     return widgets;

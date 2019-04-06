@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,33 +26,14 @@
 #include <gtkmm/uimanager.h>
 
 #include "base/singleton.hpp"
+#include "popoverwidgets.hpp"
 
 namespace gnote {
-
-enum NoteActionOrder {
-  // Note properties (1-999)
-  NOTEBOOK_ORDER = 100,
-  BACKLINKS_ORDER = 200,
-  TABLE_OF_CONTENTS_ORDER = 300,
-  READ_ONLY_ORDER = 400,
-  // Tools (1000-1999)
-  SPELL_CHECK_ORDER = 1100,
-  // Actions (2000-2999)
-  EXPORT_TO_HTML_ORDER = 2100,
-  EXPORT_TO_GTG_ORDER = 2200,
-  INSERT_TIMESTAMP_ORDER = 2300,
-  PRINT_ORDER = 2400,
-  REPLACE_TITLE_ORDER = 2500,
-};
 
 class IActionManager
   : public base::Singleton<IActionManager>
 {
 public:
-  static const int APP_ACTION_NEW;
-  static const int APP_ACTION_MANAGE;
-  static const int APP_ACTION_LAST;
-
   virtual ~IActionManager();
 
   virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const Glib::ustring & name) const = 0;
@@ -69,7 +50,8 @@ public:
   virtual void unregister_main_window_search_callback(const Glib::ustring & id) = 0;
   virtual std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() = 0;
   sigc::signal<void> signal_main_window_search_actions_changed;
-  sigc::signal<void, std::map<int, Gtk::Widget*>&> signal_build_main_window_search_popover;
+  sigc::signal<void, std::vector<PopoverWidget>&> signal_build_main_window_search_popover;
+  sigc::signal<void> signal_main_window_popover_changed;
 };
 
 }

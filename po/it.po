@@ -1,20 +1,19 @@
 # Italian translation of GNote.
-# Copyright (C) 2010 The Free Software Foundation, Inc.
+# Copyright (C) 2005, 2008, 2009, 2010, 2015, 2016, 2017, 2018, 2019 The Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnote package.
 # Amos Brocco <amos.brocco@mriyasoftware.com>, 2005.
 # Daniele Cocca <daniele.cocca@gmail.com>, 2005.
 # Gruppo traduzione Italiano di Ubuntu <gruppo-traduzione@ubuntu-it.org>, 2008.
 # Milo Casagrande <milo@ubuntu.com>, 2007, 2008, 2009.
 # Andrea Zagli <azagli@libero.it>, 2009, 2010.
-# Gianvito Cavasoli <gianvito@gmx.it>, 2015, 2016, 2017.
+# Gianvito Cavasoli <gianvito@gmx.it>, 2015-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gnote&keywords=I18N+L10N&component=main\n"
-"POT-Creation-Date: 2017-08-29 19:33+0000\n"
-"PO-Revision-Date: 2017-09-03 14:27+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
+"POT-Creation-Date: 2019-02-22 14:42+0000\n"
+"PO-Revision-Date: 2019-02-27 14:26+0100\n"
 "Last-Translator: Gianvito Cavasoli <gianvito@gmx.it>\n"
 "Language-Team: Italiano <gnome-it-list@gnome.org>\n"
 "Language: it\n"
@@ -22,15 +21,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.30.1\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:547
 msgid "Gnote"
 msgstr "Gnote"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:2
-#| msgid "A note taking application"
 msgid "A simple note-taking application"
 msgstr "Una semplice applicazione per prendere note"
 
@@ -717,33 +715,29 @@ msgstr ""
 "Intervallo di tempo fra le verifiche della directory delle note (in "
 "secondi). Il valore minimo è 5."
 
-#: ../src/actionmanager.cpp:132
+#: ../src/actionmanager.cpp:135 ../src/notewindow.cpp:312
 msgid "_New Note"
 msgstr "_Nuova nota"
 
-#: ../src/actionmanager.cpp:133
+#: ../src/actionmanager.cpp:136 ../src/notewindow.cpp:314
 msgid "New _Window"
 msgstr "Nuova _finestra"
 
-#: ../src/actionmanager.cpp:134
+#: ../src/actionmanager.cpp:137
 msgid "_Preferences"
 msgstr "Preferen_ze"
 
-#: ../src/actionmanager.cpp:135
+#: ../src/actionmanager.cpp:138
 msgid "_Shortcuts"
 msgstr "_Scorciatoie"
 
-#: ../src/actionmanager.cpp:136
+#: ../src/actionmanager.cpp:139
 msgid "_Help"
 msgstr "A_iuto"
 
-#: ../src/actionmanager.cpp:137
-msgid "_About"
-msgstr "I_nformazioni"
-
-#: ../src/actionmanager.cpp:138
-msgid "_Quit"
-msgstr "_Esci"
+#: ../src/actionmanager.cpp:140
+msgid "_About Gnote"
+msgstr "I_nformazioni su Gnote"
 
 #: ../src/addininfo.cpp:72
 msgid "Failed to load plugin information!"
@@ -959,7 +953,6 @@ msgid "Include all other linked notes"
 msgstr "Includere tutte le note collegate"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
-#| msgid "Export to HTML"
 msgid "Export to HTML…"
 msgstr "Esporta in HTML…"
 
@@ -1179,7 +1172,6 @@ msgid "Allows you to print a note."
 msgstr "Permette di stampare una nota."
 
 #: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
-#| msgid "Print"
 msgid "Print…"
 msgstr "Stampa…"
 
@@ -1440,15 +1432,15 @@ msgstr "Eccezione generata nel creare la nota: %s"
 msgid "Gnote is already running.  Exiting..."
 msgstr "L'applicazione è già in esecuzione. In uscita..."
 
-#: ../src/gnote.cpp:272
+#: ../src/gnote.cpp:260
 msgid "Failed to get shortcuts window!"
 msgstr "Recupero della finestra delle scorciatoie non riuscito."
 
-#: ../src/gnote.cpp:286
+#: ../src/gnote.cpp:274
 msgid "and Tomboy original authors."
 msgstr "e gli autori originali di Tomboy."
 
-#: ../src/gnote.cpp:292
+#: ../src/gnote.cpp:280
 msgid "translator-credits"
 msgstr ""
 "Gianvito Cavasoli <gianvito@gmx.it>\n"
@@ -1456,93 +1448,93 @@ msgstr ""
 "Milo Casagrande <milo@ubuntu.com>\n"
 "\"Gruppo traduzione Italiano di Ubuntu <gruppo-traduzione@ubuntu-it.org>\""
 
-#: ../src/gnote.cpp:301
+#: ../src/gnote.cpp:289
 msgid ""
-"Copyright © 2010-2017 Aurimas Cernius\n"
+"Copyright © 2010-2018 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2017 Aurimas Cernius\n"
+"Copyright © 2010-2018 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 gli autori originali di Tomboy."
 
-#: ../src/gnote.cpp:305
+#: ../src/gnote.cpp:293
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Un programma per prendere note semplice e facile da usare."
 
-#: ../src/gnote.cpp:316
+#: ../src/gnote.cpp:304
 msgid "Homepage"
 msgstr "Sito web"
 
-#: ../src/gnote.cpp:527
+#: ../src/gnote.cpp:508
 msgid "Run Gnote in background."
 msgstr "Esegue l'applicazione in background."
 
-#: ../src/gnote.cpp:528
+#: ../src/gnote.cpp:509
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Esegue l'applicazione come servizio di ricerca in GNOME Shell."
 
-#: ../src/gnote.cpp:529
+#: ../src/gnote.cpp:510
 msgid "Specify the path of the directory containing the notes."
 msgstr "Specifica il percorso della directory contenente le note."
 
-#: ../src/gnote.cpp:529
+#: ../src/gnote.cpp:510
 msgid "path"
 msgstr "percorso"
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:511
 msgid "Open the search all notes window with the search text."
 msgstr ""
 "Apre la finestra per la ricerca in tutte le note con il testo di ricerca."
 
-#: ../src/gnote.cpp:530 ../src/gnote.cpp:535
+#: ../src/gnote.cpp:511 ../src/gnote.cpp:516
 msgid "text"
 msgstr "testo"
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:512
 msgid "Print version information."
 msgstr "Stampa informazioni sulla versione."
 
-#: ../src/gnote.cpp:532
+#: ../src/gnote.cpp:513
 msgid "Create and display a new note, with a optional title."
 msgstr "Crea e visualizza una nuova nota, con un titolo opzionale."
 
-#: ../src/gnote.cpp:532
+#: ../src/gnote.cpp:513
 msgid "title"
 msgstr "titolo"
 
-#: ../src/gnote.cpp:533
+#: ../src/gnote.cpp:514
 msgid "Display the existing note matching title."
 msgstr "Visualizza la nota esistente con il titolo corrispondente."
 
-#: ../src/gnote.cpp:533
+#: ../src/gnote.cpp:514
 msgid "title/url"
 msgstr "titolo/url"
 
-#: ../src/gnote.cpp:534
+#: ../src/gnote.cpp:515
 msgid "Display the 'Start Here' note."
 msgstr "Visualizza la nota «Inizia qui»."
 
-#: ../src/gnote.cpp:535
+#: ../src/gnote.cpp:516
 msgid "Search and highlight text in the opened note."
 msgstr "Cerca ed evidenzia il testo nella nota aperta."
 
-#: ../src/gnote.cpp:539
+#: ../src/gnote.cpp:520
 msgid "A note taking application"
 msgstr "Un'applicazione per prendere note"
 
-#: ../src/gnote.cpp:539
+#: ../src/gnote.cpp:520
 msgid "Gnote options at launch"
 msgstr "Le opzioni dell'applicazione al lancio"
 
-#: ../src/gnote.cpp:616
+#: ../src/gnote.cpp:597
 msgid "Could not connect to remote instance."
 msgstr "Impossibile connettersi a un'istanza remota."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:733
+#: ../src/gnote.cpp:714
 msgid "Version %1"
 msgstr "Versione %1"
 
@@ -1869,33 +1861,31 @@ msgstr "Titolo nota"
 msgid "Ad_vanced"
 msgstr "A_vanzate"
 
-#: ../src/notewindow.cpp:312
+#: ../src/notewindow.cpp:317
 msgid "_Undo"
 msgstr "_Annulla"
 
-#: ../src/notewindow.cpp:314
+#: ../src/notewindow.cpp:319
 msgid "_Redo"
 msgstr "_Ripeti"
 
-#: ../src/notewindow.cpp:318 ../src/notewindow.cpp:391
+#: ../src/notewindow.cpp:323 ../src/notewindow.cpp:396
 msgid "_Link to New Note"
 msgstr "Co_llega a nuova nota"
 
-#: ../src/notewindow.cpp:338
-#| msgid "Important"
+#: ../src/notewindow.cpp:343
 msgid "_Important"
 msgstr "_Importante"
 
-#: ../src/notewindow.cpp:339
-#| msgid "_Delete"
+#: ../src/notewindow.cpp:344
 msgid "_Delete…"
 msgstr "Eli_mina…"
 
-#: ../src/notewindow.cpp:427
+#: ../src/notewindow.cpp:432
 msgid "Set properties of text"
 msgstr "Imposta le proprietà del testo"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:446
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1903,69 +1893,69 @@ msgstr ""
 "Questa nota è un modello nota. Determina il contenuto predefinito delle note "
 "normali, e non sarà mostrata nel menù delle note o nella finestra di ricerca."
 
-#: ../src/notewindow.cpp:444
+#: ../src/notewindow.cpp:449
 msgid "Convert to regular note"
 msgstr "Converti in nota normale"
 
-#: ../src/notewindow.cpp:447
+#: ../src/notewindow.cpp:452
 msgid "Save Si_ze"
 msgstr "Salvare dimen_sione"
 
 # (ndt) titolo finestra
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:456
 msgid "Save Se_lection"
 msgstr "Salvare se_lezione"
 
 # (ndt) intestazione colonna tabella
-#: ../src/notewindow.cpp:455
+#: ../src/notewindow.cpp:460
 msgid "Save _Title"
 msgstr "Salvare _titolo"
 
-#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1072
+#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1077
 msgid "Cannot create note"
 msgstr "Impossibile creare la nota"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:847
 msgid "_Bold"
 msgstr "_Grassetto"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:848
 msgid "_Italic"
 msgstr "Cors_ivo"
 
-#: ../src/notewindow.cpp:844
+#: ../src/notewindow.cpp:849
 msgid "_Strikeout"
 msgstr "_Barrato"
 
-#: ../src/notewindow.cpp:848
+#: ../src/notewindow.cpp:853
 msgid "_Highlight"
 msgstr "_Evidenziato"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:856
 msgid "_Normal"
 msgstr "_Normale"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:857
 msgid "S_mall"
 msgstr "_Piccolo"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:858
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:854
+#: ../src/notewindow.cpp:859
 msgid "Hu_ge"
 msgstr "_Enorme"
 
-#: ../src/notewindow.cpp:876
+#: ../src/notewindow.cpp:881
 msgid "⦁ Bullets"
 msgstr "⦁ Elenco puntato"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:883
 msgid "→ Increase indent"
 msgstr "→ Aumenta rientro"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:885
 msgid "← Decrease indent"
 msgstr "← Diminuisci rientro"
 
@@ -2228,25 +2218,29 @@ msgstr "Autore:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:153
+#: ../src/recentchanges.cpp:158
 msgid "All Notes"
 msgstr "Tutte le note"
 
-#: ../src/recentchanges.cpp:164
+#: ../src/recentchanges.cpp:169
 msgid "Create New Note"
 msgstr "Crea nuova nota"
 
-#: ../src/recentchanges.cpp:185
+#: ../src/recentchanges.cpp:190
 msgid "Search"
 msgstr "Cerca"
 
-#: ../src/recentchanges.cpp:246
+#: ../src/recentchanges.cpp:251
 msgid "Find _Next"
 msgstr "Trova successi_va"
 
-#: ../src/recentchanges.cpp:255
+#: ../src/recentchanges.cpp:260
 msgid "Find _Previous"
 msgstr "Trova pr_ecedente"
+
+#: ../src/recentchanges.cpp:797
+msgid "No configured actions"
+msgstr "Nessuna azione configurata"
 
 #: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
 #, c-format
@@ -2281,11 +2275,11 @@ msgstr "Nota"
 msgid "Modified"
 msgstr "Modificata"
 
-#: ../src/searchnoteswidget.cpp:997
+#: ../src/searchnoteswidget.cpp:999
 msgid "Notes"
 msgstr "Note"
 
-#: ../src/searchnoteswidget.cpp:1016
+#: ../src/searchnoteswidget.cpp:1018
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2293,53 +2287,53 @@ msgstr ""
 "Nessun risultato trovato nel blocco note selezionato.\n"
 "Fare clic qui per cercare in tutte le note."
 
-#: ../src/searchnoteswidget.cpp:1020
+#: ../src/searchnoteswidget.cpp:1022
 msgid "Click here to search across all notebooks"
 msgstr "Fare clic qui per cercare in tutti i blocchi note"
 
-#: ../src/searchnoteswidget.cpp:1041
+#: ../src/searchnoteswidget.cpp:1043
 msgid "Matches"
 msgstr "Corrispondenze"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1092
+#: ../src/searchnoteswidget.cpp:1094
 msgid "Title match"
 msgstr "Corrispondenza titolo"
 
-#: ../src/searchnoteswidget.cpp:1096
+#: ../src/searchnoteswidget.cpp:1098
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 corrispondenza"
 msgstr[1] "%1 corrispondenze"
 
-#: ../src/searchnoteswidget.cpp:1307
+#: ../src/searchnoteswidget.cpp:1309
 msgid "_New"
 msgstr "_Nuova"
 
-#: ../src/searchnoteswidget.cpp:1336
+#: ../src/searchnoteswidget.cpp:1338
 msgid "_Open Template Note"
 msgstr "_Apri modello nota"
 
-#: ../src/searchnoteswidget.cpp:1347
+#: ../src/searchnoteswidget.cpp:1349
 msgid "_New..."
 msgstr "_Nuova..."
 
-#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
-#: ../src/searchnoteswidget.cpp:1522
+#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
+#: ../src/searchnoteswidget.cpp:1524
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Analisi dell'impostazione %s non riuscita (Valore: %s)"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1501
 msgid "Expected format 'column:order'"
 msgstr "Formato previsto \"colonna:disposizione\""
 
-#: ../src/searchnoteswidget.cpp:1512
+#: ../src/searchnoteswidget.cpp:1514
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Colonna %s non riconosciuta"
 
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1525
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Disposizione %s non riconosciuta"
