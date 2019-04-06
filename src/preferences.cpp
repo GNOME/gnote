@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@ namespace gnote {
   const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
   const char * Preferences::SCHEMA_KEYBINDINGS = "org.gnome.gnote.global-keybindings";
   const char * Preferences::SCHEMA_SYNC = "org.gnome.gnote.sync";
+  const char * Preferences::SCHEMA_SYNC_GVFS = "org.gnome.gnote.sync.gvfs";
   const char * Preferences::SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
   const char * Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 
@@ -71,6 +72,8 @@ namespace gnote {
   const char * Preferences::SEARCH_WINDOW_HEIGHT = "search-window-height";
   const char * Preferences::SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
   const char * Preferences::SEARCH_SORTING = "search-sorting";
+
+  const char * Preferences::SYNC_GVFS_URI = "uri";
 
   const char * Preferences::SYNC_FUSE_MOUNT_TIMEOUT = "sync-fuse-mount-timeout-ms";
   const char * Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";

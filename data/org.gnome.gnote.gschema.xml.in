@@ -144,6 +144,7 @@
     <child name="global-keybindings" schema="org.gnome.gnote.global-keybindings" />
     <child name="export-html" schema="org.gnome.gnote.export-html" />
     <child name="sync" schema="org.gnome.gnote.sync" />
+    <child name="sync-gvfs" schema="org.gnome.gnote.sync.gvfs" />
     <child name="insert-timestamp" schema="org.gnome.gnote.insert-timestamp" />
     <child name="note-directory-watcher" schema="org.gnome.gnote.note-directory-watcher" />
   </schema>
@@ -218,6 +219,13 @@
       <_description>Integer value indicating how frequently to perform a background sync of your notes (when sync is configured).  Any value less than 1 indicates that autosync is disabled.  The lowest acceptable positive value is 5.  Value is in minutes.</_description>
     </key>
     <child name="wdfs" schema="org.gnome.gnote.sync.wdfs" />
+  </schema>
+  <schema id="org.gnome.gnote.sync.gvfs" path="/org/gnome/gnote/sync/gvfs/">
+    <key name="uri" type="s">
+      <default>''</default>
+      <_summary>Online directory URI</_summary>
+      <_description>URI to online directory where notes are synchronized to.</_description>
+    </key>
   </schema>
   <schema id="org.gnome.gnote.sync.wdfs" path="/org/gnome/gnote/sync/wdfs/">
     <key name="accept-sslcert" type="b">

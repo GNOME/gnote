@@ -164,6 +164,8 @@ src/addins/filesystemsyncservice/Makefile
 src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in
 src/addins/fixedwidth/Makefile
 src/addins/fixedwidth/fixedwidth.desktop.in
+src/addins/gvfssyncservice/Makefile
+src/addins/gvfssyncservice/gvfssyncservice.desktop.in
 src/addins/inserttimestamp/Makefile
 src/addins/inserttimestamp/inserttimestamp.desktop.in
 src/addins/notedirectorywatcher/Makefile

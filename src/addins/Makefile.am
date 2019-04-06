@@ -7,6 +7,7 @@ SUBDIRS = backlinks \
 	exporttohtml \
 	filesystemsyncservice \
 	fixedwidth \
+	gvfssyncservice \
 	inserttimestamp \
 	notedirectorywatcher \
 	noteoftheday \
