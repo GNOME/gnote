@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -39,6 +39,7 @@ namespace gnote {
     static const char *SCHEMA_GNOTE;
     static const char *SCHEMA_KEYBINDINGS;
     static const char *SCHEMA_SYNC;
+    static const char *SCHEMA_SYNC_GVFS;
     static const char *SCHEMA_SYNC_WDFS;
     static const char *SCHEMA_DESKTOP_GNOME_INTERFACE;
 
@@ -80,6 +81,8 @@ namespace gnote {
     static const char *SYNC_SELECTED_SERVICE_ADDIN;
     static const char *SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
     static const char *SYNC_AUTOSYNC_TIMEOUT;
+
+    static const char *SYNC_GVFS_URI;
 
     static const char *SYNC_FUSE_MOUNT_TIMEOUT;
     static const char *SYNC_FUSE_WDFS_ACCEPT_SSLCERT;
