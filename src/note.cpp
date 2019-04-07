@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2017 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -566,13 +566,13 @@ namespace gnote {
         get_window()->editor()->set_editable(false);
       }
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
-        FOREACH(NoteBase::Ptr & iter, linking_notes) {
+        for(NoteBase::Ptr & iter : linking_notes) {
           iter->remove_links(old_title, self);
           process_rename_link_update_end(Gtk::RESPONSE_NO, NULL, old_title, self);
         }
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
-        FOREACH(NoteBase::Ptr & iter, linking_notes) {
+        for(NoteBase::Ptr & iter : linking_notes) {
           iter->rename_links(old_title, self);
           process_rename_link_update_end(Gtk::RESPONSE_NO, NULL, old_title, self);
         }
