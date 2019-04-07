@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017-2018 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,6 @@
 #include <glibmm/main.h>
 #include <glibmm/thread.h>
 
-#include "base/macros.hpp"
 #include "isyncmanager.hpp"
 
 

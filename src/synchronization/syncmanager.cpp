@@ -293,7 +293,7 @@ namespace sync {
       // Look through all the notes modified on the client
       // and upload new or modified ones to the server
       std::list<Note::Ptr> newOrModifiedNotes;
-      FOREACH(const NoteBase::Ptr & iter, note_mgr().get_notes()) {
+      for(const NoteBase::Ptr & iter : note_mgr().get_notes()) {
         Note::Ptr note = static_pointer_cast<Note>(iter);
         if(m_client->get_revision(note) == -1) {
           // This is a new note that has never been synchronized to the server
@@ -487,7 +487,7 @@ namespace sync {
       bool server_has_updates = false;
       bool client_has_updates = m_client->deleted_note_titles().size() > 0;
       if(!client_has_updates) {
-        FOREACH(const NoteBase::Ptr & iter, note_mgr().get_notes()) {
+        for(const NoteBase::Ptr & iter : note_mgr().get_notes()) {
           Note::Ptr note = static_pointer_cast<Note>(iter);
           if(m_client->get_revision(note) == -1 || note->metadata_change_date() > m_client->last_sync_date()) {
             client_has_updates = true;
@@ -694,7 +694,7 @@ namespace sync {
       auto serverNotes = server->get_all_note_uuids();
 
       // Delete notes locally that have been deleted on the server
-      FOREACH(const NoteBase::Ptr & iter, localNotes) {
+      for(const NoteBase::Ptr & iter : localNotes) {
         Note::Ptr note = static_pointer_cast<Note>(iter);
 	if(SyncManager::_obj().m_client->get_revision(note) != -1
 	   && std::find(serverNotes.begin(), serverNotes.end(), note->id()) == serverNotes.end()) {
