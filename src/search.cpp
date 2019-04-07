@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -55,7 +55,7 @@ namespace gnote {
       // Skip over notes that are template notes
     Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
-    FOREACH(const NoteBase::Ptr & iter, m_manager.get_notes()) {
+    for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
       Note::Ptr note(static_pointer_cast<Note>(iter));
 
       // Skip template notes
