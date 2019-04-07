@@ -110,7 +110,7 @@ void BacklinksNoteAddin::update_menu(Gtk::Box *menu) const
 void BacklinksNoteAddin::get_backlink_menu_items(std::list<Gtk::Widget*> & items) const
 {
   gnote::NoteBase::List notes = get_note()->manager().get_notes_linking_to(get_note()->get_title());
-  FOREACH(const gnote::NoteBase::Ptr & note, notes) {
+  for(const gnote::NoteBase::Ptr & note : notes) {
     if(note != get_note()) { // don't match ourself
       auto button = manage(gnote::utils::create_popover_button("win.backlinks-open-note", note->get_title()));
       gtk_actionable_set_action_target_value(GTK_ACTIONABLE(button->gobj()),
