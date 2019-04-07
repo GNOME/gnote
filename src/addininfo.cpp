@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2017 Aurimas Cernius
+ * Copyright (C) 2013-2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 
 #include <glibmm/i18n.h>
 
-#include "base/macros.hpp"
 #include "addininfo.hpp"
 #include "debug.hpp"
 #include "sharp/string.hpp"
@@ -94,7 +93,7 @@ void AddinInfo::load_from_file(const Glib::ustring & info_file)
     m_libgnote_version_info = addin_info.get_string(ADDIN_INFO, "LibgnoteVersionInfo");
 
     if(addin_info.has_group(ADDIN_ATTS)) {
-      FOREACH(const Glib::ustring & key, addin_info.get_keys(ADDIN_ATTS)) {
+      for(const Glib::ustring & key : addin_info.get_keys(ADDIN_ATTS)) {
         m_attributes[key] = addin_info.get_string(ADDIN_ATTS, key);
       }
     }
