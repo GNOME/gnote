@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -133,7 +133,7 @@ namespace notebooks {
     }
     std::list<NoteBase*> notes;
     templ_tag->get_notes(notes);
-    FOREACH(NoteBase *n, notes) {
+    for(NoteBase *n : notes) {
       if(n->contains_tag(notebook_tag)) {
         note = static_pointer_cast<Note>(n->shared_from_this());
         break;
