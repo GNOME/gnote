@@ -91,7 +91,7 @@ class Note
 {
 public:
   typedef std::shared_ptr<Note> Ptr;
-  typedef weak_ptr<Note> WeakPtr;
+  typedef std::weak_ptr<Note> WeakPtr;
   typedef std::list<Ptr> List;
 
   ~Note();
