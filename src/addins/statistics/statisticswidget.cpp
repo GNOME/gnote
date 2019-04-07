@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -106,7 +106,7 @@ private:
       }
       gnote::Tag::Ptr template_tag = gnote::ITagManager::obj().get_or_create_system_tag(
         gnote::ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      FOREACH(gnote::NoteBase::Ptr note, notes) {
+      for(gnote::NoteBase::Ptr note : notes) {
         for(std::map<gnote::notebooks::Notebook::Ptr, int>::iterator nb = notebook_notes.begin();
             nb != notebook_notes.end(); ++nb) {
           if(note->contains_tag(nb->first->get_tag()) && !note->contains_tag(template_tag)) {
