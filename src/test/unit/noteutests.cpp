@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,6 @@
 
 
 
-#include <list>
-
 #include <libxml/tree.h>
 #include <UnitTest++/UnitTest++.h>
 
@@ -36,8 +34,7 @@ SUITE(Note)
     CHECK(doc);
 
     if(doc) {
-      std::list<Glib::ustring> tags;
-      gnote::NoteBase::parse_tags(xmlDocGetRootElement(doc), tags);
+      std::vector<Glib::ustring> tags = gnote::NoteBase::parse_tags(xmlDocGetRootElement(doc));
       CHECK(!tags.empty());
 
       xmlFreeDoc(doc);
