@@ -345,7 +345,7 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
           new_text.c_str());
   std::list<NoteBase*> notes;
   old_notebook->get_tag()->get_notes(notes);
-  FOREACH(NoteBase *note, notes) {
+  for(NoteBase *note : notes) {
     notebooks::NotebookManager::obj().move_note_to_notebook(
       static_pointer_cast<Note>(note->shared_from_this()), new_notebook);
   }
@@ -513,7 +513,7 @@ void SearchNotesWidget::update_results()
 
   int cnt = 0;
 
-  FOREACH(const NoteBase::Ptr & note_iter, m_manager.get_notes()) {
+  for(const NoteBase::Ptr & note_iter : m_manager.get_notes()) {
     Note::Ptr note(static_pointer_cast<Note>(note_iter));
     Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true);
 

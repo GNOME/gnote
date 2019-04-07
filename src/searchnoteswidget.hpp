@@ -31,7 +31,6 @@
 #include <gtkmm/scrolledwindow.h>
 #include <sigc++/sigc++.h>
 
-#include "base/macros.hpp"
 #include "mainwindowembeds.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookstreeview.hpp"
