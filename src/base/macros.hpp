@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016 Aurimas Cernius
+ * Copyright (C) 2013,2016,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -43,7 +43,6 @@
 #define _PRINTF_FORMAT(f,a)
 #endif
 
-#define FOREACH(var, container) for(var : container)
 #define TO_STRING(x) std::to_string(x)
 #define STRING_TO_INT(x) std::stoi(x)
 
