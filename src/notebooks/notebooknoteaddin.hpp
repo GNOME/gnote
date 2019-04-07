@@ -26,7 +26,6 @@
 
 #include <gtkmm/modelbutton.h>
 
-#include "base/macros.hpp"
 #include "noteaddin.hpp"
 
 namespace gnote {

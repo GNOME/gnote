@@ -158,7 +158,7 @@ namespace notebooks {
     std::list<Gtk::ModelButton*> notebook_menu_items;
     get_notebook_menu_items(notebook_menu_items);
     if(!notebook_menu_items.empty()) {
-      FOREACH(Gtk::ModelButton *item, notebook_menu_items) {
+      for(Gtk::ModelButton *item : notebook_menu_items) {
         menu->add(*item);
       }
 
