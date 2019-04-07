@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016-2017 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -179,7 +179,7 @@ NoteBase::List NoteManagerBase::get_notes_linking_to(const Glib::ustring & title
 {
   Glib::ustring tag = "<link:internal>" + utils::XmlEncoder::encode(title) + "</link:internal>";
   NoteBase::List result;
-  FOREACH(const NoteBase::Ptr & note, m_notes) {
+  for(const NoteBase::Ptr & note : m_notes) {
     if(note->get_title() != title) {
       if(note->get_complete_note_xml().find(tag) != Glib::ustring::npos) {
         result.push_back(note);
@@ -212,7 +212,7 @@ void NoteManagerBase::on_note_save (const NoteBase::Ptr & note)
 
 NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
 {
-  FOREACH(const NoteBase::Ptr & note, m_notes) {
+  for(const NoteBase::Ptr & note : m_notes) {
     if(note->get_title().lowercase() == linked_title.lowercase()) {
       return note;
     }
@@ -222,7 +222,7 @@ NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
 
 NoteBase::Ptr NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
 {
-  FOREACH(const NoteBase::Ptr & note, m_notes) {
+  for(const NoteBase::Ptr & note : m_notes) {
     if (note->uri() == uri) {
       return note;
     }
@@ -434,7 +434,7 @@ NoteBase::Ptr NoteManagerBase::find_template_note() const
   }
   std::list<NoteBase*> notes;
   template_tag->get_notes(notes);
-  FOREACH(NoteBase *iter, notes) {
+  for(NoteBase *iter : notes) {
     NoteBase::Ptr note = iter->shared_from_this();
     if(!notebooks::NotebookManager::obj().get_notebook_from_note(note)) {
       template_note = note;
@@ -548,7 +548,7 @@ void TrieController::update()
   }
   m_title_trie = new TrieTree<NoteBase::WeakPtr>(false /* !case_sensitive */);
 
-  FOREACH(const NoteBase::Ptr & note, m_manager.get_notes()) {
+  for(const NoteBase::Ptr & note : m_manager.get_notes()) {
     m_title_trie->add_keyword(note->get_title(), note);
   }
   m_title_trie->compute_failure_graph();
