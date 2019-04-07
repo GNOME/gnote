@@ -372,7 +372,7 @@ namespace gnote {
     {
       m_fake_menu.set_sensitive(enable);
       std::vector<Gtk::Widget*> items = m_fake_menu.get_children();
-      FOREACH(Gtk::Widget *item, items) {
+      for(Gtk::Widget *item : items) {
         item->set_sensitive(enable);
       }
     }

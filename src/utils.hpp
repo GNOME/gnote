@@ -38,7 +38,6 @@
 #include <gtkmm/toggletoolbutton.h>
 #include <gtkmm/toolbar.h>
 
-#include "base/macros.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/uri.hpp"
 
