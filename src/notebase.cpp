@@ -140,7 +140,7 @@ void NoteBase::process_rename_link_update(const Glib::ustring & old_title)
   const NoteBase::Ptr self = shared_from_this();
 
   if(!linking_notes.empty()) {
-    FOREACH(NoteBase::Ptr & note, linking_notes) {
+    for(NoteBase::Ptr & note : linking_notes) {
       note->rename_links(old_title, self);
       signal_renamed(shared_from_this(), old_title);
       queue_save(CONTENT_CHANGED);
@@ -335,7 +335,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
         xmlDocPtr doc2 = xmlParseDoc((const xmlChar*)xml.read_outer_xml().c_str());
         if(doc2) {
           std::vector<Glib::ustring> tag_strings = parse_tags(doc2->children);
-          FOREACH(Glib::ustring & tag_str, tag_strings) {
+          for(const Glib::ustring & tag_str : tag_strings) {
             Tag::Ptr tag = ITagManager::obj().get_or_create_tag(tag_str);
             new_tags.push_back(tag);
           }
@@ -356,12 +356,12 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
   std::list<Tag::Ptr> tag_list;
   get_tags(tag_list);
 
-  FOREACH(Tag::Ptr & iter, tag_list) {
+  for(Tag::Ptr & iter : tag_list) {
     if(std::find(new_tags.begin(), new_tags.end(), iter) == new_tags.end()) {
       remove_tag(iter);
     }
   }
-  FOREACH(Tag::Ptr & iter, new_tags) {
+  for(Tag::Ptr & iter : new_tags) {
     add_tag(iter);
   }
     
@@ -494,7 +494,7 @@ void NoteArchiver::_read(sharp::XmlReader & xml, NoteData & data, Glib::ustring 
 
         if(doc2) {
           std::vector<Glib::ustring> tag_strings = NoteBase::parse_tags(doc2->children);
-          FOREACH(Glib::ustring & tag_str, tag_strings) {
+          for(const Glib::ustring & tag_str : tag_strings) {
             Tag::Ptr tag = ITagManager::obj().get_or_create_tag(tag_str);
             data.tags()[tag->normalized_name()] = tag;
           }
