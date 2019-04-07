@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -181,7 +181,7 @@ bool ActiveNotesNotebook::empty()
 
   // ignore template notes
   Tag::Ptr templ_tag = template_tag();
-  FOREACH(const Note::Ptr & note, m_notes) {
+  for(const Note::Ptr & note : m_notes) {
     if(!note->contains_tag(templ_tag)) {
       return false;
     }
