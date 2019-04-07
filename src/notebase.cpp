@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -62,15 +62,15 @@ Glib::ustring NoteBase::url_from_path(const Glib::ustring & filepath)
   return "note://gnote/" + sharp::file_basename(filepath);
 }
 
-void NoteBase::parse_tags(const xmlNodePtr tagnodes, std::list<Glib::ustring> & tags)
+std::vector<Glib::ustring> NoteBase::parse_tags(const xmlNodePtr tagnodes)
 {
+  std::vector<Glib::ustring> tags;
   sharp::XmlNodeSet nodes = sharp::xml_node_xpath_find(tagnodes, "//*");
 
   if(nodes.empty()) {
-    return;
+    return tags;
   }
-  for(sharp::XmlNodeSet::const_iterator iter = nodes.begin(); iter != nodes.end(); ++iter) {
-    const xmlNodePtr node = *iter;
+  for(auto & node : nodes) {
     if(xmlStrEqual(node->name, (const xmlChar*)"tag") && (node->type == XML_ELEMENT_NODE)) {
       xmlChar * content = xmlNodeGetContent(node);
       if(content) {
@@ -80,6 +80,8 @@ void NoteBase::parse_tags(const xmlNodePtr tagnodes, std::list<Glib::ustring> & 
       }
     }
   }
+
+  return tags;
 }
 
 
@@ -332,8 +334,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
       else if(name == "tags") {
         xmlDocPtr doc2 = xmlParseDoc((const xmlChar*)xml.read_outer_xml().c_str());
         if(doc2) {
-          std::list<Glib::ustring> tag_strings;
-          parse_tags(doc2->children, tag_strings);
+          std::vector<Glib::ustring> tag_strings = parse_tags(doc2->children);
           FOREACH(Glib::ustring & tag_str, tag_strings) {
             Tag::Ptr tag = ITagManager::obj().get_or_create_tag(tag_str);
             new_tags.push_back(tag);
@@ -492,8 +493,7 @@ void NoteArchiver::_read(sharp::XmlReader & xml, NoteData & data, Glib::ustring 
         xmlDocPtr doc2 = xmlParseDoc((const xmlChar*)xml.read_outer_xml().c_str());
 
         if(doc2) {
-          std::list<Glib::ustring> tag_strings;
-          NoteBase::parse_tags(doc2->children, tag_strings);
+          std::vector<Glib::ustring> tag_strings = NoteBase::parse_tags(doc2->children);
           FOREACH(Glib::ustring & tag_str, tag_strings) {
             Tag::Ptr tag = ITagManager::obj().get_or_create_tag(tag_str);
             data.tags()[tag->normalized_name()] = tag;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 #define _NOTEBASE_HPP_
 
 #include <map>
+#include <vector>
 
 #include <glibmm/ustring.h>
 #include <sigc++/signal.h>
@@ -193,7 +194,7 @@ public:
   typedef std::list<Ptr> List;
 
   static Glib::ustring url_from_path(const Glib::ustring &);
-  static void parse_tags(const xmlNodePtr tagnodes, std::list<Glib::ustring> & tags);
+  static std::vector<Glib::ustring> parse_tags(const xmlNodePtr tagnodes);
 
   NoteBase(NoteData *_data, const Glib::ustring & filepath, NoteManagerBase & manager);
 
