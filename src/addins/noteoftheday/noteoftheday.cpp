@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009-2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -68,7 +68,7 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
   Glib::Date date;
   date.set_time_current(); // time set to 00:00:00
 
-  FOREACH(const gnote::NoteBase::Ptr & note, notes) {
+  for(const gnote::NoteBase::Ptr & note : notes) {
     const Glib::ustring & title = note->get_title();
     const sharp::DateTime & date_time = note->create_date();
 
@@ -83,7 +83,7 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
     }
   }
 
-  FOREACH(gnote::NoteBase::Ptr & note, kill_list) {
+  for(gnote::NoteBase::Ptr & note : kill_list) {
     DBG_OUT("NoteOfTheDay: Deleting old unmodified '%s'", note->get_title().c_str());
     manager.delete_note(note);
   }
@@ -123,7 +123,7 @@ gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(
 {
   const gnote::NoteBase::List & notes = manager.get_notes();
 
-  FOREACH(gnote::NoteBase::Ptr note, notes) {
+  for(gnote::NoteBase::Ptr note : notes) {
     const Glib::ustring & title = note->get_title();
     const sharp::DateTime & date_time = note->create_date();
 
