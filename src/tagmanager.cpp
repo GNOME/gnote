@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -210,7 +210,7 @@ namespace gnote {
 
         std::list<NoteBase*> notes;
         tag->get_notes(notes);
-        FOREACH(NoteBase *note_iter, notes) {
+        for(NoteBase *note_iter : notes) {
           note_iter->remove_tag(tag);
         }
       }
