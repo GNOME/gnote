@@ -449,7 +449,7 @@ namespace gnote {
     Tag::Ptr lang_tag;
     std::list<Tag::Ptr> tags;
     get_note()->get_tags(tags);
-    FOREACH(Tag::Ptr tag, tags) {
+    for(Tag::Ptr tag : tags) {
       if(tag->name().find(LANG_PREFIX) == 0) {
         lang_tag = tag;
         break;

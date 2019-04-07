@@ -39,7 +39,6 @@ extern "C" {
 #include <gtkmm/textiter.h>
 #include <gtkmm/texttag.h>
 
-#include "base/macros.hpp"
 #include "noteaddin.hpp"
 #include "triehit.hpp"
 #include "utils.hpp"
