@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -221,7 +221,7 @@ namespace gnote {
     // Iterating through copy of notes list, because list may be
     // changed when loading addins.
     NoteBase::List notesCopy(m_notes);
-    FOREACH(const NoteBase::Ptr & iter, notesCopy) {
+    for(const NoteBase::Ptr & iter : notesCopy) {
       Note::Ptr note(static_pointer_cast<Note>(iter));
 
       m_addin_mgr->load_addins_for_note (note);
@@ -270,7 +270,7 @@ namespace gnote {
     // Use a copy of the notes to prevent bug #510442 (crash on exit
     // when iterating the notes to save them.
     NoteBase::List notesCopy(m_notes);
-    FOREACH(const NoteBase::Ptr & note, notesCopy) {
+    for(const NoteBase::Ptr & note : notesCopy) {
       note->save();
     }
   }
