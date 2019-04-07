@@ -33,7 +33,6 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
-#include "base/macros.hpp"
 #include "mainwindowembeds.hpp"
 #include "note.hpp"
 #include "undo.hpp"

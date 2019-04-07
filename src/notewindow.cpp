@@ -324,7 +324,7 @@ namespace gnote {
 
     NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
     Note::Ptr note = std::dynamic_pointer_cast<Note>(m_note.shared_from_this());
-    FOREACH(NoteAddin *addin, manager.get_addin_manager().get_note_addins(note)) {
+    for(NoteAddin *addin : manager.get_addin_manager().get_note_addins(note)) {
       auto addin_widgets = addin->get_actions_popover_widgets();
       popover_widgets.insert(popover_widgets.end(), addin_widgets.begin(), addin_widgets.end());
     }
@@ -611,7 +611,7 @@ namespace gnote {
     embeddable_toolbar()->set_sensitive(m_enabled);
     if(m_global_keys)
       m_global_keys->enabled(m_enabled);
-    FOREACH(const MainWindowAction::Ptr & action, get_widget_actions()) {
+    for(const MainWindowAction::Ptr & action : get_widget_actions()) {
       // A list includes empty actions to mark separators, non-modifying actions are always enabled
       if(action && !Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action)) {
         action->set_enabled(enable);
