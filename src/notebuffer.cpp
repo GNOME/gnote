@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -334,7 +334,7 @@ namespace gnote {
     iters[0] = start;
     iters[1] = end_iter;
 
-    FOREACH(Gtk::TextIter iter, iters) {
+    for(Gtk::TextIter iter : iters) {
       Gtk::TextIter line_start = iter;
       line_start.set_line_offset(0);
 
