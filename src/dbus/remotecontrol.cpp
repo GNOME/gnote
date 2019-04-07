@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2016-2017 Aurimas Cernius
+ * Copyright (C) 2011-2014,2016-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -173,7 +173,7 @@ namespace gnote {
     std::vector<Glib::ustring> tagged_note_uris;
     std::list<NoteBase*> notes;
     tag->get_notes(notes);
-    FOREACH(NoteBase *iter, notes) {
+    for(NoteBase *iter : notes) {
       tagged_note_uris.push_back(iter->uri());
     }
     return tagged_note_uris;

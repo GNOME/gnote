@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,6 @@
 
 #include <giomm/dbusconnection.h>
 
-#include "base/macros.hpp"
 #include "dbus/iremotecontrol.hpp"
 #include "mainwindow.hpp"
 #include "note.hpp"
