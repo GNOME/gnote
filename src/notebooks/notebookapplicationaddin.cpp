@@ -61,7 +61,7 @@ namespace gnote {
 
       NoteManager & nm(note_manager());
 
-      FOREACH(const NoteBase::Ptr & note, nm.get_notes()) {
+      for(const NoteBase::Ptr & note : nm.get_notes()) {
         note->signal_tag_added.connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_added));
         note->signal_tag_removed.connect(
