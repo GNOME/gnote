@@ -591,7 +591,7 @@ namespace gnote {
 
   bool NoteRecentChanges::contains(EmbeddableWidget & widget)
   {
-    FOREACH(EmbeddableWidget *wgt, m_embedded_widgets) {
+    for(EmbeddableWidget *wgt : m_embedded_widgets) {
       if(dynamic_cast<EmbeddableWidget*>(wgt) == &widget) {
         return true;
       }
@@ -602,7 +602,7 @@ namespace gnote {
 
   bool NoteRecentChanges::is_foreground(EmbeddableWidget & widget)
   {
-    FOREACH(Gtk::Widget *wgt, m_embed_box.get_children()) {
+    for(Gtk::Widget *wgt : m_embed_box.get_children()) {
       if(dynamic_cast<EmbeddableWidget*>(wgt) == &widget) {
         return true;
       }

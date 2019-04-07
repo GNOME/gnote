@@ -29,7 +29,6 @@
 #include <gtkmm/grid.h>
 #include <gtkmm/popovermenu.h>
 
-#include "base/macros.hpp"
 #include "mainwindowaction.hpp"
 #include "note.hpp"
 #include "searchnoteswidget.hpp"
