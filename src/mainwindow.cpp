@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  */
 
 
-#include "base/macros.hpp"
 #include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "notewindow.hpp"
@@ -124,7 +123,7 @@ bool MainWindow::use_client_side_decorations()
       const char *current_desktop = std::getenv("DESKTOP_SESSION");
       if (current_desktop) {
         Glib::ustring current_de = Glib::ustring(current_desktop).lowercase();
-        FOREACH(Glib::ustring de, desktops) {
+        for(const Glib::ustring & de : desktops) {
           Glib::ustring denv = Glib::ustring(de).lowercase();
           if(current_de.find(denv) != Glib::ustring::npos) {
             s_use_client_side_decorations = 1;
