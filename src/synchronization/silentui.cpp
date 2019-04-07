@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -95,7 +95,7 @@ namespace sync {
   void SilentUI::on_connecting()
   {
     m_manager.read_only(true);
-    FOREACH(const NoteBase::Ptr & iter, m_manager.get_notes()) {
+    for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
       iter->enabled(false);
     }
   }
@@ -104,7 +104,7 @@ namespace sync {
   void SilentUI::on_idle()
   {
     m_manager.read_only(false);
-    FOREACH(const NoteBase::Ptr & iter, m_manager.get_notes()) {
+    for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
       iter->enabled(true);
     }
     m_ui_disabled = false;
