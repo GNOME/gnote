@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016-2017 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,6 @@
 #include <gtkmm/texttag.h>
 #include <gtkmm/textiter.h>
 
-#include "base/macros.hpp"
 #include "noncopyable.hpp"
 #include "notebuffer.hpp"
 #include "utils.hpp"

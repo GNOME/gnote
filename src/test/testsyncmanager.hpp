@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2018 Aurimas Cernius
+ * Copyright (C) 2017-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 #ifndef _TEST_TESTSYNCMANAGER_HPP_
 #define _TEST_TESTSYNCMANAGER_HPP_
 
-#include "base/macros.hpp"
 #include "synchronization/syncmanager.hpp"
 #include "testsyncclient.hpp"
 

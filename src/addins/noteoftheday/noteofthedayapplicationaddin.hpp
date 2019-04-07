@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013 Aurimas Cernius
+ * Copyright (C) 2010,2013,2019 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 
 #include <sigc++/sigc++.h>
 
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "applicationaddin.hpp"
 

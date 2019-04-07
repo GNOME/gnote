@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2015-2016 Aurimas Cernius
+ * Copyright (C) 2015-2016,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,6 @@
 #define _MAIN_WINDOW_ACTION_HPP_
 
 #include <giomm/simpleaction.h>
-
-#include "base/macros.hpp"
 
 
 namespace gnote {

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 #ifndef __SPECIAL_NOTES_APPLICATION_ADDIN_HPP_
 #define __SPECIAL_NOTES_APPLICATION_ADDIN_HPP_
 
-#include "base/macros.hpp"
 #include "notebooks/notebook.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "applicationaddin.hpp"

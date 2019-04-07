@@ -29,7 +29,6 @@
 #include <gtkmm/imagemenuitem.h>
 #include <gtkmm/menu.h>
 
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "note.hpp"
 #include "noteaddin.hpp"

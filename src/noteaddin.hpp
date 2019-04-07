@@ -32,7 +32,6 @@
 #include <gtkmm/menuitem.h>
 #include <gtkmm/toolitem.h>
 
-#include "base/macros.hpp"
 #include "sharp/exception.hpp"
 #include "abstractaddin.hpp"
 #include "note.hpp"

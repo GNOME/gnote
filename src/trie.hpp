@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2016-2017 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016-2017,2019 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -25,7 +25,6 @@
 #include <list>
 #include <queue>
 
-#include "base/macros.hpp"
 #include "triehit.hpp"
 
 namespace gnote {

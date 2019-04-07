@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2017 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -35,8 +35,6 @@
 #include <giomm/settings.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/togglebutton.h>
-
-#include "base/macros.hpp"
 
 namespace sharp {
 

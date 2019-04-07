@@ -21,7 +21,6 @@
 #ifndef __READ_ONLY_NOTE_ADDIN_HPP_
 #define __READ_ONLY_NOTE_ADDIN_HPP_
 
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
 

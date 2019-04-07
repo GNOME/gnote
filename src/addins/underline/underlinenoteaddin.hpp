@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2009 Mark Wakim <markwakim@gmail.com>
@@ -29,7 +29,6 @@
 
 #include <gtkmm/texttag.h>
 
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -25,8 +25,6 @@
 #include <list>
 
 #include <glibmm/ustring.h>
-
-#include "base/macros.hpp"
 
 namespace gnote {
 

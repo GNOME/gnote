@@ -28,7 +28,6 @@
 #include <giomm/simpleaction.h>
 #include <gtkmm/action.h>
 
-#include "base/macros.hpp"
 #include "iactionmanager.hpp"
 
 namespace gnote {

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,7 +28,6 @@
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/treeview.h>
 
-#include "base/macros.hpp"
 #include "note.hpp"
 
 namespace gnote {

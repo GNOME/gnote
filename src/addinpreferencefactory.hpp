@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,6 @@
 
 #include <gtkmm/widget.h>
 
-#include "base/macros.hpp"
 #include "notemanager.hpp"
 #include "sharp/modulefactory.hpp"
 

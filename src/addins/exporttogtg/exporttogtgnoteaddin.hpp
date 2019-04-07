@@ -27,7 +27,6 @@
 
 #include <giomm/dbusintrospection.h>
 
-#include "base/macros.hpp"
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
 

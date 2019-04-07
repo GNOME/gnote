@@ -22,7 +22,6 @@
 
 #include <gtkmm/action.h>
 
-#include "base/macros.hpp"
 #include "applicationaddin.hpp"
 #include "statisticswidget.hpp"
 #include "sharp/dynamicmodule.hpp"

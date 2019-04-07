@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2018 Aurimas Cernius
+ * Copyright (C) 2010-2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,6 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/statusicon.h>
 
-#include "base/macros.hpp"
 #include "actionmanager.hpp"
 #include "ignote.hpp"
 #include "remotecontrolproxy.hpp"

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -27,8 +27,6 @@
 
 #ifndef __SHARP_MODULE_FACTORY_HPP__
 #define __SHARP_MODULE_FACTORY_HPP__
-
-#include "base/macros.hpp"
 
 
 namespace sharp {

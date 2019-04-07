@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 #ifndef __IMPORT_ADDIN_HPP__
 #define __IMPORT_ADDIN_HPP__
 
-#include "base/macros.hpp"
 #include "applicationaddin.hpp"
 
 namespace gnote {
