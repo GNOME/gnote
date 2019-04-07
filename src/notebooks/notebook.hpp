@@ -37,7 +37,7 @@ class Notebook
   : public enable_shared_from_this<Notebook>
 {
 public:
-  typedef shared_ptr<Notebook> Ptr;
+  typedef std::shared_ptr<Notebook> Ptr;
   static const char * NOTEBOOK_TAG_PREFIX;
   Notebook(NoteManager &, const Glib::ustring &, bool is_special = false);
   Notebook(NoteManager &, const Tag::Ptr &);

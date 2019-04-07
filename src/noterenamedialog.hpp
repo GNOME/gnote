@@ -75,7 +75,7 @@ class NoteRenameDialog
 {
 public:
 
-  typedef shared_ptr<std::map<NoteBase::Ptr, bool> > MapPtr;
+  typedef std::shared_ptr<std::map<NoteBase::Ptr, bool> > MapPtr;
 
   NoteRenameDialog(const NoteBase::List & notes,
                    const Glib::ustring & old_title,

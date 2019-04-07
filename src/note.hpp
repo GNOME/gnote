@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -90,7 +90,7 @@ class Note
   : public NoteBase
 {
 public:
-  typedef shared_ptr<Note> Ptr;
+  typedef std::shared_ptr<Note> Ptr;
   typedef weak_ptr<Note> WeakPtr;
   typedef std::list<Ptr> List;
 

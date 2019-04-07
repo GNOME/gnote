@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,7 +34,7 @@ namespace gnote {
     : public NoteManagerBase
   {
   public:
-    typedef shared_ptr<NoteManager> Ptr;
+    typedef std::shared_ptr<NoteManager> Ptr;
     typedef sigc::slot<void, const Note::Ptr &> NoteChangedSlot;
     
     NoteManager(const Glib::ustring &);

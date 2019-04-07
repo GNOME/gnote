@@ -36,7 +36,7 @@ namespace sync {
     : public enable_shared_from_this<SyncUI>
   {
   public:
-    typedef shared_ptr<SyncUI> Ptr;
+    typedef std::shared_ptr<SyncUI> Ptr;
     typedef sigc::slot<void> SlotConnecting;
     typedef sigc::slot<void> SlotIdle;
 

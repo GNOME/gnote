@@ -188,7 +188,7 @@ class NoteBase
   , public sigc::trackable
 {
 public:
-  typedef shared_ptr<NoteBase> Ptr;
+  typedef std::shared_ptr<NoteBase> Ptr;
   typedef weak_ptr<NoteBase> WeakPtr;
   typedef std::list<Ptr> List;
 

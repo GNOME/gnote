@@ -32,9 +32,9 @@ template<class value_t>
 class TrieHit
 {
 public:
-  typedef shared_ptr<TrieHit> Ptr;
+  typedef std::shared_ptr<TrieHit> Ptr;
   typedef std::list<Ptr> List;
-  typedef shared_ptr<List> ListPtr;
+  typedef std::shared_ptr<List> ListPtr;
 
   TrieHit(int s, int e, const Glib::ustring & k, const value_t & v)
     : m_start(s)

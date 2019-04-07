@@ -47,7 +47,7 @@ public:
 class SyncClient
 {
 public:
-  typedef shared_ptr<SyncClient> Ptr;
+  typedef std::shared_ptr<SyncClient> Ptr;
 
   virtual ~SyncClient();
 
@@ -79,7 +79,7 @@ public:
 class SyncServer
 {
 public:
-  typedef shared_ptr<SyncServer> Ptr;
+  typedef std::shared_ptr<SyncServer> Ptr;
 
   virtual ~SyncServer();
 

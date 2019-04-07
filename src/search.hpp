@@ -39,7 +39,7 @@ class Search
 {
 public:
   typedef std::multimap<int,Note::Ptr> Results;
-  typedef shared_ptr<Results> ResultsPtr;
+  typedef std::shared_ptr<Results> ResultsPtr;
 
   template<typename T>
   static void split_watching_quotes(std::vector<T> & split,
