@@ -33,7 +33,7 @@ namespace gnote {
 namespace sync {
 
   class SyncUI
-    : public enable_shared_from_this<SyncUI>
+    : public std::enable_shared_from_this<SyncUI>
   {
   public:
     typedef std::shared_ptr<SyncUI> Ptr;

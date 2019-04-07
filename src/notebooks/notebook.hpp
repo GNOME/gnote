@@ -34,7 +34,7 @@ namespace notebooks {
 /// An object that represents a notebook in Tomboy
 /// </summary>
 class Notebook 
-  : public enable_shared_from_this<Notebook>
+  : public std::enable_shared_from_this<Notebook>
 {
 public:
   typedef std::shared_ptr<Notebook> Ptr;

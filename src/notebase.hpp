@@ -184,7 +184,7 @@ private:
 
 
 class NoteBase
-  : public enable_shared_from_this<NoteBase>
+  : public std::enable_shared_from_this<NoteBase>
   , public sigc::trackable
 {
 public:
