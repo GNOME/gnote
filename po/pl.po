@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-06 16:30+0200\n"
-"PO-Revision-Date: 2019-04-06 16:32+0200\n"
+"POT-Creation-Date: 2019-04-08 15:04+0200\n"
+"PO-Revision-Date: 2019-04-08 15:05+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -659,10 +659,18 @@ msgstr ""
 "akceptowaną dodatnią wartością jest 5. Wartość podawana w minutach."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "Online directory URI"
+msgstr "Adres URI katalogu sieciowego"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "URI to online directory where notes are synchronized to."
+msgstr "Adres URI katalogu sieciowego, z którym synchronizować notatki."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Accept SSL Certificates"
 msgstr "Akceptowanie certyfikatów SSL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -670,38 +678,38 @@ msgstr ""
 "Proszę użyć opcji wdfs „-ac”, aby akceptować certyfikaty SSL, bez pytania "
 "użytkownika."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Share URL"
 msgstr "Adres URL udziału"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "Adres URL udziału WebDAV, z którym synchronizować notatki."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Share username"
 msgstr "Nazwa użytkownika udziału"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid "Username to access WebDAV share."
 msgstr "Nazwa użytkownika udziału WebDAV."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid "Timestamp format"
 msgstr "Format znacznika czasu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "Format daty używany do automatycznego wstawiania. Używa formatu strftime(3)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:86
+#: ../data/org.gnome.gnote.gschema.xml.in.h:88
 msgid "Time between checks"
 msgstr "Czas między sprawdzaniem"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+#: ../data/org.gnome.gnote.gschema.xml.in.h:89
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -732,11 +740,11 @@ msgstr "Pomo_c"
 msgid "_About Gnote"
 msgstr "_O programie"
 
-#: ../src/addininfo.cpp:72
+#: ../src/addininfo.cpp:71
 msgid "Failed to load plugin information!"
 msgstr "Wczytanie informacji o wtyczce się nie powiodło."
 
-#: ../src/addininfo.cpp:146
+#: ../src/addininfo.cpp:145
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Niezgodna wtyczka %s: oczekiwano %s, otrzymano %s"
@@ -897,6 +905,7 @@ msgstr ""
 "Eksportuje poszczególne notatki jako zadania programu Getting Things GNOME"
 
 #: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:3
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:3
 #: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:3
 #: ../src/addins/statistics/statistics.desktop.in.in.h:3
 msgid "Aurimas Černius"
@@ -968,24 +977,26 @@ msgstr "Nie można wyeksportować: %s"
 msgid "Could not save the file \"%1\""
 msgstr "Nie można zapisać pliku „%1”"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:103
 msgid "_Folder Path:"
 msgstr "Ścieżka do _katalogu:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:109
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
 msgid "Select Synchronization Folder..."
 msgstr "Wybór katalogu synchronizacji…"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:135
 msgid "Folder path field is empty."
 msgstr "Pole ścieżki katalogu jest puste."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:141
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:142
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:140
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Podana ścieżka do katalogu nie istnieje i nie mogła być utworzona."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:209
 msgid "Local Folder"
 msgstr "Katalog lokalny"
 
@@ -1013,6 +1024,26 @@ msgstr "Dodaje styl czcionki o stałej szerokości."
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:57
 msgid "Fixed Wid_th"
 msgstr "Stała _szerokość"
+
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:1
+msgid "Online Directory Sync Service Plugin"
+msgstr "Wtyczka usługi synchronizacji katalogów sieciowych"
+
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:2
+msgid "Synchronize Gnote Notes to an online directory"
+msgstr "Synchronizuje notatki programu Gnote z katalogiem sieciowym"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
+msgid "The URI is empty"
+msgstr "Adres URI jest pusty"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+msgid "URI field is empty."
+msgstr "Pole adresu URI jest puste."
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:206
+msgid "Online Folder"
+msgstr "Katalog sieciowy"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
@@ -1534,13 +1565,13 @@ msgid "Window is not embedded"
 msgstr "Okno nie jest osadzone"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:194 ../src/note.cpp:378
+#: ../src/notebase.cpp:196 ../src/note.cpp:378
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Wyjątek podczas zapisywania notatki: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:438
+#: ../src/notebase.cpp:439
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Zaktualizowanie formatu notatki się nie powiodło: %s"
@@ -2351,12 +2382,12 @@ msgstr "Błąd podczas wczytywania %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Błąd podczas uzyskiwania symbolu „dynamic_module_instanciate”: %s"
 
-#: ../src/sharp/xmlreader.cpp:198
+#: ../src/sharp/xmlreader.cpp:219
 #, c-format
 msgid "XML error: %s"
 msgstr "Błąd XML: %s"
 
-#: ../src/sharp/xmlreader.cpp:198
+#: ../src/sharp/xmlreader.cpp:219
 msgid "unknown parse error"
 msgstr "nieznany błąd przetwarzania"
 
@@ -2368,7 +2399,8 @@ msgstr "%1 się nie powiodło"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Arkusz stylów wynosi NULL, proszę zgłosić błąd"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:377
+#: ../src/synchronization/filesystemsyncserver.cpp:378
+#: ../src/synchronization/filesystemsyncserver.cpp:382
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2377,7 +2409,7 @@ msgstr ""
 "Wyjątek podczas czyszczenia serwera w czasie wysyłania. Spójność serwera "
 "jest w porządku, ale mogły pozostać jakieś nadmiarowe pliki. Błąd: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:617
+#: ../src/synchronization/filesystemsyncserver.cpp:623
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Błąd podczas usuwania poprzedniej blokady synchronizacji „%s”: %s"
