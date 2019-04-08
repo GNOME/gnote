@@ -13,15 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2018-11-11 15:36+0000\n"
-"PO-Revision-Date: 2019-01-27 01:01+0100\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"POT-Creation-Date: 2019-04-06 16:58+0000\n"
+"PO-Revision-Date: 2019-04-08 08:57+0200\n"
+"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
@@ -658,10 +658,19 @@ msgstr ""
 "5. Az érték percekben értendő."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "Online directory URI"
+msgstr "Online könyvtár URI"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "URI to online directory where notes are synchronized to."
+msgstr ""
+"Az online könyvtár URI-ja, ahova a jegyzetek szinkronizálásra kerülnek."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Accept SSL Certificates"
 msgstr "SSL tanúsítványok elfogadása"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -669,64 +678,64 @@ msgstr ""
 "A „-ac” wdfs kapcsoló használata SSL tanúsítványok elfogadására a "
 "felhasználó megkérdezése nélkül."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Share URL"
 msgstr "Megosztási URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "WebDAV megosztás, ahova a jegyzetek szinkronizálásra kerülnek."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Share username"
 msgstr "Megosztás felhasználóneve"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid "Username to access WebDAV share."
 msgstr "Felhasználónév a WebDAV megosztás eléréséhez."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid "Timestamp format"
 msgstr "Időbélyeg formátuma"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "Az időbélyeghez használt dátumformátum."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:86
+#: ../data/org.gnome.gnote.gschema.xml.in.h:88
 msgid "Time between checks"
 msgstr "Ellenőrzések közötti idő"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+#: ../data/org.gnome.gnote.gschema.xml.in.h:89
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
 "A jegyzetkönyvtárak ellenőrzései közötti idő (másodpercben). A minimális "
 "érték 5."
 
-#: ../src/actionmanager.cpp:135 ../src/notewindow.cpp:312
+#: ../src/actionmanager.cpp:134 ../src/notewindow.cpp:312
 msgid "_New Note"
 msgstr "Ú_j jegyzet"
 
-#: ../src/actionmanager.cpp:136 ../src/notewindow.cpp:314
+#: ../src/actionmanager.cpp:135 ../src/notewindow.cpp:314
 msgid "New _Window"
 msgstr "Új _ablak"
 
-#: ../src/actionmanager.cpp:137
+#: ../src/actionmanager.cpp:136
 msgid "_Preferences"
 msgstr "_Beállítások"
 
-#: ../src/actionmanager.cpp:138
+#: ../src/actionmanager.cpp:137
 msgid "_Shortcuts"
 msgstr "Gy_orsbillentyűk"
 
-#: ../src/actionmanager.cpp:139
+#: ../src/actionmanager.cpp:138
 msgid "_Help"
 msgstr "_Súgó"
 
-#: ../src/actionmanager.cpp:140
+#: ../src/actionmanager.cpp:139
 msgid "_About Gnote"
 msgstr "A Gnote _névjegye"
 
@@ -892,6 +901,7 @@ msgid "Exports individual notes as Getting Things GNOME tasks"
 msgstr "Az egyes jegyzetek exportálása Getting Things GNOME feladatokká."
 
 #: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:3
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:3
 #: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:3
 #: ../src/addins/statistics/statistics.desktop.in.in.h:3
 msgid "Aurimas Černius"
@@ -963,25 +973,27 @@ msgstr "Nem sikerült az exportálás: %s"
 msgid "Could not save the file \"%1\""
 msgstr "A(z) „%1” fájl mentése meghiúsult"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:103
 msgid "_Folder Path:"
 msgstr "Ma_ppaútvonal:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:109
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
 msgid "Select Synchronization Folder..."
 msgstr "Szinkronizálási mappa kiválasztása…"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:135
 msgid "Folder path field is empty."
 msgstr "A mappaútvonal mező üres."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:141
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:142
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:140
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
 "A megadott mappaútvonal nem létezik, és a Gnote nem volt képes létrehozni."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:209
 msgid "Local Folder"
 msgstr "Helyi mappa"
 
@@ -1009,6 +1021,26 @@ msgstr "Rögzített szélességű betűtípus hozzáadása."
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:57
 msgid "Fixed Wid_th"
 msgstr "_Rögzített szélességű"
+
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:1
+msgid "Online Directory Sync Service Plugin"
+msgstr "Online könyvtár szinkronizációs szolgáltatás bővítmény"
+
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:2
+msgid "Synchronize Gnote Notes to an online directory"
+msgstr "A Gnote jegyzetek szinkronizálása egy online könyvtárral"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
+msgid "The URI is empty"
+msgstr "Az URI üres"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+msgid "URI field is empty."
+msgstr "Az URI mező üres."
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:206
+msgid "Online Folder"
+msgstr "Online mappa"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
@@ -1193,7 +1225,7 @@ msgstr "Speciális jegyzetek"
 msgid "Show special notes, that are otherwise hidden"
 msgstr "Speciális, általában elrejtett jegyzetek megjelenítése"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:70
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:73
 msgid "Show Statistics"
 msgstr "Statisztikák megjelenítése"
 
@@ -1418,11 +1450,11 @@ msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>\n"
 "Kéménczy Kálmán <kkemenczy at novell dot com>\n"
+"Laza Bálint <laza at szentkoronaradio dot com>\n"
+"Meskó Balázs <mesko.balazs at fsf dot hu>\n"
+"Nyitrai István <sianis at gmail dot com>\n"
 "Török Gábor <gabo at linuxportal dot hu>\n"
-"Balint Laza <laza at szentkoronaradio dot com>\n"
-"István Nyitrai <sianis at gmail dot com>\n"
-"Balázs Úr <urbalazs at gmail dot com>\n"
-"Meskó Balázs <meskobalazs at gmail dot com>"
+"Úr Balázs <balazs at urbalazs dot hu>"
 
 #: ../src/gnote.cpp:289
 msgid ""
@@ -1831,31 +1863,31 @@ msgstr "Jegyzet neve"
 msgid "Ad_vanced"
 msgstr "Spe_ciális"
 
-#: ../src/notewindow.cpp:317
+#: ../src/notewindow.cpp:316
 msgid "_Undo"
 msgstr "_Visszavonás"
 
-#: ../src/notewindow.cpp:319
+#: ../src/notewindow.cpp:318
 msgid "_Redo"
 msgstr "Új_ra"
 
-#: ../src/notewindow.cpp:323 ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:320 ../src/notewindow.cpp:385
 msgid "_Link to New Note"
 msgstr "_Hivatkozás egy új jegyzetre"
 
-#: ../src/notewindow.cpp:343
+#: ../src/notewindow.cpp:322
 msgid "_Important"
 msgstr "_Fontos"
 
-#: ../src/notewindow.cpp:344
+#: ../src/notewindow.cpp:332
 msgid "_Delete…"
 msgstr "_Törlés…"
 
-#: ../src/notewindow.cpp:432
+#: ../src/notewindow.cpp:421
 msgid "Set properties of text"
 msgstr "Szöveg beállításai"
 
-#: ../src/notewindow.cpp:446
+#: ../src/notewindow.cpp:435
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1863,67 +1895,67 @@ msgstr ""
 "Ez a jegyzet egy sablon jegyzet. A normál jegyzetek alap tartalmát határozza "
 "meg, és nem jelenik meg a jegyzet menüben vagy a keresés ablakban."
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:438
 msgid "Convert to regular note"
 msgstr "Átalakítás normál jegyzetté"
 
-#: ../src/notewindow.cpp:452
+#: ../src/notewindow.cpp:441
 msgid "Save Si_ze"
 msgstr "_Méret mentése"
 
-#: ../src/notewindow.cpp:456
+#: ../src/notewindow.cpp:445
 msgid "Save Se_lection"
 msgstr "_Kijelölés mentése"
 
-#: ../src/notewindow.cpp:460
+#: ../src/notewindow.cpp:449
 msgid "Save _Title"
 msgstr "_Cím mentése"
 
-#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1077
+#: ../src/notewindow.cpp:551 ../src/notewindow.cpp:1066
 msgid "Cannot create note"
 msgstr "Nem hozható létre jegyzet"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:836
 msgid "_Bold"
 msgstr "_Félkövér"
 
-#: ../src/notewindow.cpp:848
+#: ../src/notewindow.cpp:837
 msgid "_Italic"
 msgstr "_Dőlt"
 
-#: ../src/notewindow.cpp:849
+#: ../src/notewindow.cpp:838
 msgid "_Strikeout"
 msgstr "Á_thúzott"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:842
 msgid "_Highlight"
 msgstr "_Kiemelés"
 
-#: ../src/notewindow.cpp:856
+#: ../src/notewindow.cpp:845
 msgid "_Normal"
 msgstr "N_ormál"
 
-#: ../src/notewindow.cpp:857
+#: ../src/notewindow.cpp:846
 msgid "S_mall"
 msgstr "Ki_csi"
 
-#: ../src/notewindow.cpp:858
+#: ../src/notewindow.cpp:847
 msgid "_Large"
 msgstr "_Nagy"
 
-#: ../src/notewindow.cpp:859
+#: ../src/notewindow.cpp:848
 msgid "Hu_ge"
 msgstr "Óriá_si"
 
-#: ../src/notewindow.cpp:881
+#: ../src/notewindow.cpp:870
 msgid "⦁ Bullets"
 msgstr "⦁ Felsorolás"
 
-#: ../src/notewindow.cpp:883
+#: ../src/notewindow.cpp:872
 msgid "→ Increase indent"
 msgstr "→ Behúzás növelése"
 
-#: ../src/notewindow.cpp:885
+#: ../src/notewindow.cpp:874
 msgid "← Decrease indent"
 msgstr "← Behúzás csökkentése"
 
@@ -2201,7 +2233,11 @@ msgstr "_Következő találat"
 msgid "Find _Previous"
 msgstr "_Előző találat"
 
-#: ../src/recentchanges.cpp:797
+#: ../src/recentchanges.cpp:799
+msgid "Expected widget to be a sub-menu!"
+msgstr "A várt felületi elem egy almenü."
+
+#: ../src/recentchanges.cpp:804
 msgid "No configured actions"
 msgstr "Nincsenek beállított műveletek"
 
@@ -2281,22 +2317,22 @@ msgstr "_Sablonjegyzet megnyitása"
 msgid "_New..."
 msgstr "Ú_j…"
 
-#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
-#: ../src/searchnoteswidget.cpp:1524
+#: ../src/searchnoteswidget.cpp:1502 ../src/searchnoteswidget.cpp:1515
+#: ../src/searchnoteswidget.cpp:1526
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "A beállítás (%s) feldolgozása meghiúsult (érték: %s):"
 
-#: ../src/searchnoteswidget.cpp:1501
+#: ../src/searchnoteswidget.cpp:1503
 msgid "Expected format 'column:order'"
 msgstr "A várt formátum: „oszlop:sorrend”"
 
-#: ../src/searchnoteswidget.cpp:1514
+#: ../src/searchnoteswidget.cpp:1516
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Ismeretlen oszlop: %s"
 
-#: ../src/searchnoteswidget.cpp:1525
+#: ../src/searchnoteswidget.cpp:1527
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ismeretlen sorrend: %s"
@@ -2339,12 +2375,12 @@ msgstr "Hiba %s betöltésekor"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Hiba a dynamic_module_instanciate szimbólum lekérésekor: %s"
 
-#: ../src/sharp/xmlreader.cpp:198
+#: ../src/sharp/xmlreader.cpp:219
 #, c-format
 msgid "XML error: %s"
 msgstr "XML-hiba: %s"
 
-#: ../src/sharp/xmlreader.cpp:198
+#: ../src/sharp/xmlreader.cpp:219
 msgid "unknown parse error"
 msgstr "ismeretlen feldolgozási hiba"
 
@@ -2356,7 +2392,8 @@ msgstr "%1 meghiúsult"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stíluslap, küldjön hibajelentést"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:377
+#: ../src/synchronization/filesystemsyncserver.cpp:378
+#: ../src/synchronization/filesystemsyncserver.cpp:382
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2366,7 +2403,7 @@ msgstr ""
 "integritása hibátlan, de néhány fölösleges fájl jelen lehet. A hibaüzenet: "
 "%s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:617
+#: ../src/synchronization/filesystemsyncserver.cpp:623
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Hiba a régi szinkronizációs zár („%s”) törlésekor: %s"
@@ -2480,7 +2517,7 @@ msgstr "A jegyzetek szinkronizálása…"
 
 #: ../src/synchronization/syncdialog.cpp:490
 msgid "This may take a while, kick back and enjoy!"
-msgstr "Ez eltarthat egy ideig, kis türelmet"
+msgstr "Ez eltarthat egy ideig, kis türelmet."
 
 #: ../src/synchronization/syncdialog.cpp:492
 msgid "Connecting to the server..."
@@ -2755,7 +2792,7 @@ msgstr ""
 msgid "Note title taken"
 msgstr "A jegyzet neve foglalt"
 
-#: ../src/watchers.cpp:315
+#: ../src/watchers.cpp:314
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
 
@@ -2766,4 +2803,3 @@ msgstr "Hivatkozás cí_mének másolása"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Hivatkozás megnyitása"
-
