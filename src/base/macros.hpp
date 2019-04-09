@@ -32,7 +32,6 @@
 #if __cplusplus < 201103L
   #error "C++11 support is required"
 #else
-  #include <memory>
   #include <string>
 #endif
 
@@ -45,11 +44,5 @@
 
 #define TO_STRING(x) std::to_string(x)
 #define STRING_TO_INT(x) std::stoi(x)
-
-using std::shared_ptr;
-using std::weak_ptr;
-using std::enable_shared_from_this;
-using std::dynamic_pointer_cast;
-using std::static_pointer_cast;
 
 #endif
