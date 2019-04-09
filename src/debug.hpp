@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013 Aurimas Cernius
+ * Copyright (C) 2012-2013,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,12 +20,6 @@
 
 #ifndef __UTILS_DEBUG_H__
 #define __UTILS_DEBUG_H__
-
-#ifdef __GNUC__
-// we have to mark this as a system header because otherwise GCC barfs 
-// on variadic macros.
-#pragma GCC system_header
-#endif
 
 #include <assert.h>
 #include "base/macros.hpp"
