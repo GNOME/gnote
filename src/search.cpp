@@ -56,7 +56,7 @@ namespace gnote {
     Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
     for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
-      Note::Ptr note(static_pointer_cast<Note>(iter));
+      Note::Ptr note(std::static_pointer_cast<Note>(iter));
 
       // Skip template notes
       if (note->contains_tag (template_tag)) {

@@ -228,10 +228,10 @@ namespace sync {
       for(auto & iter : noteUpdates) {
         if(!find_note_by_uuid(iter.second.m_uuid) != 0) {
           NoteBase::Ptr existingNote = note_mgr().find(iter.second.m_title);
-          if(existingNote != 0 && !iter.second.basically_equal_to(static_pointer_cast<Note>(existingNote))) {
+          if(existingNote != 0 && !iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote))) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(static_pointer_cast<Note>(existingNote), iter.second, noteUpdateTitles);
+              m_sync_ui->note_conflict_detected(std::static_pointer_cast<Note>(existingNote), iter.second, noteUpdateTitles);
             }
           }
         }
@@ -255,21 +255,21 @@ namespace sync {
           existingNote = note_mgr().find(iter.second.m_title);
           if(existingNote != 0) {
             DBG_OUT("SyncManager: Deleting auto-generated note: %s", iter.second.m_title.c_str());
-            delete_note_in_main_thread(static_pointer_cast<Note>(existingNote));
+            delete_note_in_main_thread(std::static_pointer_cast<Note>(existingNote));
           }
           create_note_in_main_thread(iter.second);
         }
         else if(existingNote->metadata_change_date() <= m_client->last_sync_date()
-                || iter.second.basically_equal_to(static_pointer_cast<Note>(existingNote))) {
+                || iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote))) {
           // Existing note hasn't been modified since last sync; simply update it from server
-          update_note_in_main_thread(static_pointer_cast<Note>(existingNote), iter.second);
+          update_note_in_main_thread(std::static_pointer_cast<Note>(existingNote), iter.second);
         }
         else {
           // Logger.Debug ("Sync: Late conflict detection for '{0}'", noteUpdate.Title);
           DBG_OUT("SyncManager: Content conflict in note update for note '%s'", iter.second.m_title.c_str());
           // Note already exists locally, but has been modified since last sync; prompt user
           if(m_sync_ui != 0) {
-            m_sync_ui->note_conflict_detected(static_pointer_cast<Note>(existingNote), iter.second, noteUpdateTitles);
+            m_sync_ui->note_conflict_detected(std::static_pointer_cast<Note>(existingNote), iter.second, noteUpdateTitles);
           }
 
           // Note has been deleted or okay'd for overwrite
@@ -277,7 +277,7 @@ namespace sync {
           if(existingNote == 0)
             create_note_in_main_thread(iter.second);
           else
-            update_note_in_main_thread(static_pointer_cast<Note>(existingNote), iter.second);
+            update_note_in_main_thread(std::static_pointer_cast<Note>(existingNote), iter.second);
         }
       }
 
@@ -294,7 +294,7 @@ namespace sync {
       // and upload new or modified ones to the server
       std::list<Note::Ptr> newOrModifiedNotes;
       for(const NoteBase::Ptr & iter : note_mgr().get_notes()) {
-        Note::Ptr note = static_pointer_cast<Note>(iter);
+        Note::Ptr note = std::static_pointer_cast<Note>(iter);
         if(m_client->get_revision(note) == -1) {
           // This is a new note that has never been synchronized to the server
           // TODO: *OR* this is a note that we lost revision info for!!!
@@ -488,7 +488,7 @@ namespace sync {
       bool client_has_updates = m_client->deleted_note_titles().size() > 0;
       if(!client_has_updates) {
         for(const NoteBase::Ptr & iter : note_mgr().get_notes()) {
-          Note::Ptr note = static_pointer_cast<Note>(iter);
+          Note::Ptr note = std::static_pointer_cast<Note>(iter);
           if(m_client->get_revision(note) == -1 || note->metadata_change_date() > m_client->last_sync_date()) {
             client_has_updates = true;
             break;
@@ -611,7 +611,7 @@ namespace sync {
     }
     catch(...)
     {} // TODO: Handle exception in case that serverNote.XmlContent is invalid XML
-    m_client->set_revision(static_pointer_cast<Note>(localNote), serverNote.m_latest_revision);
+    m_client->set_revision(std::static_pointer_cast<Note>(localNote), serverNote.m_latest_revision);
 
     // Update dialog's sync status
     if(m_sync_ui != 0) {
@@ -695,7 +695,7 @@ namespace sync {
 
       // Delete notes locally that have been deleted on the server
       for(const NoteBase::Ptr & iter : localNotes) {
-        Note::Ptr note = static_pointer_cast<Note>(iter);
+        Note::Ptr note = std::static_pointer_cast<Note>(iter);
 	if(SyncManager::_obj().m_client->get_revision(note) != -1
 	   && std::find(serverNotes.begin(), serverNotes.end(), note->id()) == serverNotes.end()) {
 	  if(m_sync_ui != 0) {

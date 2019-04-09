@@ -204,7 +204,7 @@ namespace gnote {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
       return "";
-    return static_pointer_cast<Note>(note)->text_content();
+    return std::static_pointer_cast<Note>(note)->text_content();
   }
 
 
@@ -258,7 +258,7 @@ bool RemoteControl::HideNote(const Glib::ustring& uri)
   if (!note)
     return false;
 
-  NoteWindow *window = static_pointer_cast<Note>(note)->get_window();
+  NoteWindow *window = std::static_pointer_cast<Note>(note)->get_window();
   if(window == NULL) {
     return true;
   }
@@ -343,7 +343,7 @@ bool RemoteControl::SetNoteContents(const Glib::ustring& uri,
     return false;
   }
 
-  static_pointer_cast<Note>(note)->set_text_content(text_contents);
+  std::static_pointer_cast<Note>(note)->set_text_content(text_contents);
   return true;
 }
 
@@ -393,7 +393,7 @@ void RemoteControl::on_note_saved(const NoteBase::Ptr & note)
 
 MainWindow & RemoteControl::present_note(const NoteBase::Ptr & note)
 {
-  return *MainWindow::present_default(static_pointer_cast<Note>(note));
+  return *MainWindow::present_default(std::static_pointer_cast<Note>(note));
 }
 
 

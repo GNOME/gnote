@@ -72,7 +72,7 @@ namespace gnote {
 
      iter = m_notebooks->append();
      iter->set_value(0, m_active_notes);
-     static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
+     std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
        .connect(sigc::mem_fun(*this, &NotebookManager::on_active_notes_size_changed));
 
       
@@ -503,7 +503,7 @@ namespace gnote {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
       if(notebook == m_active_notes) {
-        return !static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->empty();
+        return !std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->empty();
       }
 
       return true;

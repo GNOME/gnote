@@ -347,7 +347,7 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
   old_notebook->get_tag()->get_notes(notes);
   for(NoteBase *note : notes) {
     notebooks::NotebookManager::obj().move_note_to_notebook(
-      static_pointer_cast<Note>(note->shared_from_this()), new_notebook);
+      std::static_pointer_cast<Note>(note->shared_from_this()), new_notebook);
   }
   notebooks::NotebookManager::obj().delete_notebook(old_notebook);
   Gtk::TreeIter iter;
@@ -514,7 +514,7 @@ void SearchNotesWidget::update_results()
   int cnt = 0;
 
   for(const NoteBase::Ptr & note_iter : m_manager.get_notes()) {
-    Note::Ptr note(static_pointer_cast<Note>(note_iter));
+    Note::Ptr note(std::static_pointer_cast<Note>(note_iter));
     Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true);
 
     Gtk::TreeIter iter = m_store->append();
@@ -1155,20 +1155,20 @@ int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter & a, const Gtk::T
 void SearchNotesWidget::on_note_deleted(const NoteBase::Ptr & note)
 {
   restore_matches_window();
-  delete_note(static_pointer_cast<Note>(note));
+  delete_note(std::static_pointer_cast<Note>(note));
 }
 
 void SearchNotesWidget::on_note_added(const NoteBase::Ptr & note)
 {
   restore_matches_window();
-  add_note(static_pointer_cast<Note>(note));
+  add_note(std::static_pointer_cast<Note>(note));
 }
 
 void SearchNotesWidget::on_note_renamed(const NoteBase::Ptr & note,
                                         const Glib::ustring &)
 {
   restore_matches_window();
-  rename_note(static_pointer_cast<Note>(note));
+  rename_note(std::static_pointer_cast<Note>(note));
 }
 
 void SearchNotesWidget::on_note_saved(const NoteBase::Ptr&)
@@ -1321,7 +1321,7 @@ void SearchNotesWidget::new_note()
   notebooks::Notebook::Ptr notebook = get_selected_notebook();
   if(!notebook || dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
     // Just create a standard note (not in a notebook)
-    note = static_pointer_cast<Note>(m_manager.create());
+    note = std::static_pointer_cast<Note>(m_manager.create());
   }
   else {
     // Look for the template note and create a new note

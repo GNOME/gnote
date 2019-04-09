@@ -135,7 +135,7 @@ namespace notebooks {
     templ_tag->get_notes(notes);
     for(NoteBase *n : notes) {
       if(n->contains_tag(notebook_tag)) {
-        note = static_pointer_cast<Note>(n->shared_from_this());
+        note = std::static_pointer_cast<Note>(n->shared_from_this());
         break;
       }
     }
@@ -157,7 +157,7 @@ namespace notebooks {
       note = m_note_manager.create(title, NoteManager::get_note_template_content (title));
           
       // Select the initial text
-      NoteBuffer::Ptr buffer = static_pointer_cast<Note>(note)->get_buffer();
+      NoteBuffer::Ptr buffer = std::static_pointer_cast<Note>(note)->get_buffer();
       buffer->select_note_body();
 
       // Flag this as a template note
@@ -173,7 +173,7 @@ namespace notebooks {
       note->queue_save (CONTENT_CHANGED);
     }
 
-    return static_pointer_cast<Note>(note);
+    return std::static_pointer_cast<Note>(note);
   }
 
   Note::Ptr Notebook::create_notebook_note()
@@ -187,7 +187,7 @@ namespace notebooks {
     // Add the notebook tag
     note->add_tag(m_tag);
 
-    return static_pointer_cast<Note>(note);
+    return std::static_pointer_cast<Note>(note);
   }
 
   /// <summary>

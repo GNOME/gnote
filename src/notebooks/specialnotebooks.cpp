@@ -38,7 +38,7 @@ Tag::Ptr SpecialNotebook::get_tag() const
 
 Note::Ptr SpecialNotebook::get_template_note() const
 {
-  return static_pointer_cast<Note>(m_note_manager.get_or_create_template_note());
+  return std::static_pointer_cast<Note>(m_note_manager.get_or_create_template_note());
 }
 
 
@@ -166,7 +166,7 @@ Glib::RefPtr<Gdk::Pixbuf> ActiveNotesNotebook::get_icon()
 
 void ActiveNotesNotebook::on_note_deleted(const NoteBase::Ptr & note)
 {
-  std::set<Note::Ptr>::iterator iter = m_notes.find(static_pointer_cast<Note>(note));
+  std::set<Note::Ptr>::iterator iter = m_notes.find(std::static_pointer_cast<Note>(note));
   if(iter != m_notes.end()) {
     m_notes.erase(iter);
     signal_size_changed();

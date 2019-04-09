@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2016 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -204,7 +204,7 @@ void SearchProvider::ActivateResult(const Glib::ustring & identifier,
 {
   gnote::NoteBase::Ptr note = m_manager.find_by_uri(identifier);
   if(note != 0) {
-    gnote::IGnote::obj().open_note(static_pointer_cast<gnote::Note>(note));
+    gnote::IGnote::obj().open_note(std::static_pointer_cast<gnote::Note>(note));
   }
 }
 

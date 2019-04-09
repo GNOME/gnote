@@ -353,7 +353,7 @@ namespace gnote {
   {
     // Prompt for note deletion
     std::list<Note::Ptr> single_note_list;
-    single_note_list.push_back(static_pointer_cast<Note>(m_note.shared_from_this()));
+    single_note_list.push_back(std::static_pointer_cast<Note>(m_note.shared_from_this()));
     noteutils::show_deletion_dialog(single_note_list, dynamic_cast<Gtk::Window*>(host()));
   }
 
@@ -560,7 +560,7 @@ namespace gnote {
       m_note.get_buffer()->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
     }
 
-    MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), static_pointer_cast<Note>(match));
+    MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), std::static_pointer_cast<Note>(match));
   }
 
   void NoteWindow::open_help_activate()
@@ -1076,7 +1076,7 @@ namespace gnote {
     }
 
     MainWindow::present_in(*dynamic_cast<MainWindow*>(m_buffer->note().get_window()->host()),
-                           static_pointer_cast<Note>(match));
+                           std::static_pointer_cast<Note>(match));
   }
 
   //

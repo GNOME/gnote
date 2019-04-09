@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -971,7 +971,7 @@ namespace gnote {
     NoteBase::Ptr template_note = m_note_manager.get_or_create_template_note();
 
     // Open the template note
-    IGnote::obj().open_note(static_pointer_cast<Note>(template_note));
+    IGnote::obj().open_note(std::static_pointer_cast<Note>(template_note));
   }
 
 

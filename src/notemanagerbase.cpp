@@ -39,7 +39,7 @@ namespace gnote {
 
 bool compare_dates(const NoteBase::Ptr & a, const NoteBase::Ptr & b)
 {
-  return (static_pointer_cast<Note>(a)->change_date() > static_pointer_cast<Note>(b)->change_date());
+  return (std::static_pointer_cast<Note>(a)->change_date() > std::static_pointer_cast<Note>(b)->change_date());
 }
 
 
@@ -319,7 +319,7 @@ NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const Glib::
   NoteBase::Ptr new_note = create_new_note(title, content, guid);
 
   // Select the inital text so typing will overwrite the body text
-  static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
+  std::static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
 
   return new_note;
 }

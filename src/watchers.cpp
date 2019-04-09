@@ -862,7 +862,7 @@ namespace gnote {
 
     // Highlight previously unlinked text
     if (contains_text (renamed->get_title())) {
-      highlight_note_in_block(static_pointer_cast<Note>(renamed), get_buffer()->begin(), get_buffer()->end());
+      highlight_note_in_block(std::static_pointer_cast<Note>(renamed), get_buffer()->begin(), get_buffer()->end());
     }
   }
 
@@ -1048,7 +1048,7 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      MainWindow::present_default(static_pointer_cast<Note>(link));
+      MainWindow::present_default(std::static_pointer_cast<Note>(link));
       return true;
     }
 

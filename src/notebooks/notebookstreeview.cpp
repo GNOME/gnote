@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014 Aurimas Cernius
+ * Copyright (C) 2011-2014,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -88,7 +88,7 @@ namespace gnote {
 
         DBG_OUT ("Dropped into notebook: %s", note->get_title().c_str());
 
-        destNotebook->add_note(static_pointer_cast<Note>(note));
+        destNotebook->add_note(std::static_pointer_cast<Note>(note));
       }
 
       context->drag_finish (true, false, time_);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -121,7 +121,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
                                    const Glib::ustring & old_title,
                                    const NoteBase::Ptr & renamed_note)
   : Gtk::Dialog(_("Rename Note Links?"),
-                *dynamic_cast<Gtk::Window*>(static_pointer_cast<Note>(renamed_note)->get_window()->host()),
+                *dynamic_cast<Gtk::Window*>(std::static_pointer_cast<Note>(renamed_note)->get_window()->host()),
                 false)
   , m_notes_model(Gtk::ListStore::create(m_model_column_record))
   , m_dont_rename_button(_("_Don't Rename Links"), true)
@@ -361,7 +361,7 @@ void NoteRenameDialog::on_notes_view_row_activated(
   if (!note)
     return;
 
-  MainWindow *window = MainWindow::present_default(static_pointer_cast<Note>(note));
+  MainWindow *window = MainWindow::present_default(std::static_pointer_cast<Note>(note));
   if(window) {
     window->set_search_text(Glib::ustring::compose("\"%1\"", old_title));
     window->show_search_bar();

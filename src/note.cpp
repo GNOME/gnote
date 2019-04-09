@@ -550,7 +550,7 @@ namespace gnote {
   void Note::process_rename_link_update(const Glib::ustring & old_title)
   {
     NoteBase::List linking_notes = manager().get_notes_linking_to(old_title);
-    const Note::Ptr self = static_pointer_cast<Note>(shared_from_this());
+    const Note::Ptr self = std::static_pointer_cast<Note>(shared_from_this());
 
     if (!linking_notes.empty()) {
       Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
@@ -761,7 +761,7 @@ namespace gnote {
       m_note_window_embedded = true;
     }
 
-    notebooks::NotebookManager::obj().active_notes_notebook()->add_note(static_pointer_cast<Note>(shared_from_this()));
+    notebooks::NotebookManager::obj().active_notes_notebook()->add_note(std::static_pointer_cast<Note>(shared_from_this()));
   }
 
   void Note::on_note_window_foregrounded()

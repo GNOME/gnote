@@ -222,7 +222,7 @@ namespace gnote {
     // changed when loading addins.
     NoteBase::List notesCopy(m_notes);
     for(const NoteBase::Ptr & iter : notesCopy) {
-      Note::Ptr note(static_pointer_cast<Note>(iter));
+      Note::Ptr note(std::static_pointer_cast<Note>(iter));
 
       m_addin_mgr->load_addins_for_note (note);
     }
@@ -288,7 +288,7 @@ namespace gnote {
     NoteBase::Ptr new_note = NoteManagerBase::create_new_note(title, guid);
 
     // Select the inital text so typing will overwrite the body text
-    static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
+    std::static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
 
     return new_note;
   }
@@ -300,7 +300,7 @@ namespace gnote {
     NoteBase::Ptr new_note = NoteManagerBase::create_new_note(title, xml_content, guid);
 
     // Load all the addins for the new note
-    m_addin_mgr->load_addins_for_note(static_pointer_cast<Note>(new_note));
+    m_addin_mgr->load_addins_for_note(std::static_pointer_cast<Note>(new_note));
 
     return new_note;
   }
@@ -315,7 +315,7 @@ namespace gnote {
     NoteBase::Ptr template_note = NoteManagerBase::get_or_create_template_note();
 
     // Select the initial text
-    Glib::RefPtr<NoteBuffer> buffer = static_pointer_cast<Note>(template_note)->get_buffer();
+    Glib::RefPtr<NoteBuffer> buffer = std::static_pointer_cast<Note>(template_note)->get_buffer();
     buffer->select_note_body();
 
     return template_note;
@@ -339,7 +339,7 @@ namespace gnote {
       new_note->data().width() = template_note->data().width();
     }
 
-    Glib::RefPtr<Gtk::TextBuffer> buffer = static_pointer_cast<Note>(new_note)->get_buffer();
+    Glib::RefPtr<Gtk::TextBuffer> buffer = std::static_pointer_cast<Note>(new_note)->get_buffer();
     Gtk::TextIter cursor, selection;
     Tag::Ptr template_save_selection = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
     if(template_note->contains_tag(template_save_selection)) {

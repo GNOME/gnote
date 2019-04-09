@@ -347,7 +347,7 @@ namespace gnote {
       search_wgt->new_note();
     }
     else {
-      present_note(static_pointer_cast<Note>(m_note_manager.create()));
+      present_note(std::static_pointer_cast<Note>(m_note_manager.create()));
     }
   }
 

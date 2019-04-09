@@ -140,7 +140,7 @@ namespace gnote {
         return;
       }
 
-      NotebookManager::obj().signal_note_removed_from_notebook() (*static_pointer_cast<Note>(note), notebook);
+      NotebookManager::obj().signal_note_removed_from_notebook() (*std::static_pointer_cast<Note>(note), notebook);
     }
 
     void NotebookApplicationAddin::on_note_added(const NoteBase::Ptr & note)
