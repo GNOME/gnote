@@ -26,10 +26,9 @@
 
 #include <list>
 #include <map>
+#include <memory>
 
 #include <glibmm/ustring.h>
-
-#include "base/macros.hpp"
 
 namespace gnote {
 
