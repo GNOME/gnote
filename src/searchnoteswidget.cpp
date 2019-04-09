@@ -124,7 +124,7 @@ Glib::ustring SearchNotesWidget::get_name() const
 {
   notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
   if(!selected_notebook
-     || dynamic_pointer_cast<notebooks::AllNotesNotebook>(selected_notebook)) {
+     || std::dynamic_pointer_cast<notebooks::AllNotesNotebook>(selected_notebook)) {
     return "";
   }
   return selected_notebook->get_name();
@@ -178,7 +178,7 @@ void SearchNotesWidget::perform_search()
 
   // Search using the currently selected notebook
   notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
-  if(dynamic_pointer_cast<notebooks::SpecialNotebook>(selected_notebook)) {
+  if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(selected_notebook)) {
     selected_notebook = notebooks::Notebook::Ptr();
   }
 
@@ -296,7 +296,7 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
   }
 
   Gtk::CellRendererPixbuf *crp = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
-  notebooks::SpecialNotebook::Ptr special_nb = dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook);
+  notebooks::SpecialNotebook::Ptr special_nb = std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook);
   if(special_nb) {
     crp->property_pixbuf() = special_nb->get_icon();
   }
@@ -319,7 +319,7 @@ void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer * rendere
 
   crt->property_text() = notebook->get_name();
 
-  if(dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
+  if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
     // Bold the "Special" Notebooks
     crt->property_markup() = Glib::ustring::compose("<span weight=\"bold\">%1</span>",
                                  notebook->get_name());
@@ -336,7 +336,7 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
     return;
   }
   notebooks::Notebook::Ptr old_notebook = this->get_selected_notebook();
-  if(dynamic_pointer_cast<notebooks::SpecialNotebook>(old_notebook)) {
+  if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(old_notebook)) {
     return;
   }
   notebooks::Notebook::Ptr new_notebook = notebooks::NotebookManager::obj()
@@ -387,7 +387,7 @@ void SearchNotesWidget::on_notebook_selection_changed()
       m_selected_tags.insert(notebook->get_tag());
     }
     bool allow_edit = false;
-    if(dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
+    if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
       m_delete_notebook_action->set_sensitive(false);
       m_rename_notebook_action->set_sensitive(false);
     }
@@ -479,7 +479,7 @@ void SearchNotesWidget::select_all_notes_notebook()
   for(Gtk::TreeIter iter = model->children().begin(); iter; ++iter) {
     notebooks::Notebook::Ptr notebook;
     iter->get_value(0, notebook);
-    if(dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook) != NULL) {
+    if(std::dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook) != NULL) {
       m_notebooksTree->get_selection()->select(iter);
       break;
     }
@@ -1319,7 +1319,7 @@ void SearchNotesWidget::new_note()
 {
   Note::Ptr note;
   notebooks::Notebook::Ptr notebook = get_selected_notebook();
-  if(!notebook || dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
+  if(!notebook || std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
     // Just create a standard note (not in a notebook)
     note = std::static_pointer_cast<Note>(m_manager.create());
   }

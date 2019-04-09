@@ -440,8 +440,8 @@ namespace gnote {
       if (!notebook_a || !notebook_b)
         return 0;
 
-      SpecialNotebook::Ptr spec_a = dynamic_pointer_cast<SpecialNotebook>(notebook_a);
-      SpecialNotebook::Ptr spec_b = dynamic_pointer_cast<SpecialNotebook>(notebook_b);
+      SpecialNotebook::Ptr spec_a = std::dynamic_pointer_cast<SpecialNotebook>(notebook_a);
+      SpecialNotebook::Ptr spec_b = std::dynamic_pointer_cast<SpecialNotebook>(notebook_b);
       if(spec_a != 0 && spec_b != 0) {
         return strcmp(spec_a->get_normalized_name().c_str(), spec_b->get_normalized_name().c_str());
       }
@@ -492,7 +492,7 @@ namespace gnote {
     {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
-      if (!notebook || dynamic_pointer_cast<SpecialNotebook>(notebook)) {
+      if (!notebook || std::dynamic_pointer_cast<SpecialNotebook>(notebook)) {
         return false;
       }
       return true;

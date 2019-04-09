@@ -74,7 +74,7 @@ namespace gnote {
       
       Notebook::Ptr destNotebook;
       iter->get_value(0, destNotebook);
-      if(dynamic_pointer_cast<AllNotesNotebook>(destNotebook)) {
+      if(std::dynamic_pointer_cast<AllNotesNotebook>(destNotebook)) {
         context->drag_finish (false, false, time_);
         return;
       }
@@ -112,7 +112,7 @@ namespace gnote {
       
       Notebook::Ptr destNotebook;
       iter->get_value(0, destNotebook);
-      if(dynamic_pointer_cast<AllNotesNotebook>(destNotebook)) {
+      if(std::dynamic_pointer_cast<AllNotesNotebook>(destNotebook)) {
         gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
         return true;
       }
