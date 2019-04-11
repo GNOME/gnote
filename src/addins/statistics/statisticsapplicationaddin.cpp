@@ -23,7 +23,6 @@
 #include "iactionmanager.hpp"
 #include "ignote.hpp"
 #include "statisticsapplicationaddin.hpp"
-#include "utils.hpp"
 
 
 namespace statistics {

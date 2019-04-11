@@ -28,7 +28,6 @@
 #include "mainwindow.hpp"
 #include "notemanagerbase.hpp"
 #include "preferences.hpp"
-#include "utils.hpp"
 
 namespace backlinks {
 

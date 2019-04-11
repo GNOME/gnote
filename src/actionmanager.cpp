@@ -63,7 +63,6 @@
 #include "debug.hpp"
 #include "actionmanager.hpp"
 #include "iconmanager.hpp"
-#include "utils.hpp"
 
 namespace gnote {
 
