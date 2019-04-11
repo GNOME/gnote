@@ -61,9 +61,6 @@ namespace gnote {
     void main_context_invoke(const sigc::slot<void> & slot);
     void main_context_call(const sigc::slot<void> & slot);
 
-    void add_item_to_ordered_map(std::map<int, Gtk::Widget*> & dest, int order, Gtk::Widget *item);
-    void merge_ordered_maps(std::map<int, Gtk::Widget*> & dest, const std::map<int, Gtk::Widget*> & adds);
-
     class GlobalKeybinder
     {
     public:

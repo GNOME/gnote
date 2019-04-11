@@ -269,21 +269,6 @@ namespace gnote {
     }
 
 
-    void add_item_to_ordered_map(std::map<int, Gtk::Widget*> & dest, int order, Gtk::Widget *item)
-    {
-      for(; dest.find(order) != dest.end(); ++order);
-      dest[order] = item;
-    }
-
-
-    void merge_ordered_maps(std::map<int, Gtk::Widget*> & dest, const std::map<int, Gtk::Widget*> & adds)
-    {
-      for(std::map<int, Gtk::Widget*>::const_iterator iter = adds.begin(); iter != adds.end(); ++iter) {
-        add_item_to_ordered_map(dest, iter->first, iter->second);
-      }
-    }
-
-
     void GlobalKeybinder::add_accelerator(const sigc::slot<void> & handler, guint key, 
                                           Gdk::ModifierType modifiers, Gtk::AccelFlags flags)
     {
