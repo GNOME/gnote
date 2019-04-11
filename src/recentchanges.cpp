@@ -790,7 +790,7 @@ namespace gnote {
 
       menu->add(*menu_box);
       for(; iter != items.end(); ++iter) {
-          utils::PopoverSubmenu *submenu = dynamic_cast<utils::PopoverSubmenu*>(iter->widget);
+          PopoverSubmenu *submenu = dynamic_cast<PopoverSubmenu*>(iter->widget);
           if(submenu) {
             menu->add(*manage(iter->widget));
             menu->child_property_submenu(*iter->widget) = submenu->name();

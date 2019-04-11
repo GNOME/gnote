@@ -17,10 +17,41 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <gtkmm/label.h>
+#include <gtkmm/modelbutton.h>
+
 #include "iactionmanager.hpp"
 #include "popoverwidgets.hpp"
 
 namespace gnote {
+  namespace {
+    class PopoverSubmenuBox
+      : public Gtk::Box
+      , public PopoverSubmenu
+    {
+    public:
+      PopoverSubmenuBox(const Glib::ustring & submenu)
+        : Gtk::Box(Gtk::ORIENTATION_VERTICAL)
+        , PopoverSubmenu(submenu)
+      {
+        utils::set_common_popover_widget_props(*this);
+      }
+    };
+
+
+    void set_common_popover_button_props(Gtk::ModelButton & button)
+    {
+      button.set_use_underline(true);
+      button.property_margin_top() = 3;
+      button.property_margin_bottom() = 3;
+      auto lbl = dynamic_cast<Gtk::Label*>(button.get_child());
+      if(lbl) {
+        lbl->set_xalign(0.0f);
+      }
+      utils::set_common_popover_widget_props(button);
+    }
+  }
+
 
 const int APP_SECTION_NEW = 1;
 const int APP_SECTION_MANAGE = 2;
@@ -46,6 +77,50 @@ PopoverWidget PopoverWidget::create_for_note(int ord, Gtk::Widget *w)
 PopoverWidget PopoverWidget::create_custom_section(Gtk::Widget *w)
 {
   return PopoverWidget(APP_CUSTOM_SECTION, 0, w);
+}
+
+namespace utils {
+
+  Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label)
+  {
+    Gtk::ModelButton *item = new Gtk::ModelButton;
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(item->gobj()), action.c_str());
+    item->set_label(label);
+    set_common_popover_button_props(*item);
+    return item;
+  }
+
+
+  Gtk::Widget * create_popover_submenu_button(const Glib::ustring & submenu, const Glib::ustring & label)
+  {
+    Gtk::ModelButton *button = new Gtk::ModelButton;
+    button->property_menu_name() = submenu;
+    button->set_label(label);
+    set_common_popover_button_props(*button);
+    return button;
+  }
+
+
+  Gtk::Box * create_popover_submenu(const Glib::ustring & name)
+  {
+    return new PopoverSubmenuBox(name);
+  }
+
+
+  void set_common_popover_widget_props(Gtk::Widget & widget)
+  {
+    widget.property_hexpand() = true;
+  }
+
+  void set_common_popover_widget_props(Gtk::Box & widget)
+  {
+    widget.property_margin_top() = 9;
+    widget.property_margin_bottom() = 9;
+    widget.property_margin_left() = 12;
+    widget.property_margin_right() = 12;
+    set_common_popover_widget_props(static_cast<Gtk::Widget&>(widget));
+  }
+
 }
 
 }

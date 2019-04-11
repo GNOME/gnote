@@ -20,6 +20,8 @@
 #ifndef _POPOVERWIDGETS_HPP_
 #define _POPOVERWIDGETS_HPP_
 
+#include <gtkmm/box.h>
+
 namespace gnote {
 
 extern const int APP_SECTION_NEW;
@@ -77,6 +79,30 @@ struct PopoverWidget
       return secondary_order < other.secondary_order;
     }
 };
+
+class PopoverSubmenu
+{
+public:
+  PopoverSubmenu(const Glib::ustring & name)
+    : m_name(name)
+  {}
+
+  const Glib::ustring & name() const
+    {
+      return m_name;
+    }
+private:
+  const Glib::ustring m_name;
+};
+
+
+namespace utils {
+  Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label);
+  Gtk::Widget * create_popover_submenu_button(const Glib::ustring & submenu, const Glib::ustring & label);
+  Gtk::Box * create_popover_submenu(const Glib::ustring & name);
+  void set_common_popover_widget_props(Gtk::Widget & widget);
+  void set_common_popover_widget_props(Gtk::Box & widget);
+}
 
 }
 

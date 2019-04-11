@@ -61,29 +61,8 @@ namespace gnote {
     void main_context_invoke(const sigc::slot<void> & slot);
     void main_context_call(const sigc::slot<void> & slot);
 
-    Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label);
-    Gtk::Widget * create_popover_submenu_button(const Glib::ustring & submenu, const Glib::ustring & label);
-    Gtk::Box * create_popover_submenu(const Glib::ustring & name);
-    void set_common_popover_widget_props(Gtk::Widget & widget);
-    void set_common_popover_widget_props(Gtk::Box & widget);
-
     void add_item_to_ordered_map(std::map<int, Gtk::Widget*> & dest, int order, Gtk::Widget *item);
     void merge_ordered_maps(std::map<int, Gtk::Widget*> & dest, const std::map<int, Gtk::Widget*> & adds);
-
-    class PopoverSubmenu
-    {
-    public:
-      PopoverSubmenu(const Glib::ustring & name)
-        : m_name(name)
-      {}
-
-      const Glib::ustring & name() const
-        {
-          return m_name;
-        }
-    private:
-      const Glib::ustring m_name;
-    };
 
     class GlobalKeybinder
     {
