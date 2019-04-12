@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2018-11-11 15:36+0000\n"
-"PO-Revision-Date: 2018-11-15 23:32+0700\n"
+"POT-Creation-Date: 2019-04-06 16:58+0000\n"
+"PO-Revision-Date: 2019-04-12 17:37+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:547
@@ -645,10 +645,18 @@ msgstr ""
 "terkecil yang dapat diterima adalah 5. Nilai dalam menit."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "Online directory URI"
+msgstr "URI direktori daring"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+msgid "URI to online directory where notes are synchronized to."
+msgstr "URL ke direktori daring tempat penyelarasan catatan."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Accept SSL Certificates"
 msgstr "Terima Sertifikat SSL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -656,65 +664,65 @@ msgstr ""
 "Gunakan opsi wdfs \"-ac\" untuk menerima sertifikat SSL tanpa bertanya ke "
 "pengguna."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Share URL"
 msgstr "URL Berbagi"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "URL berbagi WebDAV tempat penyelarasan catatan."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Share username"
 msgstr "Nama pengguna berbagi"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid "Username to access WebDAV share."
 msgstr "Nama pengguna untuk mengakses berbagi WebDAV."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid "Timestamp format"
 msgstr "Format penanda waktu"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "Bentuk tanggal yang dipakai bagi penanda waktu. Mengikuti bentuk strftime(3)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:86
+#: ../data/org.gnome.gnote.gschema.xml.in.h:88
 msgid "Time between checks"
 msgstr "Waktu antara pemeriksaan"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+#: ../data/org.gnome.gnote.gschema.xml.in.h:89
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
 "Selang waktu antara pemeriksaan direktori catatan (dalam detik). Nilai min "
 "adalah 5."
 
-#: ../src/actionmanager.cpp:135 ../src/notewindow.cpp:312
+#: ../src/actionmanager.cpp:134 ../src/notewindow.cpp:312
 msgid "_New Note"
 msgstr "Catata_n Baru"
 
-#: ../src/actionmanager.cpp:136 ../src/notewindow.cpp:314
+#: ../src/actionmanager.cpp:135 ../src/notewindow.cpp:314
 msgid "New _Window"
 msgstr "_Jendela Baru"
 
-#: ../src/actionmanager.cpp:137
+#: ../src/actionmanager.cpp:136
 msgid "_Preferences"
 msgstr "_Preferensi"
 
-#: ../src/actionmanager.cpp:138
+#: ../src/actionmanager.cpp:137
 msgid "_Shortcuts"
 msgstr "Pinta_san"
 
-#: ../src/actionmanager.cpp:139
+#: ../src/actionmanager.cpp:138
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: ../src/actionmanager.cpp:140
+#: ../src/actionmanager.cpp:139
 msgid "_About Gnote"
 msgstr "Tent_ang Gnote"
 
@@ -881,6 +889,7 @@ msgid "Exports individual notes as Getting Things GNOME tasks"
 msgstr "Ekspor catatan individu sebagai tugas Getting Things GNOME"
 
 #: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:3
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:3
 #: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:3
 #: ../src/addins/statistics/statistics.desktop.in.in.h:3
 msgid "Aurimas Černius"
@@ -952,24 +961,26 @@ msgstr "Tak bisa mengekspor: %s"
 msgid "Could not save the file \"%1\""
 msgstr "Tak bisa menyimpan berkas \"%1\""
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:103
 msgid "_Folder Path:"
 msgstr "Path _Folder:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:109
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
 msgid "Select Synchronization Folder..."
 msgstr "Pilih Folder Penyelarasan..."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:135
 msgid "Folder path field is empty."
 msgstr "Ruas path folder kosong."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:141
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:142
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:140
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Path folder yang diberikan tak ada, dan Gnote tak bisa membuatnya."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:209
 msgid "Local Folder"
 msgstr "Folder Lokal"
 
@@ -997,6 +1008,26 @@ msgstr "Menambahkan gaya fonta lebar-tetap."
 #: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:57
 msgid "Fixed Wid_th"
 msgstr "Lebar _Tetap"
+
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:1
+msgid "Online Directory Sync Service Plugin"
+msgstr "Pengaya Layanan URI Direktori Daring"
+
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:2
+msgid "Synchronize Gnote Notes to an online directory"
+msgstr "Selaraskan Catatan Gnote ke direktori daring"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
+msgid "The URI is empty"
+msgstr "URI kosong"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+msgid "URI field is empty."
+msgstr "Ruas URI kosong."
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:206
+msgid "Online Folder"
+msgstr "Folder Daring"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
 #: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
@@ -1180,7 +1211,7 @@ msgstr "Catatan Khusus"
 msgid "Show special notes, that are otherwise hidden"
 msgstr "Tampilkan catatan khusus, yang biasanya tersembunyi"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:70
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:73
 msgid "Show Statistics"
 msgstr "Tampilkan Statistik"
 
@@ -1402,7 +1433,7 @@ msgstr "dan para pengarang asli Tomboy."
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2009-2012, 2014, 2017, 2018.\n"
-"Kukuh Syafat <kukuhsyafaat@gnome.org>, 2017, 2018."
+"Kukuh Syafat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019."
 
 #: ../src/gnote.cpp:289
 msgid ""
@@ -1809,31 +1840,31 @@ msgstr "Judul Catatan"
 msgid "Ad_vanced"
 msgstr "Tingk_at lanjut"
 
-#: ../src/notewindow.cpp:317
+#: ../src/notewindow.cpp:316
 msgid "_Undo"
 msgstr "_Tak Jadi"
 
-#: ../src/notewindow.cpp:319
+#: ../src/notewindow.cpp:318
 msgid "_Redo"
 msgstr "_Jadi Lagi"
 
-#: ../src/notewindow.cpp:323 ../src/notewindow.cpp:396
+#: ../src/notewindow.cpp:320 ../src/notewindow.cpp:385
 msgid "_Link to New Note"
 msgstr "_Taut ke Catatan Baru"
 
-#: ../src/notewindow.cpp:343
+#: ../src/notewindow.cpp:322
 msgid "_Important"
 msgstr "Pent_ing"
 
-#: ../src/notewindow.cpp:344
+#: ../src/notewindow.cpp:332
 msgid "_Delete…"
 msgstr "_Hapus…"
 
-#: ../src/notewindow.cpp:432
+#: ../src/notewindow.cpp:421
 msgid "Set properties of text"
 msgstr "Tata properti teks"
 
-#: ../src/notewindow.cpp:446
+#: ../src/notewindow.cpp:435
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1841,67 +1872,67 @@ msgstr ""
 "Catatan ini adalah catatan templat. Ini menentukan isi baku dari catatan "
 "biasa, dan tak akan muncul di menu catatan atau jendela pencarian."
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:438
 msgid "Convert to regular note"
 msgstr "Konversi ke catatan biasa"
 
-#: ../src/notewindow.cpp:452
+#: ../src/notewindow.cpp:441
 msgid "Save Si_ze"
 msgstr "Simpan _Ukuran"
 
-#: ../src/notewindow.cpp:456
+#: ../src/notewindow.cpp:445
 msgid "Save Se_lection"
 msgstr "Simpan Pi_lihan"
 
-#: ../src/notewindow.cpp:460
+#: ../src/notewindow.cpp:449
 msgid "Save _Title"
 msgstr "Simpan _Judul"
 
-#: ../src/notewindow.cpp:562 ../src/notewindow.cpp:1077
+#: ../src/notewindow.cpp:551 ../src/notewindow.cpp:1066
 msgid "Cannot create note"
 msgstr "Tak dapat membuat catatan"
 
-#: ../src/notewindow.cpp:847
+#: ../src/notewindow.cpp:836
 msgid "_Bold"
 msgstr "Te_bal"
 
-#: ../src/notewindow.cpp:848
+#: ../src/notewindow.cpp:837
 msgid "_Italic"
 msgstr "M_iring"
 
-#: ../src/notewindow.cpp:849
+#: ../src/notewindow.cpp:838
 msgid "_Strikeout"
 msgstr "_Dicoret"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:842
 msgid "_Highlight"
 msgstr "_Penandaan"
 
-#: ../src/notewindow.cpp:856
+#: ../src/notewindow.cpp:845
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:857
+#: ../src/notewindow.cpp:846
 msgid "S_mall"
 msgstr "_Kecil"
 
-#: ../src/notewindow.cpp:858
+#: ../src/notewindow.cpp:847
 msgid "_Large"
 msgstr "_Besar"
 
-#: ../src/notewindow.cpp:859
+#: ../src/notewindow.cpp:848
 msgid "Hu_ge"
 msgstr "Rak_sasa"
 
-#: ../src/notewindow.cpp:881
+#: ../src/notewindow.cpp:870
 msgid "⦁ Bullets"
 msgstr "⦁ Bulet"
 
-#: ../src/notewindow.cpp:883
+#: ../src/notewindow.cpp:872
 msgid "→ Increase indent"
 msgstr "→ Naikkan indentasi"
 
-#: ../src/notewindow.cpp:885
+#: ../src/notewindow.cpp:874
 msgid "← Decrease indent"
 msgstr "← Turunkan indentasi"
 
@@ -2181,7 +2212,11 @@ msgstr "Cari _Lagi"
 msgid "Find _Previous"
 msgstr "Cari ke _Belakang"
 
-#: ../src/recentchanges.cpp:797
+#: ../src/recentchanges.cpp:799
+msgid "Expected widget to be a sub-menu!"
+msgstr "Widget yang diharapkan menjadi sub-menu!"
+
+#: ../src/recentchanges.cpp:804
 msgid "No configured actions"
 msgstr "Tidak ada tindakan yang dikonfigurasi"
 
@@ -2260,22 +2295,22 @@ msgstr "_Buka Templat Catatan"
 msgid "_New..."
 msgstr "_Baru…"
 
-#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
-#: ../src/searchnoteswidget.cpp:1524
+#: ../src/searchnoteswidget.cpp:1502 ../src/searchnoteswidget.cpp:1515
+#: ../src/searchnoteswidget.cpp:1526
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Gagal mengurai pengaturan %s (Nilai: %s):"
 
-#: ../src/searchnoteswidget.cpp:1501
+#: ../src/searchnoteswidget.cpp:1503
 msgid "Expected format 'column:order'"
 msgstr "Format yang diharapkan 'kolom:urutan'"
 
-#: ../src/searchnoteswidget.cpp:1514
+#: ../src/searchnoteswidget.cpp:1516
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Kolom tak dikenal %s"
 
-#: ../src/searchnoteswidget.cpp:1525
+#: ../src/searchnoteswidget.cpp:1527
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Urutan tak dikenal %s"
@@ -2318,12 +2353,12 @@ msgstr "Galat memuat %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Galat saat mengambil simbol dynamic_module_instanciate: %s"
 
-#: ../src/sharp/xmlreader.cpp:198
+#: ../src/sharp/xmlreader.cpp:219
 #, c-format
 msgid "XML error: %s"
 msgstr "Galat XML: %s"
 
-#: ../src/sharp/xmlreader.cpp:198
+#: ../src/sharp/xmlreader.cpp:219
 msgid "unknown parse error"
 msgstr "galat penguraian tak dikenal"
 
@@ -2335,7 +2370,8 @@ msgstr "%1 gagal"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Stylesheet NULL, harap laporkan kutu"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:377
+#: ../src/synchronization/filesystemsyncserver.cpp:378
+#: ../src/synchronization/filesystemsyncserver.cpp:382
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2344,7 +2380,7 @@ msgstr ""
 "Eksepsi ketika pembersihan server ketika mengkomit. Integritas server OK, "
 "tapi mungkin ada beberapa berkas sisa terserak.  Inilah galatnya: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:617
+#: ../src/synchronization/filesystemsyncserver.cpp:623
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Galat saat menghapus kunci penyelarasan lama \"%s\": %s"
@@ -2732,7 +2768,7 @@ msgstr ""
 msgid "Note title taken"
 msgstr "Judul catatan telah terpakai"
 
-#: ../src/watchers.cpp:315
+#: ../src/watchers.cpp:314
 msgid "Check spelling"
 msgstr "Periksa ejaan"
 
