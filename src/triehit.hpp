@@ -23,6 +23,7 @@
 #define __TRIEHIT_HPP_
 
 #include <list>
+#include <memory>
 
 #include <glibmm/ustring.h>
 
