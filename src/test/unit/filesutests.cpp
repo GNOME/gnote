@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2018 Aurimas Cernius
+ * Copyright (C) 2017-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -114,6 +114,26 @@ SUITE(files)
     fclose(file);
 
     file_content = sharp::file_read_all_text(temp_file_name);
+    CHECK_EQUAL("line1\nline2\nline3", file_content);
+  }
+
+  TEST(read_all_text_gio)
+  {
+    Glib::ustring file_content;
+
+    char temp_file_name[] = "/tmp/gnotetestXXXXXX";
+    int fd = mkstemp(temp_file_name);
+    close(fd);
+
+    auto file = Gio::File::create_for_path(temp_file_name);
+    file_content = sharp::file_read_all_text(file);
+    CHECK_EQUAL("", file_content);
+
+    FILE *f = fopen(temp_file_name, "w");
+    fputs("line1\nline2\nline3", f);
+    fclose(f);
+
+    file_content = sharp::file_read_all_text(file);
     CHECK_EQUAL("line1\nline2\nline3", file_content);
   }
 
