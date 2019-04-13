@@ -143,29 +143,21 @@ bool GvfsSyncServiceAddin::save_configuration()
   else {
     // Test creating/writing/deleting a file
     Glib::ustring test_path_base = Glib::build_filename(sync_uri, "test");
-    Glib::ustring test_path = test_path_base;
+    Glib::RefPtr<Gio::File> test_path = Gio::File::create_for_uri(test_path_base);
     int count = 0;
 
     // Get unique new file name
-    while(sharp::file_exists(test_path)) {
-      test_path = test_path_base + TO_STRING(++count);
+    while(test_path->query_exists()) {
+      test_path = Gio::File::create_for_uri(test_path_base + TO_STRING(++count));
     }
 
     // Test ability to create and write
     Glib::ustring test_line = "Testing write capabilities.";
-    sharp::file_write_all_text(test_path, test_line);
+    auto stream = test_path->create_file();
+    stream->write(test_line);
+    stream->close();
 
-    // Test ability to read
-    bool test_file_found = false;
-    std::vector<Glib::RefPtr<Gio::File>> files;
-    sharp::directory_get_files(path, files);
-    for(auto & file : files) {
-      if(file->get_uri() == test_path) {
-        test_file_found = true;
-        break;
-      }
-    }
-    if(!test_file_found) {
+    if(!test_path->query_exists()) {
       throw sharp::Exception("Failure writing test file");
     }
     Glib::ustring line = sharp::file_read_all_text(test_path);
@@ -174,7 +166,9 @@ bool GvfsSyncServiceAddin::save_configuration()
     }
 
     // Test ability to delete
-    sharp::file_delete(test_path);
+    if(!test_path->remove()) {
+      throw sharp::Exception("Failure when trying to remove test file");
+    }
   }
 
   m_uri = sync_uri;
