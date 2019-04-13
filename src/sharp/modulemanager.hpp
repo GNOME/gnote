@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -44,7 +44,7 @@ public:
   ~ModuleManager();
 
   DynamicModule *load_module(const Glib::ustring & module);
-  void load_modules(const std::list<Glib::ustring> & modules);
+  void load_modules(const std::vector<Glib::ustring> & modules);
   
   const ModuleMap & get_modules() const
     { return m_modules; }

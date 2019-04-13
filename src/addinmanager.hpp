@@ -89,7 +89,7 @@ private:
   void load_addin_infos(const Glib::ustring & global_path, const Glib::ustring & local_path);
   void load_addin_infos(const Glib::ustring & path);
   void load_note_addin(const Glib::ustring & id, sharp::IfaceFactoryBase *const f);
-  void get_enabled_addins(std::list<Glib::ustring> & addins) const;
+  std::vector<Glib::ustring> get_enabled_addins() const;
   void initialize_sharp_addins();
   void add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod);
   AddinInfo get_info_for_module(const Glib::ustring & module) const;

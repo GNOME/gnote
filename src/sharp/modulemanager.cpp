@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -81,7 +81,7 @@ namespace sharp {
     return dmod;
   }
 
-  void ModuleManager::load_modules(const std::list<Glib::ustring> & modules)
+  void ModuleManager::load_modules(const std::vector<Glib::ustring> & modules)
   {
     for(auto module : modules) {
       load_module(module);

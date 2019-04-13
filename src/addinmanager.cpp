@@ -227,8 +227,9 @@ namespace {
     }
   }
 
-  void AddinManager::get_enabled_addins(std::list<Glib::ustring> & addins) const
+  std::vector<Glib::ustring> AddinManager::get_enabled_addins() const
   {
+    std::vector<Glib::ustring> addins;
     bool global_addins_prefs_loaded = true;
     Glib::KeyFile global_addins_prefs;
     try {
@@ -248,6 +249,8 @@ namespace {
           addins.push_back(iter->second.addin_module());
       }
     }
+
+    return addins;
   }
 
   void AddinManager::initialize_sharp_addins()
@@ -281,8 +284,7 @@ namespace {
     Glib::ustring local_path = m_gnote_conf_dir + "/addins";
 
     load_addin_infos(global_path, local_path);
-    std::list<Glib::ustring> enabled_addins;
-    get_enabled_addins(enabled_addins);
+    std::vector<Glib::ustring> enabled_addins = get_enabled_addins();
     m_module_manager.load_modules(enabled_addins);
 
     const sharp::ModuleMap & modules = m_module_manager.get_modules();
