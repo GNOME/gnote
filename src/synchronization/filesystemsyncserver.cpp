@@ -358,8 +358,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
       if(old_manifest_file->query_exists()) {
         // TODO: Do step #8 as described in http://bugzilla.gnome.org/show_bug.cgi?id=321037#c17
         // Like this?
-        std::vector<Glib::RefPtr<Gio::File>> files;
-        sharp::directory_get_files(old_manifest_file->get_parent(), files);
+        std::vector<Glib::RefPtr<Gio::File>> files = sharp::directory_get_files(old_manifest_file->get_parent());
         for(auto file : files) {
           Glib::ustring fileGuid = file->get_basename();
           if(std::find(m_deleted_notes.begin(), m_deleted_notes.end(), fileGuid) != m_deleted_notes.end()

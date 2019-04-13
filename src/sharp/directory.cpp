@@ -141,11 +141,9 @@ namespace sharp {
     directory_get_files_with_ext(dir, "", files);
   }
 
-  void directory_get_files(const Glib::RefPtr<Gio::File> & dir,
-                           std::vector<Glib::RefPtr<Gio::File>> & files)
+  std::vector<Glib::RefPtr<Gio::File>> directory_get_files(const Glib::RefPtr<Gio::File> & dir)
   {
-    auto ret = directory_get_files_with_ext(dir, "");
-    std::swap(files, ret);
+    return directory_get_files_with_ext(dir, "");
   }
 
   bool directory_exists(const Glib::ustring & dir)
@@ -229,8 +227,7 @@ namespace sharp {
   bool directory_delete(const Glib::RefPtr<Gio::File> & dir, bool recursive)
   {
     if(recursive) {
-      std::vector<Glib::RefPtr<Gio::File>> files;
-      directory_get_files(dir, files);
+      std::vector<Glib::RefPtr<Gio::File>> files = directory_get_files(dir);
       for(auto file : files) {
         if(!file->remove()) {
           ERR_OUT("Failed to remove file %s", file->get_uri().c_str());

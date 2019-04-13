@@ -53,8 +53,7 @@ namespace sharp {
 
   void directory_get_files(const Glib::ustring & dir,
                            std::list<Glib::ustring> & files);
-  void directory_get_files(const Glib::RefPtr<Gio::File> & dir,
-                           std::vector<Glib::RefPtr<Gio::File>> & files);
+  std::vector<Glib::RefPtr<Gio::File>> directory_get_files(const Glib::RefPtr<Gio::File> & dir);
 
   bool directory_exists(const Glib::ustring & dir);
   bool directory_exists(const Glib::RefPtr<Gio::File> & dir);
