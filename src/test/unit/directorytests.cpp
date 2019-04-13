@@ -40,8 +40,7 @@ SUITE(directory)
   {
     auto dir = Gio::File::create_for_path(Glib::build_filename(Glib::path_get_dirname(__FILE__), "nonexistent"));
 
-    std::vector<Glib::RefPtr<Gio::File>> directories;
-    sharp::directory_get_directories(dir, directories);
+    std::vector<Glib::RefPtr<Gio::File>> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(0, directories.size());
   }
 
@@ -58,8 +57,7 @@ SUITE(directory)
   {
     auto dir = Gio::File::create_for_path(__FILE__);
 
-    std::vector<Glib::RefPtr<Gio::File>> directories;
-    sharp::directory_get_directories(dir, directories);
+    std::vector<Glib::RefPtr<Gio::File>> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(0, directories.size());
   }
 
@@ -76,8 +74,7 @@ SUITE(directory)
   {
     auto dir = Gio::File::create_for_path(Glib::build_filename(Glib::path_get_dirname(__FILE__), ".deps"));
 
-    std::vector<Glib::RefPtr<Gio::File>> directories;
-    sharp::directory_get_directories(dir, directories);
+    std::vector<Glib::RefPtr<Gio::File>> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(0, directories.size());
   }
 
@@ -94,8 +91,7 @@ SUITE(directory)
   {
     auto dir = Gio::File::create_for_path(Glib::path_get_dirname(__FILE__));
 
-    std::vector<Glib::RefPtr<Gio::File>> directories;
-    sharp::directory_get_directories(dir, directories);
+    std::vector<Glib::RefPtr<Gio::File>> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(1, directories.size());
   }
 
@@ -122,8 +118,7 @@ SUITE(directory)
 
     auto file = Gio::File::create_for_path(dir);
 
-    std::vector<Glib::RefPtr<Gio::File>> dirsf;
-    sharp::directory_get_directories(file, dirsf);
+    std::vector<Glib::RefPtr<Gio::File>> dirsf = sharp::directory_get_directories(file);
 
     CHECK(0 < dirss.size());
     CHECK_EQUAL(dirss.size(), dirsf.size());

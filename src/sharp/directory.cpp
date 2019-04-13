@@ -114,11 +114,11 @@ namespace sharp {
     }
   }
 
-  void directory_get_directories(const Glib::RefPtr<Gio::File> & dir,
-                                 std::vector<Glib::RefPtr<Gio::File>> & files)
+  std::vector<Glib::RefPtr<Gio::File>> directory_get_directories(const Glib::RefPtr<Gio::File> & dir)
   {
+    std::vector<Glib::RefPtr<Gio::File>> files;
     if(!directory_exists(dir)) {
-      return;
+      return files;
     }
 
     auto children = dir->enumerate_children();
@@ -132,6 +132,8 @@ namespace sharp {
         files.push_back(child);
       }
     }
+
+    return files;
   }
 
   void directory_get_files(const Glib::ustring & dir, std::list<Glib::ustring> & files)
@@ -235,8 +237,7 @@ namespace sharp {
           return false;
         }
       }
-      files.clear();
-      directory_get_directories(dir, files);
+      files = directory_get_directories(dir);
       for(auto d : files) {
         if(!directory_delete(d, true)) {
           ERR_OUT("Failed to remove directory %s", d->get_uri().c_str());

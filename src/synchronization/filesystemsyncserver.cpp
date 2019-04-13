@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2018 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -418,8 +418,7 @@ int FileSystemSyncServer::latest_revision()
   while (!foundValidManifest) {
     if(latestRev < 0) {
       // Look for the highest revision parent path
-      std::vector<Glib::RefPtr<Gio::File>> directories;
-      sharp::directory_get_directories(m_server_path, directories);
+      std::vector<Glib::RefPtr<Gio::File>> directories = sharp::directory_get_directories(m_server_path);
       for(auto & iter : directories) {
         try {
           int currentRevParentDir = str_to_int(sharp::file_filename(iter));
@@ -432,8 +431,7 @@ int FileSystemSyncServer::latest_revision()
       }
 
       if(latestRevDir >= 0) {
-        directories.clear();
-        sharp::directory_get_directories(m_server_path->get_child(TO_STRING(latestRevDir)), directories);
+        directories = sharp::directory_get_directories(m_server_path->get_child(TO_STRING(latestRevDir)));
         for(auto & iter : directories) {
           try {
             int currentRev = str_to_int(iter->get_basename());
