@@ -65,8 +65,7 @@ namespace gnote {
     m_addin_mgr = create_addin_manager ();
 
     if (is_first_run) {
-      std::vector<ImportAddin*> l;
-      m_addin_mgr->get_import_addins(l);
+      std::vector<ImportAddin*> l = m_addin_mgr->get_import_addins();
       bool has_imported = false;
 
       if(l.empty()) {

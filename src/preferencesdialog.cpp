@@ -125,8 +125,7 @@ namespace gnote {
                            _("Plugins"));
 
       // TODO: Figure out a way to have these be placed in a specific order
-    std::vector<PreferenceTabAddin *> tabAddins;
-    m_addin_manager.get_preference_tab_addins(tabAddins);
+    std::vector<PreferenceTabAddin*> tabAddins = m_addin_manager.get_preference_tab_addins();
     for(auto tabAddin : tabAddins) {
       DBG_OUT("Adding preference tab addin: %s", 
               typeid(*tabAddin).name());
@@ -431,8 +430,7 @@ namespace gnote {
 
     // Populate the store with all the available SyncServiceAddins
     m_sync_addin_store = Gtk::ListStore::create(m_sync_addin_store_record);
-    std::vector<sync::SyncServiceAddin*> addins;
-    m_addin_manager.get_sync_service_addins(addins);
+    std::vector<sync::SyncServiceAddin*> addins = m_addin_manager.get_sync_service_addins();
     std::sort(addins.begin(), addins.end(), CompareSyncAddinsByName());
     for(auto addin : addins) {
       if(addin->initialized()) {
@@ -1343,8 +1341,7 @@ namespace gnote {
 
   void PreferencesDialog::update_sync_services()
   {
-    std::vector<sync::SyncServiceAddin*> new_addins;
-    m_addin_manager.get_sync_service_addins(new_addins);
+    std::vector<sync::SyncServiceAddin*> new_addins = m_addin_manager.get_sync_service_addins();
     auto remove_iter = new_addins.begin();
     while(remove_iter != new_addins.end()) {
       if(!(*remove_iter)->initialized()) {

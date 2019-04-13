@@ -413,21 +413,21 @@ namespace {
     return NULL;
   }
 
-  void AddinManager::get_preference_tab_addins(std::vector<PreferenceTabAddin *> &l) const
+  std::vector<PreferenceTabAddin*> AddinManager::get_preference_tab_addins() const
   {
-    l = sharp::map_get_values(m_pref_tab_addins);
+    return sharp::map_get_values(m_pref_tab_addins);
   }
 
 
-  void AddinManager::get_sync_service_addins(std::vector<sync::SyncServiceAddin *> &l) const
+  std::vector<sync::SyncServiceAddin*> AddinManager::get_sync_service_addins() const
   {
-    l = sharp::map_get_values(m_sync_service_addins);
+    return sharp::map_get_values(m_sync_service_addins);
   }
 
 
-  void AddinManager::get_import_addins(std::vector<ImportAddin*> & l) const
+  std::vector<ImportAddin*> AddinManager::get_import_addins() const
   {
-    l = sharp::map_get_values(m_import_addins);
+    return sharp::map_get_values(m_import_addins);
   }
 
   void AddinManager::initialize_application_addins() const
