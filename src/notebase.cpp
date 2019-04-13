@@ -370,9 +370,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
 
 std::vector<Tag::Ptr> NoteBase::get_tags() const
 {
-  std::vector<Tag::Ptr> l;
-  sharp::map_get_values(data_synchronizer().data().tags(), l);
-  return l;
+  return sharp::map_get_values(data_synchronizer().data().tags());
 }
 
 const NoteData & NoteBase::data() const

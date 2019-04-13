@@ -415,19 +415,19 @@ namespace {
 
   void AddinManager::get_preference_tab_addins(std::vector<PreferenceTabAddin *> &l) const
   {
-    sharp::map_get_values(m_pref_tab_addins, l);
+    l = sharp::map_get_values(m_pref_tab_addins);
   }
 
 
   void AddinManager::get_sync_service_addins(std::vector<sync::SyncServiceAddin *> &l) const
   {
-    sharp::map_get_values(m_sync_service_addins, l);
+    l = sharp::map_get_values(m_sync_service_addins);
   }
 
 
   void AddinManager::get_import_addins(std::vector<ImportAddin*> & l) const
   {
-    sharp::map_get_values(m_import_addins, l);
+    l = sharp::map_get_values(m_import_addins);
   }
 
   void AddinManager::initialize_application_addins() const

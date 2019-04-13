@@ -78,8 +78,7 @@ namespace gnote {
 
   void Tag::get_notes(std::list<NoteBase*> & l) const
   {
-    std::vector<NoteBase*> notes;
-    sharp::map_get_values(m_notes, notes);
+    std::vector<NoteBase*> notes = sharp::map_get_values(m_notes);
     l.insert(l.end(), notes.begin(), notes.end());
   }
 

@@ -35,25 +35,29 @@ namespace sharp {
 
   /** get all the keys from the map. */
   template <typename _Map>
-  void map_get_keys(const _Map & m, std::vector<typename _Map::mapped_type> & l) 
+  std::vector<typename _Map::mapped_type> map_get_keys(const _Map & m)
   {
-    l.clear();
+    std::vector<typename _Map::mapped_type> l;
     for(typename _Map::const_iterator iter = m.begin();
         iter != m.end(); ++iter) {
       l.push_back(iter->first);
     }
+
+    return l;
   }
 
 
   /** get all the mapped elements from the map. */
   template <typename _Map>
-  void map_get_values(const _Map & m, std::vector<typename _Map::mapped_type> & l)
+  std::vector<typename _Map::mapped_type> map_get_values(const _Map & m)
   {
-    l.clear();
+    std::vector<typename _Map::mapped_type> l;
     for(typename _Map::const_iterator iter = m.begin();
         iter != m.end(); ++iter) {
       l.push_back(iter->second);
     }
+
+    return l;
   }
 
 
