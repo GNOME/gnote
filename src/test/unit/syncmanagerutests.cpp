@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2018 Aurimas Cernius
+ * Copyright (C) 2017-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -120,7 +120,7 @@ SUITE(SyncManagerTests)
   };
 
 #define FIRST_SYNC(sync_manager, note_manager, manifest, client, ui) \
-  test::SyncClient::Ptr client = dynamic_pointer_cast<test::SyncClient>(sync_manager->get_client(manifest)); \
+  test::SyncClient::Ptr client = std::dynamic_pointer_cast<test::SyncClient>(sync_manager->get_client(manifest)); \
   gnote::sync::SilentUI::Ptr ui = gnote::sync::SilentUI::create(*note_manager); \
   sync_manager->perform_synchronization(ui);
 

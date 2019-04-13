@@ -30,7 +30,7 @@ class SyncClient
   : public gnote::sync::GnoteSyncClient
 {
 public:
-  typedef shared_ptr<SyncClient> Ptr;
+  typedef std::shared_ptr<SyncClient> Ptr;
 
   SyncClient(gnote::NoteManagerBase & manager);
 
