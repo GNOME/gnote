@@ -116,9 +116,8 @@ namespace {
     }
     sharp::map_delete_all_second(m_addin_prefs);
     sharp::map_delete_all_second(m_import_addins);
-    for(std::list<sharp::IfaceFactoryBase*>::iterator iter = m_builtin_ifaces.begin();
-        iter != m_builtin_ifaces.end(); ++iter) {
-      delete *iter;
+    for(auto iter : m_builtin_ifaces) {
+      delete iter;
     }
   }
 

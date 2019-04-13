@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2015,2017 Aurimas Cernius
+ * Copyright (C) 2010,2012-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -101,7 +101,7 @@ private:
   Glib::ustring m_addins_prefs_dir;
   Glib::ustring m_addins_prefs_file;
   sharp::ModuleManager m_module_manager;
-  std::list<sharp::IfaceFactoryBase*> m_builtin_ifaces;
+  std::vector<sharp::IfaceFactoryBase*> m_builtin_ifaces;
   AddinInfoMap m_addin_infos;
   /// Key = TypeExtensionNode.Id
   typedef std::map<Glib::ustring, ApplicationAddin*> AppAddinMap;
