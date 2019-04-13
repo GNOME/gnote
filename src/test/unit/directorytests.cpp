@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2018 Aurimas Cernius
+ * Copyright (C) 2018-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -144,8 +144,7 @@ SUITE(directory)
   {
     auto dir = Gio::File::create_for_path(Glib::build_filename(Glib::path_get_dirname(__FILE__), "nonexistent"));
 
-    std::vector<Glib::RefPtr<Gio::File>> files;
-    sharp::directory_get_files_with_ext(dir, "", files);
+    std::vector<Glib::RefPtr<Gio::File>> files = sharp::directory_get_files_with_ext(dir, "");
     CHECK_EQUAL(0, files.size());
   }
 
@@ -162,8 +161,7 @@ SUITE(directory)
   {
     auto dir = Gio::File::create_for_path(__FILE__);
 
-    std::vector<Glib::RefPtr<Gio::File>> files;
-    sharp::directory_get_files_with_ext(dir, "", files);
+    std::vector<Glib::RefPtr<Gio::File>> files = sharp::directory_get_files_with_ext(dir, "");
     CHECK_EQUAL(0, files.size());
   }
 
@@ -182,8 +180,7 @@ SUITE(directory)
     }
 
     auto file = Gio::File::create_for_path(dir);
-    std::vector<Glib::RefPtr<Gio::File>> filesf;
-    sharp::directory_get_files_with_ext(file, ext, filesf);
+    std::vector<Glib::RefPtr<Gio::File>> filesf = sharp::directory_get_files_with_ext(file, ext);
     CHECK_EQUAL(filess.size(), filesf.size());
     remove_matching_files(filesf, filess);
     CHECK_EQUAL(0, filess.size());

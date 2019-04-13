@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017-2018 Aurimas Cernius
+ * Copyright (C) 2012,2017-2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -44,9 +44,8 @@ namespace sharp {
   void directory_get_files_with_ext(const Glib::ustring & dir,
                                     const Glib::ustring & ext,
                                     std::list<Glib::ustring> & files);
-  void directory_get_files_with_ext(const Glib::RefPtr<Gio::File> & dir,
-                                    const Glib::ustring & ext,
-                                    std::vector<Glib::RefPtr<Gio::File>> & files);
+  std::vector<Glib::RefPtr<Gio::File>> directory_get_files_with_ext(const Glib::RefPtr<Gio::File> & dir,
+                                    const Glib::ustring & ext);
 
   void directory_get_directories(const Glib::ustring & dir,
                                  std::list<Glib::ustring> & files);

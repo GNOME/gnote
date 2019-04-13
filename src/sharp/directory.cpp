@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017-2018 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017-2019 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -63,12 +63,12 @@ namespace sharp {
     }
   }
 
-  void directory_get_files_with_ext(const Glib::RefPtr<Gio::File> & dir,
-                                    const Glib::ustring & ext,
-                                    std::vector<Glib::RefPtr<Gio::File>> & files)
+  std::vector<Glib::RefPtr<Gio::File>> directory_get_files_with_ext(const Glib::RefPtr<Gio::File> & dir,
+                                    const Glib::ustring & ext)
   {
+    std::vector<Glib::RefPtr<Gio::File>> files;
     if(!directory_exists(dir)) {
-      return;
+      return files;
     }
 
     auto children = dir->enumerate_children();
@@ -92,6 +92,8 @@ namespace sharp {
         }
       }
     }
+
+    return files;
   }
 
   void directory_get_directories(const Glib::ustring & dir,
@@ -140,7 +142,8 @@ namespace sharp {
   void directory_get_files(const Glib::RefPtr<Gio::File> & dir,
                            std::vector<Glib::RefPtr<Gio::File>> & files)
   {
-    directory_get_files_with_ext(dir, "", files);
+    auto ret = directory_get_files_with_ext(dir, "");
+    std::swap(files, ret);
   }
 
   bool directory_exists(const Glib::ustring & dir)
