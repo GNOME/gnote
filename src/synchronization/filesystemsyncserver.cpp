@@ -160,8 +160,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
   else {
     // Empty the temp dir
     try {
-      std::list<Glib::ustring> files;
-      sharp::directory_get_files(tempPath, files);
+      std::vector<Glib::ustring> files = sharp::directory_get_files(tempPath);
       for(auto & iter : files) {
         sharp::file_delete(iter);
       }

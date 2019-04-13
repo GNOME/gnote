@@ -182,8 +182,7 @@ namespace gnote {
 
   void NoteManager::load_notes()
   {
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(notes_dir(), ".note", files);
+    std::vector<Glib::ustring> files = sharp::directory_get_files_with_ext(notes_dir(), ".note");
 
     for(auto file_path : files) {
       try {
@@ -230,8 +229,7 @@ namespace gnote {
 
   void NoteManager::migrate_notes(const Glib::ustring & old_note_dir)
   {
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(old_note_dir, ".note", files);
+    std::vector<Glib::ustring> files = sharp::directory_get_files_with_ext(old_note_dir, ".note");
 
     for(auto file : files) {
       const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(file);
@@ -243,12 +241,10 @@ namespace gnote {
       src->copy(dest, Gio::FILE_COPY_NONE);
     }
 
-    files.clear();
     const Glib::ustring old_backup_dir = Glib::build_filename(
                                          old_note_dir,
                                          "Backup");
-    sharp::directory_get_files_with_ext(old_backup_dir,
-                                        ".note", files);
+    files = sharp::directory_get_files_with_ext(old_backup_dir, ".note");
 
     for(auto file : files) {
       const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(file);

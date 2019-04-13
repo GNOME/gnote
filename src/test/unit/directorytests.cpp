@@ -31,8 +31,7 @@ SUITE(directory)
   {
     Glib::ustring dir = Glib::build_filename(Glib::path_get_dirname(__FILE__), "nonexistent");
 
-    std::list<Glib::ustring> directories;
-    sharp::directory_get_directories(dir, directories);
+    std::vector<Glib::ustring> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(0, directories.size());
   }
 
@@ -48,8 +47,7 @@ SUITE(directory)
   {
     Glib::ustring dir(__FILE__);
 
-    std::list<Glib::ustring> directories;
-    sharp::directory_get_directories(dir, directories);
+    std::vector<Glib::ustring> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(0, directories.size());
   }
 
@@ -65,8 +63,7 @@ SUITE(directory)
   {
     Glib::ustring dir = Glib::build_filename(Glib::path_get_dirname(__FILE__), ".deps");
 
-    std::list<Glib::ustring> directories;
-    sharp::directory_get_directories(dir, directories);
+    std::vector<Glib::ustring> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(0, directories.size());
   }
 
@@ -82,8 +79,7 @@ SUITE(directory)
   {
     Glib::ustring dir = Glib::path_get_dirname(__FILE__);
 
-    std::list<Glib::ustring> directories;
-    sharp::directory_get_directories(dir, directories);
+    std::vector<Glib::ustring> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(1, directories.size());
   }
 
@@ -96,7 +92,7 @@ SUITE(directory)
   }
 
   void remove_matching_files(const std::vector<Glib::RefPtr<Gio::File>> & dirsf,
-      std::list<Glib::ustring> & dirss)
+      std::vector<Glib::ustring> & dirss)
   {
     for(auto f : dirsf) {
       auto name = Glib::path_get_basename(f->get_path());
@@ -113,8 +109,7 @@ SUITE(directory)
   {
     auto dir = Glib::path_get_dirname(Glib::path_get_dirname(__FILE__));
 
-    std::list<Glib::ustring> dirss;
-    sharp::directory_get_directories(dir, dirss);
+    std::vector<Glib::ustring> dirss = sharp::directory_get_directories(dir);
 
     auto file = Gio::File::create_for_path(dir);
 
@@ -130,8 +125,7 @@ SUITE(directory)
   {
     Glib::ustring dir = Glib::build_filename(Glib::path_get_dirname(__FILE__), "nonexistent");
 
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(dir, "", files);
+    std::vector<Glib::ustring> files = sharp::directory_get_files_with_ext(dir, "");
     CHECK_EQUAL(0, files.size());
   }
 
@@ -147,8 +141,7 @@ SUITE(directory)
   {
     Glib::ustring dir(__FILE__);
 
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(dir, "", files);
+    std::vector<Glib::ustring> files = sharp::directory_get_files_with_ext(dir, "");
     CHECK_EQUAL(0, files.size());
   }
 
@@ -164,8 +157,7 @@ SUITE(directory)
   {
     Glib::ustring dir = Glib::path_get_dirname(__FILE__);
 
-    std::list<Glib::ustring> filess;
-    sharp::directory_get_files_with_ext(dir, ext, filess);
+    std::vector<Glib::ustring> filess = sharp::directory_get_files_with_ext(dir, ext);
     CHECK(0 < filess.size());
     if(ext.size()) {
       for(auto f : filess) {

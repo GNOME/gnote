@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -140,8 +140,7 @@ namespace bugzilla {
 
     icon_store->clear(); // clear out the old entries
 
-    std::list<Glib::ustring> icon_files;
-    sharp::directory_get_files (s_image_dir, icon_files);
+    std::vector<Glib::ustring> icon_files = sharp::directory_get_files (s_image_dir);
     for(auto icon_file : icon_files) {
       sharp::FileInfo file_info(icon_file);
 

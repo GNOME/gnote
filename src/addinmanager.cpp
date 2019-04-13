@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -206,8 +206,7 @@ namespace {
 
   void AddinManager::load_addin_infos(const Glib::ustring & path)
   {
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files_with_ext(path, ".desktop", files);
+    std::vector<Glib::ustring> files = sharp::directory_get_files_with_ext(path, ".desktop");
     for(auto file : files) {
       try {
         AddinInfo addin_info(file);

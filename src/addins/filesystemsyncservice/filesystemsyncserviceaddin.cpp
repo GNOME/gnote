@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2018 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -160,8 +160,7 @@ bool FileSystemSyncServiceAddin::save_configuration()
 
     // Test ability to read
     bool testFileFound = false;
-    std::list<Glib::ustring> files;
-    sharp::directory_get_files(syncPath, files);
+    std::vector<Glib::ustring> files = sharp::directory_get_files(syncPath);
     for(auto file : files) {
       if(file == testPath) {
         testFileFound = true;

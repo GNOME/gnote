@@ -29,7 +29,6 @@
 #ifndef __SHARP_DIRECTORY_HPP_
 #define __SHARP_DIRECTORY_HPP_
 
-#include <list>
 #include <vector>
 
 #include <giomm/file.h>
@@ -41,18 +40,14 @@ namespace sharp {
    * @param ext the extension. If empty, then all files are listed.
    * @retval files the list of files
    */
-  void directory_get_files_with_ext(const Glib::ustring & dir,
-                                    const Glib::ustring & ext,
-                                    std::list<Glib::ustring> & files);
+  std::vector<Glib::ustring> directory_get_files_with_ext(const Glib::ustring & dir, const Glib::ustring & ext);
   std::vector<Glib::RefPtr<Gio::File>> directory_get_files_with_ext(const Glib::RefPtr<Gio::File> & dir,
                                     const Glib::ustring & ext);
 
-  void directory_get_directories(const Glib::ustring & dir,
-                                 std::list<Glib::ustring> & files);
+  std::vector<Glib::ustring> directory_get_directories(const Glib::ustring & dir);
   std::vector<Glib::RefPtr<Gio::File>> directory_get_directories(const Glib::RefPtr<Gio::File> & dir);
 
-  void directory_get_files(const Glib::ustring & dir,
-                           std::list<Glib::ustring> & files);
+  std::vector<Glib::ustring> directory_get_files(const Glib::ustring & dir);
   std::vector<Glib::RefPtr<Gio::File>> directory_get_files(const Glib::RefPtr<Gio::File> & dir);
 
   bool directory_exists(const Glib::ustring & dir);

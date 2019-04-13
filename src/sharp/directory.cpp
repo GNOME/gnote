@@ -39,15 +39,14 @@
 namespace sharp {
 
 
-  void directory_get_files_with_ext(const Glib::ustring & dir,
-                                    const Glib::ustring & ext,
-                                    std::list<Glib::ustring> & list)
+  std::vector<Glib::ustring> directory_get_files_with_ext(const Glib::ustring & dir, const Glib::ustring & ext)
   {
+    std::vector<Glib::ustring> list;
     if (!Glib::file_test(dir, Glib::FILE_TEST_EXISTS))
-      return;
+      return list;
 
     if (!Glib::file_test(dir, Glib::FILE_TEST_IS_DIR))
-      return;
+      return list;
 
     Glib::Dir d(dir);
 
@@ -61,6 +60,8 @@ namespace sharp {
         list.push_back(file);
       }
     }
+
+    return list;
   }
 
   std::vector<Glib::RefPtr<Gio::File>> directory_get_files_with_ext(const Glib::RefPtr<Gio::File> & dir,
@@ -96,11 +97,11 @@ namespace sharp {
     return files;
   }
 
-  void directory_get_directories(const Glib::ustring & dir,
-                                 std::list<Glib::ustring> & files)
+  std::vector<Glib::ustring> directory_get_directories(const Glib::ustring & dir)
   {
+    std::vector<Glib::ustring> files;
     if(!Glib::file_test(dir, Glib::FILE_TEST_IS_DIR)) {
-      return;
+      return files;
     }
 
     Glib::Dir d(dir);
@@ -112,6 +113,8 @@ namespace sharp {
         files.push_back(file);
       }
     }
+
+    return files;
   }
 
   std::vector<Glib::RefPtr<Gio::File>> directory_get_directories(const Glib::RefPtr<Gio::File> & dir)
@@ -136,9 +139,9 @@ namespace sharp {
     return files;
   }
 
-  void directory_get_files(const Glib::ustring & dir, std::list<Glib::ustring> & files)
+  std::vector<Glib::ustring> directory_get_files(const Glib::ustring & dir)
   {
-    directory_get_files_with_ext(dir, "", files);
+    return directory_get_files_with_ext(dir, "");
   }
 
   std::vector<Glib::RefPtr<Gio::File>> directory_get_files(const Glib::RefPtr<Gio::File> & dir)
@@ -214,8 +217,7 @@ namespace sharp {
   bool directory_delete(const Glib::ustring & dir, bool recursive)
   {
     if(!recursive) {
-      std::list<Glib::ustring> files;
-      directory_get_files(dir, files);
+      std::vector<Glib::ustring> files = directory_get_files(dir);
       if(files.size()) {
         return false;
       }

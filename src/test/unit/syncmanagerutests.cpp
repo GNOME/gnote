@@ -49,7 +49,7 @@ SUITE(SyncManagerTests)
     test::NoteManager *manager2;
     test::SyncManager *sync_manager1;
     test::SyncManager *sync_manager2;
-    std::list<Glib::ustring> files;
+    std::vector<Glib::ustring> files;
 
     Fixture()
     {
@@ -114,8 +114,7 @@ SUITE(SyncManagerTests)
 
     void get_notes_in_dir(const Glib::ustring & dir)
     {
-      files.clear();
-      sharp::directory_get_files_with_ext(dir, ".note", files);
+      files = sharp::directory_get_files_with_ext(dir, ".note");
     }
   };
 
@@ -185,7 +184,7 @@ SUITE(SyncManagerTests)
     // check sync dir contents
     Glib::ustring syncednotesdir = syncdir + "/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
-    sharp::directory_get_directories(syncednotesdir, files);
+    files = sharp::directory_get_directories(syncednotesdir);
     CHECK_EQUAL(3, files.size());
 
     // sync to first client
@@ -207,7 +206,7 @@ SUITE(SyncManagerTests)
     // check sync dir contents
     Glib::ustring syncednotesdir = syncdir + "/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
-    sharp::directory_get_directories(syncednotesdir, files);
+    files = sharp::directory_get_directories(syncednotesdir);
     CHECK_EQUAL(2, files.size());
 
     FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
