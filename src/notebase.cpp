@@ -309,7 +309,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
 
   // Remove tags now, since a note with no tags has
   // no "tags" element in the XML
-  std::list<Tag::Ptr> new_tags;
+  std::vector<Tag::Ptr> new_tags;
   Glib::ustring name;
 
   while(xml.read()) {
@@ -353,8 +353,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
 
   xml.close();
 
-  std::list<Tag::Ptr> tag_list;
-  get_tags(tag_list);
+  std::vector<Tag::Ptr> tag_list = get_tags();
 
   for(Tag::Ptr & iter : tag_list) {
     if(std::find(new_tags.begin(), new_tags.end(), iter) == new_tags.end()) {
@@ -369,9 +368,11 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
   queue_save(changeType);
 }
 
-void NoteBase::get_tags(std::list<Tag::Ptr> & l) const
+std::vector<Tag::Ptr> NoteBase::get_tags() const
 {
+  std::list<Tag::Ptr> l;
   sharp::map_get_values(data_synchronizer().data().tags(), l);
+  return std::vector<Tag::Ptr>(l.begin(), l.end());
 }
 
 const NoteData & NoteBase::data() const

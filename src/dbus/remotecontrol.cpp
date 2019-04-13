@@ -242,11 +242,9 @@ namespace gnote {
       return std::vector<Glib::ustring>();
 
     std::vector<Glib::ustring> tags;
-    std::list<Tag::Ptr> l;
-    note->get_tags(l);
-    for (std::list<Tag::Ptr>::const_iterator iter = l.begin();
-         iter != l.end(); ++iter) {
-      tags.push_back((*iter)->normalized_name());
+    std::vector<Tag::Ptr> l = note->get_tags();
+    for(auto & tag : l) {
+      tags.push_back(tag->normalized_name());
     }
     return tags;
   }

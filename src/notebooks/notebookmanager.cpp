@@ -246,11 +246,9 @@ namespace gnote {
     /// </returns>
     Notebook::Ptr NotebookManager::get_notebook_from_note(const NoteBase::Ptr & note)
     {
-      std::list<Tag::Ptr> tags;
-      note->get_tags(tags);
-      for(std::list<Tag::Ptr>::const_iterator iter = tags.begin();
-          iter != tags.end(); ++iter) {
-        Notebook::Ptr notebook = get_notebook_from_tag (*iter);
+      std::vector<Tag::Ptr> tags = note->get_tags();
+      for(auto & tag : tags) {
+        Notebook::Ptr notebook = get_notebook_from_tag(tag);
         if (notebook)
           return notebook;
       }

@@ -447,8 +447,7 @@ namespace gnote {
   Tag::Ptr NoteSpellChecker::get_language_tag()
   {
     Tag::Ptr lang_tag;
-    std::list<Tag::Ptr> tags;
-    get_note()->get_tags(tags);
+    std::vector<Tag::Ptr> tags = get_note()->get_tags();
     for(Tag::Ptr tag : tags) {
       if(tag->name().find(LANG_PREFIX) == 0) {
         lang_tag = tag;
