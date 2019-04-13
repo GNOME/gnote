@@ -65,7 +65,7 @@ namespace gnote {
     m_addin_mgr = create_addin_manager ();
 
     if (is_first_run) {
-      std::list<ImportAddin*> l;
+      std::vector<ImportAddin*> l;
       m_addin_mgr->get_import_addins(l);
       bool has_imported = false;
 
@@ -73,17 +73,15 @@ namespace gnote {
         DBG_OUT("no import plugins");
       }
 
-      for(std::list<ImportAddin*>::iterator iter = l.begin();
-          iter != l.end(); ++iter) {
-
+      for(auto import_addin : l) {
         DBG_OUT("importing");
-        (*iter)->initialize();
-        if((*iter)->want_to_run(*this)) {
-          has_imported |= (*iter)->first_run(*this);
+        import_addin->initialize();
+        if(import_addin->want_to_run(*this)) {
+          has_imported |= import_addin->first_run(*this);
         }
-        AddinInfo addin_info = m_addin_mgr->get_addin_info(**iter);
+        AddinInfo addin_info = m_addin_mgr->get_addin_info(*import_addin);
         if(addin_info.get_attribute("AutoDisable") == "true") {
-          (*iter)->shutdown();
+          import_addin->shutdown();
           m_addin_mgr->get_module(addin_info.id())->enabled(false);
         }
       }

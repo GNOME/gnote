@@ -23,7 +23,6 @@
 #ifndef __ADDINMANAGER_HPP__
 #define __ADDINMANAGER_HPP__
 
-#include <list>
 #include <map>
 
 #include <sigc++/signal.h>
@@ -67,9 +66,9 @@ public:
   std::vector<NoteAddin*> get_note_addins(const Note::Ptr &) const;
   ApplicationAddin *get_application_addin(const Glib::ustring & id) const;
   sync::SyncServiceAddin *get_sync_service_addin(const Glib::ustring & id) const;
-  void get_preference_tab_addins(std::list<PreferenceTabAddin *> &) const;
-  void get_sync_service_addins(std::list<sync::SyncServiceAddin *> &) const;
-  void get_import_addins(std::list<ImportAddin*> &) const;
+  void get_preference_tab_addins(std::vector<PreferenceTabAddin *> &) const;
+  void get_sync_service_addins(std::vector<sync::SyncServiceAddin *> &) const;
+  void get_import_addins(std::vector<ImportAddin*> &) const;
   void initialize_application_addins() const;
   void initialize_sync_service_addins() const;
   void shutdown_application_addins() const;

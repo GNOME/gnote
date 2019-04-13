@@ -556,11 +556,11 @@ namespace sync {
 
     try {
       NoteManager & manager(dynamic_cast<NoteManager&>(m_note_manager));
-      std::list<SyncServiceAddin*> addins;
+      std::vector<SyncServiceAddin*> addins;
       manager.get_addin_manager().get_sync_service_addins(addins);
-      for(std::list<SyncServiceAddin*>::iterator iter = addins.begin(); iter != addins.end(); ++iter) {
-        if((*iter)->id() == sync_service_id) {
-          addin = *iter;
+      for(auto iter : addins) {
+        if(iter->id() == sync_service_id) {
+          addin = iter;
           break;
         }
       }

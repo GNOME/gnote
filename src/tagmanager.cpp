@@ -224,7 +224,9 @@ namespace gnote {
   void TagManager::all_tags(std::list<Tag::Ptr> & tags) const
   {
     // Add in the system tags first
-    sharp::map_get_values(m_internal_tags, tags);
+    std::vector<Tag::Ptr> tmp;
+    sharp::map_get_values(m_internal_tags, tmp);
+    tags.insert(tags.end(), tmp.begin(), tmp.end());
     
     // Now all the other tags
     for(TagMap::const_iterator iter = m_tag_map.begin();

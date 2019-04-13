@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017 Aurimas Cernius
+ * Copyright (C) 2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -78,7 +78,9 @@ namespace gnote {
 
   void Tag::get_notes(std::list<NoteBase*> & l) const
   {
-    sharp::map_get_values(m_notes, l);
+    std::vector<NoteBase*> notes;
+    sharp::map_get_values(m_notes, notes);
+    l.insert(l.end(), notes.begin(), notes.end());
   }
 
 

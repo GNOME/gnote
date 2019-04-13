@@ -1,6 +1,7 @@
 /*
  * gnote
  *
+ * Copyright (C) 2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -27,9 +28,8 @@
 #ifndef __SHARP_MAP_HPP_
 #define __SHARP_MAP_HPP_
 
-#include <list>
-#include <vector>
 #include <map>
+#include <vector>
 
 namespace sharp {
 
@@ -47,7 +47,7 @@ namespace sharp {
 
   /** get all the mapped elements from the map. */
   template <typename _Map>
-  void map_get_values(const _Map & m, std::list<typename _Map::mapped_type> & l) 
+  void map_get_values(const _Map & m, std::vector<typename _Map::mapped_type> & l)
   {
     l.clear();
     for(typename _Map::const_iterator iter = m.begin();

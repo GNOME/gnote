@@ -125,11 +125,9 @@ namespace gnote {
                            _("Plugins"));
 
       // TODO: Figure out a way to have these be placed in a specific order
-    std::list<PreferenceTabAddin *> tabAddins;
+    std::vector<PreferenceTabAddin *> tabAddins;
     m_addin_manager.get_preference_tab_addins(tabAddins);
-    for(std::list<PreferenceTabAddin *>::const_iterator iter = tabAddins.begin();
-          iter != tabAddins.end(); ++iter) {
-      PreferenceTabAddin *tabAddin = *iter;
+    for(auto tabAddin : tabAddins) {
       DBG_OUT("Adding preference tab addin: %s", 
               typeid(*tabAddin).name());
         try {
@@ -433,14 +431,14 @@ namespace gnote {
 
     // Populate the store with all the available SyncServiceAddins
     m_sync_addin_store = Gtk::ListStore::create(m_sync_addin_store_record);
-    std::list<sync::SyncServiceAddin*> addins;
+    std::vector<sync::SyncServiceAddin*> addins;
     m_addin_manager.get_sync_service_addins(addins);
-    addins.sort(CompareSyncAddinsByName());
-    for(std::list<sync::SyncServiceAddin*>::iterator addin = addins.begin(); addin != addins.end(); ++addin) {
-      if((*addin)->initialized()) {
+    std::sort(addins.begin(), addins.end(), CompareSyncAddinsByName());
+    for(auto addin : addins) {
+      if(addin->initialized()) {
 	Gtk::TreeIter iter = m_sync_addin_store->append();
-	iter->set_value(0, (*addin));
-	m_sync_addin_iters[(*addin)->id()] = iter;
+	iter->set_value(0, addin);
+	m_sync_addin_iters[addin->id()] = iter;
       }
     }
 
@@ -1345,9 +1343,9 @@ namespace gnote {
 
   void PreferencesDialog::update_sync_services()
   {
-    std::list<sync::SyncServiceAddin*> new_addins;
+    std::vector<sync::SyncServiceAddin*> new_addins;
     m_addin_manager.get_sync_service_addins(new_addins);
-    std::list<sync::SyncServiceAddin*>::iterator remove_iter = new_addins.begin();
+    auto remove_iter = new_addins.begin();
     while(remove_iter != new_addins.end()) {
       if(!(*remove_iter)->initialized()) {
         remove_iter = new_addins.erase(remove_iter);
@@ -1356,7 +1354,7 @@ namespace gnote {
         ++remove_iter;
       }
     }
-    new_addins.sort(CompareSyncAddinsByName());
+    std::sort(new_addins.begin(), new_addins.end(), CompareSyncAddinsByName());
 
     // Build easier-to-navigate list if addins currently in the combo
     std::list<sync::SyncServiceAddin*> current_addins;
@@ -1371,12 +1369,11 @@ namespace gnote {
 
     // Add new addins
     // TODO: Would be nice to insert these alphabetically instead
-    for(std::list<sync::SyncServiceAddin*>::iterator iter = new_addins.begin();
-        iter != new_addins.end(); ++iter) {
-      if(std::find(current_addins.begin(), current_addins.end(), *iter) == current_addins.end()) {
+    for(auto addin : new_addins) {
+      if(std::find(current_addins.begin(), current_addins.end(), addin) == current_addins.end()) {
 	Gtk::TreeIter iterator = m_sync_addin_store->append();
-	iterator->set_value(0, *iter);
-	m_sync_addin_iters[(*iter)->id()] = iterator;
+	iterator->set_value(0, addin);
+	m_sync_addin_iters[addin->id()] = iterator;
       }
     }
 
