@@ -1,13 +1,13 @@
 # Lithuanian translation for gnote.
 # Copyright (C) 2011 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
-# Aurimas Černius <aurisc4@gmail.com>, 2011, 2013, 2014, 2015, 2016, 2017.
+# Aurimas Černius <aurisc4@gmail.com>, 2011-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2017-09-12 19:50+0000\n"
-"PO-Revision-Date: 2017-09-18 15:29+0300\n"
+"POT-Creation-Date: 2019-03-24 14:32+0000\n"
+"PO-Revision-Date: 2019-04-14 15:48+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"%100<10 || n%100>=20) ? 1 : 2)\n"
+"X-Generator: Gtranslator 3.30.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -485,7 +485,6 @@ msgstr "Sinchronizacija į vietinį aplanką"
 
 #. (itstool) path: credit/years
 #: C/gnote-addin-sync-local.page:13 C/gnote-addin-sync-webdav.page:13
-#: C/gnote-synchronization.page:12
 msgid "2012"
 msgstr "2012"
 
@@ -1164,11 +1163,10 @@ msgid "Creating notes"
 msgstr "Raštelių kūrimas"
 
 #. (itstool) path: credit/years
-#: C/gnote-creating-notes.page:16 C/gnote-deleting-notes.page:16
-#: C/gnote-introduction.page:17 C/gnote-template-notes.page:13
-#: C/gnote-working-with-notebooks.page:17
-msgid "2011-2012"
-msgstr "2011-2012"
+#: C/gnote-creating-notes.page:16 C/gnote-working-with-notebooks.page:17
+#| msgid "2011,2013,2014"
+msgid "2011-2012,2019"
+msgstr "2011-2012,2019"
 
 #. (itstool) path: page/title
 #: C/gnote-creating-notes.page:25
@@ -1183,8 +1181,14 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:29
-msgid "Select <gui>New Note</gui> in the application menu."
-msgstr "Pasirinkite <gui>Naujas raštelis</gui> iš programos meniu."
+#| msgid ""
+#| "Right click on a notebook in the main window and select <gui>Open "
+#| "Template Note</gui>."
+msgid ""
+"Click menu button in the main window and then select <gui>New Note</gui>."
+msgstr ""
+"Spauskite meniu mygtuką pagrindiniame lange ir pasirinkite <gui>Naujas "
+"raštelis</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:30
@@ -1219,6 +1223,12 @@ msgstr ""
 msgid "Deleting notes"
 msgstr "Raštelių trynimas"
 
+#. (itstool) path: credit/years
+#: C/gnote-deleting-notes.page:16 C/gnote-introduction.page:17
+#: C/gnote-template-notes.page:13
+msgid "2011-2012"
+msgstr "2011-2012"
+
 #. (itstool) path: page/title
 #: C/gnote-deleting-notes.page:25
 msgid "Deleting Notes"
@@ -1242,7 +1252,7 @@ msgstr ""
 #: C/gnote-deleting-notes.page:29
 msgid "When a note is open, press the <gui>Delete</gui> button on the toolbar."
 msgstr ""
-"Atvertame ratelyje spauskite mygtuką <gui>Ištrinti</gui> įrankių juostoje."
+"Atvertame raštelyje spauskite mygtuką <gui>Ištrinti</gui> įrankių juostoje."
 
 #. (itstool) path: page/p
 #: C/gnote-deleting-notes.page:31
@@ -1264,8 +1274,7 @@ msgid "Editing note contents"
 msgstr "Raštelių turinio redagavimas"
 
 #. (itstool) path: credit/years
-#: C/gnote-editing-notes.page:14 C/gnote-notes-preferences.page:17
-#: C/gnote-searching-notes.page:16
+#: C/gnote-editing-notes.page:14 C/gnote-searching-notes.page:16
 msgid "2011-2013"
 msgstr "2011-2013"
 
@@ -1285,9 +1294,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gnote-editing-notes.page:26
-#| msgid ""
-#| "Toolbar at the top of the window will now contain note specific items in "
-#| "it. Bellow toolbar is the note's content area."
 msgid ""
 "Toolbar at the top of the window will now contain note specific items in it. "
 "Below toolbar is the note's content area."
@@ -1311,10 +1317,14 @@ msgstr "<app>Gnote</app> raštelis"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-editing-notes.page:30
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-new-note.png' "
+#| "md5='0faf7950ab9f830c3de85713598277f1'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
-"md5='0faf7950ab9f830c3de85713598277f1'"
+"md5='51fb284d55e3b78c1f66f2136d7cb1f4'"
 msgstr "gnote-new-note.png"
 
 #. (itstool) path: media/p
@@ -1655,6 +1665,12 @@ msgstr ""
 msgid "Gnote settings"
 msgstr "Gnote nustatymai"
 
+#. (itstool) path: credit/years
+#: C/gnote-notes-preferences.page:17
+#| msgid "2011,2013,2014"
+msgid "2011-2013,2019"
+msgstr "2011-2013,2019"
+
 #. (itstool) path: page/title
 #: C/gnote-notes-preferences.page:26
 msgid "Gnote Preferences"
@@ -1667,12 +1683,15 @@ msgstr "Gnote nustatymai"
 
 #. (itstool) path: section/p
 #: C/gnote-notes-preferences.page:29
+#| msgid ""
+#| "To set preferences for <app>Gnote</app>, select <gui>Preferences</gui> "
+#| "from the application menu."
 msgid ""
-"To set preferences for <app>Gnote</app>, select <gui>Preferences</gui> from "
-"the application menu."
+"To set preferences for <app>Gnote</app>, click the menu button in main "
+"window and select <gui>Preferences</gui> from the menu."
 msgstr ""
-"<app>Gnote</app> nustatymams pakeisti, programos meniu pasirinkite punktą "
-"<gui>Nustatymai</gui>."
+"<app>Gnote</app> nustatymams pakeisti, spauskite meniu mygtuką pagrindiniame "
+"lange ir pasirinkite punktą <gui>Nustatymai</gui>."
 
 #. (itstool) path: section/p
 #: C/gnote-notes-preferences.page:30
@@ -1986,6 +2005,12 @@ msgstr ""
 msgid "Synchronize notes"
 msgstr "Sinchronizuokite raštelius"
 
+#. (itstool) path: credit/years
+#: C/gnote-synchronization.page:12
+#| msgid "2011,2013"
+msgid "2012,2019"
+msgstr "2012,2019"
+
 #. (itstool) path: page/title
 #: C/gnote-synchronization.page:21
 msgid "Synchronization"
@@ -2049,13 +2074,17 @@ msgstr "Sinchronizuokite"
 
 #. (itstool) path: section/p
 #: C/gnote-synchronization.page:33
+#| msgid ""
+#| "To synchronize, select <gui>Synchronize Notes</gui> from the application "
+#| "menu. This item is only available if synchronization has been configured."
 msgid ""
-"To synchronize, select <gui>Synchronize Notes</gui> from the application "
-"menu. This item is only available if synchronization has been configured."
+"To synchronize, click the menu button in main window and then select "
+"<gui>Synchronize Notes</gui> from the menu. This item is only available if "
+"synchronization has been configured."
 msgstr ""
-"Norėdami sinchronizuoti pasirinkite <gui>Sinchronizuoti raštelius</gui> iš "
-"programos meniu. Šis punktas prieinamas tik jei sinchronizacija yra "
-"sukonfigūruota."
+"Norėdami sinchronizuoti spauskite meniu mygtuką pagrindiniame lange ir "
+"pasirinkite <gui>Sinchronizuoti raštelius</gui> iš meniu. Šis punktas "
+"prieinamas tik jei sinchronizacija yra sukonfigūruota."
 
 #. (itstool) path: section/p
 #: C/gnote-synchronization.page:34
@@ -2199,10 +2228,14 @@ msgstr "Raštelio šablonas"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-template-notes.page:41
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-template-note.png' "
+#| "md5='f50e2d6d0eb6e68cf726a1b8a969263e'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
-"md5='f50e2d6d0eb6e68cf726a1b8a969263e'"
+"md5='f99f0b62b6c0390ab57b76ca86a69cd1'"
 msgstr "gnote-template-note.png"
 
 #. (itstool) path: figure/desc
@@ -2300,7 +2333,7 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/gnote-working-with-notebooks.page:29
 msgid "Creating Notebooks"
-msgstr "Raštelių kūrimas"
+msgstr "Užrašinių kūrimas"
 
 #. (itstool) path: section/p
 #: C/gnote-working-with-notebooks.page:30
@@ -2309,8 +2342,12 @@ msgstr "Norėdami sukurti naują užrašinę:"
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:33
-msgid "Click on the application menu and select <gui>New Notebook</gui>."
-msgstr "Spauskite programos meniu ir pasirinkite <gui>Nauja užrašinė</gui>."
+#| msgid "Click on the application menu and select <gui>New Notebook</gui>."
+msgid ""
+"Click on the menu button in main window and select <gui>New Notebook</gui>."
+msgstr ""
+"Spauskite meniu mygtuką pagrindiniame lange ir pasirinkite <gui>Nauja "
+"užrašinė</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:36
@@ -2381,7 +2418,7 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:60
 msgid "Drag the note(s) onto a notebook on the left using the mouse."
-msgstr "Pele tempkite ratelį(-ius) į užrašinę kairėje."
+msgstr "Pele tempkite raštelį(-ius) į užrašinę kairėje."
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:61
@@ -2411,11 +2448,11 @@ msgstr ""
 #| msgctxt "_"
 #| msgid ""
 #| "external ref='figures/add-to-notebook.png' "
-#| "md5='fbf2bb1efd152eef10233eee3e262970'"
+#| "md5='8ecfcec4d83233a9705d17ba373cc2ab'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
-"md5='8ecfcec4d83233a9705d17ba373cc2ab'"
+"md5='df8420b1433dd89e5a2e33713caf13d7'"
 msgstr "add-to-notebook.png"
 
 #. (itstool) path: media/p
@@ -2640,6 +2677,9 @@ msgstr "Pritaikymas sau"
 #: C/index.page:41
 msgid "Common Problems"
 msgstr "Dažnos problemos"
+
+#~ msgid "Select <gui>New Note</gui> in the application menu."
+#~ msgstr "Pasirinkite <gui>Naujas raštelis</gui> iš programos meniu."
 
 #~ msgid "I can't find the Gnote status icon."
 #~ msgstr "Negaliu rasti Gnote būsenos piktogramos."
