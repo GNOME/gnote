@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 #include "debug.hpp"
 #include "notetag.hpp"
 #include "noteeditor.hpp"
+#include "utils.hpp"
 
 namespace gnote {
 
@@ -624,7 +625,7 @@ namespace gnote {
   
   void NoteTagTable::on_tag_removed(const Glib::RefPtr<Gtk::TextTag> & tag)
   {
-    m_added_tags.remove(tag);
+    utils::remove_swap_back(m_added_tags, tag);
 
     NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
     if (note_tag) {

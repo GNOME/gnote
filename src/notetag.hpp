@@ -328,7 +328,7 @@ private:
 
   static NoteTagTable::Ptr           s_instance;
   std::map<Glib::ustring, Factory>   m_tag_types;
-  std::list<Glib::RefPtr<Gtk::TextTag> > m_added_tags;
+  std::vector<Glib::RefPtr<Gtk::TextTag> > m_added_tags;
 
   NoteTag::Ptr m_url_tag;
   NoteTag::Ptr m_link_tag;
