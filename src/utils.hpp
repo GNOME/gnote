@@ -61,6 +61,20 @@ namespace gnote {
     void main_context_invoke(const sigc::slot<void> & slot);
     void main_context_call(const sigc::slot<void> & slot);
 
+    template <typename T>
+    bool remove_swap_back(std::vector<T> & v, const T & e)
+    {
+      for(typename std::vector<T>::iterator iter = v.begin(); iter != v.end(); ++iter) {
+        if(*iter == e) {
+          *iter = v.back();
+          v.pop_back();
+          return true;
+        }
+      }
+
+      return false;
+    }
+
     class GlobalKeybinder
     {
     public:

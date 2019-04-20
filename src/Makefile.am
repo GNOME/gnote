@@ -50,6 +50,7 @@ gnoteunittests_SOURCES = \
 	test/unit/syncmanagerutests.cpp \
 	test/unit/trieutests.cpp \
 	test/unit/uriutests.cpp \
+	test/unit/utiltests.cpp \
 	test/unit/xmlreaderutests.cpp \
 	$(NULL)
 gnoteunittests_LDADD = libgnote.la @UNITTESTCPP_LIBS@
