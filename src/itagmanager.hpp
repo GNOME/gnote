@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,8 @@
 
 #ifndef _ITAGMANAGER_HPP_
 #define _ITAGMANAGER_HPP_
+
+#include <list>
 
 #include <glibmm/ustring.h>
 
