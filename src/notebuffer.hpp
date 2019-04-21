@@ -153,7 +153,7 @@ private:
   // HATE.
 
   // list of Glib::RefPtr<Gtk::TextTag>s to apply on insert
-  std::list<Glib::RefPtr<Gtk::TextTag> >      m_active_tags;
+  std::vector<Glib::RefPtr<Gtk::TextTag> >      m_active_tags;
 
   // The note that owns this buffer
   Note &                       m_note;

@@ -102,12 +102,7 @@ namespace gnote {
       }
     } 
     else {
-      std::list<Glib::RefPtr<Gtk::TextTag> >::iterator iter = std::find(m_active_tags.begin(), 
-                                                                   m_active_tags.end(), tag);
-      if (iter != m_active_tags.end()) {
-        m_active_tags.erase(iter);
-      }
-      else {
+      if(!utils::remove_swap_back(m_active_tags, tag)) {
         m_active_tags.push_back(tag);
       }
     }
@@ -139,11 +134,7 @@ namespace gnote {
       remove_tag(tag, select_start, select_end);
     } 
     else {
-      std::list<Glib::RefPtr<Gtk::TextTag> >::iterator iter = std::find(m_active_tags.begin(), 
-                                                                   m_active_tags.end(), tag);
-      if (iter != m_active_tags.end()) {
-        m_active_tags.erase(iter);
-      }
+      utils::remove_swap_back(m_active_tags, tag);
     }
   }
 
@@ -293,9 +284,8 @@ namespace gnote {
           remove_tag(*tag_iter, insert_start, pos);
         }
 
-        for(std::list<Glib::RefPtr<Gtk::TextTag> >::const_iterator iter = m_active_tags.begin();
-            iter != m_active_tags.end(); ++iter) {
-          apply_tag(*iter, insert_start, pos);
+        for(auto & tag : m_active_tags) {
+          apply_tag(tag, insert_start, pos);
         }
         m_undomanager->thaw_undo();
       }
