@@ -432,8 +432,7 @@ NoteBase::Ptr NoteManagerBase::find_template_note() const
   if(!template_tag) {
     return template_note;
   }
-  std::list<NoteBase*> notes;
-  template_tag->get_notes(notes);
+  auto notes = template_tag->get_notes();
   for(NoteBase *iter : notes) {
     NoteBase::Ptr note = iter->shared_from_this();
     if(!notebooks::NotebookManager::obj().get_notebook_from_note(note)) {

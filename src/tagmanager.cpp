@@ -208,8 +208,7 @@ namespace gnote {
         DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
         tag_removed = true;
 
-        std::list<NoteBase*> notes;
-        tag->get_notes(notes);
+        auto notes = tag->get_notes();
         for(NoteBase *note_iter : notes) {
           note_iter->remove_tag(tag);
         }

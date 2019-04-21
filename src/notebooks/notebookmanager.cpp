@@ -189,10 +189,10 @@ namespace gnote {
         m_notebooks->erase (iter);
 
         // Remove the notebook tag from every note that's in the notebook
-        std::list<NoteBase*> notes;
+        std::vector<NoteBase*> notes;
         Tag::Ptr tag = notebook->get_tag();
         if(tag) {
-          tag->get_notes(notes);
+          notes = tag->get_notes();
         }
         for(NoteBase *note : notes) {
           note->remove_tag (notebook->get_tag());

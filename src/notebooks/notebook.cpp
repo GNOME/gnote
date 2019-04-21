@@ -131,8 +131,7 @@ namespace notebooks {
     if(!templ_tag || !notebook_tag) {
       return note;
     }
-    std::list<NoteBase*> notes;
-    templ_tag->get_notes(notes);
+    auto notes = templ_tag->get_notes();
     for(NoteBase *n : notes) {
       if(n->contains_tag(notebook_tag)) {
         note = std::static_pointer_cast<Note>(n->shared_from_this());
@@ -150,8 +149,7 @@ namespace notebooks {
     if (!note) {
       Glib::ustring title = m_default_template_note_title;
       if(m_note_manager.find(title)) {
-        std::list<NoteBase*> tag_notes;
-        m_tag->get_notes(tag_notes);
+        auto tag_notes = m_tag->get_notes();
         title = m_note_manager.get_unique_name(title);
       }
       note = m_note_manager.create(title, NoteManager::get_note_template_content (title));

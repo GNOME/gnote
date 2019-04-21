@@ -343,8 +343,7 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
     .get_or_create_notebook(new_text);
   DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook->get_name().c_str(),
           new_text.c_str());
-  std::list<NoteBase*> notes;
-  old_notebook->get_tag()->get_notes(notes);
+  auto notes = old_notebook->get_tag()->get_notes();
   for(NoteBase *note : notes) {
     notebooks::NotebookManager::obj().move_note_to_notebook(
       std::static_pointer_cast<Note>(note->shared_from_this()), new_notebook);

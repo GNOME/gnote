@@ -24,9 +24,9 @@
 #ifndef __TAG_HPP_
 #define __TAG_HPP_
 
-#include <list>
 #include <map>
 #include <memory>
+#include <vector>
 
 #include <glibmm/ustring.h>
 
@@ -91,7 +91,7 @@ namespace gnote {
     // Returns a list of all the notes that this tag is associated with.
     // These pointer are not meant to be freed. They are OWNED.
     // </summary>
-    void get_notes(std::list<NoteBase*> &) const;
+    std::vector<NoteBase*> get_notes() const;
     // <summary>
     // Returns the number of notes this is currently tagging.
     // </summary>

@@ -171,8 +171,7 @@ namespace gnote {
       return std::vector<Glib::ustring>();
 
     std::vector<Glib::ustring> tagged_note_uris;
-    std::list<NoteBase*> notes;
-    tag->get_notes(notes);
+    auto notes = tag->get_notes();
     for(NoteBase *iter : notes) {
       tagged_note_uris.push_back(iter->uri());
     }
