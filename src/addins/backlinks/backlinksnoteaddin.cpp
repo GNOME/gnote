@@ -85,8 +85,7 @@ std::vector<gnote::PopoverWidget> BacklinksNoteAddin::get_actions_popover_widget
 
 void BacklinksNoteAddin::update_menu(Gtk::Box *menu) const
 {
-  std::list<Gtk::Widget*> items;
-  get_backlink_menu_items(items);
+  auto items = get_backlink_menu_items();
   bool have_items = false;
   for(auto item : items) {
     dynamic_cast<Gtk::ModelButton*>(item)->property_inverted() = true;
@@ -106,8 +105,9 @@ void BacklinksNoteAddin::update_menu(Gtk::Box *menu) const
 }
 
 
-void BacklinksNoteAddin::get_backlink_menu_items(std::list<Gtk::Widget*> & items) const
+std::vector<Gtk::Widget*> BacklinksNoteAddin::get_backlink_menu_items() const
 {
+  std::vector<Gtk::Widget*> items;
   gnote::NoteBase::List notes = get_note()->manager().get_notes_linking_to(get_note()->get_title());
   for(const gnote::NoteBase::Ptr & note : notes) {
     if(note != get_note()) { // don't match ourself
@@ -118,10 +118,12 @@ void BacklinksNoteAddin::get_backlink_menu_items(std::list<Gtk::Widget*> & items
     }
   }
 
-  items.sort([](Gtk::Widget *x, Gtk::Widget *y)
+  std::sort(items.begin(), items.end(), [](Gtk::Widget *x, Gtk::Widget *y)
     {
       return dynamic_cast<Gtk::ModelButton*>(x)->get_label() < dynamic_cast<Gtk::ModelButton*>(y)->get_label();
     });
+
+  return items;
 }
 
 

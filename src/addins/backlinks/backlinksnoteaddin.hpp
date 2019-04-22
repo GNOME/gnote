@@ -21,8 +21,6 @@
 #ifndef __BACKLINKS_NOTEADDIN_HPP_
 #define __BACKLINKS_NOTEADDIN_HPP_
 
-#include <list>
-
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
 
@@ -56,7 +54,7 @@ public:
 private:
   void on_open_note(const Glib::VariantBase & param);
   void update_menu(Gtk::Box *menu) const;
-  void get_backlink_menu_items(std::list<Gtk::Widget*> & items) const;
+  std::vector<Gtk::Widget*> get_backlink_menu_items() const;
   bool check_note_has_match(const gnote::Note::Ptr &, const Glib::ustring &);
 };
 
