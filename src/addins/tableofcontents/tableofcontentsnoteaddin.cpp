@@ -179,12 +179,9 @@ void TableofcontentsNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_
   }
 
   // Build a new list
-  std::list<TableofcontentsMenuItem*> items;
-  get_tableofcontents_menu_items(items);
+  auto items = get_tableofcontents_menu_items();
 
-  for(std::list<TableofcontentsMenuItem*>::iterator iter = items.begin();
-      iter != items.end(); ++iter) {
-    TableofcontentsMenuItem *item(*iter);
+  for(auto item : items) {
     item->show_all();
     toc_menu->append(*item);
   }
@@ -306,10 +303,11 @@ void TableofcontentsNoteAddin::get_toc_items(std::vector<TocItem> & items) const
 }
 
 
-void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<TableofcontentsMenuItem*> & items)
+std::vector<TableofcontentsMenuItem*> TableofcontentsNoteAddin::get_tableofcontents_menu_items()
 //go through the note text, and list all lines tagged as heading,
 //and for each heading, create a new TableofcontentsMenuItem.
 {
+  std::vector<TableofcontentsMenuItem*> items;
   TableofcontentsMenuItem *item = NULL;
   std::vector<TocItem> toc_items;
 
@@ -325,6 +323,8 @@ void TableofcontentsNoteAddin::get_tableofcontents_menu_items(std::list<Tableofc
     item = manage(new TableofcontentsMenuItem(get_note(), toc_item.heading, toc_item.heading_level, toc_item.heading_position));
     items.push_back(item);
   }
+
+  return items;
 }
 
 

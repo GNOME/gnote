@@ -24,8 +24,6 @@
 #ifndef __TABLEOFCONTENT_NOTEADDIN_HPP_
 #define __TABLEOFCONTENT_NOTEADDIN_HPP_
 
-#include <list>
-
 #include <gtkmm/imagemenuitem.h>
 #include <gtkmm/menu.h>
 
@@ -90,7 +88,7 @@ private:
     int            heading_position;
   };
   void get_toc_items(std::vector<TocItem> & items) const;
-  void get_tableofcontents_menu_items (std::list<TableofcontentsMenuItem*> & items);
+  std::vector<TableofcontentsMenuItem*> get_tableofcontents_menu_items();
   void get_toc_popover_items(std::vector<Gtk::Widget*> & items) const;
 
   void headification_switch (Heading::Type heading_request);
