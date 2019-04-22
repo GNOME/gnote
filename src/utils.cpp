@@ -530,8 +530,9 @@ namespace gnote {
     }
 
 
-    void UriList::get_local_paths(std::list<Glib::ustring> & paths) const
+    std::vector<Glib::ustring> UriList::get_local_paths() const
     {
+      std::vector<Glib::ustring> paths;
       for(const_iterator iter = begin(); iter != end(); ++iter) {
 
         const sharp::Uri & uri(*iter);
@@ -540,6 +541,8 @@ namespace gnote {
           paths.push_back(uri.local_path());
         }
       }
+
+      return paths;
     }
 
 

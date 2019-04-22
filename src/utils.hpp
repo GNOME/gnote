@@ -126,14 +126,14 @@ namespace gnote {
 
 
     class UriList
-      : public std::list<sharp::Uri>
+      : public std::vector<sharp::Uri>
     {
     public:
 //      UriList(const NoteList & notes);
       UriList(const Glib::ustring & data);
       UriList(const Gtk::SelectionData & selection);
       Glib::ustring to_string() const;
-      void get_local_paths(std::list<Glib::ustring> &) const;
+      std::vector<Glib::ustring> get_local_paths() const;
       
     private:
       void load_from_string(const Glib::ustring & data);
