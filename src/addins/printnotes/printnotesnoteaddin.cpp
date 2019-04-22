@@ -116,14 +116,13 @@ namespace printnotes {
   }
 
 
-  void PrintNotesNoteAddin::get_paragraph_attributes(const Glib::RefPtr<Pango::Layout> & layout,
+  std::vector<Pango::Attribute> PrintNotesNoteAddin::get_paragraph_attributes(const Glib::RefPtr<Pango::Layout> & layout,
                                                      double dpiX, 
                                                      int & indentation,
                                                      Gtk::TextIter & position, 
-                                                     const Gtk::TextIter & limit,
-                                                     std::list<Pango::Attribute> & attributes)
+                                                     const Gtk::TextIter & limit)
   {
-    attributes.clear();
+    std::vector<Pango::Attribute> attributes;
     indentation = 0;
 
     Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tags = position.get_tags();
@@ -206,6 +205,8 @@ namespace printnotes {
                                tag->property_stretch()));
       }
     }
+
+    return attributes;
   }
 
   Glib::RefPtr<Pango::Layout> 
@@ -230,17 +231,12 @@ namespace printnotes {
 
       while (segm_start.compare (p_end) < 0) {
         segm_end = segm_start;
-        std::list<Pango::Attribute> attrs;
-        get_paragraph_attributes (layout, dpiX, indentation,
-                                  segm_end, p_end, attrs);
+        auto attrs = get_paragraph_attributes(layout, dpiX, indentation, segm_end, p_end);
 
         guint si = (guint) (segm_start.get_line_index() - start_index);
         guint ei = (guint) (segm_end.get_line_index() - start_index);
 
-        for(std::list<Pango::Attribute>::iterator iter = attrs.begin();
-            iter != attrs.end(); ++iter) {
-          
-          Pango::Attribute & a(*iter);
+        for(auto & a : attrs) {
           a.set_start_index(si);
           a.set_end_index(ei);
           attr_list.insert(a);

@@ -96,11 +96,10 @@ public:
 		}
 
 private:
-  void get_paragraph_attributes(const Glib::RefPtr<Pango::Layout> & layout,
+  std::vector<Pango::Attribute> get_paragraph_attributes(const Glib::RefPtr<Pango::Layout> & layout,
                                 double dpiX, int & indentation,
                                 Gtk::TextIter & position, 
-                                const Gtk::TextIter & limit,
-                                std::list<Pango::Attribute> & attributes);
+                                const Gtk::TextIter & limit);
   Glib::RefPtr<Pango::Layout> create_layout_for_paragraph(const Glib::RefPtr<Gtk::PrintContext> & context, 
                                                           Gtk::TextIter p_start,
                                                           Gtk::TextIter p_end,
