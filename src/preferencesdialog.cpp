@@ -1354,7 +1354,7 @@ namespace gnote {
     std::sort(new_addins.begin(), new_addins.end(), CompareSyncAddinsByName());
 
     // Build easier-to-navigate list if addins currently in the combo
-    std::list<sync::SyncServiceAddin*> current_addins;
+    std::vector<sync::SyncServiceAddin*> current_addins;
     for(Gtk::TreeIter iter = m_sync_addin_store->children().begin();
         iter != m_sync_addin_store->children().end(); ++iter) {
       sync::SyncServiceAddin *current_addin = NULL;
@@ -1375,15 +1375,14 @@ namespace gnote {
     }
 
     // Remove deleted addins
-    for(std::list<sync::SyncServiceAddin*>::iterator current_addin = current_addins.begin();
-        current_addin != current_addins.end(); ++current_addin) {
-      if(std::find(new_addins.begin(), new_addins.end(), *current_addin) == new_addins.end()) {
-	Gtk::TreeIter iter = m_sync_addin_iters[(*current_addin)->id()];
+    for(auto current_addin : current_addins) {
+      if(std::find(new_addins.begin(), new_addins.end(), current_addin) == new_addins.end()) {
+	Gtk::TreeIter iter = m_sync_addin_iters[current_addin->id()];
 	m_sync_addin_store->erase(iter);
-	m_sync_addin_iters.erase((*current_addin)->id());
+	m_sync_addin_iters.erase(current_addin->id());
 
 	// FIXME: Lots of hacky stuff in here...rushing before freeze
-	if(*current_addin == m_selected_sync_addin) {
+	if(current_addin == m_selected_sync_addin) {
 	  if(m_sync_addin_prefs_widget != NULL && !m_sync_addin_prefs_widget->get_sensitive()) {
 	    on_reset_sync_addin_button(false);
           }
