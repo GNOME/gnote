@@ -495,8 +495,7 @@ namespace gnote {
   void NoteRecentChanges::unembed_widget(EmbeddableWidget & widget)
   {
     bool show_other = false;
-    std::list<EmbeddableWidget*>::iterator iter = std::find(
-      m_embedded_widgets.begin(), m_embedded_widgets.end(), &widget);
+    auto iter = std::find(m_embedded_widgets.begin(), m_embedded_widgets.end(), &widget);
     if(iter != m_embedded_widgets.end()) {
       if(is_foreground(**iter)) {
         background_embedded(widget);
