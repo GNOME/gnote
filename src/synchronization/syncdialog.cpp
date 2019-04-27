@@ -60,7 +60,7 @@ class SyncTitleConflictDialog
   : public Gtk::Dialog
 {
 public:
-  SyncTitleConflictDialog(const Note::Ptr & existingNote, const std::list<Glib::ustring> & noteUpdateTitles)
+  SyncTitleConflictDialog(const Note::Ptr & existingNote, const std::vector<Glib::ustring> & noteUpdateTitles)
     : Gtk::Dialog(_("Note Conflict"), true)
     , m_existing_note(existingNote)
     , m_note_update_titles(noteUpdateTitles)
@@ -198,7 +198,7 @@ private:
     }
 
   Note::Ptr m_existing_note;
-  std::list<Glib::ustring> m_note_update_titles;
+  std::vector<Glib::ustring> m_note_update_titles;
 
   Gtk::Button *continueButton;
 
@@ -594,7 +594,7 @@ void SyncDialog::note_synchronized(const Glib::ustring & noteTitle, NoteSyncType
 
 void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<Glib::ustring> & noteUpdateTitles)
+                                        const std::vector<Glib::ustring> & noteUpdateTitles)
 {
   int dlgBehaviorPref = Preferences::obj()
     .get_schema_settings(Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
@@ -623,7 +623,7 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
 void SyncDialog::note_conflict_detected_(
   const Note::Ptr & localConflictNote,
   NoteUpdate remoteNote,
-  const std::list<Glib::ustring> & noteUpdateTitles,
+  const std::vector<Glib::ustring> & noteUpdateTitles,
   SyncTitleConflictResolution savedBehavior,
   SyncTitleConflictResolution resolution,
   std::exception **mainThreadException)

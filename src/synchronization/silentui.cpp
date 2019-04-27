@@ -75,7 +75,7 @@ namespace sync {
 
   void SilentUI::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<Glib::ustring> &)
+                                        const std::vector<Glib::ustring> &)
   {
     DBG_OUT("note conflict detected, overwriting without a care");
     // TODO: At least respect conflict prefs

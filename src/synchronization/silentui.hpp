@@ -41,7 +41,7 @@ namespace sync {
     virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) override;
     virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<Glib::ustring> & noteUpdateTitles) override;
+                                        const std::vector<Glib::ustring> & noteUpdateTitles) override;
     virtual void present_ui() override;
     void on_connecting();
     void on_idle();

@@ -47,7 +47,7 @@ namespace sync {
     virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) override;
     virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<Glib::ustring> & noteUpdateTitles) override;
+                                        const std::vector<Glib::ustring> & noteUpdateTitles) override;
     virtual void present_ui() override;
     void header_text(const Glib::ustring &);
     void message_text(const Glib::ustring &);
@@ -60,7 +60,7 @@ namespace sync {
     static void on_expander_activated(GtkExpander*, gpointer);
     void note_conflict_detected_(const Note::Ptr & localConflictNote,
                                  NoteUpdate remoteNote,
-                                 const std::list<Glib::ustring> & noteUpdateTitles,
+                                 const std::vector<Glib::ustring> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,
                                  SyncTitleConflictResolution resolution,
                                  std::exception **mainThreadException);

@@ -22,8 +22,6 @@
 #define _SYNCHRONIZATION_SYNCUI_HPP_
 
 
-#include <list>
-
 #include <glibmm/ustring.h>
 
 #include "syncutils.hpp"
@@ -45,7 +43,7 @@ namespace sync {
     virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) = 0;
     virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
-                                        const std::list<Glib::ustring> & noteUpdateTitles) = 0;
+                                        const std::vector<Glib::ustring> & noteUpdateTitles) = 0;
     virtual void present_ui() = 0;
 
     sigc::connection signal_connecting_connect(const SlotConnecting & slot);
