@@ -98,35 +98,35 @@ void FileSystemSyncServer::common_ctor()
 }
 
 
-void FileSystemSyncServer::upload_notes(const std::list<Note::Ptr> & notes)
+void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
 {
   if(sharp::directory_exists(m_new_revision_path) == false) {
     sharp::directory_create(m_new_revision_path);
   }
   DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
-  for(std::list<Note::Ptr>::const_iterator iter = notes.begin(); iter != notes.end(); ++iter) {
+  for(auto & iter : notes) {
     try {
-      auto server_note = m_new_revision_path->get_child(sharp::file_filename((*iter)->file_path()));
-      auto local_note = Gio::File::create_for_path((*iter)->file_path());
+      auto server_note = m_new_revision_path->get_child(sharp::file_filename(iter->file_path()));
+      auto local_note = Gio::File::create_for_path(iter->file_path());
       local_note->copy(server_note);
-      m_updated_notes.push_back(sharp::file_basename((*iter)->file_path()));
+      m_updated_notes.push_back(sharp::file_basename(iter->file_path()));
     }
     catch(...) {
-      DBG_OUT("Sync: Error uploading note \"%s\"", (*iter)->get_title().c_str());
+      DBG_OUT("Sync: Error uploading note \"%s\"", iter->get_title().c_str());
     }
   }
 }
 
 
-void FileSystemSyncServer::delete_notes(const std::list<Glib::ustring> & deletedNoteUUIDs)
+void FileSystemSyncServer::delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs)
 {
   m_deleted_notes.insert(m_deleted_notes.end(), deletedNoteUUIDs.begin(), deletedNoteUUIDs.end());
 }
 
 
-std::list<Glib::ustring> FileSystemSyncServer::get_all_note_uuids()
+std::vector<Glib::ustring> FileSystemSyncServer::get_all_note_uuids()
 {
-  std::list<Glib::ustring> noteUUIDs;
+  std::vector<Glib::ustring> noteUUIDs;
 
   xmlDocPtr xml_doc = NULL;
   if(is_valid_xml_file(m_manifest_path, &xml_doc)) {
@@ -309,9 +309,9 @@ bool FileSystemSyncServer::commit_sync_transaction()
       }
 
       // Write out all the updated notes
-      for(std::list<Glib::ustring>::iterator iter = m_updated_notes.begin(); iter != m_updated_notes.end(); ++iter) {
+      for(auto & note : m_updated_notes) {
         xml->write_start_element("", "note", "");
-        xml->write_attribute_string("", "id", "", *iter);
+        xml->write_attribute_string("", "id", "", note);
         xml->write_attribute_string("", "rev", "", TO_STRING(m_new_revision));
         xml->write_end_element();
       }

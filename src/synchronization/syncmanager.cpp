@@ -292,7 +292,7 @@ namespace sync {
       set_state(PREPARE_UPLOAD);
       // Look through all the notes modified on the client
       // and upload new or modified ones to the server
-      std::list<Note::Ptr> newOrModifiedNotes;
+      std::vector<Note::Ptr> newOrModifiedNotes;
       for(const NoteBase::Ptr & iter : note_mgr().get_notes()) {
         Note::Ptr note = std::static_pointer_cast<Note>(iter);
         if(m_client->get_revision(note) == -1) {
@@ -321,8 +321,8 @@ namespace sync {
       }
 
       // Handle notes deleted on client
-      std::list<Glib::ustring> locallyDeletedUUIDs;
-      std::list<Glib::ustring> all_note_uuids = server->get_all_note_uuids();
+      std::vector<Glib::ustring> locallyDeletedUUIDs;
+      auto all_note_uuids = server->get_all_note_uuids();
       for(auto & iter : all_note_uuids) {
         if(find_note_by_uuid(iter) == 0) {
           locallyDeletedUUIDs.push_back(iter);
@@ -346,9 +346,8 @@ namespace sync {
       if(commitResult) {
         // Apply this revision number to all new/modified notes since last sync
         // TODO: Is this the best place to do this (after successful server commit)
-        for(std::list<Note::Ptr>::iterator iter = newOrModifiedNotes.begin();
-            iter != newOrModifiedNotes.end(); ++iter) {
-          m_client->set_revision(*iter, newRevision);
+        for(auto & iter : newOrModifiedNotes) {
+          m_client->set_revision(iter, newRevision);
         }
         set_state(SUCCEEDED);
       }

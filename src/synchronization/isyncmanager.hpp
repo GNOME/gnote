@@ -21,8 +21,6 @@
 #ifndef _SYNCHRONIZATION_ISYNCMANAGER_HPP_
 #define _SYNCHRONIZATION_ISYNCMANAGER_HPP_
 
-#include <list>
-
 #include "note.hpp"
 #include "syncui.hpp"
 #include "syncutils.hpp"
@@ -86,10 +84,10 @@ public:
   virtual bool begin_sync_transaction() = 0;
   virtual bool commit_sync_transaction() = 0;
   virtual bool cancel_sync_transaction() = 0;
-  virtual std::list<Glib::ustring> get_all_note_uuids() = 0;
+  virtual std::vector<Glib::ustring> get_all_note_uuids() = 0;
   virtual std::map<Glib::ustring, NoteUpdate> get_note_updates_since(int revision) = 0;
-  virtual void delete_notes(const std::list<Glib::ustring> & deletedNoteUUIDs) = 0;
-  virtual void upload_notes(const std::list<Note::Ptr> & notes) = 0;
+  virtual void delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs) = 0;
+  virtual void upload_notes(const std::vector<Note::Ptr> & notes) = 0;
   virtual int latest_revision() = 0; // NOTE: Only reliable during a transaction
   virtual SyncLockInfo current_sync_lock() = 0;
   virtual Glib::ustring id() = 0;

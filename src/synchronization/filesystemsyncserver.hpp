@@ -39,10 +39,10 @@ public:
   virtual bool begin_sync_transaction() override;
   virtual bool commit_sync_transaction() override;
   virtual bool cancel_sync_transaction() override;
-  virtual std::list<Glib::ustring> get_all_note_uuids() override;
+  virtual std::vector<Glib::ustring> get_all_note_uuids() override;
   virtual std::map<Glib::ustring, NoteUpdate> get_note_updates_since(int revision) override;
-  virtual void delete_notes(const std::list<Glib::ustring> & deletedNoteUUIDs) override;
-  virtual void upload_notes(const std::list<Note::Ptr> & notes) override;
+  virtual void delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs) override;
+  virtual void upload_notes(const std::vector<Note::Ptr> & notes) override;
   virtual int latest_revision() override; // NOTE: Only reliable during a transaction
   virtual SyncLockInfo current_sync_lock() override;
   virtual Glib::ustring id() override;
@@ -58,8 +58,8 @@ private:
   bool is_valid_xml_file(const Glib::RefPtr<Gio::File> & xmlFilePath, xmlDocPtr *xml_doc);
   void lock_timeout();
 
-  std::list<Glib::ustring> m_updated_notes;
-  std::list<Glib::ustring> m_deleted_notes;
+  std::vector<Glib::ustring> m_updated_notes;
+  std::vector<Glib::ustring> m_deleted_notes;
 
   Glib::ustring m_server_id;
 
