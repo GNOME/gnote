@@ -325,7 +325,7 @@ bool FuseSyncServiceAddin::is_mounted()
   p.redirect_standard_output(true);
   p.file_name(m_mount_exe_path);
   p.start();
-  std::list<Glib::ustring> outputLines;
+  std::vector<Glib::ustring> outputLines;
   while(!p.standard_output_eof()) {
     Glib::ustring line = p.standard_output_read_line();
     outputLines.push_back(line);
