@@ -630,10 +630,7 @@ namespace gnote {
     if (m_current_matches.empty() || m_current_matches.size() == 0)
       return false;
 
-    std::list<Match>::reverse_iterator iter(m_current_matches.rbegin());
-    for ( ; iter != m_current_matches.rend() ; ++iter) {
-      Match & match(*iter);
-      
+    for (auto & match : m_current_matches) {
       Glib::RefPtr<NoteBuffer> buffer = match.buffer;
       Gtk::TextIter selection_start, selection_end;
       buffer->get_selection_bounds(selection_start, selection_end);
@@ -653,10 +650,7 @@ namespace gnote {
     if (m_current_matches.empty() || m_current_matches.size() == 0)
       return false;
 
-    std::list<Match>::iterator iter(m_current_matches.begin());
-    for ( ; iter != m_current_matches.end() ; ++iter) {
-      Match & match(*iter);
-
+    for (auto & match : m_current_matches) {
       Glib::RefPtr<NoteBuffer> buffer = match.buffer;
       Gtk::TextIter selection_start, selection_end;
       buffer->get_selection_bounds(selection_start, selection_end);
@@ -714,9 +708,7 @@ namespace gnote {
       return;
     }
 
-    for(std::list<Match>::iterator iter = m_current_matches.begin();
-        iter != m_current_matches.end(); ++iter) {
-      Match &match(*iter);
+    for(auto & match : m_current_matches) {
       Glib::RefPtr<NoteBuffer> buffer = match.buffer;
 
       if (match.highlighting != highlight) {
@@ -741,9 +733,7 @@ namespace gnote {
     if (!m_current_matches.empty()) {
       highlight_matches (false /* unhighlight */);
 
-      for(std::list<Match>::const_iterator iter = m_current_matches.begin();
-          iter != m_current_matches.end(); ++iter) {
-        const Match &match(*iter);
+      for(auto & match : m_current_matches) {
         match.buffer->delete_mark(match.start_mark);
         match.buffer->delete_mark(match.end_mark);
       }
@@ -756,7 +746,7 @@ namespace gnote {
 
   void NoteFindHandler::find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
                                                const std::vector<Glib::ustring> & words,
-                                               std::list<NoteFindHandler::Match> & matches)
+                                               std::vector<NoteFindHandler::Match> & matches)
   {
     matches.clear();
     Glib::ustring note_text = buffer->get_slice (buffer->begin(),

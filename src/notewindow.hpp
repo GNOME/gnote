@@ -118,10 +118,10 @@ private:
   void cleanup_matches();
   void find_matches_in_buffer(const Glib::RefPtr<NoteBuffer> & buffer, 
                               const std::vector<Glib::ustring> & words,
-                              std::list<Match> & matches);
+                              std::vector<Match> & matches);
 
   Note           & m_note;
-  std::list<Match> m_current_matches;
+  std::vector<Match> m_current_matches;
 };
 
 class NoteWindow 
