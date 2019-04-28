@@ -23,7 +23,6 @@
 #ifndef __UNDO_HPP_
 #define __UNDO_HPP_
 
-#include <list>
 #include <stack>
 
 #include <sigc++/signal.h>
@@ -91,7 +90,7 @@ public:
     {
       return m_chop;
     }
-  const std::list<TagData> & get_split_tags() const
+  const std::vector<TagData> & get_split_tags() const
     {
       return m_splitTags;
     }
@@ -103,7 +102,7 @@ protected:
   int get_split_offset() const;
   void apply_split_tag(Gtk::TextBuffer *);
   void remove_split_tags(Gtk::TextBuffer *);
-  std::list<TagData> m_splitTags;
+  std::vector<TagData> m_splitTags;
   utils::TextRange   m_chop;
 };
 

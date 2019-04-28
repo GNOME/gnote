@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2016-2017 Aurimas Cernius
+ * Copyright (C) 2010,2016-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -125,9 +125,8 @@ namespace gnote {
   int SplitterAction::get_split_offset() const
   {
     int offset = 0;
-    for(std::list<TagData>::const_iterator iter = m_splitTags.begin();
-        iter != m_splitTags.end(); ++iter) {
-      NoteTag::Ptr noteTag = NoteTag::Ptr::cast_dynamic(iter->tag);
+    for(auto & iter : m_splitTags) {
+      NoteTag::Ptr noteTag = NoteTag::Ptr::cast_dynamic(iter.tag);
       if (noteTag->get_image()) {
         offset++;
       }
@@ -138,9 +137,7 @@ namespace gnote {
 
   void SplitterAction::apply_split_tag(Gtk::TextBuffer * buffer)
   {
-    for(std::list<TagData>::const_iterator iter = m_splitTags.begin();
-        iter != m_splitTags.end(); ++iter) {
-      const TagData & tag(*iter);
+    for(const auto & tag : m_splitTags) {
       int offset = get_split_offset ();
 
       Gtk::TextIter start = buffer->get_iter_at_offset (tag.start - offset);
@@ -152,9 +149,7 @@ namespace gnote {
 
   void SplitterAction::remove_split_tags(Gtk::TextBuffer *buffer)
   {
-    for(std::list<TagData>::const_iterator iter = m_splitTags.begin();
-        iter != m_splitTags.end(); ++iter) {
-      const TagData & tag(*iter);
+    for(const auto & tag : m_splitTags) {
       Gtk::TextIter start = buffer->get_iter_at_offset (tag.start);
       Gtk::TextIter end = buffer->get_iter_at_offset (tag.end);
       buffer->remove_tag(tag.tag, start, end);
