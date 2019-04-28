@@ -155,8 +155,7 @@ namespace notebooks {
     menu->add(*no_notebook_item);
 
     // Add in all the real notebooks
-    std::list<Gtk::ModelButton*> notebook_menu_items;
-    get_notebook_menu_items(notebook_menu_items);
+    auto notebook_menu_items = get_notebook_menu_items();
     if(!notebook_menu_items.empty()) {
       for(Gtk::ModelButton *item : notebook_menu_items) {
         menu->add(*item);
@@ -171,12 +170,11 @@ namespace notebooks {
   }
   
 
-  void NotebookNoteAddin::get_notebook_menu_items(std::list<Gtk::ModelButton*>& items) const
+  std::vector<Gtk::ModelButton*> NotebookNoteAddin::get_notebook_menu_items() const
   {
+    std::vector<Gtk::ModelButton*> items;
     Glib::RefPtr<Gtk::TreeModel> model = NotebookManager::obj().get_notebooks();
     Gtk::TreeIter iter;
-
-    items.clear();
 
     iter = model->children().begin();
     for(iter = model->children().begin(); iter != model->children().end(); ++iter) {
@@ -187,6 +185,8 @@ namespace notebooks {
       gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_string(notebook->get_name().c_str()));
       items.push_back(item);
     }
+
+    return items;
   }
 
 
