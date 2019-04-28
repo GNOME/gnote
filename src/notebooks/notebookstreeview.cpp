@@ -20,8 +20,6 @@
 
 
 
-#include <list>
-
 #include <gtkmm/targetentry.h>
 
 #include "debug.hpp"
