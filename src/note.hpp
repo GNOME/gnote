@@ -24,7 +24,6 @@
 #ifndef __NOTE_HPP_
 #define __NOTE_HPP_
 
-#include <list>
 #include <queue>
 
 #include <gtkmm/textbuffer.h>
@@ -92,7 +91,7 @@ class Note
 public:
   typedef std::shared_ptr<Note> Ptr;
   typedef std::weak_ptr<Note> WeakPtr;
-  typedef std::list<Ptr> List;
+  typedef std::vector<Ptr> List;
 
   ~Note();
 
@@ -217,7 +216,7 @@ private:
 };
 
 namespace noteutils {
-  void show_deletion_dialog (const std::list<Note::Ptr> & notes, Gtk::Window * parent);
+  void show_deletion_dialog(const Note::List & notes, Gtk::Window * parent);
 }
 
 }

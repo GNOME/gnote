@@ -352,7 +352,7 @@ namespace gnote {
   void NoteWindow::on_delete_button_clicked(const Glib::VariantBase&)
   {
     // Prompt for note deletion
-    std::list<Note::Ptr> single_note_list;
+    Note::List single_note_list;
     single_note_list.push_back(std::static_pointer_cast<Note>(m_note.shared_from_this()));
     noteutils::show_deletion_dialog(single_note_list, dynamic_cast<Gtk::Window*>(host()));
   }

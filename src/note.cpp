@@ -46,7 +46,7 @@ namespace gnote {
 
   namespace noteutils {
 
-    void show_deletion_dialog (const std::list<Note::Ptr> & notes, Gtk::Window * parent)
+    void show_deletion_dialog(const Note::List & notes, Gtk::Window * parent)
     {
       Glib::ustring message;
 
@@ -80,9 +80,7 @@ namespace gnote {
 
       int result = dialog.run();
       if (result == 666) {
-        for(Note::List::const_iterator iter = notes.begin();
-            iter != notes.end(); ++iter) {
-          const Note::Ptr & note(*iter);
+        for(auto & note : notes) {
           note->manager().delete_note(note);
         }
       }
