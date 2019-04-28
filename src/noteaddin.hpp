@@ -24,7 +24,6 @@
 #ifndef __NOTE_ADDIN_HPP_
 #define __NOTE_ADDIN_HPP_
 
-#include <list>
 #include <map>
 
 #include <sigc++/connection.h>
@@ -118,7 +117,7 @@ private:
 
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
-  std::list<Gtk::Widget*>       m_text_menu_items;
+  std::vector<Gtk::Widget*>     m_text_menu_items;
   typedef std::map<Gtk::ToolItem*, int> ToolItemMap;
   ToolItemMap                   m_toolbar_items;
   typedef std::pair<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> ActionCallback;
