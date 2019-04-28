@@ -22,7 +22,6 @@
 #ifndef __TRIEHIT_HPP_
 #define __TRIEHIT_HPP_
 
-#include <list>
 #include <memory>
 
 #include <glibmm/ustring.h>
@@ -34,7 +33,7 @@ class TrieHit
 {
 public:
   typedef std::shared_ptr<TrieHit> Ptr;
-  typedef std::list<Ptr> List;
+  typedef std::vector<Ptr> List;
   typedef std::shared_ptr<List> ListPtr;
 
   TrieHit(int s, int e, const Glib::ustring & k, const value_t & v)

@@ -22,7 +22,6 @@
 #ifndef __TRIE_HPP_
 #define __TRIE_HPP_
 
-#include <list>
 #include <queue>
 
 #include "triehit.hpp"
@@ -37,7 +36,7 @@ private:
 
   class TrieState;
   typedef TrieState* TrieStatePtr;
-  typedef std::list<TrieStatePtr> TrieStateList;
+  typedef std::deque<TrieStatePtr> TrieStateList;
   typedef std::queue<TrieStatePtr> TrieStateQueue;
 
   class TrieState
