@@ -52,7 +52,7 @@ public:
     {
       return m_sorted_tags;
     }
-  virtual void all_tags(std::list<Tag::Ptr> &) const override;
+  virtual std::vector<Tag::Ptr> all_tags() const override;
 private:
   class ColumnRecord
     : public Gtk::TreeModelColumnRecord

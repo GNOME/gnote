@@ -220,12 +220,13 @@ namespace gnote {
     }
   }
   
-  void TagManager::all_tags(std::list<Tag::Ptr> & tags) const
+  std::vector<Tag::Ptr> TagManager::all_tags() const
   {
+    std::vector<Tag::Ptr> tags;
+
     // Add in the system tags first
-    std::vector<Tag::Ptr> tmp = sharp::map_get_values(m_internal_tags);
-    tags.insert(tags.end(), tmp.begin(), tmp.end());
-    
+    tags = sharp::map_get_values(m_internal_tags);
+
     // Now all the other tags
     for(TagMap::const_iterator iter = m_tag_map.begin();
         iter != m_tag_map.end(); ++iter) {
@@ -233,6 +234,8 @@ namespace gnote {
       iter->second->get_value(0, tag);      
       tags.push_back(tag);
     }
+
+    return tags;
   }
 
 }

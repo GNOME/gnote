@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017-2018 Aurimas Cernius
+ * Copyright (C) 2014,2017-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -73,9 +73,9 @@ void TagManager::remove_tag(const gnote::Tag::Ptr & tag)
   }
 }
 
-void TagManager::all_tags(std::list<gnote::Tag::Ptr> & list) const
+std::vector<gnote::Tag::Ptr> TagManager::all_tags() const
 {
-  list.clear();
+  std::vector<gnote::Tag::Ptr> list;
   for(auto iter = m_tags.begin(); iter != m_tags.end(); ++iter) {
     list.push_back(iter->second);
   }

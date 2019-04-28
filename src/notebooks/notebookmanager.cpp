@@ -463,12 +463,8 @@ namespace gnote {
     void NotebookManager::load_notebooks()
     {
       Gtk::TreeIter iter;
-      std::list<Tag::Ptr> tags;
-      ITagManager::obj().all_tags(tags);
-      for(std::list<Tag::Ptr>::const_iterator tag_iter = tags.begin();
-          tag_iter != tags.end(); ++tag_iter) {
-        
-        const Tag::Ptr & tag(*tag_iter);
+      auto tags = ITagManager::obj().all_tags();
+      for(const auto & tag : tags) {
         // Skip over tags that aren't notebooks
         if (!tag->is_system()
             || !Glib::str_has_prefix(tag->name(),

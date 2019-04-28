@@ -20,8 +20,6 @@
 #ifndef _ITAGMANAGER_HPP_
 #define _ITAGMANAGER_HPP_
 
-#include <list>
-
 #include <glibmm/ustring.h>
 
 #include "tag.hpp"
@@ -45,7 +43,7 @@ public:
   virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const = 0;
   virtual Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) = 0;
   virtual void remove_tag(const Tag::Ptr & tag) = 0;
-  virtual void all_tags(std::list<Tag::Ptr> &) const = 0;
+  virtual std::vector<Tag::Ptr> all_tags() const = 0;
 };
 
 }
