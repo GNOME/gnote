@@ -159,7 +159,7 @@ TrieController *NoteManagerBase::create_trie_controller()
 
 void NoteManagerBase::post_load()
 {
-  m_notes.sort(compare_dates);
+  std::sort(m_notes.begin(), m_notes.end(), compare_dates);
 
   // Update the trie so addins can access it, if they want.
   m_trie_controller->update ();
@@ -201,13 +201,13 @@ void NoteManagerBase::add_note(const NoteBase::Ptr & note)
 void NoteManagerBase::on_note_rename(const NoteBase::Ptr & note, const Glib::ustring & old_title)
 {
   signal_note_renamed(note, old_title);
-  m_notes.sort(compare_dates);
+  std::sort(m_notes.begin(), m_notes.end(), compare_dates);
 }
 
 void NoteManagerBase::on_note_save (const NoteBase::Ptr & note)
 {
   signal_note_saved(note);
-  m_notes.sort(compare_dates);
+  std::sort(m_notes.begin(), m_notes.end(), compare_dates);
 }
 
 NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
@@ -465,7 +465,12 @@ void NoteManagerBase::delete_note(const NoteBase::Ptr & note)
     }
   }
 
-  m_notes.remove(note);
+  for(auto iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
+    if(*iter == note) {
+      m_notes.erase(iter);
+      break;
+    }
+  }
   note->delete_note();
 
   DBG_OUT("Deleting note '%s'.", note->get_title().c_str());

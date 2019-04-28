@@ -190,7 +190,7 @@ class NoteBase
 public:
   typedef std::shared_ptr<NoteBase> Ptr;
   typedef std::weak_ptr<NoteBase> WeakPtr;
-  typedef std::list<Ptr> List;
+  typedef std::vector<Ptr> List;
 
   static Glib::ustring url_from_path(const Glib::ustring &);
   static std::vector<Glib::ustring> parse_tags(const xmlNodePtr tagnodes);

@@ -686,7 +686,7 @@ namespace sync {
   {
     try {
       // Make list of all local notes
-      std::list<NoteBase::Ptr> localNotes = note_mgr().get_notes();
+      auto localNotes = note_mgr().get_notes();
 
       // Get all notes currently on server
       auto serverNotes = server->get_all_note_uuids();
