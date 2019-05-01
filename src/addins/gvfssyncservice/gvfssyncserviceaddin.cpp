@@ -108,6 +108,7 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
                 0, 0);
 
   m_uri_entry = manage(new Gtk::Entry);
+  m_uri_entry->set_text(sync_path);
   m_uri_entry->get_buffer()->signal_inserted_text().connect([required_pref_changed](guint, const gchar*, guint) { required_pref_changed(); });
   m_uri_entry->get_buffer()->signal_deleted_text().connect([required_pref_changed](guint, guint) { required_pref_changed(); });
   l->set_mnemonic_widget(*m_uri_entry);
