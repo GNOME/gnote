@@ -165,7 +165,7 @@ namespace sync {
       try {
         server = f.addin->create_sync_server();
         if(server == NULL)
-          throw new std::logic_error("addin.CreateSyncServer () returned null");
+          throw std::logic_error("addin.CreateSyncServer () returned null");
       }
       catch(std::exception & e) {
         set_state(SYNC_SERVER_CREATION_FAILED);
