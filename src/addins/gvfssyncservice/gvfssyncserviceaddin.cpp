@@ -23,6 +23,7 @@
 #include <gtkmm/entry.h>
 #include <gtkmm/label.h>
 #include <gtkmm/table.h>
+#include <glibmm/thread.h>
 
 #include "debug.hpp"
 #include "gvfssyncserviceaddin.hpp"
@@ -72,6 +73,12 @@ gnote::sync::SyncServer::Ptr GvfsSyncServiceAddin::create_sync_server()
     }
 
     auto path = Gio::File::create_for_uri(m_uri);
+    if(!mount(path)) {
+      throw sharp::Exception(_("Failed to mount the folder"));
+    }
+    if(!path->query_exists())
+      sharp::directory_create(path);
+
     server = gnote::sync::FileSystemSyncServer::create(path);
   }
   else {
@@ -82,9 +89,74 @@ gnote::sync::SyncServer::Ptr GvfsSyncServiceAddin::create_sync_server()
 }
 
 
+bool GvfsSyncServiceAddin::mount(const Glib::RefPtr<Gio::File> & path)
+{
+  try {
+    path->find_enclosing_mount();
+    return true;
+  }
+  catch(Gio::Error & e) {
+  }
+
+  auto root = path;
+  auto parent = root->get_parent();
+  while(parent) {
+    root = parent;
+    parent = root->get_parent();
+  }
+
+  Glib::Mutex mutex;
+  Glib::Cond cond;
+  mutex.lock();
+  root->mount_enclosing_volume([this, &root, &mutex, &cond](Glib::RefPtr<Gio::AsyncResult> & result) {
+    mutex.lock();
+    try {
+      if(root->mount_enclosing_volume_finish(result)) {
+        m_mount = root->find_enclosing_mount();
+      }
+    }
+    catch(...) {
+    }
+
+    cond.signal();
+    mutex.unlock();
+  });
+  cond.wait(mutex);
+  mutex.unlock();
+
+  return bool(m_mount);
+}
+
+
+void GvfsSyncServiceAddin::unmount()
+{
+  if(!m_mount) {
+    return;
+  }
+
+  Glib::Mutex mutex;
+  Glib::Cond cond;
+  mutex.lock();
+  m_mount->unmount([this, &mutex, &cond](Glib::RefPtr<Gio::AsyncResult> & result) {
+    mutex.lock();
+    try {
+      m_mount->unmount_finish(result);
+    }
+    catch(...) {
+    }
+
+    m_mount.reset();
+    cond.signal();
+    mutex.unlock();
+  });
+  cond.wait(mutex);
+  mutex.unlock();
+}
+
+
 void GvfsSyncServiceAddin::post_sync_cleanup()
 {
-  // Nothing to do
+  unmount();
 }
 
 

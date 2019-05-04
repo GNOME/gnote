@@ -64,11 +64,14 @@ public:
   virtual bool initialized() override;
 private:
   bool get_config_settings(Glib::ustring & sync_path);
+  bool mount(const Glib::RefPtr<Gio::File> & path);
+  void unmount();
 
   Glib::ustring m_uri;
   Gtk::Entry *m_uri_entry;
   bool m_initialized;
   bool m_enabled;
+  Glib::RefPtr<Gio::Mount> m_mount;
 };
 
 }
