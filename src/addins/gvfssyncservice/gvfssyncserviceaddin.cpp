@@ -200,56 +200,74 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
 bool GvfsSyncServiceAddin::save_configuration()
 {
   Glib::ustring sync_uri = m_uri_entry->get_text();
+  std::exception_ptr save_exception;
 
-  if(sync_uri == "") {
-    ERR_OUT(_("The URI is empty"));
-    throw gnote::sync::GnoteSyncException(_("URI field is empty."));
-  }
-
-  auto path = Gio::File::create_for_uri(sync_uri);
-  if(sharp::directory_exists(path) == false) {
-    if(!sharp::directory_create(path)) {
-      DBG_OUT("Could not create \"%s\"", sync_uri.c_str());
-      throw gnote::sync::GnoteSyncException(_("Specified folder path does not exist, and Gnote was unable to create it."));
-    }
-  }
-  else {
-    // Test creating/writing/deleting a file
-    Glib::ustring test_path_base = Glib::build_filename(sync_uri, "test");
-    Glib::RefPtr<Gio::File> test_path = Gio::File::create_for_uri(test_path_base);
-    int count = 0;
-
-    // Get unique new file name
-    while(test_path->query_exists()) {
-      test_path = Gio::File::create_for_uri(test_path_base + TO_STRING(++count));
+  // TODO: this is hacky, need to make save into a proper async operation
+  Glib::Thread::create([this, &save_exception, sync_uri]() {
+    if(sync_uri == "") {
+      ERR_OUT(_("The URI is empty"));
+      throw gnote::sync::GnoteSyncException(_("URI field is empty."));
     }
 
-    // Test ability to create and write
-    Glib::ustring test_line = "Testing write capabilities.";
-    auto stream = test_path->create_file();
-    stream->write(test_line);
-    stream->close();
+    auto path = Gio::File::create_for_uri(sync_uri);
+    if(!mount(path))
+      throw gnote::sync::GnoteSyncException(_("Could not mount the path: %s. Please, check your settings"));
+    try {
+      if(sharp::directory_exists(path) == false) {
+        if(!sharp::directory_create(path)) {
+          DBG_OUT("Could not create \"%s\"", sync_uri.c_str());
+          throw gnote::sync::GnoteSyncException(_("Specified folder path does not exist, and Gnote was unable to create it."));
+        }
+      }
+      else {
+        // Test creating/writing/deleting a file
+        Glib::ustring test_path_base = Glib::build_filename(sync_uri, "test");
+        Glib::RefPtr<Gio::File> test_path = Gio::File::create_for_uri(test_path_base);
+        int count = 0;
 
-    if(!test_path->query_exists()) {
-      throw sharp::Exception("Failure writing test file");
+        // Get unique new file name
+        while(test_path->query_exists()) {
+          test_path = Gio::File::create_for_uri(test_path_base + TO_STRING(++count));
+        }
+
+        // Test ability to create and write
+        Glib::ustring test_line = "Testing write capabilities.";
+        auto stream = test_path->create_file();
+        stream->write(test_line);
+        stream->close();
+
+        if(!test_path->query_exists()) {
+          throw gnote::sync::GnoteSyncException("Failure writing test file");
+        }
+        Glib::ustring line = sharp::file_read_all_text(test_path);
+        if(line != test_line) {
+          throw gnote::sync::GnoteSyncException("Failure when checking test file contents");
+        }
+
+        // Test ability to delete
+        if(!test_path->remove()) {
+          throw gnote::sync::GnoteSyncException("Failure when trying to remove test file");
+        }
+      }
+
+      unmount();
     }
-    Glib::ustring line = sharp::file_read_all_text(test_path);
-    if(line != test_line) {
-      throw sharp::Exception("Failure when checking test file contents");
+    catch(...) {
+      unmount();
+      save_exception = std::current_exception();
     }
 
-    // Test ability to delete
-    if(!test_path->remove()) {
-      throw sharp::Exception("Failure when trying to remove test file");
-    }
+    gnote::utils::main_context_invoke([]() { gtk_main_quit(); });
+  }, false);
+
+  gtk_main();
+  if(save_exception) {
+    std::rethrow_exception(save_exception);
   }
 
   m_uri = sync_uri;
-
-  // TODO: Try to create and delete a file.  If it fails, this should fail
   gnote::Preferences::obj().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, m_uri);
-
   return true;
 }
 
