@@ -172,12 +172,9 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
     sync_path = "";
   }
 
-  auto l = manage(new Gtk::Label(_("_Folder Path:"), true));
+  auto l = manage(new Gtk::Label(_("Folder _URI:"), true));
   l->property_xalign() = 1;
-  table->attach(*l, 0, 1, 0, 1,
-                Gtk::FILL,
-                Gtk::EXPAND | Gtk::FILL,
-                0, 0);
+  table->attach(*l, 0, 1, 0, 1, Gtk::FILL);
 
   m_uri_entry = manage(new Gtk::Entry);
   m_uri_entry->set_text(sync_path);
