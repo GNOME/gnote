@@ -162,7 +162,7 @@ void GvfsSyncServiceAddin::post_sync_cleanup()
 
 Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler required_pref_changed)
 {
-  Gtk::Table *table = manage(new Gtk::Table(1, 1, false));
+  Gtk::Table *table = manage(new Gtk::Table(1, 3, false));
   table->set_row_spacings(5);
   table->set_col_spacings(10);
 
@@ -182,10 +182,14 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
   m_uri_entry->get_buffer()->signal_deleted_text().connect([required_pref_changed](guint, guint) { required_pref_changed(); });
   l->set_mnemonic_widget(*m_uri_entry);
 
-  table->attach(*m_uri_entry, 1, 2, 0, 1,
-                Gtk::EXPAND | Gtk::FILL,
-                Gtk::EXPAND | Gtk::FILL,
-                0, 0);
+  table->attach(*m_uri_entry, 1, 2, 0, 1);
+
+  auto example = manage(new Gtk::Label(_("Example: google-drive://name.surname@gmail.com/notes")));
+  example->property_xalign() = 0;
+  table->attach(*example, 1, 2, 1, 2);
+  auto account_info = manage(new Gtk::Label(_("Please, register your account in Online Accounts")));
+  account_info->property_xalign() = 0;
+  table->attach(*account_info, 1, 2, 2, 3);
 
   table->set_hexpand(true);
   table->set_vexpand(false);
