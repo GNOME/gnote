@@ -75,6 +75,7 @@ SUITE(directory)
     CHECK_EQUAL(0, directories.size());
   }
 
+#if 0 // TODO rewrite using generated directory tree
   TEST(get_directories__ustr__one_subdir)
   {
     Glib::ustring dir = Glib::path_get_dirname(__FILE__);
@@ -90,6 +91,7 @@ SUITE(directory)
     std::vector<Glib::RefPtr<Gio::File>> directories = sharp::directory_get_directories(dir);
     CHECK_EQUAL(1, directories.size());
   }
+#endif
 
   void remove_matching_files(const std::vector<Glib::RefPtr<Gio::File>> & dirsf,
       std::vector<Glib::ustring> & dirss)
