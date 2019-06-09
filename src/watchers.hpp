@@ -30,7 +30,7 @@
 
 #if FIXED_GTKSPELL
 extern "C" {
-#include <gtkspell/gtkspell.h>
+#include <gspell/gspell.h>
 }
 #endif
 
@@ -105,7 +105,7 @@ namespace gnote {
   private:
     static const char *LANG_PREFIX;
     static const char *LANG_DISABLED;
-    static void language_changed(GtkSpellChecker*, gchar *lang, NoteSpellChecker *checker);
+    static void language_changed(GspellChecker*, GParamSpec *pspec, NoteSpellChecker *checker);
     void attach();
     void attach_checker();
     void detach();
@@ -120,7 +120,7 @@ namespace gnote {
     void on_note_window_backgrounded();
     void on_spell_check_enable_action(const Glib::VariantBase & state);
 
-    GtkSpellChecker *m_obj_ptr;
+    GspellChecker *m_obj_ptr;
     sigc::connection  m_tag_applied_cid;
     sigc::connection m_enable_cid;
     bool m_enabled;
