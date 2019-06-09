@@ -280,7 +280,7 @@ namespace gnote {
   }
 
 
-#if FIXED_GTKSPELL
+#if ENABLE_GSPELL
   const char *NoteSpellChecker::LANG_PREFIX = "spellchecklang:";
   const char *NoteSpellChecker::LANG_DISABLED = "disabled";
 
@@ -341,12 +341,15 @@ namespace gnote {
     Glib::ustring lang = get_language();
 
     if (!m_obj_ptr && lang != LANG_DISABLED) {
-      m_obj_ptr = gtk_spell_checker_new();
-      if(lang != "") {
-        gtk_spell_checker_set_language(m_obj_ptr, lang.c_str(), NULL);
-      }
-      g_signal_connect(G_OBJECT(m_obj_ptr), "language-changed", G_CALLBACK(language_changed), this);
-      gtk_spell_checker_attach(m_obj_ptr, get_window()->editor()->gobj());
+      const GspellLanguage *language = gspell_language_lookup(lang.c_str());
+      m_obj_ptr = gspell_checker_new(language);
+      g_signal_connect(G_OBJECT(m_obj_ptr), "notify::language", G_CALLBACK(language_changed), this);
+      Glib::RefPtr<Gtk::TextBuffer> buffer = get_window()->editor()->get_buffer();
+      GspellTextBuffer *gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer (buffer->gobj());
+      gspell_text_buffer_set_spell_checker (gspell_buffer, m_obj_ptr);
+      GspellTextView *gspell_view = gspell_text_view_get_from_gtk_text_view (get_window()->editor()->gobj());
+      gspell_text_view_set_inline_spell_checking (gspell_view, TRUE);
+      gspell_text_view_set_enable_language_menu (gspell_view, TRUE);
       m_enabled = true;
     }
     else {
@@ -368,7 +371,9 @@ namespace gnote {
     m_tag_applied_cid.disconnect();
     
     if(m_obj_ptr) {
-      gtk_spell_checker_detach(m_obj_ptr);
+      Glib::RefPtr<Gtk::TextBuffer> buffer = get_window()->editor()->get_buffer();
+      GspellTextBuffer *gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer (buffer->gobj());
+      gspell_text_buffer_set_spell_checker (gspell_buffer, NULL);
       m_obj_ptr = NULL;
     }
   }
@@ -422,9 +427,10 @@ namespace gnote {
     }
   }
 
-  void NoteSpellChecker::language_changed(GtkSpellChecker*, gchar *lang, NoteSpellChecker *checker)
+  void NoteSpellChecker::language_changed(GspellChecker* self, GParamSpec *pspec, NoteSpellChecker *checker)
   {
     try {
+      const gchar *lang = gspell_language_get_code (gspell_checker_get_language (self));
       checker->on_language_changed(lang);
     }
     catch(...) {
