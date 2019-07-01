@@ -243,7 +243,7 @@ namespace gnote {
 
       // Spell checking...
 
-#if FIXED_GTKSPELL
+#if ENABLE_GSPELL
       // TODO I'm not sure there is a proper reason to do that.
       // it is in or NOT. if not, disable the UI.
       if (NoteSpellChecker::gtk_spell_available()) {
