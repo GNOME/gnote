@@ -198,7 +198,7 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
 }
 
 
-bool GvfsSyncServiceAddin::save_configuration()
+bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
 {
   Glib::ustring sync_uri = m_uri_entry->get_text();
   std::exception_ptr save_exception;
@@ -269,6 +269,7 @@ bool GvfsSyncServiceAddin::save_configuration()
   m_uri = sync_uri;
   gnote::Preferences::obj().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, m_uri);
+  on_saved(true, "");
   return true;
 }
 
