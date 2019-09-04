@@ -125,7 +125,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
 }
 
 
-bool FileSystemSyncServiceAddin::save_configuration()
+bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
 {
   Glib::ustring syncPath = m_path_button->get_filename();
 
@@ -185,6 +185,7 @@ bool FileSystemSyncServiceAddin::save_configuration()
   gnote::Preferences::obj().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC)->set_string(gnote::Preferences::SYNC_LOCAL_PATH, m_path);
 
+  on_saved(true, "");
   return true;
 }
 
