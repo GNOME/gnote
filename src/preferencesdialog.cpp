@@ -1192,7 +1192,8 @@ namespace gnote {
     try {
       get_window()->set_cursor(Gdk::Cursor::create(Gdk::WATCH));
       get_window()->get_display()->flush();
-      saved = m_selected_sync_addin->save_configuration();
+      set_sensitive(false);
+      saved = m_selected_sync_addin->save_configuration(sigc::mem_fun(*this, &PreferencesDialog::on_sync_settings_saved));
     }
     catch(sync::GnoteSyncException & e) {
       errorMsg = e.what();
@@ -1200,6 +1201,16 @@ namespace gnote {
     catch(std::exception & e) {
       DBG_OUT("Unexpected error calling %s.save_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
     }
+
+    if(!saved) {
+      on_sync_settings_saved(saved, errorMsg);
+    }
+  }
+
+
+  void PreferencesDialog::on_sync_settings_saved(bool saved, Glib::ustring errorMsg)
+  {
+    set_sensitive(true);
     get_window()->set_cursor(Glib::RefPtr<Gdk::Cursor>());
     get_window()->get_display()->flush();
 

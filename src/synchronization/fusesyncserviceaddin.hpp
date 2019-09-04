@@ -43,7 +43,7 @@ public:
   virtual SyncServer::Ptr create_sync_server() override;
   virtual void post_sync_cleanup() override;
   virtual bool is_supported() override;
-  virtual bool save_configuration() override;
+  virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) override;
   virtual void reset_configuration() override;
 
   virtual Glib::ustring fuse_mount_timeout_error();

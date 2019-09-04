@@ -105,7 +105,7 @@ bool FuseSyncServiceAddin::is_supported()
   return m_fuse_mount_exe_path != "" && m_fuse_unmount_exe_path != "" && m_mount_exe_path != "";
 }
 
-bool FuseSyncServiceAddin::save_configuration()
+bool FuseSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
 {
   // TODO: When/how best to handle this?
   if(!is_supported()) {
@@ -167,6 +167,7 @@ bool FuseSyncServiceAddin::save_configuration()
 
     // Finish save process
     save_configuration_values();
+    on_saved(true, "");
   }
 
   return mounted;

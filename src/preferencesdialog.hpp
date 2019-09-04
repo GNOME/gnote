@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -70,6 +70,7 @@ private:
   void on_advanced_sync_config_button();
   void on_reset_sync_addin_button(bool signal);
   void on_save_sync_addin_button();
+  void on_sync_settings_saved(bool saved, Glib::ustring errorMsg);
 
   void on_preferences_setting_changed(const Glib::ustring & key);
   void on_rename_behavior_changed();

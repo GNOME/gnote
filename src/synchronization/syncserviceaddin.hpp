@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ namespace sync {
     virtual SyncServer::Ptr create_sync_server() = 0;
     virtual void post_sync_cleanup() = 0;
     virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) = 0;
-    virtual bool save_configuration() = 0;
+    virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) = 0;
     virtual void reset_configuration() = 0;
     virtual bool is_configured() = 0;
     virtual bool are_settings_valid()
