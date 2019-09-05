@@ -203,13 +203,13 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
   Glib::ustring sync_uri = m_uri_entry->get_text();
   std::exception_ptr save_exception;
 
+  if(sync_uri == "") {
+    ERR_OUT(_("The URI is empty"));
+    throw gnote::sync::GnoteSyncException(_("URI field is empty."));
+  }
+
   // TODO: this is hacky, need to make save into a proper async operation
   Glib::Thread::create([this, &save_exception, sync_uri]() {
-    if(sync_uri == "") {
-      ERR_OUT(_("The URI is empty"));
-      throw gnote::sync::GnoteSyncException(_("URI field is empty."));
-    }
-
     auto path = Gio::File::create_for_uri(sync_uri);
     if(!mount(path))
       throw gnote::sync::GnoteSyncException(_("Could not mount the path: %s. Please, check your settings"));
