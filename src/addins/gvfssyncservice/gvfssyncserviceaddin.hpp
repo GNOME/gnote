@@ -65,7 +65,9 @@ public:
 private:
   bool get_config_settings(Glib::ustring & sync_path);
   bool mount(const Glib::RefPtr<Gio::File> & path);
+  bool mount_async(const Glib::RefPtr<Gio::File> & path, const sigc::slot<void, bool, Glib::ustring> & completed);
   void unmount();
+  void unmount_async(const sigc::slot<void> & completed);
 
   Glib::ustring m_uri;
   Gtk::Entry *m_uri_entry;

@@ -91,6 +91,27 @@ gnote::sync::SyncServer::Ptr GvfsSyncServiceAddin::create_sync_server()
 
 bool GvfsSyncServiceAddin::mount(const Glib::RefPtr<Gio::File> & path)
 {
+  bool ret = true;
+  Glib::Mutex mutex;
+  Glib::Cond cond;
+  mutex.lock();
+  if(mount_async(path, [&ret, &mutex, &cond](bool result, const Glib::ustring&) {
+       mutex.lock();
+       ret = result;
+       cond.signal();
+       mutex.unlock();
+     })) {
+    mutex.unlock();
+    return true;
+  }
+
+  cond.wait(mutex);
+  mutex.unlock();
+  return ret;
+}
+
+bool GvfsSyncServiceAddin::mount_async(const Glib::RefPtr<Gio::File> & path, const sigc::slot<void, bool, Glib::ustring> & completed)
+{
   try {
     path->find_enclosing_mount();
     return true;
@@ -105,11 +126,7 @@ bool GvfsSyncServiceAddin::mount(const Glib::RefPtr<Gio::File> & path)
     parent = root->get_parent();
   }
 
-  Glib::Mutex mutex;
-  Glib::Cond cond;
-  mutex.lock();
-  root->mount_enclosing_volume([this, &root, &mutex, &cond](Glib::RefPtr<Gio::AsyncResult> & result) {
-    mutex.lock();
+  root->mount_enclosing_volume([this, &root, completed](Glib::RefPtr<Gio::AsyncResult> & result) {
     try {
       if(root->mount_enclosing_volume_finish(result)) {
         m_mount = root->find_enclosing_mount();
@@ -118,13 +135,10 @@ bool GvfsSyncServiceAddin::mount(const Glib::RefPtr<Gio::File> & path)
     catch(...) {
     }
 
-    cond.signal();
-    mutex.unlock();
+    completed(bool(m_mount), "");
   });
-  cond.wait(mutex);
-  mutex.unlock();
 
-  return bool(m_mount);
+  return false;
 }
 
 
@@ -137,8 +151,23 @@ void GvfsSyncServiceAddin::unmount()
   Glib::Mutex mutex;
   Glib::Cond cond;
   mutex.lock();
-  m_mount->unmount([this, &mutex, &cond](Glib::RefPtr<Gio::AsyncResult> & result) {
+  unmount_async([&mutex, &cond]{
     mutex.lock();
+    cond.signal();
+    mutex.unlock();
+  });
+  cond.wait(mutex);
+  mutex.unlock();
+}
+
+
+void GvfsSyncServiceAddin::unmount_async(const sigc::slot<void> & completed)
+{
+  if(!m_mount) {
+    return;
+  }
+
+  m_mount->unmount([this, completed](Glib::RefPtr<Gio::AsyncResult> & result) {
     try {
       m_mount->unmount_finish(result);
     }
@@ -146,11 +175,8 @@ void GvfsSyncServiceAddin::unmount()
     }
 
     m_mount.reset();
-    cond.signal();
-    mutex.unlock();
+    completed();
   });
-  cond.wait(mutex);
-  mutex.unlock();
 }
 
 
