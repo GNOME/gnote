@@ -126,7 +126,7 @@ bool GvfsSyncServiceAddin::mount_async(const Glib::RefPtr<Gio::File> & path, con
     parent = root->get_parent();
   }
 
-  root->mount_enclosing_volume([this, &root, completed](Glib::RefPtr<Gio::AsyncResult> & result) {
+  root->mount_enclosing_volume([this, root, completed](Glib::RefPtr<Gio::AsyncResult> & result) {
     try {
       if(root->mount_enclosing_volume_finish(result)) {
         m_mount = root->find_enclosing_mount();
@@ -164,6 +164,7 @@ void GvfsSyncServiceAddin::unmount()
 void GvfsSyncServiceAddin::unmount_async(const sigc::slot<void> & completed)
 {
   if(!m_mount) {
+    completed();
     return;
   }
 
