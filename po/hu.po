@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2019-05-05 09:38+0000\n"
-"PO-Revision-Date: 2019-06-03 21:41+0200\n"
+"POT-Creation-Date: 2019-09-14 10:05+0000\n"
+"PO-Revision-Date: 2019-09-14 17:58+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -986,13 +986,13 @@ msgid "Folder path field is empty."
 msgstr "A mappaútvonal mező üres."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:142
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:220
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
 "A megadott mappaútvonal nem létezik, és a Gnote nem volt képes létrehozni."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:209
 msgid "Local Folder"
 msgstr "Helyi mappa"
 
@@ -1030,37 +1030,48 @@ msgid "Synchronize Gnote Notes to an online directory"
 msgstr "A Gnote jegyzetek szinkronizálása egy online könyvtárral"
 
 #: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:77
-#| msgid "Failed to update note format: %s"
 msgid "Failed to mount the folder"
 msgstr "Nem sikerült csatolni a mappát"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
-#| msgid "_Folder Path:"
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:202
 msgid "Folder _URI:"
 msgstr "Mappa _URI:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:187
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:214
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Példa: google-drive://nev.csaladnev@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:190
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:217
 msgid "Please, register your account in Online Accounts"
 msgstr "Regisztrálja a fiókját az Online fiókokban"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:209
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:234
 msgid "The URI is empty"
 msgstr "Az URI üres"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:210
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:235
 msgid "URI field is empty."
 msgstr "Az URI mező üres."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:215
-#, c-format
-msgid "Could not mount the path: %s. Please, check your settings"
-msgstr "Nem sikerült csatolni az útvonalat: %s. Ellenőrizze a beállításokat."
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
+#| msgid "Write test failed."
+msgid "Failure writing test file"
+msgstr "A tesztfájl írása sikertelen"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:292
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:294
+msgid "Failure when checking test file contents"
+msgstr "A tesztfájl tartalmának ellenőrzése sikertelen"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:300
+msgid "Failure when trying to remove test file"
+msgstr "A tesztfájl eltávolításának kísérlete sikertelen"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
+#| msgid "unknown parse error"
+msgid "Unknown error"
+msgstr "Ismeretlen hiba"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:338
 msgid "Online Folder"
 msgstr "Online mappa"
 
@@ -2198,11 +2209,11 @@ msgstr ""
 "beállításai törlésre kerülnek. Új beállítások mentésekor szükség lehet a "
 "jegyzetek újraszinkronizálására."
 
-#: ../src/preferencesdialog.cpp:1222
+#: ../src/preferencesdialog.cpp:1233
 msgid "Connection successful"
 msgstr "A kapcsolódás sikeres"
 
-#: ../src/preferencesdialog.cpp:1223
+#: ../src/preferencesdialog.cpp:1234
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2211,7 +2222,7 @@ msgstr ""
 "szinkronizálni?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1248
+#: ../src/preferencesdialog.cpp:1259
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2219,19 +2230,19 @@ msgstr ""
 "Ellenőrizze az információkat, és próbálkozzon újra. A(z) %1 naplófájl "
 "további információkat tartalmazhat a hibáról."
 
-#: ../src/preferencesdialog.cpp:1253
+#: ../src/preferencesdialog.cpp:1264
 msgid "Error connecting"
 msgstr "Hiba a csatlakozáskor"
 
-#: ../src/preferencesdialog.cpp:1316
+#: ../src/preferencesdialog.cpp:1327
 msgid "Version:"
 msgstr "Verzió:"
 
-#: ../src/preferencesdialog.cpp:1319
+#: ../src/preferencesdialog.cpp:1330
 msgid "Author:"
 msgstr "Szerző:"
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1334
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -2446,19 +2457,19 @@ msgstr "Nem sikerült olvasni a tesztfájlt."
 msgid "Write test failed."
 msgstr "Az írási teszt meghiúsult."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:184
+#: ../src/synchronization/fusesyncserviceaddin.cpp:185
 msgid "Timeout connecting to server."
 msgstr "Időtúllépés a kiszolgálóhoz kapcsolódás közben."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:190
+#: ../src/synchronization/fusesyncserviceaddin.cpp:191
 msgid "Error connecting to server."
 msgstr "Hiba a kiszolgálóhoz kapcsolódás közben."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:203
+#: ../src/synchronization/fusesyncserviceaddin.cpp:204
 msgid "FUSE could not be enabled."
 msgstr "A FUSE nem engedélyezhető."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:234
+#: ../src/synchronization/fusesyncserviceaddin.cpp:235
 msgid "An error occurred while connecting to the specified server"
 msgstr "Hiba történt a megadott kiszolgálóhoz kapcsolódás közben"
 
@@ -2818,10 +2829,10 @@ msgstr "A jegyzet neve foglalt"
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
 
-#: ../src/watchers.cpp:704
+#: ../src/watchers.cpp:710
 msgid "_Copy Link Address"
 msgstr "Hivatkozás cí_mének másolása"
 
-#: ../src/watchers.cpp:710
+#: ../src/watchers.cpp:716
 msgid "_Open Link"
 msgstr "_Hivatkozás megnyitása"
