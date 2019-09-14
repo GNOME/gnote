@@ -240,41 +240,9 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
       auto path = Gio::File::create_for_uri(sync_uri);
       if(!mount(path))
         throw gnote::sync::GnoteSyncException(_("Could not mount the path: %s. Please, check your settings"));
-      if(sharp::directory_exists(path) == false) {
-        if(!sharp::directory_create(path)) {
-          DBG_OUT("Could not create \"%s\"", sync_uri.c_str());
-          throw gnote::sync::GnoteSyncException(_("Specified folder path does not exist, and Gnote was unable to create it."));
-        }
-      }
-      else {
-        // Test creating/writing/deleting a file
-        Glib::ustring test_path_base = Glib::build_filename(sync_uri, "test");
-        Glib::RefPtr<Gio::File> test_path = Gio::File::create_for_uri(test_path_base);
-        int count = 0;
-
-        // Get unique new file name
-        while(test_path->query_exists()) {
-          test_path = Gio::File::create_for_uri(test_path_base + TO_STRING(++count));
-        }
-
-        // Test ability to create and write
-        Glib::ustring test_line = "Testing write capabilities.";
-        auto stream = test_path->create_file();
-        stream->write(test_line);
-        stream->close();
-
-        if(!test_path->query_exists()) {
-          throw gnote::sync::GnoteSyncException("Failure writing test file");
-        }
-        Glib::ustring line = sharp::file_read_all_text(test_path);
-        if(line != test_line) {
-          throw gnote::sync::GnoteSyncException("Failure when checking test file contents");
-        }
-
-        // Test ability to delete
-        if(!test_path->remove()) {
-          throw gnote::sync::GnoteSyncException("Failure when trying to remove test file");
-        }
+      Glib::ustring error;
+      if(!test_sync_directory(path, sync_uri, error)) {
+        throw gnote::sync::GnoteSyncException(error.c_str());
       }
 
       unmount();
@@ -297,6 +265,67 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
     gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, m_uri);
   on_saved(true, "");
   return true;
+}
+
+
+bool GvfsSyncServiceAddin::test_sync_directory(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & sync_uri, Glib::ustring & error)
+{
+  try {
+    if(sharp::directory_exists(path) == false) {
+      if(!sharp::directory_create(path)) {
+        DBG_OUT("Could not create \"%s\"", sync_uri.c_str());
+        error = _("Specified folder path does not exist, and Gnote was unable to create it.");
+        return false;
+      }
+    }
+    else {
+      // Test creating/writing/deleting a file
+      Glib::ustring test_path_base = Glib::build_filename(sync_uri, "test");
+      Glib::RefPtr<Gio::File> test_path = Gio::File::create_for_uri(test_path_base);
+      int count = 0;
+
+      // Get unique new file name
+      while(test_path->query_exists()) {
+        test_path = Gio::File::create_for_uri(test_path_base + TO_STRING(++count));
+      }
+
+      // Test ability to create and write
+      Glib::ustring test_line = "Testing write capabilities.";
+      auto stream = test_path->create_file();
+      stream->write(test_line);
+      stream->close();
+
+      if(!test_path->query_exists()) {
+        error = _("Failure writing test file");
+        return false;
+      }
+      Glib::ustring line = sharp::file_read_all_text(test_path);
+      if(line != test_line) {
+        error = _("Failure when checking test file contents");
+        return false;
+      }
+
+      // Test ability to delete
+      if(!test_path->remove()) {
+        error = _("Failure when trying to remove test file");
+        return false;
+      }
+    }
+
+    return true;
+  }
+  catch(Glib::Exception & e) {
+    error = e.what();
+    return false;
+  }
+  catch(std::exception & e) {
+    error = e.what();
+    return false;
+  }
+  catch(...) {
+    error = _("Unknown error");
+    return false;
+  }
 }
 
 

@@ -68,6 +68,7 @@ private:
   bool mount_async(const Glib::RefPtr<Gio::File> & path, const sigc::slot<void, bool, Glib::ustring> & completed);
   void unmount();
   void unmount_async(const sigc::slot<void> & completed);
+  bool test_sync_directory(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & sync_uri, Glib::ustring & error);
 
   Glib::ustring m_uri;
   Gtk::Entry *m_uri_entry;
