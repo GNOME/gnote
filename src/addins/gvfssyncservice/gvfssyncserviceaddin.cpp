@@ -235,36 +235,25 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
     throw gnote::sync::GnoteSyncException(_("URI field is empty."));
   }
 
-  // TODO: this is hacky, need to make save into a proper async operation
-  Glib::Thread::create([this, &save_exception, sync_uri]() {
-    try {
-      auto path = Gio::File::create_for_uri(sync_uri);
-      if(!mount(path))
-        throw gnote::sync::GnoteSyncException(_("Could not mount the path: %s. Please, check your settings"));
-      Glib::ustring error;
-      if(!test_sync_directory(path, sync_uri, error)) {
-        throw gnote::sync::GnoteSyncException(error.c_str());
+  auto path = Gio::File::create_for_uri(sync_uri);
+  auto on_mount_completed = [this, path, sync_uri, on_saved](bool success, Glib::ustring error) {
+      if(success) {
+        success = test_sync_directory(path, sync_uri, error);
       }
-
-      unmount();
-    }
-    catch(...) {
-      unmount();
-      save_exception = std::current_exception();
-    }
-
-    gnote::utils::main_context_invoke([]() { gtk_main_quit(); });
-  }, false);
-
-  gtk_main();
-  if(save_exception) {
-    std::rethrow_exception(save_exception);
+      unmount_async([this, sync_uri, on_saved, success, error] {
+        if(success) {
+          m_uri = sync_uri;
+          gnote::Preferences::obj().get_schema_settings(gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, m_uri);
+        }
+        on_saved(success, error);
+      });
+  };
+  if(mount_async(path, on_mount_completed)) {
+    Glib::Thread::create([this, &save_exception, sync_uri, on_mount_completed]() {
+      on_mount_completed(true, "");
+    }, false);
   }
 
-  m_uri = sync_uri;
-  gnote::Preferences::obj().get_schema_settings(
-    gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, m_uri);
-  on_saved(true, "");
   return true;
 }
 
