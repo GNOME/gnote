@@ -236,10 +236,10 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
 
   // TODO: this is hacky, need to make save into a proper async operation
   Glib::Thread::create([this, &save_exception, sync_uri]() {
-    auto path = Gio::File::create_for_uri(sync_uri);
-    if(!mount(path))
-      throw gnote::sync::GnoteSyncException(_("Could not mount the path: %s. Please, check your settings"));
     try {
+      auto path = Gio::File::create_for_uri(sync_uri);
+      if(!mount(path))
+        throw gnote::sync::GnoteSyncException(_("Could not mount the path: %s. Please, check your settings"));
       if(sharp::directory_exists(path) == false) {
         if(!sharp::directory_create(path)) {
           DBG_OUT("Could not create \"%s\"", sync_uri.c_str());
