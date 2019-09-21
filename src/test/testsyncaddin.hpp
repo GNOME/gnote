@@ -35,7 +35,7 @@ public:
   virtual gnote::sync::SyncServer::Ptr create_sync_server() override;
   virtual void post_sync_cleanup() override;
   virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) override;
-  virtual bool save_configuration() override;
+  virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) override;
   virtual void reset_configuration() override;
   virtual bool is_configured() override;
   virtual Glib::ustring name() override;
