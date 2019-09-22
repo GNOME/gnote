@@ -427,7 +427,7 @@ namespace gnote {
     }
   }
 
-  void NoteSpellChecker::language_changed(GspellChecker* self, GParamSpec *pspec, NoteSpellChecker *checker)
+  void NoteSpellChecker::language_changed(GspellChecker* self, GParamSpec*, NoteSpellChecker *checker)
   {
     try {
       const gchar *lang = gspell_language_get_code (gspell_checker_get_language (self));
