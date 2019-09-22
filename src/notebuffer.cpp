@@ -67,7 +67,6 @@ namespace gnote {
   {
     m_undomanager = new UndoManager(this);
     signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));
-    signal_erase().connect(sigc::mem_fun(*this, &NoteBuffer::range_deleted_event));
     signal_mark_set().connect(sigc::mem_fun(*this, &NoteBuffer::mark_set_event));
 
     signal_apply_tag().connect(sigc::mem_fun(*this, &NoteBuffer::on_tag_applied));
@@ -299,11 +298,6 @@ namespace gnote {
         }
 
         if(depth_tag) {
-          Pango::Direction direction = Pango::DIRECTION_LTR;
-          if(text.size() > 0) {
-            direction = Pango::Direction(pango_unichar_direction(text[0]));
-          }
-          change_bullet_direction(pos, direction);
           for(int i = 0; i < depth_tag->get_depth(); ++i) {
             signal_change_text_depth(line_start.get_line(), true);
           }
@@ -311,36 +305,6 @@ namespace gnote {
       }
 
       signal_insert_text_with_tags(pos, text, bytes);
-    }
-  }
-
-
-  // Change the direction of a bulleted line to match the new
-  // first character after the previous character is deleted.
-  void NoteBuffer::range_deleted_event(const Gtk::TextIter & start,const Gtk::TextIter & end_iter)
-  {
-    //
-    std::array<Gtk::TextIter, 2> iters;
-    iters[0] = start;
-    iters[1] = end_iter;
-
-    for(Gtk::TextIter iter : iters) {
-      Gtk::TextIter line_start = iter;
-      line_start.set_line_offset(0);
-
-      if (((iter.get_line_offset() == 3) || (iter.get_line_offset() == 2)) &&
-          find_depth_tag(line_start)) {
-
-        Gtk::TextIter first_char = iter;
-        first_char.set_line_offset(2);
-
-        Pango::Direction direction = Pango::DIRECTION_LTR;
-
-        if (first_char.get_char() > 0)
-          direction = Pango::Direction(pango_unichar_direction(first_char.get_char()));
-
-        change_bullet_direction(first_char, direction);
-      }
     }
   }
 
@@ -422,17 +386,10 @@ namespace gnote {
         iter = get_iter_at_mark(insert_mark);
         Gtk::TextIter start = get_iter_at_line(iter.get_line());
 
-        // Set the direction of the bullet to be the same
-        // as the first character on the new line
-        Pango::Direction direction = prev_depth->get_direction();
-        if ((iter.get_char() != '\n') && (iter.get_char() > 0)) {
-          direction = Pango::Direction(pango_unichar_direction(iter.get_char()));
-        }
-
-        insert_bullet(start, prev_depth->get_depth(), direction);
+        insert_bullet(start, prev_depth->get_depth());
         m_undomanager->thaw_undo();
 
-        signal_new_bullet_inserted(offset, prev_depth->get_depth(), direction);
+        signal_new_bullet_inserted(offset, prev_depth->get_depth());
       }
 
       return true;
@@ -449,12 +406,6 @@ namespace gnote {
       }
       // Remove the '*' or '-' character and the space after
       end_iter.forward_chars(2);
-        
-      // Set the direction of the bullet to be the same as
-      // the first character after the '*' or '-'
-      Pango::Direction direction = Pango::DIRECTION_LTR;
-      if (end_iter.get_char() > 0)
-        direction = Pango::Direction(pango_unichar_direction(end_iter.get_char()));
 
       end_iter = erase(start, end_iter);
       start = end_iter;
@@ -472,10 +423,10 @@ namespace gnote {
         iter.set_line_offset(0);
 
         m_undomanager->freeze_undo();
-        insert_bullet (iter, 0, direction);
+        insert_bullet (iter, 0);
         m_undomanager->thaw_undo();
 
-        signal_new_bullet_inserted(offset, 0, direction);
+        signal_new_bullet_inserted(offset, 0);
       }
 
       return true;
@@ -976,33 +927,7 @@ namespace gnote {
   }
 
 
-  // Change the writing direction (ie. RTL or LTR) of a bullet.
-  // This makes the bulleted line use the correct indent
-  void NoteBuffer::change_bullet_direction(Gtk::TextIter iter, Pango::Direction direction)
-  {
-    iter.set_line_offset(0);
-
-    DepthNoteTag::Ptr tag = find_depth_tag (iter);
-    if (tag) {
-      if ((tag->get_direction() != direction) &&
-          (direction != Pango::DIRECTION_NEUTRAL)) {
-        NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(get_tag_table());
-
-        // Get the depth tag for the given direction
-        Glib::RefPtr<Gtk::TextTag> new_tag = note_table->get_depth_tag(tag->get_depth());
-
-        Gtk::TextIter next = iter;
-        next.forward_char ();
-
-        // Replace the old depth tag with the new one
-        remove_all_tags (iter, next);
-        apply_tag (new_tag, iter, next);
-      }
-    }
-  }
-
-
-  void NoteBuffer::insert_bullet(Gtk::TextIter & iter, int depth, Pango::Direction direction)
+  void NoteBuffer::insert_bullet(Gtk::TextIter & iter, int depth)
   {
     NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(get_tag_table());
 
@@ -1060,13 +985,7 @@ namespace gnote {
       next.forward_sentence_end ();
       next.backward_sentence_start ();
 
-      // Insert the bullet using the same direction
-      // as the text on the line
-      Pango::Direction direction = Pango::DIRECTION_LTR;
-      if ((next.get_char() > 0) && (next.get_line() == start.get_line()))
-        direction = Pango::Direction(pango_unichar_direction(next.get_char()));
-
-      insert_bullet (start, 0, direction);
+      insert_bullet (start, 0);
     } 
     else {
       // Remove the previous indent
@@ -1074,7 +993,7 @@ namespace gnote {
 
       // Insert the indent at the new depth
       int nextDepth = curr_depth->get_depth() + 1;
-      insert_bullet (start, nextDepth, curr_depth->get_direction());
+      insert_bullet(start, nextDepth);
     }
     undoer().thaw_undo ();
 
@@ -1111,7 +1030,7 @@ namespace gnote {
       int nextDepth = curr_depth->get_depth() - 1;
 
       if (nextDepth != -1) {
-        insert_bullet (start, nextDepth, curr_depth->get_direction());
+        insert_bullet(start, nextDepth);
       }
     }
     undoer().thaw_undo ();
@@ -1573,7 +1492,7 @@ namespace gnote {
               // Do not insert bullet if it's already there
               // this happens when using double identation in bullet list
               if(!note_buffer->find_depth_tag(apply_start)) {
-                note_buffer->insert_bullet (apply_start, depth_tag->get_depth(), depth_tag->get_direction());
+                note_buffer->insert_bullet(apply_start, depth_tag->get_depth());
                 buffer->remove_all_tags (apply_start, apply_start);
                 offset += 2;
               }

@@ -537,11 +537,9 @@ namespace gnote {
   
 
 
-  InsertBulletAction::InsertBulletAction(int offset, int depth, 
-                                         Pango::Direction direction)
+  InsertBulletAction::InsertBulletAction(int offset, int depth)
     : m_offset(offset)
     , m_depth(depth)
-    , m_direction(direction)
   {
   }
 
@@ -566,8 +564,7 @@ namespace gnote {
     Gtk::TextIter iter = buffer->get_iter_at_offset (m_offset);
     iter = buffer->insert (iter, "\n");
 
-    dynamic_cast<NoteBuffer*>(buffer)->insert_bullet (iter, 
-                                                      m_depth, m_direction);
+    dynamic_cast<NoteBuffer*>(buffer)->insert_bullet(iter, m_depth);
 
     buffer->move_mark (buffer->get_insert(), iter);
     buffer->move_mark (buffer->get_selection_bound(), iter);
@@ -790,13 +787,12 @@ namespace gnote {
     add_undo_action(new ChangeDepthAction(line, direction));
   }
 
-  void UndoManager::on_bullet_inserted(int offset, int depth, 
-                                       Pango::Direction direction)
+  void UndoManager::on_bullet_inserted(int offset, int depth)
   {
     if(m_frozen_cnt) {
       return;
     }
-    add_undo_action(new InsertBulletAction(offset, depth, direction));
+    add_undo_action(new InsertBulletAction(offset, depth));
   }
 
 

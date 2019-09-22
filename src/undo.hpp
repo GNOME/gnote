@@ -203,7 +203,7 @@ class InsertBulletAction
   : public EditAction
 {
 public:
-  InsertBulletAction(int offset, int depth, Pango::Direction direction);
+  InsertBulletAction(int offset, int depth);
   virtual void undo(Gtk::TextBuffer * buffer) override;
   virtual void redo(Gtk::TextBuffer * buffer) override;
   virtual void merge(EditAction * action) override;
@@ -212,7 +212,6 @@ public:
 private:
   int m_offset;
   int m_depth;
-  Pango::Direction m_direction;
 };
 
 class UndoManager
@@ -269,7 +268,7 @@ private:
                       const Gtk::TextIter &, const Gtk::TextIter &);
 
   void on_change_depth(int, bool);
-  void on_bullet_inserted(int, int, Pango::Direction);
+  void on_bullet_inserted(int, int);
 
   guint m_frozen_cnt;
   bool m_try_merge;

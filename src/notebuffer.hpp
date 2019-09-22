@@ -26,8 +26,6 @@
 
 #include <queue>
 
-#include <pangomm/context.h>
-
 #include <gtkmm/textbuffer.h>
 #include <gtkmm/textiter.h>
 #include <gtkmm/texttag.h>
@@ -51,7 +49,7 @@ class NoteBuffer
 {
 public:
   typedef Glib::RefPtr<NoteBuffer> Ptr;
-  typedef sigc::signal<void, int, int, Pango::Direction> NewBulletHandler;
+  typedef sigc::signal<void, int, int> NewBulletHandler;
   typedef sigc::signal<void, int, bool> ChangeDepthHandler;
 
   bool get_enable_auto_bulleted_lists() const;
@@ -109,8 +107,7 @@ public:
       change_cursor_depth(false);
     }
   void change_cursor_depth_directional(bool right);
-  void change_bullet_direction(Gtk::TextIter pos, Pango::Direction);
-  void insert_bullet(Gtk::TextIter & iter, int depth, Pango::Direction direction);
+  void insert_bullet(Gtk::TextIter & iter, int depth);
   void remove_bullet(Gtk::TextIter & iter);
   void increase_depth(Gtk::TextIter & start);
   void decrease_depth(Gtk::TextIter & start);
@@ -126,7 +123,6 @@ protected:
                        const Gtk::TextIter &,  const Gtk::TextIter &) override;
 private:
   void text_insert_event(const Gtk::TextIter & pos, const Glib::ustring & text, int);
-  void range_deleted_event(const Gtk::TextIter &,const Gtk::TextIter &);
   bool line_needs_bullet(Gtk::TextIter iter);
   void augment_selection(Gtk::TextIter &, Gtk::TextIter &);
   void mark_set_event(const Gtk::TextIter &,const Glib::RefPtr<Gtk::TextBuffer::Mark> &);
