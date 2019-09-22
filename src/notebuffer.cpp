@@ -989,7 +989,7 @@ namespace gnote {
         NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(get_tag_table());
 
         // Get the depth tag for the given direction
-        Glib::RefPtr<Gtk::TextTag> new_tag = note_table->get_depth_tag (tag->get_depth(), direction);
+        Glib::RefPtr<Gtk::TextTag> new_tag = note_table->get_depth_tag(tag->get_depth());
 
         Gtk::TextIter next = iter;
         next.forward_char ();
@@ -1006,7 +1006,7 @@ namespace gnote {
   {
     NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(get_tag_table());
 
-    DepthNoteTag::Ptr tag = note_table->get_depth_tag (depth, direction);
+    DepthNoteTag::Ptr tag = note_table->get_depth_tag(depth);
 
     Glib::ustring bullet =
       Glib::ustring(1, s_indent_bullets [depth % NUM_INDENT_BULLETS]) + " ";
@@ -1504,14 +1504,7 @@ namespace gnote {
           } 
           else if (xml.get_name() == "list-item") {
             if (curr_depth >= 0) {
-              if (xml.get_attribute ("dir") == "rtl") {
-                tag_start.tag =
-                  note_table->get_depth_tag (curr_depth, Pango::DIRECTION_RTL);
-              } 
-              else {
-                tag_start.tag =
-                  note_table->get_depth_tag (curr_depth, Pango::DIRECTION_LTR);
-              }
+              tag_start.tag = note_table->get_depth_tag(curr_depth);
               list_stack.push_front (false);
             } 
             else {

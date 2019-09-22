@@ -222,7 +222,7 @@ class DepthNoteTag
 public:
   typedef Glib::RefPtr<DepthNoteTag> Ptr;
 
-  DepthNoteTag(int depth, Pango::Direction direction);
+  DepthNoteTag(int depth);
 
   int get_depth() const
     { 
@@ -235,7 +235,6 @@ public:
   virtual void write(sharp::XmlWriter &, bool) const override;
 private:
   int            m_depth;
-  Pango::Direction m_direction;
 };
 
 
@@ -294,7 +293,7 @@ public:
   /// <returns>ChangeType to save this NoteTag</returns>
   ChangeType get_change_type(const Glib::RefPtr<Gtk::TextTag> &tag);
 
-  DepthNoteTag::Ptr get_depth_tag(int depth, Pango::Direction direction);
+  DepthNoteTag::Ptr get_depth_tag(int depth);
   DynamicNoteTag::Ptr create_dynamic_tag(const Glib::ustring & );
   void register_dynamic_tag(const Glib::ustring & tag_name, const Factory & factory);
   bool is_dynamic_tag_registered(const Glib::ustring &);

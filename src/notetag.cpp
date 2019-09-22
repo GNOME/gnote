@@ -341,11 +341,10 @@ namespace gnote {
     }
   }
   
-  DepthNoteTag::DepthNoteTag(int depth, Pango::Direction direction)
+  DepthNoteTag::DepthNoteTag(int depth)
     : NoteTag("depth:" + TO_STRING(depth) 
-              + ":" + TO_STRING((int)direction))
+              + ":" + TO_STRING((int)Pango::DIRECTION_LTR))
     , m_depth(depth)
-    , m_direction(direction)
   {
   }
 
@@ -563,23 +562,16 @@ namespace gnote {
   }
   
 
-  DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth, Pango::Direction direction)
+  DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth)
   {
-    Glib::ustring name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)direction);
+    Glib::ustring name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)Pango::DIRECTION_LTR);
 
     DepthNoteTag::Ptr tag = DepthNoteTag::Ptr::cast_dynamic(lookup(name));
 
     if (!tag) {
-      tag = DepthNoteTag::Ptr(new DepthNoteTag (depth, direction));
+      tag = DepthNoteTag::Ptr(new DepthNoteTag(depth));
       tag->property_indent().set_value(-14);
-
-      if (direction == Pango::DIRECTION_RTL) {
-        tag->property_right_margin().set_value((depth+1) * 25);
-      }
-      else {
-        tag->property_left_margin().set_value((depth+1) * 25);
-      }
-
+      tag->property_left_margin().set_value((depth+1) * 25);
       tag->property_pixels_below_lines().set_value(4);
       tag->property_scale().set_value(Pango::SCALE_MEDIUM);
       add (tag);
