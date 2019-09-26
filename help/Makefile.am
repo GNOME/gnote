@@ -14,6 +14,7 @@ HELP_MEDIA = \
 	figures/gnote-preferences-synchronization.png \
 	figures/gnote-search-all-notes.png \
 	figures/gnote-syncprefs-advanced.png \
+	figures/gnote-syncprefs-gvfs.png \
 	figures/gnote-syncprefs-local.png \
 	figures/gnote-syncprefs-webdav.png \
 	figures/gnote-sync-progress.png \
@@ -33,6 +34,7 @@ HELP_FILES = \
 	gnote-addin-readonly.page \
 	gnote-addin-replacetitle.page \
 	gnote-addin-specialnotes.page \
+	gnote-addin-sync-gvfs.page \
 	gnote-addin-sync-local.page \
 	gnote-addin-sync-webdav.page \
 	gnote-addin-tableofcontents.page \
