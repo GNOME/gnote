@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="addin-sync-gvfs">
+
+  <info>
+    <link type="guide" xref="notes-preferences#sync-addins"/>
+    <link type="guide" xref="synchronization#configuration"/>
+    <desc>Synchronize to an online folder</desc>
+    <license><p>GNU Free Documentation License (GFDL), Version 1.1</p></license>
+    <credit type="author">
+      <name>Aurimas Cernius</name>
+      <years>2019</years>
+    </credit>
+  </info>
+
+  <title>Online Folder Synchronization</title>
+  <p>This type of synchronization lets you synchronize to online folder that can be opened in <app>Files</app>.</p>
+  <p>To use this type of synchronization you have to first configure your account for accessing the folder in <app>Online Accounts</app>. Once account has been added, it should be visible in the side pane in <app>Files</app> application and you should be able to open it and browse your online folder.</p>
+  <p>To configure this type of synchronization, select <gui>Online Folder</gui> in the <gui>Service</gui> drop-down and then enter the desired folder as the <gui>Folder URI</gui>. You can get the folder URI by opening that online folder in <app>Files</app> application and then pressing <keyseq><key>Ctrl</key><key>L</key></keyseq> to edit the path.</p>
+  <figure>
+    <title>Online Folder Synchronization configuration</title>
+    <media type="image" src="figures/gnote-syncprefs-gvfs.png" mime="image/png"/>
+  </figure>
+  <p>After entering the desired folder, click the <gui>Save</gui> button. Use the <gui>Clear</gui> button to turn synchronization off.</p>
+  <p>If entered folder doesn't exist, <app>Gnote</app> will attempt to create it.</p>
+
+</page>
