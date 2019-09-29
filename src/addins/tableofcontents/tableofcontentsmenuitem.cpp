@@ -2,7 +2,7 @@
  * "Table of Contents" is a Note add-in for Gnote.
  *  It lists note's table of contents in a menu.
  *
- * Copyright (C) 2015,2017 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2015,2017,2019 Aurimas Cernius <aurisc4@gmail.com>
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,6 +26,7 @@
 #include <gtkmm/stock.h>
 
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 #include "notewindow.hpp"
 
 #include "tableofcontentsmenuitem.hpp"
@@ -58,7 +59,7 @@ TableofcontentsMenuItem::TableofcontentsMenuItem (
   set_use_underline (false); //we don't want potential '_' in the heading to be used as mnemonic
 
   if (heading_level == Heading::Title) {
-    set_image(*manage(new Gtk::Image(gnote::IconManager::obj().get_icon(gnote::IconManager::NOTE, 16))));
+    set_image(*manage(new Gtk::Image(gnote::IGnote::obj().icon_manager().get_icon(gnote::IconManager::NOTE, 16))));
     Gtk::Label *label = (Gtk::Label*)get_child();
     label->set_markup("<b>" + heading + "</b>");
   }
