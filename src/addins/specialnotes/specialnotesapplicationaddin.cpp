@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 #include "notebooks/specialnotebooks.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 #include "specialnotesapplicationaddin.hpp"
 
 using gnote::Note;
@@ -55,7 +56,7 @@ namespace {
 
     virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override
       {
-        return gnote::IconManager::obj().get_icon(gnote::IconManager::SPECIAL_NOTES, 22);
+        return gnote::IGnote::obj().icon_manager().get_icon(gnote::IconManager::SPECIAL_NOTES, 22);
       }
   };
 }
