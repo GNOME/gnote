@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017 Aurimas Cernius
+ * Copyright (C) 2012,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -80,7 +80,7 @@ namespace bugzilla {
       image = Gdk::Pixbuf::create_from_file(imagePath);
     }
     catch(...) {
-      image = gnote::IconManager::obj().get_icon(gnote::IconManager::BUG, 16);
+      image = gnote::IGnote::obj().icon_manager().get_icon(gnote::IconManager::BUG, 16);
     }
     set_image(image);
   }
