@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 
 #include "sharp/string.hpp"
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
@@ -40,7 +41,7 @@ namespace gnote {
       : Gtk::ImageMenuItem(Glib::ustring::compose(_("New \"%1\" Note"), notebook->get_name()))
       , m_notebook(notebook)
     {
-      set_image(*manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::NOTE_NEW, 16))));
+      set_image(*manage(new Gtk::Image(IGnote::obj().icon_manager().get_icon(IconManager::NOTE_NEW, 16))));
       signal_activate().connect(sigc::mem_fun(*this, &NotebookNewNoteMenuItem::on_activated));
     }
 

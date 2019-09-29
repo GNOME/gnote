@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -30,6 +30,7 @@
 #include "sharp/addinstreemodel.hpp"
 #include "abstractaddin.hpp"
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 
 
 namespace sharp {
@@ -98,7 +99,7 @@ namespace sharp {
     Gtk::CellRendererPixbuf *icon_renderer = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
     Glib::RefPtr<Gdk::Pixbuf> icon;
     if(get_module_id(iter) != "") {
-      icon = gnote::IconManager::obj().get_icon(gnote::IconManager::EMBLEM_PACKAGE, 22);
+      icon = gnote::IGnote::obj().icon_manager().get_icon(gnote::IconManager::EMBLEM_PACKAGE, 22);
     }
     icon_renderer->property_pixbuf() = icon;
   }

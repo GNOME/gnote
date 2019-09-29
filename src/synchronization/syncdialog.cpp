@@ -245,7 +245,7 @@ SyncDialog::SyncDialog(NoteManagerBase & manager)
   hbox->show();
   outerVBox->attach(*hbox, 0, outerVBoxRow++, 1, 1);
 
-  m_image = manage(new Gtk::Image(IconManager::obj().get_icon(IconManager::GNOTE, 48)));
+  m_image = manage(new Gtk::Image(IGnote::obj().icon_manager().get_icon(IconManager::GNOTE, 48)));
   m_image->set_alignment(0, 0);
   m_image->show();
   hbox->attach(*m_image, 0, 0, 1, 1);

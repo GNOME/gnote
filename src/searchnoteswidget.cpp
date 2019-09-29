@@ -30,6 +30,7 @@
 #include "debug.hpp"
 #include "iactionmanager.hpp"
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
@@ -47,7 +48,7 @@ namespace gnote {
 
 Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon()
 {
-  return IconManager::obj().get_icon(IconManager::NOTE, 22);
+  return IGnote::obj().icon_manager().get_icon(IconManager::NOTE, 22);
 }
 
 
@@ -301,7 +302,7 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
     crp->property_pixbuf() = special_nb->get_icon();
   }
   else {
-    crp->property_pixbuf() = IconManager::obj().get_icon(IconManager::NOTEBOOK, 22);
+    crp->property_pixbuf() = IGnote::obj().icon_manager().get_icon(IconManager::NOTEBOOK, 22);
   }
 }
 

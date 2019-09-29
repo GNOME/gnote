@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016-2017 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,9 @@
 
 namespace gnote {
 
+class IconManager;
+
+
 class IGnote
   : public base::Singleton<IGnote>
 {
@@ -35,6 +38,9 @@ public:
   static Glib::ustring old_note_dir();
 
   virtual ~IGnote();
+
+  virtual IconManager & icon_manager() = 0;
+
   virtual MainWindow & get_main_window() = 0;
   virtual MainWindow & get_window_for_note() = 0;
   virtual MainWindow & new_main_window() = 0;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2018 Aurimas Cernius
+ * Copyright (C) 2010-2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -41,7 +41,6 @@
 #include "addinmanager.hpp"
 #include "applicationaddin.hpp"
 #include "debug.hpp"
-#include "iconmanager.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"

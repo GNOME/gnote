@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 #include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 #include "utils.hpp"
 
 namespace gnote {
@@ -63,7 +64,7 @@ namespace gnote {
       set_extra_widget(table);
       
       add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, false);
-      add_button (IconManager::obj().get_icon(IconManager::NOTEBOOK_NEW, 16),
+      add_button (IGnote::obj().icon_manager().get_icon(IconManager::NOTEBOOK_NEW, 16),
                   // Translation note: This is the Create button in the Create
                   // New Note Dialog.
                   _("C_reate"), Gtk::RESPONSE_OK, true);

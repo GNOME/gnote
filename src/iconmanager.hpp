@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,13 +23,10 @@
 #include <glibmm/refptr.h>
 #include <gtkmm/iconinfo.h>
 
-#include "base/singleton.hpp"
-
 
 namespace gnote {
 
 class IconManager
-  : public base::Singleton<IconManager>
 {
 public:
   static const char *BUG;
@@ -54,8 +51,6 @@ private:
   typedef std::map<IconDef, Glib::RefPtr<Gdk::Pixbuf> > IconMap;
 
   IconMap m_icons;
-
-  static IconManager s_obj;
 };
 
 }

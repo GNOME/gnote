@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,9 +42,6 @@ const char *IconManager::PIN_DOWN = "pin-down";
 const char *IconManager::PIN_UP = "pin-up";
 const char *IconManager::ACTIVE_NOTES = "active-notes";
 const char *IconManager::SPECIAL_NOTES = "special-notes";
-
-//instance
-IconManager IconManager::s_obj;
 
 
 Glib::RefPtr<Gdk::Pixbuf> IconManager::get_icon(const Glib::ustring & name, int size)

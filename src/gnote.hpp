@@ -30,6 +30,7 @@
 #include <gtkmm/statusicon.h>
 
 #include "actionmanager.hpp"
+#include "iconmanager.hpp"
 #include "ignote.hpp"
 #include "remotecontrolproxy.hpp"
 #include "synchronization/syncdialog.hpp"
@@ -114,6 +115,10 @@ public:
     {
       return *m_manager;
     }
+  virtual IconManager & icon_manager() override
+    {
+      return m_icon_manager;
+    }
 
   void on_preferences_response(int res);
   void on_show_preferences_action(const Glib::VariantBase&);
@@ -154,6 +159,7 @@ private:
   void register_object();
 
   NoteManager *m_manager;
+  IconManager m_icon_manager;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
   bool m_is_background;
   bool m_is_shell_search;

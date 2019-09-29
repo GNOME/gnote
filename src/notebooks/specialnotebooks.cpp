@@ -22,6 +22,7 @@
 #include <glibmm/i18n.h>
 
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 #include "notemanager.hpp"
 #include "notebookmanager.hpp"
 #include "specialnotebooks.hpp"
@@ -67,7 +68,7 @@ bool AllNotesNotebook::add_note(const Note::Ptr &)
 
 Glib::RefPtr<Gdk::Pixbuf> AllNotesNotebook::get_icon()
 {
-  return IconManager::obj().get_icon(IconManager::FILTER_NOTE_ALL, 22);
+  return IGnote::obj().icon_manager().get_icon(IconManager::FILTER_NOTE_ALL, 22);
 }
 
 
@@ -98,7 +99,7 @@ bool UnfiledNotesNotebook::add_note(const Note::Ptr & note)
 
 Glib::RefPtr<Gdk::Pixbuf> UnfiledNotesNotebook::get_icon()
 {
-  return IconManager::obj().get_icon(IconManager::FILTER_NOTE_UNFILED, 22);
+  return IGnote::obj().icon_manager().get_icon(IconManager::FILTER_NOTE_UNFILED, 22);
 }
 
 
@@ -125,7 +126,7 @@ bool PinnedNotesNotebook::add_note(const Note::Ptr & note)
 
 Glib::RefPtr<Gdk::Pixbuf> PinnedNotesNotebook::get_icon()
 {
-  return IconManager::obj().get_icon(IconManager::PIN_DOWN, 22);
+  return IGnote::obj().icon_manager().get_icon(IconManager::PIN_DOWN, 22);
 }
 
 
@@ -161,7 +162,7 @@ bool ActiveNotesNotebook::add_note(const Note::Ptr & note)
 
 Glib::RefPtr<Gdk::Pixbuf> ActiveNotesNotebook::get_icon()
 {
-  return IconManager::obj().get_icon(IconManager::ACTIVE_NOTES, 22);
+  return IGnote::obj().icon_manager().get_icon(IconManager::ACTIVE_NOTES, 22);
 }
 
 void ActiveNotesNotebook::on_note_deleted(const NoteBase::Ptr & note)

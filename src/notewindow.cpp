@@ -34,6 +34,7 @@
 #include "debug.hpp"
 #include "addinmanager.hpp"
 #include "iconmanager.hpp"
+#include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "note.hpp"
 #include "notewindow.hpp"
@@ -53,12 +54,12 @@ namespace gnote {
 
   Glib::RefPtr<Gio::Icon> NoteWindow::get_icon_pin_active()
   {
-    return IconManager::obj().get_icon(IconManager::PIN_ACTIVE, 22);
+    return IGnote::obj().icon_manager().get_icon(IconManager::PIN_ACTIVE, 22);
   }
 
   Glib::RefPtr<Gio::Icon> NoteWindow::get_icon_pin_down()
   {
-    return IconManager::obj().get_icon(IconManager::PIN_DOWN, 22);
+    return IGnote::obj().icon_manager().get_icon(IconManager::PIN_DOWN, 22);
   }
 
 
