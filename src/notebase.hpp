@@ -273,16 +273,16 @@ private:
 
 
 class NoteArchiver
-  : public base::Singleton<NoteArchiver>
 {
 public:
   static const char *CURRENT_VERSION;
 
-  static void read(const Glib::ustring & read_file, NoteData & data);
-  static Glib::ustring write_string(const NoteData & data);
-  static void write(const Glib::ustring & write_file, const NoteData & data);
+  explicit NoteArchiver(NoteManagerBase & manager)
+    : m_manager(manager)
+  {}
   void read_file(const Glib::ustring & file, NoteData & data);
   void read(sharp::XmlReader & xml, NoteData & data);
+  Glib::ustring write_string(const NoteData & data);
   void write_file(const Glib::ustring & write_file, const NoteData & data);
   void write(sharp::XmlWriter & xml, const NoteData & data);
 
@@ -290,8 +290,8 @@ public:
   Glib::ustring get_title_from_note_xml(const Glib::ustring & noteXml) const;
 protected:
   void _read(sharp::XmlReader & xml, NoteData & data, Glib::ustring & version);
-
-  static NoteArchiver s_obj;
+private:
+  NoteManagerBase & m_manager;
 };
 
 

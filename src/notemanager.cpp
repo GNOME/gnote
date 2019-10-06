@@ -40,6 +40,7 @@ namespace gnote {
 
   NoteManager::NoteManager(const Glib::ustring & directory)
     : NoteManagerBase(directory)
+    , m_note_archiver(*this)
   {
     Glib::ustring backup = directory + "/Backup";
     

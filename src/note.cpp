@@ -349,7 +349,7 @@ namespace gnote {
   Note::Ptr Note::load(const Glib::ustring & read_file, NoteManager & manager)
   {
     NoteData *data = new NoteData(url_from_path(read_file));
-    NoteArchiver::read(read_file, *data);
+    manager.note_archiver().read_file(read_file, *data);
     return create_existing_note(data, read_file, manager);
   }
 
@@ -369,7 +369,7 @@ namespace gnote {
     DBG_OUT("Saving '%s'...", m_data.data().title().c_str());
 
     try {
-      NoteArchiver::write(file_path(), m_data.synchronized_data());
+      manager().note_archiver().write_file(file_path(), m_data.synchronized_data());
     } 
     catch (const sharp::Exception & e) {
       // Probably IOException or UnauthorizedAccessException?

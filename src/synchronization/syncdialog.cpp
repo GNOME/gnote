@@ -712,9 +712,9 @@ void SyncDialog::rename_note(const Note::Ptr & note, const Glib::ustring & newTi
   note->save(); // Write to file
   bool noteOpen = note->is_opened();
   Glib::ustring newContent = //note.XmlContent;
-    NoteArchiver::obj().get_renamed_note_xml(note->xml_content(), oldTitle, newTitle);
+    m_manager.note_archiver().get_renamed_note_xml(note->xml_content(), oldTitle, newTitle);
   Glib::ustring newCompleteContent = //note.GetCompleteNoteXml ();
-    NoteArchiver::obj().get_renamed_note_xml(note->get_complete_note_xml(), oldTitle, newTitle);
+    m_manager.note_archiver().get_renamed_note_xml(note->get_complete_note_xml(), oldTitle, newTitle);
   //Logger.Debug ("RenameNote: newContent: " + newContent);
   //Logger.Debug ("RenameNote: newCompleteContent: " + newCompleteContent);
 

@@ -675,7 +675,7 @@ namespace gnote {
             }
 
             if (!noteXml.empty()) {
-              noteTitle = NoteArchiver::obj().get_title_from_note_xml (noteXml);
+              noteTitle = m_manager->note_archiver().get_title_from_note_xml (noteXml);
               if (!noteTitle.empty()) {
                 // Check for conflicting titles
                 Glib::ustring baseTitle = noteTitle;
@@ -686,7 +686,7 @@ namespace gnote {
                 Glib::ustring note_uri = remote->CreateNamedNote(noteTitle);
 
                 // Update title in the note XML
-                noteXml = NoteArchiver::obj().get_renamed_note_xml (noteXml, baseTitle, noteTitle);
+                noteXml = m_manager->note_archiver().get_renamed_note_xml (noteXml, baseTitle, noteTitle);
 
                 if (!note_uri.empty()) {
                   // Load in the XML contents of the note file

@@ -40,6 +40,11 @@ namespace gnote {
     NoteManager(const Glib::ustring &);
     ~NoteManager();
 
+    virtual NoteArchiver & note_archiver() override
+      {
+        return m_note_archiver;
+      }
+
     void on_setting_changed(const Glib::ustring & key);
 
     AddinManager & get_addin_manager()
@@ -71,6 +76,7 @@ namespace gnote {
     void on_exiting_event();
 
     AddinManager   *m_addin_mgr;
+    NoteArchiver m_note_archiver;
   };
 
 

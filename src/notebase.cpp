@@ -189,7 +189,7 @@ void NoteBase::set_change_type(ChangeType c)
 void NoteBase::save()
 {
   try {
-    NoteArchiver::write(m_file_path, data_synchronizer().data());
+    m_manager.note_archiver().write_file(m_file_path, data_synchronizer().data());
   } 
   catch (const sharp::Exception & e) {
     // Probably IOException or UnauthorizedAccessException?
@@ -280,7 +280,7 @@ bool NoteBase::contains_tag(const Tag::Ptr & tag) const
 
 Glib::ustring NoteBase::get_complete_note_xml()
 {
-  return NoteArchiver::write_string(data_synchronizer().synchronized_data());
+  return m_manager.note_archiver().write_string(data_synchronizer().synchronized_data());
 }
 
 void NoteBase::set_xml_content(const Glib::ustring & xml)
@@ -413,14 +413,6 @@ void NoteBase::enabled(bool is_enabled)
 
 const char *NoteArchiver::CURRENT_VERSION = "0.3";
 
-//instance
-NoteArchiver NoteArchiver::s_obj;
-
-void NoteArchiver::read(const Glib::ustring & read_file, NoteData & data)
-{
-  return obj().read_file(read_file, data);
-}
-
 void NoteArchiver::read_file(const Glib::ustring & file, NoteData & data)
 {
   Glib::ustring version;
@@ -431,7 +423,7 @@ void NoteArchiver::read_file(const Glib::ustring & file, NoteData & data)
       // Note has old format, so rewrite it.  No need
       // to reread, since we are not adding anything.
       DBG_OUT("Updating note XML from %s to newest format...", version.c_str());
-      NoteArchiver::write(file, data);
+      write_file(file, data);
     }
     catch(sharp::Exception & e) {
       // write failure, but not critical
@@ -516,17 +508,12 @@ Glib::ustring NoteArchiver::write_string(const NoteData & note)
 {
   Glib::ustring str;
   sharp::XmlWriter xml;
-  obj().write(xml, note);
+  write(xml, note);
   xml.close();
   str = xml.to_string();
   return str;
 }
   
-
-void NoteArchiver::write(const Glib::ustring & write_file, const NoteData & data)
-{
-  obj().write_file(write_file, data);
-}
 
 void NoteArchiver::write_file(const Glib::ustring & _write_file, const NoteData & data)
 {

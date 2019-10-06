@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016-2017 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016-2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@
 #include <glibmm/regex.h>
 
 #include "debug.hpp"
+#include "notemanagerbase.hpp"
 #include "syncutils.hpp"
 #include "utils.hpp"
 #include "sharp/files.hpp"
@@ -67,7 +68,7 @@ namespace sync {
     sharp::XmlReader xml;
     xml.load_buffer(m_xml_content);
     NoteData *data = new NoteData(m_uuid);
-    NoteArchiver::obj().read(xml, *data);
+    existing_note->manager().note_archiver().read(xml, *data);
     std::unique_ptr<NoteData> update_data(data);
     xml.close();
 
