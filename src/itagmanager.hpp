@@ -23,12 +23,10 @@
 #include <glibmm/ustring.h>
 
 #include "tag.hpp"
-#include "base/singleton.hpp"
 
 namespace gnote {
 
 class ITagManager
-  : public base::Singleton<ITagManager>
 {
 public:
   static const char * TEMPLATE_NOTE_SYSTEM_TAG;

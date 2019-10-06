@@ -24,7 +24,6 @@
 
 #include "debug.hpp"
 #include "ignote.hpp"
-#include "itagmanager.hpp"
 #include "notemanagerbase.hpp"
 #include "utils.hpp"
 #include "trie.hpp"
@@ -257,7 +256,7 @@ NoteBase::Ptr NoteManagerBase::create_note_from_template(const Glib::ustring & t
                                                          const Glib::ustring & guid)
 {
   Glib::ustring new_title(title);
-  Tag::Ptr template_save_title = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
+  Tag::Ptr template_save_title = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
   if(template_note->contains_tag(template_save_title)) {
     new_title = get_unique_name(template_note->get_title());
   }
@@ -271,7 +270,7 @@ NoteBase::Ptr NoteManagerBase::create_note_from_template(const Glib::ustring & t
   NoteBase::Ptr new_note = create_new_note(new_title, xml_content, guid);
 
   // Copy template note's properties
-  Tag::Ptr template_save_size = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
+  Tag::Ptr template_save_size = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
   if(template_note->data().has_extent() && template_note->contains_tag(template_save_size)) {
     new_note->data().height() = template_note->data().height();
     new_note->data().width() = template_note->data().width();
@@ -379,7 +378,7 @@ NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
     }
 
     // Flag this as a template note
-    Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr template_tag = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     template_note->add_tag(template_tag);
 
     template_note->queue_save(CONTENT_CHANGED);
@@ -428,7 +427,7 @@ Glib::ustring NoteManagerBase::make_new_file_name(const Glib::ustring & guid) co
 NoteBase::Ptr NoteManagerBase::find_template_note() const
 {
   NoteBase::Ptr template_note;
-  Tag::Ptr template_tag = ITagManager::obj().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+  Tag::Ptr template_tag = tag_manager().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
   if(!template_tag) {
     return template_note;
   }

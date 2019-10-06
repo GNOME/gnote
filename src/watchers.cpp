@@ -36,7 +36,6 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "preferences.hpp"
-#include "itagmanager.hpp"
 #include "triehit.hpp"
 #include "watchers.hpp"
 
@@ -445,7 +444,7 @@ namespace gnote {
     if(tag && tag->name() != tag_name) {
       get_note()->remove_tag(tag);
     }
-    tag = ITagManager::obj().get_or_create_tag(tag_name);
+    tag = manager().tag_manager().get_or_create_tag(tag_name);
     get_note()->add_tag(tag);
     DBG_OUT("Added language tag %s", tag_name.c_str());
   }
@@ -489,7 +488,7 @@ namespace gnote {
     else {
       Glib::ustring tag_name = LANG_PREFIX;
       tag_name += LANG_DISABLED;
-      tag = ITagManager::obj().get_or_create_tag(tag_name);
+      tag = manager().tag_manager().get_or_create_tag(tag_name);
       get_note()->add_tag(tag);
       detach_checker();
     }
@@ -1379,10 +1378,10 @@ namespace gnote {
 
   void NoteTagsWatcher::on_tag_removed(const NoteBase::Ptr&, const Glib::ustring& tag_name)
   {
-    Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
+    Tag::Ptr tag = manager().tag_manager().get_tag(tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag->popularity() : 0);
     if (tag && tag->popularity() == 0) {
-      ITagManager::obj().remove_tag(tag);
+      manager().tag_manager().remove_tag(tag);
     }
   }
 

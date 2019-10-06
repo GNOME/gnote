@@ -44,7 +44,6 @@
 #include "utils.hpp"
 #include "undo.hpp"
 #include "search.hpp"
-#include "itagmanager.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "sharp/exception.hpp"
 #include "mainwindowaction.hpp"
@@ -101,10 +100,11 @@ namespace gnote {
     , m_global_keys(NULL)
     , m_enabled(true)
   {
-    m_template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    m_template_save_size_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
-    m_template_save_selection_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
-    m_template_save_title_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
+    ITagManager & tag_manager = note.manager().tag_manager();
+    m_template_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    m_template_save_size_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
+    m_template_save_selection_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
+    m_template_save_title_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
 
     set_hexpand(true);
     set_vexpand(true);

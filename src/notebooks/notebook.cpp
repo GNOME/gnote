@@ -26,7 +26,6 @@
 #include "notemanager.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
-#include "itagmanager.hpp"
 
 namespace gnote {
 namespace notebooks {
@@ -35,10 +34,10 @@ namespace notebooks {
   const char * Notebook::NOTEBOOK_TAG_PREFIX = "notebook:";
   Tag::Ptr Notebook::s_template_tag;
 
-  Tag::Ptr Notebook::template_tag()
+  Tag::Ptr Notebook::template_tag() const
   {
     if(s_template_tag == NULL) {
-      s_template_tag = ITagManager::obj().get_or_create_system_tag(
+      s_template_tag = m_note_manager.tag_manager().get_or_create_system_tag(
         ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
     }
 
@@ -70,7 +69,7 @@ namespace notebooks {
     }
     else {
       set_name(name);
-      m_tag = ITagManager::obj().get_or_create_system_tag(
+      m_tag = manager.tag_manager().get_or_create_system_tag(
         Glib::ustring(NOTEBOOK_TAG_PREFIX) + name);
     }
   }
@@ -127,7 +126,7 @@ namespace notebooks {
   {
     Note::Ptr note;
     Tag::Ptr templ_tag = template_tag();
-    Tag::Ptr notebook_tag = ITagManager::obj().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
+    Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
     if(!templ_tag || !notebook_tag) {
       return note;
     }
@@ -165,7 +164,7 @@ namespace notebooks {
       // Add on the notebook system tag so Tomboy
       // will persist the tag/notebook across sessions
       // if no other notes are added to the notebook.
-      Tag::Ptr notebook_tag = ITagManager::obj().get_or_create_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
+      Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_or_create_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
       note->add_tag (notebook_tag);
         
       note->queue_save (CONTENT_CHANGED);

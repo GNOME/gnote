@@ -22,6 +22,7 @@
 #ifndef _NOTEMANAGERBASE_HPP_
 #define _NOTEMANAGERBASE_HPP_
 
+#include "itagmanager.hpp"
 #include "notebase.hpp"
 #include "triehit.hpp"
 
@@ -46,6 +47,8 @@ public:
   TrieHit<NoteBase::WeakPtr>::ListPtr find_trie_matches(const Glib::ustring &);
 
   virtual NoteArchiver & note_archiver() = 0;
+  virtual const ITagManager & tag_manager() const = 0;
+  virtual ITagManager & tag_manager() = 0;
 
   void read_only(bool ro)
     {

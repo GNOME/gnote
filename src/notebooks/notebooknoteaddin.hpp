@@ -36,7 +36,7 @@ namespace notebooks {
   {
   public:
     static NoteAddin * create();
-    static Tag::Ptr get_template_tag();
+    Tag::Ptr get_template_tag() const;
     virtual void initialize() override;
     virtual void shutdown() override;
     virtual void on_note_opened() override;

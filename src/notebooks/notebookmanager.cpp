@@ -32,7 +32,6 @@
 #include "debug.hpp"
 #include "ignote.hpp"
 #include "notemanager.hpp"
-#include "itagmanager.hpp"
 
 
 namespace gnote {
@@ -463,7 +462,7 @@ namespace gnote {
     void NotebookManager::load_notebooks()
     {
       Gtk::TreeIter iter;
-      auto tags = ITagManager::obj().all_tags();
+      auto tags = m_note_manager.tag_manager().all_tags();
       for(const auto & tag : tags) {
         // Skip over tags that aren't notebooks
         if (!tag->is_system()

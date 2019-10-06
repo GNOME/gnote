@@ -56,8 +56,8 @@ public:
   virtual ~Notebook()
     {}
 protected:
-  static Tag::Ptr template_tag();
-  static bool is_template_note(const Note::Ptr &);
+  Tag::Ptr template_tag() const;
+  bool is_template_note(const Note::Ptr &);
 
   NoteManager & m_note_manager;
 private:

@@ -24,7 +24,6 @@
 #include "sharp/string.hpp"
 #include "notemanager.hpp"
 #include "search.hpp"
-#include "itagmanager.hpp"
 #include "utils.hpp"
 
 namespace gnote {
@@ -53,7 +52,7 @@ namespace gnote {
     ResultsPtr temp_matches(new Results);
       
       // Skip over notes that are template notes
-    Tag::Ptr template_tag = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    Tag::Ptr template_tag = m_manager.tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
     for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
       Note::Ptr note(std::static_pointer_cast<Note>(iter));

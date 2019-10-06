@@ -62,7 +62,7 @@ namespace gnote {
     if (!note) {
       return false;
     }
-    Tag::Ptr tag = ITagManager::obj().get_or_create_tag(tag_name);
+    Tag::Ptr tag = m_manager.tag_manager().get_or_create_tag(tag_name);
     note->add_tag (tag);
     return true;
   }
@@ -166,7 +166,7 @@ namespace gnote {
 
   std::vector<Glib::ustring> RemoteControl::GetAllNotesWithTag(const Glib::ustring& tag_name)
   {
-    Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
+    Tag::Ptr tag = m_manager.tag_manager().get_tag(tag_name);
     if (!tag)
       return std::vector<Glib::ustring>();
 
@@ -290,7 +290,7 @@ bool RemoteControl::RemoveTagFromNote(const Glib::ustring& uri,
   NoteBase::Ptr note = m_manager.find_by_uri(uri);
   if (!note)
     return false;
-  Tag::Ptr tag = ITagManager::obj().get_tag(tag_name);
+  Tag::Ptr tag = m_manager.tag_manager().get_tag(tag_name);
   if (tag) {
     note->remove_tag (tag);
   }

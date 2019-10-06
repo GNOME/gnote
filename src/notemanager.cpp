@@ -327,7 +327,7 @@ namespace gnote {
     }
 
     // Copy template note's properties
-    Tag::Ptr template_save_size = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
+    Tag::Ptr template_save_size = m_tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
     if(template_note->data().has_extent() && template_note->contains_tag(template_save_size)) {
       new_note->data().height() = template_note->data().height();
       new_note->data().width() = template_note->data().width();
@@ -335,7 +335,7 @@ namespace gnote {
 
     Glib::RefPtr<Gtk::TextBuffer> buffer = std::static_pointer_cast<Note>(new_note)->get_buffer();
     Gtk::TextIter cursor, selection;
-    Tag::Ptr template_save_selection = ITagManager::obj().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
+    Tag::Ptr template_save_selection = m_tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
     if(template_note->contains_tag(template_save_selection)) {
       Glib::ustring template_title = template_note->get_title();
       int cursor_pos = template_note->data().cursor_position();
