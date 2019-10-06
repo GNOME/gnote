@@ -31,7 +31,6 @@
 #include "test/testnote.hpp"
 #include "test/testnotemanager.hpp"
 #include "test/testsyncmanager.hpp"
-#include "test/testtagmanager.hpp"
 
 using namespace gnote;
 
@@ -61,8 +60,6 @@ SUITE(SyncManagerTests)
       REQUIRE CHECK(g_mkdir(syncdir.c_str(), S_IRWXU) == 0);
       manifest1 = notes_dir1 + "/manifest.xml";
       manifest2 = notes_dir2 + "/manifest.xml";
-
-      test::TagManager::ensure_exists();
 
       manager1 = new test::NoteManager(notesdir1);
       create_note(*manager1, "note1", "content1");

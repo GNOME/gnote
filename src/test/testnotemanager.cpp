@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017 Aurimas Cernius
+ * Copyright (C) 2014,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@ Glib::ustring NoteManager::test_notes_dir()
 
 NoteManager::NoteManager(const Glib::ustring & notesdir)
   : gnote::NoteManagerBase(notesdir)
+  , m_note_archiver(*this)
 {
   Glib::ustring backup = notesdir + "/Backup";
   _common_init(notesdir, backup);

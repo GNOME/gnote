@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 #include <UnitTest++/UnitTest++.h>
 
 #include "test/testnotemanager.hpp"
-#include "test/testtagmanager.hpp"
 
 
 SUITE(NoteManager)
@@ -32,7 +31,6 @@ SUITE(NoteManager)
     char *notes_dir = g_mkdtemp(notes_dir_tmpl);
     CHECK(notes_dir != NULL);
 
-    new test::TagManager;
     test::NoteManager manager(notes_dir);
     manager.create();
     manager.create();

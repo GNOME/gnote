@@ -22,17 +22,6 @@
 
 namespace test {
 
-TagManager *TagManager::s_manager = NULL;
-
-void TagManager::ensure_exists()
-{
-  // existing tag manager can be invalid, recreate it for new test
-  if(s_manager != NULL) {
-    delete s_manager;
-  }
-  s_manager = new TagManager;
-}
-
 gnote::Tag::Ptr TagManager::get_tag(const Glib::ustring & tag_name) const
 {
   auto iter = m_tags.find(tag_name);

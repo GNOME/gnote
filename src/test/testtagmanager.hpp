@@ -18,6 +18,9 @@
  */
 
 
+#ifndef _TESTTAGMANAGER_HPP_
+#define _TESTTAGMANAGER_HPP_
+
 #include "itagmanager.hpp"
 
 namespace test {
@@ -26,8 +29,6 @@ class TagManager
   : public gnote::ITagManager
 {
 public:
-  static void ensure_exists();
-
   virtual gnote::Tag::Ptr get_tag(const Glib::ustring & tag_name) const override;
   virtual gnote::Tag::Ptr get_or_create_tag(const Glib::ustring &) override;
   virtual gnote::Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const override;
@@ -35,10 +36,10 @@ public:
   virtual void remove_tag(const gnote::Tag::Ptr & tag) override;
   virtual std::vector<gnote::Tag::Ptr> all_tags() const override;
 private:
-  static TagManager* s_manager;
-
   std::map<Glib::ustring, gnote::Tag::Ptr> m_tags;
 };
 
 }
+
+#endif
 

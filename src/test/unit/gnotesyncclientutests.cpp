@@ -24,7 +24,6 @@
 
 #include "test/testnotemanager.hpp"
 #include "test/testsyncclient.hpp"
-#include "test/testtagmanager.hpp"
 
 
 SUITE(GnoteSyncClient)
@@ -69,7 +68,6 @@ TEST(manifest_parsing)
 {
   Glib::ustring test_manifest = create_manifest();
   
-  new test::TagManager;
   test::NoteManager manager(test::NoteManager::test_notes_dir());
   test::SyncClient client(manager);
   client.set_manifest_path(test_manifest);

@@ -18,6 +18,7 @@
  */
 
 #include "notemanagerbase.hpp"
+#include "test/testtagmanager.hpp"
 
 
 namespace test {
@@ -29,9 +30,25 @@ public:
   static Glib::ustring test_notes_dir();
 
   explicit NoteManager(const Glib::ustring & notes_dir);
+
+  virtual gnote::NoteArchiver & note_archiver() override
+    {
+      return m_note_archiver;
+    }
+  virtual const gnote::ITagManager & tag_manager() const override
+    {
+      return m_tag_manager;
+    }
+  virtual gnote::ITagManager & tag_manager() override
+    {
+      return m_tag_manager;
+    }
 protected:
   virtual gnote::NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) override;
   virtual gnote::NoteBase::Ptr note_load(const Glib::ustring & file_name) override;
+private:
+  gnote::NoteArchiver m_note_archiver;
+  TagManager m_tag_manager;
 };
 
 }
