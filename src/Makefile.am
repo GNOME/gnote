@@ -131,6 +131,7 @@ libgnote_la_SOURCES = \
 	recenttreeview.hpp \
 	search.hpp search.cpp \
 	tag.hpp tag.cpp \
+	tagmanager.hpp tagmanager.cpp \
 	trie.hpp triehit.hpp \
 	undo.hpp undo.cpp \
 	utils.hpp utils.cpp \
@@ -159,7 +160,6 @@ gnote_SOURCES = \
 	preferencesdialog.hpp preferencesdialog.cpp \
 	recentchanges.hpp recentchanges.cpp \
 	searchnoteswidget.hpp searchnoteswidget.cpp \
-	tagmanager.hpp tagmanager.cpp \
 	notebooks/notebookstreeview.hpp notebooks/notebookstreeview.cpp \
 	synchronization/gnotesyncclient.hpp synchronization/gnotesyncclient.cpp \
 	synchronization/silentui.hpp synchronization/silentui.cpp \
