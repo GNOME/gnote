@@ -22,7 +22,7 @@
 
 #include "debug.hpp"
 #include "iactionmanager.hpp"
-#include "itagmanager.hpp"
+#include "notemanagerbase.hpp"
 #include "notewindow.hpp"
 #include "readonlynoteaddin.hpp"
 #include "tag.hpp"
@@ -74,7 +74,7 @@ std::vector<gnote::PopoverWidget> ReadOnlyNoteAddin::get_actions_popover_widgets
 void ReadOnlyNoteAddin::on_foreground()
 {
   auto action = get_window()->host()->find_action("readonly-toggle");
-  gnote::ITagManager & m = gnote::ITagManager::obj();
+  gnote::ITagManager & m = manager().tag_manager();
   const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
 
   m_readonly_toggle_cid = action->signal_change_state()
@@ -89,7 +89,7 @@ void ReadOnlyNoteAddin::on_background()
 
 void ReadOnlyNoteAddin::on_menu_item_toggled(const Glib::VariantBase & state)
 {
-  gnote::ITagManager & m = gnote::ITagManager::obj();
+  gnote::ITagManager & m = manager().tag_manager();
   const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
   bool read_only = Glib::VariantBase::cast_dynamic<Glib::Variant<bool>>(state).get();
   auto action = get_window()->host()->find_action("readonly-toggle");
