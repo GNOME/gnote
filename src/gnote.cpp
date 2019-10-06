@@ -87,8 +87,8 @@ namespace gnote {
     }
 
     if(handle) {
-      cmd_line.parse(argc, argv);
-      cmd_line.immediate_execute();
+      m_cmd_line.parse(argc, argv);
+      m_cmd_line.immediate_execute();
       return 0;
     }
 
@@ -113,19 +113,22 @@ namespace gnote {
     int argc = 0;
     char **argv = command_line->get_arguments(argc);
     GnoteCommandLine passed_cmd_line;
-    GnoteCommandLine &cmdline = m_manager ? passed_cmd_line : cmd_line;
+    GnoteCommandLine &cmdline = m_manager ? passed_cmd_line : m_cmd_line;
     cmdline.parse(argc, argv);
     m_is_background = cmdline.background();
-    m_is_shell_search = cmd_line.shell_search();
+    m_is_shell_search = m_cmd_line.shell_search();
     if(!m_manager) {
       common_init();
       register_object();
     }
-    else if(cmdline.needs_execute()) {
-      cmdline.execute();
-    }
-    else if(!(cmdline.background() || cmdline.shell_search())) {
-      new_main_window().present();
+    else {
+      cmdline.set_note_manager(*m_manager);
+      if(cmdline.needs_execute()) {
+        cmdline.execute();
+      }
+      else if(!(cmdline.background() || cmdline.shell_search())) {
+        new_main_window().present();
+      }
     }
 
     g_strfreev(argv);
@@ -135,7 +138,7 @@ namespace gnote {
 
   void Gnote::common_init()
   {
-    Glib::ustring note_path = get_note_path(cmd_line.note_path());
+    Glib::ustring note_path = get_note_path(m_cmd_line.note_path());
 
     //create singleton objects
     new TagManager;
@@ -151,8 +154,9 @@ namespace gnote {
 
   void Gnote::end_main(bool bus_acquired, bool name_acquired)
   {
-    if(cmd_line.needs_execute()) {
-      cmd_line.execute();
+    m_cmd_line.set_note_manager(*m_manager);
+    if(m_cmd_line.needs_execute()) {
+      m_cmd_line.execute();
     }
 
     if(bus_acquired) {
@@ -491,6 +495,7 @@ namespace gnote {
 
   GnoteCommandLine::GnoteCommandLine()
     : m_context(g_option_context_new("Foobar"))
+    , m_manager(NULL)
     , m_use_panel(false)
     , m_background(false)
     , m_shell_search(false)

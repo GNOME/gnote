@@ -46,6 +46,10 @@ class GnoteCommandLine
 public:
   GnoteCommandLine();
   ~GnoteCommandLine();
+  void set_note_manager(NoteManagerBase & manager)
+    {
+      m_manager = &manager;
+    }
   int execute();
   int immediate_execute();
 
@@ -78,6 +82,7 @@ private:
 
   GOptionContext *m_context;
 
+  NoteManagerBase *m_manager;
   bool        m_use_panel;
   bool        m_background;
   bool        m_shell_search;
@@ -164,7 +169,7 @@ private:
   bool m_is_background;
   bool m_is_shell_search;
   PreferencesDialog *m_prefsdlg;
-  GnoteCommandLine cmd_line;
+  GnoteCommandLine m_cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;
 };
 
