@@ -25,7 +25,6 @@
 #include "debug.hpp"
 #include "notemanager.hpp"
 #include "noteoftheday.hpp"
-#include "itagmanager.hpp"
 #include "utils.hpp"
 
 namespace noteoftheday {
@@ -54,8 +53,7 @@ gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
   }
 
   // Automatically tag all new Note of the Day notes
-  notd->add_tag(gnote::ITagManager::obj().get_or_create_system_tag(
-                                           "NoteOfTheDay"));
+  notd->add_tag(manager.tag_manager().get_or_create_system_tag("NoteOfTheDay"));
 
   return notd;
 }
