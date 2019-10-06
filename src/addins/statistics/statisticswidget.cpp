@@ -104,7 +104,7 @@ private:
         notebook_notes[nbook] = 0;
         ++notebook;
       }
-      gnote::Tag::Ptr template_tag = gnote::ITagManager::obj().get_or_create_system_tag(
+      gnote::Tag::Ptr template_tag = m_note_manager.tag_manager().get_or_create_system_tag(
         gnote::ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       for(gnote::NoteBase::Ptr note : notes) {
         for(std::map<gnote::notebooks::Notebook::Ptr, int>::iterator nb = notebook_notes.begin();
