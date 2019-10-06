@@ -39,8 +39,6 @@
 
 namespace gnote {
 
-  class NoteManager;
-
 /// <summary>
 /// A NoteAddin extends the functionality of a note and a NoteWindow.
 /// If you wish to extend Tomboy in a more broad sense, perhaps you
