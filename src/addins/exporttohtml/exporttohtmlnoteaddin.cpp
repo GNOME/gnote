@@ -225,7 +225,7 @@ void ExportToHtmlNoteAddin::write_html_for_note (sharp::StreamWriter & writer,
                                                  bool export_linked_all)
 {
   Glib::ustring s_writer;
-  s_writer = gnote::NoteArchiver::write_string(note->data());
+  s_writer = note->manager().note_archiver().write_string(note->data());
   xmlDocPtr doc = xmlParseMemory(s_writer.c_str(), s_writer.bytes());
 
   sharp::XsltArgumentList args;
