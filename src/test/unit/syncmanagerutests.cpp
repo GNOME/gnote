@@ -187,7 +187,7 @@ SUITE(SyncManagerTests)
     // sync to first client
     sync_manager1->perform_synchronization(sync_ui1);
     get_notes_in_dir(notesdir1);
-    CHECK_EQUAL(5, files.size()); // 3 original + 1 from other client + template from other client
+    CHECK(4 <= files.size()); // 3 original + 1 from other client + templates
     CHECK(find_note_in_files("note4"));
   }
 
@@ -227,7 +227,7 @@ SUITE(SyncManagerTests)
     // download updates
     sync_manager2->perform_synchronization(sync_ui2);
     get_notes_in_dir(notesdir2);
-    REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
+    REQUIRE CHECK(3 <= files.size()); // 3 downloaded notes + templates
     CHECK(find_note_in_files("note1"));
     CHECK(find_note_in_files("note3"));
     CHECK(find_note_in_files("note4"));
@@ -269,7 +269,7 @@ SUITE(SyncManagerTests)
     // sync client1 again
     sync_manager1->perform_synchronization(sync_ui1);
     get_notes_in_dir(notesdir2);
-    REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
+    REQUIRE CHECK(3 <= files.size()); // 3 downloaded notes + templates
     CHECK(find_note_in_files("note1"));
     CHECK(find_note_in_files("note3"));
     CHECK(!find_note_in_files("note2"));
