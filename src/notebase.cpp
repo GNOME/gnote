@@ -216,8 +216,9 @@ void NoteBase::handle_link_rename(const Glib::ustring &, const Ptr &, bool)
 void NoteBase::delete_note()
 {
   // Remove the note from all the tags
-  for(NoteData::TagMap::const_iterator iter = data_synchronizer().data().tags().begin();
-      iter != data_synchronizer().data().tags().end(); ++iter) {
+  // remove_tag modifies map, so always iterate from start
+  NoteData::TagMap & thetags(data_synchronizer().data().tags());
+  for(NoteData::TagMap::const_iterator iter = thetags.begin(); iter != thetags.end(); iter = thetags.begin()) {
     remove_tag(iter->second);
   }
 }
