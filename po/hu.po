@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2019-09-14 10:05+0000\n"
-"PO-Revision-Date: 2019-09-14 17:58+0200\n"
+"POT-Creation-Date: 2019-09-29 12:54+0000\n"
+"PO-Revision-Date: 2019-10-10 14:44+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -715,11 +715,11 @@ msgstr ""
 "A jegyzetkönyvtárak ellenőrzései közötti idő (másodpercben). A minimális "
 "érték 5."
 
-#: ../src/actionmanager.cpp:133 ../src/notewindow.cpp:312
+#: ../src/actionmanager.cpp:133 ../src/notewindow.cpp:313
 msgid "_New Note"
 msgstr "Ú_j jegyzet"
 
-#: ../src/actionmanager.cpp:134 ../src/notewindow.cpp:314
+#: ../src/actionmanager.cpp:134 ../src/notewindow.cpp:315
 msgid "New _Window"
 msgstr "Új _ablak"
 
@@ -1054,7 +1054,6 @@ msgid "URI field is empty."
 msgstr "Az URI mező üres."
 
 #: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
-#| msgid "Write test failed."
 msgid "Failure writing test file"
 msgstr "A tesztfájl írása sikertelen"
 
@@ -1067,7 +1066,6 @@ msgid "Failure when trying to remove test file"
 msgstr "A tesztfájl eltávolításának kísérlete sikertelen"
 
 #: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
-#| msgid "unknown parse error"
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
@@ -1249,7 +1247,7 @@ msgstr "Cím cseréje a kijelöléssel."
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
+#: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:39
 #: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 msgid "Special Notes"
 msgstr "Speciális jegyzetek"
@@ -1466,19 +1464,19 @@ msgstr "%s távoli hívása sikertelen"
 msgid "Exception thrown when creating note: %s"
 msgstr "Kivétel történt a jegyzet létrehozásakor: %s"
 
-#: ../src/gnote.cpp:181
+#: ../src/gnote.cpp:180
 msgid "Gnote is already running.  Exiting..."
 msgstr "A Gnote már fut, kilépés."
 
-#: ../src/gnote.cpp:260
+#: ../src/gnote.cpp:259
 msgid "Failed to get shortcuts window!"
 msgstr "Nem sikerült lekérni a gyorsbillentyűk ablakát!"
 
-#: ../src/gnote.cpp:274
+#: ../src/gnote.cpp:273
 msgid "and Tomboy original authors."
 msgstr "és a Tomboy eredeti szerzői."
 
-#: ../src/gnote.cpp:280
+#: ../src/gnote.cpp:279
 msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>\n"
@@ -1489,97 +1487,102 @@ msgstr ""
 "Török Gábor <gabo at linuxportal dot hu>\n"
 "Úr Balázs <balazs at urbalazs dot hu>"
 
-#: ../src/gnote.cpp:289
+#: ../src/gnote.cpp:288
+#| msgid ""
+#| "Copyright © 2010-2018 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2018 Aurimas Cernius\n"
+"Copyright © 2010-2019 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2018 Aurimas Cernius\n"
+"Copyright © 2010-2019 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 a Tomboy eredeti szerzői."
 
-#: ../src/gnote.cpp:293
+#: ../src/gnote.cpp:292
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Egyszerű és könnyen használható asztali jegyzetkezelő alkalmazás."
 
-#: ../src/gnote.cpp:304
+#: ../src/gnote.cpp:303
 msgid "Homepage"
 msgstr "Honlap"
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:507
 msgid "Run Gnote in background."
 msgstr "A Gnote futtatása a háttérben."
 
-#: ../src/gnote.cpp:509
+#: ../src/gnote.cpp:508
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "A Gnote futtatása GNOME parancsértelmező keresőszolgáltatóként."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:509
 msgid "Specify the path of the directory containing the notes."
 msgstr "Adja meg a jegyzeteket tartalmazó könyvtár útvonalát."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:509
 msgid "path"
 msgstr "útvonal"
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:510
 msgid "Open the search all notes window with the search text."
 msgstr "A Keresés minden jegyzetben ablak megnyitása a keresőkifejezéssel."
 
-#: ../src/gnote.cpp:511 ../src/gnote.cpp:516
+#: ../src/gnote.cpp:510 ../src/gnote.cpp:515
 msgid "text"
 msgstr "szöveg"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:511
 msgid "Print version information."
 msgstr "Verzióinformációk kiírása."
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:512
 msgid "Create and display a new note, with a optional title."
 msgstr "Új jegyzet létrehozása és megjelenítése, elhagyható címmel."
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:512
 msgid "title"
 msgstr "cím"
 
-#: ../src/gnote.cpp:514
+#: ../src/gnote.cpp:513
 msgid "Display the existing note matching title."
 msgstr "Az illeszkedő című meglévő jegyzet megjelenítése."
 
-#: ../src/gnote.cpp:514
+#: ../src/gnote.cpp:513
 msgid "title/url"
 msgstr "cím/url"
 
-#: ../src/gnote.cpp:515
+#: ../src/gnote.cpp:514
 msgid "Display the 'Start Here' note."
 msgstr "A „Kezdje itt” jegyzet megjelenítése."
 
-#: ../src/gnote.cpp:516
+#: ../src/gnote.cpp:515
 msgid "Search and highlight text in the opened note."
 msgstr "Szöveg keresése és kiemelése megnyitott jegyzetben."
 
-#: ../src/gnote.cpp:520
+#: ../src/gnote.cpp:519
 msgid "A note taking application"
 msgstr "Jegyzetkezelő alkalmazás"
 
-#: ../src/gnote.cpp:520
+#: ../src/gnote.cpp:519
 msgid "Gnote options at launch"
 msgstr "A Gnote indítási kapcsolói"
 
-#: ../src/gnote.cpp:597
+#: ../src/gnote.cpp:596
 msgid "Could not connect to remote instance."
 msgstr "Nem lehet kapcsolódni a távoli példányhoz."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:714
+#: ../src/gnote.cpp:713
 msgid "Version %1"
 msgstr "%1 verzió"
 
 #. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
-#: ../src/iconmanager.cpp:66
+#: ../src/iconmanager.cpp:63
 #, c-format
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Nem sikerült betölteni az ikont (%s, %d): %s"
@@ -1609,21 +1612,21 @@ msgstr "Nem sikerült frissíteni a jegyzet formátumát: %s"
 msgid "Filesystem error: %s"
 msgstr "Fájlrendszerhiba: %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:39
+#: ../src/notebooks/createnotebookdialog.cpp:40
 msgid "Create Notebook"
 msgstr "Jegyzettömb létrehozása"
 
-#: ../src/notebooks/createnotebookdialog.cpp:43
+#: ../src/notebooks/createnotebookdialog.cpp:44
 msgid "N_otebook name:"
 msgstr "_Jegyzettömbnév:"
 
-#: ../src/notebooks/createnotebookdialog.cpp:56
+#: ../src/notebooks/createnotebookdialog.cpp:57
 msgid "Name already taken"
 msgstr "A név már foglalt"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:69
+#: ../src/notebooks/createnotebookdialog.cpp:70
 msgid "C_reate"
 msgstr "_Létrehozás"
 
@@ -1663,7 +1666,7 @@ msgid "No notebook"
 msgstr "Nincs jegyzettömb"
 
 #. TRANSLATORS: %1: format placeholder for the notebook name
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:40
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:41
 msgid "New \"%1\" Note"
 msgstr "Új „%1” jegyzet"
 
@@ -1676,27 +1679,27 @@ msgstr "Jegyzettömb"
 msgid "_New notebook..."
 msgstr "Új jeg_yzettömb…"
 
-#: ../src/notebooks/specialnotebooks.cpp:46
+#: ../src/notebooks/specialnotebooks.cpp:47
 msgid "All"
 msgstr "Összes"
 
-#: ../src/notebooks/specialnotebooks.cpp:75
+#: ../src/notebooks/specialnotebooks.cpp:76
 msgid "Unfiled"
 msgstr "Nem iktatott"
 
-#: ../src/notebooks/specialnotebooks.cpp:106
+#: ../src/notebooks/specialnotebooks.cpp:107
 msgid "Important"
 msgstr "Fontos"
 
-#: ../src/notebooks/specialnotebooks.cpp:133
+#: ../src/notebooks/specialnotebooks.cpp:134
 msgid "Active"
 msgstr "Aktív"
 
-#: ../src/notebuffer.cpp:1518
+#: ../src/notebuffer.cpp:1430
 msgid "</list> tag mismatch"
 msgstr "</list> címke eltérés"
 
-#: ../src/notebuffer.cpp:1602
+#: ../src/notebuffer.cpp:1514
 #, c-format
 msgid "Exception: %s"
 msgstr "Kivétel: %s"
@@ -1896,31 +1899,31 @@ msgstr "Jegyzet neve"
 msgid "Ad_vanced"
 msgstr "Spe_ciális"
 
-#: ../src/notewindow.cpp:316
+#: ../src/notewindow.cpp:317
 msgid "_Undo"
 msgstr "_Visszavonás"
 
-#: ../src/notewindow.cpp:318
+#: ../src/notewindow.cpp:319
 msgid "_Redo"
 msgstr "Új_ra"
 
-#: ../src/notewindow.cpp:320 ../src/notewindow.cpp:385
+#: ../src/notewindow.cpp:321 ../src/notewindow.cpp:386
 msgid "_Link to New Note"
 msgstr "_Hivatkozás egy új jegyzetre"
 
-#: ../src/notewindow.cpp:322
+#: ../src/notewindow.cpp:323
 msgid "_Important"
 msgstr "_Fontos"
 
-#: ../src/notewindow.cpp:332
+#: ../src/notewindow.cpp:333
 msgid "_Delete…"
 msgstr "_Törlés…"
 
-#: ../src/notewindow.cpp:421
+#: ../src/notewindow.cpp:422
 msgid "Set properties of text"
 msgstr "Szöveg beállításai"
 
-#: ../src/notewindow.cpp:435
+#: ../src/notewindow.cpp:436
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1928,67 +1931,67 @@ msgstr ""
 "Ez a jegyzet egy sablon jegyzet. A normál jegyzetek alap tartalmát határozza "
 "meg, és nem jelenik meg a jegyzet menüben vagy a keresés ablakban."
 
-#: ../src/notewindow.cpp:438
+#: ../src/notewindow.cpp:439
 msgid "Convert to regular note"
 msgstr "Átalakítás normál jegyzetté"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:442
 msgid "Save Si_ze"
 msgstr "_Méret mentése"
 
-#: ../src/notewindow.cpp:445
+#: ../src/notewindow.cpp:446
 msgid "Save Se_lection"
 msgstr "_Kijelölés mentése"
 
-#: ../src/notewindow.cpp:449
+#: ../src/notewindow.cpp:450
 msgid "Save _Title"
 msgstr "_Cím mentése"
 
-#: ../src/notewindow.cpp:551 ../src/notewindow.cpp:1056
+#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1057
 msgid "Cannot create note"
 msgstr "Nem hozható létre jegyzet"
 
-#: ../src/notewindow.cpp:826
+#: ../src/notewindow.cpp:827
 msgid "_Bold"
 msgstr "_Félkövér"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:828
 msgid "_Italic"
 msgstr "_Dőlt"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:829
 msgid "_Strikeout"
 msgstr "Á_thúzott"
 
-#: ../src/notewindow.cpp:832
+#: ../src/notewindow.cpp:833
 msgid "_Highlight"
 msgstr "_Kiemelés"
 
-#: ../src/notewindow.cpp:835
+#: ../src/notewindow.cpp:836
 msgid "_Normal"
 msgstr "N_ormál"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:837
 msgid "S_mall"
 msgstr "Ki_csi"
 
-#: ../src/notewindow.cpp:837
+#: ../src/notewindow.cpp:838
 msgid "_Large"
 msgstr "_Nagy"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:839
 msgid "Hu_ge"
 msgstr "Óriá_si"
 
-#: ../src/notewindow.cpp:860
+#: ../src/notewindow.cpp:861
 msgid "⦁ Bullets"
 msgstr "⦁ Felsorolás"
 
-#: ../src/notewindow.cpp:862
+#: ../src/notewindow.cpp:863
 msgid "→ Increase indent"
 msgstr "→ Behúzás növelése"
 
-#: ../src/notewindow.cpp:864
+#: ../src/notewindow.cpp:865
 msgid "← Decrease indent"
 msgstr "← Behúzás csökkentése"
 
@@ -2005,7 +2008,7 @@ msgid "Links"
 msgstr "Hivatkozások"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:123 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:123 ../src/sharp/addinstreemodel.cpp:165
 msgid "Synchronization"
 msgstr "Szinkronizálás"
 
@@ -2279,39 +2282,39 @@ msgstr "Nincsenek beállított műveletek"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Nem sikerült betölteni a(z) %s D-Bus felületet: %s"
 
-#: ../src/searchnoteswidget.cpp:135
+#: ../src/searchnoteswidget.cpp:136
 msgid "_Open"
 msgstr "_Megnyitás"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:139
 msgid "Open In New _Window"
 msgstr "Megnyitás új _ablakban"
 
-#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
 msgid "_Delete"
 msgstr "_Törlés"
 
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/searchnoteswidget.cpp:149
 msgid "Re_name..."
 msgstr "Át_nevezés…"
 
-#: ../src/searchnoteswidget.cpp:227
+#: ../src/searchnoteswidget.cpp:228
 msgid "Notebooks"
 msgstr "Jegyzettömbök"
 
-#: ../src/searchnoteswidget.cpp:655
+#: ../src/searchnoteswidget.cpp:656
 msgid "Note"
 msgstr "Jegyzet"
 
-#: ../src/searchnoteswidget.cpp:677
+#: ../src/searchnoteswidget.cpp:678
 msgid "Modified"
 msgstr "Módosítva"
 
-#: ../src/searchnoteswidget.cpp:996
+#: ../src/searchnoteswidget.cpp:997
 msgid "Notes"
 msgstr "Jegyzetek"
 
-#: ../src/searchnoteswidget.cpp:1015
+#: ../src/searchnoteswidget.cpp:1016
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2319,82 +2322,82 @@ msgstr ""
 "Nincs találat a kijelölt jegyzettömbben.\n"
 "Kattintson ide az összes jegyzetben való kereséshez."
 
-#: ../src/searchnoteswidget.cpp:1019
+#: ../src/searchnoteswidget.cpp:1020
 msgid "Click here to search across all notebooks"
 msgstr "Kattintson ide az összes jegyzetben való kereséshez"
 
-#: ../src/searchnoteswidget.cpp:1040
+#: ../src/searchnoteswidget.cpp:1041
 msgid "Matches"
 msgstr "Találat"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1091
+#: ../src/searchnoteswidget.cpp:1092
 msgid "Title match"
 msgstr "Címtalálat"
 
-#: ../src/searchnoteswidget.cpp:1095
+#: ../src/searchnoteswidget.cpp:1096
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 találat"
 msgstr[1] "%1 találat"
 
-#: ../src/searchnoteswidget.cpp:1306
+#: ../src/searchnoteswidget.cpp:1307
 msgid "_New"
 msgstr "Ú_j"
 
-#: ../src/searchnoteswidget.cpp:1335
+#: ../src/searchnoteswidget.cpp:1336
 msgid "_Open Template Note"
 msgstr "_Sablonjegyzet megnyitása"
 
-#: ../src/searchnoteswidget.cpp:1346
+#: ../src/searchnoteswidget.cpp:1347
 msgid "_New..."
 msgstr "Ú_j…"
 
-#: ../src/searchnoteswidget.cpp:1499 ../src/searchnoteswidget.cpp:1512
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
+#: ../src/searchnoteswidget.cpp:1524
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Nem sikerült feldolgozni a(z) %s beállítást (érték: %s):"
 
-#: ../src/searchnoteswidget.cpp:1500
+#: ../src/searchnoteswidget.cpp:1501
 msgid "Expected format 'column:order'"
 msgstr "A várt formátum: „oszlop:sorrend”"
 
-#: ../src/searchnoteswidget.cpp:1513
+#: ../src/searchnoteswidget.cpp:1514
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Ismeretlen oszlop: %s"
 
-#: ../src/searchnoteswidget.cpp:1524
+#: ../src/searchnoteswidget.cpp:1525
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ismeretlen sorrend: %s"
 
-#: ../src/sharp/addinstreemodel.cpp:109
+#: ../src/sharp/addinstreemodel.cpp:110
 msgid "Name"
 msgstr "Gépnév"
 
-#: ../src/sharp/addinstreemodel.cpp:121
+#: ../src/sharp/addinstreemodel.cpp:122
 msgid "Version"
 msgstr "Verzió"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:155
+#: ../src/sharp/addinstreemodel.cpp:156
 msgid "Formatting"
 msgstr "Formázás"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:158
+#: ../src/sharp/addinstreemodel.cpp:159
 msgid "Desktop integration"
 msgstr "Integráció asztali környezettel"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:161
+#: ../src/sharp/addinstreemodel.cpp:162
 msgid "Tools"
 msgstr "Eszközök"
 
 #. TRANSLATORS: Addin category is unknown.
-#: ../src/sharp/addinstreemodel.cpp:168
+#: ../src/sharp/addinstreemodel.cpp:169
 msgid "Unknown"
 msgstr "Ismeretlen"
 
