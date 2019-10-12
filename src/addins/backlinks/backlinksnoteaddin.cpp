@@ -25,6 +25,7 @@
 #include "sharp/string.hpp"
 #include "backlinksnoteaddin.hpp"
 #include "iactionmanager.hpp"
+#include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "notemanagerbase.hpp"
 #include "preferences.hpp"
@@ -65,7 +66,7 @@ void BacklinksNoteAddin::on_open_note(const Glib::VariantBase & param)
   gnote::NoteBase::Ptr note = get_note()->manager().find_by_uri(uri);
   if(note) {
     gnote::MainWindow::present_in_new_window(std::static_pointer_cast<gnote::Note>(note),
-      gnote::Preferences::obj().get_schema_settings(gnote::Preferences::SCHEMA_GNOTE)->
+      gnote::IGnote::obj().preferences().get_schema_settings(gnote::Preferences::SCHEMA_GNOTE)->
         get_boolean(gnote::Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
   }
 }
