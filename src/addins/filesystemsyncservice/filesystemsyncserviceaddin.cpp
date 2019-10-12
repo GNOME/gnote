@@ -27,6 +27,7 @@
 
 #include "debug.hpp"
 #include "filesystemsyncserviceaddin.hpp"
+#include "ignote.hpp"
 #include "preferences.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
@@ -182,7 +183,7 @@ bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void, bool,
   m_path = syncPath;
 
   // TODO: Try to create and delete a file.  If it fails, this should fail
-  gnote::Preferences::obj().get_schema_settings(
+  gnote::IGnote::obj().preferences().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC)->set_string(gnote::Preferences::SYNC_LOCAL_PATH, m_path);
 
   on_saved(true, "");
@@ -192,14 +193,14 @@ bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void, bool,
 
 void FileSystemSyncServiceAddin::reset_configuration()
 {
-  gnote::Preferences::obj().get_schema_settings(
+  gnote::IGnote::obj().preferences().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC)->set_string(gnote::Preferences::SYNC_LOCAL_PATH, "");
 }
 
 
 bool FileSystemSyncServiceAddin::is_configured()
 {
-  return gnote::Preferences::obj().get_schema_settings(
+  return gnote::IGnote::obj().preferences().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC)->get_string(gnote::Preferences::SYNC_LOCAL_PATH) != "";
 }
 
@@ -231,7 +232,7 @@ bool FileSystemSyncServiceAddin::initialized()
 
 bool FileSystemSyncServiceAddin::get_config_settings(Glib::ustring & syncPath)
 {
-  syncPath = gnote::Preferences::obj().get_schema_settings(
+  syncPath = gnote::IGnote::obj().preferences().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC)->get_string(gnote::Preferences::SYNC_LOCAL_PATH);
 
   return syncPath != "";
