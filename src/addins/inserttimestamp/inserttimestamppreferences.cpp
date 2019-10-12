@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2017 Aurimas Cernius
+ * Copyright (C) 2011-2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,11 +24,10 @@
 #include "sharp/datetime.hpp"
 #include "sharp/propertyeditor.hpp"
 
+#include "ignote.hpp"
 #include "preferences.hpp"
 #include "inserttimestamppreferences.hpp"
  
-using gnote::Preferences;
-
 namespace inserttimestamp {
 
   const char * SCHEMA_INSERT_TIMESTAMP = "org.gnome.gnote.insert-timestamp";
@@ -59,7 +58,7 @@ namespace inserttimestamp {
     int row = 0;
 
     // Get current values
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
+    Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
     Glib::ustring dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
 
     sharp::DateTime now = sharp::DateTime::now();
@@ -182,7 +181,7 @@ namespace inserttimestamp {
     if (iter) {
       Glib::ustring format;
       iter->get_value(1, format);
-      Preferences::obj().get_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(
+      gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(
           INSERT_TIMESTAMP_FORMAT, format);
     }
   }
