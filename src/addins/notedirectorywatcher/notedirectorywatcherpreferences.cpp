@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 
 #include <glibmm/i18n.h>
 
+#include "ignote.hpp"
 #include "notedirectorywatcherpreferences.hpp"
 #include "preferences.hpp"
 
@@ -39,13 +40,13 @@ NoteDirectoryWatcherPreferences::NoteDirectoryWatcherPreferences(gnote::NoteMana
   m_check_interval.signal_value_changed()
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherPreferences::on_interval_changed));
   m_check_interval.set_value(
-    gnote::Preferences::obj().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->get_int(CHECK_INTERVAL));
+    gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->get_int(CHECK_INTERVAL));
   attach(m_check_interval, 1, 0, 1, 1);
 }
 
 void NoteDirectoryWatcherPreferences::on_interval_changed()
 {
-  gnote::Preferences::obj().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->set_int(
+  gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->set_int(
     CHECK_INTERVAL, m_check_interval.get_value_as_int());
 }
 
