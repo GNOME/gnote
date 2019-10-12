@@ -33,6 +33,7 @@
 #include "sharp/xsltargumentlist.hpp"
 #include "debug.hpp"
 #include "iactionmanager.hpp"
+#include "ignote.hpp"
 #include "preferences.hpp"
 #include "notewindow.hpp"
 #include "utils.hpp"
@@ -233,7 +234,7 @@ void ExportToHtmlNoteAddin::write_html_for_note (sharp::StreamWriter & writer,
   args.add_param ("export-linked-all", "", export_linked_all);
   args.add_param ("root-note", "", gnote::utils::XmlEncoder::encode(note->get_title()));
 
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
     Glib::ustring font_face = settings->get_string(Preferences::CUSTOM_FONT_FACE);
     Pango::FontDescription font_desc (font_face);

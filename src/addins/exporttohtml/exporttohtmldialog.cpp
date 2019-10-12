@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012,2017 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,7 @@
 
 #include "sharp/files.hpp"
 #include "exporttohtmldialog.hpp"
+#include "ignote.hpp"
 #include "preferences.hpp"
 
 namespace exporttohtml {
@@ -94,7 +95,7 @@ void ExportToHtmlDialog::set_export_linked_all(bool value)
 void ExportToHtmlDialog::save_preferences()
 {
   Glib::ustring dir = sharp::file_dirname(get_filename());
-  Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_EXPORTHTML);
+  Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_EXPORTHTML);
   settings->set_string(EXPORTHTML_LAST_DIRECTORY, dir);
   settings->set_boolean(EXPORTHTML_EXPORT_LINKED, get_export_linked());
   settings->set_boolean(EXPORTHTML_EXPORT_LINKED_ALL, get_export_linked_all());
@@ -103,7 +104,7 @@ void ExportToHtmlDialog::save_preferences()
 
 void ExportToHtmlDialog::load_preferences(const Glib::ustring & default_file)
 {
-  Glib::RefPtr<Gio::Settings> settings = gnote::Preferences::obj().get_schema_settings(SCHEMA_EXPORTHTML);
+  Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_EXPORTHTML);
   Glib::ustring last_dir = settings->get_string(EXPORTHTML_LAST_DIRECTORY);
   if (last_dir.empty()) {
     last_dir = Glib::get_home_dir();
