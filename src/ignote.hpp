@@ -26,6 +26,7 @@
 namespace gnote {
 
 class IconManager;
+class Preferences;
 
 
 class IGnote
@@ -40,6 +41,7 @@ public:
   virtual ~IGnote();
 
   virtual IconManager & icon_manager() = 0;
+  virtual Preferences & preferences() = 0;
 
   virtual MainWindow & get_main_window() = 0;
   virtual MainWindow & get_window_for_note() = 0;

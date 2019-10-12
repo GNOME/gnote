@@ -28,12 +28,9 @@
 #include <sigc++/signal.h>
 #include <giomm/settings.h>
 
-#include "base/singleton.hpp"
-
 namespace gnote {
 
   class Preferences 
-    : public base::Singleton<Preferences>
   {
   public:
     static const char *SCHEMA_GNOTE;
@@ -93,7 +90,8 @@ namespace gnote {
     static const char *DESKTOP_GNOME_FONT;
     static const char *DESKTOP_GNOME_KEY_THEME;
 
-    Preferences();
+    Preferences() {}
+    void init();
 
     Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
   private:

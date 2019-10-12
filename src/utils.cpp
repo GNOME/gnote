@@ -42,6 +42,7 @@
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
 #include "sharp/datetime.hpp"
+#include "ignote.hpp"
 #include "preferences.hpp"
 #include "note.hpp"
 #include "utils.hpp"
@@ -186,7 +187,7 @@ namespace gnote {
     {
       bool use_12h = false;
       if(show_time) {
-        use_12h = Preferences::obj().get_schema_settings(
+        use_12h = IGnote::obj().preferences().get_schema_settings(
           Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE)->get_string(
             Preferences::DESKTOP_GNOME_CLOCK_FORMAT) == "12h";
       }

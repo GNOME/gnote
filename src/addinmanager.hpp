@@ -32,6 +32,7 @@
 #include "note.hpp"
 #include "noteaddin.hpp"
 #include "importaddin.hpp"
+#include "preferences.hpp"
 
 
 namespace gnote {
@@ -50,8 +51,7 @@ typedef std::map<Glib::ustring, AddinInfo> AddinInfoMap;
 class AddinManager
 {
 public:
-
-  AddinManager(NoteManager & note_manager, const Glib::ustring & conf_dir);
+  AddinManager(NoteManager & note_manager, Preferences & preferences, const Glib::ustring & conf_dir);
   ~AddinManager();
 
   void add_note_addin_info(const Glib::ustring & id, const sharp::DynamicModule * dmod);
@@ -96,6 +96,7 @@ private:
   void register_addin_actions() const;
     
   NoteManager & m_note_manager;
+  Preferences & m_preferences;
   const Glib::ustring m_gnote_conf_dir;
   Glib::ustring m_addins_prefs_dir;
   Glib::ustring m_addins_prefs_file;

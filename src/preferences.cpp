@@ -85,7 +85,7 @@ namespace gnote {
   const char * Preferences::DESKTOP_GNOME_KEY_THEME = "gtk-key-theme";
 
 
-  Preferences::Preferences()
+  void Preferences::init()
   {
     m_schemas[SCHEMA_GNOTE] = Gio::Settings::create(SCHEMA_GNOTE);
     m_schemas[SCHEMA_KEYBINDINGS] = Gio::Settings::create(SCHEMA_KEYBINDINGS);

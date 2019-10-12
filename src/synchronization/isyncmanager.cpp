@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
  */
 
 
+#include "ignote.hpp"
 #include "isyncmanager.hpp"
 #include "preferences.hpp"
 #include "sharp/uuid.hpp"
@@ -28,7 +29,7 @@ namespace sync {
 
 
 SyncLockInfo::SyncLockInfo()
-  : client_id(Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID))
+  : client_id(IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID))
   , transaction_id(sharp::uuid().string())
   , renew_count(0)
   , duration(0, 2, 0) // default of 2 minutes

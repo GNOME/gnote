@@ -25,6 +25,7 @@
 
 #include "notemanagerbase.hpp"
 #include "note.hpp"
+#include "preferences.hpp"
 #include "tagmanager.hpp"
 
 namespace gnote {
@@ -38,7 +39,7 @@ namespace gnote {
     typedef std::shared_ptr<NoteManager> Ptr;
     typedef sigc::slot<void, const Note::Ptr &> NoteChangedSlot;
     
-    NoteManager(const Glib::ustring &);
+    NoteManager(Preferences & preferences, const Glib::ustring &);
     ~NoteManager();
 
     virtual NoteArchiver & note_archiver() override
@@ -84,6 +85,7 @@ namespace gnote {
     void load_notes();
     void on_exiting_event();
 
+    Preferences & m_preferences;
     AddinManager   *m_addin_mgr;
     NoteArchiver m_note_archiver;
     TagManager m_tag_manager;

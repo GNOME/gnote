@@ -104,10 +104,10 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   notebooks::NotebookManager::obj().signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
   parse_sorting_setting(settings->get_string(Preferences::SEARCH_SORTING));
-  settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+  settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
   settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
 }
 
@@ -272,7 +272,7 @@ void SearchNotesWidget::save_position()
     return;
   }
 
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
     .get_schema_settings(Preferences::SCHEMA_GNOTE);
   settings->set_int(Preferences::SEARCH_WINDOW_SPLITTER_POS, get_position());
 
@@ -1283,7 +1283,7 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
 {
   if(!m_note_list_context_menu) {
     m_note_list_context_menu = new Gtk::Menu;
-    bool open_notes_in_new_window = Preferences::obj().get_schema_settings(
+    bool open_notes_in_new_window = IGnote::obj().preferences().get_schema_settings(
       Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
 
     Gtk::MenuItem *item;
@@ -1415,7 +1415,7 @@ void SearchNotesWidget::background()
 
 void SearchNotesWidget::hint_size(int & width, int & height)
 {
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
     .get_schema_settings(Preferences::SCHEMA_GNOTE);
   width = settings->get_int(Preferences::SEARCH_WINDOW_WIDTH);
   height = settings->get_int(Preferences::SEARCH_WINDOW_HEIGHT);
@@ -1423,7 +1423,7 @@ void SearchNotesWidget::hint_size(int & width, int & height)
 
 void SearchNotesWidget::size_internals()
 {
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
     .get_schema_settings(Preferences::SCHEMA_GNOTE);
   int pos = settings->get_int(Preferences::SEARCH_WINDOW_SPLITTER_POS);
   if(pos) {
@@ -1487,7 +1487,7 @@ void SearchNotesWidget::on_sorting_changed()
     else {
       value += "desc";
     }
-    Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
+    IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
       Preferences::SEARCH_SORTING, value);
   }
 }

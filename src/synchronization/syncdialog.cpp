@@ -596,7 +596,7 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::vector<Glib::ustring> & noteUpdateTitles)
 {
-  int dlgBehaviorPref = Preferences::obj()
+  int dlgBehaviorPref = IGnote::obj().preferences()
     .get_schema_settings(Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
   std::exception *mainThreadException = NULL;
 
@@ -683,7 +683,7 @@ void SyncDialog::note_conflict_detected_(
       }
     }
 
-    Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
+    IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
       Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, static_cast<int>(savedBehavior)); // TODO: Clean up
 
     conflictDlg.hide();

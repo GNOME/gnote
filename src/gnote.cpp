@@ -141,8 +141,8 @@ namespace gnote {
     Glib::ustring note_path = get_note_path(m_cmd_line.note_path());
 
     //create singleton objects
-    new Preferences;
-    m_manager = new NoteManager(note_path);
+    m_preferences.init();;
+    m_manager = new NoteManager(m_preferences, note_path);
     new notebooks::NotebookManager(default_note_manager());
     new ActionManager;
     sync::SyncManager::init(default_note_manager());
@@ -398,8 +398,7 @@ namespace gnote {
     // if notes are opened in new window by default, then open new window for search
     // otherwise switch the only window to search
     // if there is more than one window open, open new for search, since we can't decide which one to switch
-    bool new_window = Preferences::obj()
-      .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
+    bool new_window = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
     if(main_windows > 1 || new_window) {
       MainWindow & main_window = new_main_window();
       main_window.present_search();

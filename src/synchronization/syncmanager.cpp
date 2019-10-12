@@ -90,7 +90,7 @@ namespace sync {
   {
     try {
       NoteManager & manager(dynamic_cast<NoteManager&>(note_mgr()));
-      Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
+      IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
         .connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
       manager.signal_note_saved.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
       manager.signal_note_deleted.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
@@ -418,7 +418,7 @@ namespace sync {
 
   void SyncManager::update_sync_action()
   {
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC);
+    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC);
     Glib::ustring sync_addin_id = settings->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
     IActionManager::obj().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
 
@@ -539,7 +539,7 @@ namespace sync {
   {
     SyncServiceAddin *addin = NULL;
 
-    Glib::ustring sync_service_id = Preferences::obj()
+    Glib::ustring sync_service_id = IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
     if(sync_service_id != "") {
       addin = get_sync_service_addin(sync_service_id);

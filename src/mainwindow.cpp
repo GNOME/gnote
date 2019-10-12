@@ -87,7 +87,7 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
   if(win) {
     return win;
   }
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   if(false == settings->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW)) {
     if (note->has_window()) {
       win = dynamic_cast<MainWindow*>(note->get_window()->host());
@@ -108,7 +108,7 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
 bool MainWindow::use_client_side_decorations()
 {
   if(s_use_client_side_decorations < 0) {
-    Glib::ustring setting = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(
+    Glib::ustring setting = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(
       Preferences::USE_CLIENT_SIDE_DECORATIONS);
     if(setting == "enabled") {
       s_use_client_side_decorations = 1;

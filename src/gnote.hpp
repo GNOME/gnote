@@ -32,6 +32,7 @@
 #include "actionmanager.hpp"
 #include "iconmanager.hpp"
 #include "ignote.hpp"
+#include "preferences.hpp"
 #include "remotecontrolproxy.hpp"
 #include "synchronization/syncdialog.hpp"
 
@@ -124,6 +125,10 @@ public:
     {
       return m_icon_manager;
     }
+  virtual Preferences & preferences()
+    {
+      return m_preferences;
+    }
 
   void on_preferences_response(int res);
   void on_show_preferences_action(const Glib::VariantBase&);
@@ -165,6 +170,7 @@ private:
 
   NoteManager *m_manager;
   IconManager m_icon_manager;
+  Preferences m_preferences;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
   bool m_is_background;
   bool m_is_shell_search;

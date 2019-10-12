@@ -24,6 +24,7 @@
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
 #include "fusesyncserviceaddin.hpp"
+#include "ignote.hpp"
 #include "preferences.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
@@ -255,7 +256,7 @@ bool FuseSyncServiceAddin::mount_fuse(bool useStoredValues)
 
 int FuseSyncServiceAddin::get_timeout_ms()
 {
-  Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   try {
     return settings->get_int(Preferences::SYNC_FUSE_MOUNT_TIMEOUT);
   }

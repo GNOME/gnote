@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 
 #include <string.h>
 
+#include "ignote.hpp"
 #include "notebuffer.hpp"
 #include "noteeditor.hpp"
 #include "preferences.hpp"
@@ -39,9 +40,9 @@ namespace gnote {
     set_right_margin(default_margin());
     property_can_default().set_value(true);
 
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
     //Set up the schema to watch the default document font
-    Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
+    Glib::RefPtr<Gio::Settings> desktop_settings = IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
     if(desktop_settings) {
       desktop_settings->signal_changed().connect(
@@ -78,7 +79,7 @@ namespace gnote {
   Pango::FontDescription NoteEditor::get_gnome_document_font_description()
   {
     try {
-      Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
+      Glib::RefPtr<Gio::Settings> desktop_settings = IGnote::obj().preferences()
         .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
       if(desktop_settings) {
         Glib::ustring doc_font_string =
@@ -100,9 +101,9 @@ namespace gnote {
       update_custom_font_setting ();
     }
     else if(key == Preferences::DESKTOP_GNOME_FONT) {
-      if (!Preferences::obj().get_schema_settings(
+      if (!IGnote::obj().preferences().get_schema_settings(
           Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
-        Glib::RefPtr<Gio::Settings> desktop_settings = Preferences::obj()
+        Glib::RefPtr<Gio::Settings> desktop_settings = IGnote::obj().preferences()
           .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
         if(desktop_settings) {
           Glib::ustring value = desktop_settings->get_string(key);
@@ -115,7 +116,7 @@ namespace gnote {
 
   void NoteEditor::update_custom_font_setting()
   {
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_GNOTE);
 
     if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {

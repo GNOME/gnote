@@ -31,6 +31,7 @@
 #include "sharp/string.hpp"
 #include "debug.hpp"
 #include "iactionmanager.hpp"
+#include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "noteeditor.hpp"
 #include "notemanager.hpp"
@@ -290,7 +291,7 @@ namespace gnote {
 
   void NoteSpellChecker::on_note_opened ()
   {
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_GNOTE);
     settings->signal_changed()
       .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_enable_spellcheck_changed));
@@ -383,7 +384,7 @@ namespace gnote {
     if (key != Preferences::ENABLE_SPELLCHECKING) {
       return;
     }
-    bool value = Preferences::obj()
+    bool value = IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(key);
     
     if (value) {

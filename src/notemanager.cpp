@@ -32,14 +32,14 @@
 #include "addinmanager.hpp"
 #include "ignote.hpp"
 #include "itagmanager.hpp"
-#include "preferences.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/dynamicmodule.hpp"
 
 namespace gnote {
 
-  NoteManager::NoteManager(const Glib::ustring & directory)
+  NoteManager::NoteManager(Preferences & preferences, const Glib::ustring & directory)
     : NoteManagerBase(directory)
+    , m_preferences(preferences)
     , m_note_archiver(*this)
   {
     Glib::ustring backup = directory + "/Backup";
@@ -55,8 +55,7 @@ namespace gnote {
 
     NoteManagerBase::_common_init(directory, backup_directory);
 
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
-      .get_schema_settings(Preferences::SCHEMA_GNOTE);
+    Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
     // Watch the START_NOTE_URI setting and update it so that the
     // StartNoteUri property doesn't generate a call to
     // Preferences.Get () each time it's accessed.
@@ -107,14 +106,14 @@ namespace gnote {
   void NoteManager::on_setting_changed(const Glib::ustring & key)
   {
     if(key == Preferences::START_NOTE_URI) {
-      m_start_note_uri = Preferences::obj()
+      m_start_note_uri = m_preferences
         .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(Preferences::START_NOTE_URI);
     }
   }
 
   AddinManager *NoteManager::create_addin_manager()
   {
-    return new AddinManager(*this, IGnote::conf_dir());
+    return new AddinManager(*this, m_preferences, IGnote::conf_dir());
   }
 
   void NoteManager::create_start_notes ()
@@ -166,7 +165,7 @@ namespace gnote {
       NoteBase::Ptr start_note = create (_("Start Here"),
                                 start_note_content);
       start_note->queue_save (CONTENT_CHANGED);
-      Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
+      m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
           Preferences::START_NOTE_URI, start_note->uri());
 
       NoteBase::Ptr links_note = create (_("Using Links in Gnote"),
@@ -203,7 +202,7 @@ namespace gnote {
       // Attempt to find an existing Start Here note
       NoteBase::Ptr start_note = find (_("Start Here"));
       if (start_note) {
-        Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
+        m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
             Preferences::START_NOTE_URI, start_note->uri());
       }
     }

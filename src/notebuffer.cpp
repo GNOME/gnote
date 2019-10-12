@@ -28,6 +28,7 @@
 
 #include "config.h"
 #include "debug.hpp"
+#include "ignote.hpp"
 #include "notebuffer.hpp"
 #include "notetag.hpp"
 #include "note.hpp"
@@ -55,7 +56,7 @@ namespace gnote {
 
   bool NoteBuffer::get_enable_auto_bulleted_lists() const
   {
-    return Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+    return IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
         Preferences::ENABLE_AUTO_BULLETED_LISTS);
   }
   

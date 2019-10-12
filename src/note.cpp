@@ -28,6 +28,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/stock.h>
 
+#include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "note.hpp"
 #include "notemanager.hpp"
@@ -551,7 +552,7 @@ namespace gnote {
     const Note::Ptr self = std::static_pointer_cast<Note>(shared_from_this());
 
     if (!linking_notes.empty()) {
-      Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+      Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
       const NoteRenameBehavior behavior
         = static_cast<NoteRenameBehavior>(settings->get_int(Preferences::NOTE_RENAME_BEHAVIOR));
 
@@ -585,7 +586,7 @@ namespace gnote {
       NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
       const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
       if(Gtk::RESPONSE_CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
-        Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+        Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
         settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, selected_behavior);
       }
 
@@ -780,7 +781,7 @@ namespace gnote {
 
   bool Note::is_pinned() const
   {
-    Glib::ustring pinned_uris = Preferences::obj()
+    Glib::ustring pinned_uris = IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(Preferences::MENU_PINNED_NOTES);
     return pinned_uris.find(uri()) != Glib::ustring::npos;
   }
@@ -789,7 +790,7 @@ namespace gnote {
   void Note::set_pinned(bool pinned) const
   {
     Glib::ustring new_pinned;
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
     Glib::ustring old_pinned = settings->get_string(Preferences::MENU_PINNED_NOTES);
     bool is_currently_pinned = old_pinned.find(uri()) != Glib::ustring::npos;
 

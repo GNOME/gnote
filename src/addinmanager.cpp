@@ -36,7 +36,6 @@
 #include "debug.hpp"
 #include "iactionmanager.hpp"
 #include "ignote.hpp"
-#include "preferences.hpp"
 #include "preferencetabaddin.hpp"
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
@@ -60,7 +59,7 @@ namespace gnote {
 #define SETUP_NOTE_ADDIN(key, KEY, klass) \
   do { \
     if(key == KEY) { \
-      Glib::RefPtr<Gio::Settings> settings = Preferences::obj() \
+      Glib::RefPtr<Gio::Settings> settings = m_preferences \
         .get_schema_settings(Preferences::SCHEMA_GNOTE); \
       if(settings->get_boolean(key)) { \
         sharp::IfaceFactoryBase *iface = new sharp::IfaceFactory<klass>; \
@@ -90,8 +89,9 @@ namespace {
 }
 
 
-  AddinManager::AddinManager(NoteManager & note_manager, const Glib::ustring & conf_dir)
+  AddinManager::AddinManager(NoteManager & note_manager, Preferences & preferences, const Glib::ustring & conf_dir)
     : m_note_manager(note_manager)
+    , m_preferences(preferences)
     , m_gnote_conf_dir(conf_dir)
   {
     m_addins_prefs_dir = Glib::build_filename(conf_dir, "addins");
@@ -258,7 +258,7 @@ namespace {
     if (!sharp::directory_exists (m_addins_prefs_dir))
       g_mkdir_with_parents(m_addins_prefs_dir.c_str(), S_IRWXU);
 
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    Glib::RefPtr<Gio::Settings> settings = m_preferences
       .get_schema_settings(Preferences::SCHEMA_GNOTE);
     settings->signal_changed()
       .connect(sigc::mem_fun(*this, &AddinManager::on_setting_changed));

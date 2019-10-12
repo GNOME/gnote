@@ -163,7 +163,7 @@ namespace gnote {
       add_action_widget (*button, Gtk::RESPONSE_CLOSE);
       set_default_response(Gtk::RESPONSE_CLOSE);
 
-    Preferences::obj().get_schema_settings(
+    IGnote::obj().preferences().get_schema_settings(
       Preferences::SCHEMA_GNOTE)->signal_changed().connect(
         sigc::mem_fun(*this, &PreferencesDialog::on_preferences_setting_changed));
   }
@@ -225,7 +225,7 @@ namespace gnote {
       Gtk::Label *label;
       Gtk::CheckButton *check;
       sharp::PropertyEditorBool *peditor, *font_peditor,* bullet_peditor;
-      Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+      Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
 
       Gtk::Grid *options_list = manage(new Gtk::Grid);
       options_list->set_row_spacing(12);
@@ -354,7 +354,7 @@ namespace gnote {
     button->add (*font_box);
     button->show ();
 
-    Glib::ustring font_desc = Preferences::obj().get_schema_settings(
+    Glib::ustring font_desc = IGnote::obj().preferences().get_schema_settings(
         Preferences::SCHEMA_GNOTE)->get_string(Preferences::CUSTOM_FONT_FACE);
     update_font_button (font_desc);
 
@@ -371,7 +371,7 @@ namespace gnote {
     Gtk::CheckButton *check;
     sharp::PropertyEditorBool *peditor;
     int vbox_row = 0;
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_GNOTE);
 
     // internal links
@@ -448,7 +448,7 @@ namespace gnote {
 
     // Read from Preferences which service is configured and select it
     // by default.  Otherwise, just select the first one in the list.
-    Glib::ustring addin_id = Preferences::obj()
+    Glib::ustring addin_id = IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
 
     Gtk::TreeIter active_iter;
@@ -496,11 +496,11 @@ namespace gnote {
     vbox->attach(*m_sync_addin_prefs_container, 0, vbox_row++, 1, 1);
 
     // Autosync preference
-    int timeout = Preferences::obj().get_schema_settings(
+    int timeout = IGnote::obj().preferences().get_schema_settings(
         Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
     if(timeout > 0 && timeout < 5) {
       timeout = 5;
-      Preferences::obj().get_schema_settings(
+      IGnote::obj().preferences().get_schema_settings(
           Preferences::SCHEMA_SYNC)->set_int(Preferences::SYNC_AUTOSYNC_TIMEOUT, 5);
     }
     Gtk::Grid *autosyncBox = manage(new Gtk::Grid);
@@ -928,7 +928,7 @@ namespace gnote {
     Gtk::FontSelectionDialog *font_dialog =
       new Gtk::FontSelectionDialog (_("Choose Note Font"));
 
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
     Glib::ustring font_name = settings->get_string(Preferences::CUSTOM_FONT_FACE);
     font_dialog->set_font_name(font_name);
 
@@ -975,7 +975,7 @@ namespace gnote {
   void  PreferencesDialog::on_preferences_setting_changed(const Glib::ustring & key)
   {
     if (key == Preferences::NOTE_RENAME_BEHAVIOR) {
-      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
         .get_schema_settings(Preferences::SCHEMA_GNOTE);
       int rename_behavior = settings->get_int(key);
       if (0 > rename_behavior || 2 < rename_behavior) {
@@ -988,7 +988,7 @@ namespace gnote {
       }
     }
     else if(key == Preferences::SYNC_AUTOSYNC_TIMEOUT) {
-      int timeout = Preferences::obj().get_schema_settings(
+      int timeout = IGnote::obj().preferences().get_schema_settings(
           Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
       if(timeout <= 0 && m_autosync_check->get_active()) {
         m_autosync_check->set_active(false);
@@ -1009,7 +1009,7 @@ namespace gnote {
 
   void  PreferencesDialog::on_rename_behavior_changed()
   {
-    Preferences::obj().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_int(
+    IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_int(
         Preferences::NOTE_RENAME_BEHAVIOR, m_rename_behavior_combo->get_active_row_number());
   }
 
@@ -1018,7 +1018,7 @@ namespace gnote {
   {
     // Get saved behavior
     sync::SyncTitleConflictResolution savedBehavior = sync::CANCEL;
-    int dlgBehaviorPref = Preferences::obj().get_schema_settings(
+    int dlgBehaviorPref = IGnote::obj().preferences().get_schema_settings(
       Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
     // TODO: Check range of this int
     savedBehavior = static_cast<sync::SyncTitleConflictResolution>(dlgBehaviorPref);
@@ -1085,7 +1085,7 @@ namespace gnote {
       newBehavior = sync::OVERWRITE_EXISTING;
     }
 
-    Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
+    IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
       Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, static_cast<int>(newBehavior));
   }
 
@@ -1167,7 +1167,7 @@ namespace gnote {
       DBG_OUT("Error calling %s.reset_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
     }
 
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC);
+    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC);
     settings->set_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN, "");
 
     // Reset conflict handling behavior
@@ -1216,7 +1216,7 @@ namespace gnote {
 
     utils::HIGMessageDialog *dialog;
     if(saved) {
-      Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->set_string(
+      IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_string(
         Preferences::SYNC_SELECTED_SERVICE_ADDIN, m_selected_sync_addin->id());
 
       m_sync_addin_combo->set_sensitive(false);
@@ -1244,7 +1244,7 @@ namespace gnote {
       // TODO: Change the SyncServiceAddin API so the call to
       // SaveConfiguration has a way of passing back an exception
       // or other text so it can be displayed to the user.
-      Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->set_string(
+      IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_string(
        Preferences::SYNC_SELECTED_SERVICE_ADDIN, "");
 
       m_sync_addin_combo->set_sensitive(true);
@@ -1418,7 +1418,7 @@ namespace gnote {
 
   void PreferencesDialog::update_timeout_pref()
   {
-    Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
+    IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
         Preferences::SYNC_AUTOSYNC_TIMEOUT,
         m_autosync_check->get_active() ? static_cast<int>(m_autosync_spinner->get_value()) : -1);
   }
