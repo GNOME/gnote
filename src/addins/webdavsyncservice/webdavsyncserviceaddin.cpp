@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
 #include <glibmm/i18n.h>
 
 #include "debug.hpp"
+#include "ignote.hpp"
 #include "preferences.hpp"
 #include "webdavsyncserviceaddin.hpp"
 #include "gnome_keyring/keyringexception.hpp"
@@ -206,7 +207,7 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
   try {
     password = sharp::string_trim(Ring::find_password(s_request_attributes));
     if(password != "") {
-      Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+      Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences()
         .get_schema_settings(Preferences::SCHEMA_SYNC_WDFS);
       username = sharp::string_trim(settings->get_string(Preferences::SYNC_FUSE_WDFS_USERNAME));
       url = sharp::string_trim(settings->get_string(Preferences::SYNC_FUSE_WDFS_URL));
@@ -223,7 +224,7 @@ void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, con
 {
   // Save configuration into the GNOME Keyring and GSettings
   try {
-    Glib::RefPtr<Gio::Settings> settings = Preferences::obj()
+    Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences()
       .get_schema_settings(Preferences::SCHEMA_SYNC_WDFS);
     settings->set_string(Preferences::SYNC_FUSE_WDFS_USERNAME, username);
     settings->set_string(Preferences::SYNC_FUSE_WDFS_URL, url);
@@ -263,7 +264,7 @@ bool WebDavSyncServiceAddin::get_pref_widget_settings(Glib::ustring & url, Glib:
 bool WebDavSyncServiceAddin::accept_ssl_cert()
 {
   try {
-    return Preferences::obj().get_schema_settings(Preferences::SCHEMA_SYNC_WDFS)->get_boolean(
+    return gnote::IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC_WDFS)->get_boolean(
         Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT);
   }
   catch(...) {
