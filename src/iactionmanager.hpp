@@ -23,15 +23,12 @@
 
 #include <giomm/simpleaction.h>
 #include <gtkmm/action.h>
-#include <gtkmm/uimanager.h>
 
-#include "base/singleton.hpp"
 #include "popoverwidgets.hpp"
 
 namespace gnote {
 
 class IActionManager
-  : public base::Singleton<IActionManager>
 {
 public:
   virtual ~IActionManager();

@@ -1237,7 +1237,7 @@ namespace gnote {
 
       if(dialog_response == Gtk::RESPONSE_YES) {
         // TODO: Put this voodoo in a method somewhere
-        IActionManager::obj().get_app_action("sync-notes")->activate(Glib::VariantBase());
+        IGnote::obj().action_manager().get_app_action("sync-notes")->activate(Glib::VariantBase());
       }
     }
     else {

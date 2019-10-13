@@ -1393,7 +1393,7 @@ void SearchNotesWidget::foreground()
 
   win->add_accel_group(m_accel_group);
   win->set_focus(*m_tree);
-  auto & manager(IActionManager::obj());
+  auto & manager(IGnote::obj().action_manager());
   register_callbacks();
   m_callback_changed_cid = manager.signal_main_window_search_actions_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::callbacks_changed));
@@ -1435,7 +1435,7 @@ std::vector<PopoverWidget> SearchNotesWidget::get_popover_widgets()
 {
   std::vector<PopoverWidget> popover_widgets;
   popover_widgets.reserve(20);
-  IActionManager::obj().signal_build_main_window_search_popover(popover_widgets);
+  IGnote::obj().action_manager().signal_build_main_window_search_popover(popover_widgets);
   for(unsigned i = 0; i < popover_widgets.size(); ++i) {
     popover_widgets[i].secondary_order = i;
   }
@@ -1555,7 +1555,7 @@ void SearchNotesWidget::register_callbacks()
   if(!win) {
     return;
   }
-  auto & manager(IActionManager::obj());
+  auto & manager(IGnote::obj().action_manager());
   auto cbacks = manager.get_main_window_search_callbacks();
   for(auto & cback : cbacks) {
     auto action = win->find_action(cback.first);

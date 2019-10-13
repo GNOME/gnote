@@ -429,17 +429,16 @@ namespace gnote {
 
   void Gnote::make_app_actions()
   {
-    IActionManager & am(IActionManager::obj());
-    am.get_app_action("new-note")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_note_app_action));
-    am.get_app_action("new-window")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_window_action));
-    am.get_app_action("show-preferences")->signal_activate().connect(
+    m_action_manager.get_app_action("new-note")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_note_app_action));
+    m_action_manager.get_app_action("new-window")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_new_window_action));
+    m_action_manager.get_app_action("show-preferences")->signal_activate().connect(
       sigc::mem_fun(*this, &Gnote::on_show_preferences_action));
-    am.get_app_action("sync-notes")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::open_note_sync_window));
-    am.get_app_action("help-contents")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
-    am.get_app_action("help-shortcuts")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_shortcust_action));
-    am.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
+    m_action_manager.get_app_action("sync-notes")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::open_note_sync_window));
+    m_action_manager.get_app_action("help-contents")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
+    m_action_manager.get_app_action("help-shortcuts")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_shortcust_action));
+    m_action_manager.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
 
-    add_app_actions(static_cast<ActionManager &>(am).get_app_actions());
+    add_app_actions(m_action_manager.get_app_actions());
   }
 
 

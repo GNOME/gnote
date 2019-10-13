@@ -107,7 +107,7 @@ namespace gnote {
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_Q, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
 
-    std::map<Glib::ustring, const Glib::VariantType*> actions = IActionManager::obj().get_main_window_actions();
+    std::map<Glib::ustring, const Glib::VariantType*> actions = IGnote::obj().action_manager().get_main_window_actions();
     for(std::map<Glib::ustring, const Glib::VariantType*>::iterator iter = actions.begin();
         iter != actions.end(); ++iter) {
       MainWindowAction::Ptr action;
@@ -124,7 +124,7 @@ namespace gnote {
         add_action(action = MainWindowAction::create(iter->first, Glib::ustring("")));
       }
       if(action) {
-        action->is_modifying(IActionManager::obj().is_modifying_main_window_action(iter->first));
+        action->is_modifying(IGnote::obj().action_manager().is_modifying_main_window_action(iter->first));
       }
     }
     find_action("close-window")->signal_activate()

@@ -121,6 +121,10 @@ public:
     {
       return *m_manager;
     }
+  virtual IActionManager & action_manager() override
+    {
+      return m_action_manager;
+    }
   virtual IconManager & icon_manager() override
     {
       return m_icon_manager;

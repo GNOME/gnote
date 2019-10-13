@@ -60,7 +60,7 @@ namespace sync {
   {
     m_client = GnoteSyncClient::create(manager);
     // Add a "Synchronize Notes" to Gnote's Application Menu
-    IActionManager & am(IActionManager::obj());
+    IActionManager & am(IGnote::obj().action_manager());
     am.add_app_action("sync-notes");
     am.add_app_menu_item(APP_SECTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
 
@@ -420,7 +420,7 @@ namespace sync {
   {
     Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC);
     Glib::ustring sync_addin_id = settings->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
-    IActionManager::obj().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
+    IGnote::obj().action_manager().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
 
     int timeoutPref = settings->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
     if(timeoutPref != m_autosync_timeout_pref_minutes) {

@@ -579,7 +579,7 @@ namespace {
 
   void AddinManager::register_addin_actions() const
   {
-    auto & manager(IActionManager::obj());
+    auto & manager(IGnote::obj().action_manager());
     for(auto & info : m_addin_infos) {
       auto & non_modifying = info.second.non_modifying_actions();
       for(auto & action : info.second.actions()) {

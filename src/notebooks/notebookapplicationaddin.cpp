@@ -35,8 +35,8 @@
 #include "notebooks/notebooknewnotemenuitem.hpp"
 #include "notebooks/notebook.hpp"
 #include "iactionmanager.hpp"
+#include "ignote.hpp"
 #include "debug.hpp"
-#include "iconmanager.hpp"
 #include "notemanager.hpp"
 
 namespace gnote {
@@ -57,7 +57,7 @@ namespace gnote {
 
     void NotebookApplicationAddin::initialize ()
     {
-      IActionManager & am(IActionManager::obj());
+      IActionManager & am(IGnote::obj().action_manager());
 
       NoteManager & nm(note_manager());
 
