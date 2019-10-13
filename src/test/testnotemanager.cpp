@@ -31,11 +31,10 @@ Glib::ustring NoteManager::test_notes_dir()
 
 
 NoteManager::NoteManager(const Glib::ustring & notesdir)
-  : gnote::NoteManagerBase(notesdir)
-  , m_note_archiver(*this)
+  : m_note_archiver(*this)
 {
   Glib::ustring backup = notesdir + "/Backup";
-  _common_init(notesdir, backup);
+  init(notesdir, backup);
 }
 
 gnote::NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, const Glib::ustring & file_name)
