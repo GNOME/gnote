@@ -37,7 +37,6 @@
 #include <gtkmm/shortcutswindow.h>
 
 #include "gnote.hpp"
-#include "actionmanager.hpp"
 #include "addinmanager.hpp"
 #include "applicationaddin.hpp"
 #include "debug.hpp"
@@ -145,7 +144,7 @@ namespace gnote {
     m_manager = new NoteManager(m_preferences);
     m_manager->init(note_path);
     new notebooks::NotebookManager(default_note_manager());
-    new ActionManager;
+    m_action_manager.init();
     sync::SyncManager::init(default_note_manager());
 
     m_manager->get_addin_manager().initialize_application_addins();

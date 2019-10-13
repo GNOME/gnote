@@ -54,19 +54,14 @@
 #endif
 
 #include <glibmm/i18n.h>
-#include <gtkmm/window.h>
-#include <gtkmm/imagemenuitem.h>
-#include <gtkmm/image.h>
-#include <gtkmm/stock.h>
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
 #include "actionmanager.hpp"
-#include "iconmanager.hpp"
 
 namespace gnote {
 
-  ActionManager::ActionManager()
+  void ActionManager::init()
   {
     make_app_actions();
     make_app_menu_items();

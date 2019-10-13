@@ -36,7 +36,7 @@ class ActionManager
   : public IActionManager
 {
 public:
-  ActionManager();
+  void init();
 
   virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const Glib::ustring & name) const override;
   const std::vector<Glib::RefPtr<Gio::SimpleAction> > & get_app_actions() const

@@ -171,6 +171,7 @@ private:
   NoteManager *m_manager;
   IconManager m_icon_manager;
   Preferences m_preferences;
+  ActionManager m_action_manager;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
   bool m_is_background;
   bool m_is_shell_search;
