@@ -88,9 +88,8 @@ Glib::ustring NoteManagerBase::sanitize_xml_content(const Glib::ustring & xml_co
 }
 
 
-NoteManagerBase::NoteManagerBase(const Glib::ustring & directory)
+NoteManagerBase::NoteManagerBase()
   : m_trie_controller(NULL)
-  , m_notes_dir(directory)
 {
 }
 
@@ -101,8 +100,9 @@ NoteManagerBase::~NoteManagerBase()
   }
 }
 
-void NoteManagerBase::_common_init(const Glib::ustring & /*directory*/, const Glib::ustring & backup_directory)
+void NoteManagerBase::init(const Glib::ustring & directory, const Glib::ustring & backup_directory)
 {
+  m_notes_dir = directory;
   m_default_note_template_title = _("New Note Template");
   m_backup_dir = backup_directory;
   bool is_first_run = first_run();

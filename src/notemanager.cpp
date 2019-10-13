@@ -37,23 +37,19 @@
 
 namespace gnote {
 
-  NoteManager::NoteManager(Preferences & preferences, const Glib::ustring & directory)
-    : NoteManagerBase(directory)
-    , m_preferences(preferences)
+  NoteManager::NoteManager(Preferences & preferences)
+    : m_preferences(preferences)
+    , m_addin_mgr(NULL)
     , m_note_archiver(*this)
   {
-    Glib::ustring backup = directory + "/Backup";
-    
-    _common_init(directory, backup);
   }
 
 
-  void NoteManager::_common_init(const Glib::ustring & directory, const Glib::ustring & backup_directory)
+  void NoteManager::init(const Glib::ustring & directory)
   {
-    m_addin_mgr = NULL;
+    Glib::ustring backup = directory + "/Backup";
+    NoteManagerBase::init(directory, backup);
     bool is_first_run = first_run();
-
-    NoteManagerBase::_common_init(directory, backup_directory);
 
     Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
     // Watch the START_NOTE_URI setting and update it so that the

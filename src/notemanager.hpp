@@ -39,8 +39,10 @@ namespace gnote {
     typedef std::shared_ptr<NoteManager> Ptr;
     typedef sigc::slot<void, const Note::Ptr &> NoteChangedSlot;
     
-    NoteManager(Preferences & preferences, const Glib::ustring &);
+    NoteManager(Preferences & preferences);
     ~NoteManager();
+
+    void init(const Glib::ustring &);
 
     virtual NoteArchiver & note_archiver() override
       {
@@ -68,7 +70,6 @@ namespace gnote {
 
     using NoteManagerBase::create_note_from_template;
   protected:
-    virtual void _common_init(const Glib::ustring & directory, const Glib::ustring & backup) override;
     virtual void post_load() override;
     virtual void migrate_notes(const Glib::ustring & old_note_dir) override;
     virtual NoteBase::Ptr create_note_from_template(const Glib::ustring & title,

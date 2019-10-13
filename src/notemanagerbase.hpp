@@ -40,7 +40,7 @@ public:
   static Glib::ustring get_note_template_content(const Glib::ustring & title);
   static Glib::ustring split_title_from_content(Glib::ustring title, Glib::ustring & body);
 
-  NoteManagerBase(const Glib::ustring & directory);
+  NoteManagerBase();
   virtual ~NoteManagerBase();
 
   size_t trie_max_length();
@@ -93,7 +93,7 @@ public:
   NoteBase::RenamedHandler signal_note_renamed;
   NoteBase::SavedHandler signal_note_saved;
 protected:
-  virtual void _common_init(const Glib::ustring & directory, const Glib::ustring & backup);
+  void init(const Glib::ustring & directory, const Glib::ustring & backup);
   bool first_run() const;
   virtual void post_load();
   virtual void migrate_notes(const Glib::ustring & old_note_dir);

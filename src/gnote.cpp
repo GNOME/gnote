@@ -142,7 +142,8 @@ namespace gnote {
 
     //create singleton objects
     m_preferences.init();;
-    m_manager = new NoteManager(m_preferences, note_path);
+    m_manager = new NoteManager(m_preferences);
+    m_manager->init(note_path);
     new notebooks::NotebookManager(default_note_manager());
     new ActionManager;
     sync::SyncManager::init(default_note_manager());
