@@ -44,7 +44,7 @@ void StatisticsApplicationAddin::initialize()
 {
   if(!m_initialized) {
     m_initialized = true;
-    auto & manager(gnote::IActionManager::obj());
+    auto & manager(gnote::IGnote::obj().action_manager());
     manager.register_main_window_search_callback("statistics-show-cback",
       "statistics-show", sigc::mem_fun(*this, &StatisticsApplicationAddin::on_show_statistics));
     m_add_menu_item_cid = manager.signal_build_main_window_search_popover
@@ -55,7 +55,7 @@ void StatisticsApplicationAddin::initialize()
 
 void StatisticsApplicationAddin::shutdown()
 {
-  auto & manager(gnote::IActionManager::obj());
+  auto & manager(gnote::IGnote::obj().action_manager());
   manager.unregister_main_window_search_callback("statistics-show-cback");
   m_add_menu_item_cid.disconnect();
   manager.signal_main_window_popover_changed();
