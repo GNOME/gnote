@@ -39,6 +39,7 @@ namespace gnote {
 
   NoteManager::NoteManager(Preferences & preferences)
     : m_preferences(preferences)
+    , m_notebook_manager(*this)
     , m_addin_mgr(NULL)
     , m_note_archiver(*this)
   {
@@ -91,6 +92,7 @@ namespace gnote {
       load_notes ();
     }
 
+    m_notebook_manager.init();
     IGnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
   }
 

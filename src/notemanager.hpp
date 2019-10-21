@@ -27,6 +27,7 @@
 #include "note.hpp"
 #include "preferences.hpp"
 #include "tagmanager.hpp"
+#include "notebooks/notebookmanager.hpp"
 
 namespace gnote {
 
@@ -44,6 +45,10 @@ namespace gnote {
 
     void init(const Glib::ustring &);
 
+    notebooks::NotebookManager & notebook_manager()
+      {
+        return m_notebook_manager;
+      }
     virtual NoteArchiver & note_archiver() override
       {
         return m_note_archiver;
@@ -87,6 +92,7 @@ namespace gnote {
     void on_exiting_event();
 
     Preferences & m_preferences;
+    notebooks::NotebookManager m_notebook_manager;
     AddinManager   *m_addin_mgr;
     NoteArchiver m_note_archiver;
     TagManager m_tag_manager;

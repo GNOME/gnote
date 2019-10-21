@@ -59,7 +59,6 @@ namespace gnote {
   Gnote::Gnote()
     : Gtk::Application("org.gnome.Gnote", Gio::APPLICATION_HANDLES_COMMAND_LINE)
     , m_manager(NULL)
-    , m_notebook_manager(NULL)
     , m_sync_manager(NULL)
     , m_is_background(false)
     , m_is_shell_search(false)
@@ -71,9 +70,6 @@ namespace gnote {
   {
     if (m_prefsdlg) {
       delete m_prefsdlg;
-    }
-    if(m_notebook_manager) {
-      delete m_notebook_manager;
     }
     if(m_sync_manager) {
       delete m_sync_manager;
@@ -150,8 +146,6 @@ namespace gnote {
     m_preferences.init();
     m_manager = new NoteManager(m_preferences);
     m_manager->init(note_path);
-    m_notebook_manager = new notebooks::NotebookManager(default_note_manager());
-    m_notebook_manager->init();
     m_action_manager.init();
     m_sync_manager = new sync::SyncManager(default_note_manager());
     m_sync_manager->init();
@@ -496,6 +490,11 @@ namespace gnote {
   void Gnote::open_note(const Note::Ptr & note)
   {
     MainWindow::present_in(get_window_for_note(), note);
+  }
+
+  notebooks::NotebookManager & Gnote::notebook_manager()
+  {
+    return m_manager->notebook_manager();
   }
 
 

@@ -130,10 +130,7 @@ public:
     {
       return m_icon_manager;
     }
-  virtual notebooks::NotebookManager & notebook_manager() override
-    {
-      return *m_notebook_manager;
-    }
+  virtual notebooks::NotebookManager & notebook_manager() override;
   virtual sync::SyncManager & sync_manager() override
     {
       return *m_sync_manager;
@@ -183,7 +180,6 @@ private:
 
   NoteManager *m_manager;
   IconManager m_icon_manager;
-  notebooks::NotebookManager *m_notebook_manager;
   Preferences m_preferences;
   ActionManager m_action_manager;
   sync::SyncManager *m_sync_manager;
