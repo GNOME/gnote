@@ -76,7 +76,7 @@ namespace gnote {
 
       
      load_notebooks ();
-    }
+   }
 
 
     Notebook::Ptr NotebookManager::get_notebook(const Glib::ustring & notebookName) const
@@ -322,7 +322,7 @@ namespace gnote {
       if (response != Gtk::RESPONSE_OK)
         return Notebook::Ptr();
       
-      Notebook::Ptr notebook = obj().get_or_create_notebook (notebookName);
+      Notebook::Ptr notebook = IGnote::obj().notebook_manager().get_or_create_notebook (notebookName);
       if (!notebook) {
         DBG_OUT ("Could not create notebook: %s", notebookName.c_str());
       } 
@@ -334,7 +334,7 @@ namespace gnote {
           // Move all the specified notesToAdd into the new notebook
           for(Note::List::const_iterator iter = notesToAdd.begin();
               iter != notesToAdd.end(); ++iter) {
-            obj().move_note_to_notebook (*iter, notebook);
+            IGnote::obj().notebook_manager().move_note_to_notebook (*iter, notebook);
           }
         }
       }
@@ -372,11 +372,11 @@ namespace gnote {
       // Grab the template note before removing all the notebook tags
       Note::Ptr templateNote = notebook->get_template_note ();
       
-      obj().delete_notebook (notebook);
+      IGnote::obj().notebook_manager().delete_notebook(notebook);
 
       // Delete the template note
       if (templateNote) {
-        obj().note_manager().delete_note(templateNote);
+        IGnote::obj().notebook_manager().note_manager().delete_note(templateNote);
       }
     }
 

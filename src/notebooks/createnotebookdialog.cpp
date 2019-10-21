@@ -92,7 +92,7 @@ namespace gnote {
     void CreateNotebookDialog::on_name_entry_changed()
     {
       bool nameTaken = false;
-      if(NotebookManager::obj().notebook_exists(get_notebook_name())) {
+      if(IGnote::obj().notebook_manager().notebook_exists(get_notebook_name())) {
         m_errorLabel.show ();
         nameTaken = true;
       } 

@@ -97,11 +97,12 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   // Watch when notes are added to notebooks so the search
   // results will be updated immediately instead of waiting
   // until the note's queue_save () kicks in.
-  notebooks::NotebookManager::obj().signal_note_added_to_notebook()
+  notebooks::NotebookManager & notebook_manager = IGnote::obj().notebook_manager();
+  notebook_manager.signal_note_added_to_notebook()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_added_to_notebook));
-  notebooks::NotebookManager::obj().signal_note_removed_from_notebook()
+  notebook_manager.signal_note_removed_from_notebook()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_removed_from_notebook));
-  notebooks::NotebookManager::obj().signal_note_pin_status_changed
+  notebook_manager.signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
   Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
@@ -213,10 +214,7 @@ void SearchNotesWidget::restore_matches_window()
 
 Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 {
-  m_notebooksTree = Gtk::manage(
-    new notebooks::NotebooksTreeView(m_manager,
-                                     notebooks::NotebookManager::obj()
-                                       .get_notebooks_with_special_items()));
+  m_notebooksTree = Gtk::manage(new notebooks::NotebooksTreeView(m_manager, IGnote::obj().notebook_manager().get_notebooks_with_special_items()));
 
   m_notebooksTree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);
   m_notebooksTree->set_headers_visible(true);
@@ -333,25 +331,25 @@ void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer * rendere
 void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*/,
                                                const Glib::ustring& new_text)
 {
-  if(notebooks::NotebookManager::obj().notebook_exists(new_text) || new_text == "") {
+  notebooks::NotebookManager & notebook_manager = IGnote::obj().notebook_manager();
+  if(notebook_manager.notebook_exists(new_text) || new_text == "") {
     return;
   }
   notebooks::Notebook::Ptr old_notebook = this->get_selected_notebook();
   if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(old_notebook)) {
     return;
   }
-  notebooks::Notebook::Ptr new_notebook = notebooks::NotebookManager::obj()
-    .get_or_create_notebook(new_text);
+  notebooks::Notebook::Ptr new_notebook = notebook_manager.get_or_create_notebook(new_text);
   DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook->get_name().c_str(),
           new_text.c_str());
   auto notes = old_notebook->get_tag()->get_notes();
   for(NoteBase *note : notes) {
-    notebooks::NotebookManager::obj().move_note_to_notebook(
+    notebook_manager.move_note_to_notebook(
       std::static_pointer_cast<Note>(note->shared_from_this()), new_notebook);
   }
-  notebooks::NotebookManager::obj().delete_notebook(old_notebook);
+  notebook_manager.delete_notebook(old_notebook);
   Gtk::TreeIter iter;
-  if(notebooks::NotebookManager::obj().get_notebook_iter(new_notebook, iter)) {
+  if(notebook_manager.get_notebook_iter(new_notebook, iter)) {
     m_notebooksTree->get_selection()->select(iter);
     m_notebooksTree->set_cursor(m_notebooksTree->get_model()->get_path(iter));
   }

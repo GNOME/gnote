@@ -190,7 +190,7 @@ namespace gnote {
     important_action->set_state(Glib::Variant<bool>::create(m_note.is_pinned()));
     m_important_note_slot = important_action->signal_change_state()
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
-    notebooks::NotebookManager::obj().signal_note_pin_status_changed
+    IGnote::obj().notebook_manager().signal_note_pin_status_changed
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
   }

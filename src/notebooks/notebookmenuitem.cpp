@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2015 Aurimas Cernius
+ * Copyright (C) 2010,2013,2015,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 
 #include "notebooks/notebookmenuitem.hpp"
 #include "notebooks/notebookmanager.hpp"
+#include "ignote.hpp"
 
 
 
@@ -45,7 +46,7 @@ namespace gnote {
         return;
       }
 
-      NotebookManager::obj().move_note_to_notebook(m_note, m_notebook);
+      IGnote::obj().notebook_manager().move_note_to_notebook(m_note, m_notebook);
     }
 
     // the menu item is comparable.

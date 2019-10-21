@@ -434,7 +434,7 @@ NoteBase::Ptr NoteManagerBase::find_template_note() const
   auto notes = template_tag->get_notes();
   for(NoteBase *iter : notes) {
     NoteBase::Ptr note = iter->shared_from_this();
-    if(!notebooks::NotebookManager::obj().get_notebook_from_note(note)) {
+    if(!IGnote::obj().notebook_manager().get_notebook_from_note(note)) {
       template_note = note;
       break;
     }

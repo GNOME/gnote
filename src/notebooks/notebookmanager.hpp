@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015,2017 Aurimas Cernius
+ * Copyright (C) 2012-2015,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -33,14 +33,12 @@
 #include "notebooks/notebook.hpp"
 #include "note.hpp"
 #include "tag.hpp"
-#include "base/singleton.hpp"
 
 namespace gnote {
   namespace notebooks {
 
 
 class NotebookManager
-  : public base::Singleton<NotebookManager>
 {
 public:
   typedef sigc::signal<void, const Note &, const Notebook::Ptr &> NotebookEventHandler;

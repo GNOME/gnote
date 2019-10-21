@@ -129,6 +129,10 @@ public:
     {
       return m_icon_manager;
     }
+  virtual notebooks::NotebookManager & notebook_manager() override
+    {
+      return *m_notebook_manager;
+    }
   virtual Preferences & preferences()
     {
       return m_preferences;
@@ -174,6 +178,7 @@ private:
 
   NoteManager *m_manager;
   IconManager m_icon_manager;
+  notebooks::NotebookManager *m_notebook_manager;
   Preferences m_preferences;
   ActionManager m_action_manager;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;

@@ -760,7 +760,7 @@ namespace gnote {
       m_note_window_embedded = true;
     }
 
-    notebooks::NotebookManager::obj().active_notes_notebook()->add_note(std::static_pointer_cast<Note>(shared_from_this()));
+    IGnote::obj().notebook_manager().active_notes_notebook()->add_note(std::static_pointer_cast<Note>(shared_from_this()));
   }
 
   void Note::on_note_window_foregrounded()
@@ -810,7 +810,7 @@ namespace gnote {
       }
     }
     settings->set_string(Preferences::MENU_PINNED_NOTES, new_pinned);
-    notebooks::NotebookManager::obj().signal_note_pin_status_changed(*this, pinned);
+    IGnote::obj().notebook_manager().signal_note_pin_status_changed(*this, pinned);
   }
 
   void Note::enabled(bool is_enabled)

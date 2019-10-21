@@ -23,6 +23,7 @@
 #include <glibmm/i18n.h>
 
 #include "sharp/string.hpp"
+#include "ignote.hpp"
 #include "notemanager.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -207,7 +208,7 @@ namespace notebooks {
 
   bool Notebook::add_note(const Note::Ptr & note)
   {
-    NotebookManager::obj().move_note_to_notebook(note, shared_from_this());
+    IGnote::obj().notebook_manager().move_note_to_notebook(note, shared_from_this());
     return true;
   }
 

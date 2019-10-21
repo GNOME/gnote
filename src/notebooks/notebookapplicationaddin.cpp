@@ -100,7 +100,8 @@ namespace gnote {
 
     void NotebookApplicationAddin::on_tag_added(const NoteBase & note, const Tag::Ptr& tag)
     {
-      if (NotebookManager::obj().is_adding_notebook()) {
+      NotebookManager & manager = IGnote::obj().notebook_manager();
+      if (manager.is_adding_notebook()) {
         return;
       }
 
@@ -110,13 +111,11 @@ namespace gnote {
         return;
       }
 
-      Glib::ustring notebookName =
-        sharp::string_substring(tag->name(), megaPrefix.size());
+      Glib::ustring notebookName = sharp::string_substring(tag->name(), megaPrefix.size());
 
-      Notebook::Ptr notebook =
-        NotebookManager::obj().get_or_create_notebook (notebookName);
+      Notebook::Ptr notebook = manager.get_or_create_notebook(notebookName);
 
-      NotebookManager::obj().signal_note_added_to_notebook() (static_cast<const Note&>(note), notebook);
+      manager.signal_note_added_to_notebook() (static_cast<const Note&>(note), notebook);
     }
 
 
@@ -134,13 +133,13 @@ namespace gnote {
       Glib::ustring normalizedNotebookName =
         sharp::string_substring(normalizedTagName, megaPrefix.size());
 
-      Notebook::Ptr notebook =
-        NotebookManager::obj().get_notebook (normalizedNotebookName);
+      NotebookManager & manager = IGnote::obj().notebook_manager();
+      Notebook::Ptr notebook = manager.get_notebook(normalizedNotebookName);
       if (!notebook) {
         return;
       }
 
-      NotebookManager::obj().signal_note_removed_from_notebook() (*std::static_pointer_cast<Note>(note), notebook);
+      manager.signal_note_removed_from_notebook() (*std::static_pointer_cast<Note>(note), notebook);
     }
 
     void NotebookApplicationAddin::on_note_added(const NoteBase::Ptr & note)

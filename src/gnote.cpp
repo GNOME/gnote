@@ -71,6 +71,9 @@ namespace gnote {
     if (m_prefsdlg) {
       delete m_prefsdlg;
     }
+    if(m_notebook_manager) {
+      delete m_notebook_manager;
+    }
     delete m_manager;
   }
 
@@ -143,7 +146,7 @@ namespace gnote {
     m_preferences.init();;
     m_manager = new NoteManager(m_preferences);
     m_manager->init(note_path);
-    new notebooks::NotebookManager(default_note_manager());
+    m_notebook_manager = new notebooks::NotebookManager(default_note_manager());
     m_action_manager.init();
     sync::SyncManager::init(default_note_manager());
 
