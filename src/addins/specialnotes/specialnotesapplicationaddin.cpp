@@ -90,14 +90,14 @@ void SpecialNotesApplicationAddin::initialize()
     m_initialized = true;
 
     m_notebook = Notebook::Ptr(new SpecialNotesNotebook(note_manager()));
-    gnote::notebooks::NotebookManager::obj().add_notebook(m_notebook);
+    gnote::IGnote::obj().notebook_manager().add_notebook(m_notebook);
   }
 }
 
 void SpecialNotesApplicationAddin::shutdown()
 {
   if(m_notebook != NULL) {
-    gnote::notebooks::NotebookManager::obj().delete_notebook(m_notebook);
+    gnote::IGnote::obj().notebook_manager().delete_notebook(m_notebook);
     m_notebook.reset();
     m_initialized = false;
   }
