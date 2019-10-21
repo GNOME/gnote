@@ -147,7 +147,7 @@ namespace gnote {
     Glib::ustring note_path = get_note_path(m_cmd_line.note_path());
 
     //create singleton objects
-    m_preferences.init();;
+    m_preferences.init();
     m_manager = new NoteManager(m_preferences);
     m_manager->init(note_path);
     m_notebook_manager = new notebooks::NotebookManager(default_note_manager());
