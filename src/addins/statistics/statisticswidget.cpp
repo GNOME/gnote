@@ -22,6 +22,7 @@
 #include <gtkmm/treestore.h>
 
 #include "debug.hpp"
+#include "ignote.hpp"
 #include "itagmanager.hpp"
 #include "statisticswidget.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -74,9 +75,9 @@ private:
       build_stats();
       nm.signal_note_added.connect(sigc::mem_fun(*this, &StatisticsModel::on_note_list_changed));
       nm.signal_note_deleted.connect(sigc::mem_fun(*this, &StatisticsModel::on_note_list_changed));
-      gnote::notebooks::NotebookManager::obj().signal_note_added_to_notebook()
+      gnote::IGnote::obj().notebook_manager().signal_note_added_to_notebook()
         .connect(sigc::mem_fun(*this, &StatisticsModel::on_notebook_note_list_changed));
-      gnote::notebooks::NotebookManager::obj().signal_note_removed_from_notebook()
+      gnote::IGnote::obj().notebook_manager().signal_note_removed_from_notebook()
         .connect(sigc::mem_fun(*this, &StatisticsModel::on_notebook_note_list_changed));
     }
 
@@ -90,7 +91,7 @@ private:
       iter->set_value(0, stat);
       iter->set_value(1, TO_STRING(notes.size()));
 
-      Glib::RefPtr<Gtk::TreeModel> notebooks = gnote::notebooks::NotebookManager::obj().get_notebooks();
+      Glib::RefPtr<Gtk::TreeModel> notebooks = gnote::IGnote::obj().notebook_manager().get_notebooks();
       iter = append();
       stat = _("Total Notebooks:");
       iter->set_value(0, stat);
