@@ -41,42 +41,45 @@ namespace gnote {
       : m_adding_notebook(false)
       , m_active_notes(new ActiveNotesNotebook(manager))
       , m_note_manager(manager)
-   { 
-     m_notebooks = Gtk::ListStore::create(m_column_types);
+    { 
+    }
 
-     m_sortedNotebooks = Gtk::TreeModelSort::create (m_notebooks);
-     m_sortedNotebooks->set_sort_func (
-       0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
-     m_sortedNotebooks->set_sort_column (0, Gtk::SORT_ASCENDING);
+    void NotebookManager::init()
+    {
+      m_notebooks = Gtk::ListStore::create(m_column_types);
 
-     m_notebooks_to_display = Gtk::TreeModelFilter::create(m_sortedNotebooks);
-     m_notebooks_to_display->set_visible_func(
-       sigc::mem_fun(*this, &NotebookManager::filter_notebooks_to_display));
-      
-     m_filteredNotebooks = Gtk::TreeModelFilter::create (m_sortedNotebooks);
-     m_filteredNotebooks->set_visible_func(
-       sigc::ptr_fun(&NotebookManager::filter_notebooks));
-      
-     Notebook::Ptr allNotesNotebook(new AllNotesNotebook(manager));
-     Gtk::TreeIter iter = m_notebooks->append ();
-     iter->set_value(0, Notebook::Ptr(allNotesNotebook));
-      
-     Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook(manager));
-     iter = m_notebooks->append ();
-     iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
+      m_sortedNotebooks = Gtk::TreeModelSort::create (m_notebooks);
+      m_sortedNotebooks->set_sort_func (
+        0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
+      m_sortedNotebooks->set_sort_column (0, Gtk::SORT_ASCENDING);
 
-     Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook(manager));
-     iter = m_notebooks->append();
-     iter->set_value(0, pinned_notes_notebook);
+      m_notebooks_to_display = Gtk::TreeModelFilter::create(m_sortedNotebooks);
+      m_notebooks_to_display->set_visible_func(
+        sigc::mem_fun(*this, &NotebookManager::filter_notebooks_to_display));
 
-     iter = m_notebooks->append();
-     iter->set_value(0, m_active_notes);
-     std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
-       .connect(sigc::mem_fun(*this, &NotebookManager::on_active_notes_size_changed));
+      m_filteredNotebooks = Gtk::TreeModelFilter::create (m_sortedNotebooks);
+      m_filteredNotebooks->set_visible_func(
+        sigc::ptr_fun(&NotebookManager::filter_notebooks));
 
-      
-     load_notebooks ();
-   }
+      Notebook::Ptr allNotesNotebook(new AllNotesNotebook(m_note_manager));
+      Gtk::TreeIter iter = m_notebooks->append ();
+      iter->set_value(0, Notebook::Ptr(allNotesNotebook));
+
+      Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook(m_note_manager));
+      iter = m_notebooks->append ();
+      iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
+
+      Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook(m_note_manager));
+      iter = m_notebooks->append();
+      iter->set_value(0, pinned_notes_notebook);
+
+      iter = m_notebooks->append();
+      iter->set_value(0, m_active_notes);
+      std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
+        .connect(sigc::mem_fun(*this, &NotebookManager::on_active_notes_size_changed));
+
+      load_notebooks ();
+    }
 
 
     Notebook::Ptr NotebookManager::get_notebook(const Glib::ustring & notebookName) const

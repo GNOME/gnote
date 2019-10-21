@@ -151,6 +151,7 @@ namespace gnote {
     m_manager = new NoteManager(m_preferences);
     m_manager->init(note_path);
     m_notebook_manager = new notebooks::NotebookManager(default_note_manager());
+    m_notebook_manager->init();
     m_action_manager.init();
     m_sync_manager = new sync::SyncManager(default_note_manager());
     m_sync_manager->init();

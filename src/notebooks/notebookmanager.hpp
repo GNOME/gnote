@@ -44,6 +44,7 @@ public:
   typedef sigc::signal<void, const Note &, const Notebook::Ptr &> NotebookEventHandler;
 
   NotebookManager(NoteManager &);
+  void init();
 
   NoteManager & note_manager() const
     {
