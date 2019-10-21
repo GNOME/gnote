@@ -31,6 +31,9 @@ class Preferences;
 namespace notebooks {
   class NotebookManager;
 }
+namespace sync {
+  class ISyncManager;
+}
 
 
 class IGnote
@@ -47,6 +50,7 @@ public:
   virtual IActionManager & action_manager() = 0;
   virtual IconManager & icon_manager() = 0;
   virtual notebooks::NotebookManager & notebook_manager() = 0;
+  virtual sync::ISyncManager & sync_manager() = 0;
   virtual Preferences & preferences() = 0;
 
   virtual MainWindow & get_main_window() = 0;

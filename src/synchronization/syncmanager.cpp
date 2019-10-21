@@ -49,23 +49,16 @@ namespace sync {
   }
 
 
-  void SyncManager::init(NoteManagerBase & m)
+  void SyncManager::init()
   {
-    SyncManager *manager = new SyncManager(m);
-    manager->_init(m);
-  }
-
-
-  void SyncManager::_init(NoteManagerBase & manager)
-  {
-    m_client = GnoteSyncClient::create(manager);
+    m_client = GnoteSyncClient::create(m_note_manager);
     // Add a "Synchronize Notes" to Gnote's Application Menu
     IActionManager & am(IGnote::obj().action_manager());
     am.add_app_action("sync-notes");
     am.add_app_menu_item(APP_SECTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
 
     // Initialize all the SyncServiceAddins
-    initialize_sync_service_addins(manager);
+    initialize_sync_service_addins(m_note_manager);
 
     connect_system_signals();
 
@@ -133,11 +126,12 @@ namespace sync {
   void SyncManager::synchronization_thread()
   {
     struct finally {
+      SyncManager & manager;
       SyncServiceAddin *addin;
-      finally() : addin(NULL){}
+      finally(SyncManager & m) : manager(m), addin(NULL){}
       ~finally()
       {
-        SyncManager::_obj().m_sync_thread = NULL;
+        manager.m_sync_thread = NULL;
         try {
           if(addin) {
             addin->post_sync_cleanup();
@@ -147,7 +141,7 @@ namespace sync {
           ERR_OUT(_("Error cleaning up addin after synchronization: %s"), e.what());
         }
       }
-    } f;
+    } f(*this);
     SyncServer::Ptr server;
     try {
       f.addin = get_configured_sync_service();
@@ -694,7 +688,7 @@ namespace sync {
       // Delete notes locally that have been deleted on the server
       for(const NoteBase::Ptr & iter : localNotes) {
         Note::Ptr note = std::static_pointer_cast<Note>(iter);
-	if(SyncManager::_obj().m_client->get_revision(note) != -1
+	if(m_client->get_revision(note) != -1
 	   && std::find(serverNotes.begin(), serverNotes.end(), note->id()) == serverNotes.end()) {
 	  if(m_sync_ui != 0) {
 	    m_sync_ui->note_synchronized(note->get_title(), DELETE_FROM_CLIENT);

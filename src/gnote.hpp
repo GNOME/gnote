@@ -35,6 +35,7 @@
 #include "preferences.hpp"
 #include "remotecontrolproxy.hpp"
 #include "synchronization/syncdialog.hpp"
+#include "synchronization/syncmanager.hpp"
 
 namespace gnote {
 
@@ -133,6 +134,10 @@ public:
     {
       return *m_notebook_manager;
     }
+  virtual sync::SyncManager & sync_manager() override
+    {
+      return *m_sync_manager;
+    }
   virtual Preferences & preferences()
     {
       return m_preferences;
@@ -181,6 +186,7 @@ private:
   notebooks::NotebookManager *m_notebook_manager;
   Preferences m_preferences;
   ActionManager m_action_manager;
+  sync::SyncManager *m_sync_manager;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
   bool m_is_background;
   bool m_is_shell_search;

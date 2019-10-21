@@ -40,7 +40,7 @@ namespace sync {
   {
   public:
     SyncManager(NoteManagerBase &);
-    static void init(NoteManagerBase &);
+    void init();
     virtual void reset_client() override;
     virtual void perform_synchronization(const SyncUI::Ptr & sync_ui) override;
     void synchronization_thread();
@@ -68,11 +68,6 @@ namespace sync {
     SyncClient::Ptr m_client;
     SyncUI::Ptr m_sync_ui;
   private:
-    static SyncManager & _obj()
-      {
-        return static_cast<SyncManager&>(obj());
-      }
-    void _init(NoteManagerBase &);
     void handle_note_saved_or_deleted(const NoteBase::Ptr & note);
     void handle_note_buffer_changed(const NoteBase::Ptr & note);
     void preferences_setting_changed(const Glib::ustring & key);

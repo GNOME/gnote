@@ -62,7 +62,6 @@ public:
 };
 
 class ISyncManager
-  : public base::Singleton<ISyncManager>
 {
 public:
   virtual ~ISyncManager();

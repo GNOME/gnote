@@ -52,7 +52,6 @@
 #include "sharp/streamreader.hpp"
 #include "sharp/files.hpp"
 #include "notebooks/notebookmanager.hpp"
-#include "synchronization/syncmanager.hpp"
 
 
 namespace gnote {
@@ -60,6 +59,8 @@ namespace gnote {
   Gnote::Gnote()
     : Gtk::Application("org.gnome.Gnote", Gio::APPLICATION_HANDLES_COMMAND_LINE)
     , m_manager(NULL)
+    , m_notebook_manager(NULL)
+    , m_sync_manager(NULL)
     , m_is_background(false)
     , m_is_shell_search(false)
     , m_prefsdlg(NULL)
@@ -73,6 +74,9 @@ namespace gnote {
     }
     if(m_notebook_manager) {
       delete m_notebook_manager;
+    }
+    if(m_sync_manager) {
+      delete m_sync_manager;
     }
     delete m_manager;
   }
@@ -148,7 +152,8 @@ namespace gnote {
     m_manager->init(note_path);
     m_notebook_manager = new notebooks::NotebookManager(default_note_manager());
     m_action_manager.init();
-    sync::SyncManager::init(default_note_manager());
+    m_sync_manager = new sync::SyncManager(default_note_manager());
+    m_sync_manager->init();
 
     m_manager->get_addin_manager().initialize_application_addins();
   }

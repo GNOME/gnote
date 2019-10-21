@@ -367,7 +367,7 @@ void SyncDialog::on_realize()
 {
   Gtk::Dialog::on_realize();
 
-  SyncState state = ISyncManager::obj().state();
+  SyncState state = IGnote::obj().sync_manager().state();
   if(state == IDLE) {
     // Kick off a timer to keep the progress bar going
     //m_progress_barTimeoutId = GLib.Timeout.Add (500, OnPulseProgressBar);
@@ -376,7 +376,7 @@ void SyncDialog::on_realize()
     timeout->attach();
 
     // Kick off a new synchronization
-    ISyncManager::obj().perform_synchronization(this->shared_from_this());
+    IGnote::obj().sync_manager().perform_synchronization(this->shared_from_this());
   }
   else {
     // Adjust the GUI accordingly
@@ -387,7 +387,7 @@ void SyncDialog::on_realize()
 
 bool SyncDialog::on_pulse_progress_bar()
 {
-  if(ISyncManager::obj().state() == IDLE) {
+  if(IGnote::obj().sync_manager().state() == IDLE) {
     return false;
   }
 
@@ -632,7 +632,7 @@ void SyncDialog::note_conflict_detected_(
     SyncTitleConflictDialog conflictDlg(localConflictNote, noteUpdateTitles);
     Gtk::ResponseType reponse = Gtk::RESPONSE_OK;
 
-    bool noteSyncBitsMatch = ISyncManager::obj().synchronized_note_xml_matches(
+    bool noteSyncBitsMatch = IGnote::obj().sync_manager().synchronized_note_xml_matches(
       localConflictNote->get_complete_note_xml(), remoteNote.m_xml_content);
 
     // If the synchronized note content is in conflict
@@ -689,7 +689,7 @@ void SyncDialog::note_conflict_detected_(
     conflictDlg.hide();
 
     // Let the SyncManager continue
-    ISyncManager::obj().resolve_conflict(/*localConflictNote, */resolution);
+    IGnote::obj().sync_manager().resolve_conflict(/*localConflictNote, */resolution);
   }
   catch(std::exception & e) {
     *mainThreadException = new std::exception(e);
