@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2017 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -70,9 +70,6 @@ public:
   IfaceFactoryBase * query_interface(const char *) const;
   /** Check if the module provide and interface */
   bool has_interface(const char *) const;
-
-  void load();
-
 protected:
   DynamicModule();
 
