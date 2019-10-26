@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -80,7 +80,7 @@ namespace bugzilla {
   {
     if(!get_note()->get_tag_table()->is_dynamic_tag_registered(TAG_NAME)) {
       get_note()->get_tag_table()
-        ->register_dynamic_tag(TAG_NAME, sigc::ptr_fun(&BugzillaLink::create));
+        ->register_dynamic_tag(TAG_NAME, [this]() { return BugzillaLink::create(ignote()); });
     }
   }
 

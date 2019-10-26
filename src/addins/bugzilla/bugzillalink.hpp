@@ -26,6 +26,11 @@
 #include "noteeditor.hpp"
 #include "notetag.hpp"
 
+namespace gnote {
+  class IGnote;
+}
+
+
 namespace bugzilla {
 
 
@@ -34,11 +39,11 @@ class BugzillaLink
 {
 public:
   typedef Glib::RefPtr<BugzillaLink> Ptr;
-  static gnote::DynamicNoteTag::Ptr create()
+  static gnote::DynamicNoteTag::Ptr create(gnote::IGnote & ignote)
     {
-      return gnote::DynamicNoteTag::Ptr(new BugzillaLink);
+      return gnote::DynamicNoteTag::Ptr(new BugzillaLink(ignote));
     }
-  BugzillaLink();
+  BugzillaLink(gnote::IGnote & ignote);
   Glib::ustring get_bug_url() const;
   void set_bug_url(const Glib::ustring & );
 protected:
@@ -48,6 +53,8 @@ protected:
   virtual void on_attribute_read(const Glib::ustring &) override;
 private:
   void make_image();
+
+  gnote::IGnote & m_gnote;
 };
 
 }

@@ -31,7 +31,8 @@ namespace bugzilla {
 
 #define URI_ATTRIBUTE_NAME "uri"
 
-  BugzillaLink::BugzillaLink()
+  BugzillaLink::BugzillaLink(gnote::IGnote & ignote)
+    : m_gnote(ignote)
   {
   }
 
@@ -80,7 +81,7 @@ namespace bugzilla {
       image = Gdk::Pixbuf::create_from_file(imagePath);
     }
     catch(...) {
-      image = gnote::IGnote::obj().icon_manager().get_icon(gnote::IconManager::BUG, 16);
+      image = m_gnote.icon_manager().get_icon(gnote::IconManager::BUG, 16);
     }
     set_image(image);
   }
@@ -94,7 +95,7 @@ namespace bugzilla {
       DBG_OUT("Opening url '%s'...", get_bug_url().c_str());
 				
       try {
-        gnote::utils::open_url(gnote::IGnote::obj().get_main_window(), get_bug_url());
+        gnote::utils::open_url(m_gnote.get_main_window(), get_bug_url());
       } 
       catch (const Glib::Error & e) {
         gnote::utils::show_opening_location_error(NULL, 
