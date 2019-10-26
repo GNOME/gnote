@@ -158,7 +158,7 @@ namespace {
       const Note::Ptr & note = iter->first;
       NoteAddin *const addin = dynamic_cast<NoteAddin *>((*f)());
       if(addin) {
-       addin->initialize(note);
+       addin->initialize(IGnote::obj(), note);
        id_addin_map.insert(std::make_pair(id, addin));
       }
     }
@@ -324,7 +324,6 @@ namespace {
     f = dmod->query_interface(ApplicationAddin::IFACE_NAME);
     if(f) {
       ApplicationAddin * addin = dynamic_cast<ApplicationAddin*>((*f)());
-      addin->note_manager(m_note_manager);
       m_app_addins.insert(std::make_pair(mod_id, addin));
     }
     f = dmod->query_interface(sync::SyncServiceAddin::IFACE_NAME);
@@ -362,7 +361,7 @@ namespace {
       sharp::IInterface* iface = (*addin_info.second)();
       NoteAddin * addin = dynamic_cast<NoteAddin *>(iface);
       if(addin) {
-        addin->initialize(note);
+        addin->initialize(IGnote::obj(), note);
         loaded.insert(std::make_pair(addin_info.first, addin));
       }
       else {
@@ -436,11 +435,10 @@ namespace {
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
       ApplicationAddin * addin = iter->second;
-      addin->note_manager(m_note_manager);
       const sharp::DynamicModule * dmod
         = m_module_manager.get_module(iter->first);
       if (!dmod || dmod->is_enabled()) {
-        addin->initialize();
+        addin->initialize(IGnote::obj(), m_note_manager);
       }
     }
   }

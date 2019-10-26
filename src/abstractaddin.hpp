@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,6 +30,9 @@
 
 namespace gnote {
 
+class IGnote;
+
+
 class AbstractAddin
   : public sharp::IInterface
   , public sigc::trackable
@@ -38,13 +41,23 @@ public:
   AbstractAddin();
   virtual ~AbstractAddin();
 
+  void initialize(IGnote & ignote)
+    {
+      m_gnote = &ignote;
+    }
   void dispose();
   bool is_disposing() const
     { return m_disposing; }
+
+  IGnote & ignote()
+    {
+      return *m_gnote;
+    }
 protected:
   virtual void dispose(bool disposing);
 
 private:
+  IGnote *m_gnote;
   bool m_disposing;
 };
 

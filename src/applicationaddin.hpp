@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -36,6 +36,17 @@ class ApplicationAddin
 public:
   static const char * IFACE_NAME;
 
+  ApplicationAddin()
+    : m_note_manager(NULL)
+  {}
+
+  void initialize(IGnote & ignote, NoteManager & note_manager)
+    {
+      AbstractAddin::initialize(ignote);
+      m_note_manager = &note_manager;
+      initialize();
+    }
+
   /// <summary>
   /// Called when Gnote has started up and is nearly 100% initialized.
   /// </summary>
@@ -54,10 +65,6 @@ public:
   NoteManager & note_manager() const
     {
       return *m_note_manager;
-    }
-  void note_manager(NoteManager & manager)
-    {
-      m_note_manager = &manager;
     }
 private:
   NoteManager *m_note_manager;

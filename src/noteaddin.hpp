@@ -51,7 +51,7 @@ public:
   static const char * IFACE_NAME;
   /// factory method
 //  static NoteAddin *create() { return NULL; }
-  void initialize(const Note::Ptr & note);
+  void initialize(IGnote & ignote, const Note::Ptr & note);
 
   virtual void dispose(bool) override;
 

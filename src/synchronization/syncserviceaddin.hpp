@@ -39,6 +39,16 @@ namespace sync {
     typedef sigc::slot<void> EventHandler;
     static const char * IFACE_NAME;
 
+    SyncServiceAddin()
+      : m_sync_manager(NULL)
+    {}
+
+    void initialize(IGnote & ignote, ISyncManager & sync_manager)
+      {
+        AbstractAddin::initialize(ignote);
+        m_sync_manager = &sync_manager;
+      }
+
     virtual SyncServer::Ptr create_sync_server() = 0;
     virtual void post_sync_cleanup() = 0;
     virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) = 0;
@@ -55,6 +65,8 @@ namespace sync {
     virtual void initialize () = 0;
     virtual void shutdown () = 0;
     virtual bool initialized () = 0;
+  private:
+    ISyncManager *m_sync_manager;
   };
 
 }
