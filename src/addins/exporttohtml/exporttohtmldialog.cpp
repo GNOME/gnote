@@ -38,9 +38,10 @@ const char * EXPORTHTML_EXPORT_LINKED = "export-linked";
 const char * EXPORTHTML_EXPORT_LINKED_ALL = "export-linked-all";
 
 
-ExportToHtmlDialog::ExportToHtmlDialog(const Glib::ustring & default_file)
+ExportToHtmlDialog::ExportToHtmlDialog(gnote::IGnote & ignote, const Glib::ustring & default_file)
   : Gtk::FileChooserDialog(_("Destination for HTML Export"),
                            Gtk::FILE_CHOOSER_ACTION_SAVE)
+  , m_gnote(ignote)
   , m_export_linked(_("Export linked notes"))
   , m_export_linked_all(_("Include all other linked notes"))
 {
@@ -95,7 +96,7 @@ void ExportToHtmlDialog::set_export_linked_all(bool value)
 void ExportToHtmlDialog::save_preferences()
 {
   Glib::ustring dir = sharp::file_dirname(get_filename());
-  Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_EXPORTHTML);
+  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(SCHEMA_EXPORTHTML);
   settings->set_string(EXPORTHTML_LAST_DIRECTORY, dir);
   settings->set_boolean(EXPORTHTML_EXPORT_LINKED, get_export_linked());
   settings->set_boolean(EXPORTHTML_EXPORT_LINKED_ALL, get_export_linked_all());
@@ -104,7 +105,7 @@ void ExportToHtmlDialog::save_preferences()
 
 void ExportToHtmlDialog::load_preferences(const Glib::ustring & default_file)
 {
-  Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_EXPORTHTML);
+  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(SCHEMA_EXPORTHTML);
   Glib::ustring last_dir = settings->get_string(EXPORTHTML_LAST_DIRECTORY);
   if (last_dir.empty()) {
     last_dir = Glib::get_home_dir();

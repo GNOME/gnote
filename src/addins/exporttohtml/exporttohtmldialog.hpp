@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,13 +26,18 @@
 #include <gtkmm/filechooserdialog.h>
 
 
+namespace gnote {
+  class IGnote;
+}
+
+
 namespace exporttohtml {
 
 class ExportToHtmlDialog
   : public Gtk::FileChooserDialog
 {
 public:
-  ExportToHtmlDialog(const Glib::ustring &);
+  ExportToHtmlDialog(gnote::IGnote & ignote, const Glib::ustring &);
   void save_preferences();
 
   bool get_export_linked() const;
@@ -43,6 +48,7 @@ public:
 private:
   void on_export_linked_toggled();
   void load_preferences(const Glib::ustring & );
+  gnote::IGnote & m_gnote;
   Gtk::CheckButton m_export_linked;
   Gtk::CheckButton m_export_linked_all;
 };

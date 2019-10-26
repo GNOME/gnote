@@ -87,7 +87,7 @@ std::vector<gnote::PopoverWidget> ExportToHtmlNoteAddin::get_actions_popover_wid
 
 void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
 {
-  ExportToHtmlDialog dialog(get_note()->get_title() + ".html");
+  ExportToHtmlDialog dialog(ignote(), get_note()->get_title() + ".html");
   int response = dialog.run();
   Glib::ustring output_path = dialog.get_filename();
 
@@ -234,7 +234,7 @@ void ExportToHtmlNoteAddin::write_html_for_note (sharp::StreamWriter & writer,
   args.add_param ("export-linked-all", "", export_linked_all);
   args.add_param ("root-note", "", gnote::utils::XmlEncoder::encode(note->get_title()));
 
-  Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  Glib::RefPtr<Gio::Settings> settings = ignote().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
     Glib::ustring font_face = settings->get_string(Preferences::CUSTOM_FONT_FACE);
     Pango::FontDescription font_desc (font_face);
