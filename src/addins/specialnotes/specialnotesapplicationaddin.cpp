@@ -35,8 +35,9 @@ namespace {
     : public gnote::notebooks::SpecialNotebook
   {
   public:
-    SpecialNotesNotebook(gnote::NoteManager & nm)
+    SpecialNotesNotebook(gnote::IGnote & g, gnote::NoteManager & nm)
       : SpecialNotebook(nm, _("Special Notes"))
+      , m_gnote(g)
       {}
 
     virtual Glib::ustring get_normalized_name() const override
@@ -56,8 +57,10 @@ namespace {
 
     virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override
       {
-        return gnote::IGnote::obj().icon_manager().get_icon(gnote::IconManager::SPECIAL_NOTES, 22);
+        return m_gnote.icon_manager().get_icon(gnote::IconManager::SPECIAL_NOTES, 22);
       }
+  private:
+    gnote::IGnote & m_gnote;
   };
 }
 
@@ -89,15 +92,15 @@ void SpecialNotesApplicationAddin::initialize()
   if(!m_initialized) {
     m_initialized = true;
 
-    m_notebook = Notebook::Ptr(new SpecialNotesNotebook(note_manager()));
-    gnote::IGnote::obj().notebook_manager().add_notebook(m_notebook);
+    m_notebook = Notebook::Ptr(new SpecialNotesNotebook(ignote(), note_manager()));
+    ignote().notebook_manager().add_notebook(m_notebook);
   }
 }
 
 void SpecialNotesApplicationAddin::shutdown()
 {
   if(m_notebook != NULL) {
-    gnote::IGnote::obj().notebook_manager().delete_notebook(m_notebook);
+    ignote().notebook_manager().delete_notebook(m_notebook);
     m_notebook.reset();
     m_initialized = false;
   }
