@@ -30,10 +30,11 @@
 
 namespace noteoftheday {
 
-NoteOfTheDayPreferences::NoteOfTheDayPreferences(gnote::NoteManager & manager)
+NoteOfTheDayPreferences::NoteOfTheDayPreferences(gnote::IGnote & ignote, gnote::Preferences &, gnote::NoteManager & manager)
   : m_open_template_button(_("_Open Today: Template"), true)
   , m_label(_("Change the <span weight=\"bold\">Today: Template</span> "
               "note to customize the text that new Today notes have."))
+  , m_gnote(ignote)
   , m_note_manager(manager)
 {
   set_row_spacing(12);
@@ -76,7 +77,7 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
   }
 
   if(0 != template_note) {
-    gnote::IGnote::obj().open_note(std::static_pointer_cast<gnote::Note>(template_note));
+    m_gnote.open_note(std::static_pointer_cast<gnote::Note>(template_note));
   }
 }
 
