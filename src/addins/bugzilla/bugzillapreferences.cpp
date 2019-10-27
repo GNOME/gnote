@@ -54,7 +54,7 @@ namespace bugzilla {
     }
   }
 
-  BugzillaPreferences::BugzillaPreferences(gnote::NoteManager &)
+  BugzillaPreferences::BugzillaPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &)
   {
     _init_static();
     last_opened_dir = Glib::get_home_dir();

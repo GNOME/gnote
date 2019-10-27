@@ -36,6 +36,11 @@ namespace sharp {
 
 }
 
+namespace gnote {
+  class Preferences;
+}
+
+
 namespace bugzilla {
 
 
@@ -43,7 +48,7 @@ class BugzillaPreferences
   : public Gtk::Grid
 {
 public:
-  BugzillaPreferences(gnote::NoteManager &);
+  BugzillaPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &);
 
 protected:
   virtual void on_realize() override;
