@@ -244,7 +244,7 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
       unmount_async([this, sync_uri, on_saved, success, error] {
         if(success) {
           m_uri = sync_uri;
-          gnote::IGnote::obj().preferences().get_schema_settings(gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, m_uri);
+          ignote().preferences().get_schema_settings(gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, m_uri);
         }
         on_saved(success, error);
       });
@@ -322,14 +322,14 @@ bool GvfsSyncServiceAddin::test_sync_directory(const Glib::RefPtr<Gio::File> & p
 
 void GvfsSyncServiceAddin::reset_configuration()
 {
-  gnote::IGnote::obj().preferences().get_schema_settings(
+  ignote().preferences().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, "");
 }
 
 
 bool GvfsSyncServiceAddin::is_configured()
 {
-  return gnote::IGnote::obj().preferences().get_schema_settings(
+  return ignote().preferences().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC_GVFS)->get_string(gnote::Preferences::SYNC_GVFS_URI) != "";
 }
 
@@ -361,7 +361,7 @@ bool GvfsSyncServiceAddin::initialized()
 
 bool GvfsSyncServiceAddin::get_config_settings(Glib::ustring & sync_path)
 {
-  sync_path = gnote::IGnote::obj().preferences().get_schema_settings(
+  sync_path = ignote().preferences().get_schema_settings(
     gnote::Preferences::SCHEMA_SYNC_GVFS)->get_string(gnote::Preferences::SYNC_GVFS_URI);
 
   return sync_path != "";
