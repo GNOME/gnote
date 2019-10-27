@@ -35,9 +35,9 @@ class StatisticsModel
 {
 public:
   typedef Glib::RefPtr<StatisticsModel> Ptr;
-  static Ptr create(gnote::NoteManager & nm)
+  static Ptr create(gnote::IGnote & g, gnote::NoteManager & nm)
     {
-      return Ptr(new StatisticsModel(nm));
+      return Ptr(new StatisticsModel(g, nm));
     }
 
   void update()
@@ -67,17 +67,18 @@ private:
   };
   StatisticsRecord m_columns;
 
-  StatisticsModel(gnote::NoteManager & nm)
-    : m_note_manager(nm)
+  StatisticsModel(gnote::IGnote & g, gnote::NoteManager & nm)
+    : m_gnote(g)
+    , m_note_manager(nm)
     , m_active(false)
     {
       set_column_types(m_columns);
       build_stats();
       nm.signal_note_added.connect(sigc::mem_fun(*this, &StatisticsModel::on_note_list_changed));
       nm.signal_note_deleted.connect(sigc::mem_fun(*this, &StatisticsModel::on_note_list_changed));
-      gnote::IGnote::obj().notebook_manager().signal_note_added_to_notebook()
+      g.notebook_manager().signal_note_added_to_notebook()
         .connect(sigc::mem_fun(*this, &StatisticsModel::on_notebook_note_list_changed));
-      gnote::IGnote::obj().notebook_manager().signal_note_removed_from_notebook()
+      g.notebook_manager().signal_note_removed_from_notebook()
         .connect(sigc::mem_fun(*this, &StatisticsModel::on_notebook_note_list_changed));
     }
 
@@ -91,7 +92,7 @@ private:
       iter->set_value(0, stat);
       iter->set_value(1, TO_STRING(notes.size()));
 
-      Glib::RefPtr<Gtk::TreeModel> notebooks = gnote::IGnote::obj().notebook_manager().get_notebooks();
+      Glib::RefPtr<Gtk::TreeModel> notebooks = m_gnote.notebook_manager().get_notebooks();
       iter = append();
       stat = _("Total Notebooks:");
       iter->set_value(0, stat);
@@ -141,13 +142,14 @@ private:
       update();
     }
 
+  gnote::IGnote & m_gnote;
   gnote::NoteManager & m_note_manager;
   bool m_active;
 };
 
 
-StatisticsWidget::StatisticsWidget(gnote::NoteManager & nm)
-  : Gtk::TreeView(StatisticsModel::create(nm))
+StatisticsWidget::StatisticsWidget(gnote::IGnote & g, gnote::NoteManager & nm)
+  : Gtk::TreeView(StatisticsModel::create(g, nm))
 {
   set_hexpand(true);
   set_vexpand(true);

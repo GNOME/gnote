@@ -44,7 +44,7 @@ void StatisticsApplicationAddin::initialize()
 {
   if(!m_initialized) {
     m_initialized = true;
-    auto & manager(gnote::IGnote::obj().action_manager());
+    auto & manager(ignote().action_manager());
     manager.register_main_window_search_callback("statistics-show-cback",
       "statistics-show", sigc::mem_fun(*this, &StatisticsApplicationAddin::on_show_statistics));
     m_add_menu_item_cid = manager.signal_build_main_window_search_popover
@@ -55,7 +55,7 @@ void StatisticsApplicationAddin::initialize()
 
 void StatisticsApplicationAddin::shutdown()
 {
-  auto & manager(gnote::IGnote::obj().action_manager());
+  auto & manager(ignote().action_manager());
   manager.unregister_main_window_search_callback("statistics-show-cback");
   m_add_menu_item_cid.disconnect();
   manager.signal_main_window_popover_changed();
@@ -76,9 +76,9 @@ void StatisticsApplicationAddin::add_menu_item(std::vector<gnote::PopoverWidget>
 void StatisticsApplicationAddin::on_show_statistics(const Glib::VariantBase&)
 {
   if(!m_widget) {
-    m_widget = new StatisticsWidget(note_manager());
+    m_widget = new StatisticsWidget(ignote(), note_manager());
   }
-  gnote::MainWindow &main_window = gnote::IGnote::obj().get_main_window();
+  gnote::MainWindow &main_window = ignote().get_main_window();
   if(m_widget->host()) {
     m_widget->host()->unembed_widget(*m_widget);
   }

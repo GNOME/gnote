@@ -34,7 +34,7 @@ class StatisticsWidget
   , public gnote::EmbeddableWidget
 {
 public:
-  StatisticsWidget(gnote::NoteManager & nm);
+  StatisticsWidget(gnote::IGnote & g, gnote::NoteManager & nm);
   virtual Glib::ustring get_name() const override;
   virtual void foreground() override;
   virtual void background() override;
