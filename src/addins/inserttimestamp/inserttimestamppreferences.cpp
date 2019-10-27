@@ -24,7 +24,6 @@
 #include "sharp/datetime.hpp"
 #include "sharp/propertyeditor.hpp"
 
-#include "ignote.hpp"
 #include "preferences.hpp"
 #include "inserttimestamppreferences.hpp"
  
@@ -50,7 +49,8 @@ namespace inserttimestamp {
   }
 
 
-  InsertTimestampPreferences::InsertTimestampPreferences(gnote::NoteManager &)
+  InsertTimestampPreferences::InsertTimestampPreferences(gnote::IGnote &, gnote::Preferences & preferences, gnote::NoteManager &)
+    : m_preferences(preferences)
   {
     _init_static();
 
@@ -58,7 +58,7 @@ namespace inserttimestamp {
     int row = 0;
 
     // Get current values
-    Glib::RefPtr<Gio::Settings> settings = gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
+    Glib::RefPtr<Gio::Settings> settings = preferences.get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
     Glib::ustring dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
 
     sharp::DateTime now = sharp::DateTime::now();
@@ -181,8 +181,7 @@ namespace inserttimestamp {
     if (iter) {
       Glib::ustring format;
       iter->get_value(1, format);
-      gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(
-          INSERT_TIMESTAMP_FORMAT, format);
+      m_preferences.get_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(INSERT_TIMESTAMP_FORMAT, format);
     }
   }
 

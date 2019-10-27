@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -32,6 +32,12 @@
 
 #include "notemanager.hpp"
 
+namespace gnote {
+  class IGnote;
+  class Preferences;
+}
+
+
 namespace inserttimestamp {
 
 extern const char * SCHEMA_INSERT_TIMESTAMP;
@@ -41,7 +47,7 @@ class InsertTimestampPreferences
   : public Gtk::Grid
 {
 public:
-  InsertTimestampPreferences(gnote::NoteManager &);
+  InsertTimestampPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &);
 private:
   static void _init_static();
   class FormatColumns
@@ -67,6 +73,7 @@ private:
   Gtk::TreeView               *tv;
   Glib::RefPtr<Gtk::ListStore> store;
   Gtk::Entry                  *custom_entry;
+  gnote::Preferences         & m_preferences;
 };
 
 
