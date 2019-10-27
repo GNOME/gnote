@@ -32,6 +32,8 @@
 
 namespace gnote {
 
+class IGnote;
+
 
 /** the base class for the preference dialog factory */
 class AddinPreferenceFactoryBase
@@ -39,7 +41,7 @@ class AddinPreferenceFactoryBase
 {
 public:
   static const char * IFACE_NAME;
-  virtual Gtk::Widget * create_preference_widget(NoteManager & m) = 0;
+  virtual Gtk::Widget *create_preference_widget(IGnote & g, Preferences & p, NoteManager & m) = 0;
 };
 
 
@@ -53,9 +55,9 @@ public:
     {
       return new AddinPreferenceFactory<_AddinType>();
     }
-  virtual Gtk::Widget * create_preference_widget(NoteManager & m) override
+  virtual Gtk::Widget *create_preference_widget(IGnote & g, Preferences & p, NoteManager & m) override
     {
-      return Gtk::manage(new _AddinType(m));
+      return Gtk::manage(new _AddinType(g, p, m));
     }
 };
 

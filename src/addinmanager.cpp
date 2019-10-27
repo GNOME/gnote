@@ -563,7 +563,7 @@ namespace {
   {
     IdAddinPrefsMap::const_iterator iter = m_addin_prefs.find(id);
     if(iter != m_addin_prefs.end()) {
-      return iter->second->create_preference_widget(m_note_manager);
+      return iter->second->create_preference_widget(IGnote::obj(), IGnote::obj().preferences(), m_note_manager);
     }
     return NULL;
   }
