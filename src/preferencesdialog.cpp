@@ -186,14 +186,14 @@ namespace gnote {
         m_addin_manager.erase_note_addin_info(id);
     }
     else {
-      ApplicationAddin * const addin = m_addin_manager.get_application_addin(id);
+      ApplicationAddin *addin = m_addin_manager.get_application_addin(id);
       if(addin) {
-        enable_addin(addin, enable);
+        enable_app_addin(addin, enable);
       }
       else {
-        sync::SyncServiceAddin * const sync_addin = m_addin_manager.get_sync_service_addin(id);
+        sync::SyncServiceAddin *sync_addin = m_addin_manager.get_sync_service_addin(id);
         if(sync_addin) {
-          enable_addin(sync_addin, enable);
+          enable_sync_addin(sync_addin, enable);
         }
         else {
           ERR_OUT(_("Plugin %s is absent"), id.c_str());
@@ -206,11 +206,21 @@ namespace gnote {
     m_addin_manager.save_addins_prefs();
   }
 
-  template <typename T>
-  void PreferencesDialog::enable_addin(T *addin, bool enable)
+  void PreferencesDialog::enable_app_addin(ApplicationAddin *addin, bool enable)
   {
     if(enable) {
-      addin->initialize();
+      addin->initialize(IGnote::obj(), m_note_manager);
+    }
+    else {
+      addin->shutdown();
+    }
+  }
+
+
+  void PreferencesDialog::enable_sync_addin(sync::SyncServiceAddin *addin, bool enable)
+  {
+    if(enable) {
+      addin->initialize(IGnote::obj(), IGnote::obj().sync_manager());
     }
     else {
       addin->shutdown();

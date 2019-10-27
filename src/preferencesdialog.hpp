@@ -38,7 +38,7 @@
 
 namespace gnote {
 
-class SyncServiceAddin;
+namespace sync { class SyncServiceAddin; }
 class AddinManager;
 
 class PreferencesDialog
@@ -60,8 +60,8 @@ private:
   Gtk::CheckButton *make_check_button(const Glib::ustring & label_text);
 
   void enable_addin(bool enable);
-  template <typename T>
-  void enable_addin(T *addin, bool enable);
+  void enable_app_addin(ApplicationAddin *addin, bool enable);
+  void enable_sync_addin(sync::SyncServiceAddin *addin, bool enable);
 
   void open_template_button_clicked();
   void on_font_button_clicked();
