@@ -20,7 +20,6 @@
 
 #include <glibmm/i18n.h>
 
-#include "ignote.hpp"
 #include "notedirectorywatcherpreferences.hpp"
 #include "preferences.hpp"
 
@@ -30,8 +29,9 @@ const char *SCHEMA_NOTE_DIRECTORY_WATCHER = "org.gnome.gnote.note-directory-watc
 const char *CHECK_INTERVAL = "check-interval";
 
 
-NoteDirectoryWatcherPreferences::NoteDirectoryWatcherPreferences(gnote::NoteManager &)
+NoteDirectoryWatcherPreferences::NoteDirectoryWatcherPreferences(gnote::IGnote &, gnote::Preferences & preferences, gnote::NoteManager &)
   : m_check_interval(1)
+  , m_preferences(preferences)
 {
   Gtk::Label *label = manage(new Gtk::Label(_("_Directory check interval:"), true));
   attach(*label, 0, 0, 1, 1);
@@ -39,14 +39,13 @@ NoteDirectoryWatcherPreferences::NoteDirectoryWatcherPreferences(gnote::NoteMana
   m_check_interval.set_increments(1, 5);
   m_check_interval.signal_value_changed()
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherPreferences::on_interval_changed));
-  m_check_interval.set_value(
-    gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->get_int(CHECK_INTERVAL));
+  m_check_interval.set_value(preferences.get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->get_int(CHECK_INTERVAL));
   attach(m_check_interval, 1, 0, 1, 1);
 }
 
 void NoteDirectoryWatcherPreferences::on_interval_changed()
 {
-  gnote::IGnote::obj().preferences().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->set_int(
+  m_preferences.get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->set_int(
     CHECK_INTERVAL, m_check_interval.get_value_as_int());
 }
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,11 @@
 #include "notemanager.hpp"
 
 
+namespace gnote {
+  class IGnote;
+  class Preferences;
+}
+
 namespace notedirectorywatcher {
 
 extern const char *SCHEMA_NOTE_DIRECTORY_WATCHER;
@@ -37,11 +42,12 @@ class NoteDirectoryWatcherPreferences
   : public Gtk::Grid
 {
 public:
-  NoteDirectoryWatcherPreferences(gnote::NoteManager &);
+  NoteDirectoryWatcherPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &);
 private:
   void on_interval_changed();
 
   Gtk::SpinButton m_check_interval;
+  gnote::Preferences & m_preferences;
 };
 
 }
