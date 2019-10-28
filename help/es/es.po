@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote-help.master\n"
-"POT-Creation-Date: 2019-09-21 15:16+0000\n"
-"PO-Revision-Date: 2019-10-07 12:04+0200\n"
+"POT-Creation-Date: 2019-10-20 12:48+0000\n"
+"PO-Revision-Date: 2019-10-28 12:37+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -45,15 +45,15 @@ msgstr "Insertar enlaces de bugzilla"
 #: C/gnote-addin-noteoftheday.page:9 C/gnote-addin-print.page:9
 #: C/gnote-addins-preferences.page:9 C/gnote-addin-readonly.page:9
 #: C/gnote-addin-replacetitle.page:9 C/gnote-addin-specialnotes.page:9
-#: C/gnote-addin-sync-local.page:10 C/gnote-addin-sync-webdav.page:10
-#: C/gnote-addin-timestamp.page:10 C/gnote-addin-underline.page:9
-#: C/gnote-bulleted-lists.page:9 C/gnote-common-problems.page:8
-#: C/gnote-creating-notes.page:8 C/gnote-deleting-notes.page:8
-#: C/gnote-editing-notes.page:6 C/gnote-introduction.page:10
-#: C/gnote-links.page:8 C/gnote-notes-preferences.page:10
-#: C/gnote-searching-notes.page:8 C/gnote-synchronization.page:9
-#: C/gnote-template-notes.page:10 C/gnote-working-with-notebooks.page:10
-#: C/index.page:6
+#: C/gnote-addin-sync-gvfs.page:10 C/gnote-addin-sync-local.page:10
+#: C/gnote-addin-sync-webdav.page:10 C/gnote-addin-timestamp.page:10
+#: C/gnote-addin-underline.page:9 C/gnote-bulleted-lists.page:9
+#: C/gnote-common-problems.page:8 C/gnote-creating-notes.page:8
+#: C/gnote-deleting-notes.page:8 C/gnote-editing-notes.page:6
+#: C/gnote-introduction.page:10 C/gnote-links.page:8
+#: C/gnote-notes-preferences.page:10 C/gnote-searching-notes.page:8
+#: C/gnote-synchronization.page:9 C/gnote-template-notes.page:10
+#: C/gnote-working-with-notebooks.page:10 C/index.page:6
 msgid "GNU Free Documentation License (GFDL), Version 1.1"
 msgstr "Licencia libre de documentación de GNU (GFDL), Versión 1.1"
 
@@ -92,15 +92,16 @@ msgstr "2011"
 #: C/gnote-addin-noteoftheday.page:15 C/gnote-addin-print.page:15
 #: C/gnote-addins-preferences.page:15 C/gnote-addin-readonly.page:11
 #: C/gnote-addin-replacetitle.page:15 C/gnote-addin-specialnotes.page:11
-#: C/gnote-addin-sync-local.page:12 C/gnote-addin-sync-webdav.page:12
-#: C/gnote-addin-tableofcontents.page:58 C/gnote-addin-timestamp.page:16
-#: C/gnote-addin-underline.page:15 C/gnote-bulleted-lists.page:15
-#: C/gnote-common-problems.page:15 C/gnote-creating-notes.page:15
-#: C/gnote-deleting-notes.page:15 C/gnote-editing-notes.page:13
-#: C/gnote-introduction.page:16 C/gnote-links.page:15
-#: C/gnote-notes-preferences.page:16 C/gnote-searching-notes.page:15
-#: C/gnote-synchronization.page:11 C/gnote-template-notes.page:12
-#: C/gnote-working-with-notebooks.page:16 C/index.page:13
+#: C/gnote-addin-sync-gvfs.page:12 C/gnote-addin-sync-local.page:12
+#: C/gnote-addin-sync-webdav.page:12 C/gnote-addin-tableofcontents.page:58
+#: C/gnote-addin-timestamp.page:16 C/gnote-addin-underline.page:15
+#: C/gnote-bulleted-lists.page:15 C/gnote-common-problems.page:15
+#: C/gnote-creating-notes.page:15 C/gnote-deleting-notes.page:15
+#: C/gnote-editing-notes.page:13 C/gnote-introduction.page:16
+#: C/gnote-links.page:15 C/gnote-notes-preferences.page:16
+#: C/gnote-searching-notes.page:15 C/gnote-synchronization.page:11
+#: C/gnote-template-notes.page:12 C/gnote-working-with-notebooks.page:16
+#: C/index.page:13
 msgid "Aurimas Cernius"
 msgstr "Aurimas Cernius"
 
@@ -493,6 +494,111 @@ msgstr ""
 "lista de cuadernos de notas. Este cuaderno de notas contiene notas, que de "
 "otra manera están ocultas, como la plantilla de notas. Esta puede ser la "
 "mejor forma de recorrer todas sus plantillas."
+
+#. (itstool) path: info/desc
+#: C/gnote-addin-sync-gvfs.page:9
+#| msgid "Synchronize to a local folder"
+msgid "Synchronize to an online folder"
+msgstr "Sincronizar con una carpeta en línea"
+
+#. (itstool) path: credit/years
+#: C/gnote-addin-sync-gvfs.page:13
+#| msgid "2012,2019"
+msgid "2019"
+msgstr "2019"
+
+#. (itstool) path: page/title
+#: C/gnote-addin-sync-gvfs.page:17
+#| msgid "Local Folder Synchronization"
+msgid "Online Folder Synchronization"
+msgstr "Abrir la sincronización de carpetas"
+
+#. (itstool) path: page/p
+#: C/gnote-addin-sync-gvfs.page:18
+#| msgid ""
+#| "This type of synchronization lets you use a local folder as "
+#| "synchronization storage."
+msgid ""
+"This type of synchronization lets you synchronize to online folder that can "
+"be opened in <app>Files</app>."
+msgstr ""
+"Éste tipo de sincronización le permite sincronizar con una carpeta en línea "
+"que puede abrir en <app>Archivos</app>."
+
+#. (itstool) path: page/p
+#: C/gnote-addin-sync-gvfs.page:19
+msgid ""
+"To use this type of synchronization you have to first configure your account "
+"for accessing the folder in <app>Online Accounts</app>. Once account has "
+"been added, it should be visible in the side pane in <app>Files</app> "
+"application and you should be able to open it and browse your online folder."
+msgstr ""
+"Para usar este tipo de sincronización primero debe configurar su cuenta para "
+"acceder a la carpeta en <app>Cuentas en línea</app>. Una vez que haya "
+"añadido la cuenta ésta debe aparecer en el panel lateral en la aplicación "
+"<app>Archivos</app> y debería poder abrirla y examinar su carpeta en línea."
+
+#. (itstool) path: page/p
+#: C/gnote-addin-sync-gvfs.page:20
+#| msgid ""
+#| "To configure this type of synchronization, select <gui>Local Folder</gui> "
+#| "in the <gui>Service</gui> drop-down and then select the desired folder as "
+#| "the <gui>Folder Path</gui>."
+msgid ""
+"To configure this type of synchronization, select <gui>Online Folder</gui> "
+"in the <gui>Service</gui> drop-down and then enter the desired folder as the "
+"<gui>Folder URI</gui>. You can get the folder URI by opening that online "
+"folder in <app>Files</app> application and then pressing <keyseq><key>Ctrl</"
+"key><key>L</key></keyseq> to edit the path."
+msgstr ""
+"Para configurar este tipo de sincronización, seleccione <gui>Carpeta en "
+"línea</gui> en el desplegable <gui>Servicio</gui> e introduzca la carpeta "
+"que quiere como <gui>URI de la carpeta</gui>. Puede obtener este URI "
+"abriendo la carpeta en linea en la aplicación <app>Files</app> y pulsando "
+"<keyseq><key>Ctrl</key><key>L</key></keyseq> para editar la ruta."
+
+#. (itstool) path: figure/title
+#: C/gnote-addin-sync-gvfs.page:22
+#| msgid "Local Folder Synchronization configuration"
+msgid "Online Folder Synchronization configuration"
+msgstr "Configuración de sincronización de carpeta en línea"
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gnote-addin-sync-gvfs.page:23
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-sync-progress.png' "
+#| "md5='562763250ce45698f4c0cd1231b0e68f'"
+msgctxt "_"
+msgid ""
+"external ref='figures/gnote-syncprefs-gvfs.png' "
+"md5='ac2f3516ac45a657afa2c64a30efb5d2'"
+msgstr ""
+"external ref='figures/gnote-syncprefs-gvfs.png' "
+"md5='ac2f3516ac45a657afa2c64a30efb5d2'"
+
+#. (itstool) path: page/p
+#: C/gnote-addin-sync-gvfs.page:25
+#| msgid ""
+#| "After selecting the desired folder, click the <gui>Save</gui> button. Use "
+#| "the <gui>Clear</gui> button to turn synchronization off."
+msgid ""
+"After entering the desired folder, click the <gui>Save</gui> button. Use the "
+"<gui>Clear</gui> button to turn synchronization off."
+msgstr ""
+"Después de seleccionar la carpeta que quiere, pulse el botón <gui>Guardar</"
+"gui>. Use el botón <gui>Limpiar</gui> para desactivar la sincronización."
+
+#. (itstool) path: page/p
+#: C/gnote-addin-sync-gvfs.page:26
+msgid ""
+"If entered folder doesn't exist, <app>Gnote</app> will attempt to create it."
+msgstr ""
+"Si la carpeta que ha indicado no existe, <app>Gnote</app> intentará crearla."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-sync-local.page:9
@@ -1205,7 +1311,6 @@ msgstr "Crear notas"
 
 #. (itstool) path: credit/years
 #: C/gnote-creating-notes.page:16 C/gnote-working-with-notebooks.page:17
-#| msgid "2011,2013,2014"
 msgid "2011-2012,2019"
 msgstr "2011-2012,2019"
 
@@ -1223,9 +1328,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:29
-#| msgid ""
-#| "Right click on a notebook in the main window and select <gui>Open "
-#| "Template Note</gui>."
 msgid ""
 "Click menu button in the main window and then select <gui>New Note</gui>."
 msgstr ""
@@ -1365,10 +1467,6 @@ msgstr "Nota de <app>Gnote</app>"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-editing-notes.page:30
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-new-note.png' "
-#| "md5='0faf7950ab9f830c3de85713598277f1'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
@@ -1731,7 +1829,6 @@ msgstr "Configuración de Gnote"
 
 #. (itstool) path: credit/years
 #: C/gnote-notes-preferences.page:17
-#| msgid "2011,2013,2014"
 msgid "2011-2013,2019"
 msgstr "2011-2013,2019"
 
@@ -1747,9 +1844,6 @@ msgstr "Preferencias generales"
 
 #. (itstool) path: section/p
 #: C/gnote-notes-preferences.page:29
-#| msgid ""
-#| "To set preferences for <app>Gnote</app>, select <gui>Preferences</gui> "
-#| "from the application menu."
 msgid ""
 "To set preferences for <app>Gnote</app>, click the menu button in main "
 "window and select <gui>Preferences</gui> from the menu."
@@ -2079,7 +2173,6 @@ msgstr "Sincronizar notas"
 
 #. (itstool) path: credit/years
 #: C/gnote-synchronization.page:12
-#| msgid "2011,2013"
 msgid "2012,2019"
 msgstr "2012,2019"
 
@@ -2147,9 +2240,6 @@ msgstr "Sincronizar"
 
 #. (itstool) path: section/p
 #: C/gnote-synchronization.page:33
-#| msgid ""
-#| "To synchronize, select <gui>Synchronize Notes</gui> from the application "
-#| "menu. This item is only available if synchronization has been configured."
 msgid ""
 "To synchronize, click the menu button in main window and then select "
 "<gui>Synchronize Notes</gui> from the menu. This item is only available if "
@@ -2306,10 +2396,6 @@ msgstr "Plantilla de nota"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-template-notes.page:41
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-template-note.png' "
-#| "md5='f50e2d6d0eb6e68cf726a1b8a969263e'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
@@ -2425,7 +2511,6 @@ msgstr "Para crear un cuaderno de nota haga:"
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:33
-#| msgid "Click on the application menu and select <gui>New Notebook</gui>."
 msgid ""
 "Click on the menu button in main window and select <gui>New Notebook</gui>."
 msgstr ""
@@ -2533,10 +2618,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:66
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-to-notebook.png' "
-#| "md5='8ecfcec4d83233a9705d17ba373cc2ab'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
