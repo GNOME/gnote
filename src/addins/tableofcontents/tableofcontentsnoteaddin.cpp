@@ -31,6 +31,7 @@
 #include "sharp/string.hpp"
 
 #include "iactionmanager.hpp"
+#include "ignote.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "notebuffer.hpp"
@@ -315,12 +316,12 @@ std::vector<TableofcontentsMenuItem*> TableofcontentsNoteAddin::get_tableofconte
   if(toc_items.size()) {
     //If we have at least one heading
     //we also insert an entry linked to the Note's title:
-    item = manage(new TableofcontentsMenuItem(get_note(), get_note()->get_title(), Heading::Title, 0));
+    item = manage(new TableofcontentsMenuItem(ignote().icon_manager(), get_note(), get_note()->get_title(), Heading::Title, 0));
     items.push_back(item);
   }
 
   for(auto & toc_item : toc_items) {
-    item = manage(new TableofcontentsMenuItem(get_note(), toc_item.heading, toc_item.heading_level, toc_item.heading_position));
+    item = manage(new TableofcontentsMenuItem(ignote().icon_manager(), get_note(), toc_item.heading, toc_item.heading_level, toc_item.heading_position));
     items.push_back(item);
   }
 

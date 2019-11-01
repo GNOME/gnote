@@ -30,17 +30,18 @@
 #include "tableofcontents.hpp"
 
 
+namespace gnote {
+  class IconManager;
+}
+
 namespace tableofcontents {
 
 
 class TableofcontentsMenuItem : public Gtk::ImageMenuItem
 {
 public:
-  TableofcontentsMenuItem ( const gnote::Note::Ptr & note,
-                           const Glib::ustring     & heading,
-                           Heading::Type            heading_level,
-                           int                      heading_position
-                         );
+  TableofcontentsMenuItem(gnote::IconManager & icon_manager, const gnote::Note::Ptr & note,
+                          const Glib::ustring & heading, Heading::Type heading_level, int heading_position);
 
 protected:
   virtual void on_activate() override;

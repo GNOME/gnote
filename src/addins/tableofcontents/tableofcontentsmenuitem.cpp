@@ -26,7 +26,6 @@
 #include <gtkmm/stock.h>
 
 #include "iconmanager.hpp"
-#include "ignote.hpp"
 #include "notewindow.hpp"
 
 #include "tableofcontentsmenuitem.hpp"
@@ -37,6 +36,7 @@ namespace tableofcontents {
 
 
 TableofcontentsMenuItem::TableofcontentsMenuItem (
+                            gnote::IconManager & icon_manager,
                             const gnote::Note::Ptr & note,
                             const Glib::ustring    & heading,
                             Heading::Type            heading_level,
@@ -59,7 +59,7 @@ TableofcontentsMenuItem::TableofcontentsMenuItem (
   set_use_underline (false); //we don't want potential '_' in the heading to be used as mnemonic
 
   if (heading_level == Heading::Title) {
-    set_image(*manage(new Gtk::Image(gnote::IGnote::obj().icon_manager().get_icon(gnote::IconManager::NOTE, 16))));
+    set_image(*manage(new Gtk::Image(icon_manager.get_icon(gnote::IconManager::NOTE, 16))));
     Gtk::Label *label = (Gtk::Label*)get_child();
     label->set_markup("<b>" + heading + "</b>");
   }
