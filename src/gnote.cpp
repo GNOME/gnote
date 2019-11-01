@@ -244,7 +244,7 @@ namespace gnote {
   void Gnote::on_show_preferences_action(const Glib::VariantBase&)
   {
     if(!m_prefsdlg) {
-      m_prefsdlg = new PreferencesDialog(default_note_manager());
+      m_prefsdlg = new PreferencesDialog(*this, default_note_manager());
       m_prefsdlg->signal_response().connect(
         sigc::mem_fun(*this, &Gnote::on_preferences_response));
     }

@@ -40,12 +40,13 @@ namespace gnote {
 
 namespace sync { class SyncServiceAddin; }
 class AddinManager;
+class IGnote;
 
 class PreferencesDialog
   : public Gtk::Dialog
 {
 public:
-  explicit PreferencesDialog(NoteManager & note_manager);
+  PreferencesDialog(IGnote & ignote, NoteManager & note_manager);
   
 
   Gtk::Widget *make_editing_pane();
@@ -120,6 +121,7 @@ private:
   Gtk::CheckButton *m_autosync_check;
   Gtk::SpinButton *m_autosync_spinner;
   Gtk::ComboBoxText *m_rename_behavior_combo;
+  IGnote & m_gnote;
   AddinManager &m_addin_manager;
   NoteManager & m_note_manager;
     
