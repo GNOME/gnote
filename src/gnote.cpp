@@ -63,6 +63,7 @@ namespace gnote {
     , m_is_background(false)
     , m_is_shell_search(false)
     , m_prefsdlg(NULL)
+    , m_cmd_line(*this)
   {
   }
 
@@ -114,7 +115,7 @@ namespace gnote {
     Gtk::Application::on_command_line(command_line);
     int argc = 0;
     char **argv = command_line->get_arguments(argc);
-    GnoteCommandLine passed_cmd_line;
+    GnoteCommandLine passed_cmd_line(*this);
     GnoteCommandLine &cmdline = m_manager ? passed_cmd_line : m_cmd_line;
     cmdline.parse(argc, argv);
     m_is_background = cmdline.background();
@@ -498,8 +499,9 @@ namespace gnote {
   }
 
 
-  GnoteCommandLine::GnoteCommandLine()
+  GnoteCommandLine::GnoteCommandLine(IGnote & ignote)
     : m_context(g_option_context_new("Foobar"))
+    , m_gnote(ignote)
     , m_manager(NULL)
     , m_use_panel(false)
     , m_background(false)
@@ -608,7 +610,7 @@ namespace gnote {
       else {
         execute(remote);
       }
-      static_cast<Gnote&>(Gnote::obj()).quit();
+      static_cast<Gnote&>(m_gnote).quit();
     }
     return 0;
   }

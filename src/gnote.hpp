@@ -46,7 +46,7 @@ class RemoteControlClient;
 class GnoteCommandLine
 {
 public:
-  GnoteCommandLine();
+  GnoteCommandLine(IGnote & ignote);
   ~GnoteCommandLine();
   void set_note_manager(NoteManagerBase & manager)
     {
@@ -84,6 +84,7 @@ private:
 
   GOptionContext *m_context;
 
+  IGnote    & m_gnote;
   NoteManagerBase *m_manager;
   bool        m_use_panel;
   bool        m_background;
