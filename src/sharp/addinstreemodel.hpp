@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -35,6 +35,11 @@
 #include "addininfo.hpp"
 #include "sharp/dynamicmodule.hpp"
 
+namespace gnote {
+  class IconManager;
+}
+
+
 namespace sharp {
 
 class AddinsTreeModel
@@ -42,7 +47,7 @@ class AddinsTreeModel
 {
 public:
   typedef Glib::RefPtr<AddinsTreeModel> Ptr;
-  static Ptr create(Gtk::TreeView * treeview);
+  static Ptr create(gnote::IconManager & icon_manager, Gtk::TreeView *treeview);
 
   Glib::ustring get_module_id(const Gtk::TreeIter &);
   sharp::DynamicModule * get_module(const Gtk::TreeIter &);
@@ -72,11 +77,13 @@ public:
 
   static Glib::ustring get_addin_category_name(gnote::AddinCategory category);
 protected:
-  AddinsTreeModel();
+  AddinsTreeModel(gnote::IconManager & icon_manager);
   void set_columns(Gtk::TreeView *v);
 private:
   void name_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter & iter);
   void name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter & iter);
+
+  gnote::IconManager & m_icon_manager;
 };
 
 }

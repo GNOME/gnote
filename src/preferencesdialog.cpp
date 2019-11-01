@@ -599,7 +599,7 @@ namespace gnote {
 
     // TreeView of Add-ins
     m_addin_tree = manage(new Gtk::TreeView ());
-    m_addin_tree_model = sharp::AddinsTreeModel::create(m_addin_tree);
+    m_addin_tree_model = sharp::AddinsTreeModel::create(IGnote::obj().icon_manager(), m_addin_tree);
 
     m_addin_tree->show ();
 
