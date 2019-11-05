@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2019-05-05 09:38+0000\n"
-"PO-Revision-Date: 2019-09-03 19:24+0200\n"
+"POT-Creation-Date: 2019-10-12 09:28+0000\n"
+"PO-Revision-Date: 2019-11-05 21:03+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:546
@@ -981,12 +981,12 @@ msgid "Folder path field is empty."
 msgstr "Fältet för mappsökväg är tomt."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:142
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:220
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Angiven mappsökväg finns inte och Gnote kunde inte skapa den."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:209
 msgid "Local Folder"
 msgstr "Lokal mapp"
 
@@ -1027,32 +1027,43 @@ msgstr "Synkronisera Gnote-anteckningar till en nätkatalog"
 msgid "Failed to mount the folder"
 msgstr "Misslyckades med att montera mappen"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:202
 msgid "Folder _URI:"
 msgstr "Mapp-_URI:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:187
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:214
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Exempel: google-drive://namn.efternamn@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:190
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:217
 msgid "Please, register your account in Online Accounts"
 msgstr "Registrera ditt konto i Nätkonton"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:209
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:234
 msgid "The URI is empty"
 msgstr "URI är tom"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:210
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:235
 msgid "URI field is empty."
 msgstr "Fältet för URI är tomt."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:215
-#, c-format
-msgid "Could not mount the path: %s. Please, check your settings"
-msgstr "Kunde inte montera sökvägen: %s. Kontrollera dina inställningar"
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
+msgid "Failure writing test file"
+msgstr "Fel vid skrivning av testfil"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:292
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:294
+msgid "Failure when checking test file contents"
+msgstr "Fel vid kontroll av testfils innehåll"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:300
+msgid "Failure when trying to remove test file"
+msgstr "Fel vid försök att ta bort testfil"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
+msgid "Unknown error"
+msgstr "Okänt fel"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:338
 msgid "Online Folder"
 msgstr "Nätmapp"
 
@@ -2192,11 +2203,11 @@ msgstr ""
 "synkroniseringsinställningar kommer nu att tas bort. Du kan tvingas att "
 "synkronisera alla dina anteckningar igen när du sparar nya inställningar."
 
-#: ../src/preferencesdialog.cpp:1222
+#: ../src/preferencesdialog.cpp:1233
 msgid "Connection successful"
 msgstr "Anslutningen lyckades"
 
-#: ../src/preferencesdialog.cpp:1223
+#: ../src/preferencesdialog.cpp:1234
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2205,7 +2216,7 @@ msgstr ""
 "nu?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1248
+#: ../src/preferencesdialog.cpp:1259
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2213,19 +2224,19 @@ msgstr ""
 "Kontrollera din information och försök igen.  Loggfilen %1 kan innehålla mer "
 "information om felet."
 
-#: ../src/preferencesdialog.cpp:1253
+#: ../src/preferencesdialog.cpp:1264
 msgid "Error connecting"
 msgstr "Fel vid anslutning"
 
-#: ../src/preferencesdialog.cpp:1316
+#: ../src/preferencesdialog.cpp:1327
 msgid "Version:"
 msgstr "Version:"
 
-#: ../src/preferencesdialog.cpp:1319
+#: ../src/preferencesdialog.cpp:1330
 msgid "Author:"
 msgstr "Upphovsman:"
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1334
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -2439,19 +2450,19 @@ msgstr "Kunde inte läsa testfilen."
 msgid "Write test failed."
 msgstr "Skrivtestet misslyckades."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:184
+#: ../src/synchronization/fusesyncserviceaddin.cpp:185
 msgid "Timeout connecting to server."
 msgstr "Tidsgränsen överskreds vid anslutning till server."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:190
+#: ../src/synchronization/fusesyncserviceaddin.cpp:191
 msgid "Error connecting to server."
 msgstr "Fel vid anslutning till servern."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:203
+#: ../src/synchronization/fusesyncserviceaddin.cpp:204
 msgid "FUSE could not be enabled."
 msgstr "FUSE kunde inte aktiveras."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:234
+#: ../src/synchronization/fusesyncserviceaddin.cpp:235
 msgid "An error occurred while connecting to the specified server"
 msgstr "Ett fel inträffade vid anslutning till den angivna servern"
 
@@ -2811,13 +2822,16 @@ msgstr "Anteckningstiteln är upptagen"
 msgid "Check spelling"
 msgstr "Kontrollera stavning"
 
-#: ../src/watchers.cpp:704
+#: ../src/watchers.cpp:710
 msgid "_Copy Link Address"
 msgstr "_Kopiera länkadress"
 
-#: ../src/watchers.cpp:710
+#: ../src/watchers.cpp:716
 msgid "_Open Link"
 msgstr "_Öppna länk"
+
+#~ msgid "Could not mount the path: %s. Please, check your settings"
+#~ msgstr "Kunde inte montera sökvägen: %s. Kontrollera dina inställningar"
 
 #~ msgid "_About"
 #~ msgstr "_Om"
