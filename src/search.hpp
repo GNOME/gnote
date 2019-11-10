@@ -45,7 +45,7 @@ public:
   static void split_watching_quotes(std::vector<T> & split,
                                     const T & source);
 
-  Search(NoteManager &);
+  Search(NoteManagerBase &);
 
     
   /// Search the notes! A match number of
@@ -76,7 +76,7 @@ public:
                                bool match_case);
 private:
 
-  NoteManager &m_manager;
+  NoteManagerBase & m_manager;
 };
 
 template<typename T>

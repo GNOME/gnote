@@ -22,14 +22,14 @@
 
 
 #include "sharp/string.hpp"
-#include "notemanager.hpp"
+#include "notemanagerbase.hpp"
 #include "search.hpp"
 #include "utils.hpp"
 
 namespace gnote {
 
 
-  Search::Search(NoteManager & manager)
+  Search::Search(NoteManagerBase & manager)
     : m_manager(manager)
   {
   }
