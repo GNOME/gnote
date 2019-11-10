@@ -45,7 +45,7 @@ class SearchNotesWidget
   , public HasActions
 {
 public:
-  SearchNotesWidget(NoteManager & m);
+  SearchNotesWidget(IGnote & g, NoteManagerBase & m);
   virtual ~SearchNotesWidget();
   virtual Glib::ustring get_name() const override;
   virtual void foreground() override;
@@ -173,7 +173,8 @@ private:
   Glib::RefPtr<Gtk::TreeModelSort> m_store_sort;
   Glib::RefPtr<Gtk::TreeModelFilter> m_store_filter;
   RecentNotesColumnTypes m_column_types;
-  NoteManager & m_manager;
+  IGnote & m_gnote;
+  NoteManagerBase & m_manager;
   Gtk::TreeView *m_tree;
   std::vector<Gtk::TargetEntry> m_targets;
   std::map<Glib::ustring, int> m_current_matches;
@@ -188,7 +189,7 @@ private:
   std::vector<sigc::connection> m_action_cids;
   sigc::connection m_callback_changed_cid;
 
-  static Glib::RefPtr<Gdk::Pixbuf> get_note_icon();
+  static Glib::RefPtr<Gdk::Pixbuf> get_note_icon(IconManager &);
 };
 
 }

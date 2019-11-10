@@ -46,15 +46,16 @@
 namespace gnote {
 
 
-Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon()
+Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon(IconManager & manager)
 {
-  return IGnote::obj().icon_manager().get_icon(IconManager::NOTE, 22);
+  return manager.get_icon(IconManager::NOTE, 22);
 }
 
 
-SearchNotesWidget::SearchNotesWidget(NoteManager & m)
+SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   : m_accel_group(Gtk::AccelGroup::create())
   , m_no_matches_box(NULL)
+  , m_gnote(g)
   , m_manager(m)
   , m_clickX(0), m_clickY(0)
   , m_matches_column(NULL)
@@ -97,7 +98,7 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   // Watch when notes are added to notebooks so the search
   // results will be updated immediately instead of waiting
   // until the note's queue_save () kicks in.
-  notebooks::NotebookManager & notebook_manager = IGnote::obj().notebook_manager();
+  notebooks::NotebookManager & notebook_manager = g.notebook_manager();
   notebook_manager.signal_note_added_to_notebook()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_added_to_notebook));
   notebook_manager.signal_note_removed_from_notebook()
@@ -105,10 +106,10 @@ SearchNotesWidget::SearchNotesWidget(NoteManager & m)
   notebook_manager.signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
-  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
   parse_sorting_setting(settings->get_string(Preferences::SEARCH_SORTING));
-  settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
+  settings = g.preferences().get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
   settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
 }
 
@@ -214,7 +215,7 @@ void SearchNotesWidget::restore_matches_window()
 
 Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 {
-  m_notebooksTree = Gtk::manage(new notebooks::NotebooksTreeView(m_manager, IGnote::obj().notebook_manager().get_notebooks_with_special_items()));
+  m_notebooksTree = Gtk::manage(new notebooks::NotebooksTreeView(m_manager, m_gnote.notebook_manager().get_notebooks_with_special_items()));
 
   m_notebooksTree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);
   m_notebooksTree->set_headers_visible(true);
@@ -270,7 +271,7 @@ void SearchNotesWidget::save_position()
     return;
   }
 
-  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
+  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences()
     .get_schema_settings(Preferences::SCHEMA_GNOTE);
   settings->set_int(Preferences::SEARCH_WINDOW_SPLITTER_POS, get_position());
 
@@ -300,7 +301,7 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
     crp->property_pixbuf() = special_nb->get_icon();
   }
   else {
-    crp->property_pixbuf() = IGnote::obj().icon_manager().get_icon(IconManager::NOTEBOOK, 22);
+    crp->property_pixbuf() = m_gnote.icon_manager().get_icon(IconManager::NOTEBOOK, 22);
   }
 }
 
@@ -331,7 +332,7 @@ void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer * rendere
 void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*/,
                                                const Glib::ustring& new_text)
 {
-  notebooks::NotebookManager & notebook_manager = IGnote::obj().notebook_manager();
+  notebooks::NotebookManager & notebook_manager = m_gnote.notebook_manager();
   if(notebook_manager.notebook_exists(new_text) || new_text == "") {
     return;
   }
@@ -516,7 +517,7 @@ void SearchNotesWidget::update_results()
     Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true);
 
     Gtk::TreeIter iter = m_store->append();
-    iter->set_value(0, get_note_icon());  /* icon */
+    iter->set_value(0, get_note_icon(m_gnote.icon_manager()));  /* icon */
     iter->set_value(1, note->get_title()); /* title */
     iter->set_value(2, nice_date);  /* change date */
     iter->set_value(3, note);      /* note */
@@ -1191,7 +1192,7 @@ void SearchNotesWidget::add_note(const Note::Ptr & note)
   Glib::ustring nice_date =
     utils::get_pretty_print_date(note->change_date(), true);
   Gtk::TreeIter iter = m_store->append();
-  iter->set_value(m_column_types.icon, get_note_icon());
+  iter->set_value(m_column_types.icon, get_note_icon(m_gnote.icon_manager()));
   iter->set_value(m_column_types.title, note->get_title());
   iter->set_value(m_column_types.change_date, nice_date);
   iter->set_value(m_column_types.note, note);
@@ -1281,7 +1282,7 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
 {
   if(!m_note_list_context_menu) {
     m_note_list_context_menu = new Gtk::Menu;
-    bool open_notes_in_new_window = IGnote::obj().preferences().get_schema_settings(
+    bool open_notes_in_new_window = m_gnote.preferences().get_schema_settings(
       Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
 
     Gtk::MenuItem *item;
@@ -1391,7 +1392,7 @@ void SearchNotesWidget::foreground()
 
   win->add_accel_group(m_accel_group);
   win->set_focus(*m_tree);
-  auto & manager(IGnote::obj().action_manager());
+  auto & manager(m_gnote.action_manager());
   register_callbacks();
   m_callback_changed_cid = manager.signal_main_window_search_actions_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::callbacks_changed));
@@ -1413,7 +1414,7 @@ void SearchNotesWidget::background()
 
 void SearchNotesWidget::hint_size(int & width, int & height)
 {
-  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
+  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences()
     .get_schema_settings(Preferences::SCHEMA_GNOTE);
   width = settings->get_int(Preferences::SEARCH_WINDOW_WIDTH);
   height = settings->get_int(Preferences::SEARCH_WINDOW_HEIGHT);
@@ -1421,7 +1422,7 @@ void SearchNotesWidget::hint_size(int & width, int & height)
 
 void SearchNotesWidget::size_internals()
 {
-  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
+  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences()
     .get_schema_settings(Preferences::SCHEMA_GNOTE);
   int pos = settings->get_int(Preferences::SEARCH_WINDOW_SPLITTER_POS);
   if(pos) {
@@ -1433,7 +1434,7 @@ std::vector<PopoverWidget> SearchNotesWidget::get_popover_widgets()
 {
   std::vector<PopoverWidget> popover_widgets;
   popover_widgets.reserve(20);
-  IGnote::obj().action_manager().signal_build_main_window_search_popover(popover_widgets);
+  m_gnote.action_manager().signal_build_main_window_search_popover(popover_widgets);
   for(unsigned i = 0; i < popover_widgets.size(); ++i) {
     popover_widgets[i].secondary_order = i;
   }
@@ -1485,7 +1486,7 @@ void SearchNotesWidget::on_sorting_changed()
     else {
       value += "desc";
     }
-    IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
+    m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
       Preferences::SEARCH_SORTING, value);
   }
 }
@@ -1553,7 +1554,7 @@ void SearchNotesWidget::register_callbacks()
   if(!win) {
     return;
   }
-  auto & manager(IGnote::obj().action_manager());
+  auto & manager(m_gnote.action_manager());
   auto cbacks = manager.get_main_window_search_callbacks();
   for(auto & cback : cbacks) {
     auto action = win->find_action(cback.first);
