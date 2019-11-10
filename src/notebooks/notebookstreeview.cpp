@@ -27,12 +27,12 @@
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/notebookstreeview.hpp"
 #include "notebooks/specialnotebooks.hpp"
-#include "notemanager.hpp"
+#include "notemanagerbase.hpp"
 
 namespace gnote {
   namespace notebooks {
 
-    NotebooksTreeView::NotebooksTreeView(NoteManager & manager, const Glib::RefPtr<Gtk::TreeModel> & model)
+    NotebooksTreeView::NotebooksTreeView(NoteManagerBase & manager, const Glib::RefPtr<Gtk::TreeModel> & model)
       : Gtk::TreeView(model)
       , m_note_manager(manager)
     {
