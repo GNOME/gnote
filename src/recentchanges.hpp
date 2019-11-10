@@ -35,13 +35,14 @@
 #include "utils.hpp"
 
 namespace gnote {
-  class NoteManager;
+  class IGnote;
+  class NoteManagerBase;
 
 class NoteRecentChanges
   : public MainWindow
 {
 public:
-  NoteRecentChanges(NoteManager& m);
+  NoteRecentChanges(IGnote & g, NoteManagerBase & m);
   virtual ~NoteRecentChanges();
   virtual void show_search_bar(bool grab_focus = true) override;
   virtual void set_search_text(const Glib::ustring & value) override;
@@ -94,7 +95,8 @@ private:
   void add_action(const MainWindowAction::Ptr & action);
   void on_popover_widgets_changed();
 
-  NoteManager        &m_note_manager;
+  NoteManagerBase    &m_note_manager;
+  Preferences        &m_preferences;
   Gtk::Widget        *m_header_bar;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::Grid           m_content_vbox;

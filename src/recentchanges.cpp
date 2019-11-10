@@ -48,10 +48,11 @@ namespace gnote {
     const char *MAIN_MENU_SECONDARY_ICON = "view-more-symbolic";
   }
 
-  NoteRecentChanges::NoteRecentChanges(NoteManager& m)
+  NoteRecentChanges::NoteRecentChanges(IGnote & g, NoteManagerBase & m)
     : MainWindow(_("Gnote"))
     , m_note_manager(m)
-    , m_search_notes_widget(IGnote::obj(), m)
+    , m_preferences(g.preferences())
+    , m_search_notes_widget(g, m)
     , m_search_box(0.5, 0.5, 0.0, 1.0)
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
@@ -59,7 +60,7 @@ namespace gnote {
     , m_window_menu_default(NULL)
     , m_keybinder(get_accel_group())
   {
-    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
     m_open_notes_in_new_window = settings->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
     m_close_note_on_escape = settings->get_boolean(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE);
     set_default_size(450,400);
@@ -100,14 +101,14 @@ namespace gnote {
     signal_delete_event().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete));
     signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
-    IGnote::obj().signal_quit
+    g.signal_quit
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));// to save size/pos
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_W, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_Q, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
 
-    std::map<Glib::ustring, const Glib::VariantType*> actions = IGnote::obj().action_manager().get_main_window_actions();
+    std::map<Glib::ustring, const Glib::VariantType*> actions = g.action_manager().get_main_window_actions();
     for(std::map<Glib::ustring, const Glib::VariantType*>::iterator iter = actions.begin();
         iter != actions.end(); ++iter) {
       MainWindowAction::Ptr action;
@@ -124,7 +125,7 @@ namespace gnote {
         add_action(action = MainWindowAction::create(iter->first, Glib::ustring("")));
       }
       if(action) {
-        action->is_modifying(IGnote::obj().action_manager().is_modifying_main_window_action(iter->first));
+        action->is_modifying(g.action_manager().is_modifying_main_window_action(iter->first));
       }
     }
     find_action("close-window")->signal_activate()
@@ -381,7 +382,7 @@ namespace gnote {
     Glib::RefPtr<Gdk::Window> win = get_window();
     // background window (for tray to work) might not have GDK window
     if(win) {
-      IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_boolean(
+      m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->set_boolean(
           Preferences::MAIN_WINDOW_MAXIMIZED,
           win->get_state() & Gdk::WINDOW_STATE_MAXIMIZED);
     }
@@ -525,7 +526,7 @@ namespace gnote {
       wid.show();
       widget.foreground();
 
-      bool maximized = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+      bool maximized = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
         Preferences::MAIN_WINDOW_MAXIMIZED);
       if(get_realized()) {
         //if window is showing, use actual state
@@ -825,11 +826,11 @@ namespace gnote {
   void NoteRecentChanges::on_settings_changed(const Glib::ustring & key)
   {
     if(key == Preferences::OPEN_NOTES_IN_NEW_WINDOW) {
-      m_open_notes_in_new_window = IGnote::obj().preferences().get_schema_settings(
+      m_open_notes_in_new_window = m_preferences.get_schema_settings(
         Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
     }
     else if(key == Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE) {
-      m_close_note_on_escape = IGnote::obj().preferences().get_schema_settings(
+      m_close_note_on_escape = m_preferences.get_schema_settings(
         Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE);
     }
   }

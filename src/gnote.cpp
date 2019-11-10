@@ -322,7 +322,7 @@ namespace gnote {
 
   MainWindow & Gnote::new_main_window()
   {
-    NoteRecentChanges *win = new NoteRecentChanges(default_note_manager());
+    NoteRecentChanges *win = new NoteRecentChanges(*this, default_note_manager());
     win->signal_hide().connect([this, win]() { on_main_window_closed(win); });
     add_window(*win);
     return *win;
