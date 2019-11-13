@@ -31,6 +31,9 @@
 
 
 namespace gnote {
+
+  class IGnote;
+
 namespace sync {
 
   class SyncServiceAddin;
@@ -39,7 +42,7 @@ namespace sync {
     : public ISyncManager
   {
   public:
-    SyncManager(NoteManagerBase &);
+    SyncManager(IGnote &, NoteManagerBase &);
     void init();
     virtual void reset_client() override;
     virtual void perform_synchronization(const SyncUI::Ptr & sync_ui) override;
@@ -79,6 +82,7 @@ namespace sync {
     NoteManagerBase & note_mgr();
     void get_synchronized_xml_bits(const Glib::ustring & noteXml, Glib::ustring & title, Glib::ustring & tags, Glib::ustring & content);
 
+    IGnote & m_gnote;
     NoteManagerBase & m_note_manager;
     SyncState m_state;
     Glib::Thread *m_sync_thread;

@@ -148,7 +148,7 @@ namespace gnote {
     m_manager = new NoteManager(m_preferences);
     m_manager->init(note_path);
     m_action_manager.init();
-    m_sync_manager = new sync::SyncManager(default_note_manager());
+    m_sync_manager = new sync::SyncManager(*this, default_note_manager());
     m_sync_manager->init();
 
     m_manager->get_addin_manager().initialize_application_addins();

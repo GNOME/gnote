@@ -41,8 +41,9 @@
 namespace gnote {
 namespace sync {
 
-  SyncManager::SyncManager(NoteManagerBase & m)
-    : m_note_manager(m)
+  SyncManager::SyncManager(IGnote & g, NoteManagerBase & m)
+    : m_gnote(g)
+    , m_note_manager(m)
     , m_state(IDLE)
     , m_sync_thread(NULL)
   {
@@ -53,7 +54,7 @@ namespace sync {
   {
     m_client = GnoteSyncClient::create(m_note_manager);
     // Add a "Synchronize Notes" to Gnote's Application Menu
-    IActionManager & am(IGnote::obj().action_manager());
+    IActionManager & am(m_gnote.action_manager());
     am.add_app_action("sync-notes");
     am.add_app_menu_item(APP_SECTION_MANAGE, 200, _("Synchronize Notes"), "app.sync-notes");
 
@@ -83,7 +84,7 @@ namespace sync {
   {
     try {
       NoteManager & manager(dynamic_cast<NoteManager&>(note_mgr()));
-      IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
+      m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
         .connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
       manager.signal_note_saved.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
       manager.signal_note_deleted.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
@@ -412,9 +413,9 @@ namespace sync {
 
   void SyncManager::update_sync_action()
   {
-    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC);
+    Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC);
     Glib::ustring sync_addin_id = settings->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
-    IGnote::obj().action_manager().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
+    m_gnote.action_manager().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
 
     int timeoutPref = settings->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
     if(timeoutPref != m_autosync_timeout_pref_minutes) {
@@ -533,7 +534,7 @@ namespace sync {
   {
     SyncServiceAddin *addin = NULL;
 
-    Glib::ustring sync_service_id = IGnote::obj().preferences()
+    Glib::ustring sync_service_id = m_gnote.preferences()
       .get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
     if(sync_service_id != "") {
       addin = get_sync_service_addin(sync_service_id);
