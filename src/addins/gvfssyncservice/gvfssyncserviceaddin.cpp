@@ -229,7 +229,6 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
 bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
 {
   Glib::ustring sync_uri = m_uri_entry->get_text();
-  std::exception_ptr save_exception;
 
   if(sync_uri == "") {
     ERR_OUT(_("The URI is empty"));
@@ -250,7 +249,7 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
       });
   };
   if(mount_async(path, on_mount_completed)) {
-    Glib::Thread::create([this, &save_exception, sync_uri, on_mount_completed]() {
+    Glib::Thread::create([this, sync_uri, on_mount_completed]() {
       on_mount_completed(true, "");
     }, false);
   }
