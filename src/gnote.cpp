@@ -416,7 +416,7 @@ namespace gnote {
   void Gnote::open_note_sync_window(const Glib::VariantBase&)
   {
     if(m_sync_dlg == 0) {
-      m_sync_dlg = sync::SyncDialog::create(default_note_manager());
+      m_sync_dlg = sync::SyncDialog::create(*this, default_note_manager());
       m_sync_dlg->signal_response().connect(sigc::mem_fun(*this, &Gnote::on_sync_dialog_response));
     }
 

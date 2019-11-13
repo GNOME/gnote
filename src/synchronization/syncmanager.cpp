@@ -508,7 +508,7 @@ namespace sync {
       if(client_has_updates || server_has_updates) {
         DBG_OUT("Detected that sync would be a good idea now");
         // TODO: Check that it's safe to sync, block other sync UIs
-        perform_synchronization(SilentUI::create(note_mgr()));
+        perform_synchronization(SilentUI::create(m_gnote, note_mgr()));
       }
     }
 

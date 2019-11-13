@@ -34,9 +34,9 @@ namespace sync {
     : public SyncUI
   {
   public:
-    static SyncUI::Ptr create(NoteManagerBase &);
+    static SyncUI::Ptr create(IGnote &, NoteManagerBase &);
+    SilentUI(IGnote &, NoteManagerBase &);
   private:
-    explicit SilentUI(NoteManagerBase &);
     virtual void sync_state_changed(SyncState state) override;
     virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) override;
     virtual void note_conflict_detected(const Note::Ptr & localConflictNote,

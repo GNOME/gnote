@@ -28,6 +28,9 @@
 
 
 namespace gnote {
+
+  class IGnote;
+
 namespace sync {
 
   class SyncUI
@@ -51,8 +54,9 @@ namespace sync {
     sigc::connection signal_idle_connect(const SlotIdle & slot);
     void signal_idle_emit();
   protected:
-    explicit SyncUI(NoteManagerBase & manager);
+    SyncUI(IGnote & g, NoteManagerBase & manager);
 
+    IGnote & m_gnote;
     NoteManagerBase & m_manager;
   private:
     void signal_connecting_emit_()

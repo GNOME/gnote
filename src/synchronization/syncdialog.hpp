@@ -41,8 +41,9 @@ namespace sync {
   public:
     typedef std::shared_ptr<SyncDialog> Ptr;
 
-    static Ptr create(NoteManagerBase &);
+    static Ptr create(IGnote &, NoteManagerBase &);
 
+    SyncDialog(IGnote &, NoteManagerBase &);
     virtual void sync_state_changed(SyncState state) override;
     virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) override;
     virtual void note_conflict_detected(const Note::Ptr & localConflictNote,
@@ -65,7 +66,6 @@ namespace sync {
                                  SyncTitleConflictResolution resolution,
                                  std::exception **mainThreadException);
 
-    explicit SyncDialog(NoteManagerBase &);
     bool on_pulse_progress_bar();
     void on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeViewColumn *column);
     void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);

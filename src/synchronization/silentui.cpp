@@ -27,14 +27,14 @@
 namespace gnote {
 namespace sync {
 
-  SyncUI::Ptr SilentUI::create(NoteManagerBase & nm)
+  SyncUI::Ptr SilentUI::create(IGnote & g, NoteManagerBase & nm)
   {
-    return SyncUI::Ptr(new SilentUI(nm));
+    return std::make_shared<SilentUI>(g, nm);
   }
 
 
-  SilentUI::SilentUI(NoteManagerBase & manager)
-    : SyncUI(manager)
+  SilentUI::SilentUI(IGnote & g, NoteManagerBase & manager)
+    : SyncUI(g, manager)
     , m_ui_disabled(false)
   {
     signal_connecting_connect(sigc::mem_fun(*this, &SilentUI::on_connecting));
@@ -84,7 +84,7 @@ namespace sync {
     if(localConflictNote->id() != remoteNote.m_uuid) {
       m_manager.delete_note(localConflictNote);
     }
-    IGnote::obj().sync_manager().resolve_conflict(OVERWRITE_EXISTING);
+    m_gnote.sync_manager().resolve_conflict(OVERWRITE_EXISTING);
   }
 
 

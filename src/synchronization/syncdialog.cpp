@@ -218,14 +218,14 @@ private:
 
 
 
-SyncDialog::Ptr SyncDialog::create(NoteManagerBase & m)
+SyncDialog::Ptr SyncDialog::create(IGnote & g, NoteManagerBase & m)
 {
-  return SyncDialog::Ptr(new SyncDialog(m));
+  return std::make_shared<SyncDialog>(g, m);
 }
 
 
-SyncDialog::SyncDialog(NoteManagerBase & manager)
-  : SyncUI(manager)
+SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
+  : SyncUI(g, manager)
 {
   m_progress_bar_timeout_id = 0;
 
@@ -245,7 +245,7 @@ SyncDialog::SyncDialog(NoteManagerBase & manager)
   hbox->show();
   outerVBox->attach(*hbox, 0, outerVBoxRow++, 1, 1);
 
-  m_image = manage(new Gtk::Image(IGnote::obj().icon_manager().get_icon(IconManager::GNOTE, 48)));
+  m_image = manage(new Gtk::Image(g.icon_manager().get_icon(IconManager::GNOTE, 48)));
   m_image->set_alignment(0, 0);
   m_image->show();
   hbox->attach(*m_image, 0, 0, 1, 1);
@@ -367,7 +367,7 @@ void SyncDialog::on_realize()
 {
   Gtk::Dialog::on_realize();
 
-  SyncState state = IGnote::obj().sync_manager().state();
+  SyncState state = m_gnote.sync_manager().state();
   if(state == IDLE) {
     // Kick off a timer to keep the progress bar going
     //m_progress_barTimeoutId = GLib.Timeout.Add (500, OnPulseProgressBar);
@@ -376,7 +376,7 @@ void SyncDialog::on_realize()
     timeout->attach();
 
     // Kick off a new synchronization
-    IGnote::obj().sync_manager().perform_synchronization(this->shared_from_this());
+    m_gnote.sync_manager().perform_synchronization(this->shared_from_this());
   }
   else {
     // Adjust the GUI accordingly
@@ -387,7 +387,7 @@ void SyncDialog::on_realize()
 
 bool SyncDialog::on_pulse_progress_bar()
 {
-  if(IGnote::obj().sync_manager().state() == IDLE) {
+  if(m_gnote.sync_manager().state() == IDLE) {
     return false;
   }
 
@@ -596,7 +596,7 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::vector<Glib::ustring> & noteUpdateTitles)
 {
-  int dlgBehaviorPref = IGnote::obj().preferences()
+  int dlgBehaviorPref = m_gnote.preferences()
     .get_schema_settings(Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
   std::exception *mainThreadException = NULL;
 
@@ -632,7 +632,7 @@ void SyncDialog::note_conflict_detected_(
     SyncTitleConflictDialog conflictDlg(localConflictNote, noteUpdateTitles);
     Gtk::ResponseType reponse = Gtk::RESPONSE_OK;
 
-    bool noteSyncBitsMatch = IGnote::obj().sync_manager().synchronized_note_xml_matches(
+    bool noteSyncBitsMatch = m_gnote.sync_manager().synchronized_note_xml_matches(
       localConflictNote->get_complete_note_xml(), remoteNote.m_xml_content);
 
     // If the synchronized note content is in conflict
@@ -683,13 +683,13 @@ void SyncDialog::note_conflict_detected_(
       }
     }
 
-    IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
+    m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
       Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, static_cast<int>(savedBehavior)); // TODO: Clean up
 
     conflictDlg.hide();
 
     // Let the SyncManager continue
-    IGnote::obj().sync_manager().resolve_conflict(/*localConflictNote, */resolution);
+    m_gnote.sync_manager().resolve_conflict(/*localConflictNote, */resolution);
   }
   catch(std::exception & e) {
     *mainThreadException = new std::exception(e);
@@ -737,7 +737,7 @@ void SyncDialog::rename_note(const Note::Ptr & note, const Glib::ustring & newTi
 
 void SyncDialog::present_note(const Note::Ptr & note)
 {
-  MainWindow::present_in(IGnote::obj().get_window_for_note(), note);
+  MainWindow::present_in(m_gnote.get_window_for_note(), note);
 }
 
 }
