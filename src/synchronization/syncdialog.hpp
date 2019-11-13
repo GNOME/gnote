@@ -64,7 +64,7 @@ namespace sync {
                                  const std::vector<Glib::ustring> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,
                                  SyncTitleConflictResolution resolution,
-                                 std::exception **mainThreadException);
+                                 std::exception_ptr & mainThreadException);
 
     bool on_pulse_progress_bar();
     void on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeViewColumn *column);

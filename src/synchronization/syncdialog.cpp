@@ -598,7 +598,7 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
 {
   int dlgBehaviorPref = m_gnote.preferences()
     .get_schema_settings(Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
-  std::exception *mainThreadException = NULL;
+  std::exception_ptr mainThreadException;
 
   // This event handler will be called by the synchronization thread
   // so we have to use the delegate here to manipulate the GUI.
@@ -608,14 +608,12 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
     [this, localConflictNote, remoteNote, noteUpdateTitles, dlgBehaviorPref, &mainThreadException]() {
       note_conflict_detected_(localConflictNote, remoteNote, noteUpdateTitles,
                               static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
-                              OVERWRITE_EXISTING, &mainThreadException
+                              OVERWRITE_EXISTING, mainThreadException
       );
     });
 
   if(mainThreadException) {
-    std::exception e(*mainThreadException);
-    delete mainThreadException;
-    throw e;
+    throw mainThreadException;
   }
 }
 
@@ -626,7 +624,7 @@ void SyncDialog::note_conflict_detected_(
   const std::vector<Glib::ustring> & noteUpdateTitles,
   SyncTitleConflictResolution savedBehavior,
   SyncTitleConflictResolution resolution,
-  std::exception **mainThreadException)
+  std::exception_ptr & mainThreadException)
 {
   try {
     SyncTitleConflictDialog conflictDlg(localConflictNote, noteUpdateTitles);
@@ -691,8 +689,8 @@ void SyncDialog::note_conflict_detected_(
     // Let the SyncManager continue
     m_gnote.sync_manager().resolve_conflict(/*localConflictNote, */resolution);
   }
-  catch(std::exception & e) {
-    *mainThreadException = new std::exception(e);
+  catch(std::exception &) {
+    mainThreadException = std::current_exception();
   }
 }
 
