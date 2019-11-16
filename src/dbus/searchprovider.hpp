@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 
 #include <giomm/dbusinterfacevtable.h>
 
-#include "notemanager.hpp"
+#include "notemanagerbase.hpp"
 
 
 namespace org {
@@ -37,7 +37,7 @@ class SearchProvider
 public:
   SearchProvider(const Glib::RefPtr<Gio::DBus::Connection> & conn, const char *object_path,
                  const Glib::RefPtr<Gio::DBus::InterfaceInfo> & search_interface,
-                 gnote::NoteManager & manager);
+                 gnote::NoteManagerBase & manager);
 
   std::vector<Glib::ustring> GetInitialResultSet(const std::vector<Glib::ustring> & terms);
   std::vector<Glib::ustring> GetSubsearchResultSet(const std::vector<Glib::ustring> & previous_results,
@@ -64,7 +64,7 @@ private:
   typedef Glib::VariantContainerBase (SearchProvider::*stub_func)(const Glib::VariantContainerBase &);
   std::map<Glib::ustring, stub_func> m_stubs;
 
-  gnote::NoteManager & m_manager;
+  gnote::NoteManagerBase & m_manager;
   Glib::RefPtr<Gio::Icon> m_note_icon;
 };
 

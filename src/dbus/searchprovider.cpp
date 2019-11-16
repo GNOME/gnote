@@ -37,7 +37,7 @@ namespace Gnote {
 SearchProvider::SearchProvider(const Glib::RefPtr<Gio::DBus::Connection> & conn,
                                const char *object_path,
                                const Glib::RefPtr<Gio::DBus::InterfaceInfo> & search_interface,
-                               gnote::NoteManager & manager)
+                               gnote::NoteManagerBase & manager)
   : Gio::DBus::InterfaceVTable(sigc::mem_fun(*this, &SearchProvider::on_method_call))
   , m_manager(manager)
 {
