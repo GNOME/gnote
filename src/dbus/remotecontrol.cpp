@@ -36,7 +36,7 @@
 namespace gnote {
 
 
-  RemoteControl::RemoteControl(const Glib::RefPtr<Gio::DBus::Connection> & cnx, NoteManager& manager,
+  RemoteControl::RemoteControl(const Glib::RefPtr<Gio::DBus::Connection> & cnx, NoteManagerBase & manager,
                                const char * path, const char * interface_name,
                                const Glib::RefPtr<Gio::DBus::InterfaceInfo> & gnote_interface)
     : IRemoteControl(cnx, path, interface_name, gnote_interface)

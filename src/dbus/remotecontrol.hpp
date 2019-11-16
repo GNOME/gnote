@@ -32,13 +32,13 @@
 
 namespace gnote {
 
-class NoteManager;
+class NoteManagerBase;
 
 class RemoteControl
   : public IRemoteControl
 {
 public:
-  RemoteControl(const Glib::RefPtr<Gio::DBus::Connection> &, gnote::NoteManager&, const char *, const char *,
+  RemoteControl(const Glib::RefPtr<Gio::DBus::Connection> &, gnote::NoteManagerBase&, const char *, const char *,
                 const Glib::RefPtr<Gio::DBus::InterfaceInfo> &);
   virtual ~RemoteControl();
 
@@ -76,7 +76,7 @@ private:
   void on_note_saved(const NoteBase::Ptr &);
   MainWindow & present_note(const NoteBase::Ptr &);
 
-  NoteManager & m_manager;
+  NoteManagerBase & m_manager;
 };
 
 
