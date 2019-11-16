@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013 Aurimas Cernius
+ * Copyright (C) 2011,2013,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -35,9 +35,10 @@ namespace Gnote {
 
 namespace gnote {
 
+class IGnote;
 class RemoteControl;
 class RemoteControlClient;
-class NoteManager;
+class NoteManagerBase;
 
 class RemoteControlProxy 
 {
@@ -51,27 +52,30 @@ public:
   typedef sigc::slot<void, bool, bool> slot_name_acquire_finish;
   typedef sigc::slot<void> slot_connected;
 
-  /** Get a dbus client */
-  static Glib::RefPtr<RemoteControlClient> get_instance();
-  static RemoteControl *get_remote_control();
-  static void register_remote(NoteManager & manager, const slot_name_acquire_finish & on_finish);
-  static void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, NoteManager & manager,
-                              const slot_name_acquire_finish & on_finish);
-private:
-  static void on_bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
-  static void on_name_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
-  static void on_name_lost(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
-  static void load_introspection_xml();
+  explicit RemoteControlProxy(IGnote & g);
 
-  static NoteManager * s_manager;
-  static RemoteControl * s_remote_control;
-  static org::gnome::Gnote::SearchProvider * s_search_provider;
-  static bool s_bus_acquired;
-  static Glib::RefPtr<Gio::DBus::Connection> s_connection;
-  static Glib::RefPtr<Gio::DBus::InterfaceInfo> s_gnote_interface;
-  static Glib::RefPtr<Gio::DBus::InterfaceInfo> s_search_provider_interface;
-  static Glib::RefPtr<RemoteControlClient> s_remote_control_proxy;
-  static slot_name_acquire_finish s_on_name_acquire_finish;
+  /** Get a dbus client */
+  Glib::RefPtr<RemoteControlClient> get_instance();
+  RemoteControl *get_remote_control();
+  void register_remote(NoteManagerBase & manager, const slot_name_acquire_finish & on_finish);
+  void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, NoteManagerBase & manager,
+                       const slot_name_acquire_finish & on_finish);
+private:
+  void on_bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
+  void on_name_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
+  void on_name_lost(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
+  void load_introspection_xml();
+
+  IGnote & m_gnote;
+  NoteManagerBase *m_manager;
+  RemoteControl *m_remote_control;
+  org::gnome::Gnote::SearchProvider *m_search_provider;
+  bool m_bus_acquired;
+  Glib::RefPtr<Gio::DBus::Connection> m_connection;
+  Glib::RefPtr<Gio::DBus::InterfaceInfo> m_gnote_interface;
+  Glib::RefPtr<Gio::DBus::InterfaceInfo> m_search_provider_interface;
+  Glib::RefPtr<RemoteControlClient> m_remote_control_proxy;
+  slot_name_acquire_finish m_on_name_acquire_finish;
 };
 
 }

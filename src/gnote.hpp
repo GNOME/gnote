@@ -41,7 +41,6 @@ namespace gnote {
 
 class PreferencesDialog;
 class NoteManager;
-class RemoteControlClient;
 
 class GnoteCommandLine
 {
@@ -140,6 +139,10 @@ public:
     {
       return m_preferences;
     }
+  RemoteControlProxy & remote_control()
+    {
+      return m_remote_control;
+    }
 
   void on_preferences_response(int res);
   void on_show_preferences_action(const Glib::VariantBase&);
@@ -159,7 +162,7 @@ public:
     {
       return !is_background();
     }
-  static void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
+  void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
   virtual void open_note(const Note::Ptr & note) override;
 protected:
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line) override;
@@ -187,6 +190,7 @@ private:
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
   bool m_is_background;
   bool m_is_shell_search;
+  RemoteControlProxy m_remote_control;
   PreferencesDialog *m_prefsdlg;
   GnoteCommandLine m_cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;

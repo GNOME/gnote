@@ -62,6 +62,7 @@ namespace gnote {
     , m_sync_manager(NULL)
     , m_is_background(false)
     , m_is_shell_search(false)
+    , m_remote_control(*this)
     , m_prefsdlg(NULL)
     , m_cmd_line(*this)
   {
@@ -173,7 +174,7 @@ namespace gnote {
         if(!m_is_background) {
           Glib::RefPtr<RemoteControlClient> remote;
           try {
-            remote = RemoteControlProxy::get_instance();
+            remote = m_remote_control.get_instance();
             DBG_ASSERT(remote, "remote is NULL, something is wrong");
             if(remote) {
               remote->DisplaySearch();
@@ -223,15 +224,13 @@ namespace gnote {
 
   void Gnote::register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish)
   {
-    RemoteControlProxy::register_remote(manager, on_finish);
+    m_remote_control.register_remote(manager, on_finish);
   }
 
 
   void Gnote::register_object()
   {
-    RemoteControlProxy::register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION),
-                                        default_note_manager(),
-                                        sigc::mem_fun(*this, &Gnote::end_main));
+    m_remote_control.register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION), default_note_manager(), sigc::mem_fun(*this, &Gnote::end_main));
   }
 
 
@@ -597,13 +596,13 @@ namespace gnote {
   {
     DBG_OUT("running args");
 
-    RemoteControl *remote_control = RemoteControlProxy::get_remote_control();
+    RemoteControl *remote_control = static_cast<Gnote&>(m_gnote).remote_control().get_remote_control();
     if(remote_control) {
       execute(remote_control);
     }
     else {
       //gnote already running, execute via D-Bus and exit this instance
-      Glib::RefPtr<RemoteControlClient> remote = RemoteControlProxy::get_instance();
+      Glib::RefPtr<RemoteControlClient> remote = static_cast<Gnote&>(m_gnote).remote_control().get_instance();
       if(!remote) {
         ERR_OUT(_("Could not connect to remote instance."));
       }
