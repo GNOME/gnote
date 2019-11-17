@@ -89,8 +89,9 @@ namespace {
 }
 
 
-  AddinManager::AddinManager(NoteManager & note_manager, Preferences & preferences, const Glib::ustring & conf_dir)
-    : m_note_manager(note_manager)
+  AddinManager::AddinManager(IGnote & g, NoteManager & note_manager, Preferences & preferences, const Glib::ustring & conf_dir)
+    : m_gnote(g)
+    , m_note_manager(note_manager)
     , m_preferences(preferences)
     , m_gnote_conf_dir(conf_dir)
   {
@@ -158,7 +159,7 @@ namespace {
       const Note::Ptr & note = iter->first;
       NoteAddin *const addin = dynamic_cast<NoteAddin *>((*f)());
       if(addin) {
-       addin->initialize(IGnote::obj(), note);
+       addin->initialize(m_gnote, note);
        id_addin_map.insert(std::make_pair(id, addin));
       }
     }
@@ -361,7 +362,7 @@ namespace {
       sharp::IInterface* iface = (*addin_info.second)();
       NoteAddin * addin = dynamic_cast<NoteAddin *>(iface);
       if(addin) {
-        addin->initialize(IGnote::obj(), note);
+        addin->initialize(m_gnote, note);
         loaded.insert(std::make_pair(addin_info.first, addin));
       }
       else {
@@ -438,7 +439,7 @@ namespace {
       const sharp::DynamicModule * dmod
         = m_module_manager.get_module(iter->first);
       if (!dmod || dmod->is_enabled()) {
-        addin->initialize(IGnote::obj(), m_note_manager);
+        addin->initialize(m_gnote, m_note_manager);
       }
     }
   }
@@ -563,7 +564,7 @@ namespace {
   {
     IdAddinPrefsMap::const_iterator iter = m_addin_prefs.find(id);
     if(iter != m_addin_prefs.end()) {
-      return iter->second->create_preference_widget(IGnote::obj(), IGnote::obj().preferences(), m_note_manager);
+      return iter->second->create_preference_widget(m_gnote, m_gnote.preferences(), m_note_manager);
     }
     return NULL;
   }
@@ -577,7 +578,7 @@ namespace {
 
   void AddinManager::register_addin_actions() const
   {
-    auto & manager(IGnote::obj().action_manager());
+    auto & manager(m_gnote.action_manager());
     for(auto & info : m_addin_infos) {
       auto & non_modifying = info.second.non_modifying_actions();
       for(auto & action : info.second.actions()) {

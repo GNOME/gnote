@@ -111,7 +111,7 @@ namespace gnote {
 
   AddinManager *NoteManager::create_addin_manager()
   {
-    return new AddinManager(*this, m_preferences, IGnote::conf_dir());
+    return new AddinManager(IGnote::obj(), *this, m_preferences, IGnote::conf_dir());
   }
 
   void NoteManager::create_start_notes ()

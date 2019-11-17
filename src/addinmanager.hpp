@@ -51,7 +51,7 @@ typedef std::map<Glib::ustring, AddinInfo> AddinInfoMap;
 class AddinManager
 {
 public:
-  AddinManager(NoteManager & note_manager, Preferences & preferences, const Glib::ustring & conf_dir);
+  AddinManager(IGnote & g, NoteManager & note_manager, Preferences & preferences, const Glib::ustring & conf_dir);
   ~AddinManager();
 
   void add_note_addin_info(const Glib::ustring & id, const sharp::DynamicModule * dmod);
@@ -95,6 +95,7 @@ private:
   void on_setting_changed(const Glib::ustring & key);
   void register_addin_actions() const;
     
+  IGnote & m_gnote;
   NoteManager & m_note_manager;
   Preferences & m_preferences;
   const Glib::ustring m_gnote_conf_dir;
