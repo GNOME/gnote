@@ -126,7 +126,7 @@ void RemoteControlProxy::register_object(const Glib::RefPtr<Gio::DBus::Connectio
                                          const slot_name_acquire_finish & on_finish)
 {
   load_introspection_xml();
-  m_remote_control = new RemoteControl(conn, manager, GNOTE_SERVER_PATH, GNOTE_INTERFACE_NAME, m_gnote_interface);
+  m_remote_control = new RemoteControl(conn, m_gnote, manager, GNOTE_SERVER_PATH, GNOTE_INTERFACE_NAME, m_gnote_interface);
   m_search_provider = new org::gnome::Gnote::SearchProvider(conn, GNOTE_SEARCH_PROVIDER_PATH,
                                                             m_search_provider_interface, manager);
   on_finish(true, true);

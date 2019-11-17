@@ -36,10 +36,11 @@
 namespace gnote {
 
 
-  RemoteControl::RemoteControl(const Glib::RefPtr<Gio::DBus::Connection> & cnx, NoteManagerBase & manager,
+  RemoteControl::RemoteControl(const Glib::RefPtr<Gio::DBus::Connection> & cnx, IGnote & g, NoteManagerBase & manager,
                                const char * path, const char * interface_name,
                                const Glib::RefPtr<Gio::DBus::InterfaceInfo> & gnote_interface)
     : IRemoteControl(cnx, path, interface_name, gnote_interface)
+    , m_gnote(g)
     , m_manager(manager)
   {
     DBG_OUT("initialized remote control");
@@ -137,13 +138,13 @@ namespace gnote {
 
   void RemoteControl::DisplaySearch()
   {
-    IGnote::obj().open_search_all().present();
+    m_gnote.open_search_all().present();
   }
 
 
   void RemoteControl::DisplaySearchWithText(const Glib::ustring& search_text)
   {
-    MainWindow & recent_changes = IGnote::obj().get_main_window();
+    MainWindow & recent_changes = m_gnote.get_main_window();
     recent_changes.set_search_text(search_text);
     recent_changes.present();
     recent_changes.show_search_bar();
