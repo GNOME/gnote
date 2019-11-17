@@ -37,7 +37,7 @@ class SearchProvider
 public:
   SearchProvider(const Glib::RefPtr<Gio::DBus::Connection> & conn, const char *object_path,
                  const Glib::RefPtr<Gio::DBus::InterfaceInfo> & search_interface,
-                 gnote::NoteManagerBase & manager);
+                 gnote::IGnote & g, gnote::NoteManagerBase & manager);
 
   std::vector<Glib::ustring> GetInitialResultSet(const std::vector<Glib::ustring> & terms);
   std::vector<Glib::ustring> GetSubsearchResultSet(const std::vector<Glib::ustring> & previous_results,
@@ -64,6 +64,7 @@ private:
   typedef Glib::VariantContainerBase (SearchProvider::*stub_func)(const Glib::VariantContainerBase &);
   std::map<Glib::ustring, stub_func> m_stubs;
 
+  gnote::IGnote & m_gnote;
   gnote::NoteManagerBase & m_manager;
   Glib::RefPtr<Gio::Icon> m_note_icon;
 };

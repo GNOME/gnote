@@ -37,8 +37,9 @@ namespace Gnote {
 SearchProvider::SearchProvider(const Glib::RefPtr<Gio::DBus::Connection> & conn,
                                const char *object_path,
                                const Glib::RefPtr<Gio::DBus::InterfaceInfo> & search_interface,
-                               gnote::NoteManagerBase & manager)
+                               gnote::IGnote & g, gnote::NoteManagerBase & manager)
   : Gio::DBus::InterfaceVTable(sigc::mem_fun(*this, &SearchProvider::on_method_call))
+  , m_gnote(g)
   , m_manager(manager)
 {
   conn->register_object(object_path, search_interface, *this);
@@ -204,7 +205,7 @@ void SearchProvider::ActivateResult(const Glib::ustring & identifier,
 {
   gnote::NoteBase::Ptr note = m_manager.find_by_uri(identifier);
   if(note != 0) {
-    gnote::IGnote::obj().open_note(std::static_pointer_cast<gnote::Note>(note));
+    m_gnote.open_note(std::static_pointer_cast<gnote::Note>(note));
   }
 }
 
@@ -233,7 +234,7 @@ Glib::VariantContainerBase SearchProvider::LaunchSearch_stub(const Glib::Variant
 gchar *SearchProvider::get_icon()
 {
   if(!m_note_icon) {
-    Gtk::IconInfo info = gnote::IGnote::obj().icon_manager().lookup_icon(gnote::IconManager::NOTE, 48);
+    Gtk::IconInfo info = m_gnote.icon_manager().lookup_icon(gnote::IconManager::NOTE, 48);
     m_note_icon = Gio::Icon::create(info.get_filename());
   }
 
