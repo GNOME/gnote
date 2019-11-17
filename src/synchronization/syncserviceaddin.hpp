@@ -47,6 +47,7 @@ namespace sync {
       {
         AbstractAddin::initialize(ignote);
         m_sync_manager = &sync_manager;
+        initialize();
       }
 
     virtual ISyncManager & sync_manager()
@@ -66,9 +67,10 @@ namespace sync {
     virtual Glib::ustring name() = 0;
     virtual Glib::ustring id() = 0;
     virtual bool is_supported() = 0;
-    virtual void initialize () = 0;
     virtual void shutdown () = 0;
     virtual bool initialized () = 0;
+  protected:
+    virtual void initialize () = 0;
   private:
     ISyncManager *m_sync_manager;
   };

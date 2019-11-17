@@ -453,7 +453,7 @@ namespace {
         addin = iter->second;
         const sharp::DynamicModule *dmod = m_module_manager.get_module(iter->first);
         if(!dmod || dmod->is_enabled()) {
-          addin->initialize();
+          addin->initialize(m_gnote, m_gnote.sync_manager());
         }
       }
       catch(std::exception & e) {
