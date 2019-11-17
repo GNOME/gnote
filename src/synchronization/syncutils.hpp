@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,6 @@
 #include <vector>
 
 #include "note.hpp"
-#include "base/singleton.hpp"
 
 
 namespace gnote {
@@ -82,7 +81,6 @@ namespace sync {
 
 
   class SyncUtils
-    : public base::Singleton<SyncUtils>
   {
   public:
     bool is_fuse_enabled();
@@ -91,7 +89,6 @@ namespace sync {
     Glib::ustring find_first_executable_in_path(const Glib::ustring & executableName);
   private:
     static const char *common_paths[];
-    static SyncUtils s_obj;
 
     Glib::ustring m_guisu_tool;
     Glib::ustring m_modprobe_tool;

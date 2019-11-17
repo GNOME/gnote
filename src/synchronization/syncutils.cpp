@@ -110,9 +110,6 @@ namespace sync {
 
   const char *SyncUtils::common_paths[] = {"/sbin", "/bin", "/usr/bin"};
 
-  //instance
-  SyncUtils SyncUtils::s_obj;
-
 
   bool SyncUtils::is_fuse_enabled()
   {

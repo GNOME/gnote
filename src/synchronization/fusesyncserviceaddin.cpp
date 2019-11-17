@@ -99,9 +99,9 @@ void FuseSyncServiceAddin::post_sync_cleanup()
 bool FuseSyncServiceAddin::is_supported()
 {
   // Check for fusermount and child-specific executable
-  m_fuse_mount_exe_path = SyncUtils::obj().find_first_executable_in_path(fuse_mount_exe_name());
-  m_fuse_unmount_exe_path = SyncUtils::obj().find_first_executable_in_path("fusermount");
-  m_mount_exe_path = SyncUtils::obj().find_first_executable_in_path("mount");
+  m_fuse_mount_exe_path = sync_manager().utils().find_first_executable_in_path(fuse_mount_exe_name());
+  m_fuse_unmount_exe_path = sync_manager().utils().find_first_executable_in_path("fusermount");
+  m_mount_exe_path = sync_manager().utils().find_first_executable_in_path("mount");
 
   return m_fuse_mount_exe_path != "" && m_fuse_unmount_exe_path != "" && m_mount_exe_path != "";
 }
@@ -199,8 +199,8 @@ bool FuseSyncServiceAddin::mount_fuse(bool useStoredValues)
     return false;
   }
 
-  if(SyncUtils::obj().is_fuse_enabled() == false) {
-    if(SyncUtils::obj().enable_fuse() == false) {
+  if(sync_manager().utils().is_fuse_enabled() == false) {
+    if(sync_manager().utils().enable_fuse() == false) {
       DBG_OUT("User canceled or something went wrong enabling FUSE");
       throw GnoteSyncException(_("FUSE could not be enabled."));
     }

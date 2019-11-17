@@ -49,6 +49,10 @@ namespace sync {
         m_sync_manager = &sync_manager;
       }
 
+    virtual ISyncManager & sync_manager()
+      {
+        return *m_sync_manager;
+      }
     virtual SyncServer::Ptr create_sync_server() = 0;
     virtual void post_sync_cleanup() = 0;
     virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) = 0;

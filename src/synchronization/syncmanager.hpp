@@ -53,6 +53,10 @@ namespace sync {
       {
         return m_state;
       }
+    virtual SyncUtils & utils() override
+      {
+        return m_utils;
+      }
   protected:
     virtual void initialize_sync_service_addins(NoteManagerBase &);
     virtual void connect_system_signals();
@@ -82,6 +86,7 @@ namespace sync {
     NoteManagerBase & note_mgr();
     void get_synchronized_xml_bits(const Glib::ustring & noteXml, Glib::ustring & title, Glib::ustring & tags, Glib::ustring & content);
 
+    SyncUtils m_utils;
     IGnote & m_gnote;
     NoteManagerBase & m_note_manager;
     SyncState m_state;
