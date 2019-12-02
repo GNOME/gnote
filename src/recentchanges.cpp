@@ -84,7 +84,7 @@ namespace gnote {
     make_search_box();
     m_content_vbox.set_orientation(Gtk::ORIENTATION_VERTICAL);
     int content_y_attach = 0;
-    if(use_client_side_decorations()) {
+    if(use_client_side_decorations(m_preferences)) {
       set_titlebar(*static_cast<Gtk::HeaderBar*>(m_header_bar));
     }
     else {
@@ -205,7 +205,7 @@ namespace gnote {
     right_box->attach(*m_window_actions_button, 1, 0, 1, 1);
     right_box->show();
 
-    if(use_client_side_decorations()) {
+    if(use_client_side_decorations(m_preferences)) {
       Gtk::HeaderBar *header_bar = manage(new Gtk::HeaderBar);
       header_bar->set_show_close_button(true);
       header_bar->pack_start(*left_box);

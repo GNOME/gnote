@@ -105,10 +105,10 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
   return win;
 }
 
-bool MainWindow::use_client_side_decorations()
+bool MainWindow::use_client_side_decorations(Preferences & prefs)
 {
   if(s_use_client_side_decorations < 0) {
-    Glib::ustring setting = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(
+    Glib::ustring setting = prefs.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(
       Preferences::USE_CLIENT_SIDE_DECORATIONS);
     if(setting == "enabled") {
       s_use_client_side_decorations = 1;

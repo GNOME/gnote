@@ -27,6 +27,8 @@
 
 namespace gnote {
 
+class Preferences;
+
 class MainWindow
   : public Gtk::ApplicationWindow
   , public EmbeddableWidgetHost
@@ -37,7 +39,7 @@ public:
   static MainWindow *present_active(const Note::Ptr & note);
   static MainWindow *present_in_new_window(const Note::Ptr & note, bool close_on_esacpe);
   static MainWindow *present_default(const Note::Ptr & note);
-  static bool use_client_side_decorations();
+  static bool use_client_side_decorations(Preferences & prefs);
 
   explicit MainWindow(const Glib::ustring & title);
 
