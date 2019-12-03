@@ -62,13 +62,13 @@ MainWindow *MainWindow::present_active(const Note::Ptr & note)
   return NULL;
 }
 
-MainWindow *MainWindow::present_in_new_window(const Note::Ptr & note, bool close_on_esc)
+MainWindow *MainWindow::present_in_new_window(IGnote & g, const Note::Ptr & note, bool close_on_esc)
 {
   if(!note) {
     return NULL;
   }
   if(!MainWindow::present_active(note)) {
-    MainWindow & window = IGnote::obj().new_main_window();
+    MainWindow & window = g.new_main_window();
     window.present_note(note);
     window.present();
     window.close_on_escape(close_on_esc);

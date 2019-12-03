@@ -50,6 +50,7 @@ namespace gnote {
 
   NoteRecentChanges::NoteRecentChanges(IGnote & g, NoteManagerBase & m)
     : MainWindow(_("Gnote"))
+    , m_gnote(g)
     , m_note_manager(m)
     , m_preferences(g.preferences())
     , m_search_notes_widget(g, m)
@@ -367,7 +368,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    present_in_new_window(note, m_close_note_on_escape);
+    present_in_new_window(m_gnote, note, m_close_note_on_escape);
   }
 
   void NoteRecentChanges::on_delete_note()

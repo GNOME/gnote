@@ -27,6 +27,7 @@
 
 namespace gnote {
 
+class IGnote;
 class Preferences;
 
 class MainWindow
@@ -37,7 +38,7 @@ public:
   static MainWindow *get_owning(Gtk::Widget & widget);
   static void present_in(MainWindow & win, const Note::Ptr & note);
   static MainWindow *present_active(const Note::Ptr & note);
-  static MainWindow *present_in_new_window(const Note::Ptr & note, bool close_on_esacpe);
+  static MainWindow *present_in_new_window(IGnote & g, const Note::Ptr & note, bool close_on_esacpe);
   static MainWindow *present_default(const Note::Ptr & note);
   static bool use_client_side_decorations(Preferences & prefs);
 

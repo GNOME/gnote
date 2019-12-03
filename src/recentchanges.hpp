@@ -95,6 +95,7 @@ private:
   void add_action(const MainWindowAction::Ptr & action);
   void on_popover_widgets_changed();
 
+  IGnote             &m_gnote;
   NoteManagerBase    &m_note_manager;
   Preferences        &m_preferences;
   Gtk::Widget        *m_header_bar;
