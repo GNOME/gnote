@@ -65,7 +65,7 @@ void BacklinksNoteAddin::on_open_note(const Glib::VariantBase & param)
   Glib::ustring uri = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(param).get();
   gnote::NoteBase::Ptr note = get_note()->manager().find_by_uri(uri);
   if(note) {
-    gnote::MainWindow::present_in_new_window(std::static_pointer_cast<gnote::Note>(note),
+    gnote::MainWindow::present_in_new_window(ignote(), std::static_pointer_cast<gnote::Note>(note),
       ignote().preferences().get_schema_settings(gnote::Preferences::SCHEMA_GNOTE)->
         get_boolean(gnote::Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
   }
