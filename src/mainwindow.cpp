@@ -78,7 +78,7 @@ MainWindow *MainWindow::present_in_new_window(IGnote & g, const Note::Ptr & note
   return NULL;
 }
 
-MainWindow *MainWindow::present_default(const Note::Ptr & note)
+MainWindow *MainWindow::present_default(IGnote & g, const Note::Ptr & note)
 {
   if(!note) {
     return NULL;
@@ -87,17 +87,17 @@ MainWindow *MainWindow::present_default(const Note::Ptr & note)
   if(win) {
     return win;
   }
-  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   if(false == settings->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW)) {
     if (note->has_window()) {
       win = dynamic_cast<MainWindow*>(note->get_window()->host());
     }
     else {
-      win = &IGnote::obj().get_window_for_note();
+      win = &g.get_window_for_note();
     }
   }
   if(!win) {
-    win = &IGnote::obj().new_main_window();
+    win = &g.new_main_window();
     win->close_on_escape(settings->get_boolean(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
   }
   win->present_note(note);

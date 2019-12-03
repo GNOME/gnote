@@ -29,6 +29,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/expander.h>
 
+#include "ignote.hpp"
 #include "mainwindow.hpp"
 #include "notewindow.hpp"
 #include "noterenamedialog.hpp"
@@ -361,7 +362,7 @@ void NoteRenameDialog::on_notes_view_row_activated(
   if (!note)
     return;
 
-  MainWindow *window = MainWindow::present_default(std::static_pointer_cast<Note>(note));
+  MainWindow *window = MainWindow::present_default(IGnote::obj(), std::static_pointer_cast<Note>(note));
   if(window) {
     window->set_search_text(Glib::ustring::compose("\"%1\"", old_title));
     window->show_search_bar();

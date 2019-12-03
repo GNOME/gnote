@@ -1053,7 +1053,7 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      MainWindow::present_default(std::static_pointer_cast<Note>(link));
+      MainWindow::present_default(ignote(), std::static_pointer_cast<Note>(link));
       return true;
     }
 

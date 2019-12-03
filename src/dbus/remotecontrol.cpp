@@ -391,7 +391,7 @@ void RemoteControl::on_note_saved(const NoteBase::Ptr & note)
 
 MainWindow & RemoteControl::present_note(const NoteBase::Ptr & note)
 {
-  return *MainWindow::present_default(std::static_pointer_cast<Note>(note));
+  return *MainWindow::present_default(m_gnote, std::static_pointer_cast<Note>(note));
 }
 
 
