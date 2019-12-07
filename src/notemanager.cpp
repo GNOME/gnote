@@ -37,8 +37,9 @@
 
 namespace gnote {
 
-  NoteManager::NoteManager(Preferences & preferences)
-    : m_preferences(preferences)
+  NoteManager::NoteManager(IGnote & g)
+    : NoteManagerBase(g)
+    , m_preferences(g.preferences())
     , m_notebook_manager(*this)
     , m_addin_mgr(NULL)
     , m_note_archiver(*this)
@@ -93,7 +94,7 @@ namespace gnote {
     }
 
     m_notebook_manager.init();
-    IGnote::obj().signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
+    m_gnote.signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
   }
 
   NoteManager::~NoteManager()
@@ -111,7 +112,7 @@ namespace gnote {
 
   AddinManager *NoteManager::create_addin_manager()
   {
-    return new AddinManager(IGnote::obj(), *this, m_preferences, IGnote::conf_dir());
+    return new AddinManager(m_gnote, *this, m_preferences, IGnote::conf_dir());
   }
 
   void NoteManager::create_start_notes ()

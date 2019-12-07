@@ -29,6 +29,7 @@
 
 namespace gnote {
 
+class IGnote;
 class TrieController;
 
 class NoteManagerBase
@@ -40,7 +41,7 @@ public:
   static Glib::ustring get_note_template_content(const Glib::ustring & title);
   static Glib::ustring split_title_from_content(Glib::ustring title, Glib::ustring & body);
 
-  NoteManagerBase();
+  NoteManagerBase(IGnote & g);
   virtual ~NoteManagerBase();
 
   size_t trie_max_length();
@@ -112,6 +113,7 @@ protected:
   Glib::ustring make_new_file_name(const Glib::ustring & guid) const;
   virtual NoteBase::Ptr note_load(const Glib::ustring & file_name) = 0;
 
+  IGnote & m_gnote;
   NoteBase::List m_notes;
   Glib::ustring m_start_note_uri;
   Glib::ustring m_backup_dir;

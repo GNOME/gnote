@@ -146,7 +146,7 @@ namespace gnote {
 
     //create singleton objects
     m_preferences.init();
-    m_manager = new NoteManager(m_preferences);
+    m_manager = new NoteManager(*this);
     m_manager->init(note_path);
     m_action_manager.init();
     m_sync_manager = new sync::SyncManager(*this, default_note_manager());

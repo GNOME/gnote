@@ -40,7 +40,7 @@ namespace gnote {
     typedef std::shared_ptr<NoteManager> Ptr;
     typedef sigc::slot<void, const Note::Ptr &> NoteChangedSlot;
     
-    NoteManager(Preferences & preferences);
+    NoteManager(IGnote & g);
     ~NoteManager();
 
     void init(const Glib::ustring &);

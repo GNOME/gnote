@@ -88,8 +88,9 @@ Glib::ustring NoteManagerBase::sanitize_xml_content(const Glib::ustring & xml_co
 }
 
 
-NoteManagerBase::NoteManagerBase()
-  : m_trie_controller(NULL)
+NoteManagerBase::NoteManagerBase(IGnote & g)
+  : m_gnote(g)
+  , m_trie_controller(NULL)
 {
 }
 
@@ -434,7 +435,7 @@ NoteBase::Ptr NoteManagerBase::find_template_note() const
   auto notes = template_tag->get_notes();
   for(NoteBase *iter : notes) {
     NoteBase::Ptr note = iter->shared_from_this();
-    if(!IGnote::obj().notebook_manager().get_notebook_from_note(note)) {
+    if(!m_gnote.notebook_manager().get_notebook_from_note(note)) {
       template_note = note;
       break;
     }
