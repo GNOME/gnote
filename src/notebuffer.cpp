@@ -28,7 +28,6 @@
 
 #include "config.h"
 #include "debug.hpp"
-#include "ignote.hpp"
 #include "notebuffer.hpp"
 #include "notetag.hpp"
 #include "note.hpp"
@@ -56,15 +55,16 @@ namespace gnote {
 
   bool NoteBuffer::get_enable_auto_bulleted_lists() const
   {
-    return IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+    return m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
         Preferences::ENABLE_AUTO_BULLETED_LISTS);
   }
   
 
-  NoteBuffer::NoteBuffer(const NoteTagTable::Ptr & tags, Note & note_)
+  NoteBuffer::NoteBuffer(const NoteTagTable::Ptr & tags, Note & note_, Preferences & preferences)
     : Gtk::TextBuffer(tags)
     , m_undomanager(NULL)
     , m_note(note_)
+    , m_preferences(preferences)
   {
     m_undomanager = new UndoManager(this);
     signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));

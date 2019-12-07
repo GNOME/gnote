@@ -711,7 +711,7 @@ namespace gnote {
   {
     if(!m_buffer) {
       DBG_OUT("Creating buffer for %s", m_data.data().title().c_str());
-      m_buffer = NoteBuffer::create(get_tag_table(), *this);
+      m_buffer = NoteBuffer::create(get_tag_table(), *this, IGnote::obj().preferences());
       m_data.set_buffer(m_buffer);
 
       m_buffer->signal_changed().connect(

@@ -40,6 +40,7 @@ namespace sharp {
 
 namespace gnote {
 
+  class Preferences;
   class Note;
   class UndoManager;
 
@@ -53,9 +54,9 @@ public:
   typedef sigc::signal<void, int, bool> ChangeDepthHandler;
 
   bool get_enable_auto_bulleted_lists() const;
-  static Ptr create(const NoteTagTable::Ptr & table, Note & note)
+  static Ptr create(const NoteTagTable::Ptr & table, Note & note, Preferences & preferences)
     {
-      return Ptr(new NoteBuffer(table, note));
+      return Ptr(new NoteBuffer(table, note, preferences));
     }
   ~NoteBuffer();
 
@@ -115,7 +116,7 @@ public:
   static bool is_bullet(gunichar c);
   void select_note_body();
 protected: 
-  NoteBuffer(const NoteTagTable::Ptr &, Note &);
+  NoteBuffer(const NoteTagTable::Ptr &, Note &, Preferences &);
 
   virtual void on_apply_tag(const Glib::RefPtr<Gtk::TextTag> & tag,
                        const Gtk::TextIter &,  const Gtk::TextIter &) override;
@@ -153,6 +154,7 @@ private:
 
   // The note that owns this buffer
   Note &                       m_note;
+  Preferences &                m_preferences;
 };
 
 class NoteBufferArchiver
