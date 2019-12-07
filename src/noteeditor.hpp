@@ -27,9 +27,11 @@
 #include <glibmm/refptr.h>
 #include <gtkmm/textview.h>
 
-#include "preferences.hpp"
 
 namespace gnote {
+
+class Preferences;
+
 
 class NoteEditor
   : public Gtk::TextView
@@ -37,7 +39,7 @@ class NoteEditor
 public:
   typedef Glib::RefPtr<NoteEditor> Ptr;
 
-  NoteEditor(const Glib::RefPtr<Gtk::TextBuffer> & buffer);
+  NoteEditor(const Glib::RefPtr<Gtk::TextBuffer> & buffer, Preferences & preferences);
   static int default_margin()
     {
       return 8;
@@ -61,6 +63,8 @@ private:
   bool button_pressed (GdkEventButton * ev);
   void on_paste_start();
   void on_paste_end();
+
+  Preferences & m_preferences;
 };
 
 

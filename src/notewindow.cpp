@@ -116,7 +116,7 @@ namespace gnote {
     m_template_widget = make_template_bar();
 
     // The main editor widget
-    m_editor = manage(new NoteEditor(note.get_buffer()));
+    m_editor = manage(new NoteEditor(note.get_buffer(), IGnote::obj().preferences()));
     m_editor->signal_populate_popup().connect(sigc::mem_fun(*this, &NoteWindow::on_populate_popup));
     m_editor->show();
 
