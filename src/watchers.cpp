@@ -291,7 +291,7 @@ namespace gnote {
 
   void NoteSpellChecker::on_note_opened ()
   {
-    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences()
+    Glib::RefPtr<Gio::Settings> settings = ignote().preferences()
       .get_schema_settings(Preferences::SCHEMA_GNOTE);
     settings->signal_changed()
       .connect(sigc::mem_fun(*this, &NoteSpellChecker::on_enable_spellcheck_changed));
@@ -384,8 +384,7 @@ namespace gnote {
     if (key != Preferences::ENABLE_SPELLCHECKING) {
       return;
     }
-    bool value = IGnote::obj().preferences()
-      .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(key);
+    bool value = ignote().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(key);
     
     if (value) {
       attach ();
