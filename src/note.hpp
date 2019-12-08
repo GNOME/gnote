@@ -34,6 +34,7 @@
 
 namespace gnote {
 
+class IGnote;
 class NoteManager;
 
 class NoteWindow;
@@ -98,13 +99,15 @@ public:
 
   static Note::Ptr create_new_note(const Glib::ustring & title,
                                    const Glib::ustring & filename,
-                                   NoteManager & manager);
+                                   NoteManager & manager,
+                                   IGnote & g);
 
   static Note::Ptr create_existing_note(NoteData *data,
                                         Glib::ustring filepath,
-                                        NoteManager & manager);
+                                        NoteManager & manager,
+                                        IGnote & g);
   virtual void delete_note() override;
-  static Note::Ptr load(const Glib::ustring &, NoteManager &);
+  static Note::Ptr load(const Glib::ustring &, NoteManager &, IGnote &);
   virtual void save() override;
   virtual void queue_save(ChangeType c) override;
   using NoteBase::remove_tag;
@@ -182,7 +185,7 @@ private:
   void on_note_window_embedded();
   void on_note_window_foregrounded();
 
-  Note(NoteData * data, const Glib::ustring & filepath, NoteManager & manager);
+  Note(NoteData * data, const Glib::ustring & filepath, NoteManager & manager, IGnote & g);
 
   struct ChildWidgetData
   {
@@ -196,6 +199,7 @@ private:
     Gtk::Widget *widget;
   };
 
+  IGnote &                   m_gnote;
   NoteDataBufferSynchronizer m_data;
   bool                       m_save_needed;
   bool                       m_is_deleting;

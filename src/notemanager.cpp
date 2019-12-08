@@ -182,7 +182,7 @@ namespace gnote {
 
     for(auto file_path : files) {
       try {
-        Note::Ptr note = Note::load(file_path, *this);
+        Note::Ptr note = Note::load(file_path, *this, m_gnote);
         add_note(note);
       } 
       catch (const std::exception & e) {
@@ -269,7 +269,7 @@ namespace gnote {
 
   NoteBase::Ptr NoteManager::note_load(const Glib::ustring & file_name)
   {
-    return Note::load(file_name, *this);
+    return Note::load(file_name, *this, m_gnote);
   }
 
 
@@ -299,7 +299,7 @@ namespace gnote {
 
   NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, const Glib::ustring & file_name)
   {
-    return Note::create_new_note(title, file_name, *this);
+    return Note::create_new_note(title, file_name, *this, m_gnote);
   }
 
   NoteBase::Ptr NoteManager::get_or_create_template_note()

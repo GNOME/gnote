@@ -43,7 +43,8 @@
 
 namespace gnote {
 
-  class Note;
+class IconManager;
+
 
 class NoteTextMenu
   : public Gtk::PopoverMenu
@@ -132,7 +133,7 @@ class NoteWindow
   , public HasActions
 {
 public:
-  NoteWindow(Note &);
+  NoteWindow(Note &, IGnote &);
   ~NoteWindow();
 
   virtual Glib::ustring get_name() const override;
@@ -222,8 +223,8 @@ public:
       return m_enabled;
     }
 private:
-  static Glib::RefPtr<Gio::Icon> get_icon_pin_active();
-  static Glib::RefPtr<Gio::Icon> get_icon_pin_down();
+  static Glib::RefPtr<Gio::Icon> get_icon_pin_active(IconManager & icon_manager);
+  static Glib::RefPtr<Gio::Icon> get_icon_pin_down(IconManager & icon_manager);
 
   void on_delete_button_clicked(const Glib::VariantBase&);
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
@@ -247,6 +248,7 @@ private:
   void on_text_button_clicked();
 
   Note                        & m_note;
+  IGnote                      & m_gnote;
   Glib::ustring                 m_name;
   int                           m_height;
   int                           m_width;

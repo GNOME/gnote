@@ -246,8 +246,9 @@ namespace gnote {
     }
   }
 
-  Note::Note(NoteData * _data, const Glib::ustring & filepath, NoteManager & _manager)
+  Note::Note(NoteData * _data, const Glib::ustring & filepath, NoteManager & _manager, IGnote & g)
     : NoteBase(_data, filepath, _manager)
+    , m_gnote(g)
     , m_data(_data)
     , m_save_needed(false)
     , m_is_deleting(false)
@@ -270,24 +271,10 @@ namespace gnote {
     delete m_window;
   }
 
-  /// <summary>
-  /// Creates a New Note with the given values.
-  /// </summary>
-  /// <param name="title">
-  /// A <see cref="System.String"/>
-  /// </param>
-  /// <param name="filepath">
-  /// A <see cref="System.String"/>
-  /// </param>
-  /// <param name="manager">
-  /// A <see cref="NoteManager"/>
-  /// </param>
-  /// <returns>
-  /// A <see cref="Note"/>
-  /// </returns>
   Note::Ptr Note::create_new_note(const Glib::ustring & title,
                                   const Glib::ustring & filename,
-                                  NoteManager & manager)
+                                  NoteManager & manager,
+                                  IGnote & g)
   {
     NoteData * note_data = new NoteData(url_from_path(filename));
     note_data->title() = title;
@@ -295,12 +282,10 @@ namespace gnote {
     note_data->create_date() = date;
     note_data->set_change_date(date);
       
-    return Note::Ptr(new Note(note_data, filename, manager));
+    return Note::Ptr(new Note(note_data, filename, manager, g));
   }
 
-  Note::Ptr Note::create_existing_note(NoteData *data,
-                                 Glib::ustring filepath,
-                                 NoteManager & manager)
+  Note::Ptr Note::create_existing_note(NoteData *data, Glib::ustring filepath, NoteManager & manager, IGnote & g)
   {
     if (!data->change_date().is_valid()) {
       sharp::DateTime d(sharp::file_modification_time(filepath));
@@ -315,7 +300,7 @@ namespace gnote {
         data->create_date() = d;
       }
     }
-    return Note::Ptr(new Note(data, filepath, manager));
+    return Note::Ptr(new Note(data, filepath, manager, g));
   }
 
   void Note::delete_note()
@@ -347,11 +332,11 @@ namespace gnote {
   }
 
   
-  Note::Ptr Note::load(const Glib::ustring & read_file, NoteManager & manager)
+  Note::Ptr Note::load(const Glib::ustring & read_file, NoteManager & manager, IGnote & g)
   {
     NoteData *data = new NoteData(url_from_path(read_file));
     manager.note_archiver().read_file(read_file, *data);
-    return create_existing_note(data, read_file, manager);
+    return create_existing_note(data, read_file, manager, g);
   }
 
   
@@ -552,12 +537,12 @@ namespace gnote {
     const Note::Ptr self = std::static_pointer_cast<Note>(shared_from_this());
 
     if (!linking_notes.empty()) {
-      Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
+      Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
       const NoteRenameBehavior behavior
         = static_cast<NoteRenameBehavior>(settings->get_int(Preferences::NOTE_RENAME_BEHAVIOR));
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
-        NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, self);
+        NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, self, m_gnote);
         dlg->signal_response().connect([this, dlg, old_title, self](int response) {
           process_rename_link_update_end(response, dlg, old_title, self);
         });
@@ -586,7 +571,7 @@ namespace gnote {
       NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
       const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
       if(Gtk::RESPONSE_CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
-        Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
+        Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
         settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, selected_behavior);
       }
 
@@ -711,7 +696,7 @@ namespace gnote {
   {
     if(!m_buffer) {
       DBG_OUT("Creating buffer for %s", m_data.data().title().c_str());
-      m_buffer = NoteBuffer::create(get_tag_table(), *this, IGnote::obj().preferences());
+      m_buffer = NoteBuffer::create(get_tag_table(), *this, m_gnote.preferences());
       m_data.set_buffer(m_buffer);
 
       m_buffer->signal_changed().connect(
@@ -732,7 +717,7 @@ namespace gnote {
   NoteWindow * Note::create_window()
   {
     if(!m_window) {
-      m_window = new NoteWindow(*this);
+      m_window = new NoteWindow(*this, m_gnote);
       m_window->signal_delete_event().connect(
         sigc::mem_fun(*this, &Note::on_window_destroyed));
 
@@ -760,7 +745,7 @@ namespace gnote {
       m_note_window_embedded = true;
     }
 
-    IGnote::obj().notebook_manager().active_notes_notebook()->add_note(std::static_pointer_cast<Note>(shared_from_this()));
+    m_gnote.notebook_manager().active_notes_notebook()->add_note(std::static_pointer_cast<Note>(shared_from_this()));
   }
 
   void Note::on_note_window_foregrounded()
@@ -781,7 +766,7 @@ namespace gnote {
 
   bool Note::is_pinned() const
   {
-    Glib::ustring pinned_uris = IGnote::obj().preferences()
+    Glib::ustring pinned_uris = m_gnote.preferences()
       .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(Preferences::MENU_PINNED_NOTES);
     return pinned_uris.find(uri()) != Glib::ustring::npos;
   }
@@ -790,7 +775,7 @@ namespace gnote {
   void Note::set_pinned(bool pinned) const
   {
     Glib::ustring new_pinned;
-    Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
+    Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
     Glib::ustring old_pinned = settings->get_string(Preferences::MENU_PINNED_NOTES);
     bool is_currently_pinned = old_pinned.find(uri()) != Glib::ustring::npos;
 
@@ -810,7 +795,7 @@ namespace gnote {
       }
     }
     settings->set_string(Preferences::MENU_PINNED_NOTES, new_pinned);
-    IGnote::obj().notebook_manager().signal_note_pin_status_changed(*this, pinned);
+    m_gnote.notebook_manager().signal_note_pin_status_changed(*this, pinned);
   }
 
   void Note::enabled(bool is_enabled)

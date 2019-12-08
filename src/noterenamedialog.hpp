@@ -32,6 +32,9 @@
 
 namespace gnote {
 
+class IGnote;
+
+
 // Values should match with those in data/gnote.schemas.in
 enum NoteRenameBehavior {
   NOTE_RENAME_ALWAYS_SHOW_DIALOG = 0,
@@ -79,7 +82,8 @@ public:
 
   NoteRenameDialog(const NoteBase::List & notes,
                    const Glib::ustring & old_title,
-                   const NoteBase::Ptr & renamed_note);
+                   const NoteBase::Ptr & renamed_note,
+                   IGnote & g);
   MapPtr get_notes() const;
   NoteRenameBehavior get_selected_behavior() const;
 
@@ -100,6 +104,7 @@ private:
   void on_select_all_button_clicked(bool select);
   void on_toggle_cell_toggled(const Glib::ustring & p);
 
+  IGnote & m_gnote;
   ModelColumnRecord m_model_column_record;
   Glib::RefPtr<Gtk::ListStore> m_notes_model;
   Gtk::Button m_dont_rename_button;

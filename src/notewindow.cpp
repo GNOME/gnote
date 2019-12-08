@@ -51,14 +51,14 @@
 
 namespace gnote {
 
-  Glib::RefPtr<Gio::Icon> NoteWindow::get_icon_pin_active()
+  Glib::RefPtr<Gio::Icon> NoteWindow::get_icon_pin_active(IconManager & icon_manager)
   {
-    return IGnote::obj().icon_manager().get_icon(IconManager::PIN_ACTIVE, 22);
+    return icon_manager.get_icon(IconManager::PIN_ACTIVE, 22);
   }
 
-  Glib::RefPtr<Gio::Icon> NoteWindow::get_icon_pin_down()
+  Glib::RefPtr<Gio::Icon> NoteWindow::get_icon_pin_down(IconManager & icon_manager)
   {
-    return IGnote::obj().icon_manager().get_icon(IconManager::PIN_DOWN, 22);
+    return icon_manager.get_icon(IconManager::PIN_DOWN, 22);
   }
 
 
@@ -91,8 +91,9 @@ namespace gnote {
 
 
 
-  NoteWindow::NoteWindow(Note & note)
+  NoteWindow::NoteWindow(Note & note, IGnote & g)
     : m_note(note)
+    , m_gnote(g)
     , m_name(note.get_title())
     , m_height(450)
     , m_width(600)
@@ -116,7 +117,7 @@ namespace gnote {
     m_template_widget = make_template_bar();
 
     // The main editor widget
-    m_editor = manage(new NoteEditor(note.get_buffer(), IGnote::obj().preferences()));
+    m_editor = manage(new NoteEditor(note.get_buffer(), g.preferences()));
     m_editor->signal_populate_popup().connect(sigc::mem_fun(*this, &NoteWindow::on_populate_popup));
     m_editor->show();
 
@@ -190,7 +191,7 @@ namespace gnote {
     important_action->set_state(Glib::Variant<bool>::create(m_note.is_pinned()));
     m_important_note_slot = important_action->signal_change_state()
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
-    IGnote::obj().notebook_manager().signal_note_pin_status_changed
+    m_gnote.notebook_manager().signal_note_pin_status_changed
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
   }
@@ -225,8 +226,7 @@ namespace gnote {
 
   void NoteWindow::hint_size(int & width, int & height)
   {
-    if (IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
-          Preferences::AUTOSIZE_NOTE_WINDOW)) {
+    if(m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::AUTOSIZE_NOTE_WINDOW)) {
       width = m_width;
       height = m_height;
     }
