@@ -514,7 +514,7 @@ void SearchNotesWidget::update_results()
 
   for(const NoteBase::Ptr & note_iter : m_manager.get_notes()) {
     Note::Ptr note(std::static_pointer_cast<Note>(note_iter));
-    Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true);
+    Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true, m_gnote.preferences());
 
     Gtk::TreeIter iter = m_store->append();
     iter->set_value(0, get_note_icon(m_gnote.icon_manager()));  /* icon */
@@ -1189,8 +1189,7 @@ void SearchNotesWidget::delete_note(const Note::Ptr & note)
 
 void SearchNotesWidget::add_note(const Note::Ptr & note)
 {
-  Glib::ustring nice_date =
-    utils::get_pretty_print_date(note->change_date(), true);
+  Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true, m_gnote.preferences());
   Gtk::TreeIter iter = m_store->append();
   iter->set_value(m_column_types.icon, get_note_icon(m_gnote.icon_manager()));
   iter->set_value(m_column_types.title, note->get_title());

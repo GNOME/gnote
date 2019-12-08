@@ -42,7 +42,6 @@
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
 #include "sharp/datetime.hpp"
-#include "ignote.hpp"
 #include "preferences.hpp"
 #include "note.hpp"
 #include "utils.hpp"
@@ -183,12 +182,11 @@ namespace gnote {
       dialog.run ();
     }
 
-    Glib::ustring get_pretty_print_date(const sharp::DateTime & date, bool show_time)
+    Glib::ustring get_pretty_print_date(const sharp::DateTime & date, bool show_time, Preferences & preferences)
     {
       bool use_12h = false;
       if(show_time) {
-        use_12h = IGnote::obj().preferences().get_schema_settings(
-          Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE)->get_string(
+        use_12h = preferences.get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE)->get_string(
             Preferences::DESKTOP_GNOME_CLOCK_FORMAT) == "12h";
       }
       return get_pretty_print_date(date, show_time, use_12h);

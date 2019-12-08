@@ -46,6 +46,10 @@ namespace sharp {
 }
 
 namespace gnote {
+
+class Preferences;
+
+
   namespace utils {
 
     void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
@@ -55,7 +59,7 @@ namespace gnote {
     void show_opening_location_error(Gtk::Window * parent,
                                      const Glib::ustring & url,
                                      const Glib::ustring & error);
-    Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time);
+    Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time, Preferences & preferences);
     Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time, bool use_12h);
 
     void main_context_invoke(const sigc::slot<void> & slot);
