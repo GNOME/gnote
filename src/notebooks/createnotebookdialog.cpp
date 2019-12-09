@@ -34,8 +34,9 @@
 namespace gnote {
   namespace notebooks {
 
-    CreateNotebookDialog::CreateNotebookDialog(Gtk::Window *parent, GtkDialogFlags f)
+    CreateNotebookDialog::CreateNotebookDialog(Gtk::Window *parent, GtkDialogFlags f, IGnote & g)
       : utils::HIGMessageDialog(parent, f, Gtk::MESSAGE_OTHER, Gtk::BUTTONS_NONE)
+      , m_gnote(g)
     {
       set_title(_("Create Notebook"));
       Gtk::Table *table = manage(new Gtk::Table (2, 2, false));
@@ -64,7 +65,7 @@ namespace gnote {
       set_extra_widget(table);
       
       add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, false);
-      add_button (IGnote::obj().icon_manager().get_icon(IconManager::NOTEBOOK_NEW, 16),
+      add_button (m_gnote.icon_manager().get_icon(IconManager::NOTEBOOK_NEW, 16),
                   // Translation note: This is the Create button in the Create
                   // New Note Dialog.
                   _("C_reate"), Gtk::RESPONSE_OK, true);
@@ -92,7 +93,7 @@ namespace gnote {
     void CreateNotebookDialog::on_name_entry_changed()
     {
       bool nameTaken = false;
-      if(IGnote::obj().notebook_manager().notebook_exists(get_notebook_name())) {
+      if(m_gnote.notebook_manager().notebook_exists(get_notebook_name())) {
         m_errorLabel.show ();
         nameTaken = true;
       } 

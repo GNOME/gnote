@@ -315,9 +315,7 @@ namespace gnote {
                                                               const Note::List & notesToAdd)
     {
       // Prompt the user for the name of a new notebook
-      CreateNotebookDialog dialog(parent,
-                                  (GtkDialogFlags)(GTK_DIALOG_MODAL
-                                                   | GTK_DIALOG_DESTROY_WITH_PARENT));
+      CreateNotebookDialog dialog(parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), IGnote::obj());
       
       
       int response = dialog.run ();

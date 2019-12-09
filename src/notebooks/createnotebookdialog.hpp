@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,6 +31,9 @@
 #include "utils.hpp"
 
 namespace gnote {
+
+class IGnote;
+
   namespace notebooks {
 
 
@@ -38,13 +41,14 @@ class CreateNotebookDialog
   : public utils::HIGMessageDialog
 {
 public:
-  CreateNotebookDialog(Gtk::Window *parent, GtkDialogFlags f);
+  CreateNotebookDialog(Gtk::Window *parent, GtkDialogFlags f, IGnote & g);
 
   Glib::ustring get_notebook_name();
   void set_notebook_name(const Glib::ustring &);
 
 private:
   void on_name_entry_changed();
+  IGnote &                  m_gnote;
   Gtk::Entry                m_nameEntry;
   Gtk::Label                m_errorLabel;
   Glib::RefPtr<Gdk::Pixbuf> m_newNotebookIcon;
