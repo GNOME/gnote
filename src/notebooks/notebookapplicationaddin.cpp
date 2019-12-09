@@ -57,7 +57,7 @@ namespace gnote {
 
     void NotebookApplicationAddin::initialize ()
     {
-      IActionManager & am(IGnote::obj().action_manager());
+      IActionManager & am(ignote().action_manager());
 
       NoteManager & nm(note_manager());
 
@@ -100,7 +100,7 @@ namespace gnote {
 
     void NotebookApplicationAddin::on_tag_added(const NoteBase & note, const Tag::Ptr& tag)
     {
-      NotebookManager & manager = IGnote::obj().notebook_manager();
+      NotebookManager & manager = ignote().notebook_manager();
       if (manager.is_adding_notebook()) {
         return;
       }
@@ -133,7 +133,7 @@ namespace gnote {
       Glib::ustring normalizedNotebookName =
         sharp::string_substring(normalizedTagName, megaPrefix.size());
 
-      NotebookManager & manager = IGnote::obj().notebook_manager();
+      NotebookManager & manager = ignote().notebook_manager();
       Notebook::Ptr notebook = manager.get_notebook(normalizedNotebookName);
       if (!notebook) {
         return;
