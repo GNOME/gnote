@@ -35,7 +35,11 @@
 #include "tag.hpp"
 
 namespace gnote {
-  namespace notebooks {
+
+class IGnote;
+
+
+namespace notebooks {
 
 
 class NotebookManager
@@ -80,10 +84,9 @@ public:
   Notebook::Ptr get_notebook_from_note(const NoteBase::Ptr &);
   Notebook::Ptr get_notebook_from_tag(const Tag::Ptr &);
   static bool is_notebook_tag(const Tag::Ptr &);
-  static Notebook::Ptr prompt_create_new_notebook(Gtk::Window *);
-  static Notebook::Ptr prompt_create_new_notebook(Gtk::Window *,
-                                                  const Note::List & notesToAdd);
-  static void prompt_delete_notebook(Gtk::Window *, const Notebook::Ptr &);
+  static Notebook::Ptr prompt_create_new_notebook(IGnote &, Gtk::Window *);
+  static Notebook::Ptr prompt_create_new_notebook(IGnote &, Gtk::Window *, const Note::List & notesToAdd);
+  static void prompt_delete_notebook(IGnote &, Gtk::Window *, const Notebook::Ptr &);
   bool move_note_to_notebook (const Note::Ptr &, const Notebook::Ptr &);
 
   NotebookEventHandler & signal_note_added_to_notebook()
@@ -132,7 +135,8 @@ private:
   NoteManager                        & m_note_manager;
 };
 
-  }
+}
+
 }
 
 #endif

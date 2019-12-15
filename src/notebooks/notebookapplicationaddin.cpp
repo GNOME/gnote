@@ -94,7 +94,7 @@ namespace gnote {
 
     void NotebookApplicationAddin::on_new_notebook_action(const Glib::VariantBase&)
     {
-      NotebookManager::prompt_create_new_notebook (NULL);
+      NotebookManager::prompt_create_new_notebook(ignote(), NULL);
     }
 
 

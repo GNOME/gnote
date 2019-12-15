@@ -124,7 +124,7 @@ namespace notebooks {
   {
     Note::List noteList;
     noteList.push_back(get_note());
-    NotebookManager::prompt_create_new_notebook(dynamic_cast<Gtk::Window*>(get_window()->host()), noteList);
+    NotebookManager::prompt_create_new_notebook(ignote(), dynamic_cast<Gtk::Window*>(get_window()->host()), noteList);
     get_window()->signal_popover_widgets_changed();
   }
 

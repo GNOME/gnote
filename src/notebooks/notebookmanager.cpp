@@ -305,17 +305,16 @@ namespace gnote {
     }
 
 
-    Notebook::Ptr NotebookManager::prompt_create_new_notebook(Gtk::Window *parent)
+    Notebook::Ptr NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window *parent)
     {
-      return prompt_create_new_notebook(parent, Note::List());
+      return prompt_create_new_notebook(g, parent, Note::List());
     }
 
 
-    Notebook::Ptr NotebookManager::prompt_create_new_notebook(Gtk::Window *parent,
-                                                              const Note::List & notesToAdd)
+    Notebook::Ptr NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window *parent, const Note::List & notesToAdd)
     {
       // Prompt the user for the name of a new notebook
-      CreateNotebookDialog dialog(parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), IGnote::obj());
+      CreateNotebookDialog dialog(parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), g);
       
       
       int response = dialog.run ();
@@ -323,7 +322,7 @@ namespace gnote {
       if (response != Gtk::RESPONSE_OK)
         return Notebook::Ptr();
       
-      Notebook::Ptr notebook = IGnote::obj().notebook_manager().get_or_create_notebook (notebookName);
+      Notebook::Ptr notebook = g.notebook_manager().get_or_create_notebook (notebookName);
       if (!notebook) {
         DBG_OUT ("Could not create notebook: %s", notebookName.c_str());
       } 
@@ -335,7 +334,7 @@ namespace gnote {
           // Move all the specified notesToAdd into the new notebook
           for(Note::List::const_iterator iter = notesToAdd.begin();
               iter != notesToAdd.end(); ++iter) {
-            IGnote::obj().notebook_manager().move_note_to_notebook (*iter, notebook);
+            g.notebook_manager().move_note_to_notebook (*iter, notebook);
           }
         }
       }
@@ -343,17 +342,7 @@ namespace gnote {
       return notebook;
     }
     
-    /// <summary>
-    /// Prompt the user and delete the notebok (if they say so).
-    /// </summary>
-    /// <param name="parent">
-    /// A <see cref="Gtk.Window"/>
-    /// </param>
-    /// <param name="notebook">
-    /// A <see cref="Notebook"/>
-    /// </param>
-    void NotebookManager::prompt_delete_notebook(Gtk::Window * parent, 
-                                                 const Notebook::Ptr & notebook)
+    void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, const Notebook::Ptr & notebook)
     {
       // Confirmation Dialog
       utils::HIGMessageDialog dialog(parent,
@@ -373,11 +362,11 @@ namespace gnote {
       // Grab the template note before removing all the notebook tags
       Note::Ptr templateNote = notebook->get_template_note ();
       
-      IGnote::obj().notebook_manager().delete_notebook(notebook);
+      g.notebook_manager().delete_notebook(notebook);
 
       // Delete the template note
       if (templateNote) {
-        IGnote::obj().notebook_manager().note_manager().delete_note(templateNote);
+        g.notebook_manager().note_manager().delete_note(templateNote);
       }
     }
 
