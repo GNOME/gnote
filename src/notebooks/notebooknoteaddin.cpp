@@ -75,7 +75,7 @@ namespace notebooks {
     auto note_win = get_window();
     note_win->signal_foregrounded.connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_window_foregrounded));
     note_win->signal_backgrounded.connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_note_window_backgrounded));
-    IGnote::obj().notebook_manager().signal_notebook_list_changed
+    ignote().notebook_manager().signal_notebook_list_changed
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_notebooks_changed));
   }
 
@@ -85,7 +85,7 @@ namespace notebooks {
     EmbeddableWidgetHost *host = get_window()->host();
     m_new_notebook_cid = host->find_action("new-notebook")->signal_activate()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_new_notebook_menu_item));
-    Notebook::Ptr current_notebook = IGnote::obj().notebook_manager().get_notebook_from_note(get_note());
+    Notebook::Ptr current_notebook = ignote().notebook_manager().get_notebook_from_note(get_note());
     Glib::ustring name;
     if(current_notebook) {
       name = current_notebook->get_name();
@@ -135,9 +135,9 @@ namespace notebooks {
     Glib::ustring name = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(state).get();
     Notebook::Ptr notebook;
     if(name.size()) {
-      notebook = IGnote::obj().notebook_manager().get_notebook(name);
+      notebook = ignote().notebook_manager().get_notebook(name);
     }
-    IGnote::obj().notebook_manager().move_note_to_notebook(get_note(), notebook);
+    ignote().notebook_manager().move_note_to_notebook(get_note(), notebook);
   }
 
 
@@ -173,7 +173,7 @@ namespace notebooks {
   std::vector<Gtk::ModelButton*> NotebookNoteAddin::get_notebook_menu_items() const
   {
     std::vector<Gtk::ModelButton*> items;
-    Glib::RefPtr<Gtk::TreeModel> model = IGnote::obj().notebook_manager().get_notebooks();
+    Glib::RefPtr<Gtk::TreeModel> model = ignote().notebook_manager().get_notebooks();
     Gtk::TreeIter iter;
 
     iter = model->children().begin();
