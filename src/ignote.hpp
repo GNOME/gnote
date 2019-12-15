@@ -37,7 +37,6 @@ namespace sync {
 
 
 class IGnote
-  : public base::Singleton<IGnote>
 {
 public:
   static Glib::ustring cache_dir();
