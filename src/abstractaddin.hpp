@@ -49,9 +49,9 @@ public:
   bool is_disposing() const
     { return m_disposing; }
 
-  IGnote & ignote()
+  IGnote & ignote() const
     {
-      return *m_gnote;
+      return const_cast<IGnote&>(*m_gnote);
     }
 protected:
   virtual void dispose(bool disposing);
