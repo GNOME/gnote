@@ -84,7 +84,7 @@ Glib::ustring UnfiledNotesNotebook::get_normalized_name() const
 
 bool UnfiledNotesNotebook::contains_note(const Note::Ptr & note, bool include_system)
 {
-  bool contains = !IGnote::obj().notebook_manager().get_notebook_from_note(note);
+  bool contains = m_note_manager.notebook_manager().get_notebook_from_note(note) != nullptr;
   if(!contains || include_system) {
     return contains;
   }
@@ -93,7 +93,7 @@ bool UnfiledNotesNotebook::contains_note(const Note::Ptr & note, bool include_sy
 
 bool UnfiledNotesNotebook::add_note(const Note::Ptr & note)
 {
-  IGnote::obj().notebook_manager().move_note_to_notebook(note, Notebook::Ptr());
+  m_note_manager.notebook_manager().move_note_to_notebook(note, Notebook::Ptr());
   return true;
 }
 
