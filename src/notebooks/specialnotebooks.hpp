@@ -31,6 +31,9 @@
 
 
 namespace gnote {
+
+class IconManager;
+
 namespace notebooks {
 
 
@@ -40,7 +43,7 @@ class SpecialNotebook
 public:
   typedef std::shared_ptr<SpecialNotebook> Ptr;
 
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() = 0;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) = 0;
 protected:
   SpecialNotebook(NoteManager & m, const Glib::ustring &s)
     : Notebook(m, s, true)
@@ -60,7 +63,7 @@ public:
   virtual Glib::ustring get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
   virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
 };
 
 
@@ -73,7 +76,7 @@ public:
   virtual Glib::ustring get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
   virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
 };
 
 
@@ -86,7 +89,7 @@ public:
   virtual Glib::ustring get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
   virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
 };
 
 
@@ -99,7 +102,7 @@ public:
   virtual Glib::ustring get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
   virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon() override;
+  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
   bool empty();
   sigc::signal<void> signal_size_changed;
 private:

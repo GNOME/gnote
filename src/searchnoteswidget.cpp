@@ -298,7 +298,7 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
   Gtk::CellRendererPixbuf *crp = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
   notebooks::SpecialNotebook::Ptr special_nb = std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook);
   if(special_nb) {
-    crp->property_pixbuf() = special_nb->get_icon();
+    crp->property_pixbuf() = special_nb->get_icon(m_gnote.icon_manager());
   }
   else {
     crp->property_pixbuf() = m_gnote.icon_manager().get_icon(IconManager::NOTEBOOK, 22);
