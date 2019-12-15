@@ -80,7 +80,7 @@ gnote::sync::SyncServer::Ptr GvfsSyncServiceAddin::create_sync_server()
     if(!path->query_exists())
       sharp::directory_create(path);
 
-    server = gnote::sync::FileSystemSyncServer::create(path);
+    server = gnote::sync::FileSystemSyncServer::create(path, ignote().preferences());
   }
   else {
     throw std::logic_error("GvfsSyncServiceAddin.create_sync_server() called without being configured");
