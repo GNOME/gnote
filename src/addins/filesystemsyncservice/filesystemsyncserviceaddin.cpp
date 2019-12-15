@@ -73,7 +73,7 @@ gnote::sync::SyncServer::Ptr FileSystemSyncServiceAddin::create_sync_server()
     }
 
     auto path = Gio::File::create_for_path(m_path);
-    server = gnote::sync::FileSystemSyncServer::create(path);
+    server = gnote::sync::FileSystemSyncServer::create(path, ignote().preferences());
   }
   else {
     throw std::logic_error("FileSystemSyncServiceAddin.create_sync_server() called without being configured");
