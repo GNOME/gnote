@@ -21,7 +21,6 @@
 #define _IGNOTE_HPP_
 
 #include "mainwindow.hpp"
-#include "base/singleton.hpp"
 
 namespace gnote {
 

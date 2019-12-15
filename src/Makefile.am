@@ -70,7 +70,6 @@ DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 libgnote_la_LDFLAGS = -release @LIBGNOTE_RELEASE@ -version-info @LIBGNOTE_VERSION_INFO@
 libgnote_la_LIBADD = $(LIBGNOTE_LIBS)
 libgnote_la_SOURCES = \
-	base/singleton.hpp \
 	base/macros.hpp \
 	gnome_keyring/keyringexception.hpp \
 	gnome_keyring/ring.hpp gnome_keyring/ring.cpp \

@@ -28,7 +28,6 @@
 #include <glibmm/ustring.h>
 #include <sigc++/signal.h>
 
-#include "base/singleton.hpp"
 #include "tag.hpp"
 #include "sharp/datetime.hpp"
 #include "sharp/xmlreader.hpp"
