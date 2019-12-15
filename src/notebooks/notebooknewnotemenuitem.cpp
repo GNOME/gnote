@@ -36,12 +36,13 @@
 namespace gnote {
   namespace notebooks {
 
-    NotebookNewNoteMenuItem::NotebookNewNoteMenuItem(const Notebook::Ptr & notebook)
+    NotebookNewNoteMenuItem::NotebookNewNoteMenuItem(const Notebook::Ptr & notebook, IGnote & g)
       // TRANSLATORS: %1: format placeholder for the notebook name
       : Gtk::ImageMenuItem(Glib::ustring::compose(_("New \"%1\" Note"), notebook->get_name()))
       , m_notebook(notebook)
+      , m_gnote(g)
     {
-      set_image(*manage(new Gtk::Image(IGnote::obj().icon_manager().get_icon(IconManager::NOTE_NEW, 16))));
+      set_image(*manage(new Gtk::Image(g.icon_manager().get_icon(IconManager::NOTE_NEW, 16))));
       signal_activate().connect(sigc::mem_fun(*this, &NotebookNewNoteMenuItem::on_activated));
     }
 
@@ -55,8 +56,8 @@ namespace gnote {
       
       // Look for the template note and create a new note
       Note::Ptr note = m_notebook->create_notebook_note ();
-      MainWindow::present_in_new_window(IGnote::obj(), note,
-        IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
+      MainWindow::present_in_new_window(m_gnote, note,
+        m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
           Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
     }
 

@@ -24,17 +24,17 @@
 
 #include "notebooks/notebookmenuitem.hpp"
 #include "notebooks/notebookmanager.hpp"
-#include "ignote.hpp"
 
 
 
 namespace gnote {
   namespace notebooks {
 
-    NotebookMenuItem::NotebookMenuItem(const Note::Ptr & note, const Notebook::Ptr & notebook)
+    NotebookMenuItem::NotebookMenuItem(const Note::Ptr & note, const Notebook::Ptr & notebook, NotebookManager & manager)
       : Gtk::CheckMenuItem(notebook ? notebook->get_name() : _("No notebook"))
       , m_note(note)
       , m_notebook(notebook)
+      , m_notebook_manager(manager)
     {
       signal_activate().connect(sigc::mem_fun(*this, &NotebookMenuItem::on_activated));
     }
@@ -46,7 +46,7 @@ namespace gnote {
         return;
       }
 
-      IGnote::obj().notebook_manager().move_note_to_notebook(m_note, m_notebook);
+      m_notebook_manager.move_note_to_notebook(m_note, m_notebook);
     }
 
     // the menu item is comparable.

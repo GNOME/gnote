@@ -29,6 +29,8 @@
 #include "notebooks/notebook.hpp"
 
 namespace gnote {
+  class IGnote;
+
   namespace notebooks {
 
     class NotebookMenuItem;
@@ -37,7 +39,7 @@ class NotebookNewNoteMenuItem
   : public Gtk::ImageMenuItem
 {
 public:
-  NotebookNewNoteMenuItem(const Notebook::Ptr &);
+  NotebookNewNoteMenuItem(const Notebook::Ptr &, IGnote &);
   void on_activated();
   Notebook::Ptr get_notebook() const
     {
@@ -49,6 +51,7 @@ public:
   bool operator>(const NotebookMenuItem &);
 private:
   Notebook::Ptr m_notebook;
+  IGnote & m_gnote;
 };
 
 

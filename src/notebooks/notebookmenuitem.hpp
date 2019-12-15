@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2015 Aurimas Cernius
+ * Copyright (C) 2015,2019 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -33,11 +33,14 @@
 namespace gnote {
   namespace notebooks {
 
+    class NotebookManager;
+
+
     class NotebookMenuItem
       : public Gtk::CheckMenuItem
     {
     public:
-      NotebookMenuItem(const Note::Ptr &, const Notebook::Ptr &);
+      NotebookMenuItem(const Note::Ptr &, const Notebook::Ptr &, NotebookManager &);
 
       const Note::Ptr & get_note() const
         {
@@ -56,6 +59,7 @@ namespace gnote {
 
       Note::Ptr m_note;
       Notebook::Ptr m_notebook;
+      NotebookManager & m_notebook_manager;
     };
 
   }
