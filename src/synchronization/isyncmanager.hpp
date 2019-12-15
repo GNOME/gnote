@@ -37,7 +37,6 @@ public:
   sharp::TimeSpan duration;
   int revision;
 
-  SyncLockInfo();
   explicit SyncLockInfo(const Glib::ustring & client);
   Glib::ustring hash_string();
 };

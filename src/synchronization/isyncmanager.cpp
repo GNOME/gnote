@@ -28,15 +28,6 @@ namespace gnote {
 namespace sync {
 
 
-SyncLockInfo::SyncLockInfo()
-  : client_id(IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID))
-  , transaction_id(sharp::uuid().string())
-  , renew_count(0)
-  , duration(0, 2, 0) // default of 2 minutes
-  , revision(0)
-{
-}
-
 SyncLockInfo::SyncLockInfo(const Glib::ustring & client)
   : client_id(client)
   , transaction_id(sharp::uuid().string())

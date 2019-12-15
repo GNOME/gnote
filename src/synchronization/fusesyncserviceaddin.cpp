@@ -80,7 +80,7 @@ SyncServer::Ptr FuseSyncServiceAddin::create_sync_server()
   if(is_configured()) {
     if(!is_mounted() && !mount_fuse(true)) // mount_fuse may throw GnoteSyncException!
       throw std::runtime_error(("Could not mount " + m_mount_path).c_str());
-    server = FileSystemSyncServer::create(Gio::File::create_for_path(m_mount_path));
+    server = FileSystemSyncServer::create(Gio::File::create_for_path(m_mount_path), ignote().preferences());
   }
   else {
     throw new std::logic_error("create_sync_server called without being configured");
@@ -256,7 +256,7 @@ bool FuseSyncServiceAddin::mount_fuse(bool useStoredValues)
 
 int FuseSyncServiceAddin::get_timeout_ms()
 {
-  Glib::RefPtr<Gio::Settings> settings = IGnote::obj().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
+  Glib::RefPtr<Gio::Settings> settings = ignote().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   try {
     return settings->get_int(Preferences::SYNC_FUSE_MOUNT_TIMEOUT);
   }

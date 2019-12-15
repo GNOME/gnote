@@ -26,6 +26,7 @@
 
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
+#include "preferences.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
 #include "sharp/uuid.hpp"
@@ -52,23 +53,16 @@ int str_to_int(const Glib::ustring & s)
 namespace gnote {
 namespace sync {
 
-SyncServer::Ptr FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path)
+SyncServer::Ptr FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs)
 {
-  return SyncServer::Ptr(new FileSystemSyncServer(path));
+  return SyncServer::Ptr(new FileSystemSyncServer(path,
+    prefs.get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID)));
 }
 
 
 SyncServer::Ptr FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id)
 {
   return SyncServer::Ptr(new FileSystemSyncServer(path, client_id));
-}
-
-
-FileSystemSyncServer::FileSystemSyncServer(const Glib::RefPtr<Gio::File> & localSyncPath)
-  : m_server_path(localSyncPath)
-  , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
-{
-  common_ctor();
 }
 
 
@@ -472,7 +466,7 @@ int FileSystemSyncServer::latest_revision()
 
 SyncLockInfo FileSystemSyncServer::current_sync_lock()
 {
-  SyncLockInfo syncLockInfo;
+  SyncLockInfo syncLockInfo(m_sync_lock.client_id);
 
   xmlDocPtr xml_doc = NULL;
   if(is_valid_xml_file(m_lock_path, &xml_doc)) {
