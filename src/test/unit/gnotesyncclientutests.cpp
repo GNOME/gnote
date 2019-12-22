@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 
 #include <UnitTest++/UnitTest++.h>
 
+#include "test/testgnote.hpp"
 #include "test/testnotemanager.hpp"
 #include "test/testsyncclient.hpp"
 
@@ -67,8 +68,9 @@ Glib::ustring create_manifest()
 TEST(manifest_parsing)
 {
   Glib::ustring test_manifest = create_manifest();
-  
-  test::NoteManager manager(test::NoteManager::test_notes_dir());
+
+  test::Gnote g;
+  test::NoteManager manager(test::NoteManager::test_notes_dir(), g);
   test::SyncClient client(manager);
   client.set_manifest_path(test_manifest);
   client.reparse();
