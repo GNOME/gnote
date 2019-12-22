@@ -37,7 +37,7 @@
 namespace gnote {
   namespace notebooks {
 
-    NotebookManager::NotebookManager(NoteManager & manager)
+    NotebookManager::NotebookManager(NoteManagerBase & manager)
       : m_adding_notebook(false)
       , m_active_notes(new ActiveNotesNotebook(manager))
       , m_note_manager(manager)

@@ -47,10 +47,10 @@ class NotebookManager
 public:
   typedef sigc::signal<void, const Note &, const Notebook::Ptr &> NotebookEventHandler;
 
-  NotebookManager(NoteManager &);
+  NotebookManager(NoteManagerBase &);
   void init();
 
-  NoteManager & note_manager() const
+  NoteManagerBase & note_manager() const
     {
       return m_note_manager;
     }
@@ -132,7 +132,7 @@ private:
   NotebookEventHandler                 m_note_added_to_notebook;
   NotebookEventHandler                 m_note_removed_from_notebook;
   Notebook::Ptr                        m_active_notes;
-  NoteManager                        & m_note_manager;
+  NoteManagerBase                    & m_note_manager;
 };
 
 }
