@@ -53,14 +53,7 @@ namespace notebooks {
     return note->contains_tag(tag);
   }
 
-  /// <summary>
-  /// Construct a new Notebook with a given name
-  /// </summary>
-  /// <param name="name">
-  /// A <see cref="System.String"/>.  This is the name that will be used
-  /// to identify the notebook.
-  /// </param>
-  Notebook::Notebook(NoteManager & manager, const Glib::ustring & name, bool is_special)
+  Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, bool is_special)
     : m_note_manager(manager)
   {
     // is special assume the name as is, and we don't want a tag.
@@ -74,13 +67,7 @@ namespace notebooks {
     }
   }
 
-  /// <summary>
-  /// Construct a new Notebook with the specified notebook system tag.
-  /// </summary>
-  /// <param name="notebookTag">
-  /// A <see cref="Tag"/>.  This must be a system notebook tag.
-  /// </param>
-  Notebook::Notebook(NoteManager & manager, const Tag::Ptr & notebookTag)
+  Notebook::Notebook(NoteManagerBase & manager, const Tag::Ptr & notebookTag)
     : m_note_manager(manager)
   {
   // Parse the notebook name from the tag name

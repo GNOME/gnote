@@ -39,8 +39,8 @@ class Notebook
 public:
   typedef std::shared_ptr<Notebook> Ptr;
   static const char * NOTEBOOK_TAG_PREFIX;
-  Notebook(NoteManager &, const Glib::ustring &, bool is_special = false);
-  Notebook(NoteManager &, const Tag::Ptr &);
+  Notebook(NoteManagerBase &, const Glib::ustring &, bool is_special = false);
+  Notebook(NoteManagerBase &, const Tag::Ptr &);
   Glib::ustring get_name() const
     { return m_name; }
   void set_name(const Glib::ustring &);
@@ -59,7 +59,7 @@ protected:
   Tag::Ptr template_tag() const;
   bool is_template_note(const Note::Ptr &);
 
-  NoteManager & m_note_manager;
+  NoteManagerBase & m_note_manager;
 private:
   static Tag::Ptr s_template_tag;
 
