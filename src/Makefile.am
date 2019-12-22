@@ -33,6 +33,7 @@ gnoteunittests_SOURCES = \
 	synchronization/silentui.cpp synchronization/silentui.hpp \
 	synchronization/syncmanager.cpp synchronization/syncmanager.hpp \
 	test/runner.cpp \
+	test/testgnote.cpp test/testgnote.hpp \
 	test/testnote.cpp test/testnote.hpp \
 	test/testnotemanager.cpp test/testnotemanager.hpp \
 	test/testsyncaddin.cpp test/testsyncaddin.hpp \
