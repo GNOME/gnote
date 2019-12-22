@@ -20,6 +20,7 @@
 
 #include <UnitTest++/UnitTest++.h>
 
+#include "test/testgnote.hpp"
 #include "test/testnotemanager.hpp"
 
 
@@ -31,7 +32,9 @@ SUITE(NoteManager)
     char *notes_dir = g_mkdtemp(notes_dir_tmpl);
     CHECK(notes_dir != NULL);
 
-    test::NoteManager manager(notes_dir);
+    test::Gnote g;
+    test::NoteManager manager(notes_dir, g);
+    g.notebook_manager(&manager.notebook_manager());
     manager.create();
     manager.create();
     gnote::NoteBase::Ptr test_note = manager.create("test note");
