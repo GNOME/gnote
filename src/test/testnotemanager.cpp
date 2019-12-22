@@ -30,8 +30,10 @@ Glib::ustring NoteManager::test_notes_dir()
 }
 
 
-NoteManager::NoteManager(const Glib::ustring & notesdir)
-  : m_note_archiver(*this)
+NoteManager::NoteManager(const Glib::ustring & notesdir, gnote::IGnote & g)
+  : gnote::NoteManagerBase(g)
+  , m_notebook_manager(*this)
+  , m_note_archiver(*this)
 {
   Glib::ustring backup = notesdir + "/Backup";
   init(notesdir, backup);

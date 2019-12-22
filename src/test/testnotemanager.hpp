@@ -17,7 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "ignote.hpp"
 #include "notemanagerbase.hpp"
+#include "notebooks/notebookmanager.hpp"
 #include "test/testtagmanager.hpp"
 
 
@@ -29,8 +31,12 @@ class NoteManager
 public:
   static Glib::ustring test_notes_dir();
 
-  explicit NoteManager(const Glib::ustring & notes_dir);
+  NoteManager(const Glib::ustring & notes_dir, gnote::IGnote & g);
 
+  virtual gnote::notebooks::NotebookManager & notebook_manager() override
+    {
+      return m_notebook_manager;
+    }
   virtual gnote::NoteArchiver & note_archiver() override
     {
       return m_note_archiver;
@@ -47,6 +53,7 @@ protected:
   virtual gnote::NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) override;
   virtual gnote::NoteBase::Ptr note_load(const Glib::ustring & file_name) override;
 private:
+  gnote::notebooks::NotebookManager m_notebook_manager;
   gnote::NoteArchiver m_note_archiver;
   TagManager m_tag_manager;
 };
