@@ -31,7 +31,7 @@ class SyncManager
   : public gnote::sync::SyncManager
 {
 public:
-  SyncManager(gnote::NoteManagerBase & note_manager, const Glib::ustring & sync_path);
+  SyncManager(gnote::IGnote & g, gnote::NoteManagerBase & note_manager, const Glib::ustring & sync_path);
   virtual void reset_client() override;
   virtual void perform_synchronization(const gnote::sync::SyncUI::Ptr & sync_ui) override;
   virtual void resolve_conflict(gnote::sync::SyncTitleConflictResolution resolution) override;

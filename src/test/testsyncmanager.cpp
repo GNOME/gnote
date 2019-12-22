@@ -23,8 +23,8 @@
 
 namespace test {
 
-SyncManager::SyncManager(gnote::NoteManagerBase & manager, const Glib::ustring & sync_path)
-  : gnote::sync::SyncManager(manager)
+SyncManager::SyncManager(gnote::IGnote & g, gnote::NoteManagerBase & manager, const Glib::ustring & sync_path)
+  : gnote::sync::SyncManager(g, manager)
   , m_sync_path(sync_path)
 {
   m_client = gnote::sync::SyncClient::Ptr(new test::SyncClient(manager));
