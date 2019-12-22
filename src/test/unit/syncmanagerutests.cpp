@@ -28,6 +28,7 @@
 #include "sharp/files.hpp"
 #include "sharp/directory.hpp"
 #include "synchronization/silentui.hpp"
+#include "test/testgnote.hpp"
 #include "test/testnote.hpp"
 #include "test/testnotemanager.hpp"
 #include "test/testsyncmanager.hpp"
@@ -44,6 +45,8 @@ SUITE(SyncManagerTests)
     Glib::ustring syncdir;
     Glib::ustring manifest1;
     Glib::ustring manifest2;
+    test::Gnote gnote1;
+    test::Gnote gnote2;
     test::NoteManager *manager1;
     test::NoteManager *manager2;
     test::SyncManager *sync_manager1;
@@ -61,15 +64,19 @@ SUITE(SyncManagerTests)
       manifest1 = notes_dir1 + "/manifest.xml";
       manifest2 = notes_dir2 + "/manifest.xml";
 
-      manager1 = new test::NoteManager(notesdir1);
+      manager1 = new test::NoteManager(notesdir1, gnote1);
+      gnote1.notebook_manager(&manager1->notebook_manager());
       create_note(*manager1, "note1", "content1");
       create_note(*manager1, "note2", "content2");
       create_note(*manager1, "note3", "content3");
 
-      manager2 = new test::NoteManager(notesdir2);
+      manager2 = new test::NoteManager(notesdir2, gnote2);
+      gnote2.notebook_manager(&manager2->notebook_manager());
 
-      sync_manager1 = new test::SyncManager(*manager1, syncdir);
-      sync_manager2 = new test::SyncManager(*manager2, syncdir);
+      sync_manager1 = new test::SyncManager(gnote1, *manager1, syncdir);
+      gnote1.sync_manager(sync_manager1);
+      sync_manager2 = new test::SyncManager(gnote2, *manager2, syncdir);
+      gnote2.sync_manager(sync_manager2);
     }
 
     ~Fixture()
@@ -115,9 +122,9 @@ SUITE(SyncManagerTests)
     }
   };
 
-#define FIRST_SYNC(sync_manager, note_manager, manifest, client, ui) \
+#define FIRST_SYNC(ignote, sync_manager, note_manager, manifest, client, ui) \
   test::SyncClient::Ptr client = std::dynamic_pointer_cast<test::SyncClient>(sync_manager->get_client(manifest)); \
-  gnote::sync::SilentUI::Ptr ui = gnote::sync::SilentUI::create(*note_manager); \
+  gnote::sync::SilentUI::Ptr ui = gnote::sync::SilentUI::create(ignote, *note_manager); \
   sync_manager->perform_synchronization(ui);
 
 #define UPDATE_NOTE(manager, title, new_title, new_content) \
@@ -131,7 +138,7 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, clean_sync)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client, sync_ui)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client, sync_ui)
 
     Glib::ustring syncednotesdir = syncdir + "/0/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
@@ -145,8 +152,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, first_sync_existing_store)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
-    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     get_notes_in_dir(notesdir2);
     REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
@@ -157,10 +164,10 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, merge_two_clients)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
 
     create_note(*manager2, "note4", "content4");
-    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
+    FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     Glib::ustring syncednotesdir = syncdir + "/0/1";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
@@ -171,8 +178,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, download_new_notes_from_server)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
-    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // create new note and sync again
     create_note(*manager2, "note4", "content4");
@@ -193,7 +200,7 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, upload_note_update)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
 
     // update note and sync again
     UPDATE_NOTE(manager1, "note2", "note4", "updated content");
@@ -206,7 +213,7 @@ SUITE(SyncManagerTests)
     files = sharp::directory_get_directories(syncednotesdir);
     CHECK_EQUAL(2, files.size());
 
-    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
+    FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     get_notes_in_dir(notesdir2);
     REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
@@ -216,8 +223,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, download_note_update)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
-    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // update note and sync again
     UPDATE_NOTE(manager1, "note2", "note4", "updated content");
@@ -236,14 +243,14 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, delete_note)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
 
     // remove note
     auto note2 = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
     manager1->delete_note(note2);
     sync_manager1->perform_synchronization(sync_ui1);
 
-    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
+    FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
     get_notes_in_dir(notesdir2);
     REQUIRE CHECK_EQUAL(3, files.size()); // 2 downloaded notes + template
     CHECK(find_note_in_files("note1"));
@@ -253,8 +260,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, note_modification_conflict)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
-    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // update note and sync again
     UPDATE_NOTE(manager1, "note2", "note4", "updated content");
@@ -278,8 +285,8 @@ SUITE(SyncManagerTests)
 
   TEST_FIXTURE(Fixture, conflict_with_deletion_on_server)
   {
-    FIRST_SYNC(sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
-    FIRST_SYNC(sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
+    FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
+    FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // remove note
     auto note2 = std::dynamic_pointer_cast<test::Note>(manager2->find("note2"));
