@@ -45,7 +45,7 @@ public:
 
   virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) = 0;
 protected:
-  SpecialNotebook(NoteManager & m, const Glib::ustring &s)
+  SpecialNotebook(NoteManagerBase & m, const Glib::ustring &s)
     : Notebook(m, s, true)
     {
     }
@@ -59,7 +59,7 @@ class AllNotesNotebook
 {
 public:
   typedef std::shared_ptr<AllNotesNotebook> Ptr;
-  AllNotesNotebook(NoteManager &);
+  AllNotesNotebook(NoteManagerBase &);
   virtual Glib::ustring get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
   virtual bool        add_note(const Note::Ptr &) override;
@@ -72,7 +72,7 @@ class UnfiledNotesNotebook
 {
 public:
   typedef std::shared_ptr<UnfiledNotesNotebook> Ptr;
-  UnfiledNotesNotebook(NoteManager &);
+  UnfiledNotesNotebook(NoteManagerBase &);
   virtual Glib::ustring get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
   virtual bool        add_note(const Note::Ptr &) override;
@@ -85,7 +85,7 @@ class PinnedNotesNotebook
 {
 public:
   typedef std::shared_ptr<PinnedNotesNotebook> Ptr;
-  PinnedNotesNotebook(NoteManager &);
+  PinnedNotesNotebook(NoteManagerBase &);
   virtual Glib::ustring get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
   virtual bool        add_note(const Note::Ptr &) override;
@@ -98,7 +98,7 @@ class ActiveNotesNotebook
 {
 public:
   typedef std::shared_ptr<ActiveNotesNotebook> Ptr;
-  ActiveNotesNotebook(NoteManager &);
+  ActiveNotesNotebook(NoteManagerBase &);
   virtual Glib::ustring get_normalized_name() const override;
   virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
   virtual bool        add_note(const Note::Ptr &) override;

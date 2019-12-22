@@ -43,7 +43,7 @@ Note::Ptr SpecialNotebook::get_template_note() const
 }
 
 
-AllNotesNotebook::AllNotesNotebook(NoteManager & manager)
+AllNotesNotebook::AllNotesNotebook(NoteManagerBase & manager)
   : SpecialNotebook(manager, _("All"))
 {
 }
@@ -72,7 +72,7 @@ Glib::RefPtr<Gdk::Pixbuf> AllNotesNotebook::get_icon(IconManager & m)
 }
 
 
-UnfiledNotesNotebook::UnfiledNotesNotebook(NoteManager & manager)
+UnfiledNotesNotebook::UnfiledNotesNotebook(NoteManagerBase & manager)
   : SpecialNotebook(manager, _("Unfiled"))
 {
 }
@@ -103,7 +103,7 @@ Glib::RefPtr<Gdk::Pixbuf> UnfiledNotesNotebook::get_icon(IconManager & m)
 }
 
 
-PinnedNotesNotebook::PinnedNotesNotebook(NoteManager & manager)
+PinnedNotesNotebook::PinnedNotesNotebook(NoteManagerBase & manager)
   : SpecialNotebook(manager, _("Important"))
 {
 }
@@ -130,7 +130,7 @@ Glib::RefPtr<Gdk::Pixbuf> PinnedNotesNotebook::get_icon(IconManager & m)
 }
 
 
-ActiveNotesNotebook::ActiveNotesNotebook(NoteManager & manager)
+ActiveNotesNotebook::ActiveNotesNotebook(NoteManagerBase & manager)
   : SpecialNotebook(manager, _("Active"))
 {
   manager.signal_note_deleted
