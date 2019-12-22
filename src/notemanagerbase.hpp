@@ -29,6 +29,12 @@
 
 namespace gnote {
 
+namespace notebooks {
+
+class NotebookManager;
+
+}
+
 class IGnote;
 class TrieController;
 
@@ -44,6 +50,7 @@ public:
   NoteManagerBase(IGnote & g);
   virtual ~NoteManagerBase();
 
+  virtual notebooks::NotebookManager & notebook_manager() = 0;
   size_t trie_max_length();
   TrieHit<NoteBase::WeakPtr>::ListPtr find_trie_matches(const Glib::ustring &);
 

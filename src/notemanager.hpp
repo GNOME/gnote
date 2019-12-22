@@ -41,11 +41,11 @@ namespace gnote {
     typedef sigc::slot<void, const Note::Ptr &> NoteChangedSlot;
     
     NoteManager(IGnote & g);
-    ~NoteManager();
+    virtual ~NoteManager();
 
     void init(const Glib::ustring &);
 
-    notebooks::NotebookManager & notebook_manager()
+    virtual notebooks::NotebookManager & notebook_manager() override
       {
         return m_notebook_manager;
       }
