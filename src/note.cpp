@@ -247,7 +247,7 @@ namespace gnote {
   }
 
   Note::Note(NoteData * _data, const Glib::ustring & filepath, NoteManager & _manager, IGnote & g)
-    : NoteBase(_data, filepath, _manager)
+    : NoteBase(filepath, _manager)
     , m_gnote(g)
     , m_data(_data)
     , m_save_needed(false)

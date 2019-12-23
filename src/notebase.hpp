@@ -194,7 +194,7 @@ public:
   static Glib::ustring url_from_path(const Glib::ustring &);
   static std::vector<Glib::ustring> parse_tags(const xmlNodePtr tagnodes);
 
-  NoteBase(NoteData *_data, const Glib::ustring & filepath, NoteManagerBase & manager);
+  NoteBase(const Glib::ustring & filepath, NoteManagerBase & manager);
 
   NoteManagerBase & manager()
     {
