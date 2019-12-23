@@ -60,7 +60,7 @@ LT_INIT([disable-static])
 
 AC_LANG_CPLUSPLUS
 AC_LANG_COMPILER_REQUIRE
-AX_CXX_COMPILE_STDCXX_11([], [mandatory])
+AX_CXX_COMPILE_STDCXX_14([], [mandatory])
 
 AC_CHECK_PROG(HAVE_DESKTOP_FILE_VALIDATE, [desktop-file-validate], [yes], [no])
 if test $HAVE_DESKTOP_FILE_VALIDATE == "no"; then
