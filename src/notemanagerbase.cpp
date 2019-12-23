@@ -189,12 +189,12 @@ NoteBase::List NoteManagerBase::get_notes_linking_to(const Glib::ustring & title
   return result;
 }
 
-void NoteManagerBase::add_note(const NoteBase::Ptr & note)
+void NoteManagerBase::add_note(NoteBase::Ptr note)
 {
   if(note) {
     note->signal_renamed.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_rename));
     note->signal_saved.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_save));
-    m_notes.push_back(note);
+    m_notes.push_back(std::move(note));
   }
 }
 

@@ -106,7 +106,7 @@ protected:
   virtual void post_load();
   virtual void migrate_notes(const Glib::ustring & old_note_dir);
   /** add the note to the manager and setup signals */
-  void add_note(const NoteBase::Ptr &);
+  void add_note(NoteBase::Ptr);
   void on_note_rename(const NoteBase::Ptr & note, const Glib::ustring & old_title);
   void on_note_save(const NoteBase::Ptr & note);
   virtual NoteBase::Ptr create_note_from_template(const Glib::ustring & title,
