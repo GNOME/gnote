@@ -105,6 +105,8 @@ public:
                                         Glib::ustring filepath,
                                         NoteManager & manager,
                                         IGnote & g);
+
+  Note(std::unique_ptr<NoteData> _data, const Glib::ustring & filepath, NoteManager & manager, IGnote & g);
   virtual void delete_note() override;
   static Note::Ptr load(const Glib::ustring &, NoteManager &, IGnote &);
   virtual void save() override;
@@ -183,8 +185,6 @@ private:
                                       const Glib::ustring & old_title, const Note::Ptr & self);
   void on_note_window_embedded();
   void on_note_window_foregrounded();
-
-  Note(std::unique_ptr<NoteData> _data, const Glib::ustring & filepath, NoteManager & manager, IGnote & g);
 
   struct ChildWidgetData
   {
