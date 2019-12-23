@@ -42,7 +42,6 @@ namespace gnote {
 
 NoteDataBufferSynchronizerBase::~NoteDataBufferSynchronizerBase()
 {
-  delete m_data;
 }
 
 const Glib::ustring & NoteDataBufferSynchronizerBase::text()
@@ -85,7 +84,7 @@ std::vector<Glib::ustring> NoteBase::parse_tags(const xmlNodePtr tagnodes)
 }
 
 
-NoteBase::NoteBase(NoteData *, const Glib::ustring & filepath, NoteManagerBase & _manager)
+NoteBase::NoteBase(const Glib::ustring & filepath, NoteManagerBase & _manager)
   : m_manager(_manager)
   , m_file_path(filepath)
   , m_enabled(true)

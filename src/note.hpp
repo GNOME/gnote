@@ -45,9 +45,8 @@ class NoteDataBufferSynchronizer
   : public NoteDataBufferSynchronizerBase
 {
 public:
-  // takes ownership
-  NoteDataBufferSynchronizer(NoteData * _data)
-    : NoteDataBufferSynchronizerBase(_data)
+  NoteDataBufferSynchronizer(std::unique_ptr<NoteData> _data)
+    : NoteDataBufferSynchronizerBase(std::move(_data))
     {
     }
 
@@ -102,7 +101,7 @@ public:
                                    NoteManager & manager,
                                    IGnote & g);
 
-  static Note::Ptr create_existing_note(NoteData *data,
+  static Note::Ptr create_existing_note(std::unique_ptr<NoteData> data,
                                         Glib::ustring filepath,
                                         NoteManager & manager,
                                         IGnote & g);
@@ -185,7 +184,7 @@ private:
   void on_note_window_embedded();
   void on_note_window_foregrounded();
 
-  Note(NoteData * data, const Glib::ustring & filepath, NoteManager & manager, IGnote & g);
+  Note(std::unique_ptr<NoteData> _data, const Glib::ustring & filepath, NoteManager & manager, IGnote & g);
 
   struct ChildWidgetData
   {

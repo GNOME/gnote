@@ -246,10 +246,10 @@ namespace gnote {
     }
   }
 
-  Note::Note(NoteData * _data, const Glib::ustring & filepath, NoteManager & _manager, IGnote & g)
+  Note::Note(std::unique_ptr<NoteData> _data, const Glib::ustring & filepath, NoteManager & _manager, IGnote & g)
     : NoteBase(filepath, _manager)
     , m_gnote(g)
-    , m_data(_data)
+    , m_data(std::move(_data))
     , m_save_needed(false)
     , m_is_deleting(false)
     , m_note_window_embedded(false)
@@ -257,9 +257,8 @@ namespace gnote {
     , m_window(NULL)
     , m_tag_table(NULL)
   {
-    for(NoteData::TagMap::const_iterator iter = _data->tags().begin();
-        iter != _data->tags().end(); ++iter) {
-      add_tag(iter->second);
+    for(const auto & iter : m_data.data().tags()) {
+      add_tag(iter.second);
     }
     m_save_timeout = new utils::InterruptableTimeout();
     m_save_timeout->signal_timeout.connect(sigc::mem_fun(*this, &Note::on_save_timeout));
@@ -276,16 +275,16 @@ namespace gnote {
                                   NoteManager & manager,
                                   IGnote & g)
   {
-    NoteData * note_data = new NoteData(url_from_path(filename));
+    auto note_data = std::make_unique<NoteData>(url_from_path(filename));
     note_data->title() = title;
     sharp::DateTime date(sharp::DateTime::now());
     note_data->create_date() = date;
     note_data->set_change_date(date);
       
-    return Note::Ptr(new Note(note_data, filename, manager, g));
+    return Note::Ptr(new Note(std::move(note_data), filename, manager, g));
   }
 
-  Note::Ptr Note::create_existing_note(NoteData *data, Glib::ustring filepath, NoteManager & manager, IGnote & g)
+  Note::Ptr Note::create_existing_note(std::unique_ptr<NoteData> data, Glib::ustring filepath, NoteManager & manager, IGnote & g)
   {
     if (!data->change_date().is_valid()) {
       sharp::DateTime d(sharp::file_modification_time(filepath));
@@ -300,7 +299,7 @@ namespace gnote {
         data->create_date() = d;
       }
     }
-    return Note::Ptr(new Note(data, filepath, manager, g));
+    return Note::Ptr(new Note(std::move(data), filepath, manager, g));
   }
 
   void Note::delete_note()
@@ -334,9 +333,9 @@ namespace gnote {
   
   Note::Ptr Note::load(const Glib::ustring & read_file, NoteManager & manager, IGnote & g)
   {
-    NoteData *data = new NoteData(url_from_path(read_file));
+    auto data = std::make_unique<NoteData>(url_from_path(read_file));
     manager.note_archiver().read_file(read_file, *data);
-    return create_existing_note(data, read_file, manager, g);
+    return create_existing_note(std::move(data), read_file, manager, g);
   }
 
   

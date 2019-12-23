@@ -155,8 +155,8 @@ private:
 class NoteDataBufferSynchronizerBase
 {
 public:
-  NoteDataBufferSynchronizerBase(NoteData *_data)
-    : m_data(_data)
+  NoteDataBufferSynchronizerBase(std::unique_ptr<NoteData> && _data)
+    : m_data(std::move(_data))
     {}
   virtual ~NoteDataBufferSynchronizerBase();
   const NoteData & data() const
@@ -178,7 +178,7 @@ public:
   virtual const Glib::ustring & text();
   virtual void set_text(const Glib::ustring & t);
 private:
-  NoteData *m_data;
+  std::unique_ptr<NoteData> m_data;
 };
 
 
