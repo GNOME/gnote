@@ -41,13 +41,13 @@ NoteManager::NoteManager(const Glib::ustring & notesdir, gnote::IGnote & g)
 
 gnote::NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, const Glib::ustring & file_name)
 {
-  gnote::NoteData *note_data = new gnote::NoteData(gnote::NoteBase::url_from_path(file_name));
+  auto note_data = std::make_unique<gnote::NoteData>(gnote::NoteBase::url_from_path(file_name));
   note_data->title() = title;
   sharp::DateTime date(sharp::DateTime::now());
   note_data->create_date() = date;
   note_data->set_change_date(date);
 
-  return Note::Ptr(new Note(note_data, file_name, *this));
+  return std::make_shared<Note>(std::move(note_data), file_name, *this);
 }
 
 gnote::NoteBase::Ptr NoteManager::note_load(const Glib::ustring & file_name)

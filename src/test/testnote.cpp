@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2018 Aurimas Cernius
+ * Copyright (C) 2014,2018-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +22,9 @@
 
 namespace test {
 
-Note::Note(gnote::NoteData *_data, const Glib::ustring & filepath, gnote::NoteManagerBase & manager_)
-  : gnote::NoteBase(_data, filepath, manager_)
-  , m_data_synchronizer(_data)
+Note::Note(std::unique_ptr<gnote::NoteData> _data, const Glib::ustring & filepath, gnote::NoteManagerBase & manager_)
+  : gnote::NoteBase(filepath, manager_)
+  , m_data_synchronizer(std::move(_data))
 {
 }
 

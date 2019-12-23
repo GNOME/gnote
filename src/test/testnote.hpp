@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2018 Aurimas Cernius
+ * Copyright (C) 2014,2018-2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ class Note
   : public gnote::NoteBase
 {
 public:
-  Note(gnote::NoteData *_data, const Glib::ustring & filepath, gnote::NoteManagerBase & manager);
+  Note(std::unique_ptr<gnote::NoteData> _data, const Glib::ustring & filepath, gnote::NoteManagerBase & manager);
   void set_change_type(gnote::ChangeType c);
 protected:
   virtual const gnote::NoteDataBufferSynchronizerBase & data_synchronizer() const;
