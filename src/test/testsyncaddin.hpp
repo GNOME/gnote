@@ -32,7 +32,7 @@ class SyncAddin
 {
 public:
   SyncAddin(const Glib::ustring & sync_path);
-  virtual gnote::sync::SyncServer::Ptr create_sync_server() override;
+  virtual gnote::sync::SyncServer *create_sync_server() override;
   virtual void post_sync_cleanup() override;
   virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) override;
   virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) override;
