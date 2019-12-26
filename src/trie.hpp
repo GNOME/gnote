@@ -215,8 +215,7 @@ public:
   typename TrieHit<value_t>::ListPtr find_matches (const Glib::ustring & haystack)
   {
     TrieStatePtr current_state = m_root;
-    typename TrieHit<value_t>::ListPtr matches(
-      new typename TrieHit<value_t>::List());
+    auto matches = std::make_shared<typename TrieHit<value_t>::List>();
     int start_index = 0;
 
     Glib::ustring::const_iterator haystack_iter = haystack.begin();
@@ -248,11 +247,7 @@ public:
       // string and the payload object
       if (current_state->payload_present()) {
         int hit_length = i - start_index + 1;
-        typename TrieHit<value_t>::Ptr hit(
-          new TrieHit<value_t>(start_index,
-                               start_index + hit_length,
-                               haystack.substr(start_index, hit_length),
-                               current_state->payload()));
+        auto hit = std::make_shared<TrieHit<value_t>>(start_index, start_index + hit_length, haystack.substr(start_index, hit_length), current_state->payload());
         matches->push_back(hit);
       }
     }
