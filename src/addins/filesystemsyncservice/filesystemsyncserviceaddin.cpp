@@ -61,9 +61,9 @@ void FileSystemSyncServiceAddin::shutdown()
   m_enabled = false;
 }
 
-gnote::sync::SyncServer::Ptr FileSystemSyncServiceAddin::create_sync_server()
+gnote::sync::SyncServer *FileSystemSyncServiceAddin::create_sync_server()
 {
-  gnote::sync::SyncServer::Ptr server;
+  gnote::sync::SyncServer *server;
 
   Glib::ustring syncPath;
   if(get_config_settings(syncPath)) {
