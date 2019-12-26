@@ -55,14 +55,8 @@ namespace sync {
 
 SyncServer::Ptr FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs)
 {
-  return SyncServer::Ptr(new FileSystemSyncServer(path,
-    prefs.get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID)));
-}
-
-
-SyncServer::Ptr FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id)
-{
-  return SyncServer::Ptr(new FileSystemSyncServer(path, client_id));
+  return std::make_shared<FileSystemSyncServer>(path,
+    prefs.get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID));
 }
 
 

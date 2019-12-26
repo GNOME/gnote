@@ -35,7 +35,7 @@ class FileSystemSyncServer
 {
 public:
   static SyncServer::Ptr create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs);
-  static SyncServer::Ptr create(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id);
+  FileSystemSyncServer(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id);
   virtual bool begin_sync_transaction() override;
   virtual bool commit_sync_transaction() override;
   virtual bool cancel_sync_transaction() override;
@@ -48,7 +48,6 @@ public:
   virtual Glib::ustring id() override;
   virtual bool updates_available_since(int revision) override;
 private:
-  FileSystemSyncServer(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id);
   void common_ctor();
 
   Glib::RefPtr<Gio::File> get_revision_dir_path(int rev);
