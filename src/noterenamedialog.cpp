@@ -275,7 +275,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
 
 NoteRenameDialog::MapPtr NoteRenameDialog::get_notes() const
 {
-  const MapPtr notes(new std::map<NoteBase::Ptr, bool>);
+  const MapPtr notes(std::make_shared<std::map<NoteBase::Ptr, bool>>());
 
   m_notes_model->foreach_iter(
     sigc::bind(

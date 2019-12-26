@@ -49,7 +49,7 @@ namespace gnote {
     // Used for matching in the raw note XML
     std::vector<Glib::ustring> encoded_words;
     Search::split_watching_quotes(encoded_words, utils::XmlEncoder::encode(search_text));
-    ResultsPtr temp_matches(new Results);
+    ResultsPtr temp_matches(std::make_shared<Results>());
       
       // Skip over notes that are template notes
     Tag::Ptr template_tag = m_manager.tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
