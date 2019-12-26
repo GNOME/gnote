@@ -62,9 +62,9 @@ void GvfsSyncServiceAddin::shutdown()
   m_enabled = false;
 }
 
-gnote::sync::SyncServer::Ptr GvfsSyncServiceAddin::create_sync_server()
+gnote::sync::SyncServer *GvfsSyncServiceAddin::create_sync_server()
 {
-  gnote::sync::SyncServer::Ptr server;
+  gnote::sync::SyncServer *server;
 
   Glib::ustring sync_uri;
   if(get_config_settings(sync_uri)) {
