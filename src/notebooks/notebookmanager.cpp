@@ -61,15 +61,15 @@ namespace gnote {
       m_filteredNotebooks->set_visible_func(
         sigc::ptr_fun(&NotebookManager::filter_notebooks));
 
-      Notebook::Ptr allNotesNotebook(new AllNotesNotebook(m_note_manager));
+      Notebook::Ptr allNotesNotebook(std::make_shared<AllNotesNotebook>(m_note_manager));
       Gtk::TreeIter iter = m_notebooks->append ();
       iter->set_value(0, Notebook::Ptr(allNotesNotebook));
 
-      Notebook::Ptr unfiledNotesNotebook(new UnfiledNotesNotebook(m_note_manager));
+      Notebook::Ptr unfiledNotesNotebook(std::make_shared<UnfiledNotesNotebook>(m_note_manager));
       iter = m_notebooks->append ();
       iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
 
-      Notebook::Ptr pinned_notes_notebook(new PinnedNotesNotebook(m_note_manager));
+      Notebook::Ptr pinned_notes_notebook(std::make_shared<PinnedNotesNotebook>(m_note_manager));
       iter = m_notebooks->append();
       iter->set_value(0, pinned_notes_notebook);
 
@@ -127,7 +127,7 @@ namespace gnote {
         
         try {
           m_adding_notebook = true;
-          notebook = Notebook::Ptr(new Notebook(m_note_manager, notebookName));
+          notebook = std::make_shared<Notebook>(m_note_manager, notebookName);
         } 
         catch(...)
         {
@@ -461,7 +461,7 @@ namespace gnote {
                                      + Notebook::NOTEBOOK_TAG_PREFIX)) {
           continue;
         }
-        Notebook::Ptr notebook(new Notebook(m_note_manager, tag));
+        Notebook::Ptr notebook = std::make_shared<Notebook>(m_note_manager, tag);
         iter = m_notebooks->append ();
         iter->set_value(0, notebook);
         m_notebookMap [notebook->get_normalized_name()] = iter;
