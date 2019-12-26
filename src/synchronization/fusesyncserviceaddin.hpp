@@ -40,7 +40,7 @@ public:
   virtual void shutdown() override;
   virtual bool initialized() override;
   virtual void initialize() override;
-  virtual SyncServer::Ptr create_sync_server() override;
+  virtual SyncServer *create_sync_server() override;
   virtual void post_sync_cleanup() override;
   virtual bool is_supported() override;
   virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) override;

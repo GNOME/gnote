@@ -69,9 +69,9 @@ void FuseSyncServiceAddin::initialize()
   m_enabled = true;
 }
 
-SyncServer::Ptr FuseSyncServiceAddin::create_sync_server()
+SyncServer *FuseSyncServiceAddin::create_sync_server()
 {
-  SyncServer::Ptr server;
+  SyncServer *server;
 
   // Cancel timer
   m_unmount_timeout.cancel();

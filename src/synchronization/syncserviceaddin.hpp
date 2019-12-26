@@ -54,7 +54,7 @@ namespace sync {
       {
         return *m_sync_manager;
       }
-    virtual SyncServer::Ptr create_sync_server() = 0;
+    virtual SyncServer *create_sync_server() = 0;
     virtual void post_sync_cleanup() = 0;
     virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) = 0;
     virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) = 0;

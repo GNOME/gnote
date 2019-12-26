@@ -62,8 +62,8 @@ namespace sync {
     virtual void connect_system_signals();
     virtual SyncServiceAddin *get_sync_service_addin(const Glib::ustring & sync_service_id);
     virtual SyncServiceAddin *get_configured_sync_service();
-    virtual void delete_notes_in_main_thread(const SyncServer::Ptr & server);
-    void delete_notes(const SyncServer::Ptr & server);
+    virtual void delete_notes_in_main_thread(SyncServer & server);
+    void delete_notes(SyncServer & server);
     virtual void note_save(const Note::Ptr & note);
     virtual void create_note_in_main_thread(const NoteUpdate & noteUpdate);
     virtual void update_note_in_main_thread(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);

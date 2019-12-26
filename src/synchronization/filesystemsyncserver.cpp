@@ -53,10 +53,9 @@ int str_to_int(const Glib::ustring & s)
 namespace gnote {
 namespace sync {
 
-SyncServer::Ptr FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs)
+SyncServer *FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs)
 {
-  return std::make_shared<FileSystemSyncServer>(path,
-    prefs.get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID));
+  return new FileSystemSyncServer(path, prefs.get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID));
 }
 
 

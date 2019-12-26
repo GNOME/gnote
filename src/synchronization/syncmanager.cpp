@@ -143,7 +143,7 @@ namespace sync {
         }
       }
     } f(*this);
-    SyncServer::Ptr server;
+    std::unique_ptr<SyncServer> server;
     try {
       f.addin = get_configured_sync_service();
       if(f.addin == NULL) {
@@ -158,7 +158,7 @@ namespace sync {
 
       set_state(CONNECTING);
       try {
-        server = f.addin->create_sync_server();
+        server.reset(f.addin->create_sync_server());
         if(server == NULL)
           throw std::logic_error("addin.CreateSyncServer () returned null");
       }
@@ -280,7 +280,7 @@ namespace sync {
       // delegate to run in the main gtk thread.
       // To be consistent, any exceptions in the delgate will be caught
       // and then rethrown in the synchronization thread.
-      delete_notes_in_main_thread(server);
+      delete_notes_in_main_thread(*server);
 
       // TODO: Add following updates to syncDialog treeview
 
@@ -465,9 +465,9 @@ namespace sync {
     SyncServiceAddin *addin = get_configured_sync_service();
     if(addin) {
       // TODO: block sync while checking
-      SyncServer::Ptr server;
+      std::unique_ptr<SyncServer> server;
       try {
-        server = SyncServer::Ptr(addin->create_sync_server());
+        server.reset(addin->create_sync_server());
         if(server == 0) {
           throw std::logic_error("addin->create_sync_server() returned null");
         }
@@ -671,20 +671,20 @@ namespace sync {
   }
 
 
-  void SyncManager::delete_notes_in_main_thread(const SyncServer::Ptr & server)
+  void SyncManager::delete_notes_in_main_thread(SyncServer & server)
   {
-    utils::main_context_call([this, server]() { delete_notes(server); });
+    utils::main_context_call([this, &server]() { delete_notes(server); });
   }
 
 
-  void SyncManager::delete_notes(const SyncServer::Ptr & server)
+  void SyncManager::delete_notes(SyncServer & server)
   {
     try {
       // Make list of all local notes
       auto localNotes = note_mgr().get_notes();
 
       // Get all notes currently on server
-      auto serverNotes = server->get_all_note_uuids();
+      auto serverNotes = server.get_all_note_uuids();
 
       // Delete notes locally that have been deleted on the server
       for(const NoteBase::Ptr & iter : localNotes) {

@@ -74,8 +74,6 @@ public:
 class SyncServer
 {
 public:
-  typedef std::shared_ptr<SyncServer> Ptr;
-
   virtual ~SyncServer();
 
   virtual bool begin_sync_transaction() = 0;
