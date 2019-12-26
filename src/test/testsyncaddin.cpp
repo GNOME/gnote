@@ -31,7 +31,7 @@ SyncAddin::SyncAddin(const Glib::ustring & sync_path)
 
 gnote::sync::SyncServer::Ptr SyncAddin::create_sync_server()
 {
-  return gnote::sync::FileSystemSyncServer::create(Gio::File::create_for_path(m_sync_path), "test");
+  return std::make_shared<gnote::sync::FileSystemSyncServer>(Gio::File::create_for_path(m_sync_path), "test");
 }
 
 void SyncAddin::post_sync_cleanup()
