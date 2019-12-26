@@ -111,7 +111,7 @@ namespace gnote {
         return iter->second;
       }
       else {
-        Tag::Ptr t(new Tag(tag_name));
+        Tag::Ptr t(std::make_shared<Tag>(tag_name));
         m_internal_tags [ t->normalized_name() ] = t;
         return t;
       }
@@ -125,7 +125,7 @@ namespace gnote {
 
       tag = get_tag (normalized_tag_name);
       if (!tag) {
-        tag.reset(new Tag (sharp::string_trim(tag_name)));
+        tag = std::make_shared<Tag>(sharp::string_trim(tag_name));
         iter = m_tags->append ();
         (*iter)[m_columns.m_tag] = tag;
         m_tag_map [tag->normalized_name()] = iter;
