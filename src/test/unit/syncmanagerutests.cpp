@@ -123,7 +123,7 @@ SUITE(SyncManagerTests)
   };
 
 #define FIRST_SYNC(ignote, sync_manager, note_manager, manifest, client, ui) \
-  test::SyncClient::Ptr client = std::dynamic_pointer_cast<test::SyncClient>(sync_manager->get_client(manifest)); \
+  test::SyncClient & client = dynamic_cast<test::SyncClient&>(sync_manager->get_client(manifest)); \
   gnote::sync::SilentUI::Ptr ui = gnote::sync::SilentUI::create(ignote, *note_manager); \
   sync_manager->perform_synchronization(ui);
 
@@ -204,7 +204,7 @@ SUITE(SyncManagerTests)
 
     // update note and sync again
     UPDATE_NOTE(manager1, "note2", "note4", "updated content");
-    sync_client1->reparse();
+    sync_client1.reparse();
     sync_manager1->perform_synchronization(sync_ui1);
 
     // check sync dir contents
@@ -228,7 +228,7 @@ SUITE(SyncManagerTests)
 
     // update note and sync again
     UPDATE_NOTE(manager1, "note2", "note4", "updated content");
-    sync_client1->reparse();
+    sync_client1.reparse();
     sync_manager1->perform_synchronization(sync_ui1);
 
     // download updates
@@ -265,12 +265,12 @@ SUITE(SyncManagerTests)
 
     // update note and sync again
     UPDATE_NOTE(manager1, "note2", "note4", "updated content");
-    sync_client1->reparse();
+    sync_client1.reparse();
     sync_manager1->perform_synchronization(sync_ui1);
 
     // update other client and sync
     UPDATE_NOTE(manager2, "note2", "note5", "content updated");
-    sync_client2->reparse();
+    sync_client2.reparse();
     sync_manager2->perform_synchronization(sync_ui1);
 
     // sync client1 again
@@ -295,7 +295,7 @@ SUITE(SyncManagerTests)
 
     // update note and sync again
     UPDATE_NOTE(manager1, "note2", "note4", "updated content");
-    sync_client1->reparse();
+    sync_client1.reparse();
     sync_manager1->perform_synchronization(sync_ui1);
     get_notes_in_dir(notesdir1);
     REQUIRE CHECK_EQUAL(3, files.size()); // 2 downloaded notes + template

@@ -40,7 +40,7 @@ public:
   virtual gnote::sync::SyncServiceAddin *get_configured_sync_service() override;
   virtual void delete_notes_in_main_thread(const gnote::sync::SyncServer::Ptr & server) override;
   virtual void note_save(const gnote::Note::Ptr & note) override;
-  test::SyncClient::Ptr get_client(const Glib::ustring & manifest);
+  test::SyncClient & get_client(const Glib::ustring & manifest);
 protected:
   virtual void create_note_in_main_thread(const gnote::sync::NoteUpdate & noteUpdate) override;
   virtual void update_note_in_main_thread(const gnote::Note::Ptr & existingNote, const gnote::sync::NoteUpdate & noteUpdate) override;

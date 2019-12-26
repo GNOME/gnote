@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,11 +39,11 @@ namespace sync {
 
   const char * GnoteSyncClient::LOCAL_MANIFEST_FILE_NAME = "manifest.xml";
 
-  SyncClient::Ptr GnoteSyncClient::create(NoteManagerBase & manager)
+  SyncClient *GnoteSyncClient::create(NoteManagerBase & manager)
   {
     GnoteSyncClient *ptr = new GnoteSyncClient;
     ptr->init(manager);
-    return SyncClient::Ptr(ptr);
+    return ptr;
   }
 
   GnoteSyncClient::GnoteSyncClient()

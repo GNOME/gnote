@@ -44,8 +44,6 @@ public:
 class SyncClient
 {
 public:
-  typedef std::shared_ptr<SyncClient> Ptr;
-
   virtual ~SyncClient();
 
   virtual int last_synchronized_revision() = 0;

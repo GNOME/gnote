@@ -31,7 +31,8 @@ namespace sync {
     : public SyncClient
   {
   public:
-    static SyncClient::Ptr create(NoteManagerBase &);
+    static SyncClient *create(NoteManagerBase &);
+    GnoteSyncClient();
 
     virtual sharp::DateTime last_sync_date() override
       {
@@ -56,7 +57,6 @@ namespace sync {
       }
     virtual void associated_server_id(const Glib::ustring &) override;
   protected:
-    GnoteSyncClient();
     void init(NoteManagerBase &);
     void parse(const Glib::ustring & manifest_path);
 

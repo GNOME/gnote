@@ -72,7 +72,7 @@ namespace sync {
     void update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate);
     void delete_note(const Note::Ptr & existingNote);
 
-    SyncClient::Ptr m_client;
+    std::unique_ptr<SyncClient> m_client;
     SyncUI::Ptr m_sync_ui;
   private:
     void handle_note_saved_or_deleted(const NoteBase::Ptr & note);

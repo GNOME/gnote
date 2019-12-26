@@ -27,14 +27,14 @@ SyncManager::SyncManager(gnote::IGnote & g, gnote::NoteManagerBase & manager, co
   : gnote::sync::SyncManager(g, manager)
   , m_sync_path(sync_path)
 {
-  m_client = gnote::sync::SyncClient::Ptr(new test::SyncClient(manager));
+  m_client.reset(new test::SyncClient(manager));
 }
 
-test::SyncClient::Ptr SyncManager::get_client(const Glib::ustring & manifest)
+test::SyncClient & SyncManager::get_client(const Glib::ustring & manifest)
 {
-  SyncClient::Ptr client = std::dynamic_pointer_cast<SyncClient>(m_client);
-  client->set_manifest_path(manifest);
-  client->reparse();
+  SyncClient & client = dynamic_cast<SyncClient&>(*m_client);
+  client.set_manifest_path(manifest);
+  client.reparse();
   return client;
 }
 
