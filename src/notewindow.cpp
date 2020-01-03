@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2019 Aurimas Cernius
+ * Copyright (C) 2011-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -320,7 +320,7 @@ namespace gnote {
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_UNDO, 2, redo));
     Gtk::Widget *link = utils::create_popover_button("win.link", _("_Link to New Note"));
     popover_widgets.push_back(PopoverWidget::create_for_note(LINK_ORDER, link));
-    Gtk::Widget *important = utils::create_popover_button("win.important-note", _("_Important"));
+    Gtk::Widget *important = utils::create_popover_button("win.important-note", C_("NoteActions", "_Important"));
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_FLAGS, IMPORTANT_ORDER, important));
 
     NoteManager & manager = static_cast<NoteManager&>(m_note.manager());

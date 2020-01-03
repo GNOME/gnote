@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -104,7 +104,7 @@ Glib::RefPtr<Gdk::Pixbuf> UnfiledNotesNotebook::get_icon(IconManager & m)
 
 
 PinnedNotesNotebook::PinnedNotesNotebook(NoteManagerBase & manager)
-  : SpecialNotebook(manager, _("Important"))
+  : SpecialNotebook(manager, C_("notebook", "Important"))
 {
 }
 
