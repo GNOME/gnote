@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-01-03 20:34+0000\n"
-"PO-Revision-Date: 2020-01-10 00:00+0900\n"
+"POT-Creation-Date: 2020-01-11 16:06+0000\n"
+"PO-Revision-Date: 2020-01-13 00:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -100,7 +100,7 @@ msgstr "選択したメモを開く"
 #: ../data/ui/shortcuts-gnote.ui.h:11
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
-msgstr "新しいウィンドウでメモを開く"
+msgstr "選択したメモを新しいウィンドウで開く"
 
 #: ../data/ui/shortcuts-gnote.ui.h:12
 msgctxt "shortcut window"
@@ -197,7 +197,9 @@ msgstr "メモ"
 
 #: ../data/gnote.desktop.in.in.h:4
 msgid "notes;idea;link;organize;"
-msgstr "notes;idea;link;organize;メモ;アイデア;リンク;オーガナイザー;notebooks;ノート;"
+msgstr ""
+"notes;idea;link;organize;メモ;アイデア;リンク;オーガナイザー;notebooks;ノー"
+"ト;"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:1
 msgid "Enable spellchecking"
@@ -208,8 +210,8 @@ msgid ""
 "If true, misspellings will be underlined in red, and correct spelling "
 "suggestions shown in the right-click menu."
 msgstr ""
-"TRUE にすると、スペル違いは赤色の下線がつき、右クリックメニューに妥当なスペ"
-"ルを提示します。"
+"TRUE にすると、スペル違いは赤色の下線がつき、右クリックメニューに妥当なスペル"
+"を提示します。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:3
 msgid "Automatically create links when typing"
@@ -220,8 +222,7 @@ msgid ""
 "Enable this option to automatically create a link, when text matches note "
 "title."
 msgstr ""
-"TRUE にすると、メモのタイトルに文字列が一致したら自動でリンクを作成しま"
-"す。"
+"TRUE にすると、メモのタイトルに文字列が一致したら自動でリンクを作成します。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:5
 msgid "Create links for URLs in notes"
@@ -229,8 +230,7 @@ msgstr "メモ内に URL へのリンクを作成するかどうか"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:6
 msgid "Enable this option to create links for URLs in notes."
-msgstr ""
-"TRUE にすると、メモ内に URL へのリンクを作成します。"
+msgstr "TRUE にすると、メモ内に URL へのリンクを作成します。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:7
 msgid "Enable WikiWord highlighting"
@@ -289,8 +289,8 @@ msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
 msgstr ""
-"enable-custom-font が TRUE の場合、メモを表示するときに、ここで指定したフォ"
-"ントを使います。"
+"enable-custom-font が TRUE の場合、メモを表示するときに、ここで指定したフォン"
+"トを使います。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:17
 msgid "Enable global keybindings"
@@ -396,8 +396,8 @@ msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr ""
-"FUSE を使って共有メモをマウントするときに Gnote が応答待ちする時間 (ミリ秒"
-"単位) です。"
+"FUSE を使って共有メモをマウントするときに Gnote が応答待ちする時間 (ミリ秒単"
+"位) です。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:37
 msgid "SSHFS Remote Synchronization Folder"
@@ -491,8 +491,8 @@ msgid ""
 "Saves note window size and automatically resizes main window to this size, "
 "when note is opened."
 msgstr ""
-"メモウィンドウのサイズを保存し、メモを開いたときにウィンドウサイズを自動で"
-"そのサイズに変更します。"
+"メモウィンドウのサイズを保存し、メモを開いたときにウィンドウサイズを自動でそ"
+"のサイズに変更します。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:55
 msgid "Use client side window decorations"
@@ -534,8 +534,8 @@ msgstr "最後に HTML をエクスポートしたフォルダー"
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
-"\"HTML にエクスポート\" プラグインを使って、最後にエクスポートしたメモの HTML "
-"を格納したフォルダーです。"
+"\"HTML にエクスポート\" プラグインを使って、最後にエクスポートしたメモの "
+"HTML を格納したフォルダーです。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid "HTML Export Linked Notes"
@@ -623,9 +623,9 @@ msgid ""
 "autosync is disabled. The lowest acceptable positive value is 5. Value is in "
 "minutes."
 msgstr ""
-"メモのバックグランド同期を行う頻度を整数で指定します (同期が設定されている場合"
-")。1 未満の値を指定すると自動同期は無効になります。正の値で受け取ることができ"
-"る最低値は 5 です。値は分単位になります。"
+"メモのバックグラウンド同期を行う頻度を整数で指定します (同期が設定されている場"
+"合)。1 未満の値を指定すると自動同期は無効になります。正の値で受け取ることがで"
+"きる最低値は 5 です。値は分単位になります。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:78
 msgid "Online directory URI"
@@ -633,7 +633,7 @@ msgstr "オンラインディレクトリの URI"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:79
 msgid "URI to online directory where notes are synchronized to."
-msgstr "メモの同期先となるオンラインディレクトリへの URI です。"
+msgstr "メモの同期先となるオンラインディレクトリの URI です。"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Accept SSL Certificates"
@@ -680,8 +680,7 @@ msgstr "チェック間隔"
 #: ../data/org.gnome.gnote.gschema.xml.in.h:89
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
-msgstr ""
-"ノートディレクトリの確認間隔 (秒単位) です。最小値は 5 です。"
+msgstr "ノートディレクトリの確認間隔 (秒単位) です。最小値は 5 です。"
 
 #: ../src/actionmanager.cpp:128 ../src/notewindow.cpp:313
 msgid "_New Note"
@@ -714,7 +713,9 @@ msgstr "プラグイン情報の読み込みに失敗しました!"
 #: ../src/addininfo.cpp:145
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
-msgstr "互換性のないプラグイン %s: 期待されたバージョンは %s ですが、バージョン %s を取得しました"
+msgstr ""
+"互換性のないプラグイン %s: 期待されたバージョンは %s ですが、バージョン %s を"
+"取得しました"
 
 #: ../src/addinmanager.cpp:132
 #, c-format
@@ -948,7 +949,7 @@ msgstr "フォルダーパス(_F):"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:111
 msgid "Select Synchronization Folder..."
-msgstr "同期フォルダーを選択 ..."
+msgstr "同期フォルダーを選択..."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
 msgid "Folder path field is empty."
@@ -958,8 +959,7 @@ msgstr "フォルダーパスフィールドが空です。"
 #: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
-msgstr ""
-"指定フォルダーのパスが存在しないため作成できませんでした。"
+msgstr "指定フォルダーのパスが存在しないため作成できませんでした。"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:210
 msgid "Local Folder"
@@ -1004,7 +1004,7 @@ msgstr "フォルダーのマウントに失敗しました"
 
 #: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:203
 msgid "Folder _URI:"
-msgstr "フォルダーのURI(_U):"
+msgstr "フォルダーの URI(_U):"
 
 #: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:215
 msgid "Example: google-drive://name.surname@gmail.com/notes"
@@ -1078,7 +1078,8 @@ msgstr ""
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr ""
-"NoteDirectoryWatcher: %s からのメモのタイトルの読み込み中にエラーが発生しました"
+"NoteDirectoryWatcher: %s からのメモのタイトルの読み込み中にエラーが発生しまし"
+"た"
 
 #. TRANSLATORS: %s is file
 #: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:265
@@ -1452,7 +1453,7 @@ msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
 "佐藤 暁 <ss@gnome.gr.jp>\n"
-"日本 GNOME ユーザー会 <http://www.gnome.gr.jp>"
+"日本 GNOME ユーザー会 <http://www.gnome.gr.jp>\n"
 "Jiro Matsuzawa <jmatsuzawa@gnome.org>\n"
 "Noriko Mizumoto <noriko@fedoraproject.org>\n"
 "sicklylife <translation@sicklylife.jp>"
@@ -2048,8 +2049,8 @@ msgstr "自動的にメモへリンクする(_A)"
 #: ../src/preferencesdialog.cpp:390
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
-"このオプションを有効にすると、メモのタイトルに一致した文字列をリンク化"
-"します。"
+"このオプションを有効にすると、メモのタイトルに一致した文字列をリンク化しま"
+"す。"
 
 #. URLs
 #: ../src/preferencesdialog.cpp:396
@@ -2061,8 +2062,8 @@ msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
 msgstr ""
-"このオプションを有効にすると URL をリンク化します。URL をクリックすると"
-"関連付けられたアプリケーションで開きます。"
+"このオプションを有効にすると URL をリンク化します。URL をクリックすると関連付"
+"けられたアプリケーションで開きます。"
 
 #. WikiWords...
 #: ../src/preferencesdialog.cpp:404
@@ -2074,9 +2075,9 @@ msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
 msgstr ""
-"このオプションを有効にすると <b>ThatLookLikeThis</b> のような形式の単語を強調表"
-"示します。その単語をクリックすると、それをタイトルにした新しいメモを作成しま"
-"す。"
+"このオプションを有効にすると <b>ThatLookLikeThis</b> のような形式の単語を強調"
+"表示します。その単語をクリックすると、それをタイトルにした新しいメモを作成し"
+"ます。"
 
 #: ../src/preferencesdialog.cpp:437
 msgid "Ser_vice:"
@@ -2213,7 +2214,7 @@ msgstr "すべてのメモ"
 
 #: ../src/recentchanges.cpp:171
 msgid "Create New Note"
-msgstr "新しいメモの作成"
+msgstr "新しいメモを作成"
 
 #: ../src/recentchanges.cpp:192
 msgid "Search"
@@ -2679,8 +2680,8 @@ msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
 msgstr ""
-"FUSE モジュールを読み込めませんでした。正しくインストールされているか確認し"
-"てからやり直してください。"
+"FUSE モジュールを読み込めませんでした。正しくインストールされているか確認して"
+"からやり直してください。"
 
 #: ../src/synchronization/syncutils.cpp:148
 msgid "Enable FUSE?"
@@ -2775,8 +2776,8 @@ msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
-"<b>%1</b> というタイトルのメモはすでに存在します。続行する前に別のタイトルを選"
-"択してください。"
+"<b>%1</b> というタイトルのメモはすでに存在します。続行する前に別のタイトルを"
+"選択してください。"
 
 #: ../src/watchers.cpp:245
 msgid "Note title taken"
