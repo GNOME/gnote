@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ public:
   Glib::ustring client_id;
   Glib::ustring transaction_id;
   int renew_count;
-  sharp::TimeSpan duration;
+  Glib::TimeSpan duration;
   int revision;
 
   explicit SyncLockInfo(const Glib::ustring & client);

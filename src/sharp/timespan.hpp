@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017 Aurimas Cernius
+ * Copyright (C) 2012,2017,2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,60 +23,19 @@
 #define _SHARP_TIMESPAN_HPP_
 
 
+#include <glibmm/datetime.h>
 #include <glibmm/ustring.h>
 
 
 namespace sharp {
 
-  class TimeSpan
-  {
-  public:
-    TimeSpan(int hrs, int mins, int secs);
-    TimeSpan(int days, int hrs, int mins, int secs);
-    TimeSpan(int days, int hrs, int mins, int secs, int usecs);
-    int days() const
-      {
-        return m_days;
-      }
-    int hours() const
-      {
-        return m_hours;
-      }
-    int minutes() const
-      {
-        return m_minutes;
-      }
-    int seconds() const
-      {
-        return m_seconds;
-      }
-    int microseconds() const
-      {
-        return m_usecs;
-      }
-    double total_days() const;
-    double total_hours() const;
-    double total_minutes() const;
-    double total_seconds() const;
-    double total_milliseconds() const;
-    Glib::ustring string() const;
-    TimeSpan operator-(const TimeSpan & ts);
-
-    static TimeSpan parse(const Glib::ustring & s);
-  private:
-    int _total_hours() const;
-    int _total_minutes() const;
-    int _total_seconds() const;
-    double _remaining_hours() const;
-    double _remaining_minutes() const;
-    double _remaining_seconds() const;
-
-    int m_days;
-    int m_hours;
-    int m_minutes;
-    int m_seconds;
-    int m_usecs;
-  };
+Glib::TimeSpan time_span(int hrs, int mins, int secs);
+Glib::TimeSpan time_span(int days, int hrs, int mins, int secs, int usecs);
+Glib::TimeSpan time_span_parse(const Glib::ustring & s);
+double time_span_total_minutes(Glib::TimeSpan ts);
+double time_span_total_seconds(Glib::TimeSpan ts);
+double time_span_total_milliseconds(Glib::TimeSpan ts);
+Glib::ustring time_span_string(Glib::TimeSpan ts);
 
 }
 

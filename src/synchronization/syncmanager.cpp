@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -395,8 +395,8 @@ namespace sync {
     // timer to avoid interupting the user (we want to
     // make sure not to sync more often than the user's pref)
     if(m_sync_thread == NULL) {
-      sharp::TimeSpan time_since_last_check = sharp::DateTime::now() - m_last_background_check;
-      if(time_since_last_check.total_minutes() > m_autosync_timeout_pref_minutes - 1) {
+      Glib::TimeSpan time_since_last_check = sharp::DateTime::now() - m_last_background_check;
+      if(sharp::time_span_total_minutes(time_since_last_check) > m_autosync_timeout_pref_minutes - 1) {
         DBG_OUT("Note edited...killing autosync timer until next save or delete event");
         m_autosync_timer.cancel();
       }
@@ -436,10 +436,9 @@ namespace sync {
   void SyncManager::handle_note_saved_or_deleted(const NoteBase::Ptr &)
   {
     if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
-      sharp::TimeSpan time_since_last_check(sharp::DateTime::now() - m_last_background_check);
-      sharp::TimeSpan time_until_next_check(
-        sharp::TimeSpan(0, m_current_autosync_timeout_minutes, 0) - time_since_last_check);
-      if(time_until_next_check.total_minutes() < 1) {
+      Glib::TimeSpan time_since_last_check(sharp::DateTime::now() - m_last_background_check);
+      Glib::TimeSpan time_until_next_check = sharp::time_span(0, m_current_autosync_timeout_minutes, 0) - time_since_last_check;
+      if(sharp::time_span_total_minutes(time_until_next_check) < 1) {
         DBG_OUT("Note saved or deleted within a minute of next autosync...resetting sync timer");
         m_current_autosync_timeout_minutes = 1;
         m_autosync_timer.reset(m_current_autosync_timeout_minutes * 60000);

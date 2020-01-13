@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017 Aurimas Cernius
+ * Copyright (C) 2012,2017,2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -31,6 +31,7 @@
 
 #include <time.h>
 
+#include <glibmm/datetime.h>
 #include <glibmm/ustring.h>
 #include <glibmm/timeval.h>
 
@@ -87,8 +88,8 @@ public:
     {
       return (*this < dt) || (*this == dt);
     }
-  TimeSpan operator-(const DateTime & dt) const;
-  DateTime operator-(const TimeSpan & ts) const;
+  Glib::TimeSpan operator-(const DateTime & dt) const;
+  DateTime operator-(const Glib::TimeSpan & ts) const;
 
   glong sec() const
     {

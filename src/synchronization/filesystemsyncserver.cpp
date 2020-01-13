@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -195,7 +195,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
   if(m_lock_path->query_exists()) {
     SyncLockInfo currentSyncLock = current_sync_lock();
     if(m_initial_sync_attempt == sharp::DateTime()) {
-      DBG_OUT("Sync: Discovered a sync lock file, wait at least %s before trying again.", currentSyncLock.duration.string().c_str());
+      DBG_OUT("Sync: Discovered a sync lock file, wait at least %s before trying again.", sharp::time_span_string(currentSyncLock.duration).c_str());
       // This is our initial attempt to sync and we've detected
       // a sync file, so we're gonna have to wait.
       m_initial_sync_attempt = sharp::DateTime::now();
@@ -203,7 +203,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
       return false;
     }
     else if(m_last_sync_lock_hash != currentSyncLock.hash_string()) {
-      DBG_OUT("Sync: Updated sync lock file discovered, wait at least %s before trying again.", currentSyncLock.duration.string().c_str());
+      DBG_OUT("Sync: Updated sync lock file discovered, wait at least %s before trying again.", sharp::time_span_string(currentSyncLock.duration).c_str());
       // The sync lock has been updated and is still a valid lock
       m_initial_sync_attempt = sharp::DateTime::now();
       m_last_sync_lock_hash = currentSyncLock.hash_string();
@@ -237,7 +237,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
   // TODO: Verify that the lockTimeout is actually working or figure
   // out some other way to automatically update the lock file.
   // Reset the timer to 20 seconds sooner than the sync lock duration
-  m_lock_timeout.reset(m_sync_lock.duration.total_milliseconds() - 20000);
+  m_lock_timeout.reset(sharp::time_span_total_milliseconds(m_sync_lock.duration) - 20000);
 
   m_updated_notes.clear();
   m_deleted_notes.clear();
@@ -486,7 +486,7 @@ SyncLockInfo FileSystemSyncServer::current_sync_lock()
     node = sharp::xml_node_xpath_find_single_node(root_node, "lock-expiration-duration/text ()");
     if(node != NULL) {
       Glib::ustring span_txt = sharp::xml_node_content(node);
-      syncLockInfo.duration = sharp::TimeSpan::parse(span_txt);
+      syncLockInfo.duration = sharp::time_span_parse(span_txt);
     }
 
     node = sharp::xml_node_xpath_find_single_node(root_node, "revision/text ()");
@@ -552,7 +552,7 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
     xml.write_end_element();
 
     xml.write_start_element("", "lock-expiration-duration", "");
-    xml.write_string(syncLockInfo.duration.string());
+    xml.write_string(sharp::time_span_string(syncLockInfo.duration));
     xml.write_end_element();
 
     xml.write_start_element("", "revision", "");
@@ -648,7 +648,7 @@ void FileSystemSyncServer::lock_timeout()
   m_sync_lock.renew_count++;
   update_lock_file(m_sync_lock);
   // Reset the timer to 20 seconds sooner than the sync lock duration
-  m_lock_timeout.reset(m_sync_lock.duration.total_milliseconds() - 20000);
+  m_lock_timeout.reset(sharp::time_span_total_milliseconds(m_sync_lock.duration) - 20000);
 }
 
 

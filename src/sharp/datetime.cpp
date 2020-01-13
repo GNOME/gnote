@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017 Aurimas Cernius
+ * Copyright (C) 2012,2017,2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -178,7 +178,7 @@ namespace sharp {
       && (m_date.tv_usec == dt.m_date.tv_usec);
   }
 
-  TimeSpan DateTime::operator-(const DateTime & dt) const
+  Glib::TimeSpan DateTime::operator-(const DateTime & dt) const
   {
     int secs = m_date.tv_sec - dt.m_date.tv_sec;
     int usecs = m_date.tv_usec - dt.m_date.tv_usec;
@@ -188,13 +188,13 @@ namespace sharp {
     mins %= 60;
     int days = hrs / 24;
     hrs %= 24;
-    return TimeSpan(days, hrs, mins, secs, usecs);
+    return sharp::time_span(days, hrs, mins, secs, usecs);
   }
 
-  DateTime DateTime::operator-(const TimeSpan & ts) const
+  DateTime DateTime::operator-(const Glib::TimeSpan & ts) const
   {
     Glib::TimeVal timeval(m_date);
-    timeval.add_milliseconds(ts.total_milliseconds());
+    timeval.add_milliseconds(time_span_total_milliseconds(ts));
     return DateTime(timeval);
   }
 

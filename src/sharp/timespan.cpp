@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,138 +25,62 @@
 
 namespace sharp {
 
-  TimeSpan::TimeSpan(int hrs, int mins, int secs)
-    : m_days(0)
-    , m_hours(hrs)
-    , m_minutes(mins)
-    , m_seconds(secs)
-    , m_usecs(0)
-  {}
+Glib::TimeSpan time_span(int hrs, int mins, int secs)
+{
+  return hrs * G_TIME_SPAN_HOUR + mins * G_TIME_SPAN_MINUTE + secs * G_TIME_SPAN_SECOND;
+}
 
+Glib::TimeSpan time_span(int days, int hrs, int mins, int secs, int usecs)
+{
+  return days * G_TIME_SPAN_DAY + hrs * G_TIME_SPAN_HOUR + mins * G_TIME_SPAN_MINUTE + secs * G_TIME_SPAN_SECOND + usecs;
+}
 
-  TimeSpan::TimeSpan(int d, int hrs, int mins, int secs)
-    : m_days(d)
-    , m_hours(hrs)
-    , m_minutes(mins)
-    , m_seconds(secs)
-    , m_usecs(0)
-  {}
-
-
-  TimeSpan::TimeSpan(int d, int hrs, int mins, int secs, int usecs)
-    : m_days(d)
-    , m_hours(hrs)
-    , m_minutes(mins)
-    , m_seconds(secs)
-    , m_usecs(usecs)
-  {}
-
-
-  double TimeSpan::total_days() const
-  {
-    return m_days + _remaining_hours() / 24.0;
+Glib::TimeSpan time_span_parse(const Glib::ustring & s)
+{
+  std::vector<Glib::ustring> tokens;
+  sharp::string_split(tokens, s, ":");
+  if(tokens.size() != 5) {
+    return time_span(0, 0, 0, 0, 0);
+  }
+  int days = STRING_TO_INT(tokens[0]);
+  int hours = STRING_TO_INT(tokens[1]);
+  int mins = STRING_TO_INT(tokens[2]);
+  int secs = STRING_TO_INT(tokens[3]);
+  int usecs = STRING_TO_INT(tokens[4]);
+  Glib::ustring fmt = Glib::ustring::compose("%1:%2:%3:%4:%5", days, hours, mins, secs, usecs);
+  if(fmt != s) {
+    return time_span(0, 0, 0, 0, 0);
   }
 
+  return time_span(days, hours, mins, secs, usecs);
+}
 
-  double TimeSpan::total_hours() const
-  {
-    return _total_hours() + _remaining_minutes() / 60.0;
-  }
+double time_span_total_minutes(Glib::TimeSpan ts)
+{
+  return double(ts) / G_TIME_SPAN_MINUTE;
+}
 
+double time_span_total_seconds(Glib::TimeSpan ts)
+{
+  return double(ts) / G_TIME_SPAN_SECOND;
+}
 
-  double TimeSpan::total_minutes() const
-  {
-    return _total_minutes() + _remaining_seconds() / 60.0;
-  }
+double time_span_total_milliseconds(Glib::TimeSpan ts)
+{
+  return double(ts) / G_TIME_SPAN_MILLISECOND;
+}
 
-
-  double TimeSpan::total_seconds() const
-  {
-    return _total_seconds() + m_usecs / 1000000.0;
-  }
-
-
-  double TimeSpan::total_milliseconds() const
-  {
-    return _total_seconds() * 60.0 + m_usecs / 1000.0;
-  }
-
-
-  Glib::ustring TimeSpan::string() const
-  {
-    return Glib::ustring::compose("%1:%2:%3:%4:%5", m_days, m_hours, m_minutes, m_seconds, m_usecs);
-  }
-
-
-  TimeSpan TimeSpan::operator-(const TimeSpan & ts)
-  {
-    double result = total_milliseconds() - ts.total_milliseconds();
-    int secs = int(result / 1000);
-    int usecs = int(result - (secs * 1000));
-    int mins = secs / 60;
-    secs %= 60;
-    int hrs = mins / 60;
-    mins %= 60;
-    int ds = hrs / 24;
-    hrs %= 24;
-    return TimeSpan(ds, hrs, mins, secs, usecs);
-  }
-
-
-  TimeSpan TimeSpan::parse(const Glib::ustring & s)
-  {
-    std::vector<Glib::ustring> tokens;
-    sharp::string_split(tokens, s, ":");
-    if(tokens.size() != 5) {
-      return TimeSpan(0, 0, 0, 0, 0);
-    }
-    int days = STRING_TO_INT(tokens[0]);
-    int hours = STRING_TO_INT(tokens[1]);
-    int mins = STRING_TO_INT(tokens[2]);
-    int secs = STRING_TO_INT(tokens[3]);
-    int usecs = STRING_TO_INT(tokens[4]);
-    Glib::ustring fmt = Glib::ustring::compose("%1:%2:%3:%4:%5", days, hours, mins, secs, usecs);
-    if(fmt != s) {
-      return TimeSpan(0, 0, 0, 0, 0);
-    }
-
-    return TimeSpan(days, hours, mins, secs, usecs);
-  }
-
-
-  int TimeSpan::_total_hours() const
-  {
-    return m_days * 24 + m_hours;
-  }
-
-
-  int TimeSpan::_total_minutes() const
-  {
-    return _total_hours() * 60 + m_minutes;
-  }
-
-
-  int TimeSpan::_total_seconds() const
-  {
-    return _total_minutes() * 60 + m_seconds;
-  }
-
-
-  double TimeSpan::_remaining_hours() const
-  {
-    return m_hours + _remaining_minutes() / 60.0;
-  }
-
-
-  double TimeSpan::_remaining_minutes() const
-  {
-    return m_minutes + _remaining_seconds() / 60.0;
-  }
-
-
-  double TimeSpan::_remaining_seconds() const
-  {
-    return m_seconds + m_usecs / 1000000.0;
-  }
+Glib::ustring time_span_string(Glib::TimeSpan ts)
+{
+  unsigned days = ts / G_TIME_SPAN_DAY;
+  ts = ts % G_TIME_SPAN_DAY;
+  unsigned hours = ts / G_TIME_SPAN_HOUR;
+  ts = ts % G_TIME_SPAN_HOUR;
+  unsigned minutes = ts / G_TIME_SPAN_MINUTE;
+  ts = ts % G_TIME_SPAN_MINUTE;
+  unsigned seconds = ts / G_TIME_SPAN_SECOND;
+  unsigned usecs = ts % G_TIME_SPAN_SECOND;
+  return Glib::ustring::compose("%1:%2:%3:%4:%5", days, hours, minutes, seconds, usecs);
+}
 
 }
