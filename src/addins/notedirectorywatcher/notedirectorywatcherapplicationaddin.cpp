@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -167,7 +167,7 @@ bool NoteDirectoryWatcherApplicationAddin::handle_timeout()
 
       // Check that Note.Saved event didn't occur within (check-interval -2) seconds of last write
       if(m_note_save_times.find(iter.first) != m_note_save_times.end() &&
-          std::abs((m_note_save_times[iter.first] - iter.second.last_change).total_seconds()) <= (m_check_interval - 2)) {
+          std::abs(sharp::time_span_total_seconds(m_note_save_times[iter.first] - iter.second.last_change)) <= (m_check_interval - 2)) {
         DBG_OUT("NoteDirectoryWatcher: Ignoring (timeout) because it was probably a Gnote write");
         keysToRemove.push_back(iter.first);
         continue;
