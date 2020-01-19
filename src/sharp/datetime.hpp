@@ -110,6 +110,20 @@ private:
 };
 
 
+Glib::ustring date_time_to_string(const Glib::DateTime & dt, const char *format);
+Glib::ustring date_time_to_string(const Glib::DateTime & dt, const Glib::ustring & format);
+Glib::ustring date_time_to_iso8601(const Glib::DateTime & dt);
+Glib::DateTime date_time_from_iso8601(const Glib::ustring & dt);
+
+
 }
+
+
+bool operator==(const Glib::DateTime & x, const Glib::DateTime & y);
+bool operator!=(const Glib::DateTime & x, const Glib::DateTime & y);
+bool operator<(const Glib::DateTime & x, const Glib::DateTime & y);
+bool operator<=(const Glib::DateTime & x, const Glib::DateTime & y);
+bool operator>(const Glib::DateTime & x, const Glib::DateTime & y);
+bool operator>=(const Glib::DateTime & x, const Glib::DateTime & y);
 
 #endif
