@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,6 +44,14 @@ SUITE(DateTime)
     CHECK_EQUAL("2009-03-24T07:34:35.000000Z", date_string);
   }
 
+  TEST(date_time_to_string)
+  {
+    auto d = Glib::DateTime::create_local(1991, 7, 7, 15, 40, 34);
+    CHECK(bool(d));
+    Glib::ustring date_string = sharp::date_time_to_string(d, "%F %T");
+    CHECK_EQUAL("1991-07-07 15:40:34", date_string);
+  }
+
   TEST(from_iso8601)
   {
     sharp::DateTime d(678901234, 67890);
@@ -52,6 +60,38 @@ SUITE(DateTime)
 
     sharp::DateTime d3 = sharp::DateTime::from_iso8601("2009-03-24T03:34:35.2914680-04:00");
     CHECK(d3.is_valid());
+  }
+
+  TEST(date_time_to_iso8601)
+  {
+    auto d = Glib::DateTime::create_local(2009, 3, 24, 7, 34, 35);
+    CHECK(bool(d));
+    Glib::ustring date_string = sharp::date_time_to_iso8601(d);
+    CHECK_EQUAL("2009-03-24T07:34:35.000000Z", date_string);
+
+    d = Glib::DateTime::create_local(2009, 3, 24, 7, 34, 35.54);
+    CHECK(bool(d));
+    date_string = sharp::date_time_to_iso8601(d);
+    CHECK_EQUAL("2009-03-24T07:34:35.540000Z", date_string);
+  }
+
+  TEST(date_time_from_iso8601)
+  {
+    Glib::DateTime d = sharp::date_time_from_iso8601("1991-07-07T15:40:34.067890Z");
+    CHECK(bool(d));
+    CHECK_EQUAL(1991, d.get_year());
+    CHECK_EQUAL(7, d.get_month());
+    CHECK_EQUAL(7, d.get_day_of_month());
+    CHECK_EQUAL(16, d.get_hour());  // time-zone corrected
+    CHECK_EQUAL(40, d.get_minute());
+    CHECK_EQUAL(34, d.get_second());
+    CHECK_EQUAL(67890, d.get_microsecond());
+
+    Glib::DateTime d2 = sharp::date_time_from_iso8601("2009-03-24T03:34:35.2914680-04:00");
+    CHECK(bool(d2));
+    CHECK_EQUAL(24, d2.get_day_of_month());
+    CHECK_EQUAL(7, d2.get_hour());
+    CHECK_EQUAL(291468, d2.get_microsecond());
   }
 
   TEST(pretty_print_date)
@@ -75,6 +115,70 @@ SUITE(DateTime)
 
     date_string = gnote::utils::get_pretty_print_date(d, true, true);
     CHECK(Glib::str_has_suffix(date_string.lowercase(), "5:34 pm"));
+  }
+
+  TEST(date_time_equality_operators)
+  {
+    auto d1 = Glib::DateTime::create_local(2020, 1, 2, 13, 14, 15);
+    auto d2 = d1.add_days(1);
+    auto d3 = d2.add_days(-1);
+    Glib::DateTime invalid;
+
+    CHECK(d1 == d3);
+    CHECK(d2 == d2);
+    CHECK(!(d1 == d2));
+    CHECK(!(d1 == invalid));
+    CHECK(invalid == invalid);
+
+    CHECK(d1 != d2);
+    CHECK(!(d1 != d3));
+    CHECK(d1 != invalid);
+    CHECK(!(d2 != d2));
+    CHECK(!(invalid != invalid));
+  }
+
+  TEST(date_time_less_than_operators)
+  {
+    auto d1 = Glib::DateTime::create_local(2020, 1, 2, 13, 14, 15);
+    auto d2 = d1.add_days(1);
+    auto d3 = d2.add_days(-1);
+    Glib::DateTime invalid;
+
+    CHECK(d1 < d2);
+    CHECK(d1 <= d2);
+    CHECK(!(d2 < d1));
+    CHECK(!(d2 <= d1));
+    CHECK(!(d1 < d3));
+    CHECK(d1 <= d3);
+    CHECK(d3 <= d1);
+    CHECK(invalid < d1);
+    CHECK(invalid <= d1);
+    CHECK(!(d1 < invalid));
+    CHECK(!(d1 <= invalid));
+    CHECK(!(invalid < invalid));
+    CHECK(invalid <= invalid);
+  }
+
+  TEST(date_time_greater_than_operators)
+  {
+    auto d1 = Glib::DateTime::create_local(2020, 1, 2, 13, 14, 15);
+    auto d2 = d1.add_days(1);
+    auto d3 = d2.add_days(-1);
+    Glib::DateTime invalid;
+
+    CHECK(!(d1 > d2));
+    CHECK(!(d1 >= d2));
+    CHECK(d2 > d1);
+    CHECK(d2 >= d1);
+    CHECK(!(d1 > d3));
+    CHECK(d1 >= d3);
+    CHECK(d3 >= d1);
+    CHECK(!(invalid > d1));
+    CHECK(!(invalid >= d1));
+    CHECK(d1 > invalid);
+    CHECK(d1 >= invalid);
+    CHECK(!(invalid > invalid));
+    CHECK(invalid >= invalid);
   }
 
 }
