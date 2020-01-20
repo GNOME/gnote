@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -41,7 +41,6 @@
 #include "sharp/xmlwriter.hpp"
 #include "sharp/string.hpp"
 #include "sharp/uri.hpp"
-#include "sharp/datetime.hpp"
 #include "preferences.hpp"
 #include "note.hpp"
 #include "utils.hpp"
@@ -182,7 +181,7 @@ namespace gnote {
       dialog.run ();
     }
 
-    Glib::ustring get_pretty_print_date(const sharp::DateTime & date, bool show_time, Preferences & preferences)
+    Glib::ustring get_pretty_print_date(const Glib::DateTime & date, bool show_time, Preferences & preferences)
     {
       bool use_12h = false;
       if(show_time) {
@@ -192,32 +191,36 @@ namespace gnote {
       return get_pretty_print_date(date, show_time, use_12h);
     }
 
-    Glib::ustring get_pretty_print_date(const sharp::DateTime & date, bool show_time, bool use_12h)
+    Glib::ustring get_pretty_print_date(const Glib::DateTime & date, bool show_time, bool use_12h)
     {
+      if(!date) {
+        return _("No Date");
+      }
+
       Glib::ustring pretty_str;
-      sharp::DateTime now = sharp::DateTime::now();
+      auto now = Glib::DateTime::create_now_local();
       Glib::ustring short_time = use_12h
         /* TRANSLATORS: time in 12h format. */
-        ? date.to_string("%l:%M %P")
+        ? sharp::date_time_to_string(date, "%l:%M %P")
         /* TRANSLATORS: time in 24h format. */
-        : date.to_string("%H:%M");
+        : sharp::date_time_to_string(date, "%H:%M");
 
-      if (date.year() == now.year()) {
-        if (date.day_of_year() == now.day_of_year()) {
+      if(date.get_year() == now.get_year()) {
+        if(date.get_day_of_year() == now.get_day_of_year()) {
           pretty_str = show_time ?
             /* TRANSLATORS: argument %1 is time. */
             Glib::ustring::compose(_("Today, %1"), short_time) :
             _("Today");
         }
-        else if ((date.day_of_year() < now.day_of_year())
-                 && (date.day_of_year() == now.day_of_year() - 1)) {
+        else if((date.get_day_of_year() < now.get_day_of_year())
+                 && (date.get_day_of_year() == now.get_day_of_year() - 1)) {
           pretty_str = show_time ?
             /* TRANSLATORS: argument %1 is time. */
             Glib::ustring::compose(_("Yesterday, %1"), short_time) :
             _("Yesterday");
         }
-        else if (date.day_of_year() > now.day_of_year()
-                 && date.day_of_year() == now.day_of_year() + 1) {
+        else if(date.get_day_of_year() > now.get_day_of_year()
+                 && date.get_day_of_year() == now.get_day_of_year() + 1) {
           pretty_str = show_time ?
             /* TRANSLATORS: argument %1 is time. */
             Glib::ustring::compose(_("Tomorrow, %1"), short_time) :
@@ -225,19 +228,16 @@ namespace gnote {
         }
         else {
           /* TRANSLATORS: date in current year. */
-          pretty_str = date.to_string(_("%b %d")); // "MMMM d"
+          pretty_str = sharp::date_time_to_string(date, _("%b %d")); // "MMMM d"
           if(show_time) {
             /* TRANSLATORS: argument %1 is date, %2 is time. */
             pretty_str = Glib::ustring::compose(_("%1, %2"), pretty_str, short_time);
           }
         }
       } 
-      else if (!date.is_valid()) {
-        pretty_str = _("No Date");
-      }
       else {
         /* TRANSLATORS: date in other than current year. */
-        pretty_str = date.to_string(_("%b %d %Y")); // "MMMM d yyyy"
+        pretty_str = sharp::date_time_to_string(date, _("%b %d %Y")); // "MMMM d yyyy"
         if(show_time) {
           /* TRANSLATORS: argument %1 is date, %2 is time. */
           pretty_str = Glib::ustring::compose(_("%1, %2"), pretty_str, short_time);

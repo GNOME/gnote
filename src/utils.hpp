@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -41,9 +41,6 @@
 #include "sharp/exception.hpp"
 #include "sharp/uri.hpp"
 
-namespace sharp {
-  class DateTime;
-}
 
 namespace gnote {
 
@@ -59,8 +56,8 @@ class Preferences;
     void show_opening_location_error(Gtk::Window * parent,
                                      const Glib::ustring & url,
                                      const Glib::ustring & error);
-    Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time, Preferences & preferences);
-    Glib::ustring get_pretty_print_date(const sharp::DateTime &, bool show_time, bool use_12h);
+    Glib::ustring get_pretty_print_date(const Glib::DateTime &, bool show_time, Preferences & preferences);
+    Glib::ustring get_pretty_print_date(const Glib::DateTime &, bool show_time, bool use_12h);
 
     void main_context_invoke(const sigc::slot<void> & slot);
     void main_context_call(const sigc::slot<void> & slot);
