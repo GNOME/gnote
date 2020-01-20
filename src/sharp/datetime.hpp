@@ -91,6 +91,11 @@ public:
   Glib::TimeSpan operator-(const DateTime & dt) const;
   DateTime operator-(const Glib::TimeSpan & ts) const;
 
+  operator Glib::DateTime() const
+  {
+    return Glib::DateTime::create_now_local(m_date);
+  }
+
   glong sec() const
     {
       return m_date.tv_sec;
