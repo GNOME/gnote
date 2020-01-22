@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2015-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2013,2015-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,6 @@
 #include <gtkmm/image.h>
 #include <gtkmm/printoperation.h>
 
-#include "sharp/datetime.hpp"
 #include "debug.hpp"
 #include "iactionmanager.hpp"
 #include "notetag.hpp"
@@ -283,7 +282,7 @@ namespace printnotes {
   Glib::RefPtr<Pango::Layout> 
   PrintNotesNoteAddin::create_layout_for_timestamp(const Glib::RefPtr<Gtk::PrintContext> & context)
   {
-    Glib::ustring timestamp = sharp::DateTime::now().to_string("%c");
+    Glib::ustring timestamp = sharp::date_time_to_string(Glib::DateTime::create_now_local(), "%c");
 
     Glib::RefPtr<Pango::Layout> layout = context->create_pango_layout ();
     Pango::FontDescription font_desc = get_window()->editor()->get_pango_context()->get_font_description();
