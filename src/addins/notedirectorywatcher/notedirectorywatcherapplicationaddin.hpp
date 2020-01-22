@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,7 +46,7 @@ DECLARE_MODULE(NoteDirectoryWatcherModule);
 
 struct NoteFileChangeRecord
 {
-  sharp::DateTime last_change;
+  Glib::DateTime last_change;
   bool deleted;
   bool changed;
 };
@@ -81,7 +81,7 @@ private:
   Glib::RefPtr<Gio::FileMonitor> m_file_system_watcher;
 
   std::map<Glib::ustring, NoteFileChangeRecord> m_file_change_records;
-  std::map<Glib::ustring, sharp::DateTime> m_note_save_times;
+  std::map<Glib::ustring, Glib::DateTime> m_note_save_times;
   sigc::connection m_signal_note_saved_cid;
   sigc::connection m_signal_changed_cid;
   sigc::connection m_signal_settings_changed_cid;

@@ -87,7 +87,7 @@ bool NoteDirectoryWatcherApplicationAddin::initialized()
 
 void NoteDirectoryWatcherApplicationAddin::handle_note_saved(const gnote::NoteBase::Ptr & note)
 {
-  m_note_save_times[note->id()] = sharp::DateTime::now();
+  m_note_save_times[note->id()] = Glib::DateTime::create_now_local();
 }
 
 void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
@@ -135,7 +135,7 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
       }
     }
 
-    record->second.last_change = sharp::DateTime::now();
+    record->second.last_change = Glib::DateTime::create_now_local();
   }
   catch(...)
   {}
@@ -167,15 +167,15 @@ bool NoteDirectoryWatcherApplicationAddin::handle_timeout()
 
       // Check that Note.Saved event didn't occur within (check-interval -2) seconds of last write
       if(m_note_save_times.find(iter.first) != m_note_save_times.end() &&
-          std::abs(sharp::time_span_total_seconds(m_note_save_times[iter.first] - iter.second.last_change)) <= (m_check_interval - 2)) {
+          std::abs(sharp::time_span_total_seconds(m_note_save_times[iter.first].difference(iter.second.last_change))) <= (m_check_interval - 2)) {
         DBG_OUT("NoteDirectoryWatcher: Ignoring (timeout) because it was probably a Gnote write");
         keysToRemove.push_back(iter.first);
         continue;
       }
       // TODO: Take some actions to clear note_save_times? Not a large structure...
 
-      sharp::DateTime last_change(iter.second.last_change);
-      if(sharp::DateTime::now() > last_change.add_seconds(4)) {
+      Glib::DateTime last_change(iter.second.last_change);
+      if(Glib::DateTime::create_now_local() > last_change.add_seconds(4)) {
         if(iter.second.deleted) {
           delete_note(iter.first);
         }
