@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2013,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,7 +61,7 @@ namespace inserttimestamp {
     Glib::RefPtr<Gio::Settings> settings = preferences.get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
     Glib::ustring dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
 
-    sharp::DateTime now = sharp::DateTime::now();
+    auto now = Glib::DateTime::create_now_local();
 
     // Label
     Gtk::Label *label = manage(new Gtk::Label (_("Choose one of the predefined formats "
@@ -81,7 +81,7 @@ namespace inserttimestamp {
 
     for(auto format : s_formats) {
       Gtk::TreeIter treeiter = store->append();
-      treeiter->set_value(0, now.to_string(format));
+      treeiter->set_value(0, sharp::date_time_to_string(now, format));
       treeiter->set_value(1, format);
     }
 
