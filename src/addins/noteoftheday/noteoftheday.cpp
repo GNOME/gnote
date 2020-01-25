@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009-2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -68,14 +68,14 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
 
   for(const gnote::NoteBase::Ptr & note : notes) {
     const Glib::ustring & title = note->get_title();
-    const sharp::DateTime & date_time = note->create_date();
+    const auto & date_time = note->create_date();
 
     if (true == Glib::str_has_prefix(title, s_title_prefix)
         && s_template_title != title
         && Glib::Date(
-             date_time.day(),
-             static_cast<Glib::Date::Month>(date_time.month()),
-             date_time.year()) != date
+             date_time.get_day_of_month(),
+             static_cast<Glib::Date::Month>(date_time.get_month()),
+             date_time.get_year()) != date
         && !has_changed(note)) {
       kill_list.push_back(note);
     }
@@ -123,14 +123,14 @@ gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(
 
   for(gnote::NoteBase::Ptr note : notes) {
     const Glib::ustring & title = note->get_title();
-    const sharp::DateTime & date_time = note->create_date();
+    const auto & date_time = note->create_date();
 
     if (true == Glib::str_has_prefix(title, s_title_prefix)
         && s_template_title != title
         && Glib::Date(
-             date_time.day(),
-             static_cast<Glib::Date::Month>(date_time.month()),
-             date_time.year()) == date) {
+             date_time.get_day_of_month(),
+             static_cast<Glib::Date::Month>(date_time.get_month()),
+             date_time.get_year()) == date) {
       return note;
     }
   }
@@ -159,12 +159,12 @@ Glib::ustring NoteOfTheDay::get_title(const Glib::Date & date)
 
 bool NoteOfTheDay::has_changed(const gnote::NoteBase::Ptr & note)
 {
-  const sharp::DateTime & date_time = note->create_date();
+  const auto & date_time = note->create_date();
   const Glib::ustring original_xml
     = get_content(Glib::Date(
-                    date_time.day(),
-                    static_cast<Glib::Date::Month>(date_time.month()),
-                    date_time.year()),
+                    date_time.get_day_of_month(),
+                    static_cast<Glib::Date::Month>(date_time.get_month()),
+                    date_time.get_year()),
                     *static_cast<gnote::NoteManager*>(&note->manager()));
 
   return get_content_without_title(std::static_pointer_cast<gnote::Note>(note)->text_content())
