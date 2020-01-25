@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012,2017 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017,2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -46,7 +46,7 @@ private:
 };
 
 
-DateTime file_modification_time(const Glib::ustring &);
+Glib::DateTime file_modification_time(const Glib::ustring &);
 
 }
 

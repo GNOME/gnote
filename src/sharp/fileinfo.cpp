@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012,2017 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017,2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -57,12 +57,12 @@ namespace sharp {
   }
 
 
-  DateTime file_modification_time(const Glib::ustring &path)
+  Glib::DateTime file_modification_time(const Glib::ustring &path)
   {
     Glib::RefPtr<Gio::FileInfo> file_info = Gio::File::create_for_path(path)->query_info(
         G_FILE_ATTRIBUTE_TIME_MODIFIED + Glib::ustring(",") + G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC);
     if(file_info)
-      return DateTime(file_info->modification_time());
-    return DateTime();
+      return Glib::DateTime::create_now_local(file_info->modification_time());
+    return Glib::DateTime();
   }
 }
