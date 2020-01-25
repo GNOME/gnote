@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -69,7 +69,7 @@ private:
   int m_new_revision;
   Glib::RefPtr<Gio::File> m_new_revision_path;
 
-  sharp::DateTime m_initial_sync_attempt;
+  Glib::DateTime m_initial_sync_attempt;
   Glib::ustring m_last_sync_lock_hash;
   utils::InterruptableTimeout m_lock_timeout;
   SyncLockInfo m_sync_lock;
