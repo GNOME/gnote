@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -171,14 +171,14 @@ void NoteBase::set_change_type(ChangeType c)
   {
   case CONTENT_CHANGED:
     // NOTE: Updating ChangeDate automatically updates MetdataChangeDate to match.
-    data_synchronizer().data().set_change_date(sharp::DateTime::now());
+    data_synchronizer().data().set_change_date(Glib::DateTime::create_now_local());
     break;
   case OTHER_DATA_CHANGED:
     // Only update MetadataChangeDate.  Used by sync/etc
     // to know when non-content note data has changed,
     // but order of notes in menu and search UI is
     // unaffected.
-    data_synchronizer().data().metadata_change_date() = sharp::DateTime::now();
+    data_synchronizer().data().metadata_change_date() = Glib::DateTime::create_now_local();
     break;
   default:
     break;
@@ -383,17 +383,17 @@ NoteData & NoteBase::data()
   return data_synchronizer().synchronized_data();
 }
 
-const sharp::DateTime & NoteBase::create_date() const
+const Glib::DateTime & NoteBase::create_date() const
 {
   return data_synchronizer().data().create_date();
 }
 
-const sharp::DateTime & NoteBase::change_date() const
+const Glib::DateTime & NoteBase::change_date() const
 {
   return data_synchronizer().data().change_date();
 }
 
-const sharp::DateTime & NoteBase::metadata_change_date() const
+const Glib::DateTime & NoteBase::metadata_change_date() const
 {
   return data_synchronizer().data().metadata_change_date();
 }
@@ -401,7 +401,7 @@ const sharp::DateTime & NoteBase::metadata_change_date() const
 bool NoteBase::is_new() const
 {
   const NoteDataBufferSynchronizerBase & sync(data_synchronizer());
-  return sync.data().create_date().is_valid() && (sync.data().create_date() > sharp::DateTime::now().add_hours(-24));
+  return sync.data().create_date() && (sync.data().create_date() > sharp::DateTime::now().add_hours(-24));
 }
 
 void NoteBase::enabled(bool is_enabled)
@@ -575,7 +575,7 @@ void NoteArchiver::write(sharp::XmlWriter & xml, const NoteData & data)
   xml.write_string(sharp::XmlConvert::to_string(data.metadata_change_date()));
   xml.write_end_element();
 
-  if(data.create_date().is_valid()) {
+  if(data.create_date()) {
     xml.write_start_element("", "create-date", "");
     xml.write_string(sharp::XmlConvert::to_string(data.create_date()));
     xml.write_end_element();

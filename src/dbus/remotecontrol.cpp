@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2014,2016-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -185,7 +185,7 @@ namespace gnote {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
       return -1;
-    return note->metadata_change_date().sec();
+    return note->metadata_change_date().to_unix();
   }
 
 
@@ -222,7 +222,7 @@ namespace gnote {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
       return -1;
-    return note->create_date().sec();
+    return note->create_date().to_unix();
   }
 
 

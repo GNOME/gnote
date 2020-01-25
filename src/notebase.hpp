@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -68,28 +68,28 @@ public:
     { 
       return m_text;
     }
-  const sharp::DateTime & create_date() const
+  const Glib::DateTime & create_date() const
     {
       return m_create_date;
     }
-  sharp::DateTime & create_date()
+  Glib::DateTime & create_date()
     {
       return m_create_date;
     }
-  const sharp::DateTime & change_date() const
+  const Glib::DateTime & change_date() const
     {
       return m_change_date;
     }
-  void set_change_date(const sharp::DateTime & date)
+  void set_change_date(const Glib::DateTime & date)
     {
       m_change_date = date;
       m_metadata_change_date = date;
     }
-  const sharp::DateTime & metadata_change_date() const
+  const Glib::DateTime & metadata_change_date() const
     {
       return m_metadata_change_date;
     }
-  sharp::DateTime & metadata_change_date()
+  Glib::DateTime & metadata_change_date()
     {
       return m_metadata_change_date;
     }
@@ -141,9 +141,9 @@ private:
   const Glib::ustring m_uri;
   Glib::ustring     m_title;
   Glib::ustring     m_text;
-  sharp::DateTime             m_create_date;
-  sharp::DateTime             m_change_date;
-  sharp::DateTime             m_metadata_change_date;
+  Glib::DateTime    m_create_date;
+  Glib::DateTime    m_change_date;
+  Glib::DateTime    m_metadata_change_date;
   int               m_cursor_pos;
   int               m_selection_bound_pos;
   int               m_width, m_height;
@@ -238,9 +238,9 @@ public:
   const NoteData & data() const;
   NoteData & data();
 
-  const sharp::DateTime & create_date() const;
-  const sharp::DateTime & change_date() const;
-  const sharp::DateTime & metadata_change_date() const;
+  const Glib::DateTime & create_date() const;
+  const Glib::DateTime & change_date() const;
+  const Glib::DateTime & metadata_change_date() const;
   bool is_new() const;
   bool enabled() const
     {

@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -277,7 +277,7 @@ namespace gnote {
   {
     auto note_data = std::make_unique<NoteData>(url_from_path(filename));
     note_data->title() = title;
-    sharp::DateTime date(sharp::DateTime::now());
+    auto date(Glib::DateTime::create_now_local());
     note_data->create_date() = date;
     note_data->set_change_date(date);
       
@@ -286,16 +286,16 @@ namespace gnote {
 
   Note::Ptr Note::create_existing_note(std::unique_ptr<NoteData> data, Glib::ustring filepath, NoteManager & manager, IGnote & g)
   {
-    if (!data->change_date().is_valid()) {
-      sharp::DateTime d(sharp::file_modification_time(filepath));
+    if (!data->change_date()) {
+      auto d(sharp::file_modification_time(filepath));
       data->set_change_date(d);
     }
-    if (!data->create_date().is_valid()) {
-      if(data->change_date().is_valid()) {
+    if (!data->create_date()) {
+      if(data->change_date()) {
         data->create_date() = data->change_date();
       }
       else {
-        sharp::DateTime d(sharp::file_modification_time(filepath));
+        auto d(sharp::file_modification_time(filepath));
         data->create_date() = d;
       }
     }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -618,7 +618,7 @@ int SearchNotesWidget::compare_dates(const Gtk::TreeIter & a, const Gtk::TreeIte
     return -1;
   }
   else {
-    return sharp::DateTime::compare(note_a->change_date(), note_b->change_date());
+    return note_a->change_date().compare(note_b->change_date());
   }
 }
 

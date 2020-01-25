@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -38,8 +38,8 @@ namespace sharp {
   class XmlConvert
   {
   public:
-    static DateTime to_date_time(const Glib::ustring & date);
-    static Glib::ustring to_string(const DateTime & date);
+    static Glib::DateTime to_date_time(const Glib::ustring & date);
+    static Glib::ustring to_string(const Glib::DateTime & date);
   };
 
 }
