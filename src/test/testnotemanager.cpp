@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2014,2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ gnote::NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, c
 {
   auto note_data = std::make_unique<gnote::NoteData>(gnote::NoteBase::url_from_path(file_name));
   note_data->title() = title;
-  sharp::DateTime date(sharp::DateTime::now());
+  Glib::DateTime date(Glib::DateTime::create_now_local());
   note_data->create_date() = date;
   note_data->set_change_date(date);
 
