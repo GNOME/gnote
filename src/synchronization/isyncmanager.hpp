@@ -48,8 +48,8 @@ public:
 
   virtual int last_synchronized_revision() = 0;
   virtual void last_synchronized_revision(int) = 0;
-  virtual sharp::DateTime last_sync_date() = 0;
-  virtual void last_sync_date(const sharp::DateTime &) = 0;
+  virtual Glib::DateTime last_sync_date() = 0;
+  virtual void last_sync_date(const Glib::DateTime &) = 0;
   virtual int get_revision(const NoteBase::Ptr & note) = 0;
   virtual void set_revision(const NoteBase::Ptr & note, int revision) = 0;
   virtual std::map<Glib::ustring, Glib::ustring> deleted_note_titles() = 0;

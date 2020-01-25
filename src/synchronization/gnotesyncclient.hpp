@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,11 +34,11 @@ namespace sync {
     static SyncClient *create(NoteManagerBase &);
     GnoteSyncClient();
 
-    virtual sharp::DateTime last_sync_date() override
+    virtual Glib::DateTime last_sync_date() override
       {
         return m_last_sync_date;
       }
-    virtual void last_sync_date(const sharp::DateTime &) override;
+    virtual void last_sync_date(const Glib::DateTime &) override;
     virtual int last_synchronized_revision() override
       {
         return m_last_sync_rev;
@@ -73,7 +73,7 @@ namespace sync {
     void read_notes(sharp::XmlReader & reader, void (GnoteSyncClient::*read_note_atts)(sharp::XmlReader&));
 
     Glib::RefPtr<Gio::FileMonitor> m_file_watcher;
-    sharp::DateTime m_last_sync_date;
+    Glib::DateTime m_last_sync_date;
     int m_last_sync_rev;
     Glib::ustring m_server_id;
     std::map<Glib::ustring, int> m_file_revisions;

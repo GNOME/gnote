@@ -354,7 +354,7 @@ namespace sync {
       // This should be equivalent to newRevision
       m_client->last_synchronized_revision(server->latest_revision());
 
-      m_client->last_sync_date(sharp::DateTime::now());
+      m_client->last_sync_date(Glib::DateTime::create_now_local());
 
       DBG_OUT("Sync: New revision: %d", m_client->last_synchronized_revision());
 

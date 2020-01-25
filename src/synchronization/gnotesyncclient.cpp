@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -141,14 +141,14 @@ namespace sync {
   void GnoteSyncClient::parse(const Glib::ustring & manifest_path)
   {
     // Set defaults before parsing
-    m_last_sync_date = sharp::DateTime::now().add_days(-1);
+    m_last_sync_date = Glib::DateTime::create_now_local().add_days(-1);
     m_last_sync_rev = -1;
     m_file_revisions.clear();
     m_deleted_notes.clear();
     m_server_id = "";
 
     if(!sharp::file_exists(manifest_path)) {
-      m_last_sync_date = sharp::DateTime();
+      m_last_sync_date = Glib::DateTime();
       write(manifest_path);
     }
 
@@ -158,7 +158,7 @@ namespace sync {
 	if(reader.get_name() == "last-sync-date") {
 	  Glib::ustring value = reader.read_string();
 	  try {
-	    m_last_sync_date = sharp::DateTime::from_iso8601(value);
+	    m_last_sync_date = sharp::date_time_from_iso8601(value);
 	  }
 	  catch(...) {
             /* TRANSLATORS: %s is file */
@@ -198,7 +198,7 @@ namespace sync {
       xml.write_start_element("", "manifest", "http://beatniksoftware.com/tomboy");
 
       xml.write_start_element("", "last-sync-date", "");
-      xml.write_string(m_last_sync_date.to_iso8601());
+      xml.write_string(sharp::date_time_to_iso8601(m_last_sync_date));
       xml.write_end_element();
 
       xml.write_start_element("", "last-sync-rev", "");
@@ -241,7 +241,7 @@ namespace sync {
   }
 
 
-  void GnoteSyncClient::last_sync_date(const sharp::DateTime & date)
+  void GnoteSyncClient::last_sync_date(const Glib::DateTime & date)
   {
     m_last_sync_date = date;
     // If we just did a sync, we should be able to forget older deleted notes

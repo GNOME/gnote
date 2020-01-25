@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2019 Aurimas Cernius
+ * Copyright (C) 2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,8 +75,8 @@ TEST(manifest_parsing)
   client.set_manifest_path(test_manifest);
   client.reparse();
 
-  sharp::DateTime sync_date(sharp::DateTime::from_iso8601("2014-04-21T20:13:24.711343Z"));
-  CHECK(client.last_sync_date() == sync_date);
+  auto sync_date = sharp::date_time_from_iso8601("2014-04-21T20:13:24.711343Z");
+  CHECK(client.last_sync_date().compare(sync_date) == 0);
   CHECK_EQUAL(0, client.last_synchronized_revision());
   CHECK_EQUAL("38afddc2-9ce8-46ba-b106-baf3916c74b8", client.associated_server_id());
   CHECK_EQUAL(3, client.deleted_note_titles().size());
