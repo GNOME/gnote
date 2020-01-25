@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017-2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -95,7 +95,7 @@ namespace sync {
     utils::InterruptableTimeout m_autosync_timer;
     int m_autosync_timeout_pref_minutes;
     int m_current_autosync_timeout_minutes;
-    sharp::DateTime m_last_background_check;
+    Glib::DateTime m_last_background_check;
   };
 
 
