@@ -401,7 +401,7 @@ const Glib::DateTime & NoteBase::metadata_change_date() const
 bool NoteBase::is_new() const
 {
   const NoteDataBufferSynchronizerBase & sync(data_synchronizer());
-  return sync.data().create_date() && (sync.data().create_date() > sharp::DateTime::now().add_hours(-24));
+  return sync.data().create_date() && (sync.data().create_date() > Glib::DateTime::create_now_local().add_hours(-24));
 }
 
 void NoteBase::enabled(bool is_enabled)
