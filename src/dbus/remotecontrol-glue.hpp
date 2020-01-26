@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2017 Aurimas Cernius
+ * Copyright (C) 2011,2017,2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,10 +45,12 @@ public:
   virtual Glib::ustring FindStartHereNote() = 0;
   virtual std::vector<Glib::ustring> GetAllNotesWithTag(const Glib::ustring& tag_name) = 0;
   virtual int32_t GetNoteChangeDate(const Glib::ustring& uri) = 0;
+  virtual int64_t GetNoteChangeDateUnix(const Glib::ustring& uri) = 0;
   virtual Glib::ustring GetNoteCompleteXml(const Glib::ustring& uri) = 0;
   virtual Glib::ustring GetNoteContents(const Glib::ustring& uri) = 0;
   virtual Glib::ustring GetNoteContentsXml(const Glib::ustring& uri) = 0;
   virtual int32_t GetNoteCreateDate(const Glib::ustring& uri) = 0;
+  virtual int64_t GetNoteCreateDateUnix(const Glib::ustring& uri) = 0;
   virtual Glib::ustring GetNoteTitle(const Glib::ustring& uri) = 0;
   virtual std::vector<Glib::ustring> GetTagsForNote(const Glib::ustring& uri) = 0;
   virtual bool HideNote(const Glib::ustring& uri) = 0;
@@ -85,10 +87,12 @@ private:
   Glib::VariantContainerBase FindStartHereNote_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase GetAllNotesWithTag_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase GetNoteChangeDate_stub(const Glib::VariantContainerBase &);
+  Glib::VariantContainerBase GetNoteChangeDateUnix_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase GetNoteCompleteXml_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase GetNoteContents_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase GetNoteContentsXml_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase GetNoteCreateDate_stub(const Glib::VariantContainerBase &);
+  Glib::VariantContainerBase GetNoteCreateDateUnix_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase GetNoteTitle_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase GetTagsForNote_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase HideNote_stub(const Glib::VariantContainerBase &);
@@ -109,6 +113,8 @@ private:
   Glib::VariantContainerBase stub_bool_string_string(const Glib::VariantContainerBase &, bool_string_string_func);
   typedef int32_t (RemoteControl_adaptor::*int_string_func)(const Glib::ustring &);
   Glib::VariantContainerBase stub_int_string(const Glib::VariantContainerBase &, int_string_func);
+  typedef int64_t (RemoteControl_adaptor::*int64_string_func)(const Glib::ustring &);
+  Glib::VariantContainerBase stub_int64_string(const Glib::VariantContainerBase &, int64_string_func);
   typedef Glib::ustring (RemoteControl_adaptor::*string_string_func)(const Glib::ustring &);
   Glib::VariantContainerBase stub_string_string(const Glib::VariantContainerBase &, string_string_func);
   typedef std::vector<Glib::ustring> (RemoteControl_adaptor::*vectorstring_void_func)();

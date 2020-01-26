@@ -46,6 +46,10 @@
       <arg type="s" name="uri" direction="in"/>
       <arg type="i" name="ret" direction="out"/>
     </method>
+    <method name="GetNoteChangeDateUnix">
+      <arg type="s" name="uri" direction="in"/>
+      <arg type="x" name="ret" direction="out"/>
+    </method>
     <method name="GetNoteCompleteXml">
       <arg type="s" name="uri" direction="in"/>
       <arg type="s" name="ret" direction="out"/>
@@ -61,6 +65,10 @@
     <method name="GetNoteCreateDate">
       <arg type="s" name="uri" direction="in"/>
       <arg type="i" name="ret" direction="out"/>
+    </method>
+    <method name="GetNoteCreateDateUnix">
+      <arg type="s" name="uri" direction="in"/>
+      <arg type="x" name="ret" direction="out"/>
     </method>
     <method name="GetNoteTitle">
       <arg type="s" name="uri" direction="in"/>

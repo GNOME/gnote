@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -55,10 +55,12 @@ public:
   virtual Glib::ustring FindStartHereNote() override;
   virtual std::vector<Glib::ustring> GetAllNotesWithTag(const Glib::ustring& tag_name) override;
   virtual int32_t GetNoteChangeDate(const Glib::ustring& uri) override;
+  virtual int64_t GetNoteChangeDateUnix(const Glib::ustring& uri) override;
   virtual Glib::ustring GetNoteCompleteXml(const Glib::ustring& uri) override;
   virtual Glib::ustring GetNoteContents(const Glib::ustring& uri) override;
   virtual Glib::ustring GetNoteContentsXml(const Glib::ustring& uri) override;
   virtual int32_t GetNoteCreateDate(const Glib::ustring& uri) override;
+  virtual int64_t GetNoteCreateDateUnix(const Glib::ustring& uri) override;
   virtual Glib::ustring GetNoteTitle(const Glib::ustring& uri) override;
   virtual std::vector<Glib::ustring> GetTagsForNote(const Glib::ustring& uri) override;
   virtual bool HideNote(const Glib::ustring& uri) override;

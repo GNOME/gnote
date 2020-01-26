@@ -182,6 +182,12 @@ namespace gnote {
 
   int32_t RemoteControl::GetNoteChangeDate(const Glib::ustring& uri)
   {
+    return GetNoteChangeDateUnix(uri);
+  }
+
+
+  int64_t RemoteControl::GetNoteChangeDateUnix(const Glib::ustring& uri)
+  {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
       return -1;
@@ -218,6 +224,12 @@ namespace gnote {
 
 
   int32_t RemoteControl::GetNoteCreateDate(const Glib::ustring& uri)
+  {
+    return GetNoteCreateDateUnix(uri);
+  }
+
+
+  int64_t RemoteControl::GetNoteCreateDateUnix(const Glib::ustring& uri)
   {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)

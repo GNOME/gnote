@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2017 Aurimas Cernius
+ * Copyright (C) 2011,2017,2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,10 +48,12 @@ RemoteControl_adaptor::RemoteControl_adaptor(const Glib::RefPtr<Gio::DBus::Conne
   m_stubs["FindStartHereNote"] = &RemoteControl_adaptor::FindStartHereNote_stub;
   m_stubs["GetAllNotesWithTag"] = &RemoteControl_adaptor::GetAllNotesWithTag_stub;
   m_stubs["GetNoteChangeDate"] = &RemoteControl_adaptor::GetNoteChangeDate_stub;
+  m_stubs["GetNoteChangeDateUnix"] = &RemoteControl_adaptor::GetNoteChangeDateUnix_stub;
   m_stubs["GetNoteCompleteXml"] = &RemoteControl_adaptor::GetNoteCompleteXml_stub;
   m_stubs["GetNoteContents"] = &RemoteControl_adaptor::GetNoteContents_stub;
   m_stubs["GetNoteContentsXml"] = &RemoteControl_adaptor::GetNoteContentsXml_stub;
   m_stubs["GetNoteCreateDate"] = &RemoteControl_adaptor::GetNoteCreateDate_stub;
+  m_stubs["GetNoteCreateDateUnix"] = &RemoteControl_adaptor::GetNoteCreateDateUnix_stub;
   m_stubs["GetNoteTitle"] = &RemoteControl_adaptor::GetNoteTitle_stub;
   m_stubs["GetTagsForNote"] = &RemoteControl_adaptor::GetTagsForNote_stub;
   m_stubs["HideNote"] = &RemoteControl_adaptor::HideNote_stub;
@@ -198,6 +200,12 @@ Glib::VariantContainerBase RemoteControl_adaptor::GetNoteChangeDate_stub(const G
 }
 
 
+Glib::VariantContainerBase RemoteControl_adaptor::GetNoteChangeDateUnix_stub(const Glib::VariantContainerBase & parameters)
+{
+  return stub_int64_string(parameters, &RemoteControl_adaptor::GetNoteChangeDateUnix);
+}
+
+
 Glib::VariantContainerBase RemoteControl_adaptor::GetNoteCompleteXml_stub(const Glib::VariantContainerBase & parameters)
 {
   return stub_string_string(parameters, &RemoteControl_adaptor::GetNoteCompleteXml);
@@ -219,6 +227,12 @@ Glib::VariantContainerBase RemoteControl_adaptor::GetNoteContentsXml_stub(const 
 Glib::VariantContainerBase RemoteControl_adaptor::GetNoteCreateDate_stub(const Glib::VariantContainerBase & parameters)
 {
   return stub_int_string(parameters, &RemoteControl_adaptor::GetNoteCreateDate);
+}
+
+
+Glib::VariantContainerBase RemoteControl_adaptor::GetNoteCreateDateUnix_stub(const Glib::VariantContainerBase & parameters)
+{
+  return stub_int64_string(parameters, &RemoteControl_adaptor::GetNoteCreateDateUnix);
 }
 
 
@@ -341,6 +355,19 @@ Glib::VariantContainerBase RemoteControl_adaptor::stub_int_string(const Glib::Va
   }
 
   return Glib::VariantContainerBase::create_tuple(Glib::Variant<gint32>::create(result));
+}
+
+
+Glib::VariantContainerBase RemoteControl_adaptor::stub_int64_string(const Glib::VariantContainerBase & parameters, int64_string_func func)
+{
+  gint64 result = 0;
+  if(parameters.get_n_children() == 1) {
+    Glib::Variant<Glib::ustring> param;
+    parameters.get_child(param);
+    result = (this->*func)(param.get());
+  }
+
+  return Glib::VariantContainerBase::create_tuple(Glib::Variant<gint64>::create(result));
 }
 
 
