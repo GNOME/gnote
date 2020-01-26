@@ -39,87 +39,10 @@
 
 namespace sharp {
 
-
-class DateTime
-{
-public:
-  DateTime();
-  explicit DateTime(time_t t, glong _usec = 0);
-  explicit DateTime(const Glib::TimeVal & v);
- 
-  DateTime & add_days(int days);
-  DateTime & add_hours(int hours);
-  DateTime & add_seconds(int seconds);
-
-  int day() const;
-  int month() const;
-  int year() const;
-  int day_of_year() const;
-
-  bool is_valid() const;
-
-  Glib::ustring to_string(const char * format) const;
-  Glib::ustring to_string(const Glib::ustring & format) const
-    {
-      return to_string(format.c_str());
-    }
-  Glib::ustring to_short_time_string() const;
-  Glib::ustring to_iso8601() const;
-
-  static DateTime now();
-  static DateTime from_iso8601(const Glib::ustring &);
-  static int compare(const DateTime &, const DateTime &);
-
-  bool operator==(const DateTime & dt) const;
-  bool operator!=(const DateTime & dt) const
-    {
-      return !(*this == dt);
-    }
-  bool operator>(const DateTime & dt) const;
-  bool operator>=(const DateTime & dt) const
-    {
-      return (*this == dt) || (*this > dt);
-    }
-  bool operator<(const DateTime & dt) const
-    {
-      return !(*this >= dt);
-    }
-  bool operator<=(const DateTime & dt) const
-    {
-      return (*this < dt) || (*this == dt);
-    }
-  Glib::TimeSpan operator-(const DateTime & dt) const;
-  DateTime operator-(const Glib::TimeSpan & ts) const;
-
-  operator Glib::DateTime() const
-  {
-    return Glib::DateTime::create_now_local(m_date);
-  }
-
-  glong sec() const
-    {
-      return m_date.tv_sec;
-    }
-  glong usec() const
-    {
-      return m_date.tv_usec;
-    }
-  void set_usec(glong _usec) 
-    {
-      m_date.tv_usec = _usec;
-    }
-private:
-  // return the string formatted according to strftime
-  Glib::ustring _to_string(const char * format, struct tm *) const;
-  Glib::TimeVal m_date;
-};
-
-
 Glib::ustring date_time_to_string(const Glib::DateTime & dt, const char *format);
 Glib::ustring date_time_to_string(const Glib::DateTime & dt, const Glib::ustring & format);
 Glib::ustring date_time_to_iso8601(const Glib::DateTime & dt);
 Glib::DateTime date_time_from_iso8601(const Glib::ustring & dt);
-
 
 }
 
