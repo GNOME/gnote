@@ -29,37 +29,12 @@
 SUITE(DateTime)
 {
 
-  TEST(to_string)
-  {
-    sharp::DateTime d(678901234, 67890);
-    Glib::ustring date_string = sharp::XmlConvert::to_string(d);
-    CHECK_EQUAL("1991-07-07T15:40:34.067890Z", date_string);
-
-    d = sharp::DateTime::from_iso8601("2009-03-24T03:34:35.2914680-04:00");
-    // check when usec is 0.
-    // see http://bugzilla.gnome.org/show_bug.cgi?id=581844
-    d.set_usec(0);
-
-    date_string = sharp::XmlConvert::to_string(d);
-    CHECK_EQUAL("2009-03-24T07:34:35.000000Z", date_string);
-  }
-
   TEST(date_time_to_string)
   {
     auto d = Glib::DateTime::create_local(1991, 7, 7, 15, 40, 34);
     CHECK(bool(d));
     Glib::ustring date_string = sharp::date_time_to_string(d, "%F %T");
     CHECK_EQUAL("1991-07-07 15:40:34", date_string);
-  }
-
-  TEST(from_iso8601)
-  {
-    sharp::DateTime d(678901234, 67890);
-    sharp::DateTime d2 = sharp::DateTime::from_iso8601("1991-07-07T15:40:34.067890Z");
-    CHECK(d == d2);
-
-    sharp::DateTime d3 = sharp::DateTime::from_iso8601("2009-03-24T03:34:35.2914680-04:00");
-    CHECK(d3.is_valid());
   }
 
   TEST(date_time_to_iso8601)
@@ -96,20 +71,20 @@ SUITE(DateTime)
 
   TEST(pretty_print_date)
   {
-    sharp::DateTime d = sharp::DateTime::now();
+    Glib::DateTime d = Glib::DateTime::create_now_local();
     Glib::ustring date_string = gnote::utils::get_pretty_print_date(d, false, false);
     CHECK_EQUAL("Today", date_string);
 
-    d.add_days(1);
+    d = d.add_days(1);
     date_string = gnote::utils::get_pretty_print_date(d, false, false);
     CHECK_EQUAL("Tomorrow", date_string);
 
-    d = sharp::DateTime::now();
-    d.add_days(-1);
+    d = Glib::DateTime::create_now_local();
+    d = d.add_days(-1);
     date_string = gnote::utils::get_pretty_print_date(d, false, false);
     CHECK_EQUAL("Yesterday", date_string);
 
-    d = sharp::DateTime::from_iso8601("2009-03-24T13:34:35.2914680-04:00");
+    d = sharp::date_time_from_iso8601("2009-03-24T13:34:35.2914680-04:00");
     date_string = gnote::utils::get_pretty_print_date(d, true, false);
     CHECK(Glib::str_has_suffix(date_string, "17:34"));
 
