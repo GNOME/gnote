@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019 Aurimas Cernius
+ * Copyright (C) 2019,2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -92,13 +92,14 @@ gnote::sync::SyncServer *GvfsSyncServiceAddin::create_sync_server()
 
 bool GvfsSyncServiceAddin::mount(const Glib::RefPtr<Gio::File> & path)
 {
-  bool ret = true;
+  bool ret = true, done = false;
   Glib::Mutex mutex;
   Glib::Cond cond;
   mutex.lock();
-  if(mount_async(path, [&ret, &mutex, &cond](bool result, const Glib::ustring&) {
+  if(mount_async(path, [&ret, &mutex, &cond, &done](bool result, const Glib::ustring&) {
        mutex.lock();
        ret = result;
+       done = true;
        cond.signal();
        mutex.unlock();
      })) {
@@ -106,7 +107,9 @@ bool GvfsSyncServiceAddin::mount(const Glib::RefPtr<Gio::File> & path)
     return true;
   }
 
-  cond.wait(mutex);
+  while(!done) {
+    cond.wait(mutex);
+  }
   mutex.unlock();
   return ret;
 }
