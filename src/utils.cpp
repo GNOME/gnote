@@ -96,16 +96,6 @@ namespace gnote {
         delete slot;
         return FALSE;
       }
-
-      void main_context_call_func(const sigc::slot<void> & slot,
-                                  Glib::Threads::Cond * cond,
-                                  Glib::Threads::Mutex * mutex)
-      {
-        mutex->lock();
-        slot();
-        cond->signal();
-        mutex->unlock();
-      }
    }
 
 
@@ -258,13 +248,29 @@ namespace gnote {
     {
       Glib::Threads::Mutex mutex;
       Glib::Threads::Cond cond;
+      bool executed = false;
+      std::exception_ptr ex;
 
       mutex.lock();
-      main_context_invoke([slot, &cond, &mutex]() {
-        main_context_call_func(slot, &cond, &mutex);
+      main_context_invoke([slot, &cond, &mutex, &executed, &ex]() {
+        try {
+          mutex.lock();
+          slot();
+        }
+        catch(...) {
+          ex = std::current_exception();
+        }
+        executed = true;
+        cond.signal();
+        mutex.unlock();
       });
-      cond.wait(mutex);
+      while(!executed) {
+        cond.wait(mutex);
+      }
       mutex.unlock();
+      if(ex) {
+        std::rethrow_exception(ex);
+      }
     }
 
 
