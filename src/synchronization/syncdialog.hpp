@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,8 +63,7 @@ namespace sync {
                                  NoteUpdate remoteNote,
                                  const std::vector<Glib::ustring> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,
-                                 SyncTitleConflictResolution resolution,
-                                 std::exception_ptr & mainThreadException);
+                                 SyncTitleConflictResolution resolution);
 
     bool on_pulse_progress_bar();
     void on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeViewColumn *column);
