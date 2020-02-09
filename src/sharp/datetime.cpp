@@ -55,27 +55,41 @@ Glib::ustring date_time_to_iso8601(const Glib::DateTime & dt)
   if(!dt) {
     return retval;
   }
-  Glib::TimeVal time_val(dt.to_unix(), dt.get_microsecond());
-  char *iso8601 = g_time_val_to_iso8601(&time_val);
-  if(iso8601) {
-    retval = iso8601;
-    if(time_val.tv_usec == 0) {
-      // see http://bugzilla.gnome.org/show_bug.cgi?id=581844
-      // when usec is 0, glib/libc does NOT add the usec values
-      // to the output
-      retval.insert(19, ".000000");
-    }
-    g_free(iso8601);
-  }
+
+  Glib::DateTime date = dt.to_utc();
+  char buffer[36] = {0};
+  std::sprintf(buffer, "%d-%02d-%02dT%02d:%02d:%02.6lfZ", date.get_year(), date.get_month(), date.get_day_of_month(), date.get_hour(), date.get_minute(), date.get_seconds());
+  retval = buffer;
   return retval;
 }
 
 Glib::DateTime date_time_from_iso8601(const Glib::ustring & dt)
 {
-  Glib::TimeVal time_val;
-  if(g_time_val_from_iso8601(dt.c_str(), &time_val)) {
-    return Glib::DateTime::create_now_local(time_val);
+  int y, M, d, h, m, tzh = 0, tzm = 0;
+  double s;
+  int parsed = std::sscanf(dt.c_str(), "%d-%d-%dT%d:%d:%lf%d:%dZ", &y, &M, &d, &h, &m, &s, &tzh, &tzm);
+  if(6 <= parsed) {
+    auto ret = Glib::DateTime::create_utc(y, M, d, h, m, s).to_local();
+    if(tzh != 0) {
+      if(tzh < 0) {
+        tzh = -tzh;
+      }
+    }
+    else {
+      if(dt.size() > 27 && dt[27] == '+') {
+        tzm = -tzm;
+      }
+    }
+    if(tzh != 0) {
+      ret = ret.add_hours(tzh);
+    }
+    if(tzm != 0) {
+      ret = ret.add_minutes(tzm);
+    }
+
+    return ret;
   }
+
   return Glib::DateTime();
 }
 

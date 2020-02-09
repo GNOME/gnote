@@ -62,11 +62,18 @@ SUITE(DateTime)
     CHECK_EQUAL(34, d.get_second());
     CHECK_EQUAL(67890, d.get_microsecond());
 
-    Glib::DateTime d2 = sharp::date_time_from_iso8601("2009-03-24T03:34:35.2914680-04:00");
+    Glib::DateTime d2 = sharp::date_time_from_iso8601("2009-03-24T03:34:35.2914680-04:00Z");
     CHECK(bool(d2));
     CHECK_EQUAL(24, d2.get_day_of_month());
     CHECK_EQUAL(7, d2.get_hour());
     CHECK_EQUAL(291468, d2.get_microsecond());
+
+    Glib::DateTime d3 = sharp::date_time_from_iso8601("2009-03-24T03:34:35.2914680+00:30Z");
+    CHECK(bool(d3));
+    CHECK_EQUAL(24, d3.get_day_of_month());
+    CHECK_EQUAL(3, d3.get_hour());
+    CHECK_EQUAL(4, d3.get_minute());
+    CHECK_EQUAL(291468, d3.get_microsecond());
   }
 
   TEST(pretty_print_date)
