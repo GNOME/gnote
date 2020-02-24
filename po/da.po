@@ -1,12 +1,13 @@
 # Danish translation for gnote.
 # Copyright (C) 2012, 2016 gnotes & Joe Hansen.
 # This file is distributed under the same license as the gnote package.
-# 
+#
 # Joe Hansen (joedalton2@yahoo.dk), 2009, 2010, 2011, 2012.
 # Ask Hjorth Larsen <asklarsen@gmail.com>, 2016.
-# 
+# scootergrisen, 2020.
+#
 # Korrektur: Torben Grøn Helligsø, 2009, 2010.
-# 
+#
 # linked -> forbundne (alternativ sammenkædede)
 # addin -> tilføjelse
 # plugin -> udvidelsesmodul
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2018-06-05 13:31+0000\n"
-"PO-Revision-Date: 2017-02-27 02:13+0100\n"
-"Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
+"POT-Creation-Date: 2020-01-03 20:34+0000\n"
+"PO-Revision-Date: 2020-01-10 04:59+0200\n"
+"Last-Translator: scootergrisen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -25,13 +26,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:47 ../src/recentchanges.cpp:542
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:548
 msgid "Gnote"
 msgstr "Gnote"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:2
 msgid "A simple note-taking application"
-msgstr "Et enkelt program til noteregistrering"
+msgstr "Et enkelt program til at tage noter"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:3
 msgid ""
@@ -429,7 +430,7 @@ msgstr "SSHFS' synkronisering af server-url"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:40
 msgid "URL of SSH server containing Gnote synchronization directory."
-msgstr "URL på SSH-server der indebolder Gnotes synkroniseringsmappe."
+msgstr "URL på SSH-server der indeholder Gnotes synkroniseringsmappe."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:41
 msgid "SSHFS Remote Synchronization User Name"
@@ -466,7 +467,7 @@ msgid ""
 "will continue linking to the renamed note."
 msgstr ""
 "Heltalsværdi der indikerer, om det ønskes altid at udføre en bestemt "
-"henvisningsopdatering, når en note omdøbes, i steden for at spørge brugeren. "
+"henvisningsopdatering, når en note omdøbes, i stedet for at spørge brugeren. "
 "Værdierne giver en intern nummerering. 0 indikerer at brugeren ønsker at "
 "blive spurgt, når omdøbning af en note kan påvirke henvisninger i andre "
 "noter. 1 indikerer at henvisninger automatisk skal fjernes. 2 indikerer at "
@@ -571,7 +572,7 @@ msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr ""
-"Den sidste indstilling for tjekboksen 'Eksporter forbundne noter' i "
+"Den sidste indstilling for tjekboksen “Eksporter forbundne noter” i "
 "udvidelsesmodulet Eksporter til HTML."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:66
@@ -585,9 +586,9 @@ msgid ""
 "Export Linked Notes' setting and is used to specify whether all notes (found "
 "recursively) should be included during an export to HTML."
 msgstr ""
-"Den sidste indstilling for tjekboksen 'Inkluder alle andre forbundne noter' "
+"Den sidste indstilling for tjekboksen “Inkluder alle andre forbundne noter” "
 "i udvidelsesmodulet Eksporter til HTML. Denne indstilling bruges sammen med "
-"indstillingen 'HTML-eksporteret forbundne noter' og bruges til at angive "
+"indstillingen “HTML-eksporter forbundne noter” og bruges til at angive "
 "hvorvidt alle noter (fundet rekursivt) bør inkluderes under en eksport til "
 "HTML."
 
@@ -641,7 +642,7 @@ msgid ""
 "conflict situation on a case-by-case basis."
 msgstr ""
 "Heltalsværdi der indikerer, om det ønskes altid at udføre bestemte "
-"handlinger, når en konflikt opstår, i steden for at spørge brugeren. "
+"handlinger, når en konflikt opstår, i stedet for at spørge brugeren. "
 "Værdierne giver en intern nummerering. 0 indikerer at brugeren ønsker at "
 "blive spurgt, når en konflikt opstår, så at brugeren kan håndtere hver "
 "konfliktsituation enkeltvis."
@@ -663,10 +664,19 @@ msgstr ""
 "acceptable positive værdi er 5. Værdien er i minutter."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:78
+msgid "Online directory URI"
+msgstr "Onlinemappe-URI"
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#| msgid "WebDAV share URL where notes are synchronized to."
+msgid "URI to online directory where notes are synchronized to."
+msgstr "URI til onlinemappe til synkronisering af noter."
+
+#: ../data/org.gnome.gnote.gschema.xml.in.h:80
 msgid "Accept SSL Certificates"
 msgstr "Accepter SSL-certifikater"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: ../data/org.gnome.gnote.gschema.xml.in.h:81
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -675,76 +685,72 @@ msgstr ""
 "brugeren."
 
 # se nedenfor
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: ../data/org.gnome.gnote.gschema.xml.in.h:82
 msgid "Share URL"
 msgstr "Dele-URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: ../data/org.gnome.gnote.gschema.xml.in.h:83
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "WebDAV-delings-URL til synkronisering af noter."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: ../data/org.gnome.gnote.gschema.xml.in.h:84
 msgid "Share username"
 msgstr "Delingsbrugernavn"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:83
+#: ../data/org.gnome.gnote.gschema.xml.in.h:85
 msgid "Username to access WebDAV share."
 msgstr "Brugernavn til at tilgå WebDAV-delingen."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:84
+#: ../data/org.gnome.gnote.gschema.xml.in.h:86
 msgid "Timestamp format"
 msgstr "Format for tidsstempel"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:85
+#: ../data/org.gnome.gnote.gschema.xml.in.h:87
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "Datoformatet som bruges til tidsstemplet. Det følger formatet på strftime(3)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:86
+#: ../data/org.gnome.gnote.gschema.xml.in.h:88
 msgid "Time between checks"
 msgstr "Tid mellem kontroller"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:87
+#: ../data/org.gnome.gnote.gschema.xml.in.h:89
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
 "Tidsinterval i sekunder mellem kontroller af notemappe. Mindsteværdien er 5."
 
-#: ../src/actionmanager.cpp:132
+#: ../src/actionmanager.cpp:128 ../src/notewindow.cpp:313
 msgid "_New Note"
 msgstr "_Ny note"
 
-#: ../src/actionmanager.cpp:133
+#: ../src/actionmanager.cpp:129 ../src/notewindow.cpp:315
 msgid "New _Window"
 msgstr "Nyt _vindue"
 
-#: ../src/actionmanager.cpp:134
+#: ../src/actionmanager.cpp:130
 msgid "_Preferences"
 msgstr "_Indstillinger"
 
-#: ../src/actionmanager.cpp:135
+#: ../src/actionmanager.cpp:131
 msgid "_Shortcuts"
 msgstr "_Genveje"
 
-#: ../src/actionmanager.cpp:136
+#: ../src/actionmanager.cpp:132
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: ../src/actionmanager.cpp:137
-msgid "_About"
-msgstr "_Om"
+#: ../src/actionmanager.cpp:133
+msgid "_About Gnote"
+msgstr "_Om Gnote"
 
-#: ../src/actionmanager.cpp:138
-msgid "_Quit"
-msgstr "_Afslut"
-
-#: ../src/addininfo.cpp:72
+#: ../src/addininfo.cpp:71
 msgid "Failed to load plugin information!"
 msgstr "Kunne ikke indlæse information om udvidelsesmodul!"
 
-#: ../src/addininfo.cpp:146
+#: ../src/addininfo.cpp:145
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Inkompatibelt udvidelsesmodul %s: Forventede %s, fik %s"
@@ -774,12 +780,12 @@ msgstr "Informationen %s om noteudvidelsesmodul er ikke til stede"
 msgid "Note plugin %s is absent"
 msgstr "Noteudvidelsesmodulet %s er ikke til stede"
 
-#: ../src/addinmanager.cpp:223
+#: ../src/addinmanager.cpp:222
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Kunne ikke finde modulet %s for tilføjelsen %s"
 
-#: ../src/addinmanager.cpp:227
+#: ../src/addinmanager.cpp:226
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Kunne ikke indlæse information om tilføjelse for %s: %s"
@@ -806,13 +812,13 @@ msgstr "Hubert Figuiere og Tomboyprojekt"
 msgid "What links here?"
 msgstr "Hvad henviser hertil?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:99
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:98
 msgid "(none)"
 msgstr "(ingen)"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:104
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:157
-#: ../src/notebooks/notebooknoteaddin.cpp:168
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:103
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:158
+#: ../src/notebooks/notebooknoteaddin.cpp:167
 msgid "_Back"
 msgstr "_Tilbage"
 
@@ -854,41 +860,41 @@ msgstr "Værtsnavn"
 msgid "Icon"
 msgstr "Ikon"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:227
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:226
 msgid "Select an icon..."
 msgstr "Vælg et ikon …"
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:242
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:241
 msgid "_Host name:"
 msgstr "_Værtsnavn:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:276
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:275
 msgid "Host name invalid"
 msgstr "Ugyldigt værtsnavn"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:277
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:276
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Du skal angive et gyldigt værtsnavn til Bugzilla for at bruge dette ikon."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:296
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:295
 msgid "Error saving icon"
 msgstr "Fejl under gemning af ikon"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:297
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:296
 msgid "Could not save the icon file."
 msgstr "Kunne ikke gemme ikonfilen."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:369
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:368
 msgid "Really remove this icon?"
 msgstr "Fjern dette ikon?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:370
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:369
 msgid "If you remove an icon it is permanently lost."
 msgstr "Hvis du fjerner et ikon fjernes det permanent."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:392
+#: ../src/addins/bugzilla/bugzillapreferences.cpp:391
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Fejl ved fjernelse af ikonet %s: %s"
@@ -903,6 +909,7 @@ msgid "Exports individual notes as Getting Things GNOME tasks"
 msgstr "Eksporterer individuelle noter som Getting Things GNOME-opgaver"
 
 #: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:3
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:3
 #: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:3
 #: ../src/addins/statistics/statistics.desktop.in.in.h:3
 msgid "Aurimas Černius"
@@ -934,64 +941,65 @@ msgstr "Eksporter til HTML"
 msgid "Exports individual notes to HTML."
 msgstr "Eksporterer individuelle noter til HTML."
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Destination for HTML Export"
 msgstr "Destination for HTML-eksport"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:43
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:45
 msgid "Export linked notes"
 msgstr "Eksporter forbundne noter"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:44
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:46
 msgid "Include all other linked notes"
 msgstr "Inkluder alle andre forbundne noter"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:82
 msgid "Export to HTML…"
 msgstr "Eksporter til HTML …"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Kunne ikke åbne eksporteret note i en webbrowser: %s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:125
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:126
 msgid "Your note was exported to \"%1\"."
 msgstr "Din note blev eksporteret til “%1”."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:134
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:135
 msgid "Note exported successfully"
 msgstr "Note eksporteret"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:148
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:156
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:149
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:157
 #, c-format
 msgid "Could not export: %s"
 msgstr "Kunne ikke eksportere: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 msgid "Could not save the file \"%1\""
 msgstr "Kunne ikke gemme filen “%1”"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:102
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
 msgid "_Folder Path:"
 msgstr "_Mappesti:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:109
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:111
 msgid "Select Synchronization Folder..."
 msgstr "Vælg synkroniseringsmappe …"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:134
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
 msgid "Folder path field is empty."
 msgstr "Felt for mappesti er tomt."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:141
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Angivet mappesti findes ikke, og Gnote kunne ikke oprette den."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:208
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:210
 msgid "Local Folder"
 msgstr "Lokal mappe"
 
@@ -1020,8 +1028,68 @@ msgstr "Tilføjer skrifttypestil for fast bredde."
 msgid "Fixed Wid_th"
 msgstr "Fas_t bredde"
 
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:1
+#| msgid "Local Directory Sync Service Plugin"
+msgid "Online Directory Sync Service Plugin"
+msgstr "Udvidelsesmodul til synkroniseringstjeneste i onlinemappe"
+
+#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:2
+#| msgid "Synchronize Gnote Notes to a local file system path"
+msgid "Synchronize Gnote Notes to an online directory"
+msgstr "Synkroniser Gnote-noter til en onlinemappe"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:78
+#| msgid "Failed to update note format: %s"
+msgid "Failed to mount the folder"
+msgstr "Kunne ikke montere mappen"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:203
+#| msgid "_Folder Path:"
+msgid "Folder _URI:"
+msgstr "Mappe-_URI:"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:215
+msgid "Example: google-drive://name.surname@gmail.com/notes"
+msgstr "Eksempel: google-drive://navn.efternavn@gmail.com/noter"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
+msgid "Please, register your account in Online Accounts"
+msgstr "Tilmeld venligst din konto i onlinekonti"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:234
+msgid "The URI is empty"
+msgstr "URI'en er tom"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:235
+#| msgid "Folder path field is empty."
+msgid "URI field is empty."
+msgstr "URI-feltet er tomt."
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
+#| msgid "Write test failed."
+msgid "Failure writing test file"
+msgstr "Skrivning af testfil mislykkedes"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:294
+msgid "Failure when checking test file contents"
+msgstr "Tjek af testfilens indhold mislykkedes"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:300
+msgid "Failure when trying to remove test file"
+msgstr "Fjernelse af testfilen mislykkedes"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
+#| msgid "unknown parse error"
+msgid "Unknown error"
+msgstr "Ukendt fejl"
+
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:338
+#| msgid "Local Folder"
+msgid "Online Folder"
+msgstr "Onlinemappe"
+
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:68
 msgid "Insert Timestamp"
 msgstr "Indsæt tidsstempel"
 
@@ -1030,45 +1098,45 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Indsætter aktuel dato og tid på markørens position."
 
 #. Label
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:68
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:67
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Vælg et af de prædefinerede formater eller brug dit eget."
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:76
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:75
 msgid "Use _Selected Format"
 msgstr "Brug _valgt format"
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:106
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:105
 msgid "_Use Custom Format"
 msgstr "_Brug tilpasset format"
 
 #. TRANSLATORS: first %s is file name, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:229
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:230
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
 "NoteDirectoryWatcher: Opdatering afbrudt ved fejl under læsning af %s: %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:256
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:257
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr "Notemappeovervågning: Fejl ved læsning af notetitel fra %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:264
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:265
 #, c-format
 msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 msgstr "NoteDirectoryWatcher: Ukendt fejl ved oprettelse af note fra %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:270
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:271
 #, c-format
 msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
 msgstr "Notemappeovervågning: Fejl ved oprettelse af note fra %s: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:283
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:284
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr "Notemappeovervågning: Opdatering afbrudt ved fortolkningsfejl %s: %s"
@@ -1085,36 +1153,36 @@ msgstr "Overvåg ændringer af dine noter i din Gnote-notemappe."
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius og Tomboys oprindelige udviklere"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:36
 msgid "_Directory check interval:"
 msgstr "Interval for _mappekontrol:"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:34
+#: ../src/addins/noteoftheday/noteoftheday.cpp:33
 msgid "Today: Template"
 msgstr "I dag: Skabelon"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:36
+#: ../src/addins/noteoftheday/noteoftheday.cpp:35
 msgid "Today: "
 msgstr "I dag: "
 
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
-#: ../src/addins/noteoftheday/noteoftheday.cpp:50
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:72
+#: ../src/addins/noteoftheday/noteoftheday.cpp:49
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:73
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "Dagens note kunne ikke oprette %s: %s"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:152
+#: ../src/addins/noteoftheday/noteoftheday.cpp:150
 msgid "Tasks"
 msgstr "Opgaver"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:153
+#: ../src/addins/noteoftheday/noteoftheday.cpp:151
 msgid "Appointments"
 msgstr "Aftaler"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:159
+#: ../src/addins/noteoftheday/noteoftheday.cpp:157
 msgid "%A, %B %d %Y"
 msgstr "%A %d. %B %Y"
 
@@ -1163,7 +1231,7 @@ msgid "Error printing note"
 msgstr "Fejl under udskrivning af note"
 
 #. %1 is the page number, %2 is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:278
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
 msgid "Page %1 of %2"
 msgstr "Side %1 af %2"
 
@@ -1193,7 +1261,7 @@ msgstr "Erstat titel med markering."
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:38
+#: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:39
 #: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
 msgid "Special Notes"
 msgstr "Særlige noter"
@@ -1202,12 +1270,12 @@ msgstr "Særlige noter"
 msgid "Show special notes, that are otherwise hidden"
 msgstr "Vis særlige noter, som ellers er skjult"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:70
+#: ../src/addins/statistics/statisticsapplicationaddin.cpp:72
 msgid "Show Statistics"
 msgstr "Vis statistik"
 
 #: ../src/addins/statistics/statistics.desktop.in.in.h:1
-#: ../src/addins/statistics/statisticswidget.cpp:170
+#: ../src/addins/statistics/statisticswidget.cpp:173
 msgid "Statistics"
 msgstr "Statistik"
 
@@ -1215,16 +1283,16 @@ msgstr "Statistik"
 msgid "Show various statistics about notes."
 msgstr "Vis statistik om noter."
 
-#: ../src/addins/statistics/statisticswidget.cpp:89
+#: ../src/addins/statistics/statisticswidget.cpp:91
 msgid "Total Notes:"
 msgstr "Noter i alt:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:95
+#: ../src/addins/statistics/statisticswidget.cpp:97
 msgid "Total Notebooks:"
 msgstr "Notesbøger i alt:"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: ../src/addins/statistics/statisticswidget.cpp:126
+#: ../src/addins/statistics/statisticswidget.cpp:128
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 note"
@@ -1253,7 +1321,7 @@ msgstr "Ingen egnede Stickynotefil blev fundet i “%1”."
 
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
 msgid "Sticky Notes import completed"
-msgstr "Sticky Notes-import færdig"
+msgstr "Import af Stickynoter færdig"
 
 #. here %1 is the number of notes imported, %2 the total number of notes.
 #: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:220
@@ -1269,8 +1337,8 @@ msgid "Sticky Note: "
 msgstr "Stickynote: "
 
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:68
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:130
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:69
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:131
 msgid "Table of Contents"
 msgstr "Indholdsfortegnelse"
 
@@ -1290,23 +1358,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:145
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:210
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:146
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:208
 msgid "Heading 1"
 msgstr "Overskrift 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:149
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:216
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:150
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:214
 msgid "Heading 2"
 msgstr "Overskrift 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:153
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:222
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:154
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
 msgid "Table of Contents Help"
 msgstr "Hjælp til indholdsfortegnelse"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:195
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:193
 msgid "(empty table of contents)"
 msgstr "(tom indholdsfortegnelse)"
 
@@ -1351,23 +1419,23 @@ msgstr "Hubert Figuière og Tomboyprojektet"
 msgid "_Underline"
 msgstr "_Understregning"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:69
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:74
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
 msgid "User_name:"
 msgstr "Bruger_navn:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:80
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
 msgid "_Password:"
 msgstr "_Adgangskode:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:104
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:116
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
@@ -1375,12 +1443,12 @@ msgstr ""
 "Der opstod en fejl ved forbindelse til serveren.  Dette skyldes måske "
 "forkert brugernavn og/eller adgangskode."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:156
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:157
 msgid "URL, username, or password field is empty."
 msgstr "URL-, brugernavn- eller adgangskodefelt er tomt."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:248
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:249
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1405,168 +1473,174 @@ msgstr "Synkronisér Gnote-noter med en WebDAV-URL."
 msgid "Remote call to %s failed"
 msgstr "Fjernkald til %s mislykkedes"
 
-#: ../src/dbus/remotecontrol.cpp:82
+#: ../src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Der blev smidt en undtagelse ved oprettelse af en note: %s"
 
-#: ../src/gnote.cpp:181
+#: ../src/gnote.cpp:188
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote kører allerede.  Afslutter …"
 
-#: ../src/gnote.cpp:272
+#: ../src/gnote.cpp:265
 msgid "Failed to get shortcuts window!"
 msgstr "Kunne ikke hente genvejsvinduet!"
 
-#: ../src/gnote.cpp:286
+#: ../src/gnote.cpp:279
 msgid "and Tomboy original authors."
 msgstr "og Tomboys oprindelige udviklere."
 
-#: ../src/gnote.cpp:292
+#: ../src/gnote.cpp:285
 msgid "translator-credits"
 msgstr ""
-"Joe Hansen, 2009, 2010, 2011, 2012.\n"
-"Ask Hjorth Larsen, 2016.\n"
+"Joe Hansen, 2009, 2010, 2011, 2012\n"
+"Ask Hjorth Larsen, 2016\n"
 "\n"
-"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
-"Mere info: http://www.dansk-gruppen.dk"
+"Dansk-gruppen\n"
+"Websted http://dansk-gruppen.dk\n"
+"E-mail <dansk@dansk-gruppen.dk>"
 
-#: ../src/gnote.cpp:301
+#: ../src/gnote.cpp:294
+#| msgid ""
+#| "Copyright © 2010-2018 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2018 Aurimas Cernius\n"
+"Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Ophavsret © 2010–2018 Aurimas Cernius\n"
-"Ophavsret © 2009–2011 Debarshi Ray\n"
+"Ophavsret © 2010-2020 Aurimas Cernius\n"
+"Ophavsret © 2009-2011 Debarshi Ray\n"
 "Ophavsret © 2009 Hubert Figuiere\n"
-"Ophavsret © 2004–2009 Tomboys oprindelige udviklere."
+"Ophavsret © 2004-2009 Tomboys oprindelige udviklere."
 
 # Noteskrivning / noteoprettelse / notehåndtering..
-#: ../src/gnote.cpp:305
+#: ../src/gnote.cpp:298
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Et enkel og nemt anvendeligt skrivebordsprogram til noteregistrering."
 
-#: ../src/gnote.cpp:316
+#: ../src/gnote.cpp:309
 msgid "Homepage"
 msgstr "Hjemmeside"
 
-#: ../src/gnote.cpp:527
+#: ../src/gnote.cpp:518
 msgid "Run Gnote in background."
 msgstr "Kør Gnote i baggrunden."
 
-#: ../src/gnote.cpp:528
+#: ../src/gnote.cpp:519
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Kør Gnote som søgeudbyder i GNOME Shell."
 
-#: ../src/gnote.cpp:529
+#: ../src/gnote.cpp:520
 msgid "Specify the path of the directory containing the notes."
 msgstr "Angiv stien på mappen som indeholder noterne."
 
-#: ../src/gnote.cpp:529
+#: ../src/gnote.cpp:520
 msgid "path"
 msgstr "sti"
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:521
 msgid "Open the search all notes window with the search text."
 msgstr "Åbn vinduet Søg i alle noter med søgeteksten."
 
-#: ../src/gnote.cpp:530 ../src/gnote.cpp:535
+#: ../src/gnote.cpp:521 ../src/gnote.cpp:526
 msgid "text"
 msgstr "tekst"
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:522
 msgid "Print version information."
 msgstr "Udskriv versioninformation."
 
-#: ../src/gnote.cpp:532
+#: ../src/gnote.cpp:523
 msgid "Create and display a new note, with a optional title."
 msgstr "Opret og vis en ny note, med en valgfri titel."
 
-#: ../src/gnote.cpp:532
+#: ../src/gnote.cpp:523
 msgid "title"
 msgstr "titel"
 
-#: ../src/gnote.cpp:533
+#: ../src/gnote.cpp:524
 msgid "Display the existing note matching title."
 msgstr "Vis den eksisterende notes tilsvarende titel."
 
-#: ../src/gnote.cpp:533
+#: ../src/gnote.cpp:524
 msgid "title/url"
 msgstr "titel/url"
 
-#: ../src/gnote.cpp:534
+#: ../src/gnote.cpp:525
 msgid "Display the 'Start Here' note."
 msgstr "Vis noten “Start her”."
 
-#: ../src/gnote.cpp:535
+#: ../src/gnote.cpp:526
 msgid "Search and highlight text in the opened note."
 msgstr "Søg og fremhæv tekst i den åbnede note."
 
-#: ../src/gnote.cpp:539
+#: ../src/gnote.cpp:530
 msgid "A note taking application"
 msgstr "Et noteregistreringsprogram"
 
-#: ../src/gnote.cpp:539
+#: ../src/gnote.cpp:530
 msgid "Gnote options at launch"
 msgstr "Startindstillinger for Gnote"
 
-#: ../src/gnote.cpp:616
+#: ../src/gnote.cpp:607
 msgid "Could not connect to remote instance."
 msgstr "Kunne ikke forbinde til fjerninstans."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:733
+#: ../src/gnote.cpp:724
 msgid "Version %1"
 msgstr "Version %1"
 
 #. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
-#: ../src/iconmanager.cpp:66
+#: ../src/iconmanager.cpp:63
 #, c-format
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Kunne ikke indlæse ikon (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:131 ../src/noteaddin.cpp:145 ../src/noteaddin.cpp:157
+#: ../src/noteaddin.cpp:132 ../src/noteaddin.cpp:146 ../src/noteaddin.cpp:158
 msgid "Plugin is disposing already"
 msgstr "Udvidelsesmodul ryddes allerede"
 
-#: ../src/noteaddin.cpp:161
+#: ../src/noteaddin.cpp:162
 msgid "Window is not embedded"
 msgstr "Vinduet er ikke indlejret"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:194 ../src/note.cpp:378
+#: ../src/notebase.cpp:195 ../src/note.cpp:361
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Undtagelse under forsøg på at gemme note: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:438
+#: ../src/notebase.cpp:430
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Kunne ikke opdatere noteformat: %s"
 
-#: ../src/notebase.cpp:562
+#: ../src/notebase.cpp:548
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Filsystemfejl: %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:39
+#: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Create Notebook"
 msgstr "Opret notesbog"
 
-#: ../src/notebooks/createnotebookdialog.cpp:43
+#: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
 msgstr "_Notesbogsnavn:"
 
-#: ../src/notebooks/createnotebookdialog.cpp:56
+#: ../src/notebooks/createnotebookdialog.cpp:58
 msgid "Name already taken"
 msgstr "Navnet er optaget"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:69
+#: ../src/notebooks/createnotebookdialog.cpp:71
 msgid "C_reate"
 msgstr "_Opret"
 
@@ -1579,19 +1653,19 @@ msgstr "Ny note_bog …"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: ../src/notebooks/notebook.cpp:108
+#: ../src/notebooks/notebook.cpp:94
 msgid "%1 Notebook Template"
 msgstr "%1 — notesbogskabelon"
 
-#: ../src/notebooks/notebook.cpp:184 ../src/notemanagerbase.cpp:307
+#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:307
 msgid "New Note"
 msgstr "Ny note"
 
-#: ../src/notebooks/notebookmanager.cpp:365
+#: ../src/notebooks/notebookmanager.cpp:352
 msgid "Really delete this notebook?"
 msgstr "Slet denne notesbog?"
 
-#: ../src/notebooks/notebookmanager.cpp:366
+#: ../src/notebooks/notebookmanager.cpp:353
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1605,11 +1679,11 @@ msgid "No notebook"
 msgstr "Ingen notesbog"
 
 #. TRANSLATORS: %1: format placeholder for the notebook name
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:40
+#: ../src/notebooks/notebooknewnotemenuitem.cpp:41
 msgid "New \"%1\" Note"
 msgstr "Ny “%1”-note"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:110
+#: ../src/notebooks/notebooknoteaddin.cpp:111
 msgid "Notebook"
 msgstr "Notesbog"
 
@@ -1618,52 +1692,54 @@ msgstr "Notesbog"
 msgid "_New notebook..."
 msgstr "_Ny notesbog …"
 
-#: ../src/notebooks/specialnotebooks.cpp:46
+#: ../src/notebooks/specialnotebooks.cpp:47
 msgid "All"
 msgstr "Alle"
 
-#: ../src/notebooks/specialnotebooks.cpp:75
+#: ../src/notebooks/specialnotebooks.cpp:76
 msgid "Unfiled"
 msgstr "Ukategoriseret"
 
-#: ../src/notebooks/specialnotebooks.cpp:106
+#: ../src/notebooks/specialnotebooks.cpp:107
+#| msgid "Important"
+msgctxt "notebook"
 msgid "Important"
 msgstr "Vigtige"
 
-#: ../src/notebooks/specialnotebooks.cpp:133
+#: ../src/notebooks/specialnotebooks.cpp:134
 msgid "Active"
 msgstr "Aktive"
 
-#: ../src/notebuffer.cpp:1528
+#: ../src/notebuffer.cpp:1431
 msgid "</list> tag mismatch"
 msgstr "Uoverensstemmelse i </list>-mærke"
 
-#: ../src/notebuffer.cpp:1612
+#: ../src/notebuffer.cpp:1515
 #, c-format
 msgid "Exception: %s"
 msgstr "Undtagelse: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
-#: ../src/note.cpp:55
+#: ../src/note.cpp:56
 msgid "Really delete \"%1\"?"
 msgstr "Vil du virkelig slette “%1”?"
 
 #. TRANSLATORS: %1 is number of notes
-#: ../src/note.cpp:59
+#: ../src/note.cpp:60
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
 msgstr[0] "Slet %1 note?"
 msgstr[1] "Slet %1 noter?"
 
-#: ../src/note.cpp:66
+#: ../src/note.cpp:67
 msgid "If you delete a note it is permanently lost."
 msgstr "Hvis du sletter en note, er den tabt."
 
-#: ../src/note.cpp:102
+#: ../src/note.cpp:101
 msgid "Error saving note data."
 msgstr "Fejl ved gemning af notedata."
 
-#: ../src/note.cpp:103
+#: ../src/note.cpp:102
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1673,17 +1749,17 @@ msgstr ""
 "tilstrækkelig diskplads, og om du har de korrekte rettigheder til ~/.local/"
 "share/gnote. Fejldetaljer kan ses i ~/.gnote.log."
 
-#: ../src/note.cpp:470
+#: ../src/note.cpp:453
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Fejl under forsøg på at gemme: %s"
 
-#: ../src/note.cpp:696
+#: ../src/note.cpp:679
 msgid "Setting text content for closed notes not supported"
 msgstr "Ændring af tekstindehold af lukkede noter understøttes ikke"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanagerbase.cpp:107 ../src/preferencesdialog.cpp:318
+#: ../src/notemanagerbase.cpp:107 ../src/preferencesdialog.cpp:326
 msgid "New Note Template"
 msgstr "Ny noteskabelon"
 
@@ -1691,7 +1767,7 @@ msgstr "Ny noteskabelon"
 msgid "Describe your new note here."
 msgstr "Beskriv din nye note her."
 
-#: ../src/notemanager.cpp:134
+#: ../src/notemanager.cpp:130
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1721,7 +1797,7 @@ msgstr ""
 "og tanker.\n"
 "\n"
 "Du kan oprette nye noter til dine ideer ved at vælge punktet \"Opret ny note"
-"\" fra menuen i Gnote i dit GNOME-panel. Din note vil automatisk blive "
+"\" fra menuen i Gnote i dit GNOME-panel.  Din note vil automatisk blive "
 "gemt.\n"
 "\n"
 "Organiser så noterne ved at oprette henvisninger mellem forbundne noter og "
@@ -1729,10 +1805,10 @@ msgstr ""
 "\n"
 "Vi har oprettet en note ved navn <link:internal>Brug af henvisninger i "
 "Gnote</link:internal>. Bemærk at hver gang vi indtaster <link:internal>Brug "
-"af henvisningeri Gnote</link:internal> så bliver det automatisk "
+"af henvisninger i Gnote</link:internal> så bliver det automatisk "
 "understreget? Klik på henvisningen for at åbne noten.</note-content>"
 
-#: ../src/notemanager.cpp:153
+#: ../src/notemanager.cpp:149
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1761,58 +1837,58 @@ msgstr ""
 "automatisk blive forbundet.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:168 ../src/notemanager.cpp:207
+#: ../src/notemanager.cpp:164 ../src/notemanager.cpp:202
 msgid "Start Here"
 msgstr "Start her"
 
-#: ../src/notemanager.cpp:174
+#: ../src/notemanager.cpp:170
 msgid "Using Links in Gnote"
 msgstr "Brug af henvisninger i Gnote"
 
-#: ../src/notemanager.cpp:179
+#: ../src/notemanager.cpp:175
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Fejl ved oprettelse af startnoter: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/notemanager.cpp:195
+#: ../src/notemanager.cpp:190
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
-msgstr "Fejl ved forolkning af note-XML; springer “%s” over: %s"
+msgstr "Fejl ved fortolkning af note-XML; springer “%s” over: %s"
 
-#: ../src/noterenamedialog.cpp:123
+#: ../src/noterenamedialog.cpp:125
 msgid "Rename Note Links?"
 msgstr "Omdøb notehenvisninger?"
 
-#: ../src/noterenamedialog.cpp:127
+#: ../src/noterenamedialog.cpp:130
 msgid "_Don't Rename Links"
 msgstr "Omdøb _ikke henvisninger"
 
-#: ../src/noterenamedialog.cpp:128
+#: ../src/noterenamedialog.cpp:131
 msgid "_Rename Links"
 msgstr "_Omdøb henvisning"
 
-#: ../src/noterenamedialog.cpp:129
+#: ../src/noterenamedialog.cpp:132
 msgid "Select All"
 msgstr "Vælg alle"
 
-#: ../src/noterenamedialog.cpp:130
+#: ../src/noterenamedialog.cpp:133
 msgid "Select None"
 msgstr "Vælg ingen"
 
-#: ../src/noterenamedialog.cpp:131
+#: ../src/noterenamedialog.cpp:134
 msgid "Always show this _window"
 msgstr "Luk altid dette _vindue"
 
-#: ../src/noterenamedialog.cpp:132
+#: ../src/noterenamedialog.cpp:135
 msgid "Alwa_ys rename links"
 msgstr "Omdøb _altid henvisninger"
 
-#: ../src/noterenamedialog.cpp:134
+#: ../src/noterenamedialog.cpp:137
 msgid "Never rename _links"
 msgstr "Omdøb aldrig _henvisninger"
 
-#: ../src/noterenamedialog.cpp:152
+#: ../src/noterenamedialog.cpp:155
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1824,43 +1900,45 @@ msgstr ""
 "\n"
 "Hvis du ikke omdøber henvisningerne, vil de ikke længere henvise til noget."
 
-#: ../src/noterenamedialog.cpp:185
+#: ../src/noterenamedialog.cpp:188
 msgid "Rename Links"
 msgstr "Omdøb henvisninger"
 
-#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:331
+#: ../src/noterenamedialog.cpp:203 ../src/synchronization/syncdialog.cpp:331
 msgid "Note Title"
 msgstr "Notetitel"
 
-#: ../src/noterenamedialog.cpp:237
+#: ../src/noterenamedialog.cpp:240
 msgid "Ad_vanced"
 msgstr "_Avanceret"
 
-#: ../src/notewindow.cpp:312
+#: ../src/notewindow.cpp:317
 msgid "_Undo"
 msgstr "_Fortryd"
 
-#: ../src/notewindow.cpp:314
+#: ../src/notewindow.cpp:319
 msgid "_Redo"
 msgstr "_Omgør"
 
-#: ../src/notewindow.cpp:318 ../src/notewindow.cpp:391
+#: ../src/notewindow.cpp:321 ../src/notewindow.cpp:386
 msgid "_Link to New Note"
 msgstr "_Henvisning til ny note"
 
-#: ../src/notewindow.cpp:338
+#: ../src/notewindow.cpp:323
+#| msgid "_Important"
+msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Vigtige"
 
-#: ../src/notewindow.cpp:339
+#: ../src/notewindow.cpp:333
 msgid "_Delete…"
 msgstr "_Slet …"
 
-#: ../src/notewindow.cpp:427
+#: ../src/notewindow.cpp:422
 msgid "Set properties of text"
 msgstr "Angiv egenskaber for tekst"
 
-#: ../src/notewindow.cpp:441
+#: ../src/notewindow.cpp:436
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1868,107 +1946,107 @@ msgstr ""
 "Denne note er en skabelonnote. Den bestemmer standardindholdet for "
 "almindelige noter, og vil ikke vise sig i notemenuen eller søgevinduet."
 
-#: ../src/notewindow.cpp:444
+#: ../src/notewindow.cpp:439
 msgid "Convert to regular note"
 msgstr "Konverter til almindelig note"
 
-#: ../src/notewindow.cpp:447
+#: ../src/notewindow.cpp:442
 msgid "Save Si_ze"
 msgstr "Gem st_ørrelse"
 
-#: ../src/notewindow.cpp:451
+#: ../src/notewindow.cpp:446
 msgid "Save Se_lection"
 msgstr "Gem _markering"
 
-#: ../src/notewindow.cpp:455
+#: ../src/notewindow.cpp:450
 msgid "Save _Title"
 msgstr "Gem _titel"
 
-#: ../src/notewindow.cpp:557 ../src/notewindow.cpp:1072
+#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1057
 msgid "Cannot create note"
 msgstr "Kan ikke oprette note"
 
-#: ../src/notewindow.cpp:842
+#: ../src/notewindow.cpp:827
 msgid "_Bold"
 msgstr "_Fed"
 
-#: ../src/notewindow.cpp:843
+#: ../src/notewindow.cpp:828
 msgid "_Italic"
 msgstr "_Kursiv"
 
 # hvad er dette?
-#: ../src/notewindow.cpp:844
+#: ../src/notewindow.cpp:829
 msgid "_Strikeout"
 msgstr "_Gennemstreget"
 
-#: ../src/notewindow.cpp:848
+#: ../src/notewindow.cpp:833
 msgid "_Highlight"
 msgstr "_Fremhæv"
 
-#: ../src/notewindow.cpp:851
+#: ../src/notewindow.cpp:836
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:852
+#: ../src/notewindow.cpp:837
 msgid "S_mall"
 msgstr "_Lille"
 
-#: ../src/notewindow.cpp:853
+#: ../src/notewindow.cpp:838
 msgid "_Large"
 msgstr "_Stor"
 
-#: ../src/notewindow.cpp:854
+#: ../src/notewindow.cpp:839
 msgid "Hu_ge"
 msgstr "_Enorm"
 
-#: ../src/notewindow.cpp:876
+#: ../src/notewindow.cpp:861
 msgid "⦁ Bullets"
 msgstr "⦁ Punkter"
 
-#: ../src/notewindow.cpp:878
+#: ../src/notewindow.cpp:863
 msgid "→ Increase indent"
 msgstr "→ Ryk ind"
 
-#: ../src/notewindow.cpp:880
+#: ../src/notewindow.cpp:865
 msgid "← Decrease indent"
 msgstr "← Ryk ud"
 
-#: ../src/preferencesdialog.cpp:101
+#: ../src/preferencesdialog.cpp:102
 msgid "Gnote Preferences"
 msgstr "Gnote - indstillinger"
 
-#: ../src/preferencesdialog.cpp:119
+#: ../src/preferencesdialog.cpp:120
 msgid "General"
 msgstr "Generelt"
 
-#: ../src/preferencesdialog.cpp:120
+#: ../src/preferencesdialog.cpp:121
 msgid "Links"
 msgstr "Henvisninger"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:123 ../src/sharp/addinstreemodel.cpp:164
+#: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:165
 msgid "Synchronization"
 msgstr "Synkronisering"
 
-#: ../src/preferencesdialog.cpp:125
+#: ../src/preferencesdialog.cpp:126
 msgid "Plugins"
 msgstr "Udvidelsesmoduler"
 
-#: ../src/preferencesdialog.cpp:202
+#: ../src/preferencesdialog.cpp:200
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Udvidelsesmodulet %s er ikke til stede"
 
 #. Open in new window
-#: ../src/preferencesdialog.cpp:241
+#: ../src/preferencesdialog.cpp:249
 msgid "Always _open notes in new window"
 msgstr "_Åbn altid noter i et nyt vindue"
 
-#: ../src/preferencesdialog.cpp:254
+#: ../src/preferencesdialog.cpp:262
 msgid "_Spell check while typing"
 msgstr "_Udfør stavekontrol under skrivning"
 
-#: ../src/preferencesdialog.cpp:255
+#: ../src/preferencesdialog.cpp:263
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1977,36 +2055,36 @@ msgstr ""
 "kontekstmenuen."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:265
+#: ../src/preferencesdialog.cpp:273
 msgid "Enable auto-_bulleted lists"
 msgstr "Slå automatiske _punktlister til"
 
-#: ../src/preferencesdialog.cpp:266
+#: ../src/preferencesdialog.cpp:274
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
 "Start en ny liste ved at bruge tegnet “-” i begyndelsen af en ny linje."
 
-#: ../src/preferencesdialog.cpp:275
+#: ../src/preferencesdialog.cpp:283
 msgid "Use custom _font"
 msgstr "Brug tilpasset _skrifttype"
 
-#: ../src/preferencesdialog.cpp:293
+#: ../src/preferencesdialog.cpp:301
 msgid "When renaming a linked note: "
 msgstr "Når en note med henvisninger omdøbes: "
 
-#: ../src/preferencesdialog.cpp:297
+#: ../src/preferencesdialog.cpp:305
 msgid "Ask me what to do"
 msgstr "Spørg mig hvad der skal gøres"
 
-#: ../src/preferencesdialog.cpp:298
+#: ../src/preferencesdialog.cpp:306
 msgid "Never rename links"
 msgstr "Omdøb aldrig henvisninger"
 
-#: ../src/preferencesdialog.cpp:299
+#: ../src/preferencesdialog.cpp:307
 msgid "Always rename links"
 msgstr "Omdøb aldrig henvisninger"
 
-#: ../src/preferencesdialog.cpp:319
+#: ../src/preferencesdialog.cpp:327
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2014,27 +2092,27 @@ msgstr ""
 "Brug ny noteskabelon til at angive teksten som bør bruges, når der oprettes "
 "en ny note."
 
-#: ../src/preferencesdialog.cpp:324
+#: ../src/preferencesdialog.cpp:332
 msgid "Open New Note Template"
 msgstr "Åbn ny noteskabelon"
 
 #. internal links
-#: ../src/preferencesdialog.cpp:381
+#: ../src/preferencesdialog.cpp:389
 msgid "_Automatically link to notes"
 msgstr "_Automatiske notehenvisninger"
 
-#: ../src/preferencesdialog.cpp:382
+#: ../src/preferencesdialog.cpp:390
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Slå denne indstilling til for at oprette en henvisning, når teksten matcher "
 "notetitlen."
 
 #. URLs
-#: ../src/preferencesdialog.cpp:388
+#: ../src/preferencesdialog.cpp:396
 msgid "Create links for _URLs"
 msgstr "Opret henvisninger for _URL'er"
 
-#: ../src/preferencesdialog.cpp:389
+#: ../src/preferencesdialog.cpp:397
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2043,11 +2121,11 @@ msgstr ""
 "URL vil åbne et passende program."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:396
+#: ../src/preferencesdialog.cpp:404
 msgid "Highlight _WikiWords"
 msgstr "Fremhæv _WikiWords"
 
-#: ../src/preferencesdialog.cpp:397
+#: ../src/preferencesdialog.cpp:405
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2055,56 +2133,56 @@ msgstr ""
 "Slå denne indstilling til for at fremhæve ord <b>SomSerSådanHerUd</b>. Et "
 "klik på ordet vil oprette en note med det navn."
 
-#: ../src/preferencesdialog.cpp:429
+#: ../src/preferencesdialog.cpp:437
 msgid "Ser_vice:"
 msgstr "_Tjeneste:"
 
-#: ../src/preferencesdialog.cpp:485 ../src/preferencesdialog.cpp:1115
+#: ../src/preferencesdialog.cpp:492 ../src/preferencesdialog.cpp:1122
 msgid "Not configurable"
 msgstr "Ikke konfigurerbar"
 
-#: ../src/preferencesdialog.cpp:512
+#: ../src/preferencesdialog.cpp:519
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Interval for automatisk s_ynkronisering i baggrunden i minutter"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:536
+#: ../src/preferencesdialog.cpp:543
 msgid "_Advanced..."
 msgstr "_Avanceret …"
 
-#: ../src/preferencesdialog.cpp:584
+#: ../src/preferencesdialog.cpp:591
 msgid "The following plugins are installed:"
 msgstr "Følgende udvidelsesmoduler er installeret:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:619
+#: ../src/preferencesdialog.cpp:626
 msgid "_Enable"
 msgstr "_Slå til"
 
-#: ../src/preferencesdialog.cpp:625
+#: ../src/preferencesdialog.cpp:632
 msgid "_Disable"
 msgstr "_Slå fra"
 
-#: ../src/preferencesdialog.cpp:782
+#: ../src/preferencesdialog.cpp:789
 msgid "Not Implemented"
 msgstr "Ikke implementeret"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: ../src/preferencesdialog.cpp:799
+#: ../src/preferencesdialog.cpp:806
 msgid "%1 Preferences"
 msgstr "Indstillinger for %1"
 
-#: ../src/preferencesdialog.cpp:933
+#: ../src/preferencesdialog.cpp:940
 msgid "Choose Note Font"
 msgstr "Vælg noteskrifttype"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1031
+#: ../src/preferencesdialog.cpp:1038
 msgid "Other Synchronization Options"
 msgstr "Andre synkroniseringsindstillinger"
 
-#: ../src/preferencesdialog.cpp:1034
+#: ../src/preferencesdialog.cpp:1041
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2113,23 +2191,23 @@ msgstr ""
 "konfigurerede synkroniseringsserver:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1038
+#: ../src/preferencesdialog.cpp:1045
 msgid "Always ask me what to do"
 msgstr "Spørg mig hvad der skal gøres"
 
-#: ../src/preferencesdialog.cpp:1042
+#: ../src/preferencesdialog.cpp:1049
 msgid "Rename my local note"
 msgstr "Omdøb min lokale note"
 
-#: ../src/preferencesdialog.cpp:1046
+#: ../src/preferencesdialog.cpp:1053
 msgid "Replace my local note with the server's update"
 msgstr "Erstat min lokale note med serverens opdatering"
 
-#: ../src/preferencesdialog.cpp:1148
+#: ../src/preferencesdialog.cpp:1155
 msgid "Are you sure?"
 msgstr "Er du sikker?"
 
-#: ../src/preferencesdialog.cpp:1149
+#: ../src/preferencesdialog.cpp:1156
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2138,11 +2216,11 @@ msgstr ""
 "tvunget til at synkronisere alle dine noter igen, når du gemmer nye "
 "indstillinger."
 
-#: ../src/preferencesdialog.cpp:1159
+#: ../src/preferencesdialog.cpp:1166
 msgid "Resetting Synchronization Settings"
 msgstr "Genindstilling af synkroniseringsindstillinger"
 
-#: ../src/preferencesdialog.cpp:1160
+#: ../src/preferencesdialog.cpp:1167
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2152,11 +2230,11 @@ msgstr ""
 "synkroniseringsindstillinger vil nu blive ryddet. Du kan blive tvunget til "
 "at synkronisere alle dine noter igen, når du gemmer nye indstillinger."
 
-#: ../src/preferencesdialog.cpp:1226
+#: ../src/preferencesdialog.cpp:1244
 msgid "Connection successful"
 msgstr "Forbindelse oprettet"
 
-#: ../src/preferencesdialog.cpp:1227
+#: ../src/preferencesdialog.cpp:1245
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2165,7 +2243,7 @@ msgstr ""
 "nu?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1252
+#: ../src/preferencesdialog.cpp:1270
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2173,44 +2251,48 @@ msgstr ""
 "Kontrollér venligst dine informationer og prøv igen.  Logfilen %1 indeholder "
 "måske yderligere information om fejlen."
 
-#: ../src/preferencesdialog.cpp:1257
+#: ../src/preferencesdialog.cpp:1275
 msgid "Error connecting"
 msgstr "Forbindelsesfejl"
 
-#: ../src/preferencesdialog.cpp:1320
+#: ../src/preferencesdialog.cpp:1338
 msgid "Version:"
 msgstr "Version:"
 
 # måske udvikler:
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1341
 msgid "Author:"
 msgstr "Forfatter:"
 
-#: ../src/preferencesdialog.cpp:1327
+#: ../src/preferencesdialog.cpp:1345
 msgid "Copyright:"
 msgstr "Ophavsret:"
 
-#: ../src/recentchanges.cpp:153
+#: ../src/recentchanges.cpp:160
 msgid "All Notes"
 msgstr "Alle noter"
 
-#: ../src/recentchanges.cpp:164
+#: ../src/recentchanges.cpp:171
 msgid "Create New Note"
 msgstr "Opret en ny note"
 
-#: ../src/recentchanges.cpp:185
+#: ../src/recentchanges.cpp:192
 msgid "Search"
 msgstr "Søg"
 
-#: ../src/recentchanges.cpp:246
+#: ../src/recentchanges.cpp:253
 msgid "Find _Next"
 msgstr "Find _næste"
 
-#: ../src/recentchanges.cpp:255
+#: ../src/recentchanges.cpp:262
 msgid "Find _Previous"
 msgstr "Find f_orrige"
 
-#: ../src/recentchanges.cpp:791
+#: ../src/recentchanges.cpp:800
+msgid "Expected widget to be a sub-menu!"
+msgstr "Forventede at kontrol var en undermenu!"
+
+#: ../src/recentchanges.cpp:805
 msgid "No configured actions"
 msgstr "Ingen konfigurerede handlinger"
 
@@ -2219,19 +2301,19 @@ msgstr "Ingen konfigurerede handlinger"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Kunne ikke indlæse D-Bus-grænsefladen %s: %s"
 
-#: ../src/searchnoteswidget.cpp:135
+#: ../src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "_Åbn"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "Åbn i nyt _vindue"
 
-#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:145 ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "_Slet"
 
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "Om_døb …"
 
@@ -2239,19 +2321,19 @@ msgstr "Om_døb …"
 msgid "Notebooks"
 msgstr "Notesbøger"
 
-#: ../src/searchnoteswidget.cpp:656
+#: ../src/searchnoteswidget.cpp:655
 msgid "Note"
 msgstr "Note"
 
-#: ../src/searchnoteswidget.cpp:678
+#: ../src/searchnoteswidget.cpp:677
 msgid "Modified"
 msgstr "Ændret"
 
-#: ../src/searchnoteswidget.cpp:999
+#: ../src/searchnoteswidget.cpp:996
 msgid "Notes"
 msgstr "Noter"
 
-#: ../src/searchnoteswidget.cpp:1018
+#: ../src/searchnoteswidget.cpp:1015
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2259,82 +2341,82 @@ msgstr ""
 "Ingen resultater fundet i den valgte notesbog.\n"
 "Klik her for at søge i alle noter."
 
-#: ../src/searchnoteswidget.cpp:1022
+#: ../src/searchnoteswidget.cpp:1019
 msgid "Click here to search across all notebooks"
 msgstr "Klik her for at søge i alle notesbøger"
 
-#: ../src/searchnoteswidget.cpp:1043
+#: ../src/searchnoteswidget.cpp:1040
 msgid "Matches"
 msgstr "Resultater"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1094
+#: ../src/searchnoteswidget.cpp:1091
 msgid "Title match"
 msgstr "Titelresultat"
 
-#: ../src/searchnoteswidget.cpp:1098
+#: ../src/searchnoteswidget.cpp:1095
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 resultat"
 msgstr[1] "%1 resultater"
 
-#: ../src/searchnoteswidget.cpp:1309
+#: ../src/searchnoteswidget.cpp:1305
 msgid "_New"
 msgstr "_Ny"
 
-#: ../src/searchnoteswidget.cpp:1338
+#: ../src/searchnoteswidget.cpp:1334
 msgid "_Open Template Note"
 msgstr "_Åbn skabelonnote"
 
-#: ../src/searchnoteswidget.cpp:1349
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_New..."
 msgstr "_Ny …"
 
-#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
-#: ../src/searchnoteswidget.cpp:1524
+#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
+#: ../src/searchnoteswidget.cpp:1522
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Kunne ikke fortolke indstillingen %s (værdi: %s):"
 
-#: ../src/searchnoteswidget.cpp:1501
+#: ../src/searchnoteswidget.cpp:1499
 msgid "Expected format 'column:order'"
 msgstr "Forventede formatet “kolonne:orden”"
 
-#: ../src/searchnoteswidget.cpp:1514
+#: ../src/searchnoteswidget.cpp:1512
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Kolonne %s blev ikke genkendt"
 
-#: ../src/searchnoteswidget.cpp:1525
+#: ../src/searchnoteswidget.cpp:1523
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Orden %s blev ikke genkendt"
 
-#: ../src/sharp/addinstreemodel.cpp:109
+#: ../src/sharp/addinstreemodel.cpp:110
 msgid "Name"
 msgstr "Navn"
 
-#: ../src/sharp/addinstreemodel.cpp:121
+#: ../src/sharp/addinstreemodel.cpp:122
 msgid "Version"
 msgstr "Version"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:155
+#: ../src/sharp/addinstreemodel.cpp:156
 msgid "Formatting"
 msgstr "Formatering"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:158
+#: ../src/sharp/addinstreemodel.cpp:159
 msgid "Desktop integration"
 msgstr "Skrivebordsintegration"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:161
+#: ../src/sharp/addinstreemodel.cpp:162
 msgid "Tools"
 msgstr "Værktøjer"
 
 #. TRANSLATORS: Addin category is unknown.
-#: ../src/sharp/addinstreemodel.cpp:168
+#: ../src/sharp/addinstreemodel.cpp:169
 msgid "Unknown"
 msgstr "Ukendt"
 
@@ -2349,12 +2431,12 @@ msgstr "Fejl ved indlæsning af %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Fejl ved indhentning af symbolet dynamic_module_instanciate: %s"
 
-#: ../src/sharp/xmlreader.cpp:198
+#: ../src/sharp/xmlreader.cpp:219
 #, c-format
 msgid "XML error: %s"
 msgstr "XML-fejl: %s"
 
-#: ../src/sharp/xmlreader.cpp:198
+#: ../src/sharp/xmlreader.cpp:219
 msgid "unknown parse error"
 msgstr "ukendt fortolkningsfejl"
 
@@ -2366,7 +2448,8 @@ msgstr "%1 mislykkedes"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Stilark er NULL; indsend venligst en fejlrapport"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:377
+#: ../src/synchronization/filesystemsyncserver.cpp:363
+#: ../src/synchronization/filesystemsyncserver.cpp:367
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2376,12 +2459,12 @@ msgstr ""
 "i orden, men der er måske ekstra filer som ligger og flyder.  Her er fejlen: "
 "%s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:617
+#: ../src/synchronization/filesystemsyncserver.cpp:606
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Fejl ved sletning af den gamle synkroniseringslås “%s”: %s"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:113
+#: ../src/synchronization/fusesyncserviceaddin.cpp:114
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1 correctly installed and configured"
@@ -2397,19 +2480,19 @@ msgstr "Kunne ikke læse testfil."
 msgid "Write test failed."
 msgstr "Skrivetest mislykkedes."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:185
+#: ../src/synchronization/fusesyncserviceaddin.cpp:186
 msgid "Timeout connecting to server."
 msgstr "Ventetiden løb ud ved forbindelse til server."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:191
+#: ../src/synchronization/fusesyncserviceaddin.cpp:192
 msgid "Error connecting to server."
 msgstr "Fejl ved forbindelse til server."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:204
+#: ../src/synchronization/fusesyncserviceaddin.cpp:205
 msgid "FUSE could not be enabled."
 msgstr "FUSE kunne ikke slås til."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:235
+#: ../src/synchronization/fusesyncserviceaddin.cpp:236
 msgid "An error occurred while connecting to the specified server"
 msgstr "Der opstod en fejl ved forbindelse til den angivne server"
 
@@ -2626,40 +2709,40 @@ msgstr "Overførte ændringer til serveren"
 msgid "Uploaded new note to server"
 msgstr "Overførte ny note til serveren"
 
-#: ../src/synchronization/syncmanager.cpp:65
+#: ../src/synchronization/syncmanager.cpp:59
 msgid "Synchronize Notes"
 msgstr "Synkroniser noter"
 
-#: ../src/synchronization/syncmanager.cpp:84
-#: ../src/synchronization/syncmanager.cpp:101
-#: ../src/synchronization/syncmanager.cpp:569
+#: ../src/synchronization/syncmanager.cpp:78
+#: ../src/synchronization/syncmanager.cpp:95
+#: ../src/synchronization/syncmanager.cpp:562
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Rapportér en fejl. Cast mislykkedes: %s"
 
-#: ../src/synchronization/syncmanager.cpp:147
+#: ../src/synchronization/syncmanager.cpp:142
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Fejl ved oprydning af tilføjelse efter synkronisering: %s"
 
-#: ../src/synchronization/syncmanager.cpp:172
+#: ../src/synchronization/syncmanager.cpp:167
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Undtagelse ved oprettelse af SyncServer: %s"
 
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:371
+#: ../src/synchronization/syncmanager.cpp:365
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Synkronisering mislykkedes med følgende undtagelse: %s"
 
-#: ../src/synchronization/syncutils.cpp:141
-#: ../src/synchronization/syncutils.cpp:173
+#: ../src/synchronization/syncutils.cpp:139
+#: ../src/synchronization/syncutils.cpp:171
 msgid "Could not enable FUSE"
 msgstr "Kunne ikke aktivere FUSE"
 
-#: ../src/synchronization/syncutils.cpp:142
-#: ../src/synchronization/syncutils.cpp:174
+#: ../src/synchronization/syncutils.cpp:140
+#: ../src/synchronization/syncutils.cpp:172
 msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
@@ -2667,13 +2750,13 @@ msgstr ""
 "FUSE-modulet kunne ikke indlæses. Kontrollér venligst at det er installeret "
 "korrekt, og prøv igen."
 
-#: ../src/synchronization/syncutils.cpp:150
+#: ../src/synchronization/syncutils.cpp:148
 msgid "Enable FUSE?"
 msgstr "Slå FUSE til?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
-#: ../src/synchronization/syncutils.cpp:153
+#: ../src/synchronization/syncutils.cpp:151
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
@@ -2684,10 +2767,10 @@ msgstr ""
 "Synkroniseringen, du har valgt, kræver at FUSE-udvidelsesmodulet indlæses.\n"
 "\n"
 "For at undgå denne besked i fremtiden, kan du prøve at indlæse FUSE ved "
-"opstart.  Tilføj “modprobe fuse” i /etc/init.d/boot.local or “fuse” i /etc/"
+"opstart.  Tilføj “modprobe fuse” i /etc/init.d/boot.local eller “fuse” i /etc/"
 "modules."
 
-#: ../src/utils.cpp:168
+#: ../src/utils.cpp:140
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2695,57 +2778,57 @@ msgstr ""
 "“Gnotemanualen” kunne ikke findes. Undersøg venligst om din installation er "
 "blevet færdig."
 
-#: ../src/utils.cpp:176
+#: ../src/utils.cpp:148
 msgid "Help not found"
 msgstr "Hjælp ikke fundet"
 
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:180
 msgid "Cannot open location"
 msgstr "Kan ikke åbne placering"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:238
+#: ../src/utils.cpp:209
 msgid "Today, %1"
 msgstr "I dag, %1"
 
-#: ../src/utils.cpp:239
+#: ../src/utils.cpp:210
 msgid "Today"
 msgstr "I dag"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:245
+#: ../src/utils.cpp:216
 msgid "Yesterday, %1"
 msgstr "I går, %1"
 
-#: ../src/utils.cpp:246
+#: ../src/utils.cpp:217
 msgid "Yesterday"
 msgstr "I går"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:252
+#: ../src/utils.cpp:223
 msgid "Tomorrow, %1"
 msgstr "I morgen, %1"
 
-#: ../src/utils.cpp:253
+#: ../src/utils.cpp:224
 msgid "Tomorrow"
 msgstr "I morgen"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:257
+#: ../src/utils.cpp:228
 msgid "%b %d"
 msgstr "%d. %b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:260 ../src/utils.cpp:272
+#: ../src/utils.cpp:231 ../src/utils.cpp:243
 msgid "%1, %2"
 msgstr "%1%, %2"
 
-#: ../src/utils.cpp:265
+#: ../src/utils.cpp:236
 msgid "No Date"
 msgstr "Ingen dato"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:269
+#: ../src/utils.cpp:240
 msgid "%b %d %Y"
 msgstr "%d. %b %Y"
 
@@ -2767,326 +2850,14 @@ msgstr ""
 msgid "Note title taken"
 msgstr "Notetitel allerede brugt"
 
-#: ../src/watchers.cpp:315
+#: ../src/watchers.cpp:314
 msgid "Check spelling"
 msgstr "Kontrollér stavning"
 
-#: ../src/watchers.cpp:705
+#: ../src/watchers.cpp:709
 msgid "_Copy Link Address"
 msgstr "_Kopier henvisningsadresse"
 
-#: ../src/watchers.cpp:711
+#: ../src/watchers.cpp:715
 msgid "_Open Link"
 msgstr "_Åbn henvisning"
-
-#~ msgid "Is Important"
-#~ msgstr "Er vigtig"
-
-#~ msgid "_Link"
-#~ msgstr "_Henvisning"
-
-#~ msgid "New"
-#~ msgstr "Ny"
-
-#~ msgid "_Close"
-#~ msgstr "_Luk"
-
-#~ msgid "Determines X coordinate of Search window; stored on Gnote exit."
-#~ msgstr "Afgør x-koordinat på søgevindue; gemmes ved lukning af Gnote."
-
-#~ msgid "Determines Y coordinate of Search window; stored on Gnote exit."
-#~ msgstr "Afgør y-koordinat på søgevindue; gemmes ved lukning af Gnote."
-
-#~ msgid "Enable startup notes"
-#~ msgstr "Slå opstartsnoter til"
-
-#~ msgid ""
-#~ "Has affect only when started as an application. When set to TRUE, shows a "
-#~ "status icon. If set to FALSE, Search All Notes window is used as main "
-#~ "application window, closing which makes application to exit."
-#~ msgstr ""
-#~ "Har kun effekt når startet som et program. Når angivet som SAND (TRUE), "
-#~ "så vises et statusikon. Hvis angivet som FALSK (FALSE), så bruges vinduet "
-#~ "Søg i alle noter som hovedprogramvindue, hvis lukning får programmet til "
-#~ "at afslutte."
-
-#~ msgid ""
-#~ "If enabled, all notes that were open when Gnote quit will automatically "
-#~ "be reopened at startup."
-#~ msgstr ""
-#~ "Hvis slået til, vil alle noter, som var åbne da Gnote blev afsluttet, "
-#~ "automatisk blive genåbnet ved opstart."
-
-#~ msgid "Saved horizontal position of Search window"
-#~ msgstr "Gemt horisontal placering af søgevindue"
-
-#~ msgid "Saved vertical position of Search window"
-#~ msgstr "Gemt vertikal placering af søgevindue"
-
-#~ msgid ""
-#~ "The global keybinding for creating and displaying a new Note. The format "
-#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-#~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Den globale tasttildeling til oprettelse og visning af en ny note. "
-#~ "Formatet ser ud som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;"
-#~ "F1”. Fortolkeren er temmelig liberal og tillader små og store bogstaver, "
-#~ "og også varianter som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver "
-#~ "tilvalget til den specielle streng “slået fra”, så vil der ikke være "
-#~ "nogen tasttildeling for denne handling."
-
-#~ msgid ""
-#~ "The global keybinding for opening the \"Start Here\" note. The format "
-#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-#~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Den globale tasttildeling til åbning af noten “Start her”. Formatet ser "
-#~ "ud som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;F1”. Fortolkeren "
-#~ "er temmelig liberal og tillader små og store bogstaver, og også varianter "
-#~ "som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver tilvalget til den "
-#~ "specielle streng “slået fra”, så vil der ikke være nogen tasttildeling "
-#~ "for denne handling."
-
-#~ msgid ""
-#~ "The global keybinding for opening the Note Search dialog. The format "
-#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-#~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Den globale tasttildeling til åbning af notesøgevinduet. Formatet ser ud "
-#~ "som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;F1”. Fortolkeren er "
-#~ "temmelig liberal og tillader små og store bogstaver, og også varianter "
-#~ "som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver tilvalget til den "
-#~ "specielle streng “slået fra”, så vil der ikke være nogen tasttildeling "
-#~ "for denne handling."
-
-#~ msgid ""
-#~ "The global keybinding for opening the Recent Changes dialog. The format "
-#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-#~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Den globale tasttildeling til vinduet Seneste ændringer. Formatet ser ud "
-#~ "som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;F1”. Fortolkeren er "
-#~ "temmelig liberal og tillader små og store bogstaver, og også varianter "
-#~ "som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver tilvalget til den "
-#~ "specielle streng “slået fra”, så vil der ikke være nogen tasttildeling "
-#~ "for denne handling."
-
-#~ msgid ""
-#~ "The global keybinding for showing the Gnote applet's menu. The format "
-#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-#~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Den globale tasttildeling til visning af panelprogrammenuen Gnote. "
-#~ "Formatet ser ud som “&lt;Control&gt;a” eller “&lt;Skift&gt;&lt;Alt&gt;"
-#~ "F1”. Fortolkeren er temmelig liberal og tillader små og store bogstaver, "
-#~ "og også varianter som “&lt;Ctl&gt;” og “&lt;Ctrl&gt;”. Hvis du angiver "
-#~ "tilvalget til den specielle streng “slået fra”, så vil der ikke være "
-#~ "nogen tasttildeling for denne handling."
-
-#~ msgid "_File"
-#~ msgstr "_Fil"
-
-#~ msgid "Create a new note"
-#~ msgstr "Opret en ny note"
-
-#~ msgid "Quit Gnote"
-#~ msgstr "Afslut Gnote"
-
-#~ msgid "_Edit"
-#~ msgstr "_Rediger"
-
-#~ msgid "Gnote Help"
-#~ msgstr "Gnote - hjælp"
-
-#~ msgid "About Gnote"
-#~ msgstr "Om Gnote"
-
-#~ msgid "TrayIcon"
-#~ msgstr "Statusikon"
-
-#~ msgid "_Search All Notes"
-#~ msgstr "_Søg i alle noter"
-
-#~ msgid "S_ynchronize Notes"
-#~ msgstr "S_ynkroniser noter"
-
-#~ msgid "Cannot create new note"
-#~ msgstr "Kan ikke oprette ny note"
-
-#~ msgid "Hotkeys"
-#~ msgstr "Genvejstaster"
-
-#~ msgid "Add-ins"
-#~ msgstr "Udvidelsesmoduler"
-
-#~ msgid "Use Status _Icon"
-#~ msgstr "Brug status_ikon"
-
-# hvad er det her for en streng? Listen på engelsk?
-#~ msgid "Listen for _Hotkeys"
-#~ msgstr "Behandl _genvejstaster"
-
-#~ msgid ""
-#~ "Hotkeys allow you to quickly access your notes from anywhere with a "
-#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-#~ "Alt&gt;N</b>"
-#~ msgstr ""
-#~ "Genvejstaster gør, at du overalt med et tastetryk lynhurtigt kan tilgå "
-#~ "dine noter. Eksempel på genvejstast <b>&lt;Control&gt;&lt;Skift&gt;F11</"
-#~ "b>, <b>&lt;Alt&gt;N</b>"
-
-#~ msgid "Show notes _menu"
-#~ msgstr "Vis note_menu"
-
-#~ msgid "Open \"_Start Here\""
-#~ msgstr "Åbn “_Start her”"
-
-#~ msgid "Open \"Search _All Notes\""
-#~ msgstr "Åbn “Søg i _alle noter”"
-
-#~ msgid "Find in This Note"
-#~ msgstr "Søg i denne note"
-
-#~ msgid "Te_xt"
-#~ msgstr "Te_kst"
-
-#~ msgid "_Find in This Note"
-#~ msgstr "_Søg i denne note"
-
-#~ msgid "Clos_e All Notes"
-#~ msgstr "Luk all_e noter"
-
-#~ msgid "Search your notes (Ctrl-Shift-F)"
-#~ msgstr "Søg i dine noter (Ctrl-Skift-F)"
-
-#~ msgid "Link selected text to a new note (Ctrl-L)"
-#~ msgstr "Henvis markeret tekst til en ny note (Ctrl-L)"
-
-#~ msgid "_Text"
-#~ msgstr "_Tekst"
-
-#~ msgid "T_ools"
-#~ msgstr "V_ærktøjer"
-
-#~ msgid "Use tools on this note"
-#~ msgstr "Brug værktøjer på denne note"
-
-#~ msgid "Delete this note"
-#~ msgstr "Slet denne note"
-
-#~ msgid "_Find..."
-#~ msgstr "_Find …"
-
-#~ msgid "_Next"
-#~ msgstr "_Næste"
-
-#~ msgid "_Previous"
-#~ msgstr "_Forrige"
-
-#~ msgid "_Find:"
-#~ msgstr "_Find:"
-
-#~ msgid "<b>_Bold</b>"
-#~ msgstr "<b>_Fed</b>"
-
-#~ msgid "Font Size"
-#~ msgstr "Skriftstørrelse"
-
-#~ msgid "_Search:"
-#~ msgstr "_Søg:"
-
-#~ msgid "Last Changed"
-#~ msgstr "Sidst ændret"
-
-#~ msgid "Matches: %1% note"
-#~ msgid_plural "Matches: %1% notes"
-#~ msgstr[0] "Resultater: %1% note"
-#~ msgstr[1] "Resultater: %1% noter"
-
-#~ msgid "Take notes"
-#~ msgstr "Tag noter"
-
-#~ msgid " (new)"
-#~ msgstr " (ny)"
-
-#~ msgid "_About Gnote"
-#~ msgstr "_Om Gnote"
-
-#~ msgid "%1% day ago, %2%"
-#~ msgid_plural "%1% days ago, %2%"
-#~ msgstr[0] "%1% dag siden, %2%"
-#~ msgstr[1] "%1% dage siden, %2%"
-
-#~ msgid "%1% day ago"
-#~ msgid_plural "%1% days ago"
-#~ msgstr[0] "%1% dag siden"
-#~ msgstr[1] "%1% dage siden"
-
-#~ msgid "In %1% day"
-#~ msgid_plural "In %1% days"
-#~ msgstr[0] "Om %1% dag"
-#~ msgstr[1] "Om %1% dage"
-
-#~ msgid "Type the name of the notebook you'd like to create."
-#~ msgstr "Indtast navnet på notesbogen, du ønsker at oprette."
-
-#~ msgid "Note_books"
-#~ msgstr "Note_bøger"
-
-#~ msgid "Create a new note in a notebook"
-#~ msgstr "Opret en ny note i en notesbog"
-
-#~ msgid "Create a new note in this notebook"
-#~ msgstr "Opret en ny note i denne notesbog"
-
-#~ msgid "Open this notebook's template note"
-#~ msgstr "Åbn denne notesbogs skabelonnote"
-
-#~ msgid "Delete Note_book"
-#~ msgstr "Slet note_bog"
-
-#~ msgid "Delete the selected notebook"
-#~ msgstr "Slet den valgte notesbog"
-
-#~ msgid "Place this note into a notebook"
-#~ msgstr "Placer denne note i en notesbog"
-
-# versalfølsom
-#~ msgid "C_ase Sensitive"
-#~ msgstr "Forskel på store og små bogst_aver"
-
-#~ msgid "Accessories"
-#~ msgstr "Tilbehør"
-
-#~ msgid "Gnote Applet Factory"
-#~ msgstr "Gnote panelprogramfabrik"
-
-#~ msgid "Simple and easy to use note-taking"
-#~ msgstr "Enkel og nem noteskrivning"
-
-#~ msgid "Set to TRUE to activate"
-#~ msgstr "Angiv som SAND for at aktivere"
-
-#~ msgid "The handler for \"note://\" URLs"
-#~ msgstr "Håndtering af URL'er med note-protokollen"
-
-#~ msgid "Description"
-#~ msgstr "Beskrivelse"
-
-#~ msgid "New Note %1%"
-#~ msgstr "Ny note %1%"
