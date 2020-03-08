@@ -24,7 +24,7 @@ dnl all the library version.
 dnl if one is harcoded elsewhere, it is a bug
 
 GTK_VERSION=3.20
-LIBGLIBMM_VERSION=2.32
+LIBGLIBMM_VERSION=2.62
 LIBGTKMM_VERSION=3.18
 GSPELL_VERSION=1.6.0
 LIBSECRET_VERSION=0.8
