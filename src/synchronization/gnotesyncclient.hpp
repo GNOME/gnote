@@ -65,14 +65,11 @@ namespace sync {
     static const char *LOCAL_MANIFEST_FILE_NAME;
 
     void note_deleted_handler(const NoteBase::Ptr &);
-    void on_changed(const Glib::RefPtr<Gio::File>&, const Glib::RefPtr<Gio::File>&,
-                    Gio::FileMonitorEvent);
     void write(const Glib::ustring & manifest_path);
     void read_updated_note_atts(sharp::XmlReader & reader);
     void read_deleted_note_atts(sharp::XmlReader & reader);
     void read_notes(sharp::XmlReader & reader, void (GnoteSyncClient::*read_note_atts)(sharp::XmlReader&));
 
-    Glib::RefPtr<Gio::FileMonitor> m_file_watcher;
     Glib::DateTime m_last_sync_date;
     int m_last_sync_rev;
     Glib::ustring m_server_id;

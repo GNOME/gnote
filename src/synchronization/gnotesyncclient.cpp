@@ -55,12 +55,6 @@ namespace sync {
   {
     m_local_manifest_file_path = Glib::build_filename(IGnote::conf_dir(), LOCAL_MANIFEST_FILE_NAME);
     Glib::RefPtr<Gio::File> manifest = Gio::File::create_for_path(m_local_manifest_file_path);
-    if(manifest) {
-      m_file_watcher = manifest->monitor_file();
-      m_file_watcher->signal_changed()
-        .connect(sigc::mem_fun(*this, &GnoteSyncClient::on_changed));
-    }
-
     parse(m_local_manifest_file_path);
 
     manager.signal_note_deleted
@@ -74,13 +68,6 @@ namespace sync {
     m_file_revisions.erase(deletedNote->id());
 
     write(m_local_manifest_file_path);
-  }
-
-
-  void GnoteSyncClient::on_changed(const Glib::RefPtr<Gio::File>&, const Glib::RefPtr<Gio::File>&,
-                                   Gio::FileMonitorEvent)
-  {
-    parse(m_local_manifest_file_path);
   }
 
 
