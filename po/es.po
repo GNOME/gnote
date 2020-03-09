@@ -7,14 +7,14 @@
 # Miguel Rodriguez Nuñez <bokerones.fritos@gmail.com>, 2014.
 #
 # Miguel Rodríguez Núñez <bokerones.fritos@gmail.com>, 2013, 2014, 2015, 2016.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2009-2019.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2009-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2019-09-21 15:16+0000\n"
-"PO-Revision-Date: 2019-09-26 09:35+0200\n"
+"POT-Creation-Date: 2020-03-08 19:58+0000\n"
+"PO-Revision-Date: 2020-03-09 13:12+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -1059,7 +1059,6 @@ msgid "URI field is empty."
 msgstr "El campo URI está vacío."
 
 #: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
-#| msgid "Write test failed."
 msgid "Failure writing test file"
 msgstr "Falló al escribir el archivo de prueba"
 
@@ -1072,7 +1071,6 @@ msgid "Failure when trying to remove test file"
 msgstr "Falló al intentar eliminar el archivo de prueba"
 
 #: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
-#| msgid "unknown parse error"
 msgid "Unknown error"
 msgstr "Error desconocido"
 
@@ -1498,13 +1496,18 @@ msgstr ""
 "QA: Jorge González <jorgegonz@svn.gnome.org>, 2009-2010"
 
 #: ../src/gnote.cpp:289
+#| msgid ""
+#| "Copyright © 2010-2018 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2018 Aurimas Cernius\n"
+"Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2018 Aurimas Cernius\n"
+"Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 los autores originales de Tomboy."
@@ -1609,12 +1612,12 @@ msgid "Exception while saving note: %s"
 msgstr "Se produjo un error al guardar la nota: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:438
+#: ../src/notebase.cpp:439
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falló al actualizar el formato de la nota: %s"
 
-#: ../src/notebase.cpp:561
+#: ../src/notebase.cpp:562
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Error del sistema de archivos: %s"
