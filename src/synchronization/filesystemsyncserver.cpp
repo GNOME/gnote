@@ -563,9 +563,14 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
     xml.write_end_document();
 
     xml.close();
-    auto stream = m_lock_path->create_file(Gio::FILE_CREATE_REPLACE_DESTINATION);
+    auto stream = m_lock_path->replace();
     stream->write(xml.to_string());
     stream->close();
+  }
+  catch(Glib::Error & e) {
+    xml.close();
+    ERR_OUT(_("Error updating lock: %s"), e.what().c_str());
+    throw;
   }
   catch(...) {
     xml.close();
