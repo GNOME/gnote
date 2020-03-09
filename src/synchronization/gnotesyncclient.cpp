@@ -191,6 +191,10 @@ namespace sync {
 
   void GnoteSyncClient::write(const Glib::ustring & manifest_path)
   {
+    if(!m_last_sync_date) {
+      m_last_sync_date = Glib::DateTime::create_now_utc();
+    }
+
     sharp::XmlWriter xml(manifest_path);
 
     try {

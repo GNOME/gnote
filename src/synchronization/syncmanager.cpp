@@ -354,7 +354,7 @@ namespace sync {
       // This should be equivalent to newRevision
       m_client->last_synchronized_revision(server->latest_revision());
 
-      m_client->last_sync_date(Glib::DateTime::create_now_local());
+      m_client->last_sync_date(Glib::DateTime::create_now_utc());
 
       DBG_OUT("Sync: New revision: %d", m_client->last_synchronized_revision());
 
@@ -395,7 +395,7 @@ namespace sync {
     // timer to avoid interupting the user (we want to
     // make sure not to sync more often than the user's pref)
     if(m_sync_thread == NULL) {
-      Glib::TimeSpan time_since_last_check = Glib::DateTime::create_now_local().difference(m_last_background_check);
+      Glib::TimeSpan time_since_last_check = Glib::DateTime::create_now_utc().difference(m_last_background_check);
       if(sharp::time_span_total_minutes(time_since_last_check) > m_autosync_timeout_pref_minutes - 1) {
         DBG_OUT("Note edited...killing autosync timer until next save or delete event");
         m_autosync_timer.cancel();
@@ -424,7 +424,7 @@ namespace sync {
       if(m_autosync_timeout_pref_minutes > 0) {
         DBG_OUT("Autosync pref changed...restarting sync timer");
         m_autosync_timeout_pref_minutes = m_autosync_timeout_pref_minutes >= 5 ? m_autosync_timeout_pref_minutes : 5;
-        m_last_background_check = Glib::DateTime::create_now_local();
+        m_last_background_check = Glib::DateTime::create_now_utc();
         // Perform a sync no sooner than user specified
         m_current_autosync_timeout_minutes = m_autosync_timeout_pref_minutes;
         m_autosync_timer.reset(m_current_autosync_timeout_minutes * 60000);
@@ -436,7 +436,7 @@ namespace sync {
   void SyncManager::handle_note_saved_or_deleted(const NoteBase::Ptr &)
   {
     if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
-      Glib::TimeSpan time_since_last_check(Glib::DateTime::create_now_local().difference(m_last_background_check));
+      Glib::TimeSpan time_since_last_check(Glib::DateTime::create_now_utc().difference(m_last_background_check));
       Glib::TimeSpan time_until_next_check = sharp::time_span(0, m_current_autosync_timeout_minutes, 0) - time_since_last_check;
       if(sharp::time_span_total_minutes(time_until_next_check) < 1) {
         DBG_OUT("Note saved or deleted within a minute of next autosync...resetting sync timer");
@@ -446,7 +446,7 @@ namespace sync {
     }
     else if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
       DBG_OUT("Note saved or deleted...restarting sync timer");
-      m_last_background_check = Glib::DateTime::create_now_local();
+      m_last_background_check = Glib::DateTime::create_now_utc();
       // Perform a sync one minute after setting change
       m_current_autosync_timeout_minutes = 1;
       m_autosync_timer.reset(m_current_autosync_timeout_minutes * 60000);
@@ -456,7 +456,7 @@ namespace sync {
 
   void SyncManager::background_sync_checker()
   {
-    m_last_background_check = Glib::DateTime::create_now_local();
+    m_last_background_check = Glib::DateTime::create_now_utc();
     m_current_autosync_timeout_minutes = m_autosync_timeout_pref_minutes;
     if(m_sync_thread != NULL) {
       return;
