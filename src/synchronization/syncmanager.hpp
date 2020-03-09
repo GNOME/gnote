@@ -85,6 +85,7 @@ namespace sync {
     NoteBase::Ptr find_note_by_uuid(const Glib::ustring & uuid);
     NoteManagerBase & note_mgr();
     void get_synchronized_xml_bits(const Glib::ustring & noteXml, Glib::ustring & title, Glib::ustring & tags, Glib::ustring & content);
+    void abort_sync(SyncServer *server);
 
     SyncUtils m_utils;
     IGnote & m_gnote;

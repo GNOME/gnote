@@ -361,23 +361,33 @@ namespace sync {
       set_state(IDLE);
 
     }
+    catch(Glib::Exception & e) {
+      ERR_OUT(_("Synchronization failed with the following Glib exception: %s"), e.what().c_str());
+      abort_sync(server.get());
+    }
     catch(std::exception & e) { // top-level try
       ERR_OUT(_("Synchronization failed with the following exception: %s"), e.what());
-      // TODO: Report graphically to user
-      try {
-        set_state(IDLE); // stop progress
-        set_state(FAILED);
-        set_state(IDLE); // required to allow user to sync again
-        if(server != 0) {
-          // TODO: All I really want to do here is cancel
-          //       the update lock timeout, but in most cases
-          //       this will delete lock files, too.  Do better!
-          server->cancel_sync_transaction();
-        }
-      }
-      catch(...)
-      {}
+      abort_sync(server.get());
     }
+  }
+
+
+  void SyncManager::abort_sync(SyncServer *server)
+  {
+    // TODO: Report graphically to user
+    try {
+      set_state(IDLE); // stop progress
+      set_state(FAILED);
+      set_state(IDLE); // required to allow user to sync again
+      if(server != 0) {
+        // TODO: All I really want to do here is cancel
+        //       the update lock timeout, but in most cases
+        //       this will delete lock files, too.  Do better!
+        server->cancel_sync_transaction();
+      }
+    }
+    catch(...)
+    {}
   }
 
 
