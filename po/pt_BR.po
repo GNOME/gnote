@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-02-17 22:39+0000\n"
-"PO-Revision-Date: 2020-02-20 19:55-0300\n"
+"POT-Creation-Date: 2020-03-09 21:47+0000\n"
+"PO-Revision-Date: 2020-03-10 03:00-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -1487,11 +1487,6 @@ msgstr ""
 "Rafael Fontenelle <rafaelff@gnome.org>, 2013-2018."
 
 #: ../src/gnote.cpp:294
-#| msgid ""
-#| "Copyright © 2010-2019 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1686,7 +1681,6 @@ msgid "Unfiled"
 msgstr "Não arquivada"
 
 #: ../src/notebooks/specialnotebooks.cpp:107
-#| msgid "Important"
 msgctxt "notebook"
 msgid "Important"
 msgstr "Importante"
@@ -1909,7 +1903,6 @@ msgid "_Link to New Note"
 msgstr "_Link para uma nova nota"
 
 #: ../src/notewindow.cpp:323
-#| msgid "_Important"
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Importante"
@@ -2439,7 +2432,13 @@ msgstr ""
 "está OK, mas pode haver um excesso de arquivos flutuantes por aí. Aqui está "
 "o erro: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:606
+#: ../src/synchronization/filesystemsyncserver.cpp:572
+#, c-format
+#| msgid "Error loading %s"
+msgid "Error updating lock: %s"
+msgstr "Erro ao atualizar bloqueio: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:611
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Erro ao excluir a trava de sincronização antiga “%s”: %s"
@@ -2478,13 +2477,13 @@ msgid "An error occurred while connecting to the specified server"
 msgstr "Ocorreu um erro ao conectar ao servidor especificado"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:165
+#: ../src/synchronization/gnotesyncclient.cpp:152
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Elemento last-sync-date não analisável em %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:175
+#: ../src/synchronization/gnotesyncclient.cpp:162
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Elemento last-sync-rev não analisável em %s"
@@ -2695,7 +2694,7 @@ msgstr "Sincronizar as notas"
 
 #: ../src/synchronization/syncmanager.cpp:78
 #: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:561
+#: ../src/synchronization/syncmanager.cpp:571
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Relate um erro. Chamada falhou: %s"
@@ -2710,8 +2709,14 @@ msgstr "Erro ao limpar o plug-in após a sincronização: %s"
 msgid "Exception while creating SyncServer: %s"
 msgstr "Exceção ao criar um servidor de sincronização: %s"
 
-#. top-level try
 #: ../src/synchronization/syncmanager.cpp:365
+#, c-format
+#| msgid "Synchronization failed with the following exception: %s"
+msgid "Synchronization failed with the following Glib exception: %s"
+msgstr "Sincronização falhou com a seguinte exceção do Glib: %s"
+
+#. top-level try
+#: ../src/synchronization/syncmanager.cpp:369
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sincronização falhou com a seguinte exceção: %s"
