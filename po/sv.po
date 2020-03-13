@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-01-03 20:34+0000\n"
-"PO-Revision-Date: 2020-01-05 14:16+0100\n"
+"POT-Creation-Date: 2020-03-10 06:02+0000\n"
+"PO-Revision-Date: 2020-03-13 10:20+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:548
@@ -981,7 +981,7 @@ msgid "Folder path field is empty."
 msgstr "Fältet för mappsökväg är tomt."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:270
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Angiven mappsökväg finns inte och Gnote kunde inte skapa den."
@@ -1027,43 +1027,43 @@ msgstr "Synkronisera Gnote-anteckningar till en nätkatalog"
 msgid "Failed to mount the folder"
 msgstr "Misslyckades med att montera mappen"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:203
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:206
 msgid "Folder _URI:"
 msgstr "Mapp-_URI:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:215
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Exempel: google-drive://namn.efternamn@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:221
 msgid "Please, register your account in Online Accounts"
 msgstr "Registrera ditt konto i Nätkonton"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:234
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:237
 msgid "The URI is empty"
 msgstr "URI är tom"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:235
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:238
 msgid "URI field is empty."
 msgstr "Fältet för URI är tomt."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:292
 msgid "Failure writing test file"
 msgstr "Fel vid skrivning av testfil"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:294
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:297
 msgid "Failure when checking test file contents"
 msgstr "Fel vid kontroll av testfils innehåll"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:300
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
 msgid "Failure when trying to remove test file"
 msgstr "Fel vid försök att ta bort testfil"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:319
 msgid "Unknown error"
 msgstr "Okänt fel"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:338
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:341
 msgid "Online Folder"
 msgstr "Nätmapp"
 
@@ -1199,16 +1199,16 @@ msgstr "Utskriftsstöd"
 msgid "Allows you to print a note."
 msgstr "Låter dig skriva ut en anteckning."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:62
 msgid "Print…"
 msgstr "Skriv ut…"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:110
 msgid "Error printing note"
 msgstr "Fel vid utskrift av anteckning"
 
 #. %1 is the page number, %2 is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:273
 msgid "Page %1 of %2"
 msgstr "Sida %1 av %2"
 
@@ -2431,7 +2431,12 @@ msgstr ""
 "Undantag under serverstädning vid incheckning. Serverns integritet är OK, "
 "men det kan finnas några överflödiga filer. Här är felet:  %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:606
+#: ../src/synchronization/filesystemsyncserver.cpp:572
+#, c-format
+msgid "Error updating lock: %s"
+msgstr "Fel vid uppdatering av lås: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:611
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Fel vid borttagning av det gamla synkroniseringslåset ”%s”: %s"
@@ -2469,13 +2474,13 @@ msgid "An error occurred while connecting to the specified server"
 msgstr "Ett fel inträffade vid anslutning till den angivna servern"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:165
+#: ../src/synchronization/gnotesyncclient.cpp:152
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "last-sync-date-element som ej går att tolka i %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:175
+#: ../src/synchronization/gnotesyncclient.cpp:162
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "last-sync-rev-element som ej går att tolka i %s"
@@ -2685,7 +2690,7 @@ msgstr "Synkronisera anteckningar"
 
 #: ../src/synchronization/syncmanager.cpp:78
 #: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:562
+#: ../src/synchronization/syncmanager.cpp:571
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Rapportera ett fel. Typkonvertering misslyckades: %s"
@@ -2700,8 +2705,13 @@ msgstr "Fel vid städning av tillägg efter synkronisering: %s"
 msgid "Exception while creating SyncServer: %s"
 msgstr "Undantag under skapande av SyncServer: %s"
 
-#. top-level try
 #: ../src/synchronization/syncmanager.cpp:365
+#, c-format
+msgid "Synchronization failed with the following Glib exception: %s"
+msgstr "Synkronisering misslyckades med följande Glib-undantag: %s"
+
+#. top-level try
+#: ../src/synchronization/syncmanager.cpp:369
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Synkronisering misslyckades med följande undantag: %s"
@@ -2740,7 +2750,7 @@ msgstr ""
 "uppstart.  Lägg till ”modprobe fuse” till /etc/init.d/boot.local eller "
 "”fuse” till /etc/modules."
 
-#: ../src/utils.cpp:140
+#: ../src/utils.cpp:129
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2748,57 +2758,57 @@ msgstr ""
 "”Handbok för Gnote-anteckningar” kunde inte hittas.  Verifiera att din "
 "installation har färdigställts korrekt."
 
-#: ../src/utils.cpp:148
+#: ../src/utils.cpp:137
 msgid "Help not found"
 msgstr "Hjälp hittades inte"
 
-#: ../src/utils.cpp:180
+#: ../src/utils.cpp:169
 msgid "Cannot open location"
 msgstr "Kan inte öppna plats"
 
+#: ../src/utils.cpp:187
+msgid "No Date"
+msgstr "Inget datum"
+
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:202
 msgid "Today, %1"
 msgstr "Idag, %1"
 
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:203
 msgid "Today"
 msgstr "Idag"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:209
 msgid "Yesterday, %1"
 msgstr "Igår, %1"
 
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:210
 msgid "Yesterday"
 msgstr "Igår"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:223
+#: ../src/utils.cpp:216
 msgid "Tomorrow, %1"
 msgstr "Imorgon, %1"
 
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:217
 msgid "Tomorrow"
 msgstr "Imorgon"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:221
 msgid "%b %d"
 msgstr "%d %b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:231 ../src/utils.cpp:243
+#: ../src/utils.cpp:224 ../src/utils.cpp:233
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: ../src/utils.cpp:236
-msgid "No Date"
-msgstr "Inget datum"
-
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:230
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
