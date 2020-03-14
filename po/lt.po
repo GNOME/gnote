@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-01-03 20:34+0000\n"
-"PO-Revision-Date: 2020-03-08 19:16+0200\n"
+"POT-Creation-Date: 2020-03-14 14:24+0000\n"
+"PO-Revision-Date: 2020-03-14 22:09+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -971,7 +971,7 @@ msgid "Folder path field is empty."
 msgstr "Aplanko kelio laukas yra tuščias."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:270
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Nurodytas aplanko kelias neegzistuoja ir Gnote nepavyko jo sukurti."
@@ -1017,43 +1017,43 @@ msgstr "Sinchronizuokite Gnote raštelius į katalogą internete"
 msgid "Failed to mount the folder"
 msgstr "Nepavyko prijungti aplanko"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:203
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:206
 msgid "Folder _URI:"
 msgstr "Aplanko _URI:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:215
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Pavyzdys: google-drive://vardenis.pavardenis@gmail.com/rašteliai"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:221
 msgid "Please, register your account in Online Accounts"
 msgstr "Užregistruokite savo paskyrą Internetinėse paskyrose"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:234
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:237
 msgid "The URI is empty"
 msgstr "URI yra tuščias"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:235
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:238
 msgid "URI field is empty."
 msgstr "URI laukas yra tuščias."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:292
 msgid "Failure writing test file"
 msgstr "Nepavyko įrašyti testinio failo"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:294
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:297
 msgid "Failure when checking test file contents"
 msgstr "Klaida tikrinant testinio failo turinį"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:300
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
 msgid "Failure when trying to remove test file"
 msgstr "Nepavyko pašalinti testinio failo"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:319
 msgid "Unknown error"
 msgstr "Nežinoma klaida"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:338
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:341
 msgid "Online Folder"
 msgstr "Aplankas internete"
 
@@ -1189,16 +1189,16 @@ msgstr "Spausdinimo palaikymas"
 msgid "Allows you to print a note."
 msgstr "Leidžia spausdinti raštelius."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:62
 msgid "Print…"
 msgstr "Spausdinti…"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:110
 msgid "Error printing note"
 msgstr "Klaida spausdinant raštelį"
 
 #. %1 is the page number, %2 is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:273
 msgid "Page %1 of %2"
 msgstr "%1 puslapis iš %2"
 
@@ -1465,11 +1465,6 @@ msgstr ""
 "Žygimantas Beručka <zygis@gnome.org>"
 
 #: ../src/gnote.cpp:294
-#| msgid ""
-#| "Copyright © 2010-2018 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1664,7 +1659,6 @@ msgid "Unfiled"
 msgstr "Neįkelti"
 
 #: ../src/notebooks/specialnotebooks.cpp:107
-#| msgid "Important"
 msgctxt "notebook"
 msgid "Important"
 msgstr "Svarbūs"
@@ -1889,7 +1883,6 @@ msgid "_Link to New Note"
 msgstr "Sukurti nuorodą į naują _raštelį"
 
 #: ../src/notewindow.cpp:323
-#| msgid "_Important"
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "Svarbus"
@@ -2419,7 +2412,13 @@ msgstr ""
 "Kilo išskirtinė situacija išvalant serverį patvirtinimo metu. Su serverio "
 "vientisumu bėdų nėra, bet gali būti papildomų failų.  Štai klaida: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:606
+#: ../src/synchronization/filesystemsyncserver.cpp:572
+#, c-format
+#| msgid "Error loading %s"
+msgid "Error updating lock: %s"
+msgstr "Klaida atnaujinant užraktą: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:611
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Klaida trinant seną sinchronizacijos užraktą „%s“: %s"
@@ -2457,13 +2456,13 @@ msgid "An error occurred while connecting to the specified server"
 msgstr "Kilo klaida jungiantis prie nurodyto serverio"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:165
+#: ../src/synchronization/gnotesyncclient.cpp:152
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Neperskaitomas %s elementas last-sync-date"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:175
+#: ../src/synchronization/gnotesyncclient.cpp:162
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Neperskaitomas %s elementas last-sync-rev"
@@ -2674,7 +2673,7 @@ msgstr "Sinchronizuoti raštelius"
 
 #: ../src/synchronization/syncmanager.cpp:78
 #: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:562
+#: ../src/synchronization/syncmanager.cpp:571
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Praneškite apie klaidą. Nepavyko pakeisti tipo: %s"
@@ -2689,8 +2688,14 @@ msgstr "Klaida išvalant priedą po sinchronizacijos: %s"
 msgid "Exception while creating SyncServer: %s"
 msgstr "Kilo išskirtinė situacija kuriant SyncServer: %s"
 
-#. top-level try
 #: ../src/synchronization/syncmanager.cpp:365
+#, c-format
+#| msgid "Synchronization failed with the following exception: %s"
+msgid "Synchronization failed with the following Glib exception: %s"
+msgstr "Sinchronizacija nepavyko su šia Glib išskirtine situacija: %s"
+
+#. top-level try
+#: ../src/synchronization/syncmanager.cpp:369
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sinchronizacija nepavyko su šia išskirtine situacija: %s"
@@ -2729,64 +2734,64 @@ msgstr ""
 "sistema.  Pridėkite „modprobe fuse“ į /etc/init.d/boot.local arba „fuse“ į /"
 "etc/modules."
 
-#: ../src/utils.cpp:140
+#: ../src/utils.cpp:129
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
 "„Gnote žinynas“ nerastas. Patikrinkite, ar programa buvo įdiegta sėkmingai."
 
-#: ../src/utils.cpp:148
+#: ../src/utils.cpp:137
 msgid "Help not found"
 msgstr "Žinynas nerastas"
 
-#: ../src/utils.cpp:180
+#: ../src/utils.cpp:169
 msgid "Cannot open location"
 msgstr "Nepavyko atverti vietos"
 
+#: ../src/utils.cpp:187
+msgid "No Date"
+msgstr "Nėra datos"
+
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:202
 msgid "Today, %1"
 msgstr "Šiandien: %1"
 
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:203
 msgid "Today"
 msgstr "Šiandien"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:209
 msgid "Yesterday, %1"
 msgstr "Vakar, %1"
 
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:210
 msgid "Yesterday"
 msgstr "Vakar"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:223
+#: ../src/utils.cpp:216
 msgid "Tomorrow, %1"
 msgstr "Rytoj, %1"
 
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:217
 msgid "Tomorrow"
 msgstr "Rytoj"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:221
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:231 ../src/utils.cpp:243
+#: ../src/utils.cpp:224 ../src/utils.cpp:233
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: ../src/utils.cpp:236
-msgid "No Date"
-msgstr "Nėra datos"
-
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:230
 msgid "%b %d %Y"
 msgstr "%Y-%m-%d"
 
