@@ -87,7 +87,7 @@ bool NoteDirectoryWatcherApplicationAddin::initialized()
 
 void NoteDirectoryWatcherApplicationAddin::handle_note_saved(const gnote::NoteBase::Ptr & note)
 {
-  m_note_save_times[note->id()] = Glib::DateTime::create_now_local();
+  m_note_save_times[note->id()] = Glib::DateTime::create_now_utc();
 }
 
 void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
@@ -135,7 +135,7 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
       }
     }
 
-    record->second.last_change = Glib::DateTime::create_now_local();
+    record->second.last_change = Glib::DateTime::create_now_utc();
   }
   catch(...)
   {}
@@ -175,7 +175,7 @@ bool NoteDirectoryWatcherApplicationAddin::handle_timeout()
       // TODO: Take some actions to clear note_save_times? Not a large structure...
 
       Glib::DateTime last_change(iter.second.last_change);
-      if(Glib::DateTime::create_now_local() > last_change.add_seconds(4)) {
+      if(Glib::DateTime::create_now_utc() > last_change.add_seconds(4)) {
         if(iter.second.deleted) {
           delete_note(iter.first);
         }
