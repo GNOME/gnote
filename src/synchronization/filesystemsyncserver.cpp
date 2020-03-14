@@ -198,14 +198,14 @@ bool FileSystemSyncServer::begin_sync_transaction()
       DBG_OUT("Sync: Discovered a sync lock file, wait at least %s before trying again.", sharp::time_span_string(currentSyncLock.duration).c_str());
       // This is our initial attempt to sync and we've detected
       // a sync file, so we're gonna have to wait.
-      m_initial_sync_attempt = Glib::DateTime::create_now_local();
+      m_initial_sync_attempt = Glib::DateTime::create_now_utc();
       m_last_sync_lock_hash = currentSyncLock.hash_string();
       return false;
     }
     else if(m_last_sync_lock_hash != currentSyncLock.hash_string()) {
       DBG_OUT("Sync: Updated sync lock file discovered, wait at least %s before trying again.", sharp::time_span_string(currentSyncLock.duration).c_str());
       // The sync lock has been updated and is still a valid lock
-      m_initial_sync_attempt = Glib::DateTime::create_now_local();
+      m_initial_sync_attempt = Glib::DateTime::create_now_utc();
       m_last_sync_lock_hash = currentSyncLock.hash_string();
       return false;
     }
@@ -214,7 +214,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
         // The sync lock has is the same so check to see if the
         // duration of the lock has expired.  If it hasn't, wait
         // even longer.
-        if(Glib::DateTime::create_now_local().add(-currentSyncLock.duration) < m_initial_sync_attempt) {
+        if(Glib::DateTime::create_now_utc().add(-currentSyncLock.duration) < m_initial_sync_attempt) {
           DBG_OUT("Sync: You haven't waited long enough for the sync file to expire.");
           return false;
         }
