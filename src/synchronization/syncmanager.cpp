@@ -221,7 +221,7 @@ namespace sync {
       //       Want this stuff to happen all at once first, but
       //       maybe there's a way to store this info and pass it on?
       for(auto & iter : noteUpdates) {
-        if(!find_note_by_uuid(iter.second.m_uuid) != 0) {
+        if(find_note_by_uuid(iter.second.m_uuid) != 0) {
           NoteBase::Ptr existingNote = note_mgr().find(iter.second.m_title);
           if(existingNote != 0 && !iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote))) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
