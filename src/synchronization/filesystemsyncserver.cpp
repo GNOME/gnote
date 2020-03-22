@@ -309,7 +309,10 @@ bool FileSystemSyncServer::commit_sync_transaction()
       Glib::ustring xml_content = xml->to_string();
       delete xml;
       xml = nullptr;
-      auto stream = manifest_file->create_file(Gio::FILE_CREATE_REPLACE_DESTINATION);
+      if(manifest_file->query_exists()) {
+        manifest_file->remove();
+      }
+      auto stream = manifest_file->create_file();
       stream->write(xml_content);
       stream->close();
     }
