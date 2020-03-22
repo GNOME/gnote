@@ -81,8 +81,10 @@ TEST(manifest_parsing)
   CHECK_EQUAL("38afddc2-9ce8-46ba-b106-baf3916c74b8", client.associated_server_id());
   CHECK_EQUAL(3, client.deleted_note_titles().size());
 
+  client.begin_synchronization();
   gnote::NoteBase::Ptr note = manager.create("test");
   client.set_revision(note, 1);
+  client.end_synchronization();
   client.reparse();
   CHECK_EQUAL(1, client.get_revision(note));
 
