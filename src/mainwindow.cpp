@@ -120,13 +120,17 @@ bool MainWindow::use_client_side_decorations(Preferences & prefs)
       s_use_client_side_decorations = 0;
       std::vector<Glib::ustring> desktops;
       sharp::string_split(desktops, setting, ",");
-      const char *current_desktop = std::getenv("DESKTOP_SESSION");
+      const char *current_desktop = std::getenv("XDG_CURRENT_DESKTOP");
       if (current_desktop) {
-        Glib::ustring current_de = Glib::ustring(current_desktop).lowercase();
-        for(const Glib::ustring & de : desktops) {
-          Glib::ustring denv = Glib::ustring(de).lowercase();
-          if(current_de.find(denv) != Glib::ustring::npos) {
-            s_use_client_side_decorations = 1;
+        std::vector<Glib::ustring> current_desktops;
+        sharp::string_split(current_desktops, current_desktop, ":");
+        for(const Glib::ustring & cd : current_desktops) {
+          Glib::ustring current_de = cd.lowercase();
+          for(const Glib::ustring & de : desktops) {
+            if (current_de == de) {
+              s_use_client_side_decorations = 1;
+              return s_use_client_side_decorations;
+            }
           }
         }
       }
