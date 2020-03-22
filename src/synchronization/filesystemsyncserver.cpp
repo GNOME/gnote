@@ -308,13 +308,16 @@ bool FileSystemSyncServer::commit_sync_transaction()
       xml->close();
       Glib::ustring xml_content = xml->to_string();
       delete xml;
+      xml = nullptr;
       auto stream = manifest_file->create_file(Gio::FILE_CREATE_REPLACE_DESTINATION);
       stream->write(xml_content);
       stream->close();
     }
     catch(...) {
-      xml->close();
-      delete xml;
+      if(xml) {
+        xml->close();
+        delete xml;
+      }
       throw;
     }
 
