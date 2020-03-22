@@ -56,6 +56,9 @@ public:
   virtual void reset() = 0;
   virtual Glib::ustring associated_server_id() = 0;
   virtual void associated_server_id(const Glib::ustring &) = 0;
+  virtual void begin_synchronization() = 0;
+  virtual void end_synchronization() = 0;
+  virtual void cancel_synchronization() = 0;
 };
 
 class ISyncManager

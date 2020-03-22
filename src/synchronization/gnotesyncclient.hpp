@@ -56,6 +56,9 @@ namespace sync {
         return m_server_id;
       }
     virtual void associated_server_id(const Glib::ustring &) override;
+    virtual void begin_synchronization() override;
+    virtual void end_synchronization() override;
+    virtual void cancel_synchronization() override;
   protected:
     void init(NoteManagerBase &);
     void parse(const Glib::ustring & manifest_path);
@@ -75,6 +78,7 @@ namespace sync {
     Glib::ustring m_server_id;
     std::map<Glib::ustring, int> m_file_revisions;
     std::map<Glib::ustring, Glib::ustring> m_deleted_notes;
+    bool m_synchronizing;
   };
 
 }

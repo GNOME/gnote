@@ -47,6 +47,7 @@ namespace sync {
   }
 
   GnoteSyncClient::GnoteSyncClient()
+    : m_synchronizing(false)
   {
   }
 
@@ -64,6 +65,9 @@ namespace sync {
 
   void GnoteSyncClient::note_deleted_handler(const NoteBase::Ptr & deletedNote)
   {
+    if(m_synchronizing) {
+      return;
+    }
     m_deleted_notes[deletedNote->id()] = deletedNote->get_title();
     m_file_revisions.erase(deletedNote->id());
 
@@ -236,16 +240,12 @@ namespace sync {
   void GnoteSyncClient::last_sync_date(const Glib::DateTime & date)
   {
     m_last_sync_date = date;
-    // If we just did a sync, we should be able to forget older deleted notes
-    m_deleted_notes.clear();
-    write(m_local_manifest_file_path);
   }
 
 
   void GnoteSyncClient::last_synchronized_revision(int revision)
   {
     m_last_sync_rev = revision;
-    write(m_local_manifest_file_path);
   }
 
 
@@ -265,8 +265,6 @@ namespace sync {
   void GnoteSyncClient::set_revision(const NoteBase::Ptr & note, int revision)
   {
     m_file_revisions[note->id()] = revision;
-    // TODO: Should we write on each of these or no?
-    write(m_local_manifest_file_path);
   }
 
 
@@ -285,6 +283,28 @@ namespace sync {
       m_server_id = server_id;
       write(m_local_manifest_file_path);
     }
+  }
+
+
+  void GnoteSyncClient::begin_synchronization()
+  {
+    m_synchronizing = true;
+  }
+
+
+  void GnoteSyncClient::end_synchronization()
+  {
+    if(m_synchronizing) {
+      m_synchronizing = false;
+      m_deleted_notes.clear();
+      write(m_local_manifest_file_path);
+    }
+  }
+
+
+  void GnoteSyncClient::cancel_synchronization()
+  {
+    m_synchronizing = false;
   }
 
 }

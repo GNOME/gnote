@@ -199,6 +199,7 @@ namespace sync {
         m_client->associated_server_id(serverId);
       }
 
+      m_client->begin_synchronization();
       set_state(PREPARE_DOWNLOAD);
 
       // Handle notes modified or added on server
@@ -355,6 +356,7 @@ namespace sync {
       m_client->last_synchronized_revision(server->latest_revision());
 
       m_client->last_sync_date(Glib::DateTime::create_now_utc());
+      m_client->end_synchronization();
 
       DBG_OUT("Sync: New revision: %d", m_client->last_synchronized_revision());
 
@@ -384,6 +386,7 @@ namespace sync {
         //       the update lock timeout, but in most cases
         //       this will delete lock files, too.  Do better!
         server->cancel_sync_transaction();
+        m_client->cancel_synchronization();
       }
     }
     catch(...)
