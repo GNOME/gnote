@@ -327,8 +327,11 @@ bool FileSystemSyncServer::commit_sync_transaction()
 
     // Rename original /manifest.xml to /manifest.xml.old
     Glib::RefPtr<Gio::File> oldManifestPath = Gio::File::create_for_uri(m_manifest_path->get_uri() + ".old");
+    if(oldManifestPath->query_exists()) {
+      oldManifestPath->remove();
+    }
     if(m_manifest_path->query_exists() == true) {
-      m_manifest_path->move(oldManifestPath, Gio::FILE_COPY_OVERWRITE);
+      m_manifest_path->move(oldManifestPath);
     }
 
     // * * * Begin Cleanup Code * * *
