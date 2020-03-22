@@ -298,7 +298,7 @@ SUITE(SyncManagerTests)
     sync_client1.reparse();
     sync_manager1->perform_synchronization(sync_ui1);
     get_notes_in_dir(notesdir1);
-    REQUIRE CHECK_EQUAL(3, files.size()); // 2 downloaded notes + template
+    REQUIRE CHECK(3 <= files.size()); // 2 downloaded notes + template(s)
     CHECK(find_note_in_files("note1"));
     CHECK(find_note_in_files("note3"));
     CHECK(!find_note_in_files("note2"));
