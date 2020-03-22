@@ -135,8 +135,9 @@ namespace sync {
     m_server_id = "";
 
     if(!sharp::file_exists(manifest_path)) {
-      m_last_sync_date = Glib::DateTime();
+      m_last_sync_date = Glib::DateTime::create_now_utc();
       write(manifest_path);
+      return;
     }
 
     sharp::XmlReader reader(manifest_path);
