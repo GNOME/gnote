@@ -69,8 +69,6 @@ private:
   int m_new_revision;
   Glib::RefPtr<Gio::File> m_new_revision_path;
 
-  Glib::DateTime m_initial_sync_attempt;
-  Glib::ustring m_last_sync_lock_hash;
   utils::InterruptableTimeout m_lock_timeout;
   SyncLockInfo m_sync_lock;
 };

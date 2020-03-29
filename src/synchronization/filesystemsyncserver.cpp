@@ -194,40 +194,14 @@ bool FileSystemSyncServer::begin_sync_transaction()
   // client should record the time elapsed
   if(m_lock_path->query_exists()) {
     SyncLockInfo currentSyncLock = current_sync_lock();
-    if(!m_initial_sync_attempt) {
+    auto file_info = m_lock_path->query_info();
+    auto lock_expires = file_info->get_modification_date_time().to_utc().add(currentSyncLock.duration);
+    auto now = Glib::DateTime::create_now_utc();
+    if(now < lock_expires) {
       DBG_OUT("Sync: Discovered a sync lock file, wait at least %s before trying again.", sharp::time_span_string(currentSyncLock.duration).c_str());
-      // This is our initial attempt to sync and we've detected
-      // a sync file, so we're gonna have to wait.
-      m_initial_sync_attempt = Glib::DateTime::create_now_utc();
-      m_last_sync_lock_hash = currentSyncLock.hash_string();
       return false;
-    }
-    else if(m_last_sync_lock_hash != currentSyncLock.hash_string()) {
-      DBG_OUT("Sync: Updated sync lock file discovered, wait at least %s before trying again.", sharp::time_span_string(currentSyncLock.duration).c_str());
-      // The sync lock has been updated and is still a valid lock
-      m_initial_sync_attempt = Glib::DateTime::create_now_utc();
-      m_last_sync_lock_hash = currentSyncLock.hash_string();
-      return false;
-    }
-    else {
-      if(m_last_sync_lock_hash == currentSyncLock.hash_string()) {
-        // The sync lock has is the same so check to see if the
-        // duration of the lock has expired.  If it hasn't, wait
-        // even longer.
-        if(Glib::DateTime::create_now_utc().add(-currentSyncLock.duration) < m_initial_sync_attempt) {
-          DBG_OUT("Sync: You haven't waited long enough for the sync file to expire.");
-          return false;
-        }
-      }
-
-      // Cleanup Old Sync Lock!
-      cleanup_old_sync(currentSyncLock);
     }
   }
-
-  // Reset the initialSyncAttempt
-  m_initial_sync_attempt = Glib::DateTime();
-  m_last_sync_lock_hash = "";
 
   // Create a new lock file so other clients know another client is
   // actively synchronizing right now.
