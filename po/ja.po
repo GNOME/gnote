@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-03-22 13:56+0000\n"
-"PO-Revision-Date: 2020-02-12 00:00+0900\n"
+"POT-Creation-Date: 2020-03-17 21:27+0000\n"
+"PO-Revision-Date: 2020-03-22 17:02+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -2398,10 +2398,9 @@ msgstr ""
 "示します: %s\n"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:572
-#, fuzzy, c-format
-#| msgid "Error loading %s"
+#, c-format
 msgid "Error updating lock: %s"
-msgstr "%s の読み込みエラー"
+msgstr "ロック更新エラー: %s"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:611
 #, c-format
@@ -2670,10 +2669,9 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "SyncServer の作成中に例外が発生しました: %s"
 
 #: ../src/synchronization/syncmanager.cpp:365
-#, fuzzy, c-format
-#| msgid "Synchronization failed with the following exception: %s"
+#, c-format
 msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "次の例外で同期に失敗しました: %s"
+msgstr "次の Glib の例外で同期に失敗しました: %s"
 
 #. top-level try
 #: ../src/synchronization/syncmanager.cpp:369
@@ -3026,11 +3024,6 @@ msgstr "リンクを開く(_O)"
 
 #~ msgid "New Note_book"
 #~ msgstr "新しいメモ帳(_B)"
-
-#, fuzzy
-#~| msgid "Unfiled Notes"
-#~ msgid "Pinned Notes"
-#~ msgstr "未ファイルのメモ"
 
 #~ msgid "Find in This Note"
 #~ msgstr "このメモの中を検索する"
