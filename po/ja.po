@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-01-12 16:13+0000\n"
+"POT-Creation-Date: 2020-03-22 13:56+0000\n"
 "PO-Revision-Date: 2020-02-12 00:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -956,7 +956,7 @@ msgid "Folder path field is empty."
 msgstr "フォルダーパスフィールドが空です。"
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:270
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "指定フォルダーのパスが存在しないため作成できませんでした。"
@@ -1002,43 +1002,43 @@ msgstr "Gnote メモをオンラインディレクトリに同期させます"
 msgid "Failed to mount the folder"
 msgstr "フォルダーのマウントに失敗しました"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:203
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:206
 msgid "Folder _URI:"
 msgstr "フォルダーの URI(_U):"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:215
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "例: google-drive://name.surname@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:221
 msgid "Please, register your account in Online Accounts"
 msgstr "オンラインアカウントでアカウントを登録してください"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:234
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:237
 msgid "The URI is empty"
 msgstr "URI が空です"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:235
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:238
 msgid "URI field is empty."
 msgstr "URI フィールドが空です。"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:292
 msgid "Failure writing test file"
 msgstr "テストファイルの書き込みに失敗しました"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:294
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:297
 msgid "Failure when checking test file contents"
 msgstr "テストファイルの内容確認に失敗しました"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:300
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
 msgid "Failure when trying to remove test file"
 msgstr "テストファイルの削除に失敗しました"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:319
 msgid "Unknown error"
 msgstr "不明なエラーです"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:338
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:341
 msgid "Online Folder"
 msgstr "オンラインフォルダー"
 
@@ -1099,8 +1099,8 @@ msgstr "NoteDirectoryWatcher: %s からのメモの作成中にエラーが発�
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
-"NoteDirectoryWatcher: 更新が中断されました、%s の解析中にエラーが発生しました: "
-"%s"
+"NoteDirectoryWatcher: 更新が中断されました、%s の解析中にエラーが発生しまし"
+"た: %s"
 
 #: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:1
 msgid "Note Directory Watcher"
@@ -1181,16 +1181,16 @@ msgstr "印刷サポート"
 msgid "Allows you to print a note."
 msgstr "メモを印刷できるようにします"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:62
 msgid "Print…"
 msgstr "印刷…"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:110
 msgid "Error printing note"
 msgstr "メモの印刷エラー"
 
 #. %1 is the page number, %2 is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:273
 msgid "Page %1 of %2"
 msgstr "%1/%2 ページ"
 
@@ -2397,7 +2397,13 @@ msgstr ""
 "問題ありませんが、過剰な数のファイルが流動している可能性があります。エラーを"
 "示します: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:606
+#: ../src/synchronization/filesystemsyncserver.cpp:572
+#, fuzzy, c-format
+#| msgid "Error loading %s"
+msgid "Error updating lock: %s"
+msgstr "%s の読み込みエラー"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:611
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "古い同期ロック \"%s\" の削除中にエラーが発生しました: %s"
@@ -2436,13 +2442,13 @@ msgid "An error occurred while connecting to the specified server"
 msgstr "指定したサーバーへの接続中にエラーが発生しました"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:165
+#: ../src/synchronization/gnotesyncclient.cpp:152
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "%s 内の解析不能な last-sync-date エレメントです"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:175
+#: ../src/synchronization/gnotesyncclient.cpp:162
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "%s 内の解析不能な last-sync-rev エレメントです"
@@ -2648,7 +2654,7 @@ msgstr "メモの同期"
 
 #: ../src/synchronization/syncmanager.cpp:78
 #: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:562
+#: ../src/synchronization/syncmanager.cpp:571
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "バグ報告してください。キャストが失敗しました: %s"
@@ -2663,8 +2669,14 @@ msgstr "同期後のアドインのクリーンアップ中にエラーが発生
 msgid "Exception while creating SyncServer: %s"
 msgstr "SyncServer の作成中に例外が発生しました: %s"
 
-#. top-level try
 #: ../src/synchronization/syncmanager.cpp:365
+#, fuzzy, c-format
+#| msgid "Synchronization failed with the following exception: %s"
+msgid "Synchronization failed with the following Glib exception: %s"
+msgstr "次の例外で同期に失敗しました: %s"
+
+#. top-level try
+#: ../src/synchronization/syncmanager.cpp:369
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "次の例外で同期に失敗しました: %s"
@@ -2703,7 +2715,7 @@ msgstr ""
 "ります。\"modprobe fuse\" を /etc/init.d/boot.local に追加するか、\"fuse\" "
 "を /etc/modules に追加してください。"
 
-#: ../src/utils.cpp:140
+#: ../src/utils.cpp:129
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2711,57 +2723,57 @@ msgstr ""
 "\"Gnote メモのマニュアル\" が見つかりませんでした。インストールが問題なく行わ"
 "れているかどうか確認してみてください。"
 
-#: ../src/utils.cpp:148
+#: ../src/utils.cpp:137
 msgid "Help not found"
 msgstr "ヘルプが見つかりませんでした"
 
-#: ../src/utils.cpp:180
+#: ../src/utils.cpp:169
 msgid "Cannot open location"
 msgstr "指定した場所を開けません"
 
+#: ../src/utils.cpp:187
+msgid "No Date"
+msgstr "日付なし"
+
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:202
 msgid "Today, %1"
 msgstr "今日 %1"
 
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:203
 msgid "Today"
 msgstr "今日"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:209
 msgid "Yesterday, %1"
 msgstr "昨日 %1"
 
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:210
 msgid "Yesterday"
 msgstr "昨日"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:223
+#: ../src/utils.cpp:216
 msgid "Tomorrow, %1"
 msgstr "明日 %1"
 
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:217
 msgid "Tomorrow"
 msgstr "明日"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:221
 msgid "%b %d"
 msgstr "%B%-e日"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:231 ../src/utils.cpp:243
+#: ../src/utils.cpp:224 ../src/utils.cpp:233
 msgid "%1, %2"
 msgstr "%1 %2"
 
-#: ../src/utils.cpp:236
-msgid "No Date"
-msgstr "日付なし"
-
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:230
 msgid "%b %d %Y"
 msgstr "%Y年%B%-e日"
 
