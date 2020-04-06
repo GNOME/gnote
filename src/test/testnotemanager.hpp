@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2019 Aurimas Cernius
+ * Copyright (C) 2014,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@ public:
   static Glib::ustring test_notes_dir();
 
   NoteManager(const Glib::ustring & notes_dir, gnote::IGnote & g);
+  virtual ~NoteManager();
 
   virtual gnote::notebooks::NotebookManager & notebook_manager() override
     {

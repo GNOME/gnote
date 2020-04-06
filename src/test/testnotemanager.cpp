@@ -20,13 +20,18 @@
 #include "testnote.hpp"
 #include "testnotemanager.hpp"
 
+
+// defined in syncmanagerutests.cpp
+void remove_dir(const Glib::ustring dir);
+
+
 namespace test {
 
 Glib::ustring NoteManager::test_notes_dir()
 {
   char notes_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
   char *notes_dir = g_mkdtemp(notes_dir_tmpl);
-  return Glib::ustring(notes_dir) + "/notes";
+  return notes_dir;
 }
 
 
@@ -37,6 +42,11 @@ NoteManager::NoteManager(const Glib::ustring & notesdir, gnote::IGnote & g)
 {
   Glib::ustring backup = notesdir + "/Backup";
   init(notesdir, backup);
+}
+
+NoteManager::~NoteManager()
+{
+  remove_dir(notes_dir());
 }
 
 gnote::NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, const Glib::ustring & file_name)
