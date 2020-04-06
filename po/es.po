@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-03-30 15:04+0000\n"
-"PO-Revision-Date: 2020-04-01 12:57+0200\n"
+"POT-Creation-Date: 2020-04-01 11:13+0000\n"
+"PO-Revision-Date: 2020-04-06 08:26+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -2450,7 +2450,6 @@ msgstr ""
 
 #: ../src/synchronization/filesystemsyncserver.cpp:572
 #, c-format
-#| msgid "Error loading %s"
 msgid "Error updating lock: %s"
 msgstr "Error al actualizar el bloqueo: %s"
 
@@ -2726,10 +2725,10 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Error al crear la sincronización con el servidor: %s"
 
 #: ../src/synchronization/syncmanager.cpp:365
-#, fuzzy, c-format
+#, c-format
 #| msgid "Synchronization failed with the following exception: %s"
 msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "Falló la sincronización con el siguiente error: %s"
+msgstr "Falló la sincronización con la siguiente excepción de GLib: %s"
 
 #. top-level try
 #: ../src/synchronization/syncmanager.cpp:369
