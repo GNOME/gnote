@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2019 Aurimas Cernius
+ * Copyright (C) 2017-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,10 +36,26 @@
 using namespace gnote;
 
 
+void remove_dir(const Glib::ustring dir)
+{
+  auto subitems = sharp::directory_get_directories(dir);
+  for(auto subdir : subitems) {
+    remove_dir(subdir);
+  }
+  subitems = sharp::directory_get_files(dir);
+  for(auto file : subitems) {
+    g_remove(file.c_str());
+  }
+  g_rmdir(dir.c_str());
+}
+
+
 SUITE(SyncManagerTests)
 {
   struct Fixture
   {
+    Glib::ustring tempdir1;
+    Glib::ustring tempdir2;
     Glib::ustring notesdir1;
     Glib::ustring notesdir2;
     Glib::ustring syncdir;
@@ -55,14 +71,14 @@ SUITE(SyncManagerTests)
 
     Fixture()
     {
-      Glib::ustring notes_dir1 = make_temp_dir();
-      Glib::ustring notes_dir2 = make_temp_dir();
-      notesdir1 = notes_dir1 + "/notes";
-      notesdir2 = notes_dir2 + "/notes";
-      syncdir = notes_dir1 + "/sync";
+      tempdir1 = make_temp_dir();
+      tempdir2 = make_temp_dir();
+      notesdir1 = tempdir1 + "/notes";
+      notesdir2 = tempdir2 + "/notes";
+      syncdir = tempdir1 + "/sync";
       REQUIRE CHECK(g_mkdir(syncdir.c_str(), S_IRWXU) == 0);
-      manifest1 = notes_dir1 + "/manifest.xml";
-      manifest2 = notes_dir2 + "/manifest.xml";
+      manifest1 = tempdir1 + "/manifest.xml";
+      manifest2 = tempdir2 + "/manifest.xml";
 
       manager1 = new test::NoteManager(notesdir1, gnote1);
       gnote1.notebook_manager(&manager1->notebook_manager());
@@ -83,6 +99,8 @@ SUITE(SyncManagerTests)
     {
       delete manager1;
       delete manager2;
+      remove_dir(tempdir1);
+      remove_dir(tempdir2);
     }
 
     Glib::ustring make_temp_dir()
