@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2019 Aurimas Cernius
+ * Copyright (C) 2017-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -94,6 +94,8 @@ SUITE(files)
     CHECK_EQUAL("line1", lines[0]);
     CHECK_EQUAL("line2", lines[1]);
     CHECK_EQUAL("line3", lines[2]);
+
+    std::remove(temp_file_name);
   }
 
   TEST(read_all_text)
@@ -115,6 +117,8 @@ SUITE(files)
 
     file_content = sharp::file_read_all_text(temp_file_name);
     CHECK_EQUAL("line1\nline2\nline3", file_content);
+
+    std::remove(temp_file_name);
   }
 
   TEST(read_all_text_gio)
@@ -135,6 +139,8 @@ SUITE(files)
 
     file_content = sharp::file_read_all_text(file);
     CHECK_EQUAL("line1\nline2\nline3", file_content);
+
+    std::remove(temp_file_name);
   }
 
   TEST(write_all_text)
@@ -157,6 +163,8 @@ SUITE(files)
     CHECK_EQUAL("line3", line3);
 
     CHECK_THROW(sharp::file_write_all_text("/usr/gnotetest", file_content), sharp::Exception);
+
+    std::remove(temp_file_name);
   }
 }
 
