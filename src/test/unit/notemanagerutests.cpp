@@ -110,5 +110,36 @@ SUITE(NoteManager)
     CHECK(manager.find("test note") == test_note);
     CHECK(manager.find_by_uri(test_note->uri()) == test_note);
   }
+
+  TEST_FIXTURE(Fixture, create_with_xml)
+  {
+    auto note = manager.create("test", "<note-content><note-title>test</note-title>\n\ntest content");
+    CHECK_EQUAL("test", note->get_title());
+    CHECK(note->data().text().find("test content") != Glib::ustring::npos);
+    CHECK_EQUAL(1, manager.get_notes().size());
+  }
+
+  TEST_FIXTURE(Fixture, create_with_guid)
+  {
+    auto note = manager.create_with_guid("test", "93b3f3ef-9eea-4cdc-9f78-76af1629987a");
+    CHECK_EQUAL("test", note->get_title());
+    CHECK(note->data().text().find("Describe your new note here.") != Glib::ustring::npos);
+    CHECK_EQUAL("93b3f3ef-9eea-4cdc-9f78-76af1629987a", note->id());
+    CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note->uri());
+    CHECK_EQUAL(1, manager.get_notes().size());
+    auto other = manager.find_by_uri("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a");
+    CHECK_EQUAL(note, other);
+  }
+
+
+  TEST_FIXTURE(Fixture, create_with_guid_multiline_title)
+  {
+    auto note = manager.create_with_guid("test\ntest content", "93b3f3ef-9eea-4cdc-9f78-76af1629987a");
+    CHECK_EQUAL("test", note->get_title());
+    CHECK(note->data().text().find("test content") != Glib::ustring::npos);
+    CHECK_EQUAL("93b3f3ef-9eea-4cdc-9f78-76af1629987a", note->id());
+    CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note->uri());
+    CHECK_EQUAL(1, manager.get_notes().size());
+  }
 }
 

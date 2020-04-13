@@ -273,26 +273,14 @@ namespace gnote {
   }
 
 
-  NoteBase::Ptr NoteManager::create_note(Glib::ustring title, Glib::ustring body)
+  NoteBase::Ptr NoteManager::create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid)
   {
     bool select_body = body.empty();
-    auto new_note = NoteManagerBase::create_note(std::move(title), std::move(body));
+    auto new_note = NoteManagerBase::create_note(std::move(title), std::move(body), guid);
     if(select_body) {
       // Select the inital text so typing will overwrite the body text
       std::static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
     }
-    return new_note;
-  }
-
-  // Create a new note with the specified title from the default
-  // template note. Optionally the body can be overridden.
-  NoteBase::Ptr NoteManager::create_new_note(Glib::ustring title, const Glib::ustring & guid)
-  {
-    NoteBase::Ptr new_note = NoteManagerBase::create_new_note(title, guid);
-
-    // Select the inital text so typing will overwrite the body text
-    std::static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
-
     return new_note;
   }
 

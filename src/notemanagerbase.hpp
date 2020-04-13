@@ -113,8 +113,7 @@ protected:
   virtual NoteBase::Ptr create_note_from_template(const Glib::ustring & title,
                                                   const NoteBase::Ptr & template_note,
                                                   const Glib::ustring & guid);
-  virtual NoteBase::Ptr create_note(Glib::ustring title, Glib::ustring body);
-  virtual NoteBase::Ptr create_new_note(Glib::ustring title, const Glib::ustring & guid);
+  virtual NoteBase::Ptr create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid = Glib::ustring());
   virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
                                         const Glib::ustring & guid);
   virtual NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) = 0;

@@ -297,7 +297,7 @@ Glib::ustring NoteManagerBase::get_unique_name(const Glib::ustring & basename) c
   return title;
 }
 
-NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring body)
+NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid)
 {
   if(title.empty()) {
     title = get_unique_name(_("New Note"));
@@ -313,36 +313,7 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring bo
     content = get_note_content(title, body);
   }
 
-  return create_new_note(title, content, "");
-}
-
-// Create a new note with the specified title from the default
-// template note. Optionally the body can be overridden.
-NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring title, const Glib::ustring & guid)
-{
-  Glib::ustring body;
-
-  title = split_title_from_content(title, body);
-
-  if(title.empty()) {
-    title = get_unique_name(_("New Note"));
-  }
-
-  NoteBase::Ptr template_note = get_or_create_template_note();
-
-  if(body.empty()) {
-    return create_note_from_template(title, template_note, guid);
-  }
-
-  // Use a simple "Describe..." body and highlight
-  // it so it can be easily overwritten
-  Glib::ustring content = get_note_template_content(title);
-  NoteBase::Ptr new_note = create_new_note(title, content, guid);
-
-  // Select the inital text so typing will overwrite the body text
-  std::static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
-
-  return new_note;
+  return create_new_note(title, content, guid);
 }
 
 // Create a new note with the specified Xml content
@@ -529,7 +500,9 @@ NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)
 
 NoteBase::Ptr NoteManagerBase::create_with_guid(const Glib::ustring & title, const Glib::ustring & guid)
 {
-  return create_new_note(title, guid);
+  Glib::ustring body;
+  auto note_title = split_title_from_content(title, body);
+  return create_note(note_title, body, guid);
 }
 
 
