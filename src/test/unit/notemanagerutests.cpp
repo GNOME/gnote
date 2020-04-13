@@ -53,6 +53,13 @@ SUITE(NoteManager)
     CHECK(content.find("test_content") != Glib::ustring::npos);
   }
 
+  TEST(get_note_content_special_chars)
+  {
+    auto content = gnote::NoteManagerBase::get_note_content("test<title", "test>content");
+    CHECK(content.find("<note-title>test&lt;title</note-title>") != Glib::ustring::npos);
+    CHECK(content.find("test&gt;content") != Glib::ustring::npos);
+  }
+
   TEST(split_title_from_content)
   {
     Glib::ustring body;
