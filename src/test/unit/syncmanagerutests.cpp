@@ -174,7 +174,7 @@ SUITE(SyncManagerTests)
     FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     get_notes_in_dir(notesdir2);
-    REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
+    REQUIRE CHECK_EQUAL(3, files.size());
     CHECK(find_note_in_files("note1"));
     CHECK(find_note_in_files("note2"));
     CHECK(find_note_in_files("note3"));
@@ -190,7 +190,7 @@ SUITE(SyncManagerTests)
     Glib::ustring syncednotesdir = syncdir + "/0/1";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
     get_notes_in_dir(syncednotesdir);
-    REQUIRE CHECK_EQUAL(2, files.size());  // note + template note
+    REQUIRE CHECK_EQUAL(1, files.size());
     CHECK(find_note_in_files("note4"));
   }
 
@@ -207,12 +207,12 @@ SUITE(SyncManagerTests)
     Glib::ustring syncednotesdir = syncdir + "/0";
     REQUIRE CHECK(sharp::directory_exists(syncednotesdir));
     files = sharp::directory_get_directories(syncednotesdir);
-    CHECK_EQUAL(3, files.size());
+    CHECK_EQUAL(2, files.size());  // first time client2 only downloads
 
     // sync to first client
     sync_manager1->perform_synchronization(sync_ui1);
     get_notes_in_dir(notesdir1);
-    CHECK(4 <= files.size()); // 3 original + 1 from other client + templates
+    CHECK_EQUAL(4, files.size()); // 3 original + 1 from other client
     CHECK(find_note_in_files("note4"));
   }
 
@@ -234,7 +234,7 @@ SUITE(SyncManagerTests)
     FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     get_notes_in_dir(notesdir2);
-    REQUIRE CHECK_EQUAL(4, files.size()); // 3 downloaded notes + template
+    REQUIRE CHECK_EQUAL(3, files.size());
     CHECK(!find_note_in_files("note2"));
     CHECK(find_note_in_files("note4"));
   }
@@ -252,7 +252,7 @@ SUITE(SyncManagerTests)
     // download updates
     sync_manager2->perform_synchronization(sync_ui2);
     get_notes_in_dir(notesdir2);
-    REQUIRE CHECK(3 <= files.size()); // 3 downloaded notes + templates
+    REQUIRE CHECK_EQUAL(3, files.size());
     CHECK(find_note_in_files("note1"));
     CHECK(find_note_in_files("note3"));
     CHECK(find_note_in_files("note4"));
@@ -270,7 +270,7 @@ SUITE(SyncManagerTests)
 
     FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
     get_notes_in_dir(notesdir2);
-    REQUIRE CHECK_EQUAL(3, files.size()); // 2 downloaded notes + template
+    REQUIRE CHECK_EQUAL(2, files.size());
     CHECK(find_note_in_files("note1"));
     CHECK(find_note_in_files("note3"));
     CHECK(!find_note_in_files("note2"));
@@ -294,7 +294,7 @@ SUITE(SyncManagerTests)
     // sync client1 again
     sync_manager1->perform_synchronization(sync_ui1);
     get_notes_in_dir(notesdir2);
-    REQUIRE CHECK(3 <= files.size()); // 3 downloaded notes + templates
+    REQUIRE CHECK_EQUAL(3, files.size());
     CHECK(find_note_in_files("note1"));
     CHECK(find_note_in_files("note3"));
     CHECK(!find_note_in_files("note2"));
@@ -316,7 +316,7 @@ SUITE(SyncManagerTests)
     sync_client1.reparse();
     sync_manager1->perform_synchronization(sync_ui1);
     get_notes_in_dir(notesdir1);
-    REQUIRE CHECK(3 <= files.size()); // 2 downloaded notes + template(s)
+    REQUIRE CHECK_EQUAL(2, files.size());
     CHECK(find_note_in_files("note1"));
     CHECK(find_note_in_files("note3"));
     CHECK(!find_note_in_files("note2"));
