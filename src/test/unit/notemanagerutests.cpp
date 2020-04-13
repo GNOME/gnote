@@ -46,6 +46,16 @@ SUITE(NoteManager)
   };
 
 
+  TEST_FIXTURE(Fixture, create_no_args)
+  {
+    auto note1 = manager.create();
+    auto note2 = manager.create();
+
+    CHECK_EQUAL("New Note 1", note1->get_title());
+    CHECK_EQUAL("New Note 2", note2->get_title());
+    CHECK_EQUAL(2, manager.get_notes().size());
+  }
+
   TEST_FIXTURE(Fixture, create_and_find)
   {
     manager.create();

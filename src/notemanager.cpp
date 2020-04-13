@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -272,6 +272,17 @@ namespace gnote {
     return Note::load(file_name, *this, m_gnote);
   }
 
+
+  NoteBase::Ptr NoteManager::create_note(Glib::ustring title, Glib::ustring body)
+  {
+    bool select_body = body.empty();
+    auto new_note = NoteManagerBase::create_note(std::move(title), std::move(body));
+    if(select_body) {
+      // Select the inital text so typing will overwrite the body text
+      std::static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
+    }
+    return new_note;
+  }
 
   // Create a new note with the specified title from the default
   // template note. Optionally the body can be overridden.

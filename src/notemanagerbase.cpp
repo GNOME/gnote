@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -237,7 +237,7 @@ NoteBase::Ptr NoteManagerBase::create_note_from_template(const Glib::ustring & t
 
 NoteBase::Ptr NoteManagerBase::create()
 {
-  return create("");
+  return create_note("", "");
 }
 
 NoteBase::Ptr NoteManagerBase::create(const Glib::ustring & title)
@@ -293,6 +293,22 @@ Glib::ustring NoteManagerBase::get_unique_name(const Glib::ustring & basename) c
   }
 
   return title;
+}
+
+NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring body)
+{
+  if(title.empty()) {
+    title = get_unique_name(_("New Note"));
+  }
+
+  Glib::ustring content;
+  if(body.empty()) {
+    // Use a simple "Describe..." body and highlight
+    // it so it can be easily overwritten
+    content = get_note_template_content(title);
+  }
+
+  return create_new_note(title, content, "");
 }
 
 // Create a new note with the specified title from the default
