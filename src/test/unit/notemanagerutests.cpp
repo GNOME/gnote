@@ -46,6 +46,18 @@ SUITE(NoteManager)
   };
 
 
+  TEST(split_title_from_content)
+  {
+    Glib::ustring body;
+    auto title = gnote::NoteManagerBase::split_title_from_content("test", body);
+    CHECK_EQUAL("test", title);
+    CHECK(body.empty());
+
+    title = gnote::NoteManagerBase::split_title_from_content("test\ncontent", body);
+    CHECK_EQUAL("test", title);
+    CHECK_EQUAL("content", body);
+  }
+
   TEST_FIXTURE(Fixture, create_no_args)
   {
     auto note1 = manager.create();
