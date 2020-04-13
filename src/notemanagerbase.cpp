@@ -242,7 +242,9 @@ NoteBase::Ptr NoteManagerBase::create()
 
 NoteBase::Ptr NoteManagerBase::create(const Glib::ustring & title)
 {
-  return create_new_note(title, "");
+  Glib::ustring body;
+  auto note_title = split_title_from_content(title, body);
+  return create_note(note_title, body);
 }
 
 NoteBase::Ptr NoteManagerBase::create(const Glib::ustring & title, const Glib::ustring & xml_content)

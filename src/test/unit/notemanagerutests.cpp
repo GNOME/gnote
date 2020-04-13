@@ -56,14 +56,20 @@ SUITE(NoteManager)
     CHECK_EQUAL(2, manager.get_notes().size());
   }
 
+  TEST_FIXTURE(Fixture, create_with_title)
+  {
+    auto note = manager.create("test");
+    CHECK_EQUAL("test", note->get_title());
+    CHECK_EQUAL(1, manager.get_notes().size());
+  }
+
   TEST_FIXTURE(Fixture, create_and_find)
   {
     manager.create();
     manager.create();
     gnote::NoteBase::Ptr test_note = manager.create("test note");
     CHECK(test_note != NULL);
-    // 3 notes + template note
-    CHECK_EQUAL(4, manager.get_notes().size());
+    CHECK_EQUAL(3, manager.get_notes().size());
     CHECK(manager.find("test note") == test_note);
     CHECK(manager.find_by_uri(test_note->uri()) == test_note);
   }
