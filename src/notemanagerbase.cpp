@@ -305,6 +305,11 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring bo
 
   Glib::ustring content;
   if(body.empty()) {
+    auto template_note = find_template_note();
+    if(template_note) {
+      return create_note_from_template(title, template_note, guid);
+    }
+
     // Use a simple "Describe..." body and highlight
     // it so it can be easily overwritten
     content = get_note_template_content(title);

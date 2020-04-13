@@ -43,6 +43,13 @@ SUITE(NoteManager)
       char *notes_dir = g_mkdtemp(notes_dir_tmpl);
       return notes_dir;
     }
+
+    gnote::NoteBase::Ptr create_template_note()
+    {
+      auto templ = manager.get_or_create_template_note();
+      templ->set_xml_content(Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\ntest template content</note-content>", templ->get_title()));
+      return templ;
+    }
   };
 
 
@@ -84,6 +91,14 @@ SUITE(NoteManager)
     CHECK_EQUAL(2, manager.get_notes().size());
   }
 
+  TEST_FIXTURE(Fixture, create_no_args_from_template)
+  {
+    auto templ = create_template_note();
+    auto note = manager.create();
+    CHECK_EQUAL("New Note 1", note->get_title());
+    CHECK(note->data().text().find("test template content") != Glib::ustring::npos);
+  }
+
   TEST_FIXTURE(Fixture, create_with_title)
   {
     auto note = manager.create("test");
@@ -92,12 +107,30 @@ SUITE(NoteManager)
     CHECK_EQUAL(1, manager.get_notes().size());
   }
 
+  TEST_FIXTURE(Fixture, create_with_title_from_template)
+  {
+    auto templ = create_template_note();
+    auto note = manager.create("test");
+    CHECK_EQUAL("test", note->get_title());
+    CHECK(note->data().text().find("test template content") != Glib::ustring::npos);
+    CHECK_EQUAL(2, manager.get_notes().size());
+  }
+
   TEST_FIXTURE(Fixture, create_with_text_content)
   {
     auto note = manager.create("test\ntest content");
     CHECK_EQUAL("test", note->get_title());
     CHECK(note->data().text().find("test content") != Glib::ustring::npos);
     CHECK_EQUAL(1, manager.get_notes().size());
+  }
+
+  TEST_FIXTURE(Fixture, create_with_text_content_having_template)
+  {
+    auto templ = create_template_note();
+    auto note = manager.create("test\ntest content");
+    CHECK_EQUAL("test", note->get_title());
+    CHECK(note->data().text().find("test content") != Glib::ustring::npos);
+    CHECK_EQUAL(2, manager.get_notes().size());
   }
 
   TEST_FIXTURE(Fixture, create_and_find)
@@ -131,6 +164,18 @@ SUITE(NoteManager)
     CHECK_EQUAL(note, other);
   }
 
+  TEST_FIXTURE(Fixture, create_with_guid_from_template)
+  {
+    auto templ = create_template_note();
+    auto note = manager.create_with_guid("test", "93b3f3ef-9eea-4cdc-9f78-76af1629987a");
+    CHECK_EQUAL("test", note->get_title());
+    CHECK(note->data().text().find("test template content") != Glib::ustring::npos);
+    CHECK_EQUAL("93b3f3ef-9eea-4cdc-9f78-76af1629987a", note->id());
+    CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note->uri());
+    CHECK_EQUAL(2, manager.get_notes().size());
+    auto other = manager.find_by_uri("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a");
+    CHECK_EQUAL(note, other);
+  }
 
   TEST_FIXTURE(Fixture, create_with_guid_multiline_title)
   {
