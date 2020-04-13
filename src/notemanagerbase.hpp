@@ -45,6 +45,7 @@ public:
 
   static Glib::ustring sanitize_xml_content(const Glib::ustring & xml_content);
   static Glib::ustring get_note_template_content(const Glib::ustring & title);
+  static Glib::ustring get_note_content(const Glib::ustring & title, const Glib::ustring & body);
   static Glib::ustring split_title_from_content(Glib::ustring title, Glib::ustring & body);
 
   NoteManagerBase(IGnote & g);

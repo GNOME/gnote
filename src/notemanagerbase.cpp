@@ -375,12 +375,17 @@ NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, cons
 
 Glib::ustring NoteManagerBase::get_note_template_content(const Glib::ustring & title)
 {
+  return get_note_content(title, _("Describe your new note here."));
+}
+
+Glib::ustring NoteManagerBase::get_note_content(const Glib::ustring & title, const Glib::ustring & body)
+{
   return Glib::ustring::compose("<note-content>"
                                   "<note-title>%1</note-title>\n\n"
                                   "%2"
                                 "</note-content>",
              utils::XmlEncoder::encode(title),
-             _("Describe your new note here."));
+             utils::XmlEncoder::encode(body));
 }
 
 NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
