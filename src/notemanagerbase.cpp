@@ -309,6 +309,9 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring bo
     // it so it can be easily overwritten
     content = get_note_template_content(title);
   }
+  else {
+    content = get_note_content(title, body);
+  }
 
   return create_new_note(title, content, "");
 }

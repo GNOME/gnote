@@ -85,6 +85,14 @@ SUITE(NoteManager)
     CHECK_EQUAL(1, manager.get_notes().size());
   }
 
+  TEST_FIXTURE(Fixture, create_with_text_content)
+  {
+    auto note = manager.create("test\ntest content");
+    CHECK_EQUAL("test", note->get_title());
+    CHECK(note->data().text().find("test content") != Glib::ustring::npos);
+    CHECK_EQUAL(1, manager.get_notes().size());
+  }
+
   TEST_FIXTURE(Fixture, create_and_find)
   {
     manager.create();
