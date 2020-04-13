@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2019 Aurimas Cernius
+ * Copyright (C) 2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,15 +26,28 @@
 
 SUITE(NoteManager)
 {
-  TEST(create_and_find)
+  struct Fixture
   {
-    char notes_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
-    char *notes_dir = g_mkdtemp(notes_dir_tmpl);
-    CHECK(notes_dir != NULL);
-
     test::Gnote g;
-    test::NoteManager manager(notes_dir, g);
-    g.notebook_manager(&manager.notebook_manager());
+    test::NoteManager manager;
+
+    Fixture()
+      : manager(make_notes_dir(), g)
+    {
+      g.notebook_manager(&manager.notebook_manager());
+    }
+
+    Glib::ustring make_notes_dir()
+    {
+      char notes_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
+      char *notes_dir = g_mkdtemp(notes_dir_tmpl);
+      return notes_dir;
+    }
+  };
+
+
+  TEST_FIXTURE(Fixture, create_and_find)
+  {
     manager.create();
     manager.create();
     gnote::NoteBase::Ptr test_note = manager.create("test note");
