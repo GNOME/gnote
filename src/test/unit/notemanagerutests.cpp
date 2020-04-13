@@ -52,7 +52,9 @@ SUITE(NoteManager)
     auto note2 = manager.create();
 
     CHECK_EQUAL("New Note 1", note1->get_title());
+    CHECK(note1->data().text().find("Describe your new note here.") != Glib::ustring::npos);
     CHECK_EQUAL("New Note 2", note2->get_title());
+    CHECK(note2->data().text().find("Describe your new note here.") != Glib::ustring::npos);
     CHECK_EQUAL(2, manager.get_notes().size());
   }
 
@@ -60,6 +62,7 @@ SUITE(NoteManager)
   {
     auto note = manager.create("test");
     CHECK_EQUAL("test", note->get_title());
+    CHECK(note->data().text().find("Describe your new note here.") != Glib::ustring::npos);
     CHECK_EQUAL(1, manager.get_notes().size());
   }
 
