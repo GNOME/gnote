@@ -23,6 +23,7 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
+#include <glibmm/thread.h>
 
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
@@ -138,7 +139,10 @@ bool FileSystemSyncServer::updates_available_since(int revision)
 
 std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since(int revision)
 {
+  Glib::Mutex note_updates_lock;
+  Glib::Cond note_updates_done;
   std::map<Glib::ustring, NoteUpdate> noteUpdates;
+  unsigned failures = 0;
 
   Glib::ustring tempPath = Glib::build_filename(m_cache_path, "sync_temp");
   if(!sharp::directory_exists(tempPath)) {
@@ -162,26 +166,66 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
     Glib::ustring xpath = Glib::ustring::compose("//note[@rev > %1]", revision);
     sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, xpath.c_str());
     DBG_OUT("get_note_updates_since xpath returned %d nodes", int(noteNodes.size()));
-    for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
-      Glib::ustring note_id = sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@id"));
-      int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(*iter, "@rev")));
-      if(noteUpdates.find(note_id) == noteUpdates.end()) {
-        // Copy the file from the server to the temp directory
-        auto revDir = get_revision_dir_path(rev);
-        auto serverNotePath = revDir->get_child(note_id + ".note");
-        Glib::ustring noteTempPath = Glib::build_filename(tempPath, note_id + ".note");
-        serverNotePath->copy(Gio::File::create_for_path(noteTempPath));
+    if(noteNodes.size() > 0) {
+      auto cancel_op = Gio::Cancellable::create();
+      for(auto & node : noteNodes) {
+        Glib::ustring note_id = sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@id"));
+        int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@rev")));
+        if(noteUpdates.find(note_id) == noteUpdates.end()) {
+          // Copy the file from the server to the temp directory
+          auto revDir = get_revision_dir_path(rev);
+          auto serverNotePath = revDir->get_child(note_id + ".note");
+          Glib::ustring noteTempPath = Glib::build_filename(tempPath, note_id + ".note");
+          auto dest = Gio::File::create_for_path(noteTempPath);
+          serverNotePath->copy_async(dest,
+            [serverNotePath, &note_updates_lock, &note_updates_done, &noteUpdates, &failures, noteTempPath = std::move(noteTempPath), note_id = std::move(note_id), rev, total = noteNodes.size()]
+            (Glib::RefPtr<Gio::AsyncResult> & result) {
+              try {
+                if(serverNotePath->copy_finish(result)) {
+                  // Get the title, contents, etc.
+                  Glib::ustring noteTitle;
+                  Glib::ustring noteXml = sharp::file_read_all_text(noteTempPath);
+                  NoteUpdate update(noteXml, noteTitle, note_id, rev);
+                  note_updates_lock.lock();
+                  noteUpdates.insert(std::make_pair(note_id, update));
+                  if(noteUpdates.size() + failures >= total) {
+                    note_updates_done.signal();
+                  }
+                  note_updates_lock.unlock();
+                  return; // all done, error handling below
+                }
+              }
+              catch(Glib::Exception & e) {
+                ERR_OUT(_("Exception when finishing note copy: %s"), e.what().c_str());
+              }
+              catch(...) {
+                ERR_OUT(_("Exception when finishing note copy"));
+              }
 
-        // Get the title, contents, etc.
-        Glib::ustring noteTitle;
-        Glib::ustring noteXml = sharp::file_read_all_text(noteTempPath);
-        NoteUpdate update(noteXml, noteTitle, note_id, rev);
-        noteUpdates.insert(std::make_pair(note_id, update));
+              note_updates_lock.lock();
+              ++failures;
+              note_updates_done.signal();
+              note_updates_lock.unlock();
+            }, cancel_op);
+        }
       }
+
+      note_updates_lock.lock();
+      while(noteUpdates.size() + failures < noteNodes.size()) {
+        if(failures > 0 && !cancel_op->is_cancelled()) {
+          cancel_op->cancel();
+        }
+        note_updates_done.wait(note_updates_lock);
+      }
+      note_updates_lock.unlock();
     }
+
     xmlFreeDoc(xml_doc);
   }
 
+  if(failures > 0) {
+    throw new sharp::Exception(_("Failed to download note updates"));
+  }
   DBG_OUT("get_note_updates_since (%d) returning: %d", revision, int(noteUpdates.size()));
   return noteUpdates;
 }
