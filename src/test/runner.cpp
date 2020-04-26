@@ -19,6 +19,8 @@
 
 
 #include <glibmm/init.h>
+#include <glibmm/main.h>
+#include <glibmm/thread.h>
 #include <giomm/init.h>
 
 #include <UnitTest++/UnitTest++.h>
@@ -30,6 +32,14 @@ int main(int /*argc*/, char ** /*argv*/)
   Glib::init();
   Gio::init();
 
-  return UnitTest::RunAllTests();
+  auto main_loop = Glib::MainLoop::create();
+  int ret = 0;
+  auto thread = Glib::Thread::create([&main_loop, &ret]() {
+    ret = UnitTest::RunAllTests();
+    main_loop->quit();
+  });
+  main_loop->run();
+  thread->join();
+  return ret;
 }
 
