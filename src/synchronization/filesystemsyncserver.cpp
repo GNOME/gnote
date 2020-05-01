@@ -92,16 +92,47 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
     sharp::directory_create(m_new_revision_path);
   }
   DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
+  m_updated_notes.reserve(notes.size());
+  Glib::Mutex notes_lock;
+  Glib::Cond all_uploaded;
+  unsigned failures = 0;
+  unsigned total = notes.size();
   for(auto & iter : notes) {
-    try {
-      auto server_note = m_new_revision_path->get_child(sharp::file_filename(iter->file_path()));
-      auto local_note = Gio::File::create_for_path(iter->file_path());
-      local_note->copy(server_note);
-      m_updated_notes.push_back(sharp::file_basename(iter->file_path()));
-    }
-    catch(...) {
-      DBG_OUT("Sync: Error uploading note \"%s\"", iter->get_title().c_str());
-    }
+    auto file_path = iter->file_path();
+    auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
+    auto local_note = Gio::File::create_for_path(file_path);
+    local_note->copy_async(server_note, [this, &notes_lock, &all_uploaded, &total, &failures, local_note, file_path = std::move(file_path)]
+                                        (Glib::RefPtr<Gio::AsyncResult> & result) {
+      try {
+        if(local_note->copy_finish(result)) {
+          auto path = sharp::file_basename(file_path);
+          notes_lock.lock();
+          m_updated_notes.emplace_back(std::move(path));
+          if(--total == 0) {
+            all_uploaded.signal();
+          }
+          notes_lock.unlock();
+        }
+      }
+      catch (Glib::Exception & e) {
+        ERR_OUT(_("Failed to upload note: %s"), e.what().c_str());
+        notes_lock.lock();
+        ++failures;
+        if(--total == 0) {
+          all_uploaded.signal();
+        }
+        notes_lock.unlock();
+      }
+    });
+  }
+
+  notes_lock.lock();
+  while(total > 0) {
+    all_uploaded.wait(notes_lock);
+  }
+  notes_lock.unlock();
+  if(failures > 0) {
+    throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to upload %1 note", "Failed to upload %1 notes", failures), failures));
   }
 }
 
