@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-04-26 12:41+0000\n"
-"PO-Revision-Date: 2020-04-27 09:19+0300\n"
+"POT-Creation-Date: 2020-05-01 15:51+0000\n"
+"PO-Revision-Date: 2020-05-01 19:03+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2422,24 +2422,41 @@ msgstr "Помилка %1"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Порожня таблиця стилів. Будь ласка, повідомте про цю ваду."
 
-#: ../src/synchronization/filesystemsyncserver.cpp:199
+#: ../src/synchronization/filesystemsyncserver.cpp:118
 #, c-format
-#| msgid "Exception while saving note: %s"
+#| msgid "Failed to update note format: %s"
+msgid "Failed to upload note: %s"
+msgstr "Не вдалося вивантажити нотатку: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:135
+#| msgid "Failed to download note updates"
+msgid "Failed to upload %1 note"
+msgid_plural "Failed to upload %1 notes"
+msgstr[0] "Не вдалося вивантажити %1 нотатку"
+msgstr[1] "Не вдалося вивантажити %1 нотатки"
+msgstr[2] "Не вдалося вивантажити %1 нотаток"
+msgstr[3] "Не вдалося вивантажити нотатку"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:230
+#, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Виключення під час завершення копіювання нотатки: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:202
-#| msgid "Exception while saving note: %s"
+#: ../src/synchronization/filesystemsyncserver.cpp:233
 msgid "Exception when finishing note copy"
 msgstr "Виключення під час завершення копіювання нотатки"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:227
-#| msgid "Failed to update note format: %s"
-msgid "Failed to download note updates"
-msgstr "Не вдалося отримати оновлення нотаток"
+#: ../src/synchronization/filesystemsyncserver.cpp:258
+#| msgid "Failed to download note updates"
+msgid "Failed to download %1 note update"
+msgid_plural "Failed to download %1 note updates"
+msgstr[0] "Не вдалося отримати оновлення %1 нотатки"
+msgstr[1] "Не вдалося отримати оновлення %1 нотаток"
+msgstr[2] "Не вдалося отримати оновлення %1 нотаток"
+msgstr[3] "Не вдалося отримати оновлення нотатки"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:390
-#: ../src/synchronization/filesystemsyncserver.cpp:394
+#: ../src/synchronization/filesystemsyncserver.cpp:421
+#: ../src/synchronization/filesystemsyncserver.cpp:425
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2449,12 +2466,12 @@ msgstr ""
 "даних на сервері все гаразд, але можуть лишитися якісь зайві файли. Ось "
 "повідомлення про помилку: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:599
+#: ../src/synchronization/filesystemsyncserver.cpp:630
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Помилка під час оновлення блокування: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:638
+#: ../src/synchronization/filesystemsyncserver.cpp:669
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr ""
