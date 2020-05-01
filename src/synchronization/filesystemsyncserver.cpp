@@ -224,7 +224,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
   }
 
   if(failures > 0) {
-    throw new sharp::Exception(_("Failed to download note updates"));
+    throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to download %1 note update", "Failed to download %1 note updates", failures), failures));
   }
   DBG_OUT("get_note_updates_since (%d) returning: %d", revision, int(noteUpdates.size()));
   return noteUpdates;
