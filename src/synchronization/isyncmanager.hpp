@@ -96,7 +96,9 @@ class GnoteSyncException
   : public std::runtime_error
 {
 public:
-  GnoteSyncException(const char * what_arg) : std::runtime_error(what_arg){}
+  GnoteSyncException(const char *what_arg) : std::runtime_error(what_arg) {}
+  GnoteSyncException(const Glib::ustring & what_arg) : std::runtime_error(what_arg.c_str()) {}
+  GnoteSyncException(Glib::ustring && what_arg) : std::runtime_error(what_arg.c_str()) {}
 };
 
 }
