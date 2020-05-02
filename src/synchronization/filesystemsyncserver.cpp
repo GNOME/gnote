@@ -95,6 +95,7 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
   m_updated_notes.reserve(notes.size());
   Glib::Mutex notes_lock;
   Glib::Cond all_uploaded;
+  auto cancel_op = Gio::Cancellable::create();
   unsigned failures = 0;
   unsigned total = notes.size();
   for(auto & iter : notes) {
@@ -121,16 +122,18 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
 
       notes_lock.lock();
       ++failures;
-      if(--total == 0) {
-        all_uploaded.signal();
-      }
+      --total;
+      all_uploaded.signal();
       notes_lock.unlock();
-    });
+    }, cancel_op);
   }
 
   notes_lock.lock();
   while(total > 0) {
     all_uploaded.wait(notes_lock);
+    if(failures > 0) {
+      cancel_op->cancel();
+    }
   }
   notes_lock.unlock();
   if(failures > 0) {
