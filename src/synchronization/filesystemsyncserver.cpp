@@ -112,17 +112,19 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
             all_uploaded.signal();
           }
           notes_lock.unlock();
+          return;
         }
       }
       catch (Glib::Exception & e) {
         ERR_OUT(_("Failed to upload note: %s"), e.what().c_str());
-        notes_lock.lock();
-        ++failures;
-        if(--total == 0) {
-          all_uploaded.signal();
-        }
-        notes_lock.unlock();
       }
+
+      notes_lock.lock();
+      ++failures;
+      if(--total == 0) {
+        all_uploaded.signal();
+      }
+      notes_lock.unlock();
     });
   }
 
