@@ -50,8 +50,9 @@ namespace gnote {
   void NoteManager::init(const Glib::ustring & directory)
   {
     Glib::ustring backup = directory + "/Backup";
-    NoteManagerBase::init(directory, backup);
+    // Before base init, after it will be false already
     bool is_first_run = first_run();
+    NoteManagerBase::init(directory, backup);
 
     Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
     // Watch the START_NOTE_URI setting and update it so that the
