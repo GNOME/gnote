@@ -350,6 +350,7 @@ namespace gnote {
     // e.g on forced quit when we call save for every note.
     if (!m_save_needed)
       return;
+    m_save_needed = false;
 
     DBG_OUT("Saving '%s'...", m_data.data().title().c_str());
 
@@ -446,7 +447,6 @@ namespace gnote {
   {
     try {
       save();
-      m_save_needed = false;
     }
     catch(const sharp::Exception &e) 
     {
