@@ -76,7 +76,8 @@ namespace gnote {
     if(m_sync_manager) {
       delete m_sync_manager;
     }
-    delete m_manager;
+    // why this crashes inside GDataTime sometimes when deleted?
+    //delete m_manager;
   }
 
 
