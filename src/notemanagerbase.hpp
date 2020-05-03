@@ -102,8 +102,7 @@ public:
   NoteBase::RenamedHandler signal_note_renamed;
   NoteBase::SavedHandler signal_note_saved;
 protected:
-  void init(const Glib::ustring & directory, const Glib::ustring & backup);
-  bool first_run() const;
+  bool init(const Glib::ustring & directory, const Glib::ustring & backup);
   virtual void post_load();
   virtual void migrate_notes(const Glib::ustring & old_note_dir);
   /** add the note to the manager and setup signals */
@@ -127,6 +126,7 @@ protected:
   Glib::ustring m_backup_dir;
   Glib::ustring m_default_note_template_title;
 private:
+  bool first_run() const;
   void create_notes_dir() const;
   bool create_directory(const Glib::ustring & directory) const;
   TrieController *create_trie_controller();
