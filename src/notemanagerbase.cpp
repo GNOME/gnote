@@ -101,7 +101,7 @@ NoteManagerBase::~NoteManagerBase()
   }
 }
 
-void NoteManagerBase::init(const Glib::ustring & directory, const Glib::ustring & backup_directory)
+bool NoteManagerBase::init(const Glib::ustring & directory, const Glib::ustring & backup_directory)
 {
   m_notes_dir = directory;
   m_default_note_template_title = _("New Note Template");
@@ -123,6 +123,7 @@ void NoteManagerBase::init(const Glib::ustring & directory, const Glib::ustring 
   }
 
   m_trie_controller = create_trie_controller();
+  return is_first_run;
 }
 
 bool NoteManagerBase::first_run() const
