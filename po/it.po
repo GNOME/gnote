@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-03-29 13:58+0000\n"
-"PO-Revision-Date: 2020-05-05 10:53+0200\n"
+"POT-Creation-Date: 2020-05-01 15:51+0000\n"
+"PO-Revision-Date: 2020-05-05 11:04+0200\n"
 "Last-Translator: Gianvito Cavasoli <gianvito@gmx.it>\n"
 "Language-Team: Italian <gnome-it-list@gnome.org>\n"
 "Language: it\n"
@@ -1663,7 +1663,7 @@ msgstr "Nuovo _blocco note..."
 msgid "%1 Notebook Template"
 msgstr "Modello blocco note %1"
 
-#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:307
+#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:303
 msgid "New Note"
 msgstr "Nuova nota"
 
@@ -1770,7 +1770,7 @@ msgstr "Impostazione del contenuto del testo per le note chiuse non supportata"
 msgid "New Note Template"
 msgstr "Modello nuova nota"
 
-#: ../src/notemanagerbase.cpp:365
+#: ../src/notemanagerbase.cpp:357
 msgid "Describe your new note here."
 msgstr "Descrivere qui la nuova nota."
 
@@ -2462,8 +2462,39 @@ msgstr "%1 non riuscito"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Foglio di stile NULL, riportare un bug"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:363
-#: ../src/synchronization/filesystemsyncserver.cpp:367
+#: ../src/synchronization/filesystemsyncserver.cpp:118
+#, c-format
+#| msgid "Failed to update note format: %s"
+msgid "Failed to upload note: %s"
+msgstr "Caricamento nota non riuscito: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:135
+#| msgid "Failed to load plugin information!"
+msgid "Failed to upload %1 note"
+msgid_plural "Failed to upload %1 notes"
+msgstr[0] "Caricamento di %1 nota non riuscito."
+msgstr[1] "Caricamento di %1 note non riuscito."
+
+#: ../src/synchronization/filesystemsyncserver.cpp:230
+#, c-format
+#| msgid "Exception while saving note: %s"
+msgid "Exception when finishing note copy: %s"
+msgstr "Eccezione al termine della copia della nota: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:233
+#| msgid "Exception while saving note: %s"
+msgid "Exception when finishing note copy"
+msgstr "Eccezione al termine della copia della nota"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:258
+#| msgid "Failed to update note format: %s"
+msgid "Failed to download %1 note update"
+msgid_plural "Failed to download %1 note updates"
+msgstr[0] "Scaricamento aggiornamento di %1 nota non riuscito"
+msgstr[1] "Scaricamento aggiornamento di %1 note non riuscito"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:421
+#: ../src/synchronization/filesystemsyncserver.cpp:425
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2473,13 +2504,13 @@ msgstr ""
 "del server non è compromessa, ma potrebbero esserci alcuni file a zonzo. "
 "Questo è l'errore: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:572
+#: ../src/synchronization/filesystemsyncserver.cpp:630
 #, c-format
 #| msgid "Error loading %s"
 msgid "Error updating lock: %s"
 msgstr "Errore aggiornando il blocco: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:611
+#: ../src/synchronization/filesystemsyncserver.cpp:669
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr ""
@@ -2518,13 +2549,13 @@ msgid "An error occurred while connecting to the specified server"
 msgstr "Si è verificato un errore nella connessione al server specificato"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:152
+#: ../src/synchronization/gnotesyncclient.cpp:157
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Elemento last-sync-date non analizzabile in %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:162
+#: ../src/synchronization/gnotesyncclient.cpp:167
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Elemento last-sync-rev non analizzabile in %s"
@@ -2737,7 +2768,7 @@ msgstr "Sincronizza note"
 
 #: ../src/synchronization/syncmanager.cpp:78
 #: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:571
+#: ../src/synchronization/syncmanager.cpp:574
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Riportare un bug. Avvio non riuscito: %s"
@@ -2752,14 +2783,14 @@ msgstr "Errore di pulizia dell'estensione dopo la sincronizzazione: %s"
 msgid "Exception while creating SyncServer: %s"
 msgstr "Eccezione durante la creazione del server di sincronizzazione: %s"
 
-#: ../src/synchronization/syncmanager.cpp:365
+#: ../src/synchronization/syncmanager.cpp:367
 #, c-format
 #| msgid "Synchronization failed with the following exception: %s"
 msgid "Synchronization failed with the following Glib exception: %s"
 msgstr "Sincronizzazione non riuscita con la seguente eccezione di Glib: %s"
 
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:369
+#: ../src/synchronization/syncmanager.cpp:371
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sincronizzazione non riuscita con la seguente eccezione: %s"
