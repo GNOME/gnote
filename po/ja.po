@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
 "POT-Creation-Date: 2020-05-05 12:07+0000\n"
-"PO-Revision-Date: 2020-03-22 17:02+0900\n"
+"PO-Revision-Date: 2020-05-07 20:30+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -1344,6 +1344,8 @@ msgstr "TODO"
 #: ../src/addins/todo/todo.desktop.in.in.h:2
 msgid "Highlight FIXME, TODO and XXX patterns in notes."
 msgstr ""
+"メモ内の FIXME、TODO、XXX といった文字列を"
+"強調表示します"
 
 #: ../src/addins/todo/todo.desktop.in.in.h:3
 msgid "Aurimas Černius, Romain Tartière"
@@ -1484,7 +1486,7 @@ msgstr "バックグラウンドで起動する"
 
 #: ../src/gnote.cpp:520
 msgid "Run Gnote as GNOME Shell search provider."
-msgstr ""
+msgstr "Gnote を GNOME Shell の検索プロバイダーとして実行する"
 
 #: ../src/gnote.cpp:521
 msgid "Specify the path of the directory containing the notes."
@@ -2387,36 +2389,28 @@ msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL スタイルシートです、バグを報告してください"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:120
-#, fuzzy, c-format
-#| msgid "Failed to update note format: %s"
+#, c-format
 msgid "Failed to upload note: %s"
-msgstr "メモ形式の更新に失敗しました: %s"
+msgstr "メモのアップロードに失敗しました: %s"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:140
-#, fuzzy
-#| msgid "Failed to load plugin information!"
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
-msgstr[0] "プラグイン情報の読み込みに失敗しました!"
+msgstr[0] "%1 個のメモのアップロードに失敗しました"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:235
-#, fuzzy, c-format
-#| msgid "Exception while saving note: %s"
+#, c-format
 msgid "Exception when finishing note copy: %s"
-msgstr "メモの保存中に例外が発生しました: %s"
+msgstr "メモのコピー終了時に例外が発生しました: %s"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:238
-#, fuzzy
-#| msgid "Exception while saving note: %s"
 msgid "Exception when finishing note copy"
-msgstr "メモの保存中に例外が発生しました: %s"
+msgstr "メモのコピー終了時に例外が発生しました"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:263
-#, fuzzy
-#| msgid "Failed to update note format: %s"
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
-msgstr[0] "メモ形式の更新に失敗しました: %s"
+msgstr[0] "%1 個のメモの更新のダウンロードに失敗しました"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:426
 #: ../src/synchronization/filesystemsyncserver.cpp:430
@@ -2519,6 +2513,8 @@ msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
+"サーバーの \"%1\" とローカルのメモでコンフリクトが発生しています。ローカル"
+"のメモをどうしますか?"
 
 #. Expander containing TreeView
 #: ../src/synchronization/syncdialog.cpp:296
