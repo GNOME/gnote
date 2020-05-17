@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -133,9 +133,10 @@ public:
   void add_keyword(const Glib::ustring & keyword, const value_t & pattern_id)
   {
     TrieStatePtr current_state = m_root;
-
-    for (Glib::ustring::size_type i = 0; i < keyword.size(); i++) {
-      gunichar c = keyword[i];
+    Glib::ustring::size_type i;
+    Glib::ustring::const_iterator iter;
+    for(i = 0, iter = keyword.begin(); iter != keyword.end(); ++i, ++iter) {
+      gunichar c = *iter;
       if (!m_case_sensitive)
         c = Glib::Unicode::tolower(c);
 
