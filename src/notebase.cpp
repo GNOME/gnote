@@ -141,10 +141,11 @@ void NoteBase::process_rename_link_update(const Glib::ustring & old_title)
   if(!linking_notes.empty()) {
     for(NoteBase::Ptr & note : linking_notes) {
       note->rename_links(old_title, self);
-      signal_renamed(shared_from_this(), old_title);
-      queue_save(CONTENT_CHANGED);
     }
   }
+
+  signal_renamed(shared_from_this(), old_title);
+  queue_save(CONTENT_CHANGED);
 }
 
 void NoteBase::rename_without_link_update(const Glib::ustring & newTitle)

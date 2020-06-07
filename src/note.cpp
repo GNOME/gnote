@@ -561,6 +561,10 @@ namespace gnote {
         }
       }
     }
+    else {
+      signal_renamed(shared_from_this(), old_title);
+      queue_save(CONTENT_CHANGED);
+    }
   }
 
   void Note::process_rename_link_update_end(int response, Gtk::Dialog *dialog,
