@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -756,6 +756,203 @@ namespace gnote {
 
   ////////////////////////////////////////////////////////////////////////
 
+  ApplicationAddin *AppLinkWatcher::create()
+  {
+    return new AppLinkWatcher;
+  }
+
+  AppLinkWatcher::AppLinkWatcher()
+    : m_initialized(false)
+  {
+  }
+
+  void AppLinkWatcher::initialize()
+  {
+    if(m_initialized) {
+      return;
+    }
+    m_initialized = true;
+    m_on_note_deleted_cid = note_manager().signal_note_deleted.connect(
+      sigc::mem_fun(*this, &AppLinkWatcher::on_note_deleted));
+    m_on_note_added_cid = note_manager().signal_note_added.connect(
+      sigc::mem_fun(*this, &AppLinkWatcher::on_note_added));
+    m_on_note_renamed_cid = note_manager().signal_note_renamed.connect(
+      sigc::mem_fun(*this, &AppLinkWatcher::on_note_renamed));
+  }
+
+  void AppLinkWatcher::shutdown()
+  {
+    m_initialized = false;
+    m_on_note_deleted_cid.disconnect();
+    m_on_note_added_cid.disconnect();
+    m_on_note_renamed_cid.disconnect();
+  }
+
+  bool AppLinkWatcher::initialized()
+  {
+    return m_initialized;
+  }
+
+  void AppLinkWatcher::on_note_added(const NoteBase::Ptr & added)
+  {
+    for(auto & note : note_manager().get_notes()) {
+      if(added == note) {
+        continue;
+      }
+
+      if(!contains_text(note, added->get_title())) {
+        continue;
+      }
+
+      // Highlight previously unlinked text
+      auto n = std::static_pointer_cast<Note>(note);
+      auto buffer = n->get_buffer();
+      highlight_in_block(note_manager(), n, buffer->begin(), buffer->end());
+    }
+  }
+
+  void AppLinkWatcher::on_note_deleted(const NoteBase::Ptr & deleted)
+  {
+    auto link_tag = std::static_pointer_cast<Note>(deleted)->get_tag_table()->get_link_tag();
+    auto broken_link_tag = std::static_pointer_cast<Note>(deleted)->get_tag_table()->get_broken_link_tag();
+
+    for(auto & note : note_manager().get_notes()) {
+      if(deleted == note) {
+        continue;
+      }
+
+      if(!contains_text(note, deleted->get_title())) {
+        continue;
+      }
+
+      Glib::ustring old_title_lower = deleted->get_title().lowercase();
+      auto buffer = std::static_pointer_cast<Note>(note)->get_buffer();
+
+      // Turn all link:internal to link:broken for the deleted note.
+      utils::TextTagEnumerator enumerator(buffer, link_tag);
+      while(enumerator.move_next()) {
+        const utils::TextRange & range(enumerator.current());
+        if(enumerator.current().text().lowercase() != old_title_lower)
+          continue;
+
+        buffer->remove_tag(link_tag, range.start(), range.end());
+        buffer->apply_tag(broken_link_tag, range.start(), range.end());
+      }
+    }
+  }
+
+  void AppLinkWatcher::on_note_renamed(const NoteBase::Ptr & renamed, const Glib::ustring & /*old_title*/)
+  {
+    for(auto & note : note_manager().get_notes()) {
+      if(renamed == note) {
+        continue;
+      }
+
+      // Highlight previously unlinked text
+      if(contains_text(note, renamed->get_title())) {
+        auto n = std::static_pointer_cast<Note>(note);
+        auto buffer = n->get_buffer();
+        highlight_note_in_block(note_manager(), n, std::static_pointer_cast<Note>(renamed), buffer->begin(), buffer->end());
+      }
+    }
+  }
+
+  bool AppLinkWatcher::contains_text(const NoteBase::Ptr & note, const Glib::ustring & text)
+  {
+    Glib::ustring body = std::static_pointer_cast<Note>(note)->text_content().lowercase();
+    Glib::ustring match = text.lowercase();
+
+    return body.find(match) != Glib::ustring::npos;
+  }
+
+  void AppLinkWatcher::highlight_in_block(NoteManagerBase & note_manager, const Note::Ptr & note, const Gtk::TextIter & start, const Gtk::TextIter & end)
+  {
+    TrieHit<NoteBase::WeakPtr>::ListPtr hits = note_manager.find_trie_matches(start.get_slice(end));
+    for(TrieHit<NoteBase::WeakPtr>::List::const_iterator iter = hits->begin(); iter != hits->end(); ++iter) {
+      do_highlight(note_manager, note, **iter, start, end);
+    }
+  }
+
+  void AppLinkWatcher::highlight_note_in_block(NoteManagerBase & note_manager, const Note::Ptr & note, const NoteBase::Ptr & find_note, const Gtk::TextIter & start, const Gtk::TextIter & end)
+  {
+    Glib::ustring buffer_text = start.get_text(end).lowercase();
+    Glib::ustring find_title_lower = find_note->get_title().lowercase();
+    int idx = 0;
+
+    while (true) {
+      idx = buffer_text.find(find_title_lower, idx);
+      if (idx < 0)
+        break;
+
+      TrieHit<NoteBase::WeakPtr> hit(idx, idx + find_title_lower.length(), find_title_lower, find_note);
+      do_highlight(note_manager, note, hit, start, end);
+
+      idx += find_title_lower.length();
+    }
+  }
+
+  void AppLinkWatcher::do_highlight(NoteManagerBase & note_manager, const Note::Ptr & note, const TrieHit<NoteBase::WeakPtr> & hit, const Gtk::TextIter & start, const Gtk::TextIter &)
+  {
+    // Some of these checks should be replaced with fixes to
+    // TitleTrie.FindMatches, probably.
+    if(hit.value().expired()) {
+      DBG_OUT("DoHighlight: null pointer error for '%s'." , hit.key().c_str());
+      return;
+    }
+      
+    if(!note_manager.find(hit.key())) {
+      DBG_OUT("DoHighlight: '%s' links to non-existing note." , hit.key().c_str());
+      return;
+    }
+      
+    NoteBase::Ptr hit_note(hit.value());
+
+    if(hit.key().lowercase() != hit_note->get_title().lowercase()) { // == 0 if same string
+      DBG_OUT("DoHighlight: '%s' links wrongly to note '%s'." , hit.key().c_str(), hit_note->get_title().c_str());
+      return;
+    }
+      
+    if(hit_note == note)
+      return;
+
+    Gtk::TextIter title_start = start;
+    title_start.forward_chars(hit.start());
+
+    Gtk::TextIter title_end = start;
+    title_end.forward_chars(hit.end());
+
+    // Only link against whole words/phrases
+    if((!title_start.starts_word() && !title_start.starts_sentence()) ||
+        (!title_end.ends_word() && !title_end.ends_sentence())) {
+      return;
+    }
+
+    // Don't create links inside URLs
+    if(note->get_tag_table()->has_link_tag(title_start)) {
+      return;
+    }
+
+    DBG_OUT("Matching Note title '%s' at %d-%d...", hit.key().c_str(), hit.start(), hit.end());
+
+    auto link_tag = note->get_tag_table()->get_link_tag();
+    note->get_tag_table()->foreach(
+      [note, title_start, title_end](const Glib::RefPtr<Gtk::TextTag> & tag) {
+        remove_link_tag(note, tag, title_start, title_end);
+    });
+    note->get_buffer()->apply_tag(link_tag, title_start, title_end);
+  }
+
+  void AppLinkWatcher::remove_link_tag(const Note::Ptr & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end)
+  {
+    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    if(note_tag && note_tag->can_activate()) {
+      note->get_buffer()->remove_tag(note_tag, start, end);
+    }
+  }
+
+
+  ////////////////////////////////////////////////////////////////////////
+
   bool NoteLinkWatcher::s_text_event_connected = false;
 
   NoteAddin * NoteLinkWatcher::create()
@@ -766,13 +963,6 @@ namespace gnote {
 
   void NoteLinkWatcher::initialize ()
   {
-    m_on_note_deleted_cid = manager().signal_note_deleted.connect(
-      sigc::mem_fun(*this, &NoteLinkWatcher::on_note_deleted));
-    m_on_note_added_cid = manager().signal_note_added.connect(
-      sigc::mem_fun(*this, &NoteLinkWatcher::on_note_added));
-    m_on_note_renamed_cid = manager().signal_note_renamed.connect(
-      sigc::mem_fun(*this, &NoteLinkWatcher::on_note_renamed));
-
     m_link_tag = get_note()->get_tag_table()->get_link_tag();
     m_broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
   }
@@ -780,9 +970,6 @@ namespace gnote {
 
   void NoteLinkWatcher::shutdown ()
   {
-    m_on_note_deleted_cid.disconnect();
-    m_on_note_added_cid.disconnect();
-    m_on_note_renamed_cid.disconnect();
   }
 
 
@@ -809,164 +996,16 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteLinkWatcher::on_delete_range));
   }
 
-  
-  bool NoteLinkWatcher::contains_text(const Glib::ustring & text)
+
+  void NoteLinkWatcher::do_highlight(const TrieHit<NoteBase::WeakPtr> & hit, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
-    Glib::ustring body = get_note()->text_content().lowercase();
-    Glib::ustring match = text.lowercase();
-
-    return body.find(match) != Glib::ustring::npos;
+    AppLinkWatcher::do_highlight(manager(), get_note(), hit, start, end);
   }
-
-
-  void NoteLinkWatcher::on_note_added(const NoteBase::Ptr & added)
-  {
-    if (added == get_note()) {
-      return;
-    }
-
-    if (!contains_text (added->get_title())) {
-      return;
-    }
-
-    // Highlight previously unlinked text
-    highlight_in_block (get_buffer()->begin(), get_buffer()->end());
-  }
-
-  void NoteLinkWatcher::on_note_deleted(const NoteBase::Ptr & deleted)
-  {
-    if (deleted == get_note()) {
-      return;
-    }
-
-    if (!contains_text (deleted->get_title())) {
-      return;
-    }
-
-    Glib::ustring old_title_lower = deleted->get_title().lowercase();
-
-    // Turn all link:internal to link:broken for the deleted note.
-    utils::TextTagEnumerator enumerator(get_buffer(), m_link_tag);
-    while (enumerator.move_next()) {
-      const utils::TextRange & range(enumerator.current());
-      if (enumerator.current().text().lowercase() != old_title_lower)
-        continue;
-
-      get_buffer()->remove_tag (m_link_tag, range.start(), range.end());
-      get_buffer()->apply_tag (m_broken_link_tag, range.start(), range.end());
-    }
-  }
-
-
-  void NoteLinkWatcher::on_note_renamed(const NoteBase::Ptr& renamed, const Glib::ustring& /*old_title*/)
-  {
-    if (renamed == get_note()) {
-      return;
-    }
-
-    // Highlight previously unlinked text
-    if (contains_text (renamed->get_title())) {
-      highlight_note_in_block(std::static_pointer_cast<Note>(renamed), get_buffer()->begin(), get_buffer()->end());
-    }
-  }
-
-  
-  void NoteLinkWatcher::do_highlight(const TrieHit<NoteBase::WeakPtr> & hit,
-                                     const Gtk::TextIter & start,
-                                     const Gtk::TextIter &)
-  {
-    // Some of these checks should be replaced with fixes to
-    // TitleTrie.FindMatches, probably.
-    if (hit.value().expired()) {
-      DBG_OUT("DoHighlight: null pointer error for '%s'." , hit.key().c_str());
-      return;
-    }
-      
-    if (!manager().find(hit.key())) {
-      DBG_OUT ("DoHighlight: '%s' links to non-existing note." ,
-               hit.key().c_str());
-      return;
-    }
-      
-    NoteBase::Ptr hit_note(hit.value());
-
-    if (hit.key().lowercase() != hit_note->get_title().lowercase()) { // == 0 if same string
-      DBG_OUT ("DoHighlight: '%s' links wrongly to note '%s'." ,
-               hit.key().c_str(),
-               hit_note->get_title().c_str());
-      return;
-    }
-      
-    if (hit_note == get_note())
-      return;
-
-    Gtk::TextIter title_start = start;
-    title_start.forward_chars (hit.start());
-
-    Gtk::TextIter title_end = start;
-    title_end.forward_chars (hit.end());
-
-    // Only link against whole words/phrases
-    if ((!title_start.starts_word () && !title_start.starts_sentence ()) ||
-        (!title_end.ends_word() && !title_end.ends_sentence())) {
-      return;
-    }
-
-    // Don't create links inside URLs
-    if(get_note()->get_tag_table()->has_link_tag(title_start)) {
-      return;
-    }
-
-    DBG_OUT ("Matching Note title '%s' at %d-%d...",
-             hit.key().c_str(), hit.start(), hit.end());
-
-    get_note()->get_tag_table()->foreach(
-      [this, title_start, title_end](const Glib::RefPtr<Gtk::TextTag> & tag) {
-        remove_link_tag(tag, title_start, title_end);
-    });
-    get_buffer()->apply_tag (m_link_tag, title_start, title_end);
-  }
-
-  void NoteLinkWatcher::remove_link_tag(const Glib::RefPtr<Gtk::TextTag> & tag,
-                                        const Gtk::TextIter & start, const Gtk::TextIter & end)
-  {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
-    if (note_tag && note_tag->can_activate()) {
-      get_buffer()->remove_tag(note_tag, start, end);
-    }
-  }
-
-  void NoteLinkWatcher::highlight_note_in_block (const NoteBase::Ptr & find_note,
-                                                 const Gtk::TextIter & start,
-                                                 const Gtk::TextIter & end)
-  {
-    Glib::ustring buffer_text = start.get_text(end).lowercase();
-    Glib::ustring find_title_lower = find_note->get_title().lowercase();
-    int idx = 0;
-
-    while (true) {
-      idx = buffer_text.find(find_title_lower, idx);
-      if (idx < 0)
-        break;
-
-      TrieHit<NoteBase::WeakPtr> hit(idx, idx + find_title_lower.length(),
-                             find_title_lower, find_note);
-      do_highlight (hit, start, end);
-
-      idx += find_title_lower.length();
-    }
-
-  }
-
 
   void NoteLinkWatcher::highlight_in_block(const Gtk::TextIter & start,
                                            const Gtk::TextIter & end)
   {
-    TrieHit<NoteBase::WeakPtr>::ListPtr hits = manager().find_trie_matches (start.get_slice (end));
-    for(TrieHit<NoteBase::WeakPtr>::List::const_iterator iter = hits->begin();
-        iter != hits->end(); ++iter) {
-      do_highlight (**iter, start, end);
-    }
+    AppLinkWatcher::highlight_in_block(manager(), get_note(), start, end);
   }
 
   void NoteLinkWatcher::unhighlight_in_block(const Gtk::TextIter & start,

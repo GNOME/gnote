@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -68,6 +68,31 @@ namespace gnote {
       } \
       else { \
         erase_note_addin_info(typeid(klass).name()); \
+      } \
+    } \
+  } while(0)
+
+#define SETUP_APP_ADDIN(key, KEY, klass) \
+  do { \
+    if(key == KEY) { \
+      Glib::RefPtr<Gio::Settings> settings = m_preferences \
+        .get_schema_settings(Preferences::SCHEMA_GNOTE); \
+      if(settings->get_boolean(key)) { \
+        auto iter = m_app_addins.find(typeid(klass).name()); \
+        if(iter != m_app_addins.end()) { \
+          iter->second->initialize(); \
+        } \
+        else { \
+          auto addin = klass::create(); \
+          m_app_addins.insert(std::make_pair(typeid(klass).name(), addin)); \
+          addin->initialize(m_gnote, m_note_manager); \
+        } \
+      } \
+      else { \
+        auto addin = m_app_addins.find(typeid(klass).name()); \
+        if(addin != m_app_addins.end()) { \
+          addin->second->shutdown(); \
+        } \
       } \
     } \
   } while(0)
@@ -270,6 +295,7 @@ namespace {
       REGISTER_BUILTIN_NOTE_ADDIN(NoteUrlWatcher);
     }
     if(settings->get_boolean(Preferences::ENABLE_AUTO_LINKS)) {
+      REGISTER_APP_ADDIN(AppLinkWatcher);
       REGISTER_BUILTIN_NOTE_ADDIN(NoteLinkWatcher);
     }
     if(settings->get_boolean(Preferences::ENABLE_WIKIWORDS)) {
@@ -573,6 +599,7 @@ namespace {
   {
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_URL_LINKS, NoteUrlWatcher);
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_AUTO_LINKS, NoteLinkWatcher);
+    SETUP_APP_ADDIN(key, Preferences::ENABLE_AUTO_LINKS, AppLinkWatcher);
     SETUP_NOTE_ADDIN(key, Preferences::ENABLE_WIKIWORDS, NoteWikiWatcher);
   }
 

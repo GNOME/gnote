@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -39,6 +39,7 @@ extern "C" {
 #include <gtkmm/textiter.h>
 #include <gtkmm/texttag.h>
 
+#include "applicationaddin.hpp"
 #include "noteaddin.hpp"
 #include "triehit.hpp"
 #include "utils.hpp"
@@ -47,6 +48,7 @@ namespace gnote {
 
   class Preferences;
   class NoteEditor;
+  class NoteManagerBase;
   class NoteTag;
 
   class NoteRenameWatcher
@@ -177,6 +179,33 @@ namespace gnote {
   };
 
 
+  class AppLinkWatcher
+    : public ApplicationAddin
+  {
+  public:
+    static ApplicationAddin *create();
+    static void highlight_in_block(NoteManagerBase &, const Note::Ptr &, const Gtk::TextIter &, const Gtk::TextIter &);
+    static void do_highlight(NoteManagerBase &, const Note::Ptr &, const TrieHit<NoteBase::WeakPtr> &, const Gtk::TextIter & ,const Gtk::TextIter &);
+    static void remove_link_tag(const Note::Ptr & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end);
+
+    AppLinkWatcher();
+    virtual void initialize() override;
+    virtual void shutdown() override;
+    virtual bool initialized() override;
+  private:
+    static bool contains_text(const NoteBase::Ptr & note, const Glib::ustring & text);
+    static void highlight_note_in_block(NoteManagerBase &, const Note::Ptr &, const NoteBase::Ptr &, const Gtk::TextIter &, const Gtk::TextIter &);
+    void on_note_added(const NoteBase::Ptr &);
+    void on_note_deleted(const NoteBase::Ptr &);
+    void on_note_renamed(const NoteBase::Ptr&, const Glib::ustring&);
+
+    bool m_initialized;
+    sigc::connection m_on_note_deleted_cid;
+    sigc::connection m_on_note_added_cid;
+    sigc::connection m_on_note_renamed_cid;
+  };
+
+
   class NoteLinkWatcher
     : public NoteAddin
   {
@@ -187,21 +216,13 @@ namespace gnote {
     virtual void on_note_opened() override;
 
   private:
-    bool contains_text(const Glib::ustring & text);
-    void on_note_added(const NoteBase::Ptr &);
-    void on_note_deleted(const NoteBase::Ptr &);
-    void on_note_renamed(const NoteBase::Ptr&, const Glib::ustring&);
     void do_highlight(const TrieHit<NoteBase::WeakPtr> & , const Gtk::TextIter &,const Gtk::TextIter &);
-    void highlight_note_in_block (const NoteBase::Ptr &, const Gtk::TextIter &,
-                                  const Gtk::TextIter &);
     void highlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
     void unhighlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
     void on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
                       const Gtk::TextIter & start, const Gtk::TextIter &end);
-    void remove_link_tag(const Glib::RefPtr<Gtk::TextTag> & tag,
-                         const Gtk::TextIter & start, const Gtk::TextIter & end);
 
     bool open_or_create_link(const NoteEditor &, const Gtk::TextIter &,const Gtk::TextIter &);
     bool on_link_tag_activated(const NoteEditor &,
@@ -210,9 +231,6 @@ namespace gnote {
     NoteTag::Ptr m_link_tag;
     NoteTag::Ptr m_broken_link_tag;
 
-    sigc::connection m_on_note_deleted_cid;
-    sigc::connection m_on_note_added_cid;
-    sigc::connection m_on_note_renamed_cid;
     static bool s_text_event_connected;
   };
 
