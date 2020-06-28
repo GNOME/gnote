@@ -60,7 +60,7 @@ gnote::NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, c
   return std::make_shared<Note>(std::move(note_data), file_name, *this);
 }
 
-gnote::NoteBase::Ptr NoteManager::note_load(const Glib::ustring & file_name)
+gnote::NoteBase::Ptr NoteManager::note_load(const Glib::ustring & /*file_name*/)
 {
   return gnote::NoteBase::Ptr();
 }
