@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017-2019 Aurimas Cernius
+ * Copyright (C) 2014,2017-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -68,6 +68,7 @@ std::vector<gnote::Tag::Ptr> TagManager::all_tags() const
   for(auto iter = m_tags.begin(); iter != m_tags.end(); ++iter) {
     list.push_back(iter->second);
   }
+  return list;
 }
 
 }
