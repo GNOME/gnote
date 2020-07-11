@@ -669,7 +669,7 @@ namespace gnote {
   Glib::ustring Note::text_content()
   {
     if(!m_buffer) {
-      get_buffer();
+      return NoteBase::text_content();
     }
     return m_buffer->get_slice(m_buffer->begin(), m_buffer->end());
   }
