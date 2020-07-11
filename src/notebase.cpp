@@ -289,6 +289,11 @@ void NoteBase::set_xml_content(const Glib::ustring & xml)
   data_synchronizer().set_text(xml);
 }
 
+Glib::ustring NoteBase::text_content()
+{
+  return "";
+}
+
 void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, ChangeType changeType)
 {
   if(foreignNoteXml.empty())

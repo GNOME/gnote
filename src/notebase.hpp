@@ -233,6 +233,7 @@ public:
       return data_synchronizer().text();
     }
   virtual void set_xml_content(const Glib::ustring & xml);
+  virtual Glib::ustring text_content();
   void load_foreign_note_xml(const Glib::ustring & foreignNoteXml, ChangeType changeType);
   std::vector<Tag::Ptr> get_tags() const;
   const NoteData & data() const;

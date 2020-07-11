@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -120,7 +120,7 @@ public:
   virtual void set_title(const Glib::ustring & new_title, bool from_user_action) override;
   virtual void rename_without_link_update(const Glib::ustring & newTitle) override;
   virtual void set_xml_content(const Glib::ustring & xml) override;
-  Glib::ustring text_content();
+  virtual Glib::ustring text_content() override;
   void set_text_content(const Glib::ustring & text);
 
   const Glib::RefPtr<NoteTagTable> & get_tag_table();
