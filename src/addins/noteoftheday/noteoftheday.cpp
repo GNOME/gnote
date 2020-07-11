@@ -167,11 +167,7 @@ bool NoteOfTheDay::has_changed(const gnote::NoteBase::Ptr & note)
                     date_time.get_year()),
                     *static_cast<gnote::NoteManager*>(&note->manager()));
 
-  return get_content_without_title(std::static_pointer_cast<gnote::Note>(note)->text_content())
-           == get_content_without_title(
-                gnote::utils::XmlDecoder::decode(original_xml))
-         ? false
-         : true;
+  return get_content_without_title(note->text_content()) != get_content_without_title(gnote::utils::XmlDecoder::decode(original_xml));
 }
 
 }
