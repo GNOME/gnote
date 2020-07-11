@@ -210,7 +210,7 @@ namespace gnote {
     NoteBase::Ptr note = m_manager.find_by_uri(uri);
     if (!note)
       return "";
-    return std::static_pointer_cast<Note>(note)->text_content();
+    return note->text_content();
   }
 
 

@@ -859,7 +859,7 @@ namespace gnote {
 
   bool AppLinkWatcher::contains_text(const NoteBase::Ptr & note, const Glib::ustring & text)
   {
-    Glib::ustring body = std::static_pointer_cast<Note>(note)->text_content().lowercase();
+    Glib::ustring body = note->text_content().lowercase();
     Glib::ustring match = text.lowercase();
 
     return body.find(match) != Glib::ustring::npos;
