@@ -83,6 +83,35 @@ std::vector<Glib::ustring> NoteBase::parse_tags(const xmlNodePtr tagnodes)
   return tags;
 }
 
+Glib::ustring NoteBase::parse_text_content(const Glib::ustring & content)
+{
+  xmlDocPtr doc = xmlParseDoc((const xmlChar*)content.c_str());
+  if(!doc) {
+    return "";
+  }
+
+  Glib::ustring ret;
+  sharp::XmlReader reader(doc);
+  while(reader.read()) {
+    switch(reader.get_node_type()) {
+    case XML_READER_TYPE_ELEMENT:
+      if(reader.get_name() == "list-item") {
+        ret += "\n";
+      }
+      break;
+    case XML_READER_TYPE_TEXT:
+    case XML_READER_TYPE_WHITESPACE:
+    case XML_READER_TYPE_SIGNIFICANT_WHITESPACE:
+      ret += reader.get_value();
+      break;
+    default:
+      break;
+    }
+  }
+
+  return ret;
+}
+
 
 NoteBase::NoteBase(const Glib::ustring & filepath, NoteManagerBase & _manager)
   : m_manager(_manager)
@@ -291,7 +320,7 @@ void NoteBase::set_xml_content(const Glib::ustring & xml)
 
 Glib::ustring NoteBase::text_content()
 {
-  return "";
+  return parse_text_content(xml_content());
 }
 
 void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, ChangeType changeType)

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2019 Aurimas Cernius
+ * Copyright (C) 2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,6 +39,34 @@ SUITE(Note)
 
       xmlFreeDoc(doc);
     }
+  }
+
+  TEST(parse_text_content_simple)
+  {
+    Glib::ustring content = "<note-content><note-title>note_title</note-title>\n\ntext content</note-content>";
+    auto text = gnote::NoteBase::parse_text_content(std::move(content));
+    CHECK_EQUAL("note_title\n\ntext content", text);
+  }
+
+  TEST(parse_text_content_whitespace)
+  {
+    Glib::ustring content = "<note-content><note-title>note_title</note-title>\n\n   </note-content>";
+    auto text = gnote::NoteBase::parse_text_content(std::move(content));
+    CHECK_EQUAL("note_title\n\n   ", text);
+  }
+
+  TEST(parse_text_content_tags)
+  {
+    Glib::ustring content = "<note-content><note-title>note_title</note-title>\n\ntext <b>cont</b>ent</note-content>";
+    auto text = gnote::NoteBase::parse_text_content(std::move(content));
+    CHECK_EQUAL("note_title\n\ntext content", text);
+  }
+
+  TEST(parse_text_content_list)
+  {
+    Glib::ustring content = "<note-content><note-title>note_title</note-title>\n\ntext content:<list><list-item>item1</list-item><list-item>item2</list-item></list></note-content>";
+    auto text = gnote::NoteBase::parse_text_content(std::move(content));
+    CHECK_EQUAL("note_title\n\ntext content:\nitem1\nitem2", text);
   }
 }
 
