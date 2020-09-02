@@ -39,7 +39,13 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteAddin::on_note_opened_event));
     initialize();
     if(m_note->is_opened()) {
+      NoteWindow * window = get_window();
+
       on_note_opened();
+      /* Connect these two signals here, because signal_opened won't emit for
+       * opening already opened notes. */
+      window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_foregrounded));
+      window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_backgrounded));
     }
   }
 
