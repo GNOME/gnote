@@ -13,15 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-01-05 13:19+0000\n"
-"PO-Revision-Date: 2020-02-17 23:37+0100\n"
-"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"POT-Creation-Date: 2020-06-21 11:51+0000\n"
+"PO-Revision-Date: 2020-06-25 17:51+0200\n"
+"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.04.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
@@ -986,7 +986,7 @@ msgid "Folder path field is empty."
 msgstr "A mappaútvonal mező üres."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:270
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
@@ -1033,43 +1033,43 @@ msgstr "A Gnote jegyzetek szinkronizálása egy online könyvtárral"
 msgid "Failed to mount the folder"
 msgstr "Nem sikerült csatolni a mappát"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:203
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:206
 msgid "Folder _URI:"
 msgstr "Mappa _URI:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:215
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Példa: google-drive://nev.csaladnev@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:221
 msgid "Please, register your account in Online Accounts"
 msgstr "Regisztrálja a fiókját az Online fiókokban"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:234
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:237
 msgid "The URI is empty"
 msgstr "Az URI üres"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:235
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:238
 msgid "URI field is empty."
 msgstr "Az URI mező üres."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:292
 msgid "Failure writing test file"
 msgstr "A tesztfájl írása sikertelen"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:294
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:297
 msgid "Failure when checking test file contents"
 msgstr "A tesztfájl tartalmának ellenőrzése sikertelen"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:300
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
 msgid "Failure when trying to remove test file"
 msgstr "A tesztfájl eltávolításának kísérlete sikertelen"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:319
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:338
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:341
 msgid "Online Folder"
 msgstr "Online mappa"
 
@@ -1208,16 +1208,16 @@ msgstr "Nyomtatás támogatása"
 msgid "Allows you to print a note."
 msgstr "Lehetővé teszi jegyzet kinyomtatását."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:62
 msgid "Print…"
 msgstr "Nyomtatás…"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:110
 msgid "Error printing note"
 msgstr "Hiba a jegyzet nyomtatásakor"
 
 #. %1 is the page number, %2 is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:273
 msgid "Page %1 of %2"
 msgstr "%2 / %1. oldal"
 
@@ -1464,19 +1464,19 @@ msgstr "%s távoli hívása sikertelen"
 msgid "Exception thrown when creating note: %s"
 msgstr "Kivétel történt a jegyzet létrehozásakor: %s"
 
-#: ../src/gnote.cpp:188
+#: ../src/gnote.cpp:189
 msgid "Gnote is already running.  Exiting..."
 msgstr "A Gnote már fut, kilépés."
 
-#: ../src/gnote.cpp:265
+#: ../src/gnote.cpp:266
 msgid "Failed to get shortcuts window!"
 msgstr "Nem sikerült lekérni a gyorsbillentyűk ablakát!"
 
-#: ../src/gnote.cpp:279
+#: ../src/gnote.cpp:280
 msgid "and Tomboy original authors."
 msgstr "és a Tomboy eredeti szerzői."
 
-#: ../src/gnote.cpp:285
+#: ../src/gnote.cpp:286
 msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>\n"
@@ -1487,12 +1487,7 @@ msgstr ""
 "Török Gábor <gabo at linuxportal dot hu>\n"
 "Úr Balázs <balazs at urbalazs dot hu>"
 
-#: ../src/gnote.cpp:294
-#| msgid ""
-#| "Copyright © 2010-2019 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: ../src/gnote.cpp:295
 msgid ""
 "Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1504,80 +1499,80 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 a Tomboy eredeti szerzői."
 
-#: ../src/gnote.cpp:298
+#: ../src/gnote.cpp:299
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Egyszerű és könnyen használható asztali jegyzetkezelő alkalmazás."
 
-#: ../src/gnote.cpp:309
+#: ../src/gnote.cpp:310
 msgid "Homepage"
 msgstr "Honlap"
 
-#: ../src/gnote.cpp:518
+#: ../src/gnote.cpp:519
 msgid "Run Gnote in background."
 msgstr "A Gnote futtatása a háttérben."
 
-#: ../src/gnote.cpp:519
+#: ../src/gnote.cpp:520
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "A Gnote futtatása GNOME parancsértelmező keresőszolgáltatóként."
 
-#: ../src/gnote.cpp:520
+#: ../src/gnote.cpp:521
 msgid "Specify the path of the directory containing the notes."
 msgstr "Adja meg a jegyzeteket tartalmazó könyvtár útvonalát."
 
-#: ../src/gnote.cpp:520
+#: ../src/gnote.cpp:521
 msgid "path"
 msgstr "útvonal"
 
-#: ../src/gnote.cpp:521
+#: ../src/gnote.cpp:522
 msgid "Open the search all notes window with the search text."
 msgstr "A Keresés minden jegyzetben ablak megnyitása a keresőkifejezéssel."
 
-#: ../src/gnote.cpp:521 ../src/gnote.cpp:526
+#: ../src/gnote.cpp:522 ../src/gnote.cpp:527
 msgid "text"
 msgstr "szöveg"
 
-#: ../src/gnote.cpp:522
+#: ../src/gnote.cpp:523
 msgid "Print version information."
 msgstr "Verzióinformációk kiírása."
 
-#: ../src/gnote.cpp:523
+#: ../src/gnote.cpp:524
 msgid "Create and display a new note, with a optional title."
 msgstr "Új jegyzet létrehozása és megjelenítése, elhagyható címmel."
 
-#: ../src/gnote.cpp:523
+#: ../src/gnote.cpp:524
 msgid "title"
 msgstr "cím"
 
-#: ../src/gnote.cpp:524
+#: ../src/gnote.cpp:525
 msgid "Display the existing note matching title."
 msgstr "Az illeszkedő című meglévő jegyzet megjelenítése."
 
-#: ../src/gnote.cpp:524
+#: ../src/gnote.cpp:525
 msgid "title/url"
 msgstr "cím/url"
 
-#: ../src/gnote.cpp:525
+#: ../src/gnote.cpp:526
 msgid "Display the 'Start Here' note."
 msgstr "A „Kezdje itt” jegyzet megjelenítése."
 
-#: ../src/gnote.cpp:526
+#: ../src/gnote.cpp:527
 msgid "Search and highlight text in the opened note."
 msgstr "Szöveg keresése és kiemelése megnyitott jegyzetben."
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:531
 msgid "A note taking application"
 msgstr "Jegyzetkezelő alkalmazás"
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:531
 msgid "Gnote options at launch"
 msgstr "A Gnote indítási kapcsolói"
 
-#: ../src/gnote.cpp:607
+#: ../src/gnote.cpp:608
 msgid "Could not connect to remote instance."
 msgstr "Nem lehet kapcsolódni a távoli példányhoz."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:724
+#: ../src/gnote.cpp:725
 msgid "Version %1"
 msgstr "%1 verzió"
 
@@ -1643,7 +1638,7 @@ msgstr "Új jeg_yzettömb…"
 msgid "%1 Notebook Template"
 msgstr "%1 jegyzet sablon"
 
-#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:307
+#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:308
 msgid "New Note"
 msgstr "Új jegyzet"
 
@@ -1688,7 +1683,6 @@ msgid "Unfiled"
 msgstr "Nem iktatott"
 
 #: ../src/notebooks/specialnotebooks.cpp:107
-#| msgid "Important"
 msgctxt "notebook"
 msgid "Important"
 msgstr "Fontos"
@@ -1750,11 +1744,11 @@ msgstr "A szövegtartalom beállítása nem támogatott a zárolt jegyzetekhez"
 msgid "New Note Template"
 msgstr "Új jegyzet sablon"
 
-#: ../src/notemanagerbase.cpp:365
+#: ../src/notemanagerbase.cpp:366
 msgid "Describe your new note here."
 msgstr "Ide írhatja a jegyzet tartalmát."
 
-#: ../src/notemanager.cpp:130
+#: ../src/notemanager.cpp:129
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1795,7 +1789,7 @@ msgstr ""
 "automatikusan aláhúzza azt? Kattintson a hivatkozásra a jegyzet "
 "megnyitásához.</note-content>"
 
-#: ../src/notemanager.cpp:149
+#: ../src/notemanager.cpp:148
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1825,21 +1819,21 @@ msgstr ""
 "automatikusan hivatkozássá alakul.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:164 ../src/notemanager.cpp:202
+#: ../src/notemanager.cpp:163 ../src/notemanager.cpp:201
 msgid "Start Here"
 msgstr "Kezdje itt!"
 
-#: ../src/notemanager.cpp:170
+#: ../src/notemanager.cpp:169
 msgid "Using Links in Gnote"
 msgstr "Hivatkozások használata a Gnoteban"
 
-#: ../src/notemanager.cpp:175
+#: ../src/notemanager.cpp:174
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Hiba a kezdő jegyzetek létrehozásakor: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/notemanager.cpp:190
+#: ../src/notemanager.cpp:189
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Hiba a jegyzet XML feldolgozásakor, „%s” kihagyása: %s"
@@ -1914,7 +1908,6 @@ msgid "_Link to New Note"
 msgstr "_Hivatkozás egy új jegyzetre"
 
 #: ../src/notewindow.cpp:323
-#| msgid "_Important"
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Fontos"
@@ -2432,8 +2425,8 @@ msgstr "%1 meghiúsult"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stíluslap, küldjön hibajelentést"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:363
-#: ../src/synchronization/filesystemsyncserver.cpp:367
+#: ../src/synchronization/filesystemsyncserver.cpp:372
+#: ../src/synchronization/filesystemsyncserver.cpp:376
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2443,7 +2436,12 @@ msgstr ""
 "integritása hibátlan, de néhány fölösleges fájl jelen lehet. A hibaüzenet: "
 "%s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:606
+#: ../src/synchronization/filesystemsyncserver.cpp:581
+#, c-format
+msgid "Error updating lock: %s"
+msgstr "Hiba a zár frissítésekor: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:620
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Hiba a régi szinkronizációs zár („%s”) törlésekor: %s"
@@ -2481,13 +2479,13 @@ msgid "An error occurred while connecting to the specified server"
 msgstr "Hiba történt a megadott kiszolgálóhoz kapcsolódás közben"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:165
+#: ../src/synchronization/gnotesyncclient.cpp:152
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Feldolgozhatatlan last-sync-date elem itt: %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:175
+#: ../src/synchronization/gnotesyncclient.cpp:162
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Feldolgozhatatlan last-sync-rev elem itt: %s"
@@ -2698,7 +2696,7 @@ msgstr "Jegyzetek szinkronizálása"
 
 #: ../src/synchronization/syncmanager.cpp:78
 #: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:562
+#: ../src/synchronization/syncmanager.cpp:571
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Hiba jelentése. Eldobás sikertelen: %s"
@@ -2713,8 +2711,13 @@ msgstr "Hiba a bővítmény tisztításakor a szinkronizálás után: %s"
 msgid "Exception while creating SyncServer: %s"
 msgstr "Hiba a SyncServer létrehozásakor: %s"
 
-#. top-level try
 #: ../src/synchronization/syncmanager.cpp:365
+#, c-format
+msgid "Synchronization failed with the following Glib exception: %s"
+msgstr "A szinkronizálás meghiúsult a következő Glib kivétellel: %s"
+
+#. top-level try
+#: ../src/synchronization/syncmanager.cpp:369
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "A szinkronizálás meghiúsult a következő kivétellel: %s"
@@ -2753,7 +2756,7 @@ msgstr ""
 "modult. Vegye fel a „modprobe fuse” sort az /etc/init.d/boot.local vagy a "
 "„fuse” sort az /etc/modules fájlba."
 
-#: ../src/utils.cpp:140
+#: ../src/utils.cpp:129
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2761,57 +2764,57 @@ msgstr ""
 "A „Gnote jegyzetkezelő kézikönyve” nem található. Ellenőrizze, hogy a "
 "telepítés sikeresen fejeződött-e be."
 
-#: ../src/utils.cpp:148
+#: ../src/utils.cpp:137
 msgid "Help not found"
 msgstr "Nem található súgó"
 
-#: ../src/utils.cpp:180
+#: ../src/utils.cpp:169
 msgid "Cannot open location"
 msgstr "Nem lehet megnyitni a helyet"
 
+#: ../src/utils.cpp:187
+msgid "No Date"
+msgstr "Nincs dátum"
+
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:202
 msgid "Today, %1"
 msgstr "Ma, %1"
 
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:203
 msgid "Today"
 msgstr "Ma"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:209
 msgid "Yesterday, %1"
 msgstr "Tegnap, %1"
 
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:210
 msgid "Yesterday"
 msgstr "Tegnap"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:223
+#: ../src/utils.cpp:216
 msgid "Tomorrow, %1"
 msgstr "Holnap, %1"
 
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:217
 msgid "Tomorrow"
 msgstr "Holnap"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:228
+#: ../src/utils.cpp:221
 msgid "%b %d"
 msgstr "%b. %e."
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:231 ../src/utils.cpp:243
+#: ../src/utils.cpp:224 ../src/utils.cpp:233
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: ../src/utils.cpp:236
-msgid "No Date"
-msgstr "Nincs dátum"
-
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:240
+#: ../src/utils.cpp:230
 msgid "%b %d %Y"
 msgstr "%Y %b. %d"
 
