@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-05-05 12:07+0000\n"
+"POT-Creation-Date: 2020-08-13 05:30+0000\n"
 "PO-Revision-Date: 2020-05-14 16:26+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
@@ -751,42 +751,42 @@ msgstr "¡Falló al cargar la información del complemento!"
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Complemento %s incompatible: se esperaba %s y se obtuvo %s"
 
-#: ../src/addinmanager.cpp:132
+#: ../src/addinmanager.cpp:157
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Ya está disponible la información del complemento %s de la nota"
 
-#: ../src/addinmanager.cpp:140
+#: ../src/addinmanager.cpp:165
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s no implementa %s"
 
-#: ../src/addinmanager.cpp:155
+#: ../src/addinmanager.cpp:180
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Ya existe el complemento %s de la nota"
 
-#: ../src/addinmanager.cpp:173
+#: ../src/addinmanager.cpp:198
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Falta la información del complemento %s de la nota"
 
-#: ../src/addinmanager.cpp:186
+#: ../src/addinmanager.cpp:211
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Falta el complemento %s de la nota"
 
-#: ../src/addinmanager.cpp:222
+#: ../src/addinmanager.cpp:247
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Falló al buscar el módulo %s para el complemento %s"
 
-#: ../src/addinmanager.cpp:226
+#: ../src/addinmanager.cpp:251
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Falló al cargar la información del complemento para %s: %s"
 
-#: ../src/addinmanager.cpp:351
+#: ../src/addinmanager.cpp:377
 msgid "Trying to load addins when they are already loaded"
 msgstr "Intentando cargar los complementos ya cargados"
 
@@ -1601,18 +1601,18 @@ msgid "Window is not embedded"
 msgstr "La ventana no está empotrada"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:195 ../src/note.cpp:362
+#: ../src/notebase.cpp:225 ../src/note.cpp:362
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Se produjo un error al guardar la nota: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:430
+#: ../src/notebase.cpp:465
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falló al actualizar el formato de la nota: %s"
 
-#: ../src/notebase.cpp:548
+#: ../src/notebase.cpp:583
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Error del sistema de archivos: %s"
@@ -1745,7 +1745,7 @@ msgstr ""
 msgid "Error while saving: %s"
 msgstr "Error al guardar: %s"
 
-#: ../src/note.cpp:679
+#: ../src/note.cpp:683
 msgid "Setting text content for closed notes not supported"
 msgstr "No se permite la configuración del texto de una nota cerrada."
 
@@ -1782,7 +1782,7 @@ msgstr ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Comenzar "
 "aquí\n"
 "\n"
-"<bold>Bienvenido a Gnote</bold>\n"
+"<bold>Bienvenido/a a Gnote</bold>\n"
 "\n"
 "Use esta nota «Comenzar aquí» para empezar a organizar sus ideas y "
 "pensamientos.\n"
@@ -2439,12 +2439,10 @@ msgstr "Hoja de estilo nula, por favor informe del error"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:120
 #, c-format
-#| msgid "Failed to update note format: %s"
 msgid "Failed to upload note: %s"
 msgstr "Falló al actualizar la nota: %s"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:140
-#| msgid "Failed to download note updates"
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Falló al subir %1 nota"
@@ -2460,7 +2458,6 @@ msgid "Exception when finishing note copy"
 msgstr "Excepción al terminar la copia de la nota"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:263
-#| msgid "Failed to download note updates"
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Falló al descargar %1 nota"
