@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -110,7 +110,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
 
   m_path_button = new Gtk::FileChooserButton(_("Select Synchronization Folder..."),
     Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
-  m_path_button->signal_current_folder_changed().connect(requiredPrefChanged);
+  m_path_button->signal_file_set().connect(requiredPrefChanged);
   l->set_mnemonic_widget(*m_path_button);
   m_path_button->set_filename(syncPath);
 
