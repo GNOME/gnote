@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-03-14 14:24+0000\n"
-"PO-Revision-Date: 2020-03-14 22:09+0200\n"
+"POT-Creation-Date: 2020-09-04 23:34+0000\n"
+"PO-Revision-Date: 2020-09-06 21:39+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Gtranslator 3.34.0\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
 #: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:548
@@ -734,42 +734,42 @@ msgstr "Nepavyko įkelti įskiepio informacijos!"
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Nesuderinamas įskiepis %s: tikėtasi %s, gauta %s"
 
-#: ../src/addinmanager.cpp:132
+#: ../src/addinmanager.cpp:157
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Raštelio įskiepio %s informacija jau yra"
 
-#: ../src/addinmanager.cpp:140
+#: ../src/addinmanager.cpp:165
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s nerealizuoja %s"
 
-#: ../src/addinmanager.cpp:155
+#: ../src/addinmanager.cpp:180
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Raštelio įskiepis %s jau yra"
 
-#: ../src/addinmanager.cpp:173
+#: ../src/addinmanager.cpp:198
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Trūksta įskiepio %s informacijos"
 
-#: ../src/addinmanager.cpp:186
+#: ../src/addinmanager.cpp:211
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Trūksta raštelio įskiepio %s"
 
-#: ../src/addinmanager.cpp:222
+#: ../src/addinmanager.cpp:247
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Nepavyko rasti modulio %s priedui %s"
 
-#: ../src/addinmanager.cpp:226
+#: ../src/addinmanager.cpp:251
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Nepavyko įkelti priedo %s informacijos: %s"
 
-#: ../src/addinmanager.cpp:351
+#: ../src/addinmanager.cpp:377
 msgid "Trying to load addins when they are already loaded"
 msgstr "Bandoma įkelti priedus, kurie jau yra įkelti"
 
@@ -1445,26 +1445,26 @@ msgstr "Nuotolinis %s iškvietimas nepavyko"
 msgid "Exception thrown when creating note: %s"
 msgstr "Kilo išskirtinė situacija kuriant raštelį: %s"
 
-#: ../src/gnote.cpp:188
+#: ../src/gnote.cpp:189
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote jau paleista.  Išeinama..."
 
-#: ../src/gnote.cpp:265
+#: ../src/gnote.cpp:266
 msgid "Failed to get shortcuts window!"
 msgstr "Nepavyko gauti trumpinių lango!"
 
-#: ../src/gnote.cpp:279
+#: ../src/gnote.cpp:280
 msgid "and Tomboy original authors."
 msgstr "ir Tomboy kūrėjai."
 
-#: ../src/gnote.cpp:285
+#: ../src/gnote.cpp:286
 msgid "translator-credits"
 msgstr ""
 "Aurimas Černius <aurisc4@gmail.com>\n"
 "Giedrius Slavinskas <giedrius25@gmail.com>\n"
 "Žygimantas Beručka <zygis@gnome.org>"
 
-#: ../src/gnote.cpp:294
+#: ../src/gnote.cpp:295
 msgid ""
 "Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1476,80 +1476,80 @@ msgstr ""
 "Autorinės teisės priklauso © 2009 Hubert Figuiere\n"
 "Autorinės teisės priklauso © 2004-2009 Tomboy originalo autoriams."
 
-#: ../src/gnote.cpp:298
+#: ../src/gnote.cpp:299
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 
-#: ../src/gnote.cpp:309
+#: ../src/gnote.cpp:310
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: ../src/gnote.cpp:518
+#: ../src/gnote.cpp:519
 msgid "Run Gnote in background."
 msgstr "Paleisti Gnote fone."
 
-#: ../src/gnote.cpp:519
+#: ../src/gnote.cpp:520
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Vykdyti Gnote kaip GNOME Shell paieškos tiekėją."
 
-#: ../src/gnote.cpp:520
+#: ../src/gnote.cpp:521
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: ../src/gnote.cpp:520
+#: ../src/gnote.cpp:521
 msgid "path"
 msgstr "kelias"
 
-#: ../src/gnote.cpp:521
+#: ../src/gnote.cpp:522
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: ../src/gnote.cpp:521 ../src/gnote.cpp:526
+#: ../src/gnote.cpp:522 ../src/gnote.cpp:527
 msgid "text"
 msgstr "tekstas"
 
-#: ../src/gnote.cpp:522
+#: ../src/gnote.cpp:523
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: ../src/gnote.cpp:523
+#: ../src/gnote.cpp:524
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: ../src/gnote.cpp:523
+#: ../src/gnote.cpp:524
 msgid "title"
 msgstr "pavadinimas"
 
-#: ../src/gnote.cpp:524
+#: ../src/gnote.cpp:525
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: ../src/gnote.cpp:524
+#: ../src/gnote.cpp:525
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: ../src/gnote.cpp:525
+#: ../src/gnote.cpp:526
 msgid "Display the 'Start Here' note."
 msgstr "Raštelis „Pradėkite čia“"
 
-#: ../src/gnote.cpp:526
+#: ../src/gnote.cpp:527
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:531
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: ../src/gnote.cpp:530
+#: ../src/gnote.cpp:531
 msgid "Gnote options at launch"
 msgstr "Gnote parametrai paleidžiant"
 
-#: ../src/gnote.cpp:607
+#: ../src/gnote.cpp:608
 msgid "Could not connect to remote instance."
 msgstr "Nepavyko prisijungti prie nutolusios programos."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:724
+#: ../src/gnote.cpp:725
 msgid "Version %1"
 msgstr "Versija %1"
 
@@ -1568,18 +1568,18 @@ msgid "Window is not embedded"
 msgstr "Langas nėra įtaisytas"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:195 ../src/note.cpp:361
+#: ../src/notebase.cpp:225 ../src/note.cpp:362
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Kilo išskirtinė situacija įrašant raštelį: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:430
+#: ../src/notebase.cpp:465
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Nepavyko atnaujinti raštelio formato: %s"
 
-#: ../src/notebase.cpp:548
+#: ../src/notebase.cpp:583
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Failų sistemos klaida: %s"
@@ -1615,7 +1615,7 @@ msgstr "Nauja _užrašinė..."
 msgid "%1 Notebook Template"
 msgstr "%1 užrašinės šablonas"
 
-#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:307
+#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:304
 msgid "New Note"
 msgstr "Naujas raštelis"
 
@@ -1712,7 +1712,7 @@ msgstr ""
 msgid "Error while saving: %s"
 msgstr "Klaida įrašant: %s"
 
-#: ../src/note.cpp:679
+#: ../src/note.cpp:683
 msgid "Setting text content for closed notes not supported"
 msgstr "Tekstinio turinio nustatymas užvertiems rašteliams nepalaikomas"
 
@@ -1721,11 +1721,11 @@ msgstr "Tekstinio turinio nustatymas užvertiems rašteliams nepalaikomas"
 msgid "New Note Template"
 msgstr "Naujo raštelio šablonas"
 
-#: ../src/notemanagerbase.cpp:365
+#: ../src/notemanagerbase.cpp:358
 msgid "Describe your new note here."
 msgstr "Čia aprašykite naują raštelį"
 
-#: ../src/notemanager.cpp:130
+#: ../src/notemanager.cpp:129
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1765,7 +1765,7 @@ msgstr ""
 "Gnote</link:internal>, jis automatiškai pabraukiamas? Norėdami atverti "
 "raštelį, spustelėkite nuorodą.</note-content>"
 
-#: ../src/notemanager.cpp:149
+#: ../src/notemanager.cpp:148
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1795,21 +1795,21 @@ msgstr ""
 "automatiškai bus sukurta nuoroda į jį.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:164 ../src/notemanager.cpp:202
+#: ../src/notemanager.cpp:163 ../src/notemanager.cpp:201
 msgid "Start Here"
 msgstr "Pradėti čia"
 
-#: ../src/notemanager.cpp:170
+#: ../src/notemanager.cpp:169
 msgid "Using Links in Gnote"
 msgstr "Nuorodų naudojimas Gnote"
 
-#: ../src/notemanager.cpp:175
+#: ../src/notemanager.cpp:174
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Klaida kuriant pradžios raštelius: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/notemanager.cpp:190
+#: ../src/notemanager.cpp:189
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Klaida skaitant raštelio XML, praleidžiamas „%s“: %s"
@@ -2402,8 +2402,41 @@ msgstr "%1 nepavyko"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stilių lentelė, praneškite apie klaidą"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:363
-#: ../src/synchronization/filesystemsyncserver.cpp:367
+#: ../src/synchronization/filesystemsyncserver.cpp:120
+#, c-format
+#| msgid "Failed to update note format: %s"
+msgid "Failed to upload note: %s"
+msgstr "Nepavyko nusiųsti raštelio: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:140
+#| msgid "Failed to load plugin information!"
+msgid "Failed to upload %1 note"
+msgid_plural "Failed to upload %1 notes"
+msgstr[0] "Nepavyko nusiųsti %1 raštelio"
+msgstr[1] "Nepavyko nusiųsti %1 raštelių"
+msgstr[2] "Nepavyko nusiųsti %1 raštelių"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:235
+#, c-format
+#| msgid "Exception while saving note: %s"
+msgid "Exception when finishing note copy: %s"
+msgstr "Kilo išskirtinė situacija baigiant raštelio kopijavimą: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:238
+#| msgid "Exception while saving note: %s"
+msgid "Exception when finishing note copy"
+msgstr "Kilo išskirtinė situacija baigiant raštelio kopijavimą"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:263
+#| msgid "Failed to update note format: %s"
+msgid "Failed to download %1 note update"
+msgid_plural "Failed to download %1 note updates"
+msgstr[0] "Nepavyko atsisiųsti %s raštelio atnaujinimo"
+msgstr[1] "Nepavyko atsisiųsti %s raštelių atnaujinimų"
+msgstr[2] "Nepavyko atsisiųsti %s raštelių atnaujinimų"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:426
+#: ../src/synchronization/filesystemsyncserver.cpp:430
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2412,13 +2445,12 @@ msgstr ""
 "Kilo išskirtinė situacija išvalant serverį patvirtinimo metu. Su serverio "
 "vientisumu bėdų nėra, bet gali būti papildomų failų.  Štai klaida: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:572
+#: ../src/synchronization/filesystemsyncserver.cpp:635
 #, c-format
-#| msgid "Error loading %s"
 msgid "Error updating lock: %s"
 msgstr "Klaida atnaujinant užraktą: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:611
+#: ../src/synchronization/filesystemsyncserver.cpp:674
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Klaida trinant seną sinchronizacijos užraktą „%s“: %s"
@@ -2456,13 +2488,13 @@ msgid "An error occurred while connecting to the specified server"
 msgstr "Kilo klaida jungiantis prie nurodyto serverio"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:152
+#: ../src/synchronization/gnotesyncclient.cpp:157
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Neperskaitomas %s elementas last-sync-date"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:162
+#: ../src/synchronization/gnotesyncclient.cpp:167
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Neperskaitomas %s elementas last-sync-rev"
@@ -2673,7 +2705,7 @@ msgstr "Sinchronizuoti raštelius"
 
 #: ../src/synchronization/syncmanager.cpp:78
 #: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:571
+#: ../src/synchronization/syncmanager.cpp:574
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Praneškite apie klaidą. Nepavyko pakeisti tipo: %s"
@@ -2688,14 +2720,13 @@ msgstr "Klaida išvalant priedą po sinchronizacijos: %s"
 msgid "Exception while creating SyncServer: %s"
 msgstr "Kilo išskirtinė situacija kuriant SyncServer: %s"
 
-#: ../src/synchronization/syncmanager.cpp:365
+#: ../src/synchronization/syncmanager.cpp:367
 #, c-format
-#| msgid "Synchronization failed with the following exception: %s"
 msgid "Synchronization failed with the following Glib exception: %s"
 msgstr "Sinchronizacija nepavyko su šia Glib išskirtine situacija: %s"
 
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:369
+#: ../src/synchronization/syncmanager.cpp:371
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sinchronizacija nepavyko su šia išskirtine situacija: %s"
