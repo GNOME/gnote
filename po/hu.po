@@ -13,15 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-06-21 11:51+0000\n"
-"PO-Revision-Date: 2020-06-25 17:51+0200\n"
-"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
+"POT-Creation-Date: 2020-09-04 23:34+0000\n"
+"PO-Revision-Date: 2020-09-12 22:55+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Lokalize 19.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
@@ -748,42 +748,42 @@ msgstr "Nem sikerült betölteni a bővítményinformációkat!"
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Nem kompatibilis bővítmény (%s): várt: %s, kapott: %s"
 
-#: ../src/addinmanager.cpp:132
+#: ../src/addinmanager.cpp:157
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "%s jegyzetbővítmény-információ már jelen van"
 
-#: ../src/addinmanager.cpp:140
+#: ../src/addinmanager.cpp:165
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s nem valósítja meg ezt: %s"
 
-#: ../src/addinmanager.cpp:155
+#: ../src/addinmanager.cpp:180
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "%s jegyzetbővítmény már jelen van"
 
-#: ../src/addinmanager.cpp:173
+#: ../src/addinmanager.cpp:198
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "%s jegyzetbővítmény-információ hiányzik"
 
-#: ../src/addinmanager.cpp:186
+#: ../src/addinmanager.cpp:211
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "%s jegyzetbővítmény hiányzik"
 
-#: ../src/addinmanager.cpp:222
+#: ../src/addinmanager.cpp:247
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Nem található a(z) %s modul a(z) %s bővítményhez"
 
-#: ../src/addinmanager.cpp:226
+#: ../src/addinmanager.cpp:251
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Nem sikerült betölteni a bővítményinformációkat ehhez: %s: %s"
 
-#: ../src/addinmanager.cpp:351
+#: ../src/addinmanager.cpp:377
 msgid "Trying to load addins when they are already loaded"
 msgstr "Kísérlet már betöltött bővítmények betöltésére"
 
@@ -1591,18 +1591,18 @@ msgid "Window is not embedded"
 msgstr "Az ablak nincs beágyazva"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:195 ../src/note.cpp:361
+#: ../src/notebase.cpp:225 ../src/note.cpp:362
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Kivétel a jegyzet mentésekor: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:430
+#: ../src/notebase.cpp:465
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Nem sikerült frissíteni a jegyzet formátumát: %s"
 
-#: ../src/notebase.cpp:548
+#: ../src/notebase.cpp:583
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Fájlrendszerhiba: %s"
@@ -1638,7 +1638,7 @@ msgstr "Új jeg_yzettömb…"
 msgid "%1 Notebook Template"
 msgstr "%1 jegyzet sablon"
 
-#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:308
+#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:304
 msgid "New Note"
 msgstr "Új jegyzet"
 
@@ -1735,7 +1735,7 @@ msgstr ""
 msgid "Error while saving: %s"
 msgstr "Hiba a mentéskor: %s"
 
-#: ../src/note.cpp:679
+#: ../src/note.cpp:683
 msgid "Setting text content for closed notes not supported"
 msgstr "A szövegtartalom beállítása nem támogatott a zárolt jegyzetekhez"
 
@@ -1744,7 +1744,7 @@ msgstr "A szövegtartalom beállítása nem támogatott a zárolt jegyzetekhez"
 msgid "New Note Template"
 msgstr "Új jegyzet sablon"
 
-#: ../src/notemanagerbase.cpp:366
+#: ../src/notemanagerbase.cpp:358
 msgid "Describe your new note here."
 msgstr "Ide írhatja a jegyzet tartalmát."
 
@@ -2425,8 +2425,39 @@ msgstr "%1 meghiúsult"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stíluslap, küldjön hibajelentést"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:372
-#: ../src/synchronization/filesystemsyncserver.cpp:376
+#: ../src/synchronization/filesystemsyncserver.cpp:120
+#, c-format
+#| msgid "Failed to update note format: %s"
+msgid "Failed to upload note: %s"
+msgstr "Nem sikerült feltölteni a jegyzetet: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:140
+#| msgid "Failed to load plugin information!"
+msgid "Failed to upload %1 note"
+msgid_plural "Failed to upload %1 notes"
+msgstr[0] "Nem sikerült feltölteni %1 jegyzetet"
+msgstr[1] "Nem sikerült feltölteni %1 jegyzetet"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:235
+#, c-format
+#| msgid "Exception while saving note: %s"
+msgid "Exception when finishing note copy: %s"
+msgstr "Kivétel a jegyzet másolatának befejezésekor: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:238
+#| msgid "Exception while saving note: %s"
+msgid "Exception when finishing note copy"
+msgstr "Kivétel a jegyzet másolatának befejezésekor"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:263
+#| msgid "Failed to update note format: %s"
+msgid "Failed to download %1 note update"
+msgid_plural "Failed to download %1 note updates"
+msgstr[0] "Nem sikerült letölteni %1 jegyzetfrissítést"
+msgstr[1] "Nem sikerült letölteni %1 jegyzetfrissítést"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:426
+#: ../src/synchronization/filesystemsyncserver.cpp:430
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2436,12 +2467,12 @@ msgstr ""
 "integritása hibátlan, de néhány fölösleges fájl jelen lehet. A hibaüzenet: "
 "%s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:581
+#: ../src/synchronization/filesystemsyncserver.cpp:635
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Hiba a zár frissítésekor: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:620
+#: ../src/synchronization/filesystemsyncserver.cpp:674
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Hiba a régi szinkronizációs zár („%s”) törlésekor: %s"
@@ -2479,13 +2510,13 @@ msgid "An error occurred while connecting to the specified server"
 msgstr "Hiba történt a megadott kiszolgálóhoz kapcsolódás közben"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:152
+#: ../src/synchronization/gnotesyncclient.cpp:157
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Feldolgozhatatlan last-sync-date elem itt: %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:162
+#: ../src/synchronization/gnotesyncclient.cpp:167
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Feldolgozhatatlan last-sync-rev elem itt: %s"
@@ -2696,7 +2727,7 @@ msgstr "Jegyzetek szinkronizálása"
 
 #: ../src/synchronization/syncmanager.cpp:78
 #: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:571
+#: ../src/synchronization/syncmanager.cpp:574
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Hiba jelentése. Eldobás sikertelen: %s"
@@ -2711,13 +2742,13 @@ msgstr "Hiba a bővítmény tisztításakor a szinkronizálás után: %s"
 msgid "Exception while creating SyncServer: %s"
 msgstr "Hiba a SyncServer létrehozásakor: %s"
 
-#: ../src/synchronization/syncmanager.cpp:365
+#: ../src/synchronization/syncmanager.cpp:367
 #, c-format
 msgid "Synchronization failed with the following Glib exception: %s"
 msgstr "A szinkronizálás meghiúsult a következő Glib kivétellel: %s"
 
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:369
+#: ../src/synchronization/syncmanager.cpp:371
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "A szinkronizálás meghiúsult a következő kivétellel: %s"
