@@ -22,10 +22,14 @@
  <update_contact>aurisc4_at_gmail.com</update_contact>
  <content_rating type="oars-1.1"/>
  <releases>
-  <release version="3.36.0" date="2020-03-15">
+  <release version="3.38.0" date="2020-09-19">
     <ul>
-      <li>Required Glibmm version now is 2.62</li>
-      <li>Fix a number of crashes during synchronization</li>
+      <li>Fix occasional crash when closing</li>
+      <li>Note rename optimisation</li>
+      <li>Fix autolinking when renaming note with no links to it</li>
+      <li>Fix logic inversion for unfiled notes</li>
+      <li>Fix invalid Mallard markup in manual</li>
+      <li>Allow selecting local sync folder directly in drop down (fixes issue 41)</li>
     </ul>
   </release>
   <release version="3.37.0" date="2020-04-18">
@@ -38,6 +42,12 @@
         <li>Make tests cleanup created temp files</li>
       </ul>
     </description>
+  </release>
+  <release version="3.36.0" date="2020-03-15">
+    <ul>
+      <li>Required Glibmm version now is 2.62</li>
+      <li>Fix a number of crashes during synchronization</li>
+    </ul>
   </release>
   <release version="3.35.0" date="2020-02-23">
     <description>
