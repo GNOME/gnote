@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote gnome-3.38\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-09-19 18:47+0000\n"
-"PO-Revision-Date: 2019-10-05 23:43+0200\n"
+"POT-Creation-Date: 2020-10-09 16:05+0000\n"
+"PO-Revision-Date: 2020-10-09 18:06+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -2444,13 +2444,11 @@ msgid "Exception when finishing note copy"
 msgstr "Došlo k výjimce při dokončování kopírování poznámky"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:263
-#, fuzzy
-#| msgid "Failed to update note format: %s"
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
-msgstr[0] "Selhala aktualizace formátu poznámky: %s"
-msgstr[1] "Selhala aktualizace formátu poznámky: %s"
-msgstr[2] "Selhala aktualizace formátu poznámky: %s"
+msgstr[0] "Selhalo stažení %1 aktualizace poznámky"
+msgstr[1] "Selhalo stažení %1 aktualizací poznámky"
+msgstr[2] "Selhalo stažení %1 aktualizací poznámky"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:426
 #: ../src/synchronization/filesystemsyncserver.cpp:430
@@ -2463,10 +2461,9 @@ msgstr ""
 "vpořádku, ale mohou se někde povalovat nadbytečné soubory. Chyba byla: %s\n"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:635
-#, fuzzy, c-format
-#| msgid "Error loading %s"
+#, c-format
 msgid "Error updating lock: %s"
-msgstr "Chyba při načítání modulu %s"
+msgstr "Chyba při aktualizaci zámku: %s"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:674
 #, c-format
@@ -2740,10 +2737,9 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Došlo k výjimce při vytváření SyncServer: %s"
 
 #: ../src/synchronization/syncmanager.cpp:367
-#, fuzzy, c-format
-#| msgid "Synchronization failed with the following exception: %s"
+#, c-format
 msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "Synchronizace selhala s následující výjimkou: %s"
+msgstr "Synchronizace selhala s následující výjimkou Glib: %s"
 
 #. top-level try
 #: ../src/synchronization/syncmanager.cpp:371
