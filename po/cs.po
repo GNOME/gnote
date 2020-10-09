@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-06-07 12:20+0000\n"
-"PO-Revision-Date: 2019-10-05 23:43+0200\n"
+"POT-Creation-Date: 2020-10-09 16:05+0000\n"
+"PO-Revision-Date: 2020-10-09 18:06+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -743,42 +743,42 @@ msgstr "Selhalo načtení informací o zásuvném modulu!"
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Nekompatibilní zásuvný modul %s: očekáván %s, obdržen %s"
 
-#: ../src/addinmanager.cpp:132
+#: ../src/addinmanager.cpp:157
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Informace o zásuvném modulu %s pro poznámky jsou již přítomny"
 
-#: ../src/addinmanager.cpp:140
+#: ../src/addinmanager.cpp:165
 #, c-format
 msgid "%s does not implement %s"
 msgstr "Doplněk %s neimplementuje rozhraní %s"
 
-#: ../src/addinmanager.cpp:155
+#: ../src/addinmanager.cpp:180
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Zásuvný modul %s pro poznámky je již přítomen"
 
-#: ../src/addinmanager.cpp:173
+#: ../src/addinmanager.cpp:198
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Informace o zásuvném modulu %s pro poznámky schází"
 
-#: ../src/addinmanager.cpp:186
+#: ../src/addinmanager.cpp:211
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Zásuvný modul %s pro poznámky schází"
 
-#: ../src/addinmanager.cpp:222
+#: ../src/addinmanager.cpp:247
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Selhalo vyhledání modulu %s pro doplněk %s"
 
-#: ../src/addinmanager.cpp:226
+#: ../src/addinmanager.cpp:251
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Selhalo načtení informací o doplňku pro %s: %s"
 
-#: ../src/addinmanager.cpp:351
+#: ../src/addinmanager.cpp:377
 msgid "Trying to load addins when they are already loaded"
 msgstr "Zkouší se načíst doplněk, který je už načten"
 
@@ -1593,18 +1593,18 @@ msgid "Window is not embedded"
 msgstr "Okno není vloženo"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:196 ../src/note.cpp:362
+#: ../src/notebase.cpp:225 ../src/note.cpp:362
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Došlo k výjimce při ukládání poznámky: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:431
+#: ../src/notebase.cpp:465
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Selhala aktualizace formátu poznámky: %s"
 
-#: ../src/notebase.cpp:549
+#: ../src/notebase.cpp:583
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Chyba souborového systému: %s"
@@ -1906,6 +1906,7 @@ msgid "_Link to New Note"
 msgstr "_Odkaz na novou poznámku"
 
 #: ../src/notewindow.cpp:323
+msgctxt "NoteActions"
 msgid "_Important"
 msgstr "Důlež_ité"
 
@@ -2443,13 +2444,11 @@ msgid "Exception when finishing note copy"
 msgstr "Došlo k výjimce při dokončování kopírování poznámky"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:263
-#, fuzzy
-#| msgid "Failed to update note format: %s"
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
-msgstr[0] "Selhala aktualizace formátu poznámky: %s"
-msgstr[1] "Selhala aktualizace formátu poznámky: %s"
-msgstr[2] "Selhala aktualizace formátu poznámky: %s"
+msgstr[0] "Selhalo stažení %1 aktualizace poznámky"
+msgstr[1] "Selhalo stažení %1 aktualizací poznámky"
+msgstr[2] "Selhalo stažení %1 aktualizací poznámky"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:426
 #: ../src/synchronization/filesystemsyncserver.cpp:430
@@ -2462,10 +2461,9 @@ msgstr ""
 "vpořádku, ale mohou se někde povalovat nadbytečné soubory. Chyba byla: %s\n"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:635
-#, fuzzy, c-format
-#| msgid "Error loading %s"
+#, c-format
 msgid "Error updating lock: %s"
-msgstr "Chyba při načítání modulu %s"
+msgstr "Chyba při aktualizaci zámku: %s"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:674
 #, c-format
@@ -2739,10 +2737,9 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Došlo k výjimce při vytváření SyncServer: %s"
 
 #: ../src/synchronization/syncmanager.cpp:367
-#, fuzzy, c-format
-#| msgid "Synchronization failed with the following exception: %s"
+#, c-format
 msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "Synchronizace selhala s následující výjimkou: %s"
+msgstr "Synchronizace selhala s následující výjimkou Glib: %s"
 
 #. top-level try
 #: ../src/synchronization/syncmanager.cpp:371
