@@ -384,33 +384,19 @@ namespace gnote {
 
     // present already open search window, if there is one
     std::vector<Gtk::Window*> windows = Gtk::Window::list_toplevels();
-    int main_windows = 0;
     for(std::vector<Gtk::Window*>::iterator iter = windows.begin();
         iter != windows.end(); ++iter) {
       auto win = dynamic_cast<MainWindow*>(*iter);
       if(win) {
-        ++main_windows;
         if(win->is_search()) {
           return *win;
-        }
-        else if(rc == NULL) {
-          rc = win;
         }
       }
     }
 
-    // if notes are opened in new window by default, then open new window for search
-    // otherwise switch the only window to search
-    // if there is more than one window open, open new for search, since we can't decide which one to switch
-    bool new_window = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
-    if(main_windows > 1 || new_window) {
-      MainWindow & main_window = new_main_window();
-      main_window.present_search();
-      return main_window;
-    }
-
-    rc->present_search();
-    return *rc;
+    MainWindow & main_window = new_main_window();
+    main_window.present_search();
+    return main_window;
   }
 
   void Gnote::open_note_sync_window(const Glib::VariantBase&)

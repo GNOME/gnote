@@ -144,7 +144,7 @@ namespace gnote {
 
   void RemoteControl::DisplaySearchWithText(const Glib::ustring& search_text)
   {
-    MainWindow & recent_changes = m_gnote.get_main_window();
+    MainWindow & recent_changes = m_gnote.open_search_all();
     recent_changes.set_search_text(search_text);
     recent_changes.present();
     recent_changes.show_search_bar();
