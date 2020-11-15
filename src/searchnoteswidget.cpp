@@ -425,7 +425,7 @@ bool SearchNotesWidget::on_notebooks_tree_button_pressed(GdkEventButton *ev)
     }
 
     Gtk::Menu *menu = get_notebook_list_context_menu();
-    popup_context_menu_at_location(menu, ev->x, ev->y);
+    popup_context_menu_at_location(menu, reinterpret_cast<GdkEvent*>(ev));
     return true;
   }
   return false;
@@ -440,7 +440,7 @@ bool SearchNotesWidget::on_notebooks_key_pressed(GdkEventKey *ev)
   case GDK_KEY_Menu:
   {
     Gtk::Menu *menu = get_notebook_list_context_menu();
-    popup_context_menu_at_location(menu, 0, 0);
+    popup_context_menu_at_location(menu, reinterpret_cast<GdkEvent*>(ev));
     break;
   }
   default:
@@ -540,18 +540,46 @@ void SearchNotesWidget::update_results()
   }
 }
 
-void SearchNotesWidget::popup_context_menu_at_location(Gtk::Menu *menu, int x, int y)
+void SearchNotesWidget::popup_context_menu_at_location(Gtk::Menu *menu, GdkEvent *trigger_event)
 {
   menu->show_all();
+  Glib::RefPtr<Gdk::Window> rect_window;
+  Gdk::Rectangle cell_rect;
+  if(trigger_event->type != GDK_BUTTON_PRESS) {
+    Gtk::Window *parent = get_owning_window();
+    if(parent) {
+      Gtk::Widget *focus_widget = parent->get_focus();
+      if(focus_widget) {
+        int x, y;
+        focus_widget->get_window()->get_origin(x, y);
 
-  // Set up the funtion to position the context menu
-  // if we were called by the keyboard Gdk.Key.Menu.
-  if(x == 0 && y == 0) {
-    menu->popup(sigc::mem_fun(*this, &SearchNotesWidget::position_context_menu),
-                0, gtk_get_current_event_time());
+        Gtk::TreeView *tree = dynamic_cast<Gtk::TreeView*>(focus_widget);
+        if(tree) {
+          rect_window = tree->get_bin_window();
+          if(rect_window) {
+            rect_window->get_origin(x, y);
+          }
+
+          const Glib::RefPtr<Gtk::TreeSelection> selection = tree->get_selection();
+          const std::vector<Gtk::TreePath> selected_rows = selection->get_selected_rows();
+          if(selected_rows.empty()) {
+            rect_window.reset();
+          }
+          else {
+            const Gtk::TreePath & dest_path = selected_rows.front();
+            const std::vector<Gtk::TreeViewColumn*> columns = tree->get_columns();
+            tree->get_cell_area(dest_path, *columns.front(), cell_rect);
+          }
+        }
+      }
+    }
+  }
+
+  if(rect_window) {
+    menu->popup_at_rect(rect_window, cell_rect, Gdk::GRAVITY_NORTH_WEST, Gdk::GRAVITY_NORTH_WEST, trigger_event);
   }
   else {
-    menu->popup(0, gtk_get_current_event_time());
+    menu->popup_at_pointer(trigger_event);
   }
 }
 
@@ -707,48 +735,6 @@ void SearchNotesWidget::select_notes(const Note::List & notes)
   } while(++iter);
 }
 
-void SearchNotesWidget::position_context_menu(int & x, int & y, bool & push_in)
-{
-  // Set default "return" values
-  push_in = false; // not used
-  x = 0;
-  y = 0;
-
-  Gtk::Window *parent = get_owning_window();
-  if(!parent) {
-    return;
-  }
-  Gtk::Widget * const focus_widget = parent->get_focus();
-  if(!focus_widget) {
-    return;
-  }
-  focus_widget->get_window()->get_origin(x, y);
-
-  Gtk::TreeView * const tree = dynamic_cast<Gtk::TreeView*>(focus_widget);
-  if(!tree) {
-    return;
-  }
-  const Glib::RefPtr<Gdk::Window> tree_area = tree->get_bin_window();
-  if(!tree_area) {
-    return;
-  }
-  tree_area->get_origin(x, y);
-
-  const Glib::RefPtr<Gtk::TreeSelection> selection = tree->get_selection();
-  const std::vector<Gtk::TreePath> selected_rows = selection->get_selected_rows();
-  if(selected_rows.empty()) {
-    return;
-  }
-
-  const Gtk::TreePath & dest_path = selected_rows.front();
-  const std::vector<Gtk::TreeViewColumn*> columns = tree->get_columns();
-  Gdk::Rectangle cell_rect;
-  tree->get_cell_area(dest_path, *columns.front(), cell_rect);
-
-  x += cell_rect.get_x();
-  y += cell_rect.get_y();
-}
-
 Note::Ptr SearchNotesWidget::get_note(const Gtk::TreePath & p)
 {
   Gtk::TreeIter iter = m_store_sort->get_iter(p);
@@ -860,7 +846,7 @@ bool SearchNotesWidget::on_treeview_button_pressed(GdkEventButton *ev)
         }
       }
       Gtk::Menu *menu = get_note_list_context_menu();
-      popup_context_menu_at_location(menu, ev->x, ev->y);
+      popup_context_menu_at_location(menu, reinterpret_cast<GdkEvent*>(ev));
 
       // Return true so that the base handler won't
       // run, which causes the selection to change to
@@ -955,7 +941,7 @@ bool SearchNotesWidget::on_treeview_key_pressed(GdkEventKey * ev)
     // Pop up the context menu if a note is selected
     Note::List selected_notes = get_selected_notes();
     if(!selected_notes.empty()) {
-      popup_context_menu_at_location(menu, 0, 0);
+      popup_context_menu_at_location(menu, reinterpret_cast<GdkEvent*>(ev));
     }
     break;
   }

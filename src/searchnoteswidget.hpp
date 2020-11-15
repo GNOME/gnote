@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -81,14 +81,13 @@ private:
   bool on_notebooks_key_pressed(GdkEventKey *);
   notebooks::Notebook::Ptr get_selected_notebook() const;
   void update_results();
-  void popup_context_menu_at_location(Gtk::Menu *, int, int);
+  void popup_context_menu_at_location(Gtk::Menu*, GdkEvent*);
   Note::List get_selected_notes();
   bool filter_notes(const Gtk::TreeIter &);
   int compare_titles(const Gtk::TreeIter &, const Gtk::TreeIter &);
   int compare_dates(const Gtk::TreeIter &, const Gtk::TreeIter &);
   void make_recent_tree();
   void select_notes(const Note::List &);
-  void position_context_menu(int & x, int & y, bool & push_in);
   Note::Ptr get_note(const Gtk::TreePath & p);
   bool filter_by_search(const Note::Ptr &);
   bool filter_by_tag(const Note::Ptr &);
