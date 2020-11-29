@@ -631,6 +631,7 @@ namespace gnote {
     if (m_current_matches.empty() || m_current_matches.size() == 0)
       return false;
 
+    Match *previous_match = nullptr;
     for (auto & match : m_current_matches) {
       Glib::RefPtr<NoteBuffer> buffer = match.buffer;
       Gtk::TextIter selection_start, selection_end;
@@ -638,9 +639,15 @@ namespace gnote {
       Gtk::TextIter end = buffer->get_iter_at_mark(match.start_mark);
 
       if (end.get_offset() < selection_start.get_offset()) {
-        jump_to_match(match);
-        return true;
+        previous_match = &match;
       }
+      else {
+        break;
+      }
+    }
+    if(previous_match) {
+      jump_to_match(*previous_match);
+      return true;
     }
 
     return false;
