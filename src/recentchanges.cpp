@@ -250,8 +250,11 @@ namespace gnote {
 
     m_find_next_prev_box.set_margin_left(5);
 
-    Gtk::Button *find_next_button = manage(new Gtk::Button(_("Find _Next"), true));
-    find_next_button->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_FORWARD, Gtk::ICON_SIZE_MENU)));
+    Gtk::Button *find_next_button = manage(new Gtk::Button);
+    Gtk::Image *image = manage(new Gtk::Image);
+    image->property_icon_name() = "go-down-symbolic";
+    image->property_icon_size() = GTK_ICON_SIZE_MENU;
+    find_next_button->set_image(*image);
     find_next_button->set_always_show_image(true);
     find_next_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
@@ -259,8 +262,11 @@ namespace gnote {
     find_next_button->show();
     m_find_next_prev_box.attach(*find_next_button, 0, 0, 1, 1);
 
-    Gtk::Button *find_prev_button = manage(new Gtk::Button(_("Find _Previous"), true));
-    find_prev_button->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_BACK, Gtk::ICON_SIZE_MENU)));
+    Gtk::Button *find_prev_button = manage(new Gtk::Button);
+    image = manage(new Gtk::Image);
+    image->property_icon_name() = "go-up-symbolic";
+    image->property_icon_size() = GTK_ICON_SIZE_MENU;
+    find_prev_button->set_image(*image);
     find_prev_button->set_always_show_image(true);
     find_prev_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
