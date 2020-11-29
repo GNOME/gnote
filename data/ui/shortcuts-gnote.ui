@@ -28,13 +28,6 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
-                <property name="accelerator">&lt;Ctrl&gt;F</property>
-                <property name="title" translatable="yes" context="shortcut window">Display search bar</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
                 <property name="accelerator">Escape</property>
                 <property name="title" translatable="yes" context="shortcut window">Hide search bar</property>
               </object>
@@ -47,6 +40,33 @@
               </object>
             </child>
           </object>
+        </child>
+        <child>
+	  <object class="GtkShortcutsGroup">
+            <property name="visible">1</property>
+            <property name="title" translatable="yes" context="shortcut window">Search bar</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;Ctrl&gt;F</property>
+                <property name="title" translatable="yes" context="shortcut window">Display search bar</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;Ctrl&gt;G</property>
+                <property name="title" translatable="yes" context="shortcut window">Select next match</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;G</property>
+                <property name="title" translatable="yes" context="shortcut window">Select previous match</property>
+              </object>
+            </child>
+	  </object>
         </child>
         <child>
 	  <object class="GtkShortcutsGroup">
