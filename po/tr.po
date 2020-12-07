@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-09-04 23:34+0000\n"
-"PO-Revision-Date: 2020-09-06 01:22+0300\n"
+"POT-Creation-Date: 2020-11-29 19:02+0000\n"
+"PO-Revision-Date: 2020-12-07 17:35+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-POOTLE-MTIME: 1421955849.000000\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:548
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:554
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -37,10 +37,10 @@ msgid ""
 "allows you to capture your ideas, link them together using WikiWiki-style "
 "links, group together in notebooks and some extra features for everyday use."
 msgstr ""
-"Gnote, GNOME masaüstü ortamı için basit not alma uygulamasıdır. Bu "
-"uygulama fikirlerinizi yakalamanıza, WikiWiki-biçeminde bağlantılar "
-"kullanarak bunları bağlamanıza, diz üstü bilgisayarınızda gruplamanıza ve "
-"günlük kullanım için bazı fazladan özelliklere olanak sağlar."
+"Gnote, GNOME masaüstü ortamı için basit not alma uygulamasıdır. Bu uygulama "
+"fikirlerinizi yakalamanıza, WikiWiki-biçeminde bağlantılar kullanarak "
+"bunları bağlamanıza, diz üstü bilgisayarınızda gruplamanıza ve günlük "
+"kullanım için bazı fazladan özelliklere olanak sağlar."
 
 #: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
@@ -72,120 +72,135 @@ msgstr "Eylemler menüsünü aç"
 
 #: ../data/ui/shortcuts-gnote.ui.h:5
 msgctxt "shortcut window"
-msgid "Display search bar"
-msgstr "Arama çubuğunu göster"
-
-#: ../data/ui/shortcuts-gnote.ui.h:6
-msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Arama çubuğunu gizle"
 
-#: ../data/ui/shortcuts-gnote.ui.h:7
+#: ../data/ui/shortcuts-gnote.ui.h:6
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Pencereyi kapat"
 
+#: ../data/ui/shortcuts-gnote.ui.h:7
+msgctxt "shortcut window"
+msgid "Search bar"
+msgstr "Arama çubuğu"
+
 #: ../data/ui/shortcuts-gnote.ui.h:8
+msgctxt "shortcut window"
+msgid "Display search bar"
+msgstr "Arama çubuğunu göster"
+
+#: ../data/ui/shortcuts-gnote.ui.h:9
+msgctxt "shortcut window"
+msgid "Select next match"
+msgstr "Sonraki eşleşimi seç"
+
+#: ../data/ui/shortcuts-gnote.ui.h:10
+msgctxt "shortcut window"
+msgid "Select previous match"
+msgstr "Önceki eşleşimi seç"
+
+#: ../data/ui/shortcuts-gnote.ui.h:11
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Not listesi"
 
-#: ../data/ui/shortcuts-gnote.ui.h:9
+#: ../data/ui/shortcuts-gnote.ui.h:12
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Yeni not oluştur"
 
-#: ../data/ui/shortcuts-gnote.ui.h:10
+#: ../data/ui/shortcuts-gnote.ui.h:13
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Seçilen notu aç"
 
-#: ../data/ui/shortcuts-gnote.ui.h:11
+#: ../data/ui/shortcuts-gnote.ui.h:14
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Seçilen notu yeni pencerede aç"
 
-#: ../data/ui/shortcuts-gnote.ui.h:12
+#: ../data/ui/shortcuts-gnote.ui.h:15
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Seçilen notu sil"
 
-#: ../data/ui/shortcuts-gnote.ui.h:13
+#: ../data/ui/shortcuts-gnote.ui.h:16
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Not Penceresi"
 
-#: ../data/ui/shortcuts-gnote.ui.h:14
+#: ../data/ui/shortcuts-gnote.ui.h:17
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Düzenleme"
 
-#: ../data/ui/shortcuts-gnote.ui.h:15
+#: ../data/ui/shortcuts-gnote.ui.h:18
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Son düzenlemeyi geri al"
 
-#: ../data/ui/shortcuts-gnote.ui.h:16
+#: ../data/ui/shortcuts-gnote.ui.h:19
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Son düzenlemeyi yinele"
 
-#: ../data/ui/shortcuts-gnote.ui.h:17
+#: ../data/ui/shortcuts-gnote.ui.h:20
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Seçilen metinde nota bağlantı oluştur"
 
-#: ../data/ui/shortcuts-gnote.ui.h:18
+#: ../data/ui/shortcuts-gnote.ui.h:21
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Biçimlendirme"
 
-#: ../data/ui/shortcuts-gnote.ui.h:19
+#: ../data/ui/shortcuts-gnote.ui.h:22
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Kalınlığı aç/kapat"
 
-#: ../data/ui/shortcuts-gnote.ui.h:20
+#: ../data/ui/shortcuts-gnote.ui.h:23
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Eğikliği aç/kapat"
 
-#: ../data/ui/shortcuts-gnote.ui.h:21
+#: ../data/ui/shortcuts-gnote.ui.h:24
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Üstünü çizmeyi aç/kapat"
 
-#: ../data/ui/shortcuts-gnote.ui.h:22
+#: ../data/ui/shortcuts-gnote.ui.h:25
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Vurgulamayı aç/kapat"
 
-#: ../data/ui/shortcuts-gnote.ui.h:23
+#: ../data/ui/shortcuts-gnote.ui.h:26
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Sabit genişliği aç/kapat"
 
-#: ../data/ui/shortcuts-gnote.ui.h:24
+#: ../data/ui/shortcuts-gnote.ui.h:27
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Altını çizmeyi aç/kapat"
 
-#: ../data/ui/shortcuts-gnote.ui.h:25
+#: ../data/ui/shortcuts-gnote.ui.h:28
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Yazı tipi boyutunu büyüt"
 
-#: ../data/ui/shortcuts-gnote.ui.h:26
+#: ../data/ui/shortcuts-gnote.ui.h:29
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Yazı tipi boyutunu küçült"
 
-#: ../data/ui/shortcuts-gnote.ui.h:27
+#: ../data/ui/shortcuts-gnote.ui.h:30
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Seçimin olduğu satır için işaretleri etkinleştir/girintiyi artır"
 
-#: ../data/ui/shortcuts-gnote.ui.h:28
+#: ../data/ui/shortcuts-gnote.ui.h:31
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Geçerli satır için girintiyi azalt/işaretleri devre dışı bırak"
@@ -451,13 +466,13 @@ msgid ""
 "will continue linking to the renamed note."
 msgstr ""
 "Bağlantının adı değiştirildiğinde, kullanıcıya sormak yerine, her zaman "
-"belirli işleyişi yerine getirmek yönünde tercih olup olmadığını "
-"belirten tamsayı değeri. Değerler dahili değerlendirme ile eşleşirler. 0 "
-"kullanıcının bir ad değiştirme olduğunda her zaman sorulmasını istediği "
-"anlamına gelir, böylelikle her çakışmayı durumdan duruma "
-"değerlendirebilirler. 1 bağlantıların kendiliğinden kaldırılması gerektiğini "
-"belirtir. 2 bağlantı metninin yeni not adına göre güncellenmesi gerektiğini "
-"böylece adı değiştirilen notu göstermeye devam edeceğini belirtir."
+"belirli işleyişi yerine getirmek yönünde tercih olup olmadığını belirten "
+"tamsayı değeri. Değerler dahili değerlendirme ile eşleşirler. 0 kullanıcının "
+"bir ad değiştirme olduğunda her zaman sorulmasını istediği anlamına gelir, "
+"böylelikle her çakışmayı durumdan duruma değerlendirebilirler. 1 "
+"bağlantıların kendiliğinden kaldırılması gerektiğini belirtir. 2 bağlantı "
+"metninin yeni not adına göre güncellenmesi gerektiğini böylece adı "
+"değiştirilen notu göstermeye devam edeceğini belirtir."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:47
 msgid "Enable closing notes with escape"
@@ -465,8 +480,7 @@ msgstr "ESC tuşu ile notları kapatmayı etkinleştir"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:48
 msgid "If enabled, an opened note can be closed by hitting the escape key."
-msgstr ""
-"Eğer etkinse, açık olan not ESC tuşuna basıldığında kapatılabilecek."
+msgstr "Eğer etkinse, açık olan not ESC tuşuna basıldığında kapatılabilecek."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:49
 msgid "Use status icon, when started as an application"
@@ -546,8 +560,7 @@ msgstr "HTML Olarak Dışa Aktarma Son Dizini"
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
-"Notun HTML Dışa Aktarım Eklentisi kullanılarak dışa aktarıldığı en son "
-"dizin."
+"Notun HTML Dışa Aktarım Eklentisi kullanılarak dışa aktarıldığı en son dizin."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:64
 msgid "HTML Export Linked Notes"
@@ -586,8 +599,8 @@ msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
 msgstr ""
-"Eşitleme sunucusuyla iletişime geçilirken bu Gnote istemcisi için"
-"kullanılacak benzersiz tanımlayıcı."
+"Eşitleme sunucusuyla iletişime geçilirken bu Gnote istemcisi "
+"içinkullanılacak benzersiz tanımlayıcı."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:70
 msgid "Synchronization Local Server Path"
@@ -623,10 +636,10 @@ msgid ""
 "wishes to be prompted when a conflict occurs, so that they may handle each "
 "conflict situation on a case-by-case basis."
 msgstr ""
-"Çakışma oluştuğunda, kullanıcıya sormak yerine, her zaman belirli "
-"bir işleyişi yerine getirmek yönünde bir tercih olup olmadığını belirten "
-"tamsayı değeri. Değerler dahili değerlendirme ile eşleşirler. 0 kullanıcının "
-"bir çakışma olduğunda sorulmasını istediği anlamına gelir, böylelikle her "
+"Çakışma oluştuğunda, kullanıcıya sormak yerine, her zaman belirli bir "
+"işleyişi yerine getirmek yönünde bir tercih olup olmadığını belirten tamsayı "
+"değeri. Değerler dahili değerlendirme ile eşleşirler. 0 kullanıcının bir "
+"çakışma olduğunda sorulmasını istediği anlamına gelir, böylelikle her "
 "çakışmayı durumdan duruma değerlendirebilirler."
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:76
@@ -813,8 +826,8 @@ msgid ""
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
 msgstr ""
-"Bugzilla adresini Gnote notunuza tarayıcıdan sürüklemenize izin verir.  "
-"Hata numarası yanında küçük hata simgesi ile bağlantı olarak eklenir."
+"Bugzilla adresini Gnote notunuza tarayıcıdan sürüklemenize izin verir.  Hata "
+"numarası yanında küçük hata simgesi ile bağlantı olarak eklenir."
 
 #: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:3
 #: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:3
@@ -1073,8 +1086,7 @@ msgstr "İmleç konumuna o anki tarih ve zamanı ekler."
 #. Label
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:67
 msgid "Choose one of the predefined formats or use your own."
-msgstr ""
-"Önceden tanımlanmış biçimlerin birini seçin ya da sizinkini kullanın."
+msgstr "Önceden tanımlanmış biçimlerin birini seçin ya da sizinkini kullanın."
 
 #: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:75
 msgid "Use _Selected Format"
@@ -1490,72 +1502,72 @@ msgstr "Basit ve kullanışlı not alma uygulaması."
 msgid "Homepage"
 msgstr "Web Sitesi"
 
-#: ../src/gnote.cpp:519
+#: ../src/gnote.cpp:505
 msgid "Run Gnote in background."
 msgstr "Gnote uygulamasını arkaplanda çalıştır."
 
-#: ../src/gnote.cpp:520
+#: ../src/gnote.cpp:506
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "GNOME Kabuk arama sağlayıcısı olarak Gnote çalıştırın."
 
-#: ../src/gnote.cpp:521
+#: ../src/gnote.cpp:507
 msgid "Specify the path of the directory containing the notes."
 msgstr "Notları içeren dizin yolunu belirtin."
 
-#: ../src/gnote.cpp:521
+#: ../src/gnote.cpp:507
 msgid "path"
 msgstr "yol"
 
-#: ../src/gnote.cpp:522
+#: ../src/gnote.cpp:508
 msgid "Open the search all notes window with the search text."
 msgstr "Arama metni ile tüm notları ara penceresini aç."
 
-#: ../src/gnote.cpp:522 ../src/gnote.cpp:527
+#: ../src/gnote.cpp:508 ../src/gnote.cpp:513
 msgid "text"
 msgstr "metin"
 
-#: ../src/gnote.cpp:523
+#: ../src/gnote.cpp:509
 msgid "Print version information."
 msgstr "Sürüm bilgisini yazdır."
 
-#: ../src/gnote.cpp:524
+#: ../src/gnote.cpp:510
 msgid "Create and display a new note, with a optional title."
 msgstr "İsteğe bağlı başlıkla yeni not oluştur ve görüntüle."
 
-#: ../src/gnote.cpp:524
+#: ../src/gnote.cpp:510
 msgid "title"
 msgstr "başlık"
 
-#: ../src/gnote.cpp:525
+#: ../src/gnote.cpp:511
 msgid "Display the existing note matching title."
 msgstr "Başlık ile eşleşen notu göster."
 
-#: ../src/gnote.cpp:525
+#: ../src/gnote.cpp:511
 msgid "title/url"
 msgstr "başlık/url"
 
-#: ../src/gnote.cpp:526
+#: ../src/gnote.cpp:512
 msgid "Display the 'Start Here' note."
 msgstr "'Buradan Başla' notunu görüntüle."
 
-#: ../src/gnote.cpp:527
+#: ../src/gnote.cpp:513
 msgid "Search and highlight text in the opened note."
 msgstr "Açılan not içindeki metni ara ve vurgula."
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:517
 msgid "A note taking application"
 msgstr "Not alma uygulaması"
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:517
 msgid "Gnote options at launch"
 msgstr "Başlangıçtaki Gnote seçenekleri"
 
-#: ../src/gnote.cpp:608
+#: ../src/gnote.cpp:594
 msgid "Could not connect to remote instance."
 msgstr "Uzak örneğe bağlanılamadı."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:725
+#: ../src/gnote.cpp:711
 msgid "Version %1"
 msgstr "Sürüm %1"
 
@@ -1565,11 +1577,11 @@ msgstr "Sürüm %1"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Simge (%s, %d) yüklenemedi: %s"
 
-#: ../src/noteaddin.cpp:132 ../src/noteaddin.cpp:146 ../src/noteaddin.cpp:158
+#: ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:152 ../src/noteaddin.cpp:164
 msgid "Plugin is disposing already"
 msgstr "Eklenti zaten kullanılıyor"
 
-#: ../src/noteaddin.cpp:162
+#: ../src/noteaddin.cpp:168
 msgid "Window is not embedded"
 msgstr "Pencere gömülü değil"
 
@@ -1766,9 +1778,9 @@ msgstr ""
 "düzenleyin!\n"
 "\n"
 "<link:internal>Gnote Bağlantı Kullanma</link:internal> olarak adlandırılan "
-"not oluşturduk.  Her <link:internal>Gnote Bağlantı Kullanma</link:"
-"internal> yazdığımızda kendiliğinden altının çizili olduğunu fark ettiniz "
-"mi?  Notu açmak için bağlantıyı tıklayın.</note-content>"
+"not oluşturduk.  Her <link:internal>Gnote Bağlantı Kullanma</link:internal> "
+"yazdığımızda kendiliğinden altının çizili olduğunu fark ettiniz mi?  Notu "
+"açmak için bağlantıyı tıklayın.</note-content>"
 
 #: ../src/notemanager.cpp:148
 msgid ""
@@ -1789,15 +1801,14 @@ msgstr ""
 "\n"
 "Gnote'daki notlar; geçerli nottaki metin seçilip, yukarıdaki araç "
 "çubuğundaki <bold>Bağla</bold> düğmesine tıklanarak birbirine bağlanabilir.  "
-"Bunu yapmak yeni not oluşturur ve aynı zamanda oluşturulan notun "
-"başlığını geçerli notta altı çizili olarak gösterir.\n"
+"Bunu yapmak yeni not oluşturur ve aynı zamanda oluşturulan notun başlığını "
+"geçerli notta altı çizili olarak gösterir.\n"
 "\n"
 "Notun başlığını değiştirmek, diğer notlarda bulunan bağlantıları da "
-"günceller.  Bu, notun adı değiştiğinde bağlantıların bozulmasını "
-"engeller.\n"
+"günceller.  Bu, notun adı değiştiğinde bağlantıların bozulmasını engeller.\n"
 "\n"
-"Ayrıca, eğer geçerli notunuzda başka notun adını yazarsanız, o "
-"kendiliğinden sizin için bağlanmış olacaktır.</note-content>"
+"Ayrıca, eğer geçerli notunuzda başka notun adını yazarsanız, o kendiliğinden "
+"sizin için bağlanmış olacaktır.</note-content>"
 
 #. Attempt to find an existing Start Here note
 #: ../src/notemanager.cpp:163 ../src/notemanager.cpp:201
@@ -1925,51 +1936,51 @@ msgstr "Se_çim Kaydet"
 msgid "Save _Title"
 msgstr "_Başlığı Kaydet"
 
-#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1057
+#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1064
 msgid "Cannot create note"
 msgstr "Not oluşturulamıyor"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:834
 msgid "_Bold"
 msgstr "_Kalın"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:835
 msgid "_Italic"
 msgstr "_Eğik"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:836
 msgid "_Strikeout"
 msgstr "_Üstü çizili"
 
-#: ../src/notewindow.cpp:833
+#: ../src/notewindow.cpp:840
 msgid "_Highlight"
 msgstr "_Aydınlat"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:843
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:837
+#: ../src/notewindow.cpp:844
 msgid "S_mall"
 msgstr "_Küçük"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:845
 msgid "_Large"
 msgstr "Bü_yük"
 
-#: ../src/notewindow.cpp:839
+#: ../src/notewindow.cpp:846
 msgid "Hu_ge"
 msgstr "Çok _büyük"
 
-#: ../src/notewindow.cpp:861
+#: ../src/notewindow.cpp:868
 msgid "⦁ Bullets"
 msgstr "⦁ İşaretler"
 
-#: ../src/notewindow.cpp:863
+#: ../src/notewindow.cpp:870
 msgid "→ Increase indent"
 msgstr "→ Girintiyi artır"
 
-#: ../src/notewindow.cpp:865
+#: ../src/notewindow.cpp:872
 msgid "← Decrease indent"
 msgstr "← Girintiyi azalt"
 
@@ -2239,19 +2250,11 @@ msgstr "Yeni Not Oluştur"
 msgid "Search"
 msgstr "Ara"
 
-#: ../src/recentchanges.cpp:253
-msgid "Find _Next"
-msgstr "So_nrakini Bul"
-
-#: ../src/recentchanges.cpp:262
-msgid "Find _Previous"
-msgstr "Ön_cekini Bul"
-
-#: ../src/recentchanges.cpp:800
+#: ../src/recentchanges.cpp:806
 msgid "Expected widget to be a sub-menu!"
 msgstr "Beklenen parçacık alt menü olmalı!"
 
-#: ../src/recentchanges.cpp:805
+#: ../src/recentchanges.cpp:811
 msgid "No configured actions"
 msgstr "Yapılandırılmış eylem yok"
 
@@ -2280,19 +2283,19 @@ msgstr "Ye_niden Adlandır..."
 msgid "Notebooks"
 msgstr "Not Defterleri"
 
-#: ../src/searchnoteswidget.cpp:655
+#: ../src/searchnoteswidget.cpp:683
 msgid "Note"
 msgstr "Not"
 
-#: ../src/searchnoteswidget.cpp:677
+#: ../src/searchnoteswidget.cpp:705
 msgid "Modified"
 msgstr "Değiştirildi"
 
-#: ../src/searchnoteswidget.cpp:996
+#: ../src/searchnoteswidget.cpp:982
 msgid "Notes"
 msgstr "Notlar"
 
-#: ../src/searchnoteswidget.cpp:1015
+#: ../src/searchnoteswidget.cpp:1001
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2300,52 +2303,52 @@ msgstr ""
 "Seçilen not defterinde sonuç bulunamadı.\n"
 "Tüm notlarda aramak için buraya tıklayın."
 
-#: ../src/searchnoteswidget.cpp:1019
+#: ../src/searchnoteswidget.cpp:1005
 msgid "Click here to search across all notebooks"
 msgstr "Tüm not defterlerinde aramak için buraya tıkla"
 
-#: ../src/searchnoteswidget.cpp:1040
+#: ../src/searchnoteswidget.cpp:1026
 msgid "Matches"
 msgstr "Eşleşmeler"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1091
+#: ../src/searchnoteswidget.cpp:1077
 msgid "Title match"
 msgstr "Başlık eşleşmesi"
 
-#: ../src/searchnoteswidget.cpp:1095
+#: ../src/searchnoteswidget.cpp:1081
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 eşleşme"
 
-#: ../src/searchnoteswidget.cpp:1305
+#: ../src/searchnoteswidget.cpp:1291
 msgid "_New"
 msgstr "_Yeni"
 
-#: ../src/searchnoteswidget.cpp:1334
+#: ../src/searchnoteswidget.cpp:1320
 msgid "_Open Template Note"
 msgstr "Şablom Notunu _Aç"
 
-#: ../src/searchnoteswidget.cpp:1345
+#: ../src/searchnoteswidget.cpp:1331
 msgid "_New..."
 msgstr "_Yeni..."
 
-#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
-#: ../src/searchnoteswidget.cpp:1522
+#: ../src/searchnoteswidget.cpp:1484 ../src/searchnoteswidget.cpp:1497
+#: ../src/searchnoteswidget.cpp:1508
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "%s ayarı ayrıştırılamadı (Değer: %s):"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1485
 msgid "Expected format 'column:order'"
 msgstr "Beklenen biçim 'sütun:sıra'"
 
-#: ../src/searchnoteswidget.cpp:1512
+#: ../src/searchnoteswidget.cpp:1498
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Tanımlanamayan sütun %s"
 
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1509
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Tanımlanamayan sıra %s"
@@ -2733,8 +2736,8 @@ msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
 msgstr ""
-"FUSE modülü yüklenemedi. Lütfen doğru kurulduğundan emin olun ve "
-"yeniden deneyin."
+"FUSE modülü yüklenemedi. Lütfen doğru kurulduğundan emin olun ve yeniden "
+"deneyin."
 
 #: ../src/synchronization/syncutils.cpp:148
 msgid "Enable FUSE?"
@@ -2829,8 +2832,8 @@ msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
-"<b>%1</b> başlıklı not zaten var. Devam etmeden önce bu not için başka "
-"ad seçin."
+"<b>%1</b> başlıklı not zaten var. Devam etmeden önce bu not için başka ad "
+"seçin."
 
 #: ../src/watchers.cpp:245
 msgid "Note title taken"
@@ -2847,6 +2850,12 @@ msgstr "Bağlantı Adresini _Kopyala"
 #: ../src/watchers.cpp:715
 msgid "_Open Link"
 msgstr "_Bağlantıyı Aç"
+
+#~ msgid "Find _Next"
+#~ msgstr "So_nrakini Bul"
+
+#~ msgid "Find _Previous"
+#~ msgstr "Ön_cekini Bul"
 
 #~ msgid "Could not mount the path: %s. Please, check your settings"
 #~ msgstr "Yol bağlanamadı: %s. Lütfen ayarlarınızı denetleyiniz."
