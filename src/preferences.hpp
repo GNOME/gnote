@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -94,9 +94,14 @@ namespace gnote {
     void init();
 
     Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
+    const Glib::RefPtr<Gio::Settings> & schema_gnome_interface() const
+      {
+        return m_schema_gnome_interface;
+      }
   private:
-    Preferences(const Preferences &); // non implemented
+    Preferences(const Preferences &) = delete;
     std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
+    Glib::RefPtr<Gio::Settings> m_schema_gnome_interface;
   };
 
 

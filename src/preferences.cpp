@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -89,6 +89,7 @@ namespace gnote {
   {
     m_schemas[SCHEMA_GNOTE] = Gio::Settings::create(SCHEMA_GNOTE);
     m_schemas[SCHEMA_KEYBINDINGS] = Gio::Settings::create(SCHEMA_KEYBINDINGS);
+    m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
   }
   
   Glib::RefPtr<Gio::Settings> Preferences::get_schema_settings(const Glib::ustring & schema)
