@@ -7,25 +7,27 @@
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013, 2014.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013-2020.
+# Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-05-17 09:29+0000\n"
-"PO-Revision-Date: 2020-05-17 21:43-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2020-11-29 19:02+0000\n"
+"PO-Revision-Date: 2020-11-30 17:21-0300\n"
+"Last-Translator: Henrique Roberto Gattermann Mittelstaedt <henrique."
+"roberto97@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"X-Generator: Gtranslator 3.38.0\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:548
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:554
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -74,120 +76,137 @@ msgstr "Abrir o menu de ação"
 
 #: ../data/ui/shortcuts-gnote.ui.h:5
 msgctxt "shortcut window"
-msgid "Display search bar"
-msgstr "Exibir barra de pesquisa"
-
-#: ../data/ui/shortcuts-gnote.ui.h:6
-msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Ocultar barra de pesquisa"
 
-#: ../data/ui/shortcuts-gnote.ui.h:7
+#: ../data/ui/shortcuts-gnote.ui.h:6
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Fechar janela"
 
+#: ../data/ui/shortcuts-gnote.ui.h:7
+#| msgid "Search"
+msgctxt "shortcut window"
+msgid "Search bar"
+msgstr "Barra de pesquisa"
+
 #: ../data/ui/shortcuts-gnote.ui.h:8
 msgctxt "shortcut window"
-msgid "Notes list"
-msgstr "Listar de notas"
+msgid "Display search bar"
+msgstr "Exibir barra de pesquisa"
 
 #: ../data/ui/shortcuts-gnote.ui.h:9
+#| msgid "Select None"
+msgctxt "shortcut window"
+msgid "Select next match"
+msgstr "Selecione a próxima combinação"
+
+#: ../data/ui/shortcuts-gnote.ui.h:10
+msgctxt "shortcut window"
+msgid "Select previous match"
+msgstr "Selecione a combinação anterior"
+
+#: ../data/ui/shortcuts-gnote.ui.h:11
+msgctxt "shortcut window"
+msgid "Notes list"
+msgstr "Lista de notas"
+
+#: ../data/ui/shortcuts-gnote.ui.h:12
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Criar nova nota"
 
-#: ../data/ui/shortcuts-gnote.ui.h:10
+#: ../data/ui/shortcuts-gnote.ui.h:13
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Abrir nota selecionada"
 
-#: ../data/ui/shortcuts-gnote.ui.h:11
+#: ../data/ui/shortcuts-gnote.ui.h:14
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Abrir notas selecionadas em nova janela"
 
-#: ../data/ui/shortcuts-gnote.ui.h:12
+#: ../data/ui/shortcuts-gnote.ui.h:15
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Excluir nota selecionada"
 
-#: ../data/ui/shortcuts-gnote.ui.h:13
+#: ../data/ui/shortcuts-gnote.ui.h:16
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Nova janela"
 
-#: ../data/ui/shortcuts-gnote.ui.h:14
+#: ../data/ui/shortcuts-gnote.ui.h:17
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Edição"
 
-#: ../data/ui/shortcuts-gnote.ui.h:15
+#: ../data/ui/shortcuts-gnote.ui.h:18
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Desfazer a última edição"
 
-#: ../data/ui/shortcuts-gnote.ui.h:16
+#: ../data/ui/shortcuts-gnote.ui.h:19
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Refazer a última edição"
 
-#: ../data/ui/shortcuts-gnote.ui.h:17
+#: ../data/ui/shortcuts-gnote.ui.h:20
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Criar link para nota no texto selecionado"
 
-#: ../data/ui/shortcuts-gnote.ui.h:18
+#: ../data/ui/shortcuts-gnote.ui.h:21
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatação"
 
-#: ../data/ui/shortcuts-gnote.ui.h:19
+#: ../data/ui/shortcuts-gnote.ui.h:22
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Ativar negrito"
 
-#: ../data/ui/shortcuts-gnote.ui.h:20
+#: ../data/ui/shortcuts-gnote.ui.h:23
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Ativar itálico"
 
-#: ../data/ui/shortcuts-gnote.ui.h:21
+#: ../data/ui/shortcuts-gnote.ui.h:24
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Ativar taxado"
 
-#: ../data/ui/shortcuts-gnote.ui.h:22
+#: ../data/ui/shortcuts-gnote.ui.h:25
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Ativar realce"
 
-#: ../data/ui/shortcuts-gnote.ui.h:23
+#: ../data/ui/shortcuts-gnote.ui.h:26
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Ativar largura fixa"
 
-#: ../data/ui/shortcuts-gnote.ui.h:24
+#: ../data/ui/shortcuts-gnote.ui.h:27
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Ativar sublinhado"
 
-#: ../data/ui/shortcuts-gnote.ui.h:25
+#: ../data/ui/shortcuts-gnote.ui.h:28
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Aumentar tamanho da fonte"
 
-#: ../data/ui/shortcuts-gnote.ui.h:26
+#: ../data/ui/shortcuts-gnote.ui.h:29
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Diminuir tamanho da fonte"
 
-#: ../data/ui/shortcuts-gnote.ui.h:27
+#: ../data/ui/shortcuts-gnote.ui.h:30
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Habilitar marcador/aumentar recuo para linha com seleção"
 
-#: ../data/ui/shortcuts-gnote.ui.h:28
+#: ../data/ui/shortcuts-gnote.ui.h:31
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Diminuir recuo/desabilitar marcador para linha atual"
@@ -747,42 +766,42 @@ msgstr "Falha ao carregar informação do plug-in!"
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "O plug-in %s é incompatível: era esperado %s, obteve-se %s"
 
-#: ../src/addinmanager.cpp:132
+#: ../src/addinmanager.cpp:157
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Informação de plug-in de nota %s já presente"
 
-#: ../src/addinmanager.cpp:140
+#: ../src/addinmanager.cpp:165
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s não implementa %s"
 
-#: ../src/addinmanager.cpp:155
+#: ../src/addinmanager.cpp:180
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Plug-in de nota %s está presente"
 
-#: ../src/addinmanager.cpp:173
+#: ../src/addinmanager.cpp:198
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Informação de plug-in de nota %s está ausente"
 
-#: ../src/addinmanager.cpp:186
+#: ../src/addinmanager.cpp:211
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Plug-in de nota %s está ausente"
 
-#: ../src/addinmanager.cpp:222
+#: ../src/addinmanager.cpp:247
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Falha ao localizar módulo %s para o plug-in %s"
 
-#: ../src/addinmanager.cpp:226
+#: ../src/addinmanager.cpp:251
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Falha ao carregar a informação de plug-in para %s: %s"
 
-#: ../src/addinmanager.cpp:351
+#: ../src/addinmanager.cpp:377
 msgid "Trying to load addins when they are already loaded"
 msgstr "Tentando carregar plug-ins quando eles já foram carregados"
 
@@ -1506,72 +1525,72 @@ msgstr "Um aplicativo simples e fácil de usar para tomar notas."
 msgid "Homepage"
 msgstr "Página do projeto"
 
-#: ../src/gnote.cpp:519
+#: ../src/gnote.cpp:505
 msgid "Run Gnote in background."
 msgstr "Executar o Gnote em segundo plano."
 
-#: ../src/gnote.cpp:520
+#: ../src/gnote.cpp:506
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Executa o Gnote como provedor de pesquisa do GNOME Shell."
 
-#: ../src/gnote.cpp:521
+#: ../src/gnote.cpp:507
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especifica o caminho do diretório que contém as notas."
 
-#: ../src/gnote.cpp:521
+#: ../src/gnote.cpp:507
 msgid "path"
 msgstr "caminho"
 
-#: ../src/gnote.cpp:522
+#: ../src/gnote.cpp:508
 msgid "Open the search all notes window with the search text."
 msgstr "Abre a janela “pesquisar em todas as notas” com o texto de pesquisa."
 
-#: ../src/gnote.cpp:522 ../src/gnote.cpp:527
+#: ../src/gnote.cpp:508 ../src/gnote.cpp:513
 msgid "text"
 msgstr "texto"
 
-#: ../src/gnote.cpp:523
+#: ../src/gnote.cpp:509
 msgid "Print version information."
 msgstr "Imprime informações da versão."
 
-#: ../src/gnote.cpp:524
+#: ../src/gnote.cpp:510
 msgid "Create and display a new note, with a optional title."
 msgstr "Cria e exibe uma nova nota, com um título opcional."
 
-#: ../src/gnote.cpp:524
+#: ../src/gnote.cpp:510
 msgid "title"
 msgstr "título"
 
-#: ../src/gnote.cpp:525
+#: ../src/gnote.cpp:511
 msgid "Display the existing note matching title."
 msgstr "Exibe a nota correspondente ao título."
 
-#: ../src/gnote.cpp:525
+#: ../src/gnote.cpp:511
 msgid "title/url"
 msgstr "título/url"
 
-#: ../src/gnote.cpp:526
+#: ../src/gnote.cpp:512
 msgid "Display the 'Start Here' note."
 msgstr "Exibe a nota “Comece aqui”."
 
-#: ../src/gnote.cpp:527
+#: ../src/gnote.cpp:513
 msgid "Search and highlight text in the opened note."
 msgstr "Pesquisa e destaca o texto na nota aberta."
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:517
 msgid "A note taking application"
 msgstr "Um aplicativo para tomar notas"
 
-#: ../src/gnote.cpp:531
+#: ../src/gnote.cpp:517
 msgid "Gnote options at launch"
 msgstr "Opções do Gnote na inicialização"
 
-#: ../src/gnote.cpp:608
+#: ../src/gnote.cpp:594
 msgid "Could not connect to remote instance."
 msgstr "Não foi possível conectar à instância remota."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:725
+#: ../src/gnote.cpp:711
 msgid "Version %1"
 msgstr "Versão %1"
 
@@ -1581,27 +1600,27 @@ msgstr "Versão %1"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Falha ao carregar o ícone (%s,%d): %s"
 
-#: ../src/noteaddin.cpp:132 ../src/noteaddin.cpp:146 ../src/noteaddin.cpp:158
+#: ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:152 ../src/noteaddin.cpp:164
 msgid "Plugin is disposing already"
 msgstr "O plug-in já foi descartado"
 
-#: ../src/noteaddin.cpp:162
+#: ../src/noteaddin.cpp:168
 msgid "Window is not embedded"
 msgstr "A janela não está embutida"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:195 ../src/note.cpp:362
+#: ../src/notebase.cpp:225 ../src/note.cpp:362
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Exceção ao salvar a nota: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:430
+#: ../src/notebase.cpp:465
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falha ao atualizar o formato da nota: %s"
 
-#: ../src/notebase.cpp:548
+#: ../src/notebase.cpp:583
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Erro de sistema de arquivos: %s"
@@ -1733,7 +1752,7 @@ msgstr ""
 msgid "Error while saving: %s"
 msgstr "Erro ao salvar: %s"
 
-#: ../src/note.cpp:679
+#: ../src/note.cpp:683
 msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
@@ -1939,51 +1958,51 @@ msgstr "Salvar se_leção"
 msgid "Save _Title"
 msgstr "Salvar _título"
 
-#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1057
+#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1064
 msgid "Cannot create note"
 msgstr "Não foi possível criar a nota"
 
-#: ../src/notewindow.cpp:827
+#: ../src/notewindow.cpp:834
 msgid "_Bold"
 msgstr "_Negrito"
 
-#: ../src/notewindow.cpp:828
+#: ../src/notewindow.cpp:835
 msgid "_Italic"
 msgstr "_Itálico"
 
-#: ../src/notewindow.cpp:829
+#: ../src/notewindow.cpp:836
 msgid "_Strikeout"
 msgstr "Ri_scado"
 
-#: ../src/notewindow.cpp:833
+#: ../src/notewindow.cpp:840
 msgid "_Highlight"
 msgstr "_Destacar"
 
-#: ../src/notewindow.cpp:836
+#: ../src/notewindow.cpp:843
 msgid "_Normal"
 msgstr "_Normal"
 
-#: ../src/notewindow.cpp:837
+#: ../src/notewindow.cpp:844
 msgid "S_mall"
 msgstr "_Pequeno"
 
-#: ../src/notewindow.cpp:838
+#: ../src/notewindow.cpp:845
 msgid "_Large"
 msgstr "_Grande"
 
-#: ../src/notewindow.cpp:839
+#: ../src/notewindow.cpp:846
 msgid "Hu_ge"
 msgstr "Enor_me"
 
-#: ../src/notewindow.cpp:861
+#: ../src/notewindow.cpp:868
 msgid "⦁ Bullets"
 msgstr "⦁ Marcadores"
 
-#: ../src/notewindow.cpp:863
+#: ../src/notewindow.cpp:870
 msgid "→ Increase indent"
 msgstr "→ Aumentar recuo"
 
-#: ../src/notewindow.cpp:865
+#: ../src/notewindow.cpp:872
 msgid "← Decrease indent"
 msgstr "← Diminuir recuo"
 
@@ -2254,19 +2273,11 @@ msgstr "Criar nova nota"
 msgid "Search"
 msgstr "Pesquisar"
 
-#: ../src/recentchanges.cpp:253
-msgid "Find _Next"
-msgstr "Localizar _próxima"
-
-#: ../src/recentchanges.cpp:262
-msgid "Find _Previous"
-msgstr "Localizar _anterior"
-
-#: ../src/recentchanges.cpp:800
+#: ../src/recentchanges.cpp:806
 msgid "Expected widget to be a sub-menu!"
 msgstr "Era esperado que widget fosse um submenu!"
 
-#: ../src/recentchanges.cpp:805
+#: ../src/recentchanges.cpp:811
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2295,19 +2306,19 @@ msgstr "Re_nomear…"
 msgid "Notebooks"
 msgstr "Catálogo de notas"
 
-#: ../src/searchnoteswidget.cpp:655
+#: ../src/searchnoteswidget.cpp:683
 msgid "Note"
 msgstr "Nota"
 
-#: ../src/searchnoteswidget.cpp:677
+#: ../src/searchnoteswidget.cpp:705
 msgid "Modified"
 msgstr "Modificado"
 
-#: ../src/searchnoteswidget.cpp:996
+#: ../src/searchnoteswidget.cpp:982
 msgid "Notes"
 msgstr "Notas"
 
-#: ../src/searchnoteswidget.cpp:1015
+#: ../src/searchnoteswidget.cpp:1001
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2315,53 +2326,53 @@ msgstr ""
 "Nenhum resultado encontrado no bloco de anotações selecionado.\n"
 "Clique aqui para pesquisar em todas as notas."
 
-#: ../src/searchnoteswidget.cpp:1019
+#: ../src/searchnoteswidget.cpp:1005
 msgid "Click here to search across all notebooks"
 msgstr "Clique aqui para pesquisar em todos os blocos de notas"
 
-#: ../src/searchnoteswidget.cpp:1040
+#: ../src/searchnoteswidget.cpp:1026
 msgid "Matches"
 msgstr "Ocorrências"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1091
+#: ../src/searchnoteswidget.cpp:1077
 msgid "Title match"
 msgstr "Correspondência de título"
 
-#: ../src/searchnoteswidget.cpp:1095
+#: ../src/searchnoteswidget.cpp:1081
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 ocorrência"
 msgstr[1] "%1 ocorrências"
 
-#: ../src/searchnoteswidget.cpp:1305
+#: ../src/searchnoteswidget.cpp:1291
 msgid "_New"
 msgstr "_Novo"
 
-#: ../src/searchnoteswidget.cpp:1334
+#: ../src/searchnoteswidget.cpp:1320
 msgid "_Open Template Note"
 msgstr "_Abrir modelo de nota"
 
-#: ../src/searchnoteswidget.cpp:1345
+#: ../src/searchnoteswidget.cpp:1331
 msgid "_New..."
 msgstr "_Novo…"
 
-#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
-#: ../src/searchnoteswidget.cpp:1522
+#: ../src/searchnoteswidget.cpp:1484 ../src/searchnoteswidget.cpp:1497
+#: ../src/searchnoteswidget.cpp:1508
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Falha ao analisar as configurações %s (valor: %s):"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1485
 msgid "Expected format 'column:order'"
 msgstr "Formato esperado “coluna:ordem”"
 
-#: ../src/searchnoteswidget.cpp:1512
+#: ../src/searchnoteswidget.cpp:1498
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Coluna %s não reconhecida"
 
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1509
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ordem %s não reconhecida"
@@ -2423,12 +2434,10 @@ msgstr "folha de estilos NULA, favor relatar este erro"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:120
 #, c-format
-#| msgid "Failed to update note format: %s"
 msgid "Failed to upload note: %s"
 msgstr "Falha ao enviar a nota: %s"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:140
-#| msgid "Failed to load plugin information!"
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Falha ao enviar %1 nota"
@@ -2436,17 +2445,14 @@ msgstr[1] "Falha ao enviar %1 notas"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:235
 #, c-format
-#| msgid "Exception while saving note: %s"
 msgid "Exception when finishing note copy: %s"
 msgstr "Exceção ao finalizar a cópia da nota: %s"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:238
-#| msgid "Exception while saving note: %s"
 msgid "Exception when finishing note copy"
 msgstr "Exceção ao finalizar a cópia da nota"
 
 #: ../src/synchronization/filesystemsyncserver.cpp:263
-#| msgid "Failed to update note format: %s"
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Falha ao baixar %1 atualização de nota"
@@ -2876,6 +2882,12 @@ msgstr "_Copiar o endereço do link"
 #: ../src/watchers.cpp:715
 msgid "_Open Link"
 msgstr "Abrir _link"
+
+#~ msgid "Find _Next"
+#~ msgstr "Localizar _próxima"
+
+#~ msgid "Find _Previous"
+#~ msgstr "Localizar _anterior"
 
 #~ msgid "Could not mount the path: %s. Please, check your settings"
 #~ msgstr ""
