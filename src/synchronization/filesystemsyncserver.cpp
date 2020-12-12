@@ -56,7 +56,7 @@ namespace sync {
 
 SyncServer *FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs)
 {
-  return new FileSystemSyncServer(path, prefs.get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_CLIENT_ID));
+  return new FileSystemSyncServer(path, prefs.sync_client_id());
 }
 
 
