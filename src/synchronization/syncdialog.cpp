@@ -596,8 +596,7 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::vector<Glib::ustring> & noteUpdateTitles)
 {
-  int dlgBehaviorPref = m_gnote.preferences()
-    .get_schema_settings(Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
+  int dlgBehaviorPref = m_gnote.preferences().sync_configured_conflict_behavior();
 
   // This event handler will be called by the synchronization thread
   // so we have to use the delegate here to manipulate the GUI.
@@ -674,8 +673,7 @@ void SyncDialog::note_conflict_detected_(
     }
   }
 
-  m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
-    Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, static_cast<int>(savedBehavior)); // TODO: Clean up
+  m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(savedBehavior));
 
   conflictDlg.hide();
 
