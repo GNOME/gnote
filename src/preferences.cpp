@@ -29,7 +29,6 @@ namespace gnote {
 
 
   const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
-  const char * Preferences::SCHEMA_KEYBINDINGS = "org.gnome.gnote.global-keybindings";
   const char * Preferences::SCHEMA_SYNC = "org.gnome.gnote.sync";
   const char * Preferences::SCHEMA_SYNC_GVFS = "org.gnome.gnote.sync.gvfs";
   const char * Preferences::SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
@@ -39,7 +38,6 @@ namespace gnote {
   const char * Preferences::ENABLE_URL_LINKS = "enable-url-links";
   const char * Preferences::ENABLE_WIKIWORDS = "enable-wikiwords";
   const char * Preferences::ENABLE_CUSTOM_FONT = "enable-custom-font";
-  const char * Preferences::ENABLE_KEYBINDINGS = "enable-keybindings";
   const char * Preferences::ENABLE_AUTO_BULLETED_LISTS = "enable-bulleted-lists";
   const char * Preferences::ENABLE_ICON_PASTE = "enable-icon-paste";
   const char * Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
@@ -48,12 +46,6 @@ namespace gnote {
   const char * Preferences::CUSTOM_FONT_FACE = "custom-font-face";
   const char * Preferences::MENU_NOTE_COUNT = "menu-note-count";
   const char * Preferences::MENU_PINNED_NOTES = "menu-pinned-notes";
-
-  const char * Preferences::KEYBINDING_SHOW_NOTE_MENU = "show-note-menu";
-  const char * Preferences::KEYBINDING_OPEN_START_HERE = "open-start-here";
-  const char * Preferences::KEYBINDING_CREATE_NEW_NOTE = "create-new-note";
-  const char * Preferences::KEYBINDING_OPEN_SEARCH = "open-search";
-  const char * Preferences::KEYBINDING_OPEN_RECENT_CHANGES = "open-recent-changes";
 
   const char * Preferences::SYNC_CLIENT_ID = "sync-guid";
   const char * Preferences::SYNC_LOCAL_PATH = "sync-local-path";
@@ -87,7 +79,6 @@ namespace gnote {
   void Preferences::init()
   {
     m_schemas[SCHEMA_GNOTE] = Gio::Settings::create(SCHEMA_GNOTE);
-    m_schemas[SCHEMA_KEYBINDINGS] = Gio::Settings::create(SCHEMA_KEYBINDINGS);
     m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
   }
   

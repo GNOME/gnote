@@ -41,11 +41,6 @@
       <_summary>Custom Font Face</_summary>
       <_description>If enable-custom-font is true, the font name set here will be used as the font when displaying notes.</_description>
     </key>
-    <key name="enable-keybindings" type="b">
-      <default>true</default>
-      <_summary>Enable global keybindings</_summary>
-      <_description>If true, the desktop-global keybindings set in /org/gnome/gnote/global-keybindings will be enabled, allowing for useful Gnote actions to be available from any application.</_description>
-    </key>
     <key name="start-note" type="s">
       <default>''</default>
       <_summary>Start Here Note</_summary>
@@ -141,39 +136,11 @@
       <_summary>Use client side window decorations</_summary>
       <_description>Should Gnote draw its window titlebar, or leave that to window manager. Possible values are 'enabled' to draw them, 'disabled' to leave them to window manager, or a comma separated list of desktop environments, where Gnote should draw decorations itself. Requires application restart.</_description>
     </key>
-    <child name="global-keybindings" schema="org.gnome.gnote.global-keybindings" />
     <child name="export-html" schema="org.gnome.gnote.export-html" />
     <child name="sync" schema="org.gnome.gnote.sync" />
     <child name="sync-gvfs" schema="org.gnome.gnote.sync.gvfs" />
     <child name="insert-timestamp" schema="org.gnome.gnote.insert-timestamp" />
     <child name="note-directory-watcher" schema="org.gnome.gnote.note-directory-watcher" />
-  </schema>
-  <schema id="org.gnome.gnote.global-keybindings" path="/org/gnome/gnote/global-keybindings/">
-    <key name="show-note-menu" type="s">
-      <default>'&lt;Alt&gt;F12'</default>
-      <_summary>Show applet menu</_summary>
-      <_description>Deprecated, has no effect.</_description>
-    </key>
-    <key name="open-start-here" type="s">
-      <default>'&lt;Alt&gt;F11'</default>
-      <_summary>Open Start Here</_summary>
-      <_description>Deprecated, has no effect.</_description>
-    </key>
-    <key name="create-new-note" type="s">
-      <default>'disabled'</default>
-      <_summary>Create a new Note</_summary>
-      <_description>Deprecated, has no effect.</_description>
-    </key>
-    <key name="open-search" type="s">
-      <default>'disabled'</default>
-      <_summary>Open Search Dialog</_summary>
-      <_description>Deprecated, has no effect.</_description>
-    </key>
-    <key name="open-recent-changes" type="s">
-      <default>'disabled'</default>
-      <_summary>Open Recent Changes</_summary>
-      <_description>Deprecated, has no effect.</_description>
-    </key>
   </schema>
   <schema id="org.gnome.gnote.export-html" path="/org/gnome/gnote/export-html/">
     <key name="last-directory" type="s">

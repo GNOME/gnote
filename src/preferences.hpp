@@ -25,7 +25,6 @@
 #define __PREFERENCES_HPP_
 
 #include <map>
-#include <sigc++/signal.h>
 #include <giomm/settings.h>
 
 namespace gnote {
@@ -34,7 +33,6 @@ namespace gnote {
   {
   public:
     static const char *SCHEMA_GNOTE;
-    static const char *SCHEMA_KEYBINDINGS;
     static const char *SCHEMA_SYNC;
     static const char *SCHEMA_SYNC_GVFS;
     static const char *SCHEMA_SYNC_WDFS;
@@ -44,7 +42,6 @@ namespace gnote {
     static const char *ENABLE_URL_LINKS;
     static const char *ENABLE_WIKIWORDS;
     static const char *ENABLE_CUSTOM_FONT;
-    static const char *ENABLE_KEYBINDINGS;
     static const char *ENABLE_AUTO_BULLETED_LISTS;
     static const char *ENABLE_ICON_PASTE;
     static const char *ENABLE_CLOSE_NOTE_ON_ESCAPE;
@@ -65,12 +62,6 @@ namespace gnote {
     static const char *SEARCH_WINDOW_SPLITTER_POS;
     static const char *SEARCH_SORTING;
     static const char *USE_CLIENT_SIDE_DECORATIONS;
-
-    static const char *KEYBINDING_SHOW_NOTE_MENU;
-    static const char *KEYBINDING_OPEN_START_HERE;
-    static const char *KEYBINDING_CREATE_NEW_NOTE;
-    static const char *KEYBINDING_OPEN_SEARCH;
-    static const char *KEYBINDING_OPEN_RECENT_CHANGES;
 
     static const char *SYNC_CLIENT_ID;
     static const char *SYNC_LOCAL_PATH;
