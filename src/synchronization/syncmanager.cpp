@@ -84,8 +84,7 @@ namespace sync {
   {
     try {
       NoteManager & manager(dynamic_cast<NoteManager&>(note_mgr()));
-      m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->signal_changed()
-        .connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
+      m_gnote.preferences().schema_sync()->signal_changed().connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
       manager.signal_note_saved.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
       manager.signal_note_deleted.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
       manager.signal_note_buffer_changed.connect(sigc::mem_fun(*this, &SyncManager::handle_note_buffer_changed));
@@ -428,11 +427,10 @@ namespace sync {
 
   void SyncManager::update_sync_action()
   {
-    Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC);
-    Glib::ustring sync_addin_id = settings->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
+    Glib::ustring sync_addin_id = m_gnote.preferences().sync_selected_service_addin();
     m_gnote.action_manager().get_app_action("sync-notes")->set_enabled(sync_addin_id != "");
 
-    int timeoutPref = settings->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
+    int timeoutPref = m_gnote.preferences().sync_autosync_timeout();
     if(timeoutPref != m_autosync_timeout_pref_minutes) {
       m_autosync_timeout_pref_minutes = timeoutPref;
       m_autosync_timer.cancel();
@@ -548,8 +546,7 @@ namespace sync {
   {
     SyncServiceAddin *addin = NULL;
 
-    Glib::ustring sync_service_id = m_gnote.preferences()
-      .get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
+    Glib::ustring sync_service_id = m_gnote.preferences().sync_selected_service_addin();
     if(sync_service_id != "") {
       addin = get_sync_service_addin(sync_service_id);
     }
