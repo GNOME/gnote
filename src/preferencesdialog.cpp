@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -167,6 +167,8 @@ namespace gnote {
     m_gnote.preferences().get_schema_settings(
       Preferences::SCHEMA_GNOTE)->signal_changed().connect(
         sigc::mem_fun(*this, &PreferencesDialog::on_preferences_setting_changed));
+    m_gnote.preferences().schema_sync()->signal_changed(Preferences::SYNC_AUTOSYNC_TIMEOUT)
+      .connect(sigc::mem_fun(*this, &PreferencesDialog::on_autosync_timeout_setting_changed));
   }
 
   void PreferencesDialog::enable_addin(bool enable)
@@ -459,8 +461,7 @@ namespace gnote {
 
     // Read from Preferences which service is configured and select it
     // by default.  Otherwise, just select the first one in the list.
-    Glib::ustring addin_id = m_gnote.preferences()
-      .get_schema_settings(Preferences::SCHEMA_SYNC)->get_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN);
+    Glib::ustring addin_id = m_gnote.preferences().sync_selected_service_addin();
 
     Gtk::TreeIter active_iter;
     if (!addin_id.empty() && m_sync_addin_iters.find(addin_id) != m_sync_addin_iters.end()) {
@@ -507,12 +508,10 @@ namespace gnote {
     vbox->attach(*m_sync_addin_prefs_container, 0, vbox_row++, 1, 1);
 
     // Autosync preference
-    int timeout = m_gnote.preferences().get_schema_settings(
-        Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
+    int timeout = m_gnote.preferences().sync_autosync_timeout();
     if(timeout > 0 && timeout < 5) {
       timeout = 5;
-      m_gnote.preferences().get_schema_settings(
-          Preferences::SCHEMA_SYNC)->set_int(Preferences::SYNC_AUTOSYNC_TIMEOUT, 5);
+      m_gnote.preferences().sync_autosync_timeout(5);
     }
     Gtk::Grid *autosyncBox = manage(new Gtk::Grid);
     autosyncBox->set_column_spacing(5);
@@ -998,20 +997,23 @@ namespace gnote {
         m_rename_behavior_combo->set_active(rename_behavior);
       }
     }
-    else if(key == Preferences::SYNC_AUTOSYNC_TIMEOUT) {
-      int timeout = m_gnote.preferences().get_schema_settings(
-          Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_AUTOSYNC_TIMEOUT);
-      if(timeout <= 0 && m_autosync_check->get_active()) {
-        m_autosync_check->set_active(false);
+  }
+
+
+
+  void PreferencesDialog::on_autosync_timeout_setting_changed(const Glib::ustring &)
+  {
+    int timeout = m_gnote.preferences().sync_autosync_timeout();
+    if(timeout <= 0 && m_autosync_check->get_active()) {
+      m_autosync_check->set_active(false);
+    }
+    else if(timeout > 0) {
+      timeout = (timeout >= 5 && timeout < 1000) ? timeout : 5;
+      if(!m_autosync_check->get_active()) {
+        m_autosync_check->set_active(true);
       }
-      else if(timeout > 0) {
-        timeout = (timeout >= 5 && timeout < 1000) ? timeout : 5;
-        if(!m_autosync_check->get_active()) {
-          m_autosync_check->set_active(true);
-        }
-        if(static_cast<int>(m_autosync_spinner->get_value()) != timeout) {
-          m_autosync_spinner->set_value(timeout);
-        }
+      if(static_cast<int>(m_autosync_spinner->get_value()) != timeout) {
+        m_autosync_spinner->set_value(timeout);
       }
     }
   }
@@ -1029,8 +1031,7 @@ namespace gnote {
   {
     // Get saved behavior
     sync::SyncTitleConflictResolution savedBehavior = sync::CANCEL;
-    int dlgBehaviorPref = m_gnote.preferences().get_schema_settings(
-      Preferences::SCHEMA_SYNC)->get_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
+    int dlgBehaviorPref = m_gnote.preferences().sync_configured_conflict_behavior();
     // TODO: Check range of this int
     savedBehavior = static_cast<sync::SyncTitleConflictResolution>(dlgBehaviorPref);
 
@@ -1096,8 +1097,7 @@ namespace gnote {
       newBehavior = sync::OVERWRITE_EXISTING;
     }
 
-    m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
-      Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, static_cast<int>(newBehavior));
+    m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(newBehavior));
   }
 
 
@@ -1178,11 +1178,10 @@ namespace gnote {
       DBG_OUT("Error calling %s.reset_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
     }
 
-    Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC);
-    settings->set_string(Preferences::SYNC_SELECTED_SERVICE_ADDIN, "");
+    m_gnote.preferences().sync_selected_service_addin("");
 
     // Reset conflict handling behavior
-    settings->set_int(Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR, DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
+    m_gnote.preferences().sync_configured_conflict_behavior(DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
 
     m_gnote.sync_manager().reset_client();
 
@@ -1227,8 +1226,7 @@ namespace gnote {
 
     utils::HIGMessageDialog *dialog;
     if(saved) {
-      m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_string(
-        Preferences::SYNC_SELECTED_SERVICE_ADDIN, m_selected_sync_addin->id());
+      m_gnote.preferences().sync_selected_service_addin(m_selected_sync_addin->id());
 
       m_sync_addin_combo->set_sensitive(false);
       m_sync_addin_prefs_widget->set_sensitive(false);
@@ -1255,8 +1253,7 @@ namespace gnote {
       // TODO: Change the SyncServiceAddin API so the call to
       // SaveConfiguration has a way of passing back an exception
       // or other text so it can be displayed to the user.
-      m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_string(
-       Preferences::SYNC_SELECTED_SERVICE_ADDIN, "");
+      m_gnote.preferences().sync_selected_service_addin("");
 
       m_sync_addin_combo->set_sensitive(true);
       m_sync_addin_prefs_widget->set_sensitive(true);
@@ -1429,8 +1426,7 @@ namespace gnote {
 
   void PreferencesDialog::update_timeout_pref()
   {
-    m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_SYNC)->set_int(
-        Preferences::SYNC_AUTOSYNC_TIMEOUT,
+    m_gnote.preferences().sync_autosync_timeout(
         m_autosync_check->get_active() ? static_cast<int>(m_autosync_spinner->get_value()) : -1);
   }
 
