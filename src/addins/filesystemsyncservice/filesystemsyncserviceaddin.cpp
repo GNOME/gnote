@@ -183,8 +183,7 @@ bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void, bool,
   m_path = syncPath;
 
   // TODO: Try to create and delete a file.  If it fails, this should fail
-  ignote().preferences().get_schema_settings(
-    gnote::Preferences::SCHEMA_SYNC)->set_string(gnote::Preferences::SYNC_LOCAL_PATH, m_path);
+  ignote().preferences().sync_local_path(m_path);
 
   on_saved(true, "");
   return true;
@@ -193,15 +192,13 @@ bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void, bool,
 
 void FileSystemSyncServiceAddin::reset_configuration()
 {
-  ignote().preferences().get_schema_settings(
-    gnote::Preferences::SCHEMA_SYNC)->set_string(gnote::Preferences::SYNC_LOCAL_PATH, "");
+  ignote().preferences().sync_local_path("");
 }
 
 
 bool FileSystemSyncServiceAddin::is_configured()
 {
-  return ignote().preferences().get_schema_settings(
-    gnote::Preferences::SCHEMA_SYNC)->get_string(gnote::Preferences::SYNC_LOCAL_PATH) != "";
+  return ignote().preferences().sync_local_path() != "";
 }
 
 
@@ -232,9 +229,7 @@ bool FileSystemSyncServiceAddin::initialized()
 
 bool FileSystemSyncServiceAddin::get_config_settings(Glib::ustring & syncPath)
 {
-  syncPath = ignote().preferences().get_schema_settings(
-    gnote::Preferences::SCHEMA_SYNC)->get_string(gnote::Preferences::SYNC_LOCAL_PATH);
-
+  syncPath = ignote().preferences().sync_local_path();
   return syncPath != "";
 }
 
