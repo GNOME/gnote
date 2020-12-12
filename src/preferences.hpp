@@ -38,7 +38,6 @@ namespace gnote {
     static const char *SCHEMA_SYNC;
     static const char *SCHEMA_SYNC_GVFS;
     static const char *SCHEMA_SYNC_WDFS;
-    static const char *SCHEMA_DESKTOP_GNOME_INTERFACE;
 
     static const char *ENABLE_SPELLCHECKING;
     static const char *ENABLE_AUTO_LINKS;
@@ -86,9 +85,8 @@ namespace gnote {
     static const char *SYNC_FUSE_WDFS_URL;
     static const char *SYNC_FUSE_WDFS_USERNAME;
 
-    static const char *DESKTOP_GNOME_CLOCK_FORMAT;
-    static const char *DESKTOP_GNOME_FONT;
-    static const char *DESKTOP_GNOME_KEY_THEME;
+    static const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT;
+    static const Glib::ustring DESKTOP_GNOME_FONT;
 
     Preferences() {}
     void init();

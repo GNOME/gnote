@@ -23,6 +23,7 @@
 #include "preferences.hpp"
 
 
+const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 
 namespace gnote {
 
@@ -32,7 +33,6 @@ namespace gnote {
   const char * Preferences::SCHEMA_SYNC = "org.gnome.gnote.sync";
   const char * Preferences::SCHEMA_SYNC_GVFS = "org.gnome.gnote.sync.gvfs";
   const char * Preferences::SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
-  const char * Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 
   const char * Preferences::ENABLE_SPELLCHECKING = "enable-spellchecking";
   const char * Preferences::ENABLE_AUTO_LINKS = "enable-auto-links";
@@ -80,9 +80,8 @@ namespace gnote {
   const char * Preferences::SYNC_FUSE_WDFS_URL = "url";
   const char * Preferences::SYNC_FUSE_WDFS_USERNAME = "username";
 
-  const char * Preferences::DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
-  const char * Preferences::DESKTOP_GNOME_FONT = "document-font-name";
-  const char * Preferences::DESKTOP_GNOME_KEY_THEME = "gtk-key-theme";
+  const Glib::ustring Preferences::DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
+  const Glib::ustring Preferences::DESKTOP_GNOME_FONT = "document-font-name";
 
 
   void Preferences::init()
