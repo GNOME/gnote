@@ -87,10 +87,37 @@ namespace gnote {
       {
         return m_schema_gnome_interface;
       }
+    const Glib::RefPtr<Gio::Settings> & schema_sync() const
+      {
+        return m_schema_sync;
+      }
+
+    Glib::ustring sync_client_id() const;
+    Glib::ustring sync_local_path() const;
+    void sync_local_path(const Glib::ustring &);
+    Glib::ustring sync_selected_service_addin() const
+      {
+        return m_schema_sync->get_string(SYNC_SELECTED_SERVICE_ADDIN);
+      }
+    void sync_selected_service_addin(const Glib::ustring & value)
+      {
+        m_schema_sync->set_string(SYNC_SELECTED_SERVICE_ADDIN, value);
+      }
+    int sync_configured_conflict_behavior() const;
+    void sync_configured_conflict_behavior(int);
+    int sync_autosync_timeout() const
+      {
+        return m_schema_sync->get_int(SYNC_AUTOSYNC_TIMEOUT);
+      }
+    void sync_autosync_timeout(int value)
+      {
+        m_schema_sync->set_int(SYNC_AUTOSYNC_TIMEOUT, value);
+      }
   private:
     Preferences(const Preferences &) = delete;
     std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
     Glib::RefPtr<Gio::Settings> m_schema_gnome_interface;
+    Glib::RefPtr<Gio::Settings> m_schema_sync;
   };
 
 

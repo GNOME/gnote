@@ -80,6 +80,7 @@ namespace gnote {
   {
     m_schemas[SCHEMA_GNOTE] = Gio::Settings::create(SCHEMA_GNOTE);
     m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
+    m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
   }
   
   Glib::RefPtr<Gio::Settings> Preferences::get_schema_settings(const Glib::ustring & schema)
@@ -95,6 +96,31 @@ namespace gnote {
     }
 
     return settings;
+  }
+
+  Glib::ustring Preferences::sync_client_id() const
+  {
+    return m_schema_sync->get_string(SYNC_CLIENT_ID);
+  }
+
+  Glib::ustring Preferences::sync_local_path() const
+  {
+    return m_schema_sync->get_string(SYNC_LOCAL_PATH);
+  }
+
+  void Preferences::sync_local_path(const Glib::ustring & value)
+  {
+    m_schema_sync->set_string(SYNC_LOCAL_PATH, value);
+  }
+
+  int Preferences::sync_configured_conflict_behavior() const
+  {
+    return m_schema_sync->get_int(SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
+  }
+
+  void Preferences::sync_configured_conflict_behavior(int value)
+  {
+    m_schema_sync->set_int(SYNC_CONFIGURED_CONFLICT_BEHAVIOR, value);
   }
 
 }
