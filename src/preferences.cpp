@@ -24,12 +24,16 @@
 
 
 const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
+const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
+
+const Glib::ustring SYNC_CLIENT_ID = "sync-guid";
+const Glib::ustring SYNC_LOCAL_PATH = "sync-local-path";
+const Glib::ustring SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "sync-conflict-behavior";
 
 namespace gnote {
 
 
   const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
-  const char * Preferences::SCHEMA_SYNC = "org.gnome.gnote.sync";
   const char * Preferences::SCHEMA_SYNC_GVFS = "org.gnome.gnote.sync.gvfs";
   const char * Preferences::SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
@@ -47,11 +51,8 @@ namespace gnote {
   const char * Preferences::MENU_NOTE_COUNT = "menu-note-count";
   const char * Preferences::MENU_PINNED_NOTES = "menu-pinned-notes";
 
-  const char * Preferences::SYNC_CLIENT_ID = "sync-guid";
-  const char * Preferences::SYNC_LOCAL_PATH = "sync-local-path";
-  const char * Preferences::SYNC_SELECTED_SERVICE_ADDIN = "sync-selected-service-addin";
-  const char * Preferences::SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "sync-conflict-behavior";
-  const char * Preferences::SYNC_AUTOSYNC_TIMEOUT = "autosync-timeout";
+  const Glib::ustring Preferences::SYNC_SELECTED_SERVICE_ADDIN = "sync-selected-service-addin";
+  const Glib::ustring Preferences::SYNC_AUTOSYNC_TIMEOUT = "autosync-timeout";
 
   const char * Preferences::NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
   const char * Preferences::USE_STATUS_ICON = "use-status-icon";

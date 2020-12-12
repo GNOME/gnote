@@ -33,7 +33,6 @@ namespace gnote {
   {
   public:
     static const char *SCHEMA_GNOTE;
-    static const char *SCHEMA_SYNC;
     static const char *SCHEMA_SYNC_GVFS;
     static const char *SCHEMA_SYNC_WDFS;
 
@@ -63,11 +62,8 @@ namespace gnote {
     static const char *SEARCH_SORTING;
     static const char *USE_CLIENT_SIDE_DECORATIONS;
 
-    static const char *SYNC_CLIENT_ID;
-    static const char *SYNC_LOCAL_PATH;
-    static const char *SYNC_SELECTED_SERVICE_ADDIN;
-    static const char *SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
-    static const char *SYNC_AUTOSYNC_TIMEOUT;
+    static const Glib::ustring SYNC_SELECTED_SERVICE_ADDIN;
+    static const Glib::ustring SYNC_AUTOSYNC_TIMEOUT;
 
     static const char *SYNC_GVFS_URI;
 
