@@ -417,10 +417,12 @@ namespace sync {
   }
 
 
-  void SyncManager::preferences_setting_changed(const Glib::ustring &)
+  void SyncManager::preferences_setting_changed(const Glib::ustring & key)
   {
-    // Update sync item based on configuration.
-    update_sync_action();
+    if(key == Preferences::SYNC_SELECTED_SERVICE_ADDIN || key == Preferences::SYNC_AUTOSYNC_TIMEOUT) {
+      // Update sync item based on configuration.
+      update_sync_action();
+    }
   }
 
 
