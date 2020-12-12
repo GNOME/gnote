@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -41,24 +41,24 @@ namespace gnote {
     property_can_default().set_value(true);
 
     Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
+    settings->signal_changed().connect(sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
     //Set up the schema to watch the default document font
-    Glib::RefPtr<Gio::Settings> desktop_settings = m_preferences
-      .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
-    if(desktop_settings) {
-      desktop_settings->signal_changed().connect(
-        sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
-    }
+    auto desktop_settings = m_preferences.schema_gnome_interface();
+    desktop_settings->signal_changed(Preferences::DESKTOP_GNOME_FONT)
+      .connect(sigc::mem_fun(*this, &NoteEditor::on_gnome_font_setting_changed));
+
+    // query all monitored settings to get change notifications
+    bool enable_custom_font = settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT);
+    auto font_string = settings->get_string(Preferences::CUSTOM_FONT_FACE);
+    auto gnome_font = get_gnome_document_font_description(desktop_settings);
 
     // Set Font from preference
-    if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
-      Glib::ustring font_string = settings->get_string(Preferences::CUSTOM_FONT_FACE);
-      override_font (Pango::FontDescription(font_string));
+    if(enable_custom_font) {
+      modify_font_from_string(font_string);
     }
     else {
-      override_font (get_gnome_document_font_description ());
+      override_font(gnome_font);
     }
-
-    settings->signal_changed().connect(sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
 
     // Set extra editor drag targets supported (in addition
     // to the default TextView's various text formats)...
@@ -78,17 +78,17 @@ namespace gnote {
 
   Pango::FontDescription NoteEditor::get_gnome_document_font_description()
   {
+    return get_gnome_document_font_description(m_preferences.schema_gnome_interface());
+  }
+
+
+  Pango::FontDescription NoteEditor::get_gnome_document_font_description(const Glib::RefPtr<Gio::Settings> & desktop_settings)
+  {
     try {
-      Glib::RefPtr<Gio::Settings> desktop_settings = m_preferences
-        .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
-      if(desktop_settings) {
-        Glib::ustring doc_font_string =
-          desktop_settings->get_string(Preferences::DESKTOP_GNOME_FONT);
-        return Pango::FontDescription(doc_font_string);
-      }
+      Glib::ustring doc_font_string = desktop_settings->get_string(Preferences::DESKTOP_GNOME_FONT);
+      return Pango::FontDescription(doc_font_string);
     } 
     catch (...) {
-
     }
 
     return Pango::FontDescription();
@@ -100,16 +100,13 @@ namespace gnote {
     if(key == Preferences::ENABLE_CUSTOM_FONT || key == Preferences::CUSTOM_FONT_FACE) {
       update_custom_font_setting ();
     }
-    else if(key == Preferences::DESKTOP_GNOME_FONT) {
-      if (!m_preferences.get_schema_settings(
-          Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
-        Glib::RefPtr<Gio::Settings> desktop_settings = m_preferences
-          .get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
-        if(desktop_settings) {
-          Glib::ustring value = desktop_settings->get_string(key);
-          modify_font_from_string(value);
-        }
-      }
+  }
+
+
+  void NoteEditor::on_gnome_font_setting_changed(const Glib::ustring &)
+  {
+    if(!m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
+      override_font(get_gnome_document_font_description());
     }
   }
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013,2016-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,12 @@
 #include <glibmm/refptr.h>
 #include <gtkmm/textview.h>
 
+
+namespace Gio {
+
+class Settings;
+
+}
 
 namespace gnote {
 
@@ -56,7 +62,9 @@ private:
   static void paste_ended(GtkTextView*, NoteEditor *_this);
 
   Pango::FontDescription get_gnome_document_font_description();
+  Pango::FontDescription get_gnome_document_font_description(const Glib::RefPtr<Gio::Settings> & desktop_settings);
   void on_font_setting_changed (const Glib::ustring & key);
+  void on_gnome_font_setting_changed(const Glib::ustring & key);
   void update_custom_font_setting();
   void modify_font_from_string (const Glib::ustring & fontString);
   bool key_pressed (GdkEventKey * ev);
