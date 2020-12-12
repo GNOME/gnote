@@ -109,8 +109,9 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
   parse_sorting_setting(settings->get_string(Preferences::SEARCH_SORTING));
-  settings = g.preferences().get_schema_settings(Preferences::SCHEMA_DESKTOP_GNOME_INTERFACE);
-  settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
+  g.preferences().schema_gnome_interface()->signal_changed(Preferences::DESKTOP_GNOME_CLOCK_FORMAT)
+    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_gnome_clock_format_changed));
+  g.preferences().schema_gnome_interface()->get_string(Preferences::DESKTOP_GNOME_CLOCK_FORMAT); // query so the signal is emmitted
 }
 
 SearchNotesWidget::~SearchNotesWidget()
@@ -1440,9 +1441,11 @@ void SearchNotesWidget::on_settings_changed(const Glib::ustring & key)
       m_note_list_context_menu = NULL;
     }
   }
-  else if(key == Preferences::DESKTOP_GNOME_CLOCK_FORMAT) {
-    update_results();
-  }
+}
+
+void SearchNotesWidget::on_gnome_clock_format_changed(const Glib::ustring & /*key*/)
+{
+  update_results();
 }
 
 void SearchNotesWidget::on_sorting_changed()
