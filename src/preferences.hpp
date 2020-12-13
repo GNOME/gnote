@@ -62,9 +62,6 @@ namespace gnote {
     static const char *SEARCH_SORTING;
     static const char *USE_CLIENT_SIDE_DECORATIONS;
 
-    static const Glib::ustring SYNC_SELECTED_SERVICE_ADDIN;
-    static const Glib::ustring SYNC_AUTOSYNC_TIMEOUT;
-
     static const char *SYNC_GVFS_URI;
 
     static const char *SYNC_FUSE_MOUNT_TIMEOUT;
@@ -76,10 +73,6 @@ namespace gnote {
     void init();
 
     Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
-    const Glib::RefPtr<Gio::Settings> & schema_sync() const
-      {
-        return m_schema_sync;
-      }
 
     const Glib::ustring & desktop_gnome_clock_format() const
       {
