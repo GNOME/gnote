@@ -81,6 +81,7 @@ namespace gnote {
     m_schemas[SCHEMA_GNOTE] = Gio::Settings::create(SCHEMA_GNOTE);
     m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
+    m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
     m_schema_gnome_interface->signal_changed(DESKTOP_GNOME_CLOCK_FORMAT).connect([this](const Glib::ustring &) {
       m_desktop_gnome_clock_format = m_schema_gnome_interface->get_string(DESKTOP_GNOME_CLOCK_FORMAT);
@@ -158,6 +159,46 @@ namespace gnote {
   {
     m_sync_autosync_timeout = value;
     m_schema_sync->set_int(SYNC_AUTOSYNC_TIMEOUT, value);
+  }
+
+  int Preferences::sync_fuse_mount_timeout() const
+  {
+    return m_schema_sync_wdfs->get_int(SYNC_FUSE_MOUNT_TIMEOUT);
+  }
+
+  void Preferences::sync_fuse_mount_timeout(int value)
+  {
+    m_schema_sync_wdfs->set_int(SYNC_FUSE_MOUNT_TIMEOUT, value);
+  }
+
+  bool Preferences::sync_fuse_wdfs_accept_sllcert() const
+  {
+    return m_schema_sync_wdfs->get_boolean(SYNC_FUSE_WDFS_ACCEPT_SSLCERT);
+  }
+
+  void Preferences::sync_fuse_wdfs_accept_sllcert(bool value)
+  {
+    m_schema_sync_wdfs->set_boolean(SYNC_FUSE_WDFS_ACCEPT_SSLCERT, value);
+  }
+
+  Glib::ustring Preferences::sync_fuse_wdfs_url() const
+  {
+    return m_schema_sync_wdfs->get_string(SYNC_FUSE_WDFS_URL);
+  }
+
+  void Preferences::sync_fuse_wdfs_url(const Glib::ustring & value)
+  {
+    m_schema_sync_wdfs->set_string(SYNC_FUSE_WDFS_URL, value);
+  }
+
+  Glib::ustring Preferences::sync_fuse_wdfs_username() const
+  {
+    return m_schema_sync_wdfs->get_string(SYNC_FUSE_WDFS_USERNAME);
+  }
+
+  void Preferences::sync_fuse_wdfs_username(const Glib::ustring & value) const
+  {
+    m_schema_sync_wdfs->set_string(SYNC_FUSE_WDFS_USERNAME, value);
   }
 
 }

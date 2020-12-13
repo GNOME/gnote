@@ -99,11 +99,21 @@ namespace gnote {
       }
     void sync_autosync_timeout(int value);
     sigc::signal<void> signal_sync_autosync_timeout_changed;
+
+    int sync_fuse_mount_timeout() const;
+    void sync_fuse_mount_timeout(int);
+    bool sync_fuse_wdfs_accept_sllcert() const;
+    void sync_fuse_wdfs_accept_sllcert(bool);
+    Glib::ustring sync_fuse_wdfs_url() const;
+    void sync_fuse_wdfs_url(const Glib::ustring &);
+    Glib::ustring sync_fuse_wdfs_username() const;
+    void sync_fuse_wdfs_username(const Glib::ustring &) const;
   private:
     Preferences(const Preferences &) = delete;
     std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
     Glib::RefPtr<Gio::Settings> m_schema_gnome_interface;
     Glib::RefPtr<Gio::Settings> m_schema_sync;
+    Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;
 
     Glib::ustring m_desktop_gnome_clock_format;
     Glib::ustring m_desktop_gnome_font;
