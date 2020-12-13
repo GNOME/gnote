@@ -33,7 +33,6 @@ namespace gnote {
   {
   public:
     static const char *SCHEMA_GNOTE;
-    static const char *SCHEMA_SYNC_GVFS;
     static const char *SCHEMA_SYNC_WDFS;
 
     static const char *ENABLE_SPELLCHECKING;
@@ -61,8 +60,6 @@ namespace gnote {
     static const char *SEARCH_WINDOW_SPLITTER_POS;
     static const char *SEARCH_SORTING;
     static const char *USE_CLIENT_SIDE_DECORATIONS;
-
-    static const char *SYNC_GVFS_URI;
 
     static const char *SYNC_FUSE_MOUNT_TIMEOUT;
     static const char *SYNC_FUSE_WDFS_ACCEPT_SSLCERT;
