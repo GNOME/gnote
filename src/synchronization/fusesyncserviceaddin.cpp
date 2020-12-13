@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -256,17 +256,7 @@ bool FuseSyncServiceAddin::mount_fuse(bool useStoredValues)
 
 int FuseSyncServiceAddin::get_timeout_ms()
 {
-  Glib::RefPtr<Gio::Settings> settings = ignote().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
-  try {
-    return settings->get_int(Preferences::SYNC_FUSE_MOUNT_TIMEOUT);
-  }
-  catch(...) {
-    try {
-      settings->set_int(Preferences::SYNC_FUSE_MOUNT_TIMEOUT, DEFAULT_MOUNT_TIMEOUT_MS);
-    }
-    catch(...) {}
-    return DEFAULT_MOUNT_TIMEOUT_MS;
-  }
+  return ignote().preferences().sync_fuse_mount_timeout();
 }
 
 void FuseSyncServiceAddin::set_up_mount_path()
