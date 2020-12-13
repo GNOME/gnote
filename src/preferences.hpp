@@ -97,22 +97,18 @@ namespace gnote {
     void sync_local_path(const Glib::ustring &);
     Glib::ustring sync_selected_service_addin() const
       {
-        return m_schema_sync->get_string(SYNC_SELECTED_SERVICE_ADDIN);
+        return m_sync_selected_service_addin;
       }
-    void sync_selected_service_addin(const Glib::ustring & value)
-      {
-        m_schema_sync->set_string(SYNC_SELECTED_SERVICE_ADDIN, value);
-      }
+    void sync_selected_service_addin(const Glib::ustring & value);
+    sigc::signal<void> signal_sync_selected_service_addin_changed;
     int sync_configured_conflict_behavior() const;
     void sync_configured_conflict_behavior(int);
     int sync_autosync_timeout() const
       {
-        return m_schema_sync->get_int(SYNC_AUTOSYNC_TIMEOUT);
+        return m_sync_autosync_timeout;
       }
-    void sync_autosync_timeout(int value)
-      {
-        m_schema_sync->set_int(SYNC_AUTOSYNC_TIMEOUT, value);
-      }
+    void sync_autosync_timeout(int value);
+    sigc::signal<void> signal_sync_autosync_timeout_changed;
   private:
     Preferences(const Preferences &) = delete;
     std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
@@ -121,6 +117,10 @@ namespace gnote {
 
     Glib::ustring m_desktop_gnome_clock_format;
     Glib::ustring m_desktop_gnome_font;
+
+    Glib::ustring m_sync_selected_service_addin;
+
+    int m_sync_autosync_timeout;
   };
 
 

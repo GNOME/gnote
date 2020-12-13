@@ -97,6 +97,19 @@ namespace gnote {
 
     m_desktop_gnome_clock_format = m_schema_gnome_interface->get_string(DESKTOP_GNOME_CLOCK_FORMAT);
     m_desktop_gnome_font = m_schema_gnome_interface->get_string(DESKTOP_GNOME_FONT);
+
+
+    m_schema_sync->signal_changed(SYNC_SELECTED_SERVICE_ADDIN).connect([this](const Glib::ustring &) {
+      m_sync_selected_service_addin = m_schema_sync->get_string(SYNC_SELECTED_SERVICE_ADDIN);
+      signal_sync_selected_service_addin_changed();
+    });
+    m_schema_sync->signal_changed(SYNC_AUTOSYNC_TIMEOUT).connect([this](const Glib::ustring &) {
+      m_sync_autosync_timeout = m_schema_sync->get_int(SYNC_AUTOSYNC_TIMEOUT);
+      signal_sync_autosync_timeout_changed();
+    });
+
+    m_sync_selected_service_addin = m_schema_sync->get_string(SYNC_SELECTED_SERVICE_ADDIN);
+    m_sync_autosync_timeout = m_schema_sync->get_int(SYNC_AUTOSYNC_TIMEOUT);
   }
   
   Glib::RefPtr<Gio::Settings> Preferences::get_schema_settings(const Glib::ustring & schema)
@@ -129,6 +142,12 @@ namespace gnote {
     m_schema_sync->set_string(SYNC_LOCAL_PATH, value);
   }
 
+  void Preferences::sync_selected_service_addin(const Glib::ustring & value)
+  {
+    m_sync_selected_service_addin = value;
+    m_schema_sync->set_string(SYNC_SELECTED_SERVICE_ADDIN, value);
+  }
+
   int Preferences::sync_configured_conflict_behavior() const
   {
     return m_schema_sync->get_int(SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
@@ -139,4 +158,11 @@ namespace gnote {
     m_schema_sync->set_int(SYNC_CONFIGURED_CONFLICT_BEHAVIOR, value);
   }
 
+  void Preferences::sync_autosync_timeout(int value)
+  {
+    m_sync_autosync_timeout = value;
+    m_schema_sync->set_int(SYNC_AUTOSYNC_TIMEOUT, value);
+  }
+
 }
+
