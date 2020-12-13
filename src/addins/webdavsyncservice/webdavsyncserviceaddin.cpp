@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -207,10 +207,8 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
   try {
     password = sharp::string_trim(Ring::find_password(s_request_attributes));
     if(password != "") {
-      Glib::RefPtr<Gio::Settings> settings = ignote().preferences()
-        .get_schema_settings(Preferences::SCHEMA_SYNC_WDFS);
-      username = sharp::string_trim(settings->get_string(Preferences::SYNC_FUSE_WDFS_USERNAME));
-      url = sharp::string_trim(settings->get_string(Preferences::SYNC_FUSE_WDFS_URL));
+      username = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_username());
+      url = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_url());
     }
   }
   catch(KeyringException & ke) {
@@ -224,10 +222,8 @@ void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, con
 {
   // Save configuration into the GNOME Keyring and GSettings
   try {
-    Glib::RefPtr<Gio::Settings> settings = ignote().preferences()
-      .get_schema_settings(Preferences::SCHEMA_SYNC_WDFS);
-    settings->set_string(Preferences::SYNC_FUSE_WDFS_USERNAME, username);
-    settings->set_string(Preferences::SYNC_FUSE_WDFS_URL, url);
+    ignote().preferences().sync_fuse_wdfs_username(username);
+    ignote().preferences().sync_fuse_wdfs_url(url);
 
     if(password != "") {
       Ring::create_password(Ring::default_keyring(), KEYRING_ITEM_NAME, s_request_attributes, password);
@@ -264,8 +260,7 @@ bool WebDavSyncServiceAddin::get_pref_widget_settings(Glib::ustring & url, Glib:
 bool WebDavSyncServiceAddin::accept_ssl_cert()
 {
   try {
-    return ignote().preferences().get_schema_settings(Preferences::SCHEMA_SYNC_WDFS)->get_boolean(
-        Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT);
+    return ignote().preferences().sync_fuse_wdfs_accept_sllcert();
   }
   catch(...) {
     return false;
