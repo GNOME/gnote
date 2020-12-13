@@ -124,7 +124,6 @@ private:
   void on_new_notebook();
   void on_delete_notebook();
   void on_settings_changed(const Glib::ustring & key);
-  void on_gnome_clock_format_changed(const Glib::ustring & key);
   void on_sorting_changed();
   void parse_sorting_setting(const Glib::ustring & sorting);
   void on_rename_notebook();
