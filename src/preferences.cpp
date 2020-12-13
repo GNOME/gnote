@@ -22,6 +22,7 @@
 
 #include "preferences.hpp"
 
+namespace {
 
 const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
@@ -29,6 +30,8 @@ const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const Glib::ustring SYNC_CLIENT_ID = "sync-guid";
 const Glib::ustring SYNC_LOCAL_PATH = "sync-local-path";
 const Glib::ustring SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "sync-conflict-behavior";
+
+}
 
 namespace gnote {
 
