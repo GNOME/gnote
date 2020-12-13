@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019 Aurimas Cernius
+ * Copyright (C) 2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,8 @@
 
 #ifndef _GVFS_SYNC_SERVICE_ADDIN_
 #define _GVFS_SYNC_SERVICE_ADDIN_
+
+#include <giomm/settings.h>
 
 #include "sharp/dynamicmodule.hpp"
 #include "synchronization/syncserviceaddin.hpp"
@@ -70,6 +72,7 @@ private:
   void unmount_async(const sigc::slot<void> & completed);
   bool test_sync_directory(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & sync_uri, Glib::ustring & error);
 
+  Glib::RefPtr<Gio::Settings> m_gvfs_settings;
   Glib::ustring m_uri;
   Gtk::Entry *m_uri_entry;
   bool m_initialized;

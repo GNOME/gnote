@@ -28,13 +28,16 @@
 #include "debug.hpp"
 #include "gvfssyncserviceaddin.hpp"
 #include "ignote.hpp"
-#include "preferences.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
 #include "synchronization/filesystemsyncserver.hpp"
 
 
 namespace gvfssyncservice {
+
+const char *SCHEMA_SYNC_GVFS = "org.gnome.gnote.sync.gvfs";
+const Glib::ustring SYNC_GVFS_URI = "uri";
+
 
 GvfsSyncServiceModule::GvfsSyncServiceModule()
 {
@@ -55,6 +58,9 @@ void GvfsSyncServiceAddin::initialize()
 {
   m_initialized = true;
   m_enabled = true;
+  if(!m_gvfs_settings) {
+    m_gvfs_settings = Gio::Settings::create(SCHEMA_SYNC_GVFS);
+  }
 }
 
 void GvfsSyncServiceAddin::shutdown()
@@ -246,7 +252,7 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
       unmount_async([this, sync_uri, on_saved, success, error] {
         if(success) {
           m_uri = sync_uri;
-          ignote().preferences().get_schema_settings(gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, m_uri);
+          m_gvfs_settings->set_string(SYNC_GVFS_URI, m_uri);
         }
         on_saved(success, error);
       });
@@ -324,15 +330,13 @@ bool GvfsSyncServiceAddin::test_sync_directory(const Glib::RefPtr<Gio::File> & p
 
 void GvfsSyncServiceAddin::reset_configuration()
 {
-  ignote().preferences().get_schema_settings(
-    gnote::Preferences::SCHEMA_SYNC_GVFS)->set_string(gnote::Preferences::SYNC_GVFS_URI, "");
+  m_gvfs_settings->set_string(SYNC_GVFS_URI, "");
 }
 
 
 bool GvfsSyncServiceAddin::is_configured()
 {
-  return ignote().preferences().get_schema_settings(
-    gnote::Preferences::SCHEMA_SYNC_GVFS)->get_string(gnote::Preferences::SYNC_GVFS_URI) != "";
+  return m_gvfs_settings->get_string(SYNC_GVFS_URI) != "";
 }
 
 
@@ -363,8 +367,7 @@ bool GvfsSyncServiceAddin::initialized()
 
 bool GvfsSyncServiceAddin::get_config_settings(Glib::ustring & sync_path)
 {
-  sync_path = ignote().preferences().get_schema_settings(
-    gnote::Preferences::SCHEMA_SYNC_GVFS)->get_string(gnote::Preferences::SYNC_GVFS_URI);
+  sync_path = m_gvfs_settings->get_string(SYNC_GVFS_URI);
 
   return sync_path != "";
 }
