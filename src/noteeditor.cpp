@@ -43,14 +43,13 @@ namespace gnote {
     Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
     settings->signal_changed().connect(sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
     //Set up the schema to watch the default document font
-    auto desktop_settings = m_preferences.schema_gnome_interface();
-    desktop_settings->signal_changed(Preferences::DESKTOP_GNOME_FONT)
+    m_preferences.signal_desktop_gnome_font_changed
       .connect(sigc::mem_fun(*this, &NoteEditor::on_gnome_font_setting_changed));
 
     // query all monitored settings to get change notifications
     bool enable_custom_font = settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT);
     auto font_string = settings->get_string(Preferences::CUSTOM_FONT_FACE);
-    auto gnome_font = get_gnome_document_font_description(desktop_settings);
+    auto gnome_font = get_gnome_document_font_description();
 
     // Set Font from preference
     if(enable_custom_font) {
@@ -78,14 +77,8 @@ namespace gnote {
 
   Pango::FontDescription NoteEditor::get_gnome_document_font_description()
   {
-    return get_gnome_document_font_description(m_preferences.schema_gnome_interface());
-  }
-
-
-  Pango::FontDescription NoteEditor::get_gnome_document_font_description(const Glib::RefPtr<Gio::Settings> & desktop_settings)
-  {
     try {
-      Glib::ustring doc_font_string = desktop_settings->get_string(Preferences::DESKTOP_GNOME_FONT);
+      auto doc_font_string = m_preferences.desktop_gnome_font();
       return Pango::FontDescription(doc_font_string);
     } 
     catch (...) {
@@ -103,7 +96,7 @@ namespace gnote {
   }
 
 
-  void NoteEditor::on_gnome_font_setting_changed(const Glib::ustring &)
+  void NoteEditor::on_gnome_font_setting_changed()
   {
     if(!m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
       override_font(get_gnome_document_font_description());
