@@ -88,6 +88,17 @@ namespace gnote {
         return m_schema_sync;
       }
 
+    const Glib::ustring & desktop_gnome_clock_format() const
+      {
+        return m_desktop_gnome_clock_format;
+      }
+    sigc::signal<void> signal_desktop_gnome_clock_format_changed;
+    const Glib::ustring & desktop_gnome_font() const
+      {
+        return m_desktop_gnome_font;
+      }
+    sigc::signal<void> signal_desktop_gnome_font_changed;
+
     Glib::ustring sync_client_id() const;
     Glib::ustring sync_local_path() const;
     void sync_local_path(const Glib::ustring &);
@@ -114,6 +125,9 @@ namespace gnote {
     std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
     Glib::RefPtr<Gio::Settings> m_schema_gnome_interface;
     Glib::RefPtr<Gio::Settings> m_schema_sync;
+
+    Glib::ustring m_desktop_gnome_clock_format;
+    Glib::ustring m_desktop_gnome_font;
   };
 
 

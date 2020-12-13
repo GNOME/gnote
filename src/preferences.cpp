@@ -82,6 +82,18 @@ namespace gnote {
     m_schemas[SCHEMA_GNOTE] = Gio::Settings::create(SCHEMA_GNOTE);
     m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
+
+    m_schema_gnome_interface->signal_changed(DESKTOP_GNOME_CLOCK_FORMAT).connect([this](const Glib::ustring &) {
+      m_desktop_gnome_clock_format = m_schema_gnome_interface->get_string(DESKTOP_GNOME_CLOCK_FORMAT);
+      signal_desktop_gnome_clock_format_changed();
+    });
+    m_schema_gnome_interface->signal_changed(DESKTOP_GNOME_FONT).connect([this](const Glib::ustring &) {
+      m_desktop_gnome_font = m_schema_gnome_interface->get_string(DESKTOP_GNOME_FONT);
+      signal_desktop_gnome_font_changed();
+    });
+
+    m_desktop_gnome_clock_format = m_schema_gnome_interface->get_string(DESKTOP_GNOME_CLOCK_FORMAT);
+    m_desktop_gnome_font = m_schema_gnome_interface->get_string(DESKTOP_GNOME_FONT);
   }
   
   Glib::RefPtr<Gio::Settings> Preferences::get_schema_settings(const Glib::ustring & schema)
