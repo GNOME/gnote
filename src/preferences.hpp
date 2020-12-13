@@ -72,17 +72,10 @@ namespace gnote {
     static const char *SYNC_FUSE_WDFS_URL;
     static const char *SYNC_FUSE_WDFS_USERNAME;
 
-    static const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT;
-    static const Glib::ustring DESKTOP_GNOME_FONT;
-
     Preferences() {}
     void init();
 
     Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
-    const Glib::RefPtr<Gio::Settings> & schema_gnome_interface() const
-      {
-        return m_schema_gnome_interface;
-      }
     const Glib::RefPtr<Gio::Settings> & schema_sync() const
       {
         return m_schema_sync;
