@@ -26,6 +26,7 @@ namespace {
 
 const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
+const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
 const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
@@ -36,13 +37,17 @@ const Glib::ustring SYNC_SELECTED_SERVICE_ADDIN = "sync-selected-service-addin";
 const Glib::ustring SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "sync-conflict-behavior";
 const Glib::ustring SYNC_AUTOSYNC_TIMEOUT = "autosync-timeout";
 
+const Glib::ustring SYNC_FUSE_MOUNT_TIMEOUT = "sync-fuse-mount-timeout-ms";
+const Glib::ustring SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";
+const Glib::ustring SYNC_FUSE_WDFS_URL = "url";
+const Glib::ustring SYNC_FUSE_WDFS_USERNAME = "username";
+
 }
 
 namespace gnote {
 
 
   const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
-  const char * Preferences::SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
   const char * Preferences::ENABLE_SPELLCHECKING = "enable-spellchecking";
   const char * Preferences::ENABLE_AUTO_LINKS = "enable-auto-links";
@@ -69,11 +74,6 @@ namespace gnote {
   const char * Preferences::SEARCH_WINDOW_HEIGHT = "search-window-height";
   const char * Preferences::SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
   const char * Preferences::SEARCH_SORTING = "search-sorting";
-
-  const char * Preferences::SYNC_FUSE_MOUNT_TIMEOUT = "sync-fuse-mount-timeout-ms";
-  const char * Preferences::SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";
-  const char * Preferences::SYNC_FUSE_WDFS_URL = "url";
-  const char * Preferences::SYNC_FUSE_WDFS_USERNAME = "username";
 
 
   void Preferences::init()
