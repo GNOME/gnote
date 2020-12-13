@@ -167,7 +167,7 @@ namespace gnote {
     m_gnote.preferences().get_schema_settings(
       Preferences::SCHEMA_GNOTE)->signal_changed().connect(
         sigc::mem_fun(*this, &PreferencesDialog::on_preferences_setting_changed));
-    m_gnote.preferences().schema_sync()->signal_changed(Preferences::SYNC_AUTOSYNC_TIMEOUT)
+    m_gnote.preferences().signal_sync_autosync_timeout_changed
       .connect(sigc::mem_fun(*this, &PreferencesDialog::on_autosync_timeout_setting_changed));
   }
 
@@ -1001,7 +1001,7 @@ namespace gnote {
 
 
 
-  void PreferencesDialog::on_autosync_timeout_setting_changed(const Glib::ustring &)
+  void PreferencesDialog::on_autosync_timeout_setting_changed()
   {
     int timeout = m_gnote.preferences().sync_autosync_timeout();
     if(timeout <= 0 && m_autosync_check->get_active()) {

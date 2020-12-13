@@ -74,7 +74,7 @@ private:
   void on_sync_settings_saved(bool saved, Glib::ustring errorMsg);
 
   void on_preferences_setting_changed(const Glib::ustring & key);
-  void on_autosync_timeout_setting_changed(const Glib::ustring &);
+  void on_autosync_timeout_setting_changed();
   void on_rename_behavior_changed();
 
   Glib::ustring get_selected_addin();
