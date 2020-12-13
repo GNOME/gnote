@@ -175,7 +175,7 @@ namespace gnote {
     {
       bool use_12h = false;
       if(show_time) {
-        use_12h = preferences.schema_gnome_interface()->get_string(Preferences::DESKTOP_GNOME_CLOCK_FORMAT) == "12h";
+        use_12h = preferences.desktop_gnome_clock_format() == "12h";
       }
       return get_pretty_print_date(date, show_time, use_12h);
     }
