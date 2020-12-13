@@ -77,7 +77,6 @@ namespace sync {
   private:
     void handle_note_saved_or_deleted(const NoteBase::Ptr & note);
     void handle_note_buffer_changed(const NoteBase::Ptr & note);
-    void preferences_setting_changed(const Glib::ustring & key);
     void update_sync_action();
     void background_sync_checker();
     void set_state(SyncState new_state);

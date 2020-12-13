@@ -84,7 +84,8 @@ namespace sync {
   {
     try {
       NoteManager & manager(dynamic_cast<NoteManager&>(note_mgr()));
-      m_gnote.preferences().schema_sync()->signal_changed().connect(sigc::mem_fun(*this, &SyncManager::preferences_setting_changed));
+      m_gnote.preferences().signal_sync_selected_service_addin_changed.connect(sigc::mem_fun(*this, &SyncManager::update_sync_action));
+      m_gnote.preferences().signal_sync_autosync_timeout_changed.connect(sigc::mem_fun(*this, &SyncManager::update_sync_action));
       manager.signal_note_saved.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
       manager.signal_note_deleted.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
       manager.signal_note_buffer_changed.connect(sigc::mem_fun(*this, &SyncManager::handle_note_buffer_changed));
@@ -412,15 +413,6 @@ namespace sync {
         DBG_OUT("Note edited...killing autosync timer until next save or delete event");
         m_autosync_timer.cancel();
       }
-    }
-  }
-
-
-  void SyncManager::preferences_setting_changed(const Glib::ustring & key)
-  {
-    if(key == Preferences::SYNC_SELECTED_SERVICE_ADDIN || key == Preferences::SYNC_AUTOSYNC_TIMEOUT) {
-      // Update sync item based on configuration.
-      update_sync_action();
     }
   }
 
