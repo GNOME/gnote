@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -45,7 +45,7 @@ namespace sharp {
     virtual void setup() = 0;
 
   protected:
-    PropertyEditorBase(Glib::RefPtr<Gio::Settings> & settings, const char *key, Gtk::Widget &w);
+    PropertyEditorBase(const Glib::RefPtr<Gio::Settings> & settings, const char *key, Gtk::Widget &w);
 
     Glib::ustring m_key;
     Gtk::Widget &m_widget;
@@ -71,7 +71,7 @@ namespace sharp {
     : public PropertyEditorBase
   {
   public:
-    PropertyEditorBool(Glib::RefPtr<Gio::Settings> & settings, const char * key, Gtk::ToggleButton &button);
+    PropertyEditorBool(std::function<bool()> getter, std::function<void(bool)> setter, Gtk::ToggleButton &button);
     void add_guard(Gtk::Widget* w)
       {
         m_guarded.push_back(w);
@@ -83,6 +83,8 @@ namespace sharp {
     void guard(bool v);
     void on_changed();
     std::vector<Gtk::Widget*> m_guarded;
+    std::function<bool()> m_getter;
+    std::function<void(bool)> m_setter;
   };
 
 }

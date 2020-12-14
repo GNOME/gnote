@@ -57,6 +57,9 @@
 
 #define DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR 0
 
+#define NEW_PROPERTY_EDITOR_BOOL(property, check) new sharp::PropertyEditorBool([this]()->bool { return m_gnote.preferences().property(); }, \
+          [this](bool v) { m_gnote.preferences().property(v); }, check);
+
 namespace gnote {
 
   struct CompareSyncAddinsByName
@@ -250,7 +253,7 @@ namespace gnote {
       // Open in new window
       check = manage(make_check_button(_("Always _open notes in new window")));
       options_list->attach(*check, 0, options_list_row++, 1, 1);
-      peditor = new sharp::PropertyEditorBool(settings, Preferences::OPEN_NOTES_IN_NEW_WINDOW, *check);
+      peditor = NEW_PROPERTY_EDITOR_BOOL(open_notes_in_new_window, *check);
       peditor->setup();
 
 
@@ -265,7 +268,7 @@ namespace gnote {
         set_widget_tooltip(*check, _("Misspellings will be underlined in red, with correct spelling "
                                      "suggestions shown in the context menu."));
         options_list->attach(*check, 0, options_list_row++, 1, 1);
-        peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_SPELLCHECKING, *check);
+        peditor = NEW_PROPERTY_EDITOR_BOOL(enable_spellchecking, *check);
         peditor->setup();
       }
 #endif
@@ -275,8 +278,7 @@ namespace gnote {
       check = manage(make_check_button (_("Enable auto-_bulleted lists")));
       set_widget_tooltip(*check, _("Start new bulleted list by starting new line with character \"-\"."));
       options_list->attach(*check, 0, options_list_row++, 1, 1);
-      bullet_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_AUTO_BULLETED_LISTS, 
-                                                       *check);
+      bullet_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_auto_bulleted_lists, *check);
       bullet_peditor->setup();
 
       // Custom font...
@@ -285,8 +287,7 @@ namespace gnote {
       check = manage(make_check_button (_("Use custom _font")));
       check->set_hexpand(true);
       font_box->attach(*check, 0, 0, 1, 1);
-      font_peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_CUSTOM_FONT, 
-                                                     *check);
+      font_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_custom_font, *check);
       font_peditor->setup();
 
       font_button = manage(make_font_button());
@@ -391,7 +392,7 @@ namespace gnote {
     check = manage(make_check_button(_("_Automatically link to notes")));
     set_widget_tooltip(*check, _("Enable this option to create a link when text matches note title."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_AUTO_LINKS, *check);
+    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_auto_links, *check);
     peditor->setup();
 
     // URLs
@@ -399,7 +400,7 @@ namespace gnote {
     set_widget_tooltip(*check, _("Enable this option to create links for URLs. "
                                  "Clicking will open URL with appropriate program."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_URL_LINKS, *check);
+    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_url_links, *check);
     peditor->setup();
 
     // WikiWords...
@@ -407,7 +408,7 @@ namespace gnote {
     set_widget_tooltip(*check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
                                  "Clicking the word will create a note with that name."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = new sharp::PropertyEditorBool(settings, Preferences::ENABLE_WIKIWORDS, *check);
+    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_wikiwords, *check);
     peditor->setup();
 
     return vbox;
