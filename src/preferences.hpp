@@ -65,6 +65,21 @@ namespace gnote {
 
     Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
 
+    bool enable_spellchecking() const;
+    void enable_spellchecking(bool);
+    bool enable_auto_links() const;
+    void enable_auto_links(bool);
+    bool enable_url_links() const;
+    void enable_url_links(bool);
+    bool enable_wikiwords() const;
+    void enable_wikiwords(bool);
+    bool enable_custom_font() const;
+    void enable_custom_font(bool);
+    bool enable_auto_bulleted_lists() const;
+    void enable_auto_bulleted_lists(bool);
+    bool open_notes_in_new_window() const;
+    void open_notes_in_new_window(bool);
+
     const Glib::ustring & desktop_gnome_clock_format() const
       {
         return m_desktop_gnome_clock_format;
@@ -105,6 +120,7 @@ namespace gnote {
   private:
     Preferences(const Preferences &) = delete;
     std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
+    Glib::RefPtr<Gio::Settings> m_schema_gnote;
     Glib::RefPtr<Gio::Settings> m_schema_gnome_interface;
     Glib::RefPtr<Gio::Settings> m_schema_sync;
     Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;

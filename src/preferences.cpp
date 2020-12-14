@@ -78,7 +78,8 @@ namespace gnote {
 
   void Preferences::init()
   {
-    m_schemas[SCHEMA_GNOTE] = Gio::Settings::create(SCHEMA_GNOTE);
+    m_schema_gnote = Gio::Settings::create(SCHEMA_GNOTE);
+    m_schemas[SCHEMA_GNOTE] = m_schema_gnote;
     m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
@@ -122,6 +123,76 @@ namespace gnote {
     }
 
     return settings;
+  }
+
+  bool Preferences::enable_spellchecking() const
+  {
+    return m_schema_gnote->get_boolean(ENABLE_SPELLCHECKING);
+  }
+
+  void Preferences::enable_spellchecking(bool value)
+  {
+    m_schema_gnote->set_boolean(ENABLE_SPELLCHECKING, value);
+  }
+
+  bool Preferences::enable_auto_links() const
+  {
+    return m_schema_gnote->get_boolean(ENABLE_AUTO_LINKS);
+  }
+
+  void Preferences::enable_auto_links(bool value)
+  {
+    m_schema_gnote->set_boolean(ENABLE_AUTO_LINKS, value);
+  }
+
+  bool Preferences::enable_url_links() const
+  {
+    return m_schema_gnote->get_boolean(ENABLE_URL_LINKS);
+  }
+
+  void Preferences::enable_url_links(bool value)
+  {
+    m_schema_gnote->set_boolean(ENABLE_URL_LINKS, value);
+  }
+
+  bool Preferences::enable_wikiwords() const
+  {
+    return m_schema_gnote->get_boolean(ENABLE_WIKIWORDS);
+  }
+
+  void Preferences::enable_wikiwords(bool value)
+  {
+    m_schema_gnote->set_boolean(ENABLE_WIKIWORDS, value);
+  }
+
+  bool Preferences::open_notes_in_new_window() const
+  {
+    return m_schema_gnote->get_boolean(OPEN_NOTES_IN_NEW_WINDOW);
+  }
+
+  bool Preferences::enable_custom_font() const
+  {
+    return m_schema_gnote->get_boolean(ENABLE_CUSTOM_FONT);
+  }
+
+  void Preferences::enable_custom_font(bool value)
+  {
+    m_schema_gnote->set_boolean(ENABLE_CUSTOM_FONT, value);
+  }
+
+  bool Preferences::enable_auto_bulleted_lists() const
+  {
+    return m_schema_gnote->get_boolean(ENABLE_AUTO_BULLETED_LISTS);
+  }
+
+  void Preferences::enable_auto_bulleted_lists(bool value)
+  {
+    m_schema_gnote->set_boolean(ENABLE_AUTO_BULLETED_LISTS, value);
+  }
+
+  void Preferences::open_notes_in_new_window(bool value)
+  {
+    m_schema_gnote->set_boolean(OPEN_NOTES_IN_NEW_WINDOW, value);
   }
 
   Glib::ustring Preferences::sync_client_id() const
