@@ -28,6 +28,8 @@ const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
+const Glib::ustring ENABLE_SPELLCHECKING = "enable-spellchecking";
+
 const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
 
@@ -49,7 +51,6 @@ namespace gnote {
 
   const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
 
-  const char * Preferences::ENABLE_SPELLCHECKING = "enable-spellchecking";
   const char * Preferences::ENABLE_AUTO_LINKS = "enable-auto-links";
   const char * Preferences::ENABLE_URL_LINKS = "enable-url-links";
   const char * Preferences::ENABLE_WIKIWORDS = "enable-wikiwords";

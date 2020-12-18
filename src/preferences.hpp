@@ -34,7 +34,6 @@ namespace gnote {
   public:
     static const char *SCHEMA_GNOTE;
 
-    static const char *ENABLE_SPELLCHECKING;
     static const char *ENABLE_AUTO_LINKS;
     static const char *ENABLE_URL_LINKS;
     static const char *ENABLE_WIKIWORDS;
