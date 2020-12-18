@@ -62,7 +62,6 @@ private:
   static void paste_ended(GtkTextView*, NoteEditor *_this);
 
   Pango::FontDescription get_gnome_document_font_description();
-  void on_font_setting_changed (const Glib::ustring & key);
   void on_gnome_font_setting_changed();
   void update_custom_font_setting();
   void modify_font_from_string (const Glib::ustring & fontString);

@@ -40,15 +40,15 @@ namespace gnote {
     set_right_margin(default_margin());
     property_can_default().set_value(true);
 
-    Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
-    settings->signal_changed().connect(sigc::mem_fun(*this, &NoteEditor::on_font_setting_changed));
+    m_preferences.signal_enable_custom_font_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
+    m_preferences.signal_custom_font_face_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
     //Set up the schema to watch the default document font
     m_preferences.signal_desktop_gnome_font_changed
       .connect(sigc::mem_fun(*this, &NoteEditor::on_gnome_font_setting_changed));
 
     // query all monitored settings to get change notifications
-    bool enable_custom_font = settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT);
-    auto font_string = settings->get_string(Preferences::CUSTOM_FONT_FACE);
+    bool enable_custom_font = m_preferences.enable_custom_font();
+    auto font_string = m_preferences.custom_font_face();
     auto gnome_font = get_gnome_document_font_description();
 
     // Set Font from preference
@@ -88,17 +88,9 @@ namespace gnote {
   }
 
 
-  void NoteEditor::on_font_setting_changed (const Glib::ustring & key)
-  {
-    if(key == Preferences::ENABLE_CUSTOM_FONT || key == Preferences::CUSTOM_FONT_FACE) {
-      update_custom_font_setting ();
-    }
-  }
-
-
   void NoteEditor::on_gnome_font_setting_changed()
   {
-    if(!m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
+    if(!m_preferences.enable_custom_font()) {
       override_font(get_gnome_document_font_description());
     }
   }
@@ -108,8 +100,8 @@ namespace gnote {
   {
     Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
 
-    if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
-      Glib::ustring fontString = settings->get_string(Preferences::CUSTOM_FONT_FACE);
+    if (m_preferences.enable_custom_font()) {
+      auto fontString = m_preferences.custom_font_face();
       DBG_OUT( "Switching note font to '%s'...", fontString.c_str());
       modify_font_from_string (fontString);
     } 
