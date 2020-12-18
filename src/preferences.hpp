@@ -88,9 +88,11 @@ namespace gnote {
     GNOTE_PREFERENCES_CACHING_SETTING(enable_auto_links, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_url_links, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_wikiwords, bool)
-    GNOTE_PREFERENCES_SETTING_BOOL(enable_custom_font)
+    GNOTE_PREFERENCES_CACHING_SETTING(enable_custom_font, bool)
     GNOTE_PREFERENCES_SETTING_BOOL(enable_auto_bulleted_lists)
     GNOTE_PREFERENCES_SETTING_BOOL(open_notes_in_new_window)
+    GNOTE_PREFERENCES_SETTING_STRING(start_note_uri)
+    GNOTE_PREFERENCES_CACHING_SETTING(custom_font_face, const Glib::ustring &)
 
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_font, const Glib::ustring &)
@@ -114,6 +116,8 @@ namespace gnote {
     Glib::RefPtr<Gio::Settings> m_schema_sync;
     Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;
 
+    Glib::ustring m_custom_font_face;
+
     Glib::ustring m_desktop_gnome_clock_format;
     Glib::ustring m_desktop_gnome_font;
 
@@ -125,6 +129,7 @@ namespace gnote {
     bool m_enable_auto_links;
     bool m_enable_url_links;
     bool m_enable_wikiwords;
+    bool m_enable_custom_font;
   };
 
 
