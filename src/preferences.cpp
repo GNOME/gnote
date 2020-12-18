@@ -22,6 +22,50 @@
 
 #include "preferences.hpp"
 
+#define SETUP_CACHED_KEY(schema, key, KEY, type) \
+  do { \
+    schema->signal_changed(KEY).connect([this](const Glib::ustring &) { \
+      m_##key = schema->get_##type(KEY); \
+      signal_##key##_changed(); \
+    }); \
+    m_##key = schema->get_##type(KEY); \
+  } while(0)
+
+
+#define DEFINE_GETTER(schema, key, KEY, type, rettype, paramtype) \
+  rettype Preferences::key() const \
+  { \
+    return schema->get_##type(KEY); \
+  }
+
+#define DEFINE_GETTER_BOOL(schema, key, KEY) DEFINE_GETTER(schema, key, KEY, boolean, bool, bool)
+#define DEFINE_GETTER_STRING(schema, key, KEY) DEFINE_GETTER(schema, key, KEY, string, Glib::ustring, const Glib::ustring)
+
+
+#define DEFINE_GETTER_SETTER(schema, key, KEY, type, rettype, paramtype) \
+  DEFINE_GETTER(schema, key, KEY, type, rettype, paramtype) \
+  void Preferences::key(paramtype value) \
+  { \
+    schema->set_##type(KEY, value); \
+  }
+
+#define DEFINE_GETTER_SETTER_BOOL(schema, key, KEY) DEFINE_GETTER_SETTER(schema, key, KEY, boolean, bool, bool)
+#define DEFINE_GETTER_SETTER_INT(schema, key, KEY) DEFINE_GETTER_SETTER(schema, key, KEY, int, int, int)
+#define DEFINE_GETTER_SETTER_STRING(schema, key, KEY) DEFINE_GETTER_SETTER(schema, key, KEY, string, Glib::ustring, const Glib::ustring &)
+
+
+#define DEFINE_CACHING_SETTER(schema, key, KEY, type, cpptype) \
+  void Preferences::key(cpptype value) \
+  { \
+    m_##key = value; \
+    schema->set_##type(KEY, value); \
+  }
+
+#define DEFINE_CACHING_SETTER_BOOL(schema, key, KEY) DEFINE_CACHING_SETTER(schema, key, KEY, boolean, bool)
+#define DEFINE_CACHING_SETTER_INT(schema, key, KEY) DEFINE_CACHING_SETTER(schema, key, KEY, int, int)
+#define DEFINE_CACHING_SETTER_STRING(schema, key, KEY) DEFINE_CACHING_SETTER(schema, key, KEY, string, const Glib::ustring &)
+
+
 namespace {
 
 const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
@@ -85,37 +129,16 @@ namespace gnote {
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
-    m_schema_gnote->signal_changed(ENABLE_SPELLCHECKING).connect([this](const Glib::ustring &) {
-      m_enable_spellchecking = m_schema_gnote->get_boolean(ENABLE_SPELLCHECKING);
-      signal_enable_spellchecking_changed();
-    });
+    SETUP_CACHED_KEY(m_schema_gnote, enable_spellchecking, ENABLE_SPELLCHECKING, boolean);
+    SETUP_CACHED_KEY(m_schema_gnote, enable_auto_links, ENABLE_AUTO_LINKS, boolean);
+    SETUP_CACHED_KEY(m_schema_gnote, enable_url_links, ENABLE_URL_LINKS, boolean);
+    SETUP_CACHED_KEY(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS, boolean);
 
-    m_enable_spellchecking = m_schema_gnote->get_boolean(ENABLE_SPELLCHECKING);
+    SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_clock_format, DESKTOP_GNOME_CLOCK_FORMAT, string);
+    SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_font, DESKTOP_GNOME_FONT, string);
 
-    m_schema_gnome_interface->signal_changed(DESKTOP_GNOME_CLOCK_FORMAT).connect([this](const Glib::ustring &) {
-      m_desktop_gnome_clock_format = m_schema_gnome_interface->get_string(DESKTOP_GNOME_CLOCK_FORMAT);
-      signal_desktop_gnome_clock_format_changed();
-    });
-    m_schema_gnome_interface->signal_changed(DESKTOP_GNOME_FONT).connect([this](const Glib::ustring &) {
-      m_desktop_gnome_font = m_schema_gnome_interface->get_string(DESKTOP_GNOME_FONT);
-      signal_desktop_gnome_font_changed();
-    });
-
-    m_desktop_gnome_clock_format = m_schema_gnome_interface->get_string(DESKTOP_GNOME_CLOCK_FORMAT);
-    m_desktop_gnome_font = m_schema_gnome_interface->get_string(DESKTOP_GNOME_FONT);
-
-
-    m_schema_sync->signal_changed(SYNC_SELECTED_SERVICE_ADDIN).connect([this](const Glib::ustring &) {
-      m_sync_selected_service_addin = m_schema_sync->get_string(SYNC_SELECTED_SERVICE_ADDIN);
-      signal_sync_selected_service_addin_changed();
-    });
-    m_schema_sync->signal_changed(SYNC_AUTOSYNC_TIMEOUT).connect([this](const Glib::ustring &) {
-      m_sync_autosync_timeout = m_schema_sync->get_int(SYNC_AUTOSYNC_TIMEOUT);
-      signal_sync_autosync_timeout_changed();
-    });
-
-    m_sync_selected_service_addin = m_schema_sync->get_string(SYNC_SELECTED_SERVICE_ADDIN);
-    m_sync_autosync_timeout = m_schema_sync->get_int(SYNC_AUTOSYNC_TIMEOUT);
+    SETUP_CACHED_KEY(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN, string);
+    SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
   Glib::RefPtr<Gio::Settings> Preferences::get_schema_settings(const Glib::ustring & schema)
@@ -133,148 +156,24 @@ namespace gnote {
     return settings;
   }
 
-  void Preferences::enable_spellchecking(bool value)
-  {
-    m_enable_spellchecking = value;
-    m_schema_gnote->set_boolean(ENABLE_SPELLCHECKING, value);
-  }
+  DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_spellchecking, ENABLE_SPELLCHECKING)
+  DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_auto_links, ENABLE_AUTO_LINKS)
+  DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_url_links, ENABLE_URL_LINKS)
+  DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS)
+  DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, open_notes_in_new_window, OPEN_NOTES_IN_NEW_WINDOW)
+  DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT)
+  DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, enable_auto_bulleted_lists, ENABLE_AUTO_BULLETED_LISTS)
 
-  bool Preferences::enable_auto_links() const
-  {
-    return m_schema_gnote->get_boolean(ENABLE_AUTO_LINKS);
-  }
+  DEFINE_GETTER_STRING(m_schema_sync, sync_client_id, SYNC_CLIENT_ID)
+  DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)
+  DEFINE_CACHING_SETTER_STRING(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN)
+  DEFINE_GETTER_SETTER_INT(m_schema_sync, sync_configured_conflict_behavior, SYNC_CONFIGURED_CONFLICT_BEHAVIOR)
+  DEFINE_CACHING_SETTER_INT(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT)
 
-  void Preferences::enable_auto_links(bool value)
-  {
-    m_schema_gnote->set_boolean(ENABLE_AUTO_LINKS, value);
-  }
-
-  bool Preferences::enable_url_links() const
-  {
-    return m_schema_gnote->get_boolean(ENABLE_URL_LINKS);
-  }
-
-  void Preferences::enable_url_links(bool value)
-  {
-    m_schema_gnote->set_boolean(ENABLE_URL_LINKS, value);
-  }
-
-  bool Preferences::enable_wikiwords() const
-  {
-    return m_schema_gnote->get_boolean(ENABLE_WIKIWORDS);
-  }
-
-  void Preferences::enable_wikiwords(bool value)
-  {
-    m_schema_gnote->set_boolean(ENABLE_WIKIWORDS, value);
-  }
-
-  bool Preferences::open_notes_in_new_window() const
-  {
-    return m_schema_gnote->get_boolean(OPEN_NOTES_IN_NEW_WINDOW);
-  }
-
-  bool Preferences::enable_custom_font() const
-  {
-    return m_schema_gnote->get_boolean(ENABLE_CUSTOM_FONT);
-  }
-
-  void Preferences::enable_custom_font(bool value)
-  {
-    m_schema_gnote->set_boolean(ENABLE_CUSTOM_FONT, value);
-  }
-
-  bool Preferences::enable_auto_bulleted_lists() const
-  {
-    return m_schema_gnote->get_boolean(ENABLE_AUTO_BULLETED_LISTS);
-  }
-
-  void Preferences::enable_auto_bulleted_lists(bool value)
-  {
-    m_schema_gnote->set_boolean(ENABLE_AUTO_BULLETED_LISTS, value);
-  }
-
-  void Preferences::open_notes_in_new_window(bool value)
-  {
-    m_schema_gnote->set_boolean(OPEN_NOTES_IN_NEW_WINDOW, value);
-  }
-
-  Glib::ustring Preferences::sync_client_id() const
-  {
-    return m_schema_sync->get_string(SYNC_CLIENT_ID);
-  }
-
-  Glib::ustring Preferences::sync_local_path() const
-  {
-    return m_schema_sync->get_string(SYNC_LOCAL_PATH);
-  }
-
-  void Preferences::sync_local_path(const Glib::ustring & value)
-  {
-    m_schema_sync->set_string(SYNC_LOCAL_PATH, value);
-  }
-
-  void Preferences::sync_selected_service_addin(const Glib::ustring & value)
-  {
-    m_sync_selected_service_addin = value;
-    m_schema_sync->set_string(SYNC_SELECTED_SERVICE_ADDIN, value);
-  }
-
-  int Preferences::sync_configured_conflict_behavior() const
-  {
-    return m_schema_sync->get_int(SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
-  }
-
-  void Preferences::sync_configured_conflict_behavior(int value)
-  {
-    m_schema_sync->set_int(SYNC_CONFIGURED_CONFLICT_BEHAVIOR, value);
-  }
-
-  void Preferences::sync_autosync_timeout(int value)
-  {
-    m_sync_autosync_timeout = value;
-    m_schema_sync->set_int(SYNC_AUTOSYNC_TIMEOUT, value);
-  }
-
-  int Preferences::sync_fuse_mount_timeout() const
-  {
-    return m_schema_sync_wdfs->get_int(SYNC_FUSE_MOUNT_TIMEOUT);
-  }
-
-  void Preferences::sync_fuse_mount_timeout(int value)
-  {
-    m_schema_sync_wdfs->set_int(SYNC_FUSE_MOUNT_TIMEOUT, value);
-  }
-
-  bool Preferences::sync_fuse_wdfs_accept_sllcert() const
-  {
-    return m_schema_sync_wdfs->get_boolean(SYNC_FUSE_WDFS_ACCEPT_SSLCERT);
-  }
-
-  void Preferences::sync_fuse_wdfs_accept_sllcert(bool value)
-  {
-    m_schema_sync_wdfs->set_boolean(SYNC_FUSE_WDFS_ACCEPT_SSLCERT, value);
-  }
-
-  Glib::ustring Preferences::sync_fuse_wdfs_url() const
-  {
-    return m_schema_sync_wdfs->get_string(SYNC_FUSE_WDFS_URL);
-  }
-
-  void Preferences::sync_fuse_wdfs_url(const Glib::ustring & value)
-  {
-    m_schema_sync_wdfs->set_string(SYNC_FUSE_WDFS_URL, value);
-  }
-
-  Glib::ustring Preferences::sync_fuse_wdfs_username() const
-  {
-    return m_schema_sync_wdfs->get_string(SYNC_FUSE_WDFS_USERNAME);
-  }
-
-  void Preferences::sync_fuse_wdfs_username(const Glib::ustring & value) const
-  {
-    m_schema_sync_wdfs->set_string(SYNC_FUSE_WDFS_USERNAME, value);
-  }
+  DEFINE_GETTER_SETTER_INT(m_schema_sync_wdfs, sync_fuse_mount_timeout, SYNC_FUSE_MOUNT_TIMEOUT)
+  DEFINE_GETTER_SETTER_BOOL(m_schema_sync_wdfs, sync_fuse_wdfs_accept_sllcert, SYNC_FUSE_WDFS_ACCEPT_SSLCERT)
+  DEFINE_GETTER_SETTER_STRING(m_schema_sync_wdfs, sync_fuse_wdfs_url, SYNC_FUSE_WDFS_URL)
+  DEFINE_GETTER_SETTER_STRING(m_schema_sync_wdfs, sync_fuse_wdfs_username, SYNC_FUSE_WDFS_USERNAME)
 
 }
 

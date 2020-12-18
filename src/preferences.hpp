@@ -27,6 +27,29 @@
 #include <map>
 #include <giomm/settings.h>
 
+
+#define GNOTE_PREFERENCES_SETTING(key, rettype, paramtype) \
+  rettype key() const; \
+  void key(paramtype);
+
+#define GNOTE_PREFERENCES_SETTING_BOOL(key) GNOTE_PREFERENCES_SETTING(key, bool, bool)
+#define GNOTE_PREFERENCES_SETTING_INT(key) GNOTE_PREFERENCES_SETTING(key, int, int)
+#define GNOTE_PREFERENCES_SETTING_STRING(key) GNOTE_PREFERENCES_SETTING(key, Glib::ustring, const Glib::ustring &)
+
+
+#define GNOTE_PREFERENCES_CACHING_SETTING_RO(key, type) \
+  type key() const \
+    { \
+      return m_##key; \
+    } \
+  sigc::signal<void> signal_##key##_changed;
+
+
+#define GNOTE_PREFERENCES_CACHING_SETTING(key, type) \
+  GNOTE_PREFERENCES_CACHING_SETTING_RO(key, type) \
+  void key(type);
+
+
 namespace gnote {
 
   class Preferences 
@@ -64,62 +87,28 @@ namespace gnote {
 
     Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
 
-    bool enable_spellchecking() const
-      {
-        return m_enable_spellchecking;
-      }
-    void enable_spellchecking(bool);
-    sigc::signal<void> signal_enable_spellchecking_changed;
-    bool enable_auto_links() const;
-    void enable_auto_links(bool);
-    bool enable_url_links() const;
-    void enable_url_links(bool);
-    bool enable_wikiwords() const;
-    void enable_wikiwords(bool);
-    bool enable_custom_font() const;
-    void enable_custom_font(bool);
-    bool enable_auto_bulleted_lists() const;
-    void enable_auto_bulleted_lists(bool);
-    bool open_notes_in_new_window() const;
-    void open_notes_in_new_window(bool);
+    GNOTE_PREFERENCES_CACHING_SETTING(enable_spellchecking, bool)
+    GNOTE_PREFERENCES_CACHING_SETTING(enable_auto_links, bool)
+    GNOTE_PREFERENCES_CACHING_SETTING(enable_url_links, bool)
+    GNOTE_PREFERENCES_CACHING_SETTING(enable_wikiwords, bool)
+    GNOTE_PREFERENCES_SETTING_BOOL(enable_custom_font)
+    GNOTE_PREFERENCES_SETTING_BOOL(enable_auto_bulleted_lists)
+    GNOTE_PREFERENCES_SETTING_BOOL(open_notes_in_new_window)
 
-    const Glib::ustring & desktop_gnome_clock_format() const
-      {
-        return m_desktop_gnome_clock_format;
-      }
-    sigc::signal<void> signal_desktop_gnome_clock_format_changed;
-    const Glib::ustring & desktop_gnome_font() const
-      {
-        return m_desktop_gnome_font;
-      }
-    sigc::signal<void> signal_desktop_gnome_font_changed;
+    GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
+    GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_font, const Glib::ustring &)
 
     Glib::ustring sync_client_id() const;
     Glib::ustring sync_local_path() const;
     void sync_local_path(const Glib::ustring &);
-    Glib::ustring sync_selected_service_addin() const
-      {
-        return m_sync_selected_service_addin;
-      }
-    void sync_selected_service_addin(const Glib::ustring & value);
-    sigc::signal<void> signal_sync_selected_service_addin_changed;
-    int sync_configured_conflict_behavior() const;
-    void sync_configured_conflict_behavior(int);
-    int sync_autosync_timeout() const
-      {
-        return m_sync_autosync_timeout;
-      }
-    void sync_autosync_timeout(int value);
-    sigc::signal<void> signal_sync_autosync_timeout_changed;
+    GNOTE_PREFERENCES_CACHING_SETTING(sync_selected_service_addin, const Glib::ustring &)
+    GNOTE_PREFERENCES_SETTING_INT(sync_configured_conflict_behavior)
+    GNOTE_PREFERENCES_CACHING_SETTING(sync_autosync_timeout, int)
 
-    int sync_fuse_mount_timeout() const;
-    void sync_fuse_mount_timeout(int);
-    bool sync_fuse_wdfs_accept_sllcert() const;
-    void sync_fuse_wdfs_accept_sllcert(bool);
-    Glib::ustring sync_fuse_wdfs_url() const;
-    void sync_fuse_wdfs_url(const Glib::ustring &);
-    Glib::ustring sync_fuse_wdfs_username() const;
-    void sync_fuse_wdfs_username(const Glib::ustring &) const;
+    GNOTE_PREFERENCES_SETTING_INT(sync_fuse_mount_timeout)
+    GNOTE_PREFERENCES_SETTING_BOOL(sync_fuse_wdfs_accept_sllcert)
+    GNOTE_PREFERENCES_SETTING_STRING(sync_fuse_wdfs_url)
+    GNOTE_PREFERENCES_SETTING_STRING(sync_fuse_wdfs_username)
   private:
     Preferences(const Preferences &) = delete;
     std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
@@ -136,6 +125,9 @@ namespace gnote {
     int m_sync_autosync_timeout;
 
     bool m_enable_spellchecking;
+    bool m_enable_auto_links;
+    bool m_enable_url_links;
+    bool m_enable_wikiwords;
   };
 
 
