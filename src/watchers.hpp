@@ -112,7 +112,7 @@ namespace gnote {
     void attach_checker();
     void detach();
     void detach_checker();
-    void on_enable_spellcheck_changed(const Glib::ustring & key);
+    void on_enable_spellcheck_changed();
     void tag_applied(const Glib::RefPtr<const Gtk::TextTag> &,
                      const Gtk::TextIter &, const Gtk::TextIter &);
     void on_language_changed(const gchar *lang);
