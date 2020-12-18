@@ -65,8 +65,12 @@ namespace gnote {
 
     Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
 
-    bool enable_spellchecking() const;
+    bool enable_spellchecking() const
+      {
+        return m_enable_spellchecking;
+      }
     void enable_spellchecking(bool);
+    sigc::signal<void> signal_enable_spellchecking_changed;
     bool enable_auto_links() const;
     void enable_auto_links(bool);
     bool enable_url_links() const;
@@ -131,6 +135,8 @@ namespace gnote {
     Glib::ustring m_sync_selected_service_addin;
 
     int m_sync_autosync_timeout;
+
+    bool m_enable_spellchecking;
   };
 
 

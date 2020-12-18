@@ -84,6 +84,13 @@ namespace gnote {
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
+    m_schema_gnote->signal_changed(ENABLE_SPELLCHECKING).connect([this](const Glib::ustring &) {
+      m_enable_spellchecking = m_schema_gnote->get_boolean(ENABLE_SPELLCHECKING);
+      signal_enable_spellchecking_changed();
+    });
+
+    m_enable_spellchecking = m_schema_gnote->get_boolean(ENABLE_SPELLCHECKING);
+
     m_schema_gnome_interface->signal_changed(DESKTOP_GNOME_CLOCK_FORMAT).connect([this](const Glib::ustring &) {
       m_desktop_gnome_clock_format = m_schema_gnome_interface->get_string(DESKTOP_GNOME_CLOCK_FORMAT);
       signal_desktop_gnome_clock_format_changed();
@@ -125,13 +132,9 @@ namespace gnote {
     return settings;
   }
 
-  bool Preferences::enable_spellchecking() const
-  {
-    return m_schema_gnote->get_boolean(ENABLE_SPELLCHECKING);
-  }
-
   void Preferences::enable_spellchecking(bool value)
   {
+    m_enable_spellchecking = value;
     m_schema_gnote->set_boolean(ENABLE_SPELLCHECKING, value);
   }
 
