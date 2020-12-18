@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019- 2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -234,9 +234,8 @@ void ExportToHtmlNoteAddin::write_html_for_note (sharp::StreamWriter & writer,
   args.add_param ("export-linked-all", "", export_linked_all);
   args.add_param ("root-note", "", gnote::utils::XmlEncoder::encode(note->get_title()));
 
-  Glib::RefPtr<Gio::Settings> settings = ignote().preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
-  if (settings->get_boolean(Preferences::ENABLE_CUSTOM_FONT)) {
-    Glib::ustring font_face = settings->get_string(Preferences::CUSTOM_FONT_FACE);
+  if(ignote().preferences().enable_custom_font()) {
+    Glib::ustring font_face = ignote().preferences().custom_font_face();
     Pango::FontDescription font_desc (font_face);
     Glib::ustring font = Glib::ustring::compose("font-family:'%1';", font_desc.get_family());
 
