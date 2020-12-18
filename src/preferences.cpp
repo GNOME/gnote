@@ -76,6 +76,7 @@ const Glib::ustring ENABLE_SPELLCHECKING = "enable-spellchecking";
 const Glib::ustring ENABLE_AUTO_LINKS = "enable-auto-links";
 const Glib::ustring ENABLE_URL_LINKS = "enable-url-links";
 const Glib::ustring ENABLE_WIKIWORDS = "enable-wikiwords";
+const Glib::ustring ENABLE_CUSTOM_FONT = "enable-custom-font";
 
 const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
@@ -98,7 +99,6 @@ namespace gnote {
 
   const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
 
-  const char * Preferences::ENABLE_CUSTOM_FONT = "enable-custom-font";
   const char * Preferences::ENABLE_AUTO_BULLETED_LISTS = "enable-bulleted-lists";
   const char * Preferences::ENABLE_ICON_PASTE = "enable-icon-paste";
   const char * Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
