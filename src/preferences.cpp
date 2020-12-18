@@ -160,9 +160,9 @@ namespace gnote {
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_auto_links, ENABLE_AUTO_LINKS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_url_links, ENABLE_URL_LINKS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS)
-  DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, open_notes_in_new_window, OPEN_NOTES_IN_NEW_WINDOW)
   DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT)
   DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, enable_auto_bulleted_lists, ENABLE_AUTO_BULLETED_LISTS)
+  DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, open_notes_in_new_window, OPEN_NOTES_IN_NEW_WINDOW)
 
   DEFINE_GETTER_STRING(m_schema_sync, sync_client_id, SYNC_CLIENT_ID)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)
