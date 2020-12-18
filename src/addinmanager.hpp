@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2012-2015,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -92,7 +92,6 @@ private:
   void initialize_sharp_addins();
   void add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod);
   AddinInfo get_info_for_module(const Glib::ustring & module) const;
-  void on_setting_changed(const Glib::ustring & key);
   void register_addin_actions() const;
     
   IGnote & m_gnote;
