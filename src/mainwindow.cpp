@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ MainWindow *MainWindow::present_default(IGnote & g, const Note::Ptr & note)
   }
   if(!win) {
     win = &g.new_main_window();
-    win->close_on_escape(settings->get_boolean(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
+    win->close_on_escape(g.preferences().enable_close_note_on_escape());
   }
   win->present_note(note);
   win->present();

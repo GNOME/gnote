@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -56,9 +56,7 @@ namespace gnote {
       
       // Look for the template note and create a new note
       Note::Ptr note = m_notebook->create_notebook_note ();
-      MainWindow::present_in_new_window(m_gnote, note,
-        m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
-          Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE));
+      MainWindow::present_in_new_window(m_gnote, note, m_gnote.preferences().enable_close_note_on_escape());
     }
 
 

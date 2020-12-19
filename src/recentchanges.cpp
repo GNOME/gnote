@@ -63,7 +63,6 @@ namespace gnote {
   {
     Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
     m_open_notes_in_new_window = settings->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
-    m_close_note_on_escape = settings->get_boolean(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE);
     set_default_size(450,400);
     set_resizable(true);
     if(settings->get_boolean(Preferences::MAIN_WINDOW_MAXIMIZED)) {
@@ -374,7 +373,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    present_in_new_window(m_gnote, note, m_close_note_on_escape);
+    present_in_new_window(m_gnote, note, m_preferences.enable_close_note_on_escape());
   }
 
   void NoteRecentChanges::on_delete_note()
@@ -436,7 +435,7 @@ namespace gnote {
       else if(close_on_escape()) {
         close_window();
       }
-      else if(m_close_note_on_escape) {
+      else if(m_preferences.enable_close_note_on_escape()) {
         EmbeddableWidget *current_item = currently_embedded();
         if(current_item) {
           background_embedded(*current_item);
@@ -835,10 +834,6 @@ namespace gnote {
     if(key == Preferences::OPEN_NOTES_IN_NEW_WINDOW) {
       m_open_notes_in_new_window = m_preferences.get_schema_settings(
         Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
-    }
-    else if(key == Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE) {
-      m_close_note_on_escape = m_preferences.get_schema_settings(
-        Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE);
     }
   }
 

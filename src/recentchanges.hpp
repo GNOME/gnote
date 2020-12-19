@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -119,7 +119,6 @@ private:
   Gtk::PopoverMenu     *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
   bool                m_open_notes_in_new_window;
-  bool                m_close_note_on_escape;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
 };
 
