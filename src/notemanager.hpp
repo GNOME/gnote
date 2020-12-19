@@ -61,8 +61,6 @@ namespace gnote {
         return m_tag_manager;
       }
 
-    void on_setting_changed(const Glib::ustring & key);
-
     AddinManager & get_addin_manager()
       {
         return *m_addin_mgr;

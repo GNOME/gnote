@@ -52,13 +52,6 @@ namespace gnote {
     Glib::ustring backup = directory + "/Backup";
     bool is_first_run = NoteManagerBase::init(directory, backup);
 
-    Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
-    // Watch the START_NOTE_URI setting and update it so that the
-    // StartNoteUri property doesn't generate a call to
-    // Preferences.Get () each time it's accessed.
-    m_start_note_uri = settings->get_string(Preferences::START_NOTE_URI);
-    settings->signal_changed().connect(sigc::mem_fun(*this, &NoteManager::on_setting_changed));
-
     m_addin_mgr = create_addin_manager ();
 
     if (is_first_run) {
@@ -99,14 +92,6 @@ namespace gnote {
   NoteManager::~NoteManager()
   {
     delete m_addin_mgr;
-  }
-
-  void NoteManager::on_setting_changed(const Glib::ustring & key)
-  {
-    if(key == Preferences::START_NOTE_URI) {
-      m_start_note_uri = m_preferences
-        .get_schema_settings(Preferences::SCHEMA_GNOTE)->get_string(Preferences::START_NOTE_URI);
-    }
   }
 
   AddinManager *NoteManager::create_addin_manager()
@@ -163,8 +148,7 @@ namespace gnote {
       NoteBase::Ptr start_note = create (_("Start Here"),
                                 start_note_content);
       start_note->queue_save (CONTENT_CHANGED);
-      m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
-          Preferences::START_NOTE_URI, start_note->uri());
+      m_preferences.start_note_uri(start_note->uri());
 
       NoteBase::Ptr links_note = create (_("Using Links in Gnote"),
                                 links_note_content);
@@ -195,13 +179,12 @@ namespace gnote {
     // make sure that the Uri is valid to prevent bug #508982. This
     // has to be done here for long-time Tomboy users who won't go
     // through the create_start_notes () process.
-    if (start_note_uri().empty() ||
-        !find_by_uri(start_note_uri())) {
+    auto start_note_uri = m_preferences.start_note_uri();
+    if (start_note_uri.empty() || !find_by_uri(start_note_uri)) {
       // Attempt to find an existing Start Here note
       NoteBase::Ptr start_note = find (_("Start Here"));
       if (start_note) {
-        m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
-            Preferences::START_NOTE_URI, start_note->uri());
+        m_preferences.start_note_uri(start_note->uri());
       }
     }
   }

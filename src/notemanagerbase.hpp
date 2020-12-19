@@ -92,11 +92,6 @@ public:
       return m_notes;
     }
 
-  const Glib::ustring & start_note_uri() const
-    { 
-      return m_start_note_uri; 
-    }
-
   ChangedHandler signal_note_deleted;
   ChangedHandler signal_note_added;
   NoteBase::RenamedHandler signal_note_renamed;
@@ -122,7 +117,6 @@ protected:
 
   IGnote & m_gnote;
   NoteBase::List m_notes;
-  Glib::ustring m_start_note_uri;
   Glib::ustring m_backup_dir;
   Glib::ustring m_default_note_template_title;
 private:
