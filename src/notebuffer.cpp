@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -55,8 +55,7 @@ namespace gnote {
 
   bool NoteBuffer::get_enable_auto_bulleted_lists() const
   {
-    return m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
-        Preferences::ENABLE_AUTO_BULLETED_LISTS);
+    return m_preferences.enable_auto_bulleted_lists();
   }
   
 
