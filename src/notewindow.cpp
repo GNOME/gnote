@@ -226,7 +226,7 @@ namespace gnote {
 
   void NoteWindow::hint_size(int & width, int & height)
   {
-    if(m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::AUTOSIZE_NOTE_WINDOW)) {
+    if(m_gnote.preferences().autosize_note_window()) {
       width = m_width;
       height = m_height;
     }
