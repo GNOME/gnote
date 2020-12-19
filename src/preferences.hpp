@@ -57,20 +57,6 @@ namespace gnote {
   public:
     static const char *SCHEMA_GNOTE;
 
-    static const char *ENABLE_AUTO_BULLETED_LISTS;
-    static const char *ENABLE_ICON_PASTE;
-    static const char *ENABLE_CLOSE_NOTE_ON_ESCAPE;
-
-    static const char *START_NOTE_URI;
-    static const char *CUSTOM_FONT_FACE;
-    static const char *MENU_NOTE_COUNT;
-    static const char *MENU_PINNED_NOTES;
-
-    static const char *NOTE_RENAME_BEHAVIOR;
-    static const char *USE_STATUS_ICON;
-    static const char *OPEN_NOTES_IN_NEW_WINDOW;
-    static const char *AUTOSIZE_NOTE_WINDOW;
-
     static const char *MAIN_WINDOW_MAXIMIZED;
     static const char *SEARCH_WINDOW_WIDTH;
     static const char *SEARCH_WINDOW_HEIGHT;

@@ -77,6 +77,15 @@ const Glib::ustring ENABLE_AUTO_LINKS = "enable-auto-links";
 const Glib::ustring ENABLE_URL_LINKS = "enable-url-links";
 const Glib::ustring ENABLE_WIKIWORDS = "enable-wikiwords";
 const Glib::ustring ENABLE_CUSTOM_FONT = "enable-custom-font";
+const Glib::ustring ENABLE_AUTO_BULLETED_LISTS = "enable-bulleted-lists";
+//const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
+const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
+const Glib::ustring NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
+const Glib::ustring START_NOTE_URI = "start-note";
+const Glib::ustring CUSTOM_FONT_FACE = "custom-font-face";
+const Glib::ustring MENU_PINNED_NOTES = "menu-pinned-notes";
+const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
+const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
 
 const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
@@ -99,19 +108,6 @@ namespace gnote {
 
   const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
 
-  const char * Preferences::ENABLE_AUTO_BULLETED_LISTS = "enable-bulleted-lists";
-  const char * Preferences::ENABLE_ICON_PASTE = "enable-icon-paste";
-  const char * Preferences::ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
-
-  const char * Preferences::START_NOTE_URI = "start-note";
-  const char * Preferences::CUSTOM_FONT_FACE = "custom-font-face";
-  const char * Preferences::MENU_NOTE_COUNT = "menu-note-count";
-  const char * Preferences::MENU_PINNED_NOTES = "menu-pinned-notes";
-
-  const char * Preferences::NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
-  const char * Preferences::USE_STATUS_ICON = "use-status-icon";
-  const char * Preferences::OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
-  const char * Preferences::AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
   const char * Preferences::USE_CLIENT_SIDE_DECORATIONS = "use-client-side-decorations";
 
   const char * Preferences::MAIN_WINDOW_MAXIMIZED = "main-window-maximized";
