@@ -108,7 +108,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
   Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
   g.preferences().signal_open_notes_in_new_window_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
-  parse_sorting_setting(settings->get_string(Preferences::SEARCH_SORTING));
+  parse_sorting_setting(g.preferences().search_sorting());
   g.preferences().signal_desktop_gnome_clock_format_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
 }
 
@@ -1457,8 +1457,7 @@ void SearchNotesWidget::on_sorting_changed()
     else {
       value += "desc";
     }
-    m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_string(
-      Preferences::SEARCH_SORTING, value);
+    m_gnote.preferences().search_sorting(value);
   }
 }
 
@@ -1467,7 +1466,7 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
   std::vector<Glib::ustring> tokens;
   sharp::string_split(tokens, sorting.lowercase(), ":");
   if(tokens.size() != 2) {
-    ERR_OUT(_("Failed to parse setting %s (Value: %s):"), Preferences::SEARCH_SORTING, sorting.c_str());
+    ERR_OUT(_("Failed to parse setting search-sorting (Value: %s):"), sorting.c_str());
     ERR_OUT(_("Expected format 'column:order'"));
     return;
   }
@@ -1480,7 +1479,7 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
     column_id = 2;
   }
   else {
-    ERR_OUT(_("Failed to parse setting %s (Value: %s):"), Preferences::SEARCH_SORTING, sorting.c_str());
+    ERR_OUT(_("Failed to parse setting search-sorting (Value: %s):"), sorting.c_str());
     ERR_OUT(_("Unrecognized column %s"), tokens[0].c_str());
     return;
   }
@@ -1491,7 +1490,7 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
     order = Gtk::SORT_DESCENDING;
   }
   else {
-    ERR_OUT(_("Failed to parse setting %s (Value: %s):"), Preferences::SEARCH_SORTING, sorting.c_str());
+    ERR_OUT(_("Failed to parse setting search-soring (Value: %s):"), sorting.c_str());
     ERR_OUT(_("Unrecognized order %s"), tokens[1].c_str());
     return;
   }
