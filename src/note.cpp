@@ -536,9 +536,7 @@ namespace gnote {
     const Note::Ptr self = std::static_pointer_cast<Note>(shared_from_this());
 
     if (!linking_notes.empty()) {
-      Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
-      const NoteRenameBehavior behavior
-        = static_cast<NoteRenameBehavior>(settings->get_int(Preferences::NOTE_RENAME_BEHAVIOR));
+      const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(m_gnote.preferences().note_rename_behavior());
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
         NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, self, m_gnote);
@@ -574,8 +572,7 @@ namespace gnote {
       NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
       const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
       if(Gtk::RESPONSE_CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
-        Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
-        settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, selected_behavior);
+        m_gnote.preferences().note_rename_behavior(selected_behavior);
       }
 
       const NoteRenameDialog::MapPtr notes = dlg->get_notes();

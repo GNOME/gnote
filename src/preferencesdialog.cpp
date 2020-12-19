@@ -167,9 +167,8 @@ namespace gnote {
       add_action_widget (*button, Gtk::RESPONSE_CLOSE);
       set_default_response(Gtk::RESPONSE_CLOSE);
 
-    m_gnote.preferences().get_schema_settings(
-      Preferences::SCHEMA_GNOTE)->signal_changed().connect(
-        sigc::mem_fun(*this, &PreferencesDialog::on_preferences_setting_changed));
+    m_gnote.preferences().signal_note_rename_behavior_changed.connect(
+        sigc::mem_fun(*this, &PreferencesDialog::on_note_rename_behavior_changed));
     m_gnote.preferences().signal_sync_autosync_timeout_changed
       .connect(sigc::mem_fun(*this, &PreferencesDialog::on_autosync_timeout_setting_changed));
   }
@@ -241,7 +240,6 @@ namespace gnote {
       Gtk::Label *label;
       Gtk::CheckButton *check;
       sharp::PropertyEditorBool *peditor, *font_peditor,* bullet_peditor;
-      Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
 
       Gtk::Grid *options_list = manage(new Gtk::Grid);
       options_list->set_row_spacing(12);
@@ -308,10 +306,10 @@ namespace gnote {
       m_rename_behavior_combo->append(_("Ask me what to do"));
       m_rename_behavior_combo->append(_("Never rename links"));
       m_rename_behavior_combo->append(_("Always rename links"));
-      int rename_behavior = settings->get_int(Preferences::NOTE_RENAME_BEHAVIOR);
+      int rename_behavior = m_gnote.preferences().note_rename_behavior();
       if (0 > rename_behavior || 2 < rename_behavior) {
         rename_behavior = 0;
-        settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, rename_behavior);
+        m_gnote.preferences().note_rename_behavior(rename_behavior);
       }
       m_rename_behavior_combo->set_active(rename_behavior);
       m_rename_behavior_combo->signal_changed().connect(
@@ -983,20 +981,15 @@ namespace gnote {
 
 
 
-  void  PreferencesDialog::on_preferences_setting_changed(const Glib::ustring & key)
+  void  PreferencesDialog::on_note_rename_behavior_changed()
   {
-    if (key == Preferences::NOTE_RENAME_BEHAVIOR) {
-      Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences()
-        .get_schema_settings(Preferences::SCHEMA_GNOTE);
-      int rename_behavior = settings->get_int(key);
-      if (0 > rename_behavior || 2 < rename_behavior) {
-        rename_behavior = 0;
-        settings->set_int(Preferences::NOTE_RENAME_BEHAVIOR, rename_behavior);
-      }
-      if (m_rename_behavior_combo->get_active_row_number()
-            != rename_behavior) {
-        m_rename_behavior_combo->set_active(rename_behavior);
-      }
+    int rename_behavior = m_gnote.preferences().note_rename_behavior();
+    if(0 > rename_behavior || 2 < rename_behavior) {
+      rename_behavior = 0;
+      m_gnote.preferences().note_rename_behavior(rename_behavior);
+    }
+    if(m_rename_behavior_combo->get_active_row_number() != rename_behavior) {
+      m_rename_behavior_combo->set_active(rename_behavior);
     }
   }
 
@@ -1023,8 +1016,7 @@ namespace gnote {
 
   void  PreferencesDialog::on_rename_behavior_changed()
   {
-    m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE)->set_int(
-        Preferences::NOTE_RENAME_BEHAVIOR, m_rename_behavior_combo->get_active_row_number());
+    m_gnote.preferences().note_rename_behavior(m_rename_behavior_combo->get_active_row_number());
   }
 
 

@@ -73,7 +73,7 @@ private:
   void on_save_sync_addin_button();
   void on_sync_settings_saved(bool saved, Glib::ustring errorMsg);
 
-  void on_preferences_setting_changed(const Glib::ustring & key);
+  void on_note_rename_behavior_changed();
   void on_autosync_timeout_setting_changed();
   void on_rename_behavior_changed();
 
