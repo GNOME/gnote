@@ -95,6 +95,7 @@ namespace gnote {
     GNOTE_PREFERENCES_SETTING_BOOL(autosize_note_window)
     GNOTE_PREFERENCES_SETTING_STRING(start_note_uri)
     GNOTE_PREFERENCES_CACHING_SETTING(custom_font_face, const Glib::ustring &)
+    GNOTE_PREFERENCES_SETTING_STRING(menu_pinned_notes)
 
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_font, const Glib::ustring &)

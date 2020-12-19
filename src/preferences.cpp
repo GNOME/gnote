@@ -172,6 +172,7 @@ namespace gnote {
   DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, autosize_note_window, AUTOSIZE_NOTE_WINDOW)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, start_note_uri, START_NOTE_URI)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE)
+  DEFINE_GETTER_SETTER_STRING(m_schema_gnote, menu_pinned_notes, MENU_PINNED_NOTES)
 
   DEFINE_GETTER_STRING(m_schema_sync, sync_client_id, SYNC_CLIENT_ID)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)
