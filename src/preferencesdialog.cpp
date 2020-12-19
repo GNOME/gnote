@@ -366,9 +366,7 @@ namespace gnote {
     button->add (*font_box);
     button->show ();
 
-    Glib::ustring font_desc = m_gnote.preferences().get_schema_settings(
-        Preferences::SCHEMA_GNOTE)->get_string(Preferences::CUSTOM_FONT_FACE);
-    update_font_button (font_desc);
+    update_font_button(m_gnote.preferences().custom_font_face());
 
     return button;
   }
@@ -937,13 +935,12 @@ namespace gnote {
     Gtk::FontSelectionDialog *font_dialog =
       new Gtk::FontSelectionDialog (_("Choose Note Font"));
 
-    Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
-    Glib::ustring font_name = settings->get_string(Preferences::CUSTOM_FONT_FACE);
+    auto font_name = m_gnote.preferences().custom_font_face();
     font_dialog->set_font_name(font_name);
 
     if (Gtk::RESPONSE_OK == font_dialog->run()) {
       if (font_dialog->get_font_name() != font_name) {
-        settings->set_string(Preferences::CUSTOM_FONT_FACE, font_dialog->get_font_name());
+        m_gnote.preferences().custom_font_face();
 
         update_font_button (font_dialog->get_font_name());
       }
