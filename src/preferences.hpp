@@ -90,6 +90,7 @@ namespace gnote {
     GNOTE_PREFERENCES_CACHING_SETTING(enable_custom_font, bool)
     GNOTE_PREFERENCES_SETTING_BOOL(enable_auto_bulleted_lists)
     GNOTE_PREFERENCES_SETTING_BOOL(enable_close_note_on_escape)
+    GNOTE_PREFERENCES_CACHING_SETTING(note_rename_behavior, int)
     GNOTE_PREFERENCES_SETTING_BOOL(open_notes_in_new_window)
     GNOTE_PREFERENCES_SETTING_STRING(start_note_uri)
     GNOTE_PREFERENCES_CACHING_SETTING(custom_font_face, const Glib::ustring &)
@@ -123,6 +124,7 @@ namespace gnote {
 
     Glib::ustring m_sync_selected_service_addin;
 
+    int m_note_rename_behavior;
     int m_sync_autosync_timeout;
 
     bool m_enable_spellchecking;
