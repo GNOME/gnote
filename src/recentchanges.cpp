@@ -62,13 +62,11 @@ namespace gnote {
     , m_keybinder(get_accel_group())
   {
     Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
-    m_open_notes_in_new_window = settings->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
     set_default_size(450,400);
     set_resizable(true);
     if(settings->get_boolean(Preferences::MAIN_WINDOW_MAXIMIZED)) {
       maximize();
     }
-    settings->signal_changed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_settings_changed));
 
     set_has_resize_grip(true);
     set_icon_name(IconManager::GNOTE);
@@ -361,7 +359,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note(const Note::Ptr & note)
   {
-    if(m_open_notes_in_new_window) {
+    if(m_preferences.open_notes_in_new_window()) {
       on_open_note_new_window(note);
     }
     else {
@@ -826,14 +824,6 @@ namespace gnote {
   {
     if(m_window_menu_embedded) {
       m_window_menu_embedded = NULL;
-    }
-  }
-
-  void NoteRecentChanges::on_settings_changed(const Glib::ustring & key)
-  {
-    if(key == Preferences::OPEN_NOTES_IN_NEW_WINDOW) {
-      m_open_notes_in_new_window = m_preferences.get_schema_settings(
-        Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
     }
   }
 

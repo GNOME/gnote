@@ -89,7 +89,6 @@ private:
   void on_find_prev_button_clicked();
   Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items);
   void on_embedded_name_changed(const Glib::ustring & name);
-  void on_settings_changed(const Glib::ustring & key);
   bool on_notes_widget_key_press(GdkEventKey*);
   void on_close_window(const Glib::VariantBase&);
   void add_action(const MainWindowAction::Ptr & action);
@@ -118,7 +117,6 @@ private:
   Gtk::PopoverMenu     *m_window_menu_embedded;
   Gtk::PopoverMenu     *m_window_menu_default;
   utils::GlobalKeybinder m_keybinder;
-  bool                m_open_notes_in_new_window;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
 };
 

@@ -87,8 +87,7 @@ MainWindow *MainWindow::present_default(IGnote & g, const Note::Ptr & note)
   if(win) {
     return win;
   }
-  Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
-  if(false == settings->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW)) {
+  if(false == g.preferences().open_notes_in_new_window()) {
     if (note->has_window()) {
       win = dynamic_cast<MainWindow*>(note->get_window()->host());
     }

@@ -107,7 +107,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
   Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
-  settings->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
+  g.preferences().signal_open_notes_in_new_window_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
   parse_sorting_setting(settings->get_string(Preferences::SEARCH_SORTING));
   g.preferences().signal_desktop_gnome_clock_format_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
 }
@@ -1266,11 +1266,9 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
 {
   if(!m_note_list_context_menu) {
     m_note_list_context_menu = new Gtk::Menu;
-    bool open_notes_in_new_window = m_gnote.preferences().get_schema_settings(
-      Preferences::SCHEMA_GNOTE)->get_boolean(Preferences::OPEN_NOTES_IN_NEW_WINDOW);
 
     Gtk::MenuItem *item;
-    if(!open_notes_in_new_window) {
+    if(!m_gnote.preferences().open_notes_in_new_window()) {
       item = manage(new Gtk::MenuItem);
       item->set_related_action(m_open_note_action);
       item->add_accelerator("activate", m_accel_group, GDK_KEY_O, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
@@ -1431,13 +1429,11 @@ std::vector<MainWindowAction::Ptr> SearchNotesWidget::get_widget_actions()
   return actions;
 }
 
-void SearchNotesWidget::on_settings_changed(const Glib::ustring & key)
+void SearchNotesWidget::on_settings_changed()
 {
-  if(key == Preferences::OPEN_NOTES_IN_NEW_WINDOW) {
-    if(m_note_list_context_menu) {
-      delete m_note_list_context_menu;
-      m_note_list_context_menu = NULL;
-    }
+  if(m_note_list_context_menu) {
+    delete m_note_list_context_menu;
+    m_note_list_context_menu = NULL;
   }
 }
 
