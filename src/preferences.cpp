@@ -173,6 +173,7 @@ namespace gnote {
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_width, SEARCH_WINDOW_WIDTH)
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_height, SEARCH_WINDOW_HEIGHT)
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_splitter_pos, SEARCH_WINDOW_SPLITTER_POS)
+  DEFINE_GETTER_SETTER_STRING(m_schema_gnote, search_sorting, SEARCH_SORTING)
 
   DEFINE_GETTER_STRING(m_schema_sync, sync_client_id, SYNC_CLIENT_ID)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)
