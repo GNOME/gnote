@@ -87,6 +87,7 @@ namespace gnote {
     GNOTE_PREFERENCES_SETTING_INT(search_window_height)
     GNOTE_PREFERENCES_SETTING_INT(search_window_splitter_pos)
     GNOTE_PREFERENCES_SETTING_STRING(search_sorting)
+    GNOTE_PREFERENCES_SETTING_STRING(use_client_side_decorations)
 
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_font, const Glib::ustring &)
