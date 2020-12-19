@@ -89,6 +89,7 @@ namespace gnote {
     GNOTE_PREFERENCES_CACHING_SETTING(enable_wikiwords, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_custom_font, bool)
     GNOTE_PREFERENCES_SETTING_BOOL(enable_auto_bulleted_lists)
+    GNOTE_PREFERENCES_SETTING_BOOL(enable_close_note_on_escape)
     GNOTE_PREFERENCES_SETTING_BOOL(open_notes_in_new_window)
     GNOTE_PREFERENCES_SETTING_STRING(start_note_uri)
     GNOTE_PREFERENCES_CACHING_SETTING(custom_font_face, const Glib::ustring &)
