@@ -61,10 +61,9 @@ namespace gnote {
     , m_window_menu_default(NULL)
     , m_keybinder(get_accel_group())
   {
-    Glib::RefPtr<Gio::Settings> settings = g.preferences().get_schema_settings(Preferences::SCHEMA_GNOTE);
     set_default_size(450,400);
     set_resizable(true);
-    if(settings->get_boolean(Preferences::MAIN_WINDOW_MAXIMIZED)) {
+    if(g.preferences().main_window_maximized()) {
       maximize();
     }
 
@@ -386,9 +385,7 @@ namespace gnote {
     Glib::RefPtr<Gdk::Window> win = get_window();
     // background window (for tray to work) might not have GDK window
     if(win) {
-      m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->set_boolean(
-          Preferences::MAIN_WINDOW_MAXIMIZED,
-          win->get_state() & Gdk::WINDOW_STATE_MAXIMIZED);
+      m_preferences.main_window_maximized(win->get_state() & Gdk::WINDOW_STATE_MAXIMIZED);
     }
     std::vector<Gtk::Widget*> current = m_embed_box.get_children();
     for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
@@ -530,8 +527,7 @@ namespace gnote {
       wid.show();
       widget.foreground();
 
-      bool maximized = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE)->get_boolean(
-        Preferences::MAIN_WINDOW_MAXIMIZED);
+      bool maximized = m_preferences.main_window_maximized();
       if(get_realized()) {
         //if window is showing, use actual state
         maximized = get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED;

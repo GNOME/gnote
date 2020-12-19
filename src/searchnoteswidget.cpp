@@ -270,9 +270,7 @@ void SearchNotesWidget::save_position()
     return;
   }
 
-  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences()
-    .get_schema_settings(Preferences::SCHEMA_GNOTE);
-  settings->set_int(Preferences::SEARCH_WINDOW_SPLITTER_POS, get_position());
+  m_gnote.preferences().search_window_splitter_pos(get_position());
 
   Gtk::Window *window = dynamic_cast<Gtk::Window*>(current_host);
   if(!window || (window->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) != 0) {
@@ -281,8 +279,8 @@ void SearchNotesWidget::save_position()
 
   window->get_size(width, height);
 
-  settings->set_int(Preferences::SEARCH_WINDOW_WIDTH, width);
-  settings->set_int(Preferences::SEARCH_WINDOW_HEIGHT, height);
+  m_gnote.preferences().search_window_width(width);
+  m_gnote.preferences().search_window_height(height);
 }
 
 void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * renderer,
@@ -1396,17 +1394,13 @@ void SearchNotesWidget::background()
 
 void SearchNotesWidget::hint_size(int & width, int & height)
 {
-  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences()
-    .get_schema_settings(Preferences::SCHEMA_GNOTE);
-  width = settings->get_int(Preferences::SEARCH_WINDOW_WIDTH);
-  height = settings->get_int(Preferences::SEARCH_WINDOW_HEIGHT);
+  width = m_gnote.preferences().search_window_width();
+  height = m_gnote.preferences().search_window_height();
 }
 
 void SearchNotesWidget::size_internals()
 {
-  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences()
-    .get_schema_settings(Preferences::SCHEMA_GNOTE);
-  int pos = settings->get_int(Preferences::SEARCH_WINDOW_SPLITTER_POS);
+  int pos = m_gnote.preferences().search_window_splitter_pos();
   if(pos) {
     set_position(pos);
   }
