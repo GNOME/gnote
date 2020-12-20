@@ -1489,7 +1489,7 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
     order = Gtk::SORT_DESCENDING;
   }
   else {
-    ERR_OUT(_("Failed to parse setting search-soring (Value: %s):"), sorting.c_str());
+    ERR_OUT(_("Failed to parse setting search-sorting (Value: %s):"), sorting.c_str());
     ERR_OUT(_("Unrecognized order %s"), tokens[1].c_str());
     return;
   }
