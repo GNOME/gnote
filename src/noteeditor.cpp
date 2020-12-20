@@ -98,8 +98,6 @@ namespace gnote {
 
   void NoteEditor::update_custom_font_setting()
   {
-    Glib::RefPtr<Gio::Settings> settings = m_preferences.get_schema_settings(Preferences::SCHEMA_GNOTE);
-
     if (m_preferences.enable_custom_font()) {
       auto fontString = m_preferences.custom_font_face();
       DBG_OUT( "Switching note font to '%s'...", fontString.c_str());

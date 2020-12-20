@@ -381,8 +381,6 @@ namespace gnote {
     Gtk::CheckButton *check;
     sharp::PropertyEditorBool *peditor;
     int vbox_row = 0;
-    Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences()
-      .get_schema_settings(Preferences::SCHEMA_GNOTE);
 
     // internal links
     check = manage(make_check_button(_("_Automatically link to notes")));
