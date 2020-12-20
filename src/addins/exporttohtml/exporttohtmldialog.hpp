@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2019 Aurimas Cernius
+ * Copyright (C) 2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 #ifndef __EXPORT_TO_HTML_DIALOG_HPP_
 #define __EXPORT_TO_HTML_DIALOG_HPP_
 
+#include <giomm/settings.h>
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/filechooserdialog.h>
 
@@ -51,6 +52,7 @@ private:
   gnote::IGnote & m_gnote;
   Gtk::CheckButton m_export_linked;
   Gtk::CheckButton m_export_linked_all;
+  Glib::RefPtr<Gio::Settings> m_settings;
 };
 
 

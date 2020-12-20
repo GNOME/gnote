@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,7 +28,6 @@
 #include "sharp/files.hpp"
 #include "exporttohtmldialog.hpp"
 #include "ignote.hpp"
-#include "preferences.hpp"
 
 namespace exporttohtml {
 
@@ -44,6 +43,7 @@ ExportToHtmlDialog::ExportToHtmlDialog(gnote::IGnote & ignote, const Glib::ustri
   , m_gnote(ignote)
   , m_export_linked(_("Export linked notes"))
   , m_export_linked_all(_("Include all other linked notes"))
+  , m_settings(Gio::Settings::create(SCHEMA_EXPORTHTML))
 {
   add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
   add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_OK);
@@ -96,25 +96,23 @@ void ExportToHtmlDialog::set_export_linked_all(bool value)
 void ExportToHtmlDialog::save_preferences()
 {
   Glib::ustring dir = sharp::file_dirname(get_filename());
-  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(SCHEMA_EXPORTHTML);
-  settings->set_string(EXPORTHTML_LAST_DIRECTORY, dir);
-  settings->set_boolean(EXPORTHTML_EXPORT_LINKED, get_export_linked());
-  settings->set_boolean(EXPORTHTML_EXPORT_LINKED_ALL, get_export_linked_all());
+  m_settings->set_string(EXPORTHTML_LAST_DIRECTORY, dir);
+  m_settings->set_boolean(EXPORTHTML_EXPORT_LINKED, get_export_linked());
+  m_settings->set_boolean(EXPORTHTML_EXPORT_LINKED_ALL, get_export_linked_all());
 }
 
 
 void ExportToHtmlDialog::load_preferences(const Glib::ustring & default_file)
 {
-  Glib::RefPtr<Gio::Settings> settings = m_gnote.preferences().get_schema_settings(SCHEMA_EXPORTHTML);
-  Glib::ustring last_dir = settings->get_string(EXPORTHTML_LAST_DIRECTORY);
+  Glib::ustring last_dir = m_settings->get_string(EXPORTHTML_LAST_DIRECTORY);
   if (last_dir.empty()) {
     last_dir = Glib::get_home_dir();
   }
   set_current_folder (last_dir);
   set_current_name(default_file);
 
-  set_export_linked(settings->get_boolean(EXPORTHTML_EXPORT_LINKED));
-  set_export_linked_all(settings->get_boolean(EXPORTHTML_EXPORT_LINKED_ALL));
+  set_export_linked(m_settings->get_boolean(EXPORTHTML_EXPORT_LINKED));
+  set_export_linked_all(m_settings->get_boolean(EXPORTHTML_EXPORT_LINKED_ALL));
 }
 
 
