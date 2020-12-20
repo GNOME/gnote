@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2019 Aurimas Cernius
+ * Copyright (C) 2014,2019-2020 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,17 +21,27 @@
 #include <glibmm/i18n.h>
 
 #include "notedirectorywatcherpreferences.hpp"
-#include "preferences.hpp"
+
 
 namespace notedirectorywatcher {
 
 const char *SCHEMA_NOTE_DIRECTORY_WATCHER = "org.gnome.gnote.note-directory-watcher";
 const char *CHECK_INTERVAL = "check-interval";
 
+Glib::RefPtr<Gio::Settings> NoteDirectoryWatcherPreferences::s_settings;
 
-NoteDirectoryWatcherPreferences::NoteDirectoryWatcherPreferences(gnote::IGnote &, gnote::Preferences & preferences, gnote::NoteManager &)
+
+Glib::RefPtr<Gio::Settings> & NoteDirectoryWatcherPreferences::settings()
+{
+  if(!s_settings) {
+    s_settings = Gio::Settings::create(SCHEMA_NOTE_DIRECTORY_WATCHER);
+  }
+
+  return s_settings;
+}
+
+NoteDirectoryWatcherPreferences::NoteDirectoryWatcherPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &)
   : m_check_interval(1)
-  , m_preferences(preferences)
 {
   Gtk::Label *label = manage(new Gtk::Label(_("_Directory check interval:"), true));
   attach(*label, 0, 0, 1, 1);
@@ -39,14 +49,13 @@ NoteDirectoryWatcherPreferences::NoteDirectoryWatcherPreferences(gnote::IGnote &
   m_check_interval.set_increments(1, 5);
   m_check_interval.signal_value_changed()
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherPreferences::on_interval_changed));
-  m_check_interval.set_value(preferences.get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->get_int(CHECK_INTERVAL));
+  m_check_interval.set_value(settings()->get_int(CHECK_INTERVAL));
   attach(m_check_interval, 1, 0, 1, 1);
 }
 
 void NoteDirectoryWatcherPreferences::on_interval_changed()
 {
-  m_preferences.get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER)->set_int(
-    CHECK_INTERVAL, m_check_interval.get_value_as_int());
+  settings()->set_int(CHECK_INTERVAL, m_check_interval.get_value_as_int());
 }
 
 }

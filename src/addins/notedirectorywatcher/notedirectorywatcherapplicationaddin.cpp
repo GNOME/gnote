@@ -28,7 +28,6 @@
 #include "notedirectorywatcherapplicationaddin.hpp"
 #include "notedirectorywatcherpreferencesfactory.hpp"
 #include "notemanager.hpp"
-#include "preferences.hpp"
 #include "sharp/files.hpp"
 #include "sharp/string.hpp"
 
@@ -62,11 +61,10 @@ void NoteDirectoryWatcherApplicationAddin::initialize()
   m_signal_changed_cid = m_file_system_watcher->signal_changed()
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event));
 
-  Glib::RefPtr<Gio::Settings> settings = ignote().preferences().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER);
-  m_check_interval = settings->get_int(CHECK_INTERVAL);
-  sanitize_check_interval(settings);
-  m_signal_settings_changed_cid = settings->signal_changed()
+  m_signal_settings_changed_cid = NoteDirectoryWatcherPreferences::settings()->signal_changed(CHECK_INTERVAL)
     .connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::on_settings_changed));
+  m_check_interval = NoteDirectoryWatcherPreferences::settings()->get_int(CHECK_INTERVAL);
+  sanitize_check_interval(NoteDirectoryWatcherPreferences::settings());
 
   m_initialized = true;
 }
@@ -295,11 +293,8 @@ Glib::ustring NoteDirectoryWatcherApplicationAddin::make_uri(const Glib::ustring
 
 void NoteDirectoryWatcherApplicationAddin::on_settings_changed(const Glib::ustring & key)
 {
-  if(key == CHECK_INTERVAL) {
-    Glib::RefPtr<Gio::Settings> settings = ignote().preferences().get_schema_settings(SCHEMA_NOTE_DIRECTORY_WATCHER);
-    m_check_interval = settings->get_int(key);
-    sanitize_check_interval(settings);
-  }
+  m_check_interval = NoteDirectoryWatcherPreferences::settings()->get_int(key);
+  sanitize_check_interval(NoteDirectoryWatcherPreferences::settings());
 }
 
 void NoteDirectoryWatcherApplicationAddin::sanitize_check_interval(const Glib::RefPtr<Gio::Settings> & settings)
