@@ -55,10 +55,9 @@ namespace inserttimestamp {
     register_main_window_action_callback("inserttimestamp-insert",
       sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_menu_item_activated));
 
-    Glib::RefPtr<Gio::Settings> settings = ignote().preferences().get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
-    m_date_format = settings->get_string(INSERT_TIMESTAMP_FORMAT);
-    settings->signal_changed().connect(
+    InsertTimestampPreferences::settings()->signal_changed(INSERT_TIMESTAMP_FORMAT).connect(
       sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_format_setting_changed));
+    m_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
   }
 
 
@@ -81,12 +80,9 @@ namespace inserttimestamp {
   }
 
 
-  void InsertTimestampNoteAddin::on_format_setting_changed(const Glib::ustring & key)
+  void InsertTimestampNoteAddin::on_format_setting_changed(const Glib::ustring &)
   {
-    if(key == INSERT_TIMESTAMP_FORMAT) {
-      m_date_format = ignote().preferences().get_schema_settings(
-          SCHEMA_INSERT_TIMESTAMP)->get_string(INSERT_TIMESTAMP_FORMAT);
-    }
+    m_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
   }
 
 }

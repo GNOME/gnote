@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,6 +47,8 @@ class InsertTimestampPreferences
   : public Gtk::Grid
 {
 public:
+  static Glib::RefPtr<Gio::Settings> & settings();
+
   InsertTimestampPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &);
 private:
   static void _init_static();
@@ -65,6 +67,8 @@ private:
 
   static bool       s_static_inited;
   static std::vector<Glib::ustring> s_formats;
+  static Glib::RefPtr<Gio::Settings> s_settings;
+
   FormatColumns     m_columns;
   Gtk::RadioButton *selected_radio;
   Gtk::RadioButton *custom_radio;
@@ -73,7 +77,6 @@ private:
   Gtk::TreeView               *tv;
   Glib::RefPtr<Gtk::ListStore> store;
   Gtk::Entry                  *custom_entry;
-  gnote::Preferences         & m_preferences;
 };
 
 

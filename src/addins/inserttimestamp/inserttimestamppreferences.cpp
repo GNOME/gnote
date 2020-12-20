@@ -34,6 +34,16 @@ namespace inserttimestamp {
 
   bool InsertTimestampPreferences::s_static_inited = false;
   std::vector<Glib::ustring> InsertTimestampPreferences::s_formats;
+  Glib::RefPtr<Gio::Settings> InsertTimestampPreferences::s_settings;
+
+  Glib::RefPtr<Gio::Settings> & InsertTimestampPreferences::settings()
+  {
+    if(!s_settings) {
+      s_settings = Gio::Settings::create(SCHEMA_INSERT_TIMESTAMP);
+    }
+
+    return s_settings;
+  }
 
   void InsertTimestampPreferences::_init_static()
   {
@@ -49,8 +59,7 @@ namespace inserttimestamp {
   }
 
 
-  InsertTimestampPreferences::InsertTimestampPreferences(gnote::IGnote &, gnote::Preferences & preferences, gnote::NoteManager &)
-    : m_preferences(preferences)
+  InsertTimestampPreferences::InsertTimestampPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &)
   {
     _init_static();
 
@@ -58,8 +67,8 @@ namespace inserttimestamp {
     int row = 0;
 
     // Get current values
-    Glib::RefPtr<Gio::Settings> settings = preferences.get_schema_settings(SCHEMA_INSERT_TIMESTAMP);
-    Glib::ustring dateFormat = settings->get_string(INSERT_TIMESTAMP_FORMAT);
+    auto ts_settings = settings();
+    Glib::ustring dateFormat = ts_settings->get_string(INSERT_TIMESTAMP_FORMAT);
 
     auto now = Glib::DateTime::create_now_local();
 
@@ -108,8 +117,7 @@ namespace inserttimestamp {
     custom_entry = manage(new Gtk::Entry());
     customBox->attach(*custom_entry, 1, 0, 1, 1);
 
-    sharp::PropertyEditor *  entryEditor = new sharp::PropertyEditor(
-      settings, INSERT_TIMESTAMP_FORMAT, *custom_entry);
+    sharp::PropertyEditor *entryEditor = new sharp::PropertyEditor(ts_settings, INSERT_TIMESTAMP_FORMAT, *custom_entry);
     entryEditor->setup ();
 
     // Activate/deactivate widgets
@@ -181,7 +189,7 @@ namespace inserttimestamp {
     if (iter) {
       Glib::ustring format;
       iter->get_value(1, format);
-      m_preferences.get_schema_settings(SCHEMA_INSERT_TIMESTAMP)->set_string(INSERT_TIMESTAMP_FORMAT, format);
+      settings()->set_string(INSERT_TIMESTAMP_FORMAT, format);
     }
   }
 
