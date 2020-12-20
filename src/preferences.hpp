@@ -55,19 +55,8 @@ namespace gnote {
   class Preferences 
   {
   public:
-    static const char *SCHEMA_GNOTE;
-
-    static const char *MAIN_WINDOW_MAXIMIZED;
-    static const char *SEARCH_WINDOW_WIDTH;
-    static const char *SEARCH_WINDOW_HEIGHT;
-    static const char *SEARCH_WINDOW_SPLITTER_POS;
-    static const char *SEARCH_SORTING;
-    static const char *USE_CLIENT_SIDE_DECORATIONS;
-
     Preferences() {}
     void init();
-
-    Glib::RefPtr<Gio::Settings> get_schema_settings(const Glib::ustring & schema);
 
     GNOTE_PREFERENCES_CACHING_SETTING(enable_spellchecking, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_auto_links, bool)
@@ -105,7 +94,7 @@ namespace gnote {
     GNOTE_PREFERENCES_SETTING_STRING(sync_fuse_wdfs_username)
   private:
     Preferences(const Preferences &) = delete;
-    std::map<Glib::ustring, Glib::RefPtr<Gio::Settings> > m_schemas;
+
     Glib::RefPtr<Gio::Settings> m_schema_gnote;
     Glib::RefPtr<Gio::Settings> m_schema_gnome_interface;
     Glib::RefPtr<Gio::Settings> m_schema_sync;

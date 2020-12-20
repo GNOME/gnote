@@ -68,6 +68,7 @@
 
 namespace {
 
+const char *SCHEMA_GNOTE = "org.gnome.gnote";
 const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
@@ -86,6 +87,12 @@ const Glib::ustring CUSTOM_FONT_FACE = "custom-font-face";
 const Glib::ustring MENU_PINNED_NOTES = "menu-pinned-notes";
 const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
+const Glib::ustring MAIN_WINDOW_MAXIMIZED = "main-window-maximized";
+const Glib::ustring SEARCH_WINDOW_WIDTH = "search-window-width";
+const Glib::ustring SEARCH_WINDOW_HEIGHT = "search-window-height";
+const Glib::ustring SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
+const Glib::ustring SEARCH_SORTING = "search-sorting";
+const Glib::ustring USE_CLIENT_SIDE_DECORATIONS = "use-client-side-decorations";
 
 const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
@@ -105,22 +112,9 @@ const Glib::ustring SYNC_FUSE_WDFS_USERNAME = "username";
 
 namespace gnote {
 
-
-  const char * Preferences::SCHEMA_GNOTE = "org.gnome.gnote";
-
-  const char * Preferences::USE_CLIENT_SIDE_DECORATIONS = "use-client-side-decorations";
-
-  const char * Preferences::MAIN_WINDOW_MAXIMIZED = "main-window-maximized";
-  const char * Preferences::SEARCH_WINDOW_WIDTH = "search-window-width";
-  const char * Preferences::SEARCH_WINDOW_HEIGHT = "search-window-height";
-  const char * Preferences::SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
-  const char * Preferences::SEARCH_SORTING = "search-sorting";
-
-
   void Preferences::init()
   {
     m_schema_gnote = Gio::Settings::create(SCHEMA_GNOTE);
-    m_schemas[SCHEMA_GNOTE] = m_schema_gnote;
     m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
@@ -141,21 +135,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
-  Glib::RefPtr<Gio::Settings> Preferences::get_schema_settings(const Glib::ustring & schema)
-  {
-    auto iter = m_schemas.find(schema);
-    if(iter != m_schemas.end()) {
-      return iter->second;
-    }
-
-    Glib::RefPtr<Gio::Settings> settings = Gio::Settings::create(schema);
-    if(settings) {
-      m_schemas[schema] = settings;
-    }
-
-    return settings;
-  }
-
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_spellchecking, ENABLE_SPELLCHECKING)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_auto_links, ENABLE_AUTO_LINKS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_url_links, ENABLE_URL_LINKS)
