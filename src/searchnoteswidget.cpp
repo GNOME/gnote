@@ -408,7 +408,10 @@ void SearchNotesWidget::on_notebook_selection_changed()
 
 bool SearchNotesWidget::on_notebooks_tree_button_pressed(GdkEventButton *ev)
 {
-  if(ev->button == 3) {
+  auto event = (GdkEvent*)ev;
+  guint button;
+  gdk_event_get_button(event, &button);
+  if(button == 3) {
     // third mouse button (right-click)
     Gtk::TreeViewColumn * col = 0; // unused
     Gtk::TreePath p;
@@ -416,12 +419,14 @@ bool SearchNotesWidget::on_notebooks_tree_button_pressed(GdkEventButton *ev)
     const Glib::RefPtr<Gtk::TreeSelection> selection
       = m_notebooksTree->get_selection();
 
-    if(m_notebooksTree->get_path_at_pos(ev->x, ev->y, p, col, cell_x, cell_y)) {
+    gdouble x, y;
+    gdk_event_get_coords(event, &x, &y);
+    if(m_notebooksTree->get_path_at_pos(x, y, p, col, cell_x, cell_y)) {
       selection->select(p);
     }
 
     Gtk::Menu *menu = get_notebook_list_context_menu();
-    popup_context_menu_at_location(menu, reinterpret_cast<GdkEvent*>(ev));
+    popup_context_menu_at_location(menu, event);
     return true;
   }
   return false;
@@ -429,14 +434,17 @@ bool SearchNotesWidget::on_notebooks_tree_button_pressed(GdkEventButton *ev)
 
 bool SearchNotesWidget::on_notebooks_key_pressed(GdkEventKey *ev)
 {
-  switch(ev->keyval) {
+  auto event = (GdkEvent*)ev;
+  guint keyval;
+  gdk_event_get_keyval(event, &keyval);
+  switch(keyval) {
   case GDK_KEY_F2:
     on_rename_notebook();
     break;
   case GDK_KEY_Menu:
   {
     Gtk::Menu *menu = get_notebook_list_context_menu();
-    popup_context_menu_at_location(menu, reinterpret_cast<GdkEvent*>(ev));
+    popup_context_menu_at_location(menu, event);
     break;
   }
   default:
@@ -799,7 +807,8 @@ void SearchNotesWidget::on_selection_changed()
 
 bool SearchNotesWidget::on_treeview_button_pressed(GdkEventButton *ev)
 {
-  if(ev->window != m_tree->get_bin_window()->gobj()) {
+  auto event = (GdkEvent*)ev;
+  if(gdk_event_get_window(event) != m_tree->get_bin_window()->gobj()) {
     return false;
   }
 
@@ -807,16 +816,23 @@ bool SearchNotesWidget::on_treeview_button_pressed(GdkEventButton *ev)
   Gtk::TreeViewColumn *column = NULL;
   int unused;
 
-  m_tree->get_path_at_pos(ev->x, ev->y, dest_path, column, unused, unused);
+  gdouble x, y;
+  gdk_event_get_coords(event, &x, &y);
+  m_tree->get_path_at_pos(x, y, dest_path, column, unused, unused);
 
-  m_clickX = ev->x;
-  m_clickY = ev->y;
+  m_clickX = x;
+  m_clickY = y;
 
   bool retval = false;
 
-  switch(ev->type) {
+  switch(event->type) {
   case GDK_2BUTTON_PRESS:
-    if(ev->button != 1 || (ev->state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) != 0) {
+  {
+    guint button;
+    gdk_event_get_button(event, &button);
+    GdkModifierType state;
+    gdk_event_get_state(event, &state);
+    if(button != 1 || (state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) != 0) {
       break;
     }
 
@@ -828,21 +844,25 @@ bool SearchNotesWidget::on_treeview_button_pressed(GdkEventButton *ev)
     // https://bugzilla.gnome.org/show_bug.cgi?id=586438
     gtk_tree_view_row_activated(m_tree->gobj(), dest_path.gobj(), column?column->gobj():NULL);
     break;
+  }
   case GDK_BUTTON_PRESS:
-    if(ev->button == 3) {
+  {
+    guint button;
+    gdk_event_get_button(event, &button);
+    if(button == 3) {
       const Glib::RefPtr<Gtk::TreeSelection> selection = m_tree->get_selection();
 
       if(selection->get_selected_rows().size() <= 1) {
         Gtk::TreeViewColumn * col = 0; // unused
         Gtk::TreePath p;
         int cell_x, cell_y;            // unused
-        if(m_tree->get_path_at_pos(ev->x, ev->y, p, col, cell_x, cell_y)) {
+        if(m_tree->get_path_at_pos(x, y, p, col, cell_x, cell_y)) {
           selection->unselect_all();
           selection->select(p);
         }
       }
       Gtk::Menu *menu = get_note_list_context_menu();
-      popup_context_menu_at_location(menu, reinterpret_cast<GdkEvent*>(ev));
+      popup_context_menu_at_location(menu, event);
 
       // Return true so that the base handler won't
       // run, which causes the selection to change to
@@ -851,19 +871,17 @@ bool SearchNotesWidget::on_treeview_button_pressed(GdkEventButton *ev)
       break;
     }
 
-    if(m_tree->get_selection()->is_selected(dest_path)
-       && (ev->state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0) {
-      if(column && (ev->button == 1)) {
+    GdkModifierType state;
+    gdk_event_get_state(event, &state);
+    if(m_tree->get_selection()->is_selected(dest_path) && (state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0) {
+      if(column && (button == 1)) {
         Gtk::CellRenderer *renderer = column->get_first_cell();
         Gdk::Rectangle background_area;
         m_tree->get_background_area(dest_path, *column, background_area);
         Gdk::Rectangle cell_area;
         m_tree->get_cell_area(dest_path, *column, cell_area);
 
-        renderer->activate((GdkEvent*)ev, *m_tree,
-                           dest_path.to_string (),
-                           background_area, cell_area,
-                           Gtk::CELL_RENDERER_SELECTED);
+        renderer->activate(event, *m_tree, dest_path.to_string(), background_area, cell_area, Gtk::CELL_RENDERER_SELECTED);
 
         Gtk::TreeIter iter = m_tree->get_model()->get_iter (dest_path);
         if(iter) {
@@ -875,6 +893,7 @@ bool SearchNotesWidget::on_treeview_button_pressed(GdkEventButton *ev)
     }
 
     break;
+  }
   default:
     retval = false;
     break;
@@ -884,39 +903,47 @@ bool SearchNotesWidget::on_treeview_button_pressed(GdkEventButton *ev)
 
 bool SearchNotesWidget::on_treeview_motion_notify(GdkEventMotion *ev)
 {
-  if((ev->state & Gdk::BUTTON1_MASK) == 0) {
+  auto event = (GdkEvent*)ev;
+  GdkModifierType state;
+  gdk_event_get_state(event, &state);
+  if((state & Gdk::BUTTON1_MASK) == 0) {
     return false;
   }
-  else if(ev->window != m_tree->get_bin_window()->gobj()) {
+  else if(gdk_event_get_window(event) != m_tree->get_bin_window()->gobj()) {
     return false;
   }
 
   bool retval = true;
-
-  if(!m_tree->drag_check_threshold(m_clickX, m_clickY, ev->x, ev->y)) {
+  gdouble x, y;
+  gdk_event_get_coords(event, &x, &y);
+  if(!m_tree->drag_check_threshold(m_clickX, m_clickY, x, y)) {
     return retval;
   }
 
   Gtk::TreePath dest_path;
   Gtk::TreeViewColumn * col = NULL; // unused
   int cell_x, cell_y;               // unused
-  if(!m_tree->get_path_at_pos(ev->x, ev->y, dest_path, col, cell_x, cell_y)) {
+  if(!m_tree->get_path_at_pos(x, y, dest_path, col, cell_x, cell_y)) {
     return retval;
   }
 
-  m_tree->drag_begin(Gtk::TargetList::create (m_targets), Gdk::ACTION_MOVE, 1, (GdkEvent*)ev);
+  m_tree->drag_begin(Gtk::TargetList::create (m_targets), Gdk::ACTION_MOVE, 1, event);
   return retval;
 }
 
 bool SearchNotesWidget::on_treeview_button_released(GdkEventButton *ev)
 {
-  if(!m_tree->drag_check_threshold(m_clickX, m_clickY, ev->x, ev->y)
-     && ((ev->state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0)
+  gdouble x, y;
+  gdk_event_get_coords((GdkEvent*)ev, &x, &y);
+  GdkModifierType state;
+  gdk_event_get_state((GdkEvent*)ev, &state);
+  if(!m_tree->drag_check_threshold(m_clickX, m_clickY, x, y)
+     && ((state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0)
      && m_tree->get_selection()->count_selected_rows () > 1) {
     Gtk::TreePath dest_path;
     Gtk::TreeViewColumn * col = NULL; // unused
     int cell_x, cell_y;               // unused
-    m_tree->get_path_at_pos(ev->x, ev->y, dest_path, col, cell_x, cell_y);
+    m_tree->get_path_at_pos(x, y, dest_path, col, cell_x, cell_y);
     m_tree->get_selection()->unselect_all();
     m_tree->get_selection()->select(dest_path);
   }
@@ -927,8 +954,11 @@ bool SearchNotesWidget::on_treeview_key_pressed(GdkEventKey * ev)
 {
   // create context menu here, so that we have shortcuts and they work
   Gtk::Menu *menu = get_note_list_context_menu();
+  auto event = (GdkEvent*)ev;
+  guint keyval;
+  gdk_event_get_keyval(event, &keyval);
 
-  switch(ev->keyval) {
+  switch(keyval) {
   case GDK_KEY_Delete:
     delete_selected_notes();
     break;
@@ -937,7 +967,7 @@ bool SearchNotesWidget::on_treeview_key_pressed(GdkEventKey * ev)
     // Pop up the context menu if a note is selected
     Note::List selected_notes = get_selected_notes();
     if(!selected_notes.empty()) {
-      popup_context_menu_at_location(menu, reinterpret_cast<GdkEvent*>(ev));
+      popup_context_menu_at_location(menu, event);
     }
     break;
   }
