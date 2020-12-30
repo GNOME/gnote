@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019-2020 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -159,8 +159,7 @@ namespace gnote {
     }
   }
 
-  bool NoteTag::on_event(const Glib::RefPtr<Glib::Object> & sender, 
-                         GdkEvent * ev, const Gtk::TextIter & iter)
+  bool NoteTag::on_event(const Glib::RefPtr<Glib::Object> & sender, GdkEvent *ev, const Gtk::TextIter & iter)
   {
     NoteEditor::Ptr editor = NoteEditor::Ptr::cast_dynamic(sender);
     Gtk::TextIter start, end;
@@ -171,11 +170,12 @@ namespace gnote {
     switch (ev->type) {
     case GDK_BUTTON_PRESS:
     {
-      GdkEventButton *button_ev = (GdkEventButton*)ev;
+      guint button;
+      gdk_event_get_button(ev, &button);
 
       // Do not insert selected text when activating links with
       // middle mouse button
-      if (button_ev->button == 2) {
+      if(button == 2) {
         m_allow_middle_activate = true;
         return true;
       }
@@ -184,13 +184,15 @@ namespace gnote {
     }
     case GDK_BUTTON_RELEASE:
     {
-      GdkEventButton *button_ev = (GdkEventButton*)ev;
-      if ((button_ev->button != 1) && (button_ev->button != 2))
+      guint button;
+      gdk_event_get_button(ev, &button);
+      if((button != 1) && (button != 2))
         return false;
 
+      GdkModifierType state;
+      gdk_event_get_state(ev, &state);
       /* Don't activate if Shift or Control is pressed */
-      if ((button_ev->state & (Gdk::SHIFT_MASK |
-                               Gdk::CONTROL_MASK)) != 0)
+      if((state & (Gdk::SHIFT_MASK | Gdk::CONTROL_MASK)) != 0)
         return false;
 
       // Prevent activation when selecting links with the mouse
@@ -200,7 +202,7 @@ namespace gnote {
 
       // Don't activate if the link has just been pasted with the
       // middle mouse button (no preceding ButtonPress event)
-      if (button_ev->button == 2 && !m_allow_middle_activate) {
+      if(button == 2 && !m_allow_middle_activate) {
         return false;
       }
       else {
@@ -213,14 +215,16 @@ namespace gnote {
     }
     case GDK_KEY_PRESS:
     {
-      GdkEventKey *key_ev = (GdkEventKey*)ev;
+      GdkModifierType state;
+      gdk_event_get_state(ev, &state);
 
       // Control-Enter activates the link at point...
-      if ((key_ev->state & Gdk::CONTROL_MASK) == 0)
+      if((state & Gdk::CONTROL_MASK) == 0)
         return false;
 
-      if (key_ev->keyval != GDK_KEY_Return &&
-          key_ev->keyval != GDK_KEY_KP_Enter)
+      guint keyval;
+      gdk_event_get_keyval(ev, &keyval);
+      if(keyval != GDK_KEY_Return && keyval != GDK_KEY_KP_Enter)
         return false;
 
       get_extents (iter, start, end);
