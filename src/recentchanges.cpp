@@ -418,9 +418,11 @@ namespace gnote {
     return true;
   }
 
-  bool NoteRecentChanges::on_key_pressed(GdkEventKey * ev)
+  bool NoteRecentChanges::on_key_pressed(GdkEventKey *ev)
   {
-    switch (ev->keyval) {
+    guint keyval;
+    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
+    switch(keyval) {
     case GDK_KEY_Escape:
       if(m_search_button.get_active()) {
         m_search_entry.set_text("");
@@ -648,9 +650,11 @@ namespace gnote {
     return res;
   }
 
-  bool NoteRecentChanges::on_entry_key_pressed(GdkEventKey *event)
+  bool NoteRecentChanges::on_entry_key_pressed(GdkEventKey *ev)
   {
-    switch(event->keyval) {
+    guint keyval;
+    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
+    switch(keyval) {
     case GDK_KEY_Escape:
       m_search_entry.set_text("");
       m_search_button.set_active(false);
@@ -823,9 +827,11 @@ namespace gnote {
     }
   }
 
-  bool NoteRecentChanges::on_notes_widget_key_press(GdkEventKey *evt)
+  bool NoteRecentChanges::on_notes_widget_key_press(GdkEventKey *ev)
   {
-    switch(evt->keyval) {
+    guint keyval;
+    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
+    switch(keyval) {
     case GDK_KEY_Escape:
     case GDK_KEY_Delete:
     case GDK_KEY_Tab:
@@ -840,7 +846,7 @@ namespace gnote {
       return false;
     default:
       {
-        guint32 character = gdk_keyval_to_unicode(evt->keyval);
+        guint32 character = gdk_keyval_to_unicode(keyval);
         if(character) {  // ignore special keys
           if(!m_search_button.get_active()) {
             // first show search box, then activate button
