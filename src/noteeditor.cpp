@@ -195,20 +195,26 @@ namespace gnote {
     }
   }
 
-  bool NoteEditor::key_pressed (GdkEventKey * ev)
+  bool NoteEditor::key_pressed(GdkEventKey *ev)
   {
       bool ret_value = false;
       if(!get_editable()) {
         return ret_value;
       }
 
-      switch (ev->keyval)
+      guint keyval;
+      GdkModifierType state;
+      GdkEvent *event = (GdkEvent*)ev;
+      if(!gdk_event_get_keyval(event, &keyval) || !gdk_event_get_state(event, &state)) {
+        return false;
+      }
+      switch(keyval)
       {
       case GDK_KEY_KP_Enter:
       case GDK_KEY_Return:
         // Allow opening notes with Ctrl + Enter
-        if (ev->state != Gdk::CONTROL_MASK) {
-          if (ev->state & Gdk::SHIFT_MASK) {
+        if(state != GDK_CONTROL_MASK) {
+          if(state & Gdk::SHIFT_MASK) {
             ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->add_new_line (true);
           } 
           else {
@@ -226,7 +232,7 @@ namespace gnote {
         scroll_to (get_buffer()->get_insert());
         break;
       case GDK_KEY_Delete:
-        if (Gdk::SHIFT_MASK != (ev->state & Gdk::SHIFT_MASK)) {
+        if(Gdk::SHIFT_MASK != (state & Gdk::SHIFT_MASK)) {
           ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->delete_key_handler();
           scroll_to (get_buffer()->get_insert());
         }
