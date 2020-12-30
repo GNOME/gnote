@@ -99,14 +99,23 @@ namespace gnote {
    }
 
 
-    void popup_menu(Gtk::Menu &menu, const GdkEventButton * ev)
+    void popup_menu(Gtk::Menu &menu, const GdkEventButton *ev)
     {
+      guint button = 0;
+      guint32 time;
+      auto event = (const GdkEvent*)ev;
+      if(event) {
+        gdk_event_get_button(event, &button);
+        time = gdk_event_get_time(event);
+      }
+      else {
+        time = gtk_get_current_event_time();
+      }
       menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
       menu.popup([&menu](int & x, int & y, bool & push_in) {
                    get_menu_position(&menu, x, y, push_in);
                   },
-                 (ev ? ev->button : 0), 
-                 (ev ? ev->time : gtk_get_current_event_time()));
+                 button, time);
       if(menu.get_attach_widget()) {
         menu.get_attach_widget()->set_state(Gtk::STATE_SELECTED);
       }
