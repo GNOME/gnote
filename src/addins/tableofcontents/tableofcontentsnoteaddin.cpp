@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2013,2015-2017,2019-2020 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -410,35 +410,30 @@ bool TableofcontentsNoteAddin::on_key_pressed(GdkEventKey *ev)
 //      its entry is needed until the toc menu is built a first time,
 //      then the menu item accelerator takes the signals.
 {
-  switch(ev->keyval) {
+  guint keyval;
+  GdkModifierType state;
+  GdkEvent *event = (GdkEvent*)ev;
+  if(!gdk_event_get_keyval(event, &keyval) || !gdk_event_get_state(event, &state)) {
+    return false;
+  }
+  switch(keyval) {
 
   case GDK_KEY_1:
-      if (ev->state & Gdk::CONTROL_MASK
-       && ev->state & Gdk::MOD1_MASK    ) {// Ctrl-Alt-1
-        on_toc_popup_activated();
-        return true;
-      }
-      else if (ev->state & Gdk::CONTROL_MASK) { // Ctrl-1
-        on_level_1_activated ();
-        return true;
-      }
-      else {
-        return false;
-      }
-  break;
-
+    if(state & Gdk::CONTROL_MASK && state & Gdk::MOD1_MASK) {// Ctrl-Alt-1
+      on_toc_popup_activated();
+      return true;
+    }
+    else if(state & Gdk::CONTROL_MASK) { // Ctrl-1
+      on_level_1_activated();
+      return true;
+    }
+    break;
   case GDK_KEY_2:
-      if (ev->state & Gdk::CONTROL_MASK) { // Ctrl-2
-        on_level_2_activated ();
-        return true;
-      }
-      else {
-        return false;
-      }
-  break;
-
-  default:
-    return false;
+    if(state & Gdk::CONTROL_MASK) { // Ctrl-2
+      on_level_2_activated();
+      return true;
+    }
+    break;
   }
 
   return false;
