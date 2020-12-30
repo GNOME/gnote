@@ -677,9 +677,10 @@ namespace gnote {
   bool NoteUrlWatcher::on_button_press(GdkEventButton *ev)
   {
     int x, y;
+    gdouble ev_x, ev_y;
+    gdk_event_get_coords((GdkEvent*)ev, &ev_x, &ev_y);
 
-    get_window()->editor()->window_to_buffer_coords (Gtk::TEXT_WINDOW_TEXT,
-                                                     ev->x, ev->y, x, y);
+    get_window()->editor()->window_to_buffer_coords (Gtk::TEXT_WINDOW_TEXT, ev_x, ev_y, x, y);
     Gtk::TextIter click_iter;
     get_window()->editor()->get_iter_at_location (click_iter, x, y);
 
@@ -1234,8 +1235,11 @@ namespace gnote {
   bool MouseHandWatcher::on_editor_key_press(GdkEventKey* ev)
   {
     bool retval = false;
+    auto event = (GdkEvent*)ev;
+    guint keyval;
+    gdk_event_get_keyval(event, &keyval);
 
-    switch (ev->keyval) {
+    switch(keyval) {
     case GDK_KEY_Shift_L:
     case GDK_KEY_Shift_R:
     case GDK_KEY_Control_L:
@@ -1264,7 +1268,7 @@ namespace gnote {
         if (NoteTagTable::tag_is_activatable (tag)) {
           Glib::RefPtr<Gtk::TextView> editor(get_window()->editor());
           editor->reference();
-          retval = tag->event (editor, (GdkEvent*)ev, iter);
+          retval = tag->event(editor, event, iter);
           if (retval) {
             break;
           }
@@ -1282,7 +1286,9 @@ namespace gnote {
   bool MouseHandWatcher::on_editor_key_release(GdkEventKey* ev)
   {
     bool retval = false;
-    switch (ev->keyval) {
+    guint keyval;
+    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
+    switch(keyval) {
     case GDK_KEY_Shift_L:
     case GDK_KEY_Shift_R:
     case GDK_KEY_Control_L:
