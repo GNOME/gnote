@@ -117,7 +117,10 @@ namespace inserttimestamp {
     custom_entry = manage(new Gtk::Entry());
     customBox->attach(*custom_entry, 1, 0, 1, 1);
 
-    sharp::PropertyEditor *entryEditor = new sharp::PropertyEditor(ts_settings, INSERT_TIMESTAMP_FORMAT, *custom_entry);
+    sharp::PropertyEditor *entryEditor = new sharp::PropertyEditor(
+      [ts_settings]()->Glib::ustring { return ts_settings->get_string(INSERT_TIMESTAMP_FORMAT); },
+      [ts_settings](const Glib::ustring & value) { ts_settings->set_string(INSERT_TIMESTAMP_FORMAT, value); },
+      *custom_entry);
     entryEditor->setup ();
 
     // Activate/deactivate widgets
