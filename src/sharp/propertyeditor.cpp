@@ -33,8 +33,8 @@
 namespace sharp {
 
 
-  PropertyEditorBase::PropertyEditorBase(const Glib::RefPtr<Gio::Settings> & settings, const char *key, Gtk::Widget &w)
-    : m_key(key), m_widget(w), m_settings(settings)
+  PropertyEditorBase::PropertyEditorBase(Gtk::Widget &w)
+    : m_widget(w)
   {
     w.set_data(Glib::Quark("sharp::property-editor"), (gpointer)this,
                &PropertyEditorBase::destroy_notify);
@@ -51,8 +51,10 @@ namespace sharp {
   }
 
 
-  PropertyEditor::PropertyEditor(Glib::RefPtr<Gio::Settings> & settings, const char * key, Gtk::Entry &entry)
-    : PropertyEditorBase(settings, key, entry)
+  PropertyEditor::PropertyEditor(std::function<Glib::ustring()> getter, std::function<void(const Glib::ustring&)> setter, Gtk::Entry &entry)
+    : PropertyEditorBase(entry)
+    , m_getter(getter)
+    , m_setter(setter)
   {
     m_connection = entry.property_text().signal_changed().connect(
       sigc::mem_fun(*this, &PropertyEditor::on_changed));
@@ -61,19 +63,19 @@ namespace sharp {
   void PropertyEditor::setup()
   {
     m_connection.block();
-    static_cast<Gtk::Entry &>(m_widget).set_text(m_settings->get_string(m_key));
+    static_cast<Gtk::Entry &>(m_widget).set_text(m_getter());
     m_connection.unblock();        
   }
 
   void PropertyEditor::on_changed()
   {
     Glib::ustring txt = static_cast<Gtk::Entry &>(m_widget).get_text();
-    m_settings->set_string(m_key, txt);
+    m_setter(txt);
   }
 
 
   PropertyEditorBool::PropertyEditorBool(std::function<bool()> getter, std::function<void(bool)> setter, Gtk::ToggleButton &button)
-    : PropertyEditorBase(Glib::RefPtr<Gio::Settings>(), "", button)
+    : PropertyEditorBase(button)
     , m_getter(getter)
     , m_setter(setter)
   {

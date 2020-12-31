@@ -45,12 +45,10 @@ namespace sharp {
     virtual void setup() = 0;
 
   protected:
-    PropertyEditorBase(const Glib::RefPtr<Gio::Settings> & settings, const char *key, Gtk::Widget &w);
+    explicit PropertyEditorBase(Gtk::Widget & w);
 
-    Glib::ustring m_key;
     Gtk::Widget &m_widget;
     sigc::connection m_connection;
-    Glib::RefPtr<Gio::Settings> m_settings;
   private:
     void static destroy_notify(gpointer data);
   };
@@ -59,12 +57,14 @@ namespace sharp {
       : public PropertyEditorBase
   {
   public:
-    PropertyEditor(Glib::RefPtr<Gio::Settings> & settings, const char * key, Gtk::Entry &entry);
+    PropertyEditor(std::function<Glib::ustring()> getter, std::function<void(const Glib::ustring&)> setter, Gtk::Entry &entry);
 
     virtual void setup() override;
 
   private:
     void on_changed();
+    std::function<Glib::ustring()> m_getter;
+    std::function<void(const Glib::ustring&)> m_setter;
   };
 
   class PropertyEditorBool
