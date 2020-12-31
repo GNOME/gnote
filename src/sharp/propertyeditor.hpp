@@ -57,21 +57,27 @@ namespace sharp {
       : public PropertyEditorBase
   {
   public:
-    PropertyEditor(std::function<Glib::ustring()> getter, std::function<void(const Glib::ustring&)> setter, Gtk::Entry &entry);
+    typedef std::function<Glib::ustring()> GetterT;
+    typedef std::function<void(const Glib::ustring&)> SetterT;
+
+    PropertyEditor(GetterT getter, SetterT setter, Gtk::Entry &entry);
 
     virtual void setup() override;
 
   private:
     void on_changed();
-    std::function<Glib::ustring()> m_getter;
-    std::function<void(const Glib::ustring&)> m_setter;
+    GetterT m_getter;
+    SetterT m_setter;
   };
 
   class PropertyEditorBool
     : public PropertyEditorBase
   {
   public:
-    PropertyEditorBool(std::function<bool()> getter, std::function<void(bool)> setter, Gtk::ToggleButton &button);
+    typedef std::function<bool()> GetterT;
+    typedef std::function<void(bool)> SetterT;
+
+    PropertyEditorBool(GetterT getter, SetterT setter, Gtk::ToggleButton &button);
     void add_guard(Gtk::Widget* w)
       {
         m_guarded.push_back(w);
@@ -83,8 +89,8 @@ namespace sharp {
     void guard(bool v);
     void on_changed();
     std::vector<Gtk::Widget*> m_guarded;
-    std::function<bool()> m_getter;
-    std::function<void(bool)> m_setter;
+    GetterT m_getter;
+    SetterT m_setter;
   };
 
 }

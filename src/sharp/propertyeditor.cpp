@@ -51,7 +51,7 @@ namespace sharp {
   }
 
 
-  PropertyEditor::PropertyEditor(std::function<Glib::ustring()> getter, std::function<void(const Glib::ustring&)> setter, Gtk::Entry &entry)
+  PropertyEditor::PropertyEditor(GetterT getter, SetterT setter, Gtk::Entry &entry)
     : PropertyEditorBase(entry)
     , m_getter(getter)
     , m_setter(setter)
@@ -74,7 +74,7 @@ namespace sharp {
   }
 
 
-  PropertyEditorBool::PropertyEditorBool(std::function<bool()> getter, std::function<void(bool)> setter, Gtk::ToggleButton &button)
+  PropertyEditorBool::PropertyEditorBool(GetterT getter, SetterT setter, Gtk::ToggleButton &button)
     : PropertyEditorBase(button)
     , m_getter(getter)
     , m_setter(setter)
