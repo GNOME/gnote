@@ -38,46 +38,49 @@
 
 namespace sharp {
 
+  template <typename GetterT, typename SetterT>
   class PropertyEditorBase
   {
   public:
-    virtual ~PropertyEditorBase();
+    virtual ~PropertyEditorBase() = default;
     virtual void setup() = 0;
 
   protected:
-    explicit PropertyEditorBase(Gtk::Widget & w);
+    PropertyEditorBase(GetterT && getter, SetterT && setter, Gtk::Widget & w);
 
     Gtk::Widget &m_widget;
     sigc::connection m_connection;
+    GetterT m_getter;
+    SetterT m_setter;
   private:
     void static destroy_notify(gpointer data);
   };
 
+
+  typedef std::function<Glib::ustring()> StringPropertyGetterT;
+  typedef std::function<void(const Glib::ustring&)> StringPropertySetterT;
+
   class PropertyEditor
-      : public PropertyEditorBase
+      : public PropertyEditorBase<StringPropertyGetterT, StringPropertySetterT>
   {
   public:
-    typedef std::function<Glib::ustring()> GetterT;
-    typedef std::function<void(const Glib::ustring&)> SetterT;
-
-    PropertyEditor(GetterT getter, SetterT setter, Gtk::Entry &entry);
+    PropertyEditor(StringPropertyGetterT && getter, StringPropertySetterT && setter, Gtk::Entry &entry);
 
     virtual void setup() override;
 
   private:
     void on_changed();
-    GetterT m_getter;
-    SetterT m_setter;
   };
 
+
+  typedef std::function<bool()> BoolPropertyGetterT;
+  typedef std::function<void(bool)> BoolPropertySetterT;
+
   class PropertyEditorBool
-    : public PropertyEditorBase
+    : public PropertyEditorBase<BoolPropertyGetterT, BoolPropertySetterT>
   {
   public:
-    typedef std::function<bool()> GetterT;
-    typedef std::function<void(bool)> SetterT;
-
-    PropertyEditorBool(GetterT getter, SetterT setter, Gtk::ToggleButton &button);
+    PropertyEditorBool(BoolPropertyGetterT && getter, BoolPropertySetterT && setter, Gtk::ToggleButton &button);
     void add_guard(Gtk::Widget* w)
       {
         m_guarded.push_back(w);
@@ -89,8 +92,6 @@ namespace sharp {
     void guard(bool v);
     void on_changed();
     std::vector<Gtk::Widget*> m_guarded;
-    GetterT m_getter;
-    SetterT m_setter;
   };
 
 }

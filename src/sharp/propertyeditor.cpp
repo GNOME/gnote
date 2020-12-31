@@ -33,28 +33,26 @@
 namespace sharp {
 
 
-  PropertyEditorBase::PropertyEditorBase(Gtk::Widget &w)
+  template <typename GetterT, typename SetterT>
+  PropertyEditorBase<GetterT, SetterT>::PropertyEditorBase(GetterT && getter, SetterT && setter, Gtk::Widget & w)
     : m_widget(w)
+    , m_getter(std::move(getter))
+    , m_setter(std::move(setter))
   {
     w.set_data(Glib::Quark("sharp::property-editor"), (gpointer)this,
                &PropertyEditorBase::destroy_notify);
   }
 
-  PropertyEditorBase::~PropertyEditorBase()
-  {
-  }
-
-  void PropertyEditorBase::destroy_notify(gpointer data)
+  template <typename GetterT, typename SetterT>
+  void PropertyEditorBase<GetterT, SetterT>::destroy_notify(gpointer data)
   {
     PropertyEditorBase * self = (PropertyEditorBase*)data;
     delete self;
   }
 
 
-  PropertyEditor::PropertyEditor(GetterT getter, SetterT setter, Gtk::Entry &entry)
-    : PropertyEditorBase(entry)
-    , m_getter(getter)
-    , m_setter(setter)
+  PropertyEditor::PropertyEditor(StringPropertyGetterT && getter, StringPropertySetterT && setter, Gtk::Entry &entry)
+    : PropertyEditorBase(std::move(getter), std::move(setter), entry)
   {
     m_connection = entry.property_text().signal_changed().connect(
       sigc::mem_fun(*this, &PropertyEditor::on_changed));
@@ -74,10 +72,8 @@ namespace sharp {
   }
 
 
-  PropertyEditorBool::PropertyEditorBool(GetterT getter, SetterT setter, Gtk::ToggleButton &button)
-    : PropertyEditorBase(button)
-    , m_getter(getter)
-    , m_setter(setter)
+  PropertyEditorBool::PropertyEditorBool(BoolPropertyGetterT && getter, BoolPropertySetterT && setter, Gtk::ToggleButton &button)
+    : PropertyEditorBase(std::move(getter), std::move(setter), button)
   {
     m_connection = button.property_active().signal_changed().connect(
       sigc::mem_fun(*this, &PropertyEditorBool::on_changed));
