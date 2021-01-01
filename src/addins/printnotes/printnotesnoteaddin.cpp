@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2015-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2013,2015-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -145,10 +145,10 @@ namespace printnotes {
                                color.get_blue()));
       }
       if (tag->property_foreground_set()) {
-        Gdk::Color color = tag->property_foreground_gdk();;
+        Gdk::RGBA color = tag->property_foreground_rgba();
         attributes.push_back(Pango::Attribute::create_attr_foreground(
-                               color.get_red(), color.get_green(), 
-                               color.get_blue()));
+                               color.get_red_u(), color.get_green_u(),
+                               color.get_blue_u()));
       }
       if (tag->property_indent_set()) {
         layout->set_indent(tag->property_indent());
