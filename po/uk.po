@@ -2,13 +2,13 @@
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2010.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-12-20 12:18+0000\n"
-"PO-Revision-Date: 2020-12-20 17:06+0200\n"
+"POT-Creation-Date: 2021-01-01 16:31+0000\n"
+"PO-Revision-Date: 2021-01-01 19:33+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Lokalize 20.11.70\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:547
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:549
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -1460,13 +1460,18 @@ msgstr ""
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
 #: ../src/gnote.cpp:295
+#| msgid ""
+#| "Copyright © 2010-2020 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"© Aurimas Cernius, 2010–2020 \n"
+"© Aurimas Cernius, 2010–2021\n"
 "© Debarshi Ray, 2009-2011\n"
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
@@ -2234,11 +2239,11 @@ msgstr "Створити нотатку"
 msgid "Search"
 msgstr "Пошук"
 
-#: ../src/recentchanges.cpp:799
+#: ../src/recentchanges.cpp:803
 msgid "Expected widget to be a sub-menu!"
 msgstr "Віджет мав бути допоміжним меню!"
 
-#: ../src/recentchanges.cpp:804
+#: ../src/recentchanges.cpp:808
 msgid "No configured actions"
 msgstr "Немає налаштованих дій"
 
@@ -2267,19 +2272,19 @@ msgstr "Пере_йменувати…"
 msgid "Notebooks"
 msgstr "Записники"
 
-#: ../src/searchnoteswidget.cpp:679
+#: ../src/searchnoteswidget.cpp:687
 msgid "Note"
 msgstr "Нотатка"
 
-#: ../src/searchnoteswidget.cpp:701
+#: ../src/searchnoteswidget.cpp:709
 msgid "Modified"
 msgstr "Змінено"
 
-#: ../src/searchnoteswidget.cpp:978
+#: ../src/searchnoteswidget.cpp:1008
 msgid "Notes"
 msgstr "Нотатки"
 
-#: ../src/searchnoteswidget.cpp:997
+#: ../src/searchnoteswidget.cpp:1027
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2287,20 +2292,20 @@ msgstr ""
 "Не знайдено результатів у вибраному записнику.\n"
 "Натисніть тут, щоб шукати по всіх нотатках. "
 
-#: ../src/searchnoteswidget.cpp:1001
+#: ../src/searchnoteswidget.cpp:1031
 msgid "Click here to search across all notebooks"
 msgstr "Натисніть тут, щоб шукати по всіх записниках"
 
-#: ../src/searchnoteswidget.cpp:1022
+#: ../src/searchnoteswidget.cpp:1052
 msgid "Matches"
 msgstr "Збіги"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1073
+#: ../src/searchnoteswidget.cpp:1103
 msgid "Title match"
 msgstr "Збіг назв"
 
-#: ../src/searchnoteswidget.cpp:1077
+#: ../src/searchnoteswidget.cpp:1107
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 відповідність"
@@ -2308,35 +2313,34 @@ msgstr[1] "%1 відповідності"
 msgstr[2] "%1 відповідностей"
 msgstr[3] "%1 відповідність"
 
-#: ../src/searchnoteswidget.cpp:1285
+#: ../src/searchnoteswidget.cpp:1315
 msgid "_New"
 msgstr "_Створити"
 
-#: ../src/searchnoteswidget.cpp:1314
+#: ../src/searchnoteswidget.cpp:1344
 msgid "_Open Template Note"
 msgstr "_Відкрити Шаблон нотатки"
 
-#: ../src/searchnoteswidget.cpp:1325
+#: ../src/searchnoteswidget.cpp:1355
 msgid "_New..."
 msgstr "С_творити…"
 
-#: ../src/searchnoteswidget.cpp:1468 ../src/searchnoteswidget.cpp:1481
-#: ../src/searchnoteswidget.cpp:1492
+#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
+#: ../src/searchnoteswidget.cpp:1522
 #, c-format
-#| msgid "Failed to parse setting %s (Value: %s):"
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Не вдалося обробити параметр search-sorting (Значення: %s):"
 
-#: ../src/searchnoteswidget.cpp:1469
+#: ../src/searchnoteswidget.cpp:1499
 msgid "Expected format 'column:order'"
 msgstr "Очікуваний формат — «стовпчик:порядок»"
 
-#: ../src/searchnoteswidget.cpp:1482
+#: ../src/searchnoteswidget.cpp:1512
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Нерозпізнаний стовпчик %s"
 
-#: ../src/searchnoteswidget.cpp:1493
+#: ../src/searchnoteswidget.cpp:1523
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Нерозпізнаний порядок %s"
@@ -2759,7 +2763,7 @@ msgstr ""
 "Щоб уникнути цього в подальшому, слід завантажувати FUSE на запуску системи. "
 "Додайте «modprobe fuse» до /etc/init.d/boot.local або «fuse» до /etc/modules."
 
-#: ../src/utils.cpp:129
+#: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2767,57 +2771,57 @@ msgstr ""
 "«Посібник до нотаток Gnote» не знайдено. Перевірте, що встановлення було "
 "виконано успішно."
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:146
 msgid "Help not found"
 msgstr "Довідку не знайдено"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "Не вдалося відкрити адресу"
 
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:195
 msgid "No Date"
 msgstr "Без дати"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:210
 msgid "Today, %1"
 msgstr "Сьогодні, %1"
 
-#: ../src/utils.cpp:202
+#: ../src/utils.cpp:211
 msgid "Today"
 msgstr "Сьогодні"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:217
 msgid "Yesterday, %1"
 msgstr "Вчора, %1"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:218
 msgid "Yesterday"
 msgstr "Вчора"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:215
+#: ../src/utils.cpp:224
 msgid "Tomorrow, %1"
 msgstr "Завтра, %1"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:225
 msgid "Tomorrow"
 msgstr "Завтра"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:229
 msgid "%b %d"
 msgstr "%d.%b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:223 ../src/utils.cpp:232
+#: ../src/utils.cpp:232 ../src/utils.cpp:241
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:229
+#: ../src/utils.cpp:238
 msgid "%b %d %Y"
 msgstr "%d.%b.%Y"
 
@@ -2843,11 +2847,11 @@ msgstr "Взято заголовок нотатки"
 msgid "Check spelling"
 msgstr "Перевірка правопису"
 
-#: ../src/watchers.cpp:704
+#: ../src/watchers.cpp:705
 msgid "_Copy Link Address"
 msgstr "_Копіювати адресу посилання"
 
-#: ../src/watchers.cpp:710
+#: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Відкрити посилання"
 
