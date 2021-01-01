@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -78,7 +78,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   add2(m_matches_window);
 
   make_recent_tree();
-  m_tree = manage(m_tree);
   m_tree->set_enable_search(false);
   m_tree->show();
 
@@ -660,7 +659,7 @@ void SearchNotesWidget::make_recent_tree()
   m_targets.push_back(Gtk::TargetEntry("text/plain", Gtk::TARGET_SAME_APP, 0));
   m_targets.push_back(Gtk::TargetEntry("text/uri-list", Gtk::TARGET_SAME_APP, 1));
 
-  m_tree = Gtk::manage(new RecentTreeView());
+  m_tree = manage(new RecentTreeView());
   m_tree->set_headers_visible(true);
   m_tree->set_rules_hint(true);
   m_tree->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
