@@ -1,6 +1,7 @@
 /*
  * contrast.h
  *
+ * Copyright (c) 2021  Aurimas Cernius
  * Copyright (c) 2006-2007  David Trowbridge
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -27,7 +28,7 @@
 #ifndef __CONTRAST_H_
 #define __CONTRAST_H_
 
-#include <gdkmm/color.h>
+#include <gdkmm/rgba.h>
 
 /*
  * Defined colors.  Keep this list alphabetized if you add new ones, but set the
@@ -61,8 +62,8 @@ typedef enum {
   CONTRAST_COLOR_LAST        = 23
 } ContrastPaletteColor;
 
-Gdk::Color
-contrast_render_foreground_color(const Gdk::Color & background,
+Gdk::RGBA
+contrast_render_foreground_color(const Gdk::RGBA & background,
                                  ContrastPaletteColor color);
 
 #endif

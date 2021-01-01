@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -154,7 +154,7 @@ public:
     {
       m_palette_foreground = value;
       // XXX We should also watch theme changes.
-      property_foreground_gdk().set_value(render_foreground(value));
+      property_foreground_rgba().set_value(render_foreground(value));
     }
 protected:
   NoteTag(const Glib::ustring & tag_name, int flags = 0);
@@ -166,8 +166,8 @@ protected:
   virtual bool on_event(const Glib::RefPtr<Glib::Object> &, GdkEvent *, const Gtk::TextIter & ) override;
   virtual bool on_activate(const NoteEditor & , const Gtk::TextIter &, const Gtk::TextIter &);
 private:
-  Gdk::Color get_background() const;
-  Gdk::Color render_foreground(ContrastPaletteColor symbol);
+  Gdk::RGBA get_background() const;
+  Gdk::RGBA render_foreground(ContrastPaletteColor symbol);
 
   Glib::ustring       m_element_name;
   Glib::RefPtr<Gtk::TextMark> m_widget_location;

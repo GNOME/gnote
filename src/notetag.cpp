@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -292,20 +292,17 @@ namespace gnote {
     }
   }
 
-  Gdk::Color NoteTag::get_background() const
+  Gdk::RGBA NoteTag::get_background() const
   {
     /* We can't know the exact background because we're not
        in TextView's rendering, but we can make a guess */
     if (property_background_set().get_value())
-      return property_background_gdk().get_value();
+      return property_background_rgba().get_value();
 
-    Gdk::RGBA rgba = Gtk::TextView().get_style_context()->get_background_color();
-    Gdk::Color color;
-    color.set_rgb(rgba.get_red_u(), rgba.get_green_u(), rgba.get_blue_u());
-    return color;
+    return Gtk::TextView().get_style_context()->get_background_color();
   }
 
-  Gdk::Color NoteTag::render_foreground(ContrastPaletteColor symbol)
+  Gdk::RGBA NoteTag::render_foreground(ContrastPaletteColor symbol)
   {
     return contrast_render_foreground_color(get_background(), symbol);
   }

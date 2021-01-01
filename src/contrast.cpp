@@ -1,6 +1,7 @@
 /*
  * contrast.c
  *
+ * Copyright (c) 2021  Aurimas Cernius
  * Copyright (c) 2006-2007  David Trowbridge
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -192,8 +193,8 @@ lab_distance(float La,
  * Creates a specific color value for a foreground color, optimizing for
  * maximum readability against the background.
  */
-Gdk::Color
-contrast_render_foreground_color(const Gdk::Color & background,
+Gdk::RGBA
+contrast_render_foreground_color(const Gdk::RGBA & background,
                                  ContrastPaletteColor color)
 {
   float L, a, b;
@@ -202,10 +203,9 @@ contrast_render_foreground_color(const Gdk::Color & background,
   float points[8][3];
   float ld, cd;
   int i;
-  Gdk::Color rcolor;
+  Gdk::RGBA rcolor;
 
-  rgb_to_lab(background.get_red(), background.get_green(), 
-             background.get_blue(), &L, &a, &b);
+  rgb_to_lab(background.get_red_u(), background.get_green_u(), background.get_blue_u(), &L, &a, &b);
 
   points[0][0] = color_regions[color][0]; points[0][1] = color_regions[color][2]; points[0][2] = color_regions[color][4];
   points[1][0] = color_regions[color][0]; points[1][1] = color_regions[color][2]; points[1][2] = color_regions[color][5];
@@ -254,9 +254,10 @@ contrast_render_foreground_color(const Gdk::Color & background,
 //             &rcolor.red,
 //             &rcolor.green,
 //             &rcolor.blue);
-  rcolor.set_red(re);
-  rcolor.set_green(gr);
-  rcolor.set_blue(bl);
+  rcolor.set_red_u(re);
+  rcolor.set_green_u(gr);
+  rcolor.set_blue_u(bl);
+  rcolor.set_alpha_u(65535);
 
   return rcolor;
 }
