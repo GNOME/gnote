@@ -506,7 +506,6 @@ void SearchNotesWidget::update_results()
   m_store_sort->set_sort_func(2 /* change date */,
                               sigc::mem_fun(*this, &SearchNotesWidget::compare_dates));
   m_store_sort->set_sort_column(m_sort_column_id, m_sort_column_order);
-  m_store_sort->unset_default_sort_func();
   m_store_sort->signal_sort_column_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
 
