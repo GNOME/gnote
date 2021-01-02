@@ -100,7 +100,7 @@ private:
   Gtk::Widget        *m_header_bar;
   SearchNotesWidget   m_search_notes_widget;
   Gtk::Alignment      m_search_box;
-  Gtk::Grid           m_find_next_prev_box;
+  Gtk::Grid          *m_find_next_prev_box;
   Gtk::ToggleButton   m_search_button;
   Gtk::Alignment      m_embedded_toolbar;
   Gtk::Grid           m_embed_box;

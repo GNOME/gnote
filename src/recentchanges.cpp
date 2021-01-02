@@ -55,6 +55,7 @@ namespace gnote {
     , m_preferences(g.preferences())
     , m_search_notes_widget(g, m)
     , m_search_box(0.5, 0.5, 0.0, 1.0)
+    , m_find_next_prev_box(nullptr)
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
     , m_window_menu_embedded(NULL)
@@ -245,7 +246,8 @@ namespace gnote {
     grid->set_hexpand(false);
     grid->attach(m_search_entry, 0, 0, 1, 1);
 
-    m_find_next_prev_box.set_margin_left(5);
+    m_find_next_prev_box = manage(new Gtk::Grid);
+    m_find_next_prev_box->set_margin_left(5);
 
     Gtk::Button *find_next_button = manage(new Gtk::Button);
     Gtk::Image *image = manage(new Gtk::Image);
@@ -257,7 +259,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
     find_next_button->add_accelerator("activate", get_accel_group(), GDK_KEY_G, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     find_next_button->show();
-    m_find_next_prev_box.attach(*find_next_button, 0, 0, 1, 1);
+    m_find_next_prev_box->attach(*find_next_button, 0, 0, 1, 1);
 
     Gtk::Button *find_prev_button = manage(new Gtk::Button);
     image = manage(new Gtk::Image);
@@ -269,9 +271,9 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
     find_prev_button->add_accelerator("activate", get_accel_group(), GDK_KEY_G, Gdk::CONTROL_MASK|Gdk::SHIFT_MASK, (Gtk::AccelFlags) 0);
     find_prev_button->show();
-    m_find_next_prev_box.attach(*find_prev_button, 1, 0, 1, 1);
+    m_find_next_prev_box->attach(*find_prev_button, 1, 0, 1, 1);
 
-    grid->attach(m_find_next_prev_box, 1, 0, 1, 1);
+    grid->attach(*m_find_next_prev_box, 1, 0, 1, 1);
     grid->show();
 
     m_search_box.add(*grid);
@@ -730,10 +732,10 @@ namespace gnote {
       SearchableItem & searchable_item = dynamic_cast<SearchableItem&>(widget);
       m_search_button.show();
       if(searchable_item.supports_goto_result()) {
-        m_find_next_prev_box.show();
+        m_find_next_prev_box->show();
       }
       else {
-        m_find_next_prev_box.hide();
+        m_find_next_prev_box->hide();
       }
       searchable_item.perform_search(m_search_button.get_active() ? m_search_entry.get_text() : "");
     }
