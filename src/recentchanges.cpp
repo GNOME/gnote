@@ -245,6 +245,17 @@ namespace gnote {
     grid->set_margin_right(5);
     grid->set_hexpand(false);
     grid->attach(m_search_entry, 0, 0, 1, 1);
+    grid->show();
+
+    m_search_box.add(*grid);
+    m_search_box.set_hexpand(true);
+  }
+
+  void NoteRecentChanges::make_find_next_prev()
+  {
+    if(m_find_next_prev_box) {
+      return;
+    }
 
     m_find_next_prev_box = manage(new Gtk::Grid);
     m_find_next_prev_box->set_margin_left(5);
@@ -273,11 +284,13 @@ namespace gnote {
     find_prev_button->show();
     m_find_next_prev_box->attach(*find_prev_button, 1, 0, 1, 1);
 
-    grid->attach(*m_find_next_prev_box, 1, 0, 1, 1);
-    grid->show();
-
-    m_search_box.add(*grid);
-    m_search_box.set_hexpand(true);
+    auto grid = dynamic_cast<Gtk::Grid*>(m_search_entry.get_parent());
+    if(grid) {
+      grid->attach(*m_find_next_prev_box, 1, 0, 1, 1);
+    }
+    else {
+      ERR_OUT(_("Parent of search entry is not Gtk::Grid, please report a bug!"));
+    }
   }
 
   void NoteRecentChanges::on_search_button_toggled()
@@ -334,10 +347,13 @@ namespace gnote {
     if(searchable_item) {
       m_search_button.show();
       if(searchable_item->supports_goto_result()) {
+        make_find_next_prev();
         m_find_next_prev_box->show();
       }
       else {
-        m_find_next_prev_box->hide();
+        if(m_find_next_prev_box) {
+          m_find_next_prev_box->hide();
+        }
       }
       if(perform_search) {
         searchable_item->perform_search(m_search_button.get_active() ? m_search_entry.get_text() : "");
