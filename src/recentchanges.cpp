@@ -347,6 +347,11 @@ namespace gnote {
 
   void NoteRecentChanges::show_search_bar(bool focus)
   {
+    if(!m_search_button.get_active()) {
+      m_search_button.activate();
+      return;
+    }
+
     make_search_box();
     if(m_search_box->get_visible()) {
       focus = false;
