@@ -103,13 +103,13 @@ private:
   SearchNotesWidget   m_search_notes_widget;
   Gtk::Alignment     *m_search_box;
   Gtk::Grid          *m_find_next_prev_box;
+  Gtk::SearchEntry   *m_search_entry;
   Gtk::ToggleButton   m_search_button;
   Gtk::Alignment      m_embedded_toolbar;
   Gtk::Grid           m_embed_box;
   Gtk::Button        *m_all_notes_button;
   Gtk::Button        *m_new_note_button;
   Gtk::Button        *m_window_actions_button;
-  Gtk::SearchEntry    m_search_entry;
   std::vector<EmbeddableWidget*> m_embedded_widgets;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
