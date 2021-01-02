@@ -54,7 +54,7 @@ namespace gnote {
     , m_note_manager(m)
     , m_preferences(g.preferences())
     , m_search_notes_widget(g, m)
-    , m_search_box(0.5, 0.5, 0.0, 1.0)
+    , m_search_box(nullptr)
     , m_find_next_prev_box(nullptr)
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
@@ -89,7 +89,7 @@ namespace gnote {
     else {
       content->attach(*m_header_bar, 0, content_y_attach++, 1, 1);
     }
-    content->attach(m_search_box, 0, content_y_attach++, 1, 1);
+    content->attach(*m_search_box, 0, content_y_attach++, 1, 1);
     content->attach(m_embed_box, 0, content_y_attach++, 1, 1);
     m_embed_box.set_hexpand(true);
     m_embed_box.set_vexpand(true);
@@ -247,8 +247,9 @@ namespace gnote {
     grid->attach(m_search_entry, 0, 0, 1, 1);
     grid->show();
 
-    m_search_box.add(*grid);
-    m_search_box.set_hexpand(true);
+    m_search_box = manage(new Gtk::Alignment(0.5, 0.5, 0.0, 1.0));
+    m_search_box->add(*grid);
+    m_search_box->set_hexpand(true);
   }
 
   void NoteRecentChanges::make_find_next_prev()
@@ -299,7 +300,7 @@ namespace gnote {
       show_search_bar();
     }
     else {
-      m_search_box.hide();
+      m_search_box->hide();
       SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
       if(searchable_widget) {
         searchable_widget->perform_search("");
@@ -325,10 +326,10 @@ namespace gnote {
 
   void NoteRecentChanges::show_search_bar(bool focus)
   {
-    if(m_search_box.get_visible()) {
+    if(m_search_box->get_visible()) {
       return;
     }
-    m_search_box.show();
+    m_search_box->show();
     if(focus) {
       m_search_entry.grab_focus();
     }
@@ -705,7 +706,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_entry_changed()
   {
-    if(!m_search_box.get_visible()) {
+    if(!m_search_box || !m_search_box->get_visible()) {
       return;
     }
     if(m_entry_changed_timeout == NULL) {
@@ -737,7 +738,7 @@ namespace gnote {
 
   void NoteRecentChanges::entry_changed_timeout()
   {
-    if(!m_search_box.get_visible()) {
+    if(!m_search_box || !m_search_box->get_visible()) {
       return;
     }
     Glib::ustring search_text = get_search_text();
