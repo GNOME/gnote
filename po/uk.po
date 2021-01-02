@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-01-01 16:31+0000\n"
-"PO-Revision-Date: 2021-01-01 19:33+0200\n"
+"POT-Creation-Date: 2021-01-02 14:35+0000\n"
+"PO-Revision-Date: 2021-01-02 19:49+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Lokalize 20.11.70\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:549
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:624
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -1460,11 +1460,6 @@ msgstr ""
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
 #: ../src/gnote.cpp:295
-#| msgid ""
-#| "Copyright © 2010-2020 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -2227,23 +2222,35 @@ msgstr "Автор:"
 msgid "Copyright:"
 msgstr "Авторські права:"
 
-#: ../src/recentchanges.cpp:156
+#: ../src/recentchanges.cpp:160
 msgid "All Notes"
 msgstr "Усі нотатки"
 
-#: ../src/recentchanges.cpp:167
+#: ../src/recentchanges.cpp:171
 msgid "Create New Note"
 msgstr "Створити нотатку"
 
-#: ../src/recentchanges.cpp:188
+#: ../src/recentchanges.cpp:192
 msgid "Search"
 msgstr "Пошук"
 
-#: ../src/recentchanges.cpp:803
+#: ../src/recentchanges.cpp:272
+msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
+msgstr ""
+"Батьківським елементом вбудованої панелі не є Gtk::Grid. Будь ласка,"
+" повідомте розробникам про цю ваду!"
+
+#: ../src/recentchanges.cpp:314
+msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
+msgstr ""
+"Батьківським елементом запису для пошуку не є Gtk::Grid. Будь ласка,"
+" повідомте розробникам про цю ваду!"
+
+#: ../src/recentchanges.cpp:869
 msgid "Expected widget to be a sub-menu!"
 msgstr "Віджет мав бути допоміжним меню!"
 
-#: ../src/recentchanges.cpp:808
+#: ../src/recentchanges.cpp:874
 msgid "No configured actions"
 msgstr "Немає налаштованих дій"
 
@@ -2252,39 +2259,39 @@ msgstr "Немає налаштованих дій"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Не вдалося завантажити інтерфейс D-Bus %s: %s"
 
-#: ../src/searchnoteswidget.cpp:136
+#: ../src/searchnoteswidget.cpp:135
 msgid "_Open"
 msgstr "_Відкрити"
 
-#: ../src/searchnoteswidget.cpp:139
+#: ../src/searchnoteswidget.cpp:138
 msgid "Open In New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
+#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
 msgid "_Delete"
 msgstr "В_илучити"
 
-#: ../src/searchnoteswidget.cpp:149
+#: ../src/searchnoteswidget.cpp:148
 msgid "Re_name..."
 msgstr "Пере_йменувати…"
 
-#: ../src/searchnoteswidget.cpp:225
+#: ../src/searchnoteswidget.cpp:224
 msgid "Notebooks"
 msgstr "Записники"
 
-#: ../src/searchnoteswidget.cpp:687
+#: ../src/searchnoteswidget.cpp:685
 msgid "Note"
 msgstr "Нотатка"
 
-#: ../src/searchnoteswidget.cpp:709
+#: ../src/searchnoteswidget.cpp:707
 msgid "Modified"
 msgstr "Змінено"
 
-#: ../src/searchnoteswidget.cpp:1008
+#: ../src/searchnoteswidget.cpp:1006
 msgid "Notes"
 msgstr "Нотатки"
 
-#: ../src/searchnoteswidget.cpp:1027
+#: ../src/searchnoteswidget.cpp:1025
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2292,20 +2299,20 @@ msgstr ""
 "Не знайдено результатів у вибраному записнику.\n"
 "Натисніть тут, щоб шукати по всіх нотатках. "
 
-#: ../src/searchnoteswidget.cpp:1031
+#: ../src/searchnoteswidget.cpp:1029
 msgid "Click here to search across all notebooks"
 msgstr "Натисніть тут, щоб шукати по всіх записниках"
 
-#: ../src/searchnoteswidget.cpp:1052
+#: ../src/searchnoteswidget.cpp:1050
 msgid "Matches"
 msgstr "Збіги"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1103
+#: ../src/searchnoteswidget.cpp:1101
 msgid "Title match"
 msgstr "Збіг назв"
 
-#: ../src/searchnoteswidget.cpp:1107
+#: ../src/searchnoteswidget.cpp:1105
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 відповідність"
@@ -2313,34 +2320,34 @@ msgstr[1] "%1 відповідності"
 msgstr[2] "%1 відповідностей"
 msgstr[3] "%1 відповідність"
 
-#: ../src/searchnoteswidget.cpp:1315
+#: ../src/searchnoteswidget.cpp:1313
 msgid "_New"
 msgstr "_Створити"
 
-#: ../src/searchnoteswidget.cpp:1344
+#: ../src/searchnoteswidget.cpp:1342
 msgid "_Open Template Note"
 msgstr "_Відкрити Шаблон нотатки"
 
-#: ../src/searchnoteswidget.cpp:1355
+#: ../src/searchnoteswidget.cpp:1353
 msgid "_New..."
 msgstr "С_творити…"
 
-#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
-#: ../src/searchnoteswidget.cpp:1522
+#: ../src/searchnoteswidget.cpp:1496 ../src/searchnoteswidget.cpp:1509
+#: ../src/searchnoteswidget.cpp:1520
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Не вдалося обробити параметр search-sorting (Значення: %s):"
 
-#: ../src/searchnoteswidget.cpp:1499
+#: ../src/searchnoteswidget.cpp:1497
 msgid "Expected format 'column:order'"
 msgstr "Очікуваний формат — «стовпчик:порядок»"
 
-#: ../src/searchnoteswidget.cpp:1512
+#: ../src/searchnoteswidget.cpp:1510
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Нерозпізнаний стовпчик %s"
 
-#: ../src/searchnoteswidget.cpp:1523
+#: ../src/searchnoteswidget.cpp:1521
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Нерозпізнаний порядок %s"
