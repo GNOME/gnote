@@ -103,7 +103,11 @@ private:
   SearchNotesWidget   m_search_notes_widget;
   Gtk::Alignment     *m_search_box;
   Gtk::Grid          *m_find_next_prev_box;
-  Gtk::SearchEntry   *m_search_entry;
+  union
+  {
+    Gtk::SearchEntry *m_search_entry;
+    Glib::ustring    *m_search_text;
+  };
   Gtk::ToggleButton   m_search_button;
   Gtk::Alignment      m_embedded_toolbar;
   Gtk::Grid           m_embed_box;

@@ -141,6 +141,9 @@ namespace gnote {
     if(m_entry_changed_timeout) {
       delete m_entry_changed_timeout;
     }
+    if(!m_search_box && m_search_text) {
+      delete m_search_text;
+    }
   }
 
   void NoteRecentChanges::make_header_bar()
@@ -233,7 +236,13 @@ namespace gnote {
       return;
     }
 
+    Glib::ustring search_text;
+    if(m_search_text) {
+      search_text = *m_search_text;
+      delete m_search_text;
+    }
     m_search_entry = manage(new Gtk::SearchEntry);
+    m_search_entry->set_text(search_text);
     m_search_entry->set_activates_default(false);
     m_search_entry->set_size_request(300);
     m_search_entry->signal_key_press_event()
@@ -525,8 +534,17 @@ namespace gnote {
 
   void NoteRecentChanges::set_search_text(const Glib::ustring & value)
   {
-    // TODO fix nullptr
-    m_search_entry->set_text(value);
+    if(m_search_box) {
+      m_search_entry->set_text(value);
+    }
+    else {
+      if(!m_search_text) {
+        m_search_text = new Glib::ustring(value);
+      }
+      else {
+        *m_search_text = value;
+      }
+    }
   }
 
   void NoteRecentChanges::embed_widget(EmbeddableWidget & widget)
@@ -765,8 +783,13 @@ namespace gnote {
 
   Glib::ustring NoteRecentChanges::get_search_text()
   {
-    // TODO fix nullptr
-    Glib::ustring text = m_search_entry->get_text();
+    Glib::ustring text;
+    if(m_search_box) {
+      text = m_search_entry->get_text();
+    }
+    else if(m_search_text) {
+      text = *m_search_text;
+    }
     text = sharp::string_trim(text);
     return text;
   }
