@@ -53,7 +53,6 @@ namespace gnote {
     , m_gnote(g)
     , m_note_manager(m)
     , m_preferences(g.preferences())
-    , m_search_notes_widget(g, m)
     , m_search_box(nullptr)
     , m_find_next_prev_box(nullptr)
     , m_search_entry(nullptr)
@@ -72,11 +71,12 @@ namespace gnote {
     set_has_resize_grip(true);
     set_icon_name(IconManager::GNOTE);
 
-    m_search_notes_widget.signal_open_note
+    m_search_notes_widget = manage(new SearchNotesWidget(g, m));
+    m_search_notes_widget->signal_open_note
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note));
-    m_search_notes_widget.signal_open_note_new_window
+    m_search_notes_widget->signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
-    m_search_notes_widget.notes_widget().signal_key_press_event()
+    m_search_notes_widget->notes_widget().signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_widget_key_press));
 
     make_header_bar();
@@ -129,7 +129,7 @@ namespace gnote {
     find_action("close-window")->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
 
-    embed_widget(m_search_notes_widget);
+    embed_widget(*m_search_notes_widget);
   }
 
 
@@ -170,7 +170,7 @@ namespace gnote {
     m_new_note_button->set_image(*image);
     m_new_note_button->set_tooltip_text(_("Create New Note"));
     m_new_note_button->add_accelerator("activate", get_accel_group(), GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
-    m_new_note_button->signal_clicked().connect(sigc::mem_fun(m_search_notes_widget, &SearchNotesWidget::new_note));
+    m_new_note_button->signal_clicked().connect(sigc::mem_fun(*m_search_notes_widget, &SearchNotesWidget::new_note));
     m_new_note_button->show_all();
     left_box->attach(*m_new_note_button, 1, 0, 1, 1);
     left_box->show();
@@ -393,13 +393,13 @@ namespace gnote {
   void NoteRecentChanges::present_search()
   {
     EmbeddableWidget *current = currently_embedded();
-    if(&m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(current)) {
+    if(m_search_notes_widget == dynamic_cast<SearchNotesWidget*>(current)) {
       return;
     }
     if(current) {
       background_embedded(*current);
     }
-    foreground_embedded(m_search_notes_widget);
+    foreground_embedded(*m_search_notes_widget);
   }
 
   void NoteRecentChanges::present_note(const Note::Ptr & note)
@@ -440,7 +440,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_delete_note()
   {
-    m_search_notes_widget.delete_selected_notes();
+    m_search_notes_widget->delete_selected_notes();
   }
 
 
@@ -467,7 +467,7 @@ namespace gnote {
 
   bool NoteRecentChanges::is_search()
   {
-    return &m_search_notes_widget == currently_embedded();
+    return m_search_notes_widget == currently_embedded();
   }
 
 
@@ -502,7 +502,7 @@ namespace gnote {
         if(current_item) {
           background_embedded(*current_item);
         }
-        foreground_embedded(m_search_notes_widget);
+        foreground_embedded(*m_search_notes_widget);
       }
       break;
     case GDK_KEY_F1:
@@ -518,7 +518,7 @@ namespace gnote {
   void NoteRecentChanges::on_show()
   {
     // Select "All Notes" in the notebooks list
-    m_search_notes_widget.select_all_notes_notebook();
+    m_search_notes_widget->select_all_notes_notebook();
 
     EmbeddableWidget *widget = NULL;
     if(m_embed_box.get_children().size() == 0 && m_embedded_widgets.size() > 0) {
@@ -620,7 +620,7 @@ namespace gnote {
       widget.size_internals();
  
       update_toolbar(widget);
-      if(&widget == &m_search_notes_widget) {
+      if(&widget == m_search_notes_widget) {
         set_title(_("Gnote"));
       }
       else {
@@ -801,7 +801,7 @@ namespace gnote {
 
   void NoteRecentChanges::update_toolbar(EmbeddableWidget & widget)
   {
-    bool search = dynamic_cast<SearchNotesWidget*>(&widget) == &m_search_notes_widget;
+    bool search = dynamic_cast<SearchNotesWidget*>(&widget) == m_search_notes_widget;
     m_all_notes_button->set_visible(!search);
     m_new_note_button->set_visible(search);
     dynamic_cast<Gtk::Image*>(m_window_actions_button->get_image())->property_icon_name() = search ? MAIN_MENU_PRIMARY_ICON : MAIN_MENU_SECONDARY_ICON;

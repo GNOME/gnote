@@ -100,7 +100,7 @@ private:
   NoteManagerBase    &m_note_manager;
   Preferences        &m_preferences;
   Gtk::Widget        *m_header_bar;
-  SearchNotesWidget   m_search_notes_widget;
+  SearchNotesWidget  *m_search_notes_widget;
   Gtk::Alignment     *m_search_box;
   Gtk::Grid          *m_find_next_prev_box;
   union
