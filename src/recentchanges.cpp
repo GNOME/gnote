@@ -79,7 +79,6 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_widget_key_press));
 
     make_header_bar();
-    make_search_box();
     auto content = manage(new Gtk::Grid);
     content->set_orientation(Gtk::ORIENTATION_VERTICAL);
     int content_y_attach = 0;
@@ -89,7 +88,6 @@ namespace gnote {
     else {
       content->attach(*m_header_bar, 0, content_y_attach++, 1, 1);
     }
-    content->attach(*m_search_box, 0, content_y_attach++, 1, 1);
     content->attach(m_embed_box, 0, content_y_attach++, 1, 1);
     m_embed_box.set_hexpand(true);
     m_embed_box.set_vexpand(true);
@@ -230,6 +228,10 @@ namespace gnote {
 
   void NoteRecentChanges::make_search_box()
   {
+    if(m_search_box) {
+      return;
+    }
+
     m_search_entry.set_activates_default(false);
     m_search_entry.set_size_request(300);
     m_search_entry.signal_key_press_event()
@@ -250,6 +252,14 @@ namespace gnote {
     m_search_box = manage(new Gtk::Alignment(0.5, 0.5, 0.0, 1.0));
     m_search_box->add(*grid);
     m_search_box->set_hexpand(true);
+
+    auto content = dynamic_cast<Gtk::Grid*>(m_embed_box.get_parent());
+    if(content) {
+      content->attach_next_to(*m_search_box, m_embed_box, Gtk::POS_TOP);
+    }
+    else {
+      ERR_OUT(_("Parent of embed box is not a Gtk::Grid, please report a bug!"));
+    }
   }
 
   void NoteRecentChanges::make_find_next_prev()
@@ -326,20 +336,16 @@ namespace gnote {
 
   void NoteRecentChanges::show_search_bar(bool focus)
   {
+    make_search_box();
     if(m_search_box->get_visible()) {
-      return;
+      focus = false;
     }
     m_search_box->show();
     if(focus) {
       m_search_entry.grab_focus();
     }
     Glib::ustring text = m_search_entry.get_text();
-    if(text != "") {
-      SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_embedded());
-      if(searchable_widget) {
-        searchable_widget->perform_search(text);
-      }
-    }
+    update_search_bar(*currently_embedded(), text != "");
   }
 
   void NoteRecentChanges::update_search_bar(EmbeddableWidget & widget, bool perform_search)
@@ -348,8 +354,10 @@ namespace gnote {
     if(searchable_item) {
       m_search_button.show();
       if(searchable_item->supports_goto_result()) {
-        make_find_next_prev();
-        m_find_next_prev_box->show();
+        if(m_search_box && m_search_box->get_visible()) {
+          make_find_next_prev();
+          m_find_next_prev_box->show();
+        }
       }
       else {
         if(m_find_next_prev_box) {
