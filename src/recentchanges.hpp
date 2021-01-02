@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -99,7 +99,6 @@ private:
   Preferences        &m_preferences;
   Gtk::Widget        *m_header_bar;
   SearchNotesWidget   m_search_notes_widget;
-  Gtk::Grid           m_content_vbox;
   Gtk::Alignment      m_search_box;
   Gtk::Grid           m_find_next_prev_box;
   Gtk::ToggleButton   m_search_button;

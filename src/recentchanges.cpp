@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2020 Aurimas Cernius
+ * Copyright (C) 2010-2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -79,22 +79,23 @@ namespace gnote {
 
     make_header_bar();
     make_search_box();
-    m_content_vbox.set_orientation(Gtk::ORIENTATION_VERTICAL);
+    auto content = manage(new Gtk::Grid);
+    content->set_orientation(Gtk::ORIENTATION_VERTICAL);
     int content_y_attach = 0;
     if(use_client_side_decorations(m_preferences)) {
       set_titlebar(*static_cast<Gtk::HeaderBar*>(m_header_bar));
     }
     else {
-      m_content_vbox.attach(*m_header_bar, 0, content_y_attach++, 1, 1);
+      content->attach(*m_header_bar, 0, content_y_attach++, 1, 1);
     }
-    m_content_vbox.attach(m_search_box, 0, content_y_attach++, 1, 1);
-    m_content_vbox.attach(m_embed_box, 0, content_y_attach++, 1, 1);
+    content->attach(m_search_box, 0, content_y_attach++, 1, 1);
+    content->attach(m_embed_box, 0, content_y_attach++, 1, 1);
     m_embed_box.set_hexpand(true);
     m_embed_box.set_vexpand(true);
     m_embed_box.show();
-    m_content_vbox.show ();
+    content->show();
 
-    add (m_content_vbox);
+    add(*content);
     signal_delete_event().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete));
     signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
