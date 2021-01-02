@@ -328,6 +328,27 @@ namespace gnote {
     }
   }
 
+  void NoteRecentChanges::update_search_bar(EmbeddableWidget & widget, bool perform_search)
+  {
+    SearchableItem *searchable_item = dynamic_cast<SearchableItem*>(&widget);
+    if(searchable_item) {
+      m_search_button.show();
+      if(searchable_item->supports_goto_result()) {
+        m_find_next_prev_box->show();
+      }
+      else {
+        m_find_next_prev_box->hide();
+      }
+      if(perform_search) {
+        searchable_item->perform_search(m_search_button.get_active() ? m_search_entry.get_text() : "");
+      }
+    }
+    else {
+      m_search_button.set_active(false);
+      m_search_button.hide();
+    }
+  }
+
   void NoteRecentChanges::present_search()
   {
     EmbeddableWidget *current = currently_embedded();
@@ -727,22 +748,7 @@ namespace gnote {
     m_all_notes_button->set_visible(!search);
     m_new_note_button->set_visible(search);
     dynamic_cast<Gtk::Image*>(m_window_actions_button->get_image())->property_icon_name() = search ? MAIN_MENU_PRIMARY_ICON : MAIN_MENU_SECONDARY_ICON;
-
-    try {
-      SearchableItem & searchable_item = dynamic_cast<SearchableItem&>(widget);
-      m_search_button.show();
-      if(searchable_item.supports_goto_result()) {
-        m_find_next_prev_box->show();
-      }
-      else {
-        m_find_next_prev_box->hide();
-      }
-      searchable_item.perform_search(m_search_button.get_active() ? m_search_entry.get_text() : "");
-    }
-    catch(std::bad_cast &) {
-      m_search_button.set_active(false);
-      m_search_button.hide();
-    }
+    update_search_bar(widget, true);
 
     try {
       HasEmbeddableToolbar & toolbar_provider = dynamic_cast<HasEmbeddableToolbar&>(widget);

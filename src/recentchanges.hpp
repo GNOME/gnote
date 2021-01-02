@@ -82,6 +82,7 @@ private:
   void entry_changed_timeout();
   Glib::ustring get_search_text();
   void update_toolbar(EmbeddableWidget & widget);
+  void update_search_bar(EmbeddableWidget & widget, bool perform_search);
   void on_all_notes_button_clicked();
   void on_show_window_menu();
   void on_search_button_toggled();
