@@ -719,6 +719,12 @@ namespace gnote {
   bool NoteRecentChanges::on_map_event(GdkEventAny *evt)
   {
     bool res = MainWindow::on_map_event(evt);
+    if(!m_mapped) {
+      auto widget = currently_embedded();
+      if(widget) {
+        widget->set_initial_focus();
+      }
+    }
     m_mapped = true;
     return res;
   }

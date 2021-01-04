@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,6 +57,7 @@ public:
   virtual void hint_position(int & x, int & y);
   virtual void hint_size(int & width, int & height);
   virtual void size_internals();
+  virtual void set_initial_focus() {}
   EmbeddableWidgetHost *host() const
     {
       return m_host;
