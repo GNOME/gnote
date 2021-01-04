@@ -1398,7 +1398,6 @@ void SearchNotesWidget::foreground()
   }
 
   win->add_accel_group(m_accel_group);
-  win->set_focus(*m_tree);
   auto & manager(m_gnote.action_manager());
   register_callbacks();
   m_callback_changed_cid = manager.signal_main_window_search_actions_changed
@@ -1430,6 +1429,14 @@ void SearchNotesWidget::size_internals()
   int pos = m_gnote.preferences().search_window_splitter_pos();
   if(pos) {
     set_position(pos);
+  }
+}
+
+void SearchNotesWidget::set_initial_focus()
+{
+  Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
+  if(win) {
+    win->set_focus(*m_tree);
   }
 }
 

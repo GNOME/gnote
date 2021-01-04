@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -52,6 +52,7 @@ public:
   virtual void background() override;
   virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
+  virtual void set_initial_focus() override;
   virtual void perform_search(const Glib::ustring & search_text) override;
   virtual std::vector<PopoverWidget> get_popover_widgets() override;
   virtual std::vector<MainWindowAction::Ptr> get_widget_actions() override;
