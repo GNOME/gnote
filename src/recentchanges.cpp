@@ -135,9 +135,6 @@ namespace gnote {
 
   NoteRecentChanges::~NoteRecentChanges()
   {
-    while(m_embedded_widgets.size()) {
-      unembed_widget(**m_embedded_widgets.begin());
-    }
     if(m_entry_changed_timeout) {
       delete m_entry_changed_timeout;
     }
