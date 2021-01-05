@@ -1,18 +1,18 @@
 # Swedish messages for gnote.
-# Copyright © 2004-2020 Free Software Foundation, Inc.
+# Copyright © 2004-2021 Free Software Foundation, Inc.
 # Sergej Kotliar <sigge@hystrix.se>, 2006.
 # Christian Rose <menthos@menthos.com>, 2004, 2005.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2019, 2020.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Luna Jernberg <droidbittin@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-12-20 12:18+0000\n"
-"PO-Revision-Date: 2020-12-30 17:47+0100\n"
-"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
+"POT-Creation-Date: 2021-01-02 14:35+0000\n"
+"PO-Revision-Date: 2021-01-05 19:44+0100\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:547
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:624
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -1464,12 +1464,12 @@ msgstr ""
 
 #: ../src/gnote.cpp:295
 msgid ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
@@ -2225,23 +2225,31 @@ msgstr "Upphovsman:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:156
+#: ../src/recentchanges.cpp:160
 msgid "All Notes"
 msgstr "Alla anteckningar"
 
-#: ../src/recentchanges.cpp:167
+#: ../src/recentchanges.cpp:171
 msgid "Create New Note"
 msgstr "Skapa ny anteckning"
 
-#: ../src/recentchanges.cpp:188
+#: ../src/recentchanges.cpp:192
 msgid "Search"
 msgstr "Sök"
 
-#: ../src/recentchanges.cpp:799
+#: ../src/recentchanges.cpp:272
+msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
+msgstr "Överordnad till inbäddningsruta är inte Gtk::Grid, rapportera ett fel!"
+
+#: ../src/recentchanges.cpp:314
+msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
+msgstr "Överordnad till sökfält är inte Gtk::Grid, rapportera ett fel!"
+
+#: ../src/recentchanges.cpp:869
 msgid "Expected widget to be a sub-menu!"
 msgstr "Förväntade att komponent skulle vara en undermeny!"
 
-#: ../src/recentchanges.cpp:804
+#: ../src/recentchanges.cpp:874
 msgid "No configured actions"
 msgstr "Inga konfigurerade åtgärder"
 
@@ -2250,39 +2258,39 @@ msgstr "Inga konfigurerade åtgärder"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Misslyckades med att läsa in D-Bus-gränssnitt %s: %s"
 
-#: ../src/searchnoteswidget.cpp:136
+#: ../src/searchnoteswidget.cpp:135
 msgid "_Open"
 msgstr "Ö_ppna"
 
-#: ../src/searchnoteswidget.cpp:139
+#: ../src/searchnoteswidget.cpp:138
 msgid "Open In New _Window"
 msgstr "Öppna i _nytt fönster"
 
-#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
+#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
 msgid "_Delete"
 msgstr "_Ta bort"
 
-#: ../src/searchnoteswidget.cpp:149
+#: ../src/searchnoteswidget.cpp:148
 msgid "Re_name..."
 msgstr "Byt _namn…"
 
-#: ../src/searchnoteswidget.cpp:225
+#: ../src/searchnoteswidget.cpp:224
 msgid "Notebooks"
 msgstr "Anteckningsblock"
 
-#: ../src/searchnoteswidget.cpp:679
+#: ../src/searchnoteswidget.cpp:685
 msgid "Note"
 msgstr "Anteckning"
 
-#: ../src/searchnoteswidget.cpp:701
+#: ../src/searchnoteswidget.cpp:707
 msgid "Modified"
 msgstr "Ändrad"
 
-#: ../src/searchnoteswidget.cpp:978
+#: ../src/searchnoteswidget.cpp:1006
 msgid "Notes"
 msgstr "Anteckningar"
 
-#: ../src/searchnoteswidget.cpp:997
+#: ../src/searchnoteswidget.cpp:1025
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2290,53 +2298,53 @@ msgstr ""
 "Inga resultat hittades i markerat anteckningsblock.\n"
 "Klicka här för att söka igenom alla anteckningar."
 
-#: ../src/searchnoteswidget.cpp:1001
+#: ../src/searchnoteswidget.cpp:1029
 msgid "Click here to search across all notebooks"
 msgstr "Klicka här för att söka igenom alla anteckningsblock"
 
-#: ../src/searchnoteswidget.cpp:1022
+#: ../src/searchnoteswidget.cpp:1050
 msgid "Matches"
 msgstr "Träffar"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1073
+#: ../src/searchnoteswidget.cpp:1101
 msgid "Title match"
 msgstr "Titelmatchning"
 
-#: ../src/searchnoteswidget.cpp:1077
+#: ../src/searchnoteswidget.cpp:1105
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 träff"
 msgstr[1] "%1 träffar"
 
-#: ../src/searchnoteswidget.cpp:1285
+#: ../src/searchnoteswidget.cpp:1313
 msgid "_New"
 msgstr "_Ny"
 
-#: ../src/searchnoteswidget.cpp:1314
+#: ../src/searchnoteswidget.cpp:1342
 msgid "_Open Template Note"
 msgstr "_Öppna anteckningsmall"
 
-#: ../src/searchnoteswidget.cpp:1325
+#: ../src/searchnoteswidget.cpp:1353
 msgid "_New..."
 msgstr "_Ny…"
 
-#: ../src/searchnoteswidget.cpp:1468 ../src/searchnoteswidget.cpp:1481
-#: ../src/searchnoteswidget.cpp:1492
+#: ../src/searchnoteswidget.cpp:1496 ../src/searchnoteswidget.cpp:1509
+#: ../src/searchnoteswidget.cpp:1520
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Misslyckades med att tolka inställning för söksortering (Värde: %s):"
 
-#: ../src/searchnoteswidget.cpp:1469
+#: ../src/searchnoteswidget.cpp:1497
 msgid "Expected format 'column:order'"
 msgstr "Förväntat format 'kolumn:ordning'"
 
-#: ../src/searchnoteswidget.cpp:1482
+#: ../src/searchnoteswidget.cpp:1510
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Okänd kolumn %s"
 
-#: ../src/searchnoteswidget.cpp:1493
+#: ../src/searchnoteswidget.cpp:1521
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Okänd ordning %s"
@@ -2751,7 +2759,7 @@ msgstr ""
 "uppstart.  Lägg till ”modprobe fuse” till /etc/init.d/boot.local eller "
 "”fuse” till /etc/modules."
 
-#: ../src/utils.cpp:129
+#: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2759,57 +2767,57 @@ msgstr ""
 "”Handbok för Gnote-anteckningar” kunde inte hittas.  Verifiera att din "
 "installation har färdigställts korrekt."
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:146
 msgid "Help not found"
 msgstr "Hjälp hittades inte"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "Kan inte öppna plats"
 
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:195
 msgid "No Date"
 msgstr "Inget datum"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:210
 msgid "Today, %1"
 msgstr "Idag, %1"
 
-#: ../src/utils.cpp:202
+#: ../src/utils.cpp:211
 msgid "Today"
 msgstr "Idag"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:217
 msgid "Yesterday, %1"
 msgstr "Igår, %1"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:218
 msgid "Yesterday"
 msgstr "Igår"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:215
+#: ../src/utils.cpp:224
 msgid "Tomorrow, %1"
 msgstr "Imorgon, %1"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:225
 msgid "Tomorrow"
 msgstr "Imorgon"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:229
 msgid "%b %d"
 msgstr "%d %b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:223 ../src/utils.cpp:232
+#: ../src/utils.cpp:232 ../src/utils.cpp:241
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:229
+#: ../src/utils.cpp:238
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
@@ -2835,10 +2843,10 @@ msgstr "Anteckningstiteln är upptagen"
 msgid "Check spelling"
 msgstr "Kontrollera stavning"
 
-#: ../src/watchers.cpp:704
+#: ../src/watchers.cpp:705
 msgid "_Copy Link Address"
 msgstr "_Kopiera länkadress"
 
-#: ../src/watchers.cpp:710
+#: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Öppna länk"
