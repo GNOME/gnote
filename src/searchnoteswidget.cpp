@@ -118,6 +118,9 @@ SearchNotesWidget::~SearchNotesWidget()
   if(m_notebook_list_context_menu) {
     delete m_notebook_list_context_menu;
   }
+  if(m_no_matches_box) {
+    delete m_no_matches_box;
+  }
 }
 
 Glib::ustring SearchNotesWidget::get_name() const
@@ -1034,7 +1037,7 @@ void SearchNotesWidget::no_matches_found_action()
     no_matches_found->set_hexpand(true);
     no_matches_found->set_vexpand(true);
     no_matches_found->show_all();
-    m_no_matches_box = manage(new Gtk::Grid);
+    m_no_matches_box = new Gtk::Grid;
     m_no_matches_box->attach(*no_matches_found, 0, 0, 1, 1);
     m_no_matches_box->show();
   }
