@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016-2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -54,10 +54,12 @@ public:
   virtual void on_note_opened() override;
   virtual std::vector<gnote::PopoverWidget> get_actions_popover_widgets() const override;
 private:
-  void on_menu_item_activated(const Glib::VariantBase&);
-  void on_format_setting_changed(const Glib::ustring & key);
+  static void on_format_setting_changed(const Glib::ustring & key);
 
-  Glib::ustring    m_date_format;
+  static Glib::ustring s_date_format;
+  static sigc::connection s_on_format_setting_changed_cid;
+
+  void on_menu_item_activated(const Glib::VariantBase&);
 };
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -55,9 +55,11 @@ namespace inserttimestamp {
     register_main_window_action_callback("inserttimestamp-insert",
       sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_menu_item_activated));
 
-    InsertTimestampPreferences::settings()->signal_changed(INSERT_TIMESTAMP_FORMAT).connect(
-      sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_format_setting_changed));
-    m_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
+    if(s_on_format_setting_changed_cid.empty()) {
+      s_on_format_setting_changed_cid = InsertTimestampPreferences::settings()->signal_changed(INSERT_TIMESTAMP_FORMAT)
+        .connect(sigc::ptr_fun(InsertTimestampNoteAddin::on_format_setting_changed));
+      s_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
+    }
   }
 
 
@@ -72,7 +74,7 @@ namespace inserttimestamp {
 
   void InsertTimestampNoteAddin::on_menu_item_activated(const Glib::VariantBase&)
   {
-    Glib::ustring text = sharp::date_time_to_string(Glib::DateTime::create_now_local(), m_date_format);
+    Glib::ustring text = sharp::date_time_to_string(Glib::DateTime::create_now_local(), s_date_format);
     Gtk::TextIter cursor = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
     std::vector<Glib::ustring> names;
     names.push_back("datetime");
@@ -82,7 +84,7 @@ namespace inserttimestamp {
 
   void InsertTimestampNoteAddin::on_format_setting_changed(const Glib::ustring &)
   {
-    m_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
+    s_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
   }
 
 }
