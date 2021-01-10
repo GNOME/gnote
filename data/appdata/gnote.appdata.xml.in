@@ -22,6 +22,19 @@
  <update_contact>aurisc4_at_gmail.com</update_contact>
  <content_rating type="oars-1.1"/>
  <releases>
+  <release version="40.alpha" date="2021-01-10">
+    <ul>
+      <li>Change shortcut for find first/next to Ctrl-G/Ctrl-Shitf-G</li>
+      <li>Change icons and remove labels from find next/previous</li>
+      <li>--search will raise existing search window or open a new one (issue #21)</li>
+      <li>Fix opening of context menu (issue #16)</li>
+      <li>Fix newly enabled addin not working for opened notes (PR #11)</li>
+      <li>Fix find previous match</li>
+      <li>Fix changing sorting not always works</li>
+      <li>Fix GTK criticals upon exiting the application (issue #43)</li>
+      <li>Fix few memory leaks</li>
+    </ul>
+  </release>
   <release version="3.38.0" date="2020-09-19">
     <ul>
       <li>Fix occasional crash when closing</li>
