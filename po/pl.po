@@ -1,20 +1,20 @@
 # Polish translation for gnote.
-# Copyright © 2004-2020 the gnote authors.
+# Copyright © 2004-2021 the gnote authors.
 # This file is distributed under the same license as the gnote package.
 # Marek Habersack <grendel@caudium.net>, 2004.
 # Artur Flinta <aflinta@at.kernel.pl>, 2006.
 # Stanisław Małolepszy <smalolepszy@aviary.pl>, 2007.
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2007-2008.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2007-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2009-2020.
-# Aviary.pl <community-poland@mozilla.org>, 2007-2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2009-2021.
+# Aviary.pl <community-poland@mozilla.org>, 2007-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-20 13:04+0100\n"
-"PO-Revision-Date: 2020-12-20 13:05+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
+"POT-Creation-Date: 2021-01-02 14:35+0000\n"
+"PO-Revision-Date: 2021-01-10 18:05+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:547
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:624
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -1470,17 +1470,17 @@ msgstr ""
 "Stanisław Małolepszy <smalolepszy@aviary.pl>, 2007\n"
 "Wadim Dziedzic <wdziedzic@aviary.pl>, 2007-2008\n"
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2007-2009\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2009-2020\n"
-"Aviary.pl <community-poland@mozilla.org>, 2007-2020"
+"Piotr Drąg <piotrdrag@gmail.com>, 2009-2021\n"
+"Aviary.pl <community-poland@mozilla.org>, 2007-2021"
 
 #: ../src/gnote.cpp:295
 msgid ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 oryginalni autorzy programu Tomboy."
@@ -2233,23 +2233,35 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Prawa autorskie:"
 
-#: ../src/recentchanges.cpp:156
+#: ../src/recentchanges.cpp:160
 msgid "All Notes"
 msgstr "Wszystkie notatki"
 
-#: ../src/recentchanges.cpp:167
+#: ../src/recentchanges.cpp:171
 msgid "Create New Note"
 msgstr "Tworzy nową notatkę"
 
-#: ../src/recentchanges.cpp:188
+#: ../src/recentchanges.cpp:192
 msgid "Search"
 msgstr "Wyszukuje"
 
-#: ../src/recentchanges.cpp:799
+#: ../src/recentchanges.cpp:272
+msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
+msgstr ""
+"Gtk::Grid nie jest elementem nadrzędnym osadzonego pudełka, proszę to "
+"zgłosić jako błąd."
+
+#: ../src/recentchanges.cpp:314
+msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
+msgstr ""
+"Gtk::Grid nie jest elementem nadrzędnym pola wyszukiwania, proszę to zgłosić "
+"jako błąd."
+
+#: ../src/recentchanges.cpp:869
 msgid "Expected widget to be a sub-menu!"
 msgstr "Oczekiwano, że widżet będzie podmenu."
 
-#: ../src/recentchanges.cpp:804
+#: ../src/recentchanges.cpp:874
 msgid "No configured actions"
 msgstr "Brak skonfigurowanych działań"
 
@@ -2258,39 +2270,39 @@ msgstr "Brak skonfigurowanych działań"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Wczytanie interfejsu D-Bus %s się nie powiodło: %s"
 
-#: ../src/searchnoteswidget.cpp:136
+#: ../src/searchnoteswidget.cpp:135
 msgid "_Open"
 msgstr "_Otwórz"
 
-#: ../src/searchnoteswidget.cpp:139
+#: ../src/searchnoteswidget.cpp:138
 msgid "Open In New _Window"
 msgstr "Otwórz w nowym o_knie"
 
-#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
+#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
 msgid "_Delete"
 msgstr "_Usuń"
 
-#: ../src/searchnoteswidget.cpp:149
+#: ../src/searchnoteswidget.cpp:148
 msgid "Re_name..."
 msgstr "Zmień _nazwę…"
 
-#: ../src/searchnoteswidget.cpp:225
+#: ../src/searchnoteswidget.cpp:224
 msgid "Notebooks"
 msgstr "Notatniki"
 
-#: ../src/searchnoteswidget.cpp:679
+#: ../src/searchnoteswidget.cpp:685
 msgid "Note"
 msgstr "Notatka"
 
-#: ../src/searchnoteswidget.cpp:701
+#: ../src/searchnoteswidget.cpp:707
 msgid "Modified"
 msgstr "Zmodyfikowano"
 
-#: ../src/searchnoteswidget.cpp:978
+#: ../src/searchnoteswidget.cpp:1006
 msgid "Notes"
 msgstr "Notatki"
 
-#: ../src/searchnoteswidget.cpp:997
+#: ../src/searchnoteswidget.cpp:1025
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2298,60 +2310,55 @@ msgstr ""
 "Nie odnaleziono wyników w wybranym notatniku.\n"
 "Kliknięcie tutaj spowoduje przeszukanie wszystkich notatek."
 
-#: ../src/searchnoteswidget.cpp:1001
+#: ../src/searchnoteswidget.cpp:1029
 msgid "Click here to search across all notebooks"
 msgstr "Kliknięcie tutaj spowoduje przeszukanie wszystkich notatek"
 
-#: ../src/searchnoteswidget.cpp:1022
+#: ../src/searchnoteswidget.cpp:1050
 msgid "Matches"
 msgstr "Pasujące"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1073
+#: ../src/searchnoteswidget.cpp:1101
 msgid "Title match"
 msgstr "Pasuje tytuł"
 
-#: ../src/searchnoteswidget.cpp:1077
+#: ../src/searchnoteswidget.cpp:1105
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 dopasowanie"
 msgstr[1] "%1 dopasowania"
 msgstr[2] "%1 dopasowań"
 
-#: ../src/searchnoteswidget.cpp:1285
+#: ../src/searchnoteswidget.cpp:1313
 msgid "_New"
 msgstr "_Nowa"
 
-#: ../src/searchnoteswidget.cpp:1314
+#: ../src/searchnoteswidget.cpp:1342
 msgid "_Open Template Note"
 msgstr "_Otwórz szablon notatki"
 
-#: ../src/searchnoteswidget.cpp:1325
+#: ../src/searchnoteswidget.cpp:1353
 msgid "_New..."
 msgstr "_Nowa…"
 
-#: ../src/searchnoteswidget.cpp:1468 ../src/searchnoteswidget.cpp:1481
+#: ../src/searchnoteswidget.cpp:1496 ../src/searchnoteswidget.cpp:1509
+#: ../src/searchnoteswidget.cpp:1520
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr ""
 "Przetworzenie ustawienia „search-sorting” się nie powiodło (wartość: %s):"
 
-#: ../src/searchnoteswidget.cpp:1469
+#: ../src/searchnoteswidget.cpp:1497
 msgid "Expected format 'column:order'"
 msgstr "Oczekiwano formatu „kolumna:kolejność”"
 
-#: ../src/searchnoteswidget.cpp:1482
+#: ../src/searchnoteswidget.cpp:1510
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Nierozpoznana kolumna %s"
 
-#: ../src/searchnoteswidget.cpp:1492
-#, c-format
-msgid "Failed to parse setting search-soring (Value: %s):"
-msgstr ""
-"Przetworzenie ustawienia „search-soring” się nie powiodło (wartość: %s):"
-
-#: ../src/searchnoteswidget.cpp:1493
+#: ../src/searchnoteswidget.cpp:1521
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Nierozpoznana kolejność %s"
@@ -2772,7 +2779,7 @@ msgstr ""
 "systemu. Należy dopisać „modprobe fuse” do pliku /etc/init.d/boot.local lub "
 "„fuse” do pliku /etc/modules."
 
-#: ../src/utils.cpp:129
+#: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2780,57 +2787,57 @@ msgstr ""
 "Nie odnaleziono „Podręcznika programu Gnote”. Proszę sprawdzić, czy "
 "instalacja programu się powiodła."
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:146
 msgid "Help not found"
 msgstr "Nie odnaleziono pomocy"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "Nie można otworzyć położenia"
 
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:195
 msgid "No Date"
 msgstr "Bez daty"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:210
 msgid "Today, %1"
 msgstr "Dzisiaj o %1"
 
-#: ../src/utils.cpp:202
+#: ../src/utils.cpp:211
 msgid "Today"
 msgstr "Dzisiaj"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:217
 msgid "Yesterday, %1"
 msgstr "Wczoraj o %1"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:218
 msgid "Yesterday"
 msgstr "Wczoraj"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:215
+#: ../src/utils.cpp:224
 msgid "Tomorrow, %1"
 msgstr "Jutro o %1"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:225
 msgid "Tomorrow"
 msgstr "Jutro"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:229
 msgid "%b %d"
 msgstr "%-d %b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:223 ../src/utils.cpp:232
+#: ../src/utils.cpp:232 ../src/utils.cpp:241
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:229
+#: ../src/utils.cpp:238
 msgid "%b %d %Y"
 msgstr "%-d %b %Y"
 
@@ -2854,10 +2861,10 @@ msgstr "Zapisano tytuł notatki"
 msgid "Check spelling"
 msgstr "Sprawdzanie pisowni"
 
-#: ../src/watchers.cpp:704
+#: ../src/watchers.cpp:705
 msgid "_Copy Link Address"
 msgstr "Skopiuj _adres odnośnika"
 
-#: ../src/watchers.cpp:710
+#: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Otwórz odnośnik"
