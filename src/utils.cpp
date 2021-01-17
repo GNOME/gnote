@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -282,7 +282,7 @@ namespace gnote {
     }
 
 
-    void GlobalKeybinder::add_accelerator(const sigc::slot<void> & handler, guint key, 
+    void* GlobalKeybinder::add_accelerator(const sigc::slot<void> & handler, guint key,
                                           Gdk::ModifierType modifiers, Gtk::AccelFlags flags)
     {
       Gtk::MenuItem *foo = manage(new Gtk::MenuItem ());
@@ -295,6 +295,14 @@ namespace gnote {
       foo->show ();
       foo->set_sensitive(m_fake_menu.get_sensitive());
       m_fake_menu.append (*foo);
+      return foo;
+    }
+
+    void GlobalKeybinder::remove_accelerator(void *accel)
+    {
+      auto widget = static_cast<Gtk::Widget*>(accel);
+      m_fake_menu.remove(*widget);
+      delete widget;
     }
 
     void GlobalKeybinder::enabled(bool enable)

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -86,8 +86,8 @@ class Preferences;
           m_fake_menu.set_accel_group(accel_group);
         }
 
-      void add_accelerator(const sigc::slot<void> & , guint, Gdk::ModifierType, 
-                           Gtk::AccelFlags);
+      void *add_accelerator(const sigc::slot<void> & , guint, Gdk::ModifierType, Gtk::AccelFlags);
+      void remove_accelerator(void*);
       void enabled(bool enable);
       bool enabled() const
         {
