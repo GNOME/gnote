@@ -49,6 +49,7 @@ public:
     {
       return new InsertTimestampNoteAddin;
     }
+  InsertTimestampNoteAddin() : m_accelerator(nullptr) {}
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
@@ -59,7 +60,12 @@ private:
   static Glib::ustring s_date_format;
   static sigc::connection s_on_format_setting_changed_cid;
 
+  void on_note_foregrounded();
+  void on_note_backgrounded();
   void on_menu_item_activated(const Glib::VariantBase&);
+  void on_insert_activated();
+
+  void *m_accelerator;
 };
 
 }

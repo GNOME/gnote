@@ -22,6 +22,7 @@
 
 #include <glibmm/i18n.h>
 
+#include "debug.hpp"
 #include "sharp/datetime.hpp"
 #include "iactionmanager.hpp"
 #include "ignote.hpp"
@@ -63,6 +64,9 @@ namespace inserttimestamp {
         .connect(sigc::ptr_fun(InsertTimestampNoteAddin::on_format_setting_changed));
       s_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
     }
+
+    get_window()->signal_foregrounded.connect(sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_note_foregrounded));
+    get_window()->signal_backgrounded.connect(sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_note_backgrounded));
   }
 
 
@@ -75,7 +79,42 @@ namespace inserttimestamp {
   }
 
 
+  void InsertTimestampNoteAddin::on_note_foregrounded()
+  {
+    auto window = dynamic_cast<gnote::MainWindow*>(get_window()->host());
+    if(!window) {
+      ERR_OUT("No host on foregrounded note window");
+      return;
+    }
+
+    m_accelerator = window->keybinder().add_accelerator(
+      sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_insert_activated), GDK_KEY_D, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
+  }
+
+
+  void InsertTimestampNoteAddin::on_note_backgrounded()
+  {
+    if(m_accelerator) {
+      auto window = dynamic_cast<gnote::MainWindow*>(get_window()->host());
+      if(window) {
+        window->keybinder().remove_accelerator(m_accelerator);
+      }
+      else {
+        ERR_OUT("No host on just backgrounded note window");
+      }
+
+      m_accelerator = nullptr;
+    }
+  }
+
+
   void InsertTimestampNoteAddin::on_menu_item_activated(const Glib::VariantBase&)
+  {
+    on_insert_activated();
+  }
+
+
+  void InsertTimestampNoteAddin::on_insert_activated()
   {
     Glib::ustring text = sharp::date_time_to_string(Glib::DateTime::create_now_local(), s_date_format);
     Gtk::TextIter cursor = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
