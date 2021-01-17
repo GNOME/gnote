@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,6 +50,7 @@ public:
   virtual void new_note() = 0;
   virtual void close_window() = 0;
   virtual bool is_search() = 0;
+  virtual utils::GlobalKeybinder & keybinder() = 0;
 
   void close_on_escape(bool close_win)
     {
