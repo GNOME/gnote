@@ -40,6 +40,9 @@ namespace inserttimestamp {
   }
 
 
+  Glib::ustring InsertTimestampNoteAddin::s_date_format;
+  sigc::connection InsertTimestampNoteAddin::s_on_format_setting_changed_cid;
+
   void InsertTimestampNoteAddin::initialize()
   {
   }
