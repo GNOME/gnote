@@ -22,6 +22,14 @@
  <update_contact>aurisc4_at_gmail.com</update_contact>
  <content_rating type="oars-1.1"/>
  <releases>
+  <release version="3.38.1" date="2021-01-23">
+    <ul>
+      <li>Bump required GTK version to 3.22.20</li>
+      <li>Do not use deprecated Gtk::Menu::popup (Issue #16)</li>
+      <li>Fix find previous match</li>
+      <li>Fix changing sorting not always works</li>
+    </ul>
+  </release>
   <release version="3.38.0" date="2020-09-19">
     <ul>
       <li>Fix occasional crash when closing</li>
