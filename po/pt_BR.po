@@ -1,32 +1,32 @@
 # Brazilian Portuguese translation for gnote.
-# Copyright (C) 2020 gnote's COPYRIGHT HOLDER
+# Copyright (C) 2021 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009.
 # Taylon Silmer <taylonsilva@gmail.com>, 2009.
 # Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012.
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2020.
 # Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020.
 # Enrico Nicoletto <liverig@gmail.com>, 2013, 2014, 2020.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2020-12-20 12:18+0000\n"
-"PO-Revision-Date: 2020-12-22 15:47-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2021-01-17 13:26+0000\n"
+"PO-Revision-Date: 2021-01-31 11:13-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 3.38.0\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:547
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:622
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -1057,7 +1057,7 @@ msgid "Online Folder"
 msgstr "Pasta online"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:76
 msgid "Insert Timestamp"
 msgstr "Inserir data e hora"
 
@@ -1470,13 +1470,18 @@ msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>, 2013-2014, 2020."
 
 #: ../src/gnote.cpp:295
+#| msgid ""
+#| "Copyright © 2010-2020 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 autores originais do Tomboy."
@@ -2225,23 +2230,32 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:156
+#: ../src/recentchanges.cpp:158
 msgid "All Notes"
 msgstr "Todas as notas"
 
-#: ../src/recentchanges.cpp:167
+#: ../src/recentchanges.cpp:169
 msgid "Create New Note"
 msgstr "Criar nova nota"
 
-#: ../src/recentchanges.cpp:188
+#: ../src/recentchanges.cpp:190
 msgid "Search"
 msgstr "Pesquisar"
 
-#: ../src/recentchanges.cpp:799
+#: ../src/recentchanges.cpp:270
+msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
+msgstr "O pai da caixa embutida não é um Gtk::Grid, por favor relate um bug!"
+
+#: ../src/recentchanges.cpp:312
+msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
+msgstr ""
+"O pai da entrada de pesquisa não é um Gtk::Grid, por favor relate um bug!"
+
+#: ../src/recentchanges.cpp:873
 msgid "Expected widget to be a sub-menu!"
 msgstr "Era esperado que widget fosse um submenu!"
 
-#: ../src/recentchanges.cpp:804
+#: ../src/recentchanges.cpp:878
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2250,39 +2264,39 @@ msgstr "Nenhuma ação configurada"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Falha ao carregar a interface D-Bus %s: %s"
 
-#: ../src/searchnoteswidget.cpp:136
+#: ../src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../src/searchnoteswidget.cpp:139
+#: ../src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "Abra em uma nova _janela"
 
-#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
+#: ../src/searchnoteswidget.cpp:145 ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "E_xcluir"
 
-#: ../src/searchnoteswidget.cpp:149
+#: ../src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "Re_nomear…"
 
-#: ../src/searchnoteswidget.cpp:225
+#: ../src/searchnoteswidget.cpp:227
 msgid "Notebooks"
 msgstr "Catálogo de notas"
 
-#: ../src/searchnoteswidget.cpp:679
+#: ../src/searchnoteswidget.cpp:688
 msgid "Note"
 msgstr "Nota"
 
-#: ../src/searchnoteswidget.cpp:701
+#: ../src/searchnoteswidget.cpp:710
 msgid "Modified"
 msgstr "Modificado"
 
-#: ../src/searchnoteswidget.cpp:978
+#: ../src/searchnoteswidget.cpp:1009
 msgid "Notes"
 msgstr "Notas"
 
-#: ../src/searchnoteswidget.cpp:997
+#: ../src/searchnoteswidget.cpp:1028
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2290,53 +2304,53 @@ msgstr ""
 "Nenhum resultado encontrado no bloco de anotações selecionado.\n"
 "Clique aqui para pesquisar em todas as notas."
 
-#: ../src/searchnoteswidget.cpp:1001
+#: ../src/searchnoteswidget.cpp:1032
 msgid "Click here to search across all notebooks"
 msgstr "Clique aqui para pesquisar em todos os blocos de notas"
 
-#: ../src/searchnoteswidget.cpp:1022
+#: ../src/searchnoteswidget.cpp:1053
 msgid "Matches"
 msgstr "Ocorrências"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1073
+#: ../src/searchnoteswidget.cpp:1104
 msgid "Title match"
 msgstr "Correspondência de título"
 
-#: ../src/searchnoteswidget.cpp:1077
+#: ../src/searchnoteswidget.cpp:1108
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 ocorrência"
 msgstr[1] "%1 ocorrências"
 
-#: ../src/searchnoteswidget.cpp:1285
+#: ../src/searchnoteswidget.cpp:1316
 msgid "_New"
 msgstr "_Novo"
 
-#: ../src/searchnoteswidget.cpp:1314
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_Open Template Note"
 msgstr "_Abrir modelo de nota"
 
-#: ../src/searchnoteswidget.cpp:1325
+#: ../src/searchnoteswidget.cpp:1356
 msgid "_New..."
 msgstr "_Novo…"
 
-#: ../src/searchnoteswidget.cpp:1468 ../src/searchnoteswidget.cpp:1481
-#: ../src/searchnoteswidget.cpp:1492
+#: ../src/searchnoteswidget.cpp:1506 ../src/searchnoteswidget.cpp:1519
+#: ../src/searchnoteswidget.cpp:1530
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Falha ao analisar configurações de pesquisa-ordenação (valor: %s):"
 
-#: ../src/searchnoteswidget.cpp:1469
+#: ../src/searchnoteswidget.cpp:1507
 msgid "Expected format 'column:order'"
 msgstr "Formato esperado “coluna:ordem”"
 
-#: ../src/searchnoteswidget.cpp:1482
+#: ../src/searchnoteswidget.cpp:1520
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Coluna %s não reconhecida"
 
-#: ../src/searchnoteswidget.cpp:1493
+#: ../src/searchnoteswidget.cpp:1531
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ordem %s não reconhecida"
@@ -2755,7 +2769,7 @@ msgstr ""
 "FUSE na inicialização. Adicione “modprobe fuse” para o /etc/init.d/boot."
 "local ou “fuse” para /etc/modules."
 
-#: ../src/utils.cpp:129
+#: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2763,57 +2777,57 @@ msgstr ""
 "O “Manual do Gnote” não foi localizado. Por favor, certifique-se de que a "
 "sua instalação foi concluída com sucesso."
 
-#: ../src/utils.cpp:137
+#: ../src/utils.cpp:146
 msgid "Help not found"
 msgstr "Ajuda não localizada"
 
-#: ../src/utils.cpp:169
+#: ../src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "Não é possível abrir a localização"
 
-#: ../src/utils.cpp:186
+#: ../src/utils.cpp:195
 msgid "No Date"
 msgstr "Sem data"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:201
+#: ../src/utils.cpp:210
 msgid "Today, %1"
 msgstr "Hoje, %1"
 
-#: ../src/utils.cpp:202
+#: ../src/utils.cpp:211
 msgid "Today"
 msgstr "Hoje"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:208
+#: ../src/utils.cpp:217
 msgid "Yesterday, %1"
 msgstr "Ontem, %1"
 
-#: ../src/utils.cpp:209
+#: ../src/utils.cpp:218
 msgid "Yesterday"
 msgstr "Ontem"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:215
+#: ../src/utils.cpp:224
 msgid "Tomorrow, %1"
 msgstr "Amanhã, %1"
 
-#: ../src/utils.cpp:216
+#: ../src/utils.cpp:225
 msgid "Tomorrow"
 msgstr "Amanhã"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:220
+#: ../src/utils.cpp:229
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:223 ../src/utils.cpp:232
+#: ../src/utils.cpp:232 ../src/utils.cpp:241
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:229
+#: ../src/utils.cpp:238
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
@@ -2839,11 +2853,11 @@ msgstr "Este título de nota já existe"
 msgid "Check spelling"
 msgstr "Verificar ortografia"
 
-#: ../src/watchers.cpp:704
+#: ../src/watchers.cpp:705
 msgid "_Copy Link Address"
 msgstr "_Copiar o endereço do link"
 
-#: ../src/watchers.cpp:710
+#: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "Abrir _link"
 
