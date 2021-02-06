@@ -7,20 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-01-02 14:35+0000\n"
-"PO-Revision-Date: 2021-01-02 19:49+0200\n"
+"POT-Creation-Date: 2021-02-06 12:17+0000\n"
+"PO-Revision-Date: 2021-02-06 15:04+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.11.70\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:624
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:622
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -958,7 +957,7 @@ msgid "Folder path field is empty."
 msgstr "Поле шляху до теки — порожнє."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:276
+#: ../src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "За вказаною адресою теки немає, та Gnote не може її створити."
@@ -1000,54 +999,39 @@ msgstr "Додаток служби синхронізації мережеви�
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Синхронізувати нотатки Gnote із мережевим каталогом"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:84
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
 msgid "Failed to mount the folder"
 msgstr "Не вдалося змонтувати теку"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:212
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "_Адреса теки:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:224
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Приклад: google-drive://ім'я.прізвище@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:227
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr ""
 "Будь ласка, зареєструйте ваш обліковий запис у «Облікових записах в "
 "інтернеті»"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:243
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "Порожня адреса"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:244
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "Поле адреси є порожнім."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:298
-msgid "Failure writing test file"
-msgstr "Не вдалося записати тестовий файл"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
-msgid "Failure when checking test file contents"
-msgstr "Не вдалося перевірити вміст тестового файла"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:309
-msgid "Failure when trying to remove test file"
-msgstr "Помилка під час спроби вилучити тестовий файл"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:325
-msgid "Unknown error"
-msgstr "Невідома помилка"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:345
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Мережева тека"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:76
 msgid "Insert Timestamp"
 msgstr "Вставити позначку часу"
 
@@ -1382,36 +1366,33 @@ msgstr "Hubert Figuière та проєкт Tomboy"
 msgid "_Underline"
 msgstr "_Підкреслення"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "User_name:"
 msgstr "_Користувач:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid "_Password:"
 msgstr "_Пароль:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
-msgid ""
-"There was an error connecting to the server.  This may be caused by using an "
-"incorrect user name and/or password."
-msgstr ""
-"Протягом з'єднання з сервером виникла помилка. Вона могла бути спричинена "
-"помилкою у користувачі або паролі."
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+#| msgid "Synchronization is complete"
+msgid "Synchronization destination %1 doesn't exist!"
+msgstr "Призначення синхронізації, %1, не існує!"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:157
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
 msgid "URL, username, or password field is empty."
 msgstr "Не вказано URL, користувача або пароль."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:245
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -2222,35 +2203,35 @@ msgstr "Автор:"
 msgid "Copyright:"
 msgstr "Авторські права:"
 
-#: ../src/recentchanges.cpp:160
+#: ../src/recentchanges.cpp:158
 msgid "All Notes"
 msgstr "Усі нотатки"
 
-#: ../src/recentchanges.cpp:171
+#: ../src/recentchanges.cpp:169
 msgid "Create New Note"
 msgstr "Створити нотатку"
 
-#: ../src/recentchanges.cpp:192
+#: ../src/recentchanges.cpp:190
 msgid "Search"
 msgstr "Пошук"
 
-#: ../src/recentchanges.cpp:272
+#: ../src/recentchanges.cpp:270
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
-"Батьківським елементом вбудованої панелі не є Gtk::Grid. Будь ласка,"
-" повідомте розробникам про цю ваду!"
+"Батьківським елементом вбудованої панелі не є Gtk::Grid. Будь ласка, "
+"повідомте розробникам про цю ваду!"
 
-#: ../src/recentchanges.cpp:314
+#: ../src/recentchanges.cpp:312
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
-"Батьківським елементом запису для пошуку не є Gtk::Grid. Будь ласка,"
-" повідомте розробникам про цю ваду!"
+"Батьківським елементом запису для пошуку не є Gtk::Grid. Будь ласка, "
+"повідомте розробникам про цю ваду!"
 
-#: ../src/recentchanges.cpp:869
+#: ../src/recentchanges.cpp:873
 msgid "Expected widget to be a sub-menu!"
 msgstr "Віджет мав бути допоміжним меню!"
 
-#: ../src/recentchanges.cpp:874
+#: ../src/recentchanges.cpp:878
 msgid "No configured actions"
 msgstr "Немає налаштованих дій"
 
@@ -2259,39 +2240,39 @@ msgstr "Немає налаштованих дій"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Не вдалося завантажити інтерфейс D-Bus %s: %s"
 
-#: ../src/searchnoteswidget.cpp:135
+#: ../src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "_Відкрити"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:145 ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "В_илучити"
 
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "Пере_йменувати…"
 
-#: ../src/searchnoteswidget.cpp:224
+#: ../src/searchnoteswidget.cpp:227
 msgid "Notebooks"
 msgstr "Записники"
 
-#: ../src/searchnoteswidget.cpp:685
+#: ../src/searchnoteswidget.cpp:688
 msgid "Note"
 msgstr "Нотатка"
 
-#: ../src/searchnoteswidget.cpp:707
+#: ../src/searchnoteswidget.cpp:710
 msgid "Modified"
 msgstr "Змінено"
 
-#: ../src/searchnoteswidget.cpp:1006
+#: ../src/searchnoteswidget.cpp:1009
 msgid "Notes"
 msgstr "Нотатки"
 
-#: ../src/searchnoteswidget.cpp:1025
+#: ../src/searchnoteswidget.cpp:1028
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2299,20 +2280,20 @@ msgstr ""
 "Не знайдено результатів у вибраному записнику.\n"
 "Натисніть тут, щоб шукати по всіх нотатках. "
 
-#: ../src/searchnoteswidget.cpp:1029
+#: ../src/searchnoteswidget.cpp:1032
 msgid "Click here to search across all notebooks"
 msgstr "Натисніть тут, щоб шукати по всіх записниках"
 
-#: ../src/searchnoteswidget.cpp:1050
+#: ../src/searchnoteswidget.cpp:1053
 msgid "Matches"
 msgstr "Збіги"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1101
+#: ../src/searchnoteswidget.cpp:1104
 msgid "Title match"
 msgstr "Збіг назв"
 
-#: ../src/searchnoteswidget.cpp:1105
+#: ../src/searchnoteswidget.cpp:1108
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 відповідність"
@@ -2320,34 +2301,34 @@ msgstr[1] "%1 відповідності"
 msgstr[2] "%1 відповідностей"
 msgstr[3] "%1 відповідність"
 
-#: ../src/searchnoteswidget.cpp:1313
+#: ../src/searchnoteswidget.cpp:1316
 msgid "_New"
 msgstr "_Створити"
 
-#: ../src/searchnoteswidget.cpp:1342
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_Open Template Note"
 msgstr "_Відкрити Шаблон нотатки"
 
-#: ../src/searchnoteswidget.cpp:1353
+#: ../src/searchnoteswidget.cpp:1356
 msgid "_New..."
 msgstr "С_творити…"
 
-#: ../src/searchnoteswidget.cpp:1496 ../src/searchnoteswidget.cpp:1509
-#: ../src/searchnoteswidget.cpp:1520
+#: ../src/searchnoteswidget.cpp:1506 ../src/searchnoteswidget.cpp:1519
+#: ../src/searchnoteswidget.cpp:1530
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Не вдалося обробити параметр search-sorting (Значення: %s):"
 
-#: ../src/searchnoteswidget.cpp:1497
+#: ../src/searchnoteswidget.cpp:1507
 msgid "Expected format 'column:order'"
 msgstr "Очікуваний формат — «стовпчик:порядок»"
 
-#: ../src/searchnoteswidget.cpp:1510
+#: ../src/searchnoteswidget.cpp:1520
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Нерозпізнаний стовпчик %s"
 
-#: ../src/searchnoteswidget.cpp:1521
+#: ../src/searchnoteswidget.cpp:1531
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Нерозпізнаний порядок %s"
@@ -2407,12 +2388,12 @@ msgstr "Помилка %1"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Порожня таблиця стилів. Будь ласка, повідомте про цю ваду."
 
-#: ../src/synchronization/filesystemsyncserver.cpp:120
+#: ../src/synchronization/filesystemsyncserver.cpp:126
 #, c-format
 msgid "Failed to upload note: %s"
 msgstr "Не вдалося вивантажити нотатку: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:140
+#: ../src/synchronization/filesystemsyncserver.cpp:146
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Не вдалося вивантажити %1 нотатку"
@@ -2420,16 +2401,16 @@ msgstr[1] "Не вдалося вивантажити %1 нотатки"
 msgstr[2] "Не вдалося вивантажити %1 нотаток"
 msgstr[3] "Не вдалося вивантажити нотатку"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:235
+#: ../src/synchronization/filesystemsyncserver.cpp:241
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Виключення під час завершення копіювання нотатки: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:238
+#: ../src/synchronization/filesystemsyncserver.cpp:244
 msgid "Exception when finishing note copy"
 msgstr "Виключення під час завершення копіювання нотатки"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:263
+#: ../src/synchronization/filesystemsyncserver.cpp:269
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Не вдалося отримати оновлення %1 нотатки"
@@ -2437,8 +2418,8 @@ msgstr[1] "Не вдалося отримати оновлення %1 нотат
 msgstr[2] "Не вдалося отримати оновлення %1 нотаток"
 msgstr[3] "Не вдалося отримати оновлення нотатки"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:426
-#: ../src/synchronization/filesystemsyncserver.cpp:430
+#: ../src/synchronization/filesystemsyncserver.cpp:432
+#: ../src/synchronization/filesystemsyncserver.cpp:436
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2448,49 +2429,16 @@ msgstr ""
 "даних на сервері все гаразд, але можуть лишитися якісь зайві файли. Ось "
 "повідомлення про помилку: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:635
+#: ../src/synchronization/filesystemsyncserver.cpp:641
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Помилка під час оновлення блокування: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:674
+#: ../src/synchronization/filesystemsyncserver.cpp:680
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr ""
 "Помилка під час спроби вилучити старе блокування синхронізації «%s»: %s"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:114
-msgid ""
-"This synchronization addin is not supported on your computer. Please make "
-"sure you have FUSE and %1 correctly installed and configured"
-msgstr ""
-"Підтримки цього додатка для синхронізування у вашій системі не передбачено. "
-"Будь ласка, переконайтеся, що FUSE і %1 правильно встановлено й налаштовано"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:152
-msgid "Could not read testfile."
-msgstr "Не вдалося прочитати випробний файл."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:156
-msgid "Write test failed."
-msgstr "Не вдалося записати тест."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:186
-msgid "Timeout connecting to server."
-msgstr "Вичерпався час на з'єднання з сервером."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:192
-msgid "Error connecting to server."
-msgstr "Помилка з'єднання з сервером."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:205
-msgid "FUSE could not be enabled."
-msgstr "Неможливо ввімкнути FUSE."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:236
-msgid "An error occurred while connecting to the specified server"
-msgstr ""
-"Сталася помилка під час спроби встановити з'єднання із вказаним сервером"
 
 #. TRANSLATORS: %s is file
 #: ../src/synchronization/gnotesyncclient.cpp:157
@@ -2503,6 +2451,22 @@ msgstr "Непридатний до обробки елемент last-sync-date
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Непридатний до обробки елемент last-sync-rev у %s"
+
+#: ../src/synchronization/gvfssyncservice.cpp:97
+msgid "Failure writing test file"
+msgstr "Не вдалося записати тестовий файл"
+
+#: ../src/synchronization/gvfssyncservice.cpp:102
+msgid "Failure when checking test file contents"
+msgstr "Не вдалося перевірити вміст тестового файла"
+
+#: ../src/synchronization/gvfssyncservice.cpp:108
+msgid "Failure when trying to remove test file"
+msgstr "Помилка під час спроби вилучити тестовий файл"
+
+#: ../src/synchronization/gvfssyncservice.cpp:124
+msgid "Unknown error"
+msgstr "Невідома помилка"
 
 #: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
@@ -2737,39 +2701,6 @@ msgstr "Помилка синхронізації із таким виключе
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Помилка синхронізації із таким виключенням: %s"
 
-#: ../src/synchronization/syncutils.cpp:139
-#: ../src/synchronization/syncutils.cpp:171
-msgid "Could not enable FUSE"
-msgstr "Неможливо ввімкнути FUSE"
-
-#: ../src/synchronization/syncutils.cpp:140
-#: ../src/synchronization/syncutils.cpp:172
-msgid ""
-"The FUSE module could not be loaded. Please check that it is installed "
-"properly and try again."
-msgstr ""
-"Не вдалося завантажити модуль FUSE. Перевірте правильність його встановлення "
-"та спробуйте знову."
-
-#: ../src/synchronization/syncutils.cpp:148
-msgid "Enable FUSE?"
-msgstr "Увімкнути FUSE?"
-
-#. TODO: This message isn't entirely accurate.
-#. We should fix it.
-#: ../src/synchronization/syncutils.cpp:151
-msgid ""
-"The synchronization you've chosen requires the FUSE module to be loaded.\n"
-"\n"
-"To avoid getting this prompt in the future, you should load FUSE at "
-"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-"etc/modules."
-msgstr ""
-"Вибране синхронізування потребує, щоб модуль FUSE було завантажено.\n"
-"\n"
-"Щоб уникнути цього в подальшому, слід завантажувати FUSE на запуску системи. "
-"Додайте «modprobe fuse» до /etc/init.d/boot.local або «fuse» до /etc/modules."
-
 #: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
@@ -2861,6 +2792,66 @@ msgstr "_Копіювати адресу посилання"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Відкрити посилання"
+
+#~ msgid ""
+#~ "There was an error connecting to the server.  This may be caused by using "
+#~ "an incorrect user name and/or password."
+#~ msgstr ""
+#~ "Протягом з'єднання з сервером виникла помилка. Вона могла бути спричинена "
+#~ "помилкою у користувачі або паролі."
+
+#~ msgid ""
+#~ "This synchronization addin is not supported on your computer. Please make "
+#~ "sure you have FUSE and %1 correctly installed and configured"
+#~ msgstr ""
+#~ "Підтримки цього додатка для синхронізування у вашій системі не "
+#~ "передбачено. Будь ласка, переконайтеся, що FUSE і %1 правильно "
+#~ "встановлено й налаштовано"
+
+#~ msgid "Could not read testfile."
+#~ msgstr "Не вдалося прочитати випробний файл."
+
+#~ msgid "Write test failed."
+#~ msgstr "Не вдалося записати тест."
+
+#~ msgid "Timeout connecting to server."
+#~ msgstr "Вичерпався час на з'єднання з сервером."
+
+#~ msgid "Error connecting to server."
+#~ msgstr "Помилка з'єднання з сервером."
+
+#~ msgid "FUSE could not be enabled."
+#~ msgstr "Неможливо ввімкнути FUSE."
+
+#~ msgid "An error occurred while connecting to the specified server"
+#~ msgstr ""
+#~ "Сталася помилка під час спроби встановити з'єднання із вказаним сервером"
+
+#~ msgid "Could not enable FUSE"
+#~ msgstr "Неможливо ввімкнути FUSE"
+
+#~ msgid ""
+#~ "The FUSE module could not be loaded. Please check that it is installed "
+#~ "properly and try again."
+#~ msgstr ""
+#~ "Не вдалося завантажити модуль FUSE. Перевірте правильність його "
+#~ "встановлення та спробуйте знову."
+
+#~ msgid "Enable FUSE?"
+#~ msgstr "Увімкнути FUSE?"
+
+#~ msgid ""
+#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
+#~ "\n"
+#~ "To avoid getting this prompt in the future, you should load FUSE at "
+#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+#~ "etc/modules."
+#~ msgstr ""
+#~ "Вибране синхронізування потребує, щоб модуль FUSE було завантажено.\n"
+#~ "\n"
+#~ "Щоб уникнути цього в подальшому, слід завантажувати FUSE на запуску "
+#~ "системи. Додайте «modprobe fuse» до /etc/init.d/boot.local або «fuse» до /"
+#~ "etc/modules."
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Увімкнути глобальні комбінацій клавіш"
