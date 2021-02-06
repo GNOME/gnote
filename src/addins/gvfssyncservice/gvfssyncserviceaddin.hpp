@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019-2020 Aurimas Cernius
+ * Copyright (C) 2019-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <giomm/settings.h>
 
 #include "sharp/dynamicmodule.hpp"
-#include "synchronization/syncserviceaddin.hpp"
+#include "synchronization/gvfssyncservice.hpp"
 
 
 
@@ -42,7 +42,7 @@ DECLARE_MODULE(GvfsSyncServiceModule)
 
 
 class GvfsSyncServiceAddin
-  : public gnote::sync::SyncServiceAddin
+  : public gnote::sync::GvfsSyncService
 {
 public:
   static GvfsSyncServiceAddin *create()
@@ -52,32 +52,20 @@ public:
   GvfsSyncServiceAddin();
 
   virtual void initialize() override;
-  virtual void shutdown() override;
 
   virtual gnote::sync::SyncServer *create_sync_server() override;
-  virtual void post_sync_cleanup() override;
   virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) override;
   virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) override;
   virtual void reset_configuration() override;
   virtual bool is_configured() override;
   virtual Glib::ustring name() override;
   virtual Glib::ustring id() override;
-  virtual bool is_supported() override;
-  virtual bool initialized() override;
 private:
+  static Glib::RefPtr<Gio::File> get_root_dir(const Glib::RefPtr<Gio::File> &);
   bool get_config_settings(Glib::ustring & sync_path);
-  bool mount(const Glib::RefPtr<Gio::File> & path);
-  bool mount_async(const Glib::RefPtr<Gio::File> & path, const sigc::slot<void, bool, Glib::ustring> & completed);
-  void unmount();
-  void unmount_async(const sigc::slot<void> & completed);
-  bool test_sync_directory(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & sync_uri, Glib::ustring & error);
 
   Glib::RefPtr<Gio::Settings> m_gvfs_settings;
-  Glib::ustring m_uri;
   Gtk::Entry *m_uri_entry;
-  bool m_initialized;
-  bool m_enabled;
-  Glib::RefPtr<Gio::Mount> m_mount;
 };
 
 }
