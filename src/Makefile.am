@@ -146,6 +146,7 @@ libgnote_la_SOURCES = \
 	notebooks/specialnotebooks.hpp notebooks/specialnotebooks.cpp \
 	synchronization/filesystemsyncserver.hpp synchronization/filesystemsyncserver.cpp \
 	synchronization/fusesyncserviceaddin.hpp synchronization/fusesyncserviceaddin.cpp \
+	synchronization/gvfssyncservice.hpp synchronization/gvfssyncservice.cpp \
 	synchronization/isyncmanager.hpp synchronization/isyncmanager.cpp \
 	synchronization/syncui.hpp synchronization/syncui.cpp \
         synchronization/syncutils.hpp synchronization/syncutils.cpp \
