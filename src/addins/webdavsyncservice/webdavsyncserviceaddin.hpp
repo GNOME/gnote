@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include <gtkmm/table.h>
 
 #include "sharp/dynamicmodule.hpp"
-#include "synchronization/fusesyncserviceaddin.hpp"
+#include "synchronization/gvfssyncservice.hpp"
 
 
 namespace webdavsyncserviceaddin {
@@ -43,10 +43,12 @@ DECLARE_MODULE(WebDavSyncServiceModule)
 
 
 class WebDavSyncServiceAddin
-  : public gnote::sync::FuseSyncServiceAddin
+  : public gnote::sync::GvfsSyncService
 {
 public:
   static WebDavSyncServiceAddin * create();
+
+  WebDavSyncServiceAddin();
 
   /// <summary>
   /// Creates a Gtk.Widget that's used to configure the service.  This
@@ -77,21 +79,11 @@ public:
   /// </summary>
   virtual Glib::ustring id() override;
 
-  virtual Glib::ustring fuse_mount_directory_error() override;
-protected:
-  virtual std::vector<Glib::ustring> get_fuse_mount_exe_args(const Glib::ustring & mountPath, bool fromStoredValues) override;
-  virtual Glib::ustring get_fuse_mount_exe_args_for_display(const Glib::ustring & mountPath, bool fromStoredValues) override;
-  virtual Glib::ustring fuse_mount_exe_name() override;
-  virtual bool verify_configuration() override;
-  virtual void save_configuration_values() override;
-
-  /// <summary>
-  /// Reset the configuration so that IsConfigured will return false.
-  /// </summary>
-  virtual void reset_configuration_values() override;
+  virtual gnote::sync::SyncServer *create_sync_server() override;
+  virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) override;
+  virtual void reset_configuration() override;
 private:
-  std::vector<Glib::ustring> get_fuse_mount_exe_args(const Glib::ustring & mountPath, const Glib::ustring & url,
-      const Glib::ustring & username, const Glib::ustring & password, bool acceptSsl);
+  static Glib::RefPtr<Gio::MountOperation> create_mount_operation(const Glib::ustring & username, const Glib::ustring & password);
   bool get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password);
   void save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password);
   bool get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password);

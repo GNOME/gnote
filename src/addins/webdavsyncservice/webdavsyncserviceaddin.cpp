@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 
 #include <glibmm/i18n.h>
+#include <glibmm/thread.h>
 
 #include "debug.hpp"
 #include "ignote.hpp"
@@ -26,8 +27,10 @@
 #include "webdavsyncserviceaddin.hpp"
 #include "gnome_keyring/keyringexception.hpp"
 #include "gnome_keyring/ring.hpp"
+#include "sharp/directory.hpp"
 #include "sharp/string.hpp"
 #include "synchronization/isyncmanager.hpp"
+#include "synchronization/filesystemsyncserver.hpp"
 
 
 using gnome::keyring::KeyringException;
@@ -43,10 +46,43 @@ WebDavSyncServiceModule::WebDavSyncServiceModule()
 }
 
 
+class WebDavSyncServer
+  : public gnote::sync::FileSystemSyncServer
+{
+public:
+  static WebDavSyncServer *create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs)
+    {
+      return new WebDavSyncServer(path, prefs.sync_client_id());
+    }
+protected:
+  void mkdir_p(const Glib::RefPtr<Gio::File> & path) override
+    {
+      // in WebDAV creating directory fails, if parent doesn't exist, can't create entire path
+      if(sharp::directory_exists(path) == false) {
+        auto parent = path->get_parent();
+        if(parent) {
+          mkdir_p(parent);
+        }
+        sharp::directory_create(path);
+      }
+    }
+private:
+  WebDavSyncServer(const Glib::RefPtr<Gio::File> & local_sync_path, const Glib::ustring & client_id)
+    : gnote::sync::FileSystemSyncServer(local_sync_path, client_id)
+  {}
+};
 
 
 const char *WebDavSyncServiceAddin::KEYRING_ITEM_NAME = "Tomboy sync WebDAV account";
 std::map<Glib::ustring, Glib::ustring> WebDavSyncServiceAddin::s_request_attributes;
+
+
+WebDavSyncServiceAddin::WebDavSyncServiceAddin()
+  : m_url_entry(nullptr)
+  , m_username_entry(nullptr)
+  , m_password_entry(nullptr)
+{
+}
 
 WebDavSyncServiceAddin * WebDavSyncServiceAddin::create()
 {
@@ -112,89 +148,85 @@ Glib::ustring WebDavSyncServiceAddin::id()
   return "wdfs";
 }
 
-Glib::ustring WebDavSyncServiceAddin::fuse_mount_directory_error()
+gnote::sync::SyncServer *WebDavSyncServiceAddin::create_sync_server()
 {
-  const char *res = _("There was an error connecting to the server.  This may be caused by using an incorrect user name and/or password.");
-  return res;
-}
+  gnote::sync::SyncServer *server;
 
-std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const Glib::ustring & mountPath, bool fromStoredValues)
-{
-  Glib::ustring url, username, password;
-  if(fromStoredValues) {
-    get_config_settings(url, username, password);
+  Glib::ustring sync_uri, username, password;
+  if(get_config_settings(sync_uri, username, password)) {
+    m_uri = sync_uri;
+
+    auto path = Gio::File::create_for_uri(m_uri);
+    if(!mount_sync(path, create_mount_operation(username, password))) {
+      throw sharp::Exception(_("Failed to mount the folder"));
+    }
+    if(!path->query_exists())
+      throw sharp::Exception(Glib::ustring::format(_("Synchronization destination %1 doesn't exist!"), sync_uri));
+
+    server = WebDavSyncServer::create(path, ignote().preferences());
   }
   else {
-    get_pref_widget_settings(url, username, password);
-  }
-  
-  return get_fuse_mount_exe_args(mountPath, url, username, password, accept_ssl_cert());
-}
-
-Glib::ustring WebDavSyncServiceAddin::get_fuse_mount_exe_args_for_display(const Glib::ustring & mountPath, bool fromStoredValues)
-{
-  std::vector<Glib::ustring> args = get_fuse_mount_exe_args(mountPath, fromStoredValues);
-  Glib::ustring result;
-  for(auto iter : args) {
-    result += iter + " ";
+    throw std::logic_error("GvfsSyncServiceAddin.create_sync_server() called without being configured");
   }
 
-  return result;
+  return server;
 }
 
-Glib::ustring WebDavSyncServiceAddin::fuse_mount_exe_name()
-{
-  return "wdfs";
-}
-
-bool WebDavSyncServiceAddin::verify_configuration()
+bool WebDavSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
 {
   Glib::ustring url, username, password;
-
   if(!get_pref_widget_settings(url, username, password)) {
-    // TODO: Figure out a way to send the error back to the client
-    DBG_OUT("One of url, username, or password was empty");
     throw gnote::sync::GnoteSyncException(_("URL, username, or password field is empty."));
+  }
+
+  auto path = Gio::File::create_for_uri(url);
+  auto on_mount_completed = [this, path, url, username, password, on_saved](bool success, Glib::ustring error) {
+      if(success) {
+        success = test_sync_directory(path, url, error);
+      }
+      unmount_async([this, url, username, password, on_saved, success, error] {
+        if(success) {
+          m_uri = url;
+          save_config_settings(url, username, password);
+        }
+        on_saved(success, error);
+      });
+  };
+  auto operation = create_mount_operation(username, password);
+  if(mount_async(path, on_mount_completed, operation)) {
+    Glib::Thread::create([this, url, on_mount_completed]() {
+      on_mount_completed(true, "");
+    }, false);
   }
 
   return true;
 }
 
-void WebDavSyncServiceAddin::save_configuration_values()
+Glib::RefPtr<Gio::MountOperation> WebDavSyncServiceAddin::create_mount_operation(const Glib::ustring & username, const Glib::ustring & password)
 {
-  Glib::ustring url, username, password;
-  get_pref_widget_settings(url, username, password);
+  auto operation = Gio::MountOperation::create();
+  operation->signal_ask_password().connect(
+    [operation, username, password](const Glib::ustring & /* message */, const Glib::ustring & /* default_user */, const Glib::ustring & /* default_domain */, Gio::AskPasswordFlags flags) {
+      if(flags & Gio::ASK_PASSWORD_NEED_DOMAIN) {
+        operation->reply(Gio::MOUNT_OPERATION_ABORTED);
+        return;
+      }
 
-  save_config_settings(url, username, password);
+      if(flags & Gio::ASK_PASSWORD_NEED_USERNAME) {
+        operation->set_username(username);
+      }
+      if(flags & Gio::ASK_PASSWORD_NEED_PASSWORD) {
+        operation->set_password(password);
+      }
+
+      operation->reply(Gio::MOUNT_OPERATION_HANDLED);
+    });
+  return operation;
 }
 
-void WebDavSyncServiceAddin::reset_configuration_values()
+void WebDavSyncServiceAddin::reset_configuration()
 {
   save_config_settings("", "", "");
-
-  // TODO: Unmount the FUSE mount!
-}
-
-std::vector<Glib::ustring> WebDavSyncServiceAddin::get_fuse_mount_exe_args(const Glib::ustring & mountPath, const Glib::ustring & url,
-    const Glib::ustring & username, const Glib::ustring & password, bool acceptSsl)
-{
-  std::vector<Glib::ustring> args;
-  args.reserve(12);
-  args.push_back(url);
-  args.push_back(mountPath);
-  args.push_back("-o");
-  args.push_back("username=" + username);
-  args.push_back("-o");
-  args.push_back("password=" + password);
-  args.push_back("-o");
-  args.push_back("fsname=gnotewdfs");
-  if(acceptSsl) {
-    args.push_back("-o");
-    args.push_back("accept_sslcert");
-  }
-  args.push_back("-o");
-  args.push_back("fsname=gnotewdfs");
-  return args;
 }
 
 bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password)
