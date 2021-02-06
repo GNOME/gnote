@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2020 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -86,11 +86,17 @@ void FileSystemSyncServer::common_ctor()
 }
 
 
+void FileSystemSyncServer::mkdir_p(const Glib::RefPtr<Gio::File> & path)
+{
+  if(sharp::directory_exists(path) == false) {
+    sharp::directory_create(path);
+  }
+}
+
+
 void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
 {
-  if(sharp::directory_exists(m_new_revision_path) == false) {
-    sharp::directory_create(m_new_revision_path);
-  }
+  mkdir_p(m_new_revision_path);
   DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
   m_updated_notes.reserve(notes.size());
   Glib::Mutex notes_lock;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2020 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,6 +47,8 @@ public:
   virtual SyncLockInfo current_sync_lock() override;
   virtual Glib::ustring id() override;
   virtual bool updates_available_since(int revision) override;
+protected:
+  virtual void mkdir_p(const Glib::RefPtr<Gio::File> & path);
 private:
   void common_ctor();
 
