@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,7 +71,6 @@ public:
   virtual void resolve_conflict(SyncTitleConflictResolution resolution) = 0;
   virtual bool synchronized_note_xml_matches(const Glib::ustring & noteXml1, const Glib::ustring & noteXml2) = 0;
   virtual SyncState state() const = 0;
-  virtual SyncUtils & utils() = 0;
 };
 
 class SyncServer

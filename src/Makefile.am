@@ -83,7 +83,6 @@ libgnote_la_SOURCES = \
 	sharp/map.hpp \
 	sharp/modulefactory.hpp \
 	sharp/modulemanager.hpp sharp/modulemanager.cpp \
-	sharp/process.hpp sharp/process.cpp \
 	sharp/propertyeditor.hpp sharp/propertyeditor.cpp \
 	sharp/streamreader.hpp sharp/streamreader.cpp \
 	sharp/streamwriter.hpp sharp/streamwriter.cpp \
@@ -145,7 +144,6 @@ libgnote_la_SOURCES = \
 	notebooks/notebooknoteaddin.hpp notebooks/notebooknoteaddin.cpp \
 	notebooks/specialnotebooks.hpp notebooks/specialnotebooks.cpp \
 	synchronization/filesystemsyncserver.hpp synchronization/filesystemsyncserver.cpp \
-	synchronization/fusesyncserviceaddin.hpp synchronization/fusesyncserviceaddin.cpp \
 	synchronization/gvfssyncservice.hpp synchronization/gvfssyncservice.cpp \
 	synchronization/isyncmanager.hpp synchronization/isyncmanager.cpp \
 	synchronization/syncui.hpp synchronization/syncui.cpp \

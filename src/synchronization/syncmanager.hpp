@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017-2020 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,10 +53,6 @@ namespace sync {
       {
         return m_state;
       }
-    virtual SyncUtils & utils() override
-      {
-        return m_utils;
-      }
   protected:
     virtual void initialize_sync_service_addins(NoteManagerBase &);
     virtual void connect_system_signals();
@@ -86,7 +82,6 @@ namespace sync {
     void get_synchronized_xml_bits(const Glib::ustring & noteXml, Glib::ustring & title, Glib::ustring & tags, Glib::ustring & content);
     void abort_sync(SyncServer *server);
 
-    SyncUtils m_utils;
     IGnote & m_gnote;
     NoteManagerBase & m_note_manager;
     SyncState m_state;

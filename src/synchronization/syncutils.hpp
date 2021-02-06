@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,6 @@
 #ifndef _SYNCHRONIZATION_SYNCUTILS_HPP_
 #define _SYNCHRONIZATION_SYNCUTILS_HPP_
 
-
-#include <vector>
 
 #include "note.hpp"
 
@@ -77,21 +75,6 @@ namespace sync {
   private:
     Glib::ustring get_inner_content(const Glib::ustring & full_content_element) const;
     bool compare_tags(const std::map<Glib::ustring, Tag::Ptr> set1, const std::map<Glib::ustring, Tag::Ptr> set2) const;
-  };
-
-
-  class SyncUtils
-  {
-  public:
-    bool is_fuse_enabled();
-    bool enable_fuse();
-    Glib::ustring find_first_executable_in_path(const std::vector<Glib::ustring> & executableNames);
-    Glib::ustring find_first_executable_in_path(const Glib::ustring & executableName);
-  private:
-    static const char *common_paths[];
-
-    Glib::ustring m_guisu_tool;
-    Glib::ustring m_modprobe_tool;
   };
 
 }
