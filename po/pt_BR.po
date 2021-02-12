@@ -6,23 +6,23 @@
 # Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012.
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020.
-# Enrico Nicoletto <liverig@gmail.com>, 2013, 2014, 2020.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013-2021.
+# Enrico Nicoletto <liverig@gmail.com>, 2013, 2014, 2020, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-01-17 13:26+0000\n"
-"PO-Revision-Date: 2021-01-31 11:13-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2021-02-11 13:18+0000\n"
+"PO-Revision-Date: 2021-02-12 12:07-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
@@ -969,7 +969,7 @@ msgid "Folder path field is empty."
 msgstr "O campo de caminho da pasta está vazio."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:276
+#: ../src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
@@ -1012,47 +1012,32 @@ msgstr "Plug-in do serviço de sincronização de diretório online"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Sincroniza notas do Gnote para um diretório online"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:84
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
 msgid "Failed to mount the folder"
 msgstr "Falha ao montar a pasta"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:212
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "_URI da pasta:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:224
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Exemplo: google-drive://nome.sobrenome@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:227
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr "Por favor, registre sua conta no Contas On-line"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:243
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "A URI está vazia"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:244
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "O campo da URI está vazio."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:298
-msgid "Failure writing test file"
-msgstr "Falha ao gravar o arquivo de teste"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
-msgid "Failure when checking test file contents"
-msgstr "Falha ao verificar o conteúdo do arquivo de teste"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:309
-msgid "Failure when trying to remove test file"
-msgstr "Falha ao tentar remover o arquivo de teste"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:325
-msgid "Unknown error"
-msgstr "Erro desconhecido"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:345
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Pasta online"
 
@@ -1388,36 +1373,32 @@ msgstr "Hubert Figuiere e o projeto Tomboy"
 msgid "_Underline"
 msgstr "S_ublinhado"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "User_name:"
 msgstr "_Nome de usuário:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid "_Password:"
 msgstr "_Senha:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
-msgid ""
-"There was an error connecting to the server.  This may be caused by using an "
-"incorrect user name and/or password."
-msgstr ""
-"Houve um erro ao conectar ao servidor. Isso pode ser causado pelo uso "
-"incorreto de nome de usuário e/ou senha."
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+msgid "Synchronization destination %1 doesn't exist!"
+msgstr "O destino de sincronização %1 não existe!"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:157
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
 msgid "URL, username, or password field is empty."
 msgstr "Campo de URL, nome de usuário ou senha está vazio."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:245
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1470,11 +1451,6 @@ msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>, 2013-2014, 2020."
 
 #: ../src/gnote.cpp:295
-#| msgid ""
-#| "Copyright © 2010-2020 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -2410,34 +2386,34 @@ msgstr "%1 falhou"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "folha de estilos NULA, favor relatar este erro"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:120
+#: ../src/synchronization/filesystemsyncserver.cpp:126
 #, c-format
 msgid "Failed to upload note: %s"
 msgstr "Falha ao enviar a nota: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:140
+#: ../src/synchronization/filesystemsyncserver.cpp:146
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Falha ao enviar %1 nota"
 msgstr[1] "Falha ao enviar %1 notas"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:235
+#: ../src/synchronization/filesystemsyncserver.cpp:241
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Exceção ao finalizar a cópia da nota: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:238
+#: ../src/synchronization/filesystemsyncserver.cpp:244
 msgid "Exception when finishing note copy"
 msgstr "Exceção ao finalizar a cópia da nota"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:263
+#: ../src/synchronization/filesystemsyncserver.cpp:269
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Falha ao baixar %1 atualização de nota"
 msgstr[1] "Falha ao baixar %1 atualizações de notas"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:426
-#: ../src/synchronization/filesystemsyncserver.cpp:430
+#: ../src/synchronization/filesystemsyncserver.cpp:432
+#: ../src/synchronization/filesystemsyncserver.cpp:436
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2447,48 +2423,15 @@ msgstr ""
 "está OK, mas pode haver um excesso de arquivos flutuantes por aí. Aqui está "
 "o erro: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:635
+#: ../src/synchronization/filesystemsyncserver.cpp:641
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Erro ao atualizar bloqueio: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:674
+#: ../src/synchronization/filesystemsyncserver.cpp:680
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Erro ao excluir a trava de sincronização antiga “%s”: %s"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:114
-msgid ""
-"This synchronization addin is not supported on your computer. Please make "
-"sure you have FUSE and %1 correctly installed and configured"
-msgstr ""
-"Esse suplemento de sincronização não tem suporte no seu computador. Por "
-"favor, certifique-se de que você tem FUSE e %1 instalados e configurados "
-"corretamente"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:152
-msgid "Could not read testfile."
-msgstr "Não foi possível ler o arquivo de teste."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:156
-msgid "Write test failed."
-msgstr "Teste de gravação falhou."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:186
-msgid "Timeout connecting to server."
-msgstr "Tempo limite excedido para conectar ao servidor."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:192
-msgid "Error connecting to server."
-msgstr "Erro ao conectar ao servidor."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:205
-msgid "FUSE could not be enabled."
-msgstr "FUSE não pôde ser habilitado."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:236
-msgid "An error occurred while connecting to the specified server"
-msgstr "Ocorreu um erro ao conectar ao servidor especificado"
 
 #. TRANSLATORS: %s is file
 #: ../src/synchronization/gnotesyncclient.cpp:157
@@ -2501,6 +2444,22 @@ msgstr "Elemento last-sync-date não analisável em %s"
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Elemento last-sync-rev não analisável em %s"
+
+#: ../src/synchronization/gvfssyncservice.cpp:97
+msgid "Failure writing test file"
+msgstr "Falha ao gravar o arquivo de teste"
+
+#: ../src/synchronization/gvfssyncservice.cpp:102
+msgid "Failure when checking test file contents"
+msgstr "Falha ao verificar o conteúdo do arquivo de teste"
+
+#: ../src/synchronization/gvfssyncservice.cpp:108
+msgid "Failure when trying to remove test file"
+msgstr "Falha ao tentar remover o arquivo de teste"
+
+#: ../src/synchronization/gvfssyncservice.cpp:124
+msgid "Unknown error"
+msgstr "Erro desconhecido"
 
 #: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
@@ -2734,41 +2693,6 @@ msgstr "Sincronização falhou com a seguinte exceção do Glib: %s"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sincronização falhou com a seguinte exceção: %s"
 
-#: ../src/synchronization/syncutils.cpp:139
-#: ../src/synchronization/syncutils.cpp:171
-msgid "Could not enable FUSE"
-msgstr "Não foi possível habilitar FUSE"
-
-#: ../src/synchronization/syncutils.cpp:140
-#: ../src/synchronization/syncutils.cpp:172
-msgid ""
-"The FUSE module could not be loaded. Please check that it is installed "
-"properly and try again."
-msgstr ""
-"O módulo FUSE pode não estar carregado. Por favor, certifique-se de que ele "
-"está instalado adequadamente e tente novamente."
-
-#: ../src/synchronization/syncutils.cpp:148
-msgid "Enable FUSE?"
-msgstr "Habilitar FUSE?"
-
-#. TODO: This message isn't entirely accurate.
-#. We should fix it.
-#: ../src/synchronization/syncutils.cpp:151
-msgid ""
-"The synchronization you've chosen requires the FUSE module to be loaded.\n"
-"\n"
-"To avoid getting this prompt in the future, you should load FUSE at "
-"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-"etc/modules."
-msgstr ""
-"A sincronização que você escolheu requer que o módulo FUSE esteja "
-"carregado.\n"
-"\n"
-"Para evitar de ser perguntado novamente no futuro, você deveria carregar "
-"FUSE na inicialização. Adicione “modprobe fuse” para o /etc/init.d/boot."
-"local ou “fuse” para /etc/modules."
-
 #: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
@@ -2860,6 +2784,66 @@ msgstr "_Copiar o endereço do link"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "Abrir _link"
+
+#~ msgid ""
+#~ "There was an error connecting to the server.  This may be caused by using "
+#~ "an incorrect user name and/or password."
+#~ msgstr ""
+#~ "Houve um erro ao conectar ao servidor. Isso pode ser causado pelo uso "
+#~ "incorreto de nome de usuário e/ou senha."
+
+#~ msgid ""
+#~ "This synchronization addin is not supported on your computer. Please make "
+#~ "sure you have FUSE and %1 correctly installed and configured"
+#~ msgstr ""
+#~ "Esse suplemento de sincronização não tem suporte no seu computador. Por "
+#~ "favor, certifique-se de que você tem FUSE e %1 instalados e configurados "
+#~ "corretamente"
+
+#~ msgid "Could not read testfile."
+#~ msgstr "Não foi possível ler o arquivo de teste."
+
+#~ msgid "Write test failed."
+#~ msgstr "Teste de gravação falhou."
+
+#~ msgid "Timeout connecting to server."
+#~ msgstr "Tempo limite excedido para conectar ao servidor."
+
+#~ msgid "Error connecting to server."
+#~ msgstr "Erro ao conectar ao servidor."
+
+#~ msgid "FUSE could not be enabled."
+#~ msgstr "FUSE não pôde ser habilitado."
+
+#~ msgid "An error occurred while connecting to the specified server"
+#~ msgstr "Ocorreu um erro ao conectar ao servidor especificado"
+
+#~ msgid "Could not enable FUSE"
+#~ msgstr "Não foi possível habilitar FUSE"
+
+#~ msgid ""
+#~ "The FUSE module could not be loaded. Please check that it is installed "
+#~ "properly and try again."
+#~ msgstr ""
+#~ "O módulo FUSE pode não estar carregado. Por favor, certifique-se de que "
+#~ "ele está instalado adequadamente e tente novamente."
+
+#~ msgid "Enable FUSE?"
+#~ msgstr "Habilitar FUSE?"
+
+#~ msgid ""
+#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
+#~ "\n"
+#~ "To avoid getting this prompt in the future, you should load FUSE at "
+#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+#~ "etc/modules."
+#~ msgstr ""
+#~ "A sincronização que você escolheu requer que o módulo FUSE esteja "
+#~ "carregado.\n"
+#~ "\n"
+#~ "Para evitar de ser perguntado novamente no futuro, você deveria carregar "
+#~ "FUSE na inicialização. Adicione “modprobe fuse” para o /etc/init.d/boot."
+#~ "local ou “fuse” para /etc/modules."
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Habilitar teclas de atalho globais"
