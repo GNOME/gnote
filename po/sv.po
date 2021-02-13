@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-01-02 14:35+0000\n"
-"PO-Revision-Date: 2021-01-05 19:44+0100\n"
+"POT-Creation-Date: 2021-02-11 13:18+0000\n"
+"PO-Revision-Date: 2021-02-13 12:39+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:624
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:622
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -963,7 +963,7 @@ msgid "Folder path field is empty."
 msgstr "Fältet för mappsökväg är tomt."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:276
+#: ../src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Angiven mappsökväg finns inte och Gnote kunde inte skapa den."
@@ -1005,52 +1005,37 @@ msgstr "Insticksmodul för nätsynkroniseringstjänst"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Synkronisera Gnote-anteckningar till en nätkatalog"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:84
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
 msgid "Failed to mount the folder"
 msgstr "Misslyckades med att montera mappen"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:212
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "Mapp-_URI:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:224
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Exempel: google-drive://namn.efternamn@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:227
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr "Registrera ditt konto i Nätkonton"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:243
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "URI är tom"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:244
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "Fältet för URI är tomt."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:298
-msgid "Failure writing test file"
-msgstr "Fel vid skrivning av testfil"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
-msgid "Failure when checking test file contents"
-msgstr "Fel vid kontroll av testfils innehåll"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:309
-msgid "Failure when trying to remove test file"
-msgstr "Fel vid försök att ta bort testfil"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:325
-msgid "Unknown error"
-msgstr "Okänt fel"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:345
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Nätmapp"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:76
 msgid "Insert Timestamp"
 msgstr "Infoga tidsstämpel"
 
@@ -1379,36 +1364,32 @@ msgstr "Hubert Figuière och Tomboy-projektet"
 msgid "_Underline"
 msgstr "_Understryk"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
 msgid "_URL:"
 msgstr "_Url:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "User_name:"
 msgstr "Användar_namn:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid "_Password:"
 msgstr "_Lösenord:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
-msgid ""
-"There was an error connecting to the server.  This may be caused by using an "
-"incorrect user name and/or password."
-msgstr ""
-"Det inträffade ett fel vid anslutning till servern.  Det kan ha orsakats av "
-"ett felaktigt användarnamn och/eller lösenord."
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+msgid "Synchronization destination %1 doesn't exist!"
+msgstr "Synkroniseringsmål %1 finns inte!"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:157
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
 msgid "URL, username, or password field is empty."
 msgstr "Fältet för URL, användarnamn eller lösenord är tomt."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:245
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -2225,31 +2206,31 @@ msgstr "Upphovsman:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: ../src/recentchanges.cpp:160
+#: ../src/recentchanges.cpp:158
 msgid "All Notes"
 msgstr "Alla anteckningar"
 
-#: ../src/recentchanges.cpp:171
+#: ../src/recentchanges.cpp:169
 msgid "Create New Note"
 msgstr "Skapa ny anteckning"
 
-#: ../src/recentchanges.cpp:192
+#: ../src/recentchanges.cpp:190
 msgid "Search"
 msgstr "Sök"
 
-#: ../src/recentchanges.cpp:272
+#: ../src/recentchanges.cpp:270
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Överordnad till inbäddningsruta är inte Gtk::Grid, rapportera ett fel!"
 
-#: ../src/recentchanges.cpp:314
+#: ../src/recentchanges.cpp:312
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Överordnad till sökfält är inte Gtk::Grid, rapportera ett fel!"
 
-#: ../src/recentchanges.cpp:869
+#: ../src/recentchanges.cpp:873
 msgid "Expected widget to be a sub-menu!"
 msgstr "Förväntade att komponent skulle vara en undermeny!"
 
-#: ../src/recentchanges.cpp:874
+#: ../src/recentchanges.cpp:878
 msgid "No configured actions"
 msgstr "Inga konfigurerade åtgärder"
 
@@ -2258,39 +2239,39 @@ msgstr "Inga konfigurerade åtgärder"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Misslyckades med att läsa in D-Bus-gränssnitt %s: %s"
 
-#: ../src/searchnoteswidget.cpp:135
+#: ../src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "Ö_ppna"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "Öppna i _nytt fönster"
 
-#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:145 ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "_Ta bort"
 
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "Byt _namn…"
 
-#: ../src/searchnoteswidget.cpp:224
+#: ../src/searchnoteswidget.cpp:227
 msgid "Notebooks"
 msgstr "Anteckningsblock"
 
-#: ../src/searchnoteswidget.cpp:685
+#: ../src/searchnoteswidget.cpp:688
 msgid "Note"
 msgstr "Anteckning"
 
-#: ../src/searchnoteswidget.cpp:707
+#: ../src/searchnoteswidget.cpp:710
 msgid "Modified"
 msgstr "Ändrad"
 
-#: ../src/searchnoteswidget.cpp:1006
+#: ../src/searchnoteswidget.cpp:1009
 msgid "Notes"
 msgstr "Anteckningar"
 
-#: ../src/searchnoteswidget.cpp:1025
+#: ../src/searchnoteswidget.cpp:1028
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2298,53 +2279,53 @@ msgstr ""
 "Inga resultat hittades i markerat anteckningsblock.\n"
 "Klicka här för att söka igenom alla anteckningar."
 
-#: ../src/searchnoteswidget.cpp:1029
+#: ../src/searchnoteswidget.cpp:1032
 msgid "Click here to search across all notebooks"
 msgstr "Klicka här för att söka igenom alla anteckningsblock"
 
-#: ../src/searchnoteswidget.cpp:1050
+#: ../src/searchnoteswidget.cpp:1053
 msgid "Matches"
 msgstr "Träffar"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1101
+#: ../src/searchnoteswidget.cpp:1104
 msgid "Title match"
 msgstr "Titelmatchning"
 
-#: ../src/searchnoteswidget.cpp:1105
+#: ../src/searchnoteswidget.cpp:1108
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 träff"
 msgstr[1] "%1 träffar"
 
-#: ../src/searchnoteswidget.cpp:1313
+#: ../src/searchnoteswidget.cpp:1316
 msgid "_New"
 msgstr "_Ny"
 
-#: ../src/searchnoteswidget.cpp:1342
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_Open Template Note"
 msgstr "_Öppna anteckningsmall"
 
-#: ../src/searchnoteswidget.cpp:1353
+#: ../src/searchnoteswidget.cpp:1356
 msgid "_New..."
 msgstr "_Ny…"
 
-#: ../src/searchnoteswidget.cpp:1496 ../src/searchnoteswidget.cpp:1509
-#: ../src/searchnoteswidget.cpp:1520
+#: ../src/searchnoteswidget.cpp:1506 ../src/searchnoteswidget.cpp:1519
+#: ../src/searchnoteswidget.cpp:1530
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Misslyckades med att tolka inställning för söksortering (Värde: %s):"
 
-#: ../src/searchnoteswidget.cpp:1497
+#: ../src/searchnoteswidget.cpp:1507
 msgid "Expected format 'column:order'"
 msgstr "Förväntat format 'kolumn:ordning'"
 
-#: ../src/searchnoteswidget.cpp:1510
+#: ../src/searchnoteswidget.cpp:1520
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Okänd kolumn %s"
 
-#: ../src/searchnoteswidget.cpp:1521
+#: ../src/searchnoteswidget.cpp:1531
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Okänd ordning %s"
@@ -2404,34 +2385,34 @@ msgstr "%1 misslyckades"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Stilmall är NULL, rapportera gärna ett fel"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:120
+#: ../src/synchronization/filesystemsyncserver.cpp:126
 #, c-format
 msgid "Failed to upload note: %s"
 msgstr "Misslyckades med att skicka anteckning: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:140
+#: ../src/synchronization/filesystemsyncserver.cpp:146
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Misslyckades med att skicka %1 anteckning"
 msgstr[1] "Misslyckades med att skicka %1 anteckningar"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:235
+#: ../src/synchronization/filesystemsyncserver.cpp:241
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Undantag vid slutförande av anteckningskopiering: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:238
+#: ../src/synchronization/filesystemsyncserver.cpp:244
 msgid "Exception when finishing note copy"
 msgstr "Undantag vid slutförande av anteckningskopiering"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:263
+#: ../src/synchronization/filesystemsyncserver.cpp:269
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Misslyckades med att hämta %1 anteckningsuppdatering"
 msgstr[1] "Misslyckades med att hämta %1 anteckningsuppdateringar"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:426
-#: ../src/synchronization/filesystemsyncserver.cpp:430
+#: ../src/synchronization/filesystemsyncserver.cpp:432
+#: ../src/synchronization/filesystemsyncserver.cpp:436
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2440,47 +2421,15 @@ msgstr ""
 "Undantag under serverstädning vid incheckning. Serverns integritet är OK, "
 "men det kan finnas några överflödiga filer.  Här är felet: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:635
+#: ../src/synchronization/filesystemsyncserver.cpp:641
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Fel vid uppdatering av lås: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:674
+#: ../src/synchronization/filesystemsyncserver.cpp:680
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Fel vid borttagning av det gamla synkroniseringslåset ”%s”: %s"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:114
-msgid ""
-"This synchronization addin is not supported on your computer. Please make "
-"sure you have FUSE and %1 correctly installed and configured"
-msgstr ""
-"Det här synkroniseringstillägget stöds inte på din dator. Försäkra dig om "
-"att du har FUSE och %1 korrekt installerade och konfigurerade"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:152
-msgid "Could not read testfile."
-msgstr "Kunde inte läsa testfilen."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:156
-msgid "Write test failed."
-msgstr "Skrivtestet misslyckades."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:186
-msgid "Timeout connecting to server."
-msgstr "Tidsgränsen överskreds vid anslutning till server."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:192
-msgid "Error connecting to server."
-msgstr "Fel vid anslutning till servern."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:205
-msgid "FUSE could not be enabled."
-msgstr "FUSE kunde inte aktiveras."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:236
-msgid "An error occurred while connecting to the specified server"
-msgstr "Ett fel inträffade vid anslutning till den angivna servern"
 
 #. TRANSLATORS: %s is file
 #: ../src/synchronization/gnotesyncclient.cpp:157
@@ -2493,6 +2442,22 @@ msgstr "last-sync-date-element som ej går att tolka i %s"
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "last-sync-rev-element som ej går att tolka i %s"
+
+#: ../src/synchronization/gvfssyncservice.cpp:97
+msgid "Failure writing test file"
+msgstr "Fel vid skrivning av testfil"
+
+#: ../src/synchronization/gvfssyncservice.cpp:102
+msgid "Failure when checking test file contents"
+msgstr "Fel vid kontroll av testfils innehåll"
+
+#: ../src/synchronization/gvfssyncservice.cpp:108
+msgid "Failure when trying to remove test file"
+msgstr "Fel vid försök att ta bort testfil"
+
+#: ../src/synchronization/gvfssyncservice.cpp:124
+msgid "Unknown error"
+msgstr "Okänt fel"
 
 #: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
@@ -2725,40 +2690,6 @@ msgstr "Synkronisering misslyckades med följande Glib-undantag: %s"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Synkronisering misslyckades med följande undantag: %s"
 
-#: ../src/synchronization/syncutils.cpp:139
-#: ../src/synchronization/syncutils.cpp:171
-msgid "Could not enable FUSE"
-msgstr "Kunde inte aktivera FUSE"
-
-#: ../src/synchronization/syncutils.cpp:140
-#: ../src/synchronization/syncutils.cpp:172
-msgid ""
-"The FUSE module could not be loaded. Please check that it is installed "
-"properly and try again."
-msgstr ""
-"FUSE-modulen kunde inte läsas in. Kontrollera att den är korrekt installerad "
-"och försök igen."
-
-#: ../src/synchronization/syncutils.cpp:148
-msgid "Enable FUSE?"
-msgstr "Aktivera FUSE?"
-
-#. TODO: This message isn't entirely accurate.
-#. We should fix it.
-#: ../src/synchronization/syncutils.cpp:151
-msgid ""
-"The synchronization you've chosen requires the FUSE module to be loaded.\n"
-"\n"
-"To avoid getting this prompt in the future, you should load FUSE at "
-"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-"etc/modules."
-msgstr ""
-"Synkroniseringen som du har valt kräver att FUSE-modulen läses in.\n"
-"\n"
-"För att undvika att få den här prompten i framtiden bör du läsa in FUSE vid "
-"uppstart.  Lägg till ”modprobe fuse” till /etc/init.d/boot.local eller "
-"”fuse” till /etc/modules."
-
 #: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
@@ -2850,3 +2781,61 @@ msgstr "_Kopiera länkadress"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Öppna länk"
+
+#~ msgid ""
+#~ "There was an error connecting to the server.  This may be caused by using "
+#~ "an incorrect user name and/or password."
+#~ msgstr ""
+#~ "Det inträffade ett fel vid anslutning till servern.  Det kan ha orsakats "
+#~ "av ett felaktigt användarnamn och/eller lösenord."
+
+#~ msgid ""
+#~ "This synchronization addin is not supported on your computer. Please make "
+#~ "sure you have FUSE and %1 correctly installed and configured"
+#~ msgstr ""
+#~ "Det här synkroniseringstillägget stöds inte på din dator. Försäkra dig om "
+#~ "att du har FUSE och %1 korrekt installerade och konfigurerade"
+
+#~ msgid "Could not read testfile."
+#~ msgstr "Kunde inte läsa testfilen."
+
+#~ msgid "Write test failed."
+#~ msgstr "Skrivtestet misslyckades."
+
+#~ msgid "Timeout connecting to server."
+#~ msgstr "Tidsgränsen överskreds vid anslutning till server."
+
+#~ msgid "Error connecting to server."
+#~ msgstr "Fel vid anslutning till servern."
+
+#~ msgid "FUSE could not be enabled."
+#~ msgstr "FUSE kunde inte aktiveras."
+
+#~ msgid "An error occurred while connecting to the specified server"
+#~ msgstr "Ett fel inträffade vid anslutning till den angivna servern"
+
+#~ msgid "Could not enable FUSE"
+#~ msgstr "Kunde inte aktivera FUSE"
+
+#~ msgid ""
+#~ "The FUSE module could not be loaded. Please check that it is installed "
+#~ "properly and try again."
+#~ msgstr ""
+#~ "FUSE-modulen kunde inte läsas in. Kontrollera att den är korrekt "
+#~ "installerad och försök igen."
+
+#~ msgid "Enable FUSE?"
+#~ msgstr "Aktivera FUSE?"
+
+#~ msgid ""
+#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
+#~ "\n"
+#~ "To avoid getting this prompt in the future, you should load FUSE at "
+#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+#~ "etc/modules."
+#~ msgstr ""
+#~ "Synkroniseringen som du har valt kräver att FUSE-modulen läses in.\n"
+#~ "\n"
+#~ "För att undvika att få den här prompten i framtiden bör du läsa in FUSE "
+#~ "vid uppstart.  Lägg till ”modprobe fuse” till /etc/init.d/boot.local "
+#~ "eller ”fuse” till /etc/modules."
