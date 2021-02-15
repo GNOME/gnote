@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -1234,7 +1234,8 @@ namespace gnote {
 
       if(dialog_response == Gtk::RESPONSE_YES) {
         // TODO: Put this voodoo in a method somewhere
-        m_gnote.action_manager().get_app_action("sync-notes")->activate(Glib::VariantBase());
+        auto action = m_gnote.action_manager().get_app_action("sync-notes");
+        utils::main_context_invoke([action = std::move(action)]() { action->activate(Glib::VariantBase()); });
       }
     }
     else {
