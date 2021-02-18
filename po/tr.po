@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-01-31 14:15+0000\n"
+"POT-Creation-Date: 2021-02-11 13:18+0000\n"
 "PO-Revision-Date: 2021-02-01 01:58+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
@@ -954,7 +954,7 @@ msgid "Folder path field is empty."
 msgstr "Klasör yol alanı boş."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:276
+#: ../src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Belirtilen klasör yok ve Gnote bu klasörü oluşturamadı."
@@ -996,47 +996,32 @@ msgstr "Çevrim İçi Dizin Eşitleme Hizmet Eklentisi"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Gnote notlarını çevrim içi dizine eşitle"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:84
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
 msgid "Failed to mount the folder"
 msgstr "Klasör bağlanamadı"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:212
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "_Klasör _URI:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:224
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Örnek: google-drive://ad.soyad@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:227
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr "Lütfen hesabınızı Çevrim İçi Hesaplara kaydedin"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:243
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "URI boş"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:244
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "URI alanı boş."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:298
-msgid "Failure writing test file"
-msgstr "Sınama dosyası yazımı başarısız"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
-msgid "Failure when checking test file contents"
-msgstr "Sınama dosyası içeriğini denetleme başarısız"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:309
-msgid "Failure when trying to remove test file"
-msgstr "Sınama dosyası kaldırılırken hata"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:325
-msgid "Unknown error"
-msgstr "Bilinmeyen hata"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:345
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Çevrim İçi Klasör"
 
@@ -1371,36 +1356,32 @@ msgstr "Hubert Figuière ve Tomboy Projesi"
 msgid "_Underline"
 msgstr "_Altı çizili"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "User_name:"
 msgstr "_Kullanıcı adı:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid "_Password:"
 msgstr "_Parola:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
-msgid ""
-"There was an error connecting to the server.  This may be caused by using an "
-"incorrect user name and/or password."
-msgstr ""
-"Sunucuya bağlanırken hata oluştu. Bu yanlış kullanıcı adı ve/veya parola "
-"kullanılmasından kaynaklanabilir."
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+msgid "Synchronization destination %1 doesn't exist!"
+msgstr "Eşitleme konumu %1 yok!"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:157
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
 msgid "URL, username, or password field is empty."
 msgstr "URL, kullanıcı adı ya da parola alanı boş."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:245
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -2382,32 +2363,32 @@ msgstr "%1 başarısız oldu"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "BOŞ biçem sayfası, lütfen hata bildirimi doldurun"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:120
+#: ../src/synchronization/filesystemsyncserver.cpp:126
 #, c-format
 msgid "Failed to upload note: %s"
 msgstr "Not biçimi gönderilemedi: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:140
+#: ../src/synchronization/filesystemsyncserver.cpp:146
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "%1 not gönderilemedi!"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:235
+#: ../src/synchronization/filesystemsyncserver.cpp:241
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Not kopyalama biterken aykırı durum: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:238
+#: ../src/synchronization/filesystemsyncserver.cpp:244
 msgid "Exception when finishing note copy"
 msgstr "Not kopyalama biterken aykırı durum"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:263
+#: ../src/synchronization/filesystemsyncserver.cpp:269
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "%1 not güncellemesi indirilemedi"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:426
-#: ../src/synchronization/filesystemsyncserver.cpp:430
+#: ../src/synchronization/filesystemsyncserver.cpp:432
+#: ../src/synchronization/filesystemsyncserver.cpp:436
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2416,47 +2397,15 @@ msgstr ""
 "İşleme sırasında sunucu temizleme sırasında aykırı durum. Sunucu tümlüğü "
 "sorunsuz ancak çevrede dolaşan bazı fazla dosyalar olabilir.  İşte hata: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:635
+#: ../src/synchronization/filesystemsyncserver.cpp:641
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Kilit güncellemede hata: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:674
+#: ../src/synchronization/filesystemsyncserver.cpp:680
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Eski eşitleme kilidi \"%s\" silme hatası: %s"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:114
-msgid ""
-"This synchronization addin is not supported on your computer. Please make "
-"sure you have FUSE and %1 correctly installed and configured"
-msgstr ""
-"Eşitleme eklentisi bilgisayarınızda desteklenmiyor. Lütfen FUSE'ün "
-"bulunduğundan ve %1 kurulumunun doğru yapılıp yapılandırıldığından emin olun"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:152
-msgid "Could not read testfile."
-msgstr "Sınama dosyası okunamadı."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:156
-msgid "Write test failed."
-msgstr "Yazma sınaması başarısız."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:186
-msgid "Timeout connecting to server."
-msgstr "Sunucuya bağlanırken zaman aşımı."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:192
-msgid "Error connecting to server."
-msgstr "Sunucuya bağlanırken hata."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:205
-msgid "FUSE could not be enabled."
-msgstr "FUSE etkinleştirilemedi."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:236
-msgid "An error occurred while connecting to the specified server"
-msgstr "Belirtilen sunucuya bağlanılırken hata oluştu"
 
 #. TRANSLATORS: %s is file
 #: ../src/synchronization/gnotesyncclient.cpp:157
@@ -2469,6 +2418,22 @@ msgstr "%s dosyasında ayrıştırılamayan last-sync-date ögesi"
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "%s dosyasında ayrıştırılamayan last-sync-rev ögesi"
+
+#: ../src/synchronization/gvfssyncservice.cpp:97
+msgid "Failure writing test file"
+msgstr "Sınama dosyası yazımı başarısız"
+
+#: ../src/synchronization/gvfssyncservice.cpp:102
+msgid "Failure when checking test file contents"
+msgstr "Sınama dosyası içeriğini denetleme başarısız"
+
+#: ../src/synchronization/gvfssyncservice.cpp:108
+msgid "Failure when trying to remove test file"
+msgstr "Sınama dosyası kaldırılırken hata"
+
+#: ../src/synchronization/gvfssyncservice.cpp:124
+msgid "Unknown error"
+msgstr "Bilinmeyen hata"
 
 #: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
@@ -2699,40 +2664,6 @@ msgstr "Eşitleme aşağıdaki Glib aykırılığıyla başarısız oldu: %s"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Eşitleme aşağıdaki aykırılıkla başarısız oldu: %s"
 
-#: ../src/synchronization/syncutils.cpp:139
-#: ../src/synchronization/syncutils.cpp:171
-msgid "Could not enable FUSE"
-msgstr "FUSE etkinleştirilemedi"
-
-#: ../src/synchronization/syncutils.cpp:140
-#: ../src/synchronization/syncutils.cpp:172
-msgid ""
-"The FUSE module could not be loaded. Please check that it is installed "
-"properly and try again."
-msgstr ""
-"FUSE modülü yüklenemedi. Lütfen doğru kurulduğundan emin olun ve yeniden "
-"deneyin."
-
-#: ../src/synchronization/syncutils.cpp:148
-msgid "Enable FUSE?"
-msgstr "FUSE etkinleştirilsin mi?"
-
-#. TODO: This message isn't entirely accurate.
-#. We should fix it.
-#: ../src/synchronization/syncutils.cpp:151
-msgid ""
-"The synchronization you've chosen requires the FUSE module to be loaded.\n"
-"\n"
-"To avoid getting this prompt in the future, you should load FUSE at "
-"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-"etc/modules."
-msgstr ""
-"Seçmiş olduğunuz eşitleme FUSE modülünün yüklenmesini gerektiriyor.\n"
-"\n"
-"Gelecekte bu soruyla karşılaşmamak için, başlangıçta FUSE'ü yüklemelisiniz. /"
-"etc/init.d/boot.local içerisine \"modprbe fuse\" ekleyin ya da /etc/modules "
-"içerisine \"fuse\" ekleyin."
-
 #: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
@@ -2824,6 +2755,65 @@ msgstr "Bağlantı Adresini _Kopyala"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Bağlantıyı Aç"
+
+#~ msgid ""
+#~ "There was an error connecting to the server.  This may be caused by using "
+#~ "an incorrect user name and/or password."
+#~ msgstr ""
+#~ "Sunucuya bağlanırken hata oluştu. Bu yanlış kullanıcı adı ve/veya parola "
+#~ "kullanılmasından kaynaklanabilir."
+
+#~ msgid ""
+#~ "This synchronization addin is not supported on your computer. Please make "
+#~ "sure you have FUSE and %1 correctly installed and configured"
+#~ msgstr ""
+#~ "Eşitleme eklentisi bilgisayarınızda desteklenmiyor. Lütfen FUSE'ün "
+#~ "bulunduğundan ve %1 kurulumunun doğru yapılıp yapılandırıldığından emin "
+#~ "olun"
+
+#~ msgid "Could not read testfile."
+#~ msgstr "Sınama dosyası okunamadı."
+
+#~ msgid "Write test failed."
+#~ msgstr "Yazma sınaması başarısız."
+
+#~ msgid "Timeout connecting to server."
+#~ msgstr "Sunucuya bağlanırken zaman aşımı."
+
+#~ msgid "Error connecting to server."
+#~ msgstr "Sunucuya bağlanırken hata."
+
+#~ msgid "FUSE could not be enabled."
+#~ msgstr "FUSE etkinleştirilemedi."
+
+#~ msgid "An error occurred while connecting to the specified server"
+#~ msgstr "Belirtilen sunucuya bağlanılırken hata oluştu"
+
+#~ msgid "Could not enable FUSE"
+#~ msgstr "FUSE etkinleştirilemedi"
+
+#~ msgid ""
+#~ "The FUSE module could not be loaded. Please check that it is installed "
+#~ "properly and try again."
+#~ msgstr ""
+#~ "FUSE modülü yüklenemedi. Lütfen doğru kurulduğundan emin olun ve yeniden "
+#~ "deneyin."
+
+#~ msgid "Enable FUSE?"
+#~ msgstr "FUSE etkinleştirilsin mi?"
+
+#~ msgid ""
+#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
+#~ "\n"
+#~ "To avoid getting this prompt in the future, you should load FUSE at "
+#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+#~ "etc/modules."
+#~ msgstr ""
+#~ "Seçmiş olduğunuz eşitleme FUSE modülünün yüklenmesini gerektiriyor.\n"
+#~ "\n"
+#~ "Gelecekte bu soruyla karşılaşmamak için, başlangıçta FUSE'ü "
+#~ "yüklemelisiniz. /etc/init.d/boot.local içerisine \"modprbe fuse\" ekleyin "
+#~ "ya da /etc/modules içerisine \"fuse\" ekleyin."
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Genel tuş bağlarını etkinleştir"
