@@ -1,5 +1,5 @@
 # Serbian translation of gnote
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2011—2018.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2011—2021.
 # This file is distributed under the same license as the gnote package.
 # Милош Поповић <gpopac@gmail.com>, 2011.
 # Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012—2021.
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-01-17 13:26+0000\n"
-"PO-Revision-Date: 2021-01-19 19:00+0200\n"
+"POT-Creation-Date: 2021-02-11 13:18+0000\n"
+"PO-Revision-Date: 2021-02-23 06:31+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -79,7 +79,6 @@ msgid "Close window"
 msgstr "Затвара прозор"
 
 #: ../data/ui/shortcuts-gnote.ui.h:7
-#| msgid "Search"
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Трака претраге"
@@ -90,7 +89,6 @@ msgid "Display search bar"
 msgstr "Приказује траку претраге"
 
 #: ../data/ui/shortcuts-gnote.ui.h:9
-#| msgid "Select None"
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Бира следеће поклапање"
@@ -964,7 +962,7 @@ msgid "Folder path field is empty."
 msgstr "Поље за путању фасцикле је празно."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:276
+#: ../src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Наведена путања фасцикле не постоји, и програм не може да је направи."
@@ -1007,47 +1005,32 @@ msgstr "Прикључак услуге усклађивања мрежне фа
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Усагласите белешке Гномовог бележника са мрежном фасциклом"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:84
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
 msgid "Failed to mount the folder"
 msgstr "Нисам успео да закачим фасциклу"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:212
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "Путања _УРИ-ја:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:224
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "На пример: google-drive://ime.prezime@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:227
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr "Региструјте ваш налог у мрежним налозима"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:243
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "УРИ је празан"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:244
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "Поље УРИ је празно."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:298
-msgid "Failure writing test file"
-msgstr "Неуспех при писању тест датотеке"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
-msgid "Failure when checking test file contents"
-msgstr "Неуспех приликом провере садржаја тест датотеке"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:309
-msgid "Failure when trying to remove test file"
-msgstr "Неуспех приликом покушаја уклањања тест датотеке"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:325
-msgid "Unknown error"
-msgstr "Непозната грешка"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:345
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Мрежна фасцикла"
 
@@ -1384,36 +1367,33 @@ msgstr "Ибер Фигјер и пројекат Томичиних белеш�
 msgid "_Underline"
 msgstr "_Подвучено"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
 msgid "_URL:"
 msgstr "_Адреса:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "User_name:"
 msgstr "_Корисничко име:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid "_Password:"
 msgstr "_Лозинка:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
 msgid "WebDAV"
 msgstr "ВебДАВ"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
-msgid ""
-"There was an error connecting to the server.  This may be caused by using an "
-"incorrect user name and/or password."
-msgstr ""
-"Грешка при повезивању са сервером.  Узрок може бити неисправно корисничко "
-"име и/или лозинка."
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+#| msgid "Synchronization is complete"
+msgid "Synchronization destination %1 doesn't exist!"
+msgstr "Одредиште усклађивања „%1“ не постоји!"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:157
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
 msgid "URL, username, or password field is empty."
 msgstr "Адреса, корисничко име или лозинка су празни."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:245
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1464,11 +1444,6 @@ msgstr ""
 "http://prevod.org — превод на српски језик."
 
 #: ../src/gnote.cpp:295
-#| msgid ""
-#| "Copyright © 2010-2018 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1663,7 +1638,6 @@ msgid "Unfiled"
 msgstr "Непопуњене"
 
 #: ../src/notebooks/specialnotebooks.cpp:107
-#| msgid "Important"
 msgctxt "notebook"
 msgid "Important"
 msgstr "Важне"
@@ -1890,7 +1864,6 @@ msgid "_Link to New Note"
 msgstr "_Веза на нову белешку"
 
 #: ../src/notewindow.cpp:323
-#| msgid "_Important"
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Важне"
@@ -2335,7 +2308,6 @@ msgstr "_Нова..."
 #: ../src/searchnoteswidget.cpp:1506 ../src/searchnoteswidget.cpp:1519
 #: ../src/searchnoteswidget.cpp:1530
 #, c-format
-#| msgid "Failed to parse setting %s (Value: %s):"
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Нисам успео да обрадим поставку ређања претраге (Вредност: %s):"
 
@@ -2408,14 +2380,12 @@ msgstr "%1 није успео"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "НИШТАВАН стилски лист, попуните извештај о грешци"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:120
+#: ../src/synchronization/filesystemsyncserver.cpp:126
 #, c-format
-#| msgid "Failed to update note format: %s"
 msgid "Failed to upload note: %s"
 msgstr "Нисам успео да отпремим белешку: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:140
-#| msgid "Failed to load plugin information!"
+#: ../src/synchronization/filesystemsyncserver.cpp:146
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Нисам успео да отпремим %1 белешку"
@@ -2423,19 +2393,16 @@ msgstr[1] "Нисам успео да отпремим %1 белешке"
 msgstr[2] "Нисам успео да отпремим %1 белешки"
 msgstr[3] "Нисам успео да отпремим једну белешку"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:235
+#: ../src/synchronization/filesystemsyncserver.cpp:241
 #, c-format
-#| msgid "Exception while saving note: %s"
 msgid "Exception when finishing note copy: %s"
 msgstr "Изузетак приликом довршавања умношка белешке: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:238
-#| msgid "Exception while saving note: %s"
+#: ../src/synchronization/filesystemsyncserver.cpp:244
 msgid "Exception when finishing note copy"
 msgstr "Изузетак приликом довршавања умношка белешке"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:263
-#| msgid "Failed to update note format: %s"
+#: ../src/synchronization/filesystemsyncserver.cpp:269
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Нисам успео да преузмем %1 освежење белешке"
@@ -2443,8 +2410,8 @@ msgstr[1] "Нисам успео да преузмем %1 освежења бе�
 msgstr[2] "Нисам успео да преузмем %1 освежења белешки"
 msgstr[3] "Нисам успео да преузмем једно освежење белешке"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:426
-#: ../src/synchronization/filesystemsyncserver.cpp:430
+#: ../src/synchronization/filesystemsyncserver.cpp:432
+#: ../src/synchronization/filesystemsyncserver.cpp:436
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2454,48 +2421,15 @@ msgstr ""
 "је у реду, али би могао да се појави вишак неких датотека које лутају "
 "унаоколо.  Ево грешке: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:635
+#: ../src/synchronization/filesystemsyncserver.cpp:641
 #, c-format
-#| msgid "Error loading %s"
 msgid "Error updating lock: %s"
 msgstr "Грешка освежавања катанца: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:674
+#: ../src/synchronization/filesystemsyncserver.cpp:680
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Грешка брисања старог катанца усклађивања „%s“: %s"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:114
-msgid ""
-"This synchronization addin is not supported on your computer. Please make "
-"sure you have FUSE and %1 correctly installed and configured"
-msgstr ""
-"Овај додатак за усклађивање није подржан на вашем рачунару. Проверите да ли "
-"су ФУСЕ и %1 исправно инсталирани и подешени"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:152
-msgid "Could not read testfile."
-msgstr "Не могу да читам датотеку теста."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:156
-msgid "Write test failed."
-msgstr "Тест писања није успео."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:186
-msgid "Timeout connecting to server."
-msgstr "Истекло је време за повезивање са сервером."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:192
-msgid "Error connecting to server."
-msgstr "Грешка при повезивању са сервером."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:205
-msgid "FUSE could not be enabled."
-msgstr "ФУСЕ не може бити омогућен."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:236
-msgid "An error occurred while connecting to the specified server"
-msgstr "Дошло је до грешке при повезивању са наведеним сервером"
 
 #. TRANSLATORS: %s is file
 #: ../src/synchronization/gnotesyncclient.cpp:157
@@ -2508,6 +2442,22 @@ msgstr "Необрадив елемент датума последњег уск
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Необрадив елемент прегледа последњег усклађивања у „%s“"
+
+#: ../src/synchronization/gvfssyncservice.cpp:97
+msgid "Failure writing test file"
+msgstr "Неуспех при писању тест датотеке"
+
+#: ../src/synchronization/gvfssyncservice.cpp:102
+msgid "Failure when checking test file contents"
+msgstr "Неуспех приликом провере садржаја тест датотеке"
+
+#: ../src/synchronization/gvfssyncservice.cpp:108
+msgid "Failure when trying to remove test file"
+msgstr "Неуспех приликом покушаја уклањања тест датотеке"
+
+#: ../src/synchronization/gvfssyncservice.cpp:124
+msgid "Unknown error"
+msgstr "Непозната грешка"
 
 #: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
@@ -2733,7 +2683,6 @@ msgstr "Грешка приликом стварања сервера ускла
 
 #: ../src/synchronization/syncmanager.cpp:367
 #, c-format
-#| msgid "Synchronization failed with the following exception: %s"
 msgid "Synchronization failed with the following Glib exception: %s"
 msgstr "Усаглашавање није успело уз следећи Гбибл изузетак: %s"
 
@@ -2742,40 +2691,6 @@ msgstr "Усаглашавање није успело уз следећи Гб�
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Усаглашавање није успело уз следећи изузетак: %s"
-
-#: ../src/synchronization/syncutils.cpp:139
-#: ../src/synchronization/syncutils.cpp:171
-msgid "Could not enable FUSE"
-msgstr "Не могу да омогућим ФУСЕ"
-
-#: ../src/synchronization/syncutils.cpp:140
-#: ../src/synchronization/syncutils.cpp:172
-msgid ""
-"The FUSE module could not be loaded. Please check that it is installed "
-"properly and try again."
-msgstr ""
-"ФУСЕ модул не може бити учитан. Уверите се да је исправно инсталиран и "
-"покушајте поново."
-
-#: ../src/synchronization/syncutils.cpp:148
-msgid "Enable FUSE?"
-msgstr "Да омогућим ФУСЕ?"
-
-#. TODO: This message isn't entirely accurate.
-#. We should fix it.
-#: ../src/synchronization/syncutils.cpp:151
-msgid ""
-"The synchronization you've chosen requires the FUSE module to be loaded.\n"
-"\n"
-"To avoid getting this prompt in the future, you should load FUSE at "
-"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-"etc/modules."
-msgstr ""
-"Одабрани поступак усклађивања захтева да ФУСЕ модул буде учитан.\n"
-"\n"
-"Да избегнете ово прозорче у будућности, треба да учитате ФУСЕ при "
-"покретању.  Додајте „modprobe fuse“ у /etc/init.d/boot.local или „fuse“ у /"
-"etc/modules."
 
 #: ../src/utils.cpp:138
 msgid ""
@@ -2868,6 +2783,64 @@ msgstr "_Умножи адресу везе"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Отвори везу"
+
+#~ msgid ""
+#~ "There was an error connecting to the server.  This may be caused by using "
+#~ "an incorrect user name and/or password."
+#~ msgstr ""
+#~ "Грешка при повезивању са сервером.  Узрок може бити неисправно корисничко "
+#~ "име и/или лозинка."
+
+#~ msgid ""
+#~ "This synchronization addin is not supported on your computer. Please make "
+#~ "sure you have FUSE and %1 correctly installed and configured"
+#~ msgstr ""
+#~ "Овај додатак за усклађивање није подржан на вашем рачунару. Проверите да "
+#~ "ли су ФУСЕ и %1 исправно инсталирани и подешени"
+
+#~ msgid "Could not read testfile."
+#~ msgstr "Не могу да читам датотеку теста."
+
+#~ msgid "Write test failed."
+#~ msgstr "Тест писања није успео."
+
+#~ msgid "Timeout connecting to server."
+#~ msgstr "Истекло је време за повезивање са сервером."
+
+#~ msgid "Error connecting to server."
+#~ msgstr "Грешка при повезивању са сервером."
+
+#~ msgid "FUSE could not be enabled."
+#~ msgstr "ФУСЕ не може бити омогућен."
+
+#~ msgid "An error occurred while connecting to the specified server"
+#~ msgstr "Дошло је до грешке при повезивању са наведеним сервером"
+
+#~ msgid "Could not enable FUSE"
+#~ msgstr "Не могу да омогућим ФУСЕ"
+
+#~ msgid ""
+#~ "The FUSE module could not be loaded. Please check that it is installed "
+#~ "properly and try again."
+#~ msgstr ""
+#~ "ФУСЕ модул не може бити учитан. Уверите се да је исправно инсталиран и "
+#~ "покушајте поново."
+
+#~ msgid "Enable FUSE?"
+#~ msgstr "Да омогућим ФУСЕ?"
+
+#~ msgid ""
+#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
+#~ "\n"
+#~ "To avoid getting this prompt in the future, you should load FUSE at "
+#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+#~ "etc/modules."
+#~ msgstr ""
+#~ "Одабрани поступак усклађивања захтева да ФУСЕ модул буде учитан.\n"
+#~ "\n"
+#~ "Да избегнете ово прозорче у будућности, треба да учитате ФУСЕ при "
+#~ "покретању.  Додајте „modprobe fuse“ у /etc/init.d/boot.local или „fuse“ "
+#~ "у /etc/modules."
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Омогућава пречице са тастатуре"
