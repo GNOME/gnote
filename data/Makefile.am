@@ -9,11 +9,8 @@ desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 desktopdir   = $(datadir)/applications
 desktop_DATA = $(desktop_files)
 
-
-#pkgconfigdir = $(libdir)/pkgconfig
-#pkgconfig_in_files = tomboy-addins.pc.in
-#pkgconfig_DATA = $(pkgconfig_in_files:.pc.in=.pc)
-
+shellsearchdir = $(datadir)/gnome-shell/search-providers
+shellsearch_DATA = org.gnome.Gnote.search-provider.ini
 
 gsettings_SCHEMAS = org.gnome.gnote.gschema.xml
 @INTLTOOL_XML_NOMERGE_RULE@
