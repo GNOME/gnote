@@ -61,9 +61,7 @@ endif
 SUBDIRS += dbus
 DBUS_SOURCES=remotecontrolproxy.hpp remotecontrolproxy.cpp \
 	dbus/remotecontrol.hpp dbus/remotecontrol.cpp \
-	dbus/remotecontrolclient.hpp dbus/remotecontrolclient.cpp \
 	dbus/iremotecontrol.hpp \
-	dbus/remotecontrol-client-glue.hpp dbus/remotecontrol-client-glue.cpp \
 	dbus/remotecontrol-glue.hpp dbus/remotecontrol-glue.cpp \
 	dbus/searchprovider.hpp dbus/searchprovider.cpp \
 	$(NULL)
