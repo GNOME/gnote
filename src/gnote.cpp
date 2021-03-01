@@ -48,7 +48,6 @@
 #include "utils.hpp"
 #include "tagmanager.hpp"
 #include "dbus/remotecontrol.hpp"
-#include "dbus/remotecontrolclient.hpp"
 #include "sharp/streamreader.hpp"
 #include "sharp/files.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -168,27 +167,6 @@ namespace gnote {
       if(name_acquired) {
         DBG_OUT("Gnote remote control active.");
       } 
-      else {
-        // If Gnote is already running, open the search window
-        // so the user gets some sort of feedback when they
-        // attempt to run Gnote again, except when --background is passed
-        if(!m_is_background) {
-          Glib::RefPtr<RemoteControlClient> remote;
-          try {
-            remote = m_remote_control.get_instance();
-            DBG_ASSERT(remote, "remote is NULL, something is wrong");
-            if(remote) {
-              remote->DisplaySearch();
-            }
-          } 
-          catch (...)
-          {
-          }
-        }
-
-        ERR_OUT(_("Gnote is already running.  Exiting..."));
-        ::exit(-1);
-      }
     }
 
     make_app_actions();
@@ -587,17 +565,7 @@ namespace gnote {
     if(remote_control) {
       execute(remote_control);
     }
-    else {
-      //gnote already running, execute via D-Bus and exit this instance
-      Glib::RefPtr<RemoteControlClient> remote = static_cast<Gnote&>(m_gnote).remote_control().get_instance();
-      if(!remote) {
-        ERR_OUT(_("Could not connect to remote instance."));
-      }
-      else {
-        execute(remote);
-      }
-      static_cast<Gnote&>(m_gnote).quit();
-    }
+
     return 0;
   }
 
