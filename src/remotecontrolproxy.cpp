@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,6 @@
 
 #include "debug.hpp"
 #include "dbus/remotecontrol.hpp"
-#include "dbus/remotecontrolclient.hpp"
 #include "dbus/searchprovider.hpp"
 #include "remotecontrolproxy.hpp"
 #include "sharp/files.hpp"
@@ -67,20 +66,6 @@ RemoteControlProxy::RemoteControlProxy(IGnote & g)
   , m_search_provider(NULL)
   , m_bus_acquired(false)
 {
-}
-
-Glib::RefPtr<RemoteControlClient> RemoteControlProxy::get_instance()
-{
-  if(m_remote_control_proxy) {
-    return m_remote_control_proxy;
-  }
-  if(!m_connection) {
-    return Glib::RefPtr<RemoteControlClient>();
-  }
-
-  load_introspection_xml();
-  return m_remote_control_proxy = Glib::RefPtr<RemoteControlClient>(
-    new RemoteControlClient(m_connection, GNOTE_SERVER_PATH, GNOTE_SERVER_NAME, GNOTE_INTERFACE_NAME, m_gnote_interface));
 }
 
 RemoteControl *RemoteControlProxy::get_remote_control()

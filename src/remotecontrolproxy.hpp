@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,6 @@ namespace gnote {
 
 class IGnote;
 class RemoteControl;
-class RemoteControlClient;
 class NoteManagerBase;
 
 class RemoteControlProxy 
@@ -54,8 +53,6 @@ public:
 
   explicit RemoteControlProxy(IGnote & g);
 
-  /** Get a dbus client */
-  Glib::RefPtr<RemoteControlClient> get_instance();
   RemoteControl *get_remote_control();
   void register_remote(NoteManagerBase & manager, const slot_name_acquire_finish & on_finish);
   void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, NoteManagerBase & manager,
@@ -74,7 +71,6 @@ private:
   Glib::RefPtr<Gio::DBus::Connection> m_connection;
   Glib::RefPtr<Gio::DBus::InterfaceInfo> m_gnote_interface;
   Glib::RefPtr<Gio::DBus::InterfaceInfo> m_search_provider_interface;
-  Glib::RefPtr<RemoteControlClient> m_remote_control_proxy;
   slot_name_acquire_finish m_on_name_acquire_finish;
 };
 
