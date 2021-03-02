@@ -61,7 +61,6 @@ namespace gnote {
     , m_sync_manager(NULL)
     , m_is_background(false)
     , m_is_shell_search(false)
-    , m_remote_control(*this)
     , m_prefsdlg(NULL)
     , m_cmd_line(*this)
   {
@@ -203,7 +202,7 @@ namespace gnote {
 
   void Gnote::register_object()
   {
-    m_remote_control.register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION), default_note_manager(), sigc::mem_fun(*this, &Gnote::end_main));
+    m_remote_control.register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION), *this, default_note_manager(), sigc::mem_fun(*this, &Gnote::end_main));
   }
 
 

@@ -59,9 +59,8 @@ const char *RemoteControlProxy::GNOTE_SEARCH_PROVIDER_PATH = "/org/gnome/Gnote/S
 const char *RemoteControlProxy::GNOTE_SEARCH_PROVIDER_INTERFACE_NAME = "org.gnome.Shell.SearchProvider2";
 
 
-RemoteControlProxy::RemoteControlProxy(IGnote & g)
-  : m_gnote(g)
-  , m_remote_control(NULL)
+RemoteControlProxy::RemoteControlProxy()
+  : m_remote_control(NULL)
   , m_search_provider(NULL)
 {
 }
@@ -72,13 +71,13 @@ RemoteControl *RemoteControlProxy::get_remote_control()
 }
 
 
-void RemoteControlProxy::register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, NoteManagerBase & manager,
+void RemoteControlProxy::register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, IGnote & g, NoteManagerBase & manager,
                                          const slot_name_acquire_finish & on_finish)
 {
   load_introspection_xml();
-  m_remote_control = new RemoteControl(conn, m_gnote, manager, GNOTE_SERVER_PATH, GNOTE_INTERFACE_NAME, m_gnote_interface);
+  m_remote_control = new RemoteControl(conn, g, manager, GNOTE_SERVER_PATH, GNOTE_INTERFACE_NAME, m_gnote_interface);
   m_search_provider = new org::gnome::Gnote::SearchProvider(conn, GNOTE_SEARCH_PROVIDER_PATH,
-                                                            m_search_provider_interface, m_gnote, manager);
+                                                            m_search_provider_interface, g, manager);
   on_finish(true, true);
 }
 

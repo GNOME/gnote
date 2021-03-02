@@ -51,15 +51,14 @@ public:
   typedef sigc::slot<void, bool, bool> slot_name_acquire_finish;
   typedef sigc::slot<void> slot_connected;
 
-  explicit RemoteControlProxy(IGnote & g);
+  RemoteControlProxy();
 
   RemoteControl *get_remote_control();
-  void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, NoteManagerBase & manager,
+  void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, IGnote & g, NoteManagerBase & manager,
                        const slot_name_acquire_finish & on_finish);
 private:
   void load_introspection_xml();
 
-  IGnote & m_gnote;
   RemoteControl *m_remote_control;
   org::gnome::Gnote::SearchProvider *m_search_provider;
   Glib::RefPtr<Gio::DBus::InterfaceInfo> m_gnote_interface;
