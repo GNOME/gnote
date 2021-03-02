@@ -197,7 +197,13 @@ namespace gnote {
 
   void Gnote::register_object()
   {
-    m_remote_control.register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION), *this, default_note_manager());
+    auto conn = get_dbus_connection();
+    if(conn) {
+      m_remote_control.register_object(conn, *this, default_note_manager());
+    }
+    else {
+      ERR_OUT(_("No D-Bus connection available, shell search and remote control will not work."));
+    }
   }
 
 
