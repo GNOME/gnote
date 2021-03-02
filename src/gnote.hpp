@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2019 Aurimas Cernius
+ * Copyright (C) 2010-2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -162,7 +162,6 @@ public:
     {
       return !is_background();
     }
-  void register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish);
   virtual void open_note(const Note::Ptr & note) override;
 protected:
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line) override;

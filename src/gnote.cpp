@@ -201,12 +201,6 @@ namespace gnote {
   }
 
 
-  void Gnote::register_remote_control(NoteManager & manager, RemoteControlProxy::slot_name_acquire_finish on_finish)
-  {
-    m_remote_control.register_remote(manager, on_finish);
-  }
-
-
   void Gnote::register_object()
   {
     m_remote_control.register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION), default_note_manager(), sigc::mem_fun(*this, &Gnote::end_main));
