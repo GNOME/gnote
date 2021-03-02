@@ -123,6 +123,7 @@ namespace gnote {
     if(!m_manager) {
       common_init();
       register_object();
+      end_main();
     }
     else {
       cmdline.set_note_manager(*m_manager);
@@ -155,17 +156,11 @@ namespace gnote {
   }
 
 
-  void Gnote::end_main(bool bus_acquired, bool name_acquired)
+  void Gnote::end_main()
   {
     m_cmd_line.set_note_manager(*m_manager);
     if(m_cmd_line.needs_execute()) {
       m_cmd_line.execute();
-    }
-
-    if(bus_acquired) {
-      if(name_acquired) {
-        DBG_OUT("Gnote remote control active.");
-      } 
     }
 
     make_app_actions();
@@ -202,7 +197,7 @@ namespace gnote {
 
   void Gnote::register_object()
   {
-    m_remote_control.register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION), *this, default_note_manager(), sigc::mem_fun(*this, &Gnote::end_main));
+    m_remote_control.register_object(Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION), *this, default_note_manager());
   }
 
 

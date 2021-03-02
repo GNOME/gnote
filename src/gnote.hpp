@@ -170,7 +170,7 @@ private:
   Gnote();
   Glib::ustring get_note_path(const Glib::ustring & override_path);
   void common_init();
-  void end_main(bool bus_aquired, bool name_acquired);
+  void end_main();
   void on_sync_dialog_response(int response_id);
   void on_main_window_closed(Gtk::Window*);
   void make_app_actions();

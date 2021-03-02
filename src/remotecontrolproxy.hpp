@@ -54,8 +54,7 @@ public:
   RemoteControlProxy();
 
   RemoteControl *get_remote_control();
-  void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, IGnote & g, NoteManagerBase & manager,
-                       const slot_name_acquire_finish & on_finish);
+  void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, IGnote & g, NoteManagerBase & manager);
 private:
   void load_introspection_xml();
 
