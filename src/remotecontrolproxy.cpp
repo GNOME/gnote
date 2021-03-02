@@ -61,49 +61,14 @@ const char *RemoteControlProxy::GNOTE_SEARCH_PROVIDER_INTERFACE_NAME = "org.gnom
 
 RemoteControlProxy::RemoteControlProxy(IGnote & g)
   : m_gnote(g)
-  , m_manager(NULL)
   , m_remote_control(NULL)
   , m_search_provider(NULL)
-  , m_bus_acquired(false)
 {
 }
 
 RemoteControl *RemoteControlProxy::get_remote_control()
 {
   return m_remote_control;
-}
-
-void RemoteControlProxy::register_remote(NoteManagerBase & manager, const slot_name_acquire_finish & on_finish)
-{
-  m_on_name_acquire_finish = on_finish;
-  m_manager = &manager;
-  Gio::DBus::own_name(Gio::DBus::BUS_TYPE_SESSION, GNOTE_SERVER_NAME,
-                      sigc::mem_fun(*this, &RemoteControlProxy::on_bus_acquired),
-                      sigc::mem_fun(*this, &RemoteControlProxy::on_name_acquired),
-                      sigc::mem_fun(*this, &RemoteControlProxy::on_name_lost));
-}
-
-
-void RemoteControlProxy::on_bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring &)
-{
-  m_bus_acquired = true;
-  m_connection = conn;
-}
-
-
-void RemoteControlProxy::on_name_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring &)
-{
-  try {
-    if(m_bus_acquired) {
-      register_object(conn, *m_manager, m_on_name_acquire_finish);
-      return;
-    }
-  }
-  catch(Glib::Exception & e) {
-    DBG_OUT("Failed to acquire name: %s", e.what().c_str());
-  }
-
-  m_on_name_acquire_finish(false, false);
 }
 
 
@@ -115,12 +80,6 @@ void RemoteControlProxy::register_object(const Glib::RefPtr<Gio::DBus::Connectio
   m_search_provider = new org::gnome::Gnote::SearchProvider(conn, GNOTE_SEARCH_PROVIDER_PATH,
                                                             m_search_provider_interface, m_gnote, manager);
   on_finish(true, true);
-}
-
-
-void RemoteControlProxy::on_name_lost(const Glib::RefPtr<Gio::DBus::Connection> &, const Glib::ustring &)
-{
-  m_on_name_acquire_finish(m_bus_acquired, false);
 }
 
 

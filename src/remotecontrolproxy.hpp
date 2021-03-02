@@ -54,24 +54,16 @@ public:
   explicit RemoteControlProxy(IGnote & g);
 
   RemoteControl *get_remote_control();
-  void register_remote(NoteManagerBase & manager, const slot_name_acquire_finish & on_finish);
   void register_object(const Glib::RefPtr<Gio::DBus::Connection> & conn, NoteManagerBase & manager,
                        const slot_name_acquire_finish & on_finish);
 private:
-  void on_bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
-  void on_name_acquired(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
-  void on_name_lost(const Glib::RefPtr<Gio::DBus::Connection> & conn, const Glib::ustring & name);
   void load_introspection_xml();
 
   IGnote & m_gnote;
-  NoteManagerBase *m_manager;
   RemoteControl *m_remote_control;
   org::gnome::Gnote::SearchProvider *m_search_provider;
-  bool m_bus_acquired;
-  Glib::RefPtr<Gio::DBus::Connection> m_connection;
   Glib::RefPtr<Gio::DBus::InterfaceInfo> m_gnote_interface;
   Glib::RefPtr<Gio::DBus::InterfaceInfo> m_search_provider_interface;
-  slot_name_acquire_finish m_on_name_acquire_finish;
 };
 
 }
