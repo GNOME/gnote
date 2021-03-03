@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-02-06 12:17+0000\n"
-"PO-Revision-Date: 2021-02-06 15:04+0200\n"
+"POT-Creation-Date: 2021-03-03 15:47+0000\n"
+"PO-Revision-Date: 2021-03-03 18:30+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1383,7 +1383,6 @@ msgid "WebDAV"
 msgstr "WebDAV"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
-#| msgid "Synchronization is complete"
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "Призначення синхронізації, %1, не існує!"
 
@@ -1412,35 +1411,32 @@ msgstr "Додаток служби синхронізації WebDAV"
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Синхронізувати нотатки Gnote з адресою WebDAV."
 
-#: ../src/dbus/remotecontrol-client-glue.cpp:138
-#, c-format
-msgid "Remote call to %s failed"
-msgstr "Помилка під час виконання віддаленого виклику до %s"
-
 #: ../src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Виключення під час створення нотатки: %s"
 
-#: ../src/gnote.cpp:189
-msgid "Gnote is already running.  Exiting..."
-msgstr "Gnote вже запущено. Завершуємо роботу…"
+#: ../src/gnote.cpp:205
+msgid ""
+"No D-Bus connection available, shell search and remote control will not work."
+msgstr ""
+"Немає доступного з'єднання D-Bus. Пошук оболонки і віддалене керування не працюватимуть."
 
-#: ../src/gnote.cpp:266
+#: ../src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Не вдалося отримати вікно клавіатурних скорочень!"
 
-#: ../src/gnote.cpp:280
+#: ../src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "й автори Tomboy."
 
-#: ../src/gnote.cpp:286
+#: ../src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1452,80 +1448,76 @@ msgstr ""
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
 
-#: ../src/gnote.cpp:299
+#: ../src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Проста програма створення нотаток."
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:282
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:477
 msgid "Run Gnote in background."
 msgstr "Запустити Gnote на тлі."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:478
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Запускати Gnote як надавач даних пошук у GNOME Shell."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "Specify the path of the directory containing the notes."
 msgstr "Вкажіть шлях до каталогу із нотатками."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "path"
 msgstr "шлях"
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:480
 msgid "Open the search all notes window with the search text."
 msgstr "Відкрити вікно пошуку в усіх нотатках за допомогою тексту пошуку."
 
-#: ../src/gnote.cpp:508 ../src/gnote.cpp:513
+#: ../src/gnote.cpp:480 ../src/gnote.cpp:485
 msgid "text"
 msgstr "Текст"
 
-#: ../src/gnote.cpp:509
+#: ../src/gnote.cpp:481
 msgid "Print version information."
 msgstr "Показати інформацію про версію."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "Create and display a new note, with a optional title."
 msgstr "Створити та показати нову нотатку з довільним заголовком."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "title"
 msgstr "заголовок"
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "Display the existing note matching title."
 msgstr "Показати наявну нотатку з відповідним заголовком."
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "title/url"
 msgstr "Заголовок/посилання"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:484
 msgid "Display the 'Start Here' note."
 msgstr "Показувати першу нотатку"
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:485
 msgid "Search and highlight text in the opened note."
 msgstr "Шукати та виділити текст у відкритій нотатці."
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "A note taking application"
 msgstr "Програма для роботи з нотатками"
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "Gnote options at launch"
 msgstr "Параметри Gnote під час запуску"
 
-#: ../src/gnote.cpp:594
-msgid "Could not connect to remote instance."
-msgstr "Не вдалося встановити з'єднання із віддаленим екземпляром."
-
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:711
+#: ../src/gnote.cpp:673
 msgid "Version %1"
 msgstr "Версія %1"
 
@@ -2179,7 +2171,7 @@ msgid ""
 msgstr "Gnote готовий синхронізувати ваші нотатки. Синхронізувати їх зараз?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1255
+#: ../src/preferencesdialog.cpp:1256
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2187,19 +2179,19 @@ msgstr ""
 "Перевірте інформацію і спробуйте знову. Файл журналу %1 може містити "
 "докладнішу інформацію про цю помилку."
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
 msgid "Error connecting"
 msgstr "Помилка з'єднання"
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1324
 msgid "Version:"
 msgstr "Версія:"
 
-#: ../src/preferencesdialog.cpp:1326
+#: ../src/preferencesdialog.cpp:1327
 msgid "Author:"
 msgstr "Автор:"
 
-#: ../src/preferencesdialog.cpp:1330
+#: ../src/preferencesdialog.cpp:1331
 msgid "Copyright:"
 msgstr "Авторські права:"
 
@@ -2235,7 +2227,7 @@ msgstr "Віджет мав бути допоміжним меню!"
 msgid "No configured actions"
 msgstr "Немає налаштованих дій"
 
-#: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
+#: ../src/remotecontrolproxy.cpp:45 ../src/remotecontrolproxy.cpp:48
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Не вдалося завантажити інтерфейс D-Bus %s: %s"
@@ -2792,6 +2784,15 @@ msgstr "_Копіювати адресу посилання"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Відкрити посилання"
+
+#~ msgid "Remote call to %s failed"
+#~ msgstr "Помилка під час виконання віддаленого виклику до %s"
+
+#~ msgid "Gnote is already running.  Exiting..."
+#~ msgstr "Gnote вже запущено. Завершуємо роботу…"
+
+#~ msgid "Could not connect to remote instance."
+#~ msgstr "Не вдалося встановити з'єднання із віддаленим екземпляром."
 
 #~ msgid ""
 #~ "There was an error connecting to the server.  This may be caused by using "
