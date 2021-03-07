@@ -37,6 +37,7 @@ noinst_DATA =
 EXTRA_DIST = 					\
 	$(desktop_in_files)     		\
 	$(pkgconfig_in_files)			\
+	org.gnome.Gnote.search-provider.ini     \
 	org.gnome.gnote.gschema.xml.in		\
 	$(man_MANS)				\
 	$(noinst_DATA)				\
