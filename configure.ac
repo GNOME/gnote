@@ -145,7 +145,7 @@ AC_DEFINE_UNQUOTED([GNOTE_BUILD_CONFIG], ["$GNOTE_BUILD_CONFIG"], [The string us
 AC_CONFIG_FILES([
 Makefile
 data/Makefile
-data/gnote.desktop.in
+data/org.gnome.gnote.desktop.in
 data/icons/Makefile
 data/appdata/Makefile
 data/ui/Makefile
