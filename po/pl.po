@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-07 12:10+0100\n"
-"PO-Revision-Date: 2021-02-07 12:11+0100\n"
+"POT-Creation-Date: 2021-03-07 12:48+0100\n"
+"PO-Revision-Date: 2021-03-07 12:49+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -1421,29 +1421,27 @@ msgstr "Wtyczka usługi synchronizacji WebDAV"
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Synchronizuje notatki programu Gnote z adresem URL WebDAV."
 
-#: ../src/dbus/remotecontrol-client-glue.cpp:138
-#, c-format
-msgid "Remote call to %s failed"
-msgstr "Zdalne wywołanie do %s się nie powiodło"
-
 #: ../src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Wystąpił wyjątek podczas tworzenia notatki: %s"
 
-#: ../src/gnote.cpp:189
-msgid "Gnote is already running.  Exiting..."
-msgstr "Program Gnote jest już uruchomiony. Kończenie działania…"
+#: ../src/gnote.cpp:205
+msgid ""
+"No D-Bus connection available, shell search and remote control will not work."
+msgstr ""
+"Brak dostępnego połączenia D-Bus, wyszukiwanie w powłoce i zdalne sterowanie "
+"nie będą działały."
 
-#: ../src/gnote.cpp:266
+#: ../src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Uzyskanie okna skrótów się nie powiodło."
 
-#: ../src/gnote.cpp:280
+#: ../src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "i oryginalni autorzy programu Tomboy."
 
-#: ../src/gnote.cpp:286
+#: ../src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Marek Habersack <grendel@caudium.net>, 2004\n"
@@ -1454,7 +1452,7 @@ msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2009-2021\n"
 "Aviary.pl <community-poland@mozilla.org>, 2007-2021"
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1466,80 +1464,76 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 oryginalni autorzy programu Tomboy."
 
-#: ../src/gnote.cpp:299
+#: ../src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Prosty i łatwy w użyciu program do sporządzania notatek."
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:282
 msgid "Homepage"
 msgstr "Witryna programu"
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:477
 msgid "Run Gnote in background."
 msgstr "Uruchamia program Gnote w tle."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:478
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Uruchamia program Gnote jako dostawcę wyszukiwania GNOME Shell."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "Specify the path of the directory containing the notes."
 msgstr "Proszę wprowadzić ścieżkę do katalogu zawierającego notatki."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "path"
 msgstr "ścieżka"
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:480
 msgid "Open the search all notes window with the search text."
 msgstr "Otwiera okno przeszukiwania wszystkich notatek."
 
-#: ../src/gnote.cpp:508 ../src/gnote.cpp:513
+#: ../src/gnote.cpp:480 ../src/gnote.cpp:485
 msgid "text"
 msgstr "tekst"
 
-#: ../src/gnote.cpp:509
+#: ../src/gnote.cpp:481
 msgid "Print version information."
 msgstr "Wyświetla informacje o wersji."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "Create and display a new note, with a optional title."
 msgstr "Tworzy i wyświetla nową notatkę z opcjonalnym tytułem."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "title"
 msgstr "tytuł"
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "Display the existing note matching title."
 msgstr "Wyświetla istniejącą notatkę o pasującym tytule."
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "title/url"
 msgstr "tytuł/adres URL"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:484
 msgid "Display the 'Start Here' note."
 msgstr "Wyświetla notatkę „Start”."
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:485
 msgid "Search and highlight text in the opened note."
 msgstr "Wyszukuje i wyróżnia tekst w otwartej notatce."
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "A note taking application"
 msgstr "Program do sporządzania notatek"
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "Gnote options at launch"
 msgstr "Opcje podczas uruchamiania programu Gnote"
 
-#: ../src/gnote.cpp:594
-msgid "Could not connect to remote instance."
-msgstr "Nie można połączyć ze zdalną kopią."
-
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:711
+#: ../src/gnote.cpp:673
 msgid "Version %1"
 msgstr "Wersja %1"
 
@@ -2190,7 +2184,7 @@ msgstr ""
 "teraz?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1255
+#: ../src/preferencesdialog.cpp:1256
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2198,19 +2192,19 @@ msgstr ""
 "Proszę sprawdzić informacje i spróbować ponownie. Plik dziennika %1 może "
 "zawierać więcej informacji o błędzie."
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
 msgid "Error connecting"
 msgstr "Błąd podczas łączenia"
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1324
 msgid "Version:"
 msgstr "Wersja:"
 
-#: ../src/preferencesdialog.cpp:1326
+#: ../src/preferencesdialog.cpp:1327
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/preferencesdialog.cpp:1330
+#: ../src/preferencesdialog.cpp:1331
 msgid "Copyright:"
 msgstr "Prawa autorskie:"
 
@@ -2246,7 +2240,7 @@ msgstr "Oczekiwano, że widżet będzie podmenu."
 msgid "No configured actions"
 msgstr "Brak skonfigurowanych działań"
 
-#: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
+#: ../src/remotecontrolproxy.cpp:45 ../src/remotecontrolproxy.cpp:48
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Wczytanie interfejsu D-Bus %s się nie powiodło: %s"
