@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-02-11 13:18+0000\n"
-"PO-Revision-Date: 2021-02-13 12:39+0100\n"
+"POT-Creation-Date: 2021-03-07 15:51+0000\n"
+"PO-Revision-Date: 2021-03-08 21:06+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -41,11 +41,15 @@ msgstr ""
 "dem i anteckningsblock samt har några extra funktioner för daglig användning."
 
 #: ../data/appdata/gnote.appdata.xml.in.h:4
+msgid "Notes can be printed or exported as HTML documents."
+msgstr "Anteckningar kan skrivas ut eller exporteras som HTML-dokument."
+
+#: ../data/appdata/gnote.appdata.xml.in.h:5
 msgid ""
-"Gnote also supports synchronization to make it possible to use on multiple "
+"Gnote also supports synchronization make it simple to use it on multiple "
 "devices."
 msgstr ""
-"Gnote stöder också synkronisering vilket möjliggör användning på flera "
+"Gnote stöder också synkronisering vilket gör det enkelt att använda på flera "
 "enheter."
 
 #: ../data/ui/shortcuts-gnote.ui.h:1
@@ -1409,29 +1413,27 @@ msgstr "Insticksmodul för WebDAV-synkroniseringstjänst"
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Synkronisera Gnote-anteckningar till en WebDAV-URL."
 
-#: ../src/dbus/remotecontrol-client-glue.cpp:138
-#, c-format
-msgid "Remote call to %s failed"
-msgstr "Fjärranrop till %s misslyckades"
-
 #: ../src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Undantag kastat vid skapande av anteckning: %s"
 
-#: ../src/gnote.cpp:189
-msgid "Gnote is already running.  Exiting..."
-msgstr "Gnote kör redan.  Avslutar…"
+#: ../src/gnote.cpp:205
+msgid ""
+"No D-Bus connection available, shell search and remote control will not work."
+msgstr ""
+"Ingen D-Bus-anslutning tillgänglig, skalsökning och fjärrkontroll kommer "
+"inte att fungera."
 
-#: ../src/gnote.cpp:266
+#: ../src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Misslyckades med att hämta genvägsfönster!"
 
-#: ../src/gnote.cpp:280
+#: ../src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: ../src/gnote.cpp:286
+#: ../src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -1443,7 +1445,7 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1455,80 +1457,76 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: ../src/gnote.cpp:299
+#: ../src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:282
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:477
 msgid "Run Gnote in background."
 msgstr "Kör Gnote i bakgrunden."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:478
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Kör Gnote som söktjänst för GNOME Shell."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "path"
 msgstr "sökväg"
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:480
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna ”Sök i alla anteckningar”-fönstret med söktexten."
 
-#: ../src/gnote.cpp:508 ../src/gnote.cpp:513
+#: ../src/gnote.cpp:480 ../src/gnote.cpp:485
 msgid "text"
 msgstr "text"
 
-#: ../src/gnote.cpp:509
+#: ../src/gnote.cpp:481
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "title"
 msgstr "titel"
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "title/url"
 msgstr "titel/url"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:484
 msgid "Display the 'Start Here' note."
 msgstr "Visa ”Börja här”-anteckningen."
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:485
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
-#: ../src/gnote.cpp:594
-msgid "Could not connect to remote instance."
-msgstr "Kunde inte ansluta till fjärrinstans."
-
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:711
+#: ../src/gnote.cpp:673
 msgid "Version %1"
 msgstr "Version %1"
 
@@ -2182,7 +2180,7 @@ msgstr ""
 "nu?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1255
+#: ../src/preferencesdialog.cpp:1256
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2190,19 +2188,19 @@ msgstr ""
 "Kontrollera din information och försök igen.  Loggfilen %1 kan innehålla mer "
 "information om felet."
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
 msgid "Error connecting"
 msgstr "Fel vid anslutning"
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1324
 msgid "Version:"
 msgstr "Version:"
 
-#: ../src/preferencesdialog.cpp:1326
+#: ../src/preferencesdialog.cpp:1327
 msgid "Author:"
 msgstr "Upphovsman:"
 
-#: ../src/preferencesdialog.cpp:1330
+#: ../src/preferencesdialog.cpp:1331
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -2234,7 +2232,7 @@ msgstr "Förväntade att komponent skulle vara en undermeny!"
 msgid "No configured actions"
 msgstr "Inga konfigurerade åtgärder"
 
-#: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
+#: ../src/remotecontrolproxy.cpp:45 ../src/remotecontrolproxy.cpp:48
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Misslyckades med att läsa in D-Bus-gränssnitt %s: %s"
@@ -2781,61 +2779,3 @@ msgstr "_Kopiera länkadress"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Öppna länk"
-
-#~ msgid ""
-#~ "There was an error connecting to the server.  This may be caused by using "
-#~ "an incorrect user name and/or password."
-#~ msgstr ""
-#~ "Det inträffade ett fel vid anslutning till servern.  Det kan ha orsakats "
-#~ "av ett felaktigt användarnamn och/eller lösenord."
-
-#~ msgid ""
-#~ "This synchronization addin is not supported on your computer. Please make "
-#~ "sure you have FUSE and %1 correctly installed and configured"
-#~ msgstr ""
-#~ "Det här synkroniseringstillägget stöds inte på din dator. Försäkra dig om "
-#~ "att du har FUSE och %1 korrekt installerade och konfigurerade"
-
-#~ msgid "Could not read testfile."
-#~ msgstr "Kunde inte läsa testfilen."
-
-#~ msgid "Write test failed."
-#~ msgstr "Skrivtestet misslyckades."
-
-#~ msgid "Timeout connecting to server."
-#~ msgstr "Tidsgränsen överskreds vid anslutning till server."
-
-#~ msgid "Error connecting to server."
-#~ msgstr "Fel vid anslutning till servern."
-
-#~ msgid "FUSE could not be enabled."
-#~ msgstr "FUSE kunde inte aktiveras."
-
-#~ msgid "An error occurred while connecting to the specified server"
-#~ msgstr "Ett fel inträffade vid anslutning till den angivna servern"
-
-#~ msgid "Could not enable FUSE"
-#~ msgstr "Kunde inte aktivera FUSE"
-
-#~ msgid ""
-#~ "The FUSE module could not be loaded. Please check that it is installed "
-#~ "properly and try again."
-#~ msgstr ""
-#~ "FUSE-modulen kunde inte läsas in. Kontrollera att den är korrekt "
-#~ "installerad och försök igen."
-
-#~ msgid "Enable FUSE?"
-#~ msgstr "Aktivera FUSE?"
-
-#~ msgid ""
-#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
-#~ "\n"
-#~ "To avoid getting this prompt in the future, you should load FUSE at "
-#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-#~ "etc/modules."
-#~ msgstr ""
-#~ "Synkroniseringen som du har valt kräver att FUSE-modulen läses in.\n"
-#~ "\n"
-#~ "För att undvika att få den här prompten i framtiden bör du läsa in FUSE "
-#~ "vid uppstart.  Lägg till ”modprobe fuse” till /etc/init.d/boot.local "
-#~ "eller ”fuse” till /etc/modules."
