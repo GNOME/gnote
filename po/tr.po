@@ -2,36 +2,37 @@
 # Copyright (C) 2011-2019 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 #
-# Muhammet Kara <muhammetk@gmail.com>, 2011, 2014.
 # Necdet Yücel <necdetyucel@gmail.com>, 2015.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2017, 2018, 2019, 2020, 2021.
+# Muhammet Kara <muhammetk@gmail.com>, 2011-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-02-11 13:18+0000\n"
-"PO-Revision-Date: 2021-02-01 01:58+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
-"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"POT-Creation-Date: 2021-03-08 20:47+0000\n"
+"PO-Revision-Date: 2021-03-09 02:44+0300\n"
+"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
+"Language-Team: Turkish <gnometurk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 3.38.0\n"
 "X-POOTLE-MTIME: 1421955849.000000\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:622
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:1
+#: ../data/org.gnome.gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:52
+#: ../src/recentchanges.cpp:622
 msgid "Gnote"
 msgstr "Gnote"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:2
 msgid "A simple note-taking application"
 msgstr "Basit not alma uygulaması"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:3
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -42,13 +43,20 @@ msgstr ""
 "bunları bağlamanıza, diz üstü bilgisayarınızda gruplamanıza ve günlük "
 "kullanım için bazı fazladan özelliklere olanak sağlar."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:4
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:4
+msgid "Notes can be printed or exported as HTML documents."
+msgstr "Notlar yazdırılabilir ya da HTML belgeleri olarak dışa aktarılabilir."
+
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:5
+#| msgid ""
+#| "Gnote also supports synchronization to make it possible to use on "
+#| "multiple devices."
 msgid ""
-"Gnote also supports synchronization to make it possible to use on multiple "
+"Gnote also supports synchronization, making it simple to use it on multiple "
 "devices."
 msgstr ""
-"Gnote, birden çok aygıtta kullanmanıza olanak sağlamak için eşitlemeyi de "
-"destekler."
+"Gnote, eşitlemeyi de desteklemesiyle, birden çok aygıtta kullanılmasını "
+"basitleştirir."
 
 #: ../data/ui/shortcuts-gnote.ui.h:1
 msgctxt "shortcut window"
@@ -205,15 +213,15 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Geçerli satır için girintiyi azalt/işaretleri devre dışı bırak"
 
-#: ../data/gnote.desktop.in.in.h:2
+#: ../data/org.gnome.gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Not tutun, düşünceleri bağlayın, ve düzenli kalın"
 
-#: ../data/gnote.desktop.in.in.h:3
+#: ../data/org.gnome.gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "Not Tutucu"
 
-#: ../data/gnote.desktop.in.in.h:4
+#: ../data/org.gnome.gnote.desktop.in.in.h:4
 msgid "notes;idea;link;organize;"
 msgstr "notlar;fikir;bağlantı;düzenle;organizasyon;"
 
@@ -1401,35 +1409,33 @@ msgstr "WebDAV Eşitleme Hizmeti Eklentisi"
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Gnote Notlarını WebDAV adresine eşitle."
 
-#: ../src/dbus/remotecontrol-client-glue.cpp:138
-#, c-format
-msgid "Remote call to %s failed"
-msgstr "%s alıcısına uzaktan çağrı başarısız oldu"
-
 #: ../src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Not oluşturulurken olağandışı durum oluştu: %s"
 
-#: ../src/gnote.cpp:189
-msgid "Gnote is already running.  Exiting..."
-msgstr "Gnote zaten çalıştırılıyor.  Çıkılıyor..."
+#: ../src/gnote.cpp:205
+msgid ""
+"No D-Bus connection available, shell search and remote control will not work."
+msgstr ""
+"Kullanılabilir D-Bus bağlantısı yok. Kabuk araması ve uzaktan denetim "
+"çalışmayacaktır."
 
-#: ../src/gnote.cpp:266
+#: ../src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Kısayollar penceresi alınamıyor!"
 
-#: ../src/gnote.cpp:280
+#: ../src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "ve Tomboy'un özgün yazarları."
 
-#: ../src/gnote.cpp:286
+#: ../src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Muhammet Kara <muhammetk@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1441,80 +1447,76 @@ msgstr ""
 "Telif Hakkı © 2009 Hubert Figuiere\n"
 "Telif Hakkı © 2004-2009 Tomboy özgün yazarları."
 
-#: ../src/gnote.cpp:299
+#: ../src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Basit ve kullanışlı not alma uygulaması."
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:282
 msgid "Homepage"
 msgstr "Web Sitesi"
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:477
 msgid "Run Gnote in background."
 msgstr "Gnote uygulamasını arkaplanda çalıştır."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:478
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "GNOME Kabuk arama sağlayıcısı olarak Gnote çalıştırın."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "Specify the path of the directory containing the notes."
 msgstr "Notları içeren dizin yolunu belirtin."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "path"
 msgstr "yol"
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:480
 msgid "Open the search all notes window with the search text."
 msgstr "Arama metni ile tüm notları ara penceresini aç."
 
-#: ../src/gnote.cpp:508 ../src/gnote.cpp:513
+#: ../src/gnote.cpp:480 ../src/gnote.cpp:485
 msgid "text"
 msgstr "metin"
 
-#: ../src/gnote.cpp:509
+#: ../src/gnote.cpp:481
 msgid "Print version information."
 msgstr "Sürüm bilgisini yazdır."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "Create and display a new note, with a optional title."
 msgstr "İsteğe bağlı başlıkla yeni not oluştur ve görüntüle."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "title"
 msgstr "başlık"
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "Display the existing note matching title."
 msgstr "Başlık ile eşleşen notu göster."
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "title/url"
 msgstr "başlık/url"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:484
 msgid "Display the 'Start Here' note."
 msgstr "'Buradan Başla' notunu görüntüle."
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:485
 msgid "Search and highlight text in the opened note."
 msgstr "Açılan not içindeki metni ara ve vurgula."
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "A note taking application"
 msgstr "Not alma uygulaması"
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "Gnote options at launch"
 msgstr "Başlangıçtaki Gnote seçenekleri"
 
-#: ../src/gnote.cpp:594
-msgid "Could not connect to remote instance."
-msgstr "Uzak örneğe bağlanılamadı."
-
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:711
+#: ../src/gnote.cpp:673
 msgid "Version %1"
 msgstr "Sürüm %1"
 
@@ -2161,7 +2163,7 @@ msgstr ""
 "musunuz?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1255
+#: ../src/preferencesdialog.cpp:1256
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2169,19 +2171,19 @@ msgstr ""
 "Lütfen bilgilerinizi denetleyip yeniden deneyin.  Sistem günlük dosyası %1 "
 "hata hakkında daha çok bilgi içeriyor olabilir."
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
 msgid "Error connecting"
 msgstr "Bağlanırken hata oluştu"
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1324
 msgid "Version:"
 msgstr "Sürüm:"
 
-#: ../src/preferencesdialog.cpp:1326
+#: ../src/preferencesdialog.cpp:1327
 msgid "Author:"
 msgstr "Yazan:"
 
-#: ../src/preferencesdialog.cpp:1330
+#: ../src/preferencesdialog.cpp:1331
 msgid "Copyright:"
 msgstr "Telif Hakkı:"
 
@@ -2213,7 +2215,7 @@ msgstr "Beklenen parçacık alt menü olmalı!"
 msgid "No configured actions"
 msgstr "Yapılandırılmış eylem yok"
 
-#: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
+#: ../src/remotecontrolproxy.cpp:45 ../src/remotecontrolproxy.cpp:48
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "%s D-Bus arayüzü yüklenemedi: %s"
@@ -2755,6 +2757,15 @@ msgstr "Bağlantı Adresini _Kopyala"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Bağlantıyı Aç"
+
+#~ msgid "Remote call to %s failed"
+#~ msgstr "%s alıcısına uzaktan çağrı başarısız oldu"
+
+#~ msgid "Gnote is already running.  Exiting..."
+#~ msgstr "Gnote zaten çalıştırılıyor.  Çıkılıyor..."
+
+#~ msgid "Could not connect to remote instance."
+#~ msgstr "Uzak örneğe bağlanılamadı."
 
 #~ msgid ""
 #~ "There was an error connecting to the server.  This may be caused by using "
