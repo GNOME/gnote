@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-01-02 14:35+0000\n"
-"PO-Revision-Date: 2021-01-17 15:25+0200\n"
+"POT-Creation-Date: 2021-03-08 20:47+0000\n"
+"PO-Revision-Date: 2021-03-08 22:49+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -23,16 +23,17 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Gtranslator 3.38.0\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:624
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:1
+#: ../data/org.gnome.gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:52
+#: ../src/recentchanges.cpp:622
 msgid "Gnote"
 msgstr "Gnote"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:2
 msgid "A simple note-taking application"
 msgstr "Paprasta raštelių rašymo programa"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:3
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -43,12 +44,19 @@ msgstr ""
 "sugrupuoti kartu užrašinėse bei turi keletą kitų savybių kasdieniam "
 "naudojimui."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:4
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:4
+msgid "Notes can be printed or exported as HTML documents."
+msgstr "Raštelius galima spausdinti arba eksportuoti kaip HTML dokumentus."
+
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:5
+#| msgid ""
+#| "Gnote also supports synchronization to make it possible to use on "
+#| "multiple devices."
 msgid ""
-"Gnote also supports synchronization to make it possible to use on multiple "
+"Gnote also supports synchronization, making it simple to use it on multiple "
 "devices."
 msgstr ""
-"Gnote taip pat palaiko sinchronizavimą, kad būtų galima ją naudoti keliuose "
+"Gnote taip pat palaiko sinchronizavimą, todėl lengva ją naudoti keliuose "
 "įrenginiuose."
 
 #: ../data/ui/shortcuts-gnote.ui.h:1
@@ -82,7 +90,6 @@ msgid "Close window"
 msgstr "Užverti langą"
 
 #: ../data/ui/shortcuts-gnote.ui.h:7
-#| msgid "Search"
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Paieškos juosta"
@@ -93,7 +100,6 @@ msgid "Display search bar"
 msgstr "Rodyti paieškos juostą"
 
 #: ../data/ui/shortcuts-gnote.ui.h:9
-#| msgid "Select None"
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Pažymėti kitą atitiktį"
@@ -208,15 +214,15 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Sumažinti įtrauką ar panaikinti punktus dabartinei eilutei"
 
-#: ../data/gnote.desktop.in.in.h:2
+#: ../data/org.gnome.gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Konspektuokite, susiekite idėjas ir dirbkite tvarkingai"
 
-#: ../data/gnote.desktop.in.in.h:3
+#: ../data/org.gnome.gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "Užrašinė"
 
-#: ../data/gnote.desktop.in.in.h:4
+#: ../data/org.gnome.gnote.desktop.in.in.h:4
 msgid "notes;idea;link;organize;"
 msgstr "rašteliai;idėja;saitas;tvarkyti;"
 
@@ -954,7 +960,7 @@ msgid "Folder path field is empty."
 msgstr "Aplanko kelio laukas yra tuščias."
 
 #: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:276
+#: ../src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Nurodytas aplanko kelias neegzistuoja ir Gnote nepavyko jo sukurti."
@@ -996,52 +1002,37 @@ msgstr "Internetinio aplanko sinchronizacijos tarnybos įskiepis"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Sinchronizuokite Gnote raštelius į katalogą internete"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:84
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
 msgid "Failed to mount the folder"
 msgstr "Nepavyko prijungti aplanko"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:212
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "Aplanko _URI:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:224
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Pavyzdys: google-drive://vardenis.pavardenis@gmail.com/rašteliai"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:227
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr "Užregistruokite savo paskyrą Internetinėse paskyrose"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:243
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "URI yra tuščias"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:244
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "URI laukas yra tuščias."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:298
-msgid "Failure writing test file"
-msgstr "Nepavyko įrašyti testinio failo"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
-msgid "Failure when checking test file contents"
-msgstr "Klaida tikrinant testinio failo turinį"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:309
-msgid "Failure when trying to remove test file"
-msgstr "Nepavyko pašalinti testinio failo"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:325
-msgid "Unknown error"
-msgstr "Nežinoma klaida"
-
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:345
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Aplankas internete"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:76
 msgid "Insert Timestamp"
 msgstr "Įterpti laiko žymę"
 
@@ -1370,36 +1361,33 @@ msgstr "Hubert Figuière and the Tomboy Project"
 msgid "_Underline"
 msgstr "_Pabrauktas"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "User_name:"
 msgstr "_Naudotojo vardas:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid "_Password:"
 msgstr "Sla_ptažodis:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
-msgid ""
-"There was an error connecting to the server.  This may be caused by using an "
-"incorrect user name and/or password."
-msgstr ""
-"Kilo klaida jungiantis prie serverio.  Tą galėjo sukelti neteisingo "
-"naudotojo vardo ar slaptažodžio naudojimas."
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+#| msgid "Synchronization is complete"
+msgid "Synchronization destination %1 doesn't exist!"
+msgstr "Sinchronizacijos paskirties %1 nėra!"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:157
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
 msgid "URL, username, or password field is empty."
 msgstr "URL, naudotojo vardo arba slaptažodžio laukas yra tuščias."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:245
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1418,41 +1406,34 @@ msgstr "WebDAV sinchronizacijos tarnybos įskiepis"
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Sinchronizuokite Gnote raštelius į WebDAV URL."
 
-#: ../src/dbus/remotecontrol-client-glue.cpp:138
-#, c-format
-msgid "Remote call to %s failed"
-msgstr "Nuotolinis %s iškvietimas nepavyko"
-
 #: ../src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Kilo išskirtinė situacija kuriant raštelį: %s"
 
-#: ../src/gnote.cpp:189
-msgid "Gnote is already running.  Exiting..."
-msgstr "Gnote jau paleista.  Išeinama..."
+#: ../src/gnote.cpp:205
+msgid ""
+"No D-Bus connection available, shell search and remote control will not work."
+msgstr ""
+"Nėra prieinamo D-Bus ryšio, apvalkalo paieška bei nuotolinis valdymas "
+"neveiks."
 
-#: ../src/gnote.cpp:266
+#: ../src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Nepavyko gauti trumpinių lango!"
 
-#: ../src/gnote.cpp:280
+#: ../src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "ir Tomboy kūrėjai."
 
-#: ../src/gnote.cpp:286
+#: ../src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Aurimas Černius <aurisc4@gmail.com>\n"
 "Giedrius Slavinskas <giedrius25@gmail.com>\n"
 "Žygimantas Beručka <zygis@gnome.org>"
 
-#: ../src/gnote.cpp:295
-#| msgid ""
-#| "Copyright © 2010-2020 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: ../src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1464,80 +1445,76 @@ msgstr ""
 "Autorių teisės saugomos © 2009 Hubert Figuiere\n"
 "Autorių teisės saugomos © 2004-2009 Tomboy originalo autoriams."
 
-#: ../src/gnote.cpp:299
+#: ../src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:282
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:477
 msgid "Run Gnote in background."
 msgstr "Paleisti Gnote fone."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:478
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Vykdyti Gnote kaip GNOME Shell paieškos tiekėją."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "path"
 msgstr "kelias"
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:480
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: ../src/gnote.cpp:508 ../src/gnote.cpp:513
+#: ../src/gnote.cpp:480 ../src/gnote.cpp:485
 msgid "text"
 msgstr "tekstas"
 
-#: ../src/gnote.cpp:509
+#: ../src/gnote.cpp:481
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "title"
 msgstr "pavadinimas"
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:484
 msgid "Display the 'Start Here' note."
 msgstr "Raštelis „Pradėkite čia“"
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:485
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "Gnote options at launch"
 msgstr "Gnote parametrai paleidžiant"
 
-#: ../src/gnote.cpp:594
-msgid "Could not connect to remote instance."
-msgstr "Nepavyko prisijungti prie nutolusios programos."
-
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:711
+#: ../src/gnote.cpp:673
 msgid "Version %1"
 msgstr "Versija %1"
 
@@ -2186,7 +2163,7 @@ msgstr ""
 "sinchronizuoti?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1255
+#: ../src/preferencesdialog.cpp:1256
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2194,88 +2171,88 @@ msgstr ""
 "Patikrinkite savo informaciją ir bandykite vėl.  Žurnalo failas %1 gali "
 "turėti daugiau informacijos apie klaidą."
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
 msgid "Error connecting"
 msgstr "Klaida jungiantis"
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1324
 msgid "Version:"
 msgstr "Versija:"
 
-#: ../src/preferencesdialog.cpp:1326
+#: ../src/preferencesdialog.cpp:1327
 msgid "Author:"
 msgstr "Autorius:"
 
-#: ../src/preferencesdialog.cpp:1330
+#: ../src/preferencesdialog.cpp:1331
 msgid "Copyright:"
 msgstr "Autorinės teisės:"
 
-#: ../src/recentchanges.cpp:160
+#: ../src/recentchanges.cpp:158
 msgid "All Notes"
 msgstr "Visi rašteliai"
 
-#: ../src/recentchanges.cpp:171
+#: ../src/recentchanges.cpp:169
 msgid "Create New Note"
 msgstr "Sukurti naują raštelį"
 
-#: ../src/recentchanges.cpp:192
+#: ../src/recentchanges.cpp:190
 msgid "Search"
 msgstr "Ieškoti"
 
-#: ../src/recentchanges.cpp:272
+#: ../src/recentchanges.cpp:270
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Įdėtos dėžutės tėvas nėra Gtk::Grid, praneškite apie klaidą!"
 
-#: ../src/recentchanges.cpp:314
+#: ../src/recentchanges.cpp:312
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Paieškos lauko tėvas nėra Gtk::Grid, praneškite apie klaidą!"
 
-#: ../src/recentchanges.cpp:869
+#: ../src/recentchanges.cpp:873
 msgid "Expected widget to be a sub-menu!"
 msgstr "Tikėtasi, kad elementas bus po-meniu!"
 
-#: ../src/recentchanges.cpp:874
+#: ../src/recentchanges.cpp:878
 msgid "No configured actions"
 msgstr "Nėra sukonfigūruotų veiksmų"
 
-#: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
+#: ../src/remotecontrolproxy.cpp:45 ../src/remotecontrolproxy.cpp:48
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Nepavyko įkelti D-Bus sąsajos %s: %s"
 
-#: ../src/searchnoteswidget.cpp:135
+#: ../src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "_Atverti"
 
-#: ../src/searchnoteswidget.cpp:138
+#: ../src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "Atverti naujame _lange"
 
-#: ../src/searchnoteswidget.cpp:142 ../src/searchnoteswidget.cpp:145
+#: ../src/searchnoteswidget.cpp:145 ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "Iš_trinti"
 
-#: ../src/searchnoteswidget.cpp:148
+#: ../src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "_Pervadinti..."
 
-#: ../src/searchnoteswidget.cpp:224
+#: ../src/searchnoteswidget.cpp:227
 msgid "Notebooks"
 msgstr "Užrašinės"
 
-#: ../src/searchnoteswidget.cpp:685
+#: ../src/searchnoteswidget.cpp:688
 msgid "Note"
 msgstr "Raštelis"
 
-#: ../src/searchnoteswidget.cpp:707
+#: ../src/searchnoteswidget.cpp:710
 msgid "Modified"
 msgstr "Pakeistas"
 
-#: ../src/searchnoteswidget.cpp:1006
+#: ../src/searchnoteswidget.cpp:1009
 msgid "Notes"
 msgstr "Rašteliai"
 
-#: ../src/searchnoteswidget.cpp:1025
+#: ../src/searchnoteswidget.cpp:1028
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2283,55 +2260,54 @@ msgstr ""
 "Pasirinktoje užrašinėje rezultatų nerasta.\n"
 "Spauskite čia paieškai visuose rašteliuose."
 
-#: ../src/searchnoteswidget.cpp:1029
+#: ../src/searchnoteswidget.cpp:1032
 msgid "Click here to search across all notebooks"
 msgstr "Spauskite čia paieškai visuose rašteliuose"
 
-#: ../src/searchnoteswidget.cpp:1050
+#: ../src/searchnoteswidget.cpp:1053
 msgid "Matches"
 msgstr "Atitikmenys"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1101
+#: ../src/searchnoteswidget.cpp:1104
 msgid "Title match"
 msgstr "Atitikmuo pavadinime"
 
-#: ../src/searchnoteswidget.cpp:1105
+#: ../src/searchnoteswidget.cpp:1108
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 atitikmuo"
 msgstr[1] "%1 atitikmenys"
 msgstr[2] "%1 atitikmenų"
 
-#: ../src/searchnoteswidget.cpp:1313
+#: ../src/searchnoteswidget.cpp:1316
 msgid "_New"
 msgstr "_Naujas"
 
-#: ../src/searchnoteswidget.cpp:1342
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_Open Template Note"
 msgstr "_Atverti šablono raštelį"
 
-#: ../src/searchnoteswidget.cpp:1353
+#: ../src/searchnoteswidget.cpp:1356
 msgid "_New..."
 msgstr "_Nauja..."
 
-#: ../src/searchnoteswidget.cpp:1496 ../src/searchnoteswidget.cpp:1509
-#: ../src/searchnoteswidget.cpp:1520
+#: ../src/searchnoteswidget.cpp:1506 ../src/searchnoteswidget.cpp:1519
+#: ../src/searchnoteswidget.cpp:1530
 #, c-format
-#| msgid "Failed to parse setting %s (Value: %s):"
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Nepavyko perskaityti nustatymo search-sorting (vertė: %s):"
 
-#: ../src/searchnoteswidget.cpp:1497
+#: ../src/searchnoteswidget.cpp:1507
 msgid "Expected format 'column:order'"
 msgstr "Tikėtasi formato „stulpelis:tvarka“"
 
-#: ../src/searchnoteswidget.cpp:1510
+#: ../src/searchnoteswidget.cpp:1520
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Neatpažintas stulpelis %s"
 
-#: ../src/searchnoteswidget.cpp:1521
+#: ../src/searchnoteswidget.cpp:1531
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Neatpažinta tvarka %s"
@@ -2391,36 +2367,36 @@ msgstr "%1 nepavyko"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stilių lentelė, praneškite apie klaidą"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:120
+#: ../src/synchronization/filesystemsyncserver.cpp:126
 #, c-format
 msgid "Failed to upload note: %s"
 msgstr "Nepavyko nusiųsti raštelio: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:140
+#: ../src/synchronization/filesystemsyncserver.cpp:146
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Nepavyko nusiųsti %1 raštelio"
 msgstr[1] "Nepavyko nusiųsti %1 raštelių"
 msgstr[2] "Nepavyko nusiųsti %1 raštelių"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:235
+#: ../src/synchronization/filesystemsyncserver.cpp:241
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Kilo išskirtinė situacija baigiant raštelio kopijavimą: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:238
+#: ../src/synchronization/filesystemsyncserver.cpp:244
 msgid "Exception when finishing note copy"
 msgstr "Kilo išskirtinė situacija baigiant raštelio kopijavimą"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:263
+#: ../src/synchronization/filesystemsyncserver.cpp:269
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Nepavyko atsisiųsti %s raštelio atnaujinimo"
 msgstr[1] "Nepavyko atsisiųsti %s raštelių atnaujinimų"
 msgstr[2] "Nepavyko atsisiųsti %s raštelių atnaujinimų"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:426
-#: ../src/synchronization/filesystemsyncserver.cpp:430
+#: ../src/synchronization/filesystemsyncserver.cpp:432
+#: ../src/synchronization/filesystemsyncserver.cpp:436
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2429,47 +2405,15 @@ msgstr ""
 "Kilo išskirtinė situacija išvalant serverį patvirtinimo metu. Su serverio "
 "vientisumu bėdų nėra, bet gali būti papildomų failų.  Štai klaida: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:635
+#: ../src/synchronization/filesystemsyncserver.cpp:641
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Klaida atnaujinant užraktą: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:674
+#: ../src/synchronization/filesystemsyncserver.cpp:680
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Klaida trinant seną sinchronizacijos užraktą „%s“: %s"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:114
-msgid ""
-"This synchronization addin is not supported on your computer. Please make "
-"sure you have FUSE and %1 correctly installed and configured"
-msgstr ""
-"Šis sinchronizacijos priedas nepalaikomas jūsų kompiuteryje. Įsitikinkite, "
-"kad turite savo sistemoje teisingai įdiegtus FUSE ir %1"
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:152
-msgid "Could not read testfile."
-msgstr "Nepavyko perskaityti testinio failo."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:156
-msgid "Write test failed."
-msgstr "Rašymo testas nepavyko."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:186
-msgid "Timeout connecting to server."
-msgstr "Baigėsi jungiamosi prie serverio laikas."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:192
-msgid "Error connecting to server."
-msgstr "Klaida jungiantis prie serverio."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:205
-msgid "FUSE could not be enabled."
-msgstr "Nepavyko įjungti FUSE."
-
-#: ../src/synchronization/fusesyncserviceaddin.cpp:236
-msgid "An error occurred while connecting to the specified server"
-msgstr "Kilo klaida jungiantis prie nurodyto serverio"
 
 #. TRANSLATORS: %s is file
 #: ../src/synchronization/gnotesyncclient.cpp:157
@@ -2482,6 +2426,22 @@ msgstr "Neperskaitomas %s elementas last-sync-date"
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Neperskaitomas %s elementas last-sync-rev"
+
+#: ../src/synchronization/gvfssyncservice.cpp:97
+msgid "Failure writing test file"
+msgstr "Nepavyko įrašyti testinio failo"
+
+#: ../src/synchronization/gvfssyncservice.cpp:102
+msgid "Failure when checking test file contents"
+msgstr "Klaida tikrinant testinio failo turinį"
+
+#: ../src/synchronization/gvfssyncservice.cpp:108
+msgid "Failure when trying to remove test file"
+msgstr "Nepavyko pašalinti testinio failo"
+
+#: ../src/synchronization/gvfssyncservice.cpp:124
+msgid "Unknown error"
+msgstr "Nežinoma klaida"
 
 #: ../src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
@@ -2715,40 +2675,6 @@ msgstr "Sinchronizacija nepavyko su šia Glib išskirtine situacija: %s"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sinchronizacija nepavyko su šia išskirtine situacija: %s"
 
-#: ../src/synchronization/syncutils.cpp:139
-#: ../src/synchronization/syncutils.cpp:171
-msgid "Could not enable FUSE"
-msgstr "Nepavyko įjungti FUSE"
-
-#: ../src/synchronization/syncutils.cpp:140
-#: ../src/synchronization/syncutils.cpp:172
-msgid ""
-"The FUSE module could not be loaded. Please check that it is installed "
-"properly and try again."
-msgstr ""
-"Nepavyko įkelti FUSE modulio. Patikrinkite, ar jis įdiegtas, ir mėginkite "
-"vėl."
-
-#: ../src/synchronization/syncutils.cpp:148
-msgid "Enable FUSE?"
-msgstr "Įjungti FUSE?"
-
-#. TODO: This message isn't entirely accurate.
-#. We should fix it.
-#: ../src/synchronization/syncutils.cpp:151
-msgid ""
-"The synchronization you've chosen requires the FUSE module to be loaded.\n"
-"\n"
-"To avoid getting this prompt in the future, you should load FUSE at "
-"startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
-"etc/modules."
-msgstr ""
-"Jūsų pasirinkta sinchronizacija reikalauja įkelti FUSE modulį.\n"
-"\n"
-"Norėdami išvengti šio pranešimo ateityje, turėtumėte įkelti FUSE kartu su "
-"sistema.  Pridėkite „modprobe fuse“ į /etc/init.d/boot.local arba „fuse“ į /"
-"etc/modules."
-
 #: ../src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
@@ -2839,6 +2765,73 @@ msgstr "_Kopijuoti nuorodos adresą"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Atverti nuorodą"
+
+#~ msgid ""
+#~ "There was an error connecting to the server.  This may be caused by using "
+#~ "an incorrect user name and/or password."
+#~ msgstr ""
+#~ "Kilo klaida jungiantis prie serverio.  Tą galėjo sukelti neteisingo "
+#~ "naudotojo vardo ar slaptažodžio naudojimas."
+
+#~ msgid "Remote call to %s failed"
+#~ msgstr "Nuotolinis %s iškvietimas nepavyko"
+
+#~ msgid "Gnote is already running.  Exiting..."
+#~ msgstr "Gnote jau paleista.  Išeinama..."
+
+#~ msgid "Could not connect to remote instance."
+#~ msgstr "Nepavyko prisijungti prie nutolusios programos."
+
+#~ msgid ""
+#~ "This synchronization addin is not supported on your computer. Please make "
+#~ "sure you have FUSE and %1 correctly installed and configured"
+#~ msgstr ""
+#~ "Šis sinchronizacijos priedas nepalaikomas jūsų kompiuteryje. "
+#~ "Įsitikinkite, kad turite savo sistemoje teisingai įdiegtus FUSE ir %1"
+
+#~ msgid "Could not read testfile."
+#~ msgstr "Nepavyko perskaityti testinio failo."
+
+#~ msgid "Write test failed."
+#~ msgstr "Rašymo testas nepavyko."
+
+#~ msgid "Timeout connecting to server."
+#~ msgstr "Baigėsi jungiamosi prie serverio laikas."
+
+#~ msgid "Error connecting to server."
+#~ msgstr "Klaida jungiantis prie serverio."
+
+#~ msgid "FUSE could not be enabled."
+#~ msgstr "Nepavyko įjungti FUSE."
+
+#~ msgid "An error occurred while connecting to the specified server"
+#~ msgstr "Kilo klaida jungiantis prie nurodyto serverio"
+
+#~ msgid "Could not enable FUSE"
+#~ msgstr "Nepavyko įjungti FUSE"
+
+#~ msgid ""
+#~ "The FUSE module could not be loaded. Please check that it is installed "
+#~ "properly and try again."
+#~ msgstr ""
+#~ "Nepavyko įkelti FUSE modulio. Patikrinkite, ar jis įdiegtas, ir mėginkite "
+#~ "vėl."
+
+#~ msgid "Enable FUSE?"
+#~ msgstr "Įjungti FUSE?"
+
+#~ msgid ""
+#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
+#~ "\n"
+#~ "To avoid getting this prompt in the future, you should load FUSE at "
+#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+#~ "etc/modules."
+#~ msgstr ""
+#~ "Jūsų pasirinkta sinchronizacija reikalauja įkelti FUSE modulį.\n"
+#~ "\n"
+#~ "Norėdami išvengti šio pranešimo ateityje, turėtumėte įkelti FUSE kartu su "
+#~ "sistema.  Pridėkite „modprobe fuse“ į /etc/init.d/boot.local arba „fuse“ "
+#~ "į /etc/modules."
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Įjungti globalius klavišų susiejimus"
