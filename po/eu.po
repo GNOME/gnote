@@ -4,14 +4,14 @@
 #
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2014, 2015.
 # Edurne Labaka <elabaka@uzei.com>, 2015.
-# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2021.
 #
 msgid ""
 msgstr "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2019-10-10 12:46+0000\n"
-"PO-Revision-Date: 2019-10-20 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"POT-Creation-Date: 2020-09-19 18:47+0000\n"
+"PO-Revision-Date: 2021-03-19 10:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr "Project-Id-Version: gnote master\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:546
+#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:548
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -305,7 +305,7 @@ msgstr "Gutxieneko ohar kopurua zehazten duen osokoa, Gnote-ko oharren menuan bi
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:23
 msgid "List of pinned notes"
-msgstr "Sastatutako oharren zerrenda"
+msgstr "Ainguratutako oharren zerrenda"
 
 #: ../data/org.gnome.gnote.gschema.xml.in.h:24
 msgid ""
@@ -618,27 +618,27 @@ msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr "Denbora bitartea oharren direktorioa begiratzeko (segundotan). Gutxieneko balioa 5 da."
 
-#: ../src/actionmanager.cpp:133 ../src/notewindow.cpp:313
+#: ../src/actionmanager.cpp:128 ../src/notewindow.cpp:313
 msgid "_New Note"
 msgstr "_Ohar berria"
 
-#: ../src/actionmanager.cpp:134 ../src/notewindow.cpp:315
+#: ../src/actionmanager.cpp:129 ../src/notewindow.cpp:315
 msgid "New _Window"
 msgstr "Leiho _berria"
 
-#: ../src/actionmanager.cpp:135
+#: ../src/actionmanager.cpp:130
 msgid "_Preferences"
 msgstr "_Hobespenak"
 
-#: ../src/actionmanager.cpp:136
+#: ../src/actionmanager.cpp:131
 msgid "_Shortcuts"
 msgstr "Laster_bideak"
 
-#: ../src/actionmanager.cpp:137
+#: ../src/actionmanager.cpp:132
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: ../src/actionmanager.cpp:138
+#: ../src/actionmanager.cpp:133
 msgid "_About Gnote"
 msgstr "Gnote aplikazioari _buruz"
 
@@ -651,42 +651,42 @@ msgstr "Huts egin du pluginaren informazioa kargatzean."
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "'%s' plugin bateraezina: '%s' espero zen, baina '%s' lortu da"
 
-#: ../src/addinmanager.cpp:131
+#: ../src/addinmanager.cpp:157
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Oharren '%s' pluginaren informazioa badago lehendik ere"
 
-#: ../src/addinmanager.cpp:139
+#: ../src/addinmanager.cpp:165
 #, c-format
 msgid "%s does not implement %s"
 msgstr "'%s'(e)k ez dauka '%s' inplementatuta"
 
-#: ../src/addinmanager.cpp:154
+#: ../src/addinmanager.cpp:180
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Oharren '%s' plugina badago lehendik ere"
 
-#: ../src/addinmanager.cpp:172
+#: ../src/addinmanager.cpp:198
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Oharren '%s' pluginaren informazioa falta da"
 
-#: ../src/addinmanager.cpp:185
+#: ../src/addinmanager.cpp:211
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Oharren '%s' plugina falta da"
 
-#: ../src/addinmanager.cpp:221
+#: ../src/addinmanager.cpp:247
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Huts egin du '%2$s' gehigarriaren '%1$s' modulua bilatzean"
 
-#: ../src/addinmanager.cpp:225
+#: ../src/addinmanager.cpp:251
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Huts egin du '%s'(r)en gehigarriaren informazioa kargatzean: %s"
 
-#: ../src/addinmanager.cpp:351
+#: ../src/addinmanager.cpp:377
 msgid "Trying to load addins when they are already loaded"
 msgstr "Gehigarriak kargatzen saiatu da, baina haiek jadanik kargatuta daude"
 
@@ -703,16 +703,16 @@ msgstr "Ikusi zer oharrek estekatzen duten unean ikusten ari zarenera."
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere eta Tomboy proiektua"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:76
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:77
 msgid "What links here?"
 msgstr "Zer estekatzen du ohar honek?"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:97
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:98
 msgid "(none)"
 msgstr "(bat ere ez)"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:102
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:157
+#: ../src/addins/backlinks/backlinksnoteaddin.cpp:103
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:158
 #: ../src/notebooks/notebooknoteaddin.cpp:167
 msgid "_Back"
 msgstr "At_zera"
@@ -830,65 +830,65 @@ msgstr "Esportatu HTMLra"
 msgid "Exports individual notes to HTML."
 msgstr "Esportatu banakako oharrak HTMLra."
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Destination for HTML Export"
 msgstr "HTMLra esportatzeko helbidea"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:43
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:45
 msgid "Export linked notes"
 msgstr "Esportatu estekatutako oharrak"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:44
+#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:46
 msgid "Include all other linked notes"
 msgstr "Sartu estekatutako beste ohar guztiak"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:81
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:82
 msgid "Export to HTML…"
 msgstr "Esportatu HTMLra…"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:120
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Ezin izan da esportatutako oharra web arakatzailean ireki: %s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:125
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:126
 msgid "Your note was exported to \"%1\"."
 msgstr "Zure oharra \"%1\" kokagunera esportatu da."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:134
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:135
 msgid "Note exported successfully"
 msgstr "Oharra ongi esportatu da"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:148
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:156
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:149
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:157
 #, c-format
 msgid "Could not export: %s"
 msgstr "Ezin izan da esportatu: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:159
+#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
 msgid "Could not save the file \"%1\""
 msgstr "Ezin izan da \"%1\" fitxategia gorde"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
 msgid "_Folder Path:"
 msgstr "_Karpetaren bide-izena:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:111
 msgid "Select Synchronization Folder..."
 msgstr "Hautatu sinkronizazio-karpeta…"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:135
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
 msgid "Folder path field is empty."
 msgstr "Karpetaren bide-izena hutsik dago."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:142
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:267
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:270
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Zehaztutako karpetaren bide-izena ez da existitzen, eta Gnote-k ezin du sortu."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:209
+#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:210
 msgid "Local Folder"
 msgstr "Lokaleko karpeta"
 
@@ -925,52 +925,52 @@ msgstr "Lineako direktorioen sinkronizazio-zerbitzuaren plugina"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Sinkronizatu Gnote-ren oharrak lineako direktorio batekin"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:77
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:78
 msgid "Failed to mount the folder"
 msgstr "Huts egin du karpeta muntatzeak"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:202
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:206
 msgid "Folder _URI:"
 msgstr "Karpetaren _URIa:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:214
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:218
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Adibidea: google-drive://izena.abizena@gmail.com/oharrak"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:217
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:221
 msgid "Please, register your account in Online Accounts"
 msgstr "Erregistratu zure kontua GNOMEren lineako kontuekin"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:234
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:237
 msgid "The URI is empty"
 msgstr "URIa hutsik dago"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:235
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:238
 msgid "URI field is empty."
 msgstr "URI eremua hutsik dago."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:289
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:292
 msgid "Failure writing test file"
 msgstr "Huts egitea probako fitxategia idaztean"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:294
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:297
 msgid "Failure when checking test file contents"
 msgstr "Huts egitea probako fitxategiaren edukiak egiaztatzean"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:300
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:303
 msgid "Failure when trying to remove test file"
 msgstr "Huts egitea probako fitxategia kentzea saiatzean"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:316
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:319
 msgid "Unknown error"
 msgstr "Errore ezezaguna"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:338
+#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:341
 msgid "Online Folder"
 msgstr "Lineako karpeta"
 
 #: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:67
+#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:68
 msgid "Insert Timestamp"
 msgstr "Txertatu denbora-zigilua"
 
@@ -979,44 +979,44 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Uneko data eta ordua sartzen ditu kurtsorearen posizioan."
 
 #. Label
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:68
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:67
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Aukeratu aurredefinitutako formatu bat, edo erabili zeurea."
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:76
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:75
 msgid "Use _Selected Format"
 msgstr "Erabili _hautatutako formatua"
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:106
+#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:105
 msgid "_Use Custom Format"
 msgstr "Erabili formatu _pertsonalizatua"
 
 #. TRANSLATORS: first %s is file name, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:229
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:230
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr "NoteDirectoryWatcher: eguneratzea abortatuta. Errorea '%s' irakurtzean: %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:256
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:257
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr "NoteDirectoryWatcher: errorea oharraren izenburua '%s'(e)tik irakurtzean"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:264
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:265
 #, c-format
 msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 msgstr "NoteDirectoryWatcher: errore ezezaguna '%s'(e)tik oharra sortzean"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:270
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:271
 #, c-format
 msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
 msgstr "NoteDirectoryWatcher: errore ezezaguna '%s'(e)tik oharra sortzean: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:283
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:284
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr "NoteDirectoryWatcher: eguneratzea abortatuta. Errorea '%s' aztertzean: %s"
@@ -1033,7 +1033,7 @@ msgstr "Begiratu Gnote-ren oharren direktorioa (zure oharren aldaketak atzematek
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius eta Tomboy-ren jatorriko egileak"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:35
+#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:36
 msgid "_Directory check interval:"
 msgstr "Direktorioa begiratzeko _bitartea:"
 
@@ -1048,7 +1048,7 @@ msgstr "Gaur: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: ../src/addins/noteoftheday/noteoftheday.cpp:49
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:72
+#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:73
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "NoteOfTheDay: ezin izan da '%s' sortu: %s"
@@ -1097,16 +1097,16 @@ msgstr "Inprimatze euskarria"
 msgid "Allows you to print a note."
 msgstr "Ohar bat inprimatzea baimentzen dizu."
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:63
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:62
 msgid "Print…"
 msgstr "Inprimatu…"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:111
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:110
 msgid "Error printing note"
 msgstr "Errorea oharra inprimatzean"
 
 #. %1 is the page number, %2 is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:274
+#: ../src/addins/printnotes/printnotesnoteaddin.cpp:273
 msgid "Page %1 of %2"
 msgstr "%1 / %2 orrialdea"
 
@@ -1150,7 +1150,7 @@ msgid "Show Statistics"
 msgstr "Erakutsi estatistikak"
 
 #: ../src/addins/statistics/statistics.desktop.in.in.h:1
-#: ../src/addins/statistics/statisticswidget.cpp:170
+#: ../src/addins/statistics/statisticswidget.cpp:173
 msgid "Statistics"
 msgstr "Estatistikak"
 
@@ -1158,16 +1158,16 @@ msgstr "Estatistikak"
 msgid "Show various statistics about notes."
 msgstr "Erakutsi oharrei buruzko estatistika batzuk."
 
-#: ../src/addins/statistics/statisticswidget.cpp:89
+#: ../src/addins/statistics/statisticswidget.cpp:91
 msgid "Total Notes:"
 msgstr "Oharrak guztira:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:95
+#: ../src/addins/statistics/statisticswidget.cpp:97
 msgid "Total Notebooks:"
 msgstr "Koadernoak guztira:"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: ../src/addins/statistics/statisticswidget.cpp:126
+#: ../src/addins/statistics/statisticswidget.cpp:128
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "Ohar %1"
@@ -1212,8 +1212,8 @@ msgid "Sticky Note: "
 msgstr "Ohar itsaskorra: "
 
 #: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:68
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:130
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:69
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:131
 msgid "Table of Contents"
 msgstr "Edukien aurkibidea"
 
@@ -1231,23 +1231,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:145
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:207
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:146
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:208
 msgid "Heading 1"
 msgstr "1. izenburua"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:149
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:213
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:150
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:214
 msgid "Heading 2"
 msgstr "2. izenburua"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:153
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:219
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:154
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
 msgid "Table of Contents Help"
 msgstr "Edukien aurkibidearen laguntza"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:192
+#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:193
 msgid "(empty table of contents)"
 msgstr "(edukien aurkibidea hutsik)"
 
@@ -1292,34 +1292,34 @@ msgstr "Hubert Figuière eta Tomboy proiektua"
 msgid "_Underline"
 msgstr "_Azpimarratua"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:69
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:70
 msgid "_URL:"
 msgstr "_URLa:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:74
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:75
 msgid "User_name:"
 msgstr "_Erabiltzaile-izena:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:80
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:81
 msgid "_Password:"
 msgstr "_Pasahitza:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:104
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:105
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:116
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
 "incorrect user name and/or password."
 msgstr "Errorea gertatu da zerbitzariarekin konektatzean. Badirudi okerreko erabiltzaile-izen edo pasahitza erabili dela."
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:156
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:157
 msgid "URL, username, or password field is empty."
 msgstr "URL, erabiltzaile-izen edo pasahitzaren eremua hutsik dago."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:248
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:249
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1342,112 +1342,112 @@ msgstr "Sinkronizatu Gnote-ren oharrak WebDAV URLarekin."
 msgid "Remote call to %s failed"
 msgstr "Huts egin du '%s'(e)rako urruneko deiak"
 
-#: ../src/dbus/remotecontrol.cpp:82
+#: ../src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Salbuespena gertatu da oharra sortzean: %s"
 
-#: ../src/gnote.cpp:183
+#: ../src/gnote.cpp:189
 msgid "Gnote is already running.  Exiting..."
 msgstr "Gnote jadanik exekutatzen ari da. Irteten…"
 
-#: ../src/gnote.cpp:262
+#: ../src/gnote.cpp:266
 msgid "Failed to get shortcuts window!"
 msgstr "Huts egin du lasterbideen leihoa eskuratzeak!"
 
-#: ../src/gnote.cpp:276
+#: ../src/gnote.cpp:280
 msgid "and Tomboy original authors."
 msgstr "eta Tomboy aplikazioaren jatorrizko egileak."
 
-#: ../src/gnote.cpp:282
+#: ../src/gnote.cpp:286
 msgid "translator-credits"
 msgstr "Asier Sarasua Garmendia <asier.sarasua@gmail.com>"
 
-#: ../src/gnote.cpp:291
+#: ../src/gnote.cpp:295
 msgid ""
-"Copyright © 2010-2019 Aurimas Cernius\n"
+"Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
-msgstr "Copyright © 2010-2019 Aurimas Cernius\n"
+msgstr "Copyright © 2010-2020 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Tomboy aplikazioaren jatorrizko egileak."
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:299
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Oharrak hartzeko mahaigaineko aplikazio sinple eta erraza."
 
-#: ../src/gnote.cpp:306
+#: ../src/gnote.cpp:310
 msgid "Homepage"
 msgstr "Webgune nagusia"
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:519
 msgid "Run Gnote in background."
 msgstr "Exekutatu Gnote atzeko planoan."
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:520
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Exekutatu Gnote GNOMEren shell-eko bilaketa-hornitzaile gisa."
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:521
 msgid "Specify the path of the directory containing the notes."
 msgstr "Zehaztu oharrak dituen direktorioaren bide-izena."
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:521
 msgid "path"
 msgstr "bide-izena"
 
-#: ../src/gnote.cpp:514
+#: ../src/gnote.cpp:522
 msgid "Open the search all notes window with the search text."
 msgstr "'Bilatu ohar guztietan' leihoa irekitzen du bilatzeko testuarekin."
 
-#: ../src/gnote.cpp:514 ../src/gnote.cpp:519
+#: ../src/gnote.cpp:522 ../src/gnote.cpp:527
 msgid "text"
 msgstr "testua"
 
-#: ../src/gnote.cpp:515
+#: ../src/gnote.cpp:523
 msgid "Print version information."
 msgstr "Erakutsi bertsioaren informazioa."
 
-#: ../src/gnote.cpp:516
+#: ../src/gnote.cpp:524
 msgid "Create and display a new note, with a optional title."
 msgstr "Sortu eta bistaratu ohar berria, aukerako izenburuarekin."
 
-#: ../src/gnote.cpp:516
+#: ../src/gnote.cpp:524
 msgid "title"
 msgstr "izenburua"
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:525
 msgid "Display the existing note matching title."
 msgstr "Bistaratu izenburuarekin bat datorren eta existitzen den oharra."
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:525
 msgid "title/url"
 msgstr "izenburua/urla"
 
-#: ../src/gnote.cpp:518
+#: ../src/gnote.cpp:526
 msgid "Display the 'Start Here' note."
 msgstr "Bistaratu 'Hasi hemen' oharra."
 
-#: ../src/gnote.cpp:519
+#: ../src/gnote.cpp:527
 msgid "Search and highlight text in the opened note."
 msgstr "Bilatu eta nabarmendu testua irekitako oharrean."
 
-#: ../src/gnote.cpp:523
+#: ../src/gnote.cpp:531
 msgid "A note taking application"
 msgstr "Oharrak hartzeko aplikazioa"
 
-#: ../src/gnote.cpp:523
+#: ../src/gnote.cpp:531
 msgid "Gnote options at launch"
 msgstr "Gnote-ren abioko aukerak"
 
-#: ../src/gnote.cpp:600
+#: ../src/gnote.cpp:608
 msgid "Could not connect to remote instance."
 msgstr "Ezin izan da urruneko instantziarekin konektatu."
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:717
+#: ../src/gnote.cpp:725
 msgid "Version %1"
 msgstr "%1 bertsioa"
 
@@ -1457,46 +1457,46 @@ msgstr "%1 bertsioa"
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Huts egin du ikonoa (%s, %d) kargatzean: %s"
 
-#: ../src/noteaddin.cpp:131 ../src/noteaddin.cpp:145 ../src/noteaddin.cpp:157
+#: ../src/noteaddin.cpp:132 ../src/noteaddin.cpp:146 ../src/noteaddin.cpp:158
 msgid "Plugin is disposing already"
 msgstr "Plugina jadanik ezarrita dago"
 
-#: ../src/noteaddin.cpp:161
+#: ../src/noteaddin.cpp:162
 msgid "Window is not embedded"
 msgstr "Leihoa ez dago kapsulatuta"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:196 ../src/note.cpp:376
+#: ../src/notebase.cpp:225 ../src/note.cpp:362
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Salbuespena oharra gordetzean: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:431
+#: ../src/notebase.cpp:465
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Huts egin du oharraren formatua eguneratzean: %s"
 
-#: ../src/notebase.cpp:549
+#: ../src/notebase.cpp:583
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Fitxategi-sistemaren errorea: %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:40
+#: ../src/notebooks/createnotebookdialog.cpp:41
 msgid "Create Notebook"
 msgstr "Sortu koadernoa"
 
-#: ../src/notebooks/createnotebookdialog.cpp:44
+#: ../src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
 msgstr "Koadernoaren _izena:"
 
-#: ../src/notebooks/createnotebookdialog.cpp:57
+#: ../src/notebooks/createnotebookdialog.cpp:58
 msgid "Name already taken"
 msgstr "Izena jadanik erabilita dago"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:70
+#: ../src/notebooks/createnotebookdialog.cpp:71
 msgid "C_reate"
 msgstr "_Sortu"
 
@@ -1509,19 +1509,19 @@ msgstr "Sortu _koadernoa…"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: ../src/notebooks/notebook.cpp:107
+#: ../src/notebooks/notebook.cpp:94
 msgid "%1 Notebook Template"
 msgstr "%1% koadernoaren txantiloia"
 
-#: ../src/notebooks/notebook.cpp:181 ../src/notemanagerbase.cpp:306
+#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:304
 msgid "New Note"
 msgstr "Ohar berria"
 
-#: ../src/notebooks/notebookmanager.cpp:362
+#: ../src/notebooks/notebookmanager.cpp:352
 msgid "Really delete this notebook?"
 msgstr "Koaderno hau ezabatu?"
 
-#: ../src/notebooks/notebookmanager.cpp:363
+#: ../src/notebooks/notebookmanager.cpp:353
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1537,7 +1537,7 @@ msgstr "Koadernorik ez"
 msgid "New \"%1\" Note"
 msgstr "\"%1\" ohar berria"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:110
+#: ../src/notebooks/notebooknoteaddin.cpp:111
 msgid "Notebook"
 msgstr "Koadernoa"
 
@@ -1555,6 +1555,7 @@ msgid "Unfiled"
 msgstr "Artxibatu gabe"
 
 #: ../src/notebooks/specialnotebooks.cpp:107
+msgctxt "notebook"
 msgid "Important"
 msgstr "Garrantzitsua"
 
@@ -1562,61 +1563,61 @@ msgstr "Garrantzitsua"
 msgid "Active"
 msgstr "Aktibo"
 
-#: ../src/notebuffer.cpp:1430
+#: ../src/notebuffer.cpp:1431
 msgid "</list> tag mismatch"
 msgstr "</list> etiketa falta da"
 
-#: ../src/notebuffer.cpp:1514
+#: ../src/notebuffer.cpp:1515
 #, c-format
 msgid "Exception: %s"
 msgstr "Salbuespena: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
-#: ../src/note.cpp:55
+#: ../src/note.cpp:56
 msgid "Really delete \"%1\"?"
 msgstr "\"%1\" ezabatu nahi duzu?"
 
 #. TRANSLATORS: %1 is number of notes
-#: ../src/note.cpp:59
+#: ../src/note.cpp:60
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
 msgstr[0] "Ohar %1 ezabatu?"
 msgstr[1] "%1 ohar ezabatu?"
 
-#: ../src/note.cpp:66
+#: ../src/note.cpp:67
 msgid "If you delete a note it is permanently lost."
 msgstr "Ohar bat ezabatzen baduzu, betiko galduko da."
 
-#: ../src/note.cpp:100
+#: ../src/note.cpp:101
 msgid "Error saving note data."
 msgstr "Errorea oharraren datuak gordetzean."
 
-#: ../src/note.cpp:101
+#: ../src/note.cpp:102
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
 "share/gnote. Error details can be found in ~/.gnote.log."
 msgstr "Errorea gertatu da zure oharrak gordetzean. Egiaztatu diskoan nahikoa leku libre dagoela, eta ~/.local/share/gnote direktoriorako baimen egokiak dituzula. Errorearen xehetasunak ~/.gnote.log fitxategian aurki dezakezu."
 
-#: ../src/note.cpp:468
+#: ../src/note.cpp:453
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Errorea gordetzean: %s"
 
-#: ../src/note.cpp:694
+#: ../src/note.cpp:683
 msgid "Setting text content for closed notes not supported"
 msgstr "Testuaren edukia itxitako oharretan ezartzea ez dago onartuta"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanagerbase.cpp:106 ../src/preferencesdialog.cpp:315
+#: ../src/notemanagerbase.cpp:107 ../src/preferencesdialog.cpp:326
 msgid "New Note Template"
 msgstr "Oharren txantiloi berria"
 
-#: ../src/notemanagerbase.cpp:364
+#: ../src/notemanagerbase.cpp:358
 msgid "Describe your new note here."
 msgstr "Azaldu ohar berria hemen."
 
-#: ../src/notemanager.cpp:132
+#: ../src/notemanager.cpp:129
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1648,7 +1649,7 @@ msgstr "<note-content>Hasi hemen\n"
 "\n"
 "<link:internal>Gnote-ko estekak erabiltzea</link:internal> izeneko oharra sortuta dago jadanik.  Ohartu zara <link:internal>Gnote-ko estekak erabiltzea</link:internal> idazten bakoitzean automatikoki azpimarratua agertzen dela? Egin klik estekan oharra irekitzeko.</note-content>"
 
-#: ../src/notemanager.cpp:151
+#: ../src/notemanager.cpp:148
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1671,58 +1672,58 @@ msgstr "<note-content>Gnote-ko estekak erabiltzea\n"
 "Gainera, uneko oharrean beste ohar baten izena idaztean, automatikoki estekatuko du.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:166 ../src/notemanager.cpp:204
+#: ../src/notemanager.cpp:163 ../src/notemanager.cpp:201
 msgid "Start Here"
 msgstr "Hasi hemen"
 
-#: ../src/notemanager.cpp:172
+#: ../src/notemanager.cpp:169
 msgid "Using Links in Gnote"
 msgstr "Gnote-ko estekak erabiltzea"
 
-#: ../src/notemanager.cpp:177
+#: ../src/notemanager.cpp:174
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Errorea hasierako oharrak sortzean: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/notemanager.cpp:192
+#: ../src/notemanager.cpp:189
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Errorea oharraren XMLa aztertzean, '%s' saltatzen: %s"
 
-#: ../src/noterenamedialog.cpp:123
+#: ../src/noterenamedialog.cpp:125
 msgid "Rename Note Links?"
 msgstr "Aldatu oharren esteken izenak?"
 
-#: ../src/noterenamedialog.cpp:127
+#: ../src/noterenamedialog.cpp:130
 msgid "_Don't Rename Links"
 msgstr "_Ez aldatu estekak izenez"
 
-#: ../src/noterenamedialog.cpp:128
+#: ../src/noterenamedialog.cpp:131
 msgid "_Rename Links"
 msgstr "_Aldatu esteken izenak"
 
-#: ../src/noterenamedialog.cpp:129
+#: ../src/noterenamedialog.cpp:132
 msgid "Select All"
 msgstr "Hautatu dena"
 
-#: ../src/noterenamedialog.cpp:130
+#: ../src/noterenamedialog.cpp:133
 msgid "Select None"
 msgstr "Ez hautatu ezer"
 
-#: ../src/noterenamedialog.cpp:131
+#: ../src/noterenamedialog.cpp:134
 msgid "Always show this _window"
 msgstr "Erakutsi beti _leiho hau"
 
-#: ../src/noterenamedialog.cpp:132
+#: ../src/noterenamedialog.cpp:135
 msgid "Alwa_ys rename links"
 msgstr "_Beti aldatu esteken izenak"
 
-#: ../src/noterenamedialog.cpp:134
+#: ../src/noterenamedialog.cpp:137
 msgid "Never rename _links"
 msgstr "Inoiz ere ez aldatu _estekak izenez"
 
-#: ../src/noterenamedialog.cpp:152
+#: ../src/noterenamedialog.cpp:155
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1732,15 +1733,15 @@ msgstr "Aldatu beste oharretako estekak  '<span underline=\"single\">%1</span>'(
 "\n"
 "Estekak ez badituzu izenez aldatzen, ez dute gehiago inora estekatuko."
 
-#: ../src/noterenamedialog.cpp:185
+#: ../src/noterenamedialog.cpp:188
 msgid "Rename Links"
 msgstr "Aldatu esteken izenak"
 
-#: ../src/noterenamedialog.cpp:200 ../src/synchronization/syncdialog.cpp:331
+#: ../src/noterenamedialog.cpp:203 ../src/synchronization/syncdialog.cpp:331
 msgid "Note Title"
 msgstr "Oharraren izenburua"
 
-#: ../src/noterenamedialog.cpp:237
+#: ../src/noterenamedialog.cpp:240
 msgid "Ad_vanced"
 msgstr "_Aurreratua"
 
@@ -1757,12 +1758,13 @@ msgid "_Link to New Note"
 msgstr "_Estekatu ohar berrira"
 
 #: ../src/notewindow.cpp:323
+msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Garrantzitsua"
 
 #: ../src/notewindow.cpp:333
 msgid "_Delete…"
-msgstr "Ez_abatu…"
+msgstr "E_zabatu…"
 
 #: ../src/notewindow.cpp:422
 msgid "Set properties of text"
@@ -1838,264 +1840,264 @@ msgstr "→ Handitu koska"
 msgid "← Decrease indent"
 msgstr "← Txikitu koska"
 
-#: ../src/preferencesdialog.cpp:101
+#: ../src/preferencesdialog.cpp:102
 msgid "Gnote Preferences"
 msgstr "Gnote-ren hobespenak"
 
-#: ../src/preferencesdialog.cpp:119
+#: ../src/preferencesdialog.cpp:120
 msgid "General"
 msgstr "Orokorra"
 
-#: ../src/preferencesdialog.cpp:120
+#: ../src/preferencesdialog.cpp:121
 msgid "Links"
 msgstr "Estekak"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:123 ../src/sharp/addinstreemodel.cpp:165
+#: ../src/preferencesdialog.cpp:124 ../src/sharp/addinstreemodel.cpp:165
 msgid "Synchronization"
 msgstr "Sinkronizazioa"
 
-#: ../src/preferencesdialog.cpp:125
+#: ../src/preferencesdialog.cpp:126
 msgid "Plugins"
 msgstr "Pluginak"
 
-#: ../src/preferencesdialog.cpp:199
+#: ../src/preferencesdialog.cpp:200
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "'%s' plugina falta da"
 
 #. Open in new window
-#: ../src/preferencesdialog.cpp:238
+#: ../src/preferencesdialog.cpp:249
 msgid "Always _open notes in new window"
 msgstr "_Ireki beti oharrak leiho berrietan"
 
-#: ../src/preferencesdialog.cpp:251
+#: ../src/preferencesdialog.cpp:262
 msgid "_Spell check while typing"
 msgstr "Egiaztatu _ortografia idaztean"
 
-#: ../src/preferencesdialog.cpp:252
+#: ../src/preferencesdialog.cpp:263
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
 msgstr "Akats ortografikoak gorri kolorearekin azpimarratuko dira, eta zuzentzaile ortografikoaren gomendioak saguaren eskuineko botoiarekin klik eginez erakutsiko dira."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:262
+#: ../src/preferencesdialog.cpp:273
 msgid "Enable auto-_bulleted lists"
 msgstr "Gaitu _buletdun zerrenda automatikoak"
 
-#: ../src/preferencesdialog.cpp:263
+#: ../src/preferencesdialog.cpp:274
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Hasi buletdun zerrendak lerro berriak '-' karakterearekin hasiz"
 
-#: ../src/preferencesdialog.cpp:272
+#: ../src/preferencesdialog.cpp:283
 msgid "Use custom _font"
 msgstr "Erabili letra-tipo _pertsonalizatua"
 
-#: ../src/preferencesdialog.cpp:290
+#: ../src/preferencesdialog.cpp:301
 msgid "When renaming a linked note: "
 msgstr "Estekatutako oharra izenez aldatzean: "
 
-#: ../src/preferencesdialog.cpp:294
+#: ../src/preferencesdialog.cpp:305
 msgid "Ask me what to do"
 msgstr "Galdetu zer egin"
 
-#: ../src/preferencesdialog.cpp:295
+#: ../src/preferencesdialog.cpp:306
 msgid "Never rename links"
 msgstr "Inoiz ez aldatu esteken izenak"
 
-#: ../src/preferencesdialog.cpp:296
+#: ../src/preferencesdialog.cpp:307
 msgid "Always rename links"
 msgstr "Beti aldatu esteken izenak"
 
-#: ../src/preferencesdialog.cpp:316
+#: ../src/preferencesdialog.cpp:327
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr "Oharren txantiloi berria erabili ohar berri bat sortzean erabiliko den testua zehazteko."
 
-#: ../src/preferencesdialog.cpp:321
+#: ../src/preferencesdialog.cpp:332
 msgid "Open New Note Template"
 msgstr "Ireki oharren txantiloi berria"
 
 #. internal links
-#: ../src/preferencesdialog.cpp:378
+#: ../src/preferencesdialog.cpp:389
 msgid "_Automatically link to notes"
 msgstr "Estekatu _automatikoki oharretara"
 
-#: ../src/preferencesdialog.cpp:379
+#: ../src/preferencesdialog.cpp:390
 msgid "Enable this option to create a link when text matches note title."
 msgstr "Gaitu aukera hau testua oharraren izenburuarekin bat datorrenean esteka bat sortzeko."
 
 #. URLs
-#: ../src/preferencesdialog.cpp:385
+#: ../src/preferencesdialog.cpp:396
 msgid "Create links for _URLs"
 msgstr "Sortu _URLen estekak"
 
-#: ../src/preferencesdialog.cpp:386
+#: ../src/preferencesdialog.cpp:397
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
 msgstr "Gaitu aukera hau URLen esteka sortzeko. Klik eginez URL hori dagokion programarekin irekiko da."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:393
+#: ../src/preferencesdialog.cpp:404
 msgid "Highlight _WikiWords"
 msgstr "Nabarmendu _WikiWords-ak"
 
-#: ../src/preferencesdialog.cpp:394
+#: ../src/preferencesdialog.cpp:405
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
 msgstr "Gaitu aukera hau <b>HonenItxuraDuten</b> hitzak nabarmentzeko. Egin klik hitzaren gainean izen horrekin ohar bat sortzeko."
 
-#: ../src/preferencesdialog.cpp:426
+#: ../src/preferencesdialog.cpp:437
 msgid "Ser_vice:"
 msgstr "_Zerbitzua:"
 
-#: ../src/preferencesdialog.cpp:481 ../src/preferencesdialog.cpp:1111
+#: ../src/preferencesdialog.cpp:492 ../src/preferencesdialog.cpp:1122
 msgid "Not configurable"
 msgstr "Ez da konfiguragarria"
 
-#: ../src/preferencesdialog.cpp:508
+#: ../src/preferencesdialog.cpp:519
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Atzeko planoko _sinkronizazio automatikoaren tartea (minutuak)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:532
+#: ../src/preferencesdialog.cpp:543
 msgid "_Advanced..."
 msgstr "_Aurreratua…"
 
-#: ../src/preferencesdialog.cpp:580
+#: ../src/preferencesdialog.cpp:591
 msgid "The following plugins are installed:"
 msgstr "Honako pluginak daude instalatuta:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:615
+#: ../src/preferencesdialog.cpp:626
 msgid "_Enable"
 msgstr "_Gaitu"
 
-#: ../src/preferencesdialog.cpp:621
+#: ../src/preferencesdialog.cpp:632
 msgid "_Disable"
 msgstr "_Desgaitu"
 
-#: ../src/preferencesdialog.cpp:778
+#: ../src/preferencesdialog.cpp:789
 msgid "Not Implemented"
 msgstr "Inplementatu gabe"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: ../src/preferencesdialog.cpp:795
+#: ../src/preferencesdialog.cpp:806
 msgid "%1 Preferences"
 msgstr "%1 hobespenak"
 
-#: ../src/preferencesdialog.cpp:929
+#: ../src/preferencesdialog.cpp:940
 msgid "Choose Note Font"
 msgstr "Aukeratu oharraren letra-tipoa"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1027
+#: ../src/preferencesdialog.cpp:1038
 msgid "Other Synchronization Options"
 msgstr "Bestelako sinkronizazioko aukerak"
 
-#: ../src/preferencesdialog.cpp:1030
+#: ../src/preferencesdialog.cpp:1041
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr "Lokaleko eta konfiguratutako sinkronizazioko zerbitzariko oharren artean gatazkak detektatzen direnean:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1034
+#: ../src/preferencesdialog.cpp:1045
 msgid "Always ask me what to do"
 msgstr "Galdetu beti zer egin."
 
-#: ../src/preferencesdialog.cpp:1038
+#: ../src/preferencesdialog.cpp:1049
 msgid "Rename my local note"
 msgstr "Aldatu lokaleko oharraren izena."
 
-#: ../src/preferencesdialog.cpp:1042
+#: ../src/preferencesdialog.cpp:1053
 msgid "Replace my local note with the server's update"
 msgstr "Ordeztu lokaleko oharra zerbitzariko eguneratzearekin"
 
-#: ../src/preferencesdialog.cpp:1144
+#: ../src/preferencesdialog.cpp:1155
 msgid "Are you sure?"
 msgstr "Ziur zaude?"
 
-#: ../src/preferencesdialog.cpp:1145
+#: ../src/preferencesdialog.cpp:1156
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
 msgstr "Ez da aholkatzen sinkronizazioaren ezarpenak garbitzea. Zure ohar guztiak berriro sinkronizatu beharko dituzu ezarpen berriak gordetzean."
 
-#: ../src/preferencesdialog.cpp:1155
+#: ../src/preferencesdialog.cpp:1166
 msgid "Resetting Synchronization Settings"
 msgstr "Sinkronizazio-ezarpenak berrezartzen"
 
-#: ../src/preferencesdialog.cpp:1156
+#: ../src/preferencesdialog.cpp:1167
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
 "synchronize all of your notes again when you save new settings."
 msgstr "Konfiguratutako sinkronizazio-zerbitzua desgaitu duzu. Sinkronizazioko konfigurazioak garbitu egingo dira. Zure ohar guztiak berriro sinkronizatu beharko dituzu ezarpen berriak gordetzean."
 
-#: ../src/preferencesdialog.cpp:1233
+#: ../src/preferencesdialog.cpp:1244
 msgid "Connection successful"
 msgstr "Ongi konektatu da"
 
-#: ../src/preferencesdialog.cpp:1234
+#: ../src/preferencesdialog.cpp:1245
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote prest dago zure oharrak sinkronizatzeko. Nahi dituzu oharrak orain sinkronizatzea?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1259
+#: ../src/preferencesdialog.cpp:1270
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr "Egiaztatu informazioa eta saiatu berriro. %1 egunkariak erroreari buruzko informazio gehiago eduki dezake."
 
-#: ../src/preferencesdialog.cpp:1264
+#: ../src/preferencesdialog.cpp:1275
 msgid "Error connecting"
 msgstr "Errorea konektatzean"
 
-#: ../src/preferencesdialog.cpp:1327
+#: ../src/preferencesdialog.cpp:1338
 msgid "Version:"
 msgstr "Bertsioa:"
 
-#: ../src/preferencesdialog.cpp:1330
+#: ../src/preferencesdialog.cpp:1341
 msgid "Author:"
 msgstr "Egilea:"
 
-#: ../src/preferencesdialog.cpp:1334
+#: ../src/preferencesdialog.cpp:1345
 msgid "Copyright:"
 msgstr "Copyright-a:"
 
-#: ../src/recentchanges.cpp:158
+#: ../src/recentchanges.cpp:160
 msgid "All Notes"
 msgstr "Ohar guztiak"
 
-#: ../src/recentchanges.cpp:169
+#: ../src/recentchanges.cpp:171
 msgid "Create New Note"
 msgstr "Sortu ohar berria"
 
-#: ../src/recentchanges.cpp:190
+#: ../src/recentchanges.cpp:192
 msgid "Search"
 msgstr "Bilatu"
 
-#: ../src/recentchanges.cpp:251
+#: ../src/recentchanges.cpp:253
 msgid "Find _Next"
 msgstr "Bilatu _hurrengoa"
 
-#: ../src/recentchanges.cpp:260
+#: ../src/recentchanges.cpp:262
 msgid "Find _Previous"
 msgstr "Bilatu _aurrekoa"
 
-#: ../src/recentchanges.cpp:798
+#: ../src/recentchanges.cpp:800
 msgid "Expected widget to be a sub-menu!"
 msgstr "Espero zen trepeta azpimenu bat izatea!"
 
-#: ../src/recentchanges.cpp:803
+#: ../src/recentchanges.cpp:805
 msgid "No configured actions"
 msgstr "Ez dago konfiguratutako ekintzarik"
 
@@ -2104,92 +2106,92 @@ msgstr "Ez dago konfiguratutako ekintzarik"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Huts egin du '%s' D-Bus interfazea kargatzean: %s"
 
-#: ../src/searchnoteswidget.cpp:136
+#: ../src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "_Ireki"
 
-#: ../src/searchnoteswidget.cpp:139
+#: ../src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "Ireki leiho _berrian"
 
-#: ../src/searchnoteswidget.cpp:143 ../src/searchnoteswidget.cpp:146
+#: ../src/searchnoteswidget.cpp:145 ../src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "Ez_abatu"
 
-#: ../src/searchnoteswidget.cpp:149
+#: ../src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "Aldatu _izenez…"
 
-#: ../src/searchnoteswidget.cpp:228
+#: ../src/searchnoteswidget.cpp:227
 msgid "Notebooks"
 msgstr "Koadernoak"
 
-#: ../src/searchnoteswidget.cpp:656
+#: ../src/searchnoteswidget.cpp:655
 msgid "Note"
 msgstr "Oharra"
 
-#: ../src/searchnoteswidget.cpp:678
+#: ../src/searchnoteswidget.cpp:677
 msgid "Modified"
 msgstr "Aldatze-data"
 
-#: ../src/searchnoteswidget.cpp:997
+#: ../src/searchnoteswidget.cpp:996
 msgid "Notes"
 msgstr "Oharrak"
 
-#: ../src/searchnoteswidget.cpp:1016
+#: ../src/searchnoteswidget.cpp:1015
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
 msgstr "Ez da emaitzarik aurkitu hautatutako koadernoetan.\n"
 "Egin klik ohar guztietan zehar bilatzeko."
 
-#: ../src/searchnoteswidget.cpp:1020
+#: ../src/searchnoteswidget.cpp:1019
 msgid "Click here to search across all notebooks"
 msgstr "Egin klik koaderno guztietan zehar bilatzeko"
 
-#: ../src/searchnoteswidget.cpp:1041
+#: ../src/searchnoteswidget.cpp:1040
 msgid "Matches"
 msgstr "Bat etortzeak:"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1092
+#: ../src/searchnoteswidget.cpp:1091
 msgid "Title match"
 msgstr "Izenburua bat dator"
 
-#: ../src/searchnoteswidget.cpp:1096
+#: ../src/searchnoteswidget.cpp:1095
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "Bat etortze %1"
 msgstr[1] "%1 bat etortze"
 
-#: ../src/searchnoteswidget.cpp:1307
+#: ../src/searchnoteswidget.cpp:1305
 msgid "_New"
 msgstr "_Berria"
 
-#: ../src/searchnoteswidget.cpp:1336
+#: ../src/searchnoteswidget.cpp:1334
 msgid "_Open Template Note"
 msgstr "_Ireki txantiloia"
 
-#: ../src/searchnoteswidget.cpp:1347
+#: ../src/searchnoteswidget.cpp:1345
 msgid "_New..."
 msgstr "_Berria…"
 
-#: ../src/searchnoteswidget.cpp:1500 ../src/searchnoteswidget.cpp:1513
-#: ../src/searchnoteswidget.cpp:1524
+#: ../src/searchnoteswidget.cpp:1498 ../src/searchnoteswidget.cpp:1511
+#: ../src/searchnoteswidget.cpp:1522
 #, c-format
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "Huts egin du %s ezarpena aztertzean (balioa: %s):"
 
-#: ../src/searchnoteswidget.cpp:1501
+#: ../src/searchnoteswidget.cpp:1499
 msgid "Expected format 'column:order'"
 msgstr "'zutabea:ordena' formatua espero zen"
 
-#: ../src/searchnoteswidget.cpp:1514
+#: ../src/searchnoteswidget.cpp:1512
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "'%s' zutabe ezezaguna"
 
-#: ../src/searchnoteswidget.cpp:1525
+#: ../src/searchnoteswidget.cpp:1523
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "'%s' ordena ezezaguna"
@@ -2249,57 +2251,88 @@ msgstr "%1(e)k huts egin du"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Estilo-orria NULUA. Mesedez, eman akats honen berri"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:376
-#: ../src/synchronization/filesystemsyncserver.cpp:380
+#: ../src/synchronization/filesystemsyncserver.cpp:120
+#, c-format
+msgid "Failed to upload note: %s"
+msgstr "Huts egin du oharra kargatzeak: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:140
+msgid "Failed to upload %1 note"
+msgid_plural "Failed to upload %1 notes"
+msgstr[0] "Huts egin du ohar %1 kargatzeak"
+msgstr[1] "Huts egin du %1 ohar kargatzeak"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:235
+#, c-format
+msgid "Exception when finishing note copy: %s"
+msgstr "Salbuespena oharraren kopia amaitzean: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:238
+msgid "Exception when finishing note copy"
+msgstr "Salbuespena oharraren kopia amaitzean"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:263
+msgid "Failed to download %1 note update"
+msgid_plural "Failed to download %1 note updates"
+msgstr[0] "Huts egin du ohar-eguneratze %1 deskargatzeak"
+msgstr[1] "Huts egin du %1 ohar-eguneratze deskargatzeak"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:426
+#: ../src/synchronization/filesystemsyncserver.cpp:430
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
 "but there may be some excess files floating around.  Here's the error: %s\n"
 msgstr "Salbuespena zerbitzariaren garbiketa egikaritzean. Zerbitzariaren osotasuna ongi dago, baina fitxategi kopuru gehiegi egon daiteke hor inguruan. Hau da errorea: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:619
+#: ../src/synchronization/filesystemsyncserver.cpp:635
+#, c-format
+msgid "Error updating lock: %s"
+msgstr "Errorea blokeoa eguneratzean: %s"
+
+#: ../src/synchronization/filesystemsyncserver.cpp:674
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Errorea sinkronizazioaren '%s' blokeo zaharra ezabatzean: %s"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:113
+#: ../src/synchronization/fusesyncserviceaddin.cpp:114
 msgid ""
 "This synchronization addin is not supported on your computer. Please make "
 "sure you have FUSE and %1 correctly installed and configured"
 msgstr "Sinkronizazioaren gehigarri hau ez da ordenagailuan onartzen. Ziurtatu zaitez FUSE eta %1 instalatuta eta konfiguratuta edukitzeaz"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:151
+#: ../src/synchronization/fusesyncserviceaddin.cpp:152
 msgid "Could not read testfile."
 msgstr "Ezin izan da probako fitxategia irakurri."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:155
+#: ../src/synchronization/fusesyncserviceaddin.cpp:156
 msgid "Write test failed."
 msgstr "Huts egin du idazketaren probak"
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:185
+#: ../src/synchronization/fusesyncserviceaddin.cpp:186
 msgid "Timeout connecting to server."
 msgstr "Denbora iraungita zerbitzariarekin konektatzean."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:191
+#: ../src/synchronization/fusesyncserviceaddin.cpp:192
 msgid "Error connecting to server."
 msgstr "Errorea  zerbitzariarekin konektatzean."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:204
+#: ../src/synchronization/fusesyncserviceaddin.cpp:205
 msgid "FUSE could not be enabled."
 msgstr "Ezin izan da FUSE gaitu."
 
-#: ../src/synchronization/fusesyncserviceaddin.cpp:235
+#: ../src/synchronization/fusesyncserviceaddin.cpp:236
 msgid "An error occurred while connecting to the specified server"
 msgstr "Errorea gertatu da zehaztutako zerbitzariarekin konektatzean"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:165
+#: ../src/synchronization/gnotesyncclient.cpp:157
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "'last-sync-date' elementua ezin da aztertu '%s'(e)n"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:175
+#: ../src/synchronization/gnotesyncclient.cpp:167
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "'last-sync-rev' elementua ezin da aztertu '%s'(e)n"
@@ -2497,52 +2530,57 @@ msgstr "Aldaketak zerbitzarira bidalita"
 msgid "Uploaded new note to server"
 msgstr "Ohar berria zerbitzarira bidalita"
 
-#: ../src/synchronization/syncmanager.cpp:65
+#: ../src/synchronization/syncmanager.cpp:59
 msgid "Synchronize Notes"
 msgstr "Sinkronizatu oharrak"
 
-#: ../src/synchronization/syncmanager.cpp:84
-#: ../src/synchronization/syncmanager.cpp:101
-#: ../src/synchronization/syncmanager.cpp:567
+#: ../src/synchronization/syncmanager.cpp:78
+#: ../src/synchronization/syncmanager.cpp:95
+#: ../src/synchronization/syncmanager.cpp:574
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Eman akatsaren berri. Igorpenak huts egin du: %s"
 
-#: ../src/synchronization/syncmanager.cpp:147
+#: ../src/synchronization/syncmanager.cpp:142
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Errorea sinkronizazioaren ostean gehigarria garbitzean: %s"
 
-#: ../src/synchronization/syncmanager.cpp:172
+#: ../src/synchronization/syncmanager.cpp:167
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Salbuespena SyncServer sortzean: %s"
 
+#: ../src/synchronization/syncmanager.cpp:367
+#, c-format
+msgid "Synchronization failed with the following Glib exception: %s"
+msgstr "Sinkronizazioak huts egin du honako Glib salbuespenarekin: %s"
+
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:370
+#: ../src/synchronization/syncmanager.cpp:371
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
-msgstr "Sinkronizazioak huts egin du salbuespen honekin: %s"
+msgstr "Sinkronizazioak huts egin du honako salbuespenarekin: %s"
 
-#: ../src/synchronization/syncutils.cpp:142
-#: ../src/synchronization/syncutils.cpp:174
+#: ../src/synchronization/syncutils.cpp:139
+#: ../src/synchronization/syncutils.cpp:171
 msgid "Could not enable FUSE"
 msgstr "Ezin izan da FUSE gaitu"
 
-#: ../src/synchronization/syncutils.cpp:143
-#: ../src/synchronization/syncutils.cpp:175
+#: ../src/synchronization/syncutils.cpp:140
+#: ../src/synchronization/syncutils.cpp:172
 msgid ""
 "The FUSE module could not be loaded. Please check that it is installed "
 "properly and try again."
 msgstr "FUSE modulua ezin izan da kargatu. Ziurtatu ongi instalatuta dagoela eta saiatu berriro."
 
-#: ../src/synchronization/syncutils.cpp:151
+#: ../src/synchronization/syncutils.cpp:148
 msgid "Enable FUSE?"
 msgstr "Gaitu FUSE?"
 
 #. TODO: This message isn't entirely accurate.
 #. We should fix it.
-#: ../src/synchronization/syncutils.cpp:154
+#: ../src/synchronization/syncutils.cpp:151
 msgid ""
 "The synchronization you've chosen requires the FUSE module to be loaded.\n"
 "\n"
@@ -2553,83 +2591,83 @@ msgstr "Aukeratu duzun sinkronizazioak FUSE modulua kargatzea behar du.\n"
 "\n"
 "Etorkizunean galdera hau ez bistaratzeko, FUSE kargatu beharko zenuke abioan. Gehitu 'modprobe fuse' lerroa /etc/init.d/boot.local fitxategian edo 'fuse' lerroa /etc/modules fitxategian"
 
-#: ../src/utils.cpp:140
+#: ../src/utils.cpp:129
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr "Ezin izan da 'TGnote oharren eskuliburua' aurkitu. Egiaztatu instalazioa ongi burutu dela."
 
-#: ../src/utils.cpp:148
+#: ../src/utils.cpp:137
 msgid "Help not found"
 msgstr "Ez da laguntzarik aurkitu"
 
-#: ../src/utils.cpp:180
+#: ../src/utils.cpp:169
 msgid "Cannot open location"
 msgstr "Ezin da helbidea ireki"
 
+#: ../src/utils.cpp:187
+msgid "No Date"
+msgstr "Datarik ez"
+
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:210
+#: ../src/utils.cpp:202
 msgid "Today, %1"
 msgstr "Gaur, %1"
 
-#: ../src/utils.cpp:211
+#: ../src/utils.cpp:203
 msgid "Today"
 msgstr "Gaur"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:217
+#: ../src/utils.cpp:209
 msgid "Yesterday, %1"
 msgstr "Atzo, %1"
 
-#: ../src/utils.cpp:218
+#: ../src/utils.cpp:210
 msgid "Yesterday"
 msgstr "Atzo"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:224
+#: ../src/utils.cpp:216
 msgid "Tomorrow, %1"
 msgstr "Bihar, %1"
 
-#: ../src/utils.cpp:225
+#: ../src/utils.cpp:217
 msgid "Tomorrow"
 msgstr "Bihar"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:229
+#: ../src/utils.cpp:221
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:232 ../src/utils.cpp:244
+#: ../src/utils.cpp:224 ../src/utils.cpp:233
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: ../src/utils.cpp:237
-msgid "No Date"
-msgstr "Datarik ez"
-
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:241
+#: ../src/utils.cpp:230
 msgid "%b %d %Y"
 msgstr "%Y %b %d"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: ../src/watchers.cpp:197
+#: ../src/watchers.cpp:198
 msgid "(Untitled %1)"
 msgstr "(%1 izengabea)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: ../src/watchers.cpp:229
+#: ../src/watchers.cpp:230
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr "<b>%1</b> izenburuko ohar bat existitzen da dagoeneko. Aukeratu beste izen bat jarraitu aurretik."
 
-#: ../src/watchers.cpp:244
+#: ../src/watchers.cpp:245
 msgid "Note title taken"
 msgstr "Oharraren izenburua hartuta"
 
-#: ../src/watchers.cpp:313
+#: ../src/watchers.cpp:314
 msgid "Check spelling"
 msgstr "Ortografia-egiaztapena"
 
