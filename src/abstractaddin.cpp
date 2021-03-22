@@ -22,6 +22,7 @@
 
 
 #include "abstractaddin.hpp"
+#include <cstddef>
 
 namespace gnote {
 
