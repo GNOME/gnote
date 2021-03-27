@@ -95,6 +95,7 @@ libgnote_shared_lib = shared_library(
   [ libgnote_sources, dbus_sources ],
   dependencies: dependencies,
   include_directories: root_include_dir,
+  install: true,
 )
 
 gnote = executable(
@@ -103,5 +104,6 @@ gnote = executable(
   dependencies: dependencies,
   include_directories: root_include_dir,
   link_with: libgnote_shared_lib,
+  install: true,
 )
 
