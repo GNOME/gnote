@@ -68,10 +68,40 @@ libgnote_sources = [
   'synchronization/syncserviceaddin.cpp',
 ]
 
+gnote_sources = [
+  'sharp/addinstreemodel.cpp',
+  'actionmanager.cpp',
+  'gnote.cpp',
+  'preferencesdialog.cpp',
+  'recentchanges.cpp',
+  'searchnoteswidget.cpp',
+  'notebooks/notebookstreeview.cpp',
+  'synchronization/gnotesyncclient.cpp',
+  'synchronization/silentui.cpp',
+  'synchronization/syncdialog.cpp',
+  'synchronization/syncmanager.cpp',
+  'main.cpp',
+]
+
+dbus_sources = [
+  'remotecontrolproxy.cpp',
+  'dbus/remotecontrol.cpp',
+  'dbus/remotecontrol-glue.cpp',
+  'dbus/searchprovider.cpp',
+]
+
 libgnote_shared_lib = shared_library(
-  'gnote-@0@'.format(version),
-  libgnote_sources,
+  'gnote-@0@'.format(gnote_release),
+  [ libgnote_sources, dbus_sources ],
   dependencies: dependencies,
   include_directories: root_include_dir,
+)
+
+gnote = executable(
+  'gnote',
+  gnote_sources,
+  dependencies: dependencies,
+  include_directories: root_include_dir,
+  link_with: libgnote_shared_lib,
 )
 
