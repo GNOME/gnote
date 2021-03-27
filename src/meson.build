@@ -108,3 +108,5 @@ gnote = executable(
   install: true,
 )
 
+subdir('dbus')
+
