@@ -93,6 +93,7 @@ dbus_sources = [
 libgnote_shared_lib = shared_library(
   'gnote-@0@'.format(gnote_release),
   [ libgnote_sources, dbus_sources ],
+  version: libgnote_version_info,
   dependencies: dependencies,
   include_directories: root_include_dir,
   install: true,
