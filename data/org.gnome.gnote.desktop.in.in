@@ -1,17 +1,13 @@
-
 [Desktop Entry]
-_Name=Gnote
-_Comment=Take notes, link ideas, and stay organized
-_GenericName=Note-taker
-_Keywords=notes;idea;link;organize;
+Name=Gnote
+Comment=Take notes, link ideas, and stay organized
+GenericName=Note-taker
+Keywords=notes;idea;link;organize;
 Exec=gnote %u
 Icon=gnote
 MimeType=x-scheme-handler/note;
 StartupNotify=true
+DBusActivatable=true
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Utility;
-X-GNOME-Bugzilla-Bugzilla=GNOME
-X-GNOME-Bugzilla-Product=gnote
-X-GNOME-Bugzilla-Component=main
-X-GNOME-Bugzilla-Version=@GNOTE_VERSION@
