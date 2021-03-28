@@ -1,5 +1,6 @@
 project('gnote', 'cpp', version: '41.alpha', meson_version: '>=0.49.0')
 
+gnome = import('gnome')
 i18n = import('i18n')
 
 gnote_release = meson.project_version().split('.')[0]
@@ -38,6 +39,7 @@ configure_file(
 root_include_dir = include_directories('.')
 
 subdir('data')
+subdir('help')
 subdir('src')
 subdir('po')
 
