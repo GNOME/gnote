@@ -1,5 +1,7 @@
 project('gnote', 'cpp', version: '41.alpha')
 
+i18n = import('i18n')
+
 gnote_release = meson.project_version().split('.')[0]
 libgnote_version_info = '0.0.0'
 
@@ -34,4 +36,5 @@ root_include_dir = include_directories('.')
 
 subdir('data')
 subdir('src')
+subdir('po')
 
