@@ -52,5 +52,7 @@ if appstream_util.found()
   test('validate-appdata', appstream_util, args: ['validate-relax', '--nonet', appdata_file])
 endif
 
+install_data('shortcuts-gnote.ui', install_dir: get_option('datadir') / meson.project_name())
+
 subdir('icons')
 
