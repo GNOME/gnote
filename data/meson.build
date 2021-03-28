@@ -37,3 +37,18 @@ configure_file(
   install_dir: get_option('datadir') / 'dbus-1/services',
 )
 
+gnote_appdata = 'org.gnome.gnote.appdata.xml'
+appdata_file = i18n.merge_file(
+  gnote_appdata,
+  input: gnote_appdata + '.in',
+  output: gnote_appdata,
+  po_dir: '../po',
+  install: true,
+  install_dir: get_option('datadir') / 'metainfo'
+)
+
+appstream_util = find_program('appstream-util', required: false)
+if appstream_util.found()
+  test('validate-appdata', appstream_util, args: ['validate-relax', '--nonet', appdata_file])
+endif
+
