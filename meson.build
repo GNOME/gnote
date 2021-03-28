@@ -32,5 +32,6 @@ configure_file(
 
 root_include_dir = include_directories('.')
 
+subdir('data')
 subdir('src')
 
