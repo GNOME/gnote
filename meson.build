@@ -6,6 +6,7 @@ gnote_release = meson.project_version().split('.')[0]
 libgnote_version_info = '0.0.0'
 
 glib_version = '>2.62'
+gio_dep = dependency('gio-2.0', version: glib_version)
 
 dependencies = [
   dependency('glibmm-2.4', version: glib_version),
