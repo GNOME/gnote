@@ -26,3 +26,14 @@ if xmllint.found()
   test('validate-gschema', xmllint, args: ['--noout', '--dtdvalid', gschema_dtd, gnote_gschema])
 endif
 
+dbus_service_file = 'org.gnome.Gnote.service'
+dbus_service_conf = configuration_data()
+dbus_service_conf.set('bindir', get_option('prefix') / get_option('bindir'))
+dbus_service_conf.set('wrapper', 'gnote')
+configure_file(
+  input: dbus_service_file + '.in',
+  output: dbus_service_file,
+  configuration: dbus_service_conf,
+  install_dir: get_option('datadir') / 'dbus-1/services',
+)
+
