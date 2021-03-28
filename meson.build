@@ -1,4 +1,4 @@
-project('gnote', 'cpp', version: '41.alpha')
+project('gnote', 'cpp', version: '41.alpha', meson_version: '>=0.49.0')
 
 i18n = import('i18n')
 
