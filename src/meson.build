@@ -108,5 +108,8 @@ gnote = executable(
   install: true,
 )
 
+src_include_dir = include_directories('.')
+
+subdir('addins')
 subdir('dbus')
 
