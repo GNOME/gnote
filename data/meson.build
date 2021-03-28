@@ -52,3 +52,5 @@ if appstream_util.found()
   test('validate-appdata', appstream_util, args: ['validate-relax', '--nonet', appdata_file])
 endif
 
+subdir('icons')
+
