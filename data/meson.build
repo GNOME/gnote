@@ -16,3 +16,5 @@ if desktop_file_validate.found()
   test('validate-desktop', desktop_file_validate, args: [gnote_desktop_file])
 endif
 
+install_data('org.gnome.Gnote.search-provider.ini', install_dir: get_option('datadir') / 'gnome-shell' / 'search-providers')
+
