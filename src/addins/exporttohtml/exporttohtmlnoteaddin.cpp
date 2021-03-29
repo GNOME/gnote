@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019- 2020 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 
 #include <glibmm/i18n.h>
 
+#include "config.h"
 #include "sharp/exception.hpp"
 #include "sharp/files.hpp"
 #include "sharp/streamwriter.hpp"
