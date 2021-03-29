@@ -6,4 +6,5 @@ addin_conf.set('libgnote_version_info', libgnote_version_info)
 
 subdir('backlinks')
 subdir('bugzilla')
+subdir('exporttogtg')
 
