@@ -12,4 +12,5 @@ subdir('filesystemsyncservice')
 subdir('fixedwidth')
 subdir('gvfssyncservice')
 subdir('inserttimestamp')
+subdir('notedirectorywatcher')
 
