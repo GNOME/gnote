@@ -9,4 +9,5 @@ subdir('bugzilla')
 subdir('exporttogtg')
 subdir('exporttohtml')
 subdir('filesystemsyncservice')
+subdir('fixedwidth')
 
