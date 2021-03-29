@@ -10,4 +10,5 @@ subdir('exporttogtg')
 subdir('exporttohtml')
 subdir('filesystemsyncservice')
 subdir('fixedwidth')
+subdir('gvfssyncservice')
 
