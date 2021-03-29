@@ -8,4 +8,5 @@ subdir('backlinks')
 subdir('bugzilla')
 subdir('exporttogtg')
 subdir('exporttohtml')
+subdir('filesystemsyncservice')
 
