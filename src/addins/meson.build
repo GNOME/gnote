@@ -11,4 +11,5 @@ subdir('exporttohtml')
 subdir('filesystemsyncservice')
 subdir('fixedwidth')
 subdir('gvfssyncservice')
+subdir('inserttimestamp')
 
