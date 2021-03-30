@@ -22,4 +22,5 @@ subdir('statistics')
 subdir('stickynoteimport')
 subdir('tableofcontents')
 subdir('todo')
+subdir('tomboyimport')
 
