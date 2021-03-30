@@ -15,4 +15,5 @@ subdir('inserttimestamp')
 subdir('notedirectorywatcher')
 subdir('noteoftheday')
 subdir('printnotes')
+subdir('readonly')
 
