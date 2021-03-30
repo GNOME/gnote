@@ -18,4 +18,5 @@ subdir('printnotes')
 subdir('readonly')
 subdir('replacetitle')
 subdir('specialnotes')
+subdir('statistics')
 
