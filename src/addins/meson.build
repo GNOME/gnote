@@ -19,4 +19,5 @@ subdir('readonly')
 subdir('replacetitle')
 subdir('specialnotes')
 subdir('statistics')
+subdir('stickynoteimport')
 
