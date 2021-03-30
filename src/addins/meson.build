@@ -17,4 +17,5 @@ subdir('noteoftheday')
 subdir('printnotes')
 subdir('readonly')
 subdir('replacetitle')
+subdir('specialnotes')
 
