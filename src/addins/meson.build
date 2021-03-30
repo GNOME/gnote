@@ -24,4 +24,5 @@ subdir('tableofcontents')
 subdir('todo')
 subdir('tomboyimport')
 subdir('underline')
+subdir('webdavsyncservice')
 
