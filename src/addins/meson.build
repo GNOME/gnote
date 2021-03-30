@@ -14,4 +14,5 @@ subdir('gvfssyncservice')
 subdir('inserttimestamp')
 subdir('notedirectorywatcher')
 subdir('noteoftheday')
+subdir('printnotes')
 
