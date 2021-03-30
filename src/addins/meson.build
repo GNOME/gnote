@@ -23,4 +23,5 @@ subdir('stickynoteimport')
 subdir('tableofcontents')
 subdir('todo')
 subdir('tomboyimport')
+subdir('underline')
 
