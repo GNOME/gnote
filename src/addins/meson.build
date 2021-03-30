@@ -20,4 +20,5 @@ subdir('replacetitle')
 subdir('specialnotes')
 subdir('statistics')
 subdir('stickynoteimport')
+subdir('tableofcontents')
 
