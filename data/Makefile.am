@@ -3,7 +3,7 @@ SUBDIRS = appdata icons ui
 
 @INTLTOOL_DESKTOP_RULE@
 
-desktop_in_files = org.gnome.gnote.desktop.in
+desktop_in_files = org.gnome.Gnote.desktop.in
 desktop_files    = $(desktop_in_files:.desktop.in=.desktop)
 
 desktopdir   = $(datadir)/applications
