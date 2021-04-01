@@ -5,13 +5,13 @@ public_icons_themes = \
 	$(NULL)
 
 public_icons = \
-	hicolor_apps_16x16_gnote.png \
-	hicolor_apps_22x22_gnote.png \
-	hicolor_apps_24x24_gnote.png \
-	hicolor_apps_32x32_gnote.png \
-	hicolor_apps_48x48_gnote.png \
-	hicolor_apps_256x256_gnote.png \
-	hicolor_apps_scalable_gnote.svg \
+	hicolor_apps_16x16_org.gnome.Gnote.png \
+	hicolor_apps_22x22_org.gnome.Gnote.png \
+	hicolor_apps_24x24_org.gnome.Gnote.png \
+	hicolor_apps_32x32_org.gnome.Gnote.png \
+	hicolor_apps_48x48_org.gnome.Gnote.png \
+	hicolor_apps_256x256_org.gnome.Gnote.png \
+	hicolor_apps_scalable_org.gnome.Gnote.svg \
 	$(NULL)
 
 private_icons = \
@@ -41,8 +41,8 @@ private_icons = \
 	$(NULL)
 
 noinst_DATA = \
-	hicolor_apps_16x16_gnote.xcf.bz2 \
-	hicolor_apps_22x22_gnote.xcf.bz2 \
+	hicolor_apps_16x16_org.gnome.Gnote.xcf.bz2 \
+	hicolor_apps_22x22_org.gnome.Gnote.xcf.bz2 \
 	hicolor_actions_16x16_notebook-new.svg \
 	hicolor_actions_16x16_note-new.svg \
 	hicolor_actions_22x22_filter-note-all.xcf.bz2 \
