@@ -1,4 +1,4 @@
-[AddinInfo]
+[Plugin]
 Id=ReadOnlyAddin
 Name=Read Only
 Description=Mark certain notes as read only
@@ -10,5 +10,5 @@ Module=libreadonly
 LibgnoteRelease=@libgnote_release@
 LibgnoteVersionInfo=@libgnote_version_info@
 [Actions]
-actions_bool=readonly-toggle
-non_modifying_actions=readonly-toggle
+ActionsBool=readonly-toggle
+NonModifyingActions=readonly-toggle
