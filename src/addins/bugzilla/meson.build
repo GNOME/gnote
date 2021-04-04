@@ -7,12 +7,11 @@ configured_desktop_file = configure_file(
 )
 
 
-i18n.merge_file(
+custom_target(
   desktop_file,
-  type: 'desktop',
   input: configured_desktop_file,
   output: desktop_file,
-  po_dir: '../../../po',
+  command: msgfmt_plugin_cmd,
   install: true,
   install_dir: addins_install_dir,
 )
