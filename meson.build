@@ -37,6 +37,7 @@ configure_file(
 )
 
 root_include_dir = include_directories('.')
+srcdir = meson.current_source_dir()
 
 subdir('data')
 subdir('help')
