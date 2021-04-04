@@ -1,4 +1,4 @@
-[AddinInfo]
+[Plugin]
 Id=ExportToGTGAddin
 Name=Export to Getting Things GNOME
 Description=Exports individual notes as Getting Things GNOME tasks
@@ -10,5 +10,5 @@ Module=libexporttogtg
 LibgnoteRelease=@libgnote_release@
 LibgnoteVersionInfo=@libgnote_version_info@
 [Actions]
-actions_void=exporttogtg-export
-non_modifying_actions=exporttogtg-export
+ActionsVoid=exporttogtg-export
+NonModifyingActions=exporttogtg-export
