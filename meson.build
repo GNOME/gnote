@@ -20,6 +20,12 @@ dependencies = [
   dependency('uuid'),
 ]
 
+gspell = dependency('gspell-1', version: '>=1.6.0', required: false)
+if gspell.found()
+  dependencies = [dependencies, gspell]
+  add_project_arguments('-DENABLE_GSPELL=1', language: 'cpp')
+endif
+
 if get_option('buildtype').startswith('debug')
   add_project_arguments('-DDEBUG', language: 'cpp')
 endif
