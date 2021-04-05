@@ -110,6 +110,12 @@ namespace gnote {
   }
 
 
+  void Gnote::on_activate()
+  {
+    get_main_window().present();
+  }
+
+
   int Gnote::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line)
   {
     Gtk::Application::on_command_line(command_line);
