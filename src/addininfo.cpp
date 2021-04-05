@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2017,2019 Aurimas Cernius
+ * Copyright (C) 2013-2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,8 +30,8 @@ namespace gnote {
 
   namespace {
 
-    const char * ADDIN_INFO = "AddinInfo";
-    const char * ADDIN_ATTS = "AddinAttributes";
+    const char * ADDIN_INFO = "Plugin";
+    const char * ADDIN_ATTS = "PluginAttributes";
     const char * ADDIN_ACTIONS = "Actions";
 
     AddinCategory resolve_addin_category(const Glib::ustring & cat)
@@ -98,13 +98,13 @@ void AddinInfo::load_from_file(const Glib::ustring & info_file)
       }
     }
     if(addin_info.has_group(ADDIN_ACTIONS)) {
-      load_actions(addin_info, "actions_void", NULL);
-      load_actions(addin_info, "actions_bool", &Glib::Variant<bool>::variant_type());
-      load_actions(addin_info, "actions_int", &Glib::Variant<gint32>::variant_type());
-      load_actions(addin_info, "actions_string", &Glib::Variant<Glib::ustring>::variant_type());
-      if(addin_info.has_key(ADDIN_ACTIONS, "non_modifying_actions")) {
+      load_actions(addin_info, "ActionsVoid", NULL);
+      load_actions(addin_info, "ActionsBool", &Glib::Variant<bool>::variant_type());
+      load_actions(addin_info, "ActionsInt", &Glib::Variant<gint32>::variant_type());
+      load_actions(addin_info, "ActionsString", &Glib::Variant<Glib::ustring>::variant_type());
+      if(addin_info.has_key(ADDIN_ACTIONS, "NonModifyingActions")) {
         std::vector<Glib::ustring> actions;
-        sharp::string_split(actions, addin_info.get_string(ADDIN_ACTIONS, "non_modifying_actions"), ",");
+        sharp::string_split(actions, addin_info.get_string(ADDIN_ACTIONS, "NonModifyingActions"), ",");
         for(auto action : actions) {
           m_non_modifying_actions.push_back(action);
         }
