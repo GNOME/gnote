@@ -110,6 +110,6 @@ gnote = executable(
 
 src_include_dir = include_directories('.')
 
-subdir('addins')
+subdir('plugins')
 subdir('dbus')
 
