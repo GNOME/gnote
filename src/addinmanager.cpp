@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -299,8 +299,8 @@ namespace {
    
     REGISTER_APP_ADDIN(notebooks::NotebookApplicationAddin);
 
-    Glib::ustring global_path = LIBDIR "/" PACKAGE_NAME "/addins/" PACKAGE_VERSION;
-    Glib::ustring local_path = m_gnote_conf_dir + "/addins";
+    Glib::ustring global_path = LIBDIR "/" PACKAGE_NAME "/plugins/" PACKAGE_VERSION;
+    Glib::ustring local_path = m_gnote_conf_dir + "/plugins";
 
     load_addin_infos(global_path, local_path);
     std::vector<Glib::ustring> enabled_addins = get_enabled_addins();
