@@ -20,6 +20,10 @@ dependencies = [
   dependency('uuid'),
 ]
 
+if get_option('buildtype').startswith('debug')
+  add_project_arguments('-DDEBUG', language: 'cpp')
+endif
+
 
 conf_data = configuration_data()
 conf_data.set('package_name', 'gnote')
