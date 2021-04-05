@@ -2,6 +2,7 @@ project('gnote', 'cpp', version: '41.alpha', meson_version: '>=0.49.0')
 
 gnome = import('gnome')
 i18n = import('i18n')
+python = import('python')
 
 gnote_release = meson.project_version().split('.')[0]
 libgnote_version_info = '0.0.0'
@@ -38,6 +39,9 @@ configure_file(
 
 root_include_dir = include_directories('.')
 srcdir = meson.current_source_dir()
+
+meson.add_install_script(python.find_installation('python3').path(),
+  join_paths(meson.source_root(), 'post-install.py'))
 
 subdir('data')
 subdir('help')
