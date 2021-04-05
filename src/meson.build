@@ -112,4 +112,7 @@ src_include_dir = include_directories('.')
 
 subdir('plugins')
 subdir('dbus')
+if unit_test_pp.found()
+  subdir('test')
+endif
 

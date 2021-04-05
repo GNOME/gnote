@@ -26,6 +26,8 @@ if gspell.found()
   add_project_arguments('-DENABLE_GSPELL=1', language: 'cpp')
 endif
 
+unit_test_pp = dependency('UnitTest++', version: '>=1.5.1', required: false)
+
 if get_option('buildtype').startswith('debug')
   add_project_arguments('-DDEBUG', language: 'cpp')
 endif
