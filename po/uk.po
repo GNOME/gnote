@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-03-08 20:47+0000\n"
-"PO-Revision-Date: 2021-03-09 10:00+0200\n"
+"POT-Creation-Date: 2021-04-09 19:21+0000\n"
+"PO-Revision-Date: 2021-04-09 23:01+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -16,19 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.11.70\n"
+"X-Generator: Lokalize 20.12.0\n"
 
-#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:1
-#: ../data/org.gnome.gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:52
-#: ../src/recentchanges.cpp:622
+#: data/org.gnome.gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
+#: src/recentchanges.cpp:52 src/recentchanges.cpp:622
 msgid "Gnote"
 msgstr "Gnote"
 
-#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:2
+#: data/org.gnome.gnote.appdata.xml.in:8
 msgid "A simple note-taking application"
 msgstr "Проста програма для роботи з нотатками"
 
-#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:3
+#: data/org.gnome.gnote.appdata.xml.in:10
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -39,14 +38,11 @@ msgstr ""
 "стилі вікіпосилань, групувати нотатки у записники і користуватися "
 "додатковими можливостями для повсякденної роботи."
 
-#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:4
+#: data/org.gnome.gnote.appdata.xml.in:13
 msgid "Notes can be printed or exported as HTML documents."
 msgstr "Нотатки можна друкувати або експортувати до документів HTML."
 
-#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:5
-#| msgid ""
-#| "Gnote also supports synchronization make it simple to use it on multiple "
-#| "devices."
+#: data/org.gnome.gnote.appdata.xml.in:14
 msgid ""
 "Gnote also supports synchronization, making it simple to use it on multiple "
 "devices."
@@ -54,182 +50,30 @@ msgstr ""
 "Крім того, у Gnote передбачено підтримку синхронізації для спрощення "
 "користування нотатками з різних пристроїв."
 
-#: ../data/ui/shortcuts-gnote.ui.h:1
-msgctxt "shortcut window"
-msgid "Main Window"
-msgstr "Головне вікно"
-
-#: ../data/ui/shortcuts-gnote.ui.h:2
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Загальні"
-
-#: ../data/ui/shortcuts-gnote.ui.h:3
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Показати довідку"
-
-#: ../data/ui/shortcuts-gnote.ui.h:4
-msgctxt "shortcut window"
-msgid "Open actions menu"
-msgstr "Відкрити меню дій"
-
-#: ../data/ui/shortcuts-gnote.ui.h:5
-msgctxt "shortcut window"
-msgid "Hide search bar"
-msgstr "Приховати смужку пошуку"
-
-#: ../data/ui/shortcuts-gnote.ui.h:6
-msgctxt "shortcut window"
-msgid "Close window"
-msgstr "Закрити вікно"
-
-#: ../data/ui/shortcuts-gnote.ui.h:7
-msgctxt "shortcut window"
-msgid "Search bar"
-msgstr "Панель пошуку"
-
-#: ../data/ui/shortcuts-gnote.ui.h:8
-msgctxt "shortcut window"
-msgid "Display search bar"
-msgstr "Показати панель пошуку"
-
-#: ../data/ui/shortcuts-gnote.ui.h:9
-msgctxt "shortcut window"
-msgid "Select next match"
-msgstr "Вибрати наступний відповідник"
-
-#: ../data/ui/shortcuts-gnote.ui.h:10
-msgctxt "shortcut window"
-msgid "Select previous match"
-msgstr "Вибрати попередній відповідник"
-
-#: ../data/ui/shortcuts-gnote.ui.h:11
-msgctxt "shortcut window"
-msgid "Notes list"
-msgstr "Список нотаток"
-
-#: ../data/ui/shortcuts-gnote.ui.h:12
-msgctxt "shortcut window"
-msgid "Create new note"
-msgstr "Створити нотатку"
-
-#: ../data/ui/shortcuts-gnote.ui.h:13
-msgctxt "shortcut window"
-msgid "Open selected note"
-msgstr "Відкрити вибрану нотатку"
-
-#: ../data/ui/shortcuts-gnote.ui.h:14
-msgctxt "shortcut window"
-msgid "Open selected note in new window"
-msgstr "Відкрити вибрану нотатку у новому вікні"
-
-#: ../data/ui/shortcuts-gnote.ui.h:15
-msgctxt "shortcut window"
-msgid "Delete selected note"
-msgstr "Вилучити вибрану нотатку"
-
-#: ../data/ui/shortcuts-gnote.ui.h:16
-msgctxt "shortcut window"
-msgid "Note Window"
-msgstr "Вікно нотаток"
-
-#: ../data/ui/shortcuts-gnote.ui.h:17
-msgctxt "shortcut window"
-msgid "Editing"
-msgstr "Редагування"
-
-#: ../data/ui/shortcuts-gnote.ui.h:18
-msgctxt "shortcut window"
-msgid "Undo last edit"
-msgstr "Скасувати останнє редагування"
-
-#: ../data/ui/shortcuts-gnote.ui.h:19
-msgctxt "shortcut window"
-msgid "Redo last edit"
-msgstr "Повторити останнє скасоване редагування"
-
-#: ../data/ui/shortcuts-gnote.ui.h:20
-msgctxt "shortcut window"
-msgid "Create link to note on selected text"
-msgstr "Створити посилання на нотатку на вибраному тексті"
-
-#: ../data/ui/shortcuts-gnote.ui.h:21
-msgctxt "shortcut window"
-msgid "Formatting"
-msgstr "Форматування"
-
-#: ../data/ui/shortcuts-gnote.ui.h:22
-msgctxt "shortcut window"
-msgid "Toggle bold"
-msgstr "Увімкнути або вимкнути напівжирний"
-
-#: ../data/ui/shortcuts-gnote.ui.h:23
-msgctxt "shortcut window"
-msgid "Toggle italic"
-msgstr "Увімкнути або вимкнути курсив"
-
-#: ../data/ui/shortcuts-gnote.ui.h:24
-msgctxt "shortcut window"
-msgid "Toggle strikethrough"
-msgstr "Увімкнути або вимкнути перекреслення"
-
-#: ../data/ui/shortcuts-gnote.ui.h:25
-msgctxt "shortcut window"
-msgid "Toggle highlight"
-msgstr "Увімкнути або вимкнути підсвічування"
-
-#: ../data/ui/shortcuts-gnote.ui.h:26
-msgctxt "shortcut window"
-msgid "Toggle fixed width"
-msgstr "Увімкнути або вимкнути моноширинний шрифт"
-
-#: ../data/ui/shortcuts-gnote.ui.h:27
-msgctxt "shortcut window"
-msgid "Toggle underline"
-msgstr "Увімкнути або вимкнути підкреслення"
-
-#: ../data/ui/shortcuts-gnote.ui.h:28
-msgctxt "shortcut window"
-msgid "Increase font size"
-msgstr "Збільшити розмір шрифту"
-
-#: ../data/ui/shortcuts-gnote.ui.h:29
-msgctxt "shortcut window"
-msgid "Decrease font size"
-msgstr ""
-"Зменшити розмір шрифту\n"
-"зменшення розміру шрифту"
-
-#: ../data/ui/shortcuts-gnote.ui.h:30
-msgctxt "shortcut window"
-msgid "Enable bullets/increase indent for line with selection"
-msgstr "Увімкнути позначки списку і збільшити відступ для рядка із позначеним"
-
-#: ../data/ui/shortcuts-gnote.ui.h:31
-msgctxt "shortcut window"
-msgid "Decrease indent/disable bullets for current line"
-msgstr "Зменшити відступ і вимкнути позначки списку для поточного рядка"
-
-#: ../data/org.gnome.gnote.desktop.in.in.h:2
+#: data/org.gnome.Gnote.desktop.in:4
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Зібрати нотатки, пов'язати ідеї та залишитися зібраним"
 
-#: ../data/org.gnome.gnote.desktop.in.in.h:3
+#: data/org.gnome.Gnote.desktop.in:5
 msgid "Note-taker"
 msgstr "Записник"
 
-#: ../data/org.gnome.gnote.desktop.in.in.h:4
+#: data/org.gnome.Gnote.desktop.in:6
 msgid "notes;idea;link;organize;"
 msgstr ""
 "notes;idea;link;organize;нотатки;нотатка;ідея;посилання;упорядкування;"
 "організація;"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:1
+#: data/org.gnome.Gnote.desktop.in:8
+msgid "org.gnome.Gnote"
+msgstr ""
+"org.gnome.Gnote"
+
+#: data/org.gnome.gnote.gschema.xml:6
 msgid "Enable spellchecking"
 msgstr "Увімкнути перевірку правопису"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:2
+#: data/org.gnome.gnote.gschema.xml:7
 msgid ""
 "If true, misspellings will be underlined in red, and correct spelling "
 "suggestions shown in the right-click menu."
@@ -238,11 +82,11 @@ msgstr ""
 "червоним, а при клацанні правою кнопкою показуватимуться коректні варіанти "
 "заміни."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:3
+#: data/org.gnome.gnote.gschema.xml:11
 msgid "Automatically create links when typing"
 msgstr "Автоматично створювати посилання при введення тексту"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:4
+#: data/org.gnome.gnote.gschema.xml:12
 msgid ""
 "Enable this option to automatically create a link, when text matches note "
 "title."
@@ -250,19 +94,19 @@ msgstr ""
 "Увімкніть цей ключ, щоб автоматично створювати посилання, якщо фрагмент "
 "тексту збігається із заголовком нотатки."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:5
+#: data/org.gnome.gnote.gschema.xml:16
 msgid "Create links for URLs in notes"
 msgstr "Створити посилання для адрес у нотатках"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:6
+#: data/org.gnome.gnote.gschema.xml:17
 msgid "Enable this option to create links for URLs in notes."
 msgstr "Увімкніть цей ключ, щоб створювати посилання для адрес у нотатках."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:7
+#: data/org.gnome.gnote.gschema.xml:21
 msgid "Enable WikiWord highlighting"
 msgstr "Ввімкнути виділення WikiWord"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:8
+#: data/org.gnome.gnote.gschema.xml:22
 msgid ""
 "Enable this option to highlight words ThatLookLikeThis. Clicking the word "
 "will create a note with that name."
@@ -270,11 +114,11 @@ msgstr ""
 "Увімкніть цей параметр для виділення кольором слів ЯкіВиглядаютьТакимЧином. "
 "Клацання на слові створить нотатку з цією назвою."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:9
+#: data/org.gnome.gnote.gschema.xml:26
 msgid "Enable Auto bulleted lists"
 msgstr "Увімкнути автоматичні списки"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:10
+#: data/org.gnome.gnote.gschema.xml:27
 msgid ""
 "Enable this option if you want bulleted lists to be automatic when you place "
 "- or * at the beginning of a line."
@@ -282,11 +126,11 @@ msgstr ""
 "Встановіть цей ключ, якщо хочете, щоб списки створювалися автоматично при "
 "вводі символу - або * на початку рядка."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:11
+#: data/org.gnome.gnote.gschema.xml:31
 msgid "Enable Middle-Click Paste On Icon"
 msgstr "Увімкнути вставку клацанням середньою кнопкою на значку"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:12
+#: data/org.gnome.gnote.gschema.xml:32
 msgid ""
 "Enable this option if you want to be able to middle-click the Gnote icon to "
 "paste timestamped content into the Start Here note."
@@ -294,11 +138,11 @@ msgstr ""
 "Встановіть цей ключ, якщо хочете, щоб при клацанні середньою кнопкою миші на "
 "значку Gnote у вашу «Першу нотатку» вставлявся вміст разом з позначкою часу."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:13
+#: data/org.gnome.gnote.gschema.xml:36
 msgid "Enable custom font"
 msgstr "Використовувати інший шрифт"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:14
+#: data/org.gnome.gnote.gschema.xml:37
 msgid ""
 "If true, the font name set in custom-font-face will be used as the font when "
 "displaying notes. Otherwise the desktop default font will be used."
@@ -307,11 +151,11 @@ msgstr ""
 "custom-font-face назва шрифту. У іншому випадку, буде використовуватись "
 "системний шрифт."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:15
+#: data/org.gnome.gnote.gschema.xml:41
 msgid "Custom Font Face"
 msgstr "Інший шрифт"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:16
+#: data/org.gnome.gnote.gschema.xml:42
 msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
@@ -319,11 +163,11 @@ msgstr ""
 "Якщо встановлено enable-custom-font, для показу нотаток буде "
 "використовуватись шрифт з вказаною тут назвою."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:17
+#: data/org.gnome.gnote.gschema.xml:46
 msgid "Start Here Note"
 msgstr "Перша нотатка"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:18
+#: data/org.gnome.gnote.gschema.xml:47
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -332,11 +176,11 @@ msgstr ""
 "Ідентифікатор (URI) нотатки, яка вважається «Першою нотаткою». Вона завжди "
 "розміщується внизу меню нотаток Gnote та доступно через комбінацію клавіш."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:19
+#: data/org.gnome.gnote.gschema.xml:51
 msgid "Minimum number of notes to show in menu"
 msgstr "Мінімальна кількість нотаток у меню."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:20
+#: data/org.gnome.gnote.gschema.xml:52
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
@@ -344,11 +188,11 @@ msgstr ""
 "Ціле число, що визначає мінімальну кількість нотаток, які повинні "
 "показуватись у меню нотаток Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:21
+#: data/org.gnome.gnote.gschema.xml:56
 msgid "List of pinned notes"
 msgstr "Список прикріплених нотаток"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:22
+#: data/org.gnome.gnote.gschema.xml:57
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -356,56 +200,56 @@ msgstr ""
 "Розділений пробілам список ідентифікаторів (URI) нотаток, які повинні бути "
 "завжди видимі у меню нотаток Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:23
+#: data/org.gnome.gnote.gschema.xml:61
 msgid "Is main window maximized"
 msgstr "Чи максимізовано головне вікно"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:24
+#: data/org.gnome.gnote.gschema.xml:62
 msgid "If true, Gnote window will be maximized."
 msgstr "Якщо має значення «true», вікно Gnote буде максимізовано."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:25
+#: data/org.gnome.gnote.gschema.xml:66
 msgid "Saved height of Search window"
 msgstr "Збережено висоту вікна «Пошук»"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:26
+#: data/org.gnome.gnote.gschema.xml:67
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
 "Визначити висоту пікселя вікна «Пошук»; зберігається при виході з Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:27
+#: data/org.gnome.gnote.gschema.xml:71
 msgid "Saved width of Search window"
 msgstr "Збережено ширину вікна «Пошук»"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:28
+#: data/org.gnome.gnote.gschema.xml:72
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 "Визначити ширину пікселя вікна «Пошук»; зберігається при виході з Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:29
+#: data/org.gnome.gnote.gschema.xml:76
 msgid "Saved splitter position of Search window splitter."
 msgstr "Збережено позицію розділювача вікна «Пошук»"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:30
+#: data/org.gnome.gnote.gschema.xml:77
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
 "Визначити положення роздільника вікна «Пошук» у пікселях; зберігається при "
 "виході з Gnote."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:31
+#: data/org.gnome.gnote.gschema.xml:81
 msgid "Saved sorting of the Search window."
 msgstr "Збережене упорядкування у вікні «Пошук»."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:32
+#: data/org.gnome.gnote.gschema.xml:82
 msgid "Determines Search window initial sorting."
 msgstr "Визначає початкове упорядкування у вікні «Пошук»."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:33
+#: data/org.gnome.gnote.gschema.xml:86
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "Обмеження часу приєднання для FUSE (мс)"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:34
+#: data/org.gnome.gnote.gschema.xml:87
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -413,45 +257,45 @@ msgstr ""
 "Час (у мілісекундах), протягом якого Gnote повинен чекати на відповідь, при "
 "використанні FUSE для приєднання до віддаленої теки синхронізації."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:35
+#: data/org.gnome.gnote.gschema.xml:91
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "Віддалена тека синхронізації SSHFS"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:36
+#: data/org.gnome.gnote.gschema.xml:92
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "Шлях до теки синхронізації Gnote на SSH сервері (необов'язково)"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:37
+#: data/org.gnome.gnote.gschema.xml:96
 msgid "SSHFS Synchronization Server URL"
 msgstr "Посилання на сервер синхронізації SSHFS"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:38
+#: data/org.gnome.gnote.gschema.xml:97
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "Посилання на SSH сервер, який містить теку синхронізації Gnote"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:39
+#: data/org.gnome.gnote.gschema.xml:101
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "Користувач для доступу до віддаленої теки синхронізації SSHFS"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:40
+#: data/org.gnome.gnote.gschema.xml:102
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Користувач, який використовується при з'єднані з сервером синхронізації "
 "через SSH."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:41
+#: data/org.gnome.gnote.gschema.xml:106
 msgid "SSHFS Synchronization Server Port"
 msgstr "Порт сервера синхронізації SSHFS"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:42
+#: data/org.gnome.gnote.gschema.xml:107
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "Порт для з'єднання з сервером синхронізації через SSH."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:43
+#: data/org.gnome.gnote.gschema.xml:111
 msgid "Link Updating Behavior on Note Rename"
 msgstr "Як оновлювати посилання на перейменовану нотатку"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:44
+#: data/org.gnome.gnote.gschema.xml:112
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -468,28 +312,28 @@ msgstr ""
 "треба замінити на нову назву нотатки, щоб воно залишилось вказувати на "
 "перейменоване завдання."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:45
+#: data/org.gnome.gnote.gschema.xml:116
 msgid "Enable closing notes with escape"
 msgstr "Увімкнути закриття нотаток клавішею Esc"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:46
+#: data/org.gnome.gnote.gschema.xml:117
 msgid "If enabled, an opened note can be closed by hitting the escape key."
 msgstr ""
 "Якщо увімкнено, відкриту позначку можна закрити натисканням клавіші Esc."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:47
+#: data/org.gnome.gnote.gschema.xml:121
 msgid "Use status icon, when started as an application"
 msgstr "Використовувати піктограму стану, коли запущено як програму"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:48
+#: data/org.gnome.gnote.gschema.xml:122
 msgid "Deprecated, has no effect."
 msgstr "Застарілий, не працює."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:49
+#: data/org.gnome.gnote.gschema.xml:126
 msgid "Open notes in new window"
 msgstr "Відкрити нотатки у новому вікні"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:50
+#: data/org.gnome.gnote.gschema.xml:127
 msgid ""
 "Open notes in new window instead of replacing active content of the same "
 "window"
@@ -497,13 +341,13 @@ msgstr ""
 "Відкривати нотатки у новому вікні, а не замінювати поточний вміст у "
 "поточному вікні"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:51
+#: data/org.gnome.gnote.gschema.xml:131
 msgid "Save note window size and autosize note window to it"
 msgstr ""
 "Зберегти розмір вікна нотатки і автоматично змінювати розмір вінка нотатки "
 "до вказаного"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:52
+#: data/org.gnome.gnote.gschema.xml:132
 msgid ""
 "Saves note window size and automatically resizes main window to this size, "
 "when note is opened."
@@ -511,11 +355,11 @@ msgstr ""
 "Зберігає розмір вікна нотаток і автоматично змінює розмір головного вікна до "
 "вказаного, коли ви відкриваєте нотатку."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:53
+#: data/org.gnome.gnote.gschema.xml:136
 msgid "Use client side window decorations"
 msgstr "Обрамлення вікон на боці клієнта"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:54
+#: data/org.gnome.gnote.gschema.xml:137
 msgid ""
 "Should Gnote draw its window titlebar, or leave that to window manager. "
 "Possible values are 'enabled' to draw them, 'disabled' to leave them to "
@@ -529,22 +373,22 @@ msgstr ""
 "Gnote має малювати обрамлення самостійно. Зміни потребують перезапуску "
 "програми."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:55
+#: data/org.gnome.gnote.gschema.xml:148
 msgid "HTML Export Last Directory"
 msgstr "Останній каталог експортування в HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:56
+#: data/org.gnome.gnote.gschema.xml:149
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Останній каталог куди експортували нотатку використовуючи додаток "
 "експортування у HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:57
+#: data/org.gnome.gnote.gschema.xml:153
 msgid "HTML Export Linked Notes"
 msgstr "Пов'язані нотатки при експортування в HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:58
+#: data/org.gnome.gnote.gschema.xml:154
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -552,11 +396,11 @@ msgstr ""
 "Останнє значення у полі «Експортувати пов'язані вузли» у додатку "
 "експортування у HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:59
+#: data/org.gnome.gnote.gschema.xml:158
 msgid "HTML Export All Linked Notes"
 msgstr "Вмикати усі пов'язані нотатки при експортуванні в HTML"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:60
+#: data/org.gnome.gnote.gschema.xml:159
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -569,11 +413,11 @@ msgstr ""
 "потрібно враховувативсі нотатки (рекурсивно знайдені) при експортуванні в "
 "HTML."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:61
+#: data/org.gnome.gnote.gschema.xml:165
 msgid "Synchronization Client ID"
 msgstr "Ідентифікатор клієнта синхронізації"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:62
+#: data/org.gnome.gnote.gschema.xml:166
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -581,11 +425,11 @@ msgstr ""
 "Унікальний ідентифікатор цього клієнта Gnote, що використовується для "
 "зв'язку з сервером синхронізації."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:63
+#: data/org.gnome.gnote.gschema.xml:170
 msgid "Synchronization Local Server Path"
 msgstr "Розміщення локального сервера для синхронізації"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:64
+#: data/org.gnome.gnote.gschema.xml:171
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -593,22 +437,22 @@ msgstr ""
 "Шлях на сервері синхронізації для використання розширення служби "
 "синхронізації."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:65
+#: data/org.gnome.gnote.gschema.xml:175
 msgid "Selected Synchronization Service Addin"
 msgstr "Вибране розширення служби синхронізації"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:66
+#: data/org.gnome.gnote.gschema.xml:176
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr ""
 "Унікальний ідентифікатор для поточного налаштованого додатку синхронізації."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:67
+#: data/org.gnome.gnote.gschema.xml:180
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Збережена поведінка при конфлікті синхронізації нотаток"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:68
+#: data/org.gnome.gnote.gschema.xml:181
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -622,11 +466,11 @@ msgstr ""
 "підтвердження, таким чином користувач може обробляти кожну конфліктну "
 "ситуацію окремо."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:69
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Затримка автоматичного фонового синхронізування"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:70
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -637,19 +481,19 @@ msgstr ""
 "налаштовано). Будь-яке значення менше за 1 вимикає автоматичне "
 "синхронізування. Мінімальне значення — 5. Вказується у хвилинах."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:71
+#: data/org.gnome.gnote.gschema.xml:193
 msgid "Online directory URI"
 msgstr "Адреса каталогу у мережі"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:72
+#: data/org.gnome.gnote.gschema.xml:194
 msgid "URI to online directory where notes are synchronized to."
 msgstr "Адреса каталогу у мережі, з яким синхронізуються нотатки."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:73
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Accept SSL Certificates"
 msgstr "Приймати сертифікати SSL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:74
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -657,163 +501,321 @@ msgstr ""
 "Використовувати для wdfs параметр «-ac», щоб приймати сертифікати SSL не "
 "повідомляючи користувача."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:75
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Share URL"
 msgstr "Оприлюднити URL"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:76
+#: data/org.gnome.gnote.gschema.xml:206
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "Спільне URL у WebDAV, де нотатки синхронізуються."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:77
+#: data/org.gnome.gnote.gschema.xml:210
 msgid "Share username"
 msgstr "Оприлюднити користувача"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:78
+#: data/org.gnome.gnote.gschema.xml:211
 msgid "Username to access WebDAV share."
 msgstr "Користувач для доступу до WebDAV."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:79
+#: data/org.gnome.gnote.gschema.xml:217
 msgid "Timestamp format"
 msgstr "Формат позначки часу"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:80
+#: data/org.gnome.gnote.gschema.xml:218
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "Формат дати, який використовується для позначки часу у форматі strftime(3)."
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:81
+#: data/org.gnome.gnote.gschema.xml:224
 msgid "Time between checks"
 msgstr "Час між перевірками"
 
-#: ../data/org.gnome.gnote.gschema.xml.in.h:82
+#: data/org.gnome.gnote.gschema.xml:225
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
 "Інтервал часу між перевірками каталогу нотаток (у секундах). Мінімальним є "
 "значення 5."
 
-#: ../src/actionmanager.cpp:128 ../src/notewindow.cpp:313
+#: data/shortcuts-gnote.ui:9
+msgctxt "shortcut window"
+msgid "Main Window"
+msgstr "Головне вікно"
+
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:115
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Загальні"
+
+#: data/shortcuts-gnote.ui:18
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Показати довідку"
+
+#: data/shortcuts-gnote.ui:25 data/shortcuts-gnote.ui:120
+#: data/shortcuts-gnote.ui:127
+msgctxt "shortcut window"
+msgid "Open actions menu"
+msgstr "Відкрити меню дій"
+
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
+msgctxt "shortcut window"
+msgid "Hide search bar"
+msgstr "Приховати смужку пошуку"
+
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:148
+msgctxt "shortcut window"
+msgid "Close window"
+msgstr "Закрити вікно"
+
+#: data/shortcuts-gnote.ui:47
+msgctxt "shortcut window"
+msgid "Search bar"
+msgstr "Панель пошуку"
+
+#: data/shortcuts-gnote.ui:52 data/shortcuts-gnote.ui:134
+msgctxt "shortcut window"
+msgid "Display search bar"
+msgstr "Показати панель пошуку"
+
+#: data/shortcuts-gnote.ui:59
+msgctxt "shortcut window"
+msgid "Select next match"
+msgstr "Вибрати наступний відповідник"
+
+#: data/shortcuts-gnote.ui:66
+msgctxt "shortcut window"
+msgid "Select previous match"
+msgstr "Вибрати попередній відповідник"
+
+#: data/shortcuts-gnote.ui:74
+msgctxt "shortcut window"
+msgid "Notes list"
+msgstr "Список нотаток"
+
+#: data/shortcuts-gnote.ui:79
+msgctxt "shortcut window"
+msgid "Create new note"
+msgstr "Створити нотатку"
+
+#: data/shortcuts-gnote.ui:86
+msgctxt "shortcut window"
+msgid "Open selected note"
+msgstr "Відкрити вибрану нотатку"
+
+#: data/shortcuts-gnote.ui:93
+msgctxt "shortcut window"
+msgid "Open selected note in new window"
+msgstr "Відкрити вибрану нотатку у новому вікні"
+
+#: data/shortcuts-gnote.ui:100
+msgctxt "shortcut window"
+msgid "Delete selected note"
+msgstr "Вилучити вибрану нотатку"
+
+#: data/shortcuts-gnote.ui:111
+msgctxt "shortcut window"
+msgid "Note Window"
+msgstr "Вікно нотаток"
+
+#: data/shortcuts-gnote.ui:156
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Редагування"
+
+#: data/shortcuts-gnote.ui:161
+msgctxt "shortcut window"
+msgid "Undo last edit"
+msgstr "Скасувати останнє редагування"
+
+#: data/shortcuts-gnote.ui:168
+msgctxt "shortcut window"
+msgid "Redo last edit"
+msgstr "Повторити останнє скасоване редагування"
+
+#: data/shortcuts-gnote.ui:175
+msgctxt "shortcut window"
+msgid "Create link to note on selected text"
+msgstr "Створити посилання на нотатку на вибраному тексті"
+
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Formatting"
+msgstr "Форматування"
+
+#: data/shortcuts-gnote.ui:188
+msgctxt "shortcut window"
+msgid "Toggle bold"
+msgstr "Увімкнути або вимкнути напівжирний"
+
+#: data/shortcuts-gnote.ui:195
+msgctxt "shortcut window"
+msgid "Toggle italic"
+msgstr "Увімкнути або вимкнути курсив"
+
+#: data/shortcuts-gnote.ui:202
+msgctxt "shortcut window"
+msgid "Toggle strikethrough"
+msgstr "Увімкнути або вимкнути перекреслення"
+
+#: data/shortcuts-gnote.ui:209
+msgctxt "shortcut window"
+msgid "Toggle highlight"
+msgstr "Увімкнути або вимкнути підсвічування"
+
+#: data/shortcuts-gnote.ui:216
+msgctxt "shortcut window"
+msgid "Toggle fixed width"
+msgstr "Увімкнути або вимкнути моноширинний шрифт"
+
+#: data/shortcuts-gnote.ui:223
+msgctxt "shortcut window"
+msgid "Toggle underline"
+msgstr "Увімкнути або вимкнути підкреслення"
+
+#: data/shortcuts-gnote.ui:230
+msgctxt "shortcut window"
+msgid "Increase font size"
+msgstr "Збільшити розмір шрифту"
+
+#: data/shortcuts-gnote.ui:237
+msgctxt "shortcut window"
+msgid "Decrease font size"
+msgstr ""
+"Зменшити розмір шрифту\n"
+"зменшення розміру шрифту"
+
+#: data/shortcuts-gnote.ui:244
+msgctxt "shortcut window"
+msgid "Enable bullets/increase indent for line with selection"
+msgstr "Увімкнути позначки списку і збільшити відступ для рядка із позначеним"
+
+#: data/shortcuts-gnote.ui:251
+msgctxt "shortcut window"
+msgid "Decrease indent/disable bullets for current line"
+msgstr "Зменшити відступ і вимкнути позначки списку для поточного рядка"
+
+#: src/actionmanager.cpp:128 src/notewindow.cpp:313
 msgid "_New Note"
 msgstr "С_творити нотатку"
 
-#: ../src/actionmanager.cpp:129 ../src/notewindow.cpp:315
+#: src/actionmanager.cpp:129 src/notewindow.cpp:315
 msgid "New _Window"
 msgstr "С_творити вікно"
 
-#: ../src/actionmanager.cpp:130
+#: src/actionmanager.cpp:130
 msgid "_Preferences"
 msgstr "П_араметри"
 
-#: ../src/actionmanager.cpp:131
+#: src/actionmanager.cpp:131
 msgid "_Shortcuts"
 msgstr "С_корочення"
 
-#: ../src/actionmanager.cpp:132
+#: src/actionmanager.cpp:132
 msgid "_Help"
 msgstr "_Довідка"
 
-#: ../src/actionmanager.cpp:133
+#: src/actionmanager.cpp:133
 msgid "_About Gnote"
 msgstr "_Про Gnote"
 
-#: ../src/addininfo.cpp:71
+#: src/addininfo.cpp:71
 msgid "Failed to load plugin information!"
 msgstr "Не вдалося завантажити дані щодо додатка!"
 
-#: ../src/addininfo.cpp:145
+#: src/addininfo.cpp:145
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Несумісний додаток %s: мало бути %s, маємо %s"
 
-#: ../src/addinmanager.cpp:149
+#: src/addinmanager.cpp:149
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Дані щодо %s додатка нотаток вже отримано"
 
-#: ../src/addinmanager.cpp:157
+#: src/addinmanager.cpp:157
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s не реалізує %s"
 
-#: ../src/addinmanager.cpp:172
+#: src/addinmanager.cpp:172
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Додаток нотаток %s вже працює"
 
-#: ../src/addinmanager.cpp:190
+#: src/addinmanager.cpp:190
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Немає відомостей %s додатка нотаток"
 
-#: ../src/addinmanager.cpp:203
+#: src/addinmanager.cpp:203
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Немає додатка нотаток %s"
 
-#: ../src/addinmanager.cpp:239
+#: src/addinmanager.cpp:239
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Не вдалося знайти модуль %s для додатка %s"
 
-#: ../src/addinmanager.cpp:243
+#: src/addinmanager.cpp:243
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Не вдалося завантажити відомості щодо додатка для %s: %s"
 
-#: ../src/addinmanager.cpp:369
+#: src/addinmanager.cpp:369
 msgid "Trying to load addins when they are already loaded"
 msgstr "Спроба завантажити додатки, коли їх вже завантажено"
 
-#: ../src/addins/backlinks/backlinks.desktop.in.in.h:1
+#: src/plugins/backlinks/backlinks.desktop.in.in:4
 msgid "Backlinks"
 msgstr "Зворотні посилання"
 
-#: ../src/addins/backlinks/backlinks.desktop.in.in.h:2
+#: src/plugins/backlinks/backlinks.desktop.in.in:5
 msgid "See which notes link to the one you're currently viewing."
 msgstr "Список нотаток, що посилаються на поточну"
 
-#: ../src/addins/backlinks/backlinks.desktop.in.in.h:3
-#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:3
+#: src/plugins/backlinks/backlinks.desktop.in.in:6
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:6
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere і проєкт Tomboy"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:76
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:76
 msgid "What links here?"
 msgstr "Сюди є посилання з"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:97
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:97
 msgid "(none)"
 msgstr "(немає)"
 
-#: ../src/addins/backlinks/backlinksnoteaddin.cpp:102
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:158
-#: ../src/notebooks/notebooknoteaddin.cpp:167
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:102
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:158
+#: src/notebooks/notebooknoteaddin.cpp:167
 msgid "_Back"
 msgstr "_Назад"
 
-#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:1
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:4
 msgid "Bugzilla Links"
 msgstr "Посилання на Bugzilla"
 
-#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:2
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:5
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
 msgstr "Дозволяє вставляти посилання на Bugzilla з веб-переглядача"
 
-#: ../src/addins/bugzilla/bugzilla.desktop.in.in.h:3
-#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:3
-#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:3
-#: ../src/addins/printnotes/printnotes.desktop.in.in.h:3
-#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:3
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:6
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
+#: src/plugins/printnotes/printnotes.desktop.in.in:6
+#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:6
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere і проєкт Tomboy"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:65
+#: src/plugins/bugzilla/bugzillapreferences.cpp:65
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -822,343 +824,343 @@ msgstr ""
 "нотатки. Якщо для кожного вузла bugzilla потрібні свої піктограми, додайте "
 "їх сюди."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:82
+#: src/plugins/bugzilla/bugzillapreferences.cpp:82
 msgid "Host Name"
 msgstr "Назва вузла"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:95
+#: src/plugins/bugzilla/bugzillapreferences.cpp:95
 msgid "Icon"
 msgstr "Піктограма"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:226
+#: src/plugins/bugzilla/bugzillapreferences.cpp:226
 msgid "Select an icon..."
 msgstr "Вибрати піктограму…"
 
 #. Extra Widget
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:241
+#: src/plugins/bugzilla/bugzillapreferences.cpp:241
 msgid "_Host name:"
 msgstr "_Назва вузла:"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:275
+#: src/plugins/bugzilla/bugzillapreferences.cpp:275
 msgid "Host name invalid"
 msgstr "Некоректна назва вузла"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:276
+#: src/plugins/bugzilla/bugzillapreferences.cpp:276
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Треба вказати назву чинного вузла Bugzilla для використання з цією "
 "піктограмою."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:295
+#: src/plugins/bugzilla/bugzillapreferences.cpp:295
 msgid "Error saving icon"
 msgstr "Помилка при збереженні піктограми"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:296
+#: src/plugins/bugzilla/bugzillapreferences.cpp:296
 msgid "Could not save the icon file."
 msgstr "Не вдалося зберегти файл піктограми."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:368
+#: src/plugins/bugzilla/bugzillapreferences.cpp:368
 msgid "Really remove this icon?"
 msgstr "Вилучити цю піктограму?"
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:369
+#: src/plugins/bugzilla/bugzillapreferences.cpp:369
 msgid "If you remove an icon it is permanently lost."
 msgstr "Якщо ви вилучите піктограму, її буде втрачено остаточно."
 
-#: ../src/addins/bugzilla/bugzillapreferences.cpp:391
+#: src/plugins/bugzilla/bugzillapreferences.cpp:391
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Помилка під час проби вилучення піктограми %s: %s"
 
-#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:1
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:78
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:4
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:78
 msgid "Export to Getting Things GNOME"
 msgstr "Експортувати до «Getting Things GNOME»"
 
-#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:2
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:5
 msgid "Exports individual notes as Getting Things GNOME tasks"
 msgstr "Експортує окремі нотатки як завдання «Getting Things GNOME»"
 
-#: ../src/addins/exporttogtg/exporttogtg.desktop.in.in.h:3
-#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:3
-#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:3
-#: ../src/addins/statistics/statistics.desktop.in.in.h:3
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:6
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:6
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:6
+#: src/plugins/statistics/statistics.desktop.in.in:6
 msgid "Aurimas Černius"
 msgstr "Aurimas Černius"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:91
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:91
 msgid "GTG XML loaded, but interface not found"
 msgstr "Завантажено XML GTG, але інтерфейс не знайдено"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:97
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:97
 #, c-format
 msgid "Failed to create GTG interface from XML: %s"
 msgstr "Не вдалося створити інтерфейс GTG з XML: %s"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:105
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:105
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Не вдалося створити проксі D-Bus для GTG"
 
-#: ../src/addins/exporttogtg/exporttogtgnoteaddin.cpp:121
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:121
 #, c-format
 msgid "Failed to call GTG: %s"
 msgstr "Не вдалося викликати GTG: %s"
 
-#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:1
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:4
 msgid "Export to HTML"
 msgstr "Експортувати в HTML"
 
-#: ../src/addins/exporttohtml/exporttohtml.desktop.in.in.h:2
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:5
 msgid "Exports individual notes to HTML."
 msgstr "Експортувати пов'язані нотатки у HTML."
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:41
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:41
 msgid "Destination for HTML Export"
 msgstr "Призначено для експортування в HTML"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:44
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:44
 msgid "Export linked notes"
 msgstr "Експортувати пов'язані нотатки"
 
-#: ../src/addins/exporttohtml/exporttohtmldialog.cpp:45
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 msgid "Include all other linked notes"
 msgstr "Урахувати всі інші пов'язані нотатки"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:82
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:83
 msgid "Export to HTML…"
 msgstr "Експортувати до HTML…"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:121
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:122
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Не вдалося відкрити експортовану нотатку у браузері: %s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:126
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:127
 msgid "Your note was exported to \"%1\"."
 msgstr "Вашу нотатку експортовано в «%1»."
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:135
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:136
 msgid "Note exported successfully"
 msgstr "Нотатку успішно експортовано"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:149
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:157
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:158
 #, c-format
 msgid "Could not export: %s"
 msgstr "Не вдалося експортувати: %s"
 
-#: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:160
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:161
 msgid "Could not save the file \"%1\""
 msgstr "Не вдалося зберегти файл «%1»"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
 msgid "_Folder Path:"
 msgstr "_Шлях до теки:"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:111
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:111
 msgid "Select Synchronization Folder..."
 msgstr "Вибрати теку для синхронізування…"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
 msgid "Folder path field is empty."
 msgstr "Поле шляху до теки — порожнє."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
-#: ../src/synchronization/gvfssyncservice.cpp:75
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
+#: src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "За вказаною адресою теки немає, та Gnote не може її створити."
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:207
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:207
 msgid "Local Folder"
 msgstr "Локальна тека"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:1
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:4
 msgid "Local Directory Sync Service Plugin"
 msgstr "Додаток служби синхронізації локальних каталогів"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:2
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:5
 msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "Синхронізувати нотатки у шлях локальної файлової системи"
 
-#: ../src/addins/filesystemsyncservice/filesystemsyncservice.desktop.in.in.h:3
-#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:3
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:6
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:6
 msgid "Aurimas Černius and the Tomboy Project"
 msgstr "Aurimas Černius та проєкт Tomboy"
 
-#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:1
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:4
 msgid "Fixed Width"
 msgstr "Фіксована ширина"
 
-#: ../src/addins/fixedwidth/fixedwidth.desktop.in.in.h:2
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:5
 msgid "Adds fixed-width font style."
 msgstr "Додавати моноширинний стиль тексту"
 
-#: ../src/addins/fixedwidth/fixedwidthnoteaddin.cpp:57
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:57
 msgid "Fixed Wid_th"
 msgstr "_Фіксована ширина"
 
-#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:1
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
 msgid "Online Directory Sync Service Plugin"
 msgstr "Додаток служби синхронізації мережевих каталогів"
 
-#: ../src/addins/gvfssyncservice/gvfssyncservice.desktop.in.in.h:2
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Синхронізувати нотатки Gnote із мережевим каталогом"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
 msgid "Failed to mount the folder"
 msgstr "Не вдалося змонтувати теку"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "_Адреса теки:"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Приклад: google-drive://ім'я.прізвище@gmail.com/notes"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr ""
 "Будь ласка, зареєструйте ваш обліковий запис у «Облікових записах в "
 "інтернеті»"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "Порожня адреса"
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "Поле адреси є порожнім."
 
-#: ../src/addins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Мережева тека"
 
-#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:1
-#: ../src/addins/inserttimestamp/inserttimestampnoteaddin.cpp:76
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
+#: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
 msgid "Insert Timestamp"
 msgstr "Вставити позначку часу"
 
-#: ../src/addins/inserttimestamp/inserttimestamp.desktop.in.in.h:2
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:5
 msgid "Inserts current date and time at the cursor position."
 msgstr "Вставляє поточну дату та час під курсором"
 
 #. Label
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:76
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:76
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Виберіть один з готових форматів чи вкажіть власний."
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:84
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:84
 msgid "Use _Selected Format"
 msgstr "Використовувати _вибраний формат"
 
-#: ../src/addins/inserttimestamp/inserttimestamppreferences.cpp:114
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:114
 msgid "_Use Custom Format"
 msgstr "Використовувати _інший формат"
 
 #. TRANSLATORS: first %s is file name, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:228
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:228
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
 "NoteDirectoryWatcher: оновлення перервано, помилка під час читання %s: %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:255
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:255
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr ""
 "NoteDirectoryWatcher: помилка під час спроби прочитати заголовок нотатки з %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
 #, c-format
 msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 msgstr ""
 "NoteDirectoryWatcher: невідома помилка під час спроби створити нотатку з %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:269
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:269
 #, c-format
 msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
 msgstr "NoteDirectoryWatcher: помилка під час створення нотатки з %s: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:282
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:282
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
 "NoteDirectoryWatcher: оновлення перервано, помилка під час обробки %s: %s"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:1
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:4
 msgid "Note Directory Watcher"
 msgstr "Нагляд за каталогами нотаток"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:2
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:5
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr "Наглядати за змінами у вашому каталозі нотаток Gnote."
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcher.desktop.in.in.h:3
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:6
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius й автори Tomboy"
 
-#: ../src/addins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:46
+#: src/plugins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:46
 msgid "_Directory check interval:"
 msgstr "Ін_тервал перевірки каталогу:"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:33
+#: src/plugins/noteoftheday/noteoftheday.cpp:33
 msgid "Today: Template"
 msgstr "Сьогодні: Шаблон"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:35
+#: src/plugins/noteoftheday/noteoftheday.cpp:35
 msgid "Today: "
 msgstr "Сьогодні: "
 
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
-#: ../src/addins/noteoftheday/noteoftheday.cpp:49
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteoftheday.cpp:49
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "NoteOfTheDay не вдалося створити %s: %s"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:150
+#: src/plugins/noteoftheday/noteoftheday.cpp:150
 msgid "Tasks"
 msgstr "Завдання"
 
-#: ../src/addins/noteoftheday/noteoftheday.cpp:151
+#: src/plugins/noteoftheday/noteoftheday.cpp:151
 msgid "Appointments"
 msgstr "Зустрічі"
 
 #. Format: "Today: Friday, July 01 2005"
-#: ../src/addins/noteoftheday/noteoftheday.cpp:157
+#: src/plugins/noteoftheday/noteoftheday.cpp:157
 msgid "%A, %B %d %Y"
 msgstr "%A, %d %B %Y"
 
-#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:1
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:4
 msgid "Note of the Day"
 msgstr "нотатка дня"
 
-#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:2
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:5
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
 "Автоматично створює нотатку «Сьогодні» для швидкого огляду сьогоденних "
 "завдань "
 
-#: ../src/addins/noteoftheday/noteoftheday.desktop.in.in.h:3
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:6
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray і проєкт Tomboy"
 
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:34
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:34
 msgid "_Open Today: Template"
 msgstr "_Відкрити Сьогодні: Шаблон"
 
-#: ../src/addins/noteoftheday/noteofthedaypreferences.cpp:35
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:35
 msgid ""
 "Change the <span weight=\"bold\">Today: Template</span> note to customize "
 "the text that new Today notes have."
@@ -1166,85 +1168,85 @@ msgstr ""
 "Змініть нотатку <span weight=\"bold\">Сьогодні: Шаблон</span>, що "
 "використовується як шаблон нотатки дня."
 
-#: ../src/addins/printnotes/printnotes.desktop.in.in.h:1
+#: src/plugins/printnotes/printnotes.desktop.in.in:4
 msgid "Printing Support"
 msgstr "Підтримка друкування"
 
-#: ../src/addins/printnotes/printnotes.desktop.in.in.h:2
+#: src/plugins/printnotes/printnotes.desktop.in.in:5
 msgid "Allows you to print a note."
 msgstr "Дозволяє друкувати нотатки"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:62
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:62
 msgid "Print…"
 msgstr "Надрукувати…"
 
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:110
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:110
 msgid "Error printing note"
 msgstr "Помилка друкування нотатки"
 
 #. %1 is the page number, %2 is the total number of pages
-#: ../src/addins/printnotes/printnotesnoteaddin.cpp:273
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:273
 msgid "Page %1 of %2"
 msgstr "Сторінка %1 з %2"
 
-#: ../src/addins/readonly/readonly.desktop.in.in.h:1
-#: ../src/addins/readonly/readonlynoteaddin.cpp:69
+#: src/plugins/readonly/readonly.desktop.in.in:4
+#: src/plugins/readonly/readonlynoteaddin.cpp:69
 msgid "Read Only"
 msgstr "Лише для читання"
 
-#: ../src/addins/readonly/readonly.desktop.in.in.h:2
+#: src/plugins/readonly/readonly.desktop.in.in:5
 msgid "Mark certain notes as read only"
 msgstr "Позначити певні нотатки як придатні лише до читання"
 
-#: ../src/addins/readonly/readonly.desktop.in.in.h:3
+#: src/plugins/readonly/readonly.desktop.in.in:6
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray і Arief Bayu Purwanto"
 
-#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:1
-#: ../src/addins/replacetitle/replacetitlenoteaddin.cpp:53
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:4
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:53
 msgid "Replace title"
 msgstr "Замінити назву"
 
-#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:2
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:5
 msgid "Replace title with selection."
 msgstr "Замінити назву на вибрану."
 
-#: ../src/addins/replacetitle/replacetitle.desktop.in.in.h:3
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:6
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
-#: ../src/addins/specialnotes/specialnotesapplicationaddin.cpp:39
-#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:1
+#: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:4
 msgid "Special Notes"
 msgstr "Особливі нотатки"
 
-#: ../src/addins/specialnotes/specialnotes.desktop.in.in.h:2
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:5
 msgid "Show special notes, that are otherwise hidden"
 msgstr "Показати особливі нотатки, які інакше буде приховано"
 
-#: ../src/addins/statistics/statisticsapplicationaddin.cpp:72
+#: src/plugins/statistics/statisticsapplicationaddin.cpp:72
 msgid "Show Statistics"
 msgstr "Показати статистику"
 
-#: ../src/addins/statistics/statistics.desktop.in.in.h:1
-#: ../src/addins/statistics/statisticswidget.cpp:173
+#: src/plugins/statistics/statistics.desktop.in.in:4
+#: src/plugins/statistics/statisticswidget.cpp:173
 msgid "Statistics"
 msgstr "Статистика"
 
-#: ../src/addins/statistics/statistics.desktop.in.in.h:2
+#: src/plugins/statistics/statistics.desktop.in.in:5
 msgid "Show various statistics about notes."
 msgstr "Показати різноманітні статистичні дані щодо нотаток."
 
-#: ../src/addins/statistics/statisticswidget.cpp:91
+#: src/plugins/statistics/statisticswidget.cpp:91
 msgid "Total Notes:"
 msgstr "Загалом нотаток:"
 
-#: ../src/addins/statistics/statisticswidget.cpp:97
+#: src/plugins/statistics/statisticswidget.cpp:97
 msgid "Total Notebooks:"
 msgstr "Загалом записників:"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: ../src/addins/statistics/statisticswidget.cpp:128
+#: src/plugins/statistics/statisticswidget.cpp:128
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 нотатка"
@@ -1252,51 +1254,51 @@ msgstr[1] "%1 нотатки"
 msgstr[2] "%1 нотаток"
 msgstr[3] "%1 нотатка"
 
-#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:1
+#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:4
 msgid "Sticky Notes Importer"
 msgstr "Імпортування з аплету «Липкі нотатки»"
 
-#: ../src/addins/stickynoteimport/stickynoteimport.desktop.in.in.h:2
+#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:5
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Імпортувати дані з аплету «Липкі нотатки»"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:85
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:85
 msgid "Import from Sticky Notes"
 msgstr "Імпортувати з аплету «Липкі нотатки»"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
 msgid "No Sticky Notes found"
 msgstr "Не знайдено нотаток"
 
 #. %1 is a the file name
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:210
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:210
 msgid "No suitable Sticky Notes file was found at \"%1\"."
 msgstr "Не знайдено відповідний файл аплету «Липкі нотатки» у «%1»."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
 msgid "Sticky Notes import completed"
 msgstr "Імпортування з аплету «Липкі нотатки» завершено"
 
 #. here %1 is the number of notes imported, %2 the total number of notes.
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:220
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:220
 msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
 msgstr "<b>%1</b> з <b>%2</b> липких нотаток успішно імпортовано."
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:239
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:239
 msgid "Untitled"
 msgstr "Без назви"
 
-#: ../src/addins/stickynoteimport/stickynoteimportnoteaddin.cpp:277
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:277
 msgid "Sticky Note: "
 msgstr "Липка нотатка: "
 
-#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:1
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:69
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:131
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:69
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:131
 msgid "Table of Contents"
 msgstr "Зміст"
 
-#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:2
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:5
 msgid ""
 "Navigate long structured notes. Set section and subsection headings in your "
 "note, and the Table of Contents will show in a menu."
@@ -1305,101 +1307,100 @@ msgstr ""
 "розділів і підрозділів у вашій нотатці, і програма покаже таблицю змісту у "
 "меню."
 
-#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:3
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
 msgid "Luc Pionchon"
 msgstr "Luc Pionchon"
 
-#: ../src/addins/tableofcontents/tableofcontents.desktop.in.in.h:4
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
 msgid "© 2013 Luc Pionchon"
 msgstr "© Luc Pionchon, 2013"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:146
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:208
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:146
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:208
 msgid "Heading 1"
 msgstr "Заголовок 1"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:150
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:214
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:150
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:214
 msgid "Heading 2"
 msgstr "Заголовок 2"
 
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:154
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:220
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:154
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:220
 msgid "Table of Contents Help"
 msgstr "Довідка щодо «Змісту»"
 
 #. no toc items, and no action entries = empty menu
-#: ../src/addins/tableofcontents/tableofcontentsnoteaddin.cpp:193
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:193
 msgid "(empty table of contents)"
 msgstr "(порожній список змісту)"
 
-#. namespace
-#: ../src/addins/todo/todo.desktop.in.in.h:1
+#: src/plugins/todo/todo.desktop.in.in:4
 msgid "TODO"
 msgstr "ЗАВДАННЯ"
 
-#: ../src/addins/todo/todo.desktop.in.in.h:2
+#: src/plugins/todo/todo.desktop.in.in:5
 msgid "Highlight FIXME, TODO and XXX patterns in notes."
 msgstr "Підсвічувати шаблони FIXME, ЗАВДАННЯ і XXX у нотатках."
 
-#: ../src/addins/todo/todo.desktop.in.in.h:3
+#: src/plugins/todo/todo.desktop.in.in:6
 msgid "Aurimas Černius, Romain Tartière"
 msgstr "Aurimas Černius, Romain Tartière"
 
-#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:1
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:4
 msgid "Tomboy Importer"
 msgstr "Імпортування нотаток Tomboy"
 
-#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:2
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:5
 msgid "Import your notes from Tomboy."
 msgstr "Імпортувати нотатки з Tomboy."
 
-#: ../src/addins/tomboyimport/tomboyimport.desktop.in.in.h:3
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:6
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: ../src/addins/underline/underline.desktop.in.in.h:1
+#: src/plugins/underline/underline.desktop.in.in:4
 msgid "Underline"
 msgstr "Підкреслення"
 
-#: ../src/addins/underline/underline.desktop.in.in.h:2
+#: src/plugins/underline/underline.desktop.in.in:5
 msgid "Adds ability to underline text."
 msgstr "Додає функцію підкреслення тексту"
 
-#: ../src/addins/underline/underline.desktop.in.in.h:3
+#: src/plugins/underline/underline.desktop.in.in:6
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière та проєкт Tomboy"
 
-#: ../src/addins/underline/underlinenoteaddin.cpp:56
+#: src/plugins/underline/underlinenoteaddin.cpp:56
 msgid "_Underline"
 msgstr "_Підкреслення"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
 msgid "_URL:"
 msgstr "_URL:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
 msgid "User_name:"
 msgstr "_Користувач:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid "_Password:"
 msgstr "_Пароль:"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "Призначення синхронізації, %1, не існує!"
 
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
 msgid "URL, username, or password field is empty."
 msgstr "Не вказано URL, користувача або пароль."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1411,41 +1412,41 @@ msgstr ""
 "\n"
 "%1"
 
-#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:1
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
 msgid "WebDAV Sync Service Plugin"
 msgstr "Додаток служби синхронізації WebDAV"
 
-#: ../src/addins/webdavsyncservice/webdavsyncservice.desktop.in.in.h:2
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Синхронізувати нотатки Gnote з адресою WebDAV."
 
-#: ../src/dbus/remotecontrol.cpp:83
+#: src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Виключення під час створення нотатки: %s"
 
-#: ../src/gnote.cpp:205
+#: src/gnote.cpp:211
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Немає доступного з'єднання D-Bus. Пошук оболонки і віддалене керування не "
 "працюватимуть."
 
-#: ../src/gnote.cpp:238
+#: src/gnote.cpp:244
 msgid "Failed to get shortcuts window!"
 msgstr "Не вдалося отримати вікно клавіатурних скорочень!"
 
-#: ../src/gnote.cpp:252
+#: src/gnote.cpp:258
 msgid "and Tomboy original authors."
 msgstr "й автори Tomboy."
 
-#: ../src/gnote.cpp:258
+#: src/gnote.cpp:264
 msgid "translator-credits"
 msgstr ""
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: ../src/gnote.cpp:267
+#: src/gnote.cpp:273
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1457,129 +1458,129 @@ msgstr ""
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
 
-#: ../src/gnote.cpp:271
+#: src/gnote.cpp:277
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Проста програма створення нотаток."
 
-#: ../src/gnote.cpp:282
+#: src/gnote.cpp:288
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: ../src/gnote.cpp:477
+#: src/gnote.cpp:483
 msgid "Run Gnote in background."
 msgstr "Запустити Gnote на тлі."
 
-#: ../src/gnote.cpp:478
+#: src/gnote.cpp:484
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Запускати Gnote як надавач даних пошук у GNOME Shell."
 
-#: ../src/gnote.cpp:479
+#: src/gnote.cpp:485
 msgid "Specify the path of the directory containing the notes."
 msgstr "Вкажіть шлях до каталогу із нотатками."
 
-#: ../src/gnote.cpp:479
+#: src/gnote.cpp:485
 msgid "path"
 msgstr "шлях"
 
-#: ../src/gnote.cpp:480
+#: src/gnote.cpp:486
 msgid "Open the search all notes window with the search text."
 msgstr "Відкрити вікно пошуку в усіх нотатках за допомогою тексту пошуку."
 
-#: ../src/gnote.cpp:480 ../src/gnote.cpp:485
+#: src/gnote.cpp:486 src/gnote.cpp:491
 msgid "text"
 msgstr "Текст"
 
-#: ../src/gnote.cpp:481
+#: src/gnote.cpp:487
 msgid "Print version information."
 msgstr "Показати інформацію про версію."
 
-#: ../src/gnote.cpp:482
+#: src/gnote.cpp:488
 msgid "Create and display a new note, with a optional title."
 msgstr "Створити та показати нову нотатку з довільним заголовком."
 
-#: ../src/gnote.cpp:482
+#: src/gnote.cpp:488
 msgid "title"
 msgstr "заголовок"
 
-#: ../src/gnote.cpp:483
+#: src/gnote.cpp:489
 msgid "Display the existing note matching title."
 msgstr "Показати наявну нотатку з відповідним заголовком."
 
-#: ../src/gnote.cpp:483
+#: src/gnote.cpp:489
 msgid "title/url"
 msgstr "Заголовок/посилання"
 
-#: ../src/gnote.cpp:484
+#: src/gnote.cpp:490
 msgid "Display the 'Start Here' note."
 msgstr "Показувати першу нотатку"
 
-#: ../src/gnote.cpp:485
+#: src/gnote.cpp:491
 msgid "Search and highlight text in the opened note."
 msgstr "Шукати та виділити текст у відкритій нотатці."
 
-#: ../src/gnote.cpp:489
+#: src/gnote.cpp:495
 msgid "A note taking application"
 msgstr "Програма для роботи з нотатками"
 
-#: ../src/gnote.cpp:489
+#: src/gnote.cpp:495
 msgid "Gnote options at launch"
 msgstr "Параметри Gnote під час запуску"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:673
+#: src/gnote.cpp:679
 msgid "Version %1"
 msgstr "Версія %1"
 
 #. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
-#: ../src/iconmanager.cpp:63
+#: src/iconmanager.cpp:63
 #, c-format
 msgid "Failed to load icon (%s, %d): %s"
 msgstr "Не вдалося завантажити піктограму (%s, %d): %s"
 
-#: ../src/noteaddin.cpp:138 ../src/noteaddin.cpp:152 ../src/noteaddin.cpp:164
+#: src/noteaddin.cpp:138 src/noteaddin.cpp:152 src/noteaddin.cpp:164
 msgid "Plugin is disposing already"
 msgstr "Додаток вже розміщується"
 
-#: ../src/noteaddin.cpp:168
+#: src/noteaddin.cpp:168
 msgid "Window is not embedded"
 msgstr "Вікно не вбудовано"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: ../src/notebase.cpp:225 ../src/note.cpp:362
+#: src/notebase.cpp:225 src/note.cpp:362
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Виключення під час спроби зберегти нотатку: %s"
 
 #. write failure, but not critical
-#: ../src/notebase.cpp:465
+#: src/notebase.cpp:465
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Не вдалося оновити формат нотатки: %s"
 
-#: ../src/notebase.cpp:583
+#: src/notebase.cpp:583
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Помилка файлової системи: %s"
 
-#: ../src/notebooks/createnotebookdialog.cpp:41
+#: src/notebooks/createnotebookdialog.cpp:41
 msgid "Create Notebook"
 msgstr "Створити записник"
 
-#: ../src/notebooks/createnotebookdialog.cpp:45
+#: src/notebooks/createnotebookdialog.cpp:45
 msgid "N_otebook name:"
 msgstr "_Назва записника:"
 
-#: ../src/notebooks/createnotebookdialog.cpp:58
+#: src/notebooks/createnotebookdialog.cpp:58
 msgid "Name already taken"
 msgstr "Ця назва вже використовується"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: ../src/notebooks/createnotebookdialog.cpp:71
+#: src/notebooks/createnotebookdialog.cpp:71
 msgid "C_reate"
 msgstr "С_творити"
 
-#: ../src/notebooks/notebookapplicationaddin.cpp:79
+#: src/notebooks/notebookapplicationaddin.cpp:79
 msgid "New Note_book..."
 msgstr "С_творити записник…"
 
@@ -1588,19 +1589,19 @@ msgstr "С_творити записник…"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: ../src/notebooks/notebook.cpp:94
+#: src/notebooks/notebook.cpp:94
 msgid "%1 Notebook Template"
 msgstr "Шаблон записника %1"
 
-#: ../src/notebooks/notebook.cpp:168 ../src/notemanagerbase.cpp:304
+#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:304
 msgid "New Note"
 msgstr "Створити нотатку"
 
-#: ../src/notebooks/notebookmanager.cpp:352
+#: src/notebooks/notebookmanager.cpp:352
 msgid "Really delete this notebook?"
 msgstr "Вилучити цей записник?"
 
-#: ../src/notebooks/notebookmanager.cpp:353
+#: src/notebooks/notebookmanager.cpp:353
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1608,58 +1609,58 @@ msgstr ""
 "Нотатки, що належать до цього записника, не буде вилучено, але вони більше "
 "не будуть пов'язані з цим записником. Цю дію неможливо скасувати."
 
-#: ../src/notebooks/notebookmenuitem.cpp:34
-#: ../src/notebooks/notebooknoteaddin.cpp:153
+#: src/notebooks/notebookmenuitem.cpp:34
+#: src/notebooks/notebooknoteaddin.cpp:153
 msgid "No notebook"
 msgstr "Немає записників"
 
 #. TRANSLATORS: %1: format placeholder for the notebook name
-#: ../src/notebooks/notebooknewnotemenuitem.cpp:41
+#: src/notebooks/notebooknewnotemenuitem.cpp:41
 msgid "New \"%1\" Note"
 msgstr "Нова нотатка «%1»"
 
-#: ../src/notebooks/notebooknoteaddin.cpp:111
+#: src/notebooks/notebooknoteaddin.cpp:111
 msgid "Notebook"
 msgstr "Записник"
 
 #. Add new notebook item
-#: ../src/notebooks/notebooknoteaddin.cpp:147
+#: src/notebooks/notebooknoteaddin.cpp:147
 msgid "_New notebook..."
 msgstr "С_творити записник…"
 
-#: ../src/notebooks/specialnotebooks.cpp:47
+#: src/notebooks/specialnotebooks.cpp:47
 msgid "All"
 msgstr "Усі"
 
-#: ../src/notebooks/specialnotebooks.cpp:76
+#: src/notebooks/specialnotebooks.cpp:76
 msgid "Unfiled"
 msgstr "Невпорядковані"
 
-#: ../src/notebooks/specialnotebooks.cpp:107
+#: src/notebooks/specialnotebooks.cpp:107
 msgctxt "notebook"
 msgid "Important"
 msgstr "Важливі"
 
-#: ../src/notebooks/specialnotebooks.cpp:134
+#: src/notebooks/specialnotebooks.cpp:134
 msgid "Active"
 msgstr "Активні"
 
-#: ../src/notebuffer.cpp:1430
+#: src/notebuffer.cpp:1430
 msgid "</list> tag mismatch"
 msgstr "Невідповідність теґу </list>"
 
-#: ../src/notebuffer.cpp:1514
+#: src/notebuffer.cpp:1514
 #, c-format
 msgid "Exception: %s"
 msgstr "Виключення: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
-#: ../src/note.cpp:56
+#: src/note.cpp:56
 msgid "Really delete \"%1\"?"
 msgstr "Справді вилучити «%1»?"
 
 #. TRANSLATORS: %1 is number of notes
-#: ../src/note.cpp:60
+#: src/note.cpp:60
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
 msgstr[0] "Вилучити %1 нотатку?"
@@ -1667,15 +1668,15 @@ msgstr[1] "Вилучити %1 нотатки?"
 msgstr[2] "Вилучити %1 нотаток?"
 msgstr[3] "Вилучити нотатку?"
 
-#: ../src/note.cpp:67
+#: src/note.cpp:67
 msgid "If you delete a note it is permanently lost."
 msgstr "Якщо ви вилучите нотатку, її буде остаточно втрачено."
 
-#: ../src/note.cpp:101
+#: src/note.cpp:101
 msgid "Error saving note data."
 msgstr "Помилка при збереженні даних нотатки."
 
-#: ../src/note.cpp:102
+#: src/note.cpp:102
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1685,26 +1686,26 @@ msgstr ""
 "та права на ~/.local/share/gnote. Подробиці щодо помилки можна знайти у ~/."
 "gnote.log."
 
-#: ../src/note.cpp:453
+#: src/note.cpp:453
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Помилка під час спроби зберегти: %s"
 
-#: ../src/note.cpp:680
+#: src/note.cpp:680
 msgid "Setting text content for closed notes not supported"
 msgstr ""
 "Підтримки встановлення текстового вмісту для закритих нотаток не передбачено"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: ../src/notemanagerbase.cpp:107 ../src/preferencesdialog.cpp:327
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:327
 msgid "New Note Template"
 msgstr "Шаблон нової нотатки"
 
-#: ../src/notemanagerbase.cpp:358
+#: src/notemanagerbase.cpp:358
 msgid "Describe your new note here."
 msgstr "Опишіть тут вашу нотатку."
 
-#: ../src/notemanager.cpp:114
+#: src/notemanager.cpp:114
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1745,7 +1746,7 @@ msgstr ""
 "автоматично підкреслюється. Клацніть на посланні, щоб відкрити нотатку.</"
 "note-content>"
 
-#: ../src/notemanager.cpp:133
+#: src/notemanager.cpp:133
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1775,58 +1776,58 @@ msgstr ""
 "автоматично виникає посилання на неї.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: ../src/notemanager.cpp:148 ../src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:185
 msgid "Start Here"
 msgstr "Перша нотатка"
 
-#: ../src/notemanager.cpp:153
+#: src/notemanager.cpp:153
 msgid "Using Links in Gnote"
 msgstr "Використання посилань у Gnote"
 
-#: ../src/notemanager.cpp:158
+#: src/notemanager.cpp:158
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Помилка під час створення початкових нотаток: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: ../src/notemanager.cpp:173
+#: src/notemanager.cpp:173
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Помилка під час обробки XML нотатки, пропускаємо «%s»: %s"
 
-#: ../src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:125
 msgid "Rename Note Links?"
 msgstr "Перейменувати посилання нотатки?"
 
-#: ../src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:130
 msgid "_Don't Rename Links"
 msgstr "_Не перейменовувати посилання"
 
-#: ../src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:131
 msgid "_Rename Links"
 msgstr "Перей_менувати посилання"
 
-#: ../src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:132
 msgid "Select All"
 msgstr "Вибрати все"
 
-#: ../src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:133
 msgid "Select None"
 msgstr "Скасувати вибір"
 
-#: ../src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:134
 msgid "Always show this _window"
 msgstr "Завжди показувати це _вікно"
 
-#: ../src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:135
 msgid "Alwa_ys rename links"
 msgstr "Зав_жди перейменовувати посилання"
 
-#: ../src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:137
 msgid "Never rename _links"
 msgstr "Ніколи не перейменовувати _посилання"
 
-#: ../src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:155
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1838,44 +1839,44 @@ msgstr ""
 "\n"
 "Якщо ви не перейменуєте посилання, вони будуть вказувати у нікуди."
 
-#: ../src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:188
 msgid "Rename Links"
 msgstr "Перейменовувати посилання"
 
-#: ../src/noterenamedialog.cpp:203 ../src/synchronization/syncdialog.cpp:331
+#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:331
 msgid "Note Title"
 msgstr "Назва нотатки"
 
-#: ../src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:240
 msgid "Ad_vanced"
 msgstr "_Додатково"
 
-#: ../src/notewindow.cpp:317
+#: src/notewindow.cpp:317
 msgid "_Undo"
 msgstr "_Скасувати"
 
-#: ../src/notewindow.cpp:319
+#: src/notewindow.cpp:319
 msgid "_Redo"
 msgstr "Пов_торити"
 
-#: ../src/notewindow.cpp:321 ../src/notewindow.cpp:386
+#: src/notewindow.cpp:321 src/notewindow.cpp:386
 msgid "_Link to New Note"
 msgstr "_Пов'язати з новою нотаткою"
 
-#: ../src/notewindow.cpp:323
+#: src/notewindow.cpp:323
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "Ва_жливе"
 
-#: ../src/notewindow.cpp:333
+#: src/notewindow.cpp:333
 msgid "_Delete…"
 msgstr "В_илучити…"
 
-#: ../src/notewindow.cpp:422
+#: src/notewindow.cpp:422
 msgid "Set properties of text"
 msgstr "Встановити властивості тексту"
 
-#: ../src/notewindow.cpp:436
+#: src/notewindow.cpp:436
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1883,106 +1884,106 @@ msgstr ""
 "Ця нотатка є тимчасовою. Це визначає типовий вміст звичайних нотаток, і не "
 "показуватиметься в меню нотаток або вікні пошуку."
 
-#: ../src/notewindow.cpp:439
+#: src/notewindow.cpp:439
 msgid "Convert to regular note"
 msgstr "Перетворити на звичайну нотатку"
 
-#: ../src/notewindow.cpp:442
+#: src/notewindow.cpp:442
 msgid "Save Si_ze"
 msgstr "Зберегти _розмір"
 
-#: ../src/notewindow.cpp:446
+#: src/notewindow.cpp:446
 msgid "Save Se_lection"
 msgstr "Зберегти ви_бір"
 
-#: ../src/notewindow.cpp:450
+#: src/notewindow.cpp:450
 msgid "Save _Title"
 msgstr "Зберегти _назву"
 
-#: ../src/notewindow.cpp:552 ../src/notewindow.cpp:1064
+#: src/notewindow.cpp:552 src/notewindow.cpp:1064
 msgid "Cannot create note"
 msgstr "Не вдалося створити нотатку"
 
-#: ../src/notewindow.cpp:834
+#: src/notewindow.cpp:834
 msgid "_Bold"
 msgstr "_Напівжирний"
 
-#: ../src/notewindow.cpp:835
+#: src/notewindow.cpp:835
 msgid "_Italic"
 msgstr "_Курсив"
 
-#: ../src/notewindow.cpp:836
+#: src/notewindow.cpp:836
 msgid "_Strikeout"
 msgstr "П_ерекреслений"
 
-#: ../src/notewindow.cpp:840
+#: src/notewindow.cpp:840
 msgid "_Highlight"
 msgstr "Під_свічений"
 
-#: ../src/notewindow.cpp:843
+#: src/notewindow.cpp:843
 msgid "_Normal"
 msgstr "_Звичайний"
 
-#: ../src/notewindow.cpp:844
+#: src/notewindow.cpp:844
 msgid "S_mall"
 msgstr "_Маленький"
 
-#: ../src/notewindow.cpp:845
+#: src/notewindow.cpp:845
 msgid "_Large"
 msgstr "_Великий"
 
-#: ../src/notewindow.cpp:846
+#: src/notewindow.cpp:846
 msgid "Hu_ge"
 msgstr "В_еличезний"
 
-#: ../src/notewindow.cpp:868
+#: src/notewindow.cpp:868
 msgid "⦁ Bullets"
 msgstr "⦁ Позначки"
 
-#: ../src/notewindow.cpp:870
+#: src/notewindow.cpp:870
 msgid "→ Increase indent"
 msgstr "→ Збільшити відступ"
 
-#: ../src/notewindow.cpp:872
+#: src/notewindow.cpp:872
 msgid "← Decrease indent"
 msgstr "← Зменшити відступ"
 
-#: ../src/preferencesdialog.cpp:105
+#: src/preferencesdialog.cpp:105
 msgid "Gnote Preferences"
 msgstr "Параметри Gnote"
 
-#: ../src/preferencesdialog.cpp:123
+#: src/preferencesdialog.cpp:123
 msgid "General"
 msgstr "Загальне"
 
-#: ../src/preferencesdialog.cpp:124
+#: src/preferencesdialog.cpp:124
 msgid "Links"
 msgstr "Посилання"
 
 #. TRANSLATORS: Addin category.
-#: ../src/preferencesdialog.cpp:127 ../src/sharp/addinstreemodel.cpp:165
+#: src/preferencesdialog.cpp:127 src/sharp/addinstreemodel.cpp:165
 msgid "Synchronization"
 msgstr "Синхронізація"
 
-#: ../src/preferencesdialog.cpp:129
+#: src/preferencesdialog.cpp:129
 msgid "Plugins"
 msgstr "Додатки"
 
-#: ../src/preferencesdialog.cpp:204
+#: src/preferencesdialog.cpp:204
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Немає додатка %s"
 
 #. Open in new window
-#: ../src/preferencesdialog.cpp:252
+#: src/preferencesdialog.cpp:252
 msgid "Always _open notes in new window"
 msgstr "Завжди від_кривати нотатки у новому вікні"
 
-#: ../src/preferencesdialog.cpp:265
+#: src/preferencesdialog.cpp:265
 msgid "_Spell check while typing"
 msgstr "_Перевіряти орфографію під час вводу"
 
-#: ../src/preferencesdialog.cpp:266
+#: src/preferencesdialog.cpp:266
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1991,37 +1992,37 @@ msgstr ""
 "показуються коректні варіанти заміни."
 
 #. Auto bulleted list
-#: ../src/preferencesdialog.cpp:276
+#: src/preferencesdialog.cpp:276
 msgid "Enable auto-_bulleted lists"
 msgstr "Увімкнути авто_матичні списки"
 
-#: ../src/preferencesdialog.cpp:277
+#: src/preferencesdialog.cpp:277
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
 "Розпочинати новий список із позначками введенням символу «-» на початку "
 "рядку."
 
-#: ../src/preferencesdialog.cpp:285
+#: src/preferencesdialog.cpp:285
 msgid "Use custom _font"
 msgstr "Використовувати інший _шрифт"
 
-#: ../src/preferencesdialog.cpp:302
+#: src/preferencesdialog.cpp:302
 msgid "When renaming a linked note: "
 msgstr "Коли перейменовується нотатка, на яку є посилання: "
 
-#: ../src/preferencesdialog.cpp:306
+#: src/preferencesdialog.cpp:306
 msgid "Ask me what to do"
 msgstr "Питати мене, що робити"
 
-#: ../src/preferencesdialog.cpp:307
+#: src/preferencesdialog.cpp:307
 msgid "Never rename links"
 msgstr "Ніколи не перейменовувати посилання"
 
-#: ../src/preferencesdialog.cpp:308
+#: src/preferencesdialog.cpp:308
 msgid "Always rename links"
 msgstr "Завжди перейменовувати посилання"
 
-#: ../src/preferencesdialog.cpp:328
+#: src/preferencesdialog.cpp:328
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2029,27 +2030,27 @@ msgstr ""
 "Щоб вказати текст, що використовується при створенні нових нотаток, "
 "скористайтеся шаблоном нової нотатки."
 
-#: ../src/preferencesdialog.cpp:333
+#: src/preferencesdialog.cpp:333
 msgid "Open New Note Template"
 msgstr "Відкрити шаблон нової нотатки"
 
 #. internal links
-#: ../src/preferencesdialog.cpp:386
+#: src/preferencesdialog.cpp:386
 msgid "_Automatically link to notes"
 msgstr "_Автоматичні посилання на нотатки"
 
-#: ../src/preferencesdialog.cpp:387
+#: src/preferencesdialog.cpp:387
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Увімкніть цей ключ, щоб створювати посилання, якщо фрагмент тексту "
 "збігається із заголовком нотатки."
 
 #. URLs
-#: ../src/preferencesdialog.cpp:393
+#: src/preferencesdialog.cpp:393
 msgid "Create links for _URLs"
 msgstr "Створ_ювати посилання для адрес"
 
-#: ../src/preferencesdialog.cpp:394
+#: src/preferencesdialog.cpp:394
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2059,11 +2060,11 @@ msgstr ""
 "відповідній програмі."
 
 #. WikiWords...
-#: ../src/preferencesdialog.cpp:401
+#: src/preferencesdialog.cpp:401
 msgid "Highlight _WikiWords"
 msgstr "Підкреслювати _ВікіСлова"
 
-#: ../src/preferencesdialog.cpp:402
+#: src/preferencesdialog.cpp:402
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2072,56 +2073,56 @@ msgstr ""
 "<b>ЯкіВиглядаютьТакимЧином</b>. Клацання на слові призведе до створення "
 "нотатки з цією назвою."
 
-#: ../src/preferencesdialog.cpp:434
+#: src/preferencesdialog.cpp:434
 msgid "Ser_vice:"
 msgstr "Слу_жба:"
 
-#: ../src/preferencesdialog.cpp:488 ../src/preferencesdialog.cpp:1110
+#: src/preferencesdialog.cpp:488 src/preferencesdialog.cpp:1110
 msgid "Not configurable"
 msgstr "Немає змінюваних параметрів"
 
-#: ../src/preferencesdialog.cpp:513
+#: src/preferencesdialog.cpp:513
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Інтервал автоматично син_хронізації у фоновому режимі (у хвилинах)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: ../src/preferencesdialog.cpp:537
+#: src/preferencesdialog.cpp:537
 msgid "_Advanced..."
 msgstr "_Додатково…"
 
-#: ../src/preferencesdialog.cpp:585
+#: src/preferencesdialog.cpp:585
 msgid "The following plugins are installed:"
 msgstr "Встановлено такі додатки:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: ../src/preferencesdialog.cpp:620
+#: src/preferencesdialog.cpp:620
 msgid "_Enable"
 msgstr "_Увімкнути"
 
-#: ../src/preferencesdialog.cpp:626
+#: src/preferencesdialog.cpp:626
 msgid "_Disable"
 msgstr "_Вимкнути"
 
-#: ../src/preferencesdialog.cpp:783
+#: src/preferencesdialog.cpp:783
 msgid "Not Implemented"
 msgstr "Не реалізовано"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: ../src/preferencesdialog.cpp:800
+#: src/preferencesdialog.cpp:800
 msgid "%1 Preferences"
 msgstr "Налаштування %1"
 
-#: ../src/preferencesdialog.cpp:934
+#: src/preferencesdialog.cpp:934
 msgid "Choose Note Font"
 msgstr "Вибрати шрифт нотатки"
 
 #. Create dialog
-#: ../src/preferencesdialog.cpp:1027
+#: src/preferencesdialog.cpp:1027
 msgid "Other Synchronization Options"
 msgstr "Інші параметри синхронізації"
 
-#: ../src/preferencesdialog.cpp:1030
+#: src/preferencesdialog.cpp:1030
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2130,23 +2131,23 @@ msgstr ""
 "сервері:"
 
 #. label.Xalign = 0;
-#: ../src/preferencesdialog.cpp:1034
+#: src/preferencesdialog.cpp:1034
 msgid "Always ask me what to do"
 msgstr "Завжди питати, що робити"
 
-#: ../src/preferencesdialog.cpp:1038
+#: src/preferencesdialog.cpp:1038
 msgid "Rename my local note"
 msgstr "Перейменовувати локальну нотатку"
 
-#: ../src/preferencesdialog.cpp:1042
+#: src/preferencesdialog.cpp:1042
 msgid "Replace my local note with the server's update"
 msgstr "Замінювати локальну нотатку нотаткою з сервера"
 
-#: ../src/preferencesdialog.cpp:1143
+#: src/preferencesdialog.cpp:1143
 msgid "Are you sure?"
 msgstr "Упевнені?"
 
-#: ../src/preferencesdialog.cpp:1144
+#: src/preferencesdialog.cpp:1144
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2155,11 +2156,11 @@ msgstr ""
 "примусового повторного синхронізування всіх нотаток за наступного "
 "налаштування."
 
-#: ../src/preferencesdialog.cpp:1154
+#: src/preferencesdialog.cpp:1154
 msgid "Resetting Synchronization Settings"
 msgstr "Скинути параметри синхронізації"
 
-#: ../src/preferencesdialog.cpp:1155
+#: src/preferencesdialog.cpp:1155
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2169,18 +2170,18 @@ msgstr ""
 "очищено. Можливо, буде потрібно примусово синхронізувати усі нотатки знову, "
 "коли зберігатимете нові параметри."
 
-#: ../src/preferencesdialog.cpp:1230
+#: src/preferencesdialog.cpp:1230
 msgid "Connection successful"
 msgstr "Успішно з'єднано"
 
-#: ../src/preferencesdialog.cpp:1231
+#: src/preferencesdialog.cpp:1231
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote готовий синхронізувати ваші нотатки. Синхронізувати їх зараз?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1256
+#: src/preferencesdialog.cpp:1256
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2188,92 +2189,92 @@ msgstr ""
 "Перевірте інформацію і спробуйте знову. Файл журналу %1 може містити "
 "докладнішу інформацію про цю помилку."
 
-#: ../src/preferencesdialog.cpp:1261
+#: src/preferencesdialog.cpp:1261
 msgid "Error connecting"
 msgstr "Помилка з'єднання"
 
-#: ../src/preferencesdialog.cpp:1324
+#: src/preferencesdialog.cpp:1324
 msgid "Version:"
 msgstr "Версія:"
 
-#: ../src/preferencesdialog.cpp:1327
+#: src/preferencesdialog.cpp:1327
 msgid "Author:"
 msgstr "Автор:"
 
-#: ../src/preferencesdialog.cpp:1331
+#: src/preferencesdialog.cpp:1331
 msgid "Copyright:"
 msgstr "Авторські права:"
 
-#: ../src/recentchanges.cpp:158
+#: src/recentchanges.cpp:158
 msgid "All Notes"
 msgstr "Усі нотатки"
 
-#: ../src/recentchanges.cpp:169
+#: src/recentchanges.cpp:169
 msgid "Create New Note"
 msgstr "Створити нотатку"
 
-#: ../src/recentchanges.cpp:190
+#: src/recentchanges.cpp:190
 msgid "Search"
 msgstr "Пошук"
 
-#: ../src/recentchanges.cpp:270
+#: src/recentchanges.cpp:270
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Батьківським елементом вбудованої панелі не є Gtk::Grid. Будь ласка, "
 "повідомте розробникам про цю ваду!"
 
-#: ../src/recentchanges.cpp:312
+#: src/recentchanges.cpp:312
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Батьківським елементом запису для пошуку не є Gtk::Grid. Будь ласка, "
 "повідомте розробникам про цю ваду!"
 
-#: ../src/recentchanges.cpp:873
+#: src/recentchanges.cpp:873
 msgid "Expected widget to be a sub-menu!"
 msgstr "Віджет мав бути допоміжним меню!"
 
-#: ../src/recentchanges.cpp:878
+#: src/recentchanges.cpp:878
 msgid "No configured actions"
 msgstr "Немає налаштованих дій"
 
-#: ../src/remotecontrolproxy.cpp:45 ../src/remotecontrolproxy.cpp:48
+#: src/remotecontrolproxy.cpp:46 src/remotecontrolproxy.cpp:49
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Не вдалося завантажити інтерфейс D-Bus %s: %s"
 
-#: ../src/searchnoteswidget.cpp:138
+#: src/searchnoteswidget.cpp:138
 msgid "_Open"
 msgstr "_Відкрити"
 
-#: ../src/searchnoteswidget.cpp:141
+#: src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: ../src/searchnoteswidget.cpp:145 ../src/searchnoteswidget.cpp:148
+#: src/searchnoteswidget.cpp:145 src/searchnoteswidget.cpp:148
 msgid "_Delete"
 msgstr "В_илучити"
 
-#: ../src/searchnoteswidget.cpp:151
+#: src/searchnoteswidget.cpp:151
 msgid "Re_name..."
 msgstr "Пере_йменувати…"
 
-#: ../src/searchnoteswidget.cpp:227
+#: src/searchnoteswidget.cpp:227
 msgid "Notebooks"
 msgstr "Записники"
 
-#: ../src/searchnoteswidget.cpp:688
+#: src/searchnoteswidget.cpp:688
 msgid "Note"
 msgstr "Нотатка"
 
-#: ../src/searchnoteswidget.cpp:710
+#: src/searchnoteswidget.cpp:710
 msgid "Modified"
 msgstr "Змінено"
 
-#: ../src/searchnoteswidget.cpp:1009
+#: src/searchnoteswidget.cpp:1009
 msgid "Notes"
 msgstr "Нотатки"
 
-#: ../src/searchnoteswidget.cpp:1028
+#: src/searchnoteswidget.cpp:1028
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2281,20 +2282,20 @@ msgstr ""
 "Не знайдено результатів у вибраному записнику.\n"
 "Натисніть тут, щоб шукати по всіх нотатках. "
 
-#: ../src/searchnoteswidget.cpp:1032
+#: src/searchnoteswidget.cpp:1032
 msgid "Click here to search across all notebooks"
 msgstr "Натисніть тут, щоб шукати по всіх записниках"
 
-#: ../src/searchnoteswidget.cpp:1053
+#: src/searchnoteswidget.cpp:1053
 msgid "Matches"
 msgstr "Збіги"
 
 #. TRANSLATORS: search found a match in note title
-#: ../src/searchnoteswidget.cpp:1104
+#: src/searchnoteswidget.cpp:1104
 msgid "Title match"
 msgstr "Збіг назв"
 
-#: ../src/searchnoteswidget.cpp:1108
+#: src/searchnoteswidget.cpp:1108
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 відповідність"
@@ -2302,99 +2303,99 @@ msgstr[1] "%1 відповідності"
 msgstr[2] "%1 відповідностей"
 msgstr[3] "%1 відповідність"
 
-#: ../src/searchnoteswidget.cpp:1316
+#: src/searchnoteswidget.cpp:1316
 msgid "_New"
 msgstr "_Створити"
 
-#: ../src/searchnoteswidget.cpp:1345
+#: src/searchnoteswidget.cpp:1345
 msgid "_Open Template Note"
 msgstr "_Відкрити Шаблон нотатки"
 
-#: ../src/searchnoteswidget.cpp:1356
+#: src/searchnoteswidget.cpp:1356
 msgid "_New..."
 msgstr "С_творити…"
 
-#: ../src/searchnoteswidget.cpp:1506 ../src/searchnoteswidget.cpp:1519
-#: ../src/searchnoteswidget.cpp:1530
+#: src/searchnoteswidget.cpp:1506 src/searchnoteswidget.cpp:1519
+#: src/searchnoteswidget.cpp:1530
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Не вдалося обробити параметр search-sorting (Значення: %s):"
 
-#: ../src/searchnoteswidget.cpp:1507
+#: src/searchnoteswidget.cpp:1507
 msgid "Expected format 'column:order'"
 msgstr "Очікуваний формат — «стовпчик:порядок»"
 
-#: ../src/searchnoteswidget.cpp:1520
+#: src/searchnoteswidget.cpp:1520
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Нерозпізнаний стовпчик %s"
 
-#: ../src/searchnoteswidget.cpp:1531
+#: src/searchnoteswidget.cpp:1531
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Нерозпізнаний порядок %s"
 
-#: ../src/sharp/addinstreemodel.cpp:110
+#: src/sharp/addinstreemodel.cpp:110
 msgid "Name"
 msgstr "Назва"
 
-#: ../src/sharp/addinstreemodel.cpp:122
+#: src/sharp/addinstreemodel.cpp:122
 msgid "Version"
 msgstr "Версія"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:156
+#: src/sharp/addinstreemodel.cpp:156
 msgid "Formatting"
 msgstr "Форматування"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:159
+#: src/sharp/addinstreemodel.cpp:159
 msgid "Desktop integration"
 msgstr "Інтеграція зі стільницею"
 
 #. TRANSLATORS: Addin category.
-#: ../src/sharp/addinstreemodel.cpp:162
+#: src/sharp/addinstreemodel.cpp:162
 msgid "Tools"
 msgstr "Засоби"
 
 #. TRANSLATORS: Addin category is unknown.
-#: ../src/sharp/addinstreemodel.cpp:169
+#: src/sharp/addinstreemodel.cpp:169
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: ../src/sharp/modulemanager.cpp:62
+#: src/sharp/modulemanager.cpp:62
 #, c-format
 msgid "Error loading %s"
 msgstr "Помилка завантаження «%s»"
 
-#: ../src/sharp/modulemanager.cpp:69
+#: src/sharp/modulemanager.cpp:69
 #, c-format
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Помилка під час спроби отримати символ dynamic_module_instanciate: %s"
 
-#: ../src/sharp/xmlreader.cpp:219
+#: src/sharp/xmlreader.cpp:219
 #, c-format
 msgid "XML error: %s"
 msgstr "Помилка XML: %s"
 
-#: ../src/sharp/xmlreader.cpp:219
+#: src/sharp/xmlreader.cpp:219
 msgid "unknown parse error"
 msgstr "невідома помилка обробки"
 
-#: ../src/sharp/xmlwriter.cpp:40
+#: src/sharp/xmlwriter.cpp:40
 msgid "%1 failed"
 msgstr "Помилка %1"
 
-#: ../src/sharp/xsltransform.cpp:67
+#: src/sharp/xsltransform.cpp:67
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Порожня таблиця стилів. Будь ласка, повідомте про цю ваду."
 
-#: ../src/synchronization/filesystemsyncserver.cpp:126
+#: src/synchronization/filesystemsyncserver.cpp:126
 #, c-format
 msgid "Failed to upload note: %s"
 msgstr "Не вдалося вивантажити нотатку: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:146
+#: src/synchronization/filesystemsyncserver.cpp:146
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Не вдалося вивантажити %1 нотатку"
@@ -2402,16 +2403,16 @@ msgstr[1] "Не вдалося вивантажити %1 нотатки"
 msgstr[2] "Не вдалося вивантажити %1 нотаток"
 msgstr[3] "Не вдалося вивантажити нотатку"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:241
+#: src/synchronization/filesystemsyncserver.cpp:241
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Виключення під час завершення копіювання нотатки: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:244
+#: src/synchronization/filesystemsyncserver.cpp:244
 msgid "Exception when finishing note copy"
 msgstr "Виключення під час завершення копіювання нотатки"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:269
+#: src/synchronization/filesystemsyncserver.cpp:269
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Не вдалося отримати оновлення %1 нотатки"
@@ -2419,8 +2420,8 @@ msgstr[1] "Не вдалося отримати оновлення %1 нотат
 msgstr[2] "Не вдалося отримати оновлення %1 нотаток"
 msgstr[3] "Не вдалося отримати оновлення нотатки"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:432
-#: ../src/synchronization/filesystemsyncserver.cpp:436
+#: src/synchronization/filesystemsyncserver.cpp:432
+#: src/synchronization/filesystemsyncserver.cpp:436
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2430,76 +2431,76 @@ msgstr ""
 "даних на сервері все гаразд, але можуть лишитися якісь зайві файли. Ось "
 "повідомлення про помилку: %s\n"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:641
+#: src/synchronization/filesystemsyncserver.cpp:641
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Помилка під час оновлення блокування: %s"
 
-#: ../src/synchronization/filesystemsyncserver.cpp:680
+#: src/synchronization/filesystemsyncserver.cpp:680
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr ""
 "Помилка під час спроби вилучити старе блокування синхронізації «%s»: %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:157
+#: src/synchronization/gnotesyncclient.cpp:157
 #, c-format
 msgid "Unparsable last-sync-date element in %s"
 msgstr "Непридатний до обробки елемент last-sync-date у %s"
 
 #. TRANSLATORS: %s is file
-#: ../src/synchronization/gnotesyncclient.cpp:167
+#: src/synchronization/gnotesyncclient.cpp:167
 #, c-format
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "Непридатний до обробки елемент last-sync-rev у %s"
 
-#: ../src/synchronization/gvfssyncservice.cpp:97
+#: src/synchronization/gvfssyncservice.cpp:97
 msgid "Failure writing test file"
 msgstr "Не вдалося записати тестовий файл"
 
-#: ../src/synchronization/gvfssyncservice.cpp:102
+#: src/synchronization/gvfssyncservice.cpp:102
 msgid "Failure when checking test file contents"
 msgstr "Не вдалося перевірити вміст тестового файла"
 
-#: ../src/synchronization/gvfssyncservice.cpp:108
+#: src/synchronization/gvfssyncservice.cpp:108
 msgid "Failure when trying to remove test file"
 msgstr "Помилка під час спроби вилучити тестовий файл"
 
-#: ../src/synchronization/gvfssyncservice.cpp:124
+#: src/synchronization/gvfssyncservice.cpp:124
 msgid "Unknown error"
 msgstr "Невідома помилка"
 
-#: ../src/synchronization/syncdialog.cpp:64
+#: src/synchronization/syncdialog.cpp:64
 msgid "Note Conflict"
 msgstr "Конфлікт нотаток"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: ../src/synchronization/syncdialog.cpp:69
+#: src/synchronization/syncdialog.cpp:69
 msgid " (old)"
 msgstr " (стара)"
 
-#: ../src/synchronization/syncdialog.cpp:114
+#: src/synchronization/syncdialog.cpp:114
 msgid "Rename local note:"
 msgstr "Перейменуйте локальну нотатку:"
 
-#: ../src/synchronization/syncdialog.cpp:121
+#: src/synchronization/syncdialog.cpp:121
 msgid "Update links in referencing notes"
 msgstr "Оновити посилання у зв'язаних нотатках"
 
-#: ../src/synchronization/syncdialog.cpp:127
+#: src/synchronization/syncdialog.cpp:127
 msgid "Overwrite local note"
 msgstr "Перезаписати локальну нотатку"
 
-#: ../src/synchronization/syncdialog.cpp:131
+#: src/synchronization/syncdialog.cpp:131
 msgid "Always perform this action"
 msgstr "Завжди показувати це _вікно"
 
 #. Set initial dialog text
-#: ../src/synchronization/syncdialog.cpp:137
+#: src/synchronization/syncdialog.cpp:137
 msgid "Note conflict detected"
 msgstr "Виявлено конфлікт нотаток"
 
-#: ../src/synchronization/syncdialog.cpp:139
+#: src/synchronization/syncdialog.cpp:139
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2508,55 +2509,55 @@ msgstr ""
 "локальною нотаткою?"
 
 #. Expander containing TreeView
-#: ../src/synchronization/syncdialog.cpp:296
+#: src/synchronization/syncdialog.cpp:296
 msgid "Details"
 msgstr "Подробиці"
 
-#: ../src/synchronization/syncdialog.cpp:338
+#: src/synchronization/syncdialog.cpp:338
 msgid "Status"
 msgstr "Стан"
 
-#: ../src/synchronization/syncdialog.cpp:482
+#: src/synchronization/syncdialog.cpp:482
 msgid "Acquiring sync lock..."
 msgstr "Одержання блокування доступу…"
 
-#: ../src/synchronization/syncdialog.cpp:485
+#: src/synchronization/syncdialog.cpp:485
 msgid "Committing changes..."
 msgstr "Внесення змін…"
 
-#: ../src/synchronization/syncdialog.cpp:488
+#: src/synchronization/syncdialog.cpp:488
 msgid "Synchronizing Notes"
 msgstr "Синхронізування нотаток"
 
-#: ../src/synchronization/syncdialog.cpp:489
+#: src/synchronization/syncdialog.cpp:489
 msgid "Synchronizing your notes..."
 msgstr "Синхронізування ваших нотаток…"
 
-#: ../src/synchronization/syncdialog.cpp:490
+#: src/synchronization/syncdialog.cpp:490
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Це може зайняти деякий час, розслабтесь і насолоджуйтесь!"
 
-#: ../src/synchronization/syncdialog.cpp:492
+#: src/synchronization/syncdialog.cpp:492
 msgid "Connecting to the server..."
 msgstr "З'єднання з сервером…"
 
-#: ../src/synchronization/syncdialog.cpp:498
+#: src/synchronization/syncdialog.cpp:498
 msgid "Deleting notes off of the server..."
 msgstr "Вилучення нотаток з сервера…"
 
-#: ../src/synchronization/syncdialog.cpp:502
+#: src/synchronization/syncdialog.cpp:502
 msgid "Downloading new/updated notes..."
 msgstr "Звантаження нових/оновлених нотаток…"
 
-#: ../src/synchronization/syncdialog.cpp:514
+#: src/synchronization/syncdialog.cpp:514
 msgid "Server Locked"
 msgstr "Сервер заблоковано"
 
-#: ../src/synchronization/syncdialog.cpp:515
+#: src/synchronization/syncdialog.cpp:515
 msgid "Server is locked"
 msgstr "Сервер заблокований"
 
-#: ../src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:516
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2564,41 +2565,41 @@ msgstr ""
 "Один з інших ваших комп'ютерів вже синхронізується.  Зачекайте дві хвилини "
 "та спробуйте знову."
 
-#: ../src/synchronization/syncdialog.cpp:520
+#: src/synchronization/syncdialog.cpp:520
 msgid "Preparing to download updates from server..."
 msgstr "Підготовлення до звантаження оновлень із сервера…"
 
-#: ../src/synchronization/syncdialog.cpp:523
+#: src/synchronization/syncdialog.cpp:523
 msgid "Preparing to upload updates to server..."
 msgstr "Підготовлення до вивантаження оновлень до сервера…"
 
-#: ../src/synchronization/syncdialog.cpp:526
+#: src/synchronization/syncdialog.cpp:526
 msgid "Uploading notes to server..."
 msgstr "Вивантаження нотаток до сервера…"
 
-#: ../src/synchronization/syncdialog.cpp:529
+#: src/synchronization/syncdialog.cpp:529
 msgid "Synchronization Failed"
 msgstr "Не вдалося синхронізувати"
 
-#: ../src/synchronization/syncdialog.cpp:530
+#: src/synchronization/syncdialog.cpp:530
 msgid "Failed to synchronize"
 msgstr "Не вдалося синхронізувати"
 
-#: ../src/synchronization/syncdialog.cpp:531
+#: src/synchronization/syncdialog.cpp:531
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Неможливо синхронізувати нотатки.  Перевірте інформацію нижче й спробуйте "
 "знову."
 
-#: ../src/synchronization/syncdialog.cpp:537
+#: src/synchronization/syncdialog.cpp:537
 msgid "Synchronization Complete"
 msgstr "Синхронізування завершено"
 
-#: ../src/synchronization/syncdialog.cpp:538
+#: src/synchronization/syncdialog.cpp:538
 msgid "Synchronization is complete"
 msgstr "Синхронізування завершено"
 
-#: ../src/synchronization/syncdialog.cpp:539
+#: src/synchronization/syncdialog.cpp:539
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "Оновлено %1 нотатку."
@@ -2606,103 +2607,103 @@ msgstr[1] "Оновлено %1 нотатки."
 msgstr[2] "Оновлено %1 нотаток."
 msgstr[3] "Оновлено одну нотатку."
 
-#: ../src/synchronization/syncdialog.cpp:540
+#: src/synchronization/syncdialog.cpp:540
 msgid "Your notes are now up to date."
 msgstr "Ваші нотатки оновлено."
 
-#: ../src/synchronization/syncdialog.cpp:545
+#: src/synchronization/syncdialog.cpp:545
 msgid "Synchronization Canceled"
 msgstr "Синхронізування скасовано"
 
-#: ../src/synchronization/syncdialog.cpp:546
+#: src/synchronization/syncdialog.cpp:546
 msgid "Synchronization was canceled"
 msgstr "Синхронізування скасовано"
 
-#: ../src/synchronization/syncdialog.cpp:547
+#: src/synchronization/syncdialog.cpp:547
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Ви скасували синхронізування.  Тепер можна закрити вікно."
 
-#: ../src/synchronization/syncdialog.cpp:551
+#: src/synchronization/syncdialog.cpp:551
 msgid "Synchronization Not Configured"
 msgstr "Синхронізування не налаштовано"
 
-#: ../src/synchronization/syncdialog.cpp:552
+#: src/synchronization/syncdialog.cpp:552
 msgid "Synchronization is not configured"
 msgstr "Синхронізування не налаштовано"
 
-#: ../src/synchronization/syncdialog.cpp:553
+#: src/synchronization/syncdialog.cpp:553
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Налаштуйте синхронізування у вікні параметрів."
 
-#: ../src/synchronization/syncdialog.cpp:557
+#: src/synchronization/syncdialog.cpp:557
 msgid "Synchronization Service Error"
 msgstr "Помилка служби синхронізування"
 
-#: ../src/synchronization/syncdialog.cpp:558
+#: src/synchronization/syncdialog.cpp:558
 msgid "Service error"
 msgstr "Помилка служби"
 
-#: ../src/synchronization/syncdialog.cpp:559
+#: src/synchronization/syncdialog.cpp:559
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Помилки з'єднання зі службою синхронізування.  Спробуйте знову."
 
-#: ../src/synchronization/syncdialog.cpp:573
+#: src/synchronization/syncdialog.cpp:573
 msgid "Deleted locally"
 msgstr "Вилучено локально"
 
-#: ../src/synchronization/syncdialog.cpp:576
+#: src/synchronization/syncdialog.cpp:576
 msgid "Deleted from server"
 msgstr "Вилучено з сервера"
 
-#: ../src/synchronization/syncdialog.cpp:579
+#: src/synchronization/syncdialog.cpp:579
 msgid "Updated"
 msgstr "Оновлено"
 
-#: ../src/synchronization/syncdialog.cpp:582
+#: src/synchronization/syncdialog.cpp:582
 msgid "Added"
 msgstr "Додано"
 
-#: ../src/synchronization/syncdialog.cpp:585
+#: src/synchronization/syncdialog.cpp:585
 msgid "Uploaded changes to server"
 msgstr "Вивантажені зміни на сервер"
 
-#: ../src/synchronization/syncdialog.cpp:588
+#: src/synchronization/syncdialog.cpp:588
 msgid "Uploaded new note to server"
 msgstr "Вивантажено нову нотатку на сервер"
 
-#: ../src/synchronization/syncmanager.cpp:59
+#: src/synchronization/syncmanager.cpp:59
 msgid "Synchronize Notes"
 msgstr "Синхронізувати нотатки"
 
-#: ../src/synchronization/syncmanager.cpp:78
-#: ../src/synchronization/syncmanager.cpp:95
-#: ../src/synchronization/syncmanager.cpp:565
+#: src/synchronization/syncmanager.cpp:78
+#: src/synchronization/syncmanager.cpp:95
+#: src/synchronization/syncmanager.cpp:565
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Повідомте про ваду. Помилка під час виклику: %s"
 
-#: ../src/synchronization/syncmanager.cpp:142
+#: src/synchronization/syncmanager.cpp:142
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Помилка під час очищення теки даних додатка після синхронізації: %s"
 
-#: ../src/synchronization/syncmanager.cpp:167
+#: src/synchronization/syncmanager.cpp:167
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Виключення під час створення SyncServer: %s"
 
-#: ../src/synchronization/syncmanager.cpp:367
+#: src/synchronization/syncmanager.cpp:367
 #, c-format
 msgid "Synchronization failed with the following Glib exception: %s"
 msgstr "Помилка синхронізації із таким виключенням Glib: %s"
 
 #. top-level try
-#: ../src/synchronization/syncmanager.cpp:371
+#: src/synchronization/syncmanager.cpp:371
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Помилка синхронізації із таким виключенням: %s"
 
-#: ../src/utils.cpp:138
+#: src/utils.cpp:138
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2710,67 +2711,67 @@ msgstr ""
 "«Посібник до нотаток Gnote» не знайдено. Перевірте, що встановлення було "
 "виконано успішно."
 
-#: ../src/utils.cpp:146
+#: src/utils.cpp:146
 msgid "Help not found"
 msgstr "Довідку не знайдено"
 
-#: ../src/utils.cpp:178
+#: src/utils.cpp:178
 msgid "Cannot open location"
 msgstr "Не вдалося відкрити адресу"
 
-#: ../src/utils.cpp:195
+#: src/utils.cpp:195
 msgid "No Date"
 msgstr "Без дати"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:210
+#: src/utils.cpp:210
 msgid "Today, %1"
 msgstr "Сьогодні, %1"
 
-#: ../src/utils.cpp:211
+#: src/utils.cpp:211
 msgid "Today"
 msgstr "Сьогодні"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:217
+#: src/utils.cpp:217
 msgid "Yesterday, %1"
 msgstr "Вчора, %1"
 
-#: ../src/utils.cpp:218
+#: src/utils.cpp:218
 msgid "Yesterday"
 msgstr "Вчора"
 
 #. TRANSLATORS: argument %1 is time.
-#: ../src/utils.cpp:224
+#: src/utils.cpp:224
 msgid "Tomorrow, %1"
 msgstr "Завтра, %1"
 
-#: ../src/utils.cpp:225
+#: src/utils.cpp:225
 msgid "Tomorrow"
 msgstr "Завтра"
 
 #. TRANSLATORS: date in current year.
-#: ../src/utils.cpp:229
+#: src/utils.cpp:229
 msgid "%b %d"
 msgstr "%d.%b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: ../src/utils.cpp:232 ../src/utils.cpp:241
+#: src/utils.cpp:232 src/utils.cpp:241
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: ../src/utils.cpp:238
+#: src/utils.cpp:238
 msgid "%b %d %Y"
 msgstr "%d.%b.%Y"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: ../src/watchers.cpp:198
+#: src/watchers.cpp:198
 msgid "(Untitled %1)"
 msgstr "(Без назви %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: ../src/watchers.cpp:230
+#: src/watchers.cpp:230
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2778,19 +2779,19 @@ msgstr ""
 "Нотатка із заголовком <b>%1</b> вже існує. Перш ніж продовжити, виберіть для "
 "неї іншу назву."
 
-#: ../src/watchers.cpp:245
+#: src/watchers.cpp:245
 msgid "Note title taken"
 msgstr "Взято заголовок нотатки"
 
-#: ../src/watchers.cpp:312
+#: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Перевірка правопису"
 
-#: ../src/watchers.cpp:705
+#: src/watchers.cpp:705
 msgid "_Copy Link Address"
 msgstr "_Копіювати адресу посилання"
 
-#: ../src/watchers.cpp:711
+#: src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Відкрити посилання"
 
