@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,6 +41,7 @@ namespace sync {
     typedef sigc::slot<void> SlotConnecting;
     typedef sigc::slot<void> SlotIdle;
 
+    virtual ~SyncUI() {}
     virtual void sync_state_changed(SyncState state) = 0;
     void note_synchronized_th(const Glib::ustring & noteTitle, NoteSyncType type);
     virtual void note_synchronized(const Glib::ustring & noteTitle, NoteSyncType type) = 0;

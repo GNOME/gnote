@@ -34,6 +34,7 @@ class EmbeddableWidget;
 class EmbeddableWidgetHost
 {
 public:
+  virtual ~EmbeddableWidgetHost() {}
   virtual void embed_widget(EmbeddableWidget &) = 0;
   virtual void unembed_widget(EmbeddableWidget &) = 0;
   virtual void foreground_embedded(EmbeddableWidget &) = 0;
@@ -49,6 +50,7 @@ class EmbeddableWidget
 {
 public:
   EmbeddableWidget() : m_host(NULL) {}
+  virtual ~EmbeddableWidget() {}
   virtual Glib::ustring get_name() const = 0;
   virtual void embed(EmbeddableWidgetHost *h);
   virtual void unembed();
@@ -76,6 +78,7 @@ private:
 class SearchableItem
 {
 public:
+  virtual ~SearchableItem() {}
   virtual void perform_search(const Glib::ustring & search_text) = 0;
   virtual bool supports_goto_result();
   virtual bool goto_next_result();
@@ -86,6 +89,7 @@ public:
 class HasEmbeddableToolbar
 {
 public:
+  virtual ~HasEmbeddableToolbar() {}
   virtual Gtk::Widget *embeddable_toolbar() = 0;
 };
 
@@ -93,6 +97,7 @@ public:
 class HasActions
 {
 public:
+  virtual ~HasActions() {}
   virtual std::vector<PopoverWidget> get_popover_widgets() = 0;
   virtual std::vector<MainWindowAction::Ptr> get_widget_actions() = 0;
 
