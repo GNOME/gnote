@@ -1,0 +1,13 @@
+[Plugin]
+Id=InsertTimestampAddin
+Name=Insert Timestamp
+Description=Inserts current date and time at the cursor position.
+Authors=Hubert Figuiere and Tomboy Project
+Category=Tools
+Version=0.6
+DefaultEnabled=false
+Module=libinserttimestamp
+LibgnoteRelease=@libgnote_release@
+LibgnoteVersionInfo=@libgnote_version_info@
+[Actions]
+ActionsVoid=inserttimestamp-insert

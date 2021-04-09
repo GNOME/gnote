@@ -1,0 +1,14 @@
+[Plugin]
+Id=ReadOnlyAddin
+Name=Read Only
+Description=Mark certain notes as read only
+Authors=Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto
+Category=Tools
+Version=0.4
+DefaultEnabled=false
+Module=libreadonly
+LibgnoteRelease=@libgnote_release@
+LibgnoteVersionInfo=@libgnote_version_info@
+[Actions]
+ActionsBool=readonly-toggle
+NonModifyingActions=readonly-toggle

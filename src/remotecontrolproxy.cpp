@@ -22,6 +22,7 @@
 #include <giomm/dbusownname.h>
 
 
+#include "config.h"
 #include "debug.hpp"
 #include "dbus/remotecontrol.hpp"
 #include "dbus/searchprovider.hpp"

@@ -1,0 +1,14 @@
+[Plugin]
+Id=ExportToHtmlAddin
+Name=Export to HTML
+Description=Exports individual notes to HTML.
+Authors=Hubert Figuiere and the Tomboy Project
+Category=Tools
+Version=0.9
+DefaultEnabled=false
+Module=libexporttohtml
+LibgnoteRelease=@libgnote_release@
+LibgnoteVersionInfo=@libgnote_version_info@
+[Actions]
+ActionsVoid=exporttohtml-export
+NonModifyingActions=exporttohtml-export

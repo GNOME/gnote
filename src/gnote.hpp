@@ -166,6 +166,7 @@ public:
 protected:
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line) override;
   virtual void on_startup() override;
+  virtual void on_activate() override;
 private:
   Gnote();
   Glib::ustring get_note_path(const Glib::ustring & override_path);
