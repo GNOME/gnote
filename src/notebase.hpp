@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -196,6 +196,7 @@ public:
   static Glib::ustring parse_text_content(const Glib::ustring & content);
 
   NoteBase(const Glib::ustring & filepath, NoteManagerBase & manager);
+  virtual ~NoteBase() {}
 
   NoteManagerBase & manager()
     {
