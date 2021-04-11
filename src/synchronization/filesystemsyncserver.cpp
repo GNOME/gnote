@@ -373,7 +373,8 @@ bool FileSystemSyncServer::commit_sync_transaction()
         manifest_file->remove();
       }
       auto stream = manifest_file->create_file();
-      stream->write(xml_content);
+      gsize written;
+      stream->write_all(xml_content, written);
       stream->close();
     }
     catch(...) {
@@ -633,7 +634,8 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
 
     xml.close();
     auto stream = m_lock_path->replace();
-    stream->write(xml.to_string());
+    gsize written;
+    stream->write_all(xml.to_string(), written);
     stream->close();
   }
   catch(Glib::Error & e) {
