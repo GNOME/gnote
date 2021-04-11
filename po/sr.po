@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-02-11 13:18+0000\n"
-"PO-Revision-Date: 2021-02-23 06:31+0200\n"
+"POT-Creation-Date: 2021-03-26 21:55+0000\n"
+"PO-Revision-Date: 2021-04-11 20:57+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -20,16 +20,17 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:1 ../data/gnote.desktop.in.in.h:1
-#: ../src/recentchanges.cpp:52 ../src/recentchanges.cpp:622
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:1
+#: ../data/org.gnome.gnote.desktop.in.in.h:1 ../src/recentchanges.cpp:52
+#: ../src/recentchanges.cpp:622
 msgid "Gnote"
 msgstr "Гномов бележник"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:2
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:2
 msgid "A simple note-taking application"
 msgstr "Једноставан програм за белешке"
 
-#: ../data/appdata/gnote.appdata.xml.in.h:3
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:3
 msgid ""
 "Gnote is a simple note-taking application for GNOME desktop environment. It "
 "allows you to capture your ideas, link them together using WikiWiki-style "
@@ -40,13 +41,20 @@ msgstr ""
 "користећи везице ВикиВики-стила, да их групишете заједно у бележницама и "
 "неке посебне функције за свакодневну употребу."
 
-#: ../data/appdata/gnote.appdata.xml.in.h:4
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:4
+msgid "Notes can be printed or exported as HTML documents."
+msgstr "Белешке се могу штампати или извести као ХТМЛ документа."
+
+#: ../data/appdata/org.gnome.gnote.appdata.xml.in.h:5
+#| msgid ""
+#| "Gnote also supports synchronization to make it possible to use on "
+#| "multiple devices."
 msgid ""
-"Gnote also supports synchronization to make it possible to use on multiple "
+"Gnote also supports synchronization, making it simple to use it on multiple "
 "devices."
 msgstr ""
-"Гномов бележник такође подржава усклађивање да бисте могли да га користите "
-"на више уређаја."
+"Гномов бележник такође подржава усклађивање, чинећи једноставним његово "
+"коришћење на више уређаја."
 
 #: ../data/ui/shortcuts-gnote.ui.h:1
 msgctxt "shortcut window"
@@ -203,15 +211,15 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Смањује увлачење/искључује тачкирање за текући ред"
 
-#: ../data/gnote.desktop.in.in.h:2
+#: ../data/org.gnome.gnote.desktop.in.in.h:2
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Хватајте белешке, повезујте идеје и будите организовани"
 
-#: ../data/gnote.desktop.in.in.h:3
+#: ../data/org.gnome.gnote.desktop.in.in.h:3
 msgid "Note-taker"
 msgstr "Хватач белешки"
 
-#: ../data/gnote.desktop.in.in.h:4
+#: ../data/org.gnome.gnote.desktop.in.in.h:4
 msgid "notes;idea;link;organize;"
 msgstr "белешке;идеја;мисао;веза;повежи;среди;"
 
@@ -1384,7 +1392,6 @@ msgid "WebDAV"
 msgstr "ВебДАВ"
 
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
-#| msgid "Synchronization is complete"
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "Одредиште усклађивања „%1“ не постоји!"
 
@@ -1413,29 +1420,27 @@ msgstr "Прикључак услуге ВебДАВ усклађивања"
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Ускладите белешке Гномовог бележника са ВебДАВ адресом."
 
-#: ../src/dbus/remotecontrol-client-glue.cpp:138
-#, c-format
-msgid "Remote call to %s failed"
-msgstr "Није успео удаљени позив за „%s“"
-
 #: ../src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Дошло је до изузетка при стварању белешке: %s"
 
-#: ../src/gnote.cpp:189
-msgid "Gnote is already running.  Exiting..."
-msgstr "Гномов бележник је већ покренут.  Излазим..."
+#: ../src/gnote.cpp:205
+msgid ""
+"No D-Bus connection available, shell search and remote control will not work."
+msgstr ""
+"Нема доступне везе Д-сабирнице, претрага шкољке и удаљено управљање неће "
+"радити."
 
-#: ../src/gnote.cpp:266
+#: ../src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Нисам успео да добавим прозор са пречицама!"
 
-#: ../src/gnote.cpp:280
+#: ../src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "и изворни аутори Томичиних белешки."
 
-#: ../src/gnote.cpp:286
+#: ../src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Милош Поповић <gpopac@gmail.com>\n"
@@ -1443,7 +1448,7 @@ msgstr ""
 "\n"
 "http://prevod.org — превод на српски језик."
 
-#: ../src/gnote.cpp:295
+#: ../src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1455,80 +1460,76 @@ msgstr ""
 "Ауторска права © 2009 Ибер Фигјер (Hubert Figuiere)\n"
 "Ауторска права © 2004-2009 првобитни аутори Томичиних белешки."
 
-#: ../src/gnote.cpp:299
+#: ../src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Једноставан и згодан програмчић за хватање белешки."
 
-#: ../src/gnote.cpp:310
+#: ../src/gnote.cpp:282
 msgid "Homepage"
 msgstr "Веб страница"
 
-#: ../src/gnote.cpp:505
+#: ../src/gnote.cpp:477
 msgid "Run Gnote in background."
 msgstr "Покреће Гномовог бележника у позадини."
 
-#: ../src/gnote.cpp:506
+#: ../src/gnote.cpp:478
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Покреће Гномовог бележника као доставника претраге Гномове шкољке."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "Specify the path of the directory containing the notes."
 msgstr "Наводи путању директоријума који садржи белешке."
 
-#: ../src/gnote.cpp:507
+#: ../src/gnote.cpp:479
 msgid "path"
 msgstr "путања"
 
-#: ../src/gnote.cpp:508
+#: ../src/gnote.cpp:480
 msgid "Open the search all notes window with the search text."
 msgstr "Отвара прозор за претраживање свих белешки уз текст претраге."
 
-#: ../src/gnote.cpp:508 ../src/gnote.cpp:513
+#: ../src/gnote.cpp:480 ../src/gnote.cpp:485
 msgid "text"
 msgstr "текст"
 
-#: ../src/gnote.cpp:509
+#: ../src/gnote.cpp:481
 msgid "Print version information."
 msgstr "Исписује податке о издању."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "Create and display a new note, with a optional title."
 msgstr "Прави и приказује нову белешку, са опционалним насловом."
 
-#: ../src/gnote.cpp:510
+#: ../src/gnote.cpp:482
 msgid "title"
 msgstr "наслов"
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "Display the existing note matching title."
 msgstr "Приказује постојећу белешку која одговара наслову."
 
-#: ../src/gnote.cpp:511
+#: ../src/gnote.cpp:483
 msgid "title/url"
 msgstr "наслов/адреса"
 
-#: ../src/gnote.cpp:512
+#: ../src/gnote.cpp:484
 msgid "Display the 'Start Here' note."
 msgstr "Приказује белешку „Полазна станица“."
 
-#: ../src/gnote.cpp:513
+#: ../src/gnote.cpp:485
 msgid "Search and highlight text in the opened note."
 msgstr "Тражи и истиче текст у отвореној белешки."
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "A note taking application"
 msgstr "Програм за белешке"
 
-#: ../src/gnote.cpp:517
+#: ../src/gnote.cpp:489
 msgid "Gnote options at launch"
 msgstr "Опције Гномовог бележника при покретању"
 
-#: ../src/gnote.cpp:594
-msgid "Could not connect to remote instance."
-msgstr "Не могу да се повежем на удаљени примерак."
-
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: ../src/gnote.cpp:711
+#: ../src/gnote.cpp:673
 msgid "Version %1"
 msgstr "Издање %1"
 
@@ -2175,7 +2176,7 @@ msgstr ""
 "Програм је спреман да усклади белешке. Да ли желите сада да их ускладите?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: ../src/preferencesdialog.cpp:1255
+#: ../src/preferencesdialog.cpp:1256
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2183,19 +2184,19 @@ msgstr ""
 "Проверите ваше податке и покушајте поново.  Датотека дневника „%1“ може да "
 "садржи више података о грешци."
 
-#: ../src/preferencesdialog.cpp:1260
+#: ../src/preferencesdialog.cpp:1261
 msgid "Error connecting"
 msgstr "Грешка у повезивању"
 
-#: ../src/preferencesdialog.cpp:1323
+#: ../src/preferencesdialog.cpp:1324
 msgid "Version:"
 msgstr "Издање:"
 
-#: ../src/preferencesdialog.cpp:1326
+#: ../src/preferencesdialog.cpp:1327
 msgid "Author:"
 msgstr "Аутор:"
 
-#: ../src/preferencesdialog.cpp:1330
+#: ../src/preferencesdialog.cpp:1331
 msgid "Copyright:"
 msgstr "Ауторска права:"
 
@@ -2227,7 +2228,7 @@ msgstr "Очекивано је да виџет буде подизборник!
 msgid "No configured actions"
 msgstr "Нема подешених радњи"
 
-#: ../src/remotecontrolproxy.cpp:46 ../src/remotecontrolproxy.cpp:49
+#: ../src/remotecontrolproxy.cpp:45 ../src/remotecontrolproxy.cpp:48
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Нисам успео да учитам сучеље Д-сабирнице „%s“: %s"
@@ -2783,6 +2784,15 @@ msgstr "_Умножи адресу везе"
 #: ../src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Отвори везу"
+
+#~ msgid "Remote call to %s failed"
+#~ msgstr "Није успео удаљени позив за „%s“"
+
+#~ msgid "Gnote is already running.  Exiting..."
+#~ msgstr "Гномов бележник је већ покренут.  Излазим..."
+
+#~ msgid "Could not connect to remote instance."
+#~ msgstr "Не могу да се повежем на удаљени примерак."
 
 #~ msgid ""
 #~ "There was an error connecting to the server.  This may be caused by using "
