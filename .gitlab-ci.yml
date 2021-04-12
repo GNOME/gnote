@@ -1,0 +1,26 @@
+image: fedora:rawhide
+
+variables:
+  DEPENDENCIES: desktop-file-utils
+                gettext
+                gspell-devel
+                gtkmm30-devel
+                itstool
+                libsecret-devel
+                libuuid-devel
+                libxml2-devel
+                libxslt-devel
+                meson
+                pcre-devel
+                gcc-c++
+                yelp-tools
+
+  GIT_SUBMODULE_STRATEGY: normal
+
+build:
+  before_script:
+    - dnf update -y --nogpgcheck
+    - dnf install -y --nogpgcheck $DEPENDENCIES
+  script:
+    - meson _build
+    - ninja -C _build install
