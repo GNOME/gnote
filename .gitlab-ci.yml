@@ -23,4 +23,5 @@ build:
     - dnf install -y --nogpgcheck $DEPENDENCIES
   script:
     - meson _build
+    - meson test -C _build
     - ninja -C _build install
