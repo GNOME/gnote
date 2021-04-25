@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,6 @@ public:
   virtual std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() = 0;
   sigc::signal<void> signal_main_window_search_actions_changed;
   sigc::signal<void, std::vector<PopoverWidget>&> signal_build_main_window_search_popover;
-  sigc::signal<void> signal_main_window_popover_changed;
 };
 
 }
