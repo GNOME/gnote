@@ -1405,8 +1405,6 @@ void SearchNotesWidget::foreground()
   register_callbacks();
   m_callback_changed_cid = manager.signal_main_window_search_actions_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::callbacks_changed));
-  manager.signal_main_window_search_actions_changed
-    .connect([this]{ signal_popover_widgets_changed(); });
 }
 
 void SearchNotesWidget::background()
@@ -1553,6 +1551,7 @@ void SearchNotesWidget::callbacks_changed()
 {
   unregister_callbacks();
   register_callbacks();
+  signal_popover_widgets_changed();
 }
 
 void SearchNotesWidget::register_callbacks()
