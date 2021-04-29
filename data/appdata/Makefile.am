@@ -1,5 +1,5 @@
 
-app_data_in_files = org.gnome.gnote.appdata.xml.in
+app_data_in_files = org.gnome.Gnote.appdata.xml.in
 app_data_files = $(app_data_in_files:.xml.in=.xml)
 
 @INTLTOOL_XML_RULE@

@@ -26,7 +26,7 @@
 namespace gnote {
 
   AbstractAddin::AbstractAddin()
-    : m_gnote(NULL)
+    : m_gnote(nullptr)
     , m_disposing(false)
   {
   }
