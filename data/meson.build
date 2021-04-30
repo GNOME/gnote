@@ -37,7 +37,7 @@ configure_file(
   install_dir: get_option('datadir') / 'dbus-1/services',
 )
 
-gnote_appdata = 'org.gnome.gnote.appdata.xml'
+gnote_appdata = 'org.gnome.Gnote.appdata.xml'
 appdata_file = i18n.merge_file(
   gnote_appdata,
   input: gnote_appdata + '.in',
