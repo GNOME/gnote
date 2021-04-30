@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2019 Aurimas Cernius
+ * Copyright (C) 2010,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,12 +22,11 @@
 
 
 #include "abstractaddin.hpp"
-#include <cstddef>
 
 namespace gnote {
 
   AbstractAddin::AbstractAddin()
-    : m_gnote(NULL)
+    : m_gnote(nullptr)
     , m_disposing(false)
   {
   }
