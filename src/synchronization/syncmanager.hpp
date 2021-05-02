@@ -23,9 +23,9 @@
 
 
 #include <map>
+#include <thread>
 
 #include <glibmm/main.h>
-#include <glibmm/thread.h>
 
 #include "isyncmanager.hpp"
 
@@ -85,7 +85,7 @@ namespace sync {
     IGnote & m_gnote;
     NoteManagerBase & m_note_manager;
     SyncState m_state;
-    Glib::Thread *m_sync_thread;
+    std::thread *m_sync_thread;
     SyncTitleConflictResolution m_conflict_resolution;
     utils::InterruptableTimeout m_autosync_timer;
     int m_autosync_timeout_pref_minutes;

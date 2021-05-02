@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -120,7 +120,8 @@ namespace sync {
 
     m_sync_ui = sync_ui;
     DBG_OUT("Creating synchronization thread");
-    m_sync_thread = Glib::Thread::create(sigc::mem_fun(*this, &SyncManager::synchronization_thread), false);
+    m_sync_thread = new std::thread([this] { synchronization_thread(); });
+    m_sync_thread->detach();
   }
 
 
