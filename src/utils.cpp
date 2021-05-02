@@ -25,6 +25,7 @@
 #endif
 
 #include <algorithm>
+#include <condition_variable>
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
@@ -250,28 +251,26 @@ namespace gnote {
 
     void main_context_call(const sigc::slot<void> & slot)
     {
-      Glib::Threads::Mutex mutex;
-      Glib::Threads::Cond cond;
+      std::mutex mutex;
+      std::condition_variable cond;
       bool executed = false;
       std::exception_ptr ex;
 
-      mutex.lock();
+      std::unique_lock<std::mutex> lock(mutex);
       main_context_invoke([slot, &cond, &mutex, &executed, &ex]() {
+        std::unique_lock<std::mutex> lock(mutex);
         try {
-          mutex.lock();
           slot();
         }
         catch(...) {
           ex = std::current_exception();
         }
         executed = true;
-        cond.signal();
-        mutex.unlock();
+        cond.notify_one();
       });
       while(!executed) {
-        cond.wait(mutex);
+        cond.wait(lock);
       }
-      mutex.unlock();
       if(ex) {
         std::rethrow_exception(ex);
       }
