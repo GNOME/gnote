@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -74,7 +74,7 @@ namespace gnote {
     std::vector<Glib::ustring> splits;
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || Glib::str_has_prefix(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)) {
-      Glib::Mutex::Lock lock(m_locker);
+      std::lock_guard<std::mutex> lock(m_locker);
       auto iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
         return iter->second;
@@ -105,7 +105,7 @@ namespace gnote {
     std::vector<Glib::ustring> splits;
     sharp::string_split(splits, normalized_tag_name, ":");
     if ((splits.size() > 2) || Glib::str_has_prefix(normalized_tag_name, Tag::SYSTEM_TAG_PREFIX)){
-      Glib::Mutex::Lock lock(m_locker);
+      std::lock_guard<std::mutex> lock(m_locker);
       auto iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
         return iter->second;
@@ -120,8 +120,7 @@ namespace gnote {
     bool tag_added = false;
     Tag::Ptr tag = get_tag (normalized_tag_name);
     if (!tag) {
-
-      Glib::Mutex::Lock lock(m_locker);
+      std::lock_guard<std::mutex> lock(m_locker);
 
       tag = get_tag (normalized_tag_name);
       if (!tag) {
@@ -182,16 +181,14 @@ namespace gnote {
       throw sharp::Exception ("TagManager.RemoveTag () called with a null tag");
 
     if(tag->is_property() || tag->is_system()){
-
-      Glib::Mutex::Lock lock(m_locker);
+      std::lock_guard<std::mutex> lock(m_locker);
 
       m_internal_tags.erase(tag->normalized_name());
     }
     bool tag_removed = false;
     auto map_iter = m_tag_map.find(tag->normalized_name());
     if (map_iter != m_tag_map.end()) {
-
-      Glib::Mutex::Lock lock(m_locker);
+      std::lock_guard<std::mutex> lock(m_locker);
 
       map_iter = m_tag_map.find(tag->normalized_name());
       if (map_iter != m_tag_map.end()) {

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,6 @@
 
 #include <sigc++/signal.h>
 
-#include <glibmm/thread.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/treemodelsort.h>
 
@@ -72,7 +71,7 @@ private:
   TagMap                           m_tag_map;
   typedef std::map<Glib::ustring, Tag::Ptr> InternalMap;
   InternalMap                      m_internal_tags;
-  mutable Glib::Mutex              m_locker;
+  mutable std::mutex               m_locker;
   
   sigc::signal<void, Tag::Ptr, const Gtk::TreeIter &> m_signal_tag_added;
   sigc::signal<void, const Glib::ustring &> m_signal_tag_removed;
