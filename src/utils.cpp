@@ -34,7 +34,6 @@
 #include <gtkmm/checkmenuitem.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
-#include <gtkmm/stock.h>
 #include <gtkmm/textbuffer.h>
 
 #include "sharp/xmlreader.hpp"
@@ -342,20 +341,16 @@ namespace gnote {
 
       switch (msg_type) {
       case Gtk::MESSAGE_ERROR:
-        m_image = new Gtk::Image (Gtk::Stock::DIALOG_ERROR,
-                                  Gtk::ICON_SIZE_DIALOG);
+        m_image = new Gtk::Image("dialog-error", Gtk::ICON_SIZE_DIALOG);
         break;
       case Gtk::MESSAGE_QUESTION:
-        m_image = new Gtk::Image (Gtk::Stock::DIALOG_QUESTION,
-                                  Gtk::ICON_SIZE_DIALOG);
+        m_image = new Gtk::Image("dialog-question", Gtk::ICON_SIZE_DIALOG);
         break;
       case Gtk::MESSAGE_INFO:
-        m_image = new Gtk::Image (Gtk::Stock::DIALOG_INFO,
-                                  Gtk::ICON_SIZE_DIALOG);
+        m_image = new Gtk::Image("dialog-information", Gtk::ICON_SIZE_DIALOG);
         break;
       case Gtk::MESSAGE_WARNING:
-        m_image = new Gtk::Image (Gtk::Stock::DIALOG_WARNING,
-                                  Gtk::ICON_SIZE_DIALOG);
+        m_image = new Gtk::Image("dialog-warning", Gtk::ICON_SIZE_DIALOG);
         break;
       default:
         break;
@@ -404,21 +399,21 @@ namespace gnote {
       case Gtk::BUTTONS_NONE:
         break;
       case Gtk::BUTTONS_OK:
-        add_button (Gtk::Stock::OK, Gtk::RESPONSE_OK, true);
+        add_button(_("_OK"), Gtk::RESPONSE_OK, true);
         break;
       case Gtk::BUTTONS_CLOSE:
-        add_button (Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE, true);
+        add_button(_("_Close"), Gtk::RESPONSE_CLOSE, true);
         break;
       case Gtk::BUTTONS_CANCEL:
-        add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, true);
+        add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL, true);
         break;
       case Gtk::BUTTONS_YES_NO:
-        add_button (Gtk::Stock::NO, Gtk::RESPONSE_NO, false);
-        add_button (Gtk::Stock::YES, Gtk::RESPONSE_YES, true);
+        add_button(_("_No"), Gtk::RESPONSE_NO, false);
+        add_button(_("_Yes"), Gtk::RESPONSE_YES, true);
         break;
       case Gtk::BUTTONS_OK_CANCEL:
-        add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, false);
-        add_button (Gtk::Stock::OK, Gtk::RESPONSE_OK, true);
+        add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL, false);
+        add_button(_("_OK"), Gtk::RESPONSE_OK, true);
         break;
       }
 
@@ -436,10 +431,9 @@ namespace gnote {
     }
 
 
-    void HIGMessageDialog::add_button(const Gtk::BuiltinStockID& stock_id, 
-                                       Gtk::ResponseType resp, bool is_default)
+    void HIGMessageDialog::add_button(const Glib::ustring & label, Gtk::ResponseType resp, bool is_default)
     {
-      Gtk::Button *button = manage(new Gtk::Button (stock_id));
+      Gtk::Button *button = manage(new Gtk::Button(label, true));
       button->property_can_default().set_value(true);
       
       add_button(button, resp, is_default);

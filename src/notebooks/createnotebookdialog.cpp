@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -64,7 +64,7 @@ namespace gnote {
       
       set_extra_widget(table);
       
-      add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL, false);
+      add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL, false);
       add_button (m_gnote.icon_manager().get_icon(IconManager::NOTEBOOK_NEW, 16),
                   // Translation note: This is the Create button in the Create
                   // New Note Dialog.

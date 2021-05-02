@@ -106,8 +106,7 @@ class Preferences;
       HIGMessageDialog(Gtk::Window *, GtkDialogFlags flags, Gtk::MessageType msg_type, 
                        Gtk::ButtonsType btn_type, const Glib::ustring & header = Glib::ustring(),
                        const Glib::ustring & msg = Glib::ustring());
-      void add_button(const Gtk::BuiltinStockID& stock_id, 
-                       Gtk::ResponseType response, bool is_default);
+      void add_button(const Glib::ustring & label, Gtk::ResponseType response, bool is_default);
       void add_button(const Glib::RefPtr<Gdk::Pixbuf> & pixbuf, 
                       const Glib::ustring & label_text, 
                       Gtk::ResponseType response, bool is_default);
