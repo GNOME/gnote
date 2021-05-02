@@ -19,11 +19,11 @@
 
 
 #include <algorithm>
+#include <condition_variable>
 #include <stdexcept>
 
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
-#include <glibmm/thread.h>
 
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
@@ -99,8 +99,8 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
   mkdir_p(m_new_revision_path);
   DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
   m_updated_notes.reserve(notes.size());
-  Glib::Mutex notes_lock;
-  Glib::Cond all_uploaded;
+  std::mutex notes_lock;
+  std::condition_variable all_uploaded;
   auto cancel_op = Gio::Cancellable::create();
   unsigned failures = 0;
   unsigned total = notes.size();
@@ -113,12 +113,11 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
       try {
         if(local_note->copy_finish(result)) {
           auto path = sharp::file_basename(file_path);
-          notes_lock.lock();
+          std::unique_lock<std::mutex> lock(notes_lock);
           m_updated_notes.emplace_back(std::move(path));
           if(--total == 0) {
-            all_uploaded.signal();
+            all_uploaded.notify_one();
           }
-          notes_lock.unlock();
           return;
         }
       }
@@ -126,22 +125,20 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
         ERR_OUT(_("Failed to upload note: %s"), e.what().c_str());
       }
 
-      notes_lock.lock();
+      std::unique_lock<std::mutex> lock(notes_lock);
       ++failures;
       --total;
-      all_uploaded.signal();
-      notes_lock.unlock();
+      all_uploaded.notify_one();
     }, cancel_op);
   }
 
-  notes_lock.lock();
+  std::unique_lock<std::mutex> lock(notes_lock);
   while(total > 0) {
-    all_uploaded.wait(notes_lock);
+    all_uploaded.wait(lock);
     if(failures > 0) {
       cancel_op->cancel();
     }
   }
-  notes_lock.unlock();
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to upload %1 note", "Failed to upload %1 notes", failures), failures));
   }
@@ -181,8 +178,8 @@ bool FileSystemSyncServer::updates_available_since(int revision)
 
 std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since(int revision)
 {
-  Glib::Mutex note_updates_lock;
-  Glib::Cond note_updates_done;
+  std::mutex note_updates_lock;
+  std::condition_variable note_updates_done;
   std::map<Glib::ustring, NoteUpdate> noteUpdates;
   unsigned failures = 0;
 
@@ -228,12 +225,11 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
                   Glib::ustring noteTitle;
                   Glib::ustring noteXml = sharp::file_read_all_text(noteTempPath);
                   NoteUpdate update(noteXml, noteTitle, note_id, rev);
-                  note_updates_lock.lock();
+                  std::unique_lock<std::mutex> lock(note_updates_lock);
                   noteUpdates.insert(std::make_pair(note_id, update));
                   if(noteUpdates.size() + failures >= total) {
-                    note_updates_done.signal();
+                    note_updates_done.notify_one();
                   }
-                  note_updates_lock.unlock();
                   return; // all done, error handling below
                 }
               }
@@ -244,22 +240,20 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
                 ERR_OUT(_("Exception when finishing note copy"));
               }
 
-              note_updates_lock.lock();
+              std::unique_lock<std::mutex> lock(note_updates_lock);
               ++failures;
-              note_updates_done.signal();
-              note_updates_lock.unlock();
+              note_updates_done.notify_one();
             }, cancel_op);
         }
       }
 
-      note_updates_lock.lock();
+      std::unique_lock<std::mutex> lock(note_updates_lock);
       while(noteUpdates.size() + failures < noteNodes.size()) {
         if(failures > 0 && !cancel_op->is_cancelled()) {
           cancel_op->cancel();
         }
-        note_updates_done.wait(note_updates_lock);
+        note_updates_done.wait(lock);
       }
-      note_updates_lock.unlock();
     }
 
     xmlFreeDoc(xml_doc);
