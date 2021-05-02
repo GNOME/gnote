@@ -35,8 +35,6 @@
 #include <gtkmm/textbuffer.h>
 #include <gtkmm/textiter.h>
 #include <gtkmm/textmark.h>
-#include <gtkmm/toggletoolbutton.h>
-#include <gtkmm/toolbar.h>
 
 #include "sharp/exception.hpp"
 #include "sharp/uri.hpp"
@@ -224,27 +222,6 @@ class Preferences;
       guint m_timeout_id;
     };
 
-    class ToolMenuButton
-      : public Gtk::ToggleToolButton
-    {
-    public:
-      ToolMenuButton(Gtk::Widget & widget, Gtk::Menu *menu);
-      ToolMenuButton(Gtk::Toolbar& toolbar, 
-                     const Gtk::BuiltinStockID& stock_image, 
-                     const Glib::ustring & label, Gtk::Menu * menu);
-      ToolMenuButton(Gtk::Image& image, 
-                     const Glib::ustring & label, Gtk::Menu * menu);
-      virtual bool on_button_press_event(GdkEventButton *) override;
-      virtual void on_clicked() override;
-      virtual bool on_mnemonic_activate(bool group_cycling) override;
-
-    private:
-      void _common_init();
-      void _common_init(Gtk::Image& image, const Glib::ustring & l);
-      // managed by gtkmm
-      Gtk::Menu *m_menu;
-      void release_button();        
-    };
 
     class CheckAction
       : public Gtk::Action

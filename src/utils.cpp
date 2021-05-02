@@ -26,13 +26,10 @@
 
 #include <algorithm>
 
-#include <gtk/gtk.h>
-
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
 #include <glibmm/threads.h>
 #include <gtkmm/checkmenuitem.h>
-#include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
 #include <gtkmm/textbuffer.h>
 
@@ -743,84 +740,6 @@ namespace gnote {
       signal_timeout();
       m_timeout_id = 0;
       return false;
-    }
-
-    ToolMenuButton::ToolMenuButton(Gtk::Widget & widget, Gtk::Menu *menu)
-      : Gtk::ToggleToolButton(widget)
-      ,  m_menu(menu)
-    {
-      _common_init();
-    }
-
-    ToolMenuButton::ToolMenuButton(Gtk::Toolbar& toolbar, const Gtk::BuiltinStockID& stock_image, 
-                                   const Glib::ustring & label, 
-                                   Gtk::Menu * menu)
-      : Gtk::ToggleToolButton()
-      ,  m_menu(menu)
-    {
-      _common_init(*manage(new Gtk::Image(stock_image, toolbar.get_icon_size())),
-                   label);
-    }
-
-    ToolMenuButton::ToolMenuButton(Gtk::Image& image, 
-                                   const Glib::ustring & label, 
-                                   Gtk::Menu * menu)
-      : Gtk::ToggleToolButton()
-      ,  m_menu(menu)
-    {
-      _common_init(image, label);
-    }
-
-
-    void ToolMenuButton::_common_init()
-    {
-      property_can_focus() = true;
-      gtk_menu_attach_to_widget(m_menu->gobj(), static_cast<Gtk::Widget*>(this)->gobj(),
-                                NULL);
-      m_menu->signal_deactivate().connect(sigc::mem_fun(*this, &ToolMenuButton::release_button));
-      show_all();
-    }
-
-
-    void ToolMenuButton::_common_init(Gtk::Image& image, const Glib::ustring & label)
-    {
-      set_icon_widget(image);
-      set_label_widget(*manage(new Gtk::Label(label, true)));
-      _common_init();
-    }
-
-
-    bool ToolMenuButton::on_button_press_event(GdkEventButton *ev)
-    {
-      popup_menu(*m_menu, ev);
-      return true;
-    }
-
-    void ToolMenuButton::on_clicked()
-    {
-      m_menu->select_first(true);
-      popup_menu(*m_menu, NULL);
-    }
-
-    bool ToolMenuButton::on_mnemonic_activate(bool group_cycling)
-    {
-      // ToggleButton always grabs focus away from the editor,
-      // so reimplement Widget's version, which only grabs the
-      // focus if we are group cycling.
-      if (!group_cycling) {
-        activate();
-      } 
-      else if (get_can_focus()) {
-        grab_focus();
-      }
-
-      return true;
-    }
-
-
-    void ToolMenuButton::release_button()
-    {
-      set_active(false);
     }
 
 
