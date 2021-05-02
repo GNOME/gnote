@@ -18,9 +18,10 @@
  */
 
 
+#include <condition_variable>
+
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
-#include <glibmm/thread.h>
 
 #include "debug.hpp"
 #include "gvfssyncservice.hpp"
@@ -157,24 +158,21 @@ bool GvfsSyncService::mount_async(const Glib::RefPtr<Gio::File> & path, const st
 bool GvfsSyncService::mount_sync(const Glib::RefPtr<Gio::File> & path, const Glib::RefPtr<Gio::MountOperation> & op)
 {
   bool ret = true, done = false;
-  Glib::Mutex mutex;
-  Glib::Cond cond;
-  mutex.lock();
+  std::mutex mutex;
+  std::condition_variable cond;
+  std::unique_lock<std::mutex> lock(mutex);
   if(mount_async(path, [&ret, &mutex, &cond, &done](bool result, const Glib::ustring&) {
-       mutex.lock();
+       std::unique_lock<std::mutex> lock(mutex);
        ret = result;
        done = true;
-       cond.signal();
-       mutex.unlock();
+       cond.notify_one();
      }, op)) {
-    mutex.unlock();
     return true;
   }
 
   while(!done) {
-    cond.wait(mutex);
+    cond.wait(lock);
   }
-  mutex.unlock();
   return ret;
 }
 
@@ -203,16 +201,17 @@ void GvfsSyncService::unmount_sync()
     return;
   }
 
-  Glib::Mutex mutex;
-  Glib::Cond cond;
-  mutex.lock();
-  unmount_async([&mutex, &cond]{
-    mutex.lock();
-    cond.signal();
-    mutex.unlock();
+  std::mutex mutex;
+  std::condition_variable cond;
+  std::unique_lock<std::mutex> lock(mutex);
+  unmount_async([this, &mutex, &cond]{
+    std::unique_lock<std::mutex> lock(mutex);
+    cond.notify_one();
+    m_mount.reset();
   });
-  cond.wait(mutex);
-  mutex.unlock();
+  while(m_mount) {
+    cond.wait(lock);
+  }
 }
 
 
