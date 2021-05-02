@@ -31,7 +31,7 @@ extra_testee_sources = [
 gnoteunittests = executable(
   'gnoteunittests',
   [test_sources, extra_testee_sources],
-  dependencies: [dependencies, unit_test_pp],
+  dependencies: [ dependencies, unit_test_pp, threads_support ],
   include_directories: [root_include_dir, src_include_dir],
   link_with: libgnote_shared_lib,
 )

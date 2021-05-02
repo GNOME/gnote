@@ -90,6 +90,8 @@ dbus_sources = [
   'dbus/searchprovider.cpp',
 ]
 
+threads_support = dependency('threads')
+
 libgnote_shared_lib = shared_library(
   'gnote-@0@'.format(gnote_release),
   [ libgnote_sources, dbus_sources ],
@@ -102,7 +104,7 @@ libgnote_shared_lib = shared_library(
 gnote = executable(
   'gnote',
   gnote_sources,
-  dependencies: dependencies,
+  dependencies: [ dependencies, threads_support ],
   include_directories: root_include_dir,
   link_with: libgnote_shared_lib,
   install: true,
