@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2020 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -107,8 +107,8 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
 
   // Record that the file has been added/changed/deleted.  Adds/changes trump
   // deletes.  Record the date.
-  m_lock.lock();
   try {
+    std::lock_guard<std::mutex> lock(m_lock);
     auto record = m_file_change_records.find(note_id);
     if(record == m_file_change_records.end()) {
       m_file_change_records[note_id] = NoteFileChangeRecord();
@@ -137,7 +137,6 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
   }
   catch(...)
   {}
-  m_lock.unlock();
 
   Glib::RefPtr<Glib::TimeoutSource> timeout = Glib::TimeoutSource::create(m_check_interval * 1000);
   timeout->connect(sigc::mem_fun(*this, &NoteDirectoryWatcherApplicationAddin::handle_timeout));
