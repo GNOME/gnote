@@ -73,7 +73,7 @@ namespace printnotes {
 
       Glib::RefPtr<Gtk::PrintSettings> settings = Gtk::PrintSettings::create();
 
-      Glib::ustring dir = Glib::get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS);
+      Glib::ustring dir = Glib::get_user_special_dir(Glib::USER_DIRECTORY_DOCUMENTS);
       if (dir.empty()) {
         dir = Glib::get_home_dir();
       }
@@ -111,7 +111,7 @@ namespace printnotes {
                                          e.what());
       dlg.run ();
     }
-    m_print_op.clear(); // yeah I really mean clear the pointer.
+    m_print_op.reset();
   }
 
 
@@ -490,8 +490,7 @@ namespace printnotes {
   void PrintNotesNoteAddin::on_end_print(const Glib::RefPtr<Gtk::PrintContext>&)
   {
     m_page_breaks.clear ();
-    // clear the RefPtr<>
-    m_timestamp_footer.clear();
+    m_timestamp_footer.reset();
   }
 
 }
