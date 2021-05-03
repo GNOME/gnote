@@ -18,8 +18,9 @@
  */
 
 
+#include <thread>
+
 #include <glibmm/i18n.h>
-#include <glibmm/thread.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/label.h>
 #include <gtkmm/table.h>
@@ -149,9 +150,10 @@ bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib:
       });
   };
   if(mount_async(root, on_mount_completed)) {
-    Glib::Thread::create([this, on_mount_completed]() {
+    std::thread thread([this, on_mount_completed]() {
       on_mount_completed(true, "");
-    }, false);
+    });
+    thread.detach();
   }
 
   return true;
