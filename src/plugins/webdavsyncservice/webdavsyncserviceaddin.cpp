@@ -18,8 +18,9 @@
  */
 
 
+#include <thread>
+
 #include <glibmm/i18n.h>
-#include <glibmm/thread.h>
 
 #include "debug.hpp"
 #include "ignote.hpp"
@@ -194,9 +195,10 @@ bool WebDavSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Gli
   };
   auto operation = create_mount_operation(username, password);
   if(mount_async(path, on_mount_completed, operation)) {
-    Glib::Thread::create([this, url, on_mount_completed]() {
+    std::thread thread([this, url, on_mount_completed]() {
       on_mount_completed(true, "");
-    }, false);
+    });
+    thread.detach();
   }
 
   return true;

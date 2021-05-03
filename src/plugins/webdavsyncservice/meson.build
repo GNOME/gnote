@@ -18,7 +18,7 @@ custom_target(
 shared_library(
   'webdavsyncservice',
   'webdavsyncserviceaddin.cpp',
-  dependencies: dependencies,
+  dependencies: [ dependencies, threads_support ],
   include_directories: [root_include_dir, src_include_dir],
   link_with: libgnote_shared_lib,
   install: true,
