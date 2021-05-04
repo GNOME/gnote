@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2020 Aurimas Cernius
+ * Copyright (C) 2011-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -384,7 +384,6 @@ namespace gnote {
     spacer1->show ();
 
     Gtk::ImageMenuItem *link = manage(new Gtk::ImageMenuItem(_("_Link to New Note"), true));
-    link->set_image(*manage(new Gtk::Image (Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_MENU)));
     link->set_sensitive(!m_note.get_buffer()->get_selection().empty());
     link->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::link_button_clicked));
     link->add_accelerator("activate", m_accel_group, GDK_KEY_L,
