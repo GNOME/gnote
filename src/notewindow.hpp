@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -170,13 +170,6 @@ public:
         return Glib::RefPtr<NonModifyingAction>(new NonModifyingAction);
       }
     static Glib::RefPtr<NonModifyingAction> create(const Glib::ustring & name,
-                                                   const Gtk::StockID & stock_id = Gtk::StockID(),
-                                                   const Glib::ustring & label = Glib::ustring(),
-                                                   const Glib::ustring & tooltip = Glib::ustring())
-      {
-        return Glib::RefPtr<NonModifyingAction>(new NonModifyingAction(name, stock_id, label, tooltip));
-      }
-    static Glib::RefPtr<NonModifyingAction> create(const Glib::ustring & name,
                                                    const Glib::ustring & icon_name,
                                                    const Glib::ustring & label = Glib::ustring(),
                                                    const Glib::ustring & tooltip = Glib::ustring())
@@ -184,9 +177,6 @@ public:
         return Glib::RefPtr<NonModifyingAction>(new NonModifyingAction(name, icon_name, label, tooltip));
       }
     NonModifyingAction();
-    explicit NonModifyingAction(const Glib::ustring & name, const Gtk::StockID & stock_id = Gtk::StockID(),
-                                const Glib::ustring & label = Glib::ustring(),
-                                const Glib::ustring & tooltip = Glib::ustring());
     NonModifyingAction(const Glib::ustring & name, const Glib::ustring & icon_name,
                        const Glib::ustring & label = Glib::ustring(),
                        const Glib::ustring & tooltip = Glib::ustring());

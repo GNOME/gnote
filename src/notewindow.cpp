@@ -26,7 +26,6 @@
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
 #include <gtkmm/imagemenuitem.h>
-#include <gtkmm/stock.h>
 #include <gtkmm/separator.h>
 #include <gtkmm/separatortoolitem.h>
 #include <gtkmm/separatormenuitem.h>
@@ -63,13 +62,6 @@ namespace gnote {
 
 
   NoteWindow::NonModifyingAction::NonModifyingAction()
-  {}
-
-  NoteWindow::NonModifyingAction::NonModifyingAction(const Glib::ustring & name,
-                                                     const Gtk::StockID & stock_id,
-                                                     const Glib::ustring & label,
-                                                     const Glib::ustring & tooltip)
-    : Gtk::Action(name, stock_id, label, tooltip)
   {}
 
   NoteWindow::NonModifyingAction::NonModifyingAction(const Glib::ustring & name,
