@@ -47,37 +47,6 @@ namespace gnote {
   namespace utils {
 
     namespace {
-      void get_menu_position (Gtk::Menu * menu,
-                              int & x,
-                              int & y,
-                              bool & push_in)
-      {
-        if (!menu->get_attach_widget() || !menu->get_attach_widget()->get_window()) {
-          // Prevent null exception in weird cases
-          x = 0;
-          y = 0;
-          push_in = true;
-          return;
-        }
-      
-        menu->get_attach_widget()->get_window()->get_origin(x, y);
-        Gdk::Rectangle rect = menu->get_attach_widget()->get_allocation();
-        x += rect.get_x();
-        y += rect.get_y();
-        
-        Gtk::Requisition menu_req, unused;
-        menu->get_preferred_size(unused, menu_req);
-        if (y + menu_req.height >= menu->get_attach_widget()->get_screen()->get_height()) {
-          y -= menu_req.height;
-        }
-        else {
-          y += rect.get_height();
-        }
-        
-        push_in = true;
-      }
-
-
       void deactivate_menu(Gtk::Menu *menu)
       {
         menu->popdown();
@@ -98,21 +67,16 @@ namespace gnote {
 
     void popup_menu(Gtk::Menu &menu, const GdkEventButton *ev)
     {
-      guint button = 0;
-      guint32 time;
       auto event = (const GdkEvent*)ev;
-      if(event) {
-        gdk_event_get_button(event, &button);
-        time = gdk_event_get_time(event);
+      menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
+      if(!menu.get_attach_widget() || !menu.get_attach_widget()->get_window()) {
+        menu.popup_at_pointer(event);
       }
       else {
-        time = gtk_get_current_event_time();
+        int x, y;
+        menu.get_attach_widget()->get_window()->get_origin(x, y);
+        menu.popup_at_rect(menu.get_attach_widget()->get_window(), Gdk::Rectangle(x, y, 0, 0), Gdk::GRAVITY_NORTH_WEST, Gdk::GRAVITY_NORTH_WEST, event);
       }
-      menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
-      menu.popup([&menu](int & x, int & y, bool & push_in) {
-                   get_menu_position(&menu, x, y, push_in);
-                  },
-                 button, time);
       if(menu.get_attach_widget()) {
         menu.get_attach_widget()->set_state_flags(Gtk::STATE_FLAG_SELECTED);
       }
