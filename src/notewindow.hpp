@@ -256,7 +256,6 @@ private:
   Gtk::CheckButton             *m_save_title_check_button;
 
   utils::GlobalKeybinder       *m_global_keys;
-  utils::InterruptableTimeout  *m_mark_set_timeout;
   bool                         m_enabled;
 
   Tag::Ptr m_template_tag;
