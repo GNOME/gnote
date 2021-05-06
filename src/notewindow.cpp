@@ -121,9 +121,6 @@ namespace gnote {
     m_editor->signal_populate_popup().connect(sigc::mem_fun(*this, &NoteWindow::on_populate_popup));
     m_editor->show();
 
-    // Sensitize the Link toolbar button on text selection
-    m_mark_set_timeout = new utils::InterruptableTimeout();
-    m_mark_set_timeout->signal_timeout.connect(sigc::mem_fun(*m_text_menu, &NoteTextMenu::refresh_state));
     note.get_buffer()->signal_mark_set().connect(
       sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
 
@@ -149,8 +146,6 @@ namespace gnote {
   {
     delete m_global_keys;
     m_global_keys = NULL;
-    delete m_mark_set_timeout;
-    m_mark_set_timeout = NULL;
     // make sure editor is NULL. See bug 586084
     m_editor = NULL;
   }
@@ -358,11 +353,11 @@ namespace gnote {
     noteutils::show_deletion_dialog(single_note_list, dynamic_cast<Gtk::Window*>(host()));
   }
 
-  void NoteWindow::on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&)
+  void NoteWindow::on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark> & mark)
   {
-    // FIXME: Process in a timeout due to GTK+ bug #172050.
-    if(m_mark_set_timeout) {
-      m_mark_set_timeout->reset(0);
+    auto mark_name = mark->get_name();
+    if(mark_name == "insert" || mark_name == "selection_bound") {
+      m_text_menu->refresh_state();
     }
   }
 
