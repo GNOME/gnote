@@ -82,7 +82,7 @@ namespace gnote {
       {
         menu->popdown();
         if(menu->get_attach_widget()) {
-          menu->get_attach_widget()->set_state(Gtk::STATE_NORMAL);
+          menu->get_attach_widget()->set_state_flags(Gtk::STATE_FLAG_NORMAL);
         }
       }
 
@@ -114,7 +114,7 @@ namespace gnote {
                   },
                  button, time);
       if(menu.get_attach_widget()) {
-        menu.get_attach_widget()->set_state(Gtk::STATE_SELECTED);
+        menu.get_attach_widget()->set_state_flags(Gtk::STATE_FLAG_SELECTED);
       }
     }
 
