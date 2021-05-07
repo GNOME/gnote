@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -217,7 +217,7 @@ namespace gnote {
       if (find_depth_tag(iter)) {
         iter.forward_chars(2);
       }
-      if(iter.begins_tag(tag) || iter.has_tag(tag)) {
+      if(iter.starts_tag(tag) || iter.has_tag(tag)) {
         // consider tag active only if it applies to the entire selection
         if (iter.forward_to_tag_toggle(tag)) {
           return select_end <= iter;
@@ -680,7 +680,7 @@ namespace gnote {
     for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
         tag_iter != tag_list.end(); ++tag_iter) {
       const Glib::RefPtr<Gtk::TextTag> & tag(*tag_iter);
-      if (!iter.begins_tag(tag) && NoteTagTable::tag_is_growable(tag)) {
+      if(!iter.starts_tag(tag) && NoteTagTable::tag_is_growable(tag)) {
         m_active_tags.push_back(tag);
       }
     }
@@ -1213,8 +1213,7 @@ namespace gnote {
       for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list2.begin();
           tag_iter != tag_list2.end(); ++tag_iter) {
         const Glib::RefPtr<Gtk::TextTag> & tag(*tag_iter);
-        if (iter.begins_tag (tag)) {
-
+        if(iter.starts_tag(tag)) {
           if (!(DepthNoteTag::Ptr::cast_dynamic(tag)) && NoteTagTable::tag_is_serializable(tag)) {
             write_tag (tag, xml, true);
             tag_stack.push (tag);
