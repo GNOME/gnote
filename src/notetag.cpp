@@ -131,7 +131,7 @@ namespace gnote {
   {
     Glib::RefPtr<Gtk::TextTag> this_ref = NoteTagTable::instance()->lookup(property_name());
     start = iter;
-    if (!start.begins_tag (this_ref)) {
+    if(!start.starts_tag(this_ref)) {
       start.backward_to_tag_toggle (this_ref);
     }
     end = iter;
