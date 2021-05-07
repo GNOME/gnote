@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019 Aurimas Cernius
+ * Copyright (C) 2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -116,8 +116,8 @@ namespace utils {
   {
     widget.property_margin_top() = 9;
     widget.property_margin_bottom() = 9;
-    widget.property_margin_left() = 12;
-    widget.property_margin_right() = 12;
+    widget.property_margin_start() = 12;
+    widget.property_margin_end() = 12;
     set_common_popover_widget_props(static_cast<Gtk::Widget&>(widget));
   }
 
