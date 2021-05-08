@@ -21,9 +21,6 @@
 
 #include <glibmm/i18n.h>
 
-#include <gtkmm/table.h>
-#include <gtkmm/stock.h>
-
 #include "sharp/string.hpp"
 #include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -39,8 +36,9 @@ namespace gnote {
       , m_gnote(g)
     {
       set_title(_("Create Notebook"));
-      Gtk::Table *table = manage(new Gtk::Table (2, 2, false));
-      table->set_col_spacings(6);
+      Gtk::Grid *table = manage(new Gtk::Grid);
+      table->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
+      table->set_column_spacing(6);
       
       Gtk::Label *label = manage(new Gtk::Label (_("N_otebook name:"), true));
       label->property_xalign() = 0;
@@ -57,18 +55,17 @@ namespace gnote {
         Glib::ustring::compose("<span foreground='red' style='italic'>%1</span>",
             _("Name already taken")));
       
-      table->attach (*label, 0, 1, 0, 1);
-      table->attach (m_nameEntry, 1, 2, 0, 1);
-      table->attach (m_errorLabel, 1, 2, 1, 2);
+      table->attach(*label, 0, 0, 1, 1);
+      table->attach(m_nameEntry, 1, 0, 1, 1);
+      table->attach(m_errorLabel, 1, 1, 1, 1);
       table->show ();
       
       set_extra_widget(table);
       
       add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL, false);
-      add_button (m_gnote.icon_manager().get_icon(IconManager::NOTEBOOK_NEW, 16),
-                  // Translation note: This is the Create button in the Create
-                  // New Note Dialog.
-                  _("C_reate"), Gtk::RESPONSE_OK, true);
+      // Translation note: This is the Create button in the Create
+      // New Note Dialog.
+      add_button(_("C_reate"), Gtk::RESPONSE_OK, true);
       
       // Only let the Ok response be sensitive when
       // there's something in nameEntry
