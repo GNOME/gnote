@@ -645,7 +645,7 @@ namespace gnote {
         return false;
       }
 
-      if (!iter.begins_tag(m_tag)) {
+      if(!iter.starts_tag(m_tag)) {
         m_buffer->move_mark(m_mark, iter);
         return move_next();
       }
