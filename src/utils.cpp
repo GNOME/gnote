@@ -286,8 +286,7 @@ namespace gnote {
       set_resizable(false);
       set_title("");
 
-      get_vbox()->set_spacing(12);
-      get_action_area()->set_layout(Gtk::BUTTONBOX_END);
+      get_content_area()->set_spacing(12);
 
       m_accel_group = Glib::RefPtr<Gtk::AccelGroup>(Gtk::AccelGroup::create());
       add_accel_group(m_accel_group);
@@ -297,7 +296,7 @@ namespace gnote {
       hbox->set_border_width(5);
       hbox->show();
       int hbox_col = 0;
-      get_vbox()->pack_start(*hbox, false, false, 0);
+      get_content_area()->pack_start(*hbox, false, false, 0);
 
       switch (msg_type) {
       case Gtk::MESSAGE_ERROR:
