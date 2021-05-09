@@ -30,7 +30,6 @@
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
 #include <glibmm/threads.h>
-#include <gtkmm/checkmenuitem.h>
 #include <gtkmm/image.h>
 #include <gtkmm/textbuffer.h>
 
@@ -704,25 +703,6 @@ namespace gnote {
       signal_timeout();
       m_timeout_id = 0;
       return false;
-    }
-
-
-    CheckAction::CheckAction(const Glib::ustring & name)
-      : Gtk::Action(name)
-      , m_checked(false)
-    {}
-
-    Gtk::Widget *CheckAction::create_menu_item_vfunc()
-    {
-      Gtk::CheckMenuItem *item = new Gtk::CheckMenuItem;
-      item->set_active(m_checked);
-      return item;
-    }
-
-    void CheckAction::on_activate()
-    {
-      m_checked = !m_checked;
-      Gtk::Action::on_activate();
     }
 
   }
