@@ -24,7 +24,6 @@ libgnote_sources = [
   'addinmanager.cpp',
   'addinpreferencefactory.cpp',
   'applicationaddin.cpp',
-  'contrast.cpp',
   'debug.cpp',
   'iactionmanager.cpp',
   'iconmanager.cpp',
