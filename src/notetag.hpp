@@ -31,7 +31,6 @@
 #include <gtkmm/texttag.h>
 #include <gtkmm/texttagtable.h>
 
-#include "contrast.hpp"
 #include "tag.hpp"
 #include "sharp/exception.hpp"
 
@@ -146,16 +145,6 @@ public:
     { 
       return m_signal_changed;
     }
-  ContrastPaletteColor get_palette_foreground() const
-    {
-      return m_palette_foreground;
-    }
-  void set_palette_foreground(ContrastPaletteColor value)
-    {
-      m_palette_foreground = value;
-      // XXX We should also watch theme changes.
-      property_foreground_rgba().set_value(render_foreground(value));
-    }
 protected:
   NoteTag(const Glib::ustring & tag_name, int flags = 0);
   NoteTag();
@@ -166,16 +155,12 @@ protected:
   virtual bool on_event(const Glib::RefPtr<Glib::Object> &, GdkEvent *, const Gtk::TextIter & ) override;
   virtual bool on_activate(const NoteEditor & , const Gtk::TextIter &, const Gtk::TextIter &);
 private:
-  Gdk::RGBA get_background() const;
-  Gdk::RGBA render_foreground(ContrastPaletteColor symbol);
-
   Glib::ustring       m_element_name;
   Glib::RefPtr<Gtk::TextMark> m_widget_location;
   Gtk::Widget       * m_widget;
   bool                m_allow_middle_activate;
   int                 m_flags;
   TagActivatedHandler m_signal_activate;
-  ContrastPaletteColor m_palette_foreground;
   sigc::signal<void,const Gtk::TextTag&,bool> m_signal_changed;
   TagSaveType         m_save_type;
 };

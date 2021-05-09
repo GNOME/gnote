@@ -22,6 +22,7 @@
 
 #include <gtk/gtk.h>
 #include <gtkmm/image.h>
+#include <gtkmm/linkbutton.h>
 
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
@@ -292,22 +293,6 @@ namespace gnote {
     }
   }
 
-  Gdk::RGBA NoteTag::get_background() const
-  {
-    /* We can't know the exact background because we're not
-       in TextView's rendering, but we can make a guess */
-    if (property_background_set().get_value())
-      return property_background_rgba().get_value();
-
-    return Gtk::TextView().get_style_context()->get_background_color();
-  }
-
-  Gdk::RGBA NoteTag::render_foreground(ContrastPaletteColor symbol)
-  {
-    return contrast_render_foreground_color(get_background(), symbol);
-  }
-
-
   void DynamicNoteTag::write(sharp::XmlWriter & xml, bool start) const
   {
     if (can_serialize()) {
@@ -379,6 +364,12 @@ namespace gnote {
   void NoteTagTable::_init_common_tags()
   {
     NoteTag::Ptr tag;
+    Gdk::RGBA active_link_color, visited_link_color;
+    {
+      Gtk::LinkButton link;
+      active_link_color = link.get_style_context()->get_color(Gtk::STATE_FLAG_LINK);
+      visited_link_color = link.get_style_context()->get_color(Gtk::STATE_FLAG_VISITED);
+    }
 
     // Font stylings
 
@@ -409,7 +400,7 @@ namespace gnote {
     add (tag);
 
     tag = NoteTag::create("note-title", 0);
-    tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
+    tag->property_foreground_rgba().set_value(active_link_color);
     tag->property_scale() = Pango::SCALE_XX_LARGE;
     // FiXME: Hack around extra rewrite on open
     tag->set_can_serialize(false);
@@ -427,7 +418,7 @@ namespace gnote {
     tag = NoteTag::create("datetime", 0);
     tag->property_scale() = Pango::SCALE_SMALL;
     tag->property_style() = Pango::STYLE_ITALIC;
-    tag->set_palette_foreground(CONTRAST_COLOR_GREY);
+    tag->property_foreground_rgba().set_value(visited_link_color);
     tag->set_save_type(META);
     add (tag);
 
@@ -453,21 +444,21 @@ namespace gnote {
 
     tag = NoteTag::create("link:broken", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
-    tag->set_palette_foreground(CONTRAST_COLOR_GREY);
+    tag->property_foreground_rgba().set_value(visited_link_color);
     tag->set_save_type(META);
     add (tag);
     m_broken_link_tag = tag;
 
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
-    tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
+    tag->property_foreground_rgba().set_value(active_link_color);
     tag->set_save_type(META);
     add (tag);
     m_link_tag = tag;
 
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::UNDERLINE_SINGLE;
-    tag->set_palette_foreground(CONTRAST_COLOR_BLUE);
+    tag->property_foreground_rgba().set_value(active_link_color);
     tag->set_save_type(META);
     add (tag);
     m_url_tag = tag;
