@@ -318,7 +318,7 @@ namespace gnote {
       if (m_image) {
         Gtk::manage(m_image);
         m_image->show();
-        m_image->property_yalign().set_value(0);
+        m_image->set_valign(Gtk::ALIGN_START);
         hbox->attach(*m_image, hbox_col++, 0, 1, 1);
       }
 
@@ -334,7 +334,8 @@ namespace gnote {
         label->set_use_markup(true);
         label->set_justify(Gtk::JUSTIFY_LEFT);
         label->set_line_wrap(true);
-        label->set_alignment (0.0f, 0.5f);
+        label->set_halign(Gtk::ALIGN_START);
+        label->set_valign(Gtk::ALIGN_CENTER);
         label->show();
         label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
       }
@@ -344,7 +345,8 @@ namespace gnote {
         label->set_use_markup(true);
         label->set_justify(Gtk::JUSTIFY_LEFT);
         label->set_line_wrap(true);
-        label->set_alignment (0.0f, 0.5f);
+        label->set_halign(Gtk::ALIGN_START);
+        label->set_valign(Gtk::ALIGN_CENTER);
         label->show();
         label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
       }
