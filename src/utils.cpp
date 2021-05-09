@@ -353,7 +353,7 @@ namespace gnote {
       
       m_extra_widget_vbox = manage(new Gtk::Grid);
       m_extra_widget_vbox->show();
-      m_extra_widget_vbox->set_margin_left(12);
+      m_extra_widget_vbox->set_margin_start(12);
       label_vbox->attach(*m_extra_widget_vbox, 0, label_vbox_row++, 1, 1);
 
       switch (btn_type) {
