@@ -25,7 +25,6 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
-#include <gtkmm/imagemenuitem.h>
 #include <gtkmm/separator.h>
 #include <gtkmm/separatortoolitem.h>
 #include <gtkmm/separatormenuitem.h>
@@ -370,7 +369,7 @@ namespace gnote {
     Gtk::MenuItem *spacer1 = manage(new Gtk::SeparatorMenuItem());
     spacer1->show ();
 
-    Gtk::ImageMenuItem *link = manage(new Gtk::ImageMenuItem(_("_Link to New Note"), true));
+    auto link = manage(new Gtk::MenuItem(_("_Link to New Note"), true));
     link->set_sensitive(!m_note.get_buffer()->get_selection().empty());
     link->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::link_button_clicked));
     link->add_accelerator("activate", m_accel_group, GDK_KEY_L,
