@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -32,7 +32,6 @@
 #include "sharp/string.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
 #include "notebooks/notebookmanager.hpp"
-#include "notebooks/notebooknewnotemenuitem.hpp"
 #include "notebooks/notebook.hpp"
 #include "iactionmanager.hpp"
 #include "ignote.hpp"
