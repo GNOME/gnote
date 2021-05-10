@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -140,7 +140,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   set_default_response(Gtk::RESPONSE_CANCEL);
   set_border_width(10);
 
-  Gtk::Box * const vbox = get_vbox();
+  Gtk::Box *const vbox = get_content_area();
 
   add_action_widget(m_rename_button, Gtk::RESPONSE_YES);
   add_action_widget(m_dont_rename_button, Gtk::RESPONSE_NO);
