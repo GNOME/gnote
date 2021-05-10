@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -1074,7 +1074,7 @@ namespace gnote {
     }
 
     Glib::RefPtr<Gtk::TextTag> broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
-    if(start.begins_tag(broken_link_tag)) {
+    if(start.starts_tag(broken_link_tag)) {
       get_note()->get_buffer()->remove_tag(broken_link_tag, start, end);
       get_note()->get_buffer()->apply_tag(get_note()->get_tag_table()->get_link_tag(), start, end);
     }
