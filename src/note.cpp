@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -68,13 +68,13 @@ namespace gnote {
 
       Gtk::Button *button;
 
-      button = manage(new Gtk::Button(Gtk::Stock::CANCEL));
+      button = manage(new Gtk::Button(_("_Cancel"), true));
       button->property_can_default().set_value(true);
       button->show ();
       dialog.add_action_widget(*button, Gtk::RESPONSE_CANCEL);
       dialog.set_default_response(Gtk::RESPONSE_CANCEL);
 
-      button = manage(new Gtk::Button (Gtk::Stock::DELETE));
+      button = manage(new Gtk::Button(_("_Delete"), true));
       button->property_can_default().set_value(true);
       button->show ();
       dialog.add_action_widget(*button, 666);
