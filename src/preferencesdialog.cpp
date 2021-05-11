@@ -937,10 +937,10 @@ namespace gnote {
     font_dialog->set_font_name(font_name);
 
     if (Gtk::RESPONSE_OK == font_dialog->run()) {
-      if (font_dialog->get_font_name() != font_name) {
-        m_gnote.preferences().custom_font_face();
-
-        update_font_button (font_dialog->get_font_name());
+      auto new_font = font_dialog->get_font_name();
+      if(new_font != font_name) {
+        m_gnote.preferences().custom_font_face(new_font);
+        update_font_button(new_font);
       }
     }
 
