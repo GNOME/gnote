@@ -44,9 +44,6 @@ namespace gnote {
 
     m_preferences.signal_enable_custom_font_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
     m_preferences.signal_custom_font_face_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
-    //Set up the schema to watch the default document font
-    m_preferences.signal_desktop_gnome_font_changed
-      .connect(sigc::mem_fun(*this, &NoteEditor::on_gnome_font_setting_changed));
 
     // query all monitored settings to get change notifications
     bool enable_custom_font = m_preferences.enable_custom_font();
@@ -70,14 +67,6 @@ namespace gnote {
 
     g_signal_connect(gobj(), "paste-clipboard", G_CALLBACK(paste_started), this);
     g_signal_connect_after(gobj(), "paste-clipboard", G_CALLBACK(paste_ended), this);
-  }
-
-
-  void NoteEditor::on_gnome_font_setting_changed()
-  {
-    if(!m_preferences.enable_custom_font()) {
-      Gtk::Settings::get_default()->reset_property("gtk-font-name");
-    }
   }
 
 

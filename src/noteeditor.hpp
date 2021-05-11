@@ -61,7 +61,6 @@ private:
   static void paste_started(GtkTextView*, NoteEditor *_this);
   static void paste_ended(GtkTextView*, NoteEditor *_this);
 
-  void on_gnome_font_setting_changed();
   void update_custom_font_setting();
   void modify_font_from_string (const Glib::ustring & fontString);
   bool key_pressed (GdkEventKey * ev);
