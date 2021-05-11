@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2016-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011,2013,2016-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,7 +61,6 @@ private:
   static void paste_started(GtkTextView*, NoteEditor *_this);
   static void paste_ended(GtkTextView*, NoteEditor *_this);
 
-  Pango::FontDescription get_gnome_document_font_description();
   void on_gnome_font_setting_changed();
   void update_custom_font_setting();
   void modify_font_from_string (const Glib::ustring & fontString);

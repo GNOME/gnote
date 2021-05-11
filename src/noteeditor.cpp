@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,6 +20,8 @@
 
 
 #include <string.h>
+
+#include <gtkmm/settings.h>
 
 #include "notebuffer.hpp"
 #include "noteeditor.hpp"
@@ -49,14 +51,10 @@ namespace gnote {
     // query all monitored settings to get change notifications
     bool enable_custom_font = m_preferences.enable_custom_font();
     auto font_string = m_preferences.custom_font_face();
-    auto gnome_font = get_gnome_document_font_description();
 
     // Set Font from preference
     if(enable_custom_font) {
       modify_font_from_string(font_string);
-    }
-    else {
-      override_font(gnome_font);
     }
 
     // Set extra editor drag targets supported (in addition
@@ -75,23 +73,10 @@ namespace gnote {
   }
 
 
-  Pango::FontDescription NoteEditor::get_gnome_document_font_description()
-  {
-    try {
-      auto doc_font_string = m_preferences.desktop_gnome_font();
-      return Pango::FontDescription(doc_font_string);
-    } 
-    catch (...) {
-    }
-
-    return Pango::FontDescription();
-  }
-
-
   void NoteEditor::on_gnome_font_setting_changed()
   {
     if(!m_preferences.enable_custom_font()) {
-      override_font(get_gnome_document_font_description());
+      Gtk::Settings::get_default()->reset_property("gtk-font-name");
     }
   }
 
@@ -105,7 +90,7 @@ namespace gnote {
     } 
     else {
       DBG_OUT("Switching back to the default font");
-      override_font (get_gnome_document_font_description());
+      Gtk::Settings::get_default()->reset_property("gtk-font-name");
     }
   }
 
@@ -113,7 +98,7 @@ namespace gnote {
   void NoteEditor::modify_font_from_string (const Glib::ustring & fontString)
   {
     DBG_OUT("Switching note font to '%s'...", fontString.c_str());
-    override_font (Pango::FontDescription(fontString));
+    Gtk::Settings::get_default()->property_gtk_font_name() = fontString;
   }
 
   
