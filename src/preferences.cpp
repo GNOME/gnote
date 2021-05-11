@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -129,7 +129,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_gnote, open_notes_in_new_window, OPEN_NOTES_IN_NEW_WINDOW, boolean);
 
     SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_clock_format, DESKTOP_GNOME_CLOCK_FORMAT, string);
-    SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_font, DESKTOP_GNOME_FONT, string);
 
     SETUP_CACHED_KEY(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN, string);
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
