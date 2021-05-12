@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-05-02 18:47+0000\n"
-"PO-Revision-Date: 2021-02-16 16:30+0100\n"
+"POT-Creation-Date: 2021-05-06 11:58+0000\n"
+"PO-Revision-Date: 2021-05-12 11:24+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"X-Generator: Gtranslator 40.0\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:52 src/recentchanges.cpp:622
@@ -46,10 +46,9 @@ msgstr ""
 
 #: data/org.gnome.Gnote.appdata.xml.in:13
 msgid "Notes can be printed or exported as HTML documents."
-msgstr ""
+msgstr "Las notas se pueden imprimir o exportar como documentos HTML."
 
 #: data/org.gnome.Gnote.appdata.xml.in:14
-#, fuzzy
 #| msgid ""
 #| "Gnote also supports synchronization to make it possible to use on "
 #| "multiple devices."
@@ -57,8 +56,8 @@ msgid ""
 "Gnote also supports synchronization, making it simple to use it on multiple "
 "devices."
 msgstr ""
-"Gnote también permite la sincronización para hacer posible el uso en "
-"múltiples equipos."
+"Gnote también permite la sincronización, facilitando su uso en múltiples "
+"equipos."
 
 #: data/org.gnome.Gnote.desktop.in:4
 msgid "Take notes, link ideas, and stay organized"
@@ -709,11 +708,11 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Reducir la sangría o deshabilitar los topos para la línea actual"
 
-#: src/actionmanager.cpp:128 src/notewindow.cpp:313
+#: src/actionmanager.cpp:128 src/notewindow.cpp:305
 msgid "_New Note"
 msgstr "Nota _nueva"
 
-#: src/actionmanager.cpp:129 src/notewindow.cpp:315
+#: src/actionmanager.cpp:129 src/notewindow.cpp:307
 msgid "New _Window"
 msgstr "_Ventana nueva"
 
@@ -1025,32 +1024,32 @@ msgstr "Complemento del servicio de sincronización de carpetas en línea"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Sincronizar las notas de Gnote con una carpeta en línea"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:161
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:76
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
 msgid "Failed to mount the folder"
 msgstr "Falló al montar la carpeta"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:103
 msgid "Folder _URI:"
 msgstr "_URI de la carpeta:"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:115
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Ejemplo: google-drive://nombre.apellido@gmail.com/notas"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:118
 msgid "Please, register your account in Online Accounts"
 msgstr "Registre su cuenta en las Cuentas en línea"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "The URI is empty"
 msgstr "El URL está vacío"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:135
 msgid "URI field is empty."
 msgstr "El campo URI está vacío."
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:177
 msgid "Online Folder"
 msgstr "Carpeta en línea"
 
@@ -1077,7 +1076,7 @@ msgid "_Use Custom Format"
 msgstr "_Usar formato personalizado"
 
 #. TRANSLATORS: first %s is file name, second is error
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:228
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:227
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
@@ -1085,7 +1084,7 @@ msgstr ""
 "%s"
 
 #. TRANSLATORS: %s is file
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:255
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:254
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr ""
@@ -1093,7 +1092,7 @@ msgstr ""
 "desde %s"
 
 #. TRANSLATORS: %s is file
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:263
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:262
 #, c-format
 msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 msgstr ""
@@ -1101,13 +1100,13 @@ msgstr ""
 "%s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:269
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:268
 #, c-format
 msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
 msgstr "Vigilante de la carpeta de notas: error al crear una nota desde %s: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:282
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:281
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
@@ -1391,32 +1390,32 @@ msgstr "Hubert Figuière y el Proyecto Tomboy"
 msgid "_Underline"
 msgstr "_Subrayado"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:106
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:107
 msgid "_URL:"
 msgstr "_URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:111
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:112
 msgid "User_name:"
 msgstr "Nombre de _usuario:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
 msgid "_Password:"
 msgstr "C_ontraseña:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:141
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:142
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:165
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "El destino %1 de la sincronización no existe."
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:179
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:180
 msgid "URL, username, or password field is empty."
 msgstr "El campo del URL, nombre de usuario o contraseña está vacío."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:277
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:279
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1445,6 +1444,8 @@ msgstr "Excepción al crear una nota: %s"
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
+"No hay ninguna conexión D-Bus disponible, la búsqueda de la shell y el "
+"control remoto no funcionarán."
 
 #: src/gnote.cpp:244
 msgid "Failed to get shortcuts window!"
@@ -1457,8 +1458,8 @@ msgstr "y los autores originales de Tomboy."
 #: src/gnote.cpp:264
 msgid "translator-credits"
 msgstr ""
+"Daniel Mustieles <daniel.mustieles@gmail.com>, 2009-2021\n"
 "Miguel Rodríguez <bokerones.fritos@gmail.com>, 2013\n"
-"Daniel Mustieles <daniel.mustieles@gmail.com>, 2009-2013\n"
 "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008\n"
 "QA: Jorge González <jorgegonz@svn.gnome.org>, 2009-2010"
 
@@ -1594,10 +1595,9 @@ msgstr "El nombre ya existe"
 
 #: src/notebooks/createnotebookdialog.cpp:67 src/utils.cpp:404
 #: src/utils.cpp:411
-#, fuzzy
 #| msgid "Ad_vanced"
 msgid "_Cancel"
-msgstr "A_vanzado"
+msgstr "C_ancelar"
 
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
@@ -1874,32 +1874,32 @@ msgstr "Título de la nota"
 msgid "Ad_vanced"
 msgstr "A_vanzado"
 
-#: src/notewindow.cpp:317
+#: src/notewindow.cpp:309
 msgid "_Undo"
 msgstr "_Deshacer"
 
-#: src/notewindow.cpp:319
+#: src/notewindow.cpp:311
 msgid "_Redo"
 msgstr "_Rehacer"
 
-#: src/notewindow.cpp:321 src/notewindow.cpp:386
+#: src/notewindow.cpp:313 src/notewindow.cpp:378
 msgid "_Link to New Note"
 msgstr "_Enlazar a una nota nueva"
 
-#: src/notewindow.cpp:323
+#: src/notewindow.cpp:315
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Importante"
 
-#: src/notewindow.cpp:333
+#: src/notewindow.cpp:325
 msgid "_Delete…"
 msgstr "_Eliminar…"
 
-#: src/notewindow.cpp:422
+#: src/notewindow.cpp:413
 msgid "Set properties of text"
 msgstr "Establecer las propiedades del texto"
 
-#: src/notewindow.cpp:436
+#: src/notewindow.cpp:427
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1908,67 +1908,67 @@ msgstr ""
 "de las notas normales, y no se mostrará en el menú de notas ni en la ventana "
 "de búsqueda."
 
-#: src/notewindow.cpp:439
+#: src/notewindow.cpp:430
 msgid "Convert to regular note"
 msgstr "Convertir a nota normal"
 
-#: src/notewindow.cpp:442
+#: src/notewindow.cpp:433
 msgid "Save Si_ze"
 msgstr "Guardar ta_maño"
 
-#: src/notewindow.cpp:446
+#: src/notewindow.cpp:437
 msgid "Save Se_lection"
 msgstr "Guardar se_lección"
 
-#: src/notewindow.cpp:450
+#: src/notewindow.cpp:441
 msgid "Save _Title"
 msgstr "Guardar _título"
 
-#: src/notewindow.cpp:552 src/notewindow.cpp:1064
+#: src/notewindow.cpp:543 src/notewindow.cpp:1055
 msgid "Cannot create note"
 msgstr "No se puede crear la nota"
 
-#: src/notewindow.cpp:834
+#: src/notewindow.cpp:825
 msgid "_Bold"
 msgstr "_Negrita"
 
-#: src/notewindow.cpp:835
+#: src/notewindow.cpp:826
 msgid "_Italic"
 msgstr "_Cursiva"
 
-#: src/notewindow.cpp:836
+#: src/notewindow.cpp:827
 msgid "_Strikeout"
 msgstr "_Tachado"
 
-#: src/notewindow.cpp:840
+#: src/notewindow.cpp:831
 msgid "_Highlight"
 msgstr "_Resaltado"
 
-#: src/notewindow.cpp:843
+#: src/notewindow.cpp:834
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:844
+#: src/notewindow.cpp:835
 msgid "S_mall"
 msgstr "_Pequeña"
 
-#: src/notewindow.cpp:845
+#: src/notewindow.cpp:836
 msgid "_Large"
 msgstr "_Grande"
 
-#: src/notewindow.cpp:846
+#: src/notewindow.cpp:837
 msgid "Hu_ge"
 msgstr "_Enorme"
 
-#: src/notewindow.cpp:868
+#: src/notewindow.cpp:859
 msgid "⦁ Bullets"
 msgstr "⦁ Topos"
 
-#: src/notewindow.cpp:870
+#: src/notewindow.cpp:861
 msgid "→ Increase indent"
 msgstr "→ Aumentar sangría"
 
-#: src/notewindow.cpp:872
+#: src/notewindow.cpp:863
 msgid "← Decrease indent"
 msgstr "← Reducir sangría"
 
@@ -2784,21 +2784,20 @@ msgstr "%b %d %Y"
 
 #: src/utils.cpp:398 src/utils.cpp:412
 msgid "_OK"
-msgstr ""
+msgstr "_Aceptar"
 
 #: src/utils.cpp:401
 msgid "_Close"
 msgstr "_Cerrar"
 
 #: src/utils.cpp:407
-#, fuzzy
 #| msgid "_Normal"
 msgid "_No"
-msgstr "_Normal"
+msgstr "_No"
 
 #: src/utils.cpp:408
 msgid "_Yes"
-msgstr ""
+msgstr "_Sí"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
 #: src/watchers.cpp:198
