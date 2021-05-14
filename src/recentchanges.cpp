@@ -174,7 +174,8 @@ namespace gnote {
     left_box->show();
 
     m_embedded_toolbar.set_margin_left(6);
-    m_embedded_toolbar.set(Gtk::ALIGN_START, Gtk::ALIGN_CENTER, 0, 0);
+    m_embedded_toolbar.set_halign(Gtk::ALIGN_START);
+    m_embedded_toolbar.set_valign(Gtk::ALIGN_CENTER);
     m_embedded_toolbar.show();
 
     Gtk::Grid *right_box = manage(new Gtk::Grid);
@@ -251,16 +252,11 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_activated));
     m_search_entry->show();
 
-    Gtk::Grid *grid = manage(new Gtk::Grid);
-    grid->set_margin_left(5);
-    grid->set_margin_right(5);
-    grid->set_hexpand(false);
-    grid->attach(*m_search_entry, 0, 0, 1, 1);
-    grid->show();
-
-    m_search_box = manage(new Gtk::Alignment(0.5, 0.5, 0.0, 1.0));
-    m_search_box->add(*grid);
-    m_search_box->set_hexpand(true);
+    m_search_box = manage(new Gtk::Grid);
+    m_search_box->set_hexpand(false);
+    m_search_box->attach(*m_search_entry, 0, 0, 1, 1);
+    m_search_box->set_halign(Gtk::ALIGN_CENTER);
+    m_search_box->show();
 
     auto content = dynamic_cast<Gtk::Grid*>(m_embed_box.get_parent());
     if(content) {
@@ -661,7 +657,10 @@ namespace gnote {
     catch(std::bad_cast&) {
     }
 
-    m_embedded_toolbar.remove();
+    auto children = m_embedded_toolbar.get_children();
+    for(auto child : children) {
+      m_embedded_toolbar.remove(*child);
+    }
   }
 
   bool NoteRecentChanges::contains(EmbeddableWidget & widget)

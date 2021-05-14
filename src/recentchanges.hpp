@@ -24,7 +24,6 @@
 #ifndef __NOTE_RECENT_CHANGES_HPP_
 #define __NOTE_RECENT_CHANGES_HPP_
 
-#include <gtkmm/alignment.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/popovermenu.h>
@@ -105,7 +104,7 @@ private:
   Preferences        &m_preferences;
   Gtk::Widget        *m_header_bar;
   SearchNotesWidget  *m_search_notes_widget;
-  Gtk::Alignment     *m_search_box;
+  Gtk::Grid          *m_search_box;
   Gtk::Grid          *m_find_next_prev_box;
   union
   {
@@ -113,7 +112,7 @@ private:
     Glib::ustring    *m_search_text;
   };
   Gtk::ToggleButton   m_search_button;
-  Gtk::Alignment      m_embedded_toolbar;
+  Gtk::Grid           m_embedded_toolbar;
   Gtk::Grid           m_embed_box;
   Gtk::Button        *m_all_notes_button;
   Gtk::Button        *m_new_note_button;
