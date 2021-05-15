@@ -905,7 +905,7 @@ namespace gnote {
 
     label->set_use_markup(true);
     label->set_justify(Gtk::JUSTIFY_LEFT);
-    label->set_alignment(0.0f, 0.5f);
+    label->set_valign(Gtk::ALIGN_CENTER);
     label->show();
 
     return label;
@@ -1107,7 +1107,8 @@ namespace gnote {
           sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
         if(m_sync_addin_prefs_widget == NULL) {
           Gtk::Label *l = new Gtk::Label(_("Not configurable"));
-          l->set_alignment(0.5f, 0.5f);
+          l->set_halign(Gtk::ALIGN_CENTER);
+          l->set_valign(Gtk::ALIGN_CENTER);
           m_sync_addin_prefs_widget = l;
         }
 
@@ -1284,7 +1285,7 @@ namespace gnote {
     // TODO: Change this icon to be an addin/package icon
     Gtk::Image *icon = manage(new Gtk::Image(Gtk::Stock::DIALOG_INFO, 
                                              Gtk::ICON_SIZE_DIALOG));
-    icon->property_yalign() = 0;
+    icon->set_halign(Gtk::ALIGN_START);
 
     Gtk::Label *info_label = manage(new Gtk::Label ());
     info_label->property_xalign() = 0;
