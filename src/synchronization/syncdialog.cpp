@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016,2017,2019-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #include <glibmm/main.h>
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/scrolledwindow.h>
-#include <gtkmm/stock.h>
 #include <gtkmm/treeview.h>
 
 #include "ignote.hpp"
@@ -80,7 +79,7 @@ public:
       Gtk::Grid *hbox = manage(new Gtk::Grid);
       hbox->set_column_spacing(8);
       Gtk::Image *image = manage(new Gtk::Image);
-      image->set(Gtk::Stock::DIALOG_WARNING, Gtk::IconSize(Gtk::ICON_SIZE_DIALOG));
+      image->set_from_icon_name("dialog-warning", Gtk::IconSize(Gtk::ICON_SIZE_DIALOG));
       image->show();
       hbox->attach(*image, 0, 0, 1, 1);
 
@@ -131,7 +130,7 @@ public:
       alwaysDoThisCheck = manage(new Gtk::CheckButton(_("Always perform this action")));
       get_vbox()->pack_start(*alwaysDoThisCheck);
 
-      continueButton = add_button(Gtk::Stock::GO_FORWARD, Gtk::RESPONSE_ACCEPT);
+      continueButton = add_button(_("_Continue"), Gtk::RESPONSE_ACCEPT);
 
       // Set initial dialog text
       header_text(_("Note conflict detected"));
@@ -246,7 +245,8 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
   outerVBox->attach(*hbox, 0, outerVBoxRow++, 1, 1);
 
   m_image = manage(new Gtk::Image(g.icon_manager().get_icon(IconManager::GNOTE, 48)));
-  m_image->set_alignment(0, 0);
+  m_image->set_halign(Gtk::ALIGN_START);
+  m_image->set_valign(Gtk::ALIGN_START);
   m_image->show();
   hbox->attach(*m_image, 0, 0, 1, 1);
 
@@ -259,17 +259,14 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
 
   m_header_label = manage(new Gtk::Label);
   m_header_label->set_use_markup(true);
-  float xalign, yalign;
-  m_header_label->get_alignment(xalign, yalign);
-  m_header_label->set_alignment(0, yalign);
+  m_header_label->set_halign(Gtk::ALIGN_START);
   m_header_label->set_use_underline(false);
   m_header_label->set_line_wrap(true);
   m_header_label->show();
   vbox->attach(*m_header_label, 0, 0, 1, 1);
 
   m_message_label = manage(new Gtk::Label);
-  m_message_label->get_alignment(xalign, yalign);
-  m_message_label->set_alignment(0, yalign);
+  m_message_label->set_halign(Gtk::ALIGN_START);
   m_message_label->set_use_underline(false);
   m_message_label->set_line_wrap(true);
   m_message_label->set_size_request(250, -1);
@@ -284,8 +281,7 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
 
   m_progress_label = manage(new Gtk::Label);
   m_progress_label->set_use_markup(true);
-  m_progress_label->get_alignment(xalign, yalign);
-  m_progress_label->set_alignment(0, yalign);
+  m_progress_label->set_halign(Gtk::ALIGN_START);
   m_progress_label->set_use_underline(false);
   m_progress_label->set_line_wrap(true);
   m_progress_label->property_wrap() = true;
@@ -342,7 +338,7 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
   column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &SyncDialog::treeview_col2_data_func));
 
   // Button to close dialog.
-  m_close_button = add_button(Gtk::Stock::CLOSE, static_cast<int>(Gtk::RESPONSE_CLOSE));
+  m_close_button = add_button(_("_Close"), static_cast<int>(Gtk::RESPONSE_CLOSE));
   m_close_button->set_sensitive(false);
 }
 
