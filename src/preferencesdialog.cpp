@@ -34,7 +34,6 @@
 #include <gtkmm/linkbutton.h>
 #include <gtkmm/notebook.h>
 #include <gtkmm/separator.h>
-#include <gtkmm/stock.h>
 #include <gtkmm/table.h>
 
 #include "sharp/addinstreemodel.hpp"
@@ -765,8 +764,7 @@ namespace gnote {
     auto iter = addin_prefs_dialogs.find(id);
     if (iter == addin_prefs_dialogs.end()) {
       // A preference dialog isn't open already so create a new one
-      Gtk::Image *icon =
-        manage(new Gtk::Image (Gtk::Stock::PREFERENCES, Gtk::ICON_SIZE_DIALOG));
+      Gtk::Image *icon = manage(new Gtk::Image("preferences-system", Gtk::ICON_SIZE_DIALOG));
       Gtk::Label *caption = manage(new Gtk::Label());
       caption->set_markup(
         Glib::ustring::compose("<span size='large' weight='bold'>%1 %2</span>", 
@@ -800,7 +798,7 @@ namespace gnote {
         Glib::ustring::compose(_("%1 Preferences"), addin_info.name()),
         *this, false);
       dialog->property_destroy_with_parent() = true;
-      dialog->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
+      dialog->add_button(_("_Close"), Gtk::RESPONSE_CLOSE);
 
       dialog->get_content_area()->pack_start(*vbox, true, true, 0);
       dialog->signal_delete_event().connect(
@@ -1063,7 +1061,7 @@ namespace gnote {
 
     advancedDlg->get_content_area()->pack_start(*label, false, false, 6);
     advancedDlg->get_content_area()->pack_start(*vbox, false, false, 0);
-    advancedDlg->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_OK);
+    advancedDlg->add_button(_("_Close"), Gtk::RESPONSE_OK);
 
     advancedDlg->show_all();
 
@@ -1280,11 +1278,10 @@ namespace gnote {
     , m_addin_info(addin_info)
   {
     property_destroy_with_parent() = true;
-    add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
+    add_button(_("_Close"), Gtk::RESPONSE_CLOSE);
     
     // TODO: Change this icon to be an addin/package icon
-    Gtk::Image *icon = manage(new Gtk::Image(Gtk::Stock::DIALOG_INFO, 
-                                             Gtk::ICON_SIZE_DIALOG));
+    Gtk::Image *icon = manage(new Gtk::Image("dialog-information", Gtk::ICON_SIZE_DIALOG));
     icon->set_halign(Gtk::ALIGN_START);
 
     Gtk::Label *info_label = manage(new Gtk::Label ());
