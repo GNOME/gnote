@@ -174,7 +174,7 @@ namespace gnote {
     left_box->attach(*m_new_note_button, 1, 0, 1, 1);
     left_box->show();
 
-    m_embedded_toolbar.set_margin_left(6);
+    m_embedded_toolbar.set_margin_start(6);
     m_embedded_toolbar.set_halign(Gtk::ALIGN_START);
     m_embedded_toolbar.set_valign(Gtk::ALIGN_CENTER);
     m_embedded_toolbar.show();
@@ -216,8 +216,8 @@ namespace gnote {
     }
     else {
       Gtk::Grid *header_bar = manage(new Gtk::Grid);
-      header_bar->set_margin_left(5);
-      header_bar->set_margin_right(5);
+      header_bar->set_margin_start(5);
+      header_bar->set_margin_end(5);
       header_bar->set_margin_top(5);
       header_bar->set_margin_bottom(5);
       header_bar->attach(*left_box, 0, 0, 1, 1);
@@ -275,7 +275,7 @@ namespace gnote {
     }
 
     m_find_next_prev_box = manage(new Gtk::Grid);
-    m_find_next_prev_box->set_margin_left(5);
+    m_find_next_prev_box->set_margin_start(5);
 
     Gtk::Button *find_next_button = manage(new Gtk::Button);
     Gtk::Image *image = manage(new Gtk::Image);
