@@ -60,8 +60,10 @@ namespace gnote {
     , m_entry_changed_timeout(NULL)
     , m_window_menu_embedded(NULL)
     , m_window_menu_default(NULL)
-    , m_keybinder(get_accel_group())
+    , m_accel_group(Gtk::AccelGroup::create())
+    , m_keybinder(m_accel_group)
   {
+    add_accel_group(m_accel_group);
     set_default_size(450,400);
     set_resizable(true);
     if(g.preferences().main_window_maximized()) {
@@ -157,7 +159,7 @@ namespace gnote {
     m_all_notes_button->set_image(*image);
     m_all_notes_button->set_tooltip_text(_("All Notes"));
     m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_all_notes_button_clicked));
-    m_all_notes_button->add_accelerator("activate", get_accel_group(), GDK_KEY_comma, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    m_all_notes_button->add_accelerator("activate", m_accel_group, GDK_KEY_comma, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_all_notes_button->show_all();
     left_box->attach(*m_all_notes_button, 0, 0, 1, 1);
 
@@ -167,7 +169,7 @@ namespace gnote {
     image->property_icon_size() = GTK_ICON_SIZE_MENU;
     m_new_note_button->set_image(*image);
     m_new_note_button->set_tooltip_text(_("Create New Note"));
-    m_new_note_button->add_accelerator("activate", get_accel_group(), GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    m_new_note_button->add_accelerator("activate", m_accel_group, GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_new_note_button->signal_clicked().connect(sigc::mem_fun(*m_search_notes_widget, &SearchNotesWidget::new_note));
     m_new_note_button->show_all();
     left_box->attach(*m_new_note_button, 1, 0, 1, 1);
@@ -187,7 +189,7 @@ namespace gnote {
     image->property_icon_size() = GTK_ICON_SIZE_MENU;
     m_search_button.set_image(*image);
     m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
-    m_search_button.add_accelerator("activate", get_accel_group(), GDK_KEY_F, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    m_search_button.add_accelerator("activate", m_accel_group, GDK_KEY_F, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_search_button.set_tooltip_text(_("Search"));
     m_search_button.show_all();
     right_box->attach(m_search_button, 0, 0, 1, 1);
@@ -200,7 +202,7 @@ namespace gnote {
     m_window_actions_button->signal_clicked().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu));
     m_window_actions_button->add_accelerator(
-      "activate", get_accel_group(), GDK_KEY_F10, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
+      "activate", m_accel_group, GDK_KEY_F10, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
     m_window_actions_button->show_all();
     right_box->attach(*m_window_actions_button, 1, 0, 1, 1);
     right_box->show();
@@ -284,7 +286,7 @@ namespace gnote {
     find_next_button->set_always_show_image(true);
     find_next_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
-    find_next_button->add_accelerator("activate", get_accel_group(), GDK_KEY_G, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    find_next_button->add_accelerator("activate", m_accel_group, GDK_KEY_G, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     find_next_button->show();
     m_find_next_prev_box->attach(*find_next_button, 0, 0, 1, 1);
 
@@ -296,7 +298,7 @@ namespace gnote {
     find_prev_button->set_always_show_image(true);
     find_prev_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
-    find_prev_button->add_accelerator("activate", get_accel_group(), GDK_KEY_G, Gdk::CONTROL_MASK|Gdk::SHIFT_MASK, (Gtk::AccelFlags) 0);
+    find_prev_button->add_accelerator("activate", m_accel_group, GDK_KEY_G, Gdk::CONTROL_MASK|Gdk::SHIFT_MASK, (Gtk::AccelFlags) 0);
     find_prev_button->show();
     m_find_next_prev_box->attach(*find_prev_button, 1, 0, 1, 1);
 

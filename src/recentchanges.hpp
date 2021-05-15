@@ -124,6 +124,7 @@ private:
   utils::InterruptableTimeout *m_entry_changed_timeout;
   Gtk::PopoverMenu     *m_window_menu_embedded;
   Gtk::PopoverMenu     *m_window_menu_default;
+  Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   utils::GlobalKeybinder m_keybinder;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
 };
