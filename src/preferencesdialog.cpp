@@ -104,8 +104,7 @@ namespace gnote {
     set_resizable(true);
     set_title(_("Gnote Preferences"));
 
-    get_vbox()->set_spacing(5);
-    get_action_area()->set_layout(Gtk::BUTTONBOX_END);
+    get_content_area()->set_spacing(5);
 
 //      addin_prefs_dialogs =
 //              new Dictionary<string, Gtk::Dialog> ();
@@ -147,7 +146,7 @@ namespace gnote {
         }
       }
 
-      get_vbox()->pack_start (*notebook, true, true, 0);
+      get_content_area()->pack_start(*notebook, true, true, 0);
 
       // Ok button...
 
@@ -802,7 +801,7 @@ namespace gnote {
       dialog->property_destroy_with_parent() = true;
       dialog->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_CLOSE);
 
-      dialog->get_vbox()->pack_start (*vbox, true, true, 0);
+      dialog->get_content_area()->pack_start(*vbox, true, true, 0);
       dialog->signal_delete_event().connect(
         sigc::bind(
           sigc::mem_fun(*this, &PreferencesDialog::addin_pref_dialog_deleted),
@@ -1062,8 +1061,8 @@ namespace gnote {
     vbox->attach(*renameOnConflictRadio, 0, 1, 1, 1);
     vbox->attach(*overwriteOnConflictRadio, 0, 2, 1, 1);
 
-    advancedDlg->get_vbox()->pack_start(*label, false, false, 6);
-    advancedDlg->get_vbox()->pack_start(*vbox, false, false, 0);
+    advancedDlg->get_content_area()->pack_start(*label, false, false, 6);
+    advancedDlg->get_content_area()->pack_start(*vbox, false, false, 0);
     advancedDlg->add_button(Gtk::Stock::CLOSE, Gtk::RESPONSE_OK);
 
     advancedDlg->show_all();
@@ -1310,7 +1309,7 @@ namespace gnote {
 
     hbox->show_all ();
 
-    get_vbox()->pack_start(*hbox, true, true, 0);
+    get_content_area()->pack_start(*hbox, true, true, 0);
 
     fill (*info_label);
   }
