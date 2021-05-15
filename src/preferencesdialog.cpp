@@ -150,7 +150,7 @@ namespace gnote {
 
       // Ok button...
 
-      Gtk::Button *button = manage(new Gtk::Button(Gtk::Stock::CLOSE));
+      Gtk::Button *button = manage(new Gtk::Button(_("_Close"), true));
       button->property_can_default().set_value(true);
       button->show ();
 
@@ -541,7 +541,7 @@ namespace gnote {
     bbox->pack_start(*advancedConfigButton, false, false, 0);
     bbox->set_child_secondary(*advancedConfigButton, true);
 
-    m_reset_sync_addin_button = manage(new Gtk::Button(Gtk::Stock::CLEAR));
+    m_reset_sync_addin_button = manage(new Gtk::Button(_("Clear")));
     m_reset_sync_addin_button->signal_clicked().connect([this]() {
       on_reset_sync_addin_button(true);
     });
@@ -553,7 +553,7 @@ namespace gnote {
 
     // TODO: Tabbing should go directly from sync prefs widget to here
     // TODO: Consider connecting to "Enter" pressed in sync prefs widget
-    m_save_sync_addin_button = manage(new Gtk::Button (Gtk::Stock::SAVE));
+    m_save_sync_addin_button = manage(new Gtk::Button(_("_Save"), true));
     m_save_sync_addin_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_save_sync_addin_button));
     m_save_sync_addin_button->set_sensitive(m_selected_sync_addin != NULL &&
@@ -629,13 +629,13 @@ namespace gnote {
       sigc::mem_fun(*this, &PreferencesDialog::on_disable_addin_button));
     disable_addin_button->show ();
 
-    addin_prefs_button = manage(new Gtk::Button (Gtk::Stock::PREFERENCES));
+    addin_prefs_button = manage(new Gtk::Button(_("_Preferences"), true));
     addin_prefs_button->set_sensitive(false);
     addin_prefs_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_prefs_button));
     addin_prefs_button->show ();
 
-    addin_info_button = manage(new Gtk::Button (Gtk::Stock::INFO));
+    addin_info_button = manage(new Gtk::Button(_("In_formation"), true));
     addin_info_button->set_sensitive(false);
     addin_info_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_info_button));
