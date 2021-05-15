@@ -39,7 +39,7 @@
 namespace gnote {
 
 class SearchNotesWidget
-  : public Gtk::HPaned
+  : public Gtk::Paned
   , public EmbeddableWidget
   , public SearchableItem
   , public HasActions
