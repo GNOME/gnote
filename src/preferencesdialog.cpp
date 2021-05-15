@@ -608,7 +608,7 @@ namespace gnote {
     hbox->attach(*sw, hbox_col++, 0, 1, 1);
 
     // Action Buttons (right of TreeView)
-    Gtk::VButtonBox *button_box = manage(new Gtk::VButtonBox ());
+    Gtk::ButtonBox *button_box = manage(new Gtk::ButtonBox(Gtk::ORIENTATION_VERTICAL));
     button_box->set_spacing(4);
     button_box->set_layout(Gtk::BUTTONBOX_START);
 
