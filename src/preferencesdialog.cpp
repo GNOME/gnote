@@ -356,7 +356,8 @@ namespace gnote {
     font_box->attach(*sep, 1, 0, 1, 1);
 
     font_size = manage(new Gtk::Label());
-    font_size->property_xpad().set_value(4);
+    font_size->set_margin_start(4);
+    font_size->set_margin_end(4);
     font_size->show ();
     font_box->attach(*font_size, 2, 0, 1, 1);
 
