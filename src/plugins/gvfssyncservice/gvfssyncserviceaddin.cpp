@@ -23,7 +23,6 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/label.h>
-#include <gtkmm/table.h>
 
 #include "debug.hpp"
 #include "gvfssyncserviceaddin.hpp"
@@ -90,9 +89,9 @@ gnote::sync::SyncServer *GvfsSyncServiceAddin::create_sync_server()
 
 Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler required_pref_changed)
 {
-  Gtk::Table *table = manage(new Gtk::Table(1, 3, false));
-  table->set_row_spacings(5);
-  table->set_col_spacings(10);
+  auto table = manage(new Gtk::Grid);
+  table->set_row_spacing(5);
+  table->set_column_spacing(10);
 
   // Read settings out of gconf
   Glib::ustring sync_path;
@@ -102,7 +101,7 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
 
   auto l = manage(new Gtk::Label(_("Folder _URI:"), true));
   l->property_xalign() = 1;
-  table->attach(*l, 0, 1, 0, 1, Gtk::FILL);
+  table->attach(*l, 0, 0, 1, 1);
 
   m_uri_entry = manage(new Gtk::Entry);
   m_uri_entry->set_text(sync_path);
@@ -110,14 +109,14 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
   m_uri_entry->get_buffer()->signal_deleted_text().connect([required_pref_changed](guint, guint) { required_pref_changed(); });
   l->set_mnemonic_widget(*m_uri_entry);
 
-  table->attach(*m_uri_entry, 1, 2, 0, 1);
+  table->attach(*m_uri_entry, 1, 0, 1, 1);
 
   auto example = manage(new Gtk::Label(_("Example: google-drive://name.surname@gmail.com/notes")));
   example->property_xalign() = 0;
-  table->attach(*example, 1, 2, 1, 2);
+  table->attach(*example, 1, 1, 1, 1);
   auto account_info = manage(new Gtk::Label(_("Please, register your account in Online Accounts")));
   account_info->property_xalign() = 0;
-  table->attach(*account_info, 1, 2, 2, 3);
+  table->attach(*account_info, 1, 2, 1, 1);
 
   table->set_hexpand(true);
   table->set_vexpand(false);
