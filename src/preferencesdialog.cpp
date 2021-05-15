@@ -352,7 +352,7 @@ namespace gnote {
     font_face->set_hexpand(true);
     font_box->attach(*font_face, 0, 0, 1, 1);
 
-    Gtk::VSeparator *sep = manage(new Gtk::VSeparator());
+    Gtk::Separator *sep = manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
     sep->show ();
     font_box->attach(*sep, 1, 0, 1, 1);
 
