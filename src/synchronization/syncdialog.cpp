@@ -107,7 +107,7 @@ public:
 
       hbox->show();
       outerVBox->attach(*hbox, 0, 0, 1, 1);
-      get_vbox()->pack_start(*outerVBox);
+      get_content_area()->pack_start(*outerVBox);
 
       Gtk::Grid *renameHBox = manage(new Gtk::Grid);
       renameRadio = manage(new Gtk::RadioButton(m_radio_group, _("Rename local note:")));
@@ -121,7 +121,7 @@ public:
       renameOptionsVBox->attach(*renameEntry, 0, 0, 1, 1);
       renameHBox->attach(*renameRadio, 0, 0, 1, 1);
       renameHBox->attach(*renameOptionsVBox, 1, 0, 1, 1);
-      get_vbox()->pack_start(*renameHBox);
+      get_content_area()->pack_start(*renameHBox);
 
       deleteExistingRadio = manage(new Gtk::RadioButton(m_radio_group, _("Overwrite local note")));
       deleteExistingRadio->signal_toggled().connect(sigc::mem_fun(*this, &SyncTitleConflictDialog::radio_toggled));
@@ -236,7 +236,7 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
   outerVBox->set_border_width(6);
   outerVBox->show();
   int outerVBoxRow = 0;
-  get_vbox()->pack_start(*outerVBox, true, true, 0);
+  get_content_area()->pack_start(*outerVBox, true, true, 0);
 
   // Top image and label
   Gtk::Grid *hbox = manage(new Gtk::Grid);
