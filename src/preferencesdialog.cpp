@@ -30,7 +30,7 @@
 #include <gtkmm/accelgroup.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/button.h>
-#include <gtkmm/fontselection.h>
+#include <gtkmm/fontchooserdialog.h>
 #include <gtkmm/linkbutton.h>
 #include <gtkmm/notebook.h>
 #include <gtkmm/separator.h>
@@ -930,14 +930,13 @@ namespace gnote {
 
   void PreferencesDialog::on_font_button_clicked()
   {
-    Gtk::FontSelectionDialog *font_dialog =
-      new Gtk::FontSelectionDialog (_("Choose Note Font"));
+    auto font_dialog = new Gtk::FontChooserDialog(_("Choose Note Font"));
 
     auto font_name = m_gnote.preferences().custom_font_face();
-    font_dialog->set_font_name(font_name);
+    font_dialog->set_font(font_name);
 
     if (Gtk::RESPONSE_OK == font_dialog->run()) {
-      auto new_font = font_dialog->get_font_name();
+      auto new_font = font_dialog->get_font();
       if(new_font != font_name) {
         m_gnote.preferences().custom_font_face(new_font);
         update_font_button(new_font);
