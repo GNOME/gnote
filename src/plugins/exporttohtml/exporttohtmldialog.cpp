@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,8 +22,6 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
-#include <gtkmm/stock.h>
-#include <gtkmm/table.h>
 
 #include "sharp/files.hpp"
 #include "exporttohtmldialog.hpp"
@@ -45,19 +43,18 @@ ExportToHtmlDialog::ExportToHtmlDialog(gnote::IGnote & ignote, const Glib::ustri
   , m_export_linked_all(_("Include all other linked notes"))
   , m_settings(Gio::Settings::create(SCHEMA_EXPORTHTML))
 {
-  add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-  add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_OK);
+  add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL);
+  add_button(_("_Save"), Gtk::RESPONSE_OK);
 
   set_default_response(Gtk::RESPONSE_OK);
 
-  Gtk::Table *table = manage(new Gtk::Table (2, 2, false));
+  auto table = manage(new Gtk::Grid);
 
   m_export_linked.signal_toggled().connect(
     sigc::mem_fun(*this, &ExportToHtmlDialog::on_export_linked_toggled));
 
-  table->attach (m_export_linked, 0, 2, 0, 1, Gtk::FILL, (Gtk::AttachOptions)0, 0, 0);
-  table->attach (m_export_linked_all,
-                 1, 2, 1, 2, Gtk::EXPAND | Gtk::FILL, (Gtk::AttachOptions)0, 20, 0);
+  table->attach(m_export_linked, 0, 0, 2, 1);
+  table->attach(m_export_linked_all, 0, 1, 2, 1);
 
   set_extra_widget(*table);
 
