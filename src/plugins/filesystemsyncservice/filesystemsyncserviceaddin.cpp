@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2020 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
 #include <gtkmm/label.h>
-#include <gtkmm/table.h>
 
 #include "debug.hpp"
 #include "filesystemsyncserviceaddin.hpp"
@@ -91,9 +90,9 @@ void FileSystemSyncServiceAddin::post_sync_cleanup()
 
 Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler requiredPrefChanged)
 {
-  Gtk::Table *table = new Gtk::Table(1, 2, false);
-  table->set_row_spacings(5);
-  table->set_col_spacings(10);
+  auto table = new Gtk::Grid;
+  table->set_row_spacing(5);
+  table->set_column_spacing(10);
 
   // Read settings out of gconf
   Glib::ustring syncPath;
@@ -103,10 +102,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
 
   Gtk::Label *l = new Gtk::Label(_("_Folder Path:"), true);
   l->property_xalign() = 1;
-  table->attach(*l, 0, 1, 0, 1,
-                Gtk::FILL,
-                Gtk::EXPAND | Gtk::FILL,
-                0, 0);
+  table->attach(*l, 0, 0, 1, 1);
 
   m_path_button = new Gtk::FileChooserButton(_("Select Synchronization Folder..."),
     Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
@@ -114,10 +110,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
   l->set_mnemonic_widget(*m_path_button);
   m_path_button->set_filename(syncPath);
 
-  table->attach(*m_path_button, 1, 2, 0, 1,
-                Gtk::EXPAND | Gtk::FILL,
-                Gtk::EXPAND | Gtk::FILL,
-                0, 0);
+  table->attach(*m_path_button, 1, 0, 1, 1);
 
   table->set_hexpand(true);
   table->set_vexpand(false);
