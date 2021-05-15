@@ -70,7 +70,6 @@ namespace gnote {
       maximize();
     }
 
-    set_has_resize_grip(true);
     set_icon_name(IconManager::GNOTE);
 
     m_search_notes_widget = new SearchNotesWidget(g, m);
