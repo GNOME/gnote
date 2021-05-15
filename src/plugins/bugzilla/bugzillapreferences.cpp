@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -28,7 +28,6 @@
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/label.h>
 #include <gtkmm/scrolledwindow.h>
-#include <gtkmm/stock.h>
 
 #include "sharp/directory.hpp"
 #include "sharp/fileinfo.hpp"
@@ -111,16 +110,16 @@ namespace bugzilla {
 
     attach(*sw, 0, row++, 1, 1);
 
-    add_button = manage(new Gtk::Button (Gtk::Stock::ADD));
+    add_button = manage(new Gtk::Button(_("_Add"), true));
     add_button->signal_clicked().connect(
       sigc::mem_fun(*this, &BugzillaPreferences::add_clicked));
 
-    remove_button = manage(new Gtk::Button (Gtk::Stock::REMOVE));
+    remove_button = manage(new Gtk::Button(_("_Remove"), true));
     remove_button->set_sensitive(false);
     remove_button->signal_clicked().connect(
       sigc::mem_fun(*this,  &BugzillaPreferences::remove_clicked));
 
-    Gtk::HButtonBox *hbutton_box = manage(new Gtk::HButtonBox ());
+    Gtk::ButtonBox *hbutton_box = manage(new Gtk::ButtonBox);
     hbutton_box->set_layout(Gtk::BUTTONBOX_START);
     hbutton_box->set_spacing(6);
 
@@ -225,8 +224,8 @@ namespace bugzilla {
   {
     Gtk::FileChooserDialog dialog(_("Select an icon..."),
                                   Gtk::FILE_CHOOSER_ACTION_OPEN);
-    dialog.add_button (Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-    dialog.add_button (Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
+    dialog.add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL);
+    dialog.add_button(_("_Open"), Gtk::RESPONSE_OK);
 
     dialog.set_default_response(Gtk::RESPONSE_OK);
     dialog.set_local_only(true);
@@ -368,15 +367,13 @@ namespace bugzilla {
                                           _("Really remove this icon?"),
                                           _("If you remove an icon it is permanently lost."));
 
-    Gtk::Button *button;
-
-    button = manage(new Gtk::Button (Gtk::Stock::CANCEL));
+    Gtk::Button *button = manage(new Gtk::Button(_("_Cancel"), true));
     button->property_can_default() = true;
     button->show ();
     dialog.add_action_widget (*button, Gtk::RESPONSE_CANCEL);
     dialog.set_default_response(Gtk::RESPONSE_CANCEL);
 
-    button = manage(new Gtk::Button (Gtk::Stock::DELETE));
+    button = manage(new Gtk::Button(_("_Delete"), true));
     button->property_can_default() = true;
     button->show ();
     dialog.add_action_widget (*button, 666);
