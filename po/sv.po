@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-05-15 10:15+0000\n"
-"PO-Revision-Date: 2021-05-15 15:54+0200\n"
+"POT-Creation-Date: 2021-05-15 15:07+0000\n"
+"PO-Revision-Date: 2021-05-15 20:14+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -816,7 +816,7 @@ msgstr ""
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere och Tomboy-projektet"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:65
+#: src/plugins/bugzilla/bugzillapreferences.cpp:64
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -825,50 +825,76 @@ msgstr ""
 "anteckningar.  Om du vill ha en speciell ikon för vissa värddatorer kan du "
 "lägga till dem här."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:82
+#: src/plugins/bugzilla/bugzillapreferences.cpp:81
 msgid "Host Name"
 msgstr "Värdnamn"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:95
+#: src/plugins/bugzilla/bugzillapreferences.cpp:94
 msgid "Icon"
 msgstr "Ikon"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:226
+#: src/plugins/bugzilla/bugzillapreferences.cpp:113
+msgid "_Add"
+msgstr "_Lägg till"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:117
+msgid "_Remove"
+msgstr "_Ta bort"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:225
 msgid "Select an icon..."
 msgstr "Välj en ikon…"
 
+#: src/plugins/bugzilla/bugzillapreferences.cpp:227
+#: src/plugins/bugzilla/bugzillapreferences.cpp:370
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/utils.cpp:375
+msgid "_Cancel"
+msgstr "A_vbryt"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:228
+#: src/searchnoteswidget.cpp:138
+msgid "_Open"
+msgstr "Ö_ppna"
+
 #. Extra Widget
-#: src/plugins/bugzilla/bugzillapreferences.cpp:241
+#: src/plugins/bugzilla/bugzillapreferences.cpp:240
 msgid "_Host name:"
 msgstr "_Värdnamn:"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:275
+#: src/plugins/bugzilla/bugzillapreferences.cpp:274
 msgid "Host name invalid"
 msgstr "Värdnamnet är ogiltigt"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:276
+#: src/plugins/bugzilla/bugzillapreferences.cpp:275
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Du måste ange ett giltigt värdnamn för den Bugzilla som ska användas med den "
 "här ikonen."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:295
+#: src/plugins/bugzilla/bugzillapreferences.cpp:294
 msgid "Error saving icon"
 msgstr "Fel vid sparandet av ikon"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:296
+#: src/plugins/bugzilla/bugzillapreferences.cpp:295
 msgid "Could not save the icon file."
 msgstr "Kunde inte spara ikonfilen."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:368
+#: src/plugins/bugzilla/bugzillapreferences.cpp:367
 msgid "Really remove this icon?"
 msgstr "Verkligen ta bort den här ikonen?"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:369
+#: src/plugins/bugzilla/bugzillapreferences.cpp:368
 msgid "If you remove an icon it is permanently lost."
 msgstr "Om du tar bort en ikon försvinner den för alltid."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:391
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/searchnoteswidget.cpp:145 src/searchnoteswidget.cpp:148
+msgid "_Delete"
+msgstr "_Ta bort"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:388
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Fel vid borttagande av ikonen %s: %s"
@@ -916,17 +942,24 @@ msgstr "Exportera till HTML"
 msgid "Exports individual notes to HTML."
 msgstr "Exportera individuella anteckningar till HTML."
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:41
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:39
 msgid "Destination for HTML Export"
 msgstr "Mål för HTML-export"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:44
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Export linked notes"
 msgstr "Exportera länkade anteckningar"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:43
 msgid "Include all other linked notes"
 msgstr "Inkludera alla andra länkade anteckningar"
+
+#. TODO: Tabbing should go directly from sync prefs widget to here
+#. TODO: Consider connecting to "Enter" pressed in sync prefs widget
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
+#: src/preferencesdialog.cpp:555
+msgid "_Save"
+msgstr "_Spara"
 
 #: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:83
 msgid "Export to HTML…"
@@ -956,25 +989,25 @@ msgstr "Kunde inte exportera: %s"
 msgid "Could not save the file \"%1\""
 msgstr "Kunde inte spara filen ”%1”"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
 msgid "_Folder Path:"
 msgstr "_Mappsökväg:"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:111
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:107
 msgid "Select Synchronization Folder..."
 msgstr "Välj synkroniseringsmapp…"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:129
 msgid "Folder path field is empty."
 msgstr "Fältet för mappsökväg är tomt."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
 #: src/synchronization/gvfssyncservice.cpp:76
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Angiven mappsökväg finns inte och Gnote kunde inte skapa den."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:207
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:200
 msgid "Local Folder"
 msgstr "Lokal mapp"
 
@@ -1011,32 +1044,32 @@ msgstr "Insticksmodul för nätsynkroniseringstjänst"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Synkronisera Gnote-anteckningar till en nätkatalog"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:76
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
 msgid "Failed to mount the folder"
 msgstr "Misslyckades med att montera mappen"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:103
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "Mapp-_URI:"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:115
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Exempel: google-drive://namn.efternamn@gmail.com/notes"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:118
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr "Registrera ditt konto i Nätkonton"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "URI är tom"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:135
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "Fältet för URI är tomt."
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:177
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:176
 msgid "Online Folder"
 msgstr "Nätmapp"
 
@@ -1575,11 +1608,6 @@ msgstr "Namn _på anteckningsblock:"
 msgid "Name already taken"
 msgstr "Namnet används redan"
 
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
-#: src/utils.cpp:375
-msgid "_Cancel"
-msgstr "A_vbryt"
-
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
 #: src/notebooks/createnotebookdialog.cpp:68
@@ -1671,10 +1699,6 @@ msgstr[1] "Verkligen ta bort %1 anteckningar?"
 #: src/note.cpp:67
 msgid "If you delete a note it is permanently lost."
 msgstr "Om du tar bort en anteckning försvinner den för alltid."
-
-#: src/note.cpp:77 src/searchnoteswidget.cpp:145 src/searchnoteswidget.cpp:148
-msgid "_Delete"
-msgstr "_Ta bort"
 
 #: src/note.cpp:101
 msgid "Error saving note data."
@@ -1848,7 +1872,7 @@ msgstr ""
 msgid "Rename Links"
 msgstr "Byt namn på länkar"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:331
+#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Anteckningstitel"
 
@@ -1976,9 +2000,10 @@ msgid "Plugins"
 msgstr "Insticksmoduler"
 
 #. Ok button...
+#. Button to close dialog.
 #: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:801
 #: src/preferencesdialog.cpp:1064 src/preferencesdialog.cpp:1281
-#: src/utils.cpp:365
+#: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
 msgid "_Close"
 msgstr "S_täng"
 
@@ -2103,12 +2128,6 @@ msgstr "_Avancerat…"
 msgid "Clear"
 msgstr "Töm"
 
-#. TODO: Tabbing should go directly from sync prefs widget to here
-#. TODO: Consider connecting to "Enter" pressed in sync prefs widget
-#: src/preferencesdialog.cpp:555
-msgid "_Save"
-msgstr "_Spara"
-
 #: src/preferencesdialog.cpp:584
 msgid "The following plugins are installed:"
 msgstr "Följande insticksmoduler är installerade:"
@@ -2124,7 +2143,6 @@ msgid "_Disable"
 msgstr "_Inaktivera"
 
 #: src/preferencesdialog.cpp:637
-#| msgid "Formatting"
 msgid "In_formation"
 msgstr "In_formation"
 
@@ -2263,10 +2281,6 @@ msgstr "Inga konfigurerade åtgärder"
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Misslyckades med att läsa in D-Bus-gränssnitt %s: %s"
-
-#: src/searchnoteswidget.cpp:138
-msgid "_Open"
-msgstr "Ö_ppna"
 
 #: src/searchnoteswidget.cpp:141
 msgid "Open In New _Window"
@@ -2480,37 +2494,41 @@ msgstr "Fel vid försök att ta bort testfil"
 msgid "Unknown error"
 msgstr "Okänt fel"
 
-#: src/synchronization/syncdialog.cpp:64
+#: src/synchronization/syncdialog.cpp:63
 msgid "Note Conflict"
 msgstr "Anteckningskonflikt"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: src/synchronization/syncdialog.cpp:69
+#: src/synchronization/syncdialog.cpp:68
 msgid " (old)"
 msgstr " (gammal)"
 
-#: src/synchronization/syncdialog.cpp:114
+#: src/synchronization/syncdialog.cpp:113
 msgid "Rename local note:"
 msgstr "Byt namn på lokal anteckning:"
 
-#: src/synchronization/syncdialog.cpp:121
+#: src/synchronization/syncdialog.cpp:120
 msgid "Update links in referencing notes"
 msgstr "Uppdatera länkar i refererande anteckningar"
 
-#: src/synchronization/syncdialog.cpp:127
+#: src/synchronization/syncdialog.cpp:126
 msgid "Overwrite local note"
 msgstr "Skriv över lokal anteckning"
 
-#: src/synchronization/syncdialog.cpp:131
+#: src/synchronization/syncdialog.cpp:130
 msgid "Always perform this action"
 msgstr "Genomför alltid den här åtgärden"
 
+#: src/synchronization/syncdialog.cpp:133
+msgid "_Continue"
+msgstr "_Fortsätt"
+
 #. Set initial dialog text
-#: src/synchronization/syncdialog.cpp:137
+#: src/synchronization/syncdialog.cpp:136
 msgid "Note conflict detected"
 msgstr "Anteckningskonflikt upptäcktes"
 
-#: src/synchronization/syncdialog.cpp:139
+#: src/synchronization/syncdialog.cpp:138
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2519,55 +2537,55 @@ msgstr ""
 "du göra med din lokala anteckning?"
 
 #. Expander containing TreeView
-#: src/synchronization/syncdialog.cpp:296
+#: src/synchronization/syncdialog.cpp:292
 msgid "Details"
 msgstr "Detaljer"
 
-#: src/synchronization/syncdialog.cpp:338
+#: src/synchronization/syncdialog.cpp:334
 msgid "Status"
 msgstr "Status"
 
-#: src/synchronization/syncdialog.cpp:482
+#: src/synchronization/syncdialog.cpp:478
 msgid "Acquiring sync lock..."
 msgstr "Tar över synkroniseringslås…"
 
-#: src/synchronization/syncdialog.cpp:485
+#: src/synchronization/syncdialog.cpp:481
 msgid "Committing changes..."
 msgstr "Verkställer ändringar…"
 
-#: src/synchronization/syncdialog.cpp:488
+#: src/synchronization/syncdialog.cpp:484
 msgid "Synchronizing Notes"
 msgstr "Synkroniserar anteckningar"
 
-#: src/synchronization/syncdialog.cpp:489
+#: src/synchronization/syncdialog.cpp:485
 msgid "Synchronizing your notes..."
 msgstr "Synkroniserar dina anteckningar…"
 
-#: src/synchronization/syncdialog.cpp:490
+#: src/synchronization/syncdialog.cpp:486
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Det här kan ta en stund, luta dig tillbaka och njut!"
 
-#: src/synchronization/syncdialog.cpp:492
+#: src/synchronization/syncdialog.cpp:488
 msgid "Connecting to the server..."
 msgstr "Ansluter till servern…"
 
-#: src/synchronization/syncdialog.cpp:498
+#: src/synchronization/syncdialog.cpp:494
 msgid "Deleting notes off of the server..."
 msgstr "Tar bort anteckningar från servern…"
 
-#: src/synchronization/syncdialog.cpp:502
+#: src/synchronization/syncdialog.cpp:498
 msgid "Downloading new/updated notes..."
 msgstr "Hämtar nya/uppdaterade anteckningar…"
 
-#: src/synchronization/syncdialog.cpp:514
+#: src/synchronization/syncdialog.cpp:510
 msgid "Server Locked"
 msgstr "Servern är låst"
 
-#: src/synchronization/syncdialog.cpp:515
+#: src/synchronization/syncdialog.cpp:511
 msgid "Server is locked"
 msgstr "Servern är låst"
 
-#: src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:512
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2575,107 +2593,107 @@ msgstr ""
 "En av dina andra datorer synkroniserar för tillfället.  Vänta 2 minuter och "
 "försök igen."
 
-#: src/synchronization/syncdialog.cpp:520
+#: src/synchronization/syncdialog.cpp:516
 msgid "Preparing to download updates from server..."
 msgstr "Förbereder att hämta uppdateringar från servern…"
 
-#: src/synchronization/syncdialog.cpp:523
+#: src/synchronization/syncdialog.cpp:519
 msgid "Preparing to upload updates to server..."
 msgstr "Förbereder för att skicka upp uppdateringar till servern…"
 
-#: src/synchronization/syncdialog.cpp:526
+#: src/synchronization/syncdialog.cpp:522
 msgid "Uploading notes to server..."
 msgstr "Skickar upp anteckningar till servern…"
 
-#: src/synchronization/syncdialog.cpp:529
+#: src/synchronization/syncdialog.cpp:525
 msgid "Synchronization Failed"
 msgstr "Synkroniseringen misslyckades"
 
-#: src/synchronization/syncdialog.cpp:530
+#: src/synchronization/syncdialog.cpp:526
 msgid "Failed to synchronize"
 msgstr "Misslyckades med att synkronisera"
 
-#: src/synchronization/syncdialog.cpp:531
+#: src/synchronization/syncdialog.cpp:527
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Kunde inte synkronisera anteckningar.  Kontrollera detaljerna nedan och "
 "försök igen."
 
-#: src/synchronization/syncdialog.cpp:537
+#: src/synchronization/syncdialog.cpp:533
 msgid "Synchronization Complete"
 msgstr "Synkroniseringen är färdig"
 
-#: src/synchronization/syncdialog.cpp:538
+#: src/synchronization/syncdialog.cpp:534
 msgid "Synchronization is complete"
 msgstr "Synkroniseringen är färdig"
 
-#: src/synchronization/syncdialog.cpp:539
+#: src/synchronization/syncdialog.cpp:535
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "%1 anteckning uppdaterad."
 msgstr[1] "%1 anteckningar uppdaterade."
 
-#: src/synchronization/syncdialog.cpp:540
+#: src/synchronization/syncdialog.cpp:536
 msgid "Your notes are now up to date."
 msgstr "Dina anteckningar är nu uppdaterade."
 
-#: src/synchronization/syncdialog.cpp:545
+#: src/synchronization/syncdialog.cpp:541
 msgid "Synchronization Canceled"
 msgstr "Synkroniseringen avbröts"
 
-#: src/synchronization/syncdialog.cpp:546
+#: src/synchronization/syncdialog.cpp:542
 msgid "Synchronization was canceled"
 msgstr "Synkroniseringen har avbrutits"
 
-#: src/synchronization/syncdialog.cpp:547
+#: src/synchronization/syncdialog.cpp:543
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Du avbröt synkroniseringen.  Du kan stänga fönstret nu."
 
-#: src/synchronization/syncdialog.cpp:551
+#: src/synchronization/syncdialog.cpp:547
 msgid "Synchronization Not Configured"
 msgstr "Synkronisering är inte konfigurerad"
 
-#: src/synchronization/syncdialog.cpp:552
+#: src/synchronization/syncdialog.cpp:548
 msgid "Synchronization is not configured"
 msgstr "Synkronisering är inte konfigurerad"
 
-#: src/synchronization/syncdialog.cpp:553
+#: src/synchronization/syncdialog.cpp:549
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Konfigurera synkronisering i inställningsdialogrutan."
 
-#: src/synchronization/syncdialog.cpp:557
+#: src/synchronization/syncdialog.cpp:553
 msgid "Synchronization Service Error"
 msgstr "Fel i synkroniseringstjänsten"
 
-#: src/synchronization/syncdialog.cpp:558
+#: src/synchronization/syncdialog.cpp:554
 msgid "Service error"
 msgstr "Fel i tjänst"
 
-#: src/synchronization/syncdialog.cpp:559
+#: src/synchronization/syncdialog.cpp:555
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Fel vid anslutning till synkroniseringstjänsten.  Försök igen."
 
-#: src/synchronization/syncdialog.cpp:573
+#: src/synchronization/syncdialog.cpp:569
 msgid "Deleted locally"
 msgstr "Borttagen lokalt"
 
-#: src/synchronization/syncdialog.cpp:576
+#: src/synchronization/syncdialog.cpp:572
 msgid "Deleted from server"
 msgstr "Borttagen från servern"
 
-#: src/synchronization/syncdialog.cpp:579
+#: src/synchronization/syncdialog.cpp:575
 msgid "Updated"
 msgstr "Uppdaterad"
 
-#: src/synchronization/syncdialog.cpp:582
+#: src/synchronization/syncdialog.cpp:578
 msgid "Added"
 msgstr "Tillagd"
 
-#: src/synchronization/syncdialog.cpp:585
+#: src/synchronization/syncdialog.cpp:581
 msgid "Uploaded changes to server"
 msgstr "Skickade upp ändringar till servern"
 
-#: src/synchronization/syncdialog.cpp:588
+#: src/synchronization/syncdialog.cpp:584
 msgid "Uploaded new note to server"
 msgstr "Skickade upp ny anteckning till servern"
 
