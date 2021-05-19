@@ -58,6 +58,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   , m_open_note_new_window_menu_item(nullptr)
   , m_delete_note_menu_item(nullptr)
   , m_delete_notebook_menu_item(nullptr)
+  , m_rename_notebook_menu_item(nullptr)
   , m_no_matches_box(NULL)
   , m_gnote(g)
   , m_manager(m)
@@ -71,7 +72,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 {
   set_hexpand(true);
   set_vexpand(true);
-  make_actions();
 
   // Notebooks Pane
   Gtk::Widget *notebooksPane = Gtk::manage(make_notebooks_pane());
@@ -135,12 +135,6 @@ Glib::ustring SearchNotesWidget::get_name() const
     return "";
   }
   return selected_notebook->get_name();
-}
-
-void SearchNotesWidget::make_actions()
-{
-  m_rename_notebook_action = Gtk::Action::create("RenameNotebookAction", _("Re_name..."));
-  m_rename_notebook_action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_rename_notebook));
 }
 
 void SearchNotesWidget::perform_search(const Glib::ustring & search_text)
@@ -368,7 +362,9 @@ void SearchNotesWidget::on_notebook_selection_changed()
     if(m_delete_notebook_menu_item) {
       m_delete_notebook_menu_item->set_sensitive(false);
     }
-    m_rename_notebook_action->set_sensitive(false);
+    if(m_rename_notebook_menu_item) {
+      m_rename_notebook_menu_item->set_sensitive(false);
+    }
     m_on_notebook_selection_changed_cid.unblock();
   }
   else {
@@ -381,13 +377,17 @@ void SearchNotesWidget::on_notebook_selection_changed()
       if(m_delete_notebook_menu_item) {
         m_delete_notebook_menu_item->set_sensitive(false);
       }
-      m_rename_notebook_action->set_sensitive(false);
+      if(m_rename_notebook_menu_item) {
+        m_rename_notebook_menu_item->set_sensitive(false);
+      }
     }
     else {
       if(m_delete_notebook_menu_item) {
         m_delete_notebook_menu_item->set_sensitive(true);
       }
-      m_rename_notebook_action->set_sensitive(true);
+      if(m_rename_notebook_menu_item) {
+        m_rename_notebook_menu_item->set_sensitive(true);
+      }
       allow_edit = true;
     }
 
@@ -1357,9 +1357,9 @@ Gtk::Menu *SearchNotesWidget::get_notebook_list_context_menu()
     item->signal_activate()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
     m_notebook_list_context_menu->add(*item);
-    item = manage(new Gtk::MenuItem);
-    item->set_related_action(m_rename_notebook_action);
-    m_notebook_list_context_menu->add(*item);
+    m_rename_notebook_menu_item = manage(new Gtk::MenuItem(_("Re_name..."), true));
+    m_rename_notebook_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_rename_notebook));
+    m_notebook_list_context_menu->add(*m_rename_notebook_menu_item);
     m_delete_notebook_menu_item = manage(new Gtk::MenuItem(_("_Delete"), true));
     m_delete_notebook_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_delete_notebook));
     m_notebook_list_context_menu->add(*m_delete_notebook_menu_item);
