@@ -161,7 +161,7 @@ private:
   Gtk::MenuItem *m_open_note_menu_item;
   Gtk::MenuItem *m_open_note_new_window_menu_item;
   Gtk::MenuItem *m_delete_note_menu_item;
-  Glib::RefPtr<Gtk::Action> m_delete_notebook_action;
+  Gtk::MenuItem *m_delete_notebook_menu_item;
   Glib::RefPtr<Gtk::Action> m_rename_notebook_action;
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ScrolledWindow m_matches_window;
