@@ -156,12 +156,13 @@ private:
     Gtk::TreeModelColumn<Note::Ptr> note;
   };
 
-  Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   Gtk::MenuItem *m_open_note_menu_item;
   Gtk::MenuItem *m_open_note_new_window_menu_item;
   Gtk::MenuItem *m_delete_note_menu_item;
   Gtk::MenuItem *m_delete_notebook_menu_item;
   Gtk::MenuItem *m_rename_notebook_menu_item;
+  void *m_open_note_accel;
+  void *m_open_note_new_window_accel;
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ScrolledWindow m_matches_window;
   Gtk::Grid *m_no_matches_box;

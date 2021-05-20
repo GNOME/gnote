@@ -53,12 +53,13 @@ Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon(IconManager & manager
 
 
 SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
-  : m_accel_group(Gtk::AccelGroup::create())
-  , m_open_note_menu_item(nullptr)
+  : m_open_note_menu_item(nullptr)
   , m_open_note_new_window_menu_item(nullptr)
   , m_delete_note_menu_item(nullptr)
   , m_delete_notebook_menu_item(nullptr)
   , m_rename_notebook_menu_item(nullptr)
+  , m_open_note_accel(nullptr)
+  , m_open_note_new_window_accel(nullptr)
   , m_no_matches_box(NULL)
   , m_gnote(g)
   , m_manager(m)
@@ -1308,14 +1309,12 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
     if(!m_gnote.preferences().open_notes_in_new_window()) {
       m_open_note_menu_item = manage(new Gtk::MenuItem(_("_Open"), true));
       m_open_note_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note));
-      m_open_note_menu_item->add_accelerator("activate", m_accel_group, GDK_KEY_O, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
       m_note_list_context_menu->add(*m_open_note_menu_item);
     }
 
     m_open_note_new_window_menu_item = manage(new Gtk::MenuItem(_("Open In New _Window"), true));
     m_open_note_new_window_menu_item->signal_activate()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note_new_window));
-    m_open_note_new_window_menu_item->add_accelerator("activate", m_accel_group, GDK_KEY_W, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
     m_note_list_context_menu->add(*m_open_note_new_window_menu_item);
 
     m_delete_note_menu_item = manage(new Gtk::MenuItem(_("_Delete"), true));
@@ -1324,7 +1323,6 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
 
     m_note_list_context_menu->add(*manage(new Gtk::SeparatorMenuItem));
     item = manage(new Gtk::MenuItem(_("_New"), true));
-    item->add_accelerator("activate", m_accel_group, GDK_KEY_N, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
     item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::new_note));
     m_note_list_context_menu->add(*item);
   }
@@ -1412,7 +1410,8 @@ void SearchNotesWidget::foreground()
     return;
   }
 
-  win->add_accel_group(m_accel_group);
+  m_open_note_accel = win->keybinder().add_accelerator(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note), GDK_KEY_O, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
+  m_open_note_new_window_accel = win->keybinder().add_accelerator(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note_new_window), GDK_KEY_W, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
   auto & manager(m_gnote.action_manager());
   register_callbacks();
   m_callback_changed_cid = manager.signal_main_window_search_actions_changed
@@ -1425,10 +1424,14 @@ void SearchNotesWidget::background()
   save_position();
   unregister_callbacks();
   m_callback_changed_cid.disconnect();
-  Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
-  if(win) {
-    win->remove_accel_group(m_accel_group);
+  MainWindow *win = dynamic_cast<MainWindow*>(host());
+  if(!win) {
+    return;
   }
+  win->keybinder().remove_accelerator(m_open_note_accel);
+  win->keybinder().remove_accelerator(m_open_note_new_window_accel);
+  m_open_note_accel = nullptr;
+  m_open_note_new_window_accel = nullptr;
 }
 
 void SearchNotesWidget::hint_size(int & width, int & height)
