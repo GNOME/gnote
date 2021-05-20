@@ -450,6 +450,11 @@ namespace gnote {
         background_embedded(*widget);
       }
     }
+    for(auto embedded : m_embedded_widgets) {
+      if(embedded != m_search_notes_widget) {
+        embedded->unembed();
+      }
+    }
 
     hide();
   }
