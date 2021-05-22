@@ -2,7 +2,7 @@
  * "Table of Contents" is a Note add-in for Gnote.
  *  It lists note's table of contents in a menu.
  *
- * Copyright (C) 2015,2017,2019 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2015,2017,2019,2021 Aurimas Cernius <aurisc4@gmail.com>
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,9 +23,6 @@
 
 #include <glibmm/i18n.h>
 
-#include <gtkmm/stock.h>
-
-#include "iconmanager.hpp"
 #include "notewindow.hpp"
 
 #include "tableofcontentsmenuitem.hpp"
@@ -36,7 +33,6 @@ namespace tableofcontents {
 
 
 TableofcontentsMenuItem::TableofcontentsMenuItem (
-                            gnote::IconManager & icon_manager,
                             const gnote::Note::Ptr & note,
                             const Glib::ustring    & heading,
                             Heading::Type            heading_level,
@@ -59,12 +55,10 @@ TableofcontentsMenuItem::TableofcontentsMenuItem (
   set_use_underline (false); //we don't want potential '_' in the heading to be used as mnemonic
 
   if (heading_level == Heading::Title) {
-    set_image(*manage(new Gtk::Image(icon_manager.get_icon(gnote::IconManager::NOTE, 16))));
     Gtk::Label *label = (Gtk::Label*)get_child();
     label->set_markup("<b>" + heading + "</b>");
   }
   else if (heading_level == Heading::Level_1) {
-    set_image(*manage(new Gtk::Image(Gtk::Stock::GO_FORWARD, Gtk::ICON_SIZE_MENU)));
     set_label(heading);
   }
   else if (heading_level == Heading::Level_2) {

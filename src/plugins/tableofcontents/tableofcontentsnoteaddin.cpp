@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013,2015-2017,2019-2020 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2013,2015-2017,2019-2021 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #include <glibmm/i18n.h>
 
 #include <gtkmm/modelbutton.h>
-#include <gtkmm/stock.h>
 #include <gtkmm/separator.h>
 #include <gtkmm/separatormenuitem.h>
 
@@ -60,11 +59,10 @@ void TableofcontentsNoteAddin::initialize () {}
 void TableofcontentsNoteAddin::shutdown   () {}
 
 
-Gtk::ImageMenuItem * new_toc_menu_item ()
+Gtk::MenuItem *new_toc_menu_item ()
 //create a menu item like: "[]_Table_of_Contents______Ctrl-Alt-1__>"
 {
-  Gtk::ImageMenuItem * menu_item = manage(new Gtk::ImageMenuItem ());
-  menu_item->set_image(*manage(new Gtk::Image(Gtk::Stock::JUMP_TO, Gtk::ICON_SIZE_MENU)));
+  Gtk::MenuItem * menu_item = manage(new Gtk::MenuItem);
 
   Gtk::AccelLabel *acclabel = manage(new Gtk::AccelLabel(_("Table of Contents")));
   acclabel->set_alignment (Gtk::ALIGN_START);
@@ -236,7 +234,7 @@ void TableofcontentsNoteAddin::on_populate_popup (Gtk::Menu* popup_menu)
   separator->show ();
   popup_menu->prepend (*separator);
 
-  Gtk::ImageMenuItem *menu_item = new_toc_menu_item ();
+  Gtk::MenuItem *menu_item = new_toc_menu_item();
   menu_item->set_submenu (*toc_menu);
   menu_item->show ();
 
@@ -316,12 +314,12 @@ std::vector<TableofcontentsMenuItem*> TableofcontentsNoteAddin::get_tableofconte
   if(toc_items.size()) {
     //If we have at least one heading
     //we also insert an entry linked to the Note's title:
-    item = manage(new TableofcontentsMenuItem(ignote().icon_manager(), get_note(), get_note()->get_title(), Heading::Title, 0));
+    item = manage(new TableofcontentsMenuItem(get_note(), get_note()->get_title(), Heading::Title, 0));
     items.push_back(item);
   }
 
   for(auto & toc_item : toc_items) {
-    item = manage(new TableofcontentsMenuItem(ignote().icon_manager(), get_note(), toc_item.heading, toc_item.heading_level, toc_item.heading_position));
+    item = manage(new TableofcontentsMenuItem(get_note(), toc_item.heading, toc_item.heading_level, toc_item.heading_position));
     items.push_back(item);
   }
 
@@ -350,9 +348,6 @@ void TableofcontentsNoteAddin::get_toc_popover_items(std::vector<Gtk::Widget*> &
       toc_item.heading = "→  " + toc_item.heading;
     }
     auto item = dynamic_cast<Gtk::ModelButton*>(gnote::utils::create_popover_button("win.tableofcontents-goto-heading", toc_item.heading));
-    if(toc_item.heading_level == Heading::Level_1) {
-      item->set_image(*manage(new Gtk::Image(Gtk::Stock::GO_FORWARD, Gtk::ICON_SIZE_MENU)));
-    }
     gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_int32(toc_item.heading_position));
     item->property_role() = Gtk::BUTTON_ROLE_NORMAL;
     item->property_inverted() = true;
