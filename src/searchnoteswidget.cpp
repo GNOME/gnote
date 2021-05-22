@@ -1040,15 +1040,12 @@ void SearchNotesWidget::no_matches_found_action()
     link_button->signal_activate_link()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::show_all_search_results), false);
     link_button->set_tooltip_text(_("Click here to search across all notebooks"));
+    link_button->set_halign(Gtk::ALIGN_CENTER);
+    link_button->set_valign(Gtk::ALIGN_CENTER);
     link_button->show();
-    Gtk::Alignment *no_matches_found = manage(new Gtk::Alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER, 0.0, 0.0));
-    no_matches_found->add(*link_button);
 
-    no_matches_found->set_hexpand(true);
-    no_matches_found->set_vexpand(true);
-    no_matches_found->show_all();
     m_no_matches_box = new Gtk::Grid;
-    m_no_matches_box->attach(*no_matches_found, 0, 0, 1, 1);
+    m_no_matches_box->attach(*link_button, 0, 0, 1, 1);
     m_no_matches_box->show();
   }
   add2(*m_no_matches_box);
