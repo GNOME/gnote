@@ -151,38 +151,6 @@ public:
   // use co-variant return
   virtual Gtk::Grid *embeddable_toolbar() override;
 
-  class NonModifyingNoteAction
-  {
-  public:
-    virtual ~NonModifyingNoteAction() {}
-
-    // these are required to make RefPtr
-    virtual void reference() const = 0;
-    virtual void unreference() const = 0;
-  };
-  class NonModifyingAction
-    : public Gtk::Action
-    , public NonModifyingNoteAction
-  {
-  public:
-    static Glib::RefPtr<NonModifyingAction> create()
-      {
-        return Glib::RefPtr<NonModifyingAction>(new NonModifyingAction);
-      }
-    static Glib::RefPtr<NonModifyingAction> create(const Glib::ustring & name,
-                                                   const Glib::ustring & icon_name,
-                                                   const Glib::ustring & label = Glib::ustring(),
-                                                   const Glib::ustring & tooltip = Glib::ustring())
-      {
-        return Glib::RefPtr<NonModifyingAction>(new NonModifyingAction(name, icon_name, label, tooltip));
-      }
-    NonModifyingAction();
-    NonModifyingAction(const Glib::ustring & name, const Glib::ustring & icon_name,
-                       const Glib::ustring & label = Glib::ustring(),
-                       const Glib::ustring & tooltip = Glib::ustring());
-    virtual void reference() const override;
-    virtual void unreference() const override;
-  };
   virtual std::vector<PopoverWidget> get_popover_widgets() override;
 
   void set_size(int width, int height)

@@ -60,27 +60,6 @@ namespace gnote {
   }
 
 
-  NoteWindow::NonModifyingAction::NonModifyingAction()
-  {}
-
-  NoteWindow::NonModifyingAction::NonModifyingAction(const Glib::ustring & name,
-                                                     const Glib::ustring & icon_name,
-                                                     const Glib::ustring & label,
-                                                     const Glib::ustring & tooltip)
-    : Gtk::Action(name, icon_name, label, tooltip)
-  {}
-
-  void NoteWindow::NonModifyingAction::reference() const
-  {
-    Gtk::Action::reference();
-  }
-
-  void NoteWindow::NonModifyingAction::unreference() const
-  {
-    Gtk::Action::unreference();
-  }
-
-
 
   NoteWindow::NoteWindow(Note & note, IGnote & g)
     : m_note(note)
