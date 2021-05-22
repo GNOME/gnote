@@ -125,7 +125,7 @@ public:
 
       deleteExistingRadio = manage(new Gtk::RadioButton(m_radio_group, _("Overwrite local note")));
       deleteExistingRadio->signal_toggled().connect(sigc::mem_fun(*this, &SyncTitleConflictDialog::radio_toggled));
-      get_vbox()->pack_start(*deleteExistingRadio);
+      get_content_area()->pack_start(*deleteExistingRadio);
 
       alwaysDoThisCheck = manage(new Gtk::CheckButton(_("Always perform this action")));
       get_vbox()->pack_start(*alwaysDoThisCheck);
