@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 
 #include <libxml/tree.h>
 
-#include <gtkmm/imagemenuitem.h>
 #include <gtkmm/messagedialog.h>
 
 #include "sharp/dynamicmodule.hpp"
@@ -73,8 +72,6 @@ private:
                                gnote::NoteManager & manager);
   void show_message_dialog(const Glib::ustring & title, const Glib::ustring & message,
                            Gtk::MessageType messageType);
-
-  Gtk::ImageMenuItem *m_item;
 
   static void _init_static();
   static bool s_static_inited;

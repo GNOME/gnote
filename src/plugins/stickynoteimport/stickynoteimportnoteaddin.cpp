@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013-2014,2017 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014,2017,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,6 @@
 #include <glibmm/keyfile.h>
 #include <glibmm/miscutils.h>
 #include <gtkmm/image.h>
-#include <gtkmm/stock.h>
 
 #include "stickynoteimportnoteaddin.hpp"
 #include "sharp/files.hpp"
@@ -82,8 +81,7 @@ void StickyNoteImportNoteAddin::initialize()
   if (s_sticky_file_might_exist) {
     if (s_sticky_file_existence_confirmed || sharp::file_exists (s_sticky_xml_path)) {
 #if 0
-      m_item = manage(new Gtk::ImageMenuItem (_("Import from Sticky Notes")));
-      m_item->set_image(*manage(new Gtk::Image (Gtk::Stock::CONVERT, Gtk::ICON_SIZE_MENU)));
+      m_item = manage(new Gtk::MenuItem(_("Import from Sticky Notes")));
       m_item->signal_activate().connect(
         sigc::bind(sigc::mem_fun(*this, &StickyNoteImportNoteAddin::import_button_clicked));
       m_item->show ();
