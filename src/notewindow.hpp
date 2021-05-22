@@ -184,7 +184,6 @@ public:
     virtual void unreference() const override;
   };
   virtual std::vector<PopoverWidget> get_popover_widgets() override;
-  virtual std::vector<MainWindowAction::Ptr> get_widget_actions() override;
 
   void set_size(int width, int height)
     {

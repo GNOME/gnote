@@ -322,17 +322,6 @@ namespace gnote {
     return popover_widgets;
   }
 
-  std::vector<MainWindowAction::Ptr> NoteWindow::get_widget_actions()
-  {
-    std::vector<MainWindowAction::Ptr> res;
-    EmbeddableWidgetHost *h = host();
-    if(h != NULL) {
-      h->find_action("important-note");
-      h->find_action("delete-note");
-    }
-    return res;
-  }
-
     // Delete this Note.
     //
 
@@ -597,12 +586,6 @@ namespace gnote {
     embeddable_toolbar()->set_sensitive(m_enabled);
     if(m_global_keys)
       m_global_keys->enabled(m_enabled);
-    for(const MainWindowAction::Ptr & action : get_widget_actions()) {
-      // A list includes empty actions to mark separators, non-modifying actions are always enabled
-      if(action && !Glib::RefPtr<NonModifyingNoteAction>::cast_dynamic(action)) {
-        action->set_enabled(enable);
-      }
-    }
   }
 
 

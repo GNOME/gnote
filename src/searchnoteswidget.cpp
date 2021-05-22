@@ -1467,12 +1467,6 @@ std::vector<PopoverWidget> SearchNotesWidget::get_popover_widgets()
   return popover_widgets;
 }
 
-std::vector<MainWindowAction::Ptr> SearchNotesWidget::get_widget_actions()
-{
-  std::vector<MainWindowAction::Ptr> actions;
-  return actions;
-}
-
 void SearchNotesWidget::on_settings_changed()
 {
   if(m_note_list_context_menu) {

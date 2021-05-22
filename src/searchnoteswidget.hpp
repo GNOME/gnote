@@ -55,7 +55,6 @@ public:
   virtual void set_initial_focus() override;
   virtual void perform_search(const Glib::ustring & search_text) override;
   virtual std::vector<PopoverWidget> get_popover_widgets() override;
-  virtual std::vector<MainWindowAction::Ptr> get_widget_actions() override;
 
   void select_all_notes_notebook();
   void new_note();
