@@ -139,10 +139,10 @@ namespace printnotes {
       Glib::RefPtr<Gtk::TextTag> tag(*iter);
 
       if (tag->property_paragraph_background_set()) {
-        Gdk::Color color = tag->property_paragraph_background_gdk();
+        Gdk::RGBA color = tag->property_paragraph_background_rgba();
         attributes.push_back(Pango::Attribute::create_attr_background(
-                               color.get_red(), color.get_green(),
-                               color.get_blue()));
+                               color.get_red_u(), color.get_green_u(),
+                               color.get_blue_u()));
       }
       if (tag->property_foreground_set()) {
         Gdk::RGBA color = tag->property_foreground_rgba();
