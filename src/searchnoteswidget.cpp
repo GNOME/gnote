@@ -205,7 +205,6 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 
   m_notebooksTree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);
   m_notebooksTree->set_headers_visible(true);
-  m_notebooksTree->set_rules_hint(false);
 
   Gtk::CellRenderer *renderer;
 
@@ -661,7 +660,6 @@ void SearchNotesWidget::make_recent_tree()
 
   m_tree = manage(new RecentTreeView());
   m_tree->set_headers_visible(true);
-  m_tree->set_rules_hint(true);
   m_tree->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
   m_tree->get_selection()->set_mode(Gtk::SELECTION_MULTIPLE);
   m_tree->get_selection()->signal_changed().connect(
