@@ -43,8 +43,6 @@ class NoteEditor
   : public Gtk::TextView
 {
 public:
-  typedef Glib::RefPtr<NoteEditor> Ptr;
-
   NoteEditor(const Glib::RefPtr<Gtk::TextBuffer> & buffer, Preferences & preferences);
   static int default_margin()
     {
