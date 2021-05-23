@@ -128,7 +128,7 @@ public:
       get_content_area()->pack_start(*deleteExistingRadio);
 
       alwaysDoThisCheck = manage(new Gtk::CheckButton(_("Always perform this action")));
-      get_vbox()->pack_start(*alwaysDoThisCheck);
+      get_content_area()->pack_start(*alwaysDoThisCheck);
 
       continueButton = add_button(_("_Continue"), Gtk::RESPONSE_ACCEPT);
 
