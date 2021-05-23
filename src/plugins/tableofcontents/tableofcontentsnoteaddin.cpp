@@ -65,7 +65,8 @@ Gtk::MenuItem *new_toc_menu_item ()
   Gtk::MenuItem * menu_item = manage(new Gtk::MenuItem);
 
   Gtk::AccelLabel *acclabel = manage(new Gtk::AccelLabel(_("Table of Contents")));
-  acclabel->set_alignment (Gtk::ALIGN_START);
+  acclabel->set_halign(Gtk::ALIGN_START);
+  acclabel->set_valign(Gtk::ALIGN_START);
   /* I don't have gtkmm-3.6, but I have gtk-3.6 */
   /* TO UNCOMMENT *///acclabel->set_accel (GDK_KEY_1, Gdk::CONTROL_MASK | Gdk::MOD1_MASK);
   /* TO DELETE    */gtk_accel_label_set_accel (acclabel->gobj (),GDK_KEY_1, GdkModifierType (GDK_CONTROL_MASK | GDK_MOD1_MASK));
@@ -371,7 +372,7 @@ void TableofcontentsNoteAddin::on_toc_popup_activated()
     populate_toc_menu(m_toc_menu, false);
     m_toc_menu_built = true;
   }
-  m_toc_menu->popup(0, 0);
+  m_toc_menu->popup_at_pointer(nullptr);
 }
 void TableofcontentsNoteAddin::on_toc_help_activated()
 {
