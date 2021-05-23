@@ -936,7 +936,7 @@ bool SearchNotesWidget::on_treeview_motion_notify(GdkEventMotion *ev)
     return retval;
   }
 
-  m_tree->drag_begin(Gtk::TargetList::create (m_targets), Gdk::ACTION_MOVE, 1, event);
+  m_tree->drag_begin(Gtk::TargetList::create (m_targets), Gdk::ACTION_MOVE, 1, event, 0, 0);
   return retval;
 }
 
