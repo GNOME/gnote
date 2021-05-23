@@ -23,7 +23,6 @@
 
 
 #include <gtkmm/entry.h>
-#include <gtkmm/table.h>
 
 #include "sharp/dynamicmodule.hpp"
 #include "synchronization/gvfssyncservice.hpp"
@@ -88,7 +87,7 @@ private:
   void save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password);
   bool get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password);
   bool accept_ssl_cert();
-  void add_row(Gtk::Table *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row);
+  void add_row(Gtk::Grid *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row);
 
   Gtk::Entry *m_url_entry;
   Gtk::Entry *m_username_entry;

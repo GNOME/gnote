@@ -93,9 +93,9 @@ WebDavSyncServiceAddin * WebDavSyncServiceAddin::create()
 
 Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(EventHandler requiredPrefChanged)
 {
-  Gtk::Table *table = new Gtk::Table(3, 2, false);
-  table->set_row_spacings(5);
-  table->set_col_spacings(10);
+  auto table = new Gtk::Grid;
+  table->set_row_spacing(5);
+  table->set_column_spacing(10);
 
   // Read settings out of gconf
   Glib::ustring url, username, password;
@@ -301,22 +301,16 @@ bool WebDavSyncServiceAddin::accept_ssl_cert()
   }
 }
 
-void WebDavSyncServiceAddin::add_row(Gtk::Table *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row)
+void WebDavSyncServiceAddin::add_row(Gtk::Grid *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row)
 {
   Gtk::Label *l = new Gtk::Label(labelText);
   l->set_use_underline(true);
   l->property_xalign() = 0.0f;
   l->show();
-  table->attach(*l, 0, 1, row, row + 1,
-		Gtk::FILL,
-		Gtk::EXPAND | Gtk::FILL,
-		0, 0);
+  table->attach(*l, 0, row);
 
   widget->show();
-  table->attach(*widget, 1, 2, row, row + 1,
-		Gtk::EXPAND | Gtk::FILL,
-		Gtk::EXPAND | Gtk::FILL,
-		0, 0);
+  table->attach(*widget, 1, row);
 
   l->set_mnemonic_widget(*widget);
 
