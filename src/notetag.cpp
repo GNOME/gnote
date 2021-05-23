@@ -162,7 +162,7 @@ namespace gnote {
 
   bool NoteTag::on_event(const Glib::RefPtr<Glib::Object> & sender, GdkEvent *ev, const Gtk::TextIter & iter)
   {
-    NoteEditor::Ptr editor = NoteEditor::Ptr::cast_dynamic(sender);
+    auto editor = dynamic_cast<NoteEditor*>(sender.get());
     Gtk::TextIter start, end;
 
     if (!can_activate())
@@ -197,7 +197,7 @@ namespace gnote {
         return false;
 
       // Prevent activation when selecting links with the mouse
-      if (editor->get_buffer()->get_has_selection()) {
+      if(editor && editor->get_buffer()->get_has_selection()) {
         return false;
       }
 
@@ -211,7 +211,9 @@ namespace gnote {
       }
 
       get_extents (iter, start, end);
-      on_activate (*(editor.operator->()), start, end);
+      if(editor) {
+        on_activate(*editor, start, end);
+      }
       return false;
     }
     case GDK_KEY_PRESS:
@@ -229,7 +231,9 @@ namespace gnote {
         return false;
 
       get_extents (iter, start, end);
-      return on_activate (*(editor.operator->()), start, end);
+      if(editor) {
+        return on_activate(*editor, start, end);
+      }
     }
     default:
       break;
