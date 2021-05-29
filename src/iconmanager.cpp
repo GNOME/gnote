@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ const char *IconManager::BUG = "bug";
 const char *IconManager::EMBLEM_PACKAGE = "emblem-package";
 const char *IconManager::FILTER_NOTE_ALL = "filter-note-all";
 const char *IconManager::FILTER_NOTE_UNFILED = "filter-note-unfiled";
-const char *IconManager::GNOTE = "gnote";
+const char *IconManager::GNOTE = "org.gnome.Gnote";
 const char *IconManager::NOTE = "note";
 const char *IconManager::NOTE_NEW = "note-new";
 const char *IconManager::NOTEBOOK = "notebook";
