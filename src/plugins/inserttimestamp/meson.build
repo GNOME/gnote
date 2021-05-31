@@ -26,5 +26,6 @@ shared_library(
   link_with: libgnote_shared_lib,
   install: true,
   install_dir: addins_install_dir,
+  cpp_args: compiler_flags,
 )
 

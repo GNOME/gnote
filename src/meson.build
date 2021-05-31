@@ -80,7 +80,6 @@ gnote_sources = [
   'synchronization/syncmanager.cpp',
   'main.cpp',
 ]
-
 dbus_sources = [
   'remotecontrolproxy.cpp',
   'dbus/remotecontrol.cpp',
@@ -89,6 +88,8 @@ dbus_sources = [
 ]
 
 threads_support = dependency('threads')
+compiler_flags = [
+]
 
 libgnote_shared_lib = shared_library(
   'gnote-@0@'.format(gnote_release),
@@ -97,6 +98,7 @@ libgnote_shared_lib = shared_library(
   dependencies: dependencies,
   include_directories: root_include_dir,
   install: true,
+  cpp_args: compiler_flags,
 )
 
 gnote = executable(
@@ -106,6 +108,7 @@ gnote = executable(
   include_directories: root_include_dir,
   link_with: libgnote_shared_lib,
   install: true,
+  cpp_args: compiler_flags,
 )
 
 src_include_dir = include_directories('.')
