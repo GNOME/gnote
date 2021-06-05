@@ -76,7 +76,7 @@ private:
   void on_delete_note();
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
-  EmbeddableWidget *currently_embedded();
+  EmbeddableWidget *currently_foreground();
   void make_header_bar();
   void make_search_box();
   void make_find_next_prev();
