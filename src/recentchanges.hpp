@@ -117,7 +117,7 @@ private:
   Gtk::Button        *m_all_notes_button;
   Gtk::Button        *m_new_note_button;
   Gtk::Button        *m_window_actions_button;
-  std::vector<EmbeddableWidget*> m_embedded_widgets;
+  EmbeddableWidget*   m_embedded_widget;
   bool                m_mapped;
   sigc::connection    m_current_embedded_name_slot;
   sigc::connection    m_signal_popover_widgets_changed_cid;
