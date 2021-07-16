@@ -23,6 +23,14 @@
  <update_contact>aurisc4_at_gmail.com</update_contact>
  <content_rating type="oars-1.1"/>
  <releases>
+  <release version="41.alpha" date="2021-07-16">
+    <ul>
+      <li>Build system changed to meson</li>
+      <li>Plugins now stored in plugins folder instead of addins</li>
+      <li>Fix synchronization when files are larger than 64k (#50)</li>
+      <li>Stopped using lots of Glib and Gtk deprecations</li>
+    </ul>
+  </release>
   <release version="40.0" date="2021-03-26">
     <ul>
       <li>Translation updates</li>
