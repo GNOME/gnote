@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2016,2019 Aurimas Cernius
+ * Copyright (C) 2012-2016,2019,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -88,10 +88,6 @@ public:
         throw sharp::Exception("Plugin is disposing already");
       }
       return m_note->get_buffer();
-    }
-  bool has_window() const
-    {
-      return m_note->has_window();
     }
   NoteWindow * get_window() const
     {
