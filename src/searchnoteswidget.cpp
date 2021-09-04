@@ -131,8 +131,7 @@ SearchNotesWidget::~SearchNotesWidget()
 Glib::ustring SearchNotesWidget::get_name() const
 {
   notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
-  if(!selected_notebook
-     || std::dynamic_pointer_cast<notebooks::AllNotesNotebook>(selected_notebook)) {
+  if(!selected_notebook) {
     return "";
   }
   return selected_notebook->get_name();

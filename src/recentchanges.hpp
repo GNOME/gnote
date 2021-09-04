@@ -26,6 +26,7 @@
 
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/notebook.h>
 #include <gtkmm/popovermenu.h>
 
 #include "mainwindowaction.hpp"
@@ -77,6 +78,8 @@ private:
   bool on_delete(GdkEventAny *);
   bool on_key_pressed(GdkEventKey *);
   EmbeddableWidget *currently_foreground();
+  void on_current_page_changed(Gtk::Widget *new_page, guint page_number);
+  void on_foreground_embedded(EmbeddableWidget & widget);
   void make_header_bar();
   void make_search_box();
   void make_find_next_prev();
@@ -93,11 +96,11 @@ private:
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
   Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items);
-  void on_embedded_name_changed(const Glib::ustring & name);
   bool on_notes_widget_key_press(GdkEventKey*);
   void on_close_window(const Glib::VariantBase&);
   void add_action(const MainWindowAction::Ptr & action);
   void on_popover_widgets_changed();
+  bool present_active(const Note::Ptr & note);
 
   IGnote             &m_gnote;
   NoteManagerBase    &m_note_manager;
@@ -113,13 +116,11 @@ private:
   };
   Gtk::ToggleButton   m_search_button;
   Gtk::Grid           m_embedded_toolbar;
-  Gtk::Grid           m_embed_box;
+  Gtk::Notebook       m_embed_book;
   Gtk::Button        *m_all_notes_button;
   Gtk::Button        *m_new_note_button;
   Gtk::Button        *m_window_actions_button;
-  EmbeddableWidget*   m_embedded_widget;
   bool                m_mapped;
-  sigc::connection    m_current_embedded_name_slot;
   sigc::connection    m_signal_popover_widgets_changed_cid;
   utils::InterruptableTimeout *m_entry_changed_timeout;
   Gtk::PopoverMenu     *m_window_menu_embedded;

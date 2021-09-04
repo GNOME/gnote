@@ -46,6 +46,42 @@ namespace gnote {
   namespace {
     const char *MAIN_MENU_PRIMARY_ICON = "open-menu-symbolic";
     const char *MAIN_MENU_SECONDARY_ICON = "view-more-symbolic";
+
+    class TabLabel
+      : public Gtk::Box
+    {
+    public:
+      TabLabel(const Glib::ustring & label, EmbeddableWidget & widget, bool show_button)
+        : m_embed(widget)
+        , m_label(label)
+      {
+        m_label.show();
+
+        pack_start(m_label);
+        if (show_button) {
+          m_close_button.set_image_from_icon_name("window-close-symbolic");
+          m_close_button.set_relief(Gtk::RELIEF_NONE);
+          m_close_button.set_focus_on_click(false);
+          m_close_button.set_tooltip_text(_("Close"));
+          m_close_button.show();
+          pack_start(m_close_button);
+          m_close_button.signal_clicked().connect([this] { signal_close(m_embed); });
+        }
+
+        widget.signal_name_changed.connect(sigc::mem_fun(*this, &TabLabel::on_embedded_name_changed));
+      }
+
+      sigc::signal<void, EmbeddableWidget&> signal_close;
+    private:
+      void on_embedded_name_changed(const Glib::ustring & name)
+      {
+        m_label.set_text(name);
+      }
+
+      EmbeddableWidget & m_embed;
+      Gtk::Label m_label;
+      Gtk::Button m_close_button;
+    };
   }
 
   NoteRecentChanges::NoteRecentChanges(IGnote & g, NoteManagerBase & m)
@@ -56,7 +92,6 @@ namespace gnote {
     , m_search_box(nullptr)
     , m_find_next_prev_box(nullptr)
     , m_search_entry(nullptr)
-    , m_embedded_widget(nullptr)
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
     , m_window_menu_embedded(NULL)
@@ -65,10 +100,17 @@ namespace gnote {
     , m_keybinder(m_accel_group)
   {
     add_accel_group(m_accel_group);
-    set_default_size(450,400);
     set_resizable(true);
     if(g.preferences().main_window_maximized()) {
       maximize();
+    }
+    int width = m_gnote.preferences().search_window_width();
+    int height = m_gnote.preferences().search_window_height();
+    if(width && height) {
+      set_default_size(width, height);
+    }
+    else {
+      set_default_size(450,400);
     }
 
     set_icon_name(IconManager::GNOTE);
@@ -91,11 +133,14 @@ namespace gnote {
     else {
       content->attach(*m_header_bar, 0, content_y_attach++, 1, 1);
     }
-    content->attach(m_embed_box, 0, content_y_attach++, 1, 1);
-    m_embed_box.set_hexpand(true);
-    m_embed_box.set_vexpand(true);
-    m_embed_box.show();
+    content->attach(m_embed_book, 0, content_y_attach++, 1, 1);
+    m_embed_book.set_hexpand(true);
+    m_embed_book.set_vexpand(true);
+    m_embed_book.show();
     content->show();
+    m_embed_book.signal_switch_page().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_current_page_changed), false);
+    m_search_notes_widget->show();
+    embed_widget(*m_search_notes_widget);
 
     add(*content);
     signal_delete_event().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete));
@@ -130,13 +175,22 @@ namespace gnote {
     }
     find_action("close-window")->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
-
-    embed_widget(*m_search_notes_widget);
+    set_title(_("Gnote"));
   }
 
 
   NoteRecentChanges::~NoteRecentChanges()
   {
+    int page_idx = m_embed_book.get_current_page();
+    if(page_idx >= 0) {
+      // to avoid page switching, first remove all pages prior to current, then remove from the end
+      for(int i = 0; i < page_idx; ++i) {
+        m_embed_book.remove_page(0);
+      }
+      while(m_embed_book.get_n_pages() > 0) {
+        m_embed_book.remove_page(-1);
+      }
+    }
     if(m_entry_changed_timeout) {
       delete m_entry_changed_timeout;
     }
@@ -260,9 +314,9 @@ namespace gnote {
     m_search_box->set_halign(Gtk::ALIGN_CENTER);
     m_search_box->show();
 
-    auto content = dynamic_cast<Gtk::Grid*>(m_embed_box.get_parent());
+    auto content = dynamic_cast<Gtk::Grid*>(m_embed_book.get_parent());
     if(content) {
-      content->attach_next_to(*m_search_box, m_embed_box, Gtk::POS_TOP);
+      content->attach_next_to(*m_search_box, m_embed_book, Gtk::POS_TOP);
     }
     else {
       ERR_OUT(_("Parent of embed box is not a Gtk::Grid, please report a bug!"));
@@ -395,14 +449,23 @@ namespace gnote {
 
   void NoteRecentChanges::present_note(const Note::Ptr & note)
   {
-    embed_widget(*note->create_window());
+    if(note && note->has_window()) {
+      auto win = note->get_window();
+      if(win->host()) {
+        win->host()->unembed_widget(*win);
+      }
+      embed_widget(*win);
+    }
+    else {
+      embed_widget(*note->create_window());
+    }
   }
 
 
   void NoteRecentChanges::new_note()
   {
-    std::vector<Gtk::Widget*> current = m_embed_box.get_children();
-    SearchNotesWidget *search_wgt = dynamic_cast<SearchNotesWidget*>(current.size() > 0 ? current[0] : NULL);
+    auto current = m_embed_book.get_nth_page(0);
+    SearchNotesWidget *search_wgt = dynamic_cast<SearchNotesWidget*>(current);
     if(search_wgt) {
       search_wgt->new_note();
     }
@@ -434,7 +497,33 @@ namespace gnote {
     m_search_notes_widget->delete_selected_notes();
   }
 
+  bool NoteRecentChanges::present_active(const Note::Ptr & note)
+  {
+    if(note && note->has_window()) {
+      auto note_window = note->get_window();
+      auto win = dynamic_cast<NoteRecentChanges*>(note_window->host());
+      if(!win) {
+        return false;
+      }
+      if(win == this) {
+        int n_pages = m_embed_book.get_n_pages();
+        for(int i = 0; i < n_pages; ++i) {
+          if(m_embed_book.get_nth_page(i) == note_window) {
+            m_embed_book.set_current_page(i);
+            break;
+          }
+        }
+      }
+      else {
+        win->present_active(note);
+        win->present();
+      }
 
+      return true;
+    }
+
+    return false;
+  }
 
   void NoteRecentChanges::close_window()
   {
@@ -443,17 +532,20 @@ namespace gnote {
     if(win) {
       m_preferences.main_window_maximized(win->get_state() & Gdk::WINDOW_STATE_MAXIMIZED);
     }
-    std::vector<Gtk::Widget*> current = m_embed_box.get_children();
-    for(std::vector<Gtk::Widget*>::iterator iter = current.begin();
-        iter != current.end(); ++iter) {
-      EmbeddableWidget *widget = dynamic_cast<EmbeddableWidget*>(*iter);
+
+    if(m_embed_book.get_n_pages() > 0) {
+      EmbeddableWidget *widget = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(m_embed_book.get_current_page()));
       if(widget) {
         background_embedded(*widget);
       }
-    }
-    if(m_embedded_widget) {
-      m_embedded_widget->unembed();
-      m_embedded_widget = nullptr;
+
+      int n_pages = m_embed_book.get_n_pages();
+      for(int i = 0; i < n_pages; ++i) {
+        EmbeddableWidget *widget = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(i));
+        if(widget) {
+          widget->unembed();
+        }
+      }
     }
 
     hide();
@@ -515,8 +607,8 @@ namespace gnote {
     // Select "All Notes" in the notebooks list
     m_search_notes_widget->select_all_notes_notebook();
 
-    EmbeddableWidget *widget = m_embedded_widget ? m_embedded_widget : m_search_notes_widget;
-    foreground_embedded(*widget);
+    int current_page = m_embed_book.get_current_page();
+    EmbeddableWidget *widget = current_page >= 0 ? dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(current_page)) : nullptr;
 
     MainWindow::on_show();
 
@@ -546,75 +638,67 @@ namespace gnote {
 
   void NoteRecentChanges::embed_widget(EmbeddableWidget & widget)
   {
-    EmbeddableWidget *current = currently_foreground();
-    if(current == &widget) {
+    auto win = dynamic_cast<Gtk::Widget*>(&widget);
+    if(!win) {
       return;
     }
-    if(m_embedded_widget) {
-      unembed_widget(*m_embedded_widget);
-    }
-    m_embedded_widget = &widget;
+    win->show();
     widget.embed(this);
-   if(get_visible()) {
-      foreground_embedded(widget);
+    bool allow_close = &widget != m_search_notes_widget;
+    auto tab_label = manage(new TabLabel(widget.get_name(), widget, allow_close));
+    if (allow_close) {
+      tab_label->signal_close.connect(sigc::mem_fun(*this, &NoteRecentChanges::unembed_widget));
     }
+    tab_label->show();
+    int idx = m_embed_book.append_page(*win, *tab_label);
+    m_embed_book.set_current_page(idx);
   }
 
   void NoteRecentChanges::unembed_widget(EmbeddableWidget & widget)
   {
-    bool show_search = false;
-    if(&widget == m_embedded_widget) {
-      if(is_foreground(widget)) {
-        background_embedded(widget);
-        show_search = true;
+    int n_pages = m_embed_book.get_n_pages();
+    int page_to_remove = -1;
+    Gtk::Widget *wid = dynamic_cast<Gtk::Widget*>(&widget);
+    for(int i = 0; i < n_pages; ++i) {
+      if(m_embed_book.get_nth_page(i) == wid) {
+        page_to_remove = i;
+        break;
       }
-      m_embedded_widget = nullptr;
-      widget.unembed();
     }
-    if(show_search) {
-      foreground_embedded(*m_search_notes_widget);
+    if(page_to_remove < 0) {
+      return;
     }
+    if(n_pages > 1 && page_to_remove == m_embed_book.get_current_page()) {
+      int new_page = (page_to_remove == n_pages - 1) ? page_to_remove - 1 : page_to_remove + 1;
+      m_embed_book.set_current_page(new_page);
+    }
+
+    m_embed_book.remove_page(page_to_remove);
+    widget.unembed();
   }
 
   void NoteRecentChanges::foreground_embedded(EmbeddableWidget & widget)
   {
     try {
-      EmbeddableWidget *current_foreground = currently_foreground();
-      if(current_foreground == &widget) {
+      int idx = m_embed_book.page_num(dynamic_cast<Gtk::Widget&>(widget));
+      if(idx < 0) {
+        ERR_OUT(_("Attempt to foreground a widget, that is not embedded in the window"));
         return;
       }
-      else if(current_foreground) {
-        background_embedded(*current_foreground);
-      }
-      Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
-      m_embed_box.add(wid);
-      wid.show();
-      widget.foreground();
 
-      bool maximized = m_preferences.main_window_maximized();
-      if(get_realized()) {
-        //if window is showing, use actual state
-        maximized = get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED;
-      }
-      int width = 0, height = 0;
-      widget.hint_size(width, height);
-      if(width && height) {
-        set_default_size(width, height);
-        if(!maximized && get_visible()) {
-          resize(width, height);
-        }
-      }
+      m_embed_book.set_current_page(idx);
+    }
+    catch(std::bad_cast&) {
+      ERR_OUT(_("Attempt to foreground a widget, that is not Gtk::Widget"));
+    }
+  }
+
+  void NoteRecentChanges::on_foreground_embedded(EmbeddableWidget & widget)
+  {
+    try {
+      widget.foreground();
       widget.size_internals();
- 
       update_toolbar(widget);
-      if(&widget == m_search_notes_widget) {
-        set_title(_("Gnote"));
-      }
-      else {
-        set_title(widget.get_name());
-        m_current_embedded_name_slot = widget.signal_name_changed
-          .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_embedded_name_changed));
-      }
     }
     catch(std::bad_cast&) {
     }
@@ -633,21 +717,11 @@ namespace gnote {
 
   void NoteRecentChanges::background_embedded(EmbeddableWidget & widget)
   {
-    try {
-      if(currently_foreground() != &widget) {
-        return;
-      }
-      Gtk::Widget &wid = dynamic_cast<Gtk::Widget&>(widget);
-      widget.background();
-      m_embed_box.remove(wid);
-      m_signal_popover_widgets_changed_cid.disconnect();
-      m_current_embedded_name_slot.disconnect();
+    widget.background();
+    m_signal_popover_widgets_changed_cid.disconnect();
 
-      if(m_window_menu_embedded) {
-        m_window_menu_embedded = NULL;
-      }
-    }
-    catch(std::bad_cast&) {
+    if(m_window_menu_embedded) {
+      m_window_menu_embedded = NULL;
     }
 
     auto children = m_embedded_toolbar.get_children();
@@ -656,24 +730,40 @@ namespace gnote {
     }
   }
 
-  bool NoteRecentChanges::contains(EmbeddableWidget & widget)
+  void NoteRecentChanges::on_current_page_changed(Gtk::Widget *new_page, guint)
   {
-    if(&widget == m_search_notes_widget) {
-      return true;
+    int idx = m_embed_book.get_current_page();
+    if(idx >= 0) {
+      EmbeddableWidget *w = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(idx));
+      if(w) {
+        background_embedded(*w);
+      }
     }
 
-    return &widget == m_embedded_widget;
+    auto widget = dynamic_cast<EmbeddableWidget*>(new_page);
+    if(widget) {
+      on_foreground_embedded(*widget);
+    }
+  }
+
+  bool NoteRecentChanges::contains(EmbeddableWidget & widget)
+  {
+    try {
+      return m_embed_book.page_num(dynamic_cast<Gtk::Widget&>(widget)) >= 0;
+    }
+    catch(std::bad_cast &) {
+      return false;
+    }
   }
 
   bool NoteRecentChanges::is_foreground(EmbeddableWidget & widget)
   {
-    for(Gtk::Widget *wgt : m_embed_box.get_children()) {
-      if(dynamic_cast<EmbeddableWidget*>(wgt) == &widget) {
-        return true;
-      }
+    int idx = m_embed_book.get_current_page();
+    if(idx < 0) {
+      return false;
     }
 
-    return false;
+    return m_embed_book.get_nth_page(idx) == dynamic_cast<Gtk::Widget*>(&widget);
   }
 
   void NoteRecentChanges::add_action(const MainWindowAction::Ptr & action)
@@ -702,8 +792,12 @@ namespace gnote {
 
   EmbeddableWidget *NoteRecentChanges::currently_foreground()
   {
-    std::vector<Gtk::Widget*> children = m_embed_box.get_children();
-    return children.size() ? dynamic_cast<EmbeddableWidget*>(children[0]) : NULL;
+    auto n = m_embed_book.get_current_page();
+    if(n < 0) {
+      return nullptr;
+    }
+
+    return dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(n));
   }
 
   bool NoteRecentChanges::on_map_event(GdkEventAny *evt)
@@ -873,11 +967,6 @@ namespace gnote {
     menu->set_modal(true);
     menu->set_position(Gtk::POS_BOTTOM);
     return menu;
-  }
-
-  void NoteRecentChanges::on_embedded_name_changed(const Glib::ustring & name)
-  {
-    set_title(name);
   }
 
   void NoteRecentChanges::on_popover_widgets_changed()

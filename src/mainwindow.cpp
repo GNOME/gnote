@@ -50,30 +50,17 @@ void MainWindow::present_in(MainWindow & win, const Note::Ptr & note)
   win.present();
 }
 
-MainWindow *MainWindow::present_active(const Note::Ptr & note)
-{
-  if(note && note->has_window() && note->get_window()->host()
-     && note->get_window()->host()->is_foreground(*note->get_window())) {
-    MainWindow *win = dynamic_cast<MainWindow*>(note->get_window()->host());
-    win->present();
-    return win;
-  }
-
-  return NULL;
-}
-
 MainWindow *MainWindow::present_in_new_window(IGnote & g, const Note::Ptr & note, bool close_on_esc)
 {
   if(!note) {
     return NULL;
   }
-  if(!MainWindow::present_active(note)) {
-    MainWindow & window = g.new_main_window();
-    window.present_note(note);
-    window.present();
-    window.close_on_escape(close_on_esc);
-    return &window;
-  }
+
+  MainWindow & window = g.new_main_window();
+  window.present_note(note);
+  window.present();
+  window.close_on_escape(close_on_esc);
+  return &window;
 
   return NULL;
 }
@@ -83,25 +70,21 @@ MainWindow *MainWindow::present_default(IGnote & g, const Note::Ptr & note)
   if(!note) {
     return NULL;
   }
-  MainWindow *win = MainWindow::present_active(note);
-  if(win) {
-    return win;
-  }
-  if(false == g.preferences().open_notes_in_new_window()) {
-    if (note->has_window()) {
-      win = dynamic_cast<MainWindow*>(note->get_window()->host());
-    }
-    else {
-      win = &g.get_window_for_note();
+  if(note->has_window()) {
+    auto note_window = note->get_window();
+    if(note_window->host()) {
+      MainWindow *win = dynamic_cast<MainWindow*>(note_window->host());
+      if(win) {
+        win->present_note(note);
+        return win;
+      }
     }
   }
-  if(!win) {
-    win = &g.new_main_window();
-    win->close_on_escape(g.preferences().enable_close_note_on_escape());
-  }
-  win->present_note(note);
-  win->present();
-  return win;
+
+  MainWindow & win = g.get_window_for_note();
+  win.present_note(note);
+  win.present();
+  return &win;
 }
 
 bool MainWindow::use_client_side_decorations(Preferences & prefs)
