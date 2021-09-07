@@ -1,0 +1,3794 @@
+# Dutch translation for Gnote.
+#
+# This file is distributed under the same license as the Gnote package.
+#
+#
+# Pjotr <pjotrvertaalt@gmail.com>, 2021.
+# Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: Gnote\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
+"POT-Creation-Date: 2021-09-04 20:14+0000\n"
+"PO-Revision-Date: 2021-04-28 12:13+0200\n"
+"Last-Translator: Hannie Dumoleyn <hannie@ubuntu-nl.org>\n"
+"Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2021-04-18 21:44+0000\n"
+"X-Generator: Lokalize 19.12.3\n"
+
+#: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
+#: src/recentchanges.cpp:52 src/recentchanges.cpp:611
+msgid "Gnote"
+msgstr "Gnote"
+
+#: data/org.gnome.Gnote.appdata.xml.in:8
+msgid "A simple note-taking application"
+msgstr "Een eenvoudig notitieboekje"
+
+#: data/org.gnome.Gnote.appdata.xml.in:10
+msgid ""
+"Gnote is a simple note-taking application for GNOME desktop environment. It "
+"allows you to capture your ideas, link them together using WikiWiki-style "
+"links, group together in notebooks and some extra features for everyday use."
+msgstr ""
+"Gnote is een eenvoudige notitietoepassing voor de Gnome-bureaubladomgeving. "
+"U kunt er uwideeën in vastleggen, ze aan elkaar koppelen met behulp van "
+"WikiWiki-stijl-koppelingen, groeperen in notitieboekjes en het heeft enkele "
+"extra functies voor dagelijks gebruik."
+
+#: data/org.gnome.Gnote.appdata.xml.in:13
+msgid "Notes can be printed or exported as HTML documents."
+msgstr "U kunt notities afdrukken of uitvoeren als HTML-document."
+
+#: data/org.gnome.Gnote.appdata.xml.in:14
+msgid ""
+"Gnote also supports synchronization, making it simple to use it on multiple "
+"devices."
+msgstr ""
+"Gnote ondersteunt ook synchronisatie, waardoor u het eenvoudig kunt "
+"gebruiken op meerdere apparaten."
+
+# Vrij vertaald (Wouter Bolsterlee)
+#: data/org.gnome.Gnote.desktop.in:4
+msgid "Take notes, link ideas, and stay organized"
+msgstr "Maak notities, koppel ideeën en blijf georganiseerd"
+
+#: data/org.gnome.Gnote.desktop.in:5
+msgid "Note-taker"
+msgstr "Notitieboekje"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Gnote.desktop.in:7
+msgid "notes;idea;link;organize;"
+msgstr "notities;idee;koppelen;organiseren;"
+
+#: data/org.gnome.gnote.gschema.xml:6
+msgid "Enable spellchecking"
+msgstr "Spellingcontrole gebruiken"
+
+#: data/org.gnome.gnote.gschema.xml:7
+msgid ""
+"If true, misspellings will be underlined in red, and correct spelling "
+"suggestions shown in the right-click menu."
+msgstr ""
+"Indien ingeschakeld zullen spelfouten rood worden onderstreept en zullen "
+"door rechts te klikken correctie-suggesties in een menu verschijnen."
+
+#: data/org.gnome.gnote.gschema.xml:11
+msgid "Automatically create links when typing"
+msgstr "Tijdens het typen automatisch koppelingen maken"
+
+#: data/org.gnome.gnote.gschema.xml:12
+msgid ""
+"Enable this option to automatically create a link, when text matches note "
+"title."
+msgstr ""
+"Schakel deze optie in om automatisch een koppeling te maken wanneer de tekst "
+"overeenkomt met de titel van een notitie."
+
+#: data/org.gnome.gnote.gschema.xml:16
+msgid "Create links for URLs in notes"
+msgstr "Maak koppelingen voor webadressen in notities"
+
+#: data/org.gnome.gnote.gschema.xml:17
+msgid "Enable this option to create links for URLs in notes."
+msgstr ""
+"Schakel deze optie in om koppelingen voor webadressen te maken in notities."
+
+#: data/org.gnome.gnote.gschema.xml:21
+msgid "Enable WikiWord highlighting"
+msgstr "WikiWord-markering inschakelen"
+
+# Clicking vertaald naar dubbelklikken. Ik neem aan dat dit klopt - Hannie
+#: data/org.gnome.gnote.gschema.xml:22
+msgid ""
+"Enable this option to highlight words ThatLookLikeThis. Clicking the word "
+"will create a note with that name."
+msgstr ""
+"Deze optie zorgt ervoor dat woorden DieErZoUitzien worden gemarkeerd. Door "
+"op zo'n woord te dubbelklikken maakt u een nieuwe notitie aan met die naam."
+
+#: data/org.gnome.gnote.gschema.xml:26
+msgid "Enable Auto bulleted lists"
+msgstr "Lijsten met automatische opsommingstekens inschakelen"
+
+#: data/org.gnome.gnote.gschema.xml:27
+msgid ""
+"Enable this option if you want bulleted lists to be automatic when you place "
+"- or * at the beginning of a line."
+msgstr ""
+"Schakel deze optie in voor automatische opsommingstekens bij het typen van "
+"‘-’ of ‘*’ aan het begin van een regel."
+
+#: data/org.gnome.gnote.gschema.xml:31
+msgid "Enable Middle-Click Paste On Icon"
+msgstr "Plakken met middelste muisknop-klik op het pictogram inschakelen"
+
+# Een tijdstempel is een numerieke waarde in seconden tussen de huidige tijd en per 1 januari 1970 00:00:00 Greenwich Mean Time (GMT). - Hannie
+#: data/org.gnome.gnote.gschema.xml:32
+msgid ""
+"Enable this option if you want to be able to middle-click the Gnote icon to "
+"paste timestamped content into the Start Here note."
+msgstr ""
+"Schakel deze optie in als u met de middelste muisknop op het Gnote-pictogram "
+"wilt kunnen klikken om inhoud met een tijdstempel in de ‘Begin hier’-notitie "
+"te plakken."
+
+#: data/org.gnome.gnote.gschema.xml:36
+msgid "Enable custom font"
+msgstr "Aangepast lettertype gebruiken"
+
+#: data/org.gnome.gnote.gschema.xml:37
+msgid ""
+"If true, the font name set in custom-font-face will be used as the font when "
+"displaying notes. Otherwise the desktop default font will be used."
+msgstr ""
+"Indien ingeschakeld zal het lettertype vastgesteld in ‘custom-font-face’ "
+"worden gebruikt in de notities. Anders wordt het standaardlettertype van de "
+"werkomgeving gebruikt."
+
+#: data/org.gnome.gnote.gschema.xml:41
+msgid "Custom Font Face"
+msgstr "Aangepast lettertype"
+
+#: data/org.gnome.gnote.gschema.xml:42
+msgid ""
+"If enable-custom-font is true, the font name set here will be used as the "
+"font when displaying notes."
+msgstr ""
+"Als ‘enable-custom-font’ ingeschakeld is, wordt het hier gekozen lettertype "
+"gebruikt voor de notities."
+
+#: data/org.gnome.gnote.gschema.xml:46
+msgid "Start Here Note"
+msgstr "‘Begin hier’-notitie"
+
+#: data/org.gnome.gnote.gschema.xml:47
+msgid ""
+"The note URI of the note that should be considered the \"Start Here\" note, "
+"which is always placed at the bottom of the Gnote note menu and also "
+"accessible by hotkey."
+msgstr ""
+"Het adres van de notitie die als ‘Begin hier’-notitie gebruikt wordt. Deze "
+"notitie wordt altijd getoond onderaan in het Gnote-notitiemenu en is ook met "
+"een sneltoets te openen."
+
+#: data/org.gnome.gnote.gschema.xml:51
+msgid "Minimum number of notes to show in menu"
+msgstr "Minimum aantal notities dat in het menu getoond wordt"
+
+#: data/org.gnome.gnote.gschema.xml:52
+msgid ""
+"Integer determining the minimum number of notes to show in the Gnote note "
+"menu."
+msgstr ""
+"Getal dat aangeeft hoeveel notities minimaal worden getoond in het Gnote-"
+"notitiemenu."
+
+#: data/org.gnome.gnote.gschema.xml:56
+msgid "List of pinned notes"
+msgstr "Lijst van vastgezette notities"
+
+#: data/org.gnome.gnote.gschema.xml:57
+msgid ""
+"Whitespace-separated list of note URIs for notes that should always appear "
+"in the Gnote note menu."
+msgstr ""
+"Door witruimte gescheiden lijst met URI's van notities die altijd in het "
+"Gnote-notitiemenu getoond moeten worden."
+
+#: data/org.gnome.gnote.gschema.xml:61
+msgid "Is main window maximized"
+msgstr "Of het hoofdvenster gemaximeerd is"
+
+#: data/org.gnome.gnote.gschema.xml:62
+msgid "If true, Gnote window will be maximized."
+msgstr "Indien waar, zal het venster van Gnote worden gemaximaliseerd."
+
+#: data/org.gnome.gnote.gschema.xml:66
+msgid "Saved height of Search window"
+msgstr "Opgeslagen hoogte van het zoekvenster"
+
+#: data/org.gnome.gnote.gschema.xml:67
+msgid "Determines pixel height of Search window; stored on Gnote exit."
+msgstr ""
+"Bepaalt de hoogte van het zoekvenster (in beeldpunten); opgeslagen wanneer "
+"Gnote afgesloten wordt."
+
+#: data/org.gnome.gnote.gschema.xml:71
+msgid "Saved width of Search window"
+msgstr "Opgeslagen breedte van het zoekvenster"
+
+#: data/org.gnome.gnote.gschema.xml:72
+msgid "Determines pixel width of Search window; stored on Gnote exit."
+msgstr ""
+"Bepaalt de breedte van het zoekvenster (in beeldpunten); opgeslagen wanneer "
+"Gnote afgesloten wordt."
+
+#: data/org.gnome.gnote.gschema.xml:76
+msgid "Saved splitter position of Search window splitter."
+msgstr "Opgeslagen splitspositie van zoekvenstersplitser."
+
+#: data/org.gnome.gnote.gschema.xml:77
+msgid ""
+"Determines Search window splitter position in pixels; stored on Gnote exit."
+msgstr ""
+"Bepaalt de splitspositie van het zoekvenster in beeldpunten; opgeslagen "
+"wanneer Gnote afgesloten wordt."
+
+#: data/org.gnome.gnote.gschema.xml:81
+msgid "Saved sorting of the Search window."
+msgstr "Opgeslagen rangschikking van het zoekvenster."
+
+#: data/org.gnome.gnote.gschema.xml:82
+msgid "Determines Search window initial sorting."
+msgstr "Bepaalt de rangschikking van het zoekvenster bij aanvang."
+
+#: data/org.gnome.gnote.gschema.xml:86
+msgid "FUSE Mounting Timeout (ms)"
+msgstr "FUSE-koppelingstimeout (ms)"
+
+#: data/org.gnome.gnote.gschema.xml:87
+msgid ""
+"Time (in milliseconds) Gnote should wait for a response when using FUSE to "
+"mount a sync share."
+msgstr ""
+"De tijd (in milliseconden) die Gnote moet blijven wachten op een antwoord "
+"als FUSE gebruikt wordt om een gedeelde map aan te koppelen."
+
+#: data/org.gnome.gnote.gschema.xml:91
+msgid "SSHFS Remote Synchronization Folder"
+msgstr "Externe map voor SSHFS-synchronisatie"
+
+#: data/org.gnome.gnote.gschema.xml:92
+msgid "Path on SSH server to Gnote synchronization directory (optional)."
+msgstr "Pad op SSH-server naar de Gnote-synchronisatiemap (optioneel)."
+
+#: data/org.gnome.gnote.gschema.xml:96
+msgid "SSHFS Synchronization Server URL"
+msgstr "Server-URL voor SSHFS-synchronisatieserver"
+
+#: data/org.gnome.gnote.gschema.xml:97
+msgid "URL of SSH server containing Gnote synchronization directory."
+msgstr "Webadres van de SSH-server met de synchronisatiemap voor Gnote."
+
+#: data/org.gnome.gnote.gschema.xml:101
+msgid "SSHFS Remote Synchronization User Name"
+msgstr "Gebruikersnaam voor externe SSHFS-synchronisatie"
+
+#: data/org.gnome.gnote.gschema.xml:102
+msgid "User name to use when connecting to the synchronization server via SSH."
+msgstr ""
+"Gebruikersnaam die moet worden gebruikt om verbinding te maken met de "
+"synchronisatieserver via SSH."
+
+#: data/org.gnome.gnote.gschema.xml:106
+msgid "SSHFS Synchronization Server Port"
+msgstr "Server-poort voor SSHFS-synchronisatieserver"
+
+#: data/org.gnome.gnote.gschema.xml:107
+msgid "The port to use when connecting to the synchronization server via SSH."
+msgstr ""
+"Te gebruiken poort bij het verbinden met de synchronisatieserver via SSH."
+
+#: data/org.gnome.gnote.gschema.xml:111
+msgid "Link Updating Behavior on Note Rename"
+msgstr ""
+"Gedrag voor het bijwerken van verwijzingen bij het hernoemen van notities"
+
+#: data/org.gnome.gnote.gschema.xml:112
+msgid ""
+"Integer value indicating if there is a preference to always perform a "
+"specific link updating behavior when a note is renamed, instead of prompting "
+"the user. The values map to an internal enumeration. 0 indicates that the "
+"user wishes to be prompted when renaming a note may impact links that exist "
+"in other notes. 1 indicates that links should automatically be removed. 2 "
+"indicates that link text should be updated to the new note name so that it "
+"will continue linking to the renamed note."
+msgstr ""
+"Integer-waarde die aangeeft of er een voorkeur is voor het altijd uitvoeren "
+"van een specifiek gedrag voor het bijwerken van koppelingen wanneer een "
+"notitie wordt hernoemd, in plaats van het de gebruiker te vragen. De waarden "
+"komen overeen met een interne opsomming. De waarde 0 geeft aan dat de "
+"gebruiker zelf zal aangeven wat er moet gebeuren als het hernoemen van een "
+"notitie invloed heeft op bestaande verwijzingen in andere notities. De "
+"waarde 1 geeft aan dat verwijzingen automatisch verwijderd worden. De waarde "
+"2 geeft aan dat de verwijzingstekst bijgewerkt moet worden zodat de "
+"verwijzing blijft werken nadat het verwijzingsdoel hernoemd is."
+
+#: data/org.gnome.gnote.gschema.xml:116
+msgid "Enable closing notes with escape"
+msgstr "Sluiten van notities met Esc inschakelen"
+
+#: data/org.gnome.gnote.gschema.xml:117
+msgid "If enabled, an opened note can be closed by hitting the escape key."
+msgstr "Schakel deze optie in voor het sluiten van notities met de Esc-toets."
+
+#: data/org.gnome.gnote.gschema.xml:121
+msgid "Use status icon, when started as an application"
+msgstr "Statuspictogram gebuiken wanneer het als toepassing is gestart"
+
+#: data/org.gnome.gnote.gschema.xml:122
+msgid "Deprecated, has no effect."
+msgstr "Verouderd, heeft geen effect."
+
+#: data/org.gnome.gnote.gschema.xml:126
+msgid "Open notes in new window"
+msgstr "Notities in nieuw venster oenen"
+
+#: data/org.gnome.gnote.gschema.xml:127
+msgid ""
+"Open notes in new window instead of replacing active content of the same "
+"window"
+msgstr ""
+"Open notities in nieuw venster in plaats van de actieve inhoud van hetzelfde "
+"venster te vervangen"
+
+#: data/org.gnome.gnote.gschema.xml:131
+msgid "Save note window size and autosize note window to it"
+msgstr ""
+"Venstergrootte van notitie opslaan en de venstergrootte automatisch daarop "
+"instellen"
+
+#: data/org.gnome.gnote.gschema.xml:132
+msgid ""
+"Saves note window size and automatically resizes main window to this size, "
+"when note is opened."
+msgstr ""
+"Slaat grootte van notitievenster op en stelt het hoofdvenster automatisch in "
+"op deze grootte wanneer de notitie wordt geopend."
+
+# Erg vrij vertaald, maar vooruit... - Hannie
+#: data/org.gnome.gnote.gschema.xml:136
+msgid "Use client side window decorations"
+msgstr "Laat vensterversieringen over aan Gnote"
+
+#: data/org.gnome.gnote.gschema.xml:137
+msgid ""
+"Should Gnote draw its window titlebar, or leave that to window manager. "
+"Possible values are 'enabled' to draw them, 'disabled' to leave them to "
+"window manager, or a comma separated list of desktop environments, where "
+"Gnote should draw decorations itself. Requires application restart."
+msgstr ""
+"De titelbalk van het venster door Gnote laten tekenen, of dat overlaten aan "
+"vensterbeheer.Mogelijke waarden zijn 'ingeschakeld' om ze te tekenen, "
+"'uitgeschakeld' om het over te laten aanvensterbeheer, of een door komma's "
+"gescheiden lijst van bureaubladomgevingen waarinGnote zelf decoraties moeten "
+"tekenen. Vereist een herstart van de toepassing."
+
+#: data/org.gnome.gnote.gschema.xml:148
+msgid "HTML Export Last Directory"
+msgstr "Laatst gebruikte map voor HTML-export"
+
+#: data/org.gnome.gnote.gschema.xml:149
+msgid ""
+"The last directory a note was exported to using the Export To HTML plugin."
+msgstr ""
+"De laatst gebruikte map voor het opslaan van notities met de HTML-exportplug-"
+"in."
+
+#: data/org.gnome.gnote.gschema.xml:153
+msgid "HTML Export Linked Notes"
+msgstr "HTML-export gekoppelde notities"
+
+#: data/org.gnome.gnote.gschema.xml:154
+msgid ""
+"The last setting for the 'Export linked notes' checkbox in the Export to "
+"HTML plugin."
+msgstr ""
+"De laatste gebruikte instelling voor het ‘Notities waarnaar verwezen wordt’-"
+"selectievakje in de HTML-exportplug-in."
+
+#: data/org.gnome.gnote.gschema.xml:158
+msgid "HTML Export All Linked Notes"
+msgstr "Alle notities waarnaar verwezen wordt exporteren"
+
+#: data/org.gnome.gnote.gschema.xml:159
+msgid ""
+"The last setting for the 'Include all other linked notes' checkbox in the "
+"Export to HTML plugin. This setting is used in conjunction with the 'HTML "
+"Export Linked Notes' setting and is used to specify whether all notes (found "
+"recursively) should be included during an export to HTML."
+msgstr ""
+"De laatste gebruikte instelling voor het ‘Alle notities waarnaar verwezen "
+"wordt’-selectievakje in de HTML-exportplug-in. Deze instelling dient "
+"gebruikt te worden in combinatie met de instelling van ‘Notities waarnaar "
+"verwezen wordt’ en geeft aan of alle notities (recursief vanaf de huidige "
+"notitie) als HTML geëxporteerd dienen te worden."
+
+#: data/org.gnome.gnote.gschema.xml:165
+msgid "Synchronization Client ID"
+msgstr "Synchronisatie client ID"
+
+#: data/org.gnome.gnote.gschema.xml:166
+msgid ""
+"Unique identifier for this Gnote client, used when communicating with a "
+"synchronization server."
+msgstr ""
+"Unieke identifier voor deze Gnote-client, gebruikt voor de communicatie met "
+"de synchronisatieserver."
+
+#: data/org.gnome.gnote.gschema.xml:170
+msgid "Synchronization Local Server Path"
+msgstr "Lokaal pad voor synchronisatie"
+
+#: data/org.gnome.gnote.gschema.xml:171
+msgid ""
+"Path to the synchronization server when using the filesystem synchronization "
+"service addin."
+msgstr ""
+"Pad naar de synchronisatieserver bij gebruik van de invoegtoepassing voor "
+"bestandssysteemsynchronisatie."
+
+#: data/org.gnome.gnote.gschema.xml:175
+msgid "Selected Synchronization Service Addin"
+msgstr "Gekozen invoegtoepassing voor synchronisatiediensten"
+
+#: data/org.gnome.gnote.gschema.xml:176
+msgid ""
+"Unique identifier for the currently configured note synchronization service "
+"addin."
+msgstr ""
+"Unieke identifier voor de momenteel ingestelde invoegtoepassing voor het "
+"synchroniseren van notities."
+
+#: data/org.gnome.gnote.gschema.xml:180
+msgid "Note Synchronization Conflict Saved Behavior"
+msgstr "Opgeslagen conflictgedrag bij notitie-synchronisatie"
+
+#: data/org.gnome.gnote.gschema.xml:181
+msgid ""
+"Integer value indicating if there is a preference to always perform a "
+"specific behavior when a conflict is detected, instead of prompting the "
+"user. The values map to an internal enumeration. 0 indicates that the user "
+"wishes to be prompted when a conflict occurs, so that they may handle each "
+"conflict situation on a case-by-case basis."
+msgstr ""
+"Integer-waarde die aangeeft of er een voorkeur is voor het uitvoeren van een "
+"specifieke actie wanneer er een conflict ontstaan is, in plaats van het te "
+"vragen aan de gebruiker. Deze waarden komen overeen met een interne "
+"opsomming. 0 betekent dat de gebruiker op de hoogte wordt gebracht van "
+"conflicten, zodat deze van geval tot geval afgehandeld kunnen worden."
+
+#: data/org.gnome.gnote.gschema.xml:185
+msgid "Automatic Background Synchronization Timeout"
+msgstr "Tussenpozen voor automatische synchronisatie op de achtergrond"
+
+#: data/org.gnome.gnote.gschema.xml:186
+msgid ""
+"Integer value indicating how frequently to perform a background sync of your "
+"notes (when sync is configured). Any value less than 1 indicates that "
+"autosync is disabled. The lowest acceptable positive value is 5. Value is in "
+"minutes."
+msgstr ""
+"Integer-waarde die aangeeft hoe vaak een achtergrondsynchronisatie van de "
+"notities moet plaatsvinden (wanneer synchronisatie is ingesteld). Elke "
+"waarde kleiner dan 1 geeft aan dat autosync is uitgeschakeld. De kleinste "
+"geldige positieve waarde is 5. Waarde is in minuten."
+
+#: data/org.gnome.gnote.gschema.xml:193
+msgid "Online directory URI"
+msgstr "Adres van internetmap"
+
+#: data/org.gnome.gnote.gschema.xml:194
+msgid "URI to online directory where notes are synchronized to."
+msgstr "Adres van de internetmap waarmee notities worden gesynchroniseerd."
+
+#: data/org.gnome.gnote.gschema.xml:200
+msgid "Accept SSL Certificates"
+msgstr "SSL-certificaten accepteren"
+
+#: data/org.gnome.gnote.gschema.xml:201
+msgid ""
+"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
+"user."
+msgstr ""
+"Gebruik de ‘wdfs’-optie ‘-ac’ om SSL-certificaten te accepteren zonder de "
+"gebruiker te vragen."
+
+#: data/org.gnome.gnote.gschema.xml:205
+msgid "Share URL"
+msgstr "Webadres van gedeelde map"
+
+#: data/org.gnome.gnote.gschema.xml:206
+msgid "WebDAV share URL where notes are synchronized to."
+msgstr ""
+"Webadres van gedeelde WebDAV-map waar notities mee worden gesynchroniseerd."
+
+#: data/org.gnome.gnote.gschema.xml:210
+msgid "Share username"
+msgstr "Gebruikersnaam voor gedeelde map"
+
+#: data/org.gnome.gnote.gschema.xml:211
+msgid "Username to access WebDAV share."
+msgstr "Gebruikersnaam voor toegang tot de gedeelde WebDAV-map."
+
+#: data/org.gnome.gnote.gschema.xml:217
+msgid "Timestamp format"
+msgstr "Opmaak tijdstempel"
+
+#: data/org.gnome.gnote.gschema.xml:218
+msgid ""
+"The date format that is used for the timestamp. It follows the format of "
+"strftime(3)."
+msgstr ""
+"De datumnotatie die gebruikt wordt voor het tijdstempel. Deze gebruikt de "
+"opmaak van strftime(3)."
+
+#: data/org.gnome.gnote.gschema.xml:224
+msgid "Time between checks"
+msgstr "Tijdsverloop tussen controles"
+
+#: data/org.gnome.gnote.gschema.xml:225
+msgid ""
+"Time interval between note directory checks (in seconds). Min value is 5."
+msgstr ""
+"Tijdsverloop tussen controles van notitiemap (in seconden). Minimale waarde "
+"is 5."
+
+#: data/shortcuts-gnote.ui:9
+msgctxt "shortcut window"
+msgid "Main Window"
+msgstr "Hoofdvenster"
+
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:115
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: data/shortcuts-gnote.ui:18
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Hulptekst tonen"
+
+#: data/shortcuts-gnote.ui:25 data/shortcuts-gnote.ui:120
+#: data/shortcuts-gnote.ui:127
+msgctxt "shortcut window"
+msgid "Open actions menu"
+msgstr "Actiemenu openen"
+
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
+msgctxt "shortcut window"
+msgid "Hide search bar"
+msgstr "Zoekbalk verbergen"
+
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:148
+msgctxt "shortcut window"
+msgid "Close window"
+msgstr "Venster sluiten"
+
+#: data/shortcuts-gnote.ui:47
+msgctxt "shortcut window"
+msgid "Search bar"
+msgstr "Zoekbalk"
+
+#: data/shortcuts-gnote.ui:52 data/shortcuts-gnote.ui:134
+msgctxt "shortcut window"
+msgid "Display search bar"
+msgstr "Zoekbalk tonen"
+
+#: data/shortcuts-gnote.ui:59
+msgctxt "shortcut window"
+msgid "Select next match"
+msgstr "Volgende overeenkomst selecteren"
+
+#: data/shortcuts-gnote.ui:66
+msgctxt "shortcut window"
+msgid "Select previous match"
+msgstr "Vorige overeenkomst selecteren"
+
+#: data/shortcuts-gnote.ui:74
+msgctxt "shortcut window"
+msgid "Notes list"
+msgstr "Lijst van notities"
+
+#: data/shortcuts-gnote.ui:79
+msgctxt "shortcut window"
+msgid "Create new note"
+msgstr "Nieuwe notitie maken"
+
+#: data/shortcuts-gnote.ui:86
+msgctxt "shortcut window"
+msgid "Open selected note"
+msgstr "Geselecteerde notitie openen"
+
+#: data/shortcuts-gnote.ui:93
+msgctxt "shortcut window"
+msgid "Open selected note in new window"
+msgstr "Geselecteerde notitie openen in nieuw venster"
+
+#: data/shortcuts-gnote.ui:100
+msgctxt "shortcut window"
+msgid "Delete selected note"
+msgstr "Geselecteerde notitie verwijderen"
+
+#: data/shortcuts-gnote.ui:111
+msgctxt "shortcut window"
+msgid "Note Window"
+msgstr "Notitievenster"
+
+#: data/shortcuts-gnote.ui:156
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Bewerken"
+
+#: data/shortcuts-gnote.ui:161
+msgctxt "shortcut window"
+msgid "Undo last edit"
+msgstr "Laatste bewerking ongedaan maken"
+
+#: data/shortcuts-gnote.ui:168
+msgctxt "shortcut window"
+msgid "Redo last edit"
+msgstr "Laatste bewerking opnieuw uitvoeren"
+
+#: data/shortcuts-gnote.ui:175
+msgctxt "shortcut window"
+msgid "Create link to note on selected text"
+msgstr "Maak snelkoppeling naar notitie op geselecteerde tekst"
+
+# Bestandsopmaak lijkt mij niet goed, ook al is niet helemaal duidelijk wat hier bedoeld wordt. Daarom prefereer ik het neutralere Opmaken - Hannie
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Formatting"
+msgstr "Opmaken"
+
+#: data/shortcuts-gnote.ui:188
+msgctxt "shortcut window"
+msgid "Toggle bold"
+msgstr "Vetgedrukt omschakelen"
+
+#: data/shortcuts-gnote.ui:195
+msgctxt "shortcut window"
+msgid "Toggle italic"
+msgstr "Schuingedrukt omschakelen"
+
+#: data/shortcuts-gnote.ui:202
+msgctxt "shortcut window"
+msgid "Toggle strikethrough"
+msgstr "Doorhalen omschakelen"
+
+#: data/shortcuts-gnote.ui:209
+msgctxt "shortcut window"
+msgid "Toggle highlight"
+msgstr "Markering omschakelen"
+
+#: data/shortcuts-gnote.ui:216
+msgctxt "shortcut window"
+msgid "Toggle fixed width"
+msgstr "Vaste breedte omschakelen"
+
+#: data/shortcuts-gnote.ui:223
+msgctxt "shortcut window"
+msgid "Toggle underline"
+msgstr "Onderstrepen omschakelen"
+
+#: data/shortcuts-gnote.ui:230
+msgctxt "shortcut window"
+msgid "Increase font size"
+msgstr "Tekst vergroten"
+
+#: data/shortcuts-gnote.ui:237
+msgctxt "shortcut window"
+msgid "Decrease font size"
+msgstr "Tekst verkleinen"
+
+#: data/shortcuts-gnote.ui:244
+msgctxt "shortcut window"
+msgid "Enable bullets/increase indent for line with selection"
+msgstr ""
+"Opsommingstekens inschakelen/inspringing vergroten voor regel met selectie"
+
+#: data/shortcuts-gnote.ui:251
+msgctxt "shortcut window"
+msgid "Decrease indent/disable bullets for current line"
+msgstr ""
+"Opsommingstekens uitschakelen/inspringing verkleinen voor huidige regel"
+
+#: src/actionmanager.cpp:128 src/notewindow.cpp:278
+msgid "_New Note"
+msgstr "_Nieuwe notitie"
+
+#: src/actionmanager.cpp:129 src/notewindow.cpp:280
+msgid "New _Window"
+msgstr "Nieuw _venster"
+
+#: src/actionmanager.cpp:130 src/preferencesdialog.cpp:631
+msgid "_Preferences"
+msgstr "Voor_keuren"
+
+#: src/actionmanager.cpp:131
+msgid "_Shortcuts"
+msgstr "_Sneltoetsen"
+
+#: src/actionmanager.cpp:132
+msgid "_Help"
+msgstr "_Hulp"
+
+#: src/actionmanager.cpp:133
+msgid "_About Gnote"
+msgstr "_Over Gnote"
+
+# plugin, addin, addon etc. Moeilijk te vertalen. Misschien invoegtoepassing? - Hannie
+#: src/addininfo.cpp:71
+msgid "Failed to load plugin information!"
+msgstr "Laden van informatie over iplug-in is mislukt!"
+
+#: src/addininfo.cpp:145
+#, c-format
+msgid "Incompatible plug-in %s: expected %s, got %s"
+msgstr "Niet-compatibele plug-in %s: verwachtte %s, kreeg %s"
+
+#: src/addinmanager.cpp:149
+#, c-format
+msgid "Note plugin info %s already present"
+msgstr "Informatie inzake notitie-plug-in %s reeds aanwezig"
+
+#: src/addinmanager.cpp:157
+#, c-format
+msgid "%s does not implement %s"
+msgstr "%s implementeert %s niet"
+
+#: src/addinmanager.cpp:172
+#, c-format
+msgid "Note plugin %s already present"
+msgstr "Notitie-plug-in %s bestaat reeds"
+
+#: src/addinmanager.cpp:190
+#, c-format
+msgid "Note plugin info %s is absent"
+msgstr "Informatie over notitie-plug-in %s ontbreekt"
+
+#: src/addinmanager.cpp:203
+#, c-format
+msgid "Note plugin %s is absent"
+msgstr "Notitie-plug-in %s ontbreekt"
+
+#: src/addinmanager.cpp:239
+#, c-format
+msgid "Failed to find module %s for addin %s"
+msgstr "Kon module %s niet vinden voor invoegtoepassing %s"
+
+#: src/addinmanager.cpp:243
+#, c-format
+msgid "Failed to load addin info for %s: %s"
+msgstr "Kon geen informatie over invoegtoepassing laden voor %s: %s"
+
+#: src/addinmanager.cpp:369
+msgid "Trying to load addins when they are already loaded"
+msgstr "Er wordt geprobeerd om invoegtoepassingen te laden die al geladen zijn"
+
+#: src/plugins/backlinks/backlinks.desktop.in.in:4
+msgid "Backlinks"
+msgstr "Backlinks"
+
+#: src/plugins/backlinks/backlinks.desktop.in.in:5
+msgid "See which notes link to the one you're currently viewing."
+msgstr "Bekijk welke notities verwijzen naar de notitie die u thans leest."
+
+#: src/plugins/backlinks/backlinks.desktop.in.in:6
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:6
+msgid "Hubert Figuiere and Tomboy Project"
+msgstr "Hubert Figuiere en het Tomboy-project"
+
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:76
+msgid "What links here?"
+msgstr "Wat verwijst hier naartoe?"
+
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:97
+msgid "(none)"
+msgstr "(geen)"
+
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:102
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
+#: src/notebooks/notebooknoteaddin.cpp:167
+msgid "_Back"
+msgstr "_Terug"
+
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:4
+msgid "Bugzilla Links"
+msgstr "Bugzilla-koppelingen"
+
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:5
+msgid ""
+"Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
+"note.  The bug number is inserted as a link with a little bug icon next to "
+"it."
+msgstr ""
+"Hiermee kunt u een Bugzilla-URL vanuit uw browser rechtstreeks naar een "
+"Gnote-notitie slepen. Het nummer van de fout wordt als een koppeling "
+"ingevoegd, met een klein bug-pictogram ernaast."
+
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:6
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
+#: src/plugins/printnotes/printnotes.desktop.in.in:6
+#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:6
+msgid "Hubert Figuiere and the Tomboy Project"
+msgstr "Hubert Figuiere en het Tomboy-project"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:64
+msgid ""
+"You can use any bugzilla just by dragging links into notes.  If you want a "
+"special icon for certain hosts, add them here."
+msgstr ""
+"U kunt elke Bugzilla gebruiken door de webkoppelingen naar de notities te "
+"verslepen. Wanneer u een speciaal pictogram voor bepaalde hosts wilt "
+"gebruiken kunt u dat hier toevoegen."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:81
+msgid "Host Name"
+msgstr "Hostnaam"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:94
+msgid "Icon"
+msgstr "Pictogram"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:113
+msgid "_Add"
+msgstr ""
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:117
+msgid "_Remove"
+msgstr ""
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:225
+msgid "Select an icon..."
+msgstr "Kies een pictogram…"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:227
+#: src/plugins/bugzilla/bugzillapreferences.cpp:370
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/utils.cpp:375
+#, fuzzy
+#| msgid "Ad_vanced"
+msgid "_Cancel"
+msgstr "Ge_avanceerd"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:228
+#: src/searchnoteswidget.cpp:1305
+msgid "_Open"
+msgstr "_Openen"
+
+#. Extra Widget
+#: src/plugins/bugzilla/bugzillapreferences.cpp:240
+msgid "_Host name:"
+msgstr "_Hostnaam:"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:274
+msgid "Host name invalid"
+msgstr "Ongeldige hostnaam"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:275
+msgid "You must specify a valid Bugzilla host name to use with this icon."
+msgstr ""
+"U dient een geldige Bugzilla-hostnaam op te geven waarvoor u dit pictogram "
+"wilt gebruiken."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:294
+msgid "Error saving icon"
+msgstr "Fout bij opslaan van pictogram"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:295
+msgid "Could not save the icon file."
+msgstr "Kon pictogrambestand niet opslaan."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+msgid "Really remove this icon?"
+msgstr "Dit pictogram echt verwijderen?"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:368
+msgid "If you remove an icon it is permanently lost."
+msgstr "Het verwijderen van een pictogram kan niet ongedaan gemaakt worden."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/searchnoteswidget.cpp:1315 src/searchnoteswidget.cpp:1356
+msgid "_Delete"
+msgstr "Ver_wijderen"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:388
+#, c-format
+msgid "Error removing icon %s: %s"
+msgstr "Fout bij verwijderen van pictogram %s: %s"
+
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:4
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:78
+msgid "Export to Getting Things GNOME"
+msgstr "Exporteren naar Getting Things GNOME"
+
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:5
+msgid "Exports individual notes as Getting Things GNOME tasks"
+msgstr "Exporteert individuele notities als Getting Things GNOME-taken"
+
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:6
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:6
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:6
+#: src/plugins/statistics/statistics.desktop.in.in:6
+msgid "Aurimas Černius"
+msgstr "Aurimas Černius"
+
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:91
+msgid "GTG XML loaded, but interface not found"
+msgstr "GTG XML geladen, maar interface niet gevonden"
+
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:97
+#, c-format
+msgid "Failed to create GTG interface from XML: %s"
+msgstr "Aanmaken van GTG-interface van XML is mislukt: %s"
+
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:105
+msgid "Failed to create D-Bus proxy for GTG"
+msgstr "Aanmaken van D-Bus-proxy voor GTG is mislukt"
+
+#: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:121
+#, c-format
+msgid "Failed to call GTG: %s"
+msgstr "Kon GTG niet aanroepen: %s"
+
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:4
+msgid "Export to HTML"
+msgstr "Exporteren naar HTML"
+
+# gerelateerde/verwante/gelinkte notities
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:5
+msgid "Exports individual notes to HTML."
+msgstr "Exporteert individuele notities naar HTML."
+
+# met destination wordt een doelmap bedoeld
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:39
+msgid "Destination for HTML Export"
+msgstr "Doelmap voor HTML-export"
+
+# gerelateerde/verwante/gelinkte notities
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
+msgid "Export linked notes"
+msgstr "Notities waarnaar verwezen wordt exporteren"
+
+# gerelateerde/verwante/gelinkte notities
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:43
+msgid "Include all other linked notes"
+msgstr "Alle notities waarnaar verwezen wordt exporteren"
+
+#. TODO: Tabbing should go directly from sync prefs widget to here
+#. TODO: Consider connecting to "Enter" pressed in sync prefs widget
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
+#: src/preferencesdialog.cpp:555
+msgid "_Save"
+msgstr ""
+
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:83
+msgid "Export to HTML…"
+msgstr "Exporteren naar HTML…"
+
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:122
+#, c-format
+msgid "Could not open exported note in a web browser: %s"
+msgstr "Kon de geëxporteerde notitie niet in een webbrowser openen: %s"
+
+#. TRANSLATORS: %1%: boost format placeholder for the path
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:127
+msgid "Your note was exported to \"%1\"."
+msgstr "Uw notitie werd geëxporteerd naar '%1'."
+
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:136
+msgid "Note exported successfully"
+msgstr "Notitie succesvol geëxporteerd"
+
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:150
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:158
+#, c-format
+msgid "Could not export: %s"
+msgstr "Kon niet exporteren: %s"
+
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:161
+msgid "Could not save the file \"%1\""
+msgstr "Kon bestand '%1' niet opslaan"
+
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+msgid "_Folder Path:"
+msgstr "_Pad naar map:"
+
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:107
+msgid "Select Synchronization Folder..."
+msgstr "Kies een synchronisatiemap…"
+
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:129
+msgid "Folder path field is empty."
+msgstr "Het veld voor het pad naar de map is leeg."
+
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
+#: src/synchronization/gvfssyncservice.cpp:76
+msgid ""
+"Specified folder path does not exist, and Gnote was unable to create it."
+msgstr "Het opgegeven mappad bestaat niet en Gnote kon dit niet aanmaken."
+
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:200
+msgid "Local Folder"
+msgstr "Lokale map"
+
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:4
+msgid "Local Directory Sync Service Plugin"
+msgstr "Plug-in voor lokale-map-synchronisatiedienst"
+
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:5
+msgid "Synchronize Gnote Notes to a local file system path"
+msgstr "Gnote Notities synchroniseren met een lokaal bestandssysteempad"
+
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:6
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:6
+msgid "Aurimas Černius and the Tomboy Project"
+msgstr "Aurimas Černius en het Tomboy-project"
+
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:4
+msgid "Fixed Width"
+msgstr "Vaste breedte"
+
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:5
+msgid "Adds fixed-width font style."
+msgstr "Voegt een lettertypestijl met een vaste breedte toe."
+
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:57
+msgid "Fixed Wid_th"
+msgstr "_Vaste breedte"
+
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
+msgid "Online Directory Sync Service Plugin"
+msgstr "Plug-in voor online map-synchronisatiedienst"
+
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
+msgid "Synchronize Gnote Notes to an online directory"
+msgstr "Gnote-notities synchroniseren met een internetmap"
+
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
+msgid "Failed to mount the folder"
+msgstr "Aankoppelen van de map is mislukt"
+
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
+msgid "Folder _URI:"
+msgstr "_Adres  van map:"
+
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
+msgid "Example: google-drive://name.surname@gmail.com/notes"
+msgstr "Voorbeeld: google-drive://voornaam.achternaam@gmail.com/notes"
+
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
+msgid "Please, register your account in Online Accounts"
+msgstr "Gelieve uw account in Online Accounts te registreren"
+
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+msgid "The URI is empty"
+msgstr "Het adres is leeg"
+
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+msgid "URI field is empty."
+msgstr "Adresveld is leeg."
+
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:176
+msgid "Online Folder"
+msgstr "Map op internet"
+
+# Tijdstempel: De datums en tijden die aan een bestand zijn gekoppeld. - Hannie
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
+#: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
+msgid "Insert Timestamp"
+msgstr "Tijdstempel invoegen"
+
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:5
+msgid "Inserts current date and time at the cursor position."
+msgstr "Voegt de huidige datum en tijd toe op de cursorpositie."
+
+#. Label
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:76
+msgid "Choose one of the predefined formats or use your own."
+msgstr "Kies één van de voorgedefinieerde opmaaksoorten, of uw eigen opmaak."
+
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:84
+msgid "Use _Selected Format"
+msgstr "De ge_selecteerde opmaak gebruiken"
+
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:114
+msgid "_Use Custom Format"
+msgstr "_Aangepaste opmaak gebruiken"
+
+#. TRANSLATORS: first %s is file name, second is error
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:227
+#, c-format
+msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
+msgstr "NoteDirectoryWatcher: bijwerken afgebroken, fout bij lezen van %s: %s"
+
+#. TRANSLATORS: %s is file
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:254
+#, c-format
+msgid "NoteDirectoryWatcher: Error reading note title from %s"
+msgstr "NoteDirectoryWatcher: fout bij lezen van notitietitel vanaf %s"
+
+#. TRANSLATORS: %s is file
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:262
+#, c-format
+msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
+msgstr ""
+"NoteDirectoryWatcher: onbekende fout bij het maken van een notitie vanuit %s"
+
+#. TRANSLATORS: first %s is file, second is error
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:268
+#, c-format
+msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
+msgstr "NoteDirectoryWatcher: fout bij het maken van een notitie vanuit %s: %s"
+
+#. TRANSLATORS: first %s is file, second is error
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:281
+#, c-format
+msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
+msgstr ""
+"NoteDirectoryWatcher: bijwerken afgebroken, fout bij het lezen van %s: %s"
+
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:4
+msgid "Note Directory Watcher"
+msgstr "Bewaker van notitiemap"
+
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:5
+msgid "Watch your Gnote note directory for changes to your notes."
+msgstr "Bewaak uw Gnote-notitiemap op wijzigingen in uw notities."
+
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:6
+msgid "Aurimas Černius and Tomboy original authors"
+msgstr "Aurimas Černius en de oorspronkelijke makers van Tomboy"
+
+#: src/plugins/notedirectorywatcher/notedirectorywatcherpreferences.cpp:46
+msgid "_Directory check interval:"
+msgstr "Tussenpoos voor controleren van _map:"
+
+#: src/plugins/noteoftheday/noteoftheday.cpp:33
+msgid "Today: Template"
+msgstr "Vandaag: sjabloon"
+
+#: src/plugins/noteoftheday/noteoftheday.cpp:35
+msgid "Today: "
+msgstr "Vandaag: "
+
+#. TRANSLATORS: first %s is note title, second is error
+#. TRANSLATORS: first %s is template note title, second is error
+#: src/plugins/noteoftheday/noteoftheday.cpp:49
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#, c-format
+msgid "NoteOfTheDay could not create %s: %s"
+msgstr "Notitie-van-de-dag kon %s niet maken: %s"
+
+#: src/plugins/noteoftheday/noteoftheday.cpp:150
+msgid "Tasks"
+msgstr "Taken"
+
+#: src/plugins/noteoftheday/noteoftheday.cpp:151
+msgid "Appointments"
+msgstr "Afspraken"
+
+# %A = vandaag, b.v. Maandag
+# %d = dag, b.v. 24
+# %B = maand, b.v. Augustus
+# %Y = jaar, b.v. 2021
+# Maand kleine beginletter = %F? zie PHP
+# - Hannie
+#. Format: "Today: Friday, July 01 2005"
+#: src/plugins/noteoftheday/noteoftheday.cpp:157
+msgid "%A, %B %d %Y"
+msgstr "%A, %d %B %Y"
+
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:4
+msgid "Note of the Day"
+msgstr "Notitie van de dag"
+
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:5
+msgid ""
+"Automatically creates a \"Today\" note for easily jotting down daily thoughts"
+msgstr ""
+"Maakt automatisch een 'Vandaag'-notitie aan om gemakkelijk dagelijkse "
+"gedachten op te schrijven"
+
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:6
+msgid "Debarshi Ray and the Tomboy Project"
+msgstr "Debarshi Ray en het Tomboy-project"
+
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:34
+msgid "_Open Today: Template"
+msgstr "Vandaag: sjabloon _openen"
+
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:35
+msgid ""
+"Change the <span weight=\"bold\">Today: Template</span> note to customize "
+"the text that new Today notes have."
+msgstr ""
+"Wijzig de <span weight=\"bold\">Vandaag: sjabloon</span>-notitie om de tekst "
+"van nieuwe Vandaag-notities aan uw wensen aan te passen."
+
+#: src/plugins/printnotes/printnotes.desktop.in.in:4
+msgid "Printing Support"
+msgstr "Afdrukondersteuning"
+
+#: src/plugins/printnotes/printnotes.desktop.in.in:5
+msgid "Allows you to print a note."
+msgstr "Maakt het mogelijk om een notitie af te drukken."
+
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:62
+msgid "Print…"
+msgstr "Afdrukken…"
+
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:110
+msgid "Error printing note"
+msgstr "Fout bij afdrukken van notitie"
+
+#. %1 is the page number, %2 is the total number of pages
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:273
+msgid "Page %1 of %2"
+msgstr "Pagina %1 van %2"
+
+#: src/plugins/readonly/readonly.desktop.in.in:4
+#: src/plugins/readonly/readonlynoteaddin.cpp:69
+msgid "Read Only"
+msgstr "Alleen-lezen"
+
+#: src/plugins/readonly/readonly.desktop.in.in:5
+msgid "Mark certain notes as read only"
+msgstr "Bepaalde notities als alleen-lezen markeren"
+
+#: src/plugins/readonly/readonly.desktop.in.in:6
+msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
+msgstr "Aurimas Černius, Debarshi Ray en Arief Bayu Purwanto"
+
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:4
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:53
+msgid "Replace title"
+msgstr "Titel vervangen"
+
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:5
+msgid "Replace title with selection."
+msgstr "Vervang titel door selectie."
+
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:6
+msgid "Pierre-Yves Luyten"
+msgstr "Pierre-Yves Luyten"
+
+#: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:4
+msgid "Special Notes"
+msgstr "Speciale notities"
+
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:5
+msgid "Show special notes, that are otherwise hidden"
+msgstr "Toon speciale notities die anders verborgen zijn"
+
+#: src/plugins/statistics/statisticsapplicationaddin.cpp:70
+msgid "Show Statistics"
+msgstr "Statistieken tonen"
+
+#: src/plugins/statistics/statistics.desktop.in.in:4
+#: src/plugins/statistics/statisticswidget.cpp:173
+msgid "Statistics"
+msgstr "Statistieken"
+
+#: src/plugins/statistics/statistics.desktop.in.in:5
+msgid "Show various statistics about notes."
+msgstr "Toon verschillende statistieken inzake notities."
+
+#: src/plugins/statistics/statisticswidget.cpp:91
+msgid "Total Notes:"
+msgstr "Totaal aantal notities:"
+
+#: src/plugins/statistics/statisticswidget.cpp:97
+msgid "Total Notebooks:"
+msgstr "Totaal aantal notitieboeken:"
+
+#. TRANSLATORS: %1 is the format placeholder for the number of notes.
+#: src/plugins/statistics/statisticswidget.cpp:128
+msgid "%1 note"
+msgid_plural "%1 notes"
+msgstr[0] "%1 notitie"
+msgstr[1] "%1 notities"
+
+#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:4
+msgid "Sticky Notes Importer"
+msgstr "Sticky Notes-importeur"
+
+#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:5
+msgid "Import your notes from the Sticky Notes applet."
+msgstr "Uw notities importeren vanuit het Sticky Notes-hulpprogrammaatje."
+
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:84
+msgid "Import from Sticky Notes"
+msgstr "Notities uit Sticky Notes importeren"
+
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:206
+msgid "No Sticky Notes found"
+msgstr "Geen Sticky Notes-notities gevonden"
+
+#. %1 is a the file name
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
+msgid "No suitable Sticky Notes file was found at \"%1\"."
+msgstr "Er is geen geschikt Sticky Notes-bestand gevonden in ‘%1’."
+
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
+msgid "Sticky Notes import completed"
+msgstr "Importeren van Sticky Notes voltooid"
+
+#. here %1 is the number of notes imported, %2 the total number of notes.
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
+msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
+msgstr ""
+"<b>%1</b> van de <b>%2</b> notities van Sticky Notes zijn succesvol "
+"geïmporteerd."
+
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:237
+msgid "Untitled"
+msgstr "Naamloos"
+
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:275
+msgid "Sticky Note: "
+msgstr "Sticky Note: "
+
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:67
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:130
+msgid "Table of Contents"
+msgstr "Inhoudsopgave"
+
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:5
+msgid ""
+"Navigate long structured notes. Set section and subsection headings in your "
+"note, and the Table of Contents will show in a menu."
+msgstr ""
+"Door lange, gestructureerde notities navigeren. Als u sectie- en subsectie-"
+"koppen in uwnotitie maakt, wordt de inhoudsopgave in een menu weergegeven."
+
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
+msgid "Luc Pionchon"
+msgstr "Luc Pionchon"
+
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
+msgid "© 2013 Luc Pionchon"
+msgstr "© 2013 Luc Pionchon"
+
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:145
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:207
+msgid "Heading 1"
+msgstr "Kop 1"
+
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:149
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:213
+msgid "Heading 2"
+msgstr "Kop 2"
+
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:153
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:219
+msgid "Table of Contents Help"
+msgstr "Inhoudsopgave van hulptekst"
+
+#. no toc items, and no action entries = empty menu
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:192
+msgid "(empty table of contents)"
+msgstr "(lege inhoudsopgave)"
+
+#: src/plugins/todo/todo.desktop.in.in:4
+msgid "TODO"
+msgstr "TE DOEN"
+
+#: src/plugins/todo/todo.desktop.in.in:5
+msgid "Highlight FIXME, TODO and XXX patterns in notes."
+msgstr "FIXME-, TODO- en XXX-patronen in notities markeren."
+
+#: src/plugins/todo/todo.desktop.in.in:6
+msgid "Aurimas Černius, Romain Tartière"
+msgstr "Aurimas Černius, Romain Tartière"
+
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:4
+msgid "Tomboy Importer"
+msgstr "Tomboy-importeur"
+
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:5
+msgid "Import your notes from Tomboy."
+msgstr "Uw notities vanuit Tomboy importeren."
+
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:6
+msgid "Hubert Figuiere"
+msgstr "Hubert Figuiere"
+
+#: src/plugins/underline/underline.desktop.in.in:4
+msgid "Underline"
+msgstr "Onderstrepen"
+
+#: src/plugins/underline/underline.desktop.in.in:5
+msgid "Adds ability to underline text."
+msgstr "Voegt de mogelijkheid toe om tekst te onderstrepen."
+
+#: src/plugins/underline/underline.desktop.in.in:6
+msgid "Hubert Figuière and the Tomboy Project"
+msgstr "Hubert Figuière en het Tomboy-project"
+
+#: src/plugins/underline/underlinenoteaddin.cpp:56
+msgid "_Underline"
+msgstr "_Onderstrepen"
+
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:107
+msgid "_URL:"
+msgstr "_URL:"
+
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:112
+msgid "User_name:"
+msgstr "Gebruikers_naam:"
+
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
+msgid "_Password:"
+msgstr "_Wachtwoord:"
+
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:142
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:165
+msgid "Synchronization destination %1 doesn't exist!"
+msgstr "Synchronisatiebestemming %1 bestaat niet!"
+
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:180
+msgid "URL, username, or password field is empty."
+msgstr "Het veld voor het webadres, gebruikersnaam of wachtwoord is leeg."
+
+#. TRANSLATORS: %1 is the format placeholder for the error message.
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:279
+msgid ""
+"Saving configuration to the GNOME keyring failed with the following "
+"message:\n"
+"\n"
+"%1"
+msgstr ""
+"Opslaan van configuratie van de Gnome-sleutelbos is mislukt met de volgende "
+"melding:\n"
+"\n"
+"%1"
+
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
+msgid "WebDAV Sync Service Plugin"
+msgstr "WebDAV-synchronisatie-plug-in"
+
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
+msgid "Synchronize Gnote Notes to a WebDAV URL."
+msgstr "Gnote-notities synchroniseren met een WebDAV-webadres."
+
+#: src/dbus/remotecontrol.cpp:83
+#, c-format
+msgid "Exception thrown when creating note: %s"
+msgstr "Uitzondering trad op bij maken van notitie: %s"
+
+#: src/gnote.cpp:211
+msgid ""
+"No D-Bus connection available, shell search and remote control will not work."
+msgstr ""
+"Geen D-Bus-verbinding beschikbaar;  shell zoeken en afstandsbediening zullen "
+"niet werken."
+
+#: src/gnote.cpp:244
+msgid "Failed to get shortcuts window!"
+msgstr "Kon snelkoppelingenvenster niet verkrijgen!"
+
+#: src/gnote.cpp:258
+msgid "and Tomboy original authors."
+msgstr "en de oorspronkelijke makers van Tomboy."
+
+#: src/gnote.cpp:264
+msgid "translator-credits"
+msgstr ""
+"Pjotr <pjotrvertaalt@gmail.com>\n"
+"Hannie Dumoleyn <hannie@ubuntu-nl.org>"
+
+#: src/gnote.cpp:273
+msgid ""
+"Copyright © 2010-2021 Aurimas Cernius\n"
+"Copyright © 2009-2011 Debarshi Ray\n"
+"Copyright © 2009 Hubert Figuiere\n"
+"Copyright © 2004-2009 the Tomboy original authors."
+msgstr ""
+"Auteursrecht © 2010-2021 Aurimas Cernius\n"
+"Auteursrecht © 2009-2011 Debarshi Ray\n"
+"Auteursrecht © 2009 Hubert Figuiere\n"
+"Auteursrecht © 2004-2009 De oorspronkelijke makers van Tomboy."
+
+#: src/gnote.cpp:277
+msgid "A simple and easy to use desktop note-taking application."
+msgstr "Een eenvoudig en snel notitieboekje."
+
+#: src/gnote.cpp:288
+msgid "Homepage"
+msgstr "Startpagina"
+
+#: src/gnote.cpp:483
+msgid "Run Gnote in background."
+msgstr "Gnote op de achtergrond draaien."
+
+#: src/gnote.cpp:484
+msgid "Run Gnote as GNOME Shell search provider."
+msgstr "Draai Gnote als zoekmachine in GNOME Shell."
+
+#: src/gnote.cpp:485
+msgid "Specify the path of the directory containing the notes."
+msgstr "Geef het pad op naar de map die de notities bevat."
+
+#: src/gnote.cpp:485
+msgid "path"
+msgstr "pad"
+
+#: src/gnote.cpp:486
+msgid "Open the search all notes window with the search text."
+msgstr "Open zoekvenster om alle notities te doorzoeken met de zoektekst."
+
+#: src/gnote.cpp:486 src/gnote.cpp:491
+msgid "text"
+msgstr "tekst"
+
+#: src/gnote.cpp:487
+msgid "Print version information."
+msgstr "Toon versie-informatie."
+
+#: src/gnote.cpp:488
+msgid "Create and display a new note, with a optional title."
+msgstr "Maak en toon een nieuwe notitie, met een titel naar keuze."
+
+#: src/gnote.cpp:488
+msgid "title"
+msgstr "titel"
+
+#: src/gnote.cpp:489
+msgid "Display the existing note matching title."
+msgstr "Toon de beschikbare notitie met die titel."
+
+#: src/gnote.cpp:489
+msgid "title/url"
+msgstr "titel/webadres"
+
+#: src/gnote.cpp:490
+msgid "Display the 'Start Here' note."
+msgstr "Toon de ‘Begin hier’-notitie."
+
+#: src/gnote.cpp:491
+msgid "Search and highlight text in the opened note."
+msgstr "Zoek en markeer tekst in de geopende notitie."
+
+#: src/gnote.cpp:495
+msgid "A note taking application"
+msgstr "Een notitieblokje"
+
+#: src/gnote.cpp:495
+msgid "Gnote options at launch"
+msgstr "Gnote-opties bij starten"
+
+#. TRANSLATORS: %1: format placeholder for the version string.
+#: src/gnote.cpp:679
+msgid "Version %1"
+msgstr "Versie %1"
+
+#. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
+#: src/iconmanager.cpp:63
+#, c-format
+msgid "Failed to load icon (%s, %d): %s"
+msgstr "Kon pictogram niet laden (%s, %d): %s"
+
+#: src/noteaddin.cpp:138 src/noteaddin.cpp:152 src/noteaddin.cpp:164
+msgid "Plugin is disposing already"
+msgstr "Plug-in wordt reeds opgeruimd"
+
+#: src/noteaddin.cpp:168
+msgid "Window is not embedded"
+msgstr "Venster is niet ingebed"
+
+#. Probably IOException or UnauthorizedAccessException?
+#: src/notebase.cpp:225 src/note.cpp:362
+#, c-format
+msgid "Exception while saving note: %s"
+msgstr "Uitzondering bij opslaan van notitie: %s"
+
+#. write failure, but not critical
+#: src/notebase.cpp:465
+#, c-format
+msgid "Failed to update note format: %s"
+msgstr "Bijwerken van notitie-opmaak mislukt: %s"
+
+#: src/notebase.cpp:583
+#, c-format
+msgid "Filesystem error: %s"
+msgstr "Bestandssysteemfout: %s"
+
+#: src/notebooks/createnotebookdialog.cpp:38
+msgid "Create Notebook"
+msgstr "Notitieboek aanmaken"
+
+#: src/notebooks/createnotebookdialog.cpp:43
+msgid "N_otebook name:"
+msgstr "Naam n_otitieboek:"
+
+#: src/notebooks/createnotebookdialog.cpp:56
+msgid "Name already taken"
+msgstr "Deze naam wordt al gebruikt"
+
+#. Translation note: This is the Create button in the Create
+#. New Note Dialog.
+#: src/notebooks/createnotebookdialog.cpp:68
+msgid "C_reate"
+msgstr "_Aanmaken"
+
+#: src/notebooks/notebookapplicationaddin.cpp:78
+msgid "New Note_book..."
+msgstr "Nieuw notitie_boek…"
+
+#. The templateNoteTite should show the name of the
+#. notebook.  For example, if the name of the notebooks
+#. "Meetings", the templateNoteTitle should be "Meetings
+#. Notebook Template".  Translators should place the
+#. name of the notebook accordingly using "%1".
+#: src/notebooks/notebook.cpp:94
+msgid "%1 Notebook Template"
+msgstr "Notitieboeksjabloon %1"
+
+#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:304
+msgid "New Note"
+msgstr "Nieuwe notitie"
+
+#: src/notebooks/notebookmanager.cpp:352
+msgid "Really delete this notebook?"
+msgstr "Wilt u dit notitieboek echt verwijderen?"
+
+#: src/notebooks/notebookmanager.cpp:353
+msgid ""
+"The notes that belong to this notebook will not be deleted, but they will no "
+"longer be associated with this notebook.  This action cannot be undone."
+msgstr ""
+"De notities in dit notitieboek worden niet verwijderd, maar zullen niet "
+"langer deel uitmaken van dit notitieboek. Deze actie kan niet ongedaan "
+"gemaakt worden."
+
+#: src/notebooks/notebookmenuitem.cpp:34
+#: src/notebooks/notebooknoteaddin.cpp:153
+msgid "No notebook"
+msgstr "Geen notitieboek"
+
+#: src/notebooks/notebooknoteaddin.cpp:111
+msgid "Notebook"
+msgstr "Notitieboek"
+
+#. Add new notebook item
+#: src/notebooks/notebooknoteaddin.cpp:147
+msgid "_New notebook..."
+msgstr "_Nieuw notitieboek…"
+
+# hmm, ik zie geen All voor Tasque (tino 24-5-2008)
+#: src/notebooks/specialnotebooks.cpp:47
+msgid "All"
+msgstr "Alles"
+
+#: src/notebooks/specialnotebooks.cpp:76
+msgid "Unfiled"
+msgstr "Niet-opgeborgen"
+
+#: src/notebooks/specialnotebooks.cpp:107
+msgctxt "notebook"
+msgid "Important"
+msgstr "Belangrijk"
+
+#: src/notebooks/specialnotebooks.cpp:134
+msgid "Active"
+msgstr "Actief"
+
+#: src/notebuffer.cpp:1429
+msgid "</list> tag mismatch"
+msgstr "</list> label komt niet overeen"
+
+#: src/notebuffer.cpp:1513
+#, c-format
+msgid "Exception: %s"
+msgstr "Uitzondering: %s"
+
+#. TRANSLATORS: %1 will be replaced by note title
+#: src/note.cpp:56
+msgid "Really delete \"%1\"?"
+msgstr "Wilt u ‘%1’ echt verwijderen?"
+
+#. TRANSLATORS: %1 is number of notes
+#: src/note.cpp:60
+msgid "Really delete %1 note?"
+msgid_plural "Really delete %1 notes?"
+msgstr[0] "Wilt u %1 notitie echt verwijderen?"
+msgstr[1] "Wilt u %1 notities echt verwijderen?"
+
+#: src/note.cpp:67
+msgid "If you delete a note it is permanently lost."
+msgstr "Het verwijderen van een notitie kan niet ongedaan gemaakt worden."
+
+#: src/note.cpp:101
+msgid "Error saving note data."
+msgstr "Fout bij opslaan van notitiegegevens."
+
+#: src/note.cpp:102
+msgid ""
+"An error occurred while saving your notes. Please check that you have "
+"sufficient disk space, and that you have appropriate rights on ~/.local/"
+"share/gnote. Error details can be found in ~/.gnote.log."
+msgstr ""
+"Er is een fout opgetreden bij het opslaan van uw notities. Ga na of u genoeg "
+"schijfruimte heeft en of u de juiste toegangsrechten heeft tot ~/.local/"
+"share/gnote. Meer details kunt u vinden in ~/.gnote.log."
+
+#: src/note.cpp:453
+#, c-format
+msgid "Error while saving: %s"
+msgstr "Fout bij opslaan: %s"
+
+#: src/note.cpp:680
+msgid "Setting text content for closed notes not supported"
+msgstr ""
+"Het instellen van tekstinhoud voor gesloten notities wordt niet ondersteund"
+
+#. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:325
+msgid "New Note Template"
+msgstr "Nieuw notitiesjabloon"
+
+#: src/notemanagerbase.cpp:358
+msgid "Describe your new note here."
+msgstr "Beschrijf hier uw nieuwe notitie."
+
+#: src/notemanager.cpp:114
+msgid ""
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
+"Here\n"
+"\n"
+"<bold>Welcome to Gnote!</bold>\n"
+"\n"
+"Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
+"\n"
+"You can create new notes to hold your ideas by selecting the \"Create New "
+"Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
+"automatically.\n"
+"\n"
+"Then organize the notes you create by linking related notes and ideas "
+"together!\n"
+"\n"
+"We've created a note called <link:internal>Using Links in Gnote</link:"
+"internal>.  Notice how each time we type <link:internal>Using Links in "
+"Gnote</link:internal> it automatically gets underlined?  Click on the link "
+"to open the note.</note-content>"
+msgstr ""
+"<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Begin "
+"hier\n"
+"\n"
+"<bold>Welkom bij Gnote!</bold>\n"
+"\n"
+"Gebruik deze ‘Begin hier’-notitie om te beginnen met het noteren van uw "
+"ideeën en gedachten.\n"
+"\n"
+"Nieuwe notities kunnen gemaakt worden door ‘Nieuwe notitie maken’ te kiezen "
+"vanuit het Gnote-menu in uw GNOME-werkbalk. Uw notities worden automatisch "
+"opgeslagen.\n"
+"\n"
+"Vervolgens kunt u uw notities ordenen door deze onderling naar elkaar te "
+"laten verwijzen.\n"
+"\n"
+"Er is een notitie genaamd <link:internal>Verwijzingen gebruiken in Gnote</"
+"link:internal>. Overal waar <link:internal>Verwijzingen gebruiken in Gnote</"
+"link:internal> staat, wordt deze verwijzing onderstreept. Klik op de "
+"verwijzing om de notitie te openen.</note-content>"
+
+#: src/notemanager.cpp:133
+msgid ""
+"<note-content>Using Links in Gnote\n"
+"\n"
+"Notes in Gnote can be linked together by highlighting text in the current "
+"note and clicking the <bold>Link</bold> button above in the toolbar.  Doing "
+"so will create a new note and also underline the note's title in the current "
+"note.\n"
+"\n"
+"Changing the title of a note will update links present in other notes.  This "
+"prevents broken links from occurring when a note is renamed.\n"
+"\n"
+"Also, if you type the name of another note in your current note, it will "
+"automatically be linked for you.</note-content>"
+msgstr ""
+"<note-content>Verwijzingen gebruiken in Gnote\n"
+"\n"
+"Notities kunnen in Gnote naar elkaar verwijzen. Door tekst te selecteren en "
+"de knop ‘Koppelen’ op de werkbalk te gebruiken kunt u een nieuwe verwijzing "
+"maken. Er wordt dan een nieuwe notitie gemaakt en de huidige notitie wordt "
+"voorzien van een verwijzing naar de titel van deze nieuwe notitie.\n"
+"\n"
+"Als u de titel van een andere notitie tikt in de huidige notitie, dan zal "
+"automatisch een verwijzing naar de betreffende notitie gemaakt worden.\n"
+"\n"
+"Als de titel van een notitie verandert, worden verwijzingen naar deze "
+"notitie automatisch bijgewerkt. Dit voorkomt dat verwijzingen naar niet-"
+"bestaande notities wijzen als een notitie wordt hernoemd.</note-content>"
+
+#. Attempt to find an existing Start Here note
+#: src/notemanager.cpp:148 src/notemanager.cpp:185
+msgid "Start Here"
+msgstr "Begin hier"
+
+#: src/notemanager.cpp:153
+msgid "Using Links in Gnote"
+msgstr "Koppelingen gebruiken in Gnote"
+
+#: src/notemanager.cpp:158
+#, c-format
+msgid "Error creating start notes: %s"
+msgstr "Fout bij maken van startnotities: %s"
+
+#. TRANSLATORS: first %s is file, second is error
+#: src/notemanager.cpp:173
+#, c-format
+msgid "Error parsing note XML, skipping \"%s\": %s"
+msgstr "Fout bij lezen van XML van notitie, '%s' wordt overgeslagen: %s"
+
+#: src/noterenamedialog.cpp:125
+msgid "Rename Note Links?"
+msgstr "Notitie-verwijzingen hernoemen?"
+
+#: src/noterenamedialog.cpp:130
+msgid "_Don't Rename Links"
+msgstr "Verwijzingen _niet hernoemen"
+
+#: src/noterenamedialog.cpp:131
+msgid "_Rename Links"
+msgstr "Verwijzingen _hernoemen"
+
+#: src/noterenamedialog.cpp:132
+msgid "Select All"
+msgstr "Alles selecteren"
+
+#: src/noterenamedialog.cpp:133
+msgid "Select None"
+msgstr "Niets selecteren"
+
+#: src/noterenamedialog.cpp:134
+msgid "Always show this _window"
+msgstr "Dit venster altijd _weergeven"
+
+#: src/noterenamedialog.cpp:135
+msgid "Alwa_ys rename links"
+msgstr "_Altijd verwijzingen hernoemen"
+
+#: src/noterenamedialog.cpp:137
+msgid "Never rename _links"
+msgstr "_Nooit verwijzingen hernoemen"
+
+#: src/noterenamedialog.cpp:155
+msgid ""
+"Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
+"\"<span underline=\"single\">%2</span>\"?\n"
+"\n"
+"If you do not rename the links, they will no longer link to anything."
+msgstr ""
+"Verwijzingen in andere notities van ‘<span underline=\"single\">%1</span>’ "
+"in ‘<span underline=\"single\">%2</span>’ hernoemen?\n"
+"\n"
+"Als u de verwijzingen niet hernoemt, zullen deze nergens meer naar toe "
+"verwijzen."
+
+#: src/noterenamedialog.cpp:188
+msgid "Rename Links"
+msgstr "Verwijzingen hernoemen"
+
+#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+msgid "Note Title"
+msgstr "Notitietitel"
+
+#: src/noterenamedialog.cpp:240
+msgid "Ad_vanced"
+msgstr "Ge_avanceerd"
+
+#: src/notewindow.cpp:282
+msgid "_Undo"
+msgstr "_Ongedaan maken"
+
+#: src/notewindow.cpp:284
+msgid "_Redo"
+msgstr "Op_nieuw uitvoeren"
+
+#: src/notewindow.cpp:286 src/notewindow.cpp:340
+msgid "_Link to New Note"
+msgstr "Naar nieuwe notitie verwij_zen"
+
+#: src/notewindow.cpp:288
+msgctxt "NoteActions"
+msgid "_Important"
+msgstr "_Belangrijk"
+
+#: src/notewindow.cpp:298
+msgid "_Delete…"
+msgstr "Ver_wijderen…"
+
+#: src/notewindow.cpp:375
+msgid "Set properties of text"
+msgstr "Eigenschappen van tekst instellen"
+
+#: src/notewindow.cpp:389
+msgid ""
+"This note is a template note. It determines the default content of regular "
+"notes, and will not show up in the note menu or search window."
+msgstr ""
+"Deze notitie is een sjabloon-notitie. Deze bepaalt de standaard inhoud van "
+"een gewone notitie en zal niet worden getoond in het notitiemenu of in het "
+"zoekvenster."
+
+#: src/notewindow.cpp:392
+msgid "Convert to regular note"
+msgstr "Converteren naar een gewone notitie"
+
+#: src/notewindow.cpp:395
+msgid "Save Si_ze"
+msgstr "_Afmetingen opslaan"
+
+#: src/notewindow.cpp:399
+msgid "Save Se_lection"
+msgstr "S_electie opslaan"
+
+#: src/notewindow.cpp:403
+msgid "Save _Title"
+msgstr "_Titel opslaan"
+
+#: src/notewindow.cpp:505 src/notewindow.cpp:1011
+msgid "Cannot create note"
+msgstr "Kon notitie niet aanmaken"
+
+#: src/notewindow.cpp:781
+msgid "_Bold"
+msgstr "_Vetgedrukt"
+
+#: src/notewindow.cpp:782
+msgid "_Italic"
+msgstr "_Schuingedrukt"
+
+#: src/notewindow.cpp:783
+msgid "_Strikeout"
+msgstr "_Doorhalen"
+
+#: src/notewindow.cpp:787
+msgid "_Highlight"
+msgstr "_Markeren"
+
+#: src/notewindow.cpp:790
+msgid "_Normal"
+msgstr "_Normaal"
+
+#: src/notewindow.cpp:791
+msgid "S_mall"
+msgstr "_Klein"
+
+#: src/notewindow.cpp:792
+msgid "_Large"
+msgstr "_Groot"
+
+#: src/notewindow.cpp:793
+msgid "Hu_ge"
+msgstr "_Enorm"
+
+#: src/notewindow.cpp:815
+msgid "⦁ Bullets"
+msgstr "⦁ Opsommingstekens"
+
+#: src/notewindow.cpp:817
+msgid "→ Increase indent"
+msgstr "→ Inspringing vergroten"
+
+#: src/notewindow.cpp:819
+msgid "← Decrease indent"
+msgstr "← Inspringing verkleinen"
+
+#: src/preferencesdialog.cpp:104
+msgid "Gnote Preferences"
+msgstr "Voorkeuren van Gnote"
+
+#: src/preferencesdialog.cpp:121
+msgid "General"
+msgstr "Algemeen"
+
+#: src/preferencesdialog.cpp:122
+msgid "Links"
+msgstr "Koppelingen"
+
+#. TRANSLATORS: Addin category.
+#: src/preferencesdialog.cpp:125 src/sharp/addinstreemodel.cpp:165
+msgid "Synchronization"
+msgstr "Synchronisatie"
+
+#: src/preferencesdialog.cpp:127
+msgid "Plugins"
+msgstr "Plug-ins"
+
+#. Ok button...
+#. Button to close dialog.
+#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:801
+#: src/preferencesdialog.cpp:1064 src/preferencesdialog.cpp:1281
+#: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
+msgid "_Close"
+msgstr "Sl_uiten"
+
+#: src/preferencesdialog.cpp:202
+#, c-format
+msgid "Plugin %s is absent"
+msgstr "Plug-in %s is niet voorhanden"
+
+#. Open in new window
+#: src/preferencesdialog.cpp:250
+msgid "Always _open notes in new window"
+msgstr "Notities altijd openen in nieuw venster"
+
+#: src/preferencesdialog.cpp:263
+msgid "_Spell check while typing"
+msgstr "_Spelling controleren tijdens het typen"
+
+#: src/preferencesdialog.cpp:264
+msgid ""
+"Misspellings will be underlined in red, with correct spelling suggestions "
+"shown in the context menu."
+msgstr ""
+"Spelfouten worden rood onderstreept. Correctiesuggesties verschijnen in het "
+"contextmenu."
+
+#. Auto bulleted list
+#: src/preferencesdialog.cpp:274
+msgid "Enable auto-_bulleted lists"
+msgstr "Automatische _opsommingstekens inschakelen"
+
+#: src/preferencesdialog.cpp:275
+msgid "Start new bulleted list by starting new line with character \"-\"."
+msgstr ""
+"Begin een nieuwe lijst met opsommingstekens door een nieuwe regel te "
+"beginnen met het teken '-'."
+
+#: src/preferencesdialog.cpp:283
+msgid "Use custom _font"
+msgstr "_Aangepast lettertype gebruiken"
+
+#: src/preferencesdialog.cpp:300
+msgid "When renaming a linked note: "
+msgstr "Bij het hernoemen van een notitie waarnaar verwezen wordt: "
+
+#: src/preferencesdialog.cpp:304
+msgid "Ask me what to do"
+msgstr "Vragen wat te doen"
+
+#: src/preferencesdialog.cpp:305
+msgid "Never rename links"
+msgstr "Nooit verwijzingen hernoemen"
+
+#: src/preferencesdialog.cpp:306
+msgid "Always rename links"
+msgstr "Altijd verwijzingen hernoemen"
+
+#: src/preferencesdialog.cpp:326
+msgid ""
+"Use the new note template to specify the text that should be used when "
+"creating a new note."
+msgstr ""
+"Gebruik het nieuwe notitiesjabloon voor het opgeven van de tekst voor nieuwe "
+"notities."
+
+#: src/preferencesdialog.cpp:331
+msgid "Open New Note Template"
+msgstr "Sjabloon voor nieuwe notities openen"
+
+#. internal links
+#: src/preferencesdialog.cpp:385
+msgid "_Automatically link to notes"
+msgstr "_Automatisch koppelen naar notities"
+
+#: src/preferencesdialog.cpp:386
+msgid "Enable this option to create a link when text matches note title."
+msgstr ""
+"Schakel deze optie in om een koppeling te maken wanneer tekst overeenkomt "
+"met de titel van een notitie."
+
+#. URLs
+#: src/preferencesdialog.cpp:392
+msgid "Create links for _URLs"
+msgstr "Koppelingen maken voor _webadressen"
+
+#: src/preferencesdialog.cpp:393
+msgid ""
+"Enable this option to create links for URLs. Clicking will open URL with "
+"appropriate program."
+msgstr ""
+"Schakel deze optie in om koppelingen te maken voor webadressen. Klikken zal "
+"het webadres openen met het juiste programma."
+
+#. WikiWords...
+#: src/preferencesdialog.cpp:400
+msgid "Highlight _WikiWords"
+msgstr "_WikiWoorden markeren"
+
+#: src/preferencesdialog.cpp:401
+msgid ""
+"Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
+"word will create a note with that name."
+msgstr ""
+"Met deze optie worden woorden <b>DieErZoUitzien</b> gemarkeerd. Door het "
+"woord aan te klikken maakt u een nieuwe notitie met die naam."
+
+#: src/preferencesdialog.cpp:433
+msgid "Ser_vice:"
+msgstr "_Dienst:"
+
+#: src/preferencesdialog.cpp:487 src/preferencesdialog.cpp:1107
+msgid "Not configurable"
+msgstr "Niet instelbaar"
+
+#: src/preferencesdialog.cpp:512
+msgid "Automatic background s_ync interval (minutes)"
+msgstr "Interval voor automatische sy_nchronisatie op de achtergrond (minuten)"
+
+#. "Advanced..." button to bring up extra sync config dialog
+#: src/preferencesdialog.cpp:536
+msgid "_Advanced..."
+msgstr "Ge_avanceerd…"
+
+#: src/preferencesdialog.cpp:543
+msgid "Clear"
+msgstr ""
+
+#: src/preferencesdialog.cpp:584
+msgid "The following plugins are installed:"
+msgstr "De volgende plug-ins zijn geïnstalleerd:"
+
+#. TODO: In a future version, add in an "Install Add-ins..." button
+#. TODO: In a future version, add in a "Repositories..." button
+#: src/preferencesdialog.cpp:619
+msgid "_Enable"
+msgstr "_Inschakelen"
+
+#: src/preferencesdialog.cpp:625
+msgid "_Disable"
+msgstr "_Uitschakelen"
+
+# Niet duidelijk wat hier geformatteerd of opgemaakt moet worden. - Hannie
+#: src/preferencesdialog.cpp:637
+#, fuzzy
+#| msgid "Formatting"
+msgid "In_formation"
+msgstr "Formattering"
+
+#: src/preferencesdialog.cpp:781
+msgid "Not Implemented"
+msgstr "Niet geïmplementeerd"
+
+#. TRANSLATORS: %1 is the placeholder for the addin name.
+#: src/preferencesdialog.cpp:798
+msgid "%1 Preferences"
+msgstr "%1 voorkeuren"
+
+#: src/preferencesdialog.cpp:931
+msgid "Choose Note Font"
+msgstr "Notitie-lettertype kiezen"
+
+#. Create dialog
+#: src/preferencesdialog.cpp:1024
+msgid "Other Synchronization Options"
+msgstr "Overige synchronisatie-instellingen"
+
+#: src/preferencesdialog.cpp:1027
+msgid ""
+"When a conflict is detected between a local note and a note on the "
+"configured synchronization server:"
+msgstr ""
+"Als een conflict wordt gevonden tussen de lokale notitie en de notitie op de "
+"synchronisatieserver:"
+
+#. label.Xalign = 0;
+#: src/preferencesdialog.cpp:1031
+msgid "Always ask me what to do"
+msgstr "Altijd vragen wat te doen"
+
+#: src/preferencesdialog.cpp:1035
+msgid "Rename my local note"
+msgstr "Mijn lokale notitie hernoemen"
+
+#: src/preferencesdialog.cpp:1039
+msgid "Replace my local note with the server's update"
+msgstr "Lokale notitie vervangen door bijgewerkte versie van de server"
+
+#: src/preferencesdialog.cpp:1141
+msgid "Are you sure?"
+msgstr "Weet u het zeker?"
+
+#: src/preferencesdialog.cpp:1142
+msgid ""
+"Clearing your synchronization settings is not recommended.  You may be "
+"forced to synchronize all of your notes again when you save new settings."
+msgstr ""
+"Het verwijderen van de synchronisatie-instellingen wordt afgeraden. Het kan "
+"nodig zijn dat alle notities opnieuw gesynchroniseerd moeten worden wanneer "
+"u nieuwe instellingen opslaat."
+
+#: src/preferencesdialog.cpp:1152
+msgid "Resetting Synchronization Settings"
+msgstr "Synchronisatie-opties opnieuw instellen"
+
+#: src/preferencesdialog.cpp:1153
+msgid ""
+"You have disabled the configured synchronization service.  Your "
+"synchronization settings will now be cleared.  You may be forced to "
+"synchronize all of your notes again when you save new settings."
+msgstr ""
+"De geconfigureerde synchronisatiedienst is uitgeschakeld. Uw synchronisatie-"
+"instellingen worden nu verwijderd. Het kan nodig zijn dat alle notities "
+"opnieuw gesynchroniseerd moeten worden wanneer u nieuwe instellingen opslaat."
+
+#: src/preferencesdialog.cpp:1228
+msgid "Connection successful"
+msgstr "Verbinding geslaagd"
+
+#: src/preferencesdialog.cpp:1229
+msgid ""
+"Gnote is ready to synchronize your notes. Would you like to synchronize them "
+"now?"
+msgstr "Gnote is gereed om uw notities te synchroniseren. Wilt u dat nu doen?"
+
+#. TRANSLATORS: %1 is the placeholder for the log file path.
+#: src/preferencesdialog.cpp:1254
+msgid ""
+"Please check your information and try again.  The log file %1 may contain "
+"more information about the error."
+msgstr ""
+"Controleer a.u.b. uw gegevens en probeer het opnieuw. Het logbestand %1 "
+"bevat mogelijk meer informatie over deze fout."
+
+#: src/preferencesdialog.cpp:1259
+msgid "Error connecting"
+msgstr "Fout bij verbinden"
+
+#: src/preferencesdialog.cpp:1321
+msgid "Version:"
+msgstr "Versie:"
+
+#: src/preferencesdialog.cpp:1324
+msgid "Author:"
+msgstr "Auteur:"
+
+#: src/preferencesdialog.cpp:1328
+msgid "Copyright:"
+msgstr "Auteursrecht:"
+
+#: src/recentchanges.cpp:160
+msgid "All Notes"
+msgstr "Alle notities"
+
+#: src/recentchanges.cpp:171
+msgid "Create New Note"
+msgstr "Nieuwe notitie"
+
+#: src/recentchanges.cpp:193
+msgid "Search"
+msgstr "Zoeken"
+
+#: src/recentchanges.cpp:268
+msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
+msgstr ""
+"De ouder van de embed-box is geen Gtk :: Grid,  dien een foutmelding in!"
+
+#: src/recentchanges.cpp:310
+msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
+msgstr ""
+"De ouder van de zoekopdracht is geen Gtk :: Grid,  dien een foutmelding in!"
+
+#: src/recentchanges.cpp:863
+msgid "Expected widget to be a sub-menu!"
+msgstr "Verwacht dat widget een submenu is!"
+
+#: src/recentchanges.cpp:868
+msgid "No configured actions"
+msgstr "Geen ingestelde acties"
+
+#: src/remotecontrolproxy.cpp:46 src/remotecontrolproxy.cpp:49
+#, c-format
+msgid "Failed to load D-Bus interface %s: %s"
+msgstr "Laden van D-Bus-interface %s is mislukt: %s"
+
+#: src/searchnoteswidget.cpp:212
+msgid "Notebooks"
+msgstr "Notitieboeken"
+
+#: src/searchnoteswidget.cpp:684
+msgid "Note"
+msgstr "Notitie"
+
+#: src/searchnoteswidget.cpp:706
+msgid "Modified"
+msgstr "Aangepast"
+
+#: src/searchnoteswidget.cpp:1017
+msgid "Notes"
+msgstr "Notities"
+
+#: src/searchnoteswidget.cpp:1036
+msgid ""
+"No results found in the selected notebook.\n"
+"Click here to search across all notes."
+msgstr ""
+"Geen overeenkomsten gevonden in het geselecteerde notitieboek.\n"
+"Klik hier om alle notities te doorzoeken."
+
+#: src/searchnoteswidget.cpp:1040
+msgid "Click here to search across all notebooks"
+msgstr "Klik hier om alle notitieboeken te doorzoeken"
+
+#: src/searchnoteswidget.cpp:1058
+msgid "Matches"
+msgstr "Resultaten"
+
+#. TRANSLATORS: search found a match in note title
+#: src/searchnoteswidget.cpp:1109
+msgid "Title match"
+msgstr "Titelovereenkomst"
+
+#: src/searchnoteswidget.cpp:1113
+msgid "%1 match"
+msgid_plural "%1 matches"
+msgstr[0] "%1 resultaat"
+msgstr[1] "%1 resultaten"
+
+#: src/searchnoteswidget.cpp:1310
+msgid "Open In New _Window"
+msgstr "In nieuw _venster openen"
+
+#: src/searchnoteswidget.cpp:1320
+msgid "_New"
+msgstr "_Nieuw"
+
+#: src/searchnoteswidget.cpp:1349
+msgid "_Open Template Note"
+msgstr "Notitiesjabloon _openen"
+
+#: src/searchnoteswidget.cpp:1353
+msgid "Re_name..."
+msgstr "_Hernoemen…"
+
+#: src/searchnoteswidget.cpp:1360
+msgid "_New..."
+msgstr "_Nieuw…"
+
+#: src/searchnoteswidget.cpp:1511 src/searchnoteswidget.cpp:1524
+#: src/searchnoteswidget.cpp:1535
+#, c-format
+msgid "Failed to parse setting search-sorting (Value: %s):"
+msgstr "Kon instelling zoekrangschikking niet lezen (waarde: %s):"
+
+#: src/searchnoteswidget.cpp:1512
+msgid "Expected format 'column:order'"
+msgstr "Verwacht formaat: ‘column:order’"
+
+#: src/searchnoteswidget.cpp:1525
+#, c-format
+msgid "Unrecognized column %s"
+msgstr "Niet-herkende kolom %s"
+
+#: src/searchnoteswidget.cpp:1536
+#, c-format
+msgid "Unrecognized order %s"
+msgstr "Niet-herkende volgorde %s"
+
+#: src/sharp/addinstreemodel.cpp:110
+msgid "Name"
+msgstr "Naam"
+
+#: src/sharp/addinstreemodel.cpp:122
+msgid "Version"
+msgstr "Versie"
+
+# Niet duidelijk wat hier geformatteerd of opgemaakt moet worden. - Hannie
+#. TRANSLATORS: Addin category.
+#: src/sharp/addinstreemodel.cpp:156
+msgid "Formatting"
+msgstr "Formattering"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/addinstreemodel.cpp:159
+msgid "Desktop integration"
+msgstr "Integratie in de werkomgeving"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/addinstreemodel.cpp:162
+msgid "Tools"
+msgstr "Hulpmiddelen"
+
+#. TRANSLATORS: Addin category is unknown.
+#: src/sharp/addinstreemodel.cpp:169
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: src/sharp/modulemanager.cpp:62
+#, c-format
+msgid "Error loading %s"
+msgstr "Fout bij laden van %s"
+
+#: src/sharp/modulemanager.cpp:69
+#, c-format
+msgid "Error getting symbol dynamic_module_instanciate: %s"
+msgstr "Fout bij het verkrijgen van symbool dynamic_module_instanciate: %s"
+
+#: src/sharp/xmlreader.cpp:219
+#, c-format
+msgid "XML error: %s"
+msgstr "XML-fout: %s"
+
+#: src/sharp/xmlreader.cpp:219
+msgid "unknown parse error"
+msgstr "onbekende leesfout"
+
+#: src/sharp/xmlwriter.cpp:40
+msgid "%1 failed"
+msgstr "%1 mislukte"
+
+#: src/sharp/xsltransform.cpp:67
+msgid "NULL stylesheet, please fill a bug"
+msgstr "NULL-stijlblad; gelieve een fout te melden"
+
+#: src/synchronization/filesystemsyncserver.cpp:125
+#, c-format
+msgid "Failed to upload note: %s"
+msgstr "Opsturen van notitie mislukte: %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:143
+msgid "Failed to upload %1 note"
+msgid_plural "Failed to upload %1 notes"
+msgstr[0] "Kon %1 notitie niet opsturen"
+msgstr[1] "Kon %1 notities niet opsturen"
+
+#: src/synchronization/filesystemsyncserver.cpp:237
+#, c-format
+msgid "Exception when finishing note copy: %s"
+msgstr "Uitzondering bij voltooien van kopiëren van notitie: %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:240
+msgid "Exception when finishing note copy"
+msgstr "Uitzondering bij voltooien van kopiëren van notitie"
+
+#: src/synchronization/filesystemsyncserver.cpp:263
+msgid "Failed to download %1 note update"
+msgid_plural "Failed to download %1 note updates"
+msgstr[0] "Binnenhalen van %1 notitie-update mislukt"
+msgstr[1] "Binnenhalen van %1 notitie-updates mislukt"
+
+#: src/synchronization/filesystemsyncserver.cpp:427
+#: src/synchronization/filesystemsyncserver.cpp:431
+#, c-format
+msgid ""
+"Exception during server cleanup while committing. Server integrity is OK, "
+"but there may be some excess files floating around.  Here's the error: %s\n"
+msgstr ""
+"Uitzondering tijdens het opschonen van de server tijdens het inzenden. "
+"Serverintegriteit is ok,maar er kunnen wat overtollige bestanden rondzweven. "
+"Hier is de fout: % s\n"
+
+#: src/synchronization/filesystemsyncserver.cpp:637
+#, c-format
+msgid "Error updating lock: %s"
+msgstr "Fout bij bijwerken van vergrendeling: %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:676
+#, c-format
+msgid "Error deleting the old synchronization lock \"%s\": %s"
+msgstr ""
+"Fout bij het verwijderen van de oude synchronisatievergrendeling '%s': %s"
+
+#. TRANSLATORS: %s is file
+#: src/synchronization/gnotesyncclient.cpp:157
+#, c-format
+msgid "Unparsable last-sync-date element in %s"
+msgstr "Onleesbaar laatste synchronisatiedatumelement in %s"
+
+#. TRANSLATORS: %s is file
+#: src/synchronization/gnotesyncclient.cpp:167
+#, c-format
+msgid "Unparsable last-sync-rev element in %s"
+msgstr "Onleesbaar laatste sync--rev-element in %s"
+
+#: src/synchronization/gvfssyncservice.cpp:98
+msgid "Failure writing test file"
+msgstr "Fout bij schrijven van testbestand"
+
+#: src/synchronization/gvfssyncservice.cpp:103
+msgid "Failure when checking test file contents"
+msgstr "Fout bij controleren van de inhoud van het testbestand"
+
+#: src/synchronization/gvfssyncservice.cpp:109
+msgid "Failure when trying to remove test file"
+msgstr "Verwijderen van het testbestand is mislukt"
+
+#: src/synchronization/gvfssyncservice.cpp:125
+msgid "Unknown error"
+msgstr "Onbekende fout"
+
+#: src/synchronization/syncdialog.cpp:63
+msgid "Note Conflict"
+msgstr "Notitieconflict"
+
+#. Suggest renaming note by appending " (old)" to the existing title
+#: src/synchronization/syncdialog.cpp:68
+msgid " (old)"
+msgstr " (oud)"
+
+#: src/synchronization/syncdialog.cpp:113
+msgid "Rename local note:"
+msgstr "Lokale notitie hernoemen:"
+
+#: src/synchronization/syncdialog.cpp:120
+msgid "Update links in referencing notes"
+msgstr "Koppelingen in verwijzende notities bijwerken"
+
+#: src/synchronization/syncdialog.cpp:126
+msgid "Overwrite local note"
+msgstr "Lokale notitie overschrijven"
+
+#: src/synchronization/syncdialog.cpp:130
+msgid "Always perform this action"
+msgstr "Altijd deze actie uitvoeren"
+
+#: src/synchronization/syncdialog.cpp:133
+msgid "_Continue"
+msgstr ""
+
+#. Set initial dialog text
+#: src/synchronization/syncdialog.cpp:136
+msgid "Note conflict detected"
+msgstr "Notitieconflict gevonden"
+
+#: src/synchronization/syncdialog.cpp:138
+msgid ""
+"The server version of \"%1\" conflicts with your local note.  What do you "
+"want to do with your local note?"
+msgstr ""
+"De serverversie van ‘%1’ conflicteert met uw lokale notitie. Wat wilt u doen "
+"met uw lokale notitie?"
+
+#. Expander containing TreeView
+#: src/synchronization/syncdialog.cpp:292
+msgid "Details"
+msgstr "Details"
+
+#: src/synchronization/syncdialog.cpp:334
+msgid "Status"
+msgstr "Status"
+
+#: src/synchronization/syncdialog.cpp:478
+msgid "Acquiring sync lock..."
+msgstr "Synchronisatievergrendeling verkrijgen…"
+
+#: src/synchronization/syncdialog.cpp:481
+msgid "Committing changes..."
+msgstr "Wijzigingen opslaan…"
+
+#: src/synchronization/syncdialog.cpp:484
+msgid "Synchronizing Notes"
+msgstr "Notities synchroniseren"
+
+#: src/synchronization/syncdialog.cpp:485
+msgid "Synchronizing your notes..."
+msgstr "Uw notities worden gesynchroniseerd…"
+
+#: src/synchronization/syncdialog.cpp:486
+msgid "This may take a while, kick back and enjoy!"
+msgstr "Dit kan een even duren, ga er rustig voor zitten!"
+
+#: src/synchronization/syncdialog.cpp:488
+msgid "Connecting to the server..."
+msgstr "Verbinding maken met de server…"
+
+#: src/synchronization/syncdialog.cpp:494
+msgid "Deleting notes off of the server..."
+msgstr "Verwijderen van notities op de server…"
+
+#: src/synchronization/syncdialog.cpp:498
+msgid "Downloading new/updated notes..."
+msgstr "Ophalen van nieuwe en veranderde notities…"
+
+#: src/synchronization/syncdialog.cpp:510
+msgid "Server Locked"
+msgstr "Server vergrendeld"
+
+#: src/synchronization/syncdialog.cpp:511
+msgid "Server is locked"
+msgstr "Server is vergrendeld"
+
+#: src/synchronization/syncdialog.cpp:512
+msgid ""
+"One of your other computers is currently synchronizing.  Please wait 2 "
+"minutes and try again."
+msgstr ""
+"Een van uw andere computers is momenteel aan het synchroniseren. Wacht 2 "
+"minuten en probeer opnieuw."
+
+#: src/synchronization/syncdialog.cpp:516
+msgid "Preparing to download updates from server..."
+msgstr "Ophalen updates van de server voorbereiden…"
+
+#: src/synchronization/syncdialog.cpp:519
+msgid "Preparing to upload updates to server..."
+msgstr "Opsturen updates naar de server voorbereiden…"
+
+#: src/synchronization/syncdialog.cpp:522
+msgid "Uploading notes to server..."
+msgstr "Opsturen van notities naar de server…"
+
+#: src/synchronization/syncdialog.cpp:525
+msgid "Synchronization Failed"
+msgstr "Synchronisatie mislukt"
+
+#: src/synchronization/syncdialog.cpp:526
+msgid "Failed to synchronize"
+msgstr "Synchroniseren is mislukt"
+
+#: src/synchronization/syncdialog.cpp:527
+msgid "Could not synchronize notes.  Check the details below and try again."
+msgstr ""
+"Kon de notities niet synchroniseren. Controleer de onderstaande gegevens en "
+"probeer opnieuw."
+
+#: src/synchronization/syncdialog.cpp:533
+msgid "Synchronization Complete"
+msgstr "Synchroniseren voltooid"
+
+#: src/synchronization/syncdialog.cpp:534
+msgid "Synchronization is complete"
+msgstr "Synchroniseren is voltooid"
+
+#: src/synchronization/syncdialog.cpp:535
+msgid "%1 note updated."
+msgid_plural "%1 notes updated."
+msgstr[0] "%1 notitie bijgewerkt."
+msgstr[1] "%1 notities bijgewerkt."
+
+#: src/synchronization/syncdialog.cpp:536
+msgid "Your notes are now up to date."
+msgstr "Uw notities zijn bijgewerkt."
+
+#: src/synchronization/syncdialog.cpp:541
+msgid "Synchronization Canceled"
+msgstr "Synchronisatie afgebroken"
+
+#: src/synchronization/syncdialog.cpp:542
+msgid "Synchronization was canceled"
+msgstr "Synchroniseren is afgebroken"
+
+#: src/synchronization/syncdialog.cpp:543
+msgid "You canceled the synchronization.  You may close the window now."
+msgstr "U heeft de synchronisatie geannuleerd. U kunt het venster nu sluiten."
+
+#: src/synchronization/syncdialog.cpp:547
+msgid "Synchronization Not Configured"
+msgstr "Synchronisatie niet geconfigureerd"
+
+#: src/synchronization/syncdialog.cpp:548
+msgid "Synchronization is not configured"
+msgstr "Synchronisatie is niet geconfigureerd"
+
+#: src/synchronization/syncdialog.cpp:549
+msgid "Please configure synchronization in the preferences dialog."
+msgstr ""
+"U kunt de synchronisatieconfiguratie beheren via het voorkeurenvenster."
+
+#: src/synchronization/syncdialog.cpp:553
+msgid "Synchronization Service Error"
+msgstr "Synchronisatiedienst-fout"
+
+#: src/synchronization/syncdialog.cpp:554
+msgid "Service error"
+msgstr "Dienstfout"
+
+#: src/synchronization/syncdialog.cpp:555
+msgid "Error connecting to the synchronization service.  Please try again."
+msgstr "Fout bij verbinden met synchronisatiedienst. Probeer het opnieuw."
+
+#: src/synchronization/syncdialog.cpp:569
+msgid "Deleted locally"
+msgstr "Lokaal verwijderd"
+
+#: src/synchronization/syncdialog.cpp:572
+msgid "Deleted from server"
+msgstr "Van server verwijderd"
+
+#: src/synchronization/syncdialog.cpp:575
+msgid "Updated"
+msgstr "Bijgewerkt"
+
+#: src/synchronization/syncdialog.cpp:578
+msgid "Added"
+msgstr "Toegevoegd"
+
+#: src/synchronization/syncdialog.cpp:581
+msgid "Uploaded changes to server"
+msgstr "Wijzigingen naar server verstuurd"
+
+#: src/synchronization/syncdialog.cpp:584
+msgid "Uploaded new note to server"
+msgstr "Nieuwe notitie naar server verstuurd"
+
+#: src/synchronization/syncmanager.cpp:59
+msgid "Synchronize Notes"
+msgstr "Notities synchroniseren"
+
+# Wat is cast? Duits: typenumwandlung, type conversie? - Hannie
+#: src/synchronization/syncmanager.cpp:78
+#: src/synchronization/syncmanager.cpp:95
+#: src/synchronization/syncmanager.cpp:566
+#, c-format
+msgid "Report a bug. Cast failed: %s"
+msgstr "Dien een foutrapport in. Cast mislukt: %s"
+
+#: src/synchronization/syncmanager.cpp:143
+#, c-format
+msgid "Error cleaning up addin after synchronization: %s"
+msgstr "Fout bij het opschonen van de invoegtoepassing na synchronisatie: %s"
+
+#: src/synchronization/syncmanager.cpp:168
+#, c-format
+msgid "Exception while creating SyncServer: %s"
+msgstr " Uitzondering bij het aanmaken van SyncServer: %s"
+
+#: src/synchronization/syncmanager.cpp:368
+#, c-format
+msgid "Synchronization failed with the following Glib exception: %s"
+msgstr "Synchronisatie mislukte met de volgende Glib-uitzondering: %s"
+
+#. top-level try
+#: src/synchronization/syncmanager.cpp:372
+#, c-format
+msgid "Synchronization failed with the following exception: %s"
+msgstr "Synchronisatie mislukte met de volgende uitzondering: %s"
+
+#: src/utils.cpp:98
+msgid ""
+"The \"Gnote Manual\" could not be found.  Please verify that your "
+"installation has been completed successfully."
+msgstr ""
+"De Gnote-gebruikershandleiding kon niet gevonden worden. Controleer a.u.b. "
+"of uw installatie correct is voltooid."
+
+#: src/utils.cpp:106
+msgid "Help not found"
+msgstr "Hulp niet gevonden"
+
+#: src/utils.cpp:138
+msgid "Cannot open location"
+msgstr "Locatie kon niet geopend worden"
+
+#: src/utils.cpp:155
+msgid "No Date"
+msgstr "Geen datum"
+
+#. TRANSLATORS: argument %1 is time.
+#: src/utils.cpp:170
+msgid "Today, %1"
+msgstr "Vandaag, %1"
+
+#: src/utils.cpp:171
+msgid "Today"
+msgstr "Vandaag"
+
+#. TRANSLATORS: argument %1 is time.
+#: src/utils.cpp:177
+msgid "Yesterday, %1"
+msgstr "Gisteren, %1"
+
+#: src/utils.cpp:178
+msgid "Yesterday"
+msgstr "Gisteren"
+
+#. TRANSLATORS: argument %1 is time.
+#: src/utils.cpp:184
+msgid "Tomorrow, %1"
+msgstr "Morgen, %1"
+
+#: src/utils.cpp:185
+msgid "Tomorrow"
+msgstr "Morgen"
+
+# %b maandnaam kort, b.v. jan
+# %d dag van de maand, b.v. 01
+#. TRANSLATORS: date in current year.
+#: src/utils.cpp:189
+msgid "%b %d"
+msgstr "%b %d"
+
+#. TRANSLATORS: argument %1 is date, %2 is time.
+#: src/utils.cpp:192 src/utils.cpp:201
+msgid "%1, %2"
+msgstr "%1, %2"
+
+#. TRANSLATORS: date in other than current year.
+#: src/utils.cpp:198
+msgid "%b %d %Y"
+msgstr "%d %b %Y"
+
+#: src/utils.cpp:362 src/utils.cpp:376
+msgid "_OK"
+msgstr ""
+
+#: src/utils.cpp:371
+#, fuzzy
+#| msgid "_Normal"
+msgid "_No"
+msgstr "_Normaal"
+
+#: src/utils.cpp:372
+msgid "_Yes"
+msgstr ""
+
+#. TRANSLATORS: %1 is the placeholder for the number.
+#: src/watchers.cpp:198
+msgid "(Untitled %1)"
+msgstr "(Naamloos %1)"
+
+#. TRANSLATORS: %1 is the placeholder for the title.
+#: src/watchers.cpp:230
+msgid ""
+"A note with the title <b>%1</b> already exists. Please choose another name "
+"for this note before continuing."
+msgstr ""
+"Er bestaat al een notitie met de naam <b>%1</b>. Gelieve een andere naam "
+"voor deze notitie te kiezen voordat u verdergaat."
+
+#: src/watchers.cpp:245
+msgid "Note title taken"
+msgstr "Deze naam is al in gebruik"
+
+#: src/watchers.cpp:312
+msgid "Check spelling"
+msgstr "Spelling controleren"
+
+#: src/watchers.cpp:705
+msgid "_Copy Link Address"
+msgstr "Adres van koppeling _kopiëren"
+
+#: src/watchers.cpp:711
+msgid "_Open Link"
+msgstr "Verwijzing _openen"
+
+#~ msgid "New \"%1\" Note"
+#~ msgstr "Nieuwe ‘%1’-notitie"
+
+#~ msgid "Enable global keybindings"
+#~ msgstr "Sneltoetsen gebruiken"
+
+#~ msgid ""
+#~ "If true, the desktop-global keybindings set in /org/gnome/gnote/global-"
+#~ "keybindings will be enabled, allowing for useful Gnote actions to be "
+#~ "available from any application."
+#~ msgstr ""
+#~ "Indien ingeschakeld zullen de sneltoetsen vastgesteld in ‘/org/gnome/"
+#~ "gnote/global-keybindings’ systeembreed actief zijn, zodat vanuit elk "
+#~ "programma handige Gnote-handelingen verricht kunnen worden."
+
+#~ msgid "Show applet menu"
+#~ msgstr "Werkbalkhulpje-menu tonen"
+
+#~ msgid "Open Start Here"
+#~ msgstr "‘Begin hier’ openen"
+
+#~ msgid "Create a new Note"
+#~ msgstr "Nieuwe notitie maken"
+
+#~ msgid "Open Search Dialog"
+#~ msgstr "Zoekdialoogvenster openen"
+
+#~ msgid "Open Recent Changes"
+#~ msgstr "Recente wijzigingen openen"
+
+#~ msgid ""
+#~ "There was an error connecting to the server.  This may be caused by using "
+#~ "an incorrect user name and/or password."
+#~ msgstr ""
+#~ "Er is een fout opgetreden bij het verbinden met de server. Dit kan "
+#~ "veroorzaakt worden door een onjuist opgegeven gebruikersnaam of "
+#~ "wachtwoord."
+
+#~ msgid "Remote call to %s failed"
+#~ msgstr "Aanroeping op afstand van %s mislukte"
+
+#~ msgid "Gnote is already running.  Exiting..."
+#~ msgstr "Gnote draait reeds. Wordt afgesloten..."
+
+#~ msgid "Could not connect to remote instance."
+#~ msgstr "Kon niet verbinden met de instantie op afstand."
+
+#~ msgid "Find _Next"
+#~ msgstr "V_olgende zoeken..."
+
+#~ msgid "Find _Previous"
+#~ msgstr "Vo_rige zoeken"
+
+#~ msgid ""
+#~ "This synchronization addin is not supported on your computer. Please make "
+#~ "sure you have FUSE and %1 correctly installed and configured"
+#~ msgstr ""
+#~ "Dit synchronisatie-toevoegsel wordt niet ondersteund op uw computer. Zorg "
+#~ "er a.u.b. voor dat FUSE en %1 juist geïnstalleerd en ingesteld zijn"
+
+#~ msgid "Could not read testfile."
+#~ msgstr "Kon proefbestand niet lezen."
+
+#~ msgid "Write test failed."
+#~ msgstr "Schrijfproef mislukt."
+
+#~ msgid "Timeout connecting to server."
+#~ msgstr "Wachttijd overschreden bij het verbinden met de server."
+
+#~ msgid "Error connecting to server."
+#~ msgstr "Fout bij verbinden met server."
+
+#~ msgid "FUSE could not be enabled."
+#~ msgstr "FUSE kon niet worden ingeschakeld."
+
+#~ msgid "An error occurred while connecting to the specified server"
+#~ msgstr "Er is een fout opgetreden bij het verbinden met de opgegeven server"
+
+#~ msgid "Could not enable FUSE"
+#~ msgstr "FUSE kon niet ingeschakeld worden"
+
+#~ msgid ""
+#~ "The FUSE module could not be loaded. Please check that it is installed "
+#~ "properly and try again."
+#~ msgstr ""
+#~ "De FUSE-module kon niet worden geladen. Controleer of deze juist "
+#~ "geïnstalleerd is en probeer opnieuw."
+
+#~ msgid "Enable FUSE?"
+#~ msgstr "FUSE inschakelen?"
+
+#~ msgid ""
+#~ "The synchronization you've chosen requires the FUSE module to be loaded.\n"
+#~ "\n"
+#~ "To avoid getting this prompt in the future, you should load FUSE at "
+#~ "startup.  Add \"modprobe fuse\" to /etc/init.d/boot.local or \"fuse\" to /"
+#~ "etc/modules."
+#~ msgstr ""
+#~ "De synchronisatie die u heeft gekozen heeft een FUSE-module nodig.\n"
+#~ "\n"
+#~ "Om deze melding in het vervolg te voorkomen kunt u FUSE laden tijdens het "
+#~ "starten. Voeg ‘modprobe fuse’ aan /etc/init.d/boot.local toe of ‘fuse’ "
+#~ "aan /etc/modules."
+
+# accesoires/hulpmiddelen/hulpjes
+#~ msgid "Accessories"
+#~ msgstr "Hulpmiddelen"
+
+# notities/aantekeningen maken/bijhouden
+#~ msgid "Simple and easy to use note-taking"
+#~ msgstr "Eenvoudig en snel notities maken"
+
+#~ msgid "Tomboy Applet Factory"
+#~ msgstr "Tomboy-appletfactory"
+
+#~ msgid "S_ynchronize Notes"
+#~ msgstr "Notitites s_ynchroniseren"
+
+#~ msgid ""
+#~ "Determines X coordinate of \"Search All Notes\" window; stored on Tomboy "
+#~ "exit."
+#~ msgstr ""
+#~ "Bepaalt de x-coördinaat van het venster \"Alle notities doorzoeken\"; "
+#~ "opgeslagen als Tomboy afgesloten wordt."
+
+#~ msgid ""
+#~ "Determines Y coordinate of \"Search All Notes\" window; stored on Tomboy "
+#~ "exit."
+#~ msgstr ""
+#~ "Bepaalt de y-coördinaat van het venster \"Alle notities doorzoeken\"; "
+#~ "opgeslagen als Tomboy afgesloten wordt."
+
+#~ msgid ""
+#~ "Determines pixel height of \"Search All Notes\" window; stored on Tomboy "
+#~ "exit."
+#~ msgstr ""
+#~ "Bepaalt de hoogte van het venster \"Alle notities doorzoeken\" (in "
+#~ "pixels); opgeslagen als Tomboy afgesloten wordt."
+
+#~ msgid ""
+#~ "Determines pixel width of \"Search All Notes\" window; stored on Tomboy "
+#~ "exit."
+#~ msgstr ""
+#~ "Bepaalt de breedte van het venster \"Alle notities doorzoeken\" (in "
+#~ "pixels); opgeslagen als Tomboy afgesloten wordt."
+
+#~ msgid "Enable Tray Icon"
+#~ msgstr "Pictogram in mededelingengebied inschakelen"
+
+#~ msgid "Enable automatic bulleted lists."
+#~ msgstr "Automatische opsommingen inschakelen."
+
+#~ msgid "Enable startup notes"
+#~ msgstr "Opstartnotities gebruiken"
+
+#~ msgid "Enable the Delete Note confirmation dialog"
+#~ msgstr ""
+#~ "Het bevestigingsvenster bij het verwijderen van notities inschakelen"
+
+#~ msgid ""
+#~ "If disabled, the \"Delete Note\" confirmation dialog will be suppressed."
+#~ msgstr ""
+#~ "Indien uitgeschakeld, wordt het ‘Notitie verwijderen?’-"
+#~ "bevestigingsvenster onderdrukt."
+
+#~ msgid ""
+#~ "If enabled, all notes that were open when Tomboy quit will automatically "
+#~ "be reopened at startup."
+#~ msgstr ""
+#~ "Indien ingeschakeld zullen alle notities die openstonden toen Tomboy "
+#~ "afgesloten werd, weer geopend worden bij het opstarten."
+
+#~ msgid ""
+#~ "If true, Tomboy's tray icon will be displayed in the notification area. "
+#~ "Disabling this may be useful when another application is providing the "
+#~ "functionality of the tray icon."
+#~ msgstr ""
+#~ "Indien ingeschakeld, wordt het pictogram in het mededelingengebied "
+#~ "getoond. Als een andere toepassing de functionaliteit van het pictogram "
+#~ "in het mededelingengebied verzorgt, kan het nuttig zijn dit uit te "
+#~ "schakelen."
+
+#~ msgid ""
+#~ "Indicates that the Sticky Note Importer plugin has not been run, so it "
+#~ "should run automatically the next time Tomboy starts."
+#~ msgstr ""
+#~ "Geeft aan dat de plug-in voor het importeren van memo's nog niet gebruikt "
+#~ "is, zodat deze automatisch begint na een herstart van Tomboy."
+
+#~ msgid "Last Directory used in HTML Export"
+#~ msgstr "Laatste map gebruikt voor HTML-export"
+
+#~ msgid ""
+#~ "Maximum characters of note title to show in the Tomboy tray or panel "
+#~ "applet note menu."
+#~ msgstr ""
+#~ "Het maximum aantal tekens van de notitietitel dat getoond wordt in het "
+#~ "Tomboy-notificatiepictogram of in het menu van het paneel-applet."
+
+#~ msgid "Maximum note title length to show in tray menu."
+#~ msgstr "Maximaal aantal tekens van notitietitels in het paneelmenu."
+
+#~ msgid "Saved height of \"Search All Notes\" window"
+#~ msgstr "Opgeslagen hoogte van het venster \"Alle notities doorzoeken\""
+
+#~ msgid "Saved horizontal position of \"Search All Notes\" window"
+#~ msgstr ""
+#~ "Opgeslagen horizontale positie van het venster \"Alle notities doorzoeken"
+#~ "\""
+
+#~ msgid "Saved vertical position of \"Search All Notes\" window"
+#~ msgstr ""
+#~ "Opgeslagen verticale positie van het venster \"Alle notities doorzoeken\""
+
+#~ msgid "Saved width of \"Search All Notes\" window"
+#~ msgstr "Opgeslagen breedte van het venster \"Alle notities doorzoeken\""
+
+#~ msgid "Set to TRUE to activate"
+#~ msgstr "Inschakelen om te activeren"
+
+#~ msgid ""
+#~ "The global keybinding for creating and displaying a new Note. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "De sneltoets om een nieuwe notitie te openen. Het formaat ziet eruit "
+#~ "als‘&lt;Control&gt;a’ of ‘&lt;Shift&gt;&lt;Alt&gt;F1’. Hierbij zijn "
+#~ "kleine en hoofdletters toegestaan, evenals afkortingen zoals ‘&lt;"
+#~ "Ctl&gt;’ en ‘&lt;Ctrl&gt;’. Indien u de optie instelt op de speciale "
+#~ "tekenreeks ‘disabled’, zal er geen sneltoets voor deze handeling gebruikt "
+#~ "worden."
+
+#~ msgid ""
+#~ "The global keybinding for opening the \"Start Here\" note. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "De sneltoets om de notitie ‘Begin hier’ te openen. Het formaat ziet eruit "
+#~ "als‘&lt;Control&gt;a’ of ‘&lt;Shift&gt;&lt;Alt&gt;F1’. Hierbij zijn "
+#~ "kleine en hoofdletters toegestaan, evenals afkortingen zoals ‘&lt;"
+#~ "Ctl&gt;’ en ‘&lt;Ctrl&gt;’. Indien u de optie instelt op de speciale "
+#~ "tekenreeks ‘disabled’, zal er geen sneltoets voor deze handeling gebruikt "
+#~ "worden."
+
+#~ msgid ""
+#~ "The global keybinding for opening the Note Search dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "De sneltoets om het venster Notities zoeken te openen. Het formaat ziet "
+#~ "eruit als‘&lt;Control&gt;a’ of ‘&lt;Shift&gt;&lt;Alt&gt;F1’. Hierbij zijn "
+#~ "kleine en hoofdletters toegestaan, evenals afkortingen zoals ‘&lt;"
+#~ "Ctl&gt;’ en ‘&lt;Ctrl&gt;’. Indien u de optie instelt op de speciale "
+#~ "tekenreeks ‘disabled’, zal er geen sneltoets voor deze handeling gebruikt "
+#~ "worden."
+
+#~ msgid ""
+#~ "The global keybinding for opening the Recent Changes dialog. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "De sneltoets voor het venster Recente wijzigingen. Het formaat ziet eruit "
+#~ "als‘&lt;Control&gt;a’ of ‘&lt;Shift&gt;&lt;Alt&gt;F1’. Hierbij zijn "
+#~ "kleine en hoofdletters toegestaan, evenals afkortingen zoals ‘&lt;"
+#~ "Ctl&gt;’ en ‘&lt;Ctrl&gt;’. Indien u de optie instelt op de speciale "
+#~ "tekenreeks ‘disabled’, zal er geen sneltoets voor deze handeling gebruikt "
+#~ "worden."
+
+#~ msgid ""
+#~ "The global keybinding for showing the Tomboy applet's menu. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "De sneltoets om het menu van Tomboy te openen. Het formaat ziet eruit "
+#~ "als‘&lt;Control&gt;a’ of ‘&lt;Shift&gt;&lt;Alt&gt;F1’. Hierbij zijn "
+#~ "kleine en hoofdletters toegestaan, evenals afkortingen zoals ‘&lt;"
+#~ "Ctl&gt;’ en ‘&lt;Ctrl&gt;’. Indien u de optie instelt op de speciale "
+#~ "tekenreeks ‘disabled’, zal er geen sneltoets voor deze handeling gebruikt "
+#~ "worden."
+
+#~ msgid "The handler for \"note://\" URLs"
+#~ msgstr "De afhandeling van ‘note://’-URLs"
+
+#~ msgid ""
+#~ "The port to use when connecting to the synchronization server via SSH. "
+#~ "Set to -1 or less if default SSH port settings should be used instead."
+#~ msgstr ""
+#~ "De te gebruiken poort voor het verbinden naar de synchronisatiedienst "
+#~ "over SSH. Gebruik de waarde -1 als de standaardinstellingen gebruikt "
+#~ "moeten worden."
+
+#~ msgid "_File"
+#~ msgstr "_Bestand"
+
+#~ msgid "Create a new note"
+#~ msgstr "Nieuwe notitie"
+
+#~ msgid "_Quit"
+#~ msgstr "A_fsluiten"
+
+#~ msgid "Quit Tomboy"
+#~ msgstr "Tomboy afsluiten"
+
+#~ msgid "_Edit"
+#~ msgstr "Be_werken"
+
+#~ msgid "Tomboy Preferences"
+#~ msgstr "Voorkeuren"
+
+#~ msgid "Tomboy Help"
+#~ msgstr "Tomboy-hulp"
+
+#~ msgid "About Tomboy"
+#~ msgstr "I_nfo"
+
+# Hmmm, de vertaling is erg lang. Het is me niet duidelijk waar deze string
+# gebruikt wordt. (Wouter Bolsterlee)
+#~ msgid "TrayIcon"
+#~ msgstr "Pictogram in mededelingengebied"
+
+#~ msgid "Create _New Note"
+#~ msgstr "_Nieuwe notitie"
+
+#~ msgid "_Search All Notes"
+#~ msgstr "_Alle notities doorzoeken"
+
+#~ msgid "Start synchronizing notes"
+#~ msgstr "Synchroniseren van notities starten"
+
+#~ msgid "Advanced"
+#~ msgstr "Geavanceerd"
+
+#~ msgid "Minimum number of notes to show in Recent list (maximum 18)"
+#~ msgstr ""
+#~ "Minimum aantal notities dat in de lijst \"Recent geopend\" getoond wordt "
+#~ "(maximaal 18)"
+
+#~ msgid "No host name specified"
+#~ msgstr "Geen hostnaam opgegeven"
+
+#~ msgid "Cannot open email"
+#~ msgstr "E-mail kon niet geopend worden"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+# accesoires/hulpmiddelen/hulpjes
+#~ msgid "Access denied."
+#~ msgstr "Toegang geweigerd."
+
+#~ msgid "Folder does not exist."
+#~ msgstr "Map bestaat niet."
+
+#~ msgid "Cannot contact '{0}'"
+#~ msgstr "Contact met ’{0}’ kon niet gemaakt worden"
+
+#~ msgid "Error running gaim-remote: {0}"
+#~ msgstr "Fout bij het uitvoeren van ‘gaim-remote’: {0}"
+
+#~ msgid "dddd, MMMM d, h:mm tt"
+#~ msgstr "dddd d MMMM, hh:mm"
+
+#~ msgid "dddd, MMMM d yyyy"
+#~ msgstr "dddd, d MMMM yyyy"
+
+#~ msgid ""
+#~ "Change the <b>Today: Template</b> note to customize the text that new "
+#~ "Today notes have."
+#~ msgstr ""
+#~ "Wijzig de <b>Vandaag: sjabloon</b>-notitie om de tekst van nieuwe Vandaag-"
+#~ "notities aan uw wensen aan te passen."
+
+#~ msgid "dddd MM/dd/yyyy, hh:mm:ss tt"
+#~ msgstr "dddd dd MMMM yyyy, hh:mm:ss"
+
+#~ msgid "Remove broken links"
+#~ msgstr "Verbroken verwijzingen verwijderen"
+
+#~ msgid "Add a sketch"
+#~ msgstr "Tekening toevoegen"
+
+#~ msgid "Se_rver:"
+#~ msgstr "Se_rver:"
+
+#~ msgid "_Folder Path (optional):"
+#~ msgstr "_Pad naar Map (optioneel):"
+
+#~ msgid ""
+#~ "SSH synchronization requires an existing SSH key for this server and "
+#~ "user, added to a running SSH daemon."
+#~ msgstr ""
+#~ "SSH-synchronisatie vereist een bestaande SSH-sleutel voor deze server en "
+#~ "gebruiker, toegevoegd aan een actieve SSH-daemon."
+
+#~ msgid "Server or username field is empty."
+#~ msgstr "Server- of gebruikersnaamveld is leeg."
+
+#~ msgid "SSH"
+#~ msgstr "SSH"
+
+#~ msgid ""
+#~ "Timeout connecting to server. Please ensure that your SSH key has been "
+#~ "added to a running SSH daemon."
+#~ msgstr ""
+#~ "Wachttijd overschreden bij verbinden met de server. Controleer of uw SSH-"
+#~ "sleutel is toegevoegd aan een actieve SSH-daemon."
+
+#~ msgid "<b>{0}</b> of <b>{1}</b> Sticky Note was successfully imported."
+#~ msgid_plural ""
+#~ "<b>{0}</b> of <b>{1}</b> Sticky Notes were successfully imported."
+#~ msgstr[0] "<b>{0}</b> van de <b>{1}</b> memo's is succesvol geïmporteerd."
+#~ msgstr[1] "<b>{0}</b> van de <b>{1}</b> memo's zijn succesvol geïmporteerd."
+
+#~ msgid "Tasque"
+#~ msgstr "Tasque"
+
+#~ msgid "--- Tasque is not running ---"
+#~ msgstr "— Tasque is niet actief —"
+
+#~ msgid "Connect to Server"
+#~ msgstr "Verbinden met server"
+
+#~ msgid "Connected"
+#~ msgstr "Verbonden"
+
+#~ msgid "Server not responding. Try again later."
+#~ msgstr "Server antwoordt niet. Probeer het later opnieuw."
+
+#~ msgid "Authorization Failed, Try Again"
+#~ msgstr "Autorisatie mislukt. Probeer opnieuw."
+
+#~ msgid "Tomboy Web Authorization Successful"
+#~ msgstr "Autorisatie voor Tomboy Web geslaagd"
+
+#~ msgid ""
+#~ "Please return to the Tomboy Preferences window and press Save to start "
+#~ "synchronizing."
+#~ msgstr ""
+#~ "Keer terug naar het Tomboy-voorkeurenvenster en kies Opslaan om de "
+#~ "synchronisatie te starten."
+
+#~ msgid "Connected. Press Save to start synchronizing"
+#~ msgstr "Verbonden. Druk op Opslaan om de synchronisatie te starten"
+
+#~ msgid "Authorizing in browser (Press to reset connection)"
+#~ msgstr "Autoriseren in browser (Klik om de verbinding te resetten)"
+
+#~ msgid "Set the default browser and try again"
+#~ msgstr "Stel de standaardbrowser in en probeer opnieuw"
+
+#~ msgid "Tomboy Web"
+#~ msgstr "Tomboy Web"
+
+#~ msgid "Export All Notes to {0}"
+#~ msgstr "Alle notities exporteren naar {0}"
+
+#~ msgid "Start exporting notes to {0}"
+#~ msgstr "Starten van exporteren van notities naar {0}"
+
+#~ msgid "Export selected notebook to {0}"
+#~ msgstr "Het geselecteerde notitieboek exporteren naar {0}"
+
+#~ msgid "Start exporting notebook to {0}"
+#~ msgstr "Starten van exporteren van notitieboek naar {0}"
+
+#~ msgid "Export"
+#~ msgstr "Exporteren"
+
+#~ msgid "Export All Notes To {0}"
+#~ msgstr "Alle notities exporteren naar {0}"
+
+#~ msgid "Export Selected Notebook To {0}"
+#~ msgstr "Geselecteerd notitieboek exporteren naar {0}"
+
+#~ msgid "All Notes {0} Export"
+#~ msgstr "Alle notities {0} exporteren"
+
+#~ msgid "Could not export, access denied."
+#~ msgstr "Kon niet exporteren, toegang geweigerd."
+
+#~ msgid "Could not export, folder does not exist."
+#~ msgstr "Kon niet exporteren, map bestaat niet."
+
+#~ msgid "Your notes were exported to \"{0}\"."
+#~ msgstr "Uw notities zijn geëxporteerd naar ‘{0}’."
+
+#~ msgid "Notes exported successfully"
+#~ msgstr "Notities succesvol geëxporteerd"
+
+#~ msgid "Could not save the files in \"{0}\""
+#~ msgstr "Kon de bestanden niet opslaan in ‘{0}’"
+
+# met destination wordt een doelmap bedoeld
+#~ msgid "Create destination folder for {0} export"
+#~ msgstr "Doelmap voor exporteren van{0} aanmaken"
+
+#~ msgid "{0} (new)"
+#~ msgstr "{0} (nieuw)"
+
+#~ msgid "Recent Notes"
+#~ msgstr "Recente notities"
+
+#~ msgid "Preferences..."
+#~ msgstr "Voorkeuren…"
+
+#~ msgid "Type the name of the notebook you'd like to create."
+#~ msgstr "Geef de naam van het aan te maken notitieboek."
+
+#~ msgid "Note_books"
+#~ msgstr "Notitie_boeken"
+
+#~ msgid "Create a new note in a notebook"
+#~ msgstr "Een nieuwe notitie in een notitieboek aanmaken"
+
+#~ msgid "Create a new note in this notebook"
+#~ msgstr "Een nieuwe notitie in dit notitieboek aanmaken"
+
+#~ msgid "Open this notebook's template note"
+#~ msgstr "Notitiesjabloon voor dit notitieboek openen"
+
+#~ msgid "Delete Note_book"
+#~ msgstr "Notitieboek ver_wijderen"
+
+#~ msgid "Delete the selected notebook"
+#~ msgstr "Het geselecteerde notitieboek verwijderen"
+
+#~ msgid "Place this note into a notebook"
+#~ msgstr "Deze notitie in een notitieboek plaatsen"
+
+#~ msgid "New Note {0}"
+#~ msgstr "Nieuwe notitie {0}"
+
+#~ msgid "Really delete this {0} note?"
+#~ msgid_plural "Really delete these {0} notes?"
+#~ msgstr[0] "Wilt u deze notitie echt verwijderen?"
+#~ msgstr[1] "Wilt u deze {0} notities echt verwijderen?"
+
+#~ msgid "Your Notes Have Moved!"
+#~ msgstr "Uw notities zijn verplaatst!"
+
+#~ msgid ""
+#~ "In the latest version of Tomboy, your note files have moved.  You have "
+#~ "probably never cared where your notes are stored, and if you still don't "
+#~ "care, please go ahead and <bold>delete this note</bold>.  :-)\n"
+#~ "\n"
+#~ "Your old note directory is still safe and sound at <link:url>{0}</link:"
+#~ "url> . If you go back to an older version of Tomboy, it will look for "
+#~ "notes there.\n"
+#~ "\n"
+#~ "But we've copied your notes and configuration info into new directories, "
+#~ "which will be used from now on:\n"
+#~ "\n"
+#~ "<list><list-item dir=\"ltr\">Notes can now be found at <link:url>{1}</"
+#~ "link:url>\n"
+#~ "</list-item><list-item dir=\"ltr\">Configuration is at <link:url>{2}</"
+#~ "link:url>\n"
+#~ "</list-item><list-item dir=\"ltr\">You can install add-ins at <link:"
+#~ "url>{3}</link:url>\n"
+#~ "</list-item><list-item dir=\"ltr\">Log files can be found at <link:url>{4}"
+#~ "</link:url></list-item></list>\n"
+#~ "\n"
+#~ "Ciao!"
+#~ msgstr ""
+#~ "In nieuwe versies van Tomboy zijn de notitiebestanden verplaatst. Het "
+#~ "heeft u waarschijnlijk nooit veel uitgemaakt waar de notities werden "
+#~ "opgeslagen en als het u nog steeds niet interesseert kunt u <bold>deze "
+#~ "notitie verwijderen</bold. :-)\n"
+#~ "\n"
+#~ "De oude notitiemap is nog steeds volledig beschikbaar op <link:url>{0}</"
+#~ "link:url>. Mocht u teruggaan naar een oudere versie van Tomboy, dan zal "
+#~ "deze daar naar notities zoeken.\n"
+#~ "\n"
+#~ "Uw notities en instellingen zijn echter gekopieerd naar nieuwe mappen, "
+#~ "die vanaf nu gebruikt zullen worden:\n"
+#~ "\n"
+#~ "<list><list-item dir=\"ltr\">Notities staan in <link:url>{1}</link:url>\n"
+#~ "</list-item><list-item dir=\"ltr\">Configuratie staat in <link:url>{2}</"
+#~ "link:url>\n"
+#~ "</list-item><list-item dir=\"ltr\">Uitbreiding kunnen in <link:url>{3}</"
+#~ "link:url> geïnstalleerd worden\n"
+#~ "</list-item><list-item dir=\"ltr\">Logbestanden zijn te vinden in <link:"
+#~ "url>{4}</link:url></list-item></list>\n"
+#~ "\n"
+#~ "Tot ziens!"
+
+#~ msgid "Find in This Note"
+#~ msgstr "In deze notitie zoeken"
+
+#~ msgid "Te_xt"
+#~ msgstr "Te_kst"
+
+#~ msgid "_Find in This Note"
+#~ msgstr "In deze notitie _zoeken"
+
+#~ msgid "Clos_e All Notes"
+#~ msgstr "Alle notities sl_uiten"
+
+#~ msgid "Search your notes"
+#~ msgstr "Al uw notities doorzoeken"
+
+#~ msgid "Link selected text to a new note"
+#~ msgstr "De geselecteerde tekst naar een nieuwe notitie laten verwijzen"
+
+# Hierboven staat ook al een keer Te_xt met een andere mnemonic... gewoon maar
+# hetzelfde houden (Wouter Bolsterlee)
+#~ msgid "_Text"
+#~ msgstr "Te_kst"
+
+#~ msgid "T_ools"
+#~ msgstr "_Hulpmiddelen"
+
+#~ msgid "Use tools on this note"
+#~ msgstr "Hulpmiddelen gebruiken voor deze notitie"
+
+#~ msgid "Delete this note"
+#~ msgstr "Deze notitie verwijderen"
+
+#~ msgid "_Find..."
+#~ msgstr "_Zoeken…"
+
+#~ msgid "_Find:"
+#~ msgstr "_Zoeken:"
+
+#~ msgid "_Previous"
+#~ msgstr "Vo_rige"
+
+#~ msgid "_Next"
+#~ msgstr "V_olgende"
+
+#~ msgid "Font Size"
+#~ msgstr "Tekstgrootte"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Sneltoetsen"
+
+#~ msgid "Add-ins"
+#~ msgstr "Uitbreidingen"
+
+#~ msgid "Listen for _Hotkeys"
+#~ msgstr "_Sneltoetsen gebruiken"
+
+#~ msgid ""
+#~ "Hotkeys allow you to quickly access your notes from anywhere with a "
+#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+#~ "Alt&gt;N</b>"
+#~ msgstr ""
+#~ "Sneltoetsen maken het mogelijk om vanaf elke plek snel uw notities te "
+#~ "openen. Voorbeelden: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+#~ "Alt&gt;N</b>"
+
+#~ msgid "Show notes _menu"
+#~ msgstr "_Notitiemenu tonen"
+
+#~ msgid "Open \"_Start Here\""
+#~ msgstr "‘_Begin hier’ openen"
+
+#~ msgid "Open \"Search _All Notes\""
+#~ msgstr "Venster ‘_alle notities doorzoeken’ openen"
+
+#~ msgid "Automaticall_y Sync in Background Every"
+#~ msgstr "_Automatisch op de achtergrond synchroniseren iedere"
+
+#~ msgid "Minutes"
+#~ msgstr "minuten"
+
+#~ msgid "Get More Add-Ins..."
+#~ msgstr "Meer aanvullingen zoeken…"
+
+#~ msgid "{0} Preferences"
+#~ msgstr "{0}-voorkeuren"
+
+#~ msgid "Add-in Dependencies:"
+#~ msgstr "Afhankelijkheden van uitbreiding:"
+
+#~ msgid "_Search:"
+#~ msgstr "_Zoeken:"
+
+#~ msgid "Last Changed"
+#~ msgstr "Laatste wijziging"
+
+#~ msgid "Total: {0} note"
+#~ msgid_plural "Total: {0} notes"
+#~ msgstr[0] "Totaal: {0} notitie"
+#~ msgstr[1] "Totaal: {0} notities"
+
+#~ msgid "Matches: {0} note"
+#~ msgid_plural "Matches: {0} notes"
+#~ msgstr[0] "Gevonden: {0} notitie"
+#~ msgstr[1] "Gevonden: {0} notities"
+
+#~ msgid "Cannot create new note"
+#~ msgstr "Aanmaken van notitie mislukt"
+
+#~ msgid "Primary Development:"
+#~ msgstr "Hoofdontwikkeling:"
+
+#~ msgid "Contributors:"
+#~ msgstr "Bijdragen van:"
+
+#~ msgid ""
+#~ "Copyright © 2004-2007 Alex Graveley\n"
+#~ "Copyright © 2004-2011 Others\n"
+#~ msgstr ""
+#~ "Copyright © 2004–2007 Alex Graveley\n"
+#~ "Copyright © 2004–2011 Anderen\n"
+
+#~ msgid ""
+#~ "Tomboy: A simple, easy to use desktop note-taking application.\n"
+#~ "Copyright © 2004-2007 Alex Graveley\n"
+#~ "<alex@beatniksoftware.com>\n"
+#~ "\n"
+#~ "Copyright © 2004-2011 Others\n"
+#~ msgstr ""
+#~ "Tomboy, een gebruiksvriendelijk notitieboekje.\n"
+#~ "Copyright © 2004–2007 Alex Graveley\n"
+#~ "<alex@beatniksoftware.com>\n"
+#~ "\n"
+#~ "Copyright © 2004-2011 Anderen\n"
+
+#~ msgid ""
+#~ "Usage:\n"
+#~ "  --version\t\t\tPrint version information.\n"
+#~ "  --help\t\t\tPrint this usage message.\n"
+#~ "  --note-path [path]\t\tLoad/store note data in this directory.\n"
+#~ "  --search [text]\t\tOpen the search all notes window with the search "
+#~ "text.\n"
+#~ msgstr ""
+#~ "Gebruik:\n"
+#~ "  --version\t\t\tVersie-informatie tonen.\n"
+#~ "  --help\t\t\t\tDeze hulptekst tonen.\n"
+#~ "  --note-path [pad]\t\tNotitiegegevens in deze map laden/opslaan.\n"
+#~ "  --search [tekst]\t\tHet venster \"Alle notities doorzoeken\" openen met "
+#~ "de opgegeven tekst.\n"
+
+#~ msgid ""
+#~ "  --new-note\t\t\tCreate and display a new note.\n"
+#~ "  --new-note [title]\t\tCreate and display a new note, with a title.\n"
+#~ "  --open-note [title/url]\tDisplay the existing note matching title.\n"
+#~ "  --start-here\t\t\tDisplay the 'Start Here' note.\n"
+#~ "  --highlight-search [text]\tSearch and highlight text in the opened "
+#~ "note.\n"
+#~ msgstr ""
+#~ "  --new-note\t\t\tEen nieuwe notitie aanmaken (en tonen).\n"
+#~ "  --new-note [naam]\t\tEen nieuwe notitie maken met de opgegeven naam.\n"
+#~ "  --open-note [naam/url]\t\tDe notitie met de opgegeven naam openen.\n"
+#~ "  --start-here\t\t\tDe ‘Begin hier’-notitie openen.\n"
+#~ "  --highlight-search [tekst]\tNaar tekst zoeken in de geopende notitie.\n"
+
+#~ msgid "Version {0}"
+#~ msgstr "Versie {0}"
+
+#~ msgid "_About Tomboy"
+#~ msgstr "I_nfo"
+
+#~ msgid " (new)"
+#~ msgstr " (nieuw)"
+
+#~ msgid "Today, {0}"
+#~ msgstr "Vandaag, om {0}"
+
+#~ msgid "Yesterday, {0}"
+#~ msgstr "Gisteren, om {0}"
+
+#~ msgid "{0} day ago, {1}"
+#~ msgid_plural "{0} days ago, {1}"
+#~ msgstr[0] "{0} dag geleden, om {1}"
+#~ msgstr[1] "{0} dagen geleden, om {1}"
+
+#~ msgid "{0} day ago"
+#~ msgid_plural "{0} days ago"
+#~ msgstr[0] "{0} dag geleden"
+#~ msgstr[1] "{0} dagen geleden"
+
+#~ msgid "In {0} day, {1}"
+#~ msgid_plural "In {0} days, {1}"
+#~ msgstr[0] "Over {0} dag, om {1}"
+#~ msgstr[1] "Over {0} dagen, om {1}"
+
+#~ msgid "In {0} day"
+#~ msgid_plural "In {0} days"
+#~ msgstr[0] "Over {0} dag"
+#~ msgstr[1] "Over {0} dagen"
+
+#~ msgid "MMMM d, h:mm tt"
+#~ msgstr "d MMMM, hh:mm"
+
+#~ msgid "MMMM d"
+#~ msgstr "MMMM d"
+
+# Wat doet tt? (Wouter Bolsterlee)
+#~ msgid "MMMM d yyyy, h:mm tt"
+#~ msgstr "d MMMM yyyy, hh:mm"
+
+#~ msgid "MMMM d yyyy"
+#~ msgstr "d MMMM yyyy"
+
+#~ msgid "WebDAV (wdfs FUSE)"
+#~ msgstr "WebDAV (wdfs FUSE)"
+
+#~ msgid "SSH (sshfs FUSE)"
+#~ msgstr "SSH (sshfs FUSE)"
+
+#~ msgid "Link selected text to a new note (Ctrl-L)"
+#~ msgstr ""
+#~ "De geselecteerde tekst naar een nieuwe notitie laten verwijzen (Ctrl-L)"
+
+#~ msgid ""
+#~ "You have disabled the configured synchronization service.  Your "
+#~ "synchronization settings will now be cleared.  You may be forced to "
+#~ "synchronize all of your notes again when you save new settings"
+#~ msgstr ""
+#~ "U heeft de geconfigureerde synchronisatieservice uitgeschakeld. uw "
+#~ "synchronisatieinstellingen zullen nu gewist worden. U moet mogelijk al uw "
+#~ "notities opnieuw synchroniseren wanneer u de nieuwe instellingen opslaat."
+
+#~ msgid "Search your notes (Ctrl-Shift-F)"
+#~ msgstr "Notities doorzoeken (Ctrl-Shift-F)"
+
+#~ msgid "Determines X coordinate of Search window; stored on Tomboy exit."
+#~ msgstr ""
+#~ "Bepaalt de x-coördinaat van het zoekvenster; opgeslagen als Tomboy "
+#~ "afgesloten wordt."
+
+#~ msgid "Determines Y coordinate of Search window; stored on Tomboy exit."
+#~ msgstr ""
+#~ "Bepaalt de y-coördinaat van het zoekvenster; opgeslagen als Tomboy "
+#~ "afgesloten wordt."
+
+#~ msgid "Saved horizontal position of Search window"
+#~ msgstr "Opgeslagen horizontale positie van het zoekvenster"
+
+#~ msgid "WARNING: Are you sure?"
+#~ msgstr "WAARSCHUWING: Weet u dit zeker?"
+
+#~ msgid "Success! You're connected!"
+#~ msgstr "Het is gelukt: u bent verbonden!"
+
+#~ msgid "Error connecting :("
+#~ msgstr "Fout bij verbinden"
+
+#~ msgid ""
+#~ "Tomboy: A simple, easy to use desktop note-taking application.\n"
+#~ "Copyright (C) 2004-2006 Alex Graveley <alex@beatniksoftware.com>\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Tomboy, een gebruiksvriendelijk notitieboekje.\n"
+#~ "Copyright © 2004–2006 Alex Graveley <alex@beatniksoftware.com>\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Sorry, but something went wrong.  Please check your information and try "
+#~ "again.  The {0} might be useful too."
+#~ msgstr ""
+#~ "Sorry, er is iets misgegaan. Controleer uw instellingen en probeer het "
+#~ "opnieuw. ‘{0}’ kan ook van pas komen."
+
+#~ msgid ""
+#~ "<note-content>Ubuntu One\n"
+#~ "\n"
+#~ "<bold>Tomboy is better with Ubuntu One</bold> - the personal cloud that "
+#~ "brings your digital life together.\n"
+#~ "\n"
+#~ "Ubuntu One does more than sync your files - whether you need to access "
+#~ "your contacts, notes or bookmarks from any computer or the web, enjoy "
+#~ "your favorite music from a cloud integrated store or stream your entire "
+#~ "collection to iPhone and Android mobile phones - we've raised the bar on "
+#~ "personal clouds. Learn more at <link:url>http://one.ubuntu.com/</link:"
+#~ "url>.\n"
+#~ "\n"
+#~ "Already have an Ubuntu One account? Setup Tomboy to sync with your "
+#~ "personal cloud by clicking Edit > Preferences and then the "
+#~ "Synchronization tab. Select \"Tomboy Web\" from the list of services and "
+#~ "then click the \"Connect to Server\" button. A web browser will appear "
+#~ "with a few additional instructions.\n"
+#~ "\n"
+#~ "You can even enable automatic sync with Ubuntu One!</note-content>"
+#~ msgstr ""
+#~ "<note-content>Ubuntu One\n"
+#~ "\n"
+#~ "<bold>Tomboy is beter met Ubuntu One</bold> - de persoonlijke cloud "
+#~ "waarmee u uw digitale leven samenbrengt.\n"
+#~ "\n"
+#~ "Ubuntu One kan meer dan alleen uw bestanden synchroniseren - of u nu op "
+#~ "elke computer bij uw contactpersonen, notities of bladwijzers wilt "
+#~ "kunnen, van uw favoriete muziek wilt genieten via een in de cloud "
+#~ "geïntegreerde winkel of uw volledige collectie naar uw iPhone of Android "
+#~ "telefoon wilt streamen - wij hebben de lat voor persoonlijke clouds hoger "
+#~ "gelegd. Leer meer op <link:url>http://one.ubuntu.com/</link:url> "
+#~ "(Engelstalig).\n"
+#~ "\n"
+#~ "Heeft u al een Ubuntu One-account? Stel Tomboy in om met uw persoonlijke "
+#~ "cloud te synchroniseren door naar Bewerken > Voorkeuren te gaan en dan "
+#~ "het Synchronisatie-tabblad te openen. Selecteer \"Tomboy Web\" van de "
+#~ "lijst met diensten en druk dan op \"Verbinden met server\". De webbrowser "
+#~ "zal openen met enkele extra instructies.\n"
+#~ "\n"
+#~ "U kunt zelfs automatische synchronisatie met Ubuntu One instellen!</note-"
+#~ "content>"
+
+#~ msgid ""
+#~ "Copyright © 2004-2007 Alex Graveley\n"
+#~ "Copyright © 2004-2010 Others\n"
+#~ msgstr ""
+#~ "Copyright © 2004–2007 Alex Graveley\n"
+#~ "Copyright © 2004–2011 Anderen\n"
