@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-06-20 08:52+0000\n"
-"PO-Revision-Date: 2021-07-07 15:27-0400\n"
+"POT-Creation-Date: 2021-07-07 19:28+0000\n"
+"PO-Revision-Date: 2021-09-22 16:03-0400\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:52 src/recentchanges.cpp:611
@@ -48,14 +48,10 @@ msgid "Notes can be printed or exported as HTML documents."
 msgstr "便笺可以作为 HTML 文档打印或导出。"
 
 #: data/org.gnome.Gnote.appdata.xml.in:14
-#, fuzzy
-#| msgid ""
-#| "Gnote also supports synchronization to make it possible to use on "
-#| "multiple devices."
 msgid ""
 "Gnote also supports synchronization, making it simple to use it on multiple "
 "devices."
-msgstr "Gnote 也支持同步，这样就可以在多个不同的设备上使用。"
+msgstr "Gnote 也支持同步，在多个设备上使用更简便。"
 
 #: data/org.gnome.Gnote.desktop.in:4
 msgid "Take notes, link ideas, and stay organized"
@@ -214,7 +210,7 @@ msgstr "决定搜索窗口的像素宽度；当 Gnote 退出时保存。"
 
 #: data/org.gnome.gnote.gschema.xml:76
 msgid "Saved splitter position of Search window splitter."
-msgstr "保存的搜索窗口分隔器的位置"
+msgstr "保存的搜索窗口分隔器的位置。"
 
 #: data/org.gnome.gnote.gschema.xml:77
 msgid ""
@@ -304,7 +300,7 @@ msgstr "在以应用程序方式启动时，使用状态图标"
 
 #: data/org.gnome.gnote.gschema.xml:122
 msgid "Deprecated, has no effect."
-msgstr "已弃用，没有效果。"
+msgstr "无效，已弃用。"
 
 #: data/org.gnome.gnote.gschema.xml:126
 msgid "Open notes in new window"
@@ -314,11 +310,11 @@ msgstr "在新窗口打开便笺"
 msgid ""
 "Open notes in new window instead of replacing active content of the same "
 "window"
-msgstr "在新窗口中打开便笺而不时替换相同窗口的活动内容"
+msgstr "在新窗口中打开便笺而不是替换相同窗口的活动内容"
 
 #: data/org.gnome.gnote.gschema.xml:131
 msgid "Save note window size and autosize note window to it"
-msgstr "保存便笺窗口大小并自动调整便笺窗口大小"
+msgstr "保存便笺窗口大小并自动调整其它便笺窗口"
 
 #: data/org.gnome.gnote.gschema.xml:132
 msgid ""
@@ -328,7 +324,7 @@ msgstr "保存便笺窗口大小，并在打开便笺时自动将主窗口调整
 
 #: data/org.gnome.gnote.gschema.xml:136
 msgid "Use client side window decorations"
-msgstr ""
+msgstr "使用客户端窗口装饰"
 
 #: data/org.gnome.gnote.gschema.xml:137
 msgid ""
@@ -376,14 +372,10 @@ msgid "Synchronization Client ID"
 msgstr "同步客户端 ID"
 
 #: data/org.gnome.gnote.gschema.xml:166
-#, fuzzy
-#| msgid ""
-#| "Unique identifier for this Gnote client, used when communicating with a "
-#| "sychronization server."
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
-msgstr "此 Gnote 客户端的唯一标识符，用于与同步服务器通讯。"
+msgstr "当前 Gnote 客户端的唯一标识符，用于与同步服务器通讯。"
 
 #: data/org.gnome.gnote.gschema.xml:170
 msgid "Synchronization Local Server Path"
@@ -439,10 +431,8 @@ msgid "Online directory URI"
 msgstr "在线目录 URI"
 
 #: data/org.gnome.gnote.gschema.xml:194
-#, fuzzy
-#| msgid "WebDAV share URL where notes are synchronized to."
 msgid "URI to online directory where notes are synchronized to."
-msgstr "便笺同步到的 WebDAV 共享 URL。"
+msgstr "同步便笺的在线目录 URI。"
 
 #: data/org.gnome.gnote.gschema.xml:200
 msgid "Accept SSL Certificates"
@@ -487,7 +477,7 @@ msgstr "检查间隔"
 #: data/org.gnome.gnote.gschema.xml:225
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
-msgstr "便笺目录的两次检查之间的时间间隔(以秒为单位)，最小值为 5。"
+msgstr "检查便笺目录的时间间隔（秒），最小值为 5。"
 
 #: data/shortcuts-gnote.ui:9
 msgctxt "shortcut window"
@@ -513,7 +503,7 @@ msgstr "打开操作菜单"
 #: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
 msgctxt "shortcut window"
 msgid "Hide search bar"
-msgstr "隐藏搜索框"
+msgstr "隐藏搜索栏"
 
 #: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
@@ -528,14 +518,12 @@ msgstr "搜索栏"
 #: data/shortcuts-gnote.ui:52 data/shortcuts-gnote.ui:134
 msgctxt "shortcut window"
 msgid "Display search bar"
-msgstr "显示搜索框"
+msgstr "显示搜索栏"
 
 #: data/shortcuts-gnote.ui:59
-#, fuzzy
-#| msgid "Select None"
 msgctxt "shortcut window"
 msgid "Select next match"
-msgstr "全部不选"
+msgstr "选择下一个匹配项"
 
 #: data/shortcuts-gnote.ui:66
 msgctxt "shortcut window"
@@ -543,50 +531,36 @@ msgid "Select previous match"
 msgstr "选择上一个匹配项"
 
 #: data/shortcuts-gnote.ui:74
-#, fuzzy
-#| msgid "Note Title"
 msgctxt "shortcut window"
 msgid "Notes list"
-msgstr "便笺标题"
+msgstr "便笺列表"
 
 #: data/shortcuts-gnote.ui:79
-#, fuzzy
-#| msgid "Create _new note"
 msgctxt "shortcut window"
 msgid "Create new note"
-msgstr "创建新便笺(_N)"
+msgstr "创建新便笺"
 
 #: data/shortcuts-gnote.ui:86
-#, fuzzy
-#| msgid "Open the selected note"
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "打开选中便笺"
 
 #: data/shortcuts-gnote.ui:93
-#, fuzzy
-#| msgid "Open notes in new window"
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
-msgstr "在新窗口打开便笺"
+msgstr "在新窗口打开选中便笺"
 
 #: data/shortcuts-gnote.ui:100
-#, fuzzy
-#| msgid "Delete the selected note"
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "删除选中便笺"
 
 #: data/shortcuts-gnote.ui:111
-#, fuzzy
-#| msgid "New _Window"
 msgctxt "shortcut window"
 msgid "Note Window"
-msgstr "新建窗口(_W)"
+msgstr "便笺窗口"
 
 #: data/shortcuts-gnote.ui:156
-#, fuzzy
-#| msgid "Editing"
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "编辑"
@@ -602,18 +576,14 @@ msgid "Redo last edit"
 msgstr "重做上次编辑"
 
 #: data/shortcuts-gnote.ui:175
-#, fuzzy
-#| msgid "Delete the selected note"
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
-msgstr "删除选中便笺"
+msgstr "在选中文本上创建到便笺的链接"
 
 #: data/shortcuts-gnote.ui:183
-#, fuzzy
-#| msgid "Formatting"
 msgctxt "shortcut window"
 msgid "Formatting"
-msgstr "格式"
+msgstr "格式化"
 
 #: data/shortcuts-gnote.ui:188
 msgctxt "shortcut window"
@@ -658,12 +628,12 @@ msgstr "减小字号"
 #: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
-msgstr ""
+msgstr "选中的文本行启用项目符号或增加缩进"
 
 #: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
-msgstr ""
+msgstr "当前行减少缩进或禁用项目符号"
 
 #: src/actionmanager.cpp:128 src/notewindow.cpp:278
 msgid "_New Note"
@@ -756,7 +726,7 @@ msgstr ""
 
 #: src/plugins/backlinks/backlinksnoteaddin.cpp:97
 msgid "(none)"
-msgstr "(无)"
+msgstr "（无）"
 
 #: src/plugins/backlinks/backlinksnoteaddin.cpp:102
 #: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
@@ -891,10 +861,8 @@ msgid "Failed to create GTG interface from XML: %s"
 msgstr "从 XML 创建 GTG 接口失败：%s"
 
 #: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:105
-#, fuzzy
-#| msgid "Failed to create D_Bus proxy for GTG"
 msgid "Failed to create D-Bus proxy for GTG"
-msgstr "为 GTG 创建 D_Bus 代理失败"
+msgstr "为 GTG 创建 D-Bus 代理失败"
 
 #: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:121
 #, c-format
@@ -939,10 +907,8 @@ msgstr "无法在网页浏览器中打开导出的便笺：%s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
 #: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:127
-#, fuzzy
-#| msgid "Your note was exported to \"%1%\"."
 msgid "Your note was exported to \"%1\"."
-msgstr "您的便笺已导出为“%1%”。"
+msgstr "您的便笺已导出为“%1”。"
 
 #: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:136
 msgid "Note exported successfully"
@@ -955,10 +921,8 @@ msgid "Could not export: %s"
 msgstr "无法导出：%s"
 
 #: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:161
-#, fuzzy
-#| msgid "Could not save the file \"%s\""
 msgid "Could not save the file \"%1\""
-msgstr "无法保存文件“%s”"
+msgstr "无法保存文件“%1”"
 
 #: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
 msgid "_Folder Path:"
@@ -1008,52 +972,42 @@ msgid "Fixed Wid_th"
 msgstr "等宽(_T)"
 
 #: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
-#, fuzzy
-#| msgid "Local Directory Sync Service Plugin"
 msgid "Online Directory Sync Service Plugin"
-msgstr "本地目录同步服务插件"
+msgstr "在线目录同步服务插件"
 
 #: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
-#, fuzzy
-#| msgid "Synchronize Gnote Notes to a local file system path"
 msgid "Synchronize Gnote Notes to an online directory"
-msgstr "将 Gnote 便笺同步到一个本地文件系统路径"
+msgstr "将 Gnote 便笺同步到在线目录"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
-#, fuzzy
-#| msgid "Failed to update note format: %s"
 msgid "Failed to mount the folder"
-msgstr "更新便笺格式失败：%s"
+msgstr "挂载文件夹失败"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "文件夹 _URI："
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
-#, fuzzy
 msgid "Example: google-drive://name.surname@gmail.com/notes"
-msgstr "示例：google-drive://name.surname@gmail.com/note"
+msgstr "示例：google-drive://name.surname@gmail.com/notes"
 
+# 这部分信息来自于插件 Online Directory Sync Service Plugin，源码位于 src/plugins/gvfssyncservice。Online Accounts 在这里应该泛指所有支持 gvfs 的在线服务。
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
-msgstr ""
+msgstr "请先注册您的帐户"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
-msgstr "该路径为空"
+msgstr "URI 为空"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
-#, fuzzy
-#| msgid "Folder path field is empty."
 msgid "URI field is empty."
-msgstr "文件夹路径字段为空。"
+msgstr "URI 字段为空。"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:176
-#, fuzzy
-#| msgid "Local Folder"
 msgid "Online Folder"
-msgstr "本地文件夹"
+msgstr "在线文件夹"
 
 #: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
 #: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
@@ -1129,7 +1083,7 @@ msgstr "今天：模板"
 
 #: src/plugins/noteoftheday/noteoftheday.cpp:35
 msgid "Today: "
-msgstr "今天："
+msgstr "今天： "
 
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
@@ -1194,10 +1148,8 @@ msgstr "打印便笺时出错"
 
 #. %1 is the page number, %2 is the total number of pages
 #: src/plugins/printnotes/printnotesnoteaddin.cpp:273
-#, fuzzy
-#| msgid "Page %1% of %2%"
 msgid "Page %1 of %2"
-msgstr "第 %1% 页，共 %2% 页"
+msgstr "第 %1 页，共 %2 页"
 
 #: src/plugins/readonly/readonly.desktop.in.in:4
 #: src/plugins/readonly/readonlynoteaddin.cpp:69
@@ -1257,47 +1209,40 @@ msgstr "便笺本总计："
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
 #: src/plugins/statistics/statisticswidget.cpp:128
-#, fuzzy
-#| msgid "%1% note"
-#| msgid_plural "%1% notes"
 msgid "%1 note"
 msgid_plural "%1 notes"
-msgstr[0] "%1% 条便笺"
+msgstr[0] "%1 条便笺"
 
-# Sticky Notes 是程序名。要翻译吗？
+# Sticky Notes 与 Gnote 同为便笺应用，详情访问 https://github.com/linuxmint/sticky
 #: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:4
 msgid "Sticky Notes Importer"
-msgstr "置顶便笺导入器"
+msgstr "Sticky Notes 导入器"
 
 #: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:5
 msgid "Import your notes from the Sticky Notes applet."
-msgstr "从置顶便笺中导入。"
+msgstr "从 Sticky Notes 小工具中导入。"
 
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:84
 msgid "Import from Sticky Notes"
-msgstr "从置顶便笺中导入"
+msgstr "从 Sticky Notes 导入"
 
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:206
 msgid "No Sticky Notes found"
-msgstr "未找到置顶便笺"
+msgstr "未找到 Sticky Notes"
 
 #. %1 is a the file name
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
-#, fuzzy
-#| msgid "No suitable Sticky Notes file was found at \"%1%\"."
 msgid "No suitable Sticky Notes file was found at \"%1\"."
-msgstr "“%1%”中未找到合适的置顶便笺文件。"
+msgstr "“%1”中未找到合适的 Sticky Notes 文件。"
 
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
 msgid "Sticky Notes import completed"
-msgstr "置顶便笺导入成功"
+msgstr "Sticky Notes 导入成功"
 
 #. here %1 is the number of notes imported, %2 the total number of notes.
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
-#, fuzzy
-#| msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
 msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
-msgstr "已成功导入 <b>%2%</b> 条置顶便笺中的 <b>%1%</b> 条。"
+msgstr "已成功导入 <b>%2</b> 条 Sticky Notes 中的 <b>%1</b> 条。"
 
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:237
 msgid "Untitled"
@@ -1305,7 +1250,7 @@ msgstr "无标题"
 
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:275
 msgid "Sticky Note: "
-msgstr "置顶便笺："
+msgstr "Sticky Note： "
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
 #: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:67
@@ -1346,7 +1291,7 @@ msgstr "帮助文档目录"
 #. no toc items, and no action entries = empty menu
 #: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:192
 msgid "(empty table of contents)"
-msgstr "( 空目录 )"
+msgstr "（空目录）"
 
 #: src/plugins/todo/todo.desktop.in.in:4
 msgid "TODO"
@@ -1354,7 +1299,7 @@ msgstr "TODO"
 
 #: src/plugins/todo/todo.desktop.in.in:5
 msgid "Highlight FIXME, TODO and XXX patterns in notes."
-msgstr "在便笺中高亮 FIXME，TODO 和 XXX。"
+msgstr "在便笺中高亮 FIXME，TODO 和 XXX 字符。"
 
 #: src/plugins/todo/todo.desktop.in.in:6
 msgid "Aurimas Černius, Romain Tartière"
@@ -1405,10 +1350,8 @@ msgid "WebDAV"
 msgstr "WebDAV"
 
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:165
-#, fuzzy
-#| msgid "Synchronization is complete"
 msgid "Synchronization destination %1 doesn't exist!"
-msgstr "同步完成"
+msgstr "同步目标 %1 不存在！"
 
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:180
 msgid "URL, username, or password field is empty."
@@ -1416,12 +1359,6 @@ msgstr "URL、用户名或密码为空。"
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:279
-#, fuzzy
-#| msgid ""
-#| "Saving configuration to the GNOME keyring failed with the following "
-#| "message:\n"
-#| "\n"
-#| "%1%"
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1430,7 +1367,7 @@ msgid ""
 msgstr ""
 "向 GNOME 密钥环保存配置时出错，出错信息是：\n"
 "\n"
-"%1%"
+"%1"
 
 #: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
 msgid "WebDAV Sync Service Plugin"
@@ -1438,17 +1375,17 @@ msgstr "WebDAV 同步服务插件"
 
 #: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
 msgid "Synchronize Gnote Notes to a WebDAV URL."
-msgstr "将 Gnote 便笺同步到一个 WebDAV URL。"
+msgstr "将 Gnote 便笺同步到 WebDAV URL。"
 
 #: src/dbus/remotecontrol.cpp:83
 #, c-format
 msgid "Exception thrown when creating note: %s"
-msgstr "创建便笺时抛出了例外：%s"
+msgstr "创建便笺时异常：%s"
 
 #: src/gnote.cpp:211
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
-msgstr ""
+msgstr "没有可用的 D-Bus 连接，shell 搜索和远程控制功能将不可用。"
 
 #: src/gnote.cpp:244
 msgid "Failed to get shortcuts window!"
@@ -1467,19 +1404,13 @@ msgstr ""
 "YunQiang Su <wzssyqa@gmail.com>, 2010。"
 
 #: src/gnote.cpp:273
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2010-2014 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
 "Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"版权所有 © 2010-2014 Aurimas Cernius\n"
+"版权所有 © 2010-2021 Aurimas Cernius\n"
 "版权所有 © 2009-2011 Debarshi Ray\n"
 "版权所有 © 2009 Hubert Figuiere\n"
 "版权所有 © 2004-2009 Tomboy 原作者。"
@@ -1497,10 +1428,8 @@ msgid "Run Gnote in background."
 msgstr "后台运行 Gnote。"
 
 #: src/gnote.cpp:484
-#, fuzzy
-#| msgid "Run Gnote as a GNOME panel applet."
 msgid "Run Gnote as GNOME Shell search provider."
-msgstr "将 Gnote 作为 GNOME 面板小程序运行。"
+msgstr "将 Gnote 作为 GNOME Shell 搜索提供者运行。"
 
 #: src/gnote.cpp:485
 msgid "Specify the path of the directory containing the notes."
@@ -1544,7 +1473,7 @@ msgstr "显示“从这里开始”便笺。"
 
 #: src/gnote.cpp:491
 msgid "Search and highlight text in the opened note."
-msgstr "在开启的便笺中搜索文本(高亮显示)。"
+msgstr "在开启的便笺中搜索文本（高亮显示）。"
 
 #: src/gnote.cpp:495
 msgid "A note taking application"
@@ -1556,10 +1485,8 @@ msgstr "Gnote 启动选项"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
 #: src/gnote.cpp:679
-#, fuzzy
-#| msgid "Version %1%"
 msgid "Version %1"
-msgstr "版本 %1%"
+msgstr "版本 %1"
 
 #. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
 #: src/iconmanager.cpp:63
@@ -1568,9 +1495,8 @@ msgid "Failed to load icon (%s, %d): %s"
 msgstr "加载图标 (%s, %d) 失败：%s"
 
 #: src/noteaddin.cpp:138 src/noteaddin.cpp:152 src/noteaddin.cpp:164
-#, fuzzy
 msgid "Plugin is disposing already"
-msgstr "插件已经部署"
+msgstr "插件已在处理"
 
 #: src/noteaddin.cpp:168
 msgid "Window is not embedded"
@@ -1580,7 +1506,7 @@ msgstr "窗口未被嵌入"
 #: src/notebase.cpp:225 src/note.cpp:362
 #, c-format
 msgid "Exception while saving note: %s"
-msgstr "保存便笺时发生例外：%s"
+msgstr "保存便笺时异常：%s"
 
 #. write failure, but not critical
 #: src/notebase.cpp:465
@@ -1621,10 +1547,8 @@ msgstr "新建便笺本(_B)..."
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
 #: src/notebooks/notebook.cpp:94
-#, fuzzy
-#| msgid "%1% Notebook Template"
 msgid "%1 Notebook Template"
-msgstr "%1% 便笺本模板"
+msgstr "%1 便笺本模板"
 
 #: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:304
 msgid "New Note"
@@ -1679,7 +1603,7 @@ msgstr "</list> 标签不匹配"
 #: src/notebuffer.cpp:1513
 #, c-format
 msgid "Exception: %s"
-msgstr "例外：%s"
+msgstr "异常：%s"
 
 #. TRANSLATORS: %1 will be replaced by note title
 #: src/note.cpp:56
@@ -1690,7 +1614,7 @@ msgstr "真的要删除“%1”？"
 #: src/note.cpp:60
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
-msgstr[0] "真的要删除这 %1% 条便笺吗？"
+msgstr[0] "真的要删除这 %1 条便笺吗？"
 
 #: src/note.cpp:67
 msgid "If you delete a note it is permanently lost."
@@ -1958,11 +1882,11 @@ msgstr "⦁ 项目符号"
 
 #: src/notewindow.cpp:817
 msgid "→ Increase indent"
-msgstr "→ 增加缩进量"
+msgstr "→ 增加缩进"
 
 #: src/notewindow.cpp:819
 msgid "← Decrease indent"
-msgstr "← 减少缩进量"
+msgstr "← 减少缩进"
 
 #: src/preferencesdialog.cpp:104
 msgid "Gnote Preferences"
@@ -2020,7 +1944,7 @@ msgstr "允许对列表自动编号(_B)"
 
 #: src/preferencesdialog.cpp:275
 msgid "Start new bulleted list by starting new line with character \"-\"."
-msgstr "通过使用“-”为行首，开始新的着重符号列表"
+msgstr "通过使用“-”为行首，开始新的着重符号列表。"
 
 #: src/preferencesdialog.cpp:283
 msgid "Use custom _font"
@@ -2028,7 +1952,7 @@ msgstr "使用自定义字体(_F)"
 
 #: src/preferencesdialog.cpp:300
 msgid "When renaming a linked note: "
-msgstr "重命名有链接的便笺时："
+msgstr "重命名有链接的便笺时： "
 
 #: src/preferencesdialog.cpp:304
 msgid "Ask me what to do"
@@ -2059,7 +1983,7 @@ msgstr "自动链接到便笺(_A)"
 
 #: src/preferencesdialog.cpp:386
 msgid "Enable this option to create a link when text matches note title."
-msgstr "启动此选项将会在文本匹配便笺标题时创建链接。   "
+msgstr "启动此选项将会在文本匹配便笺标题时创建链接。"
 
 #. URLs
 #: src/preferencesdialog.cpp:392
@@ -2067,26 +1991,22 @@ msgid "Create links for _URLs"
 msgstr "为 _URL 创建链接"
 
 #: src/preferencesdialog.cpp:393
-#, fuzzy
-#| msgid ""
-#| "Enable this option to create a link for URLs. Clicking will open that URL "
-#| "with apropriate program."
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
-msgstr "启用此选项将会为 URL 创建链接。点击之将会使用适当的程序打开。"
+msgstr "启用此选项将会为 URL 创建链接。点击后将使用适当的程序打开。"
 
 #. WikiWords...
 #: src/preferencesdialog.cpp:400
 msgid "Highlight _WikiWords"
-msgstr "加亮 _WikiWords"
+msgstr "高亮 _WikiWords"
 
 #: src/preferencesdialog.cpp:401
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
 msgstr ""
-"启用此选项将加亮类似 <b>WikiWords</b> 的单词。单击此单词将以该名称创建便笺。"
+"启用此选项将高亮类似 <b>WikiWords</b> 的单词。单击此单词将以该名称创建便笺。"
 
 #: src/preferencesdialog.cpp:433
 msgid "Ser_vice:"
@@ -2097,8 +2017,6 @@ msgid "Not configurable"
 msgstr "不可配置"
 
 #: src/preferencesdialog.cpp:512
-#, fuzzy
-#| msgid "Automatical background s_ync interval (minutes)"
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "后台自动同步时间间隔 - 分钟(_Y)"
 
@@ -2135,10 +2053,8 @@ msgstr "尚未实现"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
 #: src/preferencesdialog.cpp:798
-#, fuzzy
-#| msgid "%1% Preferences"
 msgid "%1 Preferences"
-msgstr "%1% 首选项"
+msgstr "%1 首选项"
 
 #: src/preferencesdialog.cpp:931
 msgid "Choose Note Font"
@@ -2203,14 +2119,10 @@ msgstr "Gnote 已准备同步您的便笺。您希望现在就同步它们吗？
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
 #: src/preferencesdialog.cpp:1254
-#, fuzzy
-#| msgid ""
-#| "Please check your information and try again.  The log file %1% may "
-#| "contain more information about the error."
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
-msgstr "请检查您的信息并重试。日志文件 %1% 可能包含了该错误的更多信息。"
+msgstr "请检查您的信息并重试。日志文件 %1 可能包含了该错误的更多信息。"
 
 #: src/preferencesdialog.cpp:1259
 msgid "Error connecting"
@@ -2242,22 +2154,19 @@ msgstr "搜索"
 
 #: src/recentchanges.cpp:268
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
-msgstr ""
+msgstr "embed box 的上一级不是 Gtk::Grid，请报告程序问题！"
 
 #: src/recentchanges.cpp:310
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
-msgstr ""
+msgstr "搜索条目的上一级不是 Gtk::Grid，请报告程序问题！"
 
 #: src/recentchanges.cpp:863
-#, fuzzy
 msgid "Expected widget to be a sub-menu!"
 msgstr "控件应为子菜单！"
 
 #: src/recentchanges.cpp:868
-#, fuzzy
-#| msgid "Not configurable"
 msgid "No configured actions"
-msgstr "不可配置"
+msgstr "未配置操作"
 
 #: src/remotecontrolproxy.cpp:46 src/remotecontrolproxy.cpp:49
 #, c-format
@@ -2395,46 +2304,36 @@ msgid "unknown parse error"
 msgstr "未知的解析错误"
 
 #: src/sharp/xmlwriter.cpp:40
-#, fuzzy
-#| msgid "%1% failed"
 msgid "%1 failed"
-msgstr "%1% 已失败"
+msgstr "%1 已失败"
 
 #: src/sharp/xsltransform.cpp:67
 msgid "NULL stylesheet, please fill a bug"
 msgstr "没有样式表，请报告 bug"
 
 #: src/synchronization/filesystemsyncserver.cpp:125
-#, fuzzy, c-format
-#| msgid "Failed to update note format: %s"
+#, c-format
 msgid "Failed to upload note: %s"
-msgstr "更新便笺格式失败：%s"
+msgstr "上传便笺失败：%s"
 
 #: src/synchronization/filesystemsyncserver.cpp:143
-#, fuzzy
-#| msgid "Failed to load plugin information!"
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
-msgstr[0] "加载插件信息失败！"
+msgstr[0] "上传 %1 便笺失败"
 
 #: src/synchronization/filesystemsyncserver.cpp:237
-#, fuzzy, c-format
-#| msgid "Exception while saving note: %s"
+#, c-format
 msgid "Exception when finishing note copy: %s"
-msgstr "保存便笺时发生例外：%s"
+msgstr "复制便笺时异常：%s"
 
 #: src/synchronization/filesystemsyncserver.cpp:240
-#, fuzzy
-#| msgid "Exception while saving note: %s"
 msgid "Exception when finishing note copy"
-msgstr "保存便笺时发生例外：%s"
+msgstr "复制便笺时异常"
 
 #: src/synchronization/filesystemsyncserver.cpp:263
-#, fuzzy
-#| msgid "Failed to update note format: %s"
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
-msgstr[0] "更新便笺格式失败：%s"
+msgstr[0] "下载 %1 便笺更新失败"
 
 #: src/synchronization/filesystemsyncserver.cpp:427
 #: src/synchronization/filesystemsyncserver.cpp:431
@@ -2443,14 +2342,13 @@ msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
 "but there may be some excess files floating around.  Here's the error: %s\n"
 msgstr ""
-"提交时服务器清理发生例外。服务器完整性没有问题但是可能会遗留一些文件。错误"
-"为：%s\n"
+"提交时服务器清理异常。服务器完整性没有问题但是可能会遗留一些文件。错误为："
+"%s\n"
 
 #: src/synchronization/filesystemsyncserver.cpp:637
-#, fuzzy, c-format
-#| msgid "Error loading %s"
+#, c-format
 msgid "Error updating lock: %s"
-msgstr "加载 %s 时出错"
+msgstr "更新锁时出错: %s"
 
 #: src/synchronization/filesystemsyncserver.cpp:676
 #, c-format
@@ -2470,10 +2368,8 @@ msgid "Unparsable last-sync-rev element in %s"
 msgstr "%s 中不可解析的 last-sync-rev 元素"
 
 #: src/synchronization/gvfssyncservice.cpp:98
-#, fuzzy
-#| msgid "Write test failed."
 msgid "Failure writing test file"
-msgstr "写入测试失败。"
+msgstr "写入测试文件失败"
 
 #: src/synchronization/gvfssyncservice.cpp:103
 msgid "Failure when checking test file contents"
@@ -2513,10 +2409,8 @@ msgid "Always perform this action"
 msgstr "总是执行该动作"
 
 #: src/synchronization/syncdialog.cpp:133
-#, fuzzy
-#| msgid "_Contents"
 msgid "_Continue"
-msgstr "目录(_C)"
+msgstr "继续(_C)"
 
 #. Set initial dialog text
 #: src/synchronization/syncdialog.cpp:136
@@ -2524,14 +2418,10 @@ msgid "Note conflict detected"
 msgstr "检测到便笺冲突"
 
 #: src/synchronization/syncdialog.cpp:138
-#, fuzzy
-#| msgid ""
-#| "The server version of \"%1%\" conflicts with your local note.  What do "
-#| "you want to do with your local note?"
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
-msgstr "服务器版本“%1%”与您的本地便笺冲突。您要如何处理您本地便笺？"
+msgstr "服务器版本“%1”与本地便笺冲突。请问要如何处理您的本地便笺？"
 
 #. Expander containing TreeView
 #: src/synchronization/syncdialog.cpp:292
@@ -2560,7 +2450,7 @@ msgstr "正在同步您的便笺..."
 
 #: src/synchronization/syncdialog.cpp:486
 msgid "This may take a while, kick back and enjoy!"
-msgstr "这可能需要一段时间，请稍安毋躁..."
+msgstr "这可能需要一段时间，请稍候！"
 
 #: src/synchronization/syncdialog.cpp:488
 msgid "Connecting to the server..."
@@ -2621,12 +2511,9 @@ msgid "Synchronization is complete"
 msgstr "同步完成"
 
 #: src/synchronization/syncdialog.cpp:535
-#, fuzzy
-#| msgid "%1% note updated."
-#| msgid_plural "%1% notes updated."
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
-msgstr[0] "已更新 %1% 条便笺。"
+msgstr[0] "已更新 %1 条便笺。"
 
 #: src/synchronization/syncdialog.cpp:536
 msgid "Your notes are now up to date."
@@ -2712,19 +2599,18 @@ msgstr "同步后清理插件出错：%s"
 #: src/synchronization/syncmanager.cpp:168
 #, c-format
 msgid "Exception while creating SyncServer: %s"
-msgstr "创建 SyncServer 时失败：%s"
+msgstr "创建 SyncServer 时异常：%s"
 
 #: src/synchronization/syncmanager.cpp:368
-#, fuzzy, c-format
-#| msgid "Synchronization failed with the following exception: %s"
+#, c-format
 msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "同步因如下例外而失败：%s"
+msgstr "同步因以下 Glib 异常失败：%s"
 
 #. top-level try
 #: src/synchronization/syncmanager.cpp:372
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
-msgstr "同步因如下例外而失败：%s"
+msgstr "同步因以下异常失败：%s"
 
 #: src/utils.cpp:98
 msgid ""
@@ -2746,10 +2632,8 @@ msgstr "没有日期"
 
 #. TRANSLATORS: argument %1 is time.
 #: src/utils.cpp:170
-#, fuzzy
-#| msgid "Today, %1%"
 msgid "Today, %1"
-msgstr "今天，%1%"
+msgstr "今天，%1"
 
 #: src/utils.cpp:171
 msgid "Today"
@@ -2757,10 +2641,8 @@ msgstr "今天"
 
 #. TRANSLATORS: argument %1 is time.
 #: src/utils.cpp:177
-#, fuzzy
-#| msgid "Yesterday, %1%"
 msgid "Yesterday, %1"
-msgstr "昨天，%1%"
+msgstr "昨天，%1"
 
 #: src/utils.cpp:178
 msgid "Yesterday"
@@ -2768,10 +2650,8 @@ msgstr "昨天"
 
 #. TRANSLATORS: argument %1 is time.
 #: src/utils.cpp:184
-#, fuzzy
-#| msgid "Tomorrow, %1%"
 msgid "Tomorrow, %1"
-msgstr "明天，%1%"
+msgstr "明天，%1"
 
 #: src/utils.cpp:185
 msgid "Tomorrow"
@@ -2784,10 +2664,8 @@ msgstr "%b%d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
 #: src/utils.cpp:192 src/utils.cpp:201
-#, fuzzy
-#| msgid "%1%, %2%"
 msgid "%1, %2"
-msgstr "%1%, %2%"
+msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
 #: src/utils.cpp:198
@@ -2799,32 +2677,24 @@ msgid "_OK"
 msgstr "确定(_O)"
 
 #: src/utils.cpp:371
-#, fuzzy
-#| msgid "_Normal"
 msgid "_No"
-msgstr "普通(_N)"
+msgstr "否(_N)"
 
 #: src/utils.cpp:372
 msgid "_Yes"
-msgstr ""
+msgstr "是(_Y)"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
 #: src/watchers.cpp:198
-#, fuzzy
-#| msgid "(Untitled %1%)"
 msgid "(Untitled %1)"
-msgstr "(无标题 %1%)"
+msgstr "（无标题 %1）"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
 #: src/watchers.cpp:230
-#, fuzzy
-#| msgid ""
-#| "A note with the title <b>%1%</b> already exists. Please choose another "
-#| "name for this note before continuing."
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
-msgstr "已经存在标题为 <b>%1%</b> 的便笺。请在继续前为此便笺选择另外的名称。"
+msgstr "已经存在标题为 <b>%1</b> 的便笺。请在继续前为此便笺选择另外的名称。"
 
 #: src/watchers.cpp:245
 msgid "Note title taken"
