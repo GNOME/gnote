@@ -258,7 +258,6 @@ namespace gnote {
     m_search_box->set_hexpand(false);
     m_search_box->attach(*m_search_entry, 0, 0, 1, 1);
     m_search_box->set_halign(Gtk::ALIGN_CENTER);
-    m_search_box->show();
 
     auto content = dynamic_cast<Gtk::Grid*>(m_embed_box.get_parent());
     if(content) {
