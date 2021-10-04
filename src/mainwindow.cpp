@@ -91,7 +91,7 @@ MainWindow *MainWindow::present_default(IGnote & g, const Note::Ptr & note)
     if (note->has_window()) {
       win = dynamic_cast<MainWindow*>(note->get_window()->host());
     }
-    else {
+    if(!win) {
       win = &g.get_window_for_note();
     }
   }
