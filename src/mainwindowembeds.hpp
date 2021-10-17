@@ -56,8 +56,6 @@ public:
   virtual void unembed();
   virtual void foreground();
   virtual void background();
-  virtual void hint_position(int & x, int & y);
-  virtual void hint_size(int & width, int & height);
   virtual void size_internals();
   virtual void set_initial_focus() {}
   EmbeddableWidgetHost *host() const
