@@ -189,14 +189,6 @@ namespace gnote {
     m_important_note_slot.disconnect();
   }
 
-  void NoteWindow::hint_size(int & width, int & height)
-  {
-    if(m_gnote.preferences().autosize_note_window()) {
-      width = m_width;
-      height = m_height;
-    }
-  }
-
   void NoteWindow::size_internals()
   {
     m_editor->scroll_to(m_editor->get_buffer()->get_insert());

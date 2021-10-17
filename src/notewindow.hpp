@@ -140,7 +140,6 @@ public:
   void set_name(const Glib::ustring & name);
   virtual void foreground() override;
   virtual void background() override;
-  virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
 
   virtual void perform_search(const Glib::ustring & text) override;
