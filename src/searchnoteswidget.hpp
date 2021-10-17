@@ -50,7 +50,6 @@ public:
   virtual Glib::ustring get_name() const override;
   virtual void foreground() override;
   virtual void background() override;
-  virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
   virtual void set_initial_focus() override;
   virtual void perform_search(const Glib::ustring & search_text) override;

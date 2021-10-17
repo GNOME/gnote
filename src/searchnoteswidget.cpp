@@ -1428,12 +1428,6 @@ void SearchNotesWidget::background()
   m_open_note_new_window_accel = nullptr;
 }
 
-void SearchNotesWidget::hint_size(int & width, int & height)
-{
-  width = m_gnote.preferences().search_window_width();
-  height = m_gnote.preferences().search_window_height();
-}
-
 void SearchNotesWidget::size_internals()
 {
   int pos = m_gnote.preferences().search_window_splitter_pos();
