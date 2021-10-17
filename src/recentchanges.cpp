@@ -606,19 +606,7 @@ namespace gnote {
   {
     // Select "All Notes" in the notebooks list
     m_search_notes_widget->select_all_notes_notebook();
-
-    int current_page = m_embed_book.get_current_page();
-    EmbeddableWidget *widget = current_page >= 0 ? dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(current_page)) : nullptr;
-
     MainWindow::on_show();
-
-    if(widget) {
-      int x = 0, y = 0;
-      widget->hint_position(x, y);
-      if(x && y) {
-        move(x, y);
-      }
-    }
   }
 
   void NoteRecentChanges::set_search_text(const Glib::ustring & value)
