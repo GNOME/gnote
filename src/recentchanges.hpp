@@ -90,7 +90,6 @@ private:
   Glib::ustring get_search_text();
   void update_toolbar(EmbeddableWidget & widget);
   void update_search_bar(EmbeddableWidget & widget, bool perform_search);
-  void on_all_notes_button_clicked();
   void on_show_window_menu();
   void on_search_button_toggled();
   void on_find_next_button_clicked();
@@ -117,8 +116,6 @@ private:
   Gtk::ToggleButton   m_search_button;
   Gtk::Grid           m_embedded_toolbar;
   Gtk::Notebook       m_embed_book;
-  Gtk::Button        *m_all_notes_button;
-  Gtk::Button        *m_new_note_button;
   Gtk::Button        *m_window_actions_button;
   bool                m_mapped;
   sigc::connection    m_signal_popover_widgets_changed_cid;

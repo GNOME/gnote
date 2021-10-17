@@ -206,27 +206,14 @@ namespace gnote {
     left_box->get_style_context()->add_class(GTK_STYLE_CLASS_RAISED);
     left_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
     left_box->set_valign(Gtk::ALIGN_CENTER);
-    m_all_notes_button = manage(new Gtk::Button);
-    Gtk::Image *image = manage(new Gtk::Image);
-    image->property_icon_name() = "go-previous-symbolic";
-    image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    m_all_notes_button->set_image(*image);
-    m_all_notes_button->set_tooltip_text(_("All Notes"));
-    m_all_notes_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_all_notes_button_clicked));
-    m_all_notes_button->add_accelerator("activate", m_accel_group, GDK_KEY_comma, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
-    m_all_notes_button->show_all();
-    left_box->attach(*m_all_notes_button, 0, 0, 1, 1);
 
-    m_new_note_button = manage(new Gtk::Button);
-    image = manage(new Gtk::Image);
-    image->property_icon_name() = "list-add-symbolic";
-    image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    m_new_note_button->set_image(*image);
-    m_new_note_button->set_tooltip_text(_("Create New Note"));
-    m_new_note_button->add_accelerator("activate", m_accel_group, GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
-    m_new_note_button->signal_clicked().connect(sigc::mem_fun(*m_search_notes_widget, &SearchNotesWidget::new_note));
-    m_new_note_button->show_all();
-    left_box->attach(*m_new_note_button, 1, 0, 1, 1);
+    auto new_note_button = manage(new Gtk::Button);
+    new_note_button->set_image_from_icon_name("list-add-symbolic");
+    new_note_button->set_tooltip_text(_("Create New Note"));
+    new_note_button->add_accelerator("activate", m_accel_group, GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    new_note_button->signal_clicked().connect(sigc::mem_fun(*m_search_notes_widget, &SearchNotesWidget::new_note));
+    new_note_button->show_all();
+    left_box->attach(*new_note_button, 0, 0, 1, 1);
     left_box->show();
 
     m_embedded_toolbar.set_margin_start(6);
@@ -238,10 +225,7 @@ namespace gnote {
     right_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
     right_box->set_column_spacing(5);
     right_box->set_valign(Gtk::ALIGN_CENTER);
-    image = manage(new Gtk::Image);
-    image->property_icon_name() = "edit-find-symbolic";
-    image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    m_search_button.set_image(*image);
+    m_search_button.set_image_from_icon_name("edit-find-symbolic");
     m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
     m_search_button.add_accelerator("activate", m_accel_group, GDK_KEY_F, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_search_button.set_tooltip_text(_("Search"));
@@ -249,10 +233,7 @@ namespace gnote {
     right_box->attach(m_search_button, 0, 0, 1, 1);
 
     m_window_actions_button = manage(new Gtk::Button);
-    image = manage(new Gtk::Image);
-    image->property_icon_name() = MAIN_MENU_PRIMARY_ICON;
-    image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    m_window_actions_button->set_image(*image);
+    m_window_actions_button->set_image_from_icon_name(MAIN_MENU_PRIMARY_ICON);
     m_window_actions_button->signal_clicked().connect(
       sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu));
     m_window_actions_button->add_accelerator(
@@ -878,8 +859,6 @@ namespace gnote {
   void NoteRecentChanges::update_toolbar(EmbeddableWidget & widget)
   {
     bool search = dynamic_cast<SearchNotesWidget*>(&widget) == m_search_notes_widget;
-    m_all_notes_button->set_visible(!search);
-    m_new_note_button->set_visible(search);
     dynamic_cast<Gtk::Image*>(m_window_actions_button->get_image())->property_icon_name() = search ? MAIN_MENU_PRIMARY_ICON : MAIN_MENU_SECONDARY_ICON;
     update_search_bar(widget, true);
 
@@ -892,12 +871,6 @@ namespace gnote {
     }
     catch(std::bad_cast &) {
     }
-  }
-
-  void NoteRecentChanges::on_all_notes_button_clicked()
-  {
-    close_on_escape(false);  // intentional switch to search, user probably want to work more with this window
-    present_search();
   }
 
   void NoteRecentChanges::on_show_window_menu()
