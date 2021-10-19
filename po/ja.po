@@ -1,18 +1,18 @@
 # gnote ja.po.
-# Copyright (C) 2004-2013, 2020 Free Software Foundation, Inc.
+# Copyright (C) 2004-2013, 2020-2021 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gote package.
 # Takeshi AIHANA <takeshi.aihana@gmail.com>, 2004-2011.
 # Satoru SATOH <ss@gnome.gr.jp>, 2006.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2012.
 # Noriko Mizumoto <noriko@fedoraproject.org>, 2012, 2013.
-# sicklylife <translation@sicklylife.jp>, 2020.
+# sicklylife <translation@sicklylife.jp>, 2020-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
 "POT-Creation-Date: 2020-12-12 22:02+0000\n"
-"PO-Revision-Date: 2020-12-19 15:20+0900\n"
+"PO-Revision-Date: 2021-10-19 21:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -41,11 +41,17 @@ msgstr ""
 "する、メモ帳にグルーピングする。他にも毎日の使用に役立つ拡張機能を利用できま"
 "す。"
 
+#: ../data/appdata/org.gnome.Gnote.appdata.xml.in.h:4
+msgid "Notes can be printed or exported as HTML documents."
+msgstr ""
+"メモは HTML ドキュメントとしてエクスポートしたり印刷したりできます。"
+
 #: ../data/appdata/gnote.appdata.xml.in.h:4
 msgid ""
-"Gnote also supports synchronization to make it possible to use on multiple "
+"Gnote also supports synchronization, making it simple to use it on multiple "
 "devices."
-msgstr "Gnote は複数のデバイスでも使用できるよう同期にも対応しています。"
+msgstr ""
+"Gnote は複数のデバイスで使いやすいよう同期にも対応しています。"
 
 #: ../data/ui/shortcuts-gnote.ui.h:1
 msgctxt "shortcut window"
@@ -837,9 +843,25 @@ msgstr "ホスト名"
 msgid "Icon"
 msgstr "アイコン"
 
+#: src/plugins/bugzilla/bugzillapreferences.cpp:113
+msgid "_Add"
+msgstr "追加(_A)"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:117
+msgid "_Remove"
+msgstr "削除(_R)"
+
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:226
 msgid "Select an icon..."
 msgstr "アイコンの選択..."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:227
+#: src/plugins/bugzilla/bugzillapreferences.cpp:370
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/utils.cpp:375
+msgid "_Cancel"
+msgstr "キャンセル(_C)"
 
 #. Extra Widget
 #: ../src/addins/bugzilla/bugzillapreferences.cpp:241
@@ -929,6 +951,13 @@ msgstr "リンクしているメモもエクスポートする"
 #: ../src/addins/exporttohtml/exporttohtmldialog.cpp:46
 msgid "Include all other linked notes"
 msgstr "1 つの HTML にまとめてエクスポートする"
+
+#. TODO: Tabbing should go directly from sync prefs widget to here
+#. TODO: Consider connecting to "Enter" pressed in sync prefs widget
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
+#: src/preferencesdialog.cpp:555
+msgid "_Save"
+msgstr "保存(_S)"
 
 #: ../src/addins/exporttohtml/exporttohtmlnoteaddin.cpp:82
 msgid "Export to HTML…"
@@ -1410,6 +1439,10 @@ msgstr "パスワード(_P):"
 msgid "WebDAV"
 msgstr "WebDAV"
 
+#: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:164
+msgid "Synchronization destination %1 doesn't exist!"
+msgstr "同期先 %1 が存在しません!"
+
 #: ../src/addins/webdavsyncservice/webdavsyncserviceaddin.cpp:117
 msgid ""
 "There was an error connecting to the server.  This may be caused by using an "
@@ -1453,9 +1486,15 @@ msgstr "%s へのリモートコールに失敗しました"
 msgid "Exception thrown when creating note: %s"
 msgstr "メモの作成中に例外が発生しました: %s"
 
+#: ../src/gnote.cpp:205
+msgid ""
+"No D-Bus connection available, shell search and remote control will not work."
+msgstr ""
+"D-Bus 接続が利用できないため、GNOME Shell 検索とリモート制御が動作しません。"
+
 #: ../src/gnote.cpp:189
 msgid "Gnote is already running.  Exiting..."
-msgstr "Gnote はすでに実行中です。終了しています..."
+msgstr "Gnote はすでに実行中です。終了します..."
 
 #: ../src/gnote.cpp:266
 msgid "Failed to get shortcuts window!"
@@ -1477,12 +1516,12 @@ msgstr ""
 
 #: ../src/gnote.cpp:295
 msgid ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2020 Aurimas Cernius\n"
+"Copyright © 2010-2021 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
@@ -2113,6 +2152,10 @@ msgstr "バックグラウンド自動同期間隔 (分)(_Y)"
 msgid "_Advanced..."
 msgstr "拡張(_A)..."
 
+#: src/preferencesdialog.cpp:543
+msgid "Clear"
+msgstr "クリア"
+
 #: ../src/preferencesdialog.cpp:591
 msgid "The following plugins are installed:"
 msgstr "次のプラグインがインストールされています:"
@@ -2126,6 +2169,10 @@ msgstr "有効にする(_E)"
 #: ../src/preferencesdialog.cpp:632
 msgid "_Disable"
 msgstr "無効にする(_D)"
+
+#: src/preferencesdialog.cpp:637
+msgid "In_formation"
+msgstr "情報(_F)"
 
 #: ../src/preferencesdialog.cpp:789
 msgid "Not Implemented"
@@ -2334,6 +2381,12 @@ msgstr "新規(_N)..."
 msgid "Failed to parse setting %s (Value: %s):"
 msgstr "セッティング %s (値: %s) の解析に失敗しました:"
 
+#: ../src/searchnoteswidget.cpp:1504 ../src/searchnoteswidget.cpp:1517
+#: ../src/searchnoteswidget.cpp:1528
+#, c-format
+msgid "Failed to parse setting search-sorting (Value: %s):"
+msgstr "設定 search-sorting (値: %s) の解析に失敗しました:"
+
 #: ../src/searchnoteswidget.cpp:1499
 msgid "Expected format 'column:order'"
 msgstr "期待される形式 'column:order'"
@@ -2517,6 +2570,10 @@ msgstr "ローカルメモを上書き"
 #: ../src/synchronization/syncdialog.cpp:131
 msgid "Always perform this action"
 msgstr "常にこの動作を行う"
+
+#: src/synchronization/syncdialog.cpp:133
+msgid "_Continue"
+msgstr "続行(_C)"
 
 #. Set initial dialog text
 #: ../src/synchronization/syncdialog.cpp:137
@@ -2817,6 +2874,18 @@ msgstr "%1 %2"
 #: ../src/utils.cpp:230
 msgid "%b %d %Y"
 msgstr "%Y年%B%-e日"
+
+#: src/utils.cpp:362 src/utils.cpp:376
+msgid "_OK"
+msgstr "OK(_O)"
+
+#: src/utils.cpp:371
+msgid "_No"
+msgstr "いいえ(_N)"
+
+#: src/utils.cpp:372
+msgid "_Yes"
+msgstr "はい(_Y)"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
 #: ../src/watchers.cpp:198
