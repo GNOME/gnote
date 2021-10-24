@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -306,12 +306,6 @@ namespace gnote {
     }
 
     // Copy template note's properties
-    Tag::Ptr template_save_size = m_tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
-    if(template_note->data().has_extent() && template_note->contains_tag(template_save_size)) {
-      new_note->data().height() = template_note->data().height();
-      new_note->data().width() = template_note->data().width();
-    }
-
     Glib::RefPtr<Gtk::TextBuffer> buffer = std::static_pointer_cast<Note>(new_note)->get_buffer();
     Gtk::TextIter cursor, selection;
     Tag::Ptr template_save_selection = m_tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
