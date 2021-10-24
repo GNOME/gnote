@@ -67,7 +67,6 @@ namespace gnote {
     GNOTE_PREFERENCES_SETTING_BOOL(enable_close_note_on_escape)
     GNOTE_PREFERENCES_CACHING_SETTING(note_rename_behavior, int)
     GNOTE_PREFERENCES_CACHING_SETTING(open_notes_in_new_window, bool)
-    GNOTE_PREFERENCES_SETTING_BOOL(autosize_note_window)
     GNOTE_PREFERENCES_SETTING_STRING(start_note_uri)
     GNOTE_PREFERENCES_CACHING_SETTING(custom_font_face, const Glib::ustring &)
     GNOTE_PREFERENCES_SETTING_STRING(menu_pinned_notes)

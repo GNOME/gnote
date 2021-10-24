@@ -143,7 +143,6 @@ namespace gnote {
   DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, enable_close_note_on_escape, ENABLE_CLOSE_NOTE_ON_ESCAPE)
   DEFINE_CACHING_SETTER_INT(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, open_notes_in_new_window, OPEN_NOTES_IN_NEW_WINDOW)
-  DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, autosize_note_window, AUTOSIZE_NOTE_WINDOW)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, start_note_uri, START_NOTE_URI)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, menu_pinned_notes, MENU_PINNED_NOTES)
