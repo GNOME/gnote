@@ -104,8 +104,6 @@ namespace gnote {
     m_editor_window->set_vexpand(true);
     m_editor_window->show();
 
-    set_focus_child(*m_editor);
-
     attach(*m_template_widget, 0, 0, 1, 1);
     attach(*m_editor_window, 0, 1, 1, 1);
   }
@@ -191,6 +189,11 @@ namespace gnote {
   void NoteWindow::size_internals()
   {
     m_editor->scroll_to(m_editor->get_buffer()->get_insert());
+  }
+
+  void NoteWindow::set_initial_focus()
+  {
+    m_editor->grab_focus();
   }
 
   void NoteWindow::add_accel_group(Gtk::Window & window)

@@ -436,9 +436,12 @@ namespace gnote {
         win->host()->unembed_widget(*win);
       }
       embed_widget(*win);
+      win->set_initial_focus();
     }
     else {
-      embed_widget(*note->create_window());
+      auto win = note->create_window();
+      embed_widget(*win);
+      win->set_initial_focus();
     }
   }
 
