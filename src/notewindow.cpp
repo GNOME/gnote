@@ -73,7 +73,6 @@ namespace gnote {
   {
     ITagManager & tag_manager = note.manager().tag_manager();
     m_template_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    m_template_save_size_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
     m_template_save_selection_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
     m_template_save_title_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
 
@@ -384,10 +383,6 @@ namespace gnote {
     Gtk::Button * untemplateButton = manage(new Gtk::Button(_("Convert to regular note")));
     untemplateButton->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_untemplate_button_click));
 
-    m_save_size_check_button = manage(new Gtk::CheckButton(_("Save Si_ze"), true));
-    m_save_size_check_button->set_active(m_note.contains_tag(m_template_save_size_tag));
-    m_save_size_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_size_check_button_toggled));
-
     m_save_selection_check_button = manage(new Gtk::CheckButton(_("Save Se_lection"), true));
     m_save_selection_check_button->set_active(m_note.contains_tag(m_template_save_selection_tag));
     m_save_selection_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_selection_check_button_toggled));
@@ -398,9 +393,8 @@ namespace gnote {
 
     bar->attach(*infoLabel, 0, 0, 1, 1);
     bar->attach(*untemplateButton, 0, 1, 1, 1);
-    bar->attach(*m_save_size_check_button, 0, 2, 1, 1);
-    bar->attach(*m_save_selection_check_button, 0, 3, 1, 1);
-    bar->attach(*m_save_title_check_button, 0, 4, 1, 1);
+    bar->attach(*m_save_selection_check_button, 0, 2, 1, 1);
+    bar->attach(*m_save_title_check_button, 0, 3, 1, 1);
 
     if(m_note.contains_tag(m_template_tag)) {
       bar->show_all();
@@ -416,17 +410,6 @@ namespace gnote {
   void NoteWindow::on_untemplate_button_click()
   {
     m_note.remove_tag(m_template_tag);
-  }
-
-
-  void NoteWindow::on_save_size_check_button_toggled()
-  {
-    if(m_save_size_check_button->get_active()) {
-      m_note.add_tag(m_template_save_size_tag);
-    }
-    else {
-      m_note.remove_tag(m_template_save_size_tag);
-    }
   }
 
 

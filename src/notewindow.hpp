@@ -188,7 +188,6 @@ private:
   Gtk::Grid *make_toolbar();
   Gtk::Grid * make_template_bar();
   void on_untemplate_button_click();
-  void on_save_size_check_button_toggled();
   void on_save_selection_check_button_toggled();
   void on_save_title_check_button_toggled();
   void on_note_tag_added(const NoteBase&, const Tag::Ptr&);
@@ -217,7 +216,6 @@ private:
   sigc::connection              m_delete_note_slot;
   sigc::connection              m_important_note_slot;
   Gtk::Grid                    *m_template_widget;
-  Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;
   Gtk::CheckButton             *m_save_title_check_button;
 
@@ -225,7 +223,6 @@ private:
   bool                         m_enabled;
 
   Tag::Ptr m_template_tag;
-  Tag::Ptr m_template_save_size_tag;
   Tag::Ptr m_template_save_selection_tag;
   Tag::Ptr m_template_save_title_tag;
 };
