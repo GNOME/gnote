@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019-2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ void MainWindow::present_in(MainWindow & win, const Note::Ptr & note)
   win.present();
 }
 
-MainWindow *MainWindow::present_in_new_window(IGnote & g, const Note::Ptr & note, bool close_on_esc)
+MainWindow *MainWindow::present_in_new_window(IGnote & g, const Note::Ptr & note)
 {
   if(!note) {
     return NULL;
@@ -59,7 +59,6 @@ MainWindow *MainWindow::present_in_new_window(IGnote & g, const Note::Ptr & note
   MainWindow & window = g.new_main_window();
   window.present_note(note);
   window.present();
-  window.close_on_escape(close_on_esc);
   return &window;
 
   return NULL;

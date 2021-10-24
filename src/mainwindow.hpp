@@ -37,7 +37,7 @@ class MainWindow
 public:
   static MainWindow *get_owning(Gtk::Widget & widget);
   static void present_in(MainWindow & win, const Note::Ptr & note);
-  static MainWindow *present_in_new_window(IGnote & g, const Note::Ptr & note, bool close_on_esacpe);
+  static MainWindow *present_in_new_window(IGnote & g, const Note::Ptr & note);
   static MainWindow *present_default(IGnote & g, const Note::Ptr & note);
   static bool use_client_side_decorations(Preferences & prefs);
 
@@ -50,15 +50,6 @@ public:
   virtual void close_window() = 0;
   virtual bool is_search() = 0;
   virtual utils::GlobalKeybinder & keybinder() = 0;
-
-  void close_on_escape(bool close_win)
-    {
-      m_close_on_esc = close_win;
-    }
-  bool close_on_escape() const
-    {
-      return m_close_on_esc;
-    }
 protected:
   virtual void present_note(const Note::Ptr & note) = 0;
 private:

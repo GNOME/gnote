@@ -470,7 +470,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    present_in_new_window(m_gnote, note, m_preferences.enable_close_note_on_escape());
+    present_in_new_window(m_gnote, note);
   }
 
   void NoteRecentChanges::on_delete_note()
@@ -560,17 +560,6 @@ namespace gnote {
       if(m_search_button.get_active()) {
         m_search_entry->set_text("");
         m_search_button.set_active(false);
-      }
-      // Allow Escape to close the window
-      else if(close_on_escape()) {
-        close_window();
-      }
-      else if(m_preferences.enable_close_note_on_escape()) {
-        EmbeddableWidget *current_item = currently_foreground();
-        if(current_item) {
-          background_embedded(*current_item);
-        }
-        foreground_embedded(*m_search_notes_widget);
       }
       break;
     case GDK_KEY_F1:
