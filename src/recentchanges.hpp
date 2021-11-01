@@ -91,6 +91,7 @@ private:
   void update_toolbar(EmbeddableWidget & widget);
   void update_search_bar(EmbeddableWidget & widget, bool perform_search);
   void on_show_window_menu();
+  void on_show_embed_action_menu();
   void on_search_button_toggled();
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
@@ -117,6 +118,7 @@ private:
   Gtk::Grid           m_embedded_toolbar;
   Gtk::Notebook       m_embed_book;
   Gtk::Button        *m_window_actions_button;
+  Gtk::Button        *m_current_embed_actions_button;
   bool                m_mapped;
   sigc::connection    m_signal_popover_widgets_changed_cid;
   utils::InterruptableTimeout *m_entry_changed_timeout;

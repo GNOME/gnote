@@ -225,12 +225,20 @@ namespace gnote {
     right_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
     right_box->set_column_spacing(5);
     right_box->set_valign(Gtk::ALIGN_CENTER);
+    int right_box_pos = 0;
+
+    m_current_embed_actions_button = manage(new Gtk::Button);
+    m_current_embed_actions_button->set_image_from_icon_name(MAIN_MENU_SECONDARY_ICON);
+    m_current_embed_actions_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_show_embed_action_menu));
+    m_current_embed_actions_button->add_accelerator("activate", m_accel_group, GDK_KEY_F8, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
+    right_box->attach(*m_current_embed_actions_button, right_box_pos++, 0, 1, 1);
+
     m_search_button.set_image_from_icon_name("edit-find-symbolic");
     m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
     m_search_button.add_accelerator("activate", m_accel_group, GDK_KEY_F, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_search_button.set_tooltip_text(_("Search"));
     m_search_button.show_all();
-    right_box->attach(m_search_button, 0, 0, 1, 1);
+    right_box->attach(m_search_button, right_box_pos++, 0, 1, 1);
 
     m_window_actions_button = manage(new Gtk::Button);
     m_window_actions_button->set_image_from_icon_name(MAIN_MENU_PRIMARY_ICON);
@@ -239,7 +247,7 @@ namespace gnote {
     m_window_actions_button->add_accelerator(
       "activate", m_accel_group, GDK_KEY_F10, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
     m_window_actions_button->show_all();
-    right_box->attach(*m_window_actions_button, 1, 0, 1, 1);
+    right_box->attach(*m_window_actions_button, right_box_pos++, 0, 1, 1);
     right_box->show();
 
     if(use_client_side_decorations(m_preferences)) {
@@ -850,9 +858,14 @@ namespace gnote {
 
   void NoteRecentChanges::update_toolbar(EmbeddableWidget & widget)
   {
-    bool search = dynamic_cast<SearchNotesWidget*>(&widget) == m_search_notes_widget;
-    dynamic_cast<Gtk::Image*>(m_window_actions_button->get_image())->property_icon_name() = search ? MAIN_MENU_PRIMARY_ICON : MAIN_MENU_SECONDARY_ICON;
     update_search_bar(widget, true);
+    auto has_actions = dynamic_cast<HasActions*>(&widget);
+    if(has_actions) {
+      m_current_embed_actions_button->show_all();
+    }
+    else {
+      m_current_embed_actions_button->hide();
+    }
 
     try {
       HasEmbeddableToolbar & toolbar_provider = dynamic_cast<HasEmbeddableToolbar&>(widget);
@@ -867,18 +880,26 @@ namespace gnote {
 
   void NoteRecentChanges::on_show_window_menu()
   {
+    if(m_window_menu_default == nullptr) {
+      std::vector<PopoverWidget> popover_widgets;
+      popover_widgets.reserve(20);
+      m_gnote.action_manager().signal_build_main_window_search_popover(popover_widgets);
+      for(unsigned i = 0; i < popover_widgets.size(); ++i) {
+        popover_widgets[i].secondary_order = i;
+      }
+      m_window_menu_default = make_window_menu(m_window_actions_button, std::move(popover_widgets));
+    }
+    m_window_menu_default->show_all();
+  }
+
+  void NoteRecentChanges::on_show_embed_action_menu()
+  {
     HasActions *embed_with_actions = dynamic_cast<HasActions*>(currently_foreground());
     if(embed_with_actions) {
       if(m_window_menu_embedded == NULL) {
-        m_window_menu_embedded = make_window_menu(m_window_actions_button, std::move(embed_with_actions->get_popover_widgets()));
+        m_window_menu_embedded = make_window_menu(m_current_embed_actions_button, std::move(embed_with_actions->get_popover_widgets()));
       }
       m_window_menu_embedded->show_all();
-    }
-    else {
-      if(m_window_menu_default == NULL) {
-        m_window_menu_default = make_window_menu(m_window_actions_button, std::vector<PopoverWidget>());
-      }
-      m_window_menu_default->show_all();
     }
   }
 
