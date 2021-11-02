@@ -115,29 +115,7 @@ namespace gnote {
 
     set_title(_("Gnote"));
     set_icon_name(IconManager::GNOTE);
-
-    std::map<Glib::ustring, const Glib::VariantType*> actions = g.action_manager().get_main_window_actions();
-    for(std::map<Glib::ustring, const Glib::VariantType*>::iterator iter = actions.begin();
-        iter != actions.end(); ++iter) {
-      MainWindowAction::Ptr action;
-      if(iter->second == NULL) {
-        add_action(action = MainWindowAction::create(iter->first));
-      }
-      else if(iter->second == &Glib::Variant<bool>::variant_type()) {
-        add_action(action = MainWindowAction::create(iter->first, false));
-      }
-      else if(iter->second == &Glib::Variant<gint32>::variant_type()) {
-        add_action(action = MainWindowAction::create(iter->first, 0));
-      }
-      else if(iter->second == &Glib::Variant<Glib::ustring>::variant_type()) {
-        add_action(action = MainWindowAction::create(iter->first, Glib::ustring("")));
-      }
-      if(action) {
-        action->is_modifying(g.action_manager().is_modifying_main_window_action(iter->first));
-      }
-    }
-    find_action("close-window")->signal_activate()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
+    register_actions();
 
     m_search_notes_widget = new SearchNotesWidget(g, m);
     m_search_notes_widget->signal_open_note
@@ -198,6 +176,33 @@ namespace gnote {
       delete m_search_text;
     }
     delete m_search_notes_widget;
+  }
+
+  void NoteRecentChanges::register_actions()
+  {
+    auto & am = m_gnote.action_manager();
+    std::map<Glib::ustring, const Glib::VariantType*> actions = am.get_main_window_actions();
+    for(std::map<Glib::ustring, const Glib::VariantType*>::iterator iter = actions.begin();
+        iter != actions.end(); ++iter) {
+      MainWindowAction::Ptr action;
+      if(iter->second == NULL) {
+        add_action(action = MainWindowAction::create(iter->first));
+      }
+      else if(iter->second == &Glib::Variant<bool>::variant_type()) {
+        add_action(action = MainWindowAction::create(iter->first, false));
+      }
+      else if(iter->second == &Glib::Variant<gint32>::variant_type()) {
+        add_action(action = MainWindowAction::create(iter->first, 0));
+      }
+      else if(iter->second == &Glib::Variant<Glib::ustring>::variant_type()) {
+        add_action(action = MainWindowAction::create(iter->first, Glib::ustring("")));
+      }
+      if(action) {
+        action->is_modifying(am.is_modifying_main_window_action(iter->first));
+      }
+    }
+    find_action("close-window")->signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
   }
 
   void NoteRecentChanges::make_header_bar()

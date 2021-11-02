@@ -101,6 +101,7 @@ private:
   void add_action(const MainWindowAction::Ptr & action);
   void on_popover_widgets_changed();
   bool present_active(const Note::Ptr & note);
+  void register_actions();
 
   IGnote             &m_gnote;
   NoteManagerBase    &m_note_manager;
