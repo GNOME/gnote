@@ -1406,18 +1406,12 @@ void SearchNotesWidget::foreground()
 
   m_open_note_accel = win->keybinder().add_accelerator(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note), GDK_KEY_O, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
   m_open_note_new_window_accel = win->keybinder().add_accelerator(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note_new_window), GDK_KEY_W, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
-  auto & manager(m_gnote.action_manager());
-  register_callbacks();
-  m_callback_changed_cid = manager.signal_main_window_search_actions_changed
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::callbacks_changed));
 }
 
 void SearchNotesWidget::background()
 {
   EmbeddableWidget::background();
   save_position();
-  unregister_callbacks();
-  m_callback_changed_cid.disconnect();
   MainWindow *win = dynamic_cast<MainWindow*>(host());
   if(!win) {
     return;
@@ -1442,17 +1436,6 @@ void SearchNotesWidget::set_initial_focus()
   if(win) {
     win->set_focus(*m_tree);
   }
-}
-
-std::vector<PopoverWidget> SearchNotesWidget::get_popover_widgets()
-{
-  std::vector<PopoverWidget> popover_widgets;
-  popover_widgets.reserve(20);
-  m_gnote.action_manager().signal_build_main_window_search_popover(popover_widgets);
-  for(unsigned i = 0; i < popover_widgets.size(); ++i) {
-    popover_widgets[i].secondary_order = i;
-  }
-  return popover_widgets;
 }
 
 void SearchNotesWidget::on_settings_changed()
@@ -1545,37 +1528,6 @@ void SearchNotesWidget::on_rename_notebook()
     return;
   }
   m_notebooksTree->set_cursor(selected_row[0], *m_notebooksTree->get_column(0), true);
-}
-
-void SearchNotesWidget::callbacks_changed()
-{
-  unregister_callbacks();
-  register_callbacks();
-  signal_popover_widgets_changed();
-}
-
-void SearchNotesWidget::register_callbacks()
-{
-  MainWindow *win = dynamic_cast<MainWindow*>(host());
-  if(!win) {
-    return;
-  }
-  auto & manager(m_gnote.action_manager());
-  auto cbacks = manager.get_main_window_search_callbacks();
-  for(auto & cback : cbacks) {
-    auto action = win->find_action(cback.first);
-    if(action) {
-      m_action_cids.push_back(action->signal_activate().connect(cback.second));
-    }
-  }
-}
-
-void SearchNotesWidget::unregister_callbacks()
-{
-  for(auto & cid : m_action_cids) {
-    cid.disconnect();
-  }
-  m_action_cids.clear();
 }
 
 }
