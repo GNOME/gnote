@@ -102,6 +102,9 @@ private:
   void on_popover_widgets_changed();
   bool present_active(const Note::Ptr & note);
   void register_actions();
+  void callbacks_changed();
+  void register_callbacks();
+  void unregister_callbacks();
 
   IGnote             &m_gnote;
   NoteManagerBase    &m_note_manager;
@@ -128,6 +131,7 @@ private:
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   utils::GlobalKeybinder m_keybinder;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
+  std::vector<sigc::connection> m_action_cids;
 };
 
 

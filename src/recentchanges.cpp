@@ -203,6 +203,37 @@ namespace gnote {
     }
     find_action("close-window")->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
+    am.signal_main_window_search_actions_changed
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::callbacks_changed));
+
+    register_callbacks();
+  }
+
+  void NoteRecentChanges::callbacks_changed()
+  {
+    unregister_callbacks();
+    register_callbacks();
+    m_window_menu_default = nullptr;
+  }
+
+  void NoteRecentChanges::register_callbacks()
+  {
+    auto & manager(m_gnote.action_manager());
+    auto cbacks = manager.get_main_window_search_callbacks();
+    for(auto & cback : cbacks) {
+      auto action = find_action(cback.first);
+      if(action) {
+        m_action_cids.push_back(action->signal_activate().connect(cback.second));
+      }
+    }
+  }
+
+  void NoteRecentChanges::unregister_callbacks()
+  {
+    for(auto & cid : m_action_cids) {
+      cid.disconnect();
+    }
+    m_action_cids.clear();
   }
 
   void NoteRecentChanges::make_header_bar()
