@@ -505,13 +505,8 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note(const Note::Ptr & note)
   {
-    if(m_preferences.open_notes_in_new_window()) {
-      on_open_note_new_window(note);
-    }
-    else {
-      if(!present_active(note)) {
-        present_note(note);
-      }
+    if(!present_active(note)) {
+      present_note(note);
     }
   }
 
