@@ -269,10 +269,6 @@ namespace gnote {
     std::vector<PopoverWidget> popover_widgets;
     popover_widgets.reserve(20);
 
-    Gtk::Widget *new_note = utils::create_popover_button("app.new-note", _("_New Note"));
-    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_NEW, 1, new_note));
-    Gtk::Widget *new_window = utils::create_popover_button("app.new-window", _("New _Window"));
-    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_NEW, 2, new_window));
     Gtk::Widget *undo = utils::create_popover_button("win.undo", _("_Undo"));
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_UNDO, 1, undo));
     Gtk::Widget *redo = utils::create_popover_button("win.redo", _("_Redo"));
