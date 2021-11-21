@@ -110,7 +110,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   notebook_manager.signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
-  g.preferences().signal_open_notes_in_new_window_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_settings_changed));
   parse_sorting_setting(g.preferences().search_sorting());
   g.preferences().signal_desktop_gnome_clock_format_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
 }
@@ -1300,11 +1299,9 @@ Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
     m_note_list_context_menu = new Gtk::Menu;
 
     Gtk::MenuItem *item;
-    if(!m_gnote.preferences().open_notes_in_new_window()) {
-      m_open_note_menu_item = manage(new Gtk::MenuItem(_("_Open"), true));
-      m_open_note_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note));
-      m_note_list_context_menu->add(*m_open_note_menu_item);
-    }
+    m_open_note_menu_item = manage(new Gtk::MenuItem(_("_Open"), true));
+    m_open_note_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note));
+    m_note_list_context_menu->add(*m_open_note_menu_item);
 
     m_open_note_new_window_menu_item = manage(new Gtk::MenuItem(_("Open In New _Window"), true));
     m_open_note_new_window_menu_item->signal_activate()
@@ -1435,17 +1432,6 @@ void SearchNotesWidget::set_initial_focus()
   Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
   if(win) {
     win->set_focus(*m_tree);
-  }
-}
-
-void SearchNotesWidget::on_settings_changed()
-{
-  if(m_note_list_context_menu) {
-    delete m_note_list_context_menu;
-    m_note_list_context_menu = NULL;
-    m_open_note_menu_item = nullptr;
-    m_open_note_new_window_menu_item = nullptr;
-    m_delete_note_menu_item = nullptr;
   }
 }
 
