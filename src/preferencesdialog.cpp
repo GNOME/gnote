@@ -245,14 +245,6 @@ namespace gnote {
       options_list->show();
       int options_list_row = 0;
 
-
-      // Open in new window
-      check = manage(make_check_button(_("Always _open notes in new window")));
-      options_list->attach(*check, 0, options_list_row++, 1, 1);
-      peditor = NEW_PROPERTY_EDITOR_BOOL(open_notes_in_new_window, *check);
-      peditor->setup();
-
-
       // Spell checking...
 
 #if ENABLE_GSPELL
