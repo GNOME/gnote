@@ -396,6 +396,13 @@ namespace gnote {
   void Note::on_buffer_mark_set(const Gtk::TextBuffer::iterator & iter,
                                 const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert)
   {
+    auto buffer = get_buffer();
+    auto insert_mark = buffer->get_insert();
+    auto selection_mark = buffer->get_selection_bound();
+    if(!(insert == insert_mark || insert == selection_mark)) {
+      return;
+    }
+
     Gtk::TextIter start, end;
     if(m_buffer->get_selection_bounds(start, end)) {
       m_data.data().set_cursor_position(start.get_offset());
@@ -404,16 +411,17 @@ namespace gnote {
     else if(insert->get_name() == "insert") {
       m_data.data().set_cursor_position(iter.get_offset());
     }
-    else {
-      return;
-    }
 
     DBG_OUT("OnBufferSetMark queueing save");
     queue_save(NO_CHANGE);
   }
 
-  void Note::on_buffer_mark_deleted(const Glib::RefPtr<Gtk::TextBuffer::Mark> &)
+  void Note::on_buffer_mark_deleted(const Glib::RefPtr<Gtk::TextBuffer::Mark> & mark)
   {
+    if(mark != get_buffer()->get_selection_bound()) {
+      return;
+    }
+
     Gtk::TextIter start, end;
     if(m_data.data().selection_bound_position() != m_data.data().cursor_position()
        && !m_buffer->get_selection_bounds(start, end)) {
