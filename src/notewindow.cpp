@@ -90,8 +90,9 @@ namespace gnote {
     m_editor->signal_populate_popup().connect(sigc::mem_fun(*this, &NoteWindow::on_populate_popup));
     m_editor->show();
 
-    note.get_buffer()->signal_mark_set().connect(
-      sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
+    note.get_buffer()->signal_mark_set().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
+    note.get_buffer()->signal_mark_deleted().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_deleted));
+    note.get_buffer()->signal_changed().connect(sigc::mem_fun(*this, &NoteWindow::on_buffer_changed));
 
     // FIXME: I think it would be really nice to let the
     //        window get bigger up till it grows more than
@@ -156,6 +157,7 @@ namespace gnote {
     m_gnote.notebook_manager().signal_note_pin_status_changed
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
+    m_text_menu->refresh_state();
   }
 
   void NoteWindow::background()
@@ -304,10 +306,20 @@ namespace gnote {
 
   void NoteWindow::on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark> & mark)
   {
-    auto mark_name = mark->get_name();
-    if(mark_name == "insert" || mark_name == "selection_bound") {
+    on_selection_mark_deleted(mark);
+  }
+
+  void NoteWindow::on_selection_mark_deleted(const Glib::RefPtr<Gtk::TextMark> & mark)
+  {
+    auto buffer = m_note.get_buffer();
+    if(mark == buffer->get_insert() || mark == buffer->get_selection_bound()) {
       m_text_menu->refresh_state();
     }
+  }
+
+  void NoteWindow::on_buffer_changed()
+  {
+    m_text_menu->refresh_state();
   }
 
   void NoteWindow::on_populate_popup(Gtk::Menu* menu)
