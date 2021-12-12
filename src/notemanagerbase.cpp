@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017,2019-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -272,14 +272,6 @@ NoteBase::Ptr NoteManagerBase::create_note_from_template(const Glib::ustring & t
   xml_content = sanitize_xml_content(xml_content);
 
   NoteBase::Ptr new_note = create_new_note(new_title, xml_content, guid);
-
-  // Copy template note's properties
-  Tag::Ptr template_save_size = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
-  if(template_note->data().has_extent() && template_note->contains_tag(template_save_size)) {
-    new_note->data().height() = template_note->data().height();
-    new_note->data().width() = template_note->data().width();
-  }
-
   return new_note;
 }
 

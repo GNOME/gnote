@@ -73,7 +73,6 @@ namespace gnote {
   {
     ITagManager & tag_manager = note.manager().tag_manager();
     m_template_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    m_template_save_size_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG);
     m_template_save_selection_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
     m_template_save_title_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
 
@@ -91,8 +90,9 @@ namespace gnote {
     m_editor->signal_populate_popup().connect(sigc::mem_fun(*this, &NoteWindow::on_populate_popup));
     m_editor->show();
 
-    note.get_buffer()->signal_mark_set().connect(
-      sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
+    note.get_buffer()->signal_mark_set().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
+    note.get_buffer()->signal_mark_deleted().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_deleted));
+    note.get_buffer()->signal_changed().connect(sigc::mem_fun(*this, &NoteWindow::on_buffer_changed));
 
     // FIXME: I think it would be really nice to let the
     //        window get bigger up till it grows more than
@@ -104,8 +104,6 @@ namespace gnote {
     m_editor_window->set_hexpand(true);
     m_editor_window->set_vexpand(true);
     m_editor_window->show();
-
-    set_focus_child(*m_editor);
 
     attach(*m_template_widget, 0, 0, 1, 1);
     attach(*m_editor_window, 0, 1, 1, 1);
@@ -159,6 +157,7 @@ namespace gnote {
     m_gnote.notebook_manager().signal_note_pin_status_changed
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
 
+    m_text_menu->refresh_state();
   }
 
   void NoteWindow::background()
@@ -189,17 +188,14 @@ namespace gnote {
     m_important_note_slot.disconnect();
   }
 
-  void NoteWindow::hint_size(int & width, int & height)
-  {
-    if(m_gnote.preferences().autosize_note_window()) {
-      width = m_width;
-      height = m_height;
-    }
-  }
-
   void NoteWindow::size_internals()
   {
     m_editor->scroll_to(m_editor->get_buffer()->get_insert());
+  }
+
+  void NoteWindow::set_initial_focus()
+  {
+    m_editor->grab_focus();
   }
 
   void NoteWindow::add_accel_group(Gtk::Window & window)
@@ -275,10 +271,6 @@ namespace gnote {
     std::vector<PopoverWidget> popover_widgets;
     popover_widgets.reserve(20);
 
-    Gtk::Widget *new_note = utils::create_popover_button("app.new-note", _("_New Note"));
-    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_NEW, 1, new_note));
-    Gtk::Widget *new_window = utils::create_popover_button("app.new-window", _("New _Window"));
-    popover_widgets.push_back(PopoverWidget(NOTE_SECTION_NEW, 2, new_window));
     Gtk::Widget *undo = utils::create_popover_button("win.undo", _("_Undo"));
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_UNDO, 1, undo));
     Gtk::Widget *redo = utils::create_popover_button("win.redo", _("_Redo"));
@@ -314,10 +306,20 @@ namespace gnote {
 
   void NoteWindow::on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark> & mark)
   {
-    auto mark_name = mark->get_name();
-    if(mark_name == "insert" || mark_name == "selection_bound") {
+    on_selection_mark_deleted(mark);
+  }
+
+  void NoteWindow::on_selection_mark_deleted(const Glib::RefPtr<Gtk::TextMark> & mark)
+  {
+    auto buffer = m_note.get_buffer();
+    if(mark == buffer->get_insert() || mark == buffer->get_selection_bound()) {
       m_text_menu->refresh_state();
     }
+  }
+
+  void NoteWindow::on_buffer_changed()
+  {
+    m_text_menu->refresh_state();
   }
 
   void NoteWindow::on_populate_popup(Gtk::Menu* menu)
@@ -392,10 +394,6 @@ namespace gnote {
     Gtk::Button * untemplateButton = manage(new Gtk::Button(_("Convert to regular note")));
     untemplateButton->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_untemplate_button_click));
 
-    m_save_size_check_button = manage(new Gtk::CheckButton(_("Save Si_ze"), true));
-    m_save_size_check_button->set_active(m_note.contains_tag(m_template_save_size_tag));
-    m_save_size_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_size_check_button_toggled));
-
     m_save_selection_check_button = manage(new Gtk::CheckButton(_("Save Se_lection"), true));
     m_save_selection_check_button->set_active(m_note.contains_tag(m_template_save_selection_tag));
     m_save_selection_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_selection_check_button_toggled));
@@ -406,9 +404,8 @@ namespace gnote {
 
     bar->attach(*infoLabel, 0, 0, 1, 1);
     bar->attach(*untemplateButton, 0, 1, 1, 1);
-    bar->attach(*m_save_size_check_button, 0, 2, 1, 1);
-    bar->attach(*m_save_selection_check_button, 0, 3, 1, 1);
-    bar->attach(*m_save_title_check_button, 0, 4, 1, 1);
+    bar->attach(*m_save_selection_check_button, 0, 2, 1, 1);
+    bar->attach(*m_save_title_check_button, 0, 3, 1, 1);
 
     if(m_note.contains_tag(m_template_tag)) {
       bar->show_all();
@@ -424,17 +421,6 @@ namespace gnote {
   void NoteWindow::on_untemplate_button_click()
   {
     m_note.remove_tag(m_template_tag);
-  }
-
-
-  void NoteWindow::on_save_size_check_button_toggled()
-  {
-    if(m_save_size_check_button->get_active()) {
-      m_note.add_tag(m_template_save_size_tag);
-    }
-    else {
-      m_note.remove_tag(m_template_save_size_tag);
-    }
   }
 
 

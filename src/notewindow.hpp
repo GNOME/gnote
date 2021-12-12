@@ -140,7 +140,6 @@ public:
   void set_name(const Glib::ustring & name);
   virtual void foreground() override;
   virtual void background() override;
-  virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
 
   virtual void perform_search(const Glib::ustring & text) override;
@@ -179,17 +178,19 @@ public:
     {
       return m_enabled;
     }
+  virtual void set_initial_focus() override;
 private:
   static Glib::RefPtr<Gio::Icon> get_icon_pin_active(IconManager & icon_manager);
   static Glib::RefPtr<Gio::Icon> get_icon_pin_down(IconManager & icon_manager);
 
   void on_delete_button_clicked(const Glib::VariantBase&);
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
+  void on_selection_mark_deleted(const Glib::RefPtr<Gtk::TextMark>&);
+  void on_buffer_changed();
   void on_populate_popup(Gtk::Menu*);
   Gtk::Grid *make_toolbar();
   Gtk::Grid * make_template_bar();
   void on_untemplate_button_click();
-  void on_save_size_check_button_toggled();
   void on_save_selection_check_button_toggled();
   void on_save_title_check_button_toggled();
   void on_note_tag_added(const NoteBase&, const Tag::Ptr&);
@@ -218,7 +219,6 @@ private:
   sigc::connection              m_delete_note_slot;
   sigc::connection              m_important_note_slot;
   Gtk::Grid                    *m_template_widget;
-  Gtk::CheckButton             *m_save_size_check_button;
   Gtk::CheckButton             *m_save_selection_check_button;
   Gtk::CheckButton             *m_save_title_check_button;
 
@@ -226,7 +226,6 @@ private:
   bool                         m_enabled;
 
   Tag::Ptr m_template_tag;
-  Tag::Ptr m_template_save_size_tag;
   Tag::Ptr m_template_save_selection_tag;
   Tag::Ptr m_template_save_title_tag;
 };

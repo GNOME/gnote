@@ -42,7 +42,6 @@ class SearchNotesWidget
   : public Gtk::Paned
   , public EmbeddableWidget
   , public SearchableItem
-  , public HasActions
 {
 public:
   SearchNotesWidget(IGnote & g, NoteManagerBase & m);
@@ -50,11 +49,9 @@ public:
   virtual Glib::ustring get_name() const override;
   virtual void foreground() override;
   virtual void background() override;
-  virtual void hint_size(int & width, int & height) override;
   virtual void size_internals() override;
   virtual void set_initial_focus() override;
   virtual void perform_search(const Glib::ustring & search_text) override;
-  virtual std::vector<PopoverWidget> get_popover_widgets() override;
 
   void select_all_notes_notebook();
   void new_note();
@@ -122,13 +119,9 @@ private:
   void on_open_notebook_template_note();
   void on_new_notebook();
   void on_delete_notebook();
-  void on_settings_changed();
   void on_sorting_changed();
   void parse_sorting_setting(const Glib::ustring & sorting);
   void on_rename_notebook();
-  void callbacks_changed();
-  void register_callbacks();
-  void unregister_callbacks();
 
   class RecentSearchColumnTypes
     : public Gtk::TreeModelColumnRecord
@@ -185,8 +178,6 @@ private:
   Glib::ustring m_search_text;
   int m_sort_column_id;
   Gtk::SortType m_sort_column_order;
-  std::vector<sigc::connection> m_action_cids;
-  sigc::connection m_callback_changed_cid;
 
   static Glib::RefPtr<Gdk::Pixbuf> get_note_icon(IconManager &);
 };

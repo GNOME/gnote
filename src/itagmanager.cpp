@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@
 namespace gnote {
 
 const char *ITagManager::TEMPLATE_NOTE_SYSTEM_TAG = "template";
-const char *ITagManager::TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG = "template:save-size";
 const char *ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG = "template:save-selection";
 const char *ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG = "template:save-title";
 

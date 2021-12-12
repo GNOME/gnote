@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,14 +47,6 @@ void EmbeddableWidget::foreground()
 void EmbeddableWidget::background()
 {
   signal_backgrounded();
-}
-
-void EmbeddableWidget::hint_position(int &, int &)
-{
-}
-
-void EmbeddableWidget::hint_size(int &, int &)
-{
 }
 
 void EmbeddableWidget::size_internals()

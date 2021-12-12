@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2021 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,6 @@ class ITagManager
 {
 public:
   static const char * TEMPLATE_NOTE_SYSTEM_TAG;
-  static const char * TEMPLATE_NOTE_SAVE_SIZE_SYSTEM_TAG;
   static const char * TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG;
   static const char * TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG;
 
