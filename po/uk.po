@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-12-12 15:20+0000\n"
-"PO-Revision-Date: 2021-12-12 19:27+0200\n"
+"POT-Creation-Date: 2021-12-12 19:36+0000\n"
+"PO-Revision-Date: 2021-12-12 21:40+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -311,13 +311,12 @@ msgstr ""
 #: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
 #: data/org.gnome.gnote.gschema.xml:131
 msgid "Deprecated"
-msgstr ""
-"Застаріле"
+msgstr "Застаріле"
 
-#: data/org.gnome.gnote.gschema.xml:117
-msgid "This key is deprecated and it's value is ignored."
-msgstr ""
-"Цей ключ є застарілим — його значення буде проігноровано."
+#: data/org.gnome.gnote.gschema.xml:117 data/org.gnome.gnote.gschema.xml:132
+#| msgid "This key is deprecated and it's value is ignored."
+msgid "This key is deprecated and its value is ignored."
+msgstr "Цей ключ є застарілим — його значення буде проігноровано."
 
 #: data/org.gnome.gnote.gschema.xml:121
 msgid "Use status icon, when started as an application"
@@ -328,14 +327,9 @@ msgid "Deprecated, has no effect."
 msgstr "Застарілий, не працює."
 
 #: data/org.gnome.gnote.gschema.xml:127
-msgid "This setting is deprecated and it's value is ignored"
-msgstr ""
-"Цей параметр є застарілим — його значення буде проігноровано"
-
-#: data/org.gnome.gnote.gschema.xml:132
-msgid "This key is depracated and it's value is ignored."
-msgstr ""
-"Цей ключ є застарілим — його значення буде проігноровано."
+#| msgid "This setting is deprecated and it's value is ignored"
+msgid "This setting is deprecated and its value is ignored"
+msgstr "Цей параметр є застарілим — його значення буде проігноровано"
 
 #: data/org.gnome.gnote.gschema.xml:136
 msgid "Use client side window decorations"
@@ -603,8 +597,6 @@ msgid "Note Window"
 msgstr "Вікно нотаток"
 
 #: data/shortcuts-gnote.ui:134
-#| msgctxt "shortcut window"
-#| msgid "Open actions menu"
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Відкрити меню дій з нотатками"
@@ -2230,7 +2222,6 @@ msgid "Copyright:"
 msgstr "Авторські права:"
 
 #: src/recentchanges.cpp:65
-#| msgid "_Close"
 msgid "Close"
 msgstr "Закрити"
 
@@ -2256,13 +2247,11 @@ msgstr ""
 
 #: src/recentchanges.cpp:684
 msgid "Attempt to foreground a widget, that is not embedded in the window"
-msgstr ""
-"Спроба вивести на передній план віджет, який не вбудовано до вікна"
+msgstr "Спроба вивести на передній план віджет, який не вбудовано до вікна"
 
 #: src/recentchanges.cpp:691
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
-msgstr ""
-"Спроба вивести на передній план віджет, який не є віджетом Gtk::Widget"
+msgstr "Спроба вивести на передній план віджет, який не є віджетом Gtk::Widget"
 
 #: src/recentchanges.cpp:961
 msgid "Expected widget to be a sub-menu!"
@@ -2837,6 +2826,9 @@ msgstr "_Копіювати адресу посилання"
 #: src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Відкрити посилання"
+
+#~ msgid "This key is depracated and it's value is ignored."
+#~ msgstr "Цей ключ є застарілим — його значення буде проігноровано."
 
 #~ msgid "Enable closing notes with escape"
 #~ msgstr "Увімкнути закриття нотаток клавішею Esc"
