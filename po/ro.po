@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-05-06 11:58+0000\n"
-"PO-Revision-Date: 2021-05-06 13:59+0200\n"
+"POT-Creation-Date: 2021-09-04 20:14+0000\n"
+"PO-Revision-Date: 2021-09-06 14:59+0200\n"
 "Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -14,10 +14,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:52 src/recentchanges.cpp:622
+#: src/recentchanges.cpp:52 src/recentchanges.cpp:611
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -697,15 +697,15 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Scade indentarea/dezactivează bulinele pentru linia curentă"
 
-#: src/actionmanager.cpp:128 src/notewindow.cpp:305
+#: src/actionmanager.cpp:128 src/notewindow.cpp:278
 msgid "_New Note"
 msgstr "Notiță _nouă"
 
-#: src/actionmanager.cpp:129 src/notewindow.cpp:307
+#: src/actionmanager.cpp:129 src/notewindow.cpp:280
 msgid "New _Window"
 msgstr "_Fereastră nouă"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:130 src/preferencesdialog.cpp:631
 msgid "_Preferences"
 msgstr "_Preferințe"
 
@@ -791,7 +791,7 @@ msgid "(none)"
 msgstr "(niciunul)"
 
 #: src/plugins/backlinks/backlinksnoteaddin.cpp:102
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:158
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
 #: src/notebooks/notebooknoteaddin.cpp:167
 msgid "_Back"
 msgstr "Îna_poi"
@@ -818,7 +818,7 @@ msgstr ""
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere și proiectul Tomboy"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:65
+#: src/plugins/bugzilla/bugzillapreferences.cpp:64
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -826,50 +826,76 @@ msgstr ""
 "Puteți folosi orice instalare de bugzilla doar prin tragerea legăturilor pe "
 "notițe. Adăugați aici dacă doriți o iconiță diferită pentru un anumit server."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:82
+#: src/plugins/bugzilla/bugzillapreferences.cpp:81
 msgid "Host Name"
 msgstr "Nume gazdă"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:95
+#: src/plugins/bugzilla/bugzillapreferences.cpp:94
 msgid "Icon"
 msgstr "Iconiță"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:226
+#: src/plugins/bugzilla/bugzillapreferences.cpp:113
+msgid "_Add"
+msgstr "_Adaugă"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:117
+msgid "_Remove"
+msgstr "E_limină"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:225
 msgid "Select an icon..."
 msgstr "Alegeți o iconiță..."
 
+#: src/plugins/bugzilla/bugzillapreferences.cpp:227
+#: src/plugins/bugzilla/bugzillapreferences.cpp:370
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/utils.cpp:375
+msgid "_Cancel"
+msgstr "_Anulează"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:228
+#: src/searchnoteswidget.cpp:1305
+msgid "_Open"
+msgstr "_Deschide"
+
 #. Extra Widget
-#: src/plugins/bugzilla/bugzillapreferences.cpp:241
+#: src/plugins/bugzilla/bugzillapreferences.cpp:240
 msgid "_Host name:"
 msgstr "_Nume gazdă:"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:275
+#: src/plugins/bugzilla/bugzillapreferences.cpp:274
 msgid "Host name invalid"
 msgstr "Nume gazdă nevalid"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:276
+#: src/plugins/bugzilla/bugzillapreferences.cpp:275
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Trebuie să specificați numele de gazdă al Bugzilla care va fi folosit cu "
 "această iconiță."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:295
+#: src/plugins/bugzilla/bugzillapreferences.cpp:294
 msgid "Error saving icon"
 msgstr "Eroare la salvarea iconiței"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:296
+#: src/plugins/bugzilla/bugzillapreferences.cpp:295
 msgid "Could not save the icon file."
 msgstr "Nu s-a putut salva fișierul iconiță."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:368
+#: src/plugins/bugzilla/bugzillapreferences.cpp:367
 msgid "Really remove this icon?"
 msgstr "Doriți să ștergeți această iconiță?"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:369
+#: src/plugins/bugzilla/bugzillapreferences.cpp:368
 msgid "If you remove an icon it is permanently lost."
 msgstr "Dacă ștergeți o iconiță ea va fi pierdută definitiv."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:391
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/searchnoteswidget.cpp:1315 src/searchnoteswidget.cpp:1356
+msgid "_Delete"
+msgstr "Șt_erge"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:388
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Eroare la eliminarea iconiței %s: %s"
@@ -916,17 +942,24 @@ msgstr "Exportă în format HTML"
 msgid "Exports individual notes to HTML."
 msgstr "Exportă notițele individuale în HTML."
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:41
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:39
 msgid "Destination for HTML Export"
 msgstr "Destinația pentru exportul HTML"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:44
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Export linked notes"
 msgstr "Exportă notițele cu legătură (notițele interconectate)"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:43
 msgid "Include all other linked notes"
 msgstr "Include toate celelalte notițe legate"
+
+#. TODO: Tabbing should go directly from sync prefs widget to here
+#. TODO: Consider connecting to "Enter" pressed in sync prefs widget
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
+#: src/preferencesdialog.cpp:555
+msgid "_Save"
+msgstr "_Salvează"
 
 #: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:83
 msgid "Export to HTML…"
@@ -956,25 +989,25 @@ msgstr "Nu s-a putut exporta %s"
 msgid "Could not save the file \"%1\""
 msgstr "Nu s-a putut salva fișierul „%1”"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
 msgid "_Folder Path:"
 msgstr "Cale _dosar:"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:111
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:107
 msgid "Select Synchronization Folder..."
 msgstr "Selectați dosarul de sincronizare..."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:129
 msgid "Folder path field is empty."
 msgstr "Câmpul de cale al dosarului este gol."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:143
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
 #: src/synchronization/gvfssyncservice.cpp:76
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Calea dosarului specificat nu există, și Gnote nu a putut să o creeze."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:207
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:200
 msgid "Local Folder"
 msgstr "Dosar local"
 
@@ -1011,32 +1044,32 @@ msgstr "Plugin pentru servicii de sincronizare ale dosarelor online"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Sincronizează notițele Gnote la un director online"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:76
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
 msgid "Failed to mount the folder"
 msgstr "Eșec la montarea dosarului"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:103
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
 msgid "Folder _URI:"
 msgstr "_URI dosar:"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:115
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Exemplu: google-drive://nume.prenume@gmail.com/notițe"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:118
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
 msgstr "Registrați-vă contul în Conturi Online"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "The URI is empty"
 msgstr "URI-ul este gol"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:135
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
 msgid "URI field is empty."
 msgstr "Câmpul URI este gol."
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:177
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:176
 msgid "Online Folder"
 msgstr "Dosar online"
 
@@ -1266,39 +1299,39 @@ msgstr "Importare notițe adezive"
 msgid "Import your notes from the Sticky Notes applet."
 msgstr "Importați-vă notițele din miniaplicația Notițe adezive."
 
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:85
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:84
 msgid "Import from Sticky Notes"
 msgstr "Importare din Notițe adezive"
 
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:206
 msgid "No Sticky Notes found"
 msgstr "Nu a fost găsită nicio notiță adezivă"
 
 #. %1 is a the file name
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:210
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
 msgid "No suitable Sticky Notes file was found at \"%1\"."
 msgstr "Nu a fost găsit niciun fișier Notițe adezive în „%1”."
 
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
 msgid "Sticky Notes import completed"
 msgstr "Importare Notițe adezive completă"
 
 #. here %1 is the number of notes imported, %2 the total number of notes.
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:220
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
 msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
 msgstr "<b>%1</b> din <b>%2</b> notițe adezive au fost importate cu succes."
 
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:239
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:237
 msgid "Untitled"
 msgstr "Neintitulat"
 
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:277
+#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:275
 msgid "Sticky Note: "
 msgstr "Notiță adezivă: "
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:69
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:131
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:67
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:130
 msgid "Table of Contents"
 msgstr "Cuprins"
 
@@ -1318,23 +1351,23 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:146
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:208
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:145
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:207
 msgid "Heading 1"
 msgstr "Titlu 1"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:150
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:214
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:149
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:213
 msgid "Heading 2"
 msgstr "Titlu 2"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:154
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:220
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:153
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:219
 msgid "Table of Contents Help"
 msgstr "Ajutor Cuprins"
 
 #. no toc items, and no action entries = empty menu
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:193
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:192
 msgid "(empty table of contents)"
 msgstr "(conținut gol)"
 
@@ -1565,30 +1598,25 @@ msgstr "Eșec la actualizarea formatului notiței: %s"
 msgid "Filesystem error: %s"
 msgstr "Eroare la sistemul de fișiere: %s"
 
-#: src/notebooks/createnotebookdialog.cpp:41
+#: src/notebooks/createnotebookdialog.cpp:38
 msgid "Create Notebook"
 msgstr "Creează un carnețel nou"
 
-#: src/notebooks/createnotebookdialog.cpp:45
+#: src/notebooks/createnotebookdialog.cpp:43
 msgid "N_otebook name:"
 msgstr "N_ume carnețel:"
 
-#: src/notebooks/createnotebookdialog.cpp:58
+#: src/notebooks/createnotebookdialog.cpp:56
 msgid "Name already taken"
 msgstr "Nume deja în uz"
 
-#: src/notebooks/createnotebookdialog.cpp:67 src/utils.cpp:404
-#: src/utils.cpp:411
-msgid "_Cancel"
-msgstr "_Anulează"
-
 #. Translation note: This is the Create button in the Create
 #. New Note Dialog.
-#: src/notebooks/createnotebookdialog.cpp:71
+#: src/notebooks/createnotebookdialog.cpp:68
 msgid "C_reate"
 msgstr "C_reează"
 
-#: src/notebooks/notebookapplicationaddin.cpp:79
+#: src/notebooks/notebookapplicationaddin.cpp:78
 msgid "New Note_book..."
 msgstr "_Carnețel nou..."
 
@@ -1622,11 +1650,6 @@ msgstr ""
 msgid "No notebook"
 msgstr "Niciun carnețel"
 
-#. TRANSLATORS: %1: format placeholder for the notebook name
-#: src/notebooks/notebooknewnotemenuitem.cpp:41
-msgid "New \"%1\" Note"
-msgstr "Notiță nouă în „%1”"
-
 #: src/notebooks/notebooknoteaddin.cpp:111
 msgid "Notebook"
 msgstr "Carnețel"
@@ -1653,11 +1676,11 @@ msgstr "Important"
 msgid "Active"
 msgstr "Activ"
 
-#: src/notebuffer.cpp:1430
+#: src/notebuffer.cpp:1429
 msgid "</list> tag mismatch"
 msgstr "tagul </list> nu are pereche"
 
-#: src/notebuffer.cpp:1514
+#: src/notebuffer.cpp:1513
 #, c-format
 msgid "Exception: %s"
 msgstr "Excepție: %s"
@@ -1704,7 +1727,7 @@ msgstr ""
 "Stabilirea conținutului de text pentru notele închise nu este suportată"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:327
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:325
 msgid "New Note Template"
 msgstr "Șablon notiță nouă"
 
@@ -1849,7 +1872,7 @@ msgstr ""
 msgid "Rename Links"
 msgstr "Redenumire legături"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:331
+#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Titlu notiță"
 
@@ -1857,32 +1880,32 @@ msgstr "Titlu notiță"
 msgid "Ad_vanced"
 msgstr "A_vansat"
 
-#: src/notewindow.cpp:309
+#: src/notewindow.cpp:282
 msgid "_Undo"
 msgstr "An_ulează"
 
-#: src/notewindow.cpp:311
+#: src/notewindow.cpp:284
 msgid "_Redo"
 msgstr "_Refă"
 
-#: src/notewindow.cpp:313 src/notewindow.cpp:378
+#: src/notewindow.cpp:286 src/notewindow.cpp:340
 msgid "_Link to New Note"
 msgstr "_Legătură către o nouă notiță"
 
-#: src/notewindow.cpp:315
+#: src/notewindow.cpp:288
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Important"
 
-#: src/notewindow.cpp:325
+#: src/notewindow.cpp:298
 msgid "_Delete…"
 msgstr "Șt_erge…"
 
-#: src/notewindow.cpp:413
+#: src/notewindow.cpp:375
 msgid "Set properties of text"
 msgstr "Configurează proprietățile textului"
 
-#: src/notewindow.cpp:427
+#: src/notewindow.cpp:389
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1890,106 +1913,114 @@ msgstr ""
 "Această notiță este un șablon. Determină conținutul implicit al notițelor "
 "normale, și nu va apărea în meniul de notițe sau fereastra de căutare."
 
-#: src/notewindow.cpp:430
+#: src/notewindow.cpp:392
 msgid "Convert to regular note"
 msgstr "Convertește notiță simplă"
 
-#: src/notewindow.cpp:433
+#: src/notewindow.cpp:395
 msgid "Save Si_ze"
 msgstr "Salvează di_mensiunea"
 
-#: src/notewindow.cpp:437
+#: src/notewindow.cpp:399
 msgid "Save Se_lection"
 msgstr "Salvează se_lecția"
 
-#: src/notewindow.cpp:441
+#: src/notewindow.cpp:403
 msgid "Save _Title"
 msgstr "Salvează _titlul"
 
-#: src/notewindow.cpp:543 src/notewindow.cpp:1055
+#: src/notewindow.cpp:505 src/notewindow.cpp:1011
 msgid "Cannot create note"
 msgstr "Nu se poate crea notița"
 
-#: src/notewindow.cpp:825
+#: src/notewindow.cpp:781
 msgid "_Bold"
 msgstr "_Aldin"
 
-#: src/notewindow.cpp:826
+#: src/notewindow.cpp:782
 msgid "_Italic"
 msgstr "_Italic"
 
-#: src/notewindow.cpp:827
+#: src/notewindow.cpp:783
 msgid "_Strikeout"
 msgstr "_Tăiat"
 
-#: src/notewindow.cpp:831
+#: src/notewindow.cpp:787
 msgid "_Highlight"
 msgstr "_Evidențiere"
 
-#: src/notewindow.cpp:834
+#: src/notewindow.cpp:790
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:835
+#: src/notewindow.cpp:791
 msgid "S_mall"
 msgstr "M_ic"
 
-#: src/notewindow.cpp:836
+#: src/notewindow.cpp:792
 msgid "_Large"
 msgstr "_Mare"
 
-#: src/notewindow.cpp:837
+#: src/notewindow.cpp:793
 msgid "Hu_ge"
 msgstr "_Foarte mare"
 
-#: src/notewindow.cpp:859
+#: src/notewindow.cpp:815
 msgid "⦁ Bullets"
 msgstr "⦁ Buline"
 
-#: src/notewindow.cpp:861
+#: src/notewindow.cpp:817
 msgid "→ Increase indent"
 msgstr "→ Mărește indentarea"
 
-#: src/notewindow.cpp:863
+#: src/notewindow.cpp:819
 msgid "← Decrease indent"
 msgstr "← Micșorează indentarea"
 
-#: src/preferencesdialog.cpp:105
+#: src/preferencesdialog.cpp:104
 msgid "Gnote Preferences"
 msgstr "Preferințe Gnote"
 
-#: src/preferencesdialog.cpp:123
+#: src/preferencesdialog.cpp:121
 msgid "General"
 msgstr "Generale"
 
-#: src/preferencesdialog.cpp:124
+#: src/preferencesdialog.cpp:122
 msgid "Links"
 msgstr "Legături"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:127 src/sharp/addinstreemodel.cpp:165
+#: src/preferencesdialog.cpp:125 src/sharp/addinstreemodel.cpp:165
 msgid "Synchronization"
 msgstr "Sincronizare"
 
-#: src/preferencesdialog.cpp:129
+#: src/preferencesdialog.cpp:127
 msgid "Plugins"
 msgstr "Pluginuri"
 
-#: src/preferencesdialog.cpp:204
+#. Ok button...
+#. Button to close dialog.
+#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:801
+#: src/preferencesdialog.cpp:1064 src/preferencesdialog.cpp:1281
+#: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
+msgid "_Close"
+msgstr "În_chide"
+
+#: src/preferencesdialog.cpp:202
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Pluginul %s  este absent"
 
 #. Open in new window
-#: src/preferencesdialog.cpp:252
+#: src/preferencesdialog.cpp:250
 msgid "Always _open notes in new window"
 msgstr "Deschide întotdeauna notițele într-_o fereastră nouă"
 
-#: src/preferencesdialog.cpp:265
+#: src/preferencesdialog.cpp:263
 msgid "_Spell check while typing"
 msgstr "_Verificare ortografică în timpul scrierii"
 
-#: src/preferencesdialog.cpp:266
+#: src/preferencesdialog.cpp:264
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1998,35 +2029,35 @@ msgstr ""
 "meniul contextual."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:276
+#: src/preferencesdialog.cpp:274
 msgid "Enable auto-_bulleted lists"
 msgstr "Activează listele cu _bulină automate"
 
-#: src/preferencesdialog.cpp:277
+#: src/preferencesdialog.cpp:275
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Începe o nouă listă cu buline începând linia cu caracterul „-”."
 
-#: src/preferencesdialog.cpp:285
+#: src/preferencesdialog.cpp:283
 msgid "Use custom _font"
 msgstr "Folosește _font personalizat"
 
-#: src/preferencesdialog.cpp:302
+#: src/preferencesdialog.cpp:300
 msgid "When renaming a linked note: "
 msgstr "La redenumirea unei legături în notiță: "
 
-#: src/preferencesdialog.cpp:306
+#: src/preferencesdialog.cpp:304
 msgid "Ask me what to do"
 msgstr "Întreabă-mă ce să fac"
 
-#: src/preferencesdialog.cpp:307
+#: src/preferencesdialog.cpp:305
 msgid "Never rename links"
 msgstr "Nu redenumi niciodată legăturile"
 
-#: src/preferencesdialog.cpp:308
+#: src/preferencesdialog.cpp:306
 msgid "Always rename links"
 msgstr "Redenumește întotdeauna legăturile"
 
-#: src/preferencesdialog.cpp:328
+#: src/preferencesdialog.cpp:326
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2034,27 +2065,27 @@ msgstr ""
 "Folosește noul șablon pentru a specifica textul ce trebuie folosit la "
 "crearea unei noi notițe."
 
-#: src/preferencesdialog.cpp:333
+#: src/preferencesdialog.cpp:331
 msgid "Open New Note Template"
 msgstr "Deschide șablonul pentru notițe noi"
 
 #. internal links
-#: src/preferencesdialog.cpp:386
+#: src/preferencesdialog.cpp:385
 msgid "_Automatically link to notes"
 msgstr "Leagă _automat la notițe"
 
-#: src/preferencesdialog.cpp:387
+#: src/preferencesdialog.cpp:386
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Activați această opțiune pentru a crea o legătură când textul se potrivește "
 "cu titlul notiței."
 
 #. URLs
-#: src/preferencesdialog.cpp:393
+#: src/preferencesdialog.cpp:392
 msgid "Create links for _URLs"
 msgstr "Crează legături pentru _URL-uri"
 
-#: src/preferencesdialog.cpp:394
+#: src/preferencesdialog.cpp:393
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2063,11 +2094,11 @@ msgstr ""
 "clic va deschide URL-ul cu un program prestabilit."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:401
+#: src/preferencesdialog.cpp:400
 msgid "Highlight _WikiWords"
 msgstr "Evidențiere Cuvinte_Wiki"
 
-#: src/preferencesdialog.cpp:402
+#: src/preferencesdialog.cpp:401
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2075,56 +2106,64 @@ msgstr ""
 "Activați această opțiune pentru a evidenția cuvintele care arată "
 "<b>ÎnFelulAcesta</b>. Un clic pe cuvânt va crea o nouă notiță cu acel nume."
 
-#: src/preferencesdialog.cpp:434
+#: src/preferencesdialog.cpp:433
 msgid "Ser_vice:"
 msgstr "Ser_viciu:"
 
-#: src/preferencesdialog.cpp:488 src/preferencesdialog.cpp:1110
+#: src/preferencesdialog.cpp:487 src/preferencesdialog.cpp:1107
 msgid "Not configurable"
 msgstr "Neconfigurabil"
 
-#: src/preferencesdialog.cpp:513
+#: src/preferencesdialog.cpp:512
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Intervalul de _sincronizare automată în fundal (în minute)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:537
+#: src/preferencesdialog.cpp:536
 msgid "_Advanced..."
 msgstr "_Avansat..."
 
-#: src/preferencesdialog.cpp:585
+#: src/preferencesdialog.cpp:543
+msgid "Clear"
+msgstr "Curăță"
+
+#: src/preferencesdialog.cpp:584
 msgid "The following plugins are installed:"
 msgstr "Următoarele module sunt instalate:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: src/preferencesdialog.cpp:620
+#: src/preferencesdialog.cpp:619
 msgid "_Enable"
 msgstr "Activ_ează"
 
-#: src/preferencesdialog.cpp:626
+#: src/preferencesdialog.cpp:625
 msgid "_Disable"
 msgstr "_Dezactivează"
 
-#: src/preferencesdialog.cpp:783
+#: src/preferencesdialog.cpp:637
+msgid "In_formation"
+msgstr "In_formații"
+
+#: src/preferencesdialog.cpp:781
 msgid "Not Implemented"
 msgstr "Nu a fost implementat"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:800
+#: src/preferencesdialog.cpp:798
 msgid "%1 Preferences"
 msgstr "Preferințe %1"
 
-#: src/preferencesdialog.cpp:934
+#: src/preferencesdialog.cpp:931
 msgid "Choose Note Font"
 msgstr "Alegeți font pentru notiță"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:1027
+#: src/preferencesdialog.cpp:1024
 msgid "Other Synchronization Options"
 msgstr "Alte opțiuni de sincronizare"
 
-#: src/preferencesdialog.cpp:1030
+#: src/preferencesdialog.cpp:1027
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2133,23 +2172,23 @@ msgstr ""
 "de sincronizare configurat:"
 
 #. label.Xalign = 0;
-#: src/preferencesdialog.cpp:1034
+#: src/preferencesdialog.cpp:1031
 msgid "Always ask me what to do"
 msgstr "Întreabă întotdeauna ce să fac"
 
-#: src/preferencesdialog.cpp:1038
+#: src/preferencesdialog.cpp:1035
 msgid "Rename my local note"
 msgstr "Redenumește notița locală"
 
-#: src/preferencesdialog.cpp:1042
+#: src/preferencesdialog.cpp:1039
 msgid "Replace my local note with the server's update"
 msgstr "Înlocuiește notița locală cu actualizarea serverului"
 
-#: src/preferencesdialog.cpp:1143
+#: src/preferencesdialog.cpp:1141
 msgid "Are you sure?"
 msgstr "Sunteți sigur?"
 
-#: src/preferencesdialog.cpp:1144
+#: src/preferencesdialog.cpp:1142
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2157,11 +2196,11 @@ msgstr ""
 "Curățarea configurărilor de sincronizare nu este recomandată.  Puteți fi "
 "forțat să sincronizați toate notițele din nou când salvați noile configurări."
 
-#: src/preferencesdialog.cpp:1154
+#: src/preferencesdialog.cpp:1152
 msgid "Resetting Synchronization Settings"
 msgstr "Restabilirea configurărilor de sincronizare"
 
-#: src/preferencesdialog.cpp:1155
+#: src/preferencesdialog.cpp:1153
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2171,11 +2210,11 @@ msgstr ""
 "sincronizare nu vor fi curățate.  Posibil să fiți forțat să sincronizați "
 "toate notițele din nou când salvați noile configurări."
 
-#: src/preferencesdialog.cpp:1230
+#: src/preferencesdialog.cpp:1228
 msgid "Connection successful"
 msgstr "Conectat cu succes"
 
-#: src/preferencesdialog.cpp:1231
+#: src/preferencesdialog.cpp:1229
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2183,7 +2222,7 @@ msgstr ""
 "Gnote este pregătit să sincronizeze notițele. Doriți să le sincronizați acum?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1256
+#: src/preferencesdialog.cpp:1254
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2191,48 +2230,48 @@ msgstr ""
 "Verificați informațiile și încercați din nou. Fișierul de jurnalizare %1 "
 "poate conține mai multe informații despre eroare."
 
-#: src/preferencesdialog.cpp:1261
+#: src/preferencesdialog.cpp:1259
 msgid "Error connecting"
 msgstr "Eroare la conexiune"
 
-#: src/preferencesdialog.cpp:1324
+#: src/preferencesdialog.cpp:1321
 msgid "Version:"
 msgstr "Versiunea:"
 
-#: src/preferencesdialog.cpp:1327
+#: src/preferencesdialog.cpp:1324
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/preferencesdialog.cpp:1331
+#: src/preferencesdialog.cpp:1328
 msgid "Copyright:"
 msgstr "Drepturi de autor:"
 
-#: src/recentchanges.cpp:158
+#: src/recentchanges.cpp:160
 msgid "All Notes"
 msgstr "Toate notițele"
 
-#: src/recentchanges.cpp:169
+#: src/recentchanges.cpp:171
 msgid "Create New Note"
 msgstr "Creează o nouă notiță"
 
-#: src/recentchanges.cpp:190
+#: src/recentchanges.cpp:193
 msgid "Search"
 msgstr "Caută"
 
-#: src/recentchanges.cpp:270
+#: src/recentchanges.cpp:268
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Părintele containerului înglobat nu este un Gtk::Grid, raportați eroarea!"
 
-#: src/recentchanges.cpp:312
+#: src/recentchanges.cpp:310
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Părintele căutării nu este un Gtk::Grid, raportați eroarea!"
 
-#: src/recentchanges.cpp:873
+#: src/recentchanges.cpp:863
 msgid "Expected widget to be a sub-menu!"
 msgstr "Se aștepta ca widgetul să fie un submeniu!"
 
-#: src/recentchanges.cpp:878
+#: src/recentchanges.cpp:868
 msgid "No configured actions"
 msgstr "Nicio acțiune configurată"
 
@@ -2241,39 +2280,23 @@ msgstr "Nicio acțiune configurată"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Eșec la încărcarea interfeței D-Bus %s: %s"
 
-#: src/searchnoteswidget.cpp:138
-msgid "_Open"
-msgstr "_Deschide"
-
-#: src/searchnoteswidget.cpp:141
-msgid "Open In New _Window"
-msgstr "Deschide într-o _fereastră nouă"
-
-#: src/searchnoteswidget.cpp:145 src/searchnoteswidget.cpp:148
-msgid "_Delete"
-msgstr "Șt_erge"
-
-#: src/searchnoteswidget.cpp:151
-msgid "Re_name..."
-msgstr "Rede_numește…"
-
-#: src/searchnoteswidget.cpp:227
+#: src/searchnoteswidget.cpp:212
 msgid "Notebooks"
 msgstr "Carnețele"
 
-#: src/searchnoteswidget.cpp:688
+#: src/searchnoteswidget.cpp:684
 msgid "Note"
 msgstr "Notiță"
 
-#: src/searchnoteswidget.cpp:710
+#: src/searchnoteswidget.cpp:706
 msgid "Modified"
 msgstr "Modificat"
 
-#: src/searchnoteswidget.cpp:1009
+#: src/searchnoteswidget.cpp:1017
 msgid "Notes"
 msgstr "Note"
 
-#: src/searchnoteswidget.cpp:1028
+#: src/searchnoteswidget.cpp:1036
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2281,54 +2304,62 @@ msgstr ""
 "Niciun rezultat găsit în carnețelul selectat\n"
 "Apăsați aici pentru a căuta în toate notițele."
 
-#: src/searchnoteswidget.cpp:1032
+#: src/searchnoteswidget.cpp:1040
 msgid "Click here to search across all notebooks"
 msgstr "Clic aici pentru a căuta în toate carnețelele"
 
-#: src/searchnoteswidget.cpp:1053
+#: src/searchnoteswidget.cpp:1058
 msgid "Matches"
 msgstr "Rezultate"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:1104
+#: src/searchnoteswidget.cpp:1109
 msgid "Title match"
 msgstr "Potrivire titlu"
 
-#: src/searchnoteswidget.cpp:1108
+#: src/searchnoteswidget.cpp:1113
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 potrivire"
 msgstr[1] "%1 potriviri"
 msgstr[2] "%1 de potriviri"
 
-#: src/searchnoteswidget.cpp:1316
+#: src/searchnoteswidget.cpp:1310
+msgid "Open In New _Window"
+msgstr "Deschide într-o _fereastră nouă"
+
+#: src/searchnoteswidget.cpp:1320
 msgid "_New"
 msgstr "_Notiță nouă"
 
-#: src/searchnoteswidget.cpp:1345
+#: src/searchnoteswidget.cpp:1349
 msgid "_Open Template Note"
 msgstr "Deschide n_otița șablon"
 
-#: src/searchnoteswidget.cpp:1356
+#: src/searchnoteswidget.cpp:1353
+msgid "Re_name..."
+msgstr "Rede_numește…"
+
+#: src/searchnoteswidget.cpp:1360
 msgid "_New..."
 msgstr "_Nouă..."
 
-#: src/searchnoteswidget.cpp:1504 src/searchnoteswidget.cpp:1517
-#: src/searchnoteswidget.cpp:1528
+#: src/searchnoteswidget.cpp:1511 src/searchnoteswidget.cpp:1524
+#: src/searchnoteswidget.cpp:1535
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Eșec la parsarea configurării sortării căutării (Valoare: %s):"
 
-#: src/searchnoteswidget.cpp:1505
+#: src/searchnoteswidget.cpp:1512
 msgid "Expected format 'column:order'"
 msgstr "Format așteptat „coloană:ordine”"
 
-#: src/searchnoteswidget.cpp:1518
+#: src/searchnoteswidget.cpp:1525
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Coloană nerecunoscută %s"
 
-#: src/searchnoteswidget.cpp:1529
+#: src/searchnoteswidget.cpp:1536
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ordine nerecunoscută %s"
@@ -2464,37 +2495,41 @@ msgstr "Eșec la încercarea de eliminare a fișierului de test"
 msgid "Unknown error"
 msgstr "Eroare necunoscută"
 
-#: src/synchronization/syncdialog.cpp:64
+#: src/synchronization/syncdialog.cpp:63
 msgid "Note Conflict"
 msgstr "Conflict de notițe"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: src/synchronization/syncdialog.cpp:69
+#: src/synchronization/syncdialog.cpp:68
 msgid " (old)"
 msgstr " (vechi)"
 
-#: src/synchronization/syncdialog.cpp:114
+#: src/synchronization/syncdialog.cpp:113
 msgid "Rename local note:"
 msgstr "Redenumește notița locală:"
 
-#: src/synchronization/syncdialog.cpp:121
+#: src/synchronization/syncdialog.cpp:120
 msgid "Update links in referencing notes"
 msgstr "Actualizează legăturile în notițele referențiate"
 
-#: src/synchronization/syncdialog.cpp:127
+#: src/synchronization/syncdialog.cpp:126
 msgid "Overwrite local note"
 msgstr "Suprascrie notița locală"
 
-#: src/synchronization/syncdialog.cpp:131
+#: src/synchronization/syncdialog.cpp:130
 msgid "Always perform this action"
 msgstr "Execută întotdeauna această acțiune"
 
+#: src/synchronization/syncdialog.cpp:133
+msgid "_Continue"
+msgstr "_Continuă"
+
 #. Set initial dialog text
-#: src/synchronization/syncdialog.cpp:137
+#: src/synchronization/syncdialog.cpp:136
 msgid "Note conflict detected"
 msgstr "Conflict de notițe detectat"
 
-#: src/synchronization/syncdialog.cpp:139
+#: src/synchronization/syncdialog.cpp:138
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2503,55 +2538,55 @@ msgstr ""
 "faceți cu notița locală?"
 
 #. Expander containing TreeView
-#: src/synchronization/syncdialog.cpp:296
+#: src/synchronization/syncdialog.cpp:292
 msgid "Details"
 msgstr "Detalii"
 
-#: src/synchronization/syncdialog.cpp:338
+#: src/synchronization/syncdialog.cpp:334
 msgid "Status"
 msgstr "Stare"
 
-#: src/synchronization/syncdialog.cpp:482
+#: src/synchronization/syncdialog.cpp:478
 msgid "Acquiring sync lock..."
 msgstr "Se obține blocarea pentru sincronizare..."
 
-#: src/synchronization/syncdialog.cpp:485
+#: src/synchronization/syncdialog.cpp:481
 msgid "Committing changes..."
 msgstr "Se comit modificările..."
 
-#: src/synchronization/syncdialog.cpp:488
+#: src/synchronization/syncdialog.cpp:484
 msgid "Synchronizing Notes"
 msgstr "Sincronizarea notițelor"
 
-#: src/synchronization/syncdialog.cpp:489
+#: src/synchronization/syncdialog.cpp:485
 msgid "Synchronizing your notes..."
 msgstr "Se sincronizează notițele..."
 
-#: src/synchronization/syncdialog.cpp:490
+#: src/synchronization/syncdialog.cpp:486
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Aceasta poate dura ceva timp, relaxați-vă!"
 
-#: src/synchronization/syncdialog.cpp:492
+#: src/synchronization/syncdialog.cpp:488
 msgid "Connecting to the server..."
 msgstr "Se conectează la server..."
 
-#: src/synchronization/syncdialog.cpp:498
+#: src/synchronization/syncdialog.cpp:494
 msgid "Deleting notes off of the server..."
 msgstr "Se șterg notițe de pe server..."
 
-#: src/synchronization/syncdialog.cpp:502
+#: src/synchronization/syncdialog.cpp:498
 msgid "Downloading new/updated notes..."
 msgstr "Se descarcă notițe noi/actualizare..."
 
-#: src/synchronization/syncdialog.cpp:514
+#: src/synchronization/syncdialog.cpp:510
 msgid "Server Locked"
 msgstr "Server blocat"
 
-#: src/synchronization/syncdialog.cpp:515
+#: src/synchronization/syncdialog.cpp:511
 msgid "Server is locked"
 msgstr "Serverul este blocat"
 
-#: src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:512
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2559,109 +2594,109 @@ msgstr ""
 "Unul dintre celelalte calculatoare se sincronizează momentan.  Așteptați 2 "
 "minute și încercați din nou."
 
-#: src/synchronization/syncdialog.cpp:520
+#: src/synchronization/syncdialog.cpp:516
 msgid "Preparing to download updates from server..."
 msgstr "Se pregătește descărcarea actualizărilor de pe server..."
 
-#: src/synchronization/syncdialog.cpp:523
+#: src/synchronization/syncdialog.cpp:519
 msgid "Preparing to upload updates to server..."
 msgstr "Se pregătește încărcarea actualizărilor pe server..."
 
-#: src/synchronization/syncdialog.cpp:526
+#: src/synchronization/syncdialog.cpp:522
 msgid "Uploading notes to server..."
 msgstr "Se încarcă notițe pe server..."
 
-#: src/synchronization/syncdialog.cpp:529
+#: src/synchronization/syncdialog.cpp:525
 msgid "Synchronization Failed"
 msgstr "Sincronizare eșuată"
 
-#: src/synchronization/syncdialog.cpp:530
+#: src/synchronization/syncdialog.cpp:526
 msgid "Failed to synchronize"
 msgstr "Eșec la sincronizare"
 
-#: src/synchronization/syncdialog.cpp:531
+#: src/synchronization/syncdialog.cpp:527
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Nu s-a putut sincroniza notițele.  Verificați detaliile de mai jos și "
 "încercați din nou."
 
-#: src/synchronization/syncdialog.cpp:537
+#: src/synchronization/syncdialog.cpp:533
 msgid "Synchronization Complete"
 msgstr "Sincronizare completă"
 
-#: src/synchronization/syncdialog.cpp:538
+#: src/synchronization/syncdialog.cpp:534
 msgid "Synchronization is complete"
 msgstr "Sincronizarea este completă"
 
-#: src/synchronization/syncdialog.cpp:539
+#: src/synchronization/syncdialog.cpp:535
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "%1 notiță actualizată."
 msgstr[1] "%1 notițe actualizată."
 msgstr[2] "%1 de notițe actualizată."
 
-#: src/synchronization/syncdialog.cpp:540
+#: src/synchronization/syncdialog.cpp:536
 msgid "Your notes are now up to date."
 msgstr "Notițele sunt acum actualizate."
 
-#: src/synchronization/syncdialog.cpp:545
+#: src/synchronization/syncdialog.cpp:541
 msgid "Synchronization Canceled"
 msgstr "Sincronizare anulată"
 
-#: src/synchronization/syncdialog.cpp:546
+#: src/synchronization/syncdialog.cpp:542
 msgid "Synchronization was canceled"
 msgstr "Sincronizarea a fost anulată"
 
-#: src/synchronization/syncdialog.cpp:547
+#: src/synchronization/syncdialog.cpp:543
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Ați anulat sincronizarea.  Puteți închide fereastra acum."
 
-#: src/synchronization/syncdialog.cpp:551
+#: src/synchronization/syncdialog.cpp:547
 msgid "Synchronization Not Configured"
 msgstr "Sincronizare neconfigurată"
 
-#: src/synchronization/syncdialog.cpp:552
+#: src/synchronization/syncdialog.cpp:548
 msgid "Synchronization is not configured"
 msgstr "Sincronizarea nu este configurată"
 
-#: src/synchronization/syncdialog.cpp:553
+#: src/synchronization/syncdialog.cpp:549
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Configurați sincronizarea în dialogul preferințe."
 
-#: src/synchronization/syncdialog.cpp:557
+#: src/synchronization/syncdialog.cpp:553
 msgid "Synchronization Service Error"
 msgstr "Eroare la serviciul de sincronizare"
 
-#: src/synchronization/syncdialog.cpp:558
+#: src/synchronization/syncdialog.cpp:554
 msgid "Service error"
 msgstr "Eroare de serviciu"
 
-#: src/synchronization/syncdialog.cpp:559
+#: src/synchronization/syncdialog.cpp:555
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "Eroare la conectarea către serviciul de sincronizare.  Încercați din nou."
 
-#: src/synchronization/syncdialog.cpp:573
+#: src/synchronization/syncdialog.cpp:569
 msgid "Deleted locally"
 msgstr "Șterge local"
 
-#: src/synchronization/syncdialog.cpp:576
+#: src/synchronization/syncdialog.cpp:572
 msgid "Deleted from server"
 msgstr "Șterge de pe server"
 
-#: src/synchronization/syncdialog.cpp:579
+#: src/synchronization/syncdialog.cpp:575
 msgid "Updated"
 msgstr "Actualizat"
 
-#: src/synchronization/syncdialog.cpp:582
+#: src/synchronization/syncdialog.cpp:578
 msgid "Added"
 msgstr "Adăugat"
 
-#: src/synchronization/syncdialog.cpp:585
+#: src/synchronization/syncdialog.cpp:581
 msgid "Uploaded changes to server"
 msgstr "S-au încărcat modificările la server"
 
-#: src/synchronization/syncdialog.cpp:588
+#: src/synchronization/syncdialog.cpp:584
 msgid "Uploaded new note to server"
 msgstr "S-a încărcat o nouă notiță la server"
 
@@ -2697,7 +2732,7 @@ msgstr "Sincronizarea a eșuat cu următoarea excepție Glib %s"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sincronizarea a eșuat cu excepția următoare: %s"
 
-#: src/utils.cpp:135
+#: src/utils.cpp:98
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2705,73 +2740,69 @@ msgstr ""
 "„Manualul Gnote” nu a putut fi găsit. Verificați dacă instalarea a fost "
 "finalizată cu succes."
 
-#: src/utils.cpp:143
+#: src/utils.cpp:106
 msgid "Help not found"
 msgstr "Fișierele de ajutor nu au fost găsite"
 
-#: src/utils.cpp:175
+#: src/utils.cpp:138
 msgid "Cannot open location"
 msgstr "Dosarul nu poate fi deschis"
 
-#: src/utils.cpp:192
+#: src/utils.cpp:155
 msgid "No Date"
 msgstr "Fără dată"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:207
+#: src/utils.cpp:170
 msgid "Today, %1"
 msgstr "Astăzi, %1"
 
-#: src/utils.cpp:208
+#: src/utils.cpp:171
 msgid "Today"
 msgstr "Astăzi"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:214
+#: src/utils.cpp:177
 msgid "Yesterday, %1"
 msgstr "Ieri, %1"
 
-#: src/utils.cpp:215
+#: src/utils.cpp:178
 msgid "Yesterday"
 msgstr "Ieri"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:221
+#: src/utils.cpp:184
 msgid "Tomorrow, %1"
 msgstr "Mâine, %1"
 
-#: src/utils.cpp:222
+#: src/utils.cpp:185
 msgid "Tomorrow"
 msgstr "Mâine"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:226
+#: src/utils.cpp:189
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:229 src/utils.cpp:238
+#: src/utils.cpp:192 src/utils.cpp:201
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:235
+#: src/utils.cpp:198
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
-#: src/utils.cpp:398 src/utils.cpp:412
+#: src/utils.cpp:362 src/utils.cpp:376
 msgid "_OK"
 msgstr "_OK"
 
-#: src/utils.cpp:401
-msgid "_Close"
-msgstr "În_chide"
-
-#: src/utils.cpp:407
+#: src/utils.cpp:371
 msgid "_No"
 msgstr "_Nu"
 
-#: src/utils.cpp:408
+#: src/utils.cpp:372
 msgid "_Yes"
 msgstr "_Da"
 
@@ -2804,6 +2835,9 @@ msgstr "_Copiază adresa de legătură"
 #: src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "Deschide _legătură"
+
+#~ msgid "New \"%1\" Note"
+#~ msgstr "Notiță nouă în „%1”"
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Activează taste rapide globale"

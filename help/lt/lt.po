@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2021-04-01 19:57+0000\n"
-"PO-Revision-Date: 2021-06-06 22:59+0300\n"
+"POT-Creation-Date: 2021-07-20 14:54+0000\n"
+"PO-Revision-Date: 2021-09-04 23:05+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -205,25 +205,33 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:27
+#| msgid ""
+#| "To create an HTML document from one or more notes, select this command. "
+#| "You will see a dialog that lets you choose where to save the HTML file. "
+#| "Enter the destination filename and click <gui>Save</gui> to save the "
+#| "file, or <gui>Cancel</gui> to abort."
 msgid ""
 "To create an HTML document from one or more notes, select this command. You "
-"will see a dialog that lets you choose where to save the HTML file. Enter "
-"the destination filename and click <gui>Save</gui> to save the file, "
-"or <gui>Cancel</gui> to abort."
+"will see a dialog that lets you choose where to save the HTML file. Enter "
+"the destination filename and click <gui>Save</gui> to save the file, or "
+"<gui>Cancel</gui> to abort."
 msgstr ""
-"Norėdami sukurti HTML dokumentą iš raštelio, pasirinkite šį punktą. "
-"Pamatysite dialogą, leidžiantį pasirinkti, kur išsaugosite HTML failą. "
-"Įveskite paskirties failo pavadinimą ir spauskite <gui>Įrašyti</gui> failo "
-"išsaugojimui arba <gui>Atsisakyti</gui> veiksmo nutraukimui."
+"Norėdami sukurti HTML dokumentą iš vieno ar daugiau raštelių, pasirinkite šį "
+"punktą. Pamatysite dialogą, leidžiantį pasirinkti, kur išsaugosite HTML "
+"failą. Įveskite paskirties failo pavadinimą ir spauskite <gui>Įrašyti</gui> "
+"failo išsaugojimui arba <gui>Atsisakyti</gui> veiksmo nutraukimui."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:28
+#| msgid ""
+#| "To export any notes linked to by the current note, select the <gui>Export "
+#| "Linked Notes</gui> check box."
 msgid ""
-"To export any notes linked to by the current note, select the <gui>Export "
-"Linked Notes</gui> check box."
+"To export any notes linked to by the current note, select the <gui>Export "
+"Linked Notes</gui> check box."
 msgstr ""
 "Jei norite eksportuoti raštelius, į kuriuos esamame raštelyje yra saitai, "
-"pažymėkite langelį <gui>Eksportuoti  susietus raštelius</gui>."
+"pažymėkite langelį <gui>Eksportuoti susietus raštelius</gui>."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-notedirwatcher.page:8
@@ -322,10 +330,14 @@ msgstr "Spausdinti"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-print.page:26
+#| msgid ""
+#| "When the <app>Print</app> plugin is installed, the <gui>Print</gui> "
+#| "command is present in the <gui>Actions</gui> menu. This command opens a "
+#| "standard <gui>Print</gui> dialog which lets you print a note."
 msgid ""
 "When the <app>Print</app> plugin is installed, the <gui>Print</gui> command "
-"is present in the <gui>Actions</gui> menu. This command opens a "
-"standard <gui>Print</gui> dialog which lets you print a note."
+"is present in the <gui>Actions</gui> menu. This command opens a standard "
+"<gui>Print</gui> dialog which lets you print a note."
 msgstr ""
 "Kai yra įdiegtas įskiepis <app>Spausdinimo palaikymas</app>, <gui>veiksmų</"
 "gui> meniu turės komandą <gui>Spausdinti</gui>. Ši komanda atvers "
@@ -383,10 +395,6 @@ msgstr "<app>Gnote</app> priedų langas"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addins-preferences.page:30
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-preferences-add-ins.png' "
-#| "md5='d4afd1e494003fdb4b656e389d803d66'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-add-ins.png' "
@@ -612,10 +620,6 @@ msgstr "Vietinio aplanko sinchronizacijos nustatymas"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addin-sync-local.page:27
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-syncprefs-local.png' "
-#| "md5='283b5e82b7b17fd7dd833594f33d149f'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-local.png' "
@@ -676,10 +680,6 @@ msgstr "įveskite naudotojo vardą ir slaptažodį"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addin-sync-webdav.page:32
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-syncprefs-webdav.png' "
-#| "md5='60dfdedccd719fc1b764154ded90f781'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-webdav.png' "
@@ -1000,13 +1000,17 @@ msgstr "Priedas „Įterpti laiko žymę“"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-timestamp.page:28
+#| msgid ""
+#| "When the <gui>Insert Timestamp</gui> plugin is installed, "
+#| "the <gui>Actions</gui> menu will include a <gui>Insert Timestamp</gui> "
+#| "command. Select this command to insert the current date and time."
 msgid ""
-"When the <gui>Insert Timestamp</gui> plugin is installed, the <gui>Actions</"
-"gui> menu will include a <gui>Insert Timestamp</gui> command. Select this "
+"When the <gui>Insert Timestamp</gui> plugin is installed, the <gui>Actions</"
+"gui> menu will include a <gui>Insert Timestamp</gui> command. Select this "
 "command to insert the current date and time."
 msgstr ""
-"Kai įskiepis <gui>Įterpti laiko žymę</gui> yra įdiegtas, <gui>veiksmų</gui> "
-"meniu turės elementą <gui>Įterpti laiko žymę</gui>. Pasirinkite šią komandą "
+"Kai įskiepis <gui>Įterpti laiko žymą</gui> yra įdiegtas, <gui>veiksmų</gui> "
+"meniu turės elementą <gui>Įterpti laiko žymą</gui>. Pasirinkite šią komandą "
 "dabartiniam datai ir laikui įterpti."
 
 #. (itstool) path: info/desc
@@ -1021,8 +1025,11 @@ msgstr "Priedas „Pabrauktas“"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-underline.page:26
+#| msgid ""
+#| "When the <gui>Underline</gui> plugin is installed, the <gui>Text</"
+#| "gui> menu will have a <gui>Underline</gui> option available."
 msgid ""
-"When the <gui>Underline</gui> plugin is installed, the <gui>Text</gui> menu "
+"When the <gui>Underline</gui> plugin is installed, the <gui>Text</gui> menu "
 "will have a <gui>Underline</gui> option available."
 msgstr ""
 "Kai įskiepis <gui>Pabrauktas</gui> yra įdiegtas, meniu <gui>Tekstas</gui> "
@@ -1682,10 +1689,6 @@ msgstr "<app>Gnote</app> pagrindinis langas"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-introduction.page:39
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-search-all-notes.png' "
-#| "md5='5832cb5b5ce3e0f70f07af37b10599b6'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-search-all-notes.png' "
@@ -1900,10 +1903,6 @@ msgstr "Langas <gui>Nustatymai</gui>"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-notes-preferences.page:41
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-preferences-editing.png' "
-#| "md5='e927c4921c89e274fddc0bbac7cdee25'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-editing.png' "
@@ -2301,10 +2300,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-template-notes.page:41
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-template-note.png' "
-#| "md5='f99f0b62b6c0390ab57b76ca86a69cd1'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
@@ -2452,10 +2447,6 @@ msgstr "Nauja užrašinė iš kontekstinio meniu"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:50
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-notebook-search.png' "
-#| "md5='d103e411de7d0f4ecf5d02c40fe2a3af'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-notebook-search.png' "
@@ -2595,10 +2586,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:84
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/note-template.png' "
-#| "md5='4204209a61be8676b473758f5cfe42ad'"
 msgctxt "_"
 msgid ""
 "external ref='figures/note-template.png' "
@@ -2667,10 +2654,6 @@ msgstr "Raštelių ištrynimas pagrindiniame lange"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:98
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-to-notebook.png' "
-#| "md5='df8420b1433dd89e5a2e33713caf13d7'"
 msgctxt "_"
 msgid ""
 "external ref='figures/delete-notebook.png' "
