@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017,2020 Aurimas Cernius
+ * Copyright (C) 2012,2017,2020-2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -58,7 +58,7 @@ Glib::ustring date_time_to_iso8601(const Glib::DateTime & dt)
 
   Glib::DateTime date = dt.to_utc();
   char buffer[36] = {0};
-  std::sprintf(buffer, "%d-%02d-%02dT%02d:%02d:%02.6lfZ", date.get_year(), date.get_month(), date.get_day_of_month(), date.get_hour(), date.get_minute(), date.get_seconds());
+  std::sprintf(buffer, "%d-%02d-%02dT%02d:%02d:%09.6lfZ", date.get_year(), date.get_month(), date.get_day_of_month(), date.get_hour(), date.get_minute(), date.get_seconds());
   retval = buffer;
   return retval;
 }

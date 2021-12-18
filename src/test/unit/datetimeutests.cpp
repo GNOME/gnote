@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2020 Aurimas Cernius
+ * Copyright (C) 2017,2020,2021 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -48,6 +48,11 @@ SUITE(DateTime)
     CHECK(bool(d));
     date_string = sharp::date_time_to_iso8601(d);
     CHECK_EQUAL("2009-03-24T07:34:35.540000Z", date_string);
+
+    d = Glib::DateTime::create_local(2021, 1, 2, 3, 4, 5);
+    CHECK(bool(d));
+    date_string = sharp::date_time_to_iso8601(d);
+    CHECK_EQUAL("2021-01-02T03:04:05.000000Z", date_string);
   }
 
   TEST(date_time_from_iso8601)
