@@ -442,15 +442,6 @@ namespace sync {
   void SyncManager::handle_note_saved_or_deleted(const NoteBase::Ptr &)
   {
     if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
-      Glib::TimeSpan time_since_last_check(Glib::DateTime::create_now_utc().difference(m_last_background_check));
-      Glib::TimeSpan time_until_next_check = sharp::time_span(0, m_current_autosync_timeout_minutes, 0) - time_since_last_check;
-      if(sharp::time_span_total_minutes(time_until_next_check) < 1) {
-        DBG_OUT("Note saved or deleted within a minute of next autosync...resetting sync timer");
-        m_current_autosync_timeout_minutes = 1;
-        m_autosync_timer.reset(m_current_autosync_timeout_minutes * 60000);
-      }
-    }
-    else if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
       DBG_OUT("Note saved or deleted...restarting sync timer");
       m_last_background_check = Glib::DateTime::create_now_utc();
       // Perform a sync one minute after setting change
