@@ -25,6 +25,13 @@
  <update_contact>aurisc4_at_gmail.com</update_contact>
  <content_rating type="oars-1.1"/>
  <releases>
+  <release version="41.2" date="2022-01-09">
+    <ul>
+      <li>Fix duplicate condition in SyncManager (#111)</li>
+      <li>Fix date formatting when second is single digit (#115)</li>
+      <li>Fix excessive saves due to rogue marks</li>
+    </ul>
+  </release>
   <release version="41.1" date="2021-10-31">
     <ul>
       <li>Fix search box focus when very first search in window is in note (#108)</li>
