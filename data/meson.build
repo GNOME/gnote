@@ -2,7 +2,6 @@ install_man('gnote.1')
 
 desktop_file = 'org.gnome.Gnote.desktop'
 gnote_desktop_file = i18n.merge_file(
-  desktop_file,
   type: 'desktop',
   input: desktop_file + '.in',
   output: desktop_file,
@@ -39,7 +38,6 @@ configure_file(
 
 gnote_appdata = 'org.gnome.Gnote.appdata.xml'
 appdata_file = i18n.merge_file(
-  gnote_appdata,
   input: gnote_appdata + '.in',
   output: gnote_appdata,
   po_dir: '../po',
