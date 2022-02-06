@@ -2,12 +2,12 @@
 # Copyright (C) 2020 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2021-12-18 19:47+0000\n"
-"PO-Revision-Date: 2021-12-19 23:27+0200\n"
+"POT-Creation-Date: 2022-02-06 19:01+0000\n"
+"PO-Revision-Date: 2022-02-06 21:44+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -165,7 +165,6 @@ msgstr "Використання моноширинного шрифту"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-fixedwidth.page:25
-#| msgid "Fixed Width Add-in"
 msgid "Fixed Width Plugin"
 msgstr "Додаток фіксованої ширини"
 
@@ -196,12 +195,15 @@ msgstr "Експортувати в HTML"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:26
+#| msgid ""
+#| "When the <app>Export to HTML</app> plugin is installed, the command "
+#| "<gui>Export to HTML</gui> is present in the <gui>Actions</gui> menu."
 msgid ""
 "When the <app>Export to HTML</app> plugin is installed, the command "
-"<gui>Export to HTML</gui> is present in the <gui>Actions</gui> menu."
+"<gui>Export to HTML</gui> is present in the <gui>Note Actions</gui> menu."
 msgstr ""
 "Якщо встановлено додаток <app>Експортувати до HTML</app>, ви зможете "
-"скористатися пунктом <gui>Експортувати до HTML</gui> меню <gui>Дії</gui>."
+"скористатися пунктом <gui>Експортувати до HTML</gui> меню <gui>Дії з примітками</gui>."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:27
@@ -323,12 +325,16 @@ msgstr "Надрукувати"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-print.page:26
+#| msgid ""
+#| "When the <app>Print</app> plugin is installed, the <gui>Print</gui> "
+#| "command is present in the <gui>Actions</gui> menu. This command opens a "
+#| "standard <gui>Print</gui> dialog which lets you print a note."
 msgid ""
 "When the <app>Print</app> plugin is installed, the <gui>Print</gui> command "
-"is present in the <gui>Actions</gui> menu. This command opens a standard "
-"<gui>Print</gui> dialog which lets you print a note."
+"is present in the <gui>Note Actions</gui> menu. This command opens a "
+"standard <gui>Print</gui> dialog which lets you print a note."
 msgstr ""
-"Якщо встановлено додаток <app>Надрукувати</app> у меню <gui>Дії</gui> "
+"Якщо встановлено додаток <app>Надрукувати</app> у меню <gui>Дії з примітками</gui> "
 "з'явиться пункт <gui>Надрукувати</gui>. Цей пункт відкриватиме стандартне "
 "діалогове вікно <gui>Друкувати</gui>, за допомогою якого ви зможете "
 "надрукувати нотатку."
@@ -345,7 +351,6 @@ msgstr "2011,2013,2014"
 
 #. (itstool) path: page/title
 #: C/gnote-addins-preferences.page:25
-#| msgid "Add-in Preferences"
 msgid "Plugin Preferences"
 msgstr "Налаштування додатків"
 
@@ -371,13 +376,11 @@ msgstr ""
 
 #. (itstool) path: figure/title
 #: C/gnote-addins-preferences.page:28
-#| msgid "<app>Gnote</app> Addin Preferences"
 msgid "<app>Gnote</app> Plugin Preferences"
 msgstr "Налаштування додатків <app>Gnote</app>"
 
 #. (itstool) path: figure/desc
 #: C/gnote-addins-preferences.page:29
-#| msgid "<app>Gnote</app> Add-ins window"
 msgid "<app>Gnote</app> Plugins window"
 msgstr "Вікно додатків <app>Gnote</app>"
 
@@ -397,7 +400,6 @@ msgstr ""
 
 #. (itstool) path: media/p
 #: C/gnote-addins-preferences.page:31
-#| msgid "<gui>Add-ins</gui> window."
 msgid "<gui>Plugins</gui> window."
 msgstr "Вікно <gui>Додатки</gui>."
 
@@ -413,14 +415,20 @@ msgstr "Лише для читання"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-readonly.page:17
+#| msgid ""
+#| "When the <app>ReadOnly</app> plugin is installed, the <gui>Read Only</"
+#| "gui> item is present in the <gui>Actions</gui> menu for open note. When "
+#| "this item is checked, note is marked as read-only. This does not allow to "
+#| "change note until the menu item is unchecked. Use this to prevent notes "
+#| "from accidental modification."
 msgid ""
 "When the <app>ReadOnly</app> plugin is installed, the <gui>Read Only</gui> "
-"item is present in the <gui>Actions</gui> menu for open note. When this item "
-"is checked, note is marked as read-only. This does not allow to change note "
-"until the menu item is unchecked. Use this to prevent notes from accidental "
-"modification."
+"item is present in the <gui>Note Actions</gui> menu for open note. When this "
+"item is checked, note is marked as read-only. This does not allow to change "
+"note until the menu item is unchecked. Use this to prevent notes from "
+"accidental modification."
 msgstr ""
-"Якщо встановлено додаток <app>ReadOnly</app>, у меню <gui>Дії</gui> "
+"Якщо встановлено додаток <app>ReadOnly</app>, у меню <gui>Дії з примітками</gui> "
 "з'явиться пункт <gui>Лише для читання</gui> для відкритої нотатки. Якщо цей "
 "пункт буде позначено, нотатка стане придатною лише для читання. Таку нотатку "
 "не можна буде змінювати, аж доки позначку з пункту меню не буде знято. "
@@ -438,11 +446,14 @@ msgstr "Замінити назву"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:26
+#| msgid ""
+#| "When the <app>Replace title</app> plugin is installed, the command "
+#| "<gui>Replace title</gui> is present in the <gui>Actions</gui> menu."
 msgid ""
 "When the <app>Replace title</app> plugin is installed, the command "
-"<gui>Replace title</gui> is present in the <gui>Actions</gui> menu."
+"<gui>Replace title</gui> is present in the <gui>Note Actions</gui> menu."
 msgstr ""
-"Якщо встановлено додаток <app>Замінити заголовок</app>, у меню <gui>Дії</"
+"Якщо встановлено додаток <app>Замінити заголовок</app>, у меню <gui>Дії з примітками</"
 "gui> з'явиться пункт <gui>Замінити заголовок</gui>."
 
 #. (itstool) path: page/p
@@ -865,12 +876,15 @@ msgstr "Щоб форматувати рядок заголовка, викон�
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:153
+#| msgid ""
+#| "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
+#| "<guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq> menu."
 msgid ""
 "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
-"<guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq> menu."
+"<guiseq><gui>Note Actions</gui><gui>Table of Contents</gui></guiseq> menu."
 msgstr ""
 "Скористайтеся пунктами <gui>Заголовок 1</gui> і <gui>Заголовок 2</gui> у "
-"меню <guiseq><gui>Дії</gui><gui>Зміст</gui></guiseq>."
+"меню <guiseq><gui>Дії з примітками</gui><gui>Зміст</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:158
@@ -931,10 +945,14 @@ msgstr "Отримати доступ до таблиці змісту можн�
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:184
+#| msgid ""
+#| "In the menu <guiseq><gui>Actions</gui><gui>Table of Contents</gui></"
+#| "guiseq>."
 msgid ""
-"In the menu <guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq>."
+"In the menu <guiseq><gui>Note Actions</gui><gui>Table of Contents</gui></"
+"guiseq>."
 msgstr ""
-"За допомогою пункту меню <guiseq><gui>Дії</gui><gui>Зміст</gui></guiseq>."
+"За допомогою пункту меню <guiseq><gui>Дії з примітками</gui><gui>Зміст</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:185
@@ -1032,7 +1050,6 @@ msgstr "Підкреслити текст"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-underline.page:25
-#| msgid "Underline Text Add-In"
 msgid "Underline Text Plugin"
 msgstr "Додаток підкреслювання тексту"
 
@@ -1261,27 +1278,14 @@ msgstr "Як автоматично запускати <app>Gnote</app> при �
 
 #. (itstool) path: item/p
 #: C/gnote-common-problems.page:30
+#| msgid ""
+#| "To start Gnote automatically when you log into GNOME, run <app>gnome-"
+#| "session-properties</app>."
 msgid ""
-"To start Gnote automatically when you log into GNOME, run <app>gnome-session-"
-"properties</app>."
+"you can setup Gnote to start automatically when you log into GNOME using "
+"<app>Tweaks</app> application."
 msgstr ""
-"Щоб програма Gnote автоматично запускалася, коли ви входите до GNOME, "
-"запустіть програму <app>gnome-session-properties</app>."
-
-#. (itstool) path: item/p
-#: C/gnote-common-problems.page:32
-msgid "I'm not comfortable with new single-window interface"
-msgstr "У мене проблеми із новим одновіконним інтерфейсом"
-
-#. (itstool) path: item/p
-#: C/gnote-common-problems.page:32
-msgid ""
-"You can make <app>Gnote</app> behave the old way by selecting <gui>Always "
-"open notes in new window</gui> in Preferences dialog."
-msgstr ""
-"Ви можете повернути стару поведінку <app>Gnote</app> за допомогою пункту "
-"<gui>Завжди відкривати нотатки у новому вікні</gui> у діалоговому вікні "
-"параметрів програми."
+"Ви можете налаштувати автоматичний запуск Gnote після входу до GNOME за допомогою програми <app>Налаштування</app>."
 
 #. (itstool) path: info/desc
 #: C/gnote-creating-notes.page:9
@@ -1376,10 +1380,14 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-deleting-notes.page:29
-msgid "When a note is open, press the <gui>Delete</gui> button on the toolbar."
+#| msgid ""
+#| "When a note is open, press the <gui>Delete</gui> button on the toolbar."
+msgid ""
+"When a note is open, press the <gui>Note Actions</gui> button on the toolbar "
+"and press <gui>Delete</gui> in menu that opens."
 msgstr ""
-"Якщо відкрито нотатку, натисніть кнопку <gui>Вилучити</gui> на панелі "
-"інструментів."
+"Якщо відкрито нотатку, натисніть кнопку <gui>Дії з примітками</gui> на панелі "
+"інструментів, а потім натисніть пункт <gui>Вилучити</gui> у відкритому меню."
 
 #. (itstool) path: page/p
 #: C/gnote-deleting-notes.page:31
@@ -1423,13 +1431,15 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gnote-editing-notes.page:26
+#| msgid ""
+#| "Toolbar at the top of the window will now contain note specific items in "
+#| "it. Below toolbar is the note's content area."
 msgid ""
 "Toolbar at the top of the window will now contain note specific items in it. "
-"Below toolbar is the note's content area."
+"Notes content area will be in an active tab below."
 msgstr ""
 "Після цього панель інструментів у верхній частині вікна буде містити кнопки, "
-"які є специфічними для режиму редагування нотатки. Під панеллю інструментів "
-"буде розташовано область вмісту нотатки."
+"які є специфічними для режиму редагування нотатки. Область вмісту нотатки буде розташовано у активній вкладці нижче."
 
 #. (itstool) path: figure/title
 #: C/gnote-editing-notes.page:28
@@ -2131,17 +2141,6 @@ msgstr ""
 "Позначте одну або декілька нотаток у списку і натисніть комбінацію клавіш "
 "<keyseq><key>Ctrl</key><key>O</key></keyseq>."
 
-#. (itstool) path: item/p
-#: C/gnote-searching-notes.page:35
-msgid ""
-"If the status icon is enabled, click it and select a note from the menu that "
-"appears. This menu is limited to a certain number of notes and includes "
-"pinned and recently updated notes."
-msgstr ""
-"Якщо увімкнено піктограму стану, клацніть на ній і виберіть нотатку у "
-"показаному меню. У меню буде показано лише декілька нотаток, зокрема "
-"пришпилені нотатки та нещодавно оновлені нотатки."
-
 #. (itstool) path: info/desc
 #: C/gnote-synchronization.page:8
 msgid "Synchronize notes"
@@ -2576,12 +2575,15 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gnote-working-with-notebooks.page:63
+#| msgid ""
+#| "As you type a note, you can add the note directly to an existing notebook "
+#| "using the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> menu."
 msgid ""
 "As you type a note, you can add the note directly to an existing notebook "
-"using the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> menu."
+"using the <guiseq><gui>Note Actions</gui><gui>Notebook</gui></guiseq> menu."
 msgstr ""
 "При введенні нотатки ви можете додати нотатку безпосередньо до наявного "
-"записника за допомогою пункту меню <guiseq><gui>Дії</gui><gui>Записник</"
+"записника за допомогою пункту меню <guiseq><gui>Дії з примітками</gui><gui>Записник</"
 "gui></guiseq>."
 
 #. (itstool) path: figure/media
@@ -2617,13 +2619,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:71
+#| msgid ""
+#| "Select the <gui>No Notebook</gui> option from the menu which appears when "
+#| "you press the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> in "
+#| "an open note."
 msgid ""
 "Select the <gui>No Notebook</gui> option from the menu which appears when "
-"you press the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> in an "
-"open note."
+"you press the <guiseq><gui>Note Actions</gui><gui>Notebook</gui></guiseq> in "
+"an open note."
 msgstr ""
 "Виберіть пункт <gui>Немає записників</gui> з меню, яке з'явиться, коли ви "
-"виберете пункт <guiseq><gui>Дії</gui><gui>Записник</gui></guiseq> у вікні "
+"виберете пункт <guiseq><gui>Дії з примітками</gui><gui>Записник</gui></guiseq> у вікні "
 "відкритої нотатки."
 
 #. (itstool) path: section/title
@@ -2830,6 +2836,26 @@ msgstr "Налаштовування"
 #: C/index.page:41
 msgid "Common Problems"
 msgstr "Типові проблеми"
+
+#~ msgid "I'm not comfortable with new single-window interface"
+#~ msgstr "У мене проблеми із новим одновіконним інтерфейсом"
+
+#~ msgid ""
+#~ "You can make <app>Gnote</app> behave the old way by selecting <gui>Always "
+#~ "open notes in new window</gui> in Preferences dialog."
+#~ msgstr ""
+#~ "Ви можете повернути стару поведінку <app>Gnote</app> за допомогою пункту "
+#~ "<gui>Завжди відкривати нотатки у новому вікні</gui> у діалоговому вікні "
+#~ "параметрів програми."
+
+#~ msgid ""
+#~ "If the status icon is enabled, click it and select a note from the menu "
+#~ "that appears. This menu is limited to a certain number of notes and "
+#~ "includes pinned and recently updated notes."
+#~ msgstr ""
+#~ "Якщо увімкнено піктограму стану, клацніть на ній і виберіть нотатку у "
+#~ "показаному меню. У меню буде показано лише декілька нотаток, зокрема "
+#~ "пришпилені нотатки та нещодавно оновлені нотатки."
 
 #~ msgid "Template note"
 #~ msgstr "Шаблон нотатки"
