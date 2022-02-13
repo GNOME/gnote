@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -176,7 +176,6 @@ private:
                              const Gtk::TextBuffer::iterator &);
   void on_buffer_mark_set(const Gtk::TextBuffer::iterator & iter,
                           const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert);
-  void on_buffer_mark_deleted(const Glib::RefPtr<Gtk::TextBuffer::Mark> & mark);
   bool on_window_destroyed(GdkEventAny *ev);
   void on_save_timeout();
   void process_child_widget_queue();
