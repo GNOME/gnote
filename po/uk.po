@@ -2,13 +2,13 @@
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2010.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-12-12 19:36+0000\n"
-"PO-Revision-Date: 2021-12-12 21:40+0200\n"
+"POT-Creation-Date: 2022-02-13 19:38+0000\n"
+"PO-Revision-Date: 2022-02-14 09:41+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -314,7 +314,6 @@ msgid "Deprecated"
 msgstr "Застаріле"
 
 #: data/org.gnome.gnote.gschema.xml:117 data/org.gnome.gnote.gschema.xml:132
-#| msgid "This key is deprecated and it's value is ignored."
 msgid "This key is deprecated and its value is ignored."
 msgstr "Цей ключ є застарілим — його значення буде проігноровано."
 
@@ -327,7 +326,6 @@ msgid "Deprecated, has no effect."
 msgstr "Застарілий, не працює."
 
 #: data/org.gnome.gnote.gschema.xml:127
-#| msgid "This setting is deprecated and it's value is ignored"
 msgid "This setting is deprecated and its value is ignored"
 msgstr "Цей параметр є застарілим — його значення буде проігноровано"
 
@@ -1461,13 +1459,18 @@ msgstr ""
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
 #: src/gnote.cpp:273
+#| msgid ""
+#| "Copyright © 2010-2021 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2021 Aurimas Cernius\n"
+"Copyright © 2010-2022 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"© Aurimas Cernius, 2010–2021\n"
+"© Aurimas Cernius, 2010–2022\n"
 "© Debarshi Ray, 2009-2011\n"
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
@@ -1695,12 +1698,12 @@ msgstr ""
 "та права на ~/.local/share/gnote. Подробиці щодо помилки можна знайти у ~/."
 "gnote.log."
 
-#: src/note.cpp:456
+#: src/note.cpp:440
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Помилка під час спроби зберегти: %s"
 
-#: src/note.cpp:683
+#: src/note.cpp:667
 msgid "Setting text content for closed notes not supported"
 msgstr ""
 "Підтримки встановлення текстового вмісту для закритих нотаток не передбачено"
@@ -2697,7 +2700,7 @@ msgstr "Синхронізувати нотатки"
 
 #: src/synchronization/syncmanager.cpp:78
 #: src/synchronization/syncmanager.cpp:95
-#: src/synchronization/syncmanager.cpp:566
+#: src/synchronization/syncmanager.cpp:557
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Повідомте про ваду. Помилка під час виклику: %s"
