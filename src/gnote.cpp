@@ -480,7 +480,7 @@ namespace gnote {
   {
     const GOptionEntry entries[] =
       {
-        { "background", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_background, _("Run Gnote in background."), NULL },
+        { "background", 0, G_OPTION_ARG_NONE, G_OPTION_ARG_NONE, &m_background, _("Run Gnote in background."), NULL },
         { "shell-search", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_shell_search, _("Run Gnote as GNOME Shell search provider."), NULL },
         { "note-path", 0, 0, G_OPTION_ARG_STRING, &m_note_path, _("Specify the path of the directory containing the notes."), _("path") },
         { "search", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Open the search all notes window with the search text."), _("text") },
