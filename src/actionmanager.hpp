@@ -49,7 +49,7 @@ public:
   virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;
   virtual bool is_modifying_main_window_action(const Glib::ustring & action) const override;
 
-  virtual void register_main_window_search_callback(const Glib::ustring & id, const Glib::ustring & action,
+  virtual void register_main_window_search_callback(Glib::ustring && id, Glib::ustring && action,
                                                     sigc::slot<void, const Glib::VariantBase&> callback) override;
   virtual void unregister_main_window_search_callback(const Glib::ustring & id) override;
   virtual std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() override;

@@ -157,12 +157,12 @@ namespace gnote {
     return std::find(m_non_modifying_actions.begin(), m_non_modifying_actions.end(), action) == m_non_modifying_actions.end();
   }
 
-  void ActionManager::register_main_window_search_callback(const Glib::ustring & id, const Glib::ustring & action,
+  void ActionManager::register_main_window_search_callback(Glib::ustring && id, Glib::ustring && action,
                                                     sigc::slot<void, const Glib::VariantBase&> callback)
   {
     DBG_ASSERT(m_main_window_search_actions.find(id) == m_main_window_search_actions.end(), "Duplicate callback for main window search");
 
-    m_main_window_search_actions[id] = std::make_pair(action, callback);
+    m_main_window_search_actions.insert(std::make_pair(std::move(id), std::make_pair(std::move(action), callback)));
     signal_main_window_search_actions_changed();
   }
 
