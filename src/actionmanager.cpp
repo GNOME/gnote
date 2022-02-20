@@ -132,13 +132,13 @@ namespace gnote {
     add_app_menu_item(APP_SECTION_LAST, 200, _("_About Gnote"), "app.about");
   }
 
-  void ActionManager::register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type, bool modifying)
+  void ActionManager::register_main_window_action(Glib::ustring && action, const Glib::VariantType *state_type, bool modifying)
   {
     if(m_main_window_actions.find(action) == m_main_window_actions.end()) {
-      m_main_window_actions[action] = state_type;
       if(!modifying) {
         m_non_modifying_actions.push_back(action);
       }
+      m_main_window_actions.insert(std::make_pair(std::move(action), state_type));
     }
     else {
       if(m_main_window_actions[action] != state_type) {

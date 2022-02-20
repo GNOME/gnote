@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -593,7 +593,7 @@ namespace {
     for(auto & info : m_addin_infos) {
       auto & non_modifying = info.second.non_modifying_actions();
       for(auto & action : info.second.actions()) {
-        manager.register_main_window_action(action.first, action.second,
+        manager.register_main_window_action(Glib::ustring(action.first), action.second,
           std::find(non_modifying.begin(), non_modifying.end(), action.first) == non_modifying.end());
       }
     }

@@ -36,8 +36,7 @@ public:
   virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const Glib::ustring & name) const = 0;
   virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const Glib::ustring & name) = 0;
   virtual void add_app_menu_item(int section, int order, Glib::ustring && label, Glib::ustring && action_def) = 0;
-  virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type,
-    bool modifying = true) = 0;
+  virtual void register_main_window_action(Glib::ustring && action, const Glib::VariantType *state_type, bool modifying = true) = 0;
   virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const = 0;
   virtual bool is_modifying_main_window_action(const Glib::ustring & action) const = 0;
 
