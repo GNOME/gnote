@@ -403,8 +403,13 @@ namespace gnote {
       m_data.data().set_cursor_position(start.get_offset());
       m_data.data().set_selection_bound_position(end.get_offset());
     }
-    else if(insert == insert_mark) {
-      m_data.data().set_cursor_position(iter.get_offset());
+    else {
+      auto cursor_pos = insert_mark->get_iter().get_offset();
+      if(m_data.data().cursor_position() == cursor_pos && m_data.data().selection_bound_position() == NoteData::s_noPosition) {
+        // no change, do not queue save
+        return;
+      }
+      m_data.data().set_cursor_position(cursor_pos);
       m_data.data().set_selection_bound_position(NoteData::s_noPosition);
     }
 
