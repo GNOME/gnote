@@ -38,21 +38,20 @@ class ActionManager
 public:
   void init();
 
-  virtual Glib::RefPtr<Gio::SimpleAction> get_app_action(const Glib::ustring & name) const override;
+  Glib::RefPtr<Gio::SimpleAction> get_app_action(const Glib::ustring & name) const override;
   const std::vector<Glib::RefPtr<Gio::SimpleAction> > & get_app_actions() const
     {
       return m_app_actions;
     }
-  virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const Glib::ustring & name) override;
-  virtual void add_app_menu_item(int section, int order, Glib::ustring && label, Glib::ustring && action_def) override;
-  virtual void register_main_window_action(Glib::ustring && action, const Glib::VariantType *state_type, bool modifying = true) override;
-  virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;
-  virtual bool is_modifying_main_window_action(const Glib::ustring & action) const override;
+  Glib::RefPtr<Gio::SimpleAction> add_app_action(const Glib::ustring & name) override;
+  void add_app_menu_item(int section, int order, Glib::ustring && label, Glib::ustring && action_def) override;
+  void register_main_window_action(Glib::ustring && action, const Glib::VariantType *state_type, bool modifying = true) override;
+  std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;
+  bool is_modifying_main_window_action(const Glib::ustring & action) const override;
 
-  virtual void register_main_window_search_callback(Glib::ustring && id, Glib::ustring && action,
-                                                    sigc::slot<void, const Glib::VariantBase&> callback) override;
-  virtual void unregister_main_window_search_callback(const Glib::ustring & id) override;
-  virtual std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() override;
+  void register_main_window_search_callback(Glib::ustring && id, Glib::ustring && action, sigc::slot<void, const Glib::VariantBase&> callback) override;
+  void unregister_main_window_search_callback(const Glib::ustring & id) override;
+  std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() override;
 private:
   void make_app_actions();
   void make_app_menu_items();
