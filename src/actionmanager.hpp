@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2015-2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2015-2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,8 +44,7 @@ public:
       return m_app_actions;
     }
   virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const Glib::ustring & name) override;
-  virtual void add_app_menu_item(int section, int order, const Glib::ustring & label,
-                                 const Glib::ustring & action_def) override;
+  virtual void add_app_menu_item(int section, int order, Glib::ustring && label, Glib::ustring && action_def) override;
   virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type,
     bool modifying = true) override;
   virtual std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;
@@ -69,10 +68,10 @@ private:
     Glib::ustring label;
     Glib::ustring action_def;
 
-    AppMenuItem(int ord, const Glib::ustring & lbl, const Glib::ustring & act_def)
+    AppMenuItem(int ord, Glib::ustring && lbl, Glib::ustring && act_def)
       : order(ord)
-      , label(lbl)
-      , action_def(act_def)
+      , label(std::move(lbl))
+      , action_def(std::move(act_def))
       {}
 
     struct ptr_comparator

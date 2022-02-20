@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2019 Aurimas Cernius
+ * Copyright (C) 2011-2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -117,10 +117,9 @@ namespace gnote {
     return action;
   }
 
-  void ActionManager::add_app_menu_item(int section, int order, const Glib::ustring & label,
-                                        const Glib::ustring & action_def)
+  void ActionManager::add_app_menu_item(int section, int order, Glib::ustring && label, Glib::ustring && action_def)
   {
-    m_app_menu_items.insert(std::make_pair(section, AppMenuItem(order, label, action_def)));
+    m_app_menu_items.insert(std::make_pair(section, AppMenuItem(order, std::move(label), std::move(action_def))));
   }
 
   void ActionManager::make_app_menu_items()
