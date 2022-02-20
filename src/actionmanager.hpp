@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2015-2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2015-2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ public:
     {
       return m_app_actions;
     }
-  virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(const Glib::ustring & name) override;
+  virtual Glib::RefPtr<Gio::SimpleAction> add_app_action(Glib::ustring && name) override;
   virtual void add_app_menu_item(int section, int order, const Glib::ustring & label,
                                  const Glib::ustring & action_def) override;
   virtual void register_main_window_action(const Glib::ustring & action, const Glib::VariantType *state_type,
