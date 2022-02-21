@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -184,7 +184,7 @@ namespace gnote {
 
     if (module->has_interface(NoteAddin::IFACE_NAME)) {
       if (enable)
-        m_addin_manager.add_note_addin_info(id, module);
+        m_addin_manager.add_note_addin_info(std::move(id), module);
       else
         m_addin_manager.erase_note_addin_info(id);
     }

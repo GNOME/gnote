@@ -139,29 +139,26 @@ namespace {
     }
   }
 
-  void AddinManager::add_note_addin_info(const Glib::ustring & id,
-                                         const sharp::DynamicModule * dmod)
+  void AddinManager::add_note_addin_info(Glib::ustring && id, const sharp::DynamicModule * dmod)
   {
     {
-      const IdInfoMap::const_iterator iter
-                                        = m_note_addin_infos.find(id);
+      const IdInfoMap::const_iterator iter = m_note_addin_infos.find(id);
       if (m_note_addin_infos.end() != iter) {
         ERR_OUT(_("Note plugin info %s already present"), id.c_str());
         return;
       }
     }
 
-    sharp::IfaceFactoryBase * const f = dmod->query_interface(
-                                          NoteAddin::IFACE_NAME);
+    sharp::IfaceFactoryBase * const f = dmod->query_interface(NoteAddin::IFACE_NAME);
     if(!f) {
       ERR_OUT(_("%s does not implement %s"), id.c_str(), NoteAddin::IFACE_NAME);
       return;
     }
 
-    load_note_addin(id, f);
+    load_note_addin(std::move(id), f);
   }
 
-  void AddinManager::load_note_addin(const Glib::ustring & id, sharp::IfaceFactoryBase *const f)
+  void AddinManager::load_note_addin(Glib::ustring && id, sharp::IfaceFactoryBase *const f)
   {
     m_note_addin_infos.insert(std::make_pair(id, f));
     for(NoteAddinMap::iterator iter = m_note_addins.begin();
@@ -177,7 +174,7 @@ namespace {
       NoteAddin *const addin = dynamic_cast<NoteAddin *>((*f)());
       if(addin) {
        addin->initialize(m_gnote, note);
-       id_addin_map.insert(std::make_pair(id, addin));
+       id_addin_map.insert(std::make_pair(std::move(id), addin));
       }
     }
   }
