@@ -1,17 +1,17 @@
 # Swedish messages for gnote.
-# Copyright © 2004-2021 Free Software Foundation, Inc.
+# Copyright © 2004-2022 Free Software Foundation, Inc.
 # Sergej Kotliar <sigge@hystrix.se>, 2006.
 # Christian Rose <menthos@menthos.com>, 2004, 2005.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
-# Luna Jernberg <droidbittin@gmail.com>, 2020.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Luna Jernberg <droidbittin@gmail.com>, 2020, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-12-12 19:36+0000\n"
-"PO-Revision-Date: 2021-12-12 21:39+0100\n"
+"POT-Creation-Date: 2022-02-20 16:50+0000\n"
+"PO-Revision-Date: 2022-02-20 21:00+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:88 src/recentchanges.cpp:116
@@ -341,10 +341,10 @@ msgid ""
 "Gnote should draw decorations itself. Requires application restart."
 msgstr ""
 "Ska Gnote rita sin namnlist för fönster, eller lämna det till "
-"fönsterhanteraren. Möjliga värden är \"enabled\" för att rita dem, \"disabled"
-"\" för att lämna dem till fönsterhanteraren, eller en kommaseparerad lista "
-"av skrivbordsmiljöer där Gnote ska rita dekorationer själv. Kräver omstart "
-"av programmet."
+"fönsterhanteraren. Möjliga värden är \"enabled\" för att rita dem, "
+"\"disabled\" för att lämna dem till fönsterhanteraren, eller en "
+"kommaseparerad lista av skrivbordsmiljöer där Gnote ska rita dekorationer "
+"själv. Kräver omstart av programmet."
 
 #: data/org.gnome.gnote.gschema.xml:148
 msgid "HTML Export Last Directory"
@@ -677,27 +677,27 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Minska indentering/inaktivera punkter för aktuell rad"
 
-#: src/actionmanager.cpp:128
+#: src/actionmanager.cpp:127
 msgid "_New Note"
 msgstr "_Ny anteckning"
 
-#: src/actionmanager.cpp:129
+#: src/actionmanager.cpp:128
 msgid "New _Window"
 msgstr "Nytt _fönster"
 
-#: src/actionmanager.cpp:130 src/preferencesdialog.cpp:623
+#: src/actionmanager.cpp:129 src/preferencesdialog.cpp:623
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:130
 msgid "_Shortcuts"
 msgstr "_Genvägar"
 
-#: src/actionmanager.cpp:132
+#: src/actionmanager.cpp:131
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:132
 msgid "_About Gnote"
 msgstr "_Om Gnote"
 
@@ -1463,12 +1463,12 @@ msgstr ""
 
 #: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2021 Aurimas Cernius\n"
+"Copyright © 2010-2022 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2021 Aurimas Cernius\n"
+"Copyright © 2010-2022 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
@@ -1696,12 +1696,12 @@ msgstr ""
 "tillräckligt mycket diskutrymme och att du har lämpliga rättigheter på ~/."
 "local/share/gnote. Mer information kan hittas i ~/.gnote.log."
 
-#: src/note.cpp:456
+#: src/note.cpp:445
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Fel vid sparande: %s"
 
-#: src/note.cpp:683
+#: src/note.cpp:672
 msgid "Setting text content for closed notes not supported"
 msgstr "Att ställa in textinnehåll för stängda anteckningar stöds inte"
 
@@ -1844,8 +1844,9 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Byt namn på länkar i andra anteckningar från \"<span underline=\"single\">"
-"%1</span>\" till \"<span underline=\"single\">%2</span>\"?\n"
+"Byt namn på länkar i andra anteckningar från \"<span "
+"underline=\"single\">%1</span>\" till \"<span underline=\"single\">%2</"
+"span>\"?\n"
 "\n"
 "Om du inte byter namn på länkarna så kommer de inte längre att länka till "
 "någonting."
@@ -2685,7 +2686,7 @@ msgstr "Synkronisera anteckningar"
 
 #: src/synchronization/syncmanager.cpp:78
 #: src/synchronization/syncmanager.cpp:95
-#: src/synchronization/syncmanager.cpp:566
+#: src/synchronization/syncmanager.cpp:557
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Rapportera ett fel. Typkonvertering misslyckades: %s"
