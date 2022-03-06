@@ -1,13 +1,13 @@
 # Lithuanian translation for gnote.
 # Copyright (C) 2011 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
-# Aurimas Černius <aurisc4@gmail.com>, 2011-2021.
+# Aurimas Černius <aurisc4@gmail.com>, 2011-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2021-07-20 14:54+0000\n"
-"PO-Revision-Date: 2021-09-04 23:05+0300\n"
+"POT-Creation-Date: 2022-02-13 18:24+0000\n"
+"PO-Revision-Date: 2022-03-06 21:54+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -167,8 +167,9 @@ msgstr "Naudoti fiksuoto pločio šriftą"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-fixedwidth.page:25
-msgid "Fixed Width Add-in"
-msgstr "Fiksuoto pločio priedas"
+#| msgid "Fixed Width Add-in"
+msgid "Fixed Width Plugin"
+msgstr "Fiksuoto pločio įskiepis"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-fixedwidth.page:26
@@ -196,20 +197,18 @@ msgstr "Eksportuoti į HTML"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:26
+#| msgid ""
+#| "When the <app>Export to HTML</app> plugin is installed, the command "
+#| "<gui>Export to HTML</gui> is present in the <gui>Actions</gui> menu."
 msgid ""
 "When the <app>Export to HTML</app> plugin is installed, the command "
-"<gui>Export to HTML</gui> is present in the <gui>Actions</gui> menu."
+"<gui>Export to HTML</gui> is present in the <gui>Note Actions</gui> menu."
 msgstr ""
-"Kai įskiepis <app>Eksportuoti į HTML</app> yra įdiegtas, <gui>veiksmų</gui> "
-"meniu turi komandą <gui>eksportuoti į HTML</gui>."
+"Kai įskiepis <app>Eksportuoti į HTML</app> yra įdiegtas, <gui>raštelio "
+"veiksmų</gui> meniu turi komandą <gui>eksportuoti į HTML</gui>."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:27
-#| msgid ""
-#| "To create an HTML document from one or more notes, select this command. "
-#| "You will see a dialog that lets you choose where to save the HTML file. "
-#| "Enter the destination filename and click <gui>Save</gui> to save the "
-#| "file, or <gui>Cancel</gui> to abort."
 msgid ""
 "To create an HTML document from one or more notes, select this command. You "
 "will see a dialog that lets you choose where to save the HTML file. Enter "
@@ -223,9 +222,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:28
-#| msgid ""
-#| "To export any notes linked to by the current note, select the <gui>Export "
-#| "Linked Notes</gui> check box."
 msgid ""
 "To export any notes linked to by the current note, select the <gui>Export "
 "Linked Notes</gui> check box."
@@ -333,14 +329,14 @@ msgstr "Spausdinti"
 #| msgid ""
 #| "When the <app>Print</app> plugin is installed, the <gui>Print</gui> "
 #| "command is present in the <gui>Actions</gui> menu. This command opens a "
-#| "standard <gui>Print</gui> dialog which lets you print a note."
+#| "standard <gui>Print</gui> dialog which lets you print a note."
 msgid ""
 "When the <app>Print</app> plugin is installed, the <gui>Print</gui> command "
-"is present in the <gui>Actions</gui> menu. This command opens a standard "
-"<gui>Print</gui> dialog which lets you print a note."
+"is present in the <gui>Note Actions</gui> menu. This command opens a "
+"standard <gui>Print</gui> dialog which lets you print a note."
 msgstr ""
-"Kai yra įdiegtas įskiepis <app>Spausdinimo palaikymas</app>, <gui>veiksmų</"
-"gui> meniu turės komandą <gui>Spausdinti</gui>. Ši komanda atvers "
+"Kai yra įdiegtas įskiepis <app>Spausdinimo palaikymas</app>, <gui>raštelio "
+"veiksmų</gui> meniu turės komandą <gui>Spausdinti</gui>. Ši komanda atvers "
 "standartinį <gui>spausdinimo dialogą</gui>, kuris jums leis atspausdinti "
 "raštelį."
 
@@ -356,8 +352,9 @@ msgstr "2011,2013,2014"
 
 #. (itstool) path: page/title
 #: C/gnote-addins-preferences.page:25
-msgid "Add-in Preferences"
-msgstr "Priedų nustatymai"
+#| msgid "Add-in Preferences"
+msgid "Plugin Preferences"
+msgstr "Įskiepių nustatymai"
 
 #. (itstool) path: page/p
 #: C/gnote-addins-preferences.page:26
@@ -381,13 +378,15 @@ msgstr ""
 
 #. (itstool) path: figure/title
 #: C/gnote-addins-preferences.page:28
-msgid "<app>Gnote</app> Addin Preferences"
-msgstr "<app>Gnote</app> priedų nustatymai"
+#| msgid "<app>Gnote</app> Addin Preferences"
+msgid "<app>Gnote</app> Plugin Preferences"
+msgstr "<app>Gnote</app> įskiepių nustatymai"
 
 #. (itstool) path: figure/desc
 #: C/gnote-addins-preferences.page:29
-msgid "<app>Gnote</app> Add-ins window"
-msgstr "<app>Gnote</app> priedų langas"
+#| msgid "<app>Gnote</app> Add-ins window"
+msgid "<app>Gnote</app> Plugins window"
+msgstr "<app>Gnote</app> įskiepių langas"
 
 #. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
@@ -403,8 +402,9 @@ msgstr "gnote-preferences-add-ins.png"
 
 #. (itstool) path: media/p
 #: C/gnote-addins-preferences.page:31
-msgid "<gui>Add-ins</gui> window."
-msgstr "Langas <gui>Priedai</gui>."
+#| msgid "<gui>Add-ins</gui> window."
+msgid "<gui>Plugins</gui> window."
+msgstr "<gui>Įskiepių</gui> langas."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-readonly.page:8
@@ -418,18 +418,24 @@ msgstr "Tik skaityti"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-readonly.page:17
+#| msgid ""
+#| "When the <app>ReadOnly</app> plugin is installed, the <gui>Read Only</"
+#| "gui> item is present in the <gui>Actions</gui> menu for open note. When "
+#| "this item is checked, note is marked as read-only. This does not allow to "
+#| "change note until the menu item is unchecked. Use this to prevent notes "
+#| "from accidental modification."
 msgid ""
 "When the <app>ReadOnly</app> plugin is installed, the <gui>Read Only</gui> "
-"item is present in the <gui>Actions</gui> menu for open note. When this item "
-"is checked, note is marked as read-only. This does not allow to change note "
-"until the menu item is unchecked. Use this to prevent notes from accidental "
-"modification."
+"item is present in the <gui>Note Actions</gui> menu for open note. When this "
+"item is checked, note is marked as read-only. This does not allow to change "
+"note until the menu item is unchecked. Use this to prevent notes from "
+"accidental modification."
 msgstr ""
-"Kai yra įdiegtas įskiepis <app>Tik skaityti</app>, <gui>veiksmų</gui> meniu "
-"atvertam rašteliui turės elementą <gui>Tik skaityti</gui>. Pažymėjus šį "
-"elementą raštelis bus paženklintas tik-skaitymui. Tai neleis pakeisti "
-"raštelio iki meniu elementas bus atžymėtas. Naudokite šią funkciją raštelių "
-"apsaugojimui nuo atsitiktinio pakeitimo."
+"Kai yra įdiegtas įskiepis <app>Tik skaityti</app>, <gui>raštelio veiksmų</"
+"gui> meniu atvertam rašteliui turės elementą <gui>Tik skaityti</gui>. "
+"Pažymėjus šį elementą raštelis bus paženklintas tik-skaitymui. Tai neleis "
+"pakeisti raštelio iki meniu elementas bus atžymėtas. Naudokite šią funkciją "
+"raštelių apsaugojimui nuo atsitiktinio pakeitimo."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-replacetitle.page:8
@@ -443,12 +449,15 @@ msgstr "Pakeisti pavadinimą"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:26
+#| msgid ""
+#| "When the <app>Replace title</app> plugin is installed, the command "
+#| "<gui>Replace title</gui> is present in the <gui>Actions</gui> menu."
 msgid ""
 "When the <app>Replace title</app> plugin is installed, the command "
-"<gui>Replace title</gui> is present in the <gui>Actions</gui> menu."
+"<gui>Replace title</gui> is present in the <gui>Note Actions</gui> menu."
 msgstr ""
-"Kai įskiepis <gui>Pakeisti pavadinimą</gui> yra įdiegtas, <gui>veiksmų</gui> "
-"meniu turi punktą <gui>pakeisti pavadinimą</gui>."
+"Kai įskiepis <gui>Pakeisti pavadinimą</gui> yra įdiegtas, <gui>raštelio "
+"veiksmų</gui> meniu turi punktą <gui>pakeisti pavadinimą</gui>."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:27
@@ -854,12 +863,15 @@ msgstr "Antraštei suformatuoti atlikite vieną iš šių veiksmų:"
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:153
+#| msgid ""
+#| "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
+#| "<guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq> menu."
 msgid ""
 "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
-"<guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq> menu."
+"<guiseq><gui>Note Actions</gui><gui>Table of Contents</gui></guiseq> menu."
 msgstr ""
-"Naudokite <gui>veiksmų</gui> meniu <gui>turinys</gui> komandas <gui>Antraštė "
-"1</gui> bei <gui>Antraštė 2</gui>."
+"Naudokite <gui>raštelio veiksmų</gui> meniu <gui>turinys</gui> komandas "
+"<gui>Antraštė 1</gui> bei <gui>Antraštė 2</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:158
@@ -918,9 +930,13 @@ msgstr "Turinį galite pasiekti šiais būdais:"
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:184
+#| msgid ""
+#| "In the menu <guiseq><gui>Actions</gui><gui>Table of Contents</gui></"
+#| "guiseq>."
 msgid ""
-"In the menu <guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq>."
-msgstr "<gui>Veiksmų</gui> meniu pasirinkite <gui>turinys</gui>."
+"In the menu <guiseq><gui>Note Actions</gui><gui>Table of Contents</gui></"
+"guiseq>."
+msgstr "<gui>Raštelio eiksmų</gui> meniu pasirinkite <gui>turinys</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:185
@@ -1000,10 +1016,6 @@ msgstr "Priedas „Įterpti laiko žymę“"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-timestamp.page:28
-#| msgid ""
-#| "When the <gui>Insert Timestamp</gui> plugin is installed, "
-#| "the <gui>Actions</gui> menu will include a <gui>Insert Timestamp</gui> "
-#| "command. Select this command to insert the current date and time."
 msgid ""
 "When the <gui>Insert Timestamp</gui> plugin is installed, the <gui>Actions</"
 "gui> menu will include a <gui>Insert Timestamp</gui> command. Select this "
@@ -1020,14 +1032,12 @@ msgstr "Pabrauktas tekstas"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-underline.page:25
-msgid "Underline Text Add-In"
-msgstr "Priedas „Pabrauktas“"
+#| msgid "Underline Text Add-In"
+msgid "Underline Text Plugin"
+msgstr "Įskiepis „Pabrauktas“"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-underline.page:26
-#| msgid ""
-#| "When the <gui>Underline</gui> plugin is installed, the <gui>Text</"
-#| "gui> menu will have a <gui>Underline</gui> option available."
 msgid ""
 "When the <gui>Underline</gui> plugin is installed, the <gui>Text</gui> menu "
 "will have a <gui>Underline</gui> option available."
@@ -1234,26 +1244,15 @@ msgstr "Kaip prisijungus automatiškai paleisti <app>Gnote</app>?"
 
 #. (itstool) path: item/p
 #: C/gnote-common-problems.page:30
+#| msgid ""
+#| "To start Gnote automatically when you log into GNOME, run <app>gnome-"
+#| "session-properties</app>."
 msgid ""
-"To start Gnote automatically when you log into GNOME, run <app>gnome-session-"
-"properties</app>."
+"you can setup Gnote to start automatically when you log into GNOME using "
+"<app>Tweaks</app> application."
 msgstr ""
-"Automatiniam Gnote paleidimui prisijungus prie GNOME, paleiskite <app>gnome-"
-"session-properties</app>."
-
-#. (itstool) path: item/p
-#: C/gnote-common-problems.page:32
-msgid "I'm not comfortable with new single-window interface"
-msgstr "Man nepatogi nauja vieno lango sąsaja"
-
-#. (itstool) path: item/p
-#: C/gnote-common-problems.page:32
-msgid ""
-"You can make <app>Gnote</app> behave the old way by selecting <gui>Always "
-"open notes in new window</gui> in Preferences dialog."
-msgstr ""
-"Galite įjungti seną <app>Gnote</app> veikimą nustatymų dialoge pažymėję "
-"<gui>Visada atverti raštelius naujame lange</gui>."
+"Automatiniam Gnote paleidimui prisijungus prie GNOME, paleiskite programą "
+"<app>Reguliavimai</app>."
 
 #. (itstool) path: info/desc
 #: C/gnote-creating-notes.page:9
@@ -1344,9 +1343,14 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-deleting-notes.page:29
-msgid "When a note is open, press the <gui>Delete</gui> button on the toolbar."
+#| msgid ""
+#| "When a note is open, press the <gui>Delete</gui> button on the toolbar."
+msgid ""
+"When a note is open, press the <gui>Note Actions</gui> button on the toolbar "
+"and press <gui>Delete</gui> in menu that opens."
 msgstr ""
-"Atvertame raštelyje spauskite mygtuką <gui>Ištrinti</gui> įrankių juostoje."
+"Atvertame raštelyje spauskite <gui>raštelio veiksmų</gui> mygtuką įrankių "
+"juostoje ir atsivėrusiame meniu spauskite <gui>ištrinti</gui>."
 
 #. (itstool) path: page/p
 #: C/gnote-deleting-notes.page:31
@@ -1388,9 +1392,12 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gnote-editing-notes.page:26
+#| msgid ""
+#| "Toolbar at the top of the window will now contain note specific items in "
+#| "it. Below toolbar is the note's content area."
 msgid ""
 "Toolbar at the top of the window will now contain note specific items in it. "
-"Below toolbar is the note's content area."
+"Notes content area will be in an active tab below."
 msgstr ""
 "Įrankinė lango viršuje dabar turės raštelio punktus. Žemiau bus raštelio "
 "turinio vieta."
@@ -1411,10 +1418,14 @@ msgstr "<app>Gnote</app> raštelis"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-editing-notes.page:30
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-new-note.png' "
+#| "md5='51fb284d55e3b78c1f66f2136d7cb1f4'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
-"md5='51fb284d55e3b78c1f66f2136d7cb1f4'"
+"md5='ea15b681fe971d78ca52a0ba8d52266a'"
 msgstr "gnote-new-note.png"
 
 #. (itstool) path: media/p
@@ -1689,10 +1700,14 @@ msgstr "<app>Gnote</app> pagrindinis langas"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-introduction.page:39
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-search-all-notes.png' "
+#| "md5='2c3b8a9e28c0dc08810a730cbbad0cf6'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-search-all-notes.png' "
-"md5='2c3b8a9e28c0dc08810a730cbbad0cf6'"
+"md5='e9e0b63ed6749cd959e2a80cf35fe7fd'"
 msgstr "gnote-search-all-notes.png"
 
 #. (itstool) path: media/p
@@ -1903,10 +1918,14 @@ msgstr "Langas <gui>Nustatymai</gui>"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-notes-preferences.page:41
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-preferences-editing.png' "
+#| "md5='dbbcd56225a43e92b8dea81db93e7329'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-editing.png' "
-"md5='dbbcd56225a43e92b8dea81db93e7329'"
+"md5='de21fae795592d3f1c753aa253a75584'"
 msgstr "gnote-preferences-editing.png"
 
 #. (itstool) path: section/title
@@ -2069,17 +2088,6 @@ msgid ""
 msgstr ""
 "Pažymėkite vieną ar daugiau raštelių sąraše ir paspauskite "
 "<keyseq><key>Vald</key><key>O</key></keyseq>."
-
-#. (itstool) path: item/p
-#: C/gnote-searching-notes.page:35
-msgid ""
-"If the status icon is enabled, click it and select a note from the menu that "
-"appears. This menu is limited to a certain number of notes and includes "
-"pinned and recently updated notes."
-msgstr ""
-"Jei būsenos piktograma yra įjungta, paspauskite ant jos ir pasirinkite "
-"raštelį ir meniu. Šis meniu riboja rodomų raštelių skaičių ir yra užpildytas "
-"prisegtais ir neseniai keistais rašteliais."
 
 #. (itstool) path: info/desc
 #: C/gnote-synchronization.page:8
@@ -2300,10 +2308,14 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-template-notes.page:41
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-template-note.png' "
+#| "md5='132b4980218eb2975a97c8a4dc7385c4'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
-"md5='132b4980218eb2975a97c8a4dc7385c4'"
+"md5='ce1b347b9e6e84b9b7da4ceaef0bd8b0'"
 msgstr "gnote-template-note.png"
 
 #. (itstool) path: figure/p
@@ -2447,10 +2459,14 @@ msgstr "Nauja užrašinė iš kontekstinio meniu"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:50
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/add-notebook-search.png' "
+#| "md5='723f924492cbd2322be5c5343c7e771b'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-notebook-search.png' "
-"md5='723f924492cbd2322be5c5343c7e771b'"
+"md5='1c53926aeb85ca4cd5f78712f4662f7e'"
 msgstr "add-notebook-search.png"
 
 #. (itstool) path: media/p
@@ -2499,12 +2515,15 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gnote-working-with-notebooks.page:63
+#| msgid ""
+#| "As you type a note, you can add the note directly to an existing notebook "
+#| "using the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> menu."
 msgid ""
 "As you type a note, you can add the note directly to an existing notebook "
-"using the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> menu."
+"using the <guiseq><gui>Note Actions</gui><gui>Notebook</gui></guiseq> menu."
 msgstr ""
 "Rašydami raštelį galite pridėti jį į esamą užrašinę naudodami meniu punktą "
-"<guiseq><gui>Veiksmai</gui><gui>Užrašinė</gui></guiseq>."
+"<guiseq><gui>raštelio veiksmai</gui><gui>Užrašinė</gui></guiseq>."
 
 #. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
@@ -2512,10 +2531,14 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:66
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/add-to-notebook.png' "
+#| "md5='df8420b1433dd89e5a2e33713caf13d7'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
-"md5='df8420b1433dd89e5a2e33713caf13d7'"
+"md5='937bfe6fcc3107e949d554d6a7c5b924'"
 msgstr "add-to-notebook.png"
 
 #. (itstool) path: media/p
@@ -2538,13 +2561,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:71
+#| msgid ""
+#| "Select the <gui>No Notebook</gui> option from the menu which appears when "
+#| "you press the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> in "
+#| "an open note."
 msgid ""
 "Select the <gui>No Notebook</gui> option from the menu which appears when "
-"you press the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> in an "
-"open note."
+"you press the <guiseq><gui>Note Actions</gui><gui>Notebook</gui></guiseq> in "
+"an open note."
 msgstr ""
 "Pasirinkite meniu punktą <gui>Jokios užrašinės</gui>, kuri matoma paspaudus "
-"<guiseq><gui>Veiksmai</gui><gui>Užrašinė</gui></guiseq>."
+"<guiseq><gui>raštelio veiksmai</gui><gui>Užrašinė</gui></guiseq>."
 
 #. (itstool) path: section/title
 #. (itstool) path: figure/title
@@ -2586,10 +2613,14 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:84
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/note-template.png' "
+#| "md5='c7d0c4b1455aedf1328562f2e498995e'"
 msgctxt "_"
 msgid ""
 "external ref='figures/note-template.png' "
-"md5='c7d0c4b1455aedf1328562f2e498995e'"
+"md5='b128e2f67839219184c445c82614783d'"
 msgstr "note-template.png"
 
 #. (itstool) path: media/p
@@ -2654,11 +2685,15 @@ msgstr "Raštelių ištrynimas pagrindiniame lange"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:98
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/delete-notebook.png' "
+#| "md5='03d1f054432a2b050dcbfcfb9a02784d'"
 msgctxt "_"
 msgid ""
 "external ref='figures/delete-notebook.png' "
-"md5='5f84059bec83359d592a3d8537f304ba'"
-msgstr "add-to-notebook.png"
+"md5='622851e47c63142565b05cfcde2ee862'"
+msgstr "delete-notebook.png"
 
 #. (itstool) path: media/p
 #: C/gnote-working-with-notebooks.page:99
@@ -2741,14 +2776,33 @@ msgstr "Pritaikymas sau"
 msgid "Common Problems"
 msgstr "Dažnos problemos"
 
-#~ msgid "Template note"
-#~ msgstr "Raštelio šablonas"
+#~ msgid "I'm not comfortable with new single-window interface"
+#~ msgstr "Man nepatogi nauja vieno lango sąsaja"
+
+#~ msgid ""
+#~ "You can make <app>Gnote</app> behave the old way by selecting <gui>Always "
+#~ "open notes in new window</gui> in Preferences dialog."
+#~ msgstr ""
+#~ "Galite įjungti seną <app>Gnote</app> veikimą nustatymų dialoge pažymėję "
+#~ "<gui>Visada atverti raštelius naujame lange</gui>."
+
+#~ msgid ""
+#~ "If the status icon is enabled, click it and select a note from the menu "
+#~ "that appears. This menu is limited to a certain number of notes and "
+#~ "includes pinned and recently updated notes."
+#~ msgstr ""
+#~ "Jei būsenos piktograma yra įjungta, paspauskite ant jos ir pasirinkite "
+#~ "raštelį ir meniu. Šis meniu riboja rodomų raštelių skaičių ir yra "
+#~ "užpildytas prisegtais ir neseniai keistais rašteliais."
 
 #~ msgctxt "_"
 #~ msgid ""
 #~ "external ref='figures/delete-notebook.png' "
-#~ "md5='03d1f054432a2b050dcbfcfb9a02784d'"
-#~ msgstr "delete-notebook.png"
+#~ "md5='5f84059bec83359d592a3d8537f304ba'"
+#~ msgstr "add-to-notebook.png"
+
+#~ msgid "Template note"
+#~ msgstr "Raštelio šablonas"
 
 #~ msgid "<em>Navigate long structured notes</em>"
 #~ msgstr "<em>Naršykite ilgus struktūrizuotus raštelius</em>"
