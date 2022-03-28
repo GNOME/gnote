@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019,2021-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,9 +41,9 @@ public:
   static MainWindow *present_default(IGnote & g, const Note::Ptr & note);
   static bool use_client_side_decorations(Preferences & prefs);
 
-  explicit MainWindow(const Glib::ustring & title);
+  explicit MainWindow(Glib::ustring && title);
 
-  virtual void set_search_text(const Glib::ustring & value) = 0;
+  virtual void set_search_text(Glib::ustring && value) = 0;
   virtual void show_search_bar(bool grab_focus = true) = 0;
   virtual void present_search() = 0;
   virtual void new_note() = 0;

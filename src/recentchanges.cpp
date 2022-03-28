@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2021 Aurimas Cernius
+ * Copyright (C) 2010-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -620,17 +620,17 @@ namespace gnote {
     MainWindow::on_show();
   }
 
-  void NoteRecentChanges::set_search_text(const Glib::ustring & value)
+  void NoteRecentChanges::set_search_text(Glib::ustring && value)
   {
     if(m_search_box) {
-      m_search_entry->set_text(value);
+      m_search_entry->set_text(std::move(value));
     }
     else {
       if(!m_search_text) {
-        m_search_text = new Glib::ustring(value);
+        m_search_text = new Glib::ustring(std::move(value));
       }
       else {
-        *m_search_text = value;
+        *m_search_text = std::move(value);
       }
     }
   }

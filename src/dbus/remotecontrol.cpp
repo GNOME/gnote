@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2016-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2014,2016-2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -129,7 +129,7 @@ namespace gnote {
     }
 
     MainWindow & window(present_note(note));
-    window.set_search_text(search);
+    window.set_search_text(Glib::ustring(search));
     window.show_search_bar();
 
     return true;
@@ -145,7 +145,7 @@ namespace gnote {
   void RemoteControl::DisplaySearchWithText(const Glib::ustring& search_text)
   {
     MainWindow & recent_changes = m_gnote.open_search_all();
-    recent_changes.set_search_text(search_text);
+    recent_changes.set_search_text(Glib::ustring(search_text));
     recent_changes.present();
     recent_changes.show_search_bar();
   }

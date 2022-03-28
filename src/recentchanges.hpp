@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -45,7 +45,7 @@ public:
   NoteRecentChanges(IGnote & g, NoteManagerBase & m);
   virtual ~NoteRecentChanges();
   virtual void show_search_bar(bool grab_focus = true) override;
-  virtual void set_search_text(const Glib::ustring & value) override;
+  virtual void set_search_text(Glib::ustring && value) override;
   virtual void new_note() override;
   virtual void present_search() override;
   virtual void close_window() override;

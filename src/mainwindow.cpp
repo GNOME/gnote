@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -121,10 +121,10 @@ bool MainWindow::use_client_side_decorations(Preferences & prefs)
 }
 
 
-MainWindow::MainWindow(const Glib::ustring & title)
+MainWindow::MainWindow(Glib::ustring && title)
   : m_close_on_esc(false)
 {
-  set_title(title);
+  set_title(std::move(title));
 }
 
 }
