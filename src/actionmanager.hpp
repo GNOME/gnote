@@ -43,7 +43,7 @@ public:
     {
       return m_app_actions;
     }
-  Glib::RefPtr<Gio::SimpleAction> add_app_action(const Glib::ustring & name) override;
+  Glib::RefPtr<Gio::SimpleAction> add_app_action(Glib::ustring && name) override;
   void add_app_menu_item(int section, int order, Glib::ustring && label, Glib::ustring && action_def) override;
   void register_main_window_action(Glib::ustring && action, const Glib::VariantType *state_type, bool modifying = true) override;
   std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;

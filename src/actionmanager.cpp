@@ -110,9 +110,9 @@ namespace gnote {
     return Glib::RefPtr<Gio::SimpleAction>();
   }
 
-  Glib::RefPtr<Gio::SimpleAction> ActionManager::add_app_action(const Glib::ustring & name)
+  Glib::RefPtr<Gio::SimpleAction> ActionManager::add_app_action(Glib::ustring && name)
   {
-    Glib::RefPtr<Gio::SimpleAction> action = Gio::SimpleAction::create(name);
+    auto action = Gio::SimpleAction::create(std::move(name));
     m_app_actions.push_back(action);
     return action;
   }
