@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -486,7 +486,7 @@ NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)
     sharp::file_copy(file_path, dest_file);
 
     // TODO: make sure the title IS unique.
-    note = note_load(dest_file);
+    note = note_load(std::move(dest_file));
     add_note(note);
   }
   catch(...)

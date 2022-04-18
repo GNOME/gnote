@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -81,7 +81,7 @@ namespace gnote {
     virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content,
                                           const Glib::ustring & guid) override;
     virtual NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) override;
-    virtual NoteBase::Ptr note_load(const Glib::ustring & file_name) override;
+    NoteBase::Ptr note_load(Glib::ustring && file_name) override;
   private:
     AddinManager *create_addin_manager();
     void create_start_notes();

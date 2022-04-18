@@ -163,9 +163,9 @@ namespace gnote {
   {
     std::vector<Glib::ustring> files = sharp::directory_get_files_with_ext(notes_dir(), ".note");
 
-    for(auto file_path : files) {
+    for(auto & file_path : files) {
       try {
-        Note::Ptr note = Note::load(file_path, *this, m_gnote);
+        Note::Ptr note = Note::load(std::move(file_path), *this, m_gnote);
         add_note(note);
       } 
       catch (const std::exception & e) {
@@ -249,9 +249,9 @@ namespace gnote {
     }
   }
 
-  NoteBase::Ptr NoteManager::note_load(const Glib::ustring & file_name)
+  NoteBase::Ptr NoteManager::note_load(Glib::ustring && file_name)
   {
-    return Note::load(file_name, *this, m_gnote);
+    return Note::load(std::move(file_name), *this, m_gnote);
   }
 
 
@@ -280,7 +280,7 @@ namespace gnote {
 
   NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, const Glib::ustring & file_name)
   {
-    return Note::create_new_note(title, file_name, *this, m_gnote);
+    return Note::create_new_note(Glib::ustring(title), Glib::ustring(file_name), *this, m_gnote);
   }
 
   NoteBase::Ptr NoteManager::get_or_create_template_note()

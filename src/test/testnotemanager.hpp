@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2019-2020 Aurimas Cernius
+ * Copyright (C) 2014,2019-2020,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ public:
     }
 protected:
   virtual gnote::NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) override;
-  virtual gnote::NoteBase::Ptr note_load(const Glib::ustring & file_name) override;
+  gnote::NoteBase::Ptr note_load(Glib::ustring && file_name) override;
 private:
   gnote::notebooks::NotebookManager m_notebook_manager;
   gnote::NoteArchiver m_note_archiver;

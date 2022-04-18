@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2014,2017,2019-2020,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,7 +60,7 @@ gnote::NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, c
   return std::make_shared<Note>(std::move(note_data), file_name, *this);
 }
 
-gnote::NoteBase::Ptr NoteManager::note_load(const Glib::ustring & /*file_name*/)
+gnote::NoteBase::Ptr NoteManager::note_load(Glib::ustring && /*file_name*/)
 {
   return gnote::NoteBase::Ptr();
 }

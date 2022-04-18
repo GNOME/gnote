@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -113,7 +113,7 @@ protected:
   virtual NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) = 0;
   Glib::ustring make_new_file_name() const;
   Glib::ustring make_new_file_name(const Glib::ustring & guid) const;
-  virtual NoteBase::Ptr note_load(const Glib::ustring & file_name) = 0;
+  virtual NoteBase::Ptr note_load(Glib::ustring && file_name) = 0;
 
   IGnote & m_gnote;
   NoteBase::List m_notes;

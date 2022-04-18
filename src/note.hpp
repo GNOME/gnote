@@ -96,19 +96,13 @@ public:
   ~Note();
 
 
-  static Note::Ptr create_new_note(const Glib::ustring & title,
-                                   const Glib::ustring & filename,
-                                   NoteManager & manager,
-                                   IGnote & g);
+  static Note::Ptr create_new_note(Glib::ustring && title, Glib::ustring && filename, NoteManager & manager, IGnote & g);
 
-  static Note::Ptr create_existing_note(std::unique_ptr<NoteData> data,
-                                        Glib::ustring filepath,
-                                        NoteManager & manager,
-                                        IGnote & g);
+  static Note::Ptr create_existing_note(std::unique_ptr<NoteData> data, Glib::ustring && filepath, NoteManager & manager, IGnote & g);
 
-  Note(std::unique_ptr<NoteData> _data, const Glib::ustring & filepath, NoteManager & manager, IGnote & g);
+  Note(std::unique_ptr<NoteData> _data, Glib::ustring && filepath, NoteManager & manager, IGnote & g);
   virtual void delete_note() override;
-  static Note::Ptr load(const Glib::ustring &, NoteManager &, IGnote &);
+  static Note::Ptr load(Glib::ustring &&, NoteManager &, IGnote &);
   virtual void save() override;
   virtual void queue_save(ChangeType c) override;
   using NoteBase::remove_tag;
