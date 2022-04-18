@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -49,9 +49,9 @@ const Glib::ustring & NoteDataBufferSynchronizerBase::text()
   return data().text();
 }
 
-void NoteDataBufferSynchronizerBase::set_text(const Glib::ustring & t)
+void NoteDataBufferSynchronizerBase::set_text(Glib::ustring && t)
 {
-  data().text() = t;
+  data().text() = std::move(t);
 }
 
 
@@ -315,7 +315,7 @@ Glib::ustring NoteBase::get_complete_note_xml()
 
 void NoteBase::set_xml_content(const Glib::ustring & xml)
 {
-  data_synchronizer().set_text(xml);
+  data_synchronizer().set_text(Glib::ustring(xml));
 }
 
 Glib::ustring NoteBase::text_content()

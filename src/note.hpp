@@ -64,9 +64,9 @@ public:
     {
       return m_buffer;
     }
-  void set_buffer(const Glib::RefPtr<NoteBuffer> & b);
-  virtual const Glib::ustring & text() override;
-  virtual void set_text(const Glib::ustring & t) override;
+  void set_buffer(Glib::RefPtr<NoteBuffer> && b);
+  const Glib::ustring & text() override;
+  void set_text(Glib::ustring && t) override;
 
 private:
   void invalidate_text();

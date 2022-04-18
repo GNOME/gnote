@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -176,7 +176,7 @@ public:
       return *m_data;
     }
   virtual const Glib::ustring & text();
-  virtual void set_text(const Glib::ustring & t);
+  virtual void set_text(Glib::ustring && t);
 private:
   std::unique_ptr<NoteData> m_data;
 };

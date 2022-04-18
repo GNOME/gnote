@@ -159,9 +159,9 @@ namespace gnote {
     return (m_width != 0) && (m_height != 0);
   }
 
-  void NoteDataBufferSynchronizer::set_buffer(const Glib::RefPtr<NoteBuffer> & b)
+  void NoteDataBufferSynchronizer::set_buffer(Glib::RefPtr<NoteBuffer> && b)
   {
-    m_buffer = b;
+    m_buffer = std::move(b);
     m_buffer->signal_changed().connect(sigc::mem_fun(*this, &NoteDataBufferSynchronizer::buffer_changed));
     m_buffer->signal_apply_tag()
       .connect(sigc::mem_fun(*this, &NoteDataBufferSynchronizer::buffer_tag_applied));
@@ -179,9 +179,9 @@ namespace gnote {
     return data().text();
   }
 
-  void NoteDataBufferSynchronizer::set_text(const Glib::ustring & t)
+  void NoteDataBufferSynchronizer::set_text(Glib::ustring && t)
   {
-    data().text() = t;
+    data().text() = std::move(t);
     synchronize_buffer();
   }
 
@@ -689,7 +689,7 @@ namespace gnote {
     if(!m_buffer) {
       DBG_OUT("Creating buffer for %s", m_data.data().title().c_str());
       m_buffer = NoteBuffer::create(get_tag_table(), *this, m_gnote.preferences());
-      m_data.set_buffer(m_buffer);
+      m_data.set_buffer(Glib::RefPtr<NoteBuffer>(m_buffer));
 
       m_buffer->signal_changed().connect(
         sigc::mem_fun(*this, &Note::on_buffer_changed));
