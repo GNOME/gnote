@@ -181,24 +181,22 @@ namespace gnote {
   void NoteRecentChanges::register_actions()
   {
     auto & am = m_gnote.action_manager();
-    std::map<Glib::ustring, const Glib::VariantType*> actions = am.get_main_window_actions();
-    for(std::map<Glib::ustring, const Glib::VariantType*>::iterator iter = actions.begin();
-        iter != actions.end(); ++iter) {
+    for(auto & action_def : am.get_main_window_actions()) {
       MainWindowAction::Ptr action;
-      if(iter->second == NULL) {
-        add_action(action = MainWindowAction::create(iter->first));
+      if(action_def.second == NULL) {
+        add_action(action = MainWindowAction::create(Glib::ustring(action_def.first)));
       }
-      else if(iter->second == &Glib::Variant<bool>::variant_type()) {
-        add_action(action = MainWindowAction::create(iter->first, false));
+      else if(action_def.second == &Glib::Variant<bool>::variant_type()) {
+        add_action(action = MainWindowAction::create(Glib::ustring(action_def.first), false));
       }
-      else if(iter->second == &Glib::Variant<gint32>::variant_type()) {
-        add_action(action = MainWindowAction::create(iter->first, 0));
+      else if(action_def.second == &Glib::Variant<gint32>::variant_type()) {
+        add_action(action = MainWindowAction::create(Glib::ustring(action_def.first), 0));
       }
-      else if(iter->second == &Glib::Variant<Glib::ustring>::variant_type()) {
-        add_action(action = MainWindowAction::create(iter->first, Glib::ustring("")));
+      else if(action_def.second == &Glib::Variant<Glib::ustring>::variant_type()) {
+        add_action(action = MainWindowAction::create(Glib::ustring(action_def.first), Glib::ustring("")));
       }
       if(action) {
-        action->is_modifying(am.is_modifying_main_window_action(iter->first));
+        action->is_modifying(am.is_modifying_main_window_action(action_def.first));
       }
     }
     find_action("close-window")->signal_activate()

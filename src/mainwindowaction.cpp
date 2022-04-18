@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2015-2016 Aurimas Cernius
+ * Copyright (C) 2015-2016,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,46 +21,46 @@
 
 namespace gnote {
 
-MainWindowAction::Ptr MainWindowAction::create(const Glib::ustring & name)
+MainWindowAction::Ptr MainWindowAction::create(Glib::ustring && name)
 {
-  return Ptr(new MainWindowAction(name));
+  return Ptr(new MainWindowAction(std::move(name)));
 }
 
-MainWindowAction::Ptr MainWindowAction::create(const Glib::ustring & name, bool state)
+MainWindowAction::Ptr MainWindowAction::create(Glib::ustring && name, bool state)
 {
-  return Ptr(new MainWindowAction(name, state));
+  return Ptr(new MainWindowAction(std::move(name), state));
 }
 
-MainWindowAction::Ptr MainWindowAction::create(const Glib::ustring & name, int state)
+MainWindowAction::Ptr MainWindowAction::create(Glib::ustring && name, int state)
 {
-  return Ptr(new MainWindowAction(name, state));
+  return Ptr(new MainWindowAction(std::move(name), state));
 }
 
-MainWindowAction::Ptr MainWindowAction::create(const Glib::ustring & name, const Glib::ustring & state)
+MainWindowAction::Ptr MainWindowAction::create(Glib::ustring && name, Glib::ustring && state)
 {
-  return Ptr(new MainWindowAction(name, state));
+  return Ptr(new MainWindowAction(std::move(name), std::move(state)));
 }
 
-MainWindowAction::MainWindowAction(const Glib::ustring & name)
-  : Gio::SimpleAction(name)
+MainWindowAction::MainWindowAction(Glib::ustring && name)
+  : Gio::SimpleAction(std::move(name))
   , m_modifying(true)
 {
 }
 
-MainWindowAction::MainWindowAction(const Glib::ustring & name, bool state)
-  : Gio::SimpleAction(name, Glib::Variant<bool>::create(state))
+MainWindowAction::MainWindowAction(Glib::ustring && name, bool state)
+  : Gio::SimpleAction(std::move(name), Glib::Variant<bool>::create(state))
   , m_modifying(true)
 {
 }
 
-MainWindowAction::MainWindowAction(const Glib::ustring & name, int state)
-  : Gio::SimpleAction(name, Glib::VARIANT_TYPE_INT32, Glib::Variant<gint32>::create(state))
+MainWindowAction::MainWindowAction(Glib::ustring && name, int state)
+  : Gio::SimpleAction(std::move(name), Glib::VARIANT_TYPE_INT32, Glib::Variant<gint32>::create(state))
   , m_modifying(true)
 {
 }
 
-MainWindowAction::MainWindowAction(const Glib::ustring & name, const Glib::ustring & state)
-  : Gio::SimpleAction(name, Glib::VARIANT_TYPE_STRING, Glib::Variant<Glib::ustring>::create(state))
+MainWindowAction::MainWindowAction(Glib::ustring && name, Glib::ustring && state)
+  : Gio::SimpleAction(std::move(name), Glib::VARIANT_TYPE_STRING, Glib::Variant<Glib::ustring>::create(std::move(state)))
   , m_modifying(true)
 {
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2015-2016,2019 Aurimas Cernius
+ * Copyright (C) 2015-2016,2019,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,10 +31,10 @@ class MainWindowAction
 public:
   typedef Glib::RefPtr<MainWindowAction> Ptr;
 
-  static Ptr create(const Glib::ustring & name);
-  static Ptr create(const Glib::ustring & name, bool state);
-  static Ptr create(const Glib::ustring & name, int state);
-  static Ptr create(const Glib::ustring & name, const Glib::ustring & state);
+  static Ptr create(Glib::ustring && name);
+  static Ptr create(Glib::ustring && name, bool state);
+  static Ptr create(Glib::ustring && name, int state);
+  static Ptr create(Glib::ustring && name, Glib::ustring && state);
 
   void set_state(const Glib::VariantBase & value)
     {
@@ -49,10 +49,10 @@ public:
       return m_modifying;
     }
 protected:
-  MainWindowAction(const Glib::ustring & name);
-  MainWindowAction(const Glib::ustring & name, bool state);
-  MainWindowAction(const Glib::ustring & name, int state);
-  MainWindowAction(const Glib::ustring & name, const Glib::ustring & state);
+  MainWindowAction(Glib::ustring && name);
+  MainWindowAction(Glib::ustring && name, bool state);
+  MainWindowAction(Glib::ustring && name, int state);
+  MainWindowAction(Glib::ustring && name, Glib::ustring && state);
 private:
   bool m_modifying;
 };
