@@ -141,16 +141,16 @@ const Glib::ustring & NoteBase::get_title() const
   return data_synchronizer().data().title();
 }
 
-void NoteBase::set_title(const Glib::ustring & new_title)
+void NoteBase::set_title(Glib::ustring && new_title)
 {
-  set_title(new_title, false);
+  set_title(std::move(new_title), false);
 }
 
-void NoteBase::set_title(const Glib::ustring & new_title, bool from_user_action)
+void NoteBase::set_title(Glib::ustring && new_title, bool from_user_action)
 {
   if(data_synchronizer().data().title() != new_title) {
-    Glib::ustring old_title = data_synchronizer().data().title();
-    data_synchronizer().data().title() = new_title;
+    Glib::ustring old_title = std::move(data_synchronizer().data().title());
+    data_synchronizer().data().title() = std::move(new_title);
 
     if(from_user_action) {
       process_rename_link_update(old_title);
@@ -177,13 +177,13 @@ void NoteBase::process_rename_link_update(const Glib::ustring & old_title)
   queue_save(CONTENT_CHANGED);
 }
 
-void NoteBase::rename_without_link_update(const Glib::ustring & newTitle)
+void NoteBase::rename_without_link_update(Glib::ustring && newTitle)
 {
   if(data_synchronizer().data().title() != newTitle) {
-    data_synchronizer().data().title() = newTitle;
+    data_synchronizer().data().title() = std::move(newTitle);
 
     // HACK:
-    signal_renamed(shared_from_this(), newTitle);
+    signal_renamed(shared_from_this(), data_synchronizer().data().title());
 
     queue_save(CONTENT_CHANGED); // TODO: Right place for this?
   }
@@ -313,9 +313,9 @@ Glib::ustring NoteBase::get_complete_note_xml()
   return m_manager.note_archiver().write_string(data_synchronizer().synchronized_data());
 }
 
-void NoteBase::set_xml_content(const Glib::ustring & xml)
+void NoteBase::set_xml_content(Glib::ustring && xml)
 {
-  data_synchronizer().set_text(Glib::ustring(xml));
+  data_synchronizer().set_text(std::move(xml));
 }
 
 Glib::ustring NoteBase::text_content()

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -215,7 +215,7 @@ namespace gnote {
     }
 
     DBG_OUT ("Renaming note from %s to %s", get_note()->get_title().c_str(), title.c_str());
-    get_note()->set_title(title, true);
+    get_note()->set_title(std::move(title), true);
     return true;
   }
 

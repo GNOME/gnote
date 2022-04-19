@@ -353,7 +353,7 @@ bool RemoteControl::SetNoteContents(const Glib::ustring& uri,
     return false;
   }
 
-  std::static_pointer_cast<Note>(note)->set_text_content(text_contents);
+  std::static_pointer_cast<Note>(note)->set_text_content(Glib::ustring(text_contents));
   return true;
 }
 
@@ -365,7 +365,7 @@ bool RemoteControl::SetNoteContentsXml(const Glib::ustring& uri,
   if(!note) {
     return false;
   }
-  note->set_xml_content(xml_contents);
+  note->set_xml_content(Glib::ustring(xml_contents));
   return true;
 }
 

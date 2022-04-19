@@ -110,11 +110,11 @@ public:
   void add_child_widget(Glib::RefPtr<Gtk::TextChildAnchor> && child_anchor, Gtk::Widget *widget);
 
   using NoteBase::set_title;
-  virtual void set_title(const Glib::ustring & new_title, bool from_user_action) override;
-  virtual void rename_without_link_update(const Glib::ustring & newTitle) override;
-  virtual void set_xml_content(const Glib::ustring & xml) override;
+  void set_title(Glib::ustring && new_title, bool from_user_action) override;
+  void rename_without_link_update(Glib::ustring && newTitle) override;
+  void set_xml_content(Glib::ustring && xml) override;
   virtual Glib::ustring text_content() override;
-  void set_text_content(const Glib::ustring & text);
+  void set_text_content(Glib::ustring && text);
 
   const Glib::RefPtr<NoteTagTable> & get_tag_table();
   bool has_buffer() const

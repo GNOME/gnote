@@ -211,9 +211,9 @@ public:
   const Glib::ustring & uri() const;
   const Glib::ustring id() const;
   const Glib::ustring & get_title() const;
-  void set_title(const Glib::ustring & new_title);
-  virtual void set_title(const Glib::ustring & new_title, bool from_user_action);
-  virtual void rename_without_link_update(const Glib::ustring & newTitle);
+  void set_title(Glib::ustring && new_title);
+  virtual void set_title(Glib::ustring && new_title, bool from_user_action);
+  virtual void rename_without_link_update(Glib::ustring && newTitle);
 
   virtual void queue_save(ChangeType c);
   virtual void save();
@@ -234,7 +234,7 @@ public:
     {
       return data_synchronizer().text();
     }
-  virtual void set_xml_content(const Glib::ustring & xml);
+  virtual void set_xml_content(Glib::ustring && xml);
   virtual Glib::ustring text_content();
   void load_foreign_note_xml(const Glib::ustring & foreignNoteXml, ChangeType changeType);
   std::vector<Tag::Ptr> get_tags() const;

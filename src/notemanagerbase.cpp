@@ -334,7 +334,7 @@ NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, cons
   if(new_note == 0) {
     throw sharp::Exception("Failed to create new note");
   }
-  new_note->set_xml_content(xml_content);
+  new_note->set_xml_content(Glib::ustring(xml_content));
   new_note->signal_renamed.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_rename));
   new_note->signal_saved.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_save));
 

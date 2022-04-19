@@ -496,16 +496,15 @@ namespace gnote {
     }
   }
 
-  void Note::set_title(const Glib::ustring & new_title,
-                       bool from_user_action)
+  void Note::set_title(Glib::ustring && new_title, bool from_user_action)
   {
     if (m_data.data().title() != new_title) {
       if (m_window) {
         m_window->set_name(new_title);
       }
 
-      Glib::ustring old_title = m_data.data().title();
-      m_data.data().title() = new_title;
+      Glib::ustring old_title = std::move(m_data.data().title());
+      m_data.data().title() = std::move(new_title);
 
       if (from_user_action) {
         process_rename_link_update(old_title);
@@ -630,24 +629,24 @@ namespace gnote {
     }
   }
 
-  void Note::rename_without_link_update(const Glib::ustring & newTitle)
+  void Note::rename_without_link_update(Glib::ustring && newTitle)
   {
     if(data_synchronizer().data().title() != newTitle) {
       if(m_window) {
         m_window->set_name(newTitle);
       }
     }
-    NoteBase::rename_without_link_update(newTitle);
+    NoteBase::rename_without_link_update(std::move(newTitle));
   }
 
-  void Note::set_xml_content(const Glib::ustring & xml)
+  void Note::set_xml_content(Glib::ustring && xml)
   {
     if (m_buffer) {
       m_buffer->set_text("");
-      NoteBufferArchiver::deserialize(m_buffer, xml);
+      NoteBufferArchiver::deserialize(m_buffer, std::move(xml));
     } 
     else {
-      NoteBase::set_xml_content(xml);
+      NoteBase::set_xml_content(std::move(xml));
     }
   }
 
@@ -659,10 +658,10 @@ namespace gnote {
     return m_buffer->get_slice(m_buffer->begin(), m_buffer->end());
   }
 
-  void Note::set_text_content(const Glib::ustring & text)
+  void Note::set_text_content(Glib::ustring && text)
   {
     if(m_buffer) {
-      m_buffer->set_text(text);
+      m_buffer->set_text(std::move(text));
     }
     else {
       ERR_OUT(_("Setting text content for closed notes not supported"));
