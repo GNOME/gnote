@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -749,7 +749,7 @@ namespace gnote {
         if (data.adding && !data.tag->get_widget_location()) {
           Glib::RefPtr<Gtk::TextChildAnchor> childAnchor = buffer->create_child_anchor(iter);
           data.tag->set_widget_location(location);
-          m_note.add_child_widget(childAnchor, data.widget);
+          m_note.add_child_widget(std::move(childAnchor), data.widget);
         }
         else if (!data.adding && data.tag->get_widget_location()) {
           Gtk::TextIter end_iter = iter;

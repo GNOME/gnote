@@ -474,10 +474,9 @@ namespace gnote {
     queue_save(OTHER_DATA_CHANGED);
   }
 
-  void Note::add_child_widget(const Glib::RefPtr<Gtk::TextChildAnchor> & child_anchor,
-                              Gtk::Widget * widget)
+  void Note::add_child_widget(Glib::RefPtr<Gtk::TextChildAnchor> && child_anchor, Gtk::Widget *widget)
   {
-    m_child_widget_queue.push(ChildWidgetData(child_anchor, widget));
+    m_child_widget_queue.push(ChildWidgetData(std::move(child_anchor), widget));
     if(has_window()) {
       process_child_widget_queue();
     }

@@ -107,8 +107,7 @@ public:
   virtual void queue_save(ChangeType c) override;
   using NoteBase::remove_tag;
   virtual void remove_tag(Tag &) override;
-  void add_child_widget(const Glib::RefPtr<Gtk::TextChildAnchor> & child_anchor,
-                        Gtk::Widget * widget);
+  void add_child_widget(Glib::RefPtr<Gtk::TextChildAnchor> && child_anchor, Gtk::Widget *widget);
 
   using NoteBase::set_title;
   virtual void set_title(const Glib::ustring & new_title, bool from_user_action) override;
@@ -181,9 +180,8 @@ private:
 
   struct ChildWidgetData
   {
-    ChildWidgetData(const Glib::RefPtr<Gtk::TextChildAnchor> & _anchor,
-                    Gtk::Widget *_widget)
-      : anchor(_anchor)
+    ChildWidgetData(Glib::RefPtr<Gtk::TextChildAnchor> && _anchor, Gtk::Widget *_widget)
+      : anchor(std::move(_anchor))
       , widget(_widget)
       {
       }
