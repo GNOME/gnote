@@ -158,6 +158,13 @@ namespace gnote {
                                 GDK_KEY_Page_Down, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::previous_tab),
                                 GDK_KEY_Page_Up, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
+    {
+      auto show_shortcuts = m_gnote.action_manager().get_app_action("help-shortcuts");
+      if(show_shortcuts) {
+        m_keybinder.add_accelerator([show_shortcuts=std::move(show_shortcuts)]{ show_shortcuts->activate(); },
+                                    GDK_KEY_question, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
+      }
+    }
   }
 
 
