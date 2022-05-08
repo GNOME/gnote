@@ -154,6 +154,10 @@ namespace gnote {
                                 GDK_KEY_W, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_Q, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
+    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::next_tab),
+                                GDK_KEY_Page_Down, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
+    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::previous_tab),
+                                GDK_KEY_Page_Up, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
   }
 
 
@@ -610,6 +614,25 @@ namespace gnote {
     return true;
   }
 
+  void NoteRecentChanges::next_tab()
+  {
+    int next_page = 1 + m_embed_book.get_current_page();
+    if(next_page >= m_embed_book.get_n_pages()) {
+      next_page = 0;
+    }
+
+    m_embed_book.set_current_page(next_page);
+  }
+
+  void NoteRecentChanges::previous_tab()
+  {
+    int prev_page = m_embed_book.get_current_page() - 1;
+    if(prev_page < 0) {
+      prev_page = m_embed_book.get_n_pages() - 1;
+    }
+
+    m_embed_book.set_current_page(prev_page);
+  }
 
   void NoteRecentChanges::on_show()
   {

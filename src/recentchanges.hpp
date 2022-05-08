@@ -105,6 +105,8 @@ private:
   void callbacks_changed();
   void register_callbacks();
   void unregister_callbacks();
+  void next_tab();
+  void previous_tab();
 
   IGnote             &m_gnote;
   NoteManagerBase    &m_note_manager;
