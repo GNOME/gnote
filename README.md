@@ -65,7 +65,9 @@ under a different license. Check the headers for the copyright info.
 ## Authors:
 
 Aurimas Cernius <aurimasc@src.gnome.org>
+
 Debarshi Ray <debarshir@src.gnome.org>
+
 Hubert Figuiere <hub@figuiere.net>
 
 
@@ -73,13 +75,22 @@ Original Tomboy authors and copyright:
 Copyright (C) 2004-2007 Alex Graveley <alex@beatniksoftware.com>
 
 Alex Graveley <alex@beatniksoftware.com>
+
 Boyd Timothy <btimothy@gmail.com>
+
 Chris Scobell <chris@thescobells.com>
+
 David Trowbridge <trowbrds@gmail.com>
+
 Ryan Lortie <desrt@desrt.ca>
+
 Sandy Armstrong <sanfordarmstrong@gmail.com>
+
 Sebastian Rittau <srittau@jroger.in-berlin.de>
+
 Kevin Kubasik <kevin@kubasik.net>
+
 Stefan Schweizer <steve.schweizer@gmail.com>
+
 Benjamin Podszun <benjamin.podszun@gmail.com>
 
