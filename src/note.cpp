@@ -135,8 +135,8 @@ namespace gnote {
 
   const int  NoteData::s_noPosition = -1;
 
-  NoteData::NoteData(const Glib::ustring & _uri)
-    : m_uri(_uri)
+  NoteData::NoteData(Glib::ustring && _uri)
+    : m_uri(std::move(_uri))
     , m_cursor_pos(s_noPosition)
     , m_selection_bound_pos(s_noPosition)
     , m_width(0)

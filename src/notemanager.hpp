@@ -80,7 +80,7 @@ namespace gnote {
     virtual NoteBase::Ptr create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid = Glib::ustring()) override;
     virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content,
                                           const Glib::ustring & guid) override;
-    virtual NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) override;
+    virtual NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) override;
     NoteBase::Ptr note_load(Glib::ustring && file_name) override;
   private:
     AddinManager *create_addin_manager();

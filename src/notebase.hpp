@@ -46,7 +46,7 @@ public:
 
   static const int s_noPosition;
 
-  NoteData(const Glib::ustring & _uri);
+  NoteData(Glib::ustring && _uri);
 
   const Glib::ustring & uri() const
     {
@@ -195,7 +195,7 @@ public:
   static std::vector<Glib::ustring> parse_tags(const xmlNodePtr tagnodes);
   static Glib::ustring parse_text_content(const Glib::ustring & content);
 
-  NoteBase(const Glib::ustring & filepath, NoteManagerBase & manager);
+  NoteBase(const Glib::ustring && filepath, NoteManagerBase & manager);
   virtual ~NoteBase() {}
 
   NoteManagerBase & manager()

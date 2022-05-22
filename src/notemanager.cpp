@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -278,9 +278,9 @@ namespace gnote {
     return new_note;
   }
 
-  NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, const Glib::ustring & file_name)
+  NoteBase::Ptr NoteManager::note_create_new(Glib::ustring && title, Glib::ustring && file_name)
   {
-    return Note::create_new_note(Glib::ustring(title), Glib::ustring(file_name), *this, m_gnote);
+    return Note::create_new_note(std::move(title), std::move(file_name), *this, m_gnote);
   }
 
   NoteBase::Ptr NoteManager::get_or_create_template_note()

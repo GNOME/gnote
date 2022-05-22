@@ -49,15 +49,15 @@ NoteManager::~NoteManager()
   remove_dir(notes_dir());
 }
 
-gnote::NoteBase::Ptr NoteManager::note_create_new(const Glib::ustring & title, const Glib::ustring & file_name)
+gnote::NoteBase::Ptr NoteManager::note_create_new(Glib::ustring && title, Glib::ustring && file_name)
 {
   auto note_data = std::make_unique<gnote::NoteData>(gnote::NoteBase::url_from_path(file_name));
-  note_data->title() = title;
+  note_data->title() = std::move(title);
   Glib::DateTime date(Glib::DateTime::create_now_local());
   note_data->create_date() = date;
   note_data->set_change_date(date);
 
-  return std::make_shared<Note>(std::move(note_data), file_name, *this);
+  return std::make_shared<Note>(std::move(note_data), std::move(file_name), *this);
 }
 
 gnote::NoteBase::Ptr NoteManager::note_load(Glib::ustring && /*file_name*/)

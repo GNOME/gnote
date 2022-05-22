@@ -55,7 +55,7 @@ namespace sync {
     //       was not just a container for a big XML string
     sharp::XmlReader xml;
     xml.load_buffer(m_xml_content);
-    NoteData *data = new NoteData(m_uuid);
+    NoteData *data = new NoteData(Glib::ustring(m_uuid));
     existing_note->manager().note_archiver().read(xml, *data);
     std::unique_ptr<NoteData> update_data(data);
     xml.close();

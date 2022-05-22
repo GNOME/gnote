@@ -51,7 +51,7 @@ public:
       return m_tag_manager;
     }
 protected:
-  virtual gnote::NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) override;
+  virtual gnote::NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) override;
   gnote::NoteBase::Ptr note_load(Glib::ustring && file_name) override;
 private:
   gnote::notebooks::NotebookManager m_notebook_manager;

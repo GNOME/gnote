@@ -330,7 +330,7 @@ NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, cons
   else
     filename = make_new_file_name();
 
-  NoteBase::Ptr new_note = note_create_new(title, filename);
+  NoteBase::Ptr new_note = note_create_new(Glib::ustring(title), Glib::ustring(filename));
   if(new_note == 0) {
     throw sharp::Exception("Failed to create new note");
   }

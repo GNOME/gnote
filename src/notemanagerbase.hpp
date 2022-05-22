@@ -110,7 +110,7 @@ protected:
   virtual NoteBase::Ptr create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid = Glib::ustring());
   virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
                                         const Glib::ustring & guid);
-  virtual NoteBase::Ptr note_create_new(const Glib::ustring & title, const Glib::ustring & file_name) = 0;
+  virtual NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) = 0;
   Glib::ustring make_new_file_name() const;
   Glib::ustring make_new_file_name(const Glib::ustring & guid) const;
   virtual NoteBase::Ptr note_load(Glib::ustring && file_name) = 0;

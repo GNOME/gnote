@@ -113,9 +113,9 @@ Glib::ustring NoteBase::parse_text_content(const Glib::ustring & content)
 }
 
 
-NoteBase::NoteBase(const Glib::ustring & filepath, NoteManagerBase & _manager)
+NoteBase::NoteBase(const Glib::ustring && filepath, NoteManagerBase & _manager)
   : m_manager(_manager)
-  , m_file_path(filepath)
+  , m_file_path(std::move(filepath))
   , m_enabled(true)
 {
 }
