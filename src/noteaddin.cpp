@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2016,2019 Aurimas Cernius
+ * Copyright (C) 2012-2016,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -175,9 +175,9 @@ namespace gnote {
     return std::vector<gnote::PopoverWidget>();
   }
 
-  void NoteAddin::register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> callback)
+  void NoteAddin::register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> && callback)
   {
-    m_action_callbacks.emplace_back(action, callback);
+    m_action_callbacks.emplace_back(action, std::move(callback));
   }
   
 }
