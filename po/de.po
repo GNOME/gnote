@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-10-13 14:51+0000\n"
-"PO-Revision-Date: 2021-11-05 23:53+0100\n"
+"POT-Creation-Date: 2022-05-08 18:53+0000\n"
+"PO-Revision-Date: 2022-05-22 15:56+0200\n"
 "Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -30,10 +30,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:52 src/recentchanges.cpp:611
+#: src/recentchanges.cpp:88 src/recentchanges.cpp:116
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -47,8 +47,8 @@ msgid ""
 "allows you to capture your ideas, link them together using WikiWiki-style "
 "links, group together in notebooks and some extra features for everyday use."
 msgstr ""
-"Gnote ist eine einfache Anwendung zum Anlegen von Notizen für die GNOME "
-"Arbeitsumgebung. Es ermöglicht Ihre Ideen festzuhalten, sie im Stile eines "
+"Gnote ist eine einfache Anwendung zum Anlegen von Notizen für die GNOME-"
+"Arbeitsumgebung. Es ermöglicht, Ihre Ideen festzuhalten, sie im Stile eines "
 "Wikis zu verknüpfen, in Notizbücher zu gruppieren und enthält einige weitere "
 "Funktionen zum alltäglichen Gebrauch."
 
@@ -220,7 +220,7 @@ msgstr "Legt fest, ob das Hauptfenster maximiert ist"
 
 #: data/org.gnome.gnote.gschema.xml:62
 msgid "If true, Gnote window will be maximized."
-msgstr "Falls wahr, so maximiert Gnote das Hauptfenster"
+msgstr "Falls wahr, so maximiert Gnote das Hauptfenster."
 
 #: data/org.gnome.gnote.gschema.xml:66
 msgid "Saved height of Search window"
@@ -334,15 +334,14 @@ msgstr ""
 "neuen Namen der Notiz umbenannt werden soll, so dass die korrekte "
 "Verknüpfung zur umbenannten Notiz erhalten bleibt."
 
-#: data/org.gnome.gnote.gschema.xml:116
-msgid "Enable closing notes with escape"
-msgstr "Schließen von Notizen mit Escape aktivieren"
+#: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
+#: data/org.gnome.gnote.gschema.xml:131
+msgid "Deprecated"
+msgstr "Veraltet"
 
-#: data/org.gnome.gnote.gschema.xml:117
-msgid "If enabled, an opened note can be closed by hitting the escape key."
-msgstr ""
-"Wenn aktiviert, kann eine geöffnete Notiz durch Betätigen der Escape-Taste "
-"geschlossen werden."
+#: data/org.gnome.gnote.gschema.xml:117 data/org.gnome.gnote.gschema.xml:132
+msgid "This key is deprecated and its value is ignored."
+msgstr "Dieser Schlüssel ist veraltet und sein Wert wird ignoriert."
 
 #: data/org.gnome.gnote.gschema.xml:121
 msgid "Use status icon, when started as an application"
@@ -352,29 +351,9 @@ msgstr "Statussymbol beim Starten als Anwendung verwenden"
 msgid "Deprecated, has no effect."
 msgstr "Veraltet, hat keine Auswirkungen."
 
-#: data/org.gnome.gnote.gschema.xml:126
-msgid "Open notes in new window"
-msgstr "Notizen in neuem Fenster öffnen"
-
 #: data/org.gnome.gnote.gschema.xml:127
-msgid ""
-"Open notes in new window instead of replacing active content of the same "
-"window"
-msgstr ""
-"Notizen in einem neuen Fenster öffnen anstatt aktiven Inhalt des selbsen "
-"Fensters zu ersetzen"
-
-#: data/org.gnome.gnote.gschema.xml:131
-msgid "Save note window size and autosize note window to it"
-msgstr "Fenstergröße von Notizen speichern und automatisch anpassen"
-
-#: data/org.gnome.gnote.gschema.xml:132
-msgid ""
-"Saves note window size and automatically resizes main window to this size, "
-"when note is opened."
-msgstr ""
-"Speichert die Notizen-Fenstergröße und passt beim Programmstart das "
-"Hauptfenster automatisch an die Größe an."
+msgid "This setting is deprecated and its value is ignored"
+msgstr "Diese Einstellung ist veraltet und ihr Wert wird ignoriert"
 
 #: data/org.gnome.gnote.gschema.xml:136
 msgid "Use client side window decorations"
@@ -541,7 +520,7 @@ msgstr "Benutzername für die Freigabe"
 
 #: data/org.gnome.gnote.gschema.xml:211
 msgid "Username to access WebDAV share."
-msgstr "Benutzername für den Zugriff auf die WebDAV-Freigabe"
+msgstr "Benutzername für den Zugriff auf die WebDAV-Freigabe."
 
 #: data/org.gnome.gnote.gschema.xml:217
 msgid "Timestamp format"
@@ -571,7 +550,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Hauptfenster"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:115
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:136
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Allgemein"
@@ -581,170 +560,190 @@ msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Hilfe anzeigen"
 
-#: data/shortcuts-gnote.ui:25 data/shortcuts-gnote.ui:120
-#: data/shortcuts-gnote.ui:127
+#: data/shortcuts-gnote.ui:25
+msgctxt "shortcut window"
+msgid "Shortcuts"
+msgstr "_Tastenkombinationen"
+
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "Aktionen-Menü öffnen"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Suchleiste verbergen"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:176
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Fenster schließen"
 
-#: data/shortcuts-gnote.ui:47
+#: data/shortcuts-gnote.ui:53
+msgctxt "shortcut window"
+msgid "Go to next tab"
+msgstr "Nächsten Reiter auswählen"
+
+#: data/shortcuts-gnote.ui:60
+msgctxt "shortcut window"
+msgid "Go to previous tab"
+msgstr "Vorherigen Reiter auswählen"
+
+#: data/shortcuts-gnote.ui:68
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Suchleiste"
 
-#: data/shortcuts-gnote.ui:52 data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:73 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "Suchleiste anzeigen"
 
-#: data/shortcuts-gnote.ui:59
+#: data/shortcuts-gnote.ui:80
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Nächsten Treffer auswählen"
 
-#: data/shortcuts-gnote.ui:66
+#: data/shortcuts-gnote.ui:87
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "Vorherigen Treffer auswählen"
 
-#: data/shortcuts-gnote.ui:74
+#: data/shortcuts-gnote.ui:95
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Notizliste"
 
-#: data/shortcuts-gnote.ui:79
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Neue Notiz anlegen"
 
-#: data/shortcuts-gnote.ui:86
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Ausgewählte Notiz öffnen"
 
-#: data/shortcuts-gnote.ui:93
+#: data/shortcuts-gnote.ui:114
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Ausgewählte Notiz in neuem Fenster öffnen"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:121
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Ausgewählte Notiz löschen"
 
-#: data/shortcuts-gnote.ui:111
+#: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Notizfenster"
 
-#: data/shortcuts-gnote.ui:156
+#: data/shortcuts-gnote.ui:155
+msgctxt "shortcut window"
+msgid "Open note actions menu"
+msgstr "Aktionen-Menü öffnen"
+
+#: data/shortcuts-gnote.ui:184
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Bearbeiten"
 
-#: data/shortcuts-gnote.ui:161
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Letzte Bearbeitung rückgängig machen"
 
-#: data/shortcuts-gnote.ui:168
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Letzte Bearbeitung wiederholen"
 
-#: data/shortcuts-gnote.ui:175
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Verweis zur Notiz mit dem ausgewählten Text erstellen"
 
-#: data/shortcuts-gnote.ui:183
+#: data/shortcuts-gnote.ui:211
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatierung"
 
-#: data/shortcuts-gnote.ui:188
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Fettschrift aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:195
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Kursivschrift aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:202
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Durchgestrichene Schrift aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:209
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Hervorhebung aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Feste Breite aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Unterstreichung aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Schrift vergrößern"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Schrift verkleinern"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr ""
 "Aufzählungszeichen/Einzugserhöhung für die Zeile mit der Auswahl aktivieren"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr ""
 "Aufzählungszeichen deaktivieren und Einzug verringern für die aktuelle Zeile"
 
-#: src/actionmanager.cpp:128 src/notewindow.cpp:278
+#: src/actionmanager.cpp:127
 msgid "_New Note"
 msgstr "_Neue Notiz"
 
-#: src/actionmanager.cpp:129 src/notewindow.cpp:280
+#: src/actionmanager.cpp:128
 msgid "New _Window"
 msgstr "Neues _Fenster"
 
-#: src/actionmanager.cpp:130 src/preferencesdialog.cpp:631
+#: src/actionmanager.cpp:129 src/preferencesdialog.cpp:623
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:130
 msgid "_Shortcuts"
 msgstr "_Tastenkombinationen"
 
-#: src/actionmanager.cpp:132
+#: src/actionmanager.cpp:131
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:132
 msgid "_About Gnote"
 msgstr "_Info zu Gnote"
 
@@ -757,43 +756,43 @@ msgstr "Erweiterungsinformationen konnten nicht geladen werden!"
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Inkompatible Erweiterung %s: erwartet wurde %s, erhalten %s"
 
-#: src/addinmanager.cpp:149
+#: src/addinmanager.cpp:147
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr ""
 "Beachten Sie, dass die Erweiterungsinformation %s bereits vorhanden ist"
 
-#: src/addinmanager.cpp:157
+#: src/addinmanager.cpp:154
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s implementiert nicht %s"
 
-#: src/addinmanager.cpp:172
+#: src/addinmanager.cpp:169
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Beachten Sie, dass die Erweiterung %s bereits vorhanden ist"
 
-#: src/addinmanager.cpp:190
+#: src/addinmanager.cpp:187
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Beachten Sie, dass die Erweiterungsinformation %s nicht vorhanden ist"
 
-#: src/addinmanager.cpp:203
+#: src/addinmanager.cpp:200
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Notiz-Plugin %s fehlt"
 
-#: src/addinmanager.cpp:239
+#: src/addinmanager.cpp:236
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Auffinden des Moduls %s für Erweiterung %s schlug fehl"
 
-#: src/addinmanager.cpp:243
+#: src/addinmanager.cpp:240
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Scheitern beim Laden der Erweiterungsinformationen für %s: %s"
 
-#: src/addinmanager.cpp:369
+#: src/addinmanager.cpp:366
 msgid "Trying to load addins when they are already loaded"
 msgstr "Es wird versucht, die Addins zu laden, die bereits geladen sind"
 
@@ -812,15 +811,15 @@ msgstr ""
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere und das Tomboy-Projekt"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:76
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:75
 msgid "What links here?"
 msgstr "Was verweist hierauf?"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:97
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:96
 msgid "(none)"
-msgstr " (kein)"
+msgstr "(kein)"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:102
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:101
 #: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
 #: src/notebooks/notebooknoteaddin.cpp:167
 msgid "_Back"
@@ -886,7 +885,7 @@ msgid "_Cancel"
 msgstr "Abbre_chen"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:228
-#: src/searchnoteswidget.cpp:1305
+#: src/searchnoteswidget.cpp:1302
 msgid "_Open"
 msgstr "Ö_ffnen"
 
@@ -922,7 +921,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Ein gelöschtes Symbol ist für immer verloren."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
-#: src/searchnoteswidget.cpp:1315 src/searchnoteswidget.cpp:1356
+#: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "_Löschen"
 
@@ -988,7 +987,7 @@ msgstr "Alle anderen verknüpften Notizen einschließen"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
-#: src/preferencesdialog.cpp:555
+#: src/preferencesdialog.cpp:547
 msgid "_Save"
 msgstr "_Speichern"
 
@@ -1248,7 +1247,7 @@ msgstr "Drucken …"
 
 #: src/plugins/printnotes/printnotesnoteaddin.cpp:110
 msgid "Error printing note"
-msgstr "Fehler beim Drucken der Notiz."
+msgstr "Fehler beim Drucken der Notiz"
 
 #. %1 is the page number, %2 is the total number of pages
 #: src/plugins/printnotes/printnotesnoteaddin.cpp:273
@@ -1482,7 +1481,7 @@ msgstr "Abgleich-Erweiterung für WebDAV"
 
 #: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
 msgid "Synchronize Gnote Notes to a WebDAV URL."
-msgstr "Gnote-Notizen mit einer WebDAV-Adresse abgleichen"
+msgstr "Gnote-Notizen mit einer WebDAV-Adresse abgleichen."
 
 #: src/dbus/remotecontrol.cpp:83
 #, c-format
@@ -1519,19 +1518,19 @@ msgstr ""
 
 #: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2021 Aurimas Cernius\n"
+"Copyright © 2010-2022 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2021 Aurimas Cernius\n"
+"Copyright © 2010-2022 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Originalautoren von Tomboy."
 
 #: src/gnote.cpp:277
 msgid "A simple and easy to use desktop note-taking application."
-msgstr "Eine einfache und leicht bedienbare Anwendung für Notizen"
+msgstr "Eine einfache und leicht bedienbare Anwendung für Notizen."
 
 #: src/gnote.cpp:288
 msgid "Homepage"
@@ -1617,7 +1616,7 @@ msgid "Window is not embedded"
 msgstr "Fenster ist nicht eingebettet"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:362
+#: src/notebase.cpp:225 src/note.cpp:354
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Ausnahme beim Speichern der Notiz: %s"
@@ -1664,7 +1663,7 @@ msgstr "Neues Notiz_buch …"
 msgid "%1 Notebook Template"
 msgstr "Notizbuch-Vorlage %1"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:304
+#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
 msgid "New Note"
 msgstr "Neue Notiz"
 
@@ -1752,24 +1751,24 @@ msgstr ""
 "local/share/gnote zur Verfügung stehen. Details zu dem Fehler finden Sie in "
 "~/.gnote.log."
 
-#: src/note.cpp:453
+#: src/note.cpp:442
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Fehler beim Speichern: %s"
 
-#: src/note.cpp:680
+#: src/note.cpp:667
 msgid "Setting text content for closed notes not supported"
 msgstr ""
 "Das Festlegen eines Inhalts für geschlossene Notizen wird nicht unterstützt"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:325
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:317
 msgid "New Note Template"
 msgstr "Neue Notizbuchvorlage"
 
-#: src/notemanagerbase.cpp:358
+#: src/notemanagerbase.cpp:350
 msgid "Describe your new note here."
-msgstr "Beschreiben Sie ihre neue Notiz hier."
+msgstr "Beschreiben Sie Ihre neue Notiz hier."
 
 #: src/notemanager.cpp:114
 msgid ""
@@ -1797,7 +1796,7 @@ msgstr ""
 "\n"
 "<bold>Willkommen bei Gnote!</bold>\n"
 "\n"
-"Benutzen Sie diese »Hier starten«-Notiz als Ausgangspunkt, um ihre Ideen und "
+"Benutzen Sie diese »Hier starten«-Notiz als Ausgangspunkt, um Ihre Ideen und "
 "Gedanken zu ordnen.\n"
 "\n"
 "Sie können neue Notizen zum Festhalten Ihrer Ideen anlegen, indem Sie den "
@@ -1920,32 +1919,32 @@ msgstr "Notiztitel"
 msgid "Ad_vanced"
 msgstr "Er_weitert"
 
-#: src/notewindow.cpp:282
+#: src/notewindow.cpp:274
 msgid "_Undo"
 msgstr "_Rückgängig"
 
-#: src/notewindow.cpp:284
+#: src/notewindow.cpp:276
 msgid "_Redo"
 msgstr "_Wiederholen"
 
-#: src/notewindow.cpp:286 src/notewindow.cpp:340
+#: src/notewindow.cpp:278 src/notewindow.cpp:342
 msgid "_Link to New Note"
 msgstr "_Verknüpfung zu neuer Notiz"
 
-#: src/notewindow.cpp:288
+#: src/notewindow.cpp:280
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Wichtig"
 
-#: src/notewindow.cpp:298
+#: src/notewindow.cpp:290
 msgid "_Delete…"
 msgstr "_Löschen …"
 
-#: src/notewindow.cpp:375
+#: src/notewindow.cpp:377
 msgid "Set properties of text"
 msgstr "Text-Einstellungen"
 
-#: src/notewindow.cpp:389
+#: src/notewindow.cpp:391
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1954,67 +1953,63 @@ msgstr ""
 "regulärer Notizen fest und wird nicht im Notizmenü oder im Suchfenster "
 "angezeigt."
 
-#: src/notewindow.cpp:392
+#: src/notewindow.cpp:394
 msgid "Convert to regular note"
 msgstr "In reguläre Notiz umwandeln"
 
-#: src/notewindow.cpp:395
-msgid "Save Si_ze"
-msgstr "_Größe speichern"
-
-#: src/notewindow.cpp:399
+#: src/notewindow.cpp:397
 msgid "Save Se_lection"
 msgstr "Auswah_l speichern"
 
-#: src/notewindow.cpp:403
+#: src/notewindow.cpp:401
 msgid "Save _Title"
 msgstr "_Titel speichern"
 
-#: src/notewindow.cpp:505 src/notewindow.cpp:1011
+#: src/notewindow.cpp:491 src/notewindow.cpp:997
 msgid "Cannot create note"
 msgstr "Notiz konnte nicht angelegt werden"
 
-#: src/notewindow.cpp:781
+#: src/notewindow.cpp:767
 msgid "_Bold"
 msgstr "_Fett"
 
-#: src/notewindow.cpp:782
+#: src/notewindow.cpp:768
 msgid "_Italic"
 msgstr "_Kursiv"
 
-#: src/notewindow.cpp:783
+#: src/notewindow.cpp:769
 msgid "_Strikeout"
 msgstr "_Durchgestrichen"
 
-#: src/notewindow.cpp:787
+#: src/notewindow.cpp:773
 msgid "_Highlight"
 msgstr "_Hervorheben"
 
-#: src/notewindow.cpp:790
+#: src/notewindow.cpp:776
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:791
+#: src/notewindow.cpp:777
 msgid "S_mall"
 msgstr "_Klein"
 
-#: src/notewindow.cpp:792
+#: src/notewindow.cpp:778
 msgid "_Large"
 msgstr "_Groß"
 
-#: src/notewindow.cpp:793
+#: src/notewindow.cpp:779
 msgid "Hu_ge"
 msgstr "_Riesig"
 
-#: src/notewindow.cpp:815
+#: src/notewindow.cpp:801
 msgid "⦁ Bullets"
 msgstr "⦁ Aufzählungspunkte"
 
-#: src/notewindow.cpp:817
+#: src/notewindow.cpp:803
 msgid "→ Increase indent"
 msgstr "Einzug erhöhen"
 
-#: src/notewindow.cpp:819
+#: src/notewindow.cpp:805
 msgid "← Decrease indent"
 msgstr "Einzug verringern"
 
@@ -2041,8 +2036,8 @@ msgstr "Erweiterungen"
 
 #. Ok button...
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:801
-#: src/preferencesdialog.cpp:1064 src/preferencesdialog.cpp:1281
+#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:793
+#: src/preferencesdialog.cpp:1056 src/preferencesdialog.cpp:1273
 #: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
 msgid "_Close"
 msgstr "S_chließen"
@@ -2052,16 +2047,11 @@ msgstr "S_chließen"
 msgid "Plugin %s is absent"
 msgstr "Die Erweiterung %s ist nicht vorhanden ist"
 
-#. Open in new window
-#: src/preferencesdialog.cpp:250
-msgid "Always _open notes in new window"
-msgstr "Notizen immer in neuem _Fenster öffnen"
-
-#: src/preferencesdialog.cpp:263
+#: src/preferencesdialog.cpp:255
 msgid "_Spell check while typing"
 msgstr "_Rechtschreibprüfung während der Eingabe"
 
-#: src/preferencesdialog.cpp:264
+#: src/preferencesdialog.cpp:256
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -2070,37 +2060,37 @@ msgstr ""
 "im Kontextmenü angezeigt."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:274
+#: src/preferencesdialog.cpp:266
 msgid "Enable auto-_bulleted lists"
 msgstr "_Automatische Aufzählungslisten aktivieren"
 
-#: src/preferencesdialog.cpp:275
+#: src/preferencesdialog.cpp:267
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
 "Beginnen Sie eine neue Punkteliste, indem Sie eine neue Zeile mit dem "
 "Zeichen »-« beginnen."
 
-#: src/preferencesdialog.cpp:283
+#: src/preferencesdialog.cpp:275
 msgid "Use custom _font"
 msgstr "Eigene _Schriftart verwenden"
 
-#: src/preferencesdialog.cpp:300
+#: src/preferencesdialog.cpp:292
 msgid "When renaming a linked note: "
 msgstr "Wenn eine verknüpfte Notiz umbenannt wird: "
 
-#: src/preferencesdialog.cpp:304
+#: src/preferencesdialog.cpp:296
 msgid "Ask me what to do"
 msgstr "Immer fragen, was zu tun ist"
 
-#: src/preferencesdialog.cpp:305
+#: src/preferencesdialog.cpp:297
 msgid "Never rename links"
 msgstr "Verknüpfungen nie umbenennen"
 
-#: src/preferencesdialog.cpp:306
+#: src/preferencesdialog.cpp:298
 msgid "Always rename links"
 msgstr "Verknüpfungen immer umbenennen"
 
-#: src/preferencesdialog.cpp:326
+#: src/preferencesdialog.cpp:318
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2108,27 +2098,27 @@ msgstr ""
 "Verwenden Sie die Vorlage für neue Notizen, um festzulegen, welcher Text "
 "beim Anlegen einer neuen Notiz verwendet werden soll."
 
-#: src/preferencesdialog.cpp:331
+#: src/preferencesdialog.cpp:323
 msgid "Open New Note Template"
 msgstr "Vorlage für neue Notizen öffnen"
 
 #. internal links
-#: src/preferencesdialog.cpp:385
+#: src/preferencesdialog.cpp:377
 msgid "_Automatically link to notes"
 msgstr "_Automatisch auf Notizen verweisen"
 
-#: src/preferencesdialog.cpp:386
+#: src/preferencesdialog.cpp:378
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Schalten Sie diese Einstellung ein, damit ein Verweis auf Notizen erstellt "
 "wird, deren Notiztitel mit dem Text übereinstimmt."
 
 #. URLs
-#: src/preferencesdialog.cpp:392
+#: src/preferencesdialog.cpp:384
 msgid "Create links for _URLs"
 msgstr "Verweise für _Adressen erstellen"
 
-#: src/preferencesdialog.cpp:393
+#: src/preferencesdialog.cpp:385
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2137,11 +2127,11 @@ msgstr ""
 "Durch einen Klick auf diese Adresse wird das zugehörige Programm geöffnet."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:400
+#: src/preferencesdialog.cpp:392
 msgid "Highlight _WikiWords"
 msgstr "_WikiWords hervorheben"
 
-#: src/preferencesdialog.cpp:401
+#: src/preferencesdialog.cpp:393
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2150,66 +2140,65 @@ msgstr ""
 "<b>DieAussehenWieDieses</b>. Ein Klick auf das Wort wird eine Notiz mit "
 "diesem Namen erstellen."
 
-#: src/preferencesdialog.cpp:433
+#: src/preferencesdialog.cpp:425
 msgid "Ser_vice:"
 msgstr "_Dienst:"
 
-#: src/preferencesdialog.cpp:487 src/preferencesdialog.cpp:1107
+#: src/preferencesdialog.cpp:479 src/preferencesdialog.cpp:1099
 msgid "Not configurable"
 msgstr "Nicht konfigurierbar"
 
-#: src/preferencesdialog.cpp:512
+#: src/preferencesdialog.cpp:504
 msgid "Automatic background s_ync interval (minutes)"
 msgstr ""
 "Zeitinter_vall zum automatischen Abgleichen im Hintergrund (in Minuten)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:536
+#: src/preferencesdialog.cpp:528
 msgid "_Advanced..."
 msgstr "_Erweitert …"
 
-#: src/preferencesdialog.cpp:543
+#: src/preferencesdialog.cpp:535
 msgid "Clear"
 msgstr "Leeren"
 
-#: src/preferencesdialog.cpp:584
+#: src/preferencesdialog.cpp:576
 msgid "The following plugins are installed:"
 msgstr "Die folgenden Plugins sind installiert:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: src/preferencesdialog.cpp:619
+#: src/preferencesdialog.cpp:611
 msgid "_Enable"
 msgstr "_Aktivieren"
 
-#: src/preferencesdialog.cpp:625
+#: src/preferencesdialog.cpp:617
 msgid "_Disable"
 msgstr "_Deaktivieren"
 
-#: src/preferencesdialog.cpp:637
-#| msgid "Formatting"
+#: src/preferencesdialog.cpp:629
 msgid "In_formation"
 msgstr "In_formation"
 
-#: src/preferencesdialog.cpp:781
+#: src/preferencesdialog.cpp:773
 msgid "Not Implemented"
 msgstr "Nicht implementiert"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:798
+#: src/preferencesdialog.cpp:790
 msgid "%1 Preferences"
 msgstr "%1-Einstellungen"
 
-#: src/preferencesdialog.cpp:931
+#: src/preferencesdialog.cpp:923
 msgid "Choose Note Font"
 msgstr "Schriftart der Notizen auswählen"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:1024
+#: src/preferencesdialog.cpp:1016
 msgid "Other Synchronization Options"
 msgstr "Andere Abgleichsoptionen"
 
-#: src/preferencesdialog.cpp:1027
+#: src/preferencesdialog.cpp:1019
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2218,23 +2207,23 @@ msgstr ""
 "konfigurierten Abgleich-Server erkannt wird:"
 
 #. label.Xalign = 0;
-#: src/preferencesdialog.cpp:1031
+#: src/preferencesdialog.cpp:1023
 msgid "Always ask me what to do"
-msgstr "Immer fragen, was zu tun ist."
+msgstr "Immer fragen, was zu tun ist"
 
-#: src/preferencesdialog.cpp:1035
+#: src/preferencesdialog.cpp:1027
 msgid "Rename my local note"
 msgstr "Meine lokale Notiz umbenennen"
 
-#: src/preferencesdialog.cpp:1039
+#: src/preferencesdialog.cpp:1031
 msgid "Replace my local note with the server's update"
 msgstr "Meine lokale Notiz mit der Aktualisierung des Servers ersetzen"
 
-#: src/preferencesdialog.cpp:1141
+#: src/preferencesdialog.cpp:1133
 msgid "Are you sure?"
 msgstr "Sind Sie sicher?"
 
-#: src/preferencesdialog.cpp:1142
+#: src/preferencesdialog.cpp:1134
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2243,11 +2232,11 @@ msgstr ""
 "möglicherweise gezwungen, alle Ihre Notizen neu abzugleichen, wenn Sie Ihre "
 "neuen Einstellungen speichern."
 
-#: src/preferencesdialog.cpp:1152
+#: src/preferencesdialog.cpp:1144
 msgid "Resetting Synchronization Settings"
 msgstr "Abgleichseinstellungen werden zurückgesetzt"
 
-#: src/preferencesdialog.cpp:1153
+#: src/preferencesdialog.cpp:1145
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2258,11 +2247,11 @@ msgstr ""
 "gezwungen, alle Ihre Notizen neu abzugleichen, wenn Sie Ihre Einstellungen "
 "neu speichern."
 
-#: src/preferencesdialog.cpp:1228
+#: src/preferencesdialog.cpp:1220
 msgid "Connection successful"
 msgstr "Verbindungsaufbau erfolgreich"
 
-#: src/preferencesdialog.cpp:1229
+#: src/preferencesdialog.cpp:1221
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2271,7 +2260,7 @@ msgstr ""
 "abgleichen?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1254
+#: src/preferencesdialog.cpp:1246
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2279,51 +2268,63 @@ msgstr ""
 "Bitte überprüfen Sie Ihre Informationen und versuchen Sie es erneut. Die "
 "Protokolldatei %1 könnte weitere Informationen zu diesem Fehler enthalten."
 
-#: src/preferencesdialog.cpp:1259
+#: src/preferencesdialog.cpp:1251
 msgid "Error connecting"
 msgstr "Verbindungsfehler"
 
-#: src/preferencesdialog.cpp:1321
+#: src/preferencesdialog.cpp:1313
 msgid "Version:"
 msgstr "Version:"
 
-#: src/preferencesdialog.cpp:1324
+#: src/preferencesdialog.cpp:1316
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/preferencesdialog.cpp:1328
+#: src/preferencesdialog.cpp:1320
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: src/recentchanges.cpp:160
-msgid "All Notes"
-msgstr "Alle Notizen"
+#: src/recentchanges.cpp:65
+msgid "Close"
+msgstr "Schließen"
 
-#: src/recentchanges.cpp:171
+#: src/recentchanges.cpp:257
 msgid "Create New Note"
 msgstr "Eine neue Notiz anlegen"
 
-#: src/recentchanges.cpp:193
+#: src/recentchanges.cpp:284
 msgid "Search"
 msgstr "Suchen"
 
-#: src/recentchanges.cpp:268
+#: src/recentchanges.cpp:355
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Das übergeordnete Element der eingebetteten Box ist kein Gtk::Grid. Bitte "
 "melden Sie den Fehler!"
 
-#: src/recentchanges.cpp:310
+#: src/recentchanges.cpp:397
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Das übergeordnete Element des Suchfelds ist kein Gtk::Grid. Bitte melden Sie "
 "den Fehler!"
 
-#: src/recentchanges.cpp:863
+#: src/recentchanges.cpp:712
+msgid "Attempt to foreground a widget, that is not embedded in the window"
+msgstr ""
+"Versuchen, ein Widget in den Vordergrund zu bringen, das nicht im Fenster "
+"eingebettet ist"
+
+#: src/recentchanges.cpp:719
+msgid "Attempt to foreground a widget, that is not Gtk::Widget"
+msgstr ""
+"Versuchen, ein Widget in den Vordergrund zu bringen, das nicht Gtk::Widget "
+"ist"
+
+#: src/recentchanges.cpp:989
 msgid "Expected widget to be a sub-menu!"
 msgstr "Ein Untermenü wurde als Widget erwartet!"
 
-#: src/recentchanges.cpp:868
+#: src/recentchanges.cpp:994
 msgid "No configured actions"
 msgstr "Keine Aktionen konfiguriert"
 
@@ -2332,23 +2333,23 @@ msgstr "Keine Aktionen konfiguriert"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Laden der D-Bus-Schnittstelle %s schlug fehl: %s"
 
-#: src/searchnoteswidget.cpp:212
+#: src/searchnoteswidget.cpp:210
 msgid "Notebooks"
 msgstr "Notizbücher"
 
-#: src/searchnoteswidget.cpp:684
+#: src/searchnoteswidget.cpp:682
 msgid "Note"
 msgstr "Notiz"
 
-#: src/searchnoteswidget.cpp:706
+#: src/searchnoteswidget.cpp:704
 msgid "Modified"
 msgstr "Geändert"
 
-#: src/searchnoteswidget.cpp:1017
+#: src/searchnoteswidget.cpp:1015
 msgid "Notes"
 msgstr "Notizen"
 
-#: src/searchnoteswidget.cpp:1036
+#: src/searchnoteswidget.cpp:1034
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2356,61 +2357,61 @@ msgstr ""
 "Keine Ergebnisse im ausgewählten Notizbuch gefunden.\n"
 "Hier klicken, um alle Notizen zu durchsuchen."
 
-#: src/searchnoteswidget.cpp:1040
+#: src/searchnoteswidget.cpp:1038
 msgid "Click here to search across all notebooks"
 msgstr "Hier klicken, um alle Notizbücher zu durchsuchen"
 
-#: src/searchnoteswidget.cpp:1058
+#: src/searchnoteswidget.cpp:1056
 msgid "Matches"
 msgstr "Stimmt überein"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:1109
+#: src/searchnoteswidget.cpp:1107
 msgid "Title match"
 msgstr "Titel-Übereinstimmung"
 
-#: src/searchnoteswidget.cpp:1113
+#: src/searchnoteswidget.cpp:1111
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 Treffer"
 msgstr[1] "%1 Treffer"
 
-#: src/searchnoteswidget.cpp:1310
+#: src/searchnoteswidget.cpp:1306
 msgid "Open In New _Window"
 msgstr "In neuem _Fenster öffnen"
 
-#: src/searchnoteswidget.cpp:1320
+#: src/searchnoteswidget.cpp:1316
 msgid "_New"
 msgstr "_Neu"
 
-#: src/searchnoteswidget.cpp:1349
+#: src/searchnoteswidget.cpp:1345
 msgid "_Open Template Note"
 msgstr "Notizvorlage _öffnen"
 
-#: src/searchnoteswidget.cpp:1353
+#: src/searchnoteswidget.cpp:1349
 msgid "Re_name..."
 msgstr "_Umbenennen …"
 
-#: src/searchnoteswidget.cpp:1360
+#: src/searchnoteswidget.cpp:1356
 msgid "_New..."
 msgstr "_Neu …"
 
-#: src/searchnoteswidget.cpp:1511 src/searchnoteswidget.cpp:1524
-#: src/searchnoteswidget.cpp:1535
+#: src/searchnoteswidget.cpp:1473 src/searchnoteswidget.cpp:1486
+#: src/searchnoteswidget.cpp:1497
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Fehler beim Verarbeiten der Einstellung suchen-sortieren (Wert: %s):"
 
-#: src/searchnoteswidget.cpp:1512
+#: src/searchnoteswidget.cpp:1474
 msgid "Expected format 'column:order'"
 msgstr "Erwartetes Format »Spalte:Ordner«"
 
-#: src/searchnoteswidget.cpp:1525
+#: src/searchnoteswidget.cpp:1487
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Unbekannte Spalte %s"
 
-#: src/searchnoteswidget.cpp:1536
+#: src/searchnoteswidget.cpp:1498
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Unbekannte Reihenfolge %s"
@@ -2531,7 +2532,7 @@ msgstr "Last-sync-rev Eelement in %s ist nicht analysierbar"
 
 #: src/synchronization/gvfssyncservice.cpp:98
 msgid "Failure writing test file"
-msgstr "Schreiben der Testdatei ist gescheitert."
+msgstr "Schreiben der Testdatei ist gescheitert"
 
 #: src/synchronization/gvfssyncservice.cpp:103
 msgid "Failure when checking test file contents"
@@ -2756,7 +2757,7 @@ msgstr "Notizen abgleichen"
 
 #: src/synchronization/syncmanager.cpp:78
 #: src/synchronization/syncmanager.cpp:95
-#: src/synchronization/syncmanager.cpp:566
+#: src/synchronization/syncmanager.cpp:557
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Erstellen Sie einen Fehlerbericht. Typenumwandlung fehlgeschlagen: %s"
@@ -2885,6 +2886,43 @@ msgstr "Verknüpfungsadresse _kopieren"
 #: src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "Verknüpfung ö_ffnen"
+
+#~ msgid "Enable closing notes with escape"
+#~ msgstr "Schließen von Notizen mit Escape aktivieren"
+
+#~ msgid "If enabled, an opened note can be closed by hitting the escape key."
+#~ msgstr ""
+#~ "Wenn aktiviert, kann eine geöffnete Notiz durch Betätigen der Escape-"
+#~ "Taste geschlossen werden."
+
+#~ msgid "Open notes in new window"
+#~ msgstr "Notizen in neuem Fenster öffnen"
+
+#~ msgid ""
+#~ "Open notes in new window instead of replacing active content of the same "
+#~ "window"
+#~ msgstr ""
+#~ "Notizen in einem neuen Fenster öffnen anstatt aktiven Inhalt des selbsen "
+#~ "Fensters zu ersetzen"
+
+#~ msgid "Save note window size and autosize note window to it"
+#~ msgstr "Fenstergröße von Notizen speichern und automatisch anpassen"
+
+#~ msgid ""
+#~ "Saves note window size and automatically resizes main window to this "
+#~ "size, when note is opened."
+#~ msgstr ""
+#~ "Speichert die Notizen-Fenstergröße und passt beim Programmstart das "
+#~ "Hauptfenster automatisch an die Größe an."
+
+#~ msgid "Save Si_ze"
+#~ msgstr "_Größe speichern"
+
+#~ msgid "Always _open notes in new window"
+#~ msgstr "Notizen immer in neuem _Fenster öffnen"
+
+#~ msgid "All Notes"
+#~ msgstr "Alle Notizen"
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Globale Tastenbelegungen aktivieren"
