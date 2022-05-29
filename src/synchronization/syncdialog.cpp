@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016,2017,2019-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -678,7 +678,7 @@ void SyncDialog::note_conflict_detected_(
 }
 
 
-void SyncDialog::rename_note(const Note::Ptr & note, const Glib::ustring & newTitle, bool)
+void SyncDialog::rename_note(const Note::Ptr & note, Glib::ustring && newTitle, bool)
 {
   Glib::ustring oldTitle = note->get_title();
   // Rename the note (skip for now...never using updateReferencingNotes option)
@@ -704,7 +704,7 @@ void SyncDialog::rename_note(const Note::Ptr & note, const Glib::ustring & newTi
 
   // Create note with old XmlContent just in case GetCompleteNoteXml failed
   DBG_OUT("RenameNote: about to create %s", newTitle.c_str());
-  Note::Ptr renamedNote = std::static_pointer_cast<Note>(m_manager.create(newTitle, newContent));
+  Note::Ptr renamedNote = std::static_pointer_cast<Note>(m_manager.create(std::move(newTitle), std::move(newContent)));
   if(newCompleteContent != "") {// TODO: Anything to do if it is null?
     try {
       renamedNote->load_foreign_note_xml(newCompleteContent, OTHER_DATA_CHANGED);

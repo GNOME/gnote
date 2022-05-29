@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009-2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,12 +37,12 @@ const Glib::ustring NoteOfTheDay::s_title_prefix
 gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
                                       const Glib::Date & date)
 {
-  const Glib::ustring title = get_title(date);
-  const Glib::ustring xml = get_content(date, manager);
+  Glib::ustring title = get_title(date);
+  Glib::ustring xml = get_content(date, manager);
 
   gnote::NoteBase::Ptr notd;
   try {
-    notd = manager.create(title, xml);
+    notd = manager.create(Glib::ustring(title), std::move(xml));
   }
   catch (const sharp::Exception & e) {
     /* TRANSLATORS: first %s is note title, second is error */

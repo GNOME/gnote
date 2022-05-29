@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013-2014,2017,2021 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014,2017,2021-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -288,7 +288,7 @@ bool StickyNoteImportNoteAddin::create_note_from_sticky(const char * stickyTitle
                                           gnote::utils::XmlEncoder::encode(content));
 
   try {
-    gnote::NoteBase::Ptr newNote = manager.create(title, noteXml);
+    gnote::NoteBase::Ptr newNote = manager.create(Glib::ustring(title), std::move(noteXml));
     newNote->queue_save (gnote::NO_CHANGE);
     return true;
   } 

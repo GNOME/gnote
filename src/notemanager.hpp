@@ -74,12 +74,9 @@ namespace gnote {
   protected:
     virtual void post_load() override;
     virtual void migrate_notes(const Glib::ustring & old_note_dir) override;
-    virtual NoteBase::Ptr create_note_from_template(const Glib::ustring & title,
-                                                    const NoteBase::Ptr & template_note,
-                                                    const Glib::ustring & guid) override;
-    virtual NoteBase::Ptr create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid = Glib::ustring()) override;
-    virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content,
-                                          const Glib::ustring & guid) override;
+    NoteBase::Ptr create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note, Glib::ustring && guid) override;
+    NoteBase::Ptr create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid = Glib::ustring()) override;
+    NoteBase::Ptr create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid) override;
     virtual NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) override;
     NoteBase::Ptr note_load(Glib::ustring && file_name) override;
   private:

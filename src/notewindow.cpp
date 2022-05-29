@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2021 Aurimas Cernius
+ * Copyright (C) 2011-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -482,7 +482,7 @@ namespace gnote {
     NoteBase::Ptr match = m_note.manager().find(title);
     if (!match) {
       try {
-        match = m_note.manager().create(select);
+        match = m_note.manager().create(std::move(select));
       } 
       catch (const sharp::Exception & e) {
         utils::HIGMessageDialog dialog(dynamic_cast<Gtk::Window*>(host()),
@@ -988,7 +988,7 @@ namespace gnote {
     NoteBase::Ptr match = manager.find(title);
     if(!match) {
       try {
-        match = manager.create(select);
+        match = manager.create(std::move(select));
       }
       catch(const sharp::Exception & e) {
         utils::HIGMessageDialog dialog(dynamic_cast<Gtk::Window*>(m_buffer->note().get_window()->host()),

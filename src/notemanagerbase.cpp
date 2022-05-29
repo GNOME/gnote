@@ -231,9 +231,9 @@ NoteBase::Ptr NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
   return NoteBase::Ptr();
 }
 
-NoteBase::Ptr NoteManagerBase::create_note_from_template(const Glib::ustring & title, const NoteBase::Ptr & template_note)
+NoteBase::Ptr NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note)
 {
-  return create_note_from_template(title, template_note, "");
+  return create_note_from_template(std::move(title), template_note, "");
 }
 
 NoteBase::Ptr NoteManagerBase::create()
@@ -241,37 +241,34 @@ NoteBase::Ptr NoteManagerBase::create()
   return create_note("", "");
 }
 
-NoteBase::Ptr NoteManagerBase::create(const Glib::ustring & title)
+NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title)
 {
   Glib::ustring body;
   auto note_title = split_title_from_content(title, body);
-  return create_note(note_title, body);
+  return create_note(std::move(note_title), std::move(body));
 }
 
-NoteBase::Ptr NoteManagerBase::create(const Glib::ustring & title, const Glib::ustring & xml_content)
+NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title, Glib::ustring && xml_content)
 {
-  return create_new_note(title, xml_content, "");
+  return create_new_note(std::move(title), std::move(xml_content), "");
 }
 
 // Creates a new note with the given title and guid with body based on
 // the template note.
-NoteBase::Ptr NoteManagerBase::create_note_from_template(const Glib::ustring & title,
-                                                         const NoteBase::Ptr & template_note,
-                                                         const Glib::ustring & guid)
+NoteBase::Ptr NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note, Glib::ustring && guid)
 {
-  Glib::ustring new_title(title);
   Tag::Ptr template_save_title = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
   if(template_note->contains_tag(template_save_title)) {
-    new_title = get_unique_name(template_note->get_title());
+    title = get_unique_name(template_note->get_title());
   }
 
   // Use the body from the template note
   Glib::ustring xml_content = sharp::string_replace_first(template_note->xml_content(),
                                                           utils::XmlEncoder::encode(template_note->get_title()),
-                                                          utils::XmlEncoder::encode(new_title));
+                                                          utils::XmlEncoder::encode(title));
   xml_content = sanitize_xml_content(xml_content);
 
-  NoteBase::Ptr new_note = create_new_note(new_title, xml_content, guid);
+  NoteBase::Ptr new_note = create_new_note(std::move(title), std::move(xml_content), std::move(guid));
   return new_note;
 }
 
@@ -290,7 +287,7 @@ Glib::ustring NoteManagerBase::get_unique_name(const Glib::ustring & basename) c
   return title;
 }
 
-NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid)
+NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid)
 {
   if(title.empty()) {
     title = get_unique_name(_("New Note"));
@@ -300,7 +297,7 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring bo
   if(body.empty()) {
     auto template_note = find_template_note();
     if(template_note) {
-      return create_note_from_template(title, template_note, guid);
+      return create_note_from_template(std::move(title), template_note, std::move(guid));
     }
 
     // Use a simple "Describe..." body and highlight
@@ -311,12 +308,11 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring title, Glib::ustring bo
     content = get_note_content(title, body);
   }
 
-  return create_new_note(title, content, guid);
+  return create_new_note(std::move(title), std::move(content), std::move(guid));
 }
 
 // Create a new note with the specified Xml content
-NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
-                                               const Glib::ustring & guid)
+NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid)
 {
   if(title.empty())
     throw sharp::Exception("Invalid title");
@@ -330,11 +326,11 @@ NoteBase::Ptr NoteManagerBase::create_new_note(const Glib::ustring & title, cons
   else
     filename = make_new_file_name();
 
-  NoteBase::Ptr new_note = note_create_new(Glib::ustring(title), Glib::ustring(filename));
+  NoteBase::Ptr new_note = note_create_new(std::move(title), Glib::ustring(filename));
   if(new_note == 0) {
     throw sharp::Exception("Failed to create new note");
   }
-  new_note->set_xml_content(Glib::ustring(xml_content));
+  new_note->set_xml_content(std::move(xml_content));
   new_note->signal_renamed.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_rename));
   new_note->signal_saved.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_save));
 
@@ -368,7 +364,8 @@ NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
     if(find(title)) {
       title = get_unique_name(title);
     }
-    template_note = create(title, get_note_template_content(title));
+    auto content = get_note_template_content(title);
+    template_note = create(std::move(title), std::move(content));
     if(template_note == 0) {
       throw sharp::Exception("Failed to create template note");
     }
@@ -496,11 +493,11 @@ NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)
 }
 
 
-NoteBase::Ptr NoteManagerBase::create_with_guid(const Glib::ustring & title, const Glib::ustring & guid)
+NoteBase::Ptr NoteManagerBase::create_with_guid(Glib::ustring && title, Glib::ustring && guid)
 {
   Glib::ustring body;
   auto note_title = split_title_from_content(title, body);
-  return create_note(note_title, body, guid);
+  return create_note(std::move(note_title), std::move(body), std::move(guid));
 }
 
 

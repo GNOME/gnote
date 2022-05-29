@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -138,7 +138,8 @@ namespace notebooks {
         auto tag_notes = m_tag->get_notes();
         title = m_note_manager.get_unique_name(title);
       }
-      note = m_note_manager.create(title, NoteManager::get_note_template_content (title));
+      auto content = NoteManager::get_note_template_content(title);
+      note = m_note_manager.create(std::move(title), std::move(content));
           
       // Select the initial text
       NoteBuffer::Ptr buffer = std::static_pointer_cast<Note>(note)->get_buffer();
@@ -166,7 +167,7 @@ namespace notebooks {
     Note::Ptr note_template = get_template_note();
 
     temp_title = m_note_manager.get_unique_name(_("New Note"));
-    NoteBase::Ptr note = m_note_manager.create_note_from_template(temp_title, note_template);
+    NoteBase::Ptr note = m_note_manager.create_note_from_template(std::move(temp_title), note_template);
 
     // Add the notebook tag
     note->add_tag(m_tag);

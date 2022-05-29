@@ -145,13 +145,11 @@ namespace gnote {
         "</note-content>");
 
     try {
-      NoteBase::Ptr start_note = create (_("Start Here"),
-                                start_note_content);
+      NoteBase::Ptr start_note = create (_("Start Here"), std::move(start_note_content));
       start_note->queue_save (CONTENT_CHANGED);
       m_preferences.start_note_uri(start_note->uri());
 
-      NoteBase::Ptr links_note = create (_("Using Links in Gnote"),
-                                links_note_content);
+      NoteBase::Ptr links_note = create (_("Using Links in Gnote"), std::move(links_note_content));
       links_note->queue_save (CONTENT_CHANGED);
     } 
     catch (const std::exception & e) {
@@ -255,10 +253,10 @@ namespace gnote {
   }
 
 
-  NoteBase::Ptr NoteManager::create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid)
+  NoteBase::Ptr NoteManager::create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid)
   {
     bool select_body = body.empty();
-    auto new_note = NoteManagerBase::create_note(std::move(title), std::move(body), guid);
+    auto new_note = NoteManagerBase::create_note(std::move(title), std::move(body), std::move(guid));
     if(select_body) {
       // Select the inital text so typing will overwrite the body text
       std::static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
@@ -267,10 +265,9 @@ namespace gnote {
   }
 
   // Create a new note with the specified Xml content
-  NoteBase::Ptr NoteManager::create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
-                                        const Glib::ustring & guid)
+  NoteBase::Ptr NoteManager::create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid)
   {
-    NoteBase::Ptr new_note = NoteManagerBase::create_new_note(title, xml_content, guid);
+    NoteBase::Ptr new_note = NoteManagerBase::create_new_note(std::move(title), std::move(xml_content), std::move(guid));
 
     // Load all the addins for the new note
     m_addin_mgr->load_addins_for_note(std::static_pointer_cast<Note>(new_note));
@@ -296,11 +293,10 @@ namespace gnote {
 
   // Creates a new note with the given title and guid with body based on
   // the template note.
-  NoteBase::Ptr NoteManager::create_note_from_template(const Glib::ustring & title,
-                                                       const NoteBase::Ptr & template_note,
-                                                       const Glib::ustring & guid)
+  NoteBase::Ptr NoteManager::create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note, Glib::ustring && guid)
   {
-    NoteBase::Ptr new_note = NoteManagerBase::create_note_from_template(title, template_note, guid);
+    auto title_size = title.size();
+    NoteBase::Ptr new_note = NoteManagerBase::create_note_from_template(std::move(title), template_note, std::move(guid));
     if(new_note == 0) {
       return new_note;
     }
@@ -335,8 +331,8 @@ namespace gnote {
         selection.forward_chars(selection_bound - template_title.size() - 1); // skip title and new line
       }
       else {
-        cursor = buffer->get_iter_at_offset(cursor_pos - template_title.size() + title.size() - 1);
-        selection = buffer->get_iter_at_offset(selection_bound - template_title.size() + title.size() - 1);
+        cursor = buffer->get_iter_at_offset(cursor_pos - template_title.size() + title_size - 1);
+        selection = buffer->get_iter_at_offset(selection_bound - template_title.size() + title_size - 1);
       }
     }
     else {

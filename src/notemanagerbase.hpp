@@ -71,9 +71,9 @@ public:
   NoteBase::Ptr find_by_uri(const Glib::ustring &) const;
   NoteBase::List get_notes_linking_to(const Glib::ustring & title) const;
   NoteBase::Ptr create();
-  NoteBase::Ptr create(const Glib::ustring & title);
-  NoteBase::Ptr create(const Glib::ustring & title, const Glib::ustring & xml_content);
-  NoteBase::Ptr create_note_from_template(const Glib::ustring & title, const NoteBase::Ptr & template_note);
+  NoteBase::Ptr create(Glib::ustring && title);
+  NoteBase::Ptr create(Glib::ustring && title, Glib::ustring && xml_content);
+  NoteBase::Ptr create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note);
   virtual NoteBase::Ptr get_or_create_template_note();
   NoteBase::Ptr find_template_note() const;
   Glib::ustring get_unique_name(const Glib::ustring & basename) const;
@@ -81,7 +81,7 @@ public:
   // Import a note read from file_path
   // Will ensure the sanity including the unique title.
   NoteBase::Ptr import_note(const Glib::ustring & file_path);
-  NoteBase::Ptr create_with_guid(const Glib::ustring & title, const Glib::ustring & guid);
+  NoteBase::Ptr create_with_guid(Glib::ustring && title, Glib::ustring && guid);
 
   const Glib::ustring & notes_dir() const
     {
@@ -104,12 +104,9 @@ protected:
   void add_note(NoteBase::Ptr);
   void on_note_rename(const NoteBase::Ptr & note, const Glib::ustring & old_title);
   void on_note_save(const NoteBase::Ptr & note);
-  virtual NoteBase::Ptr create_note_from_template(const Glib::ustring & title,
-                                                  const NoteBase::Ptr & template_note,
-                                                  const Glib::ustring & guid);
-  virtual NoteBase::Ptr create_note(Glib::ustring title, Glib::ustring body, const Glib::ustring & guid = Glib::ustring());
-  virtual NoteBase::Ptr create_new_note(const Glib::ustring & title, const Glib::ustring & xml_content, 
-                                        const Glib::ustring & guid);
+  virtual NoteBase::Ptr create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note, Glib::ustring && guid);
+  virtual NoteBase::Ptr create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid = Glib::ustring());
+  virtual NoteBase::Ptr create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid);
   virtual NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) = 0;
   Glib::ustring make_new_file_name() const;
   Glib::ustring make_new_file_name(const Glib::ustring & guid) const;

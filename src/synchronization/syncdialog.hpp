@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ namespace sync {
     void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
     void treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
     void sync_state_changed_(SyncState state);
-    void rename_note(const Note::Ptr & note, const Glib::ustring & newTitle, bool updateReferencingNotes);
+    void rename_note(const Note::Ptr & note, Glib::ustring && newTitle, bool updateReferencingNotes);
     void present_note(const Note::Ptr &);
 
     Gtk::Image *m_image;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2020 Aurimas Cernius
+ * Copyright (C) 2017-2020,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -116,9 +116,10 @@ SUITE(SyncManagerTests)
       return Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\n%2</note-content>", title, body);
     }
 
-    void create_note(test::NoteManager & manager, const Glib::ustring & title, const Glib::ustring & body)
+    void create_note(test::NoteManager & manager, Glib::ustring && title, Glib::ustring && body)
     {
-      manager.create(title, make_note_content(title, body))->save();
+      auto content = make_note_content(title, body);
+      manager.create(std::move(title), std::move(content))->save();
     }
 
     bool find_note_in_files(const Glib::ustring & title)

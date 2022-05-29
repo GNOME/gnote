@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2021 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2021-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -256,7 +256,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
     }
 
     try {
-      note = note_manager().create_with_guid(title, note_id);
+      note = note_manager().create_with_guid(std::move(title), Glib::ustring(note_id));
       if(note == 0) {
         /* TRANSLATORS: %s is file */
         ERR_OUT(_("NoteDirectoryWatcher: Unknown error creating note from %s"), note_path.c_str());
