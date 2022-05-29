@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2019 Aurimas Cernius
+ * Copyright (C) 2011-2014,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -62,10 +62,7 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
 
   if (0 == template_note) {
     try {
-      template_note = m_note_manager.create(
-                                NoteOfTheDay::s_template_title,
-                                NoteOfTheDay::get_template_content(
-                                  NoteOfTheDay::s_template_title));
+      template_note = m_note_manager.create(Glib::ustring(NoteOfTheDay::s_template_title), NoteOfTheDay::get_template_content(NoteOfTheDay::s_template_title));
       template_note->queue_save(gnote::CONTENT_CHANGED);
     }
     catch (const sharp::Exception & e) {

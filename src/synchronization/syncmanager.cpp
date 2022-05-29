@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -705,7 +705,7 @@ namespace sync {
   void SyncManager::create_note(const NoteUpdate & noteUpdate)
   {
     try {
-      NoteBase::Ptr existingNote = note_mgr().create_with_guid(noteUpdate.m_title, noteUpdate.m_uuid);
+      NoteBase::Ptr existingNote = note_mgr().create_with_guid(Glib::ustring(noteUpdate.m_title), Glib::ustring(noteUpdate.m_uuid));
       update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
     }
     catch(std::exception & e) {

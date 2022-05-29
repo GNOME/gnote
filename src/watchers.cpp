@@ -1065,7 +1065,7 @@ namespace gnote {
     if (!link) {
       DBG_OUT("Creating note '%s'...", link_name.c_str());
       try {
-        link = manager().create (link_name);
+        link = manager().create(Glib::ustring(link_name));
       } 
       catch(...)
       {

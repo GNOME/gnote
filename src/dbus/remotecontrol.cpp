@@ -76,7 +76,7 @@ namespace gnote {
       return "";
 
     try {
-      note = m_manager.create (linked_title);
+      note = m_manager.create(Glib::ustring(linked_title));
       return note->uri();
     } 
     catch (const std::exception & e) {
