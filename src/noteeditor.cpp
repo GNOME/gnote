@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -33,8 +33,8 @@
 
 namespace gnote {
 
-  NoteEditor::NoteEditor(const Glib::RefPtr<Gtk::TextBuffer> & buffer, Preferences & preferences)
-    : Gtk::TextView(buffer)
+  NoteEditor::NoteEditor(Glib::RefPtr<Gtk::TextBuffer> && buffer, Preferences & preferences)
+    : Gtk::TextView(std::move(buffer))
     , m_preferences(preferences)
   {
     set_wrap_mode(Gtk::WRAP_WORD);

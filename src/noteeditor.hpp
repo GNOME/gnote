@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2016-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2011,2013,2016-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ class NoteEditor
   : public Gtk::TextView
 {
 public:
-  NoteEditor(const Glib::RefPtr<Gtk::TextBuffer> & buffer, Preferences & preferences);
+  NoteEditor(Glib::RefPtr<Gtk::TextBuffer> && buffer, Preferences & preferences);
   static int default_margin()
     {
       return 8;
