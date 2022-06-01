@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ public:
   Glib::ustring get_bug_url() const;
   void set_bug_url(const Glib::ustring & );
 protected:
-  virtual void initialize(const Glib::ustring & element_name) override;
+  void initialize(Glib::ustring && element_name) override;
   virtual bool on_activate(const gnote::NoteEditor & , const Gtk::TextIter &, 
                            const Gtk::TextIter &) override;
   virtual void on_attribute_read(const Glib::ustring &) override;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -33,14 +33,14 @@
 
 namespace gnote {
 
-  NoteTag::NoteTag(const Glib::ustring & tag_name, int flags)
+  NoteTag::NoteTag(Glib::ustring && tag_name, int flags)
     : Gtk::TextTag(tag_name)
-    , m_element_name(tag_name)
+    , m_element_name(std::move(tag_name))
     , m_widget(NULL)
     , m_allow_middle_activate(false)
     , m_flags(flags | CAN_SERIALIZE | CAN_SPLIT)
   {
-    if (tag_name.empty()) {
+    if(m_element_name.empty()) {
       throw sharp::Exception ("NoteTags must have a tag name.  Use "
                               "DynamicNoteTag for constructing "
                               "anonymous tags.");
@@ -58,9 +58,9 @@ namespace gnote {
   }
 
 
-  void NoteTag::initialize(const Glib::ustring & element_name)
+  void NoteTag::initialize(Glib::ustring && element_name)
   {
-    m_element_name = element_name;
+    m_element_name = std::move(element_name);
     m_flags = CAN_SERIALIZE | CAN_SPLIT;
     m_save_type = CONTENT;
   }
@@ -576,14 +576,14 @@ namespace gnote {
     return tag;
   }
       
-  DynamicNoteTag::Ptr NoteTagTable::create_dynamic_tag(const Glib::ustring & tag_name)
+  DynamicNoteTag::Ptr NoteTagTable::create_dynamic_tag(Glib::ustring && tag_name)
   {
     auto iter = m_tag_types.find(tag_name);
     if(iter == m_tag_types.end()) {
       return DynamicNoteTag::Ptr();
     }
     DynamicNoteTag::Ptr tag(iter->second());
-    tag->initialize(tag_name);
+    tag->initialize(std::move(tag_name));
     add(tag);
     return tag;
   }

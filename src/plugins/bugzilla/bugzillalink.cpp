@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,9 +37,9 @@ namespace bugzilla {
   }
 
 
-  void BugzillaLink::initialize(const Glib::ustring & element_name)
+  void BugzillaLink::initialize(Glib::ustring && element_name)
   {
-    gnote::DynamicNoteTag::initialize(element_name);
+    gnote::DynamicNoteTag::initialize(std::move(element_name));
 
     property_underline() = Pango::UNDERLINE_SINGLE;
     property_foreground() = "blue";

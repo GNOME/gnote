@@ -748,7 +748,7 @@ namespace gnote {
 
         if (data.adding && !data.tag->get_widget_location()) {
           Glib::RefPtr<Gtk::TextChildAnchor> childAnchor = buffer->create_child_anchor(iter);
-          data.tag->set_widget_location(location);
+          data.tag->set_widget_location(std::move(location));
           m_note.add_child_widget(std::move(childAnchor), data.widget);
         }
         else if (!data.adding && data.tag->get_widget_location()) {

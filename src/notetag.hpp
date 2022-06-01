@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -70,9 +70,9 @@ public:
     CAN_SPLIT     = 32
   };
 
-  static Ptr create(const Glib::ustring & tag_name, int flags)
+  static Ptr create(Glib::ustring && tag_name, int flags)
     {
-      return Ptr(new NoteTag(tag_name, flags));
+      return Ptr(new NoteTag(std::move(tag_name), flags));
     }
   const Glib::ustring & get_element_name() const
     { 
@@ -132,9 +132,9 @@ public:
     { 
       return m_widget_location; 
     }
-  void set_widget_location(const Glib::RefPtr<Gtk::TextMark> & value)
+  void set_widget_location(Glib::RefPtr<Gtk::TextMark> && value)
     { 
-      m_widget_location = value; 
+      m_widget_location = std::move(value);
     }
 ////
   TagActivatedHandler & signal_activate()
@@ -146,9 +146,9 @@ public:
       return m_signal_changed;
     }
 protected:
-  NoteTag(const Glib::ustring & tag_name, int flags = 0);
+  NoteTag(Glib::ustring && tag_name, int flags = 0);
   NoteTag();
-  virtual void initialize(const Glib::ustring & element_name);
+  virtual void initialize(Glib::ustring && element_name);
 
   friend class NoteTagTable;
 
@@ -279,7 +279,7 @@ public:
   ChangeType get_change_type(const Glib::RefPtr<Gtk::TextTag> &tag);
 
   DepthNoteTag::Ptr get_depth_tag(int depth);
-  DynamicNoteTag::Ptr create_dynamic_tag(const Glib::ustring & );
+  DynamicNoteTag::Ptr create_dynamic_tag(Glib::ustring &&);
   void register_dynamic_tag(const Glib::ustring & tag_name, const Factory & factory);
   bool is_dynamic_tag_registered(const Glib::ustring &);
 
