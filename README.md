@@ -1,5 +1,4 @@
-Gnote
------
+# Gnote
 
 Gnote started as a C++ port of Tomboy and has moved its own path later.
 
@@ -9,8 +8,7 @@ of better integration with modern GNOME desktop environment.
 
 https://wiki.gnome.org/Apps/Gnote
 
-Compiling
----------
+## Compiling
 
 Gnote uses GNU Autotool for its build system, so compiling it is a standard:
 ./configure && make && make install
@@ -24,8 +22,7 @@ Dependencies:
 - libuuid
 - libsecret
 
-Importing Tomboy notes
-----------------------
+## Importing Tomboy notes
 
 Upon first running Gnote, it will import Tomboy and eventually 
 StickyNote notes. These will be *copied*.
@@ -34,8 +31,7 @@ It is deliberate that it does not share the storage with Tomboy.
 Note: due to the way Tomboy work, the "pinned" state of the notes 
 will not be carried over, not yet.
 
-Getting the code
-----------------
+## Getting the code
 
 The source tree is currently hosted on GNOME.
 To view the repository online:
@@ -45,36 +41,33 @@ The URL to clone it:
    git clone https://gitlab.gnome.org/GNOME/gnote.git
 
 
-Reporting bug
--------------
+## Reporting bug
 
 Please report bugs in the GNOME issue tracker:
 https://gitlab.gnome.org/GNOME/gnote/-/issues/
 
-Translations
-------------
+## Translations
 
 If you have translated Gnote, please contact the corresponding team:
 
 https://l10n.gnome.org/teams/
 
-Mailing list
-------------
+## Mailing list
 
 There is a mailing list for gnote. More info here:
 https://mail.gnome.org/mailman/listinfo/gnote-list
 
-License
--------
+## License
 
 This software in GPLv3 or later. See the file COPYING. Some files are
 under a different license. Check the headers for the copyright info.
 
-Authors:
---------
+## Authors:
 
 Aurimas Cernius <aurimasc@src.gnome.org>
+
 Debarshi Ray <debarshir@src.gnome.org>
+
 Hubert Figuiere <hub@figuiere.net>
 
 
@@ -82,13 +75,22 @@ Original Tomboy authors and copyright:
 Copyright (C) 2004-2007 Alex Graveley <alex@beatniksoftware.com>
 
 Alex Graveley <alex@beatniksoftware.com>
+
 Boyd Timothy <btimothy@gmail.com>
+
 Chris Scobell <chris@thescobells.com>
+
 David Trowbridge <trowbrds@gmail.com>
+
 Ryan Lortie <desrt@desrt.ca>
+
 Sandy Armstrong <sanfordarmstrong@gmail.com>
+
 Sebastian Rittau <srittau@jroger.in-berlin.de>
+
 Kevin Kubasik <kevin@kubasik.net>
+
 Stefan Schweizer <steve.schweizer@gmail.com>
+
 Benjamin Podszun <benjamin.podszun@gmail.com>
 
