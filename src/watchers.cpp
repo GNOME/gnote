@@ -184,7 +184,7 @@ namespace gnote {
     }
     // Only set window title here, to give feedback that we
     // are indeed changing the title.
-    get_window()->set_name(title);
+    get_window()->set_name(std::move(title));
   }
 
 

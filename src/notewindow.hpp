@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -137,7 +137,7 @@ public:
   ~NoteWindow();
 
   virtual Glib::ustring get_name() const override;
-  void set_name(const Glib::ustring & name);
+  void set_name(Glib::ustring && name);
   virtual void foreground() override;
   virtual void background() override;
   virtual void size_internals() override;

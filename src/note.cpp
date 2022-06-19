@@ -500,7 +500,7 @@ namespace gnote {
   {
     if (m_data.data().title() != new_title) {
       if (m_window) {
-        m_window->set_name(new_title);
+        m_window->set_name(Glib::ustring(new_title));
       }
 
       Glib::ustring old_title = std::move(m_data.data().title());
@@ -633,7 +633,7 @@ namespace gnote {
   {
     if(data_synchronizer().data().title() != newTitle) {
       if(m_window) {
-        m_window->set_name(newTitle);
+        m_window->set_name(Glib::ustring(newTitle));
       }
     }
     NoteBase::rename_without_link_update(std::move(newTitle));

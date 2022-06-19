@@ -124,9 +124,9 @@ namespace gnote {
     return m_name;
   }
 
-  void NoteWindow::set_name(const Glib::ustring & name)
+  void NoteWindow::set_name(Glib::ustring && name)
   {
-    m_name = name;
+    m_name = std::move(name);
     signal_name_changed(m_name);
   }
 
