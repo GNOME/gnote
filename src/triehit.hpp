@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -23,6 +23,7 @@
 #define __TRIEHIT_HPP_
 
 #include <memory>
+#include <utility>
 
 #include <glibmm/ustring.h>
 
@@ -36,11 +37,11 @@ public:
   typedef std::vector<Ptr> List;
   typedef std::shared_ptr<List> ListPtr;
 
-  TrieHit(int s, int e, const Glib::ustring & k, const value_t & v)
+  TrieHit(int s, int e, Glib::ustring && k, value_t && v)
     : m_start(s)
     , m_end(e)
-    , m_key(k)
-    , m_value(v)
+    , m_key(std::forward<Glib::ustring>(k))
+    , m_value(std::forward<value_t>(v))
     {
     }
 
