@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2014,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -34,11 +34,11 @@ namespace gnote {
 
   const char * Tag::SYSTEM_TAG_PREFIX = "system:";
 
-  Tag::Tag(const Glib::ustring & _name)
+  Tag::Tag(Glib::ustring && _name)
     : m_issystem(false)
     , m_isproperty(false)
   {
-    set_name(_name);
+    set_name(std::move(_name));
   }
 
   void Tag::add_note(NoteBase & note)
@@ -58,13 +58,13 @@ namespace gnote {
   }
 
 
-  void Tag::set_name(const Glib::ustring & value)
+  void Tag::set_name(Glib::ustring && value)
   {
     if (!value.empty()) {
       Glib::ustring trimmed_name = sharp::string_trim(value);
       if (!trimmed_name.empty()) {
-        m_name = trimmed_name;
         m_normalized_name = trimmed_name.lowercase();
+        m_name = std::move(trimmed_name);
         if(Glib::str_has_prefix(m_normalized_name, SYSTEM_TAG_PREFIX)) {
           m_issystem = true;
         }

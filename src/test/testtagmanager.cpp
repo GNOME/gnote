@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017-2020 Aurimas Cernius
+ * Copyright (C) 2014,2017-2020,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ gnote::Tag::Ptr TagManager::get_or_create_tag(const Glib::ustring & tag_name)
   if(iter != m_tags.end()) {
     return iter->second;
   }
-  gnote::Tag::Ptr tag = gnote::Tag::Ptr(new gnote::Tag(tag_name));
+  gnote::Tag::Ptr tag = gnote::Tag::Ptr(new gnote::Tag(Glib::ustring(tag_name)));
   m_tags[tag_name] = tag;
   return tag;
 }

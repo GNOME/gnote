@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ namespace gnote {
     typedef std::shared_ptr<Tag> Ptr;
     static const char * SYSTEM_TAG_PREFIX;
 
-    Tag(const Glib::ustring & name);
+    Tag(Glib::ustring && name);
 
     // <summary>
     // Associates the specified note with this tag.
@@ -65,7 +65,7 @@ namespace gnote {
       {
         return m_name;
       }
-    void set_name(const Glib::ustring & );
+    void set_name(Glib::ustring && name);
     // <summary>
     // Use the string returned here to reference the tag in Dictionaries.
     // </summary>

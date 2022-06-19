@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -111,7 +111,7 @@ namespace gnote {
         return iter->second;
       }
       else {
-        Tag::Ptr t(std::make_shared<Tag>(tag_name));
+        Tag::Ptr t(std::make_shared<Tag>(Glib::ustring(tag_name)));
         m_internal_tags [ t->normalized_name() ] = t;
         return t;
       }
