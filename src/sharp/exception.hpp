@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -40,8 +40,8 @@ class Exception
   : public std::exception
 {
 public:
-  Exception(const Glib::ustring & m) noexcept
-    : m_what(m)
+  Exception(Glib::ustring && m) noexcept
+    : m_what(std::move(m))
     {
     }
   virtual ~Exception() noexcept;
