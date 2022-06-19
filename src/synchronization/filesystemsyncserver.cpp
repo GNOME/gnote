@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2021 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,14 +54,14 @@ int str_to_int(const Glib::ustring & s)
 namespace gnote {
 namespace sync {
 
-SyncServer *FileSystemSyncServer::create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs)
+SyncServer *FileSystemSyncServer::create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
 {
-  return new FileSystemSyncServer(path, prefs.sync_client_id());
+  return new FileSystemSyncServer(std::move(path), prefs.sync_client_id());
 }
 
 
-FileSystemSyncServer::FileSystemSyncServer(const Glib::RefPtr<Gio::File> & localSyncPath, const Glib::ustring & client_id)
-  : m_server_path(localSyncPath)
+FileSystemSyncServer::FileSystemSyncServer(Glib::RefPtr<Gio::File> && localSyncPath, const Glib::ustring & client_id)
+  : m_server_path(std::move(localSyncPath))
   , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
   , m_sync_lock(client_id)
 {

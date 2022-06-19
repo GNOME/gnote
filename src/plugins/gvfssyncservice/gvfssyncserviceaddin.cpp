@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019-2021 Aurimas Cernius
+ * Copyright (C) 2019-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ gnote::sync::SyncServer *GvfsSyncServiceAddin::create_sync_server()
     if(!path->query_exists())
       sharp::directory_create(path);
 
-    server = gnote::sync::FileSystemSyncServer::create(path, ignote().preferences());
+    server = gnote::sync::FileSystemSyncServer::create(std::move(path), ignote().preferences());
   }
   else {
     throw std::logic_error("GvfsSyncServiceAddin.create_sync_server() called without being configured");

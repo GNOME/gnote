@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,9 +51,9 @@ class WebDavSyncServer
   : public gnote::sync::FileSystemSyncServer
 {
 public:
-  static WebDavSyncServer *create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs)
+  static WebDavSyncServer *create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
     {
-      return new WebDavSyncServer(path, prefs.sync_client_id());
+      return new WebDavSyncServer(std::move(path), prefs.sync_client_id());
     }
 protected:
   void mkdir_p(const Glib::RefPtr<Gio::File> & path) override
@@ -68,8 +68,8 @@ protected:
       }
     }
 private:
-  WebDavSyncServer(const Glib::RefPtr<Gio::File> & local_sync_path, const Glib::ustring & client_id)
-    : gnote::sync::FileSystemSyncServer(local_sync_path, client_id)
+  WebDavSyncServer(Glib::RefPtr<Gio::File> && local_sync_path, const Glib::ustring & client_id)
+    : gnote::sync::FileSystemSyncServer(std::move(local_sync_path), client_id)
   {}
 };
 
@@ -164,7 +164,7 @@ gnote::sync::SyncServer *WebDavSyncServiceAddin::create_sync_server()
     if(!path->query_exists())
       throw sharp::Exception(Glib::ustring::format(_("Synchronization destination %1 doesn't exist!"), sync_uri));
 
-    server = WebDavSyncServer::create(path, ignote().preferences());
+    server = WebDavSyncServer::create(std::move(path), ignote().preferences());
   }
   else {
     throw std::logic_error("GvfsSyncServiceAddin.create_sync_server() called without being configured");

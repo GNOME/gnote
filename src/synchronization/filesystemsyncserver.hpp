@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2021 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,8 +34,8 @@ class FileSystemSyncServer
   : public SyncServer
 {
 public:
-  static SyncServer *create(const Glib::RefPtr<Gio::File> & path, Preferences & prefs);
-  FileSystemSyncServer(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & client_id);
+  static SyncServer *create(Glib::RefPtr<Gio::File> && path, Preferences & prefs);
+  FileSystemSyncServer(Glib::RefPtr<Gio::File> && path, const Glib::ustring & client_id);
   virtual bool begin_sync_transaction() override;
   virtual bool commit_sync_transaction() override;
   virtual bool cancel_sync_transaction() override;
