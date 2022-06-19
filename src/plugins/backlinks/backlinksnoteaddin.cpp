@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013-2014,2016-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014,2016-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -110,7 +110,7 @@ std::vector<Gtk::Widget*> BacklinksNoteAddin::get_backlink_menu_items() const
   gnote::NoteBase::List notes = get_note()->manager().get_notes_linking_to(get_note()->get_title());
   for(const gnote::NoteBase::Ptr & note : notes) {
     if(note != get_note()) { // don't match ourself
-      auto button = manage(gnote::utils::create_popover_button("win.backlinks-open-note", note->get_title()));
+      auto button = manage(gnote::utils::create_popover_button("win.backlinks-open-note", Glib::ustring(note->get_title())));
       gtk_actionable_set_action_target_value(GTK_ACTIONABLE(button->gobj()),
         Glib::Variant<Glib::ustring>::create(note->uri()).gobj());
       items.push_back(button);

@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013,2015-2017,2019-2021 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2013,2015-2017,2019-2022 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -348,7 +348,7 @@ void TableofcontentsNoteAddin::get_toc_popover_items(std::vector<Gtk::Widget*> &
     if(toc_item.heading_level == Heading::Level_2) {
       toc_item.heading = "→  " + toc_item.heading;
     }
-    auto item = dynamic_cast<Gtk::ModelButton*>(gnote::utils::create_popover_button("win.tableofcontents-goto-heading", toc_item.heading));
+    auto item = dynamic_cast<Gtk::ModelButton*>(gnote::utils::create_popover_button("win.tableofcontents-goto-heading", Glib::ustring(toc_item.heading)));
     gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_int32(toc_item.heading_position));
     item->property_role() = Gtk::BUTTON_ROLE_NORMAL;
     item->property_inverted() = true;

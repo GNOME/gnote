@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019 Aurimas Cernius
+ * Copyright (C) 2019,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -83,8 +83,8 @@ struct PopoverWidget
 class PopoverSubmenu
 {
 public:
-  PopoverSubmenu(const Glib::ustring & name)
-    : m_name(name)
+  PopoverSubmenu(Glib::ustring && name)
+    : m_name(std::move(name))
   {}
 
   const Glib::ustring & name() const
@@ -97,9 +97,9 @@ private:
 
 
 namespace utils {
-  Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label);
-  Gtk::Widget * create_popover_submenu_button(const Glib::ustring & submenu, const Glib::ustring & label);
-  Gtk::Box * create_popover_submenu(const Glib::ustring & name);
+  Gtk::Widget *create_popover_button(const Glib::ustring & action, Glib::ustring && label);
+  Gtk::Widget *create_popover_submenu_button(const Glib::ustring & submenu, Glib::ustring && label);
+  Gtk::Box *create_popover_submenu(Glib::ustring && name);
   void set_common_popover_widget_props(Gtk::Widget & widget);
   void set_common_popover_widget_props(Gtk::Box & widget);
 }

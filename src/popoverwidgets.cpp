@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019,2021 Aurimas Cernius
+ * Copyright (C) 2019,2021-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,9 +30,9 @@ namespace gnote {
       , public PopoverSubmenu
     {
     public:
-      PopoverSubmenuBox(const Glib::ustring & submenu)
+      PopoverSubmenuBox(Glib::ustring && submenu)
         : Gtk::Box(Gtk::ORIENTATION_VERTICAL)
-        , PopoverSubmenu(submenu)
+        , PopoverSubmenu(std::move(submenu))
       {
         utils::set_common_popover_widget_props(*this);
       }
@@ -81,29 +81,29 @@ PopoverWidget PopoverWidget::create_custom_section(Gtk::Widget *w)
 
 namespace utils {
 
-  Gtk::Widget * create_popover_button(const Glib::ustring & action, const Glib::ustring & label)
+  Gtk::Widget *create_popover_button(const Glib::ustring & action, Glib::ustring && label)
   {
     Gtk::ModelButton *item = new Gtk::ModelButton;
     gtk_actionable_set_action_name(GTK_ACTIONABLE(item->gobj()), action.c_str());
-    item->set_label(label);
+    item->set_label(std::move(label));
     set_common_popover_button_props(*item);
     return item;
   }
 
 
-  Gtk::Widget * create_popover_submenu_button(const Glib::ustring & submenu, const Glib::ustring & label)
+  Gtk::Widget *create_popover_submenu_button(const Glib::ustring & submenu, Glib::ustring && label)
   {
     Gtk::ModelButton *button = new Gtk::ModelButton;
     button->property_menu_name() = submenu;
-    button->set_label(label);
+    button->set_label(std::move(label));
     set_common_popover_button_props(*button);
     return button;
   }
 
 
-  Gtk::Box * create_popover_submenu(const Glib::ustring & name)
+  Gtk::Box *create_popover_submenu(Glib::ustring && name)
   {
-    return new PopoverSubmenuBox(name);
+    return new PopoverSubmenuBox(std::move(name));
   }
 
 
