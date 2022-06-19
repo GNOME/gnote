@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -208,12 +208,12 @@ namespace bugzilla {
     bool sanitize_hostname(Glib::ustring & hostname)
     {
       if(hostname.find("/") != Glib::ustring::npos || hostname.find(":") != Glib::ustring::npos) {
-        sharp::Uri uri(hostname);
+        sharp::Uri uri(std::move(hostname));
         Glib::ustring new_host = uri.get_host();
         if(new_host.empty()) {
           return false;
         }
-        hostname = new_host;
+        hostname = std::move(new_host);
       }
       return true;
     }

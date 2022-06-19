@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -477,7 +477,7 @@ namespace gnote {
           s = sharp::string_replace_first(s, "file:////", "file:///");
         }
         DBG_OUT("uri = %s", s.c_str());
-        push_back(sharp::Uri(s));
+        push_back(sharp::Uri(std::move(s)));
       }
     }
 

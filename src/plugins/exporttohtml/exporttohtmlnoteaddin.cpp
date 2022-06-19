@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -115,7 +115,7 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
     dialog.save_preferences ();
 
     try {
-      sharp::Uri output_uri(output_path);
+      sharp::Uri output_uri{Glib::ustring(output_path)};
       gnote::utils::open_url(*get_host_window(), "file://" + output_uri.get_absolute_uri());
     } 
     catch (const Glib::Exception & ex) {

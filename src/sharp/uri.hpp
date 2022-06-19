@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -37,8 +37,8 @@ namespace sharp {
   class Uri
   {
   public:
-    Uri(const Glib::ustring & u)
-      : m_uri(u)
+    Uri(Glib::ustring && u)
+      : m_uri(std::move(u))
       {
       }
     const Glib::ustring & to_string() const
