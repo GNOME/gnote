@@ -6,20 +6,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote gnome-40\n"
-"POT-Creation-Date: 2021-06-20 08:52+0000\n"
-"PO-Revision-Date: 2021-09-01 17:01+0700\n"
+"POT-Creation-Date: 2022-06-06 20:01+0000\n"
+"PO-Revision-Date: 2022-07-03 16:21+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "Andika Triwidada <andika@gmail.com>, 2020, 2021."
+msgstr "Andika Triwidada <andika@gmail.com>, 2020-2022."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-bugzillalink.page:9
@@ -163,8 +163,8 @@ msgstr "Memakai fonta lebar tetap"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-fixedwidth.page:25
-msgid "Fixed Width Add-in"
-msgstr "Add-in Lebar Tetap"
+msgid "Fixed Width Plugin"
+msgstr "Plugin Lebar Tetap"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-fixedwidth.page:26
@@ -194,10 +194,10 @@ msgstr "Ekspor ke HTML"
 #: C/gnote-addin-html.page:26
 msgid ""
 "When the <app>Export to HTML</app> plugin is installed, the command "
-"<gui>Export to HTML</gui> is present in the <gui>Actions</gui> menu."
+"<gui>Export to HTML</gui> is present in the <gui>Note Actions</gui> menu."
 msgstr ""
-"Ketika plugin <app>Ekspor ke HTML</app> diinstal, perintah <gui>Ekspor ke "
-"HTML</gui> ada di menu <gui>Aksi</gui>."
+"Ketika plugin <app>Ekspor ke HTML</app> dipasang, perintah <gui>Ekspor ke "
+"HTML</gui> ada di menu <gui>Aksi Catatan</gui>."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-html.page:27
@@ -320,12 +320,12 @@ msgstr "Cetak"
 #: C/gnote-addin-print.page:26
 msgid ""
 "When the <app>Print</app> plugin is installed, the <gui>Print</gui> command "
-"is present in the <gui>Actions</gui> menu. This command opens a standard "
-"<gui>Print</gui> dialog which lets you print a note."
+"is present in the <gui>Note Actions</gui> menu. This command opens a "
+"standard <gui>Print</gui> dialog which lets you print a note."
 msgstr ""
 "Ketika pengaya <app>Cetak</app> dipasang, perintah <gui>Cetak</gui> ada di "
-"menu <gui>Aksi</gui>. Perintah ini membuka dialog <gui>Cetak</gui> standar "
-"yang memungkinkan Anda mencetak catatan."
+"menu <gui>Aksi Catatan</gui>. Perintah ini membuka dialog <gui>Cetak</gui> "
+"standar yang memungkinkan Anda mencetak catatan."
 
 #. (itstool) path: info/desc
 #: C/gnote-addins-preferences.page:8
@@ -339,8 +339,8 @@ msgstr "2011,2013,2014"
 
 #. (itstool) path: page/title
 #: C/gnote-addins-preferences.page:25
-msgid "Add-in Preferences"
-msgstr "Preferensi Add-in"
+msgid "Plugin Preferences"
+msgstr "Preferensi Pengaya"
 
 #. (itstool) path: page/p
 #: C/gnote-addins-preferences.page:26
@@ -364,13 +364,13 @@ msgstr ""
 
 #. (itstool) path: figure/title
 #: C/gnote-addins-preferences.page:28
-msgid "<app>Gnote</app> Addin Preferences"
-msgstr "Preferensi Add-in <app>Gnote</app>"
+msgid "<app>Gnote</app> Plugin Preferences"
+msgstr "Preferensi Pengaya <app>Gnote</app>"
 
 #. (itstool) path: figure/desc
 #: C/gnote-addins-preferences.page:29
-msgid "<app>Gnote</app> Add-ins window"
-msgstr "Jendela Add-in <app>Gnote</app>"
+msgid "<app>Gnote</app> Plugins window"
+msgstr "Jendela Pengaya <app>Gnote</app>"
 
 #. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
@@ -382,14 +382,12 @@ msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-add-ins.png' "
 "md5='a148cbfa935a78817b833a30a7addfbe'"
-msgstr ""
-"external ref='figures/gnote-preferences-add-ins.png' "
-"md5='a148cbfa935a78817b833a30a7addfbe'"
+msgstr "."
 
 #. (itstool) path: media/p
 #: C/gnote-addins-preferences.page:31
-msgid "<gui>Add-ins</gui> window."
-msgstr "Jendela <gui>Add-in</gui>."
+msgid "<gui>Plugins</gui> window."
+msgstr "Jendela <gui>Pengaya</gui>."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-readonly.page:8
@@ -405,16 +403,16 @@ msgstr "Hanya Baca"
 #: C/gnote-addin-readonly.page:17
 msgid ""
 "When the <app>ReadOnly</app> plugin is installed, the <gui>Read Only</gui> "
-"item is present in the <gui>Actions</gui> menu for open note. When this item "
-"is checked, note is marked as read-only. This does not allow to change note "
-"until the menu item is unchecked. Use this to prevent notes from accidental "
-"modification."
+"item is present in the <gui>Note Actions</gui> menu for open note. When this "
+"item is checked, note is marked as read-only. This does not allow to change "
+"note until the menu item is unchecked. Use this to prevent notes from "
+"accidental modification."
 msgstr ""
 "Ketika pengaya <app>ReadOnly</app> dipasang, butir-butir <gui>Baca Saja</"
-"gui> ada di menu <gui>Tindakan</gui> untuk catatan terbuka. Saat butir ini "
-"dicentang, catatan ditandai sebagai baca-saja. Ini tidak memungkinkan untuk "
-"mengubah catatan sampai butir menu tidak dicentang. Gunakan ini untuk "
-"mencegah catatan dari modifikasi yang tidak disengaja."
+"gui> ada di menu <gui>Aksi Catatan</gui> untuk catatan yang terbuka. Saat "
+"butir ini dicentang, catatan ditandai sebagai baca-saja. Ini tidak "
+"memungkinkan untuk mengubah catatan sampai butir menu tidak dicentang. "
+"Gunakan ini untuk mencegah catatan dari modifikasi yang tidak disengaja."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-replacetitle.page:8
@@ -430,10 +428,10 @@ msgstr "Gantikan judul"
 #: C/gnote-addin-replacetitle.page:26
 msgid ""
 "When the <app>Replace title</app> plugin is installed, the command "
-"<gui>Replace title</gui> is present in the <gui>Actions</gui> menu."
+"<gui>Replace title</gui> is present in the <gui>Note Actions</gui> menu."
 msgstr ""
 "Ketika pengaya <app>Ganti judul</app> dipasang, perintah <gui>Ganti judul</"
-"gui> ada di menu <gui>Aksi</gui>."
+"gui> ada di menu <gui>Aksi Catatan</gui>."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:27
@@ -544,9 +542,7 @@ msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-gvfs.png' "
 "md5='ac2f3516ac45a657afa2c64a30efb5d2'"
-msgstr ""
-"external ref='figures/gnote-syncprefs-gvfs.png' "
-"md5='ac2f3516ac45a657afa2c64a30efb5d2'"
+msgstr "."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-sync-gvfs.page:25
@@ -615,9 +611,7 @@ msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-local.png' "
 "md5='a350824d64dd7aabf6e47ce7930575e2'"
-msgstr ""
-"external ref='figures/gnote-syncprefs-local.png' "
-"md5='a350824d64dd7aabf6e47ce7930575e2'"
+msgstr "."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-sync-local.page:29
@@ -677,9 +671,7 @@ msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-webdav.png' "
 "md5='873840c0aa4cd7d209333bdad47f5a55'"
-msgstr ""
-"external ref='figures/gnote-syncprefs-webdav.png' "
-"md5='873840c0aa4cd7d209333bdad47f5a55'"
+msgstr "."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-sync-webdav.page:34
@@ -786,9 +778,7 @@ msgctxt "_"
 msgid ""
 "external ref='figures/gnote-addin-table-of-contents.png' "
 "md5='15b52d64e171a3a03a13f0a2def2f3e3'"
-msgstr ""
-"external ref='figures/gnote-addin-table-of-contents.png' "
-"md5='15b52d64e171a3a03a13f0a2def2f3e3'"
+msgstr "."
 
 #. (itstool) path: section/title
 #: C/gnote-addin-tableofcontents.page:120
@@ -854,10 +844,10 @@ msgstr "Untuk memformat baris tajuk, baik:"
 #: C/gnote-addin-tableofcontents.page:153
 msgid ""
 "Use the commands <gui>Heading 1</gui> and <gui>Heading 2</gui> in the "
-"<guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq> menu."
+"<guiseq><gui>Note Actions</gui><gui>Table of Contents</gui></guiseq> menu."
 msgstr ""
 "Gunakan perintah <gui>Tajuk 1</gui> dan <gui>Tajuk 2</gui> di menu "
-"<guiseq><gui>Aksi</gui><gui>DaftarIsi</gui></guiseq>."
+"<guiseq><gui>Aksi Catatan</gui><gui>Daftar Isi</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:158
@@ -916,8 +906,9 @@ msgstr "Anda dapat mengakses daftar isi:"
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:184
 msgid ""
-"In the menu <guiseq><gui>Actions</gui><gui>Table of Contents</gui></guiseq>."
-msgstr "Di menu <guiseq><gui>Aksi</gui><gui>Daftar Isi</gui></guiseq>."
+"In the menu <guiseq><gui>Note Actions</gui><gui>Table of Contents</gui></"
+"guiseq>."
+msgstr "Di menu <guiseq><gui>Aksi Catatan</gui><gui>Daftar Isi</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:185
@@ -1014,8 +1005,8 @@ msgstr "Garisbawahi teks"
 
 #. (itstool) path: page/title
 #: C/gnote-addin-underline.page:25
-msgid "Underline Text Add-In"
-msgstr "Add-In Garis Bawahi Teks"
+msgid "Underline Text Plugin"
+msgstr "Pengaya Garis Bawahi Teks"
 
 #. (itstool) path: page/p
 #: C/gnote-addin-underline.page:26
@@ -1052,33 +1043,28 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gnote-bulleted-lists.page:8
-#, fuzzy
 msgid "Using Bulleted Lists"
 msgstr "Menggunakan Daftar Berpoin"
 
 #. (itstool) path: page/title
 #: C/gnote-bulleted-lists.page:25
-#, fuzzy
 msgid "Bulleted Lists"
 msgstr "Daftar Berpoin"
 
 #. (itstool) path: section/title
 #: C/gnote-bulleted-lists.page:27
-#, fuzzy
 msgid "Begin a bulleted list"
 msgstr "Memulai daftar berpoin"
 
 #. (itstool) path: section/p
 #: C/gnote-bulleted-lists.page:28
-#, fuzzy
 msgid "You may begin a bulleted list in any of the following ways:"
 msgstr "Anda dapat memulai daftar berpoin dengan salah satu cara berikut:"
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:30 C/gnote-bulleted-lists.page:39
-#, fuzzy
 msgid "Select <gui>Bullets</gui> from the <gui>Text</gui> menu."
-msgstr "Pilih <gui>Poin</gui> dari menu <gui>Teks.</gui>"
+msgstr "Pilih <gui>Poin</gui> dari menu <gui>Teks</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:31
@@ -1098,13 +1084,11 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gnote-bulleted-lists.page:36
-#, fuzzy
 msgid "End a bulleted list"
 msgstr "Mengakhiri daftar berpoin"
 
 #. (itstool) path: section/p
 #: C/gnote-bulleted-lists.page:37
-#, fuzzy
 msgid "You can end a bulleted list by doing one of the following:"
 msgstr ""
 "Anda bisa mengakhiri daftar berpoin dengan melakukan salah satu hal berikut "
@@ -1112,13 +1096,11 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:40
-#, fuzzy
 msgid "Press <key>Enter</key> on a blank bulleted line."
-msgstr "Tekan <key>Enter</key> pada baris berpoan kosong."
+msgstr "Tekan <key>Enter</key> pada baris berpoin kosong."
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:41
-#, fuzzy
 msgid ""
 "Select <gui>Decrease Indent</gui> from the Text menu in succession until the "
 "current line is no longer part of the bulleted list."
@@ -1128,17 +1110,15 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:42
-#, fuzzy
 msgid ""
 "Press <keyseq><key>Shift</key><key>Tab</key></keyseq> repeatedly until the "
 "current line is no longer part of the bulleted list."
 msgstr ""
-"Tekan <keyseq> <key>Shift</key><key>Tab</key> Shift</keyseq> berulang kali "
-"hingga baris saat ini tidak lagi menjadi bagian dari daftar berpoin."
+"Tekan <keyseq> <key>Shift</key><key>Tab</key></keyseq> berulang kali hingga "
+"baris saat ini tidak lagi menjadi bagian dari daftar berpoin."
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:43
-#, fuzzy
 msgid ""
 "Press <keyseq><key>Alt</key><key>Left</key></keyseq> repeatedly until the "
 "current line is no longer part of the bulleted list."
@@ -1153,9 +1133,8 @@ msgstr "Meningkatkan Indentasi"
 
 #. (itstool) path: section/p
 #: C/gnote-bulleted-lists.page:49
-#, fuzzy
 msgid "To increase the line indentation in a bulleted list with the mouse:"
-msgstr "Untuk menambah indentasi baris dalam daftar berpoin dengan mouse:"
+msgstr "Untuk menambah indentasi baris dalam daftar berpoin dengan tetikus:"
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:50
@@ -1164,7 +1143,6 @@ msgstr "Pilih <gui>Naikkan Inden</gui> dari menu Teks."
 
 #. (itstool) path: section/p
 #: C/gnote-bulleted-lists.page:51
-#, fuzzy
 msgid "To increase the line indentation in a bulleted list with the keyboard:"
 msgstr ""
 "Untuk menaikkan indentasi baris dalam daftar berpoin dengan papan ketik:"
@@ -1181,9 +1159,8 @@ msgstr "Menurunkan Indentasi"
 
 #. (itstool) path: section/p
 #: C/gnote-bulleted-lists.page:60
-#, fuzzy
 msgid "To decrease the line indentation in a bulleted list with the mouse:"
-msgstr "Untuk mengurangi indentasi baris dalam daftar berpoin dengan mouse:"
+msgstr "Untuk mengurangi indentasi baris dalam daftar berpoin dengan tetikus:"
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:61
@@ -1192,9 +1169,9 @@ msgstr "Pilih <gui>Kurangi Inden</gui> dari menu Teks."
 
 #. (itstool) path: section/p
 #: C/gnote-bulleted-lists.page:62
-#, fuzzy
 msgid "To decrease the line indentation in a bulleted list with the keyboard:"
-msgstr "Untuk mengurangi indentasi baris dalam daftar berpoin dengan keyboard:"
+msgstr ""
+"Untuk mengurangi indentasi baris dalam daftar berpoin dengan papan ketik:"
 
 #. (itstool) path: item/p
 #: C/gnote-bulleted-lists.page:64
@@ -1245,26 +1222,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gnote-common-problems.page:30
 msgid ""
-"To start Gnote automatically when you log into GNOME, run <app>gnome-session-"
-"properties</app>."
+"you can setup Gnote to start automatically when you log into GNOME using "
+"<app>Tweaks</app> application."
 msgstr ""
-"Untuk memulai Gnote secara otomatis saat Anda masuk ke GNOME, jalankan "
-"<app>gnome-session-properties</app>."
-
-#. (itstool) path: item/p
-#: C/gnote-common-problems.page:32
-msgid "I'm not comfortable with new single-window interface"
-msgstr "Saya tidak nyaman dengan antarmuka jendela tunggal baru"
-
-#. (itstool) path: item/p
-#: C/gnote-common-problems.page:32
-msgid ""
-"You can make <app>Gnote</app> behave the old way by selecting <gui>Always "
-"open notes in new window</gui> in Preferences dialog."
-msgstr ""
-"Anda bisa membuat <app>Gnote</app> berperilaku seperti cara lama dengan "
-"memilih <gui>Selalu buka catatan di jendela baru</gui> dalam dialog "
-"Preferensi."
+"Anda dapat menyiapkan Gnote agar mulai secara otomatis ketika Anda masuk ke "
+"GNOME menggunakan aplikasi <app>Tweaks</app>."
 
 #. (itstool) path: info/desc
 #: C/gnote-creating-notes.page:9
@@ -1354,8 +1316,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-deleting-notes.page:29
-msgid "When a note is open, press the <gui>Delete</gui> button on the toolbar."
-msgstr "Saat catatan terbuka, tekan tombol <gui>Hapus</gui> pada bilah alat."
+msgid ""
+"When a note is open, press the <gui>Note Actions</gui> button on the toolbar "
+"and press <gui>Delete</gui> in menu that opens."
+msgstr ""
+"Ketika catatan terbuka, tekan tombol <gui>Aksi Catatan</gui> pada bilah alat "
+"dan tekan <gui>Hapus</gui> di menu yang terbuka."
 
 #. (itstool) path: page/p
 #: C/gnote-deleting-notes.page:31
@@ -1400,7 +1366,7 @@ msgstr ""
 #: C/gnote-editing-notes.page:26
 msgid ""
 "Toolbar at the top of the window will now contain note specific items in it. "
-"Below toolbar is the note's content area."
+"Notes content area will be in an active tab below."
 msgstr ""
 "Bilah alat di bagian atas jendela sekarang akan berisi butir spesifik "
 "catatan di dalamnya. Di bawah bilah alat adalah area konten catatan."
@@ -1424,10 +1390,8 @@ msgstr "Catatan <app>Gnote</app>"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
-"md5='51fb284d55e3b78c1f66f2136d7cb1f4'"
-msgstr ""
-"external ref='figures/gnote-new-note.png' "
-"md5='51fb284d55e3b78c1f66f2136d7cb1f4'"
+"md5='ea15b681fe971d78ca52a0ba8d52266a'"
+msgstr "."
 
 #. (itstool) path: media/p
 #: C/gnote-editing-notes.page:31
@@ -1528,15 +1492,14 @@ msgstr "Coret"
 
 #. (itstool) path: item/p
 #: C/gnote-editing-notes.page:52
-#, fuzzy
 msgid ""
 "The strikeout style will put a line through the selected text. To add a "
 "strikeout, select text and then select the <gui>Strikeout</gui> command from "
 "the <gui>Text</gui> menu or press <keyseq><key>Ctrl</key><key>S</key></"
 "keyseq>."
 msgstr ""
-"Gaya strikeout akan menempatkan garis melalui teks yang dipilih. Untuk "
-"menambahkan strikeout, pilih teks lalu pilih perintah <gui>Coret</gui> dari "
+"Gaya coret akan menempatkan garis melalui teks yang dipilih. Untuk "
+"menambahkan coretan, pilih teks lalu pilih perintah <gui>Coret</gui> dari "
 "menu <gui>Teks</gui> atau tekan <keyseq> <key>Ctrl</key><key>S</key></"
 "keyseq>."
 
@@ -1547,7 +1510,6 @@ msgstr "Sorot"
 
 #. (itstool) path: item/p
 #: C/gnote-editing-notes.page:55
-#, fuzzy
 msgid ""
 "The highlight style will put a different background around the selected "
 "text. To add a highlight, select text and then select the <gui>Highlight</"
@@ -1566,7 +1528,6 @@ msgstr "Ukuran fonta"
 
 #. (itstool) path: item/p
 #: C/gnote-editing-notes.page:58
-#, fuzzy
 msgid ""
 "There are actually four options in this part of the menu: Small, Normal, "
 "Large, and Huge. Each option represents a font size to use for the selected "
@@ -1574,51 +1535,46 @@ msgid ""
 "<gui>Normal</gui>, <gui>Large</gui>, or <gui>Huge</gui>."
 msgstr ""
 "Sebenarnya ada empat opsi di bagian menu ini: Kecil, Normal, Besar, dan "
-"Besar. Setiap opsi mewakili ukuran fonta yang digunakan untuk teks yang "
-"dipilih. Untuk mengubah ukuran font, pilih teks lalu pilih <gui>Kecil,</gui> "
-"<gui>Normal,</gui> <gui>Besar,</gui>atau <gui>Besar.</gui>"
+"Sangat Besar. Setiap opsi mewakili ukuran fonta yang digunakan untuk teks "
+"yang dipilih. Untuk mengubah ukuran fonta, pilih teks lalu pilih <gui>Kecil</"
+"gui>, <gui>Normal</gui>, <gui>Besar</gui>, atau <gui>Sangat Besar</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-editing-notes.page:60
-#, fuzzy
 msgid "Bullets"
 msgstr "Bulet"
 
 #. (itstool) path: item/p
 #: C/gnote-editing-notes.page:61
-#, fuzzy
 msgid ""
 "Select the <gui>Bullets</gui> command from the Text menu to begin or end a "
 "bulleted list. If the cursor is inside a bulleted list, the <gui>Increase "
 "Indent</gui> and <gui>Decrease Indent</gui> options will be enabled."
 msgstr ""
-"Pilih <gui>perintah Poin</gui> dari menu Teks untuk memulai atau mengakhiri "
-"daftar berpoin. Jika kursor berada di dalam daftar <gui>berpoin, opsi "
-"Tambah</gui> <gui>Inden dan Kurangi</gui> Inden akan diaktifkan."
+"Pilih perintah <gui>Poin</gui> dari menu Teks untuk memulai atau mengakhiri "
+"daftar berpoin. Jika kursor berada di dalam daftar berpoin, opsi <gui>Tambah "
+"Inden</gui> dan <gui>Kurangi Inden</gui> akan diaktifkan."
 
 #. (itstool) path: item/p
 #: C/gnote-editing-notes.page:62
-#, fuzzy
 msgid ""
 "With the cursor on a bulleted list line, select the <gui>Increase Indent</"
 "gui> command to shift the current line to the right or the <gui>Decrease "
 "Indent</gui> command to shift to the left."
 msgstr ""
-"Dengan kursor pada baris daftar berpoin, <gui>pilih perintah Tambah Inden</"
-"gui> untuk menggeser garis saat ini ke kanan <gui>atau perintah Kurangi "
+"Dengan kursor pada baris daftar berpoin, pilih perintah <gui>Tambah Inden</"
+"gui> untuk menggeser baris saat ini ke kanan atau perintah <gui>Kurangi "
 "Inden</gui> untuk bergeser ke kiri."
 
 #. (itstool) path: item/p
 #: C/gnote-editing-notes.page:63
-#, fuzzy
 msgid "For more information on bullets, see <link xref=\"bulleted-lists\"/>."
 msgstr ""
 "Untuk informasi selengkapnya tentang poin, lihat <link xref=\"bulleted-lists"
-"\"/> ."
+"\"/>."
 
 #. (itstool) path: page/p
 #: C/gnote-editing-notes.page:66
-#, fuzzy
 msgid ""
 "The toolbar at the top of note has search button. Use it to search for text "
 "within the current note. A small find bar will appear above the note. To "
@@ -1629,21 +1585,20 @@ msgid ""
 "match. To close the find bar, click the search button again or press the "
 "<key>Escape</key> key."
 msgstr ""
-"Toolbar di bagian atas catatan memiliki tombol pencarian. Gunakan untuk "
-"mencari teks dalam catatan saat ini. Bilah temukan kecil akan muncul di atas "
-"catatan. Untuk membuka bilah temukan menggunakan keyboard, tekan <keyseq> "
-"<key>Ctrl</key><key>F</key></keyseq>. Masukkan teks untuk menemukan dan "
-"menekan <key>Enter.</key> Pertandingan akan disorot. Klik <gui>Berikutnya</"
+"Bilah alat di bagian atas catatan memiliki tombol pencarian. Gunakan untuk "
+"mencari teks dalam catatan saat ini. Bilah pencarian kecil akan muncul di "
+"atas catatan. Untuk membuka bilah pencarian menggunakan papan ketik, tekan "
+"<keyseq><key>Ctrl</key><key>F</key></keyseq>. Masukkan teks yang akan dicari "
+"dan tekan <key>Enter</key>. Yang cocok akan disorot. Klik <gui>Berikutnya</"
 "gui> untuk menyoroti kecocokan berikutnya dan menempatkan kursor di sana. "
-"Klik <gui>Sebelumnya</gui> untuk berpindah ke pertandingan sebelumnya. Untuk "
-"menutup bilah temukan, klik lagi tombol pencarian atau tekan <key>tombol "
-"Escape.</key>"
+"Klik <gui>Sebelumnya</gui> untuk berpindah ke kecocokan sebelumnya. Untuk "
+"menutup bilah pencarian, klik lagi tombol pencarian atau tekan tombol "
+"<key>Escape</key>."
 
 #. (itstool) path: section/title
 #: C/gnote-editing-notes.page:70
-#, fuzzy
 msgid "Rich Note Content"
-msgstr "Konten Catatan Kaya"
+msgstr "Konten Rich Note"
 
 #. (itstool) path: info/desc
 #: C/gnote-introduction.page:9
@@ -1675,9 +1630,8 @@ msgstr "menyoroti teks pencarian"
 
 #. (itstool) path: item/p
 #: C/gnote-introduction.page:30
-#, fuzzy
 msgid "inline spell checking"
-msgstr "pemeriksaan ejaan sebaris"
+msgstr "pemeriksaan ejaan inline"
 
 #. (itstool) path: item/p
 #: C/gnote-introduction.page:31
@@ -1696,7 +1650,6 @@ msgstr "gaya dan ukuran font"
 
 #. (itstool) path: item/p
 #: C/gnote-introduction.page:34
-#, fuzzy
 msgid "bulleted lists"
 msgstr "daftar berpoin"
 
@@ -1715,10 +1668,8 @@ msgstr "Jendela utama <app>Gnote</app>"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-search-all-notes.png' "
-"md5='2c3b8a9e28c0dc08810a730cbbad0cf6'"
-msgstr ""
-"external ref='figures/gnote-search-all-notes.png' "
-"md5='2c3b8a9e28c0dc08810a730cbbad0cf6'"
+"md5='e9e0b63ed6749cd959e2a80cf35fe7fd'"
+msgstr "."
 
 #. (itstool) path: media/p
 #: C/gnote-introduction.page:40
@@ -1761,21 +1712,19 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gnote-links.page:30
-#, fuzzy
 msgid "Backlinks Add-in"
-msgstr "Add-in Backlink"
+msgstr "Pengaya Taut Balik"
 
 #. (itstool) path: section/p
 #: C/gnote-links.page:31
-#, fuzzy
 msgid ""
 "When the <app>Backlinks</app> plugin is installed, the <gui>Actions</gui> "
 "menu will contain an item <gui>What links here?</gui>, which provides a sub-"
 "menu listing all notes containing a link to the current note."
 msgstr ""
-"Ketika plugin <app>Backlinks</app> diinstal, menu <gui>Tindakan</gui> akan "
-"berisi item Tautan apa di <gui>sini?</gui>, yang menyediakan sub-menu yang "
-"mencantumkan semua catatan yang berisi link ke catatan saat ini."
+"Ketika pengaya <app>Taut Balik</app> dipasang, menu <gui>Aksi Catatan</gui> "
+"akan berisi butir <gui>Apa yang menaut ke sini?</gui>, yang menyediakan sub-"
+"menu yang mencantumkan semua catatan yang berisi tautan ke catatan saat ini."
 
 #. (itstool) path: info/desc
 #: C/gnote-notes-preferences.page:9
@@ -1808,13 +1757,12 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gnote-notes-preferences.page:30
-#, fuzzy
 msgid ""
 "There are three categories of preferences, <gui>General</gui>, <gui>Hotkeys</"
 "gui> and <gui>Add-Ins</gui>."
 msgstr ""
 "Ada tiga kategori preferensi, <gui>Umum</gui>, <gui>Pintasan</gui>, dan "
-"<gui>Add-In</gui>."
+"<gui>Pengaya</gui>."
 
 #. (itstool) path: section/p
 #: C/gnote-notes-preferences.page:31
@@ -1899,21 +1847,19 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-notes-preferences.page:37
-#, fuzzy
 msgid "Enable auto-bulleted lists"
-msgstr "Aktifkan daftar dibulet otomatis"
+msgstr "Aktifkan daftar berpoin otomatis"
 
 #. (itstool) path: item/p
 #: C/gnote-notes-preferences.page:37
-#, fuzzy
 msgid ""
 "When this preference is enabled, you can create bulleted lists by starting "
 "lines with a dash character <key>-</key>. Read more about <link xref="
 "\"bulleted-lists\"/>."
 msgstr ""
 "Saat preferensi ini diaktifkan, Anda dapat membuat daftar berpoin dengan "
-"memulai baris dengan karakter garis putus-putus <key>-</key>. Baca "
-"selengkapnya tentang <link xref=\"bulleted-lists\"/> ."
+"memulai baris dengan karakter garis hubung <key>-</key>. Baca selengkapnya "
+"tentang itu <link xref=\"bulleted-lists\"/>."
 
 #. (itstool) path: item/p
 #: C/gnote-notes-preferences.page:38
@@ -1941,10 +1887,8 @@ msgstr "Jendela <gui>Preferensi</gui>"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-editing.png' "
-"md5='dbbcd56225a43e92b8dea81db93e7329'"
-msgstr ""
-"external ref='figures/gnote-preferences-editing.png' "
-"md5='dbbcd56225a43e92b8dea81db93e7329'"
+"md5='de21fae795592d3f1c753aa253a75584'"
+msgstr "."
 
 #. (itstool) path: section/title
 #: C/gnote-notes-preferences.page:46
@@ -1992,9 +1936,7 @@ msgctxt "_"
 msgid ""
 "external ref='figures/gnote-syncprefs-advanced.png' "
 "md5='6ad4dea34c8852eb4218c4957fab3e0a'"
-msgstr ""
-"external ref='figures/gnote-syncprefs-advanced.png' "
-"md5='6ad4dea34c8852eb4218c4957fab3e0a'"
+msgstr "."
 
 #. (itstool) path: section/p
 #: C/gnote-notes-preferences.page:60
@@ -2109,17 +2051,6 @@ msgstr ""
 "Pilih satu atau beberapa catatan dalam daftar dan tekan <keyseq><key>Ctrl</"
 "key><key>O</key></keyseq>."
 
-#. (itstool) path: item/p
-#: C/gnote-searching-notes.page:35
-msgid ""
-"If the status icon is enabled, click it and select a note from the menu that "
-"appears. This menu is limited to a certain number of notes and includes "
-"pinned and recently updated notes."
-msgstr ""
-"Jika ikon status diaktifkan, klik ikon tersebut dan pilih catatan dari menu "
-"yang muncul. Menu ini terbatas pada sejumlah catatan tertentu dan "
-"menyertakan catatan yang disematkan dan baru-baru ini diperbarui."
-
 #. (itstool) path: info/desc
 #: C/gnote-synchronization.page:8
 msgid "Synchronize notes"
@@ -2231,9 +2162,7 @@ msgctxt "_"
 msgid ""
 "external ref='figures/gnote-sync-progress.png' "
 "md5='562763250ce45698f4c0cd1231b0e68f'"
-msgstr ""
-"external ref='figures/gnote-sync-progress.png' "
-"md5='562763250ce45698f4c0cd1231b0e68f'"
+msgstr "."
 
 #. (itstool) path: info/desc
 #: C/gnote-template-notes.page:9
@@ -2252,17 +2181,16 @@ msgstr "Penggunaan Catatan Templat"
 
 #. (itstool) path: section/p
 #: C/gnote-template-notes.page:25
-#, fuzzy
 msgid ""
 "Template notes are used to define the content for newly created notes. "
 "Templates are just like regular notes with some additional features."
 msgstr ""
 "Catatan templat digunakan untuk menentukan konten untuk catatan yang baru "
-"dibuat. Templat sama seperti catatan biasa dengan beberapa fitur tambahan."
+"dibuat. Templat adalah sama seperti catatan biasa dengan beberapa fitur "
+"tambahan."
 
 #. (itstool) path: section/p
 #: C/gnote-template-notes.page:26
-#, fuzzy
 msgid ""
 "You can define a single main template note and one for each notebook you "
 "have. These templates define the content of every new note you create:"
@@ -2273,19 +2201,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:28
-#, fuzzy
 msgid ""
 "Every new note you create in <app>Gnote</app>, but not in any notebook, will "
 "have the content of the main template. If you have not created a main "
 "template, the default content will be used."
 msgstr ""
-"Setiap catatan baru yang Anda buat <app>di Gnote</app>, tetapi tidak di buku "
+"Setiap catatan baru yang Anda buat di <app>Gnote</app>, tetapi tidak di buku "
 "catatan apa pun, akan memiliki konten templat utama. Jika Anda belum membuat "
-"template utama, konten default akan digunakan."
+"template utama, konten baku akan digunakan."
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:29
-#, fuzzy
 msgid ""
 "Every new note created in a notebook will have the content of that "
 "notebook's template note, if any. If no template note for a notebook is "
@@ -2293,13 +2219,12 @@ msgid ""
 msgstr ""
 "Setiap catatan baru yang dibuat dalam buku catatan akan memiliki konten "
 "catatan templat buku catatan itu, jika ada. Jika tidak ada catatan templat "
-"untuk buku catatan yang ditentukan, konten catatan default akan digunakan."
+"untuk buku catatan yang ditentukan, konten catatan baku akan digunakan."
 
 #. (itstool) path: section/p
 #: C/gnote-template-notes.page:31
-#, fuzzy
 msgid "To create or modify a template note:"
-msgstr "Untuk membuat atau mengubah catatan templat:"
+msgstr "Untuk membuat atau mengubah templat catatan:"
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:33
@@ -2308,13 +2233,12 @@ msgstr "Catatan templat utama"
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:33
-#, fuzzy
 msgid ""
 "Open <app>Gnote</app>'s preferences and in the <gui>General</gui> tab press "
 "the <gui>Open Template Note</gui> button."
 msgstr ""
-"Buka <app>preferensi Gnote</app>dan di tab <gui>Umum</gui> tekan tombol Buka "
-"<gui>Catatan Templat.</gui>"
+"Buka preferensi <app>Gnote</app> dan di tab <gui>Umum</gui> tekan tombol "
+"<gui>Buka Catatan Templat</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:34
@@ -2323,13 +2247,12 @@ msgstr "Catatan templat buku catatan"
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:34
-#, fuzzy
 msgid ""
 "Right click on a notebook in the main window and select <gui>Open Template "
 "Note</gui>."
 msgstr ""
 "Klik kanan pada buku catatan di jendela utama dan pilih <gui>Buka Catatan "
-"Templat.</gui>"
+"Templat</gui>."
 
 #. (itstool) path: section/title
 #: C/gnote-template-notes.page:38
@@ -2338,7 +2261,6 @@ msgstr "Fitur Catatan Templat"
 
 #. (itstool) path: section/p
 #: C/gnote-template-notes.page:39
-#, fuzzy
 msgid ""
 "A template note is like an ordinary note except that it is not shown in note "
 "lists and has a template bar at the top."
@@ -2355,10 +2277,8 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
-"md5='132b4980218eb2975a97c8a4dc7385c4'"
-msgstr ""
-"external ref='figures/gnote-template-note.png' "
-"md5='132b4980218eb2975a97c8a4dc7385c4'"
+"md5='ce1b347b9e6e84b9b7da4ceaef0bd8b0'"
+msgstr "."
 
 #. (itstool) path: figure/p
 #: C/gnote-template-notes.page:41
@@ -2367,7 +2287,6 @@ msgstr "Jendela catatan templat"
 
 #. (itstool) path: section/p
 #: C/gnote-template-notes.page:43
-#, fuzzy
 msgid "The template bar has the following features:"
 msgstr "Bilah templat memiliki fitur berikut:"
 
@@ -2378,7 +2297,6 @@ msgstr "Konversi ke catatan biasa"
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:45
-#, fuzzy
 msgid ""
 "Press this button to turn the template into a regular note, visible in the "
 "list of notes. This action is similar to deleting a template note."
@@ -2393,15 +2311,14 @@ msgstr "Simpan Ukuran"
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:46
-#, fuzzy
 msgid ""
 "If you check this box, the size of a newly created note will be identical to "
 "that of the template note. When this checkbox is not checked, new notes' "
 "windows will have the default size."
 msgstr ""
-"Jika Anda men centang kotak ini, ukuran catatan yang baru dibuat akan "
-"identik dengan catatan templat. Ketika kotak centang ini tidak dicentang, "
-"jendela catatan baru akan memiliki ukuran default."
+"Jika Anda mencentang kotak ini, ukuran catatan yang baru dibuat akan identik "
+"dengan catatan templat. Ketika kotak centang ini tidak dicentang, jendela "
+"catatan baru akan memiliki ukuran baku."
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:47
@@ -2410,7 +2327,6 @@ msgstr "Simpan Pilihan"
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:47
-#, fuzzy
 msgid ""
 "If this box is checked, new notes will have not only the content of the "
 "template note, but also its selection. Use this option if you want a certain "
@@ -2427,7 +2343,6 @@ msgstr "Simpan Judul"
 
 #. (itstool) path: item/p
 #: C/gnote-template-notes.page:48
-#, fuzzy
 msgid ""
 "This checkbox lets you base the title of new notes on a template note's "
 "title. With this box checked, a new note will have the template note's title "
@@ -2436,7 +2351,7 @@ msgstr ""
 "Kotak centang ini memungkinkan Anda mendasarkan judul catatan baru pada "
 "judul catatan templat. Dengan kotak ini dicentang, catatan baru akan "
 "memiliki judul catatan templat dengan angka unik ditambahkan. Jika tidak, "
-"judul default akan digunakan."
+"judul baku akan digunakan."
 
 #. (itstool) path: info/desc
 #: C/gnote-working-with-notebooks.page:9
@@ -2450,14 +2365,13 @@ msgstr "Bekerja Dengan Buku Catatan"
 
 #. (itstool) path: page/p
 #: C/gnote-working-with-notebooks.page:27
-#, fuzzy
 msgid ""
 "Notebooks let you group related notes together. You can add a note to a "
 "notebook in the main window or in the note editing view."
 msgstr ""
 "Buku catatan memungkinkan Anda mengelompokkan catatan terkait bersama-sama. "
 "Anda bisa menambahkan catatan ke buku catatan di jendela utama atau dalam "
-"tampilan pengeditan catatan."
+"tampilan penyuntingan catatan."
 
 #. (itstool) path: section/title
 #: C/gnote-working-with-notebooks.page:29
@@ -2471,11 +2385,10 @@ msgstr "Untuk membuat buku catatan baru:"
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:33
-#, fuzzy
 msgid ""
 "Click on the menu button in main window and select <gui>New Notebook</gui>."
 msgstr ""
-"Klik tombol menu di jendela utama dan pilih Buku <gui>Catatan Baru.</gui>"
+"Klik tombol menu di jendela utama dan pilih <gui>Buku Catatan Baru</gui>."
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:36
@@ -2490,7 +2403,6 @@ msgstr "Sebagai alternatif:"
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:42
-#, fuzzy
 msgid ""
 "In the note overview, right click in the left hand pane and choose "
 "<gui>New...</gui>."
@@ -2512,10 +2424,8 @@ msgstr "Buku Catatan Baru dari menu konteks"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-notebook-search.png' "
-"md5='723f924492cbd2322be5c5343c7e771b'"
-msgstr ""
-"external ref='figures/add-notebook-search.png' "
-"md5='723f924492cbd2322be5c5343c7e771b'"
+"md5='1c53926aeb85ca4cd5f78712f4662f7e'"
+msgstr "."
 
 #. (itstool) path: media/p
 #: C/gnote-working-with-notebooks.page:51
@@ -2531,7 +2441,6 @@ msgstr "Menambahkan Catatan ke Buku Catatan"
 
 #. (itstool) path: section/p
 #: C/gnote-working-with-notebooks.page:57
-#, fuzzy
 msgid ""
 "You can add a note to a notebook from the main window or directly within a "
 "note."
@@ -2554,7 +2463,6 @@ msgstr "Seret catatan ke buku catatan di sebelah kiri menggunakan tetikus."
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:61
-#, fuzzy
 msgid ""
 "Click on a notebook, right-click in notes list and select <gui>New</gui> "
 "from the context menu. A new note will be created and added to the notebook."
@@ -2565,14 +2473,13 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gnote-working-with-notebooks.page:63
-#, fuzzy
 msgid ""
 "As you type a note, you can add the note directly to an existing notebook "
-"using the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> menu."
+"using the <guiseq><gui>Note Actions</gui><gui>Notebook</gui></guiseq> menu."
 msgstr ""
 "Saat Anda mengetik catatan, Anda bisa menambahkan catatan langsung ke buku "
-"catatan yang sudah ada menggunakan menu <guiseq> <gui>Buku</"
-"gui><gui>Catatan</gui> </guiseq> Tindakan."
+"catatan yang sudah ada menggunakan menu <guiseq><gui>Aksi Catatan</"
+"gui><gui>Buku Catatan</gui></guiseq>."
 
 #. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
@@ -2583,10 +2490,8 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
-"md5='df8420b1433dd89e5a2e33713caf13d7'"
-msgstr ""
-"external ref='figures/add-to-notebook.png' "
-"md5='df8420b1433dd89e5a2e33713caf13d7'"
+"md5='937bfe6fcc3107e949d554d6a7c5b924'"
+msgstr "."
 
 #. (itstool) path: media/p
 #: C/gnote-working-with-notebooks.page:66
@@ -2609,12 +2514,12 @@ msgstr "Pindahkan catatan ke <gui>Catatan Tak Terarsip</gui> di jendela utama."
 #: C/gnote-working-with-notebooks.page:71
 msgid ""
 "Select the <gui>No Notebook</gui> option from the menu which appears when "
-"you press the <guiseq><gui>Actions</gui><gui>Notebook</gui></guiseq> in an "
-"open note."
+"you press the <guiseq><gui>Note Actions</gui><gui>Notebook</gui></guiseq> in "
+"an open note."
 msgstr ""
 "Pilih opsi <gui>Tanpa Buku Catatan</gui> dari menu yang muncul saat Anda "
-"menekan <guiseq><gui>Aksi</gui><gui>Buku Catatan</gui></guiseq> dalam "
-"catatan terbuka."
+"menekan <guiseq><gui>Aksi Catatan</gui><gui>Buku Catatan</gui></guiseq> "
+"dalam catatan terbuka."
 
 #. (itstool) path: section/title
 #. (itstool) path: figure/title
@@ -2659,10 +2564,8 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/note-template.png' "
-"md5='c7d0c4b1455aedf1328562f2e498995e'"
-msgstr ""
-"external ref='figures/note-template.png' "
-"md5='c7d0c4b1455aedf1328562f2e498995e'"
+"md5='b128e2f67839219184c445c82614783d'"
+msgstr "."
 
 #. (itstool) path: media/p
 #: C/gnote-working-with-notebooks.page:84
@@ -2728,10 +2631,8 @@ msgstr "Menghapus catatan dari jendela utama"
 msgctxt "_"
 msgid ""
 "external ref='figures/delete-notebook.png' "
-"md5='5f84059bec83359d592a3d8537f304ba'"
-msgstr ""
-"external ref='figures/delete-notebook.png' "
-"md5='5f84059bec83359d592a3d8537f304ba'"
+"md5='622851e47c63142565b05cfcde2ee862'"
+msgstr "."
 
 #. (itstool) path: media/p
 #: C/gnote-working-with-notebooks.page:99
@@ -2783,8 +2684,7 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/logo32.png' md5='a7b1fb2d2c427a0ca5043b7e836d69a7'"
-msgstr ""
-"external ref='figures/logo32.png' md5='a7b1fb2d2c427a0ca5043b7e836d69a7'"
+msgstr "."
 
 #. (itstool) path: page/title
 #: C/index.page:18
