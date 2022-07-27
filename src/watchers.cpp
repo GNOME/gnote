@@ -881,7 +881,7 @@ namespace gnote {
         break;
 
       auto title_len = find_title_lower.length();
-      TrieHit<NoteBase::WeakPtr> hit(idx, idx + title_len, std::move(find_title_lower), find_note);
+      TrieHit<NoteBase::WeakPtr> hit(idx, idx + title_len, Glib::ustring(find_title_lower), find_note);
       do_highlight(note_manager, note, hit, start, end);
 
       idx += title_len;
