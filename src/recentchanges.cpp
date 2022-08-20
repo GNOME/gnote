@@ -291,6 +291,8 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu));
     m_window_actions_button->add_accelerator(
       "activate", m_accel_group, GDK_KEY_F10, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
+    m_window_actions_button->add_accelerator(
+      "activate", m_accel_group, GDK_KEY_comma, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_window_actions_button->show_all();
     right_box->attach(*m_window_actions_button, right_box_pos++, 0, 1, 1);
     right_box->show();
