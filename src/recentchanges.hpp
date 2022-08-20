@@ -96,6 +96,7 @@ private:
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
   Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items);
+  void on_window_menu_closed();
   bool on_notes_widget_key_press(GdkEventKey*);
   void on_close_window(const Glib::VariantBase&);
   void add_action(const MainWindowAction::Ptr & action);

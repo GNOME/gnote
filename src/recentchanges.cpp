@@ -1000,7 +1000,23 @@ namespace gnote {
     menu->set_relative_to(*button);
     menu->set_modal(true);
     menu->set_position(Gtk::POS_BOTTOM);
+
+    menu->signal_closed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_window_menu_closed));
     return menu;
+  }
+
+  void NoteRecentChanges::on_window_menu_closed()
+  {
+    auto idx = m_embed_book.get_current_page();
+    if(idx < 0) {
+      return;
+    }
+    auto current_page = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(idx));
+    if(current_page == nullptr) {
+      return;
+    }
+
+    current_page->set_initial_focus();
   }
 
   void NoteRecentChanges::on_popover_widgets_changed()
