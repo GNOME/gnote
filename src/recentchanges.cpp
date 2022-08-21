@@ -282,8 +282,13 @@ namespace gnote {
     m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
     m_search_button.add_accelerator("activate", m_accel_group, GDK_KEY_F, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_search_button.set_tooltip_text(_("Search"));
-    m_search_button.show_all();
-    right_box->attach(m_search_button, right_box_pos++, 0, 1, 1);
+    Gtk::Grid *search_group = manage(new Gtk::Grid);
+    search_group->set_column_spacing(5);
+    search_group->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
+    search_group->set_valign(Gtk::ALIGN_CENTER);
+    search_group->attach(m_search_button, 0, 0, 1, 1);
+    search_group->show_all();
+    right_box->attach(*search_group, right_box_pos++, 0, 1, 1);
 
     m_window_actions_button = manage(new Gtk::Button);
     m_window_actions_button->set_image_from_icon_name(MAIN_MENU_PRIMARY_ICON);
@@ -349,9 +354,9 @@ namespace gnote {
     m_search_box->attach(*m_search_entry, 0, 0, 1, 1);
     m_search_box->set_halign(Gtk::ALIGN_CENTER);
 
-    auto content = dynamic_cast<Gtk::Grid*>(m_embed_book.get_parent());
+    auto content = dynamic_cast<Gtk::Grid*>(m_search_button.get_parent());
     if(content) {
-      content->attach_next_to(*m_search_box, m_embed_book, Gtk::POS_TOP);
+      content->attach_next_to(*m_search_box, m_search_button, Gtk::POS_LEFT);
     }
     else {
       ERR_OUT(_("Parent of embed box is not a Gtk::Grid, please report a bug!"));
