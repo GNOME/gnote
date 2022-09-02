@@ -9,8 +9,8 @@
 msgid ""
 msgstr "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2021-10-13 14:51+0000\n"
-"PO-Revision-Date: 2022-02-27 10:00+0100\n"
+"POT-Creation-Date: 2022-08-29 23:19+0000\n"
+"PO-Revision-Date: 2022-09-02 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -20,7 +20,7 @@ msgstr "Project-Id-Version: gnote master\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:52 src/recentchanges.cpp:611
+#: src/recentchanges.cpp:88 src/recentchanges.cpp:116
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -265,13 +265,14 @@ msgid ""
 "will continue linking to the renamed note."
 msgstr "Ohar bat izenez aldatzean esteka zehatz baten eguneratzea egitean beti portaera jakin bat lantzeko ezarpenik dagoen adierazten du osoko balioak, erabiltzaileari galdetu ordez. Balioak barneko zenbaketa jarraitzen du: 0 balioak ohar baten izena aldatzean beste oharretako estekei eragingo dien erabiltzaileari galdetzea adierazten du. 1 balioak estekak automatikoki kenduko direla adierazten du. 2 balioak estekaren testua oharraren izen berrira eguneratuko dela adierazten du, horrela izenez aldatutako oharrera estekatzen jarraituko baitu."
 
-#: data/org.gnome.gnote.gschema.xml:116
-msgid "Enable closing notes with escape"
-msgstr "Gaitu oharrak Ihes teklarekin ixtea"
+#: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
+#: data/org.gnome.gnote.gschema.xml:131
+msgid "Deprecated"
+msgstr "Zaharkitua"
 
-#: data/org.gnome.gnote.gschema.xml:117
-msgid "If enabled, an opened note can be closed by hitting the escape key."
-msgstr "Gaitzen bada, irekita dagoen ohar bat Ihes tekla sakatuz itxi daiteke."
+#: data/org.gnome.gnote.gschema.xml:117 data/org.gnome.gnote.gschema.xml:132
+msgid "This key is deprecated and its value is ignored."
+msgstr "Gako hau zaharkituta dago eta bere balioari ez ikusiarena egingo zaio."
 
 #: data/org.gnome.gnote.gschema.xml:121
 msgid "Use status icon, when started as an application"
@@ -281,25 +282,9 @@ msgstr "Erabili egoera-ikonoa, aplikazio gisa abiaraztean"
 msgid "Deprecated, has no effect."
 msgstr "Zaharkitua, ez du eraginik sortzen."
 
-#: data/org.gnome.gnote.gschema.xml:126
-msgid "Open notes in new window"
-msgstr "Ireki oharrak leiho berrian"
-
 #: data/org.gnome.gnote.gschema.xml:127
-msgid ""
-"Open notes in new window instead of replacing active content of the same "
-"window"
-msgstr "Ireki oharrak leiho berrian leiho berdineko eduki aktiboa ordeztu beharrean"
-
-#: data/org.gnome.gnote.gschema.xml:131
-msgid "Save note window size and autosize note window to it"
-msgstr "Gorde oharraren leihoaren tamaina eta aldatu oharren leihoa tamaina horretara automatikoki"
-
-#: data/org.gnome.gnote.gschema.xml:132
-msgid ""
-"Saves note window size and automatically resizes main window to this size, "
-"when note is opened."
-msgstr "Gorde oharraren leihoaren tamaina eta aldatu leiho nagusia tamaina horretara automatikoki ohar bat irekitzean."
+msgid "This setting is deprecated and its value is ignored"
+msgstr "Ezarpen hau zaharkituta dago eta bere balioari ez ikusiarena egingo zaio."
 
 #: data/org.gnome.gnote.gschema.xml:136
 msgid "Use client side window decorations"
@@ -457,7 +442,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Leiho nagusia"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:115
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:136
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Orokorra"
@@ -467,168 +452,188 @@ msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Erakutsi laguntza"
 
-#: data/shortcuts-gnote.ui:25 data/shortcuts-gnote.ui:120
-#: data/shortcuts-gnote.ui:127
+#: data/shortcuts-gnote.ui:25
+msgctxt "shortcut window"
+msgid "Shortcuts"
+msgstr "Lasterbideak"
+
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "Ireki ekintzen menua"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Ezkutatu bilaketa-barra"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:176
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Itxi leihoa"
 
-#: data/shortcuts-gnote.ui:47
+#: data/shortcuts-gnote.ui:53
+msgctxt "shortcut window"
+msgid "Go to next tab"
+msgstr "Joan hurrengo fitxara"
+
+#: data/shortcuts-gnote.ui:60
+msgctxt "shortcut window"
+msgid "Go to previous tab"
+msgstr "Joan aurreko fitxara"
+
+#: data/shortcuts-gnote.ui:68
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Bilaketa-barra"
 
-#: data/shortcuts-gnote.ui:52 data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:73 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "Bistaratu bilaketa-barra"
 
-#: data/shortcuts-gnote.ui:59
+#: data/shortcuts-gnote.ui:80
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Hautatu hurrengo bat etortzea"
 
-#: data/shortcuts-gnote.ui:66
+#: data/shortcuts-gnote.ui:87
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "Hautatu aurreko bat etortzea"
 
-#: data/shortcuts-gnote.ui:74
+#: data/shortcuts-gnote.ui:95
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Oharren zerrenda"
 
-#: data/shortcuts-gnote.ui:79
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Sortu ohar berria"
 
-#: data/shortcuts-gnote.ui:86
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Ireki hautatutako oharra"
 
-#: data/shortcuts-gnote.ui:93
+#: data/shortcuts-gnote.ui:114
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Ireki hautatutako oharra leiho berrian"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:121
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Ezabatu hautatutako oharra"
 
-#: data/shortcuts-gnote.ui:111
+#: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Oharren leihoa"
 
-#: data/shortcuts-gnote.ui:156
+#: data/shortcuts-gnote.ui:155
+msgctxt "shortcut window"
+msgid "Open note actions menu"
+msgstr "Ireki ohar-ekintzen menua"
+
+#: data/shortcuts-gnote.ui:184
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Edizioa"
 
-#: data/shortcuts-gnote.ui:161
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Desegin azken edizioa"
 
-#: data/shortcuts-gnote.ui:168
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Berregin azken edizioa"
 
-#: data/shortcuts-gnote.ui:175
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Sortu oharrerako esteka hautatutako testuan"
 
-#: data/shortcuts-gnote.ui:183
+#: data/shortcuts-gnote.ui:211
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formateatzea"
 
-#: data/shortcuts-gnote.ui:188
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Txandakatu lodia"
 
-#: data/shortcuts-gnote.ui:195
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Txandakatu etzana"
 
-#: data/shortcuts-gnote.ui:202
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Txandakatu marratua"
 
-#: data/shortcuts-gnote.ui:209
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Txandakatu nabarmendua"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Txandakatu zabalera finkoa"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Txandakatu azpimarra"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Handiagotu letra-tamaina"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Txikiagotu letra-tamaina"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Gaitu buleta/handitu kosta hautapeneko lerroan"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Txikitu koska/desgaitu buleta uneko lerroan"
 
-#: src/actionmanager.cpp:128 src/notewindow.cpp:278
+#: src/actionmanager.cpp:127
 msgid "_New Note"
 msgstr "_Ohar berria"
 
-#: src/actionmanager.cpp:129 src/notewindow.cpp:280
+#: src/actionmanager.cpp:128
 msgid "New _Window"
 msgstr "Leiho _berria"
 
-#: src/actionmanager.cpp:130 src/preferencesdialog.cpp:631
+#: src/actionmanager.cpp:129 src/preferencesdialog.cpp:623
 msgid "_Preferences"
 msgstr "_Hobespenak"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:130
 msgid "_Shortcuts"
 msgstr "Laster_bideak"
 
-#: src/actionmanager.cpp:132
+#: src/actionmanager.cpp:131
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:132
 msgid "_About Gnote"
 msgstr "Gnote aplikazioari _buruz"
 
@@ -641,42 +646,42 @@ msgstr "Huts egin du pluginaren informazioa kargatzean."
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "'%s' plugin bateraezina: '%s' espero zen, baina '%s' lortu da"
 
-#: src/addinmanager.cpp:149
+#: src/addinmanager.cpp:147
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Oharren '%s' pluginaren informazioa badago lehendik ere"
 
-#: src/addinmanager.cpp:157
+#: src/addinmanager.cpp:154
 #, c-format
 msgid "%s does not implement %s"
 msgstr "'%s'(e)k ez dauka '%s' inplementatuta"
 
-#: src/addinmanager.cpp:172
+#: src/addinmanager.cpp:169
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Oharren '%s' plugina badago lehendik ere"
 
-#: src/addinmanager.cpp:190
+#: src/addinmanager.cpp:187
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Oharren '%s' pluginaren informazioa falta da"
 
-#: src/addinmanager.cpp:203
+#: src/addinmanager.cpp:200
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Oharren '%s' plugina falta da"
 
-#: src/addinmanager.cpp:239
+#: src/addinmanager.cpp:236
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Huts egin du '%2$s' gehigarriaren '%1$s' modulua bilatzean"
 
-#: src/addinmanager.cpp:243
+#: src/addinmanager.cpp:240
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Huts egin du '%s'(r)en gehigarriaren informazioa kargatzean: %s"
 
-#: src/addinmanager.cpp:369
+#: src/addinmanager.cpp:366
 msgid "Trying to load addins when they are already loaded"
 msgstr "Gehigarriak kargatzen saiatu da, baina haiek jadanik kargatuta daude"
 
@@ -693,15 +698,15 @@ msgstr "Ikusi zer oharrek estekatzen duten unean ikusten ari zarenera."
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere eta Tomboy proiektua"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:76
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:75
 msgid "What links here?"
 msgstr "Zer estekatzen du ohar honek?"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:97
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:96
 msgid "(none)"
 msgstr "(bat ere ez)"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:102
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:101
 #: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
 #: src/notebooks/notebooknoteaddin.cpp:167
 msgid "_Back"
@@ -761,7 +766,7 @@ msgid "_Cancel"
 msgstr "_Utzi"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:228
-#: src/searchnoteswidget.cpp:1305
+#: src/searchnoteswidget.cpp:1302
 msgid "_Open"
 msgstr "_Ireki"
 
@@ -795,7 +800,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Ikono bat ezabatzen baduzu betiko galduko da."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
-#: src/searchnoteswidget.cpp:1315 src/searchnoteswidget.cpp:1356
+#: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "Ez_abatu"
 
@@ -861,7 +866,7 @@ msgstr "Sartu estekatutako beste ohar guztiak"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
-#: src/preferencesdialog.cpp:555
+#: src/preferencesdialog.cpp:547
 msgid "_Save"
 msgstr "G_orde"
 
@@ -1366,11 +1371,11 @@ msgstr "Asier Sarasua Garmendia <asier.sarasua@gmail.com>"
 
 #: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2021 Aurimas Cernius\n"
+"Copyright © 2010-2022 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
-msgstr "Copyright © 2010-2021 Aurimas Cernius\n"
+msgstr "Copyright © 2010-2022 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Tomboy aplikazioaren jatorrizko egileak."
@@ -1463,7 +1468,7 @@ msgid "Window is not embedded"
 msgstr "Leihoa ez dago kapsulatuta"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:362
+#: src/notebase.cpp:225 src/note.cpp:357
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Salbuespena oharra gordetzean: %s"
@@ -1510,7 +1515,7 @@ msgstr "Sortu _koadernoa…"
 msgid "%1 Notebook Template"
 msgstr "%1% koadernoaren txantiloia"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:304
+#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
 msgid "New Note"
 msgstr "Ohar berria"
 
@@ -1591,21 +1596,21 @@ msgid ""
 "share/gnote. Error details can be found in ~/.gnote.log."
 msgstr "Errorea gertatu da zure oharrak gordetzean. Egiaztatu diskoan nahikoa leku libre dagoela, eta ~/.local/share/gnote direktoriorako baimen egokiak dituzula. Errorearen xehetasunak ~/.gnote.log fitxategian aurki dezakezu."
 
-#: src/note.cpp:453
+#: src/note.cpp:445
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Errorea gordetzean: %s"
 
-#: src/note.cpp:680
+#: src/note.cpp:672
 msgid "Setting text content for closed notes not supported"
 msgstr "Testuaren edukia itxitako oharretan ezartzea ez dago onartuta"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:325
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:317
 msgid "New Note Template"
 msgstr "Oharren txantiloi berria"
 
-#: src/notemanagerbase.cpp:358
+#: src/notemanagerbase.cpp:350
 msgid "Describe your new note here."
 msgstr "Azaldu ohar berria hemen."
 
@@ -1737,98 +1742,94 @@ msgstr "Oharraren izenburua"
 msgid "Ad_vanced"
 msgstr "_Aurreratua"
 
-#: src/notewindow.cpp:282
+#: src/notewindow.cpp:274
 msgid "_Undo"
 msgstr "_Desegin"
 
-#: src/notewindow.cpp:284
+#: src/notewindow.cpp:276
 msgid "_Redo"
 msgstr "_Berregin"
 
-#: src/notewindow.cpp:286 src/notewindow.cpp:340
+#: src/notewindow.cpp:278 src/notewindow.cpp:342
 msgid "_Link to New Note"
 msgstr "_Estekatu ohar berrira"
 
-#: src/notewindow.cpp:288
+#: src/notewindow.cpp:280
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Garrantzitsua"
 
-#: src/notewindow.cpp:298
+#: src/notewindow.cpp:290
 msgid "_Delete…"
 msgstr "E_zabatu…"
 
-#: src/notewindow.cpp:375
+#: src/notewindow.cpp:377
 msgid "Set properties of text"
 msgstr "Ezarri testuaren propietateak"
 
-#: src/notewindow.cpp:389
+#: src/notewindow.cpp:391
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
 msgstr "Ohar hau txantiloi bat da. Ohar arrunten eduki lehenetsia zehazten du, eta ez da oharren menuan edo bilaketaren leihoan bistaratuko."
 
-#: src/notewindow.cpp:392
+#: src/notewindow.cpp:394
 msgid "Convert to regular note"
 msgstr "Bihurtu ohar arruntera"
 
-#: src/notewindow.cpp:395
-msgid "Save Si_ze"
-msgstr "Gorde _tamaina"
-
-#: src/notewindow.cpp:399
+#: src/notewindow.cpp:397
 msgid "Save Se_lection"
 msgstr "Gorde _hautapena"
 
-#: src/notewindow.cpp:403
+#: src/notewindow.cpp:401
 msgid "Save _Title"
 msgstr "Gorde _izenburua"
 
-#: src/notewindow.cpp:505 src/notewindow.cpp:1011
+#: src/notewindow.cpp:491 src/notewindow.cpp:997
 msgid "Cannot create note"
 msgstr "Ezin da oharra sortu"
 
-#: src/notewindow.cpp:781
+#: src/notewindow.cpp:767
 msgid "_Bold"
 msgstr "_Lodia"
 
-#: src/notewindow.cpp:782
+#: src/notewindow.cpp:768
 msgid "_Italic"
 msgstr "_Etzana"
 
-#: src/notewindow.cpp:783
+#: src/notewindow.cpp:769
 msgid "_Strikeout"
 msgstr "_Marratua"
 
-#: src/notewindow.cpp:787
+#: src/notewindow.cpp:773
 msgid "_Highlight"
 msgstr "_Nabarmendu"
 
-#: src/notewindow.cpp:790
+#: src/notewindow.cpp:776
 msgid "_Normal"
 msgstr "_Arrunta"
 
-#: src/notewindow.cpp:791
+#: src/notewindow.cpp:777
 msgid "S_mall"
 msgstr "T_xikia"
 
-#: src/notewindow.cpp:792
+#: src/notewindow.cpp:778
 msgid "_Large"
 msgstr "_Handia"
 
-#: src/notewindow.cpp:793
+#: src/notewindow.cpp:779
 msgid "Hu_ge"
 msgstr "_Oso handia"
 
-#: src/notewindow.cpp:815
+#: src/notewindow.cpp:801
 msgid "⦁ Bullets"
 msgstr "⦁ Bulletak"
 
-#: src/notewindow.cpp:817
+#: src/notewindow.cpp:803
 msgid "→ Increase indent"
 msgstr "→ Handitu koska"
 
-#: src/notewindow.cpp:819
+#: src/notewindow.cpp:805
 msgid "← Decrease indent"
 msgstr "← Txikitu koska"
 
@@ -1855,8 +1856,8 @@ msgstr "Pluginak"
 
 #. Ok button...
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:801
-#: src/preferencesdialog.cpp:1064 src/preferencesdialog.cpp:1281
+#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:793
+#: src/preferencesdialog.cpp:1056 src/preferencesdialog.cpp:1273
 #: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
 msgid "_Close"
 msgstr "_Itxi"
@@ -1866,246 +1867,249 @@ msgstr "_Itxi"
 msgid "Plugin %s is absent"
 msgstr "'%s' plugina falta da"
 
-#. Open in new window
-#: src/preferencesdialog.cpp:250
-msgid "Always _open notes in new window"
-msgstr "_Ireki beti oharrak leiho berrietan"
-
-#: src/preferencesdialog.cpp:263
+#: src/preferencesdialog.cpp:255
 msgid "_Spell check while typing"
 msgstr "Egiaztatu _ortografia idaztean"
 
-#: src/preferencesdialog.cpp:264
+#: src/preferencesdialog.cpp:256
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
 msgstr "Akats ortografikoak gorri kolorearekin azpimarratuko dira, eta zuzentzaile ortografikoaren gomendioak saguaren eskuineko botoiarekin klik eginez erakutsiko dira."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:274
+#: src/preferencesdialog.cpp:266
 msgid "Enable auto-_bulleted lists"
 msgstr "Gaitu _buletdun zerrenda automatikoak"
 
-#: src/preferencesdialog.cpp:275
+#: src/preferencesdialog.cpp:267
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Hasi buletdun zerrendak lerro berriak '-' karakterearekin hasiz"
 
-#: src/preferencesdialog.cpp:283
+#: src/preferencesdialog.cpp:275
 msgid "Use custom _font"
 msgstr "Erabili letra-tipo _pertsonalizatua"
 
-#: src/preferencesdialog.cpp:300
+#: src/preferencesdialog.cpp:292
 msgid "When renaming a linked note: "
 msgstr "Estekatutako oharra izenez aldatzean: "
 
-#: src/preferencesdialog.cpp:304
+#: src/preferencesdialog.cpp:296
 msgid "Ask me what to do"
 msgstr "Galdetu zer egin"
 
-#: src/preferencesdialog.cpp:305
+#: src/preferencesdialog.cpp:297
 msgid "Never rename links"
 msgstr "Inoiz ez aldatu esteken izenak"
 
-#: src/preferencesdialog.cpp:306
+#: src/preferencesdialog.cpp:298
 msgid "Always rename links"
 msgstr "Beti aldatu esteken izenak"
 
-#: src/preferencesdialog.cpp:326
+#: src/preferencesdialog.cpp:318
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr "Oharren txantiloi berria erabili ohar berri bat sortzean erabiliko den testua zehazteko."
 
-#: src/preferencesdialog.cpp:331
+#: src/preferencesdialog.cpp:323
 msgid "Open New Note Template"
 msgstr "Ireki oharren txantiloi berria"
 
 #. internal links
-#: src/preferencesdialog.cpp:385
+#: src/preferencesdialog.cpp:377
 msgid "_Automatically link to notes"
 msgstr "Estekatu _automatikoki oharretara"
 
-#: src/preferencesdialog.cpp:386
+#: src/preferencesdialog.cpp:378
 msgid "Enable this option to create a link when text matches note title."
 msgstr "Gaitu aukera hau testua oharraren izenburuarekin bat datorrenean esteka bat sortzeko."
 
 #. URLs
-#: src/preferencesdialog.cpp:392
+#: src/preferencesdialog.cpp:384
 msgid "Create links for _URLs"
 msgstr "Sortu _URLen estekak"
 
-#: src/preferencesdialog.cpp:393
+#: src/preferencesdialog.cpp:385
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
 msgstr "Gaitu aukera hau URLen esteka sortzeko. Klik eginez URL hori dagokion programarekin irekiko da."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:400
+#: src/preferencesdialog.cpp:392
 msgid "Highlight _WikiWords"
 msgstr "Nabarmendu _WikiWords-ak"
 
-#: src/preferencesdialog.cpp:401
+#: src/preferencesdialog.cpp:393
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
 msgstr "Gaitu aukera hau <b>HonenItxuraDuten</b> hitzak nabarmentzeko. Egin klik hitzaren gainean izen horrekin ohar bat sortzeko."
 
-#: src/preferencesdialog.cpp:433
+#: src/preferencesdialog.cpp:425
 msgid "Ser_vice:"
 msgstr "_Zerbitzua:"
 
-#: src/preferencesdialog.cpp:487 src/preferencesdialog.cpp:1107
+#: src/preferencesdialog.cpp:479 src/preferencesdialog.cpp:1099
 msgid "Not configurable"
 msgstr "Ez da konfiguragarria"
 
-#: src/preferencesdialog.cpp:512
+#: src/preferencesdialog.cpp:504
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Atzeko planoko _sinkronizazio automatikoaren tartea (minutuak)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:536
+#: src/preferencesdialog.cpp:528
 msgid "_Advanced..."
 msgstr "_Aurreratua…"
 
-#: src/preferencesdialog.cpp:543
+#: src/preferencesdialog.cpp:535
 msgid "Clear"
 msgstr "Garbitu"
 
-#: src/preferencesdialog.cpp:584
+#: src/preferencesdialog.cpp:576
 msgid "The following plugins are installed:"
 msgstr "Honako pluginak daude instalatuta:"
 
 #. TODO: In a future version, add in an "Install Add-ins..." button
 #. TODO: In a future version, add in a "Repositories..." button
-#: src/preferencesdialog.cpp:619
+#: src/preferencesdialog.cpp:611
 msgid "_Enable"
 msgstr "_Gaitu"
 
-#: src/preferencesdialog.cpp:625
+#: src/preferencesdialog.cpp:617
 msgid "_Disable"
 msgstr "_Desgaitu"
 
-#: src/preferencesdialog.cpp:637
+#: src/preferencesdialog.cpp:629
 msgid "In_formation"
 msgstr "In_formazioa"
 
-#: src/preferencesdialog.cpp:781
+#: src/preferencesdialog.cpp:773
 msgid "Not Implemented"
 msgstr "Inplementatu gabe"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:798
+#: src/preferencesdialog.cpp:790
 msgid "%1 Preferences"
 msgstr "%1 hobespenak"
 
-#: src/preferencesdialog.cpp:931
+#: src/preferencesdialog.cpp:923
 msgid "Choose Note Font"
 msgstr "Aukeratu oharraren letra-tipoa"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:1024
+#: src/preferencesdialog.cpp:1016
 msgid "Other Synchronization Options"
 msgstr "Bestelako sinkronizazioko aukerak"
 
-#: src/preferencesdialog.cpp:1027
+#: src/preferencesdialog.cpp:1019
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr "Lokaleko eta konfiguratutako sinkronizazioko zerbitzariko oharren artean gatazkak detektatzen direnean:"
 
 #. label.Xalign = 0;
-#: src/preferencesdialog.cpp:1031
+#: src/preferencesdialog.cpp:1023
 msgid "Always ask me what to do"
 msgstr "Galdetu beti zer egin."
 
-#: src/preferencesdialog.cpp:1035
+#: src/preferencesdialog.cpp:1027
 msgid "Rename my local note"
 msgstr "Aldatu lokaleko oharraren izena."
 
-#: src/preferencesdialog.cpp:1039
+#: src/preferencesdialog.cpp:1031
 msgid "Replace my local note with the server's update"
 msgstr "Ordeztu lokaleko oharra zerbitzariko eguneratzearekin"
 
-#: src/preferencesdialog.cpp:1141
+#: src/preferencesdialog.cpp:1133
 msgid "Are you sure?"
 msgstr "Ziur zaude?"
 
-#: src/preferencesdialog.cpp:1142
+#: src/preferencesdialog.cpp:1134
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
 msgstr "Ez da aholkatzen sinkronizazioaren ezarpenak garbitzea. Zure ohar guztiak berriro sinkronizatu beharko dituzu ezarpen berriak gordetzean."
 
-#: src/preferencesdialog.cpp:1152
+#: src/preferencesdialog.cpp:1144
 msgid "Resetting Synchronization Settings"
 msgstr "Sinkronizazio-ezarpenak berrezartzen"
 
-#: src/preferencesdialog.cpp:1153
+#: src/preferencesdialog.cpp:1145
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
 "synchronize all of your notes again when you save new settings."
 msgstr "Konfiguratutako sinkronizazio-zerbitzua desgaitu duzu. Sinkronizazioko konfigurazioak garbitu egingo dira. Zure ohar guztiak berriro sinkronizatu beharko dituzu ezarpen berriak gordetzean."
 
-#: src/preferencesdialog.cpp:1228
+#: src/preferencesdialog.cpp:1220
 msgid "Connection successful"
 msgstr "Ongi konektatu da"
 
-#: src/preferencesdialog.cpp:1229
+#: src/preferencesdialog.cpp:1221
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote prest dago zure oharrak sinkronizatzeko. Nahi dituzu oharrak orain sinkronizatzea?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1254
+#: src/preferencesdialog.cpp:1246
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr "Egiaztatu informazioa eta saiatu berriro. %1 egunkariak erroreari buruzko informazio gehiago eduki dezake."
 
-#: src/preferencesdialog.cpp:1259
+#: src/preferencesdialog.cpp:1251
 msgid "Error connecting"
 msgstr "Errorea konektatzean"
 
-#: src/preferencesdialog.cpp:1321
+#: src/preferencesdialog.cpp:1313
 msgid "Version:"
 msgstr "Bertsioa:"
 
-#: src/preferencesdialog.cpp:1324
+#: src/preferencesdialog.cpp:1316
 msgid "Author:"
 msgstr "Egilea:"
 
-#: src/preferencesdialog.cpp:1328
+#: src/preferencesdialog.cpp:1320
 msgid "Copyright:"
 msgstr "Copyright-a:"
 
-#: src/recentchanges.cpp:160
-msgid "All Notes"
-msgstr "Ohar guztiak"
+#: src/recentchanges.cpp:65
+msgid "Close"
+msgstr "Itxi"
 
-#: src/recentchanges.cpp:171
+#: src/recentchanges.cpp:259
 msgid "Create New Note"
 msgstr "Sortu ohar berria"
 
-#: src/recentchanges.cpp:193
+#: src/recentchanges.cpp:286
 msgid "Search"
 msgstr "Bilatu"
 
-#: src/recentchanges.cpp:268
+#: src/recentchanges.cpp:357
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Kapsulatutako kutxaren gurasoa ez da Gtk::Grid, jakinarazi akats hori!"
 
-#: src/recentchanges.cpp:310
+#: src/recentchanges.cpp:399
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Bilaketa-sarreraren gurasoa ez da Gtk::Grid, jakinarazi akats hori!"
 
-#: src/recentchanges.cpp:863
+#: src/recentchanges.cpp:714
+msgid "Attempt to foreground a widget, that is not embedded in the window"
+msgstr "Leihoan kapsulatuta ez dagoen trepeta bat aurreko planoan jartzeko saiakera"
+
+#: src/recentchanges.cpp:721
+msgid "Attempt to foreground a widget, that is not Gtk::Widget"
+msgstr "Gtk::Widget ez den trepeta bat aurreko planoan jartzeko saiakera"
+
+#: src/recentchanges.cpp:991
 msgid "Expected widget to be a sub-menu!"
 msgstr "Espero zen trepeta azpimenu bat izatea!"
 
-#: src/recentchanges.cpp:868
+#: src/recentchanges.cpp:996
 msgid "No configured actions"
 msgstr "Ez dago konfiguratutako ekintzarik"
 
@@ -2114,84 +2118,84 @@ msgstr "Ez dago konfiguratutako ekintzarik"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Huts egin du '%s' D-Bus interfazea kargatzean: %s"
 
-#: src/searchnoteswidget.cpp:212
+#: src/searchnoteswidget.cpp:210
 msgid "Notebooks"
 msgstr "Koadernoak"
 
-#: src/searchnoteswidget.cpp:684
+#: src/searchnoteswidget.cpp:682
 msgid "Note"
 msgstr "Oharra"
 
-#: src/searchnoteswidget.cpp:706
+#: src/searchnoteswidget.cpp:704
 msgid "Modified"
 msgstr "Aldatze-data"
 
-#: src/searchnoteswidget.cpp:1017
+#: src/searchnoteswidget.cpp:1015
 msgid "Notes"
 msgstr "Oharrak"
 
-#: src/searchnoteswidget.cpp:1036
+#: src/searchnoteswidget.cpp:1034
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
 msgstr "Ez da emaitzarik aurkitu hautatutako koadernoetan.\n"
 "Egin klik ohar guztietan zehar bilatzeko."
 
-#: src/searchnoteswidget.cpp:1040
+#: src/searchnoteswidget.cpp:1038
 msgid "Click here to search across all notebooks"
 msgstr "Egin klik koaderno guztietan zehar bilatzeko"
 
-#: src/searchnoteswidget.cpp:1058
+#: src/searchnoteswidget.cpp:1056
 msgid "Matches"
 msgstr "Bat etortzeak:"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:1109
+#: src/searchnoteswidget.cpp:1107
 msgid "Title match"
 msgstr "Izenburua bat dator"
 
-#: src/searchnoteswidget.cpp:1113
+#: src/searchnoteswidget.cpp:1111
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "Bat etortze %1"
 msgstr[1] "%1 bat etortze"
 
-#: src/searchnoteswidget.cpp:1310
+#: src/searchnoteswidget.cpp:1306
 msgid "Open In New _Window"
 msgstr "Ireki leiho _berrian"
 
-#: src/searchnoteswidget.cpp:1320
+#: src/searchnoteswidget.cpp:1316
 msgid "_New"
 msgstr "_Berria"
 
-#: src/searchnoteswidget.cpp:1349
+#: src/searchnoteswidget.cpp:1345
 msgid "_Open Template Note"
 msgstr "_Ireki txantiloia"
 
-#: src/searchnoteswidget.cpp:1353
+#: src/searchnoteswidget.cpp:1349
 msgid "Re_name..."
 msgstr "Aldatu _izenez…"
 
-#: src/searchnoteswidget.cpp:1360
+#: src/searchnoteswidget.cpp:1356
 msgid "_New..."
 msgstr "_Berria…"
 
-#: src/searchnoteswidget.cpp:1511 src/searchnoteswidget.cpp:1524
-#: src/searchnoteswidget.cpp:1535
+#: src/searchnoteswidget.cpp:1473 src/searchnoteswidget.cpp:1486
+#: src/searchnoteswidget.cpp:1497
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Huts egin du bilaketaren ordenatzearen ezarpena aztertzeak (balioa: %s):"
 
-#: src/searchnoteswidget.cpp:1512
+#: src/searchnoteswidget.cpp:1474
 msgid "Expected format 'column:order'"
 msgstr "'zutabea:ordena' formatua espero zen"
 
-#: src/searchnoteswidget.cpp:1525
+#: src/searchnoteswidget.cpp:1487
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "'%s' zutabe ezezaguna"
 
-#: src/searchnoteswidget.cpp:1536
+#: src/searchnoteswidget.cpp:1498
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "'%s' ordena ezezaguna"
@@ -2526,7 +2530,7 @@ msgstr "Sinkronizatu oharrak"
 
 #: src/synchronization/syncmanager.cpp:78
 #: src/synchronization/syncmanager.cpp:95
-#: src/synchronization/syncmanager.cpp:566
+#: src/synchronization/syncmanager.cpp:557
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Eman akatsaren berri. Igorpenak huts egin du: %s"
@@ -2651,6 +2655,44 @@ msgstr "_Kopiatu estekaren helbidea"
 #: src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Ireki esteka"
+
+#~ msgid "Enable closing notes with escape"
+#~ msgstr "Gaitu oharrak Ihes teklarekin ixtea"
+
+#~ msgid "If enabled, an opened note can be closed by hitting the escape key."
+#~ msgstr ""
+#~ "Gaitzen bada, irekita dagoen ohar bat Ihes tekla sakatuz itxi daiteke."
+
+#~ msgid "Open notes in new window"
+#~ msgstr "Ireki oharrak leiho berrian"
+
+#~ msgid ""
+#~ "Open notes in new window instead of replacing active content of the same "
+#~ "window"
+#~ msgstr ""
+#~ "Ireki oharrak leiho berrian leiho berdineko eduki aktiboa ordeztu "
+#~ "beharrean"
+
+#~ msgid "Save note window size and autosize note window to it"
+#~ msgstr ""
+#~ "Gorde oharraren leihoaren tamaina eta aldatu oharren leihoa tamaina "
+#~ "horretara automatikoki"
+
+#~ msgid ""
+#~ "Saves note window size and automatically resizes main window to this "
+#~ "size, when note is opened."
+#~ msgstr ""
+#~ "Gorde oharraren leihoaren tamaina eta aldatu leiho nagusia tamaina "
+#~ "horretara automatikoki ohar bat irekitzean."
+
+#~ msgid "Save Si_ze"
+#~ msgstr "Gorde _tamaina"
+
+#~ msgid "Always _open notes in new window"
+#~ msgstr "_Ireki beti oharrak leiho berrietan"
+
+#~ msgid "All Notes"
+#~ msgstr "Ohar guztiak"
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Gaitu laster-tekla orokorrak"
