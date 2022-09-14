@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-05-08 18:53+0000\n"
-"PO-Revision-Date: 2022-05-09 16:27+0200\n"
+"POT-Creation-Date: 2022-08-29 23:19+0000\n"
+"PO-Revision-Date: 2022-08-31 01:30+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:88 src/recentchanges.cpp:116
@@ -1140,16 +1140,16 @@ msgstr "Intervall för _katalogkontroll:"
 
 #: src/plugins/noteoftheday/noteoftheday.cpp:33
 msgid "Today: Template"
-msgstr "Idag: Mall"
+msgstr "I dag: Mall"
 
 #: src/plugins/noteoftheday/noteoftheday.cpp:35
 msgid "Today: "
-msgstr "Idag: "
+msgstr "I dag: "
 
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "NoteOfTheDay kunde inte skapa %s: %s"
@@ -1175,7 +1175,7 @@ msgstr "Dagens anteckning"
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
-"Skapar automatiskt en ”Idag”-anteckning för att enklare plita ner dagliga "
+"Skapar automatiskt en ”I dag”-anteckning för att enklare plita ner dagliga "
 "tankar"
 
 #: src/plugins/noteoftheday/noteoftheday.desktop.in.in:6
@@ -1184,15 +1184,15 @@ msgstr "Debarshi Ray och Tomboy-projektet"
 
 #: src/plugins/noteoftheday/noteofthedaypreferences.cpp:34
 msgid "_Open Today: Template"
-msgstr "_Öppna Idag: Mall"
+msgstr "_Öppna I dag: Mall"
 
 #: src/plugins/noteoftheday/noteofthedaypreferences.cpp:35
 msgid ""
 "Change the <span weight=\"bold\">Today: Template</span> note to customize "
 "the text that new Today notes have."
 msgstr ""
-"Ändra anteckningen <span weight=\"bold\">Idag: Mall</span> för att anpassa "
-"texten som nya Idag-anteckningar använder."
+"Ändra anteckningen <span weight=\"bold\">I dag: Mall</span> för att anpassa "
+"texten som nya ”I dag”-anteckningar använder."
 
 #: src/plugins/printnotes/printnotes.desktop.in.in:4
 msgid "Printing Support"
@@ -1624,7 +1624,7 @@ msgstr "Nytt antecknings_block…"
 msgid "%1 Notebook Template"
 msgstr "Anteckningsmall för %1"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Ny anteckning"
 
@@ -1725,7 +1725,7 @@ msgstr "Att ställa in textinnehåll för stängda anteckningar stöds inte"
 msgid "New Note Template"
 msgstr "Ny anteckningsmall"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Beskriv din nya anteckning här."
 
@@ -1801,21 +1801,21 @@ msgstr ""
 "kommer den automatiskt att länkas åt dig.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Börja här"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Användning av länkar i Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Fel vid skapande av startanteckningar: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Fel vid tolkning av antecknings-XML, hoppar över ”%s”: %s"
@@ -2073,7 +2073,7 @@ msgstr ""
 #. URLs
 #: src/preferencesdialog.cpp:384
 msgid "Create links for _URLs"
-msgstr "Skapa länkar för URL:er"
+msgstr "Skapa länkar för _URL:er"
 
 #: src/preferencesdialog.cpp:385
 msgid ""
@@ -2250,28 +2250,28 @@ msgstr "Skapa ny anteckning"
 msgid "Search"
 msgstr "Sök"
 
-#: src/recentchanges.cpp:355
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Överordnad till inbäddningsruta är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:397
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Överordnad till sökfält är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:712
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Försök att ta en komponent till förgrunden, som inte är inbäddad i fönstret"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Försök att ta en komponent till förgrunden, som inte är Gtk::Widget"
 
-#: src/recentchanges.cpp:989
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "Förväntade att komponent skulle vara en undermeny!"
 
-#: src/recentchanges.cpp:994
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Inga konfigurerade åtgärder"
 
@@ -2750,29 +2750,29 @@ msgstr "Inget datum"
 #. TRANSLATORS: argument %1 is time.
 #: src/utils.cpp:170
 msgid "Today, %1"
-msgstr "Idag, %1"
+msgstr "I dag, %1"
 
 #: src/utils.cpp:171
 msgid "Today"
-msgstr "Idag"
+msgstr "I dag"
 
 #. TRANSLATORS: argument %1 is time.
 #: src/utils.cpp:177
 msgid "Yesterday, %1"
-msgstr "Igår, %1"
+msgstr "I går, %1"
 
 #: src/utils.cpp:178
 msgid "Yesterday"
-msgstr "Igår"
+msgstr "I går"
 
 #. TRANSLATORS: argument %1 is time.
 #: src/utils.cpp:184
 msgid "Tomorrow, %1"
-msgstr "Imorgon, %1"
+msgstr "I morgon, %1"
 
 #: src/utils.cpp:185
 msgid "Tomorrow"
-msgstr "Imorgon"
+msgstr "I morgon"
 
 #. TRANSLATORS: date in current year.
 #: src/utils.cpp:189
