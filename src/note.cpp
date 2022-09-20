@@ -76,6 +76,7 @@ namespace gnote {
 
       button = manage(new Gtk::Button(_("_Delete"), true));
       button->property_can_default().set_value(true);
+      button->get_style_context()->add_class("destructive-action");
       button->show ();
       dialog.add_action_widget(*button, 666);
 
