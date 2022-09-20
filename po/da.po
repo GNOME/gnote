@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-04-01 05:06+0000\n"
-"PO-Revision-Date: 2022-03-21 18:49+0100\n"
+"POT-Creation-Date: 2022-09-03 06:05+0000\n"
+"PO-Revision-Date: 2022-09-10 11:59+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:88 src/recentchanges.cpp:116
@@ -533,7 +533,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Hovedvindue"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:115
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:136
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Generelt"
@@ -543,148 +543,163 @@ msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Vis hjælp"
 
-#: data/shortcuts-gnote.ui:25 data/shortcuts-gnote.ui:120
-#: data/shortcuts-gnote.ui:127
+#: data/shortcuts-gnote.ui:25
+msgctxt "shortcut window"
+msgid "Shortcuts"
+msgstr "Genveje"
+
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "Åbn handlingsmenu"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Skjul søgebjælke"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:176
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Luk vindue"
 
-#: data/shortcuts-gnote.ui:47
+#: data/shortcuts-gnote.ui:53
+msgctxt "shortcut window"
+msgid "Go to next tab"
+msgstr "Gå til næste faneblad"
+
+#: data/shortcuts-gnote.ui:60
+msgctxt "shortcut window"
+msgid "Go to previous tab"
+msgstr "Gå til forrige faneblad"
+
+#: data/shortcuts-gnote.ui:68
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Søgebjælke"
 
-#: data/shortcuts-gnote.ui:52 data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:73 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "Vis søgebjælke"
 
-#: data/shortcuts-gnote.ui:59
+#: data/shortcuts-gnote.ui:80
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Vælg næste match"
 
-#: data/shortcuts-gnote.ui:66
+#: data/shortcuts-gnote.ui:87
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "Vælg forrige match"
 
-#: data/shortcuts-gnote.ui:74
+#: data/shortcuts-gnote.ui:95
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Noteliste"
 
-#: data/shortcuts-gnote.ui:79
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Opret ny note"
 
-#: data/shortcuts-gnote.ui:86
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Åbn den valgte note"
 
-#: data/shortcuts-gnote.ui:93
+#: data/shortcuts-gnote.ui:114
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Åbn den valgte note i et nyt vindue"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:121
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Slet den valgte note"
 
-#: data/shortcuts-gnote.ui:111
+#: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Notevindue"
 
-#: data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Åbn handlingsmenu for note"
 
-#: data/shortcuts-gnote.ui:163
+#: data/shortcuts-gnote.ui:184
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Redigering"
 
-#: data/shortcuts-gnote.ui:168
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Fortryd sidste ændring"
 
-#: data/shortcuts-gnote.ui:175
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Omgør sidste ændring"
 
-#: data/shortcuts-gnote.ui:182
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Opret notehenvisning for den markerede tekst"
 
-#: data/shortcuts-gnote.ui:190
+#: data/shortcuts-gnote.ui:211
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatering"
 
-#: data/shortcuts-gnote.ui:195
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Slå fed til/fra"
 
-#: data/shortcuts-gnote.ui:202
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Slå kursiv til/fra"
 
-#: data/shortcuts-gnote.ui:209
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Slå gennemstregning til/fra"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Slå fremhævning til/fra"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Slå fast bredde til/fra"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Slå understregning til/fra"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Øg skriftstørrelse"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Mindsk skriftstørrelse"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Slå punkttegn til/indryk linjen med markeringen"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Fjern indrykning/slå punkttegn fra for den nuværende linje"
@@ -1144,7 +1159,7 @@ msgstr "I dag: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "Dagens note kunne ikke oprette %s: %s"
@@ -1570,7 +1585,7 @@ msgid "Window is not embedded"
 msgstr "Vinduet er ikke indlejret"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:357
+#: src/notebase.cpp:225 src/note.cpp:354
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Undtagelse under forsøg på at gemme note: %s"
@@ -1617,7 +1632,7 @@ msgstr "Ny notes_bog …"
 msgid "%1 Notebook Template"
 msgstr "%1 — notesbogskabelon"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Ny note"
 
@@ -1703,12 +1718,12 @@ msgstr ""
 "tilstrækkelig diskplads, og om du har de korrekte rettigheder til ~/.local/"
 "share/gnote. Fejldetaljer kan ses i ~/.gnote.log."
 
-#: src/note.cpp:445
+#: src/note.cpp:442
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Fejl under forsøg på at gemme: %s"
 
-#: src/note.cpp:672
+#: src/note.cpp:667
 msgid "Setting text content for closed notes not supported"
 msgstr "Ændring af tekstindehold af lukkede noter understøttes ikke"
 
@@ -1717,7 +1732,7 @@ msgstr "Ændring af tekstindehold af lukkede noter understøttes ikke"
 msgid "New Note Template"
 msgstr "Ny noteskabelon"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Beskriv din nye note her."
 
@@ -1750,8 +1765,8 @@ msgstr ""
 "Brug dennes note \"Start her\" for at begynde med at organisere dine ideer "
 "og tanker.\n"
 "\n"
-"Du kan oprette nye noter til dine ideer ved at vælge punktet \"Opret ny note"
-"\" fra menuen i Gnote i dit GNOME-panel.  Din note vil automatisk blive "
+"Du kan oprette nye noter til dine ideer ved at vælge punktet \"Opret ny "
+"note\" fra menuen i Gnote i dit GNOME-panel.  Din note vil automatisk blive "
 "gemt.\n"
 "\n"
 "Organiser så noterne ved at oprette henvisninger mellem forbundne noter og "
@@ -1791,21 +1806,21 @@ msgstr ""
 "automatisk blive forbundet.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Start her"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Brug af henvisninger i Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Fejl ved oprettelse af startnoter: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Fejl ved fortolkning af note-XML; springer “%s” over: %s"
@@ -1849,8 +1864,8 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Omdøb henvisninger i andre noter fra \"<span underline=\"single\">%1</span>"
-"\" til\"<span underline=\"single\">%2</span>\"?\n"
+"Omdøb henvisninger i andre noter fra \"<span underline=\"single\">%1</"
+"span>\" til\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "Hvis du ikke omdøber henvisningerne, vil de ikke længere henvise til noget."
 
@@ -2230,40 +2245,40 @@ msgstr "Ophavsret:"
 msgid "Close"
 msgstr "Luk"
 
-#: src/recentchanges.cpp:248
+#: src/recentchanges.cpp:257
 msgid "Create New Note"
 msgstr "Opret en ny note"
 
-#: src/recentchanges.cpp:275
+#: src/recentchanges.cpp:284
 msgid "Search"
 msgstr "Søg"
 
-#: src/recentchanges.cpp:346
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Ophav af indlejringsboks er ikke en Gtk::Grid, rapportér det venligst som en "
 "fejl!"
 
-#: src/recentchanges.cpp:388
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Ophav af søgeindtastning er ikke Gtk::Grid, rapportér det venligst som en "
 "fejl!"
 
-#: src/recentchanges.cpp:684
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Forsøg at sende en kontrol, som ikke er indlejret i vinduet, til forgrunden"
 
-#: src/recentchanges.cpp:691
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Forsøg at sende en kontrol, som ikke er en Gtk::Widget, til forgrunden"
 
-#: src/recentchanges.cpp:961
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "Forventede at kontrol var en undermenu!"
 
-#: src/recentchanges.cpp:966
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Ingen konfigurerede handlinger"
 
