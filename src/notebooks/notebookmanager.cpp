@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -348,14 +348,27 @@ namespace gnote {
       utils::HIGMessageDialog dialog(parent,
                                      GTK_DIALOG_MODAL,
                                      Gtk::MESSAGE_QUESTION,
-                                     Gtk::BUTTONS_YES_NO,
+                                     Gtk::BUTTONS_NONE,
                                      _("Really delete this notebook?"),
                                      _("The notes that belong to this notebook will not be "
                                        "deleted, but they will no longer be associated with "
                                        "this notebook.  This action cannot be undone."));
-      dialog.set_default_response(Gtk::RESPONSE_NO);
-      int response = dialog.run ();
-      if (response != Gtk::RESPONSE_YES) {
+
+      Gtk::Button *button;
+      button = manage(new Gtk::Button(_("_Cancel"), true));
+      button->property_can_default().set_value(true);
+      button->show();
+      dialog.add_action_widget(*button, Gtk::RESPONSE_CANCEL);
+      dialog.set_default_response(Gtk::RESPONSE_CANCEL);
+
+      button = manage(new Gtk::Button(_("_Delete"), true));
+      button->property_can_default().set_value(true);
+      button->get_style_context()->add_class("destructive-action");
+      button->show();
+      dialog.add_action_widget(*button, 666);
+
+      int response = dialog.run();
+      if(response != Gtk::RESPONSE_YES) {
         return;
       }
 
