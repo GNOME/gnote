@@ -1,10 +1,10 @@
 install_data('hicolor_apps_scalable_org.gnome.Gnote.svg', install_dir: get_option('datadir') / 'icons/hicolor/scalable/apps', rename: 'org.gnome.Gnote.svg')
-install_data('hicolor_apps_16x16_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/16x16/apps', rename: 'org.gnome.Gnote.svg')
-install_data('hicolor_apps_22x22_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/22x22/apps', rename: 'org.gnome.Gnote.svg')
-install_data('hicolor_apps_24x24_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/24x24/apps', rename: 'org.gnome.Gnote.svg')
-install_data('hicolor_apps_32x32_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/32x32/apps', rename: 'org.gnome.Gnote.svg')
-install_data('hicolor_apps_48x48_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/48x48/apps', rename: 'org.gnome.Gnote.svg')
-install_data('hicolor_apps_256x256_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/256x256/apps', rename: 'org.gnome.Gnote.svg')
+install_data('hicolor_apps_16x16_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/16x16/apps', rename: 'org.gnome.Gnote.png')
+install_data('hicolor_apps_22x22_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/22x22/apps', rename: 'org.gnome.Gnote.png')
+install_data('hicolor_apps_24x24_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/24x24/apps', rename: 'org.gnome.Gnote.png')
+install_data('hicolor_apps_32x32_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/32x32/apps', rename: 'org.gnome.Gnote.png')
+install_data('hicolor_apps_48x48_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/48x48/apps', rename: 'org.gnome.Gnote.png')
+install_data('hicolor_apps_256x256_org.gnome.Gnote.png', install_dir: get_option('datadir') / 'icons/hicolor/256x256/apps', rename: 'org.gnome.Gnote.png')
 
 private_icon_dir = get_option('datadir') / meson.project_name() / 'icons/hicolor'
 places_16_dir = private_icon_dir / '16x16/places'
