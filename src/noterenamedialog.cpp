@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,8 +23,6 @@
 #endif
 
 #include <algorithm>
-#include <functional>
-#include <utility>
 
 #include <glibmm/i18n.h>
 #include <gtkmm/expander.h>
@@ -85,22 +83,17 @@ gint ModelColumnRecord::get_column_note_num() const
 }
 
 class ModelFiller
-  : public std::unary_function<const NoteBase::Ptr &, void>
 {
 public:
-
-  ModelFiller(const Glib::RefPtr<Gtk::ListStore> & list_store);
+  explicit ModelFiller(const Glib::RefPtr<Gtk::ListStore> & list_store);
   void operator()(const NoteBase::Ptr & note);
-
 private:
-
   Glib::RefPtr<Gtk::ListStore> m_list_store;
 };
 
 ModelFiller::ModelFiller(
                const Glib::RefPtr<Gtk::ListStore> & list_store)
-  : std::unary_function<const NoteBase::Ptr &, void>()
-  , m_list_store(list_store)
+  : m_list_store(list_store)
 {
 }
 
