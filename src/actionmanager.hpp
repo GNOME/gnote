@@ -26,7 +26,6 @@
 #include <glibmm/variant.h>
 #include <giomm/menu.h>
 #include <giomm/simpleaction.h>
-#include <gtkmm/action.h>
 
 #include "iactionmanager.hpp"
 
