@@ -144,7 +144,7 @@ namespace gnote {
     m_search_notes_widget->show();
     embed_widget(*m_search_notes_widget);
 
-    add(*content);
+    set_child(*content);
     signal_delete_event().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete));
     signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
