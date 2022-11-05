@@ -80,7 +80,7 @@ public:
   Notebook::Ptr get_or_create_notebook(const Glib::ustring &);
   bool add_notebook(const Notebook::Ptr &);
   void delete_notebook(const Notebook::Ptr &);
-  bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter & );
+  bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter<Gtk::TreeRow> & );
   Notebook::Ptr get_notebook_from_note(const NoteBase::Ptr &);
   Notebook::Ptr get_notebook_from_tag(const Tag::Ptr &);
   static bool is_notebook_tag(const Tag::Ptr &);
@@ -103,11 +103,11 @@ public:
   sigc::signal<void()> signal_notebook_list_changed;
   sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
 private:
-  static int compare_notebooks_sort_func(const Gtk::TreeIter &, const Gtk::TreeIter &);
+  static int compare_notebooks_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void load_notebooks();
-  bool filter_notebooks_to_display(const Gtk::TreeIter &);
+  bool filter_notebooks_to_display(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_active_notes_size_changed();
-  static bool filter_notebooks(const Gtk::TreeIter &);
+  static bool filter_notebooks(const Gtk::TreeIter<Gtk::TreeConstRow> &);
 
   class ColumnRecord
     : public Gtk::TreeModelColumnRecord

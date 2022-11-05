@@ -49,24 +49,21 @@ namespace gnote {
       m_notebooks = Gtk::ListStore::create(m_column_types);
 
       m_sortedNotebooks = Gtk::TreeModelSort::create (m_notebooks);
-      m_sortedNotebooks->set_sort_func (
-        0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
-      m_sortedNotebooks->set_sort_column (0, Gtk::SORT_ASCENDING);
+      m_sortedNotebooks->set_sort_func(0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
+      m_sortedNotebooks->set_sort_column (0, Gtk::SortType::ASCENDING);
 
       m_notebooks_to_display = Gtk::TreeModelFilter::create(m_sortedNotebooks);
-      m_notebooks_to_display->set_visible_func(
-        sigc::mem_fun(*this, &NotebookManager::filter_notebooks_to_display));
+      m_notebooks_to_display->set_visible_func(sigc::mem_fun(*this, &NotebookManager::filter_notebooks_to_display));
 
       m_filteredNotebooks = Gtk::TreeModelFilter::create (m_sortedNotebooks);
-      m_filteredNotebooks->set_visible_func(
-        sigc::ptr_fun(&NotebookManager::filter_notebooks));
+      m_filteredNotebooks->set_visible_func(sigc::ptr_fun(&NotebookManager::filter_notebooks));
 
       Notebook::Ptr allNotesNotebook(std::make_shared<AllNotesNotebook>(m_note_manager));
-      Gtk::TreeIter iter = m_notebooks->append ();
+      auto iter = m_notebooks->append();
       iter->set_value(0, Notebook::Ptr(allNotesNotebook));
 
       Notebook::Ptr unfiledNotesNotebook(std::make_shared<UnfiledNotesNotebook>(m_note_manager));
-      iter = m_notebooks->append ();
+      iter = m_notebooks->append();
       iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
 
       Notebook::Ptr pinned_notes_notebook(std::make_shared<PinnedNotesNotebook>(m_note_manager));
@@ -78,7 +75,7 @@ namespace gnote {
       std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
         .connect(sigc::mem_fun(*this, &NotebookManager::on_active_notes_size_changed));
 
-      load_notebooks ();
+      load_notebooks();
     }
 
 
@@ -119,7 +116,7 @@ namespace gnote {
         return notebook;
       }
       
-      Gtk::TreeIter iter;
+      Gtk::TreeIter<Gtk::TreeRow> iter;
 //      lock (locker) {
         notebook = get_notebook (notebookName);
         if (notebook)
@@ -218,8 +215,7 @@ namespace gnote {
     /// A <see cref="System.Boolean"/>.  True if the specified notebook
     /// was found, false otherwise.
     /// </returns>
-    bool NotebookManager::get_notebook_iter(const Notebook::Ptr & notebook, 
-                                            Gtk::TreeIter & iter)
+    bool NotebookManager::get_notebook_iter(const Notebook::Ptr & notebook, Gtk::TreeIter<Gtk::TreeRow> & iter)
     {
       Gtk::TreeNodeChildren notebooks = m_notebooks_to_display->children();
       for (Gtk::TreeIter notebooks_iter = notebooks.begin();
@@ -232,7 +228,7 @@ namespace gnote {
         }
       }
       
-      iter = Gtk::TreeIter();
+      iter = Gtk::TreeIter<Gtk::TreeRow>();
       return false;
     }
 
@@ -429,8 +425,7 @@ namespace gnote {
     }
 
 
-    int NotebookManager::compare_notebooks_sort_func(const Gtk::TreeIter &a, 
-                                                     const Gtk::TreeIter &b)
+    int NotebookManager::compare_notebooks_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> &a, const Gtk::TreeIter<Gtk::TreeConstRow> &b)
     {
       Notebook::Ptr notebook_a;
       a->get_value (0, notebook_a);
@@ -464,7 +459,7 @@ namespace gnote {
     /// </summary>
     void NotebookManager::load_notebooks()
     {
-      Gtk::TreeIter iter;
+      Gtk::TreeIter<Gtk::TreeRow> iter;
       auto tags = m_note_manager.tag_manager().all_tags();
       for(const auto & tag : tags) {
         // Skip over tags that aren't notebooks
@@ -484,7 +479,7 @@ namespace gnote {
     /// <summary>
     /// Filter out SpecialNotebooks from the model
     /// </summary>
-    bool NotebookManager::filter_notebooks(const Gtk::TreeIter & iter)
+    bool NotebookManager::filter_notebooks(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
     {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
@@ -494,7 +489,7 @@ namespace gnote {
       return true;
     }
 
-    bool NotebookManager::filter_notebooks_to_display(const Gtk::TreeIter & iter)
+    bool NotebookManager::filter_notebooks_to_display(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
     {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
