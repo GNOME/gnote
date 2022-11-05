@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -79,8 +79,8 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   notebooksPane->show();
 
   set_position(150);
-  add1(*notebooksPane);
-  add2(m_matches_window);
+  set_start_child(*notebooksPane);
+  set_end_child(m_matches_window);
 
   make_recent_tree();
   m_tree->set_enable_search(false);
