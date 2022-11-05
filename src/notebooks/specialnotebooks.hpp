@@ -43,14 +43,14 @@ class SpecialNotebook
 public:
   typedef std::shared_ptr<SpecialNotebook> Ptr;
 
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) = 0;
+  virtual Glib::ustring get_icon_name() const = 0;
 protected:
   SpecialNotebook(NoteManagerBase & m, const Glib::ustring &s)
     : Notebook(m, s, true)
     {
     }
-  virtual Tag::Ptr    get_tag() const override;
-  virtual Note::Ptr   get_template_note() const override;
+  Tag::Ptr get_tag() const override;
+  Note::Ptr get_template_note() const override;
 };
 
 
@@ -60,10 +60,10 @@ class AllNotesNotebook
 public:
   typedef std::shared_ptr<AllNotesNotebook> Ptr;
   AllNotesNotebook(NoteManagerBase &);
-  virtual Glib::ustring get_normalized_name() const override;
-  virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
-  virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
+  Glib::ustring get_normalized_name() const override;
+  bool contains_note(const Note::Ptr & note, bool include_system = false) override;
+  bool add_note(const Note::Ptr &) override;
+  Glib::ustring get_icon_name() const override;
 };
 
 
@@ -73,10 +73,10 @@ class UnfiledNotesNotebook
 public:
   typedef std::shared_ptr<UnfiledNotesNotebook> Ptr;
   UnfiledNotesNotebook(NoteManagerBase &);
-  virtual Glib::ustring get_normalized_name() const override;
-  virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
-  virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
+  Glib::ustring get_normalized_name() const override;
+  bool contains_note(const Note::Ptr & note, bool include_system = false) override;
+  bool add_note(const Note::Ptr &) override;
+  Glib::ustring get_icon_name() const override;
 };
 
 
@@ -86,10 +86,10 @@ class PinnedNotesNotebook
 public:
   typedef std::shared_ptr<PinnedNotesNotebook> Ptr;
   PinnedNotesNotebook(NoteManagerBase &);
-  virtual Glib::ustring get_normalized_name() const override;
-  virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
-  virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
+  Glib::ustring get_normalized_name() const override;
+  bool contains_note(const Note::Ptr & note, bool include_system = false) override;
+  bool add_note(const Note::Ptr &) override;
+  virtual Glib::ustring get_icon_name() const override;
 };
 
 
@@ -99,10 +99,10 @@ class ActiveNotesNotebook
 public:
   typedef std::shared_ptr<ActiveNotesNotebook> Ptr;
   ActiveNotesNotebook(NoteManagerBase &);
-  virtual Glib::ustring get_normalized_name() const override;
-  virtual bool        contains_note(const Note::Ptr & note, bool include_system = false) override;
-  virtual bool        add_note(const Note::Ptr &) override;
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
+  Glib::ustring get_normalized_name() const override;
+  bool contains_note(const Note::Ptr & note, bool include_system = false) override;
+  bool add_note(const Note::Ptr &) override;
+  Glib::ustring get_icon_name() const override;
   bool empty();
   sigc::signal<void()> signal_size_changed;
 private:
