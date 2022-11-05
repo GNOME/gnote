@@ -22,7 +22,6 @@
 #define _IACTIONMANAGER_HPP_
 
 #include <giomm/simpleaction.h>
-#include <gtkmm/action.h>
 
 #include "popoverwidgets.hpp"
 
