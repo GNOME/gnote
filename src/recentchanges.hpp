@@ -28,6 +28,7 @@
 #include <gtkmm/grid.h>
 #include <gtkmm/notebook.h>
 #include <gtkmm/popovermenu.h>
+#include <gtkmm/togglebutton.h>
 
 #include "mainwindowaction.hpp"
 #include "note.hpp"
