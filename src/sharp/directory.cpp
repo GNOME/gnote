@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017-2019 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017-2019,2022 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  * 
@@ -42,10 +42,10 @@ namespace sharp {
   std::vector<Glib::ustring> directory_get_files_with_ext(const Glib::ustring & dir, const Glib::ustring & ext)
   {
     std::vector<Glib::ustring> list;
-    if (!Glib::file_test(dir, Glib::FILE_TEST_EXISTS))
+    if (!Glib::file_test(dir, Glib::FileTest::EXISTS))
       return list;
 
-    if (!Glib::file_test(dir, Glib::FILE_TEST_IS_DIR))
+    if (!Glib::file_test(dir, Glib::FileTest::IS_DIR))
       return list;
 
     Glib::Dir d(dir);
@@ -55,7 +55,7 @@ namespace sharp {
       const sharp::FileInfo file_info(file);
       const Glib::ustring extension = file_info.get_extension();
 
-      if (Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR)
+      if (Glib::file_test(file, Glib::FileTest::IS_REGULAR)
           && (ext.empty() || (Glib::ustring(extension).lowercase() == ext))) {
         list.push_back(file);
       }
@@ -78,7 +78,7 @@ namespace sharp {
       if(!fileinfo) {
         break;
       }
-      if(fileinfo->get_file_type() & Gio::FILE_TYPE_REGULAR) {
+      if(fileinfo->get_file_type() == Gio::FileType::REGULAR) {
         if(ext.size()) {
           Glib::ustring name = fileinfo->get_name();
           auto pos = name.find_last_of('.');
@@ -100,7 +100,7 @@ namespace sharp {
   std::vector<Glib::ustring> directory_get_directories(const Glib::ustring & dir)
   {
     std::vector<Glib::ustring> files;
-    if(!Glib::file_test(dir, Glib::FILE_TEST_IS_DIR)) {
+    if(!Glib::file_test(dir, Glib::FileTest::IS_DIR)) {
       return files;
     }
 
@@ -109,7 +109,7 @@ namespace sharp {
     for(Glib::Dir::iterator iter = d.begin(); iter != d.end(); ++iter) {
       const Glib::ustring file(dir + "/" + *iter);
 
-      if(Glib::file_test(file, Glib::FILE_TEST_IS_DIR)) {
+      if(Glib::file_test(file, Glib::FileTest::IS_DIR)) {
         files.push_back(file);
       }
     }
@@ -130,7 +130,7 @@ namespace sharp {
       if(!fileinfo) {
         break;
       }
-      if(fileinfo->get_file_type() & Gio::FILE_TYPE_DIRECTORY) {
+      if(fileinfo->get_file_type() == Gio::FileType::DIRECTORY) {
         auto child = Gio::File::create_for_uri(Glib::build_filename(dir->get_uri(), fileinfo->get_name()));
         files.push_back(child);
       }
@@ -151,7 +151,7 @@ namespace sharp {
 
   bool directory_exists(const Glib::ustring & dir)
   {
-    return Glib::file_test(dir, Glib::FILE_TEST_EXISTS) && Glib::file_test(dir, Glib::FILE_TEST_IS_DIR);
+    return Glib::file_test(dir, Glib::FileTest::EXISTS|Glib::FileTest::IS_DIR);
   }
 
   bool directory_exists(const Glib::RefPtr<Gio::File> & dir)
@@ -160,7 +160,7 @@ namespace sharp {
       return false;
     }
     auto info = dir->query_info();
-    if(!info || info->get_file_type() != Gio::FILE_TYPE_DIRECTORY) {
+    if(!info || info->get_file_type() != Gio::FileType::DIRECTORY) {
       return false;
     }
 
@@ -171,19 +171,14 @@ namespace sharp {
                       const Glib::RefPtr<Gio::File> & dest)
   {
     if (false == dest->query_exists()
-        || Gio::FILE_TYPE_DIRECTORY
-             != dest->query_file_type(Gio::FILE_QUERY_INFO_NONE))
+        || Gio::FileType::DIRECTORY != dest->query_file_type(Gio::FileQueryInfoFlags::NONE))
         return;
 
-    if (Gio::FILE_TYPE_REGULAR
-          == src->query_file_type(Gio::FILE_QUERY_INFO_NONE)) {
-      src->copy(dest->get_child(src->get_basename()),
-                Gio::FILE_COPY_OVERWRITE);
+    if (Gio::FileType::REGULAR == src->query_file_type(Gio::FileQueryInfoFlags::NONE)) {
+      src->copy(dest->get_child(src->get_basename()), Gio::File::CopyFlags::OVERWRITE);
     }
-    else if (Gio::FILE_TYPE_DIRECTORY
-                 == src->query_file_type(Gio::FILE_QUERY_INFO_NONE)) {
-      const Glib::RefPtr<Gio::File> dest_dir
-        = dest->get_child(src->get_basename());
+    else if (Gio::FileType::DIRECTORY == src->query_file_type(Gio::FileQueryInfoFlags::NONE)) {
+      const Glib::RefPtr<Gio::File> dest_dir = dest->get_child(src->get_basename());
 
       if (false == dest_dir->query_exists())
         dest_dir->make_directory_with_parents();
@@ -194,12 +189,10 @@ namespace sharp {
            src_dir.end() != it; it++) {
         const Glib::RefPtr<Gio::File> file = src->get_child(*it);
 
-        if (Gio::FILE_TYPE_DIRECTORY == file->query_file_type(
-                                          Gio::FILE_QUERY_INFO_NONE))
+        if (Gio::FileType::DIRECTORY == file->query_file_type(Gio::FileQueryInfoFlags::NONE))
           directory_copy(file, dest_dir);
         else
-          file->copy(dest_dir->get_child(file->get_basename()),
-                                         Gio::FILE_COPY_OVERWRITE);
+          file->copy(dest_dir->get_child(file->get_basename()), Gio::File::CopyFlags::OVERWRITE);
       }
     }
   }
