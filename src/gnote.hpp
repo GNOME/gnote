@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2019,2021 Aurimas Cernius
+ * Copyright (C) 2010-2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,6 @@
 #include <glibmm/optioncontext.h>
 #include <glibmm/ustring.h>
 #include <gtkmm/icontheme.h>
-#include <gtkmm/statusicon.h>
 
 #include "actionmanager.hpp"
 #include "iconmanager.hpp"
