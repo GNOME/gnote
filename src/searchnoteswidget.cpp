@@ -646,7 +646,7 @@ void SearchNotesWidget::make_recent_tree()
   m_tree = manage(new RecentTreeView());
   m_tree->set_headers_visible(true);
   m_tree->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
-  m_tree->get_selection()->set_mode(Gtk::SELECTION_MULTIPLE);
+  m_tree->get_selection()->set_mode(Gtk::SelectionMode::MULTIPLE);
   m_tree->get_selection()->signal_changed().connect(
     sigc::mem_fun(*this, &SearchNotesWidget::on_selection_changed));
   m_tree->signal_button_press_event().connect(
@@ -668,7 +668,7 @@ void SearchNotesWidget::make_recent_tree()
   Gtk::TreeViewColumn *title = manage(new Gtk::TreeViewColumn());
   title->set_title(_("Note"));
   title->set_min_width(150);
-  title->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
+  title->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
   title->set_expand(true);
   title->set_resizable(true);
 
@@ -677,19 +677,19 @@ void SearchNotesWidget::make_recent_tree()
   title->add_attribute(*renderer, "pixbuf", 0 /* icon */);
 
   renderer = manage(new Gtk::CellRendererText());
-  static_cast<Gtk::CellRendererText*>(renderer)->property_ellipsize() = Pango::ELLIPSIZE_END;
+  static_cast<Gtk::CellRendererText*>(renderer)->property_ellipsize() = Pango::EllipsizeMode::END;
   title->pack_start(*renderer, true);
   title->add_attribute(*renderer, "text", 1 /* title */);
   title->set_sort_column(1); /* title */
   title->set_sort_indicator(false);
   title->set_reorderable(false);
-  title->set_sort_order(Gtk::SORT_ASCENDING);
+  title->set_sort_order(Gtk::SortType::ASCENDING);
 
   m_tree->append_column(*title);
 
   Gtk::TreeViewColumn *change = manage(new Gtk::TreeViewColumn());
   change->set_title(_("Modified"));
-  change->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
+  change->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
   change->set_resizable(false);
 
   renderer = manage(new Gtk::CellRendererText());
@@ -699,7 +699,7 @@ void SearchNotesWidget::make_recent_tree()
   change->set_sort_column(2); /* change date */
   change->set_sort_indicator(false);
   change->set_reorderable(false);
-  change->set_sort_order(Gtk::SORT_DESCENDING);
+  change->set_sort_order(Gtk::SortType::DESCENDING);
 
   m_tree->append_column(*change);
 }
