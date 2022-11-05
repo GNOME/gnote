@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -23,11 +23,8 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
-#include <gtkmm/stock.h>
-#include <gtkmm/separatormenuitem.h>
 #include <gtkmm/treeiter.h>
 #include <gtkmm/treemodel.h>
-#include <gtkmm/uimanager.h>
 
 #include "sharp/string.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
