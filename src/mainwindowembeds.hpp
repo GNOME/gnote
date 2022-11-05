@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019,2021,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,11 +63,11 @@ public:
       return m_host;
     }
 
-  sigc::signal<void, const Glib::ustring &> signal_name_changed;
-  sigc::signal<void> signal_embedded;
-  sigc::signal<void> signal_unembedded;
-  sigc::signal<void> signal_foregrounded;
-  sigc::signal<void> signal_backgrounded;
+  sigc::signal<void(const Glib::ustring &)> signal_name_changed;
+  sigc::signal<void()> signal_embedded;
+  sigc::signal<void()> signal_unembedded;
+  sigc::signal<void()> signal_foregrounded;
+  sigc::signal<void()> signal_backgrounded;
 private:
   EmbeddableWidgetHost *m_host;
 };
@@ -98,7 +98,7 @@ public:
   virtual ~HasActions() {}
   virtual std::vector<PopoverWidget> get_popover_widgets() = 0;
 
-  sigc::signal<void> signal_popover_widgets_changed;
+  sigc::signal<void()> signal_popover_widgets_changed;
 };
 
 }
