@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2015,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -45,7 +45,7 @@ namespace notebooks {
 class NotebookManager
 {
 public:
-  typedef sigc::signal<void, const Note &, const Notebook::Ptr &> NotebookEventHandler;
+  typedef sigc::signal<void(const Note &, const Notebook::Ptr &)> NotebookEventHandler;
 
   NotebookManager(NoteManagerBase &);
   void init();
@@ -100,8 +100,8 @@ public:
       return m_active_notes;
     }
 
-  sigc::signal<void> signal_notebook_list_changed;
-  sigc::signal<void, const Note &, bool> signal_note_pin_status_changed;
+  sigc::signal<void()> signal_notebook_list_changed;
+  sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
 private:
   static int compare_notebooks_sort_func(const Gtk::TreeIter &, const Gtk::TreeIter &);
   void load_notebooks();
