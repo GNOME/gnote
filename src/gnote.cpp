@@ -54,7 +54,7 @@
 namespace gnote {
 
   Gnote::Gnote()
-    : Gtk::Application("org.gnome.Gnote", Gio::APPLICATION_HANDLES_COMMAND_LINE)
+    : Gtk::Application("org.gnome.Gnote", Gio::Application::Flags::HANDLES_COMMAND_LINE)
     , m_manager(NULL)
     , m_sync_manager(NULL)
     , m_is_background(false)
