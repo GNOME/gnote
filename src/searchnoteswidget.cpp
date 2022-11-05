@@ -76,7 +76,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
   // Notebooks Pane
   Gtk::Widget *notebooksPane = Gtk::manage(make_notebooks_pane());
-  notebooksPane->show();
 
   set_position(150);
   set_start_child(*notebooksPane);
@@ -84,14 +83,12 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
   make_recent_tree();
   m_tree->set_enable_search(false);
-  m_tree->show();
 
   update_results();
 
   m_matches_window.property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   m_matches_window.property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
-  m_matches_window.add(*m_tree);
-  m_matches_window.show();
+  m_matches_window.set_child(*m_tree);
 
   // Update on changes to notes
   m.signal_note_deleted.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_deleted));
