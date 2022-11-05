@@ -116,8 +116,8 @@ bool NoteManagerBase::init(const Glib::ustring & directory, const Glib::ustring 
     try {
       migrate_notes(old_note_dir);
     }
-    catch(Glib::Exception & e) {
-      ERR_OUT("Migration failed! Exception: %s", e.what().c_str());
+    catch(std::exception & e) {
+      ERR_OUT("Migration failed! Exception: %s", e.what());
     }
     is_first_run = false;
   }
