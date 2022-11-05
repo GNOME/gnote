@@ -343,11 +343,11 @@ namespace gnote {
     m_search_box = manage(new Gtk::Grid);
     m_search_box->set_hexpand(false);
     m_search_box->attach(*m_search_entry, 0, 0, 1, 1);
-    m_search_box->set_halign(Gtk::ALIGN_CENTER);
+    m_search_box->set_halign(Gtk::Align::CENTER);
 
     auto content = dynamic_cast<Gtk::Grid*>(m_search_button.get_parent());
     if(content) {
-      content->attach_next_to(*m_search_box, m_search_button, Gtk::POS_LEFT);
+      content->attach_next_to(*m_search_box, m_search_button, Gtk::PositionType::LEFT);
     }
     else {
       ERR_OUT(_("Parent of embed box is not a Gtk::Grid, please report a bug!"));
