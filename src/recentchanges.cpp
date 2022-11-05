@@ -127,7 +127,7 @@ namespace gnote {
 
     make_header_bar();
     auto content = manage(new Gtk::Grid);
-    content->set_orientation(Gtk::ORIENTATION_VERTICAL);
+    content->set_orientation(Gtk::Orientation::VERTICAL);
     int content_y_attach = 0;
     if(use_client_side_decorations(m_preferences)) {
       set_titlebar(*static_cast<Gtk::HeaderBar*>(m_header_bar));
@@ -248,28 +248,24 @@ namespace gnote {
   void NoteRecentChanges::make_header_bar()
   {
     Gtk::Grid *left_box = manage(new Gtk::Grid);
-    left_box->get_style_context()->add_class(GTK_STYLE_CLASS_RAISED);
-    left_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
-    left_box->set_valign(Gtk::ALIGN_CENTER);
+    left_box->set_orientation(Gtk::Orientation::HORIZONTAL);
+    left_box->set_valign(Gtk::Align::CENTER);
 
     auto new_note_button = manage(new Gtk::Button);
     new_note_button->set_image_from_icon_name("list-add-symbolic");
     new_note_button->set_tooltip_text(_("Create New Note"));
     new_note_button->add_accelerator("activate", m_accel_group, GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     new_note_button->signal_clicked().connect(sigc::mem_fun(*m_search_notes_widget, &SearchNotesWidget::new_note));
-    new_note_button->show_all();
     left_box->attach(*new_note_button, 0, 0, 1, 1);
-    left_box->show();
 
     m_embedded_toolbar.set_margin_start(6);
-    m_embedded_toolbar.set_halign(Gtk::ALIGN_START);
-    m_embedded_toolbar.set_valign(Gtk::ALIGN_CENTER);
-    m_embedded_toolbar.show();
+    m_embedded_toolbar.set_halign(Gtk::Align::START);
+    m_embedded_toolbar.set_valign(Gtk::Align::CENTER);
 
     Gtk::Grid *right_box = manage(new Gtk::Grid);
-    right_box->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
+    right_box->set_orientation(Gtk::Orientation::HORIZONTAL);
     right_box->set_column_spacing(5);
-    right_box->set_valign(Gtk::ALIGN_CENTER);
+    right_box->set_valign(Gtk::Align::CENTER);
     int right_box_pos = 0;
 
     m_current_embed_actions_button = manage(new Gtk::Button);
@@ -284,10 +280,9 @@ namespace gnote {
     m_search_button.set_tooltip_text(_("Search"));
     Gtk::Grid *search_group = manage(new Gtk::Grid);
     search_group->set_column_spacing(5);
-    search_group->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
-    search_group->set_valign(Gtk::ALIGN_CENTER);
+    search_group->set_orientation(Gtk::Orientation::HORIZONTAL);
+    search_group->set_valign(Gtk::Align::CENTER);
     search_group->attach(m_search_button, 0, 0, 1, 1);
-    search_group->show_all();
     right_box->attach(*search_group, right_box_pos++, 0, 1, 1);
 
     m_window_actions_button = manage(new Gtk::Button);
@@ -300,11 +295,9 @@ namespace gnote {
       "activate", m_accel_group, GDK_KEY_comma, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_window_actions_button->show_all();
     right_box->attach(*m_window_actions_button, right_box_pos++, 0, 1, 1);
-    right_box->show();
 
     if(use_client_side_decorations(m_preferences)) {
       Gtk::HeaderBar *header_bar = manage(new Gtk::HeaderBar);
-      header_bar->set_show_close_button(true);
       header_bar->pack_start(*left_box);
       header_bar->pack_end(*right_box);
       header_bar->pack_end(m_embedded_toolbar);
@@ -322,8 +315,6 @@ namespace gnote {
       header_bar->attach(*right_box, 3, 0, 1, 1);
       m_header_bar = header_bar;
     }
-
-    m_header_bar->show();
   }
 
   void NoteRecentChanges::make_search_box()
