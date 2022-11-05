@@ -69,7 +69,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   , m_notebook_list_context_menu(NULL)
   , m_initial_position_restored(false)
   , m_sort_column_id(2)
-  , m_sort_column_order(Gtk::SORT_DESCENDING)
+  , m_sort_column_order(Gtk::SortType::DESCENDING)
 {
   set_hexpand(true);
   set_vexpand(true);
@@ -88,8 +88,8 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
   update_results();
 
-  m_matches_window.property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
-  m_matches_window.property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
+  m_matches_window.property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
+  m_matches_window.property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   m_matches_window.add(*m_tree);
   m_matches_window.show();
 
