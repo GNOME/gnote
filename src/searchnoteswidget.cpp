@@ -210,14 +210,12 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 
   renderer = manage(new Gtk::CellRendererPixbuf());
   column->pack_start(*renderer, false);
-  column->set_cell_data_func(*renderer,
-                             sigc::mem_fun(*this, &SearchNotesWidget::notebook_pixbuf_cell_data_func));
+  column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &SearchNotesWidget::notebook_pixbuf_cell_data_func));
 
   Gtk::CellRendererText *text_renderer = manage(new Gtk::CellRendererText());
   text_renderer->property_editable() = true;
   column->pack_start(*text_renderer, true);
-  column->set_cell_data_func(*text_renderer,
-                             sigc::mem_fun(*this, &SearchNotesWidget::notebook_text_cell_data_func));
+  column->set_cell_data_func(*text_renderer, sigc::mem_fun(*this, &SearchNotesWidget::notebook_text_cell_data_func));
   text_renderer->signal_edited().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_row_edited));
 
   m_notebooksTree->append_column(*column);
@@ -263,8 +261,7 @@ void SearchNotesWidget::save_position()
   m_gnote.preferences().search_window_height(height);
 }
 
-void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * renderer,
-                                                       const Gtk::TreeIter & iter)
+void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
 {
   notebooks::Notebook::Ptr notebook;
   iter->get_value(0, notebook);
@@ -277,11 +274,10 @@ void SearchNotesWidget::notebook_pixbuf_cell_data_func(Gtk::CellRenderer * rende
   crp->property_icon_name() = special_nb ?  special_nb->get_icon_name() : IconManager::NOTEBOOK;
 }
 
-void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer * renderer,
-                                                     const Gtk::TreeIter & iter)
+void SearchNotesWidget::notebook_text_cell_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
 {
   Gtk::CellRendererText *crt = dynamic_cast<Gtk::CellRendererText*>(renderer);
-  crt->property_ellipsize() = Pango::ELLIPSIZE_END;
+  crt->property_ellipsize() = Pango::EllipsizeMode::END;
   notebooks::Notebook::Ptr notebook;
   iter->get_value(0, notebook);
   if(!notebook) {

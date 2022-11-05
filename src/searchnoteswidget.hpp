@@ -68,8 +68,8 @@ private:
   void restore_matches_window();
   Gtk::Widget *make_notebooks_pane();
   void save_position();
-  void notebook_pixbuf_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter &);
-  void notebook_text_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter &);
+  void notebook_pixbuf_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
+  void notebook_text_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_notebook_row_edited(const Glib::ustring& path, const Glib::ustring& new_text);
   void on_notebook_row_activated(const Gtk::TreePath &, Gtk::TreeViewColumn*);
   void on_notebook_selection_changed();
