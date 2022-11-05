@@ -198,14 +198,14 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 {
   m_notebooksTree = Gtk::manage(new notebooks::NotebooksTreeView(m_manager, m_gnote.notebook_manager().get_notebooks_with_special_items()));
 
-  m_notebooksTree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);
+  m_notebooksTree->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
   m_notebooksTree->set_headers_visible(true);
 
   Gtk::CellRenderer *renderer;
 
   Gtk::TreeViewColumn *column = manage(new Gtk::TreeViewColumn());
   column->set_title(_("Notebooks"));
-  column->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
+  column->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
   column->set_resizable(false);
 
   renderer = manage(new Gtk::CellRendererPixbuf());
@@ -233,8 +233,8 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 
   m_notebooksTree->show();
   Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow();
-  sw->property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
-  sw->property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
+  sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
+  sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   sw->add(*m_notebooksTree);
   sw->show();
 
