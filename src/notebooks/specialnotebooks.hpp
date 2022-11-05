@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -104,7 +104,7 @@ public:
   virtual bool        add_note(const Note::Ptr &) override;
   virtual Glib::RefPtr<Gdk::Pixbuf> get_icon(IconManager & m) override;
   bool empty();
-  sigc::signal<void> signal_size_changed;
+  sigc::signal<void()> signal_size_changed;
 private:
   void on_note_deleted(const NoteBase::Ptr & note);
 
