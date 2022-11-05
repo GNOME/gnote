@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013 Aurimas Cernius
+ * Copyright (C) 2013,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 #include "config.h"
 
 #include <glibmm/i18n.h>
-#include <gtkmm/main.h>
 
 #include "gnote.hpp"
 
