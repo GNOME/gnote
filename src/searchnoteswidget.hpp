@@ -79,9 +79,9 @@ private:
   void update_results();
   void popup_context_menu_at_location(Gtk::Menu*, GdkEvent*);
   Note::List get_selected_notes();
-  bool filter_notes(const Gtk::TreeIter &);
-  int compare_titles(const Gtk::TreeIter &, const Gtk::TreeIter &);
-  int compare_dates(const Gtk::TreeIter &, const Gtk::TreeIter &);
+  bool filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> &);
+  int compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
+  int compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void make_recent_tree();
   void select_notes(const Note::List &);
   Note::Ptr get_note(const Gtk::TreePath & p);

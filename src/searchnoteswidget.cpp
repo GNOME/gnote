@@ -489,10 +489,8 @@ void SearchNotesWidget::update_results()
   m_store_filter = Gtk::TreeModelFilter::create(m_store);
   m_store_filter->set_visible_func(sigc::mem_fun(*this, &SearchNotesWidget::filter_notes));
   m_store_sort = Gtk::TreeModelSort::create(m_store_filter);
-  m_store_sort->set_sort_func(1 /* title */,
-                              sigc::mem_fun(*this, &SearchNotesWidget::compare_titles));
-  m_store_sort->set_sort_func(2 /* change date */,
-                              sigc::mem_fun(*this, &SearchNotesWidget::compare_dates));
+  m_store_sort->set_sort_func(1 /* title */, sigc::mem_fun(*this, &SearchNotesWidget::compare_titles));
+  m_store_sort->set_sort_func(2 /* change date */, sigc::mem_fun(*this, &SearchNotesWidget::compare_dates));
   m_store_sort->set_sort_column(m_sort_column_id, m_sort_column_order);
   m_store_sort->signal_sort_column_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
@@ -589,7 +587,7 @@ Note::List SearchNotesWidget::get_selected_notes()
   return selected_notes;
 }
 
-bool SearchNotesWidget::filter_notes(const Gtk::TreeIter & iter)
+bool SearchNotesWidget::filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
 {
   Note::Ptr note = (*iter)[m_column_types.note];
   if(!note) {
@@ -612,7 +610,7 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter & iter)
   return passes_tag_filter && passes_search_filter;
 }
 
-int SearchNotesWidget::compare_titles(const Gtk::TreeIter & a, const Gtk::TreeIter & b)
+int SearchNotesWidget::compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
 {
   Glib::ustring title_a = (*a)[m_column_types.title];
   Glib::ustring title_b = (*b)[m_column_types.title];
@@ -624,7 +622,7 @@ int SearchNotesWidget::compare_titles(const Gtk::TreeIter & a, const Gtk::TreeIt
   return title_a.lowercase().compare(title_b.lowercase());
 }
 
-int SearchNotesWidget::compare_dates(const Gtk::TreeIter & a, const Gtk::TreeIter & b)
+int SearchNotesWidget::compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
 {
   Note::Ptr note_a = (*a)[m_column_types.note];
   Note::Ptr note_b = (*b)[m_column_types.note];
