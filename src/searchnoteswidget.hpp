@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -61,8 +61,8 @@ public:
       return *m_tree;
     }
 
-  sigc::signal<void, const Note::Ptr &> signal_open_note;
-  sigc::signal<void, const Note::Ptr &> signal_open_note_new_window;
+  sigc::signal<void(const Note::Ptr &)> signal_open_note;
+  sigc::signal<void(const Note::Ptr &)> signal_open_note_new_window;
 private:
   void perform_search();
   void restore_matches_window();
