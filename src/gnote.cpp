@@ -102,9 +102,10 @@ namespace gnote {
   void Gnote::on_startup()
   {
     Gtk::Application::on_startup();
-    m_icon_theme = Gtk::IconTheme::get_default();
-    m_icon_theme->append_search_path(DATADIR"/icons");
-    m_icon_theme->append_search_path(DATADIR"/gnote/icons");
+    auto display = Gdk::Display::get_default();
+    m_icon_theme = Gtk::IconTheme::get_for_display(display);
+    m_icon_theme->add_search_path(DATADIR"/icons");
+    m_icon_theme->add_search_path(DATADIR"/gnote/icons");
   }
 
 
