@@ -479,7 +479,7 @@ void SearchNotesWidget::update_results()
   Note::List selected_notes = get_selected_notes();
 
   int sort_column = 2; /* change date */
-  Gtk::SortType sort_type = Gtk::SORT_DESCENDING;
+  Gtk::SortType sort_type = Gtk::SortType::DESCENDING;
   if(m_store_sort) {
     m_store_sort->get_sort_column_id(sort_column, sort_type);
   }
@@ -495,8 +495,6 @@ void SearchNotesWidget::update_results()
   m_store_sort->signal_sort_column_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
 
-  int cnt = 0;
-
   for(const NoteBase::Ptr & note_iter : m_manager.get_notes()) {
     Note::Ptr note(std::static_pointer_cast<Note>(note_iter));
     Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true, m_gnote.preferences());
@@ -506,7 +504,6 @@ void SearchNotesWidget::update_results()
     iter->set_value(1, note->get_title()); /* title */
     iter->set_value(2, nice_date);  /* change date */
     iter->set_value(3, note);      /* note */
-    cnt++;
   }
 
   m_tree->set_model(m_store_sort);
