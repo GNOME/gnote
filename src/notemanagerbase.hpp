@@ -41,7 +41,7 @@ class TrieController;
 class NoteManagerBase
 {
 public:
-  typedef sigc::signal<void, const NoteBase::Ptr &> ChangedHandler;
+  typedef sigc::signal<void(const NoteBase::Ptr &)> ChangedHandler;
 
   static Glib::ustring sanitize_xml_content(const Glib::ustring & xml_content);
   static Glib::ustring get_note_template_content(const Glib::ustring & title);
