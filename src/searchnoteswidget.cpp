@@ -235,8 +235,7 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow();
   sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
-  sw->add(*m_notebooksTree);
-  sw->show();
+  sw->set_child(*m_notebooksTree);
 
   return sw;
 }
