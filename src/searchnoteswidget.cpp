@@ -440,7 +440,7 @@ bool SearchNotesWidget::on_notebooks_key_pressed(GdkEventKey *ev)
 
 notebooks::Notebook::Ptr SearchNotesWidget::get_selected_notebook() const
 {
-  Gtk::TreeIter iter;
+  Gtk::TreeIter<Gtk::TreeRow> iter;
 
   Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooksTree->get_selection();
   if(!selection) {
