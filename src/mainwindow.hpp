@@ -21,6 +21,8 @@
 #ifndef _MAINWINDOW_HPP_
 #define _MAINWINDOW_HPP_
 
+#include <gtkmm/applicationwindow.h>
+
 #include "mainwindowembeds.hpp"
 #include "note.hpp"
 
