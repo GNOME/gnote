@@ -209,27 +209,19 @@ namespace gnote {
 
     for(auto file : files) {
       const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(file);
-      const Glib::ustring dest_path
-          = Glib::build_filename(notes_dir(),
-                                 Glib::path_get_basename(file));
-      const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(
-                                                        dest_path);
-      src->copy(dest, Gio::FILE_COPY_NONE);
+      const Glib::ustring dest_path = Glib::build_filename(notes_dir(), Glib::path_get_basename(file.c_str()));
+      const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(dest_path);
+      src->copy(dest, Gio::File::CopyFlags::NONE);
     }
 
-    const Glib::ustring old_backup_dir = Glib::build_filename(
-                                         old_note_dir,
-                                         "Backup");
+    const Glib::ustring old_backup_dir = Glib::build_filename(old_note_dir, "Backup");
     files = sharp::directory_get_files_with_ext(old_backup_dir, ".note");
 
     for(auto file : files) {
       const Glib::RefPtr<Gio::File> src = Gio::File::create_for_path(file);
-      const Glib::ustring dest_path
-          = Glib::build_filename(m_backup_dir,
-                                 Glib::path_get_basename(file));
-      const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(
-                                                        dest_path);
-      src->copy(dest, Gio::FILE_COPY_NONE);
+      const Glib::ustring dest_path = Glib::build_filename(m_backup_dir, Glib::path_get_basename(file.c_str()));
+      const Glib::RefPtr<Gio::File> dest = Gio::File::create_for_path(dest_path);
+      src->copy(dest, Gio::File::CopyFlags::NONE);
     }
   }
 
