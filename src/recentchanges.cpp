@@ -55,23 +55,20 @@ namespace gnote {
         : m_embed(widget)
         , m_label(label)
       {
-        m_label.show();
-
-        pack_start(m_label);
+        append(m_label);
         if (show_button) {
           m_close_button.set_image_from_icon_name("window-close-symbolic");
-          m_close_button.set_relief(Gtk::RELIEF_NONE);
+          m_close_button.set_has_frame(false);
           m_close_button.set_focus_on_click(false);
           m_close_button.set_tooltip_text(_("Close"));
-          m_close_button.show();
-          pack_start(m_close_button);
+          append(m_close_button);
           m_close_button.signal_clicked().connect([this] { signal_close(m_embed); });
         }
 
         widget.signal_name_changed.connect(sigc::mem_fun(*this, &TabLabel::on_embedded_name_changed));
       }
 
-      sigc::signal<void, EmbeddableWidget&> signal_close;
+      sigc::signal<void(EmbeddableWidget&)> signal_close;
     private:
       void on_embedded_name_changed(const Glib::ustring & name)
       {
