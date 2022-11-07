@@ -76,7 +76,7 @@ private:
   void on_open_note(const Note::Ptr &);
   void on_open_note_new_window(const Note::Ptr &);
   void on_delete_note();
-  bool on_delete(GdkEventAny *);
+  bool on_close();
   bool on_key_pressed(GdkEventKey *);
   EmbeddableWidget *currently_foreground();
   void on_current_page_changed(Gtk::Widget *new_page, guint page_number);

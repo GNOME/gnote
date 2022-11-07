@@ -142,11 +142,10 @@ namespace gnote {
     embed_widget(*m_search_notes_widget);
 
     set_child(*content);
-    signal_delete_event().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_delete));
+    signal_close_request().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close), false);
     signal_key_press_event()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
-    g.signal_quit
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));// to save size/pos
+    g.signal_quit.connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));// to save size/pos
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_W, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
@@ -590,10 +589,10 @@ namespace gnote {
   }
 
 
-  bool NoteRecentChanges::on_delete(GdkEventAny *)
+  bool NoteRecentChanges::on_close()
   {
     close_window();
-    return true;
+    return false;
   }
 
   bool NoteRecentChanges::on_key_pressed(GdkEventKey *ev)
