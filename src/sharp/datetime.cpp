@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017,2020-2021 Aurimas Cernius
+ * Copyright (C) 2012,2017,2020-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -37,8 +37,8 @@ namespace sharp {
 Glib::ustring date_time_to_string(const Glib::DateTime & dt, const char *format)
 {
   struct tm t;
-  Glib::TimeVal date(dt.to_unix(), dt.get_microsecond());
-  localtime_r((const time_t *)&date.tv_sec, &t);
+  time_t sec = dt.to_unix();
+  localtime_r(&sec, &t);
   char output[256];
   strftime(output, sizeof(output), format, &t);
   return Glib::locale_to_utf8(output);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017,2020 Aurimas Cernius
+ * Copyright (C) 2012,2017,2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -33,7 +33,6 @@
 
 #include <glibmm/datetime.h>
 #include <glibmm/ustring.h>
-#include <glibmm/timeval.h>
 
 #include "timespan.hpp"
 
