@@ -552,11 +552,7 @@ namespace gnote {
 
   void NoteRecentChanges::close_window()
   {
-    Glib::RefPtr<Gdk::Window> win = get_window();
-    // background window (for tray to work) might not have GDK window
-    if(win) {
-      m_preferences.main_window_maximized(win->get_state() & Gdk::WINDOW_STATE_MAXIMIZED);
-    }
+    m_preferences.main_window_maximized(is_maximized());
 
     if(m_embed_book.get_n_pages() > 0) {
       EmbeddableWidget *widget = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(m_embed_book.get_current_page()));
