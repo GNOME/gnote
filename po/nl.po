@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-03-25 18:57+0000\n"
-"PO-Revision-Date: 2022-03-25 21:26+0100\n"
+"POT-Creation-Date: 2022-10-05 15:36+0000\n"
+"PO-Revision-Date: 2022-11-02 16:22+0100\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2021-04-18 21:44+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:88 src/recentchanges.cpp:116
@@ -537,7 +537,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Hoofdvenster"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:115
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:136
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Algemeen"
@@ -547,150 +547,165 @@ msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Hulptekst tonen"
 
-#: data/shortcuts-gnote.ui:25 data/shortcuts-gnote.ui:120
-#: data/shortcuts-gnote.ui:127
+#: data/shortcuts-gnote.ui:25
+msgctxt "shortcut window"
+msgid "Shortcuts"
+msgstr "Sneltoetsen"
+
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "Actiemenu openen"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Zoekbalk verbergen"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:176
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Venster sluiten"
 
-#: data/shortcuts-gnote.ui:47
+#: data/shortcuts-gnote.ui:53
+msgctxt "shortcut window"
+msgid "Go to next tab"
+msgstr "Ga naar volgend tabblad"
+
+#: data/shortcuts-gnote.ui:60
+msgctxt "shortcut window"
+msgid "Go to previous tab"
+msgstr "Ga naar vorig tabblad"
+
+#: data/shortcuts-gnote.ui:68
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Zoekbalk"
 
-#: data/shortcuts-gnote.ui:52 data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:73 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "Zoekbalk tonen"
 
-#: data/shortcuts-gnote.ui:59
+#: data/shortcuts-gnote.ui:80
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Volgende overeenkomst selecteren"
 
-#: data/shortcuts-gnote.ui:66
+#: data/shortcuts-gnote.ui:87
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "Vorige overeenkomst selecteren"
 
-#: data/shortcuts-gnote.ui:74
+#: data/shortcuts-gnote.ui:95
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Lijst van notities"
 
-#: data/shortcuts-gnote.ui:79
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Nieuwe notitie maken"
 
-#: data/shortcuts-gnote.ui:86
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Geselecteerde notitie openen"
 
-#: data/shortcuts-gnote.ui:93
+#: data/shortcuts-gnote.ui:114
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Geselecteerde notitie openen in nieuw venster"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:121
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Geselecteerde notitie verwijderen"
 
-#: data/shortcuts-gnote.ui:111
+#: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
 msgid "Note Window"
 msgstr "Notitievenster"
 
-#: data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Actiemenu voor notities openen"
 
-#: data/shortcuts-gnote.ui:163
+#: data/shortcuts-gnote.ui:184
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Bewerken"
 
-#: data/shortcuts-gnote.ui:168
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Laatste bewerking ongedaan maken"
 
-#: data/shortcuts-gnote.ui:175
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Laatste bewerking opnieuw uitvoeren"
 
-#: data/shortcuts-gnote.ui:182
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Maak snelkoppeling naar notitie op geselecteerde tekst"
 
 # Bestandsopmaak lijkt mij niet goed, ook al is niet helemaal duidelijk wat hier bedoeld wordt. Daarom prefereer ik het neutralere Opmaken - Hannie
-#: data/shortcuts-gnote.ui:190
+#: data/shortcuts-gnote.ui:211
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Opmaken"
 
-#: data/shortcuts-gnote.ui:195
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Vetgedrukt omschakelen"
 
-#: data/shortcuts-gnote.ui:202
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Schuingedrukt omschakelen"
 
-#: data/shortcuts-gnote.ui:209
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Doorhalen omschakelen"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Markering omschakelen"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Vaste breedte omschakelen"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Onderstrepen omschakelen"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Tekst vergroten"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Tekst verkleinen"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr ""
 "Opsommingstekens inschakelen/inspringing vergroten voor regel met selectie"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr ""
@@ -850,7 +865,8 @@ msgstr "Kies een pictogram…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:227
 #: src/plugins/bugzilla/bugzillapreferences.cpp:370
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/notebooks/createnotebookdialog.cpp:65
+#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
 #: src/utils.cpp:375
 msgid "_Cancel"
 msgstr "_Annuleren"
@@ -891,7 +907,8 @@ msgstr "Dit pictogram echt verwijderen?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Het verwijderen van een pictogram kan niet ongedaan gemaakt worden."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376
+#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
 #: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "Ver_wijderen"
@@ -1160,7 +1177,7 @@ msgstr "Vandaag: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "Notitie-van-de-dag kon %s niet maken: %s"
@@ -1488,7 +1505,6 @@ msgstr ""
 "Pjotr <pjotrvertaalt@gmail.com>\n"
 "Hannie Dumoleyn <hannie@ubuntu-nl.org>\n"
 "Nathan Follens <nfollens@gnome.org>\n"
-"\n"
 "Meer info over Gnome-NL http://nl.gnome.org"
 
 #: src/gnote.cpp:273
@@ -1591,7 +1607,7 @@ msgid "Window is not embedded"
 msgstr "Venster is niet ingebed"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:357
+#: src/notebase.cpp:225 src/note.cpp:355
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Uitzondering bij opslaan van notitie: %s"
@@ -1638,7 +1654,7 @@ msgstr "Nieuw notitie_boek…"
 msgid "%1 Notebook Template"
 msgstr "Notitieboeksjabloon %1"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Nieuwe notitie"
 
@@ -1712,11 +1728,11 @@ msgstr[1] "Wilt u %1 notities echt verwijderen?"
 msgid "If you delete a note it is permanently lost."
 msgstr "Het verwijderen van een notitie kan niet ongedaan gemaakt worden."
 
-#: src/note.cpp:101
+#: src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Fout bij opslaan van notitiegegevens."
 
-#: src/note.cpp:102
+#: src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1726,12 +1742,12 @@ msgstr ""
 "schijfruimte heeft en of u de juiste toegangsrechten heeft tot ~/.local/"
 "share/gnote. Meer details kunt u vinden in ~/.gnote.log."
 
-#: src/note.cpp:445
+#: src/note.cpp:443
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Fout bij opslaan: %s"
 
-#: src/note.cpp:672
+#: src/note.cpp:668
 msgid "Setting text content for closed notes not supported"
 msgstr ""
 "Het instellen van tekstinhoud voor gesloten notities wordt niet ondersteund"
@@ -1741,7 +1757,7 @@ msgstr ""
 msgid "New Note Template"
 msgstr "Nieuw notitiesjabloon"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Beschrijf hier uw nieuwe notitie."
 
@@ -1816,58 +1832,58 @@ msgstr ""
 "bestaande notities wijzen als een notitie wordt hernoemd.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Begin hier"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Koppelingen gebruiken in Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Fout bij maken van startnotities: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Fout bij lezen van XML van notitie, ‘%s’ wordt overgeslagen: %s"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:118
 msgid "Rename Note Links?"
 msgstr "Notitie-verwijzingen hernoemen?"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:123
 msgid "_Don't Rename Links"
 msgstr "Verwijzingen _niet hernoemen"
 
-#: src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:124
 msgid "_Rename Links"
 msgstr "Verwijzingen _hernoemen"
 
-#: src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:125
 msgid "Select All"
 msgstr "Alles selecteren"
 
-#: src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:126
 msgid "Select None"
 msgstr "Niets selecteren"
 
-#: src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:127
 msgid "Always show this _window"
 msgstr "Dit venster altijd _weergeven"
 
-#: src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:128
 msgid "Alwa_ys rename links"
 msgstr "_Altijd verwijzingen hernoemen"
 
-#: src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:130
 msgid "Never rename _links"
 msgstr "_Nooit verwijzingen hernoemen"
 
-#: src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:148
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1880,15 +1896,15 @@ msgstr ""
 "Als u de verwijzingen niet hernoemt, zullen deze nergens meer naar toe "
 "verwijzen."
 
-#: src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:181
 msgid "Rename Links"
 msgstr "Verwijzingen hernoemen"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Notitietitel"
 
-#: src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:233
 msgid "Ad_vanced"
 msgstr "Ge_avanceerd"
 
@@ -2257,40 +2273,40 @@ msgstr "Auteursrecht:"
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/recentchanges.cpp:248
+#: src/recentchanges.cpp:257
 msgid "Create New Note"
 msgstr "Nieuwe notitie"
 
-#: src/recentchanges.cpp:275
+#: src/recentchanges.cpp:284
 msgid "Search"
 msgstr "Zoeken"
 
-#: src/recentchanges.cpp:346
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "De ouder van de embed-box is geen Gtk :: Grid,  dien een foutmelding in!"
 
-#: src/recentchanges.cpp:388
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "De ouder van de zoekopdracht is geen Gtk :: Grid,  dien een foutmelding in!"
 
-#: src/recentchanges.cpp:684
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Poging om een widget die niet ingebed is in het venster op de voorgrond te "
 "plaatsen"
 
-#: src/recentchanges.cpp:691
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Poging om een widget die geen Gtk::Widget is op de voorgrond te plaatsen"
 
-#: src/recentchanges.cpp:961
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "Verwacht dat widget een submenu is!"
 
-#: src/recentchanges.cpp:966
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Geen ingestelde acties"
 
