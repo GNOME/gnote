@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,8 +50,8 @@ class NoteBuffer
 {
 public:
   typedef Glib::RefPtr<NoteBuffer> Ptr;
-  typedef sigc::signal<void, int, int> NewBulletHandler;
-  typedef sigc::signal<void, int, bool> ChangeDepthHandler;
+  typedef sigc::signal<void(int, int)> NewBulletHandler;
+  typedef sigc::signal<void(int, bool)> ChangeDepthHandler;
 
   bool get_enable_auto_bulleted_lists() const;
   static Ptr create(const NoteTagTable::Ptr & table, Note & note, Preferences & preferences)
@@ -68,7 +68,7 @@ public:
   // Signal that text has been inserted, and any active tags have
   // been applied to the text.  This allows undo to pull any
   // active tags from the inserted text.
-  sigc::signal<void, const Gtk::TextIter &, const Glib::ustring &, int> signal_insert_text_with_tags;
+  sigc::signal<void(const Gtk::TextIter &, const Glib::ustring &, int)> signal_insert_text_with_tags;
   ChangeDepthHandler                               signal_change_text_depth;
   NewBulletHandler                                 signal_new_bullet_inserted;
 
