@@ -148,9 +148,8 @@ namespace gnote {
     // TODO: Is this variables used, or do we just need to
     // access iter.Tags to work around a bug?
     for(const auto & tag : iter.get_tags()) {
-      DynamicNoteTag::ConstPtr dynamic_tag =  DynamicNoteTag::ConstPtr::cast_dynamic(tag);
-      if (dynamic_tag &&
-          (dynamic_tag->get_element_name() == tag_name)) {
+      auto dynamic_tag = std::dynamic_pointer_cast<const DynamicNoteTag>(tag);
+      if (dynamic_tag && dynamic_tag->get_element_name() == tag_name) {
         return dynamic_tag;
       }
     }
@@ -162,7 +161,7 @@ namespace gnote {
   void NoteBuffer::on_tag_applied(const Glib::RefPtr<Gtk::TextTag> & tag1,
                                   const Gtk::TextIter & start_char, const Gtk::TextIter &end_char)
   {
-    DepthNoteTag::Ptr dn_tag = DepthNoteTag::Ptr::cast_dynamic(tag1);
+    DepthNoteTag::Ptr dn_tag = std::dynamic_pointer_cast<DepthNoteTag>(tag1);
     if (!dn_tag) {
       // Remove the tag from any bullets in the selection
       m_undomanager->freeze_undo();
@@ -182,11 +181,10 @@ namespace gnote {
       // Remove any existing tags when a depth tag is applied
       m_undomanager->freeze_undo();
       for(const auto & tag : start_char.get_tags()) {
-        DepthNoteTag::ConstPtr dn_tag2 = DepthNoteTag::ConstPtr::cast_dynamic(tag);
-        if (!dn_tag2) {
+        if(auto dn_tag2 = std::dynamic_pointer_cast<DepthNoteTag>(tag)) {
           // here it gets hairy. Gtkmm does not implement remove_tag() on a const.
           // given that Gtk does not have const, I assume I can work that out.
-          remove_tag(Glib::RefPtr<Gtk::TextTag>::cast_const(tag), start_char, end_char);
+          remove_tag(tag, start_char, end_char);
         }
       }
       m_undomanager->thaw_undo();
@@ -720,7 +718,7 @@ namespace gnote {
       const WidgetInsertData & data(m_widget_queue.front());
       // HACK: This is a quick fix for bug #486551
       if (data.position) {
-        NoteBuffer::Ptr buffer = NoteBuffer::Ptr::cast_static(data.buffer);
+        NoteBuffer::Ptr buffer = std::static_pointer_cast<NoteBuffer>(data.buffer);
         Gtk::TextIter iter = buffer->get_iter_at_mark(data.position);
         Glib::RefPtr<Gtk::TextMark> location = data.position;
 
@@ -755,7 +753,7 @@ namespace gnote {
 
   void NoteBuffer::on_tag_changed(const Glib::RefPtr<Gtk::TextTag> & tag, bool)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if (note_tag) {
       utils::TextTagEnumerator enumerator(Glib::RefPtr<Gtk::TextBuffer>(this), note_tag);
       while(enumerator.move_next()) {
@@ -770,7 +768,7 @@ namespace gnote {
   {
     Gtk::TextBuffer::on_apply_tag(tag, start, end_iter);
 
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if (note_tag) {
       widget_swap(note_tag, start, end_iter, true);
     }
@@ -779,7 +777,7 @@ namespace gnote {
   void NoteBuffer::on_remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag,
                                  const Gtk::TextIter & start,  const Gtk::TextIter & end_iter)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if (note_tag) {
       widget_swap(note_tag, start, end_iter, false);
     }
@@ -915,7 +913,7 @@ namespace gnote {
 
   void NoteBuffer::insert_bullet(Gtk::TextIter & iter, int depth)
   {
-    NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(get_tag_table());
+    NoteTagTable::Ptr note_table = std::dynamic_pointer_cast<NoteTagTable>(get_tag_table());
 
     DepthNoteTag::Ptr tag = note_table->get_depth_tag(depth);
 
@@ -1031,7 +1029,7 @@ namespace gnote {
 
     for(const auto & tag : iter.get_tags()) {
       if (NoteTagTable::tag_has_depth (tag)) {
-        depth_tag = DepthNoteTag::Ptr::cast_dynamic(tag);
+        depth_tag = std::dynamic_pointer_cast<DepthNoteTag>(tag);
         break;
       }
     }
@@ -1073,9 +1071,8 @@ namespace gnote {
   void NoteBufferArchiver::write_tag(const Glib::RefPtr<const Gtk::TextTag> & tag, 
                                      sharp::XmlWriter & xml, bool start)
   {
-    NoteTag::ConstPtr note_tag = NoteTag::ConstPtr::cast_dynamic(tag);
-    if (note_tag) {
-      note_tag->write (xml, start);
+    if(auto note_tag = std::dynamic_pointer_cast<const NoteTag>(tag)) {
+      note_tag->write(xml, start);
     } 
     else if (NoteTagTable::tag_is_serializable (tag)) {
       if (start) {
@@ -1133,7 +1130,7 @@ namespace gnote {
     }
 
     while ((iter != end) && iter.get_char()) {
-      DepthNoteTag::Ptr depth_tag = NoteBuffer::Ptr::cast_static(buffer)->find_depth_tag (iter);
+      DepthNoteTag::Ptr depth_tag = std::static_pointer_cast<NoteBuffer>(buffer)->find_depth_tag (iter);
 
       // If we are at a character with a depth tag we are at the
       // start of a bulleted line
@@ -1191,7 +1188,7 @@ namespace gnote {
       // Output any tags that begin at the current position
       for(const auto& tag : iter.get_tags()) {
         if(iter.starts_tag(tag)) {
-          if (!(DepthNoteTag::Ptr::cast_dynamic(tag)) && NoteTagTable::tag_is_serializable(tag)) {
+          if (!std::dynamic_pointer_cast<DepthNoteTag>(tag) && NoteTagTable::tag_is_serializable(tag)) {
             write_tag (tag, xml, true);
             tag_stack.push (tag);
           }
@@ -1236,8 +1233,7 @@ namespace gnote {
       bool next_line_has_depth = false;
       if (iter.get_line() < buffer->get_line_count() - 1) {
         Gtk::TextIter next_line = buffer->get_iter_at_line(iter.get_line()+1);
-        next_line_has_depth =
-          (bool)NoteBuffer::Ptr::cast_static(buffer)->find_depth_tag (next_line);
+        next_line_has_depth = (bool)std::static_pointer_cast<NoteBuffer>(buffer)->find_depth_tag (next_line);
       }
 
       bool at_empty_line = iter.ends_line () && iter.starts_line ();
@@ -1264,7 +1260,7 @@ namespace gnote {
       else {
         for(const auto& tag : iter.get_tags()) {
           if (tag_ends_here (tag, iter, next_iter) &&
-              NoteTagTable::tag_is_serializable(tag) && !(DepthNoteTag::Ptr::cast_dynamic(tag)))
+              NoteTagTable::tag_is_serializable(tag) && !std::dynamic_pointer_cast<DepthNoteTag>(tag))
           {
             while (!tag_stack.empty()) {
               Glib::RefPtr<const Gtk::TextTag> existing_tag = tag_stack.top();
@@ -1359,7 +1355,7 @@ namespace gnote {
     TagStart tag_start;
     Glib::ustring value;
 
-    NoteTagTable::Ptr note_table = NoteTagTable::Ptr::cast_dynamic(buffer->get_tag_table());
+    NoteTagTable::Ptr note_table = std::dynamic_pointer_cast<NoteTagTable>(buffer->get_tag_table());
 
     int curr_depth = -1;
 
@@ -1407,8 +1403,8 @@ namespace gnote {
             tag_start.tag = buffer->get_tag_table()->lookup (xml.get_name());
           }
 
-          if (NoteTag::Ptr::cast_dynamic(tag_start.tag)) {
-            NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, true);
+          if (auto tag = std::dynamic_pointer_cast<NoteTag>(tag_start.tag)) {
+            tag->read(xml, true);
           }
 
           if(!xml.is_empty_element()) {
@@ -1451,17 +1447,17 @@ namespace gnote {
             apply_start = buffer->get_iter_at_offset (tag_start.start);
             apply_end = buffer->get_iter_at_offset (offset);
 
-            if (NoteTag::Ptr::cast_dynamic(tag_start.tag)) {
-              NoteTag::Ptr::cast_dynamic(tag_start.tag)->read (xml, false);
+            if(auto tag = std::dynamic_pointer_cast<NoteTag>(tag_start.tag)) {
+              tag->read(xml, false);
             }
 
             // Insert a bullet if we have reached a closing
             // <list-item> tag, but only if the <list-item>
             // had content.
-            DepthNoteTag::Ptr depth_tag = DepthNoteTag::Ptr::cast_dynamic(tag_start.tag);
+            auto depth_tag = std::dynamic_pointer_cast<DepthNoteTag>(tag_start.tag);
 
             if (depth_tag && list_stack.front ()) {
-              NoteBuffer::Ptr note_buffer = NoteBuffer::Ptr::cast_dynamic(buffer);
+              auto note_buffer = std::dynamic_pointer_cast<NoteBuffer>(buffer);
               // Do not insert bullet if it's already there
               // this happens when using double identation in bullet list
               if(!note_buffer->find_depth_tag(apply_start)) {
