@@ -511,12 +511,12 @@ namespace gnote {
 
   void NoteWindow::change_depth_right_handler()
   {
-    Glib::RefPtr<NoteBuffer>::cast_static(m_editor->get_buffer())->change_cursor_depth_directional(true);
+    std::static_pointer_cast<NoteBuffer>(m_editor->get_buffer())->change_cursor_depth_directional(true);
   }
 
   void NoteWindow::change_depth_left_handler()
   {
-    Glib::RefPtr<NoteBuffer>::cast_static(m_editor->get_buffer())->change_cursor_depth_directional(false);
+    std::static_pointer_cast<NoteBuffer>(m_editor->get_buffer())->change_cursor_depth_directional(false);
   }
 
   void NoteWindow::on_pin_status_changed(const Note & note, bool pinned)
