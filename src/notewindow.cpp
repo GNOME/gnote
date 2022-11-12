@@ -25,6 +25,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
+#include <gtkmm/label.h>
 #include <gtkmm/separator.h>
 #include <gtkmm/separatortoolitem.h>
 #include <gtkmm/separatormenuitem.h>
@@ -541,7 +542,7 @@ namespace gnote {
 
   void NoteWindow::on_text_button_clicked()
   {
-    m_text_menu->show_all();
+    m_text_menu->popup();
   }
 
   void NoteWindow::enabled(bool enable)
@@ -756,8 +757,8 @@ namespace gnote {
       m_widget.signal_foregrounded.connect(sigc::mem_fun(*this, &NoteTextMenu::on_widget_foregrounded));
       m_widget.signal_backgrounded.connect(sigc::mem_fun(*this, &NoteTextMenu::on_widget_backgrounded));
 
-      set_position(Gtk::POS_BOTTOM);
-      Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
+      set_position(Gtk::PositionType::BOTTOM);
+      Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
 
       // Listen to events so we can sensitize and
       // enable keybinding
@@ -768,44 +769,47 @@ namespace gnote {
       Gtk::Widget *italic = create_font_item("win.change-font-italic", _("_Italic"), "i");
       Gtk::Widget *strikeout = create_font_item("win.change-font-strikeout", _("_Strikeout"), "s");
 
-      Gtk::Widget *highlight = manage(utils::create_popover_button("win.change-font-highlight", ""));
-      auto label = static_cast<Gtk::Label*>(static_cast<Gtk::Bin*>(highlight)->get_child());
-      Glib::ustring markup = Glib::ustring::compose("<span background=\"yellow\">%1</span>", _("_Highlight"));
-      label->set_markup_with_mnemonic(markup);
+      auto highlight = manage(utils::create_popover_button("win.change-font-highlight", ""));
+      if(auto highlight_button = dynamic_cast<Gtk::Button*>(highlight)) {
+        auto label = manage(new Gtk::Label);
+        Glib::ustring markup = Glib::ustring::compose("<span background=\"yellow\">%1</span>", _("_Highlight"));
+        label->set_markup_with_mnemonic(markup);
+        highlight_button->set_child(*label);
+      }
 
       Gtk::Widget *normal = create_font_size_item(_("_Normal"), NULL, "");
       Gtk::Widget *small = create_font_size_item(_("S_mall"), "small", "size:small");
       Gtk::Widget *large = create_font_size_item(_("_Large"), "large", "size:large");
       Gtk::Widget *huge = create_font_size_item(_("Hu_ge"), "x-large", "size:huge");
 
-      auto box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
+      auto box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
       utils::set_common_popover_widget_props(*box);
       box->set_name("formatting");
-      box->add(*bold);
-      box->add(*italic);
-      box->add(*strikeout);
-      box->add(*highlight);
-      menu_box->add(*box);
-      menu_box->add(*manage(new Gtk::Separator));
+      box->append(*bold);
+      box->append(*italic);
+      box->append(*strikeout);
+      box->append(*highlight);
+      menu_box->append(*box);
+      menu_box->append(*manage(new Gtk::Separator));
 
-      box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
+      box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
       utils::set_common_popover_widget_props(*box);
       box->set_name("font-size");
-      box->add(*small);
-      box->add(*normal);
-      box->add(*large);
-      box->add(*huge);
-      menu_box->add(*box);
-      menu_box->add(*manage(new Gtk::Separator));
+      box->append(*small);
+      box->append(*normal);
+      box->append(*large);
+      box->append(*huge);
+      menu_box->append(*box);
+      menu_box->append(*manage(new Gtk::Separator));
 
       Gtk::Widget *bullets = manage(utils::create_popover_button("win.enable-bullets", _("⦁ Bullets")));
-      menu_box->add(*bullets);
+      menu_box->append(*bullets);
       Gtk::Widget *increase_indent = manage(utils::create_popover_button("win.increase-indent", _("→ Increase indent")));
-      menu_box->add(*increase_indent);
+      menu_box->append(*increase_indent);
       Gtk::Widget *decrease_indent = manage(utils::create_popover_button("win.decrease-indent", _("← Decrease indent")));
-      menu_box->add(*decrease_indent);
+      menu_box->append(*decrease_indent);
 
-      add(*menu_box);
+      set_child(*menu_box);
 
       refresh_state();
     }
@@ -813,25 +817,31 @@ namespace gnote {
   Gtk::Widget *NoteTextMenu::create_font_item(const char *action, const char *label, const char *markup)
   {
     Gtk::Widget *widget = manage(utils::create_popover_button(action, ""));
-    auto lbl = static_cast<Gtk::Label*>(static_cast<Gtk::Bin*>(widget)->get_child());
-    Glib::ustring m = Glib::ustring::compose("<%1>%2</%1>", markup, label);
-    lbl->set_markup_with_mnemonic(m);
+    if(auto btn = dynamic_cast<Gtk::Button*>(widget)) {
+      auto lbl = manage(new Gtk::Label);
+      Glib::ustring m = Glib::ustring::compose("<%1>%2</%1>", markup, label);
+      lbl->set_markup_with_mnemonic(m);
+      btn->set_child(*lbl);
+    }
     return widget;
   }
 
   Gtk::Widget *NoteTextMenu::create_font_size_item(const char *label, const char *markup, const char *size)
   {
     Gtk::Widget *item = manage(utils::create_popover_button("win.change-font-size", ""));
-    auto lbl = static_cast<Gtk::Label*>(static_cast<Gtk::Bin*>(item)->get_child());
-    Glib::ustring mrkp;
-    if(markup != NULL) {
-      mrkp = Glib::ustring::compose("<span size=\"%1\">%2</span>", markup, label);
+    if(auto btn = dynamic_cast<Gtk::Button*>(item)) {
+      auto lbl = manage(new Gtk::Label);
+      Glib::ustring mrkp;
+      if(markup != NULL) {
+        mrkp = Glib::ustring::compose("<span size=\"%1\">%2</span>", markup, label);
+      }
+      else {
+        mrkp = label;
+      }
+      lbl->set_markup_with_mnemonic(mrkp);
+      btn->set_child(*lbl);
+      btn->set_action_target_value(Glib::Variant<Glib::ustring>::create(size));
     }
-    else {
-      mrkp = label;
-    }
-    lbl->set_markup_with_mnemonic(mrkp);
-    gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_string(size));
     return item;
   }
 
