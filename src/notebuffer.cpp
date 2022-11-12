@@ -495,9 +495,7 @@ namespace gnote {
   bool NoteBuffer::delete_key_handler()
   {
     // See if there is a selection
-    Gtk::TextIter start;
-    Gtk::TextIter end_iter;
-
+    Gtk::TextIter start, end_iter;
     bool selection = get_selection_bounds(start, end_iter);
 
     if (selection) {
@@ -533,7 +531,7 @@ namespace gnote {
       DepthNoteTag::Ptr depth = find_depth_tag(start);
       DepthNoteTag::Ptr nextDepth = find_depth_tag(next);
       if (depth || nextDepth) {
-        decrease_depth (start);
+        decrease_depth(start);
         return true;
       }
     }
@@ -787,7 +785,7 @@ namespace gnote {
 
   Glib::ustring NoteBuffer::get_selection() const
   {
-    Gtk::TextIter select_start, select_end;
+    Gtk::TextConstIter select_start, select_end;
     Glib::ustring text;
     
     if (get_selection_bounds(select_start, select_end)) {
@@ -1074,12 +1072,12 @@ namespace gnote {
     if(auto note_tag = std::dynamic_pointer_cast<const NoteTag>(tag)) {
       note_tag->write(xml, start);
     } 
-    else if (NoteTagTable::tag_is_serializable (tag)) {
-      if (start) {
-        xml.write_start_element ("", tag->property_name().get_value(), "");
+    else if(NoteTagTable::tag_is_serializable(tag)) {
+      if(start) {
+        xml.write_start_element("", tag->property_name().get_value(), "");
       }
       else {
-        xml.write_end_element ();
+        xml.write_end_element();
       }
     }
   }
