@@ -366,20 +366,14 @@ namespace gnote {
     int grid_col = 0;
 
     Gtk::Button *text_button = manage(new Gtk::Button);
-    Gtk::Image *image = manage(new Gtk::Image);
-    image->property_icon_name() = "insert-text-symbolic";
-    image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    text_button->set_image(*image);
-    text_button->signal_clicked()
-      .connect(sigc::mem_fun(*this, &NoteWindow::on_text_button_clicked));
+    text_button->property_icon_name() = "insert-text-symbolic";
+    text_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_text_button_clicked));
     text_button->property_margin_start() = 12;
-    text_button->show_all();
     grid->attach(*text_button, grid_col++, 0, 1, 1);
     text_button->set_tooltip_text(_("Set properties of text"));
-    m_text_menu->set_relative_to(*text_button);
+    m_text_menu->set_parent(*text_button);
 
     grid->property_margin_start() = 12;
-    grid->show_all();
     return grid;
   }
 
