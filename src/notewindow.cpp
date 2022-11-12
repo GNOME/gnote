@@ -408,8 +408,8 @@ namespace gnote {
     bar->attach(*m_save_selection_check_button, 0, 2, 1, 1);
     bar->attach(*m_save_title_check_button, 0, 3, 1, 1);
 
-    if(m_note.contains_tag(m_template_tag)) {
-      bar->show_all();
+    if(!m_note.contains_tag(m_template_tag)) {
+      bar->hide();
     }
 
     m_note.signal_tag_added.connect(sigc::mem_fun(*this, &NoteWindow::on_note_tag_added));
@@ -450,7 +450,7 @@ namespace gnote {
   void NoteWindow::on_note_tag_added(const NoteBase&, const Tag::Ptr & tag)
   {
     if(tag == m_template_tag) {
-      m_template_widget->show_all();
+      m_template_widget->show();
     }
   }
 
