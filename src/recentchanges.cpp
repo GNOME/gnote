@@ -741,8 +741,8 @@ namespace gnote {
       m_window_menu_embedded = NULL;
     }
 
-    auto children = m_embedded_toolbar.get_children();
-    for(auto child : children) {
+    auto child = m_embedded_toolbar.get_child_at(0, 0);
+    if(child) {
       m_embedded_toolbar.remove(*child);
     }
   }
@@ -909,7 +909,7 @@ namespace gnote {
     update_search_bar(widget, true);
     auto has_actions = dynamic_cast<HasActions*>(&widget);
     if(has_actions) {
-      m_current_embed_actions_button->show_all();
+      m_current_embed_actions_button->show();
     }
     else {
       m_current_embed_actions_button->hide();
@@ -919,7 +919,7 @@ namespace gnote {
       HasEmbeddableToolbar & toolbar_provider = dynamic_cast<HasEmbeddableToolbar&>(widget);
       Gtk::Widget *tool_item = toolbar_provider.embeddable_toolbar();
       if(tool_item) {
-        m_embedded_toolbar.add(*tool_item);
+        m_embedded_toolbar.attach(*tool_item, 0, 0);
       }
     }
     catch(std::bad_cast &) {
