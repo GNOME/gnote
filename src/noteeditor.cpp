@@ -248,13 +248,13 @@ namespace gnote {
 
   void NoteEditor::on_paste_start()
   {
-    auto buffer = NoteBuffer::Ptr::cast_static(get_buffer());
+    auto buffer = std::dynamic_pointer_cast<NoteBuffer>(get_buffer());
     buffer->undoer().add_undo_action(new EditActionGroup(true));
   }
 
   void NoteEditor::on_paste_end()
   {
-    auto buffer = NoteBuffer::Ptr::cast_static(get_buffer());
+    auto buffer = std::dynamic_pointer_cast<NoteBuffer>(get_buffer());
     buffer->undoer().add_undo_action(new EditActionGroup(false));
   }
 
