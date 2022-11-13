@@ -203,7 +203,7 @@ private:
   void remove_accel_group(Gtk::Window &);
   void on_pin_status_changed(const Note &, bool);
   void on_pin_button_clicked(const Glib::VariantBase & state);
-  void on_text_button_clicked();
+  void on_text_button_clicked(Gtk::Widget*);
 
   Note                        & m_note;
   IGnote                      & m_gnote;
@@ -211,7 +211,6 @@ private:
   int                           m_height;
   int                           m_width;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
-  Gtk::Grid                    *m_embeddable_toolbar;
   NoteTextMenu                 *m_text_menu;
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;

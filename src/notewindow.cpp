@@ -80,10 +80,6 @@ namespace gnote {
     set_hexpand(true);
     set_vexpand(true);
 
-    m_text_menu = Gtk::manage(new NoteTextMenu(*this, note.get_buffer(), note.get_buffer()->undoer()));
-
-    m_embeddable_toolbar = manage(make_toolbar());
-
     m_template_widget = make_template_bar();
 
     // The main editor widget
@@ -155,13 +151,12 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
     m_gnote.notebook_manager().signal_note_pin_status_changed
       .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
-
-    m_text_menu->refresh_state();
   }
 
   void NoteWindow::background()
   {
     EmbeddableWidget::background();
+    m_text_menu = nullptr;
     Gtk::Window *parent = dynamic_cast<Gtk::Window*>(host());
     if(!parent) {
       return;
@@ -262,7 +257,7 @@ namespace gnote {
 
   Gtk::Grid *NoteWindow::embeddable_toolbar()
   {
-    return m_embeddable_toolbar;
+    return manage(make_toolbar());
   }
 
   std::vector<PopoverWidget> NoteWindow::get_popover_widgets()
@@ -311,14 +306,16 @@ namespace gnote {
   void NoteWindow::on_selection_mark_deleted(const Glib::RefPtr<Gtk::TextMark> & mark)
   {
     auto buffer = m_note.get_buffer();
-    if(mark == buffer->get_insert() || mark == buffer->get_selection_bound()) {
+    if(m_text_menu && (mark == buffer->get_insert() || mark == buffer->get_selection_bound())) {
       m_text_menu->refresh_state();
     }
   }
 
   void NoteWindow::on_buffer_changed()
   {
-    m_text_menu->refresh_state();
+    if(m_text_menu) {
+      m_text_menu->refresh_state();
+    }
   }
 
   void NoteWindow::on_populate_popup(Gtk::Menu* menu)
@@ -365,11 +362,10 @@ namespace gnote {
 
     Gtk::Button *text_button = manage(new Gtk::Button);
     text_button->property_icon_name() = "insert-text-symbolic";
-    text_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_text_button_clicked));
+    text_button->signal_clicked().connect([this, text_button] { on_text_button_clicked(text_button); });
     text_button->property_margin_start() = 12;
     grid->attach(*text_button, grid_col++, 0, 1, 1);
     text_button->set_tooltip_text(_("Set properties of text"));
-    m_text_menu->set_parent(*text_button);
 
     grid->property_margin_start() = 12;
     return grid;
@@ -532,8 +528,13 @@ namespace gnote {
     }
   }
 
-  void NoteWindow::on_text_button_clicked()
+  void NoteWindow::on_text_button_clicked(Gtk::Widget *parent)
   {
+    if(!m_text_menu) {
+      m_text_menu = Gtk::manage(new NoteTextMenu(*this, m_note.get_buffer(), m_note.get_buffer()->undoer()));
+      m_text_menu->set_parent(*parent);
+    }
+    m_text_menu->refresh_state();
     m_text_menu->popup();
   }
 
