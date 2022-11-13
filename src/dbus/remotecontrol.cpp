@@ -272,7 +272,7 @@ bool RemoteControl::HideNote(const Glib::ustring& uri)
   if(window == NULL) {
     return true;
   }
-  MainWindow *win = MainWindow::get_owning(*window);
+  auto win = dynamic_cast<MainWindow*>(window->host());
   if(win) {
     win->unembed_widget(*window);
   }
