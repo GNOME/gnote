@@ -89,7 +89,6 @@ namespace gnote {
     // The main editor widget
     m_editor = manage(new NoteEditor(note.get_buffer(), g.preferences()));
     m_editor->signal_populate_popup().connect(sigc::mem_fun(*this, &NoteWindow::on_populate_popup));
-    m_editor->show();
 
     note.get_buffer()->signal_mark_set().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
     note.get_buffer()->signal_mark_deleted().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_deleted));
@@ -99,12 +98,11 @@ namespace gnote {
     //        window get bigger up till it grows more than
     //        60% of the screen, and then show scrollbars.
     m_editor_window = manage(new Gtk::ScrolledWindow());
-    m_editor_window->property_hscrollbar_policy().set_value(Gtk::POLICY_AUTOMATIC);
-    m_editor_window->property_vscrollbar_policy().set_value(Gtk::POLICY_AUTOMATIC);
-    m_editor_window->add(*m_editor);
+    m_editor_window->property_hscrollbar_policy().set_value(Gtk::PolicyType::AUTOMATIC);
+    m_editor_window->property_vscrollbar_policy().set_value(Gtk::PolicyType::AUTOMATIC);
+    m_editor_window->set_child(*m_editor);
     m_editor_window->set_hexpand(true);
     m_editor_window->set_vexpand(true);
-    m_editor_window->show();
 
     attach(*m_template_widget, 0, 0, 1, 1);
     attach(*m_editor_window, 0, 1, 1, 1);
