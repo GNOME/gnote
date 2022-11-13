@@ -37,10 +37,9 @@ namespace gnote {
     : Gtk::TextView(std::move(buffer))
     , m_preferences(preferences)
   {
-    set_wrap_mode(Gtk::WRAP_WORD);
+    set_wrap_mode(Gtk::WrapMode::WORD);
     set_left_margin(default_margin());
     set_right_margin(default_margin());
-    property_can_default().set_value(true);
 
     m_preferences.signal_enable_custom_font_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
     m_preferences.signal_custom_font_face_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
