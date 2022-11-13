@@ -764,12 +764,10 @@ namespace gnote {
       Gtk::Widget *strikeout = create_font_item("win.change-font-strikeout", _("_Strikeout"), "s");
 
       auto highlight = manage(utils::create_popover_button("win.change-font-highlight", ""));
-      if(auto highlight_button = dynamic_cast<Gtk::Button*>(highlight)) {
-        auto label = manage(new Gtk::Label);
-        Glib::ustring markup = Glib::ustring::compose("<span background=\"yellow\">%1</span>", _("_Highlight"));
-        label->set_markup_with_mnemonic(markup);
-        highlight_button->set_child(*label);
-      }
+      auto label = manage(new Gtk::Label);
+      Glib::ustring markup = Glib::ustring::compose("<span background=\"yellow\">%1</span>", _("_Highlight"));
+      label->set_markup_with_mnemonic(markup);
+      highlight->set_child(*label);
 
       Gtk::Widget *normal = create_font_size_item(_("_Normal"), NULL, "");
       Gtk::Widget *small = create_font_size_item(_("S_mall"), "small", "size:small");
@@ -810,32 +808,28 @@ namespace gnote {
 
   Gtk::Widget *NoteTextMenu::create_font_item(const char *action, const char *label, const char *markup)
   {
-    Gtk::Widget *widget = manage(utils::create_popover_button(action, ""));
-    if(auto btn = dynamic_cast<Gtk::Button*>(widget)) {
-      auto lbl = manage(new Gtk::Label);
-      Glib::ustring m = Glib::ustring::compose("<%1>%2</%1>", markup, label);
-      lbl->set_markup_with_mnemonic(m);
-      btn->set_child(*lbl);
-    }
+    auto widget = manage(utils::create_popover_button(action, ""));
+    auto lbl = manage(new Gtk::Label);
+    Glib::ustring m = Glib::ustring::compose("<%1>%2</%1>", markup, label);
+    lbl->set_markup_with_mnemonic(m);
+    widget->set_child(*lbl);
     return widget;
   }
 
   Gtk::Widget *NoteTextMenu::create_font_size_item(const char *label, const char *markup, const char *size)
   {
-    Gtk::Widget *item = manage(utils::create_popover_button("win.change-font-size", ""));
-    if(auto btn = dynamic_cast<Gtk::Button*>(item)) {
-      auto lbl = manage(new Gtk::Label);
-      Glib::ustring mrkp;
-      if(markup != NULL) {
-        mrkp = Glib::ustring::compose("<span size=\"%1\">%2</span>", markup, label);
-      }
-      else {
-        mrkp = label;
-      }
-      lbl->set_markup_with_mnemonic(mrkp);
-      btn->set_child(*lbl);
-      btn->set_action_target_value(Glib::Variant<Glib::ustring>::create(size));
+    auto item = manage(utils::create_popover_button("win.change-font-size", ""));
+    auto lbl = manage(new Gtk::Label);
+    Glib::ustring mrkp;
+    if(markup != NULL) {
+      mrkp = Glib::ustring::compose("<span size=\"%1\">%2</span>", markup, label);
     }
+    else {
+      mrkp = label;
+    }
+    lbl->set_markup_with_mnemonic(mrkp);
+    item->set_child(*lbl);
+    item->set_action_target_value(Glib::Variant<Glib::ustring>::create(size));
     return item;
   }
 
