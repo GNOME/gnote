@@ -37,7 +37,6 @@ class MainWindow
   , public EmbeddableWidgetHost
 {
 public:
-  static MainWindow *get_owning(Gtk::Widget & widget);
   static void present_in(MainWindow & win, const Note::Ptr & note);
   static MainWindow *present_in_new_window(IGnote & g, const Note::Ptr & note);
   static MainWindow *present_default(IGnote & g, const Note::Ptr & note);

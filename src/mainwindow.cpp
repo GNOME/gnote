@@ -28,22 +28,6 @@ namespace gnote {
 int MainWindow::s_use_client_side_decorations = -1;
 
 
-MainWindow *MainWindow::get_owning(Gtk::Widget & widget)
-{
-  Gtk::Container *container = widget.get_parent();
-  if(!container) {
-    return dynamic_cast<MainWindow*>(&widget);
-  }
-
-  Gtk::Container *cntr = container->get_parent();
-  while(cntr) {
-    container = cntr;
-    cntr = container->get_parent();
-  }
-
-  return dynamic_cast<MainWindow*>(container);
-}
-
 void MainWindow::present_in(MainWindow & win, const Note::Ptr & note)
 {
   win.present_note(note);
