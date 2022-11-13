@@ -81,11 +81,10 @@ PopoverWidget PopoverWidget::create_custom_section(Gtk::Widget *w)
 
 namespace utils {
 
-  Gtk::Widget *create_popover_button(const Glib::ustring & action, Glib::ustring && label)
+  Gtk::Button *create_popover_button(const Glib::ustring & action, Glib::ustring && label)
   {
-    Gtk::ModelButton *item = new Gtk::ModelButton;
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(item->gobj()), action.c_str());
-    item->set_label(std::move(label));
+    Gtk::Button *item = new Gtk::Button(std::move(label), true);
+    item->set_action_name(action);
     set_common_popover_button_props(*item);
     return item;
   }

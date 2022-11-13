@@ -21,6 +21,7 @@
 #define _POPOVERWIDGETS_HPP_
 
 #include <gtkmm/box.h>
+#include <gtkmm/button.h>
 
 namespace gnote {
 
@@ -97,7 +98,7 @@ private:
 
 
 namespace utils {
-  Gtk::Widget *create_popover_button(const Glib::ustring & action, Glib::ustring && label);
+  Gtk::Button *create_popover_button(const Glib::ustring & action, Glib::ustring && label);
   Gtk::Widget *create_popover_submenu_button(const Glib::ustring & submenu, Glib::ustring && label);
   Gtk::Box *create_popover_submenu(Glib::ustring && name);
   void set_common_popover_widget_props(Gtk::Widget & widget);
