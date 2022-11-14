@@ -360,11 +360,7 @@ namespace gnote {
     m_find_next_prev_box->set_margin_start(5);
 
     Gtk::Button *find_next_button = manage(new Gtk::Button);
-    Gtk::Image *image = manage(new Gtk::Image);
-    image->property_icon_name() = "go-down-symbolic";
-    image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    find_next_button->set_image(*image);
-    find_next_button->set_always_show_image(true);
+    find_next_button->property_icon_name() = "go-down-symbolic";
     find_next_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
     find_next_button->add_accelerator("activate", m_accel_group, GDK_KEY_G, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
@@ -372,11 +368,7 @@ namespace gnote {
     m_find_next_prev_box->attach(*find_next_button, 0, 0, 1, 1);
 
     Gtk::Button *find_prev_button = manage(new Gtk::Button);
-    image = manage(new Gtk::Image);
-    image->property_icon_name() = "go-up-symbolic";
-    image->property_icon_size() = GTK_ICON_SIZE_MENU;
-    find_prev_button->set_image(*image);
-    find_prev_button->set_always_show_image(true);
+    find_prev_button->property_icon_name() = "go-up-symbolic";
     find_prev_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
     find_prev_button->add_accelerator("activate", m_accel_group, GDK_KEY_G, Gdk::CONTROL_MASK|Gdk::SHIFT_MASK, (Gtk::AccelFlags) 0);
