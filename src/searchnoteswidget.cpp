@@ -1048,17 +1048,17 @@ void SearchNotesWidget::add_matches_column()
     m_matches_column->set_sort_column(4);
     m_matches_column->set_sort_indicator(true);
     m_matches_column->set_reorderable(false);
-    m_matches_column->set_sort_order(Gtk::SORT_DESCENDING);
+    m_matches_column->set_sort_order(Gtk::SortType::DESCENDING);
     m_matches_column->set_clickable(true);
     m_store_sort->set_sort_func(4 /* matches */,
                                 sigc::mem_fun(*this, &SearchNotesWidget::compare_search_hits));
 
     m_tree->append_column(*m_matches_column);
-    m_store_sort->set_sort_column(4, Gtk::SORT_DESCENDING);
+    m_store_sort->set_sort_column(4, Gtk::SortType::DESCENDING);
   }
   else {
     m_matches_column->set_visible(true);
-    m_store_sort->set_sort_column(4, Gtk::SORT_DESCENDING);
+    m_store_sort->set_sort_column(4, Gtk::SortType::DESCENDING);
   }
 }
 
@@ -1437,7 +1437,7 @@ void SearchNotesWidget::on_sorting_changed()
     default:
       return;
     }
-    if(m_sort_column_order == Gtk::SORT_ASCENDING) {
+    if(m_sort_column_order == Gtk::SortType::ASCENDING) {
       value += "asc";
     }
     else {
@@ -1470,10 +1470,10 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
     return;
   }
   if(tokens[1] == "asc") {
-    order = Gtk::SORT_ASCENDING;
+    order = Gtk::SortType::ASCENDING;
   }
   else if(tokens[1] == "desc") {
-    order = Gtk::SORT_DESCENDING;
+    order = Gtk::SortType::DESCENDING;
   }
   else {
     ERR_OUT(_("Failed to parse setting search-sorting (Value: %s):"), sorting.c_str());
