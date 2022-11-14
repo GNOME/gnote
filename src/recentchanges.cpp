@@ -135,10 +135,7 @@ namespace gnote {
     content->attach(m_embed_book, 0, content_y_attach++, 1, 1);
     m_embed_book.set_hexpand(true);
     m_embed_book.set_vexpand(true);
-    m_embed_book.show();
-    content->show();
     m_embed_book.signal_switch_page().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_current_page_changed), false);
-    m_search_notes_widget->show();
     embed_widget(*m_search_notes_widget);
 
     set_child(*content);
@@ -289,7 +286,6 @@ namespace gnote {
       "activate", m_accel_group, GDK_KEY_F10, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
     m_window_actions_button->add_accelerator(
       "activate", m_accel_group, GDK_KEY_comma, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
-    m_window_actions_button->show_all();
     right_box->attach(*m_window_actions_button, right_box_pos++, 0, 1, 1);
 
     if(use_client_side_decorations(m_preferences)) {
@@ -334,7 +330,6 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_changed));
     m_search_entry->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_activated));
-    m_search_entry->show();
 
     m_search_box = manage(new Gtk::Grid);
     m_search_box->set_hexpand(false);
@@ -364,7 +359,6 @@ namespace gnote {
     find_next_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
     find_next_button->add_accelerator("activate", m_accel_group, GDK_KEY_G, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
-    find_next_button->show();
     m_find_next_prev_box->attach(*find_next_button, 0, 0, 1, 1);
 
     Gtk::Button *find_prev_button = manage(new Gtk::Button);
@@ -372,7 +366,6 @@ namespace gnote {
     find_prev_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
     find_prev_button->add_accelerator("activate", m_accel_group, GDK_KEY_G, Gdk::CONTROL_MASK|Gdk::SHIFT_MASK, (Gtk::AccelFlags) 0);
-    find_prev_button->show();
     m_find_next_prev_box->attach(*find_prev_button, 1, 0, 1, 1);
 
     auto grid = dynamic_cast<Gtk::Grid*>(m_search_entry->get_parent());
@@ -658,7 +651,6 @@ namespace gnote {
     if (allow_close) {
       tab_label->signal_close.connect(sigc::mem_fun(*this, &NoteRecentChanges::unembed_widget));
     }
-    tab_label->show();
     int idx = m_embed_book.append_page(*win, *tab_label);
     m_embed_book.set_current_page(idx);
   }
