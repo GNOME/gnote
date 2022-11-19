@@ -119,8 +119,8 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note));
     m_search_notes_widget->signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
-    m_search_notes_widget->notes_widget().signal_key_press_event()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_widget_key_press));
+    m_search_notes_widget->notes_widget_key_ctrl()->signal_key_pressed()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_notes_widget_key_press), true);
 
     make_header_bar();
     auto content = manage(new Gtk::Grid);
@@ -999,10 +999,8 @@ namespace gnote {
     }
   }
 
-  bool NoteRecentChanges::on_notes_widget_key_press(GdkEventKey *ev)
+  bool NoteRecentChanges::on_notes_widget_key_press(guint keyval, guint keycode, Gdk::ModifierType state)
   {
-    guint keyval;
-    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
     switch(keyval) {
     case GDK_KEY_Escape:
     case GDK_KEY_Delete:
@@ -1026,9 +1024,9 @@ namespace gnote {
             show_search_bar(false);
             m_search_button.activate();
           }
-          Glib::ustring s;
+          Glib::ustring s = m_search_entry->get_text();
           s += character;
-          g_signal_emit_by_name(m_search_entry->gobj(), "insert-at-cursor", s.c_str());
+          m_search_entry->set_text(s);
           return true;
         }
         return false;
