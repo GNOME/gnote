@@ -140,8 +140,11 @@ namespace gnote {
 
     set_child(*content);
     signal_close_request().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close), false);
-    signal_key_press_event()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
+
+    auto controller = Gtk::EventControllerKey::create();
+    controller->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed), true);
+    add_controller(controller);
+
     g.signal_quit.connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));// to save size/pos
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_W, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
@@ -576,10 +579,8 @@ namespace gnote {
     return false;
   }
 
-  bool NoteRecentChanges::on_key_pressed(GdkEventKey *ev)
+  bool NoteRecentChanges::on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
   {
-    guint keyval;
-    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
     switch(keyval) {
     case GDK_KEY_Escape:
       if(m_search_button.get_active()) {
