@@ -84,7 +84,7 @@ private:
   void make_header_bar();
   void make_search_box();
   void make_find_next_prev();
-  bool on_entry_key_pressed(GdkEventKey *);
+  bool on_entry_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_entry_changed();
   void on_entry_activated();
   void entry_changed_timeout();

@@ -327,8 +327,9 @@ namespace gnote {
     m_search_entry->set_text(search_text);
     m_search_entry->set_activates_default(false);
     m_search_entry->set_size_request(300);
-    m_search_entry->signal_key_press_event()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_key_pressed), false);
+    auto key_ctrl = Gtk::EventControllerKey::create();
+    key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_key_pressed), false);
+    m_search_entry->add_controller(key_ctrl);
     m_search_entry->signal_changed()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_changed));
     m_search_entry->signal_activate()
@@ -815,13 +816,10 @@ namespace gnote {
     return res;
   }
 
-  bool NoteRecentChanges::on_entry_key_pressed(GdkEventKey *ev)
+  bool NoteRecentChanges::on_entry_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
   {
-    guint keyval;
-    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
     switch(keyval) {
     case GDK_KEY_Escape:
-      m_search_entry->set_text("");
       m_search_button.set_active(false);
     }
 
