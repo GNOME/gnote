@@ -650,8 +650,9 @@ void SearchNotesWidget::make_recent_tree()
     sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_motion_notify), false);
   m_tree->signal_button_release_event().connect(
     sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_button_released));
-  m_tree->signal_key_press_event().connect(
-    sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_key_pressed), false);
+  m_notes_widget_key_ctrl = Gtk::EventControllerKey::create();
+  m_notes_widget_key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_key_pressed), false);
+  m_tree->add_controller(m_notes_widget_key_ctrl);
   m_tree->signal_drag_data_get().connect(
     sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_drag_data_get));
 
@@ -939,13 +940,10 @@ bool SearchNotesWidget::on_treeview_button_released(GdkEventButton *ev)
   return false;
 }
 
-bool SearchNotesWidget::on_treeview_key_pressed(GdkEventKey * ev)
+bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
   // create context menu here, so that we have shortcuts and they work
   Gtk::Menu *menu = get_note_list_context_menu();
-  auto event = (GdkEvent*)ev;
-  guint keyval;
-  gdk_event_get_keyval(event, &keyval);
 
   switch(keyval) {
   case GDK_KEY_Delete:

@@ -25,6 +25,7 @@
 
 #include <set>
 
+#include <gtkmm/eventcontrollerkey.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/paned.h>
@@ -59,6 +60,10 @@ public:
   Gtk::Widget & notes_widget() const
     {
       return *m_tree;
+    }
+  const Glib::RefPtr<Gtk::EventControllerKey> & notes_widget_key_ctrl() const
+    {
+      return m_notes_widget_key_ctrl;
     }
 
   sigc::signal<void(const Note::Ptr &)> signal_open_note;
@@ -148,6 +153,7 @@ private:
     Gtk::TreeModelColumn<Note::Ptr> note;
   };
 
+  Glib::RefPtr<Gtk::EventControllerKey> m_notes_widget_key_ctrl;
   Gtk::MenuItem *m_open_note_menu_item;
   Gtk::MenuItem *m_open_note_new_window_menu_item;
   Gtk::MenuItem *m_delete_note_menu_item;
