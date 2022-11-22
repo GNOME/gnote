@@ -79,6 +79,28 @@ PopoverWidget PopoverWidget::create_custom_section(Gtk::Widget *w)
   return PopoverWidget(APP_CUSTOM_SECTION, 0, w);
 }
 
+
+PopoverButton::PopoverButton(Glib::ustring && label, bool mnemonic)
+  : Gtk::Button(std::move(label), mnemonic)
+  , m_parent_po(nullptr)
+{
+}
+
+
+PopoverSubmenuButton::PopoverSubmenuButton(Glib::ustring && label, bool mnemonic, sigc::slot<Gtk::Widget*()> && submenu_builder)
+  : PopoverButton(std::move(label), mnemonic)
+  , m_builder(std::move(submenu_builder))
+{
+  set_common_popover_button_props(*this);
+  signal_clicked().connect(sigc::mem_fun(*this, &PopoverSubmenuButton::on_clicked));
+}
+
+void PopoverSubmenuButton::on_clicked()
+{
+  parent_popover()->set_child(*manage(m_builder()));
+}
+
+
 namespace utils {
 
   Gtk::Button *create_popover_button(const Glib::ustring & action, Glib::ustring && label)

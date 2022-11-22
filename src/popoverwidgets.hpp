@@ -22,6 +22,7 @@
 
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
+#include <gtkmm/popover.h>
 
 namespace gnote {
 
@@ -94,6 +95,37 @@ public:
     }
 private:
   const Glib::ustring m_name;
+};
+
+
+class PopoverButton
+  : public Gtk::Button
+{
+public:
+  PopoverButton(Glib::ustring && label, bool mnemonic);
+
+  void parent_popover(Gtk::Popover *popover)
+    {
+      m_parent_po = popover;
+    }
+  Gtk::Popover *parent_popover() const
+    {
+      return m_parent_po;
+    }
+private:
+  Gtk::Popover *m_parent_po;
+};
+
+
+class PopoverSubmenuButton
+  : public PopoverButton
+{
+public:
+  PopoverSubmenuButton(Glib::ustring && label, bool mnemonic, sigc::slot<Gtk::Widget*()> && submenu_builder);
+private:
+  void on_clicked();
+
+  sigc::slot<Gtk::Widget*()> m_builder;
 };
 
 
