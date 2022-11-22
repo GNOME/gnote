@@ -91,8 +91,6 @@ namespace gnote {
     , m_search_entry(nullptr)
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
-    , m_window_menu_embedded(NULL)
-    , m_window_menu_default(NULL)
     , m_accel_group(Gtk::AccelGroup::create())
     , m_keybinder(m_accel_group)
   {
@@ -218,7 +216,6 @@ namespace gnote {
   {
     unregister_callbacks();
     register_callbacks();
-    m_window_menu_default = nullptr;
   }
 
   void NoteRecentChanges::register_callbacks()
@@ -708,9 +705,6 @@ namespace gnote {
 
     try {
       HasActions &has_actions = dynamic_cast<HasActions&>(widget);
-      if(m_window_menu_embedded) {
-        m_window_menu_embedded = NULL;
-      }
       m_signal_popover_widgets_changed_cid = has_actions.signal_popover_widgets_changed
         .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_popover_widgets_changed));
     }
@@ -722,10 +716,6 @@ namespace gnote {
   {
     widget.background();
     m_signal_popover_widgets_changed_cid.disconnect();
-
-    if(m_window_menu_embedded) {
-      m_window_menu_embedded = NULL;
-    }
 
     auto child = m_embedded_toolbar.get_child_at(0, 0);
     if(child) {
@@ -911,34 +901,31 @@ namespace gnote {
 
   void NoteRecentChanges::on_show_window_menu()
   {
-    if(m_window_menu_default == nullptr) {
-      std::vector<PopoverWidget> popover_widgets;
-      popover_widgets.reserve(20);
-      m_gnote.action_manager().signal_build_main_window_search_popover(popover_widgets);
-      for(unsigned i = 0; i < popover_widgets.size(); ++i) {
-        popover_widgets[i].secondary_order = i;
-      }
-      m_window_menu_default = make_window_menu(m_window_actions_button, std::move(popover_widgets));
+    std::vector<PopoverWidget> popover_widgets;
+    popover_widgets.reserve(20);
+    m_gnote.action_manager().signal_build_main_window_search_popover(popover_widgets);
+    for(unsigned i = 0; i < popover_widgets.size(); ++i) {
+      popover_widgets[i].secondary_order = i;
     }
-    m_window_menu_default->show_all();
+
+    auto menu = make_window_menu(m_window_actions_button, std::move(popover_widgets));
+    menu->popup();
   }
 
   void NoteRecentChanges::on_show_embed_action_menu()
   {
     HasActions *embed_with_actions = dynamic_cast<HasActions*>(currently_foreground());
     if(embed_with_actions) {
-      if(m_window_menu_embedded == NULL) {
-        m_window_menu_embedded = make_window_menu(m_current_embed_actions_button, std::move(embed_with_actions->get_popover_widgets()));
-      }
-      m_window_menu_embedded->show_all();
+      auto menu = make_window_menu(m_current_embed_actions_button, std::move(embed_with_actions->get_popover_widgets()));
+      menu->popup();
     }
   }
 
-  Gtk::PopoverMenu *NoteRecentChanges::make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items)
+  Gtk::Popover *NoteRecentChanges::make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items)
   {
     std::sort(items.begin(), items.end());
-    Gtk::PopoverMenu *menu = manage(new Gtk::PopoverMenu);
-    Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
+    Gtk::Popover *menu = manage(new Gtk::Popover);
+    Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
     utils::set_common_popover_widget_props(*menu_box);
     if(items.size() > 0) {
       auto iter = items.begin();
@@ -946,33 +933,23 @@ namespace gnote {
       for(; iter != items.end() && iter->section != APP_CUSTOM_SECTION; ++iter) {
           if(iter->section != current_section) {
             current_section = iter->section;
-            menu_box->add(*manage(new Gtk::Separator));
+            menu_box->append(*manage(new Gtk::Separator));
           }
-          menu_box->add(*manage(iter->widget));
-      }
-
-      menu->add(*menu_box);
-      for(; iter != items.end(); ++iter) {
-          PopoverSubmenu *submenu = dynamic_cast<PopoverSubmenu*>(iter->widget);
-          if(submenu) {
-            menu->add(*manage(iter->widget));
-            menu->child_property_submenu(*iter->widget) = submenu->name();
-          }
-          else {
-            ERR_OUT(_("Expected widget to be a sub-menu!"));
+          menu_box->append(*manage(iter->widget));
+          if(auto submenu_button = dynamic_cast<PopoverButton*>(iter->widget)) {
+            submenu_button->parent_popover(menu);
           }
       }
+      menu->set_child(*menu_box);
     }
     else {
-      menu_box->add(*manage(new Gtk::Label(_("No configured actions"))));
-      menu->add(*menu_box);
+      menu_box->append(*manage(new Gtk::Label(_("No configured actions"))));
+      menu->set_child(*menu_box);
     }
 
-    menu->set_relative_to(*button);
-    menu->set_modal(true);
-    menu->set_position(Gtk::POS_BOTTOM);
-
+    menu->set_position(Gtk::PositionType::BOTTOM);
     menu->signal_closed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_window_menu_closed));
+    menu->set_parent(*button);
     return menu;
   }
 
@@ -992,9 +969,6 @@ namespace gnote {
 
   void NoteRecentChanges::on_popover_widgets_changed()
   {
-    if(m_window_menu_embedded) {
-      m_window_menu_embedded = NULL;
-    }
   }
 
   bool NoteRecentChanges::on_notes_widget_key_press(guint keyval, guint keycode, Gdk::ModifierType state)

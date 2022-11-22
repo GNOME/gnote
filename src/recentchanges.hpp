@@ -27,7 +27,7 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/notebook.h>
-#include <gtkmm/popovermenu.h>
+#include <gtkmm/popover.h>
 #include <gtkmm/togglebutton.h>
 
 #include "mainwindowaction.hpp"
@@ -96,7 +96,7 @@ private:
   void on_search_button_toggled();
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
-  Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items);
+  Gtk::Popover *make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items);
   void on_window_menu_closed();
   bool on_notes_widget_key_press(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_close_window(const Glib::VariantBase&);
@@ -130,8 +130,6 @@ private:
   bool                m_mapped;
   sigc::connection    m_signal_popover_widgets_changed_cid;
   utils::InterruptableTimeout *m_entry_changed_timeout;
-  Gtk::PopoverMenu     *m_window_menu_embedded;
-  Gtk::PopoverMenu     *m_window_menu_default;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   utils::GlobalKeybinder m_keybinder;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
