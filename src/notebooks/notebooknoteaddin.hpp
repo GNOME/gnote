@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2016,2019 Aurimas Cernius
+ * Copyright (C) 2011-2016,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,8 +23,6 @@
 
 #ifndef __NOTEBOOKS_NOTEBOOK_NOTE_ADDIN_HPP__
 #define __NOTEBOOKS_NOTEBOOK_NOTE_ADDIN_HPP__
-
-#include <gtkmm/modelbutton.h>
 
 #include "noteaddin.hpp"
 
@@ -51,7 +49,7 @@ namespace notebooks {
     void on_new_notebook_menu_item(const Glib::VariantBase&) const;
     void on_move_to_notebook(const Glib::VariantBase &);
     void on_notebooks_changed();
-    std::vector<Gtk::ModelButton*> get_notebook_menu_items() const;
+    std::vector<Gtk::Widget*> get_notebook_menu_items() const;
     void update_menu(Gtk::Box *) const;
 
     sigc::connection          m_new_notebook_cid;

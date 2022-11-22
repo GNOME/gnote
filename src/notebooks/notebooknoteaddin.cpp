@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016,2019 Aurimas Cernius
+ * Copyright (C) 2010-2016,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 
 
 #include <glibmm/i18n.h>
-#include <gtkmm/modelbutton.h>
 #include <gtkmm/separator.h>
 
 #include "notebooks/notebooknoteaddin.hpp"
@@ -108,12 +107,14 @@ namespace notebooks {
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
     if(!get_note()->contains_tag(get_template_tag())) {
-      Gtk::Widget *notebook_button = utils::create_popover_submenu_button("notebooks-submenu", _("Notebook"));
-      widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
+      auto notebook_button = new PopoverSubmenuButton(_("Notebook"), true,
+        [this] {
+          auto submenu = new Gtk::Box(Gtk::Orientation::VERTICAL);
+          update_menu(submenu);
+          return submenu;
+        });
 
-      auto submenu = utils::create_popover_submenu("notebooks-submenu");
-      update_menu(submenu);
-      widgets.push_back(gnote::PopoverWidget::create_custom_section(submenu));
+      widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
     }
 
     return widgets;
@@ -145,44 +146,34 @@ namespace notebooks {
   {
     // Add new notebook item
     Gtk::Widget *new_notebook_item = manage(utils::create_popover_button("win.new-notebook", _("_New notebook...")));
-    menu->add(*new_notebook_item);
-    menu->add(*manage(new Gtk::Separator));
+    menu->append(*new_notebook_item);
+    menu->append(*manage(new Gtk::Separator));
 
     // Add the "(no notebook)" item at the top of the list
-    Gtk::ModelButton *no_notebook_item = dynamic_cast<Gtk::ModelButton*>(manage(
-      utils::create_popover_button("win.move-to-notebook", _("No notebook"))));
-    gtk_actionable_set_action_target_value(GTK_ACTIONABLE(no_notebook_item->gobj()), g_variant_new_string(""));
-    menu->add(*no_notebook_item);
+    Gtk::Button *no_notebook_item = manage(utils::create_popover_button("win.move-to-notebook", _("No notebook")));
+    no_notebook_item->set_action_target_value(Glib::Variant<Glib::ustring>::create(""));
+    menu->append(*no_notebook_item);
 
     // Add in all the real notebooks
     auto notebook_menu_items = get_notebook_menu_items();
     if(!notebook_menu_items.empty()) {
-      for(Gtk::ModelButton *item : notebook_menu_items) {
-        menu->add(*item);
+      for(auto item : notebook_menu_items) {
+        menu->append(*item);
       }
 
     }
-
-    menu->add(*manage(new Gtk::Separator));
-    Gtk::Widget *back_button = utils::create_popover_submenu_button("main", _("_Back"));
-    dynamic_cast<Gtk::ModelButton*>(back_button)->property_inverted() = true;
-    menu->add(*back_button);
   }
   
 
-  std::vector<Gtk::ModelButton*> NotebookNoteAddin::get_notebook_menu_items() const
+  std::vector<Gtk::Widget*> NotebookNoteAddin::get_notebook_menu_items() const
   {
-    std::vector<Gtk::ModelButton*> items;
+    std::vector<Gtk::Widget*> items;
     Glib::RefPtr<Gtk::TreeModel> model = ignote().notebook_manager().get_notebooks();
-    Gtk::TreeIter iter;
-
-    iter = model->children().begin();
-    for(iter = model->children().begin(); iter != model->children().end(); ++iter) {
+    for(const auto& row : model->children()) {
       Notebook::Ptr notebook;
-      iter->get_value(0, notebook);
-      Gtk::ModelButton *item = dynamic_cast<Gtk::ModelButton*>(manage(
-        utils::create_popover_button("win.move-to-notebook", notebook->get_name())));
-      gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_string(notebook->get_name().c_str()));
+      row.get_value(0, notebook);
+      Gtk::Button *item = manage(utils::create_popover_button("win.move-to-notebook", notebook->get_name()));
+      item->set_action_target_value(Glib::Variant<Glib::ustring>::create(notebook->get_name()));
       items.push_back(item);
     }
 
