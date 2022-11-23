@@ -702,20 +702,11 @@ namespace gnote {
     }
     catch(std::bad_cast&) {
     }
-
-    try {
-      HasActions &has_actions = dynamic_cast<HasActions&>(widget);
-      m_signal_popover_widgets_changed_cid = has_actions.signal_popover_widgets_changed
-        .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_popover_widgets_changed));
-    }
-    catch(std::bad_cast&) {
-    }
   }
 
   void NoteRecentChanges::background_embedded(EmbeddableWidget & widget)
   {
     widget.background();
-    m_signal_popover_widgets_changed_cid.disconnect();
 
     auto child = m_embedded_toolbar.get_child_at(0, 0);
     if(child) {
@@ -965,10 +956,6 @@ namespace gnote {
     }
 
     current_page->set_initial_focus();
-  }
-
-  void NoteRecentChanges::on_popover_widgets_changed()
-  {
   }
 
   bool NoteRecentChanges::on_notes_widget_key_press(guint keyval, guint keycode, Gdk::ModifierType state)

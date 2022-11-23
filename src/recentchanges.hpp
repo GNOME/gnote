@@ -101,7 +101,6 @@ private:
   bool on_notes_widget_key_press(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_close_window(const Glib::VariantBase&);
   void add_action(const MainWindowAction::Ptr & action);
-  void on_popover_widgets_changed();
   bool present_active(const Note::Ptr & note);
   void register_actions();
   void callbacks_changed();
@@ -128,7 +127,6 @@ private:
   Gtk::Button        *m_window_actions_button;
   Gtk::Button        *m_current_embed_actions_button;
   bool                m_mapped;
-  sigc::connection    m_signal_popover_widgets_changed_cid;
   utils::InterruptableTimeout *m_entry_changed_timeout;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   utils::GlobalKeybinder m_keybinder;
