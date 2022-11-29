@@ -120,7 +120,6 @@ private:
   Gtk::Button        *m_window_actions_button;
   Gtk::Button        *m_current_embed_actions_button;
   bool                m_mapped;
-  Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
   std::vector<sigc::connection> m_action_cids;
 };

@@ -88,9 +88,7 @@ namespace gnote {
     , m_find_next_prev_box(nullptr)
     , m_search_entry(nullptr)
     , m_mapped(false)
-    , m_accel_group(Gtk::AccelGroup::create())
   {
-    add_accel_group(m_accel_group);
     set_resizable(true);
     if(g.preferences().main_window_maximized()) {
       maximize();
