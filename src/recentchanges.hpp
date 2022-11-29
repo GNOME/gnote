@@ -33,7 +33,6 @@
 #include "mainwindowaction.hpp"
 #include "note.hpp"
 #include "searchnoteswidget.hpp"
-#include "utils.hpp"
 
 namespace gnote {
   class IGnote;
@@ -82,9 +81,8 @@ private:
   void make_search_box();
   void make_find_next_prev();
   bool on_entry_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
-  void on_entry_changed();
-  void on_entry_activated();
-  void entry_changed_timeout();
+  void on_search_changed();
+  void on_search_stopped();
   Glib::ustring get_search_text();
   void update_toolbar(EmbeddableWidget & widget);
   void update_search_bar(EmbeddableWidget & widget, bool perform_search);
@@ -122,7 +120,6 @@ private:
   Gtk::Button        *m_window_actions_button;
   Gtk::Button        *m_current_embed_actions_button;
   bool                m_mapped;
-  utils::InterruptableTimeout *m_entry_changed_timeout;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
   std::vector<sigc::connection> m_action_cids;

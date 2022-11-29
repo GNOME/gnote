@@ -88,7 +88,6 @@ namespace gnote {
     , m_find_next_prev_box(nullptr)
     , m_search_entry(nullptr)
     , m_mapped(false)
-    , m_entry_changed_timeout(NULL)
     , m_accel_group(Gtk::AccelGroup::create())
   {
     add_accel_group(m_accel_group);
@@ -171,9 +170,6 @@ namespace gnote {
       while(m_embed_book.get_n_pages() > 0) {
         m_embed_book.remove_page(-1);
       }
-    }
-    if(m_entry_changed_timeout) {
-      delete m_entry_changed_timeout;
     }
     if(!m_search_box && m_search_text) {
       delete m_search_text;
@@ -336,15 +332,18 @@ namespace gnote {
     }
     m_search_entry = manage(new Gtk::SearchEntry);
     m_search_entry->set_text(search_text);
-    m_search_entry->set_activates_default(false);
     m_search_entry->set_size_request(300);
-    auto key_ctrl = Gtk::EventControllerKey::create();
-    key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_key_pressed), false);
-    m_search_entry->add_controller(key_ctrl);
-    m_search_entry->signal_changed()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_changed));
-    m_search_entry->signal_activate()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_entry_activated));
+    m_search_entry->set_search_delay(500);
+    m_search_entry->signal_search_changed()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_changed));
+    m_search_entry->signal_search_started()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_changed));
+    m_search_entry->signal_stop_search()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_stopped));
+    m_search_entry->signal_next_match()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
+    m_search_entry->signal_previous_match()
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
 
     m_search_box = manage(new Gtk::Grid);
     m_search_box->set_hexpand(false);
@@ -373,14 +372,12 @@ namespace gnote {
     find_next_button->property_icon_name() = "go-down-symbolic";
     find_next_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
-    find_next_button->add_accelerator("activate", m_accel_group, GDK_KEY_G, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     m_find_next_prev_box->attach(*find_next_button, 0, 0, 1, 1);
 
     Gtk::Button *find_prev_button = manage(new Gtk::Button);
     find_prev_button->property_icon_name() = "go-up-symbolic";
     find_prev_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
-    find_prev_button->add_accelerator("activate", m_accel_group, GDK_KEY_G, Gdk::CONTROL_MASK|Gdk::SHIFT_MASK, (Gtk::AccelFlags) 0);
     m_find_next_prev_box->attach(*find_prev_button, 1, 0, 1, 1);
 
     auto grid = dynamic_cast<Gtk::Grid*>(m_search_entry->get_parent());
@@ -792,49 +789,7 @@ namespace gnote {
     return res;
   }
 
-  bool NoteRecentChanges::on_entry_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
-  {
-    switch(keyval) {
-    case GDK_KEY_Escape:
-      m_search_button.set_active(false);
-    }
-
-    return false;
-  }
-
-  void NoteRecentChanges::on_entry_changed()
-  {
-    if(!m_search_box || !m_search_box->get_visible()) {
-      return;
-    }
-    if(m_entry_changed_timeout == NULL) {
-      m_entry_changed_timeout = new utils::InterruptableTimeout();
-      m_entry_changed_timeout->signal_timeout
-        .connect(sigc::mem_fun(*this, &NoteRecentChanges::entry_changed_timeout));
-    }
-
-    Glib::ustring search_text = get_search_text();
-    if(search_text.empty()) {
-      SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_foreground());
-      if(searchable_widget) {
-        searchable_widget->perform_search(search_text);
-      }
-    }
-    else {
-      m_entry_changed_timeout->reset(500);
-    }
-  }
-
-  void NoteRecentChanges::on_entry_activated()
-  {
-    if(m_entry_changed_timeout) {
-      m_entry_changed_timeout->cancel();
-    }
-
-    entry_changed_timeout();
-  }
-
-  void NoteRecentChanges::entry_changed_timeout()
+  void NoteRecentChanges::on_search_changed()
   {
     if(!m_search_box || !m_search_box->get_visible()) {
       return;
@@ -848,6 +803,11 @@ namespace gnote {
     if(searchable_widget) {
       searchable_widget->perform_search(search_text);
     }
+  }
+
+  void NoteRecentChanges::on_search_stopped()
+  {
+    m_search_button.set_active(false);
   }
 
   Glib::ustring NoteRecentChanges::get_search_text()
