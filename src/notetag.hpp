@@ -57,8 +57,7 @@ class NoteTag
 public:
   typedef Glib::RefPtr<NoteTag> Ptr;
   typedef Glib::RefPtr<const NoteTag> ConstPtr;
-  typedef sigc::signal<bool, const NoteEditor &,
-                       const Gtk::TextIter &, const Gtk::TextIter &> TagActivatedHandler;
+  typedef sigc::signal<bool(const NoteEditor &, const Gtk::TextIter &, const Gtk::TextIter &)> TagActivatedHandler;
 
   enum TagFlags {
     NO_FLAG       = 0,
@@ -141,7 +140,7 @@ public:
     { 
       return m_signal_activate;
     }
-  sigc::signal<void,const Gtk::TextTag&,bool> & signal_changed()
+  sigc::signal<void(const Gtk::TextTag&, bool)> & signal_changed()
     { 
       return m_signal_changed;
     }
@@ -161,7 +160,7 @@ private:
   bool                m_allow_middle_activate;
   int                 m_flags;
   TagActivatedHandler m_signal_activate;
-  sigc::signal<void,const Gtk::TextTag&,bool> m_signal_changed;
+  sigc::signal<void(const Gtk::TextTag&, bool)> m_signal_changed;
   TagSaveType         m_save_type;
 };
 
@@ -254,7 +253,7 @@ class NoteTagTable
 {
 public:
   typedef Glib::RefPtr<NoteTagTable> Ptr;
-  typedef sigc::slot<DynamicNoteTag::Ptr> Factory;
+  typedef sigc::slot<DynamicNoteTag::Ptr()> Factory;
 
   static const NoteTagTable::Ptr & instance() 
     {
