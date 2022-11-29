@@ -237,14 +237,13 @@ namespace gnote {
   void Gnote::on_show_help_shortcust_action(const Glib::VariantBase&)
   {
     Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file(DATADIR"/gnote/shortcuts-gnote.ui");
-    Gtk::ShortcutsWindow *win = nullptr;
-    builder->get_widget("shortcuts-gnote", win);
+    auto win = builder->get_widget<Gtk::ShortcutsWindow >("shortcuts-gnote");
     if(win == nullptr) {
       ERR_OUT(_("Failed to get shortcuts window!"));
       return;
     }
 
-    win->show();
+    manage(win)->show();
   }
 
   void Gnote::on_show_about_action(const Glib::VariantBase&)
