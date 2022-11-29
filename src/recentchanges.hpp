@@ -51,11 +51,6 @@ public:
   virtual void present_search() override;
   virtual void close_window() override;
   virtual bool is_search() override;
-  virtual utils::GlobalKeybinder & keybinder() override
-    {
-      return m_keybinder;
-    }
-
   virtual void embed_widget(EmbeddableWidget &) override;
   virtual void unembed_widget(EmbeddableWidget &) override;
   virtual void foreground_embedded(EmbeddableWidget &) override;
@@ -131,7 +126,6 @@ private:
   bool                m_mapped;
   utils::InterruptableTimeout *m_entry_changed_timeout;
   Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
-  utils::GlobalKeybinder m_keybinder;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
   std::vector<sigc::connection> m_action_cids;
 };

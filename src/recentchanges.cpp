@@ -92,7 +92,6 @@ namespace gnote {
     , m_mapped(false)
     , m_entry_changed_timeout(NULL)
     , m_accel_group(Gtk::AccelGroup::create())
-    , m_keybinder(m_accel_group)
   {
     add_accel_group(m_accel_group);
     set_resizable(true);
