@@ -50,7 +50,6 @@ public:
   virtual void new_note() = 0;
   virtual void close_window() = 0;
   virtual bool is_search() = 0;
-  virtual utils::GlobalKeybinder & keybinder() = 0;
 protected:
   virtual void present_note(const Note::Ptr & note) = 0;
 private:
