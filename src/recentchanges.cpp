@@ -24,12 +24,10 @@
 #endif
 
 #include <glibmm/i18n.h>
-#include <gtkmm/alignment.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
 #include <gtkmm/separator.h>
-#include <gtkmm/separatormenuitem.h>
-#include <gtkmm/stock.h>
+#include <gtkmm/shortcutcontroller.h>
 
 #include "debug.hpp"
 #include "iactionmanager.hpp"
