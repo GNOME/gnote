@@ -81,6 +81,8 @@ private:
   EmbeddableWidget *currently_foreground();
   void on_current_page_changed(Gtk::Widget *new_page, guint page_number);
   void on_foreground_embedded(EmbeddableWidget & widget);
+  void add_shortcut(Gtk::Widget & widget, guint keyval, Gdk::ModifierType modifiers = static_cast<Gdk::ModifierType>(0));
+  void add_shortcut(Gtk::ShortcutController & controller, guint keyval, Gdk::ModifierType modifiers = static_cast<Gdk::ModifierType>(0));
   void make_header_bar();
   void make_search_box();
   void make_find_next_prev();

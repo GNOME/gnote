@@ -144,20 +144,21 @@ namespace gnote {
     add_controller(controller);
 
     g.signal_quit.connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));// to save size/pos
-    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
-                                GDK_KEY_W, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
-    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
-                                GDK_KEY_Q, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
-    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::next_tab),
-                                GDK_KEY_Page_Down, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
-    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::previous_tab),
-                                GDK_KEY_Page_Up, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
+
     {
-      auto show_shortcuts = m_gnote.action_manager().get_app_action("help-shortcuts");
-      if(show_shortcuts) {
-        m_keybinder.add_accelerator([show_shortcuts=std::move(show_shortcuts)]{ show_shortcuts->activate(); },
-                                    GDK_KEY_question, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
-      }
+      auto shortcuts = Gtk::ShortcutController::create();
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_W, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::NamedAction::create("win.close-window");
+      auto shortcut = Gtk::Shortcut::create(trigger, action);
+      shortcuts->add_shortcut(shortcut);
+      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Q, Gdk::ModifierType::CONTROL_MASK);
+      shortcut = Gtk::Shortcut::create(trigger, action);
+      shortcuts->add_shortcut(shortcut);
+      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_question, Gdk::ModifierType::CONTROL_MASK);
+      action = Gtk::NamedAction::create("app.help-shortcuts");
+      shortcut = Gtk::Shortcut::create(trigger, action);
+      shortcuts->add_shortcut(shortcut);
+      add_controller(shortcuts);
     }
   }
 
@@ -238,6 +239,21 @@ namespace gnote {
     m_action_cids.clear();
   }
 
+  void NoteRecentChanges::add_shortcut(Gtk::Widget & widget, guint keyval, Gdk::ModifierType modifiers)
+  {
+    auto controller = Gtk::ShortcutController::create();
+    controller->set_scope(Gtk::ShortcutScope::GLOBAL);
+    widget.add_controller(controller);
+    add_shortcut(*controller, keyval, modifiers);
+  }
+
+  void NoteRecentChanges::add_shortcut(Gtk::ShortcutController & controller, guint keyval, Gdk::ModifierType modifiers)
+  {
+    auto trigger = Gtk::KeyvalTrigger::create(keyval, modifiers);
+    auto shortcut = Gtk::Shortcut::create(trigger, Gtk::ActivateAction::get());
+    controller.add_shortcut(shortcut);
+  }
+
   void NoteRecentChanges::make_header_bar()
   {
     Gtk::Grid *left_box = manage(new Gtk::Grid);
@@ -247,8 +263,8 @@ namespace gnote {
     auto new_note_button = manage(new Gtk::Button);
     new_note_button->set_image_from_icon_name("list-add-symbolic");
     new_note_button->set_tooltip_text(_("Create New Note"));
-    new_note_button->add_accelerator("activate", m_accel_group, GDK_KEY_N, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
     new_note_button->signal_clicked().connect(sigc::mem_fun(*m_search_notes_widget, &SearchNotesWidget::new_note));
+    add_shortcut(*new_note_button, GDK_KEY_N, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
     left_box->attach(*new_note_button, 0, 0, 1, 1);
 
     m_embedded_toolbar.set_margin_start(6);
@@ -264,12 +280,12 @@ namespace gnote {
     m_current_embed_actions_button = manage(new Gtk::Button);
     m_current_embed_actions_button->set_image_from_icon_name(MAIN_MENU_SECONDARY_ICON);
     m_current_embed_actions_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_show_embed_action_menu));
-    m_current_embed_actions_button->add_accelerator("activate", m_accel_group, GDK_KEY_F8, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
+    add_shortcut(*m_current_embed_actions_button, GDK_KEY_F8);
     right_box->attach(*m_current_embed_actions_button, right_box_pos++, 0, 1, 1);
 
     m_search_button.set_image_from_icon_name("edit-find-symbolic");
     m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
-    m_search_button.add_accelerator("activate", m_accel_group, GDK_KEY_F, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    add_shortcut(m_search_button, GDK_KEY_F, Gdk::ModifierType::CONTROL_MASK);
     m_search_button.set_tooltip_text(_("Search"));
     Gtk::Grid *search_group = manage(new Gtk::Grid);
     search_group->set_column_spacing(5);
@@ -280,12 +296,13 @@ namespace gnote {
 
     m_window_actions_button = manage(new Gtk::Button);
     m_window_actions_button->set_image_from_icon_name(MAIN_MENU_PRIMARY_ICON);
-    m_window_actions_button->signal_clicked().connect(
-      sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu));
-    m_window_actions_button->add_accelerator(
-      "activate", m_accel_group, GDK_KEY_F10, (Gdk::ModifierType) 0, (Gtk::AccelFlags) 0);
-    m_window_actions_button->add_accelerator(
-      "activate", m_accel_group, GDK_KEY_comma, Gdk::CONTROL_MASK, (Gtk::AccelFlags) 0);
+    m_window_actions_button->signal_clicked().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_show_window_menu));
+    {
+      auto shortcuts = Gtk::ShortcutController::create();
+      shortcuts->set_scope(Gtk::ShortcutScope::GLOBAL);
+      add_shortcut(*m_window_actions_button, GDK_KEY_F10);
+      add_shortcut(*m_window_actions_button, GDK_KEY_comma, Gdk::ModifierType::CONTROL_MASK );
+    }
     right_box->attach(*m_window_actions_button, right_box_pos++, 0, 1, 1);
 
     if(use_client_side_decorations(m_preferences)) {
