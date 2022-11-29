@@ -145,7 +145,7 @@ public:
   using NoteBase::enabled;
   virtual void enabled(bool is_enabled) override;
 
-  sigc::signal<void,Note&> & signal_opened()
+  sigc::signal<void(Note&)> & signal_opened()
     { return m_signal_opened; }
 protected:
   virtual const NoteDataBufferSynchronizerBase & data_synchronizer() const override
@@ -203,7 +203,7 @@ private:
   utils::InterruptableTimeout *m_save_timeout;
   std::queue<ChildWidgetData> m_child_widget_queue;
 
-  sigc::signal<void,Note&> m_signal_opened;
+  sigc::signal<void(Note&)> m_signal_opened;
 
   sigc::connection m_mark_set_conn;
   sigc::connection m_mark_deleted_conn;
