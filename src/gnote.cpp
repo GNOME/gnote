@@ -263,37 +263,27 @@ namespace gnote {
     if (translators == "translator-credits")
       translators = "";
 
-    Gtk::AboutDialog about;
-    about.set_name("Gnote");
-    about.set_program_name("Gnote");
-    about.set_version(VERSION);
-    about.set_logo(m_icon_manager.get_icon(IconManager::GNOTE, 48));
-    about.set_copyright(_("Copyright \xc2\xa9 2010-2023 Aurimas Cernius\n"
-                          "Copyright \xc2\xa9 2009-2011 Debarshi Ray\n"
-                          "Copyright \xc2\xa9 2009 Hubert Figuiere\n"
-                          "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
-    about.set_comments(_("A simple and easy to use desktop "
-                         "note-taking application."));
-// I don't think we need a hook.
-//      Gtk.AboutDialog.SetUrlHook (delegate (Gtk.AboutDialog dialog, string link) {
-//        try {
-//          Services.NativeApplication.OpenUrl (link);
-//        } catch (Exception e) {
-//          GuiUtils.ShowOpeningLocationError (dialog, link, e.Message);
-//        }
-//      }); 
-    about.set_website("http://live.gnome.org/Gnote");
-    about.set_website_label(_("Homepage"));
-    about.set_authors(authors);
-    about.set_documenters(documenters);
-    about.set_translator_credits(translators);
-//      about.set_icon_name("gnote");
+    auto about = Gtk::make_managed<Gtk::AboutDialog>();
+    about->set_name("Gnote");
+    about->set_program_name("Gnote");
+    about->set_version(VERSION);
+    about->set_logo_icon_name(IconManager::GNOTE);
+    about->set_copyright(_("Copyright \xc2\xa9 2010-2023 Aurimas Cernius\n"
+                           "Copyright \xc2\xa9 2009-2011 Debarshi Ray\n"
+                           "Copyright \xc2\xa9 2009 Hubert Figuiere\n"
+                           "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
+    about->set_comments(_("A simple and easy to use desktop note-taking application."));
+    about->set_website("http://live.gnome.org/Gnote");
+    about->set_website_label(_("Homepage"));
+    about->set_authors(authors);
+    about->set_documenters(documenters);
+    about->set_translator_credits(translators);
     MainWindow & recent_changes = get_main_window();
     if(recent_changes.get_visible()) {
-      about.set_transient_for(recent_changes);
+      about->set_transient_for(recent_changes);
       recent_changes.present();
     }
-    about.run();
+    about->show();
   }
 
   MainWindow & Gnote::new_main_window()
