@@ -65,7 +65,7 @@ public:
 protected:
   virtual void present_note(const Note::Ptr & note) override;
   virtual void on_show() override;
-  virtual bool on_map_event(GdkEventAny *evt) override;
+  virtual void on_map() override;
 private:
   void on_open_note(const Note::Ptr &);
   void on_open_note_new_window(const Note::Ptr &);

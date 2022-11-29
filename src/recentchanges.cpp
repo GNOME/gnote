@@ -774,9 +774,9 @@ namespace gnote {
     return dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(n));
   }
 
-  bool NoteRecentChanges::on_map_event(GdkEventAny *evt)
+  void NoteRecentChanges::on_map()
   {
-    bool res = MainWindow::on_map_event(evt);
+    MainWindow::on_map();
     if(!m_mapped) {
       auto widget = currently_foreground();
       if(widget) {
@@ -784,7 +784,6 @@ namespace gnote {
       }
     }
     m_mapped = true;
-    return res;
   }
 
   void NoteRecentChanges::on_search_changed()
