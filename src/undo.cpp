@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2016-2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -78,15 +78,11 @@ namespace gnote {
   {
   }
 
-  void SplitterAction::split(Gtk::TextIter iter, 
-                             Gtk::TextBuffer * buffer)
+  void SplitterAction::split(Gtk::TextIter iter, Gtk::TextBuffer *buffer)
   {
-    Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
-    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
-        tag_iter != tag_list.end(); ++tag_iter) {
-      const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
-      NoteTag::ConstPtr noteTag = NoteTag::ConstPtr::cast_dynamic(tag);
-      if (noteTag && !noteTag->can_split()) {
+    for(const auto & tag : iter.get_tags()) {
+      auto noteTag = std::dynamic_pointer_cast<const NoteTag>(tag);
+      if(noteTag && !noteTag->can_split()) {
         Gtk::TextIter start = iter;
         Gtk::TextIter end = iter;
 
@@ -126,7 +122,7 @@ namespace gnote {
   {
     int offset = 0;
     for(auto & iter : m_splitTags) {
-      NoteTag::Ptr noteTag = NoteTag::Ptr::cast_dynamic(iter.tag);
+      NoteTag::Ptr noteTag = std::dynamic_pointer_cast<NoteTag>(iter.tag);
       if (noteTag->get_image()) {
         offset++;
       }
