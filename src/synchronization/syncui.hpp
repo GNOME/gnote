@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019,2021-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,8 +38,8 @@ namespace sync {
   {
   public:
     typedef std::shared_ptr<SyncUI> Ptr;
-    typedef sigc::slot<void> SlotConnecting;
-    typedef sigc::slot<void> SlotIdle;
+    typedef sigc::slot<void()> SlotConnecting;
+    typedef sigc::slot<void()> SlotIdle;
 
     virtual ~SyncUI() {}
     virtual void sync_state_changed(SyncState state) = 0;
@@ -69,8 +69,8 @@ namespace sync {
         m_signal_idle.emit();
       }
 
-    sigc::signal<void> m_signal_connecting;
-    sigc::signal<void> m_signal_idle;
+    sigc::signal<void()> m_signal_connecting;
+    sigc::signal<void()> m_signal_idle;
   };
 
 }
