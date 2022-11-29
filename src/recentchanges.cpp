@@ -585,14 +585,14 @@ namespace gnote {
         m_search_entry->set_text("");
         m_search_button.set_active(false);
       }
-      break;
+      return true;
     case GDK_KEY_F1:
       utils::show_help("gnote", "", *this);
-      break;
+      return true;
     default:
       break;
     }
-    return true;
+    return false;
   }
 
   void NoteRecentChanges::next_tab()
@@ -975,6 +975,10 @@ namespace gnote {
       return false;
     default:
       {
+        if((state & Gdk::ModifierType::CONTROL_MASK) == Gdk::ModifierType::CONTROL_MASK
+           || (state & Gdk::ModifierType::ALT_MASK) == Gdk::ModifierType::ALT_MASK) {
+          return false;
+        }
         guint32 character = gdk_keyval_to_unicode(keyval);
         if(character) {  // ignore special keys
           if(!m_search_button.get_active()) {
