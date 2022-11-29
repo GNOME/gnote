@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@
     { \
       return m_##key; \
     } \
-  sigc::signal<void> signal_##key##_changed;
+  sigc::signal<void()> signal_##key##_changed;
 
 
 #define GNOTE_PREFERENCES_CACHING_SETTING(key, type) \
