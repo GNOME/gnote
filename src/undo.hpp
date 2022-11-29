@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -254,7 +254,7 @@ public:
   void clear_undo_history();
   void add_undo_action(EditAction * action);
 
-  sigc::signal<void> & signal_undo_changed()
+  sigc::signal<void()> & signal_undo_changed()
     { return m_undo_changed; }
 
 private:
@@ -276,7 +276,7 @@ private:
   ChopBuffer::Ptr m_chop_buffer;
   std::stack<EditAction *> m_undo_stack;
   std::stack<EditAction *> m_redo_stack;
-  sigc::signal<void> m_undo_changed;
+  sigc::signal<void()> m_undo_changed;
 };
 
 
