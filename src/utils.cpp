@@ -133,12 +133,13 @@ namespace gnote {
     {
       Glib::ustring message = Glib::ustring::compose("%1: %2", url, error);
 
-      HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
-                              Gtk::MESSAGE_INFO,
-                              Gtk::BUTTONS_OK,
+      auto dialog = Gtk::make_managed<HIGMessageDialog>(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
+                              Gtk::MessageType::INFO,
+                              Gtk::ButtonsType::OK,
                               _("Cannot open location"),
                               message);
-      dialog.run ();
+      dialog->show();
+      dialog->signal_response().connect([dialog](int) { dialog->hide(); });
     }
 
     Glib::ustring get_pretty_print_date(const Glib::DateTime & date, bool show_time, Preferences & preferences)
