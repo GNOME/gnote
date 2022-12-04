@@ -1360,7 +1360,7 @@ void SearchNotesWidget::on_open_notebook_template_note()
 
 void SearchNotesWidget::on_new_notebook()
 {
-  notebooks::NotebookManager::prompt_create_new_notebook(m_gnote, get_owning_window());
+  notebooks::NotebookManager::prompt_create_new_notebook(m_gnote, *get_owning_window());
 }
 
 void SearchNotesWidget::on_delete_notebook()

@@ -26,7 +26,6 @@
 
 #include "sharp/string.hpp"
 #include "sharp/exception.hpp"
-#include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/specialnotebooks.hpp"
 #include "debug.hpp"
@@ -301,22 +300,29 @@ namespace gnote {
     }
 
 
-    Notebook::Ptr NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window *parent)
+    void NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window & parent, sigc::slot<void(const Notebook::Ptr&)> on_complete)
     {
-      return prompt_create_new_notebook(g, parent, Note::List());
+      return prompt_create_new_notebook(g, parent, Note::List(), on_complete);
     }
 
 
-    Notebook::Ptr NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window *parent, const Note::List & notesToAdd)
+    void NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window & parent, Note::List && notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete)
     {
       // Prompt the user for the name of a new notebook
-      CreateNotebookDialog dialog(parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), g);
-      
-      
-      int response = dialog.run ();
+      auto dialog = Gtk::make_managed<CreateNotebookDialog>(&parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), g);
+      dialog->signal_response().connect([&g, dialog, notes=std::move(notes_to_add), on_complete](int response) { on_create_notebook_response(g, *dialog, response, notes, on_complete); });
+      dialog->show();
+    }
+
+
+    void NotebookManager::on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int response, const Note::List & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete)
+    {
       Glib::ustring notebookName = dialog.get_notebook_name();
-      if (response != Gtk::RESPONSE_OK)
-        return Notebook::Ptr();
+      dialog.hide();
+      if(response != Gtk::ResponseType::OK) {
+        on_complete(Notebook::Ptr());
+        return;
+      }
       
       Notebook::Ptr notebook = g.notebook_manager().get_or_create_notebook (notebookName);
       if (!notebook) {
@@ -326,16 +332,15 @@ namespace gnote {
         DBG_OUT ("Created the notebook: %s (%s)", notebook->get_name().c_str(),
                  notebook->get_normalized_name().c_str());
         
-        if (!notesToAdd.empty()) {
+        if(!notes_to_add.empty()) {
           // Move all the specified notesToAdd into the new notebook
-          for(Note::List::const_iterator iter = notesToAdd.begin();
-              iter != notesToAdd.end(); ++iter) {
-            g.notebook_manager().move_note_to_notebook (*iter, notebook);
+          for(const auto & note : notes_to_add) {
+            g.notebook_manager().move_note_to_notebook(note, notebook);
           }
         }
       }
-      
-      return notebook;
+
+      on_complete(notebook);
     }
     
     void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, const Notebook::Ptr & notebook)

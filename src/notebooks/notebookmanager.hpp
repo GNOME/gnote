@@ -30,6 +30,7 @@
 #include <gtkmm/treemodelsort.h>
 #include <gtkmm/treemodelfilter.h>
 
+#include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebook.hpp"
 #include "note.hpp"
 #include "tag.hpp"
@@ -84,8 +85,10 @@ public:
   Notebook::Ptr get_notebook_from_note(const NoteBase::Ptr &);
   Notebook::Ptr get_notebook_from_tag(const Tag::Ptr &);
   static bool is_notebook_tag(const Tag::Ptr &);
-  static Notebook::Ptr prompt_create_new_notebook(IGnote &, Gtk::Window *);
-  static Notebook::Ptr prompt_create_new_notebook(IGnote &, Gtk::Window *, const Note::List & notesToAdd);
+  static void prompt_create_new_notebook(IGnote &, Gtk::Window &,
+    sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
+  static void prompt_create_new_notebook(IGnote &, Gtk::Window &, Note::List && notes_to_add,
+    sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
   static void prompt_delete_notebook(IGnote &, Gtk::Window *, const Notebook::Ptr &);
   bool move_note_to_notebook (const Note::Ptr &, const Notebook::Ptr &);
 
@@ -104,6 +107,7 @@ public:
   sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
 private:
   static int compare_notebooks_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
+  static void on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int respons, const Note::List & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete);
   void load_notebooks();
   bool filter_notebooks_to_display(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_active_notes_size_changed();

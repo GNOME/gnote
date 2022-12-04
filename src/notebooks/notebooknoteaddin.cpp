@@ -123,9 +123,9 @@ namespace notebooks {
 
   void NotebookNoteAddin::on_new_notebook_menu_item(const Glib::VariantBase&) const
   {
-    Note::List noteList;
-    noteList.push_back(get_note());
-    NotebookManager::prompt_create_new_notebook(ignote(), dynamic_cast<Gtk::Window*>(get_window()->host()), noteList);
+    Note::List note_list;
+    note_list.emplace_back(get_note());
+    NotebookManager::prompt_create_new_notebook(ignote(), *dynamic_cast<Gtk::Window*>(get_window()->host()), std::move(note_list));
     get_window()->signal_popover_widgets_changed();
   }
 
