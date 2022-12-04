@@ -56,7 +56,7 @@ namespace gnote {
 
       gboolean main_context_invoke_func(gpointer data)
       {
-        sigc::slot<void> *slot = static_cast<sigc::slot<void>*>(data);
+        sigc::slot<void()> *slot = static_cast<sigc::slot<void()>*>(data);
         (*slot)();
         delete slot;
         return FALSE;
@@ -205,14 +205,14 @@ namespace gnote {
       return pretty_str;
     }
 
-    void main_context_invoke(const sigc::slot<void> & slot)
+    void main_context_invoke(const sigc::slot<void()> & slot)
     {
-      sigc::slot<void> *data = new sigc::slot<void>(slot);
+      auto data = new sigc::slot<void()>(slot);
       g_main_context_invoke(NULL, main_context_invoke_func, data);
     }
 
 
-    void main_context_call(const sigc::slot<void> & slot)
+    void main_context_call(const sigc::slot<void()> & slot)
     {
       std::mutex mutex;
       std::condition_variable cond;
