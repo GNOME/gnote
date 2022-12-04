@@ -91,25 +91,30 @@ namespace gnote {
       if(!link_id.empty()) {
         uri += "/" + link_id;
       }
-      GError *error = NULL;
 
-      if(!gtk_show_uri_on_window(parent.gobj(), uri.c_str(), gtk_get_current_event_time (), &error)) {
+      gtk_show_uri_full(parent.gobj(), uri.c_str(), GDK_CURRENT_TIME, nullptr, [](GObject *obj, GAsyncResult *res, gpointer data) {
+        auto parent = static_cast<Gtk::Window*>(data);
+        GError *error = NULL;
+        if(gtk_show_uri_full_finish(parent->gobj(), res, &error)) {
+          return;
+        }
+        if(error) {
+          g_error_free(error);
+        }
         
         Glib::ustring message = _("The \"Gnote Manual\" could "
                                   "not be found.  Please verify "
                                   "that your installation has been "
                                   "completed successfully.");
-        HIGMessageDialog dialog(&parent,
+        auto dialog = Gtk::make_managed<HIGMessageDialog>(parent,
                                 GTK_DIALOG_DESTROY_WITH_PARENT,
-                                Gtk::MESSAGE_ERROR,
-                                Gtk::BUTTONS_OK,
+                                Gtk::MessageType::ERROR,
+                                Gtk::ButtonsType::OK,
                                 _("Help not found"),
                                 message);
-        dialog.run();
-        if(error) {
-          g_error_free(error);
-        }
-      }
+        dialog->show();
+        dialog->signal_response().connect([dialog](int) { dialog->hide(); });
+      }, &parent);
     }
 
 
