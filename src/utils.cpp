@@ -121,12 +121,8 @@ namespace gnote {
     void open_url(Gtk::Window & parent, const Glib::ustring & url)
     {
       if(!url.empty()) {
-        GError *err = NULL;
         DBG_OUT("Opening url '%s'...", url.c_str());
-        gtk_show_uri_on_window(parent.gobj(), url.c_str(), GDK_CURRENT_TIME, &err);
-        if(err) {
-          throw Glib::Error(err, true);
-        }
+        gtk_show_uri(parent.gobj(), url.c_str(), GDK_CURRENT_TIME);
       }
     }
 
