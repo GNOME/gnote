@@ -25,6 +25,7 @@
 
 #include <sigc++/signal.h>
 
+#include <glibmm/datetime.h>
 #include <gdkmm/pixbuf.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/dialog.h>
