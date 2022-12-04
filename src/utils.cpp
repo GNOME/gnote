@@ -29,7 +29,6 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
-#include <glibmm/threads.h>
 #include <gtkmm/label.h>
 #include <gtkmm/textbuffer.h>
 
