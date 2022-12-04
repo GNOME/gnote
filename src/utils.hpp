@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -57,8 +57,8 @@ class Preferences;
     Glib::ustring get_pretty_print_date(const Glib::DateTime &, bool show_time, Preferences & preferences);
     Glib::ustring get_pretty_print_date(const Glib::DateTime &, bool show_time, bool use_12h);
 
-    void main_context_invoke(const sigc::slot<void> & slot);
-    void main_context_call(const sigc::slot<void> & slot);
+    void main_context_invoke(const sigc::slot<void()> & slot);
+    void main_context_call(const sigc::slot<void()> & slot);
 
     template <typename T>
     bool remove_swap_back(std::vector<T> & v, const T & e)
@@ -215,7 +215,7 @@ class Preferences;
       ~InterruptableTimeout();
       void reset(guint timeout_millis);
       void cancel();
-      sigc::signal<void> signal_timeout;
+      sigc::signal<void()> signal_timeout;
     private:
       static int callback(InterruptableTimeout*);
       bool timeout_expired();
