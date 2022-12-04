@@ -106,9 +106,6 @@ class Preferences;
                        Gtk::ButtonsType btn_type, const Glib::ustring & header = Glib::ustring(),
                        const Glib::ustring & msg = Glib::ustring());
       void add_button(const Glib::ustring & label, Gtk::ResponseType response, bool is_default);
-      void add_button(const Glib::RefPtr<Gdk::Pixbuf> & pixbuf, 
-                      const Glib::ustring & label_text, 
-                      Gtk::ResponseType response, bool is_default);
       void add_button(Gtk::Button *button, Gtk::ResponseType response, bool is_default);
       Gtk::Widget * get_extra_widget() const
         {
@@ -116,11 +113,8 @@ class Preferences;
         }
       void set_extra_widget(Gtk::Widget *);
     private:
-      Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
       Gtk::Grid *m_extra_widget_vbox;
       Gtk::Widget *m_extra_widget;
-      Gtk::Image *m_image;
-
     };
 
 

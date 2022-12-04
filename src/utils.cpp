@@ -30,7 +30,7 @@
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
 #include <glibmm/threads.h>
-#include <gtkmm/image.h>
+#include <gtkmm/label.h>
 #include <gtkmm/textbuffer.h>
 
 #include "sharp/xmlreader.hpp"
@@ -279,49 +279,20 @@ namespace gnote {
                                        const Glib::ustring & msg)
       : Gtk::Dialog()
       , m_extra_widget(NULL)
-      , m_image(NULL)
     {
-      set_border_width(5);
+      set_margin(5);
       set_resizable(false);
       set_title("");
 
       get_content_area()->set_spacing(12);
 
-      m_accel_group = Glib::RefPtr<Gtk::AccelGroup>(Gtk::AccelGroup::create());
-      add_accel_group(m_accel_group);
-
-      Gtk::Grid *hbox = manage(new Gtk::Grid);
+      Gtk::Grid *hbox = Gtk::make_managed<Gtk::Grid>();
       hbox->set_column_spacing(12);
-      hbox->set_border_width(5);
-      hbox->show();
+      hbox->set_margin(5);
       int hbox_col = 0;
-      get_content_area()->pack_start(*hbox, false, false, 0);
+      get_content_area()->append(*hbox);
 
-      switch (msg_type) {
-      case Gtk::MESSAGE_ERROR:
-        m_image = new Gtk::Image("dialog-error", Gtk::ICON_SIZE_DIALOG);
-        break;
-      case Gtk::MESSAGE_QUESTION:
-        m_image = new Gtk::Image("dialog-question", Gtk::ICON_SIZE_DIALOG);
-        break;
-      case Gtk::MESSAGE_INFO:
-        m_image = new Gtk::Image("dialog-information", Gtk::ICON_SIZE_DIALOG);
-        break;
-      case Gtk::MESSAGE_WARNING:
-        m_image = new Gtk::Image("dialog-warning", Gtk::ICON_SIZE_DIALOG);
-        break;
-      default:
-        break;
-      }
-
-      if (m_image) {
-        Gtk::manage(m_image);
-        m_image->show();
-        m_image->set_valign(Gtk::ALIGN_START);
-        hbox->attach(*m_image, hbox_col++, 0, 1, 1);
-      }
-
-      Gtk::Grid *label_vbox = manage(new Gtk::Grid);
+      Gtk::Grid *label_vbox = Gtk::make_managed<Gtk::Grid>();
       label_vbox->show();
       int label_vbox_row = 0;
       label_vbox->set_hexpand(true);
@@ -329,60 +300,51 @@ namespace gnote {
 
       if(header != "") {
         Glib::ustring title = Glib::ustring::compose("<span weight='bold' size='larger'>%1</span>\n", header);
-        Gtk::Label *label = manage(new Gtk::Label (title));
+        Gtk::Label *label = Gtk::make_managed<Gtk::Label>(title);
         label->set_use_markup(true);
-        label->set_justify(Gtk::JUSTIFY_LEFT);
-        label->set_line_wrap(true);
-        label->set_halign(Gtk::ALIGN_START);
-        label->set_valign(Gtk::ALIGN_CENTER);
-        label->show();
+        label->set_justify(Gtk::Justification::LEFT);
+        label->set_halign(Gtk::Align::START);
+        label->set_valign(Gtk::Align::CENTER);
         label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
       }
 
       if(msg != "") {
-        Gtk::Label *label = manage(new Gtk::Label(msg));
+        Gtk::Label *label = Gtk::make_managed<Gtk::Label>(msg);
         label->set_use_markup(true);
-        label->set_justify(Gtk::JUSTIFY_LEFT);
-        label->set_line_wrap(true);
-        label->set_halign(Gtk::ALIGN_START);
-        label->set_valign(Gtk::ALIGN_CENTER);
-        label->show();
+        label->set_justify(Gtk::Justification::LEFT);
+        label->set_halign(Gtk::Align::START);
+        label->set_valign(Gtk::Align::CENTER);
         label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
       }
       
-      m_extra_widget_vbox = manage(new Gtk::Grid);
-      m_extra_widget_vbox->show();
+      m_extra_widget_vbox = Gtk::make_managed<Gtk::Grid>();
       m_extra_widget_vbox->set_margin_start(12);
       label_vbox->attach(*m_extra_widget_vbox, 0, label_vbox_row++, 1, 1);
 
-      switch (btn_type) {
-      case Gtk::BUTTONS_NONE:
+      switch(btn_type) {
+      case Gtk::ButtonsType::NONE:
         break;
-      case Gtk::BUTTONS_OK:
-        add_button(_("_OK"), Gtk::RESPONSE_OK, true);
+      case Gtk::ButtonsType::OK:
+        add_button(_("_OK"), Gtk::ResponseType::OK, true);
         break;
-      case Gtk::BUTTONS_CLOSE:
-        add_button(_("_Close"), Gtk::RESPONSE_CLOSE, true);
+      case Gtk::ButtonsType::CLOSE:
+        add_button(_("_Close"), Gtk::ResponseType::CLOSE, true);
         break;
-      case Gtk::BUTTONS_CANCEL:
-        add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL, true);
+      case Gtk::ButtonsType::CANCEL:
+        add_button(_("_Cancel"), Gtk::ResponseType::CANCEL, true);
         break;
-      case Gtk::BUTTONS_YES_NO:
-        add_button(_("_No"), Gtk::RESPONSE_NO, false);
-        add_button(_("_Yes"), Gtk::RESPONSE_YES, true);
+      case Gtk::ButtonsType::YES_NO:
+        add_button(_("_No"), Gtk::ResponseType::NO, false);
+        add_button(_("_Yes"), Gtk::ResponseType::YES, true);
         break;
-      case Gtk::BUTTONS_OK_CANCEL:
-        add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL, false);
-        add_button(_("_OK"), Gtk::RESPONSE_OK, true);
+      case Gtk::ButtonsType::OK_CANCEL:
+        add_button(_("_Cancel"), Gtk::ResponseType::CANCEL, false);
+        add_button(_("_OK"), Gtk::ResponseType::OK, true);
         break;
       }
 
       if (parent){
         set_transient_for(*parent);
-      }
-
-      if ((flags & GTK_DIALOG_MODAL) != 0) {
-        set_modal(true);
       }
 
       if ((flags & GTK_DIALOG_DESTROY_WITH_PARENT) != 0) {
@@ -393,41 +355,16 @@ namespace gnote {
 
     void HIGMessageDialog::add_button(const Glib::ustring & label, Gtk::ResponseType resp, bool is_default)
     {
-      Gtk::Button *button = manage(new Gtk::Button(label, true));
-      button->property_can_default().set_value(true);
-      
+      Gtk::Button *button = Gtk::make_managed<Gtk::Button>(label, true);
       add_button(button, resp, is_default);
     }
 
-    void HIGMessageDialog::add_button (const Glib::RefPtr<Gdk::Pixbuf> & pixbuf, 
-                                       const Glib::ustring & label_text, 
-                                       Gtk::ResponseType resp, bool is_default)
+    void HIGMessageDialog::add_button(Gtk::Button *button, Gtk::ResponseType resp, bool is_default)
     {
-      Gtk::Button *button = manage(new Gtk::Button());
-      Gtk::Image *image = manage(new Gtk::Image(pixbuf));
-      // NOTE: This property is new to GTK+ 2.10, but we don't
-      //       really need the line because we're just setting
-      //       it to the default value anyway.
-      //button.ImagePosition = Gtk::PositionType.Left;
-      button->set_image(*image);
-      button->set_label(label_text);
-      button->set_use_underline(true);
-      button->property_can_default().set_value(true);
-      
-      add_button (button, resp, is_default);
-    }
-    
-    void HIGMessageDialog::add_button (Gtk::Button *button, Gtk::ResponseType resp, bool is_default)
-    {
-      button->show();
-
-      add_action_widget (*button, resp);
+      add_action_widget(*button, resp);
 
       if (is_default) {
         set_default_response(resp);
-        button->add_accelerator ("activate", m_accel_group,
-                                 GDK_KEY_Escape, (Gdk::ModifierType)0,
-                                 Gtk::ACCEL_VISIBLE);
       }
     }
 
@@ -435,11 +372,10 @@ namespace gnote {
     void HIGMessageDialog::set_extra_widget(Gtk::Widget *value)
     {
       if (m_extra_widget) {
-          m_extra_widget_vbox->remove (*m_extra_widget);
+          m_extra_widget_vbox->remove(*m_extra_widget);
       }
-        
+
       m_extra_widget = value;
-      m_extra_widget->show_all ();
       m_extra_widget_vbox->attach(*m_extra_widget, 0, 0, 1, 1);
     }
 
