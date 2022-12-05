@@ -60,7 +60,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   , m_rename_notebook_menu_item(nullptr)
   , m_open_note_accel(nullptr)
   , m_open_note_new_window_accel(nullptr)
-  , m_no_matches_box(NULL)
   , m_gnote(g)
   , m_manager(m)
   , m_clickX(0), m_clickY(0)
@@ -118,9 +117,6 @@ SearchNotesWidget::~SearchNotesWidget()
   }
   if(m_notebook_list_context_menu) {
     delete m_notebook_list_context_menu;
-  }
-  if(m_no_matches_box) {
-    delete m_no_matches_box;
   }
 }
 
@@ -188,9 +184,8 @@ void SearchNotesWidget::perform_search()
 
 void SearchNotesWidget::restore_matches_window()
 {
-  if(m_no_matches_box && get_child2() == m_no_matches_box) {
-    remove(*m_no_matches_box);
-    add2(m_matches_window);
+  if(m_no_matches_box && get_end_child() == m_no_matches_box.get()) {
+    set_end_child(m_matches_window);
   }
 }
 
@@ -510,7 +505,7 @@ void SearchNotesWidget::update_results()
 
   perform_search();
 
-  if(sort_column >= 0 && m_no_matches_box && get_child2() != m_no_matches_box) {
+  if(sort_column >= 0 && m_no_matches_box && get_end_child() != m_no_matches_box.get()) {
     // Set the sort column after loading data, since we
     // don't want to resort on every append.
     m_store_sort->set_sort_column(sort_column, sort_type);
@@ -1009,22 +1004,21 @@ void SearchNotesWidget::remove_matches_column()
 // called when no search results are found in the selected notebook
 void SearchNotesWidget::no_matches_found_action()
 {
-  remove(m_matches_window);
   if(!m_no_matches_box) {
     Glib::ustring message = _("No results found in the selected notebook.\nClick here to search across all notes.");
     Gtk::LinkButton *link_button = manage(new Gtk::LinkButton("", message));
     link_button->signal_activate_link()
       .connect(sigc::mem_fun(*this, &SearchNotesWidget::show_all_search_results), false);
     link_button->set_tooltip_text(_("Click here to search across all notebooks"));
-    link_button->set_halign(Gtk::ALIGN_CENTER);
-    link_button->set_valign(Gtk::ALIGN_CENTER);
-    link_button->show();
+    link_button->set_hexpand(true);
+    link_button->set_vexpand(true);
+    link_button->set_halign(Gtk::Align::CENTER);
+    link_button->set_valign(Gtk::Align::CENTER);
 
-    m_no_matches_box = new Gtk::Grid;
+    m_no_matches_box = std::make_shared<Gtk::Grid>();
     m_no_matches_box->attach(*link_button, 0, 0, 1, 1);
-    m_no_matches_box->show();
   }
-  add2(*m_no_matches_box);
+  set_end_child(*m_no_matches_box);
 }
 
 void SearchNotesWidget::add_matches_column()

@@ -163,7 +163,7 @@ private:
   void *m_open_note_new_window_accel;
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ScrolledWindow m_matches_window;
-  Gtk::Grid *m_no_matches_box;
+  std::shared_ptr<Gtk::Grid> m_no_matches_box;
   notebooks::NotebooksTreeView *m_notebooksTree;
   sigc::connection m_on_notebook_selection_changed_cid;
   std::set<Tag::Ptr>  m_selected_tags;
