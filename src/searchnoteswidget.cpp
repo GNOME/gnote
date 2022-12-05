@@ -1028,7 +1028,7 @@ void SearchNotesWidget::add_matches_column()
 
     m_matches_column = manage(new Gtk::TreeViewColumn());
     m_matches_column->set_title(_("Matches"));
-    m_matches_column->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
+    m_matches_column->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
     m_matches_column->set_resizable(false);
 
     renderer = manage(new Gtk::CellRendererText());
@@ -1090,7 +1090,7 @@ void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell, const
   crt->property_text() = match_str;
 }
 
-int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter<Gtk::TreeRow> & a, const Gtk::TreeIter<Gtk::TreeRow> & b)
+int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
 {
   Note::Ptr note_a = (*a)[m_column_types.note];
   Note::Ptr note_b = (*b)[m_column_types.note];

@@ -105,7 +105,7 @@ private:
   void add_matches_column();
   bool show_all_search_results();
   void matches_column_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
-  int compare_search_hits(const Gtk::TreeIter<Gtk::TreeRow> & , const Gtk::TreeIter<Gtk::TreeRow> &);
+  int compare_search_hits(const Gtk::TreeIter<Gtk::TreeConstRow> & , const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_note_deleted(const NoteBase::Ptr & note);
   void on_note_added(const NoteBase::Ptr & note);
   void on_note_renamed(const NoteBase::Ptr&, const Glib::ustring&);
