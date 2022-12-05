@@ -1066,8 +1066,7 @@ bool SearchNotesWidget::show_all_search_results()
   return true;
 }
 
-void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell,
-                                                 const Gtk::TreeIter & iter)
+void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
 {
   Gtk::CellRendererText *crt = dynamic_cast<Gtk::CellRendererText*>(cell);
   if(!crt) {
@@ -1097,7 +1096,7 @@ void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell,
   crt->property_text() = match_str;
 }
 
-int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter & a, const Gtk::TreeIter & b)
+int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter<Gtk::TreeRow> & a, const Gtk::TreeIter<Gtk::TreeRow> & b)
 {
   Note::Ptr note_a = (*a)[m_column_types.note];
   Note::Ptr note_b = (*b)[m_column_types.note];
@@ -1133,7 +1132,7 @@ int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter & a, const Gtk::T
       int sort_col_id;
       Gtk::SortType sort_type;
       if(m_store_sort->get_sort_column_id(sort_col_id, sort_type)) {
-        if(sort_type == Gtk::SORT_DESCENDING) {
+        if(sort_type == Gtk::SortType::DESCENDING) {
           result = -result; // reverse sign
         }
       }
