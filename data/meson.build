@@ -19,7 +19,7 @@ install_data('org.gnome.Gnote.search-provider.ini', install_dir: get_option('dat
 
 gnote_gschema = files('org.gnome.gnote.gschema.xml')
 install_data(gnote_gschema, install_dir: get_option('datadir') / 'glib-2.0/schemas')
-gschema_dtd = gio_dep.get_pkgconfig_variable('schemasdir') / 'gschema.dtd'
+gschema_dtd = gio_dep.get_variable(pkgconfig: 'schemasdir') / 'gschema.dtd'
 xmllint = find_program('xmllint', required: false)
 if xmllint.found()
   test('validate-gschema', xmllint, args: ['--noout', '--dtdvalid', gschema_dtd, gnote_gschema])
