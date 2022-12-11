@@ -172,7 +172,7 @@ void SearchNotesWidget::restore_matches_window()
 
 Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 {
-  m_notebooksTree = Gtk::manage(new notebooks::NotebooksTreeView(m_manager, m_gnote.notebook_manager().get_notebooks_with_special_items()));
+  m_notebooksTree = Gtk::make_managed<notebooks::NotebooksTreeView>(m_manager, m_gnote.notebook_manager().get_notebooks_with_special_items());
 
   m_notebooksTree->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
   m_notebooksTree->set_headers_visible(true);
@@ -206,8 +206,10 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   button_ctrl->signal_pressed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_tree_right_click), false);
   m_notebooksTree->add_controller(button_ctrl);
-  m_notebooksTree->signal_key_press_event()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_key_pressed));
+
+  auto key_ctrl = Gtk::EventControllerKey::create();
+  key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_key_pressed), false);
+  m_notebooksTree->add_controller(key_ctrl);
 
   m_notebooksTree->show();
   Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow();
@@ -367,20 +369,17 @@ void SearchNotesWidget::on_notebooks_tree_right_click(int n_press, double x, dou
   popover->popup();
 }
 
-bool SearchNotesWidget::on_notebooks_key_pressed(GdkEventKey *ev)
+bool SearchNotesWidget::on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
-  auto event = (GdkEvent*)ev;
-  guint keyval;
-  gdk_event_get_keyval(event, &keyval);
   switch(keyval) {
   case GDK_KEY_F2:
     on_rename_notebook();
-    break;
+    return true;
   case GDK_KEY_Menu:
   {
-    Gtk::Menu *menu = get_notebook_list_context_menu();
-    popup_context_menu_at_location(menu, event);
-    break;
+    Gtk::Popover *menu = get_notebook_list_context_menu();
+    popup_context_menu_at_location(menu, m_notebooksTree);
+    return true;
   }
   default:
     break;
