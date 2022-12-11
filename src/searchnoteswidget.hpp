@@ -95,7 +95,7 @@ private:
   bool filter_by_tag(const Note::Ptr &);
   void on_row_activated(const Gtk::TreePath &, Gtk::TreeViewColumn*);
   void on_selection_changed();
-  bool on_treeview_button_pressed(GdkEventButton *);
+  void on_treeview_right_button_pressed(int n_press, double x, double y);
   bool on_treeview_motion_notify(GdkEventMotion *);
   bool on_treeview_button_released(GdkEventButton *);
   bool on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);

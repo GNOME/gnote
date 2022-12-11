@@ -21,11 +21,9 @@
 
 
 #include <glibmm/i18n.h>
-#include <gtkmm/alignment.h>
+#include <gtkmm/gestureclick.h>
 #include <gtkmm/linkbutton.h>
 #include <gtkmm/liststore.h>
-#include <gtkmm/separatormenuitem.h>
-#include <gtkmm/stock.h>
 
 #include "debug.hpp"
 #include "iactionmanager.hpp"
@@ -601,8 +599,12 @@ void SearchNotesWidget::make_recent_tree()
   m_tree->get_selection()->set_mode(Gtk::SelectionMode::MULTIPLE);
   m_tree->get_selection()->signal_changed().connect(
     sigc::mem_fun(*this, &SearchNotesWidget::on_selection_changed));
-  m_tree->signal_button_press_event().connect(
-    sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_button_pressed), false);
+
+  auto button_ctrl = Gtk::GestureClick::create();
+  button_ctrl->set_button(3);
+  button_ctrl->signal_pressed().connect(
+    sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_right_button_pressed));
+  m_tree->add_controller(button_ctrl);
   m_tree->signal_motion_notify_event().connect(
     sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_motion_notify), false);
   m_tree->signal_button_release_event().connect(
@@ -740,100 +742,14 @@ void SearchNotesWidget::on_selection_changed()
   }
 }
 
-bool SearchNotesWidget::on_treeview_button_pressed(GdkEventButton *ev)
+void SearchNotesWidget::on_treeview_right_button_pressed(int n_press, double x, double y)
 {
-  auto event = (GdkEvent*)ev;
-  if(gdk_event_get_window(event) != m_tree->get_bin_window()->gobj()) {
-    return false;
-  }
-
-  Gtk::TreePath dest_path;
-  Gtk::TreeViewColumn *column = NULL;
-  int unused;
-
-  gdouble x, y;
-  gdk_event_get_coords(event, &x, &y);
-  m_tree->get_path_at_pos(x, y, dest_path, column, unused, unused);
-
-  m_clickX = x;
-  m_clickY = y;
-
-  bool retval = false;
-
-  switch(event->type) {
-  case GDK_2BUTTON_PRESS:
-  {
-    guint button;
-    gdk_event_get_button(event, &button);
-    GdkModifierType state;
-    gdk_event_get_state(event, &state);
-    if(button != 1 || (state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) != 0) {
-      break;
-    }
-
-    m_tree->get_selection()->unselect_all();
-    m_tree->get_selection()->select(dest_path);
-    // apparently Gtk::TreeView::row_activated() require a dest_path
-    // while get_path_at_pos() can return a NULL pointer.
-    // See Gtkmm bug 586438
-    // https://bugzilla.gnome.org/show_bug.cgi?id=586438
-    gtk_tree_view_row_activated(m_tree->gobj(), dest_path.gobj(), column?column->gobj():NULL);
-    break;
-  }
-  case GDK_BUTTON_PRESS:
-  {
-    guint button;
-    gdk_event_get_button(event, &button);
-    if(button == 3) {
-      const Glib::RefPtr<Gtk::TreeSelection> selection = m_tree->get_selection();
-
-      if(selection->get_selected_rows().size() <= 1) {
-        Gtk::TreeViewColumn * col = 0; // unused
-        Gtk::TreePath p;
-        int cell_x, cell_y;            // unused
-        if(m_tree->get_path_at_pos(x, y, p, col, cell_x, cell_y)) {
-          selection->unselect_all();
-          selection->select(p);
-        }
-      }
-      Gtk::Menu *menu = get_note_list_context_menu();
-      popup_context_menu_at_location(menu, event);
-
-      // Return true so that the base handler won't
-      // run, which causes the selection to change to
-      // the row that was right-clicked.
-      retval = true;
-      break;
-    }
-
-    GdkModifierType state;
-    gdk_event_get_state(event, &state);
-    if(m_tree->get_selection()->is_selected(dest_path) && (state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0) {
-      if(column && (button == 1)) {
-        Gtk::CellRenderer *renderer = column->get_first_cell();
-        Gdk::Rectangle background_area;
-        m_tree->get_background_area(dest_path, *column, background_area);
-        Gdk::Rectangle cell_area;
-        m_tree->get_cell_area(dest_path, *column, cell_area);
-
-        renderer->activate(event, *m_tree, dest_path.to_string(), background_area, cell_area, Gtk::CELL_RENDERER_SELECTED);
-
-        Gtk::TreeIter iter = m_tree->get_model()->get_iter (dest_path);
-        if(iter) {
-          m_tree->get_model()->row_changed(dest_path, iter);
-        }
-      }
-
-      retval = true;
-    }
-
-    break;
-  }
-  default:
-    retval = false;
-    break;
-  }
-  return retval;
+  auto popover = get_note_list_context_menu();
+  Gdk::Rectangle pos;
+  pos.set_x(x);
+  pos.set_y(y);
+  popover->set_pointing_to(pos);
+  popover->popup();
 }
 
 bool SearchNotesWidget::on_treeview_motion_notify(GdkEventMotion *ev)
