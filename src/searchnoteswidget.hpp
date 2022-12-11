@@ -83,7 +83,7 @@ private:
   bool on_notebooks_key_pressed(GdkEventKey *);
   notebooks::Notebook::Ptr get_selected_notebook() const;
   void update_results();
-  void popup_context_menu_at_location(Gtk::Menu*, GdkEvent*);
+  void popup_context_menu_at_location(Gtk::Popover*, Gtk::TreeView*);
   Note::List get_selected_notes();
   bool filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   int compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
@@ -98,7 +98,7 @@ private:
   bool on_treeview_button_pressed(GdkEventButton *);
   bool on_treeview_motion_notify(GdkEventMotion *);
   bool on_treeview_button_released(GdkEventButton *);
-  bool on_treeview_key_pressed(GdkEventKey *);
+  bool on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_treeview_drag_data_get(const Glib::RefPtr<Gdk::DragContext> &,
                                  Gtk::SelectionData &, guint, guint);
   void remove_matches_column();
@@ -120,7 +120,7 @@ private:
   void on_note_added_to_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
   void on_note_removed_from_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
   void on_note_pin_status_changed(const Note &, bool);
-  Gtk::Menu *get_note_list_context_menu();
+  Gtk::Popover *get_note_list_context_menu();
   Gtk::Menu *get_notebook_list_context_menu();
   void on_open_notebook_template_note();
   void on_new_notebook();
@@ -155,9 +155,6 @@ private:
   };
 
   Glib::RefPtr<Gtk::EventControllerKey> m_notes_widget_key_ctrl;
-  Gtk::MenuItem *m_open_note_menu_item;
-  Gtk::MenuItem *m_open_note_new_window_menu_item;
-  Gtk::MenuItem *m_delete_note_menu_item;
   Gtk::MenuItem *m_delete_notebook_menu_item;
   Gtk::MenuItem *m_rename_notebook_menu_item;
   void *m_open_note_accel;
@@ -179,7 +176,7 @@ private:
   std::map<Glib::ustring, int> m_current_matches;
   int m_clickX, m_clickY;
   Gtk::TreeViewColumn *m_matches_column;
-  Gtk::Menu *m_note_list_context_menu;
+  std::shared_ptr<Gtk::Popover> m_note_list_context_menu;
   Gtk::Menu *m_notebook_list_context_menu;
   bool m_initial_position_restored;
   Glib::ustring m_search_text;

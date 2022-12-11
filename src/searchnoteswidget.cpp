@@ -53,10 +53,7 @@ Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon(IconManager & manager
 
 
 SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
-  : m_open_note_menu_item(nullptr)
-  , m_open_note_new_window_menu_item(nullptr)
-  , m_delete_note_menu_item(nullptr)
-  , m_delete_notebook_menu_item(nullptr)
+  : m_delete_notebook_menu_item(nullptr)
   , m_rename_notebook_menu_item(nullptr)
   , m_open_note_accel(nullptr)
   , m_open_note_new_window_accel(nullptr)
@@ -64,7 +61,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   , m_manager(m)
   , m_clickX(0), m_clickY(0)
   , m_matches_column(NULL)
-  , m_note_list_context_menu(NULL)
   , m_notebook_list_context_menu(NULL)
   , m_initial_position_restored(false)
   , m_sort_column_id(2)
@@ -112,9 +108,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
 SearchNotesWidget::~SearchNotesWidget()
 {
-  if(m_note_list_context_menu) {
-    delete m_note_list_context_menu;
-  }
   if(m_notebook_list_context_menu) {
     delete m_notebook_list_context_menu;
   }
@@ -515,47 +508,18 @@ void SearchNotesWidget::update_results()
   }
 }
 
-void SearchNotesWidget::popup_context_menu_at_location(Gtk::Menu *menu, GdkEvent *trigger_event)
+void SearchNotesWidget::popup_context_menu_at_location(Gtk::Popover *popover, Gtk::TreeView *tree)
 {
-  menu->show_all();
-  Glib::RefPtr<Gdk::Window> rect_window;
-  Gdk::Rectangle cell_rect;
-  if(trigger_event->type != GDK_BUTTON_PRESS) {
-    Gtk::Window *parent = get_owning_window();
-    if(parent) {
-      Gtk::Widget *focus_widget = parent->get_focus();
-      if(focus_widget) {
-        int x, y;
-        focus_widget->get_window()->get_origin(x, y);
-
-        Gtk::TreeView *tree = dynamic_cast<Gtk::TreeView*>(focus_widget);
-        if(tree) {
-          rect_window = tree->get_bin_window();
-          if(rect_window) {
-            rect_window->get_origin(x, y);
-          }
-
-          const Glib::RefPtr<Gtk::TreeSelection> selection = tree->get_selection();
-          const std::vector<Gtk::TreePath> selected_rows = selection->get_selected_rows();
-          if(selected_rows.empty()) {
-            rect_window.reset();
-          }
-          else {
-            const Gtk::TreePath & dest_path = selected_rows.front();
-            const std::vector<Gtk::TreeViewColumn*> columns = tree->get_columns();
-            tree->get_cell_area(dest_path, *columns.front(), cell_rect);
-          }
-        }
-      }
-    }
+  const auto selection = tree->get_selection();
+  const auto selected_rows = selection->get_selected_rows();
+  if(!selected_rows.empty()) {
+    const Gtk::TreePath & dest_path = selected_rows.front();
+    const std::vector<Gtk::TreeViewColumn*> columns = tree->get_columns();
+    Gdk::Rectangle cell_rect;
+    tree->get_cell_area(dest_path, *columns.front(), cell_rect);
+    popover->set_pointing_to(cell_rect);
   }
-
-  if(rect_window) {
-    menu->popup_at_rect(rect_window, cell_rect, Gdk::GRAVITY_NORTH_WEST, Gdk::GRAVITY_NORTH_WEST, trigger_event);
-  }
-  else {
-    menu->popup_at_pointer(trigger_event);
-  }
+  popover->popup();
 }
 
 Note::List SearchNotesWidget::get_selected_notes()
@@ -631,7 +595,7 @@ void SearchNotesWidget::make_recent_tree()
   m_targets.push_back(Gtk::TargetEntry("text/plain", Gtk::TARGET_SAME_APP, 0));
   m_targets.push_back(Gtk::TargetEntry("text/uri-list", Gtk::TARGET_SAME_APP, 1));
 
-  m_tree = manage(new RecentTreeView());
+  m_tree = Gtk::make_managed<RecentTreeView>();
   m_tree->set_headers_visible(true);
   m_tree->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
   m_tree->get_selection()->set_mode(Gtk::SelectionMode::MULTIPLE);
@@ -923,9 +887,6 @@ bool SearchNotesWidget::on_treeview_button_released(GdkEventButton *ev)
 
 bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
-  // create context menu here, so that we have shortcuts and they work
-  Gtk::Menu *menu = get_note_list_context_menu();
-
   switch(keyval) {
   case GDK_KEY_Delete:
     delete_selected_notes();
@@ -935,9 +896,10 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
     // Pop up the context menu if a note is selected
     Note::List selected_notes = get_selected_notes();
     if(!selected_notes.empty()) {
-      popup_context_menu_at_location(menu, event);
+      auto menu = get_note_list_context_menu();
+      popup_context_menu_at_location(menu, m_tree);
     }
-    break;
+    return true;
   }
   case GDK_KEY_Return:
   case GDK_KEY_KP_Enter:
@@ -1252,33 +1214,22 @@ void SearchNotesWidget::on_note_pin_status_changed(const Note &, bool)
   update_results();
 }
 
-Gtk::Menu *SearchNotesWidget::get_note_list_context_menu()
+Gtk::Popover *SearchNotesWidget::get_note_list_context_menu()
 {
   if(!m_note_list_context_menu) {
-    m_note_list_context_menu = new Gtk::Menu;
+    auto menu = Gio::Menu::create();
 
-    Gtk::MenuItem *item;
-    m_open_note_menu_item = manage(new Gtk::MenuItem(_("_Open"), true));
-    m_open_note_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note));
-    m_note_list_context_menu->add(*m_open_note_menu_item);
+    menu->append(_("_New"), "app.new-note");
+    menu->append(_("_Open"), "win.open-note");
+    menu->append(_("Open In New _Window"), "win.open-note-new-window");
+    menu->append(_("_Delete"), "win.delete-note");
 
-    m_open_note_new_window_menu_item = manage(new Gtk::MenuItem(_("Open In New _Window"), true));
-    m_open_note_new_window_menu_item->signal_activate()
-      .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note_new_window));
-    m_note_list_context_menu->add(*m_open_note_new_window_menu_item);
-
-    m_delete_note_menu_item = manage(new Gtk::MenuItem(_("_Delete"), true));
-    m_delete_note_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::delete_selected_notes));
-    m_note_list_context_menu->add(*m_delete_note_menu_item);
-
-    m_note_list_context_menu->add(*manage(new Gtk::SeparatorMenuItem));
-    item = manage(new Gtk::MenuItem(_("_New"), true));
-    item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::new_note));
-    m_note_list_context_menu->add(*item);
+    m_note_list_context_menu = std::make_shared<Gtk::PopoverMenu>(menu);
+    m_note_list_context_menu->set_parent(*m_tree);
   }
 
   on_selection_changed();
-  return m_note_list_context_menu;
+  return m_note_list_context_menu.get();
 }
 
 void SearchNotesWidget::new_note()
