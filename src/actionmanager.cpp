@@ -67,6 +67,8 @@ namespace gnote {
     make_app_menu_items();
 
     register_main_window_action("close-window", NULL, false);
+    register_main_window_action("open-note", NULL, false);
+    register_main_window_action("open-note-new-window", NULL, false);
     register_main_window_action("delete-note", NULL, false);
     register_main_window_action("important-note", &Glib::Variant<bool>::variant_type(), false);
     register_main_window_action("enable-spell-check", &Glib::Variant<bool>::variant_type());
