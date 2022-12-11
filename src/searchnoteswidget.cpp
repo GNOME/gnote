@@ -297,7 +297,7 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
       std::static_pointer_cast<Note>(note->shared_from_this()), new_notebook);
   }
   notebook_manager.delete_notebook(old_notebook);
-  Gtk::TreeIter iter;
+  Gtk::TreeIter<Gtk::TreeRow> iter;
   if(notebook_manager.get_notebook_iter(new_notebook, iter)) {
     m_notebooksTree->get_selection()->select(iter);
     m_notebooksTree->set_cursor(m_notebooksTree->get_model()->get_path(iter));
