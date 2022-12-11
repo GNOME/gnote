@@ -235,9 +235,6 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 
 void SearchNotesWidget::save_position()
 {
-  int width;
-  int height;
-
   EmbeddableWidgetHost *current_host = host();
   if(!current_host || !current_host->running()) {
     return;
@@ -246,11 +243,12 @@ void SearchNotesWidget::save_position()
   m_gnote.preferences().search_window_splitter_pos(get_position());
 
   Gtk::Window *window = dynamic_cast<Gtk::Window*>(current_host);
-  if(!window || (window->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) != 0) {
+  if(!window || window->is_maximized()) {
     return;
   }
 
-  window->get_size(width, height);
+  int width = window->get_width();
+  int height = window->get_height();
 
   m_gnote.preferences().search_window_width(width);
   m_gnote.preferences().search_window_height(height);
