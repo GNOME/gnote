@@ -24,6 +24,7 @@
 #include <gtkmm/gestureclick.h>
 #include <gtkmm/linkbutton.h>
 #include <gtkmm/liststore.h>
+#include <gtkmm/shortcutcontroller.h>
 
 #include "debug.hpp"
 #include "iactionmanager.hpp"
@@ -51,9 +52,7 @@ Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon(IconManager & manager
 
 
 SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
-  : m_open_note_accel(nullptr)
-  , m_open_note_new_window_accel(nullptr)
-  , m_gnote(g)
+  : m_gnote(g)
   , m_manager(m)
   , m_clickX(0), m_clickY(0)
   , m_matches_column(NULL)
@@ -99,6 +98,18 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
   parse_sorting_setting(g.preferences().search_sorting());
   g.preferences().signal_desktop_gnome_clock_format_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
+
+  auto shortcuts = Gtk::ShortcutController::create();
+  shortcuts->set_scope(Gtk::ShortcutScope::GLOBAL);
+  auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_O, Gdk::ModifierType::CONTROL_MASK);
+  auto action = Gtk::NamedAction::create("win.open-note");
+  auto shortcut = Gtk::Shortcut::create(trigger, action);
+  shortcuts->add_shortcut(shortcut);
+  trigger = Gtk::KeyvalTrigger::create(GDK_KEY_W, Gdk::ModifierType::ALT_MASK);
+  action = Gtk::NamedAction::create("win.open-note-new-window");
+  shortcut = Gtk::Shortcut::create(trigger, action);
+  shortcuts->add_shortcut(shortcut);
+  add_controller(shortcuts);
 }
 
 Glib::ustring SearchNotesWidget::get_name() const
@@ -1204,30 +1215,10 @@ void SearchNotesWidget::embed(EmbeddableWidgetHost *h)
   }
 }
 
-void SearchNotesWidget::foreground()
-{
-  EmbeddableWidget::foreground();
-  MainWindow *win = dynamic_cast<MainWindow*>(host());
-  if(!win) {
-    return;
-  }
-
-  m_open_note_accel = win->keybinder().add_accelerator(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note), GDK_KEY_O, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-  m_open_note_new_window_accel = win->keybinder().add_accelerator(sigc::mem_fun(*this, &SearchNotesWidget::on_open_note_new_window), GDK_KEY_W, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
-}
-
 void SearchNotesWidget::background()
 {
   EmbeddableWidget::background();
   save_position();
-  MainWindow *win = dynamic_cast<MainWindow*>(host());
-  if(!win) {
-    return;
-  }
-  win->keybinder().remove_accelerator(m_open_note_accel);
-  win->keybinder().remove_accelerator(m_open_note_new_window_accel);
-  m_open_note_accel = nullptr;
-  m_open_note_new_window_accel = nullptr;
 }
 
 void SearchNotesWidget::size_internals()

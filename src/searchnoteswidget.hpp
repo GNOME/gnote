@@ -48,7 +48,6 @@ public:
   SearchNotesWidget(IGnote & g, NoteManagerBase & m);
   virtual Glib::ustring get_name() const override;
   void embed(EmbeddableWidgetHost *h) override;
-  virtual void foreground() override;
   virtual void background() override;
   virtual void size_internals() override;
   virtual void set_initial_focus() override;
@@ -154,8 +153,6 @@ private:
   };
 
   Glib::RefPtr<Gtk::EventControllerKey> m_notes_widget_key_ctrl;
-  void *m_open_note_accel;
-  void *m_open_note_new_window_accel;
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ScrolledWindow m_matches_window;
   std::shared_ptr<Gtk::Grid> m_no_matches_box;
