@@ -764,28 +764,16 @@ void SearchNotesWidget::on_row_activated(const Gtk::TreePath & p, Gtk::TreeViewC
 
 void SearchNotesWidget::on_selection_changed()
 {
-  Note::List selected_notes = get_selected_notes();
-
-  if(selected_notes.empty()) {
-    if(m_open_note_menu_item) {
-      m_open_note_menu_item->property_sensitive() = false;
+  if(auto win = dynamic_cast<MainWindow*>(host())) {
+    bool enabled = get_selected_notes().empty() == false;
+    if(auto action = win->find_action("open-note")) {
+      action->set_enabled(enabled);
     }
-    if(m_open_note_new_window_menu_item) {
-      m_open_note_new_window_menu_item->property_sensitive() = false;
+    if(auto action = win->find_action("open-note-new-window")) {
+      action->set_enabled(enabled);
     }
-    if(m_delete_note_menu_item) {
-      m_delete_note_menu_item->property_sensitive() = false;
-    }
-  }
-  else {
-    if(m_open_note_menu_item) {
-      m_open_note_menu_item->property_sensitive() = true;
-    }
-    if(m_open_note_new_window_menu_item) {
-      m_open_note_new_window_menu_item->property_sensitive() = true;
-    }
-    if(m_delete_note_menu_item) {
-      m_delete_note_menu_item->property_sensitive() = true;
+    if(auto action = win->find_action("delete-note")) {
+      action->set_enabled(enabled);
     }
   }
 }
